@@ -50,8 +50,8 @@ export function Badge({ className = '', children }) {
 
 export function EmptyState({ icon: Icon, title, children, action }) {
   return (
-    <div className="card flex flex-col items-center px-6 py-10 text-center">
-      {Icon && <div className="mb-3 rounded-2xl bg-brand-soft p-3 text-brand"><Icon size={28} aria-hidden /></div>}
+    <div className="empty-state card flex flex-col items-center px-6 py-10 text-center">
+      {Icon && <div className="empty-icon tone-sun mb-4"><Icon size={28} aria-hidden /></div>}
       <h3 className="font-display text-lg font-semibold">{title}</h3>
       {children && <div className="mt-1 max-w-md text-sm text-ink-muted">{children}</div>}
       {action && <div className="mt-4">{action}</div>}

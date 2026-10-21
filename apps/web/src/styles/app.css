@@ -309,3 +309,5 @@
 .auth-dots { position: absolute; inset: 0; pointer-events: none; -webkit-mask-image: linear-gradient(200deg, #000, transparent 60%); mask-image: linear-gradient(200deg, #000, transparent 60%); }
 .auth-panel.surface-forest::after { opacity: .5; }
 .auth-sticker.sticker-tone { box-shadow: 0 5px 0 rgb(var(--tone-mid)), 0 22px 40px -18px rgb(0 0 0 / .55); }
+.empty-state { background-image: radial-gradient(rgb(var(--ink) / .07) 1.2px, transparent 1.5px); background-size: 14px 14px; }
+.empty-icon { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 20px; background: rgb(var(--tone-bg)); color: rgb(var(--tone-fg)); box-shadow: 0 4px 0 rgb(var(--tone-mid)); transform: rotate(-4deg); }
