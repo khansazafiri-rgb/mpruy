@@ -1,10 +1,11 @@
 import clsx from 'clsx';
-import { ArrowLeft, BookMarked, FileQuestion, Flag, Inbox, LayoutDashboard, Megaphone, Package, Settings, Users } from 'lucide-react';
+import { ArrowLeft, BookMarked, FileQuestion, Flag, Inbox, LayoutDashboard, Megaphone, MessageCircle, Package, Settings, Users } from 'lucide-react';
 import { NavLink, Outlet } from 'react-router-dom';
 import Logo from '@/components/Logo';
 
 export const ADMIN_NAV = [
   { to: '/admin', end: true, label: 'Ringkasan', icon: LayoutDashboard },
+  { to: '/admin/pesan', label: 'Pesan pengguna', icon: MessageCircle },
   { to: '/admin/pengajuan', label: 'Pengajuan soal', icon: Inbox },
   { to: '/admin/soal', label: 'Edit Soal', icon: FileQuestion },
   { to: '/admin/laporan', label: 'Laporan soal', icon: Flag },

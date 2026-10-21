@@ -33,7 +33,7 @@ export default function AppShell() {
   const doLogout = () => { logout(); nav('/masuk'); };
 
   return (
-    <div className="min-h-screen pb-20 lg:pb-0">
+    <div className="app-frame min-h-screen pb-20 lg:pb-0">
       <a href="#isi" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-lg focus:bg-surface focus:px-3 focus:py-2">Lewati ke isi</a>
       <header className="app-header sticky top-0 z-40 border-b border-line">
         <div className="mx-auto flex h-[76px] max-w-6xl items-center gap-3 px-4">
@@ -43,7 +43,7 @@ export default function AppShell() {
           <Link to="/beranda" aria-label="MEDCOEL beranda"><Logo /></Link>
           <nav className="ml-6 hidden items-center gap-1 lg:flex" aria-label="Navigasi utama">
             {NAV.map((n) => (
-              <NavLink key={n.to} to={n.to} className={({ isActive }) => clsx('app-nav font-medium transition-colors', isActive ? 'bg-brand-soft text-brand-dark' : 'text-ink-muted hover:text-ink')}>
+              <NavLink key={n.to} to={n.to} className={({ isActive }) => clsx('app-nav isolate font-medium transition-colors', isActive ? 'is-active' : 'text-ink-muted hover:bg-paper-2/60 hover:text-ink')}>
                 {n.label}
               </NavLink>
             ))}
@@ -57,12 +57,12 @@ export default function AppShell() {
             </Link>
             <div className="relative">
               <button type="button" onClick={() => setMenu((v) => !v)} className="flex items-center gap-2 rounded-xl px-2 py-1.5 hover:bg-page" aria-expanded={menu} aria-haspopup="menu">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">{(me?.name || '?').charAt(0).toUpperCase()}</span>
+                <span className="app-avatar flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white">{(me?.name || '?').charAt(0).toUpperCase()}</span>
                 <span className="hidden max-w-[10rem] truncate text-sm font-semibold sm:block">{me?.name}</span>
                 <ChevronDown size={16} className="text-ink-muted" />
               </button>
               {menu && (
-                <div role="menu" className="profile-menu absolute right-0 mt-2 w-56 overflow-hidden rounded-xl border border-line bg-surface py-1 shadow-pop">
+                <div role="menu" className="profile-menu absolute right-0 mt-2 w-56 overflow-hidden rounded-xl border border-paper-2 bg-[#fffdf7] py-1 shadow-pop">
                   <MenuLink to="/profil" icon={User}>Profil</MenuLink>
                   <MenuLink to="/riwayat" icon={History}>Riwayat</MenuLink>
                   {isAdmin && <MenuLink to="/admin" icon={LayoutDashboard}>Dashboard admin</MenuLink>}
@@ -85,7 +85,7 @@ export default function AppShell() {
             </div>
             <nav className="space-y-1" aria-label="Navigasi">
               {[...NAV, { to: '/riwayat', label: 'Riwayat', icon: History }, { to: '/profil', label: 'Profil', icon: User }, ...(isAdmin ? [{ to: '/admin', label: 'Dashboard admin', icon: LayoutDashboard }] : [])].map((n) => (
-                <NavLink key={n.to} to={n.to} className={({ isActive }) => clsx('flex items-center gap-3 rounded-xl px-3 py-2.5 font-semibold', isActive ? 'bg-brand-soft text-brand-dark' : 'text-ink-muted hover:bg-page')}>
+                <NavLink key={n.to} to={n.to} className={({ isActive }) => clsx('flex items-center gap-3 rounded-xl px-3 py-2.5 font-semibold', isActive ? 'bg-brand-soft text-brand-dark' : 'text-ink-muted hover:bg-paper-2/60')}>
                   <n.icon size={20} /> {n.label}
                 </NavLink>
               ))}
@@ -100,7 +100,7 @@ export default function AppShell() {
 
       <nav className="bottom-nav fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t border-line bg-surface lg:hidden" aria-label="Navigasi bawah">
         {NAV.filter((n) => n.to !== '/chat-admin').map((n) => (
-          <NavLink key={n.to} to={n.to} className={({ isActive }) => clsx('flex flex-col items-center gap-0.5 py-2 text-[11px] font-semibold', isActive ? 'text-brand' : 'text-ink-muted')}>
+          <NavLink key={n.to} to={n.to} className={({ isActive }) => clsx('flex flex-col items-center gap-0.5 py-2 text-[12px] font-semibold', isActive ? 'is-active text-brand' : 'text-ink-muted')}>
             <n.icon size={21} aria-hidden /> <span className="truncate">{n.short || n.label}</span>
           </NavLink>
         ))}

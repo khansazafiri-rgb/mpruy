@@ -5,8 +5,10 @@
 // Panel tetap terpasang saat ditutup (hanya disembunyikan), supaya percakapan
 // atau unggahan yang sedang berjalan tidak hilang ketika pengguna pindah
 // halaman atau menutup panel sebentar.
+import '@/styles/chat.css';
 import clsx from 'clsx';
 import { Maximize2, MessageCircle, X } from 'lucide-react';
+import logoMark from '@/assets/logo-mark.webp';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Spinner } from './ui';
@@ -32,7 +34,6 @@ export default function ChatAdminWidget() {
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
 
-  if (onPage) return null;
 
   return (
     <>
@@ -44,27 +45,27 @@ export default function ChatAdminWidget() {
           aria-modal="false"
           aria-label="Chat Admin"
           className={clsx(
-            open ? 'flex' : 'hidden',
-            'fixed z-50 flex-col overflow-hidden bg-page shadow-pop',
+            open && !onPage ? 'flex' : 'hidden',
+            'chat-widget fixed z-50 flex-col overflow-hidden bg-paper shadow-pop',
             // HP: layar penuh di atas navigasi bawah. Laptop: panel di pojok kanan bawah.
-            'inset-x-0 bottom-0 top-0 sm:inset-auto sm:bottom-24 sm:right-6 sm:h-[min(640px,calc(100vh-8rem))] sm:w-[400px] sm:rounded-2xl sm:border sm:border-line',
+            'inset-x-0 bottom-0 top-0 sm:inset-auto sm:bottom-24 sm:right-6 sm:h-[min(640px,calc(100vh-8rem))] sm:w-[400px] sm:rounded-[22px] sm:border sm:border-paper-2',
           )}
         >
-          <header className="flex items-center gap-2 bg-brand px-4 py-3 text-white">
-            <MessageCircle size={20} aria-hidden />
+          <header className="chat-widget-head surface-forest">
+            <span className="chat-widget-mark"><img src={logoMark} alt="" /></span>
             <div className="min-w-0 flex-1">
-              <p className="font-display font-semibold leading-tight text-white">Chat Admin</p>
-              <p className="text-xs text-white/80">Upload soal, cek pengajuan, atau hubungi admin</p>
+              <p className="font-display text-[16px] font-bold leading-tight text-white">Chat Admin</p>
+              <p className="text-[12px] text-white/75">Admin MEDCOEL membalas saat tersedia</p>
             </div>
-            <Link to="/chat-admin" onClick={() => setOpen(false)} className="rounded-lg p-2 hover:bg-white/15" aria-label="Buka Chat Admin di halaman penuh" title="Halaman penuh">
+            <Link to="/chat-admin" onClick={() => setOpen(false)} className="rounded-lg p-2 text-white/90 hover:bg-white/15" aria-label="Buka Chat Admin di halaman penuh" title="Halaman penuh">
               <Maximize2 size={18} />
             </Link>
-            <button type="button" onClick={() => { setOpen(false); button.current?.focus(); }} className="rounded-lg p-2 hover:bg-white/15" aria-label="Tutup Chat Admin">
+            <button type="button" onClick={() => { setOpen(false); button.current?.focus(); }} className="rounded-lg p-2 text-white/90 hover:bg-white/15" aria-label="Tutup Chat Admin">
               <X size={20} />
             </button>
           </header>
-          <div className="flex-1 overflow-y-auto px-3 py-4">
-            <Suspense fallback={<Spinner />}><ChatAdminBody compact /></Suspense>
+          <div className="flex min-h-0 flex-1 flex-col">
+            <Suspense fallback={<div className="grid flex-1 place-items-center"><Spinner /></div>}><ChatAdminBody compact /></Suspense>
           </div>
         </section>
       )}
@@ -76,10 +77,11 @@ export default function ChatAdminWidget() {
         aria-controls="chat-admin-panel"
         aria-label={open ? 'Tutup Chat Admin' : 'Buka Chat Admin'}
         className={clsx(
-          'fixed right-4 z-50 flex items-center gap-2 rounded-full bg-brand px-4 py-3 font-semibold text-white shadow-pop transition hover:bg-brand-dark',
+          'chat-fab fixed right-4 z-50 flex items-center gap-2 rounded-full px-4 py-3 font-semibold text-white transition',
           // Di HP berada di atas navigasi bawah; saat panel layar penuh terbuka, tombolnya disembunyikan.
           'bottom-20 lg:bottom-6 sm:right-6',
           open && 'max-sm:hidden',
+          onPage && '!hidden',
         )}
       >
         {open ? <X size={20} aria-hidden /> : <MessageCircle size={20} aria-hidden />}

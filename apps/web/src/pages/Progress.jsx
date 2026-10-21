@@ -1,14 +1,17 @@
 // PROGRES SAYA: hanya data pemilik akun.
-import { CalendarClock, Flame, Table2, Target, Trophy } from 'lucide-react';
+import { CalendarClock, CheckCircle2, Flame, Table2, Target, Trophy } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import Illustration from '@/components/Illustration';
 import { Alert, PageLoader, ProgressBar, Stat } from '@/components/ui';
 import { useApi } from '@/lib/useApi';
 import { fmtDate, fmtDateTime } from '@/lib/time';
+import PageHead from '@/components/PageHead';
+import { toneClass } from '@/lib/tone';
 
 // Warna grafik dari token (tiap grafik satu seri, jadi tanpa kotak legenda).
-const C = { brand: 'rgb(0 112 96)', progress: 'rgb(99 87 155)', grid: 'rgb(230 227 218)', ink: 'rgb(74 93 105)', surface: '#fff' };
+const C = { brand: 'rgb(0 112 96)', progress: 'rgb(99 87 155)', grid: 'rgb(230 225 210)', ink: 'rgb(74 93 105)', surface: '#fffdf7' };
 
 function Tip({ active, payload, label, unit, labelFmt }) {
   if (!active || !payload?.length) return null;
@@ -44,22 +47,19 @@ export default function Progress() {
   const summary = range === 7 ? data.last7 : data.last30;
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="page-title">Progres saya</h1>
-        <p className="mt-1 text-ink-muted">Hanya kamu yang bisa melihat halaman ini.</p>
-      </div>
+    <div className="space-y-7">
+      <PageHead eyebrow="Rekap belajarmu" title="Progres saya" note="pelan-pelan, yang penting jalan ✎">Hanya kamu yang bisa melihat halaman ini.</PageHead>
 
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-        <Stat label="Hari aktif berturut-turut" value={<span className="inline-flex items-center gap-1"><Flame size={22} className="text-gold" />{data.streak}</span>} accent="text-ink" />
-        <Stat label={`Soal dikerjakan (${range} hari)`} value={summary.answered} sub={`${summary.activeDays} hari aktif`} />
-        <Stat label={`Jawaban benar (${range} hari)`} value={summary.correct} accent="text-progress" />
-        <Stat label="Total poin" value={<span className="inline-flex items-center gap-1"><Trophy size={20} className="text-gold" />{data.totalPoints}</span>} accent="text-ink" />
+        <Stat tone="sun" icon={Flame} label="Hari aktif beruntun" value={data.streak} sub="hari berturut-turut" />
+        <Stat tone="mint" icon={Target} label={`Soal dikerjakan (${range} hari)`} value={summary.answered} sub={`${summary.activeDays} hari aktif`} />
+        <Stat tone="sky" icon={CheckCircle2} label={`Jawaban benar (${range} hari)`} value={summary.correct} sub={summary.answered ? `${Math.round((summary.correct / summary.answered) * 100)}% dari yang dikerjakan` : 'belum ada jawaban'} />
+        <Stat tone="lilac" icon={Trophy} label="Total poin" value={data.totalPoints} sub="dari percobaan pertama" />
       </div>
 
-      <div className="flex gap-1 rounded-xl bg-surface p-1 shadow-card w-fit" role="group" aria-label="Rentang waktu">
+      <div className="flex w-fit gap-1 rounded-xl border border-paper-2 bg-[#fffdf7] p-1" role="group" aria-label="Rentang waktu">
         {[7, 30].map((r) => (
-          <button key={r} type="button" onClick={() => setRange(r)} aria-pressed={range === r} className={`rounded-lg px-3 py-1.5 text-sm font-semibold ${range === r ? 'bg-brand text-white' : 'text-ink-muted'}`}>{r} hari</button>
+          <button key={r} type="button" onClick={() => setRange(r)} aria-pressed={range === r} className={`rounded-lg px-3.5 py-2 text-sm font-semibold ${range === r ? 'bg-forest text-white' : 'text-ink-muted hover:text-ink'}`}>{r} hari</button>
         ))}
       </div>
 
@@ -102,8 +102,8 @@ export default function Progress() {
       </div>
 
       {data.nextExam && (
-        <section className="card flex flex-wrap items-center gap-3 p-4">
-          <CalendarClock className="text-academic" size={24} />
+        <section className="card-chunky tone-surface tone-peach flex flex-wrap items-center gap-3 p-4">
+          <span className="stat-tone-icon !h-10 !w-10"><CalendarClock size={20} /></span>
           <p className="flex-1">Ujian terdekat: <b>{data.nextExam.title} {data.nextExam.subjectName}</b> · {fmtDateTime(data.nextExam.examAt, data.nextExam.timezone)}</p>
           <Link to="/jadwal" className="btn-secondary btn-sm">Jadwal ujian</Link>
         </section>
@@ -113,11 +113,11 @@ export default function Progress() {
         <h2 className="section-title mb-3">Per mata kuliah</h2>
         <div className="card divide-y divide-line">
           {data.subjects.map((s) => (
-            <Link key={s.id} to={`/mata-kuliah/${s.slug}`} className="grid gap-2 p-4 hover:bg-page sm:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_7rem_8rem] sm:items-center sm:gap-5">
-              <p className="font-semibold">{s.name}{s.studying && <span className="ml-2 chip bg-gold-soft text-[#6b4f00]">Sedang dipelajari</span>}</p>
+            <Link key={s.id} to={`/mata-kuliah/${s.slug}`} className="grid gap-2 p-4 hover:bg-brand-soft/40 sm:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_7rem_8rem] sm:items-center sm:gap-5">
+              <p className="flex items-center gap-3 font-semibold"><span className={`progress-thumb sticker-tone ${toneClass(s.slug)}`} aria-hidden><Illustration subject={s} className="h-full w-full" /></span><span className="min-w-0">{s.name}{s.studying && <span className="ml-2 chip bg-gold-soft text-[#6b4f00]">Sedang dipelajari</span>}</span></p>
               <div>
-                <p className="mb-1 text-xs text-ink-muted">BAB tuntas {s.chaptersDone}/{s.chaptersWithQuestions}</p>
-                <ProgressBar value={s.chaptersDone} max={s.chaptersWithQuestions || 1} color="bg-progress" label={`BAB tuntas ${s.name}`} />
+                <p className="mb-1 text-[13px] text-ink-muted">BAB tuntas {s.chaptersDone}/{s.chaptersWithQuestions}</p>
+                <ProgressBar value={s.chaptersDone} max={s.chaptersWithQuestions || 1} color="bg-forest" className="!h-2" label={`BAB tuntas ${s.name}`} />
               </div>
               <p className="text-sm"><span className="text-ink-muted">Dikerjakan</span> <b>{s.answered}</b></p>
               <p className="flex items-center gap-1 text-sm"><Target size={14} className="text-ink-muted" /> <b>{s.correctPct}%</b> <span className="text-ink-muted">benar</span></p>

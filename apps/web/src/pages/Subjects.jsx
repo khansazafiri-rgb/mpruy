@@ -1,49 +1,67 @@
-import { ArrowUpRight, BookOpen, Search } from 'lucide-react';
+import clsx from 'clsx';
+import { ArrowUpRight, BookOpen, Search, Star } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Illustration from '@/components/Illustration';
-import { Alert, Badge, EmptyState, PageLoader, ProgressBar } from '@/components/ui';
+import CampusMaterials from '@/components/CampusMaterials';
+import { Alert, EmptyState, PageLoader, ProgressBar } from '@/components/ui';
+import { toneClass } from '@/lib/tone';
 import { useApi } from '@/lib/useApi';
+
+const CLINIC = ['ilmu-bedah', 'ilmu-bedah-ortopedi', 'ilmu-kesehatan-anak', 'ilmu-penyakit-dalam', 'kehamilan-persalinan', 'ginekologi-payudara', 'psikiatri-kesehatan-jiwa', 'multisistem-kegawatdaruratan'];
+const groupOf = (s) => (s.slug?.startsWith('sistem-') ? 'sistem' : CLINIC.includes(s.slug) ? 'klinik' : 'dasar');
+const GROUPS = [['semua', 'Semua'], ['dasar', 'Dasar'], ['klinik', 'Klinik'], ['sistem', 'Sistem organ']];
 
 export default function Subjects() {
   const { data, error, loading } = useApi('subjects');
   const [q, setQ] = useState('');
-  const items = useMemo(() => (data?.items || []).filter((s) => s.name.toLowerCase().includes(q.trim().toLowerCase())), [data, q]);
+  const [group, setGroup] = useState('semua');
+  const all = useMemo(() => data?.items || [], [data]);
+  const counts = useMemo(() => all.reduce((c, s) => ({ ...c, [groupOf(s)]: (c[groupOf(s)] || 0) + 1 }), { semua: all.length }), [all]);
+  const items = useMemo(() => all.filter((s) => (group === 'semua' || groupOf(s) === group) && s.name.toLowerCase().includes(q.trim().toLowerCase())), [all, q, group]);
+  const total = data?.items?.length || 0;
   return (
     <div className="space-y-8">
-      <div className="flex flex-wrap items-end justify-between gap-5 pb-2 pt-2">
-        <div>
+      <header className="page-head flex flex-wrap items-end justify-between gap-5">
+        <div className="min-w-0">
           <p className="eyebrow mb-3">Ruang belajarmu</p>
           <h1 className="page-title">Mata kuliah</h1>
-          <p className="mt-3 max-w-lg text-sm leading-relaxed text-ink-muted">Satu topik, satu pemahaman baru. Pilih yang ingin kamu pelajari hari ini.</p>
+          <p className="mt-3 max-w-lg text-[17px] leading-relaxed text-ink-muted">{total ? `${total} mata kuliah, dari ilmu dasar sampai klinis.` : 'Dari ilmu dasar sampai klinis.'} Pilih satu, lalu kerjakan per BAB.</p>
         </div>
-        <label className="relative w-full sm:w-72">
-          <Search size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-ink-muted" />
-          <input type="search" className="input !rounded-full !py-3 pl-11" placeholder="Cari mata kuliah..." value={q} onChange={(e) => setQ(e.target.value)} aria-label="Cari mata kuliah" />
+        <label className="subject-search">
+          <Search size={18} className="text-ink-muted" aria-hidden />
+          <input type="search" placeholder="Cari mata kuliah..." value={q} onChange={(e) => setQ(e.target.value)} aria-label="Cari mata kuliah" />
         </label>
-      </div>
+      </header>
       <Alert>{error?.message}</Alert>
+      <CampusMaterials />
       {loading ? <PageLoader /> : <>
-        <p className="text-xs text-ink-muted" role="status">{items.length} mata kuliah{q.trim() ? ` untuk “${q.trim()}”` : ' · Semua terbuka untukmu'}</p>
-        {items.length ? <div className="grid gap-5 md:grid-cols-2">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="filter-pills" role="group" aria-label="Kelompok mata kuliah">
+            {GROUPS.map(([k, label]) => (
+              <button key={k} type="button" aria-pressed={group === k} onClick={() => setGroup(k)}>{label}<span>{counts[k] || 0}</span></button>
+            ))}
+          </div>
+          <p className="flex flex-wrap items-baseline gap-x-3 text-sm text-ink-muted" role="status">
+            <span><b className="text-ink">{items.length}</b> mata kuliah{q.trim() ? ` untuk “${q.trim()}”` : ''}</span>
+            {!q.trim() && group === 'semua' && <span className="hand text-[22px] text-brand" aria-hidden>semua terbuka untukmu ✓</span>}
+          </p>
+        </div>
+        {items.length ? <div className="subject-wall">
           {items.map((s) => (
-            <Link key={s.id} to={`/mata-kuliah/${s.slug}`} className="subject-card card group flex overflow-hidden hover:border-brand/40">
-              <div className="subject-art shrink-0"><Illustration subject={s} className="h-full w-full object-contain" /></div>
-              <div className="flex min-w-0 flex-1 flex-col justify-center p-5 sm:p-6">
-                <div className="mb-2 flex items-center justify-between gap-2">
-                  {s.studying ? <Badge className="bg-brand-soft text-brand-dark">Sedang dipelajari</Badge> : <span className="text-[11px] font-medium text-ink-muted">Eksplorasi materi</span>}
-                  <ArrowUpRight size={16} className="shrink-0 text-ink-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-                </div>
-                <h2 className="font-display text-xl font-semibold tracking-tight group-hover:text-brand">{s.name}</h2>
-                {s.description && <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-ink-muted">{s.description}</p>}
-                <div className="mt-5">
-                  <p className="mb-2 text-[11px] text-ink-muted">{s.chapterCount !== undefined && <span>{s.chapterCount} BAB · </span>}<span className="font-semibold text-ink">{s.answeredCount || 0}</span> / {s.questionCount || 0} soal dikerjakan</p>
-                  <ProgressBar value={s.answeredCount} max={s.questionCount || 1} label={`Progres ${s.name}`} />
-                </div>
-              </div>
+            <Link key={s.id} to={`/mata-kuliah/${s.slug}`} className={clsx('subject-tile card-chunky tone-surface group', toneClass(s.illustrationKey || s.slug))}>
+              {s.studying && <span className="subj-flag"><Star size={12} aria-hidden /> Dipelajari</span>}
+              <span className="sticker-tone subject-tile-art"><Illustration subject={s} className="h-full w-full" /></span>
+              <span className="mt-3.5 flex items-start justify-between gap-2">
+                <span className="font-display text-[18px] font-bold leading-snug text-ink">{s.name}</span>
+                <span className="subject-go" aria-hidden><ArrowUpRight size={16} /></span>
+              </span>
+              {s.description && <span className="mt-1 line-clamp-2 block text-[14px] leading-relaxed text-ink/75">{s.description}</span>}
+              <span className="mt-3 flex flex-wrap items-center gap-2 text-[13px] font-semibold text-[rgb(var(--tone-fg))]">{s.chapterCount !== undefined && <span className="subject-meta">{s.chapterCount} BAB</span>}<span><b>{s.answeredCount || 0}</b>/{s.questionCount || 0} soal</span></span>
+              <ProgressBar value={s.answeredCount} max={s.questionCount || 1} className="tone-track mt-2.5 !h-2" color="tone-fill" label={`Progres ${s.name}`} />
             </Link>
           ))}
-        </div> : <EmptyState icon={BookOpen} title={q.trim() ? 'Mata kuliah belum ditemukan' : 'Mata kuliah sedang disiapkan'}>{q.trim() ? 'Coba kata lain atau hapus pencarianmu.' : 'Materi baru akan muncul di sini setelah tersedia.'}{q.trim() && <button type="button" className="btn-secondary mt-4" onClick={() => setQ('')}>Hapus pencarian</button>}</EmptyState>}
+        </div> : <EmptyState icon={BookOpen} title={q.trim() || group !== 'semua' ? 'Mata kuliah belum ditemukan' : 'Mata kuliah sedang disiapkan'}>{q.trim() || group !== 'semua' ? 'Coba kata lain atau pilih kelompok Semua.' : 'Materi baru akan muncul di sini setelah tersedia.'}{(q.trim() || group !== 'semua') && <button type="button" className="btn-secondary mt-4" onClick={() => { setQ(''); setGroup('semua'); }}>Tampilkan semua</button>}</EmptyState>}
       </>}
     </div>
   );

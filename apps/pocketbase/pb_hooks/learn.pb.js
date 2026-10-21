@@ -54,12 +54,13 @@ routerAdd("GET", "/api/medcoel/subjects/{slug}", (e) => {
   const learn = require(`${__hooks}/lib/learn.js`);
   const user = u.requireUser(e);
   const slug = e.request.pathValue("slug");
+  const campusOnly = u.query(e, "campusOnly") === "1";
   let s;
   try { s = e.app.findFirstRecordByFilter("subjects", "slug = {:s} || id = {:s}", { s: slug }); } catch (_) { s = null; }
   if (!s || (s.getBool("hidden") && u.roleOf(user) !== "admin")) throw new NotFoundError("Mata kuliah tidak ditemukan.");
 
   const chapters = e.app.findRecordsByFilter("chapters", "subject = {:s} && hidden = false", "order,created", 500, 0, { s: s.id });
-  const items = learn.pool(e.app, user, { subject: s.id });
+  const items = learn.pool(e.app, user, { subject: s.id, campusOnly: campusOnly });
   const per = {};
   items.forEach((it) => {
     const p = (per[it.chapter] = per[it.chapter] || { total: 0, answered: 0, wrong: 0, easy: 0, medium: 0, hard: 0, A: 0, K: 0, isian: 0, esai: 0 });
@@ -71,6 +72,7 @@ routerAdd("GET", "/api/medcoel/subjects/{slug}", (e) => {
   });
   const packages = e.app.findRecordsByFilter("packages", "subject = {:s} && active = true", "order,name", 50, 0, { s: s.id });
   return e.json(200, {
+    campusName: campusOnly && user.getString("campus") ? e.app.findRecordById("campuses", user.getString("campus")).getString("name") : "",
     subject: {
       id: s.id,
       name: s.getString("name"),
@@ -81,8 +83,8 @@ routerAdd("GET", "/api/medcoel/subjects/{slug}", (e) => {
       collectionId: s.collection().id,
       studying: user.getStringSlice("studyingSubjects").indexOf(s.id) >= 0,
     },
-    chapters: chapters.map((c) => Object.assign({ id: c.id, title: c.getString("title") }, per[c.id] || { total: 0, answered: 0, wrong: 0, easy: 0, medium: 0, hard: 0, A: 0, K: 0, isian: 0, esai: 0 })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName),
-    packages: packages.map((p) => ({
+    chapters: chapters.filter((c) => !campusOnly || !!per[c.id]).map((c) => Object.assign({ id: c.id, title: c.getString("title") }, per[c.id] || { total: 0, answered: 0, wrong: 0, easy: 0, medium: 0, hard: 0, A: 0, K: 0, isian: 0, esai: 0 })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName),
+    packages: (campusOnly ? [] : packages).map((p) => ({
       id: p.id,
       name: p.getString("name"),
       description: p.getString("description"),
@@ -102,7 +104,7 @@ routerAdd("GET", "/api/medcoel/simulation/availability", (e) => {
   const subject = u.query(e, "subject");
   const source = u.query(e, "source") || "unseen";
   const types = typeParam(u.query(e, "types"), u.jsonSetting(e.app, "simulationTypes", ["A", "K"]));
-  const items = learn.bySource(learn.pool(e.app, user, { subject: subject, types: types }), source);
+  const items = learn.bySource(learn.pool(e.app, user, { subject: subject, types: types, campusOnly: u.query(e, "campusOnly") === "1" }), source);
   const out = {};
   items.forEach((it) => {
     const p = (out[it.chapter] = out[it.chapter] || { easy: 0, medium: 0, hard: 0, total: 0 });
@@ -132,7 +134,7 @@ routerAdd("POST", "/api/medcoel/attempts/practice", (e) => {
   if (!ch || ch.getBool("hidden")) throw new NotFoundError("Topik tidak ditemukan.");
   const n = Math.max(1, Math.min(100, parseInt(b.count, 10) || 0));
   const mode = b.mode === "exam" ? "exam" : "learning";
-  const items = learn.pool(e.app, user, { subject: ch.getString("subject"), chapters: [ch.id] });
+  const items = learn.pool(e.app, user, { subject: ch.getString("subject"), chapters: [ch.id], campusOnly: b.campusOnly === true });
   if (!items.length) throw new BadRequestError("Topik ini belum punya soal yang bisa kamu kerjakan.");
   if (n > items.length) {
     return e.json(409, { status: 409, message: "Soal yang tersedia di topik ini hanya " + items.length + ". Kurangi jumlah soalnya.", data: { available: items.length } });
@@ -143,7 +145,7 @@ routerAdd("POST", "/api/medcoel/attempts/practice", (e) => {
     mode: mode,
     subject: ch.getString("subject"),
     title: "Latihan " + ch.getString("title"),
-    settings: { chapter: ch.id, count: n, mode: mode },
+    settings: { chapter: ch.id, count: n, mode: mode, campusOnly: b.campusOnly === true },
     ids: picked.map((x) => x.id),
     timerMinutes: 0,
   });
@@ -169,7 +171,7 @@ routerAdd("POST", "/api/medcoel/attempts/simulation", (e) => {
   if (!plan.length) throw new BadRequestError("Pilih minimal satu BAB.");
   const timer = Math.max(0, Math.min(600, parseInt(b.timerMinutes, 10) || 0));
 
-  const all = learn.bySource(learn.pool(e.app, user, { subject: subject.id, types: types }), source);
+  const all = learn.bySource(learn.pool(e.app, user, { subject: subject.id, types: types, campusOnly: b.campusOnly === true }), source);
   const picked = [];
   const shortages = [];
   const normPlan = [];

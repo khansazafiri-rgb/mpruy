@@ -8,6 +8,7 @@ import { useAuth } from '@/context/AuthContext';
 import { api, errorText } from '@/lib/api';
 import pb from '@/lib/pb';
 import { fmtDate } from '@/lib/time';
+import PageHead from '@/components/PageHead';
 
 function Section({ icon: Icon, title, children }) {
   return (
@@ -63,14 +64,14 @@ function ProfileForm() {
       </div>
       <div>
         <p className="label">Mata kuliah yang sedang dipelajari</p>
-        <div className="grid gap-2 sm:grid-cols-3">
+        <div className="selection-summary mb-3" role="status">{picked.size} mata kuliah dipilih</div><div className="grid gap-3 sm:grid-cols-2">
           {subjects.map((s) => {
             const on = picked.has(s.id);
             return (
-              <button key={s.id} type="button" onClick={() => toggle(s.id)} aria-pressed={on} className={`flex items-center gap-2 rounded-xl border p-2 text-left ${on ? 'border-brand bg-brand-soft' : 'border-line'}`}>
+              <button key={s.id} type="button" onClick={() => toggle(s.id)} aria-pressed={on} className="subject-picker">
                 <Illustration subject={s} className="h-9 w-9 shrink-0 rounded-lg" />
                 <span className="flex-1 text-sm font-semibold">{s.name}</span>
-                {on && <Check size={16} className="text-brand" />}
+                <span className="picker-check">{on && <Check size={15} />}</span>
               </button>
             );
           })}
@@ -163,8 +164,8 @@ function PasswordForm() {
 
 export default function Profile() {
   return (
-    <div className="space-y-5">
-      <h1 className="page-title">Profil</h1>
+    <div className="space-y-7">
+      <PageHead eyebrow="Akunmu" title="Profil">Data diri, asal kampus, dan password.</PageHead>
       <Section icon={UserRound} title="Data diri"><ProfileForm /></Section>
       <Section icon={School} title="Asal kampus"><CampusForm /></Section>
       <Section icon={KeyRound} title="Password"><PasswordForm /></Section>

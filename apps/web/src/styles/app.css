@@ -1,0 +1,313 @@
+/* Halaman dalam (setelah masuk), memakai bahan dari foundation.css.
+   Menimpa aturan lama di experience.css yang tidak dipakai lagi. */
+
+/* ---------- Kerangka aplikasi ---------- */
+.app-frame { position: relative; isolation: isolate; }
+.app-frame::before {
+  content: ''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background-image: var(--grain); opacity: .11; mix-blend-mode: multiply;
+}
+.app-frame::after {
+  content: ''; position: absolute; inset: 0 0 auto; height: 560px; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 28px 28px; opacity: .55;
+  -webkit-mask-image: linear-gradient(180deg, #000 0, transparent 520px); mask-image: linear-gradient(180deg, #000 0, transparent 520px);
+}
+.app-content::before { content: none; }
+.app-header { background: rgb(var(--paper) / .86); backdrop-filter: blur(18px) saturate(1.2); border-color: rgb(var(--paper-2)) !important; }
+.app-nav { position: relative; border-radius: 10px; padding: 8px 12px; font-size: 14px; }
+.app-nav.is-active { color: rgb(var(--forest)); font-weight: 700; }
+.app-nav.is-active::after {
+  content: ''; position: absolute; left: 8px; right: 8px; bottom: 5px; height: 8px; z-index: -1; border-radius: 3px;
+  background: rgb(248 192 56 / .7); transform: rotate(-1.2deg);
+}
+.app-avatar { background: rgb(var(--forest)); box-shadow: 0 0 0 2px rgb(var(--paper)), 0 0 0 3.5px rgb(248 192 56 / .8); }
+.bottom-nav { background: rgb(var(--paper) / .95); border-color: rgb(var(--paper-2)) !important; }
+.bottom-nav a { position: relative; }
+.bottom-nav a.is-active::before { content: ''; position: absolute; top: 0; left: 28%; right: 28%; height: 3px; border-radius: 0 0 4px 4px; background: rgb(var(--brand)); }
+.mobile-drawer { background: rgb(var(--paper)); }
+
+/* Kepala halaman: label, judul, catatan tangan. */
+.page-head { position: relative; }
+.page-head .hand { color: rgb(var(--brand)); font-size: 24px; }
+.page-head-note { display: inline-block; transform: rotate(-2deg); margin-top: 6px; }
+
+/* ---------- Detail mata kuliah ---------- */
+.sd-hero { border-radius: 30px; padding: 40px 44px 52px; box-shadow: 0 30px 60px -36px rgb(10 56 48 / .7); }
+.sd-ecg { position: absolute; left: 0; right: 0; bottom: 14px; width: 100%; height: 70px; color: rgb(var(--mint) / .32); pointer-events: none; }
+.sd-title { margin-top: 18px; font-size: clamp(38px, 5vw, 60px); font-weight: 800; line-height: 1.02; letter-spacing: -.045em; color: rgb(var(--paper)); }
+.sd-stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.sd-stats > div { min-width: 118px; padding: 12px 16px; border-radius: 16px; border: 1px solid rgb(255 255 255 / .14); background: rgb(255 255 255 / .06); }
+.sd-stats dt { font-size: 12px; font-weight: 600; letter-spacing: .04em; color: rgb(255 255 255 / .68); }
+.sd-stats dd { margin-top: 2px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -.03em; color: #fff; font-variant-numeric: tabular-nums; }
+.sd-stats dd small { font-size: 15px; font-weight: 600; color: rgb(255 255 255 / .6); }
+.sd-art-wrap { position: relative; display: flex; flex-direction: column; align-items: center; padding: 6px 12px 0; }
+.sd-sticker { position: relative; width: 270px; height: 230px; transform: rotate(3deg); }
+.sd-sticker:hover { transform: rotate(0deg) scale(1.02); }
+.sd-note { margin-top: 18px; font-size: 25px; color: rgb(248 192 56); text-align: center; transform: rotate(-3deg); }
+
+.chapter-sheet { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 8px; gap: 0 8px; }
+.chapter-sheet > li { border-bottom: 1px dashed rgb(var(--paper-2)); }
+.chapter-sheet > li:nth-last-child(-n+2):nth-child(odd), .chapter-sheet > li:last-child { border-bottom: 0; }
+.chapter-row { display: flex; align-items: center; gap: 16px; width: 100%; padding: 18px 16px; border-radius: 14px; text-align: left; transition: background-color 180ms; }
+.chapter-row:hover { background: rgb(var(--brand-soft) / .55); }
+.chapter-num {
+  display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 800; color: rgb(var(--forest));
+  background: rgb(var(--mint) / .7); box-shadow: inset 0 -3px 0 rgb(0 112 96 / .18);
+}
+.chapter-num.is-quiet { width: 34px; height: 30px; border-radius: 8px; font-size: 13px; font-weight: 700; color: rgb(var(--ink-muted)); background: rgb(var(--paper-2) / .7); box-shadow: none; }
+.chapter-go { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; padding: 8px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; color: rgb(var(--brand)); background: rgb(var(--brand-soft)); transition: background-color 180ms, color 180ms; }
+.chapter-row:hover .chapter-go { background: rgb(var(--brand)); color: #fff; }
+
+.soon-sheet { border: 1px dashed rgb(var(--ink-faint) / .5); border-radius: 20px; background: rgb(255 253 247 / .6); overflow: hidden; }
+.soon-sheet summary { display: flex; align-items: center; gap: 12px; padding: 18px 22px; cursor: pointer; list-style: none; }
+.soon-sheet summary::-webkit-details-marker { display: none; }
+.soon-sheet summary:focus-visible { outline-offset: -4px; border-radius: 20px; }
+.soon-sheet[open] .soon-chevron { transform: rotate(180deg); }
+.soon-chevron { transition: transform 250ms; flex-shrink: 0; }
+.soon-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; padding: 4px 22px 4px 58px; border-top: 1px dashed rgb(var(--paper-2)); background-position: 0 -1px; }
+.soon-list li { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 6px 0; font-size: 15px; color: rgb(var(--ink-muted)); }
+.soon-foot { padding: 14px 22px 18px; font-size: 14px; color: rgb(var(--ink-muted)); border-top: 1px dashed rgb(var(--paper-2)); }
+
+.package-card { display: block; padding: 22px; text-align: left; transition: transform 250ms cubic-bezier(.2,.8,.2,1), box-shadow 250ms; }
+.package-card:hover { transform: translateY(-3px) rotate(-.4deg); }
+.package-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; color: rgb(var(--progress)); background: rgb(var(--progress-soft)); }
+
+@media (max-width: 767px) {
+  .sd-hero { padding: 28px 22px 44px; border-radius: 24px; }
+  .sd-art-wrap { order: -1; padding-top: 4px; }
+  .sd-sticker { width: 210px; height: 170px; }
+  .sd-note { display: none; }
+  .sd-stats > div { min-width: 0; flex: 1; padding: 10px 12px; }
+  .sd-stats dd { font-size: 22px; }
+  .chapter-sheet { grid-template-columns: 1fr; padding: 4px; }
+  .chapter-sheet > li:nth-last-child(-n+2):nth-child(odd) { border-bottom: 1px dashed rgb(var(--paper-2)); }
+  .chapter-sheet > li:last-child { border-bottom: 0; }
+  .chapter-row { gap: 12px; padding: 14px 10px; }
+  .chapter-num { width: 38px; height: 38px; font-size: 14px; }
+  .chapter-go span { display: none; }
+  .chapter-go { padding: 9px; }
+  .soon-list { grid-template-columns: 1fr; padding: 4px 16px 4px 50px; }
+  .soon-sheet summary { padding: 16px 18px; }
+}
+
+/* ---------- Hitung mundur ---------- */
+.countdown-cell { position: relative; min-width: 64px; padding: 10px 8px 8px; border-radius: 14px; text-align: center; background: rgb(255 255 255 / .09); border: 1px solid rgb(255 255 255 / .16); box-shadow: inset 0 -3px 0 rgb(0 0 0 / .12); }
+.countdown-cell::before { content: ''; position: absolute; left: 6px; right: 6px; top: 50%; border-top: 1px dashed rgb(255 255 255 / .14); }
+.countdown-num { position: relative; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 30px; font-weight: 800; line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.countdown-unit { margin-top: 6px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .78; }
+
+/* ---------- Beranda ---------- */
+.home-note { position: absolute; right: 0; top: 18px; font-size: 26px; }
+.reminder-strip { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 14px; border: 1px solid rgb(248 192 56 / .7); background: rgb(var(--gold-soft)); box-shadow: 4px 4px 0 rgb(248 192 56 / .35); }
+.home-exam-card { border-radius: 28px; padding: 32px 34px 48px; min-height: 250px; box-shadow: 0 30px 60px -36px rgb(10 56 48 / .7); }
+.home-ecg { position: absolute; left: 0; right: 0; bottom: 10px; width: 100%; height: 64px; color: rgb(var(--mint) / .3); pointer-events: none; }
+.home-exam-note { position: absolute; right: -170px; bottom: 6px; font-size: 26px; color: rgb(248 192 56); transform: rotate(-6deg); }
+.streak-card { padding: 24px; }
+.streak-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; margin-top: 18px; }
+.streak-week li { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: rgb(var(--ink-muted)); text-transform: uppercase; }
+.streak-week i { display: block; width: 100%; max-width: 30px; aspect-ratio: 1; border-radius: 9px; border: 1.5px dashed rgb(var(--ink-faint) / .55); }
+.streak-week li.is-on i { border: 0; background: rgb(var(--gold)); box-shadow: inset 0 -3px 0 rgb(0 0 0 / .1); }
+.streak-week li.is-on { color: rgb(var(--forest)); }
+.resume-card { display: flex; align-items: center; gap: 14px; padding: 16px; transition: transform 220ms; }
+.resume-card:hover { transform: translateY(-2px); }
+.resume-icon { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; border-radius: 14px; background: rgb(var(--brand)); color: #fff; box-shadow: inset 0 -3px 0 rgb(0 0 0 / .15); }
+.sticker-tile { display: block; min-width: 0; padding: 4px; border-radius: 22px; }
+.sticker-tile-art { display: block; aspect-ratio: 4 / 3; transform: rotate(var(--tilt, 0deg)); }
+.sticker-tile:hover .sticker-tile-art { transform: rotate(0deg) translateY(-4px) scale(1.02); box-shadow: 0 0 0 1px rgb(10 56 48 / .06), 0 22px 36px -18px rgb(10 56 48 / .5); }
+.upload-invite { display: flex; align-items: center; gap: 18px; padding: 22px 24px 22px 58px; }
+.upload-invite-icon { display: grid; place-items: center; width: 48px; height: 48px; flex-shrink: 0; border-radius: 15px; background: rgb(var(--gold-soft)); color: #7a5a00; }
+
+@media (max-width: 1023px) { .home-exam-note { display: none; } }
+@media (max-width: 767px) {
+  .home-note { position: static; display: block; margin-top: 10px; font-size: 22px; }
+  .home-exam-card { padding: 24px 22px 44px; border-radius: 24px; }
+  .countdown-cell { min-width: 0; flex: 1; padding-inline: 4px; }
+  .countdown-num { font-size: 24px; }
+  .upload-invite { flex-direction: column; align-items: flex-start; padding: 20px 20px 20px 54px; }
+  .sticker-tile-art { aspect-ratio: 1 / 1; }
+}
+.page-head .hl { padding-inline: .02em; }
+.section-head-link { white-space: nowrap; flex-shrink: 0; }
+
+/* ---------- Daftar mata kuliah ---------- */
+.subject-search { display: flex; align-items: center; gap: 10px; width: 100%; max-width: 320px; padding: 0 16px; height: 50px; border-radius: 999px; background: #fffdf7; border: 1px solid rgb(var(--paper-2)); box-shadow: inset 0 2px 3px rgb(10 56 48 / .05); }
+.subject-search:focus-within { border-color: rgb(var(--brand)); box-shadow: 0 0 0 4px rgb(0 112 96 / .14); }
+.subject-search input { flex: 1; min-width: 0; background: transparent; border: 0; outline: none; font-size: 16px; color: rgb(var(--ink)); }
+.subject-search input::placeholder { color: rgb(var(--ink-faint)); }
+.subject-wall { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 34px 24px; }
+.subject-tile { display: block; min-width: 0; border-radius: 22px; }
+.subject-tile:focus-visible { outline-offset: 6px; }
+.subject-tile-art { position: relative; display: block; aspect-ratio: 5 / 4; transform: rotate(var(--tilt, 0deg)); }
+.subject-tile:hover .subject-tile-art { transform: rotate(0deg) translateY(-5px) scale(1.02); box-shadow: 0 0 0 1px rgb(10 56 48 / .06), 0 24px 40px -18px rgb(10 56 48 / .5); }
+.subject-tile-flag { position: absolute; z-index: 2; top: -10px; left: 14px; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; color: rgb(var(--forest)); background: rgb(248 192 56); transform: rotate(-3deg); box-shadow: 0 2px 4px rgb(10 56 48 / .2); }
+
+/* Soal kampusmu */
+.campus-library { border: 0; border-radius: 26px; background-color: rgb(var(--forest)); box-shadow: 0 26px 50px -34px rgb(10 56 48 / .7); overflow: visible; }
+.campus-library summary { padding: 22px 26px; gap: 26px; }
+.campus-library-art { position: relative; width: 120px; height: 100px; border: 0; background: #fff; transform: rotate(-3deg); overflow: visible; }
+.campus-library summary p.tag-label { color: rgb(var(--mint)); font-size: 12px; margin: 0; }
+.campus-library h2 { margin-top: 10px; font-size: 26px; font-weight: 800; color: rgb(var(--paper)); }
+.campus-library summary p:not(.tag-label) { font-size: 15px; color: rgb(255 255 255 / .82); }
+.campus-library summary span:not(.tape):not(.tag-label) { font-size: 13px; color: rgb(255 255 255 / .68); }
+.campus-chevron { color: rgb(var(--mint)); }
+.campus-library-list { border-top: 1px dashed rgb(255 255 255 / .18); padding: 16px 22px 22px; }
+.campus-library-list > a { background: #fffdf7; border: 0; border-radius: 16px; color: rgb(var(--ink)); }
+.campus-library-list b { font-size: 15px; }
+.campus-library-list small { font-size: 13px; color: rgb(var(--ink-muted)); }
+.campus-list-icon, .campus-library-list > a > svg { color: rgb(var(--brand)); }
+
+@media (max-width: 1023px) { .subject-wall { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 767px) {
+  .subject-search { max-width: none; }
+  .subject-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 14px; }
+  .subject-tile-art { aspect-ratio: 1 / 1; }
+  .campus-library summary { padding: 18px; gap: 14px; }
+  .campus-library-art { width: 76px; height: 76px; }
+  .campus-library h2 { font-size: 21px; }
+  .campus-library summary p:not(.tag-label) { font-size: 14px; }
+  .campus-library summary span:not(.tape):not(.tag-label) { font-size: 12px; }
+  .campus-library summary p.tag-label { font-size: 11px; padding: 5px 10px; }
+}
+
+/* ---------- Kartu umum jadi lembar kertas ---------- */
+.card { background-color: #fffdf7; border-color: rgb(var(--paper-2)); box-shadow: 0 1px 0 #fff inset, 0 12px 28px -22px rgb(10 56 48 / .35), 0 1px 2px rgb(10 56 48 / .05); }
+.input { background-color: #fffdf7; border-color: rgb(var(--paper-2)); }
+.btn-secondary { background-color: #fffdf7; border-color: rgb(var(--paper-2)); }
+.exam-next { border-radius: 22px; box-shadow: 0 24px 50px -32px rgb(10 56 48 / .7); }
+.exam-next p { color: rgb(255 255 255 / .82); }
+.exam-next p.font-display { color: #fff; }
+.my-rank { border-radius: 20px; }
+.my-rank p, .my-rank span:last-child { color: #fff; }
+.progress-thumb { display: block; width: 42px; height: 42px; flex-shrink: 0; padding: 3px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px rgb(10 56 48 / .07), 0 4px 10px -6px rgb(10 56 48 / .4); }
+.progress-thumb img { border-radius: 9px; background: rgb(var(--paper)); }
+
+/* ---------- Masuk / daftar ---------- */
+.auth-frame { position: relative; isolation: isolate; }
+.auth-frame::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: var(--grain); opacity: .11; mix-blend-mode: multiply; }
+.auth-panel { position: sticky; top: 0; height: 100vh; padding: 48px 48px 40px; flex-direction: column; border-radius: 0 34px 34px 0; }
+.auth-ecg { position: absolute; left: 0; right: 0; bottom: 26px; width: 100%; height: 70px; color: rgb(var(--mint) / .3); }
+.auth-stickers { position: relative; flex: 1; min-height: 260px; margin-top: 28px; }
+.auth-sticker { position: absolute; width: 46%; max-width: 230px; aspect-ratio: 4 / 3; transform: rotate(var(--tilt)); }
+.auth-sticker img { border-radius: 14px; }
+.auth-note { position: absolute; right: 6%; bottom: 14%; font-size: 30px; color: rgb(248 192 56); transform: rotate(-5deg); }
+.auth-frame main form .input, .auth-frame main .input { background-color: #fffdf7; }
+
+/* Pilihan mata kuliah (daftar & profil) */
+.subject-picker { background: #fffdf7; border-color: rgb(var(--paper-2)); }
+.subject-picker[aria-pressed=true] { background: rgb(var(--brand-soft) / .7); border-color: rgb(var(--brand)); box-shadow: 0 0 0 1px rgb(var(--brand)), 0 6px 14px -8px rgb(0 112 96 / .4); }
+.subject-picker img { background: rgb(var(--paper)); }
+.subject-picker[aria-pressed=true] .picker-check { background: rgb(var(--brand)); border-color: rgb(var(--brand)); }
+.selection-summary { font-size: 14px; color: rgb(var(--brand-dark)); background: rgb(var(--gold-soft)); border-color: rgb(248 192 56 / .6); }
+.soon-list { background-image: linear-gradient(90deg, transparent 38px, rgb(176 68 79 / .25) 38px, rgb(176 68 79 / .25) 39px, transparent 39px); }
+.soon-list li { border-bottom: 1px solid rgb(37 95 133 / .1); }
+
+/* ================= Versi 2: warna per topik dan kartu "tebal" ================= */
+/* .card-chunky memakai shorthand background, jadi warna nada dipasang ulang di sini. */
+.card-chunky.tone-surface { background-color: rgb(var(--tone-bg)); }
+.tone-track { background: rgb(255 255 255 / .75) !important; box-shadow: inset 0 1px 2px rgb(0 0 0 / .08); }
+.tone-fill { background: rgb(var(--tone-fg)); }
+
+/* Kartu umum: garis lebih tegas dan bayangan bawah supaya terpisah jelas dari latar. */
+.card { border-width: 1.5px; border-color: rgb(var(--ink) / .1); box-shadow: 0 3px 0 rgb(var(--ink) / .06), 0 16px 30px -22px rgb(10 56 48 / .4); }
+.ui-tabs { background: rgb(var(--paper-2) / .8); border: 1.5px solid rgb(var(--ink) / .08); padding: 4px; }
+.ui-tab[aria-selected=true] { background: rgb(var(--forest)); color: #fff; box-shadow: 0 2px 0 rgb(0 0 0 / .25); }
+
+/* Kartu statistik bernada */
+.stat-tone { min-height: 118px; }
+.stat-tone-icon { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 9px; background: rgb(255 255 255 / .8); color: rgb(var(--tone-fg)); box-shadow: 0 2px 0 rgb(var(--tone-mid) / .6); }
+
+/* Beranda: hitam-hijau ujian + titik */
+.home-exam-dots { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; -webkit-mask-image: linear-gradient(115deg, transparent 35%, #000 100%); mask-image: linear-gradient(115deg, transparent 35%, #000 100%); }
+.home-exam-card.surface-forest::after { opacity: .5; }
+.streak-card { padding: 24px; }
+.streak-flame { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: #fff; color: #d97706; box-shadow: 0 2px 0 rgb(var(--tone-mid)); }
+.streak-card .streak-week i { border-color: rgb(var(--tone-fg) / .35); background: rgb(255 255 255 / .55); }
+.streak-card .streak-week li { color: rgb(var(--tone-fg)); }
+.streak-card .streak-week li.is-on i { background: rgb(var(--forest)); box-shadow: inset 0 -3px 0 rgb(0 0 0 / .25); }
+.streak-mini > div { padding: 10px 12px; border-radius: 14px; background: rgb(255 255 255 / .7); box-shadow: 0 2px 0 rgb(var(--tone-mid) / .55); }
+.streak-mini dt { font-size: 12px; font-weight: 700; color: rgb(var(--tone-fg)); }
+.streak-mini dd { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 800; color: rgb(var(--ink)); }
+.resume-card { display: flex; align-items: center; gap: 14px; padding: 16px; }
+.resume-card .resume-icon { background: rgb(var(--tone-fg)); }
+.upload-invite { padding: 24px 26px; }
+.upload-invite .upload-invite-icon { background: #fff; color: rgb(var(--tone-fg)); box-shadow: 0 3px 0 rgb(var(--tone-mid)); }
+
+/* Deretan kartu mata kuliah yang bisa digeser */
+.rail { position: relative; }
+.rail-track { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 3 * 18px) / 4); gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 4px 16px; margin: -6px -4px 0; scrollbar-width: none; overscroll-behavior-x: contain; }
+.rail-track::-webkit-scrollbar { display: none; }
+.rail-track > li { scroll-snap-align: start; min-width: 0; }
+.rail-btn { position: absolute; top: 38%; z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: rgb(var(--forest)); border: 1.5px solid rgb(var(--ink) / .12); box-shadow: 0 3px 0 rgb(var(--ink) / .1), 0 10px 22px -10px rgb(0 0 0 / .35); transition: opacity .2s, transform .2s; }
+.rail-btn:hover:not(:disabled) { transform: scale(1.06); }
+.rail-btn:disabled { opacity: 0; pointer-events: none; }
+.rail-btn.is-prev { left: -18px; }
+.rail-btn.is-next { right: -18px; }
+.subj-card { display: block; height: 100%; padding: 12px 12px 16px; }
+.subj-card-art { display: block; aspect-ratio: 4 / 3; }
+.subj-card:hover .subj-card-art { transform: rotate(-2deg) scale(1.03); }
+.subj-flag { position: absolute; z-index: 2; top: -9px; right: 12px; display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; color: rgb(var(--forest)); background: rgb(var(--gold)); box-shadow: 0 2px 0 rgb(0 0 0 / .18); }
+@media (max-width: 1023px) { .rail-track { grid-auto-columns: calc((100% - 2 * 16px) / 3); gap: 16px; } .rail-btn { display: none; } }
+@media (max-width: 639px) { .rail-track { grid-auto-columns: 72%; gap: 14px; scroll-padding-left: 4px; } }
+
+/* Daftar mata kuliah v2 */
+.filter-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-pills button { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; font-size: 15px; font-weight: 700; color: rgb(var(--ink)); background: #fff; border: 1.5px solid rgb(var(--ink) / .12); box-shadow: 0 3px 0 rgb(var(--ink) / .08); transition: transform .15s, background .2s, color .2s; }
+.filter-pills button span { display: grid; place-items: center; min-width: 24px; height: 22px; padding: 0 6px; border-radius: 999px; font-size: 12px; background: rgb(var(--paper-2)); color: rgb(var(--ink-muted)); }
+.filter-pills button:hover { transform: translateY(-1px); }
+.filter-pills button:active { transform: translateY(2px); box-shadow: 0 1px 0 rgb(var(--ink) / .08); }
+.filter-pills button[aria-pressed=true] { background: rgb(var(--forest)); color: #fff; border-color: rgb(var(--forest)); box-shadow: 0 3px 0 rgb(0 0 0 / .3); }
+.filter-pills button[aria-pressed=true] span { background: rgb(var(--gold)); color: rgb(var(--forest)); }
+.subject-wall { gap: 26px 22px; }
+.subject-tile { padding: 12px 12px 18px; }
+.subject-tile .subject-tile-art { transform: none; aspect-ratio: 16 / 11; }
+.subject-tile:hover .subject-tile-art { transform: rotate(-2deg) scale(1.03); box-shadow: 0 4px 0 rgb(var(--tone-mid) / .8), 0 22px 36px -16px rgb(var(--tone-fg) / .55); }
+.subject-go { display: grid; place-items: center; width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%; background: #fff; color: rgb(var(--tone-fg)); box-shadow: 0 2px 0 rgb(var(--tone-mid)); transition: transform .2s; }
+.subject-tile:hover .subject-go { transform: rotate(45deg); }
+.subject-meta { padding: 2px 9px; border-radius: 999px; background: rgb(255 255 255 / .75); }
+@media (max-width: 767px) { .subject-tile { padding: 9px 9px 14px; } .subject-tile .font-display.text-\[18px\] { font-size: 16px; } .filter-pills button { padding: 8px 13px; font-size: 14px; } }
+
+/* Detail mata kuliah v2: bidang hero memakai nada mata kuliahnya. */
+.sd-hero.tone-surface { position: relative; isolation: isolate; overflow: hidden; color: rgb(var(--ink)); border: 1.5px solid rgb(var(--tone-mid) / .7); box-shadow: 0 6px 0 rgb(var(--tone-mid) / .7), 0 34px 60px -38px rgb(var(--tone-fg) / .6); }
+.sd-hero.tone-surface::before { content: ''; position: absolute; right: -120px; top: -140px; width: 460px; height: 460px; border-radius: 50%; background: radial-gradient(circle, rgb(255 255 255 / .7), transparent 65%); z-index: -1; }
+.sd-hero.tone-surface::after { content: ''; position: absolute; inset: 0; z-index: -1; background-image: var(--grain); opacity: .28; mix-blend-mode: multiply; pointer-events: none; }
+.sd-hero.tone-surface .sd-title { color: rgb(var(--ink)); }
+.sd-hero.tone-surface .sd-ecg { color: rgb(var(--tone-fg) / .3); }
+.sd-tag { background: #fff; color: rgb(var(--tone-fg)); box-shadow: 0 2px 0 rgb(var(--tone-mid) / .8); }
+.sd-hero.tone-surface .sd-stats > div { background: #fff; border: 1.5px solid rgb(var(--tone-mid) / .55); box-shadow: 0 3px 0 rgb(var(--tone-mid) / .75); }
+.sd-hero.tone-surface .sd-stats dt { color: rgb(var(--tone-fg)); font-weight: 700; }
+.sd-hero.tone-surface .sd-stats dd { color: rgb(var(--ink)); }
+.sd-hero.tone-surface .sd-stats dd small { color: rgb(var(--ink-muted)); }
+.sd-progress { background: rgb(255 255 255 / .8); box-shadow: inset 0 1px 2px rgb(0 0 0 / .1); }
+.sd-btn-alt { background: #fff; color: rgb(var(--forest)); border: 1.5px solid rgb(var(--tone-mid)); box-shadow: 0 3px 0 rgb(var(--tone-mid)); }
+.sd-btn-alt:hover { background: rgb(255 255 255 / .85); }
+.sd-hero.tone-surface .sd-sticker { transform: rotate(3deg); }
+.sd-hero.tone-surface .sd-note { color: rgb(var(--tone-fg)); }
+.sd-hero.tone-surface .tape { background: repeating-linear-gradient(90deg, rgb(255 255 255 / .3) 0 6px, transparent 6px 12px), rgb(var(--forest) / .55); }
+
+.chapter-sheet.card-chunky { padding: 8px; }
+.chapter-num { background: rgb(var(--tone-bg, var(--mint))); color: rgb(var(--tone-fg, 10 56 48)); box-shadow: inset 0 -3px 0 rgb(var(--tone-mid, 0 112 96) / .55); }
+.chapter-row:hover { background: rgb(var(--tone-bg, var(--mint)) / .5); }
+.chapter-go { background: rgb(var(--tone-bg, var(--brand-soft))); color: rgb(var(--tone-fg, 0 112 96)); box-shadow: 0 2px 0 rgb(var(--tone-mid, 0 112 96) / .6); }
+.chapter-row:hover .chapter-go { background: rgb(var(--forest)); color: #fff; box-shadow: 0 2px 0 rgb(0 0 0 / .3); }
+.soon-sheet { background: rgb(255 255 255 / .55); border: 1.5px dashed rgb(var(--tone-mid, 128 145 156) / .8); }
+.package-card .package-icon { background: rgb(var(--tone-bg, var(--progress-soft))); color: rgb(var(--tone-fg, var(--progress))); }
+/* Stiker bernada: bingkai putih, latar nada di balik ilustrasi (gambar dicampur multiply supaya krem ilustrasi ikut berwarna). */
+.sticker-tone { background: rgb(var(--tone-bg)); border: 6px solid #fff; padding: 0; background-clip: padding-box; overflow: hidden; }
+.sticker-tone img { background: transparent; border-radius: 16px; }
+@media (max-width: 639px) { .rail-track { margin-right: -16px; padding-right: 16px; } }
+
+/* Progres, Leaderboard, Jadwal v2 */
+.progress-thumb.sticker-tone { border-width: 3px; border-radius: 12px; padding: 0; }
+.lb-row.is-top { background: rgb(var(--tone-bg)); }
+.lb-row.is-top .lb-rank { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: #fff; box-shadow: 0 2px 0 rgb(var(--tone-mid)); }
+.lb-row.is-me { background: rgb(var(--mint)); box-shadow: inset 4px 0 0 rgb(var(--forest)); }
+.my-rank { position: relative; overflow: hidden; }
+.my-rank-dots { position: absolute; inset: 0; pointer-events: none; -webkit-mask-image: linear-gradient(90deg, transparent 30%, #000); mask-image: linear-gradient(90deg, transparent 30%, #000); }
+.exam-next { position: relative; }
+.auth-dots { position: absolute; inset: 0; pointer-events: none; -webkit-mask-image: linear-gradient(200deg, #000, transparent 60%); mask-image: linear-gradient(200deg, #000, transparent 60%); }
+.auth-panel.surface-forest::after { opacity: .5; }
+.auth-sticker.sticker-tone { box-shadow: 0 5px 0 rgb(var(--tone-mid)), 0 22px 40px -18px rgb(0 0 0 / .55); }
+.empty-state { background-image: radial-gradient(rgb(var(--ink) / .07) 1.2px, transparent 1.5px); background-size: 14px 14px; }
+.empty-icon { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 20px; background: rgb(var(--tone-bg)); color: rgb(var(--tone-fg)); box-shadow: 0 4px 0 rgb(var(--tone-mid)); transform: rotate(-4deg); }

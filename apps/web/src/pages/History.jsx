@@ -6,6 +6,7 @@ import { errorText } from '@/lib/api';
 import { KIND, scoreText } from '@/lib/labels';
 import pb from '@/lib/pb';
 import { duration, fmtDateTime } from '@/lib/time';
+import PageHead from '@/components/PageHead';
 
 export default function History() {
   const [kind, setKind] = useState('');
@@ -20,11 +21,8 @@ export default function History() {
   }, [kind, page]);
 
   return (
-    <div className="space-y-5">
-      <div>
-        <h1 className="page-title">Riwayat</h1>
-        <p className="mt-1 text-ink-muted">Buka lagi untuk review, atau ulangi dengan pengaturan yang sama.</p>
-      </div>
+    <div className="space-y-7">
+      <PageHead eyebrow="Catatan belajarmu" title="Riwayat">Buka lagi untuk review, atau ulangi dengan pengaturan yang sama.</PageHead>
       <Tabs value={kind} onChange={(v) => { setKind(v); setPage(1); }} tabs={[{ value: '', label: 'Semua' }, { value: 'simulation', label: 'Simulasi' }, { value: 'package', label: 'Paket' }, { value: 'practice', label: 'Latihan topik' }]} />
       <Alert>{error}</Alert>
       {!data ? <PageLoader /> : !data.items.length ? (

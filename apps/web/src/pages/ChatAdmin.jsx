@@ -1,31 +1,50 @@
-// CHAT ADMIN: asisten percakapan otomatis. Admin tidak menyentuh percakapan;
-// hasil akhirnya pengajuan yang tercatat di dashboard.
+// CHAT ADMIN: satu utas obrolan. Asisten menyapa dan menawarkan pilihan
+// (upload PDF, tanya/kendala/masukan ke admin, cek status, WhatsApp) sebagai
+// balasan cepat di dalam percakapan. Pesan ke admin disimpan sebagai
+// percakapan dengan admin manusia; asisten hanya mengarahkan.
+import '@/styles/chat.css';
 import clsx from 'clsx';
-import { Bot, FileText, FileUp, ListChecks, MessageCircle, RotateCcw, Trash2, X } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { CircleHelp, FileText, FileUp, Lightbulb, ListChecks, MessageCircle, RotateCcw, Trash2, TriangleAlert, X } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import logoMark from '@/assets/logo-mark.webp';
 import SubmissionCard from '@/components/SubmissionCard';
-import { Alert, EmptyState, PageLoader } from '@/components/ui';
+import { CATEGORIES, Composer, SupportMessage, useStickToBottom, useSupportThread } from '@/components/SupportConversation';
+import { Alert, Spinner } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
 import { looksLikePdf, uploadFile } from '@/lib/upload';
 import { confirmMessage, manyPdfMessage, waLink } from '@/lib/wa';
 
-function Bubble({ from = 'bot', children }) {
+const reduceMotion = () => typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+function Bubble({ from = 'bot', wide = false, children }) {
+  if (from === 'me') {
+    return <div className="chat-row is-mine"><div className="chat-msg"><div className="chat-bubble is-me">{children}</div></div></div>;
+  }
   return (
-    <div className={clsx('flex gap-2', from === 'me' && 'justify-end')}>
-      {from === 'bot' && <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-white"><Bot size={17} /></span>}
-      <div className={clsx('max-w-[85%] rounded-2xl px-4 py-2.5 text-[15px]', from === 'bot' ? 'rounded-tl-sm bg-surface shadow-card' : 'rounded-tr-sm bg-brand text-white')}>{children}</div>
+    <div className="chat-row is-bot">
+      <img src={logoMark} alt="" className="chat-avatar" />
+      <div className={clsx('chat-msg', wide && 'is-wide')}><div className="chat-bubble is-bot">{children}</div></div>
     </div>
   );
 }
 
-function Choices({ options, onPick }) {
+function Typing() {
   return (
-    <div className="flex flex-wrap gap-2 pl-10">
+    <div className="chat-row is-bot" aria-hidden>
+      <img src={logoMark} alt="" className="chat-avatar" />
+      <div className="chat-msg"><div className="chat-bubble is-bot chat-typing"><i /><i /><i /></div></div>
+    </div>
+  );
+}
+
+function Chips({ options, onPick, label = 'Pilihan balasan' }) {
+  return (
+    <div className={clsx('chat-chips', options.length > 12 && 'is-long')} role="group" aria-label={label}>
       {options.map((o) => (
-        <button key={o.value} type="button" onClick={() => onPick(o)} className="rounded-full border-2 border-brand bg-surface px-4 py-2 text-sm font-semibold text-brand hover:bg-brand hover:text-white">
-          {o.label}
+        <button key={o.value} type="button" onClick={() => onPick(o)} className={clsx('chat-chip', o.tone && `is-toned tone-${o.tone}`)}>
+          {o.icon && <o.icon size={16} aria-hidden />}{o.label}
         </button>
       ))}
     </div>
@@ -34,7 +53,7 @@ function Choices({ options, onPick }) {
 
 const LANG = [{ value: 'id', label: 'Indonesia' }, { value: 'en', label: 'Inggris' }, { value: 'both', label: 'Keduanya' }];
 
-function UploadFlow({ onExit, onMenu }) {
+function UploadFlow({ onStatus, onMenu }) {
   const { me, settings } = useAuth();
   const [subjects, setSubjects] = useState([]);
   const [a, setA] = useState({}); // jawaban
@@ -45,10 +64,9 @@ function UploadFlow({ onExit, onMenu }) {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [sent, setSent] = useState(null);
-  const end = useRef(null);
+  const [left, setLeft] = useState(false);
 
   useEffect(() => { api('subjects').then((d) => setSubjects(d.items)).catch((e) => setError(e.message)); }, []);
-  useEffect(() => { end.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, [step, uploads.length, draft, sent]);
 
   const answer = (key, o, next) => { setA((x) => ({ ...x, [key]: o.value, [`${key}Label`]: o.label })); setStep(next); setError(''); };
 
@@ -94,32 +112,29 @@ function UploadFlow({ onExit, onMenu }) {
   };
 
   const restart = () => { setA({}); setStep('subject'); setDraft(null); setUploads([]); setAgree(false); setSent(null); setError(''); };
+  const leave = (fn) => { setLeft(true); fn(); };
   const campusName = me?.campusName || 'kampusmu';
   const waNumber = settings?.adminWhatsapp;
   const steps = ['subject', 'hasKey', 'language', 'scope', 'count', 'files', 'summary', 'sent', 'many'];
   const at = (s) => steps.indexOf(step) >= steps.indexOf(s);
 
-  if (settings && !settings.submissionsOpen) {
-    return <Alert kind="warn">Pengajuan soal sedang ditutup sementara karena antrean penuh. Coba lagi beberapa hari lagi, atau hubungi admin lewat WhatsApp.</Alert>;
-  }
-
   return (
-    <div className="space-y-3">
-      <Bubble>Halo! Aku bantu ubah PDF soalmu menjadi soal di web. <b>Soal ini untuk mata kuliah apa?</b></Bubble>
-      {step === 'subject' && <Choices options={subjects.map((s) => ({ value: s.id, label: s.name }))} onPick={(o) => answer('subject', o, 'hasKey')} />}
+    <>
+      <Bubble>Siap! Aku bantu ubah PDF soalmu jadi soal latihan di web. <b>Soal ini untuk mata kuliah apa?</b></Bubble>
+      {step === 'subject' && (subjects.length ? <Chips label="Pilih mata kuliah" options={subjects.map((s) => ({ value: s.id, label: s.name }))} onPick={(o) => answer('subject', o, 'hasKey')} /> : !error && <div className="chat-chips"><Spinner /></div>)}
       {at('hasKey') && <Bubble from="me">{a.subjectLabel}</Bubble>}
 
       {at('hasKey') && <Bubble><b>Apakah PDF sudah memuat pembahasan dan kunci jawaban?</b></Bubble>}
-      {step === 'hasKey' && <Choices options={[{ value: 'yes', label: 'Ya' }, { value: 'no', label: 'Tidak' }]} onPick={(o) => answer('hasKey', o, 'language')} />}
+      {step === 'hasKey' && <Chips options={[{ value: 'yes', label: 'Ya, sudah ada' }, { value: 'no', label: 'Belum ada' }]} onPick={(o) => answer('hasKey', o, 'language')} />}
       {at('language') && <Bubble from="me">{a.hasKeyLabel}</Bubble>}
 
-      {at('language') && <Bubble><b>Bahasa apa yang dipakai di soal?</b></Bubble>}
-      {step === 'language' && <Choices options={LANG} onPick={(o) => answer('language', o, 'scope')} />}
+      {at('language') && <Bubble><b>Soalnya pakai bahasa apa?</b></Bubble>}
+      {step === 'language' && <Chips options={LANG} onPick={(o) => answer('language', o, 'scope')} />}
       {at('scope') && <Bubble from="me">{a.languageLabel}</Bubble>}
 
-      {at('scope') && <Bubble><b>Soal ini dibatasi hanya untuk pengguna dari kampus seperti kamu, atau boleh dilihat pengguna dari kampus lain juga?</b></Bubble>}
+      {at('scope') && <Bubble><b>Soal ini hanya untuk pengguna dari kampusmu, atau boleh dilihat pengguna dari kampus lain juga?</b></Bubble>}
       {step === 'scope' && (
-        <Choices
+        <Chips
           options={[
             ...(me?.campus ? [{ value: 'campus', label: `Hanya kampus saya (${campusName})` }] : []),
             { value: 'all', label: 'Semua kampus' },
@@ -127,20 +142,20 @@ function UploadFlow({ onExit, onMenu }) {
           onPick={(o) => answer('scope', o, 'count')}
         />
       )}
-      {step === 'scope' && !me?.campus && <p className="pl-10 text-xs text-ink-muted">Kampusmu belum ada di daftar MEDCOEL, jadi pilihan Hanya kampus saya belum tersedia.</p>}
+      {step === 'scope' && !me?.campus && <p className="chat-aside">Kampusmu belum ada di daftar MEDCOEL, jadi pilihan Hanya kampus saya belum tersedia.</p>}
       {at('count') && <Bubble from="me">{a.scopeLabel}</Bubble>}
 
-      {at('count') && <Bubble><b>Berapa PDF yang akan dikirim?</b></Bubble>}
-      {step === 'count' && <Choices options={[...[1, 2, 3, 4, 5].map((n) => ({ value: String(n), label: String(n) })), { value: 'many', label: 'Lebih dari 5' }]} onPick={pickCount} />}
+      {at('count') && <Bubble><b>Berapa PDF yang mau kamu kirim?</b></Bubble>}
+      {step === 'count' && <Chips options={[...[1, 2, 3, 4, 5].map((n) => ({ value: String(n), label: String(n) })), { value: 'many', label: 'Lebih dari 5' }]} onPick={pickCount} />}
       {at('files') && step !== 'many' && <Bubble from="me">{a.countLabel} PDF</Bubble>}
 
       {step === 'many' && (
         <>
           <Bubble from="me">Lebih dari 5</Bubble>
           <Bubble>
-            Untuk lebih dari 5 PDF, kirim filenya lewat WhatsApp admin ya. Pesannya sudah aku isi. Admin akan mencatat pengajuanmu supaya tetap muncul di Progres permintaan.
+            Untuk lebih dari 5 PDF, kirim filenya lewat WhatsApp admin ya. Pesannya sudah aku isi. Admin akan mencatat pengajuanmu supaya tetap muncul di status pengajuan.
             <div className="mt-3">
-              <a href={waLink(waNumber, manyPdfMessage({ ...a, hasKey: a.hasKey === 'yes', subjectName: a.subjectLabel }, me))} target="_blank" rel="noopener noreferrer" className="btn-primary"><MessageCircle size={18} /> Kirim lewat WhatsApp</a>
+              <a href={waLink(waNumber, manyPdfMessage({ ...a, hasKey: a.hasKey === 'yes', subjectName: a.subjectLabel }, me))} target="_blank" rel="noopener noreferrer" className="btn-primary btn-sm"><MessageCircle size={16} /> Kirim lewat WhatsApp</a>
             </div>
             {!waNumber && <p className="mt-2 text-xs text-coral">Nomor WhatsApp admin belum diatur.</p>}
           </Bubble>
@@ -148,77 +163,88 @@ function UploadFlow({ onExit, onMenu }) {
       )}
 
       {at('files') && step !== 'many' && step !== 'sent' && (
-        <Bubble>
+        <Bubble wide>
           {busy && !draft ? 'Menyiapkan tempat unggah...' : (
             <div className="space-y-3">
-              <p>Unggah PDF-nya di sini. Boleh banyak sekaligus atau satu per satu, maksimal 5 file, masing-masing paling besar {maxMb} MB.</p>
-              <label className="flex cursor-pointer flex-col items-center gap-1 rounded-xl border-2 border-dashed border-line p-4 text-center hover:border-brand">
-                <FileUp className="text-brand" />
+              <p>Unggah PDF-nya di sini. Boleh sekaligus atau satu per satu, maksimal 5 file, masing-masing paling besar {maxMb} MB.</p>
+              <label className="chat-drop">
+                <FileUp className="text-brand" aria-hidden />
                 <span className="text-sm font-semibold">Pilih PDF</span>
+                <span className="text-xs text-ink-muted">PDF, maks. {maxMb} MB per file</span>
                 <input type="file" accept="application/pdf,.pdf" multiple className="sr-only" onChange={(e) => { addFiles(e.target.files); e.target.value = ''; }} disabled={!draft} />
               </label>
               <ul className="space-y-1.5">
                 {(draft?.files || []).map((f) => (
-                  <li key={f.id} className="flex items-center gap-2 rounded-lg bg-page px-3 py-2 text-sm">
-                    <FileText size={16} className="text-brand" /><span className="min-w-0 flex-1 truncate">{f.name}</span><span className="text-xs text-ink-muted">{(f.size / 1048576).toFixed(1)} MB</span>
+                  <li key={f.id} className="chat-file">
+                    <FileText size={16} className="text-brand" aria-hidden /><span className="min-w-0 flex-1 truncate">{f.name}</span><span className="text-xs text-ink-muted">{(f.size / 1048576).toFixed(1)} MB</span>
                     <button type="button" onClick={() => removeFile(f)} className="rounded p-1 text-ink-muted hover:text-coral" aria-label={`Hapus ${f.name}`}><Trash2 size={15} /></button>
                   </li>
                 ))}
                 {uploads.map((u) => (
-                  <li key={u.key} className={clsx('flex items-center gap-2 rounded-lg px-3 py-2 text-sm', u.error ? 'bg-coral-soft text-coral' : 'bg-page')}>
-                    <FileText size={16} /><span className="min-w-0 flex-1 truncate">{u.name}</span>
+                  <li key={u.key} className={clsx('chat-file', u.error && 'is-error')}>
+                    <FileText size={16} aria-hidden /><span className="min-w-0 flex-1 truncate">{u.name}</span>
                     <span className="text-xs">{u.error || `${Math.round(u.progress * 100)}%`}</span>
                     {u.error && <button type="button" onClick={() => setUploads((l) => l.filter((x) => x.key !== u.key))} aria-label="Tutup"><X size={14} /></button>}
                   </li>
                 ))}
               </ul>
-              {draft?.files?.length > 0 && step === 'files' && <button type="button" className="btn-primary" onClick={() => setStep('summary')}>Lanjut ke ringkasan</button>}
+              {draft?.files?.length > 0 && step === 'files' && <button type="button" className="btn-primary btn-sm" onClick={() => setStep('summary')}>Lanjut ke ringkasan</button>}
             </div>
           )}
         </Bubble>
       )}
 
       {step === 'summary' && draft && (
-        <Bubble>
+        <Bubble wide>
           <p className="font-semibold">Ringkasan pengajuan</p>
-          <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
-            <dt className="text-ink-muted">Mata kuliah</dt><dd>{draft.subjectName}</dd>
-            <dt className="text-ink-muted">Kunci & pembahasan</dt><dd>{draft.hasKey ? 'Sudah ada di PDF' : 'Belum ada'}</dd>
-            <dt className="text-ink-muted">Bahasa</dt><dd>{a.languageLabel}</dd>
-            <dt className="text-ink-muted">Dapat dilihat</dt><dd>{draft.scope === 'campus' ? `Hanya pengguna ${draft.campusName}` : 'Pengguna semua kampus'}</dd>
-            <dt className="text-ink-muted">File</dt><dd>{draft.files.map((f) => f.name).join(', ')}</dd>
-            <dt className="text-ink-muted">Antrean</dt><dd>{draft.queue?.pdfAhead || 0} PDF di depan. Perkiraan selesai sekitar <b>{draft.queue?.estimateDays} hari</b> setelah dikonfirmasi (paling lama sekitar 5 hari). Ini perkiraan, bukan janji.</dd>
+          <dl className="chat-summary">
+            <dt>Mata kuliah</dt><dd>{draft.subjectName}</dd>
+            <dt>Kunci & pembahasan</dt><dd>{draft.hasKey ? 'Sudah ada di PDF' : 'Belum ada'}</dd>
+            <dt>Bahasa</dt><dd>{a.languageLabel}</dd>
+            <dt>Dapat dilihat</dt><dd>{draft.scope === 'campus' ? `Hanya pengguna ${draft.campusName}` : 'Pengguna semua kampus'}</dd>
+            <dt>File</dt><dd>{draft.files.map((f) => f.name).join(', ')}</dd>
+            <dt>Antrean</dt><dd>{draft.queue?.pdfAhead || 0} PDF di depan. Perkiraan selesai sekitar <b>{draft.queue?.estimateDays} hari</b> setelah dikonfirmasi (paling lama sekitar 5 hari). Ini perkiraan, bukan janji.</dd>
           </dl>
           <label className="mt-3 flex items-start gap-2 text-sm">
-            <input type="checkbox" className="mt-0.5 h-4 w-4 accent-[rgb(var(--brand))]" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
-            <span>Saya berhak membagikan isi PDF ini untuk keperluan belajar, dan setuju admin boleh menolaknya bila melanggar hak cipta.</span>
+            <input type="checkbox" className="mt-0.5 h-4 w-4 shrink-0" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
+            <span>Saya berhak membagikan isi PDF ini untuk keperluan belajar, dan setuju admin boleh menolaknya bila melanggar <Link to="/kebijakan-privasi" className="underline">hak cipta</Link>.</span>
           </label>
           <div className="mt-3 flex flex-wrap gap-2">
-            <button type="button" className="btn-primary" onClick={send} disabled={!agree || busy}>{busy ? 'Mengirim...' : 'Kirim pengajuan'}</button>
-            <button type="button" className="btn-ghost" onClick={() => setStep('files')}>Ubah file</button>
+            <button type="button" className="btn-primary btn-sm" onClick={send} disabled={!agree || busy}>{busy ? 'Mengirim...' : 'Kirim pengajuan'}</button>
+            <button type="button" className="btn-ghost btn-sm" onClick={() => setStep('files')}>Ubah file</button>
           </div>
         </Bubble>
       )}
 
       {step === 'sent' && sent && (
-        <Bubble>
-          <p>Pengajuan <b>{sent.code}</b> tercatat dengan status <b>Menunggu konfirmasi</b>. Satu langkah lagi: konfirmasi ke admin lewat WhatsApp supaya pengajuanmu masuk antrean.</p>
-          <p className="mt-1 text-sm text-ink-muted">Pengajuan yang tidak dikonfirmasi dalam {settings?.confirmDays || 3} hari akan kedaluwarsa dan filenya dihapus.</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <a href={waLink(waNumber, confirmMessage(sent, me))} target="_blank" rel="noopener noreferrer" className="btn-primary"><MessageCircle size={18} /> Konfirmasi lewat WhatsApp</a>
-            <button type="button" className="btn-secondary" onClick={onExit}>Lihat progres permintaan</button>
-          </div>
-          {!waNumber && <p className="mt-2 text-xs text-coral">Nomor WhatsApp admin belum diatur.</p>}
-        </Bubble>
+        <>
+          <Bubble from="me">Kirim pengajuan</Bubble>
+          <Bubble wide>
+            <p>Pengajuan <b>{sent.code}</b> tercatat dengan status <b>Menunggu konfirmasi</b>. Satu langkah lagi: konfirmasi ke admin lewat WhatsApp supaya pengajuanmu masuk antrean.</p>
+            <p className="mt-1 text-sm text-ink-muted">Pengajuan yang tidak dikonfirmasi dalam {settings?.confirmDays || 3} hari akan kedaluwarsa dan filenya dihapus.</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <a href={waLink(waNumber, confirmMessage(sent, me))} target="_blank" rel="noopener noreferrer" className="btn-primary btn-sm"><MessageCircle size={16} /> Konfirmasi lewat WhatsApp</a>
+            </div>
+            {!waNumber && <p className="mt-2 text-xs text-coral">Nomor WhatsApp admin belum diatur.</p>}
+          </Bubble>
+        </>
       )}
 
-      <Alert>{error}</Alert>
-      <div className="flex gap-2 pl-10">
-        <button type="button" className="btn-ghost btn-sm" onClick={restart}><RotateCcw size={15} /> Ulangi</button>
-        <button type="button" className="btn-ghost btn-sm" onClick={onMenu}>Kembali ke menu</button>
-      </div>
-      <div ref={end} />
-    </div>
+      {error && <div className="chat-aside"><Alert>{error}</Alert></div>}
+      {!left && (
+        <Chips
+          label="Pilihan lain"
+          options={step === 'sent'
+            ? [{ value: 'status', label: 'Lihat status pengajuan', icon: ListChecks, tone: 'lilac' }, { value: 'menu', label: 'Ada hal lain', icon: MessageCircle, tone: 'sky' }]
+            : [{ value: 'restart', label: 'Ulangi dari awal', icon: RotateCcw }, { value: 'menu', label: 'Batal, ke menu', icon: X }]}
+          onPick={(o) => {
+            if (o.value === 'restart') restart();
+            else if (o.value === 'status') leave(() => onStatus(o.label));
+            else leave(() => onMenu(o.label));
+          }}
+        />
+      )}
+    </>
   );
 }
 
@@ -232,11 +258,13 @@ function MyRequests() {
     if (!window.confirm(`Batalkan pengajuan ${s.code}?`)) return;
     try { await api(`submissions/${s.id}/cancel`, { method: 'POST', body: {} }); load(); } catch (e) { setError(e.message); }
   };
-  if (!items) return <PageLoader />;
+  if (error) return <Alert>{error}</Alert>;
+  if (!items) return <Spinner />;
+  if (!items.length) return <p>Kamu belum pernah mengajukan soal. Kalau punya PDF soal, pilih <b>Upload soal PDF</b> ya.</p>;
   return (
-    <div className="space-y-3">
-      <Alert>{error}</Alert>
-      {!items.length ? <EmptyState icon={ListChecks} title="Belum ada pengajuan">Pengajuan PDF soal yang kamu kirim akan muncul di sini beserta status dan estimasinya.</EmptyState> : items.map((s) => (
+    <div className="space-y-2">
+      <p>Ini pengajuan soalmu, dari yang terbaru:</p>
+      {items.map((s) => (
         <SubmissionCard key={s.id} s={s}>
           <div className="mt-3 flex flex-wrap gap-2">
             {s.status === 'menunggu_konfirmasi' && (
@@ -250,52 +278,198 @@ function MyRequests() {
   );
 }
 
-// Isi Chat Admin: dipakai halaman /chat-admin dan widget di pojok kanan bawah.
-// compact = tampilan sempit untuk widget.
+const MENU = [
+  { value: 'upload', label: 'Upload soal PDF', icon: FileUp, tone: 'mint' },
+  { value: 'question', label: 'Tanya admin', icon: CircleHelp, tone: 'sky' },
+  { value: 'problem', label: 'Laporkan kendala', icon: TriangleAlert, tone: 'rose' },
+  { value: 'feedback', label: 'Kasih saran', icon: Lightbulb, tone: 'sun' },
+  { value: 'status', label: 'Cek status pengajuanku', icon: ListChecks, tone: 'lilac' },
+  { value: 'wa', label: 'Chat WhatsApp admin', icon: MessageCircle, tone: 'wa' },
+];
+
+const PROMPTS = {
+  question: 'Boleh! Tulis pertanyaanmu di kolom bawah. Pesannya langsung masuk ke admin MEDCOEL, dan balasannya muncul di sini saat admin membalas.',
+  problem: 'Waduh, maaf ya. Ceritakan kendalanya di kolom bawah: di halaman apa, apa yang kamu lakukan, lalu apa yang terjadi. Admin akan membalas di sini.',
+  feedback: 'Senang banget dengar masukanmu. Tulis saran atau idemu di kolom bawah, nanti dibaca langsung oleh admin.',
+};
+
+let seq = 0;
+const nid = () => `e${++seq}`;
+
 export function ChatAdminBody({ compact = false }) {
-  const { settings } = useAuth();
-  const [view, setView] = useState('menu');
-  const menu = [
-    { key: 'upload', icon: FileUp, title: 'Upload soal', text: 'Ubah PDF soal menjadi soal di web.' },
-    { key: 'requests', icon: ListChecks, title: 'Progres permintaan saya', text: 'Status dan estimasi pengajuanmu.' },
-  ];
-  return (
-    <div className="space-y-4">
-      {view === 'menu' && (
-        <div className="space-y-3">
-          <Bubble>Halo! Ada yang bisa aku bantu?</Bubble>
-          <div className={clsx('grid gap-3 pl-10', !compact && 'sm:grid-cols-2')}>
-            {menu.map((m) => (
-              <button key={m.key} type="button" onClick={() => setView(m.key)} className="card flex items-start gap-3 p-4 text-left hover:border-brand">
-                <m.icon className="mt-0.5 shrink-0 text-brand" size={22} />
-                <span><span className="block font-semibold">{m.title}</span><span className="text-sm text-ink-muted">{m.text}</span></span>
-              </button>
-            ))}
-            <a href={waLink(settings?.adminWhatsapp, 'Halo Admin MEDCOEL, saya ingin bertanya: ')} target="_blank" rel="noopener noreferrer" className={clsx('card flex items-start gap-3 p-4 hover:border-brand', !compact && 'sm:col-span-2')}>
-              <MessageCircle className="mt-0.5 shrink-0 text-brand" size={22} />
-              <span><span className="block font-semibold">Hubungi admin lewat WhatsApp</span><span className="text-sm text-ink-muted">Untuk hal di luar menu ini.</span></span>
-            </a>
+  const { me, settings } = useAuth();
+  const support = useSupportThread();
+  const [events, setEvents] = useState(() => [{ id: nid(), kind: 'menu', intro: true }]);
+  const [history, setHistory] = useState(null); // { ids:Set, max:string } setelah muatan pertama
+  const [category, setCategory] = useState('question');
+  const acked = useRef(false);
+  const timers = useRef([]);
+  const scroller = useStickToBottom();
+  const input = useRef(null);
+
+  useEffect(() => () => timers.current.forEach(clearTimeout), []);
+
+  // Pesan admin yang datang selama sesi ini masuk ke utas sesuai urutan datang.
+  useEffect(() => {
+    if (support.loading) return;
+    if (!history) {
+      setHistory({ ids: new Set(support.items.map((m) => m.id)), max: support.items.at(-1)?.created || '' });
+      return;
+    }
+    setEvents((ev) => {
+      const known = new Set(ev.filter((e) => e.kind === 'msg').map((e) => e.msgId));
+      const fresh = support.items.filter((m) => !history.ids.has(m.id) && !known.has(m.id) && m.created >= history.max);
+      return fresh.length ? [...ev, ...fresh.map((m) => ({ id: `m-${m.id}`, kind: 'msg', msgId: m.id }))] : ev;
+    });
+  }, [support.loading, support.items, history]);
+
+  const byId = useMemo(() => new Map(support.items.map((m) => [m.id, m])), [support.items]);
+  const liveIds = useMemo(() => new Set(events.filter((e) => e.kind === 'msg').map((e) => e.msgId)), [events]);
+  const past = history ? support.items.filter((m) => !liveIds.has(m.id)) : [];
+
+  const push = useCallback((list) => setEvents((ev) => [...ev, ...list.map((x) => ({ id: nid(), ...x }))]), []);
+  // Balasan asisten muncul setelah indikator mengetik singkat.
+  const say = useCallback((list, after) => {
+    const typing = { id: nid(), kind: 'typing' };
+    const items = list.map((x) => ({ id: nid(), ...x }));
+    setEvents((ev) => [...ev, typing]);
+    const t = setTimeout(() => {
+      setEvents((ev) => [...ev.filter((e) => e.id !== typing.id), ...items]);
+      after?.();
+    }, reduceMotion() ? 0 : 550);
+    timers.current.push(t);
+  }, []);
+
+  const pick = (menuId, o) => {
+    scroller.toBottom();
+    setEvents((ev) => [...ev.map((e) => (e.id === menuId ? { ...e, picked: o.value } : e)), { id: nid(), kind: 'user', text: o.label }]);
+    if (o.value === 'upload') {
+      if (settings && !settings.submissionsOpen) say([{ kind: 'bot', key: 'closed' }, { kind: 'menu' }]);
+      else say([{ kind: 'upload' }]);
+    } else if (PROMPTS[o.value]) {
+      setCategory(o.value);
+      acked.current = false;
+      say([{ kind: 'bot', key: o.value }], () => input.current?.focus());
+    } else if (o.value === 'status') {
+      say([{ kind: 'status' }, { kind: 'menu' }]);
+    } else if (o.value === 'wa') {
+      say([{ kind: 'wa' }, { kind: 'menu' }]);
+    }
+  };
+
+  const onSend = async (text) => {
+    scroller.toBottom();
+    await support.send(text, category);
+    if (!acked.current) {
+      acked.current = true;
+      say([{ kind: 'bot', key: 'sent' }, { kind: 'menu' }]);
+    }
+  };
+
+  const lastMenu = [...events].reverse().find((e) => e.kind === 'menu')?.id;
+  const firstName = (me?.name || '').trim().split(/\s+/)[0];
+  const waHello = `Halo Admin MEDCOEL, saya ${me?.name || ''}${me?.loginId ? ` (${me.loginId})` : ''}. `;
+
+  const renderEvent = (e) => {
+    switch (e.kind) {
+      case 'typing': return <Typing key={e.id} />;
+      case 'user': return <Bubble key={e.id} from="me">{e.text}</Bubble>;
+      case 'msg': {
+        const m = byId.get(e.msgId);
+        return m ? <SupportMessage key={e.id} m={m} mine={m.senderRole !== 'admin'} /> : null;
+      }
+      case 'menu': {
+        const active = e.id === lastMenu && !e.picked;
+        return (
+          <div key={e.id} className="contents">
+            {e.intro ? (past.length > 0 && <Bubble>Mau lanjut tanya admin, atau ada yang lain?</Bubble>) : <Bubble>Ada lagi yang bisa aku bantu?</Bubble>}
+            {active && <Chips options={MENU} onPick={(o) => pick(e.id, o)} />}
           </div>
+        );
+      }
+      case 'upload':
+        return (
+          <div key={e.id} className="contents">
+            <UploadFlow
+              onStatus={(label) => { scroller.toBottom(); push([{ kind: 'user', text: label }]); say([{ kind: 'status' }, { kind: 'menu' }]); }}
+              onMenu={(label) => { scroller.toBottom(); push([{ kind: 'user', text: label }]); say([{ kind: 'menu' }]); }}
+            />
+          </div>
+        );
+      case 'status': return <Bubble key={e.id} wide><MyRequests /></Bubble>;
+      case 'wa':
+        return (
+          <Bubble key={e.id}>
+            Untuk hal yang perlu cepat, langsung chat admin di WhatsApp ya.
+            <div className="mt-3"><a href={waLink(settings?.adminWhatsapp, waHello)} target="_blank" rel="noopener noreferrer" className="btn-primary btn-sm"><MessageCircle size={16} /> Buka WhatsApp admin</a></div>
+            {!settings?.adminWhatsapp && <p className="mt-2 text-xs text-coral">Nomor WhatsApp admin belum diatur.</p>}
+          </Bubble>
+        );
+      case 'bot':
+        if (e.key === 'closed') return <Bubble key={e.id}>Maaf, pengajuan soal sedang ditutup sementara karena antrean penuh. Coba lagi beberapa hari lagi, atau tanya admin dulu.</Bubble>;
+        if (e.key === 'sent') return <Bubble key={e.id}>Pesanmu sudah masuk ke admin MEDCOEL. Balasannya muncul di sini saat admin membalas, jadi kamu boleh tutup chat ini dulu.</Bubble>;
+        return <Bubble key={e.id}>{PROMPTS[e.key]}</Bubble>;
+      default: return null;
+    }
+  };
+
+  return (
+    <div className={clsx('chat-shell', compact && 'is-compact')}>
+      <div
+        ref={scroller.ref}
+        className="chat-thread tex-grid"
+        role="log"
+        aria-label="Percakapan Chat Admin"
+        aria-live="polite"
+      >
+        <div className="chat-thread-inner">
+          <p className="chat-day"><span>Chat Admin MEDCOEL</span></p>
+          <Bubble>
+            <span className="hand chat-hello">Halo{firstName ? `, ${firstName}` : ''}! 👋</span>
+            Aku asisten Chat Admin MEDCOEL. Mau ngapain hari ini? Pilih salah satu di bawah, atau langsung tulis pesan untuk admin.
+          </Bubble>
+          {past.length > 0 && (
+            <>
+              <Bubble>Ini percakapanmu dengan admin sebelumnya. Balasan baru juga akan muncul di sini.</Bubble>
+              {support.older && <button type="button" onClick={() => { scroller.release(); support.loadOlder(); }} disabled={support.loadingOlder} className="chat-older">{support.loadingOlder ? 'Memuat...' : 'Muat pesan sebelumnya'}</button>}
+              {past.map((m) => <SupportMessage key={m.id} m={m} mine={m.senderRole !== 'admin'} />)}
+              <p className="chat-day"><span>Sekarang</span></p>
+            </>
+          )}
+          {events.map(renderEvent)}
+        </div>
+      </div>
+      {support.loadError && (
+        <div className="chat-load-error">
+          <Alert>{support.loadError}</Alert>
+          <button type="button" className="mt-1 text-sm font-semibold text-brand underline" onClick={support.retry}>Muat ulang percakapan</button>
         </div>
       )}
-      {view === 'upload' && <UploadFlow onExit={() => setView('requests')} onMenu={() => setView('menu')} />}
-      {view === 'requests' && (
-        <div className="space-y-3">
-          <button type="button" className="btn-ghost btn-sm" onClick={() => setView('menu')}>Kembali ke menu</button>
-          <MyRequests />
+      <Composer
+        onSend={onSend}
+        inputRef={input}
+        disabled={support.loading}
+        placeholder="Tulis pesan untuk admin…"
+        note={<>Pesanmu hanya terlihat olehmu dan admin. <Link to="/kebijakan-privasi" className="underline">Kebijakan privasi</Link></>}
+      >
+        <div className="chat-category">
+          <label htmlFor={compact ? 'chat-cat-compact' : 'chat-cat'}>Dikirim sebagai</label>
+          <select id={compact ? 'chat-cat-compact' : 'chat-cat'} value={category} onChange={(e) => setCategory(e.target.value)}>
+            {Object.entries(CATEGORIES).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+          </select>
         </div>
-      )}
-      <p className="text-center text-xs text-ink-muted">Dengan mengunggah, kamu menyetujui <Link to="/kebijakan-privasi" className="underline">kebijakan privasi dan hak cipta</Link> MEDCOEL.</p>
+      </Composer>
     </div>
   );
 }
 
 export default function ChatAdmin() {
   return (
-    <div className="mx-auto max-w-2xl space-y-5">
-      <div>
-        <h1 className="page-title">Chat Admin</h1>
-        <p className="mt-1 text-ink-muted">Asisten otomatis untuk pengajuan soal. Untuk hal lain, hubungi admin lewat WhatsApp.</p>
+    <div className="chat-admin-page mx-auto max-w-3xl">
+      <div className="mb-5">
+        <p className="eyebrow">Bantuan</p>
+        <h1 className="page-title mt-1">Chat Admin</h1>
+        <p className="mt-1 text-ink-muted">Upload PDF soal, tanya admin, laporkan kendala, atau kasih masukan. Semua lewat obrolan ini.</p>
       </div>
       <ChatAdminBody />
     </div>

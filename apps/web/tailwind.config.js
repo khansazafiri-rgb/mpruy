@@ -18,10 +18,14 @@ export default {
         progress: { DEFAULT: token('progress'), soft: token('progress-soft') },
         coral: { DEFAULT: token('coral'), soft: token('coral-soft') },
         ok: { DEFAULT: token('ok'), soft: token('ok-soft') },
+        forest: { DEFAULT: token('forest'), 2: token('forest-2') },
+        paper: { DEFAULT: token('paper'), 2: token('paper-2') },
+        mint: token('mint'),
       },
       fontFamily: {
         display: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        hand: ['Caveat', '"Segoe Print"', 'cursive'],
       },
       boxShadow: {
         card: '0 2px 8px rgb(23 43 56 / 0.025)',

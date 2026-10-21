@@ -50,8 +50,8 @@ export function Badge({ className = '', children }) {
 
 export function EmptyState({ icon: Icon, title, children, action }) {
   return (
-    <div className="card flex flex-col items-center px-6 py-10 text-center">
-      {Icon && <div className="mb-3 rounded-2xl bg-brand-soft p-3 text-brand"><Icon size={28} aria-hidden /></div>}
+    <div className="empty-state card flex flex-col items-center px-6 py-10 text-center">
+      {Icon && <div className="empty-icon tone-sun mb-4"><Icon size={28} aria-hidden /></div>}
       <h3 className="font-display text-lg font-semibold">{title}</h3>
       {children && <div className="mt-1 max-w-md text-sm text-ink-muted">{children}</div>}
       {action && <div className="mt-4">{action}</div>}
@@ -126,7 +126,7 @@ export function Modal({ open, onClose, title, children, footer, size = 'md', dis
           {onClose && <button type="button" onClick={onClose} className="rounded-full bg-page p-2 text-ink-muted transition-colors hover:bg-line hover:text-ink" aria-label="Tutup"><X size={18} /></button>}
         </div>
         <div className="modal-body overflow-y-auto px-6 py-6">{children}</div>
-        {footer && <div className="flex flex-wrap justify-end gap-2 border-t border-line px-6 py-4">{footer}</div>}
+        {footer && <div className="modal-footer flex flex-wrap justify-end gap-2 border-t border-line px-6 py-4">{footer}</div>}
       </div>
     </div>, document.body,
   );
@@ -134,7 +134,7 @@ export function Modal({ open, onClose, title, children, footer, size = 'md', dis
 
 export function Tabs({ tabs, value, onChange, className = '' }) {
   return (
-    <div role="tablist" className={clsx('flex gap-1 overflow-x-auto rounded-xl bg-page p-1', className)}>
+    <div role="tablist" className={clsx('ui-tabs flex gap-1 overflow-x-auto rounded-xl bg-page p-1', className)}>
       {tabs.map((t) => (
         <button
           key={t.value}
@@ -142,7 +142,7 @@ export function Tabs({ tabs, value, onChange, className = '' }) {
           type="button"
           aria-selected={value === t.value}
           onClick={() => onChange(t.value)}
-          className={clsx('whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors',
+          className={clsx('ui-tab whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors',
             value === t.value ? 'bg-surface text-brand shadow-card' : 'text-ink-muted hover:text-ink')}
         >
           {t.label}
@@ -152,7 +152,17 @@ export function Tabs({ tabs, value, onChange, className = '' }) {
   );
 }
 
-export function Stat({ label, value, sub, accent = 'text-brand' }) {
+// tone (opsional): mint, sky, lilac, peach, sun, rose — kartu berwarna "tebal".
+export function Stat({ label, value, sub, accent = 'text-brand', tone, icon: Icon }) {
+  if (tone) {
+    return (
+      <div className={clsx('stat-tone card-chunky tone-surface p-4', `tone-${tone}`)}>
+        <p className="flex items-center gap-2 text-[13px] font-bold text-[rgb(var(--tone-fg))]">{Icon && <span className="stat-tone-icon"><Icon size={16} aria-hidden /></span>}{label}</p>
+        <p className="mt-2 font-display text-[30px] font-extrabold leading-none tracking-tight text-ink">{value}</p>
+        {sub && <p className="mt-1.5 text-[13px] font-medium text-[rgb(var(--tone-fg))]">{sub}</p>}
+      </div>
+    );
+  }
   return (
     <div className="card p-4">
       <p className="text-[13px] font-semibold text-ink-muted">{label}</p>
