@@ -1,17 +1,21 @@
-// Landing page MEDCOEL, gaya "buku catatan klinis": papan hijau, kertas
-// berbutir, stabilo, dan stiker ilustrasi mata kuliah. Angka diambil dari
-// endpoint yang hanya mengembalikan angka (soal tidak terbuka ke publik).
-// Contoh soal di hero ditulis di sini dan diberi label "contoh".
+// Landing page MEDCOEL. Gaya "buku catatan klinis" versi 2: tiap bagian punya
+// latar yang jelas berbeda (seperti Apple), mata kuliah diberi nada warna
+// sendiri (seperti Osmosis/Duolingo), filter kategori berbentuk pil (seperti
+// Google Store/Traveloka), dan elemen muncul saat digulir.
+// Angka diambil dari endpoint yang hanya mengembalikan angka (soal tidak
+// terbuka ke publik). Contoh soal di hero ditulis di sini dan diberi label.
 import clsx from 'clsx';
 import {
-  ArrowRight, BellRing, Building2, CalendarClock, Check, ChevronDown, FileUp, Instagram,
-  ListChecks, MessageCircle, SlidersHorizontal, Trophy, X,
+  ArrowRight, BellRing, BookOpenCheck, Building2, CalendarClock, Check, ChevronDown, FileUp, Flame, Instagram,
+  ListChecks, MessageCircle, MousePointerClick, SlidersHorizontal, Sparkles, Trophy, X,
 } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '@/components/Logo';
 import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
+import { useReveal } from '@/lib/reveal';
+import { toneClass } from '@/lib/tone';
 import { waLink } from '@/lib/wa';
 import '@/styles/landing.css';
 
@@ -25,6 +29,9 @@ const SUBJECTS = [
   ['sistem-hematologi-imunologi', 'Hematologi & Imunologi'], ['sistem-indra-mata', 'Indra: Mata'], ['sistem-indra-tht', 'Indra: THT'], ['sistem-integumen-kulit-kelamin', 'Kulit & Kelamin'],
   ['sistem-kardiovaskular', 'Kardiovaskular'], ['sistem-muskuloskeletal', 'Muskuloskeletal'], ['sistem-respirasi', 'Respirasi'], ['sistem-saraf', 'Sistem Saraf'],
 ];
+const KLINIK = ['ilmu-bedah', 'ilmu-bedah-ortopedi', 'ilmu-kesehatan-anak', 'ilmu-penyakit-dalam', 'kehamilan-persalinan', 'ginekologi-payudara', 'psikiatri-kesehatan-jiwa', 'multisistem-kegawatdaruratan'];
+const groupOf = (key) => (key.startsWith('sistem-') ? 'sistem' : KLINIK.includes(key) ? 'klinik' : 'dasar');
+const GROUPS = [['semua', 'Semua'], ['dasar', 'Ilmu dasar'], ['klinik', 'Klinik'], ['sistem', 'Sistem organ']];
 const img = (key) => `/illustrations/${key}.webp`;
 
 const SAMPLES = [
@@ -66,10 +73,11 @@ const SAMPLES = [
   },
 ];
 
+
 const STEPS = [
-  { n: '1', title: 'Pilih mata kuliah dan BAB', text: 'Mata kuliah yang sedang kamu pelajari muncul paling atas. Mulai dari BAB yang paling mendesak.' },
-  { n: '2', title: 'Kerjakan dengan caramu', text: 'Mode Learning membuka kunci tiap soal. Mode Ujian bertimer, pembahasan dibuka setelah selesai.' },
-  { n: '3', title: 'Baca pembahasan tiap pilihan', text: 'Bukan cuma tahu yang benar, tapi juga kenapa pilihan lain salah. Progresmu tercatat per BAB.' },
+  { n: '1', tone: 'mint', icon: MousePointerClick, title: 'Pilih mata kuliah dan BAB', text: 'Mata kuliah yang sedang kamu pelajari muncul paling atas. Mulai dari BAB yang paling mendesak.' },
+  { n: '2', tone: 'sun', icon: SlidersHorizontal, title: 'Kerjakan dengan caramu', text: 'Mode Learning membuka kunci tiap soal. Mode Ujian bertimer, pembahasan dibuka setelah selesai.' },
+  { n: '3', tone: 'lilac', icon: BookOpenCheck, title: 'Baca pembahasan tiap pilihan', text: 'Bukan cuma tahu yang benar, tapi juga kenapa pilihan lain salah. Progresmu tercatat per BAB.' },
 ];
 
 const FAQ = [
@@ -79,6 +87,7 @@ const FAQ = [
   ['Kampusku belum ada di daftar, bagaimana?', 'Kamu tetap bisa mendaftar dan memakai semua soal umum. Fitur khusus kampus menyusul setelah kampusmu ditambahkan admin.'],
   ['Bisa dipakai di HP?', 'Bisa. MEDCOEL dibuat untuk layar HP sejak awal, jadi enak dipakai sambil di kereta atau menunggu jadwal praktikum.'],
 ];
+
 
 function useCountUp(target) {
   const [n, setN] = useState(0);
@@ -109,21 +118,23 @@ function QuizDemo() {
   return (
     <div className="lp-demo">
       <p className="lp-note lp-note-try hand" aria-hidden>coba jawab satu! <svg viewBox="0 0 60 40" width="52" height="34"><path d="M4 6c18 2 34 10 44 26m0 0-2-11m2 11-10-4" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg></p>
-      <div className="lp-demo-sticker sticker" aria-hidden><span className="tape" style={{ top: -10, left: 22, transform: 'rotate(-8deg)' }} /><img src={img(q.key)} alt="" width={120} height={120} /></div>
+      <span className="float-pill tone-sun lp-float lp-float-a" style={{ '--rot': '-6deg' }} aria-hidden><Flame size={17} /> 5 hari berturut-turut</span>
+      <span className={clsx('float-pill lp-float lp-float-b', done && correct ? 'tone-mint is-on' : 'tone-mint')} style={{ '--rot': '5deg' }} aria-hidden><Sparkles size={16} /> +1 poin</span>
+      <div className={clsx('lp-demo-sticker sticker-tone', toneClass(q.key))} aria-hidden><span className="tape" style={{ top: -10, left: 22, transform: 'rotate(-8deg)' }} /><img src={img(q.key)} alt="" width={120} height={120} /></div>
 
-      <div className="paper-sheet paper-stack lp-demo-card">
+      <div className="lp-demo-card">
         <span className="tape" style={{ top: -12, left: '42%', transform: 'rotate(3deg)' }} aria-hidden />
         <div className="lp-demo-head">
           <span className="lp-demo-label">Contoh soal</span>
           <div className="lp-demo-tabs" role="group" aria-label="Pilih mata kuliah contoh">
             {SAMPLES.map((s, i) => (
-              <button key={s.key} type="button" aria-pressed={i === active} onClick={() => switchTo(i)}>{s.name}</button>
+              <button key={s.key} type="button" aria-pressed={i === active} onClick={() => switchTo(i)} className={toneClass(s.key)}>{s.name}</button>
             ))}
           </div>
         </div>
 
         <div className="lp-demo-body" key={q.key}>
-          <p className="lp-demo-meta"><b>{q.name}</b> · {q.topic} <span className={clsx('lp-level', q.level === 'Mudah' ? 'is-easy' : 'is-mid')}>{q.level}</span></p>
+          <p className="lp-demo-meta"><span className={clsx('tone-chip', toneClass(q.key))}>{q.name}</span> {q.topic} <span className={clsx('lp-level', q.level === 'Mudah' ? 'is-easy' : 'is-mid')}>{q.level}</span></p>
           <p className="lp-demo-stem">{q.stem}</p>
           <fieldset className="lp-demo-options">
             <legend className="sr-only">Pilih jawaban</legend>
@@ -158,25 +169,33 @@ function QuizDemo() {
 }
 
 function SubjectWall() {
+  const [group, setGroup] = useState('semua');
   const [all, setAll] = useState(false);
+  const counts = useMemo(() => SUBJECTS.reduce((c, [k]) => ({ ...c, [groupOf(k)]: (c[groupOf(k)] || 0) + 1 }), { semua: SUBJECTS.length }), []);
+  const list = SUBJECTS.filter(([k]) => group === 'semua' || groupOf(k) === group);
   return (
     <>
-      <ul className={clsx('lp-wall', !all && 'is-clipped')}>
-        {SUBJECTS.map(([key, name], i) => (
-          <li key={key} style={{ '--r': `${[-3, 2, -1.5, 3, -2.5, 1, 2.5, -1][i % 8]}deg` }}>
-            <div className="sticker lp-wall-sticker"><img src={img(key)} alt="" width={160} height={160} loading="lazy" decoding="async" /></div>
+      <div className="lp-filter" role="group" aria-label="Saring mata kuliah">
+        {GROUPS.map(([k, label]) => (
+          <button key={k} type="button" aria-pressed={group === k} onClick={() => setGroup(k)}>{label}<span>{counts[k]}</span></button>
+        ))}
+      </div>
+      <ul className={clsx('lp-wall', !all && group === 'semua' && 'is-clipped')} key={group}>
+        {list.map(([key, name], i) => (
+          <li key={key} className={toneClass(key)} style={{ '--r': `${[-3, 2, -1.5, 3, -2.5, 1, 2.5, -1][i % 8]}deg`, '--i': i % 8 }}>
+            <div className="sticker-tone lp-wall-sticker"><img src={img(key)} alt="" width={160} height={160} loading="lazy" decoding="async" /></div>
             <span>{name}</span>
           </li>
         ))}
       </ul>
-      {!all && <div className="lp-wall-more"><button type="button" className="btn-secondary" onClick={() => setAll(true)}>Lihat semua 32 mata kuliah <ChevronDown size={18} /></button></div>}
+      {!all && group === 'semua' && <div className="lp-wall-more"><button type="button" className="btn-secondary" onClick={() => setAll(true)}>Lihat semua 32 mata kuliah <ChevronDown size={18} /></button></div>}
     </>
   );
 }
 
 function Marquee() {
   const row = SUBJECTS.map(([key, name]) => (
-    <span key={key} className="lp-marquee-item"><img src={img(key)} alt="" width={36} height={36} loading="lazy" />{name}</span>
+    <span key={key} className={clsx('lp-marquee-item', toneClass(key))}><img src={img(key)} alt="" width={36} height={36} loading="lazy" />{name}</span>
   ));
   return (
     <div className="lp-marquee" aria-label="Daftar mata kuliah">
@@ -193,11 +212,34 @@ function Ecg({ className = '' }) {
   );
 }
 
+function PhoneShot() {
+  // Cuplikan beranda di bingkai HP, digambar dengan HTML (bukan foto).
+  const subjects = [['anatomi', 'Anatomi', 62], ['fisiologi', 'Fisiologi', 35], ['farmakologi', 'Farmakologi', 18]];
+  return (
+    <div className="lp-phone" aria-hidden>
+      <div className="lp-phone-screen">
+        <div className="lp-phone-top"><span>09.41</span><span className="lp-phone-notch" /><span>100%</span></div>
+        <p className="lp-phone-hi">Halo, Nadia 👋</p>
+        <div className="lp-phone-exam surface-forest"><small>UTB Anatomi</small><b>12 hari lagi</b><Ecg className="lp-phone-ecg" /></div>
+        <p className="lp-phone-label">Lanjutkan</p>
+        {subjects.map(([k, n, p]) => (
+          <div key={k} className={clsx('lp-phone-row', toneClass(k))}>
+            <img src={img(k)} alt="" width={40} height={40} />
+            <div><b>{n}</b><i><em style={{ width: `${p}%` }} /></i></div>
+            <span>{p}%</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Landing() {
   const { me, settings } = useAuth();
   const [stats, setStats] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const top = useRef(null);
+  useReveal();
   useEffect(() => { let alive = true; api('stats').then((s) => alive && setStats(s)).catch(() => {}); return () => { alive = false; }; }, []);
   useEffect(() => {
     const el = top.current;
@@ -231,6 +273,7 @@ export default function Landing() {
       <main id="utama">
         {/* HERO */}
         <section className="lp-hero surface-forest">
+          <div className="lp-hero-dots tex-halftone-light" aria-hidden />
           <div className="lp-wrap lp-hero-grid">
             <div className="lp-hero-copy">
               <p className="lp-kicker"><span className="lp-dot" />Untuk mahasiswa kedokteran · semua fitur gratis</p>
@@ -254,16 +297,20 @@ export default function Landing() {
         <Marquee />
 
         {/* CARA KERJA */}
-        <section id="cara-kerja" className="lp-section tex-grid">
+        <section id="cara-kerja" className="lp-section lp-band tone-sky tone-surface">
+          <div className="lp-band-dots tex-halftone" aria-hidden />
           <div className="lp-wrap">
-            <div className="lp-heading">
+            <div className="lp-heading lp-center reveal">
               <p className="lp-eyebrow">Cara kerja</p>
               <h2>Tiga langkah, setiap kali kamu buka MEDCOEL.</h2>
             </div>
             <ol className="lp-steps">
-              {STEPS.map((s) => (
-                <li key={s.n} className="paper-sheet lp-step">
-                  <span className="lp-step-n hand" aria-hidden>{s.n}.</span>
+              {STEPS.map((s, i) => (
+                <li key={s.n} className={clsx('card-chunky lp-step reveal', `tone-${s.tone}`)} style={{ '--i': i }}>
+                  <div className="lp-step-top">
+                    <span className="lp-step-n hand" aria-hidden>{s.n}.</span>
+                    <span className="lp-step-icon tone-surface"><s.icon size={24} /></span>
+                  </div>
                   <h3>{s.title}</h3>
                   <p>{s.text}</p>
                 </li>
@@ -275,10 +322,10 @@ export default function Landing() {
         {/* MATA KULIAH */}
         <section id="mata-kuliah" className="lp-section lp-section-paper">
           <div className="lp-wrap">
-            <div className="lp-heading lp-heading-split">
+            <div className="lp-heading lp-heading-split reveal">
               <div>
                 <p className="lp-eyebrow">32 mata kuliah · 384 BAB</p>
-                <h2>Dari preklinik sampai sistem organ, semuanya di satu tempat.</h2>
+                <h2>Dari ilmu dasar sampai sistem organ, semuanya di satu tempat.</h2>
               </div>
               <p className="lp-heading-note hand" aria-hidden>yang kamu pilih saat daftar<br />selalu muncul paling atas ↓</p>
             </div>
@@ -286,15 +333,34 @@ export default function Landing() {
           </div>
         </section>
 
+        {/* DI HP */}
+        <section className="lp-section lp-phone-band surface-forest">
+          <div className="lp-hero-dots tex-halftone-light" aria-hidden />
+          <div className="lp-wrap lp-phone-grid">
+            <div className="reveal">
+              <p className="lp-eyebrow lp-eyebrow-light">Di HP maupun laptop</p>
+              <h2 className="lp-phone-title">Lima menit di kereta pun cukup untuk satu BAB.</h2>
+              <p className="lp-phone-lead">Progres tersimpan otomatis. Buka di HP, lanjutkan di laptop, dan hitung mundur ujianmu selalu ada di beranda.</p>
+              <ul className="lp-phone-points">
+                <li className="tone-mint"><Check size={18} /> Lanjut dari soal terakhir</li>
+                <li className="tone-sun"><BellRing size={18} /> Pengingat H-7, H-3, H-1</li>
+                <li className="tone-lilac"><Trophy size={18} /> Poin dan peringkat mingguan</li>
+              </ul>
+            </div>
+            <div className="reveal" style={{ '--i': 2 }}><PhoneShot /></div>
+          </div>
+        </section>
+
         {/* FITUR */}
         <section id="fitur" className="lp-section tex-grid">
           <div className="lp-wrap">
-            <div className="lp-heading">
+            <div className="lp-heading reveal">
               <p className="lp-eyebrow">Fitur</p>
               <h2>Yang kamu dapat setelah daftar.</h2>
             </div>
             <div className="lp-bento">
-              <article className="lp-card lp-card-sim surface-forest">
+              <article className="lp-card lp-card-sim surface-forest reveal">
+                <div className="lp-hero-dots tex-halftone-light" aria-hidden />
                 <p className="lp-card-tag"><SlidersHorizontal size={17} /> Simulasi</p>
                 <h3>Atur sendiri komposisi soal ujianmu.</h3>
                 <p>Pilih BAB, jumlah soal, dan berapa yang mudah, sedang, atau sulit. Atau ambil Paket 100, 150, 200 yang mencakup semua BAB.</p>
@@ -306,7 +372,7 @@ export default function Landing() {
                 </div>
               </article>
 
-              <article className="lp-card paper-sheet">
+              <article className="lp-card card-chunky tone-sun tone-surface reveal" style={{ '--i': 1 }}>
                 <p className="lp-card-tag"><CalendarClock size={17} /> Jadwal ujian</p>
                 <h3>Hitung mundur sampai hari ujian.</h3>
                 <div className="lp-countdown" aria-hidden>
@@ -315,7 +381,7 @@ export default function Landing() {
                 <p className="lp-small"><BellRing size={15} /> Pengingat H-7, H-3, dan H-1. Zona WIB, WITA, atau WIT.</p>
               </article>
 
-              <article className="lp-card paper-sheet">
+              <article className="lp-card card-chunky tone-lilac tone-surface reveal" style={{ '--i': 2 }}>
                 <p className="lp-card-tag"><Trophy size={17} /> Leaderboard</p>
                 <h3>Poin dari jawaban benar di percobaan pertama.</h3>
                 <ol className="lp-board" aria-label="Contoh tampilan leaderboard">
@@ -325,7 +391,8 @@ export default function Landing() {
                 </ol>
               </article>
 
-              <article className="lp-card lp-card-chat paper-sheet tex-ruled">
+              <article className="lp-card lp-card-chat card-chunky tone-mint tone-surface reveal">
+                <div className="lp-band-dots tex-halftone" aria-hidden />
                 <p className="lp-card-tag"><FileUp size={17} /> Kirim soal lewat Chat Admin</p>
                 <h3>Punya PDF soal tahun lalu? Jadikan latihan bareng.</h3>
                 <div className="lp-chat" aria-hidden>
@@ -335,7 +402,7 @@ export default function Landing() {
                 </div>
               </article>
 
-              <article className="lp-card paper-sheet">
+              <article className="lp-card card-chunky tone-peach tone-surface reveal" style={{ '--i': 1 }}>
                 <p className="lp-card-tag"><Building2 size={17} /> Soal kampusmu</p>
                 <h3>Soal khusus kampus hanya terlihat teman sekampus.</h3>
                 <p className="lp-small"><ListChecks size={15} /> Kamu yang memilih saat mengirim PDF.</p>
@@ -345,27 +412,28 @@ export default function Landing() {
         </section>
 
         {/* ANGKA */}
-        <section className="lp-numbers surface-forest" aria-label="MEDCOEL dalam angka">
+        <section className="lp-numbers tone-sun tone-surface" aria-label="MEDCOEL dalam angka">
+          <div className="lp-band-dots tex-halftone" aria-hidden />
           <div className="lp-wrap lp-numbers-row">
-            <div><b aria-live="polite">{fmt(soal)}</b><span>soal sudah tayang</span></div>
-            <div><b>32</b><span>mata kuliah</span></div>
-            <div><b>384</b><span>BAB</span></div>
-            <div><b>Rp0</b><span>biaya untuk semua fitur</span></div>
+            <div className="reveal"><b aria-live="polite">{fmt(soal)}</b><span>soal sudah tayang</span></div>
+            <div className="reveal" style={{ '--i': 1 }}><b>32</b><span>mata kuliah</span></div>
+            <div className="reveal" style={{ '--i': 2 }}><b>384</b><span>BAB</span></div>
+            <div className="reveal" style={{ '--i': 3 }}><b>Rp0</b><span>biaya untuk semua fitur</span></div>
           </div>
         </section>
 
         {/* FAQ */}
         <section id="tanya" className="lp-section lp-section-paper">
           <div className="lp-wrap lp-faq-grid">
-            <div className="lp-heading">
+            <div className="lp-heading reveal">
               <p className="lp-eyebrow">Tanya jawab</p>
               <h2>Yang sering ditanyakan.</h2>
               <p className="lp-faq-note">Masih ada yang bingung? Tanya langsung ke admin lewat Chat Admin setelah masuk{settings?.adminWhatsapp ? ', atau lewat WhatsApp' : ''}.</p>
               {settings?.adminWhatsapp && <a href={waLink(settings.adminWhatsapp, 'Halo admin MEDCOEL, saya mau tanya.')} target="_blank" rel="noopener noreferrer" className="btn-secondary mt-4"><MessageCircle size={18} /> WhatsApp admin</a>}
             </div>
             <div className="lp-faq">
-              {FAQ.map(([q, a]) => (
-                <details key={q} className="paper-sheet">
+              {FAQ.map(([q, a], i) => (
+                <details key={q} className="card-chunky reveal" style={{ '--i': i }}>
                   <summary>{q}<ChevronDown size={20} aria-hidden /></summary>
                   <p>{a}</p>
                 </details>
@@ -376,7 +444,8 @@ export default function Landing() {
 
         {/* AJAKAN */}
         <section className="lp-wrap lp-final-wrap">
-          <div className="lp-final surface-forest">
+          <div className="lp-final surface-forest reveal">
+            <div className="lp-hero-dots tex-halftone-light" aria-hidden />
             <div className="lp-final-copy">
               <h2>Soal pertamamu sudah menunggu.</h2>
               <p>Daftar sebentar saja: pilih kampus dan mata kuliah yang sedang kamu pelajari, lalu langsung latihan.</p>
@@ -388,7 +457,7 @@ export default function Landing() {
             </div>
             <div className="lp-final-art" aria-hidden>
               {['sistem-kardiovaskular', 'histologi', 'farmakologi'].map((k, i) => (
-                <div key={k} className={`sticker lp-final-sticker s${i}`}><span className={clsx('tape', i === 1 && 'tape-mint')} style={{ top: -11, left: 30 }} /><img src={img(k)} alt="" width={150} height={150} loading="lazy" /></div>
+                <div key={k} className={clsx('sticker-tone lp-final-sticker', `s${i}`, toneClass(k))}><span className={clsx('tape', i === 1 && 'tape-mint')} style={{ top: -11, left: 30 }} /><img src={img(k)} alt="" width={150} height={150} loading="lazy" /></div>
               ))}
               <p className="hand lp-final-note">sampai ketemu<br />di soal pertama!</p>
             </div>
