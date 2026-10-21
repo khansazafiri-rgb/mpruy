@@ -1,7 +1,8 @@
 // Komponen tampilan dasar.
 import clsx from 'clsx';
 import { AlertCircle, CheckCircle2, Loader2, X } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export function Spinner({ className = '', label = 'Memuat' }) {
   return (
@@ -61,7 +62,7 @@ export function EmptyState({ icon: Icon, title, children, action }) {
 export function ProgressBar({ value, max = 100, color = 'bg-brand', className = '', label }) {
   const pct = max > 0 ? Math.min(100, Math.max(0, (value / max) * 100)) : 0;
   return (
-    <div className={clsx('h-2 w-full overflow-hidden rounded-full bg-line/70', className)} role="progressbar" aria-valuenow={Math.round(pct)} aria-valuemin={0} aria-valuemax={100} aria-label={label}>
+    <div className={clsx('progress-track h-1.5 w-full overflow-hidden rounded-full bg-line/70', className)} role="progressbar" aria-valuenow={Math.round(pct)} aria-valuemin={0} aria-valuemax={100} aria-label={label}>
       <div className={clsx('h-full rounded-full transition-all', color)} style={{ width: `${pct}%` }} />
     </div>
   );
@@ -71,37 +72,63 @@ export function ProgressBar({ value, max = 100, color = 'bg-brand', className = 
 // (dipakai pengumuman pop-up: tidak tertutup klik di luar atau Escape).
 export function Modal({ open, onClose, title, children, footer, size = 'md', dismissable = true, labelledBy }) {
   const ref = useRef(null);
+  const closeRef = useRef(onClose);
+  closeRef.current = onClose;
+  const [present, setPresent] = useState(open);
+  const [closing, setClosing] = useState(false);
+  const id = useId();
+  const titleId = labelledBy || `modal-${id}`;
+
   useEffect(() => {
-    if (!open) return undefined;
-    const prev = document.activeElement;
-    const onKey = (e) => { if (e.key === 'Escape' && dismissable) onClose?.(); };
-    document.addEventListener('keydown', onKey);
+    if (open) { setPresent(true); setClosing(false); return undefined; }
+    setClosing(true);
+    const timer = setTimeout(() => setPresent(false), 160);
+    return () => clearTimeout(timer);
+  }, [open]);
+
+  useEffect(() => {
+    if (!present) return undefined;
+    const previous = document.activeElement;
+    const overflow = document.body.style.overflow;
+    const app = document.getElementById('root');
+    const wasInert = app?.inert;
     document.body.style.overflow = 'hidden';
-    setTimeout(() => ref.current?.querySelector('button, [href], input, select, textarea')?.focus(), 30);
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
-      prev?.focus?.();
+    if (app) app.inert = true;
+    const focusable = () => [...(ref.current?.querySelectorAll('button:not(:disabled), [href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex="0"]') || [])].filter((el) => el.getClientRects().length > 0);
+    const frame = requestAnimationFrame(() => (focusable()[0] || ref.current)?.focus());
+    const onKey = (e) => {
+      if (e.key === 'Escape') { e.stopPropagation(); if (dismissable) closeRef.current?.(); }
+      if (e.key !== 'Tab') return;
+      const nodes = focusable();
+      const first = nodes[0];
+      const last = nodes[nodes.length - 1];
+      if (!first) { e.preventDefault(); ref.current?.focus(); }
+      else if (e.shiftKey && (document.activeElement === first || document.activeElement === ref.current)) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     };
-  }, [open, dismissable, onClose]);
-  if (!open) return null;
+    document.addEventListener('keydown', onKey);
+    return () => {
+      cancelAnimationFrame(frame);
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = overflow;
+      if (app) app.inert = wasInert;
+      if (previous?.isConnected) previous.focus?.();
+    };
+  }, [present, dismissable]);
+
+  if (!present) return null;
   const widths = { sm: 'max-w-md', md: 'max-w-lg', lg: 'max-w-2xl', xl: 'max-w-4xl' };
-  const titleId = labelledBy || 'modal-title';
-  return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-ink/50 p-0 sm:items-center sm:p-4" onMouseDown={(e) => { if (dismissable && e.target === e.currentTarget) onClose?.(); }}>
-      <div ref={ref} role="dialog" aria-modal="true" aria-labelledby={titleId} className={clsx('flex max-h-[92vh] w-full flex-col rounded-t-2xl bg-surface shadow-pop sm:rounded-2xl', widths[size])}>
-        <div className="flex items-start justify-between gap-4 border-b border-line px-5 py-4">
-          <h2 id={titleId} className="font-display text-lg font-semibold">{title}</h2>
-          {onClose && (
-            <button type="button" onClick={onClose} className="-m-1 rounded-lg p-1 text-ink-muted hover:bg-page hover:text-ink" aria-label="Tutup">
-              <X size={20} />
-            </button>
-          )}
+  return createPortal(
+    <div className={clsx('modal-overlay fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-5', closing && 'is-closing')} onMouseDown={(e) => { if (dismissable && e.target === e.currentTarget) closeRef.current?.(); }}>
+      <div ref={ref} role="dialog" tabIndex={-1} aria-modal="true" aria-labelledby={titleId} className={clsx('modal-panel flex max-h-[90dvh] w-full flex-col bg-surface outline-none', widths[size])}>
+        <div className="flex items-start justify-between gap-4 border-b border-line px-6 py-5">
+          <div><p className="eyebrow mb-1.5">MEDCOEL</p><h2 id={titleId} className="font-display text-xl font-semibold tracking-tight">{title}</h2></div>
+          {onClose && <button type="button" onClick={onClose} className="rounded-full bg-page p-2 text-ink-muted transition-colors hover:bg-line hover:text-ink" aria-label="Tutup"><X size={18} /></button>}
         </div>
-        <div className="overflow-y-auto px-5 py-4">{children}</div>
-        {footer && <div className="flex flex-wrap justify-end gap-2 border-t border-line px-5 py-3">{footer}</div>}
+        <div className="modal-body overflow-y-auto px-6 py-6">{children}</div>
+        {footer && <div className="flex flex-wrap justify-end gap-2 border-t border-line px-6 py-4">{footer}</div>}
       </div>
-    </div>
+    </div>, document.body,
   );
 }
 

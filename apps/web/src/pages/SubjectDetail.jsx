@@ -36,7 +36,7 @@ function ModeChoice({ value, onChange }) {
       <legend className="label">Cara mengerjakan</legend>
       <div className="grid gap-2 sm:grid-cols-2">
         {opts.map(([v, t, d]) => (
-          <label key={v} className={`cursor-pointer rounded-xl border p-3 ${value === v ? 'border-brand bg-brand-soft' : 'border-line hover:border-brand/50'}`}>
+          <label key={v} className={`mode-choice cursor-pointer rounded-2xl border p-4 transition-colors ${value === v ? 'border-brand bg-brand-soft' : 'border-line hover:border-brand/50'}`}>
             <input type="radio" className="sr-only" checked={value === v} onChange={() => onChange(v)} />
             <span className="block font-semibold">{t}</span>
             <span className="text-[13px] text-ink-muted">{d}</span>
@@ -278,11 +278,11 @@ export default function SubjectDetail() {
   return (
     <div className="space-y-6">
       <Link to="/mata-kuliah" className="inline-flex items-center gap-1 text-sm font-semibold text-ink-muted hover:text-brand"><ArrowLeft size={16} /> Semua mata kuliah</Link>
-      <section className="card flex flex-col gap-4 overflow-hidden sm:flex-row">
-        <div className="h-40 shrink-0 bg-brand-soft sm:h-auto sm:w-48"><Illustration subject={s} className="h-full w-full" /></div>
-        <div className="flex flex-1 flex-col justify-center gap-2 p-5 sm:pl-0">
+      <section className="subject-detail-hero card flex flex-col gap-6 overflow-hidden sm:flex-row">
+        <div className="h-52 shrink-0 bg-page sm:h-auto sm:w-72"><Illustration subject={s} className="h-full w-full" /></div>
+        <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 p-6 sm:py-9 sm:pl-0">
           {s.studying && <Badge className="w-fit bg-gold-soft text-[#6b4f00]">Sedang dipelajari</Badge>}
-          <h1 className="page-title">{s.name}</h1>
+          <p className="eyebrow mt-2">Mata kuliah</p><h1 className="page-title">{s.name}</h1>
           {s.description && <p className="text-ink-muted">{s.description}</p>}
           <div className="mt-2 flex flex-wrap gap-2">
             <button type="button" className="btn-primary" onClick={() => setSim(true)} disabled={!withQ.length}><Layers size={18} /> Coba Simulasi</button>
@@ -298,7 +298,7 @@ export default function SubjectDetail() {
         ) : (
           <div className="grid gap-3 md:grid-cols-2">
             {chapters.map((c) => (
-              <button key={c.id} type="button" disabled={!c.total} onClick={() => setPractice(c)} className="card flex items-center gap-3 p-4 text-left transition-colors hover:border-brand disabled:cursor-not-allowed disabled:opacity-60">
+              <button key={c.id} type="button" disabled={!c.total} onClick={() => setPractice(c)} className="card flex items-center gap-4 !rounded-2xl p-5 text-left transition-colors hover:border-brand disabled:cursor-not-allowed disabled:opacity-60">
                 <div className="min-w-0 flex-1">
                   <p className="font-display font-semibold">{c.title}</p>
                   <p className="text-xs text-ink-muted">{c.total ? `${c.answered}/${c.total} soal dikerjakan${c.wrong ? ` · ${c.wrong} pernah salah` : ''}` : 'Belum ada soal'}</p>

@@ -24,7 +24,7 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        card: '0 1px 2px rgb(23 43 56 / 0.04), 0 4px 16px rgb(23 43 56 / 0.06)',
+        card: '0 2px 8px rgb(23 43 56 / 0.025)',
         pop: '0 10px 40px rgb(23 43 56 / 0.18)',
       },
       borderRadius: { xl2: '1.25rem' },
