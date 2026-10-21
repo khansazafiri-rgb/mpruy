@@ -1,107 +1,415 @@
-import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen, CalendarDays, Check, CheckCircle2, ChevronRight, FileUp, Instagram, Layers, MessageCircle, RotateCcw, Sparkles, Target } from 'lucide-react';
-import { useEffect, useState } from 'react';
+// Landing page MEDCOEL, gaya "buku catatan klinis": papan hijau, kertas
+// berbutir, stabilo, dan stiker ilustrasi mata kuliah. Angka diambil dari
+// endpoint yang hanya mengembalikan angka (soal tidak terbuka ke publik).
+// Contoh soal di hero ditulis di sini dan diberi label "contoh".
+import clsx from 'clsx';
+import {
+  ArrowRight, BellRing, Building2, CalendarClock, Check, ChevronDown, FileUp, Instagram,
+  ListChecks, MessageCircle, SlidersHorizontal, Trophy, X,
+} from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Illustration from '@/components/Illustration';
 import Logo from '@/components/Logo';
 import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
+import { waLink } from '@/lib/wa';
+import '@/styles/landing.css';
+
+const SUBJECTS = [
+  ['anatomi', 'Anatomi'], ['anestesiologi-dasar', 'Anestesiologi Dasar'], ['biokimia', 'Biokimia & Biologi Molekuler'], ['embriologi', 'Embriologi'],
+  ['farmakologi', 'Farmakologi'], ['fisiologi', 'Fisiologi'], ['genetika', 'Genetika Kedokteran'], ['ginekologi-payudara', 'Ginekologi & Payudara'],
+  ['histologi', 'Histologi'], ['ilmu-bedah', 'Ilmu Bedah'], ['ilmu-bedah-ortopedi', 'Ilmu Bedah Ortopedi'], ['ilmu-kesehatan-anak', 'Ilmu Kesehatan Anak'],
+  ['ilmu-penyakit-dalam', 'Ilmu Penyakit Dalam'], ['kehamilan-persalinan', 'Kehamilan & Persalinan'], ['mikrobiologi', 'Mikrobiologi'], ['multisistem-kegawatdaruratan', 'Kegawatdaruratan'],
+  ['parasitologi', 'Parasitologi'], ['patologi', 'Patologi Anatomi'], ['patologi-klinik', 'Patologi Klinik'], ['psikiatri-kesehatan-jiwa', 'Psikiatri'],
+  ['radiologi-dasar', 'Radiologi Dasar'], ['sistem-endokrin-metabolik-nutrisi', 'Endokrin & Metabolik'], ['sistem-gastrointestinal-hepatobilier-pankreas', 'Gastrointestinal'], ['sistem-ginjal-saluran-kemih', 'Ginjal & Saluran Kemih'],
+  ['sistem-hematologi-imunologi', 'Hematologi & Imunologi'], ['sistem-indra-mata', 'Indra: Mata'], ['sistem-indra-tht', 'Indra: THT'], ['sistem-integumen-kulit-kelamin', 'Kulit & Kelamin'],
+  ['sistem-kardiovaskular', 'Kardiovaskular'], ['sistem-muskuloskeletal', 'Muskuloskeletal'], ['sistem-respirasi', 'Respirasi'], ['sistem-saraf', 'Sistem Saraf'],
+];
+const img = (key) => `/illustrations/${key}.webp`;
 
 const SAMPLES = [
-  { key: 'anatomi', name: 'Anatomi', topic: 'Terminologi anatomis', question: 'Bidang yang membagi tubuh menjadi bagian kanan dan kiri yang sama besar disebut…', options: ['Bidang koronal', 'Bidang median', 'Bidang transversal'], answer: 1, explanation: 'Bidang median melewati garis tengah tubuh dan membaginya menjadi sisi kanan dan kiri yang sama besar.' },
-  { key: 'fisiologi', name: 'Fisiologi', topic: 'Transport membran', question: 'Perpindahan air melalui membran semipermeabel disebut…', options: ['Osmosis', 'Fagositosis', 'Eksositosis'], answer: 0, explanation: 'Osmosis adalah perpindahan air melalui membran semipermeabel akibat perbedaan konsentrasi zat terlarut.' },
-  { key: 'biokimia', name: 'Biokimia', topic: 'Biomolekul', question: 'Unit penyusun utama protein adalah…', options: ['Asam lemak', 'Monosakarida', 'Asam amino'], answer: 2, explanation: 'Asam amino saling terhubung melalui ikatan peptida untuk membentuk rantai protein.' },
+  {
+    key: 'anatomi', name: 'Anatomi', topic: 'Ekstremitas atas', level: 'Mudah',
+    stem: 'Pasien tidak mampu memulai abduksi lengan atas pada 15° pertama. Otot yang paling mungkin terganggu adalah…',
+    answer: 'B',
+    options: [
+      ['A', 'M. deltoideus', 'Deltoid melanjutkan abduksi setelah 15° sampai sekitar 90°, bukan memulainya.'],
+      ['B', 'M. supraspinatus', 'Supraspinatus memulai abduksi pada 0–15° pertama sebelum deltoid mengambil alih.'],
+      ['C', 'M. infraspinatus', 'Infraspinatus berperan dalam rotasi lateral (eksternal) bahu.'],
+      ['D', 'M. teres minor', 'Teres minor juga terutama memutar lengan ke lateral.'],
+      ['E', 'M. subscapularis', 'Subscapularis memutar lengan ke medial (internal).'],
+    ],
+  },
+  {
+    key: 'fisiologi', name: 'Fisiologi', topic: 'Fisiologi ginjal', level: 'Sedang',
+    stem: 'Saat tekanan perfusi ginjal turun, sel jukstaglomerular menyekresikan…',
+    answer: 'B',
+    options: [
+      ['A', 'Aldosteron', 'Aldosteron dihasilkan zona glomerulosa korteks adrenal, sebagai kelanjutan jalur RAA.'],
+      ['B', 'Renin', 'Sel jukstaglomerular (granular) melepas renin saat perfusi ginjal turun, memulai jalur renin-angiotensin-aldosteron.'],
+      ['C', 'ADH', 'ADH dibuat di hipotalamus dan dilepas dari hipofisis posterior.'],
+      ['D', 'ANP', 'ANP dilepas miosit atrium saat atrium teregang, efeknya justru menurunkan tekanan darah.'],
+      ['E', 'Eritropoietin', 'Eritropoietin dilepas sel interstisial peritubular ginjal terutama sebagai respons terhadap hipoksia.'],
+    ],
+  },
+  {
+    key: 'biokimia', name: 'Biokimia', topic: 'Metabolisme lipid', level: 'Sedang',
+    stem: 'Enzim pembatas laju pada sintesis kolesterol, yang juga dihambat oleh statin, adalah…',
+    answer: 'B',
+    options: [
+      ['A', 'HMG-KoA sintase', 'Enzim ini membentuk HMG-KoA, tetapi bukan langkah pembatas laju.'],
+      ['B', 'HMG-KoA reduktase', 'HMG-KoA reduktase mengubah HMG-KoA menjadi mevalonat. Inilah langkah pembatas laju dan target statin.'],
+      ['C', 'Asetil-KoA karboksilase', 'Enzim ini pembatas laju sintesis asam lemak, bukan kolesterol.'],
+      ['D', 'Skualen epoksidase', 'Enzim ini bekerja di tahap lanjut, setelah skualen terbentuk.'],
+      ['E', 'Lipoprotein lipase', 'Lipoprotein lipase menghidrolisis trigliserida pada kilomikron dan VLDL.'],
+    ],
+  },
 ];
 
-function LearningPreview() {
+const STEPS = [
+  { n: '1', title: 'Pilih mata kuliah dan BAB', text: 'Mata kuliah yang sedang kamu pelajari muncul paling atas. Mulai dari BAB yang paling mendesak.' },
+  { n: '2', title: 'Kerjakan dengan caramu', text: 'Mode Learning membuka kunci tiap soal. Mode Ujian bertimer, pembahasan dibuka setelah selesai.' },
+  { n: '3', title: 'Baca pembahasan tiap pilihan', text: 'Bukan cuma tahu yang benar, tapi juga kenapa pilihan lain salah. Progresmu tercatat per BAB.' },
+];
+
+const FAQ = [
+  ['Beneran gratis?', 'Iya. Semua fitur MEDCOEL bisa dipakai tanpa bayar: latihan per BAB, simulasi, paket soal, leaderboard, dan jadwal ujian.'],
+  ['Soalnya dari mana?', 'Dari admin MEDCOEL dan dari PDF soal yang dikirim teman-teman lewat Chat Admin. Setiap kiriman diperiksa admin dulu sebelum tayang.'],
+  ['Soal kampusku bisa dilihat kampus lain?', 'Saat mengirim PDF, kamu memilih sendiri: hanya untuk kampusmu atau untuk semua kampus. Soal khusus kampus hanya terlihat oleh akun dari kampus itu.'],
+  ['Kampusku belum ada di daftar, bagaimana?', 'Kamu tetap bisa mendaftar dan memakai semua soal umum. Fitur khusus kampus menyusul setelah kampusmu ditambahkan admin.'],
+  ['Bisa dipakai di HP?', 'Bisa. MEDCOEL dibuat untuk layar HP sejak awal, jadi enak dipakai sambil di kereta atau menunggu jadwal praktikum.'],
+];
+
+function useCountUp(target) {
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    if (!target) return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setN(target); return undefined; }
+    const start = performance.now();
+    let raf;
+    const tick = (t) => {
+      const p = Math.min(1, (t - start) / 1400);
+      setN(Math.round(target * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target]);
+  return n;
+}
+
+function QuizDemo() {
   const [active, setActive] = useState(0);
   const [picked, setPicked] = useState(null);
-  const [checked, setChecked] = useState(false);
-  const sample = SAMPLES[active];
-  const choose = (i) => { setActive(i); setPicked(null); setChecked(false); };
+  const q = SAMPLES[active];
+  const done = picked !== null;
+  const correct = picked === q.answer;
+  const switchTo = (i) => { setActive(i); setPicked(null); };
+
   return (
-    <div className="learning-preview">
-      <div className="preview-topline"><span><span className="status-light" /> RUANG BELAJAR</span><span>Pratinjau interaktif</span></div>
-      <div className="preview-tabs" role="group" aria-label="Mata kuliah contoh">
-        {SAMPLES.map((s, i) => <button key={s.key} type="button" aria-pressed={i === active} onClick={() => choose(i)}>{s.name}<ArrowUpRight size={13} aria-hidden /></button>)}
-      </div>
-      <div className="preview-sheet" key={sample.key}>
-        <div className="preview-subject">
-          <div><p className="eyebrow">Contoh latihan</p><h2>{sample.name}</h2><p>{sample.topic}</p></div>
-          <Illustration subject={{ illustrationKey: sample.key }} className="preview-illustration" />
+    <div className="lp-demo">
+      <p className="lp-note lp-note-try hand" aria-hidden>coba jawab satu! <svg viewBox="0 0 60 40" width="52" height="34"><path d="M4 6c18 2 34 10 44 26m0 0-2-11m2 11-10-4" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg></p>
+      <div className="lp-demo-sticker sticker" aria-hidden><span className="tape" style={{ top: -10, left: 22, transform: 'rotate(-8deg)' }} /><img src={img(q.key)} alt="" width={120} height={120} /></div>
+
+      <div className="paper-sheet paper-stack lp-demo-card">
+        <span className="tape" style={{ top: -12, left: '42%', transform: 'rotate(3deg)' }} aria-hidden />
+        <div className="lp-demo-head">
+          <span className="lp-demo-label">Contoh soal</span>
+          <div className="lp-demo-tabs" role="group" aria-label="Pilih mata kuliah contoh">
+            {SAMPLES.map((s, i) => (
+              <button key={s.key} type="button" aria-pressed={i === active} onClick={() => switchTo(i)}>{s.name}</button>
+            ))}
+          </div>
         </div>
-        <div className="preview-question">
-          <div className="preview-question-meta"><span>01 <span>/ 01</span></span><span><span className="status-light" /> Mode Learning</span></div>
-          <p className="preview-stem">{sample.question}</p>
-          <fieldset className="preview-options" disabled={checked}>
-            <legend className="sr-only">Pilih jawaban contoh</legend>
-            {sample.options.map((o, i) => <label key={o} className={`preview-option ${picked === i ? 'is-picked' : ''} ${checked && i === sample.answer ? 'is-correct' : ''} ${checked && picked === i && i !== sample.answer ? 'is-wrong' : ''}`}>
-              <input type="radio" name={`sample-${sample.key}`} className="sr-only" checked={picked === i} onChange={() => setPicked(i)} />
-              <span className="preview-letter">{checked && i === sample.answer ? <Check size={14} /> : String.fromCharCode(65 + i)}</span><span>{o}</span>
-            </label>)}
+
+        <div className="lp-demo-body" key={q.key}>
+          <p className="lp-demo-meta"><b>{q.name}</b> · {q.topic} <span className={clsx('lp-level', q.level === 'Mudah' ? 'is-easy' : 'is-mid')}>{q.level}</span></p>
+          <p className="lp-demo-stem">{q.stem}</p>
+          <fieldset className="lp-demo-options">
+            <legend className="sr-only">Pilih jawaban</legend>
+            {q.options.map(([label, text, why]) => {
+              const isKey = done && label === q.answer;
+              const isWrong = done && label === picked && !isKey;
+              return (
+                <div key={label}>
+                  <label className={clsx('lp-option', isKey && 'is-key', isWrong && 'is-wrong', done && 'is-done')}>
+                    <input type="radio" name={`demo-${q.key}`} className="sr-only" checked={picked === label} disabled={done} onChange={() => setPicked(label)} />
+                    <span className="lp-letter">{isKey ? <Check size={16} aria-label="Kunci" /> : isWrong ? <X size={16} aria-label="Salah" /> : label}</span>
+                    <span className="min-w-0 flex-1">{text}</span>
+                  </label>
+                  {done && (isKey || isWrong) && <p className={clsx('lp-why', isKey ? 'is-key' : 'is-wrong')}>{why}</p>}
+                </div>
+              );
+            })}
           </fieldset>
-          {checked ? <div className="preview-explanation" role="status"><b>{picked === sample.answer ? 'Tepat sekali.' : 'Yuk, pahami bersama.'}</b> {sample.explanation}</div> : null}
-          <div className="preview-actions"><span>Contoh soal · coba pilih jawaban</span>{checked ? <button className="btn-ghost btn-sm" type="button" onClick={() => { setPicked(null); setChecked(false); }}><RotateCcw size={13} /> Ulangi</button> : <button type="button" className="btn-primary btn-sm" disabled={picked === null} onClick={() => setChecked(true)}>Cek jawaban <ArrowRight size={13} /></button>}</div>
+          <div className="lp-demo-foot" role="status">
+            {done ? (
+              <>
+                <span className={clsx('lp-verdict', correct ? 'is-key' : 'is-wrong')}>{correct ? 'Tepat! +1 poin' : `Belum tepat. Kuncinya ${q.answer}.`}</span>
+                <button type="button" className="lp-link" onClick={() => switchTo((active + 1) % SAMPLES.length)}>Soal berikutnya <ArrowRight size={16} /></button>
+              </>
+            ) : <span className="text-ink-muted">Pilih satu jawaban untuk melihat pembahasannya.</span>}
+          </div>
         </div>
       </div>
-      <div className="preview-bottom"><BookOpen size={14} /><span>Sedikit lebih paham. Satu soal setiap kali.</span></div>
+      {done && <p className="lp-note lp-note-done hand" aria-hidden>pembahasan tiap pilihan ✓</p>}
     </div>
   );
 }
 
-const JOURNEY = [
-  { icon: BookOpen, title: 'Pilih yang sedang dipelajari.', text: 'Mulai dari mata kuliah dan BAB yang kamu butuhkan. Pilihanmu selalu hadir lebih dulu.' },
-  { icon: Target, title: 'Latihan. Pahami. Ulangi.', text: 'Cek jawaban dan pembahasan per soal, atau gunakan mode ujian untuk mengukur kesiapanmu.' },
-  { icon: Layers, title: 'Temukan ritme belajarmu.', text: 'Atur komposisi simulasi, lihat progres, dan siapkan diri menuju ujian berikutnya.' },
-];
+function SubjectWall() {
+  const [all, setAll] = useState(false);
+  return (
+    <>
+      <ul className={clsx('lp-wall', !all && 'is-clipped')}>
+        {SUBJECTS.map(([key, name], i) => (
+          <li key={key} style={{ '--r': `${[-3, 2, -1.5, 3, -2.5, 1, 2.5, -1][i % 8]}deg` }}>
+            <div className="sticker lp-wall-sticker"><img src={img(key)} alt="" width={160} height={160} loading="lazy" decoding="async" /></div>
+            <span>{name}</span>
+          </li>
+        ))}
+      </ul>
+      {!all && <div className="lp-wall-more"><button type="button" className="btn-secondary" onClick={() => setAll(true)}>Lihat semua 32 mata kuliah <ChevronDown size={18} /></button></div>}
+    </>
+  );
+}
+
+function Marquee() {
+  const row = SUBJECTS.map(([key, name]) => (
+    <span key={key} className="lp-marquee-item"><img src={img(key)} alt="" width={36} height={36} loading="lazy" />{name}</span>
+  ));
+  return (
+    <div className="lp-marquee" aria-label="Daftar mata kuliah">
+      <div className="lp-marquee-track"><div>{row}</div><div aria-hidden>{row}</div></div>
+    </div>
+  );
+}
+
+function Ecg({ className = '' }) {
+  return (
+    <svg className={`ecg ${className}`} viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden>
+      <path d="M0 50 H260 l14 -8 14 8 H330 l10 18 14 -62 14 62 10 -16 H520 l16 -10 16 10 H760 l10 18 14 -62 14 62 10 -16 H960 l16 -10 16 10 H1200" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+    </svg>
+  );
+}
 
 export default function Landing() {
   const { me, settings } = useAuth();
   const [stats, setStats] = useState(null);
-  useEffect(() => { let alive = true; api('stats').then((s) => { if (alive) setStats(s); }).catch(() => {}); return () => { alive = false; }; }, []);
+  const [scrolled, setScrolled] = useState(false);
+  const top = useRef(null);
+  useEffect(() => { let alive = true; api('stats').then((s) => alive && setStats(s)).catch(() => {}); return () => { alive = false; }; }, []);
+  useEffect(() => {
+    const el = top.current;
+    if (!el) return undefined;
+    const io = new IntersectionObserver(([en]) => setScrolled(!en.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const soal = useCountUp(stats?.questions || 0);
+  const fmt = (n) => new Intl.NumberFormat('id-ID').format(n || 0);
   const startUrl = me ? '/beranda' : '/daftar';
+  const startLabel = me ? 'Lanjut belajar' : 'Daftar gratis';
+
   return (
-    <div className="landing paper-surface">
-      <a href="#utama" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-surface focus:p-3">Lewati ke isi</a>
-      <header className="landing-header">
-        <div className="landing-container landing-nav">
-          <Link to="/" aria-label="MEDCOEL halaman utama"><Logo /></Link>
-          <nav aria-label="Navigasi halaman utama"><a href="#cara-belajar">Cara belajar</a><a href="#fitur">Fitur</a><a href="#komunitas">Komunitas</a></nav>
-          <div className="flex items-center gap-2">{!me && <Link to="/masuk" className="btn-ghost landing-login">Masuk</Link>}<Link to={startUrl} className="btn-primary landing-start">{me ? 'Buka beranda' : 'Mulai gratis'}<ArrowUpRight size={15} /></Link></div>
+    <div className="lp">
+      <a href="#utama" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-surface focus:p-3">Lewati ke isi</a>
+      <div ref={top} aria-hidden />
+      <header className={clsx('lp-header', scrolled && 'is-scrolled')}>
+        <div className="lp-wrap lp-header-row">
+          <Link to="/" aria-label="MEDCOEL, halaman utama"><Logo /></Link>
+          <nav aria-label="Bagian halaman" className="lp-nav">
+            <a href="#cara-kerja">Cara kerja</a><a href="#mata-kuliah">Mata kuliah</a><a href="#fitur">Fitur</a><a href="#tanya">Tanya jawab</a>
+          </nav>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {!me && <Link to="/masuk" className="btn-ghost px-3">Masuk</Link>}
+            <Link to={startUrl} className="btn-primary btn-press">{me ? 'Buka beranda' : 'Daftar'}</Link>
+          </div>
         </div>
       </header>
+
       <main id="utama">
-        <section className="landing-hero landing-container">
-          <div className="hero-copy">
-            <p className="landing-kicker"><span className="status-light" /> RUANG BELAJAR MAHASISWA KEDOKTERAN</p>
-            <h1>Banyak materi.<br />Satu tempat<br /><span>untuk mengerti.</span></h1>
-            <p className="hero-description">Dari Anatomi sampai sistem tubuh. Latihan soal, pahami pembahasan, dan temukan ritme belajarmu—bareng komunitas.</p>
-            <div className="hero-cta"><Link to={startUrl} className="btn-primary">{me ? 'Lanjut belajar' : 'Mulai belajar gratis'}<ArrowRight size={18} /></Link><a href="#cara-belajar" className="hero-secondary">Kenali MEDCOEL<ArrowDown size={15} /></a></div>
-            <div className="hero-notes"><span><CheckCircle2 size={15} /> Semua fitur gratis</span><span><CheckCircle2 size={15} /> Untuk semua kampus</span></div>
-            <div className="hero-footnote"><span className="hero-footnote-line" /><p>Belajar bukan sekadar selesai.<br /><strong>Tapi pulang dengan lebih paham.</strong></p></div>
+        {/* HERO */}
+        <section className="lp-hero surface-forest">
+          <div className="lp-wrap lp-hero-grid">
+            <div className="lp-hero-copy">
+              <p className="lp-kicker"><span className="lp-dot" />Untuk mahasiswa kedokteran · semua fitur gratis</p>
+              <h1>Latihan soal FK yang bikin kamu <span className="lp-hl">paham</span>, bukan cuma hafal kunci</h1>
+              <p className="lp-lead">32 mata kuliah dari Anatomi sampai Sistem Saraf. Kerjakan per BAB atau simulasi ujian, baca pembahasan tiap pilihan, dan kirim PDF soal kampusmu supaya jadi latihan bareng.</p>
+              <div className="lp-cta">
+                <Link to={startUrl} className="btn btn-paper lp-cta-main">{startLabel} <ArrowRight size={19} /></Link>
+                {!me && <Link to="/masuk" className="lp-cta-alt">Saya sudah punya akun</Link>}
+              </div>
+              <ul className="lp-proof">
+                <li><Check size={17} /> Tanpa langganan</li>
+                <li><Check size={17} /> Soal diperiksa admin sebelum tayang</li>
+                <li><Check size={17} /> Nyaman di HP</li>
+              </ul>
+            </div>
+            <QuizDemo />
           </div>
-          <div className="hero-stage forest-surface"><div className="hero-stage-orbit" aria-hidden /><div className="stage-caption"><Sparkles size={15} /><span>Rasa penasaranmu, punya tempat.</span></div><LearningPreview /><span className="stage-index" aria-hidden>MEDCOEL / STUDY WELL</span></div>
-        </section>
-        <div className="landing-container"><div className="landing-strip"><p>Dibuat untuk perjalanan<br /><strong>panjang di kedokteran.</strong></p><div><BookOpen size={21} /><span><strong>{stats?.subjects > 0 ? `${stats.subjects} mata kuliah` : 'Lintas mata kuliah'}</strong><small>Dari dasar sampai klinis</small></span></div><div><Layers size={21} /><span><strong>Learning & ujian</strong><small>Dua cara, satu tujuan</small></span></div><div><Sparkles size={21} /><span><strong>100% gratis</strong><small>Ruang yang terbuka untukmu</small></span></div></div></div>
-
-        <section id="cara-belajar" className="landing-container landing-section">
-          <div className="landing-section-heading"><div><p className="eyebrow">SEDIKIT DEMI SEDIKIT</p><h2>Mulai dari satu topik.<br /><span>Bangun pemahaman yang utuh.</span></h2></div><p>Tidak harus menguasai semuanya hari ini. Pilih satu bagian, lalu beri dirimu ruang untuk memahami.</p></div>
-          <div className="journey-grid">{JOURNEY.map((s, i) => <article className="journey-card" key={s.title}><div className="journey-top"><span className="journey-icon"><s.icon size={21} /></span><span>0{i + 1}</span></div><h3>{s.title}</h3><p>{s.text}</p></article>)}</div>
+          <Ecg className="lp-hero-ecg" />
         </section>
 
-        <section id="fitur" className="landing-container landing-section landing-features">
-          <div className="landing-section-heading"><div><p className="eyebrow">SATU RUANG, BANYAK KEMUNGKINAN</p><h2>Yang kamu butuhkan.<br /><span>Lebih dekat, lebih tertata.</span></h2></div></div>
-          <div className="feature-composition">
-            <article className="feature-focus forest-surface"><div className="feature-label"><Target size={19} /><span>LATIHAN & SIMULASI</span></div><h3>Belajar dengan caramu.<br />Ujian dengan ritmemu.</h3><p>Pilih BAB, jumlah soal, dan tingkat kesulitan. Cek pembahasan langsung atau simpan sampai ujian selesai.</p><div className="feature-mode-list"><div><BookOpen size={21} /><span><b>Mode Learning</b><small>Pahami alasan di balik jawaban.</small></span><CheckCircle2 size={18} /></div><div><Layers size={21} /><span><b>Mode ujian</b><small>Fokus mengerjakan, bahas setelahnya.</small></span><ChevronRight size={18} /></div></div><Link to={startUrl}>Temukan cara belajarmu <ArrowUpRight size={17} /></Link></article>
-            <article className="feature-calendar paper-surface"><div className="feature-label"><CalendarDays size={19} /><span>JADWAL & PENGINGAT</span></div><h3>Biar ujian tidak<br />datang tiba-tiba.</h3><p>Catat jadwalmu. Pantau hitung mundurnya. Dapatkan pengingat H-7, H-3, dan H-1.</p><div className="calendar-art" aria-hidden><div className="calendar-binding"><i /><i /></div><div className="calendar-dots">{Array.from({ length: 14 }, (_, i) => <i key={i} className={[3, 7, 10].includes(i) ? 'marked' : ''}>{i + 1}</i>)}</div><span><Check size={13} /> Satu langkah lebih siap</span></div></article>
-            <article className="feature-community"><span className="feature-small-icon"><FileUp size={23} /></span><div><p className="eyebrow">DARI KOMUNITAS, UNTUK KOMUNITAS</p><h3>Soalmu bisa membantu teman lain.</h3><p>Kirim PDF melalui Chat Admin. Setelah diperiksa, soal bisa jadi bahan latihan bersama.</p></div><ArrowUpRight size={23} aria-hidden /></article>
+        <Marquee />
+
+        {/* CARA KERJA */}
+        <section id="cara-kerja" className="lp-section tex-grid">
+          <div className="lp-wrap">
+            <div className="lp-heading">
+              <p className="lp-eyebrow">Cara kerja</p>
+              <h2>Tiga langkah, setiap kali kamu buka MEDCOEL.</h2>
+            </div>
+            <ol className="lp-steps">
+              {STEPS.map((s) => (
+                <li key={s.n} className="paper-sheet lp-step">
+                  <span className="lp-step-n hand" aria-hidden>{s.n}.</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
-        <section id="komunitas" className="landing-container landing-section">
-          <div className="community-invite forest-surface"><span className="community-star" aria-hidden>✳</span><div><p className="eyebrow">KAMU TIDAK BELAJAR SENDIRIAN</p><h2>Perjalanan panjang.<br />Lebih ringan bersama.</h2><p>Teman satu tujuan, dari berbagai kampus. Tukar semangat dan tumbuh bersama komunitas MEDCOEL.</p><div className="flex flex-wrap gap-3">{settings?.waCommunityUrl ? <a href={settings.waCommunityUrl} target="_blank" rel="noopener noreferrer" className="btn invite-primary"><MessageCircle size={17} /> Gabung komunitas</a> : <Link to={startUrl} className="btn invite-primary">{me ? 'Kembali belajar' : 'Jadi bagian dari MEDCOEL'}<ArrowRight size={17} /></Link>}{settings?.instagramUrl && <a href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" className="btn invite-secondary"><Instagram size={17} /> Instagram</a>}</div></div><div className="community-art" aria-hidden><Illustration subject={{ illustrationKey: 'histologi' }} /><Illustration subject={{ illustrationKey: 'anatomi' }} /><Illustration subject={{ illustrationKey: 'biokimia' }} /></div></div>
+        {/* MATA KULIAH */}
+        <section id="mata-kuliah" className="lp-section lp-section-paper">
+          <div className="lp-wrap">
+            <div className="lp-heading lp-heading-split">
+              <div>
+                <p className="lp-eyebrow">32 mata kuliah · 384 BAB</p>
+                <h2>Dari preklinik sampai sistem organ, semuanya di satu tempat.</h2>
+              </div>
+              <p className="lp-heading-note hand" aria-hidden>yang kamu pilih saat daftar<br />selalu muncul paling atas ↓</p>
+            </div>
+            <SubjectWall />
+          </div>
+        </section>
+
+        {/* FITUR */}
+        <section id="fitur" className="lp-section tex-grid">
+          <div className="lp-wrap">
+            <div className="lp-heading">
+              <p className="lp-eyebrow">Fitur</p>
+              <h2>Yang kamu dapat setelah daftar.</h2>
+            </div>
+            <div className="lp-bento">
+              <article className="lp-card lp-card-sim surface-forest">
+                <p className="lp-card-tag"><SlidersHorizontal size={17} /> Simulasi</p>
+                <h3>Atur sendiri komposisi soal ujianmu.</h3>
+                <p>Pilih BAB, jumlah soal, dan berapa yang mudah, sedang, atau sulit. Atau ambil Paket 100, 150, 200 yang mencakup semua BAB.</p>
+                <div className="lp-mix" aria-hidden>
+                  {[['Mudah', 30, 'is-easy'], ['Sedang', 50, 'is-mid'], ['Sulit', 20, 'is-hard']].map(([l, v, c]) => (
+                    <div key={l} className="lp-mix-row"><span>{l}</span><i className={c} style={{ width: `${v}%` }} /><b>{v}%</b></div>
+                  ))}
+                  <div className="lp-packs">{['Paket 100', 'Paket 150', 'Paket 200'].map((p, i) => <span key={p} className={i === 1 ? 'is-on' : ''}>{p}</span>)}</div>
+                </div>
+              </article>
+
+              <article className="lp-card paper-sheet">
+                <p className="lp-card-tag"><CalendarClock size={17} /> Jadwal ujian</p>
+                <h3>Hitung mundur sampai hari ujian.</h3>
+                <div className="lp-countdown" aria-hidden>
+                  <div><b>12</b><span>hari</span></div><div><b>08</b><span>jam</span></div><div><b>45</b><span>menit</span></div>
+                </div>
+                <p className="lp-small"><BellRing size={15} /> Pengingat H-7, H-3, dan H-1. Zona WIB, WITA, atau WIT.</p>
+              </article>
+
+              <article className="lp-card paper-sheet">
+                <p className="lp-card-tag"><Trophy size={17} /> Leaderboard</p>
+                <h3>Poin dari jawaban benar di percobaan pertama.</h3>
+                <ol className="lp-board" aria-label="Contoh tampilan leaderboard">
+                  <li><span>1</span><b>Nama tampil atau anonim</b><em>248</em></li>
+                  <li><span>2</span><b>Per kampus atau nasional</b><em>231</em></li>
+                  <li className="is-me"><span>3</span><b>Kamu</b><em>219</em></li>
+                </ol>
+              </article>
+
+              <article className="lp-card lp-card-chat paper-sheet tex-ruled">
+                <p className="lp-card-tag"><FileUp size={17} /> Kirim soal lewat Chat Admin</p>
+                <h3>Punya PDF soal tahun lalu? Jadikan latihan bareng.</h3>
+                <div className="lp-chat" aria-hidden>
+                  <p className="is-bot">Soal ini untuk mata kuliah apa?</p>
+                  <p className="is-me">Parasitologi</p>
+                  <p className="is-bot">Sip. Unggah PDF-nya di sini, nanti admin periksa dulu.</p>
+                </div>
+              </article>
+
+              <article className="lp-card paper-sheet">
+                <p className="lp-card-tag"><Building2 size={17} /> Soal kampusmu</p>
+                <h3>Soal khusus kampus hanya terlihat teman sekampus.</h3>
+                <p className="lp-small"><ListChecks size={15} /> Kamu yang memilih saat mengirim PDF.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* ANGKA */}
+        <section className="lp-numbers surface-forest" aria-label="MEDCOEL dalam angka">
+          <div className="lp-wrap lp-numbers-row">
+            <div><b aria-live="polite">{fmt(soal)}</b><span>soal sudah tayang</span></div>
+            <div><b>32</b><span>mata kuliah</span></div>
+            <div><b>384</b><span>BAB</span></div>
+            <div><b>Rp0</b><span>biaya untuk semua fitur</span></div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="tanya" className="lp-section lp-section-paper">
+          <div className="lp-wrap lp-faq-grid">
+            <div className="lp-heading">
+              <p className="lp-eyebrow">Tanya jawab</p>
+              <h2>Yang sering ditanyakan.</h2>
+              <p className="lp-faq-note">Masih ada yang bingung? Tanya langsung ke admin lewat Chat Admin setelah masuk{settings?.adminWhatsapp ? ', atau lewat WhatsApp' : ''}.</p>
+              {settings?.adminWhatsapp && <a href={waLink(settings.adminWhatsapp, 'Halo admin MEDCOEL, saya mau tanya.')} target="_blank" rel="noopener noreferrer" className="btn-secondary mt-4"><MessageCircle size={18} /> WhatsApp admin</a>}
+            </div>
+            <div className="lp-faq">
+              {FAQ.map(([q, a]) => (
+                <details key={q} className="paper-sheet">
+                  <summary>{q}<ChevronDown size={20} aria-hidden /></summary>
+                  <p>{a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* AJAKAN */}
+        <section className="lp-wrap lp-final-wrap">
+          <div className="lp-final surface-forest">
+            <div className="lp-final-copy">
+              <h2>Soal pertamamu sudah menunggu.</h2>
+              <p>Daftar sebentar saja: pilih kampus dan mata kuliah yang sedang kamu pelajari, lalu langsung latihan.</p>
+              <div className="lp-cta">
+                <Link to={startUrl} className="btn btn-paper lp-cta-main">{startLabel} <ArrowRight size={19} /></Link>
+                {settings?.waCommunityUrl && <a href={settings.waCommunityUrl} target="_blank" rel="noopener noreferrer" className="lp-cta-alt"><MessageCircle size={18} /> Komunitas WhatsApp</a>}
+                {settings?.instagramUrl && <a href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" className="lp-cta-alt"><Instagram size={18} /> Instagram</a>}
+              </div>
+            </div>
+            <div className="lp-final-art" aria-hidden>
+              {['sistem-kardiovaskular', 'histologi', 'farmakologi'].map((k, i) => (
+                <div key={k} className={`sticker lp-final-sticker s${i}`}><span className={clsx('tape', i === 1 && 'tape-mint')} style={{ top: -11, left: 30 }} /><img src={img(k)} alt="" width={150} height={150} loading="lazy" /></div>
+              ))}
+              <p className="hand lp-final-note">sampai ketemu<br />di soal pertama!</p>
+            </div>
+          </div>
         </section>
       </main>
-      <footer className="landing-footer landing-container"><div><Logo /><p>Ruang untuk belajar. Ruang untuk bertumbuh.</p></div><span>© {new Date().getFullYear()} MEDCOEL</span><Link to="/kebijakan-privasi">Kebijakan privasi <ArrowUpRight size={13} /></Link></footer>
+
+      <footer className="lp-footer">
+        <div className="lp-wrap lp-footer-row">
+          <div>
+            <Logo />
+            <p>Belajar kedokteran bareng komunitas, tanpa bayar.</p>
+          </div>
+          <nav aria-label="Tautan bawah">
+            {!me && <Link to="/masuk">Masuk</Link>}
+            {!me && <Link to="/daftar">Daftar</Link>}
+            <Link to="/kebijakan-privasi">Kebijakan privasi</Link>
+          </nav>
+          <span>© {new Date().getFullYear()} MEDCOEL · medcoel.com</span>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -64,10 +64,10 @@ body { background-color: rgb(var(--paper)); }
   border-radius: 20px; box-shadow: 0 1px 0 #fff inset, 0 18px 40px -22px rgb(10 56 48 / .35), 0 2px 4px rgb(10 56 48 / .06);
 }
 .paper-sheet::after { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background-image: var(--grain); opacity: .14; mix-blend-mode: multiply; pointer-events: none; }
-.paper-stack::before {
-  content: ''; position: absolute; inset: 10px -8px -10px 8px; z-index: -2; border-radius: inherit;
-  background: #f3efe3; border: 1px solid rgb(var(--paper-2)); transform: rotate(2.2deg);
-  box-shadow: 0 14px 30px -20px rgb(10 56 48 / .35);
+.paper-stack {
+  /* Lembar kedua di belakang. Pakai bayangan, bukan ::before: pseudo-elemen
+     ber-z-index negatif akan tergambar di atas latar kartu itu sendiri. */
+  box-shadow: 0 1px 0 #fff inset, 9px 10px 0 -1px #f1ecdf, 9px 10px 0 0 rgb(var(--paper-2)), 0 22px 44px -22px rgb(10 56 48 / .4);
 }
 
 /* Stabilo emas di belakang kata. */
