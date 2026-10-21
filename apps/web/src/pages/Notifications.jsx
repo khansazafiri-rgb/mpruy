@@ -7,6 +7,7 @@ import { api, errorText } from '@/lib/api';
 import pb from '@/lib/pb';
 import { safeInternalPath } from '@/lib/safePath';
 import { relative } from '@/lib/time';
+import PageHead from '@/components/PageHead';
 
 export default function Notifications() {
   const { refresh } = useAuth();
@@ -26,11 +27,8 @@ export default function Notifications() {
   };
 
   return (
-    <div className="space-y-5">
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <h1 className="page-title">Notifikasi</h1>
-        {items?.some((n) => !n.read) && <button type="button" className="btn-secondary btn-sm" onClick={readAll}><CheckCheck size={16} /> Tandai semua dibaca</button>}
-      </div>
+    <div className="space-y-7">
+      <PageHead eyebrow="Kabar terbaru" title="Notifikasi" actions={items?.some((n) => !n.read) && <button type="button" className="btn-secondary btn-sm" onClick={readAll}><CheckCheck size={16} /> Tandai semua dibaca</button>} />
       <Alert>{error}</Alert>
       {!items ? <PageLoader /> : !items.length ? (
         <EmptyState icon={Bell} title="Belum ada notifikasi">Status pengajuan soal, soal yang sudah tayang, laporan yang selesai, dan pengingat ujian akan muncul di sini.</EmptyState>

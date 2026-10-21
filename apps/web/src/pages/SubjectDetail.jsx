@@ -1,8 +1,9 @@
-import { ArrowLeft, BookOpen, BookOpenCheck, CheckCircle2, ChevronRight, Clock, Layers, Minus, Package, PlayCircle, Plus, SlidersHorizontal } from 'lucide-react';
+import { ArrowLeft, BookOpen, BookOpenCheck, CheckCircle2, ChevronDown, Clock, Layers, MessageCircle, Minus, Package, PlayCircle, Plus, School, SlidersHorizontal } from 'lucide-react';
 import { useEffect, useId, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import Ecg from '@/components/Ecg';
 import Illustration from '@/components/Illustration';
-import { Alert, Badge, EmptyState, Modal, PageLoader, ProgressBar } from '@/components/ui';
+import { Alert, EmptyState, Modal, PageLoader, ProgressBar } from '@/components/ui';
 import { api } from '@/lib/api';
 import { DIFF, DIFF_CLASS } from '@/lib/labels';
 import { useApi } from '@/lib/useApi';
@@ -264,6 +265,25 @@ function PackageDialog({ pkg, onClose }) {
   );
 }
 
+function ChapterRow({ c, n, onPick }) {
+  const done = c.total > 0 && c.answered >= c.total;
+  return (
+    <li>
+      <button type="button" onClick={() => onPick(c)} className="chapter-row group">
+        <span className="chapter-num" aria-hidden>{String(n).padStart(2, '0')}</span>
+        <span className="min-w-0 flex-1">
+          <span className="block font-display text-[16px] font-semibold leading-snug text-ink group-hover:text-brand">{c.title}</span>
+          <span className="mt-1 block text-[13px] text-ink-muted">
+            <b className="font-semibold text-ink">{c.answered}</b>/{c.total} soal dikerjakan{c.wrong ? <> · <span className="text-coral">{c.wrong} pernah salah</span></> : null}
+          </span>
+          <ProgressBar value={c.answered} max={c.total} className="mt-2.5 !h-2" color={done ? 'bg-brand' : 'bg-gold'} label={`Progres ${c.title}`} />
+        </span>
+        <span className="chapter-go">{done ? <CheckCircle2 size={16} aria-hidden /> : <PlayCircle size={16} aria-hidden />}<span>{done ? 'Ulangi' : c.answered ? 'Lanjut' : 'Latihan'}</span></span>
+      </button>
+    </li>
+  );
+}
+
 export default function SubjectDetail() {
   const { slug } = useParams();
   const [searchParams] = useSearchParams();
@@ -278,54 +298,113 @@ export default function SubjectDetail() {
   if (loading) return <PageLoader />;
   if (error) return <Alert>{error.message}</Alert>;
   const s = data.subject;
-  const withQ = chapters.filter((c) => c.total > 0);
+  const numbered = chapters.map((c, i) => ({ ...c, n: i + 1 }));
+  const withQ = numbered.filter((c) => c.total > 0);
+  const soon = numbered.filter((c) => !c.total);
+  const total = withQ.reduce((a, c) => a + c.total, 0);
+  const answered = withQ.reduce((a, c) => a + c.answered, 0);
+  const pct = total ? Math.round((answered / total) * 100) : 0;
 
   return (
-    <div className="space-y-6">
-      <Link to="/mata-kuliah" className="inline-flex items-center gap-1 text-sm font-semibold text-ink-muted hover:text-brand"><ArrowLeft size={16} /> Semua mata kuliah</Link>
-      <section className="subject-detail-hero card flex flex-col gap-6 overflow-hidden sm:flex-row">
-        {!campusOnly && <div className="h-52 shrink-0 bg-page sm:h-auto sm:w-72"><Illustration subject={s} className="h-full w-full" /></div>}
-        <div className={`flex min-w-0 flex-1 flex-col justify-center gap-2 p-6 sm:py-9 ${campusOnly ? '' : 'sm:pl-0'}`}>
-          {s.studying && <Badge className="w-fit bg-gold-soft text-[#6b4f00]">Sedang dipelajari</Badge>}
-          <p className="eyebrow mt-2">{campusOnly ? `Soal kampusmu · ${data.campusName || "Kampusmu"}` : "Mata kuliah"}</p><h1 className="page-title">{s.name}</h1>
-          {s.description && <p className="text-ink-muted">{s.description}</p>}
-          <div className="mt-2 flex flex-wrap gap-2">
-            <button type="button" className="btn-primary" onClick={() => setSim(true)} disabled={!withQ.length}><Layers size={18} /> Coba Simulasi</button>
-            {data.packages.length > 0 && <a href="#paket" className="btn-secondary"><Package size={18} /> Paket soal</a>}
+    <div className="space-y-10">
+      <Link to="/mata-kuliah" className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-muted hover:text-brand"><ArrowLeft size={16} /> Semua mata kuliah</Link>
+
+      <section className="sd-hero surface-forest">
+        <Ecg className="sd-ecg" />
+        <div className="relative grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_auto]">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="tag-label bg-white/10 text-mint">{campusOnly ? <><School size={14} aria-hidden /> Soal kampusmu</> : <><BookOpen size={14} aria-hidden /> Mata kuliah</>}</span>
+              {s.studying && <span className="tag-label bg-gold text-forest">Sedang dipelajari</span>}
+            </div>
+            <h1 className="sd-title">{s.name}</h1>
+            {campusOnly && <p className="text-[15px] font-semibold text-mint">{data.campusName || 'Kampusmu'}</p>}
+            {s.description && <p className="mt-2 max-w-xl text-[17px] leading-relaxed text-white/80">{s.description}</p>}
+
+            <dl className="sd-stats">
+              <div><dt>BAB</dt><dd>{chapters.length}</dd></div>
+              <div><dt>Siap dikerjakan</dt><dd>{withQ.length}</dd></div>
+              <div><dt>Soal dikerjakan</dt><dd>{answered}<small>/{total}</small></dd></div>
+            </dl>
+            <div className="mt-4 max-w-md">
+              <div className="mb-1.5 flex justify-between text-[13px] font-semibold text-white/75"><span>Progresmu</span><span>{pct}%</span></div>
+              <div className="h-2.5 overflow-hidden rounded-full bg-white/15" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`Progres ${s.name}`}>
+                <div className="h-full rounded-full bg-gold transition-all" style={{ width: `${pct}%` }} />
+              </div>
+            </div>
+
+            <div className="mt-7 flex flex-wrap gap-3">
+              <button type="button" className="btn btn-paper btn-press px-5 py-3 text-base" onClick={() => setSim(true)} disabled={!withQ.length}><Layers size={18} /> Coba Simulasi</button>
+              {data.packages.length > 0 && <a href="#paket" className="btn border border-white/30 px-5 py-3 text-base text-white hover:bg-white/10"><Package size={18} /> Paket soal</a>}
+            </div>
           </div>
+
+          {!campusOnly && (
+            <div className="sd-art-wrap">
+              <div className="sd-sticker sticker">
+                <span className="tape -top-3 left-1/2 -translate-x-1/2 -rotate-3" />
+                <Illustration subject={s} className="h-full w-full" />
+              </div>
+              {withQ.length > 0 && <p className="hand sd-note">mulai dari BAB yang<br />sudah ada soalnya ya ↓</p>}
+            </div>
+          )}
         </div>
       </section>
 
-      <section>
-        <h2 className="section-title mb-3">{campusOnly ? "Materi yang sudah tersedia" : "Latihan per topik"}</h2>
+      <section aria-labelledby="latihan">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="eyebrow mb-2">{campusOnly ? 'Materi kampusmu' : 'Latihan per topik'}</p>
+            <h2 id="latihan" className="section-title">{campusOnly ? 'Materi yang sudah tersedia' : 'Pilih BAB, lalu atur sesi latihanmu'}</h2>
+          </div>
+          {chapters.length > 0 && <p className="text-sm text-ink-muted"><b className="text-ink">{withQ.length}</b> siap dikerjakan · <b className="text-ink">{soon.length}</b> segera hadir</p>}
+        </div>
+
         {!chapters.length ? (
           <EmptyState icon={BookOpenCheck} title="Belum ada BAB">Admin sedang menyiapkan soal untuk mata kuliah ini. Kamu juga bisa mengirim PDF soal lewat Chat Admin.</EmptyState>
         ) : (
-          <div className="grid gap-3 md:grid-cols-2">
-            {chapters.map((c, index) => (
-              <button key={c.id} type="button" disabled={!c.total} onClick={() => setPractice(c)} className="chapter-card card flex items-center gap-4 !rounded-2xl p-5 text-left transition-colors hover:border-brand disabled:cursor-not-allowed disabled:opacity-60">
-                <span className="chapter-index" aria-hidden>{String(index + 1).padStart(2, "0")}</span><div className="min-w-0 flex-1">
-                  <p className="font-display font-semibold">{c.title}</p>
-                  <p className="text-xs text-ink-muted">{c.total ? `${c.answered}/${c.total} soal dikerjakan${c.wrong ? ` · ${c.wrong} pernah salah` : ''}` : 'Belum ada soal'}</p>
-                  {c.total > 0 && <ProgressBar value={c.answered} max={c.total} className="mt-2" color="bg-progress" label={`Progres ${c.title}`} />}
-                </div>
-                <ChevronRight className="shrink-0 text-ink-muted" size={20} />
-              </button>
-            ))}
+          <div className="space-y-5">
+            {withQ.length > 0 ? (
+              <ul className="chapter-sheet paper-sheet">
+                {withQ.map((c) => <ChapterRow key={c.id} c={c} n={c.n} onPick={setPractice} />)}
+              </ul>
+            ) : (
+              <div className="paper-sheet flex flex-col items-start gap-3 p-6 sm:flex-row sm:items-center">
+                <p className="flex-1 text-[15px] text-ink-muted">Belum ada BAB yang punya soal di mata kuliah ini. Punya PDF soalnya? Kirim lewat Chat Admin, nanti diubah jadi latihan.</p>
+                <Link to="/chat-admin" className="btn-secondary"><MessageCircle size={17} /> Kirim PDF soal</Link>
+              </div>
+            )}
+
+            {soon.length > 0 && (
+              <details className="soon-sheet" open={!withQ.length}>
+                <summary>
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-display text-[16px] font-semibold text-ink">Segera hadir</span>
+                    <span className="block text-[13px] text-ink-muted">{soon.length} BAB belum ada soalnya</span>
+                  </span>
+                  <ChevronDown className="soon-chevron text-ink-muted" size={20} aria-hidden />
+                </summary>
+                <ol className="soon-list">
+                  {soon.map((c) => <li key={c.id}><span className="chapter-num is-quiet" aria-hidden>{String(c.n).padStart(2, '0')}</span><span className="min-w-0">{c.title}</span></li>)}
+                </ol>
+                <p className="soon-foot">Punya PDF soal untuk BAB ini? <Link to="/chat-admin" className="font-semibold text-brand underline-offset-2 hover:underline">Kirim lewat Chat Admin</Link></p>
+              </details>
+            )}
           </div>
         )}
       </section>
 
       {data.packages.length > 0 && (
-        <section id="paket">
-          <h2 className="section-title mb-3">Paket soal</h2>
-          <div className="grid gap-3 md:grid-cols-3">
+        <section id="paket" aria-labelledby="paket-title">
+          <p className="eyebrow mb-2">Sekali jalan, semua BAB</p>
+          <h2 id="paket-title" className="section-title mb-4">Paket soal</h2>
+          <div className="grid gap-4 md:grid-cols-3">
             {data.packages.map((p) => (
-              <button key={p.id} type="button" onClick={() => setPkg(p)} className="card flex flex-col items-start gap-1 p-4 text-left hover:border-progress">
-                <Package className="text-progress" size={24} />
-                <p className="mt-1 font-display text-lg font-semibold">{p.name}</p>
-                <p className="text-sm text-ink-muted">{p.description || `${p.perChapter || 5} soal per BAB${p.total ? `, maks. ${p.total} soal` : ''}`}</p>
-                <span className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-progress"><PlayCircle size={16} /> Mulai</span>
+              <button key={p.id} type="button" onClick={() => setPkg(p)} className="package-card paper-sheet group">
+                <span className="package-icon"><Package size={22} aria-hidden /></span>
+                <span className="mt-3 block font-display text-lg font-semibold text-ink group-hover:text-brand">{p.name}</span>
+                <span className="mt-1 block text-sm text-ink-muted">{p.description || `${p.perChapter || 5} soal per BAB${p.total ? `, maks. ${p.total} soal` : ''}`}</span>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand"><PlayCircle size={16} aria-hidden /> Mulai paket</span>
               </button>
             ))}
           </div>

@@ -8,6 +8,7 @@ import { useAuth } from '@/context/AuthContext';
 import { api, errorText } from '@/lib/api';
 import pb from '@/lib/pb';
 import { daysUntil, fmtDateTime, fromLocal, guessTz, toLocalParts } from '@/lib/time';
+import PageHead from '@/components/PageHead';
 
 const PRESET = [14, 7, 3, 1, 0];
 
@@ -104,14 +105,8 @@ export default function Schedule() {
   const past = (items || []).filter((x) => !upcoming.includes(x));
 
   return (
-    <div className="space-y-5">
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="page-title">Jadwal ujian</h1>
-          <p className="mt-1 text-ink-muted">Hanya kamu yang bisa melihat jadwal ini.</p>
-        </div>
-        <button type="button" className="btn-primary" onClick={() => setEdit('new')} disabled={!subjects.length}><Plus size={18} /> Tambah jadwal</button>
-      </div>
+    <div className="space-y-7">
+      <PageHead eyebrow="Kalender pribadi" title="Jadwal ujian" note="H-7, H-3, H-1 diingatkan ✓" actions={<button type="button" className="btn-primary btn-press" onClick={() => setEdit('new')} disabled={!subjects.length}><Plus size={18} /> Tambah jadwal</button>}>Hanya kamu yang bisa melihat jadwal ini.</PageHead>
       <Alert>{error}</Alert>
       {!items ? <PageLoader /> : !upcoming.length && !past.length ? (
         <EmptyState icon={CalendarDays} title="Belum ada jadwal ujian" action={<button type="button" className="btn-primary" onClick={() => setEdit('new')}>Tambah jadwal</button>}>
@@ -122,7 +117,7 @@ export default function Schedule() {
           {upcoming.map((x, i) => {
             const d = daysUntil(x.examAt, x.timezone);
             return (
-              <div key={x.id} className={`flex flex-wrap items-center gap-4 rounded-2xl p-4 ${i === 0 ? 'bg-brand text-white' : 'card'}`}>
+              <div key={x.id} className={`flex flex-wrap items-center gap-4 p-5 ${i === 0 ? 'exam-next surface-forest' : 'card'}`}>
                 <div className="min-w-0 flex-1">
                   <p className={`text-xs font-semibold ${i === 0 ? 'text-white/80' : 'text-ink-muted'}`}>{d === 0 ? 'Hari ini' : d === 1 ? 'Besok' : `${d} hari lagi`}</p>
                   <p className={`font-display text-xl font-bold ${i === 0 ? 'text-white' : ''}`}>{x.title} · {x.expand?.subject?.name}</p>

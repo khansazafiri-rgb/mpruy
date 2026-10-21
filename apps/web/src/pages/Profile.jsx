@@ -8,6 +8,7 @@ import { useAuth } from '@/context/AuthContext';
 import { api, errorText } from '@/lib/api';
 import pb from '@/lib/pb';
 import { fmtDate } from '@/lib/time';
+import PageHead from '@/components/PageHead';
 
 function Section({ icon: Icon, title, children }) {
   return (
@@ -163,8 +164,8 @@ function PasswordForm() {
 
 export default function Profile() {
   return (
-    <div className="space-y-5">
-      <h1 className="page-title">Profil</h1>
+    <div className="space-y-7">
+      <PageHead eyebrow="Akunmu" title="Profil">Data diri, asal kampus, dan password.</PageHead>
       <Section icon={UserRound} title="Data diri"><ProfileForm /></Section>
       <Section icon={School} title="Asal kampus"><CampusForm /></Section>
       <Section icon={KeyRound} title="Password"><PasswordForm /></Section>

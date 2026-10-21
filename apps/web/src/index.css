@@ -79,15 +79,6 @@ a.card, button.card { transition: transform 220ms, box-shadow 220ms, border-colo
 .profile-menu { animation: menu-enter 180ms cubic-bezier(.2,.8,.2,1) both; transform-origin: top right; }
 .mobile-drawer { animation: drawer-enter 220ms ease both; }
 .bottom-nav { padding-bottom: env(safe-area-inset-bottom); background: rgb(var(--surface) / .95); backdrop-filter: blur(20px); }
-.subject-card { min-height: 190px; border-radius: 24px; }
-.subject-art { width: 39%; background: rgb(var(--page)); }
-.subject-art img { transition: transform 500ms cubic-bezier(.2,.8,.2,1); }
-.subject-card:hover .subject-art img { transform: scale(1.045); }
-.subject-detail-hero { border-radius: 28px; }
-.home-subject { display: block; overflow: hidden; border-radius: 24px; }
-.home-subject .home-subject-art { width: 100%; height: 148px; background: rgb(var(--page)); }
-.home-subject .home-subject-art img { object-fit: contain; }
-.home-exam { border-radius: 26px; background: #07594f; padding: 28px; }
 
 /* A quiet reading surface and a separate navigator keep long sessions readable. */
 .study-frame { background: #f5f6f3; }
@@ -169,10 +160,7 @@ a.card, button.card { transition: transform 220ms, box-shadow 220ms, border-colo
   .question-actions .btn { font-size: 12px; padding: 10px; gap: 4px; }
   .question-grid.is-expanded { grid-template-columns: repeat(6,minmax(0,1fr)); }
   .question-grid.is-expanded .question-dot { min-height: 44px; }
-  .subject-card { min-height: 166px; }
-  .subject-art { width: 34%; }
   .modal-panel { border-radius: 28px 28px 0 0; max-height: 92dvh; padding-bottom: env(safe-area-inset-bottom); }
-  .home-exam { padding: 24px; }
 }
 
 /* Konten kaya pada soal dan pembahasan */

@@ -2,9 +2,15 @@
 
 ## Desain
 
-Landing page mengambil arah visual dari `khansazafiri-rgb/kons`, terutama komposisi bidang gelap, tekstur halus, lapisan kartu, serta interaksi yang terasa saat dipilih. Identitas hijau/ivory dan ilustrasi 2D MEDCOEL tetap dipakai. Hero berisi contoh latihan interaktif yang diberi label sebagai contoh, bukan statistik atau percobaan pengguna.
+Arah visual: **buku catatan klinis**, sengaja berbeda dari PCV (maroon, serif, panel kaca). Bahannya ada di `apps/web/src/styles/foundation.css`:
 
-Pilihan mata kuliah di pendaftaran/profil mempunyai penanda terpilih, animasi cek, dan hitungan pilihan. Popup latihan mempunyai penambah/pengurang, preset jumlah soal, serta pilihan mode dengan ikon. Gerakan dikurangi mengikuti preferensi perangkat. Tekstur ditaruh pada latar dan permukaan dekoratif; soal tetap memakai bidang baca yang bersih.
+- kertas ivory berbutir (`.tex-grain`, `.paper-sheet`, `.paper-stack`), garis kotak buku lab (`.tex-grid`), kertas bergaris (`.tex-ruled`);
+- papan hijau gelap (`.surface-forest`), stabilo emas (`.hl`), selotip (`.tape`), ilustrasi sebagai stiker (`.sticker`), garis EKG (`.ecg`, komponen `Ecg.jsx`);
+- catatan tulisan tangan dengan font Caveat (`.hand`, `font-hand`), hanya untuk aksen, bukan isi penting.
+
+Gaya per area: `styles/landing.css` (landing, kelas `lp-`), `styles/app.css` (halaman setelah masuk dan halaman masuk/daftar), `styles/chat.css` (Chat Admin). Ukuran teks minimal 12px untuk keterangan; isi 15–18px. Bidang baca soal (Runner) tetap polos.
+
+Landing memuat contoh soal yang bisa dijawab (diberi label *Contoh soal*, ditulis di `Landing.jsx`), dinding stiker 32 mata kuliah, cara kerja, fitur, angka dari `/api/medcoel/stats`, tanya jawab, dan ajakan daftar.
 
 ## Soal kampusmu
 
@@ -20,13 +26,11 @@ PDF mentah, draf, dan unggahan yang masih antre tidak dibagikan melalui pustaka 
 
 ## Chat Admin
 
-Halaman Chat Admin memiliki tiga pilihan: pesan, unggah PDF, dan pengajuan. Pesan bisa dikategorikan sebagai pertanyaan, kendala, atau masukan. Percakapan disimpan di koleksi privat baru `support_messages`. Admin membaca dan membalas dari **Dashboard Admin > Pesan pengguna** (`/admin/pesan`). Tombol bantuan di pojok membuka percakapan yang sama.
+Chat Admin adalah satu utas obrolan, tanpa tab. Asisten menyapa dengan nama depan lalu menawarkan pilihan sebagai tombol balasan cepat di dalam obrolan: Upload soal PDF, Tanya admin, Laporkan kendala, Kasih saran, Cek status pengajuanku, Chat WhatsApp admin. Pilihan pengguna tampil sebagai gelembung pengguna, lalu asisten membalas dan alurnya berlanjut di utas yang sama. Setelah satu alur selesai, pilihan ditawarkan lagi. Kotak pesan di bawah selalu bisa dipakai untuk menulis ke admin.
 
-Pesan adalah percakapan dengan admin manusia. Tidak ada klaim admin sedang online atau balasan otomatis dari AI. Percakapan diperbarui setiap 10 detik saat halaman aktif dan saat jendela kembali mendapat fokus. Riwayat yang lebih lama dapat dimuat bertahap. Kunci pesan mencegah duplikasi saat pengguna mengulang permintaan setelah koneksi gagal.
+Asisten hanya mengarahkan; tidak ada balasan AI. Pesan ke admin adalah percakapan dengan admin manusia dan disimpan di koleksi privat `support_messages`. Admin membaca dan membalas dari **Dashboard Admin > Pesan pengguna** (`/admin/pesan`). Bila sudah ada riwayat, riwayat itu tampil di awal utas. Percakapan diperbarui setiap 10 detik saat halaman aktif dan saat jendela kembali mendapat fokus. Kunci pesan mencegah duplikasi saat pengguna mengulang permintaan setelah koneksi gagal.
 
-Akses baca/tulis API koleksi langsung ditutup. Semua endpoint memeriksa akun aktif dan kepemilikan, atau peran admin. Peran pengirim berasal dari sesi server. Pesan ditampilkan sebagai teks, bukan HTML.
-
-Migrasi `1800000600_support_messages.js` menambah koleksi tanpa mengubah data lama. Rollback sengaja mempertahankan percakapan agar tidak menghapus pesan pengguna.
+Akses baca/tulis API koleksi langsung ditutup. Semua endpoint memeriksa akun aktif dan kepemilikan, atau peran admin. Pesan ditampilkan sebagai teks, bukan HTML. Migrasi `1800000600_support_messages.js` menambah koleksi tanpa mengubah data lama.
 
 ## Pemasangan
 
