@@ -1,7 +1,16 @@
 // Tautan WhatsApp dengan pesan yang sudah terisi.
 
+// wa.me butuh kode negara tanpa "+" atau 0 di depan: "0851..." -> "62851...".
+export function waNumber(phone) {
+  let d = String(phone || '').replace(/\D/g, '');
+  if (!d) return '';
+  if (d.startsWith('0')) d = `62${d.slice(1)}`;
+  else if (d.startsWith('8')) d = `62${d}`;
+  return d;
+}
+
 export function waLink(phone, text) {
-  const digits = String(phone || '').replace(/\D/g, '');
+  const digits = waNumber(phone);
   const base = digits ? `https://wa.me/${digits}` : 'https://wa.me/';
   return text ? `${base}?text=${encodeURIComponent(text)}` : base;
 }

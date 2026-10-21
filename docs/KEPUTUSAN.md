@@ -6,7 +6,7 @@ diubah tanpa menyentuh kode, lewat Dashboard Admin > Pengaturan.
 
 | Pertanyaan PRD | Jawaban sementara | Cara mengubah |
 |---|---|---|
-| Tautan komunitas WhatsApp, akun Instagram, nomor WA admin | Kosong. Tombolnya menampilkan "belum diatur" | Pengaturan > Umum |
+| Tautan komunitas WhatsApp, akun Instagram, nomor WA admin | Nomor WA admin **085144902681** (diisi migrasi bila masih kosong). Tautan komunitas WA dan Instagram masih kosong | Pengaturan > Umum |
 | Daftar mata kuliah awal dan ilustrasinya | Anatomi, Histologi, Fisiologi, Biokimia, Parasitologi, Mikrobiologi (usulan PRD), dengan ilustrasi sederhana sementara sesuai palet | Mata kuliah & BAB: unggah ilustrasi buatan GPT per mata kuliah |
 | Bukti komunitas harus disetujui admin dulu? | Tidak. Akun langsung aktif, admin memeriksa belakangan dan bisa menonaktifkan | Pengaturan > "Akun baru menunggu admin memeriksa bukti" |
 | Cara Hermes masuk | Gabungan: akun berperan `agent` + daftar IP opsional (`MEDCOEL_AGENT_IPS`). Hermes mengambil berkala; webhook opsional | docs/HERMES_AGENT.md |
@@ -43,6 +43,10 @@ diubah tanpa menyentuh kode, lewat Dashboard Admin > Pengaturan.
   09.00 WIT); pilihan H-14, H-7, H-3, H-1, dan hari H.
 - **Lupa password** tidak memberi tahu apakah email terdaftar (jawaban selalu
   sama), supaya daftar email pengguna tidak bisa ditebak.
+- **Chat Admin** ada di dua tempat: tombol mengambang di pojok kanan bawah setiap
+  halaman (setelah masuk) dan halaman penuh `/chat-admin`. Isinya sama;
+  percakapan yang sedang berjalan tidak hilang saat pindah halaman. Tombol
+  tidak muncul di halaman mengerjakan soal supaya tidak menutupi navigasi soal.
 - **Pengajuan lebih dari 5 PDF** tidak membuat catatan otomatis (sesuai PRD);
   admin membuatnya lewat "Pengajuan manual".
 

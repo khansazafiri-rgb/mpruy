@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import AnnouncementPopup from './AnnouncementPopup';
+import ChatAdminWidget from './ChatAdminWidget';
 import Logo from './Logo';
 
 const NAV = [
@@ -13,7 +14,7 @@ const NAV = [
   { to: '/mata-kuliah', label: 'Mata kuliah', short: 'Matkul', icon: BookOpen },
   { to: '/progres', label: 'Progres', short: 'Progres', icon: TrendingUp },
   { to: '/leaderboard', label: 'Leaderboard', short: 'Peringkat', icon: Trophy },
-  { to: '/jadwal', label: 'Jadwal ujian', icon: CalendarDays },
+  { to: '/jadwal', label: 'Jadwal ujian', short: 'Jadwal', icon: CalendarDays },
   { to: '/chat-admin', label: 'Chat Admin', short: 'Chat', icon: MessageCircle },
 ];
 
@@ -98,12 +99,13 @@ export default function AppShell() {
       </main>
 
       <nav className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t border-line bg-surface lg:hidden" aria-label="Navigasi bawah">
-        {NAV.filter((n) => n.to !== '/jadwal').map((n) => (
+        {NAV.filter((n) => n.to !== '/chat-admin').map((n) => (
           <NavLink key={n.to} to={n.to} className={({ isActive }) => clsx('flex flex-col items-center gap-0.5 py-2 text-[11px] font-semibold', isActive ? 'text-brand' : 'text-ink-muted')}>
             <n.icon size={21} aria-hidden /> <span className="truncate">{n.short || n.label}</span>
           </NavLink>
         ))}
       </nav>
+      <ChatAdminWidget />
       <AnnouncementPopup />
     </div>
   );
