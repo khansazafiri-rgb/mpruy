@@ -5,7 +5,7 @@ Dibangun dari PRD MEDCOEL Draf 2 (21 Oktober 2026), dengan web lama
 PCV Classroom (repo `kons`) sebagai rujukan teknis.
 
 Stack sama dengan web lama supaya panduan VPS-nya tetap berlaku:
-**React (Vite) + Tailwind**, **PocketBase 0.38** (database, aturan akses, hook
+**React (Vite) + Tailwind**, **PocketBase 0.40.5** (database, aturan akses, hook
 server), dan **Caddy** di satu VPS.
 
 ## Isi repositori
@@ -27,7 +27,7 @@ docs/              panduan dan kontrak (lihat daftar di bawah)
 Butuh Node.js 22.
 
 ```bash
-npm run setup                          # npm install + unduh PocketBase
+npm run setup                          # npm install + unduh PocketBase (versi di apps/pocketbase/.pocketbase-version)
 cd apps/pocketbase
 ./pocketbase migrate up --dir=./pb_data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks
 ./pocketbase superuser upsert kamu@contoh.test passwordpanjang --dir=./pb_data
@@ -68,3 +68,4 @@ penonaktifan akun.
 | [docs/GOOGLE_DRIVE.md](docs/GOOGLE_DRIVE.md) | Menyambungkan Google Drive admin untuk PDF dan foto bukti |
 | [docs/HERMES_AGENT.md](docs/HERMES_AGENT.md) | Kontrak API untuk Hermes Agent |
 | [docs/FORMAT_SOAL.md](docs/FORMAT_SOAL.md) | Format JSON soal dan blok konten kaya (untuk skill konverter) |
+| [docs/AUDIT_DEPENDENSI.md](docs/AUDIT_DEPENDENSI.md) | Hasil npm audit: mana yang runtime, mana yang build, dan alasan sisa temuan |

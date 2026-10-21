@@ -5,6 +5,7 @@ import { Alert, EmptyState, PageLoader } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
 import { api, errorText } from '@/lib/api';
 import pb from '@/lib/pb';
+import { safeInternalPath } from '@/lib/safePath';
 import { relative } from '@/lib/time';
 
 export default function Notifications() {
@@ -48,7 +49,7 @@ export default function Notifications() {
             );
             return (
               <li key={n.id} className="hover:bg-page">
-                {n.link ? <Link to={n.link} onClick={() => read(n)}>{body}</Link> : <button type="button" className="w-full text-left" onClick={() => read(n)}>{body}</button>}
+                {n.link ? <Link to={safeInternalPath(n.link, '/notifikasi')} onClick={() => read(n)}>{body}</Link> : <button type="button" className="w-full text-left" onClick={() => read(n)}>{body}</button>}
               </li>
             );
           })}

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Alert, Field } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
+import { safeInternalPath } from '@/lib/safePath';
 import AuthLayout from './AuthLayout';
 
 export default function Login() {
@@ -22,8 +23,7 @@ export default function Login() {
     setBusy(true);
     try {
       await login(identity, password);
-      const next = params.get('lanjut');
-      nav(next && next.startsWith('/') ? next : '/beranda', { replace: true });
+      nav(safeInternalPath(params.get('lanjut')), { replace: true });
     } catch (err) {
       const status = err?.status;
       if (status === 400) setError('Login ID/email atau password belum cocok. Akun yang dinonaktifkan admin juga tidak bisa masuk.');

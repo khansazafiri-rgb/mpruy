@@ -81,8 +81,16 @@ bab.forEach((b, bi) => {
 });
 soal.push({ chapter: 'Osteologi', type: 'isian', difficulty: 'medium', code: 'DEV-ISIAN-1', text: 'Sebutkan tulang terpanjang pada tubuh manusia.', subQuestions: [{ label: 'A', question: 'Nama tulang', validAnswers: ['Femur / os femoris'] }] });
 
-const r = await call('POST', '/api/medcoel/admin/import', { subject: anatomi.id, scope: 'all', text: JSON.stringify(soal) }, admin);
-console.log(`Soal contoh: ${r.created} dibuat, ${r.duplicates} sudah ada.`);
+// Pratinjau dulu: bila semua soal contoh sudah ada (skrip dijalankan ulang),
+// tidak ada yang perlu disimpan dan impor tidak dipanggil.
+const body = { subject: anatomi.id, scope: 'all', text: JSON.stringify(soal) };
+const cek = await call('POST', '/api/medcoel/admin/import', { ...body, dryRun: true }, admin);
+if (cek.valid > 0) {
+  const r = await call('POST', '/api/medcoel/admin/import', body, admin);
+  console.log(`Soal contoh: ${r.created} dibuat, ${r.duplicates} sudah ada.`);
+} else {
+  console.log(`Soal contoh: semua ${cek.duplicates} soal sudah ada, tidak ada yang ditambahkan.`);
+}
 console.log('\nAkun pengembangan (simpan, hanya dicetak sekali):');
 console.log(`  admin     : admin.dev / ${adminPw}`);
 console.log(`  pengguna  : mahasiswa.dev / ${userPw}`);

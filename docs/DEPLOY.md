@@ -15,7 +15,8 @@ Arahkan A record `medcoel.com` dan `www.medcoel.com` ke IP VPS.
 sudo bash deploy/setup-vps.sh
 ```
 
-Skrip memasang Node 22, Caddy, mengunduh PocketBase 0.38, build web, membuat
+Skrip memasang Node 22, Caddy, mengunduh PocketBase sesuai
+`apps/pocketbase/.pocketbase-version` (sekarang 0.40.5, checksum diverifikasi), build web, membuat
 user `medcoel`, file `/opt/medcoel/medcoel.env` (dengan `MEDCOEL_SECRET` acak),
 dan menyalakan service `medcoel`.
 
@@ -63,7 +64,38 @@ Admin > Ringkasan dan Pengaturan > Sistem.
 sudo bash /opt/medcoel/app/deploy/update.sh
 ```
 
-Migrasi baru berjalan otomatis saat service restart.
+Migrasi baru berjalan otomatis saat service restart. `update.sh` juga
+menyamakan binary PocketBase dengan `apps/pocketbase/.pocketbase-version`
+(tidak mengunduh ulang bila versinya sudah sama).
+
+## Versi PocketBase
+
+Produksi dan repositori memakai **PocketBase 0.40.5**. Versinya ditulis di satu
+tempat: `apps/pocketbase/.pocketbase-version`. Skrip unduh, CI, dan `update.sh`
+membaca file itu, dan unduhan ditolak bila checksum SHA-256-nya tidak cocok
+dengan `checksums.txt` rilis resmi.
+
+Untuk naik versi:
+
+1. Baca CHANGELOG rilis yang dilewati, cari tanda ⚠️ (breaking change).
+2. Ganti isi `.pocketbase-version`, lalu `bash apps/pocketbase/scripts/download-pocketbase.sh`.
+3. Jalankan `npm run lint`, `npm test`, `npm run build`, dan `npm run test:api`
+   (di `apps/pocketbase`, dengan database kosong).
+4. Uji jalur upgrade: buka salinan `pb_data` produksi dengan binary baru di
+   laptop sebelum `update.sh` dijalankan di VPS.
+
+Catatan 0.38 ke 0.40.5 yang sudah diperiksa untuk repo ini:
+
+- `encoding/json/v2` (0.40.0): field JSON (opsi soal, pengaturan, jawaban)
+  dan respons endpoint diuji ulang lewat tes API; tidak ada perubahan perilaku.
+- Regex goja diperbarui (0.39.x, 0.40.2): parser impor, penilaian isian, dan
+  perbaikan teks menghasilkan keluaran yang sama persis di Node dan di goja 0.40.5.
+- Perintah CLI yang gagal kini keluar dengan kode non-zero (0.40.0). Skrip
+  deploy tidak bergantung pada kode keluar 0; CI justru jadi lebih ketat.
+- Header `Cross-Origin-Opener-Policy: same-origin` bawaan (0.40.0) tidak
+  memengaruhi web karena tidak ada alur yang memakai jendela popup.
+- Database yang dibuat di 0.38.0 terbuka normal di 0.40.5 (migrasi sistem
+  berjalan otomatis).
 
 ## 8. Backup dan uji pulih
 
