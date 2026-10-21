@@ -29,7 +29,12 @@ function pool(app, user, opts) {
     where.push("q.qtype IN (" + keys.join(",") + ")");
   }
   // Aturan kampus, sama dengan util.visibleFilter.
-  if (u.roleOf(user) !== "admin") {
+  if (opts.campusOnly) {
+    const campus = user.getString("campus");
+    if (!campus) return [];
+    where.push("q.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(q.campuses) WHERE value = {:campus})");
+    params.campus = campus;
+  } else if (u.roleOf(user) !== "admin") {
     const campus = user.getString("campus");
     if (campus) {
       where.push("(q.scope = 'all' OR EXISTS (SELECT 1 FROM json_each(q.campuses) WHERE value = {:campus}))");

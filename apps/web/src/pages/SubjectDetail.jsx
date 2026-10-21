@@ -1,6 +1,6 @@
-import { ArrowLeft, BookOpenCheck, ChevronRight, Clock, Layers, Package, PlayCircle, SlidersHorizontal } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { ArrowLeft, BookOpen, BookOpenCheck, CheckCircle2, ChevronRight, Clock, Layers, Minus, Package, PlayCircle, Plus, SlidersHorizontal } from 'lucide-react';
+import { useEffect, useId, useMemo, useState } from 'react';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import Illustration from '@/components/Illustration';
 import { Alert, Badge, EmptyState, Modal, PageLoader, ProgressBar } from '@/components/ui';
 import { api } from '@/lib/api';
@@ -27,18 +27,19 @@ export function splitEven(n, avail) {
 }
 
 function ModeChoice({ value, onChange }) {
+  const group = useId();
   const opts = [
-    ['learning', 'Mode Learning', 'Cek jawaban dan lihat pembahasan per soal.'],
-    ['exam', 'Mode ujian', 'Jawab semua dulu, pembahasan dibuka setelah selesai.'],
+    ['learning', 'Mode Learning', 'Pembahasan langsung per soal.', BookOpen],
+    ['exam', 'Mode ujian', 'Pembahasan setelah sesi selesai.', Clock],
   ];
   return (
     <fieldset>
       <legend className="label">Cara mengerjakan</legend>
       <div className="grid gap-2 sm:grid-cols-2">
-        {opts.map(([v, t, d]) => (
-          <label key={v} className={`mode-choice cursor-pointer rounded-2xl border p-4 transition-colors ${value === v ? 'border-brand bg-brand-soft' : 'border-line hover:border-brand/50'}`}>
-            <input type="radio" className="sr-only" checked={value === v} onChange={() => onChange(v)} />
-            <span className="block font-semibold">{t}</span>
+        {opts.map(([v, t, d, Icon]) => (
+          <label key={v} className={`mode-choice cursor-pointer rounded-2xl border p-4 transition-colors ${value === v ? 'is-selected' : 'border-line hover:border-brand/50'}`}>
+            <input type="radio" name={group} className="sr-only" checked={value === v} onChange={() => onChange(v)} />
+            <span className="mode-choice-head"><Icon size={20} /><span className="text-sm font-semibold">{t}</span>{value === v && <CheckCircle2 size={17} />}</span>
             <span className="text-[13px] text-ink-muted">{d}</span>
           </label>
         ))}
@@ -47,7 +48,7 @@ function ModeChoice({ value, onChange }) {
   );
 }
 
-function PracticeDialog({ chapter, onClose }) {
+function PracticeDialog({ chapter, campusOnly, onClose }) {
   const nav = useNavigate();
   const max = Math.min(100, chapter.total);
   const [count, setCount] = useState(Math.min(10, max));
@@ -57,21 +58,22 @@ function PracticeDialog({ chapter, onClose }) {
   const start = async () => {
     setBusy(true); setError('');
     try {
-      const r = await api('attempts/practice', { method: 'POST', body: { chapter: chapter.id, count, mode } });
+      const r = await api('attempts/practice', { method: 'POST', body: { chapter: chapter.id, count, mode, campusOnly } });
       nav(`/kerjakan/${r.attempt.id}`);
     } catch (e) { setError(e.message); setBusy(false); }
   };
   return (
-    <Modal open title={`Latihan: ${chapter.title}`} onClose={onClose} footer={<>
+    <Modal open title="Siapkan sesi belajarmu" onClose={onClose} footer={<>
       <button type="button" className="btn-ghost" onClick={onClose}>Batal</button>
       <button type="button" className="btn-primary" onClick={start} disabled={busy || count < 1}>{busy ? 'Menyiapkan...' : `Mulai ${count} soal`}</button>
     </>}>
       <div className="space-y-5">
+        <div className="practice-banner"><span><BookOpenCheck size={22} /></span><div className="min-w-0"><p className="eyebrow mb-1">{campusOnly ? 'Soal kampusmu' : 'Latihan per BAB'}</p><p className="text-sm font-semibold">{chapter.title}</p><p className="mt-1 text-xs text-ink-muted">{chapter.total} soal tersedia untukmu</p></div></div>
         <div>
-          <label htmlFor="jml" className="label">Jumlah soal: <span className="text-brand">{count}</span></label>
-          <input id="jml" type="range" min={0} max={max} value={count} onChange={(e) => setCount(Number(e.target.value))} className="w-full accent-[rgb(var(--brand))]" />
-          <div className="flex justify-between text-xs text-ink-muted"><span>0</span><span>{max} tersedia</span></div>
-          <p className="hint">Tingkat kesulitan dan tipe soal dibagi seimbang otomatis. Soal yang belum pernah kamu kerjakan didahulukan.</p>
+          <div className="count-controls"><label htmlFor="jml" className="label !mb-0">Jumlah soal</label><div className="count-stepper"><button type="button" aria-label="Kurangi jumlah soal" disabled={count <= 1} onClick={() => setCount((n) => Math.max(1, n - 1))}><Minus size={15} /></button><output htmlFor="jml">{count}</output><button type="button" aria-label="Tambah jumlah soal" disabled={count >= max} onClick={() => setCount((n) => Math.min(max, n + 1))}><Plus size={15} /></button></div></div>
+          <input id="jml" type="range" min={1} max={max} value={count} onChange={(e) => setCount(Number(e.target.value))} className="w-full accent-[rgb(var(--brand))]" />
+          <div className="flex justify-between text-xs text-ink-muted"><span>1 soal</span><span>{max} tersedia</span></div>
+          <div className="count-presets">{[...new Set([5, 10, 20, max].filter((n) => n <= max))].sort((a, b) => a - b).map((n) => <button type="button" key={n} aria-pressed={count === n} onClick={() => setCount(n)}>{n} soal</button>)}</div><p className="hint mt-3">Soal baru didahulukan. Tipe dan kesulitan dibagi seimbang.</p>
         </div>
         <ModeChoice value={mode} onChange={setMode} />
         <Alert>{error}</Alert>
@@ -80,7 +82,7 @@ function PracticeDialog({ chapter, onClose }) {
   );
 }
 
-function SimulationDialog({ subject, chapters, types, onClose }) {
+function SimulationDialog({ subject, chapters, types, campusOnly, onClose }) {
   const nav = useNavigate();
   const [source, setSource] = useState('unseen');
   const [typeMode, setTypeMode] = useState(types.length > 1 ? 'mix' : types[0] || 'A');
@@ -94,9 +96,9 @@ function SimulationDialog({ subject, chapters, types, onClose }) {
 
   useEffect(() => {
     setAvail(null);
-    api('simulation/availability', { query: { subject: subject.id, source, types: typeMode } })
+    api('simulation/availability', { query: { subject: subject.id, source, types: typeMode, campusOnly: campusOnly ? "1" : "" } })
       .then((d) => setAvail(d.chapters)).catch((e) => setError(e.message));
-  }, [subject.id, source, typeMode]);
+  }, [subject.id, source, typeMode, campusOnly]);
 
   const av = (id) => avail?.[id] || { easy: 0, medium: 0, hard: 0, total: 0 };
 
@@ -131,7 +133,7 @@ function SimulationDialog({ subject, chapters, types, onClose }) {
       const r = await api('attempts/simulation', {
         method: 'POST',
         body: {
-          subject: subject.id, source, types: typeMode, timerMinutes: timer, mode,
+          subject: subject.id, source, types: typeMode, timerMinutes: timer, mode, campusOnly,
           chapters: chosen.map((c) => ({ chapter: c.id, easy: plan[c.id].easy, medium: plan[c.id].medium, hard: plan[c.id].hard })),
         },
       });
@@ -264,11 +266,14 @@ function PackageDialog({ pkg, onClose }) {
 
 export default function SubjectDetail() {
   const { slug } = useParams();
-  const { data, error, loading } = useApi(`subjects/${slug}`);
+  const [searchParams] = useSearchParams();
+  const campusOnly = searchParams.get('kampus') === '1';
+  const { data, error, loading } = useApi(`subjects/${slug}${campusOnly ? '?campusOnly=1' : ''}`);
   const [practice, setPractice] = useState(null);
   const [sim, setSim] = useState(false);
   const [pkg, setPkg] = useState(null);
   const chapters = useMemo(() => data?.chapters || [], [data]);
+  useEffect(() => { setPractice(null); setSim(false); setPkg(null); }, [slug, campusOnly]);
 
   if (loading) return <PageLoader />;
   if (error) return <Alert>{error.message}</Alert>;
@@ -279,10 +284,10 @@ export default function SubjectDetail() {
     <div className="space-y-6">
       <Link to="/mata-kuliah" className="inline-flex items-center gap-1 text-sm font-semibold text-ink-muted hover:text-brand"><ArrowLeft size={16} /> Semua mata kuliah</Link>
       <section className="subject-detail-hero card flex flex-col gap-6 overflow-hidden sm:flex-row">
-        <div className="h-52 shrink-0 bg-page sm:h-auto sm:w-72"><Illustration subject={s} className="h-full w-full" /></div>
-        <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 p-6 sm:py-9 sm:pl-0">
+        {!campusOnly && <div className="h-52 shrink-0 bg-page sm:h-auto sm:w-72"><Illustration subject={s} className="h-full w-full" /></div>}
+        <div className={`flex min-w-0 flex-1 flex-col justify-center gap-2 p-6 sm:py-9 ${campusOnly ? '' : 'sm:pl-0'}`}>
           {s.studying && <Badge className="w-fit bg-gold-soft text-[#6b4f00]">Sedang dipelajari</Badge>}
-          <p className="eyebrow mt-2">Mata kuliah</p><h1 className="page-title">{s.name}</h1>
+          <p className="eyebrow mt-2">{campusOnly ? `Soal kampusmu · ${data.campusName || "Kampusmu"}` : "Mata kuliah"}</p><h1 className="page-title">{s.name}</h1>
           {s.description && <p className="text-ink-muted">{s.description}</p>}
           <div className="mt-2 flex flex-wrap gap-2">
             <button type="button" className="btn-primary" onClick={() => setSim(true)} disabled={!withQ.length}><Layers size={18} /> Coba Simulasi</button>
@@ -292,14 +297,14 @@ export default function SubjectDetail() {
       </section>
 
       <section>
-        <h2 className="section-title mb-3">Latihan per topik</h2>
+        <h2 className="section-title mb-3">{campusOnly ? "Materi yang sudah tersedia" : "Latihan per topik"}</h2>
         {!chapters.length ? (
           <EmptyState icon={BookOpenCheck} title="Belum ada BAB">Admin sedang menyiapkan soal untuk mata kuliah ini. Kamu juga bisa mengirim PDF soal lewat Chat Admin.</EmptyState>
         ) : (
           <div className="grid gap-3 md:grid-cols-2">
-            {chapters.map((c) => (
-              <button key={c.id} type="button" disabled={!c.total} onClick={() => setPractice(c)} className="card flex items-center gap-4 !rounded-2xl p-5 text-left transition-colors hover:border-brand disabled:cursor-not-allowed disabled:opacity-60">
-                <div className="min-w-0 flex-1">
+            {chapters.map((c, index) => (
+              <button key={c.id} type="button" disabled={!c.total} onClick={() => setPractice(c)} className="chapter-card card flex items-center gap-4 !rounded-2xl p-5 text-left transition-colors hover:border-brand disabled:cursor-not-allowed disabled:opacity-60">
+                <span className="chapter-index" aria-hidden>{String(index + 1).padStart(2, "0")}</span><div className="min-w-0 flex-1">
                   <p className="font-display font-semibold">{c.title}</p>
                   <p className="text-xs text-ink-muted">{c.total ? `${c.answered}/${c.total} soal dikerjakan${c.wrong ? ` · ${c.wrong} pernah salah` : ''}` : 'Belum ada soal'}</p>
                   {c.total > 0 && <ProgressBar value={c.answered} max={c.total} className="mt-2" color="bg-progress" label={`Progres ${c.title}`} />}
@@ -327,8 +332,8 @@ export default function SubjectDetail() {
         </section>
       )}
 
-      {practice && <PracticeDialog chapter={practice} onClose={() => setPractice(null)} />}
-      {sim && <SimulationDialog subject={s} chapters={withQ} types={data.simulationTypes || ['A', 'K']} onClose={() => setSim(false)} />}
+      {practice && <PracticeDialog chapter={practice} campusOnly={campusOnly} onClose={() => setPractice(null)} />}
+      {sim && <SimulationDialog subject={s} campusOnly={campusOnly} chapters={withQ} types={data.simulationTypes || ['A', 'K']} onClose={() => setSim(false)} />}
       {pkg && <PackageDialog pkg={pkg} onClose={() => setPkg(null)} />}
     </div>
   );

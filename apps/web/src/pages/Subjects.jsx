@@ -2,6 +2,7 @@ import { ArrowUpRight, BookOpen, Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Illustration from '@/components/Illustration';
+import CampusMaterials from '@/components/CampusMaterials';
 import { Alert, Badge, EmptyState, PageLoader, ProgressBar } from '@/components/ui';
 import { useApi } from '@/lib/useApi';
 
@@ -23,6 +24,7 @@ export default function Subjects() {
         </label>
       </div>
       <Alert>{error?.message}</Alert>
+      <CampusMaterials />
       {loading ? <PageLoader /> : <>
         <p className="text-xs text-ink-muted" role="status">{items.length} mata kuliah{q.trim() ? ` untuk “${q.trim()}”` : ' · Semua terbuka untukmu'}</p>
         {items.length ? <div className="grid gap-5 md:grid-cols-2">
