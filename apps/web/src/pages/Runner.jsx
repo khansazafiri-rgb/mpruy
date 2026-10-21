@@ -43,7 +43,7 @@ function Frame({ title, children, right }) {
     <div className="min-h-screen bg-page">
       <header className="sticky top-0 z-30 border-b border-line bg-surface/95 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4">
-          <Link to="/beranda" aria-label="Beranda"><Logo /></Link>
+          <Link to="/beranda" aria-label="Beranda"><Logo variant="mark" className="sm:hidden" /><Logo className="hidden sm:block" /></Link>
           {title && <p className="hidden truncate font-semibold text-ink-muted sm:block">{title}</p>}
           <div className="ml-auto flex items-center gap-2">{right}</div>
         </div>
