@@ -41,8 +41,9 @@ export default function Home() {
   return (
     <div className="space-y-8">
       <div>
-        <p className="text-ink-muted">Halo,</p>
-        <h1 className="page-title">{me?.name?.split(' ')[0]}! Mau belajar apa hari ini?</h1>
+        <p className="eyebrow mb-3">Selamat datang kembali</p>
+        <h1 className="page-title">Halo, {me?.name?.split(' ')[0]}.</h1>
+        <p className="mt-3 text-ink-muted">Sedikit lebih paham, setiap hari. Mau mulai dari mana?</p>
       </div>
       <Alert>{error}</Alert>
 
@@ -61,7 +62,7 @@ export default function Home() {
       )}
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <section className="relative overflow-hidden rounded-2xl bg-brand p-5 text-white lg:col-span-2">
+        <section className="home-exam relative overflow-hidden text-white lg:col-span-2">
           <div className="absolute -right-12 -top-12 h-44 w-44 rounded-full bg-white/10" aria-hidden />
           {next ? (
             <div className="relative">
@@ -113,11 +114,11 @@ export default function Home() {
           <h2 className="section-title">{studying.length ? 'Sedang dipelajari' : 'Mata kuliah'}</h2>
           <Link to="/mata-kuliah" className="text-sm font-semibold text-brand hover:underline">Semua mata kuliah</Link>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {shown.map((s) => (
-            <Link key={s.id} to={`/mata-kuliah/${s.slug}`} className="card flex items-center gap-3 p-3 hover:border-brand">
-              <Illustration subject={s} className="h-16 w-16 shrink-0 rounded-xl" />
-              <div className="min-w-0 flex-1">
+            <Link key={s.id} to={`/mata-kuliah/${s.slug}`} className="home-subject card hover:border-brand/40">
+              <div className="home-subject-art"><Illustration subject={s} className="h-full w-full" /></div>
+              <div className="min-w-0 p-4">
                 <p className="truncate font-display font-semibold">{s.name}</p>
                 <p className="text-xs text-ink-muted">{s.answeredCount}/{s.questionCount} soal dikerjakan</p>
                 <ProgressBar value={s.answeredCount} max={s.questionCount || 1} className="mt-1.5" color="bg-progress" label={`Progres ${s.name}`} />

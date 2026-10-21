@@ -158,6 +158,6 @@ routerAdd("POST", "/api/medcoel/announcements/{id}/dismiss", (e) => {
 routerAdd("GET", "/api/medcoel/public-subjects", (e) => {
   const list = e.app.findRecordsByFilter("subjects", "hidden = false", "order,name", 200, 0);
   return e.json(200, {
-    items: list.map((s) => ({ id: s.id, name: s.getString("name"), slug: s.getString("slug"), illustrationKey: s.getString("illustrationKey") })),
+    items: list.map((s) => ({ id: s.id, name: s.getString("name"), slug: s.getString("slug"), illustrationKey: s.getString("illustrationKey") })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName),
   });
 });

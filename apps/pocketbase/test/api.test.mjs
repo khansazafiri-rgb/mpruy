@@ -147,6 +147,27 @@ await langkah('endpoint admin dan agen menolak pengguna biasa', async () => {
   await call('POST', '/api/medcoel/agent/import', { subject: mk.id, questions: [] }, userA.token, 403);
 });
 
+await langkah('katalog 32 mata kuliah dan 384 BAB, pilihan pengguna di atas lalu alfabetis', async () => {
+  const order = (a, b) => a.toLowerCase().localeCompare(b.toLowerCase());
+  assert.equal(subjects.length, 32);
+  assert.deepEqual(subjects.map((s) => s.name), subjects.map((s) => s.name).sort(order));
+  const allChapters = (await call('GET', '/api/collections/chapters/records?perPage=500', undefined, su, 200)).data;
+  assert.equal(allChapters.totalItems, 384);
+  const picked = [subjects[subjects.length - 1].id, subjects[2].id];
+  await call('PATCH', `/api/collections/users/records/${userA.id}`, { studyingSubjects: picked }, userA.token, 200);
+  const list = (await call('GET', '/api/medcoel/subjects', undefined, userA.token, 200)).data.items;
+  assert.ok(list.slice(0, 2).every((s) => s.studying && picked.includes(s.id)));
+  assert.equal(list.find((s) => s.id === mk.id).chapterCount, 20);
+  assert.deepEqual(list.slice(0, 2).map((s) => s.name), list.slice(0, 2).map((s) => s.name).sort(order));
+  assert.deepEqual(list.slice(2).map((s) => s.name), list.slice(2).map((s) => s.name).sort(order));
+  const detail = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userA.token, 200)).data;
+  assert.equal(detail.chapters.length, 20);
+  assert.deepEqual(detail.chapters.map((c) => c.title), detail.chapters.map((c) => c.title).sort(order));
+  const progress = (await call('GET', '/api/medcoel/progress', undefined, userA.token, 200)).data;
+  assert.deepEqual(progress.subjects.map((s) => s.id), list.map((s) => s.id));
+  await call('PATCH', `/api/collections/users/records/${userA.id}`, { studyingSubjects: [mk.id] }, userA.token, 200);
+});
+
 console.log('Admin: impor soal');
 const soalUmum = [
   { chapter: 'BAB Uji 1', type: 'A', difficulty: 'easy', text: 'Soal umum mudah?', options: [{ text: 'Benar', correct: true, explanation: 'Karena benar' }, 'Salah'] },
