@@ -99,7 +99,7 @@ routerAdd("GET", "/api/medcoel/progress", (e) => {
     last7: { answered: sum(daily.slice(-7), "answered"), correct: sum(daily.slice(-7), "correct"), activeDays: daily.slice(-7).filter((d) => d.answered > 0).length },
     last30: { answered: sum(daily, "answered"), correct: sum(daily, "correct"), activeDays: daily.filter((d) => d.answered > 0).length },
     daily: daily,
-    subjects: perSubject,
+    subjects: perSubject.sort(require(`${__hooks}/lib/catalogOrder.js`).byPreference),
     scores: scores,
     nextExam: nextExam,
     totalPoints: pointsOf(user.id),

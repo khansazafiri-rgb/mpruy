@@ -37,7 +37,7 @@ export default function Subjects() {
                 <h2 className="font-display text-xl font-semibold tracking-tight group-hover:text-brand">{s.name}</h2>
                 {s.description && <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-ink-muted">{s.description}</p>}
                 <div className="mt-5">
-                  <p className="mb-2 text-[11px] text-ink-muted"><span className="font-semibold text-ink">{s.answeredCount || 0}</span> / {s.questionCount || 0} soal dikerjakan</p>
+                  <p className="mb-2 text-[11px] text-ink-muted">{s.chapterCount !== undefined && <span>{s.chapterCount} BAB · </span>}<span className="font-semibold text-ink">{s.answeredCount || 0}</span> / {s.questionCount || 0} soal dikerjakan</p>
                   <ProgressBar value={s.answeredCount} max={s.questionCount || 1} label={`Progres ${s.name}`} />
                 </div>
               </div>
