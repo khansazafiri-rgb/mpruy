@@ -5,6 +5,7 @@ import { Bot, FileText, FileUp, ListChecks, MessageCircle, RotateCcw, Trash2, X 
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SubmissionCard from '@/components/SubmissionCard';
+import SupportConversation from '@/components/SupportConversation';
 import { Alert, EmptyState, PageLoader } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
@@ -48,7 +49,7 @@ function UploadFlow({ onExit, onMenu }) {
   const end = useRef(null);
 
   useEffect(() => { api('subjects').then((d) => setSubjects(d.items)).catch((e) => setError(e.message)); }, []);
-  useEffect(() => { end.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, [step, uploads.length, draft, sent]);
+  useEffect(() => { end.current?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'nearest' }); }, [step, uploads.length, draft, sent]);
 
   const answer = (key, o, next) => { setA((x) => ({ ...x, [key]: o.value, [`${key}Label`]: o.label })); setStep(next); setError(''); };
 
@@ -215,7 +216,7 @@ function UploadFlow({ onExit, onMenu }) {
       <Alert>{error}</Alert>
       <div className="flex gap-2 pl-10">
         <button type="button" className="btn-ghost btn-sm" onClick={restart}><RotateCcw size={15} /> Ulangi</button>
-        <button type="button" className="btn-ghost btn-sm" onClick={onMenu}>Kembali ke menu</button>
+        <button type="button" className="btn-ghost btn-sm" onClick={onMenu}>Kembali ke pesan</button>
       </div>
       <div ref={end} />
     </div>
@@ -250,54 +251,28 @@ function MyRequests() {
   );
 }
 
-// Isi Chat Admin: dipakai halaman /chat-admin dan widget di pojok kanan bawah.
-// compact = tampilan sempit untuk widget.
 export function ChatAdminBody({ compact = false }) {
-  const { settings } = useAuth();
-  const [view, setView] = useState('menu');
+  const [view, setView] = useState('chat');
   const menu = [
     { key: 'upload', icon: FileUp, title: 'Upload soal', text: 'Ubah PDF soal menjadi soal di web.' },
     { key: 'requests', icon: ListChecks, title: 'Progres permintaan saya', text: 'Status dan estimasi pengajuanmu.' },
   ];
   return (
-    <div className="space-y-4">
-      {view === 'menu' && (
-        <div className="space-y-3">
-          <Bubble>Halo! Ada yang bisa aku bantu?</Bubble>
-          <div className={clsx('grid gap-3 pl-10', !compact && 'sm:grid-cols-2')}>
-            {menu.map((m) => (
-              <button key={m.key} type="button" onClick={() => setView(m.key)} className="card flex items-start gap-3 p-4 text-left hover:border-brand">
-                <m.icon className="mt-0.5 shrink-0 text-brand" size={22} />
-                <span><span className="block font-semibold">{m.title}</span><span className="text-sm text-ink-muted">{m.text}</span></span>
-              </button>
-            ))}
-            <a href={waLink(settings?.adminWhatsapp, 'Halo Admin MEDCOEL, saya ingin bertanya: ')} target="_blank" rel="noopener noreferrer" className={clsx('card flex items-start gap-3 p-4 hover:border-brand', !compact && 'sm:col-span-2')}>
-              <MessageCircle className="mt-0.5 shrink-0 text-brand" size={22} />
-              <span><span className="block font-semibold">Hubungi admin lewat WhatsApp</span><span className="text-sm text-ink-muted">Untuk hal di luar menu ini.</span></span>
-            </a>
-          </div>
-        </div>
-      )}
-      {view === 'upload' && <UploadFlow onExit={() => setView('requests')} onMenu={() => setView('menu')} />}
+    <div className={compact ? "chat-admin-body is-compact" : "space-y-5"}>
+      <div className="chat-page-tabs" role="group" aria-label="Layanan Chat Admin">{[{ key: 'chat', label: 'Pesan admin', icon: MessageCircle }, ...menu.map((m) => ({ ...m, label: m.key === 'upload' ? 'Unggah PDF' : 'Pengajuan saya' }))].map((t) => <button key={t.key} type="button" aria-pressed={view === t.key} onClick={() => setView(t.key)}><t.icon size={16} />{t.label}</button>)}</div>
+      {view === 'chat' && <SupportConversation compact={compact} />}
+      {view === 'upload' && <div className={compact ? 'min-h-0 flex-1 overflow-y-auto' : ''}><UploadFlow onExit={() => setView('requests')} onMenu={() => setView('chat')} /></div>}
       {view === 'requests' && (
         <div className="space-y-3">
-          <button type="button" className="btn-ghost btn-sm" onClick={() => setView('menu')}>Kembali ke menu</button>
+          <button type="button" className="btn-ghost btn-sm" onClick={() => setView('chat')}>Kembali ke pesan</button>
           <MyRequests />
         </div>
       )}
-      <p className="text-center text-xs text-ink-muted">Dengan mengunggah, kamu menyetujui <Link to="/kebijakan-privasi" className="underline">kebijakan privasi dan hak cipta</Link> MEDCOEL.</p>
+      <p className="text-center text-xs text-ink-muted">{view === 'chat' ? 'Pesanmu hanya terlihat olehmu dan admin. ' : 'Dengan mengunggah, kamu menyetujui '}<Link to="/kebijakan-privasi" className="underline">kebijakan privasi dan hak cipta</Link> MEDCOEL.</p>
     </div>
   );
 }
 
 export default function ChatAdmin() {
-  return (
-    <div className="mx-auto max-w-2xl space-y-5">
-      <div>
-        <h1 className="page-title">Chat Admin</h1>
-        <p className="mt-1 text-ink-muted">Asisten otomatis untuk pengajuan soal. Untuk hal lain, hubungi admin lewat WhatsApp.</p>
-      </div>
-      <ChatAdminBody />
-    </div>
-  );
+  return <div className="chat-admin-page mx-auto max-w-3xl space-y-5"><div><h1 className="page-title">Chat Admin</h1><p className="mt-1 text-ink-muted">Tanyakan sesuatu, laporkan kendala, atau bantu MEDCOEL jadi lebih baik.</p></div><ChatAdminBody /></div>;
 }

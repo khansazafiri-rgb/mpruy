@@ -62,7 +62,7 @@ export default function Home() {
       )}
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <section className="home-exam relative overflow-hidden text-white lg:col-span-2">
+        <section className="home-exam forest-surface relative overflow-hidden text-white lg:col-span-2">
           <div className="absolute -right-12 -top-12 h-44 w-44 rounded-full bg-white/10" aria-hidden />
           {next ? (
             <div className="relative">

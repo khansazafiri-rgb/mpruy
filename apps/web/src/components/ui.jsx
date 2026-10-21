@@ -126,7 +126,7 @@ export function Modal({ open, onClose, title, children, footer, size = 'md', dis
           {onClose && <button type="button" onClick={onClose} className="rounded-full bg-page p-2 text-ink-muted transition-colors hover:bg-line hover:text-ink" aria-label="Tutup"><X size={18} /></button>}
         </div>
         <div className="modal-body overflow-y-auto px-6 py-6">{children}</div>
-        {footer && <div className="flex flex-wrap justify-end gap-2 border-t border-line px-6 py-4">{footer}</div>}
+        {footer && <div className="modal-footer flex flex-wrap justify-end gap-2 border-t border-line px-6 py-4">{footer}</div>}
       </div>
     </div>, document.body,
   );
