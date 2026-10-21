@@ -7,6 +7,7 @@ import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-do
 import { useAuth } from '@/context/AuthContext';
 import AnnouncementPopup from './AnnouncementPopup';
 import Logo from './Logo';
+import FloatingSupport from './FloatingSupport';
 
 const NAV = [
   { to: '/beranda', label: 'Beranda', short: 'Beranda', icon: Home },
@@ -104,6 +105,7 @@ export default function AppShell() {
           </NavLink>
         ))}
       </nav>
+      <FloatingSupport key={loc.pathname} />
       <AnnouncementPopup />
     </div>
   );

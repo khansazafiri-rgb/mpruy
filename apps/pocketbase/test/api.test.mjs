@@ -168,6 +168,12 @@ await langkah('katalog 32 mata kuliah dan 384 BAB, pilihan pengguna di atas lalu
   await call('PATCH', `/api/collections/users/records/${userA.id}`, { studyingSubjects: [mk.id] }, userA.token, 200);
 });
 
+await langkah('pustaka kampus tidak muncul sebelum ada soal kampus yang tayang', async () => {
+  const a = (await call('GET', '/api/medcoel/campus-materials', undefined, userA.token, 200)).data;
+  assert.deepEqual(a.items, []);
+  await call('GET', '/api/medcoel/campus-materials', undefined, null, 401);
+});
+
 console.log('Admin: impor soal');
 const soalUmum = [
   { chapter: 'BAB Uji 1', type: 'A', difficulty: 'easy', text: 'Soal umum mudah?', options: [{ text: 'Benar', correct: true, explanation: 'Karena benar' }, 'Salah'] },
@@ -218,6 +224,34 @@ await langkah('soal terbatas hanya terlihat kampus A, ditegakkan di server', asy
   const over = await call('POST', '/api/medcoel/attempts/practice', { chapter: babId, count: cb + 1 }, userB.token);
   assert.equal(over.status, 409);
   assert.equal(over.data.data.available, cb);
+});
+
+await langkah('pustaka kampus hanya berisi materi tersedia, filter dipertahankan sampai pengerjaan', async () => {
+  const a = (await call('GET', '/api/medcoel/campus-materials?campus=' + kampusB.id, undefined, userA.token, 200)).data;
+  assert.equal(a.campusName, kampusA.name);
+  assert.equal(a.items.length, 1);
+  assert.equal(a.items[0].id, mk.id);
+  assert.equal(a.items[0].questionCount, 1);
+  assert.equal(a.items[0].chapters.length, 1);
+  const b = (await call('GET', '/api/medcoel/campus-materials?campus=' + kampusA.id, undefined, userB.token, 200)).data;
+  assert.deepEqual(b.items, []);
+  const detail = (await call('GET', `/api/medcoel/subjects/${mk.slug}?campusOnly=1`, undefined, userA.token, 200)).data;
+  assert.equal(detail.chapters.length, 1); assert.equal(detail.chapters[0].total, 1); assert.deepEqual(detail.packages, []);
+  const av = (await call('GET', `/api/medcoel/simulation/availability?subject=${mk.id}&source=all&campusOnly=1`, undefined, userA.token, 200)).data;
+  assert.equal(av.chapters[babId].total, 1);
+  const practice = (await call('POST', '/api/medcoel/attempts/practice', { chapter: babId, count: 1, campusOnly: true }, userA.token, 200)).data;
+  assert.equal(practice.questions.length, 1); assert.match(JSON.stringify(practice.questions[0].stem), /kampus A/);
+  await call('POST', '/api/medcoel/attempts/practice', { chapter: babId, count: 1, campusOnly: true }, userB.token, 400);
+  const sim = (await call('POST', '/api/medcoel/attempts/simulation', { subject: mk.id, source: 'all', campusOnly: true, chapters: [{ chapter: babId, easy: 0, medium: 1, hard: 0 }] }, userA.token, 200)).data;
+  assert.equal(sim.questions.length, 1); assert.match(JSON.stringify(sim.questions[0].stem), /kampus A/);
+  // Draft and hidden content must disappear from this library too.
+  const q = (await call('GET', '/api/collections/questions/records?filter=' + encodeURIComponent("scope='campus'"), undefined, su, 200)).data.items[0];
+  await call('PATCH', `/api/collections/questions/records/${q.id}`, { status: 'draft' }, su, 200);
+  assert.deepEqual((await call('GET', '/api/medcoel/campus-materials', undefined, userA.token, 200)).data.items, []);
+  await call('PATCH', `/api/collections/questions/records/${q.id}`, { status: 'published' }, su, 200);
+  await call('PATCH', `/api/collections/chapters/records/${babId}`, { hidden: true }, su, 200);
+  assert.deepEqual((await call('GET', '/api/medcoel/campus-materials', undefined, userA.token, 200)).data.items, []);
+  await call('PATCH', `/api/collections/chapters/records/${babId}`, { hidden: false }, su, 200);
 });
 
 console.log('Belajar');
@@ -387,6 +421,47 @@ await langkah('alamat IP agen bisa dibatasi (MEDCOEL_AGENT_IPS) - dilewati bila 
   assert.ok(true);
 });
 
+console.log('Chat Admin');
+let messageA;
+await langkah('pesan tersimpan, tidak bisa menyamar jadi admin, dan kirim ulang tidak menduplikasi', async () => {
+  await call('GET', '/api/medcoel/support/messages', undefined, null, 401);
+  assert.deepEqual((await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data.items, []);
+  const payload = { text: 'Tampilan BAB sulit dibaca di HP.', category: 'feedback', clientKey: 'uji-message-' + RUN, senderRole: 'admin', user: userB.id };
+  messageA = (await call('POST', '/api/medcoel/support/messages', payload, userA.token, 200)).data.message;
+  assert.equal(messageA.senderRole, 'user'); assert.equal(messageA.category, 'feedback');
+  const retry = (await call('POST', '/api/medcoel/support/messages', payload, userA.token, 200)).data.message;
+  assert.equal(retry.id, messageA.id);
+  const own = (await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data.items;
+  assert.equal(own.length, 1); assert.equal(own[0].text, payload.text);
+  await call('POST', '/api/medcoel/support/messages', { text: '  ', clientKey: 'empty-message' }, userA.token, 400);
+  await call('POST', '/api/medcoel/support/messages', { text: 'a'.repeat(4001), clientKey: 'too-long-message' }, userA.token, 400);
+});
+await langkah('percakapan hanya bisa dibaca pemilik dan admin, balasan admin diterima pemilik', async () => {
+  const other = (await call('GET', '/api/medcoel/support/messages?user=' + userA.id, undefined, userB.token, 200)).data;
+  assert.deepEqual(other.items, []);
+  await call('GET', '/api/medcoel/support/messages?before=' + messageA.id, undefined, userB.token, 404);
+  await call('GET', '/api/medcoel/admin/support', undefined, userA.token, 403);
+  await call('GET', '/api/medcoel/admin/support/' + userA.id, undefined, userB.token, 403);
+  await call('POST', '/api/medcoel/admin/support/' + userA.id, { text: 'Menyamar', clientKey: 'bad-reply-key' }, userB.token, 403);
+  await call('POST', '/api/collections/support_messages/records', { user: userA.id, text: 'bypass' }, userA.token, 403);
+  const direct = await call('GET', '/api/collections/support_messages/records', undefined, userB.token);
+  assert.ok(direct.status === 403 || !(direct.data.items || []).length);
+  const inbox = (await call('GET', '/api/medcoel/admin/support', undefined, admin.token, 200)).data.items;
+  assert.ok(inbox.some((m) => m.userId === userA.id));
+  const reply = (await call('POST', '/api/medcoel/admin/support/' + userA.id, { text: 'Terima kasih, kami periksa.', clientKey: 'reply-key-' + RUN }, admin.token, 200)).data.message;
+  assert.equal(reply.senderRole, 'admin');
+  assert.ok((await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data.items.some((m) => m.id === reply.id));
+  assert.deepEqual((await call('GET', '/api/medcoel/support/messages', undefined, userB.token, 200)).data.items, []);
+});
+await langkah('riwayat chat dapat dimuat bertahap tanpa pesan hilang atau duplikat', async () => {
+  for (let i = 0; i < 51; i++) await call('POST', '/api/collections/support_messages/records', { user: userA.id, author: userA.id, senderRole: 'user', text: 'Pesan ' + i, clientKey: 'history-' + RUN + '-' + i }, su, 200);
+  const latest = (await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data;
+  assert.equal(latest.items.length, 50); assert.equal(latest.hasMore, true);
+  const earlier = (await call('GET', '/api/medcoel/support/messages?before=' + latest.nextBefore, undefined, userA.token, 200)).data;
+  assert.equal(earlier.items.length, 3); assert.equal(earlier.hasMore, false);
+  assert.equal(new Set([...latest.items, ...earlier.items].map((m) => m.id)).size, 53);
+});
+
 console.log('Jadwal, pengumuman, nonaktif');
 await langkah('jadwal ujian hanya terlihat pemiliknya', async () => {
   const examAt = new Date(Date.now() + 3 * 86400000).toISOString().replace('T', ' ');
@@ -418,11 +493,14 @@ await langkah('ganti kampus dibatasi dan langsung mengubah hak lihat soal', asyn
   await call('POST', '/api/medcoel/me/campus', { campus: kampusA.id }, userA.token, 400);
   const a = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userA.token, 200)).data;
   assert.equal(a.chapters.find((c) => c.id === babId).total, soalUmum.length);
+  assert.deepEqual((await call('GET', '/api/medcoel/campus-materials', undefined, userA.token, 200)).data.items, []);
 });
 
 await langkah('admin menonaktifkan akun: token lama dan login ditolak', async () => {
   await call('POST', `/api/medcoel/admin/users/${userB.id}`, { action: 'disable', reason: 'bukti palsu' }, admin.token, 200);
   await call('GET', '/api/medcoel/me', undefined, userB.token, 401);
+  await call('GET', '/api/medcoel/support/messages', undefined, userB.token, 401);
+  await call('GET', '/api/medcoel/campus-materials', undefined, userB.token, 401);
   const login = await call('POST', '/api/collections/users/auth-with-password', { identity: `ujib${RUN}`, password: 'rahasia123' });
   assert.ok(login.status >= 400);
   const users = (await call('GET', `/api/medcoel/admin/users?q=ujib${RUN}`, undefined, admin.token, 200)).data;

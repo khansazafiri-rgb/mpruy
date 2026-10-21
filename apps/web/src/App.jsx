@@ -30,6 +30,7 @@ const AdminAnnouncements = lazy(() => import('./pages/admin/Announcements'));
 const AdminSubjects = lazy(() => import('./pages/admin/SubjectsAdmin'));
 const AdminPackages = lazy(() => import('./pages/admin/Packages'));
 const AdminUsers = lazy(() => import('./pages/admin/Users'));
+const AdminSupport = lazy(() => import('./pages/admin/SupportInbox'));
 const AdminSettings = lazy(() => import('./pages/admin/SettingsAdmin'));
 
 function ScrollTop() {
@@ -80,6 +81,7 @@ export default function App() {
           </Route>
           <Route path="/admin" element={<RequireAuth admin><AdminLayout /></RequireAuth>}>
             <Route index element={<AdminSummary />} />
+            <Route path="pesan" element={<AdminSupport />} />
             <Route path="pengajuan" element={<AdminSubmissions />} />
             <Route path="soal" element={<AdminQuestions />} />
             <Route path="laporan" element={<AdminReports />} />

@@ -278,14 +278,14 @@ function StepSubjects({ draft, cred, onDone }) {
       <h2 className="section-title">Mata kuliah yang sedang dipelajari</h2>
       <p className="text-ink-muted">Centang satu atau lebih. Pilihan ini hanya menaruh mata kuliah itu di urutan pertama. Semua mata kuliah tetap bisa kamu buka.</p>
       <Alert>{error}</Alert>
-      <div className="grid gap-2 sm:grid-cols-2">
+      <div className="selection-summary" role="status"><span>{picked.size} mata kuliah dipilih</span><span>Bisa diubah nanti</span></div><div className="grid gap-3 sm:grid-cols-2">
         {list.map((s) => {
           const on = picked.has(s.id);
           return (
-            <button key={s.id} type="button" onClick={() => toggle(s.id)} aria-pressed={on} className={`flex items-center gap-3 rounded-xl border p-2.5 text-left transition-colors ${on ? 'border-brand bg-brand-soft' : 'border-line hover:border-brand/50'}`}>
+            <button key={s.id} type="button" onClick={() => toggle(s.id)} aria-pressed={on} className="subject-picker">
               <Illustration subject={s} className="h-12 w-12 shrink-0 rounded-lg" />
               <span className="flex-1 font-semibold">{s.name}</span>
-              <span className={`flex h-6 w-6 items-center justify-center rounded-md border ${on ? 'border-brand bg-brand text-white' : 'border-line'}`}>{on && <Check size={15} />}</span>
+              <span className="picker-check">{on && <Check size={15} />}</span>
             </button>
           );
         })}
