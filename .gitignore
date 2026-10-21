@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+.env.local
+*.local
+
+# PocketBase: binary diunduh lewat script, data tidak pernah dicommit
+apps/pocketbase/pocketbase
+apps/pocketbase/pb_data/
+apps/pocketbase/pb_public/
+apps/pocketbase/.env
