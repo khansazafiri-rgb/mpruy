@@ -53,6 +53,14 @@ export default function SupportConversation({ userId, admin = false, compact = f
   useEffect(() => {
     if (stick.current && messageList.current) messageList.current.scrollTop = messageList.current.scrollHeight;
   }, [lastId]);
+  useEffect(() => {
+    const list = messageList.current;
+    const observer = new ResizeObserver(() => {
+      if (stick.current) list.scrollTop = list.scrollHeight;
+    });
+    observer.observe(list);
+    return () => observer.disconnect();
+  }, []);
   const loadOlder = async () => {
     setLoadingOlder(true);
     try {
