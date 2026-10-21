@@ -134,7 +134,7 @@ export function Modal({ open, onClose, title, children, footer, size = 'md', dis
 
 export function Tabs({ tabs, value, onChange, className = '' }) {
   return (
-    <div role="tablist" className={clsx('flex gap-1 overflow-x-auto rounded-xl bg-page p-1', className)}>
+    <div role="tablist" className={clsx('ui-tabs flex gap-1 overflow-x-auto rounded-xl bg-page p-1', className)}>
       {tabs.map((t) => (
         <button
           key={t.value}
@@ -142,7 +142,7 @@ export function Tabs({ tabs, value, onChange, className = '' }) {
           type="button"
           aria-selected={value === t.value}
           onClick={() => onChange(t.value)}
-          className={clsx('whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors',
+          className={clsx('ui-tab whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors',
             value === t.value ? 'bg-surface text-brand shadow-card' : 'text-ink-muted hover:text-ink')}
         >
           {t.label}
@@ -152,7 +152,17 @@ export function Tabs({ tabs, value, onChange, className = '' }) {
   );
 }
 
-export function Stat({ label, value, sub, accent = 'text-brand' }) {
+// tone (opsional): mint, sky, lilac, peach, sun, rose — kartu berwarna "tebal".
+export function Stat({ label, value, sub, accent = 'text-brand', tone, icon: Icon }) {
+  if (tone) {
+    return (
+      <div className={clsx('stat-tone card-chunky tone-surface p-4', `tone-${tone}`)}>
+        <p className="flex items-center gap-2 text-[13px] font-bold text-[rgb(var(--tone-fg))]">{Icon && <span className="stat-tone-icon"><Icon size={16} aria-hidden /></span>}{label}</p>
+        <p className="mt-2 font-display text-[30px] font-extrabold leading-none tracking-tight text-ink">{value}</p>
+        {sub && <p className="mt-1.5 text-[13px] font-medium text-[rgb(var(--tone-fg))]">{sub}</p>}
+      </div>
+    );
+  }
   return (
     <div className="card p-4">
       <p className="text-[13px] font-semibold text-ink-muted">{label}</p>

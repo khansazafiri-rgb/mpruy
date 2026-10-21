@@ -43,7 +43,7 @@ function Chips({ options, onPick, label = 'Pilihan balasan' }) {
   return (
     <div className={clsx('chat-chips', options.length > 12 && 'is-long')} role="group" aria-label={label}>
       {options.map((o) => (
-        <button key={o.value} type="button" onClick={() => onPick(o)} className="chat-chip">
+        <button key={o.value} type="button" onClick={() => onPick(o)} className={clsx('chat-chip', o.tone && `is-toned tone-${o.tone}`)}>
           {o.icon && <o.icon size={16} aria-hidden />}{o.label}
         </button>
       ))}
@@ -235,7 +235,7 @@ function UploadFlow({ onStatus, onMenu }) {
         <Chips
           label="Pilihan lain"
           options={step === 'sent'
-            ? [{ value: 'status', label: 'Lihat status pengajuan', icon: ListChecks }, { value: 'menu', label: 'Ada hal lain', icon: MessageCircle }]
+            ? [{ value: 'status', label: 'Lihat status pengajuan', icon: ListChecks, tone: 'lilac' }, { value: 'menu', label: 'Ada hal lain', icon: MessageCircle, tone: 'sky' }]
             : [{ value: 'restart', label: 'Ulangi dari awal', icon: RotateCcw }, { value: 'menu', label: 'Batal, ke menu', icon: X }]}
           onPick={(o) => {
             if (o.value === 'restart') restart();
@@ -279,12 +279,12 @@ function MyRequests() {
 }
 
 const MENU = [
-  { value: 'upload', label: 'Upload soal PDF', icon: FileUp },
-  { value: 'question', label: 'Tanya admin', icon: CircleHelp },
-  { value: 'problem', label: 'Laporkan kendala', icon: TriangleAlert },
-  { value: 'feedback', label: 'Kasih saran', icon: Lightbulb },
-  { value: 'status', label: 'Cek status pengajuanku', icon: ListChecks },
-  { value: 'wa', label: 'Chat WhatsApp admin', icon: MessageCircle },
+  { value: 'upload', label: 'Upload soal PDF', icon: FileUp, tone: 'mint' },
+  { value: 'question', label: 'Tanya admin', icon: CircleHelp, tone: 'sky' },
+  { value: 'problem', label: 'Laporkan kendala', icon: TriangleAlert, tone: 'rose' },
+  { value: 'feedback', label: 'Kasih saran', icon: Lightbulb, tone: 'sun' },
+  { value: 'status', label: 'Cek status pengajuanku', icon: ListChecks, tone: 'lilac' },
+  { value: 'wa', label: 'Chat WhatsApp admin', icon: MessageCircle, tone: 'wa' },
 ];
 
 const PROMPTS = {

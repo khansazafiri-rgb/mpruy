@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Ecg from '@/components/Ecg';
 import Logo from '@/components/Logo';
+import { toneClass } from '@/lib/tone';
 
 const STICKERS = [
   { key: 'anatomi', tilt: -7, x: '6%', y: '0%' },
@@ -14,6 +15,7 @@ export default function AuthLayout({ title, subtitle, children, wide = false }) 
   return (
     <div className="auth-frame min-h-screen lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
       <aside className="auth-panel surface-forest hidden lg:flex" aria-hidden>
+        <span className="auth-dots tex-halftone-light" />
         <Ecg className="auth-ecg" />
         <div className="relative z-[1] flex h-full flex-col">
           <p className="tag-label w-fit bg-white/10 text-mint">Gratis untuk mahasiswa kedokteran</p>
@@ -21,7 +23,7 @@ export default function AuthLayout({ title, subtitle, children, wide = false }) 
           <p className="mt-4 max-w-sm text-[16px] leading-relaxed text-white/75">Latihan per BAB, simulasi yang kamu atur sendiri, dan soal dari kampus seluruh Indonesia.</p>
           <div className="auth-stickers">
             {STICKERS.map((s, i) => (
-              <span key={s.key} className="sticker auth-sticker" style={{ left: s.x, top: s.y, '--tilt': `${s.tilt}deg` }}>
+              <span key={s.key} className={`sticker-tone auth-sticker ${toneClass(s.key)}`} style={{ left: s.x, top: s.y, '--tilt': `${s.tilt}deg` }}>
                 {i === 0 && <span className="tape -top-3 left-6 -rotate-6" />}
                 <img src={`/illustrations/${s.key}.webp`} alt="" width={960} height={640} />
               </span>

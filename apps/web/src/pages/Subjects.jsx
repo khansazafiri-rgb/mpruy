@@ -1,15 +1,24 @@
-import { ArrowUpRight, BookOpen, Search } from 'lucide-react';
+import clsx from 'clsx';
+import { ArrowUpRight, BookOpen, Search, Star } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Illustration from '@/components/Illustration';
 import CampusMaterials from '@/components/CampusMaterials';
 import { Alert, EmptyState, PageLoader, ProgressBar } from '@/components/ui';
+import { toneClass } from '@/lib/tone';
 import { useApi } from '@/lib/useApi';
+
+const CLINIC = ['ilmu-bedah', 'ilmu-bedah-ortopedi', 'ilmu-kesehatan-anak', 'ilmu-penyakit-dalam', 'kehamilan-persalinan', 'ginekologi-payudara', 'psikiatri-kesehatan-jiwa', 'multisistem-kegawatdaruratan'];
+const groupOf = (s) => (s.slug?.startsWith('sistem-') ? 'sistem' : CLINIC.includes(s.slug) ? 'klinik' : 'dasar');
+const GROUPS = [['semua', 'Semua'], ['dasar', 'Dasar'], ['klinik', 'Klinik'], ['sistem', 'Sistem organ']];
 
 export default function Subjects() {
   const { data, error, loading } = useApi('subjects');
   const [q, setQ] = useState('');
-  const items = useMemo(() => (data?.items || []).filter((s) => s.name.toLowerCase().includes(q.trim().toLowerCase())), [data, q]);
+  const [group, setGroup] = useState('semua');
+  const all = useMemo(() => data?.items || [], [data]);
+  const counts = useMemo(() => all.reduce((c, s) => ({ ...c, [groupOf(s)]: (c[groupOf(s)] || 0) + 1 }), { semua: all.length }), [all]);
+  const items = useMemo(() => all.filter((s) => (group === 'semua' || groupOf(s) === group) && s.name.toLowerCase().includes(q.trim().toLowerCase())), [all, q, group]);
   const total = data?.items?.length || 0;
   return (
     <div className="space-y-8">
@@ -27,27 +36,32 @@ export default function Subjects() {
       <Alert>{error?.message}</Alert>
       <CampusMaterials />
       {loading ? <PageLoader /> : <>
-        <p className="flex flex-wrap items-baseline gap-x-3 text-sm text-ink-muted" role="status">
-          <span><b className="text-ink">{items.length}</b> mata kuliah{q.trim() ? ` untuk “${q.trim()}”` : ''}</span>
-          {!q.trim() && <span className="hand text-[22px] text-brand" aria-hidden>semua terbuka untukmu ✓</span>}
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="filter-pills" role="group" aria-label="Kelompok mata kuliah">
+            {GROUPS.map(([k, label]) => (
+              <button key={k} type="button" aria-pressed={group === k} onClick={() => setGroup(k)}>{label}<span>{counts[k] || 0}</span></button>
+            ))}
+          </div>
+          <p className="flex flex-wrap items-baseline gap-x-3 text-sm text-ink-muted" role="status">
+            <span><b className="text-ink">{items.length}</b> mata kuliah{q.trim() ? ` untuk “${q.trim()}”` : ''}</span>
+            {!q.trim() && group === 'semua' && <span className="hand text-[22px] text-brand" aria-hidden>semua terbuka untukmu ✓</span>}
+          </p>
+        </div>
         {items.length ? <div className="subject-wall">
-          {items.map((s, i) => (
-            <Link key={s.id} to={`/mata-kuliah/${s.slug}`} className="subject-tile group" style={{ '--tilt': `${[-1.4, 1.1, -0.6, 1.6, -1, 0.8][i % 6]}deg` }}>
-              <span className="sticker subject-tile-art">
-                {s.studying && <span className="subject-tile-flag">Sedang dipelajari</span>}
-                <Illustration subject={s} className="h-full w-full" />
+          {items.map((s) => (
+            <Link key={s.id} to={`/mata-kuliah/${s.slug}`} className={clsx('subject-tile card-chunky tone-surface group', toneClass(s.illustrationKey || s.slug))}>
+              {s.studying && <span className="subj-flag"><Star size={12} aria-hidden /> Dipelajari</span>}
+              <span className="sticker-tone subject-tile-art"><Illustration subject={s} className="h-full w-full" /></span>
+              <span className="mt-3.5 flex items-start justify-between gap-2">
+                <span className="font-display text-[18px] font-bold leading-snug text-ink">{s.name}</span>
+                <span className="subject-go" aria-hidden><ArrowUpRight size={16} /></span>
               </span>
-              <span className="mt-3 flex items-start justify-between gap-2">
-                <span className="font-display text-[17px] font-semibold leading-snug text-ink group-hover:text-brand">{s.name}</span>
-                <ArrowUpRight size={17} className="mt-1 shrink-0 text-ink-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand" aria-hidden />
-              </span>
-              {s.description && <span className="mt-1 line-clamp-2 block text-[13px] leading-relaxed text-ink-muted">{s.description}</span>}
-              <span className="mt-3 block text-[13px] text-ink-muted">{s.chapterCount !== undefined && <>{s.chapterCount} BAB · </>}<b className="font-semibold text-ink">{s.answeredCount || 0}</b>/{s.questionCount || 0} soal</span>
-              <ProgressBar value={s.answeredCount} max={s.questionCount || 1} className="mt-2 !h-2" color="bg-gold" label={`Progres ${s.name}`} />
+              {s.description && <span className="mt-1 line-clamp-2 block text-[14px] leading-relaxed text-ink/75">{s.description}</span>}
+              <span className="mt-3 flex flex-wrap items-center gap-2 text-[13px] font-semibold text-[rgb(var(--tone-fg))]">{s.chapterCount !== undefined && <span className="subject-meta">{s.chapterCount} BAB</span>}<span><b>{s.answeredCount || 0}</b>/{s.questionCount || 0} soal</span></span>
+              <ProgressBar value={s.answeredCount} max={s.questionCount || 1} className="tone-track mt-2.5 !h-2" color="tone-fill" label={`Progres ${s.name}`} />
             </Link>
           ))}
-        </div> : <EmptyState icon={BookOpen} title={q.trim() ? 'Mata kuliah belum ditemukan' : 'Mata kuliah sedang disiapkan'}>{q.trim() ? 'Coba kata lain atau hapus pencarianmu.' : 'Materi baru akan muncul di sini setelah tersedia.'}{q.trim() && <button type="button" className="btn-secondary mt-4" onClick={() => setQ('')}>Hapus pencarian</button>}</EmptyState>}
+        </div> : <EmptyState icon={BookOpen} title={q.trim() || group !== 'semua' ? 'Mata kuliah belum ditemukan' : 'Mata kuliah sedang disiapkan'}>{q.trim() || group !== 'semua' ? 'Coba kata lain atau pilih kelompok Semua.' : 'Materi baru akan muncul di sini setelah tersedia.'}{(q.trim() || group !== 'semua') && <button type="button" className="btn-secondary mt-4" onClick={() => { setQ(''); setGroup('semua'); }}>Tampilkan semua</button>}</EmptyState>}
       </>}
     </div>
   );

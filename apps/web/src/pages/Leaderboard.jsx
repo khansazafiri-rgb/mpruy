@@ -34,15 +34,16 @@ export default function Leaderboard() {
         <>
           {data.me ? (
             <div className="my-rank surface-forest flex items-center gap-3 p-5">
+              <span className="my-rank-dots tex-halftone-light" aria-hidden />
               <span className="font-display text-3xl font-extrabold text-gold">#{data.me.rank}</span>
               <p className="flex-1">Peringkatmu{me?.leaderboardAnonymous ? ' (tampil sebagai Anonim)' : ''}</p>
               <span className="font-display text-xl font-bold">{data.me.points} poin</span>
             </div>
           ) : <p className="text-sm text-ink-muted">Kamu belum masuk daftar di periode ini.</p>}
-          <ol className="card divide-y divide-line">
+          <ol className="lb-list card-chunky divide-y divide-line overflow-hidden">
             {data.items.map((it) => (
-              <li key={`${it.rank}-${it.name}-${it.points}`} className={`flex items-center gap-3 px-4 py-3 ${it.isMe ? 'bg-brand-soft' : ''}`}>
-                <span className="flex w-9 justify-center font-display font-bold">
+              <li key={`${it.rank}-${it.name}-${it.points}`} className={`lb-row flex items-center gap-3 px-4 py-3 ${it.rank <= 3 ? `is-top tone-${['sun', 'sky', 'peach'][it.rank - 1]}` : ''} ${it.isMe ? 'is-me' : ''}`}>
+                <span className="lb-rank flex w-9 justify-center font-display font-bold">
                   {it.rank === 1 ? <Crown className="text-gold" size={22} aria-label="Peringkat 1" /> : it.rank <= 3 ? <Medal className={it.rank === 2 ? 'text-ink-faint' : 'text-[#b07a3c]'} size={22} aria-label={`Peringkat ${it.rank}`} /> : it.rank}
                 </span>
                 <div className="min-w-0 flex-1">

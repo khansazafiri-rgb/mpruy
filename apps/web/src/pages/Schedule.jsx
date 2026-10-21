@@ -4,6 +4,7 @@ import { CalendarDays, Pencil, Plus, Trash2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Countdown from '@/components/Countdown';
 import { Alert, EmptyState, Field, Modal, PageLoader } from '@/components/ui';
+import { toneClass } from '@/lib/tone';
 import { useAuth } from '@/context/AuthContext';
 import { api, errorText } from '@/lib/api';
 import pb from '@/lib/pb';
@@ -117,16 +118,16 @@ export default function Schedule() {
           {upcoming.map((x, i) => {
             const d = daysUntil(x.examAt, x.timezone);
             return (
-              <div key={x.id} className={`flex flex-wrap items-center gap-4 p-5 ${i === 0 ? 'exam-next surface-forest' : 'card'}`}>
+              <div key={x.id} className={`flex flex-wrap items-center gap-4 p-5 ${i === 0 ? 'exam-next surface-forest' : `card-chunky tone-surface ${toneClass(x.expand?.subject?.illustrationKey || x.expand?.subject?.slug)}`}`}>
                 <div className="min-w-0 flex-1">
-                  <p className={`text-xs font-semibold ${i === 0 ? 'text-white/80' : 'text-ink-muted'}`}>{d === 0 ? 'Hari ini' : d === 1 ? 'Besok' : `${d} hari lagi`}</p>
+                  <p className={`text-[13px] font-bold ${i === 0 ? 'text-white/80' : 'text-[rgb(var(--tone-fg))]'}`}>{d === 0 ? 'Hari ini' : d === 1 ? 'Besok' : `${d} hari lagi`}</p>
                   <p className={`font-display text-xl font-bold ${i === 0 ? 'text-white' : ''}`}>{x.title} · {x.expand?.subject?.name}</p>
-                  <p className={`text-sm ${i === 0 ? 'text-white/85' : 'text-ink-muted'}`}>{fmtDateTime(x.examAt, x.timezone, { weekday: true })} · pengingat {(x.reminderDays || []).map((r) => (r === 0 ? 'hari H' : `H-${r}`)).join(', ') || 'tidak ada'}</p>
+                  <p className={`text-sm ${i === 0 ? 'text-white/85' : 'text-ink/75'}`}>{fmtDateTime(x.examAt, x.timezone, { weekday: true })} · pengingat {(x.reminderDays || []).map((r) => (r === 0 ? 'hari H' : `H-${r}`)).join(', ') || 'tidak ada'}</p>
                 </div>
                 {i === 0 && <Countdown target={x.examAt} compact />}
                 <div className="flex gap-1">
-                  <button type="button" className={`rounded-lg p-2 ${i === 0 ? 'hover:bg-white/10' : 'text-ink-muted hover:bg-page'}`} onClick={() => setEdit(x)} aria-label={`Ubah ${x.title}`}><Pencil size={18} /></button>
-                  <button type="button" className={`rounded-lg p-2 ${i === 0 ? 'hover:bg-white/10' : 'text-ink-muted hover:bg-page hover:text-coral'}`} onClick={() => remove(x)} aria-label={`Hapus ${x.title}`}><Trash2 size={18} /></button>
+                  <button type="button" className={`rounded-lg p-2 ${i === 0 ? 'hover:bg-white/10' : 'text-ink hover:bg-white/70'}`} onClick={() => setEdit(x)} aria-label={`Ubah ${x.title}`}><Pencil size={18} /></button>
+                  <button type="button" className={`rounded-lg p-2 ${i === 0 ? 'hover:bg-white/10' : 'text-ink hover:bg-white/70 hover:text-coral'}`} onClick={() => remove(x)} aria-label={`Hapus ${x.title}`}><Trash2 size={18} /></button>
                 </div>
               </div>
             );

@@ -6,6 +6,7 @@ import Illustration from '@/components/Illustration';
 import { Alert, EmptyState, Modal, PageLoader, ProgressBar } from '@/components/ui';
 import { api } from '@/lib/api';
 import { DIFF, DIFF_CLASS } from '@/lib/labels';
+import { toneClass } from '@/lib/tone';
 import { useApi } from '@/lib/useApi';
 
 const DIFFS = ['easy', 'medium', 'hard'];
@@ -306,20 +307,20 @@ export default function SubjectDetail() {
   const pct = total ? Math.round((answered / total) * 100) : 0;
 
   return (
-    <div className="space-y-10">
+    <div className={`space-y-10 ${toneClass(s.illustrationKey || s.slug)}`}>
       <Link to="/mata-kuliah" className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-muted hover:text-brand"><ArrowLeft size={16} /> Semua mata kuliah</Link>
 
-      <section className="sd-hero surface-forest">
+      <section className="sd-hero tone-surface tex-halftone">
         <Ecg className="sd-ecg" />
         <div className="relative grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_auto]">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="tag-label bg-white/10 text-mint">{campusOnly ? <><School size={14} aria-hidden /> Soal kampusmu</> : <><BookOpen size={14} aria-hidden /> Mata kuliah</>}</span>
+              <span className="tag-label sd-tag">{campusOnly ? <><School size={14} aria-hidden /> Soal kampusmu</> : <><BookOpen size={14} aria-hidden /> Mata kuliah</>}</span>
               {s.studying && <span className="tag-label bg-gold text-forest">Sedang dipelajari</span>}
             </div>
             <h1 className="sd-title">{s.name}</h1>
-            {campusOnly && <p className="text-[15px] font-semibold text-mint">{data.campusName || 'Kampusmu'}</p>}
-            {s.description && <p className="mt-2 max-w-xl text-[17px] leading-relaxed text-white/80">{s.description}</p>}
+            {campusOnly && <p className="text-[15px] font-bold text-[rgb(var(--tone-fg))]">{data.campusName || 'Kampusmu'}</p>}
+            {s.description && <p className="mt-2 max-w-xl text-[17px] leading-relaxed text-ink/80">{s.description}</p>}
 
             <dl className="sd-stats">
               <div><dt>BAB</dt><dd>{chapters.length}</dd></div>
@@ -327,21 +328,21 @@ export default function SubjectDetail() {
               <div><dt>Soal dikerjakan</dt><dd>{answered}<small>/{total}</small></dd></div>
             </dl>
             <div className="mt-4 max-w-md">
-              <div className="mb-1.5 flex justify-between text-[13px] font-semibold text-white/75"><span>Progresmu</span><span>{pct}%</span></div>
-              <div className="h-2.5 overflow-hidden rounded-full bg-white/15" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`Progres ${s.name}`}>
-                <div className="h-full rounded-full bg-gold transition-all" style={{ width: `${pct}%` }} />
+              <div className="mb-1.5 flex justify-between text-[13px] font-bold text-[rgb(var(--tone-fg))]"><span>Progresmu</span><span>{pct}%</span></div>
+              <div className="sd-progress h-3 overflow-hidden rounded-full" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`Progres ${s.name}`}>
+                <div className="h-full rounded-full bg-forest transition-all" style={{ width: `${pct}%` }} />
               </div>
             </div>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <button type="button" className="btn btn-paper btn-press px-5 py-3 text-base" onClick={() => setSim(true)} disabled={!withQ.length}><Layers size={18} /> Coba Simulasi</button>
-              {data.packages.length > 0 && <a href="#paket" className="btn border border-white/30 px-5 py-3 text-base text-white hover:bg-white/10"><Package size={18} /> Paket soal</a>}
+              <button type="button" className="btn btn-primary btn-press px-5 py-3 text-base" onClick={() => setSim(true)} disabled={!withQ.length}><Layers size={18} /> Coba Simulasi</button>
+              {data.packages.length > 0 && <a href="#paket" className="btn sd-btn-alt px-5 py-3 text-base"><Package size={18} /> Paket soal</a>}
             </div>
           </div>
 
           {!campusOnly && (
             <div className="sd-art-wrap">
-              <div className="sd-sticker sticker">
+              <div className="sd-sticker sticker-tone">
                 <span className="tape -top-3 left-1/2 -translate-x-1/2 -rotate-3" />
                 <Illustration subject={s} className="h-full w-full" />
               </div>
@@ -365,7 +366,7 @@ export default function SubjectDetail() {
         ) : (
           <div className="space-y-5">
             {withQ.length > 0 ? (
-              <ul className="chapter-sheet paper-sheet">
+              <ul className="chapter-sheet card-chunky">
                 {withQ.map((c) => <ChapterRow key={c.id} c={c} n={c.n} onPick={setPractice} />)}
               </ul>
             ) : (
@@ -400,7 +401,7 @@ export default function SubjectDetail() {
           <h2 id="paket-title" className="section-title mb-4">Paket soal</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {data.packages.map((p) => (
-              <button key={p.id} type="button" onClick={() => setPkg(p)} className="package-card paper-sheet group">
+              <button key={p.id} type="button" onClick={() => setPkg(p)} className="package-card card-chunky group">
                 <span className="package-icon"><Package size={22} aria-hidden /></span>
                 <span className="mt-3 block font-display text-lg font-semibold text-ink group-hover:text-brand">{p.name}</span>
                 <span className="mt-1 block text-sm text-ink-muted">{p.description || `${p.perChapter || 5} soal per BAB${p.total ? `, maks. ${p.total} soal` : ''}`}</span>

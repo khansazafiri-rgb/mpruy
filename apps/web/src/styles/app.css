@@ -202,3 +202,110 @@
 .selection-summary { font-size: 14px; color: rgb(var(--brand-dark)); background: rgb(var(--gold-soft)); border-color: rgb(248 192 56 / .6); }
 .soon-list { background-image: linear-gradient(90deg, transparent 38px, rgb(176 68 79 / .25) 38px, rgb(176 68 79 / .25) 39px, transparent 39px); }
 .soon-list li { border-bottom: 1px solid rgb(37 95 133 / .1); }
+
+/* ================= Versi 2: warna per topik dan kartu "tebal" ================= */
+/* .card-chunky memakai shorthand background, jadi warna nada dipasang ulang di sini. */
+.card-chunky.tone-surface { background-color: rgb(var(--tone-bg)); }
+.tone-track { background: rgb(255 255 255 / .75) !important; box-shadow: inset 0 1px 2px rgb(0 0 0 / .08); }
+.tone-fill { background: rgb(var(--tone-fg)); }
+
+/* Kartu umum: garis lebih tegas dan bayangan bawah supaya terpisah jelas dari latar. */
+.card { border-width: 1.5px; border-color: rgb(var(--ink) / .1); box-shadow: 0 3px 0 rgb(var(--ink) / .06), 0 16px 30px -22px rgb(10 56 48 / .4); }
+.ui-tabs { background: rgb(var(--paper-2) / .8); border: 1.5px solid rgb(var(--ink) / .08); padding: 4px; }
+.ui-tab[aria-selected=true] { background: rgb(var(--forest)); color: #fff; box-shadow: 0 2px 0 rgb(0 0 0 / .25); }
+
+/* Kartu statistik bernada */
+.stat-tone { min-height: 118px; }
+.stat-tone-icon { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 9px; background: rgb(255 255 255 / .8); color: rgb(var(--tone-fg)); box-shadow: 0 2px 0 rgb(var(--tone-mid) / .6); }
+
+/* Beranda: hitam-hijau ujian + titik */
+.home-exam-dots { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; -webkit-mask-image: linear-gradient(115deg, transparent 35%, #000 100%); mask-image: linear-gradient(115deg, transparent 35%, #000 100%); }
+.home-exam-card.surface-forest::after { opacity: .5; }
+.streak-card { padding: 24px; }
+.streak-flame { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: #fff; color: #d97706; box-shadow: 0 2px 0 rgb(var(--tone-mid)); }
+.streak-card .streak-week i { border-color: rgb(var(--tone-fg) / .35); background: rgb(255 255 255 / .55); }
+.streak-card .streak-week li { color: rgb(var(--tone-fg)); }
+.streak-card .streak-week li.is-on i { background: rgb(var(--forest)); box-shadow: inset 0 -3px 0 rgb(0 0 0 / .25); }
+.streak-mini > div { padding: 10px 12px; border-radius: 14px; background: rgb(255 255 255 / .7); box-shadow: 0 2px 0 rgb(var(--tone-mid) / .55); }
+.streak-mini dt { font-size: 12px; font-weight: 700; color: rgb(var(--tone-fg)); }
+.streak-mini dd { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 800; color: rgb(var(--ink)); }
+.resume-card { display: flex; align-items: center; gap: 14px; padding: 16px; }
+.resume-card .resume-icon { background: rgb(var(--tone-fg)); }
+.upload-invite { padding: 24px 26px; }
+.upload-invite .upload-invite-icon { background: #fff; color: rgb(var(--tone-fg)); box-shadow: 0 3px 0 rgb(var(--tone-mid)); }
+
+/* Deretan kartu mata kuliah yang bisa digeser */
+.rail { position: relative; }
+.rail-track { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 3 * 18px) / 4); gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 4px 16px; margin: -6px -4px 0; scrollbar-width: none; overscroll-behavior-x: contain; }
+.rail-track::-webkit-scrollbar { display: none; }
+.rail-track > li { scroll-snap-align: start; min-width: 0; }
+.rail-btn { position: absolute; top: 38%; z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: rgb(var(--forest)); border: 1.5px solid rgb(var(--ink) / .12); box-shadow: 0 3px 0 rgb(var(--ink) / .1), 0 10px 22px -10px rgb(0 0 0 / .35); transition: opacity .2s, transform .2s; }
+.rail-btn:hover:not(:disabled) { transform: scale(1.06); }
+.rail-btn:disabled { opacity: 0; pointer-events: none; }
+.rail-btn.is-prev { left: -18px; }
+.rail-btn.is-next { right: -18px; }
+.subj-card { display: block; height: 100%; padding: 12px 12px 16px; }
+.subj-card-art { display: block; aspect-ratio: 4 / 3; }
+.subj-card:hover .subj-card-art { transform: rotate(-2deg) scale(1.03); }
+.subj-flag { position: absolute; z-index: 2; top: -9px; right: 12px; display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; color: rgb(var(--forest)); background: rgb(var(--gold)); box-shadow: 0 2px 0 rgb(0 0 0 / .18); }
+@media (max-width: 1023px) { .rail-track { grid-auto-columns: calc((100% - 2 * 16px) / 3); gap: 16px; } .rail-btn { display: none; } }
+@media (max-width: 639px) { .rail-track { grid-auto-columns: 72%; gap: 14px; scroll-padding-left: 4px; } }
+
+/* Daftar mata kuliah v2 */
+.filter-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-pills button { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; font-size: 15px; font-weight: 700; color: rgb(var(--ink)); background: #fff; border: 1.5px solid rgb(var(--ink) / .12); box-shadow: 0 3px 0 rgb(var(--ink) / .08); transition: transform .15s, background .2s, color .2s; }
+.filter-pills button span { display: grid; place-items: center; min-width: 24px; height: 22px; padding: 0 6px; border-radius: 999px; font-size: 12px; background: rgb(var(--paper-2)); color: rgb(var(--ink-muted)); }
+.filter-pills button:hover { transform: translateY(-1px); }
+.filter-pills button:active { transform: translateY(2px); box-shadow: 0 1px 0 rgb(var(--ink) / .08); }
+.filter-pills button[aria-pressed=true] { background: rgb(var(--forest)); color: #fff; border-color: rgb(var(--forest)); box-shadow: 0 3px 0 rgb(0 0 0 / .3); }
+.filter-pills button[aria-pressed=true] span { background: rgb(var(--gold)); color: rgb(var(--forest)); }
+.subject-wall { gap: 26px 22px; }
+.subject-tile { padding: 12px 12px 18px; }
+.subject-tile .subject-tile-art { transform: none; aspect-ratio: 16 / 11; }
+.subject-tile:hover .subject-tile-art { transform: rotate(-2deg) scale(1.03); box-shadow: 0 4px 0 rgb(var(--tone-mid) / .8), 0 22px 36px -16px rgb(var(--tone-fg) / .55); }
+.subject-go { display: grid; place-items: center; width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%; background: #fff; color: rgb(var(--tone-fg)); box-shadow: 0 2px 0 rgb(var(--tone-mid)); transition: transform .2s; }
+.subject-tile:hover .subject-go { transform: rotate(45deg); }
+.subject-meta { padding: 2px 9px; border-radius: 999px; background: rgb(255 255 255 / .75); }
+@media (max-width: 767px) { .subject-tile { padding: 9px 9px 14px; } .subject-tile .font-display.text-\[18px\] { font-size: 16px; } .filter-pills button { padding: 8px 13px; font-size: 14px; } }
+
+/* Detail mata kuliah v2: bidang hero memakai nada mata kuliahnya. */
+.sd-hero.tone-surface { position: relative; isolation: isolate; overflow: hidden; color: rgb(var(--ink)); border: 1.5px solid rgb(var(--tone-mid) / .7); box-shadow: 0 6px 0 rgb(var(--tone-mid) / .7), 0 34px 60px -38px rgb(var(--tone-fg) / .6); }
+.sd-hero.tone-surface::before { content: ''; position: absolute; right: -120px; top: -140px; width: 460px; height: 460px; border-radius: 50%; background: radial-gradient(circle, rgb(255 255 255 / .7), transparent 65%); z-index: -1; }
+.sd-hero.tone-surface::after { content: ''; position: absolute; inset: 0; z-index: -1; background-image: var(--grain); opacity: .28; mix-blend-mode: multiply; pointer-events: none; }
+.sd-hero.tone-surface .sd-title { color: rgb(var(--ink)); }
+.sd-hero.tone-surface .sd-ecg { color: rgb(var(--tone-fg) / .3); }
+.sd-tag { background: #fff; color: rgb(var(--tone-fg)); box-shadow: 0 2px 0 rgb(var(--tone-mid) / .8); }
+.sd-hero.tone-surface .sd-stats > div { background: #fff; border: 1.5px solid rgb(var(--tone-mid) / .55); box-shadow: 0 3px 0 rgb(var(--tone-mid) / .75); }
+.sd-hero.tone-surface .sd-stats dt { color: rgb(var(--tone-fg)); font-weight: 700; }
+.sd-hero.tone-surface .sd-stats dd { color: rgb(var(--ink)); }
+.sd-hero.tone-surface .sd-stats dd small { color: rgb(var(--ink-muted)); }
+.sd-progress { background: rgb(255 255 255 / .8); box-shadow: inset 0 1px 2px rgb(0 0 0 / .1); }
+.sd-btn-alt { background: #fff; color: rgb(var(--forest)); border: 1.5px solid rgb(var(--tone-mid)); box-shadow: 0 3px 0 rgb(var(--tone-mid)); }
+.sd-btn-alt:hover { background: rgb(255 255 255 / .85); }
+.sd-hero.tone-surface .sd-sticker { transform: rotate(3deg); }
+.sd-hero.tone-surface .sd-note { color: rgb(var(--tone-fg)); }
+.sd-hero.tone-surface .tape { background: repeating-linear-gradient(90deg, rgb(255 255 255 / .3) 0 6px, transparent 6px 12px), rgb(var(--forest) / .55); }
+
+.chapter-sheet.card-chunky { padding: 8px; }
+.chapter-num { background: rgb(var(--tone-bg, var(--mint))); color: rgb(var(--tone-fg, 10 56 48)); box-shadow: inset 0 -3px 0 rgb(var(--tone-mid, 0 112 96) / .55); }
+.chapter-row:hover { background: rgb(var(--tone-bg, var(--mint)) / .5); }
+.chapter-go { background: rgb(var(--tone-bg, var(--brand-soft))); color: rgb(var(--tone-fg, 0 112 96)); box-shadow: 0 2px 0 rgb(var(--tone-mid, 0 112 96) / .6); }
+.chapter-row:hover .chapter-go { background: rgb(var(--forest)); color: #fff; box-shadow: 0 2px 0 rgb(0 0 0 / .3); }
+.soon-sheet { background: rgb(255 255 255 / .55); border: 1.5px dashed rgb(var(--tone-mid, 128 145 156) / .8); }
+.package-card .package-icon { background: rgb(var(--tone-bg, var(--progress-soft))); color: rgb(var(--tone-fg, var(--progress))); }
+/* Stiker bernada: bingkai putih, latar nada di balik ilustrasi (gambar dicampur multiply supaya krem ilustrasi ikut berwarna). */
+.sticker-tone { background: rgb(var(--tone-bg)); border: 6px solid #fff; padding: 0; background-clip: padding-box; overflow: hidden; }
+.sticker-tone img { background: transparent; border-radius: 16px; }
+@media (max-width: 639px) { .rail-track { margin-right: -16px; padding-right: 16px; } }
+
+/* Progres, Leaderboard, Jadwal v2 */
+.progress-thumb.sticker-tone { border-width: 3px; border-radius: 12px; padding: 0; }
+.lb-row.is-top { background: rgb(var(--tone-bg)); }
+.lb-row.is-top .lb-rank { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: #fff; box-shadow: 0 2px 0 rgb(var(--tone-mid)); }
+.lb-row.is-me { background: rgb(var(--mint)); box-shadow: inset 4px 0 0 rgb(var(--forest)); }
+.my-rank { position: relative; overflow: hidden; }
+.my-rank-dots { position: absolute; inset: 0; pointer-events: none; -webkit-mask-image: linear-gradient(90deg, transparent 30%, #000); mask-image: linear-gradient(90deg, transparent 30%, #000); }
+.exam-next { position: relative; }
+.auth-dots { position: absolute; inset: 0; pointer-events: none; -webkit-mask-image: linear-gradient(200deg, #000, transparent 60%); mask-image: linear-gradient(200deg, #000, transparent 60%); }
+.auth-panel.surface-forest::after { opacity: .5; }
+.auth-sticker.sticker-tone { box-shadow: 0 5px 0 rgb(var(--tone-mid)), 0 22px 40px -18px rgb(0 0 0 / .55); }
