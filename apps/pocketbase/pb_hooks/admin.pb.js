@@ -46,6 +46,7 @@ routerAdd("GET", "/api/medcoel/admin/questions", (e) => {
     const v = u.query(e, name);
     if (v) { parts.push(expr); params[name] = v; }
   };
+  add("id", "id = {:id}");
   add("subject", "subject = {:subject}");
   add("chapter", "chapter = {:chapter}");
   add("difficulty", "difficulty = {:difficulty}");

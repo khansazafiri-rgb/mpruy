@@ -76,6 +76,16 @@ routerAdd("POST", "/api/medcoel/submissions", (e) => {
   return e.json(200, subs.summary(e.app, sub));
 });
 
+routerAdd("GET", "/api/medcoel/submissions/{id}", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const subs = require(`${__hooks}/lib/submissions.js`);
+  const user = u.requireUser(e);
+  let sub;
+  try { sub = e.app.findRecordById("submissions", e.request.pathValue("id")); } catch (_) { sub = null; }
+  if (!sub || sub.getString("user") !== user.id) throw new NotFoundError("Pengajuan tidak ditemukan.");
+  return e.json(200, subs.summary(e.app, sub));
+});
+
 routerAdd("POST", "/api/medcoel/submissions/{id}/files/{fileId}/remove", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
   const subs = require(`${__hooks}/lib/submissions.js`);

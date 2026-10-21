@@ -1,0 +1,28 @@
+# Systemd unit PocketBase MEDCOEL
+# Pasang: sudo cp deploy/medcoel.service /etc/systemd/system/medcoel.service
+#         sudo systemctl daemon-reload && sudo systemctl enable --now medcoel
+[Unit]
+Description=PocketBase (MEDCOEL)
+After=network.target
+
+[Service]
+Type=simple
+User=medcoel
+Group=medcoel
+WorkingDirectory=/opt/medcoel/app/apps/pocketbase
+EnvironmentFile=/opt/medcoel/medcoel.env
+ExecStart=/opt/medcoel/app/apps/pocketbase/pocketbase serve \
+  --http=127.0.0.1:8090 \
+  --dir=/opt/medcoel/pb_data \
+  --migrationsDir=/opt/medcoel/app/apps/pocketbase/pb_migrations \
+  --hooksDir=/opt/medcoel/app/apps/pocketbase/pb_hooks \
+  --hooksWatch=false
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=full
+ReadWritePaths=/opt/medcoel/pb_data
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target

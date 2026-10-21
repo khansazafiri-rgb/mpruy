@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Token warna MEDCOEL (PRD: Identitas MEDCOEL). Nilai ditulis sebagai
+   "R G B" supaya Tailwind bisa memberi transparansi (bg-brand/10). Mode gelap
+   cukup menimpa variabel ini di satu tempat nanti. */
+:root {
+  --brand: 0 112 96;          /* #007060 hijau identitas */
+  --brand-dark: 0 88 78;      /* #00584E hijau gelap */
+  --brand-soft: 227 241 238;
+  --gold: 248 192 56;         /* #F8C038 emas bintang */
+  --gold-soft: 253 243 214;
+  --ink: 23 43 56;            /* #172B38 navy tinta */
+  --ink-muted: 74 93 105;
+  --ink-faint: 128 145 156;
+  --page: 248 247 243;        /* #F8F7F3 ivory */
+  --surface: 255 255 255;     /* #FFFFFF putih */
+  --line: 230 227 218;
+  --academic: 37 95 133;      /* #255F85 biru akademik */
+  --academic-soft: 228 238 245;
+  --progress: 99 87 155;      /* #63579B ungu lembut */
+  --progress-soft: 236 234 245;
+  --coral: 176 68 79;         /* #B0444F koral */
+  --coral-soft: 248 231 232;
+  --ok: 0 112 96;
+  --ok-soft: 227 241 238;
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-page text-ink font-sans antialiased;
+    font-size: 16px;
+  }
+  h1, h2, h3, h4 { @apply font-display text-ink; }
+  :focus-visible { outline: 3px solid rgb(var(--brand) / 0.45); outline-offset: 2px; }
+  ::selection { background: rgb(var(--gold) / 0.45); }
+}
+
+@layer components {
+  .page-title { @apply font-display font-bold text-[32px] leading-tight md:text-[44px]; }
+  .section-title { @apply font-display font-semibold text-[22px] md:text-[26px] leading-snug; }
+  .card { @apply bg-surface rounded-2xl border border-line shadow-card; }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-[15px] font-semibold
+      transition-colors disabled:opacity-50 disabled:cursor-not-allowed select-none;
+  }
+  .btn-primary { @apply btn bg-brand text-white hover:bg-brand-dark; }
+  .btn-secondary { @apply btn bg-surface text-ink border border-line hover:border-brand hover:text-brand; }
+  .btn-ghost { @apply btn text-ink-muted hover:text-brand hover:bg-brand-soft; }
+  .btn-danger { @apply btn bg-coral text-white hover:opacity-90; }
+  .btn-sm { @apply px-3 py-1.5 text-sm rounded-lg; }
+  .input {
+    @apply w-full rounded-xl border border-line bg-surface px-3.5 py-2.5 text-[15px] text-ink
+      placeholder:text-ink-faint focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/15;
+  }
+  .label { @apply block text-sm font-semibold text-ink mb-1.5; }
+  .hint { @apply text-[13px] text-ink-muted mt-1; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+}
+
+/* Konten kaya pada soal dan pembahasan */
+.rich { @apply text-[16px] md:text-[17px] leading-relaxed text-ink; overflow-wrap: anywhere; }
+.rich p + p, .rich p + ul, .rich p + ol, .rich ul + p, .rich ol + p { margin-top: 0.6em; }
+.rich ul { @apply list-disc pl-6 my-2 space-y-1; }
+.rich ol { @apply list-decimal pl-6 my-2 space-y-1; }
+.rich mark { background: rgb(var(--gold) / 0.45); padding: 0 0.15em; border-radius: 0.2em; }
+.rich a { @apply text-academic underline underline-offset-2; }
+.rich img { max-width: 100%; height: auto; }
+.rich table { border-collapse: collapse; min-width: 100%; }
+.rich th, .rich td { @apply border border-line px-3 py-2 align-top text-left text-[15px]; }
+.rich th { @apply bg-brand-soft font-semibold; }
+.rich sub, .rich sup { font-size: 0.75em; }
+.rich code { @apply bg-page px-1 rounded; }
+.rich h3, .rich h4 { @apply font-display font-semibold text-lg mt-3 mb-1; }
+
+.scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Tes unit (konten kaya + format impor)
+        run: npm test
+      - name: Build web
+        run: npm run build
+      - name: Tes API per peran
+        working-directory: apps/pocketbase
+        run: |
+          bash scripts/download-pocketbase.sh
+          ./pocketbase migrate up --dir=./pb_data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks
+          ./pocketbase superuser upsert ci@medcoel.test ci-password-123 --dir=./pb_data
+          MEDCOEL_DEV_MODE=1 ./pocketbase serve --http=127.0.0.1:8090 --dir=./pb_data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks --hooksWatch=false &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:8090/api/health && break; sleep 1; done
+          PB_SU_EMAIL=ci@medcoel.test PB_SU_PASSWORD=ci-password-123 node test/api.test.mjs

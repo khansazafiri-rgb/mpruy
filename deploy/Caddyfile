@@ -1,0 +1,41 @@
+# Caddyfile MEDCOEL
+# Pasang: sudo cp deploy/Caddyfile /etc/caddy/Caddyfile && sudo systemctl reload caddy
+# Caddy mengurus HTTPS otomatis selama A record medcoel.com mengarah ke IP VPS.
+
+www.medcoel.com {
+	redir https://medcoel.com{uri} permanent
+}
+
+medcoel.com {
+	encode gzip
+
+	# Batas ukuran body. File PDF tidak lewat server (langsung ke Google
+	# Drive), jadi cukup untuk JSON impor soal dan mode unggah lokal.
+	request_body {
+		max_size 60MB
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		X-Frame-Options DENY
+	}
+
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8090
+	}
+
+	# Dashboard PocketBase (superuser). Boleh dibatasi IP bila perlu.
+	handle /_/* {
+		reverse_proxy 127.0.0.1:8090
+	}
+
+	handle {
+		root * /opt/medcoel/app/apps/web/dist
+		@assets path /assets/*
+		header @assets Cache-Control "public, max-age=31536000, immutable"
+		try_files {path} /index.html
+		file_server
+	}
+}

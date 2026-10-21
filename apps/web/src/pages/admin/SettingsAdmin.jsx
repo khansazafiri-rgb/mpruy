@@ -1,0 +1,183 @@
+import { GitMerge, Plus } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { resetCampusCache } from '@/components/CampusPicker';
+import { Alert, Field, Tabs } from '@/components/ui';
+import { useAuth } from '@/context/AuthContext';
+import { api, errorText } from '@/lib/api';
+import pb from '@/lib/pb';
+
+function General() {
+  const { refreshSettings } = useAuth();
+  const [rec, setRec] = useState(null);
+  const [msg, setMsg] = useState('');
+  const [error, setError] = useState('');
+  useEffect(() => { pb.collection('app_settings').getList(1, 1).then((r) => setRec(r.items[0])).catch((e) => setError(errorText(e))); }, []);
+  if (!rec) return <Alert>{error}</Alert>;
+  const set = (k, v) => setRec((r) => ({ ...r, [k]: v }));
+  const num = (k) => ({ type: 'number', className: 'input', value: rec[k] ?? '', onChange: (e) => set(k, e.target.value === '' ? '' : Number(e.target.value)) });
+  const save = async () => {
+    setMsg(''); setError('');
+    try {
+      const { id, collectionId: _c, collectionName: _n, created: _cr, updated: _u, ...body } = rec;
+      await pb.collection('app_settings').update(id, body);
+      await refreshSettings();
+      setMsg('Pengaturan tersimpan.');
+    } catch (e) { setError(errorText(e)); }
+  };
+  const types = rec.simulationTypes || ['A', 'K'];
+  const toggleType = (t) => set('simulationTypes', types.includes(t) ? types.filter((x) => x !== t) : [...types, t]);
+  return (
+    <div className="space-y-6">
+      <section className="card space-y-3 p-5">
+        <h2 className="font-display text-lg font-semibold">Komunitas & kontak</h2>
+        <div className="grid gap-3 md:grid-cols-2">
+          <Field label="Tautan komunitas WhatsApp" htmlFor="st-wa"><input id="st-wa" className="input" value={rec.waCommunityUrl} onChange={(e) => set('waCommunityUrl', e.target.value)} placeholder="https://chat.whatsapp.com/..." /></Field>
+          <Field label="Nomor WhatsApp admin" htmlFor="st-adm" hint="Untuk konfirmasi pengajuan dan tombol Hubungi admin."><input id="st-adm" className="input" value={rec.adminWhatsapp} onChange={(e) => set('adminWhatsapp', e.target.value)} placeholder="0812..." /></Field>
+          <Field label="Tautan Instagram" htmlFor="st-ig"><input id="st-ig" className="input" value={rec.instagramUrl} onChange={(e) => set('instagramUrl', e.target.value)} placeholder="https://instagram.com/medcoel" /></Field>
+          <Field label="Nama akun Instagram" htmlFor="st-igh"><input id="st-igh" className="input" value={rec.instagramHandle} onChange={(e) => set('instagramHandle', e.target.value)} placeholder="medcoel" /></Field>
+        </div>
+      </section>
+      <section className="card space-y-3 p-5">
+        <h2 className="font-display text-lg font-semibold">Pengajuan soal & unggahan</h2>
+        <div className="grid gap-3 md:grid-cols-3">
+          <Field label="Kapasitas harian antrean (PDF)" htmlFor="st-cap"><input id="st-cap" min={1} {...num('dailyCapacity')} /></Field>
+          <Field label="Batas waktu konfirmasi (hari)" htmlFor="st-cd"><input id="st-cd" min={1} {...num('confirmDays')} /></Field>
+          <Field label="Batas ukuran PDF (MB)" htmlFor="st-mb"><input id="st-mb" min={1} max={100} {...num('maxPdfMb')} /></Field>
+          <Field label="Kuota unggah per pengguna per hari" htmlFor="st-q"><input id="st-q" min={1} {...num('dailyUploadQuota')} /></Field>
+          <Field label="File pengajuan kedaluwarsa/batal" htmlFor="st-ef"><select id="st-ef" className="input" value={rec.expiredFilePolicy} onChange={(e) => set('expiredFilePolicy', e.target.value)}><option value="archive">Pindah ke folder arsip</option><option value="delete">Hapus</option></select></Field>
+          <label className="flex items-center gap-2 self-end pb-3 text-sm"><input type="checkbox" checked={rec.submissionsOpen} onChange={(e) => set('submissionsOpen', e.target.checked)} /> Pengajuan baru dibuka</label>
+        </div>
+      </section>
+      <section className="card space-y-3 p-5">
+        <h2 className="font-display text-lg font-semibold">Belajar, poin, dan akun</h2>
+        <div className="grid gap-3 md:grid-cols-3">
+          <Field label="Poin soal easy" htmlFor="st-pe"><input id="st-pe" min={0} {...num('pointsEasy')} /></Field>
+          <Field label="Poin soal medium" htmlFor="st-pm"><input id="st-pm" min={0} {...num('pointsMedium')} /></Field>
+          <Field label="Poin soal hard" htmlFor="st-ph"><input id="st-ph" min={0} {...num('pointsHard')} /></Field>
+          <Field label="Batas ganti kampus (hari, 0 = bebas)" htmlFor="st-cc"><input id="st-cc" min={0} {...num('campusChangeDays')} /></Field>
+          <Field label="Pengingat ujian bawaan (H-)" htmlFor="st-rd" hint="Pisahkan dengan koma, misalnya 7,3,1."><input id="st-rd" className="input" value={(rec.reminderDaysDefault || []).join(',')} onChange={(e) => set('reminderDaysDefault', e.target.value.split(',').map((x) => parseInt(x, 10)).filter((x) => x >= 0))} /></Field>
+          <fieldset>
+            <legend className="label">Tipe soal di simulasi & paket</legend>
+            <div className="flex flex-wrap gap-3 text-sm">
+              {[['A', 'Tipe A'], ['K', 'Tipe K'], ['isian', 'Isian']].map(([k, l]) => <label key={k} className="flex items-center gap-1.5"><input type="checkbox" checked={types.includes(k)} onChange={() => toggleType(k)} /> {l}</label>)}
+            </div>
+          </fieldset>
+        </div>
+        <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={rec.requireProofApproval} onChange={(e) => set('requireProofApproval', e.target.checked)} /> Akun baru menunggu admin memeriksa bukti komunitas sebelum aktif</label>
+        <div className="flex flex-wrap gap-4 text-sm">
+          <label className="flex items-center gap-2"><input type="checkbox" checked={rec.landingShowSubjects} onChange={(e) => set('landingShowSubjects', e.target.checked)} /> Landing page: tampilkan jumlah mata kuliah</label>
+          <label className="flex items-center gap-2"><input type="checkbox" checked={rec.landingShowUsers} onChange={(e) => set('landingShowUsers', e.target.checked)} /> Landing page: tampilkan jumlah pengguna</label>
+        </div>
+      </section>
+      <section className="card space-y-3 p-5">
+        <h2 className="font-display text-lg font-semibold">Kebijakan</h2>
+        <Field label="Kebijakan privasi" htmlFor="st-pp" hint="Kosongkan untuk memakai teks bawaan."><textarea id="st-pp" className="input min-h-[140px]" value={rec.privacyPolicy} onChange={(e) => set('privacyPolicy', e.target.value)} /></Field>
+        <Field label="Kebijakan hak cipta PDF" htmlFor="st-cp"><textarea id="st-cp" className="input min-h-[100px]" value={rec.copyrightPolicy} onChange={(e) => set('copyrightPolicy', e.target.value)} /></Field>
+      </section>
+      <Alert kind="success">{msg}</Alert>
+      <Alert>{error}</Alert>
+      <button type="button" className="btn-primary" onClick={save}>Simpan pengaturan</button>
+    </div>
+  );
+}
+
+function Campuses() {
+  const [list, setList] = useState([]);
+  const [others, setOthers] = useState([]);
+  const [q, setQ] = useState('');
+  const [name, setName] = useState('');
+  const [merge, setMerge] = useState({ from: '', into: '' });
+  const [msg, setMsg] = useState('');
+  const [error, setError] = useState('');
+  const load = () => {
+    pb.collection('campuses').getFullList({ sort: 'name' }).then(setList).catch((e) => setError(errorText(e)));
+    api('admin/campuses/other').then((d) => setOthers(d.items)).catch(() => {});
+  };
+  useEffect(() => { load(); }, []);
+  const run = async (fn, ok) => { setError(''); setMsg(''); try { await fn(); setMsg(ok); load(); resetCampusCache(); } catch (e) { setError(e.message || errorText(e)); } };
+  const add = (n) => run(() => pb.collection('campuses').create({ name: n.trim(), active: true, kind: 'lainnya', order: list.length + 1 }), `${n} ditambahkan.`);
+  const rename = (c) => { const t = window.prompt('Nama kampus', c.name); if (t && t.trim()) run(() => pb.collection('campuses').update(c.id, { name: t.trim() }), 'Nama diganti.'); };
+  const shown = list.filter((c) => c.name.toLowerCase().includes(q.toLowerCase()));
+  return (
+    <div className="space-y-5">
+      <Alert kind="info">Daftar awal berisi {list.length} kampus dari web lama dan belum lengkap. Cocokkan dengan data PDDikti atau KKI sebelum rilis.</Alert>
+      <Alert kind="success">{msg}</Alert>
+      <Alert>{error}</Alert>
+      <div className="grid gap-4 lg:grid-cols-2">
+        <section className="card space-y-3 p-4">
+          <form onSubmit={(e) => { e.preventDefault(); if (name.trim()) { add(name); setName(''); } }} className="flex gap-2">
+            <input className="input" placeholder="Nama kampus baru, mis. FK Universitas ..." value={name} onChange={(e) => setName(e.target.value)} />
+            <button type="submit" className="btn-primary btn-sm"><Plus size={15} /> Tambah</button>
+          </form>
+          <input className="input" placeholder="Cari kampus" value={q} onChange={(e) => setQ(e.target.value)} />
+          <ul className="max-h-[28rem] divide-y divide-line overflow-y-auto">
+            {shown.map((c) => (
+              <li key={c.id} className="flex items-center gap-2 py-2 text-sm">
+                <span className={`flex-1 ${c.active ? '' : 'text-ink-faint line-through'}`}>{c.name}{c.city ? <span className="text-ink-muted"> · {c.city}</span> : null}</span>
+                <button type="button" className="text-xs font-semibold text-academic hover:underline" onClick={() => rename(c)}>Ganti nama</button>
+                <button type="button" className="text-xs font-semibold text-ink-muted hover:underline" onClick={() => run(() => pb.collection('campuses').update(c.id, { active: !c.active }), 'Tersimpan.')}>{c.active ? 'Nonaktifkan' : 'Aktifkan'}</button>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <div className="space-y-4">
+          <section className="card space-y-3 p-4">
+            <h3 className="flex items-center gap-2 font-display font-semibold"><GitMerge size={18} /> Gabungkan dua kampus</h3>
+            <p className="text-sm text-ink-muted">Pengguna, pengajuan, soal, dan pengumuman kampus pertama dipindah ke kampus kedua, lalu kampus pertama dihapus.</p>
+            <select className="input" value={merge.from} onChange={(e) => setMerge((m) => ({ ...m, from: e.target.value }))} aria-label="Kampus yang digabung"><option value="">Kampus yang digabung (dihapus)</option>{list.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}</select>
+            <select className="input" value={merge.into} onChange={(e) => setMerge((m) => ({ ...m, into: e.target.value }))} aria-label="Kampus tujuan"><option value="">Kampus tujuan</option>{list.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}</select>
+            <button type="button" className="btn-secondary" disabled={!merge.from || !merge.into || merge.from === merge.into} onClick={() => { if (window.confirm('Gabungkan sekarang? Tidak bisa dibatalkan.')) run(() => api('admin/campuses/merge', { method: 'POST', body: merge }), 'Kampus digabungkan.'); }}>Gabungkan</button>
+          </section>
+          <section className="card space-y-2 p-4">
+            <h3 className="font-display font-semibold">Isian Lainnya yang sering muncul</h3>
+            {!others.length ? <p className="text-sm text-ink-muted">Belum ada.</p> : (
+              <ul className="space-y-1 text-sm">
+                {others.map((o) => <li key={o.name} className="flex items-center gap-2"><span className="flex-1">{o.name} <span className="text-ink-muted">({o.count})</span></span><button type="button" className="text-xs font-semibold text-brand hover:underline" onClick={() => add(o.name)}>Jadikan pilihan tetap</button></li>)}
+              </ul>
+            )}
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function System() {
+  const [summary, setSummary] = useState(null);
+  const [out, setOut] = useState('');
+  useEffect(() => { api('admin/summary').then(setSummary).catch(() => {}); }, []);
+  const job = async (name) => { try { setOut(JSON.stringify(await api(`admin/run-job/${name}`, { method: 'POST', body: {} }))); } catch (e) { setOut(e.message); } };
+  return (
+    <div className="space-y-4">
+      <section className="card space-y-2 p-5 text-sm">
+        <h2 className="font-display text-lg font-semibold">Status layanan</h2>
+        <p>Penyimpanan file: <b>{summary?.storageMode === 'drive' ? 'Google Drive' : 'lokal (mode pengembangan)'}</b></p>
+        <p>Email (SMTP): <b>{summary?.smtp ? 'aktif' : 'belum diatur'}</b> · atur di dashboard PocketBase <code>/_/</code> &gt; Settings &gt; Mail settings</p>
+        <p>Captcha Turnstile: <b>{summary?.turnstile ? 'aktif' : 'belum diatur'}</b></p>
+        <p className="text-ink-muted">Kredensial Drive, Turnstile, dan Hermes disimpan di file lingkungan server, bukan di repositori. Lihat docs/DEPLOY.md.</p>
+      </section>
+      <section className="card space-y-2 p-5">
+        <h2 className="font-display text-lg font-semibold">Tugas terjadwal</h2>
+        <p className="text-sm text-ink-muted">Berjalan otomatis. Tombol ini untuk menjalankan sekarang juga.</p>
+        <div className="flex flex-wrap gap-2">
+          <button type="button" className="btn-secondary btn-sm" onClick={() => job('cleanup')}>Bersihkan data sementara & pengajuan kedaluwarsa</button>
+          <button type="button" className="btn-secondary btn-sm" onClick={() => job('reminders')}>Kirim pengingat ujian hari ini</button>
+        </div>
+        {out && <pre className="overflow-x-auto rounded-lg bg-page p-2 text-xs">{out}</pre>}
+      </section>
+    </div>
+  );
+}
+
+export default function SettingsAdmin() {
+  const [tab, setTab] = useState('general');
+  return (
+    <div className="space-y-5">
+      <h1 className="page-title">Pengaturan</h1>
+      <Tabs value={tab} onChange={setTab} tabs={[{ value: 'general', label: 'Umum' }, { value: 'campus', label: 'Daftar kampus' }, { value: 'system', label: 'Sistem' }]} />
+      {tab === 'general' && <General />}
+      {tab === 'campus' && <Campuses />}
+      {tab === 'system' && <System />}
+    </div>
+  );
+}
