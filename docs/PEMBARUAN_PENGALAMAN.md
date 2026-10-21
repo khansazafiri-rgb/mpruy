@@ -26,7 +26,7 @@ Pesan adalah percakapan dengan admin manusia. Tidak ada klaim admin sedang onlin
 
 Akses baca/tulis API koleksi langsung ditutup. Semua endpoint memeriksa akun aktif dan kepemilikan, atau peran admin. Peran pengirim berasal dari sesi server. Pesan ditampilkan sebagai teks, bukan HTML.
 
-Migrasi `1800000500_support_messages.js` menambah koleksi tanpa mengubah data lama. Rollback sengaja mempertahankan percakapan agar tidak menghapus pesan pengguna.
+Migrasi `1800000600_support_messages.js` menambah koleksi tanpa mengubah data lama. Rollback sengaja mempertahankan percakapan agar tidak menghapus pesan pengguna.
 
 ## Pemasangan
 
@@ -42,3 +42,5 @@ Dependensi yang diuji memakai Tailwind 3.4.19. Konfigurasi PostCSS ini tidak ses
 - Tes web, format impor, dan katalog.
 - 33 skenario API pada database uji terpisah: termasuk pustaka kampus kosong, pembatasan kampus, soal draf/tersembunyi, pengerjaan khusus kampus, privasi chat, balasan admin, kirim ulang, paginasi, dan penonaktifan akun.
 - Browser desktop dan HP: contoh latihan, popup, materi kampus, pengiriman masukan, penyimpanan percakapan, serta balasan dari kotak masuk admin.
+
+Perubahan Chat Admin yang sudah masuk saat pengerjaan (widget persisten, navigasi Jadwal di HP, normalisasi nomor WhatsApp, dan migrasi nomor admin) dipertahankan. Widget memakai ChatAdminBody yang sama dengan halaman penuh; keadaan unggah tidak direset hanya karena berpindah halaman atau menutup panel.

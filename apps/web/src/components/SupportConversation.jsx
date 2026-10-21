@@ -1,5 +1,5 @@
 import { Check, Loader2, MessageCircle, Send } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { api } from '@/lib/api';
 import { Alert } from './ui';
 
@@ -9,6 +9,7 @@ function mergeMessages(old, next) {
   return [...byId.values()].sort((a, b) => a.created.localeCompare(b.created) || a.id.localeCompare(b.id));
 }
 export default function SupportConversation({ userId, admin = false, compact = false }) {
+  const inputId = useId();
   const path = admin ? `admin/support/${userId}` : 'support/messages';
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -88,7 +89,7 @@ export default function SupportConversation({ userId, admin = false, compact = f
         {(error || loadError) && <div className="mb-3"><Alert>{error || loadError}</Alert><button type="button" className="mt-2 text-xs font-semibold text-brand underline" onClick={() => setRetry((n) => n + 1)}>Muat ulang percakapan</button></div>}
         <form ref={form} onSubmit={send}>
           {!admin && <div className="support-categories" role="group" aria-label="Jenis pesan">{Object.entries(CATEGORIES).map(([k, v]) => <button key={k} type="button" aria-pressed={category === k} onClick={() => setCategory(k)}>{v}</button>)}</div>}
-          <div className="support-input-wrap"><label className="sr-only" htmlFor={admin ? 'admin-reply' : 'support-message'}>{admin ? 'Tulis balasan' : 'Tulis pesan'}</label><textarea id={admin ? 'admin-reply' : 'support-message'} placeholder={admin ? 'Tulis balasan untuk pengguna…' : 'Tulis pesan untuk admin…'} maxLength={4000} value={text} disabled={busy} onChange={(e) => { setText(e.target.value); setSent(''); }} onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); form.current.requestSubmit(); } }} /><button type="submit" disabled={!text.trim() || busy} aria-label={admin ? 'Kirim balasan' : 'Kirim pesan'}>{busy ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}</button></div>
+          <div className="support-input-wrap"><label className="sr-only" htmlFor={inputId}>{admin ? 'Tulis balasan' : 'Tulis pesan'}</label><textarea id={inputId} placeholder={admin ? 'Tulis balasan untuk pengguna…' : 'Tulis pesan untuk admin…'} maxLength={4000} value={text} disabled={busy} onChange={(e) => { setText(e.target.value); setSent(''); }} onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); form.current.requestSubmit(); } }} /><button type="submit" disabled={!text.trim() || busy} aria-label={admin ? 'Kirim balasan' : 'Kirim pesan'}>{busy ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}</button></div>
           <div className="support-input-note"><span role="status">{sent || (admin ? 'Balasan tersimpan di percakapan pengguna.' : 'Admin membalas saat tersedia. Shift + Enter untuk baris baru.')}</span><span>{text.length}/4000</span></div>
         </form>
       </div>

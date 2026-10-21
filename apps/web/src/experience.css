@@ -266,3 +266,8 @@
 .count-controls { margin-bottom: 12px; }
 .count-presets { margin-top: 10px; }
 @media (max-width: 640px) { .chat-admin-page .support-conversation { height: calc(100dvh - 365px); min-height: 330px; } }
+
+.chat-admin-body.is-compact { display: flex; flex-direction: column; height: 100%; min-height: 0; gap: 12px; }
+.chat-admin-body.is-compact .support-conversation { flex: 1; height: auto; min-height: 200px; }
+.chat-admin-body.is-compact .chat-page-tabs button { font-size: 10px; padding: 10px 6px; gap: 5px; }
+.chat-admin-body.is-compact > p:last-child { font-size: 9px; flex-shrink: 0; }
