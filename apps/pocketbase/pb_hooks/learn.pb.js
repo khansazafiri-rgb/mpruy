@@ -24,7 +24,8 @@ routerAdd("GET", "/api/medcoel/subjects", (e) => {
   const done = {};
   // Hitungan per mata kuliah lewat BAB-nya.
   const chapterSubject = {};
-  e.app.findRecordsByFilter("chapters", "hidden = false", "", 0, 0).forEach((c) => { chapterSubject[c.id] = c.getString("subject"); });
+  const chapterCount = {};
+  e.app.findRecordsByFilter("chapters", "hidden = false", "", 0, 0).forEach((c) => { const subjectId = c.getString("subject"); chapterSubject[c.id] = subjectId; chapterCount[subjectId] = (chapterCount[subjectId] || 0) + 1; });
   items.forEach((it) => {
     const s = chapterSubject[it.chapter];
     count[s] = (count[s] || 0) + 1;
@@ -39,11 +40,12 @@ routerAdd("GET", "/api/medcoel/subjects", (e) => {
     illustration: s.getString("illustration"),
     collectionId: s.collection().id,
     studying: studying.indexOf(s.id) >= 0,
+    chapterCount: chapterCount[s.id] || 0,
     questionCount: count[s.id] || 0,
     answeredCount: done[s.id] || 0,
     order: s.getInt("order"),
   }));
-  out.sort((a, b) => (a.studying === b.studying ? a.order - b.order : a.studying ? -1 : 1));
+  out.sort(require(`${__hooks}/lib/catalogOrder.js`).byPreference);
   return e.json(200, { items: out });
 });
 
@@ -79,7 +81,7 @@ routerAdd("GET", "/api/medcoel/subjects/{slug}", (e) => {
       collectionId: s.collection().id,
       studying: user.getStringSlice("studyingSubjects").indexOf(s.id) >= 0,
     },
-    chapters: chapters.map((c) => Object.assign({ id: c.id, title: c.getString("title") }, per[c.id] || { total: 0, answered: 0, wrong: 0, easy: 0, medium: 0, hard: 0, A: 0, K: 0, isian: 0, esai: 0 })),
+    chapters: chapters.map((c) => Object.assign({ id: c.id, title: c.getString("title") }, per[c.id] || { total: 0, answered: 0, wrong: 0, easy: 0, medium: 0, hard: 0, A: 0, K: 0, isian: 0, esai: 0 })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName),
     packages: packages.map((p) => ({
       id: p.id,
       name: p.getString("name"),

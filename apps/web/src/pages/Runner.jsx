@@ -4,7 +4,7 @@
 // Jawaban dikirim ke server satu per satu; kunci tidak pernah ada di browser
 // sebelum waktunya.
 import clsx from 'clsx';
-import { ArrowLeft, ChevronLeft, ChevronRight, Clock, Grid3X3, RotateCcw, Send, Trophy } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, BookOpen, Check, ChevronDown, Clock, Grid3X3, Loader2, RotateCcw, Trophy } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import QuestionView from '@/components/QuestionView';
@@ -40,15 +40,15 @@ export default function Runner() {
 
 function Frame({ title, children, right }) {
   return (
-    <div className="min-h-screen bg-page">
-      <header className="sticky top-0 z-30 border-b border-line bg-surface/95 backdrop-blur">
-        <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4">
+    <div className="study-frame min-h-screen">
+      <header className="study-header sticky top-0 z-30 border-b border-line">
+        <div className="study-header-inner mx-auto flex items-center gap-3">
           <Link to="/beranda" aria-label="Beranda"><Logo variant="mark" className="sm:hidden" /><Logo className="hidden sm:block" /></Link>
-          {title && <p className="hidden truncate font-semibold text-ink-muted sm:block">{title}</p>}
+          {title && <p className="study-header-title hidden truncate text-ink-muted sm:block">{title}</p>}
           <div className="ml-auto flex items-center gap-2">{right}</div>
         </div>
       </header>
-      <main className="mx-auto max-w-5xl px-4 py-5">{children}</main>
+      <main className="study-main mx-auto">{children}</main>
     </div>
   );
 }
@@ -76,6 +76,7 @@ function Work({ data, setData, repeats }) {
   const [confirm, setConfirm] = useState(false);
   const [report, setReport] = useState(null);
   const [finishing, setFinishing] = useState(false);
+  const [checking, setChecking] = useState(false);
   const pending = useRef({});
   const timers = useRef({});
 
@@ -120,14 +121,16 @@ function Work({ data, setData, repeats }) {
   };
 
   const check = async () => {
+    if (checking) return;
     setError('');
     const val = values[q.id] ?? (q.qtype === 'A' || q.qtype === 'K' ? null : {});
     if ((q.qtype === 'A' || q.qtype === 'K') && !val) { setError('Pilih jawaban dulu.'); return; }
+    setChecking(true);
     try {
       const r = await api(`attempts/${a.id}/answer`, { method: 'POST', body: { question: q.id, response: val, check: true } });
       setChecked((c) => ({ ...c, [q.id]: r.result }));
       setRevealedQ((m) => ({ ...m, [q.id]: r.question }));
-    } catch (e) { setError(e.message); }
+    } catch (e) { setError(e.message); } finally { setChecking(false); }
   };
 
   const finish = useCallback(async () => {
@@ -158,80 +161,54 @@ function Work({ data, setData, repeats }) {
     return () => window.removeEventListener('beforeunload', h);
   }, []);
 
-  const go = (i) => { setIdx(Math.max(0, Math.min(qs.length - 1, i))); setGrid(false); setError(''); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const go = (i) => { setIdx(Math.max(0, Math.min(qs.length - 1, i))); setGrid(false); setError(''); window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); };
   const unanswered = qs.length - doneCount;
+
+  const navProps = { questions: qs, index: idx, values, checked, flags, onGo: go, learning };
+  const saveStatus = learning ? (isChecked ? 'Jawaban diperiksa' : 'Diperiksa per soal') : saving;
 
   return (
     <Frame title={a.title} right={<>
-      {left !== null && (
-        <span className={clsx('chip px-3 py-1 text-sm', left < 300 ? 'bg-coral-soft text-coral' : 'bg-page text-ink')} aria-live="polite"><Clock size={15} /> {clock(left)}</span>
-      )}
-      <button type="button" className="btn-primary btn-sm" onClick={() => setConfirm(true)} disabled={finishing}><Send size={15} /> Selesai</button>
+      {left !== null && <span className={clsx('study-timer', left < 300 ? 'bg-coral-soft text-coral' : 'bg-page text-ink')} role="timer" aria-label={`Waktu tersisa ${clock(left)}`}><Clock size={16} />{clock(left)}</span>}
+      <button type="button" className="btn-primary btn-sm" onClick={() => setConfirm(true)} disabled={finishing}><Check size={15} /> Selesai</button>
     </>}>
-      <div className="mb-4 flex flex-wrap items-center gap-3">
-        <Badge className={learning ? 'bg-brand-soft text-brand-dark' : 'bg-progress-soft text-progress'}>{learning ? 'Mode Learning' : 'Mode ujian'}</Badge>
-        <span className="text-sm text-ink-muted">{doneCount} dari {qs.length} soal dijawab</span>
-        <span className="text-xs text-ink-muted">{saving}</span>
-        <button type="button" className="btn-ghost btn-sm ml-auto" onClick={() => setGrid(true)}><Grid3X3 size={16} /> Daftar soal</button>
+      <div className="study-heading">
+        <div className="mb-5 flex items-center justify-between gap-2">
+          <Link to="/mata-kuliah" className="inline-flex items-center gap-2 text-xs font-medium text-ink-muted hover:text-brand"><ArrowLeft size={14} /> Mata kuliah</Link>
+          <Badge className={learning ? 'bg-brand-soft text-brand-dark' : 'bg-progress-soft text-progress'}><BookOpen size={12} /> {learning ? 'Mode Learning' : 'Mode ujian'}</Badge>
+        </div>
+        <p className="eyebrow">{learning ? 'Ruang belajar' : 'Ruang simulasi'}</p>
+        <h1>{a.title}</h1>
+        <p className="mt-2 text-sm text-ink-muted">{q.chapterTitle || (learning ? 'Pelajari satu soal, pahami satu konsep.' : 'Kerjakan dengan tenang. Jawaban disimpan otomatis.')}</p>
       </div>
-      <ProgressBar value={doneCount} max={qs.length} className="mb-4" label="Soal terjawab" />
+      <div className="mb-4 flex items-center gap-4 lg:hidden">
+        <span className="text-xs text-ink-muted">{doneCount}/{qs.length} dijawab</span>
+        <ProgressBar value={doneCount} max={qs.length} className="flex-1" label="Soal terjawab" />
+        <button type="button" className="btn-secondary btn-sm" onClick={() => setGrid(true)}><Grid3X3 size={14} /> Soal <ChevronDown size={12} /></button>
+      </div>
       {repeats > 0 && idx === 0 && <Alert kind="info" className="mb-4">Soal baru yang belum pernah kamu kerjakan sudah habis di beberapa BAB, jadi {repeats} soal di paket ini pernah kamu kerjakan.</Alert>}
-
-      <QuestionView
-        key={q.id}
-        q={q}
-        index={idx}
-        total={qs.length}
-        value={values[q.id]}
-        onChange={change}
-        revealed={learning && isChecked}
-        result={checked[q.id]}
-        onReport={() => setReport(q.id)}
-        flagged={flags.has(q.id)}
-        onFlag={learning ? undefined : () => setFlags((s) => { const n = new Set(s); if (n.has(q.id)) n.delete(q.id); else n.add(q.id); return n; })}
-      />
-      <Alert className="mt-3">{error}</Alert>
-
-      <div className="mt-4 flex flex-wrap items-center gap-2">
-        <button type="button" className="btn-secondary" onClick={() => go(idx - 1)} disabled={idx === 0}><ChevronLeft size={18} /> Sebelumnya</button>
-        {learning && !isChecked && (
-          <button type="button" className="btn-primary" onClick={check}>{q.qtype === 'esai' ? 'Lihat kunci' : 'Cek jawaban'}</button>
-        )}
-        {idx < qs.length - 1 ? (
-          <button type="button" className={clsx(learning && !isChecked ? 'btn-secondary' : 'btn-primary', 'ml-auto')} onClick={() => go(idx + 1)}>Berikutnya <ChevronRight size={18} /></button>
-        ) : (
-          <button type="button" className="btn-primary ml-auto" onClick={() => setConfirm(true)}>Selesai <Send size={16} /></button>
-        )}
+      <div className="study-layout">
+        <div className="study-content">
+          <QuestionView key={q.id} q={q} index={idx} total={qs.length} value={values[q.id]} onChange={change} revealed={learning && isChecked} result={checked[q.id]} onReport={() => setReport(q.id)} flagged={flags.has(q.id)} onFlag={learning ? undefined : () => setFlags((s) => { const n = new Set(s); if (n.has(q.id)) n.delete(q.id); else n.add(q.id); return n; })} />
+          <Alert className="mt-3">{error}</Alert>
+          <div className="question-actions flex flex-wrap items-center gap-2">
+            <button type="button" className="btn-ghost" onClick={() => go(idx - 1)} disabled={idx === 0}><ChevronLeft size={16} /><span className="sr-only sm:not-sr-only">Sebelumnya</span></button>
+            {learning && !isChecked && <button type="button" className="btn-primary ml-auto" onClick={check} disabled={checking}>{checking ? <Loader2 size={16} className="animate-spin" /> : <Check size={16} />}{checking ? 'Memeriksa...' : q.qtype === 'esai' ? 'Lihat kunci' : 'Cek jawaban'}</button>}
+            {idx < qs.length - 1 ? <button type="button" className={clsx(learning && !isChecked ? 'btn-secondary' : 'btn-primary ml-auto')} onClick={() => go(idx + 1)}>Berikutnya <ChevronRight size={16} /></button> : <button type="button" className={clsx(learning && !isChecked ? 'btn-secondary' : 'btn-primary ml-auto')} onClick={() => setConfirm(true)}>Selesai <Check size={16} /></button>}
+          </div>
+          <p className="study-save mt-3 justify-center lg:hidden" role="status">{saveStatus}</p>
+        </div>
+        <aside className="study-sidebar card" aria-label="Navigasi soal">
+          <p className="text-sm font-semibold">Sesi belajarmu</p>
+          <div className="mb-3 mt-5 flex items-baseline justify-between"><span className="text-xs text-ink-muted">Soal dijawab</span><span className="text-sm font-semibold">{doneCount}<span className="font-normal text-ink-muted"> / {qs.length}</span></span></div>
+          <ProgressBar value={doneCount} max={qs.length} label="Soal terjawab" />
+          <div className="study-save mb-6 mt-3" role="status">{saving === 'Menyimpan...' ? <Loader2 size={13} className="animate-spin" /> : <Check size={13} className="text-brand" />}{saveStatus || 'Siap mengerjakan'}</div>
+          <div className="mb-4 flex items-center justify-between border-t border-line pt-5"><h2 className="text-xs font-semibold">Navigasi soal</h2><button type="button" onClick={() => setGrid(true)} className="rounded-md p-1 text-ink-muted hover:bg-page" aria-label="Perbesar daftar soal"><Grid3X3 size={14} /></button></div>
+          <div className="max-h-[40vh] overflow-y-auto p-1 -m-1"><QuestionNavigator {...navProps} /></div>
+          <p className="mt-6 border-t border-line pt-4 text-xs leading-relaxed text-ink-muted">{learning ? 'Cek jawaban untuk membuka pembahasan. Pahami konsepnya sebelum lanjut.' : 'Tandai soal yang ingin kamu tinjau lagi sebelum menyelesaikan simulasi.'}</p>
+        </aside>
       </div>
-
-      <Modal open={grid} onClose={() => setGrid(false)} title="Daftar soal" size="lg">
-        <div className="grid grid-cols-6 gap-2 sm:grid-cols-10">
-          {qs.map((x, i) => {
-            const c = checked[x.id];
-            const ans = answered(x, values[x.id]);
-            return (
-              <button
-                key={x.id}
-                type="button"
-                onClick={() => go(i)}
-                className={clsx('relative h-10 rounded-lg border text-sm font-semibold',
-                  i === idx && 'ring-2 ring-ink',
-                  c ? (c.scored === false ? 'border-academic bg-academic-soft' : c.correct ? 'border-brand bg-brand text-white' : 'border-coral bg-coral text-white')
-                    : ans ? 'border-academic bg-academic text-white' : 'border-line bg-surface')}
-                aria-label={`Soal ${i + 1}${ans ? ', sudah dijawab' : ''}${flags.has(x.id) ? ', ragu-ragu' : ''}`}
-              >
-                {i + 1}
-                {flags.has(x.id) && <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full bg-gold" />}
-              </button>
-            );
-          })}
-        </div>
-        <div className="mt-4 flex flex-wrap gap-3 text-xs text-ink-muted">
-          <span className="flex items-center gap-1"><span className="h-3 w-3 rounded bg-academic" /> Dijawab</span>
-          {learning && <><span className="flex items-center gap-1"><span className="h-3 w-3 rounded bg-brand" /> Benar</span><span className="flex items-center gap-1"><span className="h-3 w-3 rounded bg-coral" /> Salah</span></>}
-          <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-gold" /> Ragu-ragu</span>
-        </div>
-      </Modal>
+      <Modal open={grid} onClose={() => setGrid(false)} title="Navigasi soal" size="lg"><QuestionNavigator {...navProps} expanded /></Modal>
 
       <Modal open={confirm} onClose={() => setConfirm(false)} title="Selesaikan pengerjaan?" size="sm" footer={<>
         <button type="button" className="btn-ghost" onClick={() => setConfirm(false)}>Lanjut mengerjakan</button>
@@ -243,6 +220,20 @@ function Work({ data, setData, repeats }) {
       {report && <ReportDialog questionId={report} onClose={() => setReport(null)} />}
     </Frame>
   );
+}
+
+function QuestionNavigator({ questions, index, values, checked, flags, onGo, learning, expanded }) {
+  return <>
+    <div className={clsx('question-grid', expanded && 'is-expanded')}>
+      {questions.map((q, i) => {
+        const result = checked[q.id];
+        const done = answered(q, values[q.id]);
+        const status = result ? result.scored === false ? 'Diperiksa' : result.correct ? 'Benar' : 'Salah' : done ? 'Sudah dijawab' : 'Belum dijawab';
+        return <button type="button" key={q.id} onClick={() => onGo(i)} className={clsx('question-dot', result ? result.scored === false ? 'is-answered' : result.correct ? 'is-correct' : 'is-wrong' : done && 'is-answered')} aria-current={i === index ? 'step' : undefined} aria-label={`Soal ${i + 1}, ${status}${flags.has(q.id) ? ', ragu-ragu' : ''}`}>{i + 1}{flags.has(q.id) && <span className="question-flag" />}</button>;
+      })}
+    </div>
+    <div className="grid-legend"><span><i className="bg-brand-soft" /> Dijawab</span><span><i className="border border-line bg-surface" /> Belum</span>{learning ? <><span><i className="bg-brand" /> Benar</span><span><i className="bg-coral-soft" /> Salah</span></> : <span><i className="bg-gold" /> Ragu-ragu</span>}</div>
+  </>;
 }
 
 // ---------------------------------------------------------------------------
