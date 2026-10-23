@@ -1,0 +1,8 @@
+node_modules/
+build/
+out/
+voices/
+.venv/
+clips/
+assets/*.pdf
+build/

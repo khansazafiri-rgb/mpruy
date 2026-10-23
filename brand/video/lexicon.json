@@ -1,0 +1,31 @@
+{
+  "_catatan": "Kamus pelafalan. Kiri = tulisan di naskah (say), kanan = ejaan yang dibacakan mesin. Huruf besar-kecil dibedakan; yang lebih panjang diproses lebih dulu. Edit setelah mendengarkan hasilnya.",
+  "words": {
+    "MEDCOEL": "Med koel",
+    "MEDCOEL.com": "Med koel dot kom",
+    "medcoel.com": "med koel dot kom",
+    "FK": "ef ka",
+    "UTB": "u te be",
+    "UAB": "u a be",
+    "OSCE": "o ske",
+    "SOAP": "sop",
+    "SpO2": "es pe o dua",
+    "SpO₂": "es pe o dua",
+    "CO2": "ce o dua",
+    "CO₂": "ce o dua",
+    "mmHg": "milimeter air raksa",
+    "x/menit": "kali per menit",
+    "BAB": "bab",
+    "WIB": "we i be",
+    "WITA": "wita",
+    "IPD": "i pe de",
+    "IKA": "i ka a",
+    "PDF": "pe de ef",
+    "WhatsApp": "wats ep",
+    "Instagram": "instagram",
+    "GPT": "je pe te",
+    "AI": "a i"
+  },
+  "slash": " per ",
+  "percent": " persen"
+}

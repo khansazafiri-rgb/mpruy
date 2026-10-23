@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Panggung video MEDCOEL</title>
+<link rel="stylesheet" href="../../../apps/web/src/styles/mascot.css">
+<link rel="stylesheet" href="stage.css">
+</head><body>
+<div id="stage" class="land">
+  <div id="bg"></div><div id="grain"></div>
+  <div id="brand"><img id="logo" alt="MEDCOEL"></div>
+  <div id="visual"></div>
+  <div id="mascot"></div>
+  <div id="caption"></div>
+  <div id="progress"><i></i></div>
+</div>
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const rich = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<span class="hl">$1</span>');
+  let S = null; let cur = -1; let vis = null; let words = [];
+
+  // ---- jenis visual: tiap fungsi mengembalikan { el, update(local, dur, p) } ----
+  const KINDS = {
+    title(v) {
+      const el = document.createElement('div'); el.className = 'card';
+      el.innerHTML = `${v.eyebrow ? `<div class="eyebrow">${esc(v.eyebrow)}</div>` : ''}<h1>${rich(v.text)}</h1>${v.sub ? `<div class="sub">${rich(v.sub)}</div>` : ''}`;
+      return { el, update(l) { const e = ease(l / 0.6); el.style.opacity = e; el.style.transform = `translateY(${(1 - e) * 60}px) rotate(${(1 - e) * -2}deg)`; } };
+    },
+    bullets(v) {
+      const el = document.createElement('div'); el.className = 'card';
+      const items = v.items || [];
+      el.innerHTML = `${v.title ? `<h1 style="font-size:64px">${rich(v.title)}</h1>` : ''}<ul>${items.map((t) => `<li><i>✓</i><span>${rich(t)}</span></li>`).join('')}</ul>`;
+      const lis = [...el.querySelectorAll('li')];
+      return { el, update(l, d) {
+        const e = ease(l / 0.5); el.style.opacity = e; el.style.transform = `translateY(${(1 - e) * 50}px)`;
+        lis.forEach((li, k) => { const at = 0.5 + k * ((d * 0.7) / Math.max(1, items.length)); const a = ease((l - at) / 0.4); li.style.opacity = a; li.style.transform = `translateX(${(1 - a) * 60}px)`; });
+      } };
+    },
+    quiz(v) {
+      const el = document.createElement('div'); el.className = 'card quiz';
+      const L = 'ABCDE';
+      el.innerHTML = `<div class="q">${rich(v.question)}</div>${(v.options || []).map((o, k) => `<div class="opt" data-k="${k}"><b>${L[k]}</b><span>${rich(o)}</span></div>`).join('')}${v.explain ? `<div class="why" style="opacity:0">${rich(v.explain)}</div>` : ''}`;
+      const opts = [...el.querySelectorAll('.opt')]; const why = el.querySelector('.why');
+      return { el, update(l, d) {
+        const e = ease(l / 0.5); el.style.opacity = e; el.style.transform = `translateY(${(1 - e) * 50}px)`;
+        opts.forEach((o, k) => { const a = ease((l - 0.3 - k * 0.12) / 0.3); o.style.opacity = a * (o.classList.contains('dim') ? 0.38 : 1); });
+        const at = v.revealAt ?? d * 0.6; const on = l >= at;
+        opts.forEach((o, k) => { o.classList.toggle('key', on && k === v.answer); o.classList.toggle('dim', on && k !== v.answer); if (!on) o.style.opacity = ease((l - 0.3 - k * 0.12) / 0.3); });
+        if (why) why.style.opacity = ease((l - at - 0.3) / 0.4);
+      } };
+    },
+    stat(v) {
+      const el = document.createElement('div'); el.className = 'card stat';
+      el.innerHTML = `<div class="num"></div><div class="lab">${rich(v.label || '')}</div>`;
+      const num = el.querySelector('.num'); const from = v.from ?? 0; const to = Number(v.value);
+      return { el, update(l, d) {
+        const e = ease(l / 0.5); el.style.opacity = e; el.style.transform = `scale(${0.94 + 0.06 * e})`;
+        const k = ease(l / Math.max(0.8, d * 0.7)); const val = Math.round(from + (to - from) * k);
+        num.textContent = `${v.prefix || ''}${new Intl.NumberFormat('id-ID').format(val)}${v.suffix || ''}`;
+      } };
+    },
+    image(v) {
+      const el = document.createElement('div'); el.className = 'card imgcard';
+      el.innerHTML = `<img src="${esc(v.src)}" alt="">`; const img = el.querySelector('img');
+      return { el, update(l, d, p) { const e = ease(l / 0.5); el.style.opacity = e; img.style.transform = `scale(${1 + 0.06 * p})`; } };
+    },
+    cta(v) {
+      const el = document.createElement('div'); el.className = 'card cta';
+      el.innerHTML = `<h1>${rich(v.text)}</h1>${v.sub ? `<div class="sub">${rich(v.sub)}</div>` : ''}<div class="btn">${esc(v.button || 'Daftar gratis')}</div>`;
+      const btn = el.querySelector('.btn');
+      return { el, update(l) { const e = ease(l / 0.6); el.style.opacity = e; el.style.transform = `translateY(${(1 - e) * 60}px)`; const b = 1 + 0.04 * Math.sin(Math.max(0, l - 0.8) * 5); btn.style.transform = `scale(${b})`; } };
+    },
+  };
+
+  function setMascot(name, mood) {
+    const box = $('#mascot');
+    box.innerHTML = `<span class="mc-character mood-${mood}">${S.mascots[name] || S.mascots.kori}</span>`;
+  }
+
+  function switchScene(i) {
+    cur = i; const sc = S.spec.scenes[i];
+    $('#bg').className = `bg-${sc.bg || 'forest'}`;
+    setMascot(sc.mascot || 'kori', sc.mood || 'idle');
+    const host = $('#visual'); host.innerHTML = ''; vis = null;
+    if (sc.visual && KINDS[sc.visual.kind]) { vis = KINDS[sc.visual.kind](sc.visual); host.append(vis.el); }
+    const text = sc.caption ?? sc.say ?? '';
+    const cap = $('#caption');
+    if (!text) { cap.innerHTML = ''; words = []; return; }
+    const parts = text.split(/\s+/).filter(Boolean);
+    const total = parts.reduce((a, w) => a + w.length + 1, 0); let acc = 0;
+    words = parts.map((w) => { const a = acc / total; acc += w.length + 1; return a; });
+    cap.innerHTML = `<div class="pill">${parts.map((w) => `<span class="w">${esc(w)}</span>`).join(' ')}</div>`;
+  }
+
+  function mouth(open, speaking) {
+    const root = $('#mascot'); const normal = root.querySelector('.mc-mouth-normal'); const happy = root.querySelector('.mc-mouth-happy'); const think = root.querySelector('.mc-mouth-think');
+    if (!happy) return;
+    if (speaking && open > 0) {
+      if (normal) normal.style.opacity = 0; if (think) think.style.opacity = 0;
+      happy.style.opacity = 1; happy.style.transformBox = 'fill-box'; happy.style.transformOrigin = '50% 0%';
+      happy.style.transform = `scaleY(${(0.25 + 0.95 * open).toFixed(3)})`;
+    } else {
+      [normal, think, happy].forEach((e) => { if (e) { e.style.opacity = ''; e.style.transform = ''; } });
+    }
+  }
+
+  window.__init = (spec, mascots, logo, fmt) => {
+    S = { spec: spec.spec, timeline: spec.timeline, mascots };
+    const st = $('#stage'); st.className = fmt.cls; $('#logo').src = logo;
+    return document.fonts.ready;
+  };
+
+  window.__frame = (t) => {
+    const tl = S.timeline; let i = tl.scenes.findIndex((s) => t >= s.start && t < s.start + s.dur);
+    if (i < 0) i = tl.scenes.length - 1;
+    if (i !== cur) switchScene(i);
+    const s = tl.scenes[i]; const l = t - s.start; const p = clamp(l / s.dur);
+    // maskot masuk dari bawah, lalu melayang lewat animasi CSS bawaan maskot
+    const m = ease(l / 0.5); const mm = $('#mascot'); mm.style.opacity = m; mm.style.transform = `translateY(${(1 - m) * 120}px) scale(${0.9 + 0.1 * m})`;
+    if (vis) vis.update(l, s.dur, p);
+    // mulut mengikuti kenyaringan suara
+    const k = Math.floor((l - s.lead) * tl.fps); const speaking = s.audioSec > 0 && l >= s.lead && l <= s.lead + s.audioSec + 0.05;
+    mouth(speaking ? (s.env[k] || 0) : 0, speaking);
+    // takarir bergaya karaoke
+    const sp = s.audioSec > 0 ? clamp((l - s.lead) / s.audioSec) : 1;
+    document.querySelectorAll('#caption .w').forEach((w, n) => { const a = words[n]; const b = words[n + 1] ?? 1.01; w.className = 'w' + (sp >= b ? ' done' : sp >= a ? ' now' : '') + (s.audioSec === 0 ? ' done' : ''); });
+    $('#progress i').style.width = `${(t / tl.total) * 100}%`;
+    // semua animasi CSS (kedip, melayang, melambai) dibekukan ke waktu scene ini
+    document.getAnimations().forEach((a) => { a.pause(); a.currentTime = l * 1000; });
+  };
+})();
+</script></body></html>

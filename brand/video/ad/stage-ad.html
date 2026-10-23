@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Panggung iklan MEDCOEL</title>
+<link rel="stylesheet" href="../../../apps/web/src/styles/mascot.css">
+<link rel="stylesheet" href="stage-ad.css">
+</head><body>
+<div id="stage" class="on-navy">
+  <div id="bg" class="bg-navy"></div>
+  <div id="scene"></div>
+  <div id="overlay"></div>
+  <div id="caption"></div>
+  <div id="wipe"></div>
+  <div id="grain"></div>
+</div>
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const E = {
+    out: (x) => 1 - Math.pow(1 - clamp(x), 3),
+    inout: (x) => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; },
+    back: (x) => { x = clamp(x); const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); },
+  };
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const pop = (l, at, d = .42) => E.back((l - at) / d);       // 0 -> ~1.05 -> 1
+  const fade = (l, at, d = .25) => clamp((l - at) / d);
+  let D = null; let root = null; let cur = -1; let scn = null; let pending = [];
+
+  function div(cls, html = '', parent = root) { const d = document.createElement('div'); d.className = cls; if (html) d.innerHTML = html; parent.append(d); return d; }
+  const DY = 100;
+  function put(el, { x = 0, y = 0, s = 1, r = 0, o = 1, sx = 1 } = {}) {
+    el.style.transform = `translate(${x}px,${y + DY}px) translate(-50%,-50%) rotate(${r}deg) scale(${s * sx},${s})`;
+    el.style.opacity = o; el.style.visibility = o <= 0.001 ? 'hidden' : 'visible';
+  }
+  function setSrc(img, url) { if (img.dataset.u !== url) { img.dataset.u = url; img.src = url; pending.push(img.decode().catch(() => {})); } }
+
+  // ---------- kartu UI: menampilkan frame klip layar dengan "kamera" (zoom dan geser) ----------
+  function uiCard({ w, h, segs, cam }) {
+    const el = div('ui'); el.style.width = w + 'px'; el.style.height = (h + 90) + 'px';
+    const img = document.createElement('img'); el.append(img);
+    const inner = w - 20;
+    const S = segs.map((s) => ({ ...s, d: (s.to - s.from) / (s.speed || 1) }));
+    const total = S.reduce((a, s) => a + s.d, 0);
+    const at = (l) => { let acc = 0; for (const s of S) { if (l < acc + s.d) return { c: s.clip, t: s.from + (l - acc) * (s.speed || 1) }; acc += s.d; } const s = S[S.length - 1]; return { c: s.clip, t: s.to }; };
+    const camAt = (l) => {
+      const K = cam; if (l <= K[0][0]) return K[0][1]; if (l >= K[K.length - 1][0]) return K[K.length - 1][1];
+      for (let i = 0; i < K.length - 1; i++) if (l >= K[i][0] && l < K[i + 1][0]) { const k = E.inout((l - K[i][0]) / (K[i + 1][0] - K[i][0])); const a = K[i][1], b = K[i + 1][1]; return { y: lerp(a.y, b.y, k), z: lerp(a.z ?? 1, b.z ?? 1, k), x: lerp(a.x ?? NaN, b.x ?? NaN, k) }; }
+    };
+    return {
+      el, total,
+      update(l) {
+        const { c, t } = at(Math.max(0, l)); const n = Math.max(1, Math.min(D.frames[c], Math.floor(t * 30) + 1));
+        setSrc(img, `build/frames/${c}/${String(n).padStart(5, '0')}.jpg`);
+        const cm = camAt(l); const z = cm.z ?? 1; const k = inner * z / 390;
+        const cx = Number.isFinite(cm.x) ? cm.x : (390 - 390 / z) / 2;
+        img.style.width = (390 * k) + 'px'; img.style.transform = `translate(${-cx * k}px,${-cm.y * k}px)`;
+      },
+    };
+  }
+
+  function mkKori(name, size) {
+    const el = div('mk'); el.style.width = el.style.height = size + 'px';
+    const sp = document.createElement('span'); sp.className = 'mc-character mood-idle'; sp.innerHTML = D.mascots[name]; el.append(sp);
+    return { el, sp, name, mood(m) { const c = 'mc-character mood-' + m; if (sp.className !== c) sp.className = c; }, put(o) { put(el, o); } };
+  }
+  function mouth(K, open, speaking) {
+    const r = K.el; const normal = r.querySelector('.mc-mouth-normal'); const happy = r.querySelector('.mc-mouth-happy'); const think = r.querySelector('.mc-mouth-think');
+    if (!happy) return;
+    if (speaking && open > 0) {
+      if (normal) normal.style.opacity = 0; if (think) think.style.opacity = 0;
+      happy.style.opacity = 1; happy.style.transformBox = 'fill-box'; happy.style.transformOrigin = '50% 0%'; happy.style.transform = `scaleY(${(0.25 + 0.95 * open).toFixed(3)})`;
+    } else [normal, think, happy].forEach((e) => { if (e) { e.style.opacity = ''; e.style.transform = ''; } });
+  }
+
+  const SPARK = '<svg viewBox="0 0 40 40" width="100%" height="100%"><path d="M20 2q3 15 18 18-15 3-18 18-3-15-18-18 15-3 18-18z" fill="#F8C038" stroke="#172B38" stroke-width="3" stroke-linejoin="round"/></svg>';
+  function spark(size) { const e = div('spark', SPARK); e.style.width = e.style.height = size + 'px'; return e; }
+  const MAG = '<svg viewBox="0 0 200 220" width="100%" height="100%"><circle cx="86" cy="86" r="62" fill="rgba(184,240,213,.55)" stroke="#172B38" stroke-width="12"/><path d="M60 62q14-16 34-12" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/><path d="M132 134l50 62" stroke="#172B38" stroke-width="26" stroke-linecap="round"/><path d="M132 134l50 62" stroke="#F8C038" stroke-width="10" stroke-linecap="round"/></svg>';
+  const STUDENT = (c) => `<svg viewBox="0 0 120 120" width="100%" height="100%"><circle cx="60" cy="60" r="54" fill="${c}" stroke="#172B38" stroke-width="6"/><circle cx="60" cy="47" r="19" fill="#F6E3C8" stroke="#172B38" stroke-width="5"/><path d="M22 98q5-30 38-30t38 30a54 54 0 0 1-76 0z" fill="#fff" stroke="#172B38" stroke-width="5" stroke-linejoin="round"/></svg>`;
+  const QC = (w, h, font, ok = true, tag = 'SOAL') => { const e = div('qc'); e.style.width = w + 'px'; e.style.height = h + 'px'; e.style.fontSize = font + 'px'; e.innerHTML = `<span class="tg">${tag}</span><div class="b"></div><div class="b s"></div>${['A', 'B', 'C', 'D', 'E'].map((L, i) => `<div class="o${ok && i === 1 ? ' ok' : ''}"><u>${L}</u><span></span></div>`).join('')}`; return e; };
+  const PDFSHEET = (w, cls = '') => { const e = div('pdf ' + cls, '<span class="tab">PDF</span><i class="m"></i><i></i><i class="s"></i><i class="m"></i><i></i><i class="s"></i>'); e.style.width = w + 'px'; e.style.height = (w * 1.32) + 'px'; e.style.fontSize = w + 'px'; return e; };
+  const callout = (text, cls = '') => { const e = div('call ' + cls, esc(text)); return e; };
+
+  // ---------- adegan (indeks = nomor shot) ----------
+  const SC = {};
+
+  SC[1] = () => {
+    const gc = div('gc'); gc.style.width = '800px'; gc.style.height = '890px';
+    gc.innerHTML = '<div class="hd"><div class="av"><b style="background:#F8C038"></b><b style="background:#55C79D"></b><b style="background:#F3A99A"></b></div>Grup Angkatan</div><div class="bd"><div class="in"></div></div><div class="badge">99+</div>';
+    const items = [['m', 'Ada yang punya soal UTS tahun lalu?'], ['f', 'Soal UTS 2022.pdf'], ['f', 'Kumpulan soal blok.pdf'], ['m me', 'Ada di aku, nanti kukirim ya'], ['f', 'Try out anatomi (1).pdf'], ['f', 'Soal ujian lama FINAL.pdf'], ['f', 'Catatan + soal.pdf'], ['f', 'Scan soal modul.pdf']];
+    const inn = gc.querySelector('.in'); const nodes = items.map(([k, t]) => { const n = div(k === 'f' ? 'f' : 'm ' + k.replace('m', '').trim(), k === 'f' ? `<em></em>${esc(t)}` : esc(t), inn); n.style.display = 'none'; return n; });
+    const badge = gc.querySelector('.badge');
+    const sheets = [0, 1, 2, 3, 4, 5].map((k) => { const s = PDFSHEET(150, 'old'); return { s, k }; });
+    const K = mkKori('kori', 400); K.mood('wave');
+    return { speaker: K, update(l) {
+      put(gc, { x: 540, y: 840 + (1 - E.out(l / .4)) * 120, s: lerp(.92, 1, E.out(l / .4)), o: fade(l, 0, .1) });
+      nodes.forEach((n, i) => { const t = .3 + i * .27; n.style.display = l >= t ? '' : 'none'; const e = pop(l, t, .3); n.style.transform = `translateY(${(1 - Math.min(1, e)) * 30}px)`; n.style.opacity = fade(l, t, .15); });
+      const nb = Math.floor(Math.max(0, l - .3) / .27); const pulse = 1 + .16 * Math.max(0, 1 - ((l - .3) % .27) / .2) * (nb > 0 ? 1 : 0);
+      put(badge, { x: 0, y: 0, s: 1 }); badge.style.transform = `scale(${pulse})`;
+      sheets.forEach(({ s, k }) => { const t = .5 + k * .3; const e = pop(l, t, .5); put(s, { x: (k % 2 ? 1010 : 70), y: 560 + k * 105 - (1 - Math.min(1, e)) * 400, s: .8, r: -18 + k * 9 + (1 - Math.min(1, e)) * 80, o: fade(l, t, .12) }); });
+      K.put({ x: 880, y: 1215 + (1 - E.out(l / .5)) * 360, s: 1 + .02 * Math.sin(l * 6), r: -4 + 4 * Math.sin(l * 5) * .4, o: 1 });
+    } };
+  };
+
+  SC[2] = () => {
+    const logo = div('abs', `<img src="${D.logo}" style="height:124px;display:block">`); logo.style.cssText += ';background:#fff;border:8px solid #172B38;border-radius:999px;padding:22px 46px;box-shadow:0 12px 0 #172B38';
+    const sticker = div('abs', 'GRATIS'); sticker.style.cssText += ';width:250px;height:250px;border-radius:50%;background:#F8C038;border:9px solid #172B38;box-shadow:0 10px 0 #172B38;display:grid;place-items:center;font-weight:800;font-size:58px;letter-spacing:-.02em';
+    const ui = uiCard({ w: 900, h: 550, segs: [{ clip: 'landing', from: 0, to: 3.9 }], cam: [[0, { y: 0, z: 1 }], [3.5, { y: 140, z: 1 }]] });
+    const K = mkKori('kori', 360); K.mood('wave');
+    const sp = [0, 1, 2].map(() => spark(70));
+    return { speaker: K, update(l) {
+      put(logo, { x: 470, y: 600, s: pop(l, .1, .5), r: -1.5, o: fade(l, .1, .1) });
+      put(sticker, { x: 925, y: 520, s: pop(l, .55, .5), r: -14 + 5 * Math.sin(l * 4), o: fade(l, .55, .1) });
+      const up = E.out((l - .3) / .55); put(ui.el, { x: 540, y: 1000 + (1 - up) * 700, s: 1, r: 1.2, o: up > 0 ? 1 : 0 }); ui.update(l - .3);
+      K.put({ x: 905, y: 1190 + (1 - E.out(l / .45)) * 340, s: 1, o: 1 });
+      [[160, 460, .3], [920, 700, .7], [120, 760, 1.4]].forEach(([x, y, t], i) => put(sp[i].el || sp[i], { x, y, s: pop(l, t, .4) * (.9 + .15 * Math.sin(l * 6 + i)), r: l * 30, o: fade(l, t, .1) }));
+    } };
+  };
+
+  SC[3] = () => {
+    const num = div('abs', '<span id="n3">0</span>'); num.style.cssText += ';font-weight:800;font-size:250px;letter-spacing:-.05em;font-variant-numeric:tabular-nums;line-height:1;white-space:nowrap;text-align:center';
+    const sp = num.querySelector('#n3'); sp.style.cssText = 'background:linear-gradient(transparent 62%,#F8C038 62%,#F8C038 92%,transparent 92%);padding:0 .06em';
+    const sub = div('chip', 'SUDAH TAYANG DI WEB');
+    const ui = uiCard({ w: 900, h: 660, segs: [{ clip: 'subjects', from: 1.0, to: 3.4 }, { clip: 'bab', from: 2.9, to: 4.3 }], cam: [[0, { y: 150, z: 1 }], [2.4, { y: 150, z: 1 }], [2.6, { y: 110, z: 1 }]] });
+    const K = mkKori('kori', 300); K.mood('idle');
+    return { speaker: K, update(l) {
+      const val = Math.round(38400 * E.out((l - .1) / 1.3)); sp.textContent = new Intl.NumberFormat('id-ID').format(val);
+      const mv = E.inout((l - 1.7) / .55);
+      put(num, { x: 540, y: lerp(760, 520, mv), s: lerp(1, .5, mv) * (l < .1 ? pop(l, 0, .15) : 1), o: 1 });
+      put(sub, { x: 540, y: lerp(980, 640, mv), s: pop(l, 1.3, .4) * lerp(1, .8, mv), o: fade(l, 1.3, .1) });
+      const up = E.out((l - 1.75) / .55); put(ui.el, { x: 540, y: 1000 + (1 - up) * 800, r: -1, o: up > 0 ? 1 : 0 }); ui.update(l - 1.75);
+      K.put({ x: 930, y: 1285 + (1 - E.out((l - 2.3) / .5)) * 700, s: 1, o: 1 });
+    } };
+  };
+
+  SC[4] = () => {
+    const parts = [
+      { label: 'Latihan soal', ui: { segs: [{ clip: 'subjects', from: 1.0, to: 2.1 }], cam: [[0, { y: 330, z: 1 }]] } },
+      { label: 'Kontribusi PDF', ui: { segs: [{ clip: 'chat', from: 0.9, to: 2.0 }], cam: [[0, { y: 380, z: 1 }]] } },
+      { label: 'Simulasi jadi dokter', ui: { segs: [{ clip: 'sim', from: 1.0, to: 2.1 }], cam: [[0, { y: 90, z: 1 }]] } },
+      { label: 'Bagikan soalmu', ui: { segs: [{ clip: 'chat', from: 1.7, to: 2.9 }], cam: [[0, { y: 420, z: 1 }], [1, { y: 470, z: 1.35, x: 20 }]] } },
+    ].map((p) => ({ ...p, card: uiCard({ w: 880, h: 720, ...p.ui }), call: callout(p.label) }));
+    const K = mkKori('kori', 300); K.mood('idle');
+    return { speaker: K, update(l) {
+      parts.forEach((p, i) => {
+        const a = i, b = i + 1; const inE = E.back((l - a) / .38); const out = E.inout((l - b) / .25);
+        const show = l >= a - .001 && (i === 3 || l < b + .25);
+        const x = 540 + (1 - Math.min(1, inE)) * 640 - out * 700;
+        put(p.card.el, { x, y: 860 + (i % 2 ? 6 : -6), r: (1 - Math.min(1, inE)) * 6 + (i % 2 ? 1.2 : -1.2) - out * 8, o: show ? 1 : 0 }); p.card.update(l - a);
+        put(p.call, { x, y: 400, s: Math.min(1.08, inE) * (1 - out * .4), o: show ? fade(l, a, .1) * (1 - out) : 0 });
+      });
+      K.put({ x: 190, y: 1240 + (1 - E.out(l / .4)) * 300, o: 1 });
+    } };
+  };
+
+  SC[5] = () => {
+    const gc = div('gc'); gc.style.width = '900px'; gc.style.height = '850px';
+    gc.innerHTML = '<div class="hd"><div class="av"><b style="background:#F8C038"></b><b style="background:#55C79D"></b></div>Berkas grup angkatan</div><div class="bd"><div class="in" style="gap:14px;padding-top:24px;top:0"></div></div>';
+    const rows = ['Soal UTS 2021.pdf', 'Soal blok lama.pdf', 'Try out anatomi lama.pdf', 'Soal UAS 2022.pdf', 'Arsip soal angkatan.pdf', 'Scan soal ujian.pdf'];
+    const inn = gc.querySelector('.in'); inn.style.justifyContent = 'flex-start';
+    const nodes = rows.map((t) => { const n = div('f old', `<em></em>${esc(t)}`, inn); n.style.cssText += ';background:#fff;border:5px solid #172B38;border-radius:22px;padding:14px 20px'; n.style.opacity = 0; return n; });
+    const mag = div('abs', MAG); mag.style.width = mag.style.height = '230px';
+    const ex = div('abs', '!'); ex.style.cssText += ';width:110px;height:110px;border-radius:50%;background:#F8C038;border:7px solid #172B38;display:grid;place-items:center;font-weight:800;font-size:76px;box-shadow:0 7px 0 #172B38';
+    const ui = uiCard({ w: 900, h: 700, segs: [{ clip: 'chat', from: 0, to: 1.9 }], cam: [[0, { y: 330, z: 1 }]] });
+    const K = mkKori('kori', 400); K.mood('think');
+    return { speaker: K, update(l) {
+      const gin = E.out(l / .45); const gout = E.inout((l - 3.35) / .4);
+      put(gc, { x: 540 - gout * 900, y: 800 + (1 - gin) * 100, s: lerp(.94, 1, gin), r: -1, o: gin > 0 ? 1 : 0 });
+      nodes.forEach((n, i) => { const t = .35 + i * .3; n.style.opacity = fade(l, t, .2); n.style.transform = `translateX(${(1 - E.out((l - t) / .3)) * 60}px)`; });
+      const sw = E.inout((l - .6) / 1.8); put(mag, { x: 760 - sw * 30 - gout * 900, y: 560 + sw * 380, r: -12 + 8 * Math.sin(l * 3), s: pop(l, .5, .4), o: fade(l, .5, .1) });
+      put(ex, { x: 330, y: 930, s: pop(l, 2.3, .35), r: -8, o: fade(l, 2.3, .1) * (1 - gout) });
+      K.mood(l < 2.3 ? 'think' : l < 3.35 ? 'happy' : 'idle');
+      K.put({ x: 215, y: 1190 + (1 - E.out(l / .5)) * 340, o: 1 });
+      const up = E.out((l - 3.45) / .5); put(ui.el, { x: 540, y: 880 + (1 - up) * 900, r: 1, o: up > 0 ? 1 : 0 }); ui.update(l - 3.45);
+    } };
+  };
+
+  SC[6] = () => {
+    const ui = uiCard({ w: 900, h: 840, segs: [{ clip: 'chat', from: 1.3, to: 2.9 }, { clip: 'chat', from: 12.5, to: 15.8 }], cam: [[0, { y: 330, z: 1 }], [1.6, { y: 330, z: 1 }], [1.9, { y: 400, z: 1.15, x: 30 }], [4.9, { y: 400, z: 1.15, x: 30 }]] });
+    const c = callout('PILIH BERKAS PDF'); const K = mkKori('kori', 330); K.mood('idle');
+    return { speaker: K, update(l) {
+      const up = E.out(l / .45); put(ui.el, { x: 540, y: 870 + (1 - up) * 700, r: -1, o: 1 }); ui.update(l);
+      put(c, { x: 540, y: 400, s: pop(l, 2.2, .4), r: -2, o: fade(l, 2.2, .1) });
+      K.put({ x: 175, y: 1250 + (1 - E.out(l / .5)) * 300, o: 1 });
+    } };
+  };
+
+  SC[7] = () => {
+    const ui = uiCard({ w: 900, h: 780, segs: [{ clip: 'chat', from: 3.0, to: 5.4 }, { clip: 'chat', from: 7.5, to: 9.5 }], cam: [[0, { y: 400, z: 1.2 }], [2.4, { y: 410, z: 1.2 }]] });
+    const c1 = callout('MATA KULIAH'); const c2 = callout('KAMPUS', 'mintc'); const K = mkKori('kori', 300); K.mood('idle');
+    return { speaker: K, update(l) {
+      const up = E.out(l / .45); put(ui.el, { x: 540, y: 820 + (1 - up) * 700, r: 1, o: 1 }); ui.update(l);
+      put(c1, { x: 300, y: 395, s: pop(l, .5, .4) * (1 - fade(l, 2.3, .15)), r: -2, o: fade(l, .5, .1) * (1 - fade(l, 2.3, .15)) });
+      put(c2, { x: 760, y: 395, s: pop(l, 2.9, .4), r: 2, o: fade(l, 2.9, .1) });
+      K.put({ x: 940, y: 1270 + (1 - E.out(l / .5)) * 300, o: 1 });
+    } };
+  };
+
+  SC[8] = () => {
+    const ui = uiCard({ w: 900, h: 740, segs: [{ clip: 'chat', from: 7.6, to: 9.4, speed: .6 }, { clip: 'chat', from: 9.4, to: 10.6, speed: .8 }], cam: [[0, { y: 410, z: 1.25 }], [3, { y: 430, z: 1.25 }]] });
+    const a = callout('KAMPUSMU SAJA'); const b = callout('SEMUA KAMPUS', 'mintc'); const K = mkKori('kori', 300); K.mood('idle');
+    return { speaker: K, update(l) {
+      const up = E.out(l / .45); put(ui.el, { x: 540, y: 810 + (1 - up) * 700, r: -1, o: 1 }); ui.update(l);
+      put(a, { x: 300, y: 395, s: pop(l, 1.1, .4), r: -2, o: fade(l, 1.1, .1) });
+      put(b, { x: 770, y: 395, s: pop(l, 1.7, .4), r: 2, o: fade(l, 1.7, .1) });
+      K.put({ x: 940, y: 1220 + (1 - E.out(l / .5)) * 300, o: 0 });
+    } };
+  };
+
+  SC[9] = () => {
+    const ui = uiCard({ w: 900, h: 760, segs: [{ clip: 'chat', from: 20.8, to: 22.8 }, { clip: 'admin', from: 0, to: 3.2 }], cam: [[0, { y: 380, z: 1 }], [2.0, { y: 380, z: 1 }], [2.01, { y: 470, z: 1.2 }]] });
+    const mag = div('abs', MAG); mag.style.width = mag.style.height = '240px';
+    const c = callout('ADMIN MEMERIKSA ISI PDF', 'cream'); const K = mkKori('kori', 300); K.mood('think');
+    return { speaker: K, update(l) {
+      const up = E.out(l / .45); put(ui.el, { x: 540, y: 820 + (1 - up) * 700, r: 1, o: 1 }); ui.update(l);
+      put(mag, { x: 770 + 30 * Math.sin(l * 2.2), y: 940 + 20 * Math.cos(l * 2.8), r: -10 + 6 * Math.sin(l * 2.5), s: pop(l, 2.2, .45), o: fade(l, 2.2, .1) });
+      put(c, { x: 540, y: 395, s: pop(l, 2.5, .4), r: -1, o: fade(l, 2.5, .1) });
+      K.put({ x: 160, y: 1230 + (1 - E.out(l / .5)) * 300, o: 1 });
+    } };
+  };
+
+  SC[10] = () => {
+    const sheet = PDFSHEET(430); const qc = QC(540, 660, 36, true, 'ANATOMI');
+    const stamp = div('stamp', 'DISETUJUI ADMIN');
+    const c1 = div('chip', 'Mata kuliah'); const c2 = div('chip', 'Bab'); c2.style.background = '#B8F0D5'; const arrow = div('abs', '›'); arrow.style.cssText += ';font-weight:800;font-size:80px';
+    const K = mkKori('kori', 330); K.mood('idle');
+    const sp = [0, 1, 2].map(() => spark(64));
+    return { speaker: K, update(l) {
+      const flip = clamp((l - 2.35) / .5); const sx1 = flip < .5 ? 1 - flip * 2 : 0; const sx2 = flip < .5 ? 0 : (flip - .5) * 2;
+      put(sheet, { x: 540, y: 850, s: pop(l, .1, .5), sx: sx1, r: -2, o: l < 2.7 ? fade(l, .1, .1) : 0 });
+      const st = clamp((l - 1.3) / .22); put(stamp, { x: 540, y: 950, s: lerp(2.2, 1, E.out(st)), r: -12 + (st < 1 ? 6 : 0), sx: sx1, o: st > 0 && l < 2.7 ? st : 0 });
+      put(qc, { x: 540, y: 850, s: 1, sx: sx2, o: l >= 2.7 || flip > .5 ? 1 : 0 });
+      put(c1, { x: 330, y: 1255, s: pop(l, 3.2, .4), o: fade(l, 3.2, .1) }); put(arrow, { x: 540, y: 1250, s: pop(l, 3.5, .3), o: fade(l, 3.5, .1) }); put(c2, { x: 720, y: 1255, s: pop(l, 3.8, .4), o: fade(l, 3.8, .1) });
+      K.mood(l > 1.3 ? 'happy' : 'idle'); K.put({ x: 905, y: 1130 + (1 - E.out(l / .5)) * 400, o: 1 });
+      [[210, 560, 1.4], [880, 640, 1.5], [200, 1060, 2.7]].forEach(([x, y, t], i) => put(sp[i], { x, y, s: pop(l, t, .4) * (.9 + .15 * Math.sin(l * 6 + i)), r: l * 30, o: fade(l, t, .1) }));
+    } };
+  };
+
+  SC[11] = () => {
+    const ui = uiCard({ w: 900, h: 880, segs: [{ clip: 'learn', from: 0.9, to: 7.1, speed: 1.25 }], cam: [[0, { y: 300, z: 1 }], [5, { y: 300, z: 1 }]] });
+    const c = callout('LATIHAN BAB', 'cream'); const K = mkKori('kori', 280); K.mood('idle');
+    return { speaker: K, update(l) {
+      const up = E.out(l / .45); put(ui.el, { x: 540, y: 850 + (1 - up) * 700, r: 1, o: 1 }); ui.update(l);
+      K.put({ x: 950, y: 1320 + (1 - E.out(l / .5)) * 300, o: 1 }); put(c, { x: 260, y: 1330, s: 0, o: 0 });
+    } };
+  };
+
+  SC[12] = () => {
+    const ui = uiCard({ w: 900, h: 880, segs: [{ clip: 'learn', from: 7.55, to: 10.45, speed: .6 }], cam: [[0, { y: 300, z: 1 }], [4.8, { y: 300, z: 1 }]] });
+    const c = callout('PEMBAHASAN'); const K = mkKori('kori', 280); K.mood('happy');
+    return { speaker: K, update(l) {
+      const up = E.out(l / .45); put(ui.el, { x: 540, y: 850 + (1 - up) * 700, r: -1, o: 1 }); ui.update(l);
+      put(c, { x: 330, y: 395, s: pop(l, 2.2, .4), r: -2, o: fade(l, 2.2, .1) });
+      K.put({ x: 950, y: 1320 + (1 - E.out(l / .5)) * 300, o: 1 });
+    } };
+  };
+
+  SC[13] = () => {
+    const cols = ['#F8C038', '#B8F0D5', '#F3A99A', '#BFD8F5', '#D9CCFF', '#55C79D'];
+    const C = { x: 540, y: 800 }; const qc = QC(380, 480, 28, true, 'SOAL');
+    const pts = cols.map((c, i) => { const a = (-90 + i * 60) * Math.PI / 180; return { x: C.x + 390 * Math.cos(a), y: C.y + 300 * Math.sin(a), c }; });
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('width', 1080); svg.setAttribute('height', 1920); svg.style.cssText = 'position:absolute;left:0;top:0'; root.append(svg);
+    const lines = pts.map((p) => { const ln = document.createElementNS(svg.namespaceURI, 'line'); ln.setAttribute('x1', C.x); ln.setAttribute('y1', C.y); ln.setAttribute('x2', p.x); ln.setAttribute('y2', p.y); ln.setAttribute('stroke', '#172B38'); ln.setAttribute('stroke-width', 7); ln.setAttribute('stroke-dasharray', '14 14'); ln.setAttribute('stroke-linecap', 'round'); svg.append(ln); return ln; });
+    const dots = pts.map(() => { const d = document.createElementNS(svg.namespaceURI, 'circle'); d.setAttribute('r', 13); d.setAttribute('fill', '#F8C038'); d.setAttribute('stroke', '#172B38'); d.setAttribute('stroke-width', 5); svg.append(d); return d; });
+    root.append(qc);
+    const icons = pts.map((p) => { const e = div('abs', STUDENT(p.c)); e.style.width = e.style.height = '150px'; return e; });
+    const K = mkKori('kori', 240); K.mood('cheer');
+    return { speaker: K, update(l) {
+      put(qc, { x: C.x, y: C.y, s: pop(l, .1, .5) * (1 + .02 * Math.sin(l * 5)), r: -2, o: fade(l, .1, .1) });
+      pts.forEach((p, i) => {
+        const t = .55 + i * .32; const e = pop(l, t, .45);
+        put(icons[i], { x: p.x, y: p.y + 4 * Math.sin(l * 3 + i), s: e, o: fade(l, t, .08) });
+        lines[i].style.opacity = fade(l, t - .1, .2);
+        const k = ((l - t) * .9) % 1; const kk = l > t + .2 ? E.inout(k) : 0;
+        dots[i].setAttribute('cx', lerp(C.x, p.x, kk)); dots[i].setAttribute('cy', lerp(C.y, p.y, kk)); dots[i].style.opacity = l > t + .2 ? 1 : 0;
+      });
+      K.put({ x: 935, y: 1195 + (1 - E.out(l / .5)) * 400, o: 1 });
+    } };
+  };
+
+  SC[14] = () => {
+    const tones = ['#B8F0D5', '#F8C038', '#F3A99A', '#BFD8F5', '#D9CCFF', '#B8F0D5', '#F8C038', '#F3A99A', '#BFD8F5'];
+    const cx = [250, 540, 830]; const cy = [560, 770, 980];
+    const order = [4, 0, 2, 6, 8, 1, 3, 5, 7];
+    const cards = tones.map((t, i) => { const e = div('abs', `<div style="display:flex;align-items:center;gap:14px;margin-bottom:16px"><span style="width:44px;height:44px;border-radius:50%;background:#fff;border:5px solid #172B38;display:block"></span><span style="flex:1;height:18px;background:rgba(23,43,56,.35);border-radius:9px"></span></div><div style="height:16px;background:rgba(23,43,56,.25);border-radius:8px;margin-bottom:12px"></div><div style="height:16px;width:60%;background:rgba(23,43,56,.25);border-radius:8px"></div>`); e.style.cssText += `;width:270px;height:200px;padding:24px;background:${t};border:6px solid #172B38;border-radius:28px;box-shadow:0 9px 0 #172B38`; return e; });
+    const sp = cards.map(() => spark(54));
+    const kori = mkKori('kori', 340); const kila = mkKori('kila', 250); const nilo = mkKori('nilo', 250);
+    kori.mood('happy'); kila.mood('idle'); nilo.mood('idle');
+    return { speaker: kori, update(l) {
+      order.forEach((idx, n) => { const t = .35 + n * .4; const e = pop(l, t, .4); const col = idx % 3, row = Math.floor(idx / 3);
+        put(cards[idx], { x: cx[col], y: cy[row], s: e, r: (idx % 2 ? 2 : -2) + (1 - Math.min(1, e)) * 12, o: fade(l, t, .08) });
+        put(sp[idx], { x: cx[col] + 105, y: cy[row] - 80, s: pop(l, t + .1, .35) * (1 - fade(l, t + .7, .3)), r: l * 40, o: fade(l, t + .1, .08) * (1 - fade(l, t + .7, .3)) });
+      });
+      kori.put({ x: 540, y: 1235 + (1 - E.out(l / .45)) * 400 });
+      const kin = E.out((l - .5) / .5); kila.put({ x: 160 - (1 - kin) * 300, y: 1250, o: kin > 0 ? 1 : 0 }); nilo.put({ x: 920 + (1 - kin) * 300, y: 1250, o: kin > 0 ? 1 : 0 });
+    } };
+  };
+
+  SC[15] = () => {
+    const clipsDef = [
+      { segs: [{ clip: 'subjects', from: 1.5, to: 2.7 }], cam: [[0, { y: 150, z: 1 }]] },
+      { segs: [{ clip: 'bab', from: 2.9, to: 4.1 }], cam: [[0, { y: 120, z: 1 }]] },
+      { segs: [{ clip: 'learn', from: 5.2, to: 6.4 }], cam: [[0, { y: 160, z: 1 }]] },
+      { segs: [{ clip: 'chat', from: 13.0, to: 14.2 }], cam: [[0, { y: 380, z: 1 }]] },
+      { segs: [{ clip: 'home', from: 1.0, to: 2.2 }], cam: [[0, { y: 120, z: 1 }]] },
+    ];
+    const cards = clipsDef.map((d) => uiCard({ w: 760, h: 620, ...d }));
+    const colors = ['#B8F0D5', '#F8C038', '#CDEFDD', '#F3A99A', '#BFD8F5', '#D9CCFF', '#F8C038', '#B8F0D5'];
+    const stack = colors.map((c, i) => { const e = div('abs'); e.style.cssText += `;width:${760 - i * 14}px;height:78px;background:${c};border:6px solid #F7F3E8;border-radius:24px;box-shadow:0 7px 0 rgba(0,0,0,.45)`; return e; });
+    const sp = [0, 1, 2, 3].map(() => spark(70));
+    const K = mkKori('kori', 280); K.mood('wave');
+    const beat = 5 / 5;
+    return { speaker: K, update(l) {
+      cards.forEach((c, i) => { const a = i * beat; const inE = E.back((l - a) / .3); const out = E.inout((l - a - beat) / .2); const dir = i % 2 ? 1 : -1;
+        put(c.el, { x: 540 + dir * (1 - Math.min(1, inE)) * 700 - dir * out * 700, y: 790, r: dir * (4 - 4 * Math.min(1, inE)) - dir * 3 + dir * out * 8, o: l >= a - .001 && l < a + beat + .25 ? 1 : 0 }); c.update(l - a); });
+      stack.forEach((e, i) => { const t = .4 + i * .55; const k = pop(l, t, .35); put(e, { x: 540 + (i % 2 ? 6 : -6), y: 1255 - i * 40, s: k, r: (i % 2 ? .8 : -.8), o: fade(l, t, .08) }); });
+      sp.forEach((s, i) => { const t = 1 + i * 1.1; put(s, { x: [190, 900, 150, 930][i], y: [620, 700, 1000, 1080][i], s: pop(l, t, .4) * (.9 + .15 * Math.sin(l * 6 + i)), r: l * 30, o: fade(l, t, .1) }); });
+      K.put({ x: 925, y: 1265 + (1 - E.out(l / .4)) * 300 });
+    } };
+  };
+
+  SC[16] = () => {
+    const logo = div('abs', `<img src="${D.logo}" style="height:130px;display:block">`); logo.style.cssText += ';background:#fff;border:8px solid #F7F3E8;border-radius:999px;padding:24px 50px;box-shadow:0 12px 0 rgba(0,0,0,.45)';
+    const bub = div('abs', '<span style="display:flex;align-items:center;gap:26px"><span id="pdfm" style="width:86px;height:108px;background:#fff;border:7px solid #172B38;border-radius:14px;position:relative;display:block"><b style="position:absolute;left:-7px;top:18px;background:#E5604D;color:#fff;font-size:24px;padding:4px 10px;border:4px solid #172B38;border-left:0">PDF</b></span><span>Chat Admin MEDCOEL</span></span>');
+    bub.style.cssText += ';background:#F7F3E8;color:#172B38;border:8px solid #172B38;border-radius:56px 56px 56px 14px;padding:36px 52px;font-weight:800;font-size:56px;box-shadow:0 12px 0 rgba(0,0,0,.45);white-space:nowrap';
+    const sp = [0, 1, 2, 3].map(() => spark(76)); const K = mkKori('kori', 460); K.mood('cheer');
+    return { speaker: K, update(l) {
+      put(logo, { x: 540, y: 560, s: pop(l, .15, .5), r: -1, o: fade(l, .15, .1) });
+      put(bub, { x: 540, y: 790 + (l > .6 && l < 1.3 ? -10 * Math.sin((l - .6) * 4.5) : 0), s: pop(l, .6, .5), o: fade(l, .6, .1) });
+      K.put({ x: 540, y: 1100 + (1 - E.out((l - .2) / .5)) * 500, o: 1 });
+      sp.forEach((s, i) => { const t = 1 + i * .25; put(s, { x: [170, 910, 250, 840][i], y: [640, 700, 1000, 1060][i], s: pop(l, t, .4) * (.9 + .15 * Math.sin(l * 5 + i)), r: l * 25, o: fade(l, t, .1) }); });
+    } };
+  };
+
+  // ---------- pemutar ----------
+  function setScene(i) {
+    cur = i; const sc = D.spec.scenes[i]; pending = [];
+    root.innerHTML = '';
+    $('#bg').className = `bg-${sc.bg}`; $('#stage').className = sc.bg === 'navy' ? 'on-navy' : 'on-light';
+    scn = SC[sc.id](sc); scn.tag = null;
+    const len = sc.overlay.length; const fs = len <= 14 ? 104 : len <= 22 ? 90 : 80;
+    $('#overlay').innerHTML = `<span class="tag" style="font-size:${fs}px">${esc(sc.overlay)}</span>`;
+    const text = sc.sayShort ?? sc.say; const parts = text.split(/\s+/).filter(Boolean);
+    const total = parts.reduce((a, w) => a + w.length + 1, 0); let acc = 0;
+    scn.words = parts.map((w) => { const a = acc / total; acc += w.length + 1; return a; });
+    const fsz = text.length > 72 ? 44 : text.length > 50 ? 48 : 54;
+    $('#caption').innerHTML = `<div class="pill" style="font-size:${fsz}px">${parts.map((w) => `<span class="w">${esc(w)}</span>`).join(' ')}</div>`;
+  }
+
+  window.__init = (data) => { D = data; root = $('#scene'); return document.fonts.ready; };
+
+  window.__frame = async (t) => {
+    const tl = D.timeline.scenes; let i = tl.findIndex((s) => t >= s.start && t < s.end); if (i < 0) i = tl.length - 1;
+    if (i !== cur) setScene(i);
+    pending = [];
+    const s = tl[i]; const sc = D.spec.scenes[i]; const l = t - s.start; const dur = s.end - s.start;
+    scn.update(l, dur);
+    // judul masuk dengan pantulan
+    const tag = $('#overlay .tag'); const e = pop(l, .08, .4); tag.style.transform = `scale(${Math.max(0, e)}) rotate(${(1 - Math.min(1, e)) * -4 - 1}deg)`; tag.style.opacity = fade(l, .08, .08);
+    // wipe
+    const wp = $('#wipe'); const we = i === 0 ? 1 : E.out(l / .3);
+    wp.style.transform = `translateX(${we * 1120}px)`; wp.style.background = ({ navy: '#172B38', cream: '#F7F3E8', mint: '#CDEFDD' })[sc.bg]; wp.style.display = we >= 1 ? 'none' : 'block';
+    // mulut mengikuti suara
+    const k = Math.floor((t - s.audioStart) * D.timeline.fps); const speaking = t >= s.audioStart && t <= s.audioStart + s.audioSec + .05;
+    if (scn.speaker) mouth(scn.speaker, speaking ? (s.env[k] || 0) : 0, speaking);
+    // takarir
+    const sp = clamp((t - s.audioStart) / s.audioSec);
+    document.querySelectorAll('#caption .w').forEach((w, n) => { const a = scn.words[n]; const b = scn.words[n + 1] ?? 1.01; w.className = 'w' + (sp >= b || t > s.audioStart + s.audioSec ? ' done' : sp >= a && t >= s.audioStart ? ' now' : ''); });
+    $('#caption').style.opacity = fade(l, .12, .15);
+    document.getAnimations().forEach((a) => { a.pause(); a.currentTime = l * 1000; });
+    await Promise.all(pending);
+  };
+})();
+</script></body></html>
