@@ -337,7 +337,7 @@ await langkah('paket soal memakai kuota per BAB', async () => {
 await langkah('leaderboard hanya berisi nama aman', async () => {
   const lb = (await call('GET', '/api/medcoel/leaderboard?period=all', undefined, userB.token, 200)).data;
   for (const it of lb.items) {
-    assert.deepEqual(Object.keys(it).sort(), ['campus', 'isMe', 'name', 'points', 'rank']);
+    assert.deepEqual(Object.keys(it).sort(), ['campus', 'isMe', 'name', 'points', 'questionPoints', 'rank', 'simPoints']);
     assert.ok(!String(it.name).includes('@'));
   }
 });
@@ -502,6 +502,63 @@ await langkah('riwayat simulasi dokter hanya milik sendiri, terbaru dulu, berhal
   assert.ok(raw.status >= 400 || (raw.data.items || []).length === 0);
 });
 
+await langkah('kasus simulasi dikelola admin: simpan ulang tidak mengubah isi, kasus nonaktif tidak diundi', async () => {
+  await call('GET', '/api/medcoel/admin/sim/cases', undefined, userA.token, 403);
+  await call('GET', '/api/medcoel/doctor-sim/content', undefined, null, 401);
+  const list = (await call('GET', '/api/medcoel/admin/sim/cases', undefined, admin.token, 200)).data;
+  assert.deepEqual(list.items.map((c) => c.key).sort(), ['anak', 'bedah', 'dalam', 'spog', 'umum']);
+  assert.ok(list.items.find((c) => c.key === 'spog').stats.plays >= 1);
+  const canon = (v) => JSON.stringify(v, (k, x) => (x && typeof x === 'object' && !Array.isArray(x) ? Object.fromEntries(Object.keys(x).sort().map((y) => [y, x[y]])) : x));
+  for (const key of ['umum', 'spog']) {
+    const full = (await call('GET', `/api/medcoel/admin/sim/cases/${key}`, undefined, admin.token, 200)).data;
+    const saved = (await call('PATCH', `/api/medcoel/admin/sim/cases/${key}`, { title: full.title, poli: full.poli, active: true, order: full.order, data: full.data }, admin.token, 200)).data;
+    assert.equal(canon(saved.data), canon(full.data), key);
+  }
+  const base = (await call('GET', '/api/medcoel/admin/sim/cases/bedah', undefined, admin.token, 200)).data;
+  const bad = await call('POST', '/api/medcoel/admin/sim/cases', { key: 'Bedah X', poli: 'mata', data: { pas: 'robot', intro: [] } }, admin.token, 400);
+  ['key', 'poli', 'pas', 'intro', 'dxOk', 'K'].forEach((f) => assert.ok(bad.data.data[f], 'galat ' + f));
+  const key = 'uji_' + RUN.slice(-8);
+  const made = (await call('POST', '/api/medcoel/admin/sim/cases', { key, poli: 'bedah', active: false, data: { ...base.data, id: 'Bu Uji, 30 tahun', A: { ...base.data.A, ku: { say: 'Perut kanan bawah nyeri.', note: '<b>Nyeri</b>', bogus: 'x' } } } }, admin.token, 200)).data;
+  assert.equal(made.title, 'Bu Uji, 30 tahun · Poli bedah');
+  assert.equal(made.data.A.ku.bogus, undefined);
+  await call('POST', '/api/medcoel/admin/sim/cases', { key, poli: 'bedah', data: base.data }, admin.token, 400);
+  let content = (await call('GET', '/api/medcoel/doctor-sim/content', undefined, userA.token, 200)).data;
+  assert.equal(content.cases[key], undefined);
+  assert.equal(content.dx.pneumonia[0], 'Pneumonia komunitas');
+  const preview = (await call('GET', '/api/medcoel/doctor-sim/content?preview=1', undefined, admin.token, 200)).data;
+  assert.equal(preview.cases[key].inactive, true);
+  assert.equal((await call('GET', '/api/medcoel/doctor-sim/content?preview=1', undefined, userA.token, 200)).data.cases[key], undefined);
+  await call('PATCH', `/api/medcoel/admin/sim/cases/${key}`, { active: true }, admin.token, 200);
+  content = (await call('GET', '/api/medcoel/doctor-sim/content', undefined, userA.token, 200)).data;
+  assert.equal(content.cases[key].poli, 'bedah');
+  const r = (await call('POST', '/api/medcoel/doctor-sim/results', { caseKey: key, dxKey: 'apendisitis', score: 80 }, userB.token, 200)).data.result;
+  assert.equal(r.dxOk, true);
+  await call('DELETE', '/api/medcoel/admin/sim/diagnoses/apendisitis', undefined, admin.token, 400);
+  await call('DELETE', '/api/medcoel/admin/sim/cases/umum', undefined, admin.token, 400);
+  await call('DELETE', `/api/medcoel/admin/sim/cases/${key}`, undefined, admin.token, 200);
+  // Riwayat pemain tetap ada setelah kasus dihapus.
+  const hist = (await call('GET', '/api/medcoel/doctor-sim/results', undefined, userB.token, 200)).data;
+  assert.equal(hist.items[0].caseTitle, 'Bu Uji, 30 tahun · Poli bedah');
+  await call('DELETE', '/api/medcoel/admin/sim/cases/bedah', undefined, userA.token, 403);
+});
+
+await langkah('leaderboard gabungan: soal + skor terbaik per kasus simulasi, mengulang tidak menumpuk', async () => {
+  const before = (await call('GET', '/api/medcoel/leaderboard?period=all', undefined, userA.token, 200)).data;
+  assert.equal(before.simPerCase, 10);
+  // userA: spog 100, umum 42, anak 0 -> 10 + 4 + 0
+  assert.equal(before.me.simPoints, 14);
+  assert.equal(before.me.points, before.me.questionPoints + 14);
+  await call('POST', '/api/medcoel/doctor-sim/results', { caseKey: 'umum', dxKey: 'pneumonia', score: 90 }, userA.token, 200);
+  await call('POST', '/api/medcoel/doctor-sim/results', { caseKey: 'umum', dxKey: 'pneumonia', score: 60 }, userA.token, 200);
+  const after = (await call('GET', '/api/medcoel/leaderboard?period=all', undefined, userA.token, 200)).data;
+  assert.equal(after.me.simPoints, 19); // umum naik ke 90 -> 9, bukan 4 + 9 + 6
+  const week = (await call('GET', '/api/medcoel/leaderboard', undefined, userA.token, 200)).data;
+  assert.ok(week.items.every((it) => typeof it.simPoints === 'number' && typeof it.questionPoints === 'number'));
+  // Total poin di progres ikut menghitung simulasi.
+  const prog = (await call('GET', '/api/medcoel/progress', undefined, userA.token, 200)).data;
+  assert.equal(prog.totalPoints, after.me.points);
+});
+
 console.log('Jadwal, pengumuman, nonaktif');
 await langkah('jadwal ujian hanya terlihat pemiliknya', async () => {
   const examAt = new Date(Date.now() + 3 * 86400000).toISOString().replace('T', ' ');
@@ -561,6 +618,92 @@ await langkah('status tutorial kosong untuk akun baru, tersimpan per pengguna, d
   await call('POST', '/api/medcoel/me/tutorial', { key: 'fk', status: 'hapus' }, fresh.token, 400);
   await call('POST', '/api/medcoel/me/tutorial', { key: 'fk', status: 'done' }, null, 401);
   assert.deepEqual((await call('GET', '/api/medcoel/me', undefined, userA.token, 200)).data.tutorials, {});
+});
+
+console.log('Pendaftaran yang diatur admin');
+await langkah('kolom tambahan (TikTok), langkah bukti opsional, WhatsApp opsional, ubah dan ekspor oleh admin', async () => {
+  const st = (await call('GET', '/api/collections/app_settings/records?perPage=1', undefined, su, 200)).data.items[0];
+  const original = { signupFields: st.signupFields, signupProofs: st.signupProofs, signupBuiltin: st.signupBuiltin };
+  try {
+    await call('PATCH', `/api/collections/app_settings/records/${st.id}`, {
+      signupBuiltin: { whatsapp: 'optional', semester: 'hidden' },
+      signupFields: [
+        { key: 'tiktok', label: 'Akun TikTok', type: 'handle', required: true, where: 'signup' },
+        { key: 'angkatan', label: 'Angkatan', type: 'select', options: ['2023', '2024'], where: 'signup' },
+        { key: 'catatan_admin', label: 'Catatan admin', type: 'textarea', where: 'admin' },
+        { key: 'email', label: 'Bentrok bawaan', type: 'text' },
+        { key: 'Rusak Kunci', label: 'x' },
+      ],
+      signupProofs: [...st.signupProofs, { key: 'tiktok', title: 'Ikuti TikTok MEDCOEL', short: 'TikTok', url: 'javascript:alert(1)', question: 'Sudah?', required: false }],
+    }, su, 200);
+    const pub = (await call('GET', '/api/medcoel/public-settings', undefined, null, 200)).data.signup;
+    assert.deepEqual(pub.fields.map((f) => f.key), ['tiktok', 'angkatan']); // admin-only dan kunci rusak tidak dikirim
+    assert.equal(pub.proofs.at(-1).url, ''); // tautan non-http dibuang
+    assert.equal(pub.builtin.semester, 'hidden');
+
+    const loginId = `ujix${RUN}`;
+    const base = { loginId, name: 'Uji Kolom Tambahan', email: `${loginId}@contoh.test`, password: 'rahasia123', passwordConfirm: 'rahasia123', campus: kampusA.id };
+    const bad = await call('POST', '/api/medcoel/signup/start', { ...base, extra: { angkatan: '1999' } }, null, 400);
+    assert.ok(bad.data.data.extra_tiktok);
+    assert.ok(bad.data.data.extra_angkatan);
+    assert.equal(bad.data.data.whatsapp, undefined); // WhatsApp opsional
+    assert.equal(bad.data.data.semester, undefined); // semester disembunyikan
+    let s = (await call('POST', '/api/medcoel/signup/start', { ...base, extra: { tiktok: '@medcoel.fan', angkatan: '2024', catatan_admin: 'disusupkan' } }, null, 200)).data;
+    assert.deepEqual(s.profile.extra, { tiktok: 'medcoel.fan', angkatan: '2024' });
+    const cred = { draftId: s.draftId, draftToken: s.draftToken };
+    await call('POST', '/api/medcoel/signup/verify', { ...cred, code: s.devCode }, null, 200);
+    await call('POST', '/api/medcoel/signup/subjects', { ...cred, subjects: [mk.id] }, null, 200);
+    // Langkah TikTok belum boleh sebelum WhatsApp dan Instagram.
+    await call('POST', '/api/medcoel/signup/proof', { ...cred, kind: 'tiktok', skip: true }, null, 400);
+    await call('POST', '/api/medcoel/signup/proof', { ...cred, kind: 'whatsapp', skip: true }, null, 400); // wajib
+    for (const kind of ['whatsapp', 'instagram']) {
+      const up = await upload({ kind: 'proof_' + kind, name: 'bukti.png', ...cred }, PNG, 'image/png');
+      await call('POST', '/api/medcoel/signup/proof', { ...cred, kind, fileId: up.data.id, joined: true }, null, 200);
+    }
+    await call('POST', '/api/medcoel/signup/finish', cred, null, 400); // langkah TikTok belum dilewati atau diisi
+    const up = await upload({ kind: 'proof_tiktok', name: 'bukti.png', ...cred }, PNG, 'image/png');
+    assert.equal(up.status, 200);
+    s = (await call('POST', '/api/medcoel/signup/proof', { ...cred, kind: 'tiktok', fileId: up.data.id, joined: true }, null, 200)).data;
+    assert.equal(s.step, 7);
+    await call('POST', '/api/medcoel/signup/finish', cred, null, 200);
+    const auth = (await call('POST', '/api/collections/users/auth-with-password', { identity: loginId, password: 'rahasia123' }, null, 200)).data;
+    const me = (await call('GET', '/api/medcoel/me', undefined, auth.token, 200)).data;
+    assert.deepEqual(me.extra, { tiktok: 'medcoel.fan', angkatan: '2024' });
+    assert.equal(me.whatsapp, '');
+    assert.equal(me.semester, 0);
+    // Data tambahan tidak bisa diubah langsung lewat koleksi, hanya lewat endpoint yang memvalidasi.
+    const direct = await call('PATCH', `/api/collections/users/records/${auth.record.id}`, { extra: { tiktok: 'x' } }, auth.token);
+    assert.ok(direct.status === 400 || direct.status === 404, 'ubah extra langsung harus ditolak');
+    await call('POST', '/api/medcoel/me/extra', { extra: { tiktok: 'bukan akun!' } }, auth.token, 400);
+    const upd = (await call('POST', '/api/medcoel/me/extra', { extra: { tiktok: 'akun_baru', catatan_admin: 'coba' } }, auth.token, 200)).data;
+    assert.deepEqual(upd.extra, { tiktok: 'akun_baru', angkatan: '2024' });
+
+    // Admin melihat bukti TikTok, mengubah data, dan mengekspor CSV.
+    const list = (await call('GET', `/api/medcoel/admin/users?q=${loginId}`, undefined, admin.token, 200)).data;
+    assert.deepEqual(list.items[0].proofs.map((p) => p.key).sort(), ['instagram', 'tiktok', 'whatsapp']);
+    assert.ok(list.fields.some((f) => f.key === 'catatan_admin'));
+    const byExtra = (await call('GET', '/api/medcoel/admin/users?q=akun_baru', undefined, admin.token, 200)).data;
+    assert.equal(byExtra.items[0].loginId, loginId);
+    await call('POST', `/api/medcoel/admin/users/${auth.record.id}`, { action: 'profile', email: 'bukan-email' }, admin.token, 400);
+    await call('POST', `/api/medcoel/admin/users/${auth.record.id}`, { action: 'profile', loginId: `ujia${RUN}` }, admin.token, 400);
+    const ed = (await call('POST', `/api/medcoel/admin/users/${auth.record.id}`, { action: 'profile', name: 'Nama Baru', semester: 4, role: 'agent', extra: { catatan_admin: '=1+1 cek' } }, admin.token, 200)).data;
+    assert.equal(ed.name, 'Nama Baru');
+    assert.equal(ed.role, 'agent');
+    assert.equal(ed.extra.catatan_admin, '=1+1 cek');
+    assert.equal(ed.extra.tiktok, 'akun_baru');
+    await call('POST', `/api/medcoel/admin/users/${auth.record.id}`, { action: 'profile', role: 'admin' }, admin.token, 400);
+    await call('POST', `/api/medcoel/admin/users/${auth.record.id}`, { action: 'profile', name: 'X Y' }, userA.token, 403);
+    const r = await fetch(B + `/api/medcoel/admin/users/export?q=${loginId}`, { headers: { Authorization: admin.token } });
+    assert.equal(r.status, 200);
+    assert.match(r.headers.get('content-type'), /text\/csv/);
+    const csv = await r.text();
+    assert.ok(csv.includes('Akun TikTok'));
+    assert.ok(csv.includes('akun_baru'));
+    assert.ok(csv.includes("'=1+1 cek")); // rumus spreadsheet dinetralkan
+    assert.equal((await fetch(B + '/api/medcoel/admin/users/export', { headers: { Authorization: userA.token } })).status, 403);
+  } finally {
+    await call('PATCH', `/api/collections/app_settings/records/${st.id}`, original, su, 200);
+  }
 });
 
 console.log(`api.test: ${lulus} langkah lulus${process.exitCode ? ', ADA YANG GAGAL' : ''}`);

@@ -1,0 +1,147 @@
+{
+  "title": "MEDCOEL - Kirim PDF soalmu (iklan 75 detik)",
+  "format": "9:16",
+  "fps": 30,
+  "total": 75,
+  "voice": {
+    "engine": "piper",
+    "lengthScale": 1.0,
+    "leadIn": 0.15,
+    "tailOut": 0.15,
+    "maxSpeedUp": 1.3
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "start": 0,
+      "end": 3,
+      "bg": "navy",
+      "overlay": "TUNGGU, INI BUAT KAMU",
+      "say": "PDF soal kampusmu masih numpuk di grup?"
+    },
+    {
+      "id": 2,
+      "start": 3,
+      "end": 7,
+      "bg": "mint",
+      "overlay": "KENALIN MEDCOEL · GRATIS",
+      "say": "Kenalin MEDCOEL: tempat belajar kedokteran bareng komunitas, dan gratis."
+    },
+    {
+      "id": 3,
+      "start": 7,
+      "end": 12,
+      "bg": "cream",
+      "overlay": "38.400 SOAL",
+      "say": "Di sini sudah ada hampir empat puluh ribu soal, tersusun per mata kuliah dan bab."
+    },
+    {
+      "id": 4,
+      "start": 12,
+      "end": 16,
+      "bg": "navy",
+      "overlay": "JELAJAHI MEDCOEL",
+      "say": "Ada latihan soal, kontribusi PDF, dan simulasi jadi dokter. Sekarang lihat cara berbagi soal.",
+      "sayShort": "Ada latihan soal, kontribusi PDF, dan simulasi jadi dokter."
+    },
+    {
+      "id": 5,
+      "start": 16,
+      "end": 21,
+      "bg": "cream",
+      "overlay": "SOAL LAMA, POTENSI BARU",
+      "say": "PDF soal dari angkatanmu mungkin masih tersimpan, tapi belum banyak yang bisa memakainya."
+    },
+    {
+      "id": 6,
+      "start": 21,
+      "end": 26,
+      "bg": "mint",
+      "overlay": "BUKA CHAT ADMIN",
+      "say": "Di Chat Admin, kamu tinggal memilih berkas PDF yang ingin dibagikan."
+    },
+    {
+      "id": 7,
+      "start": 26,
+      "end": 31,
+      "bg": "cream",
+      "overlay": "ISI KONTEKSNYA",
+      "say": "Isi mata kuliah dan kampusnya, supaya kirimanmu punya konteks yang jelas."
+    },
+    {
+      "id": 8,
+      "start": 31,
+      "end": 36,
+      "bg": "mint",
+      "overlay": "ATUR CAKUPAN",
+      "say": "Lalu pilih apakah soal itu untuk kampusmu saja atau semua kampus."
+    },
+    {
+      "id": 9,
+      "start": 36,
+      "end": 41,
+      "bg": "navy",
+      "overlay": "DIPERIKSA ADMIN",
+      "say": "Sesudah kamu mengirimnya, admin mengonfirmasi dan memeriksa isi PDF dulu."
+    },
+    {
+      "id": 10,
+      "start": 41,
+      "end": 46,
+      "bg": "cream",
+      "overlay": "DIOLAH JADI LATIHAN",
+      "say": "Soal yang lolos diolah dan disusun ke mata kuliah serta bab yang sesuai."
+    },
+    {
+      "id": 11,
+      "start": 46,
+      "end": 51,
+      "bg": "mint",
+      "overlay": "BISA DIKERJAKAN",
+      "say": "Begitu tayang, teman sekampus bisa menemukan dan mengerjakannya di web."
+    },
+    {
+      "id": 12,
+      "start": 51,
+      "end": 56,
+      "bg": "cream",
+      "overlay": "ADA PEMBAHASAN",
+      "say": "Mereka bukan cuma menjawab; pembahasan membantu memahami kenapa pilihan itu tepat."
+    },
+    {
+      "id": 13,
+      "start": 56,
+      "end": 61,
+      "bg": "mint",
+      "overlay": "SATU PDF, BANYAK MANFAAT",
+      "say": "Satu dokumen yang tadinya tertimbun sekarang bisa membantu banyak teman belajar."
+    },
+    {
+      "id": 14,
+      "start": 61,
+      "end": 66,
+      "bg": "cream",
+      "overlay": "KOMUNITAS SALING BANTU",
+      "say": "Lalu kiriman teman lain menambah pilihan latihan untukmu juga."
+    },
+    {
+      "id": 15,
+      "start": 66,
+      "end": 71,
+      "bg": "navy",
+      "overlay": "BANK SOAL KITA TUMBUH",
+      "say": "Begitu cara bank soal kita tumbuh: berbagi, berlatih, dan berkembang bersama."
+    },
+    {
+      "id": 16,
+      "start": 71,
+      "end": 75,
+      "bg": "navy",
+      "overlay": "KIRIM PDF SOALMU",
+      "say": "Punya PDF soal? Kirim lewat Chat Admin MEDCOEL."
+    }
+  ],
+  "lexicon": {
+    "note": "Kamus pelafalan global ada di ../lexicon.json"
+  }
+}

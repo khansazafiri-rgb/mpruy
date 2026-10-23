@@ -12,7 +12,9 @@ import Report from '@/features/simulasi/components/Report';
 import Stage from '@/features/simulasi/components/Stage';
 import StartScreen from '@/features/simulasi/components/StartScreen';
 import TutorialCoach, { TOUR } from '@/features/simulasi/components/TutorialCoach';
-import { CASES, PLAYABLE, asset, caseSprites, pickCase } from '@/features/simulasi/engine';
+import { CASES, asset, caseSprites, pickCase } from '@/features/simulasi/engine';
+import { useSimContent } from '@/features/simulasi/content';
+import { PageLoader } from '@/components/ui';
 import { useSim } from '@/features/simulasi/useSim';
 import { api } from '@/lib/api';
 import { markTutorial } from '@/lib/tutorial';
@@ -110,16 +112,27 @@ function Consultation({ caseKey, prefs, tutorial, onNext, onExit }) {
 }
 
 export default function SimulasiDokter() {
+  const { me } = useAuth();
+  const [params] = useSearchParams();
+  const ready = useSimContent(me?.role === 'admin' && !!params.get('kasus'));
+  if (!ready) return <PageLoader />;
+  return <SimulasiDokterReady />;
+}
+
+function SimulasiDokterReady() {
   const [params] = useSearchParams();
   const tutorial = params.get('tutorial') === '1';
-  // Hanya untuk pengujian lokal: ?kasus=spog memaksa satu kasus. Tidak ada pemilih di tampilan.
-  const forced = import.meta.env.DEV && PLAYABLE.includes(params.get('kasus')) ? params.get('kasus') : '';
+  const { me } = useAuth();
+  // Untuk admin (mencoba kasus dari dashboard) dan pengujian lokal: ?kasus=kode memaksa satu kasus.
+  // Pemain biasa tidak punya pemilih kasus.
+  const want = params.get('kasus');
+  const forced = (import.meta.env.DEV || me?.role === 'admin') && want && CASES[want] && !CASES[want].nodoc ? want : '';
   const [prefs, setPrefsState] = useState(() => ({ ...DEFAULT_PREFS, ...read(PREFS, {}) }));
-  const [caseKey, setCaseKey] = useState(tutorial ? 'umum' : '');
+  const [caseKey, setCaseKey] = useState(tutorial ? 'umum' : forced);
   const [round, setRound] = useState(0);
   const setPrefs = (p) => { setPrefsState(p); write(PREFS, p); };
 
-  useEffect(() => { setCaseKey(tutorial ? 'umum' : ''); setRound((r) => r + 1); }, [tutorial]);
+  useEffect(() => { setCaseKey(tutorial ? 'umum' : forced); setRound((r) => r + 1); }, [tutorial, forced]);
 
   const start = () => {
     const prev = read(LAST, {})?.caseKey || '';

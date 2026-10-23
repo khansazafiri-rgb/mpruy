@@ -34,6 +34,7 @@ const AdminPackages = lazy(() => import('./pages/admin/Packages'));
 const AdminUsers = lazy(() => import('./pages/admin/Users'));
 const AdminSupport = lazy(() => import('./pages/admin/SupportInbox'));
 const AdminSettings = lazy(() => import('./pages/admin/SettingsAdmin'));
+const AdminSim = lazy(() => import('./pages/admin/SimCases'));
 
 function ScrollTop() {
   const { pathname } = useLocation();
@@ -92,6 +93,7 @@ export default function App() {
             <Route path="pengumuman" element={<AdminAnnouncements />} />
             <Route path="mata-kuliah" element={<AdminSubjects />} />
             <Route path="paket" element={<AdminPackages />} />
+            <Route path="simulasi" element={<AdminSim />} />
             <Route path="pengguna" element={<AdminUsers />} />
             <Route path="pengaturan" element={<AdminSettings />} />
           </Route>

@@ -29,6 +29,8 @@
   width: 32px; height: 32px; flex-shrink: 0; border-radius: 11px; background: #fff; padding: 3px; object-fit: contain;
   box-shadow: 0 0 0 1px rgb(var(--paper-2)), 0 3px 8px -4px rgb(10 56 48 / .4);
 }
+.chat-avatar.is-mascot { display: grid; place-items: center; overflow: visible; background: rgb(var(--brand-soft)); }
+.chat-avatar.is-mascot .mc-character { margin-top: 4px; }
 .chat-avatar.is-user { display: grid; place-items: center; background: rgb(var(--academic-soft)); color: rgb(var(--academic)); font-size: 13px; font-weight: 700; }
 /* Avatar sejajar gelembung, bukan baris waktu di bawahnya. */
 .chat-row.has-time .chat-avatar { margin-bottom: 22px; }
@@ -165,3 +167,7 @@
 .chat-bubble.is-me { background: rgb(var(--forest)); box-shadow: 0 3px 0 rgb(0 0 0 / .3), 0 10px 18px -10px rgb(10 56 48 / .7); }
 .chat-shell { border: 1.5px solid rgb(var(--ink) / .1); box-shadow: 0 5px 0 rgb(var(--ink) / .06), 0 26px 50px -30px rgb(10 56 48 / .5); }
 .chat-shell.is-compact { border: 0; box-shadow: none; }
+/* Kori mengintip di tombol Chat Admin. */
+.chat-fab-kori { display: grid; place-items: center; width: 26px; height: 26px; margin: -8px -2px -8px -6px; }
+.chat-fab-kori .mc-character { transform: translateY(-2px); }
+.chat-widget-mark .mc-character { margin-top: 3px; }

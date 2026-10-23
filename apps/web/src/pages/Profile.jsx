@@ -2,6 +2,7 @@ import { Check, GraduationCap, KeyRound, School, UserRound } from 'lucide-react'
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CampusPicker from '@/components/CampusPicker';
+import ExtraFields, { extraDefaults } from '@/components/ExtraFields';
 import Illustration from '@/components/Illustration';
 import { Alert, Field } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
@@ -44,7 +45,11 @@ function Section({ icon: Icon, title, children }) {
 }
 
 function ProfileForm() {
-  const { me, refresh } = useAuth();
+  const { me, refresh, settings } = useAuth();
+  const builtin = settings?.signup?.builtin || { whatsapp: 'required', semester: 'required' };
+  const extraDefs = (settings?.signup?.fields || []).filter((x) => x.where !== 'admin');
+  const [extra, setExtra] = useState(() => extraDefaults(extraDefs, me.extra || {}));
+  const [errors, setErrors] = useState({});
   const [f, setF] = useState({ name: me.name, whatsapp: me.whatsapp ? `0${me.whatsapp.replace(/^62/, '')}` : '', semester: me.semester || '', leaderboardAnonymous: me.leaderboardAnonymous });
   const [subjects, setSubjects] = useState([]);
   const [picked, setPicked] = useState(new Set(me.studyingSubjects || []));
@@ -59,14 +64,19 @@ function ProfileForm() {
     setMsg(''); setError('');
     if (!picked.size) { setError('Pilih minimal satu mata kuliah yang sedang dipelajari.'); return; }
     const digits = f.whatsapp.replace(/\D/g, '');
-    const wa = digits.startsWith('0') ? `62${digits.slice(1)}` : digits.startsWith('62') ? digits : `62${digits}`;
-    if (wa.length < 10 || wa.length > 15) { setError('Nomor WhatsApp belum benar.'); return; }
-    setBusy(true);
+    const wa = !digits ? '' : digits.startsWith('0') ? `62${digits.slice(1)}` : digits.startsWith('62') ? digits : `62${digits}`;
+    if (builtin.whatsapp !== 'hidden' && (wa || builtin.whatsapp === 'required') && (wa.length < 10 || wa.length > 15)) { setError('Nomor WhatsApp belum benar.'); return; }
+    setBusy(true); setErrors({});
     try {
-      await pb.collection('users').update(me.id, { name: f.name.trim(), whatsapp: wa, semester: Number(f.semester), leaderboardAnonymous: f.leaderboardAnonymous, studyingSubjects: [...picked] });
+      const body = { name: f.name.trim(), leaderboardAnonymous: f.leaderboardAnonymous, studyingSubjects: [...picked] };
+      if (builtin.whatsapp !== 'hidden') body.whatsapp = wa;
+      if (builtin.semester !== 'hidden') body.semester = f.semester ? Number(f.semester) : 0;
+      await pb.collection('users').update(me.id, body);
+      const editable = extraDefs.filter((x) => x.editable);
+      if (editable.length) await api('me/extra', { method: 'POST', body: { extra: Object.fromEntries(editable.map((x) => [x.key, extra[x.key]])) } });
       await refresh();
       setMsg('Profil tersimpan.');
-    } catch (err) { setError(errorText(err)); } finally { setBusy(false); }
+    } catch (err) { setError(err.fields ? err.message : errorText(err)); setErrors(err.fields || {}); } finally { setBusy(false); }
   };
 
   return (
@@ -75,12 +85,16 @@ function ProfileForm() {
         <Field label="Login ID" hint="Login ID tidak bisa diganti."><input className="input bg-page" value={me.loginId} disabled /></Field>
         <Field label="Email" hint="Hanya terlihat olehmu dan admin."><input className="input bg-page" value={me.email} disabled /></Field>
         <Field label="Nama lengkap" htmlFor="pf-name"><input id="pf-name" className="input" value={f.name} maxLength={100} onChange={(e) => setF({ ...f, name: e.target.value })} /></Field>
-        <Field label="Nomor WhatsApp" htmlFor="pf-wa"><input id="pf-wa" type="tel" className="input" value={f.whatsapp} onChange={(e) => setF({ ...f, whatsapp: e.target.value })} /></Field>
-        <Field label="Semester" htmlFor="pf-sem">
-          <select id="pf-sem" className="input" value={f.semester} onChange={(e) => setF({ ...f, semester: e.target.value })}>
-            {Array.from({ length: 14 }, (_, i) => <option key={i + 1} value={i + 1}>Semester {i + 1}</option>)}
-          </select>
-        </Field>
+        {builtin.whatsapp !== 'hidden' && <Field label={`Nomor WhatsApp${builtin.whatsapp === 'optional' ? ' (opsional)' : ''}`} htmlFor="pf-wa"><input id="pf-wa" type="tel" className="input" value={f.whatsapp} onChange={(e) => setF({ ...f, whatsapp: e.target.value })} /></Field>}
+        {builtin.semester !== 'hidden' && (
+          <Field label="Semester" htmlFor="pf-sem">
+            <select id="pf-sem" className="input" value={f.semester} onChange={(e) => setF({ ...f, semester: e.target.value })}>
+              {builtin.semester === 'optional' && <option value="">Tidak diisi</option>}
+              {Array.from({ length: 14 }, (_, i) => <option key={i + 1} value={i + 1}>Semester {i + 1}</option>)}
+            </select>
+          </Field>
+        )}
+        <ExtraFields defs={extraDefs} values={extra} onChange={setExtra} errors={errors} idPrefix="pf" disabledKeys={extraDefs.filter((x) => !x.editable).map((x) => x.key)} />
         <label className="flex items-start gap-3 self-end rounded-xl border border-line p-3">
           <input type="checkbox" className="mt-1 h-4 w-4 accent-[rgb(var(--brand))]" checked={f.leaderboardAnonymous} onChange={(e) => setF({ ...f, leaderboardAnonymous: e.target.checked })} />
           <span><span className="block font-semibold">Tampil anonim di leaderboard</span><span className="text-[13px] text-ink-muted">Biasanya tampil nama depan dan inisial belakang.</span></span>

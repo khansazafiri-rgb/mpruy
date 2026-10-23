@@ -1,0 +1,23 @@
+{
+  "title": "Kenalan dengan Kori",
+  "format": "16:9",
+  "voice": { "engine": "piper", "lengthScale": 1.0 },
+  "leadIn": 0.25,
+  "scenes": [
+    { "mascot": "kori", "mood": "wave", "bg": "forest",
+      "say": "Halo! Aku Kori, maskot MEDCOEL. Aku menemani kamu belajar kedokteran.",
+      "visual": { "kind": "title", "eyebrow": "Kenalan dulu", "text": "Halo, aku **Kori**", "sub": "Teman belajarmu di MEDCOEL" } },
+    { "mascot": "kori", "mood": "talk", "bg": "paper",
+      "say": "Di MEDCOEL kamu bisa latihan soal per mata kuliah, baca pembahasan, dan simulasi jadi dokter.",
+      "visual": { "kind": "bullets", "title": "Di MEDCOEL kamu bisa", "items": ["Latihan soal per **mata kuliah**", "Baca **pembahasan** tiap pilihan", "Simulasi **jadi dokter**"] } },
+    { "mascot": "kori", "mood": "think", "bg": "sky",
+      "say": "Coba satu soal. Otot yang memulai abduksi lengan atas adalah apa? Jawabannya supraspinatus.",
+      "visual": { "kind": "quiz", "question": "Otot yang memulai abduksi lengan atas adalah…", "options": ["M. deltoideus", "M. supraspinatus", "M. infraspinatus", "M. teres minor"], "answer": 1, "revealAt": 3.6, "explain": "Supraspinatus memulai 0–15° pertama, lalu deltoid melanjutkan." } },
+    { "mascot": "kori", "mood": "happy", "bg": "forest",
+      "say": "Semua fitur gratis, dan soal baru terus bertambah dari kiriman teman-teman.",
+      "visual": { "kind": "stat", "value": 100, "suffix": "%", "label": "gratis untuk mahasiswa" } },
+    { "mascot": "kori", "mood": "cheer", "bg": "forest",
+      "say": "Punya PDF soal? Kirim lewat Chat Admin. Sampai jumpa!",
+      "visual": { "kind": "cta", "text": "Punya PDF soal?", "sub": "Kirim lewat Chat Admin", "button": "Daftar gratis" } }
+  ]
+}

@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Panduan 2 · Video maskot MEDCOEL dengan suara dari server sendiri</title></head><body>
+
+<div class="cover">
+  <div>
+    <div class="kicker">Panduan 2 dari 2 · MEDCOEL</div>
+    <h1>Video maskot dengan <em>suara dari server sendiri</em></h1>
+    <p class="lead">Dari naskah sampai MP4: suara Indonesia yang dibuat di komputer atau VPS-mu sendiri tanpa biaya per token, animasi Kori, Kila, dan Nilo yang tetap setia pada desain aslinya, dan satu contoh nyata: iklan 75 detik "Kirim PDF soalmu".</p>
+  </div>
+  <div class="mascots">{{KORI}}{{KILA}}{{NILO}}</div>
+  <div class="meta"><span>Untuk: admin dan tim konten MEDCOEL<br>Kit: <b>brand/video</b> di repositori mpruy</span><span>Dibuat: Oktober 2026<br>Mesin suara: Piper (lokal)</span></div>
+</div>
+
+<section class="toc">
+  <h1>Isi panduan</h1>
+  <ol>
+    <li>Gambaran besar dan alur kerja</li>
+    <li>Pilihan mesin suara, apa adanya (termasuk soal lisensi)</li>
+    <li>Menyiapkan server atau laptop</li>
+    <li>Mengetes suara dan melatih pelafalan "MEDCOEL"</li>
+    <li>Menulis naskah yang enak didengar</li>
+    <li>Membuat video pertama (Kenalan dengan Kori)</li>
+    <li>Maskot: gerak, ekspresi, dan sinkron mulut</li>
+    <li>Musik, efek suara, dan campuran akhir</li>
+    <li>Ukuran dan aturan tiap platform</li>
+    <li>Contoh nyata: iklan 75 detik, 16 shot</li>
+    <li>Suara yang lebih bagus: rekaman sendiri atau mesin lain</li>
+    <li>Pemecahan masalah</li>
+    <li>Etika, hak cipta, dan batas klaim</li>
+    <li>Lampiran: perintah ringkas, struktur folder, prompt untuk GPT</li>
+  </ol>
+  <div class="note"><p>Semua perintah di panduan ini dijalankan dari folder <code>brand/video</code>. Semua yang tertulis "sudah dites" benar-benar dijalankan saat panduan ini dibuat; yang belum dites ditandai jelas.</p></div>
+</section>
+
+<section class="part">
+  <h2>1. Gambaran besar dan alur kerja</h2>
+  <p>Kamu menulis naskah per adegan. Kit mengubahnya menjadi suara, menggambar tiap frame di Chromium (browser tanpa layar), lalu ffmpeg menyatukan gambar dan suara menjadi MP4. Semua berjalan di mesinmu sendiri. Tidak ada API berbayar, jadi tidak ada token yang terpakai.</p>
+  <div class="flow">
+    <div class="box"><b>1. Naskah</b>scenes.json: kalimat, ekspresi maskot, jenis visual</div><div class="arrow">›</div>
+    <div class="box"><b>2. Suara</b>Piper membaca naskah, kamus pelafalan memperbaiki nama</div><div class="arrow">›</div>
+    <div class="box"><b>3. Gambar</b>Chromium menggambar tiap frame, mulut Kori mengikuti suara</div><div class="arrow">›</div>
+    <div class="box hl"><b>4. MP4</b>ffmpeg + musik + .srt + thumbnail</div>
+  </div>
+  <h3>Yang kamu dapat dari satu perintah</h3>
+  <ul>
+    <li><b>.mp4</b> (H.264 + AAC) siap unggah. Format 16:9, 9:16, atau 1:1.</li>
+    <li><b>.srt</b> takarir dengan teks persis seperti naskah, bisa dipakai di editor atau diunggah ke platform.</li>
+    <li><b>.jpg</b> thumbnail dari momen terbaik adegan pertama.</li>
+    <li>Untuk iklan: <b>stem terpisah</b> (suara, efek, musik, campuran) supaya bisa diganti satu per satu di editor.</li>
+  </ul>
+  <h3>Mengapa tidak memakai generator video AI?</h3>
+  <p>Generator video cenderung mengubah wajah dan bentuk maskot dari frame ke frame, dan teks di layar sering rusak. Kit ini menggambar ulang SVG Kori yang asli di setiap frame, jadi karakternya konsisten, teksnya tajam karena berupa teks HTML biasa, dan hasilnya bisa diulang persis sama. Kekurangannya: geraknya "kartun potongan" (flat 2D), bukan animasi sinematik. Untuk iklan edukasi ini justru itu gayanya.</p>
+</section>
+
+<section class="part">
+  <h2>2. Pilihan mesin suara, apa adanya</h2>
+  <p>Kamu bertanya soal menjalankan suara "langsung di server sendiri tanpa token". Ini jawaban jujurnya: bisa, kualitasnya <b>cukup untuk draf dan video edukasi sederhana</b>, tetapi belum setara suara manusia atau layanan berbayar kelas atas. Tabel ini merangkum pilihan yang masuk akal untuk bahasa Indonesia.</p>
+  <table>
+    <tr><th>Pilihan</th><th>Biaya</th><th>Kualitas (Indonesia)</th><th>Lisensi dan catatan</th></tr>
+    <tr><td><b>Piper</b> + suara id_ID news_tts (dipakai kit, <b>sudah dites</b>)</td><td>Gratis, jalan di CPU</td><td>Jelas dan terdengar seperti pembaca berita; datar, kurang ekspresi</td><td>Mesin Piper berlisensi GPL-3.0. Lisensi data suara id_ID tertulis "lihat URL" dan <b>tidak jelas</b> untuk pemakaian komersial. Pakai sebagai draf/penanda waktu, jangan jadi suara final sebelum kamu cek.</td></tr>
+    <tr><td>MMS-TTS bahasa Indonesia (Meta)</td><td>Gratis</td><td>Baik untuk bahasa langka, di sini lumayan</td><td>Lisensi CC-BY-NC: <b>non-komersial</b>. Belum dites di kit ini.</td></tr>
+    <tr><td>Model open-source lain (mis. XTTS)</td><td>Gratis, butuh GPU agar nyaman</td><td>Bisa lebih natural, bisa meniru suara</td><td>Cek lisensi modelnya satu per satu; beberapa non-komersial. Meniru suara orang butuh persetujuan tertulis orangnya. Belum dites.</td></tr>
+    <tr><td>edge-tts (pembungkus tidak resmi layanan baca-teks Microsoft Edge)</td><td>Tanpa biaya, tapi <b>bukan layanan resmi</b></td><td>Natural</td><td>Bisa berhenti sewaktu-waktu dan melanggar ketentuan layanan bila dipakai komersial. Tidak disarankan untuk iklan.</td></tr>
+    <tr><td>Azure Speech atau Google Cloud TTS (resmi)</td><td>Ada kuota gratis bulanan, lalu berbayar per karakter. Cek halaman harga terbaru.</td><td>Natural, banyak suara Indonesia</td><td>Aman untuk komersial sesuai syarat penyedia. Ini memang memakai API (ada akun dan kunci), jadi bukan "tanpa token", tetapi biayanya kecil untuk video pendek.</td></tr>
+    <tr><td><b>Rekam suara sendiri</b> atau pengisi suara</td><td>Gratis / sesuai tarif</td><td>Terbaik</td><td>Paling aman soal hak. Kit menerima berkas rekaman per adegan (bagian 11).</td></tr>
+  </table>
+  <div class="warn"><p><b>Rekomendasi:</b> pakai Piper untuk menyusun naskah dan waktu (draf cepat, gratis), lalu untuk video yang tayang ganti dengan suara rekaman sendiri atau layanan resmi. Susunan ini yang dipakai pada iklan 75 detik di bagian 10.</p></div>
+
+  <h3>Hasil uji Piper (sudah dites di server dengan 4 core CPU, tanpa GPU)</h3>
+  <table>
+    <tr><th>Yang diuji</th><th>Hasil</th></tr>
+    <tr><td>Kecepatan membuat suara</td><td>Sekitar 15 detik suara selesai dalam ±3 detik. Jauh lebih cepat dari waktu nyata.</td></tr>
+    <tr><td>Kecepatan bicara bawaan</td><td>Sekitar 16 huruf per detik. Kalimat 80 huruf butuh ±5 detik.</td></tr>
+    <tr><td>Keterbacaan (diperiksa balik dengan Whisper-small)</td><td>Baik. Angka terbaca benar. "150/90" terbaca "garis miring", jadi kit mengubah "/" menjadi "per".</td></tr>
+    <tr><td>Nama MEDCOEL</td><td>Dibaca "Meco" bila ditulis apa adanya. Ejaan "Med koel" atau "Med-koel" terdengar paling dekat ("MedCool"). "Medikoel" terbaca "Medico".</td></tr>
+  </table>
+  <p class="small">Catatan: hasil uji memakai satu suara (news_tts, medium) dan satu mesin pengenal; telingamu tetap penentu akhir. Bagian 4 menjelaskan cara menyetel pelafalan sendiri.</p>
+</section>
+
+<section class="part">
+  <h2>3. Menyiapkan server atau laptop</h2>
+  <h3>Kebutuhan minimal</h3>
+  <ul>
+    <li>Ubuntu 22.04/24.04 (atau Debian). Laptop Mac/Windows juga bisa dengan WSL; panduan ini memakai Linux.</li>
+    <li>CPU 4 core dan RAM 8 GB cukup. Render video memakai Chromium, jadi RAM 8 GB lebih nyaman daripada 4 GB. GPU tidak diperlukan.</li>
+    <li>Ruang disk sekitar 3 GB (Chromium, model suara 63 MB, frame sementara).</li>
+    <li>Node.js 20 atau lebih baru, ffmpeg, Python 3 dengan venv.</li>
+  </ul>
+  <h3>Langkah</h3>
+  <ol class="steps">
+    <li>Ambil kodenya dan masuk ke folder kit:<pre><code>git clone https://github.com/khansazafiri-rgb/mpruy.git
+cd mpruy/brand/video</code></pre></li>
+    <li>Jalankan pemasang (butuh sudo untuk paket sistem, internet sekali untuk mengunduh):<pre><code>bash scripts/setup.sh</code></pre>Ini memasang ffmpeg, membuat lingkungan Python berisi Piper, mengunduh suara Indonesia (±63 MB) dari Hugging Face, lalu memasang Playwright dan Chromium.</li>
+    <li>Cek semua prasyarat:<pre><code>npm run check</code></pre>Semua baris harus berawalan "ok". Baris "GAGAL" menampilkan perintah perbaikannya.</li>
+    <li>Dengar satu kalimat:<pre><code>npm run say -- "Halo, aku Kori. Selamat datang di MEDCOEL."</code></pre>Hasilnya <code>build/say.wav</code>. Layar menampilkan teks yang benar-benar dibacakan setelah kamus pelafalan diterapkan.</li>
+  </ol>
+  <div class="tip"><p>Server tanpa layar (VPS) aman: Chromium berjalan <i>headless</i>. Jalankan di VPS yang sama dengan MEDCOEL boleh, tetapi render memakai CPU penuh beberapa menit. Sebaiknya jalankan di luar jam ramai atau di mesin terpisah.</p></div>
+</section>
+
+<section class="part">
+  <h2>4. Mengetes suara dan melatih pelafalan</h2>
+  <p>Mesin suara membaca teks seperti ejaan Indonesia. Nama merek, singkatan, dan istilah medis sering terbaca salah. Kit punya <b>kamus pelafalan</b> di <code>lexicon.json</code>: kiri tulisan di naskah, kanan ejaan yang dibacakan. Teks di layar dan takarir <b>tidak berubah</b>; hanya yang diucapkan.</p>
+  <div class="filelabel">brand/video/lexicon.json (cuplikan)</div>
+  <pre><code>{ "words": {
+    "MEDCOEL": "Med koel",
+    "FK": "ef ka",
+    "SpO2": "es pe o dua",
+    "mmHg": "milimeter air raksa",
+    "PDF": "pe de ef" },
+  "slash": " per ",
+  "percent": " persen" }</code></pre>
+  <h3>Cara menyetel kata baru</h3>
+  <ol class="steps">
+    <li>Buat beberapa ejaan untuk didengar:<pre><code>npm run lab -- "MEDCOEL" "Med koel" "Med-koel" "Medikoel" "Med ko el"</code></pre>Berkas suara muncul di <code>build/lab</code>, satu per varian.</li>
+    <li>Dengarkan, pilih yang paling pas di telinga orang Indonesia (minta satu-dua temanmu mendengar juga).</li>
+    <li>Tulis pilihanmu di <code>lexicon.json</code>, simpan, dan jalankan lagi <code>npm run say</code>.</li>
+  </ol>
+  <div class="note"><p>Pencocokan kata memperhatikan huruf besar-kecil dan memproses kata yang lebih panjang lebih dulu. "FK" tidak ikut berubah di dalam kata lain seperti "FKUI".</p></div>
+</section>
+
+<section class="part">
+  <h2>5. Menulis naskah yang enak didengar</h2>
+  <p>Naskah video berbeda dengan teks bacaan. Aturan yang terbukti membantu di iklan 75 detik:</p>
+  <ul>
+    <li><b>Satu ide per kalimat, maksimal sekitar 18 kata.</b> Kalimat panjang dengan banyak anak kalimat terdengar datar.</li>
+    <li><b>Hitung durasi dari huruf:</b> kecepatan bicara sekitar 16-19 huruf per detik. Shot 4 detik hanya muat sekitar 55-65 huruf. Shot 5 detik muat sekitar 75-85 huruf.</li>
+    <li><b>Eja angka dan simbol yang mau diucapkan:</b> tulis "hampir empat puluh ribu" di naskah suara, sementara layar boleh menampilkan "38.400".</li>
+    <li><b>Hindari singkatan yang tidak ada di kamus</b>, atau tambahkan ke kamus.</li>
+    <li><b>Beri jeda di akhir shot</b> (kit menyisakan sekitar 0,15 detik di awal dan akhir).</li>
+  </ul>
+  <h3>Menyesuaikan suara ke durasi shot (mode "pas")</h3>
+  <p>Untuk iklan dengan durasi per shot yang sudah ditetapkan, <code>ad/voice.mjs</code> membuat suara tiap shot lalu memastikannya muat:</p>
+  <ol class="steps">
+    <li>Buat suara dengan kecepatan normal. Jika lebih panjang dari jendela shot,</li>
+    <li>percepat sedikit lewat pengaturan Piper (<code>lengthScale</code> turun sampai 0,8, makin kecil makin cepat),</li>
+    <li>bila masih kepanjangan, percepat dengan ffmpeg (<code>atempo</code>, maksimal 1,3x).</li>
+    <li>Bila masih melebihi, skrip menandai baris itu <b>MELEBIHI</b>. Solusinya mempersingkat kalimat atau memperpanjang shot.</li>
+  </ol>
+  <div class="warn"><p>Percepatan di atas sekitar 1,2x terdengar terburu-buru. Karena itu di iklan, baris shot 4 yang aslinya 93 huruf untuk 4 detik <b>dipersingkat</b> untuk suara draf, dan shot 2 memakai percepatan 1,2x. Untuk suara final, pertimbangkan memperpanjang shot atau memangkas kalimat.</p></div>
+</section>
+
+<section class="part">
+  <h2>6. Membuat video pertama</h2>
+  <p>Contoh naskah sudah ada di <code>scenes/kenalan-kori.json</code> (5 adegan: sapaan, fitur, satu soal latihan, "gratis", ajakan). Jalankan dulu versi draf (cepat, setengah resolusi):</p>
+  <pre><code>npm run video -- scenes/kenalan-kori.json --draft</code></pre>
+  <p>Kalau naskah dan suaranya sudah pas, buat versi penuh dan versi vertikal:</p>
+  <pre><code>npm run video -- scenes/kenalan-kori.json
+npm run video -- scenes/kenalan-kori.json --format 9:16</code></pre>
+  <h3>Pilihan perintah</h3>
+  <table>
+    <tr><th>Pilihan</th><th>Fungsi</th></tr>
+    <tr><td><code>--draft</code></td><td>Setengah resolusi, 15 fps. Untuk cek naskah dan timing.</td></tr>
+    <tr><td><code>--format 16:9 | 9:16 | 1:1</code></td><td>Landscape 1920×1080, vertikal 1080×1920, kotak 1080×1080.</td></tr>
+    <tr><td><code>--fps 30</code></td><td>Kecepatan frame (bawaan 30).</td></tr>
+    <tr><td><code>--music lagu.mp3 --music-volume 0.2</code></td><td>Musik latar yang otomatis mengecil saat ada suara.</td></tr>
+    <tr><td><code>--audio-only</code></td><td>Hanya suara dan .srt, tanpa gambar.</td></tr>
+    <tr><td><code>--out folder</code></td><td>Folder hasil (bawaan <code>out/</code>).</td></tr>
+  </table>
+  <h3>Isi satu adegan di scenes.json</h3>
+  <div class="filelabel">brand/video/scenes/kenalan-kori.json (cuplikan)</div>
+  <pre><code>{ "mascot": "kori",          // kori | kila | nilo
+  "mood": "think",           // idle | wave | think | happy | talk | cheer
+  "bg": "sky",               // forest | paper | sky | sun | rose | lilac
+  "say": "Coba satu soal. ...",         // yang diucapkan
+  "caption": "teks takarir (opsional)", // bila beda dari say
+  "visual": { "kind": "quiz", "question": "...", "options": ["..."],
+              "answer": 1, "revealAt": 3.6, "explain": "..." } }</code></pre>
+  <table>
+    <tr><th>kind</th><th>Isi</th><th>Kolom penting</th></tr>
+    <tr><td>title</td><td>Judul besar</td><td>eyebrow, text, sub</td></tr>
+    <tr><td>bullets</td><td>Daftar poin yang muncul satu per satu</td><td>title, items</td></tr>
+    <tr><td>quiz</td><td>Soal pilihan ganda dengan jawaban dan pembahasan</td><td>question, options, answer, revealAt, explain</td></tr>
+    <tr><td>stat</td><td>Angka besar menghitung naik</td><td>value, from, prefix, suffix, label</td></tr>
+    <tr><td>image</td><td>Gambar atau tangkapan layar</td><td>src (relatif terhadap berkas naskah)</td></tr>
+    <tr><td>cta</td><td>Ajakan penutup dengan tombol</td><td>text, sub, button</td></tr>
+  </table>
+  <p>Tulis <code>**kata**</code> di teks untuk menyorot dengan stabilo emas.</p>
+</section>
+
+<section class="part">
+  <h2>7. Maskot: gerak, ekspresi, dan sinkron mulut</h2>
+  <p>Kori, Kila, dan Nilo dipakai <b>apa adanya</b> dari berkas SVG di <code>apps/web/src/mascots</code>, sumber yang sama dengan situs web. Kit tidak menggambar ulang atau mengubah desainnya.</p>
+  <h3>Lapisan yang bisa digerakkan</h3>
+  <table>
+    <tr><th>Kelas</th><th>Bagian</th></tr>
+    <tr><td><code>.mc-float</code></td><td>Seluruh badan (melayang, miring, melompat)</td></tr>
+    <tr><td><code>.mc-arm-right</code></td><td>Lengan kanan (melambai)</td></tr>
+    <tr><td><code>.mc-eyes-normal</code> / <code>.mc-eyes-happy</code></td><td>Mata biasa (berkedip) / mata senyum</td></tr>
+    <tr><td><code>.mc-mouth-normal</code> / <code>-happy</code> / <code>-think</code></td><td>Tiga bentuk mulut</td></tr>
+    <tr><td><code>.mc-spark</code></td><td>Kilau kecil di daun</td></tr>
+  </table>
+  <h3>Sinkron mulut</h3>
+  <p>Kit membaca kenyaringan suara tiap 1/30 detik, menormalkannya, menghaluskannya, lalu membuka mulut Kori sebanding dengan kenyaringan itu (mulut tertutup saat hening). Ini bukan sinkron fonem ("a, i, u"), tetapi untuk gaya kartun potongan hasilnya cukup meyakinkan dan <b>tetap sama setiap kali dirender</b>.</p>
+  <h3>Aturan agar karakter tetap setia</h3>
+  <ul>
+    <li>Hanya geser, putar kecil, dan skala seragam. Peregangan (squash/stretch) maksimal sekitar 5-8%.</li>
+    <li>Jangan menambah tangan atau kaki baru, jangan menggambar ulang wajah, jangan membuatnya berbentuk manusia.</li>
+    <li>Properti (kaca pembesar, tanda seru, kilau) digambar terpisah di sekitar maskot, bukan menempel pada SVG-nya.</li>
+    <li>Kila dan Nilo muncul sebentar untuk adegan komunitas; Kori tetap tokoh utama.</li>
+  </ul>
+</section>
+
+<section class="part">
+  <h2>8. Musik, efek suara, dan campuran akhir</h2>
+  <ul>
+    <li><b>Efek suara</b> iklan disintesis sendiri oleh <code>ad/audio.mjs</code> (pop, whoosh, ketukan, kertas, stempel, ding, kilau). Tidak ada berkas pihak lain, jadi aman soal hak cipta.</li>
+    <li><b>Musik latar</b> juga buatan sendiri: bantalan akor, petikan sederhana, dan detak ringan di 100 BPM. Cukup sebagai latar rendah. Kalau mau musik yang lebih kaya, pakai musik berlisensi (misalnya dari perpustakaan audio yang mengizinkan pemakaian iklan) dan masukkan lewat <code>--music</code>.</li>
+    <li><b>Campuran:</b> suara utama di atas, musik direndahkan dan otomatis turun lagi saat ada suara (<i>sidechain ducking</i>), efek ringan, lalu penyeragam kenyaringan sekitar -15 LUFS dengan batas puncak -1,5 dB.</li>
+  </ul>
+  <div class="tip"><p>Stem terpisah (<code>out/stems/voice.wav, sfx.wav, music.wav, mix.wav</code>) memudahkan editor memperbaiki satu lapisan tanpa merender ulang semuanya.</p></div>
+</section>
+
+<section class="part">
+  <h2>9. Ukuran dan aturan tiap platform</h2>
+  <table>
+    <tr><th>Platform</th><th>Format</th><th>Catatan</th></tr>
+    <tr><td>TikTok, Reels, Shorts</td><td>9:16, 1080×1920, 30 fps, MP4 H.264 + AAC</td><td>Simpan teks dan wajah penting di area aman: kira-kira jarak 200 px dari atas dan sekitar 330 px dari bawah, karena tombol dan keterangan platform menutupi tepi layar.</td></tr>
+    <tr><td>YouTube</td><td>16:9, 1920×1080</td><td>Unggah juga berkas .srt.</td></tr>
+    <tr><td>Feed Instagram</td><td>1:1, 1080×1080</td><td>Takarir wajib karena banyak yang menonton tanpa suara.</td></tr>
+  </table>
+  <p>Iklan 75 detik memakai area aman: judul mulai di sekitar 205 px dari atas, isi utama di antara 430 dan 1450 px, takarir berakhir di sekitar 1590 px (sisakan 330 px di bawah).</p>
+  <div class="note"><p>Aturan tiap platform (durasi maksimum, ukuran file, kebijakan iklan) berubah dari waktu ke waktu. Cek halaman bantuan platform sebelum menayangkan.</p></div>
+</section>
+
+<section class="part">
+  <h2>10. Contoh nyata: iklan 75 detik "Kirim PDF soalmu"</h2>
+  <p>Iklan vertikal 1080×1920, 30 fps, tepat 75 detik, 16 shot berdurasi 3-5 detik. Gaya: potongan datar 2D, mint/krem/biru tua dengan aksen emas. Kori dipakai apa adanya. Teks di layar dan takarir berupa teks HTML (bukan hasil generator gambar). Cuplikan layar adalah <b>rekaman aplikasi MEDCOEL yang sungguhan</b>, dimasukkan ke kartu UI bergaya.</p>
+  <h3>Alur pembuatan</h3>
+  <table>
+    <tr><th>Langkah</th><th>Perintah</th><th>Hasil</th></tr>
+    <tr><td>1. Rekam layar</td><td><code>npm run ad:record</code></td><td>Klip layar sungguhan (Chat Admin, daftar mata kuliah, latihan, halaman admin) di <code>ad/clips</code></td></tr>
+    <tr><td>2. Pecah frame</td><td><code>npm run ad:frames</code></td><td>JPG 30 fps per klip</td></tr>
+    <tr><td>3. Suara draf</td><td><code>npm run ad:voice</code></td><td>voice.wav dipas ke tiap shot, timeline, .srt</td></tr>
+    <tr><td>4. Efek dan musik</td><td><code>npm run ad:audio</code></td><td>sfx.wav, music.wav</td></tr>
+    <tr><td>5. Gambar</td><td><code>npm run ad:render</code></td><td>Video tanpa suara 1080×1920</td></tr>
+    <tr><td>6. Gabung</td><td><code>npm run ad:mux</code></td><td>MP4 akhir + stem di <code>ad/out</code></td></tr>
+  </table>
+  <h3>Rekaman layar yang sungguhan</h3>
+  <ul>
+    <li>Direkam dari web yang berjalan lokal dengan data contoh (<code>scripts/seed-demo.mjs</code>), bukan dari server produksi, supaya tidak ada data pengguna nyata di video.</li>
+    <li>Perekam memakai Chromium dengan ukuran ponsel (390×844, kepadatan 2×), menambahkan riak sentuhan emas di titik ketukan, dan menyembunyikan angka uji coba seperti "0/6 soal" agar tidak bertabrakan dengan klaim iklan.</li>
+    <li>Setiap klip membawa penanda waktu (misalnya saat PDF dipilih), sehingga adegan memotong tepat pada momen yang dibutuhkan.</li>
+  </ul>
+  <h3>Daftar shot</h3>
+  <table>
+    <tr><th>Shot</th><th>Detik</th><th>Judul layar</th><th>Isi</th></tr>
+    <tr><td>1</td><td>0-3</td><td>TUNGGU, INI BUAT KAMU</td><td>Grup angkatan penuh PDF; Kori melambai</td></tr>
+    <tr><td>2</td><td>3-7</td><td>KENALIN MEDCOEL · GRATIS</td><td>Logo, stiker GRATIS, rekaman beranda web</td></tr>
+    <tr><td>3</td><td>7-12</td><td>38.400 SOAL</td><td>Angka menghitung naik, lalu daftar mata kuliah dan bab</td></tr>
+    <tr><td>4</td><td>12-16</td><td>JELAJAHI MEDCOEL</td><td>Montase tiga menu, zoom ke Chat Admin</td></tr>
+    <tr><td>5</td><td>16-21</td><td>SOAL LAMA, POTENSI BARU</td><td>Kori menemukan arsip PDF, potong ke web</td></tr>
+    <tr><td>6-8</td><td>21-36</td><td>BUKA CHAT ADMIN / ISI KONTEKSNYA / ATUR CAKUPAN</td><td>Pilih berkas, pilih mata kuliah dan kampus, pilih cakupan</td></tr>
+    <tr><td>9</td><td>36-41</td><td>DIPERIKSA ADMIN</td><td>Konfirmasi dan pemeriksaan manual oleh admin</td></tr>
+    <tr><td>10</td><td>41-46</td><td>DIOLAH JADI LATIHAN</td><td>Lembar PDF, stempel DISETUJUI ADMIN, jadi kartu soal</td></tr>
+    <tr><td>11-12</td><td>46-56</td><td>BISA DIKERJAKAN / ADA PEMBAHASAN</td><td>Latihan di web, panel pembahasan</td></tr>
+    <tr><td>13-15</td><td>56-71</td><td>SATU PDF... / KOMUNITAS... / BANK SOAL KITA TUMBUH</td><td>Manfaat bagi banyak teman, Kila dan Nilo muncul, montase tanpa angka palsu</td></tr>
+    <tr><td>16</td><td>71-75</td><td>KIRIM PDF SOALMU</td><td>Kartu penutup, ditahan 4 detik</td></tr>
+  </table>
+  <h3>Hal-hal yang sengaja dijaga</h3>
+  <ul>
+    <li>Tidak ada klaim bahwa PDF diproses seketika. Shot 9 menampilkan pemeriksaan manual oleh admin, dan shot 10 baru menampilkan "diolah" setelah label persetujuan admin.</li>
+    <li>Tidak ada janji hasil klinis atau nilai ujian.</li>
+    <li>Tidak ada angka palsu di shot 15 (hanya ilustrasi bank soal yang bertambah).</li>
+    <li>"38.400 soal" ditampilkan sesuai brief. <b>Angka ini belum bisa diverifikasi dari lingkungan pengembangan</b> (data dev hanya berisi 17 soal contoh; 38.400 sama dengan 384 bab × 100 soal, yang bisa jadi target, bukan jumlah tayang). Sebelum iklan tayang, cek angka asli di <code>/api/medcoel/stats</code> produksi dan ubah di <code>ad/stage-ad.html</code> (hitungan) dan <code>ad/ad.json</code> (judul dan naskah).</li>
+  </ul>
+  <h3>Mengganti suara draf dengan suara final</h3>
+  <pre><code>mkdir rekaman             # isi s01.wav ... s16.wav (satu berkas per shot)
+node ad/voice.mjs --use rekaman/
+npm run ad:render         # hanya perlu bila timeline berubah
+npm run ad:mux</code></pre>
+  <p>Rekaman tiap shot ditempatkan di awal shot (+0,15 detik). Jika rekamanmu lebih panjang dari shot, perpendek kalimatnya atau perpanjang shot di <code>ad/ad.json</code>.</p>
+</section>
+
+<section class="part">
+  <h2>11. Suara yang lebih bagus: rekaman sendiri atau mesin lain</h2>
+  <h3>A. Rekam suara sendiri (paling aman dan paling hidup)</h3>
+  <ul>
+    <li>Rekam di ruangan sempit berkarpet atau lemari berisi baju; jarak mulut ke mikrofon sekitar sejengkal.</li>
+    <li>Satu kalimat naskah = satu berkas WAV atau MP3. Beri nama <code>s01.wav</code>, <code>s02.wav</code>, dan seterusnya.</li>
+    <li>Di <code>scenes.json</code> (video biasa) tulis <code>"audio": "rekaman/s1.wav"</code> pada adegan itu; untuk iklan pakai <code>--use</code>.</li>
+  </ul>
+  <h3>B. Mesin lain lewat perintah</h3>
+  <p>Kit bisa memanggil perintah apa pun yang mengubah teks menjadi berkas audio. Atur dengan variabel lingkungan <code>TTS_COMMAND</code> dan set <code>"voice": {"engine": "command"}</code> di naskah. <code>{in}</code> diganti berkas teks, <code>{out}</code> berkas hasil:</p>
+  <pre><code>export TTS_COMMAND='mytts --text-file {in} --out {out}'
+npm run video -- scenes/kenalan-kori.json --draft</code></pre>
+  <p>Contohnya skrip kecil milikmu yang memanggil API resmi Azure atau Google dengan kunci yang disimpan di server (jangan di repositori). Itu memakai kuota layanan, jadi bukan lagi "tanpa token", tetapi kualitasnya lebih natural.</p>
+  <h3>C. Meningkatkan hasil Piper</h3>
+  <ul>
+    <li>Pecah kalimat panjang menjadi dua dan beri tanda baca yang jelas (koma, titik).</li>
+    <li>Tulis angka sebagai kata di naskah suara.</li>
+    <li>Tambahkan kata sulit ke kamus pelafalan.</li>
+    <li>Perlambat sedikit (<code>"lengthScale": 1.05</code>) untuk narasi yang lebih tenang.</li>
+  </ul>
+</section>
+
+<section class="part">
+  <h2>12. Pemecahan masalah</h2>
+  <table>
+    <tr><th>Gejala</th><th>Penyebab dan perbaikan</th></tr>
+    <tr><td><code>npm run check</code> menandai Piper atau suara tidak ada</td><td>Jalankan <code>bash scripts/setup.sh</code> lagi. Cek koneksi ke Hugging Face untuk unduhan model.</td></tr>
+    <tr><td>Chromium gagal jalan di server</td><td><code>npx playwright install --with-deps chromium</code> (butuh sudo). Pastikan RAM cukup.</td></tr>
+    <tr><td>Nama MEDCOEL terbaca aneh</td><td>Ubah ejaan di <code>lexicon.json</code> memakai <code>npm run lab</code>.</td></tr>
+    <tr><td>Suara terdengar terburu-buru</td><td>Naskah terlalu padat untuk durasi shot. Persingkat kalimat atau perpanjang shot.</td></tr>
+    <tr><td>Mulut Kori tidak bergerak</td><td>Adegan tanpa suara (<code>say</code> kosong), atau volume suara terlalu kecil sehingga di bawah ambang gerbang kebisingan.</td></tr>
+    <tr><td>Render lambat</td><td>Normal: sekitar 5 frame per detik untuk 1080×1920 di CPU 4 core (iklan 75 detik ±8 menit). Pakai <code>--draft</code> saat menyunting naskah.</td></tr>
+    <tr><td>Video tidak punya suara di ponsel tertentu</td><td>Pastikan trek audio AAC stereo/mono 44,1 kHz; <code>ad:mux</code> sudah mengaturnya.</td></tr>
+    <tr><td>Rekaman layar menampilkan data aneh</td><td>Jalankan ulang <code>scripts/seed-demo.mjs</code> di database dev (bukan produksi) lalu rekam ulang.</td></tr>
+  </table>
+</section>
+
+<section class="part">
+  <h2>13. Etika, hak cipta, dan batas klaim</h2>
+  <ul>
+    <li><b>Suara:</b> jangan meniru suara orang tanpa persetujuan tertulis. Cek lisensi mesin dan data suara sebelum dipakai komersial (bagian 2).</li>
+    <li><b>Musik:</b> pakai musik buatan sendiri atau berlisensi untuk iklan. Musik populer tidak boleh dipakai tanpa izin.</li>
+    <li><b>Konten soal:</b> jangan menampilkan isi soal milik kampus atau penerbit yang belum disetujui untuk tayang. Pada iklan, kartu soal berupa kerangka tanpa isi, dan rekaman latihan memakai soal contoh buatan sendiri.</li>
+    <li><b>Data pengguna:</b> rekam layar hanya dari lingkungan dev dengan akun contoh. Cek frame akhir untuk nama, foto, atau nomor yang tidak seharusnya terlihat.</li>
+    <li><b>Klaim:</b> jangan menjanjikan nilai, kelulusan, atau hasil klinis. Jangan menyiratkan proses PDF berlangsung seketika. Pada iklan, proses ditunjukkan melalui pemeriksaan manual oleh admin, dan estimasi waktu di aplikasi hanya perkiraan, bukan janji.</li>
+    <li><b>Transparansi:</b> beberapa platform mewajibkan label untuk konten yang dibuat atau dimodifikasi AI. Suara sintetis dari Piper termasuk konten buatan; cek kebijakan platform dan beri label bila diminta.</li>
+  </ul>
+</section>
+
+<section class="part">
+  <h2>Lampiran A. Perintah ringkas</h2>
+  <pre><code>cd brand/video
+bash scripts/setup.sh                 # sekali
+npm run check                         # cek prasyarat
+npm run say -- "teks" [hasil.wav]     # dengar satu kalimat
+npm run lab -- "KATA" "varian1" "varian2"   # uji ejaan
+npm run video -- scenes/x.json [--draft] [--format 9:16] [--music m.mp3]
+
+# iklan 75 detik
+npm run ad:record && npm run ad:frames
+npm run ad:voice && npm run ad:audio
+npm run ad:render && npm run ad:mux</code></pre>
+  <h2>Lampiran B. Struktur folder</h2>
+  <pre><code>brand/video/
+  README.md  package.json  lexicon.json
+  scripts/setup.sh  scripts/seed-demo.mjs
+  src/            mesin: tts, render, make, say, lab, check, record
+  stage/          panggung video umum (HTML+CSS, font lokal)
+  scenes/         naskah video (kenalan-kori.json)
+  ad/             iklan 75 detik
+    ad.json                naskah, judul, durasi 16 shot
+    record-clips.mjs       perekam layar aplikasi sungguhan
+    frames.mjs voice.mjs audio.mjs render-ad.mjs mux.mjs
+    stage-ad.html/.css     semua adegan (teks di layar = HTML)
+    clips/ build/ out/     hasil (tidak di-commit)</code></pre>
+  <h2>Lampiran C. Prompt untuk GPT (salin dan tempel)</h2>
+  <p>Gunakan saat meminta GPT membantu memasang kit di serverku:</p>
+  <pre><code>Kamu membantu aku memasang "kit video MEDCOEL" di server Ubuntu milikku.
+Repositori: https://github.com/khansazafiri-rgb/mpruy (folder brand/video).
+Tujuan: membuat video bermaskot dengan suara Indonesia yang dibuat di
+server sendiri memakai Piper, tanpa API berbayar.
+
+Lakukan berurutan dan berhenti bila ada langkah gagal:
+1. Cek versi Ubuntu, Node.js (butuh 20+), ffmpeg, python3-venv, RAM, disk.
+2. Clone repositori, masuk ke brand/video, jalankan: bash scripts/setup.sh
+3. Jalankan: npm run check  (semua harus "ok")
+4. Jalankan: npm run say -- "Halo, aku Kori. Selamat datang di MEDCOEL."
+   lalu bantu aku mendengarkan hasilnya (build/say.wav).
+5. Jalankan: npm run video -- scenes/kenalan-kori.json --draft
+6. Jelaskan setiap error dengan bahasa sederhana dan beri perbaikan.
+
+Aturan: jangan ubah desain maskot, jangan memakai layanan berbayar, jangan
+menyimpan kunci rahasia di repositori, dan tanya aku sebelum menjalankan
+perintah dengan sudo atau menghapus berkas.</code></pre>
+</section>
+</body></html>

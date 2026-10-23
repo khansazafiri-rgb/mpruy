@@ -345,6 +345,7 @@ function publicSettings(app) {
     instagramHandle: s.getString("instagramHandle"),
     adminWhatsapp: normalizePhone(s.getString("adminWhatsapp")),
     submissionsOpen: s.getBool("submissionsOpen"),
+    showMascots: s.getBool("showMascots"),
     dailyCapacity: s.getInt("dailyCapacity") || 40,
     maxPdfMb: s.getInt("maxPdfMb") || 20,
     confirmDays: s.getInt("confirmDays") || 3,
@@ -355,9 +356,11 @@ function publicSettings(app) {
       easy: s.getInt("pointsEasy"),
       medium: s.getInt("pointsMedium"),
       hard: s.getInt("pointsHard"),
+      simulation: s.getInt("pointsSimulation"),
     },
     privacyPolicy: s.getString("privacyPolicy"),
     copyrightPolicy: s.getString("copyrightPolicy"),
+    signup: lib("signupConfig").publicConfig(app),
     turnstileSiteKey: env("TURNSTILE_SITE_KEY"),
     driveConfigured: !!(env("GDRIVE_CLIENT_ID") && env("GDRIVE_REFRESH_TOKEN") && env("GDRIVE_ROOT_FOLDER_ID")),
   };
@@ -423,6 +426,7 @@ function userSummary(app, u, withPrivate) {
     out.campusChangedAt = u.getString("campusChangedAt");
     out.lastActiveAt = u.getString("lastActiveAt");
     out.tutorials = tutorialsOf(u);
+    out.extra = recJson(u, "extra", {}) || {};
   }
   return out;
 }

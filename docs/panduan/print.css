@@ -1,0 +1,81 @@
+/* Gaya cetak bersama untuk panduan PDF MEDCOEL. Dipakai oleh build.mjs.
+   Kode ditata agar bisa disalin dari PDF: monospace, tanpa ligatur, baris
+   panjang dibungkus. */
+@page { size: A4; margin: 20mm 17mm 20mm 17mm; }
+@page cover { size: A4; margin: 0; }
+:root { --forest: #0a3830; --brand: #007060; --gold: #f8c038; --ink: #172b38; --muted: #5b6970; --paper: #f6f3ea; --line: #dcd6c6; }
+* { box-sizing: border-box; }
+html { font-family: 'Inter', 'DejaVu Sans', sans-serif; font-size: 10.5pt; line-height: 1.55; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: 'Inter', sans-serif; line-height: 1.2; color: var(--forest); break-after: avoid; }
+h1 { font-size: 21pt; margin: 0 0 6mm; letter-spacing: -.02em; }
+h2 { font-size: 15pt; margin: 9mm 0 3mm; padding-bottom: 1.5mm; border-bottom: 2px solid var(--gold); letter-spacing: -.01em; }
+h3 { font-size: 11.5pt; margin: 6mm 0 2mm; color: var(--brand); }
+h4 { font-size: 10.5pt; margin: 4mm 0 1.5mm; }
+p { margin: 0 0 3mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 6mm; }
+li { margin: 0 0 1.2mm; }
+a { color: var(--brand); text-decoration: none; word-break: break-all; }
+strong { color: #0c2a33; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 6mm 0; }
+
+/* Sampul */
+.cover { height: 257mm; display: flex; flex-direction: column; justify-content: space-between; break-after: page; padding: 22mm 20mm 18mm; margin: 0; page: cover; background: var(--forest); color: var(--paper); background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 8mm 8mm; height: 297mm; }
+.cover .kicker { font-size: 9.5pt; letter-spacing: .18em; text-transform: uppercase; color: #9fd8c5; font-weight: 700; }
+.cover h1 { color: #fff; font-size: 34pt; line-height: 1.05; margin: 8mm 0 6mm; letter-spacing: -.03em; }
+.cover h1 em { font-style: normal; color: var(--gold); }
+.cover p.lead { font-size: 13pt; color: #d8e6df; max-width: 140mm; }
+.cover .meta { font-size: 9.5pt; color: #b7cfc6; border-top: 1px solid rgba(255,255,255,.2); padding-top: 4mm; display: flex; justify-content: space-between; gap: 8mm; }
+.cover .mascots { display: flex; gap: 6mm; align-items: flex-end; }
+.cover .mascots svg { width: 34mm; height: 34mm; }
+
+/* Daftar isi */
+.toc { break-after: page; }
+.toc ol { list-style: none; padding: 0; counter-reset: t; }
+.toc li { counter-increment: t; display: flex; gap: 4mm; padding: 1.6mm 0; border-bottom: 1px dotted var(--line); }
+.toc li::before { content: counter(t); font-weight: 800; color: var(--brand); min-width: 6mm; }
+
+/* Bagian besar mulai halaman baru */
+section.part { break-before: page; }
+section.part:first-of-type { break-before: auto; }
+
+/* Callout */
+.note, .warn, .tip, .danger { border-left: 1.4mm solid var(--brand); background: #eef6f2; padding: 3mm 4mm; margin: 0 0 4mm; border-radius: 0 2mm 2mm 0; break-inside: avoid; }
+.note::before, .warn::before, .tip::before, .danger::before { display: block; font-weight: 800; font-size: 8.5pt; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1mm; }
+.note::before { content: 'Catatan'; color: var(--brand); }
+.tip { border-color: #b88700; background: #fff6d6; } .tip::before { content: 'Tips'; color: #8a6400; }
+.warn { border-color: #c4571d; background: #fdece1; } .warn::before { content: 'Penting'; color: #a5410f; }
+.danger { border-color: #b0444f; background: #fbe6e8; } .danger::before { content: 'Awas'; color: #9a2f3b; }
+.note > :last-child, .warn > :last-child, .tip > :last-child, .danger > :last-child { margin-bottom: 0; }
+
+/* Langkah bernomor */
+ol.steps { list-style: none; padding: 0; counter-reset: s; }
+ol.steps > li { counter-increment: s; position: relative; padding: 0 0 3mm 11mm; margin: 0 0 1mm; }
+ol.steps > li::before { content: counter(s); position: absolute; left: 0; top: -.4mm; width: 7.5mm; height: 7.5mm; border-radius: 50%; background: var(--forest); color: #fff; font-weight: 800; font-size: 9pt; display: grid; place-items: center; line-height: 7.5mm; text-align: center; }
+
+/* Tabel */
+table { width: 100%; border-collapse: collapse; margin: 0 0 4mm; font-size: 9.2pt; break-inside: auto; }
+th { background: var(--forest); color: #fff; text-align: left; padding: 2mm 2.5mm; font-weight: 700; }
+td { padding: 1.8mm 2.5mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:nth-child(even) td { background: #faf8f2; }
+tr { break-inside: avoid; }
+td code, th code { word-break: break-all; }
+
+/* Kode */
+code, pre { font-family: 'DejaVu Sans Mono', 'Menlo', monospace; font-variant-ligatures: none; }
+code { font-size: 8.8pt; background: #efece1; padding: .3mm 1.2mm; border-radius: 1mm; color: #14423a; }
+pre { font-size: 7.9pt; line-height: 1.42; background: #101c1a; color: #e6efe9; padding: 3.2mm 4mm; border-radius: 2mm; margin: 0 0 4mm; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; break-inside: auto; }
+pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+pre .c { color: #8fb3a6; }
+.filelabel { display: inline-block; background: var(--gold); color: #3b2b00; font: 700 8pt 'DejaVu Sans Mono', monospace; padding: 1mm 3mm; border-radius: 1.5mm 1.5mm 0 0; margin-bottom: -1px; }
+.filelabel + pre { border-top-left-radius: 0; }
+
+/* Diagram sederhana */
+.flow { display: flex; align-items: stretch; gap: 2mm; margin: 0 0 4mm; break-inside: avoid; }
+.flow .box { flex: 1; border: 1.5px solid var(--forest); border-radius: 2.5mm; padding: 2.5mm 3mm; font-size: 8.8pt; background: #fff; }
+.flow .box b { display: block; color: var(--forest); margin-bottom: .8mm; }
+.flow .arrow { align-self: center; font-weight: 800; color: var(--brand); font-size: 13pt; }
+.flow .box.hl { background: var(--forest); color: #e6f2ec; } .flow .box.hl b { color: var(--gold); }
+.chip { display: inline-block; padding: .4mm 2.4mm; border-radius: 99px; background: #e3f1ea; color: var(--brand); font-weight: 700; font-size: 8.6pt; }
+.small { font-size: 9pt; color: var(--muted); }
+.nobreak { break-inside: avoid; }

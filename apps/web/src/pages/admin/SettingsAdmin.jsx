@@ -5,6 +5,7 @@ import { Alert, Field, Tabs } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
 import { api, errorText } from '@/lib/api';
 import pb from '@/lib/pb';
+import SignupSettings from './SignupSettings';
 
 function General() {
   const { refreshSettings } = useAuth();
@@ -54,6 +55,7 @@ function General() {
           <Field label="Poin soal easy" htmlFor="st-pe"><input id="st-pe" min={0} {...num('pointsEasy')} /></Field>
           <Field label="Poin soal medium" htmlFor="st-pm"><input id="st-pm" min={0} {...num('pointsMedium')} /></Field>
           <Field label="Poin soal hard" htmlFor="st-ph"><input id="st-ph" min={0} {...num('pointsHard')} /></Field>
+          <Field label="Poin Simulasi Dokter (skor 100)" htmlFor="st-ps" hint="Skor terbaik per kasus dikalikan nilai ini / 100, lalu masuk leaderboard."><input id="st-ps" min={0} {...num('pointsSimulation')} /></Field>
           <Field label="Batas ganti kampus (hari, 0 = bebas)" htmlFor="st-cc"><input id="st-cc" min={0} {...num('campusChangeDays')} /></Field>
           <Field label="Pengingat ujian bawaan (H-)" htmlFor="st-rd" hint="Pisahkan dengan koma, misalnya 7,3,1."><input id="st-rd" className="input" value={(rec.reminderDaysDefault || []).join(',')} onChange={(e) => set('reminderDaysDefault', e.target.value.split(',').map((x) => parseInt(x, 10)).filter((x) => x >= 0))} /></Field>
           <fieldset>
@@ -64,6 +66,7 @@ function General() {
           </fieldset>
         </div>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={rec.requireProofApproval} onChange={(e) => set('requireProofApproval', e.target.checked)} /> Akun baru menunggu admin memeriksa bukti komunitas sebelum aktif</label>
+        <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={rec.showMascots !== false} onChange={(e) => set('showMascots', e.target.checked)} /> Tampilkan maskot Kori, Kila, dan Nilo di halaman pengguna</label>
         <div className="flex flex-wrap gap-4 text-sm">
           <label className="flex items-center gap-2"><input type="checkbox" checked={rec.landingShowSubjects} onChange={(e) => set('landingShowSubjects', e.target.checked)} /> Landing page: tampilkan jumlah mata kuliah</label>
           <label className="flex items-center gap-2"><input type="checkbox" checked={rec.landingShowUsers} onChange={(e) => set('landingShowUsers', e.target.checked)} /> Landing page: tampilkan jumlah pengguna</label>
@@ -174,8 +177,9 @@ export default function SettingsAdmin() {
   return (
     <div className="space-y-5">
       <h1 className="page-title">Pengaturan</h1>
-      <Tabs value={tab} onChange={setTab} tabs={[{ value: 'general', label: 'Umum' }, { value: 'campus', label: 'Daftar kampus' }, { value: 'system', label: 'Sistem' }]} />
+      <Tabs value={tab} onChange={setTab} tabs={[{ value: 'general', label: 'Umum' }, { value: 'signup', label: 'Pendaftaran & profil' }, { value: 'campus', label: 'Daftar kampus' }, { value: 'system', label: 'Sistem' }]} />
       {tab === 'general' && <General />}
+      {tab === 'signup' && <SignupSettings />}
       {tab === 'campus' && <Campuses />}
       {tab === 'system' && <System />}
     </div>

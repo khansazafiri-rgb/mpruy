@@ -11,6 +11,7 @@ import QuestionView from '@/components/QuestionView';
 import ReportDialog from '@/components/ReportDialog';
 import { Alert, Badge, Modal, PageLoader, ProgressBar, Tabs } from '@/components/ui';
 import Logo from '@/components/Logo';
+import MascotTip from '@/components/MascotTip';
 import { api } from '@/lib/api';
 import { DIFF, KIND, QTYPE, scoreText } from '@/lib/labels';
 import { clock, duration, fmtDateTime } from '@/lib/time';
@@ -120,6 +121,7 @@ function Work({ data, setData, repeats }) {
     timers.current[q.id] = setTimeout(() => send(q.id, val), delay);
   };
 
+  const [streak, setStreak] = useState(0);
   const check = async () => {
     if (checking) return;
     setError('');
@@ -129,6 +131,7 @@ function Work({ data, setData, repeats }) {
     try {
       const r = await api(`attempts/${a.id}/answer`, { method: 'POST', body: { question: q.id, response: val, check: true } });
       setChecked((c) => ({ ...c, [q.id]: r.result }));
+      if (r.result?.scored !== false) setStreak((n) => (r.result?.correct ? n + 1 : 0));
       setRevealedQ((m) => ({ ...m, [q.id]: r.question }));
     } catch (e) { setError(e.message); } finally { setChecking(false); }
   };
@@ -190,6 +193,7 @@ function Work({ data, setData, repeats }) {
       <div className="study-layout">
         <div className="study-content">
           <QuestionView key={q.id} q={q} index={idx} total={qs.length} value={values[q.id]} onChange={change} revealed={learning && isChecked} result={checked[q.id]} onReport={() => setReport(q.id)} flagged={flags.has(q.id)} onFlag={learning ? undefined : () => setFlags((s) => { const n = new Set(s); if (n.has(q.id)) n.delete(q.id); else n.add(q.id); return n; })} />
+          {learning && isChecked && <CheckTip result={checked[q.id]} index={idx} streak={streak} />}
           <Alert className="mt-3">{error}</Alert>
           <div className="question-actions flex flex-wrap items-center gap-2">
             <button type="button" className="btn-ghost" onClick={() => go(idx - 1)} disabled={idx === 0}><ChevronLeft size={16} /><span className="sr-only sm:not-sr-only">Sebelumnya</span></button>
@@ -240,6 +244,25 @@ function QuestionNavigator({ questions, index, values, checked, flags, onGo, lea
 // Hasil dan review
 // ---------------------------------------------------------------------------
 
+// Reaksi maskot setelah "Cek jawaban" di mode Learning. Pilihan kalimat tetap per soal.
+const RIGHT = ['Mantap, benar! Konsepnya sudah nyambung.', 'Tepat sekali! Lanjut ke soal berikutnya.', 'Benar! Coba baca pembahasannya juga, siapa tahu ada poin baru.', 'Yes, benar! Kamu makin jago.'];
+const WRONG = ['Belum tepat, nggak apa-apa. Baca pembahasannya pelan-pelan ya.', 'Hampir! Lihat kenapa pilihan lain kurang tepat di pembahasan.', 'Salah itu bagian dari belajar. Catat poin pentingnya, nanti soal ini muncul lagi.'];
+function CheckTip({ result, index, streak }) {
+  if (!result || result.scored === false) return null;
+  const pick = (list) => list[index % list.length];
+  if (result.correct) {
+    return <MascotTip key={`ok-${index}`} pop mascot="kila" mood={streak >= 3 ? 'cheer' : 'happy'} size={64} className="mt-4">{streak >= 3 ? `${streak} benar berturut-turut! Pertahankan!` : pick(RIGHT)}</MascotTip>;
+  }
+  return <MascotTip key={`no-${index}`} pop mascot="nilo" mood="think" size={64} className="mt-4">{pick(WRONG)}</MascotTip>;
+}
+
+function resultTip(score) {
+  if (score === null || score === undefined) return { mascot: 'kori', mood: 'idle', text: 'Latihan selesai. Lihat pembahasan di bawah untuk mengulang materi.' };
+  if (score >= 80) return { mascot: 'kila', mood: 'cheer', text: 'Keren banget! Kamu menguasai BAB ini. Coba paket atau simulasi untuk tantangan berikutnya.' };
+  if (score >= 55) return { mascot: 'kori', mood: 'happy', text: 'Bagus! Tinggal sedikit lagi. Fokus ke soal yang salah, lalu ulangi sekali lagi.' };
+  return { mascot: 'nilo', mood: 'think', text: 'Pelan-pelan saja. Baca pembahasan soal yang salah, lalu ulangi besok. Konsisten itu kuncinya.' };
+}
+
 function Result({ data }) {
   const nav = useNavigate();
   const a = data.attempt;
@@ -283,6 +306,7 @@ function Result({ data }) {
             <Badge className="bg-gold-soft text-[#6b4f00]"><Trophy size={13} /> +{a.points} poin</Badge>
             {a.flagged && <Badge className="bg-coral-soft text-coral">Waktu pengerjaan tidak wajar, poin tidak dihitung</Badge>}
           </div>
+          {(() => { const t = resultTip(a.score); return <MascotTip mascot={t.mascot} mood={t.mood} size={64} className="mt-4">{t.text}</MascotTip>; })()}
           <div className="mt-4 flex flex-wrap gap-2">
             <button type="button" className="btn-primary" onClick={retry} disabled={retrying}><RotateCcw size={16} /> {retrying ? 'Menyiapkan...' : 'Ulangi dengan pengaturan sama'}</button>
             <Link to="/beranda" className="btn-secondary">Beranda</Link>

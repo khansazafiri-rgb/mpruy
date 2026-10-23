@@ -1,0 +1,22 @@
+{
+  "name": "medcoel-video-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Video maskot MEDCOEL: naskah (scenes.json) -> suara (TTS lokal) -> animasi (Chromium) -> MP4 (ffmpeg).",
+  "type": "module",
+  "scripts": {
+    "video": "node src/make.mjs",
+    "say": "node src/say.mjs",
+    "lab": "node src/lab.mjs",
+    "check": "node src/check.mjs",
+    "ad:record": "node ad/record-clips.mjs",
+    "ad:frames": "node ad/frames.mjs",
+    "ad:voice": "node ad/voice.mjs",
+    "ad:audio": "node ad/audio.mjs",
+    "ad:render": "node ad/render-ad.mjs",
+    "ad:mux": "node ad/mux.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.49.1"
+  }
+}

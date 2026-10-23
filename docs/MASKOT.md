@@ -1,6 +1,6 @@
 # Maskot MEDCOEL
 
-Tiga maskot 2D yang dipakai di tutorial, notifikasi, dan materi pemasaran.
+Tiga maskot 2D yang menemani pengguna di banyak fitur web, tutorial, dan materi pemasaran.
 Sumber tunggal: `apps/web/src/mascots/*.svg` (vektor) dan `apps/web/src/styles/mascot.css` (ekspresi).
 
 | Maskot | Peran | Kapan muncul | Warna utama |
@@ -19,6 +19,31 @@ import Mascot from '@/components/Mascot';
 ```
 
 Ekspresi (`mood`): `idle` (tenang), `wave` (menyapa), `think` (berpikir), `happy` (senang), `talk` (bicara, mulut bergerak), `cheer` (melompat senang). Semua gerak berhenti bila perangkat memakai "kurangi gerakan"; `still` menghentikannya secara paksa.
+
+Untuk maskot dengan gelembung bicara singkat, pakai `MascotTip`:
+
+```jsx
+import MascotTip from '@/components/MascotTip';
+<MascotTip mascot="kila" mood="cheer" size={64}>Mantap, jawabanmu benar!</MascotTip>
+// layout="stack" (maskot di atas), layout="right", pop (muncul memantul)
+```
+
+## Di mana maskot muncul
+
+| Tempat | Maskot dan isi |
+|---|---|
+| Semua keadaan kosong (`EmptyState`) dan layar memuat (`PageLoader`) | Kori berpikir (bisa diganti per halaman lewat prop `mascot` dan `mood`) |
+| Beranda | Tips harian; berubah sesuai keadaan (ujian ≤ 3 hari: Nilo, latihan belum selesai: Kori, hari aktif beruntun ≥ 3: Kila) |
+| Latihan soal, mode Learning | Setelah Cek jawaban: Kila bila benar (bersorak bila 3 benar beruntun), Nilo bila belum tepat |
+| Hasil latihan | Kila (skor ≥ 80), Kori (≥ 55), Nilo (di bawahnya) |
+| Leaderboard | Penyemangat sesuai peringkat; keadaan kosong dengan Kila |
+| Chat Admin | Kori sebagai asisten (avatar, sapaan, tombol melayang, kepala panel) |
+| Daftar dan Masuk | Kori memandu tiap langkah daftar; Kila/Nilo di langkah bukti; Kila menyambut akun baru |
+| Progres, Jadwal ujian, Mata kuliah tanpa soal | Komentar singkat sesuai data (akurasi, hari ujian, ajakan kirim PDF) |
+| Halaman tidak ditemukan | Kori bingung |
+| Tutorial dan Simulasi Dokter | Kila (latihan soal), Nilo (simulasi), seperti sebelumnya |
+
+Admin bisa mematikan semua maskot di halaman pengguna lewat **Admin > Pengaturan > Umum > Tampilkan maskot** (`app_settings.showMascots`). Saat dimatikan, teks gelembung tetap tampil tanpa gambar dan Chat Admin kembali memakai logo.
 
 ## Lapisan SVG (untuk animasi dan video)
 

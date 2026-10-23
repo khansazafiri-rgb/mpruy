@@ -1,0 +1,72 @@
+/* Panggung video MEDCOEL. Ukuran desain: 1920x1080 (land), 1080x1920 (port), 1080x1080 (square). */
+@import url('fonts.css');
+:root { --forest: #0a3830; --brand: #007060; --gold: #f8c038; --ink: #172b38; --paper: #f6f3ea; --mint: #c4e4d2;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+* { box-sizing: border-box; margin: 0; }
+html, body { background: #000; overflow: hidden; }
+body { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; color: var(--ink); }
+#stage { position: relative; overflow: hidden; width: var(--W); height: var(--H); }
+#stage.land { --W: 1920px; --H: 1080px; }
+#stage.port { --W: 1080px; --H: 1920px; }
+#stage.square { --W: 1080px; --H: 1080px; }
+
+/* Latar */
+#bg, #grain { position: absolute; inset: 0; }
+#grain { background-image: var(--grain); opacity: .22; mix-blend-mode: soft-light; }
+.bg-forest { background-color: var(--forest); background-image: radial-gradient(ellipse 60% 55% at 85% 0%, rgba(0,140,115,.5), transparent 70%), radial-gradient(ellipse 50% 60% at 0% 100%, rgba(248,192,56,.12), transparent 70%), linear-gradient(rgba(255,255,255,.05) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,.05) 2px, transparent 2px); background-size: auto, auto, 64px 64px, 64px 64px; }
+.bg-paper { background-color: var(--paper); background-image: linear-gradient(rgba(0,112,96,.09) 2px, transparent 2px), linear-gradient(90deg, rgba(0,112,96,.09) 2px, transparent 2px); background-size: 64px 64px; }
+.bg-sky { background-color: #dbeaff; background-image: radial-gradient(rgba(29,89,168,.16) 3px, transparent 3.5px); background-size: 36px 36px; }
+.bg-sun { background-color: #fff0c0; background-image: radial-gradient(rgba(128,90,0,.16) 3px, transparent 3.5px); background-size: 36px 36px; }
+.bg-rose { background-color: #ffdee6; background-image: radial-gradient(rgba(160,44,76,.15) 3px, transparent 3.5px); background-size: 36px 36px; }
+.bg-lilac { background-color: #eae2ff; background-image: radial-gradient(rgba(88,60,172,.15) 3px, transparent 3.5px); background-size: 36px 36px; }
+
+/* Merek */
+#brand { position: absolute; left: 72px; top: 56px; background: rgba(255,255,255,.94); padding: 12px 26px; border-radius: 999px; box-shadow: 0 6px 0 rgba(0,0,0,.18); display: flex; align-items: center; }
+#brand img { height: 52px; display: block; }
+.port #brand { left: 60px; top: 60px; } .square #brand { left: 48px; top: 40px; }
+
+/* Maskot */
+#mascot { position: absolute; width: 560px; height: 560px; left: 110px; bottom: 150px; }
+.port #mascot { width: 600px; height: 600px; left: 240px; bottom: 380px; }
+.square #mascot { width: 400px; height: 400px; left: 30px; bottom: 170px; }
+#mascot .mc-character { width: 100%; height: 100%; display: block; }
+#mascot .mc-character svg { filter: drop-shadow(0 18px 0 rgba(0,0,0,.14)); }
+
+/* Kartu visual */
+#visual { position: absolute; left: 760px; top: 170px; width: 1090px; height: 660px; }
+.port #visual { left: 60px; top: 200px; width: 960px; height: 760px; }
+.square #visual { left: 440px; top: 130px; width: 600px; height: 560px; }
+.card { position: absolute; inset: 0; background: #fffdf7; border-radius: 48px; border: 4px solid rgba(255,255,255,.75); box-shadow: 0 14px 0 rgba(0,0,0,.2), 0 50px 90px rgba(0,0,0,.28); padding: 56px 64px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+.card .hl { background: linear-gradient(104deg, transparent .3em, rgba(248,192,56,.95) .4em, rgba(248,192,56,.85) 92%, transparent 98%) 0 88% / 100% .5em no-repeat; padding: 0 .08em; }
+.card h1 { font-size: 104px; line-height: 1.04; letter-spacing: -.035em; font-weight: 800; color: var(--forest); }
+.card .sub { margin-top: 26px; font-size: 48px; line-height: 1.25; color: #4d5f66; font-weight: 600; }
+.card .eyebrow { font: 800 30px 'Plus Jakarta Sans'; letter-spacing: .14em; text-transform: uppercase; color: var(--brand); margin-bottom: 22px; }
+.square .card, .port .card { padding: 44px 48px; } .square .card h1 { font-size: 64px; } .square .sub { font-size: 32px; } .port .card h1 { font-size: 92px; }
+.card ul { list-style: none; padding: 0; margin-top: 18px; display: flex; flex-direction: column; gap: 22px; }
+.card li { display: flex; gap: 24px; align-items: center; font-size: 52px; font-weight: 700; line-height: 1.15; }
+.card li i { flex: none; width: 66px; height: 66px; border-radius: 50%; background: var(--brand); color: #fff; font-style: normal; display: grid; place-items: center; font-size: 40px; box-shadow: 0 5px 0 rgba(0,0,0,.2); }
+.square .card li { font-size: 34px; } .square .card li i { width: 46px; height: 46px; font-size: 28px; }
+.quiz .q { font-size: 50px; font-weight: 800; line-height: 1.2; margin-bottom: 30px; color: var(--forest); }
+.quiz .opt { display: flex; align-items: center; gap: 22px; padding: 18px 26px; border-radius: 26px; border: 4px solid #e4dfd0; background: #fff; font-size: 44px; font-weight: 700; margin-bottom: 16px; transition: none; }
+.quiz .opt b { width: 64px; height: 64px; border-radius: 18px; background: #f1ede1; display: grid; place-items: center; font-size: 36px; flex: none; }
+.quiz .opt.key { border-color: var(--brand); background: #dff1e8; } .quiz .opt.key b { background: var(--brand); color: #fff; }
+.quiz .opt.dim { opacity: .38; }
+.quiz .why { margin-top: 10px; font-size: 38px; line-height: 1.3; color: #0a5a4c; font-weight: 700; }
+.square .quiz .q { font-size: 34px; } .square .quiz .opt { font-size: 30px; padding: 12px 18px; } .square .quiz .opt b { width: 46px; height: 46px; font-size: 26px; } .square .quiz .why { font-size: 26px; }
+.stat { align-items: center; text-align: center; }
+.stat .num { font-size: 260px; line-height: 1; font-weight: 800; color: var(--forest); letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+.stat .lab { font-size: 56px; font-weight: 700; color: #4d5f66; margin-top: 10px; }
+.square .stat .num { font-size: 170px; } .square .stat .lab { font-size: 38px; }
+.imgcard { padding: 0; } .imgcard img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cta { align-items: center; text-align: center; background: var(--forest); color: var(--paper); }
+.cta h1 { color: #fff; } .cta .btn { margin-top: 44px; display: inline-block; background: var(--paper); color: var(--forest); font-size: 62px; font-weight: 800; padding: 26px 64px; border-radius: 28px; box-shadow: 0 10px 0 rgba(0,0,0,.35); }
+.cta .sub { color: #cfe3da; }
+.square .cta .btn { font-size: 40px; padding: 16px 40px; }
+
+/* Takarir */
+#caption { position: absolute; left: 90px; right: 90px; bottom: 56px; min-height: 120px; display: flex; justify-content: center; align-items: center; }
+#caption .pill { background: rgba(10,56,48,.93); color: #fff; padding: 22px 44px; border-radius: 40px; font-size: 54px; font-weight: 800; line-height: 1.22; text-align: center; box-shadow: 0 8px 0 rgba(0,0,0,.25); max-width: 100%; letter-spacing: -.01em; }
+#caption .w { opacity: .5; } #caption .w.done { opacity: 1; } #caption .w.now { opacity: 1; color: var(--gold); }
+.port #caption { left: 50px; right: 50px; bottom: 130px; } .port #caption .pill { font-size: 56px; }
+.square #caption { left: 40px; right: 40px; bottom: 36px; } .square #caption .pill { font-size: 38px; padding: 14px 30px; }
+#progress { position: absolute; left: 0; bottom: 0; height: 10px; width: 100%; background: rgba(255,255,255,.14); } #progress i { display: block; height: 100%; width: 0; background: var(--gold); }

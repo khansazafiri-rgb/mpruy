@@ -4,9 +4,15 @@
 //   K = penting, U = bermanfaat, B = berisiko; selain itu "kurang perlu".
 //   Flag katalog: g = tidak perlu alasan, inv = mahal/invasif, only:poli = hanya poli itu.
 import { CATTXT } from './data/catalog.js';
-import { CASES, DX } from './data/cases.js';
+import { CASES as BUILTIN_CASES, DX as BUILTIN_DX } from './data/cases.js';
 
-export { CASES, DX };
+// Kasus dan diagnosis aktif. Isinya diganti dari server (setContent) karena
+// admin bisa mengubah kasus di dashboard; data/cases.js menjadi isi bawaan
+// yang dipakai bila server belum menjawab. Objek diganti isinya di tempat
+// supaya semua yang mengimpornya ikut melihat data terbaru.
+export const CASES = { ...BUILTIN_CASES };
+export const DX = { ...BUILTIN_DX };
+export { BUILTIN_CASES, BUILTIN_DX };
 
 export const POLI = {
   umum: 'Poli umum', bedah: 'Poli bedah', spog: 'Poli kandungan', anak: 'Poli anak', dalam: 'Poli penyakit dalam',
@@ -22,8 +28,34 @@ export const PHASES = [
 ];
 export const PHASE_NAME = Object.fromEntries(PHASES.map((p) => [p.key, p.label]));
 export const RATE = { K: 'Penting', U: 'Bermanfaat', L: 'Kurang perlu', T: 'Tidak tepat', B: 'Berisiko', N: 'Tidak berlaku' };
-/** Kasus yang bisa dimainkan (ruang tunggu tidak punya dokter). */
-export const PLAYABLE = Object.keys(CASES).filter((k) => !CASES[k].nodoc);
+/** Kasus yang bisa dimainkan (ruang tunggu tidak punya dokter, kasus khusus tutorial tidak diundi). */
+export const PLAYABLE = [];
+function refreshPlayable() {
+  PLAYABLE.length = 0;
+  Object.keys(CASES).filter((k) => !CASES[k].nodoc && !CASES[k].tutorialOnly && !CASES[k].inactive).forEach((k) => PLAYABLE.push(k));
+}
+refreshPlayable();
+
+/** Poli sebuah kasus (menentukan latar, jas dokter, dan tindakan khusus poli). */
+export function poliOf(key) { return (CASES[key] && CASES[key].poli) || key; }
+
+/**
+ * Ganti kasus dan diagnosis dengan data dari server ({ cases, dx }).
+ * Kasus tutorial (umum) selalu tersedia: bila admin menonaktifkannya, versi
+ * bawaan dipakai khusus untuk tutorial dan tidak ikut diundi.
+ */
+export function setContent({ cases, dx } = {}) {
+  if (dx && Object.keys(dx).length) { Object.keys(DX).forEach((k) => delete DX[k]); Object.assign(DX, dx); }
+  if (cases && Object.keys(cases).length) {
+    Object.keys(CASES).forEach((k) => delete CASES[k]);
+    Object.assign(CASES, cases);
+    if (!CASES.umum) {
+      CASES.umum = { ...BUILTIN_CASES.umum, tutorialOnly: true };
+      [CASES.umum.dxOk, ...CASES.umum.ddx].forEach((k) => { if (!DX[k]) DX[k] = BUILTIN_DX[k]; });
+    }
+  }
+  refreshPlayable();
+}
 
 const ASK = {
   rawat: 'Suster, pasien ini saya rawat inap. Tolong siapkan administrasinya.',
@@ -75,9 +107,9 @@ CAT.forEach((it) => { if (ASK[it.id]) it.ask = ASK[it.id]; });
 function setOf(s) { const o = {}; (s || '').split(/\s+/).forEach((k) => { if (k) o[k] = 1; }); return o; }
 
 /** Konteks satu kasus: data kasus dan himpunan K/U/B. */
-export function caseCtx(poli) {
-  const C = CASES[poli];
-  return { poli, C, Ks: setOf(C.K), Us: setOf(C.U), Bs: setOf(C.B) };
+export function caseCtx(key) {
+  const C = CASES[key];
+  return { key, poli: C.poli || key, C, Ks: setOf(C.K), Us: setOf(C.U), Bs: setOf(C.B) };
 }
 
 export function isNA(it, ctx) { return !!(it.fl.only && it.fl.only.indexOf(ctx.poli) < 0); }
@@ -95,7 +127,7 @@ export function rel(it, ctx) {
 }
 
 export function answerOf(it, ctx) {
-  const o = ctx.C.A[it.id] || {};
+  const o = (ctx.C.A && ctx.C.A[it.id]) || {};
   const r = { ...it.def, ...o };
   if (typeof r.rows === 'string') r.rows = parseRows(r.rows);
   return r;
@@ -114,7 +146,7 @@ const byHash = (seed) => (a, b) => hash(seed + a) - hash(seed + b);
 /** Opsi alasan untuk tindakan: 1-2 diagnosis banding yang terkait dan pengecoh, urutan tetap. */
 export function reasonSet(it, ctx) {
   const tg = it.tag ? it.tag.split(',') : [];
-  const seed = `${ctx.poli}:${it.id}`;
+  const seed = `${ctx.key}:${it.id}`;
   const ov = (k) => DX[k][1].split(',').some((t) => tg.indexOf(t) >= 0);
   const good = ctx.C.ddx.filter(ov).sort(byHash(`${seed}g`));
   const nGood = Math.min(good.length, 1 + (hash(seed) % 2));
@@ -207,7 +239,7 @@ export function searchActions(q, ctx, limit = 60) {
  * Opsi: 2 dari ddx kasus (selain diagnosis yang dipilih) + 2 pengecoh, urutan tetap.
  */
 export function ddxOptions(ctx, dx) {
-  const seed = `${ctx.poli}:ddx:${dx}`;
+  const seed = `${ctx.key}:ddx:${dx}`;
   const good = ctx.C.ddx.filter((k) => k !== dx).sort(byHash(`${seed}g`)).slice(0, 2);
   const bad = Object.keys(DX).filter((k) => k !== dx && ctx.C.ddx.indexOf(k) < 0).sort(byHash(`${seed}b`)).slice(0, 4 - good.length);
   return good.concat(bad).sort(byHash(`${seed}o`));

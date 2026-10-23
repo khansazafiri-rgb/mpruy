@@ -106,43 +106,24 @@ routerAdd("GET", "/api/medcoel/progress", (e) => {
   });
 
   function pointsOf(uid) {
-    const r = arrayOf(new DynamicModel({ p: 0 }));
-    e.app.db().newQuery("SELECT COALESCE(SUM(points), 0) AS p FROM answers WHERE user = {:u}").bind({ u: uid }).all(r);
-    return r.length ? r[0].p : 0;
+    return require(`${__hooks}/lib/leaderboard.js`).totalOf(e.app, uid);
   }
 });
 
-// Leaderboard. period: week | all. scope: all | campus. subject: id (opsional).
+// Leaderboard gabungan. period: week | all. scope: all | campus.
+// Poin = poin soal (benar di percobaan pertama) + poin Simulasi Dokter
+// (skor terbaik per kasus dalam periode x pointsSimulation / 100).
 routerAdd("GET", "/api/medcoel/leaderboard", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
+  const lb = require(`${__hooks}/lib/leaderboard.js`);
   const user = u.requireUser(e);
   const period = u.query(e, "period") === "all" ? "all" : "week";
   const scope = u.query(e, "scope") === "campus" ? "campus" : "all";
-  const subject = u.query(e, "subject");
-  const where = ["a.points > 0", "usr.role = 'user'", "usr.disabled = FALSE", "usr.deletedAt = ''"];
-  const params = {};
   const since = period === "week" ? u.startOfWeekWib(new Date()) : null;
-  if (since) { where.push("a.updated >= {:since}"); params.since = u.pbDate(since); }
-  if (scope === "campus") {
-    if (!user.getString("campus")) {
-      return e.json(200, { period: period, scope: scope, items: [], me: null, note: "Kampusmu belum ada di daftar, jadi peringkat per kampus belum tersedia." });
-    }
-    where.push("usr.campus = {:campus}");
-    params.campus = user.getString("campus");
+  if (scope === "campus" && !user.getString("campus")) {
+    return e.json(200, { period: period, scope: scope, items: [], me: null, note: "Kampusmu belum ada di daftar, jadi peringkat per kampus belum tersedia." });
   }
-  if (subject) { where.push("a.subject = {:subject}"); params.subject = subject; }
-
-  const rows = arrayOf(new DynamicModel({ user: "", name: "", anon: false, campus: "", points: 0, answers: 0 }));
-  e.app
-    .db()
-    .newQuery(
-      "SELECT a.user AS user, usr.name AS name, usr.leaderboardAnonymous AS anon, usr.campus AS campus, " +
-        "SUM(a.points) AS points, COUNT(*) AS answers " +
-        "FROM answers a JOIN users usr ON usr.id = a.user WHERE " + where.join(" AND ") +
-        " GROUP BY a.user ORDER BY points DESC, answers ASC LIMIT 200",
-    )
-    .bind(params)
-    .all(rows);
+  const rows = lb.rows(e.app, { since: since, campus: scope === "campus" ? user.getString("campus") : "" });
 
   const campusNames = {};
   const nameOf = (id) => {
@@ -162,10 +143,12 @@ routerAdd("GET", "/api/medcoel/leaderboard", (e) => {
       name: u.displayName(r.name, r.anon),
       campus: r.anon ? "" : nameOf(r.campus),
       points: r.points,
+      questionPoints: r.qpoints,
+      simPoints: r.spoints,
       isMe: r.user === user.id,
     };
     if (entry.isMe) me = entry;
     return entry;
   });
-  return e.json(200, { period: period, scope: scope, since: since ? since.toISOString() : "", items: items.slice(0, 50), me: me });
+  return e.json(200, { period: period, scope: scope, since: since ? since.toISOString() : "", simPerCase: lb.simWeight(e.app), items: items.slice(0, 50), me: me });
 });

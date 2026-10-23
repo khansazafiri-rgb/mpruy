@@ -16,24 +16,24 @@ Tindakan spesifik (tanpa flag `g`) memunculkan pertanyaan **"Kenapa kamu menanya
 
 Skor (0-100) = diagnosis 30 + hal penting 40 + alasan 20 + efisiensi 10, sama dengan prototipe. Hasil tersimpan di koleksi `doctor_sims` dan tampil di Riwayat, tab "Simulasi dokter". Sesi tutorial tidak disimpan.
 
-## Menambah atau mengubah kasus
+Skor juga masuk **leaderboard gabungan**: skor terbaik tiap kasus dalam periode × `pointsSimulation` / 100 (bawaan 10 poin untuk skor 100; diatur di Admin > Pengaturan > Umum). Mengulang kasus yang sama hanya menaikkan poin bila skornya lebih tinggi.
 
-Semua data ada di `apps/web/src/features/simulasi/data/`:
+## Mengelola kasus (dashboard admin)
 
-| File | Isi |
-|---|---|
-| `catalog.js` | Katalog tindakan (anamnesis, fisik, penunjang, tatalaksana). Format per baris dijelaskan di komentar tiap blok. |
-| `cases.js` | Daftar diagnosis `DX` dan kasus `CASES` (pasien, ekspresi, intro, `dxOk`, `ddx`, `K`/`U`/`B`, jawaban khusus `A`, acuan). |
+Kasus dan daftar diagnosis disimpan di database (koleksi `sim_cases` dan `sim_diagnoses`) dan dikelola di **Admin > Simulasi Dokter**:
 
-Flag katalog: `g` = tidak perlu alasan; `inv` = mahal/invasif (dinilai tidak tepat tanpa indikasi); `only:spog` / `only:anak` = hanya untuk poli itu (di poli lain disembunyikan).
+- **Daftar kasus**: aktif/nonaktif (nonaktif tidak diundi), urutan, statistik (berapa kali dimainkan, rata-rata skor, persentase diagnosis tepat), Ubah, Duplikat, Hapus, dan **Coba** (membuka `/simulasi-dokter?kasus=kode`; admin bisa mencoba kasus nonaktif).
+- **Editor kasus**: kode, poli (menentukan latar, jas dokter, tindakan khusus poli), gambar dan ekspresi pasien, nama-usia, dialog pembuka, diagnosis tepat, diagnosis banding, acuan klinis, **penilaian tindakan** (Penting / Bermanfaat / Berisiko untuk setiap tindakan di katalog, bisa dicari), dan **jawaban khusus** (ucapan pasien, temuan, kartu hasil lab, catatan) yang menggantikan jawaban bawaan katalog. Tombol JSON untuk menyalin atau menempel kasus utuh.
+- **Daftar diagnosis**: nama dan kelompok (resp, kardio, infeksi, dst.) yang dipakai mencocokkan alasan pemain dengan tag tindakan. Diagnosis yang masih dipakai kasus tidak bisa dihapus.
+
+Server memvalidasi semua isian (gambar pasien harus yang tersedia, diagnosis harus ada di daftar, id tindakan aman). Kasus `umum` dipakai tutorial: bisa dinonaktifkan (tetap dipakai tutorial, tidak diundi) tetapi tidak bisa dihapus. Pemain memuat kasus terbaru dari `GET /api/medcoel/doctor-sim/content` saat membuka simulasi; bila server tidak menjawab, web memakai kasus bawaan.
+
+### Isi bawaan dan katalog
+
+- `apps/web/src/features/simulasi/data/cases.js` adalah isi awal (dan cadangan). Migrasi `1800000900_sim_content.js` dibuat dari file ini oleh `node apps/web/scripts/export-sim-seed.mjs`; tes memastikan keduanya sama. Setelah dipakai produksi, ubah kasus lewat dashboard, bukan file ini.
+- `apps/web/src/features/simulasi/data/catalog.js` adalah katalog tindakan (anamnesis, fisik, penunjang, tatalaksana); masih di kode. Flag katalog: `g` = tidak perlu alasan; `inv` = mahal/invasif (dinilai tidak tepat tanpa indikasi); `only:spog` / `only:anak` = hanya untuk poli itu.
 
 Penilaian tindakan: `K` penting, `U` bermanfaat, `B` berisiko; sisanya "kurang perlu".
-
-Bila menambah kasus baru:
-
-1. Tambahkan kasus di `cases.js` (kunci = poli, pakai sprite pasien yang ada di `apps/web/public/simulasi/`).
-2. Tambahkan judul dan `dxOk` yang sama di `apps/pocketbase/pb_hooks/lib/doctorSim.js` supaya server mau menyimpan hasilnya.
-3. Jalankan `npm test`: tes memastikan semua id di K/U/B dan jawaban ada di katalog, dan tabel kasus server sama dengan web.
 
 Acuan klinis tiap kasus ditulis di `ref`. Sebagian masih bertanda "belum diverifikasi ke SKDI atau PNPK"; perbarui setelah diperiksa.
 

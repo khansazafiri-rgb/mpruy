@@ -9,3 +9,7 @@ apps/pocketbase/pocketbase
 apps/pocketbase/pb_data/
 apps/pocketbase/pb_public/
 apps/pocketbase/.env
+
+# Hermes Agent: secret dan state kerja lokal, jangan dicommit
+apps/hermes-agent/.env
+apps/hermes-agent/data/

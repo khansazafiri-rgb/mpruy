@@ -1,6 +1,7 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import MascotTip from '@/components/MascotTip';
 import { Alert, Field } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
 import { safeInternalPath } from '@/lib/safePath';
@@ -36,6 +37,7 @@ export default function Login() {
 
   return (
     <AuthLayout title="Masuk ke MEDCOEL" subtitle="Satu akun bisa dipakai di HP dan laptop sekaligus.">
+      <MascotTip mascot={params.get('baru') ? 'kila' : 'kori'} mood={params.get('baru') ? 'cheer' : 'wave'} size={60} className="mb-4">{params.get('baru') ? 'Selamat datang di MEDCOEL! Masuk dulu, nanti aku temani tutorial singkatnya.' : 'Halo lagi! Masuk pakai Login ID atau email.'}</MascotTip>
       <form onSubmit={submit} className="card space-y-4 p-5 md:p-6" noValidate>
         {params.get('baru') && <Alert kind="success">Akunmu sudah jadi. Masuk dengan Login ID dan password yang tadi kamu buat.</Alert>}
         {params.get('reset') && <Alert kind="success">Password sudah diganti. Masuk dengan password baru.</Alert>}

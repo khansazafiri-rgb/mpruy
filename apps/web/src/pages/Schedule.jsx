@@ -2,6 +2,7 @@
 // hitung mundur dan pengingat benar di zona mana pun.
 import { CalendarDays, Pencil, Plus, Trash2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import MascotTip from '@/components/MascotTip';
 import Countdown from '@/components/Countdown';
 import { Alert, EmptyState, Field, Modal, PageLoader } from '@/components/ui';
 import { toneClass } from '@/lib/tone';
@@ -109,8 +110,12 @@ export default function Schedule() {
     <div className="space-y-7">
       <PageHead eyebrow="Kalender pribadi" title="Jadwal ujian" note="H-7, H-3, H-1 diingatkan ✓" actions={<button type="button" className="btn-primary btn-press" onClick={() => setEdit('new')} disabled={!subjects.length}><Plus size={18} /> Tambah jadwal</button>}>Hanya kamu yang bisa melihat jadwal ini.</PageHead>
       <Alert>{error}</Alert>
+      {upcoming.length > 0 && (() => {
+        const d = daysUntil(upcoming[0].examAt, upcoming[0].timezone);
+        return <MascotTip mascot="nilo" mood={d !== null && d <= 3 ? 'think' : 'idle'} size={60} className="max-w-2xl">{d === 0 ? 'Ujiannya hari ini. Tarik napas, kamu sudah berlatih.' : d !== null && d <= 3 ? `Tinggal ${d} hari. Fokus ulangi soal yang pernah salah, jangan begadang ya.` : `Ujian terdekat ${d} hari lagi. Cicil satu BAB per hari, nanti tidak menumpuk.`}</MascotTip>;
+      })()}
       {!items ? <PageLoader /> : !upcoming.length && !past.length ? (
-        <EmptyState icon={CalendarDays} title="Belum ada jadwal ujian" action={<button type="button" className="btn-primary" onClick={() => setEdit('new')}>Tambah jadwal</button>}>
+        <EmptyState icon={CalendarDays} mascot="nilo" mood="wave" title="Belum ada jadwal ujian" action={<button type="button" className="btn-primary" onClick={() => setEdit('new')}>Tambah jadwal</button>}>
           Tambahkan ujianmu untuk mendapat hitung mundur di beranda dan pengingat H-7, H-3, H-1.
         </EmptyState>
       ) : (
