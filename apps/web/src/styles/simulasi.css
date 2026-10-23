@@ -346,3 +346,8 @@
 .sim-notes, .sim-panel, .sim-frame { min-width: 0; }
 .sim-notes-head { min-width: 0; }
 .sim-notes-badge:not(.is-on) { display: none; }
+.tour-bubble.is-mobile.is-top { bottom: auto; top: calc(12px + env(safe-area-inset-top)) !important; }
+@media (max-width: 767px) { body.tour-active .app-content { padding-bottom: 320px; } }
+.sim-step-label { font-size: 11.5px; letter-spacing: -.02em; }
+.sim-steps button { padding-inline: 1px; }
+@media (max-width: 1023px) { .sim-layout { align-items: stretch; } }

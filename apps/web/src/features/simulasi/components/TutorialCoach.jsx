@@ -3,7 +3,7 @@
 // dilakukan; tombol Lanjut/Kembali tetap ada. "Lewati" kecil di pojok kanan atas.
 import clsx from 'clsx';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Mascot from '@/components/Mascot';
 
@@ -13,6 +13,7 @@ export const TOUR = [
   { id: 'areas', target: 'areas', mood: 'idle', title: 'Mau tanya bagian apa?', body: 'Anamnesis dimulai dengan memilih bagian. Coba buka "Telaah sistem" untuk menanyakan gejala per sistem organ.', wait: 'Pilih salah satu bagian.' },
   { id: 'list', target: 'list', mood: 'idle', title: 'Pilih satu pertanyaan', body: 'Sekarang pilih pertanyaan, misalnya "Apakah ada demam?". Pertanyaan yang sudah ditanyakan diberi tanda centang.', wait: 'Ketuk satu pertanyaan.' },
   { id: 'reason', target: 'reason', mood: 'think', title: 'Kenapa kamu menanyakan ini?', body: 'Untuk tindakan yang spesifik, kamu diminta memilih dugaan yang ingin dinilai. Alasanmu ikut dinilai di laporan, jadi pikirkan dulu sebelum bertanya.', wait: 'Pilih satu alasan.' },
+  { id: 'answer', target: 'dialog', mood: 'talk', title: 'Dengarkan jawabannya', body: 'Pertanyaanmu sudah diajukan. Ketuk kotak dialog untuk mendengar jawaban Pak Slamet.', wait: 'Ketuk kotak dialog.' },
   { id: 'notes', target: 'notes', mood: 'happy', title: 'Catatan terisi sendiri', body: 'Jawaban pasien langsung masuk Catatan dokter bagian S. Hasil pemeriksaan masuk O, diagnosis A, dan tatalaksana P. Kamu juga bisa menulis catatan sendiri di bawahnya.' },
   { id: 'phases', target: 'phases', mood: 'idle', title: 'Tahap berikutnya', body: 'Lanjutkan dengan cara yang sama di Pemeriksaan fisik, Penunjang, dan Tatalaksana. Angka kecil menunjukkan berapa tindakan yang sudah kamu lakukan di tiap tahap.' },
   { id: 'dx', target: 'dx', mood: 'think', title: 'Tetapkan diagnosis, lalu selesai', body: 'Pilih diagnosis kerja dan ketuk Tetapkan. Kamu akan ditanya diagnosis banding apa yang masih perlu disingkirkan. Setelah itu ketuk Akhiri konsultasi.', wait: 'Akhiri konsultasi untuk melihat laporan.' },
@@ -25,91 +26,110 @@ export function stepDone(id, sim, ui) {
   if (id === 'dialog') return (s.queue === s.ctx.C.intro && s.qi >= s.queue.length - 1 && !s.typing) || s.actions.length > 0;
   if (id === 'areas') return !!ui.area || s.actions.length > 0;
   if (id === 'list') return s.pending?.type === 'reason' || s.actions.length > 0;
-  if (id === 'reason') return s.log.some((e) => e.sec === 'S');
+  if (id === 'reason') return !s.pending && Object.keys(s.reasons).length > 0;
+  if (id === 'answer') return s.log.some((e) => e.sec === 'S' && e.key !== 'ku');
   if (id === 'dx') return s.finished;
   return false;
 }
 
-function useRect(target, step) {
-  const [rect, setRect] = useState(null);
-  useLayoutEffect(() => {
-    if (!target) { setRect(null); return undefined; }
+/**
+ * Sorotan dan letak gelembung dihitung di requestAnimationFrame dan ditulis
+ * langsung ke elemen (bukan state React), supaya mengikuti gulir dan ukuran
+ * layar tanpa memicu render berulang.
+ */
+function useSpotlight(target, step, ringRef, dimRef, bubbleRef) {
+  useEffect(() => {
     let raf;
     let scrolled = false;
     const tick = () => {
-      const el = document.querySelector(`[data-tour="${target}"]`);
+      const ring = ringRef.current;
+      const dim = dimRef.current;
+      const b = bubbleRef.current;
+      const el = target ? document.querySelector(`[data-tour="${target}"]`) : null;
+      const W = window.innerWidth;
+      const H = window.innerHeight;
+      let r = null;
       if (el) {
         if (!scrolled) {
           scrolled = true;
           const r0 = el.getBoundingClientRect();
-          if (r0.top < 80 || r0.bottom > window.innerHeight - 40) el.scrollIntoView({ block: r0.height > window.innerHeight * 0.7 ? 'start' : 'center', behavior: 'smooth' });
+          if (r0.top < 90 || r0.bottom > H - 40) el.scrollIntoView({ block: r0.height > H * 0.7 ? 'start' : 'center', behavior: 'smooth' });
         }
-        const r = el.getBoundingClientRect();
-        setRect((old) => (old && old.top === r.top && old.left === r.left && old.width === r.width && old.height === r.height ? old : { top: r.top, left: r.left, width: r.width, height: r.height }));
-      } else setRect(null);
+        r = el.getBoundingClientRect();
+      }
+      if (ring) {
+        ring.style.display = r ? 'block' : 'none';
+        if (r) Object.assign(ring.style, { top: `${r.top - 8}px`, left: `${r.left - 8}px`, width: `${r.width + 16}px`, height: `${r.height + 16}px` });
+      }
+      if (dim) dim.style.display = r ? 'none' : 'block';
+      if (b) {
+        const mobile = W < 768;
+        b.classList.toggle('is-mobile', mobile);
+        b.classList.toggle('is-top', mobile && !!r && (target === 'reason' || r.top + r.height / 2 > H * 0.5));
+        b.classList.toggle('is-center', !mobile && !r);
+        if (mobile || !r) { b.style.top = ''; b.style.left = ''; } else {
+          const bw = b.offsetWidth;
+          const bh = b.offsetHeight;
+          const gap = 18;
+          const right = r.left + r.width + gap + bw <= W - 12;
+          const left = r.left - gap - bw >= 12;
+          let x;
+          if (right) x = r.left + r.width + gap;
+          else if (left) x = r.left - gap - bw;
+          else x = Math.min(Math.max(12, r.left + r.width / 2 - bw / 2), W - bw - 12);
+          let y = right || left ? r.top : r.top + r.height + gap;
+          if (y + bh > H - 12) y = Math.max(12, r.top - bh - gap);
+          y = Math.min(Math.max(12, y), H - bh - 12);
+          b.style.top = `${Math.round(y)}px`;
+          b.style.left = `${Math.round(x)}px`;
+        }
+      }
       raf = requestAnimationFrame(tick);
     };
     tick();
-    return () => cancelAnimationFrame(raf);
-  }, [target, step]);
-  return rect;
+    document.body.classList.add('tour-active');
+    return () => { cancelAnimationFrame(raf); document.body.classList.remove('tour-active'); };
+  }, [target, step, ringRef, dimRef, bubbleRef]);
 }
 
 export default function TutorialCoach({ step, setStep, sim, ui, onSkip, onDone, finished }) {
   const cur = TOUR[step];
-  const rect = useRect(cur?.target, step);
+  const ring = useRef(null);
+  const dim = useRef(null);
   const bubble = useRef(null);
-  const [pos, setPos] = useState({});
+  useSpotlight(finished ? null : cur?.target, step, ring, dim, bubble);
   const waiting = cur?.wait && !stepDone(cur.id, sim, ui);
 
   // Maju sendiri saat tindakan yang ditunggu sudah dilakukan.
+  const ready = !!cur?.wait && stepDone(cur.id, sim, ui);
   useEffect(() => {
-    if (cur?.wait && stepDone(cur.id, sim, ui)) {
-      const t = setTimeout(() => setStep(step + 1), cur.id === 'reason' ? 900 : 450);
-      return () => clearTimeout(t);
-    }
-    return undefined;
-  });
-
-  // Letak gelembung: di HP selalu di bawah layar; di laptop di sebelah sorotan.
-  useLayoutEffect(() => {
-    const b = bubble.current;
-    if (!b) return;
-    const W = window.innerWidth;
-    const H = window.innerHeight;
-    if (W < 768 || !rect) { setPos(W < 768 ? { mobile: true } : { center: true }); return; }
-    const bw = b.offsetWidth;
-    const bh = b.offsetHeight;
-    const gap = 18;
-    let left;
-    if (rect.left + rect.width + gap + bw <= W - 12) left = rect.left + rect.width + gap;
-    else if (rect.left - gap - bw >= 12) left = rect.left - gap - bw;
-    else left = Math.min(Math.max(12, rect.left + rect.width / 2 - bw / 2), W - bw - 12);
-    let top = rect.left + rect.width + gap + bw <= W - 12 || rect.left - gap - bw >= 12 ? rect.top : rect.top + rect.height + gap;
-    if (top + bh > H - 12) top = Math.max(12, rect.top - bh - gap);
-    top = Math.min(Math.max(12, top), H - bh - 12);
-    setPos({ top, left });
-  }, [rect, step]);
+    if (!ready) return undefined;
+    const t = setTimeout(() => setStep(step + 1), cur.id === 'answer' ? 1100 : 450);
+    return () => clearTimeout(t);
+  }, [ready, step, setStep, cur]);
 
   if (!cur && !finished) return null;
+  // Saat lembar refleksi terbuka di luar langkahnya, gelembung disembunyikan supaya tidak menutupi pilihan.
+  const hidden = !finished && !!sim.s.pending && cur.id !== 'reason';
 
   return createPortal(
     <div className="tour-layer" aria-live="polite">
-      {rect && <div className="tour-ring" style={{ top: rect.top - 8, left: rect.left - 8, width: rect.width + 16, height: rect.height + 16 }} aria-hidden />}
-      {!rect && !finished && <div className="tour-dim" aria-hidden />}
-      <button type="button" className="tour-skip" onClick={onSkip}>Lewati</button>
+      {!hidden && <div ref={ring} className="tour-ring" style={{ display: 'none' }} aria-hidden />}
+      {!finished && !hidden && <div ref={dim} className="tour-dim" aria-hidden />}
+      {!finished && <button type="button" className="tour-skip" onClick={onSkip}>Lewati</button>}
       {finished ? (
-        <div className="tour-bubble is-center is-final" role="dialog" aria-label="Tutorial selesai">
+        <div key="final" className="tour-bubble is-center is-final" role="dialog" aria-label="Tutorial selesai">
           <Mascot name="nilo" mood="cheer" size={110} />
           <h3>Tutorial selesai!</h3>
           <p>Sekarang kamu tahu cara bertanya, menjelaskan alasan, membaca catatan, dan menutup konsultasi. Pasien sungguhan dipilih acak dari poli yang berbeda.</p>
           <div className="tour-final-btns">{onDone}</div>
         </div>
-      ) : (
+      ) : hidden ? null : (
         <div
+          key="step"
           ref={bubble}
-          className={clsx('tour-bubble', pos.mobile && 'is-mobile', pos.center && 'is-center')}
-          style={pos.top !== undefined ? { top: pos.top, left: pos.left } : undefined}
+          // Kelas is-mobile/is-center dan posisi diatur oleh useSpotlight.
+          className="tour-bubble"
           role="dialog"
           aria-labelledby="tour-title"
         >

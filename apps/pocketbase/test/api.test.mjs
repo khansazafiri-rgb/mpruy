@@ -462,6 +462,46 @@ await langkah('riwayat chat dapat dimuat bertahap tanpa pesan hilang atau duplik
   assert.equal(new Set([...latest.items, ...earlier.items].map((m) => m.id)).size, 53);
 });
 
+console.log('Simulasi dokter');
+await langkah('hasil simulasi dokter: server memeriksa kasus, menilai diagnosis sendiri, dan membatasi angka', async () => {
+  await call('POST', '/api/medcoel/doctor-sim/results', { caseKey: 'umum', dxKey: 'pneumonia', score: 50 }, null, 401);
+  await call('POST', '/api/medcoel/doctor-sim/results', { caseKey: 'tunggu', score: 50 }, userA.token, 400);
+  await call('POST', '/api/medcoel/doctor-sim/results', { caseKey: 'tidakada', score: 50 }, userA.token, 400);
+  const ok = (await call('POST', '/api/medcoel/doctor-sim/results', {
+    caseKey: 'spog', dxKey: 'peb', score: 250, durationSec: -9, mode: 'timer', timeout: true, actionsCount: 14, keyDone: 40, keyTotal: 30, user: userB.id, dxOk: false,
+  }, userA.token, 200)).data.result;
+  assert.equal(ok.caseKey, 'spog');
+  assert.match(ok.caseTitle, /Bu Sari/);
+  assert.equal(ok.dxOk, true); // dihitung server, bukan dari kiriman
+  assert.equal(ok.score, 100);
+  assert.equal(ok.durationSec, 0);
+  assert.equal(ok.mode, 'timer');
+  assert.equal(ok.timeout, true);
+  assert.equal(ok.keyDone, 30); // tidak melebihi keyTotal
+  const wrong = (await call('POST', '/api/medcoel/doctor-sim/results', { caseKey: 'umum', dxKey: 'tb', score: 42, durationSec: 300, mode: 'apa' }, userA.token, 200)).data.result;
+  assert.equal(wrong.dxOk, false);
+  assert.equal(wrong.mode, 'santai');
+  const bad = (await call('POST', '/api/medcoel/doctor-sim/results', { caseKey: 'anak', dxKey: 'DROP TABLE', score: 'x' }, userA.token, 200)).data.result;
+  assert.equal(bad.dxKey, '');
+  assert.equal(bad.score, 0);
+});
+
+await langkah('riwayat simulasi dokter hanya milik sendiri, terbaru dulu, berhalaman', async () => {
+  const a = (await call('GET', '/api/medcoel/doctor-sim/results?perPage=2', undefined, userA.token, 200)).data;
+  assert.equal(a.totalItems, 3);
+  assert.equal(a.items.length, 2);
+  assert.equal(a.totalPages, 2);
+  assert.equal(a.items[0].caseKey, 'anak');
+  const p2 = (await call('GET', '/api/medcoel/doctor-sim/results?perPage=2&page=2', undefined, userA.token, 200)).data;
+  assert.equal(p2.items[0].caseKey, 'spog');
+  const b = (await call('GET', '/api/medcoel/doctor-sim/results', undefined, userB.token, 200)).data;
+  assert.equal(b.totalItems, 0);
+  await call('GET', '/api/medcoel/doctor-sim/results', undefined, null, 401);
+  // Koleksi tertutup untuk API bawaan PocketBase.
+  const raw = await call('GET', '/api/collections/doctor_sims/records', undefined, userA.token);
+  assert.ok(raw.status >= 400 || (raw.data.items || []).length === 0);
+});
+
 console.log('Jadwal, pengumuman, nonaktif');
 await langkah('jadwal ujian hanya terlihat pemiliknya', async () => {
   const examAt = new Date(Date.now() + 3 * 86400000).toISOString().replace('T', ' ');
