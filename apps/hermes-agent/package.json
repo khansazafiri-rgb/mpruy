@@ -8,6 +8,6 @@
   },
   "scripts": {
     "start": "node src/index.mjs",
-    "check": "node --check src/index.mjs && node --check src/config.mjs && node --check src/medcoel.mjs && node --check src/telegram.mjs && node --check src/state.mjs"
+    "check": "node --check src/index.mjs && node --check src/config.mjs && node --check src/medcoel.mjs && node --check src/telegram.mjs && node --check src/drive.mjs && node --check src/state.mjs"
   }
 }
