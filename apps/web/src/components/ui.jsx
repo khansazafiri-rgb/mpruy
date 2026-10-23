@@ -3,6 +3,8 @@ import clsx from 'clsx';
 import { AlertCircle, CheckCircle2, Loader2, X } from 'lucide-react';
 import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import Mascot from './Mascot';
+import { useMascotsOn } from './MascotTip';
 
 export function Spinner({ className = '', label = 'Memuat' }) {
   return (
@@ -14,7 +16,13 @@ export function Spinner({ className = '', label = 'Memuat' }) {
 }
 
 export function PageLoader() {
-  return <div className="flex min-h-[40vh] items-center justify-center"><Spinner /></div>;
+  const mascots = useMascotsOn();
+  return (
+    <div className="flex min-h-[40vh] flex-col items-center justify-center gap-2">
+      {mascots && <Mascot name="kori" mood="think" size={64} label="" />}
+      <Spinner />
+    </div>
+  );
 }
 
 export function Alert({ kind = 'error', children, className = '' }) {
@@ -48,10 +56,12 @@ export function Badge({ className = '', children }) {
   return <span className={clsx('chip', className)}>{children}</span>;
 }
 
-export function EmptyState({ icon: Icon, title, children, action }) {
+// Keadaan kosong ditemani maskot (bawaan Kori berpikir). mascot={false} untuk ikon saja.
+export function EmptyState({ icon: Icon, title, children, action, mascot = 'kori', mood = 'think' }) {
+  const mascots = useMascotsOn() && mascot;
   return (
     <div className="empty-state card flex flex-col items-center px-6 py-10 text-center">
-      {Icon && <div className="empty-icon tone-sun mb-4"><Icon size={28} aria-hidden /></div>}
+      {mascots ? <Mascot name={mascot} mood={mood} size={96} className="mb-3" label="" /> : Icon && <div className="empty-icon tone-sun mb-4"><Icon size={28} aria-hidden /></div>}
       <h3 className="font-display text-lg font-semibold">{title}</h3>
       {children && <div className="mt-1 max-w-md text-sm text-ink-muted">{children}</div>}
       {action && <div className="mt-4">{action}</div>}

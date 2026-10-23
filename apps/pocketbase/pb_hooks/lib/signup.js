@@ -19,6 +19,7 @@ function loadDraft(app, id, token) {
 }
 
 function validateProfile(app, b) {
+  const cfg = require(HOOKS + "/lib/signupConfig.js").config(app);
   const loginId = u.cleanStr(b.loginId, 40).toLowerCase();
   const name = u.cleanStr(b.name, 100).replace(/\s+/g, " ");
   const email = u.cleanStr(b.email, 200).toLowerCase();
@@ -39,10 +40,18 @@ function validateProfile(app, b) {
   else {
     try { app.findAuthRecordByEmail("users", email); errors.email = "Email ini sudah terdaftar. Silakan masuk, atau pakai Lupa password."; } catch (_) {}
   }
-  if (!whatsapp) errors.whatsapp = "Nomor WhatsApp belum benar. Contoh: 081234567890.";
+  const waMode = cfg.builtin.whatsapp;
+  const waRaw = String(b.whatsapp || "").trim();
+  if (waMode === "required" && !whatsapp) errors.whatsapp = "Nomor WhatsApp belum benar. Contoh: 081234567890.";
+  else if (waMode === "optional" && waRaw && !whatsapp) errors.whatsapp = "Nomor WhatsApp belum benar. Kosongkan bila tidak ingin mengisi.";
   if (password.length < 8) errors.password = "Password minimal 8 karakter.";
   else if (password !== String(b.passwordConfirm || "")) errors.passwordConfirm = "Ulangi password belum sama.";
-  if (!(semester >= 1 && semester <= 14)) errors.semester = "Pilih semester 1 sampai 14.";
+  const semMode = cfg.builtin.semester;
+  const semOk = semester >= 1 && semester <= 14;
+  if (semMode === "required" && !semOk) errors.semester = "Pilih semester 1 sampai 14.";
+  else if (semMode === "optional" && String(b.semester || "") !== "" && String(b.semester) !== "0" && !semOk) errors.semester = "Pilih semester 1 sampai 14.";
+  const extra = require(HOOKS + "/lib/signupConfig.js").validateExtra(cfg.fields, b.extra, "signup", {});
+  Object.keys(extra.errors).forEach((k) => { errors[k] = extra.errors[k]; });
 
   let campus = "";
   if (campusId) {
@@ -60,7 +69,12 @@ function validateProfile(app, b) {
   if (Object.keys(errors).length) {
     throw new BadRequestError("Ada isian yang perlu diperbaiki.", u.fieldErrors(errors));
   }
-  return { loginId, name, email, whatsapp, password, semester, campus, campusOther: campus ? "" : campusOther };
+  return {
+    loginId, name, email, password, campus, campusOther: campus ? "" : campusOther,
+    whatsapp: waMode === "hidden" ? "" : whatsapp,
+    semester: semMode === "hidden" || !semOk ? 0 : semester,
+    extra: extra.values,
+  };
 }
 
 function maskEmail(email) {
@@ -97,6 +111,14 @@ function proofInfo(app, id) {
   }
 }
 
+// Bukti yang sudah diunggah di draft: { kunci: idFile } (null = dilewati).
+function draftProofs(d) {
+  const out = u.recJson(d, "proofs", {}) || {};
+  if (out.whatsapp === undefined && d.getString("proofWhatsapp")) out.whatsapp = d.getString("proofWhatsapp");
+  if (out.instagram === undefined && d.getString("proofInstagram")) out.instagram = d.getString("proofInstagram");
+  return out;
+}
+
 function state(app, d, extra) {
   const p = u.recJson(d, "profile", {}) || {};
   const out = {
@@ -112,10 +134,12 @@ function state(app, d, extra) {
       semester: p.semester || "",
       campus: p.campus || "",
       campusOther: p.campusOther || "",
+      extra: p.extra || {},
     },
     subjects: u.recJson(d, "subjects", []) || [],
     proofWhatsapp: proofInfo(app, d.getString("proofWhatsapp")),
     proofInstagram: proofInfo(app, d.getString("proofInstagram")),
+    proofs: (() => { const m = draftProofs(d); const o = {}; Object.keys(m).forEach((k) => { o[k] = m[k] ? proofInfo(app, m[k]) : { skipped: true }; }); return o; })(),
     expiresAt: d.getString("expiresAt"),
   };
   if (extra && extra.draftToken) out.draftToken = extra.draftToken;
@@ -127,8 +151,12 @@ function finish(app, d) {
   if (!d.getBool("emailVerified")) throw new BadRequestError("Verifikasi email dulu.");
   const subjects = u.recJson(d, "subjects", []) || [];
   if (!subjects.length) throw new BadRequestError("Pilih mata kuliah yang sedang dipelajari dulu.");
-  if (!d.getString("proofWhatsapp")) throw new BadRequestError("Unggah bukti bergabung ke komunitas WhatsApp dulu.");
-  if (!d.getString("proofInstagram")) throw new BadRequestError("Unggah bukti mengikuti Instagram dulu.");
+  const proofSteps = require(HOOKS + "/lib/signupConfig.js").activeProofs(app);
+  const given = draftProofs(d);
+  proofSteps.forEach((ps) => {
+    if (ps.required && !given[ps.key]) throw new BadRequestError("Selesaikan langkah " + ps.title + " dulu.");
+  });
+  if (d.getInt("step") < 4 + proofSteps.length) throw new BadRequestError("Selesaikan semua langkah pendaftaran dulu.");
 
   const p = u.recJson(d, "profile", {}) || {};
   // Cek ulang: Login ID atau email bisa saja dipakai orang lain selama
@@ -156,8 +184,9 @@ function finish(app, d) {
     user.set("emailVisibility", false);
     user.setVerified(true);
     user.setPassword(password);
-    user.set("whatsapp", p.whatsapp);
-    user.set("semester", p.semester);
+    user.set("whatsapp", p.whatsapp || "");
+    user.set("semester", p.semester || 0);
+    user.set("extra", p.extra || {});
     if (p.campus) user.set("campus", p.campus);
     user.set("campusOther", p.campusOther || "");
     user.set("studyingSubjects", subjects);
@@ -169,14 +198,17 @@ function finish(app, d) {
     userId = user.id;
 
     const proofCol = tx.findCollectionByNameOrId("community_proofs");
-    [["whatsapp", d.getString("proofWhatsapp")], ["instagram", d.getString("proofInstagram")]].forEach((pair) => {
+    Object.keys(given).forEach((key) => {
+      const fileId = given[key];
+      if (!fileId) return;
       const r = new Record(proofCol);
       r.set("user", user.id);
-      r.set("kind", pair[0]);
-      r.set("file", pair[1]);
+      r.set("kind", key === "whatsapp" || key === "instagram" ? key : "other");
+      r.set("proofKey", key);
+      r.set("file", fileId);
       tx.save(r);
       try {
-        const f = tx.findRecordById("stored_files", pair[1]);
+        const f = tx.findRecordById("stored_files", fileId);
         f.set("owner", user.id);
         tx.save(f);
       } catch (_) {}
@@ -187,4 +219,4 @@ function finish(app, d) {
   return { ok: true, loginId: p.loginId, userId: userId, pendingApproval: needApproval };
 }
 
-module.exports = { loadDraft, validateProfile, sendEmailCode, state, finish, maskEmail };
+module.exports = { loadDraft, validateProfile, sendEmailCode, state, finish, maskEmail, draftProofs };

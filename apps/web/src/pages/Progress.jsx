@@ -3,6 +3,7 @@ import { CalendarClock, CheckCircle2, Flame, Table2, Target, Trophy } from 'luci
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import MascotTip from '@/components/MascotTip';
 import Illustration from '@/components/Illustration';
 import { Alert, PageLoader, ProgressBar, Stat } from '@/components/ui';
 import { useApi } from '@/lib/useApi';
@@ -49,12 +50,20 @@ export default function Progress() {
   return (
     <div className="space-y-7">
       <PageHead eyebrow="Rekap belajarmu" title="Progres saya" note="pelan-pelan, yang penting jalan ✎">Hanya kamu yang bisa melihat halaman ini.</PageHead>
+      {(() => {
+        const acc = summary.answered ? Math.round((summary.correct / summary.answered) * 100) : null;
+        const t = !summary.answered ? ['kori', 'wave', `Belum ada soal dalam ${range} hari terakhir. Mulai dari satu BAB kecil hari ini, ya.`]
+          : data.streak >= 5 ? ['kila', 'cheer', `${data.streak} hari beruntun! Kamu sedang membangun kebiasaan yang bagus.`]
+            : acc >= 75 ? ['kila', 'happy', `Akurasimu ${acc}% dalam ${range} hari terakhir. Saatnya coba paket atau simulasi.`]
+              : ['nilo', 'think', `Akurasimu ${acc}% dalam ${range} hari terakhir. Ulangi soal yang pernah salah dari Riwayat untuk menaikkannya.`];
+        return <MascotTip mascot={t[0]} mood={t[1]} size={64} className="max-w-2xl">{t[2]}</MascotTip>;
+      })()}
 
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <Stat tone="sun" icon={Flame} label="Hari aktif beruntun" value={data.streak} sub="hari berturut-turut" />
         <Stat tone="mint" icon={Target} label={`Soal dikerjakan (${range} hari)`} value={summary.answered} sub={`${summary.activeDays} hari aktif`} />
         <Stat tone="sky" icon={CheckCircle2} label={`Jawaban benar (${range} hari)`} value={summary.correct} sub={summary.answered ? `${Math.round((summary.correct / summary.answered) * 100)}% dari yang dikerjakan` : 'belum ada jawaban'} />
-        <Stat tone="lilac" icon={Trophy} label="Total poin" value={data.totalPoints} sub="dari percobaan pertama" />
+        <Stat tone="lilac" icon={Trophy} label="Total poin" value={data.totalPoints} sub="soal + Simulasi Dokter" />
       </div>
 
       <div className="flex w-fit gap-1 rounded-xl border border-paper-2 bg-[#fffdf7] p-1" role="group" aria-label="Rentang waktu">

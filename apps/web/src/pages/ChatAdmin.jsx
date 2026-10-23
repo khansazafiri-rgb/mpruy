@@ -7,6 +7,8 @@ import clsx from 'clsx';
 import { CircleHelp, FileText, FileUp, Lightbulb, ListChecks, MessageCircle, RotateCcw, Trash2, TriangleAlert, X } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Mascot from '@/components/Mascot';
+import { useMascotsOn } from '@/components/MascotTip';
 import logoMark from '@/assets/logo-mark.webp';
 import SubmissionCard from '@/components/SubmissionCard';
 import { CATEGORIES, Composer, SupportMessage, useStickToBottom, useSupportThread } from '@/components/SupportConversation';
@@ -18,13 +20,19 @@ import { confirmMessage, manyPdfMessage, waLink } from '@/lib/wa';
 
 const reduceMotion = () => typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
+// Asisten Chat Admin diperankan Kori (logo MEDCOEL bila maskot dimatikan admin).
+function BotAvatar() {
+  const on = useMascotsOn();
+  return on ? <span className="chat-avatar is-mascot" aria-hidden><Mascot name="kori" mood="idle" size={34} label="" still /></span> : <img src={logoMark} alt="" className="chat-avatar" />;
+}
+
 function Bubble({ from = 'bot', wide = false, children }) {
   if (from === 'me') {
     return <div className="chat-row is-mine"><div className="chat-msg"><div className="chat-bubble is-me">{children}</div></div></div>;
   }
   return (
     <div className="chat-row is-bot">
-      <img src={logoMark} alt="" className="chat-avatar" />
+      <BotAvatar />
       <div className={clsx('chat-msg', wide && 'is-wide')}><div className="chat-bubble is-bot">{children}</div></div>
     </div>
   );
@@ -33,7 +41,7 @@ function Bubble({ from = 'bot', wide = false, children }) {
 function Typing() {
   return (
     <div className="chat-row is-bot" aria-hidden>
-      <img src={logoMark} alt="" className="chat-avatar" />
+      <BotAvatar />
       <div className="chat-msg"><div className="chat-bubble is-bot chat-typing"><i /><i /><i /></div></div>
     </div>
   );
@@ -426,7 +434,7 @@ export function ChatAdminBody({ compact = false }) {
           <p className="chat-day"><span>Chat Admin MEDCOEL</span></p>
           <Bubble>
             <span className="hand chat-hello">Halo{firstName ? `, ${firstName}` : ''}! 👋</span>
-            Aku asisten Chat Admin MEDCOEL. Mau ngapain hari ini? Pilih salah satu di bawah, atau langsung tulis pesan untuk admin.
+            Aku Kori, asisten Chat Admin MEDCOEL. Mau ngapain hari ini? Pilih salah satu di bawah, atau langsung tulis pesan untuk admin.
           </Bubble>
           {past.length > 0 && (
             <>

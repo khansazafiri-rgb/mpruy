@@ -1,6 +1,7 @@
 import { ArrowLeft, BookOpen, BookOpenCheck, CheckCircle2, ChevronDown, Clock, Layers, MessageCircle, Minus, Package, PlayCircle, Plus, School, SlidersHorizontal } from 'lucide-react';
 import { useEffect, useId, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import MascotTip from '@/components/MascotTip';
 import Ecg from '@/components/Ecg';
 import Illustration from '@/components/Illustration';
 import { Alert, EmptyState, Modal, PageLoader, ProgressBar } from '@/components/ui';
@@ -371,7 +372,7 @@ export default function SubjectDetail() {
               </ul>
             ) : (
               <div className="paper-sheet flex flex-col items-start gap-3 p-6 sm:flex-row sm:items-center">
-                <p className="flex-1 text-[15px] text-ink-muted">Belum ada BAB yang punya soal di mata kuliah ini. Punya PDF soalnya? Kirim lewat Chat Admin, nanti diubah jadi latihan.</p>
+                <MascotTip mascot="kori" mood="think" size={60} className="flex-1">Belum ada BAB yang punya soal di mata kuliah ini. Punya PDF soalnya? Kirim lewat Chat Admin, nanti diubah jadi latihan.</MascotTip>
                 <Link to="/chat-admin" className="btn-secondary"><MessageCircle size={17} /> Kirim PDF soal</Link>
               </div>
             )}

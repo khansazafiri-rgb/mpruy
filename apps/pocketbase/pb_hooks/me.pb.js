@@ -43,11 +43,29 @@ routerAdd("GET", "/api/medcoel/me", (e) => {
     } catch (_) {}
   }
   const out = u.userSummary(e.app, user, true);
+  // Kolom khusus admin tidak dikirim ke pemilik akun.
+  const adminOnly = require(`${__hooks}/lib/signupConfig.js`).config(e.app).fields.filter((f) => f.where === "admin").map((f) => f.key);
+  adminOnly.forEach((k) => { delete out.extra[k]; });
   const days = u.settings(e.app).getInt("campusChangeDays");
   const changed = u.parseDate(user.getString("campusChangedAt"));
   out.nextCampusChangeAt = changed && days > 0 ? new Date(changed.getTime() + days * 86400000).toISOString() : "";
   out.unreadNotifications = e.app.countRecords("notifications", $dbx.exp("user = {:u} AND read = FALSE", { u: user.id }));
   return e.json(200, out);
+});
+
+// Data tambahan milik sendiri (kolom dari Pengaturan > Pendaftaran yang boleh
+// diubah pengguna). Kolom yang tidak dikirim tidak berubah.
+routerAdd("POST", "/api/medcoel/me/extra", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const cfg = require(`${__hooks}/lib/signupConfig.js`);
+  const user = u.requireUser(e);
+  const b = u.body(e);
+  const fresh = e.app.findRecordById("users", user.id);
+  const r = cfg.validateExtra(cfg.config(e.app).fields, b.extra, "profile", u.recJson(fresh, "extra", {}) || {});
+  if (Object.keys(r.errors).length) throw new BadRequestError("Ada isian yang perlu diperbaiki.", u.fieldErrors(r.errors));
+  fresh.set("extra", r.values);
+  e.app.save(fresh);
+  return e.json(200, { extra: r.values });
 });
 
 // Ganti kampus: dibatasi sekali per N hari (app_settings.campusChangeDays) dan

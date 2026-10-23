@@ -8,6 +8,8 @@
 import '@/styles/chat.css';
 import clsx from 'clsx';
 import { Maximize2, MessageCircle, X } from 'lucide-react';
+import Mascot from '@/components/Mascot';
+import { useMascotsOn } from '@/components/MascotTip';
 import logoMark from '@/assets/logo-mark.webp';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -18,6 +20,7 @@ const ChatAdminBody = lazy(() => import('@/pages/ChatAdmin').then((m) => ({ defa
 
 export default function ChatAdminWidget() {
   const [open, setOpen] = useState(false);
+  const mascots = useMascotsOn();
   const [mounted, setMounted] = useState(false);
   const panel = useRef(null);
   const button = useRef(null);
@@ -52,7 +55,7 @@ export default function ChatAdminWidget() {
           )}
         >
           <header className="chat-widget-head surface-forest">
-            <span className="chat-widget-mark"><img src={logoMark} alt="" /></span>
+            <span className="chat-widget-mark">{mascots ? <Mascot name="kori" mood="idle" size={36} label="" /> : <img src={logoMark} alt="" />}</span>
             <div className="min-w-0 flex-1">
               <p className="font-display text-[16px] font-bold leading-tight text-white">Chat Admin</p>
               <p className="text-[12px] text-white/75">Admin MEDCOEL membalas saat tersedia</p>
@@ -84,7 +87,7 @@ export default function ChatAdminWidget() {
           onPage && '!hidden',
         )}
       >
-        {open ? <X size={20} aria-hidden /> : <MessageCircle size={20} aria-hidden />}
+        {open ? <X size={20} aria-hidden /> : mascots ? <span className="chat-fab-kori" aria-hidden><Mascot name="kori" mood="wave" size={34} label="" /></span> : <MessageCircle size={20} aria-hidden />}
         <span className="hidden sm:inline">{open ? 'Tutup' : 'Chat Admin'}</span>
       </button>
     </>

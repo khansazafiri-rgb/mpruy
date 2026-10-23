@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Countdown from '@/components/Countdown';
 import Ecg from '@/components/Ecg';
 import Illustration from '@/components/Illustration';
+import MascotTip from '@/components/MascotTip';
 import TutorialCard from '@/features/onboarding/TutorialCard';
 import SimHomeCard from '@/features/simulasi/components/HomeCard';
 import SubmissionCard from '@/components/SubmissionCard';
@@ -16,6 +17,25 @@ import pb from '@/lib/pb';
 import { daysUntil, fmtDateTime, relative } from '@/lib/time';
 import { toneClass } from '@/lib/tone';
 import { pendingTutorials } from '@/lib/tutorial';
+
+// Tips harian dari maskot; berganti tiap hari (urutan tetap per tanggal).
+const DAILY_TIPS = [
+  ['kori', 'Kerjakan 10 soal dulu, lalu baca pembahasannya pelan-pelan. Lebih nempel daripada 50 soal kilat.'],
+  ['nilo', 'Sudah coba Simulasi Dokter? Tangani satu pasien, dan lihat alasan pemeriksaanmu dinilai.'],
+  ['kori', 'Punya PDF soal angkatan? Kirim lewat Chat Admin supaya bisa dipakai teman-teman juga.'],
+  ['kila', 'Pakai mode Learning kalau mau langsung tahu benar atau salah di tiap soal.'],
+  ['nilo', 'Catat jadwal ujianmu. Nanti ada hitung mundur dan pengingat H-7, H-3, dan H-1.'],
+  ['kila', 'Soal yang pernah salah akan muncul lagi. Itu tanda kamu sedang belajar, bukan gagal.'],
+  ['kori', 'Leaderboard menghitung latihan soal dan simulasi. Sedikit tiap hari lebih berarti daripada ngebut semalam.'],
+];
+function homeTip({ progress, ongoing, next }) {
+  const days = next ? daysUntil(next.examAt, next.timezone) : null;
+  if (days !== null && days >= 0 && days <= 3) return { mascot: 'nilo', mood: 'think', text: `${days === 0 ? 'Ujian hari ini' : days === 1 ? 'Ujian besok' : `Ujian ${days} hari lagi`}. Ulangi soal yang pernah salah, lalu tidur cukup ya.` };
+  if (ongoing.length) return { mascot: 'kori', mood: 'wave', text: 'Ada latihan yang belum selesai. Lanjutkan dari bagian Lanjutkan di bawah.' };
+  if ((progress?.streak || 0) >= 3) return { mascot: 'kila', mood: 'cheer', text: `${progress.streak} hari aktif berturut-turut! Satu BAB kecil hari ini sudah cukup untuk menjaganya.` };
+  const n = Math.floor(Date.now() / 86400000) % DAILY_TIPS.length;
+  return { mascot: DAILY_TIPS[n][0], mood: 'idle', text: DAILY_TIPS[n][1] };
+}
 
 // Deretan mata kuliah yang bisa digeser, dengan tombol panah di layar lebar.
 function SubjectRail({ items }) {
@@ -92,6 +112,7 @@ export default function Home() {
         <p className="mt-3 max-w-xl text-[17px] text-ink-muted">Mau mulai dari mana hari ini? Satu BAB kecil pun tetap dihitung.</p>
         <p className="hand page-head-note home-note" aria-hidden>sedikit lebih paham, setiap hari ✎</p>
       </header>
+      {(() => { const t = homeTip({ progress, ongoing, next }); return <MascotTip mascot={t.mascot} mood={t.mood} size={68} className="max-w-2xl">{t.text}</MascotTip>; })()}
       <Alert>{error}</Alert>
 
       {banners.length > 0 && (

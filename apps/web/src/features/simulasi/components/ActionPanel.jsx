@@ -21,7 +21,8 @@ const PROMPT = {
   penunjang: 'Pemeriksaan apa yang kamu perlukan?',
   tata: 'Apa rencana penanganannya?',
 };
-const DX_SORTED = Object.keys(DX).sort((a, b) => DX[a][0].localeCompare(DX[b][0], 'id'));
+// Dihitung saat dipakai karena daftar diagnosis bisa diganti dari server.
+const dxSorted = () => Object.keys(DX).sort((a, b) => DX[a][0].localeCompare(DX[b][0], 'id'));
 
 function ActionRow({ it, sim, showArea }) {
   const { s } = sim;
@@ -148,7 +149,7 @@ function DxStep({ sim, onFinish }) {
         <label className="sr-only" htmlFor="sim-dx-sel">Diagnosis kerja</label>
         <select id="sim-dx-sel" name="dx" defaultValue={s.dx} disabled={s.finished} key={s.dx}>
           <option value="">Pilih diagnosis kerja…</option>
-          {DX_SORTED.map((k) => <option key={k} value={k}>{DX[k][0]}</option>)}
+          {dxSorted().map((k) => <option key={k} value={k}>{DX[k][0]}</option>)}
         </select>
         <button type="submit" className="btn-secondary" disabled={s.finished}>{s.dx ? 'Ganti' : 'Tetapkan'}</button>
       </form>

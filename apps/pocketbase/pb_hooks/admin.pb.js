@@ -209,7 +209,7 @@ routerAdd("GET", "/api/medcoel/admin/users", (e) => {
   const parts = ["id != ''"];
   const params = {};
   const q = u.query(e, "q");
-  if (q) { parts.push("(name ~ {:q} || loginId ~ {:q} || email ~ {:q} || whatsapp ~ {:q})"); params.q = q; }
+  if (q) { parts.push("(name ~ {:q} || loginId ~ {:q} || email ~ {:q} || whatsapp ~ {:q} || extra ~ {:q})"); params.q = q; }
   const st = u.query(e, "status");
   if (st === "active") parts.push("disabled = false && deletedAt = ''");
   if (st === "disabled") parts.push("disabled = true && deletedAt = ''");
@@ -227,12 +227,13 @@ routerAdd("GET", "/api/medcoel/admin/users", (e) => {
     out.proofs = e.app.findRecordsByFilter("community_proofs", "user = {:u}", "created", 10, 0, { u: usr.id }).map((p) => {
       let link = "";
       try { link = storage.linkFor(e.app, e.app.findRecordById("stored_files", p.getString("file")), admin).url; } catch (_) {}
-      return { kind: p.getString("kind"), link: link, created: p.getString("created") };
+      return { kind: p.getString("kind"), key: p.getString("proofKey") || p.getString("kind"), link: link, created: p.getString("created") };
     });
     out.attempts = e.app.countRecords("attempts", $dbx.exp("user = {:u}", { u: usr.id }));
     return out;
   });
-  return e.json(200, { items: items, page: page, totalItems: total });
+  const cfg = require(`${__hooks}/lib/signupConfig.js`).config(e.app);
+  return e.json(200, { items: items, page: page, totalItems: total, fields: cfg.fields, proofSteps: cfg.proofs.map((p) => ({ key: p.key, title: p.short || p.title })) });
 });
 
 routerAdd("POST", "/api/medcoel/admin/users/{id}", (e) => {
@@ -242,7 +243,7 @@ routerAdd("POST", "/api/medcoel/admin/users/{id}", (e) => {
   let usr;
   try { usr = e.app.findRecordById("users", e.request.pathValue("id")); } catch (_) { throw new NotFoundError("Pengguna tidak ditemukan."); }
   if (usr.id === admin.id && (b.action === "disable" || b.action === "delete")) throw new BadRequestError("Tidak bisa menonaktifkan akunmu sendiri.");
-  if (u.roleOf(usr) === "admin" && b.action !== "enable") throw new BadRequestError("Akun admin dikelola langsung di database.");
+  if (u.roleOf(usr) === "admin" && b.action !== "enable" && b.action !== "profile") throw new BadRequestError("Akun admin dikelola langsung di database.");
   const reason = u.cleanStr(b.reason, 300);
   if (b.action === "disable") {
     usr.set("disabled", true);
@@ -272,11 +273,91 @@ routerAdd("POST", "/api/medcoel/admin/users/{id}", (e) => {
     e.app.save(log);
     usr.set("campus", cid);
     usr.set("campusOther", cid ? "" : u.cleanStr(b.campusOther, 200));
+  } else if (b.action === "profile") {
+    // Ubah data diri oleh admin. Hanya field yang dikirim yang diubah.
+    const cfg = require(`${__hooks}/lib/signupConfig.js`);
+    const errors = {};
+    if (b.name !== undefined) {
+      const name = u.cleanStr(b.name, 100).replace(/\s+/g, " ");
+      if (name.length < 2) errors.name = "Nama minimal 2 huruf."; else usr.set("name", name);
+    }
+    if (b.loginId !== undefined) {
+      const id = u.cleanStr(b.loginId, 40).toLowerCase();
+      if (!/^[a-z0-9._]{4,30}$/.test(id)) errors.loginId = "Login ID 4-30 karakter: huruf kecil, angka, titik, atau garis bawah.";
+      else if (id !== usr.getString("loginId")) {
+        let taken = false;
+        try { e.app.findFirstRecordByFilter("users", "loginId = {:id}", { id: id }); taken = true; } catch (_) {}
+        if (taken) errors.loginId = "Login ID sudah dipakai."; else usr.set("loginId", id);
+      }
+    }
+    if (b.email !== undefined) {
+      const email = u.cleanStr(b.email, 200).toLowerCase();
+      if (!u.isEmail(email)) errors.email = "Format email belum benar.";
+      else if (email !== usr.email()) {
+        let taken = false;
+        try { e.app.findAuthRecordByEmail("users", email); taken = true; } catch (_) {}
+        if (taken) errors.email = "Email sudah dipakai akun lain."; else usr.setEmail(email);
+      }
+    }
+    if (b.whatsapp !== undefined) {
+      const raw = String(b.whatsapp || "").trim();
+      const wa = u.normalizePhone(raw);
+      if (raw && !wa) errors.whatsapp = "Nomor WhatsApp belum benar."; else usr.set("whatsapp", wa || "");
+    }
+    if (b.semester !== undefined) {
+      const sem = parseInt(b.semester, 10) || 0;
+      if (sem < 0 || sem > 14) errors.semester = "Semester 0-14 (0 = tidak diisi)."; else usr.set("semester", sem);
+    }
+    if (b.leaderboardAnonymous !== undefined) usr.set("leaderboardAnonymous", b.leaderboardAnonymous === true);
+    if (b.role !== undefined && u.roleOf(usr) !== "admin") {
+      if (b.role !== "user" && b.role !== "agent") errors.role = "Peran hanya pengguna atau agen."; else usr.set("role", b.role);
+    }
+    if (b.extra !== undefined) {
+      const r = cfg.validateExtra(cfg.config(e.app).fields, b.extra, "admin", u.recJson(usr, "extra", {}) || {});
+      Object.keys(r.errors).forEach((k) => { errors[k] = r.errors[k]; });
+      usr.set("extra", r.values);
+    }
+    if (Object.keys(errors).length) throw new BadRequestError("Ada isian yang perlu diperbaiki.", u.fieldErrors(errors));
   } else {
     throw new BadRequestError("Aksi tidak dikenal.");
   }
   e.app.save(usr);
   return e.json(200, u.userSummary(e.app, usr, true));
+});
+
+// Ekspor CSV semua pengguna yang cocok dengan filter (termasuk kolom tambahan).
+routerAdd("GET", "/api/medcoel/admin/users/export", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const cfg = require(`${__hooks}/lib/signupConfig.js`);
+  u.requireAdmin(e);
+  const parts = ["id != ''"];
+  const params = {};
+  const q = u.query(e, "q");
+  if (q) { parts.push("(name ~ {:q} || loginId ~ {:q} || email ~ {:q} || whatsapp ~ {:q} || extra ~ {:q})"); params.q = q; }
+  const st = u.query(e, "status");
+  if (st === "active") parts.push("disabled = false && deletedAt = ''");
+  if (st === "disabled") parts.push("disabled = true && deletedAt = ''");
+  if (st === "deleted") parts.push("deletedAt != ''");
+  const list = e.app.findRecordsByFilter("users", parts.join(" && "), "-created", 20000, 0, params);
+  const fields = cfg.config(e.app).fields;
+  const cell = (v) => {
+    let t = v === undefined || v === null ? "" : String(v);
+    // Cegah rumus spreadsheet dari isian pengguna.
+    if (/^[=+\-@\t\r]/.test(t)) t = "'" + t;
+    return /[",\n\r;]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t;
+  };
+  const head = ["Login ID", "Nama", "Email", "WhatsApp", "Semester", "Kampus", "Peran", "Status", "Terdaftar", "Terakhir aktif"].concat(fields.map((f) => f.label));
+  const rows = [head.map(cell).join(",")];
+  list.forEach((usr) => {
+    const s = u.userSummary(e.app, usr, true);
+    const status = s.deletedAt ? "Dihapus" : s.disabled ? "Nonaktif" : "Aktif";
+    rows.push([s.loginId, s.name, s.email, s.whatsapp, s.semester || "", s.campusName, s.role, status, s.created, s.lastActiveAt]
+      .concat(fields.map((f) => { const v = s.extra[f.key]; return typeof v === "boolean" ? (v ? "Ya" : "Tidak") : v; }))
+      .map(cell).join(","));
+  });
+  e.response.header().set("Content-Type", "text/csv; charset=utf-8");
+  e.response.header().set("Content-Disposition", 'attachment; filename="pengguna-medcoel.csv"');
+  return e.string(200, "\ufeff" + rows.join("\r\n") + "\r\n");
 });
 
 // ---------------------------------------------------------------------------

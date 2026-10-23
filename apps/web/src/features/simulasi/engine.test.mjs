@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
-  BYID, CASES, CAT, DX, PLAYABLE, actionLines, areasFor, caseCtx, ddxOptions, judgeDdx, judgeReason, pickCase, reasonSet, rel, score,
+  BUILTIN_CASES, BUILTIN_DX, BYID, CASES, CAT, DX, PLAYABLE, actionLines, areasFor, caseCtx, caseSprites, ddxOptions, judgeDdx, judgeReason,
+  pickCase, reasonSet, rel, score, setContent,
 } from './engine.js';
 
 test('katalog terbaca dan id unik', () => {
@@ -93,10 +94,36 @@ test('kasus acak tidak mengulang kasus sebelumnya dan tidak memilih ruang tunggu
   }
 });
 
-test('data kasus di server sama dengan di web (judul dan diagnosis tepat)', async () => {
-  const { createRequire } = await import('node:module');
-  const require = createRequire(import.meta.url);
-  const server = require('../../../../pocketbase/pb_hooks/lib/doctorSim.js');
-  assert.deepEqual(Object.keys(server.CASES).sort(), [...PLAYABLE].sort());
-  for (const k of PLAYABLE) assert.equal(server.CASES[k].dxOk, CASES[k].dxOk, k);
+test('isi awal database (migrasi) sama dengan kasus bawaan web', async () => {
+  const fs = await import('node:fs');
+  const { fileURLToPath } = await import('node:url');
+  const path = await import('node:path');
+  const file = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../pocketbase/pb_migrations/1800000900_sim_content.js');
+  const src = fs.readFileSync(file, 'utf8');
+  const seed = JSON.parse(src.match(/const SEED_CASES = (.*);\n/)[1]);
+  const dx = JSON.parse(src.match(/const SEED_DX = (.*);\n/)[1]);
+  assert.deepEqual(seed.map((c) => c.key).sort(), [...PLAYABLE].sort());
+  for (const c of seed) {
+    const C = BUILTIN_CASES[c.key];
+    assert.equal(c.dxOk, C.dxOk, c.key);
+    assert.deepEqual(c.data.A, JSON.parse(JSON.stringify(C.A)), `${c.key}: jalankan node scripts/export-sim-seed.mjs setelah mengubah data/cases.js`);
+    assert.equal(c.data.K, C.K, c.key);
+  }
+  assert.deepEqual(dx.map((d) => d.key).sort(), Object.keys(BUILTIN_DX).sort());
+});
+
+test('isi dari server mengganti kasus; kasus tutorial tetap ada walau dinonaktifkan', () => {
+  const extra = { ...BUILTIN_CASES.bedah, poli: 'bedah', id: 'Bu Tes, 30 tahun' };
+  setContent({ cases: { bedah: BUILTIN_CASES.bedah, bedah2: extra }, dx: BUILTIN_DX });
+  try {
+    assert.deepEqual([...PLAYABLE].sort(), ['bedah', 'bedah2']);
+    assert.equal(CASES.umum.tutorialOnly, true);
+    const ctx = caseCtx('bedah2');
+    assert.equal(ctx.poli, 'bedah');
+    assert.equal(ctx.key, 'bedah2');
+    assert.ok(caseSprites(ctx, 'L').includes('BG_bedah'));
+    for (let i = 0; i < 20; i++) assert.notEqual(pickCase('bedah', () => i / 20), 'umum');
+  } finally {
+    setContent({ cases: BUILTIN_CASES, dx: BUILTIN_DX });
+  }
 });

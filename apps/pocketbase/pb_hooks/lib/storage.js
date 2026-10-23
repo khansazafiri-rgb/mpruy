@@ -11,6 +11,7 @@ const drive = require(HOOKS + "/lib/drive.js");
 const KIND_RULES = {
   proof_whatsapp: { mimes: ["image/jpeg", "image/png", "image/webp"], maxBytes: 2 * 1024 * 1024, label: "foto bukti" },
   proof_instagram: { mimes: ["image/jpeg", "image/png", "image/webp"], maxBytes: 2 * 1024 * 1024, label: "foto bukti" },
+  proof_other: { mimes: ["image/jpeg", "image/png", "image/webp"], maxBytes: 2 * 1024 * 1024, label: "foto bukti" },
   submission_pdf: { mimes: ["application/pdf"], maxBytes: 0, label: "PDF" },
 };
 
@@ -58,6 +59,7 @@ function init(app, opts) {
   rec.set("kind", opts.kind);
   if (opts.owner) rec.set("owner", opts.owner);
   if (opts.draftId) rec.set("draftId", opts.draftId);
+  if (opts.proofKey) rec.set("proofKey", opts.proofKey);
   if (opts.submission) rec.set("submission", opts.submission);
   rec.set("storage", mode());
   rec.set("name", safeName(opts.name, mime === "application/pdf" ? ".pdf" : ".jpg"));

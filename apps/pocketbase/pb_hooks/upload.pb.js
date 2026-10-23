@@ -14,18 +14,23 @@ routerAdd("POST", "/api/medcoel/upload/init", (e) => {
   const origin = e.request.header.get("Origin") || "";
   const opts = { kind: kind, name: b.name, size: b.size, mime: b.mime, origin: origin };
 
-  if (kind === "proof_whatsapp" || kind === "proof_instagram") {
+  if (kind.indexOf("proof_") === 0) {
     const sg = require(`${__hooks}/lib/signup.js`);
+    const cfg = require(`${__hooks}/lib/signupConfig.js`);
     const draft = sg.loadDraft(e.app, b.draftId, b.draftToken);
     if (!draft.getBool("emailVerified") || draft.getInt("step") < 4) {
       throw new BadRequestError("Selesaikan langkah sebelumnya dulu.");
     }
+    const proofKey = kind.slice(6);
+    if (!cfg.activeProofs(e.app).some((p) => p.key === proofKey)) throw new BadRequestError("Jenis bukti tidak dikenal.");
     // Batas wajar supaya draft tidak dipakai untuk menimbun file.
     const n = e.app.countRecords("stored_files", $dbx.exp("draftId = {:d}", { d: draft.id }));
-    if (n >= 10) throw new BadRequestError("Terlalu banyak foto diunggah untuk pendaftaran ini. Mulai lagi dari awal.");
+    if (n >= 20) throw new BadRequestError("Terlalu banyak foto diunggah untuk pendaftaran ini. Mulai lagi dari awal.");
+    opts.kind = cfg.proofStoredKind(proofKey);
+    opts.proofKey = proofKey;
     opts.draftId = draft.id;
-    opts.folder = ["bukti-komunitas", kind === "proof_whatsapp" ? "whatsapp" : "instagram", u.localDate(new Date(), "WIB").slice(0, 7)];
-    opts.name = draft.getString("loginId") + "-" + (kind === "proof_whatsapp" ? "wa" : "ig") + "-" + Date.now() + extOf(b.mime);
+    opts.folder = ["bukti-komunitas", proofKey, u.localDate(new Date(), "WIB").slice(0, 7)];
+    opts.name = draft.getString("loginId") + "-" + proofKey + "-" + Date.now() + extOf(b.mime);
   } else if (kind === "submission_pdf") {
     const user = u.requireUser(e);
     const s = u.settings(e.app);

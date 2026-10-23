@@ -60,6 +60,7 @@ routerAdd("POST", "/api/medcoel/signup/start", (e) => {
     semester: p.semester,
     campus: p.campus,
     campusOther: p.campusOther,
+    extra: p.extra,
   });
   draft.set("passwordEnc", $security.encrypt(p.password, u.secretKey(e.app)));
   draft.set("ip", e.realIP());
@@ -142,29 +143,38 @@ routerAdd("POST", "/api/medcoel/signup/subjects", (e) => {
   return e.json(200, sg.state(e.app, draft, {}));
 });
 
+// Bukti komunitas. kind = kunci langkah dari Pengaturan > Pendaftaran
+// (whatsapp, instagram, atau langkah buatan admin). Langkah opsional bisa
+// dilewati dengan { skip: true }.
 routerAdd("POST", "/api/medcoel/signup/proof", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
   const sg = require(`${__hooks}/lib/signup.js`);
+  const cfg = require(`${__hooks}/lib/signupConfig.js`);
   const b = u.body(e);
   const draft = sg.loadDraft(e.app, b.draftId, b.draftToken);
-  const kind = b.kind === "instagram" ? "instagram" : b.kind === "whatsapp" ? "whatsapp" : "";
-  if (!kind) throw new BadRequestError("Jenis bukti tidak dikenal.");
-  if (b.joined !== true) {
-    throw new BadRequestError(
-      kind === "whatsapp"
-        ? "Gabung ke komunitas WhatsApp MEDCOEL dulu supaya bisa lanjut."
-        : "Ikuti Instagram MEDCOEL dulu supaya bisa lanjut.",
-    );
+  const steps = cfg.activeProofs(e.app);
+  const idx = steps.findIndex((p) => p.key === String(b.kind || ""));
+  if (idx < 0) throw new BadRequestError("Jenis bukti tidak dikenal.");
+  const ps = steps[idx];
+  if (draft.getInt("step") < 4 + idx) throw new BadRequestError("Selesaikan langkah sebelumnya dulu.");
+  const given = sg.draftProofs(draft);
+  if (b.skip === true) {
+    if (ps.required) throw new BadRequestError("Langkah " + ps.title + " wajib diselesaikan.");
+    given[ps.key] = null;
+  } else {
+    if (b.joined !== true) throw new BadRequestError(ps.title + " dulu supaya bisa lanjut.");
+    let file;
+    try { file = e.app.findRecordById("stored_files", String(b.fileId || "")); } catch (_) { file = null; }
+    const kindOk = file && file.getString("kind") === cfg.proofStoredKind(ps.key) && (file.getString("kind") !== "proof_other" || file.getString("proofKey") === ps.key);
+    if (!file || !kindOk || file.getString("draftId") !== draft.id || file.getString("status") !== "ready") {
+      throw new BadRequestError("Foto bukti belum terunggah. Pilih fotonya lagi.");
+    }
+    given[ps.key] = file.id;
+    if (ps.key === "whatsapp") draft.set("proofWhatsapp", file.id);
+    if (ps.key === "instagram") draft.set("proofInstagram", file.id);
   }
-  const needStep = kind === "whatsapp" ? 4 : 5;
-  if (draft.getInt("step") < needStep) throw new BadRequestError("Selesaikan langkah sebelumnya dulu.");
-  let file;
-  try { file = e.app.findRecordById("stored_files", String(b.fileId || "")); } catch (_) { file = null; }
-  if (!file || file.getString("draftId") !== draft.id || file.getString("kind") !== "proof_" + kind || file.getString("status") !== "ready") {
-    throw new BadRequestError("Foto bukti belum terunggah. Pilih fotonya lagi.");
-  }
-  draft.set(kind === "whatsapp" ? "proofWhatsapp" : "proofInstagram", file.id);
-  draft.set("step", Math.max(kind === "whatsapp" ? 5 : 6, draft.getInt("step")));
+  draft.set("proofs", given);
+  draft.set("step", Math.max(5 + idx, draft.getInt("step")));
   e.app.save(draft);
   return e.json(200, sg.state(e.app, draft, {}));
 });

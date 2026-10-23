@@ -1,0 +1,19 @@
+/* Maskot + gelembung bicara kecil untuk dipakai di banyak halaman. */
+.mtip { display: flex; align-items: flex-end; gap: 10px; }
+.mtip.is-right { flex-direction: row-reverse; }
+.mtip.is-stack { flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+.mtip-mascot { flex-shrink: 0; filter: drop-shadow(0 8px 10px rgb(10 56 48 / .16)); }
+.mtip-bubble { position: relative; min-width: 0; background: #fff; border: 1.5px solid rgb(var(--ink) / .1); border-radius: 18px; padding: 10px 14px; box-shadow: 0 4px 0 rgb(var(--ink) / .06); font-size: 14px; line-height: 1.45; color: rgb(var(--ink)); }
+.mtip:not(.is-stack) .mtip-bubble { border-bottom-left-radius: 6px; }
+.mtip.is-right .mtip-bubble { border-bottom-left-radius: 18px; border-bottom-right-radius: 6px; }
+.mtip-bubble::before { content: ''; position: absolute; width: 12px; height: 12px; background: #fff; transform: rotate(45deg); }
+.mtip:not(.is-stack):not(.is-right) .mtip-bubble::before { left: -7px; bottom: 12px; border-left: 1.5px solid rgb(var(--ink) / .1); border-bottom: 1.5px solid rgb(var(--ink) / .1); }
+.mtip.is-right .mtip-bubble::before { right: -7px; bottom: 12px; border-right: 1.5px solid rgb(var(--ink) / .1); border-top: 1.5px solid rgb(var(--ink) / .1); }
+.mtip.is-stack .mtip-bubble::before { left: 50%; top: -7px; margin-left: -6px; border-left: 1.5px solid rgb(var(--ink) / .1); border-top: 1.5px solid rgb(var(--ink) / .1); }
+.mtip-title { font-family: 'Plus Jakarta Sans', Inter, sans-serif; font-weight: 700; margin-bottom: 2px; }
+.mtip-name { display: block; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: rgb(var(--brand)); margin-bottom: 1px; }
+.mtip.is-pop { animation: mtip-pop .45s cubic-bezier(.3,1.5,.5,1) both; }
+@keyframes mtip-pop { from { opacity: 0; transform: translateY(10px) scale(.92); } to { opacity: 1; transform: none; } }
+.mtip-toast { position: fixed; z-index: 60; left: 50%; bottom: 92px; transform: translateX(-50%); width: min(92vw, 420px); pointer-events: none; }
+@media (min-width: 1024px) { .mtip-toast { bottom: 28px; } }
+@media (prefers-reduced-motion: reduce) { .mtip.is-pop { animation: none; } }
