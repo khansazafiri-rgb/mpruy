@@ -3,10 +3,12 @@ import { loadConfig } from './config.mjs';
 import { MedcoelClient } from './medcoel.mjs';
 import { StateStore } from './state.mjs';
 import { TelegramClient, escapeHtml } from './telegram.mjs';
+import { DriveClient } from './drive.mjs';
 
 const config = loadConfig();
 const medcoel = new MedcoelClient(config);
 const telegram = new TelegramClient(config);
+const drive = new DriveClient(config);
 const state = new StateStore(config.stateDir);
 await state.load();
 
@@ -19,6 +21,7 @@ process.on('SIGINT', () => { stopping = true; });
 console.log('[Hermes] starting');
 await medcoel.login();
 console.log('[Hermes] MEDCOEL agent login OK');
+console.log(`[Hermes] Drive PDF relay ${drive.configured ? 'enabled' : 'disabled'}`);
 
 queueLoop().catch((err) => fatal('queue loop', err));
 telegramLoop().catch((err) => fatal('telegram loop', err));
@@ -45,9 +48,13 @@ async function queueLoop() {
       for (const sub of result?.items || []) {
         const key = `${sub.id}:${sub.updated || sub.confirmedAt || sub.status || 'antre'}`;
         if (state.hasAnnounced(key)) continue;
-        const text = queueCard(sub, result.queue);
         for (const adminId of config.telegramAdmins) {
-          try { await telegram.sendMessage(adminId, text); } catch (err) { console.error(`[Hermes] notify ${adminId}:`, err.message); }
+          try {
+            await telegram.sendMessage(adminId, queueCard(sub, result.queue));
+            if (drive.configured) await relaySubmissionFiles(adminId, sub);
+          } catch (err) {
+            console.error(`[Hermes] notify ${adminId}:`, err.message);
+          }
         }
         await state.markAnnounced(key);
       }
@@ -80,6 +87,8 @@ async function handleUpdate(update) {
   if (m) return needsFix(msg.chat.id, m[1], m[2]);
   m = text.match(/^\/show\s+(\S+)$/i);
   if (m) return showSubmission(msg.chat.id, m[1]);
+  m = text.match(/^\/files\s+(\S+)$/i);
+  if (m) return showFiles(msg.chat.id, m[1]);
 
   return telegram.sendMessage(msg.chat.id, 'Perintah tidak dikenali. Kirim /help.');
 }
@@ -89,6 +98,7 @@ async function help(chatId) {
     '<b>MEDCOEL Hermes Agent</b>\n\n' +
     '/queue — lihat pengajuan berstatus Antre\n' +
     '/show KODE — lihat detail pengajuan\n' +
+    '/files KODE — kirim PDF pengajuan ke chat ini\n' +
     '/claim KODE — ubah menjadi Diproses\n' +
     '/fix KODE alasan — tandai Perlu perbaikan\n\n' +
     '<b>Dry-run JSON</b>\n' +
@@ -109,6 +119,25 @@ async function showQueue(chatId) {
 async function showSubmission(chatId, id) {
   const sub = await medcoel.getSubmission(id);
   return telegram.sendMessage(chatId, queueCard(sub));
+}
+
+async function showFiles(chatId, id) {
+  const sub = await medcoel.getSubmission(id);
+  if (!drive.configured) return telegram.sendMessage(chatId, 'Drive relay Hermes belum dikonfigurasi.');
+  await telegram.sendMessage(chatId, `📎 Mengirim ${(sub.files || []).length} PDF untuk <b>${escapeHtml(sub.code || id)}</b>…`);
+  return relaySubmissionFiles(chatId, sub);
+}
+
+async function relaySubmissionFiles(chatId, sub) {
+  const files = (sub.files || []).filter((f) => f.driveFileId);
+  if (!files.length) return telegram.sendMessage(chatId, 'Tidak ada PDF Drive yang dapat dikirim.');
+
+  for (let i = 0; i < files.length; i += 1) {
+    const file = files[i];
+    const response = await drive.openFile(file.driveFileId);
+    const caption = `${sub.code || sub.id} · PDF ${i + 1}/${files.length}`;
+    await telegram.sendDocumentStream(chatId, file.name || `submission-${i + 1}.pdf`, response, caption);
+  }
 }
 
 async function claim(chatId, id) {
@@ -163,7 +192,7 @@ async function handleDocument(msg, caption) {
     submissionId,
     chapterId,
     fileName,
-    raw,
+    telegramFileId: String(msg.document.file_id),
     hash: digest,
     dryRun: { valid, invalid, duplicates, created },
   });
@@ -203,14 +232,21 @@ async function handleCallback(query) {
     return telegram.sendMessage(pending.chatId, `❌ Impor <b>${escapeHtml(pending.submissionId)}</b> dibatalkan. Tidak ada data ditulis.`);
   }
 
-  const digest = hashPayload(pending.submissionId, pending.chapterId, pending.raw);
+  if (!pending.telegramFileId) {
+    await state.deleteApproval(approvalId);
+    return telegram.answerCallbackQuery(query.id, 'Approval lama tidak memiliki referensi file. Jalankan dry-run lagi.');
+  }
+
+  const bytes = await telegram.downloadFile(pending.telegramFileId, config.maxJsonBytes);
+  const raw = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+  const digest = hashPayload(pending.submissionId, pending.chapterId, raw);
   if (!crypto.timingSafeEqual(Buffer.from(digest), Buffer.from(pending.hash))) {
     await state.deleteApproval(approvalId);
     return telegram.answerCallbackQuery(query.id, 'Hash berubah; impor ditolak.');
   }
 
   await telegram.answerCallbackQuery(query.id, 'Menjalankan verifikasi final…');
-  const payload = { chapter: pending.chapterId, text: pending.raw, skipInvalid: false, dryRun: true };
+  const payload = { chapter: pending.chapterId, text: raw, skipInvalid: false, dryRun: true };
   const check = await medcoel.importSubmission(pending.submissionId, payload);
   if (Number(check?.invalid || 0) > 0) throw new Error('Dry-run final tidak lagi valid; impor dibatalkan.');
 
@@ -231,7 +267,7 @@ async function reportUpdateError(update, err) {
 }
 
 function queueCard(sub, queue) {
-  const files = (sub.files || []).map((f) => `• ${escapeHtml(f.name)}${f.driveFileId ? ` · Drive ID <code>${escapeHtml(f.driveFileId)}</code>` : ''}`).join('\n') || '• tidak ada file';
+  const files = (sub.files || []).map((f) => `• ${escapeHtml(f.name)}${f.driveFileId ? ' · siap dikirim dari Drive' : ''}`).join('\n') || '• tidak ada file';
   const q = queue ? `\nAntrean PDF: ${Number(queue.totalQueuedPdf || 0)} · estimasi ${Number(queue.estimateDays || 0)} hari` : '';
   return `<b>📥 ${escapeHtml(sub.code || sub.id)}</b>\nStatus: ${escapeHtml(sub.status)}\nMata kuliah: ${escapeHtml(sub.subject?.name || sub.subject?.id || '-')}\nCakupan: ${escapeHtml(sub.restriction || sub.scope || '-')}\nPDF: ${Number(sub.pdfCount || (sub.files || []).length)}\n${files}${q}`;
 }
