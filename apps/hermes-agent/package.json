@@ -1,0 +1,13 @@
+{
+  "name": "@medcoel/hermes-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/index.mjs",
+    "check": "node --check src/index.mjs && node --check src/config.mjs && node --check src/medcoel.mjs && node --check src/telegram.mjs && node --check src/drive.mjs && node --check src/state.mjs"
+  }
+}
