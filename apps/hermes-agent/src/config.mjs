@@ -12,6 +12,10 @@ function integer(name, fallback, min = 1) {
   return value;
 }
 
+function optional(name) {
+  return String(process.env[name] || '').trim();
+}
+
 export function loadConfig() {
   const baseUrl = required('MEDCOEL_API_BASE_URL').replace(/\/+$/, '');
   const admins = required('TELEGRAM_ADMIN_IDS')
@@ -33,5 +37,8 @@ export function loadConfig() {
     telegramLongPollSeconds: integer('HERMES_TELEGRAM_LONG_POLL_SECONDS', 25, 1),
     stateDir: String(process.env.HERMES_STATE_DIR || './data').trim() || './data',
     maxJsonBytes: integer('HERMES_MAX_JSON_BYTES', 5 * 1024 * 1024, 1024),
+    driveClientId: optional('GDRIVE_CLIENT_ID'),
+    driveClientSecret: optional('GDRIVE_CLIENT_SECRET'),
+    driveRefreshToken: optional('GDRIVE_REFRESH_TOKEN'),
   };
 }
