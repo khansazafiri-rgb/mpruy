@@ -1,4 +1,4 @@
-import { Check, KeyRound, School, UserRound } from 'lucide-react';
+import { Check, GraduationCap, KeyRound, School, UserRound } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CampusPicker from '@/components/CampusPicker';
@@ -9,6 +9,30 @@ import { api, errorText } from '@/lib/api';
 import pb from '@/lib/pb';
 import { fmtDate } from '@/lib/time';
 import PageHead from '@/components/PageHead';
+import { openTutorialChooser } from '@/features/onboarding/state';
+import { tutorialStatus } from '@/lib/tutorial';
+
+const TUT_LABEL = { done: 'Selesai', skipped: 'Dilewati', '': 'Belum dicoba' };
+function TutorialSection() {
+  const { me } = useAuth();
+  const rows = [['fk', 'Latihan soal FK'], ['dokter', 'Simulasi jadi dokter']];
+  return (
+    <div className="space-y-4">
+      <ul className="grid gap-2 sm:grid-cols-2">
+        {rows.map(([k, label]) => {
+          const st = tutorialStatus(me, k);
+          return (
+            <li key={k} className="flex items-center justify-between gap-3 rounded-xl border border-line bg-page px-4 py-3">
+              <span className="font-semibold">{label}</span>
+              <span className={`chip ${st === 'done' ? 'bg-brand-soft text-brand-dark' : 'bg-gold-soft text-[#6b4f00]'}`}>{TUT_LABEL[st]}</span>
+            </li>
+          );
+        })}
+      </ul>
+      <button type="button" className="btn-secondary" onClick={openTutorialChooser}>Ulangi tutorial</button>
+    </div>
+  );
+}
 
 function Section({ icon: Icon, title, children }) {
   return (
@@ -169,6 +193,7 @@ export default function Profile() {
       <Section icon={UserRound} title="Data diri"><ProfileForm /></Section>
       <Section icon={School} title="Asal kampus"><CampusForm /></Section>
       <Section icon={KeyRound} title="Password"><PasswordForm /></Section>
+      <Section icon={GraduationCap} title="Tutorial"><TutorialSection /></Section>
     </div>
   );
 }

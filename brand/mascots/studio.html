@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio Maskot MEDCOEL</title>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:#f6f3ea;color:#172b38}
+header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:16px 20px;border-bottom:1px solid #e3dccb;background:#fff}
+header h1{font-size:18px;margin:0 16px 0 0}
+button{font:inherit;border:1.5px solid #17383022;background:#fff;border-radius:999px;padding:7px 14px;cursor:pointer;font-weight:600}
+button[aria-pressed=true]{background:#0a3830;color:#f6f3ea;border-color:#0a3830}
+main{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;padding:24px}
+figure{margin:0;background:var(--stage,#fff);border-radius:24px;padding:24px;display:grid;place-items:center;gap:10px}
+figcaption{font-weight:700}
+body.green figure{--stage:#0a3830;color:#f6f3ea}
+body.clear figure{--stage:transparent}
+.size{width:var(--s,220px);height:var(--s,220px)}
+/* Ekspresi maskot. Kelas lapisan dijelaskan di src/mascots/index.js. */
+.mc-character { display: inline-block; flex-shrink: 0; line-height: 0; }
+.mc-character svg { width: 100%; height: 100%; overflow: visible; }
+.mc-character .mc-float { transform-box: fill-box; transform-origin: 50% 80%; animation: mc-bob 3.3s ease-in-out infinite; }
+.mc-character .mc-eyes-normal { transform-box: fill-box; transform-origin: center; animation: mc-blink 5.6s infinite; }
+.mc-character .mc-arm-right { transform-box: fill-box; transform-origin: 10% 60%; }
+.mc-character .mc-eyes-happy, .mc-character .mc-mouth-happy, .mc-character .mc-mouth-think { transition: opacity .2s; }
+.mc-character .mc-spark { transform-box: fill-box; transform-origin: center; }
+
+.mc-character.mood-wave .mc-arm-right { animation: mc-wave .72s ease-in-out 3; }
+.mc-character.mood-happy .mc-eyes-normal, .mc-character.mood-cheer .mc-eyes-normal { opacity: 0; animation: none; }
+.mc-character.mood-happy .mc-eyes > circle, .mc-character.mood-cheer .mc-eyes > circle { opacity: 0; }
+.mc-character.mood-happy .mc-eyes-happy, .mc-character.mood-happy .mc-mouth-happy,
+.mc-character.mood-cheer .mc-eyes-happy, .mc-character.mood-cheer .mc-mouth-happy { opacity: 1; }
+.mc-character.mood-happy .mc-mouth-normal, .mc-character.mood-cheer .mc-mouth-normal { opacity: 0; }
+.mc-character.mood-happy .mc-spark, .mc-character.mood-cheer .mc-spark { animation: mc-twinkle .8s ease-in-out infinite alternate; }
+.mc-character.mood-cheer .mc-float { animation: mc-jump .9s cubic-bezier(.3,1.6,.5,1) infinite; }
+.mc-character.mood-cheer .mc-arm-right { animation: mc-wave .5s ease-in-out infinite; }
+.mc-character.mood-think .mc-mouth-normal { opacity: 0; }
+.mc-character.mood-think .mc-mouth-think { opacity: 1; }
+.mc-character.mood-think .mc-float { animation: mc-tilt 2.6s ease-in-out infinite; }
+/* Bicara: mulut membuka-menutup selama teks diketik. */
+.mc-character.mood-talk .mc-mouth-happy { animation: mc-talk .32s steps(2) infinite; }
+.mc-character.mood-talk .mc-mouth-normal { animation: mc-talk .32s steps(2) infinite reverse; }
+
+@keyframes mc-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes mc-blink { 0%, 45%, 47%, 100% { transform: scaleY(1); } 46% { transform: scaleY(.08); } }
+@keyframes mc-wave { 0%, 100% { transform: rotate(0); } 45% { transform: rotate(-18deg); } }
+@keyframes mc-twinkle { from { opacity: .55; transform: scale(.8); } to { opacity: 1; transform: scale(1.22); } }
+@keyframes mc-tilt { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(3deg); } }
+@keyframes mc-jump { 0%, 100% { transform: translateY(0) scale(1, 1); } 30% { transform: translateY(-18px) scale(.97, 1.03); } 60% { transform: translateY(0) scale(1.04, .96); } }
+@keyframes mc-talk { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+.mc-character.is-still *, .mc-character.is-still .mc-float { animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .mc-character *, .mc-character .mc-float { animation: none !important; } }
+
+</style></head><body>
+<header><h1>Studio Maskot</h1>
+<span>Ekspresi:</span><button data-mood="idle" aria-pressed="false">idle</button><button data-mood="wave" aria-pressed="true">wave</button><button data-mood="think" aria-pressed="false">think</button><button data-mood="happy" aria-pressed="false">happy</button><button data-mood="talk" aria-pressed="false">talk</button><button data-mood="cheer" aria-pressed="false">cheer</button>
+<span style="margin-left:12px">Latar:</span><button data-bg="" aria-pressed="true">putih</button><button data-bg="green" aria-pressed="false">hijau</button><button data-bg="clear" aria-pressed="false">transparan</button>
+<span style="margin-left:12px">Ukuran:</span><button data-size="160px">S</button><button data-size="220px">M</button><button data-size="420px">L</button>
+</header>
+<main><figure><span class="mc-character mood-wave size"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <g class="mc-float">
+    <ellipse cx="160" cy="286" rx="74" ry="10" fill="#172B38" opacity=".09"/>
+    <g class="mc-feet" fill="#00584E" stroke="#172B38" stroke-width="7" stroke-linejoin="round">
+      <path d="M112 243q-22 13-20 29 3 18 33 13l20-22z"/>
+      <path d="M208 243q22 13 20 29-3 18-33 13l-20-22z"/>
+    </g>
+    <path d="M163 83q-2-26 19-39" fill="none" stroke="#172B38" stroke-width="7" stroke-linecap="round"/>
+    <path d="M177 52q18-23 38-16-3 25-38 29-11-5 0-13z" fill="#F8C038" stroke="#172B38" stroke-width="7" stroke-linejoin="round"/>
+    <g class="mc-wave mc-arm-right">
+      <path d="M234 172q27-17 40-2 13 15-6 32l-25 13-16-27z" fill="#9DE0BD" stroke="#172B38" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M267 174q14-11 19-2 6 11-12 21" fill="none" stroke="#172B38" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <path d="M89 181q-24-19-40-6-15 14 1 32l23 16 22-26z" fill="#9DE0BD" stroke="#172B38" stroke-width="7" stroke-linejoin="round"/>
+    <path class="mc-body" d="M162 78C98 76 71 113 70 169c-2 60 33 100 91 100 62 0 96-42 95-100-1-55-31-91-94-91z" fill="#55C79D" stroke="#172B38" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M91 171q-2-58 48-73" fill="none" stroke="#A8EBCB" stroke-width="13" stroke-linecap="round" opacity=".9"/>
+    <ellipse cx="113" cy="188" rx="15" ry="9" fill="#F3A99A" opacity=".85"/>
+    <ellipse cx="207" cy="188" rx="15" ry="9" fill="#F3A99A" opacity=".85"/>
+    <g class="mc-eyes">
+      <g class="mc-eyes-normal" fill="#172B38"><ellipse cx="132" cy="160" rx="8" ry="12"/><ellipse cx="188" cy="160" rx="8" ry="12"/></g>
+      <g class="mc-eyes-happy" fill="none" stroke="#172B38" stroke-width="7" stroke-linecap="round" opacity="0"><path d="M119 164q13-16 26 0M175 164q13-16 26 0"/></g>
+      <circle cx="129" cy="155" r="2.5" fill="#fff"/><circle cx="185" cy="155" r="2.5" fill="#fff"/>
+    </g>
+    <path class="mc-mouth-normal" d="M148 187q12 12 24 0" fill="none" stroke="#172B38" stroke-width="6" stroke-linecap="round"/>
+    <path class="mc-mouth-happy" d="M144 183q16 26 32 0z" fill="#172B38" opacity="0"/>
+    <path class="mc-mouth-think" d="M156 188q7-5 13 0" fill="none" stroke="#172B38" stroke-width="5" stroke-linecap="round" opacity="0"/>
+    <circle class="mc-spark" cx="252" cy="75" r="8" fill="#F8C038"/>
+  </g>
+</svg></span><figcaption>Kori</figcaption></figure><figure><span class="mc-character mood-wave size"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <g class="mc-float">
+    <ellipse cx="161" cy="285" rx="73" ry="10" fill="#172B38" opacity=".09"/>
+    <g fill="#007060" stroke="#172B38" stroke-width="7" stroke-linejoin="round">
+      <path d="M116 240q-23 19-19 33 6 18 33 8l18-27z"/>
+      <path d="M205 240q23 19 19 33-6 18-33 8l-18-27z"/>
+    </g>
+    <path d="M94 145q-46-26-50 0-3 23 43 41z" fill="#B8F0D5" stroke="#172B38" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M225 145q46-26 50 0 3 23-43 41z" fill="#B8F0D5" stroke="#172B38" stroke-width="7" stroke-linejoin="round"/>
+    <g class="mc-wave mc-arm-right"><path d="M230 192q21-16 37-2 13 12-1 25-13 11-31 4z" fill="#F9D76F" stroke="#172B38" stroke-width="7"/></g>
+    <path d="M91 195q-23-16-37-1-12 13 3 25 13 10 32 2z" fill="#F9D76F" stroke="#172B38" stroke-width="7"/>
+    <path class="mc-body" d="M163 65q22 42 51 54 36 23 35 65-1 76-88 83-88-7-88-83-1-42 35-65 30-13 55-54z" fill="#FFD56B" stroke="#172B38" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M121 113q-35 24-29 70" fill="none" stroke="#FFEDAA" stroke-width="13" stroke-linecap="round"/>
+    <ellipse cx="112" cy="188" rx="15" ry="9" fill="#F3A99A"/><ellipse cx="210" cy="188" rx="15" ry="9" fill="#F3A99A"/>
+    <g class="mc-eyes">
+      <g class="mc-eyes-normal" fill="#172B38"><ellipse cx="133" cy="158" rx="8" ry="12"/><ellipse cx="190" cy="158" rx="8" ry="12"/></g>
+      <g class="mc-eyes-happy" fill="none" stroke="#172B38" stroke-width="7" stroke-linecap="round" opacity="0"><path d="M120 162q13-16 26 0M177 162q13-16 26 0"/></g>
+      <circle cx="130" cy="153" r="2.5" fill="#fff"/><circle cx="187" cy="153" r="2.5" fill="#fff"/>
+    </g>
+    <path class="mc-mouth-normal" d="M148 187q13 13 26 0" fill="none" stroke="#172B38" stroke-width="6" stroke-linecap="round"/>
+    <path class="mc-mouth-happy" d="M144 181q18 28 35 0z" fill="#172B38" opacity="0"/>
+    <path class="mc-mouth-think" d="M155 188q7-5 14 0" fill="none" stroke="#172B38" stroke-width="5" stroke-linecap="round" opacity="0"/>
+    <g class="mc-spark" fill="none" stroke="#F8C038" stroke-width="7" stroke-linecap="round"><path d="M250 67l8-19M267 76l17-10M248 87l19 6"/></g>
+  </g>
+</svg></span><figcaption>Kila</figcaption></figure><figure><span class="mc-character mood-wave size"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <g class="mc-float">
+    <ellipse cx="160" cy="286" rx="75" ry="10" fill="#172B38" opacity=".09"/>
+    <g fill="#123E49" stroke="#172B38" stroke-width="7" stroke-linejoin="round">
+      <path d="M113 245q-26 16-22 30 5 16 34 9l20-25z"/>
+      <path d="M208 245q26 16 22 30-5 16-34 9l-20-25z"/>
+    </g>
+    <path d="M86 183q-25-13-38 2-13 14 3 28 18 13 41-3z" fill="#69BFD0" stroke="#172B38" stroke-width="7"/>
+    <g class="mc-wave mc-arm-right"><path d="M234 178q23-19 37-3 14 14-1 28l-25 10z" fill="#69BFD0" stroke="#172B38" stroke-width="7"/></g>
+    <path class="mc-body" d="M80 137q-5-30 25-43 19-8 39 2 13-32 49-29 29 3 39 32 34-2 42 26 7 26-13 47 3 65-35 86-25 15-67 15-88 0-96-74-3-27 17-62z" fill="#315F73" stroke="#172B38" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M88 206q73 32 146 0-3 44-71 52-66-7-75-52z" fill="#DDF3EA"/>
+    <path d="M91 129q8-26 38-20" fill="none" stroke="#78AAB4" stroke-width="12" stroke-linecap="round"/>
+    <ellipse cx="113" cy="185" rx="14" ry="8" fill="#F3A99A"/><ellipse cx="210" cy="185" rx="14" ry="8" fill="#F3A99A"/>
+    <g class="mc-eyes">
+      <g class="mc-eyes-normal" fill="#fff"><ellipse cx="133" cy="158" rx="8" ry="12"/><ellipse cx="190" cy="158" rx="8" ry="12"/></g>
+      <g class="mc-eyes-happy" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity="0"><path d="M120 162q13-16 26 0M177 162q13-16 26 0"/></g>
+    </g>
+    <path class="mc-mouth-normal" d="M148 184q13 11 26 0" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+    <path class="mc-mouth-happy" d="M144 180q18 26 35 0z" fill="#fff" opacity="0"/>
+    <path class="mc-mouth-think" d="M155 187q7-5 14 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0"/>
+    <g class="mc-spark" fill="#F8C038"><circle cx="136" cy="232" r="7"/><circle cx="161" cy="238" r="7"/><circle cx="186" cy="232" r="7"/></g>
+  </g>
+</svg></span><figcaption>Nilo</figcaption></figure></main>
+<script>
+const set=(sel,attr,fn)=>document.querySelectorAll(sel).forEach(b=>b.onclick=()=>{document.querySelectorAll(sel).forEach(x=>x.setAttribute('aria-pressed',x===b));fn(b.dataset[attr])});
+set('[data-mood]','mood',m=>document.querySelectorAll('.mc-character').forEach(c=>c.className='mc-character size mood-'+m));
+set('[data-bg]','bg',v=>document.body.className=v);
+set('[data-size]','size',v=>document.documentElement.style.setProperty('--s',v));
+</script></body></html>

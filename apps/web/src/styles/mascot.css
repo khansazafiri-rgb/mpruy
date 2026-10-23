@@ -1,0 +1,35 @@
+/* Ekspresi maskot. Kelas lapisan dijelaskan di src/mascots/index.js. */
+.mc-character { display: inline-block; flex-shrink: 0; line-height: 0; }
+.mc-character svg { width: 100%; height: 100%; overflow: visible; }
+.mc-character .mc-float { transform-box: fill-box; transform-origin: 50% 80%; animation: mc-bob 3.3s ease-in-out infinite; }
+.mc-character .mc-eyes-normal { transform-box: fill-box; transform-origin: center; animation: mc-blink 5.6s infinite; }
+.mc-character .mc-arm-right { transform-box: fill-box; transform-origin: 10% 60%; }
+.mc-character .mc-eyes-happy, .mc-character .mc-mouth-happy, .mc-character .mc-mouth-think { transition: opacity .2s; }
+.mc-character .mc-spark { transform-box: fill-box; transform-origin: center; }
+
+.mc-character.mood-wave .mc-arm-right { animation: mc-wave .72s ease-in-out 3; }
+.mc-character.mood-happy .mc-eyes-normal, .mc-character.mood-cheer .mc-eyes-normal { opacity: 0; animation: none; }
+.mc-character.mood-happy .mc-eyes > circle, .mc-character.mood-cheer .mc-eyes > circle { opacity: 0; }
+.mc-character.mood-happy .mc-eyes-happy, .mc-character.mood-happy .mc-mouth-happy,
+.mc-character.mood-cheer .mc-eyes-happy, .mc-character.mood-cheer .mc-mouth-happy { opacity: 1; }
+.mc-character.mood-happy .mc-mouth-normal, .mc-character.mood-cheer .mc-mouth-normal { opacity: 0; }
+.mc-character.mood-happy .mc-spark, .mc-character.mood-cheer .mc-spark { animation: mc-twinkle .8s ease-in-out infinite alternate; }
+.mc-character.mood-cheer .mc-float { animation: mc-jump .9s cubic-bezier(.3,1.6,.5,1) infinite; }
+.mc-character.mood-cheer .mc-arm-right { animation: mc-wave .5s ease-in-out infinite; }
+.mc-character.mood-think .mc-mouth-normal { opacity: 0; }
+.mc-character.mood-think .mc-mouth-think { opacity: 1; }
+.mc-character.mood-think .mc-float { animation: mc-tilt 2.6s ease-in-out infinite; }
+/* Bicara: mulut membuka-menutup selama teks diketik. */
+.mc-character.mood-talk .mc-mouth-happy { animation: mc-talk .32s steps(2) infinite; }
+.mc-character.mood-talk .mc-mouth-normal { animation: mc-talk .32s steps(2) infinite reverse; }
+
+@keyframes mc-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes mc-blink { 0%, 45%, 47%, 100% { transform: scaleY(1); } 46% { transform: scaleY(.08); } }
+@keyframes mc-wave { 0%, 100% { transform: rotate(0); } 45% { transform: rotate(-18deg); } }
+@keyframes mc-twinkle { from { opacity: .55; transform: scale(.8); } to { opacity: 1; transform: scale(1.22); } }
+@keyframes mc-tilt { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(3deg); } }
+@keyframes mc-jump { 0%, 100% { transform: translateY(0) scale(1, 1); } 30% { transform: translateY(-18px) scale(.97, 1.03); } 60% { transform: translateY(0) scale(1.04, .96); } }
+@keyframes mc-talk { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+.mc-character.is-still *, .mc-character.is-still .mc-float { animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .mc-character *, .mc-character .mc-float { animation: none !important; } }

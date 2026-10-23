@@ -21,6 +21,8 @@ const Leaderboard = lazy(() => import('./pages/Leaderboard'));
 const Notifications = lazy(() => import('./pages/Notifications'));
 const ChatAdmin = lazy(() => import('./pages/ChatAdmin'));
 const Profile = lazy(() => import('./pages/Profile'));
+const SimulasiDokter = lazy(() => import('./pages/SimulasiDokter'));
+const TutorialLatihan = lazy(() => import('./pages/TutorialLatihan'));
 const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'));
 const AdminSummary = lazy(() => import('./pages/admin/Summary'));
 const AdminSubmissions = lazy(() => import('./pages/admin/Submissions'));
@@ -78,6 +80,8 @@ export default function App() {
             <Route path="/notifikasi" element={<Notifications />} />
             <Route path="/chat-admin" element={<ChatAdmin />} />
             <Route path="/profil" element={<Profile />} />
+            <Route path="/simulasi-dokter" element={<SimulasiDokter />} />
+            <Route path="/tutorial/latihan-soal" element={<TutorialLatihan />} />
           </Route>
           <Route path="/admin" element={<RequireAuth admin><AdminLayout /></RequireAuth>}>
             <Route index element={<AdminSummary />} />

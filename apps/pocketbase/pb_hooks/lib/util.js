@@ -384,6 +384,16 @@ function verifyTurnstile(token, ip) {
   }
 }
 
+// Status tutorial pengguna (users.tutorials), hanya kunci dan nilai yang dikenal.
+function tutorialsOf(u) {
+  let raw = {};
+  try { const txt = u.getString("tutorials"); raw = txt && txt !== "null" ? JSON.parse(txt) : {}; } catch (_) { raw = {}; }
+  if (typeof raw !== "object" || Array.isArray(raw)) raw = {};
+  const out = {};
+  ["fk", "dokter"].forEach((k) => { if (raw[k] === "done" || raw[k] === "skipped") out[k] = raw[k]; });
+  return out;
+}
+
 // Ringkasan aman satu akun, untuk dikirim ke pemiliknya sendiri atau admin.
 function userSummary(app, u, withPrivate) {
   let campusName = "";
@@ -412,11 +422,13 @@ function userSummary(app, u, withPrivate) {
     out.deletedAt = u.getString("deletedAt");
     out.campusChangedAt = u.getString("campusChangedAt");
     out.lastActiveAt = u.getString("lastActiveAt");
+    out.tutorials = tutorialsOf(u);
   }
   return out;
 }
 
 module.exports = {
+  tutorialsOf,
   lib,
   env,
   isDev,
