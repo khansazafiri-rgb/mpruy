@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import Countdown from '@/components/Countdown';
 import Ecg from '@/components/Ecg';
 import Illustration from '@/components/Illustration';
+import TutorialCard from '@/features/onboarding/TutorialCard';
+import SimHomeCard from '@/features/simulasi/components/HomeCard';
 import SubmissionCard from '@/components/SubmissionCard';
 import { Alert, ProgressBar } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
@@ -13,6 +15,7 @@ import { KIND } from '@/lib/labels';
 import pb from '@/lib/pb';
 import { daysUntil, fmtDateTime, relative } from '@/lib/time';
 import { toneClass } from '@/lib/tone';
+import { pendingTutorials } from '@/lib/tutorial';
 
 // Deretan mata kuliah yang bisa digeser, dengan tombol panah di layar lebar.
 function SubjectRail({ items }) {
@@ -170,6 +173,8 @@ export default function Home() {
         </section>
       )}
 
+      {(me?.role || 'user') === 'user' && <TutorialCard me={me} compact={!pendingTutorials(me).length} />}
+
       <section aria-labelledby="subj-title">
         <div className="mb-5 flex items-end justify-between gap-3">
           <div>
@@ -180,6 +185,8 @@ export default function Home() {
         </div>
         <SubjectRail items={shown} />
       </section>
+
+      <SimHomeCard />
 
       <section aria-labelledby="req-title">
         <div className="mb-4 flex items-end justify-between gap-3">

@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1 --port 3000",
     "lint": "eslint src --quiet",
-    "test": "node --test src/lib/*.test.mjs",
+    "test": "node --test src/lib/*.test.mjs src/features/*/*.test.mjs",
     "mascots": "node scripts/export-mascots.mjs"
   },
   "dependencies": {

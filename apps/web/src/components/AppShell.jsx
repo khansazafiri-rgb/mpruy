@@ -1,17 +1,19 @@
 import clsx from 'clsx';
 import {
-  Bell, BookOpen, CalendarDays, ChevronDown, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, Trophy, TrendingUp, User, X,
+  Bell, BookOpen, CalendarDays, ChevronDown, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, Stethoscope, Trophy, TrendingUp, User, X,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import AnnouncementPopup from './AnnouncementPopup';
 import ChatAdminWidget from './ChatAdminWidget';
+import TutorialGate from '@/features/onboarding/TutorialGate';
 import Logo from './Logo';
 
 const NAV = [
   { to: '/beranda', label: 'Beranda', short: 'Beranda', icon: Home },
   { to: '/mata-kuliah', label: 'Mata kuliah', short: 'Matkul', icon: BookOpen },
+  { to: '/simulasi-dokter', label: 'Simulasi dokter', desk: 'Simulasi', icon: Stethoscope, noBottom: true },
   { to: '/progres', label: 'Progres', short: 'Progres', icon: TrendingUp },
   { to: '/leaderboard', label: 'Leaderboard', short: 'Peringkat', icon: Trophy },
   { to: '/jadwal', label: 'Jadwal ujian', short: 'Jadwal', icon: CalendarDays },
@@ -44,7 +46,7 @@ export default function AppShell() {
           <nav className="ml-6 hidden items-center gap-1 lg:flex" aria-label="Navigasi utama">
             {NAV.map((n) => (
               <NavLink key={n.to} to={n.to} className={({ isActive }) => clsx('app-nav isolate font-medium transition-colors', isActive ? 'is-active' : 'text-ink-muted hover:bg-paper-2/60 hover:text-ink')}>
-                {n.label}
+                {n.desk || n.label}
               </NavLink>
             ))}
           </nav>
@@ -99,7 +101,7 @@ export default function AppShell() {
       </main>
 
       <nav className="bottom-nav fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t border-line bg-surface lg:hidden" aria-label="Navigasi bawah">
-        {NAV.filter((n) => n.to !== '/chat-admin').map((n) => (
+        {NAV.filter((n) => !n.noBottom && n.to !== '/chat-admin').map((n) => (
           <NavLink key={n.to} to={n.to} className={({ isActive }) => clsx('flex flex-col items-center gap-0.5 py-2 text-[12px] font-semibold', isActive ? 'is-active text-brand' : 'text-ink-muted')}>
             <n.icon size={21} aria-hidden /> <span className="truncate">{n.short || n.label}</span>
           </NavLink>
@@ -107,6 +109,7 @@ export default function AppShell() {
       </nav>
       <ChatAdminWidget />
       <AnnouncementPopup />
+      <TutorialGate />
     </div>
   );
 }

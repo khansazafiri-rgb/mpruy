@@ -508,4 +508,19 @@ await langkah('admin menonaktifkan akun: token lama dan login ditolak', async ()
   assert.ok(users.items[0].email.includes('@'));
 });
 
+console.log('Tutorial');
+await langkah('status tutorial kosong untuk akun baru, tersimpan per pengguna, dan selesai tidak bisa diturunkan', async () => {
+  const fresh = await daftar(`ujit${RUN}`, kampusA.id);
+  assert.deepEqual((await call('GET', '/api/medcoel/me', undefined, fresh.token, 200)).data.tutorials, {});
+  assert.deepEqual((await call('POST', '/api/medcoel/me/tutorial', { key: 'fk', status: 'skipped' }, fresh.token, 200)).data.tutorials, { fk: 'skipped' });
+  assert.deepEqual((await call('POST', '/api/medcoel/me/tutorial', { key: 'fk', status: 'done' }, fresh.token, 200)).data.tutorials, { fk: 'done' });
+  assert.deepEqual((await call('POST', '/api/medcoel/me/tutorial', { key: 'fk', status: 'skipped' }, fresh.token, 200)).data.tutorials, { fk: 'done' });
+  assert.deepEqual((await call('POST', '/api/medcoel/me/tutorial', { key: 'dokter', status: 'skipped' }, fresh.token, 200)).data.tutorials, { fk: 'done', dokter: 'skipped' });
+  assert.deepEqual((await call('GET', '/api/medcoel/me', undefined, fresh.token, 200)).data.tutorials, { fk: 'done', dokter: 'skipped' });
+  await call('POST', '/api/medcoel/me/tutorial', { key: 'admin', status: 'done' }, fresh.token, 400);
+  await call('POST', '/api/medcoel/me/tutorial', { key: 'fk', status: 'hapus' }, fresh.token, 400);
+  await call('POST', '/api/medcoel/me/tutorial', { key: 'fk', status: 'done' }, null, 401);
+  assert.deepEqual((await call('GET', '/api/medcoel/me', undefined, userA.token, 200)).data.tutorials, {});
+});
+
 console.log(`api.test: ${lulus} langkah lulus${process.exitCode ? ', ADA YANG GAGAL' : ''}`);
