@@ -1,6 +1,7 @@
 // Pemilih asal kampus yang bisa dicari, dengan pilihan Lainnya (isian bebas).
 import { Check, ChevronDown, Search } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { NO_CAMPUS } from '@/lib/campus';
 import pb from '@/lib/pb';
 
 let cache = null;
@@ -19,7 +20,8 @@ export default function CampusPicker({ value, other, onChange, id = 'campus', er
   const [q, setQ] = useState('');
   const [loadErr, setLoadErr] = useState('');
   const box = useRef(null);
-  const isOther = value === '__other__' || (!value && !!other);
+  const isNone = value === '__none__' || (!value && other === NO_CAMPUS);
+  const isOther = !isNone && (value === '__other__' || (!value && !!other));
 
   useEffect(() => { loadCampuses().then(setList).catch(() => setLoadErr('Daftar kampus gagal dimuat. Muat ulang halaman.')); }, []);
   useEffect(() => {
@@ -37,14 +39,14 @@ export default function CampusPicker({ value, other, onChange, id = 'campus', er
   }, [q, list]);
 
   const selected = list.find((c) => c.id === value);
-  const label = isOther ? 'Lainnya (tulis sendiri)' : selected ? `${selected.name}${selected.city ? ` (${selected.city})` : ''}` : 'Pilih asal kampus';
+  const label = isNone ? NO_CAMPUS : isOther ? 'Lainnya (tulis sendiri)' : selected ? `${selected.name}${selected.city ? ` (${selected.city})` : ''}` : 'Pilih asal kampus';
 
   return (
     <div ref={box} className="relative">
       <button
         type="button"
         id={id}
-        className={`input flex items-center justify-between text-left ${!selected && !isOther ? 'text-ink-faint' : ''} ${error ? 'border-coral' : ''}`}
+        className={`input flex items-center justify-between text-left ${!selected && !isOther && !isNone ? 'text-ink-faint' : ''} ${error ? 'border-coral' : ''}`}
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
@@ -70,7 +72,12 @@ export default function CampusPicker({ value, other, onChange, id = 'campus', er
             ))}
             {!filtered.length && !loadErr && <li className="px-3 py-2 text-sm text-ink-muted">Tidak ketemu. Pilih Lainnya di bawah.</li>}
             <li className="border-t border-line">
-              <button type="button" onClick={() => { onChange('__other__', other || q); setOpen(false); }} className="w-full px-3 py-2.5 text-left text-[15px] font-semibold text-academic hover:bg-page">
+              <button type="button" onClick={() => { onChange('__none__', ''); setOpen(false); setQ(''); }} className="w-full px-3 py-2.5 text-left text-[15px] font-semibold text-academic hover:bg-page">
+                Belum punya kampus, misalnya masih siswa SMA
+              </button>
+            </li>
+            <li className="border-t border-line">
+              <button type="button" onClick={() => { onChange('__other__', other === NO_CAMPUS ? q : other || q); setOpen(false); }} className="w-full px-3 py-2.5 text-left text-[15px] font-semibold text-academic hover:bg-page">
                 Lainnya, kampusku belum ada di daftar
               </button>
             </li>

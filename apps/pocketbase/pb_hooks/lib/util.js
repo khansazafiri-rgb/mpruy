@@ -397,6 +397,10 @@ function tutorialsOf(u) {
   return out;
 }
 
+// Akun tanpa kampus (mis. siswa SMA) disimpan sebagai campusOther bernilai konstanta ini.
+// Harus sama dengan NO_CAMPUS di apps/web/src/lib/campus.js.
+const NO_CAMPUS = "Tidak memiliki kampus";
+
 // Ringkasan aman satu akun, untuk dikirim ke pemiliknya sendiri atau admin.
 function userSummary(app, u, withPrivate) {
   let campusName = "";
@@ -413,6 +417,7 @@ function userSummary(app, u, withPrivate) {
     campus: campusId,
     campusName: campusName || u.getString("campusOther"),
     campusOther: u.getString("campusOther"),
+    noCampus: !campusId && u.getString("campusOther") === NO_CAMPUS,
     studyingSubjects: u.getStringSlice("studyingSubjects"),
     leaderboardAnonymous: u.getBool("leaderboardAnonymous"),
     created: u.getString("created"),
@@ -432,6 +437,7 @@ function userSummary(app, u, withPrivate) {
 }
 
 module.exports = {
+  NO_CAMPUS,
   tutorialsOf,
   lib,
   env,

@@ -429,7 +429,7 @@ routerAdd("GET", "/api/medcoel/admin/campuses/other", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
   u.requireAdmin(e);
   const rows = arrayOf(new DynamicModel({ name: "", n: 0 }));
-  e.app.db().newQuery("SELECT campusOther AS name, COUNT(*) AS n FROM users WHERE campusOther != '' GROUP BY LOWER(TRIM(campusOther)) ORDER BY n DESC LIMIT 50").all(rows);
+  e.app.db().newQuery("SELECT campusOther AS name, COUNT(*) AS n FROM users WHERE campusOther != '' AND campusOther != {:none} GROUP BY LOWER(TRIM(campusOther)) ORDER BY n DESC LIMIT 50").bind({ none: u.NO_CAMPUS }).all(rows);
   return e.json(200, { items: rows.map((r) => ({ name: r.name, count: r.n })) });
 });
 

@@ -2,6 +2,7 @@ import { Check, GraduationCap, KeyRound, School, UserRound } from 'lucide-react'
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CampusPicker from '@/components/CampusPicker';
+import { campusPayload, campusState } from '@/lib/campus';
 import ExtraFields, { extraDefaults } from '@/components/ExtraFields';
 import Illustration from '@/components/Illustration';
 import { Alert, Field } from '@/components/ui';
@@ -124,8 +125,8 @@ function ProfileForm() {
 
 function CampusForm() {
   const { me, setMe, settings } = useAuth();
-  const [campus, setCampus] = useState(me.campus || (me.campusOther ? '__other__' : ''));
-  const [other, setOther] = useState(me.campusOther || '');
+  const [campus, setCampus] = useState(campusState(me).campus);
+  const [other, setOther] = useState(campusState(me).other);
   const [error, setError] = useState('');
   const [msg, setMsg] = useState('');
   const [busy, setBusy] = useState(false);
@@ -136,21 +137,21 @@ function CampusForm() {
     if (!window.confirm(`Ganti kampus sekarang?${days ? ` Setelah ini kampus baru bisa diganti lagi ${days} hari kemudian.` : ''} Soal khusus kampus lama tidak akan terlihat lagi.`)) return;
     setBusy(true);
     try {
-      const r = await api('me/campus', { method: 'POST', body: campus === '__other__' ? { campusOther: other } : { campus } });
+      const r = await api('me/campus', { method: 'POST', body: campusPayload(campus, other) });
       setMe((m) => ({ ...m, ...r, nextCampusChangeAt: days ? new Date(Date.now() + days * 86400000).toISOString() : '' }));
       setMsg('Kampus sudah diganti.');
     } catch (e) { setError(e.message); } finally { setBusy(false); }
   };
   return (
     <div className="space-y-3">
-      <p className="text-sm text-ink-muted">Kampus sekarang: <b className="text-ink">{me.campusName || '-'}</b>. Soal khusus kampus mengikuti kampus akunmu saat ini.</p>
+      <p className="text-sm text-ink-muted">Kampus sekarang: <b className="text-ink">{me.campusName || '-'}</b>. Soal khusus kampus mengikuti kampus akunmu saat ini; soal General bisa dipakai siapa saja.</p>
       {locked ? (
         <Alert kind="info">Kampus bisa diganti lagi mulai {fmtDate(me.nextCampusChangeAt)}.</Alert>
       ) : (
         <>
           <CampusPicker value={campus} other={other} onChange={(c, o) => { setCampus(c); setOther(o); }} id="pf-campus" />
           <p className="hint">Kampus hanya bisa diganti sekali tiap {settings?.campusChangeDays || 30} hari.</p>
-          <button type="button" className="btn-secondary" onClick={save} disabled={busy || (campus === me.campus && campus !== '__other__')}>{busy ? 'Menyimpan...' : 'Ganti kampus'}</button>
+          <button type="button" className="btn-secondary" onClick={save} disabled={busy || (campus === campusState(me).campus && campus !== '__other__')}>{busy ? 'Menyimpan...' : 'Ganti kampus'}</button>
         </>
       )}
       <Alert kind="success">{msg}</Alert>

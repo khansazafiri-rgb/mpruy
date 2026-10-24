@@ -28,7 +28,7 @@ export function confirmMessage(sub, user) {
     `Jumlah PDF: ${sub.pdfCount}`,
     `Pembahasan & kunci di PDF: ${sub.hasKey ? 'Ada' : 'Belum ada'}`,
     `Bahasa: ${BAHASA[sub.language] || '-'}`,
-    `Dilihat oleh: ${sub.scope === 'campus' ? 'Hanya kampus saya' : 'Semua kampus'}`,
+    `Dilihat oleh: ${sub.scope === 'campus' ? 'Hanya kampus saya' : 'General'}`,
   ].join('\n');
 }
 
@@ -41,7 +41,7 @@ export function manyPdfMessage(a, user) {
     `Mata kuliah: ${a.subjectName}`,
     `Pembahasan & kunci di PDF: ${a.hasKey ? 'Ada' : 'Belum ada'}`,
     `Bahasa: ${BAHASA[a.language] || '-'}`,
-    `Dilihat oleh: ${a.scope === 'campus' ? 'Hanya kampus saya' : 'Semua kampus'}`,
+    `Dilihat oleh: ${a.scope === 'campus' ? 'Hanya kampus saya' : 'General'}`,
     'Jumlah PDF: lebih dari 5',
     '',
     'File PDF-nya saya kirim di chat ini.',

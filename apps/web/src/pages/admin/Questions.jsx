@@ -63,7 +63,7 @@ export default function Questions() {
             <select className="input py-2" value={f.qtype} onChange={(e) => set('qtype', e.target.value)} aria-label="Tipe"><option value="">Semua tipe</option>{Object.entries(QTYPE).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select>
             <select className="input py-2" value={f.difficulty} onChange={(e) => set('difficulty', e.target.value)} aria-label="Tingkat"><option value="">Semua tingkat</option>{Object.entries(DIFF).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select>
             <select className="input py-2" value={f.status} onChange={(e) => set('status', e.target.value)} aria-label="Status"><option value="">Tayang & draf</option><option value="published">Tayang</option><option value="draft">Draf</option></select>
-            <select className="input py-2" value={f.scope} onChange={(e) => set('scope', e.target.value)} aria-label="Kampus"><option value="">Umum & terbatas</option><option value="all">Soal umum</option><option value="campus">Terbatas kampus</option></select>
+            <select className="input py-2" value={f.scope} onChange={(e) => set('scope', e.target.value)} aria-label="Kampus"><option value="">General & terbatas</option><option value="all">Soal General</option><option value="campus">Terbatas kampus</option></select>
             <form onSubmit={(e) => { e.preventDefault(); setPage(1); load(); }}><input className="input py-2" placeholder="Cari teks / kode" value={f.q} onChange={(e) => setF((x) => ({ ...x, q: e.target.value }))} aria-label="Cari" /></form>
           </div>
 
@@ -101,7 +101,7 @@ export default function Questions() {
                         <td className="p-3 text-xs">{subjName(q.subject)}<br /><span className="text-ink-muted">{chTitle(q.subject, q.chapter)}</span></td>
                         <td className="p-3">{QTYPE[q.qtype]}{q.answer ? ` · ${q.answer}` : ''}</td>
                         <td className="p-3"><Badge className={DIFF_CLASS[q.difficulty]}>{DIFF[q.difficulty]}</Badge></td>
-                        <td className="p-3 text-xs">{q.scope === 'all' ? 'Umum' : `${q.campuses.length} kampus`}</td>
+                        <td className="p-3 text-xs">{q.scope === 'all' ? 'General' : `${q.campuses.length} kampus`}</td>
                         <td className="p-3"><button type="button" className="btn-ghost btn-sm" onClick={() => setEdit(q)} aria-label="Ubah soal"><Pencil size={15} /></button></td>
                       </tr>
                     ))}
@@ -139,7 +139,7 @@ export default function Questions() {
           )}
           {bulk === 'scope' && (
             <div className="space-y-3">
-              <select className="input" value={bulkVal.scope} onChange={(e) => setBulkVal((b) => ({ ...b, scope: e.target.value }))} aria-label="Pembatasan"><option value="all">Soal umum, semua kampus</option><option value="campus">Hanya kampus tertentu</option></select>
+              <select className="input" value={bulkVal.scope} onChange={(e) => setBulkVal((b) => ({ ...b, scope: e.target.value }))} aria-label="Pembatasan"><option value="all">Soal General (semua pengguna)</option><option value="campus">Hanya kampus tertentu</option></select>
               {bulkVal.scope === 'campus' && <CampusMulti value={bulkVal.campuses} onChange={(v) => setBulkVal((b) => ({ ...b, campuses: v }))} />}
             </div>
           )}

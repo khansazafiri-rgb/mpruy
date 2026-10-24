@@ -41,7 +41,7 @@ function ManualForm({ onClose, onSaved }) {
           <Field label="Mata kuliah" htmlFor="mf-subj"><select id="mf-subj" className="input" value={f.subject} onChange={(e) => set('subject', e.target.value)}><option value="">Pilih</option>{subjects.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}</select></Field>
           <Field label="Jumlah PDF" htmlFor="mf-n"><input id="mf-n" type="number" min={1} className="input" value={f.pdfCount} onChange={(e) => set('pdfCount', e.target.value)} /></Field>
           <Field label="Bahasa" htmlFor="mf-lang"><select id="mf-lang" className="input" value={f.language} onChange={(e) => set('language', e.target.value)}>{Object.entries(LANG).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select></Field>
-          <Field label="Dilihat oleh" htmlFor="mf-scope"><select id="mf-scope" className="input" value={f.scope} onChange={(e) => set('scope', e.target.value)}><option value="all">Semua kampus</option><option value="campus">Hanya kampus pengaju</option></select></Field>
+          <Field label="Dilihat oleh" htmlFor="mf-scope"><select id="mf-scope" className="input" value={f.scope} onChange={(e) => set('scope', e.target.value)}><option value="all">General (semua pengguna)</option><option value="campus">Hanya kampus pengaju</option></select></Field>
         </div>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={f.hasKey} onChange={(e) => set('hasKey', e.target.checked)} /> PDF sudah memuat kunci dan pembahasan</label>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={f.confirmNow} onChange={(e) => set('confirmNow', e.target.checked)} /> Langsung masukkan antrean (sudah dikonfirmasi lewat WhatsApp)</label>
@@ -106,7 +106,7 @@ export default function Submissions() {
                 <div className="min-w-0 flex-1">
                   <p className="text-xs font-semibold text-ink-muted">{s.code} · {fmtDateTime(s.submittedAt || s.created)}{s.viaWhatsapp ? ' · via WhatsApp' : ''}</p>
                   <p className="font-semibold">{s.subjectName} · {s.pdfCount} PDF</p>
-                  <p className="text-sm text-ink-muted">{s.user?.name} ({s.user?.loginId}) · {s.campusName || 'kampus belum terdaftar'} · {LANG[s.language]} · {s.hasKey ? 'ada kunci' : 'tanpa kunci'} · {s.scope === 'campus' ? 'hanya kampus pengaju' : 'semua kampus'}</p>
+                  <p className="text-sm text-ink-muted">{s.user?.name} ({s.user?.loginId}) · {s.campusName || 'kampus belum terdaftar'} · {LANG[s.language]} · {s.hasKey ? 'ada kunci' : 'tanpa kunci'} · {s.scope === 'campus' ? 'hanya kampus pengaju' : 'General'}</p>
                   {s.statusNote && <p className="mt-1 rounded-lg bg-page px-2 py-1 text-sm">{s.statusNote}</p>}
                   {s.queue && s.status === 'antre' && <p className="text-xs text-ink-muted">{s.queue.pdfAhead} PDF di depan · estimasi {s.queue.estimateDays} hari</p>}
                 </div>

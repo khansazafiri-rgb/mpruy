@@ -51,7 +51,7 @@ routerAdd("POST", "/api/medcoel/submissions", (e) => {
   const scope = b.scope === "campus" ? "campus" : b.scope === "all" ? "all" : "";
   if (!scope) throw new BadRequestError("Pilih siapa yang boleh melihat soalnya.");
   if (scope === "campus" && !user.getString("campus")) {
-    throw new BadRequestError("Kampusmu belum ada di daftar MEDCOEL, jadi pilihan Hanya kampus saya belum bisa dipakai. Pilih Semua kampus, atau hubungi admin.");
+    throw new BadRequestError("Kamu belum punya kampus di akunmu, jadi pilihan Hanya kampus saya belum bisa dipakai. Pilih General, atau isi kampusmu dulu di Profil.");
   }
   const lang = ["id", "en", "both"].indexOf(b.language) >= 0 ? b.language : "";
   if (!lang) throw new BadRequestError("Pilih bahasa soalnya.");

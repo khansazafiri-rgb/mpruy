@@ -116,7 +116,7 @@ export default function ImportPanel({ submission = null, onDone }) {
           </Field>
           <Field label="Pembatasan kampus" htmlFor="im-scope">
             <select id="im-scope" className="input" value={scope} onChange={(e) => setScope(e.target.value)}>
-              <option value="all">Soal umum, semua kampus</option>
+              <option value="all">Soal General (semua pengguna)</option>
               <option value="campus">Hanya kampus tertentu</option>
             </select>
           </Field>

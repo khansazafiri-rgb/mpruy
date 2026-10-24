@@ -58,11 +58,11 @@ async function upload(init, bytes, mime, token) {
   return call('POST', '/api/medcoel/upload/local', fd, token);
 }
 
-async function daftar(loginId, campus) {
+async function daftar(loginId, campus, over = {}) {
   const subjects = (await call('GET', '/api/medcoel/public-subjects', undefined, null, 200)).data.items;
   let s = (await call('POST', '/api/medcoel/signup/start', {
     loginId, name: `Uji ${loginId} Coba`, email: `${loginId}@contoh.test`, whatsapp: '081234567890',
-    password: 'rahasia123', passwordConfirm: 'rahasia123', semester: 3, campus,
+    password: 'rahasia123', passwordConfirm: 'rahasia123', semester: 3, campus, ...over,
   }, null, 200)).data;
   assert.ok(s.devCode, 'server harus berjalan dengan MEDCOEL_DEV_MODE=1');
   const id = s.draftId;
@@ -615,6 +615,33 @@ await langkah('ganti kampus dibatasi dan langsung mengubah hak lihat soal', asyn
   const a = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userA.token, 200)).data;
   assert.equal(a.chapters.find((c) => c.id === babId).total, soalUmum.length);
   assert.deepEqual((await call('GET', '/api/medcoel/campus-materials', undefined, userA.token, 200)).data.items, []);
+});
+
+await langkah('akun tanpa kampus (mis. siswa SMA): semester tidak wajib, soal dikirim sebagai General', async () => {
+  // Dengan kampus, semester tetap wajib.
+  const base = { name: 'Uji Tanpa Kampus', email: `ujin${RUN}@contoh.test`, whatsapp: '081234567890', password: 'rahasia123', passwordConfirm: 'rahasia123' };
+  const wajib = await call('POST', '/api/medcoel/signup/start', { ...base, loginId: `ujin${RUN}`, campus: kampusA.id }, null, 400);
+  assert.ok(wajib.data.data.semester);
+  await call('POST', '/api/medcoel/signup/start', { ...base, loginId: `ujin${RUN}` }, null, 400); // tanpa kampus dan tanpa pilihan: ditolak
+  const sma = await daftar(`ujin${RUN}`, '', { campusOther: 'Tidak memiliki kampus', semester: undefined });
+  const me = (await call('GET', '/api/medcoel/me', undefined, sma.token, 200)).data;
+  assert.equal(me.campus, '');
+  assert.equal(me.noCampus, true);
+  assert.equal(me.campusName, 'Tidak memiliki kampus');
+  // Hanya kampus saya tidak tersedia, General tersedia.
+  const mkSub = { subject: mk.id, hasKey: false, language: 'id', pdfCount: 1 };
+  const tolak = await call('POST', '/api/medcoel/submissions', { ...mkSub, scope: 'campus' }, sma.token, 400);
+  assert.match(tolak.data.message, /General/);
+  await call('POST', '/api/medcoel/submissions', { ...mkSub, scope: 'all' }, sma.token, 200);
+  const lb = (await call('GET', '/api/medcoel/leaderboard?scope=campus', undefined, sma.token, 200)).data;
+  assert.match(lb.note, /belum punya kampus/);
+  // Admin tidak menghitung "Tidak memiliki kampus" sebagai kampus yang perlu ditambahkan.
+  const lain = (await call('GET', '/api/medcoel/admin/campuses/other', undefined, admin.token, 200)).data.items;
+  assert.ok(!lain.some((x) => x.name === 'Tidak memiliki kampus'));
+  // Mengisi kampus nanti tidak terkena batas ganti kampus.
+  const baru = (await call('POST', '/api/medcoel/me/campus', { campus: kampusA.id }, sma.token, 200)).data;
+  assert.equal(baru.noCampus, false);
+  assert.equal(baru.campus, kampusA.id);
 });
 
 await langkah('admin menonaktifkan akun: token lama dan login ditolak', async () => {

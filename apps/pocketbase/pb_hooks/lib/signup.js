@@ -48,8 +48,10 @@ function validateProfile(app, b) {
   else if (password !== String(b.passwordConfirm || "")) errors.passwordConfirm = "Ulangi password belum sama.";
   const semMode = cfg.builtin.semester;
   const semOk = semester >= 1 && semester <= 14;
-  if (semMode === "required" && !semOk) errors.semester = "Pilih semester 1 sampai 14.";
-  else if (semMode === "optional" && String(b.semester || "") !== "" && String(b.semester) !== "0" && !semOk) errors.semester = "Pilih semester 1 sampai 14.";
+  // Tanpa kampus (mis. siswa SMA), semester tidak wajib.
+  const noCampus = !campusId && campusOther === u.NO_CAMPUS;
+  if (semMode === "required" && !semOk && !noCampus) errors.semester = "Pilih semester 1 sampai 14.";
+  else if ((semMode === "optional" || noCampus) && String(b.semester || "") !== "" && String(b.semester) !== "0" && !semOk) errors.semester = "Pilih semester 1 sampai 14.";
   const extra = require(HOOKS + "/lib/signupConfig.js").validateExtra(cfg.fields, b.extra, "signup", {});
   Object.keys(extra.errors).forEach((k) => { errors[k] = extra.errors[k]; });
 

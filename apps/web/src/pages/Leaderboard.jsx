@@ -31,7 +31,7 @@ export default function Leaderboard() {
       </PageHead>
       <div className="flex flex-wrap gap-3">
         <Tabs value={period} onChange={setPeriod} tabs={[{ value: 'week', label: 'Minggu ini' }, { value: 'all', label: 'Sepanjang waktu' }]} />
-        <Tabs value={scope} onChange={setScope} tabs={[{ value: 'all', label: 'Semua kampus' }, { value: 'campus', label: 'Kampusku' }]} />
+        <Tabs value={scope} onChange={setScope} tabs={[{ value: 'all', label: 'Semua pengguna' }, { value: 'campus', label: 'Kampusku' }]} />
       </div>
       <Alert>{error?.message}</Alert>
       {data?.note && <Alert kind="info">{data.note}</Alert>}
