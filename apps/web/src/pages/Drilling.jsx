@@ -42,6 +42,7 @@ export default function Drilling() {
         </div>
       </header>
       <Alert>{error?.message || err}</Alert>
+      {data?.preview && <Alert kind="info">Pratinjau admin: menu Drilling belum tampil untuk pengguna. Nyalakan sakelarnya dan tayangkan soal di Admin &gt; Drilling.</Alert>}
       {loading ? <PageLoader /> : !items.length ? (
         <EmptyState icon={Crosshair} title="Drilling belum dibuka">Soal Drilling akan muncul di sini setelah tersedia.<Link to="/mata-kuliah" className="btn-secondary mt-4 inline-flex">Latihan per BAB</Link></EmptyState>
       ) : (

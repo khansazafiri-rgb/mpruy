@@ -171,3 +171,13 @@
 .chat-fab-kori { display: grid; place-items: center; width: 26px; height: 26px; margin: -8px -2px -8px -6px; }
 .chat-fab-kori .mc-character { transform: translateY(-2px); }
 .chat-widget-mark .mc-character { margin-top: 3px; }
+
+/* Memilih ulang jawaban dan mengulang unggahan yang gagal */
+.chat-redo { display: inline-flex; align-items: center; gap: 4px; align-self: flex-end; margin-top: 3px; padding: 2px 6px; border-radius: 6px; font-size: 12px; font-weight: 600; color: rgb(var(--ink-muted)); }
+.chat-redo:hover:not(:disabled) { color: rgb(var(--brand)); text-decoration: underline; }
+.chat-redo:disabled { opacity: .4; cursor: default; }
+.chat-retry { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 8px; font-size: 12px; font-weight: 700; color: rgb(var(--brand)); background: rgb(var(--paper)); border: 1px solid rgb(var(--brand)); }
+.chat-retry:hover { background: rgb(var(--brand)); color: #fff; }
+.chat-file.is-error { flex-wrap: wrap; }
+.chat-file-err { flex: 1 0 100%; font-size: 12px; line-height: 1.4; }
+.chat-retry { white-space: nowrap; }

@@ -2,9 +2,10 @@
 // masuk), jadi pengguna tidak perlu pindah halaman. Halaman /chat-admin tetap
 // ada untuk tampilan penuh.
 //
-// Panel tetap terpasang saat ditutup (hanya disembunyikan), supaya percakapan
-// atau unggahan yang sedang berjalan tidak hilang ketika pengguna pindah
-// halaman atau menutup panel sebentar.
+// Panel tetap terpasang saat ditutup (hanya disembunyikan). Keadaan percakapan
+// dan unggahan ada di lib/chatStore, jadi tetap lanjut ketika panel diperbesar
+// ke halaman /chat-admin (panel dilepas di sana supaya tidak ada dua salinan
+// yang bekerja bersamaan) dan saat pengguna kembali.
 import '@/styles/chat.css';
 import clsx from 'clsx';
 import { Maximize2, MessageCircle, X } from 'lucide-react';
@@ -40,7 +41,7 @@ export default function ChatAdminWidget() {
 
   return (
     <>
-      {mounted && (
+      {mounted && !onPage && (
         <section
           ref={panel}
           id="chat-admin-panel"
@@ -48,7 +49,7 @@ export default function ChatAdminWidget() {
           aria-modal="false"
           aria-label="Chat Admin"
           className={clsx(
-            open && !onPage ? 'flex' : 'hidden',
+            open ? 'flex' : 'hidden',
             'chat-widget fixed z-50 flex-col overflow-hidden bg-paper shadow-pop',
             // HP: layar penuh di atas navigasi bawah. Laptop: panel di pojok kanan bawah.
             'inset-x-0 bottom-0 top-0 sm:inset-auto sm:bottom-24 sm:right-6 sm:h-[min(640px,calc(100vh-8rem))] sm:w-[400px] sm:rounded-[22px] sm:border sm:border-paper-2',

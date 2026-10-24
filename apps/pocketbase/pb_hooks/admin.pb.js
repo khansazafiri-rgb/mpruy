@@ -32,22 +32,65 @@ routerAdd("GET", "/api/medcoel/admin/summary", (e) => {
   });
 });
 
-// Drilling: status sakelar dan jumlah soal per mata kuliah (BAB khusus chapters.drilling).
+// Migrasi terakhir yang sudah dijalankan server. Web membandingkannya dengan yang dibutuhkannya (lib/serverVersion.js)
+// dan memperingatkan admin bila server belum dijalankan ulang setelah pembaruan.
+routerAdd("GET", "/api/medcoel/admin/server-version", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  u.requireAdmin(e);
+  const rows = arrayOf(new DynamicModel({ file: "" }));
+  e.app.db().newQuery("SELECT file FROM _migrations ORDER BY file DESC LIMIT 1").all(rows);
+  return e.json(200, { migration: rows.length ? rows[0].file : "" });
+});
+
+// Drilling: status sakelar dan, untuk SEMUA mata kuliah (juga yang belum punya soal), jumlah soal tayang/draf
+// serta BAB Drilling-nya. BAB Drilling dibuat bila belum ada, jadi admin selalu bisa menambah soal.
 routerAdd("GET", "/api/medcoel/admin/drilling", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
   const learn = require(`${__hooks}/lib/learn.js`);
   u.requireAdmin(e);
   const st = learn.drillingStatus(e.app);
-  const rows = arrayOf(new DynamicModel({ subject: "", status: "", n: 0 }));
-  e.app.db().newQuery("SELECT q.subject AS subject, q.status AS status, COUNT(*) AS n FROM questions q JOIN chapters c ON c.id = q.chapter WHERE c.drilling = TRUE GROUP BY q.subject, q.status").all(rows);
+  const rows = arrayOf(new DynamicModel({ subject: "", status: "", scope: "", n: 0 }));
+  e.app.db().newQuery("SELECT q.subject AS subject, q.status AS status, q.scope AS scope, COUNT(*) AS n FROM questions q JOIN chapters c ON c.id = q.chapter WHERE c.drilling = TRUE GROUP BY q.subject, q.status, q.scope").all(rows);
   const per = {};
-  rows.forEach((r) => { const p = (per[r.subject] = per[r.subject] || { published: 0, draft: 0 }); p[r.status] = r.n; });
-  const hidden = {};
-  e.app.findRecordsByFilter("chapters", "drilling = true", "", 0, 0).forEach((c) => { hidden[c.getString("subject")] = { chapter: c.id, hidden: c.getBool("hidden") }; });
-  const subjects = e.app.findRecordsByFilter("subjects", "id != ''", "order,name", 500, 0)
-    .filter((s) => per[s.id])
-    .map((s) => ({ id: s.id, name: s.getString("name"), published: per[s.id].published, draft: per[s.id].draft, chapter: hidden[s.id] ? hidden[s.id].chapter : "", hidden: hidden[s.id] ? hidden[s.id].hidden : false }));
-  return e.json(200, { enabled: st.enabled, available: st.available, total: st.total, subjects: subjects });
+  rows.forEach((r) => { const p = (per[r.subject] = per[r.subject] || { published: 0, draft: 0, campusOnly: 0 }); p[r.status] = (p[r.status] || 0) + r.n; if (r.scope === "campus") p.campusOnly += r.n; });
+  const subjects = e.app.findRecordsByFilter("subjects", "id != ''", "order,name", 500, 0).map((s) => {
+    const ch = learn.ensureDrillingChapter(e.app, s.id);
+    const p = per[s.id] || { published: 0, draft: 0, campusOnly: 0 };
+    return { id: s.id, name: s.getString("name"), subjectHidden: s.getBool("hidden"), published: p.published, draft: p.draft, campusOnly: p.campusOnly, chapter: ch.id, hidden: ch.getBool("hidden") };
+  });
+  const total = subjects.reduce((a, s) => a + s.published, 0);
+  const drafts = subjects.reduce((a, s) => a + s.draft, 0);
+  return e.json(200, { enabled: st.enabled, available: st.available, total: st.total, published: total, drafts: drafts, subjects: subjects });
+});
+
+// Aksi massal untuk semua soal Drilling satu mata kuliah: tayangkan / jadikan draf / pindah ke BAB biasa / hapus.
+routerAdd("POST", "/api/medcoel/admin/drilling/bulk", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const learn = require(`${__hooks}/lib/learn.js`);
+  u.requireAdmin(e);
+  const b = u.body(e);
+  let subject;
+  try { subject = e.app.findRecordById("subjects", String(b.subject || "")); } catch (_) { throw new BadRequestError("Pilih mata kuliahnya dulu."); }
+  const dch = learn.drillingChapter(e.app, subject.id);
+  if (!dch) return e.json(200, { ok: true, count: 0 });
+  const only = b.status === "draft" ? " && status = 'draft'" : b.status === "published" ? " && status = 'published'" : "";
+  const recs = e.app.findRecordsByFilter("questions", "chapter = {:c}" + only, "", 0, 0, { c: dch.id });
+  let target = null;
+  if (b.action === "move") {
+    try { target = e.app.findRecordById("chapters", String(b.chapter || "")); } catch (_) { throw new BadRequestError("Pilih BAB tujuan."); }
+    if (target.getBool("drilling") || target.getString("subject") !== subject.id) throw new BadRequestError("Pilih BAB biasa dari mata kuliah yang sama.");
+  }
+  if (["publish", "draft", "move", "delete"].indexOf(b.action) < 0) throw new BadRequestError("Aksi tidak dikenal.");
+  e.app.runInTransaction((tx) => {
+    recs.forEach((r) => {
+      if (b.action === "delete") return tx.delete(r);
+      if (b.action === "publish") r.set("status", "published");
+      else if (b.action === "draft") r.set("status", "draft");
+      else if (b.action === "move") r.set("chapter", target.id);
+      tx.save(r);
+    });
+  });
+  return e.json(200, { ok: true, count: recs.length });
 });
 
 // ---------------------------------------------------------------------------

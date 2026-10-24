@@ -38,9 +38,12 @@ cue(S(2).start + .55, pop(520, 980, .16), .45); cue(S(2).start + .6, sparkle(), 
 for (let i = 0; i < 14; i++) cue(S(3).start + .1 + i * .1, tap(), .14 + i * .008); cue(S(3).start + 1.5, ding(1568, .6), .4); cue(S(3).start + 1.75, whoosh(.3), .3);
 // S5: PDF lama muncul satu per satu, lalu "ketemu!"
 for (let i = 0; i < 6; i++) cue(S(5).start + .35 + i * .3, paper(.14), .22); cue(S(5).start + 2.3, pop(500, 900, .18), .5); cue(S(5).start + 2.35, sparkle(), .3);
-// ketukan jari di klip layar (waktu dihitung dari penanda klip)
-[[S(6).start + .47], [S(6).start + 4.9], [S(7).start + .5], [S(7).start + 4.2], [S(8).start + 2.83], [S(9).start + 3.8], [S(11).start + .6], [S(11).start + 1.64], [S(11).start + 3.44], [S(11).start + 4.2]].forEach(([t]) => cue(t, tap(), .6));
-cue(S(6).start + 2.77, paper(.25), .5);
+// Web layar penuh: tiap sorotan (cincin emas) diberi ketukan jari, tiap potongan klip diberi "tik" halus.
+// Angka = detik di dalam shot, sama dengan beats[].t di stage-ad.html.
+const RING = { 2: [.9, 2.0], 3: [2.2, 4.0], 4: [1.0, 2.0, 3.0], 6: [.8, 2.7, 4.2], 7: [.45, 2.3, 3.5], 8: [1.0, 2.6], 9: [.45, 2.2, 3.8], 11: [.85], 12: [.1] };
+for (const [id, ts] of Object.entries(RING)) ts.forEach((t, k) => { cue(S(+id).start + t + .05, tap(), .55); if (k > 0 || +id !== 12) cue(S(+id).start + t + .2, pop(1040, 700, .06), .12); });
+[[4, 1.0], [4, 2.0], [4, 3.0], [6, 2.2], [7, 2.1], [9, 1.7]].forEach(([id, t]) => cue(S(id).start + t, paper(.12), .3));
+cue(S(5).start + 3.4, whoosh(.35), .4);   // web naik dari bawah
 // S10: stempel, balik kartu, label
 cue(S(10).start + 1.35, stampThud(), .8); cue(S(10).start + 2.4, whoosh(.3), .4); cue(S(10).start + 2.85, ding(1175, .5), .4);
 [3.2, 3.5, 3.8].forEach((t, i) => cue(S(10).start + t, pop(600 + i * 120, 300, .1), .4));

@@ -1,6 +1,6 @@
 # Revisi iklan "Kirim PDF soalmu" — versi 2 (pratinjau)
 
-MP4 lama disimpan sebagai `out/medcoel-iklan-75s-v1.mp4`. Render 75 detik penuh versi 2 belum dibuat; menunggu pratinjau disetujui.
+MP4 lama disimpan sebagai `out/medcoel-iklan-75s-v1.mp4`. Render penuh 75 detik: `out/medcoel-iklan-75s-v2-DRAF-suara-belum-final.mp4` (suara eSpeak sementara; suara final belum dipilih).
 
 ## Yang berubah
 - Web asli memenuhi kanvas 1080×1920 pada shot 2–4, 6–9, 11–12 (tanpa bingkai ponsel). Halaman tampil dulu, lalu cincin emas menyorot tombol atau area penting.
@@ -31,3 +31,9 @@ node ad/voice-samples.mjs
 node ad/render-ad.mjs --from 3 --to 16 --out prev-3-16.mp4
 ```
 Rekaman memakai data dev lokal; web produksi dan data pengguna tidak disentuh.
+
+## Suara pengganti (Pocket TTS Indonesian)
+Tiga profil eSpeak ditolak (robotik). Pengganti: Pocket TTS Indonesian dengan prompt CC0 Common Voice. Lihat `tts/README.md`. Sampel detik 0–12: `out/kori-sampel-suara-pockettts-detik-0-12.mp3`. Setelah suara disetujui: buat `narasi/s01.wav…s16.wav` lalu `node ad/final.mjs --use narasi`. Klip web (`clips/`, `build/frames/`) tidak direkam ulang; panggung dirender ulang (~7 menit) karena mulut Kori dan takarir mengikuti waktu suara.
+
+## Efek suara
+`audio.mjs`: ketukan jari kini mengikuti tiap sorotan cincin emas di shot 2–4, 6–9, 11–12 (bukan lagi waktu klip lama).

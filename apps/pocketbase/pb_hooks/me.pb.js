@@ -49,7 +49,10 @@ routerAdd("GET", "/api/medcoel/me", (e) => {
   const days = u.settings(e.app).getInt("campusChangeDays");
   const changed = u.parseDate(user.getString("campusChangedAt"));
   out.nextCampusChangeAt = changed && days > 0 ? new Date(changed.getTime() + days * 86400000).toISOString() : "";
-  out.drillingAvailable = require(`${__hooks}/lib/learn.js`).drillingStatus(e.app).available;
+  const drill = require(`${__hooks}/lib/learn.js`).drillingStatus(e.app);
+  // Admin selalu melihat menu Drilling (pratinjau) walau belum dibuka untuk pengguna.
+  out.drillingAvailable = drill.available || u.roleOf(user) === "admin";
+  out.drillingPreview = !drill.available && u.roleOf(user) === "admin";
   out.unreadNotifications = e.app.countRecords("notifications", $dbx.exp("user = {:u} AND read = FALSE", { u: user.id }));
   return e.json(200, out);
 });
