@@ -56,6 +56,13 @@ export class MedcoelClient {
     });
   }
 
+  importDrillingSubmission(id, payload) {
+    return this.request(`/api/medcoel/agent/submissions/${encodeURIComponent(id)}/drilling-import`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+  }
+
   importAdmin(payload) {
     return this.request('/api/medcoel/agent/import', {
       method: 'POST',
