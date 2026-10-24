@@ -1,0 +1,135 @@
+{
+  "_catatan": "Naskah video ke-3 (Latihan soal, narator Kila). Alur: kait, kenalan dengan web (gratis, 38.400 soal, menu), cara sistem soal bekerja (soal kampus punya bagian sendiri; soal General tanpa bab masuk Drilling), lalu alur latihan (bab, jumlah dan mode, pembahasan, mode ujian, hasil, soal salah, riwayat). Nama merek 'Med-koel'.",
+  "fps": 30,
+  "total": 75,
+  "shot": {
+    "01": {
+      "start": 0.0,
+      "end": 3.0,
+      "overlay": "TUNGGU, INI BUAT KAMU",
+      "teks": [
+        "Soal numpuk, mulai dari mana?"
+      ]
+    },
+    "02": {
+      "start": 3.0,
+      "end": 7.6,
+      "overlay": "KENALIN MEDCOEL · GRATIS",
+      "teks": [
+        "Kenalin Med-koel: belajar kedokteran, semua fitur gratis!"
+      ]
+    },
+    "03": {
+      "start": 7.6,
+      "end": 12.3,
+      "overlay": "38.400 SOAL",
+      "teks": [
+        "Hampir empat puluh ribu soal, rapi per mata kuliah dan bab."
+      ]
+    },
+    "04": {
+      "start": 12.3,
+      "end": 16.3,
+      "overlay": "JELAJAHI MEDCOEL",
+      "teks": [
+        "Latihan soal, kirim PDF, simulasi dokter."
+      ]
+    },
+    "05": {
+      "start": 16.3,
+      "end": 21.4,
+      "overlay": "PILIH MATA KULIAH",
+      "teks": [
+        "Mulai dari Mata kuliah: pilih yang sedang kamu pelajari."
+      ]
+    },
+    "06": {
+      "start": 21.4,
+      "end": 26.6,
+      "overlay": "SOAL KAMPUSMU",
+      "teks": [
+        "Soal kampusmu punya bagian sendiri, muncul saat sudah ada."
+      ]
+    },
+    "07": {
+      "start": 26.6,
+      "end": 31.4,
+      "overlay": "SOAL GENERAL · DRILLING",
+      "teks": [
+        "Soal General tanpa bab masuk ke Drilling."
+      ]
+    },
+    "08": {
+      "start": 31.4,
+      "end": 36.0,
+      "overlay": "MULAI DARI SATU BAB",
+      "teks": [
+        "Buka satu bab. Tak perlu menelan semua soal sekaligus."
+      ]
+    },
+    "09": {
+      "start": 36.0,
+      "end": 41.0,
+      "overlay": "ATUR LATIHANMU",
+      "teks": [
+        "Atur jumlah soal, lalu pilih mode Learning atau ujian."
+      ]
+    },
+    "10": {
+      "start": 41.0,
+      "end": 45.6,
+      "overlay": "MODE LEARNING",
+      "teks": [
+        "Mode Learning: cek jawaban, pembahasan langsung muncul."
+      ]
+    },
+    "11": {
+      "start": 45.6,
+      "end": 50.6,
+      "overlay": "BUKAN CUMA HURUF JAWABAN",
+      "teks": [
+        "Baca alasan di balik jawabannya, bukan cuma huruf A sampai E."
+      ]
+    },
+    "12": {
+      "start": 50.6,
+      "end": 55.6,
+      "overlay": "COBA MODE UJIAN",
+      "teks": [
+        "Mode ujian menyimpan pembahasan sampai sesi selesai."
+      ]
+    },
+    "13": {
+      "start": 55.6,
+      "end": 60.6,
+      "overlay": "LIHAT HASILMU",
+      "teks": [
+        "Di akhir sesi, lihat hasil dan filter soal yang salah."
+      ]
+    },
+    "14": {
+      "start": 60.6,
+      "end": 65.5,
+      "overlay": "ULANGI YANG SALAH",
+      "teks": [
+        "Pilih sumber soal yang pernah salah untuk mengujinya lagi."
+      ]
+    },
+    "15": {
+      "start": 65.5,
+      "end": 70.5,
+      "overlay": "LANJUT DARI RIWAYAT",
+      "teks": [
+        "Riwayat membantumu kembali ke bab yang perlu diulang."
+      ]
+    },
+    "16": {
+      "start": 70.5,
+      "end": 75.0,
+      "overlay": "COBA SATU BAB",
+      "teks": [
+        "Buka Med-koel gratis, coba satu bab hari ini."
+      ]
+    }
+  }
+}

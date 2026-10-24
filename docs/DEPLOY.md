@@ -64,7 +64,7 @@ Admin > Ringkasan dan Pengaturan > Sistem.
 sudo bash /opt/medcoel/app/deploy/update.sh
 ```
 
-Migrasi baru berjalan otomatis saat service restart. **Hook dan migrasi baru tidak
+Migrasi baru berjalan otomatis saat service restart. Untuk memeriksa apakah server sudah memuat pembaruan, jalankan `bash deploy/cek-server.sh` (hanya membaca): ia menampilkan proses/layanan PocketBase, migrasi terbaru di kode versus di database, dan jumlah kasus Simulasi. Admin juga melihat pita peringatan "Server belum memuat pembaruan terbaru" di web bila tertinggal. **Hook dan migrasi baru tidak
 terpasang selama PocketBase belum di-restart** (produksi memakai
 `--hooksWatch=false`). Tanda server tertinggal: Drilling tampil "tidak ditemukan",
 jumlah kasus Simulasi per poli masih lama, dan dashboard admin menampilkan

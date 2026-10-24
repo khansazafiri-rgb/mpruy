@@ -5,6 +5,8 @@ import {
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
+import { api } from '@/lib/api';
+import { serverIsBehind } from '@/lib/serverVersion';
 import AnnouncementPopup from './AnnouncementPopup';
 import ChatAdminWidget from './ChatAdminWidget';
 import TutorialGate from '@/features/onboarding/TutorialGate';
@@ -33,6 +35,16 @@ export default function AppShell() {
   useEffect(() => { setMenu(false); setDrawer(false); }, [loc.pathname]);
   // Hitungan notifikasi diperbarui saat pindah halaman.
   useEffect(() => { refresh(); }, [loc.pathname, refresh]);
+
+  // Hanya untuk admin: peringatan bila PocketBase di server belum dijalankan ulang setelah pembaruan
+  // (mis. Simulasi masih 1 kasus per poli, Drilling "tidak ditemukan").
+  const [behind, setBehind] = useState(false);
+  useEffect(() => {
+    if (!isAdmin) return undefined;
+    let alive = true;
+    api('admin/server-version').then((d) => alive && setBehind(serverIsBehind(d.migration))).catch((e) => alive && setBehind(e.status === 404));
+    return () => { alive = false; };
+  }, [isAdmin]);
 
   const unread = me?.unreadNotifications || 0;
   const doLogout = () => { logout(); nav('/masuk'); };
@@ -99,6 +111,11 @@ export default function AppShell() {
         </div>
       )}
 
+      {behind && (
+        <div role="status" className="border-b border-gold/60 bg-gold-soft px-4 py-2.5 text-center text-sm text-[#6b4f00]">
+          <b>Server belum memuat pembaruan terbaru.</b> Simulasi masih menampilkan kasus lama dan Drilling belum jalan sampai PocketBase dijalankan ulang di server. <Link to="/admin" className="font-semibold underline">Lihat caranya</Link>
+        </div>
+      )}
       <main id="isi" className="app-content mx-auto max-w-6xl px-4 py-6 md:py-10">
         <Outlet />
       </main>
