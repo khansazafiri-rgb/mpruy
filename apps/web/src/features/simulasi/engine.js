@@ -304,10 +304,23 @@ export function caseSprites(ctx, gender) {
   return n;
 }
 
-/** Kasus acak, tidak mengulang kasus sebelumnya. rnd untuk pengujian. */
-export function pickCase(prev, rnd = Math.random) {
-  const pool = PLAYABLE.filter((k) => k !== prev);
-  return pool[Math.floor(rnd() * pool.length) % pool.length];
+/** Jumlah kasus yang bisa dimainkan per poli. */
+export function poliCounts() {
+  const n = Object.fromEntries(Object.keys(POLI).map((k) => [k, 0]));
+  PLAYABLE.forEach((k) => { const p = poliOf(k); if (p in n) n[p]++; });
+  return n;
+}
+
+/**
+ * Kasus acak, tidak mengulang kasus sebelumnya. poli ('umum', 'bedah', ...) membatasi
+ * undian ke satu poli; kosong atau 'acak' berarti semua poli. rnd untuk pengujian.
+ */
+export function pickCase(prev, rnd = Math.random, poli = '') {
+  const inPoli = poli && poli !== 'acak' ? PLAYABLE.filter((k) => poliOf(k) === poli) : PLAYABLE;
+  const base = inPoli.length ? inPoli : PLAYABLE;
+  const pool = base.filter((k) => k !== prev);
+  const use = pool.length ? pool : base;
+  return use[Math.floor(rnd() * use.length) % use.length];
 }
 
 export function fmtClock(sec) { const m = Math.floor(sec / 60); const s = sec % 60; return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`; }

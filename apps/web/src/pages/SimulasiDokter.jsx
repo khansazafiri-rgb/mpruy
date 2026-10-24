@@ -1,5 +1,5 @@
 // SIMULASI JADI DOKTER: konsultasi gaya visual novel dengan pasien virtual.
-// Pasien dipilih sistem secara acak (tanpa pilihan karakter atau poli).
+// Pemain memilih poli lebih dulu; penyakit dan pasiennya diundi dari poli itu (atau dari semua poli).
 // /simulasi-dokter?tutorial=1 menjalankan tutorial bersama Nilo dengan kasus tetap.
 import { ArrowLeft, Home as HomeIcon, UserRoundPlus } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -24,7 +24,7 @@ const PREFS = 'medcoel-sim-prefs';
 const LAST = 'medcoel-sim-last';
 const read = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } };
 const write = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* penyimpanan perangkat tidak tersedia */ } };
-const DEFAULT_PREFS = { mode: 'santai', dur: 600, gender: 'L' };
+const DEFAULT_PREFS = { mode: 'santai', dur: 600, gender: 'L', poli: 'acak' };
 
 function Consultation({ caseKey, prefs, tutorial, onNext, onExit }) {
   const mode = tutorial ? 'santai' : prefs.mode;
@@ -136,7 +136,7 @@ function SimulasiDokterReady() {
 
   const start = () => {
     const prev = read(LAST, {})?.caseKey || '';
-    const next = forced || pickCase(prev);
+    const next = forced || pickCase(prev, Math.random, prefs.poli);
     write(LAST, { ...read(LAST, {}), caseKey: next });
     setCaseKey(next);
     setRound((r) => r + 1);

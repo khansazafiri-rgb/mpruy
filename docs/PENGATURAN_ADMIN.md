@@ -4,7 +4,7 @@ Ringkasan hal yang bisa diatur admin di dashboard (`/admin`).
 
 ## Pengaturan > Umum
 - Komunitas dan kontak: tautan WhatsApp, nomor WhatsApp admin, Instagram.
-- Pengajuan soal dan unggahan: kapasitas antrean, batas konfirmasi, ukuran PDF, kuota unggah, nasib file kedaluwarsa, buka/tutup pengajuan.
+- Pengajuan soal dan unggahan: begitu pengguna menekan Kirim pengajuan, semua admin menerima notifikasi (lonceng) dan menu Pengajuan soal menampilkan angka pengajuan yang menunggu konfirmasi; pengaju juga mendapat notifikasi bahwa pengajuannya terkirim. Pengaturan: kapasitas antrean, batas konfirmasi, ukuran PDF, kuota unggah, nasib file kedaluwarsa, buka/tutup pengajuan.
 - Poin: soal easy/medium/hard dan **poin Simulasi Dokter** (untuk skor 100 per kasus) yang masuk leaderboard gabungan.
 - Tampilkan maskot Kori, Kila, dan Nilo di halaman pengguna.
 - Batas ganti kampus, pengingat ujian bawaan, tipe soal paket, persetujuan bukti komunitas, angka di halaman depan, teks kebijakan.

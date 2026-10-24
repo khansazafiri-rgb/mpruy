@@ -121,7 +121,7 @@ export default function TutorialCoach({ step, setStep, sim, ui, onSkip, onDone, 
         <div key="final" className="tour-bubble is-center is-final" role="dialog" aria-label="Tutorial selesai">
           <Mascot name="nilo" mood="cheer" size={110} />
           <h3>Tutorial selesai!</h3>
-          <p>Sekarang kamu tahu cara bertanya, menjelaskan alasan, membaca catatan, dan menutup konsultasi. Pasien sungguhan dipilih acak dari poli yang berbeda.</p>
+          <p>Sekarang kamu tahu cara bertanya, menjelaskan alasan, membaca catatan, dan menutup konsultasi. Di pasien sungguhan, kamu memilih poli dan penyakitnya diundi dari poli itu.</p>
           <div className="tour-final-btns">{onDone}</div>
         </div>
       ) : hidden ? null : (

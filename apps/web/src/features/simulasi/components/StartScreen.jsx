@@ -1,23 +1,36 @@
-// Layar awal: pemain hanya mengatur caranya bermain. Pasien dipilih sistem
-// secara acak; kasus menentukan pasien, ruang poli, dan jas dokter.
+// Layar awal: pemain memilih poli dan mengatur caranya bermain. Penyakit diundi
+// dari poli yang dipilih; kasus menentukan pasien, ruang poli, dan jas dokter.
 import clsx from 'clsx';
-import { GraduationCap, ListChecks, MessageCircleQuestion, NotebookPen, Play } from 'lucide-react';
+import { Dices, GraduationCap, ListChecks, MessageCircleQuestion, NotebookPen, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Mascot from '@/components/Mascot';
-import { asset } from '../engine';
+import { POLI, asset, poliCounts } from '../engine';
 
+const short = (l) => { const t = l.replace('Poli ', ''); return t.charAt(0).toUpperCase() + t.slice(1); };
 const DURS = [[300, '5 menit'], [600, '10 menit'], [900, '15 menit']];
 
 export default function StartScreen({ prefs, setPrefs, onStart, lastResult }) {
   const set = (k, v) => setPrefs({ ...prefs, [k]: v });
+  const counts = poliCounts();
+  const total = Object.values(counts).reduce((a, b) => a + b, 0);
+  const poli = prefs.poli === 'acak' || counts[prefs.poli] > 0 ? prefs.poli || 'acak' : 'acak';
   return (
     <div className="sim-start">
       <section className="sim-start-hero surface-forest">
         <div className="sim-start-copy">
           <p className="sim-start-eyebrow">Simulasi jadi dokter</p>
           <h1>Pasienmu sudah menunggu di ruang periksa.</h1>
-          <p>Tanya keluhannya, periksa, minta penunjang, lalu tetapkan diagnosis dan rencana. Setiap pasien dipilih acak dari poli yang berbeda, jadi kamu tidak tahu kasusnya sebelum masuk.</p>
-          <button type="button" className="btn btn-paper sim-start-btn" onClick={onStart}><Play size={19} /> Mulai pasien baru</button>
+          <p>Tanya keluhannya, periksa, minta penunjang, lalu tetapkan diagnosis dan rencana. Pilih poli yang ingin kamu latih. Penyakit pasiennya diundi dari poli itu, jadi kamu tetap tidak tahu kasusnya sebelum masuk.</p>
+          <div className="sim-poli" role="group" aria-label="Pilih poli">
+            <p className="sim-poli-label">Mau jaga di poli apa?</p>
+            <div className="sim-poli-row">
+              <button type="button" aria-pressed={poli === 'acak'} onClick={() => set('poli', 'acak')}><Dices size={15} aria-hidden /> Acak <small>{total} kasus</small></button>
+              {Object.entries(POLI).map(([k, label]) => (
+                <button key={k} type="button" aria-pressed={poli === k} disabled={!counts[k]} onClick={() => set('poli', k)}>{short(label)} <small>{counts[k]} kasus</small></button>
+              ))}
+            </div>
+          </div>
+          <button type="button" className="btn btn-paper sim-start-btn" onClick={onStart}><Play size={19} /> {poli === 'acak' ? 'Mulai pasien baru' : `Mulai di ${POLI[poli].toLowerCase()}`}</button>
           <Link to="/simulasi-dokter?tutorial=1" className="sim-start-tour"><GraduationCap size={17} /> Belum pernah coba? Ikuti tutorial bareng Nilo</Link>
         </div>
         <div className="sim-start-art" aria-hidden>

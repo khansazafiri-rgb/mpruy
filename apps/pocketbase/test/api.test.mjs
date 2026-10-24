@@ -379,6 +379,21 @@ await langkah('pengguna mengajukan PDF; file bukan PDF ditolak dari isinya', asy
   const sent = (await call('POST', `/api/medcoel/submissions/${subId}/send`, { agreement: true }, userA.token, 200)).data;
   assert.equal(sent.status, 'menunggu_konfirmasi');
   assert.ok(sent.queue.estimateDays >= 1);
+  // Admin diberi tahu begitu pengajuan dikirim, sebelum dikonfirmasi.
+  const adminNotif = (await call('GET', '/api/collections/notifications/records?filter=' + encodeURIComponent("kind='submission'"), undefined, admin.token, 200)).data;
+  const baru = adminNotif.items.find((n) => n.title.includes(sent.code));
+  assert.ok(baru, 'admin harus menerima notifikasi pengajuan baru');
+  assert.match(baru.title, /Pengajuan baru/);
+  assert.equal(baru.link, '/admin/pengajuan?status=menunggu_konfirmasi');
+  assert.equal(baru.read, false);
+  // Pengaju juga langsung mendapat pemberitahuan bahwa pengajuannya terkirim dan perlu dikonfirmasi.
+  const aNotif = (await call('GET', '/api/collections/notifications/records?filter=' + encodeURIComponent("kind='submission'"), undefined, userA.token, 200)).data;
+  assert.ok(aNotif.items.some((n) => n.title.includes(sent.code) && /terkirim/.test(n.title)));
+  // Pengguna lain tidak ikut menerima notifikasi itu.
+  const bNotif = (await call('GET', '/api/collections/notifications/records?filter=' + encodeURIComponent("kind='submission'"), undefined, userB.token, 200)).data;
+  assert.ok(!bNotif.items.some((n) => n.title.includes(sent.code)));
+  const summary = (await call('GET', '/api/medcoel/admin/summary', undefined, admin.token, 200)).data;
+  assert.ok(summary.waitingConfirm >= 1);
 });
 
 await langkah('agen tidak bisa mengimpor sebelum admin mengonfirmasi', async () => {
@@ -506,7 +521,16 @@ await langkah('kasus simulasi dikelola admin: simpan ulang tidak mengubah isi, k
   await call('GET', '/api/medcoel/admin/sim/cases', undefined, userA.token, 403);
   await call('GET', '/api/medcoel/doctor-sim/content', undefined, null, 401);
   const list = (await call('GET', '/api/medcoel/admin/sim/cases', undefined, admin.token, 200)).data;
-  assert.deepEqual(list.items.map((c) => c.key).sort(), ['anak', 'bedah', 'dalam', 'spog', 'umum']);
+  // 5 kasus bawaan + 45 kasus tambahan: 10 per poli.
+  assert.equal(list.items.length, 50);
+  ['anak', 'bedah', 'dalam', 'spog', 'umum'].forEach((k) => assert.ok(list.items.some((c) => c.key === k), k));
+  ['umum', 'bedah', 'spog', 'anak', 'dalam'].forEach((poli) => assert.equal(list.items.filter((c) => c.poli === poli).length, 10, poli));
+  assert.equal(new Set(list.items.map((c) => c.dxOk)).size, 50);
+  const fullDx = (await call('GET', '/api/medcoel/admin/sim/diagnoses', undefined, admin.token, 200)).data;
+  assert.ok((fullDx.items || fullDx).length >= 90);
+  const dbd = (await call('POST', '/api/medcoel/doctor-sim/results', { caseKey: 'dbd', dxKey: 'dengue', score: 88 }, userB.token, 200)).data.result;
+  assert.equal(dbd.dxOk, true);
+  assert.match(dbd.caseTitle, /Pak Hendra/);
   assert.ok(list.items.find((c) => c.key === 'spog').stats.plays >= 1);
   const canon = (v) => JSON.stringify(v, (k, x) => (x && typeof x === 'object' && !Array.isArray(x) ? Object.fromEntries(Object.keys(x).sort().map((y) => [y, x[y]])) : x));
   for (const key of ['umum', 'spog']) {
