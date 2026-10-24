@@ -53,7 +53,7 @@
     },
     "04": {
       "start": 12.3,
-      "end": 16.3,
+      "end": 16.8,
       "overlay": "JELAJAHI MEDCOEL",
       "teks": [
         "Latihan soal, kirim PDF, simulasi dokter."
@@ -75,12 +75,12 @@
         {
           "clip": "a2_sim",
           "from": "s7",
-          "len": 1.4
+          "len": 1.9
         }
       ]
     },
     "05": {
-      "start": 16.3,
+      "start": 16.8,
       "end": 21.4,
       "overlay": "PILIH MATA KULIAH",
       "teks": [
@@ -93,7 +93,7 @@
         {
           "clip": "matkul",
           "from": "s5",
-          "len": 5.1
+          "len": 4.6
         }
       ]
     },
@@ -117,7 +117,7 @@
     },
     "07": {
       "start": 26.6,
-      "end": 31.4,
+      "end": 30.9,
       "overlay": "SOAL GENERAL · DRILLING",
       "teks": [
         "Soal General tanpa bab masuk ke Drilling."
@@ -129,12 +129,12 @@
         {
           "clip": "drilling",
           "from": "s7",
-          "len": 4.8
+          "len": 4.3
         }
       ]
     },
     "08": {
-      "start": 31.4,
+      "start": 30.9,
       "end": 36.0,
       "overlay": "MULAI DARI SATU BAB",
       "teks": [
@@ -147,7 +147,7 @@
         {
           "clip": "bab",
           "from": "s8",
-          "len": 4.6
+          "len": 5.1
         }
       ]
     },
