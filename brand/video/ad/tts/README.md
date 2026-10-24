@@ -16,12 +16,12 @@ node ../final.mjs --use narasi        # pasang ke video, tanpa merekam ulang web
 
 `--nbest N` membuat N kandidat per baris, membacanya kembali dengan Whisper, lalu memilih yang paling cocok dengan teks (kandidat yang terpotong dibuang). Model ini acak, jadi satu kali jalan bisa menghasilkan baris yang terpotong.
 
-## Suara final dengan layanan berlisensi komersial (menggantikan Pocket TTS)
-Pocket TTS ditolak (terdengar robotik). Narasi final memakai satu suara perempuan Bahasa Indonesia dari layanan TTS yang izin komersialnya jelas, dan **suaranya tidak diproses** (tanpa EQ, nada, atau percepatan).
+## Suara final: ElevenLabs, dibuat sendiri oleh pemilik
+Pocket TTS ditolak (robotik), dan alur lewat API/skrip penyintesis dihentikan. Suara final dibuat manual di ElevenLabs (akun berbayar = lisensi komersial) dan **tidak diproses** (tanpa EQ, nada, atau percepatan).
 
-1. Teks: `narasi-final.json` (teks V2, hanya tanda baca dan pemenggalan kalimat yang dibenahi; isi dan klaim sama).
-2. Suara: `node commercial.mjs --provider google|elevenlabs|azure --voice <suara> --out narasi` (kunci lewat variabel lingkungan, lihat kepala berkasnya).
-3. Contoh 12 detik: `node ../voice-swap.mjs --lines narasi --sample 12` (musik dikecilkan).
-4. Final: `node ../voice-swap.mjs --lines narasi` mengganti audio pada video V2 yang sudah ada dengan `-c:v copy`: web tidak direkam ulang dan frame tidak dirender ulang. Hasil: `out/medcoel-iklan-75s-v2-FINAL.mp4`.
+1. `node naskah.mjs` membuat `naskah-elevenlabs.txt` (teks ucapan saja, satu baris per shot, "Med-koel") dan memeriksa tiap kalimat terhadap jendela waktu shotnya. `--rate 13.75` memperkirakan Speed 1.0.
+2. Tempel naskah ke ElevenLabs, buat SATU file WAV, kirim lewat Google Drive.
+3. `python split.py --wav narasi.wav --out narasi` memotong rekaman per kalimat (hanya dipotong; kebutuhan: `pip install faster-whisper scipy`). Letak kalimat dicari dengan mengenali kata, titik potong di bagian paling sepi.
+4. `node ../voice-swap.mjs --lines narasi --check` melaporkan kalimat yang tidak muat sebelum apa pun dibuat. Lalu `node ../voice-swap.mjs --lines narasi` mencampur musik dan efek, lalu mengganti audio pada MP4 V2 dengan `-c:v copy`: web tidak direkam ulang dan frame tidak dirender ulang. Hasil: `out/medcoel-iklan-75s-v2-FINAL.mp4`. Tanpa `--allow-overflow`, shot yang melebihi jendelanya ditolak dan suara tidak dipercepat.
 
-Catatan: takarir dan gerak mulut Kori sudah tertanam di video dan mengikuti `base-timeline.json`. `voice-swap.mjs` memulai tiap shot pada detik yang sama dan melaporkan selisih lama bicara; shot yang melebihi jendelanya ditolak (suara tidak dipercepat), jadi kalimatnya yang dipendekkan.
+Catatan: takarir (sorotan kata) dan gerak mulut Kori sudah tertanam di video dan mengikuti `base-timeline.json` (lama bicara draf lama). `voice-swap.mjs` memulai tiap shot pada detik yang sama; bila suara baru lebih pendek, sorotan kata di takarir selesai sedikit sesudah suara. Selisihnya ditampilkan per shot.

@@ -3,6 +3,7 @@
 // Suara tidak diproses (tanpa EQ, nada, atau percepatan); hanya diberi satu penguatan tetap supaya setara -16 LUFS.
 //   node voice-swap.mjs --lines narasi --sample 12      -> out/kori-sampel-suara-final-detik-0-12.mp3 (musik dikecilkan)
 //   node voice-swap.mjs --lines narasi                  -> out/medcoel-iklan-75s-v2-FINAL.mp4
+//   node voice-swap.mjs --lines narasi --check         -> hanya melaporkan muat/tidaknya tiap kalimat, tanpa membuat apa pun
 //   opsi: --video <mp4 sumber video> --music 0.18 --sfx 0.35 --name <nama>
 // --lines = folder berisi sNN-K.wav dari tts/commercial.mjs (K = kalimat ke-K pada shot NN).
 // Waktu takarir dan gerak mulut Kori sudah tertanam di video (mengikuti tts/base-timeline.json), jadi tiap shot
@@ -57,6 +58,7 @@ for (const sc of base.scenes) {
   rows.push({ shot: sc.id, video: sc.audioSec, suara: +dur.toFixed(2), selisih: +(dur - sc.audioSec).toFixed(2), jendela: +(room / SR).toFixed(2), muat: fits });
 }
 console.table(rows);
+if (argv.includes('--check')) { console.log(overflow ? `${overflow} shot tidak muat.` : 'Semua shot muat di jendelanya.'); process.exit(overflow ? 3 : 0); }
 if (overflow) {
   console.error(`${overflow} shot melebihi jendelanya (suara menabrak shot berikutnya). Pendekkan kalimat di tts/narasi-final.json atau pilih suara yang lebih ringkas; suara tidak dipercepat.`);
   if (!argv.includes('--allow-overflow')) process.exit(3);

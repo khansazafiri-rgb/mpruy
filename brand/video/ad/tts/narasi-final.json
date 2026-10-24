@@ -1,21 +1,87 @@
 {
-  "_catatan": "Teks narasi V2 dengan tanda baca dan pemenggalan kalimat dibenahi agar terbaca wajar. Isi dan klaim tidak diubah. Tiap shot = daftar kalimat yang disintesis terpisah lalu disambung dengan jeda pendek. 'ucap' = ejaan untuk mesin suara (tidak tampil di takarir).",
+  "_catatan": "Teks narasi V2 dengan tanda baca dan pemenggalan kalimat dibenahi agar terbaca wajar; isi dan klaim tidak diubah. Ini yang disalin ke ElevenLabs (tts/naskah-elevenlabs.txt dibuat dari sini oleh naskah.mjs). Nama merek ditulis 'Med-koel' agar terbaca benar. Tiap shot = daftar kalimat; split.py memotong rekaman utuh per kalimat.",
   "shot": {
-    "01": { "teks": ["PDF soal masih numpuk di grup?"] },
-    "02": { "teks": ["Kenalin, MEDCOEL! Belajar kedokteran, gratis."], "ucap": { "MEDCOEL": "Med-koel" } },
-    "03": { "teks": ["Hampir empat puluh ribu soal, per mata kuliah dan bab."] },
-    "04": { "teks": ["Latihan soal, kirim PDF, simulasi dokter."] },
-    "05": { "teks": ["PDF soal angkatan mungkin masih tersimpan.", "Belum terpakai."] },
-    "06": { "teks": ["Di Chat Admin, tinggal pilih berkas PDF yang mau dibagikan."] },
-    "07": { "teks": ["Isi mata kuliah dan kampus, supaya konteksnya jelas."] },
-    "08": { "teks": ["Lalu pilih: untuk kampusmu saja, atau semua kampus."] },
-    "09": { "teks": ["Setelah dikirim, admin mengonfirmasi dan memeriksa isi PDF."] },
-    "10": { "teks": ["Soal yang lolos diolah dan disusun ke mata kuliah dan bab."] },
-    "11": { "teks": ["Begitu tayang, teman sekampus bisa mengerjakannya di web."] },
-    "12": { "teks": ["Mereka tak cuma menjawab.", "Pembahasan membantu memahami."] },
-    "13": { "teks": ["Satu dokumen yang tadinya tertimbun kini membantu banyak teman."] },
-    "14": { "teks": ["Kiriman teman lain menambah pilihan latihan untukmu juga."] },
-    "15": { "teks": ["Begitu bank soal kita tumbuh: berbagi dan berlatih bersama."] },
-    "16": { "teks": ["Punya PDF soal? Kirim lewat Chat Admin."], "ucap": { "Chat Admin": "Chat Admin" } }
+    "01": {
+      "teks": [
+        "PDF soal masih numpuk di grup?"
+      ]
+    },
+    "02": {
+      "teks": [
+        "Kenalin, Med-koel! Belajar kedokteran, gratis."
+      ]
+    },
+    "03": {
+      "teks": [
+        "Hampir empat puluh ribu soal, per mata kuliah dan bab."
+      ]
+    },
+    "04": {
+      "teks": [
+        "Latihan soal, kirim PDF, simulasi dokter."
+      ]
+    },
+    "05": {
+      "teks": [
+        "PDF soal angkatan mungkin masih tersimpan.",
+        "Belum terpakai."
+      ]
+    },
+    "06": {
+      "teks": [
+        "Di Chat Admin, tinggal pilih berkas PDF yang mau dibagikan."
+      ]
+    },
+    "07": {
+      "teks": [
+        "Isi mata kuliah dan kampus, supaya konteksnya jelas."
+      ]
+    },
+    "08": {
+      "teks": [
+        "Lalu pilih: untuk kampusmu saja, atau semua kampus."
+      ]
+    },
+    "09": {
+      "teks": [
+        "Setelah dikirim, admin mengonfirmasi dan memeriksa isi PDF."
+      ]
+    },
+    "10": {
+      "teks": [
+        "Soal yang lolos diolah dan disusun ke mata kuliah dan bab."
+      ]
+    },
+    "11": {
+      "teks": [
+        "Begitu tayang, teman sekampus bisa mengerjakannya di web."
+      ]
+    },
+    "12": {
+      "teks": [
+        "Mereka tak cuma menjawab.",
+        "Pembahasan membantu memahami."
+      ]
+    },
+    "13": {
+      "teks": [
+        "Satu dokumen yang tadinya tertimbun kini membantu banyak teman."
+      ]
+    },
+    "14": {
+      "teks": [
+        "Kiriman teman lain menambah pilihan latihan untukmu juga."
+      ]
+    },
+    "15": {
+      "teks": [
+        "Begitu bank soal kita tumbuh: berbagi dan berlatih bersama."
+      ]
+    },
+    "16": {
+      "teks": [
+        "Punya PDF soal? Kirim lewat Chat Admin."
+      ]
+    }
   }
 }
