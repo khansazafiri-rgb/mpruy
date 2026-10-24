@@ -42,6 +42,10 @@ export class MedcoelClient {
     return this.request(`/api/medcoel/agent/submissions/${encodeURIComponent(id)}`);
   }
 
+  getSubjectCatalog(subjectId) {
+    return this.request(`/api/medcoel/subjects/${encodeURIComponent(subjectId)}`);
+  }
+
   setStatus(id, status, note = '') {
     return this.request(`/api/medcoel/agent/submissions/${encodeURIComponent(id)}/status`, {
       method: 'POST',
