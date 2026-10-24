@@ -1,6 +1,7 @@
 // "Kenapa kamu menanyakan ini?" dan "Diagnosis banding apa yang perlu disingkirkan?"
 // Lembar refleksi yang muncul sebelum tindakan spesifik dan setelah
 // diagnosis kerja ditetapkan. Ditemani Nilo yang sedang berpikir.
+import { CircleAlert } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Mascot from '@/components/Mascot';
@@ -49,10 +50,14 @@ export default function ReflectSheet({ sim }) {
           </div>
         </div>
         <h3 id="sim-sheet-title">{isReason ? WHY[it.kind] : 'Diagnosis banding apa yang masih perlu kamu singkirkan?'}</h3>
-        <p className="sim-sheet-sub">{isReason ? 'Pilih dugaan yang ingin kamu nilai lewat tindakan ini. Alasanmu ikut dinilai di laporan.' : 'Dokter yang baik tetap memikirkan kemungkinan lain. Pilihanmu dibahas di laporan dan tidak mengurangi skor.'}</p>
+        <p className="sim-sheet-sub">{isReason ? 'Pilih dugaan yang ingin kamu nilai lewat tindakan ini. Kalau alasannya belum tepat, tindakannya belum dilakukan dan kamu diminta memilih lagi.' : 'Dokter yang baik tetap memikirkan kemungkinan lain. Pilihanmu dibahas di laporan dan tidak mengurangi skor.'}</p>
+        {isReason && p.feedback && <p className="sim-sheet-alert" role="alert"><CircleAlert size={17} aria-hidden /> {p.feedback}</p>}
         <div className="sim-sheet-opts">
-          {opts.map((k) => <button key={k} type="button" onClick={() => choose(k)}>{isReason ? verb : ''}{DX[k][0]}</button>)}
-          <button type="button" className="is-none" onClick={() => choose('')}>{isReason ? 'Tidak ada dugaan khusus' : 'Tidak ada'}</button>
+          {opts.map((k) => {
+            const wrong = isReason && p.wrong.includes(k);
+            return <button key={k} type="button" className={wrong ? 'is-wrong' : undefined} disabled={wrong} onClick={() => choose(k)}>{isReason ? verb : ''}{DX[k][0]}{wrong && <small> · belum tepat</small>}</button>;
+          })}
+          <button type="button" className="is-none" disabled={isReason && p.wrong.includes('')} onClick={() => choose('')}>{isReason ? 'Tidak ada dugaan khusus' : 'Tidak ada'}</button>
         </div>
         {isReason && <div className="sim-sheet-foot"><button type="button" className="btn-ghost btn-sm" onClick={close}>Batal</button></div>}
       </div>

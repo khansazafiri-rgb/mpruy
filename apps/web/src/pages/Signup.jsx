@@ -7,6 +7,7 @@ import { Check, CheckCircle2, ExternalLink, Eye, EyeOff, ImagePlus, Instagram, M
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CampusPicker from '@/components/CampusPicker';
+import { campusPayload, campusState } from '@/lib/campus';
 import ExtraFields, { extraDefaults } from '@/components/ExtraFields';
 import MascotTip from '@/components/MascotTip';
 import Illustration from '@/components/Illustration';
@@ -142,7 +143,7 @@ function StepProfile({ draft, cred, settings, onDone }) {
   const [extra, setExtra] = useState(() => extraDefaults(fields, p.extra || {}));
   const [f, setF] = useState({
     loginId: p.loginId || '', name: p.name || '', email: p.email || '', whatsapp: p.whatsapp ? `0${String(p.whatsapp).replace(/^62/, '')}` : '',
-    password: '', passwordConfirm: '', semester: p.semester || '', campus: p.campus || (p.campusOther ? '__other__' : ''), campusOther: p.campusOther || '',
+    password: '', passwordConfirm: '', semester: p.semester || '', campus: campusState(p).campus, campusOther: campusState(p).other,
   });
   const [errors, setErrors] = useState({});
   const [error, setError] = useState('');
@@ -178,8 +179,7 @@ function StepProfile({ draft, cred, settings, onDone }) {
         loginId: f.loginId.trim().toLowerCase(),
         semester: f.semester ? Number(f.semester) : 0,
         extra,
-        campus: f.campus === '__other__' ? '' : f.campus,
-        campusOther: f.campus === '__other__' ? f.campusOther : '',
+        ...campusPayload(f.campus, f.campusOther),
         turnstileToken: token,
         ...(cred || {}),
       };
@@ -223,14 +223,14 @@ function StepProfile({ draft, cred, settings, onDone }) {
           <input id="pw2" type={show ? 'text' : 'password'} className="input" autoComplete="new-password" value={f.passwordConfirm} onChange={set('passwordConfirm')} />
         </Field>
         {builtin.semester !== 'hidden' && (
-          <Field label={`Semester${builtin.semester === 'optional' ? ' (opsional)' : ''}`} htmlFor="sem" error={errors.semester}>
+          <Field label={`Semester${builtin.semester === 'optional' || f.campus === '__none__' ? ' (opsional)' : ''}`} htmlFor="sem" error={errors.semester}>
             <select id="sem" className="input" value={f.semester} onChange={set('semester')}>
               <option value="">Pilih semester</option>
               {Array.from({ length: 14 }, (_, i) => <option key={i + 1} value={i + 1}>Semester {i + 1}</option>)}
             </select>
           </Field>
         )}
-        <Field label="Asal kampus" htmlFor="campus" error={errors.campus} hint="Soal khusus kampus mengikuti pilihan ini.">
+        <Field label="Asal kampus" htmlFor="campus" error={errors.campus} hint={f.campus === '__none__' ? 'Tidak apa-apa. Kamu tetap bisa memakai semua soal General dan fitur lainnya. Kampus bisa diisi nanti di Profil.' : 'Soal khusus kampus mengikuti pilihan ini.'}>
           <CampusPicker value={f.campus} other={f.campusOther} onChange={(campus, campusOther) => setF((x) => ({ ...x, campus, campusOther }))} error={errors.campus} />
         </Field>
         <ExtraFields defs={fields} values={extra} onChange={setExtra} errors={errors} idPrefix="su" />

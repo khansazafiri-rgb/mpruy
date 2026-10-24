@@ -1,86 +1,78 @@
 1
-00:00:00,150 --> 00:00:02,950
-PDF soal kampusmu masih numpuk di
-grup?
+00:00:00,120 --> 00:00:02,950
+PDF soal masih numpuk di grup?
 
 2
-00:00:03,150 --> 00:00:06,950
-Kenalin MEDCOEL: tempat belajar
-kedokteran bareng komunitas, dan
+00:00:03,120 --> 00:00:06,950
+Kenalin MEDCOEL: belajar kedokteran,
 gratis.
 
 3
-00:00:07,150 --> 00:00:11,858
-Di sini sudah ada hampir empat puluh
-ribu soal, tersusun per mata kuliah
-dan bab.
+00:00:07,120 --> 00:00:11,369
+Hampir empat puluh ribu soal, per mata
+kuliah dan bab.
 
 4
-00:00:12,150 --> 00:00:15,950
-Ada latihan soal, kontribusi PDF, dan
-simulasi jadi dokter.
+00:00:12,120 --> 00:00:15,950
+Latihan soal, kirim PDF, simulasi
+dokter.
 
 5
-00:00:16,150 --> 00:00:20,950
-PDF soal dari angkatanmu mungkin masih
-tersimpan, tapi belum banyak yang bisa
-memakainya.
+00:00:16,120 --> 00:00:20,948
+PDF soal angkatan mungkin masih
+tersimpan, belum terpakai.
 
 6
-00:00:21,150 --> 00:00:25,950
-Di Chat Admin, kamu tinggal memilih
-berkas PDF yang ingin dibagikan.
+00:00:21,120 --> 00:00:25,923
+Di Chat Admin, tinggal pilih berkas
+PDF yang mau dibagikan.
 
 7
-00:00:26,150 --> 00:00:30,928
-Isi mata kuliah dan kampusnya, supaya
-kirimanmu punya konteks yang jelas.
+00:00:26,120 --> 00:00:30,380
+Isi mata kuliah dan kampus, supaya
+konteksnya jelas.
 
 8
-00:00:31,150 --> 00:00:35,950
-Lalu pilih apakah soal itu untuk
-kampusmu saja atau semua kampus.
+00:00:31,120 --> 00:00:35,493
+Lalu pilih: untuk kampusmu saja, atau
+semua kampus.
 
 9
-00:00:36,150 --> 00:00:40,950
-Sesudah kamu mengirimnya, admin
-mengonfirmasi dan memeriksa isi PDF
-dulu.
+00:00:36,120 --> 00:00:40,950
+Setelah dikirim, admin mengonfirmasi
+dan memeriksa isi PDF.
 
 10
-00:00:41,150 --> 00:00:45,950
+00:00:41,120 --> 00:00:45,285
 Soal yang lolos diolah dan disusun ke
-mata kuliah serta bab yang sesuai.
+mata kuliah dan bab.
 
 11
-00:00:46,150 --> 00:00:50,950
+00:00:46,120 --> 00:00:50,472
 Begitu tayang, teman sekampus bisa
-menemukan dan mengerjakannya di web.
+mengerjakannya di web.
 
 12
-00:00:51,150 --> 00:00:55,950
-Mereka bukan cuma menjawab; pembahasan
-membantu memahami kenapa pilihan itu
-tepat.
+00:00:51,120 --> 00:00:55,432
+Mereka tak cuma menjawab, pembahasan
+membantu memahami.
 
 13
-00:00:56,150 --> 00:01:00,950
+00:00:56,120 --> 00:01:00,675
 Satu dokumen yang tadinya tertimbun
-sekarang bisa membantu banyak teman
-belajar.
+kini membantu banyak teman.
 
 14
-00:01:01,150 --> 00:01:05,475
-Lalu kiriman teman lain menambah
-pilihan latihan untukmu juga.
+00:01:01,120 --> 00:01:05,358
+Kiriman teman lain menambah pilihan
+latihan untukmu juga.
 
 15
-00:01:06,150 --> 00:01:10,950
-Begitu cara bank soal kita tumbuh:
-berbagi, berlatih, dan berkembang
-bersama.
+00:01:06,120 --> 00:01:10,665
+Begitu bank soal kita tumbuh: berbagi
+dan berlatih bersama.
 
 16
-00:01:11,150 --> 00:01:14,950
-Punya PDF soal? Kirim lewat Chat Admin
-MEDCOEL.
+00:01:11,120 --> 00:01:14,950
+Punya PDF soal? Kirim lewat Chat
+Admin.

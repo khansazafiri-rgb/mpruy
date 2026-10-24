@@ -83,8 +83,8 @@ const STEPS = [
 const FAQ = [
   ['Beneran gratis?', 'Iya. Semua fitur MEDCOEL bisa dipakai tanpa bayar: latihan per BAB, simulasi, paket soal, leaderboard, dan jadwal ujian.'],
   ['Soalnya dari mana?', 'Dari admin MEDCOEL dan dari PDF soal yang dikirim teman-teman lewat Chat Admin. Setiap kiriman diperiksa admin dulu sebelum tayang.'],
-  ['Soal kampusku bisa dilihat kampus lain?', 'Saat mengirim PDF, kamu memilih sendiri: hanya untuk kampusmu atau untuk semua kampus. Soal khusus kampus hanya terlihat oleh akun dari kampus itu.'],
-  ['Kampusku belum ada di daftar, bagaimana?', 'Kamu tetap bisa mendaftar dan memakai semua soal umum. Fitur khusus kampus menyusul setelah kampusmu ditambahkan admin.'],
+  ['Soal kampusku bisa dilihat kampus lain?', 'Saat mengirim PDF, kamu memilih sendiri: hanya untuk kampusmu atau General (untuk semua pengguna). Soal khusus kampus hanya terlihat oleh akun dari kampus itu.'],
+  ['Kampusku belum ada di daftar, atau aku belum kuliah?', 'Tetap bisa. Pilih Lainnya bila kampusmu belum ada di daftar, atau pilih Belum punya kampus kalau kamu masih siswa SMA atau belum kuliah. Kamu bisa memakai semua soal General, dan kampus bisa diisi kapan saja di Profil.'],
   ['Bisa dipakai di HP?', 'Bisa. MEDCOEL dibuat untuk layar HP sejak awal, jadi enak dipakai sambil di kereta atau menunggu jadwal praktikum.'],
 ];
 

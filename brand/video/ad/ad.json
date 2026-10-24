@@ -4,11 +4,12 @@
   "fps": 30,
   "total": 75,
   "voice": {
-    "engine": "piper",
-    "lengthScale": 1.0,
-    "leadIn": 0.15,
-    "tailOut": 0.15,
-    "maxSpeedUp": 1.3
+    "engine": "espeak",
+    "profile": "ceria",
+    "leadIn": 0.12,
+    "tailOut": 0.08,
+    "maxSpeedUp": 1.0,
+    "note": "Narasi v2 dipendekkan supaya muat tanpa dipercepat. sayV1 = teks v1."
   },
   "scenes": [
     {
@@ -17,7 +18,8 @@
       "end": 3,
       "bg": "navy",
       "overlay": "TUNGGU, INI BUAT KAMU",
-      "say": "PDF soal kampusmu masih numpuk di grup?"
+      "say": "PDF soal masih numpuk di grup?",
+      "sayV1": "PDF soal kampusmu masih numpuk di grup?"
     },
     {
       "id": 2,
@@ -25,7 +27,8 @@
       "end": 7,
       "bg": "mint",
       "overlay": "KENALIN MEDCOEL · GRATIS",
-      "say": "Kenalin MEDCOEL: tempat belajar kedokteran bareng komunitas, dan gratis."
+      "say": "Kenalin MEDCOEL: belajar kedokteran, gratis.",
+      "sayV1": "Kenalin MEDCOEL: tempat belajar kedokteran bareng komunitas, dan gratis."
     },
     {
       "id": 3,
@@ -33,7 +36,8 @@
       "end": 12,
       "bg": "cream",
       "overlay": "38.400 SOAL",
-      "say": "Di sini sudah ada hampir empat puluh ribu soal, tersusun per mata kuliah dan bab."
+      "say": "Hampir empat puluh ribu soal, per mata kuliah dan bab.",
+      "sayV1": "Di sini sudah ada hampir empat puluh ribu soal, tersusun per mata kuliah dan bab."
     },
     {
       "id": 4,
@@ -41,8 +45,8 @@
       "end": 16,
       "bg": "navy",
       "overlay": "JELAJAHI MEDCOEL",
-      "say": "Ada latihan soal, kontribusi PDF, dan simulasi jadi dokter. Sekarang lihat cara berbagi soal.",
-      "sayShort": "Ada latihan soal, kontribusi PDF, dan simulasi jadi dokter."
+      "say": "Latihan soal, kirim PDF, simulasi dokter.",
+      "sayV1": "Ada latihan soal, kontribusi PDF, dan simulasi jadi dokter. Sekarang lihat cara berbagi soal."
     },
     {
       "id": 5,
@@ -50,7 +54,8 @@
       "end": 21,
       "bg": "cream",
       "overlay": "SOAL LAMA, POTENSI BARU",
-      "say": "PDF soal dari angkatanmu mungkin masih tersimpan, tapi belum banyak yang bisa memakainya."
+      "say": "PDF soal angkatan mungkin masih tersimpan, belum terpakai.",
+      "sayV1": "PDF soal dari angkatanmu mungkin masih tersimpan, tapi belum banyak yang bisa memakainya."
     },
     {
       "id": 6,
@@ -58,7 +63,8 @@
       "end": 26,
       "bg": "mint",
       "overlay": "BUKA CHAT ADMIN",
-      "say": "Di Chat Admin, kamu tinggal memilih berkas PDF yang ingin dibagikan."
+      "say": "Di Chat Admin, tinggal pilih berkas PDF yang mau dibagikan.",
+      "sayV1": "Di Chat Admin, kamu tinggal memilih berkas PDF yang ingin dibagikan."
     },
     {
       "id": 7,
@@ -66,7 +72,8 @@
       "end": 31,
       "bg": "cream",
       "overlay": "ISI KONTEKSNYA",
-      "say": "Isi mata kuliah dan kampusnya, supaya kirimanmu punya konteks yang jelas."
+      "say": "Isi mata kuliah dan kampus, supaya konteksnya jelas.",
+      "sayV1": "Isi mata kuliah dan kampusnya, supaya kirimanmu punya konteks yang jelas."
     },
     {
       "id": 8,
@@ -74,7 +81,8 @@
       "end": 36,
       "bg": "mint",
       "overlay": "ATUR CAKUPAN",
-      "say": "Lalu pilih apakah soal itu untuk kampusmu saja atau semua kampus."
+      "say": "Lalu pilih: untuk kampusmu saja, atau semua kampus.",
+      "sayV1": "Lalu pilih apakah soal itu untuk kampusmu saja atau semua kampus."
     },
     {
       "id": 9,
@@ -82,7 +90,8 @@
       "end": 41,
       "bg": "navy",
       "overlay": "DIPERIKSA ADMIN",
-      "say": "Sesudah kamu mengirimnya, admin mengonfirmasi dan memeriksa isi PDF dulu."
+      "say": "Setelah dikirim, admin mengonfirmasi dan memeriksa isi PDF.",
+      "sayV1": "Sesudah kamu mengirimnya, admin mengonfirmasi dan memeriksa isi PDF dulu."
     },
     {
       "id": 10,
@@ -90,7 +99,8 @@
       "end": 46,
       "bg": "cream",
       "overlay": "DIOLAH JADI LATIHAN",
-      "say": "Soal yang lolos diolah dan disusun ke mata kuliah serta bab yang sesuai."
+      "say": "Soal yang lolos diolah dan disusun ke mata kuliah dan bab.",
+      "sayV1": "Soal yang lolos diolah dan disusun ke mata kuliah serta bab yang sesuai."
     },
     {
       "id": 11,
@@ -98,7 +108,8 @@
       "end": 51,
       "bg": "mint",
       "overlay": "BISA DIKERJAKAN",
-      "say": "Begitu tayang, teman sekampus bisa menemukan dan mengerjakannya di web."
+      "say": "Begitu tayang, teman sekampus bisa mengerjakannya di web.",
+      "sayV1": "Begitu tayang, teman sekampus bisa menemukan dan mengerjakannya di web."
     },
     {
       "id": 12,
@@ -106,7 +117,8 @@
       "end": 56,
       "bg": "cream",
       "overlay": "ADA PEMBAHASAN",
-      "say": "Mereka bukan cuma menjawab; pembahasan membantu memahami kenapa pilihan itu tepat."
+      "say": "Mereka tak cuma menjawab, pembahasan membantu memahami.",
+      "sayV1": "Mereka bukan cuma menjawab; pembahasan membantu memahami kenapa pilihan itu tepat."
     },
     {
       "id": 13,
@@ -114,7 +126,8 @@
       "end": 61,
       "bg": "mint",
       "overlay": "SATU PDF, BANYAK MANFAAT",
-      "say": "Satu dokumen yang tadinya tertimbun sekarang bisa membantu banyak teman belajar."
+      "say": "Satu dokumen yang tadinya tertimbun kini membantu banyak teman.",
+      "sayV1": "Satu dokumen yang tadinya tertimbun sekarang bisa membantu banyak teman belajar."
     },
     {
       "id": 14,
@@ -122,7 +135,8 @@
       "end": 66,
       "bg": "cream",
       "overlay": "KOMUNITAS SALING BANTU",
-      "say": "Lalu kiriman teman lain menambah pilihan latihan untukmu juga."
+      "say": "Kiriman teman lain menambah pilihan latihan untukmu juga.",
+      "sayV1": "Lalu kiriman teman lain menambah pilihan latihan untukmu juga."
     },
     {
       "id": 15,
@@ -130,7 +144,8 @@
       "end": 71,
       "bg": "navy",
       "overlay": "BANK SOAL KITA TUMBUH",
-      "say": "Begitu cara bank soal kita tumbuh: berbagi, berlatih, dan berkembang bersama."
+      "say": "Begitu bank soal kita tumbuh: berbagi dan berlatih bersama.",
+      "sayV1": "Begitu cara bank soal kita tumbuh: berbagi, berlatih, dan berkembang bersama."
     },
     {
       "id": 16,
@@ -138,10 +153,12 @@
       "end": 75,
       "bg": "navy",
       "overlay": "KIRIM PDF SOALMU",
-      "say": "Punya PDF soal? Kirim lewat Chat Admin MEDCOEL."
+      "say": "Punya PDF soal? Kirim lewat Chat Admin.",
+      "sayV1": "Punya PDF soal? Kirim lewat Chat Admin MEDCOEL."
     }
   ],
   "lexicon": {
     "note": "Kamus pelafalan global ada di ../lexicon.json"
-  }
+  },
+  "version": 2
 }

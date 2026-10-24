@@ -3,7 +3,7 @@
 // terisi otomatis, waktu berjalan sejak tindakan pertama.
 import { useCallback, useEffect, useReducer, useRef } from 'react';
 import {
-  DX, actionLines, caseCtx, ddxOptions, judgeDdx, judgeReason, needsReason, reasonSet, rel, score, secOf,
+  DX, actionLines, caseCtx, ddxOptions, judgeDdx, judgeReason, needsReason, reasonFeedback, reasonSet, rel, score, secOf,
 } from './engine';
 
 const reduceMotion = () => typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -12,11 +12,11 @@ function fresh(caseKey, mode, dur) {
   const ctx = caseCtx(caseKey);
   return {
     ctx, mode, dur,
-    done: {}, actions: [], reasons: {}, log: [], newKey: '',
+    done: {}, actions: [], reasons: {}, wrongTries: {}, log: [], newKey: '',
     dx: '', ddx: null, finished: false, timeout: false, t0: 0, t1: 0, deadline: 0, left: dur,
     queue: [], qi: -1, typed: 0, typing: false, commit: null, commitIdx: -1,
     pasExpr: ctx.C.expr, susExpr: 'netral', speaker: '', card: null,
-    pending: null, // { type: 'reason', it, rs } | { type: 'ddx', opts }
+    pending: null, // { type: 'reason', it, rs, wrong: [kunci salah], feedback } | { type: 'ddx', opts }
     seq: 0, // bertambah setiap ada catatan baru (untuk efek sorot)
   };
 }
@@ -110,18 +110,29 @@ export function useSim(caseKey, mode = 'santai', dur = 600) {
     const s = S.current;
     if (s.finished || !it) return;
     if (!s.reasons[it.id] && needsReason(it, s.ctx) && !s.done[it.id]) {
-      s.pending = { type: 'reason', it, rs: reasonSet(it, s.ctx) };
+      s.pending = { type: 'reason', it, rs: reasonSet(it, s.ctx), wrong: [], feedback: '' };
       force();
       return;
     }
     doAction(it);
   };
 
+  /**
+   * Menjawab "kenapa kamu melakukan ini?". Alasan yang tepat membuka tindakannya; alasan yang
+   * belum tepat tidak melakukan tindakan, mencatat percobaan yang salah, dan meminta memilih lagi.
+   */
   const answerReason = (key) => {
     const s = S.current;
     const p = s.pending;
     if (!p || p.type !== 'reason') return;
-    s.reasons = { ...s.reasons, [p.it.id]: judgeReason(p.rs, key) };
+    const j = judgeReason(p.rs, key);
+    if (!j.ok) {
+      s.wrongTries = { ...s.wrongTries, [p.it.id]: (s.wrongTries[p.it.id] || 0) + 1 };
+      s.pending = { ...p, wrong: [...p.wrong, key || ''], feedback: reasonFeedback(p.it, p.rs, key) };
+      force();
+      return;
+    }
+    s.reasons = { ...s.reasons, [p.it.id]: { ...j, tries: (s.wrongTries[p.it.id] || 0) + 1 } };
     s.pending = null;
     doAction(p.it);
   };

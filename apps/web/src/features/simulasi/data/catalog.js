@@ -222,6 +222,7 @@ laktat|Laktat darah|Laktat|Laktat=1,1 mmol/L|infeksi,kardio|Laktat menilai hipop
 d_dimer|D-dimer|D-dimer|D-dimer=0,3 ug/mL|resp,kardio,hema|D-dimer membantu menyingkirkan emboli paru dan trombosis vena.||Laboratorium|Hasilnya sudah ada, Dok.
 troponin|Troponin|Troponin|Troponin I=0,01 ng/mL|kardio|Troponin menyingkirkan kerusakan miokard pada nyeri dada atau sesak.||Laboratorium|Hasilnya sudah ada, Dok.
 ntprobnp|NT-proBNP|NT-proBNP|NT-proBNP=90 pg/mL|kardio|NT-proBNP membantu menegakkan atau menyingkirkan gagal jantung.||Laboratorium|Hasilnya sudah ada, Dok.
+tsh|TSH dan fT4|TSH dan fT4|TSH=2,1 mIU/L;fT4=1,2 ng/dL|metab|Fungsi tiroid dinilai dari TSH dan fT4 pada dugaan gangguan tiroid.||Laboratorium|Hasilnya sudah ada, Dok.
 # Mikrobiologi dan serologi
 sputum|Gram dan BTA sputum|Sputum|Gram=Flora normal;BTA=Negatif|resp,infeksi|Pewarnaan Gram dan BTA menilai penyebab bakteri dan TB.||Laboratorium|Hasilnya sudah ada, Dok.
 tcm|TCM (tes cepat molekuler) TB|TCM TB|MTB=Tidak terdeteksi|resp,infeksi|TCM mendeteksi Mycobacterium tuberculosis dan resistensi rifampisin.||Laboratorium|Hasilnya sudah ada, Dok.
@@ -287,11 +288,30 @@ steroid_sis|Beri kortikosteroid sistemik|sus|Baik, Dok. Kortikosteroid sudah dib
 bronkodilator|Beri nebulisasi bronkodilator|sus|Baik, Dok. Nebulisasi sudah diberikan.|Nebulisasi bronkodilator|resp|Bronkodilator meredakan mengi pada asma dan PPOK.
 antikoagulan|Beri antikoagulan (heparin)|sus|Baik, Dok. Heparin diberikan sesuai instruksi.|Antikoagulan diberikan|hema,kardio,resp|Antikoagulan untuk emboli paru, trombosis, dan sindrom koroner; ada risiko perdarahan.|inv
 rehidrasi|Beri larutan rehidrasi oral (oralit)|sus|Baik, Dok. Oralit sudah diberikan.|Oralit diberikan|gi,infeksi,anak|Oralit adalah terapi utama dehidrasi ringan sampai sedang.
+antiplatelet|Beri antiplatelet (aspirin dan clopidogrel)|sus|Baik, Dok. Aspirin dan clopidogrel sudah diberikan.|Aspirin dan clopidogrel diberikan|kardio|Antiplatelet ganda adalah terapi awal sindrom koroner akut; ada risiko perdarahan pada pasien tertentu.|
+insulin|Beri insulin|sus|Baik, Dok. Insulin sudah diberikan sesuai instruksi.|Insulin diberikan|metab|Insulin menurunkan glukosa darah dan menghentikan ketogenesis pada krisis hiperglikemia; harus dipantau karena risiko hipoglikemia dan hipokalemia.|
+antidiabetik_oral|Beri obat antidiabetes oral (metformin)|sus|Baik, Dok. Obat diabetesnya sudah saya siapkan.|Metformin dimulai|metab|Metformin adalah pilihan awal diabetes tipe 2 bila tidak ada kontraindikasi.|
+oat|Mulai obat anti-TB (OAT)|sus|Baik, Dok. Paket OAT sudah saya siapkan.|OAT kategori 1 dimulai|resp,infeksi|OAT diberikan setelah TB terkonfirmasi dan harus diminum teratur sampai tuntas.|
+ads|Beri antitoksin difteri (ADS)|sus|Baik, Dok. ADS saya siapkan setelah uji sensitivitas.|ADS diberikan|tht,infeksi|Antitoksin menetralkan toksin difteri yang belum terikat jaringan; makin dini makin baik.|
+zinc|Beri zink|sus|Baik, Dok. Zink sudah diberikan.|Zink diberikan|gi,anak|Zink memperpendek diare dan mengurangi kekambuhan pada anak.|
+vit_a|Beri vitamin A|sus|Baik, Dok. Vitamin A sudah diberikan.|Vitamin A diberikan|infeksi,anak|Vitamin A menurunkan komplikasi dan kematian pada campak.|
+tablet_fe|Beri tablet tambah darah (zat besi)|sus|Baik, Dok. Tablet zat besi sudah saya siapkan.|Zat besi oral diberikan|hema|Zat besi oral adalah terapi anemia defisiensi besi.|
+tokolitik|Beri tokolitik (nifedipin)|sus|Baik, Dok. Nifedipin sudah diberikan.|Tokolitik diberikan|obs|Tokolitik menunda persalinan preterm beberapa hari supaya kortikosteroid sempat bekerja.|only:spog
+transfusi|Beri transfusi darah|sus|Baik, Dok. Darah saya minta ke bank darah.|Transfusi darah|hema,abd,obs|Transfusi untuk anemia berat atau perdarahan masif; perlu golongan darah dan uji silang.|
+antikejang|Beri antikonvulsan (diazepam)|sus|Baik, Dok. Diazepam sudah diberikan.|Antikonvulsan diberikan|neuro,anak|Antikonvulsan menghentikan kejang yang berlangsung lama atau berulang.|
+antivirus|Beri antivirus (asiklovir)|sus|Baik, Dok. Asiklovir sudah diberikan.|Asiklovir diberikan|infeksi|Antivirus bermanfaat pada varisela atau herpes tertentu; tidak untuk infeksi virus ringan lain.|
+betablocker|Beri penyekat beta (propranolol)|sus|Baik, Dok. Propranolol sudah diberikan.|Propranolol diberikan|kardio,metab|Penyekat beta mengendalikan palpitasi dan tremor pada tirotoksikosis; hati-hati pada asma.|
+antitiroid|Beri obat antitiroid (tiamazol)|sus|Baik, Dok. Tiamazol sudah saya siapkan.|Tiamazol dimulai|metab|Obat antitiroid menurunkan produksi hormon tiroid pada penyakit Graves.|
+laksatif|Beri laksatif (laktulosa)|sus|Baik, Dok. Laktulosa sudah diberikan.|Laksatif diberikan|gi,abd|Laksatif melunakkan tinja dan mengurangi mengejan pada konstipasi dan hemoroid.|
 # Rencana dan komunikasi
 konsul_bedah|Konsul dokter bedah|sus|Baik, Dok. Saya hubungi dokter bedah sekarang.|Konsul bedah|abd,gi|Konsul bedah untuk kasus yang mungkin memerlukan operasi.|g
 konsul_og|Konsul dokter kandungan|sus|Baik, Dok. Saya hubungi dokter kandungan sekarang.|Konsul sp.OG|obs|Konsul kandungan untuk komplikasi kehamilan.|g
 konsul_pd|Konsul dokter penyakit dalam|sus|Baik, Dok. Saya hubungi dokter penyakit dalam sekarang.|Konsul sp.PD|kardio,resp,metab,ren|Konsul penyakit dalam untuk penyakit sistemik atau kompleks.|g
 operasi|Siapkan operasi segera|sus|Baik, Dok. Kamar operasi dan persetujuan tindakan saya siapkan.|Persiapan operasi segera|abd,gi|Operasi segera diindikasikan pada kasus bedah akut yang sudah terdiagnosis.|inv
+insisi|Insisi dan drainase abses|sus|Baik, Dok. Alat bedah minor saya siapkan.|Insisi dan drainase dilakukan|abd,infeksi|Abses yang sudah berfluktuasi diatasi dengan drainase; antibiotik saja tidak cukup.|
+kuretase|Siapkan kuretase atau aspirasi vakum|sus|Baik, Dok. Ruang tindakan saya siapkan.|Kuretase atau aspirasi vakum disiapkan|obs|Sisa jaringan konsepsi dikeluarkan pada abortus inkomplit dengan perdarahan.|only:spog
+induksi|Siapkan induksi persalinan|sus|Baik, Dok. Saya siapkan induksi persalinan.|Induksi persalinan disiapkan|obs|Induksi dilakukan pada kehamilan aterm dengan indikasi, misalnya ketuban pecah tanpa kontraksi.|only:spog
+seksio|Siapkan seksio sesarea|sus|Baik, Dok. Kamar operasi dan tim anestesi saya hubungi.|Seksio sesarea disiapkan|obs|Seksio sesarea dilakukan bila persalinan pervaginam tidak aman, misalnya plasenta previa.|only:spog
 observasi|Observasi di ruang tindakan beberapa jam|sus|Baik, Dok. Pasien saya observasi di ruang tindakan.|Observasi beberapa jam|umum|Observasi dipilih bila diagnosis belum pasti dan pasien perlu dipantau.|g
 rawat|Rawat inap|sus|Baik, Dok. Saya siapkan administrasi rawat inap.|Rawat inap|umum|Rawat inap untuk pasien yang memerlukan pemantauan atau terapi intensif.|g
 rawat_icu|Rawat intensif (ICU)|sus|Baik, Dok. Saya koordinasikan ruang ICU.|Rawat ICU|umum|ICU untuk pasien kritis dengan ancaman gagal organ.|inv

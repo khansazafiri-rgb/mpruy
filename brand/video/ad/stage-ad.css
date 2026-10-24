@@ -18,14 +18,14 @@ body { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; color: var(--navy)
 .abs { position: absolute; left: 0; top: 0; will-change: transform; }
 
 /* Judul (overlay) */
-#overlay { position: absolute; left: 60px; right: 60px; top: 205px; display: flex; justify-content: center; z-index: 30; pointer-events: none; }
-#overlay .tag { display: inline-block; text-align: center; font-weight: 800; line-height: 1.04; letter-spacing: -.025em; color: var(--navy); background: var(--gold); border: 7px solid var(--navy); border-radius: 34px; padding: 22px 42px 24px; box-shadow: 0 11px 0 var(--navy); max-width: 960px; }
-.on-navy #overlay .tag { border-color: var(--cream); box-shadow: 0 11px 0 rgba(0,0,0,.45); }
+#overlay { position: absolute; left: 60px; right: 60px; top: 196px; display: flex; justify-content: center; z-index: 30; pointer-events: none; }
+#overlay .tag { display: inline-block; text-align: center; font-weight: 800; line-height: 1.04; letter-spacing: -.025em; color: var(--navy); background: var(--gold); border: 5px solid var(--navy); border-radius: 22px; padding: 10px 24px 12px; box-shadow: 0 6px 0 var(--navy); max-width: 900px; }
+.on-navy #overlay .tag { border-color: var(--cream); box-shadow: 0 6px 0 rgba(0,0,0,.45); }
 
 /* Takarir */
-#caption { position: absolute; left: 54px; right: 54px; bottom: 330px; display: flex; justify-content: center; z-index: 30; pointer-events: none; }
-#caption .pill { background: var(--paper); color: var(--navy); padding: 20px 40px 22px; border: 6px solid var(--navy); border-radius: 36px; font-weight: 800; line-height: 1.2; text-align: center; box-shadow: 0 9px 0 var(--navy); letter-spacing: -.012em; }
-.on-navy #caption .pill { border-color: var(--cream); box-shadow: 0 9px 0 rgba(0,0,0,.5); }
+#caption { position: absolute; left: 70px; right: 70px; bottom: 336px; display: flex; justify-content: center; z-index: 30; pointer-events: none; }
+#caption .pill { background: rgba(255,253,247,.96); color: var(--navy); padding: 12px 26px 14px; border: 4px solid var(--navy); border-radius: 26px; font-weight: 800; line-height: 1.22; text-align: center; box-shadow: 0 6px 0 var(--navy); letter-spacing: -.012em; }
+.on-navy #caption .pill { border-color: var(--cream); box-shadow: 0 6px 0 rgba(0,0,0,.5); }
 #caption .w { opacity: .42; padding: 0 .06em; border-radius: .25em; }
 #caption .w.done { opacity: 1; } #caption .w.now { opacity: 1; background: var(--gold); }
 
@@ -81,3 +81,15 @@ body { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; color: var(--navy)
 .mk .mc-character svg { filter: drop-shadow(0 14px 0 rgba(23,43,56,.16)); }
 .stamp { position: absolute; left: 0; top: 0; color: var(--green); border: 9px solid var(--green); border-radius: 22px; padding: 12px 26px; font-weight: 800; font-size: 64px; letter-spacing: .04em; line-height: 1; background: rgba(255,253,247,.88); white-space: nowrap; mix-blend-mode: multiply; }
 .spark { position: absolute; left: 0; top: 0; }
+
+/* Web layar penuh: rekaman 1080x1920 menutupi kanvas, kamera dan sorotan di atasnya. */
+.webv { position: absolute; inset: 0; overflow: hidden; background: #F7F3E8; }
+.world { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; will-change: transform; }
+.wimg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; display: block; }
+.hl-ring { display: none; position: absolute; border: 7px solid var(--gold); border-radius: 26px; pointer-events: none; }
+.wdim { position: absolute; inset: 0; background: rgba(23,43,56,.9); opacity: 0; pointer-events: none; }
+.wflash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+.hl-label { display: none; position: absolute; left: 0; top: 0; z-index: 5; font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: -.01em; background: var(--gold); color: var(--navy); border: 4px solid var(--navy); border-radius: 16px; padding: 9px 18px 11px; box-shadow: 0 5px 0 var(--navy); white-space: nowrap; pointer-events: none; }
+.counter { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; align-items: center; background: rgba(255,253,247,.94); border: 6px solid var(--navy); border-radius: 44px; box-shadow: 0 12px 0 var(--navy); padding: 12px 40px 16px; z-index: 6; }
+.counter b { font-size: 132px; line-height: 1; letter-spacing: -.05em; font-variant-numeric: tabular-nums; color: var(--navy); background: linear-gradient(transparent 64%, #F8C038 64%, #F8C038 92%, transparent 92%); padding: 0 .05em; }
+.counter span { font-size: 36px; font-weight: 800; letter-spacing: .08em; color: var(--green); }

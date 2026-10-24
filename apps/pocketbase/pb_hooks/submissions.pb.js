@@ -18,7 +18,7 @@
 //   GET  /api/medcoel/agent/submissions/{id}
 //   POST /api/medcoel/agent/submissions/{id}/status
 //   POST /api/medcoel/agent/submissions/{id}/import
-//   POST /api/medcoel/agent/import
+//   POST /api/medcoel/agent/import                 (drilling: true = masuk Drilling mata kuliah, wajib General)
 
 routerAdd("GET", "/api/medcoel/submissions/mine", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
@@ -51,7 +51,7 @@ routerAdd("POST", "/api/medcoel/submissions", (e) => {
   const scope = b.scope === "campus" ? "campus" : b.scope === "all" ? "all" : "";
   if (!scope) throw new BadRequestError("Pilih siapa yang boleh melihat soalnya.");
   if (scope === "campus" && !user.getString("campus")) {
-    throw new BadRequestError("Kampusmu belum ada di daftar MEDCOEL, jadi pilihan Hanya kampus saya belum bisa dipakai. Pilih Semua kampus, atau hubungi admin.");
+    throw new BadRequestError("Kamu belum punya kampus di akunmu, jadi pilihan Hanya kampus saya belum bisa dipakai. Pilih General, atau isi kampusmu dulu di Profil.");
   }
   const lang = ["id", "en", "both"].indexOf(b.language) >= 0 ? b.language : "";
   if (!lang) throw new BadRequestError("Pilih bahasa soalnya.");
@@ -280,6 +280,7 @@ routerAdd("POST", "/api/medcoel/agent/submissions/{id}/import", (e) => {
     source: "submission",
     submission: sub.id,
     skipInvalid: b.skipInvalid === true,
+    drilling: b.drilling === true,
     dryRun: b.dryRun === true,
   });
   if (result.blocked) return e.json(400, Object.assign({ status: 400 }, result));
@@ -305,6 +306,7 @@ routerAdd("POST", "/api/medcoel/agent/import", (e) => {
     campuses: b.campuses || [],
     source: "agent",
     skipInvalid: b.skipInvalid === true,
+    drilling: b.drilling === true,
     dryRun: b.dryRun === true,
   });
   if (result.blocked) return e.json(400, Object.assign({ status: 400 }, result));

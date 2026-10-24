@@ -10,7 +10,7 @@ const clips = JSON.parse(fs.readFileSync(path.join(HERE, 'clips', 'clips.json'),
 for (const [name, info] of Object.entries(clips)) {
   const dir = path.join(HERE, 'build', 'frames', name);
   fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir, { recursive: true });
-  const r = spawnSync('ffmpeg', ['-y', '-v', 'error', '-i', path.join(HERE, 'clips', info.file), '-vf', 'fps=30', '-q:v', '4', path.join(dir, '%05d.jpg')], { encoding: 'utf8' });
+  const r = spawnSync('ffmpeg', ['-y', '-v', 'error', '-i', path.join(HERE, 'clips', info.file), '-vf', 'fps=30', '-q:v', '3', path.join(dir, '%05d.jpg')], { encoding: 'utf8' });
   if (r.status !== 0) throw new Error(r.stderr);
   console.log(name, fs.readdirSync(dir).length, 'frame');
 }

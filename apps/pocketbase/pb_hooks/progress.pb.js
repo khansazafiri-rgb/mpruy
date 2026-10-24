@@ -121,7 +121,7 @@ routerAdd("GET", "/api/medcoel/leaderboard", (e) => {
   const scope = u.query(e, "scope") === "campus" ? "campus" : "all";
   const since = period === "week" ? u.startOfWeekWib(new Date()) : null;
   if (scope === "campus" && !user.getString("campus")) {
-    return e.json(200, { period: period, scope: scope, items: [], me: null, note: "Kampusmu belum ada di daftar, jadi peringkat per kampus belum tersedia." });
+    return e.json(200, { period: period, scope: scope, items: [], me: null, note: "Akunmu belum punya kampus, jadi peringkat per kampus belum tersedia. Isi kampusmu di Profil untuk memakainya." });
   }
   const rows = lb.rows(e.app, { since: since, campus: scope === "campus" ? user.getString("campus") : "" });
 

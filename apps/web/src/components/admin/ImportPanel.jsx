@@ -61,7 +61,7 @@ function Item({ it }) {
 }
 
 export default function ImportPanel({ submission = null, onDone }) {
-  const { subjects, chaptersOf, reload } = useCatalog();
+  const { subjects, chapterChoicesOf, reload } = useCatalog();
   const [subject, setSubject] = useState('');
   const [chapter, setChapter] = useState('');
   const [scope, setScope] = useState('all');
@@ -74,10 +74,11 @@ export default function ImportPanel({ submission = null, onDone }) {
   const [error, setError] = useState('');
   const [result, setResult] = useState(null);
   const subj = submission ? submission.subject : subject;
+  const toDrilling = !!chapterChoicesOf(subj).find((c) => c.id === chapter)?.drilling;
 
   const body = (dryRun) => ({
     text, dryRun, skipInvalid: skip, status, chapter,
-    ...(submission ? { submission: submission.id } : { subject, scope, campuses }),
+    ...(submission ? { submission: submission.id } : { subject, scope: toDrilling ? 'all' : scope, campuses: toDrilling ? [] : campuses }),
   });
 
   const run = async (dryRun) => {
@@ -105,7 +106,7 @@ export default function ImportPanel({ submission = null, onDone }) {
   return (
     <div className="space-y-4">
       {submission ? (
-        <Alert kind="info">Impor untuk pengajuan <b>{submission.code}</b> ({submission.subjectName}). Pembatasan kampus otomatis mengikuti pilihan pengaju: {submission.scope === 'campus' ? `hanya ${submission.campusName}` : 'semua kampus'}. Kampus yang tertulis di file diabaikan.</Alert>
+        <Alert kind="info">Impor untuk pengajuan <b>{submission.code}</b> ({submission.subjectName}). Pembatasan kampus otomatis mengikuti pilihan pengaju: {submission.scope === 'campus' ? `hanya ${submission.campusName}` : 'General'}. Kampus yang tertulis di file diabaikan. Soal General boleh dimasukkan ke Drilling (pilih BAB Drilling).</Alert>
       ) : (
         <div className="grid gap-3 md:grid-cols-3">
           <Field label="Mata kuliah" htmlFor="im-subj">
@@ -115,8 +116,8 @@ export default function ImportPanel({ submission = null, onDone }) {
             </select>
           </Field>
           <Field label="Pembatasan kampus" htmlFor="im-scope">
-            <select id="im-scope" className="input" value={scope} onChange={(e) => setScope(e.target.value)}>
-              <option value="all">Soal umum, semua kampus</option>
+            <select id="im-scope" className="input" value={toDrilling ? 'all' : scope} disabled={toDrilling} onChange={(e) => setScope(e.target.value)}>
+              <option value="all">Soal General (semua pengguna)</option>
               <option value="campus">Hanya kampus tertentu</option>
             </select>
           </Field>
@@ -128,11 +129,11 @@ export default function ImportPanel({ submission = null, onDone }) {
           </Field>
         </div>
       )}
-      {!submission && scope === 'campus' && <Field label="Kampus yang boleh melihat"><CampusMulti value={campuses} onChange={setCampuses} /></Field>}
-      <Field label="BAB" htmlFor="im-ch" hint="Pilih satu BAB untuk memasukkan semua soal ke BAB itu, atau biarkan mengikuti field chapter di tiap soal (BAB baru dibuat otomatis).">
+      {!submission && !toDrilling && scope === 'campus' && <Field label="Kampus yang boleh melihat"><CampusMulti value={campuses} onChange={setCampuses} /></Field>}
+      <Field label="BAB" htmlFor="im-ch" hint="Pilih satu BAB untuk memasukkan semua soal ke BAB itu, atau biarkan mengikuti field chapter di tiap soal (BAB baru dibuat otomatis). Pilih Drilling untuk soal General tanpa BAB.">
         <select id="im-ch" className="input" value={chapter} onChange={(e) => setChapter(e.target.value)} disabled={!subj}>
           <option value="">Ikuti field BAB di file</option>
-          {chaptersOf(subj).map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}
+          {chapterChoicesOf(subj).map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
         </select>
       </Field>
       <Field label="Kode soal" htmlFor="im-text" hint="JSON murni atau array JavaScript (kunci tanpa tanda kutip, koma di akhir boleh). Nama field lama PCV Classroom, Web Olimp, dan Event/Lomba juga diterima.">

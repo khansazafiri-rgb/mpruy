@@ -140,17 +140,17 @@ function UploadFlow({ onStatus, onMenu }) {
       {step === 'language' && <Chips options={LANG} onPick={(o) => answer('language', o, 'scope')} />}
       {at('scope') && <Bubble from="me">{a.languageLabel}</Bubble>}
 
-      {at('scope') && <Bubble><b>Soal ini hanya untuk pengguna dari kampusmu, atau boleh dilihat pengguna dari kampus lain juga?</b></Bubble>}
+      {at('scope') && <Bubble><b>Soal ini hanya untuk pengguna dari kampusmu, atau General (boleh dipakai semua pengguna)?</b></Bubble>}
       {step === 'scope' && (
         <Chips
           options={[
             ...(me?.campus ? [{ value: 'campus', label: `Hanya kampus saya (${campusName})` }] : []),
-            { value: 'all', label: 'Semua kampus' },
+            { value: 'all', label: 'General (semua pengguna)' },
           ]}
           onPick={(o) => answer('scope', o, 'count')}
         />
       )}
-      {step === 'scope' && !me?.campus && <p className="chat-aside">Kampusmu belum ada di daftar MEDCOEL, jadi pilihan Hanya kampus saya belum tersedia.</p>}
+      {step === 'scope' && !me?.campus && <p className="chat-aside">Akunmu belum punya kampus, jadi pilihan Hanya kampus saya belum tersedia. Soalmu akan jadi General. Kamu bisa mengisi kampus di Profil kapan saja.</p>}
       {at('count') && <Bubble from="me">{a.scopeLabel}</Bubble>}
 
       {at('count') && <Bubble><b>Berapa PDF yang mau kamu kirim?</b></Bubble>}
@@ -209,7 +209,7 @@ function UploadFlow({ onStatus, onMenu }) {
             <dt>Mata kuliah</dt><dd>{draft.subjectName}</dd>
             <dt>Kunci & pembahasan</dt><dd>{draft.hasKey ? 'Sudah ada di PDF' : 'Belum ada'}</dd>
             <dt>Bahasa</dt><dd>{a.languageLabel}</dd>
-            <dt>Dapat dilihat</dt><dd>{draft.scope === 'campus' ? `Hanya pengguna ${draft.campusName}` : 'Pengguna semua kampus'}</dd>
+            <dt>Dapat dilihat</dt><dd>{draft.scope === 'campus' ? `Hanya pengguna ${draft.campusName}` : 'General, semua pengguna'}</dd>
             <dt>File</dt><dd>{draft.files.map((f) => f.name).join(', ')}</dd>
             <dt>Antrean</dt><dd>{draft.queue?.pdfAhead || 0} PDF di depan. Perkiraan selesai sekitar <b>{draft.queue?.estimateDays} hari</b> setelah dikonfirmasi (paling lama sekitar 5 hari). Ini perkiraan, bukan janji.</dd>
           </dl>

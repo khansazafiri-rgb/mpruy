@@ -148,6 +148,7 @@ function webhook(app, event, data) {
 }
 
 const USER_MESSAGES = {
+  menunggu_konfirmasi: ["Pengajuan {code} terkirim", "Satu langkah lagi: konfirmasi ke admin lewat WhatsApp supaya pengajuanmu masuk antrean."],
   antre: ["Pengajuan {code} sudah dikonfirmasi", "Pengajuanmu masuk antrean. Perkiraan selesai sekitar {days} hari."],
   diproses: ["Pengajuan {code} sedang diproses", "Admin sedang mengubah PDF-mu menjadi soal."],
   selesai: ["Soal dari pengajuan {code} sudah tayang", "{count} soal sudah bisa dikerjakan. Terima kasih sudah berbagi!"],
@@ -195,8 +196,24 @@ function setStatus(app, sub, status, note, actor) {
     u.notify(app, sub.getString("user"), status === "selesai" ? "question_live" : "submission", fill(msg[0]), fill(msg[1]), link);
   }
 
+  // Admin diberi tahu begitu pengguna mengirim pengajuan, tidak menunggu konfirmasi.
+  if (from === "draft" && status === "menunggu_konfirmasi") notifyAdmins(app, sub);
+
   if (status === "antre") webhook(app, "submission.queued", contract(app, sub, null));
   return sub;
+}
+
+function notifyAdmins(app, sub) {
+  try {
+    const s = summary(app, sub, { withUser: true });
+    const who = s.user ? s.user.name + " (" + s.user.loginId + ")" : "pengguna";
+    const body = (s.subjectName || "Mata kuliah") + " · " + s.pdfCount + " PDF · " + (s.campusName || "kampus belum terdaftar") + ". Menunggu konfirmasi lewat WhatsApp.";
+    app.findRecordsByFilter("users", "role = 'admin' && deletedAt = ''", "", 0, 0).forEach((a) => {
+      u.notify(app, a.id, "submission", "Pengajuan baru " + s.code + " dari " + who, body, "/admin/pengajuan?status=menunggu_konfirmasi");
+    });
+  } catch (err) {
+    console.log("notifyAdmins gagal:", err);
+  }
 }
 
 module.exports = { LABEL, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus };

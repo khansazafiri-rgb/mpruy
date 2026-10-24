@@ -14,7 +14,8 @@ const DIFFS = ["easy", "medium", "hard"];
 // Kumpulan soal yang boleh dilihat pengguna (ringan: id + atribut saja)
 // ---------------------------------------------------------------------------
 
-// opts: { subject, chapters: [id], types: ["A","K"], userId }
+// opts: { subject, chapters: [id], types: ["A","K"], drilling: "exclude" (bawaan) | "only" }
+// Soal Drilling (BAB khusus chapters.drilling) tidak ikut kumpulan biasa kecuali diminta.
 // Mengembalikan [{ id, chapter, difficulty, qtype, seen, wrong }]
 function pool(app, user, opts) {
   const where = ["q.status = 'published'"];
@@ -45,6 +46,7 @@ function pool(app, user, opts) {
   }
   // Hanya BAB dan mata kuliah yang tidak disembunyikan.
   where.push("c.hidden = FALSE AND s.hidden = FALSE");
+  where.push(opts.drilling === "only" ? "c.drilling = TRUE" : "COALESCE(c.drilling, FALSE) = FALSE");
   params.user = user.id;
 
   const rows = arrayOf(new DynamicModel({ id: "", chapter: "", difficulty: "", qtype: "", seen: 0, wrong: 0 }));
@@ -241,4 +243,37 @@ function bumpDaily(app, userId, answered, correct) {
   app.save(rec);
 }
 
-module.exports = { DIFFS, pool, pickBalanced, pickMixed, bySource, shuffle, loadQuestions, chapterTitles, serialize, grade, hasResponse, pointsFor, bumpDaily };
+const DRILLING_TITLE = "Drilling";
+
+/** BAB khusus Drilling milik satu mata kuliah, atau null bila belum ada. */
+function drillingChapter(app, subjectId) {
+  try { return app.findFirstRecordByFilter("chapters", "subject = {:s} && drilling = true", { s: subjectId }); } catch (_) { return null; }
+}
+
+/** BAB khusus Drilling; dibuat bila belum ada. */
+function ensureDrillingChapter(app, subjectId) {
+  const have = drillingChapter(app, subjectId);
+  if (have) return have;
+  const c = new Record(app.findCollectionByNameOrId("chapters"));
+  c.set("subject", subjectId);
+  c.set("title", DRILLING_TITLE);
+  c.set("order", 9999);
+  c.set("hidden", false);
+  c.set("drilling", true);
+  app.save(c);
+  return c;
+}
+
+/** Menu Drilling tampil bila sakelar admin menyala dan sudah ada soal drilling yang bisa dikerjakan. */
+function drillingStatus(app) {
+  const enabled = u.settings(app).getBool("drillingEnabled");
+  const rows = arrayOf(new DynamicModel({ n: 0 }));
+  app.db().newQuery(
+    "SELECT COUNT(*) AS n FROM questions q JOIN chapters c ON c.id = q.chapter JOIN subjects s ON s.id = q.subject " +
+      "WHERE q.status = 'published' AND q.scope = 'all' AND c.drilling = TRUE AND c.hidden = FALSE AND s.hidden = FALSE",
+  ).all(rows);
+  const total = rows.length ? rows[0].n : 0;
+  return { enabled: enabled, total: total, available: enabled && total > 0 };
+}
+
+module.exports = { DIFFS, DRILLING_TITLE, drillingChapter, ensureDrillingChapter, drillingStatus, pool, pickBalanced, pickMixed, bySource, shuffle, loadQuestions, chapterTitles, serialize, grade, hasResponse, pointsFor, bumpDaily };

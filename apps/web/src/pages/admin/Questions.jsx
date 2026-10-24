@@ -11,7 +11,7 @@ import { DIFF, DIFF_CLASS, QTYPE } from '@/lib/labels';
 
 export default function Questions() {
   const [params, setParams] = useSearchParams();
-  const { subjects, chaptersOf } = useCatalog();
+  const { subjects, chapterChoicesOf } = useCatalog();
   const [tab, setTab] = useState('list');
   const [f, setF] = useState({ subject: params.get('subject') || '', chapter: '', difficulty: '', qtype: '', status: '', scope: '', q: '', id: params.get('id') || '' });
   const [page, setPage] = useState(1);
@@ -45,7 +45,7 @@ export default function Questions() {
     } catch (e) { setError(e.message); }
   };
   const subjName = (id) => subjects.find((s) => s.id === id)?.name || '';
-  const chTitle = (sid, cid) => chaptersOf(sid).find((c) => c.id === cid)?.title || '';
+  const chTitle = (sid, cid) => chapterChoicesOf(sid).find((c) => c.id === cid)?.title || '';
 
   return (
     <div className="space-y-5">
@@ -59,11 +59,11 @@ export default function Questions() {
         <>
           <div className="grid gap-2 sm:grid-cols-3 lg:grid-cols-7">
             <select className="input py-2" value={f.subject} onChange={(e) => set('subject', e.target.value)} aria-label="Mata kuliah"><option value="">Semua mata kuliah</option>{subjects.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}</select>
-            <select className="input py-2" value={f.chapter} onChange={(e) => set('chapter', e.target.value)} disabled={!f.subject} aria-label="BAB"><option value="">Semua BAB</option>{chaptersOf(f.subject).map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}</select>
+            <select className="input py-2" value={f.chapter} onChange={(e) => set('chapter', e.target.value)} disabled={!f.subject} aria-label="BAB"><option value="">Semua BAB</option>{chapterChoicesOf(f.subject).map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}</select>
             <select className="input py-2" value={f.qtype} onChange={(e) => set('qtype', e.target.value)} aria-label="Tipe"><option value="">Semua tipe</option>{Object.entries(QTYPE).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select>
             <select className="input py-2" value={f.difficulty} onChange={(e) => set('difficulty', e.target.value)} aria-label="Tingkat"><option value="">Semua tingkat</option>{Object.entries(DIFF).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select>
             <select className="input py-2" value={f.status} onChange={(e) => set('status', e.target.value)} aria-label="Status"><option value="">Tayang & draf</option><option value="published">Tayang</option><option value="draft">Draf</option></select>
-            <select className="input py-2" value={f.scope} onChange={(e) => set('scope', e.target.value)} aria-label="Kampus"><option value="">Umum & terbatas</option><option value="all">Soal umum</option><option value="campus">Terbatas kampus</option></select>
+            <select className="input py-2" value={f.scope} onChange={(e) => set('scope', e.target.value)} aria-label="Kampus"><option value="">General & terbatas</option><option value="all">Soal General</option><option value="campus">Terbatas kampus</option></select>
             <form onSubmit={(e) => { e.preventDefault(); setPage(1); load(); }}><input className="input py-2" placeholder="Cari teks / kode" value={f.q} onChange={(e) => setF((x) => ({ ...x, q: e.target.value }))} aria-label="Cari" /></form>
           </div>
 
@@ -101,7 +101,7 @@ export default function Questions() {
                         <td className="p-3 text-xs">{subjName(q.subject)}<br /><span className="text-ink-muted">{chTitle(q.subject, q.chapter)}</span></td>
                         <td className="p-3">{QTYPE[q.qtype]}{q.answer ? ` · ${q.answer}` : ''}</td>
                         <td className="p-3"><Badge className={DIFF_CLASS[q.difficulty]}>{DIFF[q.difficulty]}</Badge></td>
-                        <td className="p-3 text-xs">{q.scope === 'all' ? 'Umum' : `${q.campuses.length} kampus`}</td>
+                        <td className="p-3 text-xs">{q.scope === 'all' ? 'General' : `${q.campuses.length} kampus`}</td>
                         <td className="p-3"><button type="button" className="btn-ghost btn-sm" onClick={() => setEdit(q)} aria-label="Ubah soal"><Pencil size={15} /></button></td>
                       </tr>
                     ))}
@@ -131,7 +131,7 @@ export default function Questions() {
           {bulk === 'move' && (
             <select className="input" value={bulkVal.chapter} onChange={(e) => setBulkVal((b) => ({ ...b, chapter: e.target.value }))} aria-label="BAB tujuan">
               <option value="">Pilih BAB tujuan</option>
-              {subjects.map((s) => <optgroup key={s.id} label={s.name}>{chaptersOf(s.id).map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}</optgroup>)}
+              {subjects.map((s) => <optgroup key={s.id} label={s.name}>{chapterChoicesOf(s.id).map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}</optgroup>)}
             </select>
           )}
           {bulk === 'difficulty' && (
@@ -139,7 +139,7 @@ export default function Questions() {
           )}
           {bulk === 'scope' && (
             <div className="space-y-3">
-              <select className="input" value={bulkVal.scope} onChange={(e) => setBulkVal((b) => ({ ...b, scope: e.target.value }))} aria-label="Pembatasan"><option value="all">Soal umum, semua kampus</option><option value="campus">Hanya kampus tertentu</option></select>
+              <select className="input" value={bulkVal.scope} onChange={(e) => setBulkVal((b) => ({ ...b, scope: e.target.value }))} aria-label="Pembatasan"><option value="all">Soal General (semua pengguna)</option><option value="campus">Hanya kampus tertentu</option></select>
               {bulkVal.scope === 'campus' && <CampusMulti value={bulkVal.campuses} onChange={(v) => setBulkVal((b) => ({ ...b, campuses: v }))} />}
             </div>
           )}

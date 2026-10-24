@@ -28,13 +28,15 @@
 
   function div(cls, html = '', parent = root) { const d = document.createElement('div'); d.className = cls; if (html) d.innerHTML = html; parent.append(d); return d; }
   const DY = 100;
-  function put(el, { x = 0, y = 0, s = 1, r = 0, o = 1, sx = 1 } = {}) {
-    el.style.transform = `translate(${x}px,${y + DY}px) translate(-50%,-50%) rotate(${r}deg) scale(${s * sx},${s})`;
+  function put(el, { x = 0, y = 0, s = 1, r = 0, o = 1, sx = 1, raw = false } = {}) {
+    el.style.transform = `translate(${x}px,${y + (raw ? 0 : DY)}px) translate(-50%,-50%) rotate(${r}deg) scale(${s * sx},${s})`;
     el.style.opacity = o; el.style.visibility = o <= 0.001 ? 'hidden' : 'visible';
   }
   function setSrc(img, url) { if (img.dataset.u !== url) { img.dataset.u = url; img.src = url; pending.push(img.decode().catch(() => {})); } }
 
-  // ---------- kartu UI: menampilkan frame klip layar dengan "kamera" (zoom dan geser) ----------
+  // ---------- kartu UI: potongan layar web di dalam kartu (dipakai montase shot 15) ----------
+  // Klip direkam 360x640 piksel CSS (x3 = 1080x1920); cam.y dan cam.x dalam piksel CSS.
+  const PH = { w: 360, h: 640 };
   function uiCard({ w, h, segs, cam }) {
     const el = div('ui'); el.style.width = w + 'px'; el.style.height = (h + 90) + 'px';
     const img = document.createElement('img'); el.append(img);
@@ -51,11 +53,95 @@
       update(l) {
         const { c, t } = at(Math.max(0, l)); const n = Math.max(1, Math.min(D.frames[c], Math.floor(t * 30) + 1));
         setSrc(img, `build/frames/${c}/${String(n).padStart(5, '0')}.jpg`);
-        const cm = camAt(l); const z = cm.z ?? 1; const k = inner * z / 390;
-        const cx = Number.isFinite(cm.x) ? cm.x : (390 - 390 / z) / 2;
-        img.style.width = (390 * k) + 'px'; img.style.transform = `translate(${-cx * k}px,${-cm.y * k}px)`;
+        const cm = camAt(l); const z = cm.z ?? 1; const k = inner * z / PH.w;
+        const cx = Number.isFinite(cm.x) ? cm.x : (PH.w - PH.w / z) / 2;
+        img.style.width = (PH.w * k) + 'px'; img.style.transform = `translate(${-cx * k}px,${-cm.y * k}px)`;
       },
     };
+  }
+
+  // ---------- web layar penuh ----------
+  // Rekaman 360x640 piksel CSS (x3 = 1080x1920) menutupi seluruh kanvas. Kamera memperlihatkan konteks
+  // halaman dulu (zoom 1), lalu mendekat dan menyorot tombol/area penting. Posisi elemen berasal dari
+  // yang dicatat perekam (clips.json > rects), jadi sorotan tepat walau layout berubah.
+  //   segs : potongan klip berurutan { clip, from, to, speed }
+  //   beats: kunci waktu scene { t, z, hl, clip, labels, ay, cut, flash, dim }
+  //          hl = nama rect (atau daftar nama, digabung); labels = [{ text, rect | at:{x,y}, t, side }]
+  // Zoom dibatasi supaya teks di tepi layar tidak terpotong; sorotan dibuat oleh cincin, bukan zoom.
+  const ZMAX = 1.08;
+  function webView({ segs, beats, parent }) {
+    const el = div('webv', '', parent);
+    const world = div('world', '', el);
+    const img = document.createElement('img'); img.className = 'wimg'; world.append(img);
+    const ring = div('hl-ring', '', world);
+    const dimEl = div('wdim', '', el);
+    const flashEl = div('wflash', '', el);
+    const labEls = [div('hl-label', '', el), div('hl-label', '', el), div('hl-label', '', el)];
+    const S = segs.map((s) => ({ ...s, d: (s.to - s.from) / (s.speed || 1) }));
+    const total = S.reduce((a, s) => a + s.d, 0);
+    const at = (l) => { let acc = 0; for (const s of S) { if (l < acc + s.d) return { c: s.clip, t: s.from + (l - acc) * (s.speed || 1) }; acc += s.d; } const s = S[S.length - 1]; return { c: s.clip, t: s.to }; };
+    const rectOf = (clip, name) => {
+      const m = D.clips[clip]; const r = m && m.rects && m.rects[name];
+      if (!r) throw new Error(`rect ${clip}.${name} tidak ada di clips.json`);
+      const k = m.viewport.scale; return { x: r.x * k, y: r.y * k, w: r.w * k, h: r.h * k, t: r.t };
+    };
+    const union = (clip, names) => {
+      const rs = names.map((n) => rectOf(clip, n));
+      const x0 = Math.min(...rs.map((r) => r.x)), y0 = Math.min(...rs.map((r) => r.y));
+      const x1 = Math.max(...rs.map((r) => r.x + r.w)), y1 = Math.max(...rs.map((r) => r.y + r.h));
+      return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 };
+    };
+    const B = beats.map((b) => {
+      const clip = b.clip || at(b.t + 0.001).c;
+      const names = b.hl ? (Array.isArray(b.hl) ? b.hl : [b.hl]) : null;
+      const rc = names ? union(clip, names) : null;
+      const rt = names ? Math.max(...names.map((n) => rectOf(clip, n).t ?? 0)) : null;
+      return { ...b, clip, rc, rt, z: Math.min(b.z ?? 1, ZMAX), fx: b.fx ?? (rc ? rc.x + rc.w / 2 : 540), fy: b.fy ?? (rc ? rc.y + rc.h / 2 : 960), ay: b.ay ?? 760 };
+    });
+    return {
+      el, total,
+      update(l) {
+        let i = 0; for (let k = 0; k < B.length; k++) if (l >= B[k].t) i = k;
+        const b = B[i]; const pb = B[i - 1] || b;
+        // Posisi elemen hanya berlaku pada detik ia direkam, jadi beat sorotan menahan bingkai itu.
+        const { c, t } = b.rc ? { c: b.clip, t: b.rt } : at(Math.max(0, l));
+        const n = Math.max(1, Math.min(D.frames[c], Math.floor(t * 30) + 1));
+        setSrc(img, `build/frames/${c}/${String(n).padStart(5, '0')}.jpg`);
+        const p = (b.cut || i === 0) ? 1 : E.inout((l - b.t) / (b.ease ?? .55));
+        const z = lerp(pb.z, b.z, p); const fx = lerp(pb.fx, b.fx, p); const fy = lerp(pb.fy, b.fy, p); const ay = lerp(pb.ay, b.ay, p);
+        const tx = clamp(540 - fx * z, 1080 - 1080 * z, 0); const ty = clamp(ay - fy * z, 1920 - 1920 * z, 0);
+        world.style.transform = `translate(${tx}px,${ty}px) scale(${z})`;
+        // sorotan: cincin emas + redup di luar area
+        if (b.rc) {
+          const a = fade(l, b.t, .25); const pad = 12; const pulse = 1 + .012 * Math.sin(l * 7);
+          ring.style.cssText = `display:block;opacity:${a};left:${b.rc.x - pad}px;top:${b.rc.y - pad}px;width:${b.rc.w + pad * 2}px;height:${b.rc.h + pad * 2}px;transform:scale(${pulse});box-shadow:0 0 0 4000px rgba(23,43,56,${(b.dimOut ?? .22) * a}),0 0 0 4px rgba(248,192,56,.35)`;
+        } else ring.style.display = 'none';
+        dimEl.style.opacity = b.dim ? b.dim * fade(l, b.t, .2) : 0;
+        flashEl.style.opacity = b.flash ? Math.max(0, 1 - (l - b.t) / .16) * (l >= b.t ? 1 : 0) : 0;
+        // label kecil (maksimal 3 sekaligus) di atas atau di bawah elemen
+        const nextT = B[i + 1] ? B[i + 1].t : Infinity;
+        labEls.forEach((le, k) => {
+          const lb = (b.labels || [])[k];
+          if (!lb || l < lb.t || l >= nextT) { le.style.display = 'none'; return; }
+          le.style.display = 'block'; le.textContent = lb.text;
+          let sx; let sy; let below = lb.side === 'below';
+          if (lb.at) { sx = lb.at.x; sy = lb.at.y; below = true; } else {
+            const r = rectOf(b.clip, lb.rect);
+            sx = clamp((r.x + r.w / 2) * z + tx, 230, 850);
+            sy = below ? (r.y + r.h) * z + ty + 22 : r.y * z + ty - 22;
+            if (!below && sy < 330) { below = true; sy = (r.y + r.h) * z + ty + 22; }
+          }
+          const e = E.back((l - lb.t) / .35);
+          le.style.transform = `translate(${sx}px,${sy}px) translate(-50%,${below ? '0' : '-100%'}) scale(${Math.max(0, e)})`;
+        });
+      },
+    };
+  }
+
+  // Kori sebagai pemandu kecil di sudut layar, tidak menutupi UI.
+  function guide({ x = 975, y = 1395, size = 140, mood = 'idle', at = .5 } = {}) {
+    const K = mkKori('kori', size); K.mood(mood);
+    return { K, update(l) { const e = E.out((l - at) / .45); K.put({ x, y: y + (1 - e) * 340, s: 1, o: 1, raw: true }); } };
   }
 
   function mkKori(name, size) {
@@ -102,54 +188,55 @@
   };
 
   SC[2] = () => {
-    const logo = div('abs', `<img src="${D.logo}" style="height:124px;display:block">`); logo.style.cssText += ';background:#fff;border:8px solid #172B38;border-radius:999px;padding:22px 46px;box-shadow:0 12px 0 #172B38';
-    const sticker = div('abs', 'GRATIS'); sticker.style.cssText += ';width:250px;height:250px;border-radius:50%;background:#F8C038;border:9px solid #172B38;box-shadow:0 10px 0 #172B38;display:grid;place-items:center;font-weight:800;font-size:58px;letter-spacing:-.02em';
-    const ui = uiCard({ w: 900, h: 550, segs: [{ clip: 'landing', from: 0, to: 3.9 }], cam: [[0, { y: 0, z: 1 }], [3.5, { y: 140, z: 1 }]] });
-    const K = mkKori('kori', 360); K.mood('wave');
-    const sp = [0, 1, 2].map(() => spark(70));
-    return { speaker: K, update(l) {
-      put(logo, { x: 470, y: 600, s: pop(l, .1, .5), r: -1.5, o: fade(l, .1, .1) });
-      put(sticker, { x: 925, y: 520, s: pop(l, .55, .5), r: -14 + 5 * Math.sin(l * 4), o: fade(l, .55, .1) });
-      const up = E.out((l - .3) / .55); put(ui.el, { x: 540, y: 1000 + (1 - up) * 700, s: 1, r: 1.2, o: up > 0 ? 1 : 0 }); ui.update(l - .3);
-      K.put({ x: 905, y: 1190 + (1 - E.out(l / .45)) * 340, s: 1, o: 1 });
-      [[160, 460, .3], [920, 700, .7], [120, 760, 1.4]].forEach(([x, y, t], i) => put(sp[i].el || sp[i], { x, y, s: pop(l, t, .4) * (.9 + .15 * Math.sin(l * 6 + i)), r: l * 30, o: fade(l, t, .1) }));
-    } };
+    const w = webView({
+      segs: [{ clip: 'landing', from: 0.1, to: 6.5, speed: 1.45 }],
+      beats: [
+        { t: 0 },
+        { t: 0.9, z: 1.2, hl: 'kicker', ay: 720, labels: [{ text: 'Semua fitur gratis', rect: 'kicker', t: 1.05 }] },
+        { t: 2.0, z: 1.25, hl: 'cta', ay: 700, labels: [{ text: 'Daftar gratis', rect: 'cta', t: 2.15, side: 'below' }] },
+        { t: 3.15, z: 1 },
+      ],
+    });
+    const g = guide({ mood: 'wave' });
+    return { speaker: g.K, update(l) { w.update(l); g.update(l); } };
   };
 
   SC[3] = () => {
-    const num = div('abs', '<span id="n3">0</span>'); num.style.cssText += ';font-weight:800;font-size:250px;letter-spacing:-.05em;font-variant-numeric:tabular-nums;line-height:1;white-space:nowrap;text-align:center';
-    const sp = num.querySelector('#n3'); sp.style.cssText = 'background:linear-gradient(transparent 62%,#F8C038 62%,#F8C038 92%,transparent 92%);padding:0 .06em';
-    const sub = div('chip', 'SUDAH TAYANG DI WEB');
-    const ui = uiCard({ w: 900, h: 660, segs: [{ clip: 'subjects', from: 1.0, to: 3.4 }, { clip: 'bab', from: 2.9, to: 4.3 }], cam: [[0, { y: 150, z: 1 }], [2.4, { y: 150, z: 1 }], [2.6, { y: 110, z: 1 }]] });
-    const K = mkKori('kori', 300); K.mood('idle');
-    return { speaker: K, update(l) {
-      const val = Math.round(38400 * E.out((l - .1) / 1.3)); sp.textContent = new Intl.NumberFormat('id-ID').format(val);
-      const mv = E.inout((l - 1.7) / .55);
-      put(num, { x: 540, y: lerp(760, 520, mv), s: lerp(1, .5, mv) * (l < .1 ? pop(l, 0, .15) : 1), o: 1 });
-      put(sub, { x: 540, y: lerp(980, 640, mv), s: pop(l, 1.3, .4) * lerp(1, .8, mv), o: fade(l, 1.3, .1) });
-      const up = E.out((l - 1.75) / .55); put(ui.el, { x: 540, y: 1000 + (1 - up) * 800, r: -1, o: up > 0 ? 1 : 0 }); ui.update(l - 1.75);
-      K.put({ x: 930, y: 1285 + (1 - E.out((l - 2.3) / .5)) * 700, s: 1, o: 1 });
+    const w = webView({
+      segs: [{ clip: 'subjects', from: 0.2, to: 5.2, speed: 1.65 }, { clip: 'bab', from: 1.5, to: 4.0, speed: 1.25 }],
+      beats: [
+        { t: 0, dim: .3 },
+        { t: 1.9, dim: 0 },
+        { t: 2.2, z: 1.2, hl: 'card', ay: 740, labels: [{ text: 'Per mata kuliah', rect: 'card', t: 2.3 }] },
+        { t: 3.0, z: 1, cut: true },
+        { t: 4.0, z: 1.2, hl: 'chapter', clip: 'bab', ay: 740, labels: [{ text: 'Per bab', rect: 'chapter', t: 4.1 }] },
+      ],
+    });
+    // Hitung naik sampai 38.400 di atas web yang diredupkan, lalu angka pindah ke judul.
+    const num = div('counter', '<b id="n3">0</b><span>SOAL</span>');
+    const nb = num.querySelector('#n3');
+    const g = guide({ at: 2.3 });
+    return { speaker: g.K, update(l) {
+      w.update(l); g.update(l);
+      const val = Math.round(38400 * E.out((l - .1) / 1.3)); nb.textContent = new Intl.NumberFormat('id-ID').format(val);
+      const out = E.inout((l - 1.65) / .4);
+      put(num, { x: 540, y: lerp(700, 250, out) - 100, s: lerp(1, .35, out) * (l < .1 ? pop(l, 0, .15) : 1), o: l < 1.65 ? 1 : 1 - out, raw: true });
     } };
   };
 
   SC[4] = () => {
-    const parts = [
-      { label: 'Latihan soal', ui: { segs: [{ clip: 'subjects', from: 1.0, to: 2.1 }], cam: [[0, { y: 330, z: 1 }]] } },
-      { label: 'Kontribusi PDF', ui: { segs: [{ clip: 'chat', from: 0.9, to: 2.0 }], cam: [[0, { y: 380, z: 1 }]] } },
-      { label: 'Simulasi jadi dokter', ui: { segs: [{ clip: 'sim', from: 1.0, to: 2.1 }], cam: [[0, { y: 90, z: 1 }]] } },
-      { label: 'Bagikan soalmu', ui: { segs: [{ clip: 'chat', from: 1.7, to: 2.9 }], cam: [[0, { y: 420, z: 1 }], [1, { y: 470, z: 1.35, x: 20 }]] } },
-    ].map((p) => ({ ...p, card: uiCard({ w: 880, h: 720, ...p.ui }), call: callout(p.label) }));
-    const K = mkKori('kori', 300); K.mood('idle');
-    return { speaker: K, update(l) {
-      parts.forEach((p, i) => {
-        const a = i, b = i + 1; const inE = E.back((l - a) / .38); const out = E.inout((l - b) / .25);
-        const show = l >= a - .001 && (i === 3 || l < b + .25);
-        const x = 540 + (1 - Math.min(1, inE)) * 640 - out * 700;
-        put(p.card.el, { x, y: 860 + (i % 2 ? 6 : -6), r: (1 - Math.min(1, inE)) * 6 + (i % 2 ? 1.2 : -1.2) - out * 8, o: show ? 1 : 0 }); p.card.update(l - a);
-        put(p.call, { x, y: 400, s: Math.min(1.08, inE) * (1 - out * .4), o: show ? fade(l, a, .1) * (1 - out) : 0 });
-      });
-      K.put({ x: 190, y: 1240 + (1 - E.out(l / .4)) * 300, o: 1 });
-    } };
+    const at = { x: 540, y: 330 };
+    const w = webView({
+      segs: [{ clip: 'subjects', from: 3.8, to: 4.8 }, { clip: 'chat', from: 1.0, to: 2.0 }, { clip: 'sim', from: 0.6, to: 1.6 }, { clip: 'chat', from: 1.0, to: 2.0 }],
+      beats: [
+        { t: 0, labels: [{ text: 'Latihan soal', at, t: 0.05 }] },
+        { t: 1.0, cut: true, flash: true, hl: 'chip_upload', labels: [{ text: 'Kontribusi PDF', at, t: 1.05 }] },
+        { t: 2.0, cut: true, flash: true, hl: 'start', clip: 'sim', labels: [{ text: 'Simulasi jadi dokter', at, t: 2.05 }] },
+        { t: 3.0, cut: true, flash: true, z: 1.35, hl: 'chip_upload', clip: 'chat', ay: 700, labels: [{ text: 'Bagikan soalmu', at, t: 3.05 }] },
+      ],
+    });
+    const g = guide({ mood: 'idle', x: 130 });
+    return { speaker: g.K, update(l) { w.update(l); g.update(l); } };
   };
 
   SC[5] = () => {
@@ -160,7 +247,7 @@
     const nodes = rows.map((t) => { const n = div('f old', `<em></em>${esc(t)}`, inn); n.style.cssText += ';background:#fff;border:5px solid #172B38;border-radius:22px;padding:14px 20px'; n.style.opacity = 0; return n; });
     const mag = div('abs', MAG); mag.style.width = mag.style.height = '230px';
     const ex = div('abs', '!'); ex.style.cssText += ';width:110px;height:110px;border-radius:50%;background:#F8C038;border:7px solid #172B38;display:grid;place-items:center;font-weight:800;font-size:76px;box-shadow:0 7px 0 #172B38';
-    const ui = uiCard({ w: 900, h: 700, segs: [{ clip: 'chat', from: 0, to: 1.9 }], cam: [[0, { y: 330, z: 1 }]] });
+    const web = webView({ segs: [{ clip: 'chat', from: 0.3, to: 2.1 }], beats: [{ t: 0 }, { t: 0.7, z: 1.15, hl: 'chip_upload', ay: 760 }] });
     const K = mkKori('kori', 400); K.mood('think');
     return { speaker: K, update(l) {
       const gin = E.out(l / .45); const gout = E.inout((l - 3.35) / .4);
@@ -170,52 +257,68 @@
       put(ex, { x: 330, y: 930, s: pop(l, 2.3, .35), r: -8, o: fade(l, 2.3, .1) * (1 - gout) });
       K.mood(l < 2.3 ? 'think' : l < 3.35 ? 'happy' : 'idle');
       K.put({ x: 215, y: 1190 + (1 - E.out(l / .5)) * 340, o: 1 });
-      const up = E.out((l - 3.45) / .5); put(ui.el, { x: 540, y: 880 + (1 - up) * 900, r: 1, o: up > 0 ? 1 : 0 }); ui.update(l - 3.45);
+      const up = E.out((l - 3.4) / .35); web.el.style.opacity = up > 0 ? 1 : 0; web.el.style.transform = `translateY(${(1 - up) * 1920}px)`; if (up > 0) web.update(l - 3.4);
     } };
   };
 
   SC[6] = () => {
-    const ui = uiCard({ w: 900, h: 840, segs: [{ clip: 'chat', from: 1.3, to: 2.9 }, { clip: 'chat', from: 12.5, to: 15.8 }], cam: [[0, { y: 330, z: 1 }], [1.6, { y: 330, z: 1 }], [1.9, { y: 400, z: 1.15, x: 30 }], [4.9, { y: 400, z: 1.15, x: 30 }]] });
-    const c = callout('PILIH BERKAS PDF'); const K = mkKori('kori', 330); K.mood('idle');
-    return { speaker: K, update(l) {
-      const up = E.out(l / .45); put(ui.el, { x: 540, y: 870 + (1 - up) * 700, r: -1, o: 1 }); ui.update(l);
-      put(c, { x: 540, y: 400, s: pop(l, 2.2, .4), r: -2, o: fade(l, 2.2, .1) });
-      K.put({ x: 175, y: 1250 + (1 - E.out(l / .5)) * 300, o: 1 });
-    } };
+    const w = webView({
+      segs: [{ clip: 'chat', from: 0.2, to: 2.4 }, { clip: 'chat', from: 19.9, to: 23.9, speed: 1.45 }],
+      beats: [
+        { t: 0 },
+        { t: 0.8, z: 1.2, hl: 'chip_upload', ay: 760, labels: [{ text: 'Upload soal PDF', rect: 'chip_upload', t: 0.95 }] },
+        { t: 2.2, z: 1, cut: true },
+        { t: 2.7, z: 1.2, hl: 'drop', ay: 760, labels: [{ text: 'Pilih berkas PDF', rect: 'drop', t: 2.85 }] },
+        { t: 4.2, z: 1.25, hl: 'file_row', ay: 760, labels: [{ text: 'Berkas terpilih', rect: 'file_row', t: 4.35, side: 'below' }] },
+      ],
+    });
+    const g = guide({ mood: 'idle', x: 960 });
+    return { speaker: g.K, update(l) { w.update(l); g.update(l); } };
   };
 
   SC[7] = () => {
-    const ui = uiCard({ w: 900, h: 780, segs: [{ clip: 'chat', from: 3.0, to: 5.4 }, { clip: 'chat', from: 7.5, to: 9.5 }], cam: [[0, { y: 400, z: 1.2 }], [2.4, { y: 410, z: 1.2 }]] });
-    const c1 = callout('MATA KULIAH'); const c2 = callout('KAMPUS', 'mintc'); const K = mkKori('kori', 300); K.mood('idle');
-    return { speaker: K, update(l) {
-      const up = E.out(l / .45); put(ui.el, { x: 540, y: 820 + (1 - up) * 700, r: 1, o: 1 }); ui.update(l);
-      put(c1, { x: 300, y: 395, s: pop(l, .5, .4) * (1 - fade(l, 2.3, .15)), r: -2, o: fade(l, .5, .1) * (1 - fade(l, 2.3, .15)) });
-      put(c2, { x: 760, y: 395, s: pop(l, 2.9, .4), r: 2, o: fade(l, 2.9, .1) });
-      K.put({ x: 940, y: 1270 + (1 - E.out(l / .5)) * 300, o: 1 });
-    } };
+    // "mata kuliah" -> pilihan mata kuliah di Chat Admin; "kampus" -> asal kampus di Profil.
+    // Pilihan "kampusku / semua kampus" baru muncul di shot 8.
+    const w = webView({
+      segs: [{ clip: 'chat', from: 4.0, to: 6.1 }, { clip: 'profile', from: 2.9, to: 9.3, speed: 1.7 }],
+      beats: [
+        { t: 0 },
+        { t: 0.45, z: 1.2, hl: 'chip_subject', ay: 760, labels: [{ text: 'Pilih mata kuliah', rect: 'chip_subject', t: 0.6 }] },
+        { t: 2.1, z: 1, cut: true },
+        { t: 2.3, z: 1.2, hl: 'campus_card', ay: 700, labels: [{ text: 'Asal kampusmu', rect: 'campus_card', t: 2.45, side: 'below' }] },
+        { t: 3.5, z: 1.2, hl: 'picker', ay: 700, labels: [{ text: 'Kampus tercatat', rect: 'picker', t: 3.65, side: 'below' }] },
+      ],
+    });
+    const g = guide({ mood: 'idle', x: 960 });
+    return { speaker: g.K, update(l) { w.update(l); g.update(l); } };
   };
 
   SC[8] = () => {
-    const ui = uiCard({ w: 900, h: 740, segs: [{ clip: 'chat', from: 7.6, to: 9.4, speed: .6 }, { clip: 'chat', from: 9.4, to: 10.6, speed: .8 }], cam: [[0, { y: 410, z: 1.25 }], [3, { y: 430, z: 1.25 }]] });
-    const a = callout('KAMPUSMU SAJA'); const b = callout('SEMUA KAMPUS', 'mintc'); const K = mkKori('kori', 300); K.mood('idle');
-    return { speaker: K, update(l) {
-      const up = E.out(l / .45); put(ui.el, { x: 540, y: 810 + (1 - up) * 700, r: -1, o: 1 }); ui.update(l);
-      put(a, { x: 300, y: 395, s: pop(l, 1.1, .4), r: -2, o: fade(l, 1.1, .1) });
-      put(b, { x: 770, y: 395, s: pop(l, 1.7, .4), r: 2, o: fade(l, 1.7, .1) });
-      K.put({ x: 940, y: 1220 + (1 - E.out(l / .5)) * 300, o: 0 });
-    } };
+    const w = webView({
+      segs: [{ clip: 'chat', from: 11.8, to: 16.2 }],
+      beats: [
+        { t: 0 },
+        { t: 1.0, hl: 'chip_campus', clip: 'chat', ay: 760, labels: [{ text: 'Kampusmu saja', rect: 'chip_campus', t: 1.15 }] },
+        { t: 2.6, hl: 'chip_all', clip: 'chat', ay: 760, labels: [{ text: 'Semua kampus', rect: 'chip_all', t: 2.75, side: 'below' }] },
+      ],
+    });
+    const g = guide({ mood: 'idle', x: 960 });
+    return { speaker: g.K, update(l) { w.update(l); g.update(l); } };
   };
 
   SC[9] = () => {
-    const ui = uiCard({ w: 900, h: 760, segs: [{ clip: 'chat', from: 20.8, to: 22.8 }, { clip: 'admin', from: 0, to: 3.2 }], cam: [[0, { y: 380, z: 1 }], [2.0, { y: 380, z: 1 }], [2.01, { y: 470, z: 1.2 }]] });
-    const mag = div('abs', MAG); mag.style.width = mag.style.height = '240px';
-    const c = callout('ADMIN MEMERIKSA ISI PDF', 'cream'); const K = mkKori('kori', 300); K.mood('think');
-    return { speaker: K, update(l) {
-      const up = E.out(l / .45); put(ui.el, { x: 540, y: 820 + (1 - up) * 700, r: 1, o: 1 }); ui.update(l);
-      put(mag, { x: 770 + 30 * Math.sin(l * 2.2), y: 940 + 20 * Math.cos(l * 2.8), r: -10 + 6 * Math.sin(l * 2.5), s: pop(l, 2.2, .45), o: fade(l, 2.2, .1) });
-      put(c, { x: 540, y: 395, s: pop(l, 2.5, .4), r: -1, o: fade(l, 2.5, .1) });
-      K.put({ x: 160, y: 1230 + (1 - E.out(l / .5)) * 300, o: 1 });
-    } };
+    const w = webView({
+      segs: [{ clip: 'chat', from: 33.8, to: 35.5 }, { clip: 'admin', from: 1.5, to: 8.8, speed: 1.9 }],
+      beats: [
+        { t: 0 },
+        { t: 0.45, z: 1.15, hl: 'sent', clip: 'chat', ay: 760, labels: [{ text: 'Menunggu konfirmasi', rect: 'sent', t: 0.6, side: 'below' }] },
+        { t: 1.7, z: 1, cut: true },
+        { t: 2.2, z: 1.3, hl: 'confirm', clip: 'admin', ay: 760, labels: [{ text: 'Admin mengonfirmasi', rect: 'confirm', t: 2.35, side: 'below' }] },
+        { t: 3.8, z: 1.1, hl: 'card_after', clip: 'admin', ay: 760, labels: [{ text: 'Diperiksa dulu', rect: 'card_after', t: 3.95, side: 'below' }] },
+      ],
+    });
+    const g = guide({ mood: 'think', x: 960 });
+    return { speaker: g.K, update(l) { w.update(l); g.update(l); } };
   };
 
   SC[10] = () => {
@@ -236,22 +339,31 @@
   };
 
   SC[11] = () => {
-    const ui = uiCard({ w: 900, h: 880, segs: [{ clip: 'learn', from: 0.9, to: 7.1, speed: 1.25 }], cam: [[0, { y: 300, z: 1 }], [5, { y: 300, z: 1 }]] });
-    const c = callout('LATIHAN BAB', 'cream'); const K = mkKori('kori', 280); K.mood('idle');
-    return { speaker: K, update(l) {
-      const up = E.out(l / .45); put(ui.el, { x: 540, y: 850 + (1 - up) * 700, r: 1, o: 1 }); ui.update(l);
-      K.put({ x: 950, y: 1320 + (1 - E.out(l / .5)) * 300, o: 1 }); put(c, { x: 260, y: 1330, s: 0, o: 0 });
-    } };
+    const at = { x: 540, y: 330 };
+    const w = webView({
+      segs: [{ clip: 'learn', from: 0.9, to: 6.2, speed: 1.9 }, { clip: 'learn', from: 12.0, to: 14.8, speed: 1.1 }],
+      beats: [
+        { t: 0 },
+        { t: 0.85, hl: 'chapter', clip: 'learn', ay: 760, labels: [{ text: 'Pilih BAB', rect: 'chapter', t: 1.0 }] },
+        { t: 2.4, labels: [{ text: 'Kerjakan di web', at, t: 3.0 }] },
+      ],
+    });
+    const g = guide({ mood: 'happy', x: 960 });
+    return { speaker: g.K, update(l) { w.update(l); g.update(l); } };
   };
 
   SC[12] = () => {
-    const ui = uiCard({ w: 900, h: 880, segs: [{ clip: 'learn', from: 7.55, to: 10.45, speed: .6 }], cam: [[0, { y: 300, z: 1 }], [4.8, { y: 300, z: 1 }]] });
-    const c = callout('PEMBAHASAN'); const K = mkKori('kori', 280); K.mood('happy');
-    return { speaker: K, update(l) {
-      const up = E.out(l / .45); put(ui.el, { x: 540, y: 850 + (1 - up) * 700, r: -1, o: 1 }); ui.update(l);
-      put(c, { x: 330, y: 395, s: pop(l, 2.2, .4), r: -2, o: fade(l, 2.2, .1) });
-      K.put({ x: 950, y: 1320 + (1 - E.out(l / .5)) * 300, o: 1 });
-    } };
+    const at = { x: 540, y: 330 };
+    const w = webView({
+      segs: [{ clip: 'learn', from: 14.8, to: 21.5, speed: 1.3 }],
+      beats: [
+        { t: 0 },
+        { t: 0.1, hl: 'check', clip: 'learn', ay: 760, labels: [{ text: 'Cek jawaban', rect: 'check', t: 0.2, side: 'below' }] },
+        { t: 1.2, labels: [{ text: 'Pembahasan tiap pilihan', at, t: 2.4 }] },
+      ],
+    });
+    const g = guide({ mood: 'happy', x: 960 });
+    return { speaker: g.K, update(l) { w.update(l); g.update(l); } };
   };
 
   SC[13] = () => {
@@ -297,11 +409,11 @@
 
   SC[15] = () => {
     const clipsDef = [
-      { segs: [{ clip: 'subjects', from: 1.5, to: 2.7 }], cam: [[0, { y: 150, z: 1 }]] },
-      { segs: [{ clip: 'bab', from: 2.9, to: 4.1 }], cam: [[0, { y: 120, z: 1 }]] },
-      { segs: [{ clip: 'learn', from: 5.2, to: 6.4 }], cam: [[0, { y: 160, z: 1 }]] },
-      { segs: [{ clip: 'chat', from: 13.0, to: 14.2 }], cam: [[0, { y: 380, z: 1 }]] },
-      { segs: [{ clip: 'home', from: 1.0, to: 2.2 }], cam: [[0, { y: 120, z: 1 }]] },
+      { segs: [{ clip: 'subjects', from: 3.0, to: 4.2 }], cam: [[0, { y: 190, z: 1 }]] },
+      { segs: [{ clip: 'bab', from: 2.6, to: 3.8 }], cam: [[0, { y: 200, z: 1 }]] },
+      { segs: [{ clip: 'learn', from: 8.2, to: 9.4 }], cam: [[0, { y: 120, z: 1 }]] },
+      { segs: [{ clip: 'chat', from: 19.2, to: 20.4 }], cam: [[0, { y: 230, z: 1 }]] },
+      { segs: [{ clip: 'sim', from: 0.6, to: 1.8 }], cam: [[0, { y: 110, z: 1 }]] },
     ];
     const cards = clipsDef.map((d) => uiCard({ w: 760, h: 620, ...d }));
     const colors = ['#B8F0D5', '#F8C038', '#CDEFDD', '#F3A99A', '#BFD8F5', '#D9CCFF', '#F8C038', '#B8F0D5'];
@@ -337,12 +449,12 @@
     root.innerHTML = '';
     $('#bg').className = `bg-${sc.bg}`; $('#stage').className = sc.bg === 'navy' ? 'on-navy' : 'on-light';
     scn = SC[sc.id](sc); scn.tag = null;
-    const len = sc.overlay.length; const fs = len <= 14 ? 104 : len <= 22 ? 90 : 80;
+    const len = sc.overlay.length; const fs = len <= 14 ? 56 : len <= 22 ? 50 : 44;
     $('#overlay').innerHTML = `<span class="tag" style="font-size:${fs}px">${esc(sc.overlay)}</span>`;
-    const text = sc.sayShort ?? sc.say; const parts = text.split(/\s+/).filter(Boolean);
+    const text = sc.say; const parts = text.split(/\s+/).filter(Boolean);
     const total = parts.reduce((a, w) => a + w.length + 1, 0); let acc = 0;
     scn.words = parts.map((w) => { const a = acc / total; acc += w.length + 1; return a; });
-    const fsz = text.length > 72 ? 44 : text.length > 50 ? 48 : 54;
+    const fsz = text.length > 56 ? 34 : 38;
     $('#caption').innerHTML = `<div class="pill" style="font-size:${fsz}px">${parts.map((w) => `<span class="w">${esc(w)}</span>`).join(' ')}</div>`;
   }
 

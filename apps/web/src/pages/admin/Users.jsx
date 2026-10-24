@@ -1,6 +1,7 @@
 import { Download, ExternalLink, Pencil, Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import CampusPicker from '@/components/CampusPicker';
+import { NO_CAMPUS, campusPayload, campusState } from '@/lib/campus';
 import ExtraFields, { extraDefaults, formatExtra } from '@/components/ExtraFields';
 import { Alert, Badge, Field, Modal, PageLoader, Tabs } from '@/components/ui';
 import { api } from '@/lib/api';
@@ -73,7 +74,7 @@ export default function Users() {
                 <div className="min-w-0 flex-1">
                   <p className="font-semibold">{u.name} <span className="font-normal text-ink-muted">@{u.loginId}</span> {u.role !== 'user' && <Badge className="bg-gold-soft text-[#6b4f00]">{u.role}</Badge>}</p>
                   <p className="text-sm text-ink-muted">{u.email} · <a className="text-academic hover:underline" href={waLink(u.whatsapp)} target="_blank" rel="noopener noreferrer">{u.whatsapp}</a> · semester {u.semester}</p>
-                  <p className="text-sm text-ink-muted">{u.campusName || 'kampus belum diisi'}{u.campusOther ? ' (Lainnya)' : ''} · daftar {fmtDate(u.created)} · aktif {u.lastActiveAt ? relative(u.lastActiveAt) : 'belum pernah'} · {u.attempts} percobaan</p>
+                  <p className="text-sm text-ink-muted">{u.campusName || 'kampus belum diisi'}{u.campusOther && u.campusOther !== NO_CAMPUS ? ' (Lainnya)' : ''} · daftar {fmtDate(u.created)} · aktif {u.lastActiveAt ? relative(u.lastActiveAt) : 'belum pernah'} · {u.attempts} percobaan</p>
                   {fields.some((f) => formatExtra(f, u.extra?.[f.key])) && (
                     <p className="mt-1 flex flex-wrap gap-1.5 text-sm">
                       {fields.filter((f) => formatExtra(f, u.extra?.[f.key])).map((f) => <span key={f.key} className="chip bg-page py-0.5 text-ink">{f.label}: <b className="font-semibold">{formatExtra(f, u.extra[f.key])}</b></span>)}
@@ -92,7 +93,7 @@ export default function Users() {
                 {u.role === 'user' && !u.deletedAt && (u.disabled
                   ? <button type="button" className="btn-primary btn-sm" onClick={() => act(u, 'enable')}>Aktifkan</button>
                   : <button type="button" className="btn-secondary btn-sm" onClick={() => act(u, 'disable')}>Nonaktifkan</button>)}
-                {u.role === 'user' && !u.deletedAt && <button type="button" className="btn-secondary btn-sm" onClick={() => { setCampusFor(u); setCampus({ id: u.campus, other: u.campusOther }); }}>Ganti kampus</button>}
+                {u.role === 'user' && !u.deletedAt && <button type="button" className="btn-secondary btn-sm" onClick={() => { setCampusFor(u); setCampus({ id: campusState(u).campus, other: campusState(u).other }); }}>Ganti kampus</button>}
                 {u.role === 'user' && (u.deletedAt
                   ? <button type="button" className="btn-secondary btn-sm" onClick={() => act(u, 'restore')}>Pulihkan</button>
                   : <button type="button" className="btn-ghost btn-sm text-coral" onClick={() => act(u, 'delete')}>Hapus lunak</button>)}
@@ -113,7 +114,7 @@ export default function Users() {
       {campusFor && (
         <Modal open size="sm" title={`Ganti kampus ${campusFor.name}`} onClose={() => setCampusFor(null)} footer={<>
           <button type="button" className="btn-ghost" onClick={() => setCampusFor(null)}>Batal</button>
-          <button type="button" className="btn-primary" onClick={() => act(campusFor, 'campus', campus.id === '__other__' ? { campus: '', campusOther: campus.other } : { campus: campus.id })}>Simpan</button>
+          <button type="button" className="btn-primary" onClick={() => act(campusFor, 'campus', campusPayload(campus.id, campus.other))}>Simpan</button>
         </>}>
           <p className="mb-3 text-sm text-ink-muted">Admin tidak terkena batas ganti kampus. Perubahan dicatat di riwayat.</p>
           <CampusPicker value={campus.id} other={campus.other} onChange={(id, other) => setCampus({ id, other })} id="adm-campus" />
