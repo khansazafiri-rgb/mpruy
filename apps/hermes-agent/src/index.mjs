@@ -82,6 +82,10 @@ async function handleUpdate(update) {
   const msg = update.message;
   const text = String(msg.text || msg.caption || '').trim();
 
+  if (/^\/chapters$/i.test(text) || /^\/change\s+(?:chapter|bab)$/i.test(text)) {
+    return showChapters(msg.chat.id, msg.from.id);
+  }
+
   if (await importPlans.handleMessage(msg, text)) return;
 
   if (msg.document) {
@@ -115,8 +119,43 @@ async function help(chatId) {
     + '/claim KODE — ubah menjadi Diproses\n'
     + '/fix KODE alasan — tandai Perlu perbaikan\n\n'
     + importPlans.helpText()
-    + '\n\n<b>Catatan:</b> scope/kampus selalu dikunci dari submission MEDCOEL; JSON tidak boleh mengubahnya.'
+    + '\n<code>/chapters</code> — kirim daftar ID bab untuk mata kuliah pada Import Plan aktif\n'
+    + '<code>/change chapter</code> — shortcut untuk menampilkan daftar bab\n'
+    + '\n<b>Catatan:</b> scope/kampus selalu dikunci dari submission MEDCOEL; JSON tidak boleh mengubahnya.'
   );
+}
+
+async function showChapters(chatId, actorId) {
+  const plan = state.getImportPlan(chatId, actorId);
+  if (!plan) {
+    return telegram.sendMessage(chatId,
+      'Belum ada Import Plan aktif. Kirim JSON sebagai document dengan caption <code>/put [KODE]</code> dulu.'
+    );
+  }
+  const subjectId = plan.source?.subjectId;
+  if (!subjectId) return telegram.sendMessage(chatId, 'Import Plan ini tidak memiliki mata kuliah sumber.');
+
+  const catalog = await medcoel.getSubjectCatalog(subjectId);
+  const chapters = Array.isArray(catalog?.chapters) ? catalog.chapters : [];
+  if (!chapters.length) {
+    return telegram.sendMessage(chatId,
+      `Tidak ada bab aktif untuk <b>${escapeHtml(plan.source?.subjectName || subjectId)}</b>.`
+    );
+  }
+
+  const lines = chapters.map((ch, i) =>
+    `${i + 1}. <code>${escapeHtml(ch.id)}</code> — ${escapeHtml(ch.title || ch.name || '-')}`
+  );
+  const chunks = chunkLines(lines, 3500);
+  for (let i = 0; i < chunks.length; i += 1) {
+    const head = i === 0
+      ? `<b>📚 BAB ${escapeHtml(plan.source?.subjectName || subjectId)}</b>\n\n`
+      : `<b>📚 BAB lanjutan ${i + 1}/${chunks.length}</b>\n\n`;
+    const tail = i === chunks.length - 1
+      ? '\n\nPilih dengan: <code>/change chapter ID_BAB</code>'
+      : '';
+    await telegram.sendMessage(chatId, head + chunks[i] + tail);
+  }
 }
 
 async function showQueue(chatId) {
@@ -201,6 +240,22 @@ function summarizeIssues(items) {
   if (!bad.length) return '';
   return '\n\n<b>Masalah:</b>\n'
     + bad.map((x) => `#${escapeHtml(x.index ?? x.number ?? '?')}: ${escapeHtml(x.errors.join('; '))}`).join('\n');
+}
+
+function chunkLines(lines, maxChars) {
+  const chunks = [];
+  let current = '';
+  for (const line of lines) {
+    const next = current ? `${current}\n${line}` : line;
+    if (next.length > maxChars && current) {
+      chunks.push(current);
+      current = line;
+    } else {
+      current = next;
+    }
+  }
+  if (current) chunks.push(current);
+  return chunks;
 }
 
 function sleep(ms) {
