@@ -4,7 +4,7 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import {
-  BUILTIN_CASES, BUILTIN_DX, BYID, CASES, DX, PLAYABLE, POLI, actionLines, caseCtx, isNA, pickCase, poliCounts, reasonSet, rel, score, setContent,
+  BUILTIN_CASES, BUILTIN_DX, BYID, CASES, DX, PLAYABLE, POLI, actionLines, caseCtx, isNA, needsReason, pickCase, poliCounts, reasonSet, rel, score, setContent,
 } from './engine.js';
 
 const file = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../pocketbase/pb_migrations/1800001300_sim_cases_50.js');
@@ -70,7 +70,7 @@ test('bermain sempurna (semua hal penting, alasan terbaik) menghasilkan skor tin
         done[id] = true;
         actionLines(BYID[id], ctx); // tidak boleh melempar galat
         const rs = reasonSet(BYID[id], ctx);
-        return { id, rel: rel(BYID[id], ctx), reason: BYID[id].fl.g ? null : { key: rs.good[0] || null, ok: rs.good.length > 0, good: rs.good } };
+        return { id, rel: rel(BYID[id], ctx), reason: BYID[id].fl.g ? null : { key: rs.good[0] || null, ok: rs.good.length > 0, good: rs.good, tries: 1 } };
       });
       const s = score({ ctx, done, actions, dx: c.dxOk });
       assert.equal(s.parts.dx, 30, c.key);
@@ -97,6 +97,25 @@ test('undian kasus mengikuti poli yang dipilih', () => {
     const seen = new Set();
     for (let i = 0; i < 200; i++) seen.add(CASES[pickCase('', () => i / 200, 'acak')].poli || 'x');
     assert.ok(seen.size >= 4, 'mode acak mengambil dari banyak poli');
+  } finally {
+    setContent({ cases: BUILTIN_CASES, dx: BUILTIN_DX });
+  }
+});
+
+test('di semua kasus, tindakan penting dan bermanfaat selalu punya alasan yang benar di antara opsi', () => {
+  setContent(merged());
+  try {
+    const bad = [];
+    for (const k of PLAYABLE) {
+      const ctx = caseCtx(k);
+      for (const id of [...Object.keys(ctx.Ks), ...Object.keys(ctx.Us)]) {
+        const it = BYID[id];
+        if (!needsReason(it, ctx)) continue;
+        const rs = reasonSet(it, ctx);
+        if (!rs.good.length || !rs.opts.some((o) => rs.good.includes(o))) bad.push(`${k}.${id}`);
+      }
+    }
+    assert.deepEqual(bad, []);
   } finally {
     setContent({ cases: BUILTIN_CASES, dx: BUILTIN_DX });
   }

@@ -364,3 +364,9 @@
 .sim-poli-row button:disabled { opacity: .4; cursor: not-allowed; }
 .sim-poli-row button:focus-visible { outline: 3px solid #f8c038; outline-offset: 2px; }
 .sim-poli-row button svg { display: inline; vertical-align: -2px; margin-right: 4px; }
+
+/* Alasan yang belum tepat: tindakan belum dilakukan, pemain memilih lagi */
+.sim-sheet-alert { display: flex; gap: 8px; align-items: flex-start; margin: 12px 0 0; padding: 10px 12px; border-radius: 14px; font-size: 14px; font-weight: 600; line-height: 1.45; background: #fff1ee; color: #8a2d1f; border: 1.5px solid #f3b8ad; }
+.sim-sheet-alert svg { flex-shrink: 0; margin-top: 2px; }
+.sim-sheet-opts button.is-wrong, .sim-sheet-opts button:disabled { opacity: .5; cursor: not-allowed; border-color: #f3b8ad; background: #fff7f5; box-shadow: none; text-decoration: line-through; text-decoration-color: rgb(138 45 31 / .5); }
+.sim-sheet-opts button.is-wrong small { text-decoration: none; display: inline-block; font-weight: 700; color: #8a2d1f; }

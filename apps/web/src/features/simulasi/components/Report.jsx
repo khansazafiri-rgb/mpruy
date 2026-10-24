@@ -43,7 +43,7 @@ const Report = forwardRef(function Report({ sim, saved, onNext, onRetry, tutoria
 
       <div className="sim-stats">
         <div className="tone-mint"><b>{R.keyDone.length}/{R.keyAll.length}</b><span>hal penting dilakukan</span></div>
-        <div className="tone-sky"><b>{R.reasonOk}/{R.asked}</b><span>alasan masuk akal</span></div>
+        <div className="tone-sky"><b>{R.reasonOk}/{R.asked}</b><span>alasan tepat di percobaan pertama{R.reasonLate ? `, ${R.reasonLate} setelah mencoba lagi` : ''}</span></div>
         <div className="tone-sun"><b>{R.cnt.L}</b><span>tindakan kurang perlu</span></div>
         <div className="tone-rose"><b>{R.cnt.T + R.cnt.B}</b><span>tidak tepat atau berisiko</span></div>
         <div className="tone-lilac"><b>{s.t0 ? fmtClock(usedSec) : '-'}</b><span>lama konsultasi</span></div>

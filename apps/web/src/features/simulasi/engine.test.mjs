@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   BUILTIN_CASES, BUILTIN_DX, BYID, CASES, CAT, DX, PLAYABLE, actionLines, areasFor, caseCtx, caseSprites, ddxOptions, judgeDdx, judgeReason,
-  pickCase, reasonSet, rel, score, setContent,
+  needsReason, pickCase, reasonFeedback, reasonSet, rel, score, setContent,
 } from './engine.js';
 
 test('katalog terbaca dan id unik', () => {
@@ -126,4 +126,60 @@ test('isi dari server mengganti kasus; kasus tutorial tetap ada walau dinonaktif
   } finally {
     setContent({ cases: BUILTIN_CASES, dx: BUILTIN_DX });
   }
+});
+
+test('alasan: tindakan penting dan bermanfaat selalu punya alasan yang benar, yang tidak terkait tidak punya', () => {
+  for (const k of PLAYABLE) {
+    const ctx = caseCtx(k);
+    for (const id of [...Object.keys(ctx.Ks), ...Object.keys(ctx.Us)]) {
+      const it = BYID[id];
+      if (!needsReason(it, ctx)) continue;
+      const rs = reasonSet(it, ctx);
+      assert.ok(rs.good.length > 0, `${k}: ${id} tidak punya alasan yang benar`);
+      assert.ok(rs.opts.some((o) => rs.good.includes(o)), `${k}: ${id} opsi tidak memuat alasan yang benar`);
+      assert.equal(new Set(rs.opts).size, rs.opts.length);
+    }
+  }
+  // Tindakan tanpa kaitan sama sekali dengan kasus (MRI pada pneumonia) tidak punya alasan yang benar.
+  const ctx = caseCtx('umum');
+  assert.equal(reasonSet(BYID.mri, ctx).good.length, 0);
+  // Diagnosis tepat membenarkan tindakan penting yang tag-nya tidak beririsan dengan diagnosis banding mana pun.
+  setContent({ cases: { ...BUILTIN_CASES, bedah: { ...BUILTIN_CASES.bedah, ddx: ['apendisitis', 'kolik'], K: `${BUILTIN_CASES.bedah.K} paru_auskul` } }, dx: BUILTIN_DX });
+  try {
+    const rs = reasonSet(BYID.paru_auskul, caseCtx('bedah'));
+    assert.deepEqual(rs.good, ['apendisitis']);
+    assert.ok(rs.opts.includes('apendisitis'));
+  } finally {
+    setContent({ cases: BUILTIN_CASES, dx: BUILTIN_DX });
+  }
+});
+
+test('alasan salah tidak pernah dinilai benar dan umpan baliknya tidak membocorkan jawaban', () => {
+  const ctx = caseCtx('umum');
+  const it = BYID.demam;
+  const rs = reasonSet(it, ctx);
+  const wrong = rs.opts.find((o) => !rs.good.includes(o));
+  assert.equal(judgeReason(rs, wrong).ok, false);
+  assert.equal(judgeReason(rs, '').ok, false);
+  for (const g of rs.good) assert.equal(judgeReason(rs, g).ok, true);
+  const fb = reasonFeedback(it, rs, wrong);
+  assert.match(fb, /belum dilakukan/);
+  rs.good.forEach((g) => assert.ok(!fb.includes(DX[g][0]) || DX[g][0] === DX[wrong][0]));
+  assert.match(reasonFeedback(it, rs, ''), /belum dilakukan/);
+  assert.match(reasonFeedback(BYID.mri, { good: [], opts: [] }, 'tb'), /tidak ada dugaan/i);
+});
+
+test('skor alasan: benar di percobaan pertama penuh, benar setelah mencoba lagi setengah', () => {
+  const ctx = caseCtx('umum');
+  const mk = (tries) => ['demam', 'batuk'].map((id) => ({ id, rel: 'K', reason: { key: 'pneumonia', ok: true, good: ['pneumonia'], tries } }));
+  const base = { ctx, done: {}, dx: 'pneumonia' };
+  const first = score({ ...base, actions: mk(1) });
+  const late = score({ ...base, actions: mk(3) });
+  assert.equal(first.parts.reason, 20);
+  assert.equal(late.parts.reason, 10);
+  assert.equal(first.reasonOk, 2);
+  assert.equal(late.reasonOk, 0);
+  assert.equal(late.reasonLate, 2);
+  const mixed = score({ ...base, actions: [...mk(1).slice(0, 1), ...mk(2).slice(1)] });
+  assert.equal(mixed.parts.reason, 15);
 });

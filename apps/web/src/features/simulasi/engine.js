@@ -143,15 +143,22 @@ export function needsReason(it, ctx) { return !it.fl.g && !isNA(it, ctx); }
 export function hash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
 const byHash = (seed) => (a, b) => hash(seed + a) - hash(seed + b);
 
-/** Opsi alasan untuk tindakan: 1-2 diagnosis banding yang terkait dan pengecoh, urutan tetap. */
+/**
+ * Opsi alasan untuk tindakan: 1-2 diagnosis banding yang terkait dan pengecoh, urutan tetap.
+ * Alasan yang benar adalah diagnosis banding kasus yang tag-nya beririsan dengan tindakan.
+ * Tindakan yang memang penting atau bermanfaat untuk kasus ini (K atau U) tetapi tidak beririsan
+ * dengan satu pun diagnosis banding dibenarkan oleh diagnosis tepat kasusnya, supaya selalu ada
+ * alasan yang benar. Tindakan lain tanpa diagnosis banding terkait tidak punya alasan yang benar.
+ */
 export function reasonSet(it, ctx) {
   const tg = it.tag ? it.tag.split(',') : [];
   const seed = `${ctx.key}:${it.id}`;
   const ov = (k) => DX[k][1].split(',').some((t) => tg.indexOf(t) >= 0);
-  const good = ctx.C.ddx.filter(ov).sort(byHash(`${seed}g`));
+  let good = ctx.C.ddx.filter(ov).sort(byHash(`${seed}g`));
+  if (!good.length && (ctx.Ks[it.id] || ctx.Us[it.id]) && DX[ctx.C.dxOk]) good = [ctx.C.dxOk];
   const nGood = Math.min(good.length, 1 + (hash(seed) % 2));
   const picked = good.slice(0, nGood);
-  const bad = Object.keys(DX).filter((k) => !ov(k)).sort(byHash(`${seed}d`));
+  const bad = Object.keys(DX).filter((k) => !ov(k) && good.indexOf(k) < 0).sort(byHash(`${seed}d`));
   const opts = picked.concat(bad.slice(0, 4 - picked.length)).sort(byHash(`${seed}o`));
   return { opts, good };
 }
@@ -258,16 +265,28 @@ export function score({ ctx, done, actions, dx }) {
   const cnt = { K: 0, U: 0, L: 0, T: 0, B: 0, N: 0 };
   actions.forEach((a) => { cnt[a.rel]++; });
   const asked = actions.filter((a) => a.reason);
-  const reasonOk = asked.filter((a) => a.reason.ok).length;
+  // Alasan benar di percobaan pertama bernilai penuh; benar setelah salah memilih bernilai setengah.
+  const reasonOk = asked.filter((a) => a.reason.ok && !(a.reason.tries > 1)).length;
+  const reasonLate = asked.filter((a) => a.reason.ok && a.reason.tries > 1).length;
   const sDx = okDx ? 30 : nearDx ? 12 : 0;
   const sKey = keyAll.length ? Math.round((40 * keyDone.length) / keyAll.length) : 0;
-  const sRsn = asked.length ? Math.round((20 * reasonOk) / asked.length) : 0;
+  const sRsn = asked.length ? Math.round((20 * (reasonOk + 0.5 * reasonLate)) / asked.length) : 0;
   const sEff = Math.max(0, Math.round(10 - 0.5 * cnt.L - 2 * cnt.T - 4 * cnt.B));
   const total = Math.min(100, sDx + sKey + sRsn + sEff);
   return {
-    total, okDx, nearDx, keyAll, keyDone, missed: keyAll.filter((id) => !done[id]), cnt, asked: asked.length, reasonOk,
+    total, okDx, nearDx, keyAll, keyDone, missed: keyAll.filter((id) => !done[id]), cnt, asked: asked.length, reasonOk, reasonLate,
     parts: { dx: sDx, key: sKey, reason: sRsn, eff: sEff },
   };
+}
+
+/**
+ * Umpan balik saat alasan yang dipilih belum tepat. Tindakan belum dilakukan dan jawaban
+ * yang benar sengaja tidak disebut, supaya pemain berpikir ulang.
+ */
+export function reasonFeedback(it, rs, key) {
+  if (!rs.good.length) return 'Pada pasien ini tidak ada dugaan yang bisa kamu nilai lewat tindakan ini, jadi tindakannya belum dilakukan.';
+  if (!key) return 'Tindakan yang spesifik butuh tujuan yang jelas, jadi tindakannya belum dilakukan. Pilih dugaan yang ingin kamu nilai.';
+  return `Tindakan ini tidak membantu menilai ${DX[key][0]}, jadi belum dilakukan. Pikirkan dugaan yang benar-benar ingin kamu nilai, lalu pilih lagi.`;
 }
 
 export function reasonText(it, r) {
@@ -276,7 +295,7 @@ export function reasonText(it, r) {
   if (!r.key) {
     return { ok: false, t: `Alasanmu: tidak ada dugaan khusus. ${gnames.length ? `Padahal tindakan ini berkaitan dengan ${gnames.join(' atau ')} pada kasus ini.` : 'Tindakan yang spesifik sebaiknya punya tujuan yang jelas.'}` };
   }
-  if (r.ok) return { ok: true, t: `Alasanmu: ${verb}${DX[r.key][0]}. Masuk akal untuk tindakan ini.` };
+  if (r.ok) return { ok: true, t: `Alasanmu: ${verb}${DX[r.key][0]}. Masuk akal untuk tindakan ini.${r.tries > 1 ? ` Kamu butuh ${r.tries} percobaan untuk menemukannya.` : ''}` };
   return { ok: false, t: `Alasanmu: ${verb}${DX[r.key][0]}. Tindakan ini kurang berhubungan dengan ${DX[r.key][0]}.${gnames.length ? ` Yang lebih sesuai: ${gnames.join(' atau ')}.` : ' Tidak ada diagnosis banding kasus ini yang terkait erat dengannya.'}` };
 }
 
