@@ -1,0 +1,283 @@
+{
+  "_catatan": "Naskah video ke-2 (Simulasi Jadi Dokter, narator Nilo). Alur: kait lucu, kenalan dengan web secara umum (gratis, 38.400 soal, latihan, kirim PDF, leaderboard), baru masuk Simulasi Jadi Dokter. 'win' = jendela waktu adegan (detik). 'teks' = kalimat yang diucapkan (tanpa nomor shot atau petunjuk). Nama merek ditulis 'Med-koel' agar terbaca benar.",
+  "fps": 30,
+  "total": 75,
+  "shot": {
+    "01": {
+      "start": 0,
+      "end": 3,
+      "overlay": "TUNGGU, INI BUAT KAMU",
+      "teks": [
+        "Dok! Ada pasien! Mulai dari mana?"
+      ],
+      "bg": "mint",
+      "mood": "wave",
+      "pov": "",
+      "web": []
+    },
+    "02": {
+      "start": 3,
+      "end": 7,
+      "overlay": "KENALIN MEDCOEL · GRATIS",
+      "teks": [
+        "Kenalin Med-koel: belajar kedokteran, semua fitur gratis!"
+      ],
+      "bg": "cream",
+      "mood": "wave",
+      "pov": "",
+      "web": [
+        {
+          "clip": "landing",
+          "from": 0,
+          "len": 4
+        }
+      ]
+    },
+    "03": {
+      "start": 7,
+      "end": 12,
+      "overlay": "38.400 SOAL",
+      "teks": [
+        "Hampir empat puluh ribu soal, rapi per mata kuliah dan bab."
+      ],
+      "bg": "mint",
+      "mood": "cheer",
+      "pov": "",
+      "web": [
+        {
+          "clip": "subjects",
+          "from": 0,
+          "len": 5
+        }
+      ]
+    },
+    "04": {
+      "start": 12,
+      "end": 16,
+      "overlay": "LATIHAN + PEMBAHASAN",
+      "teks": [
+        "Latihan soal lengkap dengan pembahasan tiap pilihan."
+      ],
+      "bg": "cream",
+      "mood": "think",
+      "pov": "POV: jawab, cek, lalu baca pembahasannya",
+      "web": [
+        {
+          "clip": "practice",
+          "from": 0,
+          "len": 4
+        }
+      ]
+    },
+    "05": {
+      "start": 16,
+      "end": 21,
+      "overlay": "KIRIM PDF SOAL",
+      "teks": [
+        "Punya PDF soal? Kirim lewat Chat Admin, nanti diperiksa dulu."
+      ],
+      "bg": "mint",
+      "mood": "happy",
+      "pov": "POV: Upload soal PDF, pilih mata kuliah, pilih berkas",
+      "web": [
+        {
+          "clip": "chat",
+          "from": 0,
+          "len": 2.3
+        },
+        {
+          "clip": "chat",
+          "from": "file_picked",
+          "off": -0.35,
+          "len": 2.7
+        }
+      ]
+    },
+    "06": {
+      "start": 21,
+      "end": 26,
+      "overlay": "ADA LEADERBOARD",
+      "teks": [
+        "Ada leaderboard juga, biar belajar makin semangat."
+      ],
+      "bg": "cream",
+      "mood": "cheer",
+      "pov": "",
+      "web": [
+        {
+          "clip": "leaderboard",
+          "from": 0,
+          "len": 5
+        }
+      ]
+    },
+    "07": {
+      "start": 26,
+      "end": 31,
+      "overlay": "SIMULASI JADI DOKTER",
+      "teks": [
+        "Yang paling seru: Simulasi Jadi Dokter. Pilih poli dan modenya."
+      ],
+      "bg": "navy",
+      "mood": "wave",
+      "pov": "POV: pilih poli, pilih mode, lalu mulai",
+      "web": [
+        {
+          "clip": "sim",
+          "from": "s7",
+          "len": 4.97
+        }
+      ]
+    },
+    "08": {
+      "start": 31,
+      "end": 36,
+      "overlay": "MULAI ANAMNESIS",
+      "teks": [
+        "Ketuk dialog, tanya riwayat pasien, dengarkan jawabannya."
+      ],
+      "bg": "navy",
+      "mood": "think",
+      "pov": "POV: ketuk dialog, ketik “demam” di pencarian, pilih alasannya",
+      "web": [
+        {
+          "clip": "sim",
+          "from": "s8",
+          "len": 4.97
+        }
+      ]
+    },
+    "09": {
+      "start": 36,
+      "end": 41,
+      "overlay": "PILIH PEMERIKSAAN FISIK",
+      "teks": [
+        "Lanjut periksa fisik. Pilih yang paling masuk akal, ya."
+      ],
+      "bg": "navy",
+      "mood": "idle",
+      "pov": "POV: tahap Fisik, pilih tanda vital",
+      "web": [
+        {
+          "clip": "sim",
+          "from": "s9",
+          "len": 4.97
+        }
+      ]
+    },
+    "10": {
+      "start": 41,
+      "end": 46,
+      "overlay": "PENUNJANG BILA PERLU",
+      "teks": [
+        "Penunjang? Minta seperlunya saja, jangan pesan semua tes!"
+      ],
+      "bg": "navy",
+      "mood": "think",
+      "pov": "POV: minta satu penunjang yang relevan",
+      "web": [
+        {
+          "clip": "sim",
+          "from": "s10",
+          "len": 4.97
+        }
+      ]
+    },
+    "11": {
+      "start": 46,
+      "end": 51,
+      "overlay": "SUSUN KEPUTUSAN",
+      "teks": [
+        "Rangkai temuanmu jadi diagnosis, lalu rencana penanganan."
+      ],
+      "bg": "navy",
+      "mood": "think",
+      "pov": "POV: tetapkan diagnosis, pikirkan diagnosis banding",
+      "web": [
+        {
+          "clip": "sim",
+          "from": "s11",
+          "len": 4.97
+        }
+      ]
+    },
+    "12": {
+      "start": 51,
+      "end": 56,
+      "overlay": "CATATAN SOAP",
+      "teks": [
+        "Semua langkahmu otomatis jadi catatan SOAP."
+      ],
+      "bg": "navy",
+      "mood": "happy",
+      "pov": "Catatan SOAP terisi otomatis dari langkahmu",
+      "web": [
+        {
+          "clip": "sim",
+          "from": "s12",
+          "len": 4.97
+        }
+      ]
+    },
+    "13": {
+      "start": 56,
+      "end": 61,
+      "overlay": "BACA LAPORAN KASUS",
+      "teks": [
+        "Di akhir ada laporan: tindakan penting dan alasan di baliknya."
+      ],
+      "bg": "navy",
+      "mood": "cheer",
+      "pov": "POV: baca laporan dan alasan tiap tindakan",
+      "web": [
+        {
+          "clip": "sim",
+          "from": "s13",
+          "len": 4.97
+        }
+      ]
+    },
+    "14": {
+      "start": 61,
+      "end": 66,
+      "overlay": "COBA LAGI, LEBIH PAHAM",
+      "teks": [
+        "Ada yang terlewat? Santai, coba lagi atau ambil kasus lain."
+      ],
+      "bg": "navy",
+      "mood": "wave",
+      "pov": "POV: ulangi kasus atau pilih pasien berikutnya",
+      "web": [
+        {
+          "clip": "sim",
+          "from": "s14",
+          "len": 4.97
+        }
+      ]
+    },
+    "15": {
+      "start": 66,
+      "end": 71,
+      "overlay": "LATIH CARA BERPIKIR",
+      "teks": [
+        "Semua fitur gratis. Tinggal latih cara berpikirmu."
+      ],
+      "bg": "cream",
+      "mood": "wave",
+      "pov": "",
+      "web": []
+    },
+    "16": {
+      "start": 71,
+      "end": 75,
+      "overlay": "COBA SIMULASI",
+      "teks": [
+        "Siap ketemu pasien virtual? Coba di Med-koel, gratis!"
+      ],
+      "bg": "mint",
+      "mood": "cheer",
+      "pov": "",
+      "web": []
+    }
+  }
+}
