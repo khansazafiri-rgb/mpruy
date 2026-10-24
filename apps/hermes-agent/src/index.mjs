@@ -1,9 +1,9 @@
-import crypto from 'node:crypto';
 import { loadConfig } from './config.mjs';
 import { MedcoelClient } from './medcoel.mjs';
 import { StateStore } from './state.mjs';
 import { TelegramClient, escapeHtml } from './telegram.mjs';
 import { DriveClient } from './drive.mjs';
+import { ImportPlanFlow } from './import-plan.mjs';
 
 const config = loadConfig();
 const medcoel = new MedcoelClient(config);
@@ -12,7 +12,7 @@ const drive = new DriveClient(config);
 const state = new StateStore(config.stateDir);
 await state.load();
 
-const APPROVAL_TTL_MS = 2 * 60 * 60 * 1000;
+const importPlans = new ImportPlanFlow({ config, medcoel, telegram, state });
 let stopping = false;
 
 process.on('SIGTERM', () => { stopping = true; });
@@ -22,6 +22,7 @@ console.log('[Hermes] starting');
 await medcoel.login();
 console.log('[Hermes] MEDCOEL agent login OK');
 console.log(`[Hermes] Drive PDF relay ${drive.configured ? 'enabled' : 'disabled'}`);
+console.log('[Hermes] Import Plan flow enabled');
 
 queueLoop().catch((err) => fatal('queue loop', err));
 telegramLoop().catch((err) => fatal('telegram loop', err));
@@ -71,12 +72,24 @@ async function handleUpdate(update) {
     if (update.callback_query) await telegram.answerCallbackQuery(update.callback_query.id, 'Tidak diizinkan.');
     return;
   }
-  if (update.callback_query) return handleCallback(update.callback_query);
+
+  if (update.callback_query) {
+    await telegram.answerCallbackQuery(update.callback_query.id, 'Tombol lama tidak dipakai lagi. Gunakan /plan atau /confirm.');
+    return;
+  }
   if (!update.message) return;
+
   const msg = update.message;
   const text = String(msg.text || msg.caption || '').trim();
 
-  if (msg.document) return handleDocument(msg, text);
+  if (await importPlans.handleMessage(msg, text)) return;
+
+  if (msg.document) {
+    return telegram.sendMessage(msg.chat.id,
+      'Document tidak diproses. Untuk JSON gunakan caption <code>/put [KODE]</code>. '
+      + 'Command lama <code>/dryrun KODE ID_BAB</code> juga masih diterima.'
+    );
+  }
   if (!text) return;
   if (text === '/start' || text === '/help') return help(msg.chat.id);
   if (text === '/queue') return showQueue(msg.chat.id);
@@ -95,16 +108,14 @@ async function handleUpdate(update) {
 
 async function help(chatId) {
   return telegram.sendMessage(chatId,
-    '<b>MEDCOEL Hermes Agent</b>\n\n' +
-    '/queue — lihat pengajuan berstatus Antre\n' +
-    '/show KODE — lihat detail pengajuan\n' +
-    '/files KODE — kirim PDF pengajuan ke chat ini\n' +
-    '/claim KODE — ubah menjadi Diproses\n' +
-    '/fix KODE alasan — tandai Perlu perbaikan\n\n' +
-    '<b>Dry-run JSON</b>\n' +
-    'Kirim file .json dengan caption:\n' +
-    '<code>/dryrun KODE_PENGAJUAN ID_BAB</code>\n\n' +
-    'Hermes akan dry-run dahulu. Impor nyata hanya muncul lewat tombol persetujuan dan terikat ke hash file JSON + ID BAB.'
+    '<b>MEDCOEL Hermes Agent</b>\n\n'
+    + '/queue — lihat pengajuan berstatus Antre\n'
+    + '/show KODE — lihat detail pengajuan\n'
+    + '/files KODE — kirim PDF pengajuan dari Drive\n'
+    + '/claim KODE — ubah menjadi Diproses\n'
+    + '/fix KODE alasan — tandai Perlu perbaikan\n\n'
+    + importPlans.helpText()
+    + '\n\n<b>Catatan:</b> scope/kampus selalu dikunci dari submission MEDCOEL; JSON tidak boleh mengubahnya.'
   );
 }
 
@@ -147,113 +158,8 @@ async function claim(chatId, id) {
 
 async function needsFix(chatId, id, note) {
   const sub = await medcoel.setStatus(id, 'perlu_perbaikan', note.trim());
-  return telegram.sendMessage(chatId, `⚠️ <b>${escapeHtml(sub.code || id)}</b> ditandai Perlu perbaikan.\n${escapeHtml(note.trim())}`);
-}
-
-async function handleDocument(msg, caption) {
-  const fileName = String(msg.document.file_name || 'upload');
-  const match = caption.match(/^\/dryrun\s+(\S+)\s+(\S+)$/i);
-  if (!match) {
-    return telegram.sendMessage(msg.chat.id, 'File tidak diproses. Untuk JSON pengajuan gunakan caption <code>/dryrun KODE_PENGAJUAN ID_BAB</code>.');
-  }
-  if (!/\.json$/i.test(fileName)) return telegram.sendMessage(msg.chat.id, 'Untuk tahap ini Hermes hanya menerima file .json.');
-
-  const submissionId = match[1];
-  const chapterId = match[2];
-  const bytes = await telegram.downloadFile(msg.document.file_id, config.maxJsonBytes);
-  const raw = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
-  const digest = hashPayload(submissionId, chapterId, raw);
-
-  await telegram.sendMessage(msg.chat.id, `🔎 Dry-run <b>${escapeHtml(submissionId)}</b> · BAB <code>${escapeHtml(chapterId)}</code>\nHash: <code>${digest.slice(0, 16)}</code>`);
-
-  const result = await medcoel.importSubmission(submissionId, {
-    chapter: chapterId,
-    text: raw,
-    skipInvalid: false,
-    dryRun: true,
-  });
-
-  const invalid = Number(result?.invalid || 0);
-  const duplicates = Number(result?.duplicates || 0);
-  const valid = Number(result?.valid || 0);
-  const created = Number(result?.created || 0);
-  const issues = summarizeIssues(result?.items || []);
-
-  if (invalid > 0) {
-    return telegram.sendMessage(msg.chat.id,
-      `❌ <b>Dry-run diblokir</b>\nValid: ${valid}\nInvalid: ${invalid}\nDuplikat: ${duplicates}${issues}`
-    );
-  }
-
-  const approvalId = crypto.randomBytes(8).toString('hex');
-  await state.putApproval(approvalId, {
-    chatId: String(msg.chat.id),
-    actorId: String(msg.from.id),
-    submissionId,
-    chapterId,
-    fileName,
-    telegramFileId: String(msg.document.file_id),
-    hash: digest,
-    dryRun: { valid, invalid, duplicates, created },
-  });
-
-  return telegram.sendMessage(msg.chat.id,
-    `✅ <b>Dry-run lolos</b>\n` +
-    `Pengajuan: <b>${escapeHtml(submissionId)}</b>\n` +
-    `BAB ID: <code>${escapeHtml(chapterId)}</code>\n` +
-    `Valid: ${valid}\nInvalid: ${invalid}\nDuplikat: ${duplicates}\n` +
-    `Hash JSON: <code>${digest}</code>${issues}\n\n` +
-    `Periksa isi soal sebelum menekan Setujui impor.`,
-    { reply_markup: { inline_keyboard: [[
-      { text: '✅ Setujui impor', callback_data: `approve:${approvalId}` },
-      { text: '❌ Tolak', callback_data: `reject:${approvalId}` },
-    ]] } }
-  );
-}
-
-async function handleCallback(query) {
-  const data = String(query.data || '');
-  const match = data.match(/^(approve|reject):([a-f0-9]{16})$/);
-  if (!match) return telegram.answerCallbackQuery(query.id, 'Aksi tidak dikenal.');
-
-  const action = match[1];
-  const approvalId = match[2];
-  const pending = state.getApproval(approvalId);
-  if (!pending) return telegram.answerCallbackQuery(query.id, 'Persetujuan sudah tidak berlaku.');
-  if (String(query.from.id) !== String(pending.actorId)) return telegram.answerCallbackQuery(query.id, 'Hanya admin yang memulai dry-run ini yang dapat menyetujui.');
-  if (Date.now() - Date.parse(pending.createdAt) > APPROVAL_TTL_MS) {
-    await state.deleteApproval(approvalId);
-    return telegram.answerCallbackQuery(query.id, 'Persetujuan kedaluwarsa. Jalankan dry-run lagi.');
-  }
-
-  if (action === 'reject') {
-    await state.deleteApproval(approvalId);
-    await telegram.answerCallbackQuery(query.id, 'Dibatalkan.');
-    return telegram.sendMessage(pending.chatId, `❌ Impor <b>${escapeHtml(pending.submissionId)}</b> dibatalkan. Tidak ada data ditulis.`);
-  }
-
-  if (!pending.telegramFileId) {
-    await state.deleteApproval(approvalId);
-    return telegram.answerCallbackQuery(query.id, 'Approval lama tidak memiliki referensi file. Jalankan dry-run lagi.');
-  }
-
-  const bytes = await telegram.downloadFile(pending.telegramFileId, config.maxJsonBytes);
-  const raw = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
-  const digest = hashPayload(pending.submissionId, pending.chapterId, raw);
-  if (!crypto.timingSafeEqual(Buffer.from(digest), Buffer.from(pending.hash))) {
-    await state.deleteApproval(approvalId);
-    return telegram.answerCallbackQuery(query.id, 'Hash berubah; impor ditolak.');
-  }
-
-  await telegram.answerCallbackQuery(query.id, 'Menjalankan verifikasi final…');
-  const payload = { chapter: pending.chapterId, text: raw, skipInvalid: false, dryRun: true };
-  const check = await medcoel.importSubmission(pending.submissionId, payload);
-  if (Number(check?.invalid || 0) > 0) throw new Error('Dry-run final tidak lagi valid; impor dibatalkan.');
-
-  const imported = await medcoel.importSubmission(pending.submissionId, { ...payload, dryRun: false });
-  await state.deleteApproval(approvalId);
-  return telegram.sendMessage(pending.chatId,
-    `🚀 <b>Impor berhasil</b>\nPengajuan: <b>${escapeHtml(pending.submissionId)}</b>\nCreated: ${Number(imported?.created || 0)}\nDuplikat dilewati: ${Number(imported?.duplicates || 0)}\nHash: <code>${pending.hash}</code>`
+  return telegram.sendMessage(chatId,
+    `⚠️ <b>${escapeHtml(sub.code || id)}</b> ditandai Perlu perbaikan.\n${escapeHtml(note.trim())}`
   );
 }
 
@@ -263,13 +169,27 @@ async function reportUpdateError(update, err) {
   if (!chatId) return;
   const body = err?.body;
   const issues = summarizeIssues(body?.items || []);
-  try { await telegram.sendMessage(chatId, `❌ ${escapeHtml(err.message)}${issues}`); } catch (_) {}
+  const message = err?.userMessage ? err.message : (err?.message || 'Terjadi kesalahan.');
+  try { await telegram.sendMessage(chatId, `❌ ${escapeHtml(message)}${issues}`); } catch (_) {}
 }
 
 function queueCard(sub, queue) {
-  const files = (sub.files || []).map((f) => `• ${escapeHtml(f.name)}${f.driveFileId ? ' · siap dikirim dari Drive' : ''}`).join('\n') || '• tidak ada file';
-  const q = queue ? `\nAntrean PDF: ${Number(queue.totalQueuedPdf || 0)} · estimasi ${Number(queue.estimateDays || 0)} hari` : '';
-  return `<b>📥 ${escapeHtml(sub.code || sub.id)}</b>\nStatus: ${escapeHtml(sub.status)}\nMata kuliah: ${escapeHtml(sub.subject?.name || sub.subject?.id || '-')}\nCakupan: ${escapeHtml(sub.restriction || sub.scope || '-')}\nPDF: ${Number(sub.pdfCount || (sub.files || []).length)}\n${files}${q}`;
+  const files = (sub.files || [])
+    .map((f) => `• ${escapeHtml(f.name)}${f.driveFileId ? ' · siap dikirim dari Drive' : ''}`)
+    .join('\n') || '• tidak ada file';
+  const q = queue
+    ? `\nAntrean PDF: ${Number(queue.totalQueuedPdf || 0)} · estimasi ${Number(queue.estimateDays || 0)} hari`
+    : '';
+  const scope = sub.restriction === 'campus'
+    ? `campus${sub.campus?.name ? ` · ${escapeHtml(sub.campus.name)}` : ''}`
+    : (sub.restriction || sub.scope || '-');
+  return `<b>📥 ${escapeHtml(sub.code || sub.id)}</b>\n`
+    + `Status: ${escapeHtml(sub.status)}\n`
+    + `Sumber mata kuliah: ${escapeHtml(sub.subject?.name || sub.subject?.id || '-')}\n`
+    + `Cakupan: ${scope}\n`
+    + `Bahasa: ${escapeHtml(sub.language || '-')}\n`
+    + `PDF: ${Number(sub.pdfCount || (sub.files || []).length)}\n`
+    + `${files}${q}`;
 }
 
 function compactSubmission(sub) {
@@ -279,12 +199,16 @@ function compactSubmission(sub) {
 function summarizeIssues(items) {
   const bad = items.filter((x) => Array.isArray(x?.errors) && x.errors.length).slice(0, 8);
   if (!bad.length) return '';
-  return '\n\n<b>Masalah:</b>\n' + bad.map((x) => `#${escapeHtml(x.index ?? x.number ?? '?')}: ${escapeHtml(x.errors.join('; '))}`).join('\n');
+  return '\n\n<b>Masalah:</b>\n'
+    + bad.map((x) => `#${escapeHtml(x.index ?? x.number ?? '?')}: ${escapeHtml(x.errors.join('; '))}`).join('\n');
 }
 
-function hashPayload(submissionId, chapterId, raw) {
-  return crypto.createHash('sha256').update(`${submissionId}\n${chapterId}\n`, 'utf8').update(raw, 'utf8').digest('hex');
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function sleep(ms) { return new Promise((resolve) => setTimeout(resolve, ms)); }
-function fatal(where, err) { console.error(`[Hermes] fatal ${where}:`, err); process.exitCode = 1; stopping = true; }
+function fatal(where, err) {
+  console.error(`[Hermes] fatal ${where}:`, err);
+  process.exitCode = 1;
+  stopping = true;
+}
