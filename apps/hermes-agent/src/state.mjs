@@ -5,7 +5,7 @@ export class StateStore {
   constructor(dir) {
     this.dir = dir;
     this.file = path.join(dir, 'state.json');
-    this.data = { telegramOffset: 0, announced: {}, approvals: {} };
+    this.data = { telegramOffset: 0, announced: {}, approvals: {}, importPlans: {} };
   }
 
   async load() {
@@ -16,6 +16,7 @@ export class StateStore {
         telegramOffset: Number(parsed.telegramOffset || 0),
         announced: parsed.announced && typeof parsed.announced === 'object' ? parsed.announced : {},
         approvals: parsed.approvals && typeof parsed.approvals === 'object' ? parsed.approvals : {},
+        importPlans: parsed.importPlans && typeof parsed.importPlans === 'object' ? parsed.importPlans : {},
       };
     } catch (err) {
       if (err.code !== 'ENOENT') throw err;
@@ -57,6 +58,32 @@ export class StateStore {
 
   async deleteApproval(id) {
     delete this.data.approvals[id];
+    await this.save();
+  }
+
+  planKey(chatId, actorId) {
+    return `${String(chatId)}:${String(actorId)}`;
+  }
+
+  getImportPlan(chatId, actorId) {
+    return this.data.importPlans[this.planKey(chatId, actorId)] || null;
+  }
+
+  async putImportPlan(chatId, actorId, value) {
+    const key = this.planKey(chatId, actorId);
+    const previous = this.data.importPlans[key];
+    const now = new Date().toISOString();
+    this.data.importPlans[key] = {
+      ...value,
+      createdAt: previous?.createdAt || value.createdAt || now,
+      updatedAt: now,
+    };
+    await this.save();
+    return this.data.importPlans[key];
+  }
+
+  async deleteImportPlan(chatId, actorId) {
+    delete this.data.importPlans[this.planKey(chatId, actorId)];
     await this.save();
   }
 }
