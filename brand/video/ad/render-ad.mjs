@@ -16,6 +16,7 @@ const opt = (n, d) => { const i = argv.indexOf(`--${n}`); return i >= 0 ? argv[i
 const spec = JSON.parse(fs.readFileSync(path.join(HERE, 'ad.json'), 'utf8'));
 const timeline = JSON.parse(fs.readFileSync(path.join(HERE, 'build', 'timeline.json'), 'utf8'));
 const mascots = Object.fromEntries(['kori', 'kila', 'nilo'].map((n) => [n, fs.readFileSync(path.join(REPO, 'apps/web/src/mascots', `${n}.svg`), 'utf8')]));
+const clips = JSON.parse(fs.readFileSync(path.join(HERE, 'clips', 'clips.json'), 'utf8'));
 const frames = Object.fromEntries(fs.readdirSync(path.join(HERE, 'build/frames')).map((c) => [c, fs.readdirSync(path.join(HERE, 'build/frames', c)).length]));
 const scale = Number(opt('scale', argv.includes('--stills') || argv.includes('--sheet') ? 0.5 : 1));
 const fps = spec.fps;
@@ -27,7 +28,7 @@ page.on('pageerror', (e) => console.log('[halaman] galat:', e.message));
 page.on('console', (m) => { if (m.type() === 'error') console.log('[konsol]', m.text()); });
 await page.goto(pathToFileURL(path.join(HERE, 'stage-ad.html')).href, { waitUntil: 'load' });
 const logo = pathToFileURL(path.join(REPO, 'apps/web/src/assets/logo-full.webp')).href;
-await page.evaluate((d) => window.__init(d), { spec, timeline, mascots, logo, frames });
+await page.evaluate((d) => window.__init(d), { spec, timeline, mascots, logo, frames, clips });
 await page.evaluate(() => Promise.all([document.fonts.load('800 40px "Plus Jakarta Sans"')]));
 
 if (argv.includes('--stills')) {
