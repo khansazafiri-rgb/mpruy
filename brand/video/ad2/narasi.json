@@ -4,8 +4,8 @@
   "total": 75,
   "shot": {
     "01": {
-      "start": 0,
-      "end": 3,
+      "start": 0.0,
+      "end": 3.5,
       "overlay": "TUNGGU, INI BUAT KAMU",
       "teks": [
         "Dok! Ada pasien! Mulai dari mana?"
@@ -16,8 +16,8 @@
       "web": []
     },
     "02": {
-      "start": 3,
-      "end": 7,
+      "start": 3.5,
+      "end": 7.8,
       "overlay": "KENALIN MEDCOEL · GRATIS",
       "teks": [
         "Kenalin Med-koel: belajar kedokteran, semua fitur gratis!"
@@ -34,8 +34,8 @@
       ]
     },
     "03": {
-      "start": 7,
-      "end": 12,
+      "start": 7.8,
+      "end": 12.1,
       "overlay": "38.400 SOAL",
       "teks": [
         "Hampir empat puluh ribu soal, rapi per mata kuliah dan bab."
@@ -52,8 +52,8 @@
       ]
     },
     "04": {
-      "start": 12,
-      "end": 16,
+      "start": 12.1,
+      "end": 16.1,
       "overlay": "LATIHAN + PEMBAHASAN",
       "teks": [
         "Latihan soal lengkap dengan pembahasan tiap pilihan."
@@ -70,8 +70,8 @@
       ]
     },
     "05": {
-      "start": 16,
-      "end": 21,
+      "start": 16.1,
+      "end": 21.3,
       "overlay": "KIRIM PDF SOAL",
       "teks": [
         "Punya PDF soal? Kirim lewat Chat Admin, nanti diperiksa dulu."
@@ -94,8 +94,8 @@
       ]
     },
     "06": {
-      "start": 21,
-      "end": 26,
+      "start": 21.3,
+      "end": 25.85,
       "overlay": "ADA LEADERBOARD",
       "teks": [
         "Ada leaderboard juga, biar belajar makin semangat."
@@ -112,8 +112,8 @@
       ]
     },
     "07": {
-      "start": 26,
-      "end": 31,
+      "start": 25.85,
+      "end": 30.95,
       "overlay": "SIMULASI JADI DOKTER",
       "teks": [
         "Yang paling seru: Simulasi Jadi Dokter. Pilih poli dan modenya."
@@ -130,8 +130,8 @@
       ]
     },
     "08": {
-      "start": 31,
-      "end": 36,
+      "start": 30.95,
+      "end": 35.95,
       "overlay": "MULAI ANAMNESIS",
       "teks": [
         "Ketuk dialog, tanya riwayat pasien, dengarkan jawabannya."
@@ -148,8 +148,8 @@
       ]
     },
     "09": {
-      "start": 36,
-      "end": 41,
+      "start": 35.95,
+      "end": 40.95,
       "overlay": "PILIH PEMERIKSAAN FISIK",
       "teks": [
         "Lanjut periksa fisik. Pilih yang paling masuk akal, ya."
@@ -166,8 +166,8 @@
       ]
     },
     "10": {
-      "start": 41,
-      "end": 46,
+      "start": 40.95,
+      "end": 46.2,
       "overlay": "PENUNJANG BILA PERLU",
       "teks": [
         "Penunjang? Minta seperlunya saja, jangan pesan semua tes!"
@@ -184,8 +184,8 @@
       ]
     },
     "11": {
-      "start": 46,
-      "end": 51,
+      "start": 46.2,
+      "end": 50.8,
       "overlay": "SUSUN KEPUTUSAN",
       "teks": [
         "Rangkai temuanmu jadi diagnosis, lalu rencana penanganan."
@@ -202,8 +202,8 @@
       ]
     },
     "12": {
-      "start": 51,
-      "end": 56,
+      "start": 50.8,
+      "end": 55.5,
       "overlay": "CATATAN SOAP",
       "teks": [
         "Semua langkahmu otomatis jadi catatan SOAP."
@@ -220,8 +220,8 @@
       ]
     },
     "13": {
-      "start": 56,
-      "end": 61,
+      "start": 55.5,
+      "end": 60.5,
       "overlay": "BACA LAPORAN KASUS",
       "teks": [
         "Di akhir ada laporan: tindakan penting dan alasan di baliknya."
@@ -238,8 +238,8 @@
       ]
     },
     "14": {
-      "start": 61,
-      "end": 66,
+      "start": 60.5,
+      "end": 65.5,
       "overlay": "COBA LAGI, LEBIH PAHAM",
       "teks": [
         "Ada yang terlewat? Santai, coba lagi atau ambil kasus lain."
@@ -256,8 +256,8 @@
       ]
     },
     "15": {
-      "start": 66,
-      "end": 71,
+      "start": 65.5,
+      "end": 70.5,
       "overlay": "LATIH CARA BERPIKIR",
       "teks": [
         "Semua fitur gratis. Tinggal latih cara berpikirmu."
@@ -268,8 +268,8 @@
       "web": []
     },
     "16": {
-      "start": 71,
-      "end": 75,
+      "start": 70.5,
+      "end": 75.0,
       "overlay": "COBA SIMULASI",
       "teks": [
         "Siap ketemu pasien virtual? Coba di Med-koel, gratis!"

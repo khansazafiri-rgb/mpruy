@@ -40,7 +40,7 @@ const mk = (clip, from) => (typeof from === 'string' ? clips[clip].marks[from] :
 for (let n = 2; n <= 14; n++) {
   let acc = 0;
   for (const w of S(n).web) {
-    const c = clips[w.clip]; const a = mk(w.clip, w.from) + (w.off || 0); const b = a + w.len;
+    const c = clips[w.clip]; const a = mk(w.clip, w.from) + (w.off || 0); const room = Math.max(0, S(n).end - S(n).start - acc); const b = a + Math.min(w.len, room);
     (c.clicks || []).forEach((t) => { if (t >= a && t < b) cue(st(n) + acc + (t - a), tap(), .55); });
     (c.keys || []).forEach((t) => { if (t >= a && t < b) cue(st(n) + acc + (t - a), key(), .32); });
     Object.entries(c.marks || {}).forEach(([k, t]) => { if (/^sheet\d+$/.test(k) && t >= a && t < b) cue(st(n) + acc + (t - a), pop(520, 760, .12), .35); });
