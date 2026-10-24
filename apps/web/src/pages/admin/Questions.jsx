@@ -11,7 +11,7 @@ import { DIFF, DIFF_CLASS, QTYPE } from '@/lib/labels';
 
 export default function Questions() {
   const [params, setParams] = useSearchParams();
-  const { subjects, chaptersOf } = useCatalog();
+  const { subjects, chapterChoicesOf } = useCatalog();
   const [tab, setTab] = useState('list');
   const [f, setF] = useState({ subject: params.get('subject') || '', chapter: '', difficulty: '', qtype: '', status: '', scope: '', q: '', id: params.get('id') || '' });
   const [page, setPage] = useState(1);
@@ -45,7 +45,7 @@ export default function Questions() {
     } catch (e) { setError(e.message); }
   };
   const subjName = (id) => subjects.find((s) => s.id === id)?.name || '';
-  const chTitle = (sid, cid) => chaptersOf(sid).find((c) => c.id === cid)?.title || '';
+  const chTitle = (sid, cid) => chapterChoicesOf(sid).find((c) => c.id === cid)?.title || '';
 
   return (
     <div className="space-y-5">
@@ -59,7 +59,7 @@ export default function Questions() {
         <>
           <div className="grid gap-2 sm:grid-cols-3 lg:grid-cols-7">
             <select className="input py-2" value={f.subject} onChange={(e) => set('subject', e.target.value)} aria-label="Mata kuliah"><option value="">Semua mata kuliah</option>{subjects.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}</select>
-            <select className="input py-2" value={f.chapter} onChange={(e) => set('chapter', e.target.value)} disabled={!f.subject} aria-label="BAB"><option value="">Semua BAB</option>{chaptersOf(f.subject).map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}</select>
+            <select className="input py-2" value={f.chapter} onChange={(e) => set('chapter', e.target.value)} disabled={!f.subject} aria-label="BAB"><option value="">Semua BAB</option>{chapterChoicesOf(f.subject).map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}</select>
             <select className="input py-2" value={f.qtype} onChange={(e) => set('qtype', e.target.value)} aria-label="Tipe"><option value="">Semua tipe</option>{Object.entries(QTYPE).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select>
             <select className="input py-2" value={f.difficulty} onChange={(e) => set('difficulty', e.target.value)} aria-label="Tingkat"><option value="">Semua tingkat</option>{Object.entries(DIFF).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select>
             <select className="input py-2" value={f.status} onChange={(e) => set('status', e.target.value)} aria-label="Status"><option value="">Tayang & draf</option><option value="published">Tayang</option><option value="draft">Draf</option></select>
@@ -131,7 +131,7 @@ export default function Questions() {
           {bulk === 'move' && (
             <select className="input" value={bulkVal.chapter} onChange={(e) => setBulkVal((b) => ({ ...b, chapter: e.target.value }))} aria-label="BAB tujuan">
               <option value="">Pilih BAB tujuan</option>
-              {subjects.map((s) => <optgroup key={s.id} label={s.name}>{chaptersOf(s.id).map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}</optgroup>)}
+              {subjects.map((s) => <optgroup key={s.id} label={s.name}>{chapterChoicesOf(s.id).map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}</optgroup>)}
             </select>
           )}
           {bulk === 'difficulty' && (

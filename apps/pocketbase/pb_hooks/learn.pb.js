@@ -6,6 +6,8 @@
 // GET  /api/medcoel/subjects/{slug}               detail: BAB, jumlah soal, progres, paket
 // GET  /api/medcoel/simulation/availability       jumlah soal tersedia per BAB per tingkat
 // POST /api/medcoel/attempts/practice             latihan per topik
+// GET  /api/medcoel/drilling                      mata kuliah yang punya soal Drilling (kosong bila disembunyikan)
+// POST /api/medcoel/attempts/drilling             Drilling per mata kuliah, langsung mulai
 // POST /api/medcoel/attempts/simulation           Coba Simulasi
 // POST /api/medcoel/attempts/package              paket soal
 // GET  /api/medcoel/attempts/{id}                 soal percobaan (tanpa kunci bila belum dijawab)
@@ -25,7 +27,7 @@ routerAdd("GET", "/api/medcoel/subjects", (e) => {
   // Hitungan per mata kuliah lewat BAB-nya.
   const chapterSubject = {};
   const chapterCount = {};
-  e.app.findRecordsByFilter("chapters", "hidden = false", "", 0, 0).forEach((c) => { const subjectId = c.getString("subject"); chapterSubject[c.id] = subjectId; chapterCount[subjectId] = (chapterCount[subjectId] || 0) + 1; });
+  e.app.findRecordsByFilter("chapters", "hidden = false && drilling = false", "", 0, 0).forEach((c) => { const subjectId = c.getString("subject"); chapterSubject[c.id] = subjectId; chapterCount[subjectId] = (chapterCount[subjectId] || 0) + 1; });
   items.forEach((it) => {
     const s = chapterSubject[it.chapter];
     count[s] = (count[s] || 0) + 1;
@@ -59,7 +61,7 @@ routerAdd("GET", "/api/medcoel/subjects/{slug}", (e) => {
   try { s = e.app.findFirstRecordByFilter("subjects", "slug = {:s} || id = {:s}", { s: slug }); } catch (_) { s = null; }
   if (!s || (s.getBool("hidden") && u.roleOf(user) !== "admin")) throw new NotFoundError("Mata kuliah tidak ditemukan.");
 
-  const chapters = e.app.findRecordsByFilter("chapters", "subject = {:s} && hidden = false", "order,created", 500, 0, { s: s.id });
+  const chapters = e.app.findRecordsByFilter("chapters", "subject = {:s} && hidden = false && drilling = false", "order,created", 500, 0, { s: s.id });
   const items = learn.pool(e.app, user, { subject: s.id, campusOnly: campusOnly });
   const per = {};
   items.forEach((it) => {
@@ -131,7 +133,7 @@ routerAdd("POST", "/api/medcoel/attempts/practice", (e) => {
   const b = u.body(e);
   let ch;
   try { ch = e.app.findRecordById("chapters", String(b.chapter || "")); } catch (_) { ch = null; }
-  if (!ch || ch.getBool("hidden")) throw new NotFoundError("Topik tidak ditemukan.");
+  if (!ch || ch.getBool("hidden") || ch.getBool("drilling")) throw new NotFoundError("Topik tidak ditemukan.");
   const n = Math.max(1, Math.min(100, parseInt(b.count, 10) || 0));
   const mode = b.mode === "exam" ? "exam" : "learning";
   const items = learn.pool(e.app, user, { subject: ch.getString("subject"), chapters: [ch.id], campusOnly: b.campusOnly === true });
@@ -150,6 +152,74 @@ routerAdd("POST", "/api/medcoel/attempts/practice", (e) => {
     timerMinutes: 0,
   });
   return e.json(200, att.payload(e.app, user, rec));
+});
+
+// Drilling: soal General tanpa BAB. Menu hanya terbuka bila sakelar admin menyala dan
+// sudah ada soal; mata kuliah tanpa soal Drilling tidak muncul.
+routerAdd("GET", "/api/medcoel/drilling", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const learn = require(`${__hooks}/lib/learn.js`);
+  const user = u.requireUser(e);
+  const st = learn.drillingStatus(e.app);
+  if (!st.available) return e.json(200, { enabled: st.enabled, available: false, subjects: [] });
+  const chapterSubject = {};
+  e.app.findRecordsByFilter("chapters", "drilling = true && hidden = false", "", 0, 0).forEach((c) => { chapterSubject[c.id] = c.getString("subject"); });
+  const count = {};
+  const seen = {};
+  learn.pool(e.app, user, { drilling: "only" }).forEach((it) => {
+    const s = chapterSubject[it.chapter];
+    count[s] = (count[s] || 0) + 1;
+    if (it.seen) seen[s] = (seen[s] || 0) + 1;
+  });
+  const out = e.app.findRecordsByFilter("subjects", "hidden = false", "order,name", 200, 0)
+    .filter((s) => count[s.id])
+    .map((s) => ({
+      id: s.id,
+      name: s.getString("name"),
+      slug: s.getString("slug"),
+      description: s.getString("description"),
+      illustrationKey: s.getString("illustrationKey"),
+      illustration: s.getString("illustration"),
+      collectionId: s.collection().id,
+      studying: user.getStringSlice("studyingSubjects").indexOf(s.id) >= 0,
+      questionCount: count[s.id],
+      answeredCount: seen[s.id] || 0,
+      order: s.getInt("order"),
+    }));
+  out.sort(require(`${__hooks}/lib/catalogOrder.js`).byPreference);
+  return e.json(200, { enabled: true, available: true, subjects: out });
+});
+
+routerAdd("POST", "/api/medcoel/attempts/drilling", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const learn = require(`${__hooks}/lib/learn.js`);
+  const att = require(`${__hooks}/lib/attempts.js`);
+  const user = u.requireUser(e);
+  const b = u.body(e);
+  const st = learn.drillingStatus(e.app);
+  if (!st.available && u.roleOf(user) !== "admin") throw new NotFoundError("Drilling belum dibuka.");
+  let subject;
+  try { subject = e.app.findRecordById("subjects", String(b.subject || "")); } catch (_) { subject = null; }
+  if (!subject || subject.getBool("hidden")) throw new NotFoundError("Mata kuliah tidak ditemukan.");
+  const items = learn.pool(e.app, user, { subject: subject.id, drilling: "only" });
+  if (!items.length) throw new BadRequestError("Mata kuliah ini belum punya soal Drilling.");
+  // Langsung mulai: tanpa jumlah, 20 soal (atau semua bila kurang); jumlah berlebih dipotong ke yang tersedia.
+  const want = b.count === "all" ? 100 : parseInt(b.count, 10) || 20;
+  const n = Math.max(1, Math.min(100, want, items.length));
+  const mode = b.mode === "exam" ? "exam" : "learning";
+  const picked = learn.shuffle(learn.pickBalanced(items, n));
+  const rec = att.create(e.app, user, {
+    kind: "practice",
+    mode: mode,
+    subject: subject.id,
+    title: "Drilling " + subject.getString("name"),
+    settings: { drilling: true, subject: subject.id, count: n, mode: mode },
+    ids: picked.map((x) => x.id),
+    timerMinutes: 0,
+  });
+  const out = att.payload(e.app, user, rec);
+  out.available = items.length;
+  return e.json(200, out);
 });
 
 routerAdd("POST", "/api/medcoel/attempts/simulation", (e) => {
@@ -220,7 +290,7 @@ routerAdd("POST", "/api/medcoel/attempts/package", (e) => {
   try { pkg = e.app.findRecordById("packages", String(b.package || "")); } catch (_) { pkg = null; }
   if (!pkg || !pkg.getBool("active")) throw new NotFoundError("Paket tidak ditemukan.");
   const subjectId = pkg.getString("subject");
-  const chapters = e.app.findRecordsByFilter("chapters", "subject = {:s} && hidden = false", "order,created", 500, 0, { s: subjectId });
+  const chapters = e.app.findRecordsByFilter("chapters", "subject = {:s} && hidden = false && drilling = false", "order,created", 500, 0, { s: subjectId });
   const quotas = {};
   (u.recJson(pkg, "quotas", []) || []).forEach((q) => { if (q && q.chapter) quotas[q.chapter] = Math.max(0, parseInt(q.count, 10) || 0); });
   const per = pkg.getInt("perChapter") || 5;

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ArrowLeft, BookMarked, FileQuestion, Flag, Inbox, LayoutDashboard, Megaphone, MessageCircle, Package, Settings, Stethoscope, Users } from 'lucide-react';
+import { ArrowLeft, BookMarked, Crosshair, FileQuestion, Flag, Inbox, LayoutDashboard, Megaphone, MessageCircle, Package, Settings, Stethoscope, Users } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import Logo from '@/components/Logo';
@@ -15,6 +15,7 @@ export const ADMIN_NAV = [
   { to: '/admin/mata-kuliah', label: 'Mata kuliah & BAB', icon: BookMarked },
   { to: '/admin/paket', label: 'Paket simulasi', icon: Package },
   { to: '/admin/simulasi', label: 'Simulasi Dokter', icon: Stethoscope },
+  { to: '/admin/drilling', label: 'Drilling', icon: Crosshair },
   { to: '/admin/pengguna', label: 'Pengguna', icon: Users },
   { to: '/admin/pengaturan', label: 'Pengaturan', icon: Settings },
 ];

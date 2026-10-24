@@ -22,6 +22,7 @@ const Notifications = lazy(() => import('./pages/Notifications'));
 const ChatAdmin = lazy(() => import('./pages/ChatAdmin'));
 const Profile = lazy(() => import('./pages/Profile'));
 const SimulasiDokter = lazy(() => import('./pages/SimulasiDokter'));
+const Drilling = lazy(() => import('./pages/Drilling'));
 const TutorialLatihan = lazy(() => import('./pages/TutorialLatihan'));
 const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'));
 const AdminSummary = lazy(() => import('./pages/admin/Summary'));
@@ -35,6 +36,7 @@ const AdminUsers = lazy(() => import('./pages/admin/Users'));
 const AdminSupport = lazy(() => import('./pages/admin/SupportInbox'));
 const AdminSettings = lazy(() => import('./pages/admin/SettingsAdmin'));
 const AdminSim = lazy(() => import('./pages/admin/SimCases'));
+const AdminDrilling = lazy(() => import('./pages/admin/DrillingAdmin'));
 
 function ScrollTop() {
   const { pathname } = useLocation();
@@ -82,6 +84,7 @@ export default function App() {
             <Route path="/chat-admin" element={<ChatAdmin />} />
             <Route path="/profil" element={<Profile />} />
             <Route path="/simulasi-dokter" element={<SimulasiDokter />} />
+            <Route path="/drilling" element={<Drilling />} />
             <Route path="/tutorial/latihan-soal" element={<TutorialLatihan />} />
           </Route>
           <Route path="/admin" element={<RequireAuth admin><AdminLayout /></RequireAuth>}>
@@ -94,6 +97,7 @@ export default function App() {
             <Route path="mata-kuliah" element={<AdminSubjects />} />
             <Route path="paket" element={<AdminPackages />} />
             <Route path="simulasi" element={<AdminSim />} />
+            <Route path="drilling" element={<AdminDrilling />} />
             <Route path="pengguna" element={<AdminUsers />} />
             <Route path="pengaturan" element={<AdminSettings />} />
           </Route>

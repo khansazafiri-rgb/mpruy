@@ -32,6 +32,24 @@ routerAdd("GET", "/api/medcoel/admin/summary", (e) => {
   });
 });
 
+// Drilling: status sakelar dan jumlah soal per mata kuliah (BAB khusus chapters.drilling).
+routerAdd("GET", "/api/medcoel/admin/drilling", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const learn = require(`${__hooks}/lib/learn.js`);
+  u.requireAdmin(e);
+  const st = learn.drillingStatus(e.app);
+  const rows = arrayOf(new DynamicModel({ subject: "", status: "", n: 0 }));
+  e.app.db().newQuery("SELECT q.subject AS subject, q.status AS status, COUNT(*) AS n FROM questions q JOIN chapters c ON c.id = q.chapter WHERE c.drilling = TRUE GROUP BY q.subject, q.status").all(rows);
+  const per = {};
+  rows.forEach((r) => { const p = (per[r.subject] = per[r.subject] || { published: 0, draft: 0 }); p[r.status] = r.n; });
+  const hidden = {};
+  e.app.findRecordsByFilter("chapters", "drilling = true", "", 0, 0).forEach((c) => { hidden[c.getString("subject")] = { chapter: c.id, hidden: c.getBool("hidden") }; });
+  const subjects = e.app.findRecordsByFilter("subjects", "id != ''", "order,name", 500, 0)
+    .filter((s) => per[s.id])
+    .map((s) => ({ id: s.id, name: s.getString("name"), published: per[s.id].published, draft: per[s.id].draft, chapter: hidden[s.id] ? hidden[s.id].chapter : "", hidden: hidden[s.id] ? hidden[s.id].hidden : false }));
+  return e.json(200, { enabled: st.enabled, available: st.available, total: st.total, subjects: subjects });
+});
+
 // ---------------------------------------------------------------------------
 // Soal
 // ---------------------------------------------------------------------------
@@ -148,13 +166,22 @@ routerAdd("POST", "/api/medcoel/admin/questions/bulk", (e) => {
     campuses = importer.resolveCampuses(e.app, b.campuses);
     if (!campuses.length) throw new BadRequestError("Pilih minimal satu kampus.");
   }
+  const isDrilling = {};
+  e.app.findRecordsByFilter("chapters", "drilling = true", "", 0, 0).forEach((c) => { isDrilling[c.id] = true; });
   if (b.action === "difficulty" && ["easy", "medium", "hard"].indexOf(b.difficulty) < 0) throw new BadRequestError("Pilih tingkat kesulitan.");
   e.app.runInTransaction((tx) => {
     recs.forEach((r) => {
       if (b.action === "delete") return tx.delete(r);
-      if (b.action === "move") { r.set("chapter", target.id); r.set("subject", target.getString("subject")); }
+      if (b.action === "move") {
+        r.set("chapter", target.id);
+        r.set("subject", target.getString("subject"));
+        // Soal di Drilling selalu General.
+        if (target.getBool("drilling")) { r.set("scope", "all"); r.set("campuses", []); }
+      }
       else if (b.action === "difficulty") r.set("difficulty", b.difficulty);
-      else if (b.action === "scope") { r.set("scope", b.scope === "campus" ? "campus" : "all"); r.set("campuses", b.scope === "campus" ? campuses : []); }
+      else if (b.action === "scope") {
+        if (b.scope === "campus" && isDrilling[r.getString("chapter")]) throw new BadRequestError("Soal Drilling harus General. Pindahkan dulu ke BAB biasa.");
+        r.set("scope", b.scope === "campus" ? "campus" : "all"); r.set("campuses", b.scope === "campus" ? campuses : []); }
       else if (b.action === "publish") r.set("status", "published");
       else if (b.action === "draft") r.set("status", "draft");
       else throw new BadRequestError("Aksi tidak dikenal.");
@@ -179,6 +206,7 @@ routerAdd("POST", "/api/medcoel/admin/import", (e) => {
     input: b.text !== undefined ? b.text : b.questions,
     subject: submission ? submission.getString("subject") : b.subject,
     chapter: b.chapter || "",
+    drilling: b.drilling === true,
     scope: submission ? (submission.getString("scope") === "campus" ? "campus" : "all") : b.scope,
     campuses: submission ? (submission.getString("scope") === "campus" ? [submission.getString("campus")] : []) : b.campuses,
     source: submission ? "submission" : "admin",

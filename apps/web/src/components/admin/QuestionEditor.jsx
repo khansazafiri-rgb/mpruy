@@ -91,7 +91,7 @@ function Area({ label, value, onChange, rows = 3, hint, id }) {
 }
 
 export default function QuestionEditor({ record, defaults = {}, onClose, onSaved }) {
-  const { subjects, chaptersOf } = useCatalog();
+  const { subjects, chapterChoicesOf } = useCatalog();
   const [f, setF] = useState(() => fromRecord(record, defaults));
   const [error, setError] = useState('');
   const [warnings, setWarnings] = useState([]);
@@ -99,7 +99,8 @@ export default function QuestionEditor({ record, defaults = {}, onClose, onSaved
   const set = (k, v) => setF((x) => ({ ...x, [k]: v }));
   const setOpt = (i, k, v) => setF((x) => ({ ...x, options: x.options.map((o, j) => (j === i ? { ...o, [k]: v } : o)) }));
   const setSub = (i, k, v) => setF((x) => ({ ...x, subQuestions: x.subQuestions.map((o, j) => (j === i ? { ...o, [k]: v } : o)) }));
-  const chapterTitle = chaptersOf(f.subject).find((c) => c.id === f.chapter)?.title || '';
+  const isDrill = !!chapterChoicesOf(f.subject).find((c) => c.id === f.chapter)?.drilling;
+  const chapterTitle = chapterChoicesOf(f.subject).find((c) => c.id === f.chapter)?.title || '';
   const pv = useMemo(() => previewModel(f, chapterTitle), [f, chapterTitle]);
 
   const changeType = (t) => setF((x) => {
@@ -134,13 +135,13 @@ export default function QuestionEditor({ record, defaults = {}, onClose, onSaved
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-3">
             <Field label="Mata kuliah" htmlFor="qe-s"><select id="qe-s" className="input" value={f.subject} onChange={(e) => { set('subject', e.target.value); set('chapter', ''); }}><option value="">Pilih</option>{subjects.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}</select></Field>
-            <Field label="BAB" htmlFor="qe-c"><select id="qe-c" className="input" value={f.chapter} onChange={(e) => set('chapter', e.target.value)}><option value="">Pilih</option>{chaptersOf(f.subject).map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}</select></Field>
+            <Field label="BAB" htmlFor="qe-c"><select id="qe-c" className="input" value={f.chapter} onChange={(e) => set('chapter', e.target.value)}><option value="">Pilih</option>{chapterChoicesOf(f.subject).map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}</select></Field>
             <Field label="Tipe" htmlFor="qe-t"><select id="qe-t" className="input" value={f.qtype} onChange={(e) => changeType(e.target.value)}><option value="A">Tipe A (A-E)</option><option value="K">Tipe K (pernyataan 1-4)</option><option value="isian">Isian singkat</option><option value="esai">Esai (tidak dinilai)</option></select></Field>
             <Field label="Tingkat kesulitan" htmlFor="qe-d"><select id="qe-d" className="input" value={f.difficulty} onChange={(e) => set('difficulty', e.target.value)}><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></Field>
             <Field label="Status" htmlFor="qe-st"><select id="qe-st" className="input" value={f.status} onChange={(e) => set('status', e.target.value)}><option value="published">Tayang</option><option value="draft">Draf</option></select></Field>
-            <Field label="Dilihat oleh" htmlFor="qe-sc"><select id="qe-sc" className="input" value={f.scope} onChange={(e) => set('scope', e.target.value)}><option value="all">General (semua pengguna)</option><option value="campus">Kampus tertentu</option></select></Field>
+            <Field label="Dilihat oleh" htmlFor="qe-sc"><select id="qe-sc" className="input" value={isDrill ? 'all' : f.scope} disabled={isDrill} onChange={(e) => set('scope', e.target.value)}><option value="all">General (semua pengguna)</option><option value="campus">Kampus tertentu</option></select></Field>
           </div>
-          {f.scope === 'campus' && <Field label="Kampus"><CampusMulti value={f.campuses} onChange={(v) => set('campuses', v)} /></Field>}
+          {!isDrill && f.scope === 'campus' && <Field label="Kampus"><CampusMulti value={f.campuses} onChange={(v) => set('campuses', v)} /></Field>}
           <Area id="qe-stem" label="Teks soal" rows={5} value={f.stem} onChange={(v) => set('stem', v)} hint='Teks biasa, atau JSON blok diawali "[" untuk tabel/gambar/catatan.' />
           <Field label="Tautan gambar soal (opsional)" htmlFor="qe-img" hint="Tautan Google Drive otomatis diubah ke format lh3.">
             <input id="qe-img" className="input" value={f.image} onChange={(e) => set('image', e.target.value)} placeholder="https://drive.google.com/file/d/..." />

@@ -18,7 +18,7 @@
 //   GET  /api/medcoel/agent/submissions/{id}
 //   POST /api/medcoel/agent/submissions/{id}/status
 //   POST /api/medcoel/agent/submissions/{id}/import
-//   POST /api/medcoel/agent/import
+//   POST /api/medcoel/agent/import                 (drilling: true = masuk Drilling mata kuliah, wajib General)
 
 routerAdd("GET", "/api/medcoel/submissions/mine", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
@@ -280,6 +280,7 @@ routerAdd("POST", "/api/medcoel/agent/submissions/{id}/import", (e) => {
     source: "submission",
     submission: sub.id,
     skipInvalid: b.skipInvalid === true,
+    drilling: b.drilling === true,
     dryRun: b.dryRun === true,
   });
   if (result.blocked) return e.json(400, Object.assign({ status: 400 }, result));
@@ -305,6 +306,7 @@ routerAdd("POST", "/api/medcoel/agent/import", (e) => {
     campuses: b.campuses || [],
     source: "agent",
     skipInvalid: b.skipInvalid === true,
+    drilling: b.drilling === true,
     dryRun: b.dryRun === true,
   });
   if (result.blocked) return e.json(400, Object.assign({ status: 400 }, result));

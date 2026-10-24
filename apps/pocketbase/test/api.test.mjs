@@ -644,6 +644,92 @@ await langkah('akun tanpa kampus (mis. siswa SMA): semester tidak wajib, soal di
   assert.equal(baru.campus, kampusA.id);
 });
 
+console.log('Drilling');
+await langkah('drilling: tersembunyi sampai ada soal dan sakelar admin menyala; BAB biasa, simulasi, dan paket tidak ikut terpengaruh', async () => {
+  const dsub = subjects[3];
+  const kosong = (await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data;
+  assert.equal(kosong.available, false);
+  assert.deepEqual(kosong.subjects, []);
+  assert.equal((await call('GET', '/api/medcoel/me', undefined, userA.token, 200)).data.drillingAvailable, false);
+  await call('POST', '/api/medcoel/attempts/drilling', { subject: dsub.id }, userA.token, 404);
+
+  const before = (await call('GET', `/api/medcoel/subjects/${dsub.slug}`, undefined, userA.token, 200)).data.chapters.length;
+  const soal = [
+    { type: 'A', difficulty: 'easy', text: 'Drilling 1?', options: [{ text: 'Benar', correct: true }, 'Salah'] },
+    { type: 'A', difficulty: 'medium', text: 'Drilling 2?', options: ['x', { text: 'y', correct: true }, 'z'] },
+    { type: 'K', difficulty: 'hard', text: 'Drilling 3?', statements: ['s1', 's2', 's3', 's4'], trueStatements: [1, 3] },
+  ];
+  // Soal Drilling harus General dan tidak butuh BAB; pratinjau tidak membuat BAB.
+  await call('POST', '/api/medcoel/agent/import', { subject: dsub.slug, drilling: true, scope: 'campus', campuses: [kampusA.id], questions: soal }, agent.token, 400);
+  const dry = (await call('POST', '/api/medcoel/agent/import', { subject: dsub.slug, drilling: true, dryRun: true, questions: soal }, agent.token, 200)).data;
+  assert.equal(dry.valid, 3);
+  assert.equal((await call('GET', '/api/medcoel/admin/drilling', undefined, admin.token, 200)).data.subjects.length, 0);
+  const imp = (await call('POST', '/api/medcoel/agent/import', { subject: dsub.slug, drilling: true, questions: soal }, agent.token, 200)).data;
+  assert.equal(imp.created, 3);
+  assert.equal(imp.chaptersCreated, 0);
+  const again = (await call('POST', '/api/medcoel/agent/import', { subject: dsub.slug, drilling: true, questions: [{ type: 'A', text: 'Drilling 4?', options: ['a', { text: 'b', correct: true }] }] }, agent.token, 200)).data;
+  assert.equal(again.created, 1);
+
+  // Ada soal tetapi sakelar mati: tetap tersembunyi. Admin melihat hitungannya.
+  const adm = (await call('GET', '/api/medcoel/admin/drilling', undefined, admin.token, 200)).data;
+  assert.equal(adm.enabled, false);
+  assert.equal(adm.available, false);
+  assert.equal(adm.total, 4);
+  assert.equal(adm.subjects[0].published, 4);
+  assert.equal((await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data.available, false);
+  assert.equal((await call('GET', '/api/medcoel/me', undefined, userA.token, 200)).data.drillingAvailable, false);
+  await call('POST', '/api/medcoel/attempts/drilling', { subject: dsub.id }, userA.token, 404);
+
+  // Sakelar menyala: tampil, hanya mata kuliah yang punya soal.
+  const rec = (await call('GET', '/api/collections/app_settings/records?perPage=1', undefined, admin.token, 200)).data.items[0];
+  await call('PATCH', `/api/collections/app_settings/records/${rec.id}`, { drillingEnabled: true }, admin.token, 200);
+  try {
+    const on = (await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data;
+    assert.equal(on.available, true);
+    assert.deepEqual(on.subjects.map((x) => x.slug), [dsub.slug]);
+    assert.equal(on.subjects[0].questionCount, 4);
+    assert.equal((await call('GET', '/api/medcoel/me', undefined, userA.token, 200)).data.drillingAvailable, true);
+
+    // Langsung mulai tanpa memilih BAB atau jumlah; jumlah berlebih dipotong ke yang tersedia.
+    const att = (await call('POST', '/api/medcoel/attempts/drilling', { subject: dsub.id }, userA.token, 200)).data;
+    assert.equal(att.questions.length, 4);
+    assert.match(att.attempt.title, /^Drilling /);
+    assert.equal(att.attempt.settings.drilling, true);
+    const big = (await call('POST', '/api/medcoel/attempts/drilling', { subject: dsub.id, count: 99, mode: 'exam' }, userA.token, 200)).data;
+    assert.equal(big.questions.length, 4);
+    const small = (await call('POST', '/api/medcoel/attempts/drilling', { subject: dsub.id, count: 2 }, userA.token, 200)).data;
+    assert.equal(small.questions.length, 2);
+    assert.ok(!('answer' in small.questions[0]), 'kunci tidak dikirim sebelum dijawab');
+    await call('POST', '/api/medcoel/attempts/drilling', { subject: mk.id }, userA.token, 400); // mata kuliah tanpa soal Drilling
+    // Akun tanpa kampus tetap bisa drilling (soalnya General).
+    const sma = await daftar(`ujid${RUN}`, '', { campusOther: 'Tidak memiliki kampus', semester: undefined });
+    assert.equal((await call('POST', '/api/medcoel/attempts/drilling', { subject: dsub.id, count: 3 }, sma.token, 200)).data.questions.length, 3);
+
+    // BAB biasa, simulasi, dan paket tidak melihat soal Drilling.
+    const det = (await call('GET', `/api/medcoel/subjects/${dsub.slug}`, undefined, userA.token, 200)).data;
+    assert.equal(det.chapters.length, before);
+    assert.ok(!det.chapters.some((c) => c.title === 'Drilling'));
+    const cards = (await call('GET', '/api/medcoel/subjects', undefined, userA.token, 200)).data.items.find((x) => x.id === dsub.id);
+    assert.equal(cards.questionCount, 0);
+    const avail = (await call('GET', `/api/medcoel/simulation/availability?subject=${dsub.id}&source=all`, undefined, userA.token, 200)).data;
+    assert.deepEqual(avail.chapters, {});
+    const drillChap = (await call('GET', `/api/collections/chapters/records?filter=${encodeURIComponent(`subject='${dsub.id}' && drilling=true`)}`, undefined, admin.token, 200)).data.items[0];
+    assert.ok(drillChap);
+    await call('POST', '/api/medcoel/attempts/practice', { chapter: drillChap.id, count: 2 }, userA.token, 404);
+
+    // Menyembunyikan BAB Drilling mata kuliah itu (dari halaman admin) menyembunyikannya dari pengguna.
+    await call('PATCH', `/api/collections/chapters/records/${drillChap.id}`, { hidden: true }, admin.token, 200);
+    assert.equal((await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data.available, false);
+    await call('PATCH', `/api/collections/chapters/records/${drillChap.id}`, { hidden: false }, admin.token, 200);
+
+    // Soal Drilling selalu General, juga lewat editor dan aksi massal.
+    const q = (await call('GET', `/api/medcoel/admin/questions?subject=${dsub.id}`, undefined, admin.token, 200)).data.items[0];
+    await call('POST', '/api/medcoel/admin/questions/bulk', { ids: [q.id], action: 'scope', scope: 'campus', campuses: [kampusA.id] }, admin.token, 400);
+  } finally {
+    await call('PATCH', `/api/collections/app_settings/records/${rec.id}`, { drillingEnabled: false }, admin.token, 200);
+  }
+});
+
 await langkah('admin menonaktifkan akun: token lama dan login ditolak', async () => {
   await call('POST', `/api/medcoel/admin/users/${userB.id}`, { action: 'disable', reason: 'bukti palsu' }, admin.token, 200);
   await call('GET', '/api/medcoel/me', undefined, userB.token, 401);

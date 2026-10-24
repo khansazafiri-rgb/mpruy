@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import {
-  Bell, BookOpen, CalendarDays, ChevronDown, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, Stethoscope, Trophy, TrendingUp, User, X,
+  Bell, BookOpen, CalendarDays, ChevronDown, Crosshair, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, Stethoscope, Trophy, TrendingUp, User, X,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
@@ -10,10 +10,11 @@ import ChatAdminWidget from './ChatAdminWidget';
 import TutorialGate from '@/features/onboarding/TutorialGate';
 import Logo from './Logo';
 
-const NAV = [
+const ALL_NAV = [
   { to: '/beranda', label: 'Beranda', short: 'Beranda', icon: Home },
   { to: '/mata-kuliah', label: 'Mata kuliah', short: 'Matkul', icon: BookOpen },
   { to: '/simulasi-dokter', label: 'Simulasi dokter', desk: 'Simulasi', icon: Stethoscope, noBottom: true },
+  { to: '/drilling', label: 'Drilling', icon: Crosshair, noBottom: true, drilling: true },
   { to: '/progres', label: 'Progres', short: 'Progres', icon: TrendingUp },
   { to: '/leaderboard', label: 'Leaderboard', short: 'Peringkat', icon: Trophy },
   { to: '/jadwal', label: 'Jadwal ujian', short: 'Jadwal', icon: CalendarDays },
@@ -22,6 +23,8 @@ const NAV = [
 
 export default function AppShell() {
   const { me, logout, isAdmin, refresh } = useAuth();
+  // Menu Drilling hanya tampil bila admin menyalakannya dan sudah ada soalnya.
+  const NAV = ALL_NAV.filter((n) => !n.drilling || me?.drillingAvailable);
   const [menu, setMenu] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const loc = useLocation();

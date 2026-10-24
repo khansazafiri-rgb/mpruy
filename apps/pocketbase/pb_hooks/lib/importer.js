@@ -5,6 +5,7 @@
 const HOOKS = typeof __hooks !== "undefined" ? __hooks : __dirname + "/..";
 const u = require(HOOKS + "/lib/util.js");
 const format = require(HOOKS + "/lib/format.js");
+const learn = require(HOOKS + "/lib/learn.js");
 
 function findSubject(app, ref) {
   const s = String(ref || "").trim();
@@ -34,7 +35,7 @@ function resolveCampuses(app, list) {
 
 function chapterIndex(app, subjectId) {
   const map = {};
-  app.findRecordsByFilter("chapters", "subject = {:s}", "order", 0, 0, { s: subjectId }).forEach((c) => {
+  app.findRecordsByFilter("chapters", "subject = {:s} && drilling = false", "order", 0, 0, { s: subjectId }).forEach((c) => {
     map[c.getString("title").trim().toLowerCase()] = c;
   });
   return map;
@@ -44,6 +45,7 @@ function chapterIndex(app, subjectId) {
 //   input        teks atau data yang sudah diurai
 //   subject      id/slug/nama mata kuliah
 //   chapter      id BAB (opsional). Bila diisi, semua soal masuk BAB ini.
+//   drilling     true = semua soal masuk Drilling mata kuliah itu (tanpa BAB, wajib General)
 //   scope        "all" | "campus"
 //   campuses     daftar id/nama kampus (wajib bila scope = campus)
 //   source       "admin" | "submission" | "agent"
@@ -56,6 +58,7 @@ function run(app, opts) {
   const scope = opts.scope === "campus" ? "campus" : "all";
   const campuses = scope === "campus" ? resolveCampuses(app, opts.campuses) : [];
   if (scope === "campus" && !campuses.length) throw new BadRequestError("Pilih minimal satu kampus untuk soal terbatas.");
+  let drilling = opts.drilling === true;
 
   // chapter boleh berupa id BAB (semua soal dipaksa masuk BAB itu) atau judul
   // BAB (dipakai untuk soal yang tidak menulis field BAB sendiri).
@@ -68,13 +71,20 @@ function run(app, opts) {
       throw new BadRequestError("BAB tidak ditemukan di mata kuliah ini.");
     }
     if (!fixedChapter) defaultTitle = ref.slice(0, 200);
+    if (fixedChapter && fixedChapter.getBool("drilling")) drilling = true;
+  }
+  if (drilling) {
+    if (scope === "campus") throw new BadRequestError("Soal Drilling harus General (semua pengguna), bukan soal khusus kampus.");
+    // Soal Drilling selalu masuk BAB khusus Drilling milik mata kuliah ini (dibuat saat disimpan bila belum ada).
+    fixedChapter = learn.drillingChapter(app, subject.id);
+    defaultTitle = learn.DRILLING_TITLE;
   }
 
   let parsed;
   try {
     parsed = format.parseImport(opts.input, {
       chapterTitle: fixedChapter ? fixedChapter.getString("title") : defaultTitle,
-      requireChapter: !fixedChapter,
+      requireChapter: !fixedChapter && !drilling,
     });
   } catch (err) {
     throw new BadRequestError(String(err && err.message ? err.message : err).replace(/^Error: /, ""));
@@ -90,7 +100,12 @@ function run(app, opts) {
 
   parsed.items.forEach((it) => {
     if (!it.question) return;
-    if (fixedChapter) {
+    if (drilling) {
+      if (it.preview && it.preview.chapterTitle && it.preview.chapterTitle.toLowerCase() !== learn.DRILLING_TITLE.toLowerCase()) {
+        it.warnings.push("Field BAB '" + it.preview.chapterTitle + "' diabaikan; soal masuk Drilling.");
+      }
+      it.chapterTitle = learn.DRILLING_TITLE;
+    } else if (fixedChapter) {
       if (it.preview && it.preview.chapterTitle && it.preview.chapterTitle.toLowerCase() !== fixedChapter.getString("title").toLowerCase()) {
         it.warnings.push("Field BAB '" + it.preview.chapterTitle + "' diabaikan; soal masuk ke BAB " + fixedChapter.getString("title") + ".");
       }
@@ -147,6 +162,7 @@ function run(app, opts) {
 
   const createdIds = [];
   app.runInTransaction((tx) => {
+    const target = drilling ? learn.ensureDrillingChapter(tx, subject.id) : fixedChapter;
     const chCol = tx.findCollectionByNameOrId("chapters");
     let maxOrder = 0;
     Object.keys(chapters).forEach((k) => { maxOrder = Math.max(maxOrder, chapters[k].getInt("order")); });
@@ -165,7 +181,7 @@ function run(app, opts) {
     const orderBase = {};
     valid.forEach((it) => {
       const q = it.question;
-      const ch = fixedChapter || chapters[q.chapterTitle.toLowerCase()];
+      const ch = target || chapters[q.chapterTitle.toLowerCase()];
       if (orderBase[ch.id] === undefined) {
         orderBase[ch.id] = tx.countRecords("questions", $dbx.exp("chapter = {:c}", { c: ch.id }));
       }
@@ -210,7 +226,8 @@ function applyForm(app, rec, body) {
   let ch;
   try { ch = app.findRecordById("chapters", String(body.chapter || rec.getString("chapter"))); } catch (_) { ch = null; }
   if (!ch || ch.getString("subject") !== subject.id) throw new BadRequestError("Pilih BAB di mata kuliah ini.");
-  const scope = body.scope === "campus" ? "campus" : "all";
+  // Soal di Drilling selalu General.
+  const scope = body.scope === "campus" && !ch.getBool("drilling") ? "campus" : "all";
   const campuses = scope === "campus" ? resolveCampuses(app, body.campuses) : [];
   if (scope === "campus" && !campuses.length) throw new BadRequestError("Pilih minimal satu kampus untuk soal terbatas.");
   rec.set("subject", subject.id);
