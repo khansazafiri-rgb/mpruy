@@ -14,7 +14,8 @@
     "ad:voice": "node ad/voice.mjs",
     "ad:audio": "node ad/audio.mjs",
     "ad:render": "node ad/render-ad.mjs",
-    "ad:mux": "node ad/mux.mjs"
+    "ad:mux": "node ad/mux.mjs",
+    "ad:final": "node ad/final.mjs"
   },
   "dependencies": {
     "playwright": "1.49.1"
