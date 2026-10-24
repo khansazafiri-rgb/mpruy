@@ -5,7 +5,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const HERE = path.dirname(fileURLToPath(import.meta.url));
+// AD_DIR: folder proyek lain (mis. ad3) yang memakai alat yang sama
+const HERE = process.env.AD_DIR ? path.resolve(process.env.AD_DIR) : path.dirname(fileURLToPath(import.meta.url));
 const argv = process.argv.slice(2);
 const opt = (n, d) => { const i = argv.indexOf(`--${n}`); return i >= 0 ? argv[i + 1] : d; };
 const B = (f) => path.join(HERE, 'build', f);

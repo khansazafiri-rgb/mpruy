@@ -9,7 +9,11 @@
       "overlay": "TUNGGU, INI BUAT KAMU",
       "teks": [
         "Soal numpuk, mulai dari mana?"
-      ]
+      ],
+      "bg": "mint",
+      "mood": "wave",
+      "pov": "",
+      "web": []
     },
     "02": {
       "start": 3.0,
@@ -17,6 +21,16 @@
       "overlay": "KENALIN MEDCOEL · GRATIS",
       "teks": [
         "Kenalin Med-koel: belajar kedokteran, semua fitur gratis!"
+      ],
+      "bg": "cream",
+      "mood": "wave",
+      "pov": "",
+      "web": [
+        {
+          "clip": "landing",
+          "from": 0,
+          "len": 4.4
+        }
       ]
     },
     "03": {
@@ -25,6 +39,16 @@
       "overlay": "38.400 SOAL",
       "teks": [
         "Hampir empat puluh ribu soal, rapi per mata kuliah dan bab."
+      ],
+      "bg": "mint",
+      "mood": "cheer",
+      "pov": "",
+      "web": [
+        {
+          "clip": "matkul",
+          "from": "s3",
+          "len": 4.4
+        }
       ]
     },
     "04": {
@@ -33,6 +57,26 @@
       "overlay": "JELAJAHI MEDCOEL",
       "teks": [
         "Latihan soal, kirim PDF, simulasi dokter."
+      ],
+      "bg": "cream",
+      "mood": "happy",
+      "pov": "",
+      "web": [
+        {
+          "clip": "a2_subjects",
+          "from": 0,
+          "len": 1.3
+        },
+        {
+          "clip": "a2_chat",
+          "from": 0,
+          "len": 1.3
+        },
+        {
+          "clip": "a2_sim",
+          "from": "s7",
+          "len": 1.4
+        }
       ]
     },
     "05": {
@@ -41,6 +85,16 @@
       "overlay": "PILIH MATA KULIAH",
       "teks": [
         "Mulai dari Mata kuliah: pilih yang sedang kamu pelajari."
+      ],
+      "bg": "mint",
+      "mood": "idle",
+      "pov": "POV: buka Mata kuliah, pilih mata kuliahmu",
+      "web": [
+        {
+          "clip": "matkul",
+          "from": "s5",
+          "len": 5.1
+        }
       ]
     },
     "06": {
@@ -49,6 +103,16 @@
       "overlay": "SOAL KAMPUSMU",
       "teks": [
         "Soal kampusmu punya bagian sendiri, muncul saat sudah ada."
+      ],
+      "bg": "cream",
+      "mood": "happy",
+      "pov": "POV: buka Soal kampusmu, pilih mata kuliah",
+      "web": [
+        {
+          "clip": "kampus",
+          "from": "s6",
+          "len": 5.2
+        }
       ]
     },
     "07": {
@@ -57,6 +121,16 @@
       "overlay": "SOAL GENERAL · DRILLING",
       "teks": [
         "Soal General tanpa bab masuk ke Drilling."
+      ],
+      "bg": "navy",
+      "mood": "think",
+      "pov": "POV: buka menu, pilih Drilling",
+      "web": [
+        {
+          "clip": "drilling",
+          "from": "s7",
+          "len": 4.8
+        }
       ]
     },
     "08": {
@@ -65,6 +139,16 @@
       "overlay": "MULAI DARI SATU BAB",
       "teks": [
         "Buka satu bab. Tak perlu menelan semua soal sekaligus."
+      ],
+      "bg": "navy",
+      "mood": "idle",
+      "pov": "POV: pilih satu bab",
+      "web": [
+        {
+          "clip": "bab",
+          "from": "s8",
+          "len": 4.6
+        }
       ]
     },
     "09": {
@@ -73,6 +157,16 @@
       "overlay": "ATUR LATIHANMU",
       "teks": [
         "Atur jumlah soal, lalu pilih mode Learning atau ujian."
+      ],
+      "bg": "navy",
+      "mood": "think",
+      "pov": "POV: atur jumlah soal, pilih mode",
+      "web": [
+        {
+          "clip": "bab",
+          "from": "s9",
+          "len": 5.0
+        }
       ]
     },
     "10": {
@@ -81,6 +175,16 @@
       "overlay": "MODE LEARNING",
       "teks": [
         "Mode Learning: cek jawaban, pembahasan langsung muncul."
+      ],
+      "bg": "navy",
+      "mood": "think",
+      "pov": "POV: pilih jawaban, tekan Cek jawaban",
+      "web": [
+        {
+          "clip": "learn",
+          "from": "s10",
+          "len": 4.6
+        }
       ]
     },
     "11": {
@@ -89,6 +193,16 @@
       "overlay": "BUKAN CUMA HURUF JAWABAN",
       "teks": [
         "Baca alasan di balik jawabannya, bukan cuma huruf A sampai E."
+      ],
+      "bg": "navy",
+      "mood": "think",
+      "pov": "POV: baca pembahasan tiap pilihan",
+      "web": [
+        {
+          "clip": "learn",
+          "from": "s11",
+          "len": 5.0
+        }
       ]
     },
     "12": {
@@ -97,6 +211,16 @@
       "overlay": "COBA MODE UJIAN",
       "teks": [
         "Mode ujian menyimpan pembahasan sampai sesi selesai."
+      ],
+      "bg": "navy",
+      "mood": "think",
+      "pov": "POV: mode ujian, jawab beberapa soal",
+      "web": [
+        {
+          "clip": "exam",
+          "from": "s12",
+          "len": 4.8
+        }
       ]
     },
     "13": {
@@ -105,6 +229,16 @@
       "overlay": "LIHAT HASILMU",
       "teks": [
         "Di akhir sesi, lihat hasil dan filter soal yang salah."
+      ],
+      "bg": "navy",
+      "mood": "idle",
+      "pov": "POV: lihat hasil, pilih filter Salah",
+      "web": [
+        {
+          "clip": "exam",
+          "from": "s13",
+          "len": 5.0
+        }
       ]
     },
     "14": {
@@ -113,6 +247,16 @@
       "overlay": "ULANGI YANG SALAH",
       "teks": [
         "Pilih sumber soal yang pernah salah untuk mengujinya lagi."
+      ],
+      "bg": "navy",
+      "mood": "think",
+      "pov": "POV: pilih sumber soal: pernah dijawab salah",
+      "web": [
+        {
+          "clip": "wrong",
+          "from": "s14",
+          "len": 4.9
+        }
       ]
     },
     "15": {
@@ -121,6 +265,16 @@
       "overlay": "LANJUT DARI RIWAYAT",
       "teks": [
         "Riwayat membantumu kembali ke bab yang perlu diulang."
+      ],
+      "bg": "navy",
+      "mood": "happy",
+      "pov": "POV: buka Riwayat, lanjut ke bab yang perlu diulang",
+      "web": [
+        {
+          "clip": "history",
+          "from": "s15",
+          "len": 5.0
+        }
       ]
     },
     "16": {
@@ -129,7 +283,11 @@
       "overlay": "COBA SATU BAB",
       "teks": [
         "Buka Med-koel gratis, coba satu bab hari ini."
-      ]
+      ],
+      "bg": "mint",
+      "mood": "cheer",
+      "pov": "",
+      "web": []
     }
   }
 }
