@@ -5,6 +5,7 @@ import '@/styles/chat.css';
 import { Check, Loader2, Send } from 'lucide-react';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { api } from '@/lib/api';
+import { useChatState } from '@/lib/chatStore';
 import logoMark from '@/assets/logo-mark.webp';
 import { Alert } from './ui';
 
@@ -152,9 +153,13 @@ export function SupportMessage({ m, mine, admin = false }) {
 }
 
 // Kolom tulis pesan, dipakai pengguna dan admin.
-export function Composer({ onSend, disabled, placeholder, note, inputRef, children }) {
+// draftKey (opsional): tulisan yang belum terkirim disimpan di chatStore, jadi tidak hilang
+// saat chat dipindah dari panel ke halaman penuh.
+export function Composer({ onSend, disabled, placeholder, note, inputRef, children, draftKey }) {
   const id = useId();
-  const [text, setText] = useState('');
+  const [localText, setLocalText] = useState('');
+  const [storedText, setStoredText] = useChatState(`draft:${draftKey || 'lokal'}`, '');
+  const [text, setText] = draftKey ? [storedText, setStoredText] : [localText, setLocalText];
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const form = useRef(null);

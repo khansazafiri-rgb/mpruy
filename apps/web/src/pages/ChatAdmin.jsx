@@ -4,7 +4,7 @@
 // percakapan dengan admin manusia; asisten hanya mengarahkan.
 import '@/styles/chat.css';
 import clsx from 'clsx';
-import { CircleHelp, FileText, FileUp, Lightbulb, ListChecks, MessageCircle, RotateCcw, Trash2, TriangleAlert, X } from 'lucide-react';
+import { CircleHelp, FileText, FileUp, Lightbulb, ListChecks, MessageCircle, Pencil, RotateCcw, Trash2, TriangleAlert, X } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Mascot from '@/components/Mascot';
@@ -15,6 +15,7 @@ import { CATEGORIES, Composer, SupportMessage, useStickToBottom, useSupportThrea
 import { Alert, Spinner } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
+import { chatRef, claimChat, useChatState } from '@/lib/chatStore';
 import { looksLikePdf, uploadFile } from '@/lib/upload';
 import { confirmMessage, manyPdfMessage, waLink } from '@/lib/wa';
 
@@ -61,39 +62,84 @@ function Chips({ options, onPick, label = 'Pilihan balasan' }) {
 
 const LANG = [{ value: 'id', label: 'Indonesia' }, { value: 'en', label: 'Inggris' }, { value: 'both', label: 'Keduanya' }];
 
-function UploadFlow({ onStatus, onMenu }) {
+// Jawaban yang sudah dipilih, dengan tombol untuk memilih ulang (kembali ke langkah itu).
+function Answer({ text, onChange, disabled }) {
+  return (
+    <div className="chat-row is-mine">
+      <div className="chat-msg">
+        <div className="chat-bubble is-me">{text}</div>
+        {onChange && <button type="button" onClick={onChange} disabled={disabled} className="chat-redo"><Pencil size={12} aria-hidden /> Ubah</button>}
+      </div>
+    </div>
+  );
+}
+
+// Semua keadaan alur unggah disimpan di chatStore (kunci per sid), jadi tidak hilang
+// saat chat dipindah dari panel ke halaman penuh.
+function UploadFlow({ sid, onStatus, onMenu }) {
   const { me, settings } = useAuth();
-  const [subjects, setSubjects] = useState([]);
-  const [a, setA] = useState({}); // jawaban
-  const [step, setStep] = useState('subject');
-  const [draft, setDraft] = useState(null);
-  const [uploads, setUploads] = useState([]); // { name, progress, error }
-  const [agree, setAgree] = useState(false);
-  const [error, setError] = useState('');
-  const [busy, setBusy] = useState(false);
-  const [sent, setSent] = useState(null);
-  const [left, setLeft] = useState(false);
+  const useField = (name, init) => useChatState(`${sid}:${name}`, init);
+  const [subjects, setSubjects] = useField('subjects', []);
+  const [a, setA] = useField('a', {}); // jawaban
+  const [step, setStep] = useField('step', 'subject');
+  const [draft, setDraft] = useField('draft', null);
+  const [uploads, setUploads] = useField('uploads', []); // { key, name, file, progress, error, retryable }
+  const [agree, setAgree] = useField('agree', false);
+  const [error, setError] = useField('error', '');
+  const [retry, setRetry] = useField('retry', null); // { label, run } untuk tombol Coba lagi di bawah galat
+  const [busy, setBusy] = useField('busy', false);
+  const [sent, setSent] = useField('sent', null);
+  const [left, setLeft] = useField('left', false);
+  const [, setStale] = useField('stale', false); // true bila daftar file belum bisa dimuat ulang setelah unggah
 
-  useEffect(() => { api('subjects').then((d) => setSubjects(d.items)).catch((e) => setError(e.message)); }, []);
+  const fail = (e, label, run) => { setError(e.message); setRetry(run ? { label, run } : null); };
 
-  const answer = (key, o, next) => { setA((x) => ({ ...x, [key]: o.value, [`${key}Label`]: o.label })); setStep(next); setError(''); };
+  const loadSubjects = useCallback(() => {
+    setError(''); setRetry(null);
+    api('subjects').then((d) => setSubjects(d.items)).catch((e) => fail(e, 'Muat ulang mata kuliah', loadSubjects));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => { if (!subjects.length) loadSubjects(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const pickCount = async (o) => {
-    answer('count', o, o.value === 'many' ? 'many' : 'files');
-    if (o.value === 'many') return;
-    setBusy(true);
+  const answer = (key, o, next) => { setA((x) => ({ ...x, [key]: o.value, [`${key}Label`]: o.label })); setStep(next); setError(''); setRetry(null); };
+  // Memilih ulang: kembali ke langkah itu. Draf (dan file yang sudah diunggah) tetap dipakai;
+  // server memperbarui draf yang sama saat pilihan jumlah PDF dikirim lagi.
+  const goBack = (to) => { setStep(to); setError(''); setRetry(null); setAgree(false); };
+
+  const createDraft = async (value, mine = a) => {
+    setBusy(true); setError(''); setRetry(null);
     try {
       const d = await api('submissions', {
         method: 'POST',
-        body: { subject: a.subject, hasKey: a.hasKey === 'yes', language: a.language, scope: a.scope, pdfCount: Number(o.value) },
+        body: { subject: mine.subject, hasKey: mine.hasKey === 'yes', language: mine.language, scope: mine.scope, pdfCount: Number(value) },
       });
       setDraft(d);
-    } catch (e) { setError(e.message); setStep('count'); } finally { setBusy(false); }
+    } catch (e) { setStep('count'); fail(e, 'Coba lagi', () => createDraft(value, mine)); } finally { setBusy(false); }
+  };
+  const pickCount = async (o) => {
+    answer('count', o, o.value === 'many' ? 'many' : 'files');
+    if (o.value === 'many') return;
+    await createDraft(o.value, { ...a, count: o.value });
   };
 
   const maxMb = settings?.maxPdfMb || 20;
+  const refreshDraft = async (id) => {
+    try { setDraft(await api(`submissions/${id}`)); setStale(false); setError(''); setRetry(null); } catch (e) { setStale(true); fail(e, 'Muat ulang daftar file', () => refreshDraft(id)); }
+  };
+  // Mengunggah satu file; dipakai juga oleh tombol Coba lagi (file disimpan di entri unggahan).
+  const uploadOne = async (id, key, f) => {
+    setUploads((u) => u.map((x) => (x.key === key ? { ...x, progress: 0, error: '' } : x)));
+    try {
+      await uploadFile(new File([f], f.name, { type: 'application/pdf' }), { kind: 'submission_pdf', submission: id }, (p) => setUploads((u) => u.map((x) => (x.key === key ? { ...x, progress: p } : x))));
+    } catch (e) {
+      setUploads((u) => u.map((x) => (x.key === key ? { ...x, error: e.message, retryable: true } : x)));
+      return;
+    }
+    setUploads((u) => u.filter((x) => x.key !== key));
+    await refreshDraft(id);
+  };
   const addFiles = async (files) => {
-    setError('');
+    setError(''); setRetry(null);
     const list = [...files];
     const room = 5 - (draft?.files?.length || 0) - uploads.filter((u) => !u.error && u.progress < 1).length;
     if (list.length > room) { setError(`Satu pengajuan paling banyak 5 PDF. Sisa tempat: ${Math.max(0, room)}.`); list.splice(Math.max(0, room)); }
@@ -101,25 +147,20 @@ function UploadFlow({ onStatus, onMenu }) {
       const key = `${f.name}-${f.size}-${Date.now()}`;
       if (f.size > maxMb * 1048576) { setUploads((u) => [...u, { key, name: f.name, progress: 0, error: `Lebih dari ${maxMb} MB. Kecilkan atau pisah PDF-nya.` }]); continue; }
       if (!(await looksLikePdf(f))) { setUploads((u) => [...u, { key, name: f.name, progress: 0, error: 'Isi file ini bukan PDF. Ekspor ulang sebagai PDF.' }]); continue; }
-      setUploads((u) => [...u, { key, name: f.name, progress: 0 }]);
-      try {
-        await uploadFile(new File([f], f.name, { type: 'application/pdf' }), { kind: 'submission_pdf', submission: draft.id }, (p) => setUploads((u) => u.map((x) => (x.key === key ? { ...x, progress: p } : x))));
-        setUploads((u) => u.filter((x) => x.key !== key));
-        setDraft(await api(`submissions/${draft.id}`));
-      } catch (e) {
-        setUploads((u) => u.map((x) => (x.key === key ? { ...x, error: e.message } : x)));
-      }
+      setUploads((u) => [...u, { key, name: f.name, file: f, progress: 0 }]);
+      await uploadOne(draft.id, key, f);
     }
   };
   const removeFile = async (f) => {
-    try { setDraft(await api(`submissions/${draft.id}/files/${f.id}/remove`, { method: 'POST', body: {} })); } catch (e) { setError(e.message); }
+    setError(''); setRetry(null);
+    try { setDraft(await api(`submissions/${draft.id}/files/${f.id}/remove`, { method: 'POST', body: {} })); } catch (e) { fail(e, 'Coba hapus lagi', () => removeFile(f)); }
   };
   const send = async () => {
-    setBusy(true); setError('');
-    try { setSent(await api(`submissions/${draft.id}/send`, { method: 'POST', body: { agreement: agree } })); setStep('sent'); } catch (e) { setError(e.message); } finally { setBusy(false); }
+    setBusy(true); setError(''); setRetry(null);
+    try { setSent(await api(`submissions/${draft.id}/send`, { method: 'POST', body: { agreement: agree } })); setStep('sent'); } catch (e) { fail(e, 'Coba kirim lagi', send); } finally { setBusy(false); }
   };
 
-  const restart = () => { setA({}); setStep('subject'); setDraft(null); setUploads([]); setAgree(false); setSent(null); setError(''); };
+  const restart = () => { setA({}); setStep('subject'); setDraft(null); setUploads([]); setAgree(false); setSent(null); setError(''); setRetry(null); setStale(false); };
   const leave = (fn) => { setLeft(true); fn(); };
   const campusName = me?.campusName || 'kampusmu';
   const waNumber = settings?.adminWhatsapp;
@@ -130,15 +171,15 @@ function UploadFlow({ onStatus, onMenu }) {
     <>
       <Bubble>Siap! Aku bantu ubah PDF soalmu jadi soal latihan di web. <b>Soal ini untuk mata kuliah apa?</b></Bubble>
       {step === 'subject' && (subjects.length ? <Chips label="Pilih mata kuliah" options={subjects.map((s) => ({ value: s.id, label: s.name }))} onPick={(o) => answer('subject', o, 'hasKey')} /> : !error && <div className="chat-chips"><Spinner /></div>)}
-      {at('hasKey') && <Bubble from="me">{a.subjectLabel}</Bubble>}
+      {at('hasKey') && <Answer text={a.subjectLabel} onChange={() => goBack('subject')} disabled={step === 'subject' || busy || step === 'sent'} />}
 
       {at('hasKey') && <Bubble><b>Apakah PDF sudah memuat pembahasan dan kunci jawaban?</b></Bubble>}
       {step === 'hasKey' && <Chips options={[{ value: 'yes', label: 'Ya, sudah ada' }, { value: 'no', label: 'Belum ada' }]} onPick={(o) => answer('hasKey', o, 'language')} />}
-      {at('language') && <Bubble from="me">{a.hasKeyLabel}</Bubble>}
+      {at('language') && <Answer text={a.hasKeyLabel} onChange={() => goBack('hasKey')} disabled={step === 'hasKey' || busy || step === 'sent'} />}
 
       {at('language') && <Bubble><b>Soalnya pakai bahasa apa?</b></Bubble>}
       {step === 'language' && <Chips options={LANG} onPick={(o) => answer('language', o, 'scope')} />}
-      {at('scope') && <Bubble from="me">{a.languageLabel}</Bubble>}
+      {at('scope') && <Answer text={a.languageLabel} onChange={() => goBack('language')} disabled={step === 'language' || busy || step === 'sent'} />}
 
       {at('scope') && <Bubble><b>Soal ini hanya untuk pengguna dari kampusmu, atau General (boleh dipakai semua pengguna)?</b></Bubble>}
       {step === 'scope' && (
@@ -151,15 +192,15 @@ function UploadFlow({ onStatus, onMenu }) {
         />
       )}
       {step === 'scope' && !me?.campus && <p className="chat-aside">Akunmu belum punya kampus, jadi pilihan Hanya kampus saya belum tersedia. Soalmu akan jadi General. Kamu bisa mengisi kampus di Profil kapan saja.</p>}
-      {at('count') && <Bubble from="me">{a.scopeLabel}</Bubble>}
+      {at('count') && <Answer text={a.scopeLabel} onChange={() => goBack('scope')} disabled={step === 'scope' || busy || step === 'sent'} />}
 
       {at('count') && <Bubble><b>Berapa PDF yang mau kamu kirim?</b></Bubble>}
       {step === 'count' && <Chips options={[...[1, 2, 3, 4, 5].map((n) => ({ value: String(n), label: String(n) })), { value: 'many', label: 'Lebih dari 5' }]} onPick={pickCount} />}
-      {at('files') && step !== 'many' && <Bubble from="me">{a.countLabel} PDF</Bubble>}
+      {at('files') && step !== 'many' && <Answer text={`${a.countLabel} PDF`} onChange={() => goBack('count')} disabled={step === 'count' || busy || step === 'sent'} />}
 
       {step === 'many' && (
         <>
-          <Bubble from="me">Lebih dari 5</Bubble>
+          <Answer text="Lebih dari 5" onChange={() => goBack('count')} />
           <Bubble>
             Untuk lebih dari 5 PDF, kirim filenya lewat WhatsApp admin ya. Pesannya sudah aku isi. Admin akan mencatat pengajuanmu supaya tetap muncul di status pengajuan.
             <div className="mt-3">
@@ -191,8 +232,9 @@ function UploadFlow({ onStatus, onMenu }) {
                 {uploads.map((u) => (
                   <li key={u.key} className={clsx('chat-file', u.error && 'is-error')}>
                     <FileText size={16} aria-hidden /><span className="min-w-0 flex-1 truncate">{u.name}</span>
-                    <span className="text-xs">{u.error || `${Math.round(u.progress * 100)}%`}</span>
-                    {u.error && <button type="button" onClick={() => setUploads((l) => l.filter((x) => x.key !== u.key))} aria-label="Tutup"><X size={14} /></button>}
+                    {u.error ? <button type="button" onClick={() => setUploads((l) => l.filter((x) => x.key !== u.key))} aria-label={`Tutup ${u.name}`}><X size={14} /></button> : <span className="text-xs">{Math.round(u.progress * 100)}%</span>}
+                    {u.error && <span className="chat-file-err">{u.error}</span>}
+                    {u.error && u.retryable && u.file && <button type="button" onClick={() => uploadOne(draft.id, u.key, u.file)} className="chat-retry"><RotateCcw size={12} aria-hidden /> Coba lagi</button>}
                   </li>
                 ))}
               </ul>
@@ -218,8 +260,9 @@ function UploadFlow({ onStatus, onMenu }) {
             <span>Saya berhak membagikan isi PDF ini untuk keperluan belajar, dan setuju admin boleh menolaknya bila melanggar <Link to="/kebijakan-privasi" className="underline">hak cipta</Link>.</span>
           </label>
           <div className="mt-3 flex flex-wrap gap-2">
-            <button type="button" className="btn-primary btn-sm" onClick={send} disabled={!agree || busy}>{busy ? 'Mengirim...' : 'Kirim pengajuan'}</button>
+            <button type="button" className="btn-primary btn-sm" onClick={send} disabled={!agree || busy}>{busy ? 'Mengirim...' : retry ? 'Kirim ulang pengajuan' : 'Kirim pengajuan'}</button>
             <button type="button" className="btn-ghost btn-sm" onClick={() => setStep('files')}>Ubah file</button>
+            <button type="button" className="btn-ghost btn-sm" onClick={() => goBack('subject')}>Ubah pilihan</button>
           </div>
         </Bubble>
       )}
@@ -238,7 +281,12 @@ function UploadFlow({ onStatus, onMenu }) {
         </>
       )}
 
-      {error && <div className="chat-aside"><Alert>{error}</Alert></div>}
+      {error && (
+        <div className="chat-aside">
+          <Alert>{error}</Alert>
+          {retry && <button type="button" className="btn-secondary btn-sm mt-2" onClick={() => { const r = retry; setRetry(null); setError(''); r.run(); }}><RotateCcw size={14} aria-hidden /> {retry.label}</button>}
+        </div>
+      )}
       {!left && (
         <Chips
           label="Pilihan lain"
@@ -307,15 +355,14 @@ const nid = () => `e${++seq}`;
 export function ChatAdminBody({ compact = false }) {
   const { me, settings } = useAuth();
   const support = useSupportThread();
-  const [events, setEvents] = useState(() => [{ id: nid(), kind: 'menu', intro: true }]);
-  const [history, setHistory] = useState(null); // { ids:Set, max:string } setelah muatan pertama
-  const [category, setCategory] = useState('question');
-  const acked = useRef(false);
-  const timers = useRef([]);
+  // Keadaan percakapan ada di chatStore: tetap lanjut saat chat diperbesar ke halaman penuh.
+  claimChat(me?.id);
+  const [events, setEvents] = useChatState('events', () => [{ id: nid(), kind: 'menu', intro: true }]);
+  const [history, setHistory] = useChatState('history', null); // { ids:Set, max:string } setelah muatan pertama
+  const [category, setCategory] = useChatState('category', 'question');
+  const acked = chatRef('acked', false);
   const scroller = useStickToBottom();
   const input = useRef(null);
-
-  useEffect(() => () => timers.current.forEach(clearTimeout), []);
 
   // Pesan admin yang datang selama sesi ini masuk ke utas sesuai urutan datang.
   useEffect(() => {
@@ -329,24 +376,24 @@ export function ChatAdminBody({ compact = false }) {
       const fresh = support.items.filter((m) => !history.ids.has(m.id) && !known.has(m.id) && m.created >= history.max);
       return fresh.length ? [...ev, ...fresh.map((m) => ({ id: `m-${m.id}`, kind: 'msg', msgId: m.id }))] : ev;
     });
-  }, [support.loading, support.items, history]);
+  }, [support.loading, support.items, history, setEvents, setHistory]);
 
   const byId = useMemo(() => new Map(support.items.map((m) => [m.id, m])), [support.items]);
   const liveIds = useMemo(() => new Set(events.filter((e) => e.kind === 'msg').map((e) => e.msgId)), [events]);
   const past = history ? support.items.filter((m) => !liveIds.has(m.id)) : [];
 
-  const push = useCallback((list) => setEvents((ev) => [...ev, ...list.map((x) => ({ id: nid(), ...x }))]), []);
+  const push = useCallback((list) => setEvents((ev) => [...ev, ...list.map((x) => ({ id: nid(), ...x }))]), [setEvents]);
   // Balasan asisten muncul setelah indikator mengetik singkat.
   const say = useCallback((list, after) => {
     const typing = { id: nid(), kind: 'typing' };
     const items = list.map((x) => ({ id: nid(), ...x }));
     setEvents((ev) => [...ev, typing]);
-    const t = setTimeout(() => {
+    // Tidak dibatalkan saat komponen dilepas: hasilnya masuk ke chatStore, jadi tetap muncul di tampilan berikutnya.
+    setTimeout(() => {
       setEvents((ev) => [...ev.filter((e) => e.id !== typing.id), ...items]);
       after?.();
     }, reduceMotion() ? 0 : 550);
-    timers.current.push(t);
-  }, []);
+  }, [setEvents]);
 
   const pick = (menuId, o) => {
     scroller.toBottom();
@@ -399,6 +446,7 @@ export function ChatAdminBody({ compact = false }) {
         return (
           <div key={e.id} className="contents">
             <UploadFlow
+              sid={e.id}
               onStatus={(label) => { scroller.toBottom(); push([{ kind: 'user', text: label }]); say([{ kind: 'status' }, { kind: 'menu' }]); }}
               onMenu={(label) => { scroller.toBottom(); push([{ kind: 'user', text: label }]); say([{ kind: 'menu' }]); }}
             />
@@ -455,6 +503,7 @@ export function ChatAdminBody({ compact = false }) {
       )}
       <Composer
         onSend={onSend}
+        draftKey="pengguna"
         inputRef={input}
         disabled={support.loading}
         placeholder="Tulis pesan untuk admin…"

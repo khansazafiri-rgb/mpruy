@@ -24,7 +24,8 @@ function friendly(status, message) {
   if (status === 401 && (!message || /authorization|token/i.test(message))) return 'Sesi masuk sudah berakhir. Silakan masuk lagi.';
   if (status >= 500 && !message) return 'Server sedang bermasalah. Coba lagi beberapa saat lagi.';
   if (message && /^(Something went wrong|The requested resource)/.test(message)) {
-    return status === 404 ? 'Data tidak ditemukan.' : 'Permintaan belum bisa diproses. Periksa isiannya lalu coba lagi.';
+    // PocketBase menjawab begini bila alamat API-nya tidak ada: biasanya server belum dijalankan ulang setelah pembaruan.
+    return status === 404 ? 'Fitur ini belum ada di server (server belum diperbarui). Minta pengelola menjalankan ulang PocketBase dengan versi terbaru, lalu muat ulang halaman.' : 'Permintaan belum bisa diproses. Periksa isiannya lalu coba lagi.';
   }
   return message || 'Terjadi kesalahan. Coba lagi.';
 }

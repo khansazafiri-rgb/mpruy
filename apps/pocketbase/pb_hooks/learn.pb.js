@@ -161,7 +161,9 @@ routerAdd("GET", "/api/medcoel/drilling", (e) => {
   const learn = require(`${__hooks}/lib/learn.js`);
   const user = u.requireUser(e);
   const st = learn.drillingStatus(e.app);
-  if (!st.available) return e.json(200, { enabled: st.enabled, available: false, subjects: [] });
+  // Admin boleh melihat Drilling walau belum dibuka untuk pengguna (pratinjau).
+  const preview = !st.available && u.roleOf(user) === "admin";
+  if (!st.available && !preview) return e.json(200, { enabled: st.enabled, available: false, subjects: [] });
   const chapterSubject = {};
   e.app.findRecordsByFilter("chapters", "drilling = true && hidden = false", "", 0, 0).forEach((c) => { chapterSubject[c.id] = c.getString("subject"); });
   const count = {};
@@ -187,8 +189,14 @@ routerAdd("GET", "/api/medcoel/drilling", (e) => {
       order: s.getInt("order"),
     }));
   out.sort(require(`${__hooks}/lib/catalogOrder.js`).byPreference);
-  return e.json(200, { enabled: true, available: true, subjects: out });
+  return e.json(200, { enabled: st.enabled, available: st.available, preview: preview, subjects: out });
 });
+
+// Mata kuliah baru langsung punya BAB Drilling-nya (admin bisa menambah soal Drilling tanpa menunggu impor pertama).
+onRecordAfterCreateSuccess((e) => {
+  try { require(`${__hooks}/lib/learn.js`).ensureDrillingChapter(e.app, e.record.id); } catch (err) { console.log("[drilling] BAB Drilling gagal dibuat:", err); }
+  e.next();
+}, "subjects");
 
 routerAdd("POST", "/api/medcoel/attempts/drilling", (e) => {
   const u = require(`${__hooks}/lib/util.js`);

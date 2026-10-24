@@ -13,7 +13,7 @@ export default function Questions() {
   const [params, setParams] = useSearchParams();
   const { subjects, chapterChoicesOf } = useCatalog();
   const [tab, setTab] = useState('list');
-  const [f, setF] = useState({ subject: params.get('subject') || '', chapter: '', difficulty: '', qtype: '', status: '', scope: '', q: '', id: params.get('id') || '' });
+  const [f, setF] = useState({ subject: params.get('subject') || '', chapter: params.get('chapter') || '', difficulty: '', qtype: '', status: '', scope: '', q: '', id: params.get('id') || '' });
   const [page, setPage] = useState(1);
   const [data, setData] = useState(null);
   const [error, setError] = useState('');

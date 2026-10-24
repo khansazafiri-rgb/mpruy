@@ -64,7 +64,14 @@ Admin > Ringkasan dan Pengaturan > Sistem.
 sudo bash /opt/medcoel/app/deploy/update.sh
 ```
 
-Migrasi baru berjalan otomatis saat service restart. `update.sh` juga
+Migrasi baru berjalan otomatis saat service restart. **Hook dan migrasi baru tidak
+terpasang selama PocketBase belum di-restart** (produksi memakai
+`--hooksWatch=false`). Tanda server tertinggal: Drilling tampil "tidak ditemukan",
+jumlah kasus Simulasi per poli masih lama, dan dashboard admin menampilkan
+peringatan "Server belum memuat pembaruan terbaru". Cari layanannya dengan
+`systemctl list-units --type=service | grep -i -E 'medcoel|pocketbase'` atau
+`ps aux | grep pocketbase`, lalu `sudo systemctl restart <nama layanan>` (nama
+layanan di server ini masih perlu dipastikan). `update.sh` juga
 menyamakan binary PocketBase dengan `apps/pocketbase/.pocketbase-version`
 (tidak mengunduh ulang bila versinya sudah sama).
 
