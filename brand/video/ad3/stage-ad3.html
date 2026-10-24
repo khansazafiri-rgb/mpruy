@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Panggung video 3 MEDCOEL</title>
+<link rel="stylesheet" href="../../../apps/web/src/styles/mascot.css">
+<link rel="stylesheet" href="stage-ad3.css">
+</head><body>
+<div id="stage" class="on-navy">
+  <div id="bg" class="bg-navy"></div>
+  <div id="scene"></div>
+  <div id="title"></div>
+  <div id="pov"></div>
+  <div id="caption"></div>
+  <div id="wipe"></div>
+  <div id="grain"></div>
+</div>
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const E = {
+    out: (x) => 1 - Math.pow(1 - clamp(x), 3),
+    inout: (x) => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; },
+    back: (x) => { x = clamp(x); const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); },
+  };
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const pop = (l, at, d = .42) => E.back((l - at) / d);
+  const fade = (l, at, d = .25) => clamp((l - at) / d);
+  const pad = (n) => String(n).padStart(2, '0');
+  let D = null; let root = null; let cur = -1; let scn = null; let pending = [];
+
+  function div(cls, html = '', parent = root) { const d = document.createElement('div'); d.className = cls; if (html) d.innerHTML = html; parent.append(d); return d; }
+  function put(el, { x = 0, y = 0, s = 1, r = 0, o = 1, sx = 1, sy = null } = {}) {
+    el.style.transform = `translate(${x}px,${y}px) translate(-50%,-50%) rotate(${r}deg) scale(${s * sx},${s * (sy ?? 1)})`;
+    el.style.opacity = o; el.style.visibility = o <= 0.001 ? 'hidden' : 'visible';
+  }
+  function setSrc(img, url) { if (img.dataset.u !== url) { img.dataset.u = url; img.src = url; pending.push(img.decode().catch(() => {})); } }
+  const sprite = (name, h, parent) => { const i = document.createElement('img'); i.className = 'sprite'; i.style.height = h + 'px'; i.src = `${D.sprites}/${name}.webp`; (parent || root).append(i); pending.push(i.decode().catch(() => {})); return i; };
+
+  // ---------- kartu web: rekaman utuh, diputar 1:1 pada 30 fps (tanpa dipercepat, tanpa dipotong) ----------
+  const CARD = { x: 144, y: 200, w: 792, h: 1394 };
+  function makeCard(web) {
+    const el = div('card'); el.style.width = CARD.w + 'px'; el.style.height = CARD.h + 'px';
+    const img = document.createElement('img'); el.append(img);
+    let acc = 0;
+    const S = web.map((w) => { const c = D.clips[w.clip]; const base = typeof w.from === 'string' ? c.marks[w.from] : (w.from || 0); const seg = { clip: w.clip, base: c.base || 'clips', dir: c.dir || w.clip, frames: c.frames, start: base + (w.off || 0), len: w.len, at: acc }; acc += w.len; return seg; });
+    return {
+      el, total: acc,
+      update(l) {
+        let g = S[S.length - 1]; for (const s of S) if (l < s.at + s.len) { g = s; break; }
+        const t = Math.min(g.start + (l - g.at), g.frames / 30 - 1 / 30);
+        const n = Math.max(1, Math.min(g.frames, Math.floor(t * 30 + 1e-6) + 1));
+        setSrc(img, `${g.base}/${g.dir}/${String(n).padStart(5, '0')}.jpg`);
+        put(el, { x: CARD.x + CARD.w / 2, y: CARD.y + CARD.h / 2 });
+      },
+    };
+  }
+
+  // ---------- Kila (narator) ----------
+  // Semua gerak dihitung dari waktu video (tanpa animasi CSS), jadi mulus dan sama pada tiap render.
+  function mkKila(size) {
+    const el = div('mk'); el.style.width = el.style.height = size + 'px';
+    const sp = document.createElement('span'); sp.className = 'mc-character is-still mood-idle'; sp.innerHTML = D.mascots.kila; el.append(sp);
+    const q = (s) => el.querySelector(s);
+    const float = q('.mc-float'); const arm = q('.mc-arm-right'); const eyesN = q('.mc-eyes-normal'); const sparks = el.querySelectorAll('.mc-spark circle');
+    [float, arm, eyesN].forEach((e) => { if (e) e.style.transformBox = 'fill-box'; });
+    if (float) float.style.transformOrigin = '50% 92%'; if (arm) arm.style.transformOrigin = '10% 60%'; if (eyesN) eyesN.style.transformOrigin = 'center';
+    return {
+      el, sp,
+      mood(m) { const c = 'mc-character is-still mood-' + m; if (sp.className !== c) sp.className = c; },
+      tick(t, { wave = false, jump = 0, squash = 1, tilt = 0 } = {}) {
+        const bob = -7 * Math.sin(t * 2 * Math.PI / 3.3);
+        if (float) float.style.transform = `translateY(${bob + jump}px) rotate(${tilt}deg) scale(${1 / Math.sqrt(squash)},${squash})`;
+        if (arm) arm.style.transform = wave ? `rotate(${-20 * Math.abs(Math.sin(t * 2 * Math.PI / .72))}deg)` : '';
+        if (eyesN) eyesN.style.transform = (t % 4.3) < .12 ? 'scaleY(.1)' : '';
+        sparks.forEach((c, i) => { c.style.opacity = .55 + .45 * Math.abs(Math.sin(t * 5 + i)); });
+      },
+      put(o) { put(el, o); },
+    };
+  }
+  function mouth(K, open, speaking) {
+    const r = K.el; const normal = r.querySelector('.mc-mouth-normal'); const happy = r.querySelector('.mc-mouth-happy'); const think = r.querySelector('.mc-mouth-think');
+    if (!happy) return;
+    if (speaking && open > 0) {
+      if (normal) normal.style.opacity = 0; if (think) think.style.opacity = 0;
+      happy.style.opacity = 1; happy.style.transformBox = 'fill-box'; happy.style.transformOrigin = '50% 0%'; happy.style.transform = `scaleY(${(0.25 + 0.95 * open).toFixed(3)})`;
+    } else [normal, think, happy].forEach((e) => { if (e) { e.style.opacity = ''; e.style.transform = ''; } });
+  }
+
+  const SPARK = '<svg viewBox="0 0 40 40" width="100%" height="100%"><path d="M20 2q3 15 18 18-15 3-18 18-3-15-18-18 15-3 18-18z" fill="#F8C038" stroke="#172B38" stroke-width="3" stroke-linejoin="round"/></svg>';
+  const spark = (size) => { const e = div('spark', SPARK); e.style.width = e.style.height = size + 'px'; return e; };
+  const DROP = '<svg viewBox="0 0 40 56" width="100%" height="100%"><path d="M20 3q16 22 16 33a16 16 0 0 1-32 0q0-11 16-33z" fill="#BFE9F5" stroke="#172B38" stroke-width="4" stroke-linejoin="round"/><path d="M12 36q1 8 8 10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>';
+  const BULB = '<svg viewBox="0 0 60 80" width="100%" height="100%"><path d="M30 4a22 22 0 0 0-12 40c4 4 4 8 4 12h16c0-4 0-8 4-12A22 22 0 0 0 30 4z" fill="#F8C038" stroke="#172B38" stroke-width="4" stroke-linejoin="round"/><path d="M22 62h16M24 70h12" stroke="#172B38" stroke-width="4" stroke-linecap="round"/></svg>';
+  const TROPHY = '<svg viewBox="0 0 120 130" width="100%" height="100%"><path d="M30 10h60v34a30 30 0 0 1-60 0z" fill="#F8C038" stroke="#172B38" stroke-width="6" stroke-linejoin="round"/><path d="M30 18H10q0 28 22 32M90 18h20q0 28-22 32" fill="none" stroke="#172B38" stroke-width="6" stroke-linecap="round"/><path d="M60 74v22M38 104h44v14H38z" fill="#E8A91A" stroke="#172B38" stroke-width="6" stroke-linejoin="round"/><path d="M44 22q0 14 8 22" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg>';
+  const BOOK = '<svg viewBox="0 0 140 110" width="100%" height="100%"><path d="M8 18q30-10 62 6 32-16 62-6v78q-30-10-62 6-32-16-62-6z" fill="#fff" stroke="#172B38" stroke-width="6" stroke-linejoin="round"/><path d="M70 24v78" stroke="#172B38" stroke-width="6"/><path d="M22 38q20-5 34 3M22 56q20-5 34 3M84 41q14-8 34-3M84 59q14-8 34-3" fill="none" stroke="#69BFD0" stroke-width="6" stroke-linecap="round"/></svg>';
+  const STETH = '<svg viewBox="0 0 120 120" width="100%" height="100%"><path d="M26 10v34a24 24 0 0 0 48 0V10" fill="none" stroke="#172B38" stroke-width="8" stroke-linecap="round"/><path d="M50 68v18a22 22 0 0 0 44 0V70" fill="none" stroke="#172B38" stroke-width="8" stroke-linecap="round"/><circle cx="94" cy="62" r="13" fill="#F8C038" stroke="#172B38" stroke-width="7"/></svg>';
+  const ARROW = '<svg viewBox="0 0 30 30" width="100%" height="100%"><path d="M4 2 L4 24 L10 18.5 L14 27 L18 25 L14 16.8 L22 16.5 Z" fill="#fff" stroke="#172B38" stroke-width="2.2" stroke-linejoin="round"/></svg>';
+  const icon = (svg, w, h) => { const e = div('abs', svg); e.style.width = w + 'px'; e.style.height = (h ?? w) + 'px'; return e; };
+  const stk = (text, cls = '') => div('stk ' + cls, esc(text));
+  // stiker yang muncul pada waktu `at` dan hilang pada `until`
+  const sticker = (text, cls, x, y, r, at, until = 99) => { const e = stk(text, cls); return { e, update(l) { const a = pop(l, at, .35) * (l < until ? 1 : 0); put(e, { x, y: y + (1 - clamp(a)) * 30, s: Math.max(0, a), r, o: a > 0 ? 1 : 0 }); } }; };
+
+  // ---------- adegan ----------
+  const SC = {};
+  const spec = (n) => D.spec.shot[pad(n)];
+  const KILA_POS = { x: 168, y: 1768, size: 292 };
+  const qcard = (parent) => div('qcard', '<span class="tg">SOAL</span><i></i><i class="s"></i><i></i>', parent);
+  function webScene(n, extra) {
+    const s = spec(n); const card = makeCard(s.web);
+    const kila = mkKila(KILA_POS.size); kila.mood(s.mood);
+    const ex = extra ? extra({ card, kila, s }) : null;
+    return {
+      speaker: kila, title: ex && ex.title,
+      update(l) {
+        card.update(l);
+        const e = E.out(l / .5);
+        kila.put({ x: KILA_POS.x, y: KILA_POS.y + (1 - e) * 320 });
+        kila.tick(l + s.start, { wave: s.mood === 'wave', ...(ex && ex.pose ? ex.pose(l) : {}) });
+        if (ex && ex.mood) kila.mood(ex.mood(l));
+        ex && ex.update && ex.update(l);
+      },
+    };
+  }
+
+  // Shot 1: kait lucu. Tumpukan kartu soal menimpa Kila yang bingung mulai dari mana.
+  SC[1] = () => {
+    const rug = div('abs'); rug.style.cssText += ';width:760px;height:120px;border-radius:50%;background:rgba(0,112,96,.14)';
+    const kila = mkKila(540); kila.mood('wave');
+    const T = [[250, 1390, -8], [410, 1400, 5], [570, 1385, -4], [330, 1300, 7], [490, 1300, -6], [250, 1215, -12], [410, 1215, 9], [570, 1212, -3], [405, 1135, 4]];
+    const cards = T.map(() => qcard());
+    const q = div('fx', '?'); q.style.cssText += ';font-size:240px;color:#E5604D;-webkit-text-stroke:12px #172B38;paint-order:stroke fill';
+    const sweat = [0, 1, 2].map(() => icon(DROP, 46, 64)); const sp = [0, 1, 2].map(() => spark(70));
+    const sign = div('stk paper', 'A? B? C? D?'); 
+    return {
+      speaker: kila, full: true,
+      update(l) {
+        put(rug, { x: 420, y: 1500 });
+        const enter = E.back(l / .55); const hit = clamp((l - 1.55) / .5);
+        const squash = l > 1.5 ? 1 - .1 * Math.sin(Math.PI * hit) * (l < 2.1 ? 1 : 0) : 1;
+        kila.mood(l < 1.5 ? 'wave' : 'think');
+        kila.put({ x: lerp(-320, 410, clamp(enter)), y: 1060 });
+        kila.tick(l, { wave: l < 1.5, squash, tilt: l > 1.5 ? 5 * Math.sin(l * 9) * Math.exp(-(l - 1.55) * 2.2) : 0 });
+        cards.forEach((c, i) => { const t = .25 + i * .13; const k = clamp((l - t) / .42); const [x, y, r] = T[i]; const bounce = E.back(k); put(c, { x, y: lerp(-300, y, bounce), r: r + (1 - k) * 25, o: l > t ? 1 : 0 }); });
+        const qa = pop(l, 1.55, .35); put(q, { x: 420, y: 600 + (1 - clamp(qa)) * 50 + Math.sin(l * 8) * 4, s: Math.max(0, qa), r: -6, o: qa > 0 ? 1 : 0 });
+        sweat.forEach((e, i) => { const t = 1.7 + i * .2; const k = clamp((l - t) / .8); put(e, { x: 250 + i * 50 + (i % 2) * 330, y: 840 + k * 170, o: l > t ? 1 - k * .6 : 0 }); });
+        const sa = pop(l, 1.0, .4); put(sign, { x: 800, y: 700, s: Math.max(0, sa), r: 8, o: sa > 0 ? 1 : 0 }); sign.style.fontSize = '50px';
+        sp.forEach((e, i) => { const t = 2.1 + i * .1; put(e, { x: [140, 930, 880][i], y: [560, 980, 440][i], s: pop(l, t, .35) * (.9 + .1 * Math.sin(l * 8 + i)), o: l > t ? 1 : 0, r: l * 40 }); });
+      },
+    };
+  };
+
+  // Shot 2: halaman depan + stiker GRATIS
+  SC[2] = () => webScene(2, () => {
+    const g = sticker('GRATIS!', 'coral', 905, 1688, 5, .5); g.e.style.fontSize = '58px';
+    const w = sticker('SEMUA FITUR GRATIS', 'paper', 640, 1688, -3, 1.6); w.e.style.fontSize = '30px'; w.e.style.padding = '8px 16px 10px';
+    const sp = [0, 1, 2].map(() => spark(64));
+    return { update(l) { g.update(l); w.update(l); sp.forEach((e, i) => { const t = .7 + i * .15; put(e, { x: [995, 90, 1010][i], y: [210, 340, 470][i], s: pop(l, t, .4) * (.9 + .12 * Math.sin(l * 7 + i)), o: l > t ? 1 : 0, r: l * 60 }); }); } };
+  });
+
+  // Shot 3: angka naik jadi 38.400 di judul
+  SC[3] = () => webScene(3, () => {
+    const sp = [0, 1, 2, 3].map(() => spark(60));
+    return {
+      title: (l) => `${new Intl.NumberFormat('id-ID').format(Math.round(38400 * E.out((l - .05) / 1.3)))} SOAL`,
+      pose: (l) => ({ jump: -26 * Math.max(0, Math.sin(l * 6)) }), mood: () => 'cheer',
+      update(l) { sp.forEach((e, i) => { const t = 1.3 + i * .12; put(e, { x: [80, 1000, 70, 1005][i], y: [420, 520, 700, 840][i], s: pop(l, t, .4) * (.9 + .12 * Math.sin(l * 7 + i)), o: l > t ? 1 : 0, r: l * 60 }); }); },
+    };
+  });
+
+  // Shot 4: montase tiga menu nyata (latihan, kirim PDF, simulasi)
+  SC[4] = () => webScene(4, () => {
+    const a = sticker('LATIHAN SOAL', 'mintc', 650, 1688, -3, .05, 1.3); const b = sticker('KIRIM PDF', 'paper', 650, 1688, 2, 1.3, 2.65); const c = sticker('SIMULASI DOKTER', 'coral', 650, 1688, -2, 2.65);
+    [a, b, c].forEach((x) => { x.e.style.fontSize = '36px'; });
+    return { mood: () => 'happy', update(l) { a.update(l); b.update(l); c.update(l); } };
+  });
+
+  // Shot 5: pilih mata kuliah
+  SC[5] = () => webScene(5, () => { const st = sticker('PILIH!', 'mintc', 905, 1688, 5, 2.2); return { mood: () => 'idle', update(l) { st.update(l); } }; });
+
+  // Shot 6: soal kampusmu
+  SC[6] = () => webScene(6, () => {
+    const st = sticker('SOAL KAMPUSMU', 'mintc', 760, 1688, -3, .9); st.e.style.fontSize = '36px';
+    const sp = [0, 1].map(() => spark(60));
+    return { mood: () => 'happy', update(l) { st.update(l); sp.forEach((e, i) => { const t = 1.6 + i * .2; put(e, { x: [80, 1005][i], y: [620, 880][i], s: pop(l, t, .4) * (.9 + .12 * Math.sin(l * 7 + i)), o: l > t ? 1 : 0, r: l * 50 }); }); } };
+  });
+
+  // Shot 7: General -> Drilling
+  SC[7] = () => webScene(7, () => {
+    const st = sticker('GENERAL → DRILLING', 'paper', 740, 1688, -2, 2.0); st.e.style.fontSize = '34px';
+    return { mood: () => 'think', update(l) { st.update(l); } };
+  });
+
+  // Shot 8 dan 9: bab dan setelan
+  SC[8] = () => webScene(8, () => { const st = sticker('SATU BAB DULU', 'mintc', 800, 1688, 4, 1.4); st.e.style.fontSize = '36px'; return { mood: () => 'idle', update(l) { st.update(l); } }; });
+  SC[9] = () => webScene(9, () => {
+    const st = sticker('JUMLAH + MODE', 'paper', 800, 1688, -3, 1.2); st.e.style.fontSize = '36px';
+    return { mood: (l) => (l > 3.2 ? 'happy' : 'think'), update(l) { st.update(l); } };
+  });
+
+  // Shot 10 dan 11: Learning, cek jawaban, pembahasan
+  SC[10] = () => webScene(10, () => {
+    const mk = D.clips.learn.marks; const t = mk.checked - mk.s10;
+    const st = sticker('BENAR?', 'paper', 760, 1688, -3, Math.max(.4, mk.chose - mk.s10)); const ok = sticker('CEK DULU!', 'mintc', 760, 1688, 4, t + .1);
+    return { mood: (l) => (l > t + .1 ? 'cheer' : 'think'), pose: (l) => (l > t + .1 ? { jump: -22 * Math.max(0, Math.sin((l - t) * 6)) } : {}), update(l) { st.update(l); if (l > t) { st.e.style.visibility = 'hidden'; } ok.update(l); } };
+  });
+  SC[11] = () => webScene(11, () => {
+    const bulb = icon(BULB, 70, 92); const bk = icon(BOOK, 150, 118); const st = sticker('PAHAM!', 'mintc', 880, 1688, 5, 2.4);
+    return { mood: (l) => (l > 2.2 ? 'happy' : 'think'), update(l) { put(bk, { x: 330, y: 1640 + Math.sin(l * 3) * 4, r: -8 }); const b = pop(l, 2.2, .35); put(bulb, { x: 250, y: 1500, s: Math.max(0, b) * (1 + .06 * Math.sin(l * 12)), o: b > 0 ? 1 : 0 }); st.update(l); } };
+  });
+
+  // Shot 12 dan 13: mode ujian, hasil dan filter Salah
+  SC[12] = () => webScene(12, () => { const st = sticker('MODE UJIAN', 'coral', 820, 1688, -3, .6); st.e.style.fontSize = '38px'; const w = sticker('PEMBAHASAN NANTI', 'paper', 640, 1688, 2, 2.6); w.e.style.fontSize = '30px'; return { mood: () => 'think', update(l) { if (l > 2.6) st.e.style.visibility = 'hidden'; st.update(l); if (l > 2.6) st.e.style.visibility = 'hidden'; w.update(l); } }; });
+  SC[13] = () => webScene(13, () => {
+    const tr = icon(TROPHY, 130, 140); const st = sticker('HASILMU!', 'mintc', 760, 1688, 3, 1.9);
+    return { mood: (l) => (l > 1.8 ? 'cheer' : 'idle'), update(l) { put(tr, { x: 330, y: 1650 - Math.abs(Math.sin(l * 5)) * 36, r: Math.sin(l * 5) * 6, o: l > 1.8 ? 1 : 0 }); st.update(l); } };
+  });
+
+  // Shot 14: sumber soal pernah salah; Shot 15: riwayat
+  SC[14] = () => webScene(14, () => { const st = sticker('ULANGI YANG SALAH', 'coral', 760, 1688, -3, 2.2); st.e.style.fontSize = '34px'; return { mood: () => 'think', update(l) { st.update(l); } }; });
+  SC[15] = () => webScene(15, () => { const st = sticker('LANJUT DARI RIWAYAT', 'paper', 740, 1688, -2, 1.6); st.e.style.fontSize = '32px'; return { mood: () => 'happy', update(l) { st.update(l); } }; });
+
+  // Shot 16: kartu penutup, ditahan 4 detik lebih
+  SC[16] = () => {
+    const plate = div('abs'); plate.style.cssText += ';width:860px;height:300px;background:#FFFDF7;border:7px solid #172B38;border-radius:44px;box-shadow:0 12px 0 #172B38';
+    const logo = document.createElement('img'); logo.className = 'abs'; logo.src = D.logo; logo.style.width = '700px'; root.append(logo); pending.push(logo.decode().catch(() => {}));
+    const kila = mkKila(640); kila.mood('cheer');
+    const btn = div('btn', 'COBA SATU BAB'); const cur = icon(ARROW, 96, 96); const free = div('ribbon', 'GRATIS'); const sp = [0, 1, 2, 3, 4].map(() => spark(76));
+    return {
+      speaker: kila, full: true,
+      update(l) {
+        const a = pop(l, .05, .5); put(plate, { x: 540, y: 330, s: Math.max(0, a), o: a > 0 ? 1 : 0 }); put(logo, { x: 540, y: 330, s: Math.max(0, a), o: a > 0 ? 1 : 0 });
+        const e = E.out(l / .5); kila.put({ x: 540, y: lerp(2300, 930, e) }); kila.tick(l + spec(16).start, { jump: -22 * Math.max(0, Math.sin(l * 5)) });
+        const fb = pop(l, .6, .4); put(free, { x: 860, y: 640, s: Math.max(0, fb), r: 10, o: fb > 0 ? 1 : 0 });
+        const press = clamp((l - 1.55) / .15) * (1 - clamp((l - 1.75) / .2));
+        const ba = pop(l, .9, .45); put(btn, { x: 540, y: 1430 + press * 8, s: Math.max(0, ba) * (1 - .04 * press), o: ba > 0 ? 1 : 0 });
+        const k = E.inout((l - .9) / .8); put(cur, { x: lerp(1000, 660, k), y: lerp(1900, 1490, k) + press * 6, o: l > .9 ? 1 : 0, s: 1 - .1 * press });
+        sp.forEach((s, i) => { const t = 1.8 + i * .08; put(s, { x: [200, 880, 130, 950, 540][i], y: [820, 800, 1180, 1220, 1330][i] - Math.max(0, l - t) * 60, s: pop(l, t, .4) * (.9 + .12 * Math.sin(l * 7 + i)), o: l > t ? 1 : 0, r: l * 60 }); });
+      },
+    };
+  };
+
+  // ---------- inti ----------
+  window.__init = (d) => { D = d; root = $('#scene'); };
+  const bgFor = { navy: 'bg-navy', cream: 'bg-cream', mint: 'bg-mint' };
+  let wordsFrac = [];
+  function enter(i) {
+    cur = i; const n = i + 1; const s = spec(n);
+    root.innerHTML = ''; pending = [];
+    $('#bg').className = bgFor[s.bg] || 'bg-navy';
+    $('#stage').className = (s.bg === 'navy' ? 'on-navy' : '') + (SC[n] && s.web.length === 0 ? ' full' : '');
+    scn = SC[n]();
+    $('#pov').innerHTML = s.pov ? `<div class="note"><i></i><span>${esc(s.pov)}</span></div>` : '';
+    const parts = s.teks.join(' ').split(/\s+/); const tot = parts.reduce((a, w) => a + w.length + 1, 0); let acc = 0;
+    wordsFrac = parts.map((w) => { const f = acc / tot; acc += w.length + 1; return f; });
+    $('#caption').innerHTML = `<div class="pill">${parts.map((w) => `<span class="w">${esc(w)}</span>`).join(' ')}</div>`;
+    D.words = parts.length;
+  }
+  const isFull = (s) => s.web.length === 0;
+  window.__frame = (t) => {
+    const sh = D.spec.shot; let i = 0;
+    for (let k = 1; k <= 16; k++) if (t >= sh[pad(k)].start) i = k - 1;
+    if (i !== cur) enter(i);
+    const n = i + 1; const s = sh[pad(n)]; const l = t - s.start;
+    scn.update(l);
+    // judul (bisa dinamis, mis. angka naik)
+    const ttl = scn.title ? scn.title(l) : s.overlay;
+    const e = pop(l, 0.05, .4);
+    $('#title').innerHTML = `<span class="tag" style="transform:scale(${Math.max(0, e)});opacity:${clamp(l / .12)}">${esc(ttl)}</span>`;
+    $('#pov .note') && ($('#pov .note').style.opacity = fade(l, .35, .25));
+    // takarir mengikuti suara
+    const tl = D.timeline.scenes[i]; const sp = clamp((t - tl.audioStart) / tl.audioSec);
+    const speaking = t >= tl.audioStart && t <= tl.audioStart + tl.audioSec + .05;
+    document.querySelectorAll('#caption .w').forEach((w, k) => { const a = wordsFrac[k]; const b = wordsFrac[k + 1] ?? 1.01; w.className = 'w' + (sp >= b || t > tl.audioStart + tl.audioSec ? ' done' : sp >= a && t >= tl.audioStart ? ' now' : ''); });
+    $('#caption').style.opacity = fade(l, .1, .15);
+    if (scn.speaker) { const idx = Math.floor((t - tl.audioStart) * D.timeline.fps); const open = tl.env ? (tl.env[idx] || 0) : Math.abs(Math.sin(t * 17)) * (0.6 + .4 * Math.sin(t * 5.3)); mouth(scn.speaker, speaking ? open : 0, speaking); }
+    // gelombang peralihan antar shot
+    const w = clamp(l / .32); $('#wipe').style.transform = `translateX(${(w * 1180 - 100)}px)`; $('#wipe').style.opacity = w < 1 ? 1 : 0;
+    return Promise.all(pending);
+  };
+})();
+</script>
+</body></html>

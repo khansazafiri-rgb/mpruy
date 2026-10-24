@@ -1,0 +1,16 @@
+Soal numpuk, mulai dari mana?
+Kenalin Med-koel: belajar kedokteran, semua fitur gratis!
+Hampir empat puluh ribu soal, rapi per mata kuliah dan bab.
+Latihan soal, kirim PDF, simulasi dokter.
+Mulai dari Mata kuliah: pilih yang sedang kamu pelajari.
+Soal kampusmu punya bagian sendiri, muncul saat sudah ada.
+Soal General tanpa bab masuk ke Drilling.
+Buka satu bab. Tak perlu menelan semua soal sekaligus.
+Atur jumlah soal, lalu pilih mode Learning atau ujian.
+Mode Learning: cek jawaban, pembahasan langsung muncul.
+Baca alasan di balik jawabannya, bukan cuma huruf A sampai E.
+Mode ujian menyimpan pembahasan sampai sesi selesai.
+Di akhir sesi, lihat hasil dan filter soal yang salah.
+Pilih sumber soal yang pernah salah untuk mengujinya lagi.
+Riwayat membantumu kembali ke bab yang perlu diulang.
+Buka Med-koel gratis, coba satu bab hari ini.
