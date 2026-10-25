@@ -161,3 +161,10 @@ a.card-chunky.tone-surface:hover { box-shadow: 0 8px 0 rgb(var(--tone-mid) / .75
 @media (prefers-reduced-motion: reduce) { .float-pill { animation: none; transform: rotate(var(--rot, 0deg)); } }
 /* .card-chunky memakai background putih; pastikan nada tetap menang bila digabung. */
 .card-chunky.tone-surface { background-color: rgb(var(--tone-bg)); }
+
+.language-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; border: 1px solid rgb(var(--line)); border-radius: 12px; background: #fffdf7; color: rgb(var(--ink)); flex-shrink: 0; }
+.language-switch > svg { margin: 0 4px; }
+.language-switch button { min-width: 36px; min-height: 38px; padding: 6px; border-radius: 8px; font-size: 12px; font-weight: 750; }
+.language-switch button[aria-pressed=true] { background: rgb(var(--brand)); color: white; }
+.language-switch button:focus-visible { outline: 3px solid rgb(var(--gold)); outline-offset: 2px; }
+@media (max-width: 639px) { .language-switch > svg { display: none; } .language-switch button { min-width: 32px; } }

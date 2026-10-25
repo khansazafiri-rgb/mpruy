@@ -1,0 +1,6 @@
+MEDCOEL Lab synthetic geometric demo: cells.svg
+Original geometric illustration authored for this project, 2026.
+Dedicated to the public domain under CC0 1.0 Universal:
+https://creativecommons.org/publicdomain/zero/1.0/
+No patient data, external photographs, model weights, or third-party dataset content.
+This schematic is not a medical image or a validated diagnostic teaching asset.

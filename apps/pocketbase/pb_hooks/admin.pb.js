@@ -144,6 +144,7 @@ routerAdd("GET", "/api/medcoel/admin/questions", (e) => {
       answer: q.getString("answer"),
       subQuestions: j("subQuestions", []),
       explanation: j("explanation", ""),
+      englishStatus: require(`${__hooks}/lib/explanationService.js`).view(e.app, q).status,
       hint: q.getString("hint"),
       scope: q.getString("scope"),
       campuses: q.getStringSlice("campuses"),

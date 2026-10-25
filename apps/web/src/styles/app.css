@@ -15,7 +15,22 @@
 }
 .app-content::before { content: none; }
 .app-header { background: rgb(var(--paper) / .86); backdrop-filter: blur(18px) saturate(1.2); border-color: rgb(var(--paper-2)) !important; }
-.app-nav { position: relative; border-radius: 10px; padding: 8px 12px; font-size: 14px; }
+.app-brand img { flex-shrink: 0; object-fit: contain; }
+.app-nav-shell { position: relative; }
+.app-nav-scroll {
+  overflow-x: auto; overflow-y: hidden;
+  overscroll-behavior-x: contain; scroll-padding-inline: 6px;
+  scrollbar-width: none;
+}
+.app-nav-scroll::-webkit-scrollbar { display: none; }
+.app-nav-scroll:focus-visible { outline: 2px solid rgb(var(--brand)); outline-offset: 3px; border-radius: 10px; }
+.app-nav-scrubber[type=range] { position: absolute; top: 100%; display: block; appearance: none; width: 100%; height: 16px; min-height: 16px; padding: 0; margin: 0; border: 0; border-radius: 8px; background: transparent; cursor: ew-resize; }
+.app-nav-scrubber::-webkit-slider-runnable-track { height: 6px; border-radius: 8px; background: rgb(var(--paper-2)); }
+.app-nav-scrubber::-webkit-slider-thumb { appearance: none; width: var(--nav-thumb-width); height: 6px; margin: 0; border: 0; border-radius: 8px; background: rgb(var(--brand) / .65); }
+.app-nav-scrubber::-moz-range-track { height: 6px; border-radius: 8px; background: rgb(var(--paper-2)); }
+.app-nav-scrubber::-moz-range-thumb { width: var(--nav-thumb-width); height: 6px; border: 0; border-radius: 8px; background: rgb(var(--brand) / .65); }
+.app-nav-scrubber:focus-visible { outline: 2px solid rgb(var(--brand)); outline-offset: 3px; }
+.app-nav { position: relative; flex: 0 0 auto; white-space: nowrap; border-radius: 10px; padding: 8px 12px; font-size: 14px; }
 .app-nav.is-active { color: rgb(var(--forest)); font-weight: 700; }
 .app-nav.is-active::after {
   content: ''; position: absolute; left: 8px; right: 8px; bottom: 5px; height: 8px; z-index: -1; border-radius: 3px;

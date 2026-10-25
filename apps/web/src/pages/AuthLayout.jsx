@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Ecg from '@/components/Ecg';
 import Logo from '@/components/Logo';
+import LanguageSwitch from '@/components/LanguageSwitch';
 import { toneClass } from '@/lib/tone';
 
 const STICKERS = [
@@ -35,6 +36,7 @@ export default function AuthLayout({ title, subtitle, children, wide = false }) 
       <div className="flex min-h-screen flex-col">
         <header className="mx-auto flex w-full max-w-6xl items-center px-4 py-4 lg:px-10">
           <Link to="/" aria-label="Kembali ke halaman utama"><Logo /></Link>
+          <div className="ml-auto"><LanguageSwitch /></div>
         </header>
         <main className={`mx-auto w-full flex-1 px-4 pb-16 pt-4 lg:pt-10 ${wide ? 'max-w-2xl' : 'max-w-md'}`}>
           <h1 className="font-display text-[30px] font-extrabold leading-tight tracking-tight md:text-[36px]">{title}</h1>

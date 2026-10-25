@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import {
-  Bell, BookOpen, CalendarDays, ChevronDown, Crosshair, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, Stethoscope, Trophy, TrendingUp, User, X,
+  FlaskConical, Bell, BookOpen, CalendarDays, ChevronDown, Crosshair, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, Stethoscope, Trophy, TrendingUp, User, X,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
@@ -11,11 +11,14 @@ import AnnouncementPopup from './AnnouncementPopup';
 import ChatAdminWidget from './ChatAdminWidget';
 import TutorialGate from '@/features/onboarding/TutorialGate';
 import Logo from './Logo';
+import LanguageSwitch from './LanguageSwitch';
+import ScrollableNav from './ScrollableNav';
 
 const ALL_NAV = [
   { to: '/beranda', label: 'Beranda', short: 'Beranda', icon: Home },
   { to: '/mata-kuliah', label: 'Mata kuliah', short: 'Matkul', icon: BookOpen },
   { to: '/simulasi-dokter', label: 'Simulasi dokter', desk: 'Simulasi', icon: Stethoscope, noBottom: true },
+  { to: '/lab', label: 'MEDCOEL Lab', desk: 'Lab', icon: FlaskConical, noBottom: true },
   { to: '/drilling', label: 'Drilling', icon: Crosshair, noBottom: true, drilling: true },
   { to: '/progres', label: 'Progres', short: 'Progres', icon: TrendingUp },
   { to: '/leaderboard', label: 'Leaderboard', short: 'Peringkat', icon: Trophy },
@@ -53,19 +56,14 @@ export default function AppShell() {
     <div className="app-frame min-h-screen pb-20 lg:pb-0">
       <a href="#isi" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-lg focus:bg-surface focus:px-3 focus:py-2">Lewati ke isi</a>
       <header className="app-header sticky top-0 z-40 border-b border-line">
-        <div className="mx-auto flex h-[76px] max-w-6xl items-center gap-3 px-4">
+        <div className="app-header-inner mx-auto flex h-[76px] min-w-0 max-w-6xl items-center gap-3 px-4">
           <button type="button" className="rounded-lg p-2 text-ink-muted hover:bg-page lg:hidden" onClick={() => setDrawer(true)} aria-label="Buka menu">
             <Menu size={22} />
           </button>
-          <Link to="/beranda" aria-label="MEDCOEL beranda"><Logo /></Link>
-          <nav className="ml-6 hidden items-center gap-1 lg:flex" aria-label="Navigasi utama">
-            {NAV.map((n) => (
-              <NavLink key={n.to} to={n.to} className={({ isActive }) => clsx('app-nav isolate font-medium transition-colors', isActive ? 'is-active' : 'text-ink-muted hover:bg-paper-2/60 hover:text-ink')}>
-                {n.desk || n.label}
-              </NavLink>
-            ))}
-          </nav>
-          <div className="ml-auto flex items-center gap-1">
+          <Link to="/beranda" className="app-brand shrink-0" aria-label="MEDCOEL beranda"><Logo className="hidden sm:block" /><Logo variant="mark" className="sm:hidden" /></Link>
+          <ScrollableNav items={NAV} />
+          <div className="ml-auto flex shrink-0 items-center gap-1">
+            <LanguageSwitch />
             <Link to="/notifikasi" className="relative rounded-lg p-2 text-ink-muted hover:bg-page hover:text-ink" aria-label={`Notifikasi${unread ? `, ${unread} belum dibaca` : ''}`}>
               <Bell size={22} />
               {unread > 0 && (
@@ -113,7 +111,7 @@ export default function AppShell() {
 
       {behind && (
         <div role="status" className="border-b border-gold/60 bg-gold-soft px-4 py-2.5 text-center text-sm text-[#6b4f00]">
-          <b>Server belum memuat pembaruan terbaru.</b> Simulasi masih menampilkan kasus lama dan Drilling belum jalan sampai PocketBase dijalankan ulang di server. <Link to="/admin" className="font-semibold underline">Lihat caranya</Link>
+          <b>Server belum memuat pembaruan terbaru.</b> Fitur baru, termasuk MEDCOEL Lab, memerlukan pembaruan dan restart PocketBase di server. <Link to="/admin" className="font-semibold underline">Lihat caranya</Link>
         </div>
       )}
       <main id="isi" className="app-content mx-auto max-w-6xl px-4 py-6 md:py-10">

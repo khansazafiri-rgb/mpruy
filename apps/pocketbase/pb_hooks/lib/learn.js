@@ -153,7 +153,7 @@ function chapterTitles(app, chapterIds) {
 }
 
 // withKey=false: tanpa kunci, tanpa pembahasan, tanpa daftar jawaban isian.
-function serialize(q, withKey, titles) {
+function serialize(q, withKey, titles, app) {
   const opts = u.recJson(q, "options", []) || [];
   const subs = u.recJson(q, "subQuestions", []) || [];
   const out = {
@@ -177,9 +177,26 @@ function serialize(q, withKey, titles) {
       return base;
     }),
   };
+  if (app) {
+    const english = require(HOOKS + "/lib/explanationService.js").published(app, q);
+    if (english) {
+      out.questionEnglish = {
+        stem: english.stem, hint: english.hint, statements: english.statements,
+        options: english.options.map((o) => withKey ? o : { label: o.label, text: o.text }),
+        subQuestions: english.subQuestions.map((s) => withKey ? s : { label: s.label, question: s.question }),
+      };
+      if (withKey) out.questionEnglish.explanation = english.explanation;
+    }
+  }
   if (withKey) {
     out.answer = q.getString("answer");
     out.explanation = u.recJson(q, "explanation", "");
+    // Only current, reviewed translations are sent, and only when the original
+    // explanations may be revealed. Drafts and review metadata stay private.
+    if (app) {
+      const english = require(HOOKS + "/lib/explanationService.js").published(app, q);
+      if (english) out.explanationEnglish = english;
+    }
   }
   return out;
 }

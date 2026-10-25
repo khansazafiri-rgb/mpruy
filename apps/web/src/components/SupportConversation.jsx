@@ -1,3 +1,4 @@
+import { getLanguage } from '@/i18n';
 // Percakapan dengan admin manusia (koleksi privat support_messages).
 // useSupportThread dipakai bersama oleh Chat Admin pengguna (pesan tampil di
 // dalam utas obrolan) dan kotak masuk admin (komponen bawaan file ini).
@@ -132,7 +133,7 @@ export function useStickToBottom() {
 export function fmtTime(created) {
   const d = new Date(String(created).replace(' ', 'T'));
   if (Number.isNaN(d.getTime())) return '';
-  return new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(d);
+  return new Intl.DateTimeFormat(getLanguage() === 'en' ? 'en-GB' : 'id-ID', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(d);
 }
 
 // Satu pesan percakapan admin. mine = pesan dari sisi yang sedang membaca.

@@ -29,3 +29,4 @@ jobs:
           MEDCOEL_DEV_MODE=1 ./pocketbase serve --http=127.0.0.1:8090 --dir=./pb_data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks --hooksWatch=false &
           for i in $(seq 1 30); do curl -sf http://127.0.0.1:8090/api/health && break; sleep 1; done
           PB_SU_EMAIL=ci@medcoel.test PB_SU_PASSWORD=ci-password-123 node test/api.test.mjs
+          PB_SU_EMAIL=ci@medcoel.test PB_SU_PASSWORD=ci-password-123 node test/lab-api.test.mjs

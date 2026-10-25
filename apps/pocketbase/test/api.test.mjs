@@ -879,4 +879,170 @@ await langkah('kolom tambahan (TikTok), langkah bukti opsional, WhatsApp opsiona
   }
 });
 
+console.log('Pembahasan Inggris');
+await langkah('paket sumber terjemahan hanya untuk admin dan lengkap tanpa data peserta', async () => {
+  const path = '/api/medcoel/admin/english/source';
+  for (const token of [null, userA.token, agent.token]) {
+    for (const kind of ['question', 'case', 'catalog']) {
+      await call('GET', path + '?kind=' + kind, undefined, token, token ? 403 : 401);
+    }
+  }
+  await call('GET', path + '?kind=users', undefined, admin.token, 400);
+  await call('GET', path + '?after=invalid', undefined, admin.token, 400);
+  const items = [];
+  const cursors = new Set();
+  let after = '';
+  do {
+    const page = (await call('GET', path + '?kind=question&after=' + after, undefined, admin.token, 200)).data;
+    assert.ok(page.items.length <= 50);
+    items.push(...page.items);
+    after = page.next;
+    assert.ok(!after || !cursors.has(after));
+    cursors.add(after);
+  } while (after);
+  assert.equal(new Set(items.map((q) => q.id)).size, items.length);
+  const total = (await call('GET', '/api/medcoel/admin/questions?perPage=1', undefined, admin.token, 200)).data.totalItems;
+  assert.equal(items.length, total);
+  assert.ok(items.length > 0);
+  for (const q of items) {
+    assert.deepEqual(Object.keys(q).sort(), ['id', 'sourceHash', 'revision', 'status', 'subjectName', 'source', 'glossary', 'protectedTerms', 'segments'].sort());
+    const view = (await call('GET', `/api/medcoel/admin/questions/${q.id}/english`, undefined, admin.token, 200)).data;
+    assert.deepEqual(q.source, view.question);
+    assert.deepEqual(q.segments, view.segments);
+    assert.equal(q.revision, view.revision, 'export must not change a draft');
+  }
+  const catalog = (await call('GET', path + '?kind=catalog', undefined, admin.token, 200)).data;
+  assert.ok(catalog.subjects.length > 0);
+  assert.deepEqual(Object.keys(catalog.subjects[0]).sort(), ['id', 'name', 'slug', 'description'].sort());
+  assert.deepEqual(Object.keys(catalog.items[0]).sort(), ['id', 'subject', 'title'].sort());
+  const cases = (await call('GET', path + '?kind=case', undefined, admin.token, 200)).data;
+  assert.ok(cases.items.length > 0);
+  assert.ok(cases.items[0].source.clinicalContext);
+  assert.ok(cases.items[0].segments.length > 0);
+});
+let englishId, englishChapter, englishBody;
+await langkah('pembahasan Inggris: hanya admin dapat membaca, membuat, dan memeriksa terjemahan', async () => {
+  englishChapter = (await call('POST', '/api/collections/chapters/records', { subject: mk.id, title: 'English ' + RUN, hidden: false }, admin.token, 200)).data.id;
+  englishBody = {
+    subject: mk.id, chapter: englishChapter, scope: 'all', status: 'published',
+    question: { type: 'A', text: 'Struktur yang terganggu?', options: [{ text: 'Struktur ini adalah nervus medianus.', explanation: 'Lesi nervus medianus memengaruhi 2 jari.', correct: true }, { text: 'Struktur ini adalah nervus ulnaris.', explanation: 'nervus ulnaris tidak terlibat.' }], explanation: 'Fungsi nervus medianus tetap dinilai.' },
+  };
+  englishId = (await call('POST', '/api/medcoel/admin/questions', englishBody, admin.token, 200)).data.id;
+  for (const token of [null, userA.token, agent.token]) {
+    await call('GET', `/api/medcoel/admin/questions/${englishId}/english`, undefined, token, token ? 403 : 401);
+    await call('POST', `/api/medcoel/admin/questions/${englishId}/english`, { action: 'review' }, token, token ? 403 : 401);
+    await call('POST', `/api/medcoel/admin/questions/${englishId}/english/generate`, {}, token, token ? 403 : 401);
+  }
+});
+
+const englishPath = () => `/api/medcoel/admin/questions/${englishId}/english`;
+const englishDraft = (d) => ({
+  sourceHash: d.sourceHash, revision: d.revision, protectedTerms: ['nervus medianus'],
+  segments: d.segments.map((s) => ({ id: s.id, text: ({
+    explanation: 'The function of the nervus medianus is still assessed.',
+    'options.0.text': 'This structure is nervus medianus.',
+    'options.1.text': 'This structure is nervus ulnaris.',
+    'options.0.explanation': 'A lesion of the nervus medianus affects 2 fingers.',
+    'options.1.explanation': 'The nervus ulnaris is not involved.',
+  })[s.id] || s.source })),
+});
+let englishAttempt;
+await langkah('draf tidak bocor; pemeriksaan menolak angka/istilah berubah dan belum dikonfirmasi', async () => {
+  const d = (await call('GET', englishPath(), undefined, admin.token, 200)).data;
+  const body = englishDraft(d);
+  const draft = (await call('POST', englishPath(), { ...body, action: 'draft' }, admin.token, 200)).data;
+  assert.equal(draft.status, 'draft');
+  await call('POST', englishPath(), { ...englishDraft(draft), action: 'review' }, admin.token, 400);
+  const wrong = englishDraft(draft);
+  wrong.segments[1].text = 'A median nerve lesion affects 3 fingers.';
+  await call('POST', englishPath(), { ...wrong, action: 'review', reviewConfirmed: true }, admin.token, 400);
+  englishAttempt = (await call('POST', '/api/medcoel/attempts/practice', { chapter: englishChapter, count: 1, mode: 'learning' }, userA.token, 200)).data;
+  assert.equal(englishAttempt.questions[0].id, englishId);
+  assert.ok(!('explanationEnglish' in englishAttempt.questions[0]));
+  const checked = (await call('POST', `/api/medcoel/attempts/${englishAttempt.attempt.id}/answer`, { question: englishId, response: 'A', check: true }, userA.token, 200)).data;
+  assert.ok(!('explanationEnglish' in checked.question), 'draft must not be visible after check either');
+});
+
+await langkah('versi Inggris hanya terungkap bersama kunci; versi sumber dan penilaian tetap sama', async () => {
+  const d = (await call('GET', englishPath(), undefined, admin.token, 200)).data;
+  const reviewed = (await call('POST', englishPath(), { ...englishDraft(d), action: 'review', reviewConfirmed: true }, admin.token, 200)).data;
+  assert.equal(reviewed.status, 'reviewed');
+  const exam = (await call('POST', '/api/medcoel/attempts/practice', { chapter: englishChapter, count: 1, mode: 'exam' }, userA.token, 200)).data;
+  assert.ok(!('explanationEnglish' in exam.questions[0]));
+  assert.ok(!('explanation' in exam.questions[0]));
+  const resume = (await call('GET', `/api/medcoel/attempts/${englishAttempt.attempt.id}`, undefined, userA.token, 200)).data;
+  const q = resume.questions[0];
+  assert.equal(q.answer, 'A');
+  assert.equal(q.stem, 'Struktur yang terganggu?');
+  assert.equal(q.explanation, englishBody.question.explanation);
+  assert.match(q.explanationEnglish.explanation, /The function/);
+  assert.equal(q.explanationEnglish.options[0].label, 'A');
+  assert.ok(!JSON.stringify(q.explanationEnglish).includes('reviewedBy'));
+  await call('POST', englishPath(), { ...englishDraft(d), action: 'draft' }, admin.token, 400); // stale revision
+});
+
+await langkah('perubahan sumber dan kamus menyembunyikan Inggris lama serta menolak editor yang tertinggal', async () => {
+  const before = (await call('GET', englishPath(), undefined, admin.token, 200)).data;
+  const changed = { ...englishBody, question: { ...englishBody.question, text: 'Struktur apa yang terganggu pada kasus baru?' } };
+  await call('PATCH', `/api/medcoel/admin/questions/${englishId}`, changed, admin.token, 200);
+  const stale = (await call('GET', englishPath(), undefined, admin.token, 200)).data;
+  assert.equal(stale.status, 'stale');
+  await call('POST', englishPath(), { ...englishDraft(before), action: 'review', reviewConfirmed: true }, admin.token, 400);
+  let resume = (await call('GET', `/api/medcoel/attempts/${englishAttempt.attempt.id}`, undefined, userA.token, 200)).data;
+  assert.ok(!('explanationEnglish' in resume.questions[0]));
+  const approved = (await call('POST', englishPath(), { ...englishDraft(stale), action: 'review', reviewConfirmed: true }, admin.token, 200)).data;
+  assert.equal(approved.status, 'reviewed');
+  const st = (await call('GET', '/api/collections/app_settings/records', undefined, admin.token, 200)).data.items[0];
+  try {
+    await call('PATCH', `/api/collections/app_settings/records/${st.id}`, { translationTerms: 'nervus medianus' }, admin.token, 200);
+    assert.equal((await call('GET', englishPath(), undefined, admin.token, 200)).data.status, 'stale');
+    resume = (await call('GET', `/api/medcoel/attempts/${englishAttempt.attempt.id}`, undefined, userA.token, 200)).data;
+    assert.ok(!('explanationEnglish' in resume.questions[0]));
+    await call('PATCH', `/api/collections/app_settings/records/${st.id}`, { translationTerms: 'x'.repeat(121) }, admin.token, 400);
+  } finally {
+    await call('PATCH', `/api/collections/app_settings/records/${st.id}`, { translationTerms: st.translationTerms || '' }, admin.token, 200);
+  }
+});
+
+await langkah('bahasa global: teks Inggris boleh tampil sebelum menjawab, pembahasan dan kunci tetap ditahan', async () => {
+  const original = (await call('GET', englishPath(), undefined, admin.token, 200)).data;
+  const draft = englishDraft(original);
+  draft.segments = draft.segments.map((part) => part.id === 'stem' ? { ...part, text: 'Which structure is affected in this case?' } : part);
+  await call('POST', englishPath(), { ...draft, action: 'review', reviewConfirmed: true }, admin.token, 200);
+  const attempt = (await call('POST', '/api/medcoel/attempts/practice', { chapter: englishChapter, count: 1, mode: 'exam' }, userA.token, 200)).data;
+  const q = attempt.questions[0];
+  assert.equal(q.questionEnglish.stem, 'Which structure is affected in this case?');
+  assert.deepEqual(q.questionEnglish.options.map((o) => o.text), ['This structure is nervus medianus.', 'This structure is nervus ulnaris.']);
+  assert.ok(q.questionEnglish.options.every((option) => !('correct' in option)));
+  const reloaded = (await call('GET', `/api/medcoel/attempts/${attempt.attempt.id}`, undefined, userA.token, 200)).data;
+  assert.deepEqual(reloaded.questions[0].questionEnglish.options, q.questionEnglish.options);
+  assert.ok(!('explanation' in q.questionEnglish));
+  assert.ok(!('answer' in q.questionEnglish));
+  assert.ok(q.questionEnglish.options.every((option) => !('explanation' in option)));
+  assert.ok(q.questionEnglish.subQuestions.every((sub) => !('keyPoints' in sub) && !('accepted' in sub)));
+});
+
+await langkah('kasus bilingual: hanya admin boleh menyunting, draf tersembunyi, sumber berubah perlu review ulang', async () => {
+  const diagnoses = (await call('GET', '/api/medcoel/admin/sim/diagnoses', undefined, admin.token, 200)).data.items;
+  const [primary, secondary] = diagnoses;
+  const body = { key: 'en_' + RUN, title: 'Demo 25', poli: 'umum', dxOk: primary.key, active: true, order: 9000, data: { pas: 'bapak', expr: 'lemas', id: 'Pak Demo, 25 tahun', intro: [{ w: 'pas', e: 'lemas', t: 'Saya demam 2 hari.' }], dxOk: primary.key, ddx: [primary.key, secondary.key], ref: 'Contoh bahasa', K: 'ku vital', U: 'onset', B: '', A: { ku: { say: 'Saya demam 2 hari.', note: 'Demam 2 hari', e: 'lemas' }, vital: { title: 'Tanda vital', sub: 'Suster Ani', rows: 'Nadi=90 x/menit;Suhu=38 °C', say: 'Ini hasilnya, Dok.' } } } };
+  const rec = (await call('POST', '/api/medcoel/admin/sim/cases', body, admin.token, 200)).data;
+  const path = '/api/medcoel/admin/sim/cases/' + rec.id + '/english';
+  await call('GET', path, undefined, userA.token, 403);
+  await call('POST', path, { action: 'draft' }, agent.token, 403);
+  const source = (await call('GET', path, undefined, admin.token, 200)).data;
+  const translated = { 'Saya demam 2 hari.': 'I have had a fever for 2 days.', 'Demam 2 hari': 'Fever for 2 days', 'Contoh bahasa': 'Language example', 'Ini hasilnya, Dok.': 'Here are the results, Doctor.' };
+  const segments = source.segments.map((p) => ({ id: p.id, text: translated[p.source] || p.source }));
+  const pending = (await call('POST', path, { sourceHash: source.sourceHash, revision: source.revision, segments, action: 'draft' }, admin.token, 200)).data;
+  assert.ok(!(await call('GET', '/api/medcoel/doctor-sim/content', undefined, userA.token, 200)).data.cases[body.key].english);
+  await call('POST', path, { sourceHash: pending.sourceHash, revision: pending.revision, segments, action: 'review', reviewConfirmed: true }, admin.token, 200);
+  const content = (await call('GET', '/api/medcoel/doctor-sim/content', undefined, userA.token, 200)).data.cases[body.key];
+  assert.equal(content.english.data.intro[0].t, 'I have had a fever for 2 days.');
+  for (const field of ['dxOk', 'ddx', 'K', 'U', 'B']) assert.deepEqual(content.english.data[field], content[field]);
+  assert.ok(!JSON.stringify(content.english).includes('reviewedBy'));
+  await call('PATCH', '/api/medcoel/admin/sim/cases/' + body.key, { ...body, data: { ...body.data, K: 'ku' } }, admin.token, 200);
+  assert.equal((await call('GET', path, undefined, admin.token, 200)).data.status, 'stale');
+  assert.ok(!(await call('GET', '/api/medcoel/doctor-sim/content', undefined, userA.token, 200)).data.cases[body.key].english);
+});
+
 console.log(`api.test: ${lulus} langkah lulus${process.exitCode ? ', ADA YANG GAGAL' : ''}`);

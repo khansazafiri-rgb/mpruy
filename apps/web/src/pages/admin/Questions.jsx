@@ -1,9 +1,11 @@
-import { Pencil, Plus } from 'lucide-react';
+import { Languages, Pencil, Plus } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import CampusMulti from '@/components/admin/CampusMulti';
 import ImportPanel from '@/components/admin/ImportPanel';
 import QuestionEditor from '@/components/admin/QuestionEditor';
+import EnglishExplanationEditor from '@/components/admin/EnglishExplanationEditor';
+import EnglishSourceExport from '@/components/admin/EnglishSourceExport';
 import { useCatalog } from '@/components/admin/useCatalog';
 import { Alert, Badge, Modal, PageLoader, Tabs } from '@/components/ui';
 import { api } from '@/lib/api';
@@ -19,6 +21,7 @@ export default function Questions() {
   const [error, setError] = useState('');
   const [sel, setSel] = useState(new Set());
   const [edit, setEdit] = useState(null); // 'new' | record
+  const [english, setEnglish] = useState(null);
   const [bulk, setBulk] = useState(null); // aksi massal yang butuh pilihan
   const [bulkVal, setBulkVal] = useState({ chapter: '', difficulty: 'medium', scope: 'all', campuses: [] });
 
@@ -53,9 +56,9 @@ export default function Questions() {
         <h1 className="page-title">Edit Soal</h1>
         <button type="button" className="btn-primary" onClick={() => setEdit('new')}><Plus size={18} /> Tambah soal</button>
       </div>
-      <Tabs value={tab} onChange={setTab} tabs={[{ value: 'list', label: 'Daftar soal' }, { value: 'import', label: 'Impor massal (JSON)' }]} />
+      <Tabs value={tab} onChange={setTab} tabs={[{ value: 'list', label: 'Daftar soal' }, { value: 'import', label: 'Impor massal (JSON)' }, { value: 'english', label: 'Terjemahan Inggris' }]} />
 
-      {tab === 'import' ? <div className="card p-5"><ImportPanel onDone={() => load()} /></div> : (
+      {tab === 'english' ? <EnglishSourceExport /> : tab === 'import' ? <div className="card p-5"><ImportPanel onDone={() => load()} /></div> : (
         <>
           <div className="grid gap-2 sm:grid-cols-3 lg:grid-cols-7">
             <select className="input py-2" value={f.subject} onChange={(e) => set('subject', e.target.value)} aria-label="Mata kuliah"><option value="">Semua mata kuliah</option>{subjects.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}</select>
@@ -97,12 +100,13 @@ export default function Questions() {
                         <td className="max-w-md p-3">
                           <p className="line-clamp-2">{q.stemPlain || '(kosong)'}</p>
                           <p className="text-xs text-ink-faint">{q.code ? `${q.code} · ` : ''}{q.source === 'submission' ? 'dari pengajuan' : q.source === 'agent' ? 'via Hermes' : 'admin'}{q.status === 'draft' ? ' · DRAF' : ''}</p>
+                          <p className="mt-1 text-xs text-ink-muted">Inggris: {({ empty: 'belum dibuat', draft: 'draf', reviewed: 'sudah diperiksa', stale: 'perlu diperiksa ulang' })[q.englishStatus] || 'belum dibuat'}</p>
                         </td>
                         <td className="p-3 text-xs">{subjName(q.subject)}<br /><span className="text-ink-muted">{chTitle(q.subject, q.chapter)}</span></td>
                         <td className="p-3">{QTYPE[q.qtype]}{q.answer ? ` · ${q.answer}` : ''}</td>
                         <td className="p-3"><Badge className={DIFF_CLASS[q.difficulty]}>{DIFF[q.difficulty]}</Badge></td>
                         <td className="p-3 text-xs">{q.scope === 'all' ? 'General' : `${q.campuses.length} kampus`}</td>
-                        <td className="p-3"><button type="button" className="btn-ghost btn-sm" onClick={() => setEdit(q)} aria-label="Ubah soal"><Pencil size={15} /></button></td>
+                        <td className="p-3"><div className="flex flex-wrap gap-1"><button type="button" className="btn-ghost btn-sm" onClick={() => setEdit(q)} aria-label="Ubah soal"><Pencil size={15} /></button><button type="button" className="btn-ghost btn-sm" onClick={() => setEnglish(q.id)} aria-label="Versi Inggris" title="Versi Inggris"><Languages size={16} /></button></div></td>
                       </tr>
                     ))}
                     {!data.items.length && <tr><td colSpan={7} className="p-6 text-center text-ink-muted">Belum ada soal di filter ini.</td></tr>}
@@ -123,6 +127,7 @@ export default function Questions() {
       )}
 
       {edit && <QuestionEditor record={edit === 'new' ? null : edit} defaults={{ subject: f.subject, chapter: f.chapter }} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); load(); }} />}
+      {english && <EnglishExplanationEditor questionId={english} onClose={() => { setEnglish(null); load(); }} />}
       {bulk && (
         <Modal open size="sm" title={bulk === 'move' ? 'Pindah ke BAB' : bulk === 'difficulty' ? 'Ubah tingkat kesulitan' : 'Ubah pembatasan kampus'} onClose={() => setBulk(null)} footer={<>
           <button type="button" className="btn-ghost" onClick={() => setBulk(null)}>Batal</button>

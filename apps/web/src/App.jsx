@@ -13,6 +13,11 @@ import Subjects from './pages/Subjects';
 import SubjectDetail from './pages/SubjectDetail';
 import NotFound from './pages/NotFound';
 
+const Lab = lazy(() => import('./pages/Lab'));
+const LabObject = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabObject })));
+const LabPathway = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabPathway })));
+const LabAdmin = lazy(() => import('./pages/admin/LabAdmin'));
+
 const Runner = lazy(() => import('./pages/Runner'));
 const History = lazy(() => import('./pages/History'));
 const Schedule = lazy(() => import('./pages/Schedule'));
@@ -84,6 +89,9 @@ export default function App() {
             <Route path="/chat-admin" element={<ChatAdmin />} />
             <Route path="/profil" element={<Profile />} />
             <Route path="/simulasi-dokter" element={<SimulasiDokter />} />
+            <Route path="/lab" element={<Lab />} />
+            <Route path="/lab/objek/:slug" element={<LabObject />} />
+            <Route path="/lab/jalur/:slug" element={<LabPathway />} />
             <Route path="/drilling" element={<Drilling />} />
             <Route path="/tutorial/latihan-soal" element={<TutorialLatihan />} />
           </Route>
@@ -91,6 +99,7 @@ export default function App() {
             <Route index element={<AdminSummary />} />
             <Route path="pesan" element={<AdminSupport />} />
             <Route path="pengajuan" element={<AdminSubmissions />} />
+            <Route path="lab" element={<LabAdmin />} />
             <Route path="soal" element={<AdminQuestions />} />
             <Route path="laporan" element={<AdminReports />} />
             <Route path="pengumuman" element={<AdminAnnouncements />} />

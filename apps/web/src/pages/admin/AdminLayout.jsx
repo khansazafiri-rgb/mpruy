@@ -1,8 +1,9 @@
 import clsx from 'clsx';
-import { ArrowLeft, BookMarked, Crosshair, FileQuestion, Flag, Inbox, LayoutDashboard, Megaphone, MessageCircle, Package, Settings, Stethoscope, Users } from 'lucide-react';
+import { FlaskConical, ArrowLeft, BookMarked, Crosshair, FileQuestion, Flag, Inbox, LayoutDashboard, Megaphone, MessageCircle, Package, Settings, Stethoscope, Users } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import Logo from '@/components/Logo';
+import LanguageSwitch from '@/components/LanguageSwitch';
 import { Alert } from '@/components/ui';
 import { api } from '@/lib/api';
 import { migrationNumber, REQUIRED_MIGRATION, serverIsBehind } from '@/lib/serverVersion';
@@ -11,6 +12,7 @@ export const ADMIN_NAV = [
   { to: '/admin', end: true, label: 'Ringkasan', icon: LayoutDashboard },
   { to: '/admin/pesan', label: 'Pesan pengguna', icon: MessageCircle },
   { to: '/admin/pengajuan', label: 'Pengajuan soal', icon: Inbox },
+  { to: '/admin/lab', label: 'MEDCOEL Lab', icon: FlaskConical },
   { to: '/admin/soal', label: 'Edit Soal', icon: FileQuestion },
   { to: '/admin/laporan', label: 'Laporan soal', icon: Flag },
   { to: '/admin/pengumuman', label: 'Pengumuman', icon: Megaphone },
@@ -61,8 +63,9 @@ export default function AdminLayout() {
   return (
     <div className="min-h-screen bg-page lg:flex">
       <aside className="border-b border-line bg-surface lg:sticky lg:top-0 lg:h-screen lg:w-64 lg:shrink-0 lg:border-b-0 lg:border-r">
-        <div className="flex items-center justify-between px-4 py-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-4">
           <Logo />
+          <LanguageSwitch />
           <span className="chip bg-gold-soft text-[#6b4f00]">Admin</span>
         </div>
         <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex-col lg:overflow-visible" aria-label="Menu admin">

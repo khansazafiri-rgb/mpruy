@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { translate, useLanguage } from '@/i18n';
 import { ArrowUpRight, BookOpen, Search, Star } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -18,7 +19,8 @@ export default function Subjects() {
   const [group, setGroup] = useState('semua');
   const all = useMemo(() => data?.items || [], [data]);
   const counts = useMemo(() => all.reduce((c, s) => ({ ...c, [groupOf(s)]: (c[groupOf(s)] || 0) + 1 }), { semua: all.length }), [all]);
-  const items = useMemo(() => all.filter((s) => (group === 'semua' || groupOf(s) === group) && s.name.toLowerCase().includes(q.trim().toLowerCase())), [all, q, group]);
+  const { language } = useLanguage();
+  const items = useMemo(() => all.filter((s) => (group === 'semua' || groupOf(s) === group) && `${s.name} ${translate(s.name, language)}`.toLowerCase().includes(q.trim().toLowerCase())), [all, q, group, language]);
   const total = data?.items?.length || 0;
   return (
     <div className="space-y-8">

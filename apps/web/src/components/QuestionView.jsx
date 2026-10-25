@@ -4,6 +4,8 @@ import clsx from 'clsx';
 import { CheckCircle2, Flag, Lightbulb, MessageSquareWarning, XCircle } from 'lucide-react';
 import { useState } from 'react';
 import { DIFF, DIFF_CLASS, QTYPE } from '@/lib/labels';
+import { withQuestionLanguage } from '@/lib/explanationLanguage';
+import { useLanguage } from '@/i18n';
 import RichContent, { Content } from './RichContent';
 import { Badge } from './ui';
 
@@ -115,8 +117,11 @@ export function EsaiInputs({ q, value = {}, onChange, revealed, disabled }) {
   );
 }
 
-export default function QuestionView({ q, index, total, value, onChange, revealed, result, disabled, onReport, flagged, onFlag }) {
+export default function QuestionView({ q: sourceQuestion, index, total, value, onChange, revealed, result, disabled, onReport, flagged, onFlag }) {
   const [hint, setHint] = useState(false);
+  const { language } = useLanguage();
+  const q = withQuestionLanguage(sourceQuestion, language);
+  const displayed = q;
   const isChoice = q.qtype === 'A' || q.qtype === 'K';
   return (
     <article className="card question-card" aria-labelledby={`soal-${q.id}`}>
@@ -146,10 +151,11 @@ export default function QuestionView({ q, index, total, value, onChange, reveale
         </div>
       )}
 
+      {language === 'en' && !sourceQuestion.questionEnglish && <p role="status" className="mt-3 rounded-lg bg-gold-soft p-3 text-sm">An English version has not yet been reviewed for this question. Content without an available English translation is shown in its source language.</p>}
       <div className="mt-4">
-        {isChoice && <OptionList q={q} value={value} onChange={onChange} revealed={revealed} disabled={disabled || revealed} />}
-        {q.qtype === 'isian' && <IsianInputs q={q} value={value || {}} onChange={onChange} revealed={revealed} detail={result?.detail} disabled={disabled || revealed} />}
-        {q.qtype === 'esai' && <EsaiInputs q={q} value={value || {}} onChange={onChange} revealed={revealed} disabled={disabled || revealed} />}
+        {isChoice && <OptionList q={displayed} value={value} onChange={onChange} revealed={revealed} disabled={disabled || revealed} />}
+        {q.qtype === 'isian' && <IsianInputs q={displayed} value={value || {}} onChange={onChange} revealed={revealed} detail={result?.detail} disabled={disabled || revealed} />}
+        {q.qtype === 'esai' && <EsaiInputs q={displayed} value={value || {}} onChange={onChange} revealed={revealed} disabled={disabled || revealed} />}
       </div>
 
       {revealed && result && result.scored !== false && (
@@ -161,7 +167,7 @@ export default function QuestionView({ q, index, total, value, onChange, reveale
       {revealed && q.explanation && (
         <section className="question-explanation">
           <h3 className="mb-2 font-display text-base font-semibold">Pembahasan</h3>
-          <RichContent value={q.explanation} />
+          <div lang={language === 'en' && q.questionEnglish ? 'en' : undefined}><RichContent value={displayed.explanation} /></div>
         </section>
       )}
       {(onFlag || onReport) && <div className="question-tools">
