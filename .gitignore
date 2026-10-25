@@ -13,3 +13,7 @@ apps/pocketbase/.env
 # Hermes Agent: secret dan state kerja lokal, jangan dicommit
 apps/hermes-agent/.env
 apps/hermes-agent/data/
+
+# MEDCOEL Lab: dataset mentah/cache tidak dicommit; PNG hasil kurasi juga dibuat lokal saat ingest
+tools/lab-ingest/cache/
+apps/web/public/lab-content/medmnist/
