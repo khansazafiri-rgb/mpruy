@@ -15,8 +15,10 @@ routerAdd('GET', '/api/medcoel/lab/pathways', (e) => {
   return e.json(200, { items: rows.slice(0, 24).map(lab.card), hasMore: rows.length > 24, page });
 });
 routerAdd('GET', '/api/medcoel/lab/pathways/{key}', (e) => {
-  const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); u.requireUser(e);
-  return e.json(200, lab.pathOut(e.app, lab.find(e.app, 'pathways', e.request.pathValue('key'), true)));
+  const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); const user = u.requireUser(e);
+  const p = lab.find(e.app, 'pathways', e.request.pathValue('key'), true);
+  const out = lab.pathOut(e.app, p); const st = require(`${__hooks}/lib/labProgress.js`).state(e.app, user, p);
+  return e.json(200, { ...out, progress: { completed: st.completed, lastObject: st.lastObject } });
 });
 routerAdd('POST', '/api/medcoel/lab/questions/{id}/answer', (e) => {
   const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); u.requireUser(e);
@@ -53,3 +55,48 @@ routerAdd('POST', '/api/medcoel/admin/lab-demo', (e) => {
   const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e);
   return e.json(200, require(`${__hooks}/lib/labDemo.js`).create(e.app));
 }, $apis.bodyLimit(16384));
+routerAdd('GET', '/api/medcoel/lab/overview', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); const user = u.requireUser(e);
+  return e.json(200, require(`${__hooks}/lib/labProgress.js`).overview(e.app, user));
+});
+routerAdd('POST', '/api/medcoel/lab/progress', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); const user = u.requireUser(e);
+  return e.json(200, require(`${__hooks}/lib/labProgress.js`).mark(e.app, user, u.body(e)));
+}, $apis.bodyLimit(4096));
+// Content packs, bulk validation and publishing. All publishing goes through lab.publishSet (single canonical rule set).
+routerAdd('GET', '/api/medcoel/admin/lab/{kind}/{id}/preview', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); const user = u.requireAdmin(e);
+  if (e.request.pathValue('kind') !== 'objects') throw new NotFoundError('Pratinjau hanya untuk materi.');
+  return e.json(200, lab.detail(e.app, e.request.pathValue('id'), user, { preview: true }));
+});
+routerAdd('GET', '/api/medcoel/admin/lab-packs', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e);
+  return e.json(200, { items: require(`${__hooks}/lib/labPacks.js`).list(e.app) });
+});
+routerAdd('POST', '/api/medcoel/admin/lab-packs', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e);
+  return e.json(200, require(`${__hooks}/lib/labPacks.js`).save(e.app, '', u.body(e)));
+}, $apis.bodyLimit(16384));
+routerAdd('GET', '/api/medcoel/admin/lab-packs/{key}', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e);
+  return e.json(200, require(`${__hooks}/lib/labPacks.js`).detail(e.app, e.request.pathValue('key')));
+});
+routerAdd('PUT', '/api/medcoel/admin/lab-packs/{key}', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); const packs = require(`${__hooks}/lib/labPacks.js`); u.requireAdmin(e);
+  return e.json(200, packs.save(e.app, packs.find(e.app, e.request.pathValue('key')).id, u.body(e)));
+}, $apis.bodyLimit(16384));
+routerAdd('POST', '/api/medcoel/admin/lab-packs/{key}/validate', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e);
+  return e.json(200, require(`${__hooks}/lib/labPacks.js`).validate(e.app, e.request.pathValue('key')));
+});
+routerAdd('POST', '/api/medcoel/admin/lab-packs/{key}/publish', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); const admin = u.requireAdmin(e);
+  return e.json(200, require(`${__hooks}/lib/labPacks.js`).publish(e.app, e.request.pathValue('key'), u.body(e), admin));
+}, $apis.bodyLimit(65536));
+// Selected records: dryRun=true only validates ("review"), otherwise publishes in dependency order after human confirmation.
+routerAdd('POST', '/api/medcoel/admin/lab-bulk/publish', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); const admin = u.requireAdmin(e); const b = u.body(e);
+  if (!Array.isArray(b.items) || !b.items.length || b.items.length > 500) throw new BadRequestError('Pilih 1–500 item.');
+  const items = b.items.map((i) => { if (!lab.KINDS.includes(i.kind)) throw new BadRequestError('Jenis konten tidak dikenal.'); return { kind: i.kind, id: String(i.id), revision: i.revision }; });
+  return e.json(200, lab.publishSet(e.app, items, admin, { confirmReviewed: b.confirmReviewed === true, dryRun: b.dryRun === true }));
+}, $apis.bodyLimit(131072));
