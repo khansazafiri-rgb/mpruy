@@ -48,6 +48,8 @@ for (const width of widths.map(Number)) {
   check(`${tag} home: synthetic demo content is not listed`, (await page.getByText('Mengenali bentuk pada gambar').count()) === 0);
   await page.goto(`${WEB}/lab?mode=guided`); await settle(page);
   check(`${tag} guided list: demo onboarding pathway hidden`, (await page.getByText('Mulai mengenal MEDCOEL Lab').count()) === 0);
+  // The dev database accumulates QA pathways with the same title, so page through the list until ours shows up.
+  for (let i = 0; i < 6 && !(await page.locator(`a[href="/lab/jalur/${J}"]`).count()); i++) { const nextBtn = page.getByRole('button', { name: 'Berikutnya' }); if (!(await nextBtn.isEnabled())) break; await nextBtn.click(); await page.waitForTimeout(500); }
   check(`${tag} guided list: new pathway shows 'Belum mulai'`, await page.locator(`a[href="/lab/jalur/${J}"]`).getByText('Belum mulai').isVisible());
   await page.goto(`${WEB}/lab?q=${encodeURIComponent('Latihan CXR')}`); await settle(page);
   check(`${tag} home: practice card labelled 'Latihan · 4 kasus'`, await page.getByText('Latihan · 4 kasus').first().isVisible());
