@@ -174,3 +174,18 @@ Untuk skala lebih besar, buat shard/object tambahan alih-alih menaikkan batas sc
 - TorchXRayVision (fase berikutnya, bila authoring assistance diperlukan): https://github.com/mlmed/torchxrayvision
 
 PneumoniaMNIST metadata resmi mencantumkan versi 224 px, MD5 `d6a3c71de1b945ea11211b03746c1fe1`, task normal-vs-pneumonia, dan lisensi CC BY 4.0. Importer memverifikasi checksum sebelum menggunakan data.
+
+## Sinkronisasi konten yang sudah ada (V2)
+
+Importer lama hanya membuat record dan melewati slug yang sudah ada. Sejak V2 ada sinkronisasi eksplisit:
+
+```bash
+source /opt/medcoel-ai/.venv/bin/activate
+export MEDCOEL_API_BASE=https://medcoel.com MEDCOEL_ADMIN_IDENTITY=… MEDCOEL_ADMIN_PASSWORD=…
+python tools/lab-ingest/import_medmnist.py --dry-run --update-existing   # cetak rencana, tidak menulis
+python tools/lab-ingest/import_medmnist.py --apply --update-existing
+python tools/lab-ingest/publish_pack.py pneumoniamnist --dry-run
+python tools/lab-ingest/publish_pack.py pneumoniamnist --apply --confirm-reviewed   # hanya setelah pemeriksaan manusia
+```
+
+`--update-existing` hanya mengubah field milik importer: judul medis ("Chest X-Ray: Normal vs Pneumonia"), ringkasan, tujuan belajar, langkah pengamatan, metadata dataset eksplisit, relasi pack, dan memindahkan 20 aset galeri ke materi pertama (materi latihan tidak lagi membawa galeri berlabel). Suntingan admin dipertahankan (anotasi, blok, tautan terkait, tag, lisensi yang sudah diverifikasi). Revisi saat ini dikirim pada tiap `PUT`; bila konten berubah di server, operasi gagal alih-alih menimpa. **Menyimpan lewat API mengembalikan record ke draft**; dry-run mencantumkan record yang saat ini terbit. Semua record dikelompokkan ke pack `pneumoniamnist-v1`.

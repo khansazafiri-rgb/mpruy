@@ -4,13 +4,15 @@ import { sessionSummary } from './labUtils';
 
 // Sesi latihan terfokus: satu kasus per layar, progres, sebelumnya/berikutnya, ringkasan, dan tinjau soal yang salah.
 // Tidak ada label atau jawaban di layar ini sebelum soal dikirim (gambar soal datang dari API tanpa label).
-export default function LabPracticeSession({ questions, onExit, exitLabel = 'Kembali ke materi', children }) {
+export default function LabPracticeSession({ questions, onExit, onFinish, exitLabel = 'Kembali ke materi', children }) {
   const [answers, setAnswers] = useState({});
   const [review, setReview] = useState(null);
   const [index, setIndex] = useState(0);
   const list = review ? questions.filter((q) => review.includes(q.id)) : questions;
   const done = index >= list.length;
   useEffect(() => { window.scrollTo?.({ top: 0 }); }, [index, review]);
+  // Reaching the summary of the full session (not a review pass) counts as finishing the practice.
+  useEffect(() => { if (done && !review && questions.length) onFinish?.(); }, [done, review]); // eslint-disable-line react-hooks/exhaustive-deps
   if (!questions.length) return null;
   const summary = sessionSummary(questions, answers);
   const q = list[index]; const answered = !!answers[q?.id]?.result;

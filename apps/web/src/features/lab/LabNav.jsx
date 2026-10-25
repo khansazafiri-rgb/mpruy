@@ -12,11 +12,11 @@ export function LabBreadcrumbs({ items }) {
 }
 
 // Sebelumnya / "2 dari 3" / berikutnya di dalam jalur, tanpa kembali ke /lab di antara pelajaran.
-export function LabPathNavigation({ pathway, ctx }) {
+export function LabPathNavigation({ pathway, ctx, completed = false, onToggleComplete, onNext }) {
   const { prev, next, index, total } = ctx; const to = (s) => objectHref(s.slug, pathway.slug);
   return <nav aria-label={`Navigasi jalur ${pathway.title}`} className="card flex flex-wrap items-center justify-between gap-3 p-4">
     {prev ? <Link to={to(prev)} className="btn btn-secondary"><ArrowLeft size={16} /> <span className="max-w-[40vw] truncate">{prev.title}</span></Link> : <Link to={`/lab/jalur/${pathway.slug}`} className="btn btn-ghost"><ArrowLeft size={16} /> {pathway.title}</Link>}
-    <span className="text-sm font-semibold text-ink-muted" aria-label={`Langkah ${index + 1} dari ${total}`}>{index + 1} dari {total}</span>
-    {next ? <Link to={to(next)} className="btn btn-primary"><span className="max-w-[40vw] truncate">Berikutnya: {next.title}</span> <ArrowRight size={16} /></Link> : <Link to={`/lab/jalur/${pathway.slug}`} className="btn btn-primary">Selesai · kembali ke {pathway.title}</Link>}
+    <span className="flex flex-col items-center gap-1"><span className="text-sm font-semibold text-ink-muted" aria-label={`Langkah ${index + 1} dari ${total}`}>{index + 1} dari {total}</span>{onToggleComplete && <button type="button" aria-pressed={completed} onClick={onToggleComplete} className={`btn btn-sm ${completed ? 'btn-primary' : 'btn-ghost'}`}>{completed ? '✓ Selesai' : 'Tandai selesai'}</button>}</span>
+    {next ? <Link to={to(next)} onClick={onNext} className="btn btn-primary"><span className="max-w-[40vw] truncate">Berikutnya: {next.title}</span> <ArrowRight size={16} /></Link> : <Link to={`/lab/jalur/${pathway.slug}`} className="btn btn-primary">Selesai · kembali ke {pathway.title}</Link>}
   </nav>;
 }
