@@ -68,7 +68,9 @@ old_practice = _orig["object_practice"]([], ""); old_practice.pop("pack"); old_p
 intro = api.create("objects", old_intro); practice = api.create("objects", old_practice)
 qs = []
 for row, asset in zip(rows, legacy_assets):
-    q = _orig["question_body"](row, practice["id"], asset["id"], ""); q.pop("pack"); q["slug"] += f"-{run}"; qs.append(api.create("questions", q))
+    q = _orig["question_body"](row, practice["id"], asset["id"], ""); q.pop("pack"); q["slug"] += f"-{run}"
+    q["data"]["explanation"] = "Ground-truth PneumoniaMNIST untuk citra ini adalah label. Dataset menyediakan label tingkat-gambar."  # what the old importer stored
+    qs.append(api.create("questions", q))
 path = _orig["pathway_body"](intro["id"], practice["id"], ""); path.pop("pack"); path.update(slug=f"pmw-{run}", title="CXR Dasar: PneumoniaMNIST")
 path = api.create("pathways", path)
 everything = [("assets", a) for a in legacy_assets] + [("objects", intro), ("objects", practice)] + [("questions", q) for q in qs] + [("pathways", path)]
@@ -122,6 +124,9 @@ ok(a0["data"]["dataset"] == {"name": "PneumoniaMNIST", "task": "binary_classific
 ok(a0["data"]["license"]["verified"] is True, "admin-verified license must not be reset")
 ok(a0["data"]["annotations"][0]["label"] == "Catatan admin", "annotations must be preserved")
 ok(imp.unpublished and any(x.startswith("objects:") for x in imp.unpublished), "unpublish warning expected")
+ok(new_practice["data"].get("mode") == "practice", "practice object must be marked practice-first")
+questions = {r["slug"]: r for r in api.list_all("questions")}
+ok(all(questions[q["slug"]]["data"]["explanation"] == "" for q in qs), "filler explanations must be cleared")
 detail = api.pack(f"pm-test-{run}")
 ok(detail["counts"]["assets"]["total"] == 4 and detail["counts"]["pathways"]["total"] == 1 and detail["counts"]["questions"]["total"] == 4, detail["counts"])
 

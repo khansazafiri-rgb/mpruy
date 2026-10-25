@@ -50,7 +50,12 @@ await call('POST', api(`lab/questions/${hotspot.id}/answer`), { response: { x: 2
 const blood = await call('GET', api('lab/objects/demo-pola-laboratorium'), undefined, student.token);
 assert.equal(blood.data.lab.matches.length, 1); assert.ok(blood.data.lab.rows.every((r) => r.flag === 'low')); assert.equal(blood.related[0].id, image.id);
 const reflection = await call('POST', api(`lab/questions/${blood.questions[0].id}/answer`), { response: 'Hb dan MCV rendah' }, student.token); assert.equal(reflection.selfAssessment, true); assert.equal(reflection.correct, null);
-const search = await call('GET', api('lab/objects?q=ferritin&domain=clinical_pathology'), undefined, student.token); assert.equal(search.items[0].slug, blood.slug);
+// Synthetic demo material is hidden from normal student listings (direct links still open); admins can opt in with demo=1.
+assert.equal((await call('GET', api('lab/objects?q=ferritin&domain=clinical_pathology'), undefined, student.token)).items.length, 0);
+assert.equal((await call('GET', api('lab/objects?q=ferritin&domain=clinical_pathology&demo=1'), undefined, student.token)).items.length, 0, 'students cannot opt in');
+const search = await call('GET', api('lab/objects?q=ferritin&domain=clinical_pathology&demo=1'), undefined, admin.token); assert.equal(search.items[0].slug, blood.slug);
+assert.ok((await call('GET', api('lab/pathways'), undefined, student.token)).items.every((p) => !p.slug.startsWith('demo-')), 'demo pathways are not listed for students');
+assert.equal((await call('GET', api('lab/overview'), undefined, student.token)).domains.clinical_pathology, 0, 'demo material is not counted');
 assert.equal((await call('GET', api('lab/objects?q=not-a-real-topic'), undefined, student.token)).items.length, 0);
 const path = await call('GET', api('lab/pathways/demo-lab-fundamentals'), undefined, student.token); assert.equal(path.steps.length, 2);
 // Direct access to the later step requires no progress/unlock state.
