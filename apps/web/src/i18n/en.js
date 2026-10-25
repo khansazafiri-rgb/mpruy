@@ -1,5 +1,12 @@
 // Authored whole-message UI translations. Keep clinical terms as authored.
 export default {
+  "Terjemahan Inggris": "English translation",
+  "Siapkan terjemahan seluruh bank soal": "Prepare translations for the entire question bank",
+  "Unduh materi asli dari server agar teks soal, semua pilihan, pembahasan, judul BAB, dan kasus simulasi dapat diterjemahkan dengan konteks lengkap. Tombol ini mengambil salinan; terjemahan Inggris belum dibuat.": "Download the source material from the server so that question text, every option, explanations, chapter titles, and simulation cases can be translated in full context. This button downloads a copy; it does not create English translations.",
+  "Salinan berisi materi dan kunci jawaban. Data akun peserta, riwayat pengerjaan, API key, dan PDF peserta tidak disertakan. Unduhan tidak dikirim ke layanan penerjemah.": "The copy contains learning material and answer keys. It excludes participant account data, attempt history, API keys, and participant PDFs. The download is not sent to a translation service.",
+  "Unduh materi untuk diterjemahkan": "Download source material for translation",
+  "Menyiapkan unduhan...": "Preparing download...",
+  "Berkas sumber sudah disiapkan untuk diunduh. Kirim berkas JSON tersebut di chat pengerjaan terjemahan. Isi bank soal di situs tetap sama sampai hasil terjemahan dipasang.": "The source file is ready to download. Share the JSON file in the chat where you are preparing the translations. The question bank on the website stays the same until the translations are installed.",
   "Masih ada": "There are",
   "pengumuman lain.": "more announcements.",
   "Beranda": "Home",

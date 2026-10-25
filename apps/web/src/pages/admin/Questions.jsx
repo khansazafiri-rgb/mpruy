@@ -5,6 +5,7 @@ import CampusMulti from '@/components/admin/CampusMulti';
 import ImportPanel from '@/components/admin/ImportPanel';
 import QuestionEditor from '@/components/admin/QuestionEditor';
 import EnglishExplanationEditor from '@/components/admin/EnglishExplanationEditor';
+import EnglishSourceExport from '@/components/admin/EnglishSourceExport';
 import { useCatalog } from '@/components/admin/useCatalog';
 import { Alert, Badge, Modal, PageLoader, Tabs } from '@/components/ui';
 import { api } from '@/lib/api';
@@ -55,9 +56,9 @@ export default function Questions() {
         <h1 className="page-title">Edit Soal</h1>
         <button type="button" className="btn-primary" onClick={() => setEdit('new')}><Plus size={18} /> Tambah soal</button>
       </div>
-      <Tabs value={tab} onChange={setTab} tabs={[{ value: 'list', label: 'Daftar soal' }, { value: 'import', label: 'Impor massal (JSON)' }]} />
+      <Tabs value={tab} onChange={setTab} tabs={[{ value: 'list', label: 'Daftar soal' }, { value: 'import', label: 'Impor massal (JSON)' }, { value: 'english', label: 'Terjemahan Inggris' }]} />
 
-      {tab === 'import' ? <div className="card p-5"><ImportPanel onDone={() => load()} /></div> : (
+      {tab === 'english' ? <EnglishSourceExport /> : tab === 'import' ? <div className="card p-5"><ImportPanel onDone={() => load()} /></div> : (
         <>
           <div className="grid gap-2 sm:grid-cols-3 lg:grid-cols-7">
             <select className="input py-2" value={f.subject} onChange={(e) => set('subject', e.target.value)} aria-label="Mata kuliah"><option value="">Semua mata kuliah</option>{subjects.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}</select>

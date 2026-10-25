@@ -880,6 +880,46 @@ await langkah('kolom tambahan (TikTok), langkah bukti opsional, WhatsApp opsiona
 });
 
 console.log('Pembahasan Inggris');
+await langkah('paket sumber terjemahan hanya untuk admin dan lengkap tanpa data peserta', async () => {
+  const path = '/api/medcoel/admin/english/source';
+  for (const token of [null, userA.token, agent.token]) {
+    for (const kind of ['question', 'case', 'catalog']) {
+      await call('GET', path + '?kind=' + kind, undefined, token, token ? 403 : 401);
+    }
+  }
+  await call('GET', path + '?kind=users', undefined, admin.token, 400);
+  await call('GET', path + '?after=invalid', undefined, admin.token, 400);
+  const items = [];
+  const cursors = new Set();
+  let after = '';
+  do {
+    const page = (await call('GET', path + '?kind=question&after=' + after, undefined, admin.token, 200)).data;
+    assert.ok(page.items.length <= 50);
+    items.push(...page.items);
+    after = page.next;
+    assert.ok(!after || !cursors.has(after));
+    cursors.add(after);
+  } while (after);
+  assert.equal(new Set(items.map((q) => q.id)).size, items.length);
+  const total = (await call('GET', '/api/medcoel/admin/questions?perPage=1', undefined, admin.token, 200)).data.totalItems;
+  assert.equal(items.length, total);
+  assert.ok(items.length > 0);
+  for (const q of items) {
+    assert.deepEqual(Object.keys(q).sort(), ['id', 'sourceHash', 'revision', 'status', 'subjectName', 'source', 'glossary', 'protectedTerms', 'segments'].sort());
+    const view = (await call('GET', `/api/medcoel/admin/questions/${q.id}/english`, undefined, admin.token, 200)).data;
+    assert.deepEqual(q.source, view.question);
+    assert.deepEqual(q.segments, view.segments);
+    assert.equal(q.revision, view.revision, 'export must not change a draft');
+  }
+  const catalog = (await call('GET', path + '?kind=catalog', undefined, admin.token, 200)).data;
+  assert.ok(catalog.subjects.length > 0);
+  assert.deepEqual(Object.keys(catalog.subjects[0]).sort(), ['id', 'name', 'slug', 'description'].sort());
+  assert.deepEqual(Object.keys(catalog.items[0]).sort(), ['id', 'subject', 'title'].sort());
+  const cases = (await call('GET', path + '?kind=case', undefined, admin.token, 200)).data;
+  assert.ok(cases.items.length > 0);
+  assert.ok(cases.items[0].source.clinicalContext);
+  assert.ok(cases.items[0].segments.length > 0);
+});
 let englishId, englishChapter, englishBody;
 await langkah('pembahasan Inggris: hanya admin dapat membaca, membuat, dan memeriksa terjemahan', async () => {
   englishChapter = (await call('POST', '/api/collections/chapters/records', { subject: mk.id, title: 'English ' + RUN, hidden: false }, admin.token, 200)).data.id;
