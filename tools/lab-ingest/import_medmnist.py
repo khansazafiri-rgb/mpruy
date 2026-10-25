@@ -443,7 +443,7 @@ def question_body(row: dict[str, Any], object_id: str, asset_id: str, pack_id: s
         "asset": asset_id,
         "data": {
             "type": "image_identification",
-            "prompt": "Berdasarkan label benchmark PneumoniaMNIST, foto toraks ini termasuk kategori mana?",
+            "prompt": "Foto toraks ini paling sesuai dengan kategori mana?",
             "options": [
                 {"label": "A", "text": "Normal"},
                 {"label": "B", "text": "Pneumonia"},
