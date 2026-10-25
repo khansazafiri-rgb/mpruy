@@ -2,7 +2,12 @@ const HOOKS = typeof __hooks !== "undefined" ? __hooks : __dirname + "/..";
 const u = require(HOOKS + "/lib/util.js");
 const en = require(HOOKS + "/lib/explanationEnglish.js");
 
-function question(rec) {
+const clinical = require(HOOKS + "/lib/clinicalEnglish.js");
+function question(rec, kind) {
+  if (kind === "case") {
+    const data = u.recJson(rec, "data", {});
+    return en.source({ subject: rec.getString("poli"), chapter: rec.getString("key"), qtype: "clinical_case", stem: rec.getString("title"), explanation: clinical.parts(data).map((part) => part.source), clinicalContext: data });
+  }
   return en.source({
     subject: rec.getString("subject"), chapter: rec.getString("chapter"), qtype: rec.getString("qtype"),
     stem: u.recJson(rec, "stem", ""), image: rec.getString("image"), hint: rec.getString("hint"),
@@ -20,16 +25,28 @@ function localTerms(value) {
   try { return en.terms(value || []); } catch (err) { throw new BadRequestError(err.message); }
 }
 
-function snapshot(app, rec) {
-  const q = question(rec);
+function validate(q, entries, glossary) {
+  const errors = en.validate(q, entries, glossary, true);
+  if (q.qtype === "clinical_case") {
+    const values = clinical.parts(q.clinicalContext).map((_, i) => {
+      const entry = entries.find((part) => part.id === "explanation." + i);
+      return entry ? entry.text : "";
+    });
+    return errors.concat(clinical.validate(q.clinicalContext, values));
+  }
+  return errors;
+}
+
+function snapshot(app, rec, kind) {
+  const q = question(rec, kind);
   const glossary = en.terms(u.settings(app).getString("translationTerms"));
-  const doc = u.recJson(rec, "explanationEnglish", null);
+  const doc = u.recJson(rec, kind === "case" ? "english" : "explanationEnglish", null);
   const sourceHash = u.hash(JSON.stringify({ version: en.VERSION, source: q, glossary: glossary }));
   const protectedTerms = en.terms(doc && doc.protectedTerms || []);
   const allTerms = glossary.concat(protectedTerms);
   const entries = doc && Array.isArray(doc.segments) ? doc.segments : [];
   const stale = !!doc && doc.sourceHash !== sourceHash;
-  const errors = en.validate(q, entries, allTerms);
+  const errors = validate(q, entries, allTerms);
   return {
     q: q, glossary: glossary, allTerms: allTerms, doc: doc,
     sourceHash: sourceHash, revision: u.hash(JSON.stringify(doc)),
@@ -37,8 +54,8 @@ function snapshot(app, rec) {
   };
 }
 
-function view(app, rec) {
-  const s = snapshot(app, rec);
+function view(app, rec, kind) {
+  const s = snapshot(app, rec, kind);
   const doc = s.doc || {};
   const entries = doc.segments || [];
   let subjectName = "";
@@ -49,15 +66,15 @@ function view(app, rec) {
     protectedTerms: s.protectedTerms, glossary: s.glossary,
     generatorConfigured: configured(), notes: doc.notes || [], errors: s.errors,
     reviewedAt: doc.reviewedAt || "", subjectName: subjectName, question: s.q,
-    segments: en.segments(s.q).map((part) => {
+    segments: en.segments(s.q, true).map((part) => {
       const saved = entries.find((entry) => entry.id === part.id);
-      return { id: part.id, label: part.label, source: part.source, text: saved ? saved.text : "", keep: en.requiredTerms(part.source, s.allTerms) };
+      return { id: part.id, label: kind === "case" && part.id.startsWith("explanation.") ? clinical.parts(s.q.clinicalContext)[Number(part.id.split(".")[1])].label : part.label, source: part.source, text: saved ? saved.text : "", keep: en.requiredTerms(part.source, s.allTerms) };
     }),
   };
 }
 
-function load(app, id) {
-  try { return app.findRecordById("questions", id); } catch (_) { throw new NotFoundError("Soal tidak ditemukan."); }
+function load(app, id, kind) {
+  try { return app.findRecordById(kind === "case" ? "sim_cases" : "questions", id); } catch (_) { throw new NotFoundError("Soal tidak ditemukan."); }
 }
 
 function assertCurrent(s, body) {
@@ -66,14 +83,14 @@ function assertCurrent(s, body) {
   }
 }
 
-function save(app, id, body, adminId, generated) {
+function save(app, id, body, adminId, generated, kind) {
   app.runInTransaction((tx) => {
-    const rec = load(tx, id);
-    const s = snapshot(tx, rec);
+    const rec = load(tx, id, kind);
+    const s = snapshot(tx, rec, kind);
     assertCurrent(s, body);
     const protectedTerms = localTerms(body.protectedTerms);
     if (!Array.isArray(body.segments)) throw new BadRequestError("Daftar pembahasan belum diisi.");
-    const expected = en.segments(s.q);
+    const expected = en.segments(s.q, true);
     const seen = {};
     body.segments.forEach((entry) => {
       if (!entry || typeof entry.id !== "string" || typeof entry.text !== "string" ||
@@ -84,11 +101,11 @@ function save(app, id, body, adminId, generated) {
     });
     const entries = expected.map((p) => ({ id: p.id, text: seen[p.id] || "" }));
     if (JSON.stringify(entries).length > 450000) throw new BadRequestError("Total pembahasan terlalu panjang.");
-    const errors = en.validate(s.q, entries, s.glossary.concat(protectedTerms));
+    const errors = validate(s.q, entries, s.glossary.concat(protectedTerms));
     const reviewed = !generated && body.action === "review";
     if (reviewed && body.reviewConfirmed !== true) throw new BadRequestError("Periksa makna, negasi, istilah, angka, dan alasan tiap pilihan sebelum menayangkan.");
     if (reviewed && errors.length) throw new BadRequestError(errors.slice(0, 6).join(" "));
-    rec.set("explanationEnglish", {
+    rec.set(kind === "case" ? "english" : "explanationEnglish", {
       version: en.VERSION, sourceHash: s.sourceHash,
       status: reviewed ? "reviewed" : "draft", protectedTerms: protectedTerms, segments: entries,
       notes: generated ? generated.notes.filter((x) => typeof x === "string").slice(0, 20).map((x) => x.slice(0, 1000)) : [],
@@ -96,17 +113,17 @@ function save(app, id, body, adminId, generated) {
     });
     tx.save(rec);
   });
-  return view(app, load(app, id));
+  return view(app, load(app, id, kind), kind);
 }
 
-function generate(app, id, body, adminId) {
+function generate(app, id, body, adminId, kind) {
   if (!configured()) throw new BadRequestError("Bantuan draf belum diatur. Isi OPENAI_API_KEY dan MEDCOEL_TRANSLATION_MODEL di server, atau tulis pembahasan Inggris manual.");
   if (body.sendConfirmed !== true) throw new BadRequestError("Setujui pengiriman isi soal dan pembahasannya ke OpenAI untuk membuat draf.");
-  const s = snapshot(app, load(app, id));
+  const s = snapshot(app, load(app, id, kind), kind);
   assertCurrent(s, body);
   const protectedTerms = localTerms(body.protectedTerms);
-  if (!en.segments(s.q).length) throw new BadRequestError("Isi pembahasan sumber dulu.");
-  const req = en.request(s.q, s.glossary.concat(protectedTerms), u.env("MEDCOEL_TRANSLATION_MODEL"));
+  if (!en.segments(s.q, true).length) throw new BadRequestError("Isi pembahasan sumber dulu.");
+  const req = en.request(s.q, s.glossary.concat(protectedTerms), u.env("MEDCOEL_TRANSLATION_MODEL"), true);
   if (JSON.stringify(req).length > 100000) throw new BadRequestError("Soal terlalu panjang untuk bantuan draf. Isi terjemahan manual.");
   // Limit spending from accidental repeated clicks. Failed calls count too.
   const key = "explanation_generator:" + adminId;
@@ -127,13 +144,15 @@ function generate(app, id, body, adminId) {
   let draft;
   try { draft = en.parseResponse(res.json); } catch (err) { throw new BadRequestError(err.message); }
   // Re-read and compare after the network call; never overwrite newer edits.
-  return save(app, id, Object.assign({}, body, { segments: draft.segments, action: "draft" }), adminId, draft);
+  return save(app, id, Object.assign({}, body, { segments: draft.segments, action: "draft" }), adminId, draft, kind);
 }
 
-function published(app, rec) {
-  const s = snapshot(app, rec);
+function published(app, rec, kind) {
+  if (!u.recJson(rec, kind === "case" ? "english" : "explanationEnglish", null)) return null;
+  const s = snapshot(app, rec, kind);
   if (!s.doc || s.doc.version !== en.VERSION || s.doc.status !== "reviewed" || s.stale || s.errors.length) return null;
-  return en.apply(s.q, s.doc.segments);
+  const translated = en.apply(s.q, s.doc.segments, true);
+  return kind === "case" ? { title: translated.stem, data: clinical.apply(s.q.clinicalContext, translated.explanation) } : translated;
 }
 
 module.exports = { load, view, save, generate, published };

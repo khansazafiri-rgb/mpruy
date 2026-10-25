@@ -177,6 +177,17 @@ function serialize(q, withKey, titles, app) {
       return base;
     }),
   };
+  if (app) {
+    const english = require(HOOKS + "/lib/explanationService.js").published(app, q);
+    if (english) {
+      out.questionEnglish = {
+        stem: english.stem, hint: english.hint, statements: english.statements,
+        options: english.options.map((o) => withKey ? o : { label: o.label, text: o.text }),
+        subQuestions: english.subQuestions.map((s) => withKey ? s : { label: s.label, question: s.question }),
+      };
+      if (withKey) out.questionEnglish.explanation = english.explanation;
+    }
+  }
   if (withKey) {
     out.answer = q.getString("answer");
     out.explanation = u.recJson(q, "explanation", "");

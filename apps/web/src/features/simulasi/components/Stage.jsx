@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { Check } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { PAS_NAMES, asset, doctorSprite } from '../engine';
+import { translate } from '@/i18n';
 
 function plateFor(w, ctx) {
   if (w === 'pas') return PAS_NAMES[ctx.C.pas];
@@ -14,6 +15,8 @@ function plateFor(w, ctx) {
 
 export default function Stage({ sim, gender }) {
   const { s, text, atEnd, line } = sim;
+  const localizedLine = sim.translateClinical ? sim.translateClinical(line?.t || '', line) : translate(line?.t || '');
+  const visibleText = s.typing ? localizedLine.slice(0, Math.round(localizedLine.length * text.length / Math.max(1, line?.t.length || 1))) : localizedLine;
   const { ctx } = s;
   const doc = doctorSprite(ctx, gender);
   const speaker = s.speaker;
@@ -55,7 +58,7 @@ export default function Stage({ sim, gender }) {
         data-tour="dialog"
       >
         {line && <span className={clsx('sim-plate', `is-${line.w}`)}>{plateFor(line.w, ctx)}</span>}
-        <p className={clsx(line?.w === 'info' && 'is-info')} aria-live="polite">{text}</p>
+        <p className={clsx(line?.w === 'info' && 'is-info')} aria-live="polite">{visibleText}</p>
         <div className="sim-dialog-foot">
           <span className={clsx('sim-autonote', flash && 'is-on')}><Check size={14} aria-hidden /> Masuk catatan otomatis</span>
           <span className={clsx('sim-next', !atEnd && !s.typing && 'is-nudge')}>{hint} {!atEnd && '▸'}</span>

@@ -1,3 +1,6 @@
+import { useLanguage } from '@/i18n';
+import LanguageSwitch from '@/components/LanguageSwitch';
+import { presentSim } from '@/features/simulasi/localize';
 // SIMULASI JADI DOKTER: konsultasi gaya visual novel dengan pasien virtual.
 // Pemain memilih poli lebih dulu; penyakit dan pasiennya diundi dari poli itu (atau dari semua poli).
 // /simulasi-dokter?tutorial=1 menjalankan tutorial bersama Nilo dengan kasus tetap.
@@ -29,6 +32,8 @@ const DEFAULT_PREFS = { mode: 'santai', dur: 600, gender: 'L', poli: 'acak' };
 function Consultation({ caseKey, prefs, tutorial, onNext, onExit }) {
   const mode = tutorial ? 'santai' : prefs.mode;
   const sim = useSim(caseKey, mode, prefs.dur);
+  const { language } = useLanguage();
+  const presented = presentSim(sim, language);
   const { s } = sim;
   const { refresh, me } = useAuth();
   const nav = useNavigate();
@@ -78,24 +83,25 @@ function Consultation({ caseKey, prefs, tutorial, onNext, onExit }) {
     <div className="sim-page">
       <div className="sim-topbar">
         <button type="button" className="btn-ghost btn-sm" onClick={tutorial ? skip : onExit}><ArrowLeft size={16} /> {tutorial ? 'Keluar tutorial' : 'Ganti pasien'}</button>
-        <p className="sim-topbar-title">Simulasi jadi dokter{tutorial && <span className="sim-tag">Tutorial</span>}</p>
+        <LanguageSwitch /><p className="sim-topbar-title">Simulasi jadi dokter{tutorial && <span className="sim-tag">Tutorial</span>}</p>
       </div>
+      {language === 'en' && !sim.s.ctx.C.english && <p role="status" className="mb-3 rounded-lg bg-gold-soft p-3 text-sm">The interface is in English. This patient's narrative uses the source language until its English version has been reviewed.</p>}
       <div className="sim-layout">
         <div className="sim-main">
-          <Stage sim={sim} gender={prefs.gender} />
-          <Notes sim={sim} />
+          <Stage sim={presented} gender={prefs.gender} />
+          <Notes sim={presented} />
         </div>
-        <ActionPanel sim={sim} ui={ui} setUi={setUi} onFinish={() => sim.finish(false)} />
+        <ActionPanel sim={presented} ui={ui} setUi={setUi} onFinish={() => sim.finish(false)} />
       </div>
       {s.finished && sim.report && (
-        <Report ref={reportRef} sim={sim} saved={saved} tutorial={tutorial} onRetry={retry} onNext={tutorial ? () => nav('/simulasi-dokter') : () => { setSaved(''); onNext(); }} />
+        <Report ref={reportRef} sim={presented} saved={saved} tutorial={tutorial} onRetry={retry} onNext={tutorial ? () => nav('/simulasi-dokter') : () => { setSaved(''); onNext(); }} />
       )}
-      <ReflectSheet sim={sim} />
+      <ReflectSheet sim={presented} />
       {tutorial && (
         <TutorialCoach
           step={step}
           setStep={(n) => setStep(Math.max(0, n))}
-          sim={sim}
+          sim={presented}
           ui={ui}
           onSkip={skip}
           finished={finishedTour}

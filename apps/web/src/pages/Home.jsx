@@ -1,3 +1,4 @@
+import { getLanguage } from '@/i18n';
 import clsx from 'clsx';
 import { ArrowRight, BellRing, CalendarDays, CalendarPlus, ChevronLeft, ChevronRight, FileUp, Flame, MessageCircle, PlayCircle, Star } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -100,15 +101,15 @@ export default function Home() {
   const studying = subjects.filter((s) => s.studying);
   const shown = [...studying, ...subjects.filter((x) => !x.studying)].slice(0, 12);
 
-  const today = new Intl.DateTimeFormat('id-ID', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'Asia/Jakarta' }).format(new Date());
+  const today = new Intl.DateTimeFormat(getLanguage() === 'en' ? 'en-GB' : 'id-ID', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'Asia/Jakarta' }).format(new Date());
   const week = (progress?.daily || []).slice(-7);
-  const dayName = (d) => new Intl.DateTimeFormat('id-ID', { weekday: 'narrow', timeZone: 'UTC' }).format(new Date(`${d}T00:00:00Z`));
+  const dayName = (d) => new Intl.DateTimeFormat(getLanguage() === 'en' ? 'en-GB' : 'id-ID', { weekday: 'narrow', timeZone: 'UTC' }).format(new Date(`${d}T00:00:00Z`));
 
   return (
     <div className="space-y-10">
       <header className="page-head home-head">
         <p className="eyebrow mb-3">{today}</p>
-        <h1 className="page-title">Halo, <span className="hl">{me?.name?.split(' ')[0]}</span>.</h1>
+        <h1 className="page-title">Halo, <span className="hl" translate="no">{me?.name?.split(' ')[0]}</span>.</h1>
         <p className="mt-3 max-w-xl text-[17px] text-ink-muted">Mau mulai dari mana hari ini? Satu BAB kecil pun tetap dihitung.</p>
         <p className="hand page-head-note home-note" aria-hidden>sedikit lebih paham, setiap hari ✎</p>
       </header>
@@ -157,7 +158,7 @@ export default function Home() {
 
         <section className="streak-card card-chunky tone-surface tone-sun tex-halftone" aria-labelledby="streak-title">
           <p id="streak-title" className="flex items-center gap-2 text-sm font-bold text-[rgb(var(--tone-fg))]"><span className="streak-flame"><Flame size={18} aria-hidden /></span> Hari aktif berturut-turut</p>
-          <p className="mt-3 font-display text-[56px] font-extrabold leading-none tracking-tight text-ink">{progress?.streak ?? '–'}<span className="ml-1.5 text-lg font-bold text-[rgb(var(--tone-fg))]">hari</span></p>
+          <p className="mt-3 font-display text-[56px] font-extrabold leading-none tracking-tight text-ink">{progress?.streak ?? '–'}<span className="ml-1.5 text-lg font-bold text-[rgb(var(--tone-fg))]">{getLanguage() === 'en' && progress?.streak === 1 ? 'day' : 'hari'}</span></p>
           {week.length > 0 && (
             <ol className="streak-week" aria-label="Aktivitas 7 hari terakhir">
               {week.map((d) => (

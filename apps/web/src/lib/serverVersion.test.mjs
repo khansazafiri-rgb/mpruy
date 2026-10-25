@@ -15,6 +15,6 @@ test('serverIsBehind', () => {
   assert.equal(serverIsBehind('1800001400_drilling.js'), true);
   assert.equal(serverIsBehind(''), true);
   assert.equal(serverIsBehind('1800001500_drilling_chapters.js'), true);
-  assert.equal(serverIsBehind('1800001600_explanation_english.js'), false);
-  assert.equal(serverIsBehind('1800001600_lain.js'), false);
+  assert.equal(serverIsBehind('1800001600_explanation_english.js'), true);
+  assert.equal(serverIsBehind('1800001700_global_language.js'), false);
 });

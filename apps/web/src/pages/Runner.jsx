@@ -11,6 +11,7 @@ import QuestionView from '@/components/QuestionView';
 import ReportDialog from '@/components/ReportDialog';
 import { Alert, Badge, Modal, PageLoader, ProgressBar, Tabs } from '@/components/ui';
 import Logo from '@/components/Logo';
+import LanguageSwitch from '@/components/LanguageSwitch';
 import MascotTip from '@/components/MascotTip';
 import { api } from '@/lib/api';
 import { DIFF, KIND, QTYPE, scoreText } from '@/lib/labels';
@@ -46,7 +47,7 @@ function Frame({ title, children, right }) {
         <div className="study-header-inner mx-auto flex items-center gap-3">
           <Link to="/beranda" aria-label="Beranda"><Logo variant="mark" className="sm:hidden" /><Logo className="hidden sm:block" /></Link>
           {title && <p className="study-header-title hidden truncate text-ink-muted sm:block">{title}</p>}
-          <div className="ml-auto flex items-center gap-2">{right}</div>
+          <div className="ml-auto flex items-center gap-2"><LanguageSwitch />{right}</div>
         </div>
       </header>
       <main className="study-main mx-auto">{children}</main>

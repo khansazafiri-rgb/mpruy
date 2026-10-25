@@ -48,6 +48,7 @@ function findCase(app, key) {
 
 function caseOut(rec, full) {
   const out = {
+    id: rec.id,
     key: rec.getString("key"),
     title: rec.getString("title"),
     poli: rec.getString("poli"),
@@ -87,6 +88,8 @@ function content(app, withInactive) {
     d.dxOk = r.getString("dxOk");
     d.title = r.getString("title");
     d.order = r.getInt("order");
+    const english = require((typeof __hooks !== "undefined" ? __hooks : __dirname + "/..") + "/lib/explanationService.js").published(app, r, "case");
+    if (english) d.english = english;
     cases[r.getString("key")] = d;
   });
   return { cases: cases, dx: dx };

@@ -105,7 +105,7 @@ export default function Questions() {
                         <td className="p-3">{QTYPE[q.qtype]}{q.answer ? ` · ${q.answer}` : ''}</td>
                         <td className="p-3"><Badge className={DIFF_CLASS[q.difficulty]}>{DIFF[q.difficulty]}</Badge></td>
                         <td className="p-3 text-xs">{q.scope === 'all' ? 'General' : `${q.campuses.length} kampus`}</td>
-                        <td className="p-3"><div className="flex flex-wrap gap-1"><button type="button" className="btn-ghost btn-sm" onClick={() => setEdit(q)} aria-label="Ubah soal"><Pencil size={15} /></button><button type="button" className="btn-ghost btn-sm" onClick={() => setEnglish(q.id)} aria-label="Pembahasan Inggris" title="Pembahasan Inggris"><Languages size={16} /></button></div></td>
+                        <td className="p-3"><div className="flex flex-wrap gap-1"><button type="button" className="btn-ghost btn-sm" onClick={() => setEdit(q)} aria-label="Ubah soal"><Pencil size={15} /></button><button type="button" className="btn-ghost btn-sm" onClick={() => setEnglish(q.id)} aria-label="Versi Inggris" title="Versi Inggris"><Languages size={16} /></button></div></td>
                       </tr>
                     ))}
                     {!data.items.length && <tr><td colSpan={7} className="p-6 text-center text-ink-muted">Belum ada soal di filter ini.</td></tr>}
