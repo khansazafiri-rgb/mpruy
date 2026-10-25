@@ -2,8 +2,9 @@
 // dan (bila kunci sudah dibuka) hasil serta pembahasannya.
 import clsx from 'clsx';
 import { CheckCircle2, Flag, Lightbulb, MessageSquareWarning, XCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DIFF, DIFF_CLASS, QTYPE } from '@/lib/labels';
+import { withExplanationLanguage } from '@/lib/explanationLanguage';
 import RichContent, { Content } from './RichContent';
 import { Badge } from './ui';
 
@@ -117,6 +118,21 @@ export function EsaiInputs({ q, value = {}, onChange, revealed, disabled }) {
 
 export default function QuestionView({ q, index, total, value, onChange, revealed, result, disabled, onReport, flagged, onFlag }) {
   const [hint, setHint] = useState(false);
+  const [language, setLanguage] = useState(() => {
+    try { return localStorage.getItem('medcoel-explanation-language') === 'en' ? 'en' : 'original'; } catch { return 'original'; }
+  });
+  useEffect(() => {
+    const sync = (event) => setLanguage(event.detail === 'en' ? 'en' : 'original');
+    window.addEventListener('medcoel-explanation-language', sync);
+    return () => window.removeEventListener('medcoel-explanation-language', sync);
+  }, []);
+  const changeLanguage = (next) => {
+    setLanguage(next);
+    try { localStorage.setItem('medcoel-explanation-language', next); } catch { /* Preference is optional. */ }
+    window.dispatchEvent(new CustomEvent('medcoel-explanation-language', { detail: next }));
+  };
+  const displayed = revealed ? withExplanationLanguage(q, language) : q;
+  const hasExplanation = q.explanation || q.options?.some((o) => o.explanation) || q.subQuestions?.some((s) => s.explanation || s.keyPoints?.length);
   const isChoice = q.qtype === 'A' || q.qtype === 'K';
   return (
     <article className="card question-card" aria-labelledby={`soal-${q.id}`}>
@@ -146,10 +162,20 @@ export default function QuestionView({ q, index, total, value, onChange, reveale
         </div>
       )}
 
+      {revealed && hasExplanation && (
+        <div className="mt-4 rounded-xl border border-line bg-page p-3">
+          <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Bahasa pembahasan">
+            <span className="mr-auto text-sm font-semibold">Bahasa pembahasan</span>
+            <button type="button" className={`${language !== 'en' || !q.explanationEnglish ? 'btn-primary' : 'btn-secondary'} btn-sm`} aria-pressed={language !== 'en' || !q.explanationEnglish} onClick={() => changeLanguage('original')}>Asli</button>
+            <button type="button" className={`${language === 'en' && q.explanationEnglish ? 'btn-primary' : 'btn-secondary'} btn-sm`} aria-pressed={language === 'en' && !!q.explanationEnglish} disabled={!q.explanationEnglish} onClick={() => changeLanguage('en')}>English</button>
+          </div>
+          <p className="mt-2 text-xs text-ink-muted" role="status">{q.explanationEnglish ? 'Versi Inggris sudah diperiksa. Istilah ilmiah dipertahankan.' : 'Versi Inggris belum tersedia. Pembahasan asli tetap ditampilkan.'}</p>
+        </div>
+      )}
       <div className="mt-4">
-        {isChoice && <OptionList q={q} value={value} onChange={onChange} revealed={revealed} disabled={disabled || revealed} />}
-        {q.qtype === 'isian' && <IsianInputs q={q} value={value || {}} onChange={onChange} revealed={revealed} detail={result?.detail} disabled={disabled || revealed} />}
-        {q.qtype === 'esai' && <EsaiInputs q={q} value={value || {}} onChange={onChange} revealed={revealed} disabled={disabled || revealed} />}
+        {isChoice && <OptionList q={displayed} value={value} onChange={onChange} revealed={revealed} disabled={disabled || revealed} />}
+        {q.qtype === 'isian' && <IsianInputs q={displayed} value={value || {}} onChange={onChange} revealed={revealed} detail={result?.detail} disabled={disabled || revealed} />}
+        {q.qtype === 'esai' && <EsaiInputs q={displayed} value={value || {}} onChange={onChange} revealed={revealed} disabled={disabled || revealed} />}
       </div>
 
       {revealed && result && result.scored !== false && (
@@ -161,7 +187,7 @@ export default function QuestionView({ q, index, total, value, onChange, reveale
       {revealed && q.explanation && (
         <section className="question-explanation">
           <h3 className="mb-2 font-display text-base font-semibold">Pembahasan</h3>
-          <RichContent value={q.explanation} />
+          <div lang={language === 'en' && q.explanationEnglish ? 'en' : undefined}><RichContent value={displayed.explanation} /></div>
         </section>
       )}
       {(onFlag || onReport) && <div className="question-tools">

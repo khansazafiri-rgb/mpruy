@@ -73,6 +73,12 @@ function General() {
         </div>
       </section>
       <section className="card space-y-3 p-5">
+        <h2 className="font-display text-lg font-semibold">Istilah ilmiah pembahasan Inggris</h2>
+        <Field label="Kamus istilah yang wajib dipertahankan" htmlFor="st-terms" hint="Satu istilah per baris, paling banyak 200 istilah. Berlaku untuk semua soal. Perubahan kamus membuat terjemahan lama perlu diperiksa ulang.">
+          <textarea id="st-terms" className="input" rows={5} maxLength={6000} value={rec.translationTerms || ''} onChange={(e) => set('translationTerms', e.target.value)} placeholder={'nervus medianus\nM. supraspinatus\ncurah jantung'} />
+        </Field>
+      </section>
+      <section className="card space-y-3 p-5">
         <h2 className="font-display text-lg font-semibold">Kebijakan</h2>
         <Field label="Kebijakan privasi" htmlFor="st-pp" hint="Kosongkan untuk memakai teks bawaan."><textarea id="st-pp" className="input min-h-[140px]" value={rec.privacyPolicy} onChange={(e) => set('privacyPolicy', e.target.value)} /></Field>
         <Field label="Kebijakan hak cipta PDF" htmlFor="st-cp"><textarea id="st-cp" className="input min-h-[100px]" value={rec.copyrightPolicy} onChange={(e) => set('copyrightPolicy', e.target.value)} /></Field>
