@@ -68,7 +68,7 @@ function view(app, rec, kind) {
     reviewedAt: doc.reviewedAt || "", subjectName: subjectName, question: s.q,
     segments: en.segments(s.q, true).map((part) => {
       const saved = entries.find((entry) => entry.id === part.id);
-      return { id: part.id, label: kind === "case" && part.id.startsWith("explanation.") ? clinical.parts(s.q.clinicalContext)[Number(part.id.split(".")[1])].label : part.label, source: part.source, text: saved ? saved.text : "", keep: en.requiredTerms(part.source, s.allTerms) };
+      return { id: part.id, label: kind === "case" && part.id.startsWith("explanation.") ? clinical.parts(s.q.clinicalContext)[Number(part.id.split(".")[1])].label : part.label, source: part.source, text: saved ? saved.text : "", keep: en.requiredForSegment(s.q, part, s.allTerms) };
     }),
   };
 }

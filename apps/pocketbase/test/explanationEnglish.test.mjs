@@ -48,6 +48,32 @@ test('protects Latin names, acronyms, units and explicit scientific glossary', (
   assert.match(en.validate(q, unit, []).join(' '), /mg/);
 });
 
+test('an acronym cannot be satisfied by a substring inside another identifier', () => {
+  const question = { explanation: 'SREBP aktif saat kolesterol RE rendah.' };
+  assert.ok(en.validate(question, [{ id: 'explanation', text: 'SREBP is active when ER cholesterol is low.' }], []).some((e) => e.includes('"RE"')));
+  assert.deepEqual(en.validate(question, [{ id: 'explanation', text: 'SREBP is active when cholesterol in the RE is low.' }], []), []);
+  assert.ok(en.hasTerm('SREBP; RE', 'RE'));
+  assert.ok(!en.hasTerm('SREBP', 'RE'));
+  assert.ok(!en.hasTerm('FcεRI', 'RI'));
+  assert.deepEqual(en.requiredTerms('FcεRI', []), []);
+  assert.deepEqual(en.requiredTerms('SREBP puis RE', ['RE']), ['RE', 'SREBP']);
+  assert.ok(en.validate({ explanation: 'FcεRI' }, [{ id: 'explanation', text: 'FcεRI2' }], ['FcεRI']).length);
+});
+
+test('repeated option labels are not anatomical abbreviations; real artery names remain protected', () => {
+  const labeled = { options: [{ label: 'A', text: 'A. defek lapang pandang' }, { label: 'B', text: 'B. nyeri mata' }] };
+  const translated = [{ id: 'options.0.text', text: 'A. visual field defect' }, { id: 'options.1.text', text: 'B. eye pain' }];
+  assert.deepEqual(en.requiredForSegment(labeled, en.segments(labeled, true)[0], []), []);
+  assert.deepEqual(en.validate(labeled, translated, [], true), []);
+  assert.ok(en.validate(labeled, translated, ['A. defek'], true).length, 'explicit glossary overrides label inference');
+  const arterial = { options: [{ label: 'A', text: 'A. carotis communis' }, { label: 'B', text: 'nervus medianus' }] };
+  assert.ok(en.requiredForSegment(arterial, en.segments(arterial, true)[0], []).includes('A. carotis communis'));
+  const nested = { options: [{ label: 'A', text: 'A. A. carotis communis' }, { label: 'B', text: 'B. nervus medianus' }] };
+  assert.ok(en.requiredForSegment(nested, en.segments(nested, true)[0], []).includes('A. carotis communis'));
+  const request = JSON.parse(en.request(labeled, [], 'test-model', true).input[0].content);
+  assert.deepEqual(request.segments[0].keep, []);
+});
+
 test('rejects missing, duplicate, blank and changed numeric values', () => {
   assert.ok(en.validate(q, entries().slice(1), []).length);
   const duplicate = entries(); duplicate[0] = duplicate[1];
