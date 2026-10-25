@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { ArrowRight, FlaskConical, Search } from 'lucide-react';
+import { ArrowLeft, ArrowRight, FlaskConical, Search } from 'lucide-react';
 import { api, errorText } from '@/lib/api';
 import { Alert, PageLoader } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
-import LabImage from '@/features/lab/LabImage';
-import LabQuestion from '@/features/lab/LabQuestion';
+import LabLesson from '@/features/lab/LabLesson';
+import LabPracticeSession from '@/features/lab/LabPracticeSession';
+import { LabBreadcrumbs, LabPathNavigation } from '@/features/lab/LabNav';
+import { crumbs, objectHref, pathNeighbors } from '@/features/lab/labUtils';
 
 const DOMAINS = { imaging: 'Medical Imaging', clinical_pathology: 'Patologi Klinik', microbiology: 'Mikrobiologi', parasitology: 'Parasitologi', histology: 'Histologi & Histopatologi' };
 function useLab(path, query) {
   const [state, setState] = useState({ data: null, error: '', loading: true });
   const [retry, setRetry] = useState(0); const key = JSON.stringify(query || {});
-  useEffect(() => { let live = true; setState({ data: null, error: '', loading: true }); api(path, { query: JSON.parse(key) }).then((data) => live && setState({ data, error: '', loading: false })).catch((e) => live && setState({ data: null, error: errorText(e), loading: false })); return () => { live = false; }; }, [path, key, retry]);
+  useEffect(() => { if (!path) { setState({ data: null, error: '', loading: false }); return undefined; } let live = true; setState({ data: null, error: '', loading: true }); api(path, { query: JSON.parse(key) }).then((data) => live && setState({ data, error: '', loading: false })).catch((e) => live && setState({ data: null, error: errorText(e), loading: false })); return () => { live = false; }; }, [path, key, retry]);
   return { ...state, retry: () => setRetry((x) => x + 1) };
 }
 function LoadState({ state }) { return state.loading ? <PageLoader /> : state.error ? <div className="space-y-3"><Alert>{state.error}</Alert><button className="btn btn-secondary" onClick={state.retry}>Coba lagi</button></div> : null; }
@@ -34,21 +36,44 @@ export default function Lab() {
 }
 export function LabPathway() {
   const { slug } = useParams(); const state = useLab(`lab/pathways/${encodeURIComponent(slug)}`); const d = state.data;
-  return <div className="space-y-5"><Link to="/lab?mode=guided" className="text-brand underline">← Semua jalur</Link><LoadState state={state} />{d && <><h1 className="text-3xl font-bold">{d.title}</h1><p>{d.summary}</p><Alert kind="info">Urutan ini hanya rekomendasi. Buka langkah mana pun, kapan pun.</Alert><ol className="space-y-3">{d.steps.map((s) => <li key={s.id}><Link className="card flex items-center gap-4 p-5 hover:border-brand" to={`/lab/objek/${s.slug}`}><span className="rounded-full bg-brand-soft px-3 py-1 font-bold text-brand">{s.position}</span><span className="flex-1 font-semibold">{s.title}</span><ArrowRight size={18} /></Link></li>)}</ol>{!d.steps.length && <p>Langkah pada jalur ini sedang diperbarui.</p>}</>}</div>;
+  return <div className="space-y-5">
+    <LabBreadcrumbs items={[{ label: 'Lab', to: '/lab' }, { label: 'Guided Learning', to: '/lab?mode=guided' }, { label: d?.title || 'Jalur' }]} />
+    <LoadState state={state} />
+    {d && <>
+      <header className="space-y-2"><h1 className="text-3xl font-bold">{d.title}</h1><p className="text-ink-muted">{d.summary}</p><p className="text-sm font-semibold text-brand">{d.steps.length} langkah · urutan disarankan, tetap bebas melompat</p></header>
+      <ol className="space-y-3">{d.steps.map((s, i) => <li key={s.id}><Link className="card flex items-center gap-4 p-5 hover:border-brand focus:outline-brand" to={objectHref(s.slug, slug)}>
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-soft font-bold text-brand" aria-hidden>{i + 1}</span>
+        <span className="min-w-0 flex-1"><span className="block text-xs font-semibold uppercase text-ink-muted">Langkah {i + 1} dari {d.steps.length}{s.modality ? ` · ${s.modality}` : ''}</span><span className="block font-semibold">{s.title}</span>{s.summary && <span className="mt-1 block text-sm text-ink-muted">{s.summary}</span>}</span>
+        <ArrowRight size={18} aria-hidden />
+      </Link></li>)}</ol>
+      {d.steps.length > 0 && <Link to={objectHref(d.steps[0].slug, slug)} className="btn btn-primary">Mulai dari langkah 1</Link>}
+      {!d.steps.length && <p>Langkah pada jalur ini sedang diperbarui.</p>}
+    </>}
+  </div>;
 }
 export function LabObject() {
-  const { slug } = useParams(); const state = useLab(`lab/objects/${encodeURIComponent(slug)}`); const d = state.data; const nav = useNavigate(); const [practiceError, setPracticeError] = useState(''); const [starting, setStarting] = useState(false);
-  async function practice(id) { setStarting(true); setPracticeError(''); try { const r = await api(`lab/objects/${d.id}/practice`, { method: 'POST', body: { question: id } }); nav(`/kerjakan/${r.id}`); } catch (e) { setPracticeError(errorText(e)); } finally { setStarting(false); } }
-  return <div className="space-y-6"><Link className="text-brand underline" to="/lab">← Explore Lab</Link><LoadState state={state} />{d && <div key={d.id} className="space-y-6"><header><p className="mb-2 text-sm font-semibold text-brand">{DOMAINS[d.domain]} · {d.modality}</p><h1 className="text-3xl font-bold">{d.title}</h1><p className="mt-3 text-ink-muted">{d.summary}</p><div className="mt-3 flex flex-wrap gap-2">{d.tags.map((tag) => <Link key={tag} to={`/lab?q=${encodeURIComponent(tag)}`} className="chip bg-brand-soft text-brand">{tag}</Link>)}</div></header>
+  const { slug } = useParams(); const [params] = useSearchParams(); const pathSlug = params.get('jalur') || '';
+  const state = useLab(`lab/objects/${encodeURIComponent(slug)}`); const pathState = useLab(pathSlug ? `lab/pathways/${encodeURIComponent(pathSlug)}` : null);
+  const pathway = pathState.data; const ctx = pathway ? pathNeighbors(pathway.steps, slug) : null;
+  // Konteks jalur dipertahankan hanya bila materi memang ada di jalur itu; kalau tidak, dianggap dibuka dari Explore.
+  const route = ctx ? { pathway: { slug: pathSlug, title: pathway.title }, ctx } : null;
+  return <div className="space-y-6"><LoadState state={state} />{state.data && (pathSlug && pathState.loading ? <PageLoader /> : <LabObjectView key={state.data.id} d={state.data} route={route} />)}</div>;
+}
+function LabObjectView({ d, route }) {
+  const nav = useNavigate(); const [practiceError, setPracticeError] = useState(''); const [starting, setStarting] = useState(false); const [practicing, setPracticing] = useState(false);
+  async function legacyPractice(id) { setStarting(true); setPracticeError(''); try { const r = await api(`lab/objects/${d.id}/practice`, { method: 'POST', body: { question: id } }); nav(`/kerjakan/${r.id}`); } catch (e) { setPracticeError(errorText(e)); } finally { setStarting(false); } }
+  const items = crumbs({ title: d.title, domain: d.domain, domainTitle: DOMAINS[d.domain], modality: d.modality, pathway: route?.pathway });
+  const back = route ? { to: `/lab/jalur/${route.pathway.slug}`, label: route.pathway.title } : { to: '/lab', label: 'Explore Lab' };
+  const pathNav = route && <LabPathNavigation pathway={route.pathway} ctx={route.ctx} />;
+  const header = <><div className="flex flex-wrap items-center justify-between gap-2"><Link className="inline-flex items-center gap-1 text-brand underline" to={back.to}><ArrowLeft size={16} aria-hidden /> {back.label}</Link></div><LabBreadcrumbs items={items} /></>;
+  if (practicing) return <div className="space-y-4">{header}<h1 className="text-2xl font-bold">{d.title}</h1><LabPracticeSession questions={d.questions} onExit={() => setPracticing(false)}>{pathNav}</LabPracticeSession></div>;
+  const lessonCtx = { modality: d.modality, startPractice: () => { setPracticing(true); }, legacyPractice, practiceError, starting };
+  return <div className="space-y-6">
+    {header}
+    <header><p className="mb-2 text-sm font-semibold text-brand">{DOMAINS[d.domain]}{d.modality ? ` · ${d.modality}` : ''}</p><h1 className="text-3xl font-bold">{d.title}</h1><p className="mt-3 text-ink-muted">{d.summary}</p><div className="mt-3 flex flex-wrap gap-2">{d.tags.map((tag) => <Link key={tag} to={`/lab?q=${encodeURIComponent(tag)}`} className="chip bg-brand-soft text-brand">{tag}</Link>)}</div></header>
     {d.demo && <Alert kind="warn">Contoh sintetis untuk mencoba fitur. Bukan data pasien atau materi diagnosis tervalidasi.</Alert>}
-    {d.assets.map((a) => <section key={a.id} className="card p-4"><LabImage key={`${d.id}-${a.id}`} asset={a} /></section>)}
-    {d.data.definition && <section className="card p-5"><h2 className="mb-3 text-xl font-semibold">Konsep</h2><p className="whitespace-pre-line leading-relaxed">{d.data.definition}</p></section>}
-    {d.data.lab.rows.length > 0 && <section className="card space-y-4 p-5"><h2 className="text-xl font-semibold">Hasil laboratorium</h2><p className="text-sm text-ink-muted">{d.data.lab.context}</p><div className="overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr className="border-b border-line">{['Pemeriksaan', 'Hasil', 'Rentang latihan', 'Status'].map((h) => <th key={h} className="p-3">{h}</th>)}</tr></thead><tbody>{d.data.lab.rows.map((r) => <tr key={r.key} className="border-b border-line"><th className="p-3 font-medium">{r.name}</th><td className="p-3">{r.value} {r.unit}</td><td className="p-3">{r.low}–{r.high} {r.unit}</td><td className="p-3 font-semibold">{({ low: '↓ Rendah', normal: 'Dalam rentang', high: '↑ Tinggi' })[r.flag]}</td></tr>)}</tbody></table></div>{d.data.lab.matches.map((m) => <Alert kind="info" key={m}>{m}</Alert>)}</section>}
-    {d.data.steps.length > 0 && <section className="card space-y-3 p-5"><h2 className="text-xl font-semibold">Langkah identifikasi</h2>{d.data.steps.map((s, i) => <details key={i} className="rounded-xl border border-line p-3"><summary className="cursor-pointer font-semibold">{s.title}</summary><p className="mt-2">{s.finding}</p></details>)}</section>}
-    {[['Temuan kunci', d.data.keyFindings], ['Interpretasi', d.data.interpretation], ['Diagnosis', d.data.diagnosis], ['Diagnosis banding', d.data.differentials], ['Korelasi klinis', d.data.clinicalAssociations]].filter(([, v]) => v?.length).map(([title, v]) => <section key={title} className="card p-5"><h2 className="mb-3 text-xl font-semibold">{title}</h2>{Array.isArray(v) ? <ul className="list-disc space-y-2 pl-5">{v.map((t, i) => <li key={i}>{t}</li>)}</ul> : <p className="whitespace-pre-line leading-relaxed">{v}</p>}</section>)}
-    {d.questions.length > 0 && <section className="space-y-4"><h2 className="text-2xl font-semibold">Latihan topik ini</h2>{d.questions.map((q) => <LabQuestion key={`${d.id}-${q.id}`} question={q} />)}</section>}
-    {d.legacyQuestions.length > 0 && <section className="card space-y-3 p-5"><h2 className="text-xl font-semibold">Latihan bank soal MEDCOEL</h2><Alert>{practiceError}</Alert>{d.legacyQuestions.map((q) => <button disabled={starting} key={q.id} className="btn btn-secondary mr-2" onClick={() => practice(q.id)}>Kerjakan: {q.title} ({q.qtype})</button>)}</section>}
+    <LabLesson d={d} ctx={lessonCtx} />
+    {pathNav}
     {d.related.length > 0 && <section className="space-y-4"><h2 className="text-2xl font-semibold">Topik terkait</h2><div className="grid gap-4 sm:grid-cols-2">{d.related.map((r) => <ObjectCard item={r} key={r.id} />)}</div></section>}
-    {d.data.references.length > 0 && <section className="space-y-2 text-sm"><h2 className="font-semibold">Referensi</h2>{d.data.references.map((r) => <a key={r.url} href={r.url} target="_blank" rel="noreferrer" className="block text-brand underline">{r.title}</a>)}</section>}
-  </div>}</div>;
+  </div>;
 }

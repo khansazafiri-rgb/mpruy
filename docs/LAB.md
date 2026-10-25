@@ -139,3 +139,14 @@ Fase berikutnya: perbaiki akses/deployment staging; review materi medis dan lise
 AI authoring hanya dipertimbangkan setelah kebutuhan nyata terukur: source/ground truth → optional preprocessing → human validation → saved curated result. Bila dipilih, isolasikan di `/opt/medcoel-ai`, audit terpisah license software/weights/data, batasi job concurrency dan memori, serta evaluasi sensitivity/specificity/FP/FN/calibration sesuai tugas. Jangan memasang semua library karena tersedia.
 
 Rujukan teknis: [PocketBase migrations](https://pocketbase.io/docs/js-migrations/) dan [collection operations](https://pocketbase.io/docs/js-collections/). Rujukan konteks contoh anemia: [Merck Manual, Evaluation of Anemia](https://www.merckmanuals.com/professional/hematology/approach-to-the-patient-with-anemia/evaluation-of-anemia); nilai/rentang pada demo adalah data sintetis penulis, bukan kutipan rentang universal.
+
+## Lab V2, Fase 1 (UX siswa)
+
+- Pembaca gambar mempertahankan rasio asli (maks ~900px, ~70% tinggi layar, tidak diperbesar lebih dari 2,5× ukuran asli). Zoom, reset, seret, tombol panah, dan `+`/`-`/`0` dari keyboard. Catatan "Image classification training image · W×H" muncul untuk gambar kecil (≤300px).
+- Kontrol overlay hanya muncul untuk lapisan anotasi yang ada; tanpa anotasi muncul "Tidak tersedia anotasi lokasi untuk gambar ini."
+- Aset dengan label (`· normal` di judul, atau field `label`, atau alt "label dataset 'x'") ditampilkan sebagai galeri horizontal per kelas + pembaca kasus + mode Bandingkan. Aset yang juga dipakai sebagai gambar soal latihan disembunyikan di balik pilihan "Buka contoh berlabel" agar latihan tidak terbongkar.
+- Latihan: satu kasus per layar (`Mulai latihan`), progres, sebelumnya/berikutnya, ringkasan, dan tinjau soal salah. Label benchmark baru tampil setelah jawaban dikirim.
+- Navigasi: materi yang dibuka dari jalur memakai `/lab/objek/<slug>?jalur=<slug-jalur>` sehingga breadcrumb, tombol kembali, dan "Sebelumnya / n dari m / Berikutnya" tetap di dalam jalur. Tanpa `?jalur`, konteksnya Explore.
+- Materi disusun dari daftar blok (`features/lab/LabLesson.jsx`, registry `LAB_BLOCKS`): objectives, text, image_gallery, steps, list, lab_table, practice, about. Blok baru (comparison, layer_explorer, exploded_view) tinggal didaftarkan di sana.
+- Field opsional baru `data.objectives` (daftar teks, maks 10) pada objek. Tambahan ini kompatibel mundur; tanpa field itu blok tujuan tidak tampil. Perlu restart PocketBase agar admin bisa menyimpannya.
+- Importer (`tools/lab-ingest/import_medmnist.py`) untuk instalasi baru: materi pertama berjudul "Chest X-Ray: Normal vs Pneumonia" membawa 20 aset + tujuan belajar; objek latihan tidak lagi melampirkan galeri. Data yang sudah ada di produksi tidak diubah (importer melewati slug yang sudah ada); ubah lewat JSON editor di `/admin/lab`.

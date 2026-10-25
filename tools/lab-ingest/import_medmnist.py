@@ -270,22 +270,30 @@ def asset_body(row: dict[str, Any], public_base: str, verified: bool) -> dict[st
     }
 
 
-def object_intro() -> dict[str, Any]:
+def object_intro(asset_ids: list[str]) -> dict[str, Any]:
     return {
         "slug": "pneumoniamnist-pengenalan",
-        "title": "Pengenalan PneumoniaMNIST",
+        "title": "Chest X-Ray: Normal vs Pneumonia",
         "domain": "imaging",
         "modality": "Chest X-ray",
-        "summary": "Kenali tujuan, label, dan keterbatasan benchmark CXR pediatrik normal vs pneumonia sebelum latihan klasifikasi.",
+        "summary": "Bandingkan foto toraks normal dan pneumonia pediatrik: apa yang diamati, bagaimana membandingkan, dan batas materi latihan ini.",
         "tags": ["CXR", "thorax", "pneumonia", "pediatrik", "MedMNIST"],
-        "assets": [],
+        "assets": asset_ids,
         "related": [],
         "legacyQuestions": [],
         "data": {
             "demo": False,
+            "objectives": [
+                "Mengenali tampilan umum foto toraks normal",
+                "Mengenali pola dasar pneumonia secara garis besar",
+                "Membandingkan contoh normal dan pneumonia",
+                "Memahami batas materi latihan ini",
+            ],
             "definition": (
-                "PneumoniaMNIST adalah benchmark klasifikasi biner berbasis foto toraks pediatrik. "
-                "Versi yang dipakai MEDCOEL adalah citra 224×224. Label benchmark membedakan normal dan pneumonia."
+                "Foto toraks (chest X-ray, CXR) adalah gambar proyeksi 2D. Mulailah dengan orientasi: pastikan gambar frontal, "
+                "lalu nilai paru kanan dan kiri. Pada paru normal, lapang paru tampak relatif gelap dan simetris. "
+                "Pada pneumonia, area paru dapat tampak lebih putih (opasitas meningkat). "
+                "Geser galeri di bawah, buka beberapa kasus, lalu gunakan tombol Bandingkan."
             ),
             "keyFindings": [
                 "Gunakan gambar sebagai latihan klasifikasi pola global, bukan sebagai pengganti pembacaan radiologi lengkap.",
@@ -303,9 +311,11 @@ def object_intro() -> dict[str, Any]:
                 {"title": "MedMNIST GitHub", "url": "https://github.com/MedMNIST/MedMNIST"},
             ],
             "steps": [
-                {"title": "Orientasi", "finding": "Pastikan citra adalah frontal chest X-ray dan nilai kualitas gambar secara umum."},
-                {"title": "Observasi", "finding": "Bandingkan pola opasitas paru dan distribusi keseluruhan tanpa mengasumsikan lokasi lesi dari label dataset."},
-                {"title": "Klasifikasi", "finding": "Pilih label benchmark normal atau pneumonia, kemudian bandingkan dengan ground-truth dataset."},
+                {"title": "Orientasi", "finding": "Pastikan citra adalah foto toraks frontal dan nilai kualitas gambar secara umum."},
+                {"title": "Periksa lapang paru", "finding": "Lihat paru kanan dan kiri secara terpisah, lalu bandingkan keduanya."},
+                {"title": "Bandingkan simetri", "finding": "Perhatikan apakah kecerahan kedua paru seimbang atau ada sisi yang tampak lebih putih."},
+                {"title": "Cari opasitas meningkat", "finding": "Area yang lebih putih dapat mengarah ke pneumonia, tetapi label dataset tidak menunjukkan lokasi lesi."},
+                {"title": "Susun interpretasi", "finding": "Pilih normal atau pneumonia, lalu bandingkan dengan label benchmark setelah menjawab."},
             ],
             "lab": {"context": "", "rows": [], "rules": []},
         },
@@ -320,7 +330,7 @@ def object_practice(asset_ids: list[str]) -> dict[str, Any]:
         "modality": "Chest X-ray",
         "summary": "Latihan identifikasi gambar CXR pediatrik menggunakan ground-truth benchmark PneumoniaMNIST.",
         "tags": ["CXR", "thorax", "pneumonia", "normal", "image identification"],
-        "assets": asset_ids,
+        "assets": [],
         "related": [],
         "legacyQuestions": [],
         "data": {
@@ -440,7 +450,7 @@ def main() -> int:
     for row in rows:
         asset_records.append(importer.ensure("assets", asset_body(row, args.public_base, args.license_verified)))
 
-    intro = importer.ensure("objects", object_intro())
+    intro = importer.ensure("objects", object_intro([a["id"] for a in asset_records]))
     practice = importer.ensure("objects", object_practice([a["id"] for a in asset_records]))
 
     for row, asset in zip(rows, asset_records):
