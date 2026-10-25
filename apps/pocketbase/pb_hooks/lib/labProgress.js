@@ -23,6 +23,10 @@ function state(app, user, pathway) {
 // body: { pathway: slug|id, object: slug|id, complete?: boolean }  complete=true marks done, false clears, omitted only records "last studied".
 function mark(app, user, body) {
   const pathway = lab.find(app, 'pathways', String(body.pathway || ''), true);
+  if (body.reset === true) { // "Ulangi jalur": clears this learner's progress on one pathway only
+    const r = row(app, user, pathway); if (r) { r.set('completed', []); r.set('lastObject', ''); app.save(r); }
+    const s0 = state(app, user, pathway); return { total: s0.total, completed: s0.completed, lastObject: s0.lastObject };
+  }
   const st = steps(app, pathway); const target = lab.find(app, 'objects', String(body.object || ''), true);
   if (!st.some((s) => s.id === target.id)) fail('Materi ini bukan bagian dari jalur tersebut.');
   if (body.complete !== undefined && typeof body.complete !== 'boolean') fail('Nilai complete tidak valid.');
@@ -35,10 +39,16 @@ function mark(app, user, body) {
   });
   const s = state(app, user, pathway); return { total: s.total, completed: s.completed, lastObject: s.lastObject };
 }
+// Per-pathway status for list cards: not started / in progress / completed, plus the number of steps.
+function brief(app, user, pathway) {
+  const s = state(app, user, pathway); const done = s.completed.length;
+  return { total: s.total, done, status: !s.total || (!done && !s.lastObject) ? 'new' : done >= s.total ? 'done' : 'active' };
+}
 function summary(app, user) {
   const rows = app.findRecordsByFilter('lab_progress', 'user = {:u}', '-updated', 20, 0, { u: user.id });
   return rows.flatMap((r) => {
     let p; try { p = lab.find(app, 'pathways', r.getString('pathway'), true); } catch (_) { return []; }
+    if (lab.isDemoSlug(p.getString('slug'))) return []; // onboarding demo never competes with real learning
     const s = state(app, user, p); if (!s.total) return [];
     const next = s.steps.find((x) => !s.completed.includes(x.slug)); const last = s.steps.find((x) => x.slug === s.lastObject);
     return [{ pathway: { slug: p.getString('slug'), title: p.getString('title'), summary: p.getString('summary') }, total: s.total, completed: s.completed, lastObject: s.lastObject, updatedAt: s.updatedAt,
@@ -47,8 +57,8 @@ function summary(app, user) {
   });
 }
 function overview(app, user) {
-  const domains = {}; lab.DOMAINS.forEach((d) => { domains[d] = app.countRecords('lab_objects', $dbx.exp("status = 'published' AND domain = {:d}", { d })); });
+  const domains = {}; lab.DOMAINS.forEach((d) => { domains[d] = app.countRecords('lab_objects', $dbx.exp(`status = 'published' AND domain = {:d} AND data NOT LIKE '%"demo":true%'`, { d })); });
   const progress = summary(app, user);
   return { domains, continue: progress.find((p) => !p.finished) || null, progress };
 }
-module.exports = { state, mark, summary, overview };
+module.exports = { state, mark, brief, summary, overview };

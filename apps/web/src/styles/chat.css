@@ -134,6 +134,10 @@
   box-shadow: 0 3px 0 rgb(var(--forest)), 0 14px 30px -10px rgb(10 56 48 / .65);
 }
 .chat-fab:hover { transform: translateY(-2px); }
+/* Above the fixed bottom navigation including the device safe area; never over a practice answer on phones. */
+.chat-fab { bottom: calc(5rem + env(safe-area-inset-bottom)); }
+@media (min-width: 1024px) { .chat-fab { bottom: 1.5rem; } }
+@media (max-width: 1023px) { body[data-lab-focus] .chat-fab { display: none; } }
 .chat-fab:active { transform: translateY(2px); box-shadow: 0 1px 0 rgb(var(--forest)); }
 
 @keyframes chat-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }

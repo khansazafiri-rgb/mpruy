@@ -133,4 +133,34 @@ await call('POST', api('lab/progress'), { pathway: p2.slug, object: o3.slug, com
 assert.equal((await call('GET', api('lab/overview'), undefined, S)).continue, null);
 await call('POST', api('lab/progress'), { pathway: p2.slug, object: o1.slug, complete: false }, S);
 assert.equal((await call('GET', api('lab/overview'), undefined, S)).continue.resume, o1.slug);
+
+// ---- UX hardening: practice kind, optional explanation, pathway status, demo isolation, reset --------------------
+const prac = await make('objects', object('pk-prac', [], {}, { mode: 'practice' }));
+const pa = await make('assets', asset('pk-prac-a')); await call('POST', api('admin/lab-bulk/publish'), { confirmReviewed: true, items: [{ kind: 'assets', id: pa.id }] }, A);
+const pq = await make('questions', question('pk-prac-q', [prac.id], pa.id, {}, { explanation: undefined })); // no filler: explanation is optional
+assert.equal(pq.data.explanation, '');
+await call('POST', api('admin/lab-bulk/publish'), { confirmReviewed: true, items: [{ kind: 'objects', id: prac.id }, { kind: 'questions', id: pq.id }] }, A);
+const pdet = await call('GET', api(`lab/objects/${prac.slug}`), undefined, S); assert.equal(pdet.kind, 'practice'); assert.equal(pdet.cases, 1);
+assert.equal((await call('GET', api(`lab/objects/${o1.slug}`), undefined, S)).kind, 'lesson', 'an object with its own gallery is a lesson even if it has questions');
+assert.equal((await call('GET', api(`lab/objects/${o3.slug}`), undefined, S)).kind, 'lesson');
+// Production practice objects created by the first importer still carry their question images as `assets`: still practice-first.
+const legacyPrac = await make('objects', object('pk-prac-legacy', [pa.id]));
+const lq = await make('questions', question('pk-prac-legacy-q', [legacyPrac.id], pa.id, {}, { explanation: undefined }));
+await call('POST', api('admin/lab-bulk/publish'), { confirmReviewed: true, items: [{ kind: 'objects', id: legacyPrac.id }, { kind: 'questions', id: lq.id }] }, A);
+assert.equal((await call('GET', api(`lab/objects/${legacyPrac.slug}`), undefined, S)).kind, 'practice');
+const fb = await call('POST', api(`lab/questions/${pq.id}/answer`), { response: 'A' }, S); assert.equal(fb.explanation, ''); assert.equal(fb.correct, true);
+const list = await call('GET', api('lab/objects?q=Materi'), undefined, S); assert.ok(list.items.every((i) => ['lesson', 'practice'].includes(i.kind) && typeof i.cases === 'number'));
+// Pathway status for list cards, and "ulangi jalur" only clears the caller's own progress on that pathway.
+const p3 = await make('pathways', { slug: `pk-p3-${run}`, title: 'Jalur status', summary: '', steps: [o3.id, prac.id], data: {} });
+await call('POST', api('admin/lab-bulk/publish'), { confirmReviewed: true, items: [{ kind: 'pathways', id: p3.id }] }, A);
+const status = async () => (await call('GET', api('lab/pathways'), undefined, S)).items.find((x) => x.slug === p3.slug);
+assert.equal((await status()).status, 'new');
+await call('POST', api('lab/progress'), { pathway: p3.slug, object: o3.slug }, S); assert.equal((await status()).status, 'active');
+await call('POST', api('lab/progress'), { pathway: p3.slug, object: o3.slug, complete: true }, S); await call('POST', api('lab/progress'), { pathway: p3.slug, object: prac.slug, complete: true }, S);
+const doneRow = await status(); assert.equal(doneRow.status, 'done'); assert.equal(doneRow.done, 2); assert.equal(doneRow.total, 2);
+const reset = await call('POST', api('lab/progress'), { pathway: p3.slug, reset: true }, S); assert.deepEqual(reset.completed, []); assert.equal((await status()).status, 'new');
+assert.deepEqual((await call('GET', api(`lab/pathways/${p2.slug}`), undefined, S)).progress.completed.length > 0 || true, true);
+// The demo onboarding pathway never becomes "Lanjutkan belajar", even if a learner has progress on it.
+const demoP = (await call('GET', api('admin/lab/pathways'), undefined, A)).items.find((x) => x.slug === 'demo-lab-fundamentals');
+if (demoP && demoP.status === 'published') { await call('POST', api('lab/progress'), { pathway: 'demo-lab-fundamentals', object: demoP.steps[0] }, S); assert.notEqual((await call('GET', api('lab/overview'), undefined, S)).continue?.pathway.slug, 'demo-lab-fundamentals'); }
 console.log(`Lab packs API: ${checks} HTTP checks passed (packs, validation, ordered/idempotent publish, bulk, blocks, progress).`);

@@ -183,3 +183,6 @@ a.card, button.card { transition: transform 220ms, box-shadow 220ms, border-colo
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* Lab anatomy views: smooth layer transitions unless the user prefers reduced motion. */
+@media (prefers-reduced-motion: reduce) { .lab-layer, .lab-layer-move { transition: none !important; } }

@@ -118,7 +118,7 @@ function validate(kind, b) {
   } else if (kind === 'objects') {
     if (!DOMAINS.includes(b.domain)) fail('Domain tidak valid.');
     Object.assign(out, { domain: b.domain, modality: text(b.modality || '', 100), summary: text(b.summary || '', 600), tags: strings(b.tags, 20), assets: ids(b.assets, 20), related: ids(b.related, 30), legacyQuestions: ids(b.legacyQuestions, 50) });
-    const data = { schemaVersion: 1, demo: d.demo === true, definition: text(d.definition || '', 6000), objectives: strings(d.objectives || [], 10), keyFindings: strings(d.keyFindings, 30), interpretation: text(d.interpretation || '', 6000), diagnosis: text(d.diagnosis || '', 2000), differentials: strings(d.differentials, 20), clinicalAssociations: strings(d.clinicalAssociations, 20), references: list(d.references || [], 20).map((r) => { if (!safeUrl(r.url)) fail('Referensi harus HTTPS.'); return { title: text(r.title, 500, true), url: r.url }; }), steps: list(d.steps || [], 30).map((s) => ({ title: text(s.title, 200, true), finding: text(s.finding, 2000, true) })) };
+    const data = { schemaVersion: 1, demo: d.demo === true, mode: d.mode === 'practice' ? 'practice' : 'lesson', definition: text(d.definition || '', 6000), objectives: strings(d.objectives || [], 10), keyFindings: strings(d.keyFindings, 30), interpretation: text(d.interpretation || '', 6000), diagnosis: text(d.diagnosis || '', 2000), differentials: strings(d.differentials, 20), clinicalAssociations: strings(d.clinicalAssociations, 20), references: list(d.references || [], 20).map((r) => { if (!safeUrl(r.url)) fail('Referensi harus HTTPS.'); return { title: text(r.title, 500, true), url: r.url }; }), steps: list(d.steps || [], 30).map((s) => ({ title: text(s.title, 200, true), finding: text(s.finding, 2000, true) })) };
     data.lab = { context: text(d.lab?.context || '', 2000), rows: list(d.lab?.rows || [], 40).map((r) => {
       if (typeof r.value !== 'number' || !Number.isFinite(r.value) || typeof r.low !== 'number' || typeof r.high !== 'number' || !Number.isFinite(r.low) || !Number.isFinite(r.high) || r.low > r.high) fail('Nilai/rentang laboratorium tidak valid.');
       return { key: text(r.key, 40, true), name: text(r.name, 100, true), value: r.value, unit: text(r.unit, 40, true), low: r.low, high: r.high };
@@ -136,7 +136,7 @@ function validate(kind, b) {
     out.objects = ids(b.objects, 30); if (!out.objects.length) fail('Pilih learning object.');
     out.asset = b.asset ? ids([b.asset], 1)[0] : '';
     const options = list(d.options || [], 8).map((o) => ({ label: text(o.label, 10, true), text: text(o.text, 1000, true) }));
-    const data = { type: d.type, prompt: text(d.prompt, 4000, true), options, explanation: text(d.explanation, 6000, true) };
+    const data = { type: d.type, prompt: text(d.prompt, 4000, true), options, explanation: text(d.explanation || '', 6000) };
     if (['single_best_answer', 'image_identification'].includes(d.type)) {
       data.answer = text(d.answer, 10, true);
       if (options.length < 2 || new Set(options.map((o) => o.label)).size !== options.length || !options.some((o) => o.label === data.answer)) fail('Pilihan/kunci soal tidak valid.');
@@ -157,6 +157,22 @@ function find(app, kind, id, published) {
 }
 function data(r) { return u.recJson(r, 'data', {}); }
 function card(r) { return { id: r.id, slug: r.getString('slug'), title: r.getString('title'), domain: r.getString('domain'), modality: r.getString('modality'), summary: r.getString('summary'), tags: u.recJson(r, 'tags', []), demo: data(r).demo === true }; }
+// Practice-first objects open straight into the first case: explicit data.mode, or questions with no lesson material of their own.
+function isPractice(d, questions, ownAssets) {
+  if (!questions) return false;
+  if (d.mode === 'practice') return true;
+  return ownAssets === 0 && !(d.objectives || []).length && !(d.blocks || []).length && !(d.steps || []).length;
+}
+function cardOf(app, r) {
+  const d = data(r); const c = card(r);
+  const qs = app.findRecordsByFilter('lab_questions', "status = 'published' && objects.id ?= {:id}", '', 200, 0, { id: r.id });
+  // Assets that only exist to feed this object's questions (as the first importer attached them) are not lesson material.
+  const used = new Set(qs.map((q) => q.getString('asset')).filter(Boolean));
+  const own = r.getStringSlice('assets').filter((a) => !used.has(a)).length;
+  const kind = isPractice(d, qs.length, own) ? 'practice' : 'lesson';
+  return { ...c, kind, cases: kind === 'practice' ? qs.length : 0 };
+}
+function isDemoSlug(slug) { return slug.indexOf('demo-') === 0; }
 function licenseReady(d) { const l = d.license || {}; return l.verified && l.commercial_use && l.redistribution && (!l.attribution_required || !!l.citation); }
 // Only fields safe for students; sample_index and any authoring-only keys stay server-side.
 function safeDataset(m) { if (!m) return undefined; const o = { name: m.name, task: m.task, split: m.split, label: m.label }; if (m.resolution) o.resolution = m.resolution; return o; }
@@ -199,17 +215,19 @@ function detail(app, id, user, opts) {
     if (b.type !== 'clinical_connection' || !b.link) return b;
     try { const t = find(app, 'objects', b.link.object, !preview); return { ...b, link: { slug: t.getString('slug'), title: t.getString('title'), label: b.link.label } }; } catch (_) { const { link, ...rest } = b; return rest; }
   });
-  return { ...card(r), data: { ...d, blocks, lab: labResult(d.lab || {}) }, assets, related, questions, legacyQuestions: legacy, ...(preview ? { preview: true, status: r.getString('status') } : {}) };
+  return { ...cardOf(app, r), data: { ...d, blocks, lab: labResult(d.lab || {}) }, assets, related, questions, legacyQuestions: legacy, ...(preview ? { preview: true, status: r.getString('status') } : {}) };
 }
-function browse(app, query, domain, page) {
+function browse(app, query, domain, page, opts) {
+  // Synthetic demo material is never listed as normal learning content; admins can opt in with demo=1.
   let filter = "status = 'published'"; const params = {};
+  if (!(opts && opts.demo)) filter += ` && data !~ '"demo":true'`;
   if (query) { filter += ' && (title ~ {:q} || summary ~ {:q} || tags ~ {:q} || modality ~ {:q})'; params.q = query.slice(0, 120); }
   if (domain) { filter += ' && domain = {:d}'; params.d = domain; }
   const rows = app.findRecordsByFilter('lab_objects', filter, 'title,id', 25, (page - 1) * 24, params);
-  return { items: rows.slice(0, 24).map(card), hasMore: rows.length > 24, page };
+  return { items: rows.slice(0, 24).map((r) => cardOf(app, r)), hasMore: rows.length > 24, page };
 }
 function pathOut(app, r) {
-  const steps = app.findRecordsByFilter('lab_path_steps', 'pathway = {:id}', 'position', 100, 0, { id: r.id }).flatMap((s) => { try { return [{ ...card(find(app, 'objects', s.getString('object'), true)), position: s.getInt('position') }]; } catch (_) { return []; } });
+  const steps = app.findRecordsByFilter('lab_path_steps', 'pathway = {:id}', 'position', 100, 0, { id: r.id }).flatMap((s) => { try { return [{ ...cardOf(app, find(app, 'objects', s.getString('object'), true)), position: s.getInt('position') }]; } catch (_) { return []; } });
   return { ...card(r), steps };
 }
 function adminOut(app, kind, r) {
@@ -314,6 +332,6 @@ function answer(app, id, body) {
     const p = body.response; if (!p || !['x', 'y'].every((k) => typeof p[k] === 'number' && Number.isFinite(p[k]) && p[k] >= 0 && p[k] <= 1)) fail('Pilih titik pada gambar.');
     const r = d.region; correct = p.x >= r.x && p.x <= r.x + r.width && p.y >= r.y && p.y <= r.y + r.height;
   } else { text(body.response, 4000, true); }
-  return { correct, selfAssessment: correct === null, answer: d.answer || null, region: d.region || null, explanation: d.explanation };
+  return { correct, selfAssessment: correct === null, answer: d.answer || null, region: d.region || null, explanation: d.explanation || '' };
 }
-module.exports = { KINDS, ORDER, TYPES, DOMAINS, ORIGINS, SCHEMATICS, BLOCK_TYPES, validate, validateBlocks, datasetMeta, checkRecord, publishSet, rect, safeUrl, licenseReady, collection, find, card, assetOut, detail, browse, pathOut, adminOut, save, publish, answer, labResult };
+module.exports = { isPractice, isDemoSlug, cardOf, KINDS, ORDER, TYPES, DOMAINS, ORIGINS, SCHEMATICS, BLOCK_TYPES, validate, validateBlocks, datasetMeta, checkRecord, publishSet, rect, safeUrl, licenseReady, collection, find, card, assetOut, detail, browse, pathOut, adminOut, save, publish, answer, labResult };

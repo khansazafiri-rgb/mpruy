@@ -10,7 +10,7 @@ import { objectHref } from './labUtils';
 
 // Isi materi disusun dari daftar blok. Jenis blok baru (comparison, layer_explorer, exploded_view, ...)
 // cukup didaftarkan di LAB_BLOCKS dan ditambahkan ke buildBlocks; halaman tidak perlu ditulis ulang.
-const Section = ({ title, children, className = '' }) => <section className={`card space-y-3 p-5 ${className}`}>{title && <h2 className="text-xl font-semibold">{title}</h2>}{children}</section>;
+const Section = ({ title, children, className = '' }) => <section className={`card min-w-0 space-y-3 p-4 sm:p-5 ${className}`}>{title && <h2 className="text-xl font-semibold">{title}</h2>}{children}</section>;
 const Bullets = ({ items }) => <ul className="list-disc space-y-2 pl-5">{items.map((t, i) => <li key={i}>{t}</li>)}</ul>;
 const FLAG = { low: '↓ Rendah', normal: 'Dalam rentang', high: '↑ Tinggi' };
 

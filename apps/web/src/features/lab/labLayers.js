@@ -70,3 +70,28 @@ export function depthFromKey(key, depth, count) {
   if (key === 'End') return Math.max(0, count - 1);
   return null;
 }
+
+// Conservative wheel navigation for the layer explorer. Returns the next depth and whether the event should be
+// consumed. At either end it is NOT consumed, so the page keeps scrolling; small deltas accumulate before a step.
+export function wheelDepth(depth, count, deltaY, acc = 0, threshold = 60) {
+  const total = acc + deltaY; const dir = Math.sign(total);
+  if (dir === 0) return { depth, acc: 0, consume: false };
+  const next = clampDepth(depth + dir, count);
+  if (next === depth) return { depth, acc: 0, consume: false };
+  if (Math.abs(total) < threshold) return { depth, acc: total, consume: true };
+  return { depth: next, acc: 0, consume: true };
+}
+
+// Oblique exploded layout. Every layer is a 400-wide sheet drawn flattened (EXPLODED_SY), so one sheet is PLANE_H tall.
+// At full explosion the step between sheets is at least a sheet height: no overlap. The curve is ease-out so that
+// 50% is already clearly separated; 0% is compact. The viewBox height grows with the number of layers.
+export const EXPLODED_SY = 0.3; export const EXPLODED_SX = 0.62;
+export const PLANE_H = 350 * EXPLODED_SY; // layer artwork occupies y 30..380 of the 400 canvas
+const MARGIN = 28;
+export const easeOutExplode = (e) => 1 - (1 - clamp01(e)) ** 1.6;
+export function explodedLayout(count, explode, gap = 1) {
+  const full = PLANE_H * 1.14; const k = easeOutExplode(explode) * clamp01(gap); const step = full * k;
+  const viewH = Math.ceil(PLANE_H + Math.max(0, count - 1) * full + MARGIN * 2);
+  const offsets = Array.from({ length: count }, (_, i) => { const dy = (i - (count - 1) / 2) * step; return { dy, dx: dy * 0.18 }; });
+  return { viewH, step, offsets, planeH: PLANE_H };
+}

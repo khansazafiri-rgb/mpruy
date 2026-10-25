@@ -22,7 +22,7 @@ export default function LabModel3D({ block, asset }) {
   if (!asset?.url) return <Fallback block={block} reason="Berkas model belum tersedia." />;
   if (!webglAvailable()) return <Fallback block={block} reason="Peramban atau perangkat ini tidak mendukung WebGL." />;
   const fallback = <Fallback block={block} reason="Model gagal dimuat. Muat ulang halaman atau coba perangkat lain." />;
-  return <section className="space-y-3" aria-label={`Model 3D: ${block.title}`}>
+  return <section className="min-w-0 max-w-full space-y-3 overflow-hidden" aria-label={`Model 3D: ${block.title}`}>
     <header><h3 className="text-lg font-bold">{block.title}</h3></header>
     <ProvenanceBanner block={block} />
     <Boundary fallback={fallback}><Suspense fallback={<div className="grid h-64 place-items-center rounded-2xl border border-line bg-page text-sm text-ink-muted">Memuat penampil 3D…</div>}><Canvas block={block} asset={asset} /></Suspense></Boundary>

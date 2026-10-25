@@ -409,6 +409,7 @@ def object_practice(asset_ids: list[str], pack_id: str = "") -> dict[str, Any]:
         "legacyQuestions": [],
         "data": {
             "demo": False,
+            "mode": "practice",
             "definition": "Kumpulan citra terpilih dari test split PneumoniaMNIST untuk latihan klasifikasi dua kelas.",
             "keyFindings": [
                 "Tentukan kategori benchmark berdasarkan tampilan CXR secara keseluruhan.",
@@ -442,17 +443,15 @@ def question_body(row: dict[str, Any], object_id: str, asset_id: str, pack_id: s
         "asset": asset_id,
         "data": {
             "type": "image_identification",
-            "prompt": "Berdasarkan label benchmark PneumoniaMNIST, foto toraks ini termasuk kategori mana?",
+            "prompt": "Foto toraks ini paling sesuai dengan kategori mana?",
             "options": [
                 {"label": "A", "text": "Normal"},
                 {"label": "B", "text": "Pneumonia"},
             ],
             "answer": answer,
-            "explanation": (
-                f"Ground-truth PneumoniaMNIST untuk citra ini adalah '{label}'. "
-                "Dataset menyediakan label tingkat-gambar, bukan anotasi lokasi lesi. "
-                "Karena itu pertanyaan ini menilai klasifikasi benchmark dan tidak menyatakan lokasi abnormalitas."
-            ),
+            # Intentionally empty: the dataset has image-level labels only, so there is no medically valid
+            # image-specific explanation to show. Feedback is just the correct/incorrect result and the answer.
+            "explanation": "",
         },
     }
 

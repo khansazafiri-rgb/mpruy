@@ -1,18 +1,20 @@
 /// <reference path="../pb_data/types.d.ts" />
 routerAdd('GET', '/api/medcoel/lab/objects', (e) => {
-  const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); u.requireUser(e);
+  const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); const user = u.requireUser(e);
   const page = Math.min(10000, Math.max(1, parseInt(u.query(e, 'page'), 10) || 1));
-  return e.json(200, lab.browse(e.app, u.query(e, 'q'), u.query(e, 'domain'), page));
+  return e.json(200, lab.browse(e.app, u.query(e, 'q'), u.query(e, 'domain'), page, { demo: user.getString('role') === 'admin' && u.query(e, 'demo') === '1' }));
 });
 routerAdd('GET', '/api/medcoel/lab/objects/{key}', (e) => {
   const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); const user = u.requireUser(e);
   return e.json(200, lab.detail(e.app, e.request.pathValue('key'), user));
 });
 routerAdd('GET', '/api/medcoel/lab/pathways', (e) => {
-  const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); u.requireUser(e);
+  const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); const user = u.requireUser(e);
   const page = Math.min(10000, Math.max(1, parseInt(u.query(e, 'page'), 10) || 1));
   const rows = e.app.findRecordsByFilter('lab_pathways', "status = 'published'", 'title,id', 25, (page - 1) * 24);
-  return e.json(200, { items: rows.slice(0, 24).map(lab.card), hasMore: rows.length > 24, page });
+  const prog = require(`${__hooks}/lib/labProgress.js`);
+  const showDemo = user.getString('role') === 'admin' && u.query(e, 'demo') === '1';
+  return e.json(200, { items: rows.slice(0, 24).filter((p) => showDemo || !lab.isDemoSlug(p.getString('slug'))).map((p) => ({ ...lab.card(p), ...prog.brief(e.app, user, p) })), hasMore: rows.length > 24, page });
 });
 routerAdd('GET', '/api/medcoel/lab/pathways/{key}', (e) => {
   const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); const user = u.requireUser(e);

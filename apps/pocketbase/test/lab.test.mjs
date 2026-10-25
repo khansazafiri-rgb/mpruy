@@ -51,3 +51,13 @@ test('dataset metadata is explicit and validated', () => {
   assert.deepEqual(lab.datasetMeta({ name: 'PneumoniaMNIST', label: 'Normal', resolution: [224, 224], sample_index: 3 }).label, 'normal');
   for (const m of [null, { label: 'x' }, { name: 'n', resolution: [0, 5] }, { name: 'n', sample_index: -1 }]) assert.throws(() => lab.datasetMeta(m));
 });
+
+test('practice-first detection and demo slugs', () => {
+  assert.equal(lab.isPractice({}, 0, 0), false, 'no questions is never practice');
+  assert.equal(lab.isPractice({ mode: 'practice' }, 3, 5), true, 'explicit mode wins');
+  assert.equal(lab.isPractice({}, 4, 0), true, 'questions with no lesson material of their own');
+  assert.equal(lab.isPractice({ objectives: ['x'] }, 4, 0), false);
+  assert.equal(lab.isPractice({ blocks: [{}] }, 4, 0), false);
+  assert.equal(lab.isPractice({}, 4, 6), false, 'an object with its own gallery is a lesson');
+  assert.equal(lab.isDemoSlug('demo-lab-fundamentals'), true); assert.equal(lab.isDemoSlug('cxr-dasar'), false);
+});
