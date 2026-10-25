@@ -3,6 +3,8 @@
 // Label kelas contoh (mis. normal / pneumonia). Aset lama tidak punya field label,
 // jadi dibaca dari judul "... · normal" atau alt "... label dataset 'normal'".
 export function assetLabel(asset) {
+  // Structured dataset metadata is authoritative; title/alt parsing remains only for content created by the older importer.
+  if (asset?.dataset?.label) return String(asset.dataset.label).trim().toLowerCase();
   if (asset?.label) return String(asset.label).trim().toLowerCase();
   const fromTitle = /·\s*([^·]+?)\s*$/.exec(asset?.title || '');
   if (fromTitle) return fromTitle[1].toLowerCase();

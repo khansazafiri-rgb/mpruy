@@ -3,6 +3,7 @@ import test from 'node:test';
 import { annotationLayers, assetLabel, crumbs, fittedSize, groupAssets, objectHref, pathNeighbors, sessionSummary } from './labUtils.js';
 
 test('assetLabel membaca field, judul, atau alt', () => {
+  assert.equal(assetLabel({ dataset: { label: 'Pneumonia' }, title: 'x · normal' }), 'pneumonia', 'structured metadata wins over legacy title');
   assert.equal(assetLabel({ label: 'Normal' }), 'normal');
   assert.equal(assetLabel({ title: 'PneumoniaMNIST test #12 · pneumonia' }), 'pneumonia');
   assert.equal(assetLabel({ title: 'x', alt: "dengan label dataset 'normal'." }), 'normal');
