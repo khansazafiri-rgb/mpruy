@@ -64,7 +64,7 @@ function payload(app, user, rec) {
   qs.forEach((q) => {
     const a = ans[q.id];
     const reveal = finished || (learning && a && a.getBool("locked"));
-    questions.push(learn.serialize(q, reveal, titles));
+    questions.push(learn.serialize(q, reveal, titles, app));
     if (a) {
       const entry = { response: u.recJson(a, "response", null), locked: a.getBool("locked") };
       if (reveal) {
@@ -147,7 +147,7 @@ function answer(app, user, rec, qid, response, check) {
     return {
       alreadyChecked: true,
       result: { correct: a.getBool("correct"), scored: a.getBool("scored"), detail: learn.grade(q, u.recJson(a, "response", null)).detail },
-      question: learn.serialize(q, true, learn.chapterTitles(app, [q.getString("chapter")])),
+      question: learn.serialize(q, true, learn.chapterTitles(app, [q.getString("chapter")]), app),
     };
   }
 
@@ -179,7 +179,7 @@ function answer(app, user, rec, qid, response, check) {
   if (lockNow) {
     return {
       result: { correct: g.correct, scored: g.scored, detail: g.detail },
-      question: learn.serialize(q, true, learn.chapterTitles(app, [q.getString("chapter")])),
+      question: learn.serialize(q, true, learn.chapterTitles(app, [q.getString("chapter")]), app),
     };
   }
   return { saved: true };

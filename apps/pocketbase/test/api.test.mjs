@@ -879,4 +879,87 @@ await langkah('kolom tambahan (TikTok), langkah bukti opsional, WhatsApp opsiona
   }
 });
 
+console.log('Pembahasan Inggris');
+let englishId, englishChapter, englishBody;
+await langkah('pembahasan Inggris: hanya admin dapat membaca, membuat, dan memeriksa terjemahan', async () => {
+  englishChapter = (await call('POST', '/api/collections/chapters/records', { subject: mk.id, title: 'English ' + RUN, hidden: false }, admin.token, 200)).data.id;
+  englishBody = {
+    subject: mk.id, chapter: englishChapter, scope: 'all', status: 'published',
+    question: { type: 'A', text: 'Struktur yang terganggu?', options: [{ text: 'nervus medianus', explanation: 'Lesi nervus medianus memengaruhi 2 jari.', correct: true }, { text: 'nervus ulnaris', explanation: 'nervus ulnaris tidak terlibat.' }], explanation: 'Fungsi nervus medianus tetap dinilai.' },
+  };
+  englishId = (await call('POST', '/api/medcoel/admin/questions', englishBody, admin.token, 200)).data.id;
+  for (const token of [null, userA.token, agent.token]) {
+    await call('GET', `/api/medcoel/admin/questions/${englishId}/english`, undefined, token, token ? 403 : 401);
+    await call('POST', `/api/medcoel/admin/questions/${englishId}/english`, { action: 'review' }, token, token ? 403 : 401);
+    await call('POST', `/api/medcoel/admin/questions/${englishId}/english/generate`, {}, token, token ? 403 : 401);
+  }
+});
+
+const englishPath = () => `/api/medcoel/admin/questions/${englishId}/english`;
+const englishDraft = (d) => ({
+  sourceHash: d.sourceHash, revision: d.revision, protectedTerms: ['nervus medianus'],
+  segments: d.segments.map((s) => ({ id: s.id, text: ({
+    explanation: 'The function of the nervus medianus is still assessed.',
+    'options.0.explanation': 'A lesion of the nervus medianus affects 2 fingers.',
+    'options.1.explanation': 'The nervus ulnaris is not involved.',
+  })[s.id] })),
+});
+let englishAttempt;
+await langkah('draf tidak bocor; pemeriksaan menolak angka/istilah berubah dan belum dikonfirmasi', async () => {
+  const d = (await call('GET', englishPath(), undefined, admin.token, 200)).data;
+  const body = englishDraft(d);
+  const draft = (await call('POST', englishPath(), { ...body, action: 'draft' }, admin.token, 200)).data;
+  assert.equal(draft.status, 'draft');
+  await call('POST', englishPath(), { ...englishDraft(draft), action: 'review' }, admin.token, 400);
+  const wrong = englishDraft(draft);
+  wrong.segments[1].text = 'A median nerve lesion affects 3 fingers.';
+  await call('POST', englishPath(), { ...wrong, action: 'review', reviewConfirmed: true }, admin.token, 400);
+  englishAttempt = (await call('POST', '/api/medcoel/attempts/practice', { chapter: englishChapter, count: 1, mode: 'learning' }, userA.token, 200)).data;
+  assert.equal(englishAttempt.questions[0].id, englishId);
+  assert.ok(!('explanationEnglish' in englishAttempt.questions[0]));
+  const checked = (await call('POST', `/api/medcoel/attempts/${englishAttempt.attempt.id}/answer`, { question: englishId, response: 'A', check: true }, userA.token, 200)).data;
+  assert.ok(!('explanationEnglish' in checked.question), 'draft must not be visible after check either');
+});
+
+await langkah('versi Inggris hanya terungkap bersama kunci; versi sumber dan penilaian tetap sama', async () => {
+  const d = (await call('GET', englishPath(), undefined, admin.token, 200)).data;
+  const reviewed = (await call('POST', englishPath(), { ...englishDraft(d), action: 'review', reviewConfirmed: true }, admin.token, 200)).data;
+  assert.equal(reviewed.status, 'reviewed');
+  const exam = (await call('POST', '/api/medcoel/attempts/practice', { chapter: englishChapter, count: 1, mode: 'exam' }, userA.token, 200)).data;
+  assert.ok(!('explanationEnglish' in exam.questions[0]));
+  assert.ok(!('explanation' in exam.questions[0]));
+  const resume = (await call('GET', `/api/medcoel/attempts/${englishAttempt.attempt.id}`, undefined, userA.token, 200)).data;
+  const q = resume.questions[0];
+  assert.equal(q.answer, 'A');
+  assert.equal(q.stem, 'Struktur yang terganggu?');
+  assert.equal(q.explanation, englishBody.question.explanation);
+  assert.match(q.explanationEnglish.explanation, /The function/);
+  assert.equal(q.explanationEnglish.options[0].label, 'A');
+  assert.ok(!JSON.stringify(q.explanationEnglish).includes('reviewedBy'));
+  await call('POST', englishPath(), { ...englishDraft(d), action: 'draft' }, admin.token, 400); // stale revision
+});
+
+await langkah('perubahan sumber dan kamus menyembunyikan Inggris lama serta menolak editor yang tertinggal', async () => {
+  const before = (await call('GET', englishPath(), undefined, admin.token, 200)).data;
+  const changed = { ...englishBody, question: { ...englishBody.question, text: 'Struktur apa yang terganggu pada kasus baru?' } };
+  await call('PATCH', `/api/medcoel/admin/questions/${englishId}`, changed, admin.token, 200);
+  const stale = (await call('GET', englishPath(), undefined, admin.token, 200)).data;
+  assert.equal(stale.status, 'stale');
+  await call('POST', englishPath(), { ...englishDraft(before), action: 'review', reviewConfirmed: true }, admin.token, 400);
+  let resume = (await call('GET', `/api/medcoel/attempts/${englishAttempt.attempt.id}`, undefined, userA.token, 200)).data;
+  assert.ok(!('explanationEnglish' in resume.questions[0]));
+  const approved = (await call('POST', englishPath(), { ...englishDraft(stale), action: 'review', reviewConfirmed: true }, admin.token, 200)).data;
+  assert.equal(approved.status, 'reviewed');
+  const st = (await call('GET', '/api/collections/app_settings/records', undefined, admin.token, 200)).data.items[0];
+  try {
+    await call('PATCH', `/api/collections/app_settings/records/${st.id}`, { translationTerms: 'nervus medianus' }, admin.token, 200);
+    assert.equal((await call('GET', englishPath(), undefined, admin.token, 200)).data.status, 'stale');
+    resume = (await call('GET', `/api/medcoel/attempts/${englishAttempt.attempt.id}`, undefined, userA.token, 200)).data;
+    assert.ok(!('explanationEnglish' in resume.questions[0]));
+    await call('PATCH', `/api/collections/app_settings/records/${st.id}`, { translationTerms: 'x'.repeat(121) }, admin.token, 400);
+  } finally {
+    await call('PATCH', `/api/collections/app_settings/records/${st.id}`, { translationTerms: st.translationTerms || '' }, admin.token, 200);
+  }
+});
+
 console.log(`api.test: ${lulus} langkah lulus${process.exitCode ? ', ADA YANG GAGAL' : ''}`);

@@ -14,6 +14,7 @@ test('REQUIRED_MIGRATION sama dengan migrasi terbaru di pb_migrations', () => {
 test('serverIsBehind', () => {
   assert.equal(serverIsBehind('1800001400_drilling.js'), true);
   assert.equal(serverIsBehind(''), true);
-  assert.equal(serverIsBehind('1800001500_drilling_chapters.js'), false);
+  assert.equal(serverIsBehind('1800001500_drilling_chapters.js'), true);
+  assert.equal(serverIsBehind('1800001600_explanation_english.js'), false);
   assert.equal(serverIsBehind('1800001600_lain.js'), false);
 });
