@@ -1,3 +1,4 @@
+import { translate } from '../i18n/translate.js';
 // Tanggal dan zona waktu Indonesia. Server menyimpan waktu absolut (UTC);
 // tampilan memakai zona yang dipilih (WIB/WITA/WIT).
 
@@ -33,8 +34,8 @@ export function fmtDate(s, tz = 'WIB', { long = false, weekday = false } = {}) {
   const d = parse(s);
   if (!d) return '-';
   const t = shifted(d, tz);
-  const base = `${t.getUTCDate()} ${(long ? BULAN_PANJANG : BULAN)[t.getUTCMonth()]} ${t.getUTCFullYear()}`;
-  return weekday ? `${HARI[t.getUTCDay()]}, ${base}` : base;
+  const base = `${t.getUTCDate()} ${translate((long ? BULAN_PANJANG : BULAN)[t.getUTCMonth()])} ${t.getUTCFullYear()}`;
+  return weekday ? `${translate(HARI[t.getUTCDay()])}, ${base}` : base;
 }
 
 export function fmtTime(s, tz = 'WIB') {

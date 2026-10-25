@@ -12,3 +12,14 @@ export function withExplanationLanguage(q, language) {
     }),
   };
 }
+
+export function withQuestionLanguage(q, language) {
+  const english = language === 'en' && q.questionEnglish;
+  if (!english) return q;
+  return {
+    ...q, stem: english.stem, hint: english.hint, statements: english.statements,
+    ...(Object.hasOwn(english, 'explanation') ? { explanation: english.explanation } : {}),
+    options: (q.options || []).map((o) => ({ ...o, ...english.options?.find((x) => x.label === o.label) })),
+    subQuestions: (q.subQuestions || []).map((s) => ({ ...s, ...english.subQuestions?.find((x) => x.label === s.label) })),
+  };
+}

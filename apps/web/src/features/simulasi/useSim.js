@@ -96,7 +96,7 @@ export function useSim(caseKey, mode = 'santai', dur = 600) {
     const s = S.current;
     startClock();
     const { lines, note, na } = actionLines(it, s.ctx);
-    play(lines, 1, () => {
+    play(lines.map((line, index) => ({ ...line, translationAction: na ? undefined : it.id, translationRole: index })), 1, () => {
       const cur = S.current;
       const first = !cur.done[it.id];
       cur.done = { ...cur.done, [it.id]: true };
@@ -169,7 +169,7 @@ export function useSim(caseKey, mode = 'santai', dur = 600) {
   const restart = useCallback((nextCase = caseKey, nextMode = mode, nextDur = dur) => {
     stopTimers();
     S.current = fresh(nextCase, nextMode, nextDur);
-    play(S.current.ctx.C.intro);
+    play(S.current.ctx.C.intro.map((line, index) => ({ ...line, translationIntro: index })));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [caseKey, mode, dur]);
 

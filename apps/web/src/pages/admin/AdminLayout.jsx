@@ -3,6 +3,7 @@ import { ArrowLeft, BookMarked, Crosshair, FileQuestion, Flag, Inbox, LayoutDash
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import Logo from '@/components/Logo';
+import LanguageSwitch from '@/components/LanguageSwitch';
 import { Alert } from '@/components/ui';
 import { api } from '@/lib/api';
 import { migrationNumber, REQUIRED_MIGRATION, serverIsBehind } from '@/lib/serverVersion';
@@ -63,6 +64,7 @@ export default function AdminLayout() {
       <aside className="border-b border-line bg-surface lg:sticky lg:top-0 lg:h-screen lg:w-64 lg:shrink-0 lg:border-b-0 lg:border-r">
         <div className="flex items-center justify-between px-4 py-4">
           <Logo />
+          <LanguageSwitch />
           <span className="chip bg-gold-soft text-[#6b4f00]">Admin</span>
         </div>
         <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex-col lg:overflow-visible" aria-label="Menu admin">

@@ -1,3 +1,4 @@
+import EnglishExplanationEditor from '@/components/admin/EnglishExplanationEditor';
 // ADMIN · SIMULASI DOKTER: kasus (pasien, dialog pembuka, diagnosis, penilaian
 // tindakan, jawaban khusus) dan daftar diagnosis. Disimpan di database lewat
 // /api/medcoel/admin/sim/*; pemain memuat versi terbaru saat membuka simulasi.
@@ -53,6 +54,7 @@ function CasesTab() {
   const [dx, setDx] = useState([]);
   const [error, setError] = useState('');
   const [msg, setMsg] = useState('');
+  const [english, setEnglish] = useState(null);
   const [editing, setEditing] = useState(null); // { value, isNew }
   const load = () => Promise.all([api('admin/sim/cases'), api('admin/sim/diagnoses')])
     .then(([c, d]) => { setData(c); setDx(d.items); })
@@ -99,6 +101,7 @@ function CasesTab() {
 
   return (
     <div className="space-y-4">
+      {english && <EnglishExplanationEditor questionId={english} kind="case" onClose={() => { setEnglish(null); invalidateSimContent(); load(); }} />}
       <div className="flex flex-wrap items-center gap-3">
         <p className="flex-1 text-sm text-ink-muted">{data.items.length} kasus · {activeCount} aktif diundi. Kasus nonaktif tidak muncul untuk pemain, tetapi tetap bisa kamu coba.</p>
         <button type="button" className="btn-primary" onClick={() => setEditing({ isNew: true, value: { ...blankCase(), order: data.items.length + 1 } })}><Plus size={17} /> Kasus baru</button>
@@ -122,6 +125,7 @@ function CasesTab() {
                 <button type="button" className="btn-secondary btn-sm" onClick={() => run(() => api(`admin/sim/cases/${c.key}`, { method: 'PATCH', body: { active: !c.active } }), c.active ? 'Kasus dinonaktifkan.' : 'Kasus diaktifkan.')}>{c.active ? <><EyeOff size={15} /> Nonaktifkan</> : <><Eye size={15} /> Aktifkan</>}</button>
                 <a className="btn-secondary btn-sm" href={`/simulasi-dokter?kasus=${c.key}`} target="_blank" rel="noopener noreferrer"><Play size={15} /> Coba</a>
                 <button type="button" className="btn-secondary btn-sm" onClick={() => open(c.key, false)}><Pencil size={15} /> Ubah</button>
+                <button type="button" className="btn-secondary btn-sm" onClick={() => setEnglish(c.id)}>English</button>
                 <button type="button" className="btn-ghost btn-sm" onClick={() => open(c.key, true)}><Copy size={15} /> Duplikat</button>
                 {c.key !== 'umum' && <button type="button" className="btn-ghost btn-sm text-coral" onClick={() => { if (window.confirm(`Hapus kasus ${c.title}? Riwayat hasil pemain tetap tersimpan.`)) run(() => api(`admin/sim/cases/${c.key}`, { method: 'DELETE' }), 'Kasus dihapus.'); }}><Trash2 size={15} /> Hapus</button>}
               </div>

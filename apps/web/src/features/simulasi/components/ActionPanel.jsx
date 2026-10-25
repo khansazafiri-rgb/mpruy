@@ -6,6 +6,7 @@ import {
   MessageCircle, Microscope, Pill, ScanFace, ScanLine, Search, Stethoscope, TestTube, Timer, Users, X,
 } from 'lucide-react';
 import { useMemo } from 'react';
+import { translate } from '@/i18n';
 import { BYID, DX, PHASES, PHASE_NAME, POLI, areasFor, fmtClock, searchActions } from '../engine';
 
 const ICON = {
@@ -53,7 +54,7 @@ export default function ActionPanel({ sim, ui, setUi, onFinish }) {
   }, [s.actions]);
   const area = areas.find((a) => a.key === ui.area) || null;
   const sys = area?.systems ? (area.systems.find((x) => x.name === ui.sys) || null) : null;
-  const results = ui.q ? searchActions(ui.q, ctx) : [];
+  const results = ui.q ? searchActions(ui.q, ctx, 60, translate) : [];
   const setPhase = (phase) => setUi({ phase, area: null, sys: null, q: '' });
 
   const steps = [...PHASES, { key: 'dx', label: 'Diagnosis & selesai', short: 'Diagnosis' }];

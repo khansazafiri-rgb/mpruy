@@ -11,6 +11,7 @@ import AnnouncementPopup from './AnnouncementPopup';
 import ChatAdminWidget from './ChatAdminWidget';
 import TutorialGate from '@/features/onboarding/TutorialGate';
 import Logo from './Logo';
+import LanguageSwitch from './LanguageSwitch';
 
 const ALL_NAV = [
   { to: '/beranda', label: 'Beranda', short: 'Beranda', icon: Home },
@@ -66,6 +67,7 @@ export default function AppShell() {
             ))}
           </nav>
           <div className="ml-auto flex items-center gap-1">
+            <LanguageSwitch />
             <Link to="/notifikasi" className="relative rounded-lg p-2 text-ink-muted hover:bg-page hover:text-ink" aria-label={`Notifikasi${unread ? `, ${unread} belum dibaca` : ''}`}>
               <Bell size={22} />
               {unread > 0 && (

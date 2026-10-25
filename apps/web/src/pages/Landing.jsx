@@ -12,6 +12,7 @@ import {
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '@/components/Logo';
+import LanguageSwitch from '@/components/LanguageSwitch';
 import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
 import { useReveal } from '@/lib/reveal';
@@ -260,6 +261,7 @@ export default function Landing() {
       <header className={clsx('lp-header', scrolled && 'is-scrolled')}>
         <div className="lp-wrap lp-header-row">
           <Link to="/" aria-label="MEDCOEL, halaman utama"><Logo /></Link>
+          <LanguageSwitch />
           <nav aria-label="Bagian halaman" className="lp-nav">
             <a href="#cara-kerja">Cara kerja</a><a href="#mata-kuliah">Mata kuliah</a><a href="#fitur">Fitur</a><a href="#tanya">Tanya jawab</a>
           </nav>

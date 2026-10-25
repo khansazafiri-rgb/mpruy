@@ -32,7 +32,7 @@ function fixture() {
   };
   const v = service.view(app, rec);
   const body = { sourceHash: v.sourceHash, revision: v.revision, protectedTerms: [], sendConfirmed: true, action: 'review' };
-  const output = { segments: [{ id: 'explanation', text: 'The nervus medianus affects 2 fingers.' }], notes: ['Check context.'] };
+  const output = { segments: [{ id: 'stem', text: 'Question' }, { id: 'explanation', text: 'The nervus medianus affects 2 fingers.' }], notes: ['Check context.'] };
   const response = () => ({ statusCode: 200, json: { status: 'completed', output: [{ content: [{ type: 'output_text', text: JSON.stringify(output) }] }] } });
   return { app, rec, data, body, output, response };
 }
@@ -43,6 +43,8 @@ test('a generated translation is always a draft, then can be reviewed separately
     assert.equal(req.url, 'https://api.openai.com/v1/responses');
     const body = JSON.parse(req.body);
     assert.equal(body.store, false); assert.equal(body.model, 'test-model');
+    assert.ok(JSON.parse(body.input[0].content).segments.some((part) => part.id === 'stem'));
+    assert.match(body.instructions, /Translate the prose in question stems/);
     return f.response();
   } };
   const draft = service.generate(f.app, 'q1', f.body, 'admin');
@@ -51,6 +53,15 @@ test('a generated translation is always a draft, then can be reviewed separately
   const approved = service.save(f.app, 'q1', { ...f.body, sourceHash: draft.sourceHash, revision: draft.revision, segments: f.output.segments, action: 'review', reviewConfirmed: true }, 'admin');
   assert.equal(approved.status, 'reviewed');
   assert.match(service.published(f.app, f.rec).explanation, /The nervus/);
+});
+
+test('manual authoring remains available while the generator requires both configuration values', () => {
+  const f = fixture();
+  delete process.env.MEDCOEL_TRANSLATION_MODEL;
+  try {
+    assert.equal(service.view(f.app, f.rec).generatorConfigured, false);
+    assert.throws(() => service.generate(f.app, 'q1', f.body, 'admin'), /belum diatur/);
+  } finally { process.env.MEDCOEL_TRANSLATION_MODEL = 'test-model'; }
 });
 
 test('source edits during generation cannot be overwritten, and failure preserves the previous draft', () => {
@@ -76,7 +87,7 @@ test('generation requires explicit transmission consent and handles provider err
 
 test('structurally valid but medically protected terms/values changed in AI output remain unpublishable drafts', () => {
   const f = fixture();
-  f.output.segments[0].text = 'The median nerve affects 3 fingers.';
+  f.output.segments[1].text = 'The median nerve affects 3 fingers.';
   globalThis.$http = { send: f.response };
   const draft = service.generate(f.app, 'q1', f.body, 'admin');
   assert.equal(draft.status, 'draft');

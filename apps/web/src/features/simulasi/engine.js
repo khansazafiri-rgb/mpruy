@@ -232,10 +232,10 @@ export function areasFor(phase, ctx) {
 }
 
 /** Semua tindakan yang berlaku untuk pasien ini, untuk pencarian. */
-export function searchActions(q, ctx, limit = 60) {
+export function searchActions(q, ctx, limit = 60, localize = (value) => value) {
   const s = q.trim().toLowerCase();
   if (!s) return [];
-  return CAT.filter((i) => !isNA(i, ctx) && `${i.label} ${i.short} ${i.sub} ${i.id.replace(/_/g, ' ')}`.toLowerCase().indexOf(s) >= 0).slice(0, limit);
+  return CAT.filter((i) => !isNA(i, ctx) && `${i.label} ${localize(i.label)} ${i.short} ${localize(i.short)} ${i.sub} ${localize(i.sub)} ${i.id.replace(/_/g, ' ')}`.toLowerCase().indexOf(s) >= 0).slice(0, limit);
 }
 
 /* ---------- refleksi diagnosis ---------- */

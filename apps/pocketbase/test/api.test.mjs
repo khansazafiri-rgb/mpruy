@@ -902,7 +902,7 @@ const englishDraft = (d) => ({
     explanation: 'The function of the nervus medianus is still assessed.',
     'options.0.explanation': 'A lesion of the nervus medianus affects 2 fingers.',
     'options.1.explanation': 'The nervus ulnaris is not involved.',
-  })[s.id] })),
+  })[s.id] || s.source })),
 });
 let englishAttempt;
 await langkah('draf tidak bocor; pemeriksaan menolak angka/istilah berubah dan belum dikonfirmasi', async () => {
@@ -960,6 +960,43 @@ await langkah('perubahan sumber dan kamus menyembunyikan Inggris lama serta meno
   } finally {
     await call('PATCH', `/api/collections/app_settings/records/${st.id}`, { translationTerms: st.translationTerms || '' }, admin.token, 200);
   }
+});
+
+await langkah('bahasa global: teks Inggris boleh tampil sebelum menjawab, pembahasan dan kunci tetap ditahan', async () => {
+  const original = (await call('GET', englishPath(), undefined, admin.token, 200)).data;
+  const draft = englishDraft(original);
+  draft.segments = draft.segments.map((part) => part.id === 'stem' ? { ...part, text: 'Which structure is affected in this case?' } : part);
+  await call('POST', englishPath(), { ...draft, action: 'review', reviewConfirmed: true }, admin.token, 200);
+  const attempt = (await call('POST', '/api/medcoel/attempts/practice', { chapter: englishChapter, count: 1, mode: 'exam' }, userA.token, 200)).data;
+  const q = attempt.questions[0];
+  assert.equal(q.questionEnglish.stem, 'Which structure is affected in this case?');
+  assert.ok(!('explanation' in q.questionEnglish));
+  assert.ok(!('answer' in q.questionEnglish));
+  assert.ok(q.questionEnglish.options.every((option) => !('explanation' in option)));
+  assert.ok(q.questionEnglish.subQuestions.every((sub) => !('keyPoints' in sub) && !('accepted' in sub)));
+});
+
+await langkah('kasus bilingual: hanya admin boleh menyunting, draf tersembunyi, sumber berubah perlu review ulang', async () => {
+  const diagnoses = (await call('GET', '/api/medcoel/admin/sim/diagnoses', undefined, admin.token, 200)).data.items;
+  const [primary, secondary] = diagnoses;
+  const body = { key: 'en_' + RUN, title: 'Demo 25', poli: 'umum', dxOk: primary.key, active: true, order: 9000, data: { pas: 'bapak', expr: 'lemas', id: 'Pak Demo, 25 tahun', intro: [{ w: 'pas', e: 'lemas', t: 'Saya demam 2 hari.' }], dxOk: primary.key, ddx: [primary.key, secondary.key], ref: 'Contoh bahasa', K: 'ku vital', U: 'onset', B: '', A: { ku: { say: 'Saya demam 2 hari.', note: 'Demam 2 hari', e: 'lemas' }, vital: { title: 'Tanda vital', sub: 'Suster Ani', rows: 'Nadi=90 x/menit;Suhu=38 °C', say: 'Ini hasilnya, Dok.' } } } };
+  const rec = (await call('POST', '/api/medcoel/admin/sim/cases', body, admin.token, 200)).data;
+  const path = '/api/medcoel/admin/sim/cases/' + rec.id + '/english';
+  await call('GET', path, undefined, userA.token, 403);
+  await call('POST', path, { action: 'draft' }, agent.token, 403);
+  const source = (await call('GET', path, undefined, admin.token, 200)).data;
+  const translated = { 'Saya demam 2 hari.': 'I have had a fever for 2 days.', 'Demam 2 hari': 'Fever for 2 days', 'Contoh bahasa': 'Language example', 'Ini hasilnya, Dok.': 'Here are the results, Doctor.' };
+  const segments = source.segments.map((p) => ({ id: p.id, text: translated[p.source] || p.source }));
+  const pending = (await call('POST', path, { sourceHash: source.sourceHash, revision: source.revision, segments, action: 'draft' }, admin.token, 200)).data;
+  assert.ok(!(await call('GET', '/api/medcoel/doctor-sim/content', undefined, userA.token, 200)).data.cases[body.key].english);
+  await call('POST', path, { sourceHash: pending.sourceHash, revision: pending.revision, segments, action: 'review', reviewConfirmed: true }, admin.token, 200);
+  const content = (await call('GET', '/api/medcoel/doctor-sim/content', undefined, userA.token, 200)).data.cases[body.key];
+  assert.equal(content.english.data.intro[0].t, 'I have had a fever for 2 days.');
+  for (const field of ['dxOk', 'ddx', 'K', 'U', 'B']) assert.deepEqual(content.english.data[field], content[field]);
+  assert.ok(!JSON.stringify(content.english).includes('reviewedBy'));
+  await call('PATCH', '/api/medcoel/admin/sim/cases/' + body.key, { ...body, data: { ...body.data, K: 'ku' } }, admin.token, 200);
+  assert.equal((await call('GET', path, undefined, admin.token, 200)).data.status, 'stale');
+  assert.ok(!(await call('GET', '/api/medcoel/doctor-sim/content', undefined, userA.token, 200)).data.cases[body.key].english);
 });
 
 console.log(`api.test: ${lulus} langkah lulus${process.exitCode ? ', ADA YANG GAGAL' : ''}`);
