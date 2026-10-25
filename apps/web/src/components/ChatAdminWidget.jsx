@@ -83,7 +83,7 @@ export default function ChatAdminWidget() {
         className={clsx(
           'chat-fab fixed right-4 z-50 flex items-center gap-2 rounded-full px-4 py-3 font-semibold text-white transition',
           // Di HP berada di atas navigasi bawah; saat panel layar penuh terbuka, tombolnya disembunyikan.
-          'bottom-20 lg:bottom-6 sm:right-6',
+          'sm:right-6',
           open && 'max-sm:hidden',
           onPage && '!hidden',
         )}

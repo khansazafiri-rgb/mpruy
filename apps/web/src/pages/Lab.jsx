@@ -55,7 +55,7 @@ export default function Lab() {
   const change = (patch) => setParams({ ...Object.fromEntries(params), page: '1', ...patch });
   return <div className={PAGE}>
     <header className="flex items-end justify-between gap-3">
-      <div className="min-w-0"><p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-brand"><FlaskConical size={15} aria-hidden /> MEDCOEL Lab</p><h1 className="text-2xl font-bold leading-tight">Belajar lewat gambar, kasus, dan anatomi interaktif</h1></div>
+      <div className="min-w-0"><p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-brand"><FlaskConical size={15} aria-hidden /> MEDCOEL Lab</p><h1 className="text-xl font-bold leading-tight sm:text-2xl">Belajar lewat gambar, kasus, dan anatomi</h1></div>
       {isAdmin && <Link className="shrink-0 text-xs text-ink-muted underline" to="/admin/lab">Kelola</Link>}
     </header>
     {next && <section className="card flex items-center justify-between gap-3 p-4" aria-label="Lanjutkan belajar">

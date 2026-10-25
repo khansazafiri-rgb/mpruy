@@ -2,18 +2,19 @@ import { useMemo, useState } from 'react';
 import { RotateCcw } from 'lucide-react';
 import LabLayerStage from './LabLayerStage';
 import { ProvenanceBanner } from './LabLayerExplorer';
-import { clamp01, explodeOffsets, highlightOpacity } from './labLayers';
+import { EXPLODED_SX, EXPLODED_SY, clamp01, explodedLayout, highlightOpacity } from './labLayers';
 
-// Oblique view: each 400x400 layer is drawn as a flat sheet (x 0.62, y 0.36) so a stack of eight stays legible.
-const W = 560; const H = 560; const SX = 0.62; const SY = 0.36;
+// Oblique view: each 400x400 layer is drawn as a flat sheet; the view grows with the number of layers and, fully
+// exploded, no sheet overlaps another (see explodedLayout).
+const W = 560;
 
 // 2.5D exploded view: the same layers separate along one depth axis (no fake rotation). Superficial on top.
 export default function LabExplodedView({ block, layers }) {
   const n = layers.length; const gap = block.gap ?? 1;
   const [explode, setExplode] = useState(0.55); const [selected, setSelected] = useState(''); const [labels, setLabels] = useState(true);
   const [opacity, setOpacity] = useState({}); const [hidden, setHidden] = useState({});
-  const offsets = useMemo(() => explodeOffsets(n, explode, gap, H * 0.75), [n, explode, gap]);
-  const items = layers.map((l, i) => ({ ...l, visible: !hidden[l.id], opacity: highlightOpacity(clamp01(opacity[l.id] ?? l.opacity ?? 1), selected, l.id), dx: offsets[i].dx, dy: offsets[i].dy, sx: SX, sy: SY, x0: 170, y0: H / 2, labelX: 345 }));
+  const layout = useMemo(() => explodedLayout(n, explode, gap), [n, explode, gap]); const offsets = layout.offsets; const H = layout.viewH;
+  const items = layers.map((l, i) => ({ ...l, visible: !hidden[l.id], opacity: highlightOpacity(clamp01(opacity[l.id] ?? l.opacity ?? 1), selected, l.id), dx: offsets[i].dx, dy: offsets[i].dy, sx: EXPLODED_SX, sy: EXPLODED_SY, x0: 170, y0: H / 2, labelX: 345 }));
   const picked = layers.find((l) => l.id === selected);
   const reset = () => { setExplode(0.55); setSelected(''); setLabels(true); setOpacity({}); setHidden({}); };
   const pickedOpacity = picked ? clamp01(opacity[picked.id] ?? picked.opacity ?? 1) : 1;

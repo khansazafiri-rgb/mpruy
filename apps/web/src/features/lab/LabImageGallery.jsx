@@ -13,7 +13,7 @@ function CasePane({ group }) {
   const key = (e) => { if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); } else if (e.key === 'ArrowRight') { e.preventDefault(); go(1); } };
   return <section aria-label={`${group.title}, ${n} contoh`} className="min-w-0 space-y-2">
     <div className="flex items-center justify-between gap-2">
-      <h3 className="min-w-0 truncate text-base font-bold">{group.title}{group.subtitle && <span className="font-normal text-ink-muted"> · {group.subtitle}</span>}</h3>
+      <h3 className="min-w-0 truncate text-base font-bold">{group.title}</h3>
       <div className="flex shrink-0 items-center gap-1" role="group" aria-label={`Pilih contoh ${group.title}`} onKeyDown={key}>
         <button type="button" className="btn btn-secondary min-h-11 min-w-11" aria-label={`${group.title} sebelumnya`} disabled={i <= 0} onClick={() => go(-1)}><ChevronLeft size={18} /></button>
         <span className="w-16 text-center text-sm font-semibold" aria-live="polite" aria-label={`Contoh ${i + 1} dari ${n}`}>{i + 1} / {n}</span>
