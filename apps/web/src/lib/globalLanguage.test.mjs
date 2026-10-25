@@ -26,10 +26,10 @@ test('every whole-message translation preserves interpolation slots and has cont
   assert.equal(translate('Custom content never translated word by word', 'en'), 'Custom content never translated word by word');
 });
 
-test('the language store updates subscribers without replacing session state', () => {
+test('the Indonesian-only store updates subscribers without replacing session state', () => {
   let updates = 0; const session = { answer: 'B', remaining: 173, notes: 'my note' };
   const off = subscribe(() => { updates++; });
-  setLanguage('en'); assert.equal(getLanguage(), 'en');
+  setLanguage('en'); assert.equal(getLanguage(), 'id');
   setLanguage('id'); assert.equal(getLanguage(), 'id');
   assert.equal(updates, 2); assert.deepEqual(session, { answer: 'B', remaining: 173, notes: 'my note' }); off();
 });
