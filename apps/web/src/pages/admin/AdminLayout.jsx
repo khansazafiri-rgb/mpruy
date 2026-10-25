@@ -62,7 +62,7 @@ export default function AdminLayout() {
   return (
     <div className="min-h-screen bg-page lg:flex">
       <aside className="border-b border-line bg-surface lg:sticky lg:top-0 lg:h-screen lg:w-64 lg:shrink-0 lg:border-b-0 lg:border-r">
-        <div className="flex items-center justify-between px-4 py-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-4">
           <Logo />
           <LanguageSwitch />
           <span className="chip bg-gold-soft text-[#6b4f00]">Admin</span>
