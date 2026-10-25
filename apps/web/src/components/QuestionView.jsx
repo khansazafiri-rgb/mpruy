@@ -151,7 +151,7 @@ export default function QuestionView({ q: sourceQuestion, index, total, value, o
         </div>
       )}
 
-      {language === 'en' && !sourceQuestion.questionEnglish && <p role="status" className="mt-3 rounded-lg bg-gold-soft p-3 text-sm">This question is shown in its source language until its English version has been reviewed.</p>}
+      {language === 'en' && !sourceQuestion.questionEnglish && <p role="status" className="mt-3 rounded-lg bg-gold-soft p-3 text-sm">An English version has not yet been reviewed for this question. Content without an available English translation is shown in its source language.</p>}
       <div className="mt-4">
         {isChoice && <OptionList q={displayed} value={value} onChange={onChange} revealed={revealed} disabled={disabled || revealed} />}
         {q.qtype === 'isian' && <IsianInputs q={displayed} value={value || {}} onChange={onChange} revealed={revealed} detail={result?.detail} disabled={disabled || revealed} />}

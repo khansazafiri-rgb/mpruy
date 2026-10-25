@@ -885,7 +885,7 @@ await langkah('pembahasan Inggris: hanya admin dapat membaca, membuat, dan memer
   englishChapter = (await call('POST', '/api/collections/chapters/records', { subject: mk.id, title: 'English ' + RUN, hidden: false }, admin.token, 200)).data.id;
   englishBody = {
     subject: mk.id, chapter: englishChapter, scope: 'all', status: 'published',
-    question: { type: 'A', text: 'Struktur yang terganggu?', options: [{ text: 'nervus medianus', explanation: 'Lesi nervus medianus memengaruhi 2 jari.', correct: true }, { text: 'nervus ulnaris', explanation: 'nervus ulnaris tidak terlibat.' }], explanation: 'Fungsi nervus medianus tetap dinilai.' },
+    question: { type: 'A', text: 'Struktur yang terganggu?', options: [{ text: 'Struktur ini adalah nervus medianus.', explanation: 'Lesi nervus medianus memengaruhi 2 jari.', correct: true }, { text: 'Struktur ini adalah nervus ulnaris.', explanation: 'nervus ulnaris tidak terlibat.' }], explanation: 'Fungsi nervus medianus tetap dinilai.' },
   };
   englishId = (await call('POST', '/api/medcoel/admin/questions', englishBody, admin.token, 200)).data.id;
   for (const token of [null, userA.token, agent.token]) {
@@ -900,6 +900,8 @@ const englishDraft = (d) => ({
   sourceHash: d.sourceHash, revision: d.revision, protectedTerms: ['nervus medianus'],
   segments: d.segments.map((s) => ({ id: s.id, text: ({
     explanation: 'The function of the nervus medianus is still assessed.',
+    'options.0.text': 'This structure is nervus medianus.',
+    'options.1.text': 'This structure is nervus ulnaris.',
     'options.0.explanation': 'A lesion of the nervus medianus affects 2 fingers.',
     'options.1.explanation': 'The nervus ulnaris is not involved.',
   })[s.id] || s.source })),
@@ -970,6 +972,10 @@ await langkah('bahasa global: teks Inggris boleh tampil sebelum menjawab, pembah
   const attempt = (await call('POST', '/api/medcoel/attempts/practice', { chapter: englishChapter, count: 1, mode: 'exam' }, userA.token, 200)).data;
   const q = attempt.questions[0];
   assert.equal(q.questionEnglish.stem, 'Which structure is affected in this case?');
+  assert.deepEqual(q.questionEnglish.options.map((o) => o.text), ['This structure is nervus medianus.', 'This structure is nervus ulnaris.']);
+  assert.ok(q.questionEnglish.options.every((option) => !('correct' in option)));
+  const reloaded = (await call('GET', `/api/medcoel/attempts/${attempt.attempt.id}`, undefined, userA.token, 200)).data;
+  assert.deepEqual(reloaded.questions[0].questionEnglish.options, q.questionEnglish.options);
   assert.ok(!('explanation' in q.questionEnglish));
   assert.ok(!('answer' in q.questionEnglish));
   assert.ok(q.questionEnglish.options.every((option) => !('explanation' in option)));
