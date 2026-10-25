@@ -7,7 +7,7 @@ const patterns = Object.entries(english).filter(([s]) => /\{\d+\}/.test(s)).map(
   const ids = [...source.matchAll(/\{(\d+)\}/g)].map((m) => m[1]);
   const parts = source.split(/\{\d+\}/g).map(escape);
   return { regex: new RegExp('^' + parts.join('(.+?)') + '$'), ids, target, specificity: parts.join('').length };
-}).sort((a, b) => b.specificity - a.specificity);
+}).sort((a, b) => b.specificity - a.specificity || a.ids.length - b.ids.length);
 export function translate(value, locale = getLanguage(), depth = 0) {
   if (locale !== 'en' || typeof value !== 'string' || !value.trim()) return value;
   const key = normalize(value);

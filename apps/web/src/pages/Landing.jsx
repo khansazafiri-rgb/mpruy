@@ -1,3 +1,4 @@
+import { getLanguage } from '@/i18n';
 // Landing page MEDCOEL. Gaya "buku catatan klinis" versi 2: tiap bagian punya
 // latar yang jelas berbeda (seperti Apple), mata kuliah diberi nada warna
 // sendiri (seperti Osmosis/Duolingo), filter kategori berbentuk pil (seperti
@@ -250,7 +251,7 @@ export default function Landing() {
     return () => io.disconnect();
   }, []);
   const soal = useCountUp(stats?.questions || 0);
-  const fmt = (n) => new Intl.NumberFormat('id-ID').format(n || 0);
+  const fmt = (n) => new Intl.NumberFormat(getLanguage() === 'en' ? 'en-GB' : 'id-ID').format(n || 0);
   const startUrl = me ? '/beranda' : '/daftar';
   const startLabel = me ? 'Lanjut belajar' : 'Daftar gratis';
 
