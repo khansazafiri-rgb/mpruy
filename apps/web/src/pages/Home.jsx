@@ -109,7 +109,7 @@ export default function Home() {
     <div className="space-y-10">
       <header className="page-head home-head">
         <p className="eyebrow mb-3">{today}</p>
-        <h1 className="page-title">Halo, <span className="hl">{me?.name?.split(' ')[0]}</span>.</h1>
+        <h1 className="page-title">Halo, <span className="hl" translate="no">{me?.name?.split(' ')[0]}</span>.</h1>
         <p className="mt-3 max-w-xl text-[17px] text-ink-muted">Mau mulai dari mana hari ini? Satu BAB kecil pun tetap dihitung.</p>
         <p className="hand page-head-note home-note" aria-hidden>sedikit lebih paham, setiap hari ✎</p>
       </header>

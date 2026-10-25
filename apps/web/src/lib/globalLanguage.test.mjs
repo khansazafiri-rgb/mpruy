@@ -18,6 +18,7 @@ test('every whole-message translation preserves interpolation slots and has cont
   }
   assert.equal(translate('Ujian 3 hari lagi', 'en'), 'Exam in 3 days');
   assert.equal(translate('Soal 1, Benar', 'en'), 'Question 1, Correct');
+  assert.equal(translate('Hai, Mei! Aku Kori.', 'en'), "Hi, Mei! I'm Kori.");
   assert.equal(translate('Terjadi kesalahan. Coba lagi.', 'id'), 'Terjadi kesalahan. Coba lagi.');
   assert.equal(translate('nervus medianus', 'en'), 'nervus medianus');
   assert.equal(translate('constructor', 'en'), 'constructor');
