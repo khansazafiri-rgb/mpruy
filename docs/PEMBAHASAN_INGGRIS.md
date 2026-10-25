@@ -63,6 +63,32 @@ mengizinkannya. Payload sebelum kunci hanya memuat teks soal dan opsi/subsoal
 Inggris yang aman ditampilkan. Aturan penilaian tidak menerjemahkan jawaban isian
 peserta; daftar jawaban yang diterima tetap dikelola pada soal sumber.
 
+### Antarmuka Inggris dan materi Inggris
+
+Pilihan EN tidak berarti semua soal yang ada di database sudah diterjemahkan.
+Teks opsi adalah konten publik yang boleh dilihat sebelum menjawab; teks tersebut
+tidak termasuk kunci rahasia. Versi Inggris soal dan opsi yang sudah diperiksa
+dikirim bersama pada pemuatan pertama dan saat sesi dilanjutkan.
+
+Renderer menerapkan bahasa saat menerima materi, termasuk paragraf, daftar,
+pernyataan tipe K, sel tabel, subsoal, opsi dan pembahasan. Pesan utuh yang sudah
+ada dalam kamus materi bawaan juga diterapkan sebelum menampilkan konten kaya,
+tanpa perlu menekan ID lalu EN. URL, blok formula, label opsi, jawaban peserta
+dan metadata penilaian tidak diterjemahkan. Payload Inggris lama atau parsial
+tidak menghapus bidang sumber yang belum memiliki pengganti.
+
+Kalimat bank soal yang belum memiliki terjemahan tersimpan maupun padanan pesan
+utuh di kamus tetap memakai sumber. Fitur ini tidak membuat panggilan penerjemah
+baru secara otomatis. Lengkapi versi Inggris soal dan semua opsi melalui editor
+admin; membuat draf saja belum menayangkannya. Jika tombol dan menu tetap berbahasa Inggris, periksa ketersediaan terjemahan
+materi secara terpisah dari preferensi antarmuka.
+
+Navigasi desktop memakai satu baris dengan area gulir horizontal dan scrollbar,
+sementara logo serta kontrol akun mempertahankan ukurannya. Menu aktif digulirkan
+ke area yang terlihat ketika halaman atau bahasa berganti. Area navigasi juga
+dapat difokuskan dan digeser dengan keyboard; perangkat kecil tetap memakai menu
+seluler dan logo ringkas.
+
 Dialog pasien diterjemahkan berdasarkan tindakan atau posisi dialog pembuka,
 sehingga dua kalimat sumber yang sama dapat memiliki Inggris berbeda sesuai
 konteks. Teks lengkap dilokalkan sebelum dipotong untuk animasi. Pergantian bahasa
