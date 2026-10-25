@@ -143,6 +143,11 @@ await call('POST', api('admin/lab-bulk/publish'), { confirmReviewed: true, items
 const pdet = await call('GET', api(`lab/objects/${prac.slug}`), undefined, S); assert.equal(pdet.kind, 'practice'); assert.equal(pdet.cases, 1);
 assert.equal((await call('GET', api(`lab/objects/${o1.slug}`), undefined, S)).kind, 'lesson', 'an object with its own gallery is a lesson even if it has questions');
 assert.equal((await call('GET', api(`lab/objects/${o3.slug}`), undefined, S)).kind, 'lesson');
+// Production practice objects created by the first importer still carry their question images as `assets`: still practice-first.
+const legacyPrac = await make('objects', object('pk-prac-legacy', [pa.id]));
+const lq = await make('questions', question('pk-prac-legacy-q', [legacyPrac.id], pa.id, {}, { explanation: undefined }));
+await call('POST', api('admin/lab-bulk/publish'), { confirmReviewed: true, items: [{ kind: 'objects', id: legacyPrac.id }, { kind: 'questions', id: lq.id }] }, A);
+assert.equal((await call('GET', api(`lab/objects/${legacyPrac.slug}`), undefined, S)).kind, 'practice');
 const fb = await call('POST', api(`lab/questions/${pq.id}/answer`), { response: 'A' }, S); assert.equal(fb.explanation, ''); assert.equal(fb.correct, true);
 const list = await call('GET', api('lab/objects?q=Materi'), undefined, S); assert.ok(list.items.every((i) => ['lesson', 'practice'].includes(i.kind) && typeof i.cases === 'number'));
 // Pathway status for list cards, and "ulangi jalur" only clears the caller's own progress on that pathway.

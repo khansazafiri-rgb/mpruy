@@ -158,16 +158,19 @@ function find(app, kind, id, published) {
 function data(r) { return u.recJson(r, 'data', {}); }
 function card(r) { return { id: r.id, slug: r.getString('slug'), title: r.getString('title'), domain: r.getString('domain'), modality: r.getString('modality'), summary: r.getString('summary'), tags: u.recJson(r, 'tags', []), demo: data(r).demo === true }; }
 // Practice-first objects open straight into the first case: explicit data.mode, or questions with no lesson material of their own.
-function isPractice(d, questions, assets) {
+function isPractice(d, questions, ownAssets) {
   if (!questions) return false;
   if (d.mode === 'practice') return true;
-  return assets === 0 && !(d.objectives || []).length && !(d.blocks || []).length && !(d.steps || []).length;
+  return ownAssets === 0 && !(d.objectives || []).length && !(d.blocks || []).length && !(d.steps || []).length;
 }
 function cardOf(app, r) {
   const d = data(r); const c = card(r);
-  const cases = app.countRecords('lab_questions', $dbx.exp("status = 'published' AND objects LIKE {:o}", { o: '%' + r.id + '%' }));
-  const kind = isPractice(d, cases, r.getStringSlice('assets').length) ? 'practice' : 'lesson';
-  return { ...c, kind, cases: kind === 'practice' ? cases : 0 };
+  const qs = app.findRecordsByFilter('lab_questions', "status = 'published' && objects.id ?= {:id}", '', 200, 0, { id: r.id });
+  // Assets that only exist to feed this object's questions (as the first importer attached them) are not lesson material.
+  const used = new Set(qs.map((q) => q.getString('asset')).filter(Boolean));
+  const own = r.getStringSlice('assets').filter((a) => !used.has(a)).length;
+  const kind = isPractice(d, qs.length, own) ? 'practice' : 'lesson';
+  return { ...c, kind, cases: kind === 'practice' ? qs.length : 0 };
 }
 function isDemoSlug(slug) { return slug.indexOf('demo-') === 0; }
 function licenseReady(d) { const l = d.license || {}; return l.verified && l.commercial_use && l.redistribution && (!l.attribution_required || !!l.citation); }
