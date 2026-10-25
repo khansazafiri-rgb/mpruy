@@ -68,7 +68,7 @@ function validateBlocks(blocks, assetIds) {
       o.guided = list(b.guided || [], 12).map((g) => { if (!o.layers.some((l) => l.id === g.layer)) fail('Langkah terpandu merujuk lapisan yang tidak ada.'); return { title: plain(g.title, 200, true), text: plain(g.text || '', 600), layer: g.layer }; });
       explorers[o.id] = o;
     } else if (b.type === 'exploded_view') {
-      Object.assign(o, { title: plain(b.title, 200, true), goal: plain(b.goal || '', 600), gap: unit(b.gap, 0.6) });
+      Object.assign(o, { title: plain(b.title, 200, true), goal: plain(b.goal || '', 600), gap: unit(b.gap, 1) });
       if (!!b.from === !!b.layers) fail('Exploded view memakai tepat satu: from atau layers.');
       if (b.from) { o.from = blockId(b.from); } else { o.layers = layerList(b.layers, assetIds); Object.assign(o, origin(b.origin, o.layers)); }
     } else if (b.type === 'model_3d') {

@@ -4,15 +4,16 @@ import LabLayerStage from './LabLayerStage';
 import { ProvenanceBanner } from './LabLayerExplorer';
 import { clamp01, explodeOffsets, highlightOpacity } from './labLayers';
 
-const H = 560; const SCALE = 0.62;
+// Oblique view: each 400x400 layer is drawn as a flat sheet (x 0.62, y 0.36) so a stack of eight stays legible.
+const W = 560; const H = 560; const SX = 0.62; const SY = 0.36;
 
 // 2.5D exploded view: the same layers separate along one depth axis (no fake rotation). Superficial on top.
 export default function LabExplodedView({ block, layers }) {
-  const n = layers.length; const gap = block.gap ?? 0.6;
+  const n = layers.length; const gap = block.gap ?? 1;
   const [explode, setExplode] = useState(0.55); const [selected, setSelected] = useState(''); const [labels, setLabels] = useState(true);
   const [opacity, setOpacity] = useState({}); const [hidden, setHidden] = useState({});
-  const offsets = useMemo(() => explodeOffsets(n, explode, gap, H * 0.82), [n, explode, gap]);
-  const items = layers.map((l, i) => ({ ...l, visible: !hidden[l.id], opacity: highlightOpacity(clamp01(opacity[l.id] ?? l.opacity ?? 1), selected, l.id), dx: offsets[i].dx, dy: offsets[i].dy + 20, scale: SCALE, planes: true }));
+  const offsets = useMemo(() => explodeOffsets(n, explode, gap, H * 0.75), [n, explode, gap]);
+  const items = layers.map((l, i) => ({ ...l, visible: !hidden[l.id], opacity: highlightOpacity(clamp01(opacity[l.id] ?? l.opacity ?? 1), selected, l.id), dx: offsets[i].dx, dy: offsets[i].dy, sx: SX, sy: SY, x0: 170, y0: H / 2, labelX: 345 }));
   const picked = layers.find((l) => l.id === selected);
   const reset = () => { setExplode(0.55); setSelected(''); setLabels(true); setOpacity({}); setHidden({}); };
   const pickedOpacity = picked ? clamp01(opacity[picked.id] ?? picked.opacity ?? 1) : 1;
@@ -21,7 +22,7 @@ export default function LabExplodedView({ block, layers }) {
     <ProvenanceBanner block={block} />
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
       <div className="space-y-3">
-        <div className="rounded-2xl border border-line bg-page p-3"><LabLayerStage items={items} viewBox={`0 0 400 ${H}`} label={`${block.title}, ${n} lapisan${selected ? `, terpilih: ${picked?.name}` : ''}`} selectedId={selected} onSelect={(id) => setSelected(id === selected ? '' : id)} showPlanes showLabels={labels} /></div>
+        <div className="rounded-2xl border border-line bg-page p-3"><LabLayerStage items={items} viewBox={`0 0 ${W} ${H}`} label={`${block.title}, ${n} lapisan${selected ? `, terpilih: ${picked?.name}` : ''}`} selectedId={selected} onSelect={(id) => setSelected(id === selected ? '' : id)} showPlanes showLabels={labels} /></div>
         <label className="flex items-center gap-3 text-sm font-semibold"><span className="shrink-0">Jarak antarlapisan</span><input type="range" min={0} max={100} step={5} value={Math.round(explode * 100)} onChange={(e) => setExplode(Number(e.target.value) / 100)} aria-label="Jarak antarlapisan: rapat sampai terurai" aria-valuetext={`${Math.round(explode * 100)} persen terurai`} className="h-8 w-full" /><span className="w-12 text-right text-ink-muted">{Math.round(explode * 100)}%</span></label>
         <div className="flex flex-wrap gap-2"><button type="button" className="btn btn-secondary btn-sm" onClick={() => setExplode(0)}>Rapatkan</button><button type="button" className="btn btn-secondary btn-sm" onClick={() => setExplode(1)}>Uraikan penuh</button><button type="button" className="btn btn-secondary btn-sm" aria-pressed={labels} onClick={() => setLabels(!labels)}>Label {labels ? 'tampil' : 'tersembunyi'}</button><button type="button" className="btn btn-ghost btn-sm" onClick={reset}><RotateCcw size={14} /> Reset</button></div>
       </div>
