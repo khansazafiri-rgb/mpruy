@@ -69,19 +69,48 @@ function plain(s) {
   return String(s).replace(/https?:\/\/[^\s<>"')]+/g, "").replace(/<[^>]*>/g, "");
 }
 
+function wordChar(c) {
+  return !!c && (/[A-Za-z0-9_]/.test(c) || c.toLowerCase() !== c.toUpperCase());
+}
+
+function hasTerm(text, term) {
+  if (!term) return false;
+  let from = 0;
+  while (from <= text.length) {
+    const i = text.indexOf(term, from);
+    if (i < 0) return false;
+    if ((!wordChar(term[0]) || !wordChar(text[i - 1])) &&
+        (!wordChar(term[term.length - 1]) || !wordChar(text[i + term.length]))) return true;
+    from = i + 1;
+  }
+  return false;
+}
+
 function requiredTerms(text, glossary) {
   const s = plain(text);
   // Preserve explicit scientific names and abbreviations as written. The
   // editable glossary covers other terms, including Indonesian scientific terms.
   const names = s.match(/\b(?:[MmNnAaVv]\.|[Mm]usculus|[Nn]ervus|[Aa]rteria|[Vv]ena|[Ll]igamentum|[Ff]oramen|[Cc]analis|[Oo]s)\s+[a-z][a-z-]+(?:\s+(?:longus|brevis|major|minor|superior|inferior|anterior|posterior|profunda|communis|lateralis|medialis))?\b/g) || [];
-  const acronyms = s.match(/\b[A-Z][A-Z0-9]{1,7}\b/g) || [];
+  const acronyms = (s.match(/\b[A-Z][A-Z0-9]{1,7}\b/g) || []).filter((t) => hasTerm(s, t));
   const units = s.match(/\b(?:mg|mcg|µg|kg|mL|ml|mmHg|mmol\/L|mg\/dL|mEq\/L|cm|mm|bpm)\b/g) || [];
-  const explicit = (glossary || []).filter((t) => {
-    const i = s.indexOf(t);
-    if (i < 0) return false;
-    return !/[\w]/.test(s[i - 1] || "") && !/[\w]/.test(s[i + t.length] || "");
-  });
+  const explicit = (glossary || []).filter((t) => hasTerm(s, t));
   return Array.from(new Set(explicit.concat(names, acronyms, units)));
+}
+
+function requiredForSegment(q, part, glossary) {
+  const options = q.options || [];
+  const prefix = (o) => new RegExp("^\\s*" + String(o.label).replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "[.)]\\s+");
+  // Imported banks sometimes repeat A./B./... inside each option's text.
+  // Strip these only with evidence from the complete option list. A standalone
+  // anatomical abbreviation such as A. carotis communis stays protected.
+  if (part.path[0] === "options" && part.path[2] === "text" &&
+      typeof options[part.path[1]].text === "string" && options.length > 1 &&
+      options.every((o) => typeof o.text === "string" && prefix(o).test(o.text))) {
+    const text = part.source.replace(prefix(options[part.path[1]]), "");
+    const explicit = (glossary || []).filter((t) => hasTerm(plain(part.source), t));
+    return Array.from(new Set(explicit.concat(requiredTerms(text, glossary))));
+  }
+  return requiredTerms(part.source, glossary);
 }
 
 function numbers(text) {
@@ -103,8 +132,8 @@ function validate(q, entries, glossary, full) {
     const t = map[s.id];
     if (typeof t !== "string" || !t.trim()) { errors.push(s.label + ": terjemahan belum diisi."); return; }
     if (t.length > 40000) errors.push(s.label + ": teks terlalu panjang.");
-    requiredTerms(s.source, glossary).forEach((term) => {
-      if (t.indexOf(term) < 0) errors.push(s.label + ': pertahankan istilah "' + term + '".');
+    requiredForSegment(q, s, glossary).forEach((term) => {
+      if (!hasTerm(plain(t), term)) errors.push(s.label + ': pertahankan istilah "' + term + '".');
     });
     if (JSON.stringify(numbers(s.source)) !== JSON.stringify(numbers(t))) errors.push(s.label + ": angka berubah atau hilang; samakan dengan sumber.");
     // Inline HTML/markup may carry images, links, formulas or formatting. Keep
@@ -148,7 +177,7 @@ function request(q, glossary, model, full) {
   return {
     model: model, store: false, max_output_tokens: 16000,
     instructions: full ? INSTRUCTIONS.replace('Return only the requested explanation segments', 'Return all requested question and explanation segments').replace('Do not translate question stems, answer options, or accepted answers.', 'Translate the prose in question stems and answer options too, while preserving all scientific terms exactly. Never alter the answer key or accepted answers. If this is a clinical simulation, translate dialogue naturally, keep findings and laterality exact, and do not invent image findings; no image contents are provided.') : INSTRUCTIONS,
-    input: [{ role: "user", content: JSON.stringify({ context: source(q), protectedTerms: glossary, segments: parts.map((s) => ({ id: s.id, source: s.source, keep: requiredTerms(s.source, glossary) })) }) }],
+    input: [{ role: "user", content: JSON.stringify({ context: source(q), protectedTerms: glossary, segments: parts.map((s) => ({ id: s.id, source: s.source, keep: requiredForSegment(q, s, glossary) })) }) }],
     text: { format: { type: "json_schema", name: "explanation_translation", strict: true, schema: {
       type: "object", additionalProperties: false, required: ["segments", "notes"], properties: {
         segments: { type: "array", items: { type: "object", additionalProperties: false, required: ["id", "text"], properties: { id: { type: "string" }, text: { type: "string" } } } },
@@ -171,4 +200,4 @@ function parseResponse(data) {
   return parsed;
 }
 
-module.exports = { VERSION, terms, source, segments, requiredTerms, validate, apply, request, parseResponse };
+module.exports = { VERSION, terms, source, segments, requiredTerms, requiredForSegment, hasTerm, validate, apply, request, parseResponse };
