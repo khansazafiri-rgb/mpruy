@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import {
-  Bell, BookOpen, CalendarDays, ChevronDown, Crosshair, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, Stethoscope, Trophy, TrendingUp, User, X,
+  FlaskConical, Bell, BookOpen, CalendarDays, ChevronDown, Crosshair, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, Stethoscope, Trophy, TrendingUp, User, X,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
@@ -18,6 +18,7 @@ const ALL_NAV = [
   { to: '/beranda', label: 'Beranda', short: 'Beranda', icon: Home },
   { to: '/mata-kuliah', label: 'Mata kuliah', short: 'Matkul', icon: BookOpen },
   { to: '/simulasi-dokter', label: 'Simulasi dokter', desk: 'Simulasi', icon: Stethoscope, noBottom: true },
+  { to: '/lab', label: 'MEDCOEL Lab', desk: 'Lab', icon: FlaskConical, noBottom: true },
   { to: '/drilling', label: 'Drilling', icon: Crosshair, noBottom: true, drilling: true },
   { to: '/progres', label: 'Progres', short: 'Progres', icon: TrendingUp },
   { to: '/leaderboard', label: 'Leaderboard', short: 'Peringkat', icon: Trophy },
@@ -110,7 +111,7 @@ export default function AppShell() {
 
       {behind && (
         <div role="status" className="border-b border-gold/60 bg-gold-soft px-4 py-2.5 text-center text-sm text-[#6b4f00]">
-          <b>Server belum memuat pembaruan terbaru.</b> Simulasi masih menampilkan kasus lama dan Drilling belum jalan sampai PocketBase dijalankan ulang di server. <Link to="/admin" className="font-semibold underline">Lihat caranya</Link>
+          <b>Server belum memuat pembaruan terbaru.</b> Fitur baru, termasuk MEDCOEL Lab, memerlukan pembaruan dan restart PocketBase di server. <Link to="/admin" className="font-semibold underline">Lihat caranya</Link>
         </div>
       )}
       <main id="isi" className="app-content mx-auto max-w-6xl px-4 py-6 md:py-10">
