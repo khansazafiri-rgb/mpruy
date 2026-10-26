@@ -12,6 +12,10 @@ export function assetLabel(asset) {
   return fromAlt ? fromAlt[1].toLowerCase() : '';
 }
 
+// Blood source labels stay English in provenance; gallery headings use the teaching labels.
+const bloodLabels = { basophil: 'Basofil', eosinophil: 'Eosinofil', erythroblast: 'Eritroblas',
+  'immature granulocytes': 'Granulosit imatur', lymphocyte: 'Limfosit', monocyte: 'Monosit',
+  neutrophil: 'Neutrofil', platelet: 'Trombosit' };
 const cap = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 
 // Kelompokkan aset per label. "normal" selalu di depan; tanpa label -> satu kelompok umum.
@@ -25,7 +29,7 @@ export function groupAssets(assets = [], modality = '') {
   order.sort((a, b) => (a === 'normal' ? -1 : b === 'normal' ? 1 : 0));
   return order.map((key) => ({
     key,
-    title: key ? cap(key) : 'Contoh gambar',
+    title: map.get(key)[0]?.dataset?.name === 'BloodMNIST' && bloodLabels[key] ? bloodLabels[key] : key ? cap(key) : 'Contoh gambar',
     subtitle: key ? modality : '',
     items: map.get(key).map((asset, i) => ({ asset, caseNo: i + 1 })),
   }));

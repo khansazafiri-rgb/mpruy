@@ -94,3 +94,11 @@ test('isPracticeFirst only for practice objects that have cases', () => {
   assert.equal(isPracticeFirst({ kind: 'practice', questions: [{}] }), true); assert.equal(isPracticeFirst({ kind: 'practice', questions: [] }), false);
   assert.equal(isPracticeFirst({ kind: 'lesson', questions: [{}] }), false); assert.equal(isPracticeFirst(null), false);
 });
+
+test('Blood gallery headings are Indonesian; source labels and Pneumonia behavior stay intact', () => {
+  const labels = ['basophil', 'eosinophil', 'erythroblast', 'immature granulocytes', 'lymphocyte', 'monocyte', 'neutrophil', 'platelet'];
+  const assets = labels.map((label) => ({ dataset: { name: 'BloodMNIST', label } }));
+  assert.deepEqual(groupAssets(assets).map((g) => g.title), ['Basofil', 'Eosinofil', 'Eritroblas', 'Granulosit imatur', 'Limfosit', 'Monosit', 'Neutrofil', 'Trombosit']);
+  assert.deepEqual(assets.map(assetLabel), labels);
+  assert.equal(groupAssets([{ dataset: { name: 'Other', label: 'basophil' } }])[0].title, 'Basophil');
+});

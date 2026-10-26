@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Import a small, reviewable MedMNIST teaching pack into MEDCOEL Lab.
 
-Current supported dataset: PneumoniaMNIST 224px.
+Supported datasets: PneumoniaMNIST and BloodMNIST 224px.
 
 Design goals:
 - official-source download only
@@ -9,7 +9,7 @@ Design goals:
 - deterministic, disjoint learning/practice sampling; max 5 practice images/class
 - idempotent API writes by slug (existing records are only touched with --update-existing)
 - draft-only content (never auto-publish)
-- every record belongs to the content pack pneumoniamnist-v1
+- dataset-specific content packs with explicit teaching adapters
 - no MONAI/PyTorch dependency
 - no lesion localization invented from image-level labels
 
@@ -32,34 +32,16 @@ import hashlib
 import json
 import os
 import re
-import urllib.request
 import sys
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-import numpy as np
-from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from medcoel_api import ApiError, MedcoelAPI, resolve_content_pack  # noqa: E402
 from sampling import LEARNING_PER_CLASS, PRACTICE_PER_CLASS, SELECTION_SEED, SelectionConfig, select_samples
-from dataset_registry import require_enabled_dataset
-
-
-@dataclass(frozen=True)
-class DatasetSpec:
-    key: str
-    title: str
-    download_url: str
-    md5: str
-    license_name: str
-    source_url: str
-    citation: str
-    labels: dict[int, str]
-    split: str = "test"
-    resolution: int = 224
-    task: str = "binary_classification"
+import medmnist_core as core
+from medmnist_core import DatasetSpec, MANAGED, PRESERVED_DATA, flatten_labels, md5sum, log
 
 
 PNEUMONIA_224 = DatasetSpec(
@@ -85,90 +67,17 @@ CACHE_DIR = ROOT / "tools" / "lab-ingest" / "cache"
 PUBLIC_DIR = ROOT / "apps" / "web" / "public" / "lab-content" / "medmnist" / PNEUMONIA_224.key
 
 
-def log(message: str) -> None:
-    print(message, flush=True)
-
-
-def md5sum(path: Path) -> str:
-    h = hashlib.md5()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
+# Backward-compatible facade; Pneumonia content/migration remains below.
 def download(spec: DatasetSpec) -> Path:
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    target = CACHE_DIR / f"{spec.key}_224.npz"
-    if target.exists() and md5sum(target) == spec.md5:
-        log(f"Dataset cache OK: {target}")
-        return target
-    if target.exists():
-        log("Checksum cache tidak cocok; mengunduh ulang.")
-        target.unlink()
-
-    partial = target.with_suffix(".npz.part")
-    if partial.exists():
-        partial.unlink()
-    log(f"Mengunduh {spec.title} 224px dari Zenodo resmi...")
-    req = urllib.request.Request(spec.download_url, headers={"User-Agent": "MEDCOEL-Lab-Ingest/1.0"})
-    with urllib.request.urlopen(req, timeout=120) as response, partial.open("wb") as out:
-        while True:
-            chunk = response.read(1024 * 1024)
-            if not chunk:
-                break
-            out.write(chunk)
-    partial.replace(target)
-    actual = md5sum(target)
-    if actual != spec.md5:
-        target.unlink(missing_ok=True)
-        raise RuntimeError(f"MD5 tidak cocok. expected={spec.md5} actual={actual}")
-    log(f"Download terverifikasi: {target}")
-    return target
+    return core.download(spec, CACHE_DIR)
 
 
-def flatten_labels(raw: np.ndarray) -> np.ndarray:
-    arr = np.asarray(raw)
-    if arr.ndim == 2 and arr.shape[1] == 1:
-        arr = arr[:, 0]
-    if arr.ndim != 1 or not np.issubdtype(arr.dtype, np.integer):
-        raise ValueError("Expected integer single-label array shaped [N] or [N,1]; multi-label ingestion refused.")
-    return arr
+def png_name(split, index, label, spec=PNEUMONIA_224, role="learning"):
+    return core.png_name(split, index, label, spec, role)
 
 
-def png_name(split: str, index: int, label: int, spec: DatasetSpec = PNEUMONIA_224, role: str = "learning") -> str:
-    if role == "practice":
-        identity = f"{spec.key}:{spec.md5}:{split}:{index}"
-        return f"{spec.key}-practice-{hashlib.sha256(identity.encode()).hexdigest()[:24]}.png"
-    name = re.sub(r"[^a-z0-9]+", "-", spec.labels[label].lower()).strip("-")
-    return f"{spec.key}-{split}-{name}-{index:04d}.png"
-
-
-def export_pngs(npz_path: Path, config: SelectionConfig, spec: DatasetSpec = PNEUMONIA_224) -> dict[str, list[dict[str, Any]]]:
-    require_enabled_dataset(spec.key)
-    PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
-    with np.load(npz_path, allow_pickle=False) as data:
-        images = data[f"{spec.split}_images"]
-        labels = flatten_labels(data[f"{spec.split}_labels"])
-        if len(images) != len(labels):
-            raise ValueError("Image and label counts differ")
-        selection = select_samples(labels, spec.labels, dataset=spec.key, split=spec.split, version=spec.md5, config=config)
-        groups = {"learning": [], "practice": []}
-        for role in groups:
-            for index in getattr(selection, role):
-                label = int(labels[index])
-                image = np.asarray(images[index])
-                if image.ndim == 3 and image.shape[-1] == 1:
-                    image = image[..., 0]
-                if image.ndim not in (2, 3) or (image.ndim == 3 and image.shape[-1] not in (3, 4)):
-                    raise ValueError(f"Unsupported image shape at index {index}: {image.shape}")
-                filename = png_name(spec.split, index, label, spec, role)
-                out = PUBLIC_DIR / filename
-                Image.fromarray(np.asarray(image, dtype=np.uint8)).save(out, format="PNG", optimize=True)
-                groups[role].append({"dataset": spec.key, "split": spec.split, "index": index, "label": label,
-                    "label_name": spec.labels[label], "role": role, "filename": filename, "local_path": str(out),
-                    "url_path": f"/lab-content/medmnist/{spec.key}/{filename}"})
-    return groups
+def export_pngs(npz_path, config, spec=PNEUMONIA_224):
+    return core.export_pngs(npz_path, config, spec, PUBLIC_DIR)
 
 
 PACK = {
@@ -180,128 +89,9 @@ PACK = {
     "licenseSummary": "CC BY 4.0. Label hanya tingkat-gambar; tidak ada anotasi lokasi.",
 }
 
-# Fields this importer owns per kind. Everything else on an existing record is preserved on update.
-MANAGED = {
-    "assets": ["title", "pack"],
-    "objects": ["title", "summary", "domain", "modality", "assets", "pack"],
-    "questions": ["title", "objects", "asset", "pack"],
-    "pathways": ["title", "summary", "steps", "pack"],
-}
-PRESERVED_DATA = {"assets": ["annotations"], "objects": ["blocks", "demo"], "questions": [], "pathways": []}
-
-
-def brief(value: Any) -> str:
-    text = json.dumps(value, ensure_ascii=False, sort_keys=True) if not isinstance(value, str) else value
-    return text if len(text) <= 70 else text[:67] + "..."
-
-
-class DraftImporter:
-    """Create (and, only when asked, update) Lab records through the admin API.
-
-    Default is create-only: existing slugs are skipped. `update_existing` rewrites only importer-owned fields,
-    keeps admin edits (annotations, blocks, related links, tags, verified license) and sends the record's
-    current revision so a concurrent edit makes the server refuse instead of being overwritten.
-    Saving through the API returns a record to draft; published records must be re-published afterwards.
-    """
-
-    def __init__(self, api: MedcoelAPI, apply: bool, update_existing: bool, license_verified: bool):
-        self.api = api
-        self.apply = apply
-        self.update_existing = update_existing
-        self.license_verified = license_verified
-        self.existing: dict[str, dict[str, dict[str, Any]]] = {}
-        self.slugs: dict[str, str] = {}
-        self.counts = {"create": 0, "update": 0, "unchanged": 0, "skip": 0}
-        self.unpublished: list[str] = []
-
-    def refresh(self, kind: str) -> None:
-        self.existing[kind] = {row["slug"]: row for row in self.api.list_all(kind)}
-        for row in self.existing[kind].values():
-            self.slugs[row["id"]] = row["slug"]
-
-    def _slug(self, value: Any) -> Any:
-        if isinstance(value, list):
-            return [self._slug(v) for v in value]
-        return self.slugs.get(value, value) if isinstance(value, str) else value
-
-    def _merge(self, kind: str, old: dict[str, Any], body: dict[str, Any]) -> dict[str, Any]:
-        new = {**old}
-        for key in MANAGED[kind]:
-            if key in body:
-                new[key] = body[key]
-        data = {**body["data"]}
-        for key in PRESERVED_DATA[kind]:
-            if key in old.get("data", {}):
-                data[key] = old["data"][key]
-        if kind == "assets":
-            old_license = old.get("data", {}).get("license", {})
-            data["license"] = {**data["license"], "verified": bool(self.license_verified or old_license.get("verified"))}
-        if kind == "objects":
-            new["tags"] = list(dict.fromkeys(old.get("tags", []) + body.get("tags", [])))
-            new["related"] = old.get("related", [])
-            new["legacyQuestions"] = old.get("legacyQuestions", [])
-        if kind == "questions":
-            archive = self.existing.get("objects", {}).get(archive_body()["slug"], {})
-            old_links = [x for x in old.get("objects", []) if x != archive.get("id")]
-            new["objects"] = list(dict.fromkeys(old_links + body.get("objects", [])))
-        new["data"] = data
-        return new
-
-    def _diff(self, kind: str, old: dict[str, Any], new: dict[str, Any], owned: set[str]) -> list[str]:
-        out: list[str] = []
-        keys = MANAGED[kind] + (["tags"] if kind == "objects" else [])
-        for key in keys:
-            if self._slug(old.get(key)) != self._slug(new.get(key)):
-                out.append(f"{key}: {brief(self._slug(old.get(key)))} -> {brief(self._slug(new.get(key)))}")
-        # Only keys this importer sends: the server adds defaults (media, schemaVersion, empty lists) that are not changes.
-        for key in sorted(owned):
-            if old.get("data", {}).get(key) != new["data"].get(key):
-                out.append(f"data.{key}: {brief(old.get('data', {}).get(key))} -> {brief(new['data'].get(key))}")
-        return out
-
-    def ensure(self, kind: str, body: dict[str, Any]) -> dict[str, Any]:
-        if kind not in self.existing:
-            self.refresh(kind)
-        slug = body["slug"]
-        old = self.existing[kind].get(slug)
-        if old is None:
-            self.counts["create"] += 1
-            if not self.apply:
-                log(f"WOULD CREATE draft {kind}: {slug}")
-                row = {"id": f"<new:{slug}>", "slug": slug, "status": "draft", "revision": 0}
-            else:
-                row = self.api.create(kind, body)
-                log(f"CREATE draft {kind}: {slug}")
-            self.existing[kind][slug] = row
-            self.slugs[row["id"]] = slug
-            return row
-        if not self.update_existing:
-            self.counts["skip"] += 1
-            log(f"SKIP existing {kind}: {slug} ({old['status']}, rev {old['revision']}); gunakan --update-existing untuk memperbarui")
-            return old
-        new = self._merge(kind, old, body)
-        changes = self._diff(kind, old, new, set(body["data"]))
-        if not changes:
-            self.counts["unchanged"] += 1
-            log(f"UNCHANGED {kind}: {slug}")
-            return old
-        self.counts["update"] += 1
-        note = f" (akan kembali ke draft dari {old['status']})" if old["status"] == "published" else ""
-        if old["status"] == "published":
-            self.unpublished.append(f"{kind}:{slug}")
-        log(f"{'UPDATE' if self.apply else 'WOULD UPDATE'} {kind}: {slug} rev {old['revision']}{note}")
-        for line in changes:
-            log(f"    {line}")
-        if not self.apply:
-            return old
-        payload = {k: v for k, v in new.items() if k not in ("status", "reviewedBy", "reviewedAt")}
-        payload["revision"] = old["revision"]
-        try:
-            row = self.api.update(kind, old["id"], payload)
-        except ApiError as exc:
-            raise RuntimeError(f"Gagal memperbarui {kind}:{slug}; konten berubah di server? Muat ulang dan ulangi. ({exc})") from exc
-        self.existing[kind][slug] = row
-        return row
+class DraftImporter(core.DraftImporter):
+    def __init__(self, api, apply, update_existing, license_verified):
+        super().__init__(api, apply, update_existing, license_verified, archive_slug=archive_body()["slug"])
 
 
 def license_payload(verified: bool) -> dict[str, Any]:
@@ -479,28 +269,8 @@ def archive_body() -> dict[str, Any]:
         "data": {"definition": "Arsip operasional, bukan materi belajar. Soal dipertahankan sebagai draft untuk audit; tidak termasuk pack atau jalur belajar aktif."}}
 
 
-def validate_groups(groups: dict[str, list[dict[str, Any]]], config: SelectionConfig) -> None:
-    identities = {}
-    for role, count in (("learning", config.learning_per_class), ("practice", config.practice_per_class)):
-        rows = groups[role]
-        for label, name in PNEUMONIA_224.labels.items():
-            if sum(r["label"] == label for r in rows) != count:
-                raise ValueError(f"{role}: expected {count} samples for class {name}")
-        if len(rows) != count * len(PNEUMONIA_224.labels):
-            raise ValueError(f"{role}: unexpected class or sample count")
-        keys = []
-        for r in rows:
-            if (r.get("dataset", PNEUMONIA_224.key) != PNEUMONIA_224.key or
-                    r.get("split", PNEUMONIA_224.split) != PNEUMONIA_224.split or
-                    not isinstance(r["index"], int) or isinstance(r["index"], bool) or r["index"] < 0 or
-                    r["label_name"] != PNEUMONIA_224.labels[r["label"]]):
-                raise ValueError("Invalid source identity/class")
-            keys.append(r["index"])
-        if len(set(keys)) != len(keys):
-            raise ValueError(f"{role}: duplicate source indices")
-        identities[role] = set(keys)
-    if identities["learning"] & identities["practice"]:
-        raise ValueError("Learning/practice source indices overlap; sync refused")
+def validate_groups(groups, config):
+    return core.validate_groups(groups, config, PNEUMONIA_224)
 
 
 def managed_question(q: dict[str, Any], assets: dict[str, dict[str, Any]], pack_id: str) -> bool:
@@ -612,49 +382,48 @@ def sync(api: MedcoelAPI, groups: dict[str, list[dict[str, Any]]], *, apply: boo
     return importer
 
 
-def manifest(groups: dict[str, list[dict[str, Any]]], config: SelectionConfig) -> dict[str, Any]:
-    validate_groups(groups, config)
-    out = {"schema_version": 2, "dataset": PNEUMONIA_224.key, "resolution": 224, "split": "test",
-           "source_md5": PNEUMONIA_224.md5, "selection_config": config.metadata(), "overlap": 0,
-           "license": PNEUMONIA_224.license_name, "source_url": PNEUMONIA_224.source_url}
-    for role in ("learning", "practice"):
-        rows = groups[role]
-        out[role] = {"total": len(rows), "per_class": getattr(config, role + "_per_class"),
-            "counts": {name: sum(r["label"] == label for r in rows) for label, name in PNEUMONIA_224.labels.items()},
-            "files": [{"dataset": PNEUMONIA_224.key, "split": "test", "source_sample_index": r["index"],
-                       "class_label": r["label"], "class_name": r["label_name"], "role": role,
-                       "filename": r["filename"], "url_path": r["url_path"]} for r in rows]}
-    return out
+def manifest(groups, config):
+    return core.manifest(groups, config, PNEUMONIA_224)
 
 
 def parse_args(argv=None):
-    parser = argparse.ArgumentParser(description="Prepare/import disjoint PneumoniaMNIST learning and practice samples")
+    parser = argparse.ArgumentParser(description="Prepare/import disjoint MedMNIST learning and practice samples")
+    parser.add_argument("--dataset", choices=("pneumoniamnist", "bloodmnist"), default="pneumoniamnist")
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--apply", action="store_true", help="Create/update drafts through the admin API; never publish")
     mode.add_argument("--dry-run", action="store_true", help="Default: local export and read-only sync plan")
-    parser.add_argument("--learning-per-class", type=int, default=LEARNING_PER_CLASS)
+    parser.add_argument("--learning-per-class", type=int, default=None)
     parser.add_argument("--per-class", type=int, default=None, help="Compatibility alias for --learning-per-class only")
-    parser.add_argument("--practice-per-class", type=int, default=PRACTICE_PER_CLASS)
+    parser.add_argument("--practice-per-class", type=int, default=None)
     parser.add_argument("--selection-seed", type=int, default=SELECTION_SEED)
     parser.add_argument("--public-base", default=os.getenv("MEDCOEL_PUBLIC_BASE", "https://medcoel.com"))
     parser.add_argument("--license-verified", action="store_true", help="License verified only after explicit human review")
     parser.add_argument("--update-existing", action="store_true", help="Explicitly sync importer-managed records, including obsolete practice retirement")
     args = parser.parse_args(argv)
     if args.per_class is not None:
-        if args.learning_per_class != LEARNING_PER_CLASS and args.learning_per_class != args.per_class:
+        if args.learning_per_class is not None and args.learning_per_class != args.per_class:
             parser.error("Conflicting --per-class and --learning-per-class")
         args.learning_per_class = args.per_class
+    if args.learning_per_class is None:
+        args.learning_per_class = 5 if args.dataset == "bloodmnist" else LEARNING_PER_CLASS
+    if args.practice_per_class is None:
+        args.practice_per_class = 3 if args.dataset == "bloodmnist" else PRACTICE_PER_CLASS
     try:
         args.config = SelectionConfig(args.learning_per_class, args.practice_per_class, args.selection_seed)
     except ValueError as exc:
         parser.error(str(exc))
-    if args.learning_per_class > 10:
+    if args.dataset == "bloodmnist" and args.learning_per_class > 5:
+        parser.error("Blood learning supports at most 5/class (four classes, 20 assets/object).")
+    if args.dataset == "pneumoniamnist" and args.learning_per_class > 10:
         parser.error("Current Pneumonia gallery supports at most 10/class (20 assets/object). Future adapters must shard larger galleries; practice cap is independent.")
     return args
 
 
 def main() -> int:
     args = parse_args()
+    if args.dataset == "bloodmnist":
+        from bloodmnist import run
+        return run(args, CACHE_DIR, PUBLIC_DIR.parent / "bloodmnist")
     npz = download(PNEUMONIA_224)
     groups = export_pngs(npz, args.config)
     mf = manifest(groups, args.config)
