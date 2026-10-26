@@ -37,6 +37,8 @@ There is no hard-delete API call and no SQLite access. With explicit `--apply --
 
 The archive is not published. Its questions are excluded from pack publishing, inaccessible through the student answer endpoint while draft, and no longer counted in the active practice object. The pack ends with 30 assets, 2 objects, 10 questions, and 1 pathway. The additional archive object and retained old questions live outside it.
 
+The pack is resolved by its canonical slug first. Older installations may have a different pack slug: the importer can follow the single consistent pack ID attached to the known PneumoniaMNIST lessons and linked questions/assets, requiring dataset provenance and a successful pack lookup by ID. It reuses that ID and original slug, does not rename or create a duplicate pack, and records the resolved identity in the private manifest. Conflicting IDs, missing provenance, or an unreadable/dangling pack ID stop before any writes. The publish CLI uses the same fallback for its standard `pneumoniamnist` alias. Manually authored/unrecognized questions remain blocked.
+
 The read-only plan lists current/target counts, source overlap, and every obsolete slug/revision/action. Ownership requires the importer question naming pattern, image-identification type, expected pack/legacy-unassigned membership, and PneumoniaMNIST asset provenance. Unrecognized/manual questions linked to the practice object stop the sync before writes for human review.
 
 Create-only `--apply` refuses this legacy migration before writing anything: `--update-existing` is required. All writes are draft-only, use current revisions, preserve supported admin edits (annotations, blocks, tags, related/legacy links and verified license), and skip unchanged records. Existing questions can be reactivated safely if a later selection changes; the importer removes the archive relation when restoring them to the practice object.
@@ -80,6 +82,7 @@ Use Python 3.10+ and the unchanged requirements (NumPy/Pillow). Offline tests us
 
 ```bash
 python -m unittest discover -s tools/lab-ingest -p test_sampling.py -v
+python -m unittest discover -s tools/lab-ingest -p test_pack_resolution.py -v
 ```
 
 A path-scoped GitHub Actions workflow runs those offline tests on Python 3.10. Existing Lab checks:
@@ -101,6 +104,8 @@ python tools/lab-ingest/test_ingest.py
 The fixture constructs a published legacy 20-question pack, verifies no-write dry-run/create-only refusal, revision conflict handling, safe retirement, exact 10/5 counts, zero overlap, preserved admin edits, unchanged publication status, idempotence, private sample metadata and canonical publish CLI. Publication happens only inside that disposable test fixture.
 
 ### Verification results for this refactor
+
+Pack-resolution follow-up: 10 targeted offline regressions cover noncanonical slugs, exact production-shaped references, reuse/idempotence, publisher resolution, ambiguity/dangling IDs, missing provenance, unrelated content, manual questions, and non-404 API errors. The 15 sampler tests were rerun with this fix; all 25 tests passed. No production calls or frontend changes were made.
 
 - 15 offline Python tests passed, including synthetic export, cap enforcement, 4/8/9-class balance, disjointness, deterministic selection, re-selection, manifest privacy, dry-run writes=0, idempotence and publication status.
 - 32 ingestion API checks passed against disposable PocketBase 0.40.5: legacy old20 → retained draft archive, 30 assets / 10 active questions, overlap=0, review/revision preservation and canonical publish flow.
@@ -137,11 +142,10 @@ export MEDCOEL_API_BASE=https://medcoel.com
 ### 2. Dry-run, then build the newly exported assets
 
 ```bash
-python tools/lab-ingest/import_medmnist.py --dry-run --update-existing
-npm run build
+python tools/lab-ingest/import_medmnist.py --dry-run --update-existing && npm ci && npm run build
 ```
 
-Inspect the private manifest and all retirement entries. Expected: learning 10/class, practice 5/class, overlap 0, current 20 → target 10, obsolete 20 → retained draft archive. Build follows export so all new practice PNGs exist before any draft is published. Build is needed only to copy the new static image files; UI source is unchanged. Do not run the general deployment script or reset/restart PocketBase for this task.
+Inspect the private manifest and all retirement entries. Expected: learning 10/class, practice 5/class, overlap 0, current 20 → target 10, obsolete 20 → retained draft archive. A failed dry-run stops this command chain. `npm ci` first synchronizes the already-declared lockfile dependencies (including `three` used by the existing Lab UI). Build follows export so all new practice PNGs exist before any draft is published. Build is needed only to copy the new static image files; UI source is unchanged. Do not run the general deployment script or reset/restart PocketBase for this task.
 
 ### 3. Apply drafts
 
