@@ -90,3 +90,50 @@ class MedcoelAPI:
 
     def create_pack(self, body: dict[str, Any]) -> dict[str, Any]:
         return self.request("POST", "/api/medcoel/admin/lab-packs", body)
+
+
+PNEUMONIA_OBJECT_SLUGS = ("pneumoniamnist-pengenalan", "pneumoniamnist-latihan-klasifikasi")
+
+
+def resolve_content_pack(api: MedcoelAPI, slug: str, *, records=None,
+                         object_slugs=PNEUMONIA_OBJECT_SLUGS, dataset_name="PneumoniaMNIST") -> dict[str, Any] | None:
+    """Resolve an existing pack without changing its slug, content or membership.
+
+    An older installation may have a different pack slug. Only follow the single
+    consistent pack ID attached to the known lessons and their linked content;
+    require the adapter's dataset asset provenance before accepting this fallback.
+    Ambiguous or dangling references must never create a replacement pack.
+    """
+    canonical = api.pack(slug)
+    if records is None:
+        if canonical is not None:
+            return canonical
+        records = {kind: {r["slug"]: r for r in api.list_all(kind)}
+                   for kind in ("objects", "questions", "assets")}
+    objects = [r for r in records["objects"].values() if r["slug"] in object_slugs]
+    object_ids = {r["id"] for r in objects}
+    questions = [r for r in records["questions"].values()
+                 if object_ids.intersection(r.get("objects", []))]
+    asset_ids = {r.get("asset") for r in questions}
+    asset_ids.update(a for r in objects for a in r.get("assets", []))
+    assets = [r for r in records["assets"].values() if r["id"] in asset_ids]
+    pack_ids = {r["pack"] for r in objects + questions + assets if r.get("pack")}
+    if canonical is not None:
+        pack_ids.add(canonical["id"])
+    if len(pack_ids) > 1:
+        raise RuntimeError(f"Conflicting pack references for {dataset_name}: " +
+                           ", ".join(sorted(pack_ids)) + ". Review membership; nothing changed.")
+    if not pack_ids:
+        return canonical
+    linked_id = next(iter(pack_ids))
+    if canonical is not None:
+        return canonical
+    if not any(a.get("data", {}).get("dataset", {}).get("name") == dataset_name or
+               a.get("data", {}).get("license", {}).get("dataset") == dataset_name
+               for a in assets):
+        raise RuntimeError(f"Linked pack found but {dataset_name} asset provenance is missing. Nothing changed.")
+    linked = api.pack(linked_id)
+    if linked is None or linked.get("id") != linked_id:
+        raise RuntimeError(f"Existing content references pack {linked_id}, but it cannot be resolved by ID. "
+                           "Review the pack/API before retrying; no replacement pack was created.")
+    return linked
