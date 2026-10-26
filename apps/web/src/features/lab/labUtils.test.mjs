@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { annotationLayers, assetLabel, crumbs, fittedSize, groupAssets, objectHref, pathNeighbors, sessionSummary } from './labUtils.js';
+import { annotationLayers, assetLabel, crumbs, fittedSize, groupAssets, isPracticeFirst, navStatus, objectHref, pathNeighbors, pathwayState, sessionSummary, sessionTitle, stepState, summaryLine } from './labUtils.js';
 
 test('assetLabel membaca field, judul, atau alt', () => {
+  assert.equal(assetLabel({ dataset: { label: 'Pneumonia' }, title: 'x · normal' }), 'pneumonia', 'structured metadata wins over legacy title');
   assert.equal(assetLabel({ label: 'Normal' }), 'normal');
   assert.equal(assetLabel({ title: 'PneumoniaMNIST test #12 · pneumonia' }), 'pneumonia');
   assert.equal(assetLabel({ title: 'x', alt: "dengan label dataset 'normal'." }), 'normal');
@@ -61,4 +62,35 @@ test('sessionSummary menghitung benar, salah, dan soal untuk ditinjau', () => {
   const s = sessionSummary(qs, answers);
   assert.deepEqual({ total: s.total, answered: s.answered, correct: s.correct, wrong: s.wrong }, { total: 4, answered: 3, correct: 1, wrong: 1 });
   assert.deepEqual(s.review, ['2', '3']);
+});
+
+const steps = [{ slug: 'a' }, { slug: 'b' }];
+test('pathwayState: not started offers step 1; in progress resumes; completed offers NO resume (never lesson 1)', () => {
+  const none = pathwayState(steps, [], ''); assert.equal(none.status, 'new'); assert.equal(none.resume.slug, 'a');
+  const mid = pathwayState(steps, ['a'], 'a'); assert.equal(mid.status, 'active'); assert.equal(mid.resume.slug, 'b'); assert.equal(mid.done, 1);
+  const open = pathwayState(steps, [], 'b'); assert.equal(open.status, 'active'); assert.equal(open.resume.slug, 'b', 'resumes where the learner stopped');
+  const done = pathwayState(steps, ['a', 'b'], 'a'); assert.equal(done.status, 'done'); assert.equal(done.resume, null); assert.equal(done.done, 2);
+  assert.equal(pathwayState([], [], '').status, 'new');
+});
+test('stepState marks done / current / todo', () => {
+  assert.equal(stepState(steps[0], ['a'], steps[1]), 'done'); assert.equal(stepState(steps[1], ['a'], steps[1]), 'current'); assert.equal(stepState(steps[1], [], null), 'todo');
+});
+test('navStatus distinguishes current, correct, wrong, self-assessed, skipped and new', () => {
+  const answers = { 1: { result: { correct: true } }, 2: { result: { correct: false } }, 3: { result: { selfAssessment: true, correct: null } } };
+  const visited = new Set(['4']); const ctx = { answers, visited, currentId: '5' };
+  const st = (id) => navStatus({ id }, ctx);
+  assert.deepEqual(['1', '2', '3', '4', '5', '6'].map(st), ['correct', 'wrong', 'answered', 'skipped', 'current', 'new']);
+  assert.equal(navStatus({ id: '1' }, { ...ctx, currentId: '1' }), 'current');
+});
+test('session summary counts unanswered and titles ended sessions honestly', () => {
+  const qs = Array.from({ length: 20 }, (_, i) => ({ id: String(i + 1) }));
+  const answers = { 1: { result: { correct: true } }, 2: { result: { correct: false } }, 3: { result: { correct: false } } };
+  const s = sessionSummary(qs, answers);
+  assert.equal(summaryLine(s), '1 benar · 2 salah · 17 belum dijawab'); assert.equal(s.unanswered, 17);
+  assert.equal(sessionTitle(s, null), 'Sesi diakhiri'); assert.equal(sessionTitle(s, [1]), 'Tinjauan selesai');
+  const all = sessionSummary(qs.slice(0, 1), { 1: { result: { correct: true } } }); assert.equal(sessionTitle(all, null), 'Sesi latihan selesai');
+});
+test('isPracticeFirst only for practice objects that have cases', () => {
+  assert.equal(isPracticeFirst({ kind: 'practice', questions: [{}] }), true); assert.equal(isPracticeFirst({ kind: 'practice', questions: [] }), false);
+  assert.equal(isPracticeFirst({ kind: 'lesson', questions: [{}] }), false); assert.equal(isPracticeFirst(null), false);
 });

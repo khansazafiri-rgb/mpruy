@@ -150,3 +150,88 @@ Rujukan teknis: [PocketBase migrations](https://pocketbase.io/docs/js-migrations
 - Materi disusun dari daftar blok (`features/lab/LabLesson.jsx`, registry `LAB_BLOCKS`): objectives, text, image_gallery, steps, list, lab_table, practice, about. Blok baru (comparison, layer_explorer, exploded_view) tinggal didaftarkan di sana.
 - Field opsional baru `data.objectives` (daftar teks, maks 10) pada objek. Tambahan ini kompatibel mundur; tanpa field itu blok tujuan tidak tampil. Perlu restart PocketBase agar admin bisa menyimpannya.
 - Importer (`tools/lab-ingest/import_medmnist.py`) untuk instalasi baru: materi pertama berjudul "Chest X-Ray: Normal vs Pneumonia" membawa 20 aset + tujuan belajar; objek latihan tidak lagi melampirkan galeri. Data yang sudah ada di produksi tidak diubah (importer melewati slug yang sudah ada); ubah lewat JSON editor di `/admin/lab`.
+
+## Lab V2 lengkap: content pack, bulk publish, blok visual, anatomi, progres
+
+### Content pack
+- Koleksi `lab_packs` (slug, title, version, description, source, licenseSummary, status draft/published/archived). Relasi **opsional** `pack` pada `lab_assets`, `lab_objects`, `lab_questions`, `lab_pathways`. Konten lama dan demo tanpa pack tetap berfungsi. Menyimpan konten tanpa field `pack` tidak melepaskannya dari pack.
+- Migrasi aditif `1800001900_lab_packs.js`: `lab_packs`, relasi `pack`, nilai domain `anatomy`, dan `lab_progress`. Tidak ada tabel yang dihapus atau ditulis ulang. Rollback migrasi sengaja ditolak (kode saja yang di-revert).
+- Alternatif lebih sederhana (hanya tag teks pada slug) ditolak: tidak bisa difilter andal, tidak punya status/audit, dan rawan salah ketik.
+
+### Metadata dataset eksplisit
+Aset dapat membawa `data.dataset = { name, split, sample_index, label, resolution: [w, h], task }`. UI membaca label dari sini; penguraian judul/alt tetap hanya sebagai cadangan untuk konten lama. Payload siswa hanya memuat `name, task, split, label, resolution` (tanpa `sample_index`). Gambar pada soal latihan tidak pernah membawa metadata dataset. `data.media` = `image` (bawaan) atau `model` (.glb/.gltf), dan `data.origin` mencatat asal visual.
+
+### Validasi dan publish kanonik
+`lab.checkRecord` (satu-satunya aturan) dipakai oleh publish tunggal, bulk, pack, dan CLI lewat `lab.publishSet`. Urutan selalu aset → objek → soal → jalur dalam satu transaksi; record yang sudah terbit dilewati (idempoten); versi (`revision`) yang basi menggagalkan seluruh operasi. Pemeriksaan: lisensi aset (verified, komersial, redistribusi, sitasi bila atribusi wajib), dependensi (aset/objek/jalur harus terbit atau ikut terbit pada putaran yang sama), kunci soal, soal hotspot/region tidak boleh memakai aset dataset yang hanya berlabel tingkat-gambar, skema pengembangan tidak boleh terbit, dan tautan antar materi harus terbit. Konfirmasi manusia (`confirmReviewed`) wajib untuk menerbitkan; `reviewedBy`/`reviewedAt` disimpan pada tiap record.
+
+| Endpoint (admin) | Fungsi |
+| --- | --- |
+| `GET/POST /api/medcoel/admin/lab-packs`, `GET/PUT .../lab-packs/{slug}` | daftar, buat, ubah, dan lihat isi pack |
+| `POST .../lab-packs/{slug}/validate` | validasi tanpa menulis; semua kesalahan per record |
+| `POST .../lab-packs/{slug}/publish` | `{confirmReviewed, dryRun?, items?}`; hasil `{ok, errors, published, skipped}` (200 walau `ok:false`; tidak ada yang berubah) |
+| `POST .../lab-bulk/publish` | publish/validasi item terpilih `{items:[{kind,id,revision?}], dryRun?, confirmReviewed}` |
+| `GET .../lab/objects/{id}/preview` | pratinjau draft bentuk siswa (tidak diterbitkan) |
+
+Endpoint siswa baru: `GET /api/medcoel/lab/overview` (jumlah materi per domain + "lanjutkan belajar") dan `POST /api/medcoel/lab/progress`. `GET lab/pathways/{slug}` kini menyertakan `progress`.
+
+### Blok visual (`data.blocks` pada objek)
+Hanya jenis blok yang dikenal yang diterima; semua teks adalah data biasa (tag HTML ditolak dan UI hanya merender teks). Jenis: `callout`, `comparison`, `guided_observation`, `layer_explorer`, `exploded_view`, `model_3d`, `clinical_connection`; galeri berasal dari aset objek. Blok baru cukup ditambahkan ke validator (`lab.js`) dan registri `LAB_BLOCKS` (`LabLesson.jsx`).
+
+```json
+{ "type": "layer_explorer", "id": "thorax", "title": "Thorax", "goal": "…", "origin": "curated_annotation",
+  "layers": [{ "id": "skin", "name": "Kulit", "asset": "<id aset>", "description": "…", "clinical": "…", "opacity": 1 }, …],
+  "guided": [{ "title": "Orientasi dinding dada", "text": "…", "layer": "skin" }] }
+{ "type": "exploded_view", "id": "xv", "title": "Tampilan terurai", "from": "thorax", "gap": 1 }
+{ "type": "model_3d", "id": "m", "title": "…", "asset": "<id aset media=model>", "origin": "curated_annotation",
+  "structures": [{ "id": "lung", "name": "Paru", "node": "nama node glTF" }], "fallback": "Teks pengganti" }
+```
+Aturan: ID lapisan unik, minimal dua lapisan, opasitas 0–1, tiap lapisan memakai tepat satu dari `asset` atau `schematic`, aset harus bagian dari objek, `exploded_view` memakai tepat satu dari `from` atau `layers`. `origin` ∈ `curated_annotation | illustrative_schematic | dataset_segmentation | development_schematic`, ditampilkan sebagai provenans.
+
+**Anatomi dan kejujuran data.** Layer Explorer bekerja seperti diseksi: kedalaman *d* mengupas lapisan yang lebih superfisial; toggle manual dan opasitas per lapisan tersedia; mode terpandu opsional; semua dapat dioperasikan dengan keyboard (slider, tombol lapisan sebelumnya/berikutnya, tombol panah pada area visual). Exploded View 2.5D memisahkan lapisan sepanjang satu sumbu kedalaman (tanpa rotasi 3D palsu). Tidak ada anatomi yang diturunkan dari data CXR. Skema thorax bawaan (`dev-thorax:*`, geometri asli sederhana di `devSchematics.jsx`) hanya untuk pengembangan: diberi spanduk "DEVELOPMENT SCHEMATIC — NOT FOR MEDICAL TEACHING" dan server menolak menerbitkan objek yang memakainya. Aset anatomi nyata harus berlisensi jelas (komersial, redistribusi, modifikasi, sitasi) dan lolos pemeriksaan aset yang sama.
+
+**3D.** `LabModel3D` memuat three.js hanya saat blok `model_3d` dirender (chunk `LabModel3DCanvas`, ±150 kB gzip, terpisah dari bundel utama); ada orbit/zoom/reset, daftar struktur (tampil/sembunyi, opasitas, label) lewat nama node glTF, dan fallback teks bila WebGL atau model gagal. Tidak ada inferensi AI atau render di server.
+
+### Progres belajar
+`lab_progress` menyimpan satu baris per (pengguna, jalur): `lastObject` dan `completed`. Pelajaran dianggap selesai **hanya** lewat sinyal eksplisit: tombol "Tandai selesai", menyelesaikan sesi latihan sampai ringkasan, atau menekan "Berikutnya" ke pelajaran selanjutnya. Sekadar membuka halaman tidak menyelesaikannya (hanya mencatat "terakhir dibuka"). Tidak ada penguncian; jalur tetap bebas melompat. Beranda `/lab` menampilkan "Lanjutkan belajar" dan bagian Visual Learning (kategori tanpa materi terbit tampil "Segera hadir").
+
+### Alur admin dan CLI
+Admin: `/admin/lab` → tab Content Pack → pilih pack → Periksa content pack → centang konfirmasi → Terbitkan content pack (atau pilih item lalu "Periksa pilihan"/"Terbitkan pilihan"). Editor JSON tetap ada di tab "Editor JSON (lanjutan)", lengkap dengan pratinjau draft.
+
+```bash
+python tools/lab-ingest/import_medmnist.py --dry-run --update-existing    # rencana, tidak menulis
+python tools/lab-ingest/import_medmnist.py --apply --update-existing      # sinkronkan (record kembali ke draft)
+python tools/lab-ingest/publish_pack.py pneumoniamnist --dry-run          # validasi
+python tools/lab-ingest/publish_pack.py pneumoniamnist --apply --confirm-reviewed
+```
+
+### Pengujian
+`npm test` (unit web + backend), `node apps/pocketbase/test/lab-api.test.mjs` (98 cek), `node apps/pocketbase/test/lab-pack-api.test.mjs` (pack, validasi, urutan, idempoten, bulk, blok, progres), dan `python tools/lab-ingest/test_ingest.py` (sinkronisasi + CLI). Ketiganya memakai PocketBase lokal sekali pakai, bukan produksi.
+
+### Deploy dan rollback V2
+```bash
+cd /opt/medcoel && git pull
+npm ci && npm run build            # three.js baru: wajib npm ci; dist memuat chunk 3D terpisah
+sudo systemctl restart pocketbase  # migrasi 1800001900 + hook baru; unit di produksi bernama "pocketbase"
+bash deploy/cek-server.sh
+```
+Sinkron konten PneumoniaMNIST (urutan: dry-run → apply → validasi → terbitkan): lihat perintah di atas (`source /opt/medcoel-ai/.venv/bin/activate` dahulu). `--update-existing` mengembalikan record yang diubah ke draft; terbitkan ulang lewat `publish_pack.py` atau UI. Rollback: *frontend* — revert commit lalu `npm ci && npm run build`; *hook backend* — revert lalu restart `pocketbase`; *migrasi* — tidak ada rollback (aditif; kolom/koleksi tambahan tidak mengganggu kode lama); *konten* — suntingan melewati revisi; pulihkan JSON record dari editor admin atau cadangan `pb_data`. Jangan menghapus koleksi Lab sebagai rollback rutin.
+
+## Lab UX QA redesign (hardening berbasis uji nyata)
+
+Tidak ada migrasi baru dan tidak ada perubahan skema. Perubahan data hanya lewat sinkronisasi konten yang sudah ada (`import_medmnist.py --update-existing`, opsional).
+
+**Siswa**
+- `/lab`: hero ringkas; "Lanjutkan belajar" paling atas (jalur nyata yang belum selesai dan paling baru aktif; demo sintetis dan jalur selesai tidak pernah ditawarkan); satu pengalih Explore / Guided Learning; kartu *Materi* (garis hijau) dan *Latihan · n kasus* (garis emas) berbeda; Visual Learning di bawah; tautan admin hanya untuk admin dan kecil. Konten demo (`data.demo` / slug `demo-…`) tidak ikut daftar, hitungan domain, atau Lanjutkan belajar (admin dapat memakai `?demo=1`; akses langsung lewat slug tetap berfungsi).
+- Jalur sebagai perjalanan: belum mulai → **Mulai**; berjalan → progres + **Lanjutkan: <langkah>**; selesai → **✓ Jalur selesai** dengan *Lihat kembali materi* dan *Ulangi jalur* (`POST lab/progress {pathway, reset:true}`), tidak pernah "Lanjutkan" ke pelajaran 1. Langkah yang disarankan menonjol, langkah selesai dibuat tenang, tidak ada penguncian. Di dalam pelajaran hanya satu baris konteks: `CXR Dasar · Langkah 1 dari 2`.
+- Galeri CXR bandingkan-dulu: Normal | Pneumonia berdampingan (bertumpuk di HP), masing-masing dengan `← 3 / 10 →` sendiri; miniatur ada di baki "Pilih contoh". Sumber dan lisensi ada di `ⓘ Sumber & lisensi` (dilipat; atribusi tetap satu ketukan).
+- Latihan: objek latihan murni (`data.mode = practice`, atau objek yang aset-nya hanya gambar soalnya sendiri dan tanpa tujuan/blok/langkah) langsung membuka **Kasus 1 / n**, tanpa halaman pengantar; info singkat ada di `ⓘ Tentang latihan` (dilipat). Urutan: gambar → pertanyaan → opsi → periksa. Navigator soal (sekarang/benar/salah/dilewati/belum), *Akhiri latihan* ("Sesi diakhiri" bila belum semua dijawab; ringkasan `1 benar · 2 salah · 17 belum dijawab`), review dengan *Kembali ke ringkasan* / *Keluar review*. Umpan balik hanya `Jawaban tepat` / `Belum tepat` + `Jawaban: …`; penjelasan tampil hanya bila penulis mengisinya. Latihan selesai-penuh menandai langkah selesai; mengakhiri lebih awal tidak.
+- Layer Explorer: scroll/trackpad di atas gambar berpindah lapisan (hanya saat kursor di atas gambar; dilepas di kedua ujung dan untuk ctrl/geser samping, sehingga halaman tetap bisa digulir); tombol/slider/panah tetap tersedia; kontrol manual dan opasitas dilipat. Exploded View memakai kurva ease-out dan tata letak oblik; pada 100% antar lembar tidak tumpang tindih. Penampil 3D: kanvas selalu lebar 100% kontainer, refit saat resize/orientasi, panel struktur di bawah kanvas di layar sempit, target sentuh ≥ 44 px, petunjuk berbeda untuk sentuh dan desktop, struktur terpilih disorot dan lainnya meredup.
+- Tombol Chat Admin berada di atas navigasi bawah termasuk safe area dan disembunyikan selama latihan di HP; `viewport-fit=cover`.
+
+**Admin (`/admin/lab`)**: tiga langkah yang jelas *Preview → Validasi → Terbitkan*. "Periksa pilihan" menjadi **Validasi pilihan**; hasil menampilkan *Valid · Sudah terbit · Perlu diterbitkan · Kesalahan* (item yang sudah terbit tidak lagi dilaporkan sebagai "0 siap"). Mengganti filter mengosongkan pilihan (tidak ada pilihan tersembunyi). Preview tampil sebagai laci fokus bertanda "Preview admin · siswa tidak melihat halaman ini".
+
+**Pengujian browser**: `apps/web/scripts/lab-qa/seed.mjs <id>` lalu `qa.mjs <id> 1280 820 390 360 320` (PocketBase dan vite lokal; layar ≤ 500 px memakai emulasi sentuh). Memeriksa overflow halaman, kontrol di dalam viewport, bertumpuk vs berdampingan, alur jalur/latihan/review, wheel Layer Explorer, jarak Exploded View, tata letak 3D dan perubahan orientasi, tombol chat vs navigasi bawah, serta alur admin. Ini pelengkap, bukan pengganti, pengecekan di perangkat nyata.
+
+**Fixture QA di produksi** (`qa-visual-engines-dev`, `qa-dev-thorax-spatial-v1`, `qa-dev-model-3d-v1`): tetap draft; skema pengembangan tidak dapat diterbitkan oleh validator. Tidak ada yang dihapus otomatis. Bila ingin dibersihkan, hapus lewat dasbor PocketBase (akun superuser) pada koleksi `lab_objects`/`lab_assets`/`lab_packs` dengan slug tersebut, setelah memastikan tidak ada jalur yang merujuknya; atau biarkan sebagai bahan QA admin.
+
+**Rollout**: `git pull && npm ci && npm run build`, lalu restart PocketBase (hook baru: penyaringan demo, `kind`/`cases`, status jalur, reset progres, penjelasan opsional). Agar konten PneumoniaMNIST yang sudah terbit memakai teks soal baru, penjelasan kosong, dan `mode: practice`: `import_medmnist.py --dry-run --update-existing`, lalu `--apply --update-existing`, lalu `publish_pack.py pneumoniamnist --apply --confirm-reviewed` (record yang diubah kembali ke draft). Tanpa sinkronisasi, objek latihan lama tetap terdeteksi sebagai latihan (aset-nya hanya gambar soal), tetapi penjelasan generik lama masih tampil di umpan balik. Rollback: revert PR dan build ulang; hook backend lama tetap kompatibel dengan klien lama.

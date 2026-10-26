@@ -8,6 +8,7 @@
     "migrate": "./pocketbase migrate up --dir=./pb_data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks",
     "test": "node test/format.test.mjs && node --test test/catalog.test.mjs test/explanationEnglish.test.mjs test/explanationService.test.mjs test/clinicalEnglish.test.mjs test/lab.test.mjs",
     "test:api": "node test/api.test.mjs",
-    "test:lab": "node test/lab-api.test.mjs"
+    "test:lab": "node test/lab-api.test.mjs",
+    "test:lab-packs": "node test/lab-pack-api.test.mjs"
   }
 }

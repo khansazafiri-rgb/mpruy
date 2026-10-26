@@ -5,8 +5,24 @@ import { annotationLayers, fittedSize } from './labUtils';
 const MAX_ZOOM = 3;
 const FRAME_PAD = 24;
 
+// Source and licence stay one tap away (attribution is required) without interrupting study or practice.
+export function LabSource({ asset, nat, question }) {
+  const lowRes = nat && Math.max(nat.w, nat.h) <= 300; const l = asset.license || {}; const d = asset.dataset;
+  const available = annotationLayers(asset);
+  return <details className="text-xs text-ink-muted">
+    <summary className="inline-flex min-h-8 cursor-pointer select-none items-center font-semibold">ⓘ Sumber & lisensi</summary>
+    <div className="mt-1 space-y-1 leading-relaxed">
+      {asset.synthetic && <p><strong>Ilustrasi sintetis, bukan gambar pasien.</strong></p>}
+      {d?.name && <p>{d.name}{d.split ? ` · split ${d.split}` : ''}</p>}
+      <p>{l.citation || l.source} · {l.license}{l.source_url?.startsWith('https://') && <> · <a href={l.source_url} target="_blank" rel="noreferrer" className="underline">Sumber & lisensi</a></>}</p>
+      {lowRes && <p>Image classification training image · {nat.w}×{nat.h}</p>}
+      {!question && available.length === 0 && <p>Tidak tersedia anotasi lokasi untuk gambar ini.</p>}
+    </div>
+  </details>;
+}
+
 // Pembaca gambar: rasio asli dipertahankan, ukuran dasar dihitung dari gambar (bukan dari lebar kartu).
-// Zoom membesar dari ukuran pas itu; bingkai tetap, jadi gambar digeser dengan gulir/seret/tombol panah.
+// controls: true = toolbar penuh, 'min' = zoom ringkas, false = tanpa kontrol (mis. kolom perbandingan sempit).
 export default function LabImage({ asset, question = false, point, onPoint, region, controls = true }) {
   const [zoom, setZoom] = useState(1);
   const [layers, setLayers] = useState({ anatomy: false, abnormality: false });
@@ -55,23 +71,23 @@ export default function LabImage({ asset, question = false, point, onPoint, regi
   const move = (e) => { const d = drag.current; if (!d) return; const s = scroller.current; s.scrollLeft = d.left - (e.clientX - d.x); s.scrollTop = d.top - (e.clientY - d.y); };
   const up = () => { drag.current = null; };
   const overlay = (r) => ({ left: `${r.x * 100}%`, top: `${r.y * 100}%`, width: `${r.width * 100}%`, height: `${r.height * 100}%` });
-  const lowRes = nat && Math.max(nat.w, nat.h) <= 300;
+  const full = controls === true;
 
-  return <figure className="space-y-3">
+  return <figure className="min-w-0 space-y-2">
     {controls && <div className="flex flex-wrap items-center gap-2 text-sm">
       <div className="flex items-center gap-1" role="group" aria-label="Zoom gambar">
-        <button type="button" className="btn btn-ghost btn-sm" aria-label="Perkecil" disabled={zoom <= 1} onClick={() => changeZoom(zoom - 0.25)}><Minus size={16} /></button>
-        <input aria-label="Zoom gambar" type="range" min="1" max={MAX_ZOOM} step="0.25" value={zoom} onChange={(e) => changeZoom(Number(e.target.value))} className="w-28" />
-        <button type="button" className="btn btn-ghost btn-sm" aria-label="Perbesar" disabled={zoom >= MAX_ZOOM} onClick={() => changeZoom(zoom + 0.25)}><Plus size={16} /></button>
-        <span className="w-12 text-ink-muted" aria-live="polite">{Math.round(zoom * 100)}%</span>
+        <button type="button" className="btn btn-ghost btn-sm min-h-10 min-w-10" aria-label="Perkecil" disabled={zoom <= 1} onClick={() => changeZoom(zoom - 0.25)}><Minus size={16} /></button>
+        {full && <input aria-label="Zoom gambar" type="range" min="1" max={MAX_ZOOM} step="0.25" value={zoom} onChange={(e) => changeZoom(Number(e.target.value))} className="w-28" />}
+        <button type="button" className="btn btn-ghost btn-sm min-h-10 min-w-10" aria-label="Perbesar" disabled={zoom >= MAX_ZOOM} onClick={() => changeZoom(zoom + 0.25)}><Plus size={16} /></button>
+        {full && <span className="w-12 text-ink-muted" aria-live="polite">{Math.round(zoom * 100)}%</span>}
       </div>
-      <button type="button" className="btn btn-ghost btn-sm" onClick={() => { changeZoom(1); if (onPoint) onPoint(null); }}><RotateCcw size={14} /> Reset</button>
+      <button type="button" className="btn btn-ghost btn-sm min-h-10" aria-label="Reset zoom" onClick={() => { changeZoom(1); if (onPoint) onPoint(null); }}><RotateCcw size={14} />{full && ' Reset'}</button>
       {!question && available.length > 0 && <div className="flex items-center gap-2" role="group" aria-label="Overlay anotasi">
         <span className="text-ink-muted">Overlay</span>
         {available.map((k) => <button key={k} type="button" aria-pressed={layers[k]} className={`btn btn-sm ${layers[k] ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setLayers({ ...layers, [k]: !layers[k] })}>{k === 'anatomy' ? 'Anatomi' : 'Temuan'}</button>)}
       </div>}
     </div>}
-    <div ref={wrap} className="flex justify-center rounded-2xl border border-line bg-page p-3">
+    <div ref={wrap} className="flex min-w-0 justify-center rounded-2xl border border-line bg-page p-2 sm:p-3">
       <div
         ref={scroller} tabIndex={0} role="group" aria-label="Area gambar; gunakan tombol panah atau seret untuk menggeser saat diperbesar, plus/minus untuk zoom"
         className={`relative max-w-full overflow-auto rounded-lg focus:outline focus:outline-2 focus:outline-brand ${canDrag ? 'cursor-grab active:cursor-grabbing' : ''}`}
@@ -93,11 +109,7 @@ export default function LabImage({ asset, question = false, point, onPoint, regi
       </div>
     </div>
     {broken && <p role="alert" className="text-coral">Gambar gagal dimuat. Muat ulang halaman atau hubungi admin.</p>}
-    {controls && <div className="space-y-1 text-xs leading-relaxed text-ink-muted">
-      {lowRes && <p>Image classification training image · {nat.w}×{nat.h}</p>}
-      {!question && available.length === 0 && <p>Tidak tersedia anotasi lokasi untuk gambar ini.</p>}
-      <figcaption>{asset.synthetic && <strong>Ilustrasi sintetis, bukan gambar pasien. </strong>}{asset.license?.citation || asset.license?.source} · {asset.license?.license}{asset.license?.source_url?.startsWith('https://') && <> · <a href={asset.license.source_url} target="_blank" rel="noreferrer" className="underline">Sumber & lisensi</a></>}</figcaption>
-    </div>}
-    {onPoint && <p className="text-sm text-ink-muted" aria-live="polite">{point ? `Titik: ${Math.round(point.x * 100)}%, ${Math.round(point.y * 100)}%.` : 'Klik gambar atau fokuskan area gambar lalu gunakan tombol panah.'} Geser dengan bilah gulir saat diperbesar.</p>}
+    {controls && <LabSource asset={asset} nat={nat} question={question} />}
+    {onPoint && <p className="text-sm text-ink-muted" aria-live="polite">{point ? `Titik: ${Math.round(point.x * 100)}%, ${Math.round(point.y * 100)}%.` : 'Klik gambar atau fokuskan area gambar lalu gunakan tombol panah.'}</p>}
   </figure>;
 }

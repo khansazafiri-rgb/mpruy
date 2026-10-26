@@ -34,3 +34,30 @@ test('structured lab validation rejects incomplete, duplicate or arbitrary rule 
   b.data.lab.rules[0].all[0].flag = 'eval'; assert.throws(() => lab.validate('objects', b));
   b.data.lab.rules = []; b.data.lab.rows.push(b.data.lab.rows[0]); assert.throws(() => lab.validate('objects', b));
 });
+test('visual blocks accept safe data and reject duplicates, HTML, bad opacity and unknown keys', () => {
+  const layer = (id, over = {}) => ({ id, name: id, schematic: 'dev-thorax:skin', ...over });
+  const ok = lab.validateBlocks([{ type: 'layer_explorer', id: 'x', title: 'T', origin: 'development_schematic', layers: [layer('a'), layer('b')] }, { type: 'exploded_view', id: 'y', title: 'E', from: 'x' }], []);
+  assert.equal(ok[0].dev, true); assert.equal(ok[1].dev, true); assert.equal(ok[0].layers[0].opacity, 1);
+  const bad = (b) => assert.throws(() => lab.validateBlocks([b], []));
+  bad({ type: 'layer_explorer', id: 'x', title: 'T', origin: 'development_schematic', layers: [layer('a'), layer('a')] });
+  bad({ type: 'layer_explorer', id: 'x', title: 'T', origin: 'development_schematic', layers: [layer('a', { opacity: 1.5 }), layer('b')] });
+  bad({ type: 'layer_explorer', id: 'x', title: 'T', origin: 'curated_annotation', layers: [layer('a'), layer('b')] });
+  bad({ type: 'callout', text: '<img src=x onerror=alert(1)>' });
+  bad({ type: 'iframe', src: 'https://x.test' });
+  bad({ type: 'exploded_view', id: 'y', title: 'E', from: 'nope' });
+  assert.doesNotThrow(() => lab.validateBlocks([{ type: 'callout', text: 'Nilai p<0.05 atau kurang dari 5 mm (<5 mm)' }], []));
+});
+test('dataset metadata is explicit and validated', () => {
+  assert.deepEqual(lab.datasetMeta({ name: 'PneumoniaMNIST', label: 'Normal', resolution: [224, 224], sample_index: 3 }).label, 'normal');
+  for (const m of [null, { label: 'x' }, { name: 'n', resolution: [0, 5] }, { name: 'n', sample_index: -1 }]) assert.throws(() => lab.datasetMeta(m));
+});
+
+test('practice-first detection and demo slugs', () => {
+  assert.equal(lab.isPractice({}, 0, 0), false, 'no questions is never practice');
+  assert.equal(lab.isPractice({ mode: 'practice' }, 3, 5), true, 'explicit mode wins');
+  assert.equal(lab.isPractice({}, 4, 0), true, 'questions with no lesson material of their own');
+  assert.equal(lab.isPractice({ objectives: ['x'] }, 4, 0), false);
+  assert.equal(lab.isPractice({ blocks: [{}] }, 4, 0), false);
+  assert.equal(lab.isPractice({}, 4, 6), false, 'an object with its own gallery is a lesson');
+  assert.equal(lab.isDemoSlug('demo-lab-fundamentals'), true); assert.equal(lab.isDemoSlug('cxr-dasar'), false);
+});

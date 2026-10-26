@@ -3,6 +3,8 @@
 // Label kelas contoh (mis. normal / pneumonia). Aset lama tidak punya field label,
 // jadi dibaca dari judul "... · normal" atau alt "... label dataset 'normal'".
 export function assetLabel(asset) {
+  // Structured dataset metadata is authoritative; title/alt parsing remains only for content created by the older importer.
+  if (asset?.dataset?.label) return String(asset.dataset.label).trim().toLowerCase();
   if (asset?.label) return String(asset.label).trim().toLowerCase();
   const fromTitle = /·\s*([^·]+?)\s*$/.exec(asset?.title || '');
   if (fromTitle) return fromTitle[1].toLowerCase();
@@ -79,5 +81,38 @@ export function sessionSummary(questions, answers) {
     if (r.correct === true) correct += 1;
     else if (r.correct === false) { wrong += 1; review.push(q.id); }
   }
-  return { total: questions.length, answered, correct, wrong, review };
+  return { total: questions.length, answered, correct, wrong, unanswered: questions.length - answered, review };
 }
+
+// ---- Guided Learning journey -------------------------------------------------------------------------------
+// status: new (nothing yet) | active | done. `resume` is the step to continue with; it is null when the pathway is
+// complete, so a finished pathway never offers to "continue" from lesson 1.
+export function pathwayState(steps = [], completed = [], lastObject = '') {
+  const total = steps.length; const done = steps.filter((s) => completed.includes(s.slug)).length;
+  const status = total > 0 && done >= total ? 'done' : done > 0 || lastObject ? 'active' : 'new';
+  const next = steps.find((s) => !completed.includes(s.slug)) || null;
+  const last = steps.find((s) => s.slug === lastObject);
+  const resume = status === 'done' ? null : status === 'new' ? steps[0] || null : last && !completed.includes(last.slug) ? last : next;
+  return { status, total, done, next, resume };
+}
+export function stepState(step, completed = [], resume = null) {
+  if (completed.includes(step.slug)) return 'done';
+  return resume && resume.slug === step.slug ? 'current' : 'todo';
+}
+
+// ---- Practice navigator --------------------------------------------------------------------------------------
+// current | correct | wrong | answered (self-assessed) | skipped (visited, left unanswered) | new
+export function navStatus(q, { answers = {}, visited = new Set(), currentId = '' } = {}) {
+  if (q.id === currentId) return 'current';
+  const r = answers[q.id]?.result;
+  if (r) return r.correct === true ? 'correct' : r.correct === false ? 'wrong' : 'answered';
+  return visited.has(q.id) ? 'skipped' : 'new';
+}
+export function sessionTitle(summary, review) {
+  if (review) return 'Tinjauan selesai';
+  return summary.answered >= summary.total ? 'Sesi latihan selesai' : 'Sesi diakhiri';
+}
+export function summaryLine(s) { return `${s.correct} benar · ${s.wrong} salah · ${s.unanswered} belum dijawab`; }
+
+// Pure practice objects (data.mode = practice, or questions with no lesson material of their own) open straight into case 1.
+export function isPracticeFirst(d) { return d?.kind === 'practice' && (d.questions || []).length > 0; }
