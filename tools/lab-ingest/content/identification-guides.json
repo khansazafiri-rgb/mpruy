@@ -1,0 +1,907 @@
+{
+  "bloodmnist": {
+    "schemaVersion": 1,
+    "dataset": "BloodMNIST",
+    "title": "Cara Identifikasi",
+    "scope": "class",
+    "introduction": {
+      "text": "Ciri umum untuk membandingkan kelompok sel; tidak semua ciri harus terlihat pada setiap crop. Pengenalan jenis sel tidak menetapkan diagnosis pasien.",
+      "sources": [
+        "medmnist"
+      ]
+    },
+    "comparison": {
+      "title": "Bandingkan ciri sel",
+      "columns": [
+        "Nukleus",
+        "Sitoplasma / granula",
+        "Kunci identifikasi"
+      ],
+      "rows": [
+        {
+          "key": "neutrophil",
+          "label": "Neutrofil",
+          "values": [
+            {
+              "text": "Nukleus matang bersegmen; lobus dihubungkan jembatan tipis.",
+              "sources": [
+                "ash-neutrophil",
+                "mcgill"
+              ]
+            },
+            {
+              "text": "Sitoplasma pucat dengan granula halus.",
+              "sources": [
+                "ash-neutrophil",
+                "mcgill"
+              ]
+            },
+            {
+              "text": "Cari gabungan segmentasi nukleus dan granula yang tidak terlalu mencolok.",
+              "sources": [
+                "ash-neutrophil",
+                "mcgill"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "eosinophil",
+          "label": "Eosinofil",
+          "values": [
+            {
+              "text": "Nukleus umumnya bilobus, tetapi bentuknya dapat bervariasi.",
+              "sources": [
+                "ash-eosinophil"
+              ]
+            },
+            {
+              "text": "Granula kasar merah-oranye banyak mengisi sitoplasma.",
+              "sources": [
+                "ash-eosinophil"
+              ]
+            },
+            {
+              "text": "Gabungkan warna dan ukuran granula dengan bentuk nukleus; jangan memakai satu ciri saja.",
+              "sources": [
+                "ash-eosinophil"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "basophil",
+          "label": "Basofil",
+          "values": [
+            {
+              "text": "Kontur nukleus dapat tersamar oleh granula.",
+              "sources": [
+                "ash-basophil"
+              ]
+            },
+            {
+              "text": "Granula besar dan gelap berwarna biru-ungu.",
+              "sources": [
+                "ash-basophil"
+              ]
+            },
+            {
+              "text": "Granula kasar yang menutupi sebagian nukleus menjadi petunjuk penting.",
+              "sources": [
+                "ash-basophil"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "immature granulocytes",
+          "label": "Granulosit imatur",
+          "values": [
+            {
+              "text": "Bentuk nukleus dan kepadatan kromatin berubah menurut maturasi.",
+              "sources": [
+                "ash-promyelocyte",
+                "ash-myelocyte",
+                "ash-metamyelocyte"
+              ]
+            },
+            {
+              "text": "Jenis dan jumlah granula bervariasi menurut tahap maturasi.",
+              "sources": [
+                "ash-promyelocyte",
+                "ash-myelocyte",
+                "ash-metamyelocyte"
+              ]
+            },
+            {
+              "text": "Kenali sebagai kelompok granulosit yang belum matang; tidak ada satu pola morfologi tunggal.",
+              "sources": [
+                "ash-promyelocyte",
+                "ash-myelocyte",
+                "ash-metamyelocyte"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "lymphocyte",
+          "label": "Limfosit",
+          "values": [
+            {
+              "text": "Nukleus umumnya bulat dengan kromatin padat; pada limfosit kecil, nukleus mendominasi sel.",
+              "sources": [
+                "ash-lymphocyte",
+                "mcgill"
+              ]
+            },
+            {
+              "text": "Sitoplasma relatif sedikit, berupa tepi biru pucat pada limfosit kecil yang istirahat.",
+              "sources": [
+                "ash-lymphocyte"
+              ]
+            },
+            {
+              "text": "Cari dominasi nukleus padat dan tepi sitoplasma yang tipis; bentuk limfosit dapat bervariasi.",
+              "sources": [
+                "ash-lymphocyte"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "monocyte",
+          "label": "Monosit",
+          "values": [
+            {
+              "text": "Nukleus tidak teratur, berlekuk atau menyerupai ginjal; kromatin relatif lebih halus.",
+              "sources": [
+                "ash-monocyte"
+              ]
+            },
+            {
+              "text": "Sitoplasma luas berwarna abu-biru; vakuola dapat terlihat.",
+              "sources": [
+                "ash-monocyte"
+              ]
+            },
+            {
+              "text": "Gabungkan ukuran sel relatif besar, lekukan nukleus, dan sitoplasma yang luas.",
+              "sources": [
+                "ash-monocyte"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "erythroblast",
+          "label": "Eritroblas",
+          "values": [
+            {
+              "text": "Prekursor eritroid berinti; kromatin makin padat selama maturasi.",
+              "sources": [
+                "ash-erythroid"
+              ]
+            },
+            {
+              "text": "Warna sitoplasma berubah dari biru menuju abu-merah muda seiring bertambahnya hemoglobin.",
+              "sources": [
+                "ash-erythroid"
+              ]
+            },
+            {
+              "text": "Ukuran sel dan rasio nukleus:sitoplasma umumnya berkurang selama maturasi; nilai ciri sebagai rangkaian.",
+              "sources": [
+                "ash-erythroid"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "platelet",
+          "label": "Trombosit",
+          "values": [
+            {
+              "text": "Tidak memiliki nukleus.",
+              "sources": [
+                "ash-platelet"
+              ]
+            },
+            {
+              "text": "Fragmen sitoplasma sangat kecil dengan granula ungu dan bagian sitoplasma biru pucat.",
+              "sources": [
+                "ash-platelet"
+              ]
+            },
+            {
+              "text": "Cari fragmen kecil tanpa inti; jangan menyimpulkan ukuran absolut dari pembesaran crop gambar.",
+              "sources": [
+                "ash-platelet"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "profiles": [
+      {
+        "key": "neutrophil",
+        "title": "Neutrofil",
+        "features": [
+          {
+            "text": "Nukleus matang bersegmen; lobus dihubungkan jembatan tipis.",
+            "sources": [
+              "ash-neutrophil",
+              "mcgill"
+            ]
+          },
+          {
+            "text": "Sitoplasma pucat dengan granula halus.",
+            "sources": [
+              "ash-neutrophil",
+              "mcgill"
+            ]
+          },
+          {
+            "text": "Cari gabungan segmentasi nukleus dan granula yang tidak terlalu mencolok.",
+            "sources": [
+              "ash-neutrophil",
+              "mcgill"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Eosinofil: granula lebih kasar dan merah-oranye; basofil: granula gelap dapat menutupi nukleus.",
+            "sources": [
+              "ash-eosinophil",
+              "ash-basophil"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "eosinophil",
+        "title": "Eosinofil",
+        "features": [
+          {
+            "text": "Nukleus umumnya bilobus, tetapi bentuknya dapat bervariasi.",
+            "sources": [
+              "ash-eosinophil"
+            ]
+          },
+          {
+            "text": "Granula kasar merah-oranye banyak mengisi sitoplasma.",
+            "sources": [
+              "ash-eosinophil"
+            ]
+          },
+          {
+            "text": "Gabungkan warna dan ukuran granula dengan bentuk nukleus; jangan memakai satu ciri saja.",
+            "sources": [
+              "ash-eosinophil"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Neutrofil: granula lebih halus; basofil: granula biru-ungu sangat gelap.",
+            "sources": [
+              "mcgill",
+              "ash-basophil"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "basophil",
+        "title": "Basofil",
+        "features": [
+          {
+            "text": "Kontur nukleus dapat tersamar oleh granula.",
+            "sources": [
+              "ash-basophil"
+            ]
+          },
+          {
+            "text": "Granula besar dan gelap berwarna biru-ungu.",
+            "sources": [
+              "ash-basophil"
+            ]
+          },
+          {
+            "text": "Granula kasar yang menutupi sebagian nukleus menjadi petunjuk penting.",
+            "sources": [
+              "ash-basophil"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Eosinofil: granula cenderung merah-oranye, bukan biru-ungu gelap.",
+            "sources": [
+              "ash-eosinophil"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "immature granulocytes",
+        "title": "Granulosit imatur",
+        "features": [
+          {
+            "text": "Bentuk nukleus dan kepadatan kromatin berubah menurut maturasi.",
+            "sources": [
+              "ash-promyelocyte",
+              "ash-myelocyte",
+              "ash-metamyelocyte"
+            ]
+          },
+          {
+            "text": "Jenis dan jumlah granula bervariasi menurut tahap maturasi.",
+            "sources": [
+              "ash-promyelocyte",
+              "ash-myelocyte",
+              "ash-metamyelocyte"
+            ]
+          },
+          {
+            "text": "Kenali sebagai kelompok granulosit yang belum matang; tidak ada satu pola morfologi tunggal.",
+            "sources": [
+              "ash-promyelocyte",
+              "ash-myelocyte",
+              "ash-metamyelocyte"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Neutrofil matang umumnya memiliki nukleus bersegmen.",
+            "sources": [
+              "ash-neutrophil"
+            ]
+          }
+        ],
+        "caveats": [
+          {
+            "text": "BloodMNIST mengelompokkan beberapa tahap maturasi granulosit dalam satu kategori Granulosit Imatur, sehingga morfologinya dapat bervariasi.",
+            "sources": [
+              "medmnist"
+            ]
+          },
+          {
+            "text": "Label ini tidak cukup untuk menetapkan subtipe maturasi pada satu citra.",
+            "sources": [
+              "medmnist"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "lymphocyte",
+        "title": "Limfosit",
+        "features": [
+          {
+            "text": "Nukleus umumnya bulat dengan kromatin padat; pada limfosit kecil, nukleus mendominasi sel.",
+            "sources": [
+              "ash-lymphocyte",
+              "mcgill"
+            ]
+          },
+          {
+            "text": "Sitoplasma relatif sedikit, berupa tepi biru pucat pada limfosit kecil yang istirahat.",
+            "sources": [
+              "ash-lymphocyte"
+            ]
+          },
+          {
+            "text": "Cari dominasi nukleus padat dan tepi sitoplasma yang tipis; bentuk limfosit dapat bervariasi.",
+            "sources": [
+              "ash-lymphocyte"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Monosit: umumnya lebih besar dengan nukleus berlekuk dan sitoplasma lebih luas.",
+            "sources": [
+              "ash-monocyte"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "monocyte",
+        "title": "Monosit",
+        "features": [
+          {
+            "text": "Nukleus tidak teratur, berlekuk atau menyerupai ginjal; kromatin relatif lebih halus.",
+            "sources": [
+              "ash-monocyte"
+            ]
+          },
+          {
+            "text": "Sitoplasma luas berwarna abu-biru; vakuola dapat terlihat.",
+            "sources": [
+              "ash-monocyte"
+            ]
+          },
+          {
+            "text": "Gabungkan ukuran sel relatif besar, lekukan nukleus, dan sitoplasma yang luas.",
+            "sources": [
+              "ash-monocyte"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Limfosit kecil: kromatin lebih padat dan sitoplasma lebih sedikit.",
+            "sources": [
+              "ash-lymphocyte",
+              "ash-monocyte"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "erythroblast",
+        "title": "Eritroblas",
+        "features": [
+          {
+            "text": "Prekursor eritroid berinti; kromatin makin padat selama maturasi.",
+            "sources": [
+              "ash-erythroid"
+            ]
+          },
+          {
+            "text": "Warna sitoplasma berubah dari biru menuju abu-merah muda seiring bertambahnya hemoglobin.",
+            "sources": [
+              "ash-erythroid"
+            ]
+          },
+          {
+            "text": "Ukuran sel dan rasio nukleus:sitoplasma umumnya berkurang selama maturasi; nilai ciri sebagai rangkaian.",
+            "sources": [
+              "ash-erythroid"
+            ]
+          }
+        ],
+        "compare": [],
+        "caveats": [
+          {
+            "text": "Label Eritroblas pada pack ini tetap luas; tahap maturasi tiap citra belum ditetapkan melalui anotasi tersendiri.",
+            "sources": [
+              "medmnist",
+              "ash-erythroid"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "platelet",
+        "title": "Trombosit",
+        "features": [
+          {
+            "text": "Tidak memiliki nukleus.",
+            "sources": [
+              "ash-platelet"
+            ]
+          },
+          {
+            "text": "Fragmen sitoplasma sangat kecil dengan granula ungu dan bagian sitoplasma biru pucat.",
+            "sources": [
+              "ash-platelet"
+            ]
+          },
+          {
+            "text": "Cari fragmen kecil tanpa inti; jangan menyimpulkan ukuran absolut dari pembesaran crop gambar.",
+            "sources": [
+              "ash-platelet"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Sel darah putih memiliki nukleus; bandingkan keberadaan inti dan struktur sitoplasma.",
+            "sources": [
+              "ash-platelet",
+              "mcgill"
+            ]
+          }
+        ],
+        "caveats": []
+      }
+    ],
+    "checklist": [],
+    "notes": [
+      {
+        "text": "Panduan ini berisi ciri tingkat kelas, bukan observasi terverifikasi pada masing-masing gambar.",
+        "sources": [
+          "medmnist"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ash-neutrophil",
+        "organization": "American Society of Hematology",
+        "resource": "ASH Image Bank · Segmented neutrophil",
+        "url": "https://imagebank.hematology.org/image/60395/segmented-neutrophil",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "ash-eosinophil",
+        "organization": "American Society of Hematology",
+        "resource": "ASH Image Bank · Eosinophil",
+        "url": "https://imagebank.hematology.org/image/60934/eosinophil",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "ash-basophil",
+        "organization": "American Society of Hematology",
+        "resource": "ASH Image Bank · Basophil",
+        "url": "https://imagebank.hematology.org/image/1590/basophil--1",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "ash-lymphocyte",
+        "organization": "American Society of Hematology",
+        "resource": "ASH Image Bank · Lymphocyte",
+        "url": "https://imagebank.hematology.org/image/60511/lymphocyte",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "ash-monocyte",
+        "organization": "American Society of Hematology",
+        "resource": "ASH Image Bank · Monocyte",
+        "url": "https://imagebank.hematology.org/image/60935/monocyte",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "ash-platelet",
+        "organization": "American Society of Hematology",
+        "resource": "ASH Image Bank · Normal platelet",
+        "url": "https://imagebank.hematology.org/image/60932/normal-platelet",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "ash-erythroid",
+        "organization": "American Society of Hematology",
+        "resource": "ASH Image Bank · Erythroid Precursors",
+        "url": "https://imagebank.hematology.org/image/60292/erythroid-precursors",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "ash-myelocyte",
+        "organization": "American Society of Hematology",
+        "resource": "ASH Image Bank · Myelocyte",
+        "url": "https://imagebank.hematology.org/image/60507/myelocyte",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "ash-metamyelocyte",
+        "organization": "American Society of Hematology",
+        "resource": "ASH Image Bank · Metamyelocyte",
+        "url": "https://imagebank.hematology.org/image/60398/metamyelocytes",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "ash-promyelocyte",
+        "organization": "American Society of Hematology",
+        "resource": "ASH Image Bank · Promyelocyte",
+        "url": "https://imagebank.hematology.org/image/60399/promyelocyte",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "mcgill",
+        "organization": "McGill University",
+        "resource": "Histology Atlas · Leukocytes",
+        "url": "https://audilab.bme.mcgill.ca/HA/html/blood_T1_E.html",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "medmnist",
+        "organization": "MedMNIST",
+        "resource": "MedMNIST · source label definitions",
+        "url": "https://github.com/MedMNIST/MedMNIST/blob/main/medmnist/info.py",
+        "accessed": "2026-10-26"
+      }
+    ]
+  },
+  "pneumoniamnist": {
+    "schemaVersion": 1,
+    "dataset": "PneumoniaMNIST",
+    "scope": "class",
+    "title": "Cara Membaca Pola Dasar",
+    "introduction": {
+      "text": "Mulai dengan kualitas dan aerasi citra, lalu bandingkan opasitas. Ini latihan interpretasi gambar, bukan pemeriksaan klinis lengkap.",
+      "sources": [
+        "who-cres",
+        "acr"
+      ]
+    },
+    "comparison": {
+      "title": "Normal vs Pneumonia",
+      "columns": [
+        "Normal",
+        "Pneumonia / opasitas abnormal"
+      ],
+      "rows": [
+        {
+          "key": "cxr-0",
+          "label": "Lapang paru",
+          "values": [
+            {
+              "text": "Relatif teraerasi; cari ketiadaan opasitas fokal yang jelas.",
+              "sources": [
+                "who-2005",
+                "who-cres"
+              ]
+            },
+            {
+              "text": "Dapat terdapat peningkatan opasitas dengan distribusi yang bervariasi.",
+              "sources": [
+                "who-2005",
+                "who-cres"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "cxr-1",
+          "label": "Konsolidasi",
+          "values": [
+            {
+              "text": "Tidak dicari sebagai temuan normal; periksa adanya opasitas air-space yang jelas.",
+              "sources": [
+                "who-2005",
+                "who-cres"
+              ]
+            },
+            {
+              "text": "Dapat berupa opasitas padat atau saling menyatu; bukan ciri wajib setiap citra.",
+              "sources": [
+                "who-2005",
+                "who-cres"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "cxr-2",
+          "label": "Air bronchogram",
+          "values": [
+            {
+              "text": "Bukan temuan abnormal yang diharapkan pada paru teraerasi tanpa konsolidasi.",
+              "sources": [
+                "who-2005",
+                "who-cres"
+              ]
+            },
+            {
+              "text": "Bronkus berisi udara dapat tampak di dalam daerah konsolidasi.",
+              "sources": [
+                "who-2005",
+                "who-cres"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "cxr-3",
+          "label": "Infiltrat lain",
+          "values": [
+            {
+              "text": "Cari ketiadaan pola infiltrat patologis yang jelas.",
+              "sources": [
+                "who-2005",
+                "who-cres"
+              ]
+            },
+            {
+              "text": "Dapat berupa opasitas linier atau bercak; istilah ini tidak menentukan penyebab.",
+              "sources": [
+                "who-2005",
+                "who-cres"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "cxr-4",
+          "label": "Efusi pleura",
+          "values": [
+            {
+              "text": "Cari ketiadaan cairan pleura yang jelas.",
+              "sources": [
+                "who-2005",
+                "who-cres"
+              ]
+            },
+            {
+              "text": "Dapat berupa cairan di ruang pleura lateral; hanya pada sebagian kasus.",
+              "sources": [
+                "who-2005",
+                "who-cres"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "profiles": [
+      {
+        "key": "normal",
+        "title": "Normal",
+        "features": [
+          {
+            "text": "Cari lapang paru yang relatif teraerasi, tanpa opasitas air-space fokal yang jelas.",
+            "sources": [
+              "who-cres"
+            ]
+          },
+          {
+            "text": "Periksa apakah ada konsolidasi, infiltrat lain, atau efusi yang jelas.",
+            "sources": [
+              "who-cres"
+            ]
+          },
+          {
+            "text": "Label Normal bukan jaminan tidak adanya semua kelainan atau temuan insidental.",
+            "sources": [
+              "medmnist",
+              "cxr-review"
+            ]
+          }
+        ],
+        "compare": [],
+        "caveats": []
+      },
+      {
+        "key": "pneumonia",
+        "title": "Pneumonia",
+        "features": [
+          {
+            "text": "Cari area opasitas yang meningkat; distribusinya dapat fokal atau berupa bercak.",
+            "sources": [
+              "who-2005",
+              "cxr-review"
+            ]
+          },
+          {
+            "text": "Konsolidasi dan air bronchogram dapat terlihat pada sebagian gambar.",
+            "sources": [
+              "who-2005"
+            ]
+          },
+          {
+            "text": "Pola infiltrat dapat bervariasi; efusi mungkin menyertai sebagian kasus dan bukan syarat semua citra.",
+            "sources": [
+              "who-cres"
+            ]
+          }
+        ],
+        "compare": [],
+        "caveats": [
+          {
+            "text": "Tidak semua gambar berlabel Pneumonia menunjukkan semua ciri di atas.",
+            "sources": [
+              "medmnist"
+            ]
+          }
+        ]
+      }
+    ],
+    "checklist": [
+      {
+        "text": "Bagaimana kualitas citra dan aerasi kedua lapang paru?",
+        "sources": [
+          "who-2005",
+          "who-cres"
+        ]
+      },
+      {
+        "text": "Adakah area opasitas yang meningkat?",
+        "sources": [
+          "who-2005",
+          "who-cres"
+        ]
+      },
+      {
+        "text": "Apakah pola opasitas tampak fokal, bercak, atau lebih menyebar?",
+        "sources": [
+          "who-2005",
+          "who-cres"
+        ]
+      },
+      {
+        "text": "Adakah pola konsolidasi?",
+        "sources": [
+          "who-2005",
+          "who-cres"
+        ]
+      },
+      {
+        "text": "Adakah kemungkinan air bronchogram di dalam opasitas?",
+        "sources": [
+          "who-2005",
+          "who-cres"
+        ]
+      },
+      {
+        "text": "Adakah tanda cairan pleura yang perlu diperhatikan?",
+        "sources": [
+          "who-2005",
+          "who-cres"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "text": "Kerangka WHO menstandarkan pembacaan radiograf anak untuk penelitian epidemiologi; tabel ini bukan algoritme diagnosis klinis.",
+        "sources": [
+          "who-2005"
+        ]
+      },
+      {
+        "text": "Label MedMNIST hanya Normal/Pneumonia pada tingkat gambar. Label ini tidak memberi lokasi lesi, lobus, organisme, atau etiologi.",
+        "sources": [
+          "medmnist"
+        ]
+      },
+      {
+        "text": "Pola radiograf tidak cukup spesifik untuk menetapkan etiologi bakteri atau virus.",
+        "sources": [
+          "cxr-review"
+        ]
+      },
+      {
+        "text": "Foto toraks tidak rutin diperlukan pada anak dengan pneumonia komunitas tanpa komplikasi yang tampak baik dan tidak memerlukan rawat inap. Modul ini melatih interpretasi citra yang sudah tersedia.",
+        "sources": [
+          "acr"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "medmnist",
+        "organization": "MedMNIST",
+        "resource": "MedMNIST · source label definitions",
+        "url": "https://github.com/MedMNIST/MedMNIST/blob/main/medmnist/info.py",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "who-2005",
+        "organization": "World Health Organization",
+        "resource": "Cherian et al. · Standardized interpretation of paediatric chest radiographs (2005)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2626240/",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "who-cres",
+        "organization": "WHO CRES / Murdoch Children’s Research Institute",
+        "resource": "WHO standardised definitions · clarified radiographic terminology",
+        "url": "https://who-cres.mcri.edu.au/who-methodology/definitions/",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "acr",
+        "organization": "American College of Radiology / RSNA",
+        "resource": "Pneumonia in the Immunocompetent Child · reviewed 2021",
+        "url": "https://www.radiologyinfo.org/en/info/acs-pneumonia-immunocompetent-child",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "cxr-review",
+        "organization": "Pneumonia journal",
+        "resource": "O’Grady et al. · The radiological diagnosis of pneumonia in children (2014)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5922330/",
+        "accessed": "2026-10-26"
+      }
+    ]
+  }
+}

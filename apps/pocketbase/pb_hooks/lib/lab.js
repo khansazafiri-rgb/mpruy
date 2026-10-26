@@ -130,6 +130,10 @@ function validate(kind, b) {
     }) }));
     if (data.lab.rules.some((r) => !r.all.length)) fail('Aturan harus memiliki kondisi.');
     data.blocks = validateBlocks(d.blocks, out.assets);
+    if (d.studyGuide !== undefined) {
+      if (data.mode === 'practice') fail('Panduan identifikasi hanya untuk learning object.');
+      data.studyGuide = require(HOOKS + '/lib/studyGuides.js').validateGuide(d.studyGuide);
+    }
     out.data = data;
   } else if (kind === 'questions') {
     if (!TYPES.includes(d.type)) fail('Tipe pertanyaan tidak valid.');

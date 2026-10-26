@@ -63,6 +63,17 @@ class MedcoelAPI:
         if not self.token:
             raise RuntimeError("Login admin berhasil tanpa token? Periksa respons PocketBase.")
 
+    def require_study_guides(self) -> None:
+        """Fail before writes if the running backend would silently discard authored guides."""
+        try:
+            capabilities = self.request("GET", "/api/medcoel/admin/lab-capabilities")
+        except ApiError as exc:
+            if exc.code != 404:
+                raise
+            raise RuntimeError("Running PocketBase does not support studyGuide yet. Load the updated backend hooks before importing; nothing changed.") from exc
+        if capabilities.get("studyGuide") != 1:
+            raise RuntimeError("Unsupported studyGuide schema on running backend; nothing changed.")
+
     def list_all(self, kind: str) -> list[dict[str, Any]]:
         page = 1
         out: list[dict[str, Any]] = []
