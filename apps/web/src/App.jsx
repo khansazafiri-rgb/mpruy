@@ -16,6 +16,7 @@ import NotFound from './pages/NotFound';
 const Lab = lazy(() => import('./pages/Lab'));
 const LabObject = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabObject })));
 const LabPathway = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabPathway })));
+const LabAuthoredModule = lazy(() => import('./pages/LabAuthoredModule'));
 const LabAdmin = lazy(() => import('./pages/admin/LabAdmin'));
 
 const Runner = lazy(() => import('./pages/Runner'));
@@ -92,6 +93,7 @@ export default function App() {
             <Route path="/lab" element={<Lab />} />
             <Route path="/lab/objek/:slug" element={<LabObject />} />
             <Route path="/lab/jalur/:slug" element={<LabPathway />} />
+            <Route path="/lab/modul/:key" element={<LabAuthoredModule />} />
             <Route path="/drilling" element={<Drilling />} />
             <Route path="/tutorial/latihan-soal" element={<TutorialLatihan />} />
           </Route>

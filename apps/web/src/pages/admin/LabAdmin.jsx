@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { api, errorText } from '@/lib/api';
 import { Alert, Spinner } from '@/components/ui';
 import LabPackAdmin, { LabObjectPreview } from './LabPackAdmin';
+import LabAuthoringAdmin from './LabAuthoringAdmin';
 
 const NAMES = { assets: 'Aset & lisensi', objects: 'Learning objects', questions: 'Pertanyaan', pathways: 'Jalur belajar' };
 const templates = {
@@ -45,7 +46,7 @@ export default function LabAdmin() {
   const [tab, setTab] = useState('packs');
   return <div className="space-y-5">
     <div className="flex flex-wrap justify-between gap-3"><div><h1 className="text-2xl font-bold">Kelola MEDCOEL Lab</h1><p className="mt-2 text-sm text-ink-muted">Tinjau, validasi, dan terbitkan per content pack; editor JSON tersedia untuk penyuntingan lanjutan.</p></div><Link to="/lab" className="btn btn-secondary">Lihat Lab</Link></div>
-    <div role="tablist" aria-label="Mode kelola Lab" className="flex gap-2">{[['packs', 'Content Pack'], ['json', 'Editor JSON (lanjutan)']].map(([k, label]) => <button key={k} role="tab" aria-selected={tab === k} className={`btn btn-sm ${tab === k ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setTab(k)}>{label}</button>)}</div>
-    {tab === 'packs' ? <LabPackAdmin /> : <LabJsonEditor />}
+    <div role="tablist" aria-label="Mode kelola Lab" className="flex flex-wrap gap-2">{[['packs', 'Content Pack'], ['authoring', 'Import / Edit Lab JSON'], ['json', 'Editor JSON (lanjutan)']].map(([k, label]) => <button key={k} role="tab" aria-selected={tab === k} className={`btn btn-sm ${tab === k ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setTab(k)}>{label}</button>)}</div>
+    {tab === 'packs' ? <LabPackAdmin /> : tab === 'authoring' ? <LabAuthoringAdmin /> : <LabJsonEditor />}
   </div>;
 }

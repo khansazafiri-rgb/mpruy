@@ -12,7 +12,7 @@ export default function LabQuestion({ question: q, saved, onAnswered }) {
   const hotspot = ['hotspot', 'select_region'].includes(q.type);
   async function answer(e) {
     e.preventDefault(); setBusy(true); setError('');
-    try { const r = await api(`lab/questions/${q.id}/answer`, { method: 'POST', body: { response } }); setResult(r); onAnswered?.({ response, result: r }); }
+    try { const r = await api(q.answerPath || `lab/questions/${q.id}/answer`, { method: 'POST', body: { response } }); setResult(r); onAnswered?.({ response, result: r }); }
     catch (err) { setError(errorText(err)); } finally { setBusy(false); }
   }
   const key = result && choice ? q.options?.find((o) => o.label === result.answer) : null;
