@@ -17,16 +17,19 @@ globalThis.Record = class {
 const author = require('../pb_hooks/lib/labAuthoring.js');
 const example = require('../../../docs/LAB_AUTHORING_EXAMPLE.json');
 function app() {
-  const records = [], media = [];
-  return { records, media,
+  const records = [], media = [], saves = [];
+  return { records, media, saves,
     findCollectionByNameOrId: (name) => ({ name }),
     findFirstRecordByFilter: (collection, _filter, params) => {
       const found = (collection === 'lab_authoring' ? records : media).find((r) => r.getString('key') === params.key && (!params.kind || r.getString('kind') === params.kind));
       if (!found) throw new Error('missing'); return found;
     },
     findRecordsByFilter: (collection, _filter, _sort, _limit, _offset, params) => (collection === 'lab_authoring' ? records : media).filter((r) => !params?.kind || r.getString('kind') === params.kind),
-    save(r) { const list = r.collection === 'lab_authoring' ? records : media; if (!list.includes(r)) list.push(r); },
-    runInTransaction(fn) { fn(this); },
+    save(r) { const list = r.collection === 'lab_authoring' ? records : media; if (!list.includes(r)) list.push(r); saves.push((r.collection === 'lab_media' ? 'asset' : r.getString('kind')) + '/' + r.getString('key')); },
+    runInTransaction(fn) {
+      const before = [...records, ...media].map((r) => [r, structuredClone(r.values)]), recordCount = records.length, mediaCount = media.length, savesCount = saves.length;
+      try { fn(this); } catch (e) { before.forEach(([r, values]) => { r.values = values; }); records.length = recordCount; media.length = mediaCount; saves.length = savesCount; throw e; }
+    },
   };
 }
 test('complete example previews and applies as draft; publish is explicit and answer keys stay server-side', () => {
@@ -98,4 +101,82 @@ test('registered media key resolves to a URL only after source and asset review'
   author.publish(db, 'source', 'original-images', { revision: 1, confirmReviewed: true }, { id: 'admin-id' });
   asset.set('status', 'published'); author.publish(db, 'module', 'image-module', { revision: 1, confirmReviewed: true }, { id: 'admin-id' });
   assert.equal(author.studentModule(db, 'image-module', false).assets['image-one'].url, 'https://example.org/image.png');
+});
+function simpleBundle() {
+  return { schemaVersion: 1, records: [
+    { kind: 'catalog', data: { key: 'root', title: 'Root' } },
+    { kind: 'catalog', data: { key: 'child', title: 'Child', parent: 'root' } },
+    { kind: 'module', data: { key: 'lesson', title: 'Lesson', chapters: [{ key: 'one', title: 'One', sections: [{ key: 'intro', title: 'Intro', blocks: [{ key: 'text', type: 'text', text: 'Hello.' }] }] }], sources: [], questionBanks: [], pathways: [] } },
+    { kind: 'placement', data: { key: 'placed', title: 'Lesson', module: 'lesson', catalog: 'child' } },
+  ] };
+}
+test('bundle review publishes catalogs in parent order, then module and placement, with one human confirmation', () => {
+  const db = app(), bundle = simpleBundle(), plan = author.preview(db, bundle);
+  const applied = author.apply(db, { bundle, token: plan.token });
+  assert.equal(applied.bundle.records.length, 4);
+  assert.equal(author.studentCatalog(db).modules.length, 0); // Apply alone never publishes.
+  const review = author.reviewBundle(db, applied.bundle);
+  assert.equal(review.ready, true); assert.equal(review.readyCount, 4);
+  assert.deepEqual(review.items.map((x) => x.kind + '/' + x.key), ['catalog/root', 'catalog/child', 'module/lesson', 'placement/placed']);
+  assert.deepEqual(db.saves.slice(-4), ['catalog/root', 'catalog/child', 'module/lesson', 'placement/placed']); // Draft writes; trial publication rolled back.
+  assert.throws(() => author.publishBundle(db, { bundle: applied.bundle, token: review.token, confirmReviewed: false }, { id: 'admin' }), /pemeriksaan manusia/);
+  const out = author.publishBundle(db, { bundle: applied.bundle, token: review.token, confirmReviewed: true }, { id: 'admin' });
+  assert.equal(out.published, 4);
+  assert.deepEqual(db.saves.slice(-4), ['catalog/root', 'catalog/child', 'module/lesson', 'placement/placed']);
+  assert.equal(author.studentCatalog(db).modules.length, 1);
+  assert.equal(author.studentCatalog(db).placements.length, 1);
+  assert.equal(author.studentModule(db, 'lesson', false).title, 'Lesson');
+  const again = author.reviewBundle(db, applied.bundle);
+  assert.equal(author.publishBundle(db, { bundle: applied.bundle, token: again.token, confirmReviewed: true }, { id: 'admin' }).published, 0);
+});
+function imageBundle(verified) {
+  return { schemaVersion: 1, records: [
+    { kind: 'source', data: { key: 'image-source', title: 'Image source', role: 'asset', ingestionAllowed: true, url: 'https://example.org/source', license: { name: 'CC BY', url: 'https://example.org/license', citation: 'Image source', verified, commercialUse: true, redistribution: true } } },
+    { kind: 'module', data: { key: 'image-lesson', title: 'Image lesson', sources: [], chapters: [{ key: 'one', title: 'One', sections: [{ key: 'images', title: 'Images', blocks: [{ key: 'image', type: 'image', asset: 'image-a' }] }] }], questionBanks: [], pathways: [] } },
+  ] };
+}
+function imageMedia(db) {
+  const asset = new Record({ name: 'lab_media' }); asset.set('key', 'image-a'); asset.set('title', 'Image A'); asset.set('alt', 'An image'); asset.set('sourceKey', 'image-source'); asset.set('externalUrl', 'https://example.org/image.png'); asset.set('status', 'draft'); asset.set('revision', 1); db.save(asset); return asset;
+}
+test('source, asset and module preflight is all-or-none and lists unverified license blockers', () => {
+  const db = app(); imageMedia(db);
+  const bundle = imageBundle(false), plan = author.preview(db, bundle), applied = author.apply(db, { bundle, token: plan.token });
+  const review = author.reviewBundle(db, applied.bundle);
+  assert.equal(review.ready, false); assert.equal(review.total, 3);
+  assert.ok(review.problems.some((s) => s.includes('Lisensi aset belum siap')));
+  assert.ok(review.problems.some((s) => s.includes('Sumber dan lisensi belum siap')));
+  assert.throws(() => author.publishBundle(db, { bundle: applied.bundle, token: review.token, confirmReviewed: true }, { id: 'admin' }), /Bundle belum siap/);
+  assert.equal(db.records.every((r) => !r.get('publishedData')), true);
+  assert.equal(db.media[0].getString('status'), 'draft');
+});
+test('source, asset and module publish atomically in dependency order', () => {
+  const db = app(); imageMedia(db);
+  const bundle = imageBundle(true), plan = author.preview(db, bundle), applied = author.apply(db, { bundle, token: plan.token });
+  const review = author.reviewBundle(db, applied.bundle);
+  assert.equal(review.ready, true); assert.deepEqual(review.items.map((x) => x.kind), ['source', 'asset', 'module']);
+  const out = author.publishBundle(db, { bundle: applied.bundle, token: review.token, confirmReviewed: true }, { id: 'admin' });
+  assert.equal(out.published, 3);
+  assert.deepEqual(db.saves.slice(-3), ['source/image-source', 'asset/image-a', 'module/image-lesson']);
+  assert.equal(author.studentModule(db, 'image-lesson', false).assets['image-a'].url, 'https://example.org/image.png');
+});
+test('missing dependency and stale review revision block the whole bundle', () => {
+  const db = app(), bundle = simpleBundle(), plan = author.preview(db, bundle), applied = author.apply(db, { bundle, token: plan.token });
+  const onlyPlacement = { records: applied.bundle.records.filter((r) => r.kind === 'placement') };
+  const blocked = author.reviewBundle(db, onlyPlacement);
+  assert.equal(blocked.ready, false); assert.ok(blocked.problems.some((s) => s.includes('belum terbit')));
+  assert.throws(() => author.publishBundle(db, { bundle: onlyPlacement, token: blocked.token, confirmReviewed: true }, { id: 'admin' }), /Bundle belum siap/);
+  const review = author.reviewBundle(db, applied.bundle);
+  author.find(db, 'module', 'lesson', true).set('revision', 2);
+  assert.throws(() => author.publishBundle(db, { bundle: applied.bundle, token: review.token, confirmReviewed: true }, { id: 'admin' }), /Revisi berubah setelah review/);
+  assert.equal(db.records.every((r) => !r.get('publishedData')), true);
+  // The original individual action remains available for isolated maintenance.
+  author.publish(db, 'catalog', 'root', { revision: 1, confirmReviewed: true }, { id: 'admin' });
+  assert.ok(author.find(db, 'catalog', 'root', true).get('publishedData'));
+});
+test('review token also catches draft mutation when a revision was not incremented', () => {
+  const db = app(), bundle = simpleBundle(), plan = author.preview(db, bundle), applied = author.apply(db, { bundle, token: plan.token });
+  const review = author.reviewBundle(db, applied.bundle);
+  author.find(db, 'module', 'lesson', true).get('data').title = 'Changed behind review';
+  assert.throws(() => author.publishBundle(db, { bundle: applied.bundle, token: review.token, confirmReviewed: true }, { id: 'admin' }), /Revisi berubah setelah review/);
+  assert.equal(db.records.every((r) => !r.get('publishedData')), true);
 });

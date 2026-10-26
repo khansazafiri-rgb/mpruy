@@ -1,6 +1,6 @@
 # MEDCOEL Lab Authoring Schema V1
 
-Use this file with [the machine-readable JSON Schema](LAB_AUTHORING.schema.json) to generate ordinary Lab content without changing application code. The [complete example](LAB_AUTHORING_EXAMPLE.json) can be pasted directly into **Admin → MEDCOEL Lab → Import Modul JSON**. The admin workflow is **Paste → Validasi JSON → Preview Perubahan → Terapkan sebagai Draft → human review → Publish**. No import publishes automatically. The on-screen **Salin Template** button provides a smaller starting bundle.
+Use this file with [the machine-readable JSON Schema](LAB_AUTHORING.schema.json) to generate ordinary Lab content without changing application code. The [complete example](LAB_AUTHORING_EXAMPLE.json) can be pasted directly into **Admin → MEDCOEL Lab → Import Modul JSON**. The admin workflow is **Paste → Validasi JSON → Preview Perubahan → Terapkan sebagai Draft → Review Bundle → Terbitkan Bundle** after explicit human confirmation. No import publishes automatically. The on-screen **Salin Template** button provides a smaller starting bundle.
 
 ## Bundle and stable keys
 

@@ -8,7 +8,7 @@ export const MODULE_TEMPLATE = {
   } }],
 };
 
-export const KIND_LABELS = { source: 'Sumber', guide: 'Panduan', catalog: 'Katalog', module: 'Modul', placement: 'Penempatan' };
+export const KIND_LABELS = { source: 'Sumber', guide: 'Panduan', catalog: 'Katalog', asset: 'Aset', module: 'Modul', placement: 'Penempatan' };
 export const ACTION_LABELS = { create: 'Baru', update: 'Diperbarui', unchanged: 'Tidak berubah' };
 
 export function bundleSummary(bundle) {
