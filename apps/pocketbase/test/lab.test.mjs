@@ -61,3 +61,49 @@ test('practice-first detection and demo slugs', () => {
   assert.equal(lab.isPractice({}, 4, 6), false, 'an object with its own gallery is a lesson');
   assert.equal(lab.isDemoSlug('demo-lab-fundamentals'), true); assert.equal(lab.isDemoSlug('cxr-dasar'), false);
 });
+
+test('curated guides retain source-backed class features and reject unsafe or untraceable content', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const guides = JSON.parse(await readFile(new URL('../../../tools/lab-ingest/content/identification-guides.json', import.meta.url), 'utf8'));
+  const { validateGuide } = require('../pb_hooks/lib/studyGuides.js');
+  for (const guide of Object.values(guides)) {
+    assert.deepEqual(validateGuide(guide), guide);
+    const body = { slug: 'curated-test', title: 'Curated', domain: 'clinical_pathology', data: { studyGuide: guide } };
+    assert.deepEqual(lab.validate('objects', body).data.studyGuide, guide);
+    assert.throws(() => lab.validate('objects', { ...body, data: { mode: 'practice', studyGuide: guide } }));
+    for (const mutate of [
+      (g) => { g.scope = 'image'; },
+      (g) => { g.profiles[0].features[0].sources = []; },
+      (g) => { g.profiles[0].features[0].sources = ['missing']; },
+      (g) => { g.profiles[0].features[0].text = '<script>unsafe</script>'; },
+      (g) => { g.sources[0].url = 'javascript:alert(1)'; },
+      (g) => { g.sources[0].url = 'https://user:pass@example.test/x'; },
+      (g) => { g.profiles.push(g.profiles[0]); },
+      (g) => { g.comparison.rows[0].values = []; },
+    ]) { const bad = structuredClone(guide); mutate(bad); assert.throws(() => validateGuide(bad)); }
+    const extra = { ...structuredClone(guide), observedFeatures: ['unreviewed'], region: { x: .1 } };
+    const clean = validateGuide(extra); assert.equal(clean.region, undefined); assert.equal(clean.observedFeatures, undefined);
+  }
+});
+
+test('Path and OCT curated class guides pass the existing backend validator', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const guides = JSON.parse(await readFile(new URL('../../../tools/lab-ingest/content/path-oct-guides.json', import.meta.url), 'utf8'));
+  const { validateGuide } = require('../pb_hooks/lib/studyGuides.js');
+  for (const [dataset, groups] of [
+    ['pathmnist', [['adipose', 'background', 'debris'], ['lymphocytes', 'mucus', 'smooth muscle'],
+      ['normal colon mucosa', 'cancer-associated stroma', 'colorectal adenocarcinoma epithelium']]],
+    ['octmnist', [['normal', 'diabetic macular edema', 'drusen', 'choroidal neovascularization']]],
+  ]) {
+    for (const labels of groups) {
+      const guide = structuredClone(guides[dataset]);
+      guide.profiles = guide.profiles.filter((p) => labels.includes(p.key));
+      guide.comparison.rows = guide.comparison.rows.filter((r) => labels.includes(r.key));
+      const clean = validateGuide(guide);
+      assert.equal(clean.dataset, guide.dataset);
+      assert.deepEqual(new Set(clean.profiles.map((p) => p.key)), new Set(labels));
+      assert.deepEqual(lab.validate('objects', { slug: 'guide-test', title: 'Guide', domain: 'imaging',
+        data: { studyGuide: guide } }).data.studyGuide, clean);
+    }
+  }
+});

@@ -23,3 +23,5 @@ jobs:
           python -m unittest discover -s tools/lab-ingest -p test_sampling.py -v
           python -m unittest discover -s tools/lab-ingest -p test_pack_resolution.py -v
           python -m unittest discover -s tools/lab-ingest -p test_bloodmnist.py -v
+          python -m unittest discover -s tools/lab-ingest -p test_identification_guides.py -v
+          python -m unittest discover -s tools/lab-ingest -p test_visual_mnist.py -v

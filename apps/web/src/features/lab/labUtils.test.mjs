@@ -19,6 +19,15 @@ test('groupAssets menaruh normal di depan dan menomori kasus per kelompok', () =
   assert.equal(groupAssets([{ id: 'a', title: 'Gambar sel' }])[0].title, 'Contoh gambar');
 });
 
+test('Path/OCT headings translate source labels without changing source metadata', () => {
+  const grouped = groupAssets([
+    { id: 'p', dataset: { name: 'PathMNIST', label: 'colorectal adenocarcinoma epithelium' } },
+    { id: 'o', dataset: { name: 'OCTMNIST', label: 'diabetic macular edema' } },
+  ]);
+  assert.deepEqual(grouped.map((g) => g.title), ['Epitel adenokarsinoma kolorektal', 'Diabetic macular edema (DME)']);
+  assert.deepEqual(grouped.map((g) => g.key), ['colorectal adenocarcinoma epithelium', 'diabetic macular edema']);
+});
+
 test('fittedSize menjaga rasio, batas lebar/tinggi, dan tidak memperbesar berlebihan', () => {
   assert.deepEqual(fittedSize(224, 224, 1000, 900), { w: 560, h: 560 });
   assert.deepEqual(fittedSize(224, 224, 300, 900), { w: 300, h: 300 });

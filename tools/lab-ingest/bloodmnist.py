@@ -6,6 +6,7 @@ from pathlib import Path
 from medmnist_core import DatasetSpec, DraftImporter, download, export_pngs, manifest, validate_groups, log
 from medcoel_api import MedcoelAPI, resolve_content_pack
 from sampling import SelectionConfig
+from identification_guides import learning_guide
 
 BLOOD_224 = DatasetSpec(
     key="bloodmnist", title="BloodMNIST", resolution=224, task="multi-class",
@@ -68,6 +69,7 @@ def object_body(group, asset_ids, pack_id="", practice=False):
         "summary": "Identifikasi jenis sel pada citra." if practice else "Amati beberapa contoh dari setiap kelompok sel.",
         "tags": ["sel darah perifer", "BloodMNIST"], "assets": [] if practice else asset_ids,
         "related": [], "legacyQuestions": [], "data": {
+            **({"studyGuide": learning_guide("bloodmnist", [BLOOD_224.labels[i] for i in group["labels"]])} if not practice else {}),
             "demo": False, "mode": "practice" if practice else "lesson",
             "definition": "Pilih jenis sel yang paling sesuai." if practice else "Bandingkan contoh citra pada setiap kelompok sel.",
             "objectives": ["Mengenali " + ", ".join(STUDENT_LABELS[i] for i in group["labels"]) + "."],
@@ -107,6 +109,7 @@ def sync(api, groups, *, apply, update_existing, license_verified, public_base, 
     validate_groups(groups, config, BLOOD_224)
     if config.learning_per_class > 5:
         raise ValueError("Blood learning exceeds the 20-asset object limit")
+    api.require_study_guides()
     importer = DraftImporter(api, apply, update_existing, license_verified, report_unchanged=True)
     for kind in ("assets", "objects", "questions", "pathways"):
         importer.refresh(kind)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Import a small, reviewable MedMNIST teaching pack into MEDCOEL Lab.
 
-Supported datasets: PneumoniaMNIST and BloodMNIST 224px.
+Supported datasets: PneumoniaMNIST, BloodMNIST, PathMNIST, and OCTMNIST 224px.
 
 Design goals:
 - official-source download only
@@ -40,6 +40,7 @@ from typing import Any
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from medcoel_api import ApiError, MedcoelAPI, resolve_content_pack  # noqa: E402
 from sampling import LEARNING_PER_CLASS, PRACTICE_PER_CLASS, SELECTION_SEED, SelectionConfig, select_samples
+from identification_guides import learning_guide
 import medmnist_core as core
 from medmnist_core import DatasetSpec, MANAGED, PRESERVED_DATA, flatten_labels, md5sum, log
 
@@ -151,26 +152,16 @@ def object_intro(asset_ids: list[str], pack_id: str = "") -> dict[str, Any]:
         "legacyQuestions": [],
         "data": {
             "demo": False,
+            "studyGuide": learning_guide("pneumoniamnist"),
             "objectives": [
                 "Mengenali tampilan umum foto toraks normal",
                 "Mengenali pola dasar pneumonia secara garis besar",
                 "Membandingkan contoh normal dan pneumonia",
                 "Memahami batas materi latihan ini",
             ],
-            "definition": (
-                "Foto toraks (chest X-ray, CXR) adalah gambar proyeksi 2D. Mulailah dengan orientasi: pastikan gambar frontal, "
-                "lalu nilai paru kanan dan kiri. Pada paru normal, lapang paru tampak relatif gelap dan simetris. "
-                "Pada pneumonia, area paru dapat tampak lebih putih (opasitas meningkat). "
-                "Geser galeri di bawah, buka beberapa kasus, lalu gunakan tombol Bandingkan."
-            ),
-            "keyFindings": [
-                "Gunakan gambar sebagai latihan klasifikasi pola global, bukan sebagai pengganti pembacaan radiologi lengkap.",
-                "Dataset tidak menyediakan anotasi lokasi lesi pada setiap gambar, sehingga MEDCOEL tidak membuat hotspot lesi buatan.",
-            ],
-            "interpretation": (
-                "Hasil latihan menunjukkan kecocokan terhadap label benchmark PneumoniaMNIST. "
-                "Label dataset bukan diagnosis pasien dan tidak menyatakan lokasi kelainan."
-            ),
+            "definition": "Bandingkan kategori Normal dan Pneumonia melalui panduan ciri umum, lalu amati beberapa contoh dan berlatih. Ciri umum tidak menyatakan temuan yang sudah dipastikan pada setiap gambar.",
+            "keyFindings": [],
+            "interpretation": "Label pada tingkat gambar tidak menentukan lokasi lesi atau penyebab penyakit. Gunakan sebagai latihan pengenalan pola, bukan diagnosis pasien.",
             "diagnosis": "",
             "differentials": [],
             "clinicalAssociations": ["Latihan interpretasi citra thoraks", "Klasifikasi normal vs pneumonia"],
@@ -178,13 +169,7 @@ def object_intro(asset_ids: list[str], pack_id: str = "") -> dict[str, Any]:
                 {"title": "MedMNIST", "url": "https://medmnist.com/"},
                 {"title": "MedMNIST GitHub", "url": "https://github.com/MedMNIST/MedMNIST"},
             ],
-            "steps": [
-                {"title": "Orientasi", "finding": "Pastikan citra adalah foto toraks frontal dan nilai kualitas gambar secara umum."},
-                {"title": "Periksa lapang paru", "finding": "Lihat paru kanan dan kiri secara terpisah, lalu bandingkan keduanya."},
-                {"title": "Bandingkan simetri", "finding": "Perhatikan apakah kecerahan kedua paru seimbang atau ada sisi yang tampak lebih putih."},
-                {"title": "Cari opasitas meningkat", "finding": "Area yang lebih putih dapat mengarah ke pneumonia, tetapi label dataset tidak menunjukkan lokasi lesi."},
-                {"title": "Susun interpretasi", "finding": "Pilih normal atau pneumonia, lalu bandingkan dengan label benchmark setelah menjawab."},
-            ],
+            "steps": [],
             "lab": {"context": "", "rows": [], "rules": []},
         },
     }
@@ -238,7 +223,7 @@ def question_body(row: dict[str, Any], object_id: str, asset_id: str, pack_id: s
         "asset": asset_id,
         "data": {
             "type": "image_identification",
-            "prompt": "Foto toraks ini termasuk kategori benchmark mana?",
+            "prompt": "Foto toraks ini termasuk kategori mana?",
             "options": [
                 {"label": "A", "text": "Normal"},
                 {"label": "B", "text": "Pneumonia"},
@@ -321,6 +306,7 @@ def sync(api: MedcoelAPI, groups: dict[str, list[dict[str, Any]]], *, apply: boo
          license_verified: bool, public_base: str, config: SelectionConfig = SelectionConfig()) -> DraftImporter:
     """Plan first, then revision-safe API writes. Never publishes or deletes records."""
     validate_groups(groups, config)
+    api.require_study_guides()
     importer = DraftImporter(api, apply=apply, update_existing=update_existing, license_verified=license_verified)
     importer.retired = []
     importer.pack = None
@@ -388,7 +374,7 @@ def manifest(groups, config):
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description="Prepare/import disjoint MedMNIST learning and practice samples")
-    parser.add_argument("--dataset", choices=("pneumoniamnist", "bloodmnist"), default="pneumoniamnist")
+    parser.add_argument("--dataset", choices=("pneumoniamnist", "bloodmnist", "pathmnist", "octmnist"), default="pneumoniamnist")
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--apply", action="store_true", help="Create/update drafts through the admin API; never publish")
     mode.add_argument("--dry-run", action="store_true", help="Default: local export and read-only sync plan")
@@ -404,16 +390,20 @@ def parse_args(argv=None):
         if args.learning_per_class is not None and args.learning_per_class != args.per_class:
             parser.error("Conflicting --per-class and --learning-per-class")
         args.learning_per_class = args.per_class
+    defaults = {"bloodmnist": (5, 3), "pathmnist": (4, 2), "octmnist": (5, 3),
+                "pneumoniamnist": (LEARNING_PER_CLASS, PRACTICE_PER_CLASS)}
     if args.learning_per_class is None:
-        args.learning_per_class = 5 if args.dataset == "bloodmnist" else LEARNING_PER_CLASS
+        args.learning_per_class = defaults[args.dataset][0]
     if args.practice_per_class is None:
-        args.practice_per_class = 3 if args.dataset == "bloodmnist" else PRACTICE_PER_CLASS
+        args.practice_per_class = defaults[args.dataset][1]
     try:
         args.config = SelectionConfig(args.learning_per_class, args.practice_per_class, args.selection_seed)
     except ValueError as exc:
         parser.error(str(exc))
     if args.dataset == "bloodmnist" and args.learning_per_class > 5:
         parser.error("Blood learning supports at most 5/class (four classes, 20 assets/object).")
+    if args.dataset in ("pathmnist", "octmnist") and (args.learning_per_class, args.practice_per_class) != defaults[args.dataset]:
+        parser.error("Path/OCT v1 selections are fixed for safe reruns; use the dataset defaults.")
     if args.dataset == "pneumoniamnist" and args.learning_per_class > 10:
         parser.error("Current Pneumonia gallery supports at most 10/class (20 assets/object). Future adapters must shard larger galleries; practice cap is independent.")
     return args
@@ -424,6 +414,12 @@ def main() -> int:
     if args.dataset == "bloodmnist":
         from bloodmnist import run
         return run(args, CACHE_DIR, PUBLIC_DIR.parent / "bloodmnist")
+    if args.dataset in ("pathmnist", "octmnist"):
+        from visual_mnist import run
+        from pathmnist import CONFIG as PATH_CONFIG
+        from octmnist import CONFIG as OCT_CONFIG
+        config = PATH_CONFIG if args.dataset == "pathmnist" else OCT_CONFIG
+        return run(config, args, CACHE_DIR, PUBLIC_DIR.parent / args.dataset)
     npz = download(PNEUMONIA_224)
     groups = export_pngs(npz, args.config)
     mf = manifest(groups, args.config)

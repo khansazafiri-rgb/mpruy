@@ -1,4 +1,4 @@
-"""Ingestion policy metadata. PneumoniaMNIST and BloodMNIST are enabled; no automatic downloads.
+"""Ingestion policy metadata. Four individually reviewed adapters are enabled; no automatic downloads.
 
 Future entries describe task/class shape, not a commercial-license approval.
 Official label/task reference: github.com/MedMNIST/MedMNIST/blob/main/medmnist/info.py
@@ -12,13 +12,13 @@ ENABLED_DATASETS = {
     "bloodmnist": {"enabled": True, "task": "multi-class", "license": "CC BY 4.0", "license_review": "official metadata verified; per-asset human review required", "classes": {
         0: "basophil", 1: "eosinophil", 2: "erythroblast", 3: "immature granulocytes",
         4: "lymphocyte", 5: "monocyte", 6: "neutrophil", 7: "platelet"}},
-}
-FUTURE_DATASETS = {
-    "pathmnist": {"enabled": False, "task": "multi-class", "license_review": "required", "classes": {
+    "pathmnist": {"enabled": True, "task": "multi-class", "license": "CC BY 4.0", "license_review": "MedMNIST and original Kather Zenodo; per-asset human review required", "classes": {
         0: "adipose", 1: "background", 2: "debris", 3: "lymphocytes", 4: "mucus", 5: "smooth muscle",
         6: "normal colon mucosa", 7: "cancer-associated stroma", 8: "colorectal adenocarcinoma epithelium"}},
-    "octmnist": {"enabled": False, "task": "multi-class", "license_review": "required", "classes": {
+    "octmnist": {"enabled": True, "task": "multi-class", "license": "CC BY 4.0", "license_review": "MedMNIST and original Kermany Mendeley; per-asset human review required", "classes": {
         0: "choroidal neovascularization", 1: "diabetic macular edema", 2: "drusen", 3: "normal"}},
+}
+FUTURE_DATASETS = {
     "chestmnist": {"enabled": False, "task": "multi-label", "license_review": "required",
                    "blocked_reason": "Multi-label: single-answer classification is not valid without a curated subset."},
     "dermamnist": {"enabled": False, "task": "multi-class", "license": "CC BY-NC 4.0",

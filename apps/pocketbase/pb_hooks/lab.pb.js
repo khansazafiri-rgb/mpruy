@@ -35,6 +35,13 @@ routerAdd('POST', '/api/medcoel/lab/objects/{key}/practice', (e) => {
   const r = att.create(e.app, user, { kind: 'practice', mode: 'learning', subject: q.getString('subject'), title: 'Lab · ' + object.title, settings: { labObject: object.id, count: 1, mode: 'learning' }, ids: [id], timerMinutes: 0 });
   return e.json(200, { id: r.id });
 }, $apis.bodyLimit(16384));
+// Read-only handshake prevents newer ingest tools silently losing fields on an older hook process.
+routerAdd('GET', '/api/medcoel/admin/lab-capabilities', (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  u.requireAdmin(e);
+  return e.json(200, { studyGuide: 1, studyGuideDatasets: ['BloodMNIST', 'PneumoniaMNIST', 'PathMNIST', 'OCTMNIST'] });
+});
+
 routerAdd('GET', '/api/medcoel/admin/lab/{kind}', (e) => {
   const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); u.requireAdmin(e);
   const kind = e.request.pathValue('kind'); const page = Math.min(10000, Math.max(1, parseInt(u.query(e, 'page'), 10) || 1));

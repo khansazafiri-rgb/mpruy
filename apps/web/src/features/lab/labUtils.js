@@ -16,6 +16,13 @@ export function assetLabel(asset) {
 const bloodLabels = { basophil: 'Basofil', eosinophil: 'Eosinofil', erythroblast: 'Eritroblas',
   'immature granulocytes': 'Granulosit imatur', lymphocyte: 'Limfosit', monocyte: 'Monosit',
   neutrophil: 'Neutrofil', platelet: 'Trombosit' };
+const pathLabels = { adipose: 'Jaringan adiposa', background: 'Latar belakang', debris: 'Debris jaringan',
+  lymphocytes: 'Limfosit', mucus: 'Mukus', 'smooth muscle': 'Otot polos',
+  'normal colon mucosa': 'Mukosa kolon normal', 'cancer-associated stroma': 'Stroma terkait kanker',
+  'colorectal adenocarcinoma epithelium': 'Epitel adenokarsinoma kolorektal' };
+const octLabels = { 'choroidal neovascularization': 'Choroidal neovascularization (CNV)',
+  'diabetic macular edema': 'Diabetic macular edema (DME)', drusen: 'Drusen', normal: 'Normal' };
+const teachingLabels = { BloodMNIST: bloodLabels, PathMNIST: pathLabels, OCTMNIST: octLabels };
 const cap = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 
 // Kelompokkan aset per label. "normal" selalu di depan; tanpa label -> satu kelompok umum.
@@ -29,7 +36,7 @@ export function groupAssets(assets = [], modality = '') {
   order.sort((a, b) => (a === 'normal' ? -1 : b === 'normal' ? 1 : 0));
   return order.map((key) => ({
     key,
-    title: map.get(key)[0]?.dataset?.name === 'BloodMNIST' && bloodLabels[key] ? bloodLabels[key] : key ? cap(key) : 'Contoh gambar',
+    title: teachingLabels[map.get(key)[0]?.dataset?.name]?.[key] || (key ? cap(key) : 'Contoh gambar'),
     subtitle: key ? modality : '',
     items: map.get(key).map((asset, i) => ({ asset, caseNo: i + 1 })),
   }));

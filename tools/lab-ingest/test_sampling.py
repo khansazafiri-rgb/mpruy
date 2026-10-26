@@ -27,6 +27,7 @@ class FakeAPI:
         self.records = {k: {} for k in m.MANAGED}
         self.writes = []
         self.the_pack = None
+    def require_study_guides(self, dataset=None): pass  # Explicit capability in the disposable fake API.
     def pack(self, _slug): return copy.deepcopy(self.the_pack)
     def list_all(self, kind): return copy.deepcopy(list(self.records[kind].values()))
     def create_pack(self, body):
@@ -145,7 +146,7 @@ class SamplingTests(unittest.TestCase):
     def test_no_filler_or_unsupported_localization(self):
         q = m.question_body(samples()['practice'][0], 'o', 'a')
         self.assertEqual(q['data']['explanation'], '')
-        self.assertEqual(q['data']['prompt'], 'Foto toraks ini termasuk kategori benchmark mana?')
+        self.assertEqual(q['data']['prompt'], 'Foto toraks ini termasuk kategori mana?')
         self.assertNotIn('region', q['data'])
 
 

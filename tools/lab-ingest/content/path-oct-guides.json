@@ -1,0 +1,1045 @@
+{
+  "pathmnist": {
+    "schemaVersion": 1,
+    "dataset": "PathMNIST",
+    "title": "Cara Identifikasi · Pola Jaringan H&E",
+    "scope": "class",
+    "introduction": {
+      "text": "Bandingkan kategori pola/komponen patch H&E, bukan sembilan diagnosis. Ciri ini bersifat umum dan belum dipastikan pada tiap citra.",
+      "sources": [
+        "medmnist",
+        "kather-data"
+      ]
+    },
+    "comparison": {
+      "title": "Bandingkan kategori jaringan",
+      "columns": [
+        "Pola utama",
+        "Hal yang dicari",
+        "Kunci pembeda"
+      ],
+      "rows": [
+        {
+          "key": "adipose",
+          "label": "Jaringan adiposa",
+          "values": [
+            {
+              "text": "Adiposit besar dengan ruang lemak tampak jernih pada H&E.",
+              "sources": [
+                "duke-adipose"
+              ]
+            },
+            {
+              "text": "Tepi sel tipis; inti dapat terdorong ke perifer.",
+              "sources": [
+                "duke-adipose"
+              ]
+            },
+            {
+              "text": "Cari kumpulan ruang jernih berbatas adiposit, bukan area kosong tanpa struktur.",
+              "sources": [
+                "duke-adipose",
+                "kather-data"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "background",
+          "label": "Latar belakang",
+          "values": [
+            {
+              "text": "Kategori teknis patch pada dataset; bukan jenis jaringan.",
+              "sources": [
+                "kather-data",
+                "medmnist"
+              ]
+            },
+            {
+              "text": "Area dapat minim pola jaringan target yang dapat dikenali.",
+              "sources": [
+                "kather-data"
+              ]
+            },
+            {
+              "text": "Jangan menamai ruang kosong sebagai struktur biologis.",
+              "sources": [
+                "kather-data"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "debris",
+          "label": "Debris jaringan",
+          "values": [
+            {
+              "text": "Kategori debris pada patch dataset, bukan diagnosis tersendiri.",
+              "sources": [
+                "kather-data",
+                "medmnist"
+              ]
+            },
+            {
+              "text": "Amati material jaringan atau sel yang terfragmentasi dan kurang terorganisasi.",
+              "sources": [
+                "kather-data"
+              ]
+            },
+            {
+              "text": "Jangan langsung menyamakan debris dengan nekrosis tumor.",
+              "sources": [
+                "kather-data"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "lymphocytes",
+          "label": "Limfosit",
+          "values": [
+            {
+              "text": "Kelompok sel kecil dengan inti bulat yang gelap dan padat.",
+              "sources": [
+                "duke-cells",
+                "kather-data"
+              ]
+            },
+            {
+              "text": "Sitoplasma relatif sedikit pada limfosit kecil.",
+              "sources": [
+                "duke-cells"
+              ]
+            },
+            {
+              "text": "Fokus pada kumpulan sel kecil; keberadaannya sendiri bukan diagnosis inflamasi.",
+              "sources": [
+                "duke-cells",
+                "kather-data"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "mucus",
+          "label": "Mukus",
+          "values": [
+            {
+              "text": "Material mukus ekstraseluler dapat tampak lebih pucat dibanding jaringan seluler.",
+              "sources": [
+                "duke-colon",
+                "kather-data"
+              ]
+            },
+            {
+              "text": "Bedakan kumpulan mukus dari sel goblet yang masih berada dalam kriptus.",
+              "sources": [
+                "duke-colon"
+              ]
+            },
+            {
+              "text": "Jangan menyebut setiap area pucat sebagai mukus; periksa konteks jaringan.",
+              "sources": [
+                "duke-colon",
+                "kather-data"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "smooth muscle",
+          "label": "Otot polos",
+          "values": [
+            {
+              "text": "Sel berbentuk spindle dengan inti memanjang; tersusun sebagai berkas.",
+              "sources": [
+                "duke-muscle",
+                "duke-colon"
+              ]
+            },
+            {
+              "text": "Sitoplasma pada H&E umumnya eosinofilik.",
+              "sources": [
+                "duke-muscle"
+              ]
+            },
+            {
+              "text": "Cari berkas yang relatif teratur, bukan hanya warna merah muda.",
+              "sources": [
+                "duke-muscle",
+                "crc-stroma"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "normal colon mucosa",
+          "label": "Mukosa kolon normal",
+          "values": [
+            {
+              "text": "Kriptus kolon normal biasanya lurus dan tidak bercabang.",
+              "sources": [
+                "duke-colon"
+              ]
+            },
+            {
+              "text": "Epitel kriptus memiliki banyak sel goblet; arsitektur mukosa terjaga.",
+              "sources": [
+                "duke-colon"
+              ]
+            },
+            {
+              "text": "Bandingkan keteraturan kriptus dengan pola glandular atipik yang kacau.",
+              "sources": [
+                "duke-colon",
+                "crc-pathology"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "cancer-associated stroma",
+          "label": "Stroma terkait kanker",
+          "values": [
+            {
+              "text": "Kategori dataset untuk jaringan penunjang yang terkait area kanker.",
+              "sources": [
+                "kather-data",
+                "kather-paper"
+              ]
+            },
+            {
+              "text": "Pada sebagian contoh dapat tampak jaringan ikat/fibroblastik desmoplastik.",
+              "sources": [
+                "crc-stroma"
+              ]
+            },
+            {
+              "text": "Warna merah muda saja tidak cukup untuk menetapkan stroma terkait kanker.",
+              "sources": [
+                "crc-stroma",
+                "kather-data"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "colorectal adenocarcinoma epithelium",
+          "label": "Epitel adenokarsinoma kolorektal",
+          "values": [
+            {
+              "text": "Epitel glandular dapat menunjukkan bentuk kelenjar tidak teratur atau berdesakan.",
+              "sources": [
+                "crc-pathology"
+              ]
+            },
+            {
+              "text": "Inti epitel dapat tampak atipik dengan arsitektur yang tidak tertata.",
+              "sources": [
+                "crc-pathology"
+              ]
+            },
+            {
+              "text": "Ini label kategori patch; patch tunggal tidak menetapkan diagnosis atau karakter tumor pasien.",
+              "sources": [
+                "kather-data",
+                "crc-pathology"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "profiles": [
+      {
+        "key": "adipose",
+        "title": "Jaringan adiposa",
+        "features": [
+          {
+            "text": "Adiposit besar dengan ruang lemak tampak jernih pada H&E.",
+            "sources": [
+              "duke-adipose"
+            ]
+          },
+          {
+            "text": "Tepi sel tipis; inti dapat terdorong ke perifer.",
+            "sources": [
+              "duke-adipose"
+            ]
+          },
+          {
+            "text": "Cari kumpulan ruang jernih berbatas adiposit, bukan area kosong tanpa struktur.",
+            "sources": [
+              "duke-adipose",
+              "kather-data"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Bedakan dari latar belakang: adiposit mempunyai batas sel yang membentuk pola.",
+            "sources": [
+              "duke-adipose",
+              "kather-data"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "background",
+        "title": "Latar belakang",
+        "features": [
+          {
+            "text": "Kategori teknis patch pada dataset; bukan jenis jaringan.",
+            "sources": [
+              "kather-data",
+              "medmnist"
+            ]
+          },
+          {
+            "text": "Area dapat minim pola jaringan target yang dapat dikenali.",
+            "sources": [
+              "kather-data"
+            ]
+          },
+          {
+            "text": "Jangan menamai ruang kosong sebagai struktur biologis.",
+            "sources": [
+              "kather-data"
+            ]
+          }
+        ],
+        "compare": [],
+        "caveats": [
+          {
+            "text": "Latar belakang adalah label teknis dataset, bukan jaringan atau penyakit.",
+            "sources": [
+              "kather-data"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "debris",
+        "title": "Debris jaringan",
+        "features": [
+          {
+            "text": "Kategori debris pada patch dataset, bukan diagnosis tersendiri.",
+            "sources": [
+              "kather-data",
+              "medmnist"
+            ]
+          },
+          {
+            "text": "Amati material jaringan atau sel yang terfragmentasi dan kurang terorganisasi.",
+            "sources": [
+              "kather-data"
+            ]
+          },
+          {
+            "text": "Jangan langsung menyamakan debris dengan nekrosis tumor.",
+            "sources": [
+              "kather-data"
+            ]
+          }
+        ],
+        "compare": [],
+        "caveats": [
+          {
+            "text": "Label debris tidak membuktikan nekrosis, keganasan, atau penyebab klinis.",
+            "sources": [
+              "kather-data"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "lymphocytes",
+        "title": "Limfosit",
+        "features": [
+          {
+            "text": "Kelompok sel kecil dengan inti bulat yang gelap dan padat.",
+            "sources": [
+              "duke-cells",
+              "kather-data"
+            ]
+          },
+          {
+            "text": "Sitoplasma relatif sedikit pada limfosit kecil.",
+            "sources": [
+              "duke-cells"
+            ]
+          },
+          {
+            "text": "Fokus pada kumpulan sel kecil; keberadaannya sendiri bukan diagnosis inflamasi.",
+            "sources": [
+              "duke-cells",
+              "kather-data"
+            ]
+          }
+        ],
+        "compare": [],
+        "caveats": []
+      },
+      {
+        "key": "mucus",
+        "title": "Mukus",
+        "features": [
+          {
+            "text": "Material mukus ekstraseluler dapat tampak lebih pucat dibanding jaringan seluler.",
+            "sources": [
+              "duke-colon",
+              "kather-data"
+            ]
+          },
+          {
+            "text": "Bedakan kumpulan mukus dari sel goblet yang masih berada dalam kriptus.",
+            "sources": [
+              "duke-colon"
+            ]
+          },
+          {
+            "text": "Jangan menyebut setiap area pucat sebagai mukus; periksa konteks jaringan.",
+            "sources": [
+              "duke-colon",
+              "kather-data"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Bedakan dari latar belakang: mukus adalah material biologis; area kosong teknis tidak memiliki pola jaringan target.",
+            "sources": [
+              "duke-colon",
+              "kather-data"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "smooth muscle",
+        "title": "Otot polos",
+        "features": [
+          {
+            "text": "Sel berbentuk spindle dengan inti memanjang; tersusun sebagai berkas.",
+            "sources": [
+              "duke-muscle",
+              "duke-colon"
+            ]
+          },
+          {
+            "text": "Sitoplasma pada H&E umumnya eosinofilik.",
+            "sources": [
+              "duke-muscle"
+            ]
+          },
+          {
+            "text": "Cari berkas yang relatif teratur, bukan hanya warna merah muda.",
+            "sources": [
+              "duke-muscle",
+              "crc-stroma"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Bedakan dari stroma: berkas otot polos lebih teratur dengan inti sel memanjang; stroma dapat lebih fibroblastik.",
+            "sources": [
+              "duke-muscle",
+              "crc-stroma"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "normal colon mucosa",
+        "title": "Mukosa kolon normal",
+        "features": [
+          {
+            "text": "Kriptus kolon normal biasanya lurus dan tidak bercabang.",
+            "sources": [
+              "duke-colon"
+            ]
+          },
+          {
+            "text": "Epitel kriptus memiliki banyak sel goblet; arsitektur mukosa terjaga.",
+            "sources": [
+              "duke-colon"
+            ]
+          },
+          {
+            "text": "Bandingkan keteraturan kriptus dengan pola glandular atipik yang kacau.",
+            "sources": [
+              "duke-colon",
+              "crc-pathology"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Bedakan dari epitel adenokarsinoma: lihat pola kriptus yang relatif teratur dibanding arsitektur glandular yang tidak teratur.",
+            "sources": [
+              "duke-colon",
+              "crc-pathology"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "cancer-associated stroma",
+        "title": "Stroma terkait kanker",
+        "features": [
+          {
+            "text": "Kategori dataset untuk jaringan penunjang yang terkait area kanker.",
+            "sources": [
+              "kather-data",
+              "kather-paper"
+            ]
+          },
+          {
+            "text": "Pada sebagian contoh dapat tampak jaringan ikat/fibroblastik desmoplastik.",
+            "sources": [
+              "crc-stroma"
+            ]
+          },
+          {
+            "text": "Warna merah muda saja tidak cukup untuk menetapkan stroma terkait kanker.",
+            "sources": [
+              "crc-stroma",
+              "kather-data"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Bedakan dari epitel adenokarsinoma: stroma adalah komponen penunjang, bukan kelompok kelenjar epitel atipik.",
+            "sources": [
+              "crc-stroma",
+              "crc-pathology"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "colorectal adenocarcinoma epithelium",
+        "title": "Epitel adenokarsinoma kolorektal",
+        "features": [
+          {
+            "text": "Epitel glandular dapat menunjukkan bentuk kelenjar tidak teratur atau berdesakan.",
+            "sources": [
+              "crc-pathology"
+            ]
+          },
+          {
+            "text": "Inti epitel dapat tampak atipik dengan arsitektur yang tidak tertata.",
+            "sources": [
+              "crc-pathology"
+            ]
+          },
+          {
+            "text": "Ini label kategori patch; patch tunggal tidak menetapkan diagnosis atau karakter tumor pasien.",
+            "sources": [
+              "kather-data",
+              "crc-pathology"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Bedakan dari mukosa normal: perhatikan keteraturan kelenjar serta atipia epitel, bukan warna saja.",
+            "sources": [
+              "duke-colon",
+              "crc-pathology"
+            ]
+          }
+        ],
+        "caveats": []
+      }
+    ],
+    "checklist": [
+      {
+        "text": "Tentukan dulu apakah patch berisi jaringan bermakna, material terfragmentasi, atau latar belakang teknis.",
+        "sources": [
+          "kather-data"
+        ]
+      },
+      {
+        "text": "Jika ada struktur, cari adiposit, kelompok sel kecil, mukus, atau berkas otot polos.",
+        "sources": [
+          "duke-adipose",
+          "duke-cells",
+          "duke-colon",
+          "duke-muscle"
+        ]
+      },
+      {
+        "text": "Pada mukosa, bandingkan keteraturan kriptus dengan arsitektur glandular yang tidak teratur.",
+        "sources": [
+          "duke-colon",
+          "crc-pathology"
+        ]
+      },
+      {
+        "text": "Tentukan kategori dataset yang paling sesuai; jangan menyimpulkan grade, stadium, atau invasi dari satu patch.",
+        "sources": [
+          "kather-data",
+          "crc-pathology"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "text": "Patch berlabel pada tingkat gambar; panduan ini tidak memuat penandaan lokasi atau deskripsi morfologi khusus tiap citra.",
+        "sources": [
+          "medmnist",
+          "kather-data"
+        ]
+      },
+      {
+        "text": "Stroma terkait kanker dan epitel adenokarsinoma adalah label patch sumber, bukan penilaian lengkap tumor pasien.",
+        "sources": [
+          "kather-data",
+          "kather-paper"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "medmnist",
+        "organization": "MedMNIST",
+        "resource": "Official dataset metadata and labels",
+        "url": "https://github.com/MedMNIST/MedMNIST/blob/main/medmnist/info.py",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "kather-data",
+        "organization": "Kather et al. / Zenodo",
+        "resource": "NCT-CRC-HE-100K and CRC-VAL-HE-7K dataset descriptions",
+        "url": "https://zenodo.org/records/1214456",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "kather-paper",
+        "organization": "PLOS Medicine",
+        "resource": "Kather et al. 2019, multicenter colorectal histology study",
+        "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002730",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "duke-adipose",
+        "organization": "Duke University Histology",
+        "resource": "Tissues distinguishing features: adipose tissue",
+        "url": "https://histology.oit.duke.edu/MoleculesCells/Review/Tissues%20Distinguishing%20Features.pdf",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "duke-colon",
+        "organization": "Duke University Histology",
+        "resource": "Gastrointestinal tract: normal colon crypts and goblet cells",
+        "url": "https://histology.oit.duke.edu/NormalBody/GItract/GItract%20draft.html",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "duke-cells",
+        "organization": "Duke University Histology",
+        "resource": "Connective tissue: lymphocyte and fibroblast morphology",
+        "url": "https://histology.oit.duke.edu/DPT/BasicTissues1/EpithCT.html",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "duke-muscle",
+        "organization": "Duke University Histology",
+        "resource": "Smooth muscle fiber teaching material",
+        "url": "https://histology.oit.duke.edu/MBS/Videos/Phys/Phys%203.5%20Smooth%20Muscle/Phys%203.5%20Smooth%20Muscle.pdf",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "crc-pathology",
+        "organization": "Journal of Pathology and Translational Medicine",
+        "resource": "Standardized pathology report for colorectal cancer: histological architecture",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6986966/",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "crc-stroma",
+        "organization": "World Journal of Gastroenterology",
+        "resource": "Colorectal carcinoma: pathologic aspects and desmoplastic stroma",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3418538/",
+        "accessed": "2026-10-26"
+      }
+    ]
+  },
+  "octmnist": {
+    "schemaVersion": 1,
+    "dataset": "OCTMNIST",
+    "title": "Cara Membaca OCT · Cara Identifikasi",
+    "scope": "class",
+    "introduction": {
+      "text": "OCT adalah irisan melintang retina. Mulai dari arsitektur dan kontur fovea, lalu bandingkan lokasi perubahan pada empat kategori. Ini panduan kelas, bukan temuan yang sudah dipastikan pada setiap citra.",
+      "sources": [
+        "aao-oct",
+        "medmnist"
+      ]
+    },
+    "comparison": {
+      "title": "Cara Membedakan",
+      "columns": [
+        "Lokasi perubahan utama",
+        "Pola yang dicari",
+        "Pembeda penting"
+      ],
+      "rows": [
+        {
+          "key": "normal",
+          "label": "Normal",
+          "values": [
+            {
+              "text": "Arsitektur retina dan kontur fovea relatif terjaga.",
+              "sources": [
+                "aao-oct"
+              ]
+            },
+            {
+              "text": "Lapisan retina tersusun; tidak tampak ruang cairan patologis yang jelas pada contoh khas.",
+              "sources": [
+                "aao-oct"
+              ]
+            },
+            {
+              "text": "Gunakan sebagai pembanding, tanpa mengklaim semua patologi telah disingkirkan.",
+              "sources": [
+                "aao-oct",
+                "medmnist"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "diabetic macular edema",
+          "label": "Diabetic macular edema (DME)",
+          "values": [
+            {
+              "text": "Perubahan terutama intraretinal.",
+              "sources": [
+                "aao-dme"
+              ]
+            },
+            {
+              "text": "Cari penebalan retina dan ruang kistik hiporeflektif intraretinal.",
+              "sources": [
+                "aao-dme",
+                "aao-cme"
+              ]
+            },
+            {
+              "text": "Cairan subretinal mungkin ada pada sebagian kasus, bukan syarat setiap citra.",
+              "sources": [
+                "aao-dme"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "drusen",
+          "label": "Drusen",
+          "values": [
+            {
+              "text": "Perubahan berada di sekitar kompleks RPE/Bruch.",
+              "sources": [
+                "aao-amd",
+                "aao-oct"
+              ]
+            },
+            {
+              "text": "Cari elevasi fokal kecil/tonjolan RPE akibat deposit drusen.",
+              "sources": [
+                "aao-amd"
+              ]
+            },
+            {
+              "text": "Bedakan dari rongga kistik di dalam retina; tonjolan RPE saja tidak membuktikan eksudasi aktif.",
+              "sources": [
+                "aao-amd",
+                "aao-oct"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "choroidal neovascularization",
+          "label": "Choroidal neovascularization (CNV)",
+          "values": [
+            {
+              "text": "Perubahan dapat melibatkan outer retina, subretina, atau sub-RPE.",
+              "sources": [
+                "aao-oct"
+              ]
+            },
+            {
+              "text": "Cari material hiperreflektif abnormal terkait RPE/outer retina; cairan dapat menyertai.",
+              "sources": [
+                "aao-oct"
+              ]
+            },
+            {
+              "text": "Ciri tidak harus lengkap pada setiap citra; OCT struktural ini tidak menetapkan subtipe atau aliran OCT-A.",
+              "sources": [
+                "aao-oct",
+                "medmnist"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "profiles": [
+      {
+        "key": "normal",
+        "title": "Normal",
+        "features": [
+          {
+            "text": "Arsitektur retina dan kontur fovea relatif terjaga.",
+            "sources": [
+              "aao-oct"
+            ]
+          },
+          {
+            "text": "Lapisan retina tersusun; tidak tampak ruang cairan patologis yang jelas pada contoh khas.",
+            "sources": [
+              "aao-oct"
+            ]
+          },
+          {
+            "text": "Gunakan sebagai pembanding, tanpa mengklaim semua patologi telah disingkirkan.",
+            "sources": [
+              "aao-oct",
+              "medmnist"
+            ]
+          }
+        ],
+        "compare": [],
+        "caveats": [
+          {
+            "text": "Label normal berlaku pada contoh dataset, bukan jaminan pemeriksaan mata menyeluruh normal.",
+            "sources": [
+              "medmnist",
+              "aao-oct"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "diabetic macular edema",
+        "title": "Diabetic macular edema (DME)",
+        "features": [
+          {
+            "text": "Perubahan terutama intraretinal.",
+            "sources": [
+              "aao-dme"
+            ]
+          },
+          {
+            "text": "Cari penebalan retina dan ruang kistik hiporeflektif intraretinal.",
+            "sources": [
+              "aao-dme",
+              "aao-cme"
+            ]
+          },
+          {
+            "text": "Cairan subretinal mungkin ada pada sebagian kasus, bukan syarat setiap citra.",
+            "sources": [
+              "aao-dme"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Bedakan dari CNV: DME menonjolkan edema/ruang kistik intraretinal; CNV dapat menunjukkan material outer retina/RPE dan cairan.",
+            "sources": [
+              "aao-dme",
+              "aao-oct"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "drusen",
+        "title": "Drusen",
+        "features": [
+          {
+            "text": "Perubahan berada di sekitar kompleks RPE/Bruch.",
+            "sources": [
+              "aao-amd",
+              "aao-oct"
+            ]
+          },
+          {
+            "text": "Cari elevasi fokal kecil/tonjolan RPE akibat deposit drusen.",
+            "sources": [
+              "aao-amd"
+            ]
+          },
+          {
+            "text": "Bedakan dari rongga kistik di dalam retina; tonjolan RPE saja tidak membuktikan eksudasi aktif.",
+            "sources": [
+              "aao-amd",
+              "aao-oct"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Bedakan dari CNV: drusen berupa elevasi/deposit RPE yang lebih diskret; jangan menafsirkan aktivitas neovaskular hanya dari tonjolan.",
+            "sources": [
+              "aao-amd",
+              "aao-oct"
+            ]
+          }
+        ],
+        "caveats": []
+      },
+      {
+        "key": "choroidal neovascularization",
+        "title": "Choroidal neovascularization (CNV)",
+        "features": [
+          {
+            "text": "Perubahan dapat melibatkan outer retina, subretina, atau sub-RPE.",
+            "sources": [
+              "aao-oct"
+            ]
+          },
+          {
+            "text": "Cari material hiperreflektif abnormal terkait RPE/outer retina; cairan dapat menyertai.",
+            "sources": [
+              "aao-oct"
+            ]
+          },
+          {
+            "text": "Ciri tidak harus lengkap pada setiap citra; OCT struktural ini tidak menetapkan subtipe atau aliran OCT-A.",
+            "sources": [
+              "aao-oct",
+              "medmnist"
+            ]
+          }
+        ],
+        "compare": [
+          {
+            "text": "Bedakan dari DME dan drusen dengan mencari material abnormal terkait outer retina/RPE, sambil mengakui pola dapat tumpang tindih.",
+            "sources": [
+              "aao-oct",
+              "aao-dme",
+              "aao-amd"
+            ]
+          }
+        ],
+        "caveats": []
+      }
+    ],
+    "checklist": [
+      {
+        "text": "Kenali citra OCT sebagai irisan melintang retina dan ikuti susunan lapisannya secara umum.",
+        "sources": [
+          "aao-oct"
+        ]
+      },
+      {
+        "text": "Cari kontur fovea dan bandingkan arsitektur terhadap contoh normal.",
+        "sources": [
+          "aao-oct"
+        ]
+      },
+      {
+        "text": "Periksa apakah retina menebal atau ada ruang kistik hiporeflektif intraretinal.",
+        "sources": [
+          "aao-dme",
+          "aao-cme"
+        ]
+      },
+      {
+        "text": "Periksa elevasi/ketidakteraturan RPE dan kemungkinan deposit di kompleks RPE/Bruch.",
+        "sources": [
+          "aao-amd",
+          "aao-oct"
+        ]
+      },
+      {
+        "text": "Cari material abnormal di outer retina/subretina/sub-RPE serta cairan, bila terlihat.",
+        "sources": [
+          "aao-oct"
+        ]
+      },
+      {
+        "text": "Pilih kategori dataset yang paling sesuai; hindari kesimpulan terapi atau diagnosis pasien dari crop ini.",
+        "sources": [
+          "medmnist",
+          "aao-oct"
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "text": "Kelas sumber adalah CNV, DME, drusen, dan normal; citra telah dipotong dan diubah ukurannya oleh MedMNIST.",
+        "sources": [
+          "medmnist",
+          "kermany-data"
+        ]
+      },
+      {
+        "text": "OCT struktural tunggal tidak menggantikan riwayat, pemeriksaan mata, atau modalitas pencitraan lain.",
+        "sources": [
+          "aao-oct"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "medmnist",
+        "organization": "MedMNIST",
+        "resource": "Official OCTMNIST metadata and labels",
+        "url": "https://github.com/MedMNIST/MedMNIST/blob/main/medmnist/info.py",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "kermany-data",
+        "organization": "Kermany, Zhang, Goldbaum / Mendeley Data",
+        "resource": "Original OCT image dataset v2",
+        "url": "https://data.mendeley.com/datasets/rscbjbr9sj/2",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "aao-oct",
+        "organization": "American Academy of Ophthalmology EyeWiki",
+        "resource": "Optical Coherence Tomography: anatomy and structural findings",
+        "url": "https://eyewiki.aao.org/Optical_Coherence_Tomography",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "aao-dme",
+        "organization": "American Academy of Ophthalmology EyeWiki",
+        "resource": "Diabetic Macular Edema: OCT structural changes",
+        "url": "https://eyewiki.aao.org/Diabetic_Macular_Edema",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "aao-cme",
+        "organization": "American Academy of Ophthalmology EyeWiki",
+        "resource": "Cystoid Macular Edema: intraretinal cystic spaces",
+        "url": "https://eyewiki.aao.org/Cystoid_Macular_Edema",
+        "accessed": "2026-10-26"
+      },
+      {
+        "id": "aao-amd",
+        "organization": "American Academy of Ophthalmology EyeWiki",
+        "resource": "Age-Related Macular Degeneration: drusen and RPE/Bruch complex",
+        "url": "https://eyewiki.aao.org/Age-related_macular_degeneration",
+        "accessed": "2026-10-26"
+      }
+    ]
+  }
+}
