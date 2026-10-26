@@ -8,6 +8,14 @@ routerAdd('POST', '/api/medcoel/admin/lab-authoring/apply', (e) => {
   const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e);
   return e.json(200, require(`${__hooks}/lib/labAuthoring.js`).apply(e.app, u.body(e)));
 }, $apis.bodyLimit(1048576));
+routerAdd('POST', '/api/medcoel/admin/lab-authoring/bundle/review', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e);
+  return e.json(200, require(`${__hooks}/lib/labAuthoring.js`).reviewBundle(e.app, u.body(e)));
+}, $apis.bodyLimit(131072));
+routerAdd('POST', '/api/medcoel/admin/lab-authoring/bundle/publish', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); const admin = u.requireAdmin(e);
+  return e.json(200, require(`${__hooks}/lib/labAuthoring.js`).publishBundle(e.app, u.body(e), admin));
+}, $apis.bodyLimit(131072));
 routerAdd('GET', '/api/medcoel/admin/lab-authoring/records', (e) => {
   const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e);
   return e.json(200, { items: require(`${__hooks}/lib/labAuthoring.js`).list(e.app, u.query(e, 'kind')) });
