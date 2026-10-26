@@ -1,150 +1,111 @@
 #!/usr/bin/env python3
-"""Integration test for the Lab ingest tools against a DISPOSABLE local PocketBase (never production).
+"""API regression: disposable localhost PocketBase and synthetic sample identities only.
 
-  MEDCOEL_API_BASE=http://127.0.0.1:8090 MEDCOEL_ADMIN_IDENTITY=... MEDCOEL_ADMIN_PASSWORD=... python tools/lab-ingest/test_ingest.py
-
-Simulates the state the OLD importer left in production (no pack, old titles, no dataset metadata, published),
-then checks the explicit --update-existing sync, conflict handling, idempotency and publish_pack.py.
+Set MEDCOEL_API_BASE, MEDCOEL_ADMIN_IDENTITY, MEDCOEL_ADMIN_PASSWORD before running.
+Does not download datasets. Creates an isolated published legacy pack, migrates it, and tests publication.
 """
 from __future__ import annotations
-
 import os
+from pathlib import Path
 import subprocess
 import sys
 import time
-from pathlib import Path
+from urllib.parse import urlparse
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-base = os.environ.get("MEDCOEL_API_BASE", "http://127.0.0.1:8090")
-if not any(h in base for h in ("127.0.0.1", "localhost")):
-    raise SystemExit("test_ingest.py hanya boleh menyasar PocketBase lokal.")
-os.environ.setdefault("MEDCOEL_API_BASE", base)
+base = os.environ.get('MEDCOEL_API_BASE', 'http://127.0.0.1:8090')
+if urlparse(base).hostname not in ('127.0.0.1', 'localhost', '::1'):
+    raise SystemExit('test_ingest.py only supports disposable localhost PocketBase.')
+os.environ['MEDCOEL_API_BASE'] = base
+import import_medmnist as m
+from medcoel_api import ApiError, MedcoelAPI
+from sampling import SelectionConfig
+from test_sampling import samples
 
-import import_medmnist as m  # noqa: E402
-from medcoel_api import ApiError, MedcoelAPI  # noqa: E402
-
-run = format(int(time.time()), "x")
 checks = 0
 
-
-def ok(cond: bool, msg: str) -> None:
+def ok(cond, message):
     global checks
-    assert cond, msg
+    assert cond, message
     checks += 1
 
+run = format(time.time_ns(), 'x')
+m.PACK = {**m.PACK, 'slug': f'pm-test-{run}'}
+for name in ('asset_body', 'object_intro', 'object_practice', 'question_body', 'pathway_body', 'archive_body'):
+    original = getattr(m, name)
+    def named(*args, _original=original, **kwargs):
+        b = _original(*args, **kwargs); b['slug'] += '-' + run; return b
+    setattr(m, name, named)
+logs = []; m.log = logs.append
+config = SelectionConfig(); groups = samples(config); api = MedcoelAPI.from_env(); pack = api.create_pack(m.PACK)
+assets = [api.create('assets', m.asset_body(r, 'https://example.test', True, pack['id'])) for r in groups['learning']]
+a0 = assets[0]; a0['data']['annotations'] = [{'id': 'note', 'label': 'Catatan admin', 'layer': 'anatomy', 'region': {'x': .1, 'y': .1, 'width': .2, 'height': .2}}]
+assets[0] = api.update('assets', a0['id'], a0)
+extra = api.create('objects', {'slug': f'pm-extra-{run}', 'title': 'Materi lain', 'domain': 'imaging', 'assets': [], 'data': {'definition': 'Fixture'}})
+b = m.object_intro([a['id'] for a in assets], pack['id']); b['tags'].append('catatan-admin'); b['related'] = [extra['id']]
+intro = api.create('objects', b); practice = api.create('objects', m.object_practice([], pack['id']))
+old_questions = []
+for row, asset in zip(groups['learning'], assets):
+    b = m.question_body(row, practice['id'], asset['id'], pack['id']); b['data']['explanation'] = 'Legacy filler'
+    old_questions.append(api.create('questions', b))
+path = api.create('pathways', m.pathway_body(intro['id'], practice['id'], pack['id']))
+items = [('assets', a) for a in assets] + [('objects', intro), ('objects', practice)] + [('questions', q) for q in old_questions] + [('pathways', path)]
+r = api.request('POST', '/api/medcoel/admin/lab-bulk/publish', {'confirmReviewed': True, 'items': [{'kind': k, 'id': r['id']} for k, r in items]})
+ok(r['ok'], f'Legacy publish failed: {r}')
 
-# Unique slugs per run so a shared dev DB stays clean to reason about.
-m.PACK = {**m.PACK, "slug": f"pm-test-{run}"}
-_orig = {k: getattr(m, k) for k in ("asset_body", "object_intro", "object_practice", "question_body", "pathway_body")}
-m.asset_body = lambda *a, **k: {**_orig["asset_body"](*a, **k), "slug": _orig["asset_body"](*a, **k)["slug"] + f"-{run}"}
-m.object_intro = lambda *a, **k: {**_orig["object_intro"](*a, **k), "slug": f"pmi-{run}"}
-m.object_practice = lambda *a, **k: {**_orig["object_practice"](*a, **k), "slug": f"pmp-{run}"}
-m.question_body = lambda *a, **k: {**_orig["question_body"](*a, **k), "slug": _orig["question_body"](*a, **k)["slug"] + f"-{run}"}
-m.pathway_body = lambda *a, **k: {**_orig["pathway_body"](*a, **k), "slug": f"pmw-{run}"}
+def snapshot(): return {k: api.list_all(k) for k in m.MANAGED}
+def sync(**over):
+    return m.sync(api, groups, apply=over.get('apply', True), update_existing=over.get('update_existing', True), license_verified=True, public_base='https://example.test', config=config)
 
-logs: list[str] = []
-m.log = lambda message: logs.append(message)
-
-rows = []
-for i, (label_id, label) in enumerate([(0, "normal"), (0, "normal"), (1, "pneumonia"), (1, "pneumonia")]):
-    rows.append({"index": 700 + i, "label": label_id, "label_name": label, "filename": f"x{i}.png", "url_path": f"/lab-content/medmnist/test/x{i}.png"})
-
-api = MedcoelAPI.from_env()
-
-# ---- 1. legacy production state (old importer: no pack, no dataset, old titles, assets on the practice object) ----
-legacy_assets = []
-for row in rows:
-    body = _orig["asset_body"](row, "https://example.test", True, "")
-    body["slug"] += f"-{run}"; body["data"].pop("dataset"); body.pop("pack")
-    legacy_assets.append(api.create("assets", body))
-ids = [a["id"] for a in legacy_assets]
-# Admin had added an annotation and linked a related object by hand; the sync must keep both.
-legacy_assets[0]["data"]["annotations"] = [{"id": "a1", "label": "Catatan admin", "layer": "anatomy", "region": {"x": 0.1, "y": 0.1, "width": 0.2, "height": 0.2}}]
-legacy_assets[0] = api.update("assets", legacy_assets[0]["id"], legacy_assets[0])
-extra = api.create("objects", {"slug": f"pm-extra-{run}", "title": "Materi lain", "domain": "imaging", "assets": [], "related": [], "legacyQuestions": [], "tags": [], "data": {"definition": "x"}})
-old_intro = _orig["object_intro"]([], ""); old_intro.pop("pack"); old_intro.update(slug=f"pmi-{run}", title="Pengenalan PneumoniaMNIST", assets=[], related=[extra["id"]], tags=["catatan-admin"]); old_intro["data"].pop("objectives")
-old_practice = _orig["object_practice"]([], ""); old_practice.pop("pack"); old_practice.update(slug=f"pmp-{run}", assets=ids)
-intro = api.create("objects", old_intro); practice = api.create("objects", old_practice)
-qs = []
-for row, asset in zip(rows, legacy_assets):
-    q = _orig["question_body"](row, practice["id"], asset["id"], ""); q.pop("pack"); q["slug"] += f"-{run}"
-    q["data"]["explanation"] = "Ground-truth PneumoniaMNIST untuk citra ini adalah label. Dataset menyediakan label tingkat-gambar."  # what the old importer stored
-    qs.append(api.create("questions", q))
-path = _orig["pathway_body"](intro["id"], practice["id"], ""); path.pop("pack"); path.update(slug=f"pmw-{run}", title="CXR Dasar: PneumoniaMNIST")
-path = api.create("pathways", path)
-everything = [("assets", a) for a in legacy_assets] + [("objects", intro), ("objects", practice)] + [("questions", q) for q in qs] + [("pathways", path)]
-res = api.request("POST", "/api/medcoel/admin/lab-bulk/publish", {"confirmReviewed": True, "items": [{"kind": k, "id": r["id"]} for k, r in everything]})
-ok(res["ok"] and len(res["published"]) == len(everything), f"legacy publish failed: {res}")
-
-# ---- 2. dry-run plan prints what changes and writes nothing ----
-before = {k: {r["slug"]: r["revision"] for r in api.list_all(k)} for k in ("assets", "objects", "questions", "pathways")}
-logs.clear()
-imp = m.sync(api, rows, apply=False, update_existing=True, license_verified=False, public_base="https://example.test")
-text = "\n".join(logs)
-after = {k: {r["slug"]: r["revision"] for r in api.list_all(k)} for k in before}
-ok(before == after, "dry-run must not write")
-ok("WOULD UPDATE objects: " + f"pmi-{run}" in text and "Chest X-Ray: Normal vs Pneumonia" in text, text)
-ok("akan kembali ke draft dari published" in text and "data.objectives" in text and "pack:" in text, text)
-ok(imp.counts["update"] >= 7 and "WOULD CREATE content pack" in text, str(imp.counts))
-ok(api.pack(f"pm-test-{run}") is None, "dry-run must not create the pack")
-
-# ---- 3. without the flag existing records are skipped, never overwritten ----
-logs.clear()
-imp = m.sync(api, rows, apply=True, update_existing=False, license_verified=False, public_base="https://example.test")
-ok(imp.counts["skip"] >= 9 and imp.counts["update"] == 0, str(imp.counts))
-ok(api.list_all("objects") and {r["slug"]: r for r in api.list_all("objects")}[f"pmi-{run}"]["title"] == "Pengenalan PneumoniaMNIST", "default run must not rename")
-pack = api.pack(f"pm-test-{run}")  # the pack itself is additive and may be created by --apply
-
-# ---- 4. revision conflict fails instead of overwriting ----
-real_update = api.update
-def conflict(kind, record_id, body):
-    raise ApiError(400, "PUT", "x", '{"message":"Konten telah diubah."}')
-api.update = conflict
+before = snapshot(); logs.clear(); sync(apply=False)
+ok(snapshot() == before, 'dry-run wrote PocketBase'); text = '\n'.join(logs)
+ok('current: 20; target: 10' in text and 'Overlap learning/practice: 0' in text, text)
+ok(text.count('WOULD DEPRECATE questions:') == 20 and 'previous extra 10' in text, text)
 try:
-    m.sync(api, rows, apply=True, update_existing=True, license_verified=False, public_base="https://example.test")
-    raise AssertionError("conflict must raise")
-except RuntimeError as exc:
-    ok("Gagal memperbarui" in str(exc), str(exc))
-api.update = real_update
-
-# ---- 5. explicit update applies, preserves admin edits, returns published records to draft ----
-logs.clear()
-imp = m.sync(api, rows, apply=True, update_existing=True, license_verified=False, public_base="https://example.test")
-objs = {r["slug"]: r for r in api.list_all("objects")}
-new_intro = objs[f"pmi-{run}"]; new_practice = objs[f"pmp-{run}"]
-pack = api.pack(f"pm-test-{run}")
-ok(new_intro["title"] == "Chest X-Ray: Normal vs Pneumonia" and len(new_intro["data"]["objectives"]) == 4, "intro not updated")
-ok(len(new_intro["assets"]) == 4 and new_practice["assets"] == [], "gallery assets must move to the lesson object")
-ok(new_intro["pack"] == pack["id"] and new_intro["status"] == "draft", "pack relation / draft state")
-ok(new_intro["related"] == [extra["id"]] and "catatan-admin" in new_intro["tags"], "admin edits (related/tags) must be preserved")
-assets = {r["slug"]: r for r in api.list_all("assets")}
-a0 = assets[legacy_assets[0]["slug"]]
-ok(a0["data"]["dataset"] == {"name": "PneumoniaMNIST", "task": "binary_classification", "split": "test", "label": "normal", "sample_index": 700, "resolution": [224, 224]}, a0["data"].get("dataset"))
-ok(a0["data"]["license"]["verified"] is True, "admin-verified license must not be reset")
-ok(a0["data"]["annotations"][0]["label"] == "Catatan admin", "annotations must be preserved")
-ok(imp.unpublished and any(x.startswith("objects:") for x in imp.unpublished), "unpublish warning expected")
-ok(new_practice["data"].get("mode") == "practice", "practice object must be marked practice-first")
-questions = {r["slug"]: r for r in api.list_all("questions")}
-ok(all(questions[q["slug"]]["data"]["explanation"] == "" for q in qs), "filler explanations must be cleared")
-detail = api.pack(f"pm-test-{run}")
-ok(detail["counts"]["assets"]["total"] == 4 and detail["counts"]["pathways"]["total"] == 1 and detail["counts"]["questions"]["total"] == 4, detail["counts"])
-
-# ---- 6. idempotent ----
-logs.clear()
-imp = m.sync(api, rows, apply=True, update_existing=True, license_verified=False, public_base="https://example.test")
-ok(imp.counts["update"] == 0 and imp.counts["unchanged"] >= 9, str(imp.counts) + chr(10) + chr(10).join(logs))
-
-# ---- 7. publish_pack.py: accidental apply is refused; dry-run reports; apply publishes in order, idempotently ----
-env = {**os.environ}
-cli = [sys.executable, str(HERE / "publish_pack.py"), f"pm-test-{run}"]
-r = subprocess.run(cli + ["--apply"], env=env, capture_output=True, text=True)
-ok(r.returncode == 2 and "--confirm-reviewed" in r.stderr, r.stderr)
-r = subprocess.run(cli + ["--dry-run"], env=env, capture_output=True, text=True)
-ok(r.returncode == 0 and "READY TO PUBLISH" in r.stdout and "Assets:" in r.stdout, r.stdout + r.stderr)
-ok(api.pack(f"pm-test-{run}")["counts"]["objects"]["published"] == 0, "dry-run must change nothing")
-r = subprocess.run(cli + ["--apply", "--confirm-reviewed"], env=env, capture_output=True, text=True)
-ok(r.returncode == 0 and "Status pack: published" in r.stdout, r.stdout + r.stderr)
-r2 = subprocess.run(cli + ["--apply", "--confirm-reviewed"], env=env, capture_output=True, text=True)
-ok(r2.returncode == 0 and "Diterbitkan: 0 record" in r2.stdout, r2.stdout + r2.stderr)
-print(f"ingest tools: {checks} checks passed (plan, skip-by-default, conflict, update, preserve, idempotent, publish CLI).")
+    sync(update_existing=False); raise AssertionError('create-only must refuse legacy migration')
+except RuntimeError as exc: ok('--update-existing' in str(exc), str(exc))
+ok(snapshot() == before, 'refused migration wrote records')
+real_update = api.update
+api.update = lambda *_a, **_k: (_ for _ in ()).throw(ApiError(400, 'PUT', '/fixture', 'revision conflict'))
+try:
+    sync(); raise AssertionError('revision conflict must stop sync')
+except RuntimeError as exc: ok('revision conflict' in str(exc), str(exc))
+finally: api.update = real_update
+ok(all(r['status'] == 'published' for r in api.list_all('questions') if r['id'] in {q['id'] for q in old_questions}), 'conflict changed old questions')
+imp = sync(); state = snapshot(); objects = {r['slug']: r for r in state['objects']}; amap = {r['id']: r for r in state['assets']}
+active = [q for q in state['questions'] if practice['id'] in q['objects']]
+retired = [q for q in state['questions'] if q['id'] in {r['id'] for r in old_questions}]; archive = objects[m.archive_body()['slug']]
+ok(len(active) == 10 and len(imp.retired) == 20 and len(retired) == 20, 'expected 10 active members, all old20 retained')
+ok(all(q['status'] == 'draft' and q['pack'] == '' and archive['id'] in q['objects'] and practice['id'] not in q['objects'] and q['title'].startswith('Deprecated · ') for q in retired), 'unsafe retirement')
+ok(archive['status'] == 'draft' and archive['pack'] == '', 'archive must stay outside pack')
+learning_ids = objects[intro['slug']]['assets']; li = {amap[a]['data']['dataset']['sample_index'] for a in learning_ids}; pi = {amap[q['asset']]['data']['dataset']['sample_index'] for q in active}
+ok(len(learning_ids) == 20 and len(pi) == 10 and not li & pi, 'learning/practice overlap')
+for label in ('normal', 'pneumonia'):
+    ok(sum(amap[a]['data']['dataset']['label'] == label for a in learning_ids) == 10, 'learning imbalance')
+    ok(sum(amap[q['asset']]['data']['dataset']['label'] == label for q in active) == 5, 'practice imbalance')
+ok(all(q['data']['explanation'] == '' and 'region' not in q['data'] for q in active), 'filler/localization generated')
+ok(objects[intro['slug']]['status'] == 'published' and objects[practice['slug']]['status'] == 'published', 'unchanged published objects invalidated')
+ok(objects[intro['slug']]['related'] == [extra['id']] and 'catatan-admin' in objects[intro['slug']]['tags'], 'admin edits lost')
+ok(amap[a0['id']]['data']['annotations'][0]['label'] == 'Catatan admin' and amap[a0['id']]['status'] == 'published', 'annotation/asset invalidated')
+ok(api.pack(m.PACK['slug'])['counts']['assets']['total'] == 30 and api.pack(m.PACK['slug'])['counts']['questions']['total'] == 10, 'wrong pack membership')
+before = snapshot(); rerun = sync(); ok(snapshot() == before and rerun.counts['update'] == 0 and not rerun.retired, 'sync not idempotent')
+selected = active[0]; selected['data']['prompt'] = 'Old prompt'; api.update('questions', selected['id'], selected)
+cli = [sys.executable, str(HERE / 'publish_pack.py'), m.PACK['slug']]
+def publish(*flags): return subprocess.run(cli + list(flags), capture_output=True, text=True)
+r = publish('--dry-run'); ok(r.returncode == 0 and 'READY TO PUBLISH' in r.stdout, r.stdout + r.stderr)
+r = publish('--apply', '--confirm-reviewed'); ok(r.returncode == 0, r.stdout + r.stderr)
+repeat = sync(); after = snapshot()
+ok(repeat.counts['update'] == 1 and repeat.unpublished == ['questions:' + selected['slug']], 'only changed question should return to draft')
+ok(sum(a['status'] == 'draft' for a in after['questions'] if practice['id'] in a['objects']) == 1, 'unchanged questions invalidated')
+sync(); r = publish('--apply', '--confirm-reviewed'); ok(r.returncode == 0, r.stdout + r.stderr)
+r = api.request('GET', f"/api/medcoel/lab/objects/{practice['id']}")
+ok(len(r['questions']) == 10 and all('dataset' not in q['image'] and 'sample_index' not in q['image'] for q in r['questions']), 'student practice count/metadata')
+r = api.request('GET', f"/api/medcoel/lab/objects/{intro['id']}")
+ok(all('sample_index' not in a.get('dataset', {}) for a in r['assets']), 'indices leaked')
+for method, endpoint, body in [('GET', f"/api/medcoel/lab/objects/{archive['id']}", None), ('POST', f"/api/medcoel/lab/questions/{retired[0]['id']}/answer", {'response': 'A'})]:
+    try:
+        api.request(method, endpoint, body); raise AssertionError('retired content accessible')
+    except ApiError as exc: ok(exc.code == 404, str(exc))
+r = publish('--apply', '--confirm-reviewed'); ok(r.returncode == 0 and 'Diterbitkan: 0 record' in r.stdout, 'publish not idempotent')
+print(f'ingest API: {checks} checks passed; learning=20, practice=10, overlap=0; old20 retained in draft archive.')
