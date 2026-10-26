@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    { "kind": "catalog", "data": { "key": "visual-learning", "title": "Visual Learning", "summary": "Belajar dari gambar dan tabel.", "order": 1 } },
+    { "kind": "catalog", "data": { "key": "latihan-observasi", "title": "Latihan Observasi", "parent": "visual-learning", "order": 1 } },
+    { "kind": "guide", "data": { "key": "panduan-observasi-dasar", "title": "Panduan Observasi Dasar", "subject": "Observasi visual", "scope": "module", "steps": [
+      { "title": "Lihat keseluruhan", "text": "Amati gambar atau tabel secara utuh sebelum membaca rinciannya." },
+      { "title": "Bandingkan ciri", "text": "Catat ciri yang terlihat dan bedakan dari dugaan yang belum dibuktikan." }
+    ], "sources": [] } },
+    { "kind": "module", "data": { "key": "observasi-visual-dasar", "title": "Dasar Observasi Visual", "summary": "Contoh modul kecil untuk menguji alur authoring tanpa klaim klinis atau aset eksternal.", "sources": [], "chapters": [
+      { "key": "orientasi", "title": "Orientasi", "sections": [
+        { "key": "langkah-awal", "title": "Langkah awal", "blocks": [
+          { "key": "tujuan", "type": "text", "title": "Tujuan", "text": "Pisahkan pengamatan dari interpretasi." },
+          { "key": "panduan", "type": "identification_guide", "title": "Panduan", "guide": "panduan-observasi-dasar" },
+          { "key": "tabel", "type": "identification_table", "title": "Catatan observasi", "columns": ["Yang dilihat", "Yang dicatat"], "rows": [["Bentuk", "Deskripsi bentuk"], ["Warna", "Deskripsi warna"]] },
+          { "key": "latihan", "type": "practice", "title": "Uji pemahaman", "bank": "bank-observasi" }
+        ] }
+      ] }
+    ], "questionBanks": [
+      { "key": "bank-observasi", "title": "Pertanyaan orientasi", "questions": [
+        { "key": "q-observasi-1", "type": "single_best_answer", "prompt": "Apa langkah pertama saat menilai materi visual?", "options": [{ "label": "A", "text": "Mengamati keseluruhan" }, { "label": "B", "text": "Langsung menyimpulkan" }], "answer": "A", "explanation": "Amati dulu sebelum menafsirkan." }
+      ] }
+    ], "pathways": [ { "key": "jalur-dasar", "title": "Mulai dari orientasi", "sections": ["langkah-awal"] } ] } },
+    { "kind": "placement", "data": { "key": "observasi-di-latihan", "title": "Dasar Observasi Visual", "module": "observasi-visual-dasar", "catalog": "latihan-observasi", "order": 1 } },
+    { "kind": "placement", "data": { "key": "observasi-di-visual", "title": "Dasar Observasi Visual", "module": "observasi-visual-dasar", "catalog": "visual-learning", "order": 2 } }
+  ]
+}

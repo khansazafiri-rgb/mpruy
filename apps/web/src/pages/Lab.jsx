@@ -45,12 +45,18 @@ function PathwayCard({ item }) {
 }
 
 const VISUAL = [['imaging', 'Medical Imaging'], ['anatomy', 'Anatomi Interaktif'], ['clinical_pathology', 'Patologi Klinik'], ['microbiology', 'Mikrobiologi'], ['parasitology', 'Parasitologi'], ['histology', 'Histologi']];
+function catalogTrail(node, nodes) {
+  const names = [node.title]; const seen = new Set([node.key]); let parent = node.parent;
+  while (parent && !seen.has(parent)) { const p = nodes.find((x) => x.key === parent); if (!p) break; names.unshift(p.title); seen.add(parent); parent = p.parent; }
+  return names.join(' › ');
+}
 
 export default function Lab() {
   const [params, setParams] = useSearchParams(); const { isAdmin } = useAuth();
   const q = params.get('q') || ''; const domain = params.get('domain') || ''; const mode = params.get('mode') === 'guided' ? 'guided' : 'explore'; const page = Math.max(1, Number(params.get('page')) || 1);
   const [search, setSearch] = useState(q); useEffect(() => setSearch(q), [q]);
   const overview = useLab('lab/overview'); const next = overview.data?.continue; const counts = overview.data?.domains || {};
+  const catalog = useLab('lab/catalog');
   const state = useLab(mode === 'guided' ? 'lab/pathways' : 'lab/objects', mode === 'guided' ? { page } : { q, domain, page });
   const change = (patch) => setParams({ ...Object.fromEntries(params), page: '1', ...patch });
   return <div className={PAGE}>
@@ -58,6 +64,7 @@ export default function Lab() {
       <div className="min-w-0"><p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-brand"><FlaskConical size={15} aria-hidden /> MEDCOEL Lab</p><h1 className="text-xl font-bold leading-tight sm:text-2xl">Belajar lewat gambar, kasus, dan anatomi</h1></div>
       {isAdmin && <Link className="shrink-0 text-xs text-ink-muted underline" to="/admin/lab">Kelola</Link>}
     </header>
+    {catalog.data?.placements?.length > 0 && <section className="card space-y-3 p-4" aria-label="Katalog modul Lab"><h2 className="text-lg font-semibold">Katalog modul</h2><p className="text-sm text-ink-muted">Modul dapat muncul di beberapa tempat dalam katalog.</p><div className="space-y-2">{catalog.data.nodes.map((node) => { const placements = catalog.data.placements.filter((p) => p.catalog === node.key); const modules = placements.map((p) => catalog.data.modules.find((m) => m.key === p.module)).filter(Boolean); if (!modules.length) return null; return <div key={node.key}><p className="text-sm font-semibold">{catalogTrail(node, catalog.data.nodes)}</p><div className="flex flex-wrap gap-2">{modules.map((m) => <Link key={m.key} to={`/lab/modul/${m.key}`} className="btn btn-secondary btn-sm">{m.title}</Link>)}</div></div>; })}</div></section>}
     {next && <section className="card flex items-center justify-between gap-3 p-4" aria-label="Lanjutkan belajar">
       <div className="min-w-0 flex-1 space-y-1.5"><p className="text-xs font-bold uppercase tracking-wide text-brand">Lanjutkan belajar</p><p className="truncate text-lg font-semibold">{next.pathway.title}</p><Progress done={next.completed.length} total={next.total} label="Progres jalur" /><p className="text-xs text-ink-muted">{next.completed.length} / {next.total} selesai</p></div>
       <Link className="btn btn-primary min-h-11 shrink-0" to={objectHref(next.resume, next.pathway.slug)}>Lanjutkan <ArrowRight size={16} aria-hidden /></Link>
