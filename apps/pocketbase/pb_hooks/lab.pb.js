@@ -39,7 +39,7 @@ routerAdd('POST', '/api/medcoel/lab/objects/{key}/practice', (e) => {
 routerAdd('GET', '/api/medcoel/admin/lab-capabilities', (e) => {
   const u = require(`${__hooks}/lib/util.js`);
   u.requireAdmin(e);
-  return e.json(200, { studyGuide: 1 });
+  return e.json(200, { studyGuide: 1, studyGuideDatasets: ['BloodMNIST', 'PneumoniaMNIST', 'PathMNIST', 'OCTMNIST'] });
 });
 
 routerAdd('GET', '/api/medcoel/admin/lab/{kind}', (e) => {

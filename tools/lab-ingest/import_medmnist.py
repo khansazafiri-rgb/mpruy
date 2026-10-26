@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Import a small, reviewable MedMNIST teaching pack into MEDCOEL Lab.
 
-Supported datasets: PneumoniaMNIST and BloodMNIST 224px.
+Supported datasets: PneumoniaMNIST, BloodMNIST, PathMNIST, and OCTMNIST 224px.
 
 Design goals:
 - official-source download only
@@ -374,7 +374,7 @@ def manifest(groups, config):
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description="Prepare/import disjoint MedMNIST learning and practice samples")
-    parser.add_argument("--dataset", choices=("pneumoniamnist", "bloodmnist"), default="pneumoniamnist")
+    parser.add_argument("--dataset", choices=("pneumoniamnist", "bloodmnist", "pathmnist", "octmnist"), default="pneumoniamnist")
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--apply", action="store_true", help="Create/update drafts through the admin API; never publish")
     mode.add_argument("--dry-run", action="store_true", help="Default: local export and read-only sync plan")
@@ -390,16 +390,20 @@ def parse_args(argv=None):
         if args.learning_per_class is not None and args.learning_per_class != args.per_class:
             parser.error("Conflicting --per-class and --learning-per-class")
         args.learning_per_class = args.per_class
+    defaults = {"bloodmnist": (5, 3), "pathmnist": (4, 2), "octmnist": (5, 3),
+                "pneumoniamnist": (LEARNING_PER_CLASS, PRACTICE_PER_CLASS)}
     if args.learning_per_class is None:
-        args.learning_per_class = 5 if args.dataset == "bloodmnist" else LEARNING_PER_CLASS
+        args.learning_per_class = defaults[args.dataset][0]
     if args.practice_per_class is None:
-        args.practice_per_class = 3 if args.dataset == "bloodmnist" else PRACTICE_PER_CLASS
+        args.practice_per_class = defaults[args.dataset][1]
     try:
         args.config = SelectionConfig(args.learning_per_class, args.practice_per_class, args.selection_seed)
     except ValueError as exc:
         parser.error(str(exc))
     if args.dataset == "bloodmnist" and args.learning_per_class > 5:
         parser.error("Blood learning supports at most 5/class (four classes, 20 assets/object).")
+    if args.dataset in ("pathmnist", "octmnist") and (args.learning_per_class, args.practice_per_class) != defaults[args.dataset]:
+        parser.error("Path/OCT v1 selections are fixed for safe reruns; use the dataset defaults.")
     if args.dataset == "pneumoniamnist" and args.learning_per_class > 10:
         parser.error("Current Pneumonia gallery supports at most 10/class (20 assets/object). Future adapters must shard larger galleries; practice cap is independent.")
     return args
@@ -410,6 +414,12 @@ def main() -> int:
     if args.dataset == "bloodmnist":
         from bloodmnist import run
         return run(args, CACHE_DIR, PUBLIC_DIR.parent / "bloodmnist")
+    if args.dataset in ("pathmnist", "octmnist"):
+        from visual_mnist import run
+        from pathmnist import CONFIG as PATH_CONFIG
+        from octmnist import CONFIG as OCT_CONFIG
+        config = PATH_CONFIG if args.dataset == "pathmnist" else OCT_CONFIG
+        return run(config, args, CACHE_DIR, PUBLIC_DIR.parent / args.dataset)
     npz = download(PNEUMONIA_224)
     groups = export_pngs(npz, args.config)
     mf = manifest(groups, args.config)

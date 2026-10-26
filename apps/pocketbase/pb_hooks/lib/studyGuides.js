@@ -9,7 +9,7 @@ function validateGuide(g) {
   const list = (v, max) => { if (!Array.isArray(v) || v.length > max) fail('Daftar panduan tidak valid.'); return v; };
   const unique = (items) => { if (new Set(items.map((s) => s.key || s.id)).size !== items.length) fail('Kunci panduan harus unik.'); return items; };
   const key = (v) => { const s = plain(v, 80); if (!/^[a-z0-9][a-z0-9 -]*$/.test(s)) fail('Kunci panduan tidak valid.'); return s; };
-  if (!g || g.schemaVersion !== 1 || g.scope !== 'class' || !['BloodMNIST', 'PneumoniaMNIST'].includes(g.dataset)) fail('Panduan harus berupa ciri tingkat kelas yang didukung.');
+  if (!g || g.schemaVersion !== 1 || g.scope !== 'class' || !['BloodMNIST', 'PneumoniaMNIST', 'PathMNIST', 'OCTMNIST'].includes(g.dataset)) fail('Panduan harus berupa ciri tingkat kelas yang didukung.');
   const sources = unique(list(g.sources, 20).map((s) => {
     if (!s || !/^https:\/\/[^\s/@]+(?:\.[^\s/@]+)+(?:[/?#][^\s]*)?$/.test(s.url)) fail('Sumber pembelajaran harus HTTPS.');
     if (!/^\d{4}-\d{2}-\d{2}$/.test(s.accessed)) fail('Tanggal riset tidak valid.');
