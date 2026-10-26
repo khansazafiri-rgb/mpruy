@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Alert } from '@/components/ui';
 import LabCaseExplorer from './LabImageGallery';
+import LabStudyGuide from './LabStudyGuide';
 import LabImage from './LabImage';
 import LabLayerExplorer from './LabLayerExplorer';
 import LabExplodedView from './LabExplodedView';
@@ -33,6 +34,7 @@ function GuidedObservation({ block }) {
   </Section>;
 }
 export const LAB_BLOCKS = {
+  study_guide: ({ block }) => <LabStudyGuide guide={block.guide} />,
   callout: ({ block }) => <Alert kind={block.kind === 'warn' ? 'warn' : 'info'}>{block.title && <strong>{block.title}. </strong>}{block.text}</Alert>,
   guided_observation: ({ block }) => <GuidedObservation block={block} />,
   comparison: ({ block, ctx }) => <Section title={block.title || 'Bandingkan'}><div className="grid gap-4 sm:grid-cols-2">{[block.left, block.right].map((side, i) => ctx.assetsById[side.asset] && <figure key={i} className="space-y-2"><LabImage asset={ctx.assetsById[side.asset]} controls={false} />{side.caption && <figcaption className="text-sm text-ink-muted">{side.caption}</figcaption>}</figure>)}</div></Section>,
@@ -49,7 +51,7 @@ export const LAB_BLOCKS = {
   steps: ({ block }) => <Section title={block.title}><ol className="space-y-2">{block.items.map((s, i) => <li key={i} className="flex gap-3 rounded-xl border border-line p-3"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-soft text-sm font-bold text-brand">{i + 1}</span><div><p className="font-semibold">{s.title}</p><p className="text-sm leading-relaxed text-ink-muted">{s.finding}</p></div></li>)}</ol></Section>,
   lab_table: ({ block }) => <Section title="Hasil laboratorium"><p className="text-sm text-ink-muted">{block.lab.context}</p><div className="overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr className="border-b border-line">{['Pemeriksaan', 'Hasil', 'Rentang latihan', 'Status'].map((h) => <th key={h} className="p-3">{h}</th>)}</tr></thead><tbody>{block.lab.rows.map((r) => <tr key={r.key} className="border-b border-line"><th className="p-3 font-medium">{r.name}</th><td className="p-3">{r.value} {r.unit}</td><td className="p-3">{r.low}–{r.high} {r.unit}</td><td className="p-3 font-semibold">{FLAG[r.flag]}</td></tr>)}</tbody></table></div>{block.lab.matches.map((m) => <Alert kind="info" key={m}>{m}</Alert>)}</Section>,
   image_gallery: ({ block, ctx }) => {
-    const explorer = <LabCaseExplorer assets={block.assets} modality={ctx.modality} />;
+    const explorer = <LabCaseExplorer assets={block.assets} modality={ctx.modality} guide={block.guide} />;
     // Aset yang juga dipakai sebagai soal latihan menampilkan label; sembunyikan di balik pilihan sadar agar latihan tidak terbongkar.
     return block.spoiler
       ? <Section title="Contoh gambar berlabel"><details><summary className="cursor-pointer font-semibold text-brand">Buka contoh berlabel (Learn)</summary><Alert kind="warn">Gambar-gambar ini juga muncul di latihan dan labelnya terlihat di sini. Buka setelah latihan agar latihan tetap menguji.</Alert><div className="mt-4">{explorer}</div></details></Section>
@@ -76,8 +78,10 @@ export function buildBlocks(d) {
   const owned = new Set(authored.flatMap((b) => [b.asset, b.left?.asset, b.right?.asset, ...(b.layers || []).map((l) => l.asset)].filter(Boolean)));
   const pics = d.assets.filter((a) => a.media !== 'model' && !owned.has(a.id));
   if (pics.length) {
+    const guide = x.mode !== 'practice' && x.studyGuide?.scope === 'class' ? x.studyGuide : null;
+    if (guide) add('study_guide', { guide });
     const used = new Set(d.questions.map((q) => q.image?.id).filter(Boolean));
-    add('image_gallery', { assets: pics, spoiler: pics.some((a) => used.has(a.id)) });
+    add('image_gallery', { assets: pics, guide, spoiler: pics.some((a) => used.has(a.id)) });
   }
   if (x.steps?.length) add('steps', { title: 'Yang perlu diamati', items: x.steps });
   if (x.keyFindings?.length) add('list', { title: 'Temuan kunci', items: x.keyFindings });
@@ -88,7 +92,7 @@ export function buildBlocks(d) {
   for (const a of d.assets) { const l = a.license || {}; const text = [l.citation || l.dataset || l.source, l.license].filter(Boolean).join(' · '); if (text && !seen.has(text)) seen.set(text, { key: text, text, url: l.source_url?.startsWith('https://') ? l.source_url : '' }); }
   const notes = [];
   if (d.assets.length && d.assets.every((a) => !(a.annotations || []).length)) notes.push('Gambar pada materi ini hanya punya label tingkat gambar. Tidak ada anotasi lokasi, sehingga MEDCOEL tidak menampilkan kotak lesi buatan.');
-  if (d.assets.some((a) => !a.synthetic)) notes.push('Label benchmark bukan diagnosis pasien. Gunakan untuk latihan mengenali pola, bukan sebagai pengganti pembacaan radiologi lengkap.');
+  if (d.assets.some((a) => !a.synthetic)) notes.push('Label benchmark bukan diagnosis pasien. Gunakan untuk latihan mengenali pola, bukan sebagai pengganti penilaian medis lengkap.');
   if (seen.size || x.references.length || notes.length) add('about', { sources: [...seen.values()], references: x.references, notes });
   return blocks;
 }
