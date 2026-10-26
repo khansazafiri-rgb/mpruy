@@ -11,7 +11,7 @@ from unittest.mock import patch
 import numpy as np
 import import_medmnist as m
 from sampling import SelectionConfig, select_samples
-from dataset_registry import FUTURE_DATASETS, require_enabled_dataset
+from dataset_registry import FUTURE_DATASETS, ENABLED_DATASETS, require_enabled_dataset
 
 
 def samples(config=SelectionConfig()):
@@ -80,7 +80,7 @@ class SamplingTests(unittest.TestCase):
     def test_future_ingestion_disabled(self):
         for key in FUTURE_DATASETS:
             with self.assertRaises(ValueError): require_enabled_dataset(key)
-        self.assertEqual([len(FUTURE_DATASETS[k]['classes']) for k in ('bloodmnist', 'pathmnist', 'octmnist')], [8, 9, 4])
+        self.assertEqual([len({**FUTURE_DATASETS, **ENABLED_DATASETS}[k]['classes']) for k in ('bloodmnist', 'pathmnist', 'octmnist')], [8, 9, 4])
     def test_export_on_tiny_synthetic_npz_and_repeated_selection(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d); src = root / 'synthetic.npz'

@@ -96,12 +96,12 @@ PNEUMONIA_OBJECT_SLUGS = ("pneumoniamnist-pengenalan", "pneumoniamnist-latihan-k
 
 
 def resolve_content_pack(api: MedcoelAPI, slug: str, *, records=None,
-                         object_slugs=PNEUMONIA_OBJECT_SLUGS) -> dict[str, Any] | None:
+                         object_slugs=PNEUMONIA_OBJECT_SLUGS, dataset_name="PneumoniaMNIST") -> dict[str, Any] | None:
     """Resolve an existing pack without changing its slug, content or membership.
 
     An older installation may have a different pack slug. Only follow the single
     consistent pack ID attached to the known lessons and their linked content;
-    require PneumoniaMNIST asset provenance before accepting this fallback.
+    require the adapter's dataset asset provenance before accepting this fallback.
     Ambiguous or dangling references must never create a replacement pack.
     """
     canonical = api.pack(slug)
@@ -121,17 +121,17 @@ def resolve_content_pack(api: MedcoelAPI, slug: str, *, records=None,
     if canonical is not None:
         pack_ids.add(canonical["id"])
     if len(pack_ids) > 1:
-        raise RuntimeError("Conflicting pack references for PneumoniaMNIST: " +
+        raise RuntimeError(f"Conflicting pack references for {dataset_name}: " +
                            ", ".join(sorted(pack_ids)) + ". Review membership; nothing changed.")
     if not pack_ids:
         return canonical
     linked_id = next(iter(pack_ids))
     if canonical is not None:
         return canonical
-    if not any(a.get("data", {}).get("dataset", {}).get("name") == "PneumoniaMNIST" or
-               a.get("data", {}).get("license", {}).get("dataset") == "PneumoniaMNIST"
+    if not any(a.get("data", {}).get("dataset", {}).get("name") == dataset_name or
+               a.get("data", {}).get("license", {}).get("dataset") == dataset_name
                for a in assets):
-        raise RuntimeError("Linked pack found but PneumoniaMNIST asset provenance is missing. Nothing changed.")
+        raise RuntimeError(f"Linked pack found but {dataset_name} asset provenance is missing. Nothing changed.")
     linked = api.pack(linked_id)
     if linked is None or linked.get("id") != linked_id:
         raise RuntimeError(f"Existing content references pack {linked_id}, but it cannot be resolved by ID. "
