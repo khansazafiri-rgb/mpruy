@@ -44,7 +44,7 @@ export default function LabStudyGuide({ guide }) {
       <h4 className="font-bold">{row.label}</h4><dl className="mt-2 space-y-2 text-sm">{row.values.map((item, i) => <div key={i} className="min-w-0"><dt className="font-semibold">{comparison.columns[i]}</dt><dd className="mt-0.5 break-words leading-relaxed"><Statement item={item} guide={guide} /></dd></div>)}</dl>
     </article>)}</div>
     <table className="hidden w-full table-fixed border-collapse text-left text-sm md:table" data-guide-layout="table">
-      <thead><tr><th className="border-b border-line p-2">{guide.dataset === 'BloodMNIST' ? 'Sel' : 'Aspek'}</th>{comparison.columns.map((c) => <th key={c} className="break-words border-b border-line p-2">{c}</th>)}</tr></thead>
+      <thead><tr><th className="border-b border-line p-2">{guide.dataset === 'BloodMNIST' ? 'Sel' : ['PathMNIST', 'OCTMNIST'].includes(guide.dataset) ? 'Kategori' : 'Aspek'}</th>{comparison.columns.map((c) => <th key={c} className="break-words border-b border-line p-2">{c}</th>)}</tr></thead>
       <tbody>{comparison.rows.map((row) => <tr key={row.key}><th scope="row" className="break-words border-b border-line p-2 align-top">{row.label}</th>{row.values.map((item, i) => <td key={i} className="break-words border-b border-line p-2 align-top leading-relaxed"><Statement item={item} guide={guide} /></td>)}</tr>)}</tbody>
     </table>
     {guide.checklist.length > 0 && <div className="space-y-2"><h3 className="font-semibold">Apa yang harus dilihat?</h3><Statements items={guide.checklist} guide={guide} ordered /></div>}

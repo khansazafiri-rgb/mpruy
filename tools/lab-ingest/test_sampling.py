@@ -27,7 +27,7 @@ class FakeAPI:
         self.records = {k: {} for k in m.MANAGED}
         self.writes = []
         self.the_pack = None
-    def require_study_guides(self): pass  # Explicit capability in the disposable fake API.
+    def require_study_guides(self, dataset=None): pass  # Explicit capability in the disposable fake API.
     def pack(self, _slug): return copy.deepcopy(self.the_pack)
     def list_all(self, kind): return copy.deepcopy(list(self.records[kind].values()))
     def create_pack(self, body):

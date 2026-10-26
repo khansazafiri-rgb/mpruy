@@ -44,8 +44,9 @@ class BloodTests(unittest.TestCase):
         self.assertEqual(list(b.STUDENT_LABELS.values()), ['Basofil', 'Eosinofil', 'Eritroblas', 'Granulosit imatur', 'Limfosit', 'Monosit', 'Neutrofil', 'Trombosit'])
         self.assertEqual(b.BLOOD_224.task, 'multi-class'); self.assertEqual(b.BLOOD_224.license_name, 'CC BY 4.0')
         require_enabled_dataset('bloodmnist')
-        for key in ('pathmnist', 'octmnist', 'chestmnist', 'dermamnist'):
+        for key in ('chestmnist', 'dermamnist'):
             with self.assertRaises(ValueError): require_enabled_dataset(key)
+        require_enabled_dataset('pathmnist'); require_enabled_dataset('octmnist')
     def test_default_counts_disjoint_unique_deterministic(self):
         groups = samples(); core.validate_groups(groups, b.DEFAULT_CONFIG, b.BLOOD_224)
         self.assertEqual(groups, samples())

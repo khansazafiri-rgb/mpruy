@@ -7,6 +7,7 @@ import { build } from 'esbuild';
 
 const web = fileURLToPath(new URL('../../../', import.meta.url));
 const content = JSON.parse(await readFile(new URL('../../../../../tools/lab-ingest/content/identification-guides.json', import.meta.url), 'utf8'));
+const visualContent = JSON.parse(await readFile(new URL('../../../../../tools/lab-ingest/content/path-oct-guides.json', import.meta.url), 'utf8'));
 const dir = await mkdtemp(path.join(web, '.guide-test-'));
 try {
   const outfile = path.join(dir, 'render.mjs');
@@ -28,6 +29,19 @@ try {
       assert.ok(html.includes('data-guide-layout="cards"')); assert.ok(html.includes('data-guide-layout="table"'));
       for (const profile of guide.profiles) assert.ok(html.includes(profile.features[0].text));
       assert.ok(!html.includes('observedFeatures')); assert.ok(!html.includes('Pada gambar ini tampak'));
+    }
+  });
+  test('Path and OCT guides use the same responsive cards/table and class cues', () => {
+    const pathGuide = JSON.parse(JSON.stringify(visualContent.pathmnist));
+    const keys = ['normal colon mucosa', 'cancer-associated stroma', 'colorectal adenocarcinoma epithelium'];
+    pathGuide.profiles = pathGuide.profiles.filter((p) => keys.includes(p.key));
+    pathGuide.comparison.rows = pathGuide.comparison.rows.filter((r) => keys.includes(r.key));
+    for (const guide of [pathGuide, visualContent.octmnist]) {
+      const html = render(fixture(guide));
+      assert.ok(html.includes('data-guide-layout="cards"'));
+      assert.ok(html.includes('data-guide-layout="table"'));
+      assert.ok(html.includes('Ciri yang perlu dicari'));
+      for (const profile of guide.profiles) assert.ok(html.includes(profile.features[0].text));
     }
   });
   test('guidance is optional for legacy lessons and excluded from practice presentation', () => {
