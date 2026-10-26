@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from medcoel_api import ApiError, MedcoelAPI  # noqa: E402
+from medcoel_api import ApiError, MedcoelAPI, resolve_content_pack  # noqa: E402
 
 LABELS = [("assets", "Assets"), ("objects", "Objects"), ("questions", "Questions"), ("pathways", "Pathways")]
 
@@ -28,6 +28,10 @@ LABELS = [("assets", "Assets"), ("objects", "Objects"), ("questions", "Questions
 def resolve(api: MedcoelAPI, name: str) -> dict[str, Any]:
     for slug in (name, f"{name}-v1"):
         pack = api.pack(slug)
+        if pack:
+            return pack
+    if name in ("pneumoniamnist", "pneumoniamnist-v1"):
+        pack = resolve_content_pack(api, "pneumoniamnist-v1")
         if pack:
             return pack
     raise RuntimeError(f"Content pack '{name}' tidak ditemukan. Jalankan import_medmnist.py --apply terlebih dahulu.")

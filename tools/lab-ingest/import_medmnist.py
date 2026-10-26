@@ -42,7 +42,7 @@ import numpy as np
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from medcoel_api import ApiError, MedcoelAPI  # noqa: E402
+from medcoel_api import ApiError, MedcoelAPI, resolve_content_pack  # noqa: E402
 from sampling import LEARNING_PER_CLASS, PRACTICE_PER_CLASS, SELECTION_SEED, SelectionConfig, select_samples
 from dataset_registry import require_enabled_dataset
 
@@ -551,18 +551,24 @@ def sync(api: MedcoelAPI, groups: dict[str, list[dict[str, Any]]], *, apply: boo
          license_verified: bool, public_base: str, config: SelectionConfig = SelectionConfig()) -> DraftImporter:
     """Plan first, then revision-safe API writes. Never publishes or deletes records."""
     validate_groups(groups, config)
-    pack = api.pack(PACK["slug"])
-    pack_id = pack["id"] if pack else ""
     importer = DraftImporter(api, apply=apply, update_existing=update_existing, license_verified=license_verified)
     importer.retired = []
+    importer.pack = None
     for kind in ("assets", "objects", "questions", "pathways"):
         importer.refresh(kind)
+    pack = resolve_content_pack(api, PACK["slug"], records=importer.existing,
+                                object_slugs=(object_intro([])["slug"], object_practice([])["slug"]))
+    pack_id = pack["id"] if pack else ""
+    if pack:
+        log(f"Using existing content pack: {pack['slug']} ({pack_id}); requested slug: {PACK['slug']}")
     old_practice = importer.existing["objects"].get(object_practice([])["slug"])
     current = [q for q in importer.existing["questions"].values() if old_practice and old_practice["id"] in q.get("objects", [])]
     target_slugs = {question_body(r, "", "")["slug"] for r in groups["practice"]}
     assets = {a["id"]: a for a in importer.existing["assets"].values()}
-    if any(not managed_question(q, assets, pack_id) for q in current):
-        raise RuntimeError("Practice object contains unrecognized/manual questions. Review ownership before syncing; nothing changed.")
+    unrecognized = [q["slug"] for q in current if not managed_question(q, assets, pack_id)]
+    if unrecognized:
+        raise RuntimeError(f"unrecognized/manual questions for resolved pack {pack_id or '(none)'}: " +
+                           ", ".join(unrecognized) + ". Review ownership; nothing changed.")
     obsolete = [q for q in current if q["slug"] not in target_slugs]
     report_selection(groups, config, len(current), obsolete)
     if obsolete and not update_existing:
@@ -597,6 +603,7 @@ def sync(api: MedcoelAPI, groups: dict[str, list[dict[str, Any]]], *, apply: boo
         if {q["slug"] for q in active} != target_slugs:
             raise RuntimeError("Post-sync membership differs from target. Do not publish; review concurrent edits and rerun.")
         log(f"Verified practice membership: {len(active)} target questions (drafts require review/publish).")
+    importer.pack = pack
     c = importer.counts
     log(f"Ringkasan: {c['create']} dibuat, {c['update']} diperbarui, {c['unchanged']} tidak berubah, {c['skip']} dilewati; {len(importer.retired)} deprecated.")
     if importer.unpublished:
@@ -664,6 +671,7 @@ def main() -> int:
         importer = sync(MedcoelAPI.from_env(), groups, apply=args.apply, update_existing=args.update_existing,
                         license_verified=args.license_verified, public_base=args.public_base, config=args.config)
         mf["retirements"] = importer.retired
+        mf["pack"] = {"id": importer.pack["id"], "slug": importer.pack.get("slug", PACK["slug"])}
     else:
         report_selection(groups, args.config)
         log("DRY RUN: no PocketBase connection. Add --update-existing for current counts and retirement plan.")
