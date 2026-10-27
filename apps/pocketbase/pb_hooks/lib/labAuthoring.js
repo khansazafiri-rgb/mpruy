@@ -22,7 +22,18 @@ function block(v) {
   if (type === 'text' || type === 'callout') b.text = str(v.text, 'block.text', 6000, true);
   if (type === 'callout') b.tone = ['info', 'tip', 'warn'].includes(v.tone) ? v.tone : 'info';
   if (type === 'image') b.asset = key(v.asset, 'block.asset');
-  if (type === 'gallery') b.assets = keys(v.assets, 'block.assets', 50);
+  if (type === 'gallery') {
+    if (v.items !== undefined && v.assets !== undefined) fail('Galeri memakai assets atau items, bukan keduanya.');
+    if (v.items !== undefined) {
+      b.items = arr(v.items, 'block.items', 50).map((item) => {
+        obj(item, 'Item galeri');
+        return { asset: key(item.asset, 'gallery.item.asset'),
+          title: str(item.title || '', 'gallery.item.title', 200),
+          caption: str(item.caption || '', 'gallery.item.caption', 3000) };
+      });
+      if (new Set(b.items.map((item) => item.asset)).size !== b.items.length) fail('Aset galeri ganda.');
+    } else b.assets = keys(v.assets, 'block.assets', 50);
+  }
   if (type === 'compare') { b.left = key(v.left, 'block.left'); b.right = key(v.right, 'block.right'); if (b.left === b.right) fail('Bandingkan dua aset berbeda.'); }
   if (type === 'identification_guide') b.guide = key(v.guide, 'block.guide');
   if (type === 'identification_table') { b.columns = arr(v.columns, 'block.columns', 8).map((x) => str(x, 'Kolom', 120, true)); b.rows = arr(v.rows, 'block.rows', 100).map((r) => arr(r, 'Baris', 8).map((x) => str(x, 'Sel', 1000))); if (b.columns.length < 2 || b.rows.some((r) => r.length !== b.columns.length)) fail('Tabel identifikasi tidak sejajar.'); }
@@ -125,7 +136,7 @@ function refs(app, kind, v, staged, published) {
     v.sources.forEach((s) => need('source', s));
     for (const c of v.chapters) for (const s of c.sections) for (const b of s.blocks) {
       if (b.asset && !media(app, b.asset, published)) errors.push('Aset ' + b.asset + ' belum siap.');
-      if (b.assets) b.assets.forEach((a) => { if (!media(app, a, published)) errors.push('Aset ' + a + ' belum siap.'); });
+      for (const a of [...(b.assets || []), ...(b.items || []).map((item) => item.asset)]) if (!media(app, a, published)) errors.push('Aset ' + a + ' belum siap.');
       for (const a of [b.left, b.right].filter(Boolean)) if (!media(app, a, published)) errors.push('Aset ' + a + ' belum siap.');
       if (b.guide) need('guide', b.guide); if (b.sources) b.sources.forEach((s) => need('source', s));
     }
@@ -173,7 +184,7 @@ function exportModule(app, k) {
   const guides = new Set(), sources = new Set(m.sources), catalogs = new Set();
   for (const c of m.chapters) for (const s of c.sections) for (const b of s.blocks) {
     if (b.guide) guides.add(b.guide); (b.sources || []).forEach((x) => sources.add(x));
-    for (const a of [b.asset, b.left, b.right, ...(b.assets || [])].filter(Boolean)) { const x = media(app, a, false); if (x) sources.add(x.getString('sourceKey')); }
+    for (const a of [b.asset, b.left, b.right, ...(b.assets || []), ...(b.items || []).map((item) => item.asset)].filter(Boolean)) { const x = media(app, a, false); if (x) sources.add(x.getString('sourceKey')); }
   }
   for (const bank of m.questionBanks) for (const q of bank.questions) { q.sources.forEach((s) => sources.add(s)); if (q.asset) { const x = media(app, q.asset, false); if (x) sources.add(x.getString('sourceKey')); } }
   for (const g of guides) { const x = data(find(app, 'guide', g, false), false); (x?.sources || []).forEach((s) => sources.add(s)); }
@@ -195,12 +206,12 @@ function publishRecordTx(tx, kind, k, revision, adminId) {
       const sourceKeys = new Set(v.sources);
       for (const c of v.chapters) for (const section of c.sections) for (const b of section.blocks) {
         (b.sources || []).forEach((x) => sourceKeys.add(x));
-        for (const asset of [b.asset, b.left, b.right, ...(b.assets || [])].filter(Boolean)) { const a = media(tx, asset, true); if (a) sourceKeys.add(a.getString('sourceKey')); }
+        for (const asset of [b.asset, b.left, b.right, ...(b.assets || []), ...(b.items || []).map((item) => item.asset)].filter(Boolean)) { const a = media(tx, asset, true); if (a) sourceKeys.add(a.getString('sourceKey')); }
       }
       for (const bank of v.questionBanks) for (const q of bank.questions) if (q.asset) { const a = media(tx, q.asset, true); if (a) sourceKeys.add(a.getString('sourceKey')); }
       for (const bank of v.questionBanks) for (const q of bank.questions) q.sources.forEach((x) => sourceKeys.add(x));
       for (const source of sourceKeys) { const s = lookup(tx, 'source', source, null, true); if (!s) continue; if (s.role === 'asset' && !s.license?.verified) errors.push('Lisensi sumber ' + source + ' belum diverifikasi.'); const policy = s.policies?.find((p) => p.collection === k); if (policy && !policy.allowed) errors.push('Sumber ' + source + ' tidak diizinkan untuk modul ini: ' + policy.note); if (s.datasetReviewRequired && (!policy || !policy.reviewed)) errors.push('Sumber ' + source + ' memerlukan review khusus untuk modul ini.'); }
-      for (const asset of [...new Set([...v.chapters.flatMap((c) => c.sections.flatMap((s) => s.blocks.flatMap((b) => [b.asset, b.left, b.right, ...(b.assets || [])]))), ...v.questionBanks.flatMap((b) => b.questions.map((q) => q.asset))].filter(Boolean))]) { const a = media(tx, asset, true); const s = a && lookup(tx, 'source', a.getString('sourceKey'), null, true); if (!s || s.role !== 'asset' || !s.license.verified || !s.license.commercialUse || !s.license.redistribution) errors.push('Sumber aset ' + asset + ' tidak lagi memiliki izin publikasi.'); }
+      for (const asset of [...new Set([...v.chapters.flatMap((c) => c.sections.flatMap((s) => s.blocks.flatMap((b) => [b.asset, b.left, b.right, ...(b.assets || []), ...(b.items || []).map((item) => item.asset)]))), ...v.questionBanks.flatMap((b) => b.questions.map((q) => q.asset))].filter(Boolean))]) { const a = media(tx, asset, true); const s = a && lookup(tx, 'source', a.getString('sourceKey'), null, true); if (!s || s.role !== 'asset' || !s.license.verified || !s.license.commercialUse || !s.license.redistribution) errors.push('Sumber aset ' + asset + ' tidak lagi memiliki izin publikasi.'); }
     }
     if (errors.length) fail(errors.join('; '));
     r.set('publishedData', v); r.set('reviewedBy', adminId); r.set('reviewedAt', new Date().toISOString()); tx.save(r);
@@ -236,7 +247,7 @@ const PUBLISH_ORDER = { source: 0, guide: 1, catalog: 2, asset: 3, module: 4, pl
 function moduleAssets(v) {
   if (!v) return [];
   return [...new Set([
-    ...(v.chapters || []).flatMap((c) => (c.sections || []).flatMap((s) => (s.blocks || []).flatMap((b) => [b.asset, b.left, b.right, ...(b.assets || [])]))),
+    ...(v.chapters || []).flatMap((c) => (c.sections || []).flatMap((s) => (s.blocks || []).flatMap((b) => [b.asset, b.left, b.right, ...(b.assets || []), ...(b.items || []).map((item) => item.asset)]))),
     ...(v.questionBanks || []).flatMap((b) => (b.questions || []).map((q) => q.asset)),
   ].filter(Boolean))];
 }
@@ -334,7 +345,7 @@ function studentModule(app, k, preview) {
   const r = find(app, 'module', k, true), m = data(r, !preview); if (!m) throw new NotFoundError('Modul belum terbit.');
   const assetKeys = new Set(), guideKeys = new Set(), sourceKeys = new Set(m.sources);
   for (const c of m.chapters) for (const s of c.sections) for (const b of s.blocks) {
-    if (b.asset) assetKeys.add(b.asset); if (b.assets) b.assets.forEach((a) => assetKeys.add(a));
+    if (b.asset) assetKeys.add(b.asset); if (b.assets) b.assets.forEach((a) => assetKeys.add(a)); if (b.items) b.items.forEach((item) => assetKeys.add(item.asset));
     if (b.left) assetKeys.add(b.left); if (b.right) assetKeys.add(b.right);
     if (b.guide) guideKeys.add(b.guide); if (b.sources) b.sources.forEach((x) => sourceKeys.add(x));
   }

@@ -27,16 +27,19 @@ try {
   const { renderModule, renderQuestion, renderImage } = await import(pathToFileURL(outfile));
   const source = { key: 'aao-oct', title: 'AAO — OCT', url: 'https://example.org/oct', citation: 'Citation', disclosure: 'Reference only', license: 'Linked reference' };
   const question = { id: 'q1', key: 'q1', type: 'image_identification', prompt: 'Kategori mana?', options: [{ label: 'A', text: 'Normal' }, { label: 'B', text: 'DME' }], answerPath: 'lab/modules/oct/questions/bank/q1/answer' };
-  const module = { key: 'oct', title: 'Dasar OCT', summary: 'Ringkas.', preview: false, assets: {}, sources: { 'aao-oct': source },
+  const module = { key: 'oct', title: 'Dasar OCT', summary: 'Ringkas.', preview: false,
+    assets: { example: { url: 'https://example.org/oct.png', alt: 'Citra belajar', license: { license: 'CC BY' } } }, sources: { 'aao-oct': source },
     guides: { guide: { title: 'Cara identifikasi', steps: [{ title: 'Amati', text: 'Cari pola. [Sumber: AAO — OCT]' }], sources: ['aao-oct'] } },
     chapters: [{ key: 'first', title: 'Belajar OCT', sections: [{ key: 'one', title: 'Contoh', blocks: [
       { key: 'guide', type: 'identification_guide', guide: 'guide' },
       { key: 'table', type: 'identification_table', title: 'Bandingkan', columns: ['Kelas', 'Ciri'], rows: [['Normal', 'Teratur. [Sumber: AAO — OCT]']] },
+      { key: 'rich', type: 'gallery', items: [{ asset: 'example', title: 'Normal · Contoh 1', caption: 'Lapisan tersusun. [Sumber: AAO — OCT]' }] },
+      { key: 'old', type: 'gallery', assets: ['example'] },
       { key: 'practice', type: 'practice', bank: 'bank', title: 'Latihan' },
     ] }] }], questionBanks: { bank: [question] }, pathways: [] };
 
   test('lesson and active practice render separately with clickable numbered sources', () => {
-    assert.equal(lessonChapters(module)[0].sections[0].blocks.length, 2);
+    assert.equal(lessonChapters(module)[0].sections[0].blocks.length, 4);
     assert.equal(practiceBanks(module)[0].questions.length, 1);
     const learn = renderModule(module, 'learn');
     assert.ok(learn.includes('Cara identifikasi') && learn.includes('Bandingkan'));
@@ -45,11 +48,17 @@ try {
     assert.ok(learn.includes('Reference only') && learn.includes('Linked reference'));
     assert.ok(!learn.includes('[Sumber:'));
     assert.ok(!learn.includes('Kategori mana?'));
+    assert.ok(learn.indexOf('Normal · Contoh 1') < learn.indexOf('src="https://example.org/oct.png"'));
+    assert.ok(learn.indexOf('Lapisan tersusun.') > learn.indexOf('src="https://example.org/oct.png"'));
+    assert.ok(learn.slice(learn.indexOf('Lapisan tersusun.'), learn.indexOf('Lapisan tersusun.') + 350).includes('href="#oct-source-aao-oct"'));
+    assert.ok(learn.includes('Ciri yang perlu dicari'));
+    assert.equal((learn.match(/src="https:\/\/example.org\/oct.png"/g) || []).length, 2);
     const practice = renderModule(module, 'practice');
     assert.ok(practice.includes('Kategori mana?'));
     assert.ok(!practice.includes('Cara identifikasi') && !practice.includes('Bandingkan'));
     assert.ok(!practice.includes('Reference only'));
     assert.ok(!practice.includes('[Sumber:'));
+    assert.ok(!practice.includes('Normal · Contoh 1') && !practice.includes('Lapisan tersusun.'));
   });
 
   test('answer and explanation stay hidden until server result exists', () => {

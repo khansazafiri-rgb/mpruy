@@ -102,6 +102,35 @@ test('registered media key resolves to a URL only after source and asset review'
   asset.set('status', 'published'); author.publish(db, 'module', 'image-module', { revision: 1, confirmReviewed: true }, { id: 'admin-id' });
   assert.equal(author.studentModule(db, 'image-module', false).assets['image-one'].url, 'https://example.org/image.png');
 });
+test('rich gallery items validate references, preserve metadata, and export without changing legacy galleries', () => {
+  const db = app();
+  const legacyInput = structuredClone(example.records.find((r) => r.kind === 'module').data);
+  legacyInput.chapters[0].sections[0].blocks.push({ key: 'legacy-gallery', type: 'gallery', assets: ['image-example'] });
+  const legacy = author.validate('module', legacyInput);
+  assert.deepEqual(legacy.chapters[0].sections[0].blocks.find((b) => b.type === 'gallery').assets, ['image-example']);
+  const asset = new Record({ name: 'lab_media' });
+  asset.set('key', 'image-example'); asset.set('sourceKey', 'original-images'); asset.set('title', 'Image');
+  asset.set('alt', 'Image'); asset.set('externalUrl', 'https://example.org/image.png'); asset.set('status', 'published'); db.save(asset);
+  const rich = structuredClone(example);
+  const module = rich.records.find((r) => r.kind === 'module').data;
+  const gallery = { key: 'rich-gallery', type: 'gallery', items: [{ asset: 'image-example', title: 'Normal · Contoh 1', caption: 'Ciri yang perlu dicari. [Sumber: Test]' }] };
+  module.chapters[0].sections[0].blocks.push(gallery);
+  assert.equal(author.preview(db, rich).ok, true);
+  const p = author.preview(db, rich); author.apply(db, { bundle: rich, token: p.token });
+  assert.deepEqual(author.exportModule(db, module.key).records.find((r) => r.kind === 'module').data.chapters[0].sections[0].blocks.find((b) => b.type === 'gallery').items, gallery.items);
+  assert.equal(author.preview(app(), author.exportModule(db, module.key)).ok, false); // media dependency remains required
+  const missing = structuredClone(rich); missing.records.find((r) => r.kind === 'module').data.chapters[0].sections[0].blocks.find((b) => b.type === 'gallery').items[0].asset = 'missing';
+  assert.equal(author.preview(db, missing).ok, false);
+  const html = structuredClone(rich); html.records.find((r) => r.kind === 'module').data.chapters[0].sections[0].blocks.find((b) => b.type === 'gallery').items[0].caption = '<script>bad</script>';
+  assert.equal(author.preview(db, html).ok, false);
+  const reviewDb = app(); imageMedia(reviewDb);
+  const reviewBundle = imageBundle(true);
+  reviewBundle.records.find((r) => r.kind === 'module').data.chapters[0].sections[0].blocks = [{ key: 'rich', type: 'gallery', items: [{ asset: 'image-a', caption: 'Look for a pattern.' }] }];
+  const plan = author.preview(reviewDb, reviewBundle);
+  assert.equal(plan.ok, true);
+  const applied = author.apply(reviewDb, { bundle: reviewBundle, token: plan.token });
+  assert.ok(author.reviewBundle(reviewDb, applied.bundle).items.some((item) => item.kind === 'asset' && item.key === 'image-a'));
+});
 function simpleBundle() {
   return { schemaVersion: 1, records: [
     { kind: 'catalog', data: { key: 'root', title: 'Root' } },
