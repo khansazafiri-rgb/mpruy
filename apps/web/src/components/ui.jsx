@@ -56,15 +56,64 @@ export function Badge({ className = '', children }) {
   return <span className={clsx('chip', className)}>{children}</span>;
 }
 
-// Keadaan kosong ditemani maskot (bawaan Kori berpikir). mascot={false} untuk ikon saja.
+// Keadaan kosong: penjelasan singkat + langkah berikutnya. Maskot opsional (mascot={false} untuk ikon saja).
 export function EmptyState({ icon: Icon, title, children, action, mascot = 'kori', mood = 'think' }) {
   const mascots = useMascotsOn() && mascot;
   return (
-    <div className="empty-state card flex flex-col items-center px-6 py-10 text-center">
-      {mascots ? <Mascot name={mascot} mood={mood} size={96} className="mb-3" label="" /> : Icon && <div className="empty-icon tone-sun mb-4"><Icon size={28} aria-hidden /></div>}
-      <h3 className="font-display text-lg font-semibold">{title}</h3>
-      {children && <div className="mt-1 max-w-md text-sm text-ink-muted">{children}</div>}
+    <div className="empty-state card flex flex-col items-center px-6 py-8 text-center">
+      {mascots ? <Mascot name={mascot} mood={mood} size={80} className="mb-2" label="" /> : Icon && <div className="empty-icon tone-sun mb-3"><Icon size={26} aria-hidden /></div>}
+      <h3 className="card-title">{title}</h3>
+      {children && <div className="mt-1 max-w-md text-sm leading-relaxed text-ink-muted">{children}</div>}
       {action && <div className="mt-4">{action}</div>}
+    </div>
+  );
+}
+
+// Galat yang bisa dipulihkan: pesan manusiawi + tombol coba lagi.
+export function ErrorState({ children, onRetry, retryLabel = 'Coba lagi', className = '' }) {
+  return (
+    <div className={clsx('space-y-3', className)}>
+      <Alert kind="error">{children}</Alert>
+      {onRetry && <button type="button" className="btn btn-secondary" onClick={onRetry}>{retryLabel}</button>}
+    </div>
+  );
+}
+
+// Penanda tempat saat memuat: tinggi tetap supaya halaman tidak melompat.
+export function Skeleton({ className = '' }) {
+  return <div aria-hidden className={clsx('animate-pulse rounded-xl bg-line/70', className)} />;
+}
+export function CardSkeleton({ rows = 3, className = '' }) {
+  return (
+    <div role="status" aria-label="Memuat" className={clsx('card space-y-3 p-4', className)}>
+      <Skeleton className="h-3 w-24" />
+      <Skeleton className="h-5 w-3/4" />
+      {Array.from({ length: rows - 2 > 0 ? rows - 2 : 1 }, (_, i) => <Skeleton key={i} className="h-3 w-full" />)}
+    </div>
+  );
+}
+
+// Kepala bagian: judul + keterangan singkat + tindakan di kanan. Dipakai di mana pun ada bagian bertajuk.
+export function SectionHeader({ title, children, action, level = 2, className = '' }) {
+  const H = `h${level}`;
+  return (
+    <div className={clsx('flex flex-wrap items-end justify-between gap-x-4 gap-y-1', className)}>
+      <div className="min-w-0">
+        <H className="section-title">{title}</H>
+        {children && <p className="meta mt-0.5 max-w-prose">{children}</p>}
+      </div>
+      {action && <div className="shrink-0">{action}</div>}
+    </div>
+  );
+}
+
+// Pilihan mode berdampingan (Explore/Guided, Belajar/Latihan). Satu pola untuk semua.
+export function Segmented({ items, value, onChange, label, className = '' }) {
+  return (
+    <div role="tablist" aria-label={label} className={clsx('segmented', className)}>
+      {items.map((it) => (
+        <button key={it.value} type="button" role="tab" aria-selected={value === it.value} className="segmented-item" onClick={() => onChange(it.value)}>{it.label}</button>
+      ))}
     </div>
   );
 }
@@ -131,12 +180,12 @@ export function Modal({ open, onClose, title, children, footer, size = 'md', dis
   return createPortal(
     <div className={clsx('modal-overlay fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-5', closing && 'is-closing')} onMouseDown={(e) => { if (dismissable && e.target === e.currentTarget) closeRef.current?.(); }}>
       <div ref={ref} role="dialog" tabIndex={-1} aria-modal="true" aria-labelledby={titleId} className={clsx('modal-panel flex max-h-[90dvh] w-full flex-col bg-surface outline-none', widths[size])}>
-        <div className="flex items-start justify-between gap-4 border-b border-line px-6 py-5">
-          <div><p className="eyebrow mb-1.5">MEDCOEL</p><h2 id={titleId} className="font-display text-xl font-semibold tracking-tight">{title}</h2></div>
-          {onClose && <button type="button" onClick={onClose} className="rounded-full bg-page p-2 text-ink-muted transition-colors hover:bg-line hover:text-ink" aria-label="Tutup"><X size={18} /></button>}
+        <div className="flex items-start justify-between gap-4 border-b border-line px-5 py-4 sm:px-6">
+          <h2 id={titleId} className="section-title">{title}</h2>
+          {onClose && <button type="button" onClick={onClose} className="btn-icon -mr-2 -mt-1 rounded-full" aria-label="Tutup"><X size={18} /></button>}
         </div>
-        <div className="modal-body overflow-y-auto px-6 py-6">{children}</div>
-        {footer && <div className="modal-footer flex flex-wrap justify-end gap-2 border-t border-line px-6 py-4">{footer}</div>}
+        <div className="modal-body overflow-y-auto px-5 py-5 sm:px-6">{children}</div>
+        {footer && <div className="modal-footer flex flex-wrap justify-end gap-2 border-t border-line px-5 py-4 sm:px-6">{footer}</div>}
       </div>
     </div>, document.body,
   );

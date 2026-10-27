@@ -9,9 +9,9 @@ const FRAME_PAD = 24;
 export function LabSource({ asset, nat, question }) {
   const lowRes = nat && Math.max(nat.w, nat.h) <= 300; const l = asset.license || {}; const d = asset.dataset;
   const available = annotationLayers(asset);
-  return <details className="text-xs text-ink-muted">
-    <summary className="inline-flex min-h-8 cursor-pointer select-none items-center font-semibold">ⓘ Sumber & lisensi</summary>
-    <div className="mt-1 space-y-1 leading-relaxed">
+  return <details className="text-[13px] text-ink-muted">
+    <summary className="inline-flex min-h-9 cursor-pointer select-none items-center font-semibold hover:text-brand">ⓘ Sumber & lisensi</summary>
+    <div className="card-source mt-1 space-y-1 leading-relaxed">
       {asset.synthetic && <p><strong>Ilustrasi sintetis, bukan gambar pasien.</strong></p>}
       {d?.name && <p>{d.name}{d.split ? ` · split ${d.split}` : ''}</p>}
       <p>{l.citation || l.source} · {l.license}{l.source_url?.startsWith('https://') && <> · <a href={l.source_url} target="_blank" rel="noreferrer" className="underline">Sumber & lisensi</a></>}</p>
@@ -74,7 +74,7 @@ export default function LabImage({ asset, question = false, point, onPoint, regi
   const full = controls === true;
 
   return <figure className="min-w-0 space-y-2">
-    {controls && <div className="flex flex-wrap items-center gap-2 text-sm">
+    {full && <div className="flex flex-wrap items-center gap-2 text-sm">
       <div className="flex items-center gap-1" role="group" aria-label="Zoom gambar">
         <button type="button" className="btn btn-ghost btn-sm min-h-10 min-w-10" aria-label="Perkecil" disabled={zoom <= 1} onClick={() => changeZoom(zoom - 0.25)}><Minus size={16} /></button>
         {full && <input aria-label="Zoom gambar" type="range" min="1" max={MAX_ZOOM} step="0.25" value={zoom} onChange={(e) => changeZoom(Number(e.target.value))} className="w-28" />}
@@ -88,6 +88,7 @@ export default function LabImage({ asset, question = false, point, onPoint, regi
       </div>}
     </div>}
     <div ref={wrap} className="flex min-w-0 items-center justify-center">
+      <div className="relative max-w-full">
       <div
         ref={scroller} tabIndex={0} role="group" aria-label="Area gambar; gunakan tombol panah atau seret untuk menggeser saat diperbesar, plus/minus untuk zoom"
         className={`relative max-w-full overflow-auto rounded-xl border border-line bg-page p-2 focus:outline focus:outline-2 focus:outline-brand ${canDrag ? 'cursor-grab active:cursor-grabbing' : ''}`}
@@ -106,6 +107,12 @@ export default function LabImage({ asset, question = false, point, onPoint, regi
           {region && <div className="pointer-events-none absolute border-4 border-brand bg-brand/20" style={overlay(region)} />}
           {point && <div className="pointer-events-none absolute h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-coral shadow" style={{ left: `${point.x * 100}%`, top: `${point.y * 100}%` }} />}
         </div>
+      </div>
+      {controls === 'min' && <div className="absolute bottom-3 right-3 flex items-center gap-1 rounded-xl bg-surface/90 p-0.5 shadow-card ring-1 ring-line backdrop-blur" role="group" aria-label="Zoom gambar">
+        {zoom > 1 && <button type="button" className="btn btn-ghost btn-icon btn-sm min-h-10 min-w-10" aria-label="Reset zoom" onClick={() => { changeZoom(1); if (onPoint) onPoint(null); }}><RotateCcw size={15} /></button>}
+        <button type="button" className="btn btn-ghost btn-icon btn-sm min-h-10 min-w-10" aria-label="Perkecil" disabled={zoom <= 1} onClick={() => changeZoom(zoom - 0.25)}><Minus size={16} /></button>
+        <button type="button" className="btn btn-ghost btn-icon btn-sm min-h-10 min-w-10" aria-label="Perbesar" disabled={zoom >= MAX_ZOOM} onClick={() => changeZoom(zoom + 0.25)}><Plus size={16} /></button>
+      </div>}
       </div>
     </div>
     {broken && <p role="alert" className="text-coral">Gambar gagal dimuat. Muat ulang halaman atau hubungi admin.</p>}

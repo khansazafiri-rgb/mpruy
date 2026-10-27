@@ -8,21 +8,29 @@ import { Alert } from '@/components/ui';
 import { api } from '@/lib/api';
 import { migrationNumber, REQUIRED_MIGRATION, serverIsBehind } from '@/lib/serverVersion';
 
-export const ADMIN_NAV = [
-  { to: '/admin', end: true, label: 'Ringkasan', icon: LayoutDashboard },
-  { to: '/admin/pesan', label: 'Pesan pengguna', icon: MessageCircle },
-  { to: '/admin/pengajuan', label: 'Pengajuan soal', icon: Inbox },
-  { to: '/admin/lab', label: 'MEDCOEL Lab', icon: FlaskConical },
-  { to: '/admin/soal', label: 'Edit Soal', icon: FileQuestion },
-  { to: '/admin/laporan', label: 'Laporan soal', icon: Flag },
-  { to: '/admin/pengumuman', label: 'Pengumuman', icon: Megaphone },
-  { to: '/admin/mata-kuliah', label: 'Mata kuliah & BAB', icon: BookMarked },
-  { to: '/admin/paket', label: 'Paket simulasi', icon: Package },
-  { to: '/admin/simulasi', label: 'Simulasi Dokter', icon: Stethoscope },
-  { to: '/admin/drilling', label: 'Drilling', icon: Crosshair },
-  { to: '/admin/pengguna', label: 'Pengguna', icon: Users },
-  { to: '/admin/pengaturan', label: 'Pengaturan', icon: Settings },
+// Menu dikelompokkan menurut tugas: apa yang perlu ditangani, konten belajar, lalu komunitas dan sistem.
+export const ADMIN_GROUPS = [
+  { items: [{ to: '/admin', end: true, label: 'Ringkasan', icon: LayoutDashboard }] },
+  { label: 'Perlu ditangani', items: [
+    { to: '/admin/pesan', label: 'Pesan pengguna', icon: MessageCircle },
+    { to: '/admin/pengajuan', label: 'Pengajuan soal', icon: Inbox },
+    { to: '/admin/laporan', label: 'Laporan soal', icon: Flag },
+  ] },
+  { label: 'Konten belajar', items: [
+    { to: '/admin/lab', label: 'MEDCOEL Lab', icon: FlaskConical },
+    { to: '/admin/soal', label: 'Edit Soal', icon: FileQuestion },
+    { to: '/admin/mata-kuliah', label: 'Mata kuliah & BAB', icon: BookMarked },
+    { to: '/admin/paket', label: 'Paket simulasi', icon: Package },
+    { to: '/admin/simulasi', label: 'Simulasi Dokter', icon: Stethoscope },
+    { to: '/admin/drilling', label: 'Drilling', icon: Crosshair },
+  ] },
+  { label: 'Komunitas & sistem', items: [
+    { to: '/admin/pengumuman', label: 'Pengumuman', icon: Megaphone },
+    { to: '/admin/pengguna', label: 'Pengguna', icon: Users },
+    { to: '/admin/pengaturan', label: 'Pengaturan', icon: Settings },
+  ] },
 ];
+export const ADMIN_NAV = ADMIN_GROUPS.flatMap((g) => g.items);
 
 // Angka penanda di menu: pengajuan yang baru masuk dan laporan soal baru.
 function useNavBadges() {
@@ -60,27 +68,34 @@ function ServerBehind() {
 
 export default function AdminLayout() {
   const badges = useNavBadges();
+  const link = (n) => (
+    <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => clsx('flex min-h-[44px] shrink-0 items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-semibold lg:min-h-[40px]', isActive ? 'bg-brand-soft text-brand-dark' : 'text-ink-muted hover:bg-page hover:text-ink')}>
+      <n.icon size={18} aria-hidden /> {n.label}
+      {badges[n.to] > 0 && <span className="ml-auto min-w-[20px] rounded-full bg-coral px-1.5 text-center text-[11px] font-bold leading-5 text-white" aria-label={`${badges[n.to]} perlu dicek`}>{badges[n.to] > 99 ? '99+' : badges[n.to]}</span>}
+    </NavLink>
+  );
   return (
     <div className="min-h-screen bg-page lg:flex">
-      <aside className="border-b border-line bg-surface lg:sticky lg:top-0 lg:h-screen lg:w-64 lg:shrink-0 lg:border-b-0 lg:border-r">
-        <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-4">
+      <aside className="border-b border-line bg-surface lg:sticky lg:top-0 lg:h-screen lg:w-64 lg:shrink-0 lg:overflow-y-auto lg:border-b-0 lg:border-r">
+        <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 lg:py-4">
           <Logo />
-          <LanguageSwitch />
-          <span className="chip bg-gold-soft text-[#6b4f00]">Admin</span>
+          <div className="flex items-center gap-2"><LanguageSwitch /><span className="chip chip-warn">Admin</span></div>
         </div>
-        <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex-col lg:overflow-visible" aria-label="Menu admin">
-          {ADMIN_NAV.map((n) => (
-            <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => clsx('flex shrink-0 items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-semibold', isActive ? 'bg-brand text-white' : 'text-ink-muted hover:bg-page hover:text-ink')}>
-              <n.icon size={18} /> {n.label}
-              {badges[n.to] > 0 && <span className="ml-auto min-w-[20px] rounded-full bg-coral px-1.5 text-center text-[11px] font-bold leading-5 text-white" aria-label={`${badges[n.to]} perlu dicek`}>{badges[n.to] > 99 ? '99+' : badges[n.to]}</span>}
-            </NavLink>
+        <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex-col lg:gap-0 lg:overflow-visible" aria-label="Menu admin">
+          {ADMIN_GROUPS.map((g, i) => (
+            <div key={g.label || i} className="flex gap-1 lg:flex-col lg:py-1">
+              {g.label && <p className="hidden px-3 pb-1 pt-3 text-xs font-semibold text-ink-faint lg:block">{g.label}</p>}
+              {g.items.map(link)}
+            </div>
           ))}
-          <NavLink to="/beranda" className="flex shrink-0 items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-semibold text-ink-muted hover:bg-page lg:mt-4"><ArrowLeft size={18} /> Kembali ke web</NavLink>
+          <NavLink to="/beranda" className="flex min-h-[44px] shrink-0 items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-semibold text-ink-muted hover:bg-page lg:mt-3 lg:min-h-[40px] lg:border-t lg:border-line lg:pt-3"><ArrowLeft size={18} aria-hidden /> Kembali ke web</NavLink>
         </nav>
       </aside>
-      <main className="min-w-0 flex-1 px-4 py-6 lg:px-8">
-        <ServerBehind />
-        <Outlet />
+      <main className="admin-main min-w-0 flex-1 px-4 py-6 lg:px-8 lg:py-8">
+        <div className="mx-auto max-w-6xl">
+          <ServerBehind />
+          <Outlet />
+        </div>
       </main>
     </div>
   );

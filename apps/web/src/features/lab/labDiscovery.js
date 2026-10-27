@@ -43,3 +43,15 @@ export function authoredRootOptions(catalog) {
   }
   return [...roots.values()].sort((a, b) => a.title.localeCompare(b.title, 'id'));
 }
+
+// "Pencitraan Medis › Chest X-Ray": jejak letak modul di katalog, dari penempatan pertamanya.
+// Mengembalikan [] bila katalog belum dimuat atau modul tidak ditempatkan.
+export function modulePath(catalog, moduleKey) {
+  if (!catalog || !(catalog.modules || []).some((m) => m.key === moduleKey)) return [];
+  const nodes = new Map((catalog.nodes || []).map((n) => [n.key, n]));
+  const placement = (catalog.placements || []).find((p) => p.module === moduleKey && nodes.has(p.catalog));
+  if (!placement) return [];
+  const trail = []; const seen = new Set(); let current = nodes.get(placement.catalog);
+  while (current && !seen.has(current.key)) { seen.add(current.key); trail.unshift(current.title); current = current.parent ? nodes.get(current.parent) : null; }
+  return trail;
+}

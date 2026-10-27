@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { authoredExplore, authoredRootOptions } from './labDiscovery.js';
+import { authoredExplore, authoredRootOptions, modulePath } from './labDiscovery.js';
 
 const catalog = {
   nodes: [{ key: 'oftalmologi', title: 'Oftalmologi', parent: '' },
@@ -32,4 +32,10 @@ test('dynamic root filter and title, summary, root and child search', () => {
 test('unpublished module cannot be discovered even with a stale placement', () => {
   assert.ok(!authoredExplore(catalog).some((card) => card.href.includes('draft-only')));
   assert.ok(!authoredRootOptions(catalog).some((option) => option.title === 'Patologi'));
+});
+
+test('module path shows discipline then topic, and is empty when unknown', () => {
+  assert.deepEqual(modulePath(catalog, 'oct-retina-dasar-v1'), ['Oftalmologi', 'OCT Retina']);
+  assert.deepEqual(modulePath(catalog, 'draft-only'), []);
+  assert.deepEqual(modulePath(null, 'x'), []);
 });
