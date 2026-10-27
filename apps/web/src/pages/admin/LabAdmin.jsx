@@ -4,6 +4,7 @@ import { api, errorText } from '@/lib/api';
 import { Alert, Spinner } from '@/components/ui';
 import LabPackAdmin, { LabObjectPreview } from './LabPackAdmin';
 import LabAuthoringAdmin from './LabAuthoringAdmin';
+import LabJobsPanel from './LabJobsPanel';
 
 const NAMES = { assets: 'Aset & lisensi', objects: 'Learning objects', questions: 'Pertanyaan', pathways: 'Jalur belajar' };
 const templates = {
@@ -47,10 +48,12 @@ function LabJsonEditor({ onImport }) {
 // /admin/lab: module import is the primary workflow; legacy editors remain available.
 export default function LabAdmin() {
   const [tab, setTab] = useState('authoring');
+  const [jobBundle, setJobBundle] = useState(null);
   return <div className="space-y-5">
     <div className="flex flex-wrap justify-between gap-3"><div><h1 className="text-2xl font-bold">Kelola MEDCOEL Lab</h1><p className="mt-2 text-sm text-ink-muted">Buat modul lengkap lewat satu JSON, lalu validasi, tinjau perubahan, dan simpan sebagai draft.</p></div><Link to="/lab" className="btn btn-secondary">Lihat Lab</Link></div>
+    <LabJobsPanel onOpenBundle={(bundle) => { setJobBundle({ bundle, key: Date.now() }); setTab('authoring'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
     <div className="card flex flex-wrap items-center justify-between gap-3 p-5"><div><p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Buat konten</p><h2 className="text-lg font-semibold">Mulai dari modul lengkap</h2><p className="text-sm text-ink-muted">Satu bundle dapat memuat modul, sumber, panduan, katalog, dan penempatannya.</p></div><button className="btn btn-primary" onClick={() => setTab('authoring')}>+ Import Modul JSON</button></div>
     <div><p className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-muted">Kelola manual & alat lanjutan</p><div role="tablist" aria-label="Mode kelola Lab" className="flex flex-wrap gap-2">{[['authoring', 'Import Modul JSON'], ['json', 'Aset, Objek, Soal & Jalur'], ['packs', 'Content Pack']].map(([k, label]) => <button key={k} role="tab" aria-selected={tab === k} className={`btn btn-sm ${tab === k ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setTab(k)}>{label}</button>)}</div></div>
-    {tab === 'packs' ? <LabPackAdmin /> : tab === 'authoring' ? <LabAuthoringAdmin /> : <LabJsonEditor onImport={() => setTab('authoring')} />}
+    {tab === 'packs' ? <LabPackAdmin /> : tab === 'authoring' ? <LabAuthoringAdmin key={jobBundle?.key || 'empty'} initialSource={jobBundle ? JSON.stringify(jobBundle.bundle, null, 2) : ''} /> : <LabJsonEditor onImport={() => setTab('authoring')} />}
   </div>;
 }

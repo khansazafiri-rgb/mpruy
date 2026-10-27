@@ -8,8 +8,8 @@ import { ACTION_LABELS, KIND_LABELS, MODULE_TEMPLATE, actionCounts, bundleSummar
 
 const DOC_URL = 'https://github.com/khansazafiri-rgb/mpruy/blob/main/docs/LAB_AUTHORING_SCHEMA.md';
 const ACTIONS = ['create', 'update', 'unchanged'];
-export default function LabAuthoringAdmin() {
-  const [source, setSource] = useState('');
+export default function LabAuthoringAdmin({ initialSource = '' }) {
+  const [source, setSource] = useState(initialSource);
   const [bundle, setBundle] = useState(null);
   const [plan, setPlan] = useState(null);
   const [step, setStep] = useState('edit');

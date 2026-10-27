@@ -6,6 +6,7 @@ SPEC = DatasetSpec(
     key="octmnist", title="OCTMNIST", task="multi-class",
     download_url="https://zenodo.org/records/10519652/files/octmnist_224.npz?download=1",
     md5="abc493b6d529d5de7569faaef2773ba3", version="MedMNIST+ v3.0 / Zenodo 10519652",
+    expected_bytes=4_000_000_000,
     license_name="CC BY 4.0", source_url="https://zenodo.org/records/10519652",
     citation=("Yang J, Shi R, Wei D, et al. MedMNIST v2. Scientific Data. 2023;10:41. "
               "doi:10.1038/s41597-022-01721-8. Kermany DS, Goldbaum M, Cai W, et al. "
