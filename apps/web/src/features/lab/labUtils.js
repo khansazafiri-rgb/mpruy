@@ -42,12 +42,12 @@ export function groupAssets(assets = [], modality = '') {
   }));
 }
 
-// Ukuran gambar yang pas: rasio asli, maks 900px lebar, ~70% tinggi layar,
-// dan tidak diperbesar lebih dari `maxUpscale` kali ukuran aslinya.
-export function fittedSize(nw, nh, boxW, viewH, { maxW = 900, maxVh = 0.7, maxUpscale = 2.5 } = {}) {
+// Ukuran dasar memakai resolusi alami; zoom manual tetap boleh memperbesar lagi.
+export function fittedSize(nw, nh, boxW, viewH, { maxW = 900, maxVh = 0.7, maxUpscale = 2.5, lowResUpscale = 1.4 } = {}) {
   if (!nw || !nh) return null;
-  const limitW = Math.min(boxW > 0 ? boxW : maxW, maxW, nw * maxUpscale);
-  const limitH = Math.min((viewH > 0 ? viewH : 800) * maxVh, nh * maxUpscale);
+  const upscale = Math.max(nw, nh) <= 300 ? Math.min(maxUpscale, lowResUpscale) : maxUpscale;
+  const limitW = Math.min(boxW > 0 ? boxW : maxW, maxW, nw * upscale);
+  const limitH = Math.min((viewH > 0 ? viewH : 800) * maxVh, nh * upscale);
   const scale = Math.min(limitW / nw, limitH / nh);
   return { w: Math.max(1, Math.round(nw * scale)), h: Math.max(1, Math.round(nh * scale)) };
 }

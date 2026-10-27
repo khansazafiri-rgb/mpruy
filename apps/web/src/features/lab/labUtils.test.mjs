@@ -29,8 +29,9 @@ test('Path/OCT headings translate source labels without changing source metadata
 });
 
 test('fittedSize menjaga rasio, batas lebar/tinggi, dan tidak memperbesar berlebihan', () => {
-  assert.deepEqual(fittedSize(224, 224, 1000, 900), { w: 560, h: 560 });
+  assert.deepEqual(fittedSize(224, 224, 1000, 900), { w: 314, h: 314 });
   assert.deepEqual(fittedSize(224, 224, 300, 900), { w: 300, h: 300 });
+  assert.deepEqual(fittedSize(200, 100, 1000, 900), { w: 280, h: 140 });
   const big = fittedSize(4000, 2000, 1200, 1000);
   assert.equal(big.w / big.h, 2);
   assert.ok(big.w <= 900 && big.h <= 700);
