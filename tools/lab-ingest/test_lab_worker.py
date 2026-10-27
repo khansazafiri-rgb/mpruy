@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from lab_worker import Worker, asset_key, authoring_bundle, source_definition
+from identification_guides import learning_guide
 from octmnist import CONFIG
 from medmnist_core import DatasetSpec, download, ensure_disk_space
 
@@ -73,8 +74,29 @@ class WorkerTests(unittest.TestCase):
             groups["practice"] += [{"index": label * 100 + 50 + i, "label": label, "role": "practice"} for i in range(3)]
         bundle = authoring_bundle(groups, source_definition())
         module = next(r["data"] for r in bundle["records"] if r["kind"] == "module")
-        self.assertEqual(len(module["chapters"][0]["sections"][0]["blocks"][1]["assets"]), 20)
+        records = {(r["kind"], r["data"]["key"]): r["data"] for r in bundle["records"]}
+        self.assertEqual(records["catalog", "oftalmologi"]["title"], "Oftalmologi")
+        self.assertEqual(records["catalog", "imaging-retina"]["parent"], "oftalmologi")
+        self.assertEqual(records["catalog", "imaging-retina"]["title"], "OCT Retina")
+        self.assertEqual(records["placement", "oct-retina-di-imaging"]["catalog"], "imaging-retina")
+        blocks = module["chapters"][0]["sections"][0]["blocks"]
+        self.assertEqual(len(next(b for b in blocks if b["type"] == "gallery")["assets"]), 20)
         self.assertEqual(len(module["questionBanks"][0]["questions"]), 12)
+        self.assertFalse(set(next(b for b in blocks if b["type"] == "gallery")["assets"]) &
+                         {q["asset"] for q in module["questionBanks"][0]["questions"]})
+        curated = learning_guide("octmnist")
+        guide = records["guide", "panduan-identifikasi-oct-retina"]
+        self.assertEqual(len(guide["steps"]), 1 + len(curated["checklist"]) +
+                         len(curated["profiles"]) + len(curated["notes"]))
+        self.assertIn(curated["introduction"]["text"], guide["steps"][0]["text"])
+        self.assertEqual(len(guide["sources"]), len(curated["sources"]))
+        self.assertTrue(all(records["source", key]["role"] == "reference" and
+                            records["source", key]["ingestionAllowed"] is False
+                            for key in guide["sources"]))
+        self.assertEqual(next(b for b in blocks if b["type"] == "identification_guide")["guide"], guide["key"])
+        table = next(b for b in blocks if b["type"] == "identification_table")
+        self.assertEqual(len(table["rows"]), len(curated["comparison"]["rows"]))
+        self.assertEqual(next(b for b in blocks if b["type"] == "source_disclosure")["sources"], guide["sources"])
         self.assertFalse(bundle["records"][0]["data"]["license"]["verified"])
         self.assertFalse(bundle["records"][0]["data"]["policies"][0]["reviewed"])
         self.assertNotIn("published", json.dumps(bundle).lower())
