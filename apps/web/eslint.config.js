@@ -25,4 +25,5 @@ export default [
       'no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     },
   },
+  { files: ['src/features/lab/labDiscovery.js'], languageOptions: { ecmaVersion: 2025 } },
 ];

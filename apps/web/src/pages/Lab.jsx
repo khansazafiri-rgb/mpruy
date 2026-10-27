@@ -8,10 +8,9 @@ import LabLesson from '@/features/lab/LabLesson';
 import LabPracticeSession from '@/features/lab/LabPracticeSession';
 import { LabContextBar, LabPathNavigation } from '@/features/lab/LabNav';
 import { isPracticeFirst, objectHref, pathNeighbors, pathwayState, stepState } from '@/features/lab/labUtils';
-import { authoredExplore, authoredRootOptions } from '@/features/lab/labDiscovery';
+import { authoredRootOptions, disciplineTitle, exploreItems, normalizeDiscipline, publishedReplacements } from '@/features/lab/labDiscovery';
 import { markProgress } from '@/features/lab/labProgress';
 
-const DOMAINS = { imaging: 'Medical Imaging', clinical_pathology: 'Patologi Klinik', microbiology: 'Mikrobiologi', parasitology: 'Parasitologi', histology: 'Histologi & Histopatologi', anatomy: 'Anatomi Interaktif' };
 // Lab pages sit above the fixed bottom navigation (and the safe area on phones) so nothing is ever covered.
 const PAGE = 'min-w-0 space-y-4 pb-[calc(6.5rem+env(safe-area-inset-bottom))] lg:pb-8';
 
@@ -28,7 +27,7 @@ const Progress = ({ done, total, label }) => <div className="h-2 w-full overflow
 function ObjectCard({ item }) {
   const practice = item.kind === 'practice';
   return <Link to={item.href || objectHref(item.slug)} className={`card group flex h-full min-w-0 flex-col gap-1.5 border-l-4 p-4 transition hover:border-brand focus:outline-brand ${practice ? 'border-l-gold bg-gold-soft/30' : 'border-l-brand'}`}>
-    <span className={`text-xs font-bold uppercase tracking-wide ${practice ? 'text-ink' : 'text-brand'}`}>{practice ? `Latihan · ${item.cases} kasus` : `Materi · ${item.domainTitle || DOMAINS[item.domain] || item.domain}`}</span>
+    <span className={`text-xs font-bold uppercase tracking-wide ${practice ? 'text-ink' : 'text-brand'}`}>{practice ? `Latihan · ${item.cases} kasus` : `Materi · ${item.domainTitle || disciplineTitle(item)}`}</span>
     <h3 className="text-lg font-semibold leading-snug">{item.title}</h3>
     <p className="text-sm text-ink-muted">{item.summary}</p>
     <span className="mt-auto flex items-center justify-between pt-1 text-sm font-semibold text-brand"><span>{practice ? 'Mulai latihan' : item.modality || 'Buka materi'}</span><ArrowRight size={16} aria-hidden /></span>
@@ -45,20 +44,17 @@ function PathwayCard({ item }) {
   </Link>;
 }
 
-const VISUAL = [['imaging', 'Medical Imaging'], ['anatomy', 'Anatomi Interaktif'], ['clinical_pathology', 'Patologi Klinik'], ['microbiology', 'Mikrobiologi'], ['parasitology', 'Parasitologi'], ['histology', 'Histologi']];
 export default function Lab() {
   const [params, setParams] = useSearchParams(); const { isAdmin } = useAuth();
-  const q = params.get('q') || ''; const domain = params.get('domain') || ''; const mode = params.get('mode') === 'guided' ? 'guided' : 'explore'; const page = Math.max(1, Number(params.get('page')) || 1);
+  const q = params.get('q') || ''; const domain = normalizeDiscipline(params.get('domain') || ''); const mode = params.get('mode') === 'guided' ? 'guided' : 'explore'; const page = Math.max(1, Number(params.get('page')) || 1);
   const [search, setSearch] = useState(q); useEffect(() => setSearch(q), [q]);
-  const overview = useLab('lab/overview'); const next = overview.data?.continue; const counts = overview.data?.domains || {};
+  const overview = useLab('lab/overview'); const next = overview.data?.continue;
   const catalog = useLab('lab/catalog');
-  const authoredOnly = mode === 'explore' && domain.startsWith('catalog:');
-  const state = useLab(mode === 'guided' ? 'lab/pathways' : authoredOnly ? null : 'lab/objects', mode === 'guided' ? { page } : { q, domain, page });
-  const items = mode === 'guided' ? state.data?.items || [] : [
-    ...(authoredOnly ? [] : state.data?.items || []), ...authoredExplore(catalog.data, { q, domain, page }),
-  ];
-  const ready = mode === 'guided' ? !!state.data : authoredOnly ? !!catalog.data : !!state.data || !!catalog.data;
-  const hasMore = !authoredOnly && state.data?.hasMore;
+  const replaced = publishedReplacements(catalog.data).join(',');
+  const state = useLab(mode === 'guided' ? 'lab/pathways' : 'lab/objects', mode === 'guided' ? { page } : { q, domain, page, replaced });
+  const items = mode === 'guided' ? state.data?.items || [] : exploreItems(state.data?.items || [], catalog.data, { q, domain, page });
+  const ready = mode === 'guided' ? !!state.data : !!state.data || !!catalog.data;
+  const hasMore = state.data?.hasMore;
   const change = (patch) => setParams({ ...Object.fromEntries(params), page: '1', ...patch });
   return <div className={PAGE}>
     <header className="flex items-end justify-between gap-3">
@@ -74,18 +70,15 @@ export default function Lab() {
     </div>
     {mode === 'explore' && <form className="flex flex-col gap-2 sm:flex-row" onSubmit={(e) => { e.preventDefault(); change({ q: search }); }}>
       <label className="relative min-w-0 flex-1"><span className="sr-only">Cari topik, pemeriksaan, atau kata kunci</span><Search className="absolute left-3 top-3.5 text-ink-muted" size={18} /><input className="input pl-10" value={search} maxLength={120} onChange={(e) => setSearch(e.target.value)} placeholder="Cari topik atau kata kunci…" /></label>
-      <select aria-label="Domain Lab" className="input sm:max-w-52" value={domain} onChange={(e) => change({ domain: e.target.value })}><option value="">Semua domain</option>{Object.entries(DOMAINS).map(([key, title]) => <option key={key} value={key}>{title}</option>)}{authoredRootOptions(catalog.data).map((item) => <option key={item.key} value={item.key}>{item.title}</option>)}</select>
+      <select aria-label="Bidang Lab" className="input sm:max-w-64" value={domain} onChange={(e) => change({ domain: e.target.value })}><option value="">Semua bidang</option>{authoredRootOptions().map((item) => <option key={item.key} value={item.key}>{item.title}</option>)}</select>
       <button className="btn btn-primary min-h-11">Cari</button>
     </form>}
-    <LoadState state={authoredOnly ? catalog : state} />
+    <LoadState state={state} />
     {ready && <>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{items.map((item) => (mode === 'guided' ? <PathwayCard key={item.id} item={item} /> : <ObjectCard key={item.id} item={item} />))}</div>
-      {!items.length && <div className="card p-6 text-center"><h2 className="font-semibold">{q || domain ? 'Belum ada topik yang cocok' : mode === 'guided' ? 'Belum ada jalur belajar' : 'Konten Lab sedang disiapkan'}</h2><p className="mt-1 text-sm text-ink-muted">{q || domain ? 'Coba kata kunci lain atau pilih semua domain.' : 'Konten akan muncul setelah diperiksa dan diterbitkan oleh admin.'}</p></div>}
+      {!items.length && !state.loading && <div className="card p-6 text-center"><h2 className="font-semibold">{domain && !q ? 'Materi bidang ini segera hadir' : q ? 'Belum ada topik yang cocok' : mode === 'guided' ? 'Belum ada jalur belajar' : 'Konten Lab sedang disiapkan'}</h2><p className="mt-1 text-sm text-ink-muted">{q || domain ? 'Coba kata kunci lain atau pilih semua bidang.' : 'Konten akan muncul setelah diperiksa dan diterbitkan oleh admin.'}</p></div>}
       {(page > 1 || hasMore) && <div className="flex items-center justify-center gap-3"><button className="btn btn-secondary min-h-11" disabled={page <= 1} onClick={() => change({ page: String(page - 1) })}>Sebelumnya</button><span className="text-sm">Halaman {page}</span><button className="btn btn-secondary min-h-11" disabled={!hasMore} onClick={() => change({ page: String(page + 1) })}>Berikutnya</button></div>}
     </>}
-    <section aria-label="Visual Learning" className="space-y-2 pt-2"><h2 className="text-sm font-bold uppercase tracking-wide text-ink-muted">Visual Learning</h2>
-      <div className="flex flex-wrap gap-2">{VISUAL.map(([key, title]) => counts[key] ? <Link key={key} to={`/lab?domain=${key}`} className="chip min-h-9 bg-brand-soft text-brand">{title} · {counts[key]}</Link> : <span key={key} className="chip min-h-9 bg-paper-2 text-ink-muted" aria-disabled="true">{title} · segera hadir</span>)}</div>
-    </section>
   </div>;
 }
 
@@ -142,7 +135,7 @@ function LabObjectView({ d, route }) {
   const complete = (value) => { setDone(value); if (pathSlug) markProgress(pathSlug, d.slug, value); };
   async function legacyPractice(id) { setStarting(true); setPracticeError(''); try { const r = await api(`lab/objects/${d.id}/practice`, { method: 'POST', body: { question: id } }); nav(`/kerjakan/${r.id}`); } catch (e) { setPracticeError(errorText(e)); } finally { setStarting(false); } }
   const onNext = () => { if (!done && !practiceFirst) complete(true); };
-  const context = <LabContextBar pathway={route?.pathway} ctx={route?.ctx} domain={DOMAINS[d.domain]} onNext={onNext} showNext={!practicing} />;
+  const context = <LabContextBar pathway={route?.pathway} ctx={route?.ctx} domain={disciplineTitle(d)} onNext={onNext} showNext={!practicing} />;
   const pathNav = route && <LabPathNavigation pathway={route.pathway} ctx={route.ctx} completed={done} onToggleComplete={() => complete(!done)} onNext={onNext} />;
   if (practicing) {
     // A practice object opens straight on case 1; leaving it returns to the pathway (there is no lesson page to go back to).
@@ -152,7 +145,7 @@ function LabObjectView({ d, route }) {
   const lessonCtx = { modality: d.modality, startPractice: () => setPracticing(true), legacyPractice, practiceError, starting };
   return <div className="space-y-4">
     {context}
-    <header><p className="mb-1 text-xs font-bold uppercase tracking-wide text-brand">{DOMAINS[d.domain]}{d.modality ? ` · ${d.modality}` : ''}</p><h1 className="text-2xl font-bold leading-tight md:text-3xl">{d.title}</h1><p className="mt-2 text-ink-muted">{d.summary}</p></header>
+    <header><p className="mb-1 text-xs font-bold uppercase tracking-wide text-brand">{disciplineTitle(d)}{d.modality ? ` · ${d.modality}` : ''}</p><h1 className="text-2xl font-bold leading-tight md:text-3xl">{d.title}</h1><p className="mt-2 text-ink-muted">{d.summary}</p></header>
     {d.demo && <Alert kind="warn">Contoh sintetis untuk mencoba fitur. Bukan data pasien atau materi diagnosis tervalidasi.</Alert>}
     <LabLesson d={d} ctx={lessonCtx} />
     {pathNav}
