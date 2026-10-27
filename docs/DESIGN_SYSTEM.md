@@ -51,8 +51,9 @@ Fokus keyboard: garis 2px warna merek di semua elemen interaktif.
 ## Lab: urutan akademik
 
 Disiplin → topik → modul, dengan urutan tetap: Pencitraan Medis, Oftalmologi, Histologi & Histopatologi, Patologi Klinik,
-Mikrobiologi, Parasitologi, Anatomi (`features/lab/labTaxonomy.js`). Nama dataset tidak menjadi navigasi; ia muncul di
-"Sumber & lisensi". Konten lama dipetakan ke nama kanonik; disiplin tak dikenal tetap ditampilkan setelah yang kanonik.
+Mikrobiologi, Parasitologi, Anatomi. Sumber kebenarannya `shared/lab-taxonomy.json` (dipakai juga backend, lihat `docs/LAB_V1_TAXONOMY.md`);
+tampilan Explore mengelompokkannya lewat `groupByDiscipline` di `features/lab/labDiscovery.js`. Nama dataset tidak menjadi navigasi;
+ia muncul di "Sumber & lisensi". Konten lama dipetakan ke bidang kanonik; bidang tak dikenal tetap ditampilkan setelah yang kanonik.
 
 Contoh gambar berlabel: **judul kategori → gambar → "Ciri yang perlu dicari" → sitasi → sumber/lisensi**. Penjelasan di bawah gambar,
 bersifat umum per kelas, tidak mengklaim temuan pada gambar tertentu. Gambar latihan tidak pernah menampilkan label sebelum dijawab.

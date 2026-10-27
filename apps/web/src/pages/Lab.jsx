@@ -9,8 +9,7 @@ import LabLesson from '@/features/lab/LabLesson';
 import LabPracticeSession from '@/features/lab/LabPracticeSession';
 import { LabContextBar, LabPathNavigation } from '@/features/lab/LabNav';
 import { isPracticeFirst, objectHref, pathNeighbors, pathwayState, stepState } from '@/features/lab/labUtils';
-import { authoredExplore, authoredRootOptions } from '@/features/lab/labDiscovery';
-import { groupByDiscipline, legacyDomainTitle } from '@/features/lab/labTaxonomy';
+import { authoredRootOptions, disciplineTitle, exploreItems, groupByDiscipline, normalizeDiscipline, publishedReplacements } from '@/features/lab/labDiscovery';
 import { markProgress } from '@/features/lab/labProgress';
 
 // Lab pages sit above the fixed bottom navigation (and the safe area on phones) so nothing is ever covered.
@@ -34,7 +33,7 @@ const Progress = ({ done, total, label }) => <ProgressBar value={done} max={tota
 // `context` adds "discipline · topic" for flat results; inside the discipline index that context is the heading above.
 function ObjectCard({ item, context = true }) {
   const practice = item.kind === 'practice';
-  const where = [item.domainTitle || legacyDomainTitle(item.domain), item.modality].filter(Boolean).join(' · ');
+  const where = [item.domainTitle || disciplineTitle(item), item.modality].filter(Boolean).join(' · ');
   return <Link to={item.href || objectHref(item.slug)} className={`${practice ? 'card-practice' : 'card-link'} group flex h-full min-w-0 flex-col gap-1.5 p-4 hover:border-brand`}>
     <span className="meta font-semibold">{practice ? `Latihan · ${item.cases} kasus` : context && where ? where : 'Materi'}</span>
     <h3 className="card-title">{item.title}</h3>
@@ -74,20 +73,19 @@ function DisciplineIndex({ items }) {
 
 export default function Lab() {
   const [params, setParams] = useSearchParams(); const { isAdmin } = useAuth();
-  const q = params.get('q') || ''; const domain = params.get('domain') || ''; const mode = params.get('mode') === 'guided' ? 'guided' : 'explore'; const page = Math.max(1, Number(params.get('page')) || 1);
+  const q = params.get('q') || ''; const domain = normalizeDiscipline(params.get('domain') || ''); const mode = params.get('mode') === 'guided' ? 'guided' : 'explore'; const page = Math.max(1, Number(params.get('page')) || 1);
   const [search, setSearch] = useState(q); useEffect(() => setSearch(q), [q]);
   const overview = useLab('lab/overview'); const next = overview.data?.continue;
   const catalog = useLab('lab/catalog');
-  const authoredOnly = mode === 'explore' && domain.startsWith('catalog:');
-  const state = useLab(mode === 'guided' ? 'lab/pathways' : authoredOnly ? null : 'lab/objects', mode === 'guided' ? { page } : { q, domain, page });
-  const items = mode === 'guided' ? state.data?.items || [] : [
-    ...(authoredOnly ? [] : state.data?.items || []), ...authoredExplore(catalog.data, { q, domain, page }),
-  ];
-  const ready = mode === 'guided' ? !!state.data : authoredOnly ? !!catalog.data : !!state.data || !!catalog.data;
-  const hasMore = !authoredOnly && state.data?.hasMore;
+  // Published authored modules replace their legacy dataset packs; the server drops those packs via `replaced`.
+  const replaced = publishedReplacements(catalog.data).join(',');
+  const state = useLab(mode === 'guided' ? 'lab/pathways' : 'lab/objects', mode === 'guided' ? { page } : { q, domain, page, replaced });
+  const items = mode === 'guided' ? state.data?.items || [] : exploreItems(state.data?.items || [], catalog.data, { q, domain, page });
+  const ready = mode === 'guided' ? !!state.data : !!state.data || !!catalog.data;
+  const hasMore = state.data?.hasMore;
   const change = (patch) => setParams({ ...Object.fromEntries(params), page: '1', ...patch });
   const filtered = mode === 'explore' && !!(q || domain);
-  const domainName = domain.startsWith('catalog:') ? authoredRootOptions(catalog.data).find((o) => o.key === domain)?.title || '' : legacyDomainTitle(domain);
+  const domainName = authoredRootOptions().find((o) => o.key === domain)?.title || '';
   const clear = () => setParams({ mode });
   return <div className={PAGE}>
     <PageHead eyebrow={<span className="inline-flex items-center gap-1.5"><FlaskConical size={15} aria-hidden /> MEDCOEL Lab</span>} title="Belajar lewat gambar dan kasus"
@@ -101,17 +99,18 @@ export default function Lab() {
     <Segmented className="sm:max-w-sm" label="Cara belajar Lab" value={mode} onChange={(k) => change({ mode: k, q: '', domain: '' })} items={[{ value: 'explore', label: 'Explore' }, { value: 'guided', label: 'Guided Learning' }]} />
     {mode === 'explore' && <form role="search" className="flex flex-col gap-2 sm:flex-row" onSubmit={(e) => { e.preventDefault(); change({ q: search }); }}>
       <label className="relative min-w-0 flex-1"><span className="sr-only">Cari modul, topik, atau kata kunci</span><Search className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-faint" size={18} aria-hidden /><input className="input pl-10" type="search" value={search} maxLength={120} onChange={(e) => setSearch(e.target.value)} placeholder="Cari modul atau kata kunci" /></label>
+      <select aria-label="Bidang Lab" className="input sm:max-w-64" value={domain} onChange={(e) => change({ domain: e.target.value })}><option value="">Semua bidang</option>{authoredRootOptions().map((item) => <option key={item.key} value={item.key}>{item.title}</option>)}</select>
       <button className="btn btn-primary">Cari</button>
     </form>}
-    {filtered && <p className="flex flex-wrap items-center gap-2 text-sm text-ink-muted" aria-live="polite">Menampilkan hasil{q && <> untuk <b className="text-ink">“{q}”</b></>}{domain && <> di <b className="text-ink">{domainName || 'disiplin ini'}</b></>}
+    {filtered && <p className="flex flex-wrap items-center gap-2 text-sm text-ink-muted" aria-live="polite">Menampilkan hasil{q && <> untuk <b className="text-ink">“{q}”</b></>}{domain && <> di <b className="text-ink">{domainName || 'bidang ini'}</b></>}
       <button type="button" className="chip chip-brand min-h-8 gap-1 px-3" onClick={clear}><X size={13} aria-hidden /> Tampilkan semua</button></p>}
-    <LoadState state={authoredOnly ? catalog : state} grid />
+    <LoadState state={state} grid />
     {ready && <>
       {mode === 'explore' && !filtered && items.length > 0 ? <DisciplineIndex items={items} />
         : <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{items.map((item) => (mode === 'guided' ? <PathwayCard key={item.id} item={item} /> : <ObjectCard key={item.id} item={item} />))}</div>}
-      {!items.length && <EmptyState icon={FlaskConical} title={filtered ? 'Belum ada yang cocok' : mode === 'guided' ? 'Belum ada jalur belajar' : 'Konten Lab sedang disiapkan'}
+      {!items.length && !state.loading && <EmptyState icon={FlaskConical} title={domain && !q ? 'Materi bidang ini segera hadir' : filtered ? 'Belum ada yang cocok' : mode === 'guided' ? 'Belum ada jalur belajar' : 'Konten Lab sedang disiapkan'}
         action={filtered ? <button type="button" className="btn btn-secondary" onClick={clear}>Tampilkan semua modul</button> : isAdmin ? <Link className="btn btn-secondary" to="/admin/lab">Tambah konten di Kelola Lab</Link> : mode === 'guided' ? <button type="button" className="btn btn-secondary" onClick={() => change({ mode: 'explore' })}>Jelajahi modul</button> : null}>
-        {filtered ? 'Coba kata kunci yang lebih umum, misalnya nama disiplin atau topik.' : 'Konten akan muncul setelah diperiksa dan diterbitkan oleh admin.'}
+        {filtered ? 'Coba kata kunci yang lebih umum, atau pilih semua bidang.' : 'Konten akan muncul setelah diperiksa dan diterbitkan oleh admin.'}
       </EmptyState>}
       {(page > 1 || hasMore) && <div className="flex items-center justify-center gap-3"><button className="btn btn-secondary" disabled={page <= 1} onClick={() => change({ page: String(page - 1) })}>Sebelumnya</button><span className="text-sm text-ink-muted">Halaman {page}</span><button className="btn btn-secondary" disabled={!hasMore} onClick={() => change({ page: String(page + 1) })}>Berikutnya</button></div>}
     </>}
@@ -171,7 +170,7 @@ function LabObjectView({ d, route }) {
   const complete = (value) => { setDone(value); if (pathSlug) markProgress(pathSlug, d.slug, value); };
   async function legacyPractice(id) { setStarting(true); setPracticeError(''); try { const r = await api(`lab/objects/${d.id}/practice`, { method: 'POST', body: { question: id } }); nav(`/kerjakan/${r.id}`); } catch (e) { setPracticeError(errorText(e)); } finally { setStarting(false); } }
   const onNext = () => { if (!done && !practiceFirst) complete(true); };
-  const context = <LabContextBar pathway={route?.pathway} ctx={route?.ctx} domain={legacyDomainTitle(d.domain)} onNext={onNext} showNext={!practicing} />;
+  const context = <LabContextBar pathway={route?.pathway} ctx={route?.ctx} domain={disciplineTitle(d)} onNext={onNext} showNext={!practicing} />;
   const pathNav = route && <LabPathNavigation pathway={route.pathway} ctx={route.ctx} completed={done} onToggleComplete={() => complete(!done)} onNext={onNext} />;
   if (practicing) {
     // A practice object opens straight on case 1; leaving it returns to the pathway (there is no lesson page to go back to).
@@ -181,7 +180,7 @@ function LabObjectView({ d, route }) {
   const lessonCtx = { modality: d.modality, startPractice: () => setPracticing(true), legacyPractice, practiceError, starting };
   return <div className="space-y-4">
     {context}
-    <header><p className="mb-1 text-xs font-bold uppercase tracking-wide text-brand">{legacyDomainTitle(d.domain)}{d.modality ? ` · ${d.modality}` : ''}</p><h1 className="text-2xl font-bold leading-tight md:text-3xl">{d.title}</h1><p className="mt-2 text-ink-muted">{d.summary}</p></header>
+    <header><p className="mb-1 text-xs font-bold uppercase tracking-wide text-brand">{disciplineTitle(d)}{d.modality ? ` · ${d.modality}` : ''}</p><h1 className="text-2xl font-bold leading-tight md:text-3xl">{d.title}</h1><p className="mt-2 text-ink-muted">{d.summary}</p></header>
     {d.demo && <Alert kind="warn">Contoh sintetis untuk mencoba fitur. Bukan data pasien atau materi diagnosis tervalidasi.</Alert>}
     <LabLesson d={d} ctx={lessonCtx} />
     {pathNav}

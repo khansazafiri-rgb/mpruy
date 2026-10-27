@@ -1,0 +1,17 @@
+{
+  "roots": [
+    {"key":"pencitraan-medis","title":"Pencitraan Medis","aliases":["imaging","medical-imaging"]},
+    {"key":"oftalmologi","title":"Oftalmologi","aliases":[]},
+    {"key":"histologi-histopatologi","title":"Histologi & Histopatologi","aliases":["histology","histologi"]},
+    {"key":"patologi-klinik","title":"Patologi Klinik","aliases":["clinical_pathology"]},
+    {"key":"mikrobiologi","title":"Mikrobiologi","aliases":["microbiology"]},
+    {"key":"parasitologi","title":"Parasitologi","aliases":["parasitology"]},
+    {"key":"anatomi","title":"Anatomi","aliases":["anatomy"]}
+  ],
+  "modules": [
+    {"dataset":"pneumoniamnist","root":"pencitraan-medis","child":"chest-xray","childTitle":"Chest X-Ray","moduleKey":"cxr-normal-pneumonia-v1","title":"Chest X-Ray: Normal vs Pneumonia","keywords":"PneumoniaMNIST toraks radiologi normal pneumonia CXR"},
+    {"dataset":"octmnist","root":"oftalmologi","child":"imaging-retina","childTitle":"OCT Retina","moduleKey":"oct-retina-dasar-v1","title":"Dasar Interpretasi OCT Retina","keywords":"OCTMNIST retina mata OCT CNV DME drusen normal"},
+    {"dataset":"pathmnist","root":"histologi-histopatologi","child":"histologi-kolorektal","childTitle":"Histologi Kolorektal","moduleKey":"histologi-kolorektal-pathmnist-v1","title":"Pola Jaringan Histologi Kolorektal","keywords":"PathMNIST H&E histologi kolorektal jaringan adiposa latar belakang debris limfosit mukus otot polos mukosa stroma epitel"},
+    {"dataset":"bloodmnist","root":"patologi-klinik","child":"hematologi","childTitle":"Hematologi","moduleKey":"sel-darah-perifer-bloodmnist-v1","title":"Identifikasi Sel Darah Perifer","keywords":"BloodMNIST hematologi granulosit basofil eosinofil eritroblas limfosit monosit neutrofil trombosit sel darah perifer"}
+  ]
+}
