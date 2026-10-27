@@ -81,7 +81,7 @@ def download(spec: DatasetSpec, cache_dir: Path, *, progress=None, cancelled=Non
         partial.replace(target.with_suffix(".npz.invalid"))
         return download(spec, cache_dir, progress=progress, cancelled=cancelled)
     with response:
-        status = response.status if hasattr(response, "status") else response.getcode()
+        status = getattr(response, "status", None) or (response.getcode() if hasattr(response, "getcode") else 200)
         if status == 206:
             content_range = response.headers.get("Content-Range", "")
             if not offset or not content_range.startswith(f"bytes {offset}-"):
