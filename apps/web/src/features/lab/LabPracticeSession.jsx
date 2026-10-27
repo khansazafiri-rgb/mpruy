@@ -21,7 +21,7 @@ function Navigator({ list, answers, visited, index, onJump }) {
 
 // Focused practice: image -> question -> options, a navigator, honest session controls and a summary.
 // `about` (collapsed) holds session-level notes once, instead of repeating disclaimers in every case.
-export default function LabPracticeSession({ questions, onExit, onFinish, exitLabel = 'Kembali', about, children }) {
+export default function LabPracticeSession({ questions, onExit, onFinish, exitLabel = 'Kembali', about, children, renderText, sourceList }) {
   const [answers, setAnswers] = useState({}); const [visited, setVisited] = useState(() => new Set());
   const [review, setReview] = useState(null); const [index, setIndex] = useState(0); const [view, setView] = useState('q');
   const list = useMemo(() => (review ? questions.filter((q) => review.includes(q.id)) : questions), [questions, review]);
@@ -48,6 +48,7 @@ export default function LabPracticeSession({ questions, onExit, onFinish, exitLa
         <button type="button" className="btn btn-ghost min-h-11" onClick={onExit}>{exitLabel}</button>
       </div>
     </div>
+    {summary.answered === summary.total && sourceList}
     {children}
   </section>;
 
@@ -61,7 +62,8 @@ export default function LabPracticeSession({ questions, onExit, onFinish, exitLa
     </div>
     <Navigator list={list} answers={answers} visited={visited} index={Math.min(index, list.length - 1)} onJump={setIndex} />
     {about}
-    <LabQuestion key={q.id} question={q} saved={answers[q.id]} onAnswered={(a) => setAnswers((prev) => ({ ...prev, [q.id]: a }))} />
+    <LabQuestion key={q.id} question={q} saved={answers[q.id]} onAnswered={(a) => setAnswers((prev) => ({ ...prev, [q.id]: a }))} renderText={renderText} />
+    {answered && sourceList}
     <div className="flex items-center justify-between gap-2">
       <button type="button" className="btn btn-secondary min-h-11" disabled={index <= 0} onClick={() => setIndex(index - 1)}>← Sebelumnya</button>
       <button type="button" className={`btn min-h-11 ${answered ? 'btn-primary' : 'btn-secondary'}`} onClick={() => (index >= list.length - 1 ? setView('summary') : setIndex(index + 1))}>{index >= list.length - 1 ? 'Lihat hasil' : answered ? 'Berikutnya →' : 'Lewati →'}</button>

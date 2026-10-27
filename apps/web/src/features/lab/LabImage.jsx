@@ -87,11 +87,11 @@ export default function LabImage({ asset, question = false, point, onPoint, regi
         {available.map((k) => <button key={k} type="button" aria-pressed={layers[k]} className={`btn btn-sm ${layers[k] ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setLayers({ ...layers, [k]: !layers[k] })}>{k === 'anatomy' ? 'Anatomi' : 'Temuan'}</button>)}
       </div>}
     </div>}
-    <div ref={wrap} className="flex min-w-0 justify-center rounded-2xl border border-line bg-page p-2 sm:p-3">
+    <div ref={wrap} className="flex min-w-0 items-center justify-center">
       <div
         ref={scroller} tabIndex={0} role="group" aria-label="Area gambar; gunakan tombol panah atau seret untuk menggeser saat diperbesar, plus/minus untuk zoom"
-        className={`relative max-w-full overflow-auto rounded-lg focus:outline focus:outline-2 focus:outline-brand ${canDrag ? 'cursor-grab active:cursor-grabbing' : ''}`}
-        style={fit ? { width: fit.w, height: fit.h, touchAction: canDrag ? 'none' : 'auto' } : undefined}
+        className={`relative max-w-full overflow-auto rounded-xl border border-line bg-page p-2 focus:outline focus:outline-2 focus:outline-brand ${canDrag ? 'cursor-grab active:cursor-grabbing' : ''}`}
+        style={fit ? { width: fit.w + FRAME_PAD, height: fit.h + FRAME_PAD, touchAction: canDrag ? 'none' : 'auto' } : undefined}
         onKeyDown={keyZoom} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}
       >
         <div className="relative" style={fit ? { width: fit.w * zoom } : undefined}>
