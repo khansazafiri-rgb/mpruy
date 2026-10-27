@@ -8,6 +8,7 @@ import LabLesson from '@/features/lab/LabLesson';
 import LabPracticeSession from '@/features/lab/LabPracticeSession';
 import { LabContextBar, LabPathNavigation } from '@/features/lab/LabNav';
 import { isPracticeFirst, objectHref, pathNeighbors, pathwayState, stepState } from '@/features/lab/labUtils';
+import { authoredExplore, authoredRootOptions } from '@/features/lab/labDiscovery';
 import { markProgress } from '@/features/lab/labProgress';
 
 const DOMAINS = { imaging: 'Medical Imaging', clinical_pathology: 'Patologi Klinik', microbiology: 'Mikrobiologi', parasitology: 'Parasitologi', histology: 'Histologi & Histopatologi', anatomy: 'Anatomi Interaktif' };
@@ -26,8 +27,8 @@ const Progress = ({ done, total, label }) => <div className="h-2 w-full overflow
 // Lessons and practice look different on purpose: a learner should know what they are about to open.
 function ObjectCard({ item }) {
   const practice = item.kind === 'practice';
-  return <Link to={objectHref(item.slug)} className={`card group flex h-full min-w-0 flex-col gap-1.5 border-l-4 p-4 transition hover:border-brand focus:outline-brand ${practice ? 'border-l-gold bg-gold-soft/30' : 'border-l-brand'}`}>
-    <span className={`text-xs font-bold uppercase tracking-wide ${practice ? 'text-ink' : 'text-brand'}`}>{practice ? `Latihan · ${item.cases} kasus` : `Materi · ${DOMAINS[item.domain] || item.domain}`}</span>
+  return <Link to={item.href || objectHref(item.slug)} className={`card group flex h-full min-w-0 flex-col gap-1.5 border-l-4 p-4 transition hover:border-brand focus:outline-brand ${practice ? 'border-l-gold bg-gold-soft/30' : 'border-l-brand'}`}>
+    <span className={`text-xs font-bold uppercase tracking-wide ${practice ? 'text-ink' : 'text-brand'}`}>{practice ? `Latihan · ${item.cases} kasus` : `Materi · ${item.domainTitle || DOMAINS[item.domain] || item.domain}`}</span>
     <h3 className="text-lg font-semibold leading-snug">{item.title}</h3>
     <p className="text-sm text-ink-muted">{item.summary}</p>
     <span className="mt-auto flex items-center justify-between pt-1 text-sm font-semibold text-brand"><span>{practice ? 'Mulai latihan' : item.modality || 'Buka materi'}</span><ArrowRight size={16} aria-hidden /></span>
@@ -45,26 +46,25 @@ function PathwayCard({ item }) {
 }
 
 const VISUAL = [['imaging', 'Medical Imaging'], ['anatomy', 'Anatomi Interaktif'], ['clinical_pathology', 'Patologi Klinik'], ['microbiology', 'Mikrobiologi'], ['parasitology', 'Parasitologi'], ['histology', 'Histologi']];
-function catalogTrail(node, nodes) {
-  const names = [node.title]; const seen = new Set([node.key]); let parent = node.parent;
-  while (parent && !seen.has(parent)) { const p = nodes.find((x) => x.key === parent); if (!p) break; names.unshift(p.title); seen.add(parent); parent = p.parent; }
-  return names.join(' › ');
-}
-
 export default function Lab() {
   const [params, setParams] = useSearchParams(); const { isAdmin } = useAuth();
   const q = params.get('q') || ''; const domain = params.get('domain') || ''; const mode = params.get('mode') === 'guided' ? 'guided' : 'explore'; const page = Math.max(1, Number(params.get('page')) || 1);
   const [search, setSearch] = useState(q); useEffect(() => setSearch(q), [q]);
   const overview = useLab('lab/overview'); const next = overview.data?.continue; const counts = overview.data?.domains || {};
   const catalog = useLab('lab/catalog');
-  const state = useLab(mode === 'guided' ? 'lab/pathways' : 'lab/objects', mode === 'guided' ? { page } : { q, domain, page });
+  const authoredOnly = mode === 'explore' && domain.startsWith('catalog:');
+  const state = useLab(mode === 'guided' ? 'lab/pathways' : authoredOnly ? null : 'lab/objects', mode === 'guided' ? { page } : { q, domain, page });
+  const items = mode === 'guided' ? state.data?.items || [] : [
+    ...(authoredOnly ? [] : state.data?.items || []), ...authoredExplore(catalog.data, { q, domain, page }),
+  ];
+  const ready = mode === 'guided' ? !!state.data : authoredOnly ? !!catalog.data : !!state.data || !!catalog.data;
+  const hasMore = !authoredOnly && state.data?.hasMore;
   const change = (patch) => setParams({ ...Object.fromEntries(params), page: '1', ...patch });
   return <div className={PAGE}>
     <header className="flex items-end justify-between gap-3">
       <div className="min-w-0"><p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-brand"><FlaskConical size={15} aria-hidden /> MEDCOEL Lab</p><h1 className="text-xl font-bold leading-tight sm:text-2xl">Belajar lewat gambar, kasus, dan anatomi</h1></div>
       {isAdmin && <Link className="shrink-0 text-xs text-ink-muted underline" to="/admin/lab">Kelola</Link>}
     </header>
-    {catalog.data?.placements?.length > 0 && <section className="card space-y-3 p-4" aria-label="Katalog modul Lab"><h2 className="text-lg font-semibold">Katalog modul</h2><p className="text-sm text-ink-muted">Modul dapat muncul di beberapa tempat dalam katalog.</p><div className="space-y-2">{catalog.data.nodes.map((node) => { const placements = catalog.data.placements.filter((p) => p.catalog === node.key); const modules = placements.map((p) => catalog.data.modules.find((m) => m.key === p.module)).filter(Boolean); if (!modules.length) return null; return <div key={node.key}><p className="text-sm font-semibold">{catalogTrail(node, catalog.data.nodes)}</p><div className="flex flex-wrap gap-2">{modules.map((m) => <Link key={m.key} to={`/lab/modul/${m.key}`} className="btn btn-secondary btn-sm">{m.title}</Link>)}</div></div>; })}</div></section>}
     {next && <section className="card flex items-center justify-between gap-3 p-4" aria-label="Lanjutkan belajar">
       <div className="min-w-0 flex-1 space-y-1.5"><p className="text-xs font-bold uppercase tracking-wide text-brand">Lanjutkan belajar</p><p className="truncate text-lg font-semibold">{next.pathway.title}</p><Progress done={next.completed.length} total={next.total} label="Progres jalur" /><p className="text-xs text-ink-muted">{next.completed.length} / {next.total} selesai</p></div>
       <Link className="btn btn-primary min-h-11 shrink-0" to={objectHref(next.resume, next.pathway.slug)}>Lanjutkan <ArrowRight size={16} aria-hidden /></Link>
@@ -74,14 +74,14 @@ export default function Lab() {
     </div>
     {mode === 'explore' && <form className="flex flex-col gap-2 sm:flex-row" onSubmit={(e) => { e.preventDefault(); change({ q: search }); }}>
       <label className="relative min-w-0 flex-1"><span className="sr-only">Cari topik, pemeriksaan, atau kata kunci</span><Search className="absolute left-3 top-3.5 text-ink-muted" size={18} /><input className="input pl-10" value={search} maxLength={120} onChange={(e) => setSearch(e.target.value)} placeholder="Cari topik atau kata kunci…" /></label>
-      <select aria-label="Domain Lab" className="input sm:max-w-52" value={domain} onChange={(e) => change({ domain: e.target.value })}><option value="">Semua domain</option>{Object.entries(DOMAINS).map(([key, title]) => <option key={key} value={key}>{title}</option>)}</select>
+      <select aria-label="Domain Lab" className="input sm:max-w-52" value={domain} onChange={(e) => change({ domain: e.target.value })}><option value="">Semua domain</option>{Object.entries(DOMAINS).map(([key, title]) => <option key={key} value={key}>{title}</option>)}{authoredRootOptions(catalog.data).map((item) => <option key={item.key} value={item.key}>{item.title}</option>)}</select>
       <button className="btn btn-primary min-h-11">Cari</button>
     </form>}
-    <LoadState state={state} />
-    {state.data && <>
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{state.data.items.map((item) => (mode === 'guided' ? <PathwayCard key={item.id} item={item} /> : <ObjectCard key={item.id} item={item} />))}</div>
-      {!state.data.items.length && <div className="card p-6 text-center"><h2 className="font-semibold">{q || domain ? 'Belum ada topik yang cocok' : mode === 'guided' ? 'Belum ada jalur belajar' : 'Konten Lab sedang disiapkan'}</h2><p className="mt-1 text-sm text-ink-muted">{q || domain ? 'Coba kata kunci lain atau pilih semua domain.' : 'Konten akan muncul setelah diperiksa dan diterbitkan oleh admin.'}</p></div>}
-      {(page > 1 || state.data.hasMore) && <div className="flex items-center justify-center gap-3"><button className="btn btn-secondary min-h-11" disabled={page <= 1} onClick={() => change({ page: String(page - 1) })}>Sebelumnya</button><span className="text-sm">Halaman {page}</span><button className="btn btn-secondary min-h-11" disabled={!state.data.hasMore} onClick={() => change({ page: String(page + 1) })}>Berikutnya</button></div>}
+    <LoadState state={authoredOnly ? catalog : state} />
+    {ready && <>
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{items.map((item) => (mode === 'guided' ? <PathwayCard key={item.id} item={item} /> : <ObjectCard key={item.id} item={item} />))}</div>
+      {!items.length && <div className="card p-6 text-center"><h2 className="font-semibold">{q || domain ? 'Belum ada topik yang cocok' : mode === 'guided' ? 'Belum ada jalur belajar' : 'Konten Lab sedang disiapkan'}</h2><p className="mt-1 text-sm text-ink-muted">{q || domain ? 'Coba kata kunci lain atau pilih semua domain.' : 'Konten akan muncul setelah diperiksa dan diterbitkan oleh admin.'}</p></div>}
+      {(page > 1 || hasMore) && <div className="flex items-center justify-center gap-3"><button className="btn btn-secondary min-h-11" disabled={page <= 1} onClick={() => change({ page: String(page - 1) })}>Sebelumnya</button><span className="text-sm">Halaman {page}</span><button className="btn btn-secondary min-h-11" disabled={!hasMore} onClick={() => change({ page: String(page + 1) })}>Berikutnya</button></div>}
     </>}
     <section aria-label="Visual Learning" className="space-y-2 pt-2"><h2 className="text-sm font-bold uppercase tracking-wide text-ink-muted">Visual Learning</h2>
       <div className="flex flex-wrap gap-2">{VISUAL.map(([key, title]) => counts[key] ? <Link key={key} to={`/lab?domain=${key}`} className="chip min-h-9 bg-brand-soft text-brand">{title} · {counts[key]}</Link> : <span key={key} className="chip min-h-9 bg-paper-2 text-ink-muted" aria-disabled="true">{title} · segera hadir</span>)}</div>
