@@ -177,16 +177,15 @@ function Work({ data, setData, repeats }) {
       <button type="button" className="btn-primary btn-sm" onClick={() => setConfirm(true)} disabled={finishing}><Check size={15} /> Selesai</button>
     </>}>
       <div className="study-heading">
-        <div className="mb-5 flex items-center justify-between gap-2">
-          <Link to="/mata-kuliah" className="inline-flex items-center gap-2 text-xs font-medium text-ink-muted hover:text-brand"><ArrowLeft size={14} /> Mata kuliah</Link>
+        <div className="mb-3 flex items-center justify-between gap-2">
+          <Link to="/mata-kuliah" className="inline-flex min-h-9 items-center gap-2 text-sm font-medium text-ink-muted hover:text-brand"><ArrowLeft size={14} /> Mata kuliah</Link>
           <Badge className={learning ? 'bg-brand-soft text-brand-dark' : 'bg-progress-soft text-progress'}><BookOpen size={12} /> {learning ? 'Mode Learning' : 'Mode ujian'}</Badge>
         </div>
-        <p className="eyebrow">{learning ? 'Ruang belajar' : 'Ruang simulasi'}</p>
         <h1>{a.title}</h1>
-        <p className="mt-2 text-sm text-ink-muted">{q.chapterTitle || (learning ? 'Pelajari satu soal, pahami satu konsep.' : 'Kerjakan dengan tenang. Jawaban disimpan otomatis.')}</p>
+        {q.chapterTitle && <p className="mt-1 text-sm text-ink-muted">{q.chapterTitle}</p>}
       </div>
       <div className="mb-4 flex items-center gap-4 lg:hidden">
-        <span className="text-xs text-ink-muted">{doneCount}/{qs.length} dijawab</span>
+        <span className="text-[13px] text-ink-muted">{doneCount}/{qs.length} dijawab</span>
         <ProgressBar value={doneCount} max={qs.length} className="flex-1" label="Soal terjawab" />
         <button type="button" className="btn-secondary btn-sm" onClick={() => setGrid(true)}><Grid3X3 size={14} /> Soal <ChevronDown size={12} /></button>
       </div>
@@ -205,12 +204,12 @@ function Work({ data, setData, repeats }) {
         </div>
         <aside className="study-sidebar card" aria-label="Navigasi soal">
           <p className="text-sm font-semibold">Sesi belajarmu</p>
-          <div className="mb-3 mt-5 flex items-baseline justify-between"><span className="text-xs text-ink-muted">Soal dijawab</span><span className="text-sm font-semibold">{doneCount}<span className="font-normal text-ink-muted"> / {qs.length}</span></span></div>
+          <div className="mb-3 mt-5 flex items-baseline justify-between"><span className="text-[13px] text-ink-muted">Soal dijawab</span><span className="text-sm font-semibold">{doneCount}<span className="font-normal text-ink-muted"> / {qs.length}</span></span></div>
           <ProgressBar value={doneCount} max={qs.length} label="Soal terjawab" />
           <div className="study-save mb-6 mt-3" role="status">{saving === 'Menyimpan...' ? <Loader2 size={13} className="animate-spin" /> : <Check size={13} className="text-brand" />}{saveStatus || 'Siap mengerjakan'}</div>
-          <div className="mb-4 flex items-center justify-between border-t border-line pt-5"><h2 className="text-xs font-semibold">Navigasi soal</h2><button type="button" onClick={() => setGrid(true)} className="rounded-md p-1 text-ink-muted hover:bg-page" aria-label="Perbesar daftar soal"><Grid3X3 size={14} /></button></div>
+          <div className="mb-4 flex items-center justify-between border-t border-line pt-5"><h2 className="text-sm font-semibold">Navigasi soal</h2><button type="button" onClick={() => setGrid(true)} className="rounded-md p-1 text-ink-muted hover:bg-page" aria-label="Perbesar daftar soal"><Grid3X3 size={14} /></button></div>
           <div className="max-h-[40vh] overflow-y-auto p-1 -m-1"><QuestionNavigator {...navProps} /></div>
-          <p className="mt-6 border-t border-line pt-4 text-xs leading-relaxed text-ink-muted">{learning ? 'Cek jawaban untuk membuka pembahasan. Pahami konsepnya sebelum lanjut.' : 'Tandai soal yang ingin kamu tinjau lagi sebelum menyelesaikan simulasi.'}</p>
+          <p className="mt-6 border-t border-line pt-4 text-[13px] leading-relaxed text-ink-muted">{learning ? 'Cek jawaban untuk membuka pembahasan. Pahami konsepnya sebelum lanjut.' : 'Tandai soal yang ingin kamu tinjau lagi sebelum menyelesaikan simulasi.'}</p>
         </aside>
       </div>
       <Modal open={grid} onClose={() => setGrid(false)} title="Navigasi soal" size="lg"><QuestionNavigator {...navProps} expanded /></Modal>

@@ -1,6 +1,7 @@
-import { ArrowDown, ArrowUp, Eye, EyeOff, Pencil, Plus, Trash2 } from 'lucide-react';
-import { useState } from 'react';
+import { ArrowDown, ArrowUp, Eye, EyeOff, NotebookPen, Pencil, Plus, Trash2 } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ChapterNotesEditor from '@/components/admin/ChapterNotesEditor';
 import { useCatalog } from '@/components/admin/useCatalog';
 import Illustration, { ILLUSTRATION_KEYS } from '@/components/Illustration';
 import { Alert, Field, Modal } from '@/components/ui';
@@ -63,6 +64,12 @@ export default function SubjectsAdmin() {
   const [open, setOpen] = useState('');
   const [newCh, setNewCh] = useState('');
   const [error, setError] = useState('');
+  const [notesFor, setNotesFor] = useState(null); // { chapter, subjectName }
+  // Hanya id BAB yang punya catatan, bukan isinya.
+  const [noted, setNoted] = useState(() => new Set());
+  const loadNoted = useCallback(() => pb.collection('chapter_notes').getFullList({ filter: "content != ''", fields: 'chapter', requestKey: null })
+    .then((rows) => setNoted(new Set(rows.map((r) => r.chapter)))).catch(() => {}), []);
+  useEffect(() => { loadNoted(); }, [loadNoted]);
   const run = async (fn) => { setError(''); try { await fn(); await reload(); } catch (e) { setError(errorText(e)); } };
 
   const addChapter = (sid) => run(async () => {
@@ -85,7 +92,7 @@ export default function SubjectsAdmin() {
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <h1 className="page-title">Mata kuliah & BAB</h1>
+        <div><h1 className="page-title">Mata kuliah & BAB</h1><p className="mt-1 max-w-2xl text-[15px] text-ink-muted">Atur mata kuliah dan BAB yang dilihat siswa. Buka “Kelola BAB” untuk menulis <b className="text-ink">catatan materi</b> tiap BAB.</p></div>
         <button type="button" className="btn-primary" onClick={() => setEdit('new')}><Plus size={18} /> Mata kuliah baru</button>
       </div>
       <Alert>{error}</Alert>
@@ -112,6 +119,7 @@ export default function SubjectsAdmin() {
                       <li key={c.id} className="flex items-center gap-2 py-2">
                         <span className="w-6 text-xs text-ink-muted">{i + 1}</span>
                         <span className={`flex-1 ${c.hidden ? 'text-ink-faint line-through' : ''}`}>{c.title}</span>
+                        <button type="button" className={`inline-flex min-h-8 items-center gap-1 rounded-lg px-2 text-xs font-semibold ${noted.has(c.id) ? 'bg-brand-soft text-brand-dark' : 'text-ink-muted hover:bg-page hover:text-ink'}`} onClick={() => setNotesFor({ chapter: c, subjectName: s.name })} aria-label={`${noted.has(c.id) ? 'Ubah' : 'Tulis'} catatan materi ${c.title}`}><NotebookPen size={14} aria-hidden /> {noted.has(c.id) ? 'Catatan ✓' : 'Catatan'}</button>
                         <Link to={`/admin/soal?subject=${s.id}`} className="text-xs font-semibold text-academic hover:underline">soal</Link>
                         <button type="button" className="rounded p-1 hover:bg-page" onClick={() => move(s.id, i, -1)} aria-label="Naik"><ArrowUp size={15} /></button>
                         <button type="button" className="rounded p-1 hover:bg-page" onClick={() => move(s.id, i, 1)} aria-label="Turun"><ArrowDown size={15} /></button>
@@ -131,6 +139,7 @@ export default function SubjectsAdmin() {
           );
         })}
       </div>
+      {notesFor && <ChapterNotesEditor chapter={notesFor.chapter} subjectName={notesFor.subjectName} onClose={() => setNotesFor(null)} onSaved={loadNoted} />}
       {edit && <SubjectForm initial={edit === 'new' ? null : edit} count={subjects.length} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); reload(); }} />}
     </div>
   );

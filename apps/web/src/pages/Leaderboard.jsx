@@ -45,7 +45,7 @@ export default function Leaderboard() {
             <div className="my-rank surface-forest flex flex-wrap items-center gap-3 p-5">
               <span className="my-rank-dots tex-halftone-light" aria-hidden />
               <span className="font-display text-3xl font-extrabold text-gold">#{data.me.rank}</span>
-              <p className="flex-1">Peringkatmu{me?.leaderboardAnonymous ? ' (tampil sebagai Anonim)' : ''}<span className="block text-sm opacity-80">Soal {data.me.questionPoints} · Simulasi {data.me.simPoints}</span></p>
+              <p className="flex-1">Peringkatmu{me?.leaderboardAnonymous ? ' (tampil sebagai Anonim)' : ''}{data.me.title && <span className="block font-semibold text-gold">{data.me.title}</span>}<span className="block text-sm opacity-80">Soal {data.me.questionPoints} · Simulasi {data.me.simPoints}</span></p>
               <span className="font-display text-xl font-bold">{data.me.points} poin</span>
             </div>
           ) : <p className="text-sm text-ink-muted">Kamu belum masuk daftar di periode ini.</p>}
@@ -58,6 +58,7 @@ export default function Leaderboard() {
                 </span>
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-semibold">{it.name}{it.isMe ? ' (kamu)' : ''}</p>
+                  {it.title && <p className="truncate text-[13px] font-semibold text-brand">{it.title}</p>}
                   <p className="truncate text-xs text-ink-muted">{it.campus ? `${it.campus} · ` : ''}soal {it.questionPoints} · simulasi {it.simPoints}</p>
                 </div>
                 <span className="font-semibold tabular-nums">{it.points}</span>

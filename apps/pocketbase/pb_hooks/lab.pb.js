@@ -2,7 +2,7 @@
 routerAdd('GET', '/api/medcoel/lab/objects', (e) => {
   const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); const user = u.requireUser(e);
   const page = Math.min(10000, Math.max(1, parseInt(u.query(e, 'page'), 10) || 1));
-  return e.json(200, lab.browse(e.app, u.query(e, 'q'), u.query(e, 'domain'), page, { demo: user.getString('role') === 'admin' && u.query(e, 'demo') === '1' }));
+  return e.json(200, lab.browse(e.app, u.query(e, 'q'), u.query(e, 'domain'), page, { demo: user.getString('role') === 'admin' && u.query(e, 'demo') === '1', replaced: u.query(e, 'replaced') }));
 });
 routerAdd('GET', '/api/medcoel/lab/objects/{key}', (e) => {
   const u = require(`${__hooks}/lib/util.js`); const lab = require(`${__hooks}/lib/lab.js`); const user = u.requireUser(e);

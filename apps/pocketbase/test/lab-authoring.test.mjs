@@ -45,6 +45,8 @@ test('complete example previews and applies as draft; publish is explicit and an
   publish('module', 'observasi-visual-dasar'); publish('placement', 'observasi-di-latihan'); publish('placement', 'observasi-di-visual');
   const catalog = author.studentCatalog(db);
   assert.equal(catalog.placements.length, 2); assert.equal(catalog.modules.length, 1);
+  assert.deepEqual(catalog.modules[0].practice, [{ key: 'bank-observasi', title: 'Pertanyaan orientasi', count: 1 }]);
+  assert.ok(!JSON.stringify(catalog).includes('"answer"'));
   const student = author.studentModule(db, 'observasi-visual-dasar', false);
   assert.equal(student.questionBanks['bank-observasi'][0].answer, undefined);
   assert.equal(author.answer(db, 'observasi-visual-dasar', 'bank-observasi', 'q-observasi-1', { response: 'A' }).correct, true);

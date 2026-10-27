@@ -60,7 +60,7 @@ export default function Questions() {
 
       {tab === 'english' ? <EnglishSourceExport /> : tab === 'import' ? <div className="card p-5"><ImportPanel onDone={() => load()} /></div> : (
         <>
-          <div className="grid gap-2 sm:grid-cols-3 lg:grid-cols-7">
+          <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
             <select className="input py-2" value={f.subject} onChange={(e) => set('subject', e.target.value)} aria-label="Mata kuliah"><option value="">Semua mata kuliah</option>{subjects.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}</select>
             <select className="input py-2" value={f.chapter} onChange={(e) => set('chapter', e.target.value)} disabled={!f.subject} aria-label="BAB"><option value="">Semua BAB</option>{chapterChoicesOf(f.subject).map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}</select>
             <select className="input py-2" value={f.qtype} onChange={(e) => set('qtype', e.target.value)} aria-label="Tipe"><option value="">Semua tipe</option>{Object.entries(QTYPE).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select>

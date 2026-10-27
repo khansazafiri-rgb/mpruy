@@ -14,7 +14,7 @@ function Navigator({ list, answers, visited, index, onJump }) {
     return <li key={q.id}><button type="button" aria-current={st === 'current' ? 'step' : undefined} aria-label={`Soal ${i + 1}, ${WORD[st]}`} onClick={() => { onJump(i); setOpen(false); }} className={`h-10 w-full rounded-lg border text-sm font-bold ${TONE[st]}`}>{i + 1}</button></li>;
   })}</ol>;
   return <div className="space-y-2">
-    <button type="button" className="btn btn-secondary min-h-11 w-full justify-between md:hidden" aria-expanded={open} onClick={() => setOpen(!open)}><span>Soal {index + 1} / {list.length}</span><ChevronDown size={18} className={open ? 'rotate-180' : ''} /></button>
+    <button type="button" className="btn btn-secondary min-h-11 w-full justify-between md:hidden" aria-expanded={open} onClick={() => setOpen(!open)}><span>Daftar soal</span><ChevronDown size={18} className={open ? 'rotate-180' : ''} /></button>
     <div className={`${open ? 'block' : 'hidden'} max-h-60 overflow-y-auto md:block md:max-h-32`}>{grid}</div>
   </div>;
 }
@@ -54,7 +54,7 @@ export default function LabPracticeSession({ questions, onExit, onFinish, exitLa
 
   return <section className="min-w-0 space-y-3" aria-label="Sesi latihan">
     <div className="flex flex-wrap items-center justify-between gap-2">
-      <p className="text-base font-bold" aria-live="polite">{review ? 'Tinjau · ' : ''}Kasus {Math.min(index, list.length - 1) + 1} / {list.length}</p>
+      <p className="text-base font-bold" aria-live="polite">{review ? 'Tinjau · ' : ''}Soal {Math.min(index, list.length - 1) + 1} dari {list.length}</p>
       <div className="flex flex-wrap gap-1">
         {review ? <><button type="button" className="btn btn-secondary btn-sm min-h-10" onClick={() => setView('summary')}>Kembali ke ringkasan</button><button type="button" className="btn btn-ghost btn-sm min-h-10" onClick={leaveReview}>Keluar review</button></>
           : <button type="button" className="btn btn-ghost btn-sm min-h-10" onClick={() => setView('summary')}>Akhiri latihan</button>}

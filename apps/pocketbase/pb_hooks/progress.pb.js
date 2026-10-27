@@ -133,6 +133,14 @@ routerAdd("GET", "/api/medcoel/leaderboard", (e) => {
     }
     return campusNames[id];
   };
+  // Julukan tiap baris yang tampil (50 teratas dan diri sendiri), dihitung sekaligus.
+  const ach = require(`${__hooks}/lib/achievements.js`);
+  const shownIds = rows.slice(0, 50).map((r) => r.user);
+  const mine = rows.find((r) => r.user === user.id);
+  if (mine) shownIds.push(mine.user);
+  const stats = ach.collect(e.app, shownIds, { withStreak: true });
+  const totals = ach.subjectTotals(e.app);
+  const titleOf = (uid) => { const t = stats[uid] ? ach.evaluate(stats[uid], totals).title : null; return t ? t.title : ""; };
   let me = null;
   let rank = 0;
   let prev = null;
@@ -146,9 +154,19 @@ routerAdd("GET", "/api/medcoel/leaderboard", (e) => {
       questionPoints: r.qpoints,
       simPoints: r.spoints,
       isMe: r.user === user.id,
+      title: i < 50 || r.user === user.id ? titleOf(r.user) : "",
     };
     if (entry.isMe) me = entry;
     return entry;
   });
   return e.json(200, { period: period, scope: scope, since: since ? since.toISOString() : "", simPerCase: lb.simWeight(e.app), items: items.slice(0, 50), me: me });
+});
+
+// Pencapaian dan julukan diri sendiri (dihitung dari data yang ada, tidak mengubah poin).
+routerAdd("GET", "/api/medcoel/achievements", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const ach = require(`${__hooks}/lib/achievements.js`);
+  const user = u.requireUser(e);
+  const stats = ach.collect(e.app, [user.id], { withStreak: true })[user.id];
+  return e.json(200, ach.evaluate(stats, ach.subjectTotals(e.app)));
 });
