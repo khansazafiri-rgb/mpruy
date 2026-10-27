@@ -30,8 +30,8 @@ function sanitize(html) {
   return DOMPurify.sanitize(html, { ALLOWED_TAGS, ALLOWED_ATTR, ALLOW_DATA_ATTR: false });
 }
 
-export function Html({ text, as: Tag = 'span', className = '' }) {
-  return <Tag className={className} dangerouslySetInnerHTML={{ __html: sanitize(markupToHtml(text)) }} />;
+export function Html({ text, as: Tag = 'span', className = '', marks = false }) {
+  return <Tag className={className} dangerouslySetInnerHTML={{ __html: sanitize(markupToHtml(text, { marksInHtml: marks })) }} />;
 }
 
 function Img({ url, caption, width }) {
@@ -130,15 +130,15 @@ function Block({ b }) {
 }
 
 // value: string | Block[]
-export function Content({ value, inline = false }) {
+export function Content({ value, inline = false, marks = false }) {
   if (value === null || value === undefined || value === '') return null;
   if (typeof value === 'string' || typeof value === 'number') {
-    return inline ? <Html text={String(value)} /> : <Html as="div" text={String(value)} />;
+    return inline ? <Html text={String(value)} marks={marks} /> : <Html as="div" text={String(value)} marks={marks} />;
   }
   if (!Array.isArray(value)) return null;
   return <>{value.map((b, i) => <Block key={i} b={b} />)}</>;
 }
 
-export default function RichContent({ value, className = '' }) {
-  return <div className={`rich ${className}`}><Content value={value} /></div>;
+export default function RichContent({ value, className = '', marks = false }) {
+  return <div className={`rich ${className}`}><Content value={value} marks={marks} /></div>;
 }

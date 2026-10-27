@@ -71,9 +71,39 @@ function newlines(html) {
   return out;
 }
 
-export function markupToHtml(text) {
+// Teks polos (tanpa tag) dengan penanda ringkas dan tautan gambar Drive.
+function marksAndImages(raw) {
+  let out = '';
+  let last = 0;
+  for (const m of raw.matchAll(IMAGE_LINK)) {
+    const link = m[0].replace(/[.,;:!?]+$/, '');
+    out += inlineMarks(escapeHtml(raw.slice(last, m.index)));
+    out += imageTag(link);
+    last = m.index + link.length;
+  }
+  return out + inlineMarks(escapeHtml(raw.slice(last)));
+}
+
+// marksInHtml: penanda ringkas juga berlaku di sela tag HTML. Dipakai catatan materi
+// (tabel/daftar HTML bercampur **tebal**). Soal lama tidak memakainya supaya teks HTML
+// yang memuat ^ atau ~ apa adanya tidak berubah tampilannya.
+export function markupToHtml(text, { marksInHtml = false } = {}) {
   const raw = String(text ?? '');
   if (!raw) return '';
+  if (HAS_HTML.test(raw) && marksInHtml) {
+    const parts = raw.split(/(<[^>]*>)/);
+    let inTag = 0;
+    const html = parts.map((p) => {
+      if (p.startsWith('<')) {
+        if (/^<(a|code)[\s>]/i.test(p)) inTag++;
+        else if (/^<\/(a|code)>/i.test(p)) inTag = Math.max(0, inTag - 1);
+        return p;
+      }
+      // Teks di sela tag sudah berupa HTML (bisa memuat &amp;), jadi entitasnya dibiarkan.
+      return inTag ? p : marksAndImages(p.replace(/&(amp|lt|gt|quot|#39|nbsp);/g, (e) => ({ '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'", '&nbsp;': '\u00a0' })[e]));
+    }).join('');
+    return newlines(html);
+  }
   if (HAS_HTML.test(raw)) {
     // HTML lama: tautan gambar telanjang di antara tag tetap jadi gambar.
     const parts = raw.split(/(<[^>]*>)/);
@@ -91,16 +121,7 @@ export function markupToHtml(text) {
     }).join('');
     return newlines(html);
   }
-  let out = '';
-  let last = 0;
-  for (const m of raw.matchAll(IMAGE_LINK)) {
-    const link = m[0].replace(/[.,;:!?]+$/, '');
-    out += inlineMarks(escapeHtml(raw.slice(last, m.index)));
-    out += imageTag(link);
-    last = m.index + link.length;
-  }
-  out += inlineMarks(escapeHtml(raw.slice(last)));
-  return newlines(out);
+  return newlines(marksAndImages(raw));
 }
 
 // Teks polos untuk ringkasan (daftar soal admin, pencarian).

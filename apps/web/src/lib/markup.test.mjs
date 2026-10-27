@@ -30,3 +30,13 @@ test('driveToLh3 dan plainText', () => {
   assert.equal(driveToLh3('https://drive.google.com/open?id=1AbCdEfGhIjKlMnOp'), 'https://lh3.googleusercontent.com/d/1AbCdEfGhIjKlMnOp');
   assert.equal(plainText([{ type: 'paragraph', text: 'a' }, { type: 'list', items: ['b', 'c'] }]), 'a b c');
 });
+
+test('catatan materi: penanda ringkas berlaku di sela HTML hanya bila diminta', () => {
+  const src = '<ul><li>**Femur** H~2~O</li></ul>\n==penting== &amp; aman';
+  assert.equal(markupToHtml(src, { marksInHtml: true }), '<ul><li><strong>Femur</strong> H<sub>2</sub>O</li></ul>\n<mark>penting</mark> &amp; aman');
+  // Soal lama berformat HTML tidak berubah.
+  assert.equal(markupToHtml('<p>10^3^ dan ~5~</p>'), '<p>10^3^ dan ~5~</p>');
+  // Tautan dan kode tidak disentuh; teks berbahaya tetap di-escape.
+  assert.equal(markupToHtml('<code>**a**</code> <b>x</b> <script>', { marksInHtml: true }).includes('<code>**a**</code>'), true);
+  assert.ok(!markupToHtml('<b>&lt;img onerror=x&gt;</b>', { marksInHtml: true }).includes('<img onerror'));
+});
