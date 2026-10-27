@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <g class="mc-float">
+    <ellipse cx="160" cy="286" rx="75" ry="10" fill="#172B38" opacity=".09"/>
+    <g fill="#123E49" stroke="#172B38" stroke-width="7" stroke-linejoin="round">
+      <path d="M113 245q-26 16-22 30 5 16 34 9l20-25z"/>
+      <path d="M208 245q26 16 22 30-5 16-34 9l-20-25z"/>
+    </g>
+    <path d="M86 183q-25-13-38 2-13 14 3 28 18 13 41-3z" fill="#69BFD0" stroke="#172B38" stroke-width="7"/>
+    <g class="mc-wave mc-arm-right"><path d="M234 178q23-19 37-3 14 14-1 28l-25 10z" fill="#69BFD0" stroke="#172B38" stroke-width="7"/></g>
+    <path class="mc-body" d="M80 137q-5-30 25-43 19-8 39 2 13-32 49-29 29 3 39 32 34-2 42 26 7 26-13 47 3 65-35 86-25 15-67 15-88 0-96-74-3-27 17-62z" fill="#315F73" stroke="#172B38" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M88 206q73 32 146 0-3 44-71 52-66-7-75-52z" fill="#DDF3EA"/>
+    <path d="M91 129q8-26 38-20" fill="none" stroke="#78AAB4" stroke-width="12" stroke-linecap="round"/>
+    <ellipse cx="113" cy="185" rx="14" ry="8" fill="#F3A99A"/><ellipse cx="210" cy="185" rx="14" ry="8" fill="#F3A99A"/>
+    <g class="mc-eyes">
+      <g class="mc-eyes-normal" fill="#fff"><ellipse cx="133" cy="158" rx="8" ry="12"/><ellipse cx="190" cy="158" rx="8" ry="12"/></g>
+      <g class="mc-eyes-happy" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity="0"><path d="M120 162q13-16 26 0M177 162q13-16 26 0"/></g>
+    </g>
+    <path class="mc-mouth-normal" d="M148 184q13 11 26 0" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+    <path class="mc-mouth-happy" d="M144 180q18 26 35 0z" fill="#fff" opacity="0"/>
+    <path class="mc-mouth-think" d="M155 187q7-5 14 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0"/>
+    <g class="mc-spark" fill="#F8C038"><circle cx="136" cy="232" r="7"/><circle cx="161" cy="238" r="7"/><circle cx="186" cy="232" r="7"/></g>
+  </g>
+</svg>
