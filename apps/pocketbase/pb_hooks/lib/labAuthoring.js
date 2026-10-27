@@ -337,7 +337,9 @@ function publishBundle(app, body, admin) {
 }
 function studentCatalog(app) {
   const published = (kind) => all(app, kind).flatMap((r) => { const d = data(r, true); return d ? [d] : []; });
-  const nodes = published('catalog'), placements = published('placement'), modules = new Map(published('module').map((m) => [m.key, { key: m.key, title: m.title, summary: m.summary }]));
+  const nodes = published('catalog'), placements = published('placement'), modules = new Map(published('module').map((m) => [m.key, { key: m.key, title: m.title, summary: m.summary,
+    // Only titles and counts: Explore lists each practice bank without exposing questions or answer keys.
+    practice: (m.questionBanks || []).filter((b) => (b.questions || []).length).map((b) => ({ key: b.key, title: b.title, count: b.questions.length })) }]));
   const byOrder = (a, b) => a.order - b.order || a.title.localeCompare(b.title);
   return { nodes: nodes.filter((n) => !n.parent || nodes.some((p) => p.key === n.parent)).sort(byOrder), placements: placements.filter((p) => nodes.some((n) => n.key === p.catalog) && modules.has(p.module)).sort(byOrder), modules: [...modules.values()] };
 }

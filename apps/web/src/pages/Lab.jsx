@@ -9,7 +9,7 @@ import LabLesson from '@/features/lab/LabLesson';
 import LabPracticeSession from '@/features/lab/LabPracticeSession';
 import { LabContextBar, LabPathNavigation } from '@/features/lab/LabNav';
 import { isPracticeFirst, objectHref, pathNeighbors, pathwayState, stepState } from '@/features/lab/labUtils';
-import { authoredRootOptions, disciplineTitle, exploreItems, groupByDiscipline, normalizeDiscipline, publishedReplacements } from '@/features/lab/labDiscovery';
+import { authoredRootOptions, disciplineTitle, groupByDiscipline, guidedPathways, labSections, normalizeDiscipline, publishedReplacements } from '@/features/lab/labDiscovery';
 import { markProgress } from '@/features/lab/labProgress';
 
 // Lab pages sit above the fixed bottom navigation (and the safe area on phones) so nothing is ever covered.
@@ -35,10 +35,10 @@ function ObjectCard({ item, context = true }) {
   const practice = item.kind === 'practice';
   const where = [item.domainTitle || disciplineTitle(item), item.modality].filter(Boolean).join(' · ');
   return <Link to={item.href || objectHref(item.slug)} className={`${practice ? 'card-practice' : 'card-link'} group flex h-full min-w-0 flex-col gap-1.5 p-4 hover:border-brand`}>
-    <span className="meta font-semibold">{practice ? `Latihan · ${item.cases} kasus` : context && where ? where : 'Materi'}</span>
+    <span className="meta font-semibold">{practice ? `Latihan · ${item.cases} soal` : context && where ? where : 'Materi'}</span>
     <h3 className="card-title">{item.title}</h3>
     {item.summary && <p className="line-clamp-3 text-sm leading-relaxed text-ink-muted">{item.summary}</p>}
-    <span className="mt-auto flex items-center justify-between pt-2 text-sm font-semibold text-brand"><span>{practice ? 'Mulai latihan' : 'Buka materi'}</span><ArrowRight size={16} aria-hidden className="transition-transform group-hover:translate-x-0.5" /></span>
+    <span className="mt-auto flex items-center justify-between pt-2 text-sm font-semibold text-brand"><span>{practice ? 'Mulai latihan' : 'Mulai belajar'}</span><ArrowRight size={16} aria-hidden className="transition-transform group-hover:translate-x-0.5" /></span>
   </Link>;
 }
 const STATUS = { new: ['Belum mulai', 'Mulai', 'chip'], active: ['Sedang berjalan', 'Lanjutkan', 'chip chip-brand'], done: ['Selesai', 'Lihat jalur', 'chip chip-brand'] };
@@ -52,64 +52,72 @@ function PathwayCard({ item }) {
   </Link>;
 }
 
-// Explore without a search: the academic map. Discipline → topic → module, in the canonical order.
-function DisciplineIndex({ items }) {
+// The academic map for both modes: discipline → topic → cards, in the canonical order.
+function DisciplineIndex({ items, unit, showSoon }) {
   const { groups, soon } = groupByDiscipline(items);
   const jump = items.length > 8 && groups.length > 2;
   return <div className="space-y-7">
-    {jump && <nav aria-label="Lompat ke disiplin" className="flex flex-wrap gap-2">{groups.map((g) => <a key={g.key} href={`#lab-${g.key}`} className="chip chip-brand min-h-9 px-3 text-[13px] hover:bg-brand hover:text-white">{g.title} · {g.count}</a>)}</nav>}
+    {jump && <nav aria-label="Lompat ke bidang" className="flex flex-wrap gap-2">{groups.map((g) => <a key={g.key} href={`#lab-${g.key}`} className="chip chip-brand min-h-9 px-3 text-[13px] hover:bg-brand hover:text-white">{g.title} · {g.count}</a>)}</nav>}
     {groups.map((g) => <section key={g.key} id={`lab-${g.key}`} aria-labelledby={`lab-${g.key}-h`} className="scroll-mt-24 border-t border-line pt-5 lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-8">
       <div className="mb-3 flex items-baseline justify-between gap-3 lg:mb-0 lg:block lg:space-y-1">
-        <h2 id={`lab-${g.key}-h`} className="section-title">{g.title}</h2><p className="meta">{g.count} modul</p>
+        <h2 id={`lab-${g.key}-h`} className="section-title">{g.title}</h2><p className="meta">{g.count} {unit}</p>
       </div>
       <div className="min-w-0 space-y-5">{g.topics.map((t) => <div key={t.title || 'umum'} className="space-y-2">
         {t.title && <h3 className="text-[15px] font-semibold text-ink-muted">{t.title}</h3>}
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{t.items.map((item) => <ObjectCard key={item.id} item={item} context={false} />)}</div>
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{t.items.map((item) => (item.type === 'pathway' ? <PathwayCard key={item.id} item={item} /> : <ObjectCard key={item.id} item={item} context={false} />))}</div>
       </div>)}</div>
     </section>)}
-    {soon.length > 0 && groups.length > 0 && <p className="card-quiet px-4 py-3 text-sm text-ink-muted"><span className="font-semibold text-ink">Segera hadir:</span> {soon.map((d) => d.title).join(' · ')}</p>}
+    {showSoon && soon.length > 0 && groups.length > 0 && <p className="card-quiet px-4 py-3 text-sm text-ink-muted"><span className="font-semibold text-ink">Segera hadir:</span> {soon.map((d) => d.title).join(' · ')}</p>}
   </div>;
 }
 
+const MODES = {
+  guided: { label: 'Guided Learning', lead: 'Belajar dari awal: orientasi, contoh gambar berlabel, lalu latihan di akhir modul.', unit: 'materi', placeholder: 'Cari materi atau kata kunci' },
+  explore: { label: 'Explore', lead: 'Langsung kerjakan latihan soal per bidang. Jawaban diperiksa setelah kamu menjawab.', unit: 'latihan', placeholder: 'Cari latihan atau kata kunci' },
+};
 export default function Lab() {
   const [params, setParams] = useSearchParams(); const { isAdmin } = useAuth();
-  const q = params.get('q') || ''; const domain = normalizeDiscipline(params.get('domain') || ''); const mode = params.get('mode') === 'guided' ? 'guided' : 'explore'; const page = Math.max(1, Number(params.get('page')) || 1);
+  const q = params.get('q') || ''; const domain = normalizeDiscipline(params.get('domain') || ''); const page = Math.max(1, Number(params.get('page')) || 1);
+  // Guided Learning (belajar dari awal) is the default entry; Explore is for going straight to practice.
+  const mode = params.get('mode') === 'explore' ? 'explore' : 'guided';
   const [search, setSearch] = useState(q); useEffect(() => setSearch(q), [q]);
   const overview = useLab('lab/overview'); const next = overview.data?.continue;
   const catalog = useLab('lab/catalog');
   // Published authored modules replace their legacy dataset packs; the server drops those packs via `replaced`.
   const replaced = publishedReplacements(catalog.data).join(',');
-  const state = useLab(mode === 'guided' ? 'lab/pathways' : 'lab/objects', mode === 'guided' ? { page } : { q, domain, page, replaced });
-  const items = mode === 'guided' ? state.data?.items || [] : exploreItems(state.data?.items || [], catalog.data, { q, domain, page });
-  const ready = mode === 'guided' ? !!state.data : !!state.data || !!catalog.data;
-  const hasMore = state.data?.hasMore;
+  const objects = useLab('lab/objects', { q, domain, page, replaced });
+  // Pathways are few (one per content pack), so Guided always reads their first page.
+  const pathways = useLab(mode === 'guided' ? 'lab/pathways' : null);
+  const { learn, practice } = labSections(objects.data?.items || [], catalog.data, { q, domain, page });
+  const items = mode === 'guided' ? [...learn, ...guidedPathways(pathways.data?.items || [], catalog.data, { q, domain })] : practice;
+  const ready = !!objects.data || !!catalog.data;
+  const hasMore = objects.data?.hasMore;
   const change = (patch) => setParams({ ...Object.fromEntries(params), page: '1', ...patch });
-  const filtered = mode === 'explore' && !!(q || domain);
+  const filtered = !!(q || domain);
   const domainName = authoredRootOptions().find((o) => o.key === domain)?.title || '';
-  const clear = () => setParams({ mode });
+  const clear = () => setParams(mode === 'explore' ? { mode } : {});
+  const m = MODES[mode];
   return <div className={PAGE}>
     <PageHead eyebrow={<span className="inline-flex items-center gap-1.5"><FlaskConical size={15} aria-hidden /> MEDCOEL Lab</span>} title="Belajar lewat gambar dan kasus"
-      actions={isAdmin && <Link className="btn btn-secondary btn-sm" to="/admin/lab">Kelola Lab</Link>}>
-      {mode === 'guided' ? 'Ikuti jalur belajar berurutan, langkah demi langkah.' : 'Pilih disiplin, buka modulnya, lalu uji pemahamanmu lewat latihan.'}
-    </PageHead>
+      actions={isAdmin && <Link className="btn btn-secondary btn-sm" to="/admin/lab">Kelola Lab</Link>}>{m.lead}</PageHead>
     {next && <section className="card-resume flex items-center justify-between gap-3 p-4" aria-label="Lanjutkan belajar">
       <div className="min-w-0 flex-1 space-y-1.5"><p className="eyebrow">Lanjutkan belajar</p><p className="card-title truncate">{next.pathway.title}</p><Progress done={next.completed.length} total={next.total} label="Progres jalur" /><p className="meta">{next.completed.length} dari {next.total} selesai</p></div>
       <Link className="btn btn-primary shrink-0" to={objectHref(next.resume, next.pathway.slug)}>Lanjutkan <ArrowRight size={16} aria-hidden /></Link>
     </section>}
-    <Segmented className="sm:max-w-sm" label="Cara belajar Lab" value={mode} onChange={(k) => change({ mode: k, q: '', domain: '' })} items={[{ value: 'explore', label: 'Explore' }, { value: 'guided', label: 'Guided Learning' }]} />
-    {mode === 'explore' && <form role="search" className="flex flex-col gap-2 sm:flex-row" onSubmit={(e) => { e.preventDefault(); change({ q: search }); }}>
-      <label className="relative min-w-0 flex-1"><span className="sr-only">Cari modul, topik, atau kata kunci</span><Search className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-faint" size={18} aria-hidden /><input className="input pl-10" type="search" value={search} maxLength={120} onChange={(e) => setSearch(e.target.value)} placeholder="Cari modul atau kata kunci" /></label>
+    <Segmented className="sm:max-w-sm" label="Cara belajar Lab" value={mode} onChange={(k) => setParams(k === 'explore' ? { mode: k } : {})} items={[{ value: 'guided', label: MODES.guided.label }, { value: 'explore', label: MODES.explore.label }]} />
+    <form role="search" className="flex flex-col gap-2 sm:flex-row" onSubmit={(e) => { e.preventDefault(); change({ q: search }); }}>
+      <label className="relative min-w-0 flex-1"><span className="sr-only">{m.placeholder}</span><Search className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-faint" size={18} aria-hidden /><input className="input pl-10" type="search" value={search} maxLength={120} onChange={(e) => setSearch(e.target.value)} placeholder={m.placeholder} /></label>
       <select aria-label="Bidang Lab" className="input sm:max-w-64" value={domain} onChange={(e) => change({ domain: e.target.value })}><option value="">Semua bidang</option>{authoredRootOptions().map((item) => <option key={item.key} value={item.key}>{item.title}</option>)}</select>
       <button className="btn btn-primary">Cari</button>
-    </form>}
+    </form>
     {filtered && <p className="flex flex-wrap items-center gap-2 text-sm text-ink-muted" aria-live="polite">Menampilkan hasil{q && <> untuk <b className="text-ink">“{q}”</b></>}{domain && <> di <b className="text-ink">{domainName || 'bidang ini'}</b></>}
       <button type="button" className="chip chip-brand min-h-8 gap-1 px-3" onClick={clear}><X size={13} aria-hidden /> Tampilkan semua</button></p>}
-    <LoadState state={state} grid />
+    <LoadState state={objects} grid />
+    {pathways.error && <ErrorState onRetry={pathways.retry}>{pathways.error}</ErrorState>}
     {ready && <>
-      {mode === 'explore' && !filtered && items.length > 0 ? <DisciplineIndex items={items} />
-        : <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{items.map((item) => (mode === 'guided' ? <PathwayCard key={item.id} item={item} /> : <ObjectCard key={item.id} item={item} />))}</div>}
-      {!items.length && !state.loading && <EmptyState icon={FlaskConical} title={domain && !q ? 'Materi bidang ini segera hadir' : filtered ? 'Belum ada yang cocok' : mode === 'guided' ? 'Belum ada jalur belajar' : 'Konten Lab sedang disiapkan'}
-        action={filtered ? <button type="button" className="btn btn-secondary" onClick={clear}>Tampilkan semua modul</button> : isAdmin ? <Link className="btn btn-secondary" to="/admin/lab">Tambah konten di Kelola Lab</Link> : mode === 'guided' ? <button type="button" className="btn btn-secondary" onClick={() => change({ mode: 'explore' })}>Jelajahi modul</button> : null}>
+      {items.length > 0 && <DisciplineIndex items={items} unit={m.unit} showSoon={!filtered} />}
+      {!items.length && !objects.loading && !pathways.loading && <EmptyState icon={FlaskConical} title={domain && !q ? 'Materi bidang ini segera hadir' : filtered ? 'Belum ada yang cocok' : mode === 'explore' ? 'Belum ada latihan soal' : 'Konten Lab sedang disiapkan'}
+        action={filtered ? <button type="button" className="btn btn-secondary" onClick={clear}>Tampilkan semua</button> : isAdmin ? <Link className="btn btn-secondary" to="/admin/lab">Tambah konten di Kelola Lab</Link> : null}>
         {filtered ? 'Coba kata kunci yang lebih umum, atau pilih semua bidang.' : 'Konten akan muncul setelah diperiksa dan diterbitkan oleh admin.'}
       </EmptyState>}
       {(page > 1 || hasMore) && <div className="flex items-center justify-center gap-3"><button className="btn btn-secondary" disabled={page <= 1} onClick={() => change({ page: String(page - 1) })}>Sebelumnya</button><span className="text-sm text-ink-muted">Halaman {page}</span><button className="btn btn-secondary" disabled={!hasMore} onClick={() => change({ page: String(page + 1) })}>Berikutnya</button></div>}
@@ -123,7 +131,7 @@ export function LabPathway() {
   const done = d?.progress?.completed || []; const st = d ? pathwayState(d.steps, done, d.progress?.lastObject) : null;
   async function restart() { setBusy(true); await markProgress(slug, undefined, undefined, true); setBusy(false); state.retry(); }
   return <div className={PAGE}>
-    <Link to="/lab?mode=guided" className="inline-flex min-h-9 items-center text-sm font-semibold text-brand">← Guided Learning</Link>
+    <Link to="/lab" className="inline-flex min-h-9 items-center text-sm font-semibold text-brand">← Guided Learning</Link>
     <LoadState state={state} />
     {d && st && <>
       <header className="space-y-1.5"><h1 className="text-2xl font-bold">{d.title}</h1><p className="text-ink-muted">{d.summary}</p><p className="text-sm font-semibold text-ink-muted">{d.steps.length} langkah · urutan disarankan, tetap bebas melompat</p></header>
@@ -170,12 +178,12 @@ function LabObjectView({ d, route }) {
   const complete = (value) => { setDone(value); if (pathSlug) markProgress(pathSlug, d.slug, value); };
   async function legacyPractice(id) { setStarting(true); setPracticeError(''); try { const r = await api(`lab/objects/${d.id}/practice`, { method: 'POST', body: { question: id } }); nav(`/kerjakan/${r.id}`); } catch (e) { setPracticeError(errorText(e)); } finally { setStarting(false); } }
   const onNext = () => { if (!done && !practiceFirst) complete(true); };
-  const context = <LabContextBar pathway={route?.pathway} ctx={route?.ctx} domain={disciplineTitle(d)} onNext={onNext} showNext={!practicing} />;
+  const context = <LabContextBar pathway={route?.pathway} ctx={route?.ctx} domain={disciplineTitle(d)} onNext={onNext} showNext={!practicing} practice={practiceFirst} />;
   const pathNav = route && <LabPathNavigation pathway={route.pathway} ctx={route.ctx} completed={done} onToggleComplete={() => complete(!done)} onNext={onNext} />;
   if (practicing) {
     // A practice object opens straight on case 1; leaving it returns to the pathway (there is no lesson page to go back to).
-    const exit = () => (practiceFirst ? nav(route ? `/lab/jalur/${route.pathway.slug}` : '/lab') : setPracticing(false));
-    return <div className="space-y-3">{context}<LabPracticeSession questions={d.questions} onExit={exit} exitLabel={practiceFirst ? (route ? 'Kembali ke jalur' : 'Kembali ke Lab') : 'Kembali ke materi'} about={practiceFirst ? <AboutPractice d={d} /> : null} onFinish={() => { if (!done) complete(true); }}>{pathNav}</LabPracticeSession></div>;
+    const exit = () => (practiceFirst ? nav(route ? `/lab/jalur/${route.pathway.slug}` : '/lab?mode=explore') : setPracticing(false));
+    return <div className="space-y-3">{context}<LabPracticeSession questions={d.questions} onExit={exit} exitLabel={practiceFirst ? (route ? 'Kembali ke jalur' : 'Kembali ke Explore') : 'Kembali ke materi'} about={practiceFirst ? <AboutPractice d={d} /> : null} onFinish={() => { if (!done) complete(true); }}>{pathNav}</LabPracticeSession></div>;
   }
   const lessonCtx = { modality: d.modality, startPractice: () => setPracticing(true), legacyPractice, practiceError, starting };
   return <div className="space-y-4">

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { ACADEMIC_ROOTS, authoredExplore, authoredRootOptions, disciplineFor, disciplineTitle, exploreItems, groupByDiscipline, modulePath, normalizeDiscipline, publishedReplacements } from './labDiscovery.js';
+import { ACADEMIC_ROOTS, authoredExplore, authoredPractice, authoredRootOptions, disciplineFor, disciplineTitle, exploreItems, groupByDiscipline, guidedPathways, labSections, modulePath, normalizeDiscipline, publishedReplacements } from './labDiscovery.js';
 
 const catalog = {
   nodes: [{ key: 'oftalmologi', title: 'Oftalmologi', parent: '' },
@@ -85,4 +85,35 @@ test('an unknown discipline is shown after the canonical ones, never dropped', (
   const { groups } = groupByDiscipline([{ id: 'a', title: 'A', domain: 'imaging' }, { id: 'b', title: 'B', academicRoot: 'disiplin-baru', domainTitle: 'Disiplin Baru' }].map((x) => ({ academicRoot: x.academicRoot || disciplineFor(x), ...x })));
   assert.equal(groups.at(-1).title, 'Disiplin Baru');
   assert.equal(groups[0].key, 'pencitraan-medis');
+});
+
+const pathCatalog = { nodes: [{ key: 'histologi-histopatologi', title: 'Histologi & Histopatologi' }, { key: 'histologi-kolorektal', title: 'Histologi Kolorektal', parent: 'histologi-histopatologi' }],
+  modules: [{ key: 'histologi-kolorektal-pathmnist-v1', title: 'Pola Jaringan Histologi Kolorektal', summary: 'Bandingkan pola jaringan.', practice: [{ key: 'identifikasi', title: 'Latihan identifikasi', count: 18 }] }],
+  placements: [{ module: 'histologi-kolorektal-pathmnist-v1', catalog: 'histologi-kolorektal' }] };
+
+test('Explore lists every practice bank and links straight into practice mode', () => {
+  const [bank] = authoredPractice(pathCatalog);
+  assert.equal(bank.kind, 'practice'); assert.equal(bank.cases, 18); assert.equal(bank.academicRoot, 'histologi-histopatologi');
+  assert.equal(bank.href, '/lab/modul/histologi-kolorektal-pathmnist-v1?latihan=identifikasi');
+  assert.equal(authoredPractice(pathCatalog, { page: 2 }).length, 0);
+  assert.equal(authoredPractice({ ...pathCatalog, modules: [{ ...pathCatalog.modules[0], practice: undefined }] }).length, 0);
+});
+
+test('Guided gets lessons and modules; Explore gets practice, including legacy practice not yet replaced', () => {
+  const legacy = [{ id: 'blood-learn', slug: 'bloodmnist-belajar-granulosit', domain: 'clinical_pathology', kind: 'lesson' },
+    { id: 'blood-quiz', slug: 'bloodmnist-latihan-granulosit', domain: 'clinical_pathology', kind: 'practice', cases: 6 },
+    { id: 'path-quiz', slug: 'pathmnist-latihan-1', domain: 'clinical_pathology', kind: 'practice', cases: 6 }];
+  const { learn, practice } = labSections(legacy, pathCatalog);
+  assert.deepEqual(learn.map((i) => i.id), ['blood-learn', 'authored:histologi-kolorektal-pathmnist-v1']);
+  assert.deepEqual(practice.map((i) => i.id), ['blood-quiz', 'practice:histologi-kolorektal-pathmnist-v1:identifikasi']);
+});
+
+test('Guided hides a replaced legacy pathway unless the student already started it', () => {
+  const paths = [{ id: 'p1', slug: 'pathmnist-jalur', title: 'Jalur PathMNIST', status: 'new' }, { id: 'p2', slug: 'pathmnist-jalur-2', title: 'Jalur lain', status: 'active' },
+    { id: 'p3', slug: 'bloodmnist-jalur', title: 'Jalur sel darah', status: 'new' }];
+  assert.deepEqual(guidedPathways(paths, pathCatalog).map((p) => p.id), ['p2', 'p3']);
+  assert.deepEqual(guidedPathways(paths, null).map((p) => p.id), ['p1', 'p2', 'p3']);
+  assert.deepEqual(guidedPathways(paths, null, { domain: 'patologi-klinik' }).map((p) => p.id), ['p3']);
+  assert.deepEqual(guidedPathways(paths, null, { q: 'darah' }).map((p) => p.id), ['p3']);
+  assert.equal(guidedPathways(paths, null)[2].type, 'pathway');
 });

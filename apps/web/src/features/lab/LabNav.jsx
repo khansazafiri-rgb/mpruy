@@ -22,8 +22,8 @@ export function LabPathNavigation({ pathway, ctx, completed = false, onToggleCom
 }
 
 // One compact line for where the learner is: pathway + step, or Explore. Replaces stacked breadcrumbs and back links.
-export function LabContextBar({ pathway, ctx, domain, onNext, showNext = true }) {
-  if (!pathway) return <Link to="/lab" className="inline-flex min-h-9 items-center gap-1 text-sm font-semibold text-brand"><ArrowLeft size={16} aria-hidden /> Explore{domain ? ` · ${domain}` : ''}</Link>;
+export function LabContextBar({ pathway, ctx, domain, onNext, showNext = true, practice = false }) {
+  if (!pathway) return <Link to={practice ? '/lab?mode=explore' : '/lab'} className="inline-flex min-h-9 items-center gap-1 text-sm font-semibold text-brand"><ArrowLeft size={16} aria-hidden /> {practice ? 'Explore' : 'Guided Learning'}{domain ? ` · ${domain}` : ''}</Link>;
   const { next, index, total } = ctx;
   return <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-sm">
     <Link to={`/lab/jalur/${pathway.slug}`} className="inline-flex min-h-9 items-center gap-1 font-semibold text-brand"><ArrowLeft size={16} aria-hidden /> {pathway.title} · Langkah {index + 1} dari {total}</Link>
