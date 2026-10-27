@@ -339,8 +339,10 @@ await langkah('paket soal memakai kuota per BAB', async () => {
 await langkah('leaderboard hanya berisi nama aman', async () => {
   const lb = (await call('GET', '/api/medcoel/leaderboard?period=all', undefined, userB.token, 200)).data;
   for (const it of lb.items) {
-    assert.deepEqual(Object.keys(it).sort(), ['campus', 'isMe', 'name', 'points', 'questionPoints', 'rank', 'simPoints']);
+    // title = julukan dari pencapaian (mis. "Master of Anatomi"), tidak mengidentifikasi orang.
+    assert.deepEqual(Object.keys(it).sort(), ['campus', 'isMe', 'name', 'points', 'questionPoints', 'rank', 'simPoints', 'title']);
     assert.ok(!String(it.name).includes('@'));
+    assert.ok(!String(it.title).includes('@'));
   }
 });
 
@@ -1043,6 +1045,54 @@ await langkah('kasus bilingual: hanya admin boleh menyunting, draf tersembunyi, 
   await call('PATCH', '/api/medcoel/admin/sim/cases/' + body.key, { ...body, data: { ...body.data, K: 'ku' } }, admin.token, 200);
   assert.equal((await call('GET', path, undefined, admin.token, 200)).data.status, 'stale');
   assert.ok(!(await call('GET', '/api/medcoel/doctor-sim/content', undefined, userA.token, 200)).data.cases[body.key].english);
+});
+
+console.log('Catatan materi');
+await langkah('catatan materi per BAB: hanya admin menulis, siswa membaca, BAB tersembunyi tertutup', async () => {
+  const before = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userA.token, 200)).data;
+  assert.equal(before.chapters.find((c) => c.id === babId).hasNotes, false);
+  await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, userA.token, 404);
+  const denied = await call('POST', '/api/collections/chapter_notes/records', { chapter: babId, content: 'disusupkan' }, userA.token);
+  assert.ok(denied.status === 400 || denied.status === 403, 'siswa tidak boleh menulis catatan');
+  const ch2 = (await call('POST', '/api/collections/chapters/records', { subject: mk.id, title: 'ZZ BAB Catatan', order: 999, hidden: false }, admin.token, 200)).data;
+  const n1 = (await call('POST', '/api/collections/chapter_notes/records', { chapter: babId, content: '**Inti** BAB 1' }, admin.token, 200)).data;
+  await call('POST', '/api/collections/chapter_notes/records', { chapter: babId, content: 'catatan kedua' }, admin.token, 400); // satu catatan per BAB
+  await call('POST', '/api/collections/chapter_notes/records', { chapter: ch2.id, content: 'Catatan BAB 2' }, admin.token, 200);
+  const after = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userA.token, 200)).data;
+  assert.equal(after.chapters.find((c) => c.id === babId).hasNotes, true);
+  assert.ok(!JSON.stringify(after).includes('**Inti**'), 'daftar BAB tidak membawa isi catatan');
+  const note = (await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, userA.token, 200)).data;
+  assert.equal(note.content, '**Inti** BAB 1');
+  assert.equal(note.subject.slug, mk.slug);
+  assert.equal(note.prev, null);
+  assert.equal(note.next.id, ch2.id);
+  await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, null, 401);
+  // BAB tersembunyi: tidak terbaca lewat endpoint maupun koleksi, dan hilang dari navigasi.
+  await call('PATCH', `/api/collections/chapters/records/${ch2.id}`, { hidden: true }, admin.token, 200);
+  await call('GET', `/api/medcoel/chapters/${ch2.id}/notes`, undefined, userA.token, 404);
+  const listed = (await call('GET', `/api/collections/chapter_notes/records?filter=${encodeURIComponent(`chapter="${ch2.id}"`)}`, undefined, userA.token, 200)).data;
+  assert.equal(listed.items.length, 0);
+  assert.equal((await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, userA.token, 200)).data.next, null);
+  // Catatan yang dikosongkan tidak ditampilkan.
+  await call('PATCH', `/api/collections/chapter_notes/records/${n1.id}`, { content: '   ' }, admin.token, 200);
+  await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, userA.token, 404);
+  await call('DELETE', `/api/collections/chapters/records/${ch2.id}`, undefined, admin.token, 204);
+});
+
+console.log('Pencapaian');
+await langkah('pencapaian dihitung dari aktivitas sendiri dan julukan sama di leaderboard', async () => {
+  await call('GET', '/api/medcoel/achievements', undefined, null, 401);
+  const a = (await call('GET', '/api/medcoel/achievements', undefined, userA.token, 200)).data;
+  const soal = a.ladders.find((l) => l.key === 'soal');
+  assert.ok(soal.value > 0, 'soal yang sudah dikerjakan userA terhitung');
+  assert.ok(Array.isArray(a.subjects) && a.subjects.every((s) => s.total > 0));
+  assert.ok(soal.tiers.every((t) => typeof t.earned === 'boolean'));
+  const fresh = (await call('GET', '/api/medcoel/achievements', undefined, agent.token, 200)).data;
+  assert.equal(fresh.earned, 0);
+  assert.equal(fresh.title, null);
+  const lb = (await call('GET', '/api/medcoel/leaderboard?period=all', undefined, userA.token, 200)).data;
+  assert.ok(lb.items.every((r) => typeof r.title === 'string'));
+  if (lb.me) assert.equal(lb.me.title, a.title ? a.title.title : '');
 });
 
 console.log(`api.test: ${lulus} langkah lulus${process.exitCode ? ', ADA YANG GAGAL' : ''}`);

@@ -41,9 +41,11 @@ function Block({ block: b, module: m, renderText }) {
   if (b.type === 'source_disclosure') return <a href={`#${m.key}-sources`} className="inline-flex min-h-9 items-center text-sm font-semibold text-brand underline" onClick={() => { const panel = document.getElementById(`${m.key}-sources`); if (panel) panel.open = true; }}>Lihat daftar sumber dan lisensi di bawah</a>;
   return null;
 }
-export default function LabAuthoredContent({ module: m, initialMode = 'learn', trail = [] }) {
+export default function LabAuthoredContent({ module: m, initialMode = 'learn', initialBank = '', trail = [] }) {
+  const banks = practiceBanks(m);
+  // ?latihan=<bank> from Explore opens straight into that bank; an unknown bank falls back to the first one.
+  const [bankKey, setBankKey] = useState(banks.some((b) => b.key === initialBank) ? initialBank : banks[0]?.key);
   const [mode, setMode] = useState(initialMode);
-  const banks = practiceBanks(m), [bankKey, setBankKey] = useState(banks[0]?.key);
   const activeBank = banks.find((bank) => bank.key === bankKey) || banks[0];
   const citations = citationIndex(m.sources);
   const renderText = (value) => <CitationText value={value} moduleKey={m.key} index={citations} />;
@@ -51,7 +53,7 @@ export default function LabAuthoredContent({ module: m, initialMode = 'learn', t
   const chapters = lessonChapters(m);
   const sectionTitle = new Map((m.chapters || []).flatMap((c) => c.sections.map((s) => [s.key, s.title])));
   if (mode === 'practice' && hasPractice) return <div className="space-y-4">
-    <header className="space-y-1"><button type="button" className="inline-flex min-h-9 items-center text-sm font-semibold text-brand hover:underline" onClick={() => setMode('learn')}>← Kembali ke modul</button><p className="eyebrow">Latihan</p><h1 className="section-title">{m.title}</h1></header>
+    <header className="flex flex-wrap items-end justify-between gap-x-4 gap-y-2"><div className="min-w-0"><p className="eyebrow">Latihan</p><h1 className="section-title">{m.title}</h1></div><button type="button" className="btn btn-secondary btn-sm" onClick={() => setMode('learn')}>Lihat materi modul</button></header>
     {banks.length > 1 && <div className="flex flex-wrap gap-2" role="group" aria-label="Pilih latihan">{banks.map((bank) => <button key={bank.key} type="button" aria-pressed={bank.key === activeBank?.key} className={`btn btn-sm ${bank.key === activeBank?.key ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setBankKey(bank.key)}>{bank.title}</button>)}</div>}
     {m.preview ? <p className="text-sm text-ink-muted">{activeBank?.questions.length || 0} soal · latihan dinonaktifkan saat pratinjau.</p>
       : activeBank?.questions.length ? <LabPracticeSession key={activeBank.key} questions={activeBank.questions} onExit={() => setMode('learn')} exitLabel="Kembali ke modul" renderText={renderText} sourceList={<SourceList moduleKey={m.key} citations={citations} />} />

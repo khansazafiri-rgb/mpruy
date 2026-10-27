@@ -50,7 +50,7 @@ export function authoredExplore(catalog, { q = '', domain = '', page = 1 } = {})
     const searchable = [module.title, module.summary, domainTitle, node.title, dataset?.keywords].join(' ').toLocaleLowerCase();
     if (needle && !searchable.includes(needle)) continue;
     if (!found.has(module.key)) found.set(module.key, {
-      id: `authored:${module.key}`, kind: 'lesson', title: module.title, summary: module.summary,
+      id: `authored:${module.key}`, kind: 'lesson', moduleKey: module.key, title: module.title, summary: module.summary,
       academicRoot: discipline, datasetKey: dataset?.dataset,
       domainTitle, modality: dataset?.childTitle || node.title,
       href: `/lab/modul/${encodeURIComponent(module.key)}`,
@@ -99,4 +99,27 @@ export function groupByDiscipline(items = []) {
   const groups = [...buckets.values()].sort((a, b) => rank(a.key) - rank(b.key))
     .map((g) => ({ key: g.key, title: g.title, count: g.count, topics: [...g.topics].map(([title, list]) => ({ title, items: list })) }));
   return { groups, soon: ACADEMIC_ROOTS.filter((r) => !buckets.has(r.key)) };
+}
+
+// Dua cara masuk ke isi yang sama. Guided Learning = belajar dari awal (modul, materi, jalur);
+// Explore = langsung latihan soal (bank latihan tiap modul + latihan lama yang belum digantikan).
+export function authoredPractice(catalog, query = {}) {
+  const byKey = new Map((catalog?.modules || []).map((m) => [m.key, m]));
+  return authoredExplore(catalog, query).flatMap((card) => (byKey.get(card.moduleKey)?.practice || []).map((bank) => ({
+    ...card, id: `practice:${card.moduleKey}:${bank.key}`, kind: 'practice', cases: bank.count, summary: bank.title,
+    href: `/lab/modul/${encodeURIComponent(card.moduleKey)}?latihan=${encodeURIComponent(bank.key)}`,
+  })));
+}
+export function labSections(legacy, catalog, query = {}) {
+  const all = exploreItems(legacy, catalog, query);
+  return { learn: all.filter((item) => item.kind !== 'practice'), practice: [...all.filter((item) => item.kind === 'practice'), ...authoredPractice(catalog, query)] };
+}
+// Jalur lama yang datasetnya sudah punya modul pengganti tidak ditampilkan dua kali,
+// kecuali siswa sudah memulainya (progresnya tetap bisa dilanjutkan).
+export function guidedPathways(pathways = [], catalog, { q = '', domain = '' } = {}) {
+  const replaced = new Set(publishedReplacements(catalog));
+  const needle = q.trim().toLocaleLowerCase(); const root = normalizeDiscipline(domain);
+  return pathways.filter((p) => !replaced.has(datasetFor(p)?.dataset) || (p.status && p.status !== 'new'))
+    .map((p) => ({ ...p, type: 'pathway', academicRoot: disciplineFor(p), domainTitle: disciplineTitle(p), modality: datasetFor(p)?.childTitle || p.modality || '' }))
+    .filter((p) => (!root || p.academicRoot === root) && (!needle || [p.title, p.summary, p.domainTitle].join(' ').toLocaleLowerCase().includes(needle)));
 }

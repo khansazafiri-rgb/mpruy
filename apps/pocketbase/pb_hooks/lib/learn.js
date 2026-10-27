@@ -293,4 +293,15 @@ function drillingStatus(app) {
   return { enabled: enabled, total: total, available: enabled && total > 0 };
 }
 
-module.exports = { DIFFS, DRILLING_TITLE, drillingChapter, ensureDrillingChapter, drillingStatus, pool, pickBalanced, pickMixed, bySource, shuffle, loadQuestions, chapterTitles, serialize, grade, hasResponse, pointsFor, bumpDaily };
+// BAB mata kuliah yang punya catatan materi berisi. Hanya id yang dibaca,
+// bukan teks catatannya, supaya halaman mata kuliah tetap ringan.
+function notedChapters(app, subjectId) {
+  const rows = arrayOf(new DynamicModel({ chapter: "" }));
+  app.db().newQuery(
+    "SELECT n.chapter AS chapter FROM chapter_notes n JOIN chapters c ON c.id = n.chapter " +
+      "WHERE c.subject = {:s} AND c.hidden = FALSE AND c.drilling = FALSE AND TRIM(n.content) != ''",
+  ).bind({ s: subjectId }).all(rows);
+  return new Set(rows.map((r) => r.chapter));
+}
+
+module.exports = { notedChapters, DIFFS, DRILLING_TITLE, drillingChapter, ensureDrillingChapter, drillingStatus, pool, pickBalanced, pickMixed, bySource, shuffle, loadQuestions, chapterTitles, serialize, grade, hasResponse, pointsFor, bumpDaily };

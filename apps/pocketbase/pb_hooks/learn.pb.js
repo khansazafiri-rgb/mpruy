@@ -73,6 +73,7 @@ routerAdd("GET", "/api/medcoel/subjects/{slug}", (e) => {
     p[it.qtype]++;
   });
   const packages = e.app.findRecordsByFilter("packages", "subject = {:s} && active = true", "order,name", 50, 0, { s: s.id });
+  const noted = learn.notedChapters(e.app, s.id);
   return e.json(200, {
     campusName: campusOnly && user.getString("campus") ? e.app.findRecordById("campuses", user.getString("campus")).getString("name") : "",
     subject: {
@@ -85,7 +86,7 @@ routerAdd("GET", "/api/medcoel/subjects/{slug}", (e) => {
       collectionId: s.collection().id,
       studying: user.getStringSlice("studyingSubjects").indexOf(s.id) >= 0,
     },
-    chapters: chapters.filter((c) => !campusOnly || !!per[c.id]).map((c) => Object.assign({ id: c.id, title: c.getString("title") }, per[c.id] || { total: 0, answered: 0, wrong: 0, easy: 0, medium: 0, hard: 0, A: 0, K: 0, isian: 0, esai: 0 })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName),
+    chapters: chapters.filter((c) => !campusOnly || !!per[c.id]).map((c) => Object.assign({ id: c.id, title: c.getString("title"), hasNotes: noted.has(c.id) }, per[c.id] || { total: 0, answered: 0, wrong: 0, easy: 0, medium: 0, hard: 0, A: 0, K: 0, isian: 0, esai: 0 })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName),
     packages: (campusOnly ? [] : packages).map((p) => ({
       id: p.id,
       name: p.getString("name"),
@@ -424,3 +425,33 @@ onRecordAfterUpdateSuccess((e) => {
   }
   e.next();
 }, "question_reports");
+
+// Catatan materi satu BAB, beserta BAB bercatatan sebelum/berikutnya (urutan sama
+// dengan halaman mata kuliah). BAB atau mata kuliah tersembunyi tidak terbaca siswa.
+routerAdd("GET", "/api/medcoel/chapters/{id}/notes", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const learn = require(`${__hooks}/lib/learn.js`);
+  const user = u.requireUser(e);
+  const admin = u.roleOf(user) === "admin";
+  const missing = () => new NotFoundError("Catatan materi untuk BAB ini belum tersedia.");
+  let c, s;
+  try { c = e.app.findRecordById("chapters", e.request.pathValue("id")); s = e.app.findRecordById("subjects", c.getString("subject")); } catch (_) { throw missing(); }
+  if (c.getBool("drilling") || (!admin && (c.getBool("hidden") || s.getBool("hidden")))) throw missing();
+  let note;
+  try { note = e.app.findFirstRecordByFilter("chapter_notes", "chapter = {:c}", { c: c.id }); } catch (_) { throw missing(); }
+  if (!note.getString("content").trim()) throw missing();
+  const noted = learn.notedChapters(e.app, s.id);
+  const list = e.app.findRecordsByFilter("chapters", "subject = {:s} && hidden = false && drilling = false", "order,created", 500, 0, { s: s.id })
+    .filter((x) => noted.has(x.id)).map((x) => ({ id: x.id, title: x.getString("title") })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName);
+  const i = list.findIndex((x) => x.id === c.id);
+  return e.json(200, {
+    subject: { id: s.id, name: s.getString("name"), slug: s.getString("slug") },
+    chapter: { id: c.id, title: c.getString("title") },
+    content: note.getString("content"),
+    updated: note.getString("updated"),
+    prev: i > 0 ? list[i - 1] : null,
+    next: i >= 0 && i < list.length - 1 ? list[i + 1] : null,
+    position: i + 1,
+    total: list.length,
+  });
+});

@@ -9,6 +9,7 @@ import { Alert, PageLoader, ProgressBar, Stat } from '@/components/ui';
 import { useApi } from '@/lib/useApi';
 import { fmtDate, fmtDateTime } from '@/lib/time';
 import PageHead from '@/components/PageHead';
+import Achievements from '@/features/achievements/Achievements';
 import { toneClass } from '@/lib/tone';
 
 // Warna grafik dari token (tiap grafik satu seri, jadi tanpa kotak legenda).
@@ -65,6 +66,8 @@ export default function Progress() {
         <Stat tone="sky" icon={CheckCircle2} label={`Jawaban benar (${range} hari)`} value={summary.correct} sub={summary.answered ? `${Math.round((summary.correct / summary.answered) * 100)}% dari yang dikerjakan` : 'belum ada jawaban'} />
         <Stat tone="lilac" icon={Trophy} label="Total poin" value={data.totalPoints} sub="soal + Simulasi Dokter" />
       </div>
+
+      <Achievements />
 
       <div className="flex w-fit gap-1 rounded-xl border border-paper-2 bg-[#fffdf7] p-1" role="group" aria-label="Rentang waktu">
         {[7, 30].map((r) => (
