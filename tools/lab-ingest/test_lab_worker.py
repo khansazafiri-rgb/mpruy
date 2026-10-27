@@ -70,8 +70,10 @@ class WorkerTests(unittest.TestCase):
     def test_generated_bundle_is_draft_review_material(self):
         groups = {"learning": [], "practice": []}
         for label in range(4):
-            groups["learning"] += [{"index": label * 100 + i, "label": label, "role": "learning"} for i in range(5)]
-            groups["practice"] += [{"index": label * 100 + 50 + i, "label": label, "role": "practice"} for i in range(3)]
+            groups["learning"] += [{"index": label * 100 + i, "label": label,
+                                      "label_name": CONFIG.spec.labels[label], "role": "learning"} for i in range(5)]
+            groups["practice"] += [{"index": label * 100 + 50 + i, "label": label,
+                                      "label_name": CONFIG.spec.labels[label], "role": "practice"} for i in range(3)]
         bundle = authoring_bundle(groups, source_definition())
         module = next(r["data"] for r in bundle["records"] if r["kind"] == "module")
         records = {(r["kind"], r["data"]["key"]): r["data"] for r in bundle["records"]}
@@ -80,14 +82,18 @@ class WorkerTests(unittest.TestCase):
         self.assertEqual(records["catalog", "imaging-retina"]["title"], "OCT Retina")
         self.assertEqual(records["placement", "oct-retina-di-imaging"]["catalog"], "imaging-retina")
         blocks = module["chapters"][0]["sections"][0]["blocks"]
-        self.assertEqual(len(next(b for b in blocks if b["type"] == "gallery")["assets"]), 20)
+        gallery = next(b for b in blocks if b["type"] == "gallery")
+        self.assertEqual(len(gallery["items"]), 20)
+        self.assertTrue(all(item["title"] and item["caption"] for item in gallery["items"]))
+        self.assertTrue(all("[Sumber: " in item["caption"] for item in gallery["items"]))
         self.assertEqual(len(module["questionBanks"][0]["questions"]), 12)
-        self.assertFalse(set(next(b for b in blocks if b["type"] == "gallery")["assets"]) &
+        self.assertFalse({item["asset"] for item in gallery["items"]} &
                          {q["asset"] for q in module["questionBanks"][0]["questions"]})
+        self.assertLess(blocks.index(gallery), blocks.index(next(b for b in blocks if b["type"] == "identification_table")))
         curated = learning_guide("octmnist")
         guide = records["guide", "panduan-identifikasi-oct-retina"]
-        self.assertEqual(len(guide["steps"]), 1 + len(curated["checklist"]) +
-                         len(curated["profiles"]) + len(curated["notes"]))
+        self.assertEqual(len(guide["steps"]), 1 + len(curated["checklist"]) + len(curated["notes"]))
+        self.assertFalse(any(step["title"] in {p["title"] for p in curated["profiles"]} for step in guide["steps"]))
         self.assertIn(curated["introduction"]["text"], guide["steps"][0]["text"])
         self.assertEqual(len(guide["sources"]), len(curated["sources"]))
         self.assertTrue(all(records["source", key]["role"] == "reference" and
