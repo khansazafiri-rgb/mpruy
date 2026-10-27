@@ -1,0 +1,9 @@
+/// <reference path="../pb_data/types.d.ts" />
+routerAdd('GET', '/api/medcoel/admin/lab-jobs', (e) => { const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e); return e.json(200, require(`${__hooks}/lib/labJobs.js`).list(e.app)); });
+routerAdd('POST', '/api/medcoel/admin/lab-jobs', (e) => { const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e); return e.json(200, require(`${__hooks}/lib/labJobs.js`).create(e.app, u.body(e))); }, $apis.bodyLimit(4096));
+routerAdd('GET', '/api/medcoel/admin/lab-jobs/{key}', (e) => { const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e); return e.json(200, require(`${__hooks}/lib/labJobs.js`).get(e.app, e.request.pathValue('key'))); });
+routerAdd('POST', '/api/medcoel/admin/lab-jobs/{key}/cancel', (e) => { const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e); return e.json(200, require(`${__hooks}/lib/labJobs.js`).cancel(e.app, e.request.pathValue('key'))); });
+routerAdd('POST', '/api/medcoel/admin/lab-jobs/{key}/retry', (e) => { const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e); return e.json(200, require(`${__hooks}/lib/labJobs.js`).retry(e.app, e.request.pathValue('key'))); });
+routerAdd('POST', '/api/medcoel/admin/lab-jobs/worker/recover', (e) => { const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e); return e.json(200, require(`${__hooks}/lib/labJobs.js`).recover(e.app)); });
+routerAdd('POST', '/api/medcoel/admin/lab-jobs/worker/next', (e) => { const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e); return e.json(200, require(`${__hooks}/lib/labJobs.js`).next(e.app)); });
+routerAdd('POST', '/api/medcoel/admin/lab-jobs/worker/{key}/checkpoint', (e) => { const u = require(`${__hooks}/lib/util.js`); u.requireAdmin(e); return e.json(200, require(`${__hooks}/lib/labJobs.js`).checkpoint(e.app, e.request.pathValue('key'), u.body(e))); }, $apis.bodyLimit(32768));

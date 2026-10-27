@@ -213,8 +213,10 @@ function publish(app, kind, k, body, admin) {
 function listMedia(app) { return app.findRecordsByFilter('lab_media', 'id != ""', 'key', 1000, 0).map(mediaOut); }
 function saveMedia(app, e) {
   const b = u.body(e); const k = key(b.key, 'media.key'); if (media(app, k, false)) fail('Aset dengan key ini sudah ada; penggantian berkas memerlukan key baru.');
-  const source = lookup(app, 'source', key(b.sourceKey, 'media.sourceKey'), null, true);
-  if (!source || source.role !== 'asset' || !source.ingestionAllowed) fail('Aset memerlukan sumber asset dengan izin ingest yang telah terbit.');
+  // Registration is draft-only. A draft source may authorize staging, but publication
+  // still requires a published, human-verified source in publishMediaTx.
+  const source = lookup(app, 'source', key(b.sourceKey, 'media.sourceKey'), null, false);
+  if (!source || source.role !== 'asset' || !source.ingestionAllowed) fail('Aset memerlukan sumber asset dengan izin ingest.');
   const files = e.findUploadedFiles('file'); const external = b.externalUrl ? https(b.externalUrl, 'media.externalUrl') : '';
   if ((files?.length || 0) + (external ? 1 : 0) !== 1) fail('Pilih tepat satu: unggah gambar atau URL HTTPS.');
   const r = new Record(app.findCollectionByNameOrId('lab_media')); r.set('key', k); r.set('title', str(b.title, 'media.title', 200, true)); r.set('alt', str(b.alt, 'media.alt', 500, true)); r.set('sourceKey', b.sourceKey);
