@@ -19,6 +19,7 @@ from pathlib import Path
 from medcoel_api import MedcoelAPI
 from medmnist_core import download, export_pngs, manifest, validate_groups
 from octmnist import CONFIG
+from identification_guides import learning_guide
 from visual_mnist import answer_slots, practice_rows
 
 LOG = logging.getLogger("medcoel.lab.worker")
@@ -26,6 +27,7 @@ STOP = False
 JOB_PATH = "/api/medcoel/admin/lab-jobs"
 SOURCE_KEY = "octmnist-224-source"
 MODULE_KEY = "oct-retina-dasar-v1"
+GUIDE_KEY = "panduan-identifikasi-oct-retina"
 
 
 class Cancelled(Exception):
@@ -53,8 +55,54 @@ def asset_key(row):
     return f"octmnist-test-{row['index']:05d}"
 
 
+def oct_guide_content():
+    """Adapt the existing curated OCT guide to authoring V1 without dropping citations."""
+    guide = learning_guide("octmnist", [CONFIG.spec.labels[i] for i in CONFIG.groupings[0].labels])
+    references = {item["id"]: item for item in guide["sources"]}
+
+    def cited(statement):
+        names = [f"{references[key]['organization']} — {references[key]['resource']}"
+                 for key in statement["sources"]]
+        return statement["text"] + " [Sumber: " + "; ".join(names) + "]"
+
+    source_records = []
+    for item in guide["sources"]:
+        citation = f"{item['organization']}, {item['resource']}. Diakses {item['accessed']}."
+        source_records.append({"kind": "source", "data": {
+            "key": "oct-guide-" + item["id"],
+            "title": f"{item['organization']} — {item['resource']}",
+            "role": "reference", "ingestionAllowed": False, "datasetReviewRequired": False,
+            "url": item["url"], "citation": citation,
+            "license": {"name": "Izin reproduksi belum diverifikasi; tautan referensi saja",
+                        "url": item["url"], "citation": citation, "verified": False,
+                        "commercialUse": False, "redistribution": False,
+                        "attributionRequired": True},
+            "disclosure": "Rujukan untuk panduan; tidak mengizinkan ingest gambar."}})
+
+    steps = [{"title": "Orientasi OCT", "text": cited(guide["introduction"])}]
+    steps.extend({"title": f"Langkah {i}", "text": cited(item)}
+                 for i, item in enumerate(guide["checklist"], 1))
+    for profile in guide["profiles"]:
+        statements = profile["features"] + profile["compare"] + profile["caveats"]
+        steps.append({"title": profile["title"],
+                      "text": "\n".join(cited(item) for item in statements)})
+    steps.extend({"title": f"Catatan {i}", "text": cited(item)}
+                 for i, item in enumerate(guide["notes"], 1))
+    guide_record = {"kind": "guide", "data": {
+        "key": GUIDE_KEY, "title": guide["title"], "subject": "OCT Retina",
+        "scope": "module", "steps": steps,
+        "sources": [record["data"]["key"] for record in source_records]}}
+    comparison = {"key": "perbandingan-oct", "type": "identification_table",
+        "title": guide["comparison"]["title"],
+        "columns": ["Kategori"] + guide["comparison"]["columns"],
+        "rows": [[row["label"]] + [cited(value) for value in row["values"]]
+                 for row in guide["comparison"]["rows"]]}
+    return source_records, guide_record, comparison
+
+
 def authoring_bundle(groups, source):
     learning = [asset_key(row) for row in groups["learning"]]
+    guide_sources, guide_record, comparison = oct_guide_content()
     questions = []
     group = CONFIG.groupings[0]
     slots = answer_slots(CONFIG, groups["practice"], group)
@@ -70,15 +118,25 @@ def authoring_bundle(groups, source):
             "sources": [SOURCE_KEY]})
     return {"schemaVersion": 1, "records": [
         {"kind": "source", "data": source},
-        {"kind": "catalog", "data": {"key": "imaging-retina", "title": "Pencitraan Retina", "summary": "Dasar pembacaan citra OCT.", "order": 10}},
+        *guide_sources,
+        {"kind": "catalog", "data": {"key": "oftalmologi", "title": "Oftalmologi",
+            "summary": "Pembelajaran mata dan penglihatan.", "order": 10}},
+        {"kind": "catalog", "data": {"key": "imaging-retina", "title": "OCT Retina",
+            "parent": "oftalmologi", "summary": "Dasar pembacaan citra OCT retina.", "order": 10}},
+        guide_record,
         {"kind": "module", "data": {"key": MODULE_KEY, "title": "Dasar Interpretasi OCT Retina",
-            "summary": CONFIG.description, "sources": [SOURCE_KEY],
+            "summary": CONFIG.description, "sources": [SOURCE_KEY] + guide_record["data"]["sources"],
             "chapters": [{"key": "pola-retina", "title": "Pola OCT Retina", "sections": [
                 {"key": "contoh-berlabel", "title": "Contoh berlabel", "blocks": [
                     {"key": "batas", "type": "callout", "title": "Batas penggunaan", "tone": "warn",
                      "text": "Label dataset hanya untuk pembelajaran; jangan dipakai sebagai diagnosis pasien."},
+                    {"key": "panduan-oct", "type": "identification_guide", "title": "Cara identifikasi OCT",
+                     "guide": GUIDE_KEY},
+                    comparison,
                     {"key": "galeri", "type": "gallery", "title": "20 contoh OCT", "assets": learning},
-                    {"key": "latihan", "type": "practice", "title": "Latihan klasifikasi", "bank": "latihan-oct"}]}]}],
+                    {"key": "latihan", "type": "practice", "title": "Latihan klasifikasi", "bank": "latihan-oct"},
+                    {"key": "sumber-panduan", "type": "source_disclosure", "title": "Sumber panduan OCT",
+                     "sources": guide_record["data"]["sources"]}]}]}],
             "questionBanks": [{"key": "latihan-oct", "title": "Latihan OCT retina", "questions": questions}],
             "pathways": [{"key": "awal", "title": "Amati lalu latihan", "sections": ["contoh-berlabel"]}]}},
         {"kind": "placement", "data": {"key": "oct-retina-di-imaging", "title": "Dasar Interpretasi OCT Retina",
