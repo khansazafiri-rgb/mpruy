@@ -339,8 +339,10 @@ await langkah('paket soal memakai kuota per BAB', async () => {
 await langkah('leaderboard hanya berisi nama aman', async () => {
   const lb = (await call('GET', '/api/medcoel/leaderboard?period=all', undefined, userB.token, 200)).data;
   for (const it of lb.items) {
-    assert.deepEqual(Object.keys(it).sort(), ['campus', 'isMe', 'name', 'points', 'questionPoints', 'rank', 'simPoints']);
+    // title = julukan dari pencapaian (mis. "Master of Anatomi"), tidak mengidentifikasi orang.
+    assert.deepEqual(Object.keys(it).sort(), ['campus', 'isMe', 'name', 'points', 'questionPoints', 'rank', 'simPoints', 'title']);
     assert.ok(!String(it.name).includes('@'));
+    assert.ok(!String(it.title).includes('@'));
   }
 });
 
@@ -1075,6 +1077,22 @@ await langkah('catatan materi per BAB: hanya admin menulis, siswa membaca, BAB t
   await call('PATCH', `/api/collections/chapter_notes/records/${n1.id}`, { content: '   ' }, admin.token, 200);
   await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, userA.token, 404);
   await call('DELETE', `/api/collections/chapters/records/${ch2.id}`, undefined, admin.token, 204);
+});
+
+console.log('Pencapaian');
+await langkah('pencapaian dihitung dari aktivitas sendiri dan julukan sama di leaderboard', async () => {
+  await call('GET', '/api/medcoel/achievements', undefined, null, 401);
+  const a = (await call('GET', '/api/medcoel/achievements', undefined, userA.token, 200)).data;
+  const soal = a.ladders.find((l) => l.key === 'soal');
+  assert.ok(soal.value > 0, 'soal yang sudah dikerjakan userA terhitung');
+  assert.ok(Array.isArray(a.subjects) && a.subjects.every((s) => s.total > 0));
+  assert.ok(soal.tiers.every((t) => typeof t.earned === 'boolean'));
+  const fresh = (await call('GET', '/api/medcoel/achievements', undefined, agent.token, 200)).data;
+  assert.equal(fresh.earned, 0);
+  assert.equal(fresh.title, null);
+  const lb = (await call('GET', '/api/medcoel/leaderboard?period=all', undefined, userA.token, 200)).data;
+  assert.ok(lb.items.every((r) => typeof r.title === 'string'));
+  if (lb.me) assert.equal(lb.me.title, a.title ? a.title.title : '');
 });
 
 console.log(`api.test: ${lulus} langkah lulus${process.exitCode ? ', ADA YANG GAGAL' : ''}`);
