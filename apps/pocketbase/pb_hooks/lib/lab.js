@@ -1,6 +1,7 @@
 // No AI or network calls. JSON is plain text/data, never executable rules or HTML.
 const HOOKS = typeof __hooks !== 'undefined' ? __hooks : __dirname + '/..';
 const u = require(HOOKS + '/lib/util.js');
+const taxonomy = require(HOOKS + '/lib/labTaxonomy.js');
 const KINDS = ['objects', 'assets', 'questions', 'pathways'];
 const ORDER = { assets: 0, objects: 1, questions: 2, pathways: 3 };
 const DOMAINS = ['imaging', 'clinical_pathology', 'microbiology', 'parasitology', 'histology', 'anatomy'];
@@ -160,7 +161,7 @@ function find(app, kind, id, published) {
   let r; try { r = app.findFirstRecordByFilter(collection(kind), '(id = {:key} || slug = {:key})' + (published ? " && status = 'published'" : ''), { key: id }); } catch (_) { throw new NotFoundError('Konten tidak ditemukan.'); } return r;
 }
 function data(r) { return u.recJson(r, 'data', {}); }
-function card(r) { return { id: r.id, slug: r.getString('slug'), title: r.getString('title'), domain: r.getString('domain'), modality: r.getString('modality'), summary: r.getString('summary'), tags: u.recJson(r, 'tags', []), demo: data(r).demo === true }; }
+function card(r) { return { id: r.id, slug: r.getString('slug'), title: r.getString('title'), domain: r.getString('domain'), ...taxonomy.classify(r.getString('slug'), r.getString('domain')), modality: r.getString('modality'), summary: r.getString('summary'), tags: u.recJson(r, 'tags', []), demo: data(r).demo === true }; }
 // Practice-first objects open straight into the first case: explicit data.mode, or questions with no lesson material of their own.
 function isPractice(d, questions, ownAssets) {
   if (!questions) return false;
@@ -225,8 +226,9 @@ function browse(app, query, domain, page, opts) {
   // Synthetic demo material is never listed as normal learning content; admins can opt in with demo=1.
   let filter = "status = 'published'"; const params = {};
   if (!(opts && opts.demo)) filter += ` && data !~ '"demo":true'`;
-  if (query) { filter += ' && (title ~ {:q} || summary ~ {:q} || tags ~ {:q} || modality ~ {:q})'; params.q = query.slice(0, 120); }
-  if (domain) { filter += ' && domain = {:d}'; params.d = domain; }
+  if (query) { const academic = taxonomy.searchFilter(query); filter += ' && (title ~ {:q} || summary ~ {:q} || tags ~ {:q} || modality ~ {:q}' + (academic ? ' || ' + academic : '') + ')'; params.q = query.slice(0, 120); }
+  if (domain) { const academic = taxonomy.filter(domain); if (academic) filter += ' && ' + academic; else { filter += ' && domain = {:d}'; params.d = domain; } }
+  for (const dataset of taxonomy.excluded(opts?.replaced)) filter += ` && slug !~ '${dataset}-%'`;
   const rows = app.findRecordsByFilter('lab_objects', filter, 'title,id', 25, (page - 1) * 24, params);
   return { items: rows.slice(0, 24).map((r) => cardOf(app, r)), hasMore: rows.length > 24, page };
 }
