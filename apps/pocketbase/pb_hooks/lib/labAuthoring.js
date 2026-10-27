@@ -166,7 +166,7 @@ function apply(app, body) {
       r.set('kind', e.kind); r.set('key', e.key); r.set('title', e.title); r.set('data', p.staged.get(e.kind + '/' + e.key));
       r.set('revision', e.revision + 1); r.set('reviewedBy', ''); r.set('reviewedAt', ''); tx.save(r); changed++;
     }
-  }); return { changed, entries: p.entries, published: false };
+  }); return { changed, entries: p.entries, published: false, bundle: { records: p.entries.map((e) => ({ kind: e.kind, key: e.key, revision: e.revision + (e.action === 'unchanged' ? 0 : 1), action: e.action })) } };
 }
 function exportModule(app, k) {
   const m = data(find(app, 'module', k, true), false), related = all(app, 'placement').filter((x) => data(x, false)?.module === k).map((x) => data(x, false));
@@ -185,9 +185,8 @@ function exportModule(app, k) {
   records.push({ kind: 'module', data: m }); related.forEach((x) => records.push({ kind: 'placement', data: x }));
   return { schemaVersion: 1, records };
 }
-function publish(app, kind, k, body, admin) {
-  if (!KINDS.includes(kind)) fail('Jenis record tidak dikenal.'); if (body.confirmReviewed !== true) fail('Konfirmasi pemeriksaan manusia diperlukan.');
-  let out; app.runInTransaction((tx) => { const r = find(tx, kind, k, true); if (r.getInt('revision') !== body.revision) fail('Revisi berubah. Periksa ulang.');
+function publishRecordTx(tx, kind, k, revision, adminId) {
+  if (!KINDS.includes(kind)) fail('Jenis record tidak dikenal.'); const r = find(tx, kind, k, true); if (r.getInt('revision') !== revision) fail('Revisi berubah. Periksa ulang.');
     const v = validate(kind, data(r, false)); const errors = refs(tx, kind, v, null, true);
     if (kind === 'source' && data(r, true)?.role && data(r, true).role !== v.role) errors.push('Peran sumber terbit tidak dapat diubah; gunakan key sumber baru.');
     if (kind === 'source' && v.role === 'asset' && (!v.license.verified || !v.license.commercialUse || !v.license.redistribution || (v.license.attributionRequired && !v.license.citation))) errors.push('Lisensi aset belum siap terbit.');
@@ -204,25 +203,126 @@ function publish(app, kind, k, body, admin) {
       for (const asset of [...new Set([...v.chapters.flatMap((c) => c.sections.flatMap((s) => s.blocks.flatMap((b) => [b.asset, b.left, b.right, ...(b.assets || [])]))), ...v.questionBanks.flatMap((b) => b.questions.map((q) => q.asset))].filter(Boolean))]) { const a = media(tx, asset, true); const s = a && lookup(tx, 'source', a.getString('sourceKey'), null, true); if (!s || s.role !== 'asset' || !s.license.verified || !s.license.commercialUse || !s.license.redistribution) errors.push('Sumber aset ' + asset + ' tidak lagi memiliki izin publikasi.'); }
     }
     if (errors.length) fail(errors.join('; '));
-    r.set('publishedData', v); r.set('reviewedBy', admin.id); r.set('reviewedAt', new Date().toISOString()); tx.save(r);
-    out = { kind, key: k, status: 'published', revision: r.getInt('revision') };
-  }); return out;
+    r.set('publishedData', v); r.set('reviewedBy', adminId); r.set('reviewedAt', new Date().toISOString()); tx.save(r);
+    return { kind, key: k, status: 'published', revision: r.getInt('revision') };
+}
+function publish(app, kind, k, body, admin) {
+  if (body.confirmReviewed !== true) fail('Konfirmasi pemeriksaan manusia diperlukan.');
+  let out; app.runInTransaction((tx) => { out = publishRecordTx(tx, kind, k, body.revision, admin.id); }); return out;
 }
 function listMedia(app) { return app.findRecordsByFilter('lab_media', 'id != ""', 'key', 1000, 0).map(mediaOut); }
 function saveMedia(app, e) {
   const b = u.body(e); const k = key(b.key, 'media.key'); if (media(app, k, false)) fail('Aset dengan key ini sudah ada; penggantian berkas memerlukan key baru.');
-  const source = lookup(app, 'source', key(b.sourceKey, 'media.sourceKey'), null, true);
-  if (!source || source.role !== 'asset' || !source.ingestionAllowed) fail('Aset memerlukan sumber asset dengan izin ingest yang telah terbit.');
+  // Registration is draft-only. A draft source may authorize staging, but publication
+  // still requires a published, human-verified source in publishMediaTx.
+  const source = lookup(app, 'source', key(b.sourceKey, 'media.sourceKey'), null, false);
+  if (!source || source.role !== 'asset' || !source.ingestionAllowed) fail('Aset memerlukan sumber asset dengan izin ingest.');
   const files = e.findUploadedFiles('file'); const external = b.externalUrl ? https(b.externalUrl, 'media.externalUrl') : '';
   if ((files?.length || 0) + (external ? 1 : 0) !== 1) fail('Pilih tepat satu: unggah gambar atau URL HTTPS.');
   const r = new Record(app.findCollectionByNameOrId('lab_media')); r.set('key', k); r.set('title', str(b.title, 'media.title', 200, true)); r.set('alt', str(b.alt, 'media.alt', 500, true)); r.set('sourceKey', b.sourceKey);
   r.set('license', source.license); if (external) r.set('externalUrl', external); else r.set('file', files[0]); r.set('status', 'draft'); r.set('revision', 1); app.save(r); return mediaOut(r);
 }
-function publishMedia(app, k, body) {
-  if (body.confirmReviewed !== true) fail('Konfirmasi pemeriksaan manusia diperlukan.'); const r = media(app, k, false); if (!r) throw new NotFoundError('Aset tidak ditemukan.');
-  if (body.revision !== r.getInt('revision')) fail('Revisi aset berubah.'); const source = lookup(app, 'source', r.getString('sourceKey'), null, true);
+function publishMediaTx(tx, k, revision) {
+  const r = media(tx, k, false); if (!r) throw new NotFoundError('Aset tidak ditemukan.');
+  if (revision !== r.getInt('revision')) fail('Revisi aset berubah.'); const source = lookup(tx, 'source', r.getString('sourceKey'), null, true);
   if (!source || source.role !== 'asset' || !source.ingestionAllowed || !source.license.verified || !source.license.commercialUse || !source.license.redistribution || (source.license.attributionRequired && !source.license.citation)) fail('Sumber dan lisensi belum siap terbit.');
-  r.set('status', 'published'); app.save(r); return mediaOut(r);
+  r.set('status', 'published'); tx.save(r); return mediaOut(r);
+}
+function publishMedia(app, k, body) {
+  if (body.confirmReviewed !== true) fail('Konfirmasi pemeriksaan manusia diperlukan.');
+  let out; app.runInTransaction((tx) => { out = publishMediaTx(tx, k, body.revision); }); return out;
+}
+const PUBLISH_ORDER = { source: 0, guide: 1, catalog: 2, asset: 3, module: 4, placement: 5 };
+function moduleAssets(v) {
+  if (!v) return [];
+  return [...new Set([
+    ...(v.chapters || []).flatMap((c) => (c.sections || []).flatMap((s) => (s.blocks || []).flatMap((b) => [b.asset, b.left, b.right, ...(b.assets || [])]))),
+    ...(v.questionBanks || []).flatMap((b) => (b.questions || []).map((q) => q.asset)),
+  ].filter(Boolean))];
+}
+function reviewItems(app, body) {
+  obj(body, 'Bundle review');
+  const records = arr(body.records, 'bundle.records', 100).map((x) => {
+    obj(x, 'Record review'); const kind = str(x.kind, 'record.kind', 30, true);
+    if (!KINDS.includes(kind)) fail('Jenis record tidak dikenal: ' + kind);
+    const k = key(x.key, 'record.key');
+    if (!Number.isInteger(x.revision) || x.revision < 1) fail('Revisi record tidak valid.');
+    return { kind, key: k, expectedRevision: x.revision, action: ['create', 'update', 'unchanged'].includes(x.action) ? x.action : 'update' };
+  });
+  const explicitMedia = arr(body.media || [], 'bundle.media', 1000).map((x) => {
+    obj(x, 'Aset review'); if (x.revision !== undefined && (!Number.isInteger(x.revision) || x.revision < 1)) fail('Revisi aset tidak valid.');
+    return { kind: 'asset', key: key(x.key, 'media.key'), expectedRevision: x.revision };
+  });
+  if (!records.length && !explicitMedia.length) fail('Bundle review kosong.');
+  const referencedMedia = records.filter((x) => x.kind === 'module').flatMap((x) => moduleAssets(data(find(app, 'module', x.key, false), false)));
+  const assets = [...new Set([...explicitMedia.map((x) => x.key), ...referencedMedia])].map((k) => {
+    const supplied = explicitMedia.find((x) => x.key === k), r = media(app, k, false);
+    return { kind: 'asset', key: k, expectedRevision: supplied?.expectedRevision ?? r?.getInt('revision') ?? 0, action: r?.getString('status') === 'published' ? 'unchanged' : r?.getInt('revision') === 1 ? 'create' : 'update' };
+  });
+  const items = [...records, ...assets];
+  if (new Set(items.map((x) => x.kind + '/' + x.key)).size !== items.length) fail('Bundle review memiliki record ganda.');
+  function catalogDepth(x) {
+    if (x.kind !== 'catalog') return 0;
+    let parent = data(find(app, 'catalog', x.key, false), false)?.parent, depth = 0; const seen = new Set([x.key]);
+    while (parent && !seen.has(parent) && depth < 100) { seen.add(parent); depth++; parent = data(find(app, 'catalog', parent, false), false)?.parent; }
+    return depth;
+  }
+  items.sort((a, b) => PUBLISH_ORDER[a.kind] - PUBLISH_ORDER[b.kind] || catalogDepth(a) - catalogDepth(b) || a.key.localeCompare(b.key));
+  return items.map((x) => {
+    const r = x.kind === 'asset' ? media(app, x.key, false) : find(app, x.kind, x.key, false);
+    const draft = r && x.kind !== 'asset' ? data(r, false) : null;
+    const published = r && x.kind !== 'asset' ? data(r, true) : null;
+    const alreadyPublished = !!r && (x.kind === 'asset' ? r.getString('status') === 'published' : !!published && JSON.stringify(draft) === JSON.stringify(published));
+    const snapshot = !r ? null : x.kind === 'asset' ? [r.getInt('revision'), r.getString('status'), r.getString('sourceKey'), r.getString('title'), r.getString('alt'), r.getString('externalUrl'), r.getString('file'), r.get('license')] : [r.getInt('revision'), draft, published];
+    return { ...x, title: r?.getString('title') || x.key, revision: r?.getInt('revision') || 0, alreadyPublished, snapshot };
+  });
+}
+function reviewToken(items) { return u.hash(JSON.stringify(items.map((x) => [x.kind, x.key, x.expectedRevision, x.snapshot]))); }
+function preflightBundle(app, items) {
+  const results = items.map((x) => ({ kind: x.kind, key: x.key, title: x.title, revision: x.revision, action: x.action, alreadyPublished: x.alreadyPublished, ready: false, issues: [] }));
+  const rollback = 'LAB_BUNDLE_REVIEW_ROLLBACK';
+  try {
+    app.runInTransaction((tx) => {
+      items.forEach((x, i) => {
+        const row = results[i];
+        if (!x.snapshot) row.issues.push('Record atau aset tidak ditemukan.');
+        else if (x.expectedRevision !== x.revision) row.issues.push('Revisi berubah setelah draft dibuat. Tinjau ulang bundle.');
+        else if (x.alreadyPublished) row.ready = true;
+        else {
+          try {
+            if (x.kind === 'asset') publishMediaTx(tx, x.key, x.expectedRevision);
+            else publishRecordTx(tx, x.kind, x.key, x.expectedRevision, '');
+            row.ready = true;
+          } catch (e) { row.issues.push(e.message || String(e)); }
+        }
+      });
+      throw new Error(rollback); // Always discard trial publication, even when every item is ready.
+    });
+  } catch (e) { if (!(e.message || String(e)).includes(rollback)) throw e; }
+  return results;
+}
+function reviewBundle(app, body) {
+  const items = reviewItems(app, body), results = preflightBundle(app, items);
+  return { ready: results.every((x) => x.ready), readyCount: results.filter((x) => x.ready).length, total: results.length,
+    items: results, problems: results.flatMap((x) => x.issues.map((issue) => x.kind + '/' + x.key + ': ' + issue)), token: reviewToken(items) };
+}
+function publishBundle(app, body, admin) {
+  obj(body, 'Publikasi bundle'); if (body.confirmReviewed !== true) fail('Konfirmasi pemeriksaan manusia untuk bundle diperlukan.');
+  const review = reviewBundle(app, body.bundle);
+  if (!body.token || body.token !== review.token) fail('Revisi berubah setelah review. Tinjau ulang bundle.');
+  if (!review.ready) fail('Bundle belum siap: ' + review.problems.join('; '));
+  let published = 0;
+  app.runInTransaction((tx) => {
+    const items = reviewItems(tx, body.bundle);
+    if (reviewToken(items) !== body.token) fail('Revisi berubah setelah review. Tinjau ulang bundle.');
+    for (const x of items) {
+      if (x.alreadyPublished) continue;
+      if (x.kind === 'asset') publishMediaTx(tx, x.key, x.expectedRevision);
+      else publishRecordTx(tx, x.kind, x.key, x.expectedRevision, admin.id);
+      published++;
+    }
+  });
+  return { published, total: review.total, items: review.items.map((x) => ({ kind: x.kind, key: x.key, title: x.title, revision: x.revision })), status: 'published' };
 }
 function studentCatalog(app) {
   const published = (kind) => all(app, kind).flatMap((r) => { const d = data(r, true); return d ? [d] : []; });
@@ -250,4 +350,4 @@ function answer(app, module, bank, qid, body) {
   const q = m.questionBanks.find((b) => b.key === bank)?.questions.find((x) => x.key === qid); if (!q) throw new NotFoundError('Soal tidak ditemukan.');
   const response = str(body.response, 'response', 100, true); return { correct: response === q.answer, answer: q.answer, explanation: q.explanation };
 }
-module.exports = { KINDS, BLOCKS, validate, mergeModule, plan, preview, apply, list, find, row, exportModule, publish, listMedia, saveMedia, publishMedia, studentCatalog, studentModule, answer, mediaOut };
+module.exports = { KINDS, BLOCKS, validate, mergeModule, plan, preview, apply, list, find, row, exportModule, publish, listMedia, saveMedia, publishMedia, reviewBundle, publishBundle, studentCatalog, studentModule, answer, mediaOut };

@@ -68,4 +68,5 @@ penonaktifan akun.
 | [docs/GOOGLE_DRIVE.md](docs/GOOGLE_DRIVE.md) | Menyambungkan Google Drive admin untuk PDF dan foto bukti |
 | [docs/HERMES_AGENT.md](docs/HERMES_AGENT.md) | Kontrak API untuk Hermes Agent |
 | [docs/FORMAT_SOAL.md](docs/FORMAT_SOAL.md) | Format JSON soal dan blok konten kaya (untuk skill konverter) |
+| [docs/LAB_BACKGROUND_JOBS.md](docs/LAB_BACKGROUND_JOBS.md) | Worker akuisisi OCT, pemulihan job, keamanan, dan langkah deployment |
 | [docs/AUDIT_DEPENDENSI.md](docs/AUDIT_DEPENDENSI.md) | Hasil npm audit: mana yang runtime, mana yang build, dan alasan sisa temuan |

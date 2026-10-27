@@ -1,0 +1,14 @@
+import { KIND_LABELS, ACTION_LABELS } from './labAuthoringUi.mjs';
+
+const ORDER = ['source', 'guide', 'catalog', 'asset', 'module', 'placement'];
+
+export default function LabBundleReview({ review, confirmed, onConfirm, onPublish, onRefresh, busy }) {
+  return <section className="card space-y-5 p-5 sm:p-6" aria-live="polite">
+    <div className="flex flex-wrap items-start justify-between gap-3"><div><h2 className="text-xl font-bold">Review Bundle</h2><p className="mt-1 text-sm text-ink-muted">Periksa semua record dan aset yang dirujuk modul. Publikasi dilakukan bersama dalam satu transaksi.</p></div><button className="btn btn-secondary btn-sm" disabled={busy} onClick={onRefresh}>Periksa ulang kesiapan</button></div>
+    <div className={'rounded-xl border p-4 ' + (review.ready ? 'border-brand' : 'border-coral')}><strong>{review.readyCount} / {review.total} siap diterbitkan</strong>{review.ready ? <p className="mt-1 text-sm">Seluruh dependensi dan revisi siap untuk pemeriksaan manusia.</p> : <><p className="mt-1 text-sm">Bundle belum dapat diterbitkan. Perbaiki semua masalah berikut, lalu periksa ulang.</p><ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-coral">{review.problems.map((problem, i) => <li className="break-words" key={i}>{problem}</li>)}</ul></>}</div>
+    {ORDER.map((kind) => { const items = review.items.filter((item) => item.kind === kind); return items.length ? <div key={kind} className="space-y-2"><h3 className="font-semibold">{KIND_LABELS[kind]} ({items.length})</h3><ul className="space-y-2">{items.map((item) => <li key={kind + '/' + item.key} className="min-w-0 rounded-xl border border-line p-3 text-sm"><div className="flex flex-wrap items-center gap-2"><span aria-hidden="true" className={item.ready ? 'text-brand' : 'text-coral'}>{item.ready ? '✓' : '✕'}</span><strong className="break-words">{item.title}</strong><code className="break-all text-xs text-ink-muted">{kind}/{item.key}</code></div><p className="mt-1 pl-5 text-xs text-ink-muted">Revisi {item.revision} · {item.alreadyPublished ? 'sudah terbit' : ACTION_LABELS[item.action] || 'draft'}</p>{item.issues.map((issue, i) => <p className="mt-1 pl-5 text-coral" key={i}>{issue}</p>)}</li>)}</ul></div> : null; })}
+    <label className="flex items-start gap-2 text-sm"><input type="checkbox" checked={confirmed} disabled={busy || !review.ready} onChange={(e) => onConfirm(e.target.checked)} /><span>Saya sudah memeriksa isi, sumber, lisensi, gambar, kunci jawaban, dan perubahan dalam bundle ini pada revisi yang tercantum.</span></label>
+    <p className="text-xs text-ink-muted">Konfirmasi ini hanya berlaku untuk revisi di atas. Jika ada perubahan, pemeriksaan ulang diperlukan.</p>
+    <button className="btn btn-primary" disabled={busy || !review.ready || !confirmed} onClick={onPublish}>Terbitkan Bundle</button>
+  </section>;
+}

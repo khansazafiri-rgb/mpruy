@@ -1,41 +1,124 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { api, errorText } from '@/lib/api';
 import { Alert } from '@/components/ui';
 import LabAuthoredContent from '@/features/lab/LabAuthoredContent';
+import LabBundleReview from './LabBundleReview';
+import { ACTION_LABELS, KIND_LABELS, MODULE_TEMPLATE, actionCounts, bundleSummary, catalogHierarchy, describeEntry, licenseWarnings } from './labAuthoringUi.mjs';
 
-const START = JSON.stringify({ schemaVersion: 1, records: [{ kind: 'module', data: { key: 'modul-baru', title: 'Modul baru', summary: '', sources: [], chapters: [{ key: 'bab-satu', title: 'Bab satu', sections: [{ key: 'bagian-satu', title: 'Bagian satu', blocks: [{ key: 'orientasi', type: 'text', title: 'Orientasi', text: 'Isi materi.' }] }] }], questionBanks: [], pathways: [] } }] }, null, 2);
-export default function LabAuthoringAdmin() {
-  const [source, setSource] = useState(START); const [plan, setPlan] = useState(null); const [records, setRecords] = useState([]); const [media, setMedia] = useState([]);
-  const [error, setError] = useState(''); const [notice, setNotice] = useState(''); const [busy, setBusy] = useState(false); const [reviewed, setReviewed] = useState(false); const [preview, setPreview] = useState(null);
-  const [file, setFile] = useState(null); const [meta, setMeta] = useState({ key: '', title: '', alt: '', sourceKey: '', externalUrl: '' });
-  async function refresh() { const [r, m] = await Promise.all([api('admin/lab-authoring/records'), api('admin/lab-authoring/media')]); setRecords(r.items); setMedia(m.items); }
+const DOC_URL = 'https://github.com/khansazafiri-rgb/mpruy/blob/main/docs/LAB_AUTHORING_SCHEMA.md';
+const ACTIONS = ['create', 'update', 'unchanged'];
+export default function LabAuthoringAdmin({ initialSource = '' }) {
+  const [source, setSource] = useState(initialSource);
+  const [bundle, setBundle] = useState(null);
+  const [plan, setPlan] = useState(null);
+  const [step, setStep] = useState('edit');
+  const [result, setResult] = useState(null);
+  const [bundleReview, setBundleReview] = useState(null);
+  const [bundleConfirmed, setBundleConfirmed] = useState(false);
+  const [bundlePublished, setBundlePublished] = useState(null);
+  const [records, setRecords] = useState([]);
+  const [media, setMedia] = useState([]);
+  const [error, setError] = useState('');
+  const [notice, setNotice] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [reviewed, setReviewed] = useState(false);
+  const [preview, setPreview] = useState(null);
+  const [assetBrowser, setAssetBrowser] = useState(false);
+  const [assetSearch, setAssetSearch] = useState('');
+  const [uploadOpen, setUploadOpen] = useState(false);
+  const [manageOpen, setManageOpen] = useState(false);
+  const [file, setFile] = useState(null);
+  const [meta, setMeta] = useState({ key: '', title: '', alt: '', sourceKey: '', externalUrl: '' });
+
+  async function refresh() {
+    const [r, m] = await Promise.all([api('admin/lab-authoring/records'), api('admin/lab-authoring/media')]);
+    setRecords(r.items); setMedia(m.items);
+  }
   useEffect(() => { refresh().catch((e) => setError(errorText(e))); }, []);
-  async function run(fn) { setBusy(true); setError(''); setNotice(''); try { await fn(); } catch (e) { setError(errorText(e)); } finally { setBusy(false); } }
-  const parse = () => JSON.parse(source);
-  const doPreview = () => run(async () => { const p = await api('admin/lab-authoring/preview', { method: 'POST', body: parse() }); setPlan(p); setNotice(p.ok ? 'Pratinjau siap. Periksa daftar perubahan sebelum menyimpan draft.' : 'Perbaiki kesalahan sebelum menyimpan.'); });
-  const apply = () => run(async () => { const result = await api('admin/lab-authoring/apply', { method: 'POST', body: { bundle: parse(), token: plan.token } }); setPlan(null); await refresh(); setNotice(`${result.changed} record disimpan sebagai draft. Konten siswa belum berubah.`); });
-  const publish = (r) => run(async () => { await api(`admin/lab-authoring/publish/${r.kind}/${r.key}`, { method: 'POST', body: { revision: r.revision, confirmReviewed: reviewed } }); setReviewed(false); await refresh(); setNotice(`${r.kind}/${r.key} diterbitkan setelah pemeriksaan.`); });
-  const publishAsset = (r) => run(async () => { await api(`admin/lab-authoring/media/${r.key}/publish`, { method: 'POST', body: { revision: r.revision, confirmReviewed: reviewed } }); setReviewed(false); await refresh(); setNotice(`Aset ${r.key} diterbitkan.`); });
-  const upload = () => run(async () => { if (!!file === !!meta.externalUrl) throw new Error('Pilih berkas atau URL HTTPS, satu saja.'); const form = new FormData(); Object.entries(meta).forEach(([k, v]) => form.append(k, v)); if (file) form.append('file', file); await api('admin/lab-authoring/media', { method: 'POST', body: form }); setFile(null); await refresh(); setNotice('Aset didaftarkan sebagai draft. Periksa sumber dan lisensinya sebelum terbit.'); });
-  const loadRecord = (r) => { setSource(JSON.stringify({ schemaVersion: 1, records: [{ kind: r.kind, data: r.data }] }, null, 2)); setPlan(null); setPreview(null); };
-  const loadExport = (key) => run(async () => { const x = await api(`admin/lab-authoring/export/${key}`); setSource(JSON.stringify(x, null, 2)); setPlan(null); setNotice('Modul dimuat ke editor; ekspor ini juga bisa disalin sebagai JSON.'); });
-  const previewModule = (key) => run(async () => { setPreview(await api(`admin/lab-authoring/modules/${key}/preview`)); });
-  return <div className="space-y-5">
-    <Alert kind="info">Alur: daftarkan sumber → unggah aset → susun JSON → Validasi & Preview Changes → Apply as Draft → tinjau manusia → terbitkan satu per satu. Konten lama dan siswa tidak berubah saat draft disimpan.</Alert>
-    <section className="card space-y-3 p-5"><h2 className="text-lg font-semibold">Import / Edit Lab JSON</h2><p className="text-sm text-ink-muted">Gunakan key stabil. Mengimpor satu bagian modul mempertahankan bagian lain. Penghapusan tidak tersedia pada V1.</p>
-      <textarea aria-label="JSON authoring Lab" className="input min-h-[340px] font-mono text-xs" spellCheck={false} disabled={busy} value={source} onChange={(e) => { setSource(e.target.value); setPlan(null); }} />
-      <div className="flex flex-wrap gap-2"><button className="btn btn-secondary" disabled={busy} onClick={doPreview}>Validasi & Preview Changes</button><button className="btn btn-primary" disabled={busy || !plan?.ok} onClick={apply}>Apply as Draft</button></div>
-      {plan && <div className="space-y-2 rounded-xl border border-line p-3"><p className="font-semibold">Rencana perubahan</p><ul className="space-y-1 text-sm">{plan.entries.map((e) => <li key={`${e.kind}/${e.key}`}>{e.action.toUpperCase()} · {e.kind}/{e.key} · revisi {e.revision}{e.counts && <span className="ml-1 text-ink-muted">· {e.counts.chapters} bab, {e.counts.sections} bagian, {e.counts.blocks} blok, {e.counts.questions} soal</span>}{e.changes.length > 0 && <span className="block break-words text-xs text-ink-muted">{e.changes.slice(0, 12).join(', ')}{e.changes.length > 12 && ` +${e.changes.length - 12} lainnya`}</span>}</li>)}</ul>{plan.errors.map((e, i) => <p key={i} className="text-sm text-coral">{e}</p>)}</div>}
+  async function run(fn) {
+    setBusy(true); setError(''); setNotice('');
+    try { await fn(); } catch (e) { setError(e instanceof SyntaxError ? 'JSON tidak valid: ' + e.message : e instanceof Error && !('status' in e) ? e.message : errorText(e)); }
+    finally { setBusy(false); }
+  }
+  function changeSource(value) { setSource(value); setBundle(null); setPlan(null); setResult(null); setBundleReview(null); setBundleConfirmed(false); setBundlePublished(null); setStep('edit'); setError(''); }
+  function validate() { return run(async () => {
+    setBundle(null); setPlan(null); setStep('edit');
+    const data = JSON.parse(source);
+    const p = await api('admin/lab-authoring/preview', { method: 'POST', body: data });
+    setBundle(data); setPlan(p); setStep(p.ok ? 'validated' : 'edit');
+  }); }
+  function apply() {
+    if (step !== 'preview' || !plan?.ok || !bundle) return;
+    return run(async () => {
+      const applied = await api('admin/lab-authoring/apply', { method: 'POST', body: { bundle, token: plan.token } });
+      await refresh(); setResult(applied); setBundleReview(null); setBundleConfirmed(false); setBundlePublished(null); setStep('applied'); setPlan(null);
+    });
+  }
+  function upload() { return run(async () => {
+    if (!!file === !!meta.externalUrl) throw new Error('Pilih berkas atau URL HTTPS, satu saja.');
+    const form = new FormData(); Object.entries(meta).forEach(([k, v]) => form.append(k, v));
+    if (file) form.append('file', file);
+    await api('admin/lab-authoring/media', { method: 'POST', body: form });
+    setFile(null); await refresh(); setBundleReview(null); setBundleConfirmed(false); setNotice('Media tersimpan sebagai draft. Periksa sumber dan lisensinya sebelum diterbitkan.');
+  }); }
+  function loadRecord(r) { changeSource(JSON.stringify({ schemaVersion: 1, records: [{ kind: r.kind, data: r.data }] }, null, 2)); setPreview(null); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  function exportModule(key) { return run(async () => {
+    const data = await api('admin/lab-authoring/export/' + key);
+    const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
+    const link = document.createElement('a'); link.href = url; link.download = key + '.json'; link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    setNotice('JSON modul ' + key + ' diunduh. Ubah sebagian lalu impor ulang bila perlu.');
+  }); }
+  function previewModule(key) { return run(async () => { setPreview(await api('admin/lab-authoring/modules/' + key + '/preview')); }); }
+  function publish(r) { return run(async () => {
+    await api('admin/lab-authoring/publish/' + r.kind + '/' + r.key, { method: 'POST', body: { revision: r.revision, confirmReviewed: reviewed } });
+    setReviewed(false); await refresh(); setBundleReview(null); setBundleConfirmed(false); setNotice(r.title + ' diterbitkan setelah pemeriksaan.');
+  }); }
+  function publishAsset(r) { return run(async () => {
+    await api('admin/lab-authoring/media/' + r.key + '/publish', { method: 'POST', body: { revision: r.revision, confirmReviewed: reviewed } });
+    setReviewed(false); await refresh(); setBundleReview(null); setBundleConfirmed(false); setNotice('Aset ' + r.title + ' diterbitkan.');
+  }); }
+  function openBundleReview() {
+    if (!result?.bundle) return;
+    setBundleReview(null); setBundleConfirmed(false);
+    return run(async () => { setBundleReview(await api('admin/lab-authoring/bundle/review', { method: 'POST', body: result.bundle })); });
+  }
+  function publishReviewedBundle() {
+    if (!bundleReview?.ready || !bundleConfirmed || !result?.bundle) return;
+    return run(async () => {
+      try {
+        const published = await api('admin/lab-authoring/bundle/publish', { method: 'POST', body: { bundle: result.bundle, token: bundleReview.token, confirmReviewed: true } });
+        await refresh(); setBundlePublished(published); setBundleReview(null); setBundleConfirmed(false);
+      } catch (e) { setBundleConfirmed(false); setBundleReview(null); throw e; }
+    });
+  }
+  const summary = bundle ? bundleSummary(bundle) : null;
+  const warnings = bundle ? licenseWarnings(bundle, records, media) : [];
+  const counts = plan ? actionCounts(plan.entries) : null;
+  const resultCounts = result ? actionCounts(result.entries) : null;
+  const bundleKindCounts = result?.bundle ? Object.fromEntries(Object.keys(KIND_LABELS).map((kind) => [kind, result.bundle.records.filter((r) => r.kind === kind).length])) : {};
+  const moduleKey = bundle?.records?.find((r) => r.kind === 'module')?.data?.key;
+  const sourceRecords = new Map(records.filter((r) => r.kind === 'source').map((r) => [r.key, r.data]));
+  const shownMedia = media.filter((m) => (m.key + ' ' + m.title + ' ' + m.sourceKey).toLowerCase().includes(assetSearch.toLowerCase()));
+  const hierarchy = catalogHierarchy(records);
+  return <div className="min-w-0 space-y-5">
+    <section className="card space-y-4 p-5 sm:p-6">
+      <div className="flex flex-wrap items-start justify-between gap-3"><div><h2 className="text-xl font-bold">Import Modul JSON</h2><p className="mt-1 max-w-3xl text-sm text-ink-muted">Buat atau perbarui modul Lab lengkap dari satu JSON. Konten hanya disimpan sebagai draft sampai ditinjau dan diterbitkan.</p></div><a className="btn btn-ghost btn-sm" href={DOC_URL} target="_blank" rel="noreferrer">Lihat format JSON ↗</a></div>
+      <ol className="grid gap-2 text-sm sm:grid-cols-3" aria-label="Langkah impor modul">{['1. Validasi JSON', '2. Preview Perubahan', '3. Terapkan sebagai Draft'].map((label, i) => <li key={label} className={'rounded-xl border p-3 ' + ((i === 0 && step === 'edit') || (i === 1 && step === 'validated') || (i === 2 && (step === 'preview' || step === 'applied')) ? 'border-brand bg-brand/5 font-semibold' : 'border-line text-ink-muted')}>{label}</li>)}</ol>
+      <div className="flex flex-wrap gap-2"><button className="btn btn-secondary btn-sm" disabled={busy} onClick={() => navigator.clipboard.writeText(JSON.stringify(MODULE_TEMPLATE, null, 2)).then(() => setNotice('Template modul minimal disalin.')).catch(() => setError('Gagal menyalin template.'))}>Salin Template</button><button className="btn btn-secondary btn-sm" onClick={() => setAssetBrowser((v) => !v)}>{assetBrowser ? 'Tutup Asset Browser' : 'Lihat Asset Tersedia'}</button><button className="btn btn-secondary btn-sm" onClick={() => setUploadOpen((v) => !v)}>{uploadOpen ? 'Tutup Upload Media' : 'Upload Media'}</button></div>
+      <label className="block space-y-2"><span className="font-semibold">JSON modul atau bundle</span><textarea aria-label="JSON modul Lab" className="input min-h-[420px] w-full min-w-0 font-mono text-sm" spellCheck={false} disabled={busy} placeholder={'{\n  "schemaVersion": 1,\n  "records": [\n    { "kind": "module", "data": { "key": "...", "title": "..." } }\n  ]\n}'} value={source} onChange={(e) => changeSource(e.target.value)} /></label>
+      <p className="text-xs text-ink-muted">Gunakan key aset stabil di blok gambar dan soal. JSON boleh berisi hanya bagian yang ingin diperbarui; bagian lain tetap ada. Penghapusan tidak didukung.</p>
+      <div className="flex flex-wrap gap-2"><button className="btn btn-primary" disabled={busy || !source.trim()} onClick={validate}>Validasi JSON</button>{plan?.ok && step === 'validated' && <button className="btn btn-secondary" disabled={busy} onClick={() => setStep('preview')}>Preview Perubahan →</button>}</div>
+      {plan && <section className="space-y-3 rounded-xl border border-line p-4" aria-live="polite"><h3 className="font-semibold">Hasil validasi: {plan.ok ? 'Struktur valid' : 'Ada kesalahan'}</h3><p className="text-sm">{plan.ok ? '✓ Skema, struktur, dan referensi yang diperiksa server valid untuk draft.' : 'Perbaiki masalah berikut, lalu validasi ulang.'}</p>{summary && <p className="text-sm text-ink-muted">{summary.sources} sumber · {summary.modules} modul · {summary.chapters} bab · {summary.sections} bagian · {summary.banks} bank soal · {summary.questions} soal · {summary.assets} key aset · {summary.placements} penempatan</p>}{plan.errors?.length > 0 && <div><p className="font-semibold text-coral">Kesalahan yang memblokir ({plan.errors.length})</p><ul className="list-disc space-y-1 pl-5 text-sm text-coral">{plan.errors.map((e, i) => <li key={i} className="break-words">{e}</li>)}</ul></div>}<div><p className="font-semibold">Peringatan untuk pemeriksaan manusia ({warnings.length})</p>{warnings.length ? <ul className="list-disc space-y-1 pl-5 text-sm">{warnings.map((w) => <li key={w}>{w}</li>)}</ul> : <p className="text-sm text-ink-muted">Tidak ada peringatan lisensi atau status aset yang terdeteksi. Periksa isi dan hak penggunaan sebelum terbit.</p>}</div><details className="text-xs text-ink-muted"><summary className="cursor-pointer">Detail teknis</summary><pre className="mt-2 max-h-52 overflow-auto whitespace-pre-wrap break-all">{JSON.stringify(plan, null, 2)}</pre></details></section>}
+      {step === 'preview' && plan?.ok && <section className="space-y-4 rounded-xl border border-brand p-4" aria-live="polite"><div><h3 className="text-lg font-semibold">Preview Perubahan</h3><p className="text-sm text-ink-muted">{counts.create} baru · {counts.update} diperbarui · {counts.unchanged} tidak berubah. Perubahan hanya akan disimpan sebagai draft.</p></div>{ACTIONS.map((action) => <div key={action}><h4 className="font-semibold">{ACTION_LABELS[action]} ({counts[action]})</h4>{plan.entries.filter((e) => e.action === action).length ? <ul className="mt-1 space-y-2">{plan.entries.filter((e) => e.action === action).map((e) => <li className="min-w-0 rounded-lg border border-line p-3 text-sm" key={e.kind + '/' + e.key}><strong>{KIND_LABELS[e.kind] || e.kind}: {e.title}</strong><span className="ml-2 break-all text-xs text-ink-muted">{e.key}</span>{e.kind === 'placement' && <p className="text-ink-muted">{bundle.records.find((r) => r.kind === 'placement' && r.data?.key === e.key)?.data?.catalog} → {bundle.records.find((r) => r.kind === 'placement' && r.data?.key === e.key)?.data?.module}</p>}{describeEntry(e, bundle, records).map((line) => <p key={line} className="mt-1 pl-3 text-ink-muted">{line}</p>)}{e.action === 'update' && !describeEntry(e, bundle, records).length && <p className="text-xs text-ink-muted">Perubahan: {e.changes?.slice(0, 6).join(', ') || 'metadata'}{e.changes?.length > 6 ? '…' : ''}</p>}</li>)}</ul> : <p className="mt-1 text-sm text-ink-muted">Tidak ada.</p>}</div>)}<p className="text-xs text-ink-muted">Bagian yang tidak disebut dalam JSON tidak dihapus. Publikasi tetap memerlukan pemeriksaan manusia terpisah.</p><button className="btn btn-primary" disabled={busy} onClick={apply}>Terapkan sebagai Draft</button></section>}
+      {step === 'applied' && result && !bundlePublished && <section className="space-y-3 rounded-xl border border-brand p-4" role="status"><h3 className="text-lg font-semibold">Draft berhasil dibuat</h3><p>{result.bundle?.records.length || result.entries.length} record dalam perubahan ini · {resultCounts.create} baru · {resultCounts.update} diperbarui · {resultCounts.unchanged} tidak berubah.</p><p className="text-sm text-ink-muted">{Object.entries(bundleKindCounts).filter(([, n]) => n > 0).map(([kind, n]) => n + ' ' + KIND_LABELS[kind].toLowerCase()).join(' · ')}</p><p className="text-sm">Belum ada konten baru yang diterbitkan ke mahasiswa.</p><div className="flex flex-wrap gap-2">{moduleKey && <button className="btn btn-secondary" onClick={() => previewModule(moduleKey)}>Preview Modul</button>}<button className="btn btn-primary" disabled={busy || !result.bundle} onClick={openBundleReview}>Review & Terbitkan Bundle</button><button className="btn btn-ghost" onClick={() => { setManageOpen(true); document.getElementById('lab-authoring-manage')?.scrollIntoView({ behavior: 'smooth' }); }}>Kelola manual</button></div></section>}
+      {step === 'applied' && bundlePublished && <section className="space-y-3 rounded-xl border border-brand p-4" role="status"><h3 className="text-lg font-semibold">Bundle berhasil diterbitkan</h3><p>{bundlePublished.published} record diterbitkan · {bundlePublished.total - bundlePublished.published} sudah terbit sebelumnya.</p><p className="text-sm text-ink-muted">{Object.entries(Object.fromEntries(Object.keys(KIND_LABELS).map((kind) => [kind, bundlePublished.items.filter((item) => item.kind === kind).length]))).filter(([, n]) => n > 0).map(([kind, n]) => n + ' ' + KIND_LABELS[kind].toLowerCase()).join(' · ')}</p><div className="flex flex-wrap gap-2"><Link className="btn btn-secondary" to="/lab">Lihat di Lab</Link>{moduleKey && <><Link className="btn btn-primary" to={'/lab/modul/' + moduleKey}>Buka Modul</Link><button className="btn btn-secondary" onClick={() => exportModule(moduleKey)}>Export JSON</button></>}</div></section>}
     </section>
-    <section className="card space-y-3 p-5"><h2 className="text-lg font-semibold">Aset gambar</h2><p className="text-sm text-ink-muted">PNG, JPEG, WebP maksimal 20 MB. Sumber berjenis asset harus terbit sebelum unggah. Berkas memakai key baru saat diganti.</p>
-      <div className="grid gap-2 sm:grid-cols-2">{[['key', 'Key aset'], ['title', 'Judul'], ['alt', 'Deskripsi gambar'], ['sourceKey', 'Key sumber'], ['externalUrl', 'URL HTTPS gambar yang sudah dihosting (opsional)']].map(([k, label]) => <label key={k} className="text-sm">{label}<input className="input mt-1" value={meta[k]} disabled={busy} onChange={(e) => setMeta({ ...meta, [k]: e.target.value })} /></label>)}</div>
-      <input aria-label="Berkas gambar" type="file" accept="image/png,image/jpeg,image/webp" disabled={busy} onChange={(e) => setFile(e.target.files?.[0] || null)} /><button className="btn btn-secondary" disabled={busy || (!file && !meta.externalUrl)} onClick={upload}>Daftarkan sebagai draft</button>
-      <div className="space-y-1">{media.map((m) => <div key={m.key} className="flex flex-wrap items-center justify-between gap-2 border-t border-line py-2 text-sm"><span>{m.key} · {m.status} · {m.sourceKey}</span><div className="flex gap-2"><a href={m.url} target="_blank" rel="noreferrer" className="btn btn-ghost btn-sm">Pratinjau</a><button className="btn btn-secondary btn-sm" disabled={busy || !reviewed || m.status === 'published'} onClick={() => publishAsset(m)}>Terbitkan</button></div></div>)}</div>
-    </section>
-    <section className="card space-y-3 p-5"><h2 className="text-lg font-semibold">Record tersimpan</h2><p className="text-sm text-ink-muted">Urutan terbit: sumber, panduan, katalog, aset, modul, penempatan. Periksa juga materi dan kunci soal pada pratinjau.</p>
-      <label className="flex gap-2 text-sm"><input type="checkbox" checked={reviewed} onChange={(e) => setReviewed(e.target.checked)} /><span>Saya sudah memeriksa isi, rujukan, lisensi, gambar, dan jawaban pada revisi yang dipilih.</span></label>
-      <div className="space-y-1">{records.map((r) => <div key={`${r.kind}/${r.key}`} className="flex flex-wrap items-center justify-between gap-2 border-t border-line py-2 text-sm"><span>{r.kind}/{r.key} · {r.status}{r.hasDraft && ' · draft baru'} · revisi {r.revision}</span><div className="flex flex-wrap gap-1"><button className="btn btn-ghost btn-sm" onClick={() => loadRecord(r)}>Edit</button>{r.kind === 'module' && <><button className="btn btn-ghost btn-sm" onClick={() => loadExport(r.key)}>Export</button><button className="btn btn-ghost btn-sm" onClick={() => previewModule(r.key)}>Preview draft</button></>}<button className="btn btn-secondary btn-sm" disabled={busy || !reviewed || !r.hasDraft} onClick={() => publish(r)}>Terbitkan</button></div></div>)}</div>
-    </section>
+    {bundleReview && !bundlePublished && <LabBundleReview review={bundleReview} confirmed={bundleConfirmed} onConfirm={setBundleConfirmed} onPublish={publishReviewedBundle} onRefresh={openBundleReview} busy={busy} />}
+    {assetBrowser && <section className="card space-y-3 p-5" aria-label="Asset browser"><h2 className="text-lg font-semibold">Asset Browser</h2><p className="text-sm text-ink-muted">Salin key untuk referensi gambar dalam JSON: <code>{'{ "type": "image", "asset": "key-aset" }'}</code>.</p><input aria-label="Cari aset" className="input w-full" placeholder="Cari key, judul, atau sumber" value={assetSearch} onChange={(e) => setAssetSearch(e.target.value)} /><div className="grid gap-3 sm:grid-cols-2">{shownMedia.map((m) => { const s = sourceRecords.get(m.sourceKey); return <div key={m.key} className="flex min-w-0 gap-3 rounded-xl border border-line p-3"><img src={m.url} alt={m.alt || m.title} className="h-20 w-20 shrink-0 rounded-lg object-cover" /><div className="min-w-0 space-y-1 text-sm"><strong className="block break-words">{m.title}</strong><code className="block break-all text-xs">{m.key}</code><p className="text-xs text-ink-muted">Sumber: {s?.title || m.sourceKey} · Lisensi: {s?.license?.verified ? 'diperiksa manusia' : 'belum diverifikasi'} · {m.status === 'published' ? 'Terbit' : 'Draft'}</p><button className="btn btn-secondary btn-sm" onClick={() => navigator.clipboard.writeText(m.key).then(() => setNotice('Key ' + m.key + ' disalin.')).catch(() => setError('Gagal menyalin key.'))}>Salin key</button></div></div>; })}</div>{!shownMedia.length && <p className="text-sm text-ink-muted">Tidak ada aset yang cocok.</p>}</section>}
+    {uploadOpen && <section className="card space-y-3 p-5"><h2 className="text-lg font-semibold">Upload Media</h2><p className="text-sm text-ink-muted">Satu gambar PNG, JPEG, atau WebP (maksimal 20 MB), atau URL HTTPS. Daftarkan source berlisensi melalui JSON terlebih dahulu; source asset harus terbit sebelum unggah. Lisensi diverifikasi oleh manusia.</p><div className="grid gap-2 sm:grid-cols-2">{[['key', 'Key aset stabil'], ['title', 'Judul'], ['alt', 'Deskripsi gambar'], ['sourceKey', 'Key sumber'], ['externalUrl', 'URL HTTPS gambar (opsional)']].map(([k, label]) => <label key={k} className="text-sm">{label}<input className="input mt-1 w-full" value={meta[k]} disabled={busy} onChange={(e) => setMeta({ ...meta, [k]: e.target.value })} /></label>)}</div><input aria-label="Berkas gambar" type="file" accept="image/png,image/jpeg,image/webp" disabled={busy} onChange={(e) => setFile(e.target.files?.[0] || null)} /><button className="btn btn-secondary" disabled={busy || (!file && !meta.externalUrl)} onClick={upload}>Daftarkan sebagai draft</button></section>}
+    <section id="lab-authoring-manage" className="card space-y-4 p-5"><div className="flex flex-wrap items-center justify-between gap-2"><div><h2 className="text-lg font-semibold">Kelola konten tersimpan</h2><p className="text-sm text-ink-muted">Modul, katalog, aset, dan alat terbit untuk admin setelah pemeriksaan.</p></div><button className="btn btn-secondary btn-sm" onClick={() => setManageOpen((v) => !v)}>{manageOpen ? 'Tutup' : 'Buka'}</button></div>{manageOpen && <div className="space-y-5"><div><h3 className="font-semibold">Katalog & penempatan modul</h3><p className="text-sm text-ink-muted">Satu modul dapat ditempatkan di lebih dari satu katalog tanpa menyalin isinya.</p>{hierarchy.length ? <ul className="mt-2 space-y-2 text-sm">{hierarchy.map((c) => <li key={c.key} className="rounded-lg border border-line p-3"><strong>{c.title}</strong>{c.placements.length ? <ul className="mt-1 pl-4">{c.placements.map((p) => <li key={p.key}>↳ {p.title} <span className="text-xs text-ink-muted">({p.module})</span></li>)}</ul> : <p className="text-ink-muted">Belum ada modul di sini.</p>}</li>)}</ul> : <p className="mt-2 text-sm text-ink-muted">Belum ada katalog authoring.</p>}</div><label className="flex items-start gap-2 text-sm"><input type="checkbox" checked={reviewed} onChange={(e) => setReviewed(e.target.checked)} /><span>Saya telah memeriksa isi, rujukan, lisensi, gambar, dan jawaban pada revisi yang dipilih. Publikasi dilakukan satu per satu.</span></label><div><h3 className="font-semibold">Record authoring</h3><div className="mt-1 space-y-1">{records.map((r) => <div key={r.kind + '/' + r.key} className="flex min-w-0 flex-wrap items-center justify-between gap-2 border-t border-line py-2 text-sm"><span className="min-w-0 break-words"><strong>{r.title}</strong> <span className="text-ink-muted">· {KIND_LABELS[r.kind]} · {r.status === 'published' ? 'Terbit' : 'Draft'}{r.hasDraft && ' · draft baru'} · revisi {r.revision}</span></span><div className="flex flex-wrap gap-1"><button className="btn btn-ghost btn-sm" onClick={() => loadRecord(r)}>Edit record</button>{r.kind === 'module' && <><button className="btn btn-ghost btn-sm" onClick={() => exportModule(r.key)}>Export JSON</button><button className="btn btn-ghost btn-sm" onClick={() => previewModule(r.key)}>Preview draft</button></>}<button className="btn btn-secondary btn-sm" disabled={busy || !reviewed || !r.hasDraft} onClick={() => publish(r)}>Terbitkan</button></div></div>)}</div></div><div><h3 className="font-semibold">Media tersimpan</h3><div className="mt-1 space-y-1">{media.map((m) => <div key={m.key} className="flex flex-wrap items-center justify-between gap-2 border-t border-line py-2 text-sm"><span>{m.title} · {m.key} · {m.status === 'published' ? 'Terbit' : 'Draft'}</span><div className="flex flex-wrap gap-1"><a href={m.url} target="_blank" rel="noreferrer" className="btn btn-ghost btn-sm">Lihat gambar</a><button className="btn btn-secondary btn-sm" disabled={busy || !reviewed || m.status === 'published'} onClick={() => publishAsset(m)}>Terbitkan</button></div></div>)}</div></div></div>}</section>
     <Alert>{error}</Alert><Alert kind="success">{notice}</Alert>{preview && <section className="space-y-3"><button className="btn btn-ghost" onClick={() => setPreview(null)}>Tutup pratinjau</button><LabAuthoredContent module={preview} /></section>}
   </div>;
 }

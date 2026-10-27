@@ -3,6 +3,8 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import shutil
+import urllib.error
 import urllib.request
 import zipfile
 from dataclasses import dataclass
@@ -28,6 +30,7 @@ class DatasetSpec:
     resolution: int = 224
     task: str = "binary_classification"
     version: str = ""
+    expected_bytes: int | None = None
 
 
 def log(message: str) -> None:
@@ -42,7 +45,13 @@ def md5sum(path: Path) -> str:
     return h.hexdigest()
 
 
-def download(spec: DatasetSpec, cache_dir: Path) -> Path:
+def ensure_disk_space(path: Path, remaining_bytes: int, reserve_bytes: int = 2 * 1024**3) -> None:
+    free = shutil.disk_usage(path).free
+    if free < remaining_bytes + reserve_bytes:
+        raise RuntimeError(f"Ruang disk kurang: free={free} required={remaining_bytes + reserve_bytes} bytes")
+
+
+def download(spec: DatasetSpec, cache_dir: Path, *, progress=None, cancelled=None) -> Path:
     cache_dir.mkdir(parents=True, exist_ok=True)
     target = cache_dir / f"{spec.key}_{spec.resolution}.npz"
     if target.exists() and md5sum(target) == spec.md5:
@@ -50,24 +59,56 @@ def download(spec: DatasetSpec, cache_dir: Path) -> Path:
         return target
     if target.exists():
         log("Checksum cache tidak cocok; mengunduh ulang.")
-        target.unlink()
+        target.replace(target.with_suffix(".npz.invalid"))
 
     partial = target.with_suffix(".npz.part")
-    if partial.exists():
-        partial.unlink()
     log(f"Mengunduh {spec.title} 224px dari Zenodo resmi...")
-    req = urllib.request.Request(spec.download_url, headers={"User-Agent": "MEDCOEL-Lab-Ingest/1.0"})
-    with urllib.request.urlopen(req, timeout=120) as response, partial.open("wb") as out:
-        while True:
-            chunk = response.read(1024 * 1024)
-            if not chunk:
-                break
-            out.write(chunk)
-    partial.replace(target)
-    actual = md5sum(target)
+    offset = partial.stat().st_size if partial.exists() else 0
+    if spec.expected_bytes is not None:
+        ensure_disk_space(cache_dir, max(0, spec.expected_bytes - offset))
+    headers = {"User-Agent": "MEDCOEL-Lab-Ingest/1.0"}
+    if offset:
+        headers["Range"] = f"bytes={offset}-"
+    req = urllib.request.Request(spec.download_url, headers=headers)
+    try:
+        response = urllib.request.urlopen(req, timeout=120)
+    except urllib.error.HTTPError as exc:
+        if exc.code != 416 or not offset:
+            raise
+        if md5sum(partial) == spec.md5:
+            partial.replace(target)
+            return target
+        partial.replace(target.with_suffix(".npz.invalid"))
+        return download(spec, cache_dir, progress=progress, cancelled=cancelled)
+    with response:
+        status = getattr(response, "status", None) or (response.getcode() if hasattr(response, "getcode") else 200)
+        if status == 206:
+            content_range = response.headers.get("Content-Range", "")
+            if not offset or not content_range.startswith(f"bytes {offset}-"):
+                raise RuntimeError("Server mengirim range yang tidak sesuai; partial dipertahankan.")
+            mode = "ab"
+        elif status == 200:
+            # Range unsupported: safely restart this unverified partial.
+            mode = "wb"
+            offset = 0
+        else:
+            raise RuntimeError(f"HTTP download status tidak didukung: {status}")
+        with partial.open(mode) as out:
+            while True:
+                if cancelled and cancelled():
+                    raise InterruptedError("Unduhan dihentikan pada checkpoint aman; .part dipertahankan.")
+                chunk = response.read(1024 * 1024)
+                if not chunk:
+                    break
+                out.write(chunk)
+                offset += len(chunk)
+                if progress:
+                    progress(offset, spec.expected_bytes)
+    actual = md5sum(partial)
     if actual != spec.md5:
-        target.unlink(missing_ok=True)
+        partial.replace(target.with_suffix(".npz.invalid"))
         raise RuntimeError(f"MD5 tidak cocok. expected={spec.md5} actual={actual}")
+    partial.replace(target)
     log(f"Download terverifikasi: {target}")
     return target
 
