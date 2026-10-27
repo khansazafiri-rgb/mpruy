@@ -20,6 +20,7 @@ from medcoel_api import MedcoelAPI
 from medmnist_core import download, export_pngs, manifest, validate_groups
 from octmnist import CONFIG
 from identification_guides import learning_guide
+from authoring_gallery import gallery_items
 from visual_mnist import answer_slots, practice_rows
 
 LOG = logging.getLogger("medcoel.lab.worker")
@@ -82,10 +83,6 @@ def oct_guide_content():
     steps = [{"title": "Orientasi OCT", "text": cited(guide["introduction"])}]
     steps.extend({"title": f"Langkah {i}", "text": cited(item)}
                  for i, item in enumerate(guide["checklist"], 1))
-    for profile in guide["profiles"]:
-        statements = profile["features"] + profile["compare"] + profile["caveats"]
-        steps.append({"title": profile["title"],
-                      "text": "\n".join(cited(item) for item in statements)})
     steps.extend({"title": f"Catatan {i}", "text": cited(item)}
                  for i, item in enumerate(guide["notes"], 1))
     guide_record = {"kind": "guide", "data": {
@@ -101,8 +98,8 @@ def oct_guide_content():
 
 
 def authoring_bundle(groups, source):
-    learning = [asset_key(row) for row in groups["learning"]]
     guide_sources, guide_record, comparison = oct_guide_content()
+    learning_items = gallery_items("octmnist", groups["learning"], CONFIG.student_labels, asset_key)
     questions = []
     group = CONFIG.groupings[0]
     slots = answer_slots(CONFIG, groups["practice"], group)
@@ -132,8 +129,8 @@ def authoring_bundle(groups, source):
                      "text": "Label dataset hanya untuk pembelajaran; jangan dipakai sebagai diagnosis pasien."},
                     {"key": "panduan-oct", "type": "identification_guide", "title": "Cara identifikasi OCT",
                      "guide": GUIDE_KEY},
+                    {"key": "galeri", "type": "gallery", "title": "20 contoh OCT", "items": learning_items},
                     comparison,
-                    {"key": "galeri", "type": "gallery", "title": "20 contoh OCT", "assets": learning},
                     {"key": "latihan", "type": "practice", "title": "Latihan klasifikasi", "bank": "latihan-oct"},
                     {"key": "sumber-panduan", "type": "source_disclosure", "title": "Sumber panduan OCT",
                      "sources": guide_record["data"]["sources"]}]}]}],

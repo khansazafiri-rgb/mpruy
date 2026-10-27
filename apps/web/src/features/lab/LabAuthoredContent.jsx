@@ -27,7 +27,12 @@ function Block({ block: b, module: m, renderText }) {
   if (b.type === 'text') return <p className="whitespace-pre-line leading-relaxed">{renderText(b.text)}</p>;
   if (b.type === 'callout') return <Alert kind={b.tone === 'warn' ? 'warn' : 'info'}>{renderText(b.text)}</Alert>;
   if (b.type === 'image') return assets[b.asset] && <LabImage asset={assets[b.asset]} />;
-  if (b.type === 'gallery') return <div className="grid gap-4 md:grid-cols-2">{b.assets.map((a) => assets[a] && <LabImage key={a} asset={assets[a]} />)}</div>;
+  if (b.type === 'gallery') return <div className="grid gap-4 md:grid-cols-2">{b.items
+    ? b.items.map((item) => assets[item.asset] && <article key={item.asset} className="card min-w-0 space-y-3 p-4">
+      {item.title && <h5 className="font-semibold">{item.title}</h5>}
+      <LabImage asset={assets[item.asset]} caption={item.caption && <div className="text-sm leading-relaxed"><p className="font-semibold">Ciri yang perlu dicari</p><ul className="mt-1 list-disc space-y-1 pl-5">{item.caption.split('\n').filter(Boolean).map((line, i) => <li key={i}>{renderText(line)}</li>)}</ul></div>} />
+    </article>)
+    : (b.assets || []).map((a) => assets[a] && <LabImage key={a} asset={assets[a]} />)}</div>;
   if (b.type === 'compare') return <div className="grid gap-4 md:grid-cols-2">{[b.left, b.right].map((a) => assets[a] && <LabImage key={a} asset={assets[a]} />)}</div>;
   if (b.type === 'identification_guide') { const g = m.guides[b.guide]; return g && <div className="space-y-2"><p className="font-semibold">{g.title}</p><ol className="list-decimal space-y-2 pl-5">{g.steps.map((s, i) => <li key={i} className="whitespace-pre-line"><strong>{s.title}</strong> — {renderText(s.text)}</li>)}</ol></div>; }
   if (b.type === 'identification_table') return <div className="overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr>{b.columns.map((c) => <th key={c} className="border-b border-line p-2">{renderText(c)}</th>)}</tr></thead><tbody>{b.rows.map((r, i) => <tr key={i}>{r.map((cell, j) => <td key={j} className="border-b border-line p-2">{renderText(cell)}</td>)}</tr>)}</tbody></table></div>;

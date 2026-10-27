@@ -23,7 +23,7 @@ export function LabSource({ asset, nat, question }) {
 
 // Pembaca gambar: rasio asli dipertahankan, ukuran dasar dihitung dari gambar (bukan dari lebar kartu).
 // controls: true = toolbar penuh, 'min' = zoom ringkas, false = tanpa kontrol (mis. kolom perbandingan sempit).
-export default function LabImage({ asset, question = false, point, onPoint, region, controls = true }) {
+export default function LabImage({ asset, question = false, point, onPoint, region, controls = true, caption }) {
   const [zoom, setZoom] = useState(1);
   const [layers, setLayers] = useState({ anatomy: false, abnormality: false });
   const [broken, setBroken] = useState(false);
@@ -109,6 +109,7 @@ export default function LabImage({ asset, question = false, point, onPoint, regi
       </div>
     </div>
     {broken && <p role="alert" className="text-coral">Gambar gagal dimuat. Muat ulang halaman atau hubungi admin.</p>}
+    {caption && <figcaption className="space-y-1">{caption}</figcaption>}
     {controls && <LabSource asset={asset} nat={nat} question={question} />}
     {onPoint && <p className="text-sm text-ink-muted" aria-live="polite">{point ? `Titik: ${Math.round(point.x * 100)}%, ${Math.round(point.y * 100)}%.` : 'Klik gambar atau fokuskan area gambar lalu gunakan tombol panah.'}</p>}
   </figure>;
