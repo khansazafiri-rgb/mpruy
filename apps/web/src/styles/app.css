@@ -3,16 +3,7 @@
 
 /* ---------- Kerangka aplikasi ---------- */
 .app-frame { position: relative; isolation: isolate; }
-.app-frame::before {
-  content: ''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
-  background-image: var(--grain); opacity: .11; mix-blend-mode: multiply;
-}
-.app-frame::after {
-  content: ''; position: absolute; inset: 0 0 auto; height: 560px; z-index: -1; pointer-events: none;
-  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 28px 28px; opacity: .55;
-  -webkit-mask-image: linear-gradient(180deg, #000 0, transparent 520px); mask-image: linear-gradient(180deg, #000 0, transparent 520px);
-}
+/* Latar halaman dalam polos (kertas ivory dari <body>): grid dan butiran dilepas supaya konten belajar tidak berebut perhatian. */
 .app-content::before { content: none; }
 .app-header { background: rgb(var(--paper) / .86); backdrop-filter: blur(18px) saturate(1.2); border-color: rgb(var(--paper-2)) !important; }
 .app-brand img { flex-shrink: 0; object-fit: contain; }
@@ -187,9 +178,9 @@
 }
 
 /* ---------- Kartu umum jadi lembar kertas ---------- */
-.card { background-color: #fffdf7; border-color: rgb(var(--paper-2)); box-shadow: 0 1px 0 #fff inset, 0 12px 28px -22px rgb(10 56 48 / .35), 0 1px 2px rgb(10 56 48 / .05); }
-.input { background-color: #fffdf7; border-color: rgb(var(--paper-2)); }
-.btn-secondary { background-color: #fffdf7; border-color: rgb(var(--paper-2)); }
+.card { background-color: #fffdf7; border-color: rgb(var(--line)); }
+.input { background-color: #fffdf7; border-color: rgb(var(--line)); }
+.btn-secondary { background-color: #fffdf7; border-color: rgb(var(--line)); }
 .exam-next { border-radius: 22px; box-shadow: 0 24px 50px -32px rgb(10 56 48 / .7); }
 .exam-next p { color: rgb(255 255 255 / .82); }
 .exam-next p.font-display { color: #fff; }
@@ -224,10 +215,12 @@
 .tone-track { background: rgb(255 255 255 / .75) !important; box-shadow: inset 0 1px 2px rgb(0 0 0 / .08); }
 .tone-fill { background: rgb(var(--tone-fg)); }
 
-/* Kartu umum: garis lebih tegas dan bayangan bawah supaya terpisah jelas dari latar. */
-.card { border-width: 1.5px; border-color: rgb(var(--ink) / .1); box-shadow: 0 3px 0 rgb(var(--ink) / .06), 0 16px 30px -22px rgb(10 56 48 / .4); }
-.ui-tabs { background: rgb(var(--paper-2) / .8); border: 1.5px solid rgb(var(--ink) / .08); padding: 4px; }
-.ui-tab[aria-selected=true] { background: rgb(var(--forest)); color: #fff; box-shadow: 0 2px 0 rgb(0 0 0 / .25); }
+/* Kartu umum tetap tenang (garis tipis, bayangan lembut). Gaya "tebal" hanya untuk .card-chunky:
+   kartu ilustratif bermaskot di Beranda dan Mata kuliah. */
+.card { border-width: 1px; border-color: rgb(var(--ink) / .1); box-shadow: 0 1px 2px rgb(var(--ink) / .04), 0 8px 20px -16px rgb(10 56 48 / .3); }
+.ui-tabs { background: rgb(var(--paper-2) / .7); border: 0; padding: 4px; }
+.ui-tab { min-height: 40px; }
+.ui-tab[aria-selected=true] { background: #fffdf7; color: rgb(var(--brand)); box-shadow: 0 1px 2px rgb(var(--ink) / .1); }
 
 /* Kartu statistik bernada */
 .stat-tone { min-height: 118px; }
@@ -268,12 +261,11 @@
 
 /* Daftar mata kuliah v2 */
 .filter-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-.filter-pills button { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; font-size: 15px; font-weight: 700; color: rgb(var(--ink)); background: #fff; border: 1.5px solid rgb(var(--ink) / .12); box-shadow: 0 3px 0 rgb(var(--ink) / .08); transition: transform .15s, background .2s, color .2s; }
+.filter-pills button { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 16px; border-radius: 999px; font-size: 15px; font-weight: 600; color: rgb(var(--ink)); background: #fffdf7; border: 1px solid rgb(var(--line)); transition: background .2s, color .2s, border-color .2s; }
 .filter-pills button span { display: grid; place-items: center; min-width: 24px; height: 22px; padding: 0 6px; border-radius: 999px; font-size: 12px; background: rgb(var(--paper-2)); color: rgb(var(--ink-muted)); }
-.filter-pills button:hover { transform: translateY(-1px); }
-.filter-pills button:active { transform: translateY(2px); box-shadow: 0 1px 0 rgb(var(--ink) / .08); }
-.filter-pills button[aria-pressed=true] { background: rgb(var(--forest)); color: #fff; border-color: rgb(var(--forest)); box-shadow: 0 3px 0 rgb(0 0 0 / .3); }
-.filter-pills button[aria-pressed=true] span { background: rgb(var(--gold)); color: rgb(var(--forest)); }
+.filter-pills button:hover { border-color: rgb(var(--brand)); }
+.filter-pills button[aria-pressed=true] { background: rgb(var(--brand)); color: #fff; border-color: rgb(var(--brand)); }
+.filter-pills button[aria-pressed=true] span { background: rgb(255 255 255 / .22); color: #fff; }
 .subject-wall { gap: 26px 22px; }
 .subject-tile { padding: 12px 12px 18px; }
 .subject-tile .subject-tile-art { transform: none; aspect-ratio: 16 / 11; }
@@ -324,5 +316,9 @@
 .auth-dots { position: absolute; inset: 0; pointer-events: none; -webkit-mask-image: linear-gradient(200deg, #000, transparent 60%); mask-image: linear-gradient(200deg, #000, transparent 60%); }
 .auth-panel.surface-forest::after { opacity: .5; }
 .auth-sticker.sticker-tone { box-shadow: 0 5px 0 rgb(var(--tone-mid)), 0 22px 40px -18px rgb(0 0 0 / .55); }
-.empty-state { background-image: radial-gradient(rgb(var(--ink) / .07) 1.2px, transparent 1.5px); background-size: 14px 14px; }
+.empty-state { background-image: none; }
 .empty-icon { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 20px; background: rgb(var(--tone-bg)); color: rgb(var(--tone-fg)); box-shadow: 0 4px 0 rgb(var(--tone-mid)); transform: rotate(-4deg); }
+
+/* Admin: judul halaman lebih kecil dan rapat; ruang kerja, bukan halaman sambutan. */
+.admin-main .page-title { font-size: 24px; line-height: 1.25; letter-spacing: -.03em; }
+@media (min-width: 768px) { .admin-main .page-title { font-size: 28px; } }

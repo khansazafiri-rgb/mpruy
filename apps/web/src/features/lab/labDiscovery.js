@@ -70,3 +70,33 @@ export function exploreItems(legacy, catalog, query = {}) {
     .map((item) => ({ ...item, domainTitle: disciplineTitle(item), academicRoot: disciplineFor(item),
       modality: datasetFor(item)?.childTitle || item.modality })), ...authoredExplore(catalog, query)];
 }
+
+// "Pencitraan Medis › Chest X-Ray": jejak letak modul di katalog, dari penempatan pertamanya.
+// Bidang memakai judul kanonik; [] bila katalog belum dimuat atau modul tidak ditempatkan.
+export function modulePath(catalog, moduleKey) {
+  if (!catalog || !(catalog.modules || []).some((m) => m.key === moduleKey)) return [];
+  const nodes = new Map((catalog.nodes || []).map((n) => [n.key, n]));
+  const placement = (catalog.placements || []).find((p) => p.module === moduleKey && nodes.has(p.catalog));
+  if (!placement) return [];
+  const chain = []; const seen = new Set(); let current = nodes.get(placement.catalog);
+  while (current && !seen.has(current.key)) { seen.add(current.key); chain.unshift(current); current = current.parent ? nodes.get(current.parent) : null; }
+  const root = chain[0]; const canonical = root && ACADEMIC_ROOTS.find((r) => r.key === normalizeDiscipline(root.key) || r.title === root.title);
+  return chain.map((node, i) => (i === 0 && canonical ? canonical.title : node.title));
+}
+
+// Susunan Explore: Bidang (urutan akademik tetap) > topik > modul. Bidang tanpa item masuk `soon`;
+// bidang di luar tujuh yang kanonik tetap ditampilkan setelahnya supaya konten terbit tidak hilang.
+export function groupByDiscipline(items = []) {
+  const buckets = new Map();
+  for (const item of items) {
+    const key = item.academicRoot || disciplineFor(item) || 'lainnya';
+    if (!buckets.has(key)) buckets.set(key, { key, title: ACADEMIC_ROOTS.some((r) => r.key === key) ? titleFor(key) : item.domainTitle || key, topics: new Map(), count: 0 });
+    const bucket = buckets.get(key); const topic = String(item.modality || '').trim();
+    if (!bucket.topics.has(topic)) bucket.topics.set(topic, []);
+    bucket.topics.get(topic).push(item); bucket.count += 1;
+  }
+  const rank = (key) => { const i = ACADEMIC_ROOTS.findIndex((r) => r.key === key); return i < 0 ? ACADEMIC_ROOTS.length : i; };
+  const groups = [...buckets.values()].sort((a, b) => rank(a.key) - rank(b.key))
+    .map((g) => ({ key: g.key, title: g.title, count: g.count, topics: [...g.topics].map(([title, list]) => ({ title, items: list })) }));
+  return { groups, soon: ACADEMIC_ROOTS.filter((r) => !buckets.has(r.key)) };
+}

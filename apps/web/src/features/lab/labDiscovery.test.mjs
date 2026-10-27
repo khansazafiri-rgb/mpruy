@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { ACADEMIC_ROOTS, authoredExplore, authoredRootOptions, disciplineFor, disciplineTitle, exploreItems, normalizeDiscipline, publishedReplacements } from './labDiscovery.js';
+import { ACADEMIC_ROOTS, authoredExplore, authoredRootOptions, disciplineFor, disciplineTitle, exploreItems, groupByDiscipline, modulePath, normalizeDiscipline, publishedReplacements } from './labDiscovery.js';
 
 const catalog = {
   nodes: [{ key: 'oftalmologi', title: 'Oftalmologi', parent: '' },
@@ -34,6 +34,12 @@ test('unpublished module cannot be discovered even with a stale placement', () =
   assert.ok(!authoredRootOptions(catalog).some((option) => option.title === 'Patologi'));
 });
 
+test('module path shows discipline then topic, and is empty when unknown', () => {
+  assert.deepEqual(modulePath(catalog, 'oct-retina-dasar-v1'), ['Oftalmologi', 'OCT Retina']);
+  assert.deepEqual(modulePath(catalog, 'draft-only'), []);
+  assert.deepEqual(modulePath(null, 'x'), []);
+});
+
 test('seven canonical roots normalize legacy links without duplicate filters', () => {
   assert.deepEqual(ACADEMIC_ROOTS.map((root) => root.key), ['pencitraan-medis', 'oftalmologi', 'histologi-histopatologi', 'patologi-klinik', 'mikrobiologi', 'parasitologi', 'anatomi']);
   const options = authoredRootOptions(catalog);
@@ -61,4 +67,22 @@ test('published replacements win once, including legacy Path/Blood groups and da
   assert.equal(exploreItems(legacy, { ...path, modules: [] }).length, 3);
   assert.equal(exploreItems(legacy, { ...path, placements: [] }).length, 3);
   assert.equal(exploreItems(legacy, path, { page: 2 }).some((item) => item.id === 'path1'), false);
+});
+
+test('Explore groups follow the seven canonical roots; legacy and authored items share a discipline', () => {
+  const item = (id, extra) => ({ id, title: id, ...extra });
+  const { groups, soon } = groupByDiscipline(exploreItems([
+    item('hema', { slug: 'bloodmnist-belajar-granulosit', domain: 'clinical_pathology', modality: 'Hematologi' }),
+    item('cxr', { domain: 'imaging', modality: 'Chest X-Ray' }),
+  ], null));
+  assert.deepEqual(groups.map((g) => g.title), ['Pencitraan Medis', 'Patologi Klinik']);
+  assert.deepEqual(groups[0].topics.map((t) => t.title), ['Chest X-Ray']);
+  assert.deepEqual(soon.map((r) => r.key), ['oftalmologi', 'histologi-histopatologi', 'mikrobiologi', 'parasitologi', 'anatomi']);
+  assert.equal(groupByDiscipline([]).soon.length, 7);
+});
+
+test('an unknown discipline is shown after the canonical ones, never dropped', () => {
+  const { groups } = groupByDiscipline([{ id: 'a', title: 'A', domain: 'imaging' }, { id: 'b', title: 'B', academicRoot: 'disiplin-baru', domainTitle: 'Disiplin Baru' }].map((x) => ({ academicRoot: x.academicRoot || disciplineFor(x), ...x })));
+  assert.equal(groups.at(-1).title, 'Disiplin Baru');
+  assert.equal(groups[0].key, 'pencitraan-medis');
 });
