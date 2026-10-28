@@ -30,6 +30,19 @@ test('pertanyaan "sifat dan derajat 1 sampai 10" selalu dijawab dengan derajatny
   assert.deepEqual(bad, [], 'jawaban kualitas harus menyebut derajat (nilai 1-10 atau "sekali")');
 });
 
+test('dialog pembuka tidak membocorkan keluhan utama (itu dijawab saat anamnesis)', () => {
+  const skip = new Set(['dokter', 'selamat', 'siang', 'pagi', 'mohon', 'tolong', 'diperiksa', 'dibantu', 'diantar', 'ibunya', 'tahun', 'pasien', 'berikutnya', 'sudah', 'masuk', 'dudukkan', 'setengah', 'tegak', 'persilakan', 'duduk', 'cemas', 'takut', 'sekali', 'agak']);
+  const bad = [];
+  Object.entries(allCases()).forEach(([key, C]) => {
+    if (C.nodoc) return;
+    const words = (C.A.ku.note || '').toLowerCase().match(/[a-z]{5,}/g) || [];
+    const intro = C.intro.map((l) => l.t).join(' ').toLowerCase();
+    words.filter((w) => !skip.has(w) && intro.includes(w)).forEach((w) => bad.push(`${key}: "${w}"`));
+    if (C.intro.length < 2) bad.push(`${key}: intro kurang dari 2 baris`);
+  });
+  assert.deepEqual(bad, []);
+});
+
 test('nama di panggung adalah nama pasien kasus, bukan nama bawaan sprite', () => {
   assert.equal(patientName({ id: 'Bu Lestari, 33 tahun', pas: 'ibuhamil' }), 'Bu Lestari');
   assert.equal(patientName({ id: '', pas: 'ibuhamil' }), 'Bu Sari');
@@ -70,6 +83,7 @@ test('migrasi tambalan: mengganti jawaban lama, tidak menyentuh yang sudah diedi
   patches.forEach((p) => {
     const d = JSON.parse(JSON.stringify(cases[p.key]));
     Object.keys(p.A).forEach((id) => { d.A[id] = p.A[id].old; });
+    if (p.intro) d.intro = p.intro.old;
     p.U.forEach((id) => { d.U = d.U.split(/\s+/).filter((x) => x !== id).join(' '); });
     rows[p.key] = d;
   });
@@ -83,6 +97,7 @@ test('migrasi tambalan: mengganti jawaban lama, tidak menyentuh yang sudah diedi
     const want = JSON.parse(JSON.stringify(cases[p.key]));
     if (p === edited) want.A.kualitas = { say: 'Teks hasil suntingan admin.', note: 'Suntingan admin' };
     Object.keys(p.A).forEach((id) => assert.deepEqual(done[p.key].A[id], want.A[id], `${p.key}.${id}`));
+    if (p.intro) assert.deepEqual(done[p.key].intro, want.intro, `${p.key} intro`);
     p.U.forEach((id) => assert.ok(done[p.key].U.split(/\s+/).includes(id), `${p.key} U ${id}`));
   });
   const first = app.saved.length;

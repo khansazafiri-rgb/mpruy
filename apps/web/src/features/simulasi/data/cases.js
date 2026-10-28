@@ -42,7 +42,7 @@ export const CASES = {
  umum:{pas:"kakek",expr:"lemas",id:"Pak Slamet, 68 tahun",
   intro:[
    {w:"sus",e:"senyum",t:"Selamat pagi, Dok. Pasien berikutnya sudah masuk, Pak Slamet, 68 tahun."},
-   {w:"pas",e:"lemas",t:"Selamat pagi, Dok. Saya demam dan batuk sudah lima hari. Badan lemas sekali."}],
+   {w:"pas",e:"lemas",t:"Selamat pagi, Dok."}],
   dxOk:"pneumonia",ddx:["pneumonia","bronkitis","tb","ppok","gagaljantung"],
   ref:"Acuan: PNPK Tata Laksana Pneumonia pada Dewasa (KMK HK.01.07/MENKES/2147/2023) dan skor CURB-65. Skor CURB-65 kasus ini = 1 (usia 65 tahun atau lebih), yang menurut acuan tersebut masuk kategori rawat jalan; keputusan akhir tetap bergantung penilaian klinis.",
   K:"ku onset demam batuk dahak hemoptisis sesak nyeri_pleuritik rpd_tb merokok kontak_tb alergi ku_gcs vital paru_inspeksi paru_perkusi paru_auskul jantung dl ronsen antibiotik_oral paracetamol edukasi",
@@ -93,8 +93,8 @@ export const CASES = {
 
  bedah:{pas:"bapak",expr:"meringis",id:"Pak Dimas, 42 tahun",
   intro:[
-   {w:"sus",e:"serius",t:"Dok, pasien ini mengeluh nyeri perut sejak kemarin. Sudah saya persilakan duduk."},
-   {w:"pas",e:"meringis",t:"Aduh... Dok, perut saya sakit sekali. Mohon dibantu."}],
+   {w:"sus",e:"serius",t:"Dok, ini Pak Dimas, 42 tahun. Sudah saya persilakan duduk."},
+   {w:"pas",e:"meringis",t:"Aduh... selamat siang, Dok. Mohon dibantu."}],
   dxOk:"apendisitis",ddx:["apendisitis","kolik","gea","kolesistitis","divertikulitis","limfadenitis"],
   ref:"Acuan: belum diverifikasi ke SKDI atau PNPK. Skor Alvarado kasus ini: nyeri berpindah, anoreksia, mual-muntah, nyeri kanan bawah, rebound, demam, leukositosis, neutrofil meningkat.",
   K:"ku onset lokasi kualitas penyerta demam mual muntah nafsu rpd_operasi alergi ku_gcs vital abd_inspeksi abd_palpasi abd_mcburney abd_rebound abd_rovsing dl usg_abd urin puasa infus_rutin antibiotik_iv konsul_bedah",
@@ -138,8 +138,8 @@ export const CASES = {
 
  spog:{pas:"ibuhamil",expr:"cemas",id:"Bu Sari, 29 tahun",
   intro:[
-   {w:"sus",e:"senyum",t:"Selamat siang, Dok. Ini Bu Sari, datang untuk kontrol kehamilan."},
-   {w:"pas",e:"cemas",t:"Siang, Dok. Saya sakit kepala tiga hari ini, dan kaki saya bengkak. Saya khawatir dengan bayinya."}],
+   {w:"sus",e:"senyum",t:"Selamat siang, Dok. Ini Bu Sari, 29 tahun."},
+   {w:"pas",e:"cemas",t:"Siang, Dok. Saya agak cemas."}],
   dxOk:"peb",ddx:["peb","htg","hipertensi","eklampsia","hellp","migrain"],
   ref:"Acuan: belum diverifikasi ke SKDI atau PNPK. Kasus ini: TD 160/100 pada kehamilan lebih dari 20 minggu, proteinuria +2, sakit kepala dan pandangan kabur. Trombosit 118.000 dan SGOT 62 belum memenuhi sindrom HELLP.",
   K:"ku onset sakit_kepala pandangan_kabur bengkak_kaki bengkak_wajah nyeri_ulu_hati kejang hpht anc gerak_janin ketuban rpd_ht rk_ht alergi ku_gcs vital edema refleks_fis obst urin dl sgot ureum usg_obs ctg rawat magnesium antihipertensi steroid_janin konsul_og",
@@ -185,8 +185,8 @@ export const CASES = {
 
  anak:{pas:"anakl",expr:"lemas",id:"Raka, 8 tahun",
   intro:[
-   {w:"sus",e:"senyum",t:"Dok, ini Raka, 8 tahun. Demam tiga hari."},
-   {w:"pas",e:"lemas",t:"Dok... tenggorokan aku sakit. Aku nggak mau makan."}],
+   {w:"sus",e:"senyum",t:"Dok, ini Raka, 8 tahun, diantar ibunya."},
+   {w:"pas",e:"lemas",t:"Selamat siang, Dok..."}],
   dxOk:"tonsilofaringitis",ddx:["tonsilofaringitis","faringitisv","difteri","abses","mono","tifoid"],
   ref:"Acuan: belum diverifikasi ke SKDI atau PNPK. Kasus ini: demam, eksudat tonsil, tanpa batuk, usia 3-14 tahun, KGB leher anterior nyeri (skor Centor/McIsaac tinggi), rapid strep positif.",
   K:"ku onset demam nyeri_menelan batuk pilek alergi imunisasi sekolah ku_gcs vital tenggorok leher_kgb swab paracetamol antibiotik_oral edukasi",
@@ -220,14 +220,14 @@ export const CASES = {
    crp:c("CRP","Laboratorium","CRP=38 mg/L (tinggi)","Ini hasilnya, Dok."),
    swab:c("Rapid strep test","Laboratorium","Streptococcus grup A=Positif","Hasilnya sudah ada, Dok."),
    swab_kultur:c("Kultur apus tenggorok","Laboratorium","Hasil=Streptococcus beta-hemolitikus grup A tumbuh;Corynebacterium diphtheriae=Tidak ditemukan","Hasilnya sudah ada, Dok."),
-   edukasi:{who:"pas",say:"Aku boleh makan es krim, Dok?",note:"Edukasi: cukup minum, makanan lunak, habiskan antibiotik",e:"lega"},
-   pulang:{who:"pas",say:"Aku mau pulang aja, Dok.",note:"Pulang, kontrol ulang jika demam menetap",e:"lega"}
+   edukasi:{who:"pas",say:"Iya, Dok. Aku akan habiskan obatnya dan makan yang lunak. Boleh makan es krim, Dok?",note:"Edukasi: cukup minum, makanan lunak, habiskan antibiotik",e:"lega"},
+   pulang:{who:"pas",say:"Baik, Dok. Aku pulang dulu, nanti kontrol lagi kalau demamnya belum turun.",note:"Pulang, kontrol ulang jika demam menetap",e:"lega"}
   }},
 
  dalam:{pas:"nenek",expr:"sesak",id:"Bu Rukmini, 72 tahun",
   intro:[
-   {w:"sus",e:"serius",t:"Dok, Bu Rukmini sesak sejak tadi malam. Saya sudah dudukkan setengah tegak."},
-   {w:"pas",e:"sesak",t:"Dok... saya... sesak sekali. Tidak bisa tidur."}],
+   {w:"sus",e:"serius",t:"Dok, ini Bu Rukmini, 72 tahun. Saya sudah dudukkan setengah tegak."},
+   {w:"pas",e:"sesak",t:"Dok... tolong saya..."}],
   dxOk:"gagaljantung",ddx:["gagaljantung","pneumonia","ppok","ska","emboli","pgk"],
   ref:"Acuan: belum diverifikasi ke SKDI atau PNPK. Kasus ini: ortopnea, PND, edema tungkai, JVP meningkat, S3, ronki basah basal, kardiomegali, NT-proBNP tinggi.",
   K:"ku onset sesak sesak_aktivitas ortopnea pnd bengkak_kaki nyeri_dada palpitasi rpd_ht rpd_jantung obat_rutin kepatuhan alergi ku_gcs vital jvp paru_auskul jantung edema ronsen ekg ntprobnp oksigen diuretik rawat edukasi",

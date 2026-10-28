@@ -5,8 +5,8 @@ export default {
   stemi: mk('dalam', {
     pas: 'kakek', expr: 'nyeri', id: 'Pak Hartono, 58 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Hartono, 58 tahun, nyeri dada sejak satu jam lalu, keringat dingin.' },
-      { w: 'pas', e: 'nyeri', t: 'Dok, dada saya tertekan sekali seperti ditindih batu, menjalar ke lengan kiri. Saya berkeringat dingin.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Hartono, 58 tahun.' },
+      { w: 'pas', e: 'nyeri', t: 'Aduh, Dok... mohon dibantu.' }],
     dxOk: 'ska', ddx: ['ska', 'emboli', 'diseksi_aorta', 'gastritis', 'gagaljantung', 'pneumonia'],
     ref: `${REF}Kasus ini: nyeri dada tipikal lebih dari 20 menit dengan faktor risiko (hipertensi, perokok), EKG elevasi ST V1-V4 dengan depresi resiprokal inferior, troponin meningkat: STEMI anterior. Terapi: antiplatelet ganda, antikoagulan, monitor, dan reperfusi sesegera mungkin (PCI primer atau fibrinolitik) lewat rujukan; oksigen hanya bila SpO₂ di bawah 90%.`,
     K: 'ku onset lokasi kualitas pemberat penyerta nyeri_dada sesak palpitasi sinkop rpd_ht rpd_jantung merokok alergi ku_gcs vital jantung paru_auskul ekg troponin antiplatelet antikoagulan monitor rujuk',
@@ -53,8 +53,8 @@ export default {
   stroke_isk: mk('dalam', {
     pas: 'kakek', expr: 'lemas', id: 'Pak Sugeng, 67 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Sugeng, 67 tahun. Tiba-tiba lemah separuh badan kanan dan bicaranya pelo, dua jam lalu.' },
-      { w: 'pas', e: 'lemas', t: 'Dok... tangan... kaki kanan... lemas... mulut...' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Sugeng, 67 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Dok... sa... saya...' }],
     dxOk: 'stroke', ddx: ['stroke', 'stroke_hemoragik', 'hipoglikemia', 'migrain', 'meningitis'],
     ref: `${REF}Kasus ini: defisit neurologis fokal mendadak 2 jam (hemiparesis kanan, parese N VII dan XII, afasia), hipertensi kronik tidak terkontrol, GDS normal, CT kepala tanpa perdarahan: stroke iskemik akut dalam jendela terapi (kurang dari 4,5 jam). Terapi: ABC, gula darah, CT kepala segera, tekanan darah tidak diturunkan agresif (kecuali kandidat trombolisis atau lebih dari 220/120), rujuk cepat ke fasilitas stroke.`,
     K: 'ku onset kelemahan kejang sakit_kepala pusing rpd_ht rpd_dm rpd_stroke rpd_jantung obat_rutin merokok alergi ku_gcs vital pupil nervus motorik sensorik refleks_pat jantung gds ct_kepala ekg dl monitor rujuk',
@@ -100,8 +100,8 @@ export default {
   ppok_eks: mk('dalam', {
     pas: 'kakek', expr: 'sesak', id: 'Pak Parto, 70 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Parto, 70 tahun, batuk berdahak dan sesaknya makin berat tiga hari ini. Saturasinya 87.' },
-      { w: 'pas', e: 'sesak', t: 'Dok... sesak... dahak saya jadi kuning banyak. Napas saya berat sekali.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Parto, 70 tahun.' },
+      { w: 'pas', e: 'sesak', t: 'Dok... tolong saya...' }],
     dxOk: 'ppok', ddx: ['ppok', 'pneumonia', 'gagaljantung', 'asma', 'emboli', 'ska'],
     ref: `${REF}Kasus ini: perokok berat (40 tahun) dengan sesak, batuk, dan dahak purulen bertambah 3 hari (tiga gejala kardinal Anthonisen), hipoksemia, asidosis respiratorik ringan, barrel chest dan wheezing, foto toraks hiperinflasi tanpa infiltrat: eksaserbasi PPOK. Terapi: oksigen terkontrol (target SpO₂ 88-92%), bronkodilator kerja pendek, kortikosteroid sistemik 5 hari, antibiotik, dukungan ventilasi bila asidosis memburuk.`,
     K: 'ku onset batuk dahak sesak demam mengi merokok rpd_paru alergi ku_gcs vital paru_inspeksi paru_perkusi paru_auskul ronsen ags oksigen bronkodilator steroid_sis antibiotik_oral rawat edukasi_rokok',
@@ -152,8 +152,8 @@ export default {
   dka: mk('dalam', {
     pas: 'ibu', expr: 'lemas', id: 'Bu Mira, 22 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Bu Mira, 22 tahun. Lemas sekali, mual, muntah, dan napasnya cepat dan dalam.' },
-      { w: 'pas', e: 'lemas', t: 'Dok... saya haus sekali, mual, muntah... napas saya cepat terus.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Bu Mira, 22 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Dok... tolong saya...' }],
     dxOk: 'dka', ddx: ['dka', 'hhs', 'gea', 'apendisitis', 'pankreatitis', 'hipoglikemia'],
     ref: `${REF}Kasus ini: gejala diabetes seminggu (poliuria, polidipsia, penurunan berat badan), mual-muntah, nyeri perut, napas Kussmaul dan bau aseton, GDS 520, ketonuria +3, pH 7,12 dan bikarbonat 6 dengan anion gap tinggi: ketoasidosis diabetik. Terapi: cairan NaCl 0,9% agresif, insulin intravena kontinu setelah kalium diketahui (K di atas 3,3), pantau glukosa, kalium, dan asidosis tiap 1-2 jam, cari pencetus.`,
     K: 'ku onset haus bak_sering bb_turun mual muntah sesak lemas nyeri_ulu_hati rk_dm rpd_dm alergi ku_gcs vital dehidrasi paru_inspeksi abd_palpasi gds urin ags elektrolit infus_bolus insulin monitor rawat konsul_pd',
@@ -204,8 +204,8 @@ export default {
   pgk_uremia: mk('dalam', {
     pas: 'kakek', expr: 'lemas', id: 'Pak Basuki, 60 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Basuki, 60 tahun, lemas, mual, muntah, dan kakinya bengkak. Kencingnya makin sedikit.' },
-      { w: 'pas', e: 'lemas', t: 'Dok, saya lemas sekali, mual terus, kaki bengkak, dan badan gatal-gatal.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Basuki, 60 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Selamat siang, Dok. Mohon diperiksa, ya.' }],
     dxOk: 'pgk', ddx: ['pgk', 'gagaljantung', 'anemia', 'sirosis', 'dm', 'hipertensi'],
     ref: `${REF}Kasus ini: hipertensi dan diabetes lama dengan penggunaan NSAID, lemas, mual-muntah, pruritus, edema, oliguria, anemia normositik, ureum 210 dan kreatinin 7,8 mg/dL (eGFR sekitar 7 mL/menit), hiperkalemia 6,1 dengan EKG T runcing, USG ginjal mengecil: penyakit ginjal kronik stadium 5 dengan sindrom uremik dan hiperkalemia. Terapi: stabilisasi hiperkalemia, hindari NSAID dan obat nefrotoksik, rawat, konsultasi untuk hemodialisis.`,
     K: 'ku onset lemas mual muntah nafsu bengkak_kaki bak_berkurang sesak gatal rpd_ht rpd_dm rpd_ginjal obat_nsaid obat_rutin alergi ku_gcs vital kulit mata_konj edema paru_auskul jantung dl ureum elektrolit urin usg_abd ekg konsul_pd rawat edukasi_diet',
@@ -255,8 +255,8 @@ export default {
   sirosis: mk('dalam', {
     pas: 'bapak', expr: 'lemas', id: 'Pak Rahmat, 55 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, Pak Rahmat, 55 tahun, perutnya makin besar dua bulan ini, kaki bengkak, dan matanya kuning.' },
-      { w: 'pas', e: 'lemas', t: 'Dok, perut saya membesar, kaki bengkak, badan lemas. Kata istri mata saya kuning.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Pak Rahmat, 55 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Selamat siang, Dok. Mohon diperiksa, ya.' }],
     dxOk: 'sirosis', ddx: ['sirosis', 'gagaljantung', 'pgk', 'hepatitis', 'hcc'],
     ref: `${REF}Kasus ini: asites, edema, ikterus, spider nevi dan eritema palmar, splenomegali, trombositopenia, albumin 2,2, bilirubin 3,8, INR 1,8, HBsAg positif, USG hepar mengecil nodular dengan hipertensi porta: sirosis hepatis dekompensata (Child-Pugh C) pada hepatitis B kronik. Terapi: rawat, diet rendah garam, diuretik (spironolakton dan furosemid), albumin bila perlu, hindari NSAID, skrining varises dan SBP, rujuk spesialis.`,
     K: 'ku onset bengkak_kaki kuning kembung bab_hitam alkohol rpd_hati rpd_transfusi obat_nsaid alergi ku_gcs vital sklera kulit abd_inspeksi abd_palpasi abd_hepar abd_lien abd_asites edema dl sgot bilirubin albumin ptapt hbsag usg_abd rawat konsul_pd edukasi_diet',
@@ -309,8 +309,8 @@ export default {
   ugib: mk('dalam', {
     pas: 'bapak', expr: 'lemas', id: 'Pak Bambang, 50 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Bambang, 50 tahun, muntah darah dan BAB hitam sejak pagi. Wajahnya pucat.' },
-      { w: 'pas', e: 'lemas', t: 'Dok... saya muntah darah, BAB saya hitam... pusing, rasanya mau pingsan.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Bambang, 50 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Dok... tolong saya...' }],
     dxOk: 'ugib', ddx: ['ugib', 'varises_eso', 'gastritis', 'ca_lambung', 'ulkus_peptik'],
     ref: `${REF}Kasus ini: hematemesis dan melena sejak pagi pada pengguna NSAID dengan dispepsia lama, tanpa riwayat penyakit hati, syok ringan (TD 95/60, nadi 112), hemoglobin 7,6, ureum meningkat, melena pada colok dubur: perdarahan saluran cerna atas akibat ulkus peptikum. Terapi: ABC, dua akses vena, kristaloid dan transfusi (target Hb di atas 7), PPI intravena, puasa, golongan darah, dan endoskopi dalam 24 jam; hentikan NSAID.`,
     K: 'ku onset muntah bab_hitam nyeri_ulu_hati obat_nsaid alkohol rpd_hati rpd_serupa pusing sinkop alergi ku_gcs vital mata_konj kulit abd_palpasi rt dl gol_darah infus_bolus puasa ppi transfusi rawat konsul_pd',
@@ -359,8 +359,8 @@ export default {
   anemia_besi: mk('dalam', {
     pas: 'ibu', expr: 'lemas', id: 'Bu Yanti, 34 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, Bu Yanti, 34 tahun, sering pusing dan cepat lelah, wajahnya pucat.' },
-      { w: 'pas', e: 'lemas', t: 'Dok, saya lemas terus, pusing, dan berdebar kalau naik tangga.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Yanti, 34 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Selamat siang, Dok. Mohon diperiksa, ya.' }],
     dxOk: 'anemia', ddx: ['anemia', 'hipertiroid', 'pgk', 'ugib', 'sirosis'],
     ref: `${REF}Kasus ini: wanita usia subur dengan haid banyak, lemas, pusing, palpitasi, pica (makan es), konjungtiva sangat pucat dan kuku sendok, Hb 6,9 dengan MCV 62 dan apusan mikrositik hipokrom, tanpa perdarahan saluran cerna dan tanpa cacing: anemia defisiensi besi. Terapi: zat besi oral dengan vitamin C, cari dan atasi sumber kehilangan darah (haid banyak), edukasi diet; transfusi hanya bila tidak stabil atau gejala berat.`,
     K: 'ku onset lemas pusing palpitasi sesak_aktivitas pandangan_kabur bab_hitam bab_darah bb_turun nafsu rpd_transfusi rk_umum alergi ku_gcs vital mata_konj kulit jantung dl hitung_jenis feses tablet_fe edukasi_diet edukasi',
@@ -404,8 +404,8 @@ export default {
   hipertiroid: mk('dalam', {
     pas: 'ibu', expr: 'cemas', id: 'Bu Lina, 30 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, Bu Lina, 30 tahun, berdebar-debar dan berat badannya turun banyak padahal makan banyak.' },
-      { w: 'pas', e: 'cemas', t: 'Dok, jantung saya berdebar terus, tangan gemetar, dan badan saya kurus.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Lina, 30 tahun.' },
+      { w: 'pas', e: 'cemas', t: 'Selamat siang, Dok. Saya cemas sekali.' }],
     dxOk: 'hipertiroid', ddx: ['hipertiroid', 'dm', 'anemia', 'ska', 'hipertensi'],
     ref: `${REF}Kasus ini: palpitasi, penurunan berat badan 8 kg dengan nafsu makan baik, intoleransi panas, tremor halus, takikardia 118, struma difus dengan bruit, kulit hangat dan lembap, refleks hiperaktif, TSH tersupresi dengan fT4 tinggi: tirotoksikosis (kemungkinan penyakit Graves). Terapi: penyekat beta untuk gejala, obat antitiroid, konsultasi penyakit dalam atau endokrin; hati-hati pada kehamilan.`,
     K: 'ku onset palpitasi bb_turun nafsu diare kesemutan lemas rpd_ht rk_umum alergi ku_gcs vital tiroid kulit refleks_fis jantung ekg tsh betablocker konsul_pd edukasi',

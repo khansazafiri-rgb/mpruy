@@ -5,8 +5,8 @@ export default {
   ektopik: mk('spog', {
     pas: 'ibu', expr: 'lemas', id: 'Bu Dewi, 27 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Bu Dewi, 27 tahun, nyeri perut bawah mendadak dan pucat. Katanya terlambat haid.' },
-      { w: 'pas', e: 'lemas', t: 'Dok, perut bawah saya sakit sekali tiba-tiba, saya pusing dan mau pingsan.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Bu Dewi, 27 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Dok... tolong saya...' }],
     dxOk: 'ektopik', ddx: ['ektopik', 'abortus', 'abortus_im', 'pid', 'kista_torsi', 'apendisitis'],
     ref: `${REF}Kasus ini: amenore 7 minggu, nyeri perut bawah mendadak dengan bercak darah, syok (TD 90/60, nadi 118), nyeri goyang serviks dan kavum Douglas menonjol, hCG positif, USG uterus kosong dengan cairan bebas, Hb 8,9: kehamilan ektopik terganggu. Terapi: resusitasi, golongan darah dan darah siap, konsultasi kandungan, dan laparotomi segera.`,
     K: 'ku onset lokasi kualitas penyerta hpht ketuban kb riw_obs alergi ku_gcs vital mata_konj abd_palpasi abd_rebound vt tes_hamil usg_obs dl gol_darah oksigen infus_bolus konsul_og operasi rawat',
@@ -53,8 +53,8 @@ export default {
   hiperemesis: mk('spog', {
     pas: 'ibuhamil', expr: 'lemas', id: 'Bu Sari, 24 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, Bu Sari, 24 tahun, hamil muda. Muntah terus dan tidak bisa makan.' },
-      { w: 'pas', e: 'lemas', t: 'Dok, saya muntah terus sejak dua minggu. Minum air pun keluar lagi.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Sari, 24 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Selamat siang, Dok. Mohon diperiksa, ya.' }],
     dxOk: 'hiperemesis', ddx: ['hiperemesis', 'gea', 'hipertiroid', 'mola', 'isk', 'gastritis'],
     ref: `${REF}Kasus ini: usia kehamilan 9 minggu, muntah lebih dari 10 kali sehari, tidak dapat makan-minum, berat badan turun lebih dari 5% (3 kg), dehidrasi, ketonuria, hipokalemia; USG janin tunggal hidup tanpa gambaran mola. Terapi: rawat inap, rehidrasi intravena dengan koreksi elektrolit, antiemetik, dan dukungan nutrisi bertahap.`,
     K: 'ku onset mual muntah nafsu bb_turun hpht anc demam diare nyeri_ulu_hati ketuban alergi ku_gcs vital dehidrasi mulut antro urin elektrolit dl usg_obs infus_rutin antiemetik rawat edukasi',
@@ -100,8 +100,8 @@ export default {
   abortus: mk('spog', {
     pas: 'ibu', expr: 'meringis', id: 'Bu Rini, 31 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Bu Rini, 31 tahun, hamil sepuluh minggu, perdarahan banyak dan perut mulas sejak pagi.' },
-      { w: 'pas', e: 'meringis', t: 'Dok, darahnya banyak sekali dan ada gumpalan yang keluar. Perut mulas hebat.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Bu Rini, 31 tahun.' },
+      { w: 'pas', e: 'meringis', t: 'Aduh... selamat siang, Dok. Mohon dibantu.' }],
     dxOk: 'abortus', ddx: ['abortus', 'abortus_im', 'ektopik', 'mola', 'pid'],
     ref: `${REF}Kasus ini: amenore 10 minggu, perdarahan banyak dengan keluarnya jaringan, kram perut, ostium uteri terbuka dengan jaringan di kanalis, USG sisa konsepsi di kavum: abortus inkomplit. Terapi: stabilisasi (infus, golongan darah), evakuasi sisa konsepsi (kuretase atau aspirasi vakum), konsultasi kandungan; pada abortus iminens ostium tertutup dan janin masih hidup.`,
     K: 'ku onset lokasi kualitas penyerta hpht ketuban kontraksi riw_obs kb alergi ku_gcs vital mata_konj abd_palpasi vt tes_hamil usg_obs dl gol_darah infus_rutin konsul_og kuretase rawat',
@@ -142,8 +142,8 @@ export default {
   kpd: mk('spog', {
     pas: 'ibuhamil', expr: 'cemas', id: 'Bu Maya, 30 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, Bu Maya, 30 tahun, hamil 38 minggu. Keluar air banyak dari jalan lahir sejak enam jam lalu.' },
-      { w: 'pas', e: 'cemas', t: 'Dok, tadi tiba-tiba keluar air banyak dan terus merembes. Belum ada mulas.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Maya, 30 tahun.' },
+      { w: 'pas', e: 'cemas', t: 'Selamat siang, Dok. Saya cemas sekali.' }],
     dxOk: 'kpd', ddx: ['kpd', 'isk', 'vaginitis', 'braxton'],
     ref: `${REF}Kasus ini: usia kehamilan 38 minggu, cairan jernih tidak berbau merembes terus sejak 6 jam tanpa kontraksi, USG oligohidramnion (AFI 4), DJJ dan CTG normal, tanpa demam: ketuban pecah dini aterm. Terapi: rawat, pantau infeksi dan DJJ, induksi persalinan; hindari pemeriksaan dalam digital tanpa kontraksi karenakan risiko infeksi; kortikosteroid tidak diperlukan pada kehamilan aterm.`,
     K: 'ku onset ketuban kontraksi gerak_janin hpht anc demam bak_nyeri riw_obs alergi ku_gcs vital obst usg_obs ctg dl rawat konsul_og induksi',
@@ -183,8 +183,8 @@ export default {
   previa: mk('spog', {
     pas: 'ibuhamil', expr: 'cemas', id: 'Bu Lestari, 33 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Bu Lestari, 33 tahun, hamil 33 minggu. Keluar darah segar banyak dari jalan lahir, tidak sakit.' },
-      { w: 'pas', e: 'cemas', t: 'Dok, tiba-tiba keluar darah banyak dari jalan lahir. Perut saya tidak sakit, tapi saya takut sekali.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Bu Lestari, 33 tahun.' },
+      { w: 'pas', e: 'cemas', t: 'Selamat siang, Dok. Saya cemas sekali.' }],
     dxOk: 'previa', ddx: ['previa', 'solusio', 'partus_preterm', 'kpd', 'braxton'],
     ref: `${REF}Kasus ini: perdarahan merah segar tanpa nyeri pada trimester ketiga, uterus lemas tanpa kontraksi, kepala belum masuk pintu atas panggul, riwayat dua seksio, USG plasenta menutupi ostium uteri internum. Pemeriksaan dalam digital dikontraindikasikan sebelum plasenta previa disingkirkan. Terapi: rawat, infus, golongan darah, kortikosteroid pematangan paru (UK kurang dari 34 minggu), konsultasi kandungan; seksio sesarea (segera bila perdarahan masif, terencana bila stabil).`,
     K: 'ku onset ketuban kontraksi gerak_janin hpht anc riw_obs alergi ku_gcs vital mata_konj obst usg_obs ctg dl gol_darah infus_rutin steroid_janin rawat konsul_og',
@@ -225,8 +225,8 @@ export default {
   partus_preterm: mk('spog', {
     pas: 'ibuhamil', expr: 'cemas', id: 'Bu Fitri, 26 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Bu Fitri, 26 tahun, hamil 31 minggu. Perutnya mulas teratur sejak tadi pagi.' },
-      { w: 'pas', e: 'cemas', t: 'Dok, perut saya mulas makin sering, rasanya kencang dan teratur. Bayi saya masih terlalu kecil.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Bu Fitri, 26 tahun.' },
+      { w: 'pas', e: 'cemas', t: 'Selamat siang, Dok. Saya cemas sekali.' }],
     dxOk: 'partus_preterm', ddx: ['partus_preterm', 'braxton', 'isk', 'kpd', 'solusio'],
     ref: `${REF}Kasus ini: usia kehamilan 31 minggu, kontraksi teratur 3x/10 menit disertai perubahan serviks (pembukaan 3 cm, penipisan 60%) dengan ketuban utuh. Terapi: rawat, kortikosteroid pematangan paru, tokolitik jangka pendek bila tidak ada kontraindikasi, magnesium sulfat untuk neuroproteksi pada UK kurang dari 32 minggu, antibiotik profilaksis GBS bila persalinan berlanjut, rujuk ke fasilitas dengan NICU.`,
     K: 'ku onset kontraksi ketuban gerak_janin hpht anc bak_nyeri demam riw_obs alergi ku_gcs vital obst vt usg_obs ctg urin dl rawat steroid_janin tokolitik magnesium konsul_og',
@@ -270,8 +270,8 @@ export default {
   pid: mk('spog', {
     pas: 'ibu', expr: 'meringis', id: 'Bu Nina, 25 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, Bu Nina, 25 tahun, nyeri perut bawah lima hari dan demam.' },
-      { w: 'pas', e: 'meringis', t: 'Dok, perut bawah saya nyeri terus, keputihan berbau, dan saya demam.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Nina, 25 tahun.' },
+      { w: 'pas', e: 'meringis', t: 'Aduh... selamat siang, Dok. Mohon dibantu.' }],
     dxOk: 'pid', ddx: ['pid', 'ektopik', 'apendisitis', 'kista_torsi', 'isk', 'vaginitis'],
     ref: `${REF}Kasus ini: nyeri perut bawah 5 hari, keputihan mukopurulen berbau, demam, nyeri saat berhubungan, pasangan berganti, nyeri goyang serviks dan nyeri adneksa bilateral, tes kehamilan negatif, leukositosis. Kriteria minimal PID: nyeri perut bawah atau nyeri adneksa atau nyeri goyang serviks. Terapi: antibiotik spektrum luas (seftriakson, doksisiklin, metronidazol), edukasi, terapi pasangan; rawat bila berat atau abses tuboovarium.`,
     K: 'ku onset lokasi kualitas penyerta demam bak_nyeri ketuban hpht kb alergi ku_gcs vital abd_palpasi abd_rebound vt tes_hamil dl urin antibiotik_oral konsul_og edukasi',
@@ -314,8 +314,8 @@ export default {
   kista_torsi: mk('spog', {
     pas: 'ibu', expr: 'nyeri', id: 'Bu Yuni, 22 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Bu Yuni, 22 tahun, nyeri perut bawah kanan mendadak hebat setelah senam. Muntah juga.' },
-      { w: 'pas', e: 'nyeri', t: 'Aduh, Dok, perut kanan bawah saya sakit sekali tiba-tiba. Saya mual dan muntah.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Bu Yuni, 22 tahun.' },
+      { w: 'pas', e: 'nyeri', t: 'Aduh, Dok... mohon dibantu.' }],
     dxOk: 'kista_torsi', ddx: ['kista_torsi', 'apendisitis', 'ektopik', 'kolik', 'pid'],
     ref: `${REF}Kasus ini: nyeri perut bawah kanan mendadak hebat setelah aktivitas dengan mual-muntah, massa adneksa kistik teraba, tes kehamilan negatif, USG kista ovarium 8 cm dengan aliran Doppler menurun dan tanda whirlpool: torsi ovarium. Kegawatan ginekologi: laparoskopi atau laparotomi detorsi segera untuk menyelamatkan ovarium.`,
     K: 'ku onset lokasi kualitas pemberat penyerta demam mual muntah hpht kb rpd_serupa alergi ku_gcs vital abd_palpasi abd_rebound vt tes_hamil dl usg_obs puasa infus_rutin konsul_og operasi',
@@ -357,8 +357,8 @@ export default {
   mioma: mk('spog', {
     pas: 'ibu', expr: 'lemas', id: 'Bu Ratih, 41 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, Bu Ratih, 41 tahun, haidnya banyak dan lama enam bulan ini. Katanya lemas dan pusing.' },
-      { w: 'pas', e: 'lemas', t: 'Dok, haid saya banyak sekali, sampai sepuluh hari. Saya jadi lemas dan sering pusing.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Ratih, 41 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Selamat siang, Dok. Mohon diperiksa, ya.' }],
     dxOk: 'mioma', ddx: ['mioma', 'adenomiosis', 'ca_serviks', 'anemia', 'kista_torsi'],
     ref: `${REF}Kasus ini: menoragia 6 bulan dengan bekuan, anemia mikrositik (Hb 8,2), tekanan pada perut bawah, massa padat suprasimfisis, uterus membesar noduler, tes kehamilan negatif, USG mioma intramural dan subserosa: mioma uteri dengan perdarahan uterus abnormal. Terapi: zat besi, konsultasi kandungan untuk terapi hormonal atau tindakan; transfusi bila Hb kurang dari 7 atau tidak stabil; singkirkan keganasan.`,
     K: 'ku onset lokasi penyerta lemas pusing palpitasi hpht kb riw_obs rk_kanker alergi ku_gcs vital mata_konj abd_palpasi vt tes_hamil dl usg_obs konsul_og tablet_fe edukasi',
