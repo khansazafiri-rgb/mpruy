@@ -3,7 +3,7 @@
 // Catatan satu BAB ditulis sebagai Markdown ringkas. File pertama baris-nya penanda:
 //
 //   <!-- materi:v2 -->
-//   ## Tujuan Belajar {tujuan}         bagian; {tujuan|klinis|highyield|praktikum|sumber} opsional
+//   ## Tujuan Belajar {tujuan}         bagian; {tujuan|klinis|highyield|praktikum|sumber|kartu} opsional
 //   # Bagian A: Urinary Tract           pembatas bagian besar (BAB yang sangat panjang)
 //   ### Subjudul
 //   paragraf biasa (baris berurutan = satu paragraf)
@@ -11,6 +11,9 @@
 //   ![Keterangan gambar](https://lh3.googleusercontent.com/d/ID "Sumber: ... lisensi")
 //   > [!klinis] Judul kotak           kotak sorot: klinis | warning | highyield | tip | info
 //   > isi kotak (paragraf / butir)
+//
+//   ## Flashcard {kartu}                bagian khusus flashcard (tidak tampil di bacaan):
+//   - [Konteks] Depan :: Belakang       satu kartu per butir; "[Konteks] " opsional
 //
 // Teks di dalam paragraf, butir, dan kotak tetap memakai penanda ringkas
 // (**tebal**, *miring*, ==sorotan==, ~sub~, ^sup^, [teks](tautan)) yang dirender oleh
@@ -22,8 +25,8 @@ export function isNotesV2(text) {
   return String(text || '').trimStart().startsWith(NOTES_MARK);
 }
 
-export const SECTION_KINDS = ['tujuan', 'klinis', 'highyield', 'praktikum', 'sumber'];
-const CALLOUT_VARIANTS = ['klinis', 'warning', 'highyield', 'tip', 'info'];
+export const SECTION_KINDS = ['tujuan', 'klinis', 'highyield', 'praktikum', 'sumber', 'kartu'];
+const CALLOUT_VARIANTS = ['klinis', 'warning', 'highyield', 'tip', 'praktikum', 'info'];
 // Jenis bagian yang diberi nomor urut di daftar isi.
 const NUMBERED = new Set(['isi', 'klinis']);
 
@@ -70,9 +73,34 @@ function parseSimple(lines) {
   return out;
 }
 
+const RE_CARD = /^(?:\[([^\]]+)\](?!\())?\s*([\s\S]+?)\s::\s([\s\S]+)$/;
+
+// Kode pendek stabil dari isi kartu, supaya tanda "hafal" tetap berlaku setelah catatan diperbarui.
+export function cardKey(front, back) {
+  let h = 5381;
+  const s = `${front}\u0001${back}`;
+  for (let i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+  return h.toString(36);
+}
+
+function cardsOf(section) {
+  const out = [];
+  section.blocks.forEach((b) => {
+    if (b.type !== 'list') return;
+    b.items.forEach((it) => {
+      const m = it.match(RE_CARD);
+      if (!m) return;
+      const front = m[2].trim();
+      const back = m[3].trim();
+      out.push({ id: cardKey(front, back), ctx: (m[1] || '').trim(), front, back });
+    });
+  });
+  return out;
+}
+
 export function parseNotes(text) {
   const lines = String(text || '').replace(/\r\n?/g, '\n').split('\n');
-  const doc = { items: [], sections: [], figures: 0, words: 0, minutes: 1, parts: 0 };
+  const doc = { items: [], sections: [], figures: 0, words: 0, minutes: 1, parts: 0, cards: [] };
   let section = null;
   let n = 0; // nomor bagian bernomor
   let secSeq = 0;
@@ -128,8 +156,16 @@ export function parseNotes(text) {
       continue;
     }
     if ((m = line.match(RE_FIGURE))) {
-      ensure().blocks.push({ type: 'figure', n: ++figSeq, caption: m[1].trim(), url: m[2], credit: (m[3] || '').trim() });
-      i++;
+      // Beberapa baris gambar berurutan = satu galeri; keterangan ada di baris terakhir.
+      const figs = [];
+      while (i < lines.length) {
+        const f = lines[i].match(RE_FIGURE);
+        if (!f) break;
+        figs.push(f);
+        i++;
+      }
+      const end = figs[figs.length - 1];
+      ensure().blocks.push({ type: 'figure', n: ++figSeq, caption: (end[1] || '').trim(), url: figs[0][2], urls: figs.map((f) => f[2]), credit: (end[3] || '').trim() });
       continue;
     }
     if (line.startsWith('>')) {
@@ -164,6 +200,14 @@ export function parseNotes(text) {
     else i++;
   }
 
+  // Bagian {kartu} dipisahkan dari bacaan: isinya dipakai halaman flashcard.
+  doc.cards = [];
+  const k = doc.sections.findIndex((x) => x.kind === 'kartu');
+  if (k >= 0) {
+    doc.cards = cardsOf(doc.sections[k]);
+    doc.items = doc.items.filter((x) => x !== doc.sections[k]);
+    doc.sections.splice(k, 1);
+  }
   doc.figures = figSeq;
   let words = 0;
   const count = (s) => { words += (stripMarks(s).match(/\S+/g) || []).length; };

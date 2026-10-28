@@ -326,35 +326,21 @@ Brachial artery injury dapat mengancam perfusi forearm/hand. Volkmann ischemic c
 29. Axillary vein dibentuk oleh basilic + brachial venae comitantes dan menjadi subclavian setelah lateral border costa I.
 30. Cephalic vein masuk axillary vein melalui deltopectoral/clavipectoral region.
 
-## Sumber & Atribusi {sumber}
+## Flashcard {kartu}
 
-Scope dan emphasis dosen:
-
-- K7 — Pectoral and Scapular Region, Anatomi FK Universitas Airlangga.
-- K8 — Axillary Fossa and Brachial Plexus, Anatomi FK Universitas Airlangga. Materi menekankan axilla sebagai distribution center, tiga bagian axillary artery, lima kelompok axillary lymph nodes, brachial plexus C5–T1, dan clinical correlation brachial plexus injury/breast nodal levels.
-- K9 — Arm and Elbow, Anatomi FK Universitas Airlangga.
-- K10 — Forearm, Anatomi FK Universitas Airlangga.
-- K11 — Wrist and Hand, Anatomi FK Universitas Airlangga.
-
-Cross-check/pengayaan:
-
-- Gray’s Basic Anatomy.
-- Moore’s Clinically Oriented Anatomy.
-- OpenStax Anatomy & Physiology 2e.
-- Gray’s Anatomy plates dan Wikimedia Commons untuk visual berlisensi terbuka/public domain.
-
-### Sumber Visual
-
-- Gambar 1 — “Illu upper extremity muscles.jpg”, Wikimedia Commons/US Government, public domain.
-- Gambar 2 — “1119 Muscles that Move the Humerus.jpg”, OpenStax Anatomy & Physiology via Wikimedia Commons, CC BY 4.0.
-- Gambar 3 — “Gray412-spaces.png”, Gray’s Anatomy via Wikimedia Commons, public domain.
-- Gambar 4 — “202107 Anterior view of the shoulder joint.svg”, Wikimedia Commons; open-license. Digunakan sebagai orientasi glenohumeral joint.
-- Gambar 5 — “Gray523.png”, Gray’s Anatomy via Wikimedia Commons, public domain.
-- Gambar 6 — “Brachialplexusdetaileddiagram.jpg”, Patrick John Duggan via Wikimedia Commons, public domain.
-- Gambar 7 — “UpperArmMuscles.jpg”, Leo Testut via Wikimedia Commons, public domain.
-- Gambar 8 — “202107 Anterior view of the elbow joint.svg”, Wikimedia Commons; open-license.
-- Gambar 9 — “AnteriorForearmMuscles.jpg”, George A. Piersol via Wikimedia Commons, public domain.
-- Gambar 10 — “Forearm posterior view.jpg”, Anatomist90 via Wikimedia Commons, CC BY-SA 3.0.
-- Gambar 11 — “Carpal-Tunnel.svg”, Wikimedia Commons, open-license; transverse wrist diagram based on Gray anatomy.
-- Gambar 12 — “SuperficialPalmarArch.jpg”, Leo Testut via Wikimedia Commons, public domain.
-- Gambar 13 — “Schematic drawing of anatomical snuffbox.png”, Sumurruchu via Wikimedia Commons, CC BY-SA 4.0.
+- [Quadrangular Space] Batas umum :: superior teres minor, inferior teres major, medial long head triceps, lateral surgical neck humerus. Isinya adalah axillary nerve dan posterior circumflex humeral artery. Karena itu, fracture surgical neck humerus dapat mencederai keduanya.
+- [Cubital Fossa] Batas umum cubital fossa :: superior garis antara epicondyles; medial pronator teres; lateral brachioradialis. Floor terutama brachialis dan supinator. Roof mencakup skin, superficial fascia, deep fascia, median cubital vein, dan bicipital aponeurosis.
+- [High-yield] SITS :: supraspinatus, infraspinatus, teres minor, subscapularis
+- [High-yield] Brachial plexus :: C5–T1 → roots, trunks, divisions, cords, branches
+- [High-yield] Cubital fossa :: tendon–artery–median nerve; radial nerve berada lebih lateral
+- [High-yield] Anatomical snuffbox floor :: scaphoid + trapezium; radial artery melintas
+- [High-yield] Recurrent branch median nerve :: motor thenar branch; jangan disamakan dengan palmar cutaneous branch
+- [High-yield] Shoulder abduction 0–15/15–90/>90 :: simplifikasi fungsional, bukan batas absolut
+- [Axillary Artery] Pectoralis minor membagi axillary artery menjadi tiga bagian … :: • Part 1, medial/proximal terhadap pectoralis minor: superior thoracic artery
+  • Part 2, posterior terhadap pectoralis minor: thoracoacromial trunk dan lateral thoracic artery
+  • Part 3, lateral/distal terhadap pectoralis minor: subscapular artery, anterior circumflex humeral artery, dan posterior circumflex humeral artery
+- [Brachial Plexus] Terminal branches utama … :: • Musculocutaneous nerve — lateral cord
+  • Median nerve — kontribusi lateral dan medial cords
+  • Ulnar nerve — medial cord
+  • Axillary nerve — posterior cord
+  • Radial nerve — posterior cord

@@ -1,0 +1,67 @@
+/* Halaman Flashcard (pages/SubjectCards.jsx, components/FlashcardDeck.jsx). */
+.fc-head { position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.4rem 1.25rem; border-radius: 26px; }
+@media (min-width: 640px) { .fc-head { padding: 1.75rem 2rem; } }
+.fc-head::before { content: ''; position: absolute; z-index: -1; right: -90px; top: -110px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgb(255 255 255 / .7), transparent 65%); }
+.fc-head h1 { margin-top: .7rem; font-size: clamp(24px, 4vw, 34px); font-weight: 800; line-height: 1.12; letter-spacing: -.035em; overflow-wrap: anywhere; }
+.fc-head-mascot { flex-shrink: 0; }
+@media (max-width: 479px) { .fc-head-mascot { display: none; } }
+
+.fc { --nf: var(--tone-fg, 0 112 96); --nm: var(--tone-mid, 120 205 165); --nb: var(--tone-bg, 227 241 238); }
+.fc-meter { height: 10px; border-radius: 99px; background: rgb(var(--ink) / .1); overflow: hidden; }
+.fc-meter span { display: block; height: 100%; border-radius: inherit; background: rgb(var(--nf)); transition: width .35s cubic-bezier(.2,.8,.2,1); }
+.fc-stats { display: flex; justify-content: space-between; gap: 1rem; margin: .55rem .15rem 1rem; font-size: 14px; color: rgb(var(--ink-muted)); }
+.fc-stats b { color: rgb(var(--ink)); font-size: 16px; }
+.fc-left { font-weight: 700; color: rgb(var(--nf)); }
+
+/* Kartu: dua sisi bertumpuk di satu sel grid, jadi tinggi mengikuti sisi yang paling panjang. */
+.fc-stage { perspective: 1400px; animation: fc-in .32s cubic-bezier(.2,.8,.2,1) both; }
+.fc-card {
+  position: relative; display: grid; width: 100%; min-height: 19rem; padding: 0; border: 0; background: none; text-align: left; cursor: pointer;
+  transform-style: preserve-3d; transition: transform .55s cubic-bezier(.3,1.1,.4,1);
+}
+.fc-stage.is-flipped .fc-card { transform: rotateY(180deg); }
+.fc-face {
+  grid-area: 1 / 1; display: flex; flex-direction: column; justify-content: center; gap: .9rem; padding: 1.6rem 1.4rem 2.6rem; border-radius: 24px;
+  border: 1.5px solid rgb(var(--ink) / .1); backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  box-shadow: 0 5px 0 rgb(var(--nm) / .7), 0 24px 40px -26px rgb(var(--ink) / .45);
+}
+@media (min-width: 640px) { .fc-face { padding: 2rem 2.25rem 3rem; } .fc-card { min-height: 21rem; } }
+.fc-front { background: #fff; }
+.fc-back { background: rgb(var(--nb)); transform: rotateY(180deg); border-color: rgb(var(--nm) / .8); }
+.fc-ctx { display: inline-block; align-self: flex-start; max-width: 100%; padding: .2rem .75rem; border-radius: 99px; background: rgb(var(--nb)); color: rgb(var(--nf)); font-size: 12px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; overflow-wrap: anywhere; }
+.fc-back .fc-ctx { background: #fff; text-transform: none; letter-spacing: 0; font-size: 13px; }
+.fc-text { display: block; font-family: 'Plus Jakarta Sans', Inter, sans-serif; font-size: clamp(22px, 4vw, 30px); font-weight: 800; line-height: 1.25; letter-spacing: -.025em; color: rgb(var(--ink)); overflow-wrap: anywhere; }
+.fc-text.is-back { font-family: Inter, system-ui, sans-serif; font-size: clamp(17px, 2.6vw, 21px); font-weight: 500; line-height: 1.65; letter-spacing: -.005em; }
+.fc-hint { position: absolute; left: 0; right: 0; bottom: 1rem; text-align: center; font-size: 12.5px; font-weight: 600; color: rgb(var(--ink-faint)); }
+
+.fc-actions { display: flex; justify-content: center; gap: .75rem; margin-top: 1.25rem; }
+.fc-btn { display: inline-flex; flex: 1; max-width: 15rem; min-height: 52px; align-items: center; justify-content: center; gap: .5rem; padding: 0 1.25rem; border-radius: 16px; border: 1.5px solid rgb(var(--ink) / .12); background: #fff; font-size: 16px; font-weight: 800; box-shadow: 0 4px 0 rgb(var(--ink) / .1); transition: transform .12s, box-shadow .12s; }
+.fc-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 rgb(var(--ink) / .1); }
+.fc-btn.is-flip { max-width: 22rem; background: rgb(var(--forest)); color: #fff; border-color: transparent; box-shadow: 0 4px 0 rgb(0 0 0 / .3); }
+.fc-btn.is-yes { background: rgb(var(--brand)); color: #fff; border-color: transparent; box-shadow: 0 4px 0 rgb(var(--brand-dark)); }
+.fc-btn.is-no { color: rgb(var(--coral)); border-color: rgb(var(--coral) / .4); background: rgb(var(--coral-soft)); box-shadow: 0 4px 0 rgb(var(--coral) / .3); }
+.fc-keys { display: none; margin-top: .9rem; text-align: center; font-size: 12.5px; color: rgb(var(--ink-faint)); }
+.fc-keys kbd { padding: .05rem .4rem; border-radius: 6px; border: 1px solid rgb(var(--ink) / .2); background: #fff; font: 600 11.5px Inter, sans-serif; }
+@media (hover: hover) and (min-width: 768px) { .fc-keys { display: block; } }
+.fc-tools { display: flex; justify-content: center; gap: .5rem; margin-top: .9rem; }
+.fc-tools button { display: inline-flex; align-items: center; gap: .35rem; padding: .35rem .8rem; border-radius: 99px; font-size: 12.5px; font-weight: 700; color: rgb(var(--ink-muted)); background: rgb(255 255 255 / .7); }
+.fc-tools button:hover { color: rgb(var(--brand)); background: #fff; }
+
+.fc-done { display: grid; gap: 1.1rem; padding: 1.5rem 1.25rem; border-radius: 26px; }
+.fc-steps { display: flex; justify-content: center; flex-wrap: wrap; gap: .4rem; font-size: 13.5px; font-weight: 700; }
+.fc-steps > * { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem .9rem; border-radius: 99px; background: rgb(255 255 255 / .75); color: rgb(var(--ink-muted)); }
+.fc-steps a:hover { color: rgb(var(--brand)); background: #fff; }
+.fc-steps [aria-current=step] { background: rgb(var(--brand)); color: #fff; }
+.fc-steps .is-off { opacity: .55; }
+
+@keyframes fc-in { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .fc-stage { animation: none; }
+  .fc-card { transition: none; transform-style: flat; }
+  .fc-stage.is-flipped .fc-card { transform: none; }
+  .fc-face { transform: none; }
+  .fc-back { visibility: hidden; }
+  .fc-front { visibility: visible; }
+  .fc-stage.is-flipped .fc-back { visibility: visible; }
+  .fc-stage.is-flipped .fc-front { visibility: hidden; }
+}

@@ -228,11 +228,9 @@ Dari bulbus, informasi berjalan melalui tractus olfactorius menuju area olfaktor
 
 ## Vaskularisasi dan Epistaxis High-Yield {highyield}
 
-Mukosa hidung memiliki vaskularisasi kaya dari cabang sistem carotis externa dan interna. Area anterior septum, sering disebut Kiesselbach/Little area, merupakan lokasi umum epistaxis karena anastomosis beberapa cabang arteri.
-
-Area posterior hidung, terutama cabang sphenopalatine, menjadi sumber penting epistaxis posterior yang cenderung lebih berat.
-
-Pada mata, arteria ophthalmica dari internal carotid artery memberi cabang termasuk central retinal artery. Oklusi central retinal artery dapat menyebabkan kehilangan penglihatan akut dan berat.
+- Mukosa hidung memiliki vaskularisasi kaya dari cabang sistem carotis externa dan interna. Area anterior septum, sering disebut Kiesselbach/Little area, merupakan lokasi umum epistaxis karena anastomosis beberapa cabang arteri.
+- Area posterior hidung, terutama cabang sphenopalatine, menjadi sumber penting epistaxis posterior yang cenderung lebih berat.
+- Pada mata, arteria ophthalmica dari internal carotid artery memberi cabang termasuk central retinal artery. Oklusi central retinal artery dapat menyebabkan kehilangan penglihatan akut dan berat.
 
 ## Integrasi Klinis: Localization Cepat {klinis}
 
@@ -297,3 +295,62 @@ Hidung:
 - Meatus inferior menerima nasolacrimal duct; sphenoid sinus → sphenoethmoidal recess.
 - Olfactory fila menembus cribriform plate; trauma dapat menyebabkan anosmia + CSF rhinorrhea.
 - Kiesselbach area adalah lokasi klasik epistaxis anterior.
+
+## Flashcard {kartu}
+
+- [Orbita: Dinding, Apertura, dan Isi] canalis opticus :: membawa nervus opticus (CN II) dan arteria ophthalmica
+- [Orbita: Dinding, Apertura, dan Isi] fissura orbitalis superior :: jalur CN III, IV, V1, VI dan vena ophthalmica superior
+- [Orbita: Dinding, Apertura, dan Isi] fissura orbitalis inferior :: berhubungan dengan fossa pterygopalatina dan infratemporalis
+- [Orbita: Dinding, Apertura, dan Isi] foramen/kanalis supraorbitalis dan infraorbitalis :: jalur saraf serta pembuluh dengan nama yang sama.
+- [Tunica fibrosa] sclera :: kuat, opak, mempertahankan bentuk bola mata dan menjadi tempat perlekatan otot ekstraokular
+- [Tunica fibrosa] cornea :: transparan, avaskular, merupakan media refraktif paling kuat.
+- [Tunica vasculosa atau uvea] choroidea :: kaya vaskular, memberi nutrisi terutama pada lapisan luar retina
+- [Tunica vasculosa atau uvea] corpus ciliare :: mengandung m. ciliaris dan processus ciliares
+- [Tunica vasculosa atau uvea] iris :: membentuk aperture central berupa pupil.
+- [Tunica interna] discus nervi optici :: tempat keluarnya CN II; tidak memiliki photoreceptor sehingga menjadi blind spot
+- [Tunica interna] macula lutea :: area penglihatan sentral
+- [Tunica interna] fovea centralis :: titik ketajaman visual tertinggi.
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] LR6 :: lateral rectus — CN VI
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] SO4 :: superior oblique — CN IV
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] rectus superior :: elevation, adduction, intorsion
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] rectus inferior :: depression, adduction, extorsion
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] obliquus superior :: intorsion, depression, abduction
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] obliquus inferior :: extorsion, elevation, abduction.
+- [Telinga Tengah dan Ossicula Auditus] Urutan konduksi :: membrana tympanica → malleus → incus → stapes → fenestra vestibuli.
+- [High-yield] Cornea :: bagian transparan tunica fibrosa dan media refraktif utama
+- [High-yield] Aqueous humor :: ciliary processes → posterior chamber → pupil → anterior chamber → trabecular meshwork → canal of Schlemm
+- [High-yield] Chiasma opticum :: nasal retinal fibers menyilang; lesi tengah → bitemporal hemianopia
+- [High-yield] Ossicles :: malleus → incus → stapes → oval window
+- [High-yield] Meatus medius menerima sebagian besar sinus penting :: frontal, maxillary, anterior/middle ethmoid
+- [High-yield] Kiesselbach area :: lokasi klasik epistaxis anterior
+- [Orbita: Dinding, Apertura, dan Isi] Landmark yang harus dikenali … :: • canalis opticus: membawa nervus opticus (CN II) dan arteria ophthalmica
+  • fissura orbitalis superior: jalur CN III, IV, V1, VI dan vena ophthalmica superior
+  • fissura orbitalis inferior: berhubungan dengan fossa pterygopalatina dan infratemporalis
+  • foramen/kanalis supraorbitalis dan infraorbitalis: jalur saraf serta pembuluh dengan nama yang sama
+- [Tunica interna] Landmark retina penting … :: • discus nervi optici: tempat keluarnya CN II; tidak memiliki photoreceptor sehingga menjadi blind spot
+  • macula lutea: area penglihatan sentral
+  • fovea centralis: titik ketajaman visual tertinggi
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Innervasi wajib hafal … :: • LR6: lateral rectus — CN VI
+  • SO4: superior oblique — CN IV
+  • semua yang lain terutama oleh CN III
+- [Nervus Opticus dan Jalur Visual Dasar] Pola lesi high-yield … :: • lesi CN II → monocular visual loss ipsilateral
+  • lesi chiasma tengah → bitemporal hemianopia
+  • lesi tractus opticus/optic radiation/cortex → contralateral homonymous visual field defect
+- [Telinga Tengah dan Ossicula Auditus] Dua otot kecil … :: • m. tensor tympani — CN V3
+  • m. stapedius — CN VII
+- [Telinga Dalam: Bony dan Membranous Labyrinth] Komponen sensorik utama … :: • cochlear duct → pendengaran
+  • utriculus dan sacculus → percepatan linear dan posisi kepala relatif terhadap gravitasi
+  • semicircular ducts → percepatan angular/rotasi
+- [Hidung Luar dan Cavum Nasi] Komponen septum utama … :: • lamina perpendicularis ossis ethmoidalis
+  • vomer
+  • cartilago septi nasi
+- [Sinus Paranasales] Hubungan anatomi penting … :: • sinus frontalis berada di frontal bone dan berhubungan dekat dengan orbita
+  • ethmoidal air cells berada di antara cavum nasi dan orbita; lamina papyracea yang sangat tipis memungkinkan penyebaran infeksi ke orbita
+  • sinus sphenoidalis berada dekat sella turcica, optic canal, cavernous sinus, dan internal carotid artery
+  • sinus maxillaris merupakan sinus terbesar dan dekat dengan akar gigi posterior maxilla
+- [Orbita: Dinding, Apertura, dan Isi] Clinical anchor: Orbita: Dinding, Apertura, dan Isi :: Dinding medial dan floor orbita relatif tipis. Blow-out fracture pada floor orbita dapat menjebak m. rectus inferior dan menyebabkan diplopia, terutama saat melihat ke atas.
+- [Chambers, Aqueous Humor, Lens, dan Vitreous Body] Clinical anchor: Chambers, Aqueous Humor, Lens, dan Vitreous Body :: Hambatan aliran keluar aqueous humor dapat meningkatkan tekanan intraokular dan berkontribusi terhadap glaucoma.
+- [Telinga Tengah dan Ossicula Auditus] Clinical anchor: Telinga Tengah dan Ossicula Auditus :: Paralisis m. stapedius pada lesi CN VII dapat menyebabkan hyperacusis.
+- [Vestibular Apparatus dan Keseimbangan] Clinical anchor: Vestibular Apparatus dan Keseimbangan :: Gangguan vestibular dapat menimbulkan vertigo, nystagmus, dan gangguan keseimbangan. Hubungan vestibulo-ocular reflex menjelaskan keterkaitan kuat antara input telinga dalam dan gerakan mata.
+- [Conchae, Meatus, dan Drainase Sinus] Clinical anchor: Conchae, Meatus, dan Drainase Sinus :: Ostium sinus maxillaris berada relatif tinggi pada dinding medial sinus sehingga drainase alami tidak selalu optimal saat berdiri. Hubungan sinus dengan gigi molar superior juga penting pada penyebaran infeksi.
+- [Olfactory Region dan Jalur Olfaktorius Dasar] Clinical anchor: Olfactory Region dan Jalur Olfaktorius Dasar :: Fraktur cribriform plate dapat merusak fila olfactoria dan menyebabkan anosmia serta dapat disertai rhinorrhea cairan serebrospinal.

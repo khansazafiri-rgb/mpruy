@@ -269,15 +269,15 @@ Hemisection spinal cord menghasilkan kombinasi klasik:
 
 ### Anterior Cord Syndrome
 
-Cedera anterior two-thirds cord dapat mengenai corticospinal dan spinothalamic tracts sehingga muncul motor paralysis dan loss pain/temperature, dengan relatif preserved dorsal column function.
+- Cedera anterior two-thirds cord dapat mengenai corticospinal dan spinothalamic tracts sehingga muncul motor paralysis dan loss pain/temperature, dengan relatif preserved dorsal column function.
 
 ### Central Cord/Syringomyelia Pattern
 
-Lesi sentral dapat mengenai crossing spinothalamic fibers di anterior white commissure sehingga menghasilkan bilateral segmental loss pain/temperature. Bila meluas, anterior horn dan corticospinal tract juga dapat terkena.
+- Lesi sentral dapat mengenai crossing spinothalamic fibers di anterior white commissure sehingga menghasilkan bilateral segmental loss pain/temperature. Bila meluas, anterior horn dan corticospinal tract juga dapat terkena.
 
 ### Posterior Cord Syndrome
 
-Dominan kehilangan vibration, proprioception, dan fine touch dengan motor function relatif lebih preserved pada fase awal.
+- Dominan kehilangan vibration, proprioception, dan fine touch dengan motor function relatif lebih preserved pada fase awal.
 
 ## Conus Medullaris versus Cauda Equina
 
@@ -337,3 +337,45 @@ Jika diminta localization:
 - Brown-Séquard: ipsilateral motor + proprioception loss, contralateral pain/temperature loss.
 - Conus dapat memberi mixed UMN/LMN; cauda equina dominan LMN.
 - Endoneurium → axon; perineurium → fascicle; epineurium → seluruh nerve.
+
+## Flashcard {kartu}
+
+- [Penampang Medula Spinalis: Gray Matter dan White Matter] Orientasi penting :: anterior median fissure lebih dalam dan lebar daripada posterior median sulcus. Ini membantu menentukan anterior–posterior pada spesimen penampang.
+- [Dorsal Root, Ventral Root, Spinal Nerve, dan Rami] Common confusion :: dorsal root adalah sensory, tetapi dorsal ramus BUKAN sensory-only. Dorsal dan ventral rami sama-sama mixed nerves.
+- [Conus Medullaris versus Cauda Equina] Red flag klinis :: saddle anesthesia, urinary retention/incontinence, progressive bilateral leg weakness, atau severe radicular symptoms memerlukan evaluasi segera.
+- [High-yield] Ipsilateral UMN weakness di bawah lesi :: corticospinal tract
+- [High-yield] Ipsilateral loss vibration/proprioception di bawah lesi :: dorsal columns
+- [High-yield] 31 pasang spinal nerves :: 8C, 12T, 5L, 5S, 1Co
+- [High-yield] Brown-Séquard :: ipsilateral motor + proprioception loss, contralateral pain/temperature loss
+- [Peta Besar: Medula Spinalis sebagai Jalur dan Pusat Segmental] Dua enlargement penting … :: • Cervical enlargement → neuron yang berhubungan dengan upper limb
+  • Lumbosacral enlargement → neuron yang berhubungan dengan lower limb
+- [Segmen Spinal Cord dan Hubungannya dengan Vertebra] Aturan keluar spinal nerves … :: • C1–C7 keluar superior terhadap vertebra dengan nomor yang sama
+  • C8 keluar antara C7 dan T1
+  • T1 ke bawah keluar inferior terhadap vertebra dengan nomor yang sama
+- [Penampang Medula Spinalis: Gray Matter dan White Matter] Perbedaan level secara umum … :: • Cervical cord → paling banyak white matter; diameter besar
+  • Thoracic cord → gray matter lebih kecil; lateral horn jelas
+  • Lumbar cord → gray matter relatif besar karena lumbosacral enlargement
+  • Sacral cord → rasio gray:white matter tinggi karena sedikit ascending/descending fibers yang tersisa
+- [Upper Motor Neuron versus Lower Motor Neuron] Upper motor neuron lesion biasanya menghasilkan … :: • Weakness dengan pola pyramidal
+  • Hyperreflexia
+  • Increased tone/spasticity
+  • Babinski sign
+  • Minimal early muscle atrophy
+- [Upper Motor Neuron versus Lower Motor Neuron] Lower motor neuron lesion biasanya menghasilkan … :: • Flaccid weakness
+  • Hyporeflexia/areflexia
+  • Marked denervation atrophy
+  • Fasciculations dapat muncul
+- [Plexus Logic dan Saraf Perifer] Ventral rami membentuk empat plexus besar … :: • Cervical plexus → C1–C4
+  • Brachial plexus → C5–T1
+  • Lumbar plexus → L1–L4
+  • Sacral plexus → L4–S4
+- [Struktur Saraf Perifer dan Regenerasi] Peripheral nerve terdiri dari axons yang dibungkus connective tissue … :: • Endoneurium → mengelilingi individual axon
+  • Perineurium → membungkus fascicle dan membentuk blood–nerve barrier penting
+  • Epineurium → membungkus seluruh nerve dan memberi mechanical protection
+- [Blood Supply Medula Spinalis] Longitudinal supply utama berasal dari … :: • Satu anterior spinal artery → menyuplai sekitar anterior two-thirds spinal cord
+  • Dua posterior spinal arteries → menyuplai posterior cord
+- [Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord?] Spinal cord lesion … :: • Dapat menghasilkan sensory level pada trunk
+  • UMN signs di bawah lesi
+  • LMN signs dapat muncul tepat pada level anterior horn/root yang terkena
+  • Bowel/bladder involvement lebih mengarah ke cord/conus/cauda daripada isolated mononeuropathy
+- [Segmen Spinal Cord dan Hubungannya dengan Vertebra] Clinical anchor: Segmen Spinal Cord dan Hubungannya dengan Vertebra :: Lesi pada satu vertebral level tidak selalu berarti segmen medula dengan nomor yang sama terkena. Prinsip ini penting ketika menginterpretasi trauma, MRI, dan spinal cord compression.

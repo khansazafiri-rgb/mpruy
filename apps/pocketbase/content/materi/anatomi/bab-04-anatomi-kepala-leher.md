@@ -109,12 +109,12 @@ Laring berada di depan laringofaring dan berlanjut ke trakea. Rangka utamanya me
 - SCM membagi segitiga anterior dan posterior; selubung karotis memuat arteri karotis, vena jugularis interna, dan X.
 - Saraf laring: cricothyroideus oleh cabang eksternal laryngeus superior; mayoritas otot intrinsik lain oleh recurrens.
 
-## Sumber & Atribusi {sumber}
+## Flashcard {kartu}
 
-1. PCV Classroom, “Superficial & Deep Face Region”, slide Blok Anatomi, hlm. 1–56.
-2. PCV Classroom, “Superficial & Deep Neck Region”, slide Blok Anatomi, hlm. 1–55.
-3. [OpenStax, Anatomy & Physiology 2e, §11.3 Axial Muscles of the Head, Neck, and Back (Gbr. 11.7, 11.13), lisensi CC BY 4.0.](https://openstax.org/books/anatomy-and-physiology-2e/pages/11-3-axial-muscles-of-the-head-neck-and-back)
-4. [OpenStax, Anatomy & Physiology 2e, §9.6 Anatomy of Selected Synovial Joints (Gbr. 9.15), lisensi CC BY 4.0.](https://openstax.org/books/anatomy-and-physiology-2e/pages/9-6-anatomy-of-selected-synovial-joints)
-5. [OpenStax, Anatomy & Physiology 2e, §22.1 Organs and Structures of the Respiratory System (Gbr. 22.4, 22.6, 22.7), lisensi CC BY 4.0.](https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system)
-6. [OpenStax, Anatomy & Physiology 2e, §23.3 The Mouth, Pharynx, and Esophagus (Gbr. 23.7, 23.9), lisensi CC BY 4.0.](https://openstax.org/books/anatomy-and-physiology-2e/pages/23-3-the-mouth-pharynx-and-esophagus)
-7. [NCBI Bookshelf/StatPearls, Anatomy, Head and Neck, Neck Triangle; Facial Muscles; Temporomandibular Joint; Recurrent Laryngeal Nerve.](https://www.ncbi.nlm.nih.gov/books/NBK554398/)
+- [Peta anatomi kepala dan leher] Cara membaca regio :: identifikasi tulang/otot penanda → tentukan lapisan dari kulit ke dalam → cari saraf dan pembuluh → hubungkan dengan rongga atau organ terdekat. Hubungan ruang lebih penting daripada menghafal daftar struktur tanpa lokasi.
+- [Kelenjar saliva] Sekresi parotis :: IX → n. petrosus minor → ganglion oticum → n. auriculotemporalis. Sekresi submandibularis dan sublingualis: VII → chorda tympani → n. lingualis → ganglion submandibulare. Karena n. lingualis membawa lebih dari satu jenis serabut, fungsi sensorik umum dan jalur parasimpatis perlu dibedakan.
+- [High-yield] Saraf laring :: cricothyroideus oleh cabang eksternal laryngeus superior; mayoritas otot intrinsik lain oleh recurrens
+- [Wajah superfisial: mimik, sensasi, dan kelenjar parotis] Klinis: Wajah superfisial: mimik, sensasi, dan kelenjar parotis :: Paresis VII perifer melemahkan otot mimik pada sisi yang sama, termasuk penutupan mata. Defisit sensasi wajah mengarahkan pemeriksaan ke cabang V. Pembesaran parotis dapat menekan struktur di sekitarnya; lokasi lesi menentukan gejala.
+- [Otot pengunyahan dan sendi temporomandibular] Klinis: Otot pengunyahan dan sendi temporomandibular :: Nyeri, bunyi klik, atau keterbatasan gerak dapat terkait gangguan diskus maupun otot; temuan tunggal tidak cukup untuk diagnosis. Dislokasi anterior terjadi bila kondilus bergerak melewati eminensia artikular dan gagal kembali.
+- [Rongga hidung dan sinus paranasal] Klinis: Rongga hidung dan sinus paranasal :: Ostium sinus maksilaris relatif tinggi pada dinding medialnya sehingga drainase pasif dapat kurang efisien. Saat membaca CT atau diagram, bedakan konka (tonjolan tulang) dari meatus (ruang di bawahnya).
+- [Faring dan laring] Klinis: Faring dan laring :: Gangguan n. laryngeus recurrens dapat mengubah suara dan gerak pita suara; gangguan bilateral berpotensi mengganggu jalan napas. Evaluasi fungsi laring memerlukan pemeriksaan klinis yang sesuai, bukan inferensi dari satu gejala saja.

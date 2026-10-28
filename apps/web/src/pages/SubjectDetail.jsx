@@ -279,6 +279,7 @@ function ChapterRow({ c, n, onPick, withMateri }) {
           <span className="block font-display text-[16px] font-semibold leading-snug text-ink group-hover:text-brand">{c.title}</span>
           <span className="chapter-meta">
             {withMateri && (c.hasNotes ? <span className="chapter-tag is-materi"><BookOpen size={12} aria-hidden /> Materi</span> : <span className="chapter-tag is-off">Materi segera hadir</span>)}
+            {withMateri && c.hasCards && <span className="chapter-tag is-cards"><Layers size={12} aria-hidden /> Flashcard</span>}
             {c.total > 0
               ? <span className="chapter-tag"><b>{c.answered}</b>/{c.total} soal{c.wrong ? <> · <span className="text-coral">{c.wrong} pernah salah</span></> : null}</span>
               : withMateri && <span className="chapter-tag is-off">Soal segera hadir</span>}
@@ -291,10 +292,10 @@ function ChapterRow({ c, n, onPick, withMateri }) {
   );
 }
 
-function ChoiceCard({ icon: Icon, title, text, meta, disabled, onClick }) {
+function ChoiceCard({ step, icon: Icon, title, text, meta, disabled, onClick }) {
   return (
     <button type="button" onClick={onClick} disabled={disabled} className="choice-card card-chunky group flex flex-col items-start gap-1.5 p-4 text-left">
-      <span className="choice-icon"><Icon size={22} aria-hidden /></span>
+      <span className="choice-top"><span className="choice-icon"><Icon size={22} aria-hidden /></span><span className="choice-step" aria-hidden>Langkah {step}</span></span>
       <span className="font-display text-lg font-bold text-ink group-enabled:group-hover:text-brand">{title}</span>
       <span className="text-[14px] leading-relaxed text-ink-muted">{text}</span>
       <span className="mt-auto pt-1 text-[13px] font-semibold text-[rgb(var(--tone-fg,var(--brand)))]">{meta}</span>
@@ -302,17 +303,19 @@ function ChoiceCard({ icon: Icon, title, text, meta, disabled, onClick }) {
   );
 }
 
-// Setelah memilih BAB: baca materinya dulu, atau langsung latihan soal.
+// Setelah memilih BAB: tiga langkah belajar, berurutan: materi -> flashcard -> latihan soal.
 function ChapterChoice({ subject, chapter, onPractice, onClose }) {
   const nav = useNavigate();
   const hasQ = chapter.total > 0;
+  const base = `/mata-kuliah/${subject.slug}`;
   return (
     <Modal open title={chapter.title} onClose={onClose}>
       <div className="space-y-4">
-        <MascotTip mascot="kori" mood="wave" size={56}>Mau belajar dari materinya dulu, atau langsung uji diri dengan latihan soal?</MascotTip>
-        <div className="grid gap-3 sm:grid-cols-2">
-          <ChoiceCard icon={BookOpen} title="Belajar materi" text="Catatan bergambar yang bisa dibaca per bagian, lengkap dengan poin high-yield." meta={chapter.hasNotes ? 'Siap dibaca' : 'Segera hadir'} disabled={!chapter.hasNotes} onClick={() => nav(`/mata-kuliah/${subject.slug}/materi/${chapter.id}`)} />
-          <ChoiceCard icon={PlayCircle} title="Latihan soal" text="Atur jumlah soal dan caranya. Pembahasan muncul per soal atau setelah selesai." meta={hasQ ? `${chapter.answered}/${chapter.total} soal dikerjakan` : 'Soal segera hadir'} disabled={!hasQ} onClick={() => { onClose(); onPractice(chapter); }} />
+        <MascotTip mascot="kori" mood="wave" size={56}>Urutan yang enak: baca materi, hafalkan lewat flashcard, lalu uji dengan latihan soal. Boleh juga langsung loncat ke mana saja.</MascotTip>
+        <div className="grid gap-3 sm:grid-cols-3">
+          <ChoiceCard step={1} icon={BookOpen} title="Belajar materi" text="Catatan bergambar per bagian, lengkap dengan poin high-yield." meta={chapter.hasNotes ? 'Siap dibaca' : 'Segera hadir'} disabled={!chapter.hasNotes} onClick={() => nav(`${base}/materi/${chapter.id}`)} />
+          <ChoiceCard step={2} icon={Layers} title="Flashcard" text="Kartu hafalan istilah dan poin penting. Balik kartu, tandai hafal." meta={chapter.hasCards ? 'Siap dipakai' : 'Segera hadir'} disabled={!chapter.hasCards} onClick={() => nav(`${base}/flashcard/${chapter.id}`)} />
+          <ChoiceCard step={3} icon={PlayCircle} title="Latihan soal" text="Atur jumlah soal dan caranya. Pembahasan muncul per soal." meta={hasQ ? `${chapter.answered}/${chapter.total} soal dikerjakan` : 'Soal segera hadir'} disabled={!hasQ} onClick={() => { onClose(); onPractice(chapter); }} />
         </div>
       </div>
     </Modal>
@@ -351,7 +354,7 @@ export default function SubjectDetail() {
   // BAB langsung membuka pengaturan latihan seperti sebelumnya.
   const withMateri = !campusOnly && noted.length > 0;
   // BAB yang sudah bisa dibuka (punya materi atau soal) di daftar utama; sisanya "segera hadir".
-  const ready = numbered.filter((c) => c.total > 0 || (withMateri && c.hasNotes));
+  const ready = numbered.filter((c) => c.total > 0 || (withMateri && (c.hasNotes || c.hasCards)));
   const soon = numbered.filter((c) => !ready.includes(c));
   const pick = (c) => (withMateri ? setChoice(c) : c.total > 0 && setPractice(c));
 
@@ -411,7 +414,7 @@ export default function SubjectDetail() {
           {chapters.length > 0 && <p className="text-sm text-ink-muted">{withMateri && <><b className="text-ink">{noted.length}</b> ada materi · </>}<b className="text-ink">{withQ.length}</b> ada soal · <b className="text-ink">{soon.length}</b> segera hadir</p>}
         </div>
 
-        {withMateri && <MascotTip mascot="kori" mood="wave" size={56} className="mb-5 max-w-2xl">Ketuk salah satu BAB. Nanti kamu bisa memilih: baca materinya dulu atau langsung latihan soal.</MascotTip>}
+        {withMateri && <MascotTip mascot="kori" mood="wave" size={56} className="mb-5 max-w-2xl">Ketuk salah satu BAB. Nanti kamu bisa memilih: baca materi, flashcard, atau langsung latihan soal.</MascotTip>}
 
         {!chapters.length ? (
           <EmptyState icon={BookOpenCheck} title="Belum ada BAB">Admin sedang menyiapkan soal untuk mata kuliah ini. Kamu juga bisa mengirim PDF soal lewat Chat Admin.</EmptyState>

@@ -44,6 +44,8 @@ export default function SubjectNotes() {
   const hasPractice = data.practice ? data.practice.total > 0 : true;
   const to = (c) => `/mata-kuliah/${subject.slug}/materi/${c.id}`;
   const practice = `/mata-kuliah/${subject.slug}?bab=${chapter.id}`;
+  const cardsTo = `/mata-kuliah/${subject.slug}/flashcard/${chapter.id}`;
+  const cards = doc ? doc.cards.length : 0;
   const sections = doc ? doc.sections.filter((s) => s.kind === 'isi' || s.kind === 'klinis').length : 0;
 
   const backLink = <Link to={back} className="inline-flex min-h-9 items-center gap-1.5 text-sm font-semibold text-brand hover:underline"><ArrowLeft size={16} aria-hidden /> {subject.name}</Link>;
@@ -87,6 +89,7 @@ export default function SubjectNotes() {
             </p>
             <div className="notes-hero-cta">
               <a href="#mulai" className="btn btn-primary btn-press px-5"><BookOpen size={18} aria-hidden /> Mulai membaca</a>
+              {cards > 0 && <Link className="btn btn-secondary" to={cardsTo}><Layers size={18} aria-hidden /> Flashcard</Link>}
               <PracticeLink to={practice} ok={hasPractice} secondary />
             </div>
             {updated && <p className="meta mt-3">Diperbarui {fmtDateTime(updated)}</p>}
@@ -104,9 +107,12 @@ export default function SubjectNotes() {
       <NotesView doc={doc} chapterKey={chapter.id} />
 
       <section aria-label="Selesai membaca" className="notes-end card-chunky tone-surface">
-        <MascotTip mascot="kila" mood="cheer" size={72}>{hasPractice ? 'Selesai membaca? Hebat! Sekarang uji pemahamanmu dengan latihan soal BAB ini. Pembahasannya muncul per soal.' : 'Selesai membaca? Hebat! Soal latihan untuk BAB ini sedang disiapkan. Sementara itu, lanjut ke materi berikutnya atau ulangi poin high-yield.'}</MascotTip>
+        <MascotTip mascot="kila" mood="cheer" size={72}>{cards > 0
+          ? 'Selesai membaca? Hebat! Langkah berikutnya: hafalkan lewat flashcard, lalu uji pemahamanmu dengan latihan soal.'
+          : hasPractice ? 'Selesai membaca? Hebat! Sekarang uji pemahamanmu dengan latihan soal BAB ini. Pembahasannya muncul per soal.' : 'Selesai membaca? Hebat! Soal latihan untuk BAB ini sedang disiapkan. Sementara itu, lanjut ke materi berikutnya atau ulangi poin high-yield.'}</MascotTip>
         <div className="flex flex-wrap gap-2">
-          <PracticeLink to={practice} ok={hasPractice} />
+          {cards > 0 && <Link className="btn btn-primary btn-press px-5" to={cardsTo}><Layers size={18} aria-hidden /> Flashcard ({cards} kartu)</Link>}
+          <PracticeLink to={practice} ok={hasPractice} secondary={cards > 0} />
           <a className="btn btn-secondary" href="#mulai" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Baca ulang dari awal</a>
         </div>
       </section>

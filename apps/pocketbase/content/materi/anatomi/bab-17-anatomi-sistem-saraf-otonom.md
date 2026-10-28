@@ -226,7 +226,8 @@ Sympathetic pathways terutama melalui lumbar sympathetic chain dan hypogastric p
 
 Somatic pudendal pathways berkontribusi pada skeletal muscle contraction dan sensory input genitalia.
 
-Mnemonic konseptual yang sering dipakai: “point = parasympathetic, shoot = sympathetic,” tetapi pemahaman anatomi plexus dan jalur serabut tetap lebih penting daripada mnemonic.
+> [!tip] Mnemonic konseptual yang sering dipakai
+> “point = parasympathetic, shoot = sympathetic,” tetapi pemahaman anatomi plexus dan jalur serabut tetap lebih penting daripada mnemonic.
 
 ## Adrenal Medulla: Pengecualian Anatomi Penting
 
@@ -304,3 +305,52 @@ Jika melihat parasympathetic pathway:
 - Horner syndrome = gangguan sympathetic pathway ke head.
 - Adrenal medulla = modified sympathetic ganglion.
 - Erection dominan parasympathetic; emission/ejaculation dominan sympathetic.
+
+## Flashcard {kartu}
+
+- [Peta Besar Sistem Saraf Otonom] Preganglionic neuron :: cell body di CNS; axon menuju autonomic ganglion.
+- [Peta Besar Sistem Saraf Otonom] Postganglionic neuron :: cell body di ganglion; axon menuju organ efektor.
+- [Peta Besar Sistem Saraf Otonom] Sympathetic division bersifat thoracolumbar :: preganglionic cell bodies terutama berada di intermediolateral cell column T1–L2. Parasympathetic division bersifat craniosacral: preganglionic fibers berasal dari brainstem melalui CN III, VII, IX, X dan dari sacral spinal cord S2–S4.
+- [Thoracic Splanchnic Nerves dan Prevertebral Ganglia] Greater splanchnic nerve :: terutama T5–T9 → dominan menuju celiac ganglia.
+- [Thoracic Splanchnic Nerves dan Prevertebral Ganglia] Lesser splanchnic nerve :: terutama T10–T11 → aorticorenal/superior mesenteric region.
+- [Thoracic Splanchnic Nerves dan Prevertebral Ganglia] Least splanchnic nerve :: terutama T12 → renal plexus.
+- [Autonomic Plexuses di Thorax] Cardiac plexus :: sympathetic + vagal fibers menuju heart.
+- [Autonomic Plexuses di Thorax] Pulmonary plexus :: anterior/posterior to lung root; mengatur bronchial smooth muscle, glands, dan vessels.
+- [Autonomic Plexuses di Thorax] Esophageal plexus :: terutama vagal dengan kontribusi sympathetic.
+- [Enteric Nervous System] Myenteric (Auerbach) plexus :: di antara circular dan longitudinal muscle layers; dominan mengatur motility.
+- [Enteric Nervous System] Submucosal (Meissner) plexus :: di submucosa; dominan terkait secretion dan local blood flow.
+- [Autonomic Supply pada Mata] Parasympathetic :: Edinger–Westphal nucleus → CN III → ciliary ganglion → short ciliary nerves → sphincter pupillae dan ciliary muscle.
+- [Autonomic Supply pada Mata] Efek anatomis/fungsional :: miosis dan accommodation.
+- [Autonomic Supply pada Mata] Sympathetic :: Upper thoracic spinal cord → sympathetic trunk → superior cervical ganglion → internal carotid plexus → long/short ciliary pathways → dilator pupillae.
+- [High-yield] Autonomic neuropathy :: Dapat menyebabkan orthostatic hypotension, abnormal sweating, gastrointestinal dysmotility, bladder dysfunction, atau sexual dysfunction tergantung fiber yang terkena
+- [High-yield] Pelvic plexus injury :: Dapat terjadi pada operasi pelvis dan menyebabkan gangguan bladder, bowel, erection/ejaculation
+- [High-yield] Superior cervical ganglion/carotid sympathetic injury :: Dapat menimbulkan Horner syndrome
+- [High-yield] Vagus injury :: Manifestasi bergantung level; dapat memengaruhi laryngeal, cardiac, pulmonary, atau gastrointestinal function karena luasnya distribusi vagus
+- [High-yield] Horner syndrome :: gangguan sympathetic pathway ke head
+- [High-yield] Adrenal medulla :: modified sympathetic ganglion
+- [Peta Besar Sistem Saraf Otonom] Ciri paling khas jalur eferen otonom adalah rantai dua-neuron … :: • Preganglionic neuron: cell body di CNS; axon menuju autonomic ganglion
+  • Postganglionic neuron: cell body di ganglion; axon menuju organ efektor
+- [Thoracic Splanchnic Nerves dan Prevertebral Ganglia] Tiga kelompok utama … :: • Greater splanchnic nerve: terutama T5–T9 → dominan menuju celiac ganglia
+  • Lesser splanchnic nerve: terutama T10–T11 → aorticorenal/superior mesenteric region
+  • Least splanchnic nerve: terutama T12 → renal plexus
+- [Parasympathetic Division: Craniosacral Outflow] Cranial parasympathetic pathways … :: • CN III → ciliary ganglion → sphincter pupillae dan ciliary muscle
+  • CN VII → pterygopalatine ganglion dan submandibular ganglion → lacrimal, nasal, palatal, submandibular, dan sublingual glands
+  • CN IX → otic ganglion → parotid gland
+  • CN X → thoracic dan sebagian besar abdominal viscera sampai kira-kira proximal two-thirds transverse colon
+- [Autonomic Plexuses di Thorax] Autonomic fibers di thorax membentuk beberapa plexus besar … :: • Cardiac plexus: sympathetic + vagal fibers menuju heart
+  • Pulmonary plexus: anterior/posterior to lung root; mengatur bronchial smooth muscle, glands, dan vessels
+  • Esophageal plexus: terutama vagal dengan kontribusi sympathetic
+- [Head and Neck Autonomics: Sympathetic Pattern] Perjalanan ini penting untuk … :: • Dilator pupillae
+  • Superior tarsal muscle
+  • Sweat glands dan cutaneous vessels wajah
+- [Autonomic Reflex Arc] Refleks otonom melibatkan … :: • Visceral receptor
+  • Visceral afferent fiber
+  • Integration center di spinal cord atau brainstem
+  • Preganglionic autonomic neuron
+  • Autonomic ganglion
+  • Postganglionic neuron
+  • Visceral effector
+- [Sympathetic Trunk dan Paravertebral Ganglia] Clinical anchor: Sympathetic Trunk dan Paravertebral Ganglia :: Gangguan sympathetic pathway ke kepala dapat menyebabkan Horner syndrome: ptosis ringan, miosis, dan anhidrosis ipsilateral; enophthalmos tampak semu dapat menyertai.
+- [White dan Gray Rami Communicantes] High-yield distinction: White dan Gray Rami Communicantes :: White ramus = preganglionic → menuju trunk → hanya T1–L2. Gray ramus = postganglionic → kembali ke spinal nerve → semua level.
+- [Pelvic Splanchnic Nerves dan Inferior Hypogastric Plexus] Clinical anchor: Pelvic Splanchnic Nerves dan Inferior Hypogastric Plexus :: Kerusakan pelvic autonomic plexus dapat menyebabkan bladder dysfunction, bowel dysfunction, dan sexual dysfunction.
+- [Autonomic Supply dan Sexual Function] Mnemonic konseptual yang sering dipakai :: “point = parasympathetic, shoot = sympathetic,” tetapi pemahaman anatomi plexus dan jalur serabut tetap lebih penting daripada mnemonic.

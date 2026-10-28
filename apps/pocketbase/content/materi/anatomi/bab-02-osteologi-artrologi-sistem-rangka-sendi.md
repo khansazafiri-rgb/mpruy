@@ -449,29 +449,44 @@ Konsep trade-off ini lebih berguna daripada sekadar menghafal daftar ligament.
 - Shoulder lebih mobile tetapi kurang intrinsically stable daripada hip.
 - ROM harus selalu dikaitkan dengan joint, plane, axis, dan neutral reference yang digunakan.
 
-## Sumber & Atribusi {sumber}
+## Flashcard {kartu}
 
-### Materi kuliah utama
-
-- K2 — Osteology of Upper and Lower Limb, Anatomy Lecturer Team, Faculty of Medicine Universitas Airlangga, 2020. Digunakan untuk menentukan scope appendicular skeleton, bone markings, urutan tulang ekstremitas, orientasi, hubungan struktur, dan emphasis klinis.
-- K12 — Arthrology, Anatomy Lecturer Team, Faculty of Medicine Universitas Airlangga, 2020. Digunakan untuk klasifikasi joints, synarthrosis/amphiarthrosis/diarthrosis, struktur synovial joint, accessory structures, axes, blood supply, innervation, stability, ROM, muscle roles, dan clinical correlations.
-- Materi pendamping “Terminologi Dasar, Osteologi, Arthrologi” digunakan sebagai cross-check istilah dan high-yield recall.
-
-### Textbook enrichment
-
-- Drake RL, Vogl AW, Mitchell AWM. Gray’s Basic Anatomy. 3rd ed. Elsevier; 2023. Digunakan untuk memperkaya hubungan struktur, terminology, dan clinical orientation tanpa menyalin teks buku.
-
-### Sumber akademik daring untuk gap-filling
-
-- OpenStax. Anatomy & Physiology 2e — Bone Classification dan Classification of Joints. Digunakan untuk melengkapi klasifikasi tulang, fungsi, dan hubungan structural–functional classification.
-- Juneja P, Munjal A, Hubbard JB. Anatomy, Joints. StatPearls/NCBI Bookshelf; updated 2024. Digunakan sebagai cross-check komponen synovial joint dan klasifikasi sendi.
-- Sumber online hanya mengisi detail yang tidak dibahas eksplisit atau tidak terbaca jelas dari materi utama; scope tetap mengikuti K2 dan K12.
-
-### Sumber visual
-
-- “801 Appendicular Skeleton.jpg”, OpenStax via Wikimedia Commons, CC BY 4.0.
-- “Human arm bones diagram.svg”, Wikimedia Commons, public domain.
-- “602 Bone Markings.jpg”, OpenStax via Wikimedia Commons, CC BY 4.0.
-- “Human leg bones labeled.svg”, Wikimedia Commons, public domain.
-- “Synovial Joint.png”, Wikimedia Commons, CC BY-SA 4.0.
-- “909 Types of Synovial Joints.jpg”, OpenStax/Wikimedia Commons.
+- [Klasifikasi tulang berdasarkan bentuk] Long bones :: lebih panjang daripada lebar dan bekerja sebagai lever; contoh humerus, radius, ulna, femur, tibia, fibula, metacarpals, metatarsals, dan phalanges.
+- [Klasifikasi tulang berdasarkan bentuk] Flat bones :: tipis dan sering melengkung; contoh scapula, sternum, ribs, dan sebagian tulang cranium. Memberi permukaan luas untuk perlekatan dan proteksi.
+- [Depressions dan openings] Fissure :: celah sempit di antara bagian tulang; sering menjadi jalur neurovascular.
+- [Depressions dan openings] Foramen :: lubang yang dilalui pembuluh, saraf, atau struktur lain.
+- [Processes dan prominences] Condyle :: tonjolan besar, membulat, biasanya memiliki permukaan artikular.
+- [Processes dan prominences] Head :: ujung artikular membulat yang sering ditopang oleh neck.
+- [Processes dan prominences] Line/linea :: ridge yang lebih rendah daripada crest.
+- [Processes dan prominences] Trochanter :: proyeksi sangat besar; istilah khas femur.
+- [Clavicle] sternal end :: lebih besar dan medial
+- [Clavicle] Orientasi :: medial 2/3 cembung ke anterior dan lateral 1/3 cekung ke anterior. Conoid tubercle berada inferoposterior dekat ujung lateral.
+- [Femur] Proximal :: head dengan fovea capitis, neck, greater dan lesser trochanters, intertrochanteric line anterior, intertrochanteric crest posterior.
+- [Femur] Distal :: medial/lateral condyles dan epicondyles, intercondylar fossa posterior, patellar surface anterior, serta adductor tubercle di medial.
+- [Klasifikasi struktural] Cartilaginous joints :: tulang dihubungkan oleh hyaline cartilage atau fibrocartilage.
+- [Synarthroses dan fibrous/cartilaginous unions] Suture :: fibrous joint khas cranium.
+- [Synarthroses dan fibrous/cartilaginous unions] Syndesmosis :: tulang dihubungkan ligament/interosseous membrane; mobilitas lebih besar daripada suture, contoh distal tibiofibular articulation.
+- [Synarthroses dan fibrous/cartilaginous unions] Schindylesis :: istilah yang ditampilkan pada K12 untuk artikulasi ketika ridge satu tulang masuk ke groove tulang lain; ini merupakan bentuk fibrous articulation yang jarang dibahas pada klasifikasi modern dasar.
+- [Articular capsule] inner synovial membrane :: jaringan vascular yang melapisi permukaan internal capsule kecuali permukaan articular cartilage; menghasilkan synovial fluid.
+- [Ligaments] intracapsular :: berada di dalam fibrous capsule tetapi tidak selalu berada dalam synovial cavity secara bebas.
+- [Accessory structures] Labrum/articular lip :: fibrocartilaginous rim yang memperdalam socket, misalnya glenoid labrum dan acetabular labrum.
+- [Bentuk Synovial Joint, Axis, dan Gerak] Plane/gliding joint — nonaxial :: sliding/gliding; contoh intercarpal/intertarsal joints.
+- [Bentuk Synovial Joint, Axis, dan Gerak] Pivot joint — uniaxial :: rotation; contoh proximal radioulnar joint dan median atlanto-axial joint.
+- [Bentuk Synovial Joint, Axis, dan Gerak] Ball-and-socket joint — multiaxial/triaxial :: flexion–extension, abduction–adduction, rotation, circumduction; contoh shoulder dan hip.
+- [Blood supply] Fibrous capsule dan ligament :: relatif poor vascularity.
+- [Peran otot selama gerak] Secondary/assisting mover :: membantu prime mover.
+- [Peran otot selama gerak] Synergist :: bekerja bersama agonist untuk memperkuat gerak atau mengurangi gerakan yang tidak diinginkan.
+- [Joint stability–mobility trade-off] Shoulder :: mobility tinggi, bony stability relatif rendah.
+- [High-yield] Appendicular skeleton :: girdles + limbs; bukan seluruh rangka
+- [High-yield] Condyle biasanya artikular; epicondyle :: prominence di dekat condyle dan umumnya tempat attachment
+- [High-yield] Semua synovial joints :: diarthroses, tetapi tidak semua diarthroses memiliki ROM yang sama
+- [High-yield] Meniscus/disc, labrum, bursa, dan tendon sheath :: accessory structures—tidak ada pada setiap synovial joint
+- [Articular capsule] Capsule terdiri dari … :: • outer fibrous layer/capsule: dense irregular connective tissue yang berlanjut dengan periosteum dan menahan kedua tulang agar tidak terpisah berlebihan
+  • inner synovial membrane: jaringan vascular yang melapisi permukaan internal capsule kecuali permukaan articular cartilage; menghasilkan synovial fluid
+- [Range of Motion dan Peran Otot] Faktor yang membatasi ROM … :: • shape dan congruency tulang
+  • capsule dan ligament tension
+  • muscle/tendon extensibility
+  • soft-tissue approximation
+  • nyeri, effusion, atau pathology
+- [Tibia dan fibula] Clinical landmark: Tibia dan fibula :: Common fibular nerve berhubungan erat dengan neck of fibula.
+- [Synarthroses dan fibrous/cartilaginous unions] Exam trap: Synarthroses dan fibrous/cartilaginous unions :: Jangan menyamakan “fibrous = selalu synarthrosis” atau “cartilaginous = selalu amphiarthrosis”. Klasifikasi struktural menjawab “dihubungkan oleh apa?”, sedangkan klasifikasi fungsional menjawab “seberapa banyak geraknya?”.

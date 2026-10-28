@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { test } from 'node:test';
 import { URL, fileURLToPath } from 'node:url';
-import { NOTES_MARK, isNotesV2, objectivesOf, parseNotes, tocOf } from './notesMarkup.js';
+import { NOTES_MARK, cardKey, isNotesV2, objectivesOf, parseNotes, tocOf } from './notesMarkup.js';
 
 const SAMPLE = `${NOTES_MARK}
 
@@ -48,6 +48,13 @@ Isi.
 ## Sumber & Atribusi {sumber}
 
 - Buku A
+
+## Flashcard {kartu}
+
+- [Femur] Collum femoris :: bagian yang rentan fraktur pada lansia
+- Ciri sendi sinovial :: • kapsul
+  • cairan sinovial
+- tanpa pemisah kartu
 `;
 
 test('format v2 dikenali lewat penanda di baris pertama', () => {
@@ -83,6 +90,29 @@ test('paragraf, subjudul, daftar, gambar, dan kotak sorot', () => {
   assert.equal(co.title, 'Clinical anchor');
   assert.deepEqual(co.blocks.map((b) => b.type), ['p', 'list']);
   assert.equal(s.subs.length, 1);
+});
+
+test('flashcard: bagian {kartu} dipisah dari bacaan', () => {
+  const d = parseNotes(SAMPLE);
+  assert.ok(!d.sections.some((s) => s.kind === 'kartu'), 'tidak tampil di bacaan');
+  assert.equal(d.cards.length, 2, 'butir tanpa pemisah :: diabaikan');
+  assert.deepEqual([d.cards[0].ctx, d.cards[0].front, d.cards[0].back], ['Femur', 'Collum femoris', 'bagian yang rentan fraktur pada lansia']);
+  assert.equal(d.cards[1].ctx, '');
+  assert.equal(d.cards[1].back, '• kapsul\n• cairan sinovial');
+  assert.notEqual(d.cards[0].id, d.cards[1].id);
+  assert.equal(cardKey('a', 'b'), cardKey('a', 'b'));
+  assert.notEqual(cardKey('a', 'b'), cardKey('ab', ''));
+});
+
+test('beberapa gambar berurutan menjadi satu galeri bergambar', () => {
+  const d = parseNotes(`${NOTES_MARK}\n\n## A\n\n![](https://lh3.googleusercontent.com/d/AAA)\n![](https://lh3.googleusercontent.com/d/BBB)\n![Tiga sediaan.](https://lh3.googleusercontent.com/d/CCC "Sumber X")\n\n![Satu.](https://lh3.googleusercontent.com/d/DDD)\n`);
+  const [g, one] = d.sections[0].blocks;
+  assert.equal(d.figures, 2);
+  assert.deepEqual(g.urls.map((u) => u.split('/').pop()), ['AAA', 'BBB', 'CCC']);
+  assert.equal(g.caption, 'Tiga sediaan.');
+  assert.equal(g.credit, 'Sumber X');
+  assert.equal(one.urls.length, 1);
+  assert.equal(one.n, 2);
 });
 
 test('tujuan belajar dan daftar isi', () => {
@@ -123,20 +153,24 @@ test('catatan di apps/pocketbase/content/materi terurai utuh', { skip: !existsSy
     const d = parseNotes(text);
     assert.ok(d.sections.length >= 5, `${e.file}: terlalu sedikit bagian`);
     assert.ok(d.words > 1500, `${e.file}: terlalu pendek`);
-    assert.equal(d.figures, (text.match(/^!\[/gm) || []).length, `${e.file}: gambar hilang`);
-    assert.ok(!/•/.test(text), `${e.file}: sisa butir mentah`);
+    const urls = d.sections.flatMap((s) => s.blocks).filter((b) => b.type === 'figure').reduce((a, b) => a + b.urls.length, 0);
+    assert.equal(urls, (text.match(/^!\[/gm) || []).length, `${e.file}: gambar hilang`);
+    assert.ok(!/•/.test(text.split('## Flashcard')[0]), `${e.file}: sisa butir mentah`);
     for (const s of d.sections) {
       if (s.kind === 'intro') continue;
       assert.ok(s.title.trim(), `${e.file}: bagian tanpa judul`);
       assert.ok(s.blocks.length > 0, `${e.file}: bagian kosong "${s.title}"`);
     }
     for (const s of d.sections) for (const b of s.blocks) {
-      if (b.type === 'figure') assert.match(b.url, /^https:\/\/lh3\.googleusercontent\.com\/d\/[\w-]+$/, `${e.file}: tautan gambar`);
+      if (b.type === 'figure') for (const u of b.urls) assert.match(u, /^https:\/\/lh3\.googleusercontent\.com\/d\/[\w-]+$/, `${e.file}: tautan gambar`);
       if (b.type === 'figure') assert.ok(b.caption, `${e.file}: gambar tanpa keterangan`);
       if (b.type === 'callout') assert.ok(b.blocks.length > 0, `${e.file}: kotak kosong`);
     }
     // Setiap BAB punya tujuan belajar atau ringkasan, kecuali BAB gaya lama yang memang tanpa tujuan.
     assert.ok(d.sections.some((s) => s.kind === 'highyield'), `${e.file}: tanpa ringkasan high-yield`);
+    assert.ok(!d.sections.some((s) => s.kind === 'sumber'), `${e.file}: bagian sumber tidak dimasukkan`);
+    assert.ok(d.cards.length >= 4, `${e.file}: terlalu sedikit flashcard (${d.cards.length})`);
+    assert.equal(new Set(d.cards.map((c) => c.id)).size, d.cards.length, `${e.file}: kartu ganda`);
   }
   const files = readdirSync(`${root}${index[0].subject}`);
   assert.equal(files.length, index.filter((e) => e.subject === index[0].subject).length, 'file tanpa entri index');

@@ -43,6 +43,7 @@ import MascotTip from '@/components/MascotTip';
 | Daftar dan Masuk | Kori memandu tiap langkah daftar; Kila/Nilo di langkah bukti; Kila menyambut akun baru |
 | Progres, Jadwal ujian, Mata kuliah tanpa soal | Komentar singkat sesuai data (akurasi, hari ujian, ajakan kirim PDF) |
 | Daftar BAB mata kuliah | Kori menyapa; di jendela pilihan BAB (belajar materi atau latihan soal) Kori bertanya |
+| Flashcard | Kori berpikir di kepala halaman, Kila bersorak di layar "semua kartu hafal" dan mengajak lanjut ke latihan soal |
 | Pelajari materi | Kori melambai di kepala halaman dan setelah tujuan belajar, Nilo di tengah bacaan dan sebelum checklist praktikum, Kila sebelum poin high-yield dan bersorak di akhir |
 | Halaman tidak ditemukan | Kori bingung |
 | Tutorial dan Simulasi Dokter | Kila (latihan soal), Nilo (simulasi), seperti sebelumnya |

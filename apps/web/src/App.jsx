@@ -19,6 +19,7 @@ const LabPathway = lazy(() => import('./pages/Lab').then((m) => ({ default: m.La
 const LabAuthoredModule = lazy(() => import('./pages/LabAuthoredModule'));
 const LabAdmin = lazy(() => import('./pages/admin/LabAdmin'));
 const SubjectNotes = lazy(() => import('./pages/SubjectNotes'));
+const SubjectCards = lazy(() => import('./pages/SubjectCards'));
 
 const Runner = lazy(() => import('./pages/Runner'));
 const History = lazy(() => import('./pages/History'));
@@ -84,6 +85,7 @@ export default function App() {
             <Route path="/mata-kuliah" element={<Subjects />} />
             <Route path="/mata-kuliah/:slug" element={<SubjectDetail />} />
             <Route path="/mata-kuliah/:slug/materi/:chapterId" element={<SubjectNotes />} />
+            <Route path="/mata-kuliah/:slug/flashcard/:chapterId" element={<SubjectCards />} />
             <Route path="/riwayat" element={<History />} />
             <Route path="/jadwal" element={<Schedule />} />
             <Route path="/progres" element={<Progress />} />

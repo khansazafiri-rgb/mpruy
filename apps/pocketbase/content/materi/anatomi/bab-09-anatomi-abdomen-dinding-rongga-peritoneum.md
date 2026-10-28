@@ -450,31 +450,67 @@ Secara anatomi, akses ke peritoneal cavity harus mempertimbangkan inferior epiga
 - Genitofemoral anterior to psoas; femoral lateral; obturator medial.
 - Abdominal aorta berada cenderung kiri midline; IVC berada kanan.
 
-## Sumber & Atribusi {sumber}
+## Flashcard {kartu}
 
-### Materi kuliah utama
-
-- K16 — Anterior Abdominal Wall, Anatomy Lecturer Team FK Universitas Airlangga. Digunakan untuk menentukan scope dan emphasis: abdominal surface regions, layers, flat muscles, rectus abdominis, rectus sheath/arcuate line, neurovascular supply, inguinal ligament, inguinal canal, dan inguinal hernia.
-- K20 — Diaphragm and Posterior Abdominal Wall, Anatomy Lecturer Team FK Universitas Airlangga. Digunakan untuk menentukan scope diaphragm, crura/arcuate ligaments, major openings, posterior abdominal wall muscles, major vessels, lumbar plexus, dan autonomic relations.
-
-### Textbook enrichment
-
-- Drake RL, Vogl AW, Mitchell AWM. Gray’s Basic Anatomy. 3rd ed. Elsevier; 2023. Digunakan untuk cross-check rectus sheath, inguinal canal, peritoneal cavity, greater/lesser sacs, mesenteries, diaphragm, posterior abdominal wall, dan lumbar plexus tanpa menyalin teks buku.
-- Gray’s digunakan untuk memverifikasi bahwa T7–T11 berlanjut sebagai thoracoabdominal nerves, superior dan inferior epigastric vessels beranastomosis di rectus region, lesser sac berkomunikasi dengan greater sac melalui omental foramen, serta lumbar plexus berhubungan erat dengan psoas major.
-
-### Academic enrichment dan gap-filling
-
-- OpenStax. Anatomy & Physiology 2e — Anatomical Terminology dan Axial Muscles of the Abdominal Wall. Digunakan untuk cross-check quadrants/nine regions serta abdominal wall muscles.
-- Sumber anatomi akademik daring digunakan hanya untuk mengisi detail hubungan spasial dan lisensi visual; scope tetap mengikuti K16 dan K20.
-
-### Sumber visual
-
-- Gambar 1 — “Abdominal Quadrant Regions.jpg”, OpenStax via Wikimedia Commons, CC BY 3.0.
-- Gambar 2 — “1112 Muscles of the Abdomen Anterolateral.png”, OpenStax College via Wikimedia Commons, CC BY 3.0.
-- Gambar 3 — “Gray399.svg”, Gray’s Anatomy via Wikimedia Commons, public domain.
-- Gambar 4 — “Regione Inguinale Schema.png”, Rocco Cusari via Wikimedia Commons, public domain.
-- Gambar 5 — “Inguinal Region Interior View.jpg”, Dennis M. DePace via Wikimedia Commons, CC BY-SA 4.0.
-- Gambar 6 — “LesserSacCS2a.jpg”, Dennis M. DePace via Wikimedia Commons, CC BY-SA 4.0.
-- Gambar 7 — “Le diaphragme vue inférieure.jpg”, Raziel via Wikimedia Commons, CC BY 1.0.
-- Gambar 8 — “1112 Muscles of the Abdomen Posterior.png”, OpenStax College via Wikimedia Commons, CC BY 3.0; digunakan khusus untuk posterior abdominal wall orientation.
-- Gambar 9 — “Lumbal plexus.png”, Marco Schönberger via Wikimedia Commons, CC BY-SA 3.0.
+- [Di atas arcuate line] anterior rectus sheath :: external oblique aponeurosis + anterior lamina internal oblique
+- [Di atas arcuate line] posterior rectus sheath :: posterior lamina internal oblique + transversus abdominis aponeurosis.
+- [Walls of the inguinal canal] Anterior wall :: external oblique aponeurosis, diperkuat laterally oleh internal oblique fibers.
+- [Walls of the inguinal canal] Posterior wall :: transversalis fascia, diperkuat medially oleh conjoint tendon/falx inguinalis pada banyak individu.
+- [Walls of the inguinal canal] Roof :: arching fibers internal oblique dan transversus abdominis.
+- [Walls of the inguinal canal] Floor :: inguinal ligament, dengan lacunar ligament memberi kontribusi medial.
+- [Hesselbach Triangle dan Inguinal Hernia] medial :: lateral border rectus abdominis
+- [Hesselbach Triangle dan Inguinal Hernia] lateral :: inferior epigastric vessels
+- [Hesselbach Triangle dan Inguinal Hernia] inferior :: inguinal ligament.
+- [Omental/epiploic foramen] anterior :: hepatoduodenal ligament dengan portal triad
+- [Omental/epiploic foramen] posterior :: inferior vena cava
+- [Omental/epiploic foramen] superior :: caudate lobe of liver
+- [Omental/epiploic foramen] inferior :: first/superior part of duodenum.
+- [Attachments] Sternal part :: posterior xiphoid region.
+- [Attachments] Costal part :: internal surfaces lower six ribs/costal cartilages.
+- [Attachments] Lumbar part :: right dan left crura serta arcuate ligaments.
+- [High-yield] Four quadrants ≠ nine regions; keduanya :: sistem surface localization
+- [High-yield] Layer deep setelah abdominal muscles :: transversalis fascia → extraperitoneal tissue → parietal peritoneum
+- [High-yield] Inguinal ligament :: ASIS → pubic tubercle
+- [High-yield] Deep inguinal ring :: opening transversalis fascia dan lateral terhadap inferior epigastric vessels
+- [High-yield] Superficial inguinal ring :: opening external oblique aponeurosis
+- [High-yield] Hesselbach triangle :: rectus lateral border, inferior epigastric vessels, inguinal ligament
+- [High-yield] Peritoneal cavity :: potential space, bukan rongga normal berisi udara
+- [High-yield] Omental foramen boundaries :: hepatoduodenal ligament anterior, IVC posterior, caudate lobe superior, first duodenum inferior
+- [High-yield] Diaphragm openings mnemonic :: IVC T8, esophagus T10, aorta T12
+- [High-yield] Phrenic C3–C5 :: motor utama diaphragm
+- [Four quadrants] Empat quadrants dibuat oleh median vertical plane dan transumbilical horizontal plane … :: • right upper quadrant (RUQ)
+  • left upper quadrant (LUQ)
+  • right lower quadrant (RLQ)
+  • left lower quadrant (LLQ)
+- [Lapisan Anterolateral Abdominal Wall] Dari superficial ke deep, lapisan praktis anterolateral abdominal wall adalah … :: • skin
+  • superficial fascia/subcutaneous tissue
+  • investing/deep fascia yang berhubungan dengan otot
+  • muscular dan aponeurotic layers
+  • transversalis fascia
+  • extraperitoneal fascia/fat
+  • parietal peritoneum
+- [Fungsi integratif] Bersama-sama otot abdominal wall … :: • support dan compress abdominal viscera
+  • meningkatkan intra-abdominal pressure pada coughing, defecation, micturition, parturition, dan forced expiration
+  • flex, rotate, dan laterally flex trunk
+  • membantu stabilisasi pelvis dan lumbar spine
+  • bekerja sebagai accessory expiratory muscles
+- [Innervation] Anterior rami thoracic bawah berlanjut ke abdominal wall … :: • T7–T11 sebagai thoracoabdominal nerves
+  • T12 sebagai subcostal nerve
+  • L1 terutama melalui iliohypogastric dan ilioinguinal nerves
+- [Hesselbach Triangle dan Inguinal Hernia] Batas yang paling berguna … :: • medial: lateral border rectus abdominis
+  • lateral: inferior epigastric vessels
+  • inferior: inguinal ligament
+- [Peritoneum dan Peritoneal Cavity] Peritoneum adalah serous membrane terbesar tubuh dan mempunyai dua lapisan kontinu … :: • parietal peritoneum melapisi abdominal/pelvic wall
+  • visceral peritoneum menutupi permukaan organ
+- [Lesser omentum] Dua bagian utama … :: • hepatogastric ligament
+  • hepatoduodenal ligament
+- [Greater sac dan lesser sac] Peritoneal cavity terbagi menjadi … :: • greater sac — bagian terbesar dari peritoneal cavity
+  • lesser sac/omental bursa — ruang posterior terhadap stomach dan lesser omentum
+- [Attachments] T8 — caval opening … :: • berada pada central tendon
+  • dilalui inferior vena cava
+  • dapat disertai terminal branches right phrenic nerve
+- [Attachments] T10 — esophageal hiatus … :: • terutama terbentuk dalam right crus
+  • dilalui esophagus
+  • anterior dan posterior vagal trunks
+  • esophageal vessels dan lymphatics kecil
+- [Transversalis fascia dan extraperitoneal layer] Exam trap: Transversalis fascia dan extraperitoneal layer :: “transversalis fascia” tidak sama dengan “transversus abdominis”. Yang pertama adalah fascia; yang kedua adalah muscle.

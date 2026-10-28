@@ -437,26 +437,56 @@ Pada chest compression, gaya diterapkan pada anterior thorax untuk menghasilkan 
 - Pulmonary arteries membawa deoxygenated blood; pulmonary veins membawa oxygenated blood.
 - “Artery vs vein” ditentukan direction relative to heart, bukan kadar oksigen.
 
-## Sumber & Atribusi {sumber}
+## Flashcard {kartu}
 
-### Materi kuliah utama
-
-- K15 — Heart and Pericard, Anatomy Lecturer Team, Faculty of Medicine Universitas Airlangga, 2020. Digunakan untuk menentukan scope dan emphasis: orientasi heart, pericardium dan sinuses, pericardial vascular/nerve supply, external anatomy, heart wall, fibrous skeleton, four chambers, valves, coronary circulation, cardiac venous drainage, conduction system, innervation, surface projection, blood flow, serta clinical importance.
-- Isi slide K15 dibaca langsung dari PDF 26 halaman di Drive. Terminologi dan urutan bab dipertahankan sedekat mungkin dengan materi dosen; enrichment digunakan untuk menjelaskan hubungan yang hanya ditampilkan sebagai diagram atau label.
-
-### Academic enrichment dan gap-filling
-
-- OpenStax. Anatomy & Physiology 2e — Heart Anatomy serta Cardiac Muscle and Electrical Activity. Digunakan untuk cross-check chamber anatomy, cardiac wall, valves, coronary vessels, dan conduction pathway.
-- NCBI Bookshelf/StatPearls — Anatomy, Thorax, Heart dan Heart and Pericardial Cavity. Digunakan untuk cross-check pericardial relations, autonomic/somatic innervation, coronary drainage, serta clinical-anatomy correlations.
-- Detail physiology, pressure curves, ECG interpretation, cardiac cycle numerik, dan pharmacology tidak diperdalam karena berada di luar scope Bab Anatomi.
-
-### Sumber visual
-
-- Gambar 1 — “Blausen 0724 PericardialSac.png”, Blausen Medical Communications via Wikimedia Commons, CC BY 3.0.
-- Gambar 2 — “2005 Surface Anatomy of the Heart.jpg”, OpenStax College via Wikimedia Commons, CC BY 3.0.
-- Gambar 3 — “2008 Internal Anatomy of the HeartN.jpg”, OpenStax College via Wikimedia Commons, CC BY 3.0.
-- Gambar 4 — diagram empat ruang jantung dan katup, Wikimedia Commons, lisensi terbuka; digunakan untuk orientasi chamber–valve–great vessel.
-- Gambar 5 — diagram coronary arteries, Wikimedia Commons, lisensi terbuka; digunakan untuk RCA, LCA, LAD, circumflex, dan cabang utama.
-- Gambar 6 — “Coronary sinus.png”, XR Anatomy via Wikimedia Commons, CC BY-SA 4.0.
-- Gambar 7 — diagram cardiac conduction system, Wikimedia Commons, lisensi terbuka; digunakan untuk SA node–AV node–His–bundle branches–Purkinje network.
-- Gambar 8 — “Cardiac Auscultation PNG.png”, Theodore Dimitriou via Wikimedia Commons, CC BY-SA 3.0.
+- [Apex dan base] Apex :: terutama left ventricle; pada orang dewasa biasanya diproyeksikan dekat left fifth intercostal space di sekitar midclavicular line, tetapi posisi aktual bervariasi dengan habitus, respirasi, dan posisi tubuh.
+- [Apex dan base] Base :: terutama posterior surface dari left atrium; menerima empat pulmonary veins dan berhubungan dekat dengan esophagus di posterior.
+- [Tributaries utama] Great cardiac vein :: berjalan bersama LAD di anterior interventricular sulcus, lalu mengikuti circumflex region menuju coronary sinus.
+- [Tributaries utama] Middle cardiac vein :: berjalan di posterior interventricular sulcus bersama posterior interventricular artery.
+- [Tributaries utama] Small cardiac vein :: berhubungan dengan right margin/right coronary sulcus dan bermuara ke coronary sinus.
+- [Visceral pain afferents] Pericardial pain berbeda :: fibrous/parietal pericardium mempunyai somatic sensory fibers melalui phrenic nerve, sehingga irritation dapat direferensikan ke shoulder region.
+- [Valve auscultation areas] Aortic area :: right second intercostal space di parasternal/right sternal border.
+- [Valve auscultation areas] Pulmonary area :: left second intercostal space di left sternal border.
+- [Valve auscultation areas] Tricuspid area :: lower left sternal border, sekitar fourth–fifth intercostal spaces.
+- [Valve auscultation areas] Mitral area :: apex region, sekitar left fifth intercostal space dekat midclavicular line.
+- [High-yield] Visceral serous pericardium :: epicardium
+- [High-yield] Pericardial cavity :: potential space, bukan rongga besar normal
+- [High-yield] Heart wall :: endocardium → myocardium → epicardium
+- [High-yield] Right atrium :: sinus venarum smooth; anterior/auricle pectinate; crista terminalis memisahkan keduanya
+- [High-yield] Right ventricle :: trabeculae carneae, papillary muscles, chordae, moderator band, conus arteriosus
+- [High-yield] AV bundle :: normal electrical bridge melalui fibrous skeleton
+- [Surfaces dan borders] Secara klinis-anatomis, permukaan jantung dapat dipikirkan sebagai … :: • sternocostal/anterior surface — terutama right ventricle, dengan kontribusi right atrium dan left ventricle
+  • diaphragmatic/inferior surface — terutama left ventricle dan sebagian right ventricle, berada di atas central tendon diaphragm
+  • right pulmonary surface — terutama right atrium
+  • left pulmonary surface — terutama left ventricle
+- [Serous pericardium] Serous pericardium mempunyai dua lapisan … :: • parietal layer — melapisi permukaan internal fibrous pericardium
+  • visceral layer — menutupi permukaan jantung dan disebut epicardium
+- [Heart Wall dan Fibrous Skeleton] Dinding jantung memiliki tiga lapisan … :: • Endocardium — lapisan internal yang melapisi chambers dan berlanjut dengan endothelium vessels
+  • Myocardium — muscular layer yang menghasilkan kontraksi; ketebalannya berbeda sesuai beban tiap chamber
+  • Epicardium — visceral layer of serous pericardium di permukaan luar jantung
+- [Fibrous skeleton of the heart] Fungsi penting fibrous skeleton … :: • menjaga valve orifices tetap terbuka dan mempertahankan bentuknya
+  • memberi attachment untuk valve cusps
+  • memberi attachment untuk atrial dan ventricular myocardium
+  • menjadi electrical insulator antara atrial dan ventricular myocardium
+- [Cardiac Valves dan One-Way Flow] Empat valve utama adalah … :: • tricuspid valve — right atrium → right ventricle
+  • pulmonary valve — right ventricle → pulmonary trunk
+  • mitral valve — left atrium → left ventricle
+  • aortic valve — left ventricle → ascending aorta
+- [Right coronary artery] Cabang yang sering diuji meliputi … :: • right marginal branch, menuju acute/right margin
+  • posterior interventricular artery/PDA pada banyak individu, berjalan di posterior interventricular sulcus
+  • SA nodal branch pada banyak tetapi tidak semua individu
+  • AV nodal branch yang sering berasal dekat crux of heart
+- [Left coronary artery] LCA biasanya merupakan short trunk yang berjalan di antara left auricle dan pulmonary trunk lalu membelah menjadi … :: • anterior interventricular artery, sering disebut LAD, yang berjalan di anterior interventricular sulcus
+  • circumflex artery, yang mengikuti left atrioventricular groove
+- [Valve auscultation areas] Bunyi valve terdengar paling jelas di tempat aliran darah menghantarkan suara, bukan tepat di atas posisi anatomis valve … :: • Aortic area: right second intercostal space di parasternal/right sternal border
+  • Pulmonary area: left second intercostal space di left sternal border
+  • Tricuspid area: lower left sternal border, sekitar fourth–fifth intercostal spaces
+  • Mitral area: apex region, sekitar left fifth intercostal space dekat midclavicular line
+- [Great Vessels dan Alur Darah] Istilah artery dan vein ditentukan oleh arah aliran relatif terhadap heart … :: • artery membawa darah menjauh dari heart
+  • vein membawa darah menuju heart
+- [Pericardial sinuses] Exam trap: Pericardial sinuses :: Pericardial sinus bukan venous sinus dan bukan coronary sinus. Istilah sinus di sini mengacu pada recess dalam pericardial cavity.
+- [Right atrioventricular orifice] Exam trap: Right atrioventricular orifice :: Right atrium tidak seluruhnya berisi pectinate muscles. Sinus venarum adalah smooth; pectinate muscles dominan di anterior wall/auricle.
+- [Papillary muscles dan chordae tendineae] Poin penting: Papillary muscles dan chordae tendineae :: Papillary muscles tidak “menutup” valve. Closure terjadi terutama karena pressure gradient; papillary muscles dan chordae mempertahankan coaptation dan mencegah prolapse.
+- [Left Atrium] Exam trap: Left Atrium :: Pulmonary veins tidak memiliki valve besar seperti AV valves pada ostia normalnya. Fokus utama adalah empat venous openings ke smooth left atrium.
+- [Tributaries utama] Exam trap: Tributaries utama :: Coronary sinus adalah vena besar di posterior AV groove, bukan “sinus” pada pericardium atau aortic sinus.
+- [Valve auscultation areas] Exam trap: Valve auscultation areas :: Anatomical valve locations berada lebih sentral/retrosternal daripada standard auscultation sites. Jangan menukar “letak valve” dengan “tempat paling baik mendengar bunyinya”.

@@ -74,6 +74,7 @@ routerAdd("GET", "/api/medcoel/subjects/{slug}", (e) => {
   });
   const packages = e.app.findRecordsByFilter("packages", "subject = {:s} && active = true", "order,name", 50, 0, { s: s.id });
   const noted = learn.notedChapters(e.app, s.id);
+  const carded = learn.cardChapters(e.app, s.id);
   return e.json(200, {
     campusName: campusOnly && user.getString("campus") ? e.app.findRecordById("campuses", user.getString("campus")).getString("name") : "",
     subject: {
@@ -86,7 +87,7 @@ routerAdd("GET", "/api/medcoel/subjects/{slug}", (e) => {
       collectionId: s.collection().id,
       studying: user.getStringSlice("studyingSubjects").indexOf(s.id) >= 0,
     },
-    chapters: chapters.filter((c) => !campusOnly || !!per[c.id]).map((c) => Object.assign({ id: c.id, title: c.getString("title"), hasNotes: noted.has(c.id) }, per[c.id] || { total: 0, answered: 0, wrong: 0, easy: 0, medium: 0, hard: 0, A: 0, K: 0, isian: 0, esai: 0 })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName),
+    chapters: chapters.filter((c) => !campusOnly || !!per[c.id]).map((c) => Object.assign({ id: c.id, title: c.getString("title"), hasNotes: noted.has(c.id), hasCards: carded.has(c.id) }, per[c.id] || { total: 0, answered: 0, wrong: 0, easy: 0, medium: 0, hard: 0, A: 0, K: 0, isian: 0, esai: 0 })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName),
     packages: (campusOnly ? [] : packages).map((p) => ({
       id: p.id,
       name: p.getString("name"),
