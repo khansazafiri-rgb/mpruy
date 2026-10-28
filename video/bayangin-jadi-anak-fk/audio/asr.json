@@ -1,0 +1,1519 @@
+[
+ {
+  "start": 0.0,
+  "end": 0.98,
+  "text": "Baru masuk FK.",
+  "words": [
+   {
+    "w": "Baru",
+    "s": 0.0,
+    "e": 0.34
+   },
+   {
+    "w": "masuk",
+    "s": 0.34,
+    "e": 0.54
+   },
+   {
+    "w": "FK.",
+    "s": 0.54,
+    "e": 0.98
+   }
+  ]
+ },
+ {
+  "start": 1.38,
+  "end": 1.78,
+  "text": "Selamat.",
+  "words": [
+   {
+    "w": "Selamat.",
+    "s": 1.38,
+    "e": 1.78
+   }
+  ]
+ },
+ {
+  "start": 2.34,
+  "end": 4.1,
+  "text": "Sekarang coba buka grup angkatanmu.",
+  "words": [
+   {
+    "w": "Sekarang",
+    "s": 2.34,
+    "e": 2.74
+   },
+   {
+    "w": "coba",
+    "s": 2.74,
+    "e": 3.08
+   },
+   {
+    "w": "buka",
+    "s": 3.08,
+    "e": 3.34
+   },
+   {
+    "w": "grup",
+    "s": 3.34,
+    "e": 3.52
+   },
+   {
+    "w": "angkatanmu.",
+    "s": 3.52,
+    "e": 4.1
+   }
+  ]
+ },
+ {
+  "start": 4.46,
+  "end": 7.94,
+  "text": "Jatwal ospek, tugas, pengumuman, nama-nama baru.",
+  "words": [
+   {
+    "w": "Jatwal",
+    "s": 4.46,
+    "e": 4.8
+   },
+   {
+    "w": "ospek,",
+    "s": 4.8,
+    "e": 5.34
+   },
+   {
+    "w": "tugas,",
+    "s": 5.62,
+    "e": 6.16
+   },
+   {
+    "w": "pengumuman,",
+    "s": 6.32,
+    "e": 6.84
+   },
+   {
+    "w": "nama",
+    "s": 7.24,
+    "e": 7.38
+   },
+   {
+    "w": "-nama",
+    "s": 7.38,
+    "e": 7.56
+   },
+   {
+    "w": "baru.",
+    "s": 7.56,
+    "e": 7.94
+   }
+  ]
+ },
+ {
+  "start": 8.54,
+  "end": 12.7,
+  "text": "Kamu bahkan belum hafa letak ruang kelas, tapi notifikasi sudah nggak berhenti.",
+  "words": [
+   {
+    "w": "Kamu",
+    "s": 8.54,
+    "e": 8.78
+   },
+   {
+    "w": "bahkan",
+    "s": 8.78,
+    "e": 9.1
+   },
+   {
+    "w": "belum",
+    "s": 9.1,
+    "e": 9.24
+   },
+   {
+    "w": "hafa",
+    "s": 9.24,
+    "e": 9.58
+   },
+   {
+    "w": "letak",
+    "s": 9.58,
+    "e": 9.9
+   },
+   {
+    "w": "ruang",
+    "s": 9.9,
+    "e": 10.12
+   },
+   {
+    "w": "kelas,",
+    "s": 10.12,
+    "e": 10.54
+   },
+   {
+    "w": "tapi",
+    "s": 10.86,
+    "e": 11.18
+   },
+   {
+    "w": "notifikasi",
+    "s": 11.18,
+    "e": 11.86
+   },
+   {
+    "w": "sudah",
+    "s": 11.86,
+    "e": 12.08
+   },
+   {
+    "w": "nggak",
+    "s": 12.08,
+    "e": 12.26
+   },
+   {
+    "w": "berhenti.",
+    "s": 12.26,
+    "e": 12.7
+   }
+  ]
+ },
+ {
+  "start": 13.24,
+  "end": 16.24,
+  "text": "Minggu-minggu pertama, kamu masih berusaha menemukan ritme.",
+  "words": [
+   {
+    "w": "Minggu",
+    "s": 13.24,
+    "e": 13.5
+   },
+   {
+    "w": "-minggu",
+    "s": 13.5,
+    "e": 13.74
+   },
+   {
+    "w": "pertama,",
+    "s": 13.74,
+    "e": 14.1
+   },
+   {
+    "w": "kamu",
+    "s": 14.52,
+    "e": 14.68
+   },
+   {
+    "w": "masih",
+    "s": 14.68,
+    "e": 14.94
+   },
+   {
+    "w": "berusaha",
+    "s": 14.94,
+    "e": 15.36
+   },
+   {
+    "w": "menemukan",
+    "s": 15.36,
+    "e": 15.78
+   },
+   {
+    "w": "ritme.",
+    "s": 15.78,
+    "e": 16.24
+   }
+  ]
+ },
+ {
+  "start": 16.72,
+  "end": 18.82,
+  "text": "Pagi berangkat, pulang membawa cerita.",
+  "words": [
+   {
+    "w": "Pagi",
+    "s": 16.72,
+    "e": 16.96
+   },
+   {
+    "w": "berangkat,",
+    "s": 16.96,
+    "e": 17.46
+   },
+   {
+    "w": "pulang",
+    "s": 17.82,
+    "e": 18.12
+   },
+   {
+    "w": "membawa",
+    "s": 18.12,
+    "e": 18.4
+   },
+   {
+    "w": "cerita.",
+    "s": 18.4,
+    "e": 18.82
+   }
+  ]
+ },
+ {
+  "start": 19.32,
+  "end": 22.78,
+  "text": "Malam membuka materi yang ternyata lebih banyak dari perkiraanmu.",
+  "words": [
+   {
+    "w": "Malam",
+    "s": 19.32,
+    "e": 19.7
+   },
+   {
+    "w": "membuka",
+    "s": 19.7,
+    "e": 20.02
+   },
+   {
+    "w": "materi",
+    "s": 20.02,
+    "e": 20.52
+   },
+   {
+    "w": "yang",
+    "s": 20.52,
+    "e": 20.66
+   },
+   {
+    "w": "ternyata",
+    "s": 20.66,
+    "e": 21.14
+   },
+   {
+    "w": "lebih",
+    "s": 21.14,
+    "e": 21.44
+   },
+   {
+    "w": "banyak",
+    "s": 21.44,
+    "e": 21.9
+   },
+   {
+    "w": "dari",
+    "s": 21.9,
+    "e": 22.14
+   },
+   {
+    "w": "perkiraanmu.",
+    "s": 22.14,
+    "e": 22.78
+   }
+  ]
+ },
+ {
+  "start": 23.3,
+  "end": 24.52,
+  "text": "Bulan pertama berlalu.",
+  "words": [
+   {
+    "w": "Bulan",
+    "s": 23.3,
+    "e": 23.56
+   },
+   {
+    "w": "pertama",
+    "s": 23.56,
+    "e": 23.88
+   },
+   {
+    "w": "berlalu.",
+    "s": 23.88,
+    "e": 24.52
+   }
+  ]
+ },
+ {
+  "start": 24.92,
+  "end": 26.36,
+  "text": "Folder kuliah bertambah.",
+  "words": [
+   {
+    "w": "Folder",
+    "s": 24.92,
+    "e": 25.3
+   },
+   {
+    "w": "kuliah",
+    "s": 25.3,
+    "e": 25.68
+   },
+   {
+    "w": "bertambah.",
+    "s": 25.68,
+    "e": 26.36
+   }
+  ]
+ },
+ {
+  "start": 26.36,
+  "end": 31.3,
+  "text": "Kamu menandai hampir semua halaman, sampai nggak tahu lagi mana yang harus dipelajari dulu.",
+  "words": [
+   {
+    "w": "Kamu",
+    "s": 26.36,
+    "e": 27.12
+   },
+   {
+    "w": "menandai",
+    "s": 27.12,
+    "e": 27.54
+   },
+   {
+    "w": "hampir",
+    "s": 27.54,
+    "e": 28.08
+   },
+   {
+    "w": "semua",
+    "s": 28.08,
+    "e": 28.34
+   },
+   {
+    "w": "halaman,",
+    "s": 28.34,
+    "e": 28.8
+   },
+   {
+    "w": "sampai",
+    "s": 28.98,
+    "e": 29.28
+   },
+   {
+    "w": "nggak",
+    "s": 29.28,
+    "e": 29.44
+   },
+   {
+    "w": "tahu",
+    "s": 29.44,
+    "e": 29.66
+   },
+   {
+    "w": "lagi",
+    "s": 29.66,
+    "e": 29.96
+   },
+   {
+    "w": "mana",
+    "s": 29.96,
+    "e": 30.18
+   },
+   {
+    "w": "yang",
+    "s": 30.18,
+    "e": 30.38
+   },
+   {
+    "w": "harus",
+    "s": 30.38,
+    "e": 30.54
+   },
+   {
+    "w": "dipelajari",
+    "s": 30.54,
+    "e": 31.02
+   },
+   {
+    "w": "dulu.",
+    "s": 31.02,
+    "e": 31.3
+   }
+  ]
+ },
+ {
+  "start": 31.78,
+  "end": 32.48,
+  "text": "Bulan kedua.",
+  "words": [
+   {
+    "w": "Bulan",
+    "s": 31.78,
+    "e": 32.12
+   },
+   {
+    "w": "kedua.",
+    "s": 32.12,
+    "e": 32.48
+   }
+  ]
+ },
+ {
+  "start": 32.96,
+  "end": 35.56,
+  "text": "Ospek sudah lewat, tapi jatwal makin penuh.",
+  "words": [
+   {
+    "w": "Ospek",
+    "s": 32.96,
+    "e": 33.32
+   },
+   {
+    "w": "sudah",
+    "s": 33.32,
+    "e": 33.52
+   },
+   {
+    "w": "lewat,",
+    "s": 33.52,
+    "e": 33.92
+   },
+   {
+    "w": "tapi",
+    "s": 34.16,
+    "e": 34.46
+   },
+   {
+    "w": "jatwal",
+    "s": 34.46,
+    "e": 34.9
+   },
+   {
+    "w": "makin",
+    "s": 34.9,
+    "e": 35.24
+   },
+   {
+    "w": "penuh.",
+    "s": 35.24,
+    "e": 35.56
+   }
+  ]
+ },
+ {
+  "start": 36.1,
+  "end": 37.32,
+  "text": "Kamu baca semalaman.",
+  "words": [
+   {
+    "w": "Kamu",
+    "s": 36.1,
+    "e": 36.36
+   },
+   {
+    "w": "baca",
+    "s": 36.36,
+    "e": 36.82
+   },
+   {
+    "w": "semalaman.",
+    "s": 36.82,
+    "e": 37.32
+   }
+  ]
+ },
+ {
+  "start": 37.8,
+  "end": 42.74,
+  "text": "Begitu mencoba satu soal, semua istilah yang tadi terasa familiar mendadak campur aduk.",
+  "words": [
+   {
+    "w": "Begitu",
+    "s": 37.8,
+    "e": 38.14
+   },
+   {
+    "w": "mencoba",
+    "s": 38.14,
+    "e": 38.44
+   },
+   {
+    "w": "satu",
+    "s": 38.44,
+    "e": 38.68
+   },
+   {
+    "w": "soal,",
+    "s": 38.68,
+    "e": 39.16
+   },
+   {
+    "w": "semua",
+    "s": 39.46,
+    "e": 39.7
+   },
+   {
+    "w": "istilah",
+    "s": 39.7,
+    "e": 40.14
+   },
+   {
+    "w": "yang",
+    "s": 40.14,
+    "e": 40.34
+   },
+   {
+    "w": "tadi",
+    "s": 40.34,
+    "e": 40.58
+   },
+   {
+    "w": "terasa",
+    "s": 40.58,
+    "e": 40.86
+   },
+   {
+    "w": "familiar",
+    "s": 40.86,
+    "e": 41.36
+   },
+   {
+    "w": "mendadak",
+    "s": 41.36,
+    "e": 42.14
+   },
+   {
+    "w": "campur",
+    "s": 42.14,
+    "e": 42.46
+   },
+   {
+    "w": "aduk.",
+    "s": 42.46,
+    "e": 42.74
+   }
+  ]
+ },
+ {
+  "start": 43.14,
+  "end": 47.02,
+  "text": "Akhir tahun pertama, kamu mulai paham cara belajar yang cocok buatmu.",
+  "words": [
+   {
+    "w": "Akhir",
+    "s": 43.14,
+    "e": 43.46
+   },
+   {
+    "w": "tahun",
+    "s": 43.46,
+    "e": 43.64
+   },
+   {
+    "w": "pertama,",
+    "s": 43.64,
+    "e": 44.14
+   },
+   {
+    "w": "kamu",
+    "s": 44.52,
+    "e": 44.72
+   },
+   {
+    "w": "mulai",
+    "s": 44.72,
+    "e": 45.02
+   },
+   {
+    "w": "paham",
+    "s": 45.02,
+    "e": 45.42
+   },
+   {
+    "w": "cara",
+    "s": 45.42,
+    "e": 45.64
+   },
+   {
+    "w": "belajar",
+    "s": 45.64,
+    "e": 46.06
+   },
+   {
+    "w": "yang",
+    "s": 46.06,
+    "e": 46.18
+   },
+   {
+    "w": "cocok",
+    "s": 46.18,
+    "e": 46.62
+   },
+   {
+    "w": "buatmu.",
+    "s": 46.62,
+    "e": 47.02
+   }
+  ]
+ },
+ {
+  "start": 47.5,
+  "end": 51.32,
+  "text": "Tapi setiap kali merasa sudah mengejar, ada materi baru yang menunggu.",
+  "words": [
+   {
+    "w": "Tapi",
+    "s": 47.5,
+    "e": 47.88
+   },
+   {
+    "w": "setiap",
+    "s": 47.88,
+    "e": 48.32
+   },
+   {
+    "w": "kali",
+    "s": 48.32,
+    "e": 48.52
+   },
+   {
+    "w": "merasa",
+    "s": 48.52,
+    "e": 48.8
+   },
+   {
+    "w": "sudah",
+    "s": 48.8,
+    "e": 49.02
+   },
+   {
+    "w": "mengejar,",
+    "s": 49.02,
+    "e": 49.6
+   },
+   {
+    "w": "ada",
+    "s": 49.86,
+    "e": 50.08
+   },
+   {
+    "w": "materi",
+    "s": 50.08,
+    "e": 50.44
+   },
+   {
+    "w": "baru",
+    "s": 50.44,
+    "e": 50.72
+   },
+   {
+    "w": "yang",
+    "s": 50.72,
+    "e": 50.9
+   },
+   {
+    "w": "menunggu.",
+    "s": 50.9,
+    "e": 51.32
+   }
+  ]
+ },
+ {
+  "start": 51.32,
+  "end": 57.52,
+  "text": "Masuk tahun kedua, satu soal bisa menghubungkan anatomi, fisiologi, sampai farmakologi.",
+  "words": [
+   {
+    "w": "Masuk",
+    "s": 51.32,
+    "e": 52.04
+   },
+   {
+    "w": "tahun",
+    "s": 52.04,
+    "e": 52.28
+   },
+   {
+    "w": "kedua,",
+    "s": 52.28,
+    "e": 52.68
+   },
+   {
+    "w": "satu",
+    "s": 52.94,
+    "e": 53.28
+   },
+   {
+    "w": "soal",
+    "s": 53.28,
+    "e": 53.7
+   },
+   {
+    "w": "bisa",
+    "s": 53.7,
+    "e": 53.88
+   },
+   {
+    "w": "menghubungkan",
+    "s": 53.88,
+    "e": 54.48
+   },
+   {
+    "w": "anatomi,",
+    "s": 54.48,
+    "e": 55.1
+   },
+   {
+    "w": "fisiologi,",
+    "s": 55.4,
+    "e": 56.12
+   },
+   {
+    "w": "sampai",
+    "s": 56.26,
+    "e": 56.6
+   },
+   {
+    "w": "farmakologi.",
+    "s": 56.6,
+    "e": 57.52
+   }
+  ]
+ },
+ {
+  "start": 57.82,
+  "end": 63.42,
+  "text": "Di saat yang sama, uang jajanmu juga sudah terbagi untuk buku, fotokopi, perjalanan,",
+  "words": [
+   {
+    "w": "Di",
+    "s": 57.82,
+    "e": 57.98
+   },
+   {
+    "w": "saat",
+    "s": 57.98,
+    "e": 58.14
+   },
+   {
+    "w": "yang",
+    "s": 58.14,
+    "e": 58.32
+   },
+   {
+    "w": "sama,",
+    "s": 58.32,
+    "e": 58.6
+   },
+   {
+    "w": "uang",
+    "s": 58.94,
+    "e": 59.12
+   },
+   {
+    "w": "jajanmu",
+    "s": 59.12,
+    "e": 59.64
+   },
+   {
+    "w": "juga",
+    "s": 59.64,
+    "e": 59.86
+   },
+   {
+    "w": "sudah",
+    "s": 59.86,
+    "e": 60.04
+   },
+   {
+    "w": "terbagi",
+    "s": 60.04,
+    "e": 60.58
+   },
+   {
+    "w": "untuk",
+    "s": 60.58,
+    "e": 60.8
+   },
+   {
+    "w": "buku,",
+    "s": 60.8,
+    "e": 61.32
+   },
+   {
+    "w": "fotokopi,",
+    "s": 61.64,
+    "e": 62.4
+   },
+   {
+    "w": "perjalanan,",
+    "s": 62.6,
+    "e": 63.42
+   }
+  ]
+ },
+ {
+  "start": 63.64,
+  "end": 64.8,
+  "text": "dan kopi di sela belajar.",
+  "words": [
+   {
+    "w": "dan",
+    "s": 63.64,
+    "e": 63.68
+   },
+   {
+    "w": "kopi",
+    "s": 63.68,
+    "e": 64.1
+   },
+   {
+    "w": "di",
+    "s": 64.1,
+    "e": 64.22
+   },
+   {
+    "w": "sela",
+    "s": 64.22,
+    "e": 64.42
+   },
+   {
+    "w": "belajar.",
+    "s": 64.42,
+    "e": 64.8
+   }
+  ]
+ },
+ {
+  "start": 65.26,
+  "end": 70.46,
+  "text": "Tamu butuh tempat untuk mencoba, salah, membaca alasannya, lalu mencoba lagi.",
+  "words": [
+   {
+    "w": "Tamu",
+    "s": 65.26,
+    "e": 65.54
+   },
+   {
+    "w": "butuh",
+    "s": 65.54,
+    "e": 65.8
+   },
+   {
+    "w": "tempat",
+    "s": 65.8,
+    "e": 66.18
+   },
+   {
+    "w": "untuk",
+    "s": 66.18,
+    "e": 66.4
+   },
+   {
+    "w": "mencoba,",
+    "s": 66.4,
+    "e": 66.98
+   },
+   {
+    "w": "salah,",
+    "s": 67.34,
+    "e": 67.82
+   },
+   {
+    "w": "membaca",
+    "s": 68.24,
+    "e": 68.54
+   },
+   {
+    "w": "alasannya,",
+    "s": 68.54,
+    "e": 69.14
+   },
+   {
+    "w": "lalu",
+    "s": 69.54,
+    "e": 69.76
+   },
+   {
+    "w": "mencoba",
+    "s": 69.76,
+    "e": 70.1
+   },
+   {
+    "w": "lagi.",
+    "s": 70.1,
+    "e": 70.46
+   }
+  ]
+ },
+ {
+  "start": 70.9,
+  "end": 73.3,
+  "text": "Tanpa harus memikirkan biaya latihan soal.",
+  "words": [
+   {
+    "w": "Tanpa",
+    "s": 70.9,
+    "e": 71.3
+   },
+   {
+    "w": "harus",
+    "s": 71.3,
+    "e": 71.52
+   },
+   {
+    "w": "memikirkan",
+    "s": 71.52,
+    "e": 72.1
+   },
+   {
+    "w": "biaya",
+    "s": 72.1,
+    "e": 72.48
+   },
+   {
+    "w": "latihan",
+    "s": 72.48,
+    "e": 72.86
+   },
+   {
+    "w": "soal.",
+    "s": 72.86,
+    "e": 73.3
+   }
+  ]
+ },
+ {
+  "start": 73.64,
+  "end": 74.06,
+  "text": "Kenalin.",
+  "words": [
+   {
+    "w": "Kenalin.",
+    "s": 73.64,
+    "e": 74.06
+   }
+  ]
+ },
+ {
+  "start": 74.54,
+  "end": 74.96,
+  "text": "Med Cool.",
+  "words": [
+   {
+    "w": "Med",
+    "s": 74.54,
+    "e": 74.7
+   },
+   {
+    "w": "Cool.",
+    "s": 74.7,
+    "e": 74.96
+   }
+  ]
+ },
+ {
+  "start": 75.34,
+  "end": 75.98,
+  "text": "Gratis.",
+  "words": [
+   {
+    "w": "Gratis.",
+    "s": 75.34,
+    "e": 75.98
+   }
+  ]
+ },
+ {
+  "start": 76.4,
+  "end": 80.34,
+  "text": "Pilih mata kuliah dan bab, kerjakan soal, lalu baca pembahasannya.",
+  "words": [
+   {
+    "w": "Pilih",
+    "s": 76.4,
+    "e": 76.74
+   },
+   {
+    "w": "mata",
+    "s": 76.74,
+    "e": 76.88
+   },
+   {
+    "w": "kuliah",
+    "s": 76.88,
+    "e": 77.24
+   },
+   {
+    "w": "dan",
+    "s": 77.24,
+    "e": 77.48
+   },
+   {
+    "w": "bab,",
+    "s": 77.48,
+    "e": 77.72
+   },
+   {
+    "w": "kerjakan",
+    "s": 78.02,
+    "e": 78.4
+   },
+   {
+    "w": "soal,",
+    "s": 78.4,
+    "e": 78.92
+   },
+   {
+    "w": "lalu",
+    "s": 79.14,
+    "e": 79.38
+   },
+   {
+    "w": "baca",
+    "s": 79.38,
+    "e": 79.72
+   },
+   {
+    "w": "pembahasannya.",
+    "s": 79.72,
+    "e": 80.34
+   }
+  ]
+ },
+ {
+  "start": 80.34,
+  "end": 85.2,
+  "text": "Ada juga simulasi dokter kalau kamu ingin mencoba cara berfikir menghadapi kasus.",
+  "words": [
+   {
+    "w": "Ada",
+    "s": 80.34,
+    "e": 81.06
+   },
+   {
+    "w": "juga",
+    "s": 81.06,
+    "e": 81.3
+   },
+   {
+    "w": "simulasi",
+    "s": 81.3,
+    "e": 81.76
+   },
+   {
+    "w": "dokter",
+    "s": 81.76,
+    "e": 82.2
+   },
+   {
+    "w": "kalau",
+    "s": 82.2,
+    "e": 82.44
+   },
+   {
+    "w": "kamu",
+    "s": 82.44,
+    "e": 82.72
+   },
+   {
+    "w": "ingin",
+    "s": 82.72,
+    "e": 82.98
+   },
+   {
+    "w": "mencoba",
+    "s": 82.98,
+    "e": 83.4
+   },
+   {
+    "w": "cara",
+    "s": 83.4,
+    "e": 83.78
+   },
+   {
+    "w": "berfikir",
+    "s": 83.78,
+    "e": 84.32
+   },
+   {
+    "w": "menghadapi",
+    "s": 84.32,
+    "e": 84.68
+   },
+   {
+    "w": "kasus.",
+    "s": 84.68,
+    "e": 85.2
+   }
+  ]
+ },
+ {
+  "start": 85.62,
+  "end": 87.5,
+  "text": "Kamu nggak harus langsung mengerti semuanya.",
+  "words": [
+   {
+    "w": "Kamu",
+    "s": 85.62,
+    "e": 85.94
+   },
+   {
+    "w": "nggak",
+    "s": 85.94,
+    "e": 86.08
+   },
+   {
+    "w": "harus",
+    "s": 86.08,
+    "e": 86.3
+   },
+   {
+    "w": "langsung",
+    "s": 86.3,
+    "e": 86.64
+   },
+   {
+    "w": "mengerti",
+    "s": 86.64,
+    "e": 87.1
+   },
+   {
+    "w": "semuanya.",
+    "s": 87.1,
+    "e": 87.5
+   }
+  ]
+ },
+ {
+  "start": 87.92,
+  "end": 91.34,
+  "text": "Mulai dari satu bab, satu soal, lalu lanjut lagi besok.",
+  "words": [
+   {
+    "w": "Mulai",
+    "s": 87.92,
+    "e": 88.2
+   },
+   {
+    "w": "dari",
+    "s": 88.2,
+    "e": 88.36
+   },
+   {
+    "w": "satu",
+    "s": 88.36,
+    "e": 88.64
+   },
+   {
+    "w": "bab,",
+    "s": 88.64,
+    "e": 88.9
+   },
+   {
+    "w": "satu",
+    "s": 89.2,
+    "e": 89.48
+   },
+   {
+    "w": "soal,",
+    "s": 89.48,
+    "e": 89.96
+   },
+   {
+    "w": "lalu",
+    "s": 90.24,
+    "e": 90.44
+   },
+   {
+    "w": "lanjut",
+    "s": 90.44,
+    "e": 90.72
+   },
+   {
+    "w": "lagi",
+    "s": 90.72,
+    "e": 90.98
+   },
+   {
+    "w": "besok.",
+    "s": 90.98,
+    "e": 91.34
+   }
+  ]
+ },
+ {
+  "start": 91.76,
+  "end": 94.74,
+  "text": "Mad Cool, belajar gratis dengan ritmmu sendiri.",
+  "words": [
+   {
+    "w": "Mad",
+    "s": 91.76,
+    "e": 91.94
+   },
+   {
+    "w": "Cool,",
+    "s": 91.94,
+    "e": 92.18
+   },
+   {
+    "w": "belajar",
+    "s": 92.66,
+    "e": 93.0
+   },
+   {
+    "w": "gratis",
+    "s": 93.0,
+    "e": 93.56
+   },
+   {
+    "w": "dengan",
+    "s": 93.56,
+    "e": 93.98
+   },
+   {
+    "w": "ritmmu",
+    "s": 93.98,
+    "e": 94.46
+   },
+   {
+    "w": "sendiri.",
+    "s": 94.46,
+    "e": 94.74
+   }
+  ]
+ },
+ {
+  "start": 95.22,
+  "end": 96.62,
+  "text": "Oke, aku siap.",
+  "words": [
+   {
+    "w": "Oke,",
+    "s": 95.22,
+    "e": 95.68
+   },
+   {
+    "w": "aku",
+    "s": 96.08,
+    "e": 96.28
+   },
+   {
+    "w": "siap.",
+    "s": 96.28,
+    "e": 96.62
+   }
+  ]
+ },
+ {
+  "start": 97.12,
+  "end": 98.58,
+  "text": "Ini pengumuman yang mana lagi.",
+  "words": [
+   {
+    "w": "Ini",
+    "s": 97.12,
+    "e": 97.3
+   },
+   {
+    "w": "pengumuman",
+    "s": 97.3,
+    "e": 97.78
+   },
+   {
+    "w": "yang",
+    "s": 97.78,
+    "e": 97.96
+   },
+   {
+    "w": "mana",
+    "s": 97.96,
+    "e": 98.1
+   },
+   {
+    "w": "lagi.",
+    "s": 98.1,
+    "e": 98.58
+   }
+  ]
+ },
+ {
+  "start": 99.1,
+  "end": 100.82,
+  "text": "Kayaknya semua bagian penting deh.",
+  "words": [
+   {
+    "w": "Kayaknya",
+    "s": 99.1,
+    "e": 99.58
+   },
+   {
+    "w": "semua",
+    "s": 99.58,
+    "e": 99.88
+   },
+   {
+    "w": "bagian",
+    "s": 99.88,
+    "e": 100.24
+   },
+   {
+    "w": "penting",
+    "s": 100.24,
+    "e": 100.68
+   },
+   {
+    "w": "deh.",
+    "s": 100.68,
+    "e": 100.82
+   }
+  ]
+ },
+ {
+  "start": 101.48,
+  "end": 104.88,
+  "text": "Aku udah baca ini, kok pas jadi soal aku malah bleng?",
+  "words": [
+   {
+    "w": "Aku",
+    "s": 101.48,
+    "e": 101.8
+   },
+   {
+    "w": "udah",
+    "s": 101.8,
+    "e": 101.96
+   },
+   {
+    "w": "baca",
+    "s": 101.96,
+    "e": 102.24
+   },
+   {
+    "w": "ini,",
+    "s": 102.24,
+    "e": 102.6
+   },
+   {
+    "w": "kok",
+    "s": 103.24,
+    "e": 103.36
+   },
+   {
+    "w": "pas",
+    "s": 103.36,
+    "e": 103.52
+   },
+   {
+    "w": "jadi",
+    "s": 103.52,
+    "e": 103.74
+   },
+   {
+    "w": "soal",
+    "s": 103.74,
+    "e": 104.1
+   },
+   {
+    "w": "aku",
+    "s": 104.1,
+    "e": 104.28
+   },
+   {
+    "w": "malah",
+    "s": 104.28,
+    "e": 104.54
+   },
+   {
+    "w": "bleng?",
+    "s": 104.54,
+    "e": 104.88
+   }
+  ]
+ },
+ {
+  "start": 105.4,
+  "end": 107.66,
+  "text": "Loh materinya nyambung ke yang tahun lalu.",
+  "words": [
+   {
+    "w": "Loh",
+    "s": 105.4,
+    "e": 105.68
+   },
+   {
+    "w": "materinya",
+    "s": 105.68,
+    "e": 106.46
+   },
+   {
+    "w": "nyambung",
+    "s": 106.46,
+    "e": 106.82
+   },
+   {
+    "w": "ke",
+    "s": 106.82,
+    "e": 106.96
+   },
+   {
+    "w": "yang",
+    "s": 106.96,
+    "e": 107.08
+   },
+   {
+    "w": "tahun",
+    "s": 107.08,
+    "e": 107.26
+   },
+   {
+    "w": "lalu.",
+    "s": 107.26,
+    "e": 107.66
+   }
+  ]
+ },
+ {
+  "start": 107.66,
+  "end": 111.5,
+  "text": "Oh, bisa mulai dari bab yang paling bikin aku bingung.",
+  "words": [
+   {
+    "w": "Oh,",
+    "s": 107.66,
+    "e": 108.72
+   },
+   {
+    "w": "bisa",
+    "s": 109.02,
+    "e": 109.26
+   },
+   {
+    "w": "mulai",
+    "s": 109.26,
+    "e": 109.64
+   },
+   {
+    "w": "dari",
+    "s": 109.64,
+    "e": 109.8
+   },
+   {
+    "w": "bab",
+    "s": 109.8,
+    "e": 110.04
+   },
+   {
+    "w": "yang",
+    "s": 110.04,
+    "e": 110.24
+   },
+   {
+    "w": "paling",
+    "s": 110.24,
+    "e": 110.68
+   },
+   {
+    "w": "bikin",
+    "s": 110.68,
+    "e": 111.02
+   },
+   {
+    "w": "aku",
+    "s": 111.02,
+    "e": 111.16
+   },
+   {
+    "w": "bingung.",
+    "s": 111.16,
+    "e": 111.5
+   }
+  ]
+ }
+]

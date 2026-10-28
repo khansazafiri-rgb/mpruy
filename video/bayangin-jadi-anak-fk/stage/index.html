@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Bayangin kamu jadi anak FK</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  html,body{margin:0;padding:0;background:#000}
+  #root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans','Inter',sans-serif;color:#172B38;background:#16222E}
+  #root>svg{position:absolute;left:0;top:0}
+  #webwrap{position:absolute;overflow:hidden;background:#F7F2E4}
+  #webwrap img{display:block;width:100%;height:100%;object-fit:fill}
+  #cap{position:absolute;left:54px;width:972px;top:1604px;height:250px;display:flex;align-items:center;justify-content:center;pointer-events:none}
+  #cap .box{border-radius:38px;padding:20px 32px 24px;text-align:center;font-weight:800;font-size:56px;line-height:1.2;color:#fff;letter-spacing:-.01em;box-sizing:border-box;box-shadow:0 10px 0 rgba(0,0,0,.18);max-width:972px}
+  #cap .box.n{background:rgba(10,56,48,.95)}
+  #cap .box.r{background:#F7F2E4;color:#0A3830}
+  #cap .tag{display:inline-block;background:#F2735E;color:#fff;border-radius:16px;padding:2px 16px 4px;font-size:34px;margin:0 0 8px;letter-spacing:.02em}
+  #cap .w{display:inline-block;margin:0 7px}
+  #cap .n .on{color:#F8C038}
+  #cap .r .on{color:#F2735E}
+  #cap .fut{opacity:.88}
+  #card{position:absolute;left:0;top:0;width:1080px;height:260px;pointer-events:none}
+  #fade{position:absolute;left:0;top:0;width:1080px;height:1920px;background:#fff;opacity:0;pointer-events:none}
+</style></head>
+<body>
+<div id="root">
+  <svg id="world" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div id="webwrap" style="display:none"><img id="webimg" alt=""></div>
+  <svg id="over" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div id="cap"><div class="box n" id="capbox"></div></div>
+  <div id="fade"></div>
+</div>
+<script type="module" src="stage.js"></script>
+</body></html>

@@ -18,7 +18,7 @@ Bila prompt, naskah, atau adegan video menyebut **"Raka"**, ambil karakternya da
 | `preview.html` | Halaman pratinjau: semua ekspresi, menoleh, gerak langsung, filmstrip, ukuran kecil, bingkai 1080 x 1920. |
 | `render-preview.mjs` | Merender `preview.html` ke `preview/*.png`. `--serve` menyalakan server lokal untuk dilihat di peramban. |
 | `render-frames.mjs` | Contoh memakai Raka di render video: frame PNG 1080 x 1920 dari urutan contoh, lalu MP4. |
-| `preview/` | Hasil render (PNG dan `raka-demo.mp4`, 11 detik). |
+| `preview/` | Hasil render (PNG dan `raka-demo.mp4`, 11 detik). Untuk logo: `raka-logo-pose.png`, `raka-logo-closeup.png`, `raka-logo-kecil.png`. |
 | `reference/raka-referensi.jpg` | Gambar acuan desain dari pemesan. Hanya referensi. |
 | `raka.test.mjs` | Tes: `node --test brand/characters/raka`. |
 
@@ -26,7 +26,7 @@ Bila prompt, naskah, atau adegan video menyebut **"Raka"**, ambil karakternya da
 
 - Kepala besar membulat (lebar ±260 dari 400), rambut navy satu bentuk dengan satu jambul melengkung dan satu ikal kecil di sisi kiri, telinga terlihat.
 - Mata titik, alis lengkung kecil, mulut yang berubah bentuk. Tidak ada garis tepi, tekstur, gradasi, atau lipatan baju.
-- Sweater teal baggy, celana navy, sepatu krem. Lengan satu bentuk meruncing dari bahu ke tangan (tangan bulat, telunjuk kapsul), digambar ulang tiap frame, jadi tanpa sendi.
+- Sweater teal baggy dengan **patch logo MEDCOEL** di dada kiri pemakai (kanan layar), celana navy, sepatu krem. Lengan satu bentuk meruncing dari bahu ke tangan (tangan bulat, telunjuk kapsul), digambar ulang tiap frame, jadi tanpa sendi.
 - Satu proporsi untuk semua varian: canvas `viewBox 0 0 400 800`, tengah badan x = 200, lantai y = 778. Kepala tanpa jambul ±1/3 tinggi total, dengan rambut ±45%.
 
 | Bagian | Warna |
@@ -37,9 +37,21 @@ Bila prompt, naskah, atau adegan video menyebut **"Raka"**, ambil karakternya da
 | Celana | `#212739` |
 | Sepatu | `#F5E8D6` |
 | Mulut, dalam mulut, lidah | `#8B3F37`, `#7A2D2E`, `#EE7A7A` |
+| Patch (kain) / tepinya | `#F5E8D6` / `#E4D2B4` |
+| Simbol logo: hijau / emas | `#017162` / `#FBC23A` |
 | Tanda kaget / tanda menunjuk | `#F2735E` / `#6DBBA8` |
 
 Latar yang sudah diperiksa di `preview/raka-ukuran-kecil.png`: krem, putih, biru muda, dan gelap (**pakai `PALETTE_ON_DARK` di latar gelap**, rambut dan celana diangkat sedikit). Hindari latar teal pekat karena sweater ikut lebur.
+
+## Patch logo MEDCOEL
+
+Simbol logo (dua huruf C bersarang dan bintang emas) dipasang sebagai patch krem berbentuk kotak membulat di **dada kiri pemakai**, yaitu sisi kanan layar. Bentuknya digambar ulang sebagai vektor dari `apps/web/src/assets/logo-mark.webp` (kecocokan bentuk ±92% terhadap logo asli); bukan logo lengkap karena tulisannya akan terlalu kecil.
+
+- Patch berada **di dalam grup badan** (`raka-body`, di atas sweater dan di bawah kepala dan lengan di depan). Karena itu ikut condong (`lean`), naik-turun (`bob`), dan bernapas (`breath`), tetapi **ukurannya tetap** di semua frame. Menoleh hanya menggerakkan kepala, jadi patch tetap di badan.
+- Saat gambar dicerminkan (`flip: 1`) patch pindah ke sisi lain bersama badan, **sedangkan simbolnya dibalik lagi** sehingga tidak terbaca terbalik.
+- Posisi dan ukuran ada di `PATCH` (`x y size mark`). Opsi gambar: `rakaSvg(state, { logo: false })` tanpa patch, `{ logo: 'kanan' }` di dada kanan pemakai (kiri layar).
+- Patch tidak boleh tertutup tangan. Untuk itu pose **kaget** (kepalan sedikit lebih rendah dan ke tengah) dan **berpikir** (dicerminkan: tangan ke dagu dari lengan kiri layar, lengan kanan layar melintang di perut) disesuaikan. Tes `patch logo tidak tertutup tangan di pose mana pun` menjaganya bila pose diubah.
+- Keterbacaan: pada Raka setinggi 320 px simbolnya jelas, di 180 px masih terbaca sebagai logo, di 110 px dan 64 px tampak sebagai patch krem berlogo kecil. Di video potret 1080 x 1920 (Raka ±1000 px) simbol setinggi sekitar 60 px. Lihat `preview/raka-logo-kecil.png`.
 
 ## Memanggil ekspresi dan pose
 
@@ -48,7 +60,7 @@ import { raka, rakaSvg } from './raka.js';
 
 rakaSvg(raka('netral'));      // ekspresi + pose bawaannya
 rakaSvg(raka('kaget'));       // mata dan mulut membesar, dua kepalan di dada, tanda seru
-rakaSvg(raka('berpikir'));    // tangan di dagu, alis miring
+rakaSvg(raka('berpikir'));    // tangan kiri layar di dagu, alis miring
 rakaSvg(raka('menunjuk'));    // satu telunjuk terangkat
 rakaSvg(raka('senang'));      // mata "^ ^", mulut terbuka, dua tangan terkepal
 rakaSvg(raka('sedih'));       // alis turun, mulut cemberut
@@ -62,7 +74,7 @@ raka('netral', null, { yaw: -0.8, gazeX: -0.9 });    // menoleh ke kiri layar
 raka('menunjuk', null, { flip: 1 });                 // dicerminkan, menunjuk ke kiri
 ```
 
-Kontrol yang tersedia (semua angka): `yaw` (-1..1, menoleh), `tilt` (derajat), `gazeX`/`gazeY` (-1..1, arah pandang), `blink` (0..1), `happyEyes`, `wide`, `browL`/`browR` (`y`, `rot`), `mouth` (`w`, `up`, `lo`), `lean`, `bob`, `armL`/`armR` (`wx wy` pergelangan, `ex ey` siku, `finger`, `fa`, `front`), `fxBurst`, `fxSpark`, `flip`. Opsi gambar: `rakaSvg(state, { uid, shadow: false, background, palette, width, bare })`; beri `uid` berbeda bila ada beberapa Raka dalam satu halaman.
+Kontrol yang tersedia (semua angka): `yaw` (-1..1, menoleh), `tilt` (derajat), `gazeX`/`gazeY` (-1..1, arah pandang), `blink` (0..1), `happyEyes`, `wide`, `browL`/`browR` (`y`, `rot`), `mouth` (`w`, `up`, `lo`), `lean`, `bob`, `armL`/`armR` (`wx wy` pergelangan, `ex ey` siku, `finger`, `fa`, `front`), `fxBurst`, `fxSpark`, `flip`. Opsi gambar: `rakaSvg(state, { uid, shadow: false, background, palette, width, bare, logo })`; beri `uid` berbeda bila ada beberapa Raka dalam satu halaman.
 
 ## Animasi
 
