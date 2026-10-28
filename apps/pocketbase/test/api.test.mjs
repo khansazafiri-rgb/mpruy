@@ -1049,21 +1049,25 @@ await langkah('kasus bilingual: hanya admin boleh menyunting, draf tersembunyi, 
 
 console.log('Catatan materi');
 await langkah('catatan materi per BAB: hanya admin menulis, siswa membaca, BAB tersembunyi tertutup', async () => {
-  const before = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userA.token, 200)).data;
+  // Mata kuliah sendiri: katalog sungguhan (mis. Anatomi) sudah berisi catatan hasil migrasi seed_materi.
+  const sub = (await call('POST', '/api/collections/subjects/records', { name: `Catatan Uji ${RUN}`, slug: `catatan-uji-${RUN}`, order: 98 }, admin.token, 200)).data;
+  const babId = (await call('POST', '/api/collections/chapters/records', { subject: sub.id, title: 'AA BAB Catatan', order: 1, hidden: false }, admin.token, 200)).data.id;
+  const before = (await call('GET', `/api/medcoel/subjects/${sub.slug}`, undefined, userA.token, 200)).data;
   assert.equal(before.chapters.find((c) => c.id === babId).hasNotes, false);
   await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, userA.token, 404);
   const denied = await call('POST', '/api/collections/chapter_notes/records', { chapter: babId, content: 'disusupkan' }, userA.token);
   assert.ok(denied.status === 400 || denied.status === 403, 'siswa tidak boleh menulis catatan');
-  const ch2 = (await call('POST', '/api/collections/chapters/records', { subject: mk.id, title: 'ZZ BAB Catatan', order: 999, hidden: false }, admin.token, 200)).data;
+  const ch2 = (await call('POST', '/api/collections/chapters/records', { subject: sub.id, title: 'ZZ BAB Catatan', order: 999, hidden: false }, admin.token, 200)).data;
   const n1 = (await call('POST', '/api/collections/chapter_notes/records', { chapter: babId, content: '**Inti** BAB 1' }, admin.token, 200)).data;
   await call('POST', '/api/collections/chapter_notes/records', { chapter: babId, content: 'catatan kedua' }, admin.token, 400); // satu catatan per BAB
   await call('POST', '/api/collections/chapter_notes/records', { chapter: ch2.id, content: 'Catatan BAB 2' }, admin.token, 200);
-  const after = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userA.token, 200)).data;
+  const after = (await call('GET', `/api/medcoel/subjects/${sub.slug}`, undefined, userA.token, 200)).data;
   assert.equal(after.chapters.find((c) => c.id === babId).hasNotes, true);
   assert.ok(!JSON.stringify(after).includes('**Inti**'), 'daftar BAB tidak membawa isi catatan');
   const note = (await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, userA.token, 200)).data;
   assert.equal(note.content, '**Inti** BAB 1');
-  assert.equal(note.subject.slug, mk.slug);
+  assert.equal(note.subject.slug, sub.slug);
+  assert.deepEqual(note.practice, { total: 0, answered: 0 }, 'BAB tanpa soal');
   assert.equal(note.prev, null);
   assert.equal(note.next.id, ch2.id);
   await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, null, 401);
@@ -1077,6 +1081,24 @@ await langkah('catatan materi per BAB: hanya admin menulis, siswa membaca, BAB t
   await call('PATCH', `/api/collections/chapter_notes/records/${n1.id}`, { content: '   ' }, admin.token, 200);
   await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, userA.token, 404);
   await call('DELETE', `/api/collections/chapters/records/${ch2.id}`, undefined, admin.token, 204);
+  await call('DELETE', `/api/collections/subjects/records/${sub.id}`, undefined, admin.token, 204);
+});
+
+await langkah('catatan materi bawaan (migrasi seed_materi): 20 BAB Anatomi terbaca siswa dan berurutan', async () => {
+  const anatomi = subjects.find((s) => s.slug === 'anatomi');
+  assert.ok(anatomi, 'mata kuliah Anatomi dari katalog');
+  const noted = (await call('GET', `/api/medcoel/subjects/${anatomi.slug}`, undefined, userA.token, 200)).data.chapters.filter((c) => c.hasNotes);
+  assert.equal(noted.length, 20);
+  for (const [i, c] of noted.entries()) {
+    const n = (await call('GET', `/api/medcoel/chapters/${c.id}/notes`, undefined, userA.token, 200)).data;
+    assert.ok(n.content.startsWith('<!-- materi:v2 -->'), c.title);
+    assert.ok(n.content.length > 5000 && n.content.length < 200000, `${c.title}: ${n.content.length}`);
+    assert.equal(n.position, i + 1);
+    assert.equal(n.total, 20);
+    assert.equal(typeof n.practice.total, 'number');
+    assert.equal(n.prev?.id ?? null, noted[i - 1]?.id ?? null);
+    assert.equal(n.next?.id ?? null, noted[i + 1]?.id ?? null);
+  }
 });
 
 console.log('Pencapaian');

@@ -1,10 +1,10 @@
-import { ArrowLeft, BookOpen, BookOpenCheck, CheckCircle2, ChevronDown, Clock, Layers, MessageCircle, Minus, Package, PlayCircle, Plus, School, SlidersHorizontal } from 'lucide-react';
+import { ArrowLeft, BookOpen, BookOpenCheck, CheckCircle2, ChevronDown, ChevronRight, Clock, Layers, MessageCircle, Minus, Package, PlayCircle, Plus, School, SlidersHorizontal } from 'lucide-react';
 import { useEffect, useId, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import MascotTip from '@/components/MascotTip';
 import Ecg from '@/components/Ecg';
 import Illustration from '@/components/Illustration';
-import { Alert, EmptyState, Modal, PageLoader, ProgressBar, Segmented } from '@/components/ui';
+import { Alert, EmptyState, Modal, PageLoader, ProgressBar } from '@/components/ui';
 import { api } from '@/lib/api';
 import { DIFF, DIFF_CLASS } from '@/lib/labels';
 import { toneClass } from '@/lib/tone';
@@ -267,85 +267,55 @@ function PackageDialog({ pkg, onClose }) {
   );
 }
 
-function ChapterRow({ c, n, onPick }) {
+// Satu BAB: nomor, judul, dan apa saja yang tersedia (materi, soal). Mengetuknya membuka pilihan belajar.
+function ChapterRow({ c, n, onPick, withMateri }) {
   const done = c.total > 0 && c.answered >= c.total;
+  const action = withMateri ? 'Buka' : done ? 'Ulangi' : c.answered ? 'Lanjut' : 'Latihan';
   return (
     <li>
       <button type="button" onClick={() => onPick(c)} className="chapter-row group">
         <span className="chapter-num" aria-hidden>{String(n).padStart(2, '0')}</span>
         <span className="min-w-0 flex-1">
           <span className="block font-display text-[16px] font-semibold leading-snug text-ink group-hover:text-brand">{c.title}</span>
-          <span className="mt-1 block text-[13px] text-ink-muted">
-            <b className="font-semibold text-ink">{c.answered}</b>/{c.total} soal dikerjakan{c.wrong ? <> · <span className="text-coral">{c.wrong} pernah salah</span></> : null}
+          <span className="chapter-meta">
+            {withMateri && (c.hasNotes ? <span className="chapter-tag is-materi"><BookOpen size={12} aria-hidden /> Materi</span> : <span className="chapter-tag is-off">Materi segera hadir</span>)}
+            {c.total > 0
+              ? <span className="chapter-tag"><b>{c.answered}</b>/{c.total} soal{c.wrong ? <> · <span className="text-coral">{c.wrong} pernah salah</span></> : null}</span>
+              : withMateri && <span className="chapter-tag is-off">Soal segera hadir</span>}
           </span>
-          <ProgressBar value={c.answered} max={c.total} className="mt-2.5 !h-2" color={done ? 'bg-brand' : 'bg-gold'} label={`Progres ${c.title}`} />
+          {c.total > 0 && <ProgressBar value={c.answered} max={c.total} className="mt-2.5 !h-2" color={done ? 'bg-brand' : 'bg-gold'} label={`Progres ${c.title}`} />}
         </span>
-        <span className="chapter-go">{done ? <CheckCircle2 size={16} aria-hidden /> : <PlayCircle size={16} aria-hidden />}<span>{done ? 'Ulangi' : c.answered ? 'Lanjut' : 'Latihan'}</span></span>
+        <span className="chapter-go">{withMateri ? <ChevronRight size={16} aria-hidden /> : done ? <CheckCircle2 size={16} aria-hidden /> : <PlayCircle size={16} aria-hidden />}<span>{action}</span></span>
       </button>
     </li>
   );
 }
 
-// Begitu masuk mata kuliah, siswa memilih: membaca catatan materi dulu, atau langsung latihan soal.
-function StudyChooser({ notedCount, readyCount, onPick }) {
-  const opts = [
-    ['materi', 'Pelajari materi', 'Baca catatan ringkas tiap BAB sebelum mengerjakan soal.', `${notedCount} BAB punya catatan`, BookOpen],
-    ['latihan', 'Kerjakan latihan soal', 'Latihan per BAB, paket soal, dan simulasi dengan pembahasan.', `${readyCount} BAB siap dikerjakan`, PlayCircle],
-  ];
+function ChoiceCard({ icon: Icon, title, text, meta, disabled, onClick }) {
   return (
-    <section aria-labelledby="pilih-cara" className="space-y-4">
-      <h2 id="pilih-cara" className="sr-only">Pilih cara belajar</h2>
-      <MascotTip mascot="kori" mood="wave" size={60} className="max-w-2xl">Mau mulai dari mana? Baca materinya dulu, atau langsung uji diri dengan latihan soal.</MascotTip>
-      <div className="grid gap-4 sm:grid-cols-2">
-        {opts.map(([key, title, text, meta, Icon]) => (
-          <button key={key} type="button" onClick={() => onPick(key)} className="card-chunky group flex min-h-[10rem] flex-col items-start gap-2 p-5 text-left">
-            <span className="grid h-11 w-11 place-items-center rounded-xl bg-[rgb(var(--tone-bg,var(--brand-soft)))] text-[rgb(var(--tone-fg,var(--brand)))]"><Icon size={22} aria-hidden /></span>
-            <span className="font-display text-xl font-bold text-ink group-hover:text-brand">{title}</span>
-            <span className="text-[15px] leading-relaxed text-ink-muted">{text}</span>
-            <span className="mt-auto text-[13px] font-semibold text-[rgb(var(--tone-fg,var(--brand)))]">{meta}</span>
-          </button>
-        ))}
-      </div>
-    </section>
+    <button type="button" onClick={onClick} disabled={disabled} className="choice-card card-chunky group flex flex-col items-start gap-1.5 p-4 text-left">
+      <span className="choice-icon"><Icon size={22} aria-hidden /></span>
+      <span className="font-display text-lg font-bold text-ink group-enabled:group-hover:text-brand">{title}</span>
+      <span className="text-[14px] leading-relaxed text-ink-muted">{text}</span>
+      <span className="mt-auto pt-1 text-[13px] font-semibold text-[rgb(var(--tone-fg,var(--brand)))]">{meta}</span>
+    </button>
   );
 }
 
-function MateriSection({ subject, noted, without }) {
+// Setelah memilih BAB: baca materinya dulu, atau langsung latihan soal.
+function ChapterChoice({ subject, chapter, onPractice, onClose }) {
+  const nav = useNavigate();
+  const hasQ = chapter.total > 0;
   return (
-    <section aria-labelledby="materi" className="space-y-5">
-      <div>
-        <p className="eyebrow mb-2">Pelajari materi</p>
-        <h2 id="materi" className="section-title">Baca catatan per BAB</h2>
+    <Modal open title={chapter.title} onClose={onClose}>
+      <div className="space-y-4">
+        <MascotTip mascot="kori" mood="wave" size={56}>Mau belajar dari materinya dulu, atau langsung uji diri dengan latihan soal?</MascotTip>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <ChoiceCard icon={BookOpen} title="Belajar materi" text="Catatan bergambar yang bisa dibaca per bagian, lengkap dengan poin high-yield." meta={chapter.hasNotes ? 'Siap dibaca' : 'Segera hadir'} disabled={!chapter.hasNotes} onClick={() => nav(`/mata-kuliah/${subject.slug}/materi/${chapter.id}`)} />
+          <ChoiceCard icon={PlayCircle} title="Latihan soal" text="Atur jumlah soal dan caranya. Pembahasan muncul per soal atau setelah selesai." meta={hasQ ? `${chapter.answered}/${chapter.total} soal dikerjakan` : 'Soal segera hadir'} disabled={!hasQ} onClick={() => { onClose(); onPractice(chapter); }} />
+        </div>
       </div>
-      <ul className="chapter-sheet card-chunky">
-        {noted.map((c) => (
-          <li key={c.id}>
-            <Link to={`/mata-kuliah/${subject.slug}/materi/${c.id}`} className="chapter-row group">
-              <span className="chapter-num" aria-hidden>{String(c.n).padStart(2, '0')}</span>
-              <span className="min-w-0 flex-1">
-                <span className="block font-display text-[16px] font-semibold leading-snug text-ink group-hover:text-brand">{c.title}</span>
-                <span className="mt-1 block text-[13px] text-ink-muted">Catatan materi{c.total ? ` · ${c.total} soal latihan` : ''}</span>
-              </span>
-              <span className="chapter-go"><BookOpen size={16} aria-hidden /><span>Baca</span></span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      {without.length > 0 && (
-        <details className="soon-sheet">
-          <summary>
-            <span className="min-w-0 flex-1">
-              <span className="block font-display text-[16px] font-semibold text-ink">Catatan segera hadir</span>
-              <span className="block text-[13px] text-ink-muted">{without.length} BAB belum punya catatan</span>
-            </span>
-            <ChevronDown className="soon-chevron text-ink-muted" size={20} aria-hidden />
-          </summary>
-          <ol className="soon-list">
-            {without.map((c) => <li key={c.id}><span className="chapter-num is-quiet" aria-hidden>{String(c.n).padStart(2, '0')}</span><span className="min-w-0">{c.title}</span></li>)}
-          </ol>
-        </details>
-      )}
-    </section>
+    </Modal>
   );
 }
 
@@ -355,10 +325,11 @@ export default function SubjectDetail() {
   const campusOnly = searchParams.get('kampus') === '1';
   const { data, error, loading } = useApi(`subjects/${slug}${campusOnly ? '?campusOnly=1' : ''}`);
   const [practice, setPractice] = useState(null);
+  const [choice, setChoice] = useState(null);
   const [sim, setSim] = useState(false);
   const [pkg, setPkg] = useState(null);
   const chapters = useMemo(() => data?.chapters || [], [data]);
-  useEffect(() => { setPractice(null); setSim(false); setPkg(null); }, [slug, campusOnly]);
+  useEffect(() => { setPractice(null); setChoice(null); setSim(false); setPkg(null); }, [slug, campusOnly]);
   // Dari halaman catatan: "Latihan soal BAB ini" langsung membuka pengaturan latihan BAB tersebut.
   const babParam = searchParams.get('bab');
   useEffect(() => {
@@ -372,16 +343,17 @@ export default function SubjectDetail() {
   const s = data.subject;
   const numbered = chapters.map((c, i) => ({ ...c, n: i + 1 }));
   const withQ = numbered.filter((c) => c.total > 0);
-  const soon = numbered.filter((c) => !c.total);
   const total = withQ.reduce((a, c) => a + c.total, 0);
   const answered = withQ.reduce((a, c) => a + c.answered, 0);
   const pct = total ? Math.round((answered / total) * 100) : 0;
   const noted = numbered.filter((c) => c.hasNotes);
-  // Tanpa catatan sama sekali, pilihan "Pelajari materi" tidak berarti: langsung ke latihan.
-  const hasMateri = !campusOnly && noted.length > 0;
-  const tabParam = searchParams.get('tab');
-  const tab = !hasMateri ? 'latihan' : tabParam === 'materi' || tabParam === 'latihan' ? tabParam : '';
-  const pick = (t) => { const next = new URLSearchParams(searchParams); next.set('tab', t); next.delete('bab'); setSearchParams(next); };
+  // Materi hanya ada untuk bank soal umum (bukan "Soal kampusmu"). Bila belum ada satu pun catatan,
+  // BAB langsung membuka pengaturan latihan seperti sebelumnya.
+  const withMateri = !campusOnly && noted.length > 0;
+  // BAB yang sudah bisa dibuka (punya materi atau soal) di daftar utama; sisanya "segera hadir".
+  const ready = numbered.filter((c) => c.total > 0 || (withMateri && c.hasNotes));
+  const soon = numbered.filter((c) => !ready.includes(c));
+  const pick = (c) => (withMateri ? setChoice(c) : c.total > 0 && setPractice(c));
 
   return (
     <div className={`space-y-10 ${toneClass(s.illustrationKey || s.slug)}`}>
@@ -401,6 +373,7 @@ export default function SubjectDetail() {
 
             <dl className="sd-stats">
               <div><dt>BAB</dt><dd>{chapters.length}</dd></div>
+              {withMateri && <div><dt>Ada materi</dt><dd>{noted.length}</dd></div>}
               <div><dt>Siap dikerjakan</dt><dd>{withQ.length}</dd></div>
               <div><dt>Soal dikerjakan</dt><dd>{answered}<small>/{total}</small></dd></div>
             </dl>
@@ -413,7 +386,7 @@ export default function SubjectDetail() {
 
             <div className="mt-7 flex flex-wrap gap-3">
               <button type="button" className="btn btn-primary btn-press px-5 py-3 text-base" onClick={() => setSim(true)} disabled={!withQ.length}><Layers size={18} /> Coba Simulasi</button>
-              {data.packages.length > 0 && <a href="#paket" onClick={(e) => { if (tab !== 'latihan') { e.preventDefault(); pick('latihan'); setTimeout(() => document.getElementById('paket')?.scrollIntoView({ behavior: 'smooth' }), 60); } }} className="btn sd-btn-alt px-5 py-3 text-base"><Package size={18} /> Paket soal</a>}
+              {data.packages.length > 0 && <a href="#paket" className="btn sd-btn-alt px-5 py-3 text-base"><Package size={18} /> Paket soal</a>}
             </div>
           </div>
 
@@ -429,26 +402,24 @@ export default function SubjectDetail() {
         </div>
       </section>
 
-      {hasMateri && tab && <Segmented className="sm:max-w-md" label="Cara belajar mata kuliah" value={tab} onChange={pick} items={[{ value: 'materi', label: 'Pelajari materi' }, { value: 'latihan', label: 'Latihan soal' }]} />}
-      {hasMateri && !tab && <StudyChooser notedCount={noted.length} readyCount={withQ.length} onPick={pick} />}
-      {tab === 'materi' && <MateriSection subject={s} noted={noted} without={numbered.filter((c) => !c.hasNotes)} />}
-
-      {tab === 'latihan' && <section aria-labelledby="latihan">
+      <section aria-labelledby="pilih-bab">
         <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="eyebrow mb-2">{campusOnly ? 'Materi kampusmu' : 'Latihan per topik'}</p>
-            <h2 id="latihan" className="section-title">{campusOnly ? 'Materi yang sudah tersedia' : 'Pilih BAB, lalu atur sesi latihanmu'}</h2>
+            <p className="eyebrow mb-2">{campusOnly ? 'Materi kampusmu' : 'Pilih BAB'}</p>
+            <h2 id="pilih-bab" className="section-title">{campusOnly ? 'Materi yang sudah tersedia' : withMateri ? 'Mau mulai dari BAB mana?' : 'Pilih BAB, lalu atur sesi latihanmu'}</h2>
           </div>
-          {chapters.length > 0 && <p className="text-sm text-ink-muted"><b className="text-ink">{withQ.length}</b> siap dikerjakan · <b className="text-ink">{soon.length}</b> segera hadir</p>}
+          {chapters.length > 0 && <p className="text-sm text-ink-muted">{withMateri && <><b className="text-ink">{noted.length}</b> ada materi · </>}<b className="text-ink">{withQ.length}</b> ada soal · <b className="text-ink">{soon.length}</b> segera hadir</p>}
         </div>
+
+        {withMateri && <MascotTip mascot="kori" mood="wave" size={56} className="mb-5 max-w-2xl">Ketuk salah satu BAB. Nanti kamu bisa memilih: baca materinya dulu atau langsung latihan soal.</MascotTip>}
 
         {!chapters.length ? (
           <EmptyState icon={BookOpenCheck} title="Belum ada BAB">Admin sedang menyiapkan soal untuk mata kuliah ini. Kamu juga bisa mengirim PDF soal lewat Chat Admin.</EmptyState>
         ) : (
           <div className="space-y-5">
-            {withQ.length > 0 ? (
+            {ready.length > 0 ? (
               <ul className="chapter-sheet card-chunky">
-                {withQ.map((c) => <ChapterRow key={c.id} c={c} n={c.n} onPick={setPractice} />)}
+                {ready.map((c) => <ChapterRow key={c.id} c={c} n={c.n} onPick={pick} withMateri={withMateri} />)}
               </ul>
             ) : (
               <div className="paper-sheet flex flex-col items-start gap-3 p-6 sm:flex-row sm:items-center">
@@ -458,11 +429,11 @@ export default function SubjectDetail() {
             )}
 
             {soon.length > 0 && (
-              <details className="soon-sheet" open={!withQ.length}>
+              <details className="soon-sheet" open={!ready.length}>
                 <summary>
                   <span className="min-w-0 flex-1">
                     <span className="block font-display text-[16px] font-semibold text-ink">Segera hadir</span>
-                    <span className="block text-[13px] text-ink-muted">{soon.length} BAB belum ada soalnya</span>
+                    <span className="block text-[13px] text-ink-muted">{soon.length} BAB belum ada {withMateri ? 'materi maupun soalnya' : 'soalnya'}</span>
                   </span>
                   <ChevronDown className="soon-chevron text-ink-muted" size={20} aria-hidden />
                 </summary>
@@ -474,9 +445,9 @@ export default function SubjectDetail() {
             )}
           </div>
         )}
-      </section>}
+      </section>
 
-      {tab === 'latihan' && data.packages.length > 0 && (
+      {data.packages.length > 0 && (
         <section id="paket" aria-labelledby="paket-title">
           <p className="eyebrow mb-2">Sekali jalan, semua BAB</p>
           <h2 id="paket-title" className="section-title mb-4">Paket soal</h2>
@@ -493,6 +464,7 @@ export default function SubjectDetail() {
         </section>
       )}
 
+      {choice && <ChapterChoice subject={s} chapter={choice} onPractice={setPractice} onClose={() => setChoice(null)} />}
       {practice && <PracticeDialog chapter={practice} campusOnly={campusOnly} onClose={() => { setPractice(null); if (babParam) { const next = new URLSearchParams(searchParams); next.delete('bab'); setSearchParams(next, { replace: true }); } }} />}
       {sim && <SimulationDialog subject={s} campusOnly={campusOnly} chapters={withQ} types={data.simulationTypes || ['A', 'K']} onClose={() => setSim(false)} />}
       {pkg && <PackageDialog pkg={pkg} onClose={() => setPkg(null)} />}

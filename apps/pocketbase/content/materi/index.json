@@ -1,0 +1,122 @@
+[
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Umum & Terminologi Anatomis",
+    "file": "anatomi/bab-01-anatomi-umum-terminologi-anatomis.md",
+    "docBab": 1
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Osteologi & Artrologi (Sistem Rangka & Sendi)",
+    "file": "anatomi/bab-02-osteologi-artrologi-sistem-rangka-sendi.md",
+    "docBab": 2
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Miologi (Sistem Otot)",
+    "file": "anatomi/bab-03-miologi-sistem-otot.md",
+    "docBab": 3
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Kepala & Leher",
+    "file": "anatomi/bab-04-anatomi-kepala-leher.md",
+    "docBab": 4
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Cranium & Isi Rongga Tengkorak",
+    "file": "anatomi/bab-05-anatomi-cranium-isi-rongga-tengkorak.md",
+    "docBab": 5
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Toraks (Dinding Toraks, Mediastinum)",
+    "file": "anatomi/bab-06-anatomi-toraks-dinding-toraks-mediastinum.md",
+    "docBab": 6
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Jantung & Pembuluh Darah Besar",
+    "file": "anatomi/bab-07-anatomi-jantung-pembuluh-darah-besar.md",
+    "docBab": 7
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Paru & Saluran Napas",
+    "file": "anatomi/bab-08-anatomi-paru-saluran-napas.md",
+    "docBab": 8
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Abdomen (Dinding, Rongga Peritoneum)",
+    "file": "anatomi/bab-09-anatomi-abdomen-dinding-rongga-peritoneum.md",
+    "docBab": 9
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)",
+    "file": "anatomi/bab-10-anatomi-sistem-digestif-gasterkolon-hepar.md",
+    "docBab": 10
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Pelvis & Perineum",
+    "file": "anatomi/bab-11-anatomi-pelvis-perineum.md",
+    "docBab": 11
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Sistem Urogenital",
+    "file": "anatomi/bab-12-anatomi-sistem-urogenital.md",
+    "docBab": 12
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Ekstremitas Atas",
+    "file": "anatomi/bab-13-anatomi-ekstremitas-atas.md",
+    "docBab": 13
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Ekstremitas Bawah",
+    "file": "anatomi/bab-14-anatomi-ekstremitas-bawah.md",
+    "docBab": 14
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Neuroanatomi: Otak & Batang Otak",
+    "file": "anatomi/bab-15-neuroanatomi-otak-batang-otak.md",
+    "docBab": 15
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Neuroanatomi: Medula Spinalis & Saraf Perifer",
+    "file": "anatomi/bab-16-neuroanatomi-medula-spinalis-saraf-perifer.md",
+    "docBab": 16
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Sistem Saraf Otonom",
+    "file": "anatomi/bab-17-anatomi-sistem-saraf-otonom.md",
+    "docBab": 17
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Panca Indra (Mata, Telinga, Hidung)",
+    "file": "anatomi/bab-18-anatomi-panca-indra-mata-telinga-hidung.md",
+    "docBab": 18
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Sistem Limfatik",
+    "file": "anatomi/bab-19-anatomi-sistem-limfatik.md",
+    "docBab": 19
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Perkembangan (Embriologi Dasar)",
+    "file": "anatomi/bab-20-anatomi-perkembangan-embriologi-dasar.md",
+    "docBab": 20
+  }
+]

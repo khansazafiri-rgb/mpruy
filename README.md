@@ -19,6 +19,7 @@ apps/pocketbase/
   test/            tes format impor dan tes API per peran
   scripts/         unduh PocketBase, data contoh pengembangan
 deploy/            Caddyfile, systemd, skrip pasang/update/backup
+tools/             alat bantu: lab-ingest (dataset Lab), materi-import (dokumen catatan -> catatan materi per BAB)
 docs/              panduan dan kontrak (lihat daftar di bawah)
 ```
 
@@ -68,5 +69,6 @@ penonaktifan akun.
 | [docs/GOOGLE_DRIVE.md](docs/GOOGLE_DRIVE.md) | Menyambungkan Google Drive admin untuk PDF dan foto bukti |
 | [docs/HERMES_AGENT.md](docs/HERMES_AGENT.md) | Kontrak API untuk Hermes Agent |
 | [docs/FORMAT_SOAL.md](docs/FORMAT_SOAL.md) | Format JSON soal dan blok konten kaya (untuk skill konverter) |
+| [docs/CATATAN_MATERI.md](docs/CATATAN_MATERI.md) | Catatan materi per BAB ("Belajar materi"): format, konverter dari Google Docs/Word, impor ke server |
 | [docs/LAB_BACKGROUND_JOBS.md](docs/LAB_BACKGROUND_JOBS.md) | Worker akuisisi OCT, pemulihan job, keamanan, dan langkah deployment |
 | [docs/AUDIT_DEPENDENSI.md](docs/AUDIT_DEPENDENSI.md) | Hasil npm audit: mana yang runtime, mana yang build, dan alasan sisa temuan |
