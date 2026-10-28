@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Dunia tanpa cuci tangan</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root { --forest:#0A3830; --green:#007060; --mint:#9DE0BD; --cream:#F7F2E4; --gold:#F8C038; --coral:#E8665F; --ink:#172B38; }
+  html,body{margin:0;padding:0;background:#000;}
+  #root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans','Inter',sans-serif;color:var(--ink);}
+  #root svg{position:absolute;left:0;top:0;display:block}
+  #cap{position:absolute;left:70px;width:940px;top:1372px;height:170px;display:flex;align-items:center;justify-content:center;}
+  #cap .box{background:rgba(10,56,48,.95);border-radius:34px;padding:16px 30px 18px;text-align:center;font-weight:800;font-size:49px;line-height:1.2;color:#fff;letter-spacing:-.01em;max-width:940px;box-sizing:border-box;text-wrap:balance;box-shadow:0 8px 0 rgba(0,0,0,.16)}
+  #cap .box.p{background:#fff;color:#0A3830;box-shadow:0 8px 0 rgba(10,56,48,.22)}
+  #cap .tag{display:block;font-size:26px;font-weight:800;letter-spacing:.04em;color:#007060;text-transform:uppercase;margin-bottom:2px}
+  #cap .w{display:inline-block;margin:0 7px}
+  #cap .box .w.on{color:var(--gold)}
+  #cap .box.p .w.on{color:#E8665F}
+  #cap .box .w.fut{color:rgba(255,255,255,.88)}
+  #cap .box.p .w.fut{color:#0A3830}
+</style></head>
+<body>
+<div id="root">
+  <svg id="wsvg" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <svg id="ui" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <svg id="top" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div id="cap"><div class="box" id="capbox"></div></div>
+</div>
+<script type="module" src="stage.js"></script>
+</body></html>
