@@ -65,8 +65,8 @@ Dura mater cranialis memiliki lapisan periosteal yang melekat pada tulang serta 
 
 Ruang subarachnoid adalah ruang nyata berisi CSS, arteri, vena, dan trabekula arachnoid. Rongga epidural dan subdural intracranial pada keadaan normal merupakan ruang potensial yang dapat terbuka oleh darah atau proses patologis. Hematoma epidural sering berkaitan dengan cedera a. meningea media dan dapat tampak bikonveks pada CT; hematoma subdural umumnya akibat robekan bridging veins dan cenderung mengikuti kontur hemisfer. Pola gambaran dan diagnosis tetap bergantung pada pemeriksaan klinis serta pencitraan.
 
-> [!tip] Kulit kepala dapat diingat sebagai SCALP
-> Skin, dense Connective tissue, Aponeurosis, Loose connective tissue, Pericranium. Lapisan jaringan ikat longgar memungkinkan pergeseran kulit kepala dan menjadi jalur penyebaran cairan atau infeksi.
+> [!tip] Mnemonic
+> Kulit kepala dapat diingat sebagai SCALP: Skin, dense Connective tissue, Aponeurosis, Loose connective tissue, Pericranium. Lapisan jaringan ikat longgar memungkinkan pergeseran kulit kepala dan menjadi jalur penyebaran cairan atau infeksi.
 
 ![Dura, arachnoid, pia, dan hubungan dengan sinus sagittalis superior.](https://lh3.googleusercontent.com/d/1gIX1jkVUMYdGtNrC_FKytq1UdYqKWTBb "OpenStax A&P 2e, Gbr. 13.17 (CC BY 4.0)")
 
@@ -106,11 +106,9 @@ Ventrikel lateral kanan-kiri berhubungan dengan ventrikel III melalui foramina i
 - Sinus sagittalis → confluens → transversus → sigmoideus → jugularis interna; sinus cavernosus memiliki hubungan khusus dengan III, IV, V1, V2, VI, dan carotis interna.
 - Jalur CSS: lateral → III → IV → subarachnoid → resorpsi; tanda panah Monro dan aqueductus harus tepat.
 
-## Sumber & Atribusi {sumber}
+## Flashcard {kartu}
 
-1. PCV Classroom, “Cranium & Cranial Nerve”, slide Blok Anatomi.
-2. PCV Classroom, “Meninges, Sinus Dura Mater, Sistem Ventrikel-CSF”, slide Blok Anatomi.
-3. PCV Classroom, “[PRAKTIKUM] Cranium, Meninges, et Liquor Cerebrospinalis”, slide praktikum anatomi.
-4. [OpenStax, Anatomy & Physiology 2e, §7.2 The Skull (Gbr. 7.3–7.6, 7.8), lisensi CC BY 4.0.](https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull)
-5. [OpenStax, Anatomy & Physiology 2e, §13.3 Circulation and the Central Nervous System (Gbr. 13.15–13.18), lisensi CC BY 4.0.](https://openstax.org/books/anatomy-and-physiology-2e/pages/13-3-circulation-and-the-central-nervous-system)
-6. [OpenStax, Anatomy & Physiology 2e, §13.4 The Peripheral Nervous System (Gbr. 13.23), lisensi CC BY 4.0.](https://openstax.org/books/anatomy-and-physiology-2e/pages/13-4-the-peripheral-nervous-system)
+- [Cavitas cranii dan tiga fossa] Batas antarfossa membantu orientasi :: tepi posterior ala minor sphenoid memisahkan anterior dari media; tepi superior pars petrosa temporal dan dorsum sellae memisahkan media dari posterior. Saat melihat gambar, cari sella di tengah, foramen magnum di posterior, dan lamina cribrosa di anterior sebelum menghafal lubang lain.
+- [High-yield] Urutan lapisan :: tulang → dura → arachnoid → ruang subarachnoid → pia → otak
+- [High-yield] Jalur CSS :: lateral → III → IV → subarachnoid → resorpsi; tanda panah Monro dan aqueductus harus tepat
+- [Meninges dan ruang antar lapisan] Mnemonic: Meninges dan ruang antar lapisan :: Kulit kepala dapat diingat sebagai SCALP: Skin, dense Connective tissue, Aponeurosis, Loose connective tissue, Pericranium. Lapisan jaringan ikat longgar memungkinkan pergeseran kulit kepala dan menjadi jalur penyebaran cairan atau infeksi.

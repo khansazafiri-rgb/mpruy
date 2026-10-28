@@ -1084,21 +1084,29 @@ await langkah('catatan materi per BAB: hanya admin menulis, siswa membaca, BAB t
   await call('DELETE', `/api/collections/subjects/records/${sub.id}`, undefined, admin.token, 204);
 });
 
-await langkah('catatan materi bawaan (migrasi seed_materi): 20 BAB Anatomi terbaca siswa dan berurutan', async () => {
-  const anatomi = subjects.find((s) => s.slug === 'anatomi');
-  assert.ok(anatomi, 'mata kuliah Anatomi dari katalog');
-  const noted = (await call('GET', `/api/medcoel/subjects/${anatomi.slug}`, undefined, userA.token, 200)).data.chapters.filter((c) => c.hasNotes);
-  assert.equal(noted.length, 20);
-  for (const [i, c] of noted.entries()) {
-    const n = (await call('GET', `/api/medcoel/chapters/${c.id}/notes`, undefined, userA.token, 200)).data;
-    assert.ok(n.content.startsWith('<!-- materi:v2 -->'), c.title);
-    assert.ok(n.content.length > 5000 && n.content.length < 200000, `${c.title}: ${n.content.length}`);
-    assert.equal(n.position, i + 1);
-    assert.equal(n.total, 20);
-    assert.equal(typeof n.practice.total, 'number');
-    assert.equal(n.prev?.id ?? null, noted[i - 1]?.id ?? null);
-    assert.equal(n.next?.id ?? null, noted[i + 1]?.id ?? null);
+await langkah('catatan materi bawaan: Anatomi (20 BAB) dan Histologi (12 BAB) terbaca siswa, berurutan, dengan flashcard', async () => {
+  for (const [slug, jumlah] of [['anatomi', 20], ['histologi', 12]]) {
+    const sub = subjects.find((s) => s.slug === slug);
+    assert.ok(sub, `mata kuliah ${slug} dari katalog`);
+    const noted = (await call('GET', `/api/medcoel/subjects/${slug}`, undefined, userA.token, 200)).data.chapters.filter((c) => c.hasNotes);
+    assert.equal(noted.length, jumlah, slug);
+    assert.ok(noted.every((c) => c.hasCards === true), `${slug}: setiap BAB bercatatan punya flashcard`);
+    for (const [i, c] of noted.entries()) {
+      const n = (await call('GET', `/api/medcoel/chapters/${c.id}/notes`, undefined, userA.token, 200)).data;
+      assert.ok(n.content.startsWith('<!-- materi:v2 -->'), c.title);
+      assert.ok(n.content.includes('## Flashcard {kartu}'), `${c.title}: flashcard`);
+      assert.ok(!n.content.includes('Sumber & Atribusi'), `${c.title}: bagian sumber tidak dimasukkan`);
+      assert.ok(n.content.length > 5000 && n.content.length < 200000, `${c.title}: ${n.content.length}`);
+      assert.equal(n.position, i + 1);
+      assert.equal(n.total, jumlah);
+      assert.equal(typeof n.practice.total, 'number');
+      assert.equal(n.prev?.id ?? null, noted[i - 1]?.id ?? null);
+      assert.equal(n.next?.id ?? null, noted[i + 1]?.id ?? null);
+    }
   }
+  // BAB tanpa catatan tidak punya flashcard.
+  const plain = (await call('GET', `/api/medcoel/subjects/${subjects.find((s) => s.slug === 'biokimia').slug}`, undefined, userA.token, 200)).data.chapters;
+  assert.ok(plain.every((c) => !c.hasNotes && !c.hasCards));
 });
 
 console.log('Pencapaian');

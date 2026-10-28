@@ -305,3 +305,44 @@ Jika melihat ventricular system:
 - Lenticulostriate arteries menyuplai deep structures termasuk internal capsule.
 - PICA/AICA/SCA merupakan arterial territories penting cerebellum dan brainstem.
 - Cortical signs membantu membedakan cortical lesion dari pure subcortical motor/sensory syndromes.
+
+## Flashcard {kartu}
+
+- [Ventricular System dan Cerebrospinal Fluid] Aliran CSF :: Lateral ventricles → interventricular foramina (Monro) → third ventricle → cerebral aqueduct → fourth ventricle → median aperture (Magendie) dan lateral apertures (Luschka) → subarachnoid space → arachnoid granulations → dural venous sinuses.
+- [High-yield] Internal capsule :: compact projection fibers; lesion kecil dapat memberi deficit besar
+- [High-yield] Thalamus :: major sensory relay kecuali olfaction
+- [High-yield] Hypothalamus :: autonomic + endocrine + homeostasis
+- [High-yield] Brainstem :: midbrain + pons + medulla; crossed findings sangat penting untuk localization
+- [High-yield] Trochlear nerve :: cranial nerve yang keluar dorsal dari brainstem
+- [High-yield] CSF :: lateral ventricles → Monro → third → aqueduct → fourth → Magendie/Luschka → subarachnoid space
+- [Peta Besar Encephalon] Secara sederhana, neuroanatomi otak dapat dipahami dengan tiga pertanyaan … :: • Di mana gray matter berada?
+  • Jalur white matter mana yang menghubungkan area tersebut?
+  • Struktur neurovascular apa yang berdekatan sehingga lesi menghasilkan pola defisit tertentu?
+- [Cerebellum] Tiga functional divisions yang berguna … :: • Vestibulocerebellum → balance dan eye movements
+  • Spinocerebellum → posture, gait, dan ongoing movement correction
+  • Cerebrocerebellum → motor planning dan fine coordination
+- [Cerebellum] Cerebellum terhubung dengan brainstem melalui tiga peduncles … :: • Superior cerebellar peduncle → terutama output menuju midbrain/thalamus
+  • Middle cerebellar peduncle → input terbesar dari contralateral pontine nuclei
+  • Inferior cerebellar peduncle → banyak input dari medulla, spinal cord, dan vestibular system
+- [Midbrain] Cranial nerve association … :: • CN III nucleus dan Edinger–Westphal nucleus berada di midbrain
+  • CN IV nucleus juga di midbrain; trochlear nerve adalah satu-satunya cranial nerve yang keluar dari dorsal brainstem dan decussates sebelum keluar
+- [Pons] Cranial nerve association secara umum … :: • CN V berhubungan dengan mid-pons
+  • CN VI, VII, dan VIII muncul di pontomedullary region
+- [Cranial Nerve Nuclei: Peta Cepat] Level kasar yang harus diingat … :: • Midbrain → CN III, IV
+  • Pons → terutama CN V; pontomedullary junction → CN VI, VII, VIII
+  • Medulla → CN IX, X, XI, XII
+- [Cranial Nerve Nuclei: Peta Cepat] Nuclei fungsional penting … :: • Edinger–Westphal → parasympathetic CN III
+  • Trigeminal sensory nuclei → facial sensation
+  • Facial motor nucleus → muscles of facial expression
+  • Nucleus ambiguus → branchial motor fibers terutama IX–X
+  • Nucleus tractus solitarius → visceral sensation dan taste
+  • Dorsal motor nucleus vagus → parasympathetic output
+  • Hypoglossal nucleus → tongue motor
+- [Vascular Supply Otak] Otak mendapat darah dari dua sistem utama … :: • Internal carotid circulation → anterior circulation
+  • Vertebrobasilar circulation → posterior circulation
+- [Brainstem dan Cerebellar Supply] High-yield vascular localization … :: • PICA territory medulla → lateral medullary/Wallenberg pattern
+  • Paramedian basilar branches → medial pontine lesions
+  • AICA territory → lateral pontine syndrome dengan keterlibatan facial structures yang lebih menonjol
+- [Functional Cortical Landmarks] Clinical anchor: Functional Cortical Landmarks :: Dominant frontal lesion → dapat menyebabkan expressive/Broca aphasia. Dominant temporoparietal lesion → dapat menyebabkan receptive/Wernicke aphasia. Non-dominant parietal lesion → dapat menyebabkan hemispatial neglect.
+- [Basal Nuclei] Clinical anchors: Basal Nuclei :: Degenerasi dopaminergic neurons substantia nigra pars compacta → Parkinson disease pattern. Lesi subthalamic nucleus → contralateral hemiballismus. Degenerasi striatal tertentu dapat menghasilkan choreiform movement.
+- [Ventricular System dan Cerebrospinal Fluid] Clinical anchors: Ventricular System dan Cerebrospinal Fluid :: Obstruksi cerebral aqueduct dapat menyebabkan non-communicating hydrocephalus dengan dilatasi ventricles proximal terhadap sumbatan. Gangguan absorpsi CSF di arachnoid granulations dapat menyebabkan communicating hydrocephalus.

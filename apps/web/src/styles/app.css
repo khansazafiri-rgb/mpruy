@@ -330,6 +330,9 @@
 .chapter-tag b { color: rgb(var(--ink)); font-weight: 700; }
 .chapter-tag.is-materi { padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; color: rgb(var(--brand-dark)); background: rgb(var(--brand-soft)); }
 .chapter-tag.is-off { font-size: 12px; font-style: italic; color: rgb(var(--ink-faint)); }
-.choice-card { min-height: 11.5rem; }
+.choice-card { min-height: 12.5rem; }
+.choice-top { display: flex; align-items: center; justify-content: space-between; gap: .5rem; width: 100%; }
+.choice-step { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: rgb(var(--ink-faint)); }
+.chapter-tag.is-cards { padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; color: rgb(var(--progress)); background: rgb(var(--progress-soft)); }
 .choice-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; background: rgb(var(--tone-bg, var(--brand-soft))); color: rgb(var(--tone-fg, var(--brand))); box-shadow: 0 3px 0 rgb(var(--tone-mid, var(--brand)) / .6); }
 .choice-card:disabled { cursor: not-allowed; opacity: .6; transform: none !important; box-shadow: 0 3px 0 rgb(var(--ink) / .06); }

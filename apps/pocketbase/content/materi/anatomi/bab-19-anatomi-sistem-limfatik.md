@@ -88,7 +88,8 @@ Territory right lymphatic duct:
 - right upper limb;
 - right side of thorax.
 
-**Mnemonic wilayah**: right upper quadrant. Semua wilayah lain pada prinsipnya kembali melalui thoracic duct.
+> [!tip] Mnemonic wilayah
+> Right upper quadrant. Semua wilayah lain pada prinsipnya kembali melalui thoracic duct.
 
 ## Head and Neck Lymphatic Drainage
 
@@ -268,3 +269,45 @@ Saat melihat specimen atau gambar sistem limfatik, identifikasi dengan urutan be
 - Thymus = primary lymphoid organ; lymph node/spleen = secondary lymphoid organs.
 - Virchow node di kiri dapat membesar pada malignancy intra-abdominal.
 - Gangguan drainage → lymphedema; thoracic duct injury → chylothorax.
+
+## Flashcard {kartu}
+
+- [Lymph Node: Struktur dan Arah Aliran] Aliran limfe :: afferent vessels → subcapsular sinus → cortical/trabecular sinuses → medullary sinuses → efferent vessel di hilum.
+- [Thoracic Duct dan Cisterna Chyli] Territory thoracic duct :: hampir seluruh tubuh kecuali right upper quadrant.
+- [Lymphedema dan Chylous Leakage] Contoh penting :: axillary node dissection dapat mengganggu drainage upper limb dan menyebabkan arm lymphedema.
+- [High-yield] Lymph :: tissue → capillary → collecting vessel → node → trunk → duct → venous angle
+- [High-yield] Thoracic duct :: cisterna chyli L1–L2 → aortic hiatus T12 → cross sekitar T5 → left venous angle
+- [High-yield] Lymph node :: banyak afferent vessels masuk di convex surface; satu/lebih sedikit efferent keluar di hilum
+- [High-yield] Axillary flow :: pectoral/subscapular/humeral → central → apical → subclavian trunk
+- [Lymphatic Trunks] Trunks utama yang perlu diingat … :: • jugular trunks — kepala dan leher
+  • subclavian trunks — ekstremitas atas dan bagian superficial thoracic wall
+  • bronchomediastinal trunks — struktur thorax
+  • lumbar trunks — lower limbs, pelvis, posterior abdominal wall, kidneys, gonads, dan sebagian organ retroperitoneal
+  • intestinal trunk — sebagian besar gastrointestinal tract dan organ terkait
+- [Right Lymphatic Duct] Territory right lymphatic duct … :: • right side of head and neck
+  • right upper limb
+  • right side of thorax
+- [Upper Limb dan Axillary Nodes] Lima kelompok utama axillary nodes … :: • pectoral/anterior — anterior thoracic wall dan sebagian besar breast
+  • subscapular/posterior — posterior thoracic wall dan scapular region
+  • humeral/lateral — sebagian besar upper limb
+  • central — menerima dari pectoral, subscapular, dan humeral groups
+  • apical — menerima dari central group dan jalur cephalic/deltopectoral
+- [Abdomen: Pre-aortic dan Para-aortic Logic] Pre-aortic nodes mengikuti tiga unpaired anterior branches aorta … :: • celiac nodes — foregut territory
+  • superior mesenteric nodes — midgut territory
+  • inferior mesenteric nodes — hindgut territory
+- [Lower Limb dan Inguinal Nodes] Superficial lymphatics lower limb terbagi mengikuti vena superfisial … :: • jalur great saphenous vein → superficial inguinal nodes
+  • jalur small saphenous vein → popliteal nodes → deep inguinal nodes
+- [Tonsils dan Mucosa-Associated Lymphoid Tissue] Waldeyer ring mengelilingi jalur masuk pharynx … :: • pharyngeal tonsil di roof/posterior wall nasopharynx
+  • paired tubal tonsils dekat openings auditory tubes
+  • paired palatine tonsils di oropharynx
+  • lingual tonsil di posterior tongue
+- [Peta Besar Sistem Limfatik] Konsep high-yield: Peta Besar Sistem Limfatik :: Pikirkan alurnya sebagai jaringan bertingkat—tissue → lymphatic capillary → collecting vessel → regional node → lymphatic trunk → duct → venous angle.
+- [Lymph Node: Struktur dan Arah Aliran] Clinical anchor: Lymph Node: Struktur dan Arah Aliran :: Pembesaran node dapat terjadi pada respons inflamasi, infeksi, atau infiltrasi tumor. Lokasi node yang membesar sering membantu menebak organ atau regio asal proses penyakit.
+- [Thoracic Duct dan Cisterna Chyli] Clinical anchor: Thoracic Duct dan Cisterna Chyli :: Trauma atau operasi thorax dapat mencederai thoracic duct dan menyebabkan chylothorax. Cairan pleura menjadi kaya triglyceride karena berisi chyle.
+- [Right Lymphatic Duct] Mnemonic wilayah: Right Lymphatic Duct :: Right upper quadrant. Semua wilayah lain pada prinsipnya kembali melalui thoracic duct.
+- [Head and Neck Lymphatic Drainage] Clinical anchor: Head and Neck Lymphatic Drainage :: Lokasi cervical lymphadenopathy harus selalu dihubungkan dengan territory kepala–leher yang dialirinya, bukan hanya dianggap “node leher”.
+- [Thoracic Lymphatics: Lung dan Mediastinum] Clinical anchor: Thoracic Lymphatics: Lung dan Mediastinum :: Metastasis lung cancer dapat mengikuti nodal chains dari hilar ke mediastinal dan supraclavicular regions. Karena adanya komunikasi lintas sisi, pola metastasis tidak selalu ipsilateral secara sederhana.
+- [Abdomen: Pre-aortic dan Para-aortic Logic] High-yield principle: Abdomen: Pre-aortic dan Para-aortic Logic :: Organ gastrointestinal cenderung mengikuti arterial supply ke pre-aortic nodes, sedangkan organ retroperitoneal dan gonads banyak menuju lumbar/para-aortic nodes.
+- [Pelvis dan Perineum] Clinical anchor: Pelvis dan Perineum :: “testis ≠ scrotum” adalah pembeda klasik. Massa testis menyebar ke para-aortic nodes, sedangkan lesi kulit scrotum cenderung ke superficial inguinal nodes.
+- [Spleen] Konsep penting: Spleen :: Spleen memfilter darah, bukan lymph. Ia tidak berada “di tengah” aliran limfe seperti lymph node dan pada dasarnya tidak memiliki afferent lymphatic vessels. Efferent lymphatics keluar di hilum.
+- [Thymus] High-yield: Thymus :: Thymus juga tidak memiliki afferent lymphatic vessels; lymphatics yang ada terutama efferent.

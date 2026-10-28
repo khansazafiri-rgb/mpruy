@@ -291,10 +291,9 @@ Arch of aorta berada di superior mediastinum. Tiga branches klasik dari proximal
 
 ### Phrenic vs vagus
 
-Mnemonic relasional yang berguna:
-
-- phrenic nerve → anterior to root of lung;
-- vagus nerve → posterior to root of lung.
+> [!tip] Mnemonic relasional yang berguna
+> - phrenic nerve → anterior to root of lung;
+> - vagus nerve → posterior to root of lung.
 
 Hubungan ini lebih bermanfaat daripada menghafal posisi saraf secara terpisah. Detail root of lung dan pulmonary hilum akan diperdalam pada bab Anatomi Paru dan Saluran Napas.
 
@@ -349,28 +348,48 @@ Mediastinum yang tampak melebar pada radiografi bukan diagnosis tunggal. Penyeba
 - Posterior mediastinum: ingat esophagus, descending aorta, azygos system, thoracic duct, vagal/autonomic structures.
 - Detail heart/pericardium jangan dicampur ke bab ini—itu bab Anatomi Jantung dan Pembuluh Darah Besar; detail pleura/pulmo ke bab Anatomi Paru dan Saluran Napas.
 
-## Sumber & Atribusi {sumber}
+## Flashcard {kartu}
 
-### Materi kuliah utama
-
-- K13 — Thoracic Wall, Neurovascular Bundle, Mediastinum, materi Anatomi FK Universitas Airlangga. Digunakan untuk menentukan scope: surface landmarks, fascia, thoracic cage, intercostal muscles, neurovascular bundle, arterial/venous/lymphatic pathways, dermatomes, mediastinal divisions, dan rib counting.
-
-### Academic enrichment dan gap-filling
-
-- OpenStax. Anatomy & Physiology 2e — The Thoracic Cage dan pembahasan thoracic wall. Digunakan untuk cross-check pembagian ribs, sternum, typical rib, costal groove, serta orientasi kerangka.
-- NCBI Bookshelf/StatPearls — Anatomy, Thorax, Intercostal Nerves; Anatomy, Thorax, Mediastinum; dan Anatomy, Thorax, Wall. Digunakan untuk cross-check course intercostal nerves, plane neurovascular bundle, mediastinal boundaries, serta hubungan struktur.
-- Pengayaan hanya digunakan untuk melengkapi detail yang tidak eksplisit pada K13; organisasi dan prioritas bab tetap mengikuti materi dosen.
-
-### Sumber visual
-
-- Gambar 2 — “Rib anatomy.png”, Wikimedia Commons, CC0 1.0.
-- Gambar 3 — “Intercostaux muscle.png”, OpenStax Biology 2e via Wikimedia Commons, CC BY 4.0.
-- Gambar 5 — “Grant 1962 407.png”, anterior thoracic wall/internal thoracic vessels, Wikimedia Commons, public domain (U.S.).
-- Gambar 6 — “Azygos vein az.PNG”, Gray’s Anatomy plate via Wikimedia Commons, public domain.
-- Gambar 7 — “Dermatoms.svg”, Wikimedia Commons, public domain.
-- Gambar 8 — “Anatomy of the lymphatic system.jpg”, Wikimedia Commons, CC BY-SA 4.0; digunakan untuk jalur thoracic duct dan venous angles.
-- Gambar 10 — “Mediastinum anatomy.jpg”, Patrick J. Lynch/Yale via Wikimedia Commons, CC BY 2.5.
-- Gambar 11 — “RightSideOfChest.png”, Gray’s Anatomy via Wikimedia Commons, public domain; digunakan sebagai orientasi permukaan untuk rib counting.
-- Thoracic cage/landmark: materi OER anatomi berbasis OpenStax untuk orientasi sternum dan ribs.
-- “Gray530.png” — intercostal vessels and nerves, Gray’s Anatomy plate, Wikimedia Commons, public domain.
-- “Compartments of the mediastinum.png” — Wikimedia Commons, CC BY-SA 3.0.
+- [Iga: true, false, dan floating] True ribs/vertebrosternal ribs :: costa I–VII, masing-masing mempunyai hubungan langsung ke sternum melalui kartilago kostalisnya.
+- [Iga: true, false, dan floating] False ribs :: costa VIII–XII secara umum tidak mempunyai hubungan langsung independen ke sternum.
+- [Iga: true, false, dan floating] Vertebrochondral ribs :: costa VIII–X biasanya bergabung ke kartilago iga di atasnya sehingga berkontribusi pada costal margin.
+- [Iga: true, false, dan floating] Floating/free ribs :: costa XI–XII tidak mempunyai perlekatan anterior ke sternum atau costal margin.
+- [High-yield hubungan] posterior intercostal supply :: thoracic aorta + supreme intercostal artery untuk upper spaces
+- [High-yield hubungan] anterior intercostal supply :: internal thoracic/musculophrenic
+- [High-yield] Thoracic cage :: sternum + 12 pasang ribs/cartilages + 12 thoracic vertebrae
+- [High-yield] Urutan bundle dari superior ke inferior :: Vein–Artery–Nerve
+- [High-yield] Posterior mediastinum :: ingat esophagus, descending aorta, azygos system, thoracic duct, vagal/autonomic structures
+- [Lapisan dari superficial ke deep] Secara praktis, dari luar ke dalam dapat dipikirkan sebagai … :: • skin
+  • superficial fascia/subcutaneous tissue
+  • deep fascia dan otot dinding toraks
+  • endothoracic fascia
+  • parietal pleura
+- [Sternum] Sternum terdiri atas … :: • manubrium
+  • corpus sterni
+  • processus xiphoideus
+- [Typical rib] Iga tipikal, terutama iga 3–9, mempunyai … :: • head/caput dengan articular facets untuk corpus vertebra
+  • neck/collum
+  • tubercle/tuberculum yang berhubungan dengan transverse process vertebra yang sesuai
+  • angle
+  • shaft/body
+  • costal groove pada permukaan internal dekat tepi inferior
+- [Intercostal Nerves, Dermatomes, dan Sympathetic Connections] Typical intercostal nerve memberi … :: • muscular branches
+  • collateral branch
+  • lateral cutaneous branch, yang kemudian membelah anterior dan posterior
+  • anterior cutaneous branch dekat sternum
+  • sensory fibers ke kulit serta struktur parietal
+  • koneksi ke sympathetic trunk melalui rami communicantes
+- [Pembagian utama] Transverse thoracic plane dari sternal angle ke discus T4–T5 membagi mediastinum menjadi … :: • superior mediastinum
+  • inferior mediastinum
+- [Pembagian utama] Inferior mediastinum dibagi oleh hubungan dengan pericardium menjadi … :: • anterior mediastinum — antara sternum dan pericardium
+  • middle mediastinum — pericardium dan struktur yang berkaitan langsung dengan jantung/root of great vessels
+  • posterior mediastinum — antara pericardium dan columna vertebralis
+- [Posterior mediastinum] Posterior mediastinum berisi jalur longitudinal yang menghubungkan thorax dengan abdomen dan leher … :: • descending thoracic aorta
+  • esophagus
+  • thoracic duct
+  • azygos dan hemiazygos system
+  • vagal/esophageal plexus
+  • sympathetic trunks
+  • greater, lesser, dan least thoracic splanchnic nerves
+  • lymph nodes
+- [Phrenic vs vagus] Mnemonic relasional yang berguna :: phrenic nerve → anterior to root of lung; vagus nerve → posterior to root of lung.

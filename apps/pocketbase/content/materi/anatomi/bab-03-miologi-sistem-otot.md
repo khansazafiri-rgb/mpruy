@@ -115,28 +115,18 @@ Peta kompartemen yang perlu diingat: lengan anterior–musculocutaneus–fleksi 
 
 Bab ini memberi kerangka untuk bab Anatomi Ekstremitas Atas dan bab Anatomi Ekstremitas Bawah. Di sana tiap regio dapat diperdalam dengan origo–insersio rinci, jalur pembuluh dan saraf, ruang anatomi, serta sindrom klinis spesifik tanpa mengulang konsep dasar di sini.
 
-## Sumber & Atribusi {sumber}
+## Flashcard {kartu}
 
-PPT K3 — Anterior Thigh (FK UNAIR)
-
-PPT K5 — Glutea, Posterior Thigh, Popliteal Fossa (FK UNAIR)
-
-PPT K6 — Leg and Foot (FK UNAIR)
-
-PPT K7 — Pectoral and Scapular (FK UNAIR)
-
-PPT K9 — Arm and Elbow (FK UNAIR)
-
-PPT K10 — Forearm (FK UNAIR)
-
-[OpenStax, Anatomy & Physiology 2e, 10.2 Skeletal Muscle](https://openstax.org/books/anatomy-and-physiology-2e/pages/10-2-skeletal-muscle)
-
-[OpenStax, Anatomy & Physiology 2e, 11.1 Interactions of Skeletal Muscles](https://openstax.org/books/anatomy-and-physiology-2e/pages/11-1-interactions-of-skeletal-muscles-their-fascicle-arrangement-and-their-lever-systems)
-
-[OpenStax, Anatomy & Physiology 2e, 11.2 Naming Skeletal Muscles](https://openstax.org/books/anatomy-and-physiology-2e/pages/11-2-naming-skeletal-muscles)
-
-[OpenStax, Anatomy & Physiology 2e, 11.5 Upper Limbs](https://openstax.org/books/anatomy-and-physiology-2e/pages/11-5-muscles-of-the-pectoral-girdle-and-upper-limbs)
-
-[OpenStax, Anatomy & Physiology 2e, 11.6 Lower Limbs](https://pubmed.ncbi.nlm.nih.gov/30685220/)
-
-[PubMed — Acute compartment syndrome review (2019)](https://pubmed.ncbi.nlm.nih.gov/30685220/)
+- [Penggerak humerus yang perlu dikenali] Pectoralis major :: fleksi oleh bagian klavikular, adduksi, dan rotasi medial humerus; dipersarafi nervi pectorales.
+- [Penggerak humerus yang perlu dikenali] Deltoideus :: terutama abduksi humerus oleh serabut tengah; serabut anterior membantu fleksi/rotasi medial dan serabut posterior membantu ekstensi/rotasi lateral; dipersarafi nervus axillaris.
+- [Penggerak humerus yang perlu dikenali] Supraspinatus :: membantu memulai abduksi dan menstabilkan caput humeri; dipersarafi nervus suprascapularis.
+- [Penggerak humerus yang perlu dikenali] Infraspinatus dan teres minor :: rotasi lateral humerus; masing-masing dipersarafi nervus suprascapularis dan nervus axillaris.
+- [Penggerak humerus yang perlu dikenali] Subscapularis :: rotasi medial dan stabilisasi humerus; dipersarafi nervi subscapulares. Bersama supraspinatus, infraspinatus, dan teres minor, otot ini membentuk rotator cuff; teres major tidak termasuk rotator cuff.
+- [Penggerak humerus yang perlu dikenali] Latissimus dorsi dan teres major :: terutama ekstensi, adduksi, dan rotasi medial humerus; masing-masing dipersarafi nervus thoracodorsalis dan nervus subscapularis inferior.
+- [Korelasi Klinis dan Cara Memeriksa] Stabilisasi pelvis :: saat berdiri pada satu kaki, gluteus medius/minimus sisi tumpu menahan hemipelvis kontralateral. Bila mekanisme ini gagal, pelvis sisi yang diangkat turun (tanda Trendelenburg); pertimbangkan gangguan otot, tendon, sendi panggul, atau nervus gluteus superior sesuai konteks.
+- [Korelasi Klinis dan Cara Memeriksa] Ekstensi lutut dan refleks patella :: kekuatan quadriceps dinilai dengan meminta pasien mengekstensikan lutut melawan tahanan. Refleks patella menilai lengkung refleks femoralis terutama segmen L3–L4; hasilnya perlu ditafsirkan bersama pemeriksaan sensorik dan motorik.
+- [Korelasi Klinis dan Cara Memeriksa] Fleksi siku vs ekstensi siku :: bandingkan biceps/brachialis dengan triceps. Perhatikan posisi lengan bawah karena kontribusi biceps terhadap fleksi berubah dengan pronasi–supinasi.
+- [Korelasi Klinis dan Cara Memeriksa] Skapula dan bahu :: winging saat mendorong dinding mengarah pada kelemahan serratus anterior; atrofi deltoideus dan kelemahan abduksi setelah cedera bahu mengarahkan pemeriksaan nervus axillaris. Gerak bahu harus dinilai bersama gerak skapula.
+- [Korelasi Klinis dan Cara Memeriksa] Dorsifleksi kaki :: cedera nervus fibularis communis di sekitar collum fibulae dapat memutus jalur menuju kompartemen anterior dan lateral, sehingga timbul foot drop dengan kelemahan dorsifleksi dan sering eversi. Bedakan dari lesi yang lebih proksimal dengan pemeriksaan otot dan sensasi tambahan.
+- [Korelasi Klinis dan Cara Memeriksa] Kompartemen berfasia kaku :: peningkatan tekanan di dalamnya dapat mengganggu perfusi otot dan saraf. Nyeri berat yang tidak sebanding dengan temuan awal, terutama saat peregangan pasif, merupakan tanda bahaya klinis yang memerlukan evaluasi segera.
+- [High-yield] Peta kompartemen yang perlu diingat :: lengan anterior–musculocutaneus–fleksi siku; lengan posterior–radialis–ekstensi siku; paha anterior–femoralis–ekstensi lutut; paha medial–obturatorius–adduksi; paha posterior–ischiadicus (terutama divisi tibialis)–fleksi lutut; tungkai anterior–fibularis profundus–dorsifleksi; tungkai lateral–fibularis superficialis–eversi; tungkai posterior–tibialis–plantarfleksi

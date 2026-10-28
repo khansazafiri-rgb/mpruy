@@ -326,28 +326,36 @@ K14 menampilkan percussion sebagai clinical correlation. Perkusi membandingkan r
 - Lung autonomic plexus ≠ somatic innervation parietal pleura.
 - Thoracentesis anatomy harus mempertimbangkan VAN, diaphragm, inferior lung border, dan fluid location; jangan menghafal satu titik prosedur sebagai universal.
 
-## Sumber & Atribusi {sumber}
+## Flashcard {kartu}
 
-### Materi kuliah utama
-
-- K14 — Pleura et Pulmo, Anatomy Lecturer Team, Faculty of Medicine Universitas Airlangga, 2020. Digunakan untuk menentukan scope dan emphasis: pleural cavities, pleura/recesses, gross lung anatomy, trachea dan bronchi, bronchopulmonary segments, respiratory mechanics, pulmonary/bronchial vasculature, lymphatic drainage, innervation, percussion, pneumothorax, hemothorax/pleural effusion, dan thoracentesis.
-
-### Textbook enrichment
-
-- Drake RL, Vogl AW, Mitchell AWM. Gray’s Basic Anatomy. 3rd ed. Elsevier; 2023. Digunakan untuk memperkaya pleural reflections, surface boundaries, lung root/hilum, pulmonary ligament, bronchial tree, bronchopulmonary segment, dan hubungan phrenic–vagus. Gambar textbook berhak cipta tidak disalin.
-- Gray’s memberi cross-check landmark klasik inferior pleural boundary sekitar rib VIII midclavicular, rib X midaxillary, dan T12 posteriorly serta prinsip bronchopulmonary segment sebagai unit yang disuplai segmental bronchus dan pulmonary artery dengan veins intersegmental.
-
-### Academic enrichment dan gap-filling
-
-- OpenStax. Anatomy & Physiology 2e — The Lungs. Digunakan untuk cross-check gross lung anatomy, pleural layers, pulmonary circulation, dan bronchopulmonary organization.
-- NCBI Bookshelf/StatPearls — Anatomy, Thorax, Lungs; Lung Pleura and Mediastinum; Pleurae; Tracheobronchial Tree; dan Bronchial anatomy. Digunakan untuk cross-check innervation, bronchial circulation, lymphatic pathways, dan clinical-anatomy correlations.
-
-### Sumber visual
-
-- Gambar 1 — “2313 The Lung Pleurea.jpg”, OpenStax College via Wikimedia Commons, CC BY 3.0.
-- Gambar 2 — “2312 Gross Anatomy of the Lungs.jpg”, OpenStax College via Wikimedia Commons, CC BY 3.0.
-- Gambar 3 — “Birika hiloa.png”, Gray’s Anatomy/Henry Vandyke Carter via Wikimedia Commons, CC0 1.0; digunakan hanya sebagai orientasi hilum.
-- Gambar 4 — “Bronchial anatomy.jpg”, Patrick J. Lynch/Yale via Wikimedia Commons, CC BY 2.5.
-- Gambar 5 — “Bronchopulmonary segments.png”, Wikimedia Commons, public domain.
-- Gambar 6 — “2316 Inspiration and Expiration.jpg”, OpenStax College via Wikimedia Commons, CC BY 3.0.
-- Gambar 7 — “2119 Pulmonary Circuit.jpg”, OpenStax College via Wikimedia Commons, CC BY 3.0.
+- [Bagian pleura parietalis] Costal pleura :: melapisi permukaan internal ribs, intercostal spaces, dan lateral thoracic wall.
+- [Bagian pleura parietalis] Mediastinal pleura :: melapisi sisi lateral mediastinum dan berlanjut ke visceral pleura di root.
+- [Bagian pleura parietalis] Diaphragmatic pleura :: menutupi superior surface diaphragm.
+- [Bagian pleura parietalis] Cervical pleura/cupula :: memanjang ke root of neck di atas costa I; bagian ini diperkuat oleh suprapleural membrane/Sibson fascia.
+- [Bronchial Tree dan Peralihan ke Respiratory Zone] Urutan besar airway :: Trachea → main/primary bronchi → lobar/secondary bronchi → segmental/tertiary bronchi → smaller bronchi → bronchioles → terminal bronchioles → respiratory bronchioles → alveolar ducts → alveolar sacs/alveoli.
+- [Pulmonary Circulation] Alur utama :: Right ventricle → pulmonary trunk → right/left pulmonary arteries → lobar/segmental arterial branches → alveolar capillary networks → pulmonary venules → superior/inferior pulmonary veins → left atrium.
+- [Lymphatic Drainage] Aliran secara sederhana :: pulmonary/intrapulmonary nodes → bronchopulmonary (hilar) nodes → inferior dan superior tracheobronchial nodes → paratracheal nodes → bronchomediastinal trunks → venous angles atau lymphatic ducts sesuai sisi dan variasi.
+- [High-yield] Pleural cavity :: potential space dengan sedikit fluid, bukan rongga normal berisi udara
+- [High-yield] Pleural recess ≠ lung lobe. Costodiaphragmatic recess :: ruang potensial antara pleura costal dan diaphragmatic
+- [High-yield] Inferior border :: lung 6–8–10; pleura 8–10–12 pada landmark klasik
+- [High-yield] Lingula :: bagian superior lobe kiri, bukan lobe ketiga
+- [High-yield] RALS :: right pulmonary artery anterior to bronchus; left pulmonary artery superior to bronchus
+- [Batas permukaan klasik] Batas inferior lung pada quiet respiration secara klasik diproyeksikan kira-kira … :: • rib VI pada midclavicular line
+  • rib VIII pada midaxillary line
+  • rib X dekat scapular/paravertebral line
+- [Batas permukaan klasik] Pleural reflection turun sekitar dua iga lebih rendah … :: • rib VIII pada midclavicular line
+  • rib X pada midaxillary line
+  • mencapai sekitar rib XII posteriorly
+- [Root, Hilum, dan Pulmonary Ligament] Isi root secara umum … :: • main/lobar bronchus
+  • pulmonary artery
+  • superior dan inferior pulmonary veins
+  • bronchial arteries dan veins
+  • lymphatics dan bronchopulmonary nodes
+  • autonomic nerves dari pulmonary plexus
+  • connective tissue
+- [Relasi high-yield] Hubungan pulmonary artery dengan bronchus sering diingat dengan RALS … :: • Right pulmonary artery = Anterior terhadap bronchus
+  • Left pulmonary artery = Superior terhadap bronchus
+- [Lymphatic Drainage] Paru mempunyai dua jaringan lymphatic utama … :: • superficial/subpleural plexus di bawah visceral pleura
+  • deep plexus yang mengikuti bronchi dan pulmonary vessels
+- [Batas permukaan klasik] Mnemonic praktis: Batas permukaan klasik :: Lung 6–8–10, pleura 8–10–12. Angka ini adalah landmark anatomi klasik, bukan batas absolut; posisi berubah dengan fase respirasi, postur, habitus, dan variasi individual.
+- [Pulmonary Circulation] Exam trap: Pulmonary Circulation :: “artery” dan “vein” ditentukan arah aliran relatif terhadap heart, bukan oxygen content. Pulmonary artery membawa deoxygenated blood; pulmonary vein membawa oxygenated blood.

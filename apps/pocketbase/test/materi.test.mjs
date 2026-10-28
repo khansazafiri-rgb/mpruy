@@ -71,22 +71,25 @@ test('setiap catatan di index.json menunjuk BAB yang ada di katalog', () => {
   }
   const anatomi = cat.find((s) => s.slug === 'anatomi').chapters;
   assert.deepEqual(index.filter((e) => e.subject === 'anatomi').map((e) => e.chapter).sort(), [...anatomi].sort(), 'ke-20 BAB Anatomi lengkap, tanpa kurang atau lebih');
+  const histologi = cat.find((s) => s.slug === 'histologi').chapters;
+  assert.deepEqual(index.filter((e) => e.subject === 'histologi').map((e) => e.chapter).sort(), [...histologi].sort(), 'ke-12 BAB Histologi lengkap');
 });
 
 function seeded() {
   const f = fixture();
-  const subject = new Record(f.cols.subjects); subject.set('slug', 'anatomi'); f.app.save(subject);
-  const chapters = index.filter((e) => e.subject === 'anatomi').map((e) => {
-    const c = new Record(f.cols.chapters); c.set('subject', subject.id); c.set('title', e.chapter); c.set('drilling', false); f.app.save(c); return c;
+  const subjects = {};
+  [...new Set(index.map((e) => e.subject))].forEach((slug) => { const r = new Record(f.cols.subjects); r.set('slug', slug); f.app.save(r); subjects[slug] = r; });
+  const chapters = index.map((e) => {
+    const c = new Record(f.cols.chapters); c.set('subject', subjects[e.subject].id); c.set('title', e.chapter); c.set('drilling', false); f.app.save(c); return c;
   });
-  return { ...f, chapters };
+  return { ...f, chapters, subjects };
 }
 
 test('migrasi memasukkan catatan, dan aman dijalankan ulang', () => {
   const f = seeded();
   const logs = runMigration('1800002500_seed_materi.js', f.app);
   assert.equal(f.rows.chapter_notes.length, index.length);
-  assert.match(logs.at(-1), /20 dibuat, 0 diperbarui, 0 dilewati/);
+  assert.match(logs.at(-1), new RegExp(`${index.length} dibuat, 0 diperbarui, 0 dilewati`));
   assert.ok(f.rows.chapter_notes.every((n) => n.getString('content').startsWith(MARK)));
   runMigration('1800002500_seed_materi.js', f.app);
   assert.equal(f.rows.chapter_notes.length, index.length, 'tidak ada catatan ganda');
@@ -99,7 +102,7 @@ test('catatan tulisan admin tidak ditimpa, catatan hasil impor boleh diperbarui'
   const logs = runMigration('1800002500_seed_materi.js', f.app);
   assert.equal(hand.getString('content'), '**Tulisan admin**');
   assert.ok(old.getString('content').length > 5000, 'versi impor lama diganti');
-  assert.match(logs.at(-1), /18 dibuat, 1 diperbarui, 1 dilewati/);
+  assert.match(logs.at(-1), new RegExp(`${index.length - 2} dibuat, 1 diperbarui, 1 dilewati`));
 });
 
 test('BAB yang tidak ditemukan hanya dilaporkan', () => {
@@ -107,5 +110,59 @@ test('BAB yang tidak ditemukan hanya dilaporkan', () => {
   const subject = new Record(f.cols.subjects); subject.set('slug', 'anatomi'); f.app.save(subject);
   const logs = runMigration('1800002500_seed_materi.js', f.app);
   assert.equal(f.rows.chapter_notes.length, 0);
-  assert.match(logs.at(-1), /0 dibuat.*20 BAB tidak ditemukan/);
+  assert.match(logs.at(-1), new RegExp(`0 dibuat.*${index.length} BAB tidak ditemukan`));
+});
+
+// ---- pemasangan saat PocketBase mulai (pb_hooks/lib/materiSync.js) ----
+import { createHash } from 'node:crypto';
+
+function runSync(app) {
+  const mod = { exports: {} };
+  const logs = [];
+  vm.runInNewContext(readFileSync(new URL('../pb_hooks/lib/materiSync.js', import.meta.url), 'utf8'), {
+    module: mod, __hooks: hooks, $os: { readFile: (p) => readFileSync(p) }, toString: (b) => b.toString('utf8'), Record, JSON,
+    $security: { sha256: (t) => createHash('sha256').update(t).digest('hex') },
+    console: { log: (m) => logs.push(m) },
+  });
+  return { r: mod.exports.sync(app), logs };
+}
+const sha = (t) => createHash('sha256').update(t).digest('hex');
+const fileOf = (i) => readFileSync(new URL(index[i].file, contentRoot), 'utf8');
+
+test('sinkronisasi: membuat catatan, berikut sidik jarinya, dan idempoten', () => {
+  const f = seeded();
+  const { r } = runSync(f.app);
+  assert.equal(r.made, index.length);
+  assert.ok(f.rows.chapter_notes.every((n) => n.getString('seedHash') === sha(n.getString('content'))));
+  const again = runSync(f.app).r;
+  assert.deepEqual([again.made, again.updated, again.same], [0, 0, index.length]);
+});
+
+test('sinkronisasi: memperbarui yang belum disunting, melewati yang disunting admin atau tulisan tangan', () => {
+  const f = seeded();
+  runSync(f.app);
+  const [a, b, c, d] = f.rows.chapter_notes;
+  const idxA = f.chapters.findIndex((ch) => ch.id === a.getString('chapter'));
+  // a: versi lama hasil impor yang belum disunting (hash cocok) -> diperbarui
+  a.set('content', `${MARK}\n\n## Versi lama`); a.set('seedHash', sha(a.getString('content')));
+  // b: hasil impor yang kemudian disunting admin (hash tidak cocok) -> dilewati
+  b.set('seedHash', sha(b.getString('content'))); b.set('content', `${MARK}\n\n## Disunting admin`); const bBefore = b.getString('content');
+  // c: tulisan tangan tanpa penanda dan tanpa sidik jari -> dilewati
+  c.set('content', '**Tulisan admin**'); c.set('seedHash', '');
+  // d: hasil pemasangan lama (penanda, belum ada sidik jari) -> diperbarui
+  d.set('content', `${MARK}\n\n## Lama`); d.set('seedHash', '');
+  const r = runSync(f.app).r;
+  assert.equal(r.updated, 2);
+  assert.equal(r.skipped, 2);
+  assert.equal(a.getString('content'), fileOf(idxA));
+  assert.equal(b.getString('content'), bBefore);
+  assert.equal(c.getString('content'), '**Tulisan admin**');
+  assert.ok(d.getString('content').length > 5000);
+  assert.equal(d.getString('seedHash'), sha(d.getString('content')));
+});
+
+test('sinkronisasi: BAB hilang dilaporkan, tanpa berkas index tidak apa-apa', () => {
+  const f = fixture();
+  const s0 = new Record(f.cols.subjects); s0.set('slug', 'anatomi'); f.app.save(s0);
+  assert.equal(runSync(f.app).r.missing, index.length);
 });

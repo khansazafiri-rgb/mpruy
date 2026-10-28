@@ -17,6 +17,9 @@ import re
 import sys
 import unicodedata
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import flashcards
+
 import docx
 from docx.oxml.ns import qn
 
@@ -90,12 +93,14 @@ INTERNAL_LINE = re.compile(
 INTERNAL_ANY = re.compile(r'retrieval|knowledge base|\[CEK\]|master note|PPT dosen|bahan yang tersedia|dokumen master', re.I)
 
 CALLOUT_RULES = [
-    # (regex awalan, jenis, judul)
+    # (regex awalan, jenis, judul). Urutan penting: yang lebih khusus dulu.
     (re.compile(r'^(Clinical anchors?|Clinical correlation|Clinical relation|Clinical orientation|Clinical landmark|'
                 r'Clinical reasoning|Clinical pearl|Contoh klinis|Klinis)\s*:\s*', re.I), 'klinis', None),
-    (re.compile(r'^(Exam trap|Jebakan penting|Jebakan ujian)\s*:\s*', re.I), 'warning', None),
+    (re.compile(r'^(Exam trap|Jebakan penting|Jebakan ujian|Trap(?: utama| ujian)?|Practical trap|Praktikum trap|'
+                r'High-yield trap|High-yield correction)\s*:\s*', re.I), 'warning', None),
+    (re.compile(r'^(Praktikum|Practical clue|Practical rule|Practical emphasis|Shortcut praktikum|Clue(?: terkuat)?)\s*:\s*', re.I), 'praktikum', None),
     (re.compile(r'^(High-yield(?: distinction| principle)?|Konsep high-yield|Poin penting|Konsep penting)\s*:\s*', re.I), 'highyield', None),
-    (re.compile(r'^(Mnemonic(?: praktis)?|Kulit kepala dapat diingat sebagai SCALP)\s*:\s*', re.I), 'tip', None),
+    (re.compile(r'^(Mnemonic(?: praktis| visual| relasional| konseptual)?(?: [^:]{0,30})?)\s*:\s*', re.I), 'tip', None),
 ]
 
 SOURCE_H2 = re.compile(r'^(sumber dan provenance|rujukan dan atribusi gambar|sumber(?: dan atribusi)?)$', re.I)
@@ -115,10 +120,10 @@ def slug(s, limit=48):
 # 1. Paragraf mentah dari .docx (teks + tautan, tanpa gaya yang bocor)
 # ----------------------------------------------------------------------------
 class Para:
-    __slots__ = ('i', 'lvl', 'text', 'blank_before', 'has_img')
+    __slots__ = ('i', 'lvl', 'text', 'blank_before', 'has_img', 'trail')
 
-    def __init__(self, i, lvl, text, blank_before, has_img):
-        self.i, self.lvl, self.text, self.blank_before, self.has_img = i, lvl, text, blank_before, has_img
+    def __init__(self, i, lvl, text, blank_before, has_img, trail=False):
+        self.i, self.lvl, self.text, self.blank_before, self.has_img, self.trail = i, lvl, text, blank_before, has_img, trail
 
     def __repr__(self):
         return f'<P{self.i} L{self.lvl} {self.text[:40]!r}>'
@@ -146,7 +151,8 @@ def read_paragraphs(path):
     rels = d.part.rels
     out, blank = [], True
     for i, p in enumerate(d.paragraphs):
-        t = inline_text(p, rels).replace('\u00a0', ' ').strip()
+        raw = inline_text(p, rels).replace('\u00a0', ' ')
+        t = raw.strip()
         if t.startswith('• ') and re.search(r'\S• ', t):
             t = '• ' + re.split(r'(?<=\S)• ', t)[-1].strip()   # butir menempel pada butir sebelumnya (ekspor Docs)
         if not t:
@@ -154,7 +160,7 @@ def read_paragraphs(path):
             continue
         name = p.style.name
         lvl = int(name[-1]) if name.startswith('Heading') else 0
-        out.append(Para(i, lvl, t, blank, False))
+        out.append(Para(i, lvl, t, blank, False, raw != raw.rstrip()))
         blank = False
     return out
 
@@ -188,7 +194,7 @@ def classify(paras):
     n = len(paras)
     for idx, p in enumerate(paras):
         t = p.text
-        base = {'src': p.i, 'blank_before': p.blank_before}
+        base = {'src': p.i, 'blank_before': p.blank_before, 'trail': p.trail}
         m_h2 = H2_NUM.match(t)
         m_h3 = H3_NUM.match(t)
         m_ln = re.match(r'^\[(\d{1,2})\.\s+(.*)$', t)
@@ -216,7 +222,7 @@ def classify(paras):
         elif m_h2 and (p.lvl == 2 or p.lvl == 3) and len(t) <= 110 and not re.search(r'[.;]$', t):
             # H2 bernomor; pada BAB berbagian (A–D) yang bernomor adalah H3, dipromosikan nanti.
             toks.append({**base, 'k': 'h2' if p.lvl == 2 else 'h3', 'text': t, 'numbered': True})
-        elif p.lvl == 2 and (H2_LETTER.match(t) or (len(t) < 70 and not t.endswith('.'))) and not t.startswith('http'):
+        elif p.lvl == 2 and (H2_LETTER.match(t) or (len(t) < 70 and not re.search(r'[.:;,]$', t))) and not t.startswith('http'):
             toks.append({**base, 'k': 'h2', 'text': t})
         elif m_h2 and len(t) <= 90 and not re.search(r'[.;:,]$', t) and p.blank_before:
             toks.append({**base, 'k': 'h2', 'text': t, 'numbered': True})
@@ -228,6 +234,45 @@ def classify(paras):
             toks.append({**base, 'k': 'h3', 'text': t})
         else:
             toks.append({**base, 'k': 'p', 'text': t, 'style_lvl': p.lvl})
+    return toks
+
+
+def merge_fragments(toks):
+    """Paragraf yang terbelah oleh blok gambar (ekspor dokumen menyisipkan gambar di tengah kalimat, judul,
+    atau keterangan, kadang di tengah kata) disambung lagi; gambarnya tetap di tempatnya."""
+    toks = [dict(t) for t in toks]
+    drop = set()
+    incomplete = lambda t: not re.search(r'[.!?;:)”"\]]$', t['text'])
+    for k, b in enumerate(toks):
+        if b['k'] not in ('p', 'h2', 'h3') or not re.match(r'^[a-z.,;:)]', b['text']):
+            continue
+        r = k
+        while r > 0 and toks[r - 1]['k'] in ('img', 'cap'):
+            r -= 1
+        if r == k:
+            continue
+        target = None
+        for q in range(k - 1, r - 1, -1):          # keterangan gambar yang terpotong lebih dekat daripada teks sebelum gambar
+            if toks[q]['k'] == 'cap':
+                if incomplete(toks[q]):
+                    target = q
+                break
+        if target is None and r > 0 and toks[r - 1]['k'] in ('p', 'h2', 'h3', 'li') and incomplete(toks[r - 1]):
+            target = r - 1
+        if target is None:
+            continue
+        a = toks[target]
+        a['text'] = a['text'] + (' ' if a.get('trail') else '') + b['text']
+        a['trail'] = b.get('trail', False)
+        if a['k'] == 'cap' and any(t['k'] == 'img' for t in toks[target + 1:k]):
+            toks[k] = a                 # keterangan terpotong oleh gambar: letakkan setelah gambar-gambar itu
+            drop.add(target)
+        else:
+            drop.add(k)
+    return [t for i, t in enumerate(toks) if i not in drop]
+
+
+def auto_headings(toks):
     # Subjudul polos (gaya bocor / tanpa gaya): baris pendek tanpa tanda baca, didahului baris kosong,
     # langsung diikuti butir atau paragraf.
     for j, tk in enumerate(toks):
@@ -378,30 +423,66 @@ def callout_for(t):
 class Ctx:
     def __init__(self, num, subject, names):
         self.num, self.subject, self.names = num, subject, names
-        self.fig_map = {}      # label lama ("6.4") -> nomor urut baru
-        self.figs = []         # {old, new, url, caption, credit}
+        self.fig_map = {}      # label lama ("6.4") -> nomor urut baru (kemunculan pertama bila label ganda)
+        self.pre_count = 0     # jumlah gambar menurut pemindaian awal
+        self.render_n = 0
+        self.figs = []         # {old, new, urls, caption, credit}
         self.dropped = []      # (src, text, alasan) untuk laporan
         self.autoheads = []
         self.last_heading = ''
 
-    def fig_new(self, old):
-        if old not in self.fig_map:
-            self.fig_map[old] = len(self.fig_map) + 1
-        return self.fig_map[old]
+
+def figure_groups(run):
+    """Satu rangkaian tautan gambar + keterangan -> daftar gambar.
+
+    Dokumen menaruh beberapa gambar berurutan lalu keterangannya. Sebanyak gambar = sebanyak keterangan: berpasangan
+    berurutan. Satu keterangan untuk beberapa gambar: satu galeri. Keterangan sebelum gambar (urutan terbalik) ikut
+    gambar sesudahnya."""
+    segs, imgs, caps = [], [], []
+    for tk in run:
+        if tk['k'] == 'img':
+            if caps and imgs:
+                segs.append((imgs, caps))
+                imgs, caps = [], []
+            imgs.append(tk)
+        else:
+            caps.append(tk)
+    if imgs or caps:
+        segs.append((imgs, caps))
+    out = []
+    for imgs, caps in segs:
+        if not imgs:
+            out.extend({'imgs': [], 'cap': c, 'warn': ''} for c in caps)
+        elif len(caps) == len(imgs):
+            out.extend({'imgs': [im], 'cap': c, 'warn': ''} for im, c in zip(imgs, caps))
+        else:
+            warn = f'{len(imgs)} gambar dengan {len(caps)} keterangan' if len(caps) > 1 else ''
+            out.append({'imgs': imgs, 'cap': caps[0] if caps else None, 'warn': warn})
+    return out
+
+
+def runs_in(toks):
+    i, n = 0, len(toks)
+    while i < n:
+        if toks[i]['k'] in ('img', 'cap'):
+            j = i
+            while j < n and toks[j]['k'] in ('img', 'cap'):
+                j += 1
+            yield i, j
+            i = j
+        else:
+            i += 1
 
 
 def prescan_figures(toks, ctx):
-    """Tetapkan nomor gambar baru menurut urutan kemunculan tautan gambar di BAB."""
-    for i, tk in enumerate(toks):
-        if tk['k'] != 'img':
-            continue
-        cap = None
-        if i + 1 < len(toks) and toks[i + 1]['k'] == 'cap':
-            cap = toks[i + 1]
-        elif i > 0 and toks[i - 1]['k'] == 'cap':
-            cap = toks[i - 1]
-        m = CAPTION.match(cap['text']) if cap else None
-        ctx.fig_new(m.group(1) if m else f'x{len(ctx.fig_map) + 1}')
+    """Nomor gambar baru menurut urutan kemunculan; rujukan "Gambar 6.4" di teks dipetakan ke nomor baru."""
+    for i, j in runs_in(toks):
+        for fg in figure_groups(toks[i:j]):
+            if not fg['imgs']:
+                continue
+            ctx.pre_count += 1
+            m = CAPTION.match(fg['cap']['text']) if fg['cap'] else None
+            ctx.fig_map.setdefault(m.group(1) if m else f'x{ctx.pre_count}', ctx.pre_count)
 
 
 def fix_fig_refs(text, ctx):
@@ -464,28 +545,20 @@ def render_blocks(toks, ctx, in_sources=False):
         tk = toks[i]
         k = tk['k']
         if k in ('img', 'cap'):
-            # gambar + keterangan (urutan di dokumen: tautan lalu keterangan; sebagian terbalik)
-            img = cap = None
-            if k == 'img':
-                img = tk
-                if i + 1 < n and toks[i + 1]['k'] == 'cap':
-                    cap = toks[i + 1]
-                    i += 1
-            else:
-                cap = tk
-                if i + 1 < n and toks[i + 1]['k'] == 'img':
-                    img = toks[i + 1]
-                    i += 1
-            m = CAPTION.match(cap['text']) if cap else None
-            old = m.group(1) if m else f'x{len(ctx.figs) + 1}'
-            new = ctx.fig_new(old)
-            cap_text = prose(m.group(2), ctx) if m else (f'Ilustrasi pendukung: {ctx.last_heading}' if ctx.last_heading else 'Ilustrasi pendukung')
-            ctx.figs.append({'old': old, 'new': new, 'url': img['url'] if img else '', 'caption': cap_text, 'src': tk['src']})
-            if img is None:
-                ctx.dropped.append((tk['src'], tk['text'], 'keterangan gambar tanpa tautan'))
-            else:
+            j = i
+            while j < n and toks[j]['k'] in ('img', 'cap'):
+                j += 1
+            for fg in figure_groups(toks[i:j]):
+                if not fg['imgs']:
+                    ctx.dropped.append((fg['cap']['src'], fg['cap']['text'], 'keterangan gambar tanpa tautan'))
+                    continue
+                m = CAPTION.match(fg['cap']['text']) if fg['cap'] else None
+                ctx.render_n += 1
+                old = m.group(1) if m else f'x{ctx.render_n}'
+                cap_text = prose(m.group(2), ctx) if m else (f'Ilustrasi pendukung: {ctx.last_heading}' if ctx.last_heading else 'Ilustrasi pendukung')
+                ctx.figs.append({'old': old, 'new': ctx.render_n, 'urls': [im['url'] for im in fg['imgs']], 'caption': cap_text, 'src': fg['imgs'][0]['src'], 'warn': fg['warn']})
                 out.append(('fig', len(ctx.figs) - 1))
-            i += 1
+            i = j
             continue
         if k == 'li' or k == 'nli':
             items = []
@@ -630,7 +703,9 @@ def split_caption_credit(cap):
 def fig_md(f):
     cap = f['caption'].replace('[', '(').replace(']', ')')
     title = f' "{esc_title(f["credit"])}"' if f.get('credit') else ''
-    return f'![{cap}]({f["url"]}{title})'
+    lines = [f'![]({u})' for u in f['urls'][:-1]]      # galeri: gambar tanpa keterangan, yang terakhir membawa keterangan
+    lines.append(f'![{cap}]({f["urls"][-1]}{title})')
+    return '\n'.join(lines)
 
 
 def chapter_to_md(ch, subject, report, names):
@@ -662,13 +737,20 @@ def chapter_to_md(ch, subject, report, names):
             ctx.dropped.append((s['src'], s['raw'], 'bagian internal (ringkasan untuk AI)'))
             continue
         if s['kind'] == 'sumber':
-            continue  # dirakit di akhir
+            continue
         if s['kind'] == 'part':
             parts.append(f"# Bagian {s['letter']}: {s['title']}")
             continue
         ctx.last_heading = s['title']
         parts.append('## ' + s['title'] + ('' if s['kind'] == 'isi' else ' {' + s['kind'] + '}'))
-        blocks = render_blocks(s['toks'], ctx)
+        toks_ = s['toks']
+        if s['kind'] == 'highyield':
+            # Ringkasan yang ditulis sebagai kalimat-kalimat pendek terpisah dijadikan daftar (bisa dicentang siswa).
+            toks_ = [dict(t, k='li') if (t['k'] == 'p' and len(t['text']) <= 240 and not t['text'].endswith(':')
+                                         and not callout_for(t['text'])
+                                         and not (q and toks_[q - 1]['k'] == 'p' and toks_[q - 1]['text'].endswith(':')))
+                     else t for q, t in enumerate(toks_)]
+        blocks = render_blocks(toks_, ctx)
         for b in blocks:
             if b[0] == 'fig':
                 f = ctx.figs[b[1]]
@@ -677,34 +759,20 @@ def chapter_to_md(ch, subject, report, names):
                 f['credit'] = cr or credits.get(f['old'], '')
                 if f['credit']:
                     f['caption'] = re.sub(r'\s*Visual [^.]*(?:\.(?=\d)[^.]*)*\.?$', '', f['caption']).strip()
-                if not f['credit'] and ordered and len(ordered) == len(ctx.fig_map):
+                if not f['credit'] and ordered and len(ordered) == ctx.pre_count:
                     f['credit'] = ordered[f['new'] - 1]
                 parts.append(fig_md(f))
             else:
                 parts.append(b[1])
-    # bagian sumber
+    # Bagian "Sumber & atribusi" di akhir BAB tidak dimasukkan: atribusi tiap gambar sudah tampil di bawah gambarnya.
     for s in sections:
-        if s['kind'] != 'sumber':
-            continue
-        keep, skip = [], False
-        for tk in s['toks']:
-            if tk['k'] == 'h3' or re.match(r'^Catatan editorial:?$', tk['text'], re.I):
-                skip = bool(re.search(r'catatan editorial', tk['text'], re.I))
-                if skip:
-                    ctx.dropped.append((tk['src'], tk['text'], 'catatan editorial'))
-            if skip:
-                if tk['k'] != 'h3':
-                    ctx.dropped.append((tk['src'], tk['text'], 'catatan editorial (isi)'))
-                continue
-            if tk['k'] in ('li', 'nli', 'p') and (INTERNAL_LINE.match(tk['text']) or INTERNAL_ANY.search(tk['text'])):
-                ctx.dropped.append((tk['src'], tk['text'], 'baris internal di sumber'))
-                continue
-            keep.append(tk)
-        blocks = render_blocks(keep, ctx, in_sources=True)
-        if blocks:
-            parts.append('## Sumber & Atribusi {sumber}')
-            parts.extend(b[1] for b in blocks if b[0] == 'md')
+        if s['kind'] == 'sumber':
+            ctx.dropped.append((s['src'], s['raw'], 'bagian sumber & atribusi (atribusi ada di tiap gambar)'))
     md = '\n\n'.join(parts).rstrip() + '\n'
+    cards = flashcards.make_cards(md)
+    if cards:
+        md += '\n' + flashcards.cards_md(cards) + '\n'
+    ctx.n_cards = len(cards)
     report[ch['num']] = {'missing': verify_chapter(ch, md, ctx), 'figs': len(ctx.figs), 'dropped': ctx.dropped, 'autoheads': ctx.autoheads,
                          'pre': [t['text'][:90] for t in pre], 'ctx': ctx}
     return md
@@ -726,7 +794,7 @@ def verify_chapter(ch, md, ctx):
     body = _norm(md)
     missing = []
     for s in sections:
-        if s['kind'] in ('drop', 'part'):
+        if s['kind'] in ('drop', 'part', 'sumber'):
             continue
         for tk in s['toks']:
             if tk['src'] in dropped_src or tk['k'] in ('img', 'cap'):
@@ -750,7 +818,7 @@ def main():
     ap.add_argument('--report', action='store_true', help='cetak laporan: yang dibuang, subjudul otomatis, gambar tanpa atribusi')
     a = ap.parse_args()
     paras = read_paragraphs(a.docx)
-    toks = classify(paras)
+    toks = auto_headings(merge_fragments(classify(paras)))
     chapters = split_chapters(toks)
     if not chapters:
         sys.exit('Tidak ada judul "Bab N — ..." (Heading 1) di dokumen.')
@@ -778,7 +846,7 @@ def main():
         f.write('\n')
     if a.report:
         for num, r in report.items():
-            print(f'== Bab {num}: {r["figs"]} gambar; dibuang {len(r["dropped"])}; subjudul otomatis {len(r["autoheads"])}')
+            print(f'== Bab {num}: {r["figs"]} gambar; {r["ctx"].n_cards} kartu; dibuang {len(r["dropped"])}; subjudul otomatis {len(r["autoheads"])}')
             for x in r['pre']:
                 print('   pembuka:', x)
             for src, t, why in r['dropped']:
@@ -788,6 +856,8 @@ def main():
             for src_i, t in r['missing']:
                 print(f'   ?? hilang ({src_i}): {t}')
             for f in r['ctx'].figs:
+                if f.get('warn'):
+                    print(f"   ? gambar {f['new']}: {f['warn']}")
                 if not f.get('credit'):
                     print(f"   ! gambar {f['new']} (asal {f['old']}) tanpa atribusi: {f['caption'][:70]}")
 

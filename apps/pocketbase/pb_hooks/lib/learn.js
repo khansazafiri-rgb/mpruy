@@ -304,4 +304,14 @@ function notedChapters(app, subjectId) {
   return new Set(rows.map((r) => r.chapter));
 }
 
-module.exports = { notedChapters, DIFFS, DRILLING_TITLE, drillingChapter, ensureDrillingChapter, drillingStatus, pool, pickBalanced, pickMixed, bySource, shuffle, loadQuestions, chapterTitles, serialize, grade, hasResponse, pointsFor, bumpDaily };
+// BAB yang catatannya memuat bagian flashcard ("## Flashcard {kartu}"). Hanya id yang dibaca.
+function cardChapters(app, subjectId) {
+  const rows = arrayOf(new DynamicModel({ chapter: "" }));
+  app.db().newQuery(
+    "SELECT n.chapter AS chapter FROM chapter_notes n JOIN chapters c ON c.id = n.chapter " +
+      "WHERE c.subject = {:s} AND c.hidden = FALSE AND c.drilling = FALSE AND n.content LIKE {:k}",
+  ).bind({ s: subjectId, k: "%## Flashcard {kartu}%" }).all(rows);
+  return new Set(rows.map((r) => r.chapter));
+}
+
+module.exports = { cardChapters, notedChapters, DIFFS, DRILLING_TITLE, drillingChapter, ensureDrillingChapter, drillingStatus, pool, pickBalanced, pickMixed, bySource, shuffle, loadQuestions, chapterTitles, serialize, grade, hasResponse, pointsFor, bumpDaily };

@@ -364,29 +364,43 @@ Spleen sangat vascular dan berdekatan dengan lower left ribs. Trauma dapat mengh
 - Splenic vein + SMV → portal vein.
 - Rectal varices ≠ hemorrhoids.
 
-## Sumber & Atribusi {sumber}
+## Flashcard {kartu}
 
-### Materi kuliah utama
-
-- K17 — Blood Supply of the Abdominal Viscera, Anatomi FK Universitas Airlangga. Digunakan untuk celiac trunk, SMA, IMA, abdominal venous pathways, hepatic portal vein, dan portosystemic anastomoses.
-- K18 — Hollow Organ, Anatomi FK Universitas Airlangga. Digunakan untuk urutan esophagus–stomach–duodenum–jejunum/ileum–large intestine–rectum/anal canal, gross landmarks, vessels, lymphatics, dan clinical orientation.
-- K19 — Accessories Digestive Organ, Anatomi FK Universitas Airlangga. Digunakan untuk liver, gallbladder/biliary tract, pancreas, spleen, abdominal lymphatics, dan autonomic innervation.
-
-### Textbook dan academic enrichment
-
-- Drake RL, Vogl AW, Mitchell AWM. Gray’s Basic Anatomy. 3rd ed. Elsevier; 2023. Digunakan untuk memperjelas peritoneal status, relations, vascular courses, mesenteries, and clinical anatomy tanpa menyalin teks.
-- OpenStax. Anatomy & Physiology 2e — digestive system chapters. Digunakan untuk cross-check gross organ organization dan sebagai sumber visual open-license.
-- Pengayaan akademik digunakan untuk detail yang tidak eksplisit pada slide scan. Scope, urutan besar, dan emphasis tetap mengikuti K17–K19.
-
-### Sumber visual
-
-- Gambar 1 — “2401 Components of the Digestive System.jpg”, OpenStax College via Wikimedia Commons, CC BY 3.0.
-- Gambar 2 — “2414 Stomach.jpg”, OpenStax College via Wikimedia Commons, CC BY 3.0.
-- Gambar 3 — “Arterial arcades.JPG”, Anatomist90 via Wikimedia Commons, CC BY-SA 3.0; digunakan untuk orientasi mesenteric arterial arcades dan vasa recta.
-- Gambar 4 — “2420 Large Intestine.jpg”, OpenStax College via Wikimedia Commons, CC BY 3.0.
-- Gambar 5 — “Colonic blood supply.svg”, Filip em via Wikimedia Commons, CC BY 3.0.
-- Gambar 6 — “Anatomy of the anal canal.png”, Congedo et al. via Wikimedia Commons, CC BY 4.0.
-- Gambar 7 — “Celiac Trunk and Branches.jpg”, Dennis M. DePace via Wikimedia Commons, CC BY-SA 4.0.
-- Gambar 8 — “2138 Hepatic Portal Vein System.jpg”, OpenStax College via Wikimedia Commons, CC BY 3.0.
-- Gambar 9 — “Liver Diagram.svg”, T Sheasby via Wikimedia Commons, CC BY-SA 3.0. Ilustrasi memiliki pola hepatic vein atipikal dan digunakan hanya untuk orientasi gross liver–biliary anatomy.
-- Gambar 10 — “1820 The Pancreas.jpg”, OpenStax College via Wikimedia Commons, CC BY 3.0.
+- [Parts dan external landmarks] Cardia :: regio di sekitar gastroesophageal opening.
+- [Parts dan external landmarks] Fundus :: dome superior-lateral terhadap cardia, sering berhubungan dengan left dome diaphragm.
+- [Parts dan external landmarks] Body :: bagian terbesar antara fundus dan pyloric part.
+- [Parts dan external landmarks] Pyloric part :: terdiri atas pyloric antrum, pyloric canal, dan pylorus yang berlanjut ke duodenum.
+- [Parts dan external landmarks] Lesser curvature :: batas kanan/medial yang cekung; menjadi attachment lesser omentum.
+- [Parts dan external landmarks] Greater curvature :: batas kiri/inferior yang konveks; memberi attachment gastrosplenic dan gastrocolic components.
+- [Parts dan external landmarks] Rugae :: lipatan mukosa yang menonjol ketika stomach relatif kosong.
+- [Empat bagian] Superior/first part :: mulai dari pylorus dan berjalan posterolateral; proximal segment sering disebut duodenal cap/bulb.
+- [Empat bagian] Descending/second part :: turun di sisi kanan vertebral column dan menerima common bile duct serta main pancreatic duct pada major duodenal papilla melalui hepatopancreatic ampulla. Accessory pancreatic duct, bila paten, dapat membuka di minor papilla.
+- [Empat bagian] Horizontal/third part :: melintas dari kanan ke kiri; secara klasik berada anterior terhadap aorta/IVC dan posterior terhadap SMA/SMV.
+- [Empat bagian] Ascending/fourth part :: naik ke kiri menuju duodenojejunal flexure, yang ditopang suspensory muscle/ligament of Treitz.
+- [Jejunum dan Ileum] Jejunum :: diameter lebih besar, wall lebih tebal, warna lebih merah, plicae circulares lebih tinggi/rapat.
+- [Jejunum dan Ileum] Ileum :: diameter relatif lebih kecil, wall lebih tipis, plicae berkurang ke distal, dan aggregated lymphoid nodules/Peyer patches lebih menonjol.
+- [Jejunum dan Ileum] Jejunal mesentery :: lebih sedikit arterial arcades dan vasa recta lebih panjang.
+- [Jejunum dan Ileum] Ileal mesentery :: lebih banyak arterial arcades, vasa recta lebih pendek, dan fat lebih banyak mendekati bowel wall.
+- [Pectinate line] Lymphatic drainage juga berubah :: rectum mengalir ke pararectal/inferior mesenteric dan internal iliac pathways sesuai level; anal canal di bawah pectinate line terutama menuju superficial inguinal nodes.
+- [Portosystemic anastomoses] Lower esophagus :: left gastric vein (portal) ↔ esophageal/azygos veins (systemic). Dilatasi dapat membentuk esophageal varices.
+- [Portosystemic anastomoses] Paraumbilical region :: paraumbilical veins (portal) ↔ superficial epigastric/systemic veins. Dilatasi dapat menghasilkan pola caput medusae.
+- [Portosystemic anastomoses] Rectal region :: superior rectal vein (portal via IMV) ↔ middle/inferior rectal veins (systemic). Portal hypertension dapat menyebabkan rectal varices.
+- [Parts dan relations] Head :: berada dalam C-loop duodenum.
+- [Parts dan relations] Uncinate process :: menonjol dari inferior head dan berhubungan posterior terhadap superior mesenteric vessels.
+- [Parts dan relations] Neck :: pendek; portal vein umumnya terbentuk posterior terhadap neck dari SMV + splenic vein.
+- [Parts dan relations] Body :: melintas ke kiri di depan aorta dan struktur posterior wall; splenic artery berjalan sepanjang superior border.
+- [Parts dan relations] Tail :: mencapai splenic hilum dalam splenorenal ligament dan berdekatan dengan splenic vessels.
+- [High-yield] Celiac branches klasik :: left gastric, splenic, common hepatic
+- [High-yield] SMA branches high-yield :: inferior pancreaticoduodenal, jejunal/ileal, ileocolic, right colic, middle colic
+- [High-yield] IMA branches :: left colic, sigmoid, superior rectal
+- [High-yield] Posterior duodenal ulcer :: pikirkan gastroduodenal artery
+- [High-yield] Large intestine :: taeniae coli + haustra + appendices epiploicae
+- [High-yield] IMV paling sering :: splenic vein, tetapi variasi ada
+- [High-yield] Hepatic veins :: IVC langsung; bukan melalui porta hepatis
+- [High-yield] Gallbladder: fundus–body–neck :: cystic duct
+- [High-yield] Cystic duct + common hepatic duct :: common bile duct
+- [High-yield] CBD + main pancreatic duct :: hepatopancreatic ampulla/major papilla pada pola klasik
+- [High-yield] Gastrosplenic ligament :: short gastric + left gastro-omental vessels
+- [High-yield] Splenorenal ligament :: splenic vessels + tail pancreas
+- [High-yield] Splenic vein + SMV :: portal vein
+- [Vascular dan lymphatic supply] Clinical relation: Vascular dan lymphatic supply :: Splenic trauma dapat menyebabkan major intraperitoneal bleeding karena organ sangat vascular. Fraktur lower left ribs dapat berhubungan dengan splenic injury; diagnosis dan management membutuhkan penilaian trauma, bukan anatomi saja.

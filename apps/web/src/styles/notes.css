@@ -112,6 +112,8 @@
 .notes-callout.is-highyield .notes-callout-head { color: #7a5a00; }
 .notes-callout.is-tip { background: rgb(var(--brand-soft)); border-color: rgb(var(--brand) / .35); }
 .notes-callout.is-tip .notes-callout-head { color: rgb(var(--brand-dark)); }
+.notes-callout.is-praktikum { background: rgb(var(--progress-soft)); border-color: rgb(var(--progress) / .35); padding: .7rem .95rem .8rem; }
+.notes-callout.is-praktikum .notes-callout-head { color: rgb(var(--progress)); margin-bottom: .2rem; }
 .notes-callout.is-info { background: rgb(var(--paper)); border-color: rgb(var(--paper-2)); }
 .notes-callout.is-info .notes-callout-head { color: rgb(var(--ink-muted)); }
 
@@ -122,6 +124,13 @@
   box-shadow: 0 4px 0 rgb(var(--nm) / .6), 0 18px 30px -22px rgb(var(--ink) / .4); transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s;
 }
 @media (hover: hover) { .notes-fig-frame:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgb(var(--nm) / .6), 0 24px 34px -22px rgb(var(--ink) / .45); } }
+.notes-fig-grid { display: grid; gap: .6rem; }
+.notes-fig-grid.is-2, .notes-fig-grid.is-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.notes-fig-grid.is-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.notes-fig-grid.is-2 .notes-fig-frame, .notes-fig-grid.is-3 .notes-fig-frame, .notes-fig-grid.is-4 .notes-fig-frame { padding: .4rem; }
+.notes-fig-grid.is-2 .notes-fig-frame img, .notes-fig-grid.is-3 .notes-fig-frame img, .notes-fig-grid.is-4 .notes-fig-frame img { max-height: 15rem; }
+.notes-fig-grid.is-2 .notes-fig-frame:not(.is-ready), .notes-fig-grid.is-3 .notes-fig-frame:not(.is-ready), .notes-fig-grid.is-4 .notes-fig-frame:not(.is-ready) { min-height: 10rem; }
+@media (max-width: 639px) { .notes-fig-grid.is-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .notes-fig-frame:not(.is-ready) { min-height: 20rem; background: linear-gradient(100deg, #fff 30%, rgb(var(--nb) / .55) 50%, #fff 70%) 0 0 / 220% 100%; animation: notes-shimmer 1.4s linear infinite; }
 @keyframes notes-shimmer { to { background-position: -220% 0; } }
 .notes-fig-frame img { display: block; margin: 0 auto; width: auto; max-width: 100%; max-height: 30rem; object-fit: contain; border-radius: 10px; background: #fff; }

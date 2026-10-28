@@ -5,8 +5,8 @@
 // Catatan format lama (tanpa penanda) tetap ditampilkan lewat RichContent.
 import clsx from 'clsx';
 import {
-  AlertTriangle, BookMarked, Check, ChevronDown, ExternalLink, ImageOff, Info, Lightbulb, ListChecks,
-  ListTree, RotateCcw, Star, Stethoscope, Target, ZoomIn,
+  AlertTriangle, BookMarked, Check, ChevronDown, ChevronLeft, ChevronRight, ExternalLink, ImageOff, Info, Lightbulb, ListChecks,
+  ListTree, Microscope, RotateCcw, Star, Stethoscope, Target, ZoomIn,
 } from 'lucide-react';
 import { createContext, memo, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import MascotTip from '@/components/MascotTip';
@@ -53,32 +53,47 @@ function Inline({ text, as = 'span', className }) {
   return <Html as={as} text={text} marks className={className} />;
 }
 
-function Figure({ fig }) {
-  const [open, setOpen] = useState(false);
+// Satu tombol gambar (kotak berbingkai). Galeri = beberapa tombol dalam satu figur.
+function FigureImage({ src, alt, many, onOpen }) {
   const [broken, setBroken] = useState(false);
   const [ready, setReady] = useState(false);
-  const src = driveToLh3(fig.url);
+  return (
+    <button type="button" className={clsx('notes-fig-frame', (ready || broken) && 'is-ready')} onClick={() => onOpen(broken)} aria-label={`Perbesar ${alt}`}>
+      {broken ? (
+        <span className="notes-fig-broken"><ImageOff size={22} aria-hidden /> Gambar belum bisa dimuat. Ketuk untuk mencoba membukanya.</span>
+      ) : (
+        <img src={src} alt={alt} loading="lazy" decoding="async" referrerPolicy="no-referrer" onLoad={() => setReady(true)} onError={() => setBroken(true)} />
+      )}
+      {!broken && !many && <span className="notes-fig-zoom"><ZoomIn size={15} aria-hidden /> Perbesar</span>}
+    </button>
+  );
+}
+
+function Figure({ fig }) {
+  const [open, setOpen] = useState(-1);
+  const srcs = fig.urls.map(driveToLh3);
+  const many = srcs.length > 1;
   const credit = fig.credit.replace(/^Sumber\s*:\s*/i, '');
+  const alt = `Gambar ${fig.n}. ${fig.caption}`;
+  const go = (d) => setOpen((i) => (i + d + srcs.length) % srcs.length);
   return (
     <figure className="notes-fig">
-      <button type="button" className={clsx('notes-fig-frame', (ready || broken) && 'is-ready')} onClick={() => setOpen(true)} aria-label={`Perbesar gambar ${fig.n}`}>
-        {broken ? (
-          <span className="notes-fig-broken"><ImageOff size={22} aria-hidden /> Gambar belum bisa dimuat. Ketuk untuk mencoba membukanya.</span>
-        ) : (
-          <img src={src} alt={`Gambar ${fig.n}. ${fig.caption}`} loading="lazy" decoding="async" referrerPolicy="no-referrer" onLoad={() => setReady(true)} onError={() => setBroken(true)} />
-        )}
-        {!broken && <span className="notes-fig-zoom"><ZoomIn size={15} aria-hidden /> Perbesar</span>}
-      </button>
+      <div className={clsx('notes-fig-grid', many && `is-${Math.min(srcs.length, 4)}`)}>
+        {srcs.map((src, i) => <FigureImage key={src} src={src} alt={many ? `${alt} (${i + 1} dari ${srcs.length})` : alt} many={many} onOpen={() => setOpen(i)} />)}
+      </div>
       <figcaption>
         <span className="notes-fig-n">Gambar {fig.n}</span>
         <Inline as="span" text={fig.caption} className="notes-fig-cap" />
         {credit && <span className="notes-fig-credit"><Info size={13} aria-hidden /> Sumber: {credit}</span>}
       </figcaption>
-      {open && (
-        <Modal open size="xl" title={`Gambar ${fig.n}`} onClose={() => setOpen(false)}
-          footer={<a className="btn-secondary btn-sm" href={src} target="_blank" rel="noopener noreferrer"><ExternalLink size={15} aria-hidden /> Buka ukuran penuh</a>}>
+      {open >= 0 && (
+        <Modal open size="xl" title={many ? `Gambar ${fig.n} (${open + 1} dari ${srcs.length})` : `Gambar ${fig.n}`} onClose={() => setOpen(-1)}
+          footer={<>
+            {many && <><button type="button" className="btn-secondary btn-sm" onClick={() => go(-1)}><ChevronLeft size={15} aria-hidden /> Sebelumnya</button><button type="button" className="btn-secondary btn-sm" onClick={() => go(1)}>Berikutnya <ChevronRight size={15} aria-hidden /></button></>}
+            <a className="btn-secondary btn-sm" href={srcs[open]} target="_blank" rel="noopener noreferrer"><ExternalLink size={15} aria-hidden /> Buka ukuran penuh</a>
+          </>}>
           <div className="notes-lightbox">
-            {broken ? <p className="text-sm text-ink-muted">Gambar belum bisa dimuat.</p> : <img src={src} alt={`Gambar ${fig.n}. ${fig.caption}`} referrerPolicy="no-referrer" />}
+            <img src={srcs[open]} alt={alt} referrerPolicy="no-referrer" />
             <p className="mt-3 text-[15px] leading-relaxed"><Inline text={fig.caption} /></p>
             {credit && <p className="meta mt-1">Sumber: {credit}</p>}
           </div>
@@ -118,6 +133,7 @@ const CALLOUT = {
   warning: { icon: AlertTriangle, title: 'Jebakan ujian' },
   highyield: { icon: Star, title: 'High-yield' },
   tip: { icon: Lightbulb, title: 'Tips mengingat' },
+  praktikum: { icon: Microscope, title: 'Clue praktikum' },
   info: { icon: Info, title: 'Catatan' },
 };
 
