@@ -18,6 +18,11 @@ export const POLI = {
   umum: 'Poli umum', bedah: 'Poli bedah', spog: 'Poli kandungan', anak: 'Poli anak', dalam: 'Poli penyakit dalam',
 };
 export const PAS_NAMES = { kakek: 'Pak Slamet', bapak: 'Pak Dimas', nenek: 'Bu Rukmini', ibuhamil: 'Bu Sari', ibu: 'Bu Wulan', anakp: 'Nadia', anakl: 'Raka' };
+/** Nama pasien pada kasus ("Bu Lestari, 33 tahun" -> "Bu Lestari"); nama bawaan sprite bila kasus tidak punya nama. */
+export function patientName(C) {
+  const name = String((C && C.id) || '').split(',')[0].trim();
+  return name || PAS_NAMES[C && C.pas] || 'Pasien';
+}
 export const EXPR = ['master', 'nyeri', 'meringis', 'cemas', 'lemas', 'lega', 'sesak'];
 export const SUS_EXPR = ['netral', 'senyum', 'serius'];
 export const PHASES = [

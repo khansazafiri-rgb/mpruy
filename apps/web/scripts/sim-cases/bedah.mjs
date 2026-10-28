@@ -5,8 +5,8 @@ export default {
   kolesistitis: mk('bedah', {
     pas: 'ibu', expr: 'meringis', id: 'Bu Tini, 46 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Bu Tini, 46 tahun, nyeri perut kanan atas sejak semalam dan demam.' },
-      { w: 'pas', e: 'meringis', t: 'Dok, perut kanan atas saya sakit sekali sampai ke punggung. Semalam habis makan gulai.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Bu Tini, 46 tahun.' },
+      { w: 'pas', e: 'meringis', t: 'Aduh... selamat siang, Dok. Mohon dibantu.' }],
     dxOk: 'kolesistitis', ddx: ['kolesistitis', 'pankreatitis', 'gastritis', 'kolik', 'hepatitis', 'apendisitis'],
     ref: `${REF}Kasus ini: nyeri kuadran kanan atas menjalar ke bahu kanan setelah makan berlemak, demam, tanda Murphy positif, leukositosis, USG batu empedu dengan dinding menebal dan cairan perikolesistik (Tokyo Guidelines: tanda lokal, sistemik, dan pencitraan). Terapi: puasa, cairan, antibiotik, analgesik, konsultasi bedah untuk kolesistektomi.`,
     K: 'ku onset lokasi kualitas pemberat penyerta demam mual muntah kuning rpd_operasi alergi ku_gcs vital sklera abd_palpasi abd_murphy dl sgot usg_abd puasa infus_rutin antibiotik_iv konsul_bedah rawat',
@@ -52,12 +52,12 @@ export default {
   kolik_batu: mk('bedah', {
     pas: 'bapak', expr: 'nyeri', id: 'Pak Rudi, 36 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Rudi, 36 tahun, nyeri pinggang kanan hebat dan gelisah sejak sejam lalu.' },
-      { w: 'pas', e: 'nyeri', t: 'Aduh, Dok... pinggang kanan saya sakit sekali, datang dan pergi. Saya tidak bisa diam.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Rudi, 36 tahun.' },
+      { w: 'pas', e: 'nyeri', t: 'Aduh, Dok... mohon dibantu.' }],
     dxOk: 'kolik', ddx: ['kolik', 'apendisitis', 'pielonefritis', 'isk', 'kolesistitis', 'divertikulitis'],
     ref: `${REF}Kasus ini: nyeri kolik pinggang kanan menjalar ke selangkangan, hematuria, gelisah (tidak menemukan posisi nyaman), nyeri ketok CVA positif, urin eritrosit +3 tanpa tanda infeksi, USG hidronefrosis ringan dengan batu ureter distal 6 mm. Terapi: analgesik NSAID, hidrasi, antiemetik; batu ≤ 6 mm sering keluar spontan, konsultasi urologi atau bedah.`,
     K: 'ku onset lokasi kualitas pemberat penyerta bak_darah bak_nyeri demam mual muntah rpd_serupa alergi ku_gcs vital abd_cva abd_palpasi urin dl ureum usg_abd ronsen_abd nsaid konsul_bedah edukasi',
-    U: 'progres obat_coba harapan menggigil bak_sering bak_berkurang sembelit rpd_ginjal asam_urat rk_umum kebiasaan abd_inspeksi abd_rebound abd_mcburney hernia crp elektrolit gds kultur_urin ct_abd antiemetik paracetamol infus_rutin observasi rawat pulang',
+    U: 'progres obat_coba harapan menggigil nyeri_pinggang bak_sering bak_berkurang sembelit rpd_ginjal asam_urat rk_umum kebiasaan abd_inspeksi abd_rebound abd_mcburney hernia crp elektrolit gds kultur_urin ct_abd antiemetik paracetamol infus_rutin observasi rawat pulang',
     B: 'antibiotik_iv steroid_sis',
     A: {
       ku: p('Nyeri pinggang kanan hebat, Dok. Sakitnya datang dan pergi.', 'Nyeri pinggang kanan kolik', 'nyeri'),
@@ -96,8 +96,8 @@ export default {
   hernia_ing: mk('bedah', {
     pas: 'kakek', expr: 'meringis', id: 'Pak Karto, 62 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Karto, 62 tahun, benjolan di lipat paha kanan tidak bisa masuk lagi dan nyeri sekali.' },
-      { w: 'pas', e: 'meringis', t: 'Dok, benjolan saya yang biasanya hilang, sekarang keras dan sakit sekali. Saya muntah-muntah.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Karto, 62 tahun.' },
+      { w: 'pas', e: 'meringis', t: 'Aduh... selamat siang, Dok. Mohon dibantu.' }],
     dxOk: 'hernia_ing', ddx: ['hernia_ing', 'ileus', 'limfadenitis', 'apendisitis', 'kolik', 'gea'],
     ref: `${REF}Kasus ini: hernia inguinalis lama yang menjadi tidak dapat direduksi disertai nyeri hebat, muntah, tidak flatus, kulit hiperemis, laktat, dan obstruksi usus halus pada foto polos abdomen: hernia inkarserata dengan kecurigaan strangulasi. Terapi: resusitasi cairan, puasa, NGT, antibiotik, dan operasi segera.`,
     K: 'ku onset lokasi kualitas penyerta mual muntah sembelit kembung rpd_operasi alergi ku_gcs vital dehidrasi abd_inspeksi abd_auskul abd_palpasi hernia dl ronsen_abd puasa infus_bolus ngt antibiotik_iv konsul_bedah operasi',
@@ -143,8 +143,8 @@ export default {
   ileus: mk('bedah', {
     pas: 'kakek', expr: 'meringis', id: 'Pak Haryo, 66 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Haryo, 66 tahun, perutnya kembung besar dan muntah terus sudah dua hari.' },
-      { w: 'pas', e: 'meringis', t: 'Dok, perut saya melilit dan membesar. Tidak bisa BAB dan tidak kentut.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Haryo, 66 tahun.' },
+      { w: 'pas', e: 'meringis', t: 'Aduh... selamat siang, Dok. Mohon dibantu.' }],
     dxOk: 'ileus', ddx: ['ileus', 'hernia_ing', 'gea', 'ca_kolon', 'apendisitis', 'pankreatitis'],
     ref: `${REF}Kasus ini: nyeri kolik, distensi, muntah, obstipasi total 2 hari dengan riwayat laparotomi (adhesi), bising usus hiperperistaltik metalik, foto polos dilatasi usus halus dengan air-fluid level bertingkat, tanpa hernia dan tanpa tanda peritonitis. Terapi awal konservatif: puasa, NGT, cairan dan koreksi elektrolit, pantau; operasi bila strangulasi atau gagal konservatif.`,
     K: 'ku onset lokasi kualitas penyerta mual muntah sembelit kembung rpd_operasi bb_turun bab_darah alergi ku_gcs vital dehidrasi abd_inspeksi abd_auskul abd_perkusi abd_palpasi hernia rt dl elektrolit ronsen_abd puasa ngt infus_bolus konsul_bedah rawat',
@@ -192,12 +192,12 @@ export default {
   pankreatitis: mk('bedah', {
     pas: 'bapak', expr: 'meringis', id: 'Pak Bondan, 44 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Bondan, 44 tahun, nyeri ulu hati tembus ke punggung dan muntah-muntah.' },
-      { w: 'pas', e: 'meringis', t: 'Dok, ulu hati saya sakit sekali sampai tembus ke belakang. Semalam saya habis pesta minum.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Bondan, 44 tahun.' },
+      { w: 'pas', e: 'meringis', t: 'Aduh... selamat siang, Dok. Mohon dibantu.' }],
     dxOk: 'pankreatitis', ddx: ['pankreatitis', 'kolesistitis', 'ulkus_perf', 'gastritis', 'ska', 'ileus'],
     ref: `${REF}Kasus ini: nyeri epigastrium menembus ke punggung setelah konsumsi alkohol, muntah, lipase lebih dari 3 kali batas atas (kriteria Atlanta: nyeri khas + lipase ≥ 3x + pencitraan sesuai). Terapi: puasa, cairan kristaloid terukur, analgesik, pemantauan; antibiotik profilaksis tidak dianjurkan; rawat inap.`,
     K: 'ku onset lokasi kualitas pemberat penyerta mual muntah alkohol kuning rpd_hati alergi ku_gcs vital dehidrasi abd_inspeksi abd_palpasi dl amilase gds usg_abd puasa infus_bolus rawat konsul_pd',
-    U: 'progres obat_coba harapan demam nyeri_dada rpd_serupa rpd_dm obat_nsaid merokok kebiasaan abd_auskul abd_perkusi abd_rebound kulit sklera jantung paru_auskul crp sgot bilirubin lipid ureum elektrolit laktat ekg ronsen ct_abd nsaid paracetamol antiemetik ngt kateter oksigen opioid konsul_bedah',
+    U: 'progres obat_coba harapan demam nyeri_dada rpd_serupa rpd_dm obat_nsaid merokok kebiasaan kembung abd_auskul abd_perkusi abd_rebound kulit sklera jantung paru_auskul crp sgot bilirubin lipid ureum elektrolit laktat ekg ronsen ct_abd nsaid paracetamol antiemetik ngt kateter oksigen opioid konsul_bedah',
     B: 'pulang steroid_sis',
     A: {
       ku: p('Ulu hati sakit sekali tembus ke punggung, Dok.', 'Nyeri epigastrium menembus ke punggung', 'meringis'),
@@ -238,8 +238,8 @@ export default {
   ulkus_perf: mk('bedah', {
     pas: 'bapak', expr: 'nyeri', id: 'Pak Wahyu, 52 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Wahyu, 52 tahun, nyeri perut hebat mendadak enam jam lalu. Perutnya keras.' },
-      { w: 'pas', e: 'nyeri', t: 'Dok... perut saya sakit sekali seperti ditusuk, tidak bisa bergerak sedikit pun.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Wahyu, 52 tahun.' },
+      { w: 'pas', e: 'nyeri', t: 'Aduh, Dok... mohon dibantu.' }],
     dxOk: 'ulkus_perf', ddx: ['ulkus_perf', 'pankreatitis', 'apendisitis', 'kolesistitis', 'ileus', 'ska'],
     ref: `${REF}Kasus ini: nyeri epigastrium mendadak seperti ditusuk lalu menyebar ke seluruh perut pada pengguna NSAID dengan dispepsia lama, perut papan (defans muskular generalisata), bising usus hilang, pekak hati menghilang, udara bebas subdiafragma pada foto toraks tegak, tanda sepsis awal. Terapi: resusitasi, puasa, NGT, antibiotik, dan laparotomi segera.`,
     K: 'ku onset lokasi kualitas pemberat penyerta mual muntah bab_hitam obat_nsaid alkohol merokok alergi ku_gcs vital abd_inspeksi abd_auskul abd_perkusi abd_palpasi abd_rebound dl ronsen puasa ngt infus_bolus antibiotik_iv konsul_bedah operasi rawat',
@@ -286,8 +286,8 @@ export default {
   abses_sub: mk('bedah', {
     pas: 'bapak', expr: 'meringis', id: 'Pak Anto, 35 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, Pak Anto, 35 tahun, ada benjolan bengkak merah di paha kiri lima hari ini.' },
-      { w: 'pas', e: 'meringis', t: 'Dok, paha saya bengkak, merah, dan berdenyut sakit. Saya juga demam.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Pak Anto, 35 tahun.' },
+      { w: 'pas', e: 'meringis', t: 'Aduh... selamat siang, Dok. Mohon dibantu.' }],
     dxOk: 'abses_sub', ddx: ['abses_sub', 'selulitis', 'nekrotikans', 'limfadenitis', 'hernia_ing'],
     ref: `${REF}Kasus ini: massa merah, hangat, nyeri, berfluktuasi dengan pus di paha, demam, leukositosis, dan hiperglikemia yang baru terdeteksi. Abses diatasi dengan insisi dan drainase; antibiotik sebagai tambahan karena demam dan diabetes. Singkirkan infeksi nekrotikans dan evaluasi diabetes.`,
     K: 'ku onset lokasi kualitas penyerta demam menggigil haus bb_turun rpd_dm alergi ku_gcs vital kulit kgb_lain dl gds insisi antibiotik_oral edukasi',
@@ -329,8 +329,8 @@ export default {
   hemoroid: mk('bedah', {
     pas: 'bapak', expr: 'cemas', id: 'Pak Teguh, 47 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, Pak Teguh, 47 tahun, BAB berdarah dan ada benjolan di anus sejak beberapa bulan.' },
-      { w: 'pas', e: 'cemas', t: 'Dok, tiap BAB keluar darah merah, dan ada benjolan yang harus saya dorong masuk.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Pak Teguh, 47 tahun.' },
+      { w: 'pas', e: 'cemas', t: 'Selamat siang, Dok. Saya cemas sekali.' }],
     dxOk: 'hemoroid', ddx: ['hemoroid', 'ca_kolon', 'fisura_ani', 'divertikulitis', 'gea'],
     ref: `${REF}Kasus ini: perdarahan merah segar menetes setelah BAB, benjolan yang keluar saat mengejan dan harus didorong masuk (hemoroid derajat III), konstipasi kronik, tanpa nyeri hebat, tanpa penurunan berat badan; colok dubur menemukan benjolan lunak tanpa massa keras. Terapi: serat, cairan, laktulosa, edukasi; rujuk bedah untuk derajat III; kolonoskopi dipertimbangkan pada usia di atas 45 tahun dengan perdarahan rektal untuk menyingkirkan keganasan.`,
     K: 'ku onset lokasi bab_darah sembelit bb_turun rk_kanker rpd_operasi alergi ku_gcs vital abd_palpasi rt dl laksatif edukasi_diet edukasi konsul_bedah',
@@ -369,8 +369,8 @@ export default {
   trauma_abd: mk('bedah', {
     pas: 'bapak', expr: 'lemas', id: 'Pak Andri, 29 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, korban kecelakaan motor, Pak Andri, 29 tahun. Perut kiri atasnya nyeri dan wajahnya pucat.' },
-      { w: 'pas', e: 'lemas', t: 'Dok... perut kiri atas saya sakit sekali, saya pusing dan dingin... tadi kena setang motor.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Andri, 29 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Dok... tolong saya...' }],
     dxOk: 'trauma_abd', ddx: ['trauma_abd', 'trauma_hati', 'ruptur_usus', 'trauma_ginjal'],
     ref: `${REF}Kasus ini: trauma tumpul perut kiri atas dengan nyeri menjalar ke bahu kiri (tanda Kehr), syok hemoragik kelas III (TD 90/60, nadi 120, akral dingin), FAST positif (cairan bebas perisplenik dan kantong Morison), hemoglobin turun. Pada pasien tidak stabil: ABC, dua akses vena, kristaloid dan darah, tanpa CT, dan laparotomi eksplorasi segera (prinsip ATLS).`,
     K: 'ku onset lokasi kualitas penyerta pusing alergi rpd_operasi ku_gcs vital mata_konj abd_inspeksi abd_palpasi abd_rebound edema usg_abd dl gol_darah oksigen infus_bolus transfusi monitor puasa konsul_bedah operasi',

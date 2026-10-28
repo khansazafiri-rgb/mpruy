@@ -5,12 +5,12 @@ export default {
   dbd: mk('umum', {
     pas: 'bapak', expr: 'lemas', id: 'Pak Hendra, 35 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Hendra, 35 tahun. Demam sudah empat hari dan badannya lemas sekali.' },
-      { w: 'pas', e: 'lemas', t: 'Dok, saya demam tinggi empat hari. Kepala dan badan sakit semua.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Hendra, 35 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Selamat siang, Dok. Mohon diperiksa, ya.' }],
     dxOk: 'dengue', ddx: ['dengue', 'tifoid', 'malaria', 'chikungunya', 'influenza', 'leptospirosis'],
     ref: `${REF}Kasus ini: demam 4 hari, nyeri retro-orbital, nyeri perut, petekie, trombosit 82.000, hematokrit 48%, NS1 positif. Nyeri perut dan hemokonsentrasi adalah tanda bahaya, jadi rawat inap dengan cairan kristaloid dan paracetamol. Hindari NSAID dan steroid.`,
     K: 'ku onset demam sakit_kepala nyeri_sendi mual nyeri_ulu_hati ruam kontak_sakit alergi ku_gcs vital kulit abd_palpasi dl ns1 infus_rutin paracetamol rawat edukasi',
-    U: 'lokasi kualitas penyerta menggigil nafsu muntah diare bab_hitam batuk pilek bak_berkurang pusing rpd_dm obat_nsaid perjalanan abd_hepar abd_lien jantung paru_auskul edema hitung_jenis ptapt gol_darah sgot elektrolit ureum urin hbsag tifoid malaria konsul_pd observasi',
+    U: 'lokasi kualitas penyerta menggigil nafsu lemas muntah diare bab_hitam batuk pilek bak_berkurang pusing rpd_dm obat_nsaid perjalanan abd_hepar abd_lien jantung paru_auskul edema hitung_jenis ptapt gol_darah sgot elektrolit ureum urin hbsag tifoid malaria konsul_pd observasi',
     B: 'nsaid steroid_sis antibiotik_iv pulang',
     A: {
       ku: p('Demam tinggi empat hari, Dok. Badan pegal semua.', 'Demam 4 hari, mialgia', 'lemas'),
@@ -55,8 +55,8 @@ export default {
   tifoid: mk('umum', {
     pas: 'ibu', expr: 'lemas', id: 'Bu Wulan, 28 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Wulan, 28 tahun. Demam sudah enam hari dan tidak turun-turun.' },
-      { w: 'pas', e: 'lemas', t: 'Dok, demam saya makin tinggi tiap sore. Perut juga tidak enak.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Wulan, 28 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Selamat siang, Dok. Mohon diperiksa, ya.' }],
     dxOk: 'tifoid', ddx: ['tifoid', 'dengue', 'malaria', 'gea', 'hepatitis', 'leptospirosis'],
     ref: `${REF}Kasus ini: demam bertahap naik selama 6 hari, nyeri perut, konstipasi lalu diare, lidah kotor, bradikardia relatif, Tubex positif. Terapi: antibiotik oral (mis. azitromisin atau kloramfenikol), antipiretik, cairan, istirahat; rawat bila muntah terus, dehidrasi, atau ada komplikasi.`,
     K: 'ku onset demam nyeri_ulu_hati sembelit diare mual perjalanan kontak_sakit alergi ku_gcs vital mulut abd_palpasi abd_hepar tifoid dl antibiotik_oral paracetamol edukasi',
@@ -100,8 +100,8 @@ export default {
   sistitis: mk('umum', {
     pas: 'ibu', expr: 'meringis', id: 'Bu Sinta, 26 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Sinta, 26 tahun. Katanya buang air kecilnya perih.' },
-      { w: 'pas', e: 'meringis', t: 'Dok, saya sering sekali kebelet, tapi keluarnya sedikit dan perih.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Sinta, 26 tahun.' },
+      { w: 'pas', e: 'meringis', t: 'Aduh... selamat siang, Dok. Mohon dibantu.' }],
     dxOk: 'isk', ddx: ['isk', 'pielonefritis', 'vaginitis', 'kolik', 'pid'],
     ref: `${REF}Kasus ini: disuria, frekuensi, urgensi, nyeri suprapubik tanpa demam dan tanpa nyeri pinggang, urin dipstik leukosit +3 dan nitrit positif, nyeri ketok CVA negatif. Sistitis tanpa komplikasi diterapi antibiotik oral dan hidrasi; kultur urin tidak rutin.`,
     K: 'ku onset bak_nyeri bak_sering bak_darah demam nyeri_pinggang rpd_serupa alergi ku_gcs vital abd_palpasi abd_cva urin tes_hamil antibiotik_oral edukasi',
@@ -111,7 +111,7 @@ export default {
       ku: p('Kencingnya perih dan sering sekali, Dok.', 'Disuria dan frekuensi', 'meringis'),
       onset: p('Sejak kemarin pagi, makin lama makin sering.', 'Onset 1 hari, progresif'),
       lokasi: p('Perih di ujung saat kencing, dan perut bawah terasa nyeri.', 'Disuria, nyeri suprapubik', 'nyeri'),
-      kualitas: p('Seperti terbakar, nilainya sekitar 5. Kencingnya sedikit-sedikit.', 'Rasa terbakar VAS 5/10, oliguria berkali-kali'),
+      kualitas: p('Seperti terbakar, nilainya sekitar 5. Kencingnya sedikit-sedikit.', 'Rasa terbakar VAS 5/10, sering BAK sedikit-sedikit'),
       pemberat: p('Makin perih kalau menahan kencing. Minum air putih agak membantu.', 'Memberat bila menahan BAK'),
       penyerta: p('Saya merasa tidak tuntas setelah kencing. Tidak ada demam. Haid terakhir dua minggu lalu, belum pernah hamil.', 'Rasa tidak tuntas, demam (-), HPHT 2 minggu lalu'),
       progres: p('Makin sering sejak semalam.', 'Memburuk'),
@@ -139,8 +139,8 @@ export default {
   gea_dehid: mk('umum', {
     pas: 'bapak', expr: 'lemas', id: 'Pak Anwar, 45 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Anwar diare sejak kemarin dan sekarang lemas sekali.' },
-      { w: 'pas', e: 'lemas', t: 'Dok, saya mencret terus dari kemarin. Badan lemas, haus sekali.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Anwar, 45 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Selamat siang, Dok. Mohon diperiksa, ya.' }],
     dxOk: 'gea', ddx: ['gea', 'tifoid', 'hepatitis', 'divertikulitis', 'apendisitis'],
     ref: `${REF}Kasus ini: diare cair akut 8 kali, muntah, demam ringan setelah makan di hajatan, dehidrasi sedang (mata cekung, turgor menurun, nadi 104). Terapi utama rehidrasi (oral bila bisa, intravena bila muntah terus atau dehidrasi berat); antibiotik tidak rutin karena tanpa darah dan lendir.`,
     K: 'ku onset diare muntah demam bab_darah haus bak_berkurang kontak_sakit alergi ku_gcs vital dehidrasi mulut abd_auskul abd_palpasi dl elektrolit rehidrasi infus_rutin edukasi',
@@ -163,13 +163,13 @@ export default {
       haus: p('Haus sekali, minum terus rasanya tidak puas.', 'Haus berat'),
       bak_berkurang: p('Kencingnya sedikit dan pekat sejak pagi.', 'Oliguria, urin pekat'),
       nafsu: p('Tidak nafsu makan.', 'Nafsu makan menurun'),
-      kontak_sakit: p('Ada tiga tetangga yang diare setelah makan di acara hajatan kemarin.', 'Kontak: beberapa orang diare setelah hajatan'),
+      kontak_sakit: p('Ada tiga tetangga yang diare setelah makan di acara hajatan dua hari lalu.', 'Kontak: beberapa orang diare setelah hajatan'),
       kebiasaan: p('Dua hari lalu makan di hajatan, ada santan dan daging.', 'Makan di hajatan (santan dan daging)'),
       ku_gcs: x('Tampak lemas, sakit sedang, kompos mentis, GCS 15.', 'KU sedang, CM, GCS 15'),
       vital: vit('100/70', '104', '22', '37,8', '98%'),
       dehidrasi: x('Mata cekung, mukosa bibir kering, turgor kulit kembali lambat (2 detik).', 'Dehidrasi sedang: mata cekung, mukosa kering, turgor lambat'),
       mulut: x('Mukosa bibir dan lidah kering.', 'Mukosa mulut kering'),
-      abd_auskul: x('Bising usus.', 'Bising usus meningkat'),
+      abd_auskul: x('Bising usus meningkat (hiperperistaltik).', 'Bising usus meningkat'),
       abd_palpasi: x('Supel, nyeri tekan difus ringan, defans (-).', 'Nyeri tekan difus ringan'),
       dl: lab('Darah lengkap', 'Hemoglobin=15,6 g/dL;Leukosit=11.200 /uL (tinggi);Trombosit=270.000 /uL;Hematokrit=47% (tinggi)', 'Hasil laboratoriumnya sudah keluar, Dok.'),
       elektrolit: lab('Elektrolit', 'Natrium=134 mmol/L (rendah);Kalium=3,3 mmol/L (rendah);Klorida=98 mmol/L'),
@@ -184,8 +184,8 @@ export default {
   tb_paru: mk('umum', {
     pas: 'bapak', expr: 'lemas', id: 'Pak Joko, 38 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Joko, 38 tahun. Batuk lebih dari sebulan dan badannya makin kurus.' },
-      { w: 'pas', e: 'lemas', t: 'Dok, saya batuk terus, sudah lima minggu. Tadi dahaknya ada darahnya.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Joko, 38 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Selamat siang, Dok. Mohon diperiksa, ya.' }],
     dxOk: 'tb', ddx: ['tb', 'pneumonia', 'ppok', 'bronkitis', 'ca_paru'],
     ref: `${REF}Kasus ini: batuk berdahak lebih dari 2 minggu, hemoptisis ringan, keringat malam, berat badan turun, kontak TB, ronki apeks kanan, foto toraks infiltrat dan kavitas apeks kanan, TCM Mtb terdeteksi dan rifampisin sensitif. Terapi OAT kategori 1 (2RHZE/4RH) dengan pengawas minum obat, edukasi etika batuk, dan pelaporan.`,
     K: 'ku onset batuk dahak hemoptisis demam keringat_malam bb_turun rpd_tb kontak_tb merokok alergi ku_gcs vital paru_auskul ronsen sputum tcm oat edukasi',
@@ -195,7 +195,7 @@ export default {
       ku: p('Batuk lama, Dok. Sekarang dahaknya ada darah.', 'Batuk >1 bulan, hemoptisis', 'lemas'),
       onset: p('Sekitar lima minggu lalu, makin lama makin sering.', 'Onset 5 minggu, progresif'),
       lokasi: p('Batuknya dari dada kanan atas, Dok.', 'Keluhan dominan dada kanan atas'),
-      kualitas: p('Batuk dalam, berdahak banyak terutama pagi. Tadi pagi ada garis darah di dahak.', 'Batuk produktif, hemoptisis ringan'),
+      kualitas: p('Batuk dalam, berdahak banyak terutama pagi, tadi ada garis darah di dahak. Tidak nyeri, tapi mengganggu tidur, nilainya sekitar 5.', 'Batuk produktif, hemoptisis ringan, gangguan VAS 5/10'),
       pemberat: p('Kalau malam makin sering batuk.', 'Memberat malam hari'),
       penyerta: p('Keringat malam, demam kecil sore hari, dan badan makin kurus.', 'Keringat malam, subfebris, BB turun'),
       progres: p('Makin parah, Dok.', 'Memburuk'),
@@ -232,8 +232,8 @@ export default {
   asma_eks: mk('umum', {
     pas: 'ibu', expr: 'sesak', id: 'Bu Ratna, 24 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Bu Ratna sesak dan mengi sejak sore. Napasnya berbunyi.' },
-      { w: 'pas', e: 'sesak', t: 'Dok... saya sesak... dada rasanya berat dan ngik-ngik.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Bu Ratna, 24 tahun.' },
+      { w: 'pas', e: 'sesak', t: 'Dok... tolong saya...' }],
     dxOk: 'asma', ddx: ['asma', 'ppok', 'pneumonia', 'gagaljantung', 'emboli', 'bronkitis'],
     ref: `${REF}Kasus ini: sesak dan mengi episodik dengan pencetus debu dan dingin, riwayat atopi, bicara kalimat pendek, napas 26x/menit, SpO₂ 92%, wheezing ekspirasi difus: serangan asma sedang. Terapi: oksigen, nebulisasi SABA berulang, kortikosteroid sistemik, observasi respons 1 jam; antibiotik tidak diperlukan tanpa tanda infeksi bakteri.`,
     K: 'ku onset sesak mengi batuk pilek rpd_asma rk_atopi pajanan alergi ku_gcs vital paru_inspeksi paru_auskul oksigen bronkodilator steroid_sis observasi edukasi',
@@ -276,8 +276,8 @@ export default {
   dispepsia: mk('umum', {
     pas: 'bapak', expr: 'meringis', id: 'Pak Hadi, 33 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, ini Pak Hadi, 33 tahun. Ulu hatinya perih sejak seminggu.' },
-      { w: 'pas', e: 'meringis', t: 'Dok, ulu hati saya perih, apalagi kalau telat makan. Rasanya mual juga.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Pak Hadi, 33 tahun.' },
+      { w: 'pas', e: 'meringis', t: 'Aduh... selamat siang, Dok. Mohon dibantu.' }],
     dxOk: 'gastritis', ddx: ['gastritis', 'ulkus_peptik', 'gerd', 'ska', 'kolesistitis', 'pankreatitis'],
     ref: `${REF}Kasus ini: nyeri ulu hati dan mual seminggu, terkait telat makan, kopi, dan NSAID; tanpa tanda bahaya (muntah darah, melena, penurunan berat badan, disfagia, usia di atas 55 tahun). Terapi PPI dan antasida serta edukasi; endoskopi tidak diperlukan tanpa tanda bahaya. EKG wajar dilakukan untuk menyingkirkan nyeri dada koroner.`,
     K: 'ku onset lokasi kualitas penyerta nyeri_ulu_hati mual muntah bab_hitam bb_turun obat_nsaid merokok alkohol nyeri_dada alergi ku_gcs vital abd_palpasi ppi antasida edukasi',
@@ -316,12 +316,12 @@ export default {
   ht_urgensi: mk('umum', {
     pas: 'kakek', expr: 'cemas', id: 'Pak Darmo, 61 tahun',
     intro: [
-      { w: 'sus', e: 'serius', t: 'Dok, Pak Darmo, 61 tahun, tengkuknya berat dan tekanan darahnya tinggi sekali.' },
-      { w: 'pas', e: 'cemas', t: 'Dok, kepala saya berat dari pagi, tengkuk kencang. Tadi diukur di warung tekanannya tinggi.' }],
+      { w: 'sus', e: 'serius', t: 'Dok, ini Pak Darmo, 61 tahun.' },
+      { w: 'pas', e: 'cemas', t: 'Selamat siang, Dok. Saya cemas sekali.' }],
     dxOk: 'ht_urgensi', ddx: ['ht_urgensi', 'ht_emergensi', 'hipertensi', 'stroke', 'ska', 'migrain'],
     ref: `${REF}Kasus ini: TD 200/115 dengan nyeri kepala dan tengkuk tegang, tanpa kerusakan organ target akut (tidak ada defisit neurologis, nyeri dada, sesak, atau gangguan fungsi ginjal bermakna): hipertensi urgensi. Turunkan tekanan darah bertahap dengan obat oral dalam 24-48 jam, bukan secara cepat; singkirkan emergensi.`,
     K: 'ku onset sakit_kepala pandangan_kabur nyeri_dada sesak kelemahan kejang rpd_ht kepatuhan obat_rutin alergi ku_gcs vital jantung paru_auskul edema motorik nervus ekg urin ureum antihipertensi observasi edukasi_diet edukasi',
-    U: 'lokasi kualitas pemberat penyerta pusing mual muntah palpitasi sinkop bak_berkurang rpd_dm rpd_ginjal rpd_stroke rpd_jantung rk_ht merokok garam obat_nsaid pupil jvp refleks_fis sensorik paru_inspeksi dl gds lipid elektrolit ronsen konsul_pd pulang',
+    U: 'lokasi kualitas pemberat penyerta pusing mual muntah palpitasi sinkop bak_berkurang rpd_dm rpd_ginjal rpd_stroke rpd_jantung rk_ht rk_jantung merokok garam obat_nsaid pupil jvp refleks_fis sensorik paru_inspeksi dl gds lipid elektrolit ronsen konsul_pd pulang',
     B: 'infus_bolus steroid_sis nsaid opioid',
     A: {
       ku: p('Kepala berat dan tengkuk kencang, Dok. Tekanan darah saya tinggi.', 'Sakit kepala dan tengkuk tegang, TD tinggi', 'cemas'),
@@ -361,8 +361,8 @@ export default {
   dm_baru: mk('umum', {
     pas: 'nenek', expr: 'lemas', id: 'Bu Rukmini, 52 tahun',
     intro: [
-      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Rukmini, 52 tahun. Katanya sering haus dan kencing malam, badannya kurusan.' },
-      { w: 'pas', e: 'lemas', t: 'Dok, saya sering haus dan kencing terus. Badan lemas, berat badan turun.' }],
+      { w: 'sus', e: 'netral', t: 'Dok, ini Bu Rukmini, 52 tahun.' },
+      { w: 'pas', e: 'lemas', t: 'Selamat siang, Dok. Mohon diperiksa, ya.' }],
     dxOk: 'dm', ddx: ['dm', 'hipertiroid', 'isk', 'pgk', 'anemia'],
     ref: `${REF}Kasus ini: poliuria, polidipsia, polifagia, berat badan turun, GDS 342 mg/dL dan HbA1c 11,2%, tanpa ketonuria dan tanpa tanda ketoasidosis: diabetes melitus tipe 2 baru. Terapi awal metformin dengan edukasi diet dan aktivitas; pada HbA1c tinggi sekali dengan gejala, rujuk atau konsultasikan untuk terapi kombinasi atau insulin.`,
     K: 'ku onset haus bak_sering bb_turun lemas kesemutan pandangan_kabur rk_dm rpd_dm alergi ku_gcs vital antro gds hba1c urin antidiabetik_oral edukasi_diet edukasi',
@@ -372,7 +372,7 @@ export default {
       ku: p('Sering haus dan kencing terus, Dok. Badan lemas dan kurusan.', 'Poliuria, polidipsia, lemas, BB turun', 'lemas'),
       onset: p('Sudah tiga bulan, pelan-pelan makin sering.', 'Onset 3 bulan, bertahap'),
       lokasi: p('Seluruh badan terasa lemas, Dok. Kaki sering kesemutan.', 'Lemas generalisata, kesemutan kaki'),
-      kualitas: p('Malam bisa bangun empat sampai lima kali untuk kencing.', 'Nokturia 4-5x'),
+      kualitas: p('Malam bisa bangun empat sampai lima kali untuk kencing, tidurnya jadi terganggu. Nilainya sekitar 6.', 'Nokturia 4-5x, gangguan VAS 6/10'),
       penyerta: p('Gatal di kemaluan, luka kecil di kaki lama sembuhnya, dan pandangan agak kabur.', 'Pruritus vulva, luka lama sembuh, pandangan kabur'),
       progres: p('Makin lama makin parah.', 'Progresif'),
       obat_coba: p('Minum jamu pahit dan teh herbal, tidak ada perubahan.', 'Jamu dan teh herbal, tidak membaik'),
