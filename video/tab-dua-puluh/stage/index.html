@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Tab Dua Puluh</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root { --forest:#0A3830; --green:#007060; --mint:#9DE0BD; --cream:#F7F2E4; --gold:#F8C038; --coral:#E8665F; --ink:#172B38; }
+  html,body{margin:0;padding:0;background:#000;}
+  #root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans','Inter',sans-serif;color:var(--ink);}
+  #root svg{position:absolute;left:0;top:0;}
+  #panel{position:absolute;left:100px;top:538px;width:880px;height:1078px;border-radius:46px;background:var(--forest);box-shadow:0 16px 0 rgba(10,56,48,.22);overflow:hidden;transform-origin:50% 100%;}
+  #panel .inner{position:absolute;left:8px;top:8px;width:864px;height:1062px;border-radius:38px;overflow:hidden;background:#F7F2E4}
+  #panel img{width:864px;height:1062px;display:block;object-fit:fill}
+  #cards{position:absolute;left:395px;top:100px;width:290px;height:340px;}
+  .card{position:absolute;left:0;top:0;width:290px;background:#fff;border-radius:30px;padding:20px 22px 22px;box-sizing:border-box;box-shadow:0 10px 0 rgba(10,56,48,.18);transform-origin:50% 0%;}
+  .card h4{margin:0 0 10px;font-weight:800;font-size:30px;line-height:1.1;letter-spacing:-.02em;color:var(--forest)}
+  .card .row{display:flex;align-items:center;gap:10px;font-weight:700;font-size:23px;line-height:1.2;margin-top:9px;color:var(--ink);transform-origin:0 50%}
+  .card .row b{display:inline-flex;min-width:36px;height:36px;border-radius:12px;background:var(--mint);color:var(--forest);align-items:center;justify-content:center;font-size:21px;font-weight:800}
+  .card .row.muted{color:#5c7078;font-weight:600}
+  .card .row.hl b{background:var(--gold)}
+  .card .row.dim{opacity:.4}
+  #cap{position:absolute;left:70px;width:940px;top:1636px;height:170px;display:flex;align-items:center;justify-content:center;}
+  #cap .box{background:rgba(10,56,48,.94);border-radius:34px;padding:16px 28px 18px;text-align:center;font-weight:800;font-size:50px;line-height:1.22;color:#fff;letter-spacing:-.01em;max-width:940px;box-sizing:border-box;box-shadow:0 8px 0 rgba(0,0,0,.18)}
+  #cap .w{display:inline-block;margin:0 7px;transition:none}
+  #cap .w.on{color:var(--gold)}
+  #cap .w.past{color:#fff}
+  #cap .w.fut{color:rgba(255,255,255,.86)}
+  #wipe{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--forest);transform:translateX(-1200px)}
+  #endcard{position:absolute;left:0;top:0;width:1080px;height:640px;pointer-events:none}
+</style></head>
+<body>
+<div id="root">
+  <svg id="world" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <svg id="nadia" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <svg id="fore" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <svg id="mascots" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div id="panel"><div class="inner"><img id="webimg" alt=""></div></div>
+  <svg id="over" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div id="cards"></div>
+  <div id="cap"><div class="box" id="capbox"></div></div>
+  <div id="wipe"></div>
+</div>
+<script type="module" src="stage.js"></script>
+</body></html>

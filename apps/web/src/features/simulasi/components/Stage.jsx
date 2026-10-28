@@ -3,11 +3,11 @@
 import clsx from 'clsx';
 import { Check } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { PAS_NAMES, asset, doctorSprite } from '../engine';
+import { asset, doctorSprite, patientName } from '../engine';
 import { translate } from '@/i18n';
 
 function plateFor(w, ctx) {
-  if (w === 'pas') return PAS_NAMES[ctx.C.pas];
+  if (w === 'pas') return patientName(ctx.C);
   if (w === 'sus') return 'Suster Ani';
   if (w === 'dok') return 'Dokter (kamu)';
   return 'Temuan pemeriksaan';
@@ -38,7 +38,7 @@ export default function Stage({ sim, gender }) {
     <div className="sim-frame" data-tour="stage">
       <div className="sim-stage" key={ctx.poli}>
         <img className="sim-bg" src={asset(`BG_${ctx.poli}`)} alt="" />
-        <img className="sim-char" data-slot="pas" data-state={state('pas')} src={asset(`PAS_${ctx.C.pas}_${s.pasExpr}`)} alt={`Pasien, ${PAS_NAMES[ctx.C.pas]}`} />
+        <img className="sim-char" data-slot="pas" data-state={state('pas')} src={asset(`PAS_${ctx.C.pas}_${s.pasExpr}`)} alt={`Pasien, ${patientName(ctx.C)}`} />
         <img className="sim-char" data-slot="sus" data-state={state('sus')} src={asset(`SUS_${s.susExpr}`)} alt="Suster Ani" />
         {doc && <img className="sim-char" data-slot="dok" data-state={state('dok')} src={asset(doc)} alt="Dokter, kamu" />}
         {s.card && (
