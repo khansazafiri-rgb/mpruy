@@ -69,3 +69,39 @@ test('reapplying and rolling back never duplicate or remove catalog content', ()
   assert.equal(new Set(keys).size, 32);
   for (const key of keys) assert.ok(existsSync(new URL(`../../web/public/illustrations/${key}.webp`, import.meta.url)), `Missing ${key}`);
 });
+
+test('migrasi urutan BAB: mengikuti dokumen, BAB tambahan admin di belakang, ID tetap, dapat diulang', () => {
+  const norm = (v) => String(v || '').trim().replace(/\s+/g, ' ').toLowerCase();
+  const rows = { subjects: [], chapters: [] };
+  class Record {
+    constructor(values) { this.values = values; this.id = values.id; this.saved = 0; }
+    getString(k) { return String(this.values[k] ?? ''); }
+    getInt(k) { return Number(this.values[k] || 0); }
+    set(k, v) { this.values[k] = v; }
+  }
+  const anat = new Record({ id: 's1', name: 'Anatomi' });
+  rows.subjects.push(anat);
+  const titles = ['Anatomi Abdomen (Dinding, Rongga Peritoneum)', 'Miologi (Sistem Otot)', 'Anatomi Umum & Terminologi Anatomis', 'Materi tambahan admin', 'Osteologi & Artrologi (Sistem Rangka & Sendi)'];
+  titles.forEach((title, i) => rows.chapters.push(new Record({ id: `c${i}`, subject: 's1', title, order: i + 1, drilling: false })));
+  rows.chapters.push(new Record({ id: 'drill', subject: 's1', title: 'Drilling', order: 9999, drilling: true }));
+  const app = {
+    findRecordsByFilter: (name, _f, _s, _l, _o, params) => (name === 'subjects' ? rows.subjects : rows.chapters.filter((c) => c.getString('subject') === params.s && !c.values.drilling)).slice().sort((a, b) => a.getInt('order') - b.getInt('order')),
+    save: (r) => { r.saved++; },
+  };
+  let up;
+  vm.runInNewContext(readFileSync(new URL('../pb_migrations/1800002700_chapter_doc_order.js', import.meta.url), 'utf8'), { migrate: (apply) => { up = apply; } });
+  up(app);
+  const order = () => rows.chapters.filter((c) => !c.values.drilling).sort((a, b) => a.getInt('order') - b.getInt('order')).map((c) => c.getString('title'));
+  assert.deepEqual(order(), ['Anatomi Umum & Terminologi Anatomis', 'Osteologi & Artrologi (Sistem Rangka & Sendi)', 'Miologi (Sistem Otot)', 'Anatomi Abdomen (Dinding, Rongga Peritoneum)', 'Materi tambahan admin']);
+  assert.equal(rows.chapters.find((c) => c.values.drilling).getInt('order'), 9999, 'drilling tidak disentuh');
+  assert.equal(rows.chapters.find((c) => c.values.id === 'c2').getInt('order'), 1, 'ID BAB tetap');
+  const saved = rows.chapters.map((c) => c.saved);
+  up(app);
+  assert.deepEqual(rows.chapters.map((c) => c.saved), saved, 'diulang tanpa perubahan');
+  assert.deepEqual(order().map(norm), order().map(norm));
+});
+
+test('byOrder: nomor urut BAB lebih penting daripada nama', () => {
+  const { byOrder } = createRequire(import.meta.url)('../pb_hooks/lib/catalogOrder.js');
+  assert.deepEqual([{ title: 'A', order: 2 }, { title: 'Z', order: 1 }, { title: 'B', order: 2 }].sort(byOrder).map((c) => c.title), ['Z', 'A', 'B']);
+});
