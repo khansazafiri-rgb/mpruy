@@ -24,6 +24,10 @@ mesin melafalkan nama seperti MEDCOEL (`npm run lab` membuat beberapa varian eja
 
 Untuk suara rekaman sendiri atau mesin lain, lihat bagian "Mesin suara" di `src/tts.mjs`.
 
+## Karakter manusia: Raka
+
+Selain maskot Kori, Kila, dan Nilo, seri video punya satu karakter manusia 2D bernama **Raka**, dibuat sebagai kode (SVG yang dikendalikan angka) di `brand/characters/raka/`. Bila naskah atau prompt video menyebut "Raka", generator **wajib memakai aset itu** (`raka.js`, `rakaSvg()`), bukan menciptakan desain manusia baru. Raka hanya untuk video, tidak untuk web. Panduan ekspresi, animasi, dan render ada di `brand/characters/raka/README.md`.
+
 ## Iklan 75 detik "Kirim PDF soalmu" (contoh pemakaian penuh)
 
 Folder `ad/` berisi iklan 9:16 (1080x1920, 30 fps, 75 detik): 16 shot, cuplikan layar aplikasi

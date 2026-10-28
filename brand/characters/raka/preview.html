@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raka: pratinjau aset video MEDCOEL</title>
+<style>
+  :root { --cream:#FFF9EC; --ink:#172B38; --line:#E6DCC6; --navy:#212739; --teal:#1D7B75; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--cream); color:var(--ink); font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  main { max-width:1280px; margin:0 auto; padding:28px 20px 60px; }
+  h1 { font-size:26px; margin:0 0 4px; } h2 { font-size:17px; margin:34px 0 4px; }
+  p.n { margin:0 0 12px; color:#4b5d68; max-width:70ch; }
+  .row { display:flex; flex-wrap:wrap; gap:14px; align-items:flex-end; }
+  .tile { text-align:center; font-size:12px; color:#4b5d68; }
+  .tile .art { border-radius:14px; overflow:hidden; }
+  .light { background:#FFF9EC; } .white { background:#fff; } .dark { background:#0F1B24; } .tealbg { background:#1A5F5A; } .sky { background:#CFE8F3; }
+  .tile.dark, .tile.tealbg { color:#cfe0e8; }
+  .btns { display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 12px; }
+  button { font:inherit; padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:#fff; cursor:pointer; }
+  button.on { background:var(--teal); color:#fff; border-color:var(--teal); }
+  #frame { width:270px; height:480px; position:relative; background:linear-gradient(#CFE8F3,#EAF6EE); border-radius:18px; overflow:hidden; }
+  #frame .cap { position:absolute; left:14px; right:14px; bottom:18px; background:rgba(15,27,36,.86); color:#fff; padding:10px 12px; border-radius:12px; font-size:13px; text-align:center; }
+  #frame .r { position:absolute; left:50%; bottom:78px; transform:translateX(-50%); width:200px; }
+  #frame.night { background:linear-gradient(#0F1B24,#1B3340); }
+  .strip { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+  .strip .tile { background:#fff; border-radius:12px; padding:8px 4px 6px; border:1px solid var(--line); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Raka</h1>
+  <p class="n">Aset produksi video MEDCOEL (bukan fitur web). Semua gambar di halaman ini dibuat dari <code>raka.js</code> saat halaman dibuka; tidak ada gambar raster.</p>
+
+  <h2>1. Ekspresi dan pose</h2>
+  <p class="n">Lima varian yang diminta (netral, kaget, berpikir, menunjuk, senang) ditambah sedih. Semua dari satu fungsi dan satu proporsi.</p>
+  <div class="row" id="sheet"></div>
+
+  <h2>2. Wajah saja</h2>
+  <div class="row" id="faces"></div>
+
+  <h2>3. Menoleh dan cermin</h2>
+  <p class="n">yaw dari -1 ke 1 menggeser wajah dan telinga; flip membalik seluruh karakter.</p>
+  <div class="row" id="yaw"></div>
+
+  <h2>4. Gerak (langsung dari kode)</h2>
+  <p class="n">Urutan contoh 11 detik: berkedip, menoleh kiri dan kanan, kaget, berpikir, menunjuk, senang, kembali netral. Tombol di bawah menjalankan transisi antar-ekspresi dengan <code>lerpState</code>.</p>
+  <div class="row">
+    <div class="tile"><div class="art light" id="live" style="width:300px"></div><div id="liveLabel">memuat...</div></div>
+    <div>
+      <div class="btns" id="btns"></div>
+      <div class="btns"><button id="play" class="on">Putar urutan contoh</button></div>
+    </div>
+  </div>
+
+  <h2>5. Filmstrip urutan contoh</h2>
+  <div class="strip" id="strip"></div>
+
+  <h2>6. Ukuran kecil dan latar</h2>
+  <p class="n">Tinggi 320, 180, 110, dan 64 px pada latar terang, putih, biru muda, teal, dan gelap.</p>
+  <div class="row" id="small"></div>
+
+  <h2>7. Bingkai video potret 1080 x 1920</h2>
+  <p class="n">Dikecilkan ke 270 x 480. Raka setinggi sekitar 55% bingkai di atas takarir.</p>
+  <div class="row"><div class="tile"><div id="frame"><div class="r" id="frameR"></div><div class="cap">Ini contoh takarir video MEDCOEL.</div></div>frame siang</div>
+  <div class="tile"><div id="frame2"></div>frame malam</div></div>
+</main>
+<script type="module">
+import { EXPRESSIONS, PALETTE_ON_DARK, raka, rakaSvg, lerpState, idle, demoState, DEMO_LENGTH, ease } from './raka.js';
+const $ = (id) => document.getElementById(id);
+const tile = (svg, label, bg = 'light', w) => `<div class="tile ${bg}" style="background:none"><div class="art ${bg}" style="${w ? `width:${w}px` : ''}">${svg}</div>${label}</div>`;
+const names = Object.keys(EXPRESSIONS);
+
+$('sheet').innerHTML = names.map((n) => tile(`<div style="width:210px">${rakaSvg(raka(n), { uid: 's-' + n })}</div>`, n)).join('');
+$('faces').innerHTML = names.map((n) => tile(`<div style="width:130px">${rakaSvg(raka(n), { uid: 'f-' + n, shadow: false }).replace('viewBox="0 0 400 800"', 'viewBox="0 0 400 420"')}</div>`, n)).join('');
+$('yaw').innerHTML = [-1, -0.5, 0, 0.5, 1].map((y) => tile(`<div style="width:160px">${rakaSvg(raka('netral', null, { yaw: y, gazeX: y }), { uid: 'y' + y })}</div>`, `yaw ${y}`)).join('')
+  + tile(`<div style="width:160px">${rakaSvg(raka('menunjuk', null, { flip: 1 }), { uid: 'flip' })}</div>`, 'flip (menunjuk)');
+
+// gerak langsung
+const live = $('live'); let mode = 'demo', t0 = performance.now(), trans = null, cur = raka('netral');
+const label = $('liveLabel');
+$('btns').innerHTML = names.map((n) => `<button data-n="${n}">${n}</button>`).join('');
+$('btns').onclick = (e) => { const n = e.target.dataset.n; if (!n) return; mode = 'manual'; trans = { from: cur, to: raka(n), start: performance.now() }; $('play').classList.remove('on'); label.textContent = 'transisi ke ' + n; };
+$('play').onclick = () => { mode = 'demo'; t0 = performance.now(); $('play').classList.add('on'); };
+const tick = (now) => {
+  const t = (now - t0) / 1000;
+  if (mode === 'demo') { cur = demoState(t); label.textContent = `urutan contoh, t = ${(t % DEMO_LENGTH).toFixed(1)} dtk`; }
+  else if (trans) { const k = ease((now - trans.start) / 350); cur = lerpState(trans.from, trans.to, k); if (k >= 1) trans = null; }
+  live.innerHTML = rakaSvg(mode === 'demo' ? cur : idle(cur, now / 1000), { uid: 'live' });
+  requestAnimationFrame(tick);
+};
+requestAnimationFrame(tick);
+
+// filmstrip
+const times = [0.4, 1.9, 3.0, 4.4, 4.7, 5.2, 6.4, 7.8, 9.4, 10.4];
+$('strip').innerHTML = times.map((t) => tile(`<div style="width:120px;margin:0 auto">${rakaSvg(demoState(t), { uid: 'st' + t })}</div>`, `t = ${t.toFixed(1)} dtk`)).join('');
+
+// ukuran kecil
+const bgs = [['light', 'terang'], ['white', 'putih'], ['sky', 'biru muda'], ['tealbg', 'teal tua (hindari: sweater ikut lebur)'], ['dark', 'gelap (PALETTE_ON_DARK)']];
+const heights = [320, 180, 110, 64];
+$('small').innerHTML = bgs.map(([c, nm]) => `<div class="tile ${c}" style="padding:10px;border-radius:14px"><div class="row" style="align-items:flex-end;justify-content:center;gap:10px">`
+  + heights.map((h, i) => `<div style="height:${h}px;width:${h / 2}px">${rakaSvg(raka(['netral', 'kaget', 'berpikir', 'menunjuk', 'senang'][i % 5]), { uid: `sm-${c}-${h}`, palette: c === 'dark' ? PALETTE_ON_DARK : undefined }).replace('<svg ', `<svg height="${h}" `)}</div>`).join('')
+  + `</div>${nm}</div>`).join('');
+
+// bingkai 1080 x 1920
+$('frameR').innerHTML = rakaSvg(raka('senang'), { uid: 'fr1' });
+$('frame2').innerHTML = `<div class="night" style="width:270px;height:480px;position:relative;background:linear-gradient(#0F1B24,#1B3340);border-radius:18px;overflow:hidden"><div style="position:absolute;left:50%;bottom:78px;transform:translateX(-50%);width:200px">${rakaSvg(raka('menunjuk'), { uid: 'fr2', palette: PALETTE_ON_DARK })}</div><div class="cap" style="position:absolute;left:14px;right:14px;bottom:18px;background:rgba(255,255,255,.9);color:#0F1B24;padding:10px 12px;border-radius:12px;font-size:13px;text-align:center">Raka tetap terbaca di latar gelap.</div></div>`;
+document.body.dataset.ready = '1';
+</script>
+</body>
+</html>
