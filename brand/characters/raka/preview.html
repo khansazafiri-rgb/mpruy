@@ -60,7 +60,13 @@
   <p class="n">Tinggi 320, 180, 110, dan 64 px pada latar terang, putih, biru muda, teal, dan gelap.</p>
   <div class="row" id="small"></div>
 
-  <h2>7. Bingkai video potret 1080 x 1920</h2>
+  <h2>7. Patch logo MEDCOEL di dada</h2>
+  <p class="n">Simbol digambar dari <code>logo-mark.webp</code> pada patch krem di dada kiri pemakai (kanan layar). Patch ada di dalam grup badan, jadi ikut condong dan bernapas; saat dicerminkan, simbolnya tidak ikut terbalik.</p>
+  <div class="row" id="logoPoses"></div>
+  <div class="row" id="logoClose" style="margin-top:14px"></div>
+  <div class="row" id="logoSmall" style="margin-top:14px"></div>
+
+  <h2>8. Bingkai video potret 1080 x 1920</h2>
   <p class="n">Dikecilkan ke 270 x 480. Raka setinggi sekitar 55% bingkai di atas takarir.</p>
   <div class="row"><div class="tile"><div id="frame"><div class="r" id="frameR"></div><div class="cap">Ini contoh takarir video MEDCOEL.</div></div>frame siang</div>
   <div class="tile"><div id="frame2"></div>frame malam</div></div>
@@ -101,6 +107,16 @@ const heights = [320, 180, 110, 64];
 $('small').innerHTML = bgs.map(([c, nm]) => `<div class="tile ${c}" style="padding:10px;border-radius:14px"><div class="row" style="align-items:flex-end;justify-content:center;gap:10px">`
   + heights.map((h, i) => `<div style="height:${h}px;width:${h / 2}px">${rakaSvg(raka(['netral', 'kaget', 'berpikir', 'menunjuk', 'senang'][i % 5]), { uid: `sm-${c}-${h}`, palette: c === 'dark' ? PALETTE_ON_DARK : undefined }).replace('<svg ', `<svg height="${h}" `)}</div>`).join('')
   + `</div>${nm}</div>`).join('');
+
+// patch logo: semua pose, close-up (termasuk dicerminkan dan condong), dan ukuran kecil
+const chest = (svg) => svg.replace('viewBox="0 0 400 800"', 'viewBox="110 340 220 150"');
+$('logoPoses').innerHTML = [['netral', 'netral'], ['kaget', 'kaget'], ['berpikir', 'berpikir'], ['menunjuk', 'menunjuk'], ['senang', 'senang'], ['senang', 'sapa']]
+  .map(([e, p]) => tile(`<div style="width:190px">${rakaSvg(raka(e, p), { uid: 'lp-' + p })}</div>`, p)).join('');
+const closeStates = [['netral', raka('netral')], ['condong 6 derajat', raka('netral', null, { lean: 6, breath: 1 })], ['dicerminkan (flip)', raka('menunjuk', null, { flip: 1 })], ['menoleh', raka('netral', null, { yaw: 0.8 })]];
+$('logoClose').innerHTML = closeStates.map(([n, st]) => tile(`<div style="width:300px">${chest(rakaSvg(st, { uid: 'lc-' + n, shadow: false }))}</div>`, n)).join('');
+$('logoSmall').innerHTML = [['light', undefined], ['dark', PALETTE_ON_DARK]].map(([c, pal]) => `<div class="tile ${c}" style="padding:10px;border-radius:14px"><div class="row" style="align-items:flex-end;gap:12px">`
+  + [320, 180, 110, 64].map((h) => `<div style="height:${h}px;width:${h / 2}px">${rakaSvg(raka('netral'), { uid: `ls-${c}-${h}`, palette: pal }).replace('<svg ', `<svg height="${h}" `)}</div>`).join('')
+  + `</div>tinggi 320, 180, 110, 64 px (${c === 'dark' ? 'latar gelap' : 'latar terang'})</div>`).join('');
 
 // bingkai 1080 x 1920
 $('frameR').innerHTML = rakaSvg(raka('senang'), { uid: 'fr1' });
