@@ -18,11 +18,11 @@ routerAdd("GET", "/api/medcoel/campus-materials", (e) => {
       const rec = e.app.findRecordById("subjects", sid);
       s = subjects[sid] = { id: sid, name: rec.getString("name"), slug: rec.getString("slug"), questionCount: 0, chapters: [] };
     }
-    s.chapters.push({ id: c.id, title: c.getString("title"), total: counts[c.id] });
+    s.chapters.push({ id: c.id, title: c.getString("title"), order: c.getInt("order"), total: counts[c.id] });
     s.questionCount += counts[c.id];
   });
-  const byName = require(`${__hooks}/lib/catalogOrder.js`).byName;
-  const items = Object.keys(subjects).map((id) => subjects[id]).sort(byName);
-  items.forEach((s) => s.chapters.sort(byName));
+  const order = require(`${__hooks}/lib/catalogOrder.js`);
+  const items = Object.keys(subjects).map((id) => subjects[id]).sort(order.byName);
+  items.forEach((s) => s.chapters.sort(order.byOrder));
   return e.json(200, { campusName: e.app.findRecordById("campuses", campus).getString("name"), items: items });
 });

@@ -2,7 +2,7 @@
 
 Sumber: [Rekap Bab per Mata Kuliah (Topik 1-3)](https://docs.google.com/document/d/1Pz-nmdV7m6Sb5TZrhkrx-U8QVSSAjPz1hkle0QUnPG4). Diambil dari rincian dokumen, diperbarui 28 September 2026.
 
-Katalog ini berisi **32 mata kuliah dan 384 BAB**. Tiga kelompok topik digabung. Mata kuliah yang dipilih pengguna saat pendaftaran atau di Profil tampil lebih dahulu; masing-masing kelompok diurutkan alfabetis. BAB di setiap mata kuliah juga diurutkan alfabetis.
+Katalog ini berisi **32 mata kuliah dan 384 BAB**. Tiga kelompok topik digabung. Mata kuliah yang dipilih pengguna saat pendaftaran atau di Profil tampil lebih dahulu; masing-masing kelompok diurutkan alfabetis. **BAB di setiap mata kuliah mengikuti urutan di Google Doc sumber (bukan alfabetis)**: BAB 1 Anatomi adalah Anatomi Umum & Terminologi Anatomis, dan seterusnya. Urutan tersimpan di kolom `order` BAB (migrasi `1800002700_chapter_doc_order.js`) dan bisa diubah admin di Kelola BAB.
 
 Catatan sumber: ringkasan dokumen menyebut 17 mata kuliah, tetapi rincian Topik 1–3 memuat 32 mata kuliah. Topik 4 belum memiliki daftar BAB dan tidak termasuk katalog ini. Nama tampilan Ilmu Penyakit Dalam dan Ilmu Bedah Ortopedi diringkas; keterangannya tetap disimpan dalam data sumber.
 
@@ -43,480 +43,481 @@ Catatan sumber: ringkasan dokumen menyebut 17 mata kuliah, tetapi rincian Topik 
 
 ## Anatomi
 
-1. Anatomi Abdomen (Dinding, Rongga Peritoneum)
-2. Anatomi Cranium & Isi Rongga Tengkorak
-3. Anatomi Ekstremitas Atas
-4. Anatomi Ekstremitas Bawah
-5. Anatomi Jantung & Pembuluh Darah Besar
-6. Anatomi Kepala & Leher
-7. Anatomi Panca Indra (Mata, Telinga, Hidung)
+1. Anatomi Umum & Terminologi Anatomis
+2. Osteologi & Artrologi (Sistem Rangka & Sendi)
+3. Miologi (Sistem Otot)
+4. Anatomi Kepala & Leher
+5. Anatomi Cranium & Isi Rongga Tengkorak
+6. Anatomi Toraks (Dinding Toraks, Mediastinum)
+7. Anatomi Jantung & Pembuluh Darah Besar
 8. Anatomi Paru & Saluran Napas
-9. Anatomi Pelvis & Perineum
-10. Anatomi Perkembangan (Embriologi Dasar)
-11. Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)
-12. Anatomi Sistem Limfatik
-13. Anatomi Sistem Saraf Otonom
-14. Anatomi Sistem Urogenital
-15. Anatomi Toraks (Dinding Toraks, Mediastinum)
-16. Anatomi Umum & Terminologi Anatomis
-17. Miologi (Sistem Otot)
-18. Neuroanatomi: Medula Spinalis & Saraf Perifer
-19. Neuroanatomi: Otak & Batang Otak
-20. Osteologi & Artrologi (Sistem Rangka & Sendi)
+9. Anatomi Abdomen (Dinding, Rongga Peritoneum)
+10. Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)
+11. Anatomi Pelvis & Perineum
+12. Anatomi Sistem Urogenital
+13. Anatomi Ekstremitas Atas
+14. Anatomi Ekstremitas Bawah
+15. Neuroanatomi: Otak & Batang Otak
+16. Neuroanatomi: Medula Spinalis & Saraf Perifer
+17. Anatomi Sistem Saraf Otonom
+18. Anatomi Panca Indra (Mata, Telinga, Hidung)
+19. Anatomi Sistem Limfatik
+20. Anatomi Perkembangan (Embriologi Dasar)
 
 ## Anestesiologi Dasar
 
-1. Manajemen Jalan Napas
-2. Manajemen Nyeri
-3. Prinsip Anestesi Umum & Lokal
+1. Prinsip Anestesi Umum & Lokal
+2. Manajemen Jalan Napas
+3. Manajemen Nyeri
 
 ## Biokimia & Biologi Molekuler
 
-1. Bioenergetika & Rantai Transport Elektron
-2. Biokimia Integrasi Metabolisme (Puasa vs Kenyang)
-3. Biokimia Klinik Dasar (Interpretasi Lab Sederhana)
+1. Struktur & Fungsi Karbohidrat
+2. Struktur & Fungsi Lipid
+3. Struktur & Fungsi Protein & Asam Amino
 4. Enzim: Kinetika & Regulasi
-5. Glikolisis & Glukoneogenesis
-6. Metabolisme Asam Amino & Siklus Urea
-7. Metabolisme Asam Nukleat (Purin, Pirimidin)
+5. Bioenergetika & Rantai Transport Elektron
+6. Glikolisis & Glukoneogenesis
+7. Siklus Asam Sitrat (Krebs)
 8. Metabolisme Glikogen
-9. Metabolisme Kolesterol & Lipoprotein
-10. Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak
-11. Mineral & Trace Elements
-12. Regulasi Ekspresi Gen
+9. Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak
+10. Metabolisme Kolesterol & Lipoprotein
+11. Metabolisme Asam Amino & Siklus Urea
+12. Metabolisme Asam Nukleat (Purin, Pirimidin)
 13. Replikasi, Transkripsi, Translasi DNA/RNA
-14. Siklus Asam Sitrat (Krebs)
-15. Struktur & Fungsi Karbohidrat
-16. Struktur & Fungsi Lipid
-17. Struktur & Fungsi Protein & Asam Amino
-18. Vitamin Larut Lemak & Larut Air
+14. Regulasi Ekspresi Gen
+15. Vitamin Larut Lemak & Larut Air
+16. Mineral & Trace Elements
+17. Biokimia Integrasi Metabolisme (Puasa vs Kenyang)
+18. Biokimia Klinik Dasar (Interpretasi Lab Sederhana)
 
 ## Embriologi
 
 1. Gametogenesis & Fertilisasi
-2. Kelainan Kongenital Umum (Spina Bifida, dll)
-3. Pembentukan Blastula & Gastrulasi
+2. Pembentukan Blastula & Gastrulasi
+3. Perkembangan Sistem Saraf (Neurulasi)
 4. Perkembangan Jantung & Sistem Kardiovaskular
-5. Perkembangan Sistem Digestif
-6. Perkembangan Sistem Saraf (Neurulasi)
+5. Perkembangan Wajah & Palatum
+6. Perkembangan Sistem Digestif
 7. Perkembangan Sistem Urogenital
-8. Perkembangan Wajah & Palatum
+8. Kelainan Kongenital Umum (Spina Bifida, dll)
 
 ## Farmakologi
 
-1. Farmakodinamik: Mekanisme Kerja Obat & Reseptor
-2. Farmakokinetik: Absorpsi, Distribusi, Metabolisme, Ekskresi
-3. Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)
-4. Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida
-5. Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik
-6. Obat Antivirus, Antifungi, Antiparasit
-7. Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik
-8. Obat Kardiovaskular: Antihipertensi
-9. Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)
-10. Obat Sistem Gastrointestinal (Antasida, PPI)
+1. Farmakokinetik: Absorpsi, Distribusi, Metabolisme, Ekskresi
+2. Farmakodinamik: Mekanisme Kerja Obat & Reseptor
+3. Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)
+4. Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)
+5. Obat Kardiovaskular: Antihipertensi
+6. Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik
+7. Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik
+8. Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida
+9. Obat Antivirus, Antifungi, Antiparasit
+10. Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)
 11. Obat Sistem Respirasi (Bronkodilator, Antihistamin)
-12. Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)
-13. Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)
+12. Obat Sistem Gastrointestinal (Antasida, PPI)
+13. Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)
 14. Toksikologi Dasar & Keracunan Obat
 
 ## Fisiologi
 
-1. Fisiologi Cairan Tubuh & Elektrolit
-2. Fisiologi Darah & Hemostasis
-3. Fisiologi Endokrin: Hipotalamus-Hipofisis
-4. Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi
-5. Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi
+1. Fisiologi Sel & Membran, Transport Membran
+2. Fisiologi Cairan Tubuh & Elektrolit
+3. Fisiologi Saraf: Potensial Aksi & Sinaps
+4. Fisiologi Otot Rangka, Jantung, Polos
+5. Fisiologi Sistem Saraf Otonom
 6. Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung
-7. Fisiologi Kehamilan & Laktasi
-8. Fisiologi Keseimbangan Asam-Basa
-9. Fisiologi Otot Rangka, Jantung, Polos
-10. Fisiologi Pankreas Endokrin & Regulasi Glukosa
-11. Fisiologi Reproduksi Pria
-12. Fisiologi Reproduksi Wanita & Siklus Menstruasi
-13. Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas
-14. Fisiologi Saraf: Potensial Aksi & Sinaps
-15. Fisiologi Sel & Membran, Transport Membran
-16. Fisiologi Sensorik (Penglihatan, Pendengaran, Nyeri)
-17. Fisiologi Sistem Imun
-18. Fisiologi Sistem Saraf Otonom
-19. Fisiologi Tekanan Darah & Regulasinya
-20. Fisiologi Tiroid, Paratiroid, Adrenal
+7. Fisiologi Tekanan Darah & Regulasinya
+8. Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas
+9. Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi
+10. Fisiologi Keseimbangan Asam-Basa
+11. Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi
+12. Fisiologi Endokrin: Hipotalamus-Hipofisis
+13. Fisiologi Tiroid, Paratiroid, Adrenal
+14. Fisiologi Pankreas Endokrin & Regulasi Glukosa
+15. Fisiologi Reproduksi Pria
+16. Fisiologi Reproduksi Wanita & Siklus Menstruasi
+17. Fisiologi Kehamilan & Laktasi
+18. Fisiologi Darah & Hemostasis
+19. Fisiologi Sistem Imun
+20. Fisiologi Sensorik (Penglihatan, Pendengaran, Nyeri)
 
 ## Genetika Kedokteran
 
-1. Dasar Genetika Kanker
-2. Genetika Populasi & Konseling Genetik
-3. Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)
-4. Penyakit Genetik Autosomal (Dominan & Resesif)
-5. Penyakit Terkait Kromosom X
-6. Prinsip Hereditas Mendel
+1. Prinsip Hereditas Mendel
+2. Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)
+3. Penyakit Genetik Autosomal (Dominan & Resesif)
+4. Penyakit Terkait Kromosom X
+5. Genetika Populasi & Konseling Genetik
+6. Dasar Genetika Kanker
 
 ## Ginekologi & Payudara
 
-1. Endometriosis
-2. Fibroadenoma Mammae
-3. Gangguan Siklus Menstruasi
-4. Infeksi Menular Seksual (Sifilis, Gonore, Herpes Genital)
-5. Infertilitas
-6. Karsinoma Payudara Dasar
-7. Karsinoma Serviks
+1. Gangguan Siklus Menstruasi
+2. Infeksi Menular Seksual (Sifilis, Gonore, Herpes Genital)
+3. Vulvitis, Vaginitis, Servisitis
+4. Penyakit Radang Panggul (PID)
+5. Mioma Uteri
+6. Endometriosis
+7. Sindrom Ovarium Polikistik (PCOS)
 8. Kista & Tumor Ovarium
-9. Kontrasepsi & Keluarga Berencana
-10. Mastitis
-11. Mioma Uteri
-12. Penyakit Radang Panggul (PID)
-13. Sindrom Ovarium Polikistik (PCOS)
-14. Vulvitis, Vaginitis, Servisitis
+9. Karsinoma Serviks
+10. Kontrasepsi & Keluarga Berencana
+11. Infertilitas
+12. Mastitis
+13. Fibroadenoma Mammae
+14. Karsinoma Payudara Dasar
 
 ## Histologi
 
-1. Histologi Kulit & Adneksa
-2. Histologi Organ Limfoid & Imun
-3. Histologi Sistem Digestif & Kelenjar Aksesoris
-4. Histologi Sistem Endokrin
+1. Jaringan Dasar: Epitel
+2. Jaringan Dasar: Ikat, Tulang Rawan, Tulang
+3. Jaringan Dasar: Otot
+4. Jaringan Dasar: Saraf
 5. Histologi Sistem Kardiovaskular
-6. Histologi Sistem Reproduksi Pria & Wanita
-7. Histologi Sistem Respirasi
+6. Histologi Sistem Respirasi
+7. Histologi Sistem Digestif & Kelenjar Aksesoris
 8. Histologi Sistem Urinarius
-9. Jaringan Dasar: Epitel
-10. Jaringan Dasar: Ikat, Tulang Rawan, Tulang
-11. Jaringan Dasar: Otot
-12. Jaringan Dasar: Saraf
+9. Histologi Sistem Reproduksi Pria & Wanita
+10. Histologi Sistem Endokrin
+11. Histologi Kulit & Adneksa
+12. Histologi Organ Limfoid & Imun
 
 ## Ilmu Bedah
 
-1. Anestesi & Manajemen Nyeri Perioperatif
-2. Bedah Anak Dasar
-3. Bedah Digestif (Apendisitis, Hernia, Ileus)
-4. Bedah Onkologi Dasar
-5. Bedah Plastik & Luka Bakar Dasar
-6. Bedah Saraf Dasar
-7. Bedah Trauma & Kegawatdaruratan Bedah
-8. Bedah Urologi
-9. Infeksi Bedah (Abses, Selulitis Berat)
-10. Luka & Penyembuhan Luka
-11. Prinsip Dasar Bedah & Perioperatif
+1. Prinsip Dasar Bedah & Perioperatif
+2. Luka & Penyembuhan Luka
+3. Infeksi Bedah (Abses, Selulitis Berat)
+4. Bedah Digestif (Apendisitis, Hernia, Ileus)
+5. Bedah Onkologi Dasar
+6. Bedah Trauma & Kegawatdaruratan Bedah
+7. Bedah Urologi
+8. Bedah Anak Dasar
+9. Bedah Saraf Dasar
+10. Bedah Plastik & Luka Bakar Dasar
+11. Anestesi & Manajemen Nyeri Perioperatif
 
 ## Ilmu Bedah Ortopedi
 
-1. Cedera Olahraga
-2. Kelainan Kongenital Ortopedi
-3. Prinsip Reduksi & Fiksasi Fraktur
+1. Prinsip Reduksi & Fiksasi Fraktur
+2. Cedera Olahraga
+3. Kelainan Kongenital Ortopedi
 
 ## Ilmu Kesehatan Anak (IKA)
 
-1. Imunisasi Dasar & Lanjutan
-2. Infeksi pada Anak (Diare, ISPA, Demam Tifoid Anak)
-3. Kegawatdaruratan Pediatri
-4. Kejang Demam & Epilepsi Anak
-5. Malnutrisi & Stunting
-6. Neonatologi: Asfiksia, BBLR, Ikterus Neonatorum
-7. Nutrisi & ASI Eksklusif
-8. Penyakit Genetik & Kongenital pada Anak
-9. Penyakit Jantung Bawaan
-10. Tumbuh Kembang Anak & Skrining
+1. Tumbuh Kembang Anak & Skrining
+2. Nutrisi & ASI Eksklusif
+3. Imunisasi Dasar & Lanjutan
+4. Neonatologi: Asfiksia, BBLR, Ikterus Neonatorum
+5. Infeksi pada Anak (Diare, ISPA, Demam Tifoid Anak)
+6. Kejang Demam & Epilepsi Anak
+7. Penyakit Jantung Bawaan
+8. Malnutrisi & Stunting
+9. Kegawatdaruratan Pediatri
+10. Penyakit Genetik & Kongenital pada Anak
 
 ## Ilmu Penyakit Dalam (IPD)
 
-1. Geriatri: Sindrom Geriatri & Polifarmasi
-2. Pendekatan Klinis Pasien Dewasa Multi-Komorbid
+1. Pendekatan Klinis Pasien Dewasa Multi-Komorbid
+2. Geriatri: Sindrom Geriatri & Polifarmasi
 3. Penyakit Tropis & Infeksi pada Dewasa
 4. Perawatan Paliatif Dasar
 
 ## Kehamilan & Persalinan
 
-1. Anemia dalam Kehamilan
+1. Fisiologi & Diagnosis Kehamilan
 2. Antenatal Care & Skrining Kehamilan
-3. Diabetes Melitus Gestasional
-4. Distosia & Persalinan Patologis
-5. Fisiologi & Diagnosis Kehamilan
-6. Hiperemesis Gravidarum
-7. Infeksi Nifas (Endometritis)
-8. Kehamilan Ektopik
+3. Hiperemesis Gravidarum
+4. Anemia dalam Kehamilan
+5. Preeklampsia & Eklampsia
+6. Diabetes Melitus Gestasional
+7. Plasenta Previa
+8. Solusio Plasenta (Abrupsio Plasenta)
 9. Ketuban Pecah Dini
-10. Perdarahan Postpartum
-11. Persalinan Normal (Mekanisme & Kala Persalinan)
-12. Plasenta Previa
-13. Preeklampsia & Eklampsia
-14. Ruptur Uteri
-15. Solusio Plasenta (Abrupsio Plasenta)
+10. Persalinan Normal (Mekanisme & Kala Persalinan)
+11. Distosia & Persalinan Patologis
+12. Perdarahan Postpartum
+13. Ruptur Uteri
+14. Infeksi Nifas (Endometritis)
+15. Kehamilan Ektopik
 
 ## Mikrobiologi
 
-1. Bakteri Anaerob & Spirochaeta
-2. Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)
-3. Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus)
-4. Bakteriologi Umum: Struktur & Klasifikasi Bakteri
-5. HIV & Retrovirus
-6. Mikologi: Jamur Superfisial & Sistemik
-7. Mycobacterium & Tuberkulosis
-8. Uji Sensitivitas Antibiotik & Resistensi
-9. Virologi Umum: Struktur & Replikasi Virus
+1. Bakteriologi Umum: Struktur & Klasifikasi Bakteri
+2. Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus)
+3. Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)
+4. Mycobacterium & Tuberkulosis
+5. Bakteri Anaerob & Spirochaeta
+6. Virologi Umum: Struktur & Replikasi Virus
+7. Virus Hepatitis (A, B, C, D, E)
+8. HIV & Retrovirus
+9. Virus Respirasi (Influenza, Corona, RSV)
 10. Virus Eksantematous (Campak, Rubella, Varicella)
-11. Virus Hepatitis (A, B, C, D, E)
-12. Virus Respirasi (Influenza, Corona, RSV)
+11. Mikologi: Jamur Superfisial & Sistemik
+12. Uji Sensitivitas Antibiotik & Resistensi
 
 ## Multisistem & Kegawatdaruratan
 
-1. Gangguan Elektrolit & Asam-Basa Berat
-2. Gigitan/Sengatan Hewan Berbisa
-3. Kegawatdaruratan pada Anak
-4. Kegawatdaruratan pada Kehamilan
-5. Keracunan & Overdosis Obat
-6. Resusitasi Jantung Paru (BHD/BHL)
-7. Sepsis & Systemic Inflammatory Response Syndrome
-8. Syok (Semua Jenis) & Resusitasi
-9. Tenggelam & Asfiksia
-10. Trauma Multipel (Politrauma)
+1. Syok (Semua Jenis) & Resusitasi
+2. Sepsis & Systemic Inflammatory Response Syndrome
+3. Keracunan & Overdosis Obat
+4. Gigitan/Sengatan Hewan Berbisa
+5. Tenggelam & Asfiksia
+6. Trauma Multipel (Politrauma)
+7. Kegawatdaruratan pada Anak
+8. Kegawatdaruratan pada Kehamilan
+9. Resusitasi Jantung Paru (BHD/BHL)
+10. Gangguan Elektrolit & Asam-Basa Berat
 
 ## Parasitologi
 
-1. Cestoda (Taenia, Echinococcus)
-2. Entomologi Kedokteran (Vektor Penyakit)
-3. Nematoda Jaringan (Filaria)
+1. Protozoa Usus (Entamoeba, Giardia)
+2. Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)
+3. Trypanosoma & Leishmania
 4. Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)
-5. Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)
-6. Protozoa Usus (Entamoeba, Giardia)
+5. Nematoda Jaringan (Filaria)
+6. Cestoda (Taenia, Echinococcus)
 7. Trematoda (Schistosoma, Fasciola)
-8. Trypanosoma & Leishmania
+8. Entomologi Kedokteran (Vektor Penyakit)
 
 ## Patologi Anatomi
 
-1. Gangguan Hemodinamik (Trombosis, Emboli, Infark)
-2. Jejas Sel & Adaptasi Sel
-3. Neoplasia: Prinsip Umum & Klasifikasi
-4. Patologi Muskuloskeletal
-5. Patologi Payudara & Ginekologi
-6. Patologi Sistem Digestif & Hepar
-7. Patologi Sistem Endokrin
-8. Patologi Sistem Kardiovaskular
-9. Patologi Sistem Respirasi
-10. Patologi Sistem Saraf Pusat
-11. Patologi Sistem Urogenital
-12. Penyembuhan Luka & Regenerasi
-13. Radang Akut & Kronik
+1. Jejas Sel & Adaptasi Sel
+2. Radang Akut & Kronik
+3. Penyembuhan Luka & Regenerasi
+4. Gangguan Hemodinamik (Trombosis, Emboli, Infark)
+5. Neoplasia: Prinsip Umum & Klasifikasi
+6. Patologi Sistem Kardiovaskular
+7. Patologi Sistem Respirasi
+8. Patologi Sistem Digestif & Hepar
+9. Patologi Sistem Urogenital
+10. Patologi Sistem Endokrin
+11. Patologi Payudara & Ginekologi
+12. Patologi Muskuloskeletal
+13. Patologi Sistem Saraf Pusat
 
 ## Patologi Klinik
 
-1. Dasar Imunoserologi Klinik
-2. Interpretasi Analisis Gas Darah
-3. Interpretasi Analisis Urin
-4. Interpretasi Darah Lengkap (Hematologi Dasar)
-5. Interpretasi Fungsi Ginjal
-6. Interpretasi Fungsi Hati
+1. Interpretasi Darah Lengkap (Hematologi Dasar)
+2. Interpretasi Fungsi Hati
+3. Interpretasi Fungsi Ginjal
+4. Interpretasi Profil Lipid & Gula Darah
+5. Interpretasi Analisis Urin
+6. Interpretasi Analisis Gas Darah
 7. Interpretasi Kultur & Sensitivitas Mikrobiologi
-8. Interpretasi Profil Lipid & Gula Darah
+8. Dasar Imunoserologi Klinik
 
 ## Psikiatri & Kesehatan Jiwa
 
 1. Delirium & Gangguan Kognitif
-2. Gangguan Cemas: Fobia, Panik, GAD
-3. Gangguan Kepribadian
-4. Gangguan Makan (Anoreksia, Bulimia)
-5. Gangguan Mood: Bipolar
-6. Gangguan Mood: Depresi
-7. Gangguan Obsesif-Kompulsif
-8. Gangguan Penggunaan Zat Psikoaktif (NAPZA, Alkohol)
-9. Gangguan Perkembangan Anak (ADHD, Autisme)
-10. Gangguan Somatoform & Psikosomatik
-11. Gangguan Tidur (Insomnia, Parasomnia)
-12. Gangguan Waham
-13. Kedaruratan Psikiatri (Risiko Bunuh Diri, Agitasi)
-14. Skizofrenia & Gangguan Psikotik Lain
+2. Gangguan Penggunaan Zat Psikoaktif (NAPZA, Alkohol)
+3. Skizofrenia & Gangguan Psikotik Lain
+4. Gangguan Waham
+5. Gangguan Mood: Depresi
+6. Gangguan Mood: Bipolar
+7. Gangguan Cemas: Fobia, Panik, GAD
+8. Gangguan Obsesif-Kompulsif
+9. Gangguan Somatoform & Psikosomatik
+10. Gangguan Kepribadian
+11. Gangguan Makan (Anoreksia, Bulimia)
+12. Gangguan Tidur (Insomnia, Parasomnia)
+13. Gangguan Perkembangan Anak (ADHD, Autisme)
+14. Kedaruratan Psikiatri (Risiko Bunuh Diri, Agitasi)
 
 ## Radiologi Dasar
 
-1. Interpretasi Foto Abdomen
+1. Prinsip Dasar Pencitraan (X-Ray, USG, CT, MRI)
 2. Interpretasi Foto Toraks
-3. Interpretasi Foto Tulang/Fraktur
-4. Prinsip Dasar Pencitraan (X-Ray, USG, CT, MRI)
+3. Interpretasi Foto Abdomen
+4. Interpretasi Foto Tulang/Fraktur
 5. USG Dasar (Abdomen, Obstetri)
 
 ## Sistem Endokrin, Metabolik & Nutrisi
 
-1. Defisiensi Vitamin & Mineral
-2. Diabetes Melitus Tipe 1
-3. Diabetes Melitus Tipe 2
-4. Dislipidemia
-5. Gangguan Kelenjar Paratiroid & Kalsium
-6. Hipertiroid & Krisis Tiroid
-7. Hiperurisemia & Gout
-8. Hipotiroid
-9. Komplikasi Akut Diabetes (Hipoglikemia, KAD, HHS)
-10. Komplikasi Kronik Diabetes
-11. Malnutrisi Energi-Protein
-12. Obesitas & Sindrom Metabolik
-13. Penyakit Addison & Insufisiensi Adrenal
-14. Penyakit Cushing & Hiperkortisolisme
-15. Tiroiditis & Goiter
+1. Diabetes Melitus Tipe 1
+2. Diabetes Melitus Tipe 2
+3. Komplikasi Akut Diabetes (Hipoglikemia, KAD, HHS)
+4. Komplikasi Kronik Diabetes
+5. Hipertiroid & Krisis Tiroid
+6. Hipotiroid
+7. Tiroiditis & Goiter
+8. Penyakit Cushing & Hiperkortisolisme
+9. Penyakit Addison & Insufisiensi Adrenal
+10. Gangguan Kelenjar Paratiroid & Kalsium
+11. Obesitas & Sindrom Metabolik
+12. Dislipidemia
+13. Hiperurisemia & Gout
+14. Malnutrisi Energi-Protein
+15. Defisiensi Vitamin & Mineral
 
 ## Sistem Gastrointestinal, Hepatobilier, Pankreas
 
-1. Akalasia & Gangguan Motilitas Esofagus
-2. Apendisitis
-3. Demam Tifoid
-4. Diare Kronik & Malabsorpsi
-5. Divertikulitis
-6. Gagal Hati Akut & Kronik
-7. Gastritis
+1. Kelainan Rongga Mulut (Stomatitis, Kandidiasis Oral)
+2. Kelainan Kelenjar Liur (Parotitis)
+3. Akalasia & Gangguan Motilitas Esofagus
+4. GERD (Gastroesophageal Reflux Disease)
+5. Varises Esofagus
+6. Gastritis
+7. Ulkus Peptikum
 8. Gastroenteritis & Diare Akut
-9. GERD (Gastroesophageal Reflux Disease)
-10. Hemoroid & Fistula Ani
-11. Hepatitis Virus (A, B, C)
+9. Diare Kronik & Malabsorpsi
+10. Demam Tifoid
+11. Apendisitis
 12. Infestasi Cacing (Askariasis, Taeniasis, Cacing Tambang)
-13. Kelainan Kelenjar Liur (Parotitis)
-14. Kelainan Rongga Mulut (Stomatitis, Kandidiasis Oral)
-15. Kolelitiasis & Kolesistitis
-16. Kolitis (Ulseratif, Infeksius)
+13. Hepatitis Virus (A, B, C)
+14. Sirosis Hepatis
+15. Gagal Hati Akut & Kronik
+16. Kolelitiasis & Kolesistitis
 17. Pankreatitis Akut & Kronik
-18. Sirosis Hepatis
-19. Tumor/Karsinoma Saluran Cerna Dasar
-20. Ulkus Peptikum
-21. Varises Esofagus
+18. Divertikulitis
+19. Kolitis (Ulseratif, Infeksius)
+20. Hemoroid & Fistula Ani
+21. Tumor/Karsinoma Saluran Cerna Dasar
 
 ## Sistem Ginjal & Saluran Kemih
 
-1. Batu Saluran Kemih (Urolitiasis)
-2. Fimosis & Parafimosis
-3. Glomerulonefritis Akut & Kronik
-4. Hiperplasia Prostat Jinak (BPH)
-5. Hipospadia & Epispadia
-6. Infeksi Saluran Kemih (Sistitis, Pielonefritis)
-7. Karsinoma Prostat Dasar
-8. Kegawatan Uro-genital (Retensio Urin, Trauma Genitourinaria)
-9. Kriptorkidismus
-10. Penyakit Ginjal Kronik & Gagal Ginjal
-11. Prostatitis
-12. Sindrom Nefrotik
-13. Varikokel & Hidrokel
+1. Infeksi Saluran Kemih (Sistitis, Pielonefritis)
+2. Glomerulonefritis Akut & Kronik
+3. Sindrom Nefrotik
+4. Penyakit Ginjal Kronik & Gagal Ginjal
+5. Batu Saluran Kemih (Urolitiasis)
+6. Hipospadia & Epispadia
+7. Kriptorkidismus
+8. Varikokel & Hidrokel
+9. Fimosis & Parafimosis
+10. Prostatitis
+11. Hiperplasia Prostat Jinak (BPH)
+12. Karsinoma Prostat Dasar
+13. Kegawatan Uro-genital (Retensio Urin, Trauma Genitourinaria)
 
 ## Sistem Hematologi & Imunologi
 
-1. Anemia Aplastik & Anemia pada Penyakit Kronik
-2. Anemia Defisiensi Besi
-3. Anemia Hemolitik
-4. Anemia Megaloblastik
-5. Artritis Reumatoid
-6. Demam Berdarah Dengue
-7. Gangguan Pembekuan Darah (Hemofilia, ITP)
-8. Imunodefisiensi (termasuk HIV/AIDS)
-9. Leptospirosis
-10. Leukemia
-11. Limfoma
+1. Anemia Defisiensi Besi
+2. Anemia Hemolitik
+3. Anemia Megaloblastik
+4. Anemia Aplastik & Anemia pada Penyakit Kronik
+5. Gangguan Pembekuan Darah (Hemofilia, ITP)
+6. Leukemia
+7. Limfoma
+8. Demam Berdarah Dengue
+9. Malaria
+10. Leptospirosis
+11. Sepsis
 12. Lupus Eritematosus Sistemik
-13. Malaria
+13. Artritis Reumatoid
 14. Reaksi Alergi & Anafilaksis
-15. Sepsis
+15. Imunodefisiensi (termasuk HIV/AIDS)
 
 ## Sistem Indra: Mata
 
-1. Blefaritis & Hordeolum/Kalazion
-2. Glaukoma Akut & Kronik
-3. Katarak
-4. Kelainan Refraksi (Miopia, Hipermetropia, Astigmatisma)
-5. Kelainan Segmen Anterior & Posterior Lain
-6. Keratitis & Ulkus Kornea
-7. Konjungtivitis & Infeksi Permukaan Mata
+1. Kelainan Refraksi (Miopia, Hipermetropia, Astigmatisma)
+2. Konjungtivitis & Infeksi Permukaan Mata
+3. Blefaritis & Hordeolum/Kalazion
+4. Keratitis & Ulkus Kornea
+5. Katarak
+6. Glaukoma Akut & Kronik
+7. Retinopati (Diabetik, Hipertensi)
 8. Pterigium & Kelainan Konjungtiva Lain
-9. Retinopati (Diabetik, Hipertensi)
-10. Trauma Mata
+9. Trauma Mata
+10. Kelainan Segmen Anterior & Posterior Lain
 
 ## Sistem Indra: THT
 
-1. Corpus Alienum THT
-2. Epistaksis
-3. Faringitis & Tonsilitis
+1. Otitis Eksterna
+2. Otitis Media Akut & Kronik
+3. Mastoiditis
 4. Gangguan Pendengaran & Tuli
-5. Laringitis
-6. Mastoiditis
-7. Otitis Eksterna
-8. Otitis Media Akut & Kronik
+5. Vertigo Perifer (Terkait Telinga Dalam)
+6. Rhinitis Alergi & Non-Alergi
+7. Sinusitis
+8. Epistaksis
 9. Polip Nasi
-10. Rhinitis Alergi & Non-Alergi
-11. Sinusitis
-12. Tumor Kepala-Leher Dasar
-13. Vertigo Perifer (Terkait Telinga Dalam)
+10. Faringitis & Tonsilitis
+11. Laringitis
+12. Corpus Alienum THT
+13. Tumor Kepala-Leher Dasar
 
 ## Sistem Integumen (Kulit & Kelamin)
 
-1. Akne Vulgaris
-2. Dermatitis Atopik & Kontak
-3. Infeksi Bakteri Kulit (Impetigo, Selulitis, Erisipelas)
-4. Infeksi Jamur Kulit (Tinea, Kandidiasis Kutan)
-5. Infeksi Virus Kulit (Herpes, Varicella, Veruka)
-6. Kelainan Pigmentasi (Vitiligo, Melasma)
-7. Luka Bakar
-8. Penyakit Menular Seksual dengan Manifestasi Kulit
-9. Psoriasis
-10. Skabies & Infestasi Kulit
-11. Tumor Kulit Jinak & Ganas Dasar
-12. Urtikaria
+1. Infeksi Bakteri Kulit (Impetigo, Selulitis, Erisipelas)
+2. Infeksi Jamur Kulit (Tinea, Kandidiasis Kutan)
+3. Infeksi Virus Kulit (Herpes, Varicella, Veruka)
+4. Skabies & Infestasi Kulit
+5. Dermatitis Atopik & Kontak
+6. Psoriasis
+7. Urtikaria
+8. Akne Vulgaris
+9. Kelainan Pigmentasi (Vitiligo, Melasma)
+10. Tumor Kulit Jinak & Ganas Dasar
+11. Luka Bakar
+12. Penyakit Menular Seksual dengan Manifestasi Kulit
 
 ## Sistem Kardiovaskular
 
-1. Aritmia: Fibrilasi Atrial
-2. Aritmia: Takikardi & Bradikardi Lain
-3. Endokarditis, Miokarditis, Perikarditis
+1. Hipertensi (Primer & Sekunder)
+2. Penyakit Jantung Koroner: Angina Pektoris
+3. Sindrom Koroner Akut (STEMI, NSTEMI)
 4. Gagal Jantung Akut & Kronik
-5. Hipertensi (Primer & Sekunder)
-6. Penyakit Arteri Perifer
-7. Penyakit Jantung Katup
-8. Penyakit Jantung Kongenital (Dasar)
-9. Penyakit Jantung Koroner: Angina Pektoris
-10. Penyakit Jantung Reumatik
-11. Sindrom Koroner Akut (STEMI, NSTEMI)
-12. Syok (Hipovolemik, Kardiogenik, Septik, Anafilaktik)
-13. Trombosis Vena Dalam
-14. Varises Vena
+5. Aritmia: Fibrilasi Atrial
+6. Aritmia: Takikardi & Bradikardi Lain
+7. Penyakit Jantung Reumatik
+8. Penyakit Jantung Katup
+9. Endokarditis, Miokarditis, Perikarditis
+10. Penyakit Jantung Kongenital (Dasar)
+11. Syok (Hipovolemik, Kardiogenik, Septik, Anafilaktik)
+12. Trombosis Vena Dalam
+13. Varises Vena
+14. Penyakit Arteri Perifer
 
 ## Sistem Muskuloskeletal
 
-1. Artritis Reumatoid (Perspektif Ortopedi)
-2. Dislokasi Sendi
-3. Fraktur Ekstremitas Atas
-4. Fraktur Ekstremitas Bawah
-5. Fraktur: Klasifikasi & Prinsip Tatalaksana
-6. Low Back Pain & Hernia Nukleus Pulposus
-7. Osteoartritis
-8. Osteomielitis
-9. Osteoporosis
-10. Skoliosis & Kifosis
-11. Tenosinovitis & Cedera Jaringan Lunak
-12. Tumor Tulang Primer & Sekunder
+1. Osteoartritis
+2. Artritis Reumatoid (Perspektif Ortopedi)
+3. Fraktur: Klasifikasi & Prinsip Tatalaksana
+4. Fraktur Ekstremitas Atas
+5. Fraktur Ekstremitas Bawah
+6. Dislokasi Sendi
+7. Osteoporosis
+8. Skoliosis & Kifosis
+9. Tenosinovitis & Cedera Jaringan Lunak
+10. Osteomielitis
+11. Tumor Tulang Primer & Sekunder
+12. Low Back Pain & Hernia Nukleus Pulposus
 
 ## Sistem Respirasi
 
-1. ARDS (Acute Respiratory Distress Syndrome)
-2. Asma Bronkial
-3. Bronkitis Akut & Kronik
-4. Edema Paru
-5. Efusi Pleura
-6. Emfisema
-7. Infeksi Saluran Napas Atas (ISPA, Faringitis, Laringitis)
-8. Influenza & Infeksi Virus Respirasi
-9. Kegawatdaruratan Respirasi (Gagal Napas)
-10. Pertusis
-11. Pneumonia (Komunitas & Nosokomial)
-12. Pneumotoraks
-13. PPOK (Penyakit Paru Obstruktif Kronik)
-14. Tuberkulosis Paru
-15. Tumor Paru Dasar
+1. Infeksi Saluran Napas Atas (ISPA, Faringitis, Laringitis)
+2. Influenza & Infeksi Virus Respirasi
+3. Pertusis
+4. Pneumonia (Komunitas & Nosokomial)
+5. Tuberkulosis Paru
+6. Bronkitis Akut & Kronik
+7. Asma Bronkial
+8. PPOK (Penyakit Paru Obstruktif Kronik)
+9. Efusi Pleura
+10. Pneumotoraks
+11. ARDS (Acute Respiratory Distress Syndrome)
+12. Emfisema
+13. Edema Paru
+14. Tumor Paru Dasar
+15. Kegawatdaruratan Respirasi (Gagal Napas)
 
 ## Sistem Saraf
 
-1. Epilepsi & Kejang (termasuk Kejang Demam)
-2. Gangguan Gerak: Parkinson & Tremor
-3. Infeksi SSP: Ensefalitis
-4. Infeksi SSP: Meningitis
-5. Kelainan Kongenital Saraf (Spina Bifida, Hidrosefalus)
-6. Neuropati Perifer
-7. Nyeri Kepala Primer (Tension Type, Migren, Cluster)
-8. Nyeri Kepala Sekunder & Red Flags
-9. Penurunan Kesadaran & Koma
-10. Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)
-11. Stroke Hemoragik & Perdarahan Intrakranial
-12. Stroke Iskemik
-13. Tetanus & Infeksi Neuromuskular
-14. Trauma Kepala & Cedera Medula Spinalis
-15. Tumor Sistem Saraf Pusat
-16. Vertigo Perifer & Sentral
+1. Nyeri Kepala Primer (Tension Type, Migren, Cluster)
+2. Nyeri Kepala Sekunder & Red Flags
+3. Vertigo Perifer & Sentral
+4. Stroke Iskemik
+5. Stroke Hemoragik & Perdarahan Intrakranial
+6. Epilepsi & Kejang (termasuk Kejang Demam)
+7. Infeksi SSP: Meningitis
+8. Infeksi SSP: Ensefalitis
+9. Tetanus & Infeksi Neuromuskular
+10. Trauma Kepala & Cedera Medula Spinalis
+11. Gangguan Gerak: Parkinson & Tremor
+12. Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)
+13. Neuropati Perifer
+14. Tumor Sistem Saraf Pusat
+15. Penurunan Kesadaran & Koma
+16. Kelainan Kongenital Saraf (Spina Bifida, Hidrosefalus)
+

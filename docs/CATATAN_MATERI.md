@@ -96,7 +96,7 @@ python3 tools/materi-import/docx_to_materi.py "Anatomi - Catatan Belajar.docx" -
 ```
 
 Konverter memetakan tiap BAB di dokumen ke BAB di web lewat **judulnya** (docs/MATA_KULIAH.md), bukan nomornya,
-karena urutan di dokumen (Bab 1–20) berbeda dengan urutan alfabetis di web. Bila ada judul yang tidak cocok atau ganda,
+karena nomor di dokumen tidak selalu sama dengan nomor BAB di web (BAB di web mengikuti Google Doc "Rekap Bab per Mata Kuliah", lihat docs/MATA_KULIAH.md). Bila ada judul yang tidak cocok atau ganda,
 konverter berhenti dan menyebutkan yang bermasalah. `--report` mencetak:
 
 - bagian yang sengaja dibuang (lihat di bawah),
