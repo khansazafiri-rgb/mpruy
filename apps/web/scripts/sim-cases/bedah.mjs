@@ -57,7 +57,7 @@ export default {
     dxOk: 'kolik', ddx: ['kolik', 'apendisitis', 'pielonefritis', 'isk', 'kolesistitis', 'divertikulitis'],
     ref: `${REF}Kasus ini: nyeri kolik pinggang kanan menjalar ke selangkangan, hematuria, gelisah (tidak menemukan posisi nyaman), nyeri ketok CVA positif, urin eritrosit +3 tanpa tanda infeksi, USG hidronefrosis ringan dengan batu ureter distal 6 mm. Terapi: analgesik NSAID, hidrasi, antiemetik; batu ≤ 6 mm sering keluar spontan, konsultasi urologi atau bedah.`,
     K: 'ku onset lokasi kualitas pemberat penyerta bak_darah bak_nyeri demam mual muntah rpd_serupa alergi ku_gcs vital abd_cva abd_palpasi urin dl ureum usg_abd ronsen_abd nsaid konsul_bedah edukasi',
-    U: 'progres obat_coba harapan menggigil bak_sering bak_berkurang sembelit rpd_ginjal asam_urat rk_umum kebiasaan abd_inspeksi abd_rebound abd_mcburney hernia crp elektrolit gds kultur_urin ct_abd antiemetik paracetamol infus_rutin observasi rawat pulang',
+    U: 'progres obat_coba harapan menggigil nyeri_pinggang bak_sering bak_berkurang sembelit rpd_ginjal asam_urat rk_umum kebiasaan abd_inspeksi abd_rebound abd_mcburney hernia crp elektrolit gds kultur_urin ct_abd antiemetik paracetamol infus_rutin observasi rawat pulang',
     B: 'antibiotik_iv steroid_sis',
     A: {
       ku: p('Nyeri pinggang kanan hebat, Dok. Sakitnya datang dan pergi.', 'Nyeri pinggang kanan kolik', 'nyeri'),
@@ -197,7 +197,7 @@ export default {
     dxOk: 'pankreatitis', ddx: ['pankreatitis', 'kolesistitis', 'ulkus_perf', 'gastritis', 'ska', 'ileus'],
     ref: `${REF}Kasus ini: nyeri epigastrium menembus ke punggung setelah konsumsi alkohol, muntah, lipase lebih dari 3 kali batas atas (kriteria Atlanta: nyeri khas + lipase ≥ 3x + pencitraan sesuai). Terapi: puasa, cairan kristaloid terukur, analgesik, pemantauan; antibiotik profilaksis tidak dianjurkan; rawat inap.`,
     K: 'ku onset lokasi kualitas pemberat penyerta mual muntah alkohol kuning rpd_hati alergi ku_gcs vital dehidrasi abd_inspeksi abd_palpasi dl amilase gds usg_abd puasa infus_bolus rawat konsul_pd',
-    U: 'progres obat_coba harapan demam nyeri_dada rpd_serupa rpd_dm obat_nsaid merokok kebiasaan abd_auskul abd_perkusi abd_rebound kulit sklera jantung paru_auskul crp sgot bilirubin lipid ureum elektrolit laktat ekg ronsen ct_abd nsaid paracetamol antiemetik ngt kateter oksigen opioid konsul_bedah',
+    U: 'progres obat_coba harapan demam nyeri_dada rpd_serupa rpd_dm obat_nsaid merokok kebiasaan kembung abd_auskul abd_perkusi abd_rebound kulit sklera jantung paru_auskul crp sgot bilirubin lipid ureum elektrolit laktat ekg ronsen ct_abd nsaid paracetamol antiemetik ngt kateter oksigen opioid konsul_bedah',
     B: 'pulang steroid_sis',
     A: {
       ku: p('Ulu hati sakit sekali tembus ke punggung, Dok.', 'Nyeri epigastrium menembus ke punggung', 'meringis'),
