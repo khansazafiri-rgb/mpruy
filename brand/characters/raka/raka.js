@@ -28,6 +28,11 @@ export const PALETTE = {
   tongue: '#EE7A7A',
   fxWarm: '#F2735E',
   fxCool: '#6DBBA8',
+  // patch logo MEDCOEL di dada: kain krem berbentuk kotak membulat + simbol (warna logo-mark.webp)
+  patch: '#F5E8D6',
+  patchEdge: '#E4D2B4',
+  logoTeal: '#017162',
+  logoGold: '#FBC23A',
 };
 
 /**
@@ -83,14 +88,14 @@ export const POSES = {
   netral: {},
   kaget: {
     lean: -1,
-    armL: { wx: 156, wy: 470, ex: 90, ey: 526, finger: 0, front: 1 },
-    armR: { wx: 244, wy: 470, ex: 310, ey: 526, finger: 0, front: 1 },
+    armL: { wx: 164, wy: 486, ex: 90, ey: 530, finger: 0, front: 1 },
+    armR: { wx: 236, wy: 486, ex: 310, ey: 530, finger: 0, front: 1 },
     fxBurst: 1,
   },
   berpikir: {
-    lean: -1.5,
-    armL: { wx: 262, wy: 508, ex: 122, ey: 526, finger: 0, front: 1 },
-    armR: { wx: 222, wy: 372, ex: 320, ey: 466, finger: 0.5, fa: -128, front: 1 },
+    lean: 1.5,
+    armL: { wx: 178, wy: 372, ex: 80, ey: 466, finger: 0.5, fa: -52, front: 1 },
+    armR: { wx: 138, wy: 508, ex: 278, ey: 526, finger: 0, front: 1 },
   },
   menunjuk: {
     lean: 1.2,
@@ -208,10 +213,16 @@ function sleeve(sx, sy, a) {
   return { dots, dx: ex / el, dy: ey / el };
 }
 
-function armSvg(side, a, P) {
+/** Bentuk lengan: bulatan lengan baju (x, y, r), titik tangan, dan arah lengan bawah. Dipakai menggambar dan menguji. */
+export function armShape(side, a) {
   const [sx, sy] = SHOULDER[side];
   const { dots, dx, dy } = sleeve(sx, sy, a);
-  const hx = a.wx + dx * 17, hy = a.wy + dy * 17;
+  return { dots, dx, dy, hand: [a.wx + dx * 17, a.wy + dy * 17], handR: 22 };
+}
+
+function armSvg(side, a, P) {
+  const [sx, sy] = SHOULDER[side];
+  const { dots, dx, dy, hand: [hx, hy] } = armShape(side, a);
   const finger = a.finger > 0.02
     ? `<rect x="0" y="-9.5" width="${r1(12 + 52 * a.finger)}" height="19" rx="9.5" fill="${P.skin}" transform="translate(${r1(hx)} ${r1(hy)}) rotate(${r1(a.fa)})"/>`
     : '';
@@ -219,6 +230,27 @@ function armSvg(side, a, P) {
   return `<g class="raka-arm-${side}" fill="${c}">`
     + dots.map((p) => `<circle cx="${r1(p[0])}" cy="${r1(p[1])}" r="${r1(p[2])}"/>`).join('')
     + `<circle cx="${r1(hx)}" cy="${r1(hy)}" r="22" fill="${P.skin}"/>${finger}</g>`;
+}
+
+// Patch logo MEDCOEL di dada kiri pemakai (kanan layar). Simbolnya digambar ulang dari
+// apps/web/src/assets/logo-mark.webp (dua huruf C bersarang + bintang emas) dalam kotak 256 x 256.
+// Patch dan simbol punya ukuran tetap; yang berubah hanya posisinya mengikuti badan (lihat rakaSvg).
+export const PATCH = { x: 236, y: 421, size: 56, mark: 44 }; // pusat, sisi kain (kotak membulat), lebar simbol (px kanvas)
+const LOGO_MARK = (teal, gold) => `<g fill="none" stroke="${teal}" stroke-width="27.5" stroke-linecap="round" stroke-linejoin="round">`
+  + `<path d="M164.5 30H39.5A26 26 0 0 0 13.5 56V205.5A26 26 0 0 0 39.5 231.5H221.5"/>`
+  + `<path d="M165 75.5H85A24 24 0 0 0 61 99.5V160.5A24 24 0 0 0 85 184.5H196A24 24 0 0 0 220 160.5V102"/></g>`
+  + `<path d="M222 10Q231 31 248 46Q231 58 222 78Q213 58 196 46Q213 31 222 10Z" fill="${gold}"/>`;
+
+function patchSvg(P, breath, flip, side) {
+  const dir = side === 'kanan' ? -1 : 1;                     // 'kiri' = dada kiri pemakai
+  const cx = 200 + dir * (PATCH.x - 200);
+  const cy = PATCH.y + (PATCH.y - 580) * breath * 0.012;     // ikut naik-turun dada saat bernapas, ukuran tetap
+  const k = PATCH.mark / 256;
+  // bila gambar dicerminkan (flip), simbol dibalik lagi supaya tidak terbaca terbalik
+  const keep = flip ? ` transform="translate(${r1(cx)} 0) scale(-1 1) translate(${r1(-cx)} 0)"` : '';
+  return `<g class="raka-patch"${keep}>`
+    + `<rect x="${r1(cx - PATCH.size / 2)}" y="${r1(cy - PATCH.size / 2)}" width="${PATCH.size}" height="${PATCH.size}" rx="17" fill="${P.patch}" stroke="${P.patchEdge}" stroke-width="2.5"/>`
+    + `<g transform="translate(${r1(cx)} ${r1(cy)}) scale(${r1(k * 1000) / 1000}) translate(-128 -128)">${LOGO_MARK(P.logoTeal, P.logoGold)}</g></g>`;
 }
 
 function browSvg(cx, cy, b, side, P) {
@@ -245,7 +277,8 @@ function mouthSvg(m, P, uid) {
  * Gambar Raka sebagai string SVG.
  * @param {object} state keadaan lengkap (lihat NEUTRAL / raka())
  * @param {object} [opts] { uid: id unik bila ada beberapa Raka dalam satu halaman, shadow: false = tanpa bayangan lantai,
- *   background: warna latar atau null, palette: ganti sebagian warna, bare: true = hanya isi gambar tanpa <svg>, width }
+ *   background: warna latar atau null, palette: ganti sebagian warna, bare: true = hanya isi gambar tanpa <svg>, width,
+ *   logo: false = tanpa patch logo, 'kanan' = patch di dada kanan pemakai (kiri layar); bawaan: dada kiri pemakai }
  */
 export function rakaSvg(state, opts = {}) {
   const P = { ...PALETTE, ...(opts.palette || {}) };
@@ -287,12 +320,13 @@ export function rakaSvg(state, opts = {}) {
   const torso = `<g transform="translate(200 580) scale(1 ${r1(breath)}) translate(-200 -580)">`
     + `<path d="M114 452C112 396 150 374 172 372C182 388 218 388 228 372C250 374 288 396 286 452L296 566C250 588 150 588 104 566Z" fill="${P.sweater}"/></g>`;
   const neck = `<rect x="170" y="336" width="60" height="62" rx="16" fill="${P.skinShade}"/>`;
+  const patch = opts.logo === false ? '' : patchSvg(P, s.breath, flip, opts.logo);
   const arms = (front) => ['L', 'R'].map((sd) => {
     const a = sd === 'L' ? s.armL : s.armR;
     return (a.front > 0.5) === front ? armSvg(sd, a, P) : '';
   }).join('');
   const body = `<g class="raka-body" transform="translate(0 ${r1(s.bob)}) rotate(${r1(s.lean)} 200 580)">`
-    + arms(false) + neck + torso + headG + arms(true) + `</g>`;
+    + arms(false) + neck + torso + patch + headG + arms(true) + `</g>`;
 
   // ---- kaki (tetap diam)
   const legs = `<path d="M130 566L194 566L190 736L134 736Z" fill="${P.pants}" stroke="${P.pants}" stroke-width="12" stroke-linejoin="round"/>`
