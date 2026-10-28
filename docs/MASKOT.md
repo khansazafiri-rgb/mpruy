@@ -11,6 +11,8 @@ Sumber tunggal: `apps/web/src/mascots/*.svg` (vektor) dan `apps/web/src/styles/m
 
 Garis tepi semua maskot memakai navy MEDCOEL `#172B38`. Bentuknya sengaja tidak meniru logo.
 
+> **Bukan maskot:** karakter manusia **Raka** (`brand/characters/raka/`) adalah aset khusus seri video, terpisah dari ketiga maskot ini dan tidak dipakai di web. Lihat `brand/video/README.md`.
+
 ## Memakai di web
 
 ```jsx
