@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Dunia tanpa oralit</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root { --forest:#0A3830; --green:#00A383; --mint:#9DE0BD; --cream:#FBF3E2; --gold:#F8C038; --coral:#E8665F; --ink:#172B38; --amber:#F29B38; }
+  html,body{margin:0;padding:0;background:#000;}
+  #root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans','Inter',sans-serif;color:var(--ink);background:var(--cream)}
+  #root svg.layer{position:absolute;left:0;top:0}
+  #chips{position:absolute;left:0;top:150px;width:1080px;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .chip{display:inline-flex;align-items:center;gap:18px;background:#fff;border-radius:60px;padding:14px 38px 14px 22px;font-weight:800;font-size:50px;line-height:1.12;letter-spacing:-.01em;color:var(--forest);box-shadow:0 10px 0 rgba(10,56,48,.14);transform-origin:50% 0%;max-width:960px;box-sizing:border-box}
+  .chip .ic{width:66px;height:66px;flex:none}
+  .chip .ic svg{width:100%;height:100%;display:block}
+  .chip.big{font-size:80px;padding:22px 52px;border-radius:72px;background:var(--forest);color:#fff;box-shadow:0 12px 0 rgba(0,0,0,.2)}
+  .chip.big em{font-style:normal;color:var(--gold)}
+  .chip.warn{background:#FFF1DA}
+  .legend{position:absolute;display:flex;align-items:center;gap:14px;background:#fff;border-radius:48px;padding:10px 28px 10px 16px;font-weight:800;font-size:42px;color:var(--forest);box-shadow:0 8px 0 rgba(10,56,48,.14);transform-origin:0 50%}
+  .legend .ic{width:54px;height:54px}.legend .ic svg{width:100%;height:100%;display:block}
+  .legend small{display:block;font-size:27px;font-weight:700;color:#4d6b66;line-height:1.1;margin-top:2px}
+  #card{position:absolute;left:60px;top:150px;width:960px;border-radius:48px;background:#fff;box-shadow:0 14px 0 rgba(10,56,48,.16);padding:26px 34px 30px;box-sizing:border-box;transform-origin:50% 0%}
+  #card h3{margin:0 0 14px;font-weight:800;font-size:44px;letter-spacing:-.01em;line-height:1.1;color:var(--forest)}
+  #card h3.warn{color:#B25A12}
+  .row{display:flex;align-items:center;gap:22px;padding:6px 0;font-weight:800;font-size:46px;line-height:1.1;color:var(--ink);transform-origin:0 50%}
+  .row .ic{width:84px;height:84px;flex:none}.row .ic svg{width:100%;height:100%;display:block}
+  .row.soft{font-size:40px;color:#32504b;font-weight:700}
+  #cap{position:absolute;left:60px;width:960px;top:1565px;height:210px;display:flex;align-items:center;justify-content:center}
+  #cap .box{background:rgba(10,56,48,.94);border-radius:38px;padding:18px 34px 20px;text-align:center;font-weight:800;font-size:54px;line-height:1.2;color:#fff;letter-spacing:-.01em;max-width:960px;box-sizing:border-box;box-shadow:0 8px 0 rgba(0,0,0,.18);text-wrap:balance}
+  #cap .box.par{background:#fff;color:var(--forest);box-shadow:0 8px 0 rgba(10,56,48,.18)}
+  #cap .who{display:block;font-size:26px;font-weight:700;letter-spacing:.04em;opacity:.72;margin-bottom:2px}
+  #fade{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--cream);opacity:0;pointer-events:none}
+  #rew{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none;opacity:0;
+       background:repeating-linear-gradient(0deg,rgba(23,43,56,.18) 0 3px,rgba(255,255,255,0) 3px 9px)}
+  #rewIc{position:absolute;left:70px;top:150px;font-weight:800;font-size:64px;color:#fff;background:rgba(10,56,48,.85);padding:6px 30px 12px;border-radius:30px;opacity:0;letter-spacing:.04em}
+  #logo{position:absolute;left:44px;top:44px;width:92px;height:92px;opacity:.95}
+  #end{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--cream);opacity:0;pointer-events:none;overflow:hidden}
+  #end .endlogo{position:absolute;left:50%;top:560px;width:380px;height:380px;margin-left:-190px;transform-origin:50% 50%}
+  #end .endtxt{position:absolute;left:0;width:1080px;top:1000px;text-align:center;font-weight:800;font-size:62px;line-height:1.18;color:var(--forest);padding:0 90px;box-sizing:border-box}
+  #end .endtxt b{color:var(--green)}
+</style></head>
+<body>
+<div id="root">
+  <svg id="stage" class="layer" width="1080" height="1920" viewBox="0 0 1080 1920">
+    <g id="cam"></g>
+    <g id="bodyScene"></g>
+    <g id="pip"></g>
+    <g id="kori"></g>
+  </svg>
+  <div id="rew"></div><div id="rewIc">◀◀</div>
+  <div id="chips"></div>
+  <div id="legendHost"></div>
+  <div id="card"></div>
+  <img id="logo" src="logo.png" alt="">
+  <div id="cap"><div class="box" id="capbox"></div></div>
+  <div id="fade"></div>
+  <div id="end"><svg id="endsvg" width="1080" height="1920" style="position:absolute;left:0;top:0"></svg><img class="endlogo" src="logo.png" alt=""><div class="endtxt">Cerita kedokteran lainnya bareng <b>MEDCOEL</b>.</div></div>
+</div>
+<script type="module" src="stage.js"></script>
+</body></html>
