@@ -2,7 +2,7 @@
 // dengan halaman "Pelajari materi" siswa, jadi yang terlihat di sini itulah
 // yang dibaca siswa.
 import { useEffect, useState } from 'react';
-import RichContent from '@/components/RichContent';
+import ChapterNotes from '@/components/ChapterNotes';
 import { Alert, Modal, Segmented, Spinner } from '@/components/ui';
 import { errorText } from '@/lib/api';
 import pb from '@/lib/pb';
@@ -48,10 +48,10 @@ export default function ChapterNotesEditor({ chapter, subjectName, onClose, onSa
             <label className="block space-y-2">
               <span className="sr-only">Isi catatan</span>
               <textarea className="input min-h-[360px] font-mono text-sm leading-relaxed" maxLength={MAX} value={text} onChange={(e) => setText(e.target.value)} placeholder={'Tulis ringkasan BAB di sini.\n\n**Definisi**: ...\n==Poin penting== yang sering keluar di ujian.\n\nTempel tautan gambar Google Drive di baris sendiri untuk menampilkan gambar.'} />
-              <span className="hint block">Format: **tebal**, *miring*, ==sorotan==, ~subskrip~, ^superskrip^, [teks](https://tautan). Tabel dan daftar boleh memakai HTML sederhana. {text.length.toLocaleString('id-ID')} / {MAX.toLocaleString('id-ID')} karakter.</span>
+              <span className="hint block">Format: **tebal**, *miring*, ==sorotan==, ~subskrip~, ^superskrip^, [teks](https://tautan). Catatan bergambar (judul, kotak sorot, gambar, high-yield) diawali baris <code>&lt;!-- materi:v2 --&gt;</code>; aturannya ada di docs/CATATAN_MATERI.md. {text.length.toLocaleString('id-ID')} / {MAX.toLocaleString('id-ID')} karakter.</span>
             </label>
           ) : (
-            <div className="card-quiet max-h-[60vh] overflow-y-auto p-5">{empty ? <p className="text-sm text-ink-muted">Belum ada isi untuk dipratinjau.</p> : <RichContent value={text} className="max-w-[70ch]" marks />}</div>
+            <div className="card-quiet max-h-[60vh] overflow-y-auto p-5">{empty ? <p className="text-sm text-ink-muted">Belum ada isi untuk dipratinjau.</p> : <ChapterNotes content={text} className="is-compact" />}</div>
           )}
           <Alert>{error}</Alert>
         </div>

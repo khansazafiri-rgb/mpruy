@@ -444,9 +444,12 @@ routerAdd("GET", "/api/medcoel/chapters/{id}/notes", (e) => {
   const list = e.app.findRecordsByFilter("chapters", "subject = {:s} && hidden = false && drilling = false", "order,created", 500, 0, { s: s.id })
     .filter((x) => noted.has(x.id)).map((x) => ({ id: x.id, title: x.getString("title") })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName);
   const i = list.findIndex((x) => x.id === c.id);
+  // Soal latihan BAB ini yang terlihat siswa (aturan kampus sama dengan halaman mata kuliah), untuk tombol "Latihan soal BAB ini".
+  const items = learn.pool(e.app, user, { chapters: [c.id] });
   return e.json(200, {
     subject: { id: s.id, name: s.getString("name"), slug: s.getString("slug") },
     chapter: { id: c.id, title: c.getString("title") },
+    practice: { total: items.length, answered: items.filter((x) => x.seen).length },
     content: note.getString("content"),
     updated: note.getString("updated"),
     prev: i > 0 ? list[i - 1] : null,
