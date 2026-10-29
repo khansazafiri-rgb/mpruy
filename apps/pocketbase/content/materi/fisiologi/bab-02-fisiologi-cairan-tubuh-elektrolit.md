@@ -277,7 +277,8 @@ Pada kondisi lingkungan nyaman, radiation merupakan salah satu mekanisme utama k
 
 Tidak memerlukan kontak langsung.
 
-**Jebakan**: radiation ≠ conduction.
+> [!warning] Jebakan
+> Radiation ≠ conduction.
 
 ## Conduction dan Convection
 
@@ -447,7 +448,6 @@ Jika variabel yang terganggu adalah volume/osmolality: perubahan ECF → osmorec
 - [Tonicity: Shortcut Ujian] Hypertonic :: ECF volume ↑; ICF volume ↓; osmolality ↑.
 - [Tonicity: Shortcut Ujian] Hypotonic :: ECF volume ↑; ICF volume ↑; osmolality ↓.
 - [Termoregulasi: Tujuan Utama] Keseimbangan panas :: heat production = heat loss → suhu stabil.
-- [Radiation] Jebakan :: radiation ≠ conduction.
 - [Fever vs Hyperthermia] Fever :: hypothalamic set point meningkat, biasanya dipicu pyrogens melalui mediator seperti prostaglandin E2.
 - [Fever vs Hyperthermia] Hyperthermia :: set point tidak meningkat; produksi/masuknya panas melebihi kemampuan heat loss.
 - [High-yield] Homeostasis :: dynamic regulation dalam physiological range

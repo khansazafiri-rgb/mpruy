@@ -44,7 +44,7 @@ const su = (await call('POST', '/api/collections/_superusers/auth-with-password'
 
 const stat = { dibuat: 0, diperbarui: 0, dilewati: 0, tidakAda: 0, sama: 0 };
 for (const e of index) {
-  const subject = (await call('GET', `/api/collections/subjects/records?perPage=1&filter=${q(`slug="${esc(e.subject)}"`)}`, null, su)).items[0];
+  const subject = (await call('GET', `/api/collections/subjects/records?perPage=1&filter=${q(`slug="${esc(e.subject)}" || name="${esc(e.subjectName || e.subject)}"`)}`, null, su)).items[0];
   const chapter = subject && (await call('GET', `/api/collections/chapters/records?perPage=1&filter=${q(`subject="${subject.id}" && title="${esc(e.chapter)}" && drilling=false`)}`, null, su)).items[0];
   if (!chapter) { console.log(`TIDAK ADA  ${e.subject} / ${e.chapter}`); stat.tidakAda++; continue; }
   const content = readFileSync(join(root, e.file), 'utf8');

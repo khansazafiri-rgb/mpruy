@@ -24,7 +24,7 @@ function fixture() {
     findCollectionByNameOrId: (name) => cols[name],
     findRecordsByFilter: (name) => rows[name],
     findFirstRecordByFilter(name, _filter, p) {
-      const hit = rows[name].find((r) => (name === 'subjects' ? r.getString('slug') === p.s
+      const hit = rows[name].find((r) => (name === 'subjects' ? r.getString('slug') === p.s || (p.n && r.getString('name') === p.n)
         : name === 'chapters' ? r.getString('subject') === p.s && r.getString('title') === p.t && !r.getBool('drilling')
           : r.getString('chapter') === p.c));
       if (!hit) throw new Error('sql: no rows');
@@ -75,6 +75,16 @@ test('setiap catatan di index.json menunjuk BAB yang ada di katalog', () => {
   assert.deepEqual(index.filter((e) => e.subject === 'histologi').map((e) => e.chapter).sort(), [...histologi].sort(), 'ke-12 BAB Histologi lengkap');
   const fisiologi = cat.find((s) => s.slug === 'fisiologi').chapters;
   assert.deepEqual(index.filter((e) => e.subject === 'fisiologi').map((e) => e.chapter).sort(), [...fisiologi].sort(), 'ke-20 BAB Fisiologi lengkap');
+  const biokimia = cat.find((s) => s.slug === 'biokimia').chapters;
+  assert.deepEqual(index.filter((e) => e.subject === 'biokimia').map((e) => e.chapter).sort(), [...biokimia].sort(), 'ke-18 BAB Biokimia lengkap');
+  const genetika = cat.find((s) => s.slug === 'genetika-kedokteran').chapters;
+  assert.deepEqual(index.filter((e) => e.subject === 'genetika-kedokteran').map((e) => e.chapter).sort(), [...genetika].sort(), 'ke-6 BAB Genetika Kedokteran lengkap');
+  // BAB Genetika yang ikut terketik di dokumen Biokimia tidak boleh masuk Biokimia.
+  for (const e of index.filter((x) => x.subject === 'biokimia')) {
+    const text = readFileSync(new URL(e.file, contentRoot), 'utf8');
+    assert.ok(!/Hereditas Mendel|Down Syndrome|Autosomal Dominant — Pola Dasar/.test(text), `${e.file}: isi Genetika masuk Biokimia`);
+  }
+  for (const e of index) assert.ok(e.subjectName, `${e.file}: subjectName`);
 });
 
 function seeded() {
@@ -130,6 +140,16 @@ function runSync(app) {
 }
 const sha = (t) => createHash('sha256').update(t).digest('hex');
 const fileOf = (i) => readFileSync(new URL(index[i].file, contentRoot), 'utf8');
+
+test('sinkronisasi: mata kuliah dengan slug lama dicocokkan lewat nama (Genetika: "genetika")', () => {
+  const f = fixture();
+  const subject = new Record(f.cols.subjects); subject.set('slug', 'genetika'); subject.set('name', 'Genetika Kedokteran'); f.app.save(subject);
+  const e = index.find((x) => x.subject === 'genetika-kedokteran');
+  const c = new Record(f.cols.chapters); c.set('subject', subject.id); c.set('title', e.chapter); c.set('drilling', false); f.app.save(c);
+  const { r } = runSync(f.app);
+  assert.equal(r.made, 1);
+  assert.equal(f.rows.chapter_notes[0].getString('chapter'), c.id);
+});
 
 test('sinkronisasi: membuat catatan, berikut sidik jarinya, dan idempoten', () => {
   const f = seeded();
