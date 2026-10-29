@@ -1,5 +1,6 @@
 import crypto from 'node:crypto';
 import { escapeHtml } from './telegram.mjs';
+import { parsePut, joinChunks, tryParse, countQuestions } from './json-paste.mjs';
 
 const PLAN_TTL_MS = 2 * 60 * 60 * 1000;
 
@@ -9,17 +10,25 @@ export class ImportPlanFlow {
     this.medcoel = medcoel;
     this.telegram = telegram;
     this.state = state;
+    // Sesi tempel JSON per admin. Sengaja di memori: kalau Hermes restart, tempelan diulang dari /put.
+    this.sessions = new Map();
+  }
+
+  sessionKey(chatId, actorId) {
+    return `${chatId}:${actorId}`;
   }
 
   helpText() {
     return [
-      '<b>Import Plan (baru)</b>',
-      'Kirim document JSON dengan caption <code>/put [KODE]</code>. KODE boleh dikosongkan jika ada di nama file.',
+      '<b>Kirim hasil (JSON)</b>',
+      '<code>/put KODE</code> lalu tempel JSON langsung di chat. Boleh beberapa pesan; selesai otomatis saat JSON lengkap, atau kirim <code>/selesai</code>.',
+      '<code>/put</code> saja memakai pengajuan yang terakhir diumumkan.',
+      'Alternatif: kirim file .json dengan caption <code>/put [KODE]</code>.',
       '<code>/plan</code> — lihat rencana aktif',
       '<code>/change drilling</code> — tujuan ke section Drilling',
       '<code>/change chapter ID_BAB</code> — tujuan ke bab pada mata kuliah submission',
       '<code>/confirm</code> — dry-run final lalu impor',
-      '<code>/cancelplan</code> — batalkan rencana tanpa menulis database',
+      '<code>/cancelplan</code> — batalkan rencana atau tempelan tanpa menulis database',
     ].join('\n');
   }
 
@@ -34,6 +43,20 @@ export class ImportPlanFlow {
       return true;
     }
     if (msg.document) return false;
+
+    const put = parsePut(text);
+    if (put) {
+      await this.handleTextPut(msg, put);
+      return true;
+    }
+    if (/^\/(?:selesai|done)(?:@[A-Za-z0-9_]+)?$/i.test(text)) {
+      await this.finishPaste(msg, true);
+      return true;
+    }
+    if (text && !text.startsWith('/') && this.sessions.has(this.sessionKey(msg.chat.id, msg.from.id))) {
+      await this.appendPaste(msg, text);
+      return true;
+    }
 
     if (/^\/plan$/i.test(text)) {
       await this.showPlan(msg.chat.id, msg.from.id);
@@ -64,7 +87,7 @@ export class ImportPlanFlow {
     const fileName = String(msg.document.file_name || 'upload');
     const explicit = caption.match(/^\/put(?:\s+(\S+))?$/i)?.[1] || '';
     const inferred = fileName.match(/MC\d{6}-[A-Z0-9]{4}/i)?.[0] || '';
-    const submissionId = explicit || inferred;
+    const submissionId = explicit || inferred || this.state.data.lastNotified;
     if (!submissionId) {
       return this.telegram.sendMessage(msg.chat.id, 'Kode pengajuan tidak ditemukan. Gunakan caption <code>/put MC261024-ABCD</code> atau beri nama file yang memuat kode MC.');
     }
@@ -74,26 +97,30 @@ export class ImportPlanFlow {
   async createPlanFromDocument(msg, submissionId, destination) {
     const fileName = String(msg.document.file_name || 'upload');
     if (!/\.(json|txt)$/i.test(fileName)) {
-      return this.telegram.sendMessage(msg.chat.id, 'Hermes menerima JSON sebagai Telegram document <code>.json</code> (atau .txt berisi JSON murni).');
+      return this.telegram.sendMessage(msg.chat.id, 'Hermes menerima JSON sebagai Telegram document <code>.json</code> (atau .txt berisi JSON murni). Bisa juga ditempel langsung: <code>/put KODE</code> lalu isi JSON-nya.');
     }
 
     const bytes = await this.telegram.downloadFile(msg.document.file_id, this.config.maxJsonBytes);
     const raw = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
-    let parsed;
-    try { parsed = JSON.parse(raw); } catch (err) {
-      return this.telegram.sendMessage(msg.chat.id, `❌ JSON tidak valid: ${escapeHtml(err.message)}`);
-    }
+    const parsed = tryParse(raw);
+    if (!parsed.ok) return this.telegram.sendMessage(msg.chat.id, jsonErrorMessage(parsed));
+    return this.createPlanFromRaw(msg, submissionId, raw, parsed.value, { fileName, telegramFileId: String(msg.document.file_id), destination });
+  }
 
+  // Dipakai bersama oleh jalur file dan jalur tempel teks.
+  async createPlanFromRaw(msg, submissionId, raw, parsedValue, { fileName, telegramFileId = '', destination }) {
     const sub = await this.medcoel.getSubmission(submissionId);
+    const bodyRef = telegramFileId ? '' : await this.state.putBody(msg.chat.id, msg.from.id, raw);
     const plan = await this.state.putImportPlan(msg.chat.id, msg.from.id, {
       chatId: String(msg.chat.id),
       actorId: String(msg.from.id),
       submissionId: sub.id || submissionId,
       submissionCode: sub.code || submissionId,
-      telegramFileId: String(msg.document.file_id),
+      telegramFileId,
+      bodyRef,
       fileName,
       fileHash: hashRaw(raw),
-      questionCount: countQuestions(parsed),
+      questionCount: countQuestions(parsedValue),
       source: {
         subjectId: sub.subject?.id || '',
         subjectName: sub.subject?.name || '',
@@ -110,6 +137,78 @@ export class ImportPlanFlow {
     return this.telegram.sendMessage(msg.chat.id, planCard(plan));
   }
 
+  // ---- JSON yang ditempel sebagai teks ----
+
+  async handleTextPut(msg, put) {
+    const chatId = msg.chat.id;
+    const code = put.code || this.state.data.lastNotified;
+    if (!code) {
+      return this.telegram.sendMessage(chatId, 'Kode pengajuan belum ada. Tulis <code>/put MC261024-ABCD</code> lalu tempel JSON-nya. Kodenya ada di notifikasi pengajuan atau di /queue.');
+    }
+    const sub = await this.medcoel.getSubmission(code);
+    const now = Date.now();
+    this.sessions.set(this.sessionKey(chatId, msg.from.id), {
+      submissionId: sub.id || code,
+      submissionCode: sub.code || code,
+      chunks: [],
+      bytes: 0,
+      startedAt: now,
+      touchedAt: now,
+    });
+    if (!put.body) {
+      return this.telegram.sendMessage(chatId,
+        `📝 Siap menerima JSON untuk <b>${escapeHtml(sub.code || code)}</b>${put.code ? '' : ' <i>(pengajuan terakhir yang diumumkan)</i>'}.\n`
+        + 'Tempel JSON-nya di chat sekarang. Boleh dipecah beberapa pesan; selesai otomatis begitu JSON lengkap, atau kirim <code>/selesai</code>. Batalkan dengan <code>/cancelplan</code>.'
+      );
+    }
+    return this.appendPaste(msg, put.body);
+  }
+
+  async appendPaste(msg, text) {
+    const chatId = msg.chat.id;
+    const key = this.sessionKey(chatId, msg.from.id);
+    const session = this.sessions.get(key);
+    if (!session) return undefined;
+    if (Date.now() - session.touchedAt > this.config.pasteTtlMs) {
+      this.sessions.delete(key);
+      return this.telegram.sendMessage(chatId, 'Tempelan kedaluwarsa. Mulai lagi dengan <code>/put KODE</code>.');
+    }
+    session.chunks.push(text);
+    session.bytes += Buffer.byteLength(text, 'utf8');
+    session.touchedAt = Date.now();
+    if (session.bytes > this.config.maxJsonBytes) {
+      this.sessions.delete(key);
+      return this.telegram.sendMessage(chatId, `❌ Tempelan melebihi batas ${Math.round(this.config.maxJsonBytes / 1024)} KB. Kirim sebagai file .json atau pecah menjadi beberapa pengajuan.`);
+    }
+    const raw = joinChunks(session.chunks);
+    const parsed = tryParse(raw);
+    if (parsed.ok) return this.finishPaste(msg, false, raw, parsed.value);
+    return this.telegram.sendMessage(chatId,
+      `✔️ Bagian ${session.chunks.length} diterima (${raw.length} karakter, JSON belum lengkap). Lanjutkan menempel, atau kirim <code>/selesai</code> kalau sudah semuanya.`
+    );
+  }
+
+  async finishPaste(msg, forced, rawIn, valueIn) {
+    const chatId = msg.chat.id;
+    const key = this.sessionKey(chatId, msg.from.id);
+    const session = this.sessions.get(key);
+    if (!session) {
+      return forced
+        ? this.telegram.sendMessage(chatId, 'Tidak ada tempelan aktif. Mulai dengan <code>/put KODE</code>.')
+        : undefined;
+    }
+    const raw = rawIn ?? joinChunks(session.chunks);
+    const parsed = rawIn === undefined ? tryParse(raw) : { ok: true, value: valueIn };
+    if (!parsed.ok) {
+      // Sesi dibiarkan terbuka supaya admin bisa menambah/memperbaiki bagian yang kurang.
+      return this.telegram.sendMessage(chatId, `${jsonErrorMessage(parsed)}\n\nSesi tempel masih terbuka. Kirim bagian yang kurang, atau <code>/cancelplan</code> untuk membatalkan.`);
+    }
+    this.sessions.delete(key);
+    return this.createPlanFromRaw(msg, session.submissionId, raw, parsed.value, {
+      fileName: '(ditempel lewat teks)',
+      destination: { type: 'drilling' },
+    });
+  }
   async showPlan(chatId, actorId) {
     const plan = this.requirePlan(chatId, actorId);
     return this.telegram.sendMessage(chatId, planCard(plan));
@@ -130,8 +229,9 @@ export class ImportPlanFlow {
   }
 
   async cancel(chatId, actorId) {
+    const pasting = this.sessions.delete(this.sessionKey(chatId, actorId));
     const plan = this.state.getImportPlan(chatId, actorId);
-    if (!plan) return this.telegram.sendMessage(chatId, 'Tidak ada Import Plan aktif.');
+    if (!plan) return this.telegram.sendMessage(chatId, pasting ? '❌ Tempelan JSON dibatalkan. Tidak ada data ditulis.' : 'Tidak ada Import Plan aktif.');
     await this.state.deleteImportPlan(chatId, actorId);
     return this.telegram.sendMessage(chatId, `❌ Import Plan <b>${escapeHtml(plan.submissionCode)}</b> dibatalkan. Tidak ada data ditulis.`);
   }
@@ -147,12 +247,24 @@ export class ImportPlanFlow {
       return this.telegram.sendMessage(chatId, 'Tujuan bab belum lengkap. Gunakan <code>/change chapter ID_BAB</code>.');
     }
 
-    const bytes = await this.telegram.downloadFile(plan.telegramFileId, this.config.maxJsonBytes);
-    const raw = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+    let raw;
+    if (plan.bodyRef) {
+      raw = await this.state.readBody(plan.bodyRef);
+    } else {
+      const bytes = await this.telegram.downloadFile(plan.telegramFileId, this.config.maxJsonBytes);
+      raw = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+    }
     const currentHash = hashRaw(raw);
     if (!safeEqual(currentHash, plan.fileHash)) {
       await this.state.deleteImportPlan(chatId, actorId);
-      return this.telegram.sendMessage(chatId, '❌ File JSON berubah sejak Import Plan dibuat. Plan dibuang; kirim ulang dengan <code>/put</code>.');
+      return this.telegram.sendMessage(chatId, '❌ JSON berubah sejak Import Plan dibuat. Plan dibuang; kirim ulang dengan <code>/put</code>.');
+    }
+
+    const current = await this.medcoel.getSubmission(plan.submissionId);
+    if (current?.status === 'menunggu_konfirmasi') {
+      return this.telegram.sendMessage(chatId,
+        `⏳ <b>${escapeHtml(plan.submissionCode)}</b> masih Menunggu konfirmasi, jadi belum bisa diimpor. Kirim <code>/terima ${escapeHtml(plan.submissionCode)}</code> dulu, lalu <code>/confirm</code> lagi. Rencana impormu tetap tersimpan.`
+      );
     }
 
     await this.telegram.sendMessage(chatId, `🔎 Final dry-run <b>${escapeHtml(plan.submissionCode)}</b> → ${destinationLabel(plan.destination)}…`);
@@ -204,7 +316,7 @@ export class ImportPlanFlow {
   requirePlan(chatId, actorId) {
     const plan = this.state.getImportPlan(chatId, actorId);
     if (!plan) {
-      const err = new Error('Tidak ada Import Plan aktif. Kirim JSON sebagai document dengan caption /put [KODE].');
+      const err = new Error('Tidak ada Import Plan aktif. Tempel JSON dengan /put KODE, atau kirim file .json dengan caption /put [KODE].');
       err.userMessage = true;
       throw err;
     }
@@ -240,11 +352,9 @@ function destinationLabel(destination) {
   return '—';
 }
 
-function countQuestions(parsed) {
-  if (Array.isArray(parsed)) return parsed.length;
-  if (Array.isArray(parsed?.questions)) return parsed.questions.length;
-  if (Array.isArray(parsed?.items)) return parsed.items.length;
-  return 0;
+function jsonErrorMessage(parsed) {
+  const where = parsed.line ? ` (baris ${parsed.line}, kolom ${parsed.column})` : '';
+  return `❌ JSON tidak valid${where}: ${escapeHtml(parsed.error)}`;
 }
 
 function hashRaw(raw) {
