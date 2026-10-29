@@ -35,7 +35,14 @@ export class MedcoelClient {
   }
 
   listQueued() {
-    return this.request('/api/medcoel/agent/submissions?status=antre');
+    return this.listSubmissions('antre');
+  }
+
+  // status: antre | menunggu_konfirmasi | diproses | perlu_perbaikan. since (ISO) hanya yang berubah sejak itu.
+  listSubmissions(status, since = '') {
+    const q = new URLSearchParams({ status });
+    if (since) q.set('since', since);
+    return this.request(`/api/medcoel/agent/submissions?${q.toString()}`);
   }
 
   getSubmission(id) {

@@ -132,6 +132,11 @@ Bila `HERMES_WEBHOOK_SECRET` diisi, header `X-Medcoel-Signature` berisi
 HMAC-SHA256 (hex) dari body dengan secret itu. Tanpa webhook, Hermes cukup
 memanggil `GET /agent/submissions?status=antre` secara berkala.
 
+Pekerja Telegram bawaan (`apps/hermes-agent`) memakai polling dan juga memanggil
+`GET /agent/submissions?status=menunggu_konfirmasi` supaya admin langsung diberi tahu
+saat pengajuan masuk, sebelum dikonfirmasi. Impor tetap hanya bisa setelah status `antre`
+(admin bisa memindahkannya lewat `/terima` di Telegram, yang memakai `POST .../status` dengan `antre`).
+
 ## Kode galat
 
 | Status | Arti |

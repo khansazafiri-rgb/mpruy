@@ -4,6 +4,7 @@ import { StateStore } from './state.mjs';
 import { TelegramClient, escapeHtml } from './telegram.mjs';
 import { DriveClient } from './drive.mjs';
 import { ImportPlanFlow } from './import-plan.mjs';
+import { newSubmissionMessage, queueCard, compactSubmission, howToSubmit, BOT_COMMANDS, statusLabel } from './notify.mjs';
 
 const config = loadConfig();
 const medcoel = new MedcoelClient(config);
@@ -22,7 +23,9 @@ console.log('[Hermes] starting');
 await medcoel.login();
 console.log('[Hermes] MEDCOEL agent login OK');
 console.log(`[Hermes] Drive PDF relay ${drive.configured ? 'enabled' : 'disabled'}`);
-console.log('[Hermes] Import Plan flow enabled');
+console.log('[Hermes] Import Plan flow enabled (file dan tempel teks)');
+console.log(`[Hermes] Notifikasi pengajuan Menunggu konfirmasi ${config.notifyWaiting ? 'aktif' : 'nonaktif'}`);
+telegram.setMyCommands(BOT_COMMANDS).catch((err) => console.error('[Hermes] setMyCommands:', err.message));
 
 queueLoop().catch((err) => fatal('queue loop', err));
 telegramLoop().catch((err) => fatal('telegram loop', err));
@@ -45,25 +48,36 @@ async function telegramLoop() {
 async function queueLoop() {
   while (!stopping) {
     try {
+      // 1) Pengajuan yang baru dikirim pengguna dan belum dikonfirmasi: langsung kabari admin.
+      if (config.notifyWaiting) {
+        const since = new Date(Date.now() - config.waitingLookbackHours * 3600 * 1000).toISOString();
+        const waiting = await medcoel.listSubmissions('menunggu_konfirmasi', since);
+        for (const sub of waiting?.items || []) await announce(sub, waiting.queue, `${sub.id}:menunggu_konfirmasi`);
+      }
+      // 2) Pengajuan yang sudah Antre (sudah dikonfirmasi).
       const result = await medcoel.listQueued();
       for (const sub of result?.items || []) {
-        const key = `${sub.id}:${sub.updated || sub.confirmedAt || sub.status || 'antre'}`;
-        if (state.hasAnnounced(key)) continue;
-        for (const adminId of config.telegramAdmins) {
-          try {
-            await telegram.sendMessage(adminId, queueCard(sub, result.queue));
-            if (drive.configured) await relaySubmissionFiles(adminId, sub);
-          } catch (err) {
-            console.error(`[Hermes] notify ${adminId}:`, err.message);
-          }
-        }
-        await state.markAnnounced(key);
+        await announce(sub, result.queue, `${sub.id}:${sub.updated || sub.confirmedAt || sub.status || 'antre'}`);
       }
     } catch (err) {
       console.error('[Hermes] queue poll:', err.message);
     }
     await sleep(config.queuePollMs);
   }
+}
+
+async function announce(sub, queue, key) {
+  if (state.hasAnnounced(key)) return;
+  for (const adminId of config.telegramAdmins) {
+    try {
+      await telegram.sendMessage(adminId, newSubmissionMessage(sub, queue));
+      if (drive.configured) await relaySubmissionFiles(adminId, sub);
+    } catch (err) {
+      console.error(`[Hermes] notify ${adminId}:`, err.message);
+    }
+  }
+  await state.setLastNotified(sub.code || sub.id);
+  await state.markAnnounced(key);
 }
 
 async function handleUpdate(update) {
@@ -86,7 +100,8 @@ async function handleUpdate(update) {
 
   if (msg.document) {
     return telegram.sendMessage(msg.chat.id,
-      'Document tidak diproses. Untuk JSON gunakan caption <code>/put [KODE]</code>. '
+      'Document tidak diproses. Untuk JSON kirim file .json dengan caption <code>/put [KODE]</code>, '
+      + 'atau tempel langsung: <code>/put KODE</code> lalu isi JSON-nya. '
       + 'Command lama <code>/dryrun KODE ID_BAB</code> juga masih diterima.'
     );
   }
@@ -94,7 +109,9 @@ async function handleUpdate(update) {
   if (text === '/start' || text === '/help') return help(msg.chat.id);
   if (text === '/queue') return showQueue(msg.chat.id);
 
-  let m = text.match(/^\/claim\s+(\S+)$/i);
+  let m = text.match(/^\/terima\s+(\S+)$/i);
+  if (m) return accept(msg.chat.id, m[1]);
+  m = text.match(/^\/claim\s+(\S+)$/i);
   if (m) return claim(msg.chat.id, m[1]);
   m = text.match(/^\/fix\s+(\S+)\s+(.+)$/is);
   if (m) return needsFix(msg.chat.id, m[1], m[2]);
@@ -112,6 +129,7 @@ async function help(chatId) {
     + '/queue — lihat pengajuan berstatus Antre\n'
     + '/show KODE — lihat detail pengajuan\n'
     + '/files KODE — kirim PDF pengajuan dari Drive\n'
+    + '/terima KODE — terima pengajuan yang Menunggu konfirmasi (jadi Antre)\n'
     + '/claim KODE — ubah menjadi Diproses\n'
     + '/fix KODE alasan — tandai Perlu perbaikan\n\n'
     + importPlans.helpText()
@@ -120,16 +138,22 @@ async function help(chatId) {
 }
 
 async function showQueue(chatId) {
-  const result = await medcoel.listQueued();
-  const items = result?.items || [];
-  if (!items.length) return telegram.sendMessage(chatId, 'Antrean Hermes kosong.');
-  const blocks = items.slice(0, 20).map((s) => compactSubmission(s));
-  return telegram.sendMessage(chatId, `<b>Antrean (${items.length})</b>\n\n${blocks.join('\n\n')}`);
+  const [waiting, queued] = await Promise.all([
+    medcoel.listSubmissions('menunggu_konfirmasi'),
+    medcoel.listQueued(),
+  ]);
+  const w = waiting?.items || [];
+  const items = queued?.items || [];
+  if (!w.length && !items.length) return telegram.sendMessage(chatId, 'Antrean Hermes kosong.');
+  const parts = [];
+  if (w.length) parts.push(`<b>Menunggu konfirmasi (${w.length})</b>\n\n${w.slice(0, 20).map((s) => compactSubmission(s)).join('\n\n')}`);
+  if (items.length) parts.push(`<b>Antre (${items.length})</b>\n\n${items.slice(0, 20).map((s) => compactSubmission(s)).join('\n\n')}`);
+  return telegram.sendMessage(chatId, parts.join('\n\n'));
 }
 
 async function showSubmission(chatId, id) {
   const sub = await medcoel.getSubmission(id);
-  return telegram.sendMessage(chatId, queueCard(sub));
+  return telegram.sendMessage(chatId, `${queueCard(sub)}\n\n${howToSubmit(sub.code || id, sub.status)}`);
 }
 
 async function showFiles(chatId, id) {
@@ -149,6 +173,15 @@ async function relaySubmissionFiles(chatId, sub) {
     const caption = `${sub.code || sub.id} · PDF ${i + 1}/${files.length}`;
     await telegram.sendDocumentStream(chatId, file.name || `submission-${i + 1}.pdf`, response, caption);
   }
+}
+
+async function accept(chatId, id) {
+  const sub = await medcoel.setStatus(id, 'antre');
+  const code = sub.code || id;
+  await state.setLastNotified(code);
+  // Pengumuman "masuk antrean" untuk pengajuan ini tidak perlu dikirim lagi: admin baru saja menerimanya.
+  await state.markAnnounced(`${sub.id}:${sub.updated || sub.confirmedAt || sub.status || 'antre'}`);
+  return telegram.sendMessage(chatId, `✅ <b>${escapeHtml(code)}</b> sekarang ${escapeHtml(statusLabel(sub.status))}.\n\n${howToSubmit(code, sub.status)}`);
 }
 
 async function claim(chatId, id) {
@@ -171,29 +204,6 @@ async function reportUpdateError(update, err) {
   const issues = summarizeIssues(body?.items || []);
   const message = err?.userMessage ? err.message : (err?.message || 'Terjadi kesalahan.');
   try { await telegram.sendMessage(chatId, `❌ ${escapeHtml(message)}${issues}`); } catch (_) {}
-}
-
-function queueCard(sub, queue) {
-  const files = (sub.files || [])
-    .map((f) => `• ${escapeHtml(f.name)}${f.driveFileId ? ' · siap dikirim dari Drive' : ''}`)
-    .join('\n') || '• tidak ada file';
-  const q = queue
-    ? `\nAntrean PDF: ${Number(queue.totalQueuedPdf || 0)} · estimasi ${Number(queue.estimateDays || 0)} hari`
-    : '';
-  const scope = sub.restriction === 'campus'
-    ? `campus${sub.campus?.name ? ` · ${escapeHtml(sub.campus.name)}` : ''}`
-    : (sub.restriction || sub.scope || '-');
-  return `<b>📥 ${escapeHtml(sub.code || sub.id)}</b>\n`
-    + `Status: ${escapeHtml(sub.status)}\n`
-    + `Sumber mata kuliah: ${escapeHtml(sub.subject?.name || sub.subject?.id || '-')}\n`
-    + `Cakupan: ${scope}\n`
-    + `Bahasa: ${escapeHtml(sub.language || '-')}\n`
-    + `PDF: ${Number(sub.pdfCount || (sub.files || []).length)}\n`
-    + `${files}${q}`;
-}
-
-function compactSubmission(sub) {
-  return `<b>${escapeHtml(sub.code || sub.id)}</b> · ${escapeHtml(sub.subject?.name || '-')} · ${Number(sub.pdfCount || 0)} PDF`;
 }
 
 function summarizeIssues(items) {
