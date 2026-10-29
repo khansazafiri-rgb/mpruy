@@ -1,11 +1,12 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import crypto from 'node:crypto';
 
 export class StateStore {
   constructor(dir) {
     this.dir = dir;
     this.file = path.join(dir, 'state.json');
-    this.data = { telegramOffset: 0, announced: {}, approvals: {}, importPlans: {} };
+    this.data = { telegramOffset: 0, announced: {}, approvals: {}, importPlans: {}, lastNotified: '' };
   }
 
   async load() {
@@ -17,6 +18,7 @@ export class StateStore {
         announced: parsed.announced && typeof parsed.announced === 'object' ? parsed.announced : {},
         approvals: parsed.approvals && typeof parsed.approvals === 'object' ? parsed.approvals : {},
         importPlans: parsed.importPlans && typeof parsed.importPlans === 'object' ? parsed.importPlans : {},
+        lastNotified: String(parsed.lastNotified || ''),
       };
     } catch (err) {
       if (err.code !== 'ENOENT') throw err;
@@ -83,7 +85,33 @@ export class StateStore {
   }
 
   async deleteImportPlan(chatId, actorId) {
-    delete this.data.importPlans[this.planKey(chatId, actorId)];
+    const key = this.planKey(chatId, actorId);
+    const plan = this.data.importPlans[key];
+    delete this.data.importPlans[key];
+    await this.save();
+    if (plan?.bodyRef) await this.deleteBody(plan.bodyRef);
+  }
+
+  // JSON yang ditempel lewat teks disimpan sebagai berkas terpisah (bukan di state.json)
+  // supaya state tetap kecil. Isinya hanya soal, tanpa rahasia.
+  async putBody(chatId, actorId, raw) {
+    const ref = crypto.createHash('sha256').update(this.planKey(chatId, actorId)).digest('hex').slice(0, 24) + '.json';
+    const dir = path.join(this.dir, 'plans');
+    await fs.mkdir(dir, { recursive: true, mode: 0o700 });
+    await fs.writeFile(path.join(dir, ref), raw, { mode: 0o600 });
+    return ref;
+  }
+
+  async readBody(ref) {
+    return fs.readFile(path.join(this.dir, 'plans', path.basename(String(ref))), 'utf8');
+  }
+
+  async deleteBody(ref) {
+    await fs.rm(path.join(this.dir, 'plans', path.basename(String(ref))), { force: true });
+  }
+
+  async setLastNotified(code) {
+    this.data.lastNotified = String(code || '');
     await this.save();
   }
 }

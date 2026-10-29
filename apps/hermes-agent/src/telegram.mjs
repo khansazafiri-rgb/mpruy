@@ -5,7 +5,9 @@ import crypto from 'node:crypto';
 export class TelegramClient {
   constructor(config) {
     this.token = config.telegramToken;
-    this.api = `https://api.telegram.org/bot${this.token}`;
+    // TELEGRAM_API_BASE hanya dipakai untuk uji dengan server palsu; produksi memakai alamat bawaan.
+    this.base = config.telegramApiBase || 'https://api.telegram.org';
+    this.api = `${this.base}/bot${this.token}`;
   }
 
   async call(method, body = {}) {
@@ -37,6 +39,11 @@ export class TelegramClient {
     });
   }
 
+  // Menu "/" di Telegram: daftar shortcut yang muncul saat admin mengetik garis miring.
+  setMyCommands(commands) {
+    return this.call('setMyCommands', { commands });
+  }
+
   answerCallbackQuery(id, text = '') {
     return this.call('answerCallbackQuery', { callback_query_id: id, text, show_alert: false });
   }
@@ -48,7 +55,7 @@ export class TelegramClient {
   async downloadFile(fileId, maxBytes) {
     const meta = await this.getFile(fileId);
     if (meta.file_size && meta.file_size > maxBytes) throw new Error(`File terlalu besar (${meta.file_size} bytes)`);
-    const res = await fetch(`https://api.telegram.org/file/bot${this.token}/${meta.file_path}`);
+    const res = await fetch(`${this.base}/file/bot${this.token}/${meta.file_path}`);
     if (!res.ok) throw new Error(`Telegram file download failed: HTTP ${res.status}`);
     const bytes = new Uint8Array(await res.arrayBuffer());
     if (bytes.byteLength > maxBytes) throw new Error(`File terlalu besar (${bytes.byteLength} bytes)`);
