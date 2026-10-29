@@ -190,5 +190,125 @@
     "chapter": "Histologi Organ Limfoid & Imun",
     "file": "histologi/bab-12-histologi-organ-limfoid-imun.md",
     "docBab": 12
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Sel & Membran, Transport Membran",
+    "file": "fisiologi/bab-01-fisiologi-sel-membran-transport-membran.md",
+    "docBab": 1
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Cairan Tubuh & Elektrolit",
+    "file": "fisiologi/bab-02-fisiologi-cairan-tubuh-elektrolit.md",
+    "docBab": 2
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Saraf: Potensial Aksi & Sinaps",
+    "file": "fisiologi/bab-03-fisiologi-saraf-potensial-aksi-sinaps.md",
+    "docBab": 3
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Otot Rangka, Jantung, Polos",
+    "file": "fisiologi/bab-04-fisiologi-otot-rangka-jantung-polos.md",
+    "docBab": 4
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Sistem Saraf Otonom",
+    "file": "fisiologi/bab-05-fisiologi-sistem-saraf-otonom.md",
+    "docBab": 5
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung",
+    "file": "fisiologi/bab-06-fisiologi-kardiovaskular-siklus-jantung-curah.md",
+    "docBab": 6
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Tekanan Darah & Regulasinya",
+    "file": "fisiologi/bab-07-fisiologi-tekanan-darah-regulasinya.md",
+    "docBab": 7
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas",
+    "file": "fisiologi/bab-08-fisiologi-respirasi-ventilasi-difusi-transport.md",
+    "docBab": 8
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi",
+    "file": "fisiologi/bab-09-fisiologi-ginjal-filtrasi-reabsorpsi-sekresi.md",
+    "docBab": 9
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Keseimbangan Asam-Basa",
+    "file": "fisiologi/bab-10-fisiologi-keseimbangan-asam-basa.md",
+    "docBab": 10
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi",
+    "file": "fisiologi/bab-11-fisiologi-gastrointestinal-motilitas-sekresi.md",
+    "docBab": 11
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Endokrin: Hipotalamus-Hipofisis",
+    "file": "fisiologi/bab-12-fisiologi-endokrin-hipotalamus-hipofisis.md",
+    "docBab": 12
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Tiroid, Paratiroid, Adrenal",
+    "file": "fisiologi/bab-13-fisiologi-tiroid-paratiroid-adrenal.md",
+    "docBab": 13
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Pankreas Endokrin & Regulasi Glukosa",
+    "file": "fisiologi/bab-14-fisiologi-pankreas-endokrin-regulasi-glukosa.md",
+    "docBab": 14
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Reproduksi Pria",
+    "file": "fisiologi/bab-15-fisiologi-reproduksi-pria.md",
+    "docBab": 15
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Reproduksi Wanita & Siklus Menstruasi",
+    "file": "fisiologi/bab-16-fisiologi-reproduksi-wanita-siklus-menstruasi.md",
+    "docBab": 16
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Kehamilan & Laktasi",
+    "file": "fisiologi/bab-17-fisiologi-kehamilan-laktasi.md",
+    "docBab": 17
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Darah & Hemostasis",
+    "file": "fisiologi/bab-18-fisiologi-darah-hemostasis.md",
+    "docBab": 18
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Sistem Imun",
+    "file": "fisiologi/bab-19-fisiologi-sistem-imun.md",
+    "docBab": 19
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Sensorik (Penglihatan, Pendengaran, Nyeri)",
+    "file": "fisiologi/bab-20-fisiologi-sensorik-penglihatan-pendengaran-nyeri.md",
+    "docBab": 20
   }
 ]

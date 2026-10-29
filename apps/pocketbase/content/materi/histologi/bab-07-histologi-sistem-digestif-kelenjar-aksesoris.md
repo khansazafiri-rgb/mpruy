@@ -504,10 +504,8 @@ Gunakan urutan:
 - Colon = no villi + straight crypts + many goblet cells.
 - Appendix = colon-like mucosa + abundant lymphoid follicles.
 
-**Salivary glands**: parotid = serous;
+**Salivary glands**: parotid = serous; submandibular = mixed, serous dominant; sublingual = mixed, mucous dominant.
 
-- submandibular = mixed, serous dominant;
-- sublingual = mixed, mucous dominant.
 - Pancreas = serous acini + centroacinar cells + pale islets + no striated ducts.
 - Liver = central vein + hepatocyte plates + sinusoids + portal tracts.
 - Portal vein branch = biggest thin-walled lumen.
@@ -540,9 +538,7 @@ Gunakan urutan:
 - [High-yield] Ileum :: Peyer patches
 - [High-yield] Colon :: no villi + straight crypts + many goblet cells
 - [High-yield] Appendix :: colon-like mucosa + abundant lymphoid follicles
-- [High-yield] Salivary glands: parotid :: serous
-- [High-yield] submandibular :: mixed, serous dominant
-- [High-yield] sublingual :: mixed, mucous dominant
+- [High-yield] Salivary glands :: parotid = serous; submandibular = mixed, serous dominant; sublingual = mixed, mucous dominant
 - [High-yield] Pancreas :: serous acini + centroacinar cells + pale islets + no striated ducts
 - [High-yield] Liver :: central vein + hepatocyte plates + sinusoids + portal tracts
 - [High-yield] Portal vein branch :: biggest thin-walled lumen

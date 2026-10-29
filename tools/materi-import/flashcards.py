@@ -5,13 +5,15 @@ Setiap kartu memakai kalimat yang sudah ada di catatan:
   - poin high-yield "A = B" / "A → B" / "A: B"                       -> depan: A, belakang: B
   - kalimat pengantar berakhiran ":" + daftar butir                  -> depan: kalimat pengantar, belakang: daftar
   - kotak sorot (klinis, jebakan, mnemonic, clue praktikum)         -> depan: jenis + topik, belakang: isi kotak
+  - BAB yang sangat ringkas (kartu di atas < MIN_CARDS): judul bagian -> paragraf pertama bagian itu
 
 Format di catatan (bagian terakhir):   ## Flashcard {kartu}
                                        - [Konteks] Depan :: Belakang
 """
 import re
 
-LIMITS = {'def': 26, 'hy': 22, 'list': 10, 'box': 10}     # batas per BAB (kartu yang tersisa dibagi rata menurut urutan)
+LIMITS = {'def': 26, 'hy': 22, 'list': 10, 'box': 10, 'head': 20}     # batas per BAB (kartu yang tersisa dibagi rata menurut urutan)
+MIN_CARDS = 12      # di bawah ini, judul bagian + paragraf pertamanya ikut dijadikan kartu
 GENERIC = {
     'urutan', 'secara umum', 'secara sederhana', 'prinsip', 'prinsip utama', 'implikasi', 'contoh', 'catatan', 'risiko', 'risk',
     'konsekuensi penting', 'ringkasan', 'sebaliknya', 'fungsi', 'fungsi utama', 'sel utama', 'ciri', 'ciri utama', 'ciri penting',
@@ -72,11 +74,13 @@ def _spread(items, limit):
 def make_cards(md):
     els = _parse(md)
     kind, h2, h3 = 'isi', '', ''
-    defs, hys, lists, boxes = [], [], [], []
+    defs, hys, lists, boxes, heads = [], [], [], [], []
+    first_p = False
     for idx, el in enumerate(els):
         t = el[0]
         if t == 'h2':
             h2, kind, h3 = el[1], el[2], ''
+            first_p = kind == 'isi'
             continue
         if t == 'h3':
             h3 = el[1]
@@ -96,6 +100,13 @@ def make_cards(md):
         if t not in ('li', 'p'):
             continue
         text = el[1]
+        if first_p and t == 'p':
+            first_p = False
+            body = _plain(text)
+            if len(body) > 330:
+                body = re.split(r'(?<=[a-z]{3}[.!?])\s+(?=[A-Z])', body)[0]      # bukan singkatan seperti "m." atau "n."
+            if 40 <= len(body) <= 330 and not body.endswith(':') and not re.match(r'^(Gambar|Lihat)\b', body, re.I):
+                heads.append(('', _short(_plain(h2), 110), body))
         if kind == 'highyield':
             plain = _plain(text).rstrip(';')
             card = None
@@ -131,6 +142,8 @@ def make_cards(md):
     cards = []
     for group, key in ((defs, 'def'), (hys, 'hy'), (lists, 'list'), (boxes, 'box')):
         cards.extend(_spread(group, LIMITS[key]))
+    if len(cards) < MIN_CARDS:
+        cards.extend(_spread(heads, LIMITS['head']))
     seen, uniq = set(), []
     for ctx, front, back in cards:
         k = (front.lower(), back.lower())

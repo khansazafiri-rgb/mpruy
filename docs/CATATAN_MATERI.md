@@ -5,7 +5,7 @@ Alur siswa: **Mata kuliah → pilih BAB → tiga langkah: "Belajar materi" → "
 yang bisa diperbesar, kotak klinis, poin high-yield yang bisa dicentang, maskot Kori/Kila/Nilo), lalu ditutup
 dengan tombol ke flashcard dan latihan soal BAB yang sama.
 
-Mata kuliah yang sudah terpasang: **Anatomi** (20 BAB) dan **Histologi** (12 BAB).
+Mata kuliah yang sudah terpasang: **Anatomi** (20 BAB), **Histologi** (12 BAB), dan **Fisiologi** (20 BAB).
 
 ## Di mana datanya
 
@@ -95,6 +95,9 @@ pip install python-docx
 python3 tools/materi-import/docx_to_materi.py "Anatomi - Catatan Belajar.docx" --subject anatomi --subject-name Anatomi --report
 ```
 
+Mata kuliah yang sudah diproses dengan cara ini: `--subject histologi --subject-name Histologi` dan `--subject fisiologi --subject-name Fisiologi`.
+Setelah mengubah konverter, jalankan ulang ketiganya dan periksa `git diff content/materi` supaya perubahan tidak merusak yang lain.
+
 Konverter memetakan tiap BAB di dokumen ke BAB di web lewat **judulnya** (docs/MATA_KULIAH.md), bukan nomornya,
 karena nomor di dokumen tidak selalu sama dengan nomor BAB di web (BAB di web mengikuti Google Doc "Rekap Bab per Mata Kuliah", lihat docs/MATA_KULIAH.md). Bila ada judul yang tidak cocok atau ganda,
 konverter berhenti dan menyebutkan yang bermasalah. `--report` mencetak:
@@ -115,11 +118,16 @@ Yang diubah konverter:
 - Atribusi gambar (`Sumber visual`, atau "Sumber:" di keterangannya) dipasang di bawah gambarnya. Bagian "Sumber & Atribusi"
   di akhir dokumen **tidak dimasukkan** ke catatan (supaya pembaca tidak bingung); `--report` tetap menyebut gambar yang belum
   punya atribusi.
+- Alur atau rincian yang ditulis per baris tanpa baris kosong (baris berakhiran `→`, `=`, `+`, `;` atau berawalan `+ `/`→`) disambung
+  menjadi satu paragraf; keterangan `Gambar Bab N — ...` (Fisiologi) dikenali seperti `Gambar N.M. ...`.
+- Gambar yang ditaruh sebelum bagian pertama (Fisiologi: satu gambar di bawah judul tiap BAB) tampil sebagai pembuka di atas bacaan
+  (tidak masuk daftar isi).
 - Dokumen yang memecah satu paragraf atau keterangan gambar menjadi beberapa paragraf (sering di Histologi) disambung lagi otomatis;
   keterangan dipasangkan ke gambar menurut urutan, dan beberapa gambar dengan satu keterangan menjadi galeri.
 - Flashcard dibuat otomatis oleh `tools/materi-import/flashcards.py` **hanya dari teks catatan itu sendiri**
   (definisi "Istilah: penjelasan" / "X = Y" / "X adalah Y", poin high-yield, daftar ciri, kotak klinis dan praktikum),
-  tanpa menambah isi baru. Kualitasnya berbasis aturan, jadi kartu yang janggal cukup diedit atau dihapus langsung di
+  tanpa menambah isi baru. BAB yang sangat ringkas (kartu < 12, mis. beberapa BAB Fisiologi) juga memakai judul bagian + paragraf
+  pertamanya sebagai kartu. Kualitasnya berbasis aturan, jadi kartu yang janggal cukup diedit atau dihapus langsung di
   bagian `## Flashcard {kartu}` lewat editor catatan admin (catatan yang disunting admin tidak ditimpa sinkronisasi).
 
 Yang sengaja **tidak** dimasukkan karena urusan penyusun dokumen: baris pembuka (`Sumber utama`, `STATUS`, `Aturan visual`),

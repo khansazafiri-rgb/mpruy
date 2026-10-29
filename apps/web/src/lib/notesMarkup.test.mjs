@@ -123,6 +123,13 @@ test('tujuan belajar dan daftar isi', () => {
   assert.equal(toc.find((t) => t.title === 'Konsep Dasar').subs[0].title, 'Subjudul A');
 });
 
+test('pembuka tanpa judul (gambar di bawah judul BAB) tidak masuk daftar isi', () => {
+  const d = parseNotes(`${NOTES_MARK}\n\n![Gambar pembuka.](https://lh3.googleusercontent.com/d/AAA)\n\n## Bagian satu\n\nIsi.`);
+  assert.equal(d.sections[0].kind, 'intro');
+  assert.equal(d.sections[0].blocks[0].type, 'figure');
+  assert.deepEqual(tocOf(d).map((t) => t.title), ['Bagian satu']);
+});
+
 test('kata dan menit baca', () => {
   const d = parseNotes(`${NOTES_MARK}\n\n## A\n\n${'kata '.repeat(380)}`);
   assert.ok(d.words >= 380);
@@ -151,8 +158,10 @@ test('catatan di apps/pocketbase/content/materi terurai utuh', { skip: !existsSy
     assert.ok(isNotesV2(text), `${e.file}: tanpa penanda`);
     assert.ok(text.length < 200000, `${e.file}: melebihi batas koleksi`);
     const d = parseNotes(text);
-    assert.ok(d.sections.length >= 5, `${e.file}: terlalu sedikit bagian`);
-    assert.ok(d.words > 1500, `${e.file}: terlalu pendek`);
+    // Fisiologi memang lebih ringkas (beberapa BAB hanya ±200 kata, tanpa ringkasan high-yield); mata kuliah lain tebal.
+    const light = e.subject === 'fisiologi';
+    assert.ok(d.sections.length >= (light ? 3 : 5), `${e.file}: terlalu sedikit bagian`);
+    assert.ok(d.words > (light ? 150 : 1500), `${e.file}: terlalu pendek`);
     const urls = d.sections.flatMap((s) => s.blocks).filter((b) => b.type === 'figure').reduce((a, b) => a + b.urls.length, 0);
     assert.equal(urls, (text.match(/^!\[/gm) || []).length, `${e.file}: gambar hilang`);
     assert.ok(!/•/.test(text.split('## Flashcard')[0]), `${e.file}: sisa butir mentah`);
@@ -167,9 +176,9 @@ test('catatan di apps/pocketbase/content/materi terurai utuh', { skip: !existsSy
       if (b.type === 'callout') assert.ok(b.blocks.length > 0, `${e.file}: kotak kosong`);
     }
     // Setiap BAB punya tujuan belajar atau ringkasan, kecuali BAB gaya lama yang memang tanpa tujuan.
-    assert.ok(d.sections.some((s) => s.kind === 'highyield'), `${e.file}: tanpa ringkasan high-yield`);
+    if (!light) assert.ok(d.sections.some((s) => s.kind === 'highyield'), `${e.file}: tanpa ringkasan high-yield`);
     assert.ok(!d.sections.some((s) => s.kind === 'sumber'), `${e.file}: bagian sumber tidak dimasukkan`);
-    assert.ok(d.cards.length >= 4, `${e.file}: terlalu sedikit flashcard (${d.cards.length})`);
+    assert.ok(d.cards.length >= (light ? 8 : 4), `${e.file}: terlalu sedikit flashcard (${d.cards.length})`);
     assert.equal(new Set(d.cards.map((c) => c.id)).size, d.cards.length, `${e.file}: kartu ganda`);
   }
   const files = readdirSync(`${root}${index[0].subject}`);

@@ -118,3 +118,12 @@ Laring berada di depan laringofaring dan berlanjut ke trakea. Rangka utamanya me
 - [Otot pengunyahan dan sendi temporomandibular] Klinis: Otot pengunyahan dan sendi temporomandibular :: Nyeri, bunyi klik, atau keterbatasan gerak dapat terkait gangguan diskus maupun otot; temuan tunggal tidak cukup untuk diagnosis. Dislokasi anterior terjadi bila kondilus bergerak melewati eminensia artikular dan gagal kembali.
 - [Rongga hidung dan sinus paranasal] Klinis: Rongga hidung dan sinus paranasal :: Ostium sinus maksilaris relatif tinggi pada dinding medialnya sehingga drainase pasif dapat kurang efisien. Saat membaca CT atau diagram, bedakan konka (tonjolan tulang) dari meatus (ruang di bawahnya).
 - [Faring dan laring] Klinis: Faring dan laring :: Gangguan n. laryngeus recurrens dapat mengubah suara dan gerak pita suara; gangguan bilateral berpotensi mengganggu jalan napas. Evaluasi fungsi laring memerlukan pemeriksaan klinis yang sesuai, bukan inferensi dari satu gejala saja.
+- Peta anatomi kepala dan leher :: Kepala bagian luar mencakup wajah, regio temporal, rongga hidung, rongga mulut, dan ruang dalam wajah.
+- Wajah superfisial: mimik, sensasi, dan kelenjar parotis :: Otot mimik umumnya berinsersi pada kulit, sehingga kontraksinya menggerakkan ekspresi.
+- Otot pengunyahan dan sendi temporomandibular :: Empat otot pengunyahan utama adalah masseter, temporalis, pterygoideus medialis, dan pterygoideus lateralis; semuanya motorik oleh V3. Masseter, temporalis, dan pterygoideus medialis mengangkat mandibula.
+- Ruang dalam wajah :: Fossa temporalis terletak di atas arcus zygomaticus dan menampung m. temporalis.
+- Rongga hidung dan sinus paranasal :: Septum hidung membagi rongga kanan-kiri; komponen utamanya lempeng tegak ethmoid, vomer, dan kartilago septum.
+- Rongga mulut, lidah, palatum, dan gigi :: Vestibulum adalah ruang antara bibir/pipi dan gigi/gingiva; cavitas oris propria terletak di dalam arcus dentalis.
+- Kelenjar saliva :: Tiga pasang kelenjar saliva mayor adalah parotis, submandibularis, dan sublingualis.
+- Fasia, ruang, dan segitiga leher :: Fasia servikal superfisial berada di bawah kulit dan mengandung platysma.
+- Otot dan jalur neurovaskular leher :: SCM berorigo di manubrium dan klavikula menuju prosesus mastoideus; kontraksi satu sisi memiringkan kepala ke sisi yang sama dan memutar wajah ke sisi berlawanan.

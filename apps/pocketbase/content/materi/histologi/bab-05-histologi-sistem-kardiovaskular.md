@@ -371,46 +371,30 @@ Jika melihat vessel:
 
 - Purkinje = large pale glycogen-rich modified cardiomyocytes di subendocardium.
 
-**Vessel wall**: intima = endothelium;
+**Vessel wall**: intima = endothelium; media = smooth muscle ± elastic tissue; adventitia = fibroelastic CT ± vasa/nervi vasorum.
 
-- media = smooth muscle ± elastic tissue;
-- adventitia = fibroelastic CT ± vasa/nervi vasorum.
 - Elastic artery = many elastic lamellae in media.
 - Muscular artery = smooth-muscle media + prominent internal elastic lamina.
 - Arteriole = 1–few smooth-muscle layers.
 - Capillary = endothelium + basal lamina ± pericyte.
 - Vein = large irregular lumen + thin media + relatively thick adventitia.
 
-**Capillary types**: continuous = continuous endothelium/basal lamina;
+**Capillary types**: continuous = continuous endothelium/basal lamina; fenestrated = endothelial pores, basal lamina continuous; sinusoidal = wide irregular lumen + discontinuous endothelial/basal-lamina barrier.
 
-- fenestrated = endothelial pores, basal lamina continuous;
-- sinusoidal = wide irregular lumen + discontinuous endothelial/basal-lamina barrier.
-
-**Practical shortcut**: round thick-walled vessel → think artery;
-
-- collapsed thin-walled large lumen → think vein;
-- tiny lumen + 1–2 muscle layers → arteriole;
-- RBC-width tube with only endothelium → capillary.
+**Practical shortcut**: round thick-walled vessel → think artery; collapsed thin-walled large lumen → think vein; tiny lumen + 1–2 muscle layers → arteriole; RBC-width tube with only endothelium → capillary.
 
 ## Flashcard {kartu}
 
 - [Endothelium sebagai Jaringan Aktif] Histologisnya tetap sederhana :: satu lapis flattened cells dengan nuclei memanjang menonjol sedikit ke lumen.
 - [High-yield] Heart wall :: epicardium → myocardium → endocardium
 - [High-yield] Purkinje :: large pale glycogen-rich modified cardiomyocytes di subendocardium
-- [High-yield] Vessel wall: intima :: endothelium
-- [High-yield] media :: smooth muscle ± elastic tissue
-- [High-yield] adventitia :: fibroelastic CT ± vasa/nervi vasorum
+- [High-yield] Vessel wall :: intima = endothelium; media = smooth muscle ± elastic tissue; adventitia = fibroelastic CT ± vasa/nervi vasorum
 - [High-yield] Elastic artery :: many elastic lamellae in media
 - [High-yield] Muscular artery :: smooth-muscle media + prominent internal elastic lamina
 - [High-yield] Arteriole :: 1–few smooth-muscle layers
 - [High-yield] Capillary :: endothelium + basal lamina ± pericyte
 - [High-yield] Vein :: large irregular lumen + thin media + relatively thick adventitia
-- [High-yield] Capillary types: continuous :: continuous endothelium/basal lamina
-- [High-yield] fenestrated :: endothelial pores, basal lamina continuous
-- [High-yield] sinusoidal :: wide irregular lumen + discontinuous endothelial/basal-lamina barrier
-- [High-yield] collapsed thin-walled large lumen :: think vein
-- [High-yield] tiny lumen + 1–2 muscle layers :: arteriole
-- [High-yield] RBC-width tube with only endothelium :: capillary
+- [High-yield] Capillary types :: continuous = continuous endothelium/basal lamina; fenestrated = endothelial pores, basal lamina continuous; sinusoidal = wide irregular lumen + discontinuous endothelial/basal-lamina barrier
 - [Capillaries: Struktur Umum] Dindingnya terutama terdiri atas … :: • satu lapis endothelial cells
   • basal lamina
   • pericytes pada sisi abluminal di banyak lokasi

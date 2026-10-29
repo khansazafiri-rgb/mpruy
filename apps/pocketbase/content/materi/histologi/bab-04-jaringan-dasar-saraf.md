@@ -315,17 +315,7 @@ Komponen penting:
 
 Cerebral cortex merupakan gray matter superficial dengan white matter di bawahnya.
 
-Neocortex klasik memiliki enam layers: I molecular;
-
-II external granular;
-
-III external pyramidal;
-
-IV internal granular;
-
-V internal pyramidal;
-
-VI multiform.
+Neocortex klasik memiliki enam layers: I molecular; II external granular; III external pyramidal; IV internal granular; V internal pyramidal; VI multiform.
 
 Pada routine practical, lebih penting mengenali:
 
@@ -477,10 +467,7 @@ Myelin:
 - **Schwann**: one cell → one internode of one axon;
 - **oligodendrocyte**: one cell → multiple internodes/axons.
 
-**Peripheral nerve CT**: endo = fiber;
-
-- peri = fascicle;
-- epi = whole nerve.
+**Peripheral nerve CT**: endo = fiber; peri = fascicle; epi = whole nerve.
 
 **Ganglia**: sensory = pseudounipolar + central nucleus + tight satellite ring + no synapse.
 
@@ -512,9 +499,7 @@ Myelin:
 - [High-yield] satellite :: mengelilingi ganglion neurons
 - [High-yield] Schwann: one cell :: one internode of one axon
 - [High-yield] oligodendrocyte: one cell :: multiple internodes/axons
-- [High-yield] Peripheral nerve CT :: endo = fiber
-- [High-yield] peri :: fascicle
-- [High-yield] epi :: whole nerve
+- [High-yield] Peripheral nerve CT :: endo = fiber; peri = fascicle; epi = whole nerve
 - [High-yield] Ganglia: sensory :: pseudounipolar + central nucleus + tight satellite ring + no synapse
 - [High-yield] autonomic :: multipolar + nuclei lebih eccentric + satellite cells lebih loose + synapses
 - [High-yield] CNS: spinal cord :: gray inside, white outside
