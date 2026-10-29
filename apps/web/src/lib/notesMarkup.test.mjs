@@ -158,13 +158,14 @@ test('catatan di apps/pocketbase/content/materi terurai utuh', { skip: !existsSy
     assert.ok(isNotesV2(text), `${e.file}: tanpa penanda`);
     assert.ok(text.length < 200000, `${e.file}: melebihi batas koleksi`);
     const d = parseNotes(text);
-    // Fisiologi memang lebih ringkas (beberapa BAB hanya ±200 kata, tanpa ringkasan high-yield); mata kuliah lain tebal.
-    const light = e.subject === 'fisiologi';
+    // Anatomi dan Histologi tebal dan selalu punya ringkasan high-yield; Fisiologi, Biokimia, dan Genetika lebih ringkas
+    // (beberapa BAB hanya ±200 kata, dan dokumennya tidak selalu memuat ringkasan).
+    const light = !['anatomi', 'histologi'].includes(e.subject);
     assert.ok(d.sections.length >= (light ? 3 : 5), `${e.file}: terlalu sedikit bagian`);
     assert.ok(d.words > (light ? 150 : 1500), `${e.file}: terlalu pendek`);
     const urls = d.sections.flatMap((s) => s.blocks).filter((b) => b.type === 'figure').reduce((a, b) => a + b.urls.length, 0);
     assert.equal(urls, (text.match(/^!\[/gm) || []).length, `${e.file}: gambar hilang`);
-    assert.ok(!/•/.test(text.split('## Flashcard')[0]), `${e.file}: sisa butir mentah`);
+    assert.ok(!/^\s*• /m.test(text.split('## Flashcard')[0]), `${e.file}: sisa butir mentah`);   // "•" di tengah kalimat = radikal bebas (O₂•⁻), bukan butir
     for (const s of d.sections) {
       if (s.kind === 'intro') continue;
       assert.ok(s.title.trim(), `${e.file}: bagian tanpa judul`);
