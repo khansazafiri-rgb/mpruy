@@ -9,8 +9,8 @@ import Speech from './Speech';
 
 const OPTIONS = [
   {
-    key: 'fk', mascot: 'kila', tone: 'tone-sun', title: 'Latihan soal FK', time: 'sekitar 3 menit',
-    points: ['Pilih mata kuliah dan BAB', 'Latihan per BAB, paket soal, dan simulasi', 'Jawab satu soal, lihat pembahasan dan riwayat'],
+    key: 'fk', mascot: 'kila', tone: 'tone-sun', title: 'Belajar dan latihan soal FK', time: 'sekitar 5 menit',
+    points: ['Baca materi dan hafalkan lewat flashcard', 'Latihan per BAB, paket soal, dan simulasi', 'Jawab satu soal, lihat pembahasan dan riwayat'],
   },
   {
     key: 'dokter', mascot: 'nilo', tone: 'tone-sky', title: 'Simulasi jadi dokter', time: 'sekitar 5 menit',

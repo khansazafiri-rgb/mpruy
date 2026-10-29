@@ -17,7 +17,7 @@ import { tutorialStatus } from '@/lib/tutorial';
 const TUT_LABEL = { done: 'Selesai', skipped: 'Dilewati', '': 'Belum dicoba' };
 function TutorialSection() {
   const { me } = useAuth();
-  const rows = [['fk', 'Latihan soal FK'], ['dokter', 'Simulasi jadi dokter']];
+  const rows = [['fk', 'Belajar dan latihan soal FK'], ['dokter', 'Simulasi jadi dokter']];
   return (
     <div className="space-y-4">
       <ul className="grid gap-2 sm:grid-cols-2">

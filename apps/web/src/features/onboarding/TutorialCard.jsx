@@ -12,7 +12,7 @@ export default function TutorialCard({ me, compact = false }) {
       <Mascot name="kori" mood={allDone ? 'happy' : 'wave'} size={compact ? 56 : 72} label="" />
       <span className="min-w-0 flex-1 text-left">
         <span className="onb-card-title">{allDone ? 'Ulangi tutorial' : pending.length === 2 ? 'Coba tutorial singkat' : 'Satu tutorial lagi'}</span>
-        <span className="onb-card-text">{allDone ? 'Lihat lagi cara latihan soal atau simulasi dokter.' : 'Latihan soal FK dan simulasi jadi dokter, ditemani maskot MEDCOEL.'}</span>
+        <span className="onb-card-text">{allDone ? 'Lihat lagi cara belajar materi, latihan soal, atau simulasi dokter.' : 'Belajar materi, latihan soal FK, dan simulasi jadi dokter, ditemani maskot MEDCOEL.'}</span>
       </span>
       <ArrowRight size={18} className="shrink-0" aria-hidden />
     </button>
