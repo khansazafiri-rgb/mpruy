@@ -147,7 +147,7 @@ await langkah('endpoint admin dan agen menolak pengguna biasa', async () => {
   await call('POST', '/api/medcoel/agent/import', { subject: mk.id, questions: [] }, userA.token, 403);
 });
 
-await langkah('katalog 32 mata kuliah dan 384 BAB, pilihan pengguna di atas lalu alfabetis', async () => {
+await langkah('katalog 32 mata kuliah dan 384 BAB, pilihan pengguna di atas lalu alfabetis; BAB mengikuti nomor urut', async () => {
   const order = (a, b) => a.toLowerCase().localeCompare(b.toLowerCase());
   assert.equal(subjects.length, 32);
   assert.deepEqual(subjects.map((s) => s.name), subjects.map((s) => s.name).sort(order));
@@ -164,7 +164,7 @@ await langkah('katalog 32 mata kuliah dan 384 BAB, pilihan pengguna di atas lalu
   assert.deepEqual(list.slice(2).map((s) => s.name), list.slice(2).map((s) => s.name).sort(order));
   const detail = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userA.token, 200)).data;
   assert.equal(detail.chapters.length, 20);
-  assert.deepEqual(detail.chapters.map((c) => c.title), detail.chapters.map((c) => c.title).sort(order));
+  assert.deepEqual(detail.chapters.map((c) => c.order), detail.chapters.map((c) => c.order).sort((a, b) => a - b), 'BAB urut menurut nomor, bukan nama');
   const progress = (await call('GET', '/api/medcoel/progress', undefined, userA.token, 200)).data;
   assert.deepEqual(progress.subjects.map((s) => s.id), list.map((s) => s.id));
   await call('PATCH', `/api/collections/users/records/${userA.id}`, { studyingSubjects: [mk.id] }, userA.token, 200);
@@ -1049,21 +1049,25 @@ await langkah('kasus bilingual: hanya admin boleh menyunting, draf tersembunyi, 
 
 console.log('Catatan materi');
 await langkah('catatan materi per BAB: hanya admin menulis, siswa membaca, BAB tersembunyi tertutup', async () => {
-  const before = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userA.token, 200)).data;
+  // Mata kuliah sendiri: katalog sungguhan (mis. Anatomi) sudah berisi catatan hasil migrasi seed_materi.
+  const sub = (await call('POST', '/api/collections/subjects/records', { name: `Catatan Uji ${RUN}`, slug: `catatan-uji-${RUN}`, order: 98 }, admin.token, 200)).data;
+  const babId = (await call('POST', '/api/collections/chapters/records', { subject: sub.id, title: 'AA BAB Catatan', order: 1, hidden: false }, admin.token, 200)).data.id;
+  const before = (await call('GET', `/api/medcoel/subjects/${sub.slug}`, undefined, userA.token, 200)).data;
   assert.equal(before.chapters.find((c) => c.id === babId).hasNotes, false);
   await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, userA.token, 404);
   const denied = await call('POST', '/api/collections/chapter_notes/records', { chapter: babId, content: 'disusupkan' }, userA.token);
   assert.ok(denied.status === 400 || denied.status === 403, 'siswa tidak boleh menulis catatan');
-  const ch2 = (await call('POST', '/api/collections/chapters/records', { subject: mk.id, title: 'ZZ BAB Catatan', order: 999, hidden: false }, admin.token, 200)).data;
+  const ch2 = (await call('POST', '/api/collections/chapters/records', { subject: sub.id, title: 'ZZ BAB Catatan', order: 999, hidden: false }, admin.token, 200)).data;
   const n1 = (await call('POST', '/api/collections/chapter_notes/records', { chapter: babId, content: '**Inti** BAB 1' }, admin.token, 200)).data;
   await call('POST', '/api/collections/chapter_notes/records', { chapter: babId, content: 'catatan kedua' }, admin.token, 400); // satu catatan per BAB
   await call('POST', '/api/collections/chapter_notes/records', { chapter: ch2.id, content: 'Catatan BAB 2' }, admin.token, 200);
-  const after = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userA.token, 200)).data;
+  const after = (await call('GET', `/api/medcoel/subjects/${sub.slug}`, undefined, userA.token, 200)).data;
   assert.equal(after.chapters.find((c) => c.id === babId).hasNotes, true);
   assert.ok(!JSON.stringify(after).includes('**Inti**'), 'daftar BAB tidak membawa isi catatan');
   const note = (await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, userA.token, 200)).data;
   assert.equal(note.content, '**Inti** BAB 1');
-  assert.equal(note.subject.slug, mk.slug);
+  assert.equal(note.subject.slug, sub.slug);
+  assert.deepEqual(note.practice, { total: 0, answered: 0 }, 'BAB tanpa soal');
   assert.equal(note.prev, null);
   assert.equal(note.next.id, ch2.id);
   await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, null, 401);
@@ -1077,6 +1081,48 @@ await langkah('catatan materi per BAB: hanya admin menulis, siswa membaca, BAB t
   await call('PATCH', `/api/collections/chapter_notes/records/${n1.id}`, { content: '   ' }, admin.token, 200);
   await call('GET', `/api/medcoel/chapters/${babId}/notes`, undefined, userA.token, 404);
   await call('DELETE', `/api/collections/chapters/records/${ch2.id}`, undefined, admin.token, 204);
+  await call('DELETE', `/api/collections/subjects/records/${sub.id}`, undefined, admin.token, 204);
+});
+
+await langkah('urutan BAB semua mata kuliah mengikuti Google Doc (bukan A-Z), juga di halaman materi', async () => {
+  const src = (await import('node:fs')).readFileSync(new URL('../pb_migrations/1800002700_chapter_doc_order.js', import.meta.url), 'utf8');
+  const i = src.indexOf('const catalog = ') + 'const catalog = '.length;
+  const doc = JSON.parse(src.slice(i, src.indexOf('];', i) + 1));
+  assert.equal(doc.length, 32);
+  assert.equal(doc.reduce((n, s) => n + s.chapters.length, 0), 384);
+  for (const s of doc) {
+    const sub = subjects.find((x) => x.name === s.name);
+    assert.ok(sub, `mata kuliah ${s.name}`);
+    const got = (await call('GET', `/api/medcoel/subjects/${sub.slug}`, undefined, userA.token, 200)).data.chapters.map((c) => c.title);
+    assert.deepEqual(got.filter((t) => s.chapters.includes(t)), s.chapters, `urutan BAB ${s.name}`);
+  }
+  const anat = doc.find((s) => s.name === 'Anatomi').chapters;
+  assert.equal(anat[0], 'Anatomi Umum & Terminologi Anatomis');
+});
+
+await langkah('catatan materi bawaan: Anatomi (20 BAB), Histologi (12 BAB), dan Fisiologi (20 BAB) terbaca siswa, berurutan, dengan flashcard', async () => {
+  for (const [slug, jumlah] of [['anatomi', 20], ['histologi', 12], ['fisiologi', 20]]) {
+    const sub = subjects.find((s) => s.slug === slug);
+    assert.ok(sub, `mata kuliah ${slug} dari katalog`);
+    const noted = (await call('GET', `/api/medcoel/subjects/${slug}`, undefined, userA.token, 200)).data.chapters.filter((c) => c.hasNotes);
+    assert.equal(noted.length, jumlah, slug);
+    assert.ok(noted.every((c) => c.hasCards === true), `${slug}: setiap BAB bercatatan punya flashcard`);
+    for (const [i, c] of noted.entries()) {
+      const n = (await call('GET', `/api/medcoel/chapters/${c.id}/notes`, undefined, userA.token, 200)).data;
+      assert.ok(n.content.startsWith('<!-- materi:v2 -->'), c.title);
+      assert.ok(n.content.includes('## Flashcard {kartu}'), `${c.title}: flashcard`);
+      assert.ok(!n.content.includes('Sumber & Atribusi'), `${c.title}: bagian sumber tidak dimasukkan`);
+      assert.ok(n.content.length > 1500 && n.content.length < 200000, `${c.title}: ${n.content.length}`);
+      assert.equal(n.position, i + 1);
+      assert.equal(n.total, jumlah);
+      assert.equal(typeof n.practice.total, 'number');
+      assert.equal(n.prev?.id ?? null, noted[i - 1]?.id ?? null);
+      assert.equal(n.next?.id ?? null, noted[i + 1]?.id ?? null);
+    }
+  }
+  // BAB tanpa catatan tidak punya flashcard.
+  const plain = (await call('GET', `/api/medcoel/subjects/${subjects.find((s) => s.slug === 'biokimia').slug}`, undefined, userA.token, 200)).data.chapters;
+  assert.ok(plain.every((c) => !c.hasNotes && !c.hasCards));
 });
 
 console.log('Pencapaian');

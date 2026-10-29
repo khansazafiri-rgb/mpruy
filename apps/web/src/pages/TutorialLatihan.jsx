@@ -1,7 +1,9 @@
-// TUTORIAL LATIHAN SOAL FK (/tutorial/latihan-soal)
-// Kotak pasir terpandu bersama Kila: semua tampilan di sini tiruan dari halaman
-// asli (mata kuliah, dialog latihan, paket, simulasi, pengerjaan, riwayat),
-// memakai data contoh, jadi tetap jalan walau bank soal pengguna masih kosong.
+// TUTORIAL BELAJAR MATERI & LATIHAN SOAL FK (/tutorial/latihan-soal)
+// Kotak pasir terpandu bersama Kila. Urutannya sama dengan alur sungguhan:
+// mata kuliah -> BAB -> belajar materi -> flashcard -> latihan soal (per BAB, paket,
+// simulasi) -> keluar -> riwayat. Materi dan flashcard memakai komponen asli
+// (NotesView, FlashcardDeck) dengan data contoh; halaman lain tiruan. Semuanya
+// tetap jalan walau catatan atau bank soal pengguna masih kosong.
 // Pengguna harus melakukan tiap langkah sendiri sebelum bisa lanjut.
 import clsx from 'clsx';
 import {
@@ -10,20 +12,33 @@ import {
 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { NotesView, parseNotes } from '@/components/ChapterNotes';
+import FlashcardDeck from '@/components/FlashcardDeck';
 import Illustration from '@/components/Illustration';
 import QuestionView from '@/components/QuestionView';
 import { useAuth } from '@/context/AuthContext';
 import SkipButton from '@/features/onboarding/SkipButton';
 import Speech from '@/features/onboarding/Speech';
-import { PACKAGES, TUT_SUBJECTS, toQuestion } from '@/features/onboarding/samples';
+import { PACKAGES, TUT_STUDY, TUT_SUBJECTS, toCards, toQuestion } from '@/features/onboarding/samples';
 import { DIFF, DIFF_CLASS } from '@/lib/labels';
 import { toneClass } from '@/lib/tone';
 import { markTutorial, tutorialStatus } from '@/lib/tutorial';
+import '@/styles/cards.css';
 import '@/styles/onboarding.css';
 
 const DIFFS = ['easy', 'medium', 'hard'];
 const AVAIL = { easy: 12, medium: 10, hard: 8 };
-const STEP_LABELS = ['Mata kuliah', 'Latihan per BAB', 'Paket soal', 'Simulasi', 'Kerjakan', 'Keluar', 'Riwayat', 'Selesai'];
+const S = { SUBJECT: 0, BAB: 1, NOTES: 2, CARDS: 3, PRACTICE: 4, PKG: 5, SIM: 6, RUN: 7, EXIT: 8, HISTORY: 9, DONE: 10 };
+const STEP_LABELS = ['Mata kuliah', 'Pilih BAB', 'Belajar materi', 'Flashcard', 'Latihan per BAB', 'Paket soal', 'Simulasi', 'Kerjakan', 'Keluar', 'Riwayat', 'Selesai'];
+const studyKey = (subjectKey) => `tutorial-${subjectKey}`;
+
+// Contoh materi dan flashcard dipakai ulang tiap kali tutorial diulang: hapus centang dan hafalan lama.
+function resetStudy(subjectKey) {
+  try {
+    localStorage.removeItem(`medcoel.materi.centang.${studyKey(subjectKey)}`);
+    localStorage.removeItem(`medcoel.kartu.hafal.${studyKey(subjectKey)}`);
+  } catch { /* penyimpanan dimatikan */ }
+}
 
 function split(n) {
   const out = { easy: 0, medium: 0, hard: 0 };
@@ -43,6 +58,17 @@ function Stepper({ value, min = 0, max, onChange, label, small = false }) {
       <output aria-label={label}>{value}</output>
       <button type="button" aria-label={`Tambah ${label}`} disabled={value >= max} onClick={() => onChange(Math.min(max, value + 1))}><Plus size={15} /></button>
     </div>
+  );
+}
+
+// Tiruan kartu pilihan setelah memilih BAB (Belajar materi -> Flashcard -> Latihan soal).
+function Choice({ step, icon: Icon, title, text, onClick, spot }) {
+  return (
+    <button type="button" onClick={onClick} className={clsx('choice-card card-chunky flex flex-col items-start gap-1.5 p-4 text-left', spot && 'onb-spot-soft')}>
+      <span className="choice-top"><span className="choice-icon"><Icon size={22} aria-hidden /></span><span className="choice-step" aria-hidden>Langkah {step}</span></span>
+      <span className="font-display text-lg font-bold text-ink">{title}</span>
+      <span className="text-[14px] leading-relaxed text-ink-muted">{text}</span>
+    </button>
   );
 }
 
@@ -83,6 +109,8 @@ export default function TutorialLatihan() {
   const [step, setStep] = useState(0);
   const [subjectKey, setSubjectKey] = useState('');
   const [bab, setBab] = useState(null);
+  const [ticked, setTicked] = useState(false);
+  const [cardsDone, setCardsDone] = useState(false);
   const [practice, setPractice] = useState({ count: 10, mode: 'learning' });
   const [pkg, setPkg] = useState(null);
   const [pkgMode, setPkgMode] = useState('exam');
@@ -98,6 +126,9 @@ export default function TutorialLatihan() {
 
   const subject = TUT_SUBJECTS.find((s) => s.key === subjectKey);
   const question = useMemo(() => (subject ? toQuestion(subject) : null), [subject]);
+  const study = TUT_STUDY[subjectKey];
+  const doc = useMemo(() => (study ? parseNotes(study.notes) : null), [study]);
+  const cards = useMemo(() => toCards(subjectKey), [subjectKey]);
   const chosen = subject ? subject.chapters.filter((c) => plan[c]?.on && plan[c].total > 0) : [];
   const simTotal = chosen.reduce((a, c) => a + plan[c].total, 0);
   const correct = checked && value === question?.answer;
@@ -111,7 +142,7 @@ export default function TutorialLatihan() {
 
   // Tandai selesai saat sampai di langkah terakhir.
   useEffect(() => {
-    if (step !== 7 || marked.current) return;
+    if (step !== S.DONE || marked.current) return;
     marked.current = true;
     markTutorial('fk', 'done').then(() => refresh()).catch(() => {});
   }, [step, refresh]);
@@ -133,36 +164,58 @@ export default function TutorialLatihan() {
   // Teks Kila dan syarat lanjut untuk tiap langkah.
   const guide = (() => {
     switch (step) {
-      case 0: return subject
+      case S.SUBJECT: return subject
         ? { mood: 'happy', title: 'Pilihan bagus!', text: `${subject.name} siap. Di aplikasi aslinya, mata kuliah yang kamu pilih saat daftar selalu muncul paling atas. Tekan Lanjut.`, ok: true }
-        : { mood: 'wave', title: 'Hai, aku Kila!', text: 'Aku temani kamu mencoba latihan soal di MEDCOEL. Pertama, pilih satu mata kuliah di bawah.', ok: false, need: 'Pilih satu mata kuliah' };
-      case 1: return bab
-        ? { mood: 'happy', title: 'Latihan per BAB', text: 'Atur jumlah soal dengan tombol − dan +, atau pilih angka cepat. Lalu pilih cara mengerjakan: Mode Learning menampilkan pembahasan langsung, Mode Ujian setelah selesai.', ok: true }
-        : { mood: 'think', title: 'Cara pertama: per BAB', text: 'Ini halaman mata kuliah. Kalau mau fokus ke satu topik, klik salah satu BAB di daftar.', ok: false, need: 'Klik salah satu BAB' };
-      case 2: return pkg
+        : { mood: 'wave', title: 'Hai, aku Kila!', text: 'Aku temani kamu mencoba belajar di MEDCOEL: baca materi, hafalkan lewat flashcard, lalu uji dengan soal. Pertama, pilih satu mata kuliah di bawah.', ok: false, need: 'Pilih satu mata kuliah' };
+      case S.BAB: return bab
+        ? { mood: 'happy', title: 'Tiga langkah per BAB', text: 'Setiap BAB punya tiga langkah belajar berurutan: baca materi, hafalkan lewat flashcard, lalu latihan soal. Boleh juga langsung loncat ke langkah mana saja. Kita coba satu per satu, mulai dari materi.', ok: true }
+        : { mood: 'think', title: 'Mulai dari satu BAB', text: 'Ini halaman mata kuliah. Semua belajarmu dimulai dengan memilih BAB di daftar ini. Klik salah satu.', ok: false, need: 'Klik salah satu BAB' };
+      case S.NOTES: return ticked
+        ? { mood: 'cheer', title: 'Begitu caranya!', text: 'Centangmu tersimpan di perangkat ini, jadi besok kamu tahu mana yang sudah dihafal. Daftar isi di samping (atau tombol di atas pada layar kecil) membantu loncat antar bagian. Tekan Lanjut untuk flashcard.', ok: true }
+        : { mood: 'idle', title: 'Belajar materi', text: 'Ini contoh catatan satu BAB: tujuan belajar, penjelasan, kotak klinis, dan poin high-yield di akhir. Gulir ke bawah sampai Poin High-Yield, lalu centang satu poin yang sudah kamu hafal.', ok: false, need: 'Centang satu poin high-yield' };
+      case S.CARDS: return cardsDone
+        ? { mood: 'cheer', title: 'Hafalan jalan!', text: 'Kartu yang kamu tandai Belum hafal akan muncul lagi, yang Hafal tersimpan per BAB. Pintasan keyboard: Spasi untuk membalik, panah kiri dan kanan untuk menandai. Tekan Lanjut untuk latihan soal.', ok: true }
+        : { mood: 'think', title: 'Flashcard', text: 'Ini kartu hafalan istilah penting dari catatan tadi. Ketuk kartu untuk melihat jawabannya, lalu tandai Hafal atau Belum hafal.', ok: false, need: 'Balik satu kartu, lalu tandai' };
+      case S.PRACTICE: return {
+        mood: 'happy', title: 'Latihan per BAB',
+        text: 'Setelah materi dan kartu, saatnya uji dengan soal. Atur jumlah soal dengan tombol − dan +, atau pilih angka cepat. Lalu pilih cara mengerjakan: Mode Learning menampilkan pembahasan langsung, Mode Ujian setelah selesai.', ok: true,
+      };
+      case S.PKG: return pkg
         ? { mood: 'happy', title: `${pkg.name} dipilih`, text: 'Paket mengambil soal dari semua BAB sekaligus, cocok untuk latihan menjelang ujian. Soal yang belum pernah kamu kerjakan didahulukan.', ok: true }
         : { mood: 'think', title: 'Cara kedua: paket soal', text: 'Di bagian bawah halaman mata kuliah ada Paket soal: 100, 150, atau 200 soal dari semua BAB. Coba pilih salah satu paket.', ok: false, need: 'Pilih satu paket' };
-      case 3: return simTotal
+      case S.SIM: return simTotal
         ? { mood: 'happy', title: `${simTotal} soal siap`, text: 'Kamu bisa atur komposisi mudah, sedang, dan sulit lewat Atur komposisi. Kalau sudah pas, tekan Mulai simulasi.', ok: false, need: 'Tekan Mulai simulasi' }
         : { mood: 'think', title: 'Cara ketiga: simulasi', text: 'Simulasi paling fleksibel. Centang BAB yang mau kamu latih, lalu atur jumlah soalnya. Untuk tutorial ini, cukup sedikit saja.', ok: false, need: 'Centang minimal satu BAB' };
-      case 4: return checked
+      case S.RUN: return checked
         ? (correct
           ? { mood: 'cheer', title: 'Tepat sekali!', text: 'Perhatikan pembahasannya: bukan cuma alasan jawaban benar, tapi juga kenapa pilihan lain salah. Tekan Lanjut.', ok: true }
           : { mood: 'think', title: 'Belum tepat, nggak apa-apa', text: `Kuncinya ${question.answer}. Baca pembahasan tiap pilihan di bawah, ini justru bagian paling berharga. Tekan Lanjut.`, ok: true })
         : { mood: value ? 'idle' : 'think', title: 'Soal pertamamu', text: 'Pilih satu jawaban, lalu tekan Cek jawaban untuk melihat pembahasannya.', ok: false, need: value ? 'Tekan Cek jawaban' : 'Pilih satu jawaban' };
-      case 5: return exited
+      case S.EXIT: return exited
         ? { mood: 'happy', title: 'Progresmu aman', text: 'Jawabanmu tersimpan otomatis. Sesi yang belum selesai tidak hilang dan bisa kamu lanjutkan kapan saja dari Riwayat.', ok: true }
         : { mood: 'think', title: 'Coba keluar dulu', text: 'Kalau harus berhenti di tengah, tekan tombol Keluar di kanan atas layar pengerjaan. Coba tekan sekarang.', ok: false, need: 'Tekan tombol Keluar' };
-      case 6: return resumed
+      case S.HISTORY: return resumed
         ? { mood: 'happy', title: 'Begitu caranya!', text: 'Tekan sesi yang belum selesai untuk melanjutkan. Sesi yang sudah selesai bisa dibuka lagi untuk review skor dan pembahasan. Progres per BAB ada di menu Progres.', ok: true }
         : { mood: 'idle', title: 'Ini Riwayat', text: 'Semua simulasi, paket, dan latihan yang kamu kerjakan tercatat di Riwayat (menu profil di kanan atas). Sesimu barusan ada paling atas. Coba tekan sesi itu.', ok: false, need: 'Tekan sesimu di Riwayat' };
-      default: return { mood: 'cheer', title: 'Kamu siap!', text: 'Sekarang kamu tahu tiga cara latihan, cara mengerjakan dan keluar, dan di mana melihat riwayatmu. Selamat belajar!', ok: true };
+      default: return { mood: 'cheer', title: 'Kamu siap!', text: 'Sekarang kamu tahu alur belajarnya: baca materi, hafalkan lewat flashcard, lalu latihan soal dengan tiga cara. Kamu juga tahu cara keluar dan di mana melihat riwayatmu. Selamat belajar!', ok: true };
     }
   })();
 
-  const next = () => { if (guide.ok && step < 7) setStep((s) => s + 1); };
+  const next = () => { if (guide.ok && step < S.DONE) setStep((s) => s + 1); };
   const back = () => setStep((s) => Math.max(0, s - 1));
-  const startSim = () => setStep(4);
+  const startSim = () => setStep(S.RUN);
+
+  // Pemicu "sudah mencoba" untuk komponen asli: ditangkap dari kejadian di panggung.
+  const onFlashClick = (e) => { if (e.target.closest?.('.fc-btn.is-yes, .fc-btn.is-no')) setCardsDone(true); };
+  useEffect(() => {
+    if (step !== S.CARDS) return undefined;
+    const onKey = (e) => {
+      if (!['ArrowLeft', 'ArrowRight', '1', '2'].includes(e.key)) return;
+      if (stage.current?.querySelector('.fc-stage.is-flipped')) setCardsDone(true);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [step]);
 
   const runnerTitle = subject ? `Simulasi: ${subject.name}` : 'Simulasi';
   const simModeLabel = simMode === 'learning' ? 'Learning' : 'Ujian';
@@ -171,12 +224,12 @@ export default function TutorialLatihan() {
     <div className="onb-page">
       <div className="onb-page-top">
         <div className="min-w-0">
-          <p className="onb-eyebrow">Tutorial · Latihan soal FK</p>
+          <p className="onb-eyebrow">Tutorial · Belajar materi dan latihan soal FK</p>
           <ol className="onb-dots" aria-label={`Langkah ${step + 1} dari ${STEP_LABELS.length}: ${STEP_LABELS[step]}`}>
             {STEP_LABELS.map((l, i) => <li key={l} className={clsx(i < step && 'is-done', i === step && 'is-now')} aria-hidden />)}
           </ol>
         </div>
-        {step < 7 && <SkipButton onClick={skip} busy={busy} />}
+        {step < S.DONE && <SkipButton onClick={skip} busy={busy} />}
       </div>
 
       <div className="onb-layout">
@@ -185,18 +238,18 @@ export default function TutorialLatihan() {
             {!guide.ok && guide.need && <p className="onb-need"><Sparkles size={14} aria-hidden /> {guide.need}</p>}
           </Speech>
           <div className="onb-nav">
-            <button type="button" className="btn-ghost" onClick={back} disabled={step === 0 || step === 7}><ArrowLeft size={17} /> Kembali</button>
-            {step < 7 && step !== 3 && <button type="button" className="btn-primary btn-press" onClick={next} disabled={!guide.ok}>Lanjut <ArrowRight size={17} /></button>}
+            <button type="button" className="btn-ghost" onClick={back} disabled={step === S.SUBJECT || step === S.DONE}><ArrowLeft size={17} /> Kembali</button>
+            {step < S.DONE && step !== S.SIM && <button type="button" className="btn-primary btn-press" onClick={next} disabled={!guide.ok}>Lanjut <ArrowRight size={17} /></button>}
           </div>
         </div>
 
         <section className="onb-stage" ref={stage} aria-label={STEP_LABELS[step]}>
-          {step === 0 && (
+          {step === S.SUBJECT && (
             <Mock label="Mata kuliah">
               <p className="onb-mock-h">Pilih mata kuliah</p>
               <div className="onb-subjects">
                 {TUT_SUBJECTS.map((s) => (
-                  <button key={s.key} type="button" aria-pressed={subjectKey === s.key} onClick={() => { setSubjectKey(s.key); setBab(null); setPlan({}); setValue(null); setChecked(false); }}
+                  <button key={s.key} type="button" aria-pressed={subjectKey === s.key} onClick={() => { setSubjectKey(s.key); setBab(null); setPlan({}); setValue(null); setChecked(false); setTicked(false); setCardsDone(false); resetStudy(s.key); }}
                     className={clsx('onb-subject card-chunky tone-surface', toneClass(s.key), !subjectKey && 'onb-spot-soft')}>
                     <span className="onb-subject-art sticker-tone"><Illustration subject={{ illustrationKey: s.key }} className="h-full w-full" /></span>
                     <span className="onb-subject-name">{s.name}</span>
@@ -207,42 +260,82 @@ export default function TutorialLatihan() {
             </Mock>
           )}
 
-          {step === 1 && subject && (
+          {step === S.BAB && subject && (
             <Mock label={`Mata kuliah · ${subject.name}`}>
               <div className={clsx('onb-hero tone-surface', toneClass(subject.key))}>
                 <div className="min-w-0"><p className="onb-eyebrow">Mata kuliah</p><p className="onb-hero-title">{subject.name}</p><p className="text-sm text-ink-muted">{subject.desc}</p></div>
                 <span className="onb-hero-art sticker-tone"><Illustration subject={{ illustrationKey: subject.key }} className="h-full w-full" /></span>
               </div>
-              <p className="onb-mock-h">Latihan per topik</p>
+              <p className="onb-mock-h">Belajar per topik</p>
               <ul className="onb-babs">
                 {subject.chapters.map((c, i) => (
                   <li key={c}>
                     <button type="button" className={clsx('chapter-row', bab === c && 'is-picked', !bab && 'onb-spot-soft')} onClick={() => setBab(c)} aria-pressed={bab === c}>
                       <span className="chapter-num" aria-hidden>{String(i + 1).padStart(2, '0')}</span>
                       <span className="min-w-0 flex-1"><span className="block font-display text-[16px] font-semibold leading-snug">{c}</span><span className="mt-1 block text-[13px] text-ink-muted">0/30 soal dikerjakan</span></span>
-                      <span className="chapter-go"><PlayCircle size={16} aria-hidden /><span>Latihan</span></span>
+                      <span className="chapter-go"><PlayCircle size={16} aria-hidden /><span>Mulai</span></span>
                     </button>
                   </li>
                 ))}
               </ul>
               {bab && (
                 <div className="onb-dialog">
-                  <p className="onb-dialog-title">Siapkan sesi belajarmu</p>
-                  <div className="space-y-5">
-                    <div className="practice-banner"><span><BookOpenCheck size={22} /></span><div className="min-w-0"><p className="eyebrow mb-1">Latihan per BAB</p><p className="text-sm font-semibold">{bab}</p><p className="mt-1 text-xs text-ink-muted">30 soal tersedia untukmu</p></div></div>
-                    <div>
-                      <div className="count-controls"><span className="label !mb-0">Jumlah soal</span><Stepper value={practice.count} min={1} max={30} label="jumlah soal" onChange={(n) => setPractice((p) => ({ ...p, count: n }))} /></div>
-                      <div className="count-presets">{[5, 10, 20, 30].map((n) => <button type="button" key={n} aria-pressed={practice.count === n} onClick={() => setPractice((p) => ({ ...p, count: n }))}>{n} soal</button>)}</div>
-                    </div>
-                    <ModeChoice name="tut-practice-mode" value={practice.mode} onChange={(m) => setPractice((p) => ({ ...p, mode: m }))} />
-                    <p className="onb-mini-note">Di aplikasi asli, tombol <b>Mulai {practice.count} soal</b> langsung membuka sesi latihan.</p>
+                  <p className="onb-dialog-title">{bab}</p>
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    <Choice step={1} icon={BookOpen} title="Belajar materi" text="Catatan bergambar per bagian, lengkap dengan poin high-yield." spot onClick={next} />
+                    <Choice step={2} icon={Layers} title="Flashcard" text="Kartu hafalan istilah dan poin penting. Balik kartu, tandai hafal." onClick={() => setStep(S.CARDS)} />
+                    <Choice step={3} icon={PlayCircle} title="Latihan soal" text="Atur jumlah soal dan caranya. Pembahasan muncul per soal." onClick={() => setStep(S.PRACTICE)} />
                   </div>
                 </div>
               )}
             </Mock>
           )}
 
-          {step === 2 && subject && (
+          {step === S.NOTES && subject && doc && (
+            <Mock label={`Materi · ${study.chapter}`} className="onb-notes">
+              <p className="onb-mini-note mb-3">Contoh catatan untuk tutorial. Isi sungguhan ada di BAB masing-masing.</p>
+              <div onChange={() => setTicked(true)}>
+                <NotesView doc={doc} chapterKey={studyKey(subjectKey)} />
+              </div>
+            </Mock>
+          )}
+
+          {step === S.CARDS && subject && cards.length > 0 && (
+            <Mock label={`Flashcard · ${study.chapter}`} className="onb-cards">
+              <div onClick={onFlashClick}>
+                <FlashcardDeck
+                  cards={cards}
+                  chapterKey={studyKey(subjectKey)}
+                  finish={({ restart }) => (
+                    <section className="fc-done card-chunky tone-surface" aria-live="polite">
+                      <p className="font-display text-lg font-bold">Semua kartu sudah kamu hafal</p>
+                      <p className="text-sm text-ink-muted">Di aplikasi asli, kamu bisa langsung lanjut ke latihan soal BAB itu.</p>
+                      <button type="button" className="btn btn-secondary mt-3" onClick={restart}>Ulangi semua kartu</button>
+                    </section>
+                  )}
+                />
+              </div>
+            </Mock>
+          )}
+
+          {step === S.PRACTICE && subject && (
+            <Mock label={`Latihan soal · ${bab || subject.chapters[0]}`}>
+              <div className="onb-dialog is-flat">
+                <p className="onb-dialog-title">Siapkan sesi belajarmu</p>
+                <div className="space-y-5">
+                  <div className="practice-banner"><span><BookOpenCheck size={22} /></span><div className="min-w-0"><p className="eyebrow mb-1">Latihan per BAB</p><p className="text-sm font-semibold">{bab || subject.chapters[0]}</p><p className="mt-1 text-xs text-ink-muted">30 soal tersedia untukmu</p></div></div>
+                  <div>
+                    <div className="count-controls"><span className="label !mb-0">Jumlah soal</span><Stepper value={practice.count} min={1} max={30} label="jumlah soal" onChange={(n) => setPractice((p) => ({ ...p, count: n }))} /></div>
+                    <div className="count-presets">{[5, 10, 20, 30].map((n) => <button type="button" key={n} aria-pressed={practice.count === n} onClick={() => setPractice((p) => ({ ...p, count: n }))}>{n} soal</button>)}</div>
+                  </div>
+                  <ModeChoice name="tut-practice-mode" value={practice.mode} onChange={(m) => setPractice((p) => ({ ...p, mode: m }))} />
+                  <p className="onb-mini-note">Di aplikasi asli, tombol <b>Mulai {practice.count} soal</b> langsung membuka sesi latihan.</p>
+                </div>
+              </div>
+            </Mock>
+          )}
+
+          {step === S.PKG && subject && (
             <Mock label={`Mata kuliah · ${subject.name} · Paket soal`}>
               <p className="onb-eyebrow">Sekali jalan, semua BAB</p>
               <p className="onb-mock-h">Paket soal</p>
@@ -268,7 +361,7 @@ export default function TutorialLatihan() {
             </Mock>
           )}
 
-          {step === 3 && subject && (
+          {step === S.SIM && subject && (
             <Mock label={`Coba Simulasi: ${subject.name}`}>
               <div className="onb-dialog is-flat">
                 <p className="onb-dialog-title">Coba Simulasi: {subject.name}</p>
@@ -309,12 +402,12 @@ export default function TutorialLatihan() {
             </Mock>
           )}
 
-          {(step === 4 || step === 5) && question && (
+          {(step === S.RUN || step === S.EXIT) && question && (
             <Mock label="Sedang mengerjakan" className="onb-runner">
               <div className="onb-runner-bar">
                 <span className="min-w-0 truncate font-semibold">{runnerTitle}</span>
                 <span className="onb-chip">{simModeLabel}</span>
-                <button type="button" className={clsx('btn-secondary btn-sm ml-auto', step === 5 && !exited && 'onb-spot')} onClick={() => { if (step === 5) setExited(true); }} disabled={step !== 5}>
+                <button type="button" className={clsx('btn-secondary btn-sm ml-auto', step === S.EXIT && !exited && 'onb-spot')} onClick={() => { if (step === S.EXIT) setExited(true); }} disabled={step !== S.EXIT}>
                   <LogOut size={15} /> Keluar
                 </button>
               </div>
@@ -326,9 +419,9 @@ export default function TutorialLatihan() {
                 </div>
               ) : (
                 <>
-                  <QuestionView q={question} index={0} total={simTotal || 1} value={value} onChange={(v) => !checked && setValue(v)} revealed={checked} result={checked ? { correct, scored: true } : null} disabled={checked || step === 5} />
+                  <QuestionView q={question} index={0} total={simTotal || 1} value={value} onChange={(v) => !checked && setValue(v)} revealed={checked} result={checked ? { correct, scored: true } : null} disabled={checked || step === S.EXIT} />
                   {simMode === 'exam' && checked && <p className="onb-mini-note mt-3">Di Mode Ujian, pembahasan baru muncul setelah sesi selesai. Di tutorial ini kami tampilkan langsung.</p>}
-                  {step === 4 && !checked && (
+                  {step === S.RUN && !checked && (
                     <div className="question-actions mt-4 flex justify-end">
                       <button type="button" className={clsx('btn-primary btn-press', value && 'onb-spot')} disabled={!value} onClick={() => setChecked(true)}>Cek jawaban</button>
                     </div>
@@ -338,7 +431,7 @@ export default function TutorialLatihan() {
             </Mock>
           )}
 
-          {step === 6 && subject && (
+          {step === S.HISTORY && subject && (
             <Mock label="Riwayat">
               <p className="onb-eyebrow">Catatan belajarmu</p>
               <p className="onb-mock-h">Riwayat</p>
@@ -370,11 +463,13 @@ export default function TutorialLatihan() {
             </Mock>
           )}
 
-          {step === 7 && (
+          {step === S.DONE && (
             <div className="onb-finish card-chunky tone-surface tone-sun">
               <p className="onb-mock-h">Yang sudah kamu coba</p>
               <ul className="onb-learned">
                 <li><CheckCircle2 size={18} aria-hidden /> Memilih mata kuliah dan BAB</li>
+                <li><CheckCircle2 size={18} aria-hidden /> Membaca materi dan mencentang poin high-yield</li>
+                <li><CheckCircle2 size={18} aria-hidden /> Menghafal lewat flashcard</li>
                 <li><CheckCircle2 size={18} aria-hidden /> Latihan per BAB, paket soal, dan simulasi</li>
                 <li><CheckCircle2 size={18} aria-hidden /> Mengatur jumlah soal, komposisi, dan mode</li>
                 <li><CheckCircle2 size={18} aria-hidden /> Menjawab soal dan membaca pembahasan</li>

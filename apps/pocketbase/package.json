@@ -6,7 +6,7 @@
     "dev": "MEDCOEL_DEV_MODE=1 ./pocketbase serve --http=127.0.0.1:8090 --dir=./pb_data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks",
     "start": "./pocketbase serve --http=127.0.0.1:8090 --dir=./pb_data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks --hooksWatch=false",
     "migrate": "./pocketbase migrate up --dir=./pb_data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks",
-    "test": "node test/format.test.mjs && node --test test/catalog.test.mjs test/explanationEnglish.test.mjs test/explanationService.test.mjs test/clinicalEnglish.test.mjs test/lab.test.mjs test/lab-taxonomy.test.mjs test/achievements.test.mjs",
+    "test": "node test/format.test.mjs && node --test test/catalog.test.mjs test/explanationEnglish.test.mjs test/explanationService.test.mjs test/clinicalEnglish.test.mjs test/lab.test.mjs test/lab-taxonomy.test.mjs test/achievements.test.mjs test/materi.test.mjs",
     "test:api": "node test/api.test.mjs",
     "test:lab": "node test/lab-api.test.mjs",
     "test:lab-packs": "node test/lab-pack-api.test.mjs"

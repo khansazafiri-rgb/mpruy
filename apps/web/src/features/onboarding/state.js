@@ -6,7 +6,7 @@ import { pendingTutorials, tutorialStatus } from '@/lib/tutorial';
 
 export const CHOOSER_EVENT = 'medcoel:tutorial-chooser';
 export const TUTORIAL_ROUTES = { fk: '/tutorial/latihan-soal', dokter: '/simulasi-dokter?tutorial=1' };
-export const TUTORIAL_NAMES = { fk: 'Latihan soal FK', dokter: 'Simulasi jadi dokter' };
+export const TUTORIAL_NAMES = { fk: 'Belajar dan latihan soal FK', dokter: 'Simulasi jadi dokter' };
 
 /** Buka pemilih tutorial dari mana saja (kartu beranda, profil, pengingat). */
 export function openTutorialChooser() {

@@ -39,6 +39,7 @@ await page.waitForTimeout(300);
 const shots = [
   ['raka-lembar.png', 'h2:nth-of-type(1) + p + #sheet'], ['raka-wajah.png', '#faces'], ['raka-menoleh.png', '#yaw'],
   ['raka-filmstrip.png', '#strip'], ['raka-ukuran-kecil.png', '#small'],
+  ['raka-logo-pose.png', '#logoPoses'], ['raka-logo-closeup.png', '#logoClose'], ['raka-logo-kecil.png', '#logoSmall'],
 ];
 for (const [file, sel] of shots) await page.locator(sel).first().screenshot({ path: path.join(out, file) });
 await page.locator('#frame').first().screenshot({ path: path.join(out, 'raka-bingkai-siang.png') });

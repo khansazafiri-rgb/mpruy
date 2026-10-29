@@ -11,7 +11,7 @@ export default function TutorialReminder({ pending, onOpen, onPick, onClose }) {
       <Mascot name={one === 'dokter' ? 'nilo' : one === 'fk' ? 'kila' : 'kori'} mood="wave" size={64} label="" />
       <div className="min-w-0 flex-1">
         <p className="onb-reminder-title">{one ? `Belum coba tutorial ${TUTORIAL_NAMES[one]}?` : 'Belum coba tutorialnya?'}</p>
-        <p className="onb-reminder-text">{one === 'dokter' ? 'Latihan jadi dokter jaga, ditemani Nilo. Sekitar 5 menit.' : one === 'fk' ? 'Kila tunjukkan cara latihan, paket, dan simulasi. Sekitar 3 menit.' : 'Ada dua tutorial singkat yang bisa kamu coba.'}</p>
+        <p className="onb-reminder-text">{one === 'dokter' ? 'Latihan jadi dokter jaga, ditemani Nilo. Sekitar 5 menit.' : one === 'fk' ? 'Kila tunjukkan alur belajar: materi, flashcard, lalu latihan soal. Sekitar 5 menit.' : 'Ada dua tutorial singkat yang bisa kamu coba.'}</p>
         <div className="onb-reminder-actions">
           <button type="button" className="btn-primary btn-sm btn-press" onClick={() => (one ? onPick(one) : onOpen())}>Coba sekarang</button>
           <button type="button" className="btn-ghost btn-sm" onClick={onClose}>Nanti saja</button>

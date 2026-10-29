@@ -85,7 +85,8 @@
   .sd-art-wrap { order: -1; padding-top: 4px; }
   .sd-sticker { width: 210px; height: 170px; }
   .sd-note { display: none; }
-  .sd-stats > div { min-width: 0; flex: 1; padding: 10px 12px; }
+  .sd-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sd-stats > div { min-width: 0; padding: 10px 12px; }
   .sd-stats dd { font-size: 22px; }
   .chapter-sheet { grid-template-columns: 1fr; padding: 4px; }
   .chapter-sheet > li:nth-last-child(-n+2):nth-child(odd) { border-bottom: 1px dashed rgb(var(--paper-2)); }
@@ -322,3 +323,16 @@
 /* Admin: judul halaman lebih kecil dan rapat; ruang kerja, bukan halaman sambutan. */
 .admin-main .page-title { font-size: 24px; line-height: 1.25; letter-spacing: -.03em; }
 @media (min-width: 768px) { .admin-main .page-title { font-size: 28px; } }
+
+/* ---------- Pilihan di dalam daftar BAB ---------- */
+.chapter-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-top: 6px; }
+.chapter-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: rgb(var(--ink-muted)); }
+.chapter-tag b { color: rgb(var(--ink)); font-weight: 700; }
+.chapter-tag.is-materi { padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; color: rgb(var(--brand-dark)); background: rgb(var(--brand-soft)); }
+.chapter-tag.is-off { font-size: 12px; font-style: italic; color: rgb(var(--ink-faint)); }
+.choice-card { min-height: 12.5rem; }
+.choice-top { display: flex; align-items: center; justify-content: space-between; gap: .5rem; width: 100%; }
+.choice-step { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: rgb(var(--ink-faint)); }
+.chapter-tag.is-cards { padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; color: rgb(var(--progress)); background: rgb(var(--progress-soft)); }
+.choice-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; background: rgb(var(--tone-bg, var(--brand-soft))); color: rgb(var(--tone-fg, var(--brand))); box-shadow: 0 3px 0 rgb(var(--tone-mid, var(--brand)) / .6); }
+.choice-card:disabled { cursor: not-allowed; opacity: .6; transform: none !important; box-shadow: 0 3px 0 rgb(var(--ink) / .06); }

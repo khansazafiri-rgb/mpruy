@@ -1,0 +1,314 @@
+[
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Umum & Terminologi Anatomis",
+    "file": "anatomi/bab-01-anatomi-umum-terminologi-anatomis.md",
+    "docBab": 1
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Osteologi & Artrologi (Sistem Rangka & Sendi)",
+    "file": "anatomi/bab-02-osteologi-artrologi-sistem-rangka-sendi.md",
+    "docBab": 2
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Miologi (Sistem Otot)",
+    "file": "anatomi/bab-03-miologi-sistem-otot.md",
+    "docBab": 3
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Kepala & Leher",
+    "file": "anatomi/bab-04-anatomi-kepala-leher.md",
+    "docBab": 4
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Cranium & Isi Rongga Tengkorak",
+    "file": "anatomi/bab-05-anatomi-cranium-isi-rongga-tengkorak.md",
+    "docBab": 5
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Toraks (Dinding Toraks, Mediastinum)",
+    "file": "anatomi/bab-06-anatomi-toraks-dinding-toraks-mediastinum.md",
+    "docBab": 6
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Jantung & Pembuluh Darah Besar",
+    "file": "anatomi/bab-07-anatomi-jantung-pembuluh-darah-besar.md",
+    "docBab": 7
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Paru & Saluran Napas",
+    "file": "anatomi/bab-08-anatomi-paru-saluran-napas.md",
+    "docBab": 8
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Abdomen (Dinding, Rongga Peritoneum)",
+    "file": "anatomi/bab-09-anatomi-abdomen-dinding-rongga-peritoneum.md",
+    "docBab": 9
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)",
+    "file": "anatomi/bab-10-anatomi-sistem-digestif-gasterkolon-hepar.md",
+    "docBab": 10
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Pelvis & Perineum",
+    "file": "anatomi/bab-11-anatomi-pelvis-perineum.md",
+    "docBab": 11
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Sistem Urogenital",
+    "file": "anatomi/bab-12-anatomi-sistem-urogenital.md",
+    "docBab": 12
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Ekstremitas Atas",
+    "file": "anatomi/bab-13-anatomi-ekstremitas-atas.md",
+    "docBab": 13
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Ekstremitas Bawah",
+    "file": "anatomi/bab-14-anatomi-ekstremitas-bawah.md",
+    "docBab": 14
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Neuroanatomi: Otak & Batang Otak",
+    "file": "anatomi/bab-15-neuroanatomi-otak-batang-otak.md",
+    "docBab": 15
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Neuroanatomi: Medula Spinalis & Saraf Perifer",
+    "file": "anatomi/bab-16-neuroanatomi-medula-spinalis-saraf-perifer.md",
+    "docBab": 16
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Sistem Saraf Otonom",
+    "file": "anatomi/bab-17-anatomi-sistem-saraf-otonom.md",
+    "docBab": 17
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Panca Indra (Mata, Telinga, Hidung)",
+    "file": "anatomi/bab-18-anatomi-panca-indra-mata-telinga-hidung.md",
+    "docBab": 18
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Sistem Limfatik",
+    "file": "anatomi/bab-19-anatomi-sistem-limfatik.md",
+    "docBab": 19
+  },
+  {
+    "subject": "anatomi",
+    "chapter": "Anatomi Perkembangan (Embriologi Dasar)",
+    "file": "anatomi/bab-20-anatomi-perkembangan-embriologi-dasar.md",
+    "docBab": 20
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Jaringan Dasar: Epitel",
+    "file": "histologi/bab-01-jaringan-dasar-epitel.md",
+    "docBab": 1
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Jaringan Dasar: Ikat, Tulang Rawan, Tulang",
+    "file": "histologi/bab-02-jaringan-dasar-ikat-tulang-rawan-tulang.md",
+    "docBab": 2
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Jaringan Dasar: Otot",
+    "file": "histologi/bab-03-jaringan-dasar-otot.md",
+    "docBab": 3
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Jaringan Dasar: Saraf",
+    "file": "histologi/bab-04-jaringan-dasar-saraf.md",
+    "docBab": 4
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Histologi Sistem Kardiovaskular",
+    "file": "histologi/bab-05-histologi-sistem-kardiovaskular.md",
+    "docBab": 5
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Histologi Sistem Respirasi",
+    "file": "histologi/bab-06-histologi-sistem-respirasi.md",
+    "docBab": 6
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Histologi Sistem Digestif & Kelenjar Aksesoris",
+    "file": "histologi/bab-07-histologi-sistem-digestif-kelenjar-aksesoris.md",
+    "docBab": 7
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Histologi Sistem Urinarius",
+    "file": "histologi/bab-08-histologi-sistem-urinarius.md",
+    "docBab": 8
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Histologi Sistem Reproduksi Pria & Wanita",
+    "file": "histologi/bab-09-histologi-sistem-reproduksi-pria-wanita.md",
+    "docBab": 9
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Histologi Sistem Endokrin",
+    "file": "histologi/bab-10-histologi-sistem-endokrin.md",
+    "docBab": 10
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Histologi Kulit & Adneksa",
+    "file": "histologi/bab-11-histologi-kulit-adneksa.md",
+    "docBab": 11
+  },
+  {
+    "subject": "histologi",
+    "chapter": "Histologi Organ Limfoid & Imun",
+    "file": "histologi/bab-12-histologi-organ-limfoid-imun.md",
+    "docBab": 12
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Sel & Membran, Transport Membran",
+    "file": "fisiologi/bab-01-fisiologi-sel-membran-transport-membran.md",
+    "docBab": 1
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Cairan Tubuh & Elektrolit",
+    "file": "fisiologi/bab-02-fisiologi-cairan-tubuh-elektrolit.md",
+    "docBab": 2
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Saraf: Potensial Aksi & Sinaps",
+    "file": "fisiologi/bab-03-fisiologi-saraf-potensial-aksi-sinaps.md",
+    "docBab": 3
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Otot Rangka, Jantung, Polos",
+    "file": "fisiologi/bab-04-fisiologi-otot-rangka-jantung-polos.md",
+    "docBab": 4
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Sistem Saraf Otonom",
+    "file": "fisiologi/bab-05-fisiologi-sistem-saraf-otonom.md",
+    "docBab": 5
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung",
+    "file": "fisiologi/bab-06-fisiologi-kardiovaskular-siklus-jantung-curah.md",
+    "docBab": 6
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Tekanan Darah & Regulasinya",
+    "file": "fisiologi/bab-07-fisiologi-tekanan-darah-regulasinya.md",
+    "docBab": 7
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas",
+    "file": "fisiologi/bab-08-fisiologi-respirasi-ventilasi-difusi-transport.md",
+    "docBab": 8
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi",
+    "file": "fisiologi/bab-09-fisiologi-ginjal-filtrasi-reabsorpsi-sekresi.md",
+    "docBab": 9
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Keseimbangan Asam-Basa",
+    "file": "fisiologi/bab-10-fisiologi-keseimbangan-asam-basa.md",
+    "docBab": 10
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi",
+    "file": "fisiologi/bab-11-fisiologi-gastrointestinal-motilitas-sekresi.md",
+    "docBab": 11
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Endokrin: Hipotalamus-Hipofisis",
+    "file": "fisiologi/bab-12-fisiologi-endokrin-hipotalamus-hipofisis.md",
+    "docBab": 12
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Tiroid, Paratiroid, Adrenal",
+    "file": "fisiologi/bab-13-fisiologi-tiroid-paratiroid-adrenal.md",
+    "docBab": 13
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Pankreas Endokrin & Regulasi Glukosa",
+    "file": "fisiologi/bab-14-fisiologi-pankreas-endokrin-regulasi-glukosa.md",
+    "docBab": 14
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Reproduksi Pria",
+    "file": "fisiologi/bab-15-fisiologi-reproduksi-pria.md",
+    "docBab": 15
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Reproduksi Wanita & Siklus Menstruasi",
+    "file": "fisiologi/bab-16-fisiologi-reproduksi-wanita-siklus-menstruasi.md",
+    "docBab": 16
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Kehamilan & Laktasi",
+    "file": "fisiologi/bab-17-fisiologi-kehamilan-laktasi.md",
+    "docBab": 17
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Darah & Hemostasis",
+    "file": "fisiologi/bab-18-fisiologi-darah-hemostasis.md",
+    "docBab": 18
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Sistem Imun",
+    "file": "fisiologi/bab-19-fisiologi-sistem-imun.md",
+    "docBab": 19
+  },
+  {
+    "subject": "fisiologi",
+    "chapter": "Fisiologi Sensorik (Penglihatan, Pendengaran, Nyeri)",
+    "file": "fisiologi/bab-20-fisiologi-sensorik-penglihatan-pendengaran-nyeri.md",
+    "docBab": 20
+  }
+]

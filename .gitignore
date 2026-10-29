@@ -17,3 +17,7 @@ apps/hermes-agent/data/
 # MEDCOEL Lab: dataset mentah/cache tidak dicommit; PNG hasil kurasi juga dibuat lokal saat ingest
 tools/lab-ingest/cache/
 apps/web/public/lab-content/medmnist/
+
+# Python
+__pycache__/
+*.pyc

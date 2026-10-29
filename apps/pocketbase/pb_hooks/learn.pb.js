@@ -74,6 +74,7 @@ routerAdd("GET", "/api/medcoel/subjects/{slug}", (e) => {
   });
   const packages = e.app.findRecordsByFilter("packages", "subject = {:s} && active = true", "order,name", 50, 0, { s: s.id });
   const noted = learn.notedChapters(e.app, s.id);
+  const carded = learn.cardChapters(e.app, s.id);
   return e.json(200, {
     campusName: campusOnly && user.getString("campus") ? e.app.findRecordById("campuses", user.getString("campus")).getString("name") : "",
     subject: {
@@ -86,7 +87,7 @@ routerAdd("GET", "/api/medcoel/subjects/{slug}", (e) => {
       collectionId: s.collection().id,
       studying: user.getStringSlice("studyingSubjects").indexOf(s.id) >= 0,
     },
-    chapters: chapters.filter((c) => !campusOnly || !!per[c.id]).map((c) => Object.assign({ id: c.id, title: c.getString("title"), hasNotes: noted.has(c.id) }, per[c.id] || { total: 0, answered: 0, wrong: 0, easy: 0, medium: 0, hard: 0, A: 0, K: 0, isian: 0, esai: 0 })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName),
+    chapters: chapters.filter((c) => !campusOnly || !!per[c.id]).map((c) => Object.assign({ id: c.id, title: c.getString("title"), order: c.getInt("order"), hasNotes: noted.has(c.id), hasCards: carded.has(c.id) }, per[c.id] || { total: 0, answered: 0, wrong: 0, easy: 0, medium: 0, hard: 0, A: 0, K: 0, isian: 0, esai: 0 })).sort(require(`${__hooks}/lib/catalogOrder.js`).byOrder),
     packages: (campusOnly ? [] : packages).map((p) => ({
       id: p.id,
       name: p.getString("name"),
@@ -442,11 +443,14 @@ routerAdd("GET", "/api/medcoel/chapters/{id}/notes", (e) => {
   if (!note.getString("content").trim()) throw missing();
   const noted = learn.notedChapters(e.app, s.id);
   const list = e.app.findRecordsByFilter("chapters", "subject = {:s} && hidden = false && drilling = false", "order,created", 500, 0, { s: s.id })
-    .filter((x) => noted.has(x.id)).map((x) => ({ id: x.id, title: x.getString("title") })).sort(require(`${__hooks}/lib/catalogOrder.js`).byName);
+    .filter((x) => noted.has(x.id)).map((x) => ({ id: x.id, title: x.getString("title"), order: x.getInt("order") })).sort(require(`${__hooks}/lib/catalogOrder.js`).byOrder);
   const i = list.findIndex((x) => x.id === c.id);
+  // Soal latihan BAB ini yang terlihat siswa (aturan kampus sama dengan halaman mata kuliah), untuk tombol "Latihan soal BAB ini".
+  const items = learn.pool(e.app, user, { chapters: [c.id] });
   return e.json(200, {
     subject: { id: s.id, name: s.getString("name"), slug: s.getString("slug") },
     chapter: { id: c.id, title: c.getString("title") },
+    practice: { total: items.length, answered: items.filter((x) => x.seen).length },
     content: note.getString("content"),
     updated: note.getString("updated"),
     prev: i > 0 ? list[i - 1] : null,

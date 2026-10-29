@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { EXPRESSIONS, NEUTRAL, POSES, demoState, DEMO_LENGTH, lerpState, raka, rakaSvg } from './raka.js';
+import { EXPRESSIONS, NEUTRAL, PATCH, POSES, armShape, demoState, DEMO_LENGTH, lerpState, raka, rakaSvg } from './raka.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 
@@ -49,4 +49,51 @@ test('berkas svg/ sama dengan keluaran raka.js (jalankan build.mjs bila gagal)',
 test('raka() menolak ekspresi atau pose yang tidak dikenal', () => {
   assert.throws(() => raka('marah'), /Ekspresi tidak dikenal/);
   assert.throws(() => raka('netral', 'terbang'), /Pose tidak dikenal/);
+});
+
+test('patch logo: ada di setiap ekspresi dan pose, di dalam grup badan, ukurannya tetap', () => {
+  const sizes = new Set();
+  for (const e of Object.keys(EXPRESSIONS)) for (const p of Object.keys(POSES)) {
+    const svg = rakaSvg(raka(e, p), { uid: `${e}-${p}` });
+    const body = svg.slice(svg.indexOf('class="raka-body"'));
+    assert.ok(body.includes('class="raka-patch"'), `patch ada di ${e}/${p}`);
+    assert.ok(body.indexOf('class="raka-patch"') < body.indexOf('class="raka-head"'), 'patch di bawah kepala');
+    sizes.add(svg.match(/<rect x="[\d.]+" y="[\d.]+" width="(\d+)" height="(\d+)" rx="17"/).slice(1).join('x'));
+    sizes.add(svg.match(/scale\(([\d.]+)\) translate\(-128 -128\)/)[1]);
+  }
+  assert.equal(sizes.size, 2, `ukuran patch dan simbol harus sama di semua pose: ${[...sizes]}`);
+});
+
+test('patch logo: ikut badan saat condong dan bernapas, dan tidak berubah ukuran', () => {
+  const a = rakaSvg(raka('netral', null, { breath: 0 })), b = rakaSvg(raka('netral', null, { breath: 1, lean: 3 }));
+  const cy = (svg) => Number(svg.match(/class="raka-patch"><rect x="[\d.]+" y="([\d.]+)"/)[1]);
+  assert.ok(cy(b) < cy(a), 'patch naik sedikit saat dada mengembang');
+  assert.ok(b.includes('rotate(3 200 580)') && b.indexOf('rotate(3 200 580)') < b.indexOf('class="raka-patch"'), 'patch berada di dalam grup yang ikut condong');
+  assert.equal(a.match(/rx="17"/g).length, b.match(/rx="17"/g).length);
+});
+
+test('patch logo: saat gambar dicerminkan, simbol dibalik lagi supaya tidak terbaca terbalik', () => {
+  const flipped = rakaSvg(raka('menunjuk', null, { flip: 1 }));
+  assert.match(flipped, /class="raka-patch" transform="translate\([\d.]+ 0\) scale\(-1 1\) translate\(-[\d.]+ 0\)"/);
+  assert.doesNotMatch(rakaSvg(raka('menunjuk')), /class="raka-patch" transform/);
+});
+
+test('patch logo: bisa dimatikan atau dipindah ke sisi lain', () => {
+  assert.doesNotMatch(rakaSvg(raka('netral'), { logo: false }), /raka-patch/);
+  const r = rakaSvg(raka('netral')), l = rakaSvg(raka('netral'), { logo: 'kanan' });
+  const x = (svg) => Number(svg.match(/class="raka-patch"><rect x="([\d.]+)"/)[1]);
+  assert.ok(x(r) > 200 && x(l) < 200);
+});
+
+test('patch logo tidak tertutup tangan di pose mana pun', () => {
+  const half = PATCH.size / 2;
+  const hits = (x, y, r) => Math.hypot(Math.max(Math.abs(x - PATCH.x) - half, 0), Math.max(Math.abs(y - PATCH.y) - half, 0)) < r;
+  for (const p of Object.keys(POSES)) {
+    const s = raka(p === 'sapa' ? 'senang' : p, p);
+    for (const [side, arm] of [['L', s.armL], ['R', s.armR]]) {
+      const g = armShape(side, arm);
+      assert.ok(!hits(g.hand[0], g.hand[1], g.handR), `tangan ${side} menutup patch di pose ${p}`);
+      g.dots.slice(1).forEach((d, i) => assert.ok(!hits(d[0], d[1], d[2]), `lengan ${side} menutup patch di pose ${p} (titik ${i + 1})`));
+    }
+  }
 });
