@@ -1,0 +1,205 @@
+{
+ "N01": {
+  "start": 0,
+  "end": 0.83,
+  "dur": 0.83,
+  "who": "N",
+  "text": "Ini Raka."
+ },
+ "N02": {
+  "start": 1.05,
+  "end": 3.47,
+  "dur": 2.42,
+  "who": "N",
+  "text": "Dia punya empat belas hari sebelum ujian."
+ },
+ "N03": {
+  "start": 3.77,
+  "end": 7.51,
+  "dur": 3.74,
+  "who": "N",
+  "text": "Dalam tiga detik, dia akan merasa punya waktu untuk liburan."
+ },
+ "T01": {
+  "start": 59.79,
+  "end": 63.07,
+  "dur": 3.28,
+  "who": "T",
+  "text": "Santai, Rak. Ujiannya masih dua minggu."
+ },
+ "N04": {
+  "start": 7.89,
+  "end": 10.23,
+  "dur": 2.34,
+  "who": "N",
+  "text": "Nah. Dia sudah di pantai."
+ },
+ "N05": {
+  "start": 10.45,
+  "end": 11.45,
+  "dur": 1.0,
+  "who": "N",
+  "text": "Secara mental."
+ },
+ "N06": {
+  "start": 11.79,
+  "end": 13.93,
+  "dur": 2.14,
+  "who": "N",
+  "text": "H minus tiga belas: praktikum."
+ },
+ "N07": {
+  "start": 14.21,
+  "end": 16.31,
+  "dur": 2.1,
+  "who": "N",
+  "text": "H minus sepuluh: tugas kelompok."
+ },
+ "N08": {
+  "start": 16.53,
+  "end": 20.31,
+  "dur": 3.78,
+  "who": "N",
+  "text": "H minus tujuh: kuliah, lalu tugas dari kuliah itu."
+ },
+ "N09": {
+  "start": 20.59,
+  "end": 22.01,
+  "dur": 1.42,
+  "who": "N",
+  "text": "Katanya dua minggu."
+ },
+ "N10": {
+  "start": 22.33,
+  "end": 23.73,
+  "dur": 1.4,
+  "who": "N",
+  "text": "Kok hari kosongnya tidak ikut?"
+ },
+ "N11": {
+  "start": 24.05,
+  "end": 25.09,
+  "dur": 1.04,
+  "who": "N",
+  "text": "Tiga hari lagi."
+ },
+ "N12": {
+  "start": 25.43,
+  "end": 27.97,
+  "dur": 2.54,
+  "who": "N",
+  "text": "Raka membuka semua materi sekaligus."
+ },
+ "N13": {
+  "start": 28.19,
+  "end": 30.95,
+  "dur": 2.76,
+  "who": "N",
+  "text": "Strateginya... belum ditemukan."
+ },
+ "R01": {
+  "start": 65.09,
+  "end": 66.35,
+  "dur": 1.26,
+  "who": "R",
+  "text": "Aku mulai dari mana?"
+ },
+ "N14": {
+  "start": 31.21,
+  "end": 32.39,
+  "dur": 1.18,
+  "who": "N",
+  "text": "Pertanyaan bagus."
+ },
+ "N15": {
+  "start": 32.57,
+  "end": 37.01,
+  "dur": 4.44,
+  "who": "N",
+  "text": "Sayangnya, dia baru bertanya setelah membuka semua mata kuliah."
+ },
+ "N16": {
+  "start": 37.21,
+  "end": 38.89,
+  "dur": 1.68,
+  "who": "N",
+  "text": "Oke, Rak. Tutup yang lain."
+ },
+ "N17": {
+  "start": 39.11,
+  "end": 39.91,
+  "dur": 0.8,
+  "who": "N",
+  "text": "Pilih satu bab."
+ },
+ "N18": {
+  "start": 40.15,
+  "end": 40.99,
+  "dur": 0.84,
+  "who": "N",
+  "text": "Coba soalnya."
+ },
+ "N19": {
+  "start": 41.17,
+  "end": 43.29,
+  "dur": 2.12,
+  "who": "N",
+  "text": "Kalau salah, baca pembahasannya."
+ },
+ "N20": {
+  "start": 43.43,
+  "end": 44.17,
+  "dur": 0.74,
+  "who": "N",
+  "text": "Baru lanjut."
+ },
+ "N21": {
+  "start": 44.47,
+  "end": 46.71,
+  "dur": 2.24,
+  "who": "N",
+  "text": "Dia belum berubah jadi ensiklopedia."
+ },
+ "N22": {
+  "start": 46.93,
+  "end": 50.55,
+  "dur": 3.62,
+  "who": "N",
+  "text": "Tapi sekarang, dia tahu bagian mana yang belum dia pahami."
+ },
+ "T02": {
+  "start": 63.41,
+  "end": 64.99,
+  "dur": 1.58,
+  "who": "T",
+  "text": "Rak, jadi liburan?"
+ },
+ "R02": {
+  "start": 66.73,
+  "end": 68.53,
+  "dur": 1.8,
+  "who": "R",
+  "text": "Masih. Di kepalaku."
+ },
+ "N23": {
+  "start": 50.79,
+  "end": 52.25,
+  "dur": 1.46,
+  "who": "N",
+  "text": "Pantainya bisa menunggu."
+ },
+ "N24": {
+  "start": 52.47,
+  "end": 58.49,
+  "dur": 6.02,
+  "who": "N",
+  "text": "Buat mulai belajar, ada tiga puluh delapan ribu empat ratus soal dan pembahasan gratis di Medcoel."
+ },
+ "N25": {
+  "start": 58.75,
+  "end": 59.63,
+  "dur": 0.88,
+  "who": "N",
+  "text": "Satu bab dulu."
+ }
+}

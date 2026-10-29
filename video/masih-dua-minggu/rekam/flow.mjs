@@ -1,0 +1,46 @@
+// ---------- siapkan halaman awal (belum direkam) ----------
+await p.goto(APP + '/mata-kuliah'); await p.waitForSelector('text=Ruang belajarmu'); await sleep(1200);
+await p.evaluate(() => window.__curMove(430, 600, 1)); await sleep(200);
+T0 = performance.now(); wall0 = Date.now() / 1000;
+await cdp.send('Page.startScreencast', { format: 'jpeg', quality: 90, maxWidth: 1000, maxHeight: 1300, everyNthFrame: 1 });
+const start = performance.now();
+mark('mulai rekam');
+try {
+  await tap(p.getByText('Anatomi', { exact: true }), 0.9, { dur: 0.5 });
+  await p.waitForURL('**/mata-kuliah/anatomi'); await p.waitForSelector('text=Pilih BAB'); mark('halaman Anatomi');
+  await smooth(620, 1.5, 700);
+  await tap(p.getByText('Anatomi Ekstremitas Atas', { exact: true }), 3.0, { dur: 0.7 });
+  await p.waitForSelector('[role=dialog]'); mark('dialog langkah');
+  await modalScroll(420, 3.5, 500);
+  await tap(p.getByText('Latihan soal', { exact: true }), 4.6, { dur: 0.6 });
+  await p.waitForSelector('text=Siapkan sesi belajarmu'); mark('dialog sesi');
+  await tap(p.getByRole('button', { name: /^Mulai 10 soal/ }), 5.9, { dur: 0.7 });
+  await p.waitForURL('**/kerjakan/**'); await p.waitForSelector('label.answer-option'); mark('runner dibuka');
+  const opts = await p.evaluate(() => [...document.querySelectorAll('label.answer-option')].map((e) => e.innerText.replace(/\s+/g, ' ').trim()));
+  const stemText = await p.evaluate(() => document.body.innerText);
+  const rt = rightText(stemText);
+  const rightIdx = opts.findIndex((o) => rt && o.endsWith(rt));
+  const wrongIdx = [1, 2, 3, 0, 4].find((i) => i !== rightIdx);
+  console.log('opsi:', opts, 'benar:', rightIdx, 'pilih salah:', wrongIdx);
+  const radios = p.locator('label.answer-option');
+  await moveTo(radios, 7.5, { idx: rightIdx === 0 ? 1 : 0, dur: 0.5 });
+  await tap(radios, 8.2, { idx: wrongIdx, dur: 0.45 }); mark('pilih jawaban');
+  await tap(p.getByRole('button', { name: /Cek jawaban/ }), 9.2, { dur: 0.6 }); mark('cek jawaban');
+  await at(9.8);
+  const wb = await radios.nth(wrongIdx).boundingBox();
+  const sy = await p.evaluate(() => window.scrollY);
+  await smooth(sy + wb.y - 150, 10.0, 1000); mark('scroll pembahasan 1');
+  await at(12.0);
+  await smooth(sy + wb.y + 150, 12.2, 1300); mark('scroll pembahasan 2');
+  await at(14.6);
+  await smooth(sy + wb.y + 420, 14.8, 1200);
+  await at(17.0);
+  await p.evaluate(() => window.scrollTo(0, 0)); await at(17.6);
+  await tap(p.getByRole('button', { name: /Berikutnya/ }), 18.4, { dur: 0.8 }); mark('soal berikutnya');
+  await at(20.0);
+} catch (e) { console.log('GAGAL di', now().toFixed(2), e.message.split('\n')[0]); }
+await cdp.send('Page.stopScreencast');
+await sleep(300);
+fs.writeFileSync(OUT + '/frames.json', JSON.stringify({ wall0, tstart: TSTART, tend: now(), frames, marks }));
+console.log('frame:', frames.length, 'durasi rekam', (performance.now() - start) / 1000);
+await browser.close();
