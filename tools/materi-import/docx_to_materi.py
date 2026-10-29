@@ -82,7 +82,8 @@ URL_LINE = re.compile(r'^https?://lh3\.googleusercontent\.com/d/[\w-]+$')
 BAB_H1 = re.compile(r'^Bab\s+(\d+)\s+[—–-]\s+(.+)$')
 BULLET = re.compile(r'^[•·]\s+')
 NUM_ITEM = re.compile(r'^(\d{1,2})\)\s+')
-CAPTION = re.compile(r'^Gambar\s+(\d+(?:\.\d+)?)\.\s+(.*)$', re.S)
+# "Gambar 6.4. Keterangan" atau (Fisiologi) "Gambar Bab 6 — Keterangan"
+CAPTION = re.compile(r'^Gambar\s+(?:Bab\s+)?(\d+(?:\.\d+)?)(?:\.|\s+[—–-])\s+(.*)$', re.S)
 H2_NUM = re.compile(r'^(\d{1,2})\.\s+(.*)$')
 H2_LETTER = re.compile(r'^([A-F])\.\s+(.*)$')
 
@@ -205,6 +206,12 @@ def classify(paras):
             toks.append({**base, 'k': 'li', 'text': t.lstrip('□ ').strip()})
             continue
         if t.startswith('→') and toks and toks[-1]['k'] == 'p':
+            toks[-1]['text'] = toks[-1]['text'].rstrip() + ' ' + t
+            continue
+        if (toks and toks[-1]['k'] == 'p' and not p.blank_before and p.lvl == 0 and not URL_LINE.match(t) and not CAPTION.match(t)
+                and not BULLET.match(t) and not NUM_ITEM.match(t) and not H2_NUM.match(t)
+                and (t.startswith('+ ') or toks[-1]['text'].endswith(('→', '=', '+', ';')))):
+            # Alur atau rincian yang ditulis per baris tanpa baris kosong ("X →" / "+ Y" / butir berakhiran ";") satu paragraf.
             toks[-1]['text'] = toks[-1]['text'].rstrip() + ' ' + t
             continue
         if URL_LINE.match(t):
@@ -357,7 +364,7 @@ def group_sections(chapter):
     pre = []
     SUMBER_TAIL = re.compile(r'^Sumber( untuk [Bb]ab (\d+|ini))?:?$')
     for tk in chapter['toks']:
-        if tk['k'] in ('h3', 'p') and SUMBER_TAIL.match(tk['text']) and cur is not None and cur['kind'] != 'sumber':
+        if tk['k'] in ('h3', 'p') and SUMBER_TAIL.match(tk['text']) and tk['text'] != 'Sumber:' and cur is not None and cur['kind'] != 'sumber':
             sections.append({'title': 'Sumber', 'raw': tk['text'], 'kind': 'sumber', 'toks': [], 'src': tk['src']})
             cur = sections[-1]
             continue
@@ -708,11 +715,26 @@ def fig_md(f):
     return '\n'.join(lines)
 
 
+def figure_md_part(b, ctx, credits, ordered):
+    """Blok gambar -> Markdown; keterangan dan atribusi dipisah ("Sumber: ..." di keterangan atau dari daftar sumber)."""
+    f = ctx.figs[b[1]]
+    head, cr = split_caption_credit(f['caption'])
+    f['caption'] = head
+    f['credit'] = cr or credits.get(f['old'], '')
+    if f['credit']:
+        f['caption'] = re.sub(r'\s*Visual [^.]*(?:\.(?=\d)[^.]*)*\.?$', '', f['caption']).strip()
+    if not f['credit'] and ordered and len(ordered) == ctx.pre_count:
+        f['credit'] = ordered[f['new'] - 1]
+    return fig_md(f)
+
+
 def chapter_to_md(ch, subject, report, names):
     ctx = Ctx(ch['num'], subject, names)
     promote_parts(ch)
     pre, sections = group_sections(ch)
-    prescan_figures([tk for s in sections if s['kind'] not in ('drop',) for tk in s['toks']], ctx)
+    # Gambar yang ditaruh sebelum bagian pertama (mis. Fisiologi: satu gambar per BAB di bawah judul BAB) tampil sebagai pembuka.
+    intro = [tk for tk in pre if tk['k'] in ('img', 'cap')]
+    prescan_figures(intro + [tk for s in sections if s['kind'] not in ('drop',) for tk in s['toks']], ctx)
 
     # atribusi: dari bagian sumber (Gambar X.Y — ...) atau dari keterangan ("Sumber: ...")
     credits, ordered = {}, []
@@ -732,6 +754,11 @@ def chapter_to_md(ch, subject, report, names):
 
     parts = [MARKER]
     fig_seq = 0
+    figure_part = lambda b: figure_md_part(b, ctx, credits, ordered)
+    if intro:
+        ctx.last_heading = ch['title']
+        for b in render_blocks(intro, ctx):
+            parts.append(figure_part(b) if b[0] == 'fig' else b[1])
     for s in sections:
         if s['kind'] == 'drop':
             ctx.dropped.append((s['src'], s['raw'], 'bagian internal (ringkasan untuk AI)'))
@@ -752,18 +779,7 @@ def chapter_to_md(ch, subject, report, names):
                      else t for q, t in enumerate(toks_)]
         blocks = render_blocks(toks_, ctx)
         for b in blocks:
-            if b[0] == 'fig':
-                f = ctx.figs[b[1]]
-                head, cr = split_caption_credit(f['caption'])
-                f['caption'] = head
-                f['credit'] = cr or credits.get(f['old'], '')
-                if f['credit']:
-                    f['caption'] = re.sub(r'\s*Visual [^.]*(?:\.(?=\d)[^.]*)*\.?$', '', f['caption']).strip()
-                if not f['credit'] and ordered and len(ordered) == ctx.pre_count:
-                    f['credit'] = ordered[f['new'] - 1]
-                parts.append(fig_md(f))
-            else:
-                parts.append(b[1])
+            parts.append(figure_part(b) if b[0] == 'fig' else b[1])
     # Bagian "Sumber & atribusi" di akhir BAB tidak dimasukkan: atribusi tiap gambar sudah tampil di bawah gambarnya.
     for s in sections:
         if s['kind'] == 'sumber':
@@ -774,7 +790,7 @@ def chapter_to_md(ch, subject, report, names):
         md += '\n' + flashcards.cards_md(cards) + '\n'
     ctx.n_cards = len(cards)
     report[ch['num']] = {'missing': verify_chapter(ch, md, ctx), 'figs': len(ctx.figs), 'dropped': ctx.dropped, 'autoheads': ctx.autoheads,
-                         'pre': [t['text'][:90] for t in pre], 'ctx': ctx}
+                         'pre': [t['text'][:90] for t in pre if t['k'] not in ('img', 'cap')], 'ctx': ctx}
     return md
 
 

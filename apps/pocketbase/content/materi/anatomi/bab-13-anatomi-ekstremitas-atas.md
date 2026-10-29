@@ -344,3 +344,17 @@ Brachial artery injury dapat mengancam perfusi forearm/hand. Volkmann ischemic c
   • Ulnar nerve — medial cord
   • Axillary nerve — posterior cord
   • Radial nerve — posterior cord
+- Peta Besar Ekstremitas Atas dan Compartment Logic :: Ekstremitas atas dirancang terutama untuk mobilitas dan positioning tangan.
+- Pectoral Region :: Pectoralis major memiliki clavicular head dan sternocostal head.
+- Scapular Region dan Scapular Spaces :: Posterior shoulder mencakup trapezius, deltoid, supraspinatus, infraspinatus, teres minor, teres major, dan long head triceps.
+- Shoulder Complex :: Shoulder complex mencakup sternoclavicular, acromioclavicular, dan glenohumeral joints serta scapulothoracic articulation fungsional. Glenohumeral joint adalah synovial ball-and-socket joint dengan mobility besar namun stability osseous relatif kecil karena glenoid fossa dangkal. Glenoid labrum memperdalam socket.
+- Axilla :: Axilla merupakan ruang pyramidal antara thoracic wall dan upper limb yang berfungsi sebagai distribution center neurovascular dan lymphatic.
+- Brachial Plexus :: Brachial plexus terutama berasal dari anterior rami C5–T1. Organisasi klasik adalah Roots → Trunks → Divisions → Cords → Branches.
+- Arm :: Deep brachial fascia dan medial/lateral intermuscular septa membagi arm menjadi anterior dan posterior compartments.
+- Elbow dan Cubital Fossa :: Elbow complex mencakup humeroulnar, humeroradial, dan proximal radioulnar articulations. Flexion-extension terutama pada humeroulnar/humeroradial joints; pronation-supination melibatkan proximal dan distal radioulnar joints.
+- Forearm Anterior: Flexor–Pronator Compartment :: Mayoritas otot anterior berasal dari common flexor origin pada medial epicondyle dan dipersarafi median nerve.
+- Wrist :: Carpal bones dari lateral ke medial: Proximal row — scaphoid, lunate, triquetrum, pisiform.
+- Hand :: Palmar aponeurosis menstabilkan skin palm dan melindungi struktur lebih dalam. Flexor tendons berjalan dalam synovial sheaths. FDS berinsersi pada middle phalanges setelah membelah untuk memberi jalan FDP; FDP menuju distal phalanges. Extensor expansion mengintegrasikan tendon extensor dengan lumbricals dan interossei.
+- Anatomical Snuffbox :: Batas lateral/anterior dibentuk tendons abductor pollicis longus dan extensor pollicis brevis; batas medial/posterior oleh extensor pollicis longus. Floor terutama scaphoid dan trapezium. Radial artery melintasi floor.
+- Cutaneous Innervation dan Dermatomes :: Peripheral nerve territories tidak sama dengan dermatomes.
+- Integrated Peripheral Nerve Lesion Map :: Risk: surgical neck fracture, inferior shoulder dislocation. Motor: deltoid dan teres minor. Defisit: abduction terutama setelah fase awal, flattened shoulder contour pada denervation berat. Sensory: superior lateral arm.

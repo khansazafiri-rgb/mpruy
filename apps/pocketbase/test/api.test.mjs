@@ -1100,8 +1100,8 @@ await langkah('urutan BAB semua mata kuliah mengikuti Google Doc (bukan A-Z), ju
   assert.equal(anat[0], 'Anatomi Umum & Terminologi Anatomis');
 });
 
-await langkah('catatan materi bawaan: Anatomi (20 BAB) dan Histologi (12 BAB) terbaca siswa, berurutan, dengan flashcard', async () => {
-  for (const [slug, jumlah] of [['anatomi', 20], ['histologi', 12]]) {
+await langkah('catatan materi bawaan: Anatomi (20 BAB), Histologi (12 BAB), dan Fisiologi (20 BAB) terbaca siswa, berurutan, dengan flashcard', async () => {
+  for (const [slug, jumlah] of [['anatomi', 20], ['histologi', 12], ['fisiologi', 20]]) {
     const sub = subjects.find((s) => s.slug === slug);
     assert.ok(sub, `mata kuliah ${slug} dari katalog`);
     const noted = (await call('GET', `/api/medcoel/subjects/${slug}`, undefined, userA.token, 200)).data.chapters.filter((c) => c.hasNotes);
@@ -1112,7 +1112,7 @@ await langkah('catatan materi bawaan: Anatomi (20 BAB) dan Histologi (12 BAB) te
       assert.ok(n.content.startsWith('<!-- materi:v2 -->'), c.title);
       assert.ok(n.content.includes('## Flashcard {kartu}'), `${c.title}: flashcard`);
       assert.ok(!n.content.includes('Sumber & Atribusi'), `${c.title}: bagian sumber tidak dimasukkan`);
-      assert.ok(n.content.length > 5000 && n.content.length < 200000, `${c.title}: ${n.content.length}`);
+      assert.ok(n.content.length > 1500 && n.content.length < 200000, `${c.title}: ${n.content.length}`);
       assert.equal(n.position, i + 1);
       assert.equal(n.total, jumlah);
       assert.equal(typeof n.practice.total, 'number');

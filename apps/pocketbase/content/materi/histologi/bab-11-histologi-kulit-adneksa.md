@@ -21,11 +21,7 @@ Sistem integumen mencakup kulit dan adneksanya. Kulit tersusun atas epidermis da
 
 Epidermis berasal dari ectoderm dan berupa keratinized stratified squamous epithelium. Dermis terutama berasal dari mesoderm dan berupa connective tissue. Melanocytes berasal dari neural crest.
 
-**Practical orientation**: epidermis = epitel avaskular;
-
-dermis = connective tissue dengan vessels, nerves, glands, follicles;
-
-hypodermis = loose connective tissue + adipose tissue.
+**Practical orientation**: epidermis = epitel avaskular; dermis = connective tissue dengan vessels, nerves, glands, follicles; hypodermis = loose connective tissue + adipose tissue.
 
 ## Fungsi Histologis Kulit
 
@@ -85,9 +81,7 @@ Ciri:
 - mengandung stem/progenitor keratinocytes;
 - melanocytes dan Merkel cells juga berada pada level ini.
 
-**Istilah yang sering digunakan**: stratum germinativum karena aktivitas mitosis;
-
-stratum pigmentosum karena melanin banyak terlihat di bagian basal.
+**Istilah yang sering digunakan**: stratum germinativum karena aktivitas mitosis; stratum pigmentosum karena melanin banyak terlihat di bagian basal.
 
 > [!praktikum] Practical clue
 > Satu baris sel paling basal, paling dekat dermis = stratum basale.
@@ -185,9 +179,7 @@ Jumlah melanocyte antar kelompok warna kulit tidak berbeda secara dramatis; perb
 
 Melanin yang masuk ke dermis dapat difagositosis macrophages, menghasilkan melanophages atau dermal chromatophores.
 
-**Penting**: melanocyte = menghasilkan melanin;
-
-melanophage = memakan/menyimpan melanin.
+**Penting**: melanocyte = menghasilkan melanin; melanophage = memakan/menyimpan melanin.
 
 Dalam materi, dermal chromatophores terutama ditemukan di papillary dermis dan bukan merupakan sel penghasil melanin.
 
@@ -367,11 +359,7 @@ Holocrine berarti seluruh secretory cell menjadi bagian dari produk sekresi.
 
 **Pada sebaceous gland**: basal cells proliferate → cells accumulate lipid → cells membesar → nucleus degenerates → cell ruptures → sebum dilepas.
 
-**Bandingkan**: merocrine = exocytosis tanpa kehilangan cytoplasm;
-
-apocrine = sebagian apical cytoplasm ikut terlepas;
-
-holocrine = seluruh cell menjadi secretion.
+**Bandingkan**: merocrine = exocytosis tanpa kehilangan cytoplasm; apocrine = sebagian apical cytoplasm ikut terlepas; holocrine = seluruh cell menjadi secretion.
 
 ## Hair Shaft
 
@@ -478,9 +466,7 @@ Bagian distal matrix yang terlihat melalui nail plate dapat tampak sebagai lunul
 
 Nail bed adalah epidermis di bawah nail plate yang menopang plate tetapi berkontribusi lebih sedikit terhadap pembentukan plate dibanding matrix.
 
-**Practical concept**: matrix = growth factory;
-
-bed = support surface.
+**Practical concept**: matrix = growth factory; bed = support surface.
 
 ## Eponychium dan Hyponychium
 
@@ -629,16 +615,16 @@ Epidermis dari dalam ke luar: basale → spinosum → granulosum → lucidum →
 
 ## Flashcard {kartu}
 
-- [Peta Besar Sistem Integumen] Practical orientation :: epidermis = epitel avaskular
+- [Peta Besar Sistem Integumen] Practical orientation :: epidermis = epitel avaskular; dermis = connective tissue dengan vessels, nerves, glands, follicles; hypodermis = loose connective tissue + adipose tissue.
 - [Thick Skin versus Thin Skin] Practical clue tercepat :: hair follicle ada → hampir pasti thin skin.
-- [Stratum Basale] Istilah yang sering digunakan :: stratum germinativum karena aktivitas mitosis
+- [Stratum Basale] Istilah yang sering digunakan :: stratum germinativum karena aktivitas mitosis; stratum pigmentosum karena melanin banyak terlihat di bagian basal.
 - [Stratum Lucidum] Secara praktikum :: jika ada band tipis bening antara granulosum dan corneum, pikirkan stratum lucidum dan thick skin.
 - [Keratinisasi] Gambaran sederhananya :: mitosis di basale → diferensiasi di spinosum → keratohyalin granules di granulosum → kehilangan nucleus/organelles → corneocyte di corneum.
-- [Dermal Melanophage / Chromatophore] Penting :: melanocyte = menghasilkan melanin
+- [Dermal Melanophage / Chromatophore] Penting :: melanocyte = menghasilkan melanin; melanophage = memakan/menyimpan melanin.
 - [Eccrine versus Apocrine] Practical shortcut :: giant luminal diameter + near hair follicle = apocrine.
 - [Holocrine Secretion] Pada sebaceous gland :: basal cells proliferate → cells accumulate lipid → cells membesar → nucleus degenerates → cell ruptures → sebum dilepas.
-- [Holocrine Secretion] Bandingkan :: merocrine = exocytosis tanpa kehilangan cytoplasm
-- [Nail Matrix dan Nail Bed] Practical concept :: matrix = growth factory
+- [Holocrine Secretion] Bandingkan :: merocrine = exocytosis tanpa kehilangan cytoplasm; apocrine = sebagian apical cytoplasm ikut terlepas; holocrine = seluruh cell menjadi secretion.
+- [Nail Matrix dan Nail Bed] Practical concept :: matrix = growth factory; bed = support surface.
 - [Practical Traps yang Sering Salah] stratum lucidum dicari pada semua kulit :: terutama jelas pada thick skin.
 - [Practical Traps yang Sering Salah] dermal papilla dianggap epidermal ridge :: dermal papilla naik; epidermal ridge turun.
 - [Practical Traps yang Sering Salah] melanocyte dan melanophage tertukar :: melanocyte di basal epidermis dan menghasilkan melanin; melanophage di dermis dan memfagositosis melanin.

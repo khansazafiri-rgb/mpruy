@@ -13,8 +13,12 @@ Keluaran ditulis ke `apps/pocketbase/content/materi/` (satu `.md` per BAB + `ind
 hasilnya selalu sama untuk dokumen yang sama, jadi perubahan di dokumen terlihat sebagai diff di git.
 
 Selain catatan, konverter menambahkan bagian `## Flashcard {kartu}` yang dibuat `flashcards.py` dari teks catatan itu sendiri.
-Untuk Histologi:
+Untuk Histologi dan Fisiologi:
 
 ```bash
 python3 tools/materi-import/docx_to_materi.py "Histologi - Catatan Belajar.docx" --subject histologi --subject-name Histologi --report
+```
+
+```bash
+python3 tools/materi-import/docx_to_materi.py "Fisiologi - Catatan Belajar.docx" --subject fisiologi --subject-name Fisiologi --report
 ```

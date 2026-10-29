@@ -73,6 +73,8 @@ test('setiap catatan di index.json menunjuk BAB yang ada di katalog', () => {
   assert.deepEqual(index.filter((e) => e.subject === 'anatomi').map((e) => e.chapter).sort(), [...anatomi].sort(), 'ke-20 BAB Anatomi lengkap, tanpa kurang atau lebih');
   const histologi = cat.find((s) => s.slug === 'histologi').chapters;
   assert.deepEqual(index.filter((e) => e.subject === 'histologi').map((e) => e.chapter).sort(), [...histologi].sort(), 'ke-12 BAB Histologi lengkap');
+  const fisiologi = cat.find((s) => s.slug === 'fisiologi').chapters;
+  assert.deepEqual(index.filter((e) => e.subject === 'fisiologi').map((e) => e.chapter).sort(), [...fisiologi].sort(), 'ke-20 BAB Fisiologi lengkap');
 });
 
 function seeded() {

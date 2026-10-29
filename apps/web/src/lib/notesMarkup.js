@@ -222,9 +222,9 @@ export function parseNotes(text) {
   return doc;
 }
 
-/** Daftar isi: bagian dan subjudulnya, plus pembatas bagian besar. */
+/** Daftar isi: bagian dan subjudulnya, plus pembatas bagian besar. Pembuka tanpa judul (mis. gambar di bawah judul BAB) tidak dicantumkan. */
 export function tocOf(doc) {
-  return doc.items.map((it) => (it.type === 'part'
+  return doc.items.filter((it) => !(it.type === 'section' && it.kind === 'intro' && !it.title)).map((it) => (it.type === 'part'
     ? { type: 'part', id: it.id, label: it.label, title: it.title }
     : { type: 'section', id: it.id, kind: it.kind, number: it.number, title: it.title, subs: it.subs }));
 }
