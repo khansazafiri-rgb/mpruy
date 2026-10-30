@@ -1,9 +1,10 @@
 // Pengelolaan Drilling. Admin bebas: menyalakan menu, menyembunyikan per mata kuliah, menambah soal
 // (impor massal atau satu per satu) langsung di sini, mengelola soal yang sudah ada, dan memakai aksi massal
 // per mata kuliah. Semua mata kuliah tampil, juga yang belum punya soal Drilling.
-import { Eye, EyeOff, FilePlus2, ListChecks, Plus, Send, Trash2, Undo2 } from 'lucide-react';
+import { Eye, EyeOff, FilePlus2, ListChecks, Plus, Send, Trash2, Undo2, Users } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import DrillingAudience from '@/components/admin/DrillingAudience';
 import ImportPanel from '@/components/admin/ImportPanel';
 import QuestionEditor from '@/components/admin/QuestionEditor';
 import { useCatalog } from '@/components/admin/useCatalog';
@@ -19,6 +20,7 @@ export default function DrillingAdmin() {
   const [q, setQ] = useState('');
   const [onlyFilled, setOnlyFilled] = useState(false);
   const [adding, setAdding] = useState(null); // { kind: 'import' | 'one', subject }
+  const [audience, setAudience] = useState(''); // id mata kuliah yang panel "siapa yang melihat"-nya terbuka
   const { chaptersOf, reload: reloadCatalog } = useCatalog();
   const load = useCallback(() => api('admin/drilling').then((d) => { setData(d); setError(''); }).catch((e) => setError(e.message)), []);
   useEffect(() => { load(); }, [load]);
@@ -94,17 +96,19 @@ export default function DrillingAdmin() {
           {shown.map((s) => (
             <li key={s.id} className="py-3">
               <div className="flex flex-wrap items-center gap-3">
-                <div className="min-w-0 flex-1">
+                <div className="min-w-[14rem] flex-1">
                   <p className="font-semibold">{s.name}</p>
                   <p className="text-sm text-ink-muted">{s.published} tayang{s.draft ? ` · ${s.draft} draf` : ''}{s.hidden ? ' · disembunyikan' : ''}{s.subjectHidden ? ' · mata kuliah disembunyikan' : ''}{s.campusOnly ? ` · ${s.campusOnly} soal khusus kampus (hanya tampil bagi kampus itu)` : ''}</p>
                 </div>
                 <button type="button" className="btn-secondary btn-sm" onClick={() => setAdding({ kind: 'import', subject: s.id })}><FilePlus2 size={15} /> Impor</button>
                 <button type="button" className="btn-secondary btn-sm" onClick={() => setAdding({ kind: 'one', subject: s.id })}><Plus size={15} /> Satu soal</button>
                 <Link to={`/admin/soal?subject=${s.id}&chapter=${s.chapter}`} className="btn-ghost btn-sm"><ListChecks size={15} /> Kelola soal</Link>
+                <button type="button" className="btn-ghost btn-sm" onClick={() => setAudience(audience === s.id ? '' : s.id)} aria-expanded={audience === s.id}><Users size={15} /> Siapa yang melihat</button>
                 <button type="button" className="btn-ghost btn-sm" onClick={() => hideSubject(s)} disabled={busy}>
                   {s.hidden ? <><Eye size={15} /> Tampilkan</> : <><EyeOff size={15} /> Sembunyikan</>}
                 </button>
               </div>
+              {audience === s.id && <DrillingAudience subject={s} onChanged={(msg) => { load(); setNote(msg); }} />}
               {(s.published + s.draft > 0) && (
                 <div className="mt-2 flex flex-wrap gap-1.5 text-xs">
                   {s.draft > 0 && <button type="button" className="btn-ghost btn-sm" onClick={() => bulk(s, 'publish', 'Ditayangkan', { status: 'draft' })} disabled={busy}><Send size={14} /> Tayangkan {s.draft} draf</button>}
