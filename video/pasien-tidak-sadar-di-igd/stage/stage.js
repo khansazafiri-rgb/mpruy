@@ -207,7 +207,7 @@ stampEl.innerHTML = `<span class="ic">${COND_ICON.centang}</span><span>TINDAKAN 
 whyEl.innerHTML = `<span class="ic">${COND_ICON.perisai}</span><span>Berdasarkan kepentingan terbaik pasien</span>`;
 const popCss = (d, k, dy = 24) => { const kk = backOut(k); d.style.opacity = clamp(k * 4, 0, 1); d.style.transform = `scale(${lerp(0.85, 1, kk).toFixed(3)}) translateY(${lerp(dy, 0, clamp(kk, 0, 1)).toFixed(1)}px)`; };
 function updateCardHtml(a) {
-  const dOn = a >= 43.92 && a < 60.0, rOn = a >= 72.31 && a < 82.4;
+  const dOn = a >= 43.92 && a < 60.2, rOn = a >= 72.31 && a < 82.6;
   card.style.display = dOn || rOn ? 'flex' : 'none';
   if (!(dOn || rOn)) return;
   const compact = dOn && a >= 52.4;
@@ -222,7 +222,7 @@ function updateCardHtml(a) {
   const wOn = dOn && a >= 57.4;
   whyEl.style.display = wOn ? 'flex' : 'none';
   if (wOn) popCss(whyEl, seg(a, 57.4, 57.9), 14);
-  card.style.opacity = dOn ? (1 - ease(seg(a, 59.7, 60.0))).toFixed(3) : (ease(seg(a, 72.31, 72.55)) * (1 - ease(seg(a, 82.1, 82.4)))).toFixed(3);
+  card.style.opacity = dOn ? (1 - ease(seg(a, 59.9, 60.2))).toFixed(3) : (ease(seg(a, 72.31, 72.55)) * (1 - ease(seg(a, 82.3, 82.6)))).toFixed(3);
 }
 
 // ---------------------------------------------------------------- chip teks layar
@@ -267,7 +267,7 @@ function updateEnd(a, t) {
   const endK = ease(seg(a, 82.62, 83.0));
   $('end').style.opacity = endK.toFixed(3);
   if (endK <= 0) return;
-  const lk = backOut(seg(a, 82.9, 83.6)); const lg = $('elogo'); lg.style.transform = `scale(${lerp(0.7, 1, lk).toFixed(3)})`; lg.style.opacity = clamp((a - 82.85) / 0.4, 0, 1);
+  const lk = backOut(seg(a, 82.7, 83.3)); const lg = $('elogo'); lg.style.transform = `scale(${lerp(0.7, 1, lk).toFixed(3)})`; lg.style.opacity = clamp((a - 82.65) / 0.3, 0, 1);
   [[$("er1"), 85.5], [$('er3'), 88.07]].forEach(([d, t0]) => popCss(d, seg(a, t0, t0 + 0.45), 24));
   const rk = clamp((a - 83.2) / 0.5, 0, 1), kr = clamp((a - 83.5) / 0.5, 0, 1);
   const rs = idle(lerpState(raka('lega', 'sapa'), raka('senang', 'sapa'), 0.5 + 0.5 * Math.sin(a * 2)), t);
