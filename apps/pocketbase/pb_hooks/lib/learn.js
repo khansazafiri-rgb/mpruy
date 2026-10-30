@@ -287,7 +287,7 @@ function drillingStatus(app) {
   const rows = arrayOf(new DynamicModel({ n: 0 }));
   app.db().newQuery(
     "SELECT COUNT(*) AS n FROM questions q JOIN chapters c ON c.id = q.chapter JOIN subjects s ON s.id = q.subject " +
-      "WHERE q.status = 'published' AND q.scope = 'all' AND c.drilling = TRUE AND c.hidden = FALSE AND s.hidden = FALSE",
+      "WHERE q.status = 'published' AND c.drilling = TRUE AND c.hidden = FALSE AND s.hidden = FALSE",
   ).all(rows);
   const total = rows.length ? rows[0].n : 0;
   return { enabled: enabled, total: total, available: enabled && total > 0 };

@@ -219,12 +219,10 @@ routerAdd("POST", "/api/medcoel/admin/questions/bulk", (e) => {
       if (b.action === "move") {
         r.set("chapter", target.id);
         r.set("subject", target.getString("subject"));
-        // Soal di Drilling selalu General.
-        if (target.getBool("drilling")) { r.set("scope", "all"); r.set("campuses", []); }
+        // Soal Drilling boleh General maupun khusus kampus.
       }
       else if (b.action === "difficulty") r.set("difficulty", b.difficulty);
       else if (b.action === "scope") {
-        if (b.scope === "campus" && isDrilling[r.getString("chapter")]) throw new BadRequestError("Soal Drilling harus General. Pindahkan dulu ke BAB biasa.");
         r.set("scope", b.scope === "campus" ? "campus" : "all"); r.set("campuses", b.scope === "campus" ? campuses : []); }
       else if (b.action === "publish") r.set("status", "published");
       else if (b.action === "draft") r.set("status", "draft");
