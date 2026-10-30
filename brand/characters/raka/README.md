@@ -66,7 +66,7 @@ rakaSvg(raka('senang'));      // mata "^ ^", mulut terbuka, dua tangan terkepal
 rakaSvg(raka('sedih'));       // alis turun, mulut cemberut
 ```
 
-`raka(ekspresi, pose, perubahan)` menggabungkan **ekspresi wajah** (`netral kaget berpikir senang menunjuk sedih perih batuk khawatir lega`) dan **pose** (`netral kaget berpikir menunjuk senang sapa batuk usap_mata jalan berhenti jongkok`). Keduanya bisa dicampur dan setiap nilai bisa diganti:
+`raka(ekspresi, pose, perubahan)` menggabungkan **ekspresi wajah** (`netral kaget berpikir senang menunjuk sedih perih batuk khawatir lega pingsan bingung`) dan **pose** (`netral kaget berpikir menunjuk senang sapa batuk usap_mata jalan berhenti jongkok`). Keduanya bisa dicampur dan setiap nilai bisa diganti:
 
 ```js
 raka('senang', 'sapa');                              // senang sambil melambai
@@ -74,7 +74,7 @@ raka('netral', null, { yaw: -0.8, gazeX: -0.9 });    // menoleh ke kiri layar
 raka('menunjuk', null, { flip: 1 });                 // dicerminkan, menunjuk ke kiri
 ```
 
-Kontrol yang tersedia (semua angka): `yaw` (-1..1, menoleh), `tilt` (derajat), `gazeX`/`gazeY` (-1..1, arah pandang), `blink` (0..1), `happyEyes`, `wide`, `browL`/`browR` (`y`, `rot`), `mouth` (`w`, `up`, `lo`), `lean`, `bob`, `armL`/`armR` (`wx wy` pergelangan, `ex ey` siku, `finger`, `fa`, `front`), `fxBurst`, `fxSpark`, `flip`, serta efek dan aksesori (semua 0 = tidak tampak): `tears` (air mata, `tearsT` = fase tetesan), `fxCough`, `sweat`, `sparkle`, `shades`, `bags` (kantung mata), `dizzy` (mata berputar, `dizzyT`), `slump` (bahu turun), dan `legs` (kaki berengsel, lihat di bawah). Opsi gambar: `rakaSvg(state, { uid, shadow: false, background, palette, width, bare, logo, outfit, dark })`; beri `uid` berbeda bila ada beberapa Raka dalam satu halaman.
+Kontrol yang tersedia (semua angka): `yaw` (-1..1, menoleh), `tilt` (derajat), `gazeX`/`gazeY` (-1..1, arah pandang), `blink` (0..1), `happyEyes`, `wide`, `browL`/`browR` (`y`, `rot`), `mouth` (`w`, `up`, `lo`), `lean`, `bob`, `armL`/`armR` (`wx wy` pergelangan, `ex ey` siku, `finger`, `fa`, `front`), `fxBurst`, `fxSpark`, `flip`, serta efek dan aksesori (semua 0 = tidak tampak): `blood` (bercak darah), `tears` (air mata, `tearsT` = fase tetesan), `fxCough`, `sweat`, `sparkle`, `shades`, `bags` (kantung mata), `dizzy` (mata berputar, `dizzyT`), `slump` (bahu turun), dan `legs` (kaki berengsel, lihat di bawah). Opsi gambar: `rakaSvg(state, { uid, shadow: false, background, palette, width, bare, logo, outfit, dark })`; beri `uid` berbeda bila ada beberapa Raka dalam satu halaman.
 
 ## Pakaian (varian yang bisa dipakai ulang)
 
@@ -122,6 +122,34 @@ rakaSvg(idle(raka('batuk', null, { tearsT: t }), t), { outfit: 'demo' });       
 ```
 
 Ekspresi tambahan: `perih` (mata nyaris terpejam, air mata), `batuk` (mulut terbuka, efek batuk), `khawatir`, `lega`. Pratinjau semuanya ada di `preview/raka-demo-pose.png` (pose) dan `preview/raka-jalan.png` (siklus jalan).
+
+## Berbaring, pingsan, dan keadaan darurat
+
+Dibuat untuk video "Pasien tidak sadar di IGD". Semuanya varian dari gambar kanonik yang sama (wajah, rambut, proporsi, sweater, patch logo, celana, dan sepatu tidak berubah) dan bisa dipakai ulang.
+
+```js
+import { raka, rakaSvg, LYING } from './raka.js';
+
+// 1. Berbaring: opsi gambar { rebah: true }. Badan, lengan, kaki, dan patch diputar -90 derajat (kepala di kiri, kaki ke kanan);
+//    KEPALA tetap tegak menghadap kamera dan sedikit miring di bantal (rebahTilt, derajat). Kanvas LYING = 800 x 440.
+rakaSvg(raka('pingsan', 'berbaring', { blood: 1 }), { rebah: true });          // tidak sadar, bercak darah secukupnya
+rakaSvg(raka('bingung', 'berbaring', { blood: 1 }), { rebah: true });          // setengah sadar sebentar
+rakaSvg(raka('lega', 'berbaring'), { rebah: true, rebahTilt: -5 });            // sudah sadar dan tenang
+rakaSvg(raka('pingsan', 'berbaring', { flip: 1 }), { rebah: true });           // kepala di kanan, kaki ke kiri
+
+// 2. Pandangan dari mata sendiri saat berbaring: pose pov_perut (dua tangan di perut), lalu potong tampilan ke badan (tanpa kepala)
+rakaSvg(raka('netral', 'pov_perut', { blood: 1 }), { shadow: false }).replace('viewBox="0 0 400 800"', 'viewBox="30 366 340 250"');
+```
+
+| Nama | Arti |
+|---|---|
+| ekspresi `pingsan` | Mata terpejam penuh, alis santai, mulut longgar sedikit terbuka (tidak sadar, bukan kesakitan). |
+| ekspresi `bingung` | Kelopak setengah terbuka, alis naik tidak sama (baru setengah sadar). |
+| pose `berbaring` | Lengan lurus di samping badan; dipakai dengan opsi `rebah`. |
+| pose `pov_perut` | Dua tangan di atas perut, untuk potongan badan dari sudut pandang pasien. |
+| `blood` (0..1) | Bercak darah secukupnya di baju (sisi kiri layar, jadi patch logo tidak tertutup), lengan dan tangan, dan satu goresan kecil di pelipis. Hanya penanda keadaan darurat, tanpa luka detail. Nilai 0 menghasilkan gambar yang sama persis dengan sebelumnya. |
+
+Tes `berbaring (rebah)` menjaga bahwa kepala menumpuk pada pangkal leher, sepatu dan lengan berada di dalam kanvas, dan semua grup SVG seimbang. SVG statisnya: `svg/raka-berbaring-pingsan.svg`, `raka-berbaring-bingung.svg`, `raka-berbaring-sadar.svg`, `raka-darurat.svg` (berdiri, bingung, berdarah), dan `raka-pov-perut.svg`.
 
 ## Animasi
 

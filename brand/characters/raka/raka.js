@@ -13,6 +13,8 @@
 // lantai di y = 778. Lihat README.md untuk proporsi kanoniknya.
 
 export const VIEWBOX = { w: 400, h: 800 };
+/** Kanvas varian berbaring (opsi rebah): bx/by = titik leher badan setelah diputar, hx/hy = pusat kepala. Garis sumbu badan di y = by. */
+export const LYING = { w: 800, h: 440, bx: 290, by: 250, hx: 170, hy: 255 };
 
 export const PALETTE = {
   skin: '#F7BC8E',
@@ -84,6 +86,7 @@ export const NEUTRAL = {
   fxBurst: 0, fxSpark: 0,          // tanda seru kecil di sekitar kepala / ujung jari
   flip: 0,                         // 1 = cermin (Raka menghadap sisi lain)
   // ---- efek dan aksesori tambahan (semua 0 = tidak tampak, jadi tampilan lama tidak berubah)
+  blood: 0,                        // bercak darah secukupnya di baju, tangan, dan pelipis (0..1; hanya penanda keadaan darurat, tanpa luka detail)
   tears: 0, tearsT: 0, fxCough: 0, // air mata di pipi (0..1, tearsT = fase tetesan), efek batuk di dekat mulut
   bags: 0, sparkle: 0, shades: 0, shadesY: 0, sweat: 0, slump: 0, dizzy: 0, dizzyT: 0, // kantung mata, kilau mata, kacamata, keringat, bahu turun, mata berputar
   // ---- kaki: on 0 = kaki kanonik (lurus, sepatu di samping). on 1 = kaki berengsel halus untuk jalan, lari, dan jongkok
@@ -104,6 +107,10 @@ export const EXPRESSIONS = {
   batuk:    { happyEyes: 0, wide: 0, blink: 0.85, browL: { y: 4, rot: 10 }, browR: { y: 4, rot: -10 }, mouth: { w: 13, up: -6, lo: 30 }, tears: 0.55, fxCough: 1 },
   // khawatir: alis naik di tengah, mulut bergelombang kecil
   khawatir: { happyEyes: 0, wide: 0.3, browL: { y: -6, rot: 15 }, browR: { y: -6, rot: -15 }, mouth: { w: 12, up: -4, lo: -1 } },
+  // pingsan: mata terpejam, alis santai agak naik, mulut longgar sedikit terbuka (tidak sadar, bukan kesakitan)
+  pingsan:  { happyEyes: 0, wide: 0, blink: 1, browL: { y: -2, rot: 6 }, browR: { y: -2, rot: -6 }, mouth: { w: 11, up: 5, lo: 11 } },
+  // bingung: kelopak setengah terbuka, alis naik tidak sama, pandangan melayang (baru setengah sadar)
+  bingung:  { happyEyes: 0, wide: 0, blink: 0.45, browL: { y: -9, rot: 14 }, browR: { y: -3, rot: -6 }, mouth: { w: 10, up: 3, lo: 8 } },
   // lega: mata melengkung lembut, senyum kecil, alis santai
   lega:     { happyEyes: 0.75, wide: 0, browL: { y: -4, rot: 2 }, browR: { y: -4, rot: -2 }, mouth: { w: 17, up: 6, lo: 8 } },
 };
@@ -144,6 +151,16 @@ export const POSES = {
   usap_mata: {
     lean: 2,
     armR: { wx: 258, wy: 272, ex: 332, ey: 360, finger: 0, front: 1 },
+  },
+  // berbaring: lengan lurus di samping badan. Dipakai bersama opsi gambar { rebah: true } (lihat README, "Berbaring").
+  berbaring: {
+    armL: { wx: 76, wy: 560, ex: 82, ey: 490, finger: 0, front: 0 },
+    armR: { wx: 324, wy: 560, ex: 318, ey: 490, finger: 0, front: 0 },
+  },
+  // dilihat dari mata sendiri saat berbaring: dua tangan di atas perut (dipakai dengan potongan badan, tanpa kepala)
+  pov_perut: {
+    armL: { wx: 168, wy: 536, ex: 86, ey: 560, finger: 0, front: 1 },
+    armR: { wx: 236, wy: 528, ex: 316, ey: 556, finger: 0, front: 1 },
   },
   // jalan: kaki berengsel menyala; gerakannya dari walkCycle(fase) di bawah (berdiri tegak bila tanpa fase)
   jalan: { legs: { on: 1, dir: 1, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } } },
@@ -266,7 +283,7 @@ export function armShape(side, a) {
   return { dots, dx, dy, hand: [a.wx + dx * 17, a.wy + dy * 17], handR: 22 };
 }
 
-function armSvg(side, a, P) {
+function armSvg(side, a, P, blood = 0) {
   const [sx, sy] = SHOULDER[side];
   const { dots, dx, dy, hand: [hx, hy] } = armShape(side, a);
   const finger = a.finger > 0.02
@@ -275,7 +292,14 @@ function armSvg(side, a, P) {
   const c = mix(P.sweater, P.sleeveFront, a.front);
   return `<g class="raka-arm-${side}" fill="${c}">`
     + dots.map((p) => `<circle cx="${r1(p[0])}" cy="${r1(p[1])}" r="${r1(p[2])}"/>`).join('')
-    + `<circle cx="${r1(hx)}" cy="${r1(hy)}" r="22" fill="${P.skin}"/>${finger}</g>`;
+    + `<circle cx="${r1(hx)}" cy="${r1(hy)}" r="22" fill="${P.skin}"/>${finger}${bloodArm(blood, hx, hy, dx, dy, side)}</g>`;
+}
+// bercak darah di lengan baju dan punggung tangan: gumpalan kecil tak beraturan, dipasang relatif terhadap arah lengan bawah
+function bloodArm(k, hx, hy, dx, dy, side) {
+  k = clamp(k, 0, 1); if (k < 0.02) return '';
+  const sx = side === 'L' ? -1 : 1, px = hx - dx * 40, py = hy - dy * 40;
+  const blob = (cx, cy, r, rot) => `<path d="M${r1(cx - r)} ${r1(cy)}C${r1(cx - r)} ${r1(cy - r * 1.1)} ${r1(cx + r * 0.4)} ${r1(cy - r * 1.3)} ${r1(cx + r)} ${r1(cy - r * 0.2)}C${r1(cx + r * 1.2)} ${r1(cy + r * 0.9)} ${r1(cx - r * 0.2)} ${r1(cy + r * 1.2)} ${r1(cx - r)} ${r1(cy)}Z" fill="#A8322B" opacity="${r1(0.55 + 0.4 * k)}" transform="rotate(${rot} ${r1(cx)} ${r1(cy)})"/>`;
+  return blob(px + sx * 3, py, 12 * (0.6 + 0.4 * k), 20) + blob(hx - dx * 14 - sx * 4, hy - dy * 14, 8 * (0.6 + 0.4 * k), -35);
 }
 
 // Patch logo MEDCOEL di dada kiri pemakai (kanan layar). Simbolnya digambar ulang dari
@@ -340,6 +364,17 @@ function tearsSvg(s, lx, rx, ey) {
   return one(lx, -1) + one(rx, 1);
 }
 // efek batuk: garis kecil dan awan mungil di depan mulut (koordinat kepala)
+function bloodTorso(s) {
+  const k = clamp(s.blood, 0, 1); if (k < 0.02) return '';
+  const o = r1(0.5 + 0.42 * k);
+  return `<g fill="#A8322B" opacity="${o}"><path d="M132 498C124 482 146 468 164 474C182 480 178 504 160 512C146 518 134 512 132 498Z"/>`
+    + `<path d="M170 540C166 530 178 524 190 528C198 532 194 546 184 548C176 550 172 546 170 540Z"/>`
+    + `<path d="M144 524C148 538 144 556 150 568" stroke="#A8322B" stroke-width="7" stroke-linecap="round" fill="none"/></g>`;
+}
+function bloodHead(s) {
+  const k = clamp(s.blood, 0, 1); if (k < 0.02) return '';
+  return `<g fill="#A8322B" opacity="${r1(0.5 + 0.42 * k)}"><path d="M112 170C108 160 120 152 130 156C140 160 138 174 128 178C120 180 114 178 112 170Z"/><path d="M122 180C124 192 120 200 124 210" stroke="#A8322B" stroke-width="5" stroke-linecap="round" fill="none"/></g>`;
+}
 function coughSvg(s) {
   const k = clamp(s.fxCough, 0, 1); if (k < 0.02) return '';
   return `<g opacity="${r1(k)}" stroke="#8FA6A0" stroke-width="6" stroke-linecap="round" fill="none"><path d="M262 244l22 -12M266 268l28 0M262 292l22 12"/><circle cx="300" cy="268" r="6" fill="#B7C6CC" stroke="none"/><circle cx="318" cy="252" r="4.5" fill="#B7C6CC" stroke="none"/></g>`;
@@ -475,20 +510,21 @@ export function rakaSvg(state, opts = {}) {
     ? `<g opacity="${r1(s.fxBurst)}" stroke="${P.fxWarm}" stroke-width="6" stroke-linecap="round"><path d="M40 150L64 170M32 206H62M52 104L70 128"/><path d="M360 150L336 170M368 206H338M348 104L330 128"/></g>`
     : '';
   const headG = `<g class="raka-head" transform="translate(200 ${NECK_Y}) rotate(${r1(s.tilt)}) scale(${HEAD_SCALE}) translate(-200 -${HEAD_PIVOT_Y})">`
-    + earL + earR + `<path d="${headSkin}" fill="${P.skin}"/>` + face + hair + burst + sweatSvg(s) + coughSvg(s) + `</g>`;
+    + earL + earR + `<path d="${headSkin}" fill="${P.skin}"/>` + face + hair + bloodHead(s) + burst + sweatSvg(s) + coughSvg(s) + `</g>`;
 
   // ---- badan
   const breath = 1 + s.breath * 0.012;
   const torso = `<g transform="translate(200 580) scale(1 ${r1(breath)}) translate(-200 -580)">`
-    + `<path d="M114 452C112 396 150 374 172 372C182 388 218 388 228 372C250 374 288 396 286 452L296 566C250 588 150 588 104 566Z" fill="${P.sweater}"/>${coat ? coatSvg(P, { coatLong: coatLong && opts.coatLong !== false }) : ''}</g>`;
+    + `<path d="M114 452C112 396 150 374 172 372C182 388 218 388 228 372C250 374 288 396 286 452L296 566C250 588 150 588 104 566Z" fill="${P.sweater}"/>${coat ? coatSvg(P, { coatLong: coatLong && opts.coatLong !== false }) : ''}${bloodTorso(s)}</g>`;
   const slump = clamp(s.slump, 0, 40);
   const neck = `<rect x="170" y="336" width="60" height="${r1(62 + slump)}" rx="16" fill="${P.skinShade}"/>`;
   const sl = (x) => (slump ? `<g transform="translate(0 ${r1(slump)})">${x}</g>` : x);
   const patch = opts.logo === false ? '' : patchSvg(P, s.breath, flip, opts.logo);
   const arms = (front) => ['L', 'R'].map((sd) => {
     const a = sd === 'L' ? s.armL : s.armR;
-    return (a.front > 0.5) === front ? armSvg(sd, a, P) : '';
+    return (a.front > 0.5) === front ? armSvg(sd, a, P, s.blood) : '';
   }).join('');
+  const bodyParts = sl(arms(false)) + neck + sl(torso + patch) + sl(arms(true));
   const body = `<g class="raka-body" transform="translate(0 ${r1(s.bob)}) rotate(${r1(s.lean)} 200 580)">`
     + sl(arms(false)) + neck + sl(torso + patch) + headG + sl(arms(true)) + `</g>`;
 
@@ -504,6 +540,22 @@ export function rakaSvg(state, opts = {}) {
   const spark = s.fxSpark > 0.02
     ? `<g opacity="${r1(s.fxSpark)}" stroke="${P.fxCool}" stroke-width="6" stroke-linecap="round" transform="translate(0 ${r1(s.bob)})"><path d="M${r1(s.armR.wx - 38)} ${r1(s.armR.wy - 66)}l-6 -16M${r1(s.armR.wx + 2)} ${r1(s.armR.wy - 68)}l10 -14M${r1(s.armR.wx + 26)} ${r1(s.armR.wy - 44)}l14 -9"/></g>`
     : '';
+
+  // ---- berbaring (opsi { rebah: true }): badan, lengan, dan kaki diputar -90 derajat (kepala di kiri, kaki ke kanan), sedangkan KEPALA
+  // tetap tegak menghadap kamera dan sedikit miring di bantal. Semua bagian tetap SATU kesatuan yang sama dengan gambar berdiri.
+  if (opts.rebah) {
+    const LY = LYING;
+    const tilt = opts.rebahTilt ?? -9;
+    const lyBody = `<g class="raka-rebah" transform="translate(${LY.bx} ${r1(LY.by + s.bob)}) rotate(-90) translate(-200 -380)">${legs}${bodyParts}</g>`;
+    const lyHead = `<g class="raka-head-rebah" transform="translate(${LY.hx - 200} ${LY.hy - 232}) rotate(${tilt} 200 232)">${headG}</g>`;
+    const lyShadow = opts.shadow === false ? '' : `<ellipse cx="${LY.bx + 150}" cy="${LY.h - 22}" rx="${LY.w * 0.42}" ry="9" fill="#10212B" opacity=".13"/>`;
+    const lyBg = opts.background ? `<rect width="${LY.w}" height="${LY.h}" fill="${opts.background}"/>` : '';
+    const lyInner = `${lyShadow}${lyBody}${lyHead}`;
+    const lyWrapped = flip ? `<g transform="translate(${LY.w} 0) scale(-1 1)">${lyInner}</g>` : lyInner;
+    if (opts.bare) return lyWrapped;
+    const lySize = opts.width ? ` width="${opts.width}"` : '';
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${LY.w} ${LY.h}"${lySize} role="img" aria-label="Raka berbaring">${lyBg}${lyWrapped}</svg>`;
+  }
 
   const bg = opts.background ? `<rect width="${VIEWBOX.w}" height="${VIEWBOX.h}" fill="${opts.background}"/>` : '';
   const inner = `${shadow}${legs}${body}${spark}`;
