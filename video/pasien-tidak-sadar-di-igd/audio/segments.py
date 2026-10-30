@@ -1,0 +1,26 @@
+# Teks narasi final (naskah dari pemesan, dicocokkan dengan hasil pengenalan suara Whisper pada audio asli).
+# Tiap entri: (awal, akhir) ucapan menurut jeda audio, daftar frasa takarir. Titik potong antar-frasa dicari oleh align_breaks.py.
+CAPS = [
+ (0.07, 2.64, ["Kamu dibawa ke IGD dalam keadaan tidak sadar."]),
+ (3.18, 5.20, ["Dokter harus menunggu keluargamu datang dulu?"]),
+ (5.59, 6.21, ["Bayangkan,"]),
+ (6.63, 8.59, ["kamu baru saja mengalami kecelakaan."]),
+ (9.11, 10.31, ["Kamu dibawa ke rumah sakit,"]),
+ (10.82, 13.20, ["tapi kamu tidak bisa menjawab pertanyaan dokter."]),
+ (13.75, 14.71, ["Kondisimu gawat."]),
+ (15.27, 17.11, ["Dokter harus segera melakukan tindakan."]),
+ (17.59, 18.31, ["Masalahnya,"]),
+ (18.67, 21.78, ["kamu tidak sadar,", "dan keluargamu belum bisa dihubungi."]),
+ (22.10, 26.39, ["Padahal, bukannya tindakan medis harus mendapat persetujuan pasien?", "Benar!"]),
+ (26.94, 33.42, ["Secara umum, sebelum melakukan tindakan,", "tenaga medis perlu memberikan penjelasan", "dan mendapatkan persetujuan."]),
+ (33.72, 39.27, ["Tapi bagaimana kalau pasiennya tidak mampu memberikan persetujuan,", "sementara waktu terus berjalan?"]),
+ (39.57, 43.44, ["Dalam keadaan tertentu,", "hukum di Indonesia memberikan pengecualian."]),
+ (43.92, 47.06, ["Menurut Undang-Undang Kesehatan,", "jika pasien tidak cakap,"]),
+ (47.41, 49.05, ["membutuhkan tindakan gawat darurat"]),
+ (49.36, 52.02, ["dan tidak ada orang yang bisa dimintai persetujuan,"]),
+ (52.40, 59.93, ["tindakan dapat dilakukan tanpa menunggu persetujuan.", "Keputusan itu tetap harus diambil", "berdasarkan kepentingan terbaik pasien."]),
+ (60.41, 65.83, ["Setelahnya, tindakan yang dilakukan", "harus diinformasikan kepada pasien", "saat ia sudah cakap,"]),
+ (66.16, 82.43, ["atau kepada pihak yang mewakilinya ketika mereka hadir.", "Jadi, persetujuan pasien tetap penting.", "Namun, dalam situasi gawat darurat dengan kondisi tadi,", "dokter dapat bertindak ketika pasien tidak mampu memutuskan", "dan tidak ada wakil yang bisa dimintai persetujuan."]),
+ (82.77, 87.77, ["Penasaran dengan fakta lain", "tentang dunia kedokteran?", "Belajar kedokteran gratis di MEDCOEL,"]),
+ (88.07, 89.69, ["lewat medcoel.com."]),
+]

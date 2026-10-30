@@ -13,14 +13,14 @@ Bila prompt, naskah, atau adegan video menyebut **"Raka"**, ambil karakternya da
 | Berkas | Fungsi |
 |---|---|
 | `raka.js` | **Sumber utama.** Satu fungsi `rakaSvg(state)` menggambar Raka dari angka. Tanpa dependensi, jalan di Node dan di Chromium. |
-| `svg/raka-*.svg` | SVG statis hasil `build.mjs` (netral, kaget, berpikir, menunjuk, senang, sedih, sapa, dan versi wajah saja). Untuk slide, thumbnail, atau alat tanpa JavaScript. |
+| `svg/raka-*.svg` | SVG statis hasil `build.mjs` (semua ekspresi, sapa, versi wajah saja, dan varian pakaian `raka-demo-*.svg`, `raka-jas-*.svg`). Untuk slide, thumbnail, atau alat tanpa JavaScript. |
 | `build.mjs` | Membuat ulang `svg/` dari `raka.js`. |
 | `preview.html` | Halaman pratinjau: semua ekspresi, menoleh, gerak langsung, filmstrip, ukuran kecil, bingkai 1080 x 1920. |
 | `render-preview.mjs` | Merender `preview.html` ke `preview/*.png`. `--serve` menyalakan server lokal untuk dilihat di peramban. |
 | `render-frames.mjs` | Contoh memakai Raka di render video: frame PNG 1080 x 1920 dari urutan contoh, lalu MP4. |
-| `preview/` | Hasil render (PNG dan `raka-demo.mp4`, 11 detik). Untuk logo: `raka-logo-pose.png`, `raka-logo-closeup.png`, `raka-logo-kecil.png`. |
+| `preview/` | Hasil render (PNG dan `raka-demo.mp4`, 11 detik). Untuk logo: `raka-logo-pose.png`, `raka-logo-closeup.png`, `raka-logo-kecil.png`. Untuk pakaian dan kaki: `raka-pakaian.png`, `raka-jalan.png`, `raka-demo-pose.png`. |
 | `reference/raka-referensi.jpg` | Gambar acuan desain dari pemesan. Hanya referensi. |
-| `raka.test.mjs` | Tes: `node --test brand/characters/raka`. |
+| `raka.test.mjs` | Tes: `node --test brand/characters/raka/raka.test.mjs` (di Node 22 argumen folder saja tidak ditemukan; pakai berkas atau `node --test "brand/characters/raka/*.test.mjs"`). |
 
 ## Desain kanonik
 
@@ -66,7 +66,7 @@ rakaSvg(raka('senang'));      // mata "^ ^", mulut terbuka, dua tangan terkepal
 rakaSvg(raka('sedih'));       // alis turun, mulut cemberut
 ```
 
-`raka(ekspresi, pose, perubahan)` menggabungkan **ekspresi wajah** (`netral kaget berpikir senang menunjuk sedih`) dan **pose** (`netral kaget berpikir menunjuk senang sapa`). Keduanya bisa dicampur dan setiap nilai bisa diganti:
+`raka(ekspresi, pose, perubahan)` menggabungkan **ekspresi wajah** (`netral kaget berpikir senang menunjuk sedih perih batuk khawatir lega pingsan bingung`) dan **pose** (`netral kaget berpikir menunjuk senang sapa batuk usap_mata jalan berhenti jongkok`). Keduanya bisa dicampur dan setiap nilai bisa diganti:
 
 ```js
 raka('senang', 'sapa');                              // senang sambil melambai
@@ -74,7 +74,82 @@ raka('netral', null, { yaw: -0.8, gazeX: -0.9 });    // menoleh ke kiri layar
 raka('menunjuk', null, { flip: 1 });                 // dicerminkan, menunjuk ke kiri
 ```
 
-Kontrol yang tersedia (semua angka): `yaw` (-1..1, menoleh), `tilt` (derajat), `gazeX`/`gazeY` (-1..1, arah pandang), `blink` (0..1), `happyEyes`, `wide`, `browL`/`browR` (`y`, `rot`), `mouth` (`w`, `up`, `lo`), `lean`, `bob`, `armL`/`armR` (`wx wy` pergelangan, `ex ey` siku, `finger`, `fa`, `front`), `fxBurst`, `fxSpark`, `flip`. Opsi gambar: `rakaSvg(state, { uid, shadow: false, background, palette, width, bare, logo })`; beri `uid` berbeda bila ada beberapa Raka dalam satu halaman.
+Kontrol yang tersedia (semua angka): `yaw` (-1..1, menoleh), `tilt` (derajat), `gazeX`/`gazeY` (-1..1, arah pandang), `blink` (0..1), `happyEyes`, `wide`, `browL`/`browR` (`y`, `rot`), `mouth` (`w`, `up`, `lo`), `lean`, `bob`, `armL`/`armR` (`wx wy` pergelangan, `ex ey` siku, `finger`, `fa`, `front`), `fxBurst`, `fxSpark`, `flip`, serta efek dan aksesori (semua 0 = tidak tampak): `blood` (bercak darah), `tears` (air mata, `tearsT` = fase tetesan), `fxCough`, `sweat`, `sparkle`, `shades`, `bags` (kantung mata), `dizzy` (mata berputar, `dizzyT`), `slump` (bahu turun), dan `legs` (kaki berengsel, lihat di bawah). Opsi gambar: `rakaSvg(state, { uid, shadow: false, background, palette, width, bare, logo, outfit, dark })`; beri `uid` berbeda bila ada beberapa Raka dalam satu halaman.
+
+## Pakaian (varian yang bisa dipakai ulang)
+
+Pakaian dipilih lewat opsi gambar `outfit`; bawaannya `harian` (tampilan kanonik, tidak berubah). Definisinya ada di `OUTFITS` di `raka.js`.
+
+| `outfit` | Tampilan |
+|---|---|
+| `harian` | Sweater teal, celana navy, sepatu krem (kanonik). |
+| `demo` | Kaus lengan panjang **hitam**, celana abu tua, sepatu krem. Patch logo MEDCOEL kecil tetap di dada. Dibuat untuk video "gas air mata saat demo". |
+| `jas` | **Jas dokter putih** (kerah, V-leher dengan sweater teal, lapel, kancing, saku, stetoskop) di atas badan. Panjang sampai lutut; pada duduk di balik meja, bagian bawahnya tersembunyi meja. |
+
+```js
+import { raka, rakaSvg } from './raka.js';
+rakaSvg(raka('kaget'), { outfit: 'demo' });              // baju demo hitam
+rakaSvg(raka('netral'), { outfit: 'jas' });              // jas dokter
+rakaSvg(raka('netral'), { outfit: 'demo', dark: true });  // warna diangkat sedikit untuk latar gelap
+```
+
+Menambah pakaian baru: tambahkan satu entri di `OUTFITS` (`palette` untuk warna yang diganti, `onDark` untuk latar gelap, `coat: true` bila memakai gambar jas). Wajah, rambut, proporsi, dan patch logo tidak ikut berubah. Jangan memilih warna badan yang sama dengan latar (README ini sudah mencatat teal pekat; baju demo hitam butuh latar yang lebih terang atau `dark: true` di latar gelap).
+
+## Kaki, jalan, berhenti, jongkok
+
+Kaki kanonik (dua celana lurus dan sepatu di sampingnya) tetap bawaan untuk berdiri. Untuk bergerak, nyalakan **kaki berengsel halus**: `state.legs.on = 1`. Setiap kaki digambar sebagai SATU bentuk celana meruncing dari pinggul ke pergelangan (lingkaran berwarna sama sepanjang kurva, seperti lengan), sepatu menumpang di pergelangan, pinggul ikut naik-turun badan (`bob`), dan pergelangan menapak di lantai. Jadi tidak ada bagian lepas atau sendi yang terlihat di frame mana pun. Tes `kaki berengsel: pinggul menempel di badan...` menjaganya.
+
+```js
+import { raka, rakaSvg, walkCycle } from './raka.js';
+// satu langkah penuh = fase 0..1; di render video: fase = (waktu * langkahPerDetik) % 1
+const state = raka('netral', 'jalan', walkCycle(fase, { dir: 1 }));   // jalan ke kanan layar
+raka('khawatir', 'jalan', walkCycle(fase, { run: true }));            // lari kecil
+raka('netral', 'jalan', walkCycle(fase, { mode: 'depan' }));          // melangkah menghadap kamera
+raka('netral', 'berhenti');                                           // berhenti mendadak, condong ke belakang
+raka('khawatir', 'jongkok');                                          // jongkok (bob 142, lutut keluar)
+```
+
+Peralihan berdiri -> jalan -> berhenti memakai `lerpState` seperti biasa (semua angka kaki ikut diinterpolasi). Untuk menoleh ke arah jalan, tambahkan `yaw` dan `gazeX` (mis. `{ yaw: 0.5, gazeX: 0.8 }`). `legShape('L' | 'R', state)` mengembalikan bentuk kaki (dipakai tes).
+
+## Contoh: Raka di tengah demo (baju demo)
+
+```js
+const t = detik;                                    // waktu video
+const jalan = raka('lega', 'jalan', { ...walkCycle(t * 1.7, { dir: 1 }), yaw: 0.45, gazeX: 0.7 });
+rakaSvg(idle(jalan, t), { outfit: 'demo', uid: 'a' });       // berjalan menjauh
+rakaSvg(idle(raka('perih', 'usap_mata', { tearsT: t * 1.4 }), t), { outfit: 'demo' });  // mata perih
+rakaSvg(idle(raka('batuk', null, { tearsT: t }), t), { outfit: 'demo' });               // batuk
+```
+
+Ekspresi tambahan: `perih` (mata nyaris terpejam, air mata), `batuk` (mulut terbuka, efek batuk), `khawatir`, `lega`. Pratinjau semuanya ada di `preview/raka-demo-pose.png` (pose) dan `preview/raka-jalan.png` (siklus jalan).
+
+## Berbaring, pingsan, dan keadaan darurat
+
+Dibuat untuk video "Pasien tidak sadar di IGD". Semuanya varian dari gambar kanonik yang sama (wajah, rambut, proporsi, sweater, patch logo, celana, dan sepatu tidak berubah) dan bisa dipakai ulang.
+
+```js
+import { raka, rakaSvg, LYING } from './raka.js';
+
+// 1. Berbaring: opsi gambar { rebah: true }. Badan, lengan, kaki, dan patch diputar -90 derajat (kepala di kiri, kaki ke kanan);
+//    KEPALA tetap tegak menghadap kamera dan sedikit miring di bantal (rebahTilt, derajat). Kanvas LYING = 800 x 440.
+rakaSvg(raka('pingsan', 'berbaring', { blood: 1 }), { rebah: true });          // tidak sadar, bercak darah secukupnya
+rakaSvg(raka('bingung', 'berbaring', { blood: 1 }), { rebah: true });          // setengah sadar sebentar
+rakaSvg(raka('lega', 'berbaring'), { rebah: true, rebahTilt: -5 });            // sudah sadar dan tenang
+rakaSvg(raka('pingsan', 'berbaring', { flip: 1 }), { rebah: true });           // kepala di kanan, kaki ke kiri
+
+// 2. Pandangan dari mata sendiri saat berbaring: pose pov_perut (dua tangan di perut), lalu potong tampilan ke badan (tanpa kepala)
+rakaSvg(raka('netral', 'pov_perut', { blood: 1 }), { shadow: false }).replace('viewBox="0 0 400 800"', 'viewBox="30 366 340 250"');
+```
+
+| Nama | Arti |
+|---|---|
+| ekspresi `pingsan` | Mata terpejam penuh, alis santai, mulut longgar sedikit terbuka (tidak sadar, bukan kesakitan). |
+| ekspresi `bingung` | Kelopak setengah terbuka, alis naik tidak sama (baru setengah sadar). |
+| pose `berbaring` | Lengan lurus di samping badan; dipakai dengan opsi `rebah`. |
+| pose `pov_perut` | Dua tangan di atas perut, untuk potongan badan dari sudut pandang pasien. |
+| `blood` (0..1) | Bercak darah secukupnya di baju (sisi kiri layar, jadi patch logo tidak tertutup), lengan dan tangan, dan satu goresan kecil di pelipis. Hanya penanda keadaan darurat, tanpa luka detail. Nilai 0 menghasilkan gambar yang sama persis dengan sebelumnya. |
+
+Tes `berbaring (rebah)` menjaga bahwa kepala menumpuk pada pangkal leher, sepatu dan lengan berada di dalam kanvas, dan semua grup SVG seimbang. SVG statisnya: `svg/raka-berbaring-pingsan.svg`, `raka-berbaring-bingung.svg`, `raka-berbaring-sadar.svg`, `raka-darurat.svg` (berdiri, bingung, berdarah), dan `raka-pov-perut.svg`.
 
 ## Animasi
 
@@ -114,7 +189,7 @@ window.drawFrame = (t) => r.set(idle(lerpState(raka('netral'), raka('kaget'), Ma
 node brand/characters/raka/render-preview.mjs        # PNG di preview/ (butuh Playwright: npm ci di brand/video)
 node brand/characters/raka/render-preview.mjs --serve  # lihat preview.html di peramban
 node brand/characters/raka/build.mjs                  # perbarui svg/ setelah mengubah raka.js
-node --test brand/characters/raka                     # tes
+node --test brand/characters/raka/raka.test.mjs       # tes
 ```
 
-Setiap mengubah `raka.js`, jalankan `build.mjs` (tes membandingkan `svg/` dengan keluaran kode) dan lihat `preview/raka-lembar.png`, `raka-ukuran-kecil.png`, dan `raka-filmstrip.png` sebelum menyimpan.
+Setiap mengubah `raka.js`, jalankan `build.mjs` (juga membuat `svg/raka-demo-*.svg` dan `svg/raka-jas-*.svg`) (tes membandingkan `svg/` dengan keluaran kode) dan lihat `preview/raka-lembar.png`, `raka-ukuran-kecil.png`, dan `raka-filmstrip.png` sebelum menyimpan.
