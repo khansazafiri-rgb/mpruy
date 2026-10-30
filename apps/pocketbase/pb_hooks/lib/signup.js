@@ -3,6 +3,8 @@
 const HOOKS = typeof __hooks !== "undefined" ? __hooks : __dirname + "/..";
 const u = require(HOOKS + "/lib/util.js");
 
+const cs = require(HOOKS + "/lib/campusSelect.js");
+
 const RESERVED = ["admin", "administrator", "medcoel", "hermes", "agent", "root", "support", "official", "superuser"];
 
 function loadDraft(app, id, token) {
@@ -55,24 +57,17 @@ function validateProfile(app, b) {
   const extra = require(HOOKS + "/lib/signupConfig.js").validateExtra(cfg.fields, b.extra, "signup", {});
   Object.keys(extra.errors).forEach((k) => { errors[k] = extra.errors[k]; });
 
-  let campus = "";
-  if (campusId) {
-    try {
-      const c = app.findRecordById("campuses", campusId);
-      if (!c.getBool("active")) errors.campus = "Kampus ini sudah tidak tersedia. Pilih yang lain.";
-      else campus = c.id;
-    } catch (_) {
-      errors.campus = "Pilih asal kampus dari daftar.";
-    }
-  } else if (!campusOther) {
-    errors.campus = "Pilih asal kampus, atau pilih Lainnya lalu tulis nama kampusmu.";
-  }
+  // Program studi + kampus. Pilihan "tulis sendiri" baru dibuat jadi record saat akun dibuat (finish).
+  const sel = cs.check(app, b);
+  Object.keys(sel.errors).forEach((k) => { errors[k] = sel.errors[k]; });
 
   if (Object.keys(errors).length) {
     throw new BadRequestError("Ada isian yang perlu diperbaiki.", u.fieldErrors(errors));
   }
+  const v = sel.value;
   return {
-    loginId, name, email, password, campus, campusOther: campus ? "" : campusOther,
+    loginId, name, email, password, campus: v.campus, program: v.program, programOther: v.programOther,
+    campusOther: v.mode === "listed" ? "" : v.campusOther,
     whatsapp: waMode === "hidden" ? "" : whatsapp,
     semester: semMode === "hidden" || !semOk ? 0 : semester,
     extra: extra.values,
@@ -136,6 +131,8 @@ function state(app, d, extra) {
       semester: p.semester || "",
       campus: p.campus || "",
       campusOther: p.campusOther || "",
+      program: p.program || "",
+      programOther: p.programOther || "",
       extra: p.extra || {},
     },
     subjects: u.recJson(d, "subjects", []) || [],
@@ -189,8 +186,14 @@ function finish(app, d) {
     user.set("whatsapp", p.whatsapp || "");
     user.set("semester", p.semester || 0);
     user.set("extra", p.extra || {});
-    if (p.campus) user.set("campus", p.campus);
-    user.set("campusOther", p.campusOther || "");
+    // "Tulis sendiri" membuat/menggabung record prodi dan kampus di sini, setelah email terverifikasi.
+    const place = cs.commit(tx, p.campus
+      ? { mode: "listed", campus: p.campus }
+      : p.campusOther === u.NO_CAMPUS
+        ? { mode: "none" }
+        : { mode: "typed", program: p.program || "", programOther: p.programOther || "", campusOther: p.campusOther || "" }, false);
+    if (place.campus) user.set("campus", place.campus);
+    user.set("campusOther", place.campusOther);
     user.set("studyingSubjects", subjects);
     user.set("role", "user");
     user.set("disabled", needApproval);

@@ -86,21 +86,20 @@ routerAdd("POST", "/api/medcoel/me/campus", (e) => {
       "Kampus hanya bisa diganti sekali tiap " + days + " hari. Kamu bisa menggantinya lagi mulai " + u.localDate(next, "WIB") + ".",
     );
   }
-  const campusId = u.cleanStr(b.campus, 40);
-  const other = u.cleanStr(b.campusOther, 200);
-  let campus = "";
-  if (campusId) {
-    try {
-      const c = e.app.findRecordById("campuses", campusId);
-      if (!c.getBool("active")) throw new Error("x");
-      campus = c.id;
-    } catch (_) {
-      throw new BadRequestError("Pilih kampus dari daftar.");
-    }
-  } else if (!other) {
-    throw new BadRequestError("Pilih kampus, atau pilih Lainnya lalu tulis nama kampusmu.");
+  const cs = require(`${__hooks}/lib/campusSelect.js`);
+  const sel = cs.check(e.app, b);
+  if (Object.keys(sel.errors).length) throw new BadRequestError(Object.keys(sel.errors).map((k) => sel.errors[k]).join(" "));
+  if (sel.value.mode === "none" && user.getString("campusOther") === u.NO_CAMPUS && !user.getString("campus")) {
+    throw new BadRequestError("Itu sudah pilihanmu sekarang.");
   }
-  if (campus === user.getString("campus") && (campus || other === user.getString("campusOther"))) {
+  let campus = "";
+  let other = "";
+  e.app.runInTransaction((tx) => {
+    const place = cs.commit(tx, sel.value, u.roleOf(user) === "admin");
+    campus = place.campus;
+    other = place.campusOther;
+  });
+  if (campus && campus === user.getString("campus")) {
     throw new BadRequestError("Itu sudah kampusmu sekarang.");
   }
   const log = new Record(e.app.findCollectionByNameOrId("campus_changes"));

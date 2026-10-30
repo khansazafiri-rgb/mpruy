@@ -60,6 +60,8 @@ routerAdd("POST", "/api/medcoel/signup/start", (e) => {
     semester: p.semester,
     campus: p.campus,
     campusOther: p.campusOther,
+    program: p.program,
+    programOther: p.programOther,
     extra: p.extra,
   });
   draft.set("passwordEnc", $security.encrypt(p.password, u.secretKey(e.app)));

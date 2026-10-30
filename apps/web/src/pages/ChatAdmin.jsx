@@ -181,17 +181,17 @@ function UploadFlow({ sid, onStatus, onMenu }) {
       {step === 'language' && <Chips options={LANG} onPick={(o) => answer('language', o, 'scope')} />}
       {at('scope') && <Answer text={a.languageLabel} onChange={() => goBack('language')} disabled={step === 'language' || busy || step === 'sent'} />}
 
-      {at('scope') && <Bubble><b>Soal ini hanya untuk pengguna dari kampusmu, atau General (boleh dipakai semua pengguna)?</b></Bubble>}
+      {at('scope') && <Bubble><b>Soal ini hanya untuk pengguna dari prodi dan kampusmu, atau General (boleh dipakai semua pengguna)?</b></Bubble>}
       {step === 'scope' && (
         <Chips
           options={[
-            ...(me?.campus ? [{ value: 'campus', label: `Hanya kampus saya (${campusName})` }] : []),
+            ...(me?.campus ? [{ value: 'campus', label: `Hanya prodi dan kampus saya (${campusName})` }] : []),
             { value: 'all', label: 'General (semua pengguna)' },
           ]}
           onPick={(o) => answer('scope', o, 'count')}
         />
       )}
-      {step === 'scope' && !me?.campus && <p className="chat-aside">Akunmu belum punya kampus, jadi pilihan Hanya kampus saya belum tersedia. Soalmu akan jadi General. Kamu bisa mengisi kampus di Profil kapan saja.</p>}
+      {step === 'scope' && !me?.campus && <p className="chat-aside">Akunmu belum punya prodi dan kampus, jadi pilihan Hanya prodi dan kampus saya belum tersedia. Soalmu akan jadi General. Kamu bisa mengisinya di Profil kapan saja.</p>}
       {at('count') && <Answer text={a.scopeLabel} onChange={() => goBack('scope')} disabled={step === 'scope' || busy || step === 'sent'} />}
 
       {at('count') && <Bubble><b>Berapa PDF yang mau kamu kirim?</b></Bubble>}

@@ -42,7 +42,7 @@ Password agen disimpan di file lingkungan server AI, bukan di repositori.
       "submittedAt": "2026-10-21 04:10:00.000Z",
       "confirmedAt": "2026-10-21 05:00:00.000Z",
       "user": { "id": "u1", "name": "Sari Uji Coba", "loginId": "sari.uji" },
-      "campus": { "id": "c1", "name": "FK Universitas Andalas" },
+      "campus": { "id": "c1", "name": "FK Universitas Andalas", "program": "Kedokteran" },
       "subject": { "id": "s1", "name": "Parasitologi" },
       "hasKeyAndExplanation": true,
       "language": "id",
