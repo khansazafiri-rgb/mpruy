@@ -187,7 +187,7 @@ Manifestasi klasik:
 > [!highyield] High-yield
 > Lesch–Nyhan = HGPRT deficiency + hyperuricemia + neurologic dysfunction + self-injury.
 
-## Adenosine Deaminase (Ada) Deficiency
+## Adenosine Deaminase (ADA) Deficiency
 
 ADA normally membantu katabolisme adenosine/deoxyadenosine.
 
@@ -367,7 +367,7 @@ Karena produknya relatif larut, gangguan degradasi pirimidin tidak memberikan po
 
 ## Perbandingan Purin vs Pirimidin
 
-### Purin
+### PURIN
 
 - Cincin dibangun langsung pada PRPP.
 - **Committed enzyme**: glutamine-PRPP amidotransferase.
@@ -511,7 +511,7 @@ dUMP —thymidylate synthase + folate→ dTMP.
 - [Purine Degradation] Alur sederhana GMP :: GMP → guanosine → guanine → xanthine → uric acid.
 - [Hyperuricemia dan Gout] Jebakan farmakologi SANGAT PENTING :: Allopurinol menghambat xanthine oxidase yang juga berperan dalam metabolisme 6-mercaptopurine (6-MP) dan azathioprine. Karena itu kombinasi tanpa penyesuaian dosis dapat meningkatkan toksisitas 6-MP/azathioprine.
 - [Lesch–Nyhan Syndrome] Penyebab :: defisiensi berat HGPRT/HPRT akibat mutasi HPRT1, diwariskan X-linked recessive.
-- [Adenosine Deaminase (Ada) Deficiency] High-yield chain :: ADA deficiency → ↑dATP → inhibition of ribonucleotide reductase → ↓DNA synthesis → lymphocyte toxicity → SCID.
+- [Adenosine Deaminase (ADA) Deficiency] High-yield chain :: ADA deficiency → ↑dATP → inhibition of ribonucleotide reductase → ↓DNA synthesis → lymphocyte toxicity → SCID.
 - [2. Carbamoyl phosphate + aspartate] Enzim :: aspartate transcarbamoylase (ATCase).
 - [2. Carbamoyl phosphate + aspartate] Produk :: carbamoyl aspartate.
 - [4. Dihydroorotate → orotate] Enzim :: dihydroorotate dehydrogenase.
@@ -523,8 +523,8 @@ dUMP —thymidylate synthase + folate→ dTMP.
 - [Ribonucleotide Reductase: Membuat Prekursor DNA] Kaitan klinis :: ADA deficiency → dATP menumpuk → RNR terhambat → pembentukan dNTP terganggu → DNA synthesis terganggu.
 - [dTMP Synthesis dan Folate Cycle] Donor satu-karbon :: N5,N10-methylene-tetrahydrofolate.
 - [dTMP Synthesis dan Folate Cycle] Hubungan dengan megaloblastic anemia :: Defisiensi folate atau gangguan regenerasi THF → sintesis dTMP dan purin terganggu → DNA synthesis melambat → megaloblastic changes.
-- [Purin] Committed enzyme :: glutamine-PRPP amidotransferase.
-- [Purin] Gangguan khas :: gout, Lesch–Nyhan, ADA-SCID.
+- [PURIN] Committed enzyme :: glutamine-PRPP amidotransferase.
+- [PURIN] Gangguan khas :: gout, Lesch–Nyhan, ADA-SCID.
 - [2. 6-mercaptopurine / azathioprine] PENTING :: toksisitas meningkat bila xanthine oxidase dihambat allopurinol tanpa penyesuaian dosis.
 - [Memory Map Cepat] Purine :: Ribose-5-P → PRPP → 5-phosphoribosylamine → ... → IMP → AMP / GMP → degradation → uric acid.
 - [Memory Map Cepat] Salvage :: Hypoxanthine + PRPP —HGPRT→ IMP.

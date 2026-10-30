@@ -21,9 +21,13 @@
 - Variant/mutation = perubahan sekuens DNA; istilah variant lebih netral dan tidak selalu berarti patogenik.
 
 > [!warning] Penting
-> Genotype tidak selalu sama dengan phenotype. Fenotipe dapat dipengaruhi penetrance, expressivity, modifier genes, epigenetic regulation, dan lingkungan. Gregor Mendel mempelajari pewarisan sifat menggunakan Pisum sativum. Karakter yang dipilih memiliki bentuk fenotip yang kontras dan mudah dibedakan.
+> Genotype tidak selalu sama dengan phenotype. Fenotipe dapat dipengaruhi penetrance, expressivity, modifier genes, epigenetic regulation, dan lingkungan.
 
 ## Mendel dan Eksperimen Kacang Ercis
+
+Gregor Mendel mempelajari pewarisan sifat menggunakan Pisum sativum.
+
+Karakter yang dipilih memiliki bentuk fenotip yang kontras dan mudah dibedakan.
 
 > [!highyield] Konsep penting
 > - Parental generation = P.
@@ -51,9 +55,15 @@ Pada complete dominance:
 - aa memiliki fenotipe resesif.
 
 > [!warning] Penting
-> Dominan TIDAK berarti lebih sering, lebih kuat, lebih sehat, atau lebih berat. Resesif TIDAK berarti langka atau lemah. Dominance hanya menjelaskan hubungan fenotip antara dua alel pada heterozygote. Setiap individu diploid memiliki dua alel untuk suatu locus autosomal. Saat pembentukan gamet melalui meiosis, kedua alel tersebut berpisah sehingga setiap gamet hanya membawa satu alel.
+> - Dominan TIDAK berarti lebih sering, lebih kuat, lebih sehat, atau lebih berat.
+> - Resesif TIDAK berarti langka atau lemah.
+> - Dominance hanya menjelaskan hubungan fenotip antara dua alel pada heterozygote.
 
 ## Hukum Segregasi — Mendel's First Law
+
+Setiap individu diploid memiliki dua alel untuk suatu locus autosomal.
+
+Saat pembentukan gamet melalui meiosis, kedua alel tersebut berpisah sehingga setiap gamet hanya membawa satu alel.
 
 Contoh Aa:
 
@@ -73,9 +83,12 @@ Genotype offspring:
 **Jika complete dominance**: Phenotypic ratio = 3 dominan : 1 resesif.
 
 > [!highyield] High-yield
-> Rasio 3:1 adalah rasio FENOTIPE pada heterozygote × heterozygote dengan complete dominance. Rasio GENOTIPE tetap 1:2:1. Punnett square adalah alat untuk memperkirakan kombinasi genotype offspring dari gamet kedua orang tua.
+> - Rasio 3:1 adalah rasio FENOTIPE pada heterozygote × heterozygote dengan complete dominance.
+> - Rasio GENOTIPE tetap 1:2:1.
 
 ## Punnett Square
+
+Punnett square adalah alat untuk memperkirakan kombinasi genotype offspring dari gamet kedua orang tua.
 
 **Contoh Aa × Aa**: Parent 1 gametes = A, a
 
@@ -123,9 +136,11 @@ AaBb × AaBb dengan complete dominance dan independent assortment menghasilkan p
 ![Independent assortment kromosom homolog saat meiosis](https://lh3.googleusercontent.com/d/1Zleabx9lXf83yhFfsBVmgdEiEts7eP4K "Wikimedia Commons, Independent assortment.svg, CC BY-SA 4.0")
 
 > [!warning] Penting
-> Independent assortment terutama berlaku untuk gen pada kromosom berbeda atau gen yang sangat berjauhan pada kromosom yang sama. Gen yang berdekatan pada kromosom yang sama dapat mengalami linkage dan tidak assort independently. Dasar sitologis hukum Mendel adalah perilaku kromosom selama meiosis.
+> Independent assortment terutama berlaku untuk gen pada kromosom berbeda atau gen yang sangat berjauhan pada kromosom yang sama. Gen yang berdekatan pada kromosom yang sama dapat mengalami linkage dan tidak assort independently.
 
 ## Hubungan Mendel dengan Meiosis
+
+Dasar sitologis hukum Mendel adalah perilaku kromosom selama meiosis.
 
 Meiosis I:
 
@@ -143,9 +158,13 @@ Meiosis II:
 - Sister chromatids berpisah.
 
 > [!warning] Penting
-> Crossing-over terjadi pada prophase I dan menghasilkan recombination antara kromosom homolog. Gen yang berada pada kromosom yang sama disebut syntenic. Jika dua locus berdekatan, alelnya cenderung diwariskan bersama = genetic linkage.
+> Crossing-over terjadi pada prophase I dan menghasilkan recombination antara kromosom homolog.
 
 ## Linkage dan Recombination
+
+Gen yang berada pada kromosom yang sama disebut syntenic.
+
+Jika dua locus berdekatan, alelnya cenderung diwariskan bersama = genetic linkage.
 
 Recombination melalui crossing-over dapat memisahkan alel yang linked.
 
@@ -190,9 +209,11 @@ Di antara offspring unaffected:
 Jadi probability bahwa unaffected sibling adalah carrier = 2/3.
 
 > [!highyield] High-yield
-> “Unaffected sibling of an affected child from two carrier parents” → carrier risk 2/3, bukan 1/2. Jika dua locus independen, probability genotype gabungan dapat dihitung per locus.
+> “Unaffected sibling of an affected child from two carrier parents” → carrier risk 2/3, bukan 1/2.
 
 ## Dihybrid Cross dan Product Rule
+
+Jika dua locus independen, probability genotype gabungan dapat dihitung per locus.
 
 **Contoh AaBb × AaBb**: P(aa) = 1/4
 
@@ -256,9 +277,11 @@ Genotype → phenotype:
 - ii → O
 
 > [!warning] Penting
-> Multiple alleles menggambarkan variasi pada tingkat POPULASI; individu tetap hanya memiliki dua alel autosomal per locus. Penetrance = proporsi individu dengan genotype tertentu yang benar-benar menampilkan phenotype terkait.
+> Multiple alleles menggambarkan variasi pada tingkat POPULASI; individu tetap hanya memiliki dua alel autosomal per locus.
 
 ## Penetrance
+
+Penetrance = proporsi individu dengan genotype tertentu yang benar-benar menampilkan phenotype terkait.
 
 **Complete penetrance**: 100% individu dengan genotype patogenik menunjukkan phenotype.
 
@@ -373,9 +396,13 @@ Carrier × carrier:
 per pregnancy.
 
 > [!warning] Penting
-> Risiko tersebut berlaku untuk setiap pregnancy secara independen. Consanguinity berarti pasangan memiliki ancestor bersama yang relatif dekat. Hal ini meningkatkan probabilitas kedua orang tua mewarisi alel yang sama dari common ancestor.
+> Risiko tersebut berlaku untuk setiap pregnancy secara independen.
 
 ## Consanguinity dan Risiko Resesif
+
+Consanguinity berarti pasangan memiliki ancestor bersama yang relatif dekat.
+
+Hal ini meningkatkan probabilitas kedua orang tua mewarisi alel yang sama dari common ancestor.
 
 Akibatnya:
 
@@ -420,7 +447,7 @@ Contoh mekanisme yang akan dipelajari lebih lanjut atau dikenali sebagai pengecu
 
 Namun prinsip allele segregation dan chromosome behavior tetap menjadi fondasi untuk memahami sebagian besar mekanisme tersebut.
 
-## JEBakan Soal High-Yield {highyield}
+## Jebakan Soal High-Yield {highyield}
 
 1. Dominant ≠ common.
 2. Recessive ≠ mild.
@@ -614,13 +641,13 @@ expressivity = derajat.
   • locus/allelic heterogeneity,
   • ukuran keluarga,
   • uncertainty dalam variant classification
-- [Istilah Dasar Genetika] Penting: Istilah Dasar Genetika :: Genotype tidak selalu sama dengan phenotype. Fenotipe dapat dipengaruhi penetrance, expressivity, modifier genes, epigenetic regulation, dan lingkungan. Gregor Mendel mempelajari pewarisan sifat menggunakan Pisum sativum. Karakter yang dipilih memiliki bentuk fenotip yang kontras dan mudah dibedakan.
-- [Hukum Segregasi — Mendel's First Law] High-yield: Hukum Segregasi — Mendel's First Law :: Rasio 3:1 adalah rasio FENOTIPE pada heterozygote × heterozygote dengan complete dominance. Rasio GENOTIPE tetap 1:2:1. Punnett square adalah alat untuk memperkirakan kombinasi genotype offspring dari gamet kedua orang tua.
-- [Punnett Square] Jebakan soal: Punnett Square :: Punnett square menunjukkan probabilitas setiap kehamilan, bukan urutan pasti anak. Jika risiko penyakit 25%, anak pertama terkena tidak membuat risiko anak kedua berubah menjadi lebih kecil. Setiap conception adalah peristiwa baru jika kondisi parental genotype tetap sama.
-- [Hukum Independent Assortment — Mendel's Second Law] Penting: Hukum Independent Assortment — Mendel's Second Law :: Independent assortment terutama berlaku untuk gen pada kromosom berbeda atau gen yang sangat berjauhan pada kromosom yang sama. Gen yang berdekatan pada kromosom yang sama dapat mengalami linkage dan tidak assort independently. Dasar sitologis hukum Mendel adalah perilaku kromosom selama meiosis.
-- [Linkage dan Recombination] Jebakan: Linkage dan Recombination :: Dua gen pada kromosom yang sama TIDAK otomatis selalu diwariskan bersama; crossing-over dapat memisahkan keduanya.
-- [3. Conditional probability] High-yield: 3. Conditional probability :: “Unaffected sibling of an affected child from two carrier parents” → carrier risk 2/3, bukan 1/2. Jika dua locus independen, probability genotype gabungan dapat dihitung per locus.
+- [Istilah Dasar Genetika] Penting: Istilah Dasar Genetika :: Genotype tidak selalu sama dengan phenotype. Fenotipe dapat dipengaruhi penetrance, expressivity, modifier genes, epigenetic regulation, dan lingkungan.
+- [Dominan dan Resesif] Penting: Dominan dan Resesif :: Dominan TIDAK berarti lebih sering, lebih kuat, lebih sehat, atau lebih berat. Resesif TIDAK berarti langka atau lemah. Dominance hanya menjelaskan hubungan fenotip antara dua alel pada heterozygote.
+- [Hukum Segregasi — Mendel's First Law] High-yield: Hukum Segregasi — Mendel's First Law :: Rasio 3:1 adalah rasio FENOTIPE pada heterozygote × heterozygote dengan complete dominance. Rasio GENOTIPE tetap 1:2:1.
+- [Hukum Independent Assortment — Mendel's Second Law] Penting: Hukum Independent Assortment — Mendel's Second Law :: Independent assortment terutama berlaku untuk gen pada kromosom berbeda atau gen yang sangat berjauhan pada kromosom yang sama. Gen yang berdekatan pada kromosom yang sama dapat mengalami linkage dan tidak assort independently.
+- [Hubungan Mendel dengan Meiosis] Penting: Hubungan Mendel dengan Meiosis :: Crossing-over terjadi pada prophase I dan menghasilkan recombination antara kromosom homolog.
+- [3. Conditional probability] High-yield: 3. Conditional probability :: “Unaffected sibling of an affected child from two carrier parents” → carrier risk 2/3, bukan 1/2.
 - [3. Codominance] Jebakan: 3. Codominance :: Incomplete dominance ≠ codominance. Incomplete dominance = phenotype intermediate. Codominance = kedua produk alel tampak bersama.
-- [Penetrance] Jebakan: Penetrance :: Orang yang tampak sehat dalam keluarga penyakit dominant belum tentu tidak membawa variant jika penetrance tidak lengkap.
+- [Multiple Alleles dan ABO Blood Group] Penting: Multiple Alleles dan ABO Blood Group :: Multiple alleles menggambarkan variasi pada tingkat POPULASI; individu tetap hanya memiliki dua alel autosomal per locus.
 - [Pleiotropy] Penting: Pleiotropy :: Pleiotropy bukan berarti banyak gen menyebabkan satu penyakit; itu justru konsep berbeda.
 - [Locus Heterogeneity dan Allelic Heterogeneity] High-yield: Locus Heterogeneity dan Allelic Heterogeneity :: Satu phenotype ← banyak gen = locus heterogeneity. Satu gen ← banyak variant patogenik = allelic heterogeneity.

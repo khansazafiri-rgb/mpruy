@@ -66,13 +66,21 @@
   <div class="row" id="logoClose" style="margin-top:14px"></div>
   <div class="row" id="logoSmall" style="margin-top:14px"></div>
 
-  <h2>8. Bingkai video potret 1080 x 1920</h2>
+  <h2>8. Pakaian dan kaki</h2>
+  <p class="n">Varian pakaian (<code>outfit</code>): harian, demo (kaus hitam), dan jas dokter. Kaki berengsel halus untuk jalan, lari kecil, berhenti, dan jongkok: celana satu bentuk meruncing dari pinggul ke pergelangan, sepatu menempel di ujungnya.</p>
+  <div class="row" id="outfits"></div>
+  <p class="n" style="margin-top:14px">Siklus jalan demo (<code>walkCycle(fase)</code>), delapan fase satu langkah, lalu lari kecil, jalan menghadap depan, dan jalan ke kiri.</p>
+  <div class="row" id="walk"></div>
+  <p class="n" style="margin-top:14px">Baju demo: ekspresi dan pose tambahan (kaget, perih sambil mengusap mata, batuk, khawatir, berhenti, jongkok, lega).</p>
+  <div class="row" id="demoPoses"></div>
+
+  <h2>9. Bingkai video potret 1080 x 1920</h2>
   <p class="n">Dikecilkan ke 270 x 480. Raka setinggi sekitar 55% bingkai di atas takarir.</p>
   <div class="row"><div class="tile"><div id="frame"><div class="r" id="frameR"></div><div class="cap">Ini contoh takarir video MEDCOEL.</div></div>frame siang</div>
   <div class="tile"><div id="frame2"></div>frame malam</div></div>
 </main>
 <script type="module">
-import { EXPRESSIONS, PALETTE_ON_DARK, raka, rakaSvg, lerpState, idle, demoState, DEMO_LENGTH, ease } from './raka.js';
+import { EXPRESSIONS, PALETTE_ON_DARK, raka, rakaSvg, lerpState, idle, demoState, DEMO_LENGTH, ease, walkCycle } from './raka.js';
 const $ = (id) => document.getElementById(id);
 const tile = (svg, label, bg = 'light', w) => `<div class="tile ${bg}" style="background:none"><div class="art ${bg}" style="${w ? `width:${w}px` : ''}">${svg}</div>${label}</div>`;
 const names = Object.keys(EXPRESSIONS);
@@ -117,6 +125,17 @@ $('logoClose').innerHTML = closeStates.map(([n, st]) => tile(`<div style="width:
 $('logoSmall').innerHTML = [['light', undefined], ['dark', PALETTE_ON_DARK]].map(([c, pal]) => `<div class="tile ${c}" style="padding:10px;border-radius:14px"><div class="row" style="align-items:flex-end;gap:12px">`
   + [320, 180, 110, 64].map((h) => `<div style="height:${h}px;width:${h / 2}px">${rakaSvg(raka('netral'), { uid: `ls-${c}-${h}`, palette: pal }).replace('<svg ', `<svg height="${h}" `)}</div>`).join('')
   + `</div>tinggi 320, 180, 110, 64 px (${c === 'dark' ? 'latar gelap' : 'latar terang'})</div>`).join('');
+
+// pakaian, kaki, jalan
+const W = (svg, w) => `<div style="width:${w}px">${svg}</div>`;
+$('outfits').innerHTML = [['harian', 'harian'], ['demo', 'demo (hitam)'], ['jas', 'jas dokter']].map(([o, nm]) => tile(W(rakaSvg(raka('netral'), { uid: 'o-' + o, outfit: o }), 200), nm)).join('')
+  + tile(W(rakaSvg(raka('netral'), { uid: 'o-dark', outfit: 'demo', dark: true }), 200), 'demo di latar gelap (dark: true)').replace('class="tile light"', 'class="tile dark"');
+$('walk').innerHTML = [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875].map((ph) => tile(W(rakaSvg(raka('netral', 'jalan', walkCycle(ph)), { uid: 'w' + ph, outfit: 'demo' }), 150), `fase ${ph}`)).join('')
+  + tile(W(rakaSvg(raka('netral', 'jalan', walkCycle(0.2, { run: true })), { uid: 'wr', outfit: 'demo' }), 150), 'lari kecil')
+  + tile(W(rakaSvg(raka('netral', 'jalan', walkCycle(0.3, { mode: 'depan' })), { uid: 'wd', outfit: 'demo' }), 150), 'menghadap depan')
+  + tile(W(rakaSvg(raka('netral', 'jalan', walkCycle(0.2, { dir: -1 })), { uid: 'wl', outfit: 'demo' }), 150), 'ke kiri');
+$('demoPoses').innerHTML = [['netral', null], ['kaget', null], ['perih', 'usap_mata'], ['batuk', null], ['khawatir', 'berhenti'], ['khawatir', 'jongkok'], ['lega', null]]
+  .map(([e, p]) => tile(W(rakaSvg(raka(e, p), { uid: `dp-${e}-${p}`, outfit: 'demo' }), 170), p ? `${e} + ${p}` : e)).join('');
 
 // bingkai 1080 x 1920
 $('frameR').innerHTML = rakaSvg(raka('senang'), { uid: 'fr1' });

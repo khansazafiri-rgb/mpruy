@@ -11,7 +11,7 @@ Vitamin adalah mikronutrien organik yang dibutuhkan dalam jumlah kecil tetapi sa
 
 ![Struktur kimia berbagai vitamin](https://lh3.googleusercontent.com/d/1jXE_RTcFgGKRhsTCuhD3o_Brb9oZYxGL "Wikimedia Commons — “Vitamin structures” (CC0)")
 
-## Vitamin a — Retinoid
+## Vitamin A — Retinoid
 
 Bentuk utama vitamin A:
 
@@ -20,7 +20,7 @@ Bentuk utama vitamin A:
 - **Retinoic acid**: regulator transkripsi melalui nuclear receptor; tidak dapat dikonversi kembali menjadi retinal untuk fungsi visual.
 - **β-carotene**: provitamin A dari tumbuhan.
 
-## Vitamin a dan Siklus Visual
+## Vitamin A dan Siklus Visual
 
 Di retina, 11-cis-retinal berikatan dengan opsin membentuk rhodopsin. Foton mengubah 11-cis-retinal menjadi all-trans-retinal sehingga memicu perubahan konformasi rhodopsin dan transduksi sinyal visual.
 
@@ -29,7 +29,7 @@ Di retina, 11-cis-retinal berikatan dengan opsin membentuk rhodopsin. Foton meng
 > - Defisiensi lebih berat → xerophthalmia, Bitot spots, keratomalacia.
 > - Retinoic acid bekerja terutama pada ekspresi gen, bukan sebagai chromophore visual.
 
-## Vitamin a sebagai Regulator Gen
+## Vitamin A sebagai Regulator Gen
 
 Retinoic acid berikatan dengan retinoic acid receptor (RAR), yang berheterodimer dengan RXR dan berikatan dengan DNA pada retinoic acid response elements. Ini menjelaskan perannya pada diferensiasi epitel, pertumbuhan, dan perkembangan embrio.
 
@@ -374,7 +374,7 @@ Contoh konsekuensi:
 
 **PENTING**: pasien dengan cholestasis, pancreatic insufficiency, short bowel, atau penyakit usus tertentu dapat mengalami kombinasi defisiensi ini.
 
-## High-Yield JEBakan Soal {highyield}
+## High-Yield Jebakan Soal {highyield}
 
 - **Vitamin A**: retinal untuk vision; retinoic acid untuk gene transcription.
 - **Vitamin D**: liver membuat 25(OH)D; kidney membuat 1,25(OH)2D.
@@ -428,11 +428,11 @@ Contoh konsekuensi:
 - [Gambaran Besar] Vitamin larut lemak :: absorpsinya mengikuti absorpsi lemak, memerlukan empedu/misel, dapat disimpan lebih banyak, dan karena itu defisiensi cenderung muncul lebih lambat tetapi toksisitas lebih mungkin terjadi.
 - [Gambaran Besar] Vitamin larut air :: umumnya memiliki cadangan tubuh lebih terbatas dan kelebihan lebih mudah diekskresikan melalui urin. Pengecualian penting: vitamin B12 memiliki cadangan hati yang besar sehingga defisiensi dapat membutuhkan waktu bertahun-tahun.
 - [Gambaran Besar] PENTING :: malabsorpsi lemak, penyakit kolestatik, insufisiensi pankreas, atau gangguan pembentukan misel dapat menyebabkan defisiensi vitamin A, D, E, dan K secara bersamaan.
-- [Vitamin a — Retinoid] Retinol :: bentuk alkohol dan bentuk transport/storage penting.
-- [Vitamin a — Retinoid] Retinal :: aldehida; 11-cis-retinal penting pada siklus visual.
-- [Vitamin a — Retinoid] Retinoic acid :: regulator transkripsi melalui nuclear receptor; tidak dapat dikonversi kembali menjadi retinal untuk fungsi visual.
-- [Vitamin a — Retinoid] β-carotene :: provitamin A dari tumbuhan.
-- [Vitamin a sebagai Regulator Gen] Jebakan soal :: β-carotene berlebih dapat memberi warna kekuningan pada kulit, tetapi tidak sama dengan toksisitas retinoid berat dan biasanya tidak menyebabkan scleral icterus.
+- [Vitamin A — Retinoid] Retinol :: bentuk alkohol dan bentuk transport/storage penting.
+- [Vitamin A — Retinoid] Retinal :: aldehida; 11-cis-retinal penting pada siklus visual.
+- [Vitamin A — Retinoid] Retinoic acid :: regulator transkripsi melalui nuclear receptor; tidak dapat dikonversi kembali menjadi retinal untuk fungsi visual.
+- [Vitamin A — Retinoid] β-carotene :: provitamin A dari tumbuhan.
+- [Vitamin A sebagai Regulator Gen] Jebakan soal :: β-carotene berlebih dapat memberi warna kekuningan pada kulit, tetapi tidak sama dengan toksisitas retinoid berat dan biasanya tidak menyebabkan scleral icterus.
 - [Vitamin D — Prohormone Steroid] Vitamin D3 (cholecalciferol) :: berasal dari kulit atau sumber hewani.
 - [Vitamin D — Prohormone Steroid] Kulit :: 7-dehydrocholesterol —UVB→ previtamin D3 → vitamin D3.
 - [Vitamin D — Prohormone Steroid] Hati :: Vitamin D —25-hydroxylase, terutama CYP2R1→ 25-hydroxyvitamin D [25(OH)D, calcidiol].
@@ -462,7 +462,7 @@ Contoh konsekuensi:
 - [High-yield] E: antioksidan lipid; defisiensi :: neuropathy dan hemolysis
 - [High-yield] B9 deficiency :: ↑ homocysteine, MMA normal, tanpa neuro khas
 - [High-yield] B12 deficiency :: ↑ homocysteine + ↑ MMA + neurologic dysfunction
-- [Vitamin a — Retinoid] Bentuk utama vitamin A … :: • Retinol: bentuk alkohol dan bentuk transport/storage penting
+- [Vitamin A — Retinoid] Bentuk utama vitamin A … :: • Retinol: bentuk alkohol dan bentuk transport/storage penting
   • Retinal: aldehida; 11-cis-retinal penting pada siklus visual
   • Retinoic acid: regulator transkripsi melalui nuclear receptor; tidak dapat dikonversi kembali menjadi retinal untuk fungsi visual
   • β-carotene: provitamin A dari tumbuhan
@@ -500,7 +500,7 @@ Contoh konsekuensi:
   • Poor wound healing
   • Corkscrew hairs
   • Anemia dapat terjadi akibat perdarahan dan gangguan absorpsi besi
-- [Vitamin a dan Siklus Visual] High-yield: Vitamin a dan Siklus Visual :: Vitamin A deficiency → gangguan adaptasi gelap/night blindness. Defisiensi lebih berat → xerophthalmia, Bitot spots, keratomalacia. Retinoic acid bekerja terutama pada ekspresi gen, bukan sebagai chromophore visual.
+- [Vitamin A dan Siklus Visual] High-yield: Vitamin A dan Siklus Visual :: Vitamin A deficiency → gangguan adaptasi gelap/night blindness. Defisiensi lebih berat → xerophthalmia, Bitot spots, keratomalacia. Retinoic acid bekerja terutama pada ekspresi gen, bukan sebagai chromophore visual.
 - [Vitamin E — Tocopherol] HIGH-YIELD: Vitamin E — Tocopherol :: Vitamin E melindungi membran RBC dan neuron dari oxidative damage.
 - [Vitamin K — γ-Carboxylation] Mnemonic klasik: Vitamin K — γ-Carboxylation :: “1972” → 10, 9, 7, 2 + C dan S.
 - [Warfarin dan Vitamin K Cycle] High-yield: Warfarin dan Vitamin K Cycle :: Factor VII memiliki half-life relatif pendek → PT/INR berubah lebih awal. Protein C juga memiliki half-life pendek → pada awal terapi warfarin dapat terjadi transient hypercoagulable state, sehingga pada pasien tertentu diperlukan bridging anticoagulation sesuai indikasi klinis.

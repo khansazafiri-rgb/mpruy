@@ -21,7 +21,7 @@ const ACTIONS = {
 
 function ManualForm({ onClose, onSaved }) {
   const { subjects } = useCatalog();
-  const [f, setF] = useState({ user: '', subject: '', pdfCount: 6, hasKey: false, language: 'id', scope: 'all', note: '', confirmNow: true });
+  const [f, setF] = useState({ user: '', subject: '', pdfCount: 1, hasKey: false, language: 'id', scope: 'all', note: '', confirmNow: true });
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const set = (k, v) => setF((x) => ({ ...x, [k]: v }));
@@ -35,7 +35,7 @@ function ManualForm({ onClose, onSaved }) {
       <button type="button" className="btn-primary" onClick={save} disabled={busy}>Simpan</button>
     </>}>
       <div className="space-y-3">
-        <p className="text-sm text-ink-muted">Dipakai untuk pengajuan lebih dari 5 PDF yang filenya dikirim lewat WhatsApp, supaya tetap muncul di Progres permintaan pengguna.</p>
+        <p className="text-sm text-ink-muted">Dipakai untuk mencatat pengajuan yang filenya diterima di luar web (mis. kiriman lewat WhatsApp), supaya tetap muncul di Progres permintaan pengguna.</p>
         <Field label="Login ID pengaju" htmlFor="mf-user"><input id="mf-user" className="input" value={f.user} onChange={(e) => set('user', e.target.value)} /></Field>
         <div className="grid grid-cols-2 gap-3">
           <Field label="Mata kuliah" htmlFor="mf-subj"><select id="mf-subj" className="input" value={f.subject} onChange={(e) => set('subject', e.target.value)}><option value="">Pilih</option>{subjects.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}</select></Field>

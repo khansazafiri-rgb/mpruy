@@ -85,6 +85,15 @@ test('setiap catatan di index.json menunjuk BAB yang ada di katalog', () => {
     assert.ok(!/Hereditas Mendel|Down Syndrome|Autosomal Dominant — Pola Dasar/.test(text), `${e.file}: isi Genetika masuk Biokimia`);
   }
   for (const e of index) assert.ok(e.subjectName, `${e.file}: subjectName`);
+  const patologi = cat.find((s) => s.slug === 'patologi-anatomi').chapters;
+  assert.deepEqual(index.filter((e) => e.subject === 'patologi-anatomi').map((e) => e.chapter).sort(), [...patologi].sort(), 'ke-13 BAB Patologi Anatomi lengkap');
+  const parasit = cat.find((s) => s.slug === 'parasitologi').chapters;
+  assert.deepEqual(index.filter((e) => e.subject === 'parasitologi').map((e) => e.chapter).sort(), [...parasit].sort(), 'ke-8 BAB Parasitologi lengkap');
+  // Mikrobiologi: BAB 10 (Virus Eksantematous) masih kosong di dokumen sumber, jadi sengaja belum ada catatannya.
+  const mikro = cat.find((s) => s.slug === 'mikrobiologi').chapters;
+  const have = index.filter((e) => e.subject === 'mikrobiologi').map((e) => e.chapter);
+  assert.deepEqual([...mikro.filter((c) => !have.includes(c))], ['Virus Eksantematous (Campak, Rubella, Varicella)']);
+  assert.equal(have.length, 11);
 });
 
 function seeded() {

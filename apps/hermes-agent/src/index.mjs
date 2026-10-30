@@ -3,6 +3,7 @@ import { MedcoelClient } from './medcoel.mjs';
 import { StateStore } from './state.mjs';
 import { TelegramClient, escapeHtml } from './telegram.mjs';
 import { DriveClient } from './drive.mjs';
+import { describeFile, pickFiles } from './files.mjs';
 import { ImportPlanFlow } from './import-plan.mjs';
 import { newSubmissionMessage, queueCard, compactSubmission, howToSubmit, BOT_COMMANDS, statusLabel } from './notify.mjs';
 
@@ -117,8 +118,8 @@ async function handleUpdate(update) {
   if (m) return needsFix(msg.chat.id, m[1], m[2]);
   m = text.match(/^\/show\s+(\S+)$/i);
   if (m) return showSubmission(msg.chat.id, m[1]);
-  m = text.match(/^\/files\s+(\S+)$/i);
-  if (m) return showFiles(msg.chat.id, m[1]);
+  m = text.match(/^\/files\s+(\S+)(?:\s+(\d+))?$/i);
+  if (m) return showFiles(msg.chat.id, m[1], m[2]);
 
   return telegram.sendMessage(msg.chat.id, 'Perintah tidak dikenali. Kirim /help.');
 }
@@ -128,7 +129,8 @@ async function help(chatId) {
     '<b>MEDCOEL Hermes Agent</b>\n\n'
     + '/queue — lihat pengajuan berstatus Antre\n'
     + '/show KODE — lihat detail pengajuan\n'
-    + '/files KODE — kirim PDF pengajuan dari Drive\n'
+    + '/files KODE — kirim semua PDF pengajuan (nama berkas memuat kode dan nomor)\n'
+    + '/files KODE 3 — kirim hanya PDF nomor 3\n'
     + '/terima KODE — terima pengajuan yang Menunggu konfirmasi (jadi Antre)\n'
     + '/claim KODE — ubah menjadi Diproses\n'
     + '/fix KODE alasan — tandai Perlu perbaikan\n\n'
@@ -156,22 +158,26 @@ async function showSubmission(chatId, id) {
   return telegram.sendMessage(chatId, `${queueCard(sub)}\n\n${howToSubmit(sub.code || id, sub.status)}`);
 }
 
-async function showFiles(chatId, id) {
+async function showFiles(chatId, id, only) {
   const sub = await medcoel.getSubmission(id);
   if (!drive.configured) return telegram.sendMessage(chatId, 'Drive relay Hermes belum dikonfigurasi.');
-  await telegram.sendMessage(chatId, `📎 Mengirim ${(sub.files || []).length} PDF untuk <b>${escapeHtml(sub.code || id)}</b>…`);
-  return relaySubmissionFiles(chatId, sub);
+  const total = (sub.files || []).filter((f) => f.driveFileId).length;
+  if (only && !pickFiles(sub.files || [], only)) {
+    return telegram.sendMessage(chatId, `PDF nomor ${escapeHtml(only)} tidak ada. <b>${escapeHtml(sub.code || id)}</b> punya ${total} PDF.`);
+  }
+  await telegram.sendMessage(chatId, `📎 Mengirim ${only ? `PDF ${escapeHtml(only)} dari ${total}` : `${total} PDF`} untuk <b>${escapeHtml(sub.code || id)}</b>…`);
+  return relaySubmissionFiles(chatId, sub, only);
 }
 
-async function relaySubmissionFiles(chatId, sub) {
+async function relaySubmissionFiles(chatId, sub, only) {
   const files = (sub.files || []).filter((f) => f.driveFileId);
   if (!files.length) return telegram.sendMessage(chatId, 'Tidak ada PDF Drive yang dapat dikirim.');
+  const picked = pickFiles(files, only) || [];
 
-  for (let i = 0; i < files.length; i += 1) {
-    const file = files[i];
+  for (const { file, index } of picked) {
     const response = await drive.openFile(file.driveFileId);
-    const caption = `${sub.code || sub.id} · PDF ${i + 1}/${files.length}`;
-    await telegram.sendDocumentStream(chatId, file.name || `submission-${i + 1}.pdf`, response, caption);
+    const { filename, caption } = describeFile(sub.code || sub.id, index, files.length, file.name);
+    await telegram.sendDocumentStream(chatId, filename, response, caption);
   }
 }
 

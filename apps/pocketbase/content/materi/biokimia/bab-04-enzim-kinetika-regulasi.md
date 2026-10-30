@@ -261,14 +261,14 @@ Enzim plasma juga dapat meningkat akibat kerusakan sel atau obstruksi:
 - kcat = jumlah molekul substrat yang diubah per molekul enzim per satuan waktu saat saturasi.
 - kcat/Km = ukuran efisiensi katalitik.
 
-## Memory Hook Inhibitor
+### Memory Hook Inhibitor
 
 - Competitive → K naik, V tetap.
 - Pure noncompetitive → K tetap, V turun.
 - Uncompetitive → K turun, V turun.
 - Mixed → V turun, K bisa naik atau turun.
 
-## Memory Hook Regulasi
+### Memory Hook Regulasi
 
 - Allosteric = cepat dan reversibel.
 - Phosphorylation = sakelar kovalen yang dapat dibalik.
@@ -299,25 +299,25 @@ Ketika menemukan obat atau toksin yang menargetkan enzim, tanyakan tiga hal: (1)
 - [High-yield] Competitive :: Km ↑    | Vmax tetap | dapat dilawan dengan ↑ [S]
 - [High-yield] Pure noncompetitive :: Km tetap | Vmax ↓   | tidak dipulihkan oleh ↑ [S]
 - [High-yield] Uncompetitive :: Km ↓    | Vmax ↓     | inhibitor mengikat ES
-- [High-yield] Mixed :: Km ↑/↓  | Vmax ↓     | afinitas E dan ES berbeda
 - [High-yield] Irreversible :: enzim aktif ↓ secara permanen/nyaris permanen
 - [High-yield] Salah :: “Enzim membuat ΔG menjadi lebih negatif.”
-- [High-yield] Benar :: enzim menurunkan Ea dan tidak mengubah ΔG
 - [High-yield] Salah :: “Competitive inhibitor menurunkan Vmax.”
 - [High-yield] Benar :: pada inhibisi kompetitif ideal, Vmax tetap dan apparent Km meningkat
 - [High-yield] Salah :: “Semua inhibitor yang mengikat di luar active site adalah noncompetitive.”
-- [High-yield] Benar :: mixed inhibition lebih umum; pure noncompetitive adalah kasus khusus ketika afinitas inhibitor terhadap E dan ES sama
 - [High-yield] Salah :: “Km selalu merupakan ukuran langsung afinitas.”
 - [High-yield] Benar :: hubungan tersebut hanya dapat digunakan secara sederhana pada kondisi/mekanisme tertentu
-- [High-yield] Salah :: “Menaikkan konsentrasi enzim menaikkan Km.”
 - [High-yield] Benar :: menaikkan konsentrasi enzim menaikkan Vmax, sedangkan Km tidak berubah hanya karena [E] berubah
 - [High-yield] Salah :: “Semua enzim mengikuti kurva Michaelis–Menten.”
 - [High-yield] Benar :: banyak enzim allosterik menunjukkan kinetika sigmoidal dan tidak mengikuti model Michaelis–Menten klasik
-- [High-yield] Salah :: “Aktivasi zymogen mudah dibalik.”
 - [High-yield] Benar :: proteolytic activation umumnya irreversible
 - [High-yield] Vmax :: kapasitas maksimal sistem enzim pada kondisi tertentu
-- [High-yield] kcat :: jumlah molekul substrat yang diubah per molekul enzim per satuan waktu saat saturasi
 - [High-yield] kcat/Km :: ukuran efisiensi katalitik
+- [High-yield] Competitive :: K naik, V tetap
+- [High-yield] Pure noncompetitive :: K tetap, V turun
+- [High-yield] Mixed :: V turun, K bisa naik atau turun
+- [High-yield] Allosteric :: cepat dan reversibel
+- [High-yield] Zymogen :: aktivasi proteolitik, biasanya irreversible
+- [High-yield] Feedback inhibition :: produk akhir menghambat tahap awal
 - [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Contoh coenzyme penting … :: • NAD⁺/NADH — berasal dari niasin (vitamin B3), berperan pada reaksi oksidasi-reduksi
   • FAD/FADH₂ — berasal dari riboflavin (vitamin B2), membawa elektron/hidrogen
   • Coenzyme A — berasal dari asam pantotenat (vitamin B5), membawa gugus asil

@@ -205,9 +205,11 @@ Produk:
 - Glycerol dibawa ke liver dan digunakan untuk gluconeogenesis.
 
 > [!warning] Penting
-> Free fatty acid tidak beredar bebas tanpa carrier; mayoritas dibawa oleh albumin. Free fatty acids masuk liver dan muscle.
+> Free fatty acid tidak beredar bebas tanpa carrier; mayoritas dibawa oleh albumin.
 
 ## β-Oxidation pada Fasting
+
+Free fatty acids masuk liver dan muscle.
 
 Di liver:
 
@@ -337,9 +339,11 @@ Liver:
 - Lactate → pyruvate → glucose.
 
 > [!warning] Penting
-> Cori cycle memindahkan beban energi dari peripheral tissue ke liver. Liver menggunakan ATP untuk gluconeogenesis agar jaringan anaerob tetap memperoleh glucose. Kidney bukan sekadar organ ekskresi.
+> Cori cycle memindahkan beban energi dari peripheral tissue ke liver. Liver menggunakan ATP untuk gluconeogenesis agar jaringan anaerob tetap memperoleh glucose.
 
 ## Kidney pada Prolonged Fasting
+
+Kidney bukan sekadar organ ekskresi.
 
 Saat fasting berkepanjangan:
 
@@ -385,9 +389,11 @@ Efek:
 - Fatty acid oxidation dan ketogenesis didukung secara tidak langsung melalui keadaan insulin rendah dan perubahan regulasi liver.
 
 > [!highyield] High-yield
-> Glucagon memiliki efek metabolik utama di liver; skeletal muscle tidak memiliki respons glucagon klasik yang bermakna seperti liver. Epinephrine penting saat exercise, acute stress, dan hypoglycemia.
+> Glucagon memiliki efek metabolik utama di liver; skeletal muscle tidak memiliki respons glucagon klasik yang bermakna seperti liver.
 
 ## Epinephrine
+
+Epinephrine penting saat exercise, acute stress, dan hypoglycemia.
 
 Efek:
 
@@ -535,7 +541,7 @@ Secara konseptual:
 
 **Implikasi**: Fed state cenderung lebih banyak glucose oxidation; fasting meningkatkan kontribusi fatty acid oxidation.
 
-## JEBakan Soal High-Yield {highyield}
+## Jebakan Soal High-Yield {highyield}
 
 - Fed state = insulin tinggi, bukan glucagon tinggi.
 - GLUT4 hanya penting terutama di skeletal muscle dan adipose; liver menggunakan GLUT2.
@@ -642,8 +648,8 @@ Secara konseptual:
 - [Skeletal Muscle pada Fed State] Penting: Skeletal Muscle pada Fed State :: Muscle glycogen hanya digunakan oleh muscle itu sendiri karena skeletal muscle tidak memiliki glucose-6-phosphatase untuk melepaskan free glucose ke darah.
 - [Adipose Tissue pada Fed State] High-yield: Adipose Tissue pada Fed State :: Adipose tissue relatif kurang memiliki glycerol kinase, sehingga glycerol-3-phosphate terutama berasal dari glycolysis glucose.
 - [Early Fasting / Postabsorptive State] Jebakan soal: Early Fasting / Postabsorptive State :: Fatty acids berantai genap TIDAK menghasilkan net glucose pada manusia karena acetyl-CoA tidak dapat dikonversi kembali menjadi pyruvate dan carbon TCA hilang sebagai CO2.
-- [Adipose Tissue Saat Fasting: Lipolysis] Penting: Adipose Tissue Saat Fasting: Lipolysis :: Free fatty acid tidak beredar bebas tanpa carrier; mayoritas dibawa oleh albumin. Free fatty acids masuk liver dan muscle.
+- [Adipose Tissue Saat Fasting: Lipolysis] Penting: Adipose Tissue Saat Fasting: Lipolysis :: Free fatty acid tidak beredar bebas tanpa carrier; mayoritas dibawa oleh albumin.
 - [Ketone Bodies sebagai Bahan Bakar] High-yield: Ketone Bodies sebagai Bahan Bakar :: Liver = produsen ketone bodies, bukan konsumen.
 - [Perubahan Brain pada Prolonged Fasting] Penting: Perubahan Brain pada Prolonged Fasting :: RBC tetap membutuhkan glucose sepanjang waktu karena tidak memiliki mitochondria.
-- [Cori Cycle] Penting: Cori Cycle :: Cori cycle memindahkan beban energi dari peripheral tissue ke liver. Liver menggunakan ATP untuk gluconeogenesis agar jaringan anaerob tetap memperoleh glucose. Kidney bukan sekadar organ ekskresi.
-- [Glucagon: Sinyal “Pertahankan Glucose Darah”] High-yield: Glucagon: Sinyal “Pertahankan Glucose Darah” :: Glucagon memiliki efek metabolik utama di liver; skeletal muscle tidak memiliki respons glucagon klasik yang bermakna seperti liver. Epinephrine penting saat exercise, acute stress, dan hypoglycemia.
+- [Cori Cycle] Penting: Cori Cycle :: Cori cycle memindahkan beban energi dari peripheral tissue ke liver. Liver menggunakan ATP untuk gluconeogenesis agar jaringan anaerob tetap memperoleh glucose.
+- [Glucagon: Sinyal “Pertahankan Glucose Darah”] High-yield: Glucagon: Sinyal “Pertahankan Glucose Darah” :: Glucagon memiliki efek metabolik utama di liver; skeletal muscle tidak memiliki respons glucagon klasik yang bermakna seperti liver.

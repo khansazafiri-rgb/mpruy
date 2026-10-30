@@ -103,11 +103,21 @@ Mata kuliah yang sudah diproses dengan cara ini (`--subject` = slug folder, `--s
 | Fisiologi | `--subject fisiologi --subject-name Fisiologi` |
 | Biokimia | `--subject biokimia --subject-name "Biokimia & Biologi Molekuler" --skip-unmatched` |
 | Genetika Kedokteran | `--subject genetika-kedokteran --subject-name "Genetika Kedokteran"` |
+| Patologi Anatomi | `--subject patologi-anatomi --subject-name "Patologi Anatomi" --skip-unmatched --allow-missing` |
+| Parasitologi | `--subject parasitologi --subject-name Parasitologi --skip-unmatched --allow-missing` |
+| Mikrobiologi | `--subject mikrobiologi --subject-name Mikrobiologi --skip-unmatched --allow-missing` (+ `corrections/mikrobiologi.json`) |
 
 Dua gaya dokumen dikenali. Gaya biasa: `Bab N — Judul` (Heading 1) dan bagian `N. Judul` (Heading 2). Gaya huruf besar (Genetika dan
 lampiran Biokimia): `BAB N — JUDUL`, bagian `A. JUDUL` / `4.1 JUDUL`, label `PENTING:` / `HIGH-YIELD:` / `JEBAKAN SOAL:` (jadi kotak sorot),
 `GAMBAR N.M — keterangan` lalu tautan lalu `Sumber gambar: ...`, dan `END OF BAB N` (dibuang). Keduanya boleh bercampur dalam satu dokumen.
 Judul huruf besar diubah menjadi huruf kapital awal, singkatan (ATP, CFTR) dipertahankan.
+
+Variasi gaya huruf besar yang juga dikenali: judul `PATOLOGI ANATOMI — BAB 6: JUDUL` / `PARASITOLOGI — BAB 1: JUDUL`, subjudul bergaya `N.M Judul`
+(huruf besar atau biasa, selama nomor depannya sama dengan nomor BAB), keterangan gambar `GAMBAR PA 1A — ...`, `VISUAL 8B — ...`, `Visual 9A. ...`,
+`Gambar 11A — ...` (diberi nomor urut per BAB), garis pemisah `═══`, penutup `END OF ... BAB N`, dan `SELESAI — ... (N BAB RESMI)`:
+semua yang ada di bawah baris "SELESAI" sampai BAB berikutnya (materi tambahan di luar BAB resmi) dibuang. Daftar topik di bawah judul BAB
+(`Ginjal • Testis • Prostat`) dan bagian `SUMBER UTAMA` / `SUMBER GUIDELINE UTAMA` tidak dimasukkan. Judul huruf besar mengikuti singkatan yang
+dipakai di badan teks (ATP, TSI, COVID-19) dan nama khas (MacConkey, GeneXpert, HBeAg); epitet spesies setelah nama genus (S. aureus) tetap huruf kecil.
 
 Bila satu dokumen memuat BAB ganda atau BAB milik mata kuliah lain (dokumen Biokimia memuat versi ganda BAB 4-9, placeholder BAB 10-18,
 dan BAB Genetika di bagian akhir):
@@ -116,7 +126,18 @@ dan BAB Genetika di bagian akhir):
   Isi BAB Genetika di dokumen Biokimia tidak dimasukkan; BAB Genetika diambil dari dokumen Genetika Kedokteran.
 - Untuk satu BAB di web, versi "Status: placeholder" (atau < 150 kata) kalah dari versi berisi. Bila dua-duanya berisi, yang gambarnya
   lebih banyak dipakai (versi tanpa gambar biasanya hanya memuat keterangannya), lalu yang lebih panjang.
+- BAB yang di dokumen hanya judul (tanpa isi) tidak dimasukkan; dengan `--allow-missing` BAB web yang belum punya catatan hanya dilaporkan.
 - `--report` mencetak pilihan itu di baris berawalan `**` supaya bisa diperiksa.
+
+### QC isi (corrections)
+
+Hasil QC yang berupa penyuntingan teks sumber disimpan di `tools/materi-import/corrections/<mata-kuliah>.json` dan diterapkan konverter sebelum
+teks diproses, jadi menjalankan ulang konverter pada dokumen yang sama menghasilkan keluaran yang sama. Tiap aturan:
+`{"find": "teks", "replace": "teks baru", "why": "alasan"}`; `"drop": true` membuang seluruh paragraf yang memuat teks itu; `"all": true` bila boleh
+cocok di beberapa tempat; `"regex": true` untuk pola. Aturan yang tidak cocok (mis. sudah dibetulkan di dokumen) atau ambigu (cocok > 1 tempat tanpa
+`all`) tidak diterapkan dan dilaporkan di `--report` pada baris berawalan `>>`. Contoh pemakaian pada Mikrobiologi: membuang catatan asal-usul penyusun
+("sumber UTB/IUP", "materi sumber", "slide", "PPT12", catatan koreksi slide), memperbaiki mnemonik yang keliru (RPR/VDRL), dan salah ketik.
+Frasa asal-usul yang umum (`Sumber UTB menekankan:` dan sejenisnya) ditangani langsung oleh `SCRUB` di konverter.
 Setelah mengubah konverter, jalankan ulang ketiganya dan periksa `git diff content/materi` supaya perubahan tidak merusak yang lain.
 
 Konverter memetakan tiap BAB di dokumen ke BAB di web lewat **judulnya** (docs/MATA_KULIAH.md), bukan nomornya,

@@ -356,8 +356,8 @@ Akibat:
 
 Contoh high-yield:
 
-- Cri-du-chat syndrome = deletion 5p.; High-pitched “cat-like” cry pada bayi.; Microcephaly.; Intellectual disability.
-- 22q11.2 deletion syndrome: Conotruncal cardiac defects.; Abnormal facies.; Thymic hypoplasia → T-cell deficiency.; Cleft palate.; Hypocalcemia karena parathyroid hypoplasia.
+- Cri-du-chat syndrome = deletion 5p; High-pitched “cat-like” cry pada bayi; Microcephaly; Intellectual disability.
+- 22q11.2 deletion syndrome: Conotruncal cardiac defects; Abnormal facies; Thymic hypoplasia → T-cell deficiency; Cleft palate; Hypocalcemia karena parathyroid hypoplasia.
 
 ## Duplication
 
@@ -503,7 +503,7 @@ Namun gen yang escape X-inactivation, termasuk gen di pseudoautosomal region, te
 4. Bayi dengan polydactyly + cleft lip/palate + holoprosencephaly → Patau syndrome.
 5. Bayi dengan clenched fists + overlapping fingers + rocker-bottom feet → Edwards syndrome.
 
-## JEBakan Soal Paling Sering {highyield}
+## Jebakan Soal Paling Sering {highyield}
 
 - Down syndrome = trisomy 21, bukan selalu “47 kromosom”; Robertsonian Down dapat memiliki jumlah kromosom total yang berbeda dari trisomy bebas.
 - NIPT = screening, bukan diagnosis.

@@ -117,7 +117,7 @@ Pi 0,
 
 ## Shear Stress dan Endothelium
 
-**Sumber soal menekankan**: shear stress dapat menyebabkan vasodilation melalui respons endothelium, termasuk pelepasan nitric oxide.
+**Poin yang ditekankan**: shear stress dapat menyebabkan vasodilation melalui respons endothelium, termasuk pelepasan nitric oxide.
 
 > [!highyield] High-yield
 > Bukan sekadar “dilatasi mekanis langsung” smooth muscle.
@@ -168,7 +168,7 @@ Faktor penting:
 
 **Saat inspiration**: intrathoracic pressure menjadi lebih negatif.
 
-**Sumber menekankan**: right atrial pressure menjadi lebih negatif → gradient dari peripheral veins menuju thorax meningkat → venous return meningkat.
+**Poin yang ditekankan**: right atrial pressure menjadi lebih negatif → gradient dari peripheral veins menuju thorax meningkat → venous return meningkat.
 
 ## Skeletal Muscle Pump
 
@@ -336,10 +336,10 @@ Standing → venous pooling → venous return ↓ → EDV ↓ → SV ↓ → CO 
 - [Mean Arterial Pressure] Contoh sumber :: 124/82 mmHg → PP = 42 mmHg → MAP ≈ 82 + 14 = 96 mmHg.
 - [Total Peripheral Resistance] Vasoconstriction :: radius ↓ → resistance ↑ → pada kondisi lain sama, pressure cenderung ↑ dan flow ke bed tersebut cenderung ↓.
 - [Contoh Hitung Net Filtration] Net outward force :: (35 + 1) − (25 + 0) = 11 mmHg keluar kapiler.
-- [Shear Stress dan Endothelium] Sumber soal menekankan :: shear stress dapat menyebabkan vasodilation melalui respons endothelium, termasuk pelepasan nitric oxide.
+- [Shear Stress dan Endothelium] Poin yang ditekankan :: shear stress dapat menyebabkan vasodilation melalui respons endothelium, termasuk pelepasan nitric oxide.
 - [Pulmonary vs Systemic Circulation] Perbedaannya terutama :: pulmonary circuit beroperasi pada pressure/resistance lebih rendah dibanding systemic circuit.
 - [Respiratory Pump] Saat inspiration :: intrathoracic pressure menjadi lebih negatif.
-- [Respiratory Pump] Sumber menekankan :: right atrial pressure menjadi lebih negatif → gradient dari peripheral veins menuju thorax meningkat → venous return meningkat.
+- [Respiratory Pump] Poin yang ditekankan :: right atrial pressure menjadi lebih negatif → gradient dari peripheral veins menuju thorax meningkat → venous return meningkat.
 - [Skeletal Muscle Pump] Dengan bantuan one-way valves :: darah terdorong menuju jantung dan backward flow diminimalkan.
 - [Venoconstriction] Efek :: venous return dan preload dapat meningkat.
 - [Berdiri Mendadak: Perubahan Awal] Lalu :: EDV/preload ↓ → SV ↓ → CO ↓ → arterial pressure cenderung ↓.
