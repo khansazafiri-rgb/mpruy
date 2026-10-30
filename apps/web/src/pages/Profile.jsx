@@ -2,7 +2,7 @@ import { Check, GraduationCap, KeyRound, School, UserRound } from 'lucide-react'
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CampusPicker from '@/components/CampusPicker';
-import { campusPayload, campusState } from '@/lib/campus';
+import { placeErrors, placePayload, placeState } from '@/lib/campus';
 import ExtraFields, { extraDefaults } from '@/components/ExtraFields';
 import Illustration from '@/components/Illustration';
 import { Alert, Field } from '@/components/ui';
@@ -125,33 +125,36 @@ function ProfileForm() {
 
 function CampusForm() {
   const { me, setMe, settings } = useAuth();
-  const [campus, setCampus] = useState(campusState(me).campus);
-  const [other, setOther] = useState(campusState(me).other);
+  const [place, setPlace] = useState(() => placeState(me));
+  const [errors, setErrors] = useState({});
   const [error, setError] = useState('');
   const [msg, setMsg] = useState('');
   const [busy, setBusy] = useState(false);
   const locked = me.nextCampusChangeAt && new Date(me.nextCampusChangeAt) > new Date();
   const save = async () => {
     setError(''); setMsg('');
+    const local = placeErrors(place);
+    setErrors(local);
+    if (Object.keys(local).length) return;
     const days = settings?.campusChangeDays;
     if (!window.confirm(`Ganti kampus sekarang?${days ? ` Setelah ini kampus baru bisa diganti lagi ${days} hari kemudian.` : ''} Soal khusus kampus lama tidak akan terlihat lagi.`)) return;
     setBusy(true);
     try {
-      const r = await api('me/campus', { method: 'POST', body: campusPayload(campus, other) });
+      const r = await api('me/campus', { method: 'POST', body: placePayload(place) });
       setMe((m) => ({ ...m, ...r, nextCampusChangeAt: days ? new Date(Date.now() + days * 86400000).toISOString() : '' }));
       setMsg('Kampus sudah diganti.');
     } catch (e) { setError(e.message); } finally { setBusy(false); }
   };
   return (
     <div className="space-y-3">
-      <p className="text-sm text-ink-muted">Kampus sekarang: <b className="text-ink">{me.campusName || '-'}</b>. Soal khusus kampus mengikuti kampus akunmu saat ini; soal General bisa dipakai siapa saja.</p>
+      <p className="text-sm text-ink-muted">Program studi dan kampus sekarang: <b className="text-ink">{me.programName ? `${me.programName} · ${me.institution}` : me.campusName || '-'}</b>. Soal khusus kampus hanya terlihat oleh prodi yang sama di kampus yang sama; soal General bisa dipakai siapa saja.</p>
       {locked ? (
         <Alert kind="info">Kampus bisa diganti lagi mulai {fmtDate(me.nextCampusChangeAt)}.</Alert>
       ) : (
         <>
-          <CampusPicker value={campus} other={other} onChange={(c, o) => { setCampus(c); setOther(o); }} id="pf-campus" />
+          <CampusPicker value={place} onChange={setPlace} errors={errors} id="pf-campus" />
           <p className="hint">Kampus hanya bisa diganti sekali tiap {settings?.campusChangeDays || 30} hari.</p>
-          <button type="button" className="btn-secondary" onClick={save} disabled={busy || (campus === campusState(me).campus && campus !== '__other__')}>{busy ? 'Menyimpan...' : 'Ganti kampus'}</button>
+          <button type="button" className="btn-secondary" onClick={save} disabled={busy}>{busy ? 'Menyimpan...' : 'Simpan prodi dan kampus'}</button>
         </>
       )}
       <Alert kind="success">{msg}</Alert>
@@ -206,7 +209,7 @@ export default function Profile() {
     <div className="space-y-7">
       <PageHead eyebrow="Akunmu" title="Profil">Data diri, asal kampus, dan password.</PageHead>
       <Section icon={UserRound} title="Data diri"><ProfileForm /></Section>
-      <Section icon={School} title="Asal kampus"><CampusForm /></Section>
+      <Section icon={School} title="Program studi dan kampus"><CampusForm /></Section>
       <Section icon={KeyRound} title="Password"><PasswordForm /></Section>
       <Section icon={GraduationCap} title="Tutorial"><TutorialSection /></Section>
     </div>

@@ -179,7 +179,8 @@ Jumlah melanocyte antar kelompok warna kulit tidak berbeda secara dramatis; perb
 
 Melanin yang masuk ke dermis dapat difagositosis macrophages, menghasilkan melanophages atau dermal chromatophores.
 
-**Penting**: melanocyte = menghasilkan melanin; melanophage = memakan/menyimpan melanin.
+> [!warning] Penting
+> Melanocyte = menghasilkan melanin; melanophage = memakan/menyimpan melanin.
 
 Dalam materi, dermal chromatophores terutama ditemukan di papillary dermis dan bukan merupakan sel penghasil melanin.
 
@@ -620,7 +621,6 @@ Epidermis dari dalam ke luar: basale → spinosum → granulosum → lucidum →
 - [Stratum Basale] Istilah yang sering digunakan :: stratum germinativum karena aktivitas mitosis; stratum pigmentosum karena melanin banyak terlihat di bagian basal.
 - [Stratum Lucidum] Secara praktikum :: jika ada band tipis bening antara granulosum dan corneum, pikirkan stratum lucidum dan thick skin.
 - [Keratinisasi] Gambaran sederhananya :: mitosis di basale → diferensiasi di spinosum → keratohyalin granules di granulosum → kehilangan nucleus/organelles → corneocyte di corneum.
-- [Dermal Melanophage / Chromatophore] Penting :: melanocyte = menghasilkan melanin; melanophage = memakan/menyimpan melanin.
 - [Eccrine versus Apocrine] Practical shortcut :: giant luminal diameter + near hair follicle = apocrine.
 - [Holocrine Secretion] Pada sebaceous gland :: basal cells proliferate → cells accumulate lipid → cells membesar → nucleus degenerates → cell ruptures → sebum dilepas.
 - [Holocrine Secretion] Bandingkan :: merocrine = exocytosis tanpa kehilangan cytoplasm; apocrine = sebagian apical cytoplasm ikut terlepas; holocrine = seluruh cell menjadi secretion.
@@ -674,10 +674,10 @@ Epidermis dari dalam ke luar: basale → spinosum → granulosum → lucidum →
 - [Stratum Basale] Practical clue: Stratum Basale :: Satu baris sel paling basal, paling dekat dermis = stratum basale.
 - [Stratum Spinosum] Practical clue: Stratum Spinosum :: Lapisan paling tebal dari sel hidup polygonal dengan spiny appearance = stratum spinosum.
 - [Stratum Granulosum] Practical clue: Stratum Granulosum :: Dark granular band tepat di bawah lucidum/corneum = stratum granulosum.
-- [Stratum Corneum dan Stratum Disjunctum] Practical clue: Stratum Corneum dan Stratum Disjunctum :: Lapisan homogen eosinophilic tanpa nucleus di paling luar = stratum corneum.
-- [Papillary Dermis] Practical clue: Papillary Dermis :: Loose, more cellular, vascular connective tissue langsung di bawah epidermis = papillary dermis.
+- [Keratinisasi] High-yield: Keratinisasi :: Keratinocyte adalah sel terbanyak epidermis dan bertanggung jawab terhadap pembentukan keratin serta barrier kulit.
+- [Dermal Melanophage / Chromatophore] Penting: Dermal Melanophage / Chromatophore :: Melanocyte = menghasilkan melanin; melanophage = memakan/menyimpan melanin.
 - [Reticular Dermis] Practical clue: Reticular Dermis :: Coarse collagen bundles + adnexal structures = reticular dermis.
 - [Eccrine Sweat Gland] Practical clue: Eccrine Sweat Gland :: Banyak coiled tubules di deep dermis, sebagian pucat dan sebagian lebih gelap → eccrine gland.
-- [Hair Bulb dan Dermal Papilla] Practical clue: Hair Bulb dan Dermal Papilla :: Bulbous base + central connective tissue papilla = hair bulb.
+- [Sebaceous Gland] Practical clue: Sebaceous Gland :: Lobules of pale foamy cells melekat ke hair follicle = sebaceous gland.
 - [Arrector Pili Muscle] Practical clue: Arrector Pili Muscle :: Oblique eosinophilic smooth-muscle bundle menempel pada follicle = arrector pili.
 - [Meissner Corpuscle] Practical clue: Meissner Corpuscle :: Small oval receptor di dermal papilla tepat di bawah epidermis = Meissner corpuscle.

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Bangun, tapi tak bisa bergerak</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root { --forest:#0A3830; --green:#00A383; --mint:#9DE0BD; --cream:#FBF3E2; --gold:#F8C038; --coral:#E8665F; --ink:#172B38; --amber:#F29B38; --indigo:#1B2A55; }
+  html,body{margin:0;padding:0;background:#000;}
+  #root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans','Inter',sans-serif;color:var(--ink);background:#0A1030}
+  #root svg.layer{position:absolute;left:0;top:0}
+  #chips{position:absolute;left:0;top:150px;width:1080px;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .chip{display:inline-flex;align-items:center;gap:18px;background:#fff;border-radius:60px;padding:14px 38px 14px 22px;font-weight:800;font-size:48px;line-height:1.14;letter-spacing:-.01em;color:var(--indigo);box-shadow:0 10px 0 rgba(0,0,0,.2);transform-origin:50% 0%;max-width:960px;box-sizing:border-box;text-wrap:balance}
+  .chip .ic{width:64px;height:64px;flex:none}.chip .ic svg{width:100%;height:100%;display:block}
+  #card{position:absolute;left:60px;top:150px;width:960px;border-radius:48px;background:#fff;box-shadow:0 14px 0 rgba(10,56,48,.2);padding:26px 34px 30px;box-sizing:border-box;transform-origin:50% 0%}
+  #card h3{margin:0 0 12px;font-weight:800;font-size:46px;letter-spacing:-.01em;line-height:1.12;color:var(--forest)}
+  .row{display:flex;align-items:center;gap:22px;padding:8px 0;font-weight:800;font-size:46px;line-height:1.1;color:var(--ink);transform-origin:0 50%}
+  .row .ic{width:80px;height:80px;flex:none}.row .ic svg{width:100%;height:100%;display:block}
+  #cap{position:absolute;left:60px;width:960px;top:1565px;height:210px;display:flex;align-items:center;justify-content:center}
+  #cap .box{background:rgba(7,12,34,.9);border-radius:38px;padding:18px 34px 20px;text-align:center;font-weight:800;font-size:54px;line-height:1.2;color:#fff;letter-spacing:-.01em;max-width:960px;box-sizing:border-box;box-shadow:0 8px 0 rgba(0,0,0,.25);text-wrap:balance}
+  #fade{position:absolute;left:0;top:0;width:1080px;height:1920px;background:#fff;opacity:0;pointer-events:none}
+  #end{position:absolute;left:0;top:0;width:1080px;height:1920px;background:var(--cream);opacity:0;pointer-events:none;overflow:hidden}
+  #end .blob{position:absolute;border-radius:50%;background:#EAF3E0}
+  #end .logo{position:absolute;left:50%;top:300px;width:820px;margin-left:-410px;transform-origin:50% 50%}
+  #end .rows{position:absolute;left:0;top:640px;width:1080px;display:flex;flex-direction:column;align-items:center;gap:36px}
+  #end .erow{display:flex;align-items:center;gap:24px;background:#fff;border-radius:70px;padding:20px 56px 20px 30px;font-weight:800;font-size:62px;line-height:1.1;color:var(--forest);box-shadow:0 12px 0 rgba(10,56,48,.14);transform-origin:50% 50%}
+  #end .erow .ic{width:94px;height:94px;flex:none}#end .erow .ic svg{width:100%;height:100%}
+  #end .erow.url{background:var(--forest);color:var(--gold);font-size:84px;padding:26px 76px;box-shadow:0 12px 0 rgba(0,0,0,.2)}
+  #src{position:absolute;left:60px;width:960px;top:1640px;text-align:center;font-weight:700;font-size:34px;line-height:1.3;color:#3d5b55;opacity:0}
+  #src small{display:block;font-size:30px;font-weight:600;margin-top:10px;color:#5a746e}
+</style></head>
+<body>
+<div id="root">
+  <svg id="stage" class="layer" width="1080" height="1920" viewBox="0 0 1080 1920">
+    <defs>
+      <radialGradient id="vigG" cx=".5" cy=".5" r=".72"><stop offset=".35" stop-color="#02040C" stop-opacity="0"/><stop offset="1" stop-color="#02040C" stop-opacity=".95"/></radialGradient>
+      <clipPath id="iris"><circle id="irisC" cx="540" cy="960" r="1400"/></clipPath>
+    </defs>
+    <g id="expG"></g>
+    <g id="povClip" clip-path="url(#iris)"><g id="povG"></g></g>
+    <g id="tdG"></g>
+    <g id="roomG"></g>
+    <g id="fx"></g>
+  </svg>
+  <div id="chips"></div>
+  <div id="card"></div>
+  <div id="cap"><div class="box" id="capbox"></div></div>
+  <div id="fade"></div>
+  <div id="end">
+    <div class="blob" style="left:-160px;top:1100px;width:520px;height:520px"></div><div class="blob" style="left:760px;top:-120px;width:460px;height:460px"></div>
+    <img class="logo" id="elogo" src="logo-full.webp" alt="MEDCOEL">
+    <div class="rows"><div class="erow" id="er1"></div><div class="erow" id="er2"></div><div class="erow url" id="er3">medcoel.com</div></div>
+    <svg id="endsvg" width="1080" height="1920" style="position:absolute;left:0;top:0"></svg>
+  </div>
+  <div id="src">Sumber: MedlinePlus<br>medlineplus.gov/ency/article/000801.htm<small>Video edukasi umum, bukan alat diagnosis atau pengganti pemeriksaan oleh tenaga kesehatan.</small></div>
+</div>
+<script type="module" src="stage.js"></script>
+</body></html>

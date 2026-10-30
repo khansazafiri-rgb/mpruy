@@ -1,10 +1,9 @@
-import { GitMerge, Plus } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { resetCampusCache } from '@/components/CampusPicker';
 import { Alert, Field, Tabs } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
 import { api, errorText } from '@/lib/api';
 import pb from '@/lib/pb';
+import CampusSettings from './CampusSettings';
 import SignupSettings from './SignupSettings';
 
 function General() {
@@ -90,67 +89,6 @@ function General() {
   );
 }
 
-function Campuses() {
-  const [list, setList] = useState([]);
-  const [others, setOthers] = useState([]);
-  const [q, setQ] = useState('');
-  const [name, setName] = useState('');
-  const [merge, setMerge] = useState({ from: '', into: '' });
-  const [msg, setMsg] = useState('');
-  const [error, setError] = useState('');
-  const load = () => {
-    pb.collection('campuses').getFullList({ sort: 'name' }).then(setList).catch((e) => setError(errorText(e)));
-    api('admin/campuses/other').then((d) => setOthers(d.items)).catch(() => {});
-  };
-  useEffect(() => { load(); }, []);
-  const run = async (fn, ok) => { setError(''); setMsg(''); try { await fn(); setMsg(ok); load(); resetCampusCache(); } catch (e) { setError(e.message || errorText(e)); } };
-  const add = (n) => run(() => pb.collection('campuses').create({ name: n.trim(), active: true, kind: 'lainnya', order: list.length + 1 }), `${n} ditambahkan.`);
-  const rename = (c) => { const t = window.prompt('Nama kampus', c.name); if (t && t.trim()) run(() => pb.collection('campuses').update(c.id, { name: t.trim() }), 'Nama diganti.'); };
-  const shown = list.filter((c) => c.name.toLowerCase().includes(q.toLowerCase()));
-  return (
-    <div className="space-y-5">
-      <Alert kind="info">Daftar awal berisi {list.length} kampus dari web lama dan belum lengkap. Cocokkan dengan data PDDikti atau KKI sebelum rilis.</Alert>
-      <Alert kind="success">{msg}</Alert>
-      <Alert>{error}</Alert>
-      <div className="grid gap-4 lg:grid-cols-2">
-        <section className="card space-y-3 p-4">
-          <form onSubmit={(e) => { e.preventDefault(); if (name.trim()) { add(name); setName(''); } }} className="flex gap-2">
-            <input className="input" placeholder="Nama kampus baru, mis. FK Universitas ..." value={name} onChange={(e) => setName(e.target.value)} />
-            <button type="submit" className="btn-primary btn-sm"><Plus size={15} /> Tambah</button>
-          </form>
-          <input className="input" placeholder="Cari kampus" value={q} onChange={(e) => setQ(e.target.value)} />
-          <ul className="max-h-[28rem] divide-y divide-line overflow-y-auto">
-            {shown.map((c) => (
-              <li key={c.id} className="flex items-center gap-2 py-2 text-sm">
-                <span className={`flex-1 ${c.active ? '' : 'text-ink-faint line-through'}`}>{c.name}{c.city ? <span className="text-ink-muted"> · {c.city}</span> : null}</span>
-                <button type="button" className="text-xs font-semibold text-academic hover:underline" onClick={() => rename(c)}>Ganti nama</button>
-                <button type="button" className="text-xs font-semibold text-ink-muted hover:underline" onClick={() => run(() => pb.collection('campuses').update(c.id, { active: !c.active }), 'Tersimpan.')}>{c.active ? 'Nonaktifkan' : 'Aktifkan'}</button>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <div className="space-y-4">
-          <section className="card space-y-3 p-4">
-            <h3 className="flex items-center gap-2 font-display font-semibold"><GitMerge size={18} /> Gabungkan dua kampus</h3>
-            <p className="text-sm text-ink-muted">Pengguna, pengajuan, soal, dan pengumuman kampus pertama dipindah ke kampus kedua, lalu kampus pertama dihapus.</p>
-            <select className="input" value={merge.from} onChange={(e) => setMerge((m) => ({ ...m, from: e.target.value }))} aria-label="Kampus yang digabung"><option value="">Kampus yang digabung (dihapus)</option>{list.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}</select>
-            <select className="input" value={merge.into} onChange={(e) => setMerge((m) => ({ ...m, into: e.target.value }))} aria-label="Kampus tujuan"><option value="">Kampus tujuan</option>{list.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}</select>
-            <button type="button" className="btn-secondary" disabled={!merge.from || !merge.into || merge.from === merge.into} onClick={() => { if (window.confirm('Gabungkan sekarang? Tidak bisa dibatalkan.')) run(() => api('admin/campuses/merge', { method: 'POST', body: merge }), 'Kampus digabungkan.'); }}>Gabungkan</button>
-          </section>
-          <section className="card space-y-2 p-4">
-            <h3 className="font-display font-semibold">Isian Lainnya yang sering muncul</h3>
-            {!others.length ? <p className="text-sm text-ink-muted">Belum ada.</p> : (
-              <ul className="space-y-1 text-sm">
-                {others.map((o) => <li key={o.name} className="flex items-center gap-2"><span className="flex-1">{o.name} <span className="text-ink-muted">({o.count})</span></span><button type="button" className="text-xs font-semibold text-brand hover:underline" onClick={() => add(o.name)}>Jadikan pilihan tetap</button></li>)}
-              </ul>
-            )}
-          </section>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function System() {
   const [summary, setSummary] = useState(null);
   const [out, setOut] = useState('');
@@ -183,10 +121,10 @@ export default function SettingsAdmin() {
   return (
     <div className="space-y-5">
       <h1 className="page-title">Pengaturan</h1>
-      <Tabs value={tab} onChange={setTab} tabs={[{ value: 'general', label: 'Umum' }, { value: 'signup', label: 'Pendaftaran & profil' }, { value: 'campus', label: 'Daftar kampus' }, { value: 'system', label: 'Sistem' }]} />
+      <Tabs value={tab} onChange={setTab} tabs={[{ value: 'general', label: 'Umum' }, { value: 'signup', label: 'Pendaftaran & profil' }, { value: 'campus', label: 'Prodi & kampus' }, { value: 'system', label: 'Sistem' }]} />
       {tab === 'general' && <General />}
       {tab === 'signup' && <SignupSettings />}
-      {tab === 'campus' && <Campuses />}
+      {tab === 'campus' && <CampusSettings />}
       {tab === 'system' && <System />}
     </div>
   );

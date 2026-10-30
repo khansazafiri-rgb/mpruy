@@ -335,16 +335,23 @@ routerAdd("POST", "/api/medcoel/admin/users/{id}", (e) => {
     usr.set("disabled", false);
     usr.set("disabledReason", "");
   } else if (b.action === "campus") {
-    const cid = u.cleanStr(b.campus, 40);
-    if (cid) { try { e.app.findRecordById("campuses", cid); } catch (_) { throw new BadRequestError("Kampus tidak ditemukan."); } }
+    const cs = require(`${__hooks}/lib/campusSelect.js`);
+    // Admin boleh mengosongkan kampus sama sekali (campus kosong, campusOther kosong).
+    let cid = "";
+    let other = "";
+    if (u.cleanStr(b.campus, 40) || u.cleanStr(b.campusOther, 200) || u.cleanStr(b.program, 40) || u.cleanStr(b.programOther, 200)) {
+      const sel = cs.check(e.app, b);
+      if (Object.keys(sel.errors).length) throw new BadRequestError(Object.keys(sel.errors).map((k) => sel.errors[k]).join(" "));
+      e.app.runInTransaction((tx) => { const place = cs.commit(tx, sel.value, true); cid = place.campus; other = place.campusOther; });
+    }
     const log = new Record(e.app.findCollectionByNameOrId("campus_changes"));
     log.set("user", usr.id);
     if (usr.getString("campus")) log.set("fromCampus", usr.getString("campus"));
     if (cid) log.set("toCampus", cid);
-    log.set("toOther", cid ? "" : u.cleanStr(b.campusOther, 200));
+    log.set("toOther", cid ? "" : other);
     e.app.save(log);
     usr.set("campus", cid);
-    usr.set("campusOther", cid ? "" : u.cleanStr(b.campusOther, 200));
+    usr.set("campusOther", cid ? "" : other);
   } else if (b.action === "profile") {
     // Ubah data diri oleh admin. Hanya field yang dikirim yang diubah.
     const cfg = require(`${__hooks}/lib/signupConfig.js`);
@@ -473,6 +480,7 @@ routerAdd("GET", "/api/medcoel/admin/reports", (e) => {
 
 routerAdd("POST", "/api/medcoel/admin/campuses/merge", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
+  const cs = require(`${__hooks}/lib/campusSelect.js`);
   u.requireAdmin(e);
   const b = u.body(e);
   const from = String(b.from || "");
@@ -480,20 +488,43 @@ routerAdd("POST", "/api/medcoel/admin/campuses/merge", (e) => {
   if (!from || !into || from === into) throw new BadRequestError("Pilih dua kampus yang berbeda.");
   let src, dst;
   try { src = e.app.findRecordById("campuses", from); dst = e.app.findRecordById("campuses", into); } catch (_) { throw new NotFoundError("Kampus tidak ditemukan."); }
-  let moved = 0;
-  e.app.runInTransaction((tx) => {
-    tx.findRecordsByFilter("users", "campus = {:c}", "", 0, 0, { c: src.id }).forEach((r) => { r.set("campus", dst.id); tx.saveNoValidate(r); moved++; });
-    tx.findRecordsByFilter("submissions", "campus = {:c}", "", 0, 0, { c: src.id }).forEach((r) => { r.set("campus", dst.id); tx.save(r); });
-    ["questions", "announcements"].forEach((col) => {
-      tx.findRecordsByFilter(col, "campuses ?= {:c}", "", 0, 0, { c: src.id }).forEach((r) => {
-        const list = r.getStringSlice("campuses").map((x) => (x === src.id ? dst.id : x)).filter((v, i, a) => a.indexOf(v) === i);
-        r.set("campuses", list);
-        tx.save(r);
-      });
-    });
-    tx.delete(src);
-  });
-  return e.json(200, { ok: true, movedUsers: moved, into: dst.getString("name") });
+  if (src.getString("program") && dst.getString("program") && src.getString("program") !== dst.getString("program")) {
+    throw new BadRequestError("Dua kampus itu beda program studi. Hak lihat soal tiap prodi sengaja dipisah. Gabungkan dulu program studinya (Pengaturan > Daftar kampus > Program studi), kampus kembarnya ikut tergabung.");
+  }
+  let res;
+  e.app.runInTransaction((tx) => { res = cs.mergeCampus(tx, src.id, dst.id); });
+  return e.json(200, { ok: true, movedUsers: res.moved, into: res.into });
+});
+
+// Program studi: gabungkan dua nama yang sama (mis. "Ilmu Keperawatan" ke "Keperawatan").
+routerAdd("POST", "/api/medcoel/admin/programs/merge", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const cs = require(`${__hooks}/lib/campusSelect.js`);
+  u.requireAdmin(e);
+  const b = u.body(e);
+  const from = String(b.from || "");
+  const into = String(b.into || "");
+  if (!from || !into || from === into) throw new BadRequestError("Pilih dua program studi yang berbeda.");
+  try { e.app.findRecordById("programs", from); e.app.findRecordById("programs", into); } catch (_) { throw new NotFoundError("Program studi tidak ditemukan."); }
+  let res;
+  e.app.runInTransaction((tx) => { res = cs.mergeProgram(tx, from, into); });
+  return e.json(200, { ok: true, movedCampuses: res.moved, mergedCampuses: res.merged, into: res.into });
+});
+
+// Tempel daftar kampus untuk satu program studi: satu baris "Institusi | Kota | ptn/pts".
+routerAdd("POST", "/api/medcoel/admin/campuses/bulk", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const cs = require(`${__hooks}/lib/campusSelect.js`);
+  u.requireAdmin(e);
+  const b = u.body(e);
+  let program;
+  try { program = e.app.findRecordById("programs", String(b.program || "")); } catch (_) { throw new BadRequestError("Pilih program studinya dulu."); }
+  const text = String(b.text || "");
+  if (!text.trim()) throw new BadRequestError("Tempel daftar kampusnya dulu.");
+  if (text.length > 200000) throw new BadRequestError("Daftar terlalu panjang. Pecah jadi beberapa kali tempel.");
+  let res;
+  e.app.runInTransaction((tx) => { res = cs.bulkAdd(tx, program, text); });
+  return e.json(200, { ok: true, program: program.getString("name"), added: res.added, skipped: res.skipped, invalid: res.invalid.slice(0, 20) });
 });
 
 // Kampus yang ditulis manual ("Lainnya") paling sering, sebagai usulan pilihan tetap.

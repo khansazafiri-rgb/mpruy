@@ -404,9 +404,18 @@ const NO_CAMPUS = "Tidak memiliki kampus";
 // Ringkasan aman satu akun, untuk dikirim ke pemiliknya sendiri atau admin.
 function userSummary(app, u, withPrivate) {
   let campusName = "";
+  let institution = "";
+  let programId = "";
+  let programName = "";
   const campusId = u.getString("campus");
   if (campusId) {
-    try { campusName = app.findRecordById("campuses", campusId).getString("name"); } catch (_) {}
+    try {
+      const c = app.findRecordById("campuses", campusId);
+      campusName = c.getString("name");
+      institution = c.getString("institution") || campusName;
+      programId = c.getString("program");
+      if (programId) programName = app.findRecordById("programs", programId).getString("name");
+    } catch (_) {}
   }
   const out = {
     id: u.id,
@@ -415,6 +424,9 @@ function userSummary(app, u, withPrivate) {
     role: roleOf(u),
     semester: u.getInt("semester"),
     campus: campusId,
+    program: programId,
+    programName: programName,
+    institution: institution,
     campusName: campusName || u.getString("campusOther"),
     campusOther: u.getString("campusOther"),
     noCampus: !campusId && u.getString("campusOther") === NO_CAMPUS,

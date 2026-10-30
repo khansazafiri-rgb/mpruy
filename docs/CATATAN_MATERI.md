@@ -5,7 +5,7 @@ Alur siswa: **Mata kuliah → pilih BAB → tiga langkah: "Belajar materi" → "
 yang bisa diperbesar, kotak klinis, poin high-yield yang bisa dicentang, maskot Kori/Kila/Nilo), lalu ditutup
 dengan tombol ke flashcard dan latihan soal BAB yang sama.
 
-Mata kuliah yang sudah terpasang: **Anatomi** (20 BAB), **Histologi** (12 BAB), dan **Fisiologi** (20 BAB).
+Mata kuliah yang sudah terpasang: **Anatomi** (20 BAB), **Histologi** (12), **Fisiologi** (20), **Biokimia & Biologi Molekuler** (18), dan **Genetika Kedokteran** (6).
 
 ## Di mana datanya
 
@@ -95,7 +95,28 @@ pip install python-docx
 python3 tools/materi-import/docx_to_materi.py "Anatomi - Catatan Belajar.docx" --subject anatomi --subject-name Anatomi --report
 ```
 
-Mata kuliah yang sudah diproses dengan cara ini: `--subject histologi --subject-name Histologi` dan `--subject fisiologi --subject-name Fisiologi`.
+Mata kuliah yang sudah diproses dengan cara ini (`--subject` = slug folder, `--subject-name` = nama di docs/MATA_KULIAH.md):
+
+| Mata kuliah | Perintah |
+|---|---|
+| Histologi | `--subject histologi --subject-name Histologi` |
+| Fisiologi | `--subject fisiologi --subject-name Fisiologi` |
+| Biokimia | `--subject biokimia --subject-name "Biokimia & Biologi Molekuler" --skip-unmatched` |
+| Genetika Kedokteran | `--subject genetika-kedokteran --subject-name "Genetika Kedokteran"` |
+
+Dua gaya dokumen dikenali. Gaya biasa: `Bab N — Judul` (Heading 1) dan bagian `N. Judul` (Heading 2). Gaya huruf besar (Genetika dan
+lampiran Biokimia): `BAB N — JUDUL`, bagian `A. JUDUL` / `4.1 JUDUL`, label `PENTING:` / `HIGH-YIELD:` / `JEBAKAN SOAL:` (jadi kotak sorot),
+`GAMBAR N.M — keterangan` lalu tautan lalu `Sumber gambar: ...`, dan `END OF BAB N` (dibuang). Keduanya boleh bercampur dalam satu dokumen.
+Judul huruf besar diubah menjadi huruf kapital awal, singkatan (ATP, CFTR) dipertahankan.
+
+Bila satu dokumen memuat BAB ganda atau BAB milik mata kuliah lain (dokumen Biokimia memuat versi ganda BAB 4-9, placeholder BAB 10-18,
+dan BAB Genetika di bagian akhir):
+
+- BAB yang judulnya tidak cocok dengan mata kuliah ini **dilewati** hanya bila memakai `--skip-unmatched` (tanpa itu konverter berhenti).
+  Isi BAB Genetika di dokumen Biokimia tidak dimasukkan; BAB Genetika diambil dari dokumen Genetika Kedokteran.
+- Untuk satu BAB di web, versi "Status: placeholder" (atau < 150 kata) kalah dari versi berisi. Bila dua-duanya berisi, yang gambarnya
+  lebih banyak dipakai (versi tanpa gambar biasanya hanya memuat keterangannya), lalu yang lebih panjang.
+- `--report` mencetak pilihan itu di baris berawalan `**` supaya bisa diperiksa.
 Setelah mengubah konverter, jalankan ulang ketiganya dan periksa `git diff content/materi` supaya perubahan tidak merusak yang lain.
 
 Konverter memetakan tiap BAB di dokumen ke BAB di web lewat **judulnya** (docs/MATA_KULIAH.md), bukan nomornya,
@@ -146,6 +167,8 @@ setelah server hidup). Aturannya (`pb_hooks/lib/materiSync.js`), memakai `seedHa
 - Catatan masih sama dengan isi bawaan sebelumnya (hash cocok) → diperbarui ke versi terbaru.
 - Catatan disunting admin atau ditulis tangan (hash tidak cocok / tanpa penanda `materi:v2`) → dilewati, tidak ditimpa.
 - BAB tidak ditemukan di web → dilewati dan dicatat di log (`[materi] ...`).
+- Mata kuliah dicari lewat slug lalu nama (`subjectName` di `index.json`), karena sebagian server masih memakai slug lama
+  (Genetika Kedokteran: `genetika`, bukan `genetika-kedokteran`).
 
 ## Memasukkan atau memperbarui manual
 

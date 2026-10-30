@@ -7,7 +7,7 @@ import { Check, CheckCircle2, ExternalLink, Eye, EyeOff, ImagePlus, Instagram, M
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CampusPicker from '@/components/CampusPicker';
-import { campusPayload, campusState } from '@/lib/campus';
+import { placeErrors, placePayload, placeState } from '@/lib/campus';
 import ExtraFields, { extraDefaults } from '@/components/ExtraFields';
 import MascotTip from '@/components/MascotTip';
 import Illustration from '@/components/Illustration';
@@ -143,8 +143,9 @@ function StepProfile({ draft, cred, settings, onDone }) {
   const [extra, setExtra] = useState(() => extraDefaults(fields, p.extra || {}));
   const [f, setF] = useState({
     loginId: p.loginId || '', name: p.name || '', email: p.email || '', whatsapp: p.whatsapp ? `0${String(p.whatsapp).replace(/^62/, '')}` : '',
-    password: '', passwordConfirm: '', semester: p.semester || '', campus: campusState(p).campus, campusOther: campusState(p).other,
+    password: '', passwordConfirm: '', semester: p.semester || '',
   });
+  const [place, setPlace] = useState(() => placeState(p));
   const [errors, setErrors] = useState({});
   const [error, setError] = useState('');
   const [idState, setIdState] = useState(null);
@@ -168,7 +169,7 @@ function StepProfile({ draft, cred, settings, onDone }) {
     const local = {};
     if (f.password.length < 8) local.password = 'Password minimal 8 karakter.';
     else if (f.password !== f.passwordConfirm) local.passwordConfirm = 'Ulangi password belum sama.';
-    if (f.campus === '__other__' && !f.campusOther.trim()) local.campus = 'Tulis nama kampusmu.';
+    Object.assign(local, placeErrors(place));
     if (Object.keys(local).length) { setErrors(local); return; }
     if (settings?.turnstileSiteKey && !token) { setError('Selesaikan captcha dulu.'); return; }
     setBusy(true);
@@ -179,7 +180,7 @@ function StepProfile({ draft, cred, settings, onDone }) {
         loginId: f.loginId.trim().toLowerCase(),
         semester: f.semester ? Number(f.semester) : 0,
         extra,
-        ...campusPayload(f.campus, f.campusOther),
+        ...placePayload(place),
         turnstileToken: token,
         ...(cred || {}),
       };
@@ -223,16 +224,16 @@ function StepProfile({ draft, cred, settings, onDone }) {
           <input id="pw2" type={show ? 'text' : 'password'} className="input" autoComplete="new-password" value={f.passwordConfirm} onChange={set('passwordConfirm')} />
         </Field>
         {builtin.semester !== 'hidden' && (
-          <Field label={`Semester${builtin.semester === 'optional' || f.campus === '__none__' ? ' (opsional)' : ''}`} htmlFor="sem" error={errors.semester}>
+          <Field label={`Semester${builtin.semester === 'optional' || place.none ? ' (opsional)' : ''}`} htmlFor="sem" error={errors.semester}>
             <select id="sem" className="input" value={f.semester} onChange={set('semester')}>
               <option value="">Pilih semester</option>
               {Array.from({ length: 14 }, (_, i) => <option key={i + 1} value={i + 1}>Semester {i + 1}</option>)}
             </select>
           </Field>
         )}
-        <Field label="Asal kampus" htmlFor="campus" error={errors.campus} hint={f.campus === '__none__' ? 'Tidak apa-apa. Kamu tetap bisa memakai semua soal General dan fitur lainnya. Kampus bisa diisi nanti di Profil.' : 'Soal khusus kampus mengikuti pilihan ini.'}>
-          <CampusPicker value={f.campus} other={f.campusOther} onChange={(campus, campusOther) => setF((x) => ({ ...x, campus, campusOther }))} error={errors.campus} />
-        </Field>
+        <div className="sm:col-span-2">
+          <CampusPicker value={place} onChange={setPlace} errors={errors} />
+        </div>
         <ExtraFields defs={fields} values={extra} onChange={setExtra} errors={errors} idPrefix="su" />
       </div>
       <Turnstile siteKey={settings?.turnstileSiteKey} onToken={setToken} />

@@ -123,7 +123,7 @@ terbaca.
 - [ ] Turnstile aktif (`TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET`)
 - [ ] Google Drive tersambung dan satu unggahan PDF berhasil dari HP
 - [ ] `MEDCOEL_DEV_MODE` tidak ada di medcoel.env
-- [ ] Daftar kampus dicocokkan dengan PDDikti/KKI
+- [ ] Daftar kampus dicocokkan dengan PDDikti/KKI (Pengaturan > Prodi & kampus > Tempel daftar; kampus selain Kedokteran baru berisi contoh)
 - [ ] Tautan komunitas WA, Instagram, dan nomor WA admin diisi di Pengaturan
 - [ ] `npm run test:api` dijalankan ke salinan server (bukan produksi)
 - [ ] Backup harian berjalan dan uji pulih berhasil

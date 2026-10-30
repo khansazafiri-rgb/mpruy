@@ -1,7 +1,7 @@
 import { Download, ExternalLink, Pencil, Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import CampusPicker from '@/components/CampusPicker';
-import { NO_CAMPUS, campusPayload, campusState } from '@/lib/campus';
+import { NO_CAMPUS, placeErrors, placePayload, placeState } from '@/lib/campus';
 import ExtraFields, { extraDefaults, formatExtra } from '@/components/ExtraFields';
 import { Alert, Badge, Field, Modal, PageLoader, Tabs } from '@/components/ui';
 import { api } from '@/lib/api';
@@ -17,7 +17,8 @@ export default function Users() {
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [campusFor, setCampusFor] = useState(null);
-  const [campus, setCampus] = useState({ id: '', other: '' });
+  const [place, setPlace] = useState(placeState(null));
+  const [placeErr, setPlaceErr] = useState({});
   const [editFor, setEditFor] = useState(null);
   const [exporting, setExporting] = useState(false);
 
@@ -93,7 +94,7 @@ export default function Users() {
                 {u.role === 'user' && !u.deletedAt && (u.disabled
                   ? <button type="button" className="btn-primary btn-sm" onClick={() => act(u, 'enable')}>Aktifkan</button>
                   : <button type="button" className="btn-secondary btn-sm" onClick={() => act(u, 'disable')}>Nonaktifkan</button>)}
-                {u.role === 'user' && !u.deletedAt && <button type="button" className="btn-secondary btn-sm" onClick={() => { setCampusFor(u); setCampus({ id: campusState(u).campus, other: campusState(u).other }); }}>Ganti kampus</button>}
+                {u.role === 'user' && !u.deletedAt && <button type="button" className="btn-secondary btn-sm" onClick={() => { setCampusFor(u); setPlace(placeState(u)); setPlaceErr({}); }}>Ganti prodi dan kampus</button>}
                 {u.role === 'user' && (u.deletedAt
                   ? <button type="button" className="btn-secondary btn-sm" onClick={() => act(u, 'restore')}>Pulihkan</button>
                   : <button type="button" className="btn-ghost btn-sm text-coral" onClick={() => act(u, 'delete')}>Hapus lunak</button>)}
@@ -112,12 +113,12 @@ export default function Users() {
       )}
       {editFor && <EditUser u={editFor} fields={fields} onClose={() => setEditFor(null)} onSaved={() => { setEditFor(null); load(); }} />}
       {campusFor && (
-        <Modal open size="sm" title={`Ganti kampus ${campusFor.name}`} onClose={() => setCampusFor(null)} footer={<>
+        <Modal open size="sm" title={`Ganti prodi dan kampus ${campusFor.name}`} onClose={() => setCampusFor(null)} footer={<>
           <button type="button" className="btn-ghost" onClick={() => setCampusFor(null)}>Batal</button>
-          <button type="button" className="btn-primary" onClick={() => act(campusFor, 'campus', campusPayload(campus.id, campus.other))}>Simpan</button>
+          <button type="button" className="btn-primary" onClick={() => { const er = placeErrors(place); setPlaceErr(er); if (!Object.keys(er).length) act(campusFor, 'campus', placePayload(place)); }}>Simpan</button>
         </>}>
           <p className="mb-3 text-sm text-ink-muted">Admin tidak terkena batas ganti kampus. Perubahan dicatat di riwayat.</p>
-          <CampusPicker value={campus.id} other={campus.other} onChange={(id, other) => setCampus({ id, other })} id="adm-campus" />
+          <CampusPicker value={place} onChange={setPlace} errors={placeErr} id="adm-campus" includeUnverified />
         </Modal>
       )}
     </div>

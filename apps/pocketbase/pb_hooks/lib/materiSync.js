@@ -22,7 +22,8 @@ function sync(app) {
   index.forEach((e) => {
     let chapter;
     try {
-      const subject = app.findFirstRecordByFilter("subjects", "slug = {:s}", { s: e.subject });
+      // Mata kuliah bisa masih memakai slug lama (mis. Genetika: "genetika"), jadi nama ikut dicocokkan.
+      const subject = app.findFirstRecordByFilter("subjects", "slug = {:s} || name = {:n}", { s: e.subject, n: e.subjectName || e.subject });
       chapter = app.findFirstRecordByFilter("chapters", "subject = {:s} && title = {:t} && drilling = false", { s: subject.id, t: e.chapter });
     } catch (_) {
       console.log(`[materi] BAB tidak ditemukan: ${e.subject} / ${e.chapter}`);

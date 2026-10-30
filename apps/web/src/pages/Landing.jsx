@@ -85,8 +85,8 @@ const STEPS = [
 const FAQ = [
   ['Beneran gratis?', 'Iya. Semua fitur MEDCOEL bisa dipakai tanpa bayar: latihan per BAB, simulasi, paket soal, leaderboard, dan jadwal ujian.'],
   ['Soalnya dari mana?', 'Dari admin MEDCOEL dan dari PDF soal yang dikirim teman-teman lewat Chat Admin. Setiap kiriman diperiksa admin dulu sebelum tayang.'],
-  ['Soal kampusku bisa dilihat kampus lain?', 'Saat mengirim PDF, kamu memilih sendiri: hanya untuk kampusmu atau General (untuk semua pengguna). Soal khusus kampus hanya terlihat oleh akun dari kampus itu.'],
-  ['Kampusku belum ada di daftar, atau aku belum kuliah?', 'Tetap bisa. Pilih Lainnya bila kampusmu belum ada di daftar, atau pilih Belum punya kampus kalau kamu masih siswa SMA atau belum kuliah. Kamu bisa memakai semua soal General, dan kampus bisa diisi kapan saja di Profil.'],
+  ['Soal kampusku bisa dilihat kampus lain?', 'Saat mengirim PDF, kamu memilih sendiri: hanya untuk prodi dan kampusmu atau General (untuk semua pengguna). Soal khusus kampus hanya terlihat oleh akun dari prodi yang sama di kampus itu, jadi mahasiswa Keperawatan tidak melihat soal Kedokteran di kampus yang sama.'],
+  ['Kampusku belum ada di daftar, atau aku belum kuliah?', 'Tetap bisa. Pilih program studimu, lalu kampusnya. Kalau prodi atau kampusmu belum ada di daftar, tulis sendiri dan kamu otomatis bergabung dengan teman dari prodi dan kampus yang sama. Kalau masih siswa SMA atau belum kuliah, centang Saya belum punya kampus. Kamu bisa memakai semua soal General, dan prodi serta kampus bisa diisi kapan saja di Profil.'],
   ['Bisa dipakai di HP?', 'Bisa. MEDCOEL dibuat untuk layar HP sejak awal, jadi enak dipakai sambil di kereta atau menunggu jadwal praktikum.'],
 ];
 
@@ -407,7 +407,7 @@ export default function Landing() {
 
               <article className="lp-card card-chunky tone-peach tone-surface reveal" style={{ '--i': 1 }}>
                 <p className="lp-card-tag"><Building2 size={17} /> Soal kampusmu</p>
-                <h3>Soal khusus kampus hanya terlihat teman sekampus.</h3>
+                <h3>Soal khusus kampus hanya terlihat teman satu prodi di kampusmu.</h3>
                 <p className="lp-small"><ListChecks size={15} /> Kamu yang memilih saat mengirim PDF.</p>
               </article>
             </div>

@@ -9,6 +9,7 @@
     "test": "node test/format.test.mjs && node --test test/catalog.test.mjs test/explanationEnglish.test.mjs test/explanationService.test.mjs test/clinicalEnglish.test.mjs test/lab.test.mjs test/lab-taxonomy.test.mjs test/achievements.test.mjs test/materi.test.mjs",
     "test:api": "node test/api.test.mjs",
     "test:lab": "node test/lab-api.test.mjs",
-    "test:lab-packs": "node test/lab-pack-api.test.mjs"
+    "test:lab-packs": "node test/lab-pack-api.test.mjs",
+    "test:program-campus": "node test/program-campus-api.test.mjs"
   }
 }

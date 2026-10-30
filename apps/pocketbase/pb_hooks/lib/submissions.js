@@ -67,8 +67,13 @@ function summary(app, sub, opts) {
   let subjectName = "";
   try { subjectName = app.findRecordById("subjects", sub.getString("subject")).getString("name"); } catch (_) {}
   let campusName = "";
+  let programName = "";
   if (sub.getString("campus")) {
-    try { campusName = app.findRecordById("campuses", sub.getString("campus")).getString("name"); } catch (_) {}
+    try {
+      const c = app.findRecordById("campuses", sub.getString("campus"));
+      campusName = c.getString("name");
+      if (c.getString("program")) programName = app.findRecordById("programs", c.getString("program")).getString("name");
+    } catch (_) {}
   }
   const st = sub.getString("status");
   const out = {
@@ -84,6 +89,7 @@ function summary(app, sub, opts) {
     scope: sub.getString("scope"),
     campus: sub.getString("campus"),
     campusName: campusName,
+    programName: programName,
     pdfCount: sub.getInt("pdfCount"),
     viaWhatsapp: sub.getBool("viaWhatsapp"),
     createdByAdmin: sub.getBool("createdByAdmin"),
@@ -121,7 +127,7 @@ function contract(app, sub, auth) {
     submittedAt: s.submittedAt,
     confirmedAt: s.confirmedAt,
     user: s.user ? { id: s.user.id, name: s.user.name, loginId: s.user.loginId } : null,
-    campus: { id: s.campus, name: s.campusName },
+    campus: { id: s.campus, name: s.campusName, program: s.programName },
     subject: { id: s.subject, name: s.subjectName },
     hasKeyAndExplanation: s.hasKey,
     language: s.language,
