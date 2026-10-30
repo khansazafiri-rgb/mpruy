@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Kena gas air mata saat demo?</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root { --forest:#0A3830; --green:#007060; --mint:#9DE0BD; --cream:#F7F2E4; --gold:#F8C038; --coral:#E8665F; --ink:#172B38; }
+  html,body{margin:0;padding:0;background:#000;}
+  #root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans','Inter',sans-serif;color:var(--ink);background:#0A3830}
+  #root svg{position:absolute;left:0;top:0;display:block}
+  #vig{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none;background:radial-gradient(ellipse at 50% 46%,rgba(10,20,30,0) 52%,rgba(10,20,30,.62) 100%);opacity:0}
+  #cap{position:absolute;left:70px;width:940px;top:1400px;height:170px;display:flex;align-items:center;justify-content:center;}
+  #cap .box{background:rgba(10,56,48,.95);border-radius:34px;padding:16px 30px 18px;text-align:center;font-weight:800;font-size:50px;line-height:1.2;color:#fff;letter-spacing:-.01em;max-width:940px;box-sizing:border-box;text-wrap:balance;box-shadow:0 8px 0 rgba(0,0,0,.18)}
+  #cap .w{display:inline-block;margin:0 7px}
+  #cap .box .w.on{color:var(--gold)}
+  #cap .box .w.fut{color:rgba(255,255,255,.9)}
+</style></head>
+<body>
+<div id="root">
+  <svg id="world" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div id="vig"></div>
+  <svg id="ui" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div id="cap"><div class="box" id="capbox"></div></div>
+  <svg id="over" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+</div>
+<script type="module" src="stage.js"></script>
+</body></html>
