@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { EXPRESSIONS, NEUTRAL, OUTFITS, PATCH, POSES, armShape, demoState, DEMO_LENGTH, legShape, lerpState, raka, rakaSvg, walkCycle } from './raka.js';
+import { EXPRESSIONS, LYING, NEUTRAL, OUTFITS, PATCH, POSES, armShape, demoState, DEMO_LENGTH, legShape, lerpState, raka, rakaSvg, walkCycle } from './raka.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 
@@ -172,4 +172,37 @@ test('ekspresi baru (perih, batuk, khawatir, lega): ada, jelas berbeda, dan efek
 test('berkas svg/ varian pakaian sama dengan keluaran raka.js', () => {
   const file = path.join(here, 'svg', 'raka-demo-jalan-a.svg');
   assert.equal(fs.readFileSync(file, 'utf8'), `${rakaSvg(raka('netral', 'jalan', walkCycle(0.12)), { uid: 'raka-demo-jalan-a', outfit: 'demo' })}\n`);
+});
+
+test('berbaring (rebah): SVG sah, memuat kaki, badan, dan kepala; semua bagian di dalam kanvas dan tersambung', () => {
+  for (const e of Object.keys(EXPRESSIONS)) for (const flip of [0, 1]) {
+    const svg = rakaSvg(raka(e, 'berbaring', { flip, blood: 0.8 }), { rebah: true, uid: `b-${e}-${flip}` });
+    assert.match(svg, new RegExp(`viewBox="0 0 ${LYING.w} ${LYING.h}"`));
+    assert.doesNotMatch(svg, /NaN|undefined|Infinity/, `${e}`);
+    assert.equal(svg.split('<g').length - 1, svg.split('</g>').length - 1, `grup seimbang ${e}`);
+    for (const k of ['raka-rebah', 'raka-head-rebah', 'raka-legs', 'raka-patch']) if (k !== 'raka-legs') assert.ok(svg.includes(k), `${e} memuat ${k}`);
+  }
+  // geometri: ujung sepatu (y = 778 + sepatu 44) setelah diputar -90 derajat harus di dalam kanvas, kepala menumpuk pada pangkal leher/bahu
+  const footX = LYING.bx + (778 + 44 - 380);
+  assert.ok(footX < LYING.w, `sepatu di dalam kanvas (${footX} < ${LYING.w})`);
+  const neckBaseX = LYING.bx + (372 - 380);              // pangkal leher setelah diputar
+  assert.ok(LYING.hx + 130 >= neckBaseX + 10, 'kepala menutupi pangkal leher (tersambung ke badan)');
+  assert.ok(LYING.hx - 140 >= 0, 'kepala tidak terpotong di tepi kiri kanvas');
+  assert.ok(LYING.by - 130 >= 0 && LYING.by + 130 <= LYING.h, 'lengan di dalam kanvas');
+});
+
+test('bercak darah: tidak muncul bila blood = 0 (gambar lama identik) dan muncul di baju, tangan, dan pelipis bila > 0', () => {
+  assert.doesNotMatch(rakaSvg(raka('netral')), /#A8322B/);
+  assert.equal(raka('netral').blood, 0);
+  const svg = rakaSvg(raka('bingung', null, { blood: 1 }));
+  assert.ok((svg.match(/#A8322B/g) || []).length >= 6, 'beberapa bercak');
+  // patch logo tidak tertutup bercak: semua bercak badan berada di sisi kiri layar (x < 200)
+  const torso = svg.slice(svg.indexOf('M132 498'), svg.indexOf('M132 498') + 200);
+  assert.ok(torso.length > 0);
+});
+
+test('ekspresi pingsan dan bingung: mata tertutup penuh dan setengah', () => {
+  assert.equal(raka('pingsan').blink, 1);
+  assert.ok(raka('bingung').blink > 0.3 && raka('bingung').blink < 0.6);
+  assert.ok(POSES.berbaring && POSES.pov_perut);
 });

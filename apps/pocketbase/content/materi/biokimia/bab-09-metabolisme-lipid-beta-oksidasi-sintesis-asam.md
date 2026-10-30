@@ -52,9 +52,8 @@ Regulasi umum:
 Dalam banyak skema biokimia dasar, glucagon juga digambarkan sebagai hormon yang mendukung mobilisasi lemak saat puasa. Namun pada manusia, kontrol langsung lipolisis adiposa lebih dominan oleh rendahnya insulin dan catecholamine.
 
 > [!highyield] High-yield
-> Insulin = simpan energi.
-
-Catecholamine / kondisi puasa = mobilisasi energi.
+> - Insulin = simpan energi.
+> - Catecholamine / kondisi puasa = mobilisasi energi.
 
 ## Aktivasi Asam Lemak
 
@@ -243,9 +242,8 @@ Perbedaan penting dengan mitokondria:
 - energi dari tahap FAD tersebut tidak langsung ditangkap sebagai ATP.
 
 > [!highyield] High-yield
-> Peroxisome penting untuk very-long-chain fatty acids.
-
-Mitochondria merupakan lokasi utama beta-oksidasi untuk produksi ATP.
+> - Peroxisome penting untuk very-long-chain fatty acids.
+> - Mitochondria merupakan lokasi utama beta-oksidasi untuk produksi ATP.
 
 ## Hubungan Beta-Oksidasi dengan Ketogenesis
 
@@ -626,10 +624,11 @@ Fatty acid synthesis terjadi di cytosol pada keadaan kenyang. Acetyl-CoA keluar 
 - [Sumber NADPH untuk Sintesis Asam Lemak] NADPH berbeda fungsi dari NADH … :: • NADPH terutama digunakan untuk biosynthetic/reductive reactions dan antioxidant defense
   • NADH terutama mengangkut reducing equivalents menuju ETC untuk produksi ATP
 - [Gambaran Besar] Penting: Gambaran Besar :: Tubuh mencegah beta-oksidasi dan sintesis asam lemak aktif kuat secara bersamaan. Salah satu mekanisme utamanya adalah malonyl-CoA yang menghambat CPT-I.
+- [Lipolisis di Jaringan Adiposa] High-yield: Lipolisis di Jaringan Adiposa :: Insulin = simpan energi. Catecholamine / kondisi puasa = mobilisasi energi.
 - [Aktivasi Asam Lemak] Jebakan soal: Aktivasi Asam Lemak :: Aktivasi asam lemak menghabiskan setara 2 ATP, walaupun hanya satu molekul ATP yang digunakan.
 - [Perhitungan Beta-Oksidasi Palmitat] Penting: Perhitungan Beta-Oksidasi Palmitat :: Buku lama kadang menggunakan nilai 129 ATP atau 131 ATP karena memakai rasio lama 3 ATP/NADH dan 2 ATP/FADH2. Untuk konsep modern, palmitat menghasilkan sekitar 106 ATP netto.
 - [Enzim: methylmalonyl-CoA mutase] High-yield: Enzim: methylmalonyl-CoA mutase :: Odd-chain fatty acids dapat memberikan kontribusi net carbon untuk pembentukan glukosa melalui propionyl-CoA → succinyl-CoA.
-- [Beta-Oksidasi di Peroksisom] High-yield: Beta-Oksidasi di Peroksisom :: Peroxisome penting untuk very-long-chain fatty acids.
+- [Beta-Oksidasi di Peroksisom] High-yield: Beta-Oksidasi di Peroksisom :: Peroxisome penting untuk very-long-chain fatty acids. Mitochondria merupakan lokasi utama beta-oksidasi untuk produksi ATP.
 - [Defisiensi MCAD] Jebakan soal: Defisiensi MCAD :: Hypoglycemia + ketone rendah saat puasa → pikirkan gangguan fatty acid oxidation, terutama MCAD.
 - [Acetyl-CoA Carboxylase / ACC] Penting: Acetyl-CoA Carboxylase / ACC :: ACC adalah rate-limiting enzyme sintesis asam lemak.
 - [Sumber NADPH untuk Sintesis Asam Lemak] Jebakan soal: Sumber NADPH untuk Sintesis Asam Lemak :: Fatty acid synthesis memakai NADPH, bukan NADH.

@@ -39,7 +39,8 @@ routerAdd("POST", "/api/medcoel/upload/init", (e) => {
     if (!sub || sub.getString("user") !== user.id) throw new NotFoundError("Pengajuan tidak ditemukan.");
     if (sub.getString("status") !== "draft") throw new BadRequestError("Pengajuan ini sudah dikirim, file tidak bisa ditambah lagi.");
     const files = e.app.countRecords("stored_files", $dbx.exp("submission = {:s} AND status IN ('pending','ready')", { s: sub.id }));
-    if (files >= 5) throw new BadRequestError("Satu pengajuan paling banyak 5 PDF. Untuk lebih dari 5, kirim lewat WhatsApp admin.");
+    const maxPdfs = require(`${__hooks}/lib/submissions.js`).MAX_PDFS;
+    if (files >= maxPdfs) throw new BadRequestError("Satu pengajuan paling banyak " + maxPdfs + " PDF. Kalau lebih, kirim sebagai pengajuan terpisah.");
     const startToday = u.pbDate(new Date(Date.parse(u.localDate(new Date(), "WIB") + "T00:00:00Z") - 7 * 3600000));
     const today = e.app.countRecords("stored_files", $dbx.exp("owner = {:o} AND kind = 'submission_pdf' AND created >= {:t}", { o: user.id, t: startToday }));
     const quota = s.getInt("dailyUploadQuota") || 10;

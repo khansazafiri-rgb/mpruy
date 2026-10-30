@@ -37,7 +37,8 @@ Jika ayah affected (XᵐY) menikah dengan ibu non-carrier (XᴺXᴺ):
 - Semua anak perempuan menjadi carrier karena menerima X mutan ayah.
 
 > [!warning] Jebakan soal
-> “Seorang ayah hemofilia memiliki anak laki-laki hemofilia.” → Penyakit anak laki-laki TIDAK diwariskan dari ayah. Cari carrier status ibu atau mutasi de novo.
+> - “Seorang ayah hemofilia memiliki anak laki-laki hemofilia.”
+> - → Penyakit anak laki-laki TIDAK diwariskan dari ayah. Cari carrier status ibu atau mutasi de novo.
 
 ## Kapan Perempuan Bisa Terkena Penyakit X-Linked Recessive?
 
@@ -99,7 +100,7 @@ Jika ibu heterozygous affected dan ayah normal:
 
 **Jebakan soal paling penting**: Affected father → ALL daughters affected adalah pola khas X-linked dominant bila penetrance penuh.
 
-## Hemophilia a & B
+## Hemophilia A & B
 
 Hemophilia A:
 
@@ -211,7 +212,7 @@ Temuan:
 - Karena laki-laki hanya memiliki satu X, fenotipe jauh lebih sering pada laki-laki.
 - Affected father tidak menularkan sifat langsung kepada putranya.
 
-## X-Linked Agammaglobulinemia (Bruton)
+## X-Linked Agammaglobulinemia (BRUTON)
 
 - Gen: BTK.
 - X-linked recessive.
@@ -289,9 +290,8 @@ Pola lab:
 - orotic acid urine ↑ akibat excess carbamoyl phosphate dialihkan ke pyrimidine pathway.
 
 > [!warning] Jebakan
-> OTC deficiency → hyperammonemia + ↑orotic acid.
-
-CPS I deficiency → hyperammonemia tetapi orotic acid tidak meningkat seperti OTC.
+> - OTC deficiency → hyperammonemia + ↑orotic acid.
+> - CPS I deficiency → hyperammonemia tetapi orotic acid tidak meningkat seperti OTC.
 
 ## Fragile X Syndrome
 
@@ -521,11 +521,11 @@ Autosomal recessive:
   • monosomy X seperti Turner syndrome dengan X yang tersisa membawa alel mutan
   • terjadi skewed X-inactivation yang secara dominan menonaktifkan X normal
   • terdapat translokasi X–autosome tertentu sehingga X normal lebih banyak diinaktivasi
-- [Hemophilia a & B] Pola laboratorium klasik … :: • aPTT memanjang
+- [Hemophilia A & B] Pola laboratorium klasik … :: • aPTT memanjang
   • PT umumnya normal
   • platelet count normal
   • bleeding time/primary hemostasis umumnya normal
-- [Hemophilia a & B] Carrier mother + normal father … :: • 50% sons affected
+- [Hemophilia A & B] Carrier mother + normal father … :: • 50% sons affected
   • 50% daughters carrier
 - [Duchenne & Becker Muscular Dystrophy] Duchenne muscular dystrophy (DMD) … :: • X-linked recessive
   • Biasanya akibat mutasi yang menyebabkan out-of-frame transcript → dystrophin sangat sedikit/absen
@@ -558,7 +558,7 @@ Autosomal recessive:
 - [Kapan Perempuan Bisa Terkena Penyakit X-Linked Recessive?] High-yield: Kapan Perempuan Bisa Terkena Penyakit X-Linked Recessive? :: Carrier perempuan bukan selalu “100% sehat”. Karena X-inactivation, sebagian carrier dapat memiliki gejala ringan sampai bermakna.
 - [Lesch–Nyhan Syndrome] Penting: Lesch–Nyhan Syndrome :: Lesch–Nyhan adalah contoh hubungan langsung antara X-linked inheritance dan metabolisme purin.
 - [Fabry Disease] Jebakan: Fabry Disease :: Perempuan heterozygous dapat memiliki manifestasi signifikan karena random/skewed X-inactivation. Jadi jangan menganggap semua perempuan heterozygous hanya “carrier tanpa gejala”.
-- [Ornithine Transcarbamylase (OTC) Deficiency] Jebakan: Ornithine Transcarbamylase (OTC) Deficiency :: OTC deficiency → hyperammonemia + ↑orotic acid.
+- [Ornithine Transcarbamylase (OTC) Deficiency] Jebakan: Ornithine Transcarbamylase (OTC) Deficiency :: OTC deficiency → hyperammonemia + ↑orotic acid. CPS I deficiency → hyperammonemia tetapi orotic acid tidak meningkat seperti OTC.
 - [Incontinentia Pigmenti] Konsep penting: Incontinentia Pigmenti :: Pola kulit mosaic pada perempuan sangat ilustratif untuk efek lyonization.
 - [Pseudoautosomal Regions — Pengecualian Penting] Jebakan: Pseudoautosomal Regions — Pengecualian Penting :: “Semua gen kromosom X tidak bisa ditransmisikan ayah ke anak laki-laki” → SALAH untuk gen di pseudoautosomal region.
 - [Diagnosis Molekuler — Pilih Tes Berdasarkan Penyakit] Penting: Diagnosis Molekuler — Pilih Tes Berdasarkan Penyakit :: Tes “genetik” bukan satu tes tunggal. Metode harus disesuaikan dengan tipe mutasi yang dicurigai.

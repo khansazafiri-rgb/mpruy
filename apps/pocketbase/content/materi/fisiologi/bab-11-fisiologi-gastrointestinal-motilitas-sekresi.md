@@ -130,7 +130,7 @@ Sumber mengaitkan gastritis dan peptic ulcer dengan ketidakseimbangan faktor agr
 
 Malabsorpsi dapat berkaitan dengan kekurangan nutrien, osteomalasia, anemia pernisiosa, atau steatorrhea. Gangguan kolon yang disebut meliputi konstipasi, diare, dan megakolon/Hirschsprung.
 
-## Common Exam Traps Bab 11
+## Common Exam Traps bab ini
 
 - Sertoli ≠ Leydig: Sertoli menunjang spermatogenesis; Leydig menghasilkan testosteron.
 - Blood–testis barrier dikaitkan dengan Sertoli.

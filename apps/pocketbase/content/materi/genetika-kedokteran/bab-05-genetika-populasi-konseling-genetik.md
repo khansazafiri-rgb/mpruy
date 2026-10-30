@@ -17,8 +17,8 @@
 - Gene pool = seluruh alel yang terdapat dalam suatu populasi.
 - Allele frequency = proporsi suatu alel di antara seluruh alel pada locus tersebut.
 - Genotype frequency = proporsi individu dengan genotype tertentu.
-- Untuk locus autosomal dengan dua alel A dan a: p = frekuensi alel A.; q = frekuensi alel a.; p + q = 1.
-- Jika populasi berada dalam Hardy–Weinberg equilibrium: AA = p².; Aa = 2pq.; aa = q².; p² + 2pq + q² = 1.
+- Untuk locus autosomal dengan dua alel A dan a: p = frekuensi alel A; q = frekuensi alel a; p + q = 1.
+- Jika populasi berada dalam Hardy–Weinberg equilibrium: AA = p²; Aa = 2pq; aa = q²; p² + 2pq + q² = 1.
 
 > [!highyield] High-yield
 > Frekuensi alel dan frekuensi genotype adalah konsep berbeda. Jangan menyamakan q dengan q².
@@ -159,7 +159,7 @@ Threshold model:
 
 - Liability adalah kecenderungan total dari faktor genetik + lingkungan.
 - Penyakit muncul ketika liability melewati threshold tertentu.
-- Risiko recurrence biasanya lebih tinggi bila: lebih banyak anggota keluarga affected,.; phenotype pada proband lebih berat,.; hubungan kerabat lebih dekat,.; penyakit terjadi pada sex yang lebih jarang terkena untuk trait tertentu.
+- Risiko recurrence biasanya lebih tinggi bila: lebih banyak anggota keluarga affected,; phenotype pada proband lebih berat,; hubungan kerabat lebih dekat,; penyakit terjadi pada sex yang lebih jarang terkena untuk trait tertentu.
 
 ## Heritability
 

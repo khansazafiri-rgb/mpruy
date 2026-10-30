@@ -147,6 +147,18 @@ Saat `/confirm`, Hermes:
 
 Rencana kedaluwarsa dalam 2 jam. JSON hasil tempel disimpan sementara di `HERMES_STATE_DIR/plans/` dengan izin 0600.
 
+## 5b. Mengirim PDF pengajuan
+
+```text
+/files MC261029-SGV2        kirim semua PDF pengajuan itu
+/files MC261029-SGV2 3      kirim hanya PDF nomor 3
+```
+
+Tiap PDF dikirim dengan **kode, nomor, dan jumlah di nama berkas**, misalnya
+`MC261029-SGV2_PDF-03-dari-10_Tissue Bahas Pena B15 UB.pdf` (nama asli siswa dipertahankan di
+belakangnya), dan keterangan yang sama. Jadi urutan dan asal PDF tetap jelas setelah diteruskan,
+dan tiap JSON kembali ke pengajuannya lewat `/put KODE`. Satu pengajuan lewat web maksimal 10 PDF.
+
 ## 6. Systemd
 
 Salin `deploy/medcoel-hermes.service` ke `/etc/systemd/system/medcoel-hermes.service`, lalu:

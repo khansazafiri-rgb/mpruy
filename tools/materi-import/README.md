@@ -13,7 +13,7 @@ Keluaran ditulis ke `apps/pocketbase/content/materi/` (satu `.md` per BAB + `ind
 hasilnya selalu sama untuk dokumen yang sama, jadi perubahan di dokumen terlihat sebagai diff di git.
 
 Selain catatan, konverter menambahkan bagian `## Flashcard {kartu}` yang dibuat `flashcards.py` dari teks catatan itu sendiri.
-Untuk Histologi, Fisiologi, Biokimia (`--skip-unmatched`), dan Genetika Kedokteran (daftar perintah lengkap ada di docs/CATATAN_MATERI.md):
+Untuk Histologi, Fisiologi, Biokimia, Genetika Kedokteran, Patologi Anatomi, Parasitologi, dan Mikrobiologi (daftar perintah lengkap ada di docs/CATATAN_MATERI.md; koreksi hasil QC ada di `corrections/`):
 
 ```bash
 python3 tools/materi-import/docx_to_materi.py "Histologi - Catatan Belajar.docx" --subject histologi --subject-name Histologi --report

@@ -35,9 +35,19 @@ for (const outfit of ['demo', 'jas']) {
   }
 }
 
+// Berbaring (opsi rebah), keadaan darurat (bercak darah) dan pandangan dari mata sendiri (potongan badan, tanpa kepala).
+const extra = [
+  ['raka-berbaring-pingsan.svg', rakaSvg(raka('pingsan', 'berbaring', { blood: 1 }), { uid: 'berbaring-pingsan', rebah: true })],
+  ['raka-berbaring-bingung.svg', rakaSvg(raka('bingung', 'berbaring', { blood: 1 }), { uid: 'berbaring-bingung', rebah: true })],
+  ['raka-berbaring-sadar.svg', rakaSvg(raka('lega', 'berbaring'), { uid: 'berbaring-sadar', rebah: true, rebahTilt: -5 })],
+  ['raka-darurat.svg', rakaSvg(raka('bingung', null, { blood: 1 }), { uid: 'darurat' })],
+  ['raka-pov-perut.svg', rakaSvg(raka('netral', 'pov_perut', { blood: 1 }), { uid: 'pov-perut', shadow: false }).replace('viewBox="0 0 400 800"', 'viewBox="30 366 340 250"')],
+];
+for (const [file, svg] of extra) fs.writeFileSync(path.join(out, file), `${svg}\n`);
+
 // Kepala saja (avatar, bubble bicara, thumbnail): viewBox dipotong ke wajah.
 for (const name of Object.keys(EXPRESSIONS)) {
   const svg = rakaSvg(raka(name), { uid: `wajah-${name}`, shadow: false }).replace('viewBox="0 0 400 800"', 'viewBox="0 0 400 420"');
   fs.writeFileSync(path.join(out, `raka-wajah-${name}.svg`), `${svg}\n`);
 }
-console.log(`${files.length + Object.keys(EXPRESSIONS).length + nOutfit} berkas SVG (${Object.keys(OUTFITS).join(', ')}) -> ${path.relative(process.cwd(), out)}`);
+console.log(`${files.length + Object.keys(EXPRESSIONS).length + nOutfit + extra.length} berkas SVG (${Object.keys(OUTFITS).join(', ')}) -> ${path.relative(process.cwd(), out)}`);

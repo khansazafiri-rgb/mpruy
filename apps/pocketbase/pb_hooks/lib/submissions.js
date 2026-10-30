@@ -222,4 +222,7 @@ function notifyAdmins(app, sub) {
   }
 }
 
-module.exports = { LABEL, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus };
+// Batas PDF per pengajuan lewat web. Harus sama dengan MAX_PDF di apps/web/src/pages/ChatAdmin.jsx.
+const MAX_PDFS = 10;
+
+module.exports = { MAX_PDFS, LABEL, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus };
