@@ -47,8 +47,11 @@ diubah tanpa menyentuh kode, lewat Dashboard Admin > Pengaturan.
   halaman (setelah masuk) dan halaman penuh `/chat-admin`. Isinya sama;
   percakapan yang sedang berjalan tidak hilang saat pindah halaman. Tombol
   tidak muncul di halaman mengerjakan soal supaya tidak menutupi navigasi soal.
-- **Pengajuan lebih dari 5 PDF** tidak membuat catatan otomatis (sesuai PRD);
-  admin membuatnya lewat "Pengajuan manual".
+- **Satu pengajuan lewat web maksimal 10 PDF** (`MAX_PDFS` di `lib/submissions.js`, `MAX_PDF` di
+  `ChatAdmin.jsx`). Tidak ada lagi jalur WhatsApp untuk kirim berkas; lebih dari 10 dikirim sebagai
+  pengajuan terpisah. Admin tetap bisa mencatat kiriman di luar web lewat "Pengajuan manual".
+  Kuota unggah harian per pengguna (`dailyUploadQuota`, bawaan 10 PDF) tetap berlaku, jadi naikkan
+  di Pengaturan bila satu pengajuan penuh sering menghabiskan jatahnya.
 
 ## Perbedaan dengan web lama yang perlu diketahui
 

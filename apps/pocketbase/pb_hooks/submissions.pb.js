@@ -47,7 +47,7 @@ routerAdd("POST", "/api/medcoel/submissions", (e) => {
   try { subject = e.app.findRecordById("subjects", String(b.subject || "")); } catch (_) { subject = null; }
   if (!subject || subject.getBool("hidden")) throw new BadRequestError("Pilih mata kuliahnya dulu.");
   const n = parseInt(b.pdfCount, 10);
-  if (!(n >= 1 && n <= 5)) throw new BadRequestError("Lewat web hanya bisa 1 sampai 5 PDF. Untuk lebih dari 5, kirim lewat WhatsApp admin.");
+  if (!(n >= 1 && n <= subs.MAX_PDFS)) throw new BadRequestError("Satu pengajuan bisa 1 sampai " + subs.MAX_PDFS + " PDF. Kalau lebih, kirim sebagai pengajuan terpisah.");
   const scope = b.scope === "campus" ? "campus" : b.scope === "all" ? "all" : "";
   if (!scope) throw new BadRequestError("Pilih siapa yang boleh melihat soalnya.");
   if (scope === "campus" && !user.getString("campus")) {
@@ -116,7 +116,7 @@ routerAdd("POST", "/api/medcoel/submissions/{id}/send", (e) => {
   }
   const files = subs.files(e.app, sub);
   if (!files.length) throw new BadRequestError("Unggah minimal satu PDF dulu.");
-  if (files.length > 5) throw new BadRequestError("Satu pengajuan paling banyak 5 PDF.");
+  if (files.length > subs.MAX_PDFS) throw new BadRequestError("Satu pengajuan paling banyak " + subs.MAX_PDFS + " PDF.");
   sub.set("pdfCount", files.length);
   sub.set("agreement", true);
   sub.set("submittedAt", u.pbDate(new Date()));
