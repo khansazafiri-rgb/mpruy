@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { EXPRESSIONS, raka, rakaSvg } from './raka.js';
+import { EXPRESSIONS, OUTFITS, raka, rakaSvg, walkCycle } from './raka.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const out = path.join(here, 'svg');
@@ -17,9 +17,27 @@ const files = [
 ];
 for (const [file, state] of files) fs.writeFileSync(path.join(out, file), `${rakaSvg(state, { uid: file.replace('.svg', '') })}\n`);
 
+// Varian pakaian (opsi outfit): berdiri, jalan (dua fase), kaget, batuk, jongkok. Nama berkas: raka-<pakaian>-<pose>.svg
+export const OUTFIT_SHEET = [
+  ['netral', raka('netral')],
+  ['jalan-a', raka('netral', 'jalan', walkCycle(0.12))],
+  ['jalan-b', raka('netral', 'jalan', walkCycle(0.62))],
+  ['kaget', raka('kaget')],
+  ['batuk', raka('batuk')],
+  ['jongkok', raka('khawatir', 'jongkok')],
+];
+let nOutfit = 0;
+for (const outfit of ['demo', 'jas']) {
+  for (const [pose, state] of OUTFIT_SHEET) {
+    const file = `raka-${outfit}-${pose}.svg`;
+    fs.writeFileSync(path.join(out, file), `${rakaSvg(state, { uid: file.replace('.svg', ''), outfit })}\n`);
+    nOutfit += 1;
+  }
+}
+
 // Kepala saja (avatar, bubble bicara, thumbnail): viewBox dipotong ke wajah.
 for (const name of Object.keys(EXPRESSIONS)) {
   const svg = rakaSvg(raka(name), { uid: `wajah-${name}`, shadow: false }).replace('viewBox="0 0 400 800"', 'viewBox="0 0 400 420"');
   fs.writeFileSync(path.join(out, `raka-wajah-${name}.svg`), `${svg}\n`);
 }
-console.log(`${files.length + Object.keys(EXPRESSIONS).length} berkas SVG -> ${path.relative(process.cwd(), out)}`);
+console.log(`${files.length + Object.keys(EXPRESSIONS).length + nOutfit} berkas SVG (${Object.keys(OUTFITS).join(', ')}) -> ${path.relative(process.cwd(), out)}`);

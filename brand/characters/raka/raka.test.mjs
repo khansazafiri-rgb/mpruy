@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { EXPRESSIONS, NEUTRAL, PATCH, POSES, armShape, demoState, DEMO_LENGTH, lerpState, raka, rakaSvg } from './raka.js';
+import { EXPRESSIONS, NEUTRAL, OUTFITS, PATCH, POSES, armShape, demoState, DEMO_LENGTH, legShape, lerpState, raka, rakaSvg, walkCycle } from './raka.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 
@@ -89,11 +89,87 @@ test('patch logo tidak tertutup tangan di pose mana pun', () => {
   const half = PATCH.size / 2;
   const hits = (x, y, r) => Math.hypot(Math.max(Math.abs(x - PATCH.x) - half, 0), Math.max(Math.abs(y - PATCH.y) - half, 0)) < r;
   for (const p of Object.keys(POSES)) {
-    const s = raka(p === 'sapa' ? 'senang' : p, p);
+    const s = raka(p === 'sapa' ? 'senang' : EXPRESSIONS[p] ? p : 'netral', p);
     for (const [side, arm] of [['L', s.armL], ['R', s.armR]]) {
       const g = armShape(side, arm);
       assert.ok(!hits(g.hand[0], g.hand[1], g.handR), `tangan ${side} menutup patch di pose ${p}`);
       g.dots.slice(1).forEach((d, i) => assert.ok(!hits(d[0], d[1], d[2]), `lengan ${side} menutup patch di pose ${p} (titik ${i + 1})`));
     }
   }
+});
+
+// ---------------------------------------------------------------- pakaian, kaki, dan ekspresi tambahan
+
+test('tanpa opsi baru, gambar lama tidak berubah: kaki kanonik tetap dipakai dan tidak ada kaki berengsel', () => {
+  const svg = rakaSvg(raka('netral'));
+  assert.ok(svg.includes('M130 566L194 566') && !svg.includes('raka-legs'));
+  assert.equal(raka('netral').legs.on, 0);
+  assert.deepEqual(Object.keys(OUTFITS), ['harian', 'demo', 'jas']);
+  assert.equal(rakaSvg(raka('netral'), { uid: 'x' }), rakaSvg(raka('netral'), { uid: 'x', outfit: 'harian' }));
+});
+
+test('varian pakaian: warna badan berganti, wajah/rambut/patch tetap, pakaian tak dikenal ditolak', () => {
+  const harian = rakaSvg(raka('netral')), demo = rakaSvg(raka('netral'), { outfit: 'demo' }), jas = rakaSvg(raka('netral'), { outfit: 'jas' });
+  assert.ok(harian.includes('#1D7B75') && !demo.includes('fill="#1D7B75"/>') || demo.includes('#1F2429'));
+  assert.ok(demo.includes('#1F2429') && demo.includes('#2E3744'), 'baju hitam dan celana abu tua');
+  for (const svg of [demo, jas]) {
+    assert.ok(svg.includes('M200 92C270 92 308 138 308 204') && svg.includes('class="raka-patch"'), 'kepala dan patch tetap');
+    assert.doesNotMatch(svg, /NaN|undefined/);
+  }
+  assert.ok(jas.includes('#2B3A44') && jas.includes('stroke="#C9D5D9"'), 'jas dokter: stetoskop dan kantong');
+  assert.throws(() => rakaSvg(raka('netral'), { outfit: 'astronot' }), /Pakaian tidak dikenal/);
+});
+
+test('kaki berengsel: pinggul menempel di badan, kurva menyambung, sepatu menempel di pergelangan, di setiap fase jalan dan lari', () => {
+  for (const run of [false, true]) for (let ph = 0; ph < 1; ph += 0.05) {
+    for (const extra of [{}, { mode: 'depan' }, { dir: -1 }]) {
+      const s = raka('netral', 'jalan', walkCycle(ph, { run, ...extra }));
+      for (const side of ['L', 'R']) {
+        const g = legShape(side, s);
+        const [hx, hy, hr] = g.dots[0];
+        assert.ok(hy >= 540 + s.bob && hy <= 600 + s.bob && hr >= 34, `pinggul ${side} di dalam bawah badan (fase ${ph.toFixed(2)})`);
+        g.dots.slice(1).forEach((d, i) => assert.ok(Math.hypot(d[0] - g.dots[i][0], d[1] - g.dots[i][1]) < d[2] * 0.5, `lingkaran celana saling tumpang tindih (${side}, titik ${i + 1})`));
+        const last = g.dots[g.dots.length - 1];
+        assert.ok(Math.hypot(last[0] - g.ankle[0], last[1] - g.ankle[1]) < 0.01, 'celana berujung di pergelangan, tempat sepatu menempel');
+        assert.ok(g.ankle[1] + 26 <= 778 + 0.01, 'sepatu tidak menembus lantai');
+        assert.ok(g.ankle[1] <= 752, 'pergelangan tidak melayang di bawah lantai');
+        for (const [x, y, r] of g.dots) assert.ok(Number.isFinite(x + y + r));
+      }
+    }
+  }
+});
+
+test('jongkok dan berhenti: kaki tetap tersambung dan menapak, badan turun bersama pinggul', () => {
+  for (const pose of ['jongkok', 'berhenti']) {
+    const s = raka('khawatir', pose);
+    for (const side of ['L', 'R']) {
+      const g = legShape(side, s);
+      assert.ok(g.dots[0][1] >= 566 + s.bob - 1 && g.dots[0][1] <= 600 + s.bob, `${pose}: pinggul ikut badan`);
+      assert.ok(g.ankle[1] + 26 <= 778 + 0.01);
+    }
+    const svg = rakaSvg(s, { outfit: 'demo' });
+    assert.ok(svg.includes('class="raka-legs"') && !/NaN|undefined/.test(svg));
+  }
+  assert.ok(raka('netral', 'jongkok').bob > 100);
+});
+
+test('walkCycle: dua kaki berlawanan fase, lengan berayun berlawanan, hasil selalu bisa digambar', () => {
+  const a = walkCycle(0.1), b = walkCycle(0.6);
+  assert.ok(Math.abs(a.legs.L.dx + a.legs.R.dx) < 1e-9, 'kaki kiri dan kanan berlawanan');
+  assert.ok(Math.abs(a.legs.L.dx - b.legs.L.dx) > 5, 'langkah berubah menurut fase');
+  assert.ok(Math.sign(a.armL.wx - 86) !== Math.sign(a.legs.L.dx) || Math.abs(a.legs.L.dx) < 1, 'lengan kiri berlawanan dengan kaki kiri');
+  for (let ph = 0; ph < 1; ph += 0.05) assert.doesNotMatch(rakaSvg(raka('kaget', 'jalan', walkCycle(ph)), { outfit: 'demo' }), /NaN|undefined/);
+});
+
+test('ekspresi baru (perih, batuk, khawatir, lega): ada, jelas berbeda, dan efeknya muncul', () => {
+  for (const e of ['perih', 'batuk', 'khawatir', 'lega']) assert.ok(EXPRESSIONS[e], e);
+  assert.ok(rakaSvg(raka('perih')).includes('#BFE6F5'), 'air mata');
+  assert.ok(rakaSvg(raka('batuk')).includes('#B7C6CC'), 'efek batuk');
+  assert.doesNotMatch(rakaSvg(raka('netral')), /#BFE6F5|#B7C6CC/, 'ekspresi lama tidak membawa efek baru');
+  assert.ok(raka('batuk').armR.wx < 260, 'kepalan batuk di depan mulut');
+});
+
+test('berkas svg/ varian pakaian sama dengan keluaran raka.js', () => {
+  const file = path.join(here, 'svg', 'raka-demo-jalan-a.svg');
+  assert.equal(fs.readFileSync(file, 'utf8'), `${rakaSvg(raka('netral', 'jalan', walkCycle(0.12)), { uid: 'raka-demo-jalan-a', outfit: 'demo' })}\n`);
 });

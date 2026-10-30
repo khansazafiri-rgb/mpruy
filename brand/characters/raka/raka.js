@@ -41,6 +41,18 @@ export const PALETTE = {
  */
 export const PALETTE_ON_DARK = { hair: '#3A4468', pants: '#38426A', sweater: '#23978F', sleeveFront: '#1F8780' };
 
+/**
+ * Varian pakaian. Dipilih lewat opsi gambar: rakaSvg(state, { outfit: 'demo' }). Bawaan 'harian' = tampilan kanonik.
+ * Struktur: palette = warna yang diganti; onDark = warna tambahan untuk latar gelap (opsi { dark: true });
+ * coat = jas dokter (kerah, V-leher, lapel, saku, stetoskop) digambar di atas badan.
+ * Menambah varian baru cukup menambah satu entri di sini; wajah, rambut, proporsi, dan patch logo tidak berubah.
+ */
+export const OUTFITS = {
+  harian: { label: 'Pakaian sehari-hari: sweater teal', palette: {}, onDark: PALETTE_ON_DARK },
+  demo: { label: 'Baju demo: kaus lengan panjang hitam, celana abu tua', palette: { sweater: '#1F2429', sleeveFront: '#191E22', pants: '#2E3744' }, onDark: { hair: '#3A4468', sweater: '#38414B', sleeveFront: '#2F3841', pants: '#4A5565' } },
+  jas: { label: 'Jas dokter putih di atas sweater teal', palette: { sweater: '#F6F9FA', sleeveFront: '#E9EFF1' }, coat: true, coatLong: true, onDark: { hair: '#3A4468', pants: '#38426A' } },
+};
+
 const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
 const lerp = (a, b, t) => a * (1 - t) + b * t; // tepat a pada t=0 dan b pada t=1
 const hex = (c) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
@@ -71,6 +83,11 @@ export const NEUTRAL = {
   armR: { ...ARM_DOWN_R },
   fxBurst: 0, fxSpark: 0,          // tanda seru kecil di sekitar kepala / ujung jari
   flip: 0,                         // 1 = cermin (Raka menghadap sisi lain)
+  // ---- efek dan aksesori tambahan (semua 0 = tidak tampak, jadi tampilan lama tidak berubah)
+  tears: 0, tearsT: 0, fxCough: 0, // air mata di pipi (0..1, tearsT = fase tetesan), efek batuk di dekat mulut
+  bags: 0, sparkle: 0, shades: 0, shadesY: 0, sweat: 0, slump: 0, dizzy: 0, dizzyT: 0, // kantung mata, kilau mata, kacamata, keringat, bahu turun, mata berputar
+  // ---- kaki: on 0 = kaki kanonik (lurus, sepatu di samping). on 1 = kaki berengsel halus untuk jalan, lari, dan jongkok
+  legs: { on: 0, dir: 0, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } },
 };
 
 /** Ekspresi wajah (hanya bagian wajah; pose lengan terpisah). */
@@ -81,6 +98,14 @@ export const EXPRESSIONS = {
   senang:   { happyEyes: 1, wide: 0, browL: { y: -7, rot: 0 }, browR: { y: -7, rot: 0 }, mouth: { w: 24, up: 4, lo: 38 } },
   menunjuk: { happyEyes: 0, wide: 0.15, browL: { y: -6, rot: 2 }, browR: { y: -6, rot: -2 }, mouth: { w: 17, up: 5, lo: 24 } },
   sedih:    { happyEyes: 0, wide: 0, browL: { y: 0, rot: 14 }, browR: { y: 0, rot: -14 }, mouth: { w: 12, up: -9, lo: -9 } },
+  // mata perih: mata nyaris terpejam, alis menukik, bibir menegang, air mata mengalir
+  perih:    { happyEyes: 0, wide: 0, blink: 0.78, browL: { y: 5, rot: 16 }, browR: { y: 5, rot: -16 }, mouth: { w: 14, up: -3, lo: 5 }, tears: 1 },
+  // batuk: mata terpejam, mulut terbuka, alis turun
+  batuk:    { happyEyes: 0, wide: 0, blink: 0.85, browL: { y: 4, rot: 10 }, browR: { y: 4, rot: -10 }, mouth: { w: 13, up: -6, lo: 30 }, tears: 0.55, fxCough: 1 },
+  // khawatir: alis naik di tengah, mulut bergelombang kecil
+  khawatir: { happyEyes: 0, wide: 0.3, browL: { y: -6, rot: 15 }, browR: { y: -6, rot: -15 }, mouth: { w: 12, up: -4, lo: -1 } },
+  // lega: mata melengkung lembut, senyum kecil, alis santai
+  lega:     { happyEyes: 0.75, wide: 0, browL: { y: -4, rot: 2 }, browR: { y: -4, rot: -2 }, mouth: { w: 17, up: 6, lo: 8 } },
 };
 
 /** Pose badan dan lengan. Koordinat pergelangan (wx, wy) dan lekukan siku (bend, px). */
@@ -109,13 +134,34 @@ export const POSES = {
   sapa: {
     armR: { wx: 360, wy: 314, ex: 352, ey: 404, finger: 0, front: 1 },
   },
+  // kepalan di depan mulut dan badan membungkuk (batuk)
+  batuk: {
+    lean: 4,
+    armR: { wx: 226, wy: 336, ex: 322, ey: 400, finger: 0, front: 1 },
+    armL: { wx: 100, wy: 560, ex: 94, ey: 494, finger: 0, front: 0 },
+  },
+  // tangan kanan mengusap mata kanan
+  usap_mata: {
+    lean: 2,
+    armR: { wx: 258, wy: 272, ex: 332, ey: 360, finger: 0, front: 1 },
+  },
+  // jalan: kaki berengsel menyala; gerakannya dari walkCycle(fase) di bawah (berdiri tegak bila tanpa fase)
+  jalan: { legs: { on: 1, dir: 1, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } } },
+  // berhenti mendadak: badan condong ke belakang, kaki selebar bahu
+  berhenti: { lean: -4, legs: { on: 1, dir: 1, L: { dx: -14, lift: 0, kx: 0 }, R: { dx: 26, lift: 0, kx: 0 } }, armL: { wx: 70, wy: 520, ex: 62, ey: 470, finger: 0, front: 1 }, armR: { wx: 330, wy: 520, ex: 338, ey: 470, finger: 0, front: 1 } },
+  // jongkok: pinggul turun, lutut keluar, tangan di lutut
+  jongkok: {
+    bob: 142, lean: 2,
+    legs: { on: 1, dir: 0, L: { dx: -34, lift: 0, kx: -62 }, R: { dx: 34, lift: 0, kx: 62 } },
+    armL: { wx: 84, wy: 572, ex: 66, ey: 508, finger: 0, front: 1 }, armR: { wx: 316, wy: 572, ex: 334, ey: 508, finger: 0, front: 1 },
+  },
 };
 
 /** Gabungan ekspresi + pose + perubahan bebas (override) menjadi satu keadaan lengkap. */
 export function raka(expression = 'netral', pose = null, overrides = {}) {
   const e = EXPRESSIONS[expression];
   if (!e) throw new Error(`Ekspresi tidak dikenal: ${expression}. Pilihan: ${Object.keys(EXPRESSIONS).join(', ')}`);
-  const poseName = pose || ({ kaget: 'kaget', berpikir: 'berpikir', menunjuk: 'menunjuk', senang: 'senang' }[expression] || 'netral');
+  const poseName = pose || ({ kaget: 'kaget', berpikir: 'berpikir', menunjuk: 'menunjuk', senang: 'senang', batuk: 'batuk' }[expression] || 'netral');
   const p = POSES[poseName];
   if (!p) throw new Error(`Pose tidak dikenal: ${poseName}. Pilihan: ${Object.keys(POSES).join(', ')}`);
   return mergeState(NEUTRAL, e, p, overrides);
@@ -253,6 +299,119 @@ function patchSvg(P, breath, flip, side) {
     + `<g transform="translate(${r1(cx)} ${r1(cy)}) scale(${r1(k * 1000) / 1000}) translate(-128 -128)">${LOGO_MARK(P.logoTeal, P.logoGold)}</g></g>`;
 }
 
+// ---- efek dan aksesori tambahan (semua kembali '' bila nilainya 0, jadi gambar lama identik)
+function bagsSvg(s, lx, rx, ey) {
+  const b = clamp(s.bags, 0, 1); if (b < 0.01) return '';
+  const th = 1.5 + 9.5 * b, op = r1(0.3 + 0.68 * b);
+  const one = (cx) => `<path d="M${cx - 17} ${ey + 17}Q${cx} ${ey + 17 + 12 + th * 0.9} ${cx + 17} ${ey + 17}Q${cx} ${ey + 17 + 12 - th * 0.35 + 2} ${cx - 17} ${ey + 17}Z" fill="#9A5F78" opacity="${op}"/>`;
+  return one(lx) + one(rx);
+}
+function sparkleSvg(s, lx, rx, ey, gx, gy) {
+  const k = clamp(s.sparkle, 0, 1); if (k < 0.02) return '';
+  const star = (cx, cy, r) => `<path d="M${cx} ${r1(cy - r)}Q${r1(cx + r * 0.18)} ${r1(cy - r * 0.18)} ${r1(cx + r)} ${cy}Q${r1(cx + r * 0.18)} ${r1(cy + r * 0.18)} ${cx} ${r1(cy + r)}Q${r1(cx - r * 0.18)} ${r1(cy + r * 0.18)} ${r1(cx - r)} ${cy}Q${r1(cx - r * 0.18)} ${r1(cy - r * 0.18)} ${cx} ${r1(cy - r)}Z" fill="#fff"/>`;
+  const e = (cx) => star(r1(cx + gx + 3), r1(ey + gy - 3), 8.5 * k) + `<circle cx="${r1(cx + gx - 4)}" cy="${r1(ey + gy + 5)}" r="${r1(2.6 * k)}" fill="#fff"/>`;
+  return e(lx) + e(rx);
+}
+function shadesSvg(s, lx, rx, ey) {
+  const k = clamp(s.shades, 0, 1); if (k < 0.02) return '';
+  const y = ey + 12 + s.shadesY - 14 * (1 - k);
+  const lens = (cx) => `<rect x="${cx - 28}" y="${r1(y - 16)}" width="56" height="38" rx="16" fill="#1B2A33"/><path d="M${cx - 17} ${r1(y - 8)}l13 -1" stroke="#fff" stroke-opacity=".35" stroke-width="4" stroke-linecap="round"/>`;
+  return `<g opacity="${r1(k)}">${lens(lx)}${lens(rx)}<path d="M${lx + 28} ${r1(y - 4)}Q200 ${r1(y - 10)} ${rx - 28} ${r1(y - 4)}" fill="none" stroke="#1B2A33" stroke-width="5"/><path d="M${lx - 25} ${r1(y - 6)}L86 ${r1(y - 12)}M${rx + 25} ${r1(y - 6)}L314 ${r1(y - 12)}" stroke="#1B2A33" stroke-width="5" stroke-linecap="round"/></g>`;
+}
+function sweatSvg(s) {
+  const k = clamp(s.sweat, 0, 1); if (k < 0.02) return '';
+  const d = (x, y, sc) => `<path d="M${x} ${r1(y - 15 * sc)}Q${r1(x + 9 * sc)} ${r1(y + 2 * sc)} ${x} ${r1(y + 9 * sc)}Q${r1(x - 9 * sc)} ${r1(y + 2 * sc)} ${x} ${r1(y - 15 * sc)}Z" fill="#9FD6F2" stroke="#6FB1D6" stroke-width="2"/>`;
+  return `<g opacity="${r1(k)}">${d(96, r1(150 + 12 * (1 - k)), 1.15)}${d(310, r1(176 + 10 * (1 - k)), 0.95)}</g>`;
+}
+function dizzySvg(s, lx, rx, ey) {
+  const k = clamp(s.dizzy, 0, 1); if (k < 0.02) return '';
+  const spiral = (cx, dir) => { let d = ''; for (let i = 0; i <= 34; i++) { const a = i * 0.55 * dir + s.dizzyT, r = 1.2 + i * 0.36; d += (i ? 'L' : 'M') + r1(cx + Math.cos(a) * r) + ' ' + r1(ey + Math.sin(a) * r); } return `<circle cx="${cx}" cy="${ey}" r="15" fill="#fff" opacity="${r1(k)}"/><path d="${d}" fill="none" stroke="#212739" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="${r1(k)}"/>`; };
+  return spiral(lx, 1) + spiral(rx, -1);
+}
+// air mata: dua aliran dari kelopak bawah ke pipi, ujungnya bertetes. tearsT menggeser tetesan (animasi).
+function tearsSvg(s, lx, rx, ey) {
+  const k = clamp(s.tears, 0, 1); if (k < 0.02) return '';
+  const one = (cx, dir) => {
+    const len = 14 + 36 * k, x0 = cx + dir * 6, y0 = ey + 14;
+    const ph = ((s.tearsT % 1) + 1) % 1, dy = ph * 18;
+    return `<path d="M${x0} ${y0}Q${x0 + dir * 4} ${y0 + len * 0.5} ${x0 + dir * 2} ${r1(y0 + len)}" fill="none" stroke="#BFE6F5" stroke-width="${r1(5 + 3 * k)}" stroke-linecap="round" opacity="${r1(0.55 + 0.4 * k)}"/>`
+      + `<path d="M${x0 + dir * 2} ${r1(y0 + len + dy - 8)}Q${x0 + dir * 8} ${r1(y0 + len + dy + 4)} ${x0 + dir * 2} ${r1(y0 + len + dy + 10)}Q${x0 - dir * 4} ${r1(y0 + len + dy + 4)} ${x0 + dir * 2} ${r1(y0 + len + dy - 8)}Z" fill="#9FD6F2" opacity="${r1(0.5 + 0.4 * k)}"/>`;
+  };
+  return one(lx, -1) + one(rx, 1);
+}
+// efek batuk: garis kecil dan awan mungil di depan mulut (koordinat kepala)
+function coughSvg(s) {
+  const k = clamp(s.fxCough, 0, 1); if (k < 0.02) return '';
+  return `<g opacity="${r1(k)}" stroke="#8FA6A0" stroke-width="6" stroke-linecap="round" fill="none"><path d="M262 244l22 -12M266 268l28 0M262 292l22 12"/><circle cx="300" cy="268" r="6" fill="#B7C6CC" stroke="none"/><circle cx="318" cy="252" r="4.5" fill="#B7C6CC" stroke="none"/></g>`;
+}
+// jas dokter: kerah, V-leher (sweater terlihat), lapel, kancing, saku, stetoskop. Dipasang di atas badan (opts.coat / outfit 'jas').
+function coatSvg(P, opts) {
+  const W = '#F6F9FA', Sd = '#E3EBEE', LINE = '#C9D5D9';
+  const skirt = opts.coatLong ? `<path d="M104 566C150 588 250 588 296 566L312 706C252 732 148 732 88 706Z" fill="${W}"/><path d="M200 520V722" stroke="${LINE}" stroke-width="3.5"/><rect x="118" y="618" width="58" height="46" rx="9" fill="none" stroke="${LINE}" stroke-width="3.5"/><rect x="224" y="618" width="58" height="46" rx="9" fill="none" stroke="${LINE}" stroke-width="3.5"/>` : '';
+  return skirt
+    + `<path d="M176 378L200 482L224 378C214 392 186 392 176 378Z" fill="${PALETTE.sweater}"/>`
+    + `<path d="M172 372L148 424L186 456L200 484L180 384Z" fill="${Sd}"/><path d="M228 372L252 424L214 456L200 484L220 384Z" fill="${Sd}"/>`
+    + `<path d="M172 372L156 398L184 408Z" fill="${W}"/><path d="M228 372L244 398L216 408Z" fill="${W}"/>`
+    + `<path d="M200 484V566" stroke="${LINE}" stroke-width="3.5"/>`
+    + [510, 540].map((y) => `<circle cx="206" cy="${y}" r="4.6" fill="${LINE}"/>`).join('')
+    + `<rect x="122" y="498" width="56" height="42" rx="9" fill="none" stroke="${LINE}" stroke-width="3.5"/>`
+    + `<path d="M168 384C150 468 250 468 232 384" fill="none" stroke="#2B3A44" stroke-width="7" stroke-linecap="round"/><circle cx="200" cy="470" r="11" fill="#B7C6CC"/><circle cx="200" cy="470" r="5" fill="#8FA6A9"/>`;
+}
+
+/* ------------------------------------------------------------------ kaki berengsel halus (jalan, lari, jongkok) */
+
+// Setiap kaki = SATU bentuk celana meruncing dari pinggul ke pergelangan (lingkaran berwarna sama sepanjang kurva), lalu sepatu
+// yang menumpang di ujungnya. Tidak ada sendi atau bagian lepas; pinggul ikut naik-turun badan (bob), pergelangan ikut lantai.
+const HIP = { L: [164, 566], R: [236, 566] };
+const FLOOR_Y = 778, ANKLE_Y = 752;
+/** Bentuk satu kaki: bulatan celana (x, y, r), titik pergelangan, dan arah sepatu. Dipakai menggambar dan menguji. */
+export function legShape(side, s) {
+  const g = s.legs, leg = side === 'L' ? g.L : g.R;
+  const hx = HIP[side][0], hy = HIP[side][1] + s.bob;
+  const ax = (side === 'L' ? 162 : 238) + leg.dx, ay = ANKLE_Y - leg.lift;
+  const cx = (hx + ax) / 2 + leg.kx * 2, cy = (hy + ay) / 2;
+  const N = 30, dots = [];
+  for (let i = 0; i <= N; i += 1) {
+    const t = i / N, u = 1 - t;
+    dots.push([u * u * hx + 2 * u * t * cx + t * t * ax, u * u * hy + 2 * u * t * cy + t * t * ay, lerp(36, 27, ease(t))]);
+  }
+  const dir = Math.abs(g.dir) < 0.5 ? (side === 'L' ? -1 : 1) : Math.sign(g.dir);
+  return { dots, ankle: [ax, ay], dir, tilt: -leg.lift * 0.55 };
+}
+function legsRigSvg(s, P) {
+  const body = ['L', 'R'].map((side) => {
+    const { dots, ankle: [ax, ay], dir, tilt } = legShape(side, s);
+    const shoe = `<g transform="translate(${r1(ax)} ${r1(ay)}) scale(${dir} 1) rotate(${r1(tilt)})"><path d="M-30 -10C-30 -26 -14 -28 -2 -26L16 -22C34 -18 44 -8 44 6C44 18 40 26 30 26L-24 26C-34 26 -38 16 -36 4Z" fill="${P.shoes}"/><path d="M-35 16H42C41 22 38 26 30 26H-24C-32 26 -36 22 -35 16Z" fill="${P.patchEdge}"/></g>`;
+    return `<g fill="${P.pants}">` + dots.map((d) => `<circle cx="${r1(d[0])}" cy="${r1(d[1])}" r="${r1(d[2])}"/>`).join('') + `</g>` + shoe;
+  }).join('');
+  return `<g class="raka-legs">${body}</g>`;
+}
+/**
+ * Siklus jalan. fase 0..1 = satu langkah penuh. Mengembalikan "perubahan" untuk raka(): kaki, lengan, bob, condong.
+ * opsi: { dir: 1 (ke kanan layar) | -1, stride: jarak langkah px, lift: tinggi angkat kaki px, swing: ayun lengan px, mode: 'samping' | 'depan', run: true }
+ *   raka('netral', 'jalan', walkCycle(t * 1.6, { dir: 1 }))
+ */
+export function walkCycle(phase, o = {}) {
+  const dir = o.dir ?? 1, run = !!o.run;
+  const stride = o.stride ?? (run ? 46 : 34), lift = o.lift ?? (run ? 40 : 26), swing = o.swing ?? (run ? 44 : 26);
+  const depan = o.mode === 'depan';
+  const a = 2 * Math.PI * phase;
+  const leg = (ph) => { const sn = Math.sin(a + ph), cs = Math.cos(a + ph); return { dx: depan ? sn * 8 : sn * stride * dir, lift: Math.max(0, cs) * lift, kx: depan ? 0 : Math.max(0, cs) * 10 * dir }; };
+  const lL = leg(0), lR = leg(Math.PI);
+  const bob = -6 + 6 * Math.abs(Math.sin(a)) * (run ? 1.4 : 1) - (run ? 4 : 0);
+  const arm = (side, ph) => {
+    const sw = Math.sin(a + ph) * swing * dir, base = side === 'L' ? 86 : 314;
+    return depan
+      ? { wx: base, wy: 556 - Math.max(0, Math.cos(a + ph)) * 26, ex: base + (side === 'L' ? 2 : -2), ey: 488, finger: 0, fa: -90, front: 0 }
+      : { wx: base + sw, wy: 556 - Math.abs(sw) * 0.25 - (run ? 30 : 0), ex: base + sw * 0.55 + (side === 'L' ? 2 : -2), ey: 488 - (run ? 16 : 0), finger: 0, fa: -90, front: 0 };
+  };
+  return {
+    legs: { on: 1, dir: depan ? 0 : dir, L: lL, R: lR },
+    armL: arm('L', Math.PI), armR: arm('R', 0),
+    bob, lean: depan ? 0 : (run ? 6 : 2) * dir,
+  };
+}
+
 function browSvg(cx, cy, b, side, P) {
   // lengkung kecil; rot positif = ujung dalam (dekat hidung) naik
   const rot = b.rot * (side === 'L' ? -1 : 1);
@@ -281,7 +440,10 @@ function mouthSvg(m, P, uid) {
  *   logo: false = tanpa patch logo, 'kanan' = patch di dada kanan pemakai (kiri layar); bawaan: dada kiri pemakai }
  */
 export function rakaSvg(state, opts = {}) {
-  const P = { ...PALETTE, ...(opts.palette || {}) };
+  const outfit = OUTFITS[opts.outfit || 'harian'];
+  if (!outfit) throw new Error(`Pakaian tidak dikenal: ${opts.outfit}. Pilihan: ${Object.keys(OUTFITS).join(', ')}`);
+  const coat = !!(opts.coat ?? outfit.coat), coatLong = !!(opts.coatLong ?? (outfit.coat && outfit.coatLong));
+  const P = { ...PALETTE, ...outfit.palette, ...(opts.dark ? outfit.onDark : {}), ...(opts.palette || {}) };
   const s = state;
   const uid = opts.uid || 'raka';
   const flip = s.flip > 0.5;
@@ -306,33 +468,36 @@ export function rakaSvg(state, opts = {}) {
     + `</g>`;
   const face = `<g transform="translate(${r1(200 + faceDx)} 0) scale(${r1(faceSq)} 1) translate(-200 0)">`
     + browSvg(eyeLx, 184, s.browL, 'L', P) + browSvg(eyeRx, 184, s.browR, 'R', P)
-    + eye(eyeLx) + eye(eyeRx)
+    + eye(eyeLx) + eye(eyeRx) + bagsSvg(s, eyeLx, eyeRx, eyeY) + sparkleSvg(s, eyeLx, eyeRx, eyeY, gx, gy) + shadesSvg(s, eyeLx, eyeRx, eyeY) + dizzySvg(s, eyeLx, eyeRx, eyeY) + tearsSvg(s, eyeLx, eyeRx, eyeY)
     + `<g transform="translate(200 ${r1(264 + s.gazeY * 1.5)})">${mouthSvg(s.mouth, P, uid)}</g>`
     + `</g>`;
   const burst = s.fxBurst > 0.02
     ? `<g opacity="${r1(s.fxBurst)}" stroke="${P.fxWarm}" stroke-width="6" stroke-linecap="round"><path d="M40 150L64 170M32 206H62M52 104L70 128"/><path d="M360 150L336 170M368 206H338M348 104L330 128"/></g>`
     : '';
   const headG = `<g class="raka-head" transform="translate(200 ${NECK_Y}) rotate(${r1(s.tilt)}) scale(${HEAD_SCALE}) translate(-200 -${HEAD_PIVOT_Y})">`
-    + earL + earR + `<path d="${headSkin}" fill="${P.skin}"/>` + face + hair + burst + `</g>`;
+    + earL + earR + `<path d="${headSkin}" fill="${P.skin}"/>` + face + hair + burst + sweatSvg(s) + coughSvg(s) + `</g>`;
 
   // ---- badan
   const breath = 1 + s.breath * 0.012;
   const torso = `<g transform="translate(200 580) scale(1 ${r1(breath)}) translate(-200 -580)">`
-    + `<path d="M114 452C112 396 150 374 172 372C182 388 218 388 228 372C250 374 288 396 286 452L296 566C250 588 150 588 104 566Z" fill="${P.sweater}"/></g>`;
-  const neck = `<rect x="170" y="336" width="60" height="62" rx="16" fill="${P.skinShade}"/>`;
+    + `<path d="M114 452C112 396 150 374 172 372C182 388 218 388 228 372C250 374 288 396 286 452L296 566C250 588 150 588 104 566Z" fill="${P.sweater}"/>${coat ? coatSvg(P, { coatLong: coatLong && opts.coatLong !== false }) : ''}</g>`;
+  const slump = clamp(s.slump, 0, 40);
+  const neck = `<rect x="170" y="336" width="60" height="${r1(62 + slump)}" rx="16" fill="${P.skinShade}"/>`;
+  const sl = (x) => (slump ? `<g transform="translate(0 ${r1(slump)})">${x}</g>` : x);
   const patch = opts.logo === false ? '' : patchSvg(P, s.breath, flip, opts.logo);
   const arms = (front) => ['L', 'R'].map((sd) => {
     const a = sd === 'L' ? s.armL : s.armR;
     return (a.front > 0.5) === front ? armSvg(sd, a, P) : '';
   }).join('');
   const body = `<g class="raka-body" transform="translate(0 ${r1(s.bob)}) rotate(${r1(s.lean)} 200 580)">`
-    + arms(false) + neck + torso + patch + headG + arms(true) + `</g>`;
+    + sl(arms(false)) + neck + sl(torso + patch) + headG + sl(arms(true)) + `</g>`;
 
   // ---- kaki (tetap diam)
-  const legs = `<path d="M130 566L194 566L190 736L134 736Z" fill="${P.pants}" stroke="${P.pants}" stroke-width="12" stroke-linejoin="round"/>`
+  const legsDefault = `<path d="M130 566L194 566L190 736L134 736Z" fill="${P.pants}" stroke="${P.pants}" stroke-width="12" stroke-linejoin="round"/>`
     + `<path d="M206 566L270 566L266 736L210 736Z" fill="${P.pants}" stroke="${P.pants}" stroke-width="12" stroke-linejoin="round"/>`
     + `<path d="M88 778C82 750 112 734 152 736L190 738C202 752 200 778 188 778Z" fill="${P.shoes}"/>`
     + `<path d="M312 778C318 750 288 734 248 736L210 738C198 752 200 778 212 778Z" fill="${P.shoes}"/>`;
+  const legs = s.legs && s.legs.on > 0.5 ? legsRigSvg(s, P) : legsDefault;
   const shadow = opts.shadow === false ? '' : `<ellipse cx="200" cy="781" rx="124" ry="9" fill="#10212B" opacity=".13"/>`;
 
   // tanda kecil di ujung jari (menunjuk)
