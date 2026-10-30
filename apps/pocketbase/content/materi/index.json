@@ -530,5 +530,229 @@
     "chapter": "Dasar Genetika Kanker",
     "file": "genetika-kedokteran/bab-06-dasar-genetika-kanker.md",
     "docBab": 6
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Jejas Sel & Adaptasi Sel",
+    "file": "patologi-anatomi/bab-01-jejas-sel-adaptasi-sel.md",
+    "docBab": 1
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Radang Akut & Kronik",
+    "file": "patologi-anatomi/bab-02-radang-akut-kronik.md",
+    "docBab": 2
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Penyembuhan Luka & Regenerasi",
+    "file": "patologi-anatomi/bab-03-penyembuhan-luka-regenerasi.md",
+    "docBab": 3
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Gangguan Hemodinamik (Trombosis, Emboli, Infark)",
+    "file": "patologi-anatomi/bab-04-gangguan-hemodinamik-trombosis-emboli-infark.md",
+    "docBab": 4
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Neoplasia: Prinsip Umum & Klasifikasi",
+    "file": "patologi-anatomi/bab-05-neoplasia-prinsip-umum-klasifikasi.md",
+    "docBab": 5
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Patologi Sistem Kardiovaskular",
+    "file": "patologi-anatomi/bab-06-patologi-sistem-kardiovaskular.md",
+    "docBab": 6
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Patologi Sistem Respirasi",
+    "file": "patologi-anatomi/bab-07-patologi-sistem-respirasi.md",
+    "docBab": 7
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Patologi Sistem Digestif & Hepar",
+    "file": "patologi-anatomi/bab-08-patologi-sistem-digestif-hepar.md",
+    "docBab": 8
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Patologi Sistem Urogenital",
+    "file": "patologi-anatomi/bab-09-patologi-sistem-urogenital.md",
+    "docBab": 9
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Patologi Sistem Endokrin",
+    "file": "patologi-anatomi/bab-10-patologi-sistem-endokrin.md",
+    "docBab": 10
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Patologi Payudara & Ginekologi",
+    "file": "patologi-anatomi/bab-11-patologi-payudara-ginekologi.md",
+    "docBab": 11
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Patologi Muskuloskeletal",
+    "file": "patologi-anatomi/bab-12-patologi-muskuloskeletal.md",
+    "docBab": 12
+  },
+  {
+    "subject": "patologi-anatomi",
+    "subjectName": "Patologi Anatomi",
+    "chapter": "Patologi Sistem Saraf Pusat",
+    "file": "patologi-anatomi/bab-13-patologi-sistem-saraf-pusat.md",
+    "docBab": 13
+  },
+  {
+    "subject": "parasitologi",
+    "subjectName": "Parasitologi",
+    "chapter": "Protozoa Usus (Entamoeba, Giardia)",
+    "file": "parasitologi/bab-01-protozoa-usus-entamoeba-giardia.md",
+    "docBab": 1
+  },
+  {
+    "subject": "parasitologi",
+    "subjectName": "Parasitologi",
+    "chapter": "Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)",
+    "file": "parasitologi/bab-02-protozoa-darah-jaringan-plasmodium-malaria.md",
+    "docBab": 2
+  },
+  {
+    "subject": "parasitologi",
+    "subjectName": "Parasitologi",
+    "chapter": "Trypanosoma & Leishmania",
+    "file": "parasitologi/bab-03-trypanosoma-leishmania.md",
+    "docBab": 3
+  },
+  {
+    "subject": "parasitologi",
+    "subjectName": "Parasitologi",
+    "chapter": "Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)",
+    "file": "parasitologi/bab-04-nematoda-usus-ascaris-trichuris-cacing-tambang.md",
+    "docBab": 4
+  },
+  {
+    "subject": "parasitologi",
+    "subjectName": "Parasitologi",
+    "chapter": "Nematoda Jaringan (Filaria)",
+    "file": "parasitologi/bab-05-nematoda-jaringan-filaria.md",
+    "docBab": 5
+  },
+  {
+    "subject": "parasitologi",
+    "subjectName": "Parasitologi",
+    "chapter": "Cestoda (Taenia, Echinococcus)",
+    "file": "parasitologi/bab-06-cestoda-taenia-echinococcus.md",
+    "docBab": 6
+  },
+  {
+    "subject": "parasitologi",
+    "subjectName": "Parasitologi",
+    "chapter": "Trematoda (Schistosoma, Fasciola)",
+    "file": "parasitologi/bab-07-trematoda-schistosoma-fasciola.md",
+    "docBab": 7
+  },
+  {
+    "subject": "parasitologi",
+    "subjectName": "Parasitologi",
+    "chapter": "Entomologi Kedokteran (Vektor Penyakit)",
+    "file": "parasitologi/bab-08-entomologi-kedokteran-vektor-penyakit.md",
+    "docBab": 8
+  },
+  {
+    "subject": "mikrobiologi",
+    "subjectName": "Mikrobiologi",
+    "chapter": "Bakteriologi Umum: Struktur & Klasifikasi Bakteri",
+    "file": "mikrobiologi/bab-01-bakteriologi-umum-struktur-klasifikasi-bakteri.md",
+    "docBab": 1
+  },
+  {
+    "subject": "mikrobiologi",
+    "subjectName": "Mikrobiologi",
+    "chapter": "Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus)",
+    "file": "mikrobiologi/bab-02-bakteri-gram-positif-patogen-staphylococcus.md",
+    "docBab": 2
+  },
+  {
+    "subject": "mikrobiologi",
+    "subjectName": "Mikrobiologi",
+    "chapter": "Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)",
+    "file": "mikrobiologi/bab-03-bakteri-gram-negatif-patogen-e-coli-salmonella.md",
+    "docBab": 3
+  },
+  {
+    "subject": "mikrobiologi",
+    "subjectName": "Mikrobiologi",
+    "chapter": "Mycobacterium & Tuberkulosis",
+    "file": "mikrobiologi/bab-04-mycobacterium-tuberkulosis.md",
+    "docBab": 4
+  },
+  {
+    "subject": "mikrobiologi",
+    "subjectName": "Mikrobiologi",
+    "chapter": "Bakteri Anaerob & Spirochaeta",
+    "file": "mikrobiologi/bab-05-bakteri-anaerob-spirochaeta.md",
+    "docBab": 5
+  },
+  {
+    "subject": "mikrobiologi",
+    "subjectName": "Mikrobiologi",
+    "chapter": "Virologi Umum: Struktur & Replikasi Virus",
+    "file": "mikrobiologi/bab-06-virologi-umum-struktur-replikasi-virus.md",
+    "docBab": 6
+  },
+  {
+    "subject": "mikrobiologi",
+    "subjectName": "Mikrobiologi",
+    "chapter": "Virus Hepatitis (A, B, C, D, E)",
+    "file": "mikrobiologi/bab-07-virus-hepatitis-a-b-c-d-e.md",
+    "docBab": 7
+  },
+  {
+    "subject": "mikrobiologi",
+    "subjectName": "Mikrobiologi",
+    "chapter": "HIV & Retrovirus",
+    "file": "mikrobiologi/bab-08-hiv-retrovirus.md",
+    "docBab": 8
+  },
+  {
+    "subject": "mikrobiologi",
+    "subjectName": "Mikrobiologi",
+    "chapter": "Virus Respirasi (Influenza, Corona, RSV)",
+    "file": "mikrobiologi/bab-09-virus-respirasi-influenza-corona-rsv.md",
+    "docBab": 9
+  },
+  {
+    "subject": "mikrobiologi",
+    "subjectName": "Mikrobiologi",
+    "chapter": "Mikologi: Jamur Superfisial & Sistemik",
+    "file": "mikrobiologi/bab-11-mikologi-jamur-superfisial-sistemik.md",
+    "docBab": 11
+  },
+  {
+    "subject": "mikrobiologi",
+    "subjectName": "Mikrobiologi",
+    "chapter": "Uji Sensitivitas Antibiotik & Resistensi",
+    "file": "mikrobiologi/bab-12-uji-sensitivitas-antibiotik-resistensi.md",
+    "docBab": 12
   }
 ]

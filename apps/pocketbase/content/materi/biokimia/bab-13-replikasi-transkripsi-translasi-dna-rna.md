@@ -360,11 +360,9 @@ Tiga site penting:
 - **E site (exit site)**: tempat tRNA keluar.
 
 > [!tip] Mnemonic
-> A → Arrive
-
-P → Peptide
-
-E → Exit
+> - A → Arrive
+> - P → Peptide
+> - E → Exit
 
 ## Tahap Translasi
 
@@ -614,10 +612,10 @@ Translation membaca mRNA dalam codon triplet. AUG memulai translation; UAA, UAG,
 - [Gambaran Besar: Central Dogma] Penting: Gambaran Besar: Central Dogma :: DNA dan RNA selalu disintesis dalam arah 5′ → 3′. Template dibaca dalam arah 3′ → 5′. Protein disintesis dari ujung N-terminal menuju C-terminal. Reverse transcription merupakan pengecualian penting terhadap aliran klasik DNA → RNA, karena RNA dapat menjadi template pembentukan DNA melalui reverse transcriptase.
 - [2. Lagging strand] Jebakan soal: 2. Lagging strand :: Walaupun leading dan lagging strand memiliki pola yang berbeda, DNA polymerase pada keduanya tetap hanya dapat mensintesis DNA dalam arah 5′ → 3′.
 - [Proofreading dan Fidelity] Penting: Proofreading dan Fidelity :: Polymerase activity: sintesis 5′ → 3′. Proofreading exonuclease: 3′ → 5′.
-- [Telomer dan Telomerase] High-yield: Telomer dan Telomerase :: Reaktivasi telomerase merupakan salah satu mekanisme yang memungkinkan sel kanker mempertahankan kemampuan proliferasi jangka panjang.
+- [Korelasi Klinis Replikasi] Jebakan soal: Korelasi Klinis Replikasi :: Topoisomerase tidak membuka hydrogen bond seperti helicase. Topoisomerase mengatasi supercoiling dan torsional stress dengan pemutusan sementara backbone DNA.
 - [mRNA: 5′-AUG Gaa Uuu-3′] Jebakan soal: mRNA: 5′-AUG Gaa Uuu-3′ :: Jika soal memberi coding strand, jangan membuat komplemennya untuk menentukan mRNA. Cukup ganti T → U.
-- [RNA Polymerase Eukariot] High-yield: RNA Polymerase Eukariot :: Pol I → rRNA utama. Pol II → mRNA. Pol III → tRNA + 5S rRNA.
 - [2. Splicing] Penting: 2. Splicing :: Intron = bagian yang dibuang dari mature mRNA. Exon = bagian yang dipertahankan dalam mature RNA.
+- [Inhibitor Transkripsi High-Yield] Jebakan soal: Inhibitor Transkripsi High-Yield :: Rifampin menghambat transcription bakteri, bukan translation.
 - [tRNA dan Aminoacyl-tRNA Synthetase] Penting: tRNA dan Aminoacyl-tRNA Synthetase :: Akurasi translation sangat bergantung pada aminoacyl-tRNA synthetase. Ribosome membaca codon–anticodon, tetapi enzyme inilah yang menentukan apakah tRNA membawa asam amino yang tepat.
 - [1. Initiation] Jebakan soal: 1. Initiation :: Pada initiation, initiator tRNA masuk langsung ke P site, bukan A site.
 - [Targeting Protein ke Rough ER] Penting: Targeting Protein ke Rough ER :: Ribosome “free” dan ribosome pada RER secara struktural sama. Perbedaannya adalah lokasi sementara akibat targeting signal pada protein yang sedang disintesis.

@@ -17,7 +17,7 @@
 - Satu alel patogen sudah cukup untuk menimbulkan fenotipe penyakit.
 - Individu terkena paling sering heterozygous: Aa.
 - Individu tidak terkena biasanya aa.
-- Aa × aa → setiap kehamilan: 50% Aa = terkena.; 50% aa = tidak terkena.
+- Aa × aa → setiap kehamilan: 50% Aa = terkena; 50% aa = tidak terkena.
 - Risiko setiap kehamilan bersifat independen; hasil anak sebelumnya tidak mengubah probabilitas anak berikutnya.
 - Laki-laki dan perempuan terkena dengan frekuensi sebanding.
 - Transmisi male-to-male dapat terjadi.
@@ -202,7 +202,7 @@ Konsep dosis gen:
 - Penyakit muncul bila kedua alel pada locus terkait mengalami pathogenic variant.
 - Genotipe klasik affected = aa.
 - Carrier = Aa, umumnya tidak menunjukkan penyakit penuh.
-- Dua carrier: Aa × Aa → setiap kehamilan: 25% aa = affected.; 50% Aa = carrier.; 25% AA = unaffected non-carrier.
+- Dua carrier: Aa × Aa → setiap kehamilan: 25% aa = affected; 50% Aa = carrier; 25% AA = unaffected non-carrier.
 - Jika anak diketahui tidak affected dari pasangan carrier × carrier, probabilitas ia carrier = 2/3.
 
 ![Pola pedigree autosomal recessive: orang tua carrier dapat memiliki anak affected](https://lh3.googleusercontent.com/d/1uwRyANjTd704EQ2xh9PryeFIlMmzF1vU)

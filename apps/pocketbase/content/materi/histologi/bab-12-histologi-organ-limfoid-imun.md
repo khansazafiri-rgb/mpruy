@@ -386,7 +386,7 @@ Parenkim thymus berkurang dan sebagian digantikan adipose tissue, tetapi residu 
 
 **Shortcut**: Hassall corpuscle = thymus, hampir pathognomonic untuk spot histology.
 
-## Malt
+## MALT
 
 MALT = mucosa-associated lymphoid tissue.
 
@@ -407,7 +407,7 @@ Peyer patches adalah aggregated lymphoid nodules terutama di ileum.
 > [!praktikum] Practical clue
 > Ileal mucosa + aggregated lymphoid follicles = Peyer patches/GALT.
 
-## Balt
+## BALT
 
 BALT adalah bronchus-associated lymphoid tissue pada respiratory mucosa.
 

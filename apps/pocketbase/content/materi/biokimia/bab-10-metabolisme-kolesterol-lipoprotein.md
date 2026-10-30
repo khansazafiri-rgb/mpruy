@@ -128,9 +128,8 @@ Fungsi:
 LCAT diaktifkan oleh ApoA-I.
 
 > [!warning] Jebakan soal
-> ACAT = intracellular cholesterol esterification.
-
-LCAT = plasma/HDL cholesterol esterification.
+> - ACAT = intracellular cholesterol esterification.
+> - LCAT = plasma/HDL cholesterol esterification.
 
 ## Pembentukan Asam Empedu
 
@@ -333,9 +332,8 @@ Hormone-sensitive lipase / HSL:
 - dihambat insulin.
 
 > [!warning] Jebakan soal
-> LPL = lipid dalam darah.
-
-HSL = lipid tersimpan di adipocyte.
+> - LPL = lipid dalam darah.
+> - HSL = lipid tersimpan di adipocyte.
 
 ## Insulin dan Metabolisme Lipoprotein
 
@@ -639,6 +637,7 @@ Kolesterol dibuat dari acetyl-CoA melalui HMG-CoA reductase, enzim rate-limiting
 - [Familial Hypercholesterolemia] Dapat pula berkaitan dengan … :: • ApoB-100 abnormal
   • gain-of-function PCSK9
 - [HMG-CoA Reductase: Rate-Limiting Enzyme] Penting: HMG-CoA Reductase: Rate-Limiting Enzyme :: HMG-CoA reductase menggunakan NADPH dan berada pada membran endoplasmic reticulum.
-- [ACAT vs LCAT] Jebakan soal: ACAT vs LCAT :: ACAT = intracellular cholesterol esterification.
+- [ACAT vs LCAT] Jebakan soal: ACAT vs LCAT :: ACAT = intracellular cholesterol esterification. LCAT = plasma/HDL cholesterol esterification.
+- [LPL vs Hormone-Sensitive Lipase] Jebakan soal: LPL vs Hormone-Sensitive Lipase :: LPL = lipid dalam darah. HSL = lipid tersimpan di adipocyte.
 - [Aterosklerosis dan Modified LDL] High-yield: Aterosklerosis dan Modified LDL :: LDL receptor uptake ≠ scavenger receptor uptake.
 - [Tangier Disease] High-yield: Tangier Disease :: ABCA1 penting untuk pembentukan HDL nascent dan reverse cholesterol transport.

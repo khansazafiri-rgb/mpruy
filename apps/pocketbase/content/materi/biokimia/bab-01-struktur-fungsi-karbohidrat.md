@@ -184,19 +184,19 @@ Tiga monosakarida absorptif yang paling ditekankan:
 - Galaktosa.
 - Fruktosa.
 
-## Sglt-1
+## SGLT-1
 
 Glukosa dan galaktosa masuk dari lumen usus ke enterosit melalui SGLT-1.
 
 **Mekanisme yang ditekankan**: transport aktif sekunder bersama Na+.
 
-## Glut-5
+## GLUT-5
 
 Fruktosa masuk dari lumen usus ke enterosit melalui GLUT-5.
 
 **Mekanisme**: difusi terfasilitasi.
 
-## Glut-2
+## GLUT-2
 
 Setelah berada di enterosit, monosakarida keluar menuju sirkulasi darah melalui GLUT-2.
 
@@ -253,7 +253,7 @@ Materi menghubungkan metabolisme karbohidrat dengan pembentukan ribosa dan deoks
 - Ketiganya keluar dari enterosit melalui GLUT-2.
 - Slow wave metabolik seperti glikolisis belum menjadi fokus bab ini; jangan mencampur klasifikasi karbohidrat dengan detail jalur metabolisme berikutnya.
 
-## Master Flow Bab 1
+## Master Flow bab ini
 
 Makanan berkarbohidrat → mono/di/oligo/polisakarida → pemecahan enzimatik → monosakarida → absorpsi enterosit → SGLT-1 atau GLUT-5 → keluar via GLUT-2 → darah → energi / penyimpanan / prekursor biomolekul.
 
@@ -267,8 +267,8 @@ Karbohidrat dibagi menjadi monosakarida, disakarida, oligosakarida, dan polisaka
 - [Gugus Fungsi Monosakarida] Aldehid :: mengandung gugus -CHO.
 - [Gugus Fungsi Monosakarida] Keton :: mengandung gugus C=O.
 - [Karbohidrat Kompleks] Contoh penting dalam materi :: glikogen, amilosa, dan amilopektin.
-- [Sglt-1] Mekanisme yang ditekankan :: transport aktif sekunder bersama Na+.
-- [Glut-5] Mekanisme :: difusi terfasilitasi.
+- [SGLT-1] Mekanisme yang ditekankan :: transport aktif sekunder bersama Na+.
+- [GLUT-5] Mekanisme :: difusi terfasilitasi.
 - [Master Flow Absorpsi Monosakarida] Lumen usus :: Glukosa/Galaktosa → SGLT-1 + Na+ → enterosit.
 - [Klasifikasi Karbohidrat] Karbohidrat diklasifikasikan berdasarkan jumlah unit gula penyusunnya … :: • Monosakarida = 1 unit gula
   • Disakarida = 2 unit gula

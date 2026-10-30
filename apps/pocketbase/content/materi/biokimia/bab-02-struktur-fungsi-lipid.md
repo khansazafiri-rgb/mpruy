@@ -219,7 +219,7 @@ Hal ini memungkinkan lipid dibawa di plasma darah.
 
 **Urutan sumber**: usus → kilomikron → jaringan lemak & otot → sisa menuju hati.
 
-## Vldl
+## VLDL
 
 VLDL = Very Low Density Lipoprotein.
 
@@ -227,13 +227,13 @@ VLDL = Very Low Density Lipoprotein.
 
 **Fungsi**: mengangkut trigliserida yang dibuat hati menuju jaringan.
 
-## Idl
+## IDL
 
 IDL = Intermediate Density Lipoprotein.
 
 Sumber menggambarkannya sebagai bentuk peralihan antara VLDL dan LDL.
 
-## Ldl
+## LDL
 
 LDL = Low Density Lipoprotein.
 
@@ -241,7 +241,7 @@ LDL = Low Density Lipoprotein.
 
 Sumber juga memberi label populer “kolesterol jahat” dan mengaitkan kelebihan LDL dengan penumpukan di pembuluh darah serta aterosklerosis.
 
-## Hdl
+## HDL
 
 HDL = High Density Lipoprotein.
 
@@ -304,7 +304,7 @@ LPL menghidrolisis trigliserida menjadi:
 
 Hepatic lipase membantu metabolisme IDL, LDL, dan HDL di hati menurut sumber.
 
-## Lcat
+## LCAT
 
 LCAT = Lecithin Cholesterol Acyltransferase.
 
