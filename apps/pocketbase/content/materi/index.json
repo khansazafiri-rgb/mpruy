@@ -1,314 +1,534 @@
 [
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Umum & Terminologi Anatomis",
     "file": "anatomi/bab-01-anatomi-umum-terminologi-anatomis.md",
     "docBab": 1
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Osteologi & Artrologi (Sistem Rangka & Sendi)",
     "file": "anatomi/bab-02-osteologi-artrologi-sistem-rangka-sendi.md",
     "docBab": 2
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Miologi (Sistem Otot)",
     "file": "anatomi/bab-03-miologi-sistem-otot.md",
     "docBab": 3
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Kepala & Leher",
     "file": "anatomi/bab-04-anatomi-kepala-leher.md",
     "docBab": 4
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Cranium & Isi Rongga Tengkorak",
     "file": "anatomi/bab-05-anatomi-cranium-isi-rongga-tengkorak.md",
     "docBab": 5
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Toraks (Dinding Toraks, Mediastinum)",
     "file": "anatomi/bab-06-anatomi-toraks-dinding-toraks-mediastinum.md",
     "docBab": 6
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Jantung & Pembuluh Darah Besar",
     "file": "anatomi/bab-07-anatomi-jantung-pembuluh-darah-besar.md",
     "docBab": 7
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Paru & Saluran Napas",
     "file": "anatomi/bab-08-anatomi-paru-saluran-napas.md",
     "docBab": 8
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Abdomen (Dinding, Rongga Peritoneum)",
     "file": "anatomi/bab-09-anatomi-abdomen-dinding-rongga-peritoneum.md",
     "docBab": 9
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)",
     "file": "anatomi/bab-10-anatomi-sistem-digestif-gasterkolon-hepar.md",
     "docBab": 10
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Pelvis & Perineum",
     "file": "anatomi/bab-11-anatomi-pelvis-perineum.md",
     "docBab": 11
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Sistem Urogenital",
     "file": "anatomi/bab-12-anatomi-sistem-urogenital.md",
     "docBab": 12
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Ekstremitas Atas",
     "file": "anatomi/bab-13-anatomi-ekstremitas-atas.md",
     "docBab": 13
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Ekstremitas Bawah",
     "file": "anatomi/bab-14-anatomi-ekstremitas-bawah.md",
     "docBab": 14
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Neuroanatomi: Otak & Batang Otak",
     "file": "anatomi/bab-15-neuroanatomi-otak-batang-otak.md",
     "docBab": 15
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Neuroanatomi: Medula Spinalis & Saraf Perifer",
     "file": "anatomi/bab-16-neuroanatomi-medula-spinalis-saraf-perifer.md",
     "docBab": 16
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Sistem Saraf Otonom",
     "file": "anatomi/bab-17-anatomi-sistem-saraf-otonom.md",
     "docBab": 17
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Panca Indra (Mata, Telinga, Hidung)",
     "file": "anatomi/bab-18-anatomi-panca-indra-mata-telinga-hidung.md",
     "docBab": 18
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Sistem Limfatik",
     "file": "anatomi/bab-19-anatomi-sistem-limfatik.md",
     "docBab": 19
   },
   {
     "subject": "anatomi",
+    "subjectName": "Anatomi",
     "chapter": "Anatomi Perkembangan (Embriologi Dasar)",
     "file": "anatomi/bab-20-anatomi-perkembangan-embriologi-dasar.md",
     "docBab": 20
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Jaringan Dasar: Epitel",
     "file": "histologi/bab-01-jaringan-dasar-epitel.md",
     "docBab": 1
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Jaringan Dasar: Ikat, Tulang Rawan, Tulang",
     "file": "histologi/bab-02-jaringan-dasar-ikat-tulang-rawan-tulang.md",
     "docBab": 2
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Jaringan Dasar: Otot",
     "file": "histologi/bab-03-jaringan-dasar-otot.md",
     "docBab": 3
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Jaringan Dasar: Saraf",
     "file": "histologi/bab-04-jaringan-dasar-saraf.md",
     "docBab": 4
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Histologi Sistem Kardiovaskular",
     "file": "histologi/bab-05-histologi-sistem-kardiovaskular.md",
     "docBab": 5
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Histologi Sistem Respirasi",
     "file": "histologi/bab-06-histologi-sistem-respirasi.md",
     "docBab": 6
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Histologi Sistem Digestif & Kelenjar Aksesoris",
     "file": "histologi/bab-07-histologi-sistem-digestif-kelenjar-aksesoris.md",
     "docBab": 7
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Histologi Sistem Urinarius",
     "file": "histologi/bab-08-histologi-sistem-urinarius.md",
     "docBab": 8
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Histologi Sistem Reproduksi Pria & Wanita",
     "file": "histologi/bab-09-histologi-sistem-reproduksi-pria-wanita.md",
     "docBab": 9
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Histologi Sistem Endokrin",
     "file": "histologi/bab-10-histologi-sistem-endokrin.md",
     "docBab": 10
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Histologi Kulit & Adneksa",
     "file": "histologi/bab-11-histologi-kulit-adneksa.md",
     "docBab": 11
   },
   {
     "subject": "histologi",
+    "subjectName": "Histologi",
     "chapter": "Histologi Organ Limfoid & Imun",
     "file": "histologi/bab-12-histologi-organ-limfoid-imun.md",
     "docBab": 12
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Sel & Membran, Transport Membran",
     "file": "fisiologi/bab-01-fisiologi-sel-membran-transport-membran.md",
     "docBab": 1
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Cairan Tubuh & Elektrolit",
     "file": "fisiologi/bab-02-fisiologi-cairan-tubuh-elektrolit.md",
     "docBab": 2
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Saraf: Potensial Aksi & Sinaps",
     "file": "fisiologi/bab-03-fisiologi-saraf-potensial-aksi-sinaps.md",
     "docBab": 3
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Otot Rangka, Jantung, Polos",
     "file": "fisiologi/bab-04-fisiologi-otot-rangka-jantung-polos.md",
     "docBab": 4
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Sistem Saraf Otonom",
     "file": "fisiologi/bab-05-fisiologi-sistem-saraf-otonom.md",
     "docBab": 5
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung",
     "file": "fisiologi/bab-06-fisiologi-kardiovaskular-siklus-jantung-curah.md",
     "docBab": 6
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Tekanan Darah & Regulasinya",
     "file": "fisiologi/bab-07-fisiologi-tekanan-darah-regulasinya.md",
     "docBab": 7
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas",
     "file": "fisiologi/bab-08-fisiologi-respirasi-ventilasi-difusi-transport.md",
     "docBab": 8
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi",
     "file": "fisiologi/bab-09-fisiologi-ginjal-filtrasi-reabsorpsi-sekresi.md",
     "docBab": 9
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Keseimbangan Asam-Basa",
     "file": "fisiologi/bab-10-fisiologi-keseimbangan-asam-basa.md",
     "docBab": 10
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi",
     "file": "fisiologi/bab-11-fisiologi-gastrointestinal-motilitas-sekresi.md",
     "docBab": 11
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Endokrin: Hipotalamus-Hipofisis",
     "file": "fisiologi/bab-12-fisiologi-endokrin-hipotalamus-hipofisis.md",
     "docBab": 12
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Tiroid, Paratiroid, Adrenal",
     "file": "fisiologi/bab-13-fisiologi-tiroid-paratiroid-adrenal.md",
     "docBab": 13
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Pankreas Endokrin & Regulasi Glukosa",
     "file": "fisiologi/bab-14-fisiologi-pankreas-endokrin-regulasi-glukosa.md",
     "docBab": 14
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Reproduksi Pria",
     "file": "fisiologi/bab-15-fisiologi-reproduksi-pria.md",
     "docBab": 15
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Reproduksi Wanita & Siklus Menstruasi",
     "file": "fisiologi/bab-16-fisiologi-reproduksi-wanita-siklus-menstruasi.md",
     "docBab": 16
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Kehamilan & Laktasi",
     "file": "fisiologi/bab-17-fisiologi-kehamilan-laktasi.md",
     "docBab": 17
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Darah & Hemostasis",
     "file": "fisiologi/bab-18-fisiologi-darah-hemostasis.md",
     "docBab": 18
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Sistem Imun",
     "file": "fisiologi/bab-19-fisiologi-sistem-imun.md",
     "docBab": 19
   },
   {
     "subject": "fisiologi",
+    "subjectName": "Fisiologi",
     "chapter": "Fisiologi Sensorik (Penglihatan, Pendengaran, Nyeri)",
     "file": "fisiologi/bab-20-fisiologi-sensorik-penglihatan-pendengaran-nyeri.md",
     "docBab": 20
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Struktur & Fungsi Karbohidrat",
+    "file": "biokimia/bab-01-struktur-fungsi-karbohidrat.md",
+    "docBab": 1
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Struktur & Fungsi Lipid",
+    "file": "biokimia/bab-02-struktur-fungsi-lipid.md",
+    "docBab": 2
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Struktur & Fungsi Protein & Asam Amino",
+    "file": "biokimia/bab-03-struktur-fungsi-protein-asam-amino.md",
+    "docBab": 3
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Bioenergetika & Rantai Transport Elektron",
+    "file": "biokimia/bab-05-bioenergetika-rantai-transport-elektron.md",
+    "docBab": 5
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Glikolisis & Glukoneogenesis",
+    "file": "biokimia/bab-06-glikolisis-glukoneogenesis.md",
+    "docBab": 6
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Siklus Asam Sitrat (Krebs)",
+    "file": "biokimia/bab-07-siklus-asam-sitrat-krebs.md",
+    "docBab": 7
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Metabolisme Glikogen",
+    "file": "biokimia/bab-08-metabolisme-glikogen.md",
+    "docBab": 8
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Enzim: Kinetika & Regulasi",
+    "file": "biokimia/bab-04-enzim-kinetika-regulasi.md",
+    "docBab": 4
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak",
+    "file": "biokimia/bab-09-metabolisme-lipid-beta-oksidasi-sintesis-asam.md",
+    "docBab": 9
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Metabolisme Kolesterol & Lipoprotein",
+    "file": "biokimia/bab-10-metabolisme-kolesterol-lipoprotein.md",
+    "docBab": 10
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Metabolisme Asam Amino & Siklus Urea",
+    "file": "biokimia/bab-11-metabolisme-asam-amino-siklus-urea.md",
+    "docBab": 11
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Metabolisme Asam Nukleat (Purin, Pirimidin)",
+    "file": "biokimia/bab-12-metabolisme-asam-nukleat-purin-pirimidin.md",
+    "docBab": 12
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Replikasi, Transkripsi, Translasi DNA/RNA",
+    "file": "biokimia/bab-13-replikasi-transkripsi-translasi-dna-rna.md",
+    "docBab": 13
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Regulasi Ekspresi Gen",
+    "file": "biokimia/bab-14-regulasi-ekspresi-gen.md",
+    "docBab": 14
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Vitamin Larut Lemak & Larut Air",
+    "file": "biokimia/bab-15-vitamin-larut-lemak-larut-air.md",
+    "docBab": 15
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Mineral & Trace Elements",
+    "file": "biokimia/bab-16-mineral-trace-elements.md",
+    "docBab": 16
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Biokimia Integrasi Metabolisme (Puasa vs Kenyang)",
+    "file": "biokimia/bab-17-biokimia-integrasi-metabolisme-puasa-vs-kenyang.md",
+    "docBab": 17
+  },
+  {
+    "subject": "biokimia",
+    "subjectName": "Biokimia & Biologi Molekuler",
+    "chapter": "Biokimia Klinik Dasar (Interpretasi Lab Sederhana)",
+    "file": "biokimia/bab-18-biokimia-klinik-dasar-interpretasi-lab-sederhana.md",
+    "docBab": 18
+  },
+  {
+    "subject": "genetika-kedokteran",
+    "subjectName": "Genetika Kedokteran",
+    "chapter": "Prinsip Hereditas Mendel",
+    "file": "genetika-kedokteran/bab-01-prinsip-hereditas-mendel.md",
+    "docBab": 1
+  },
+  {
+    "subject": "genetika-kedokteran",
+    "subjectName": "Genetika Kedokteran",
+    "chapter": "Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)",
+    "file": "genetika-kedokteran/bab-02-kelainan-kromosom-down-syndrome-turner.md",
+    "docBab": 2
+  },
+  {
+    "subject": "genetika-kedokteran",
+    "subjectName": "Genetika Kedokteran",
+    "chapter": "Penyakit Genetik Autosomal (Dominan & Resesif)",
+    "file": "genetika-kedokteran/bab-03-penyakit-genetik-autosomal-dominan-resesif.md",
+    "docBab": 3
+  },
+  {
+    "subject": "genetika-kedokteran",
+    "subjectName": "Genetika Kedokteran",
+    "chapter": "Penyakit Terkait Kromosom X",
+    "file": "genetika-kedokteran/bab-04-penyakit-terkait-kromosom-x.md",
+    "docBab": 4
+  },
+  {
+    "subject": "genetika-kedokteran",
+    "subjectName": "Genetika Kedokteran",
+    "chapter": "Genetika Populasi & Konseling Genetik",
+    "file": "genetika-kedokteran/bab-05-genetika-populasi-konseling-genetik.md",
+    "docBab": 5
+  },
+  {
+    "subject": "genetika-kedokteran",
+    "subjectName": "Genetika Kedokteran",
+    "chapter": "Dasar Genetika Kanker",
+    "file": "genetika-kedokteran/bab-06-dasar-genetika-kanker.md",
+    "docBab": 6
   }
 ]
