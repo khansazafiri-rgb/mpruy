@@ -88,7 +88,7 @@ memberi notifikasi ke pengaju.
 - `chapter`: id BAB (semua soal masuk ke BAB itu) atau judul BAB (dipakai untuk
   soal yang tidak menulis BAB sendiri; BAB baru dibuat otomatis).
 - Kampus **selalu** diambil dari pengajuan. Kampus yang tertulis di JSON diabaikan.
-- `drilling: true`: semua soal masuk **Drilling** mata kuliah itu (soal General tanpa BAB), bukan ke BAB. Hanya untuk pengajuan yang `restriction`-nya `all` (General); untuk pengajuan khusus kampus, respons 400. Field `chapter` diabaikan. Lihat `docs/DRILLING.md`.
+- `drilling: true`: semua soal masuk **Drilling** mata kuliah itu (tanpa BAB), bukan ke BAB. Pengajuan General tampil untuk semua pengguna; pengajuan `restriction` `campus` hanya terlihat pengguna kampus itu. Field `chapter` diabaikan. Rute pendek yang dipakai Hermes untuk tujuan Drilling: `POST /api/medcoel/agent/submissions/{id atau kode}/drilling-import` (isi sama, `drilling: true` otomatis). Lihat `docs/DRILLING.md`.
 - `dryRun: true` hanya memeriksa, tidak menyimpan.
 - Bila ada soal bermasalah dan `skipInvalid` false: respons 400 dengan
   `blocked: true` dan daftar `items[].errors` per nomor soal; tidak ada yang tersimpan.
@@ -116,8 +116,8 @@ Respons:
 ```
 
 `subject` boleh id, slug, atau nama. `scope` `all` (General, bawaan) atau `campus`;
-`campuses` boleh id atau nama persis. Tambahkan `"drilling": true` (dengan `scope` `all`) untuk memasukkan
-soal General ke Drilling mata kuliah itu tanpa BAB; `chapter` diabaikan.
+`campuses` boleh id atau nama persis. Tambahkan `"drilling": true` untuk memasukkan
+soal ke Drilling mata kuliah itu tanpa BAB (`scope` `all` = General, `campus` = hanya kampus yang disebut); `chapter` diabaikan.
 
 ## Pemberitahuan ke Hermes (opsional)
 

@@ -49,11 +49,11 @@ function pool(app, user, opts) {
   where.push(opts.drilling === "only" ? "c.drilling = TRUE" : "COALESCE(c.drilling, FALSE) = FALSE");
   params.user = user.id;
 
-  const rows = arrayOf(new DynamicModel({ id: "", chapter: "", difficulty: "", qtype: "", seen: 0, wrong: 0 }));
+  const rows = arrayOf(new DynamicModel({ id: "", chapter: "", difficulty: "", qtype: "", scope: "", seen: 0, wrong: 0 }));
   app
     .db()
     .newQuery(
-      "SELECT q.id AS id, q.chapter AS chapter, q.difficulty AS difficulty, q.qtype AS qtype, " +
+      "SELECT q.id AS id, q.chapter AS chapter, q.difficulty AS difficulty, q.qtype AS qtype, q.scope AS scope, " +
         "(SELECT COUNT(*) FROM answers a WHERE a.user = {:user} AND a.question = q.id) AS seen, " +
         "(SELECT COUNT(*) FROM answers a WHERE a.user = {:user} AND a.question = q.id AND a.scored = TRUE AND a.correct = FALSE AND a.locked = TRUE) AS wrong " +
         "FROM questions q JOIN chapters c ON c.id = q.chapter JOIN subjects s ON s.id = q.subject " +
@@ -66,6 +66,7 @@ function pool(app, user, opts) {
     chapter: r.chapter,
     difficulty: r.difficulty,
     qtype: r.qtype,
+    scope: r.scope,
     seen: r.seen > 0,
     wrong: r.wrong > 0,
   }));
@@ -281,16 +282,28 @@ function ensureDrillingChapter(app, subjectId) {
   return c;
 }
 
-/** Menu Drilling tampil bila sakelar admin menyala dan sudah ada soal drilling yang bisa dikerjakan. */
-function drillingStatus(app) {
+/**
+ * Menu Drilling tampil bila sakelar admin menyala dan ada soal Drilling yang bisa dikerjakan PENGGUNA INI:
+ * soal General (scope = all) atau soal khusus kampus yang cocok dengan kampusnya. Tanpa `user`, hanya
+ * soal General yang dihitung (dipakai ringkasan admin). `total` = soal General, `mine` = soal khusus kampus pengguna.
+ */
+function drillingStatus(app, user) {
   const enabled = u.settings(app).getBool("drillingEnabled");
-  const rows = arrayOf(new DynamicModel({ n: 0 }));
-  app.db().newQuery(
+  const base =
     "SELECT COUNT(*) AS n FROM questions q JOIN chapters c ON c.id = q.chapter JOIN subjects s ON s.id = q.subject " +
-      "WHERE q.status = 'published' AND q.scope = 'all' AND c.drilling = TRUE AND c.hidden = FALSE AND s.hidden = FALSE",
-  ).all(rows);
-  const total = rows.length ? rows[0].n : 0;
-  return { enabled: enabled, total: total, available: enabled && total > 0 };
+    "WHERE q.status = 'published' AND c.drilling = TRUE AND c.hidden = FALSE AND s.hidden = FALSE AND ";
+  const count = (cond, params) => {
+    const rows = arrayOf(new DynamicModel({ n: 0 }));
+    const q = app.db().newQuery(base + cond);
+    (params ? q.bind(params) : q).all(rows);
+    return rows.length ? rows[0].n : 0;
+  };
+  const total = count("q.scope = 'all'");
+  const campus = user ? user.getString("campus") : "";
+  const mine = campus
+    ? count("q.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(q.campuses) WHERE value = {:campus})", { campus: campus })
+    : 0;
+  return { enabled: enabled, total: total, mine: mine, available: enabled && total + mine > 0 };
 }
 
 // BAB mata kuliah yang punya catatan materi berisi. Hanya id yang dibaca,

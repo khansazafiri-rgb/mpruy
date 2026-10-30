@@ -45,7 +45,7 @@ function chapterIndex(app, subjectId) {
 //   input        teks atau data yang sudah diurai
 //   subject      id/slug/nama mata kuliah
 //   chapter      id BAB (opsional). Bila diisi, semua soal masuk BAB ini.
-//   drilling     true = semua soal masuk Drilling mata kuliah itu (tanpa BAB, wajib General)
+//   drilling     true = semua soal masuk Drilling mata kuliah itu (tanpa BAB; General atau khusus kampus sesuai scope)
 //   scope        "all" | "campus"
 //   campuses     daftar id/nama kampus (wajib bila scope = campus)
 //   source       "admin" | "submission" | "agent"
@@ -74,7 +74,6 @@ function run(app, opts) {
     if (fixedChapter && fixedChapter.getBool("drilling")) drilling = true;
   }
   if (drilling) {
-    if (scope === "campus") throw new BadRequestError("Soal Drilling harus General (semua pengguna), bukan soal khusus kampus.");
     // Soal Drilling selalu masuk BAB khusus Drilling milik mata kuliah ini (dibuat saat disimpan bila belum ada).
     fixedChapter = learn.drillingChapter(app, subject.id);
     defaultTitle = learn.DRILLING_TITLE;
@@ -226,8 +225,7 @@ function applyForm(app, rec, body) {
   let ch;
   try { ch = app.findRecordById("chapters", String(body.chapter || rec.getString("chapter"))); } catch (_) { ch = null; }
   if (!ch || ch.getString("subject") !== subject.id) throw new BadRequestError("Pilih BAB di mata kuliah ini.");
-  // Soal di Drilling selalu General.
-  const scope = body.scope === "campus" && !ch.getBool("drilling") ? "campus" : "all";
+  const scope = body.scope === "campus" ? "campus" : "all";
   const campuses = scope === "campus" ? resolveCampuses(app, body.campuses) : [];
   if (scope === "campus" && !campuses.length) throw new BadRequestError("Pilih minimal satu kampus untuk soal terbatas.");
   rec.set("subject", subject.id);

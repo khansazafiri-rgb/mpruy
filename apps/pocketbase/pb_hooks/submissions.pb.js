@@ -18,7 +18,8 @@
 //   GET  /api/medcoel/agent/submissions/{id}
 //   POST /api/medcoel/agent/submissions/{id}/status
 //   POST /api/medcoel/agent/submissions/{id}/import
-//   POST /api/medcoel/agent/import                 (drilling: true = masuk Drilling mata kuliah, wajib General)
+//   POST /api/medcoel/agent/import                 (drilling: true = masuk Drilling mata kuliah)
+//   POST /api/medcoel/agent/submissions/{id}/drilling-import   (impor pengajuan langsung ke Drilling)
 
 routerAdd("GET", "/api/medcoel/submissions/mine", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
@@ -258,39 +259,13 @@ routerAdd("POST", "/api/medcoel/agent/submissions/{id}/status", (e) => {
 });
 
 routerAdd("POST", "/api/medcoel/agent/submissions/{id}/import", (e) => {
-  const u = require(`${__hooks}/lib/util.js`);
-  const subs = require(`${__hooks}/lib/submissions.js`);
-  const importer = require(`${__hooks}/lib/importer.js`);
-  u.requireAgent(e);
-  const b = u.body(e);
-  let sub;
-  try { sub = e.app.findFirstRecordByFilter("submissions", "id = {:x} || code = {:x}", { x: e.request.pathValue("id") }); } catch (_) { sub = null; }
-  if (!sub) throw new NotFoundError("Pengajuan tidak ditemukan.");
-  const st = sub.getString("status");
-  if (["antre", "diproses", "perlu_perbaikan"].indexOf(st) < 0) {
-    throw new BadRequestError("Pengajuan berstatus " + (subs.LABEL[st] || st) + " tidak bisa diimpor. Konfirmasi dulu pengajuannya.");
-  }
-  // Kampus selalu dari pengajuan, apa pun isi JSON-nya.
-  const result = importer.run(e.app, {
-    input: b.questions !== undefined ? b.questions : b.text,
-    subject: sub.getString("subject"),
-    chapter: b.chapter || "",
-    scope: sub.getString("scope") === "campus" ? "campus" : "all",
-    campuses: sub.getString("scope") === "campus" ? [sub.getString("campus")] : [],
-    source: "submission",
-    submission: sub.id,
-    skipInvalid: b.skipInvalid === true,
-    drilling: b.drilling === true,
-    dryRun: b.dryRun === true,
-  });
-  if (result.blocked) return e.json(400, Object.assign({ status: 400 }, result));
-  if (!b.dryRun) {
-    if (st !== "diproses") subs.setStatus(e.app, sub, "diproses", sub.getString("statusNote"), "agent");
-    sub.set("importedCount", sub.getInt("importedCount") + result.created);
-    e.app.save(sub);
-    subs.setStatus(e.app, sub, "selesai", sub.getString("statusNote"), "agent");
-  }
-  return e.json(200, result);
+  return require(`${__hooks}/lib/submissions.js`).agentImport(e, false);
+});
+
+// Jalur khusus Drilling yang dipanggil Hermes Agent (/put lalu /confirm ke tujuan Drilling).
+// Sama dengan /import dengan drilling: true; chapter diabaikan.
+routerAdd("POST", "/api/medcoel/agent/submissions/{id}/drilling-import", (e) => {
+  return require(`${__hooks}/lib/submissions.js`).agentImport(e, true);
 });
 
 routerAdd("POST", "/api/medcoel/agent/import", (e) => {

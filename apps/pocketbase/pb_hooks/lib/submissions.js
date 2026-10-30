@@ -222,4 +222,43 @@ function notifyAdmins(app, sub) {
   }
 }
 
-module.exports = { LABEL, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus };
+/**
+ * Impor soal untuk satu pengajuan (dipakai agen). Kampus selalu dari pengajuan. forceDrilling = true untuk
+ * rute /drilling-import, yang dipakai Hermes Agent saat tujuan impor adalah Drilling.
+ */
+function agentImport(e, forceDrilling) {
+  const importer = require(HOOKS + "/lib/importer.js");
+  u.requireAgent(e);
+  const b = u.body(e);
+  let sub;
+  try { sub = e.app.findFirstRecordByFilter("submissions", "id = {:x} || code = {:x}", { x: e.request.pathValue("id") }); } catch (_) { sub = null; }
+  if (!sub) throw new NotFoundError("Pengajuan tidak ditemukan.");
+  const st = sub.getString("status");
+  if (["antre", "diproses", "perlu_perbaikan"].indexOf(st) < 0) {
+    throw new BadRequestError("Pengajuan berstatus " + (LABEL[st] || st) + " tidak bisa diimpor. Konfirmasi dulu pengajuannya.");
+  }
+  // Kampus selalu dari pengajuan, apa pun isi JSON-nya. Pengajuan "kampus saja" yang masuk Drilling
+  // hanya terlihat oleh pengguna kampus itu.
+  const result = importer.run(e.app, {
+    input: b.questions !== undefined ? b.questions : b.text,
+    subject: sub.getString("subject"),
+    chapter: b.chapter || "",
+    scope: sub.getString("scope") === "campus" ? "campus" : "all",
+    campuses: sub.getString("scope") === "campus" ? [sub.getString("campus")] : [],
+    source: "submission",
+    submission: sub.id,
+    skipInvalid: b.skipInvalid === true,
+    drilling: forceDrilling === true || b.drilling === true,
+    dryRun: b.dryRun === true,
+  });
+  if (result.blocked) return e.json(400, Object.assign({ status: 400 }, result));
+  if (!b.dryRun) {
+    if (st !== "diproses") setStatus(e.app, sub, "diproses", sub.getString("statusNote"), "agent");
+    sub.set("importedCount", sub.getInt("importedCount") + result.created);
+    e.app.save(sub);
+    setStatus(e.app, sub, "selesai", sub.getString("statusNote"), "agent");
+  }
+  return e.json(200, result);
+}
+
+module.exports = { LABEL, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport };
