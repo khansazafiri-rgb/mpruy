@@ -1,0 +1,644 @@
+[
+ {
+  "find": "Materi PPT12 sumber utama sebenarnya membahas",
+  "why": "catatan internal penyusun tentang asal materi RSV, bukan isi pelajaran",
+  "drop": true
+ },
+ {
+  "find": "Variasi antarsrain",
+  "why": "salah ketik (antarsrain -> antarstrain)",
+  "replace": "Variasi antarstrain"
+ },
+ {
+  "find": "Kelompok paling penting pada sumber:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Kelompok paling penting:"
+ },
+ {
+  "find": "sumber praktikum menekankan medium tetap merah/pink karena mannitol negatif",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "medium tetap merah/pink karena mannitol negatif"
+ },
+ {
+  "find": "Sumber praktikum menekankan interpretasi disk diffusion untuk phenotype yang konsisten dengan MRSA vs MSSA.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Interpretasi disk diffusion untuk phenotype yang konsisten dengan MRSA vs MSSA ditekankan pada praktikum."
+ },
+ {
+  "find": "Pada MSA, sumber praktikum menekankan dapat tumbuh tetapi",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Pada MSA, dapat tumbuh tetapi"
+ },
+ {
+  "find": "Gamma / non-hemolitik pada algoritme sumber:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Gamma / non-hemolitik pada algoritme dasar:"
+ },
+ {
+  "find": "PYR positif pada sumber UTB/Jawetz.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "PYR positif."
+ },
+ {
+  "find": "Clue klinis sumber:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Clue klinis:",
+  "all": true
+ },
+ {
+  "find": "Dua komplikasi non-supuratif utama sumber:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Dua komplikasi non-supuratif utama:"
+ },
+ {
+  "find": "Kelompok yang disebut sumber antara lain:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Kelompok yang termasuk antara lain:"
+ },
+ {
+  "find": "sumber mengajarkannya dalam algoritme",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Enterococcus diajarkan dalam algoritme"
+ },
+ {
+  "find": "Gamma/non-hemolytic pada algoritme dasar sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Gamma/non-hemolytic pada algoritme dasar."
+ },
+ {
+  "find": "HIGH-YIELD DARI BANK SOAL",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "HIGH-YIELD"
+ },
+ {
+  "find": "Virulence factors dalam sumber UTB:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Virulence factors:"
+ },
+ {
+  "find": "RPR/VDRL = “Response/Value bisa turun” → titer berguna untuk follow-up.",
+  "why": "mnemonik keliru (RPR = Rapid Plasma Reagin, VDRL = Venereal Disease Research Laboratory); diganti penjelasan fungsi titer",
+  "replace": "RPR/VDRL → titer dapat turun setelah terapi berhasil, sehingga berguna untuk follow-up."
+ },
+ {
+  "find": "Contoh yang ditekankan pada materi:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Contoh:"
+ },
+ {
+  "find": "contohnya influenza dan rotavirus pada materi.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "contohnya influenza dan rotavirus."
+ },
+ {
+  "find": "Contoh pada materi: poxvirus",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Contoh: poxvirus"
+ },
+ {
+  "find": "HAFALAN UTAMA DARI MATERI",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "HAFALAN UTAMA"
+ },
+ {
+  "find": "Materi menekankan bahwa beberapa virus memiliki segmented genome",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Beberapa virus memiliki segmented genome"
+ },
+ {
+  "find": "Contoh dari materi:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Contoh:"
+ },
+ {
+  "find": "Dalam bank soal materi, pembentukan giant cell",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Pembentukan giant cell"
+ },
+ {
+  "find": "Materi menekankan beberapa outcome:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Beberapa luaran infeksi virus pada sel:"
+ },
+ {
+  "find": "Materi memberi HPV sebagai contoh klasik.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "HPV adalah contoh klasik."
+ },
+ {
+  "find": "Contoh dalam materi: influenza, rhinovirus, rotavirus.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Contoh: influenza, rhinovirus, rotavirus."
+ },
+ {
+  "find": "Contoh dalam materi: measles, mumps, polio.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Contoh: measles, mumps, polio."
+ },
+ {
+  "find": "Materi menekankan metode molekuler untuk mengonfirmasi",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Metode molekuler dipakai untuk mengonfirmasi"
+ },
+ {
+  "find": "Influenza adalah contoh yang ditekankan pada materi.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Influenza adalah contohnya."
+ },
+ {
+  "find": "Urutan yang ditekankan di soal:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Urutan siklus replikasi:"
+ },
+ {
+  "find": "Famili/kelompok sumber: Picornavirus, genus Hepatovirus.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Famili: Picornaviridae, genus Hepatovirus."
+ },
+ {
+  "find": "Sekitar 70% pada materi sumber menjadi kronik.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Sekitar 70% menjadi kronik."
+ },
+ {
+  "find": "Materi sumber menekankan risiko hepatitis fulminan pada ibu hamil trimester ketiga.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Risiko hepatitis fulminan ditekankan pada ibu hamil trimester ketiga."
+ },
+ {
+  "find": "pada sumber Jawetz.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "."
+ },
+ {
+  "find": "Hanya satu serotipe utama yang ditekankan pada materi sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Hanya satu serotipe utama yang ditekankan."
+ },
+ {
+  "find": "Tidak membentuk carrier state kronik pada materi utama.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Tidak membentuk carrier state kronik."
+ },
+ {
+  "find": "; materi sumber menekankan tidak ada antivirus spesifik HAV.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "; tidak ada antivirus spesifik HAV."
+ },
+ {
+  "find": "Pencegahan sumber:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Pencegahan:"
+ },
+ {
+  "find": "sekitar 42 nm pada materi sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "sekitar 42 nm."
+ },
+ {
+  "find": "Kelompok paparan yang disebut sumber:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Kelompok paparan:"
+ },
+ {
+  "find": "Sumber menekankan hubungan sangat kuat antara usia saat terinfeksi dan risiko kronisitas:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Ada hubungan sangat kuat antara usia saat terinfeksi dan risiko kronisitas:"
+ },
+ {
+  "find": "(>90% pada materi slide)",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "(>90%)"
+ },
+ {
+  "find": "Persisten ≥6 bulan pada materi sumber mendukung",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Persisten ≥6 bulan mendukung"
+ },
+ {
+  "find": "Materi sumber juga mencatat adanya HBeAg-negative hepatitis",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Ada juga HBeAg-negative hepatitis"
+ },
+ {
+  "find": "Sesuai koreksi eksplisit pada panduan sumber:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Klasifikasi HCV:"
+ },
+ {
+  "find": "CATATAN SUMBER:",
+  "why": "catatan internal penyusun (koreksi slide asli) dibuang; klasifikasi HCV sudah dinyatakan di bagian yang sama",
+  "drop": true
+ },
+ {
+  "find": "Panduan menyebut salah satu slide asli",
+  "why": "catatan internal penyusun (koreksi slide asli) dibuang; klasifikasi HCV sudah dinyatakan di bagian yang sama",
+  "drop": true
+ },
+ {
+  "find": "jalur parenteral pada materi sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "jalur parenteral."
+ },
+ {
+  "find": "Sekitar 70% pada materi slide berkembang menjadi kronik.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Sekitar 70% berkembang menjadi kronik."
+ },
+ {
+  "find": "Materi sumber menjelaskan:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Poin penting:"
+ },
+ {
+  "find": "vaksin HCV pada materi sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "vaksin HCV."
+ },
+ {
+  "find": "TERAPI & PENCEGAHAN HCV — KONSEP SUMBER",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "TERAPI & PENCEGAHAN HCV"
+ },
+ {
+  "find": "yang ditekankan pada sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "yang ditekankan."
+ },
+ {
+  "find": "polaritas negatif pada materi sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "polaritas negatif."
+ },
+ {
+  "find": "Menurut sumber, lebih sering",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Lebih sering"
+ },
+ {
+  "find": "Sumber menekankan penyakit cenderung lebih berat",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Penyakit cenderung lebih berat"
+ },
+ {
+  "find": "Tidak ada vaksin spesifik HDV pada materi sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Tidak ada vaksin spesifik HDV."
+ },
+ {
+  "find": "Hepevirus pada materi sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Hepevirus."
+ },
+ {
+  "find": "Materi sumber menekankan beberapa jalur:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Beberapa jalur penularan:"
+ },
+ {
+  "find": "Materi juga mencatat transmisi melalui transfusi dalam konteks tertentu.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Transmisi melalui transfusi juga dapat terjadi dalam konteks tertentu."
+ },
+ {
+  "find": "Genotype pada sumber:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Genotype:"
+ },
+ {
+  "find": "Materi sumber menekankan ibu hamil trimester ketiga sebagai kelompok berisiko hepatitis fulminan berat.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Ibu hamil trimester ketiga adalah kelompok berisiko hepatitis fulminan berat."
+ },
+ {
+  "find": "Mortalitas pada tabel slide ditulis sekitar 20% pada kehamilan.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Mortalitas dilaporkan sekitar 20% pada kehamilan."
+ },
+ {
+  "find": "Terapi acute HEV pada materi bersifat suportif.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Terapi acute HEV bersifat suportif."
+ },
+ {
+  "find": "Menurut tabel sumber:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Perbandingan kronisitas:"
+ },
+ {
+  "find": "HEV → tabel utama menyatakan tidak kronik; panduan mencatat chronic HEV pada imunokompromais sebagai konteks di luar tabel utama.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "HEV → umumnya tidak kronik, tetapi chronic HEV dapat terjadi pada imunokompromais."
+ },
+ {
+  "find": "HCV → tidak ada vaksin pada materi sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "HCV → tidak ada vaksin."
+ },
+ {
+  "find": "HEV → materi utama tidak menekankan vaksin sebagai strategi rutin dalam konteks kuliah ini.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "HEV → vaksin bukan strategi pencegahan rutin yang dibahas pada bab ini."
+ },
+ {
+  "find": "HCV = Flaviviridae/Hepacivirus menurut koreksi panduan, bukan Hepadnaviridae.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "HCV = Flaviviridae/Hepacivirus, bukan Hepadnaviridae."
+ },
+ {
+  "find": "trimester 3 = risiko fulminant hepatitis tinggi pada materi sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "trimester 3 = risiko fulminant hepatitis tinggi."
+ },
+ {
+  "find": "Gen regulator/accessory yang ditekankan pada materi:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Gen regulator/accessory:"
+ },
+ {
+  "find": "Materi menekankan transmisi melalui:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Transmisi melalui:"
+ },
+ {
+  "find": "Materi mendefinisikan AIDS dengan immunodeficiency berat",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "AIDS ditandai immunodeficiency berat"
+ },
+ {
+  "find": "Western blot sebagai konfirmasi klasik pada materi slide.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Western blot sebagai konfirmasi klasik."
+ },
+ {
+  "find": "Menurut materi:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Urutan penanda:",
+  "all": true
+ },
+ {
+  "find": "Materi menekankan combination ART/HAART.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "ART/HAART berupa kombinasi obat."
+ },
+ {
+  "find": "Regimen yang disebut dalam materi Indonesia:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Regimen di Indonesia:"
+ },
+ {
+  "find": "Contoh sumber: nevirapine.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Contoh: nevirapine."
+ },
+ {
+  "find": "Efavirenz juga muncul sebagai contoh NNRTI pada rangkuman materi.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Efavirenz juga contoh NNRTI."
+ },
+ {
+  "find": "menjadi komponen TLD dalam materi.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "menjadi komponen TLD."
+ },
+ {
+  "find": "Materi menekankan mutasi pada gen pol.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Mutasi penting terjadi pada gen pol."
+ },
+ {
+  "find": "Materi mencantumkan:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Strategi pencegahan:"
+ },
+ {
+  "find": "Materi menyebut target:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Target 95–95–95:"
+ },
+ {
+  "find": "• AIDS terkait CD4 <200 pada materi.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "• AIDS terkait CD4 <200."
+ },
+ {
+  "find": "AIDS pada materi: CD4 <200",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "AIDS: CD4 <200"
+ },
+ {
+  "find": "materi Indonesia menekankan TLD =",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "di Indonesia dipakai TLD ="
+ },
+ {
+  "find": "Transmisi pada materi: droplet",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Transmisi: droplet"
+ },
+ {
+  "find": "seperti oseltamivir dan zanamivir pada materi sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "seperti oseltamivir dan zanamivir."
+ },
+ {
+  "find": "Materi sumber membedakan empat tipe antigen:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Empat tipe antigen:"
+ },
+ {
+  "find": "A, B, C dapat menginfeksi manusia pada materi.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "A, B, C dapat menginfeksi manusia."
+ },
+ {
+  "find": "secara berkala pada materi sumber.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "secara berkala."
+ },
+ {
+  "find": "Pada materi UTB, shift merupakan",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Shift merupakan"
+ },
+ {
+  "find": "Materi menekankan onset akut:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Onset akut dengan:"
+ },
+ {
+  "find": "Materi rangkuman mencantumkan:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Komplikasi yang perlu diingat:"
+ },
+ {
+  "find": "Materi sumber:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Poin diagnosis:"
+ },
+ {
+  "find": "Amantadine/rimantadine disebut sebagai M2 blockers pada influenza A dalam slide.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Amantadine/rimantadine adalah M2 blockers pada influenza A."
+ },
+ {
+  "find": "TERAPI & PENCEGAHAN INFLUENZA — SESUAI MATERI SUMBER",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "TERAPI & PENCEGAHAN INFLUENZA"
+ },
+ {
+  "find": "; bagian ini mempertahankan framing materi UTB/PPT12 untuk kebutuhan ujian.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "."
+ },
+ {
+  "find": "Genome sekitar 30 kb dan pada materi disebut sebagai salah satu genome RNA terbesar.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Genome sekitar 30 kb, salah satu genome RNA terbesar."
+ },
+ {
+  "find": "Materi sumber membedakan:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Perbedaan utama:"
+ },
+ {
+  "find": "Kelelawar disebut sebagai reservoir alami utama pada materi untuk coronavirus zoonotik tersebut.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Kelelawar adalah reservoir alami utama coronavirus zoonotik tersebut."
+ },
+ {
+  "find": "FRAME MATERI",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "PERBANDINGAN"
+ },
+ {
+  "find": "host intermediate pada slide: civet;",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "host intermediate: civet;"
+ },
+ {
+  "find": "reservoir alami pada slide: kelelawar;",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "reservoir alami: kelelawar;"
+ },
+ {
+  "find": "host intermediate pada slide disebut belum pasti;",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "host intermediate belum pasti;"
+ },
+ {
+  "find": "reservoir alami: kelelawar pada materi;",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "reservoir alami: kelelawar;"
+ },
+ {
+  "find": "Materi menekankan bahwa coronavirus dapat menyebabkan:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Coronavirus dapat menyebabkan:"
+ },
+ {
+  "find": "Materi UTB menekankan RT-PCR sebagai diagnosis pasti infeksi aktif.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "RT-PCR adalah diagnosis pasti infeksi aktif."
+ },
+ {
+  "find": "Materi PPT12 menyebut:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Target antivirus:"
+ },
+ {
+  "find": "Contoh historis pada slide: remdesivir/favipiravir.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Contoh historis: remdesivir/favipiravir."
+ },
+ {
+  "find": "Daftar obat pada slide mencerminkan konteks materi saat dibuat;",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Daftar obat ini mencerminkan konteks saat materi dibuat;"
+ },
+ {
+  "find": "Materi menyatakan masker:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Fungsi masker:"
+ },
+ {
+  "find": "RSV tidak dibahas sebagai slide inti pada PPT12",
+  "why": "catatan internal penyusun tentang posisi RSV dalam slide, bukan isi pelajaran",
+  "drop": true
+ },
+ {
+  "find": "Z. RSV — POSISI DALAM MATERI UTB",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Z. RSV — CIRI KASUS KLASIK"
+ },
+ {
+  "find": "AD. RHINOVIRUS — TAMBAHAN DARI PPT12",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "AD. RHINOVIRUS — GAMBARAN SINGKAT"
+ },
+ {
+  "find": "Walaupun judul Bab 9 resmi menekankan Influenza–Corona–RSV, PPT12 sumber juga memiliki Topik 3 Rhinovirus.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Rhinovirus melengkapi peta virus respiratorik pada bab ini."
+ },
+ {
+  "find": "Materi menekankan suhu optimum sekitar 33°C",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Suhu optimum sekitar 33°C"
+ },
+ {
+  "find": "Catatan sumber penting:",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Catatan:"
+ },
+ {
+  "find": "Slide menyebut VAP = VP4. Rangkuman sumber sendiri memberi catatan bahwa pustaka standar lebih sering menempatkan VP1–VP3 sebagai capsid surface proteins dan VP4 sebagai internal protein.",
+  "why": "catatan internal tentang redaksi slide diganti fakta standar (VP1–VP3 permukaan, VP4 internal)",
+  "replace": "Pada pustaka standar, VP1–VP3 adalah capsid surface proteins dan VP4 adalah internal protein."
+ },
+ {
+  "find": "Adenovirus: dsDNA, naked — pada rangkuman UTB menjadi pembeda virus respiratorik bergenom DNA.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Adenovirus: dsDNA, naked — pembeda virus respiratorik bergenom DNA."
+ },
+ {
+  "find": "optimum sekitar 33°C pada materi.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "optimum sekitar 33°C."
+ },
+ {
+  "find": "dalam materi untuk konfirmasi influenza/coronavirus.",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "untuk konfirmasi influenza/coronavirus."
+ },
+ {
+  "find": "Rhinovirus dari PPT12 = naked",
+  "why": "catatan asal-usul penyusun (sumber/slide/UTB) dibuang dari kalimat pelajaran",
+  "replace": "Rhinovirus = naked"
+ },
+ {
+  "find": " Untuk ujian berbasis slide, hafalkan redaksi slide; untuk konsep standar, bedakan catatan ini.",
+  "replace": "",
+  "why": "catatan internal penyusun tentang redaksi slide dibuang"
+ },
+ {
+  "find": "FOOD → enterotoxin.",
+  "replace": "• FOOD → enterotoxin.",
+  "why": "baris mnemonik dijadikan butir supaya masuk satu kotak sorot"
+ },
+ {
+  "find": "SHOCK → TSST-1.",
+  "replace": "• SHOCK → TSST-1.",
+  "why": "baris mnemonik dijadikan butir supaya masuk satu kotak sorot"
+ },
+ {
+  "find": "SKIN PEELING → exfoliative toxin.",
+  "replace": "• SKIN PEELING → exfoliative toxin.",
+  "why": "baris mnemonik dijadikan butir supaya masuk satu kotak sorot"
+ },
+ {
+  "find": "WBC DAMAGE → leukocidin.",
+  "replace": "• WBC DAMAGE → leukocidin.",
+  "why": "baris mnemonik dijadikan butir supaya masuk satu kotak sorot"
+ }
+]

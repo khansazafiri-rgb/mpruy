@@ -31,19 +31,3 @@ export function confirmMessage(sub, user) {
     `Dilihat oleh: ${sub.scope === 'campus' ? 'Hanya kampus saya' : 'General'}`,
   ].join('\n');
 }
-
-export function manyPdfMessage(a, user) {
-  return [
-    'Halo Admin MEDCOEL, saya ingin mengajukan soal lebih dari 5 PDF lewat WhatsApp.',
-    '',
-    `Nama: ${user?.name || '-'} (${user?.loginId || '-'})`,
-    `Kampus: ${user?.campusName || '-'}`,
-    `Mata kuliah: ${a.subjectName}`,
-    `Pembahasan & kunci di PDF: ${a.hasKey ? 'Ada' : 'Belum ada'}`,
-    `Bahasa: ${BAHASA[a.language] || '-'}`,
-    `Dilihat oleh: ${a.scope === 'campus' ? 'Hanya kampus saya' : 'General'}`,
-    'Jumlah PDF: lebih dari 5',
-    '',
-    'File PDF-nya saya kirim di chat ini.',
-  ].join('\n');
-}

@@ -222,6 +222,9 @@ function notifyAdmins(app, sub) {
   }
 }
 
+// Batas PDF per pengajuan lewat web. Harus sama dengan MAX_PDF di apps/web/src/pages/ChatAdmin.jsx.
+const MAX_PDFS = 10;
+
 /**
  * Impor soal untuk satu pengajuan (dipakai agen). Kampus selalu dari pengajuan. forceDrilling = true untuk
  * rute /drilling-import, yang dipakai Hermes Agent saat tujuan impor adalah Drilling.
@@ -261,4 +264,4 @@ function agentImport(e, forceDrilling) {
   return e.json(200, result);
 }
 
-module.exports = { LABEL, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport };
+module.exports = { MAX_PDFS, LABEL, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport };

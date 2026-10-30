@@ -53,7 +53,8 @@ Histone deacetylase (HDAC):
 - Secara umum menurunkan akses transcription machinery.
 
 > [!warning] Penting
-> HAT → acetylation → open chromatin → transcription ↑ HDAC → deacetylation → closed chromatin → transcription ↓
+> - HAT → acetylation → open chromatin → transcription ↑
+> - HDAC → deacetylation → closed chromatin → transcription ↓
 
 ![Histone acetylation/deacetylation: euchromatin vs heterochromatin](https://lh3.googleusercontent.com/d/1MBUSMcm3AntY-j_a7tPWzwK-Tb4I0XJO "Wikimedia Commons, Closed and relaxed chromatin, CC BY-SA")
 
@@ -307,7 +308,9 @@ siRNA memiliki prinsip serupa tetapi sering berasal dari double-stranded RNA dan
 ![Biogenesis miRNA: Drosha → Exportin-5 → Dicer → RISC → gene silencing](https://lh3.googleusercontent.com/d/1PbYCuZOfkSDPEp6yhgg2wlGMhjBamNff "Wikimedia Commons, MicroRNAs biogenesis, CC BY-SA")
 
 > [!warning] Penting
-> Drosha → nucleus. Dicer → cytoplasm. RISC/Argonaute → effector silencing.
+> - Drosha → nucleus.
+> - Dicer → cytoplasm.
+> - RISC/Argonaute → effector silencing.
 
 **Jebakan soal**: miRNA tidak harus mengubah DNA. Efek utamanya adalah regulasi RNA/mRNA.
 
@@ -443,7 +446,7 @@ Post-translational level:
 
 → mengubah aktivitas dan lifetime protein.
 
-## JEBakan Soal High-Yield {highyield}
+## Jebakan Soal High-Yield {highyield}
 
 - HAT → chromatin OPEN; HDAC → chromatin CLOSED.
 - DNA promoter hypermethylation biasanya → transcription ↓.

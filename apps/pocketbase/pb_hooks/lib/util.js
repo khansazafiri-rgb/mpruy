@@ -271,6 +271,7 @@ function sendMail(app, to, subject, html) {
     console.log("[MEDCOEL email belum diatur] Ke: " + to + " | " + subject + "\n" + String(html).replace(/<[^>]+>/g, " "));
     return false;
   }
+
   try {
     const s = app.settings();
     const msg = new MailerMessage({
@@ -278,7 +279,11 @@ function sendMail(app, to, subject, html) {
       to: [{ address: to }],
       subject: subject,
       html: html,
+      headers: {
+        "Reply-To": "admin@medcoel.com",
+      },
     });
+
     app.newMailClient().send(msg);
     return true;
   } catch (err) {

@@ -369,6 +369,16 @@ await langkah('laporkan soal: pelapor dapat notifikasi saat selesai', async () =
 
 console.log('Pengajuan soal dan Hermes Agent');
 let subId = '';
+await langkah('satu pengajuan boleh 1 sampai 10 PDF; 11 ditolak dan tidak ada jalur WhatsApp', async () => {
+  const ok = await call('POST', '/api/medcoel/submissions', { subject: mk.id, hasKey: false, language: 'id', scope: 'all', pdfCount: 10 }, userB.token, 200);
+  assert.equal(ok.data.pdfCount, 10);
+  const lebih = await call('POST', '/api/medcoel/submissions', { subject: mk.id, hasKey: false, language: 'id', scope: 'all', pdfCount: 11 }, userB.token);
+  assert.equal(lebih.status, 400);
+  assert.match(JSON.stringify(lebih.data), /1 sampai 10/);
+  assert.doesNotMatch(JSON.stringify(lebih.data), /WhatsApp/);
+  const nol = await call('POST', '/api/medcoel/submissions', { subject: mk.id, hasKey: false, language: 'id', scope: 'all', pdfCount: 0 }, userB.token);
+  assert.equal(nol.status, 400);
+});
 await langkah('pengguna mengajukan PDF; file bukan PDF ditolak dari isinya', async () => {
   const s = (await call('POST', '/api/medcoel/submissions', { subject: mk.id, hasKey: false, language: 'id', scope: 'campus', pdfCount: 1 }, userA.token, 200)).data;
   subId = s.id;
@@ -750,6 +760,7 @@ await langkah('drilling: tersembunyi sampai ada soal dan sakelar admin menyala; 
     assert.equal((await call('GET', '/api/medcoel/drilling', undefined, userB.token, 200)).data.subjects[0].questionCount, 3);
     await call('POST', '/api/medcoel/admin/questions/bulk', { ids: [q.id], action: 'scope', scope: 'campus', campuses: [kampusB.id] }, admin.token, 200);
     assert.equal((await call('GET', '/api/medcoel/drilling', undefined, userB.token, 200)).data.subjects[0].questionCount, 4);
+    assert.equal((await call('GET', `/api/collections/questions/records/${q.id}`, undefined, su, 200)).data.scope, 'campus');
     await call('POST', '/api/medcoel/admin/questions/bulk', { ids: [q.id], action: 'scope', scope: 'all' }, admin.token, 200);
 
     // Aksi massal per mata kuliah dari halaman admin Drilling: draf -> tayang -> pindah -> hapus.
@@ -1172,14 +1183,18 @@ await langkah('urutan BAB semua mata kuliah mengikuti Google Doc (bukan A-Z), ju
   assert.equal(anat[0], 'Anatomi Umum & Terminologi Anatomis');
 });
 
-await langkah('catatan materi bawaan: Anatomi (20 BAB), Histologi (12), Fisiologi (20), Biokimia (18), dan Genetika Kedokteran (6) terbaca siswa, berurutan, dengan flashcard', async () => {
-  for (const [slug, jumlah] of [['anatomi', 20], ['histologi', 12], ['fisiologi', 20], ['biokimia', 18], ['genetika-kedokteran', 6]]) {
+await langkah('catatan materi bawaan: Anatomi (20 BAB), Histologi (12), Fisiologi (20), Biokimia (18), Genetika Kedokteran (6), Patologi Anatomi (13), Parasitologi (8), dan Mikrobiologi (11) terbaca siswa, berurutan, dengan flashcard', async () => {
+  for (const [slug, jumlah] of [['anatomi', 20], ['histologi', 12], ['fisiologi', 20], ['biokimia', 18], ['genetika-kedokteran', 6], ['patologi-anatomi', 13], ['parasitologi', 8], ['mikrobiologi', 11]]) {
     const sub = subjects.find((s) => s.slug === slug);
     assert.ok(sub, `mata kuliah ${slug} dari katalog`);
     const noted = (await call('GET', `/api/medcoel/subjects/${slug}`, undefined, userA.token, 200)).data.chapters.filter((c) => c.hasNotes);
     assert.equal(noted.length, jumlah, slug);
     assert.ok(noted.every((c) => c.hasCards === true), `${slug}: setiap BAB bercatatan punya flashcard`);
+    // Isi catatan diperiksa pada BAB pertama, tengah, dan terakhir saja: seluruh isi sudah dijaga tes konten, dan membaca
+    // ±110 catatan berturut-turut menghabiskan batas 600 permintaan/menit sehingga tes API berikutnya kena 429.
+    const sample = new Set([0, Math.floor((noted.length - 1) / 2), noted.length - 1]);
     for (const [i, c] of noted.entries()) {
+      if (!sample.has(i)) continue;
       const n = (await call('GET', `/api/medcoel/chapters/${c.id}/notes`, undefined, userA.token, 200)).data;
       assert.ok(n.content.startsWith('<!-- materi:v2 -->'), c.title);
       assert.ok(n.content.includes('## Flashcard {kartu}'), `${c.title}: flashcard`);
@@ -1193,7 +1208,7 @@ await langkah('catatan materi bawaan: Anatomi (20 BAB), Histologi (12), Fisiolog
     }
   }
   // BAB tanpa catatan tidak punya flashcard.
-  const plain = (await call('GET', `/api/medcoel/subjects/${subjects.find((s) => s.slug === 'mikrobiologi').slug}`, undefined, userA.token, 200)).data.chapters;
+  const plain = (await call('GET', `/api/medcoel/subjects/${subjects.find((s) => s.slug === 'farmakologi').slug}`, undefined, userA.token, 200)).data.chapters;
   assert.ok(plain.every((c) => !c.hasNotes && !c.hasCards));
 });
 

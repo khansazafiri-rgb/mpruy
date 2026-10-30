@@ -218,6 +218,7 @@ routerAdd("POST", "/api/medcoel/admin/questions/bulk", (e) => {
       if (b.action === "move") {
         r.set("chapter", target.id);
         r.set("subject", target.getString("subject"));
+        // Soal Drilling boleh General maupun khusus kampus.
       }
       else if (b.action === "difficulty") r.set("difficulty", b.difficulty);
       else if (b.action === "scope") {

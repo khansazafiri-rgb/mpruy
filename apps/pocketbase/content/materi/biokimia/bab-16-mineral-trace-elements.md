@@ -330,7 +330,8 @@ Langkah besar:
 1. I− masuk thyrocyte melalui sodium–iodide symporter (NIS) pada basolateral membrane.
 2. I− menuju colloid.
 3. Thyroid peroxidase (TPO) mengoksidasi iodide dan melakukan organification pada tyrosine thyroglobulin → MIT dan DIT.
-4. Coupling:
+
+### 4. Coupling
 
 - MIT + DIT → T3
 - DIT + DIT → T4

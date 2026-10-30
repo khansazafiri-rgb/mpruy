@@ -17,7 +17,7 @@ import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
 import { chatRef, claimChat, useChatState } from '@/lib/chatStore';
 import { looksLikePdf, uploadFile } from '@/lib/upload';
-import { confirmMessage, manyPdfMessage, waLink } from '@/lib/wa';
+import { confirmMessage, waLink } from '@/lib/wa';
 
 const reduceMotion = () => typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
@@ -117,8 +117,7 @@ function UploadFlow({ sid, onStatus, onMenu }) {
     } catch (e) { setStep('count'); fail(e, 'Coba lagi', () => createDraft(value, mine)); } finally { setBusy(false); }
   };
   const pickCount = async (o) => {
-    answer('count', o, o.value === 'many' ? 'many' : 'files');
-    if (o.value === 'many') return;
+    answer('count', o, 'files');
     await createDraft(o.value, { ...a, count: o.value });
   };
 
@@ -141,8 +140,8 @@ function UploadFlow({ sid, onStatus, onMenu }) {
   const addFiles = async (files) => {
     setError(''); setRetry(null);
     const list = [...files];
-    const room = 5 - (draft?.files?.length || 0) - uploads.filter((u) => !u.error && u.progress < 1).length;
-    if (list.length > room) { setError(`Satu pengajuan paling banyak 5 PDF. Sisa tempat: ${Math.max(0, room)}.`); list.splice(Math.max(0, room)); }
+    const room = MAX_PDF - (draft?.files?.length || 0) - uploads.filter((u) => !u.error && u.progress < 1).length;
+    if (list.length > room) { setError(`Satu pengajuan paling banyak ${MAX_PDF} PDF. Sisa tempat: ${Math.max(0, room)}.`); list.splice(Math.max(0, room)); }
     for (const f of list) {
       const key = `${f.name}-${f.size}-${Date.now()}`;
       if (f.size > maxMb * 1048576) { setUploads((u) => [...u, { key, name: f.name, progress: 0, error: `Lebih dari ${maxMb} MB. Kecilkan atau pisah PDF-nya.` }]); continue; }
@@ -164,7 +163,7 @@ function UploadFlow({ sid, onStatus, onMenu }) {
   const leave = (fn) => { setLeft(true); fn(); };
   const campusName = me?.campusName || 'kampusmu';
   const waNumber = settings?.adminWhatsapp;
-  const steps = ['subject', 'hasKey', 'language', 'scope', 'count', 'files', 'summary', 'sent', 'many'];
+  const steps = ['subject', 'hasKey', 'language', 'scope', 'count', 'files', 'summary', 'sent'];
   const at = (s) => steps.indexOf(step) >= steps.indexOf(s);
 
   return (
@@ -195,23 +194,11 @@ function UploadFlow({ sid, onStatus, onMenu }) {
       {at('count') && <Answer text={a.scopeLabel} onChange={() => goBack('scope')} disabled={step === 'scope' || busy || step === 'sent'} />}
 
       {at('count') && <Bubble><b>Berapa PDF yang mau kamu kirim?</b></Bubble>}
-      {step === 'count' && <Chips options={[...[1, 2, 3, 4, 5].map((n) => ({ value: String(n), label: String(n) })), { value: 'many', label: 'Lebih dari 5' }]} onPick={pickCount} />}
-      {at('files') && step !== 'many' && <Answer text={`${a.countLabel} PDF`} onChange={() => goBack('count')} disabled={step === 'count' || busy || step === 'sent'} />}
+      {step === 'count' && <Chips options={Array.from({ length: MAX_PDF }, (_, i) => ({ value: String(i + 1), label: String(i + 1) }))} onPick={pickCount} />}
+      {step === 'count' && <p className="chat-aside">Paling banyak {MAX_PDF} PDF per pengajuan. Kalau punya lebih, kirim sebagai pengajuan terpisah.</p>}
+      {at('files') && <Answer text={`${a.countLabel} PDF`} onChange={() => goBack('count')} disabled={step === 'count' || busy || step === 'sent'} />}
 
-      {step === 'many' && (
-        <>
-          <Answer text="Lebih dari 5" onChange={() => goBack('count')} />
-          <Bubble>
-            Untuk lebih dari 5 PDF, kirim filenya lewat WhatsApp admin ya. Pesannya sudah aku isi. Admin akan mencatat pengajuanmu supaya tetap muncul di status pengajuan.
-            <div className="mt-3">
-              <a href={waLink(waNumber, manyPdfMessage({ ...a, hasKey: a.hasKey === 'yes', subjectName: a.subjectLabel }, me))} target="_blank" rel="noopener noreferrer" className="btn-primary btn-sm"><MessageCircle size={16} /> Kirim lewat WhatsApp</a>
-            </div>
-            {!waNumber && <p className="mt-2 text-xs text-coral">Nomor WhatsApp admin belum diatur.</p>}
-          </Bubble>
-        </>
-      )}
-
-      {at('files') && step !== 'many' && step !== 'sent' && (
+      {at('files') && step !== 'sent' && (
         <Bubble wide>
           {busy && !draft ? 'Menyiapkan tempat unggah...' : (
             <div className="space-y-3">
@@ -519,6 +506,9 @@ export function ChatAdminBody({ compact = false }) {
     </div>
   );
 }
+
+// Harus sama dengan MAX_PDFS di apps/pocketbase/pb_hooks/lib/submissions.js.
+const MAX_PDF = 10;
 
 export default function ChatAdmin() {
   return (

@@ -225,6 +225,7 @@ function applyForm(app, rec, body) {
   let ch;
   try { ch = app.findRecordById("chapters", String(body.chapter || rec.getString("chapter"))); } catch (_) { ch = null; }
   if (!ch || ch.getString("subject") !== subject.id) throw new BadRequestError("Pilih BAB di mata kuliah ini.");
+  // Soal Drilling mempertahankan scope General atau Kampus dari sumber.
   const scope = body.scope === "campus" ? "campus" : "all";
   const campuses = scope === "campus" ? resolveCampuses(app, body.campuses) : [];
   if (scope === "campus" && !campuses.length) throw new BadRequestError("Pilih minimal satu kampus untuk soal terbatas.");

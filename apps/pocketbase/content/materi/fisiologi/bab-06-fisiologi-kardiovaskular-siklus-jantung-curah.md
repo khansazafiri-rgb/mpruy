@@ -114,7 +114,7 @@ Terjadi setelah fast Na+ channels berhenti berkontribusi pada upstroke dan membr
 
 Fase 2 = plateau.
 
-**Sumber menekankan**: L-type Ca2+ influx berperan penting mempertahankan plateau dan memicu contraction.
+**Poin yang ditekankan**: L-type Ca2+ influx berperan penting mempertahankan plateau dan memicu contraction.
 
 ## Calcium-Induced Calcium Release
 
@@ -407,7 +407,7 @@ Ventricular filling → atrial systole → EDV → isovolumetric contraction →
 - [His–Purkinje System] Setelah AV node :: impuls masuk ke His bundle → bundle branches → Purkinje fibers.
 - [Action Potential Sel Ventrikel: Gambaran Umum] Makna fisiologis terpenting :: plateau memperpanjang refractory period sehingga otot jantung tidak mengalami tetanus fisiologis.
 - [Fase 0 Ventricular Action Potential] Arus dominan menurut sumber :: rapid Na+ influx melalui fast voltage-gated Na+ channels.
-- [Fase 2: Plateau] Sumber menekankan :: L-type Ca2+ influx berperan penting mempertahankan plateau dan memicu contraction.
+- [Fase 2: Plateau] Poin yang ditekankan :: L-type Ca2+ influx berperan penting mempertahankan plateau dan memicu contraction.
 - [Fase 3] Arus dominan :: K+ efflux meningkat sehingga membrane potential kembali menjadi negatif.
 - [ECG: Gambaran Umum] Prinsip penting :: ECG bukan rekaman kontraksi mekanik secara langsung; ECG merekam perubahan electrical activity yang mendahului mechanical response.
 - [Cardiac Cycle: Peta Besar] Satu cardiac cycle mencakup :: ventricular filling → atrial systole → isovolumetric contraction → ejection → isovolumetric relaxation → filling kembali.
