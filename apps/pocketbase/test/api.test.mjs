@@ -829,6 +829,18 @@ await langkah('drilling khusus kampus: pengajuan "kampus saja" lewat /drilling-i
     assert.equal((await call('GET', '/api/medcoel/me', undefined, userC.token, 200)).data.drillingAvailable, false);
     await call('POST', '/api/medcoel/attempts/drilling', { subject: dsub.id }, userC.token, 404);
 
+    // Admin melihat siapa saja yang bisa melihat: kelompok kampus B berisi userA dan userB; userC (kampus A) tidak termasuk.
+    const aud = (await call('GET', `/api/medcoel/admin/drilling/audience?subject=${dsub.id}`, undefined, admin.token, 200)).data;
+    assert.equal(aud.general.published, 0);
+    assert.equal(aud.campuses.length, 1);
+    assert.equal(aud.campuses[0].id, kampusB.id);
+    assert.equal(aud.campuses[0].published, 2);
+    assert.ok(aud.campuses[0].users.some((x) => x.loginId === `ujia${RUN}`));
+    assert.ok(!aud.campuses[0].users.some((x) => x.id === userC.id));
+    assert.ok(aud.notSeeing >= 1);
+    await call('GET', `/api/medcoel/admin/drilling/audience?subject=${dsub.id}`, undefined, userA.token, 403);
+    await call('GET', '/api/medcoel/admin/drilling/audience', undefined, admin.token, 400);
+
     // Ringkasan admin menghitung soal khusus kampus sebagai tayang di Drilling.
     const adm = (await call('GET', '/api/medcoel/admin/drilling', undefined, admin.token, 200)).data;
     assert.equal(adm.available, true);
@@ -841,9 +853,24 @@ await langkah('drilling khusus kampus: pengajuan "kampus saja" lewat /drilling-i
     assert.deepEqual(b2.subjects.map((x) => [x.questionCount, x.campusQuestionCount]), [[1, 0]]);
     const a2 = (await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data;
     assert.deepEqual(a2.subjects.map((x) => [x.questionCount, x.campusQuestionCount]), [[3, 2]]);
+    // Atur siapa yang melihat dari halaman admin Drilling: pilih kelompok (General atau kampus) lalu kampus barunya.
+    const bulkScope = (body, expect = 200) => call('POST', '/api/medcoel/admin/drilling/bulk', { subject: dsub.id, action: 'scope', ...body }, admin.token, expect);
+    await bulkScope({ scope: 'campus', campuses: [] }, 400);
+    await bulkScope({ scope: 'bukan' }, 400);
+    await call('POST', '/api/medcoel/admin/drilling/bulk', { subject: dsub.id, action: 'scope', scope: 'all' }, userA.token, 403);
+    assert.equal((await bulkScope({ only: 'all', scope: 'campus', campuses: [kampusA.id] })).data.count, 1); // soal General -> khusus kampus A
+    const c2 = (await call('GET', '/api/medcoel/drilling', undefined, userC.token, 200)).data;
+    assert.deepEqual(c2.subjects.map((x) => [x.questionCount, x.campusQuestionCount]), [[1, 1]]);
+    assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data.subjects.map((x) => x.questionCount), [2]);
+    assert.equal((await bulkScope({ only: kampusB.id, scope: 'all' })).data.count, 2); // soal kampus B -> General
+    assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userC.token, 200)).data.subjects.map((x) => x.questionCount), [3]);
+    assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data.subjects.map((x) => x.questionCount), [2]);
+    assert.equal((await bulkScope({ only: 'all', scope: 'campus', campuses: [kampusB.id] })).data.count, 2); // kembali ke kampus B
+    assert.equal((await bulkScope({ only: kampusA.id, scope: 'campus', campuses: [kampusB.id] })).data.count, 1);
+
     // Editor: soal Drilling boleh diberi pembatasan kampus.
     const adminQ = (await call('GET', `/api/medcoel/admin/questions?subject=${dsub.id}&perPage=50`, undefined, admin.token, 200)).data.items;
-    assert.equal(adminQ.filter((x) => x.scope === 'campus').length, 2);
+    assert.equal(adminQ.filter((x) => x.scope === 'campus').length, 3); // setelah pengaturan ulang di atas, ketiga soal khusus kampus B
     await call('POST', '/api/medcoel/admin/drilling/bulk', { subject: dsub.id, action: 'delete' }, admin.token, 200);
     assert.equal((await call('GET', '/api/medcoel/admin/drilling', undefined, admin.token, 200)).data.campusPublished, 0);
   } finally {

@@ -64,6 +64,53 @@ routerAdd("GET", "/api/medcoel/admin/drilling", (e) => {
   return e.json(200, { enabled: st.enabled, available: st.enabled && st.total + campusPublished > 0, total: st.total, campusPublished: campusPublished, published: total, drafts: drafts, subjects: subjects });
 });
 
+// Siapa yang bisa melihat soal Drilling satu mata kuliah: jumlah soal General dan, per kampus, jumlah soal serta
+// pengguna aktif kampus itu (daftar nama untuk dropdown). Pengguna kampus lain tidak melihat soal khusus kampus.
+routerAdd("GET", "/api/medcoel/admin/drilling/audience", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const learn = require(`${__hooks}/lib/learn.js`);
+  u.requireAdmin(e);
+  let subject;
+  try { subject = e.app.findRecordById("subjects", u.query(e, "subject")); } catch (_) { throw new BadRequestError("Pilih mata kuliahnya dulu."); }
+  const dch = learn.drillingChapter(e.app, subject.id);
+  const general = { published: 0, draft: 0 };
+  const per = {};
+  if (dch) {
+    e.app.findRecordsByFilter("questions", "chapter = {:c}", "", 0, 0, { c: dch.id }).forEach((q) => {
+      const st = q.getString("status") === "published" ? "published" : "draft";
+      if (q.getString("scope") !== "campus") { general[st]++; return; }
+      q.getStringSlice("campuses").forEach((id) => {
+        const g = (per[id] = per[id] || { published: 0, draft: 0 });
+        g[st]++;
+      });
+    });
+  }
+  const active = "role = 'user' AND disabled = FALSE AND deletedAt = ''";
+  const totalUsers = e.app.countRecords("users", $dbx.exp(active));
+  const campuses = [];
+  let covered = 0;
+  Object.keys(per).forEach((id) => {
+    let c;
+    try { c = e.app.findRecordById("campuses", id); } catch (_) { return; }
+    const exp = $dbx.exp(active + " AND campus = {:c}", { c: id });
+    const userCount = e.app.countRecords("users", exp);
+    covered += userCount;
+    const users = e.app.findRecordsByFilter("users", "role = 'user' && disabled = false && deletedAt = '' && campus = {:c}", "name", 100, 0, { c: id })
+      .map((x) => ({ id: x.id, name: x.getString("name"), loginId: x.getString("loginId"), semester: x.getInt("semester") }));
+    campuses.push({ id: id, name: c.getString("name"), published: per[id].published, draft: per[id].draft, userCount: userCount, users: users });
+  });
+  campuses.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+  const hasCampusOnly = campuses.length > 0;
+  return e.json(200, {
+    subject: { id: subject.id, name: subject.getString("name") },
+    general: { published: general.published, draft: general.draft, userCount: totalUsers },
+    campuses: campuses,
+    // Pengguna yang TIDAK melihat soal khusus kampus (kampus mereka tidak dipilih); mereka tetap melihat soal General.
+    notSeeing: hasCampusOnly ? Math.max(0, totalUsers - covered) : 0,
+    totalUsers: totalUsers,
+  });
+});
+
 // Aksi massal untuk semua soal Drilling satu mata kuliah: tayangkan / jadikan draf / pindah ke BAB biasa / hapus.
 routerAdd("POST", "/api/medcoel/admin/drilling/bulk", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
@@ -81,17 +128,32 @@ routerAdd("POST", "/api/medcoel/admin/drilling/bulk", (e) => {
     try { target = e.app.findRecordById("chapters", String(b.chapter || "")); } catch (_) { throw new BadRequestError("Pilih BAB tujuan."); }
     if (target.getBool("drilling") || target.getString("subject") !== subject.id) throw new BadRequestError("Pilih BAB biasa dari mata kuliah yang sama.");
   }
-  if (["publish", "draft", "move", "delete"].indexOf(b.action) < 0) throw new BadRequestError("Aksi tidak dikenal.");
+  // Atur siapa yang melihat: semua soal Drilling mata kuliah ini (atau hanya kelompok `only`: "all" = General,
+  // atau id kampus) menjadi General atau khusus kampus-kampus yang dipilih.
+  let campusIds = [];
+  if (b.action === "scope") {
+    if (b.scope === "campus") {
+      campusIds = require(`${__hooks}/lib/importer.js`).resolveCampuses(e.app, b.campuses);
+      if (!campusIds.length) throw new BadRequestError("Pilih minimal satu kampus yang boleh melihat.");
+    } else if (b.scope !== "all") throw new BadRequestError("Pilih General atau kampus tertentu.");
+  }
+  if (["publish", "draft", "move", "delete", "scope"].indexOf(b.action) < 0) throw new BadRequestError("Aksi tidak dikenal.");
+  let recs2 = recs;
+  if (b.action === "scope" && b.only) {
+    const only = String(b.only);
+    recs2 = recs.filter((r) => (only === "all" ? r.getString("scope") !== "campus" : r.getString("scope") === "campus" && r.getStringSlice("campuses").indexOf(only) >= 0));
+  }
   e.app.runInTransaction((tx) => {
-    recs.forEach((r) => {
+    recs2.forEach((r) => {
       if (b.action === "delete") return tx.delete(r);
       if (b.action === "publish") r.set("status", "published");
       else if (b.action === "draft") r.set("status", "draft");
       else if (b.action === "move") r.set("chapter", target.id);
+      else if (b.action === "scope") { r.set("scope", b.scope === "campus" ? "campus" : "all"); r.set("campuses", b.scope === "campus" ? campusIds : []); }
       tx.save(r);
     });
   });
-  return e.json(200, { ok: true, count: recs.length });
+  return e.json(200, { ok: true, count: recs2.length });
 });
 
 // ---------------------------------------------------------------------------
