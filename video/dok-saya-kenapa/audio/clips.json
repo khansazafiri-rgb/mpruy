@@ -1,0 +1,205 @@
+{
+ "N01": {
+  "start": 0,
+  "end": 0.77,
+  "dur": 0.77,
+  "who": "N",
+  "text": "Ini Raka."
+ },
+ "N02": {
+  "start": 1.09,
+  "end": 5.33,
+  "dur": 4.24,
+  "who": "N",
+  "text": "Di luar ruangan, dia sudah menyiapkan pertanyaan untuk pasien pertamanya."
+ },
+ "N03": {
+  "start": 5.65,
+  "end": 7.21,
+  "dur": 1.56,
+  "who": "N",
+  "text": "Lalu, pintu dibuka."
+ },
+ "N04": {
+  "start": 7.49,
+  "end": 9.21,
+  "dur": 1.72,
+  "who": "N",
+  "text": "Pasiennya benar-benar ada."
+ },
+ "P01": {
+  "start": 77.01,
+  "end": 79.49,
+  "dur": 2.48,
+  "who": "P",
+  "text": "Dok, saya harus cerita dari mana?"
+ },
+ "N05": {
+  "start": 9.43,
+  "end": 12.95,
+  "dur": 3.52,
+  "who": "N",
+  "text": "Dan seluruh pertanyaan itu, mendadak mengajukan cuti."
+ },
+ "N06": {
+  "start": 13.25,
+  "end": 14.73,
+  "dur": 1.48,
+  "who": "N",
+  "text": "Raka menarik napas."
+ },
+ "N07": {
+  "start": 15.01,
+  "end": 15.75,
+  "dur": 0.74,
+  "who": "N",
+  "text": "Tersenyum."
+ },
+ "N08": {
+  "start": 15.93,
+  "end": 17.13,
+  "dur": 1.2,
+  "who": "N",
+  "text": "Mencoba bicara."
+ },
+ "N09": {
+  "start": 17.33,
+  "end": 19.13,
+  "dur": 1.8,
+  "who": "N",
+  "text": "Tidak ada yang keluar selain..."
+ },
+ "N10": {
+  "start": 19.43,
+  "end": 20.5,
+  "dur": 1.07,
+  "who": "N",
+  "text": "Ehh..."
+ },
+ "N11": {
+  "start": 20.77,
+  "end": 22.57,
+  "dur": 1.8,
+  "who": "N",
+  "text": "Oke, kita mundur sebentar."
+ },
+ "N12": {
+  "start": 22.83,
+  "end": 27.91,
+  "dur": 5.08,
+  "who": "N",
+  "text": "Selama kuliah, Raka belajar teori, ikut praktikum, mengerjakan tugas."
+ },
+ "N13": {
+  "start": 28.11,
+  "end": 30.33,
+  "dur": 2.22,
+  "who": "N",
+  "text": "Dia juga sempat main dan bersenang-senang."
+ },
+ "N14": {
+  "start": 30.49,
+  "end": 33.79,
+  "dur": 3.3,
+  "who": "N",
+  "text": "Wajar, yang selalu dia tunda cuma satu."
+ },
+ "N15": {
+  "start": 33.97,
+  "end": 35.91,
+  "dur": 1.94,
+  "who": "N",
+  "text": "Latihan menghadapi kasus."
+ },
+ "R02": {
+  "start": 79.65,
+  "end": 82.31,
+  "dur": 2.66,
+  "who": "R",
+  "text": "Eh, nanti aja. Masih lama."
+ },
+ "N16": {
+  "start": 36.13,
+  "end": 37.93,
+  "dur": 1.8,
+  "who": "N",
+  "text": "Nanti aja, katanya."
+ },
+ "N17": {
+  "start": 38.19,
+  "end": 41.23,
+  "dur": 3.04,
+  "who": "N",
+  "text": "Tanggung jawab itu dia berikan kepada Raka minggu depan."
+ },
+ "N18": {
+  "start": 41.45,
+  "end": 45.15,
+  "dur": 3.7,
+  "who": "N",
+  "text": "Sayangnya, Raka minggu depan juga bilang, nanti aja."
+ },
+ "N19": {
+  "start": 45.37,
+  "end": 49.07,
+  "dur": 3.7,
+  "who": "N",
+  "text": "Sampai suatu hari, dia mencoba Simulasi Dokter di MEDCOEL."
+ },
+ "N20": {
+  "start": 49.31,
+  "end": 51.23,
+  "dur": 1.92,
+  "who": "N",
+  "text": "Dia belajar memulai pertanyaan."
+ },
+ "N21": {
+  "start": 51.37,
+  "end": 56.35,
+  "dur": 4.98,
+  "who": "N",
+  "text": "Mencari informasi, lalu melihat bagian mana dari keputusannya yang perlu diperbaiki."
+ },
+ "N22": {
+  "start": 56.63,
+  "end": 61.03,
+  "dur": 4.4,
+  "who": "N",
+  "text": "Awalnya salah, iya, tapi di sini dia bisa mencoba lagi."
+ },
+ "N23": {
+  "start": 61.37,
+  "end": 63.67,
+  "dur": 2.3,
+  "who": "N",
+  "text": "Sekarang, kita kembali ke pintu tadi."
+ },
+ "N23b": {
+  "start": 63.93,
+  "end": 65.13,
+  "dur": 1.2,
+  "who": "N",
+  "text": "Raka masih gugup."
+ },
+ "N24": {
+  "start": 65.35,
+  "end": 70.77,
+  "dur": 5.42,
+  "who": "N",
+  "text": "Jasnya tidak mendadak memberi kekuatan super, tapi kali ini dia tahu cara memulai."
+ },
+ "R03": {
+  "start": 82.63,
+  "end": 86.29,
+  "dur": 3.66,
+  "who": "R",
+  "text": "Baik. Boleh ceritakan keluhan yang paling mengganggu sekarang?"
+ },
+ "N25": {
+  "start": 71.05,
+  "end": 76.63,
+  "dur": 5.58,
+  "who": "N",
+  "text": "Mau latihan menghadapi kasus sebelum panik seperti Raka, coba Simulasi Dokter gratis di MEDCOEL."
+ }
+}
