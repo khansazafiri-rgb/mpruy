@@ -166,7 +166,7 @@
 - Penyebab lain: kehilangan renal, kehilangan gastrointestinal, inflammation, malnutrition, atau dilution.
 - Karena half-life relatif panjang, albumin lebih mencerminkan perubahan sintesis yang kronik dibanding perubahan sangat akut.
 
-## Pt/Inr
+## PT/INR
 
 - Liver mensintesis sebagian besar coagulation factors.
 - PT/INR yang memanjang dapat mencerminkan penurunan sintesis clotting factors, tetapi juga dipengaruhi vitamin K status dan anticoagulant therapy.
@@ -188,13 +188,13 @@
 - Non-HDL cholesterol = total cholesterol − HDL-C; mencakup cholesterol pada semua partikel atherogenic yang mengandung ApoB.
 - ApoB merefleksikan jumlah partikel atherogenic lebih langsung, walaupun tidak selalu termasuk panel rutin dasar.
 
-## LDL-C Calculation — JEBakan {highyield}
+## LDL-C Calculation — Jebakan {highyield}
 
 - Formula Friedewald klasik: LDL-C ≈ total cholesterol − HDL-C − triglyceride/5 dalam mg/dL.
 - Formula ini kurang akurat pada triglyceride sangat tinggi dan pada beberapa kondisi nonfasting.
 - Banyak laboratorium modern memakai metode/perhitungan lain, sehingga selalu lihat bagaimana LDL dilaporkan.
 
-## Total Protein dan a/G Ratio
+## Total Protein dan A/G Ratio
 
 - Total protein terutama terdiri dari albumin + globulins.
 - A/G ratio = albumin dibanding globulin.
@@ -302,7 +302,7 @@ Anion gap = Na+ − (Cl− + HCO3−).
 - Lipase umumnya lebih spesifik terhadap pancreatic injury dan tetap meningkat lebih lama dibanding amylase.
 - Peningkatan enzyme saja tidak cukup; harus dibaca bersama gejala dan imaging bila diperlukan.
 
-## Ldh
+## LDH
 
 - Lactate dehydrogenase terdapat luas di berbagai jaringan.
 - LDH meningkat pada berbagai bentuk tissue injury sehingga sangat tidak spesifik.
@@ -337,7 +337,7 @@ Anion gap = Na+ − (Cl− + HCO3−).
 - Albumin ↓ + PT/INR memanjang dalam konteks liver disease → synthetic dysfunction lebih mengkhawatirkan daripada aminotransferase tinggi saja.
 - Na−Cl−HCO3 pattern abnormal → pikirkan water balance dan acid–base, bukan hanya satu elektrolit.
 
-## JEBakan Soal Paling Sering {highyield}
+## Jebakan Soal Paling Sering {highyield}
 
 - AST/ALT tinggi ≠ otomatis fungsi sintesis liver buruk.
 - Creatinine “normal” ≠ selalu GFR normal pada massa otot rendah.

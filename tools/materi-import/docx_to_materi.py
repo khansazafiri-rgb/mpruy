@@ -29,11 +29,11 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 CATALOG_MD = os.path.join(ROOT, 'docs', 'MATA_KULIAH.md')
 
 
-def norm_words(s):
+def norm_words(s, keep_paren=False):
     """Kata-kata judul untuk mencocokkan judul di dokumen dengan judul BAB di web."""
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode().lower()
     s = s.replace('&', ' dan ')
-    s = re.sub(r'\([^)]*\)', ' ', s)          # keterangan dalam kurung berbeda-beda antar sumber
+    s = s if keep_paren else re.sub(r'\([^)]*\)', ' ', s)          # keterangan dalam kurung berbeda-beda antar sumber
     s = re.sub(r'[^a-z0-9 ]+', ' ', s)
     return [w for w in s.split() if w not in ('dan', 'yang', 'dari', 'pada')]
 
@@ -47,14 +47,22 @@ def site_chapters(subject_name):
     return [re.sub(r'^\d+\.\s+', '', ln).strip() for ln in m.group(1).splitlines() if re.match(r'^\d+\.\s', ln)]
 
 
-def match_titles(doc_titles, site_titles):
-    """{nomor BAB di dokumen: judul BAB di web}; berhenti bila ada yang tak cocok atau ganda."""
+def title_score(doc_title, site_title):
+    """Kemiripan judul (0-1). Keterangan dalam kurung boleh ikut dihitung atau tidak; yang lebih cocok dipakai."""
+    best = 0.0
+    for keep in (False, True):
+        dw, sw = set(norm_words(doc_title, keep)), set(norm_words(site_title, keep))
+        best = max(best, len(dw & sw) / max(1, len(dw | sw)))
+    return best
+
+
+def match_titles(doc_titles, site_titles, allow_missing=False):
+    """{nomor BAB di dokumen: judul BAB di web}; berhenti bila ada yang tak cocok atau ganda.
+    allow_missing: BAB di web yang tidak ada di dokumen (mis. BAB masih kosong) hanya dilaporkan."""
     pairs = []
     for num, dt in doc_titles.items():
-        dw = set(norm_words(dt))
         for st in site_titles:
-            sw = set(norm_words(st))
-            pairs.append((len(dw & sw) / max(1, len(dw | sw)), num, st))
+            pairs.append((title_score(dt, st), num, st))
     pairs.sort(reverse=True)
     out, used = {}, set()
     for score, num, st in pairs:
@@ -64,6 +72,9 @@ def match_titles(doc_titles, site_titles):
         used.add(st)
     problems = [f'Bab {n} — {t}' for n, t in doc_titles.items() if n not in out]
     left = [s for s in site_titles if s not in used]
+    if left and not problems and allow_missing:
+        print('** BAB di web tanpa catatan (tidak ada atau masih kosong di dokumen): ' + '; '.join(left))
+        return out
     if problems or left:
         sys.exit('Judul BAB tidak cocok.\n  Di dokumen tanpa pasangan: %s\n  Di web tanpa pasangan: %s' % (problems or '-', left or '-'))
     return out
@@ -93,8 +104,7 @@ def select_chapters(chapters, site_titles, skip_unmatched=False):
     Mengembalikan (daftar BAB terpilih, catatan untuk laporan)."""
     notes, best = [], {}
     for ch in chapters:
-        dw = set(norm_words(ch['title']))
-        cand = sorted(((len(dw & set(norm_words(st))) / max(1, len(dw | set(norm_words(st)))), st) for st in site_titles), reverse=True)
+        cand = sorted(((title_score(ch['title'], st), st) for st in site_titles), reverse=True)
         score, st = cand[0] if cand else (0, None)
         if score < 0.5:
             if not skip_unmatched:
@@ -110,7 +120,10 @@ def select_chapters(chapters, site_titles, skip_unmatched=False):
             notes.append(f'versi ganda tidak dipakai: {st} (Bab {ch["num"]}, {chapter_words(ch)} kata; dipakai Bab {old["num"]}, {chapter_words(old)} kata)' if not is_placeholder(ch)
                          else f'placeholder dilewati: {st} (Bab {ch["num"]})')
     selected = [ch for ch in chapters if best.get(next((st for st in best if best[st] is ch), None)) is ch]
-    return selected, notes
+    empty = [ch for ch in selected if is_placeholder(ch)]
+    for ch in empty:
+        notes.append(f'BAB kosong (hanya judul/placeholder), tidak dimasukkan: Bab {ch["num"]} — {ch["title"]} ({chapter_words(ch)} kata)')
+    return [ch for ch in selected if ch not in empty], notes
 
 
 def ref_names(doc_titles):
@@ -129,12 +142,12 @@ NUM_ITEM = re.compile(r'^(\d{1,2})\)\s+')
 # "Gambar 6.4. Keterangan" atau (Fisiologi) "Gambar Bab 6 — Keterangan"
 CAPTION = re.compile(r'^Gambar\s+(?:Bab\s+)?(\d+(?:\.\d+)?)(?:\.|\s+[—–-])\s+(.*)$', re.S)
 H2_NUM = re.compile(r'^(\d{1,2})\.\s+(.*)$')
-H2_LETTER = re.compile(r'^([A-F])\.\s+(.*)$')
+H2_LETTER = re.compile(r'^([A-F])\.\s+(?![a-z])(.*)$')       # "A. Urinary Tract", bukan "E. coli"
 
 # Baris yang hanya urusan penyusun dokumen (tidak untuk siswa).
 INTERNAL_LINE = re.compile(
     r'^(STATUS\s*:|Catatan editorial|MASTER DOCUMENT|Aturan visual|Aturan visual master note|'
-    r'Sumber cakupan|PPT dosen khusus|Draft K\d+ terpisah|Sumber utama(?: Drive)?\s*:\s*[“"])', re.I)
+    r'Sumber cakupan|PPT dosen khusus|Draft K\d+ terpisah|Sumber utama(?: Drive)?\s*:\s*\S)', re.I)
 INTERNAL_ANY = re.compile(r'retrieval|knowledge base|\[CEK\]|master note|PPT dosen|bahan yang tersedia|dokumen master', re.I)
 
 CALLOUT_RULES = [
@@ -146,11 +159,11 @@ CALLOUT_RULES = [
     # label berdiri sendiri ("PENTING:" lalu butir/paragraf) pada dokumen bergaya huruf besar
     (re.compile(r'^(Penting|Jebakan(?: soal)?)\s*:\s*$', re.I), 'warning', None),
     (re.compile(r'^(Praktikum|Practical clue|Practical rule|Practical emphasis|Shortcut praktikum|Clue(?: terkuat)?)\s*:\s*', re.I), 'praktikum', None),
-    (re.compile(r'^(High-yield(?: distinction| principle)?|Konsep high-yield|Poin penting|Konsep penting)\s*:\s*', re.I), 'highyield', None),
+    (re.compile(r'^(High-yield(?: distinction| principle)?|Konsep high-yield|Poin penting|Konsep penting|Tambahan high-yield(?: [^:]{0,40})?|High-yield clue(?: [^:]{0,30})?|Exam pearl|Poin ujian)\s*:\s*', re.I), 'highyield', None),
     (re.compile(r'^(Mnemonic(?: praktis| visual| relasional| konseptual)?(?: [^:]{0,30})?)\s*:\s*', re.I), 'tip', None),
 ]
 
-SOURCE_H2 = re.compile(r'^(sumber dan provenance|rujukan dan atribusi gambar|sumber(?: dan atribusi)?)$', re.I)
+SOURCE_H2 = re.compile(r'^(sumber dan provenance|rujukan dan atribusi gambar|sumber(?: dan atribusi)?|sumber(?: guideline| rujukan)? utama|referensi|daftar pustaka)$', re.I)
 DROP_H2 = re.compile(r'retrieval', re.I)
 
 
@@ -167,10 +180,10 @@ def slug(s, limit=48):
 # 1. Paragraf mentah dari .docx (teks + tautan, tanpa gaya yang bocor)
 # ----------------------------------------------------------------------------
 class Para:
-    __slots__ = ('i', 'lvl', 'text', 'blank_before', 'has_img', 'trail', 'force_h')
+    __slots__ = ('i', 'lvl', 'text', 'blank_before', 'has_img', 'trail', 'force_h', 'style')
 
-    def __init__(self, i, lvl, text, blank_before, has_img, trail=False, force_h=False):
-        self.i, self.lvl, self.text, self.blank_before, self.has_img, self.trail, self.force_h = i, lvl, text, blank_before, has_img, trail, force_h
+    def __init__(self, i, lvl, text, blank_before, has_img, trail=False, force_h=False, style=''):
+        self.i, self.lvl, self.text, self.blank_before, self.has_img, self.trail, self.force_h, self.style = i, lvl, text, blank_before, has_img, trail, force_h, style
 
     def __repr__(self):
         return f'<P{self.i} L{self.lvl} {self.text[:40]!r}>'
@@ -193,6 +206,37 @@ def inline_text(p, rels, keep_drive_links=False):
     return ''.join(out)
 
 
+CORRECTIONS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'corrections')
+
+
+def apply_corrections(paras, subject):
+    """Koreksi hasil QC (salah ketik, kekeliruan, catatan internal) dari corrections/<mata-kuliah>.json, diterapkan ke teks sumber.
+    Tiap aturan: {"find": teks, "replace": teks, "drop": true bila seluruh paragraf dibuang, "all": true bila boleh cocok di banyak tempat,
+    "regex": true, "why": alasan}. Aturan yang tidak cocok atau ambigu (cocok > 1 tanpa "all") tidak diterapkan dan dilaporkan.
+    Mengembalikan (paragraf, laporan)."""
+    path = os.path.join(CORRECTIONS_DIR, f'{subject}.json')
+    if not os.path.exists(path):
+        return paras, []
+    rules = json.load(open(path, encoding='utf-8'))
+    notes = []
+    for k, r in enumerate(rules):
+        rx = re.compile(r['find']) if r.get('regex') else None
+        hit = [q for q in paras if (rx.search(q.text) if rx else r['find'] in q.text)]
+        if not hit:
+            notes.append(f'koreksi #{k + 1} tidak cocok (sudah diperbaiki di dokumen?): {r["find"][:70]}')
+            continue
+        if len(hit) > 1 and not r.get('all'):
+            notes.append(f'koreksi #{k + 1} ambigu ({len(hit)} tempat), tidak diterapkan: {r["find"][:70]}')
+            continue
+        for q in hit:
+            if r.get('drop'):
+                q.text = ''
+            else:
+                q.text = rx.sub(r['replace'], q.text) if rx else q.text.replace(r['find'], r['replace'])
+        notes.append(f'koreksi #{k + 1} diterapkan ({len(hit)}x): {r.get("why", "")[:90]}')
+    return [q for q in paras if q.text.strip()], notes
+
+
 def read_paragraphs(path):
     d = docx.Document(path)
     rels = d.part.rels
@@ -207,7 +251,7 @@ def read_paragraphs(path):
             continue
         name = p.style.name
         lvl = int(name[-1]) if name.startswith('Heading') else 0
-        out.append(Para(i, lvl, t, blank, False, raw != raw.rstrip()))
+        out.append(Para(i, lvl, t, blank, False, raw != raw.rstrip(), False, name))
         blank = False
     return out
 
@@ -215,11 +259,17 @@ def read_paragraphs(path):
 # ----------------------------------------------------------------------------
 # 1b. Dokumen bergaya HURUF BESAR (Genetika, lampiran Biokimia): disamakan dengan gaya "Bab N — Judul" + Heading
 # ----------------------------------------------------------------------------
-UP_CHAPTER = re.compile(r'^BAB\s+(\d+)\s*[—–-]\s*(\S.*)$')
+# "BAB 3 — JUDUL", "PARASITOLOGI — BAB 3: JUDUL", "PATOLOGI ANATOMI — BAB 6: JUDUL"
+UP_CHAPTER = re.compile(r'^(?:[A-Z][A-Z &]*?\s+[—–-]\s+)?BAB\s+(\d+)\s*[—–:-]\s*(\S.*)$')
+RULE_LINE = re.compile(r'^[═━─=_*~\-]{5,}$')
+END_MARK = re.compile(r'^SELESAI\s*[—–-]')
 UP_LETTER = re.compile(r'^([A-Z]{1,2})\.\s+(\S.*)$')
+EMOJI_PREFIX = re.compile(r'^[\u2600-\u27BF\u2B00-\u2BFF\U0001F300-\U0001FAFF\uFE0F]+\s*')
 UP_LABELS = {'PENTING', 'HIGH-YIELD', 'BEDAKAN', 'JEBAKAN SOAL', 'JEBAKAN', 'CATATAN', 'CONTOH'}
 UP_NUMBERED = re.compile(r'^(\d{1,2}\.\d{1,2})\s+(\S.*)$')
-LOWER_WORDS = {'dan', 'atau', 'yang', 'di', 'ke', 'dari', 'pada', 'untuk', 'dengan', 'dalam', 'antara', 'sebagai', 'secara', 'oleh', 'bagi', 'vs', 'of', 'the', 'and', 'in', 'to', 'as', 'by', 'a'}
+LOWER_WORDS = {'dan', 'atau', 'yang', 'di', 'ke', 'dari', 'pada', 'untuk', 'dengan', 'dalam', 'antara', 'sebagai', 'secara', 'oleh', 'bagi', 'vs', 'of', 'the', 'and', 'in', 'to', 'as', 'by'}
+CASE_FIX = {'MACCONKEY': 'MacConkey', 'GENEXPERT': 'GeneXpert', 'HBEAG': 'HBeAg', 'HBSAG': 'HBsAg', 'HBCAG': 'HBcAg', 'HDAG': 'HDAg', 'LOWENSTEIN': 'Lowenstein'}
+NOT_ACRONYMS = {'GAMBAR', 'VISUAL', 'TABEL', 'BAB', 'CATATAN', 'PENTING', 'CONTOH', 'SUMBER', 'END', 'SELESAI', 'DAN', 'ATAU'}
 ROMAN = re.compile(r'^(?:I{1,3}|IV|V|VI{0,3}|IX|X)$')
 
 
@@ -240,26 +290,48 @@ def doc_acronyms(paras):
                 lower_words.add(w.lower())
             elif len(w) >= 2:
                 upper.add(w)
-    return {w for w in upper if w.lower() not in lower_words}
+    return {w for w in upper if w.lower() not in lower_words and w not in NOT_ACRONYMS}
+
+
+_SPECIES = set()         # epitet spesies ("aureus", "coli") yang di badan teks muncul sebagai "S. aureus"; diisi normalize_upper()
+
+
+def doc_species(paras):
+    cnt = {}
+    for p in paras:
+        for w in re.findall(r'\b[A-Z]\. ([a-z]{4,})\b', p.text):
+            cnt[w] = cnt.get(w, 0) + 1
+    return {w for w, c in cnt.items() if c >= 2}
 
 
 def smart_title(text, acr, sentence=False):
-    """JUDUL HURUF BESAR -> Judul Huruf Kapital Awal (atau huruf kecil seperti kalimat); singkatan dan kata campuran tetap."""
-    out = []
+    """JUDUL HURUF BESAR -> Judul Huruf Kapital Awal (atau huruf kecil seperti kalimat); singkatan, kata campuran, dan epitet spesies tetap."""
+    out, prev = [], ''
     for k, w in enumerate(text.split(' ')):
         pieces = re.split(r'([/\-–])', w)
         for j, piece in enumerate(pieces):
             core = re.sub(r'^\W+|\W+$', '', piece)
-            if not core or piece in '/-–' or not any(c.isalpha() for c in core) or any(c.islower() for c in core) or core in acr or ROMAN.match(core):
+            if core in CASE_FIX:                                       # nama dengan huruf besar-kecil khas (MacConkey, HBeAg)
+                pieces[j] = piece.replace(core, CASE_FIX[core])
+                continue
+            if re.match(r'^[A-Z]{2,}[a-z]+$', core):                    # "JEBakan" (salah ketik) -> "Jebakan"
+                pieces[j] = piece.replace(core, core.capitalize())
+                continue
+            wrapped = piece.startswith('(') and piece.endswith(')') and len(core) >= 2 and core.isupper()
+            one_letter = len(core) == 1 and core.isupper() and k > 0 and prev.lower() in ('group', 'tipe', 'type', 'vitamin', 'hepatitis', 'kelompok')
+            if (not core or piece in '/-–' or not any(c.isalpha() for c in core) or any(c.islower() for c in core) or core in acr or ROMAN.match(core)
+                    or (any(c.isdigit() for c in core) and re.match(r'^[0-9]+[A-Z]+$', core)) or wrapped or one_letter):      # "16S", "(GAS)", "Group A" tetap
                 continue
             first = k == 0 and j == 0
             low = piece.lower()
-            if not first and (core.lower() in LOWER_WORDS or sentence):
+            species = (not first and core.lower() in _SPECIES and (re.match(r'^[A-Z]\.$', prev) or re.match(r'^[A-Z][a-z]{4,}$', prev)))
+            if not first and (core.lower() in LOWER_WORDS or sentence or species):
                 pieces[j] = low
             else:
                 m = re.search(r'\w', low)
                 pieces[j] = low[:m.start()] + low[m.start()].upper() + low[m.start() + 1:] if m else low
         out.append(''.join(pieces))
+        prev = re.sub(r'^\W+|\W+$', '', out[-1]) if not re.match(r'^[A-Z]\.$', out[-1]) else out[-1]
     return ' '.join(out)
 
 
@@ -270,52 +342,107 @@ def normalize_upper(paras):
     if start is None:
         return paras
     acr = doc_acronyms(paras)
+    _SPECIES.clear()
+    _SPECIES.update(doc_species(paras))
     letters = [chr(65 + k) for k in range(26)] + ['A' + chr(65 + k) for k in range(26)]
     last_letter = None
+    skip = set()             # indeks baris yang sudah diproses sebagai butir kotak
+    in_numbered = False      # sedang di bawah judul bergaya "N.M JUDUL"
     box_text = None          # None: tidak sedang di isi kotak; False: label kotak baru muncul; Para: paragraf isi yang sedang disambung
     out = list(paras[:start])
     body = paras[start:]
     nonempty_after_heading = 0
+    ended = False            # setelah "SELESAI — ... (N BAB RESMI)": materi tambahan di luar BAB resmi dibuang sampai BAB berikutnya
+    fig_seq = 0
+    chapter_no = 0
     for k, p in enumerate(body):
-        t = p.text
+        t = EMOJI_PREFIX.sub('', p.text)                            # "⚡ HIGH-YIELD RSV" -> "HIGH-YIELD RSV"
         m = UP_CHAPTER.match(t)
         if m and upper_ratio(m.group(2)) > 0.8:
             out.append(Para(p.i, 1, f'Bab {m.group(1)} — {smart_title(m.group(2), acr)}', p.blank_before, False, p.trail))
             nonempty_after_heading = 0
             last_letter = None
+            ended = False
+            fig_seq = 0
+            in_numbered = False
+            box_text = None
+            chapter_no = int(m.group(1))
+            continue
+        if END_MARK.match(t):
+            ended = True
+            continue
+        if ended or RULE_LINE.match(t):
             continue
         nonempty_after_heading += 1
-        if re.match(r'^END OF BAB\s+\d+', t) or (nonempty_after_heading == 1 and not t.startswith(('•', 'http')) and len(t) < 60
-                                                  and not UP_LETTER.match(t) and upper_ratio(t) <= 0.8 and not re.search(r'[.:;]$', t)):
-            continue                                              # penutup/subjudul buatan penyusun
+        if re.match(r'^END OF (?:[A-Z ]+ )?BAB\s+\d+', t) or (nonempty_after_heading == 1 and not t.startswith(('•', 'http')) and (
+                p.style == 'Subtitle' or (' • ' in t and len(t) < 200) or (len(t) < 60 and not UP_LETTER.match(t) and upper_ratio(t) <= 0.8 and not re.search(r'[.:;]$', t)))):
+            continue                                              # penutup/subjudul/daftar topik buatan penyusun
         if t.startswith('– '):
             prev = out[-1] if out else None
             if prev is not None and prev.text.startswith('• '):       # rincian butir ("– 50% Aa ...") menyatu dengan butir induknya
-                prev.text = prev.text.rstrip() + (' ' if prev.text.rstrip().endswith(':') else '; ') + t[2:].strip().rstrip('.') + '.'
+                item = t[2:].strip().rstrip('.;')
+                head = prev.text.rstrip()
+                prev.text = (head + ' ' if head.endswith(':') else head.rstrip('.;') + '; ') + item + '.'
             else:
                 out.append(Para(p.i, 0, '• ' + t[2:], p.blank_before, False, p.trail))
             continue
         m = UP_LETTER.match(t) or UP_NUMBERED.match(t)
+        mixed_num = UP_NUMBERED.match(t)
+        mixed_head = bool(mixed_num and re.match(r'^[A-Z“(]', mixed_num.group(2)) and len(t) < 100 and not re.search(r'[.;:,?!]$', t) and ' → ' not in t
+                          and (int(mixed_num.group(1).split('.')[0]) == chapter_no or p.lvl == 2))   # "8.1 Gambaran Besar" (huruf biasa)
         in_seq = bool(m and UP_LETTER.match(t) and last_letter is not None and last_letter + 1 < len(letters) and m.group(1) == letters[last_letter + 1]
                       and len(m.group(2)) <= 40 and not re.search(r'[.;:,]$', t))      # "F. HbA1c" setelah "E. ..."
-        if m and len(t) < 110 and (upper_ratio(m.group(2)) > 0.75 or in_seq) and not re.search(r'[.;]$', t):
+        if m and len(t) < 110 and (upper_ratio(m.group(2)) > 0.75 or in_seq or mixed_head) and not re.search(r'[.;]$', t):
+            in_numbered = bool(UP_NUMBERED.match(t)) and not UP_LETTER.match(t)
             if UP_LETTER.match(t) and m.group(1) in letters:
                 last_letter = letters.index(m.group(1))
             out.append(Para(p.i, 2, smart_title(m.group(2), acr) if upper_ratio(m.group(2)) > 0.75 else m.group(2), p.blank_before, False, p.trail, True))
+            box_text = None
             continue
-        if re.match(r'^GAMBAR\s+\d', t):
+        if re.match(r'^GAMBAR\s+\d+(?:\.\d+)?\s*(?:[—–]|-|\.(?=\s))', t):
             out.append(Para(p.i, 0, 'Gambar' + t[6:], p.blank_before, False, p.trail))
+            box_text = None
             continue
-        if box_text is not None:                                  # baris menempel setelah label kotak ("PENTING:") jadi satu paragraf isi
+        m = re.match(r'^\[?(?:GAMBAR|VISUAL|Visual)\s+(?:[A-Z]+\s+)?\d+[A-Z]?\s*(?:[—–]|-|\.(?=\s))\s*(\S.*?)\]?$', t) or re.match(
+            r'^Gambar\s+\d+[A-Z]\s*(?:[—–]|-|\.(?=\s))\s*(\S.*?)$', t)          # "Gambar 11A — ..." (label berhuruf)
+        if m and not re.match(r'^Gambar\s+\d+(?:\.\d+)?\s*(?:\.|[—–-])', t):
+            # "GAMBAR PA 1A — ...", "VISUAL 8B — ...", "[VISUAL 10C — ...]", "Visual 9A. ...": diberi nomor urut per BAB
+            fig_seq += 1
+            cap = m.group(1)
+            out.append(Para(p.i, 0, f'Gambar {chapter_no}.{fig_seq} — {smart_title(cap, acr) if upper_ratio(cap) > 0.8 else cap}', p.blank_before, False, p.trail))
+            box_text = None
+            continue
+        if k in skip:
+            continue
+        if SOURCE_H2.match(t.strip()) and len(t) < 40 and not t.startswith('•'):         # tanpa titik dua: "Sumber utama:" adalah label isi
+            out.append(Para(p.i, 2, t.strip().title(), p.blank_before, False, p.trail, True))      # "Sumber Utama": judul bagian sumber (akan dibuang)
+            box_text = None
+            continue
+        if box_text is not None:                                  # baris menempel setelah label kotak ("PENTING:") jadi isi kotak
             plain = not t.startswith(('•', '– ', 'http', 'Gambar ')) and not t.endswith(':') and not UP_LETTER.match(t) and upper_ratio(t) <= 0.8
             if plain and (box_text is False or not p.blank_before):
                 if box_text is False:
-                    box_text = p
-                    out.append(p)
+                    run, j = [p], k + 1
+                    while j < len(body) and not body[j].blank_before and body[j].lvl == 0 and not body[j].text.startswith(('•', '– ', 'http', 'Gambar ')) \
+                            and not body[j].text.endswith(':') and not UP_LETTER.match(body[j].text) and upper_ratio(body[j].text) <= 0.8:
+                        run.append(body[j])
+                        j += 1
+                    if len(run) >= 2 and all(len(x.text) <= 110 for x in run):
+                        for x in run:                             # beberapa baris pendek ("P = Papillary → ...") menjadi butir daftar
+                            out.append(Para(x.i, 0, '• ' + x.text, x.blank_before, False, x.trail))
+                        skip.update(range(k, k + len(run)))
+                        box_text = None
+                    else:
+                        box_text = p
+                        out.append(p)
                 else:
                     box_text.text = box_text.text.rstrip() + ' ' + t
                 continue
             box_text = None
+        if t.endswith(':') and len(t) <= 80 and upper_ratio(t) <= 0.8 and callout_for(t) and (not callout_for(t)[2] or callout_for(t)[2].endswith(':')):
+            out.append(p)                                         # "Mnemonic konsep:" berdiri sendiri: baris menempel berikutnya ikut kotak
+            box_text = False
+            continue
         if t in UP_LABELS:
             t = t + ':'                                           # "PENTING" tanpa titik dua
         if t.endswith(':') and len(t) <= 60 and upper_ratio(t) > 0.8 and not t.startswith('•'):
@@ -325,11 +452,13 @@ def normalize_upper(paras):
             box_text = False if callout_for(text) else None
             continue
         m = re.match(r'^(\d{1,2})\.\s+(\S.*)$', t)
-        if m and len(t) <= 70 and not re.search(r'[.;:?!,]$', t):
+        if m and len(t) <= 70 and not re.search(r'[.;?!,]$', t):
             nxt = next((q for q in body[k + 1:k + 4] if q.text), None)
-            if nxt is not None and (nxt.text.startswith('•') or (not nxt.blank_before and not re.match(r'^\d{1,2}\.\s', nxt.text))):
-                title = smart_title(m.group(2), acr) if upper_ratio(m.group(2)) > 0.9 else m.group(2)
+            if nxt is not None and (nxt.text.startswith('•') or (not nxt.blank_before and not re.match(r'^\d{1,2}\.\s', nxt.text) and not t.endswith(':'))):
+                title = m.group(2).rstrip(':')
+                title = smart_title(title, acr) if upper_ratio(title) > 0.9 else title
                 out.append(Para(p.i, 3, f'{m.group(1)}. {title}', p.blank_before, False, p.trail))      # "1. Haploinsufficiency" + butir/paragraf = subjudul
+                box_text = None
                 continue
         nxt_ = next((q for q in body[k + 1:k + 4] if q.text), None)
         if (nxt_ is not None and nxt_.text.startswith('→') and upper_ratio(t) > 0.9 and len(t) < 50 and not t.startswith(('•', 'http'))
@@ -341,10 +470,17 @@ def normalize_upper(paras):
         words_ = [re.sub(r'^\W+|\W+$', '', w) for w in t.split()]
         acronyms_only = all(w in acr or ROMAN.match(w) or not w for w in words_)          # "CPS I", "OTC": butir daftar, bukan judul
         after_label = bool(out) and out[-1].text.endswith(':')
-        if (len(t) < 80 and upper_ratio(t) > 0.9 and not t.startswith(('•', 'http')) and not re.search(r'[.:;,]$', t)
+        if (len(t) < 80 and upper_ratio(t) > 0.9 and not t.startswith(('•', 'http')) and not re.search(r'[.:;,]$', t) and not re.search(r'→|⊣| = | \+ ', t)
                 and (len(t.split()) >= 2 or len(t) >= 6) and not acronyms_only and not after_label and len(re.sub(r'[^A-Za-z]', '', t)) >= 6):
-            out.append(Para(p.i, 2, smart_title(t, acr), p.blank_before, False, p.trail, True))
+            if in_numbered and nxt_ is not None and nxt_.text.startswith('•') and not nxt_.blank_before and not SOURCE_H2.match(t):
+                out.append(Para(p.i, 3, smart_title(t, acr), p.blank_before, False, p.trail))      # "INFLUENZA" + butir di bawah "9.5 PERBANDINGAN ..." = subjudul
+            else:
+                out.append(Para(p.i, 2, smart_title(t, acr), p.blank_before, False, p.trail, True))
+                in_numbered = False
+            box_text = None
             continue
+        if p.lvl in (1, 2):                                       # gaya Heading yang bocor ke butir/kalimat
+            p = Para(p.i, 0, p.text, p.blank_before, False, p.trail, False, p.style)
         out.append(p)
     return out
 
@@ -353,7 +489,7 @@ def merge_image_credits(paras):
     """"Sumber gambar: ..." sesudah keterangan gambar ikut menjadi bagian keterangan ("... Sumber: ...")."""
     out = []
     for p in paras:
-        m = re.match(r'^Sumber gambar\s*:\s*(\S.*)$', p.text, re.S) or (
+        m = re.match(r'^Sumber (?:gambar|visual internet)\s*:\s*(\S.*)$', p.text, re.S) or (
             re.match(r'^Sumber\s*:\s*(\S.*)$', p.text, re.S) if any(q.text.startswith('https://lh3') for q in out[-2:]) else None)
         if m:
             cap = next((q for q in reversed(out[-4:]) if q.text.startswith('Gambar ')), None)
@@ -428,7 +564,7 @@ def classify(paras):
             # H2 bernomor; pada BAB berbagian (A–D) yang bernomor adalah H3, dipromosikan nanti.
             toks.append({**base, 'k': 'h2' if p.lvl == 2 else 'h3', 'text': t, 'numbered': True})
         elif p.force_h:
-            toks.append({**base, 'k': 'h2', 'text': t})
+            toks.append({**base, 'k': 'h2', 'text': t, 'force': True})
         elif p.lvl == 2 and (H2_LETTER.match(t) or (len(t) < 70 and not re.search(r'[.:;,]$', t))) and not t.startswith('http'):
             toks.append({**base, 'k': 'h2', 'text': t})
         elif m_h2 and len(t) <= 90 and not re.search(r'[.;:,]$', t) and p.blank_before:
@@ -492,7 +628,7 @@ def auto_headings(toks):
                 and nx and nx['k'] in ('li', 'nli', 'p') and not nx['blank_before']):
             tk['k'] = 'h3'
             tk['auto'] = True
-            if t.isupper():
+            if t.isupper() and not (len(t.split()) == 1 and len(t) <= 6):       # RSV tetap; "SELURUH JUDUL" -> "Seluruh Judul"
                 tk['text'] = t.title()
     return toks
 
@@ -543,7 +679,7 @@ def promote_parts(chapter):
             t['k'] = 'h2'
 
 
-def clean_h2(text):
+def clean_h2(text, keep_case=False):
     t = text.strip()
     t = re.sub(r'^Batas Bab \d+$', 'Batas Cakupan Bab', t)
     m = H2_NUM.match(t)
@@ -553,7 +689,7 @@ def clean_h2(text):
         m = H2_LETTER.match(t)
         if m:
             t = m.group(2)
-    if t.isupper():
+    if t.isupper() and not keep_case and not (len(t.split()) == 1 and len(t) <= 6):       # judul H2 huruf besar dari dokumen lama
         t = t.title()
     return t.strip()
 
@@ -570,11 +706,11 @@ def group_sections(chapter):
             continue
         if tk['k'] == 'part':
             m = H2_LETTER.match(tk['text'])
-            title = clean_h2(tk['text'])
+            title = clean_h2(tk['text'], tk.get('force'))
             sections.append({'title': title, 'letter': m.group(1) if m else '', 'raw': tk['text'], 'kind': 'part', 'toks': [], 'src': tk['src']})
             cur = sections[-1]
         elif tk['k'] == 'h2':
-            title = clean_h2(tk['text'])
+            title = clean_h2(tk['text'], tk.get('force'))
             cur = {'title': title, 'raw': tk['text'], 'kind': section_kind(title), 'toks': [], 'src': tk['src']}
             sections.append(cur)
         elif cur is None:
@@ -700,6 +836,50 @@ def fix_fig_refs(text, ctx):
 
 
 SCRUB = [
+    # Catatan asal-usul penyusun dokumen Mikrobiologi ("sumber UTB/IUP", "materi sumber", "bank soal"): bukan isi pelajaran.
+    (re.compile(r'^(?:Sumber|Materi)(?: bank soal| soal| sumber| panduan)?(?: (?:IUP|UTB)(?:/(?:IUP|UTB))?)? menekankan(?=:)'), 'Poin yang ditekankan'),
+    (re.compile(r'^Materi sumber menekankan beberapa jalur(?=:)'), 'Beberapa jalur yang ditekankan'),
+    (re.compile(r'^Materi panduan menyebut(?=:)'), 'Poin yang disebutkan'),
+    (re.compile(r'^Sumber IUP mencatat(?=:)'), 'Catatan'),
+    (re.compile(r'^Sumber UTB membedakan(?=:)'), 'Pembeda'),
+    (re.compile(r'^Sumber UTB memasangkan toksin'), 'Pasangan toksin'),
+    (re.compile(r'^Sumber UTB(?=:)'), 'Poin penting'),
+    (re.compile(r'^Sesuai (?:soal |tabel )?UTB(?=:)'), 'Poin penting'),
+    (re.compile(r'^Sesuai koreksi eksplisit pada panduan sumber(?=:)'), 'Poin penting'),
+    (re.compile(r'^Clue UTB(?=:)'), 'Clue'),
+    (re.compile(r'^Ciri kasus UTB(?=:)'), 'Ciri kasus'),
+    (re.compile(r'^Shortcut utama sumber UTB(?=:)'), 'Shortcut utama'),
+    (re.compile(r'^HIGH-YIELD dari sumber UTB/IUP(?=:)'), 'High-yield'),
+    (re.compile(r'^Clue klinis yang sering muncul di bank soal(?=:)'), 'Clue klinis yang sering muncul'),
+    (re.compile(r'^Clostridium klasik pada materi UTB(?=:)'), 'Clostridium klasik'),
+    (re.compile(r'^Tambahan pembelajaran untuk menjelaskan stem soal UTB(?=:)'), 'Tambahan pembelajaran'),
+    (re.compile(r'^Materi inti UTB/IUP pada bab ini menekankan dua kelompok besar(?=:)'), 'Dua kelompok besar pada bab ini'),
+    (re.compile(r'^UTB menekankan tiga antigen(?=:)'), 'Tiga antigen yang ditekankan'),
+    (re.compile(r'^Sumber soal menekankan bahwa klasifikasi'), 'Klasifikasi'),
+    (re.compile(r'^Menurut materi UTB yang dikoreksi di panduan: '), 'Famili: '),
+    (re.compile(r'^Materi UTB menempatkan B\. fragilis sebagai'), 'B. fragilis adalah'),
+    (re.compile(r'^UTB menempatkan Shigella sekitar'), 'Shigella sekitar'),
+    (re.compile(r'^Sumber UTB menekankan fluorochrome sebagai alternatif'), 'Fluorochrome menjadi alternatif'),
+    (re.compile(r'^UTB menekankan dark-field microscopy dan silver impregnation untuk visualisasi\.'), 'Dark-field microscopy dan silver impregnation dipakai untuk visualisasi.'),
+    (re.compile(r'; UTB juga menekankan serologi serta immunofluorescence'), '; serologi dan immunofluorescence juga dipakai'),
+    (re.compile(r'^Dalam bank soal materi, pembentukan'), 'Pembentukan'),
+    (re.compile(r'^Pada materi UTB, shift'), 'Shift'),
+    (re.compile(r'; materi sumber menekankan tidak ada antivirus'), '; tidak ada antivirus'),
+    (re.compile(r'(?:,| )?\b(?:pada|dalam) (?:sumber UTB/Jawetz|sumber UTB|tabel (?:komparatif|pembanding) UTB|materi sumber|materi slide|materi UTB|pola soal UTB|pola kasus bayi UTB)(?=[.:;,]|$)'), ''),
+    (re.compile(r'\bmenurut koreksi panduan\b,? ?'), ''),
+    (re.compile(r'(?:, )?\btetapi sumber praktikum menekankan\b'), ', tetapi'),
+    (re.compile(r'\bsumber praktikum menekankan\b ?'), ''),
+    (re.compile(r'\bPada pola kasus bayi UTB\b'), 'Pada pola kasus bayi'),
+    (re.compile(r'\bpada pola kasus bayi UTB\b'), 'pada pola kasus bayi'),
+    (re.compile(r'\bdalam sumber UTB:'), ':'),
+    (re.compile(r' pada tabel pembanding UTB\b'), ''),
+    (re.compile(r' dalam tabel komparatif UTB\b'), ''),
+    (re.compile(r'(Jebakan Soal) UTB\b', re.I), r'\1'),
+    (re.compile(r'\s*(?:—\s*)?(?:dari )?Rangkuman UTB\b', re.I), ''),
+    (re.compile(r'(Posisi dalam Materi) UTB\b', re.I), r'\1'),
+    (re.compile(r' pada rangkuman UTB menjadi pembeda'), ' — pembeda'),
+    (re.compile(r'; bagian ini mempertahankan framing materi UTB/PPT12 untuk kebutuhan ujian'), ''),
+    (re.compile(r'\bBayi \+ wheezing(.*) pada pola soal UTB\.'), r'Bayi + wheezing\1.'),
     (re.compile(r'\s*agar retrieval MEDCOEL tetap modular'), ''),
     (re.compile(r'Untuk retrieval MEDCOEL, simpan'), 'Untuk belajar, simpan'),
     (re.compile(r'Prinsip retrieval:'), 'Prinsip mengingat:'),
@@ -934,8 +1114,9 @@ def chapter_to_md(ch, subject, report, names):
     ctx = Ctx(ch['num'], subject, names)
     promote_parts(ch)
     pre, sections = group_sections(ch)
-    # Gambar yang ditaruh sebelum bagian pertama (mis. Fisiologi: satu gambar per BAB di bawah judul BAB) tampil sebagai pembuka.
-    intro = [tk for tk in pre if tk['k'] in ('img', 'cap')]
+    # Gambar (mis. Fisiologi: satu gambar per BAB di bawah judul BAB) dan paragraf pengantar sebelum bagian pertama tampil sebagai pembuka.
+    intro = [tk for tk in pre if tk['k'] in ('img', 'cap') or (tk['k'] in ('p', 'li', 'nli', 'h3') and not INTERNAL_LINE.match(tk['text'])
+                                                                 and not re.match(r'^Status\s*:', tk['text'], re.I))]
     prescan_figures(intro + [tk for s in sections if s['kind'] not in ('drop',) for tk in s['toks']], ctx)
 
     # atribusi: dari bagian sumber (Gambar X.Y — ...) atau dari keterangan ("Sumber: ...")
@@ -970,6 +1151,7 @@ def chapter_to_md(ch, subject, report, names):
         if s['kind'] == 'part':
             parts.append(f"# Bagian {s['letter']}: {s['title']}")
             continue
+        s['title'] = prose(s['title'], ctx)
         ctx.last_heading = s['title']
         parts.append('## ' + s['title'] + ('' if s['kind'] == 'isi' else ' {' + s['kind'] + '}'))
         toks_ = s['toks']
@@ -1010,8 +1192,13 @@ def verify_chapter(ch, md, ctx):
     pre, sections = group_sections(ch)
     dropped_src = {d[0] for d in ctx.dropped}
     body = _norm(md)
-    missing = [(tk['src'], tk['text'][:100]) for tk in pre
-               if tk['k'] not in ('img', 'cap') and not INTERNAL_LINE.match(tk['text']) and not re.match(r'^Status\s*:', tk['text'], re.I)]   # teks sebelum bagian pertama tidak dimasukkan
+    missing = []
+    for tk in pre:                                      # teks sebelum bagian pertama harus ikut masuk (sebagai pembuka)
+        if tk['k'] in ('img', 'cap') or tk['src'] in dropped_src or INTERNAL_LINE.match(tk['text']) or re.match(r'^Status\s*:', tk['text'], re.I):
+            continue
+        t = prose(tk['text'], ctx)
+        if _norm(t) and _norm(t) not in body:
+            missing.append((tk['src'], t[:100]))
     for s in sections:
         if s['kind'] in ('drop', 'part', 'sumber'):
             continue
@@ -1020,7 +1207,7 @@ def verify_chapter(ch, md, ctx):
                 continue
             t = tk['text']
             if tk['k'] == 'h2':
-                t = clean_h2(t)
+                t = clean_h2(t, tk.get('force'))
             t = prose(t, ctx)
             if not _norm(t) or _norm(t) in body:
                 continue
@@ -1035,9 +1222,11 @@ def main():
     ap.add_argument('--subject-name', help='nama mata kuliah di docs/MATA_KULIAH.md (bawaan: slug dengan huruf awal besar)')
     ap.add_argument('--out', default=os.path.join('apps', 'pocketbase', 'content', 'materi'))
     ap.add_argument('--skip-unmatched', action='store_true', help='lewati BAB di dokumen yang bukan milik mata kuliah ini (mis. BAB Genetika di dokumen Biokimia)')
+    ap.add_argument('--allow-missing', action='store_true', help='BAB di web yang kosong/tidak ada di dokumen hanya dilaporkan (tidak menghentikan konversi)')
     ap.add_argument('--report', action='store_true', help='cetak laporan: yang dibuang, subjudul otomatis, gambar tanpa atribusi')
     a = ap.parse_args()
-    paras = merge_image_credits(normalize_upper(read_paragraphs(a.docx)))
+    paras, correction_notes = apply_corrections(read_paragraphs(a.docx), a.subject)
+    paras = merge_image_credits(normalize_upper(paras))
     toks = auto_headings(merge_fragments(classify(paras)))
     chapters = split_chapters(toks)
     if not chapters:
@@ -1048,7 +1237,7 @@ def main():
     if len(nums) != len(set(nums)):
         sys.exit(f'Nomor BAB ganda setelah pemilihan: {sorted(n for n in nums if nums.count(n) > 1)}')
     doc_titles = {c['num']: c['title'] for c in chapters}
-    titles = match_titles(doc_titles, site)
+    titles = match_titles(doc_titles, site, a.allow_missing)
     names = ref_names(doc_titles)
     report, index = {}, []
     outdir = os.path.join(a.out, a.subject)
@@ -1073,6 +1262,8 @@ def main():
     if a.report:
         for note in select_notes:
             print('** ' + note)
+        for note in correction_notes:
+            print('>> ' + note)
         for num, r in report.items():
             print(f'== Bab {num}: {r["figs"]} gambar; {r["ctx"].n_cards} kartu; dibuang {len(r["dropped"])}; subjudul otomatis {len(r["autoheads"])}')
             for x in r['pre']:

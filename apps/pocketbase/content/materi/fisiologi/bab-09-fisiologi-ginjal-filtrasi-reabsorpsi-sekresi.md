@@ -232,7 +232,7 @@ Renin meningkat pada:
 
 Renin adalah enzim, bukan vasoconstrictor langsung.
 
-## Raas
+## RAAS
 
 **Urutan**: renin → angiotensinogen menjadi Ang I → ACE → Ang II → vasoconstriction + aldosterone + thirst/ADH support + renal Na⁺ retention.
 
@@ -981,7 +981,7 @@ effective circulating volume ↓ → renal perfusion/NaCl delivery ↓ + sympath
 - [Filtered Load] Filtered load zat X :: Filtered loadₓ = GFR × Pₓ.
 - [Starling Forces pada Glomerulus] GFR ditentukan oleh :: GFR = Kf × net filtration pressure.
 - [Konstriksi Arteriol Aferen] Shortcut :: “aferen menyempit → darah sulit masuk glomerulus.”
-- [Raas] Hasil akhir :: effective circulating volume dan arterial pressure meningkat.
+- [RAAS] Hasil akhir :: effective circulating volume dan arterial pressure meningkat.
 - [Transcellular vs Paracellular] Paracellular :: zat bergerak di antara sel melalui tight-junction pathway.
 - [Reabsorpsi Na⁺ di PCT] Late PCT :: Cl⁻ concentration lumen meningkat sehingga NaCl reabsorption menjadi lebih dominan, termasuk paracellular transport.
 - [Reabsorpsi Glucose: SGLT] SGLT1 :: lebih distal, high-affinity.
