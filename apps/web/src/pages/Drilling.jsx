@@ -1,4 +1,4 @@
-// DRILLING: kumpulan soal General per mata kuliah tanpa BAB. Memilih mata kuliah langsung
+// DRILLING: kumpulan soal per mata kuliah tanpa BAB (General atau khusus kampus pengguna). Memilih mata kuliah langsung
 // memulai sesi. Menu ini hanya muncul bila admin menyalakannya dan sudah ada soalnya.
 import clsx from 'clsx';
 import { BookOpen, Clock, Crosshair, Star, Zap } from 'lucide-react';
@@ -38,7 +38,7 @@ export default function Drilling() {
         <div className="min-w-0">
           <p className="eyebrow mb-3">Latihan intensif</p>
           <h1 className="page-title">Drilling</h1>
-          <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-ink-muted">Soal General per mata kuliah, tanpa dipecah per BAB. Pilih mata kuliah dan sesinya langsung dimulai.</p>
+          <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-ink-muted">Soal per mata kuliah, tanpa dipecah per BAB. Pilih mata kuliah dan sesinya langsung dimulai.</p>
         </div>
       </header>
       <Alert>{error?.message || err}</Alert>
@@ -65,7 +65,7 @@ export default function Drilling() {
                   <span className="subject-go" aria-hidden><Zap size={16} /></span>
                 </span>
                 <span className="mt-3 flex flex-wrap items-center gap-2 text-[13px] font-semibold text-[rgb(var(--tone-fg))]">
-                  <span className="subject-meta">General</span><span><b>{s.answeredCount || 0}</b>/{s.questionCount} soal</span>
+                  <span className="subject-meta">{s.campusQuestionCount ? (s.campusQuestionCount === s.questionCount ? 'Kampusmu' : 'General + kampusmu') : 'General'}</span><span><b>{s.answeredCount || 0}</b>/{s.questionCount} soal</span>
                 </span>
                 <ProgressBar value={s.answeredCount} max={s.questionCount || 1} className="tone-track mt-2.5 !h-2" color="tone-fill" label={`Progres drilling ${s.name}`} />
                 <span className="mt-3 text-[13px] font-bold text-brand">{busy === s.id ? 'Menyiapkan...' : 'Mulai drilling'}</span>

@@ -99,7 +99,6 @@ export default function QuestionEditor({ record, defaults = {}, onClose, onSaved
   const set = (k, v) => setF((x) => ({ ...x, [k]: v }));
   const setOpt = (i, k, v) => setF((x) => ({ ...x, options: x.options.map((o, j) => (j === i ? { ...o, [k]: v } : o)) }));
   const setSub = (i, k, v) => setF((x) => ({ ...x, subQuestions: x.subQuestions.map((o, j) => (j === i ? { ...o, [k]: v } : o)) }));
-  const isDrill = !!chapterChoicesOf(f.subject).find((c) => c.id === f.chapter)?.drilling;
   const chapterTitle = chapterChoicesOf(f.subject).find((c) => c.id === f.chapter)?.title || '';
   const pv = useMemo(() => previewModel(f, chapterTitle), [f, chapterTitle]);
 
@@ -139,9 +138,9 @@ export default function QuestionEditor({ record, defaults = {}, onClose, onSaved
             <Field label="Tipe" htmlFor="qe-t"><select id="qe-t" className="input" value={f.qtype} onChange={(e) => changeType(e.target.value)}><option value="A">Tipe A (A-E)</option><option value="K">Tipe K (pernyataan 1-4)</option><option value="isian">Isian singkat</option><option value="esai">Esai (tidak dinilai)</option></select></Field>
             <Field label="Tingkat kesulitan" htmlFor="qe-d"><select id="qe-d" className="input" value={f.difficulty} onChange={(e) => set('difficulty', e.target.value)}><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></Field>
             <Field label="Status" htmlFor="qe-st"><select id="qe-st" className="input" value={f.status} onChange={(e) => set('status', e.target.value)}><option value="published">Tayang</option><option value="draft">Draf</option></select></Field>
-            <Field label="Dilihat oleh" htmlFor="qe-sc"><select id="qe-sc" className="input" value={isDrill ? 'all' : f.scope} disabled={isDrill} onChange={(e) => set('scope', e.target.value)}><option value="all">General (semua pengguna)</option><option value="campus">Kampus tertentu</option></select></Field>
+            <Field label="Dilihat oleh" htmlFor="qe-sc"><select id="qe-sc" className="input" value={f.scope} onChange={(e) => set('scope', e.target.value)}><option value="all">General (semua pengguna)</option><option value="campus">Kampus tertentu</option></select></Field>
           </div>
-          {!isDrill && f.scope === 'campus' && <Field label="Kampus"><CampusMulti value={f.campuses} onChange={(v) => set('campuses', v)} /></Field>}
+          {f.scope === 'campus' && <Field label="Kampus"><CampusMulti value={f.campuses} onChange={(v) => set('campuses', v)} /></Field>}
           <Area id="qe-stem" label="Teks soal" rows={5} value={f.stem} onChange={(v) => set('stem', v)} hint='Teks biasa, atau JSON blok diawali "[" untuk tabel/gambar/catatan.' />
           <Field label="Tautan gambar soal (opsional)" htmlFor="qe-img" hint="Tautan Google Drive otomatis diubah ke format lh3.">
             <input id="qe-img" className="input" value={f.image} onChange={(e) => set('image', e.target.value)} placeholder="https://drive.google.com/file/d/..." />

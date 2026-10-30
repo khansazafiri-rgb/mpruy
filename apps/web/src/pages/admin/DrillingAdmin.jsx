@@ -51,7 +51,7 @@ export default function DrillingAdmin() {
 
   if (!data) return error ? <Alert>{error}</Alert> : <PageLoader />;
   const status = data.available ? { cls: 'bg-mint-soft text-brand', label: 'Tampil untuk pengguna' }
-    : data.enabled ? { cls: 'bg-gold-soft text-[#6b4f00]', label: 'Menyala, tetapi tersembunyi: belum ada soal yang tayang' }
+    : data.enabled ? { cls: 'bg-gold-soft text-[#6b4f00]', label: 'Menyala, tetapi tersembunyi: belum ada soal Drilling yang tayang' }
       : { cls: 'bg-page text-ink-muted', label: 'Tersembunyi untuk pengguna' };
   const withQuestions = data.subjects.filter((s) => s.published > 0).length;
   return (
@@ -59,7 +59,7 @@ export default function DrillingAdmin() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="page-title">Drilling</h1>
-          <p className="mt-1 text-sm text-ink-muted">Soal General per mata kuliah tanpa BAB. Menu Drilling di sebelah Simulasi tampil untuk pengguna bila sakelar menyala dan sudah ada soal tayang. Kamu, sebagai admin, selalu bisa membukanya untuk mencoba.</p>
+          <p className="mt-1 text-sm text-ink-muted">Soal per mata kuliah tanpa BAB: General (semua pengguna) atau khusus kampus tertentu. Menu Drilling di sebelah Simulasi tampil untuk pengguna bila sakelar menyala dan ada soal tayang yang bisa mereka lihat (General, atau soal kampusnya). Kamu, sebagai admin, selalu bisa membukanya untuk mencoba.</p>
         </div>
         <div className="flex flex-wrap gap-2">
           <button type="button" className="btn-primary" onClick={() => setAdding({ kind: 'import', subject: '' })}><FilePlus2 size={18} /> Impor soal Drilling</button>
@@ -96,7 +96,7 @@ export default function DrillingAdmin() {
               <div className="flex flex-wrap items-center gap-3">
                 <div className="min-w-0 flex-1">
                   <p className="font-semibold">{s.name}</p>
-                  <p className="text-sm text-ink-muted">{s.published} tayang{s.draft ? ` · ${s.draft} draf` : ''}{s.hidden ? ' · disembunyikan' : ''}{s.subjectHidden ? ' · mata kuliah disembunyikan' : ''}{s.campusOnly ? ` · ${s.campusOnly} soal terbatas kampus (tidak tampil di Drilling)` : ''}</p>
+                  <p className="text-sm text-ink-muted">{s.published} tayang{s.draft ? ` · ${s.draft} draf` : ''}{s.hidden ? ' · disembunyikan' : ''}{s.subjectHidden ? ' · mata kuliah disembunyikan' : ''}{s.campusOnly ? ` · ${s.campusOnly} soal khusus kampus (hanya tampil bagi kampus itu)` : ''}</p>
                 </div>
                 <button type="button" className="btn-secondary btn-sm" onClick={() => setAdding({ kind: 'import', subject: s.id })}><FilePlus2 size={15} /> Impor</button>
                 <button type="button" className="btn-secondary btn-sm" onClick={() => setAdding({ kind: 'one', subject: s.id })}><Plus size={15} /> Satu soal</button>

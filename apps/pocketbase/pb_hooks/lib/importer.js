@@ -45,7 +45,7 @@ function chapterIndex(app, subjectId) {
 //   input        teks atau data yang sudah diurai
 //   subject      id/slug/nama mata kuliah
 //   chapter      id BAB (opsional). Bila diisi, semua soal masuk BAB ini.
-//   drilling     true = semua soal masuk Drilling mata kuliah itu (tanpa BAB, wajib General)
+//   drilling     true = semua soal masuk Drilling mata kuliah itu (tanpa BAB; General atau khusus kampus sesuai scope)
 //   scope        "all" | "campus"
 //   campuses     daftar id/nama kampus (wajib bila scope = campus)
 //   source       "admin" | "submission" | "agent"

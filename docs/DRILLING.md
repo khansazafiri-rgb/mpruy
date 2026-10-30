@@ -1,13 +1,14 @@
 # Drilling
 
-Kumpulan soal **General** (untuk semua pengguna) per mata kuliah, **tanpa BAB**. Cocok untuk soal yang tidak punya BAB jelas atau yang sengaja dilatih lintas BAB.
+Kumpulan soal per mata kuliah, **tanpa BAB**. Soal bisa **General** (untuk semua pengguna) atau **khusus kampus** (hanya terlihat pengguna kampus itu, mis. dari pengajuan "kampus saja"). Cocok untuk soal yang tidak punya BAB jelas atau yang sengaja dilatih lintas BAB.
 
 ## Untuk pengguna
 
-- Menu **Drilling** muncul di sebelah Simulasi hanya bila admin menyalakannya **dan** sudah ada soal Drilling yang tayang. Selain itu menunya tersembunyi dan `/drilling` kosong.
+- Menu **Drilling** muncul di sebelah Simulasi hanya bila admin menyalakannya **dan** ada soal Drilling tayang yang bisa dilihat pengguna itu: soal General, atau soal khusus kampus yang cocok dengan kampusnya. Jadi menu bisa muncul untuk satu kampus saja bila yang tayang hanya soal kampus itu. Selain itu menunya tersembunyi dan `/drilling` kosong.
 - Di `/drilling` pengguna memilih jumlah soal (10, 20, 50, atau semua) dan mode (Learning atau ujian), lalu menekan satu mata kuliah: sesinya **langsung dimulai**. Hanya mata kuliah yang punya soal Drilling yang tampil.
 - Sesi memakai mesin latihan yang sama (jawaban, pembahasan, riwayat, poin leaderboard). Soal Drilling tidak ikut hitungan BAB, Coba Simulasi, dan paket soal.
-- Akun tanpa kampus tetap bisa memakainya, karena semua soal Drilling General.
+- Akun tanpa kampus tetap bisa memakainya untuk soal General; soal khusus kampus tidak terlihat olehnya.
+- Mata kuliah yang berisi soal kampusmu diberi label "Kampusmu" (atau "General + kampusmu") di kartunya.
 
 ## Untuk admin
 
@@ -19,7 +20,7 @@ Halaman **Admin > Drilling** tidak membatasi apa yang bisa dilakukan admin, juga
 - Aksi massal per mata kuliah: tayangkan semua draf, jadikan semua draf, pindahkan semua ke BAB biasa, hapus semua.
 - **Coba sebagai pengguna**: admin selalu melihat menu Drilling (pratinjau) dan bisa memulai sesi walau belum dibuka untuk pengguna.
 - Soal juga bisa masuk lewat **Edit Soal > Impor** (BAB `Drilling (General, tanpa BAB)`, tersedia untuk setiap mata kuliah) atau **Hermes Agent** dengan `"drilling": true` (lihat `docs/HERMES_AGENT.md`).
-- Soal Drilling selalu General: impor atau penyimpanan dengan pembatasan kampus ditolak, dan memindahkan soal ke Drilling mengubahnya menjadi General.
+- Soal Drilling boleh dibatasi ke kampus (impor, editor, aksi massal "Dilihat oleh", dan pengajuan "kampus saja" lewat Hermes). Memindahkan soal ke Drilling tidak mengubah pembatasannya. Kampus selalu dicocokkan dengan kampus pengguna saat ini (ganti kampus langsung mengubah apa yang terlihat).
 
 ### Bila Drilling atau fitur baru lain tampil "tidak ditemukan"
 
@@ -29,4 +30,4 @@ Artinya server PocketBase belum dijalankan ulang setelah pembaruan. Produksi mem
 
 Setiap mata kuliah punya paling banyak satu BAB khusus (`chapters.drilling = true`, judul "Drilling"), dibuat otomatis untuk semua mata kuliah (migrasi `1800001500`) dan untuk setiap mata kuliah baru. Dengan begitu soal, jawaban, laporan, dan riwayat memakai tabel yang sama. BAB khusus ini disaring dari daftar BAB, ketersediaan simulasi, paket soal, dan hitungan per BAB; kumpulan soal (`learn.pool`) mengecualikannya kecuali diminta `drilling: "only"`. Sakelar ada di `app_settings.drillingEnabled`.
 
-Endpoint: `GET /api/medcoel/drilling`, `POST /api/medcoel/attempts/drilling` (`{ subject, count?, mode? }`), `GET /api/medcoel/admin/drilling`, `POST /api/medcoel/admin/drilling/bulk` (`{ subject, action: publish|draft|move|delete, status?, chapter? }`), `GET /api/medcoel/admin/server-version`. `GET /api/medcoel/me` memuat `drillingAvailable` (selalu true untuk admin) dan `drillingPreview`.
+Endpoint: `GET /api/medcoel/drilling`, `POST /api/medcoel/attempts/drilling` (`{ subject, count?, mode? }`), `GET /api/medcoel/admin/drilling`, `POST /api/medcoel/admin/drilling/bulk` (`{ subject, action: publish|draft|move|delete, status?, chapter? }`), `GET /api/medcoel/admin/server-version`. `GET /api/medcoel/me` memuat `drillingAvailable` (per pengguna; selalu true untuk admin) dan `drillingPreview`. `GET /api/medcoel/drilling` memuat `questionCount` dan `campusQuestionCount` per mata kuliah. Hermes Agent mengimpor pengajuan ke Drilling lewat `POST /api/medcoel/agent/submissions/{id}/drilling-import` (sama dengan `/import` dengan `drilling: true`).
