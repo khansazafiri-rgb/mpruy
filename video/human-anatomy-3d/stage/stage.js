@@ -141,6 +141,7 @@ const rrect = (r, rx = 12) => `<rect x="${f1(r[0])}" y="${f1(r[1])}" width="${f1
 
 function renderFx(t, sc, cam) {
   let o = '';
+  if (COVER) { fx.innerHTML = ''; return; }
   const s = sc?.step;
   // cincin penanda halus di sekitar kontrol yang dipakai
   for (const st of STEPS) {
@@ -169,7 +170,7 @@ function renderFx(t, sc, cam) {
 function renderOverlay(t) {
   let o = '';
   // judul singkat per bagian (di atas model, aman dari tombol IG/TikTok)
-  for (const c of CHIPS) {
+  for (const c of COVER ? [] : CHIPS) {
     const a = win(t, c.t0, c.t1, 0.25); if (a <= 0.01) continue;
     const w = c.w || 560, k = 0.85 + 0.15 * eob((t - c.t0) / 0.4); const txt = typeof c.text === 'function' ? c.text(t, HELP) : c.text;
     o += `<g transform="translate(${c.x ?? 682} ${c.y ?? 292}) scale(${k.toFixed(3)})" opacity="${a.toFixed(3)}"><rect x="${-w / 2}" y="-34" width="${w}" height="76" rx="38" fill="rgba(10,56,48,.28)"/><rect x="${-w / 2}" y="-40" width="${w}" height="76" rx="38" fill="${c.bg || '#0A3830'}"/><text x="0" y="12" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="${c.fs || 36}" fill="${c.fg || '#fff'}" letter-spacing="1">${txt}</text></g>`;
@@ -186,7 +187,7 @@ async function renderFrame(t) {
     const mix = sc.k;
     await Promise.all([setImg(imgs.uiA, sc.a.ui), setImg(imgs.uiB, sc.b.ui), setImg(imgs.frA, sc.a.fr), setImg(imgs.frB, sc.b.fr), setImg(imgs.uiTop, sc.b.ui)]);
     imgs.uiA.style.opacity = 1; imgs.uiB.style.opacity = mix.toFixed(3);
-    imgs.frA.style.opacity = mix < 1 ? 1 : 0; imgs.frB.style.opacity = mix.toFixed(3);
+    imgs.frA.style.opacity = (1 - mix).toFixed(3); imgs.frB.style.opacity = mix.toFixed(3);
     imgs.uiTop.style.clipPath = PLAN.overlayClip; imgs.uiTop.style.opacity = mix.toFixed(3);
     $('cam').style.opacity = 1;
     // sedikit pre-muat bingkai berikutnya
