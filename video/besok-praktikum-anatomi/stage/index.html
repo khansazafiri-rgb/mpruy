@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Besok Praktikum Anatomi, Tapi Masih Bingung?</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root { --forest:#0A3830; --green:#007060; --mint:#9DE0BD; --cream:#F7F2E4; --gold:#F8C038; --coral:#E8665F; --ink:#172B38; }
+  html,body{margin:0;padding:0;background:#000;}
+  #root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans','Inter',sans-serif;color:var(--ink);background:#0A3830}
+  #root svg{position:absolute;left:0;top:0;display:block}
+  #atlas{position:absolute;left:0;top:0;width:1080px;height:1920px;background:#F4F1E8;overflow:hidden;opacity:0}
+  #cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;will-change:transform}
+  #cam img{position:absolute;display:block}
+  .ui{left:0;top:0;width:1080px;height:1920px}
+  .fr{left:301px;top:89px;width:762px;height:1814px}
+  #cam svg{position:absolute;left:0;top:0;overflow:visible}
+  #panelbg{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:0}
+  #panel{position:absolute;left:98px;top:300px;width:883px;height:1086px;border-radius:34px;overflow:hidden;background:#fff;box-shadow:0 0 0 8px #fff,0 18px 0 8px rgba(0,0,0,.28);opacity:0}
+  #panel img{display:block;width:883px;height:1086px;object-fit:cover}
+  #cap{position:absolute;left:70px;width:940px;top:1400px;height:170px;display:flex;align-items:center;justify-content:center}
+  #cap .box{background:rgba(10,56,48,.95);border-radius:34px;padding:16px 30px 18px;text-align:center;font-weight:800;font-size:50px;line-height:1.2;color:#fff;letter-spacing:-.01em;max-width:940px;box-sizing:border-box;text-wrap:balance;box-shadow:0 8px 0 rgba(0,0,0,.18)}
+  #cap.side{left:14px;width:278px;top:1330px;height:auto;justify-content:flex-start;align-items:flex-start}
+  #cap.side .box{border-radius:26px;padding:16px 16px 18px;text-align:left;font-size:34px;line-height:1.22;width:100%;box-shadow:0 6px 0 rgba(0,0,0,.16)}
+  #cap .w{display:inline-block;margin:0 7px}
+  #cap.side .w{margin:0 5px 0 0}
+  #cap .box .w.on{color:var(--gold)}
+  #cap .box .w.fut{color:rgba(255,255,255,.9)}
+</style></head>
+<body>
+<div id="root">
+  <svg id="world" width="1080" height="1920" viewBox="0 0 1080 1920"><defs><clipPath id="clipB"><circle id="clipBc" cx="540" cy="900" r="0"/></clipPath><clipPath id="clipW"><rect id="clipWr" x="1080" y="0" width="1200" height="1920"/></clipPath></defs><g id="gA"></g><g id="gB"></g><g id="gTr"></g></svg>
+  <div id="atlas"><div id="cam">
+    <img id="uiA" class="ui"><img id="uiB" class="ui">
+    <img id="frA" class="fr"><img id="frB" class="fr">
+    <img id="uiTop" class="ui">
+    <svg id="fx" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  </div></div>
+  <div id="panelbg"><svg width="1080" height="1920" viewBox="0 0 1080 1920"><defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0F5F57"/><stop offset="1" stop-color="#0A3830"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#pg)"/><circle cx="160" cy="320" r="220" fill="rgba(255,255,255,.05)"/><circle cx="960" cy="1500" r="280" fill="rgba(255,255,255,.05)"/></svg></div>
+  <div id="panel"><img id="webimg" alt=""></div>
+  <svg id="ov" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div id="cap"><div class="box" id="capbox"></div></div>
+</div>
+<script type="module" src="stage.js"></script>
+</body></html>
