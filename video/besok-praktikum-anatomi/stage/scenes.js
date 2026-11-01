@@ -127,9 +127,8 @@ function kos(t) {
   const lp = clamp((t - 33.0) / 0.5, 0, 1);
   const lapScreen = lp > 0 ? `<g transform="translate(0 0)">${R(-190, -214, 380, 192, '#0A3830', 8)}${T(0, -108, 'MEDCOEL', '#9DE0BD', 54)}${E(0, -60, 70, 8, 'rgba(255,255,255,.12)')}</g>` : '';
   const laptop_ = `<g transform="translate(860 ${DESKTOP})">${A.laptop(lp > 0 ? 1 : 0.92, lp > 0 ? '#0A3830' : '#1B2A3A', '')}${lapScreen}</g>`;
-  const thought = (t >= 24.3 && t < 27.2) ? 'bulb' : (t >= 26.86 && t < 33.7) ? 'layers' : null;
   let tb = '';
-  if (thought === 'bulb') {
+  if (t >= 24.3 && t < 27.2) {
     const u = t - 24.3, wob = Math.sin(u * 3) * 18, px = 520 + Math.sin(u * 1.6) * 150, py = 440;
     const pop = eob(u / 0.4);
     tb = `<g transform="translate(0 0) scale(1)" opacity="${clamp(u / 0.2, 0, 1) * clamp((27.2 - t) / 0.35, 0, 1)}">${bubbleCloud(560, 520, 800, 520)}`
@@ -138,9 +137,10 @@ function kos(t) {
       + `<g transform="translate(850 620)">${L('M0 40V-90', '#8A5A34', 10)}${R(-70, -150, 150, 56, '#F8C038', 10)}${T(5, -112, 'PULANG', '#172B38', 28)}${P('M-70 -122l-34 -0l20 -22z', '#F8C038')}</g>`
       + `<g transform="translate(${f1(px + 60)} ${f1(py - 100)})">${A.qmarks(t, 2, 60)}</g>`
       + T(560, 720, 'PEMAHAMAN', '#8A9AA3', 30) + `</g>`;
-  } else if (thought === 'layers') {
+  }
+  if (t >= 26.86 && t < 33.7) {
     const u = t - 26.86;
-    tb = `<g opacity="${clamp(u / 0.35, 0, 1) * clamp((33.7 - t) / 0.35, 0, 1)}">${bubbleCloud(580, 470, 860, 640)}<g transform="translate(580 500) scale(${(0.82 * eob(u / 0.5)).toFixed(3)})">${A.layersBody(t, 1)}</g><g transform="translate(580 300)">${A.qmarks(t * 0.8, 3, 230)}</g></g>`;
+    tb += `<g opacity="${clamp(u / 0.35, 0, 1) * clamp((33.7 - t) / 0.35, 0, 1)}">${bubbleCloud(580, 470, 860, 640)}<g transform="translate(580 500) scale(${(0.82 * eob(u / 0.5)).toFixed(3)})">${A.layersBody(t, 1)}</g><g transform="translate(580 300)">${A.qmarks(t * 0.8, 3, 230)}</g></g>`;
   }
   const svg = `<g transform="${CAM(c, 0, shake, shake)}">${A.kosBg(t)}${A.lampCone(t)}${A.lamp()}${R(-100, 1190, 1280, 34, '#B3744A', 8)}${rakaG}${R(-100, 1224, 1280, 220, '#8A5A34')}${R(40, 1224, 380, 150, '#7A4D2C', 10)}${notes}${laptop_}${book}${motion}${tb}</g>`;
   return { svg };
@@ -156,7 +156,7 @@ function tutupKos(t) {
   const frames = MEDIA.skel || []; let img = '';
   if (frames.length) { const i = Math.floor(Math.max(0, u) * 30) % frames.length; img = `<clipPath id="lsc"><rect x="-190" y="-214" width="380" height="192" rx="8"/></clipPath><g clip-path="url(#lsc)">${R(-190, -214, 380, 192, '#0F4F47')}<image href="${frames[i]}" x="-92" y="-232" width="184" height="438" preserveAspectRatio="xMidYMid slice"/></g>`; }
   const lap = `<g transform="translate(770 1190) scale(1.3)">${A.laptop(1, '#0A3830', '')}${img}</g>`;
-  const house = `<g transform="translate(250 650)">${bubbleCloud(0, 0, 340, 230, false)}<g transform="translate(0 20) scale(.5)">${A.bulb(t * 0.5)}</g>${T(0, 118, 'sudah pulang', '#007060', 26)}</g>`;
+  const house = `<g transform="translate(470 600)">${bubbleCloud(0, 0, 340, 230, false)}<g transform="translate(0 20) scale(.5)">${A.bulb(t * 0.5)}</g>${T(0, 150, 'sudah pulang', '#007060', 28)}</g>`;
   const svg = `<g transform="${CAM(c)}">${A.kosBg(t)}${A.lampCone(t)}${A.lamp()}${R(-100, 1190, 1280, 34, '#B3744A', 8)}${rakaG}${R(-100, 1224, 1280, 220, '#8A5A34')}${R(40, 1224, 380, 150, '#7A4D2C', 10)}${lap}${house}</g>`;
   return { svg, needs: img ? [frames[Math.floor(Math.max(0, u) * 30) % frames.length]] : [] };
 }
