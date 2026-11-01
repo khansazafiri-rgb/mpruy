@@ -834,7 +834,6 @@ H. Gland-forming malignant epithelial tumor → adenocarcinoma.
 - [Chemical Carcinogenesis] Apa yang dimaksud dengan Progression pada Chemical Carcinogenesis? :: Additional genetic changes → more aggressive phenotype.
 - [Tumor-Promoting Inflammation] Apa yang dimaksud dengan Contoh konsep pada Tumor-Promoting Inflammation? :: Chronic hepatitis → HCC risk
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Cancer pada Neoplasia: Prinsip Umum & Klasifikasi? :: Malignant neoplasm
-- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Benign mesenchymal tumor biasanya “-oma”; malignant mesenchymal? :: Sarcoma
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Malignant epithelial pada Neoplasia: Prinsip Umum & Klasifikasi? :: Carcinoma
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Melanoma, lymphoma, seminoma, mesothelioma? :: Malignant meski berakhiran -oma
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Metastasis pada Neoplasia: Prinsip Umum & Klasifikasi? :: Hallmark paling definitif malignancy
@@ -842,7 +841,6 @@ H. Gland-forming malignant epithelial tumor → adenocarcinoma.
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan CIS pada Neoplasia: Prinsip Umum & Klasifikasi? :: Full-thickness atypia tanpa breach basement membrane
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Liver dan lung pada Neoplasia: Prinsip Umum & Klasifikasi? :: Common metastatic sites
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan RAS pada Neoplasia: Prinsip Umum & Klasifikasi? :: Growth signaling oncogene
-- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan MYC t(8;14) pada Neoplasia: Prinsip Umum & Klasifikasi? :: Burkitt lymphoma
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang perlu diingat tentang BCL2 overexpression pada Neoplasia: Prinsip Umum & Klasifikasi? :: ↓ apoptosis; t(14;18) follicular lymphoma
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Warburg effect pada Neoplasia: Prinsip Umum & Klasifikasi? :: Aerobic glycolysis
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan BRCA pada Neoplasia: Prinsip Umum & Klasifikasi? :: Homologous recombination repair
@@ -851,28 +849,27 @@ H. Gland-forming malignant epithelial tumor → adenocarcinoma.
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan BENIGN pada Neoplasia: Prinsip Umum & Klasifikasi? :: Well differentiated, circumscribed, no metastasis
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan MALIGNANT pada Neoplasia: Prinsip Umum & Klasifikasi? :: Variable differentiation, invasion, potential metastasis
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan ANAPLASIA pada Neoplasia: Prinsip Umum & Klasifikasi? :: Pleomorphism + hyperchromasia + atypical mitoses + loss of polarity
-- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang perlu diketahui tentang METASTASIS pada Neoplasia: Prinsip Umum & Klasifikasi? :: Lymphatic, hematogenous, transcoelomic
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang perlu diketahui tentang MOLECULAR CORE pada Neoplasia: Prinsip Umum & Klasifikasi? :: Oncogenes ON + tumor suppressor loss + DNA repair defects + apoptosis evasion
 - [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang perlu diketahui tentang KEY GENES pada Neoplasia: Prinsip Umum & Klasifikasi? :: RAS, MYC, BCR-ABL, RB, TP53, BCL2, BRCA/MMR
-- [Konsep Besar Neoplasia] Sebutkan poin-poin penting tentang Neoplasm/tumor. :: • Parenchyma = sel neoplastik yang menentukan nama dan perilaku biologis tumor
+- [Konsep Besar Neoplasia] Sebutkan hal-hal penting tentang Neoplasm/tumor. :: • Parenchyma = sel neoplastik yang menentukan nama dan perilaku biologis tumor
   • Stroma = jaringan penunjang, pembuluh darah, fibroblast, inflammatory cells, dan extracellular matrix
-- [Pengecualian Akhiran “-Oma”] Sebutkan poin-poin penting tentang Beberapa tumor malignant tetap berakhiran -oma. :: • Melanoma
+- [Pengecualian Akhiran “-Oma”] Sebutkan hal-hal penting tentang Beberapa tumor malignant tetap berakhiran -oma. :: • Melanoma
   • Lymphoma
   • Mesothelioma
   • Seminoma
-- [Differentiation] Sebutkan poin-poin penting tentang Well-differentiated tumor. :: • Menyerupai jaringan asal
+- [Differentiation] Sebutkan hal-hal penting tentang Well-differentiated tumor. :: • Menyerupai jaringan asal
   • Dapat mempertahankan fungsi khusus
-- [Carcinoma in Situ] Sebutkan poin-poin penting tentang Carcinoma in situ (CIS). :: • Full-thickness epithelial atypia
+- [Carcinoma in Situ] Sebutkan hal-hal penting tentang Carcinoma in situ (CIS). :: • Full-thickness epithelial atypia
   • Basement membrane masih utuh
   • Belum ada stromal invasion
-- [Local Invasion] Sebutkan poin-poin penting tentang Malignant tumor. :: • Infiltrative
+- [Local Invasion] Sebutkan hal-hal penting tentang Malignant tumor. :: • Infiltrative
   • Irregular
   • Destructive
   • Tidak memiliki batas tegas
-- [Hematogenous Spread] Sebutkan poin-poin penting tentang Tumor dengan pola khas. :: • Colon carcinoma → portal circulation → liver
+- [Hematogenous Spread] Sebutkan tumor dengan pola khas pada Hematogenous Spread. :: • Colon carcinoma → portal circulation → liver
   • Renal cell carcinoma dapat tumbuh ke renal vein/IVC
   • Hepatocellular carcinoma dapat invade hepatic/portal veins
-- [Hallmarks of Cancer — Gambar Besar] Sebutkan poin-poin penting tentang Core capabilities. :: • Sustained proliferative signaling
+- [Hallmarks of Cancer — Gambar Besar] Sebutkan hal-hal penting tentang Core capabilities. :: • Sustained proliferative signaling
   • Evasion of growth suppressors
   • Resistance to cell death
   • Replicative immortality
@@ -880,20 +877,20 @@ H. Gland-forming malignant epithelial tumor → adenocarcinoma.
   • Invasion and metastasis
   • Altered cellular metabolism
   • Evasion of immune destruction
-- [MYC] Sebutkan poin-poin penting tentang MYC adalah transcription factor yang mendorong. :: • Cell growth
+- [MYC] Sebutkan hal-hal penting tentang MYC adalah transcription factor yang mendorong. :: • Cell growth
   • Metabolism
   • Proliferation
 - [DNA Repair Genes] Sebutkan contoh high-yield pada DNA Repair Genes. :: • BRCA1/BRCA2 → homologous recombination repair
   • Mismatch repair genes (MLH1, MSH2, MSH6, PMS2) → Lynch syndrome
   • Nucleotide excision repair defect → xeroderma pigmentosum
-- [Radiation Carcinogenesis] Sebutkan poin-poin penting tentang Ionizing radiation. :: • DNA strand breaks
+- [Radiation Carcinogenesis] Sebutkan hal-hal penting tentang Ionizing radiation. :: • DNA strand breaks
   • Chromosomal damage
   • Meningkatkan risiko leukemia dan berbagai solid tumors tergantung paparan
-- [Cancer Cachexia] Sebutkan poin-poin penting tentang Cancer cachexia. :: • Progressive loss of fat and lean body mass
+- [Cancer Cachexia] Sebutkan hal-hal penting tentang Cancer cachexia. :: • Progressive loss of fat and lean body mass
   • Weakness
   • Anorexia
   • Systemic inflammation
-- [Tumor Diagnosis — Histopathology] Sebutkan poin-poin penting tentang Patologist menilai. :: • Architecture
+- [Tumor Diagnosis — Histopathology] Sebutkan hal-hal penting tentang Patologist menilai. :: • Architecture
   • Cytology
   • Invasion
   • Necrosis
@@ -901,7 +898,7 @@ H. Gland-forming malignant epithelial tumor → adenocarcinoma.
   • Differentiation
   • Margins
   • Lymphovascular invasion bila relevan
-- [Konsep Besar Neoplasia] Apa poin high-yield (pearl) tentang Konsep Besar Neoplasia? :: Proliferasi neoplastik bersifat clonal dan didorong perubahan genetik/epigenetik yang memberi growth advantage.
+- [Konsep Besar Neoplasia] Apa poin high-yield (pearl) tentang Neoplasia: Prinsip Umum & Klasifikasi? :: Proliferasi neoplastik bersifat clonal dan didorong perubahan genetik/epigenetik yang memberi growth advantage.
 - [Adenoma, Papilloma, Cystadenoma, Polyp] Apa poin high-yield (pearl) tentang Adenoma, Papilloma, Cystadenoma, Polyp? :: “polyp” adalah deskripsi bentuk, bukan otomatis diagnosis histologis.
 - [Anaplasia — Ciri Morfologi] Apa poin high-yield (pearl) tentang Anaplasia — Ciri Morfologi? :: Bizarre multipolar mitotic figures sangat mendukung malignancy.
 - [Carcinoma in Situ] Apa poin high-yield (pearl) tentang Carcinoma in Situ? :: CIS = malignant cytology WITHOUT invasion. Invasive carcinoma = breach basement membrane.

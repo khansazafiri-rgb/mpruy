@@ -600,8 +600,8 @@ Jika preparat wanita:
 
 ## Flashcard {kartu}
 
-- [Peta Besar Sistem Reproduksi] Apa yang dimaksud dengan Pria pada Peta Besar Sistem Reproduksi? :: Testis → tubuli recti → rete testis → ductuli efferentes → epididymis → ductus deferens → ejaculatory duct → urethra.
-- [Peta Besar Sistem Reproduksi] Apa yang dimaksud dengan Wanita pada Peta Besar Sistem Reproduksi? :: Ovarium → uterine tube → uterus → cervix → vagina.
+- [Peta Besar Sistem Reproduksi] Jelaskan Pria. :: Testis → tubuli recti → rete testis → ductuli efferentes → epididymis → ductus deferens → ejaculatory duct → urethra.
+- [Peta Besar Sistem Reproduksi] Jelaskan Wanita. :: Ovarium → uterine tube → uterus → cervix → vagina.
 - [Tubulus Seminiferus dan Urutan Spermatogenesis] Jelaskan Urutan yang paling penting dalam konteks Tubulus Seminiferus dan Urutan Spermatogenesis. :: Spermatogonium → primary spermatocyte → secondary spermatocyte → spermatid → spermatozoon.
 - [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Sertoli dan Leydig tertukar? :: Cek apakah sel berada di dalam atau di luar seminiferous tubule.
 - [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Epididymis dianggap ductus deferens? :: Bandingkan jumlah duct profiles dan ketebalan muscularis.
@@ -614,20 +614,20 @@ Jika preparat wanita:
 - [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Cervix dianggap vagina? :: Cervix memiliki endocervical mucous epithelium/glands; vagina tidak memiliki glands.
 - [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Maternal dan fetal blood pada placenta dianggap bercampur? :: Keduanya berada pada compartments berbeda.
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Testis pada Histologi Sistem Reproduksi Pria & Wanita? :: Seminiferous tubules + spermatogenic series
-- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang perlu diketahui tentang Basal → lumen pada Histologi Sistem Reproduksi Pria & Wanita? :: Spermatogonium → primary spermatocyte → spermatid → spermatozoon
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Sertoli pada Histologi Sistem Reproduksi Pria & Wanita? :: Inside tubule, pale nucleus, support + blood-testis barrier
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Leydig pada Histologi Sistem Reproduksi Pria & Wanita? :: Interstitial, eosinophilic endocrine cells, testosterone
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Ductuli efferentes pada Histologi Sistem Reproduksi Pria & Wanita? :: Scalloped lumen
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Epididymis pada Histologi Sistem Reproduksi Pria & Wanita? :: Pseudostratified + stereocilia + sperm-filled lumen
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Ductus deferens pada Histologi Sistem Reproduksi Pria & Wanita? :: Stellate lumen + massive muscularis
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Seminal vesicle pada Histologi Sistem Reproduksi Pria & Wanita? :: Extremely folded labyrinthine mucosa
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Prostate pada Histologi Sistem Reproduksi Pria & Wanita? :: Many glands + fibromuscular stroma + corpora amylacea
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Ovary pada Histologi Sistem Reproduksi Pria & Wanita? :: Follicles
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Primordial pada Histologi Sistem Reproduksi Pria & Wanita? :: Flattened follicular cells
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Primary pada Histologi Sistem Reproduksi Pria & Wanita? :: Cuboidal/multilayer granulosa, no true antrum
-- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Antral pada Histologi Sistem Reproduksi Pria & Wanita? :: Antrum present
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Graafian pada Histologi Sistem Reproduksi Pria & Wanita? :: Huge antrum + cumulus oophorus/corona radiata
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Corpus luteum pada Histologi Sistem Reproduksi Pria & Wanita? :: Large pale lutein cells + rich vessels
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Corpus albicans pada Histologi Sistem Reproduksi Pria & Wanita? :: Collagenous scar
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Uterine tube pada Histologi Sistem Reproduksi Pria & Wanita? :: Highly folded ciliated simple columnar mucosa
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Uterus pada Histologi Sistem Reproduksi Pria & Wanita? :: Endometrial glands + thick myometrium
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Proliferative pada Histologi Sistem Reproduksi Pria & Wanita? :: Straight glands
 - [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Secretory pada Histologi Sistem Reproduksi Pria & Wanita? :: Tortuous/saw-tooth glands
@@ -646,18 +646,18 @@ Jika preparat wanita:
   • Mensekresi androgen-binding protein
   • Menghasilkan inhibin B
   • Pada perkembangan fetal menghasilkan anti-Müllerian hormone
-- [Epididymis] Sebutkan poin-poin penting tentang Dua cell types utama. :: • Principal cells dengan stereocilia
+- [Epididymis] Sebutkan dua cell types utama pada Epididymis. :: • Principal cells dengan stereocilia
   • Basal cells dekat basal lamina
 - [Ductus Deferens] Sebutkan ciri paling mencolok adalah muscularis yang sangat tebal, secara klasik pada Ductus Deferens. :: • Inner longitudinal
   • Middle circular
   • Outer longitudinal smooth muscle
-- [Epididymis versus Ductus Deferens] Sebutkan poin-poin penting tentang Ductus deferens. :: • Biasanya satu lumen utama
+- [Epididymis versus Ductus Deferens] Sebutkan hal-hal penting tentang Ductus deferens. :: • Biasanya satu lumen utama
   • Lumen lebih kecil/stellate
   • Mucosa folded
   • Muscularis sangat tebal
-- [Penis] Sebutkan poin-poin penting tentang Penis tersusun atas tiga erectile bodies. :: • Dua corpora cavernosa
+- [Penis] Sebutkan hal-hal penting tentang Penis tersusun atas tiga erectile bodies. :: • Dua corpora cavernosa
   • Satu corpus spongiosum yang mengelilingi penile urethra
-- [Ovarium: Organisasi Umum] Sebutkan poin-poin penting tentang Parenkim. :: • Cortex di perifer, mengandung ovarian follicles pada berbagai tahap, corpora lutea, dan corpora albicantia
+- [Ovarium: Organisasi Umum] Sebutkan hal-hal penting tentang Parenkim. :: • Cortex di perifer, mengandung ovarian follicles pada berbagai tahap, corpora lutea, dan corpora albicantia
   • Medulla di pusat, berupa loose connective tissue kaya blood vessels, lymphatics, dan nerves
 - [Secondary / Antral Follicle] Sebutkan komponen penting pada Secondary / Antral Follicle. :: • Primary oocyte
   • Zona pellucida
@@ -665,9 +665,9 @@ Jika preparat wanita:
   • Antrum
   • Theca interna
   • Theca externa
-- [Uterine Tube] Sebutkan poin-poin penting tentang Region comparison. :: • Ampulla = lumen luas, mucosal folds paling kompleks
+- [Uterine Tube] Sebutkan hal-hal penting tentang Region comparison. :: • Ampulla = lumen luas, mucosal folds paling kompleks
   • Isthmus = lumen lebih sempit, folds lebih sederhana, muscular wall lebih tebal
-- [Uterus: Organisasi Dinding] Sebutkan poin-poin penting tentang Endometrium. :: • Stratum functionalis, mengalami perubahan siklik dan luruh saat menstruasi
+- [Uterus: Organisasi Dinding] Sebutkan hal-hal penting tentang Endometrium. :: • Stratum functionalis, mengalami perubahan siklik dan luruh saat menstruasi
   • Stratum basalis, dipertahankan dan menjadi sumber regenerasi functionalis
 - [Proliferative Endometrium] Sebutkan ciri histologis pada Proliferative Endometrium. :: • Endometrium sedang menebal
   • Glands relatif straight, tubular, dan sempit

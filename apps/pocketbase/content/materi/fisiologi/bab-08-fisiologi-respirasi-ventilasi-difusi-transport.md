@@ -503,11 +503,10 @@ Adaptasi berikutnya mencakup kompensasi renal terhadap alkalosis serta peningkat
 
 ## Flashcard {kartu}
 
-- [Peta Besar Fisiologi Respirasi] Jelaskan Alur inti sistem respirasi dalam konteks Peta Besar Fisiologi Respirasi. :: Ventilation → gas reaches alveoli → diffusion across alveolar-capillary membrane → pulmonary perfusion → transport in blood → tissue diffusion → cellular metabolism.
+- [Peta Besar Fisiologi Respirasi] Jelaskan Alur inti sistem respirasi dalam konteks Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas. :: Ventilation → gas reaches alveoli → diffusion across alveolar-capillary membrane → pulmonary perfusion → transport in blood → tissue diffusion → cellular metabolism.
 - [Conducting Zone vs Respiratory Zone] Jelaskan Conducting zone. :: Hidung → faring → laring → trakea → bronkus → bronkiolus terminal.
 - [Conducting Zone vs Respiratory Zone] Jelaskan Respiratory zone. :: Bronkiolus respiratorius → alveolar ducts → alveoli.
 - [Tekanan Atmosfer, Alveolar, dan Intrapleura] Apa yang dimaksud dengan Palv pada Tekanan Atmosfer, Alveolar, dan Intrapleura? :: Turun sedikit di bawah atmosfer saat inspirasi → udara masuk.
-- [Compliance Paru] Jelaskan Contoh compliance turun dalam konteks Compliance Paru. :: Pulmonary fibrosis.
 - [FEV₁, FVC, dan Pola Obstruktif] Jelaskan Obstruktif. :: FEV₁ turun relatif lebih besar daripada FVC → FEV₁/FVC menurun.
 - [Pola Restriktif] Jelaskan Restriktif. :: Lung volumes menurun.
 - [Minute Ventilation] Jelaskan Minute ventilation. :: V̇E = tidal volume × respiratory rate.
@@ -525,21 +524,19 @@ Adaptasi berikutnya mencakup kompensasi renal terhadap alkalosis serta peningkat
   • Berperan pada olfaksi
   • Membantu pertahanan saluran napas
   • Ikut mengatur kehilangan panas dan air
-- [Inspirasi dan Ekspirasi Paksa] Sebutkan poin-poin penting tentang Ekspirasi paksa menggunakan. :: • Internal intercostal
-  • Abdominal muscles
-- [Oksigen dalam Darah] Sebutkan poin-poin penting tentang O₂ diangkut. :: • Sebagian kecil terlarut dalam plasma
+- [Oksigen dalam Darah] Sebutkan hal-hal penting tentang O₂ diangkut. :: • Sebagian kecil terlarut dalam plasma
   • Sebagian besar terikat hemoglobin
 - [Right Shift Kurva Hb-O₂] Sebutkan penyebab klasik pada Right Shift Kurva Hb-O₂. :: • H⁺ ↑ / pH ↓
   • PCO₂ ↑
   • Temperature ↑
   • 2,3-BPG ↑
-- [Transport CO₂] Sebutkan poin-poin penting tentang CO₂ diangkut dalam tiga bentuk. :: • Dissolved CO₂
+- [Transport CO₂] Sebutkan hal-hal penting tentang CO₂ diangkut dalam tiga bentuk. :: • Dissolved CO₂
   • Carbamino compounds terutama carbaminohemoglobin
   • Bicarbonate (HCO₃⁻), bentuk terbesar
-- [Peripheral Chemoreceptor] Sebutkan poin-poin penting tentang Carotid bodies dan aortic bodies merespons. :: • PaO₂ rendah
+- [Peripheral Chemoreceptor] Sebutkan hal-hal penting tentang Carotid bodies dan aortic bodies merespons. :: • PaO₂ rendah
   • PaCO₂ tinggi
   • H⁺ meningkat
-- [Exercise dan Ventilasi] Sebutkan poin-poin penting tentang Ventilasi meningkat melalui kombinasi. :: • Central command
+- [Exercise dan Ventilasi] Sebutkan hal-hal penting tentang Ventilasi meningkat melalui kombinasi. :: • Central command
   • Proprioceptive input
   • Chemical feedback
 - [Right Shift Kurva Hb-O₂] Bagaimana cara mengingat Right Shift Kurva Hb-O₂? :: “CADET, face Right” sering dipakai: CO₂, Acid, 2,3-DPG, Exercise, Temperature.

@@ -344,30 +344,30 @@ Meningitis harus dipikirkan pada fever + headache + neck stiffness, tetapi triad
 
 - [Tata Laksana Akut Suspected Bacterial Meningitis] Jelaskan Prinsip paling penting dalam konteks Tata Laksana Akut Suspected Bacterial Meningitis. :: Jangan menunda antibiotik hanya karena menunggu LP atau imaging.
 - [Meningococcal Disease dan Profilaksis Kontak] Apa yang dimaksud dengan Pearl pada Meningococcal Disease dan Profilaksis Kontak? :: Ceftriaxone merupakan pilihan yang dapat digunakan pada kehamilan. Pemilihan ciprofloxacin harus mempertimbangkan resistensi lokal.
-- [Infeksi SSP: Meningitis] Apa yang dimaksud dengan Pikirkan terutama pada pasien imunokompromais. Cryptococcus? :: Ragi berkapsul yang dapat menyebabkan meningitis, terutama pada pasien HIV
 - [Infeksi SSP: Meningitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Demam + headache + neck stiffness? :: Meningitis sampai terbukti lain
 - [Infeksi SSP: Meningitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Fever + petechiae/purpura non-blanching + meningismus? :: Meningococcal disease
 - [Infeksi SSP: Meningitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Suspected bacterial meningitis, neurologis stabil tanpa red flag ICP? :: LP segera bila tidak menunda antibiotik
 - [Infeksi SSP: Meningitis] Apa yang perlu diingat tentang Meningitis + shock pada Infeksi SSP: Meningitis? :: Stabilisasi dan antibiotik; LP ditunda sampai aman
+- [Infeksi SSP: Meningitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: CSF neutrofil ↑ + protein ↑ + glucose ↓? :: Bacterial meningitis
 - [Infeksi SSP: Meningitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: CSF limfosit ↑ + glucose normal? :: Viral meningitis lebih mungkin
 - [Infeksi SSP: Meningitis] Apa yang perlu diingat tentang Neonatus + sepsis/meningitis pada Infeksi SSP: Meningitis? :: Ingat GBS dan E. coli K1
 - [Infeksi SSP: Meningitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Lansia/immunocompromised + bacterial meningitis? :: Ingat Listeria coverage
 - [Infeksi SSP: Meningitis] Apa yang perlu diingat tentang Meningitis pneumokokus pada Infeksi SSP: Meningitis? :: Ingat risiko neurologic/hearing sequelae dan adjunctive steroid timing
+- [Infeksi SSP: Meningitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Close contact meningococcal disease? :: Chemoprophylaxis, bukan menunggu gejala muncul
 - [Infeksi SSP: Meningitis] Apa yang dimaksud dengan Meningitis pada Infeksi SSP: Meningitis? :: Inflamasi meninges/ruang subaraknoid
-- [Infeksi SSP: Meningitis] Apa yang perlu diketahui tentang Trias klasik pada Infeksi SSP: Meningitis? :: Fever + headache + neck stiffness
 - [Infeksi SSP: Meningitis] Apa yang perlu diingat tentang Petechiae/purpura non-blanching pada Infeksi SSP: Meningitis? :: Pikirkan meningococcemia
 - [Infeksi SSP: Meningitis] Apa yang dimaksud dengan Bacterial meningitis pada Infeksi SSP: Meningitis? :: Medical emergency
 - [Infeksi SSP: Meningitis] Apa yang perlu diingat tentang GCS ≤9 pada Infeksi SSP: Meningitis? :: Jangan langsung LP
+- [Infeksi SSP: Meningitis] Apa yang perlu diingat tentang Shock pada Infeksi SSP: Meningitis? :: Stabilisasi dahulu sebelum LP
 - [Infeksi SSP: Meningitis] Apa yang perlu diingat tentang Uncontrolled seizure pada Infeksi SSP: Meningitis? :: LP ditunda sementara
-- [Infeksi SSP: Meningitis] Apa yang perlu diketahui tentang CSF bacterial pada Infeksi SSP: Meningitis? :: Neutrofil ↑
+- [Infeksi SSP: Meningitis] Apa yang perlu diketahui tentang CSF viral pada Infeksi SSP: Meningitis? :: Limfosit dominan dan glucose biasanya normal
 - [Infeksi SSP: Meningitis] Apa yang dimaksud dengan Third-generation cephalosporin pada Infeksi SSP: Meningitis? :: Pilar empiric bacterial meningitis
-- [Infeksi SSP: Meningitis] Apa yang dimaksud dengan S. pneumoniae pada Infeksi SSP: Meningitis? :: Organisme meningitis penting
 - [Infeksi SSP: Meningitis] Apa yang perlu diingat tentang N. meningitidis pada Infeksi SSP: Meningitis? :: Pikirkan profilaksis close contact
-- [Infeksi SSP: Meningitis] Apa yang dimaksud dengan GBS dan E. coli K1 pada Infeksi SSP: Meningitis? :: Clue neonatal meningitis
-- [Konsep Dasar Meningitis] Sebutkan poin-poin penting tentang Trias klasik meningitis. :: • Demam
+- [Infeksi SSP: Meningitis] Apa yang perlu diingat tentang Cryptococcus pada Infeksi SSP: Meningitis? :: Meningitis pada imunokompromais, terutama HIV
+- [Konsep Dasar Meningitis] Sebutkan trias klasik meningitis pada Konsep Dasar Meningitis. :: • Demam
   • Nyeri kepala
   • Kaku kuduk
-- [Konsep Dasar Meningitis] Sebutkan poin-poin penting tentang Perbedaan konseptual penting. :: • MENINGITIS → inflamasi meninges; headache, meningismus, dan demam menonjol
+- [Konsep Dasar Meningitis] Sebutkan perbedaan konseptual penting pada Konsep Dasar Meningitis. :: • MENINGITIS → inflamasi meninges; headache, meningismus, dan demam menonjol
   • ENSEFALITIS → inflamasi parenkim otak; perubahan perilaku/kognitif, penurunan kesadaran, kejang, dan defisit neurologis lebih menonjol
   • MENINGOENSEFALITIS → terdapat fitur keduanya
 - [Patogenesis Ringkas] Sebutkan konsekuensi klinis pada Patogenesis Ringkas. :: • Altered mental status
@@ -398,12 +398,12 @@ Meningitis harus dipikirkan pada fever + headache + neck stiffness, tetapi triad
   • Gram stain
   • Culture dan antimicrobial susceptibility bila relevan
   • PCR / molecular testing sesuai fasilitas dan kecurigaan etiologi
-- [LP Dulu atau CT Dulu?] Sebutkan poin-poin penting tentang Imaging perlu diprioritaskan bila. :: • Risiko evolving space-occupying lesion
+- [LP Dulu atau CT Dulu?] Sebutkan hal-hal penting tentang Imaging perlu diprioritaskan bila. :: • Risiko evolving space-occupying lesion
   • New focal neurological features, termasuk seizure/posturing
   • Abnormal pupillary reactions
   • GCS ≤9
   • Penurunan tingkat kesadaran yang progresif, menetap, atau cepat
-- [LP Dulu atau CT Dulu?] Sebutkan poin-poin penting tentang Tunda LP sementara bila terdapat. :: • Unprotected airway
+- [LP Dulu atau CT Dulu?] Sebutkan hal-hal penting tentang Tunda LP sementara bila terdapat. :: • Unprotected airway
   • Respiratory compromise
   • Shock
   • Uncontrolled seizure
@@ -427,7 +427,7 @@ Meningitis harus dipikirkan pada fever + headache + neck stiffness, tetapi triad
   • DIC
   • Purpura fulminans
   • Multi-organ dysfunction
-- [Meningitis TB dan Cryptococcal Meningitis: Clue Pembeda] Sebutkan poin-poin penting tentang TB meningitis. :: • Onset subakut
+- [Meningitis TB dan Cryptococcal Meningitis: Clue Pembeda] Sebutkan hal-hal penting tentang TB meningitis. :: • Onset subakut
   • Constitutional symptoms dapat ada
   • CSF limfosit, protein tinggi, glucose rendah
   • Cranial neuropathy atau basal meningeal involvement dapat muncul

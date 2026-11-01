@@ -407,10 +407,8 @@ Pola 10 — Aspirin-Associated ICH Tanpa Operasi
 
 ## Flashcard {kartu}
 
-- [ICH] Apa yang dimaksud dengan CT pada ICH (Perbandingan Cepat: Iskemik vs ICH vs SAH)? :: Darah hiperdens intraparenkim
-- [ICH] Pada ICH (Perbandingan Cepat: Iskemik vs ICH vs SAH), apa tujuan akutnya? :: BP control, reversal coagulopathy, ICP/hydrocephalus management, surgery sesuai indikasi.
-- [Stroke Hemoragik & Perdarahan Intrakranial] Jelaskan: Hemorrhagic stroke bukan satu diagnosis tunggal. :: ICH dan SAH berbeda
-- [Stroke Hemoragik & Perdarahan Intrakranial] Apa yang perlu diketahui tentang Dua hemorrhagic stroke utama pada Stroke Hemoragik & Perdarahan Intrakranial? :: ICH dan SAH
+- [ICH] Apa yang dimaksud dengan CT pada ICH? :: Darah hiperdens intraparenkim
+- [ICH] Pada ICH, apa tujuan akutnya? :: BP control, reversal coagulopathy, ICP/hydrocephalus management, surgery sesuai indikasi.
 - [Stroke Hemoragik & Perdarahan Intrakranial] Apa yang dimaksud dengan ICH pada Stroke Hemoragik & Perdarahan Intrakranial? :: Darah masuk ke parenkim otak
 - [Stroke Hemoragik & Perdarahan Intrakranial] Apa yang dimaksud dengan SAH pada Stroke Hemoragik & Perdarahan Intrakranial? :: Darah masuk ke ruang subaraknoid
 - [Stroke Hemoragik & Perdarahan Intrakranial] Apa yang dimaksud dengan CT kepala tanpa kontras pada Stroke Hemoragik & Perdarahan Intrakranial? :: Pemeriksaan awal utama untuk mendeteksi perdarahan akut
@@ -425,20 +423,20 @@ Pola 10 — Aspirin-Associated ICH Tanpa Operasi
 - [Stroke Hemoragik & Perdarahan Intrakranial] Apa yang perlu diketahui tentang Reverse anticoagulation segera pada Stroke Hemoragik & Perdarahan Intrakranial? :: Warfarin → 4F-PCC + IV vitamin K; dabigatran → idarucizumab; factor Xa inhibitor → andexanet
 - [Stroke Hemoragik & Perdarahan Intrakranial] Apa jawaban atau kesimpulan untuk petunjuk berikut: Hydrocephalus dengan ↓ consciousness? :: Pikirkan EVD
 - [Stroke Hemoragik & Perdarahan Intrakranial] Apa yang perlu diketahui tentang aSAH pada Stroke Hemoragik & Perdarahan Intrakranial? :: Secure aneurysm secepat mungkin, idealnya ≤24 jam
-- [Pola Lokasi] Sebutkan gambaran klinis pada Intracerebral Hemorrhage (ICH). :: • Hemiparesis atau hemisensory loss mendadak
+- [Pola Lokasi] Sebutkan gambaran klinis pada Intracerebral Hemorrhage. :: • Hemiparesis atau hemisensory loss mendadak
   • Afasia, neglect, atau field defect sesuai lokasi
   • Headache dan vomiting
   • Penurunan kesadaran
   • Kejang, terutama pada perdarahan kortikal/lobar
   • Tanda peningkatan tekanan intrakranial pada hematoma besar
-- [Tata Laksana Akut ICH] Sebutkan poin-poin penting tentang Pendekatan awal. :: • Stabilkan airway, breathing, circulation
+- [Tata Laksana Akut ICH] Sebutkan hal-hal penting tentang Pendekatan awal. :: • Stabilkan airway, breathing, circulation
   • Nilai GCS dan pemeriksaan neurologis serial
   • Lakukan CT kepala tanpa kontras segera
   • Identifikasi penggunaan antikoagulan/antiplatelet
   • Kendalikan tekanan darah secara smooth dan hindari fluktuasi besar
   • Tangani peningkatan ICP/hidrocephalus bila ada
   • Konsultasikan neurosurgery/neurocritical care sesuai lokasi dan berat perdarahan
-- [Subarachnoid Hemorrhage (SAH)] Sebutkan poin-poin penting tentang Pola klinis high-yield. :: • Thunderclap headache
+- [Subarachnoid Hemorrhage (SAH)] Sebutkan pola klinis high-yield pada Subarachnoid Hemorrhage. :: • Thunderclap headache
   • “worst headache of life”
   • Mencapai puncak intensitas dalam detik–menit
   • Vomiting
@@ -449,6 +447,6 @@ Pola 10 — Aspirin-Associated ICH Tanpa Operasi
 - [Diagnosis & Imaging SAH] Sebutkan urutan atau langkah pada Diagnosis & Imaging SAH? :: • CT kepala tanpa kontras segera pada thunderclap headache yang mencurigakan
   • Bila SAH terkonfirmasi, vascular imaging seperti CTA digunakan untuk mencari aneurisma atau sumber vaskular
   • Bila CT awal tidak menunjukkan perdarahan tetapi clinical suspicion tetap tinggi, evaluasi tambahan ditentukan berdasarkan timing, protokol lokal, dan penilaian ahli; dapat mencakup lumbar puncture dan/atau vascular imaging
-- [Pola Lokasi] Apa poin high-yield (pearl) tentang Intracerebral Hemorrhage (ICH)? :: Defisit fokal mendadak + muntah + penurunan kesadaran + CT menunjukkan koleksi hiperdens intraparenkim → pikirkan ICH, bukan stroke iskemik.
-- [LMWH] Apa poin high-yield (pearl) tentang LMWH (Unfractionated Heparin)? :: “Warfarin + ICH” → 4F-PCC + vitamin K IV. “Dabigatran + ICH” → idarucizumab. “Apixaban/rivaroxaban + ICH” → andexanet alfa; PCC/aPCC dapat menjadi alternatif sesuai konteks.
+- [Pola Lokasi] Apa poin high-yield (pearl) tentang Intracerebral Hemorrhage? :: Defisit fokal mendadak + muntah + penurunan kesadaran + CT menunjukkan koleksi hiperdens intraparenkim → pikirkan ICH, bukan stroke iskemik.
+- [LMWH] Apa poin high-yield (pearl) tentang LMWH? :: “Warfarin + ICH” → 4F-PCC + vitamin K IV. “Dabigatran + ICH” → idarucizumab. “Apixaban/rivaroxaban + ICH” → andexanet alfa; PCC/aPCC dapat menjadi alternatif sesuai konteks.
 - [Supratentorial ICH] Apa poin high-yield (pearl) tentang Supratentorial ICH? :: Cerebellar hematoma + deteriorating consciousness + hydrocephalus/brainstem compression bukan kasus “observasi saja” → pikirkan emergent neurosurgical intervention.

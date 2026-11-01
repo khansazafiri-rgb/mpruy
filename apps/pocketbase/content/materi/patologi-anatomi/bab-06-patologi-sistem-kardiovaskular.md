@@ -821,26 +821,25 @@ Right:
 - [Pattern Recognition Praktikum] Jelaskan Rheumatic heart disease dalam konteks Pattern Recognition Praktikum. :: Commissural fusion + chordal shortening + fish-mouth mitral valve.
 - [Pattern Recognition Praktikum] Apa yang dimaksud dengan Rheumatic myocarditis pada Pattern Recognition Praktikum? :: Aschoff body + Anitschkow cells.
 - [Pattern Recognition Praktikum] Apa yang dimaksud dengan Infective endocarditis pada Pattern Recognition Praktikum? :: Friable vegetations dengan fibrin, inflammation, microorganisms.
-- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Hypertrophic cardiomyopathy pada Pattern Recognition Praktikum? :: Myofiber disarray.
 - [Pattern Recognition Praktikum] Jelaskan Amyloid restrictive cardiomyopathy dalam konteks Pattern Recognition Praktikum. :: Amorphous extracellular deposits; Congo red positive dengan apple-green birefringence.
 - [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang myocardium paling lemah pada Patologi Sistem Kardiovaskular? :: Rupture risk tinggi
-- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Exam pearl paling penting: 3–7 hari? :: Macrophages + wall rupture risk
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Vulnerable plaque pada Patologi Sistem Kardiovaskular? :: Thin cap + large lipid core + inflammation
-- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan 1–3 hari post-MI pada Patologi Sistem Kardiovaskular? :: Neutrophils dominan
-- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan 3–7 hari pada Patologi Sistem Kardiovaskular? :: Macrophages dominan dan rupture risk tinggi
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Old MI pada Patologi Sistem Kardiovaskular? :: Fibrous scar
 - [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang LAD pada Patologi Sistem Kardiovaskular? :: Anterior wall/septum/apex
 - [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Left heart failure pada Patologi Sistem Kardiovaskular? :: Pulmonary congestion + heart failure cells
 - [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Right heart failure pada Patologi Sistem Kardiovaskular? :: Systemic venous congestion
 - [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Pressure overload pada Patologi Sistem Kardiovaskular? :: Concentric hypertrophy
+- [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Volume overload pada Patologi Sistem Kardiovaskular? :: Eccentric hypertrophy
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Calcific aortic stenosis pada Patologi Sistem Kardiovaskular? :: Nodular calcification tanpa commissural fusion klasik
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Rheumatic valve disease pada Patologi Sistem Kardiovaskular? :: Commissural fusion + fish-mouth stenosis
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Aschoff body dan Anitschkow cells? :: Rheumatic carditis
-- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan S. aureus pada Patologi Sistem Kardiovaskular? :: Acute IE klasik
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Viridans streptococci pada Patologi Sistem Kardiovaskular? :: Subacute IE klasik pada damaged valve
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan NBTE pada Patologi Sistem Kardiovaskular? :: Sterile bland vegetations + hypercoagulable state/malignancy
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan DCM pada Patologi Sistem Kardiovaskular? :: Dilation + systolic dysfunction
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan HCM pada Patologi Sistem Kardiovaskular? :: Asymmetric septal hypertrophy + myofiber disarray
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Restrictive CM pada Patologi Sistem Kardiovaskular? :: Impaired filling, contoh amyloidosis
 - [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Free wall rupture pada Patologi Sistem Kardiovaskular? :: Hemopericardium + tamponade
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Hyaline arteriolosclerosis pada Patologi Sistem Kardiovaskular? :: Benign HTN/diabetes
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Hyperplastic arteriolosclerosis? :: Malignant/severe HTN
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Atrial myxoma pada Patologi Sistem Kardiovaskular? :: Primary benign cardiac tumor klasik pada dewasa
 - [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang HTN/aortic stenosis pada Patologi Sistem Kardiovaskular? :: Concentric LVH
@@ -860,14 +859,14 @@ Right:
   • Smooth muscle migration dari media ke intima
   • Smooth muscle proliferation + ECM deposition
   • Terbentuk fibrofatty plaque
-- [Stable Angina vs Acute Coronary Syndrome] Sebutkan poin-poin penting tentang Stable angina. :: • Fixed stenosis
+- [Stable Angina vs Acute Coronary Syndrome] Sebutkan hal-hal penting tentang Stable angina. :: • Fixed stenosis
   • Gejala saat exertion/stress
   • Tidak ada myocardial necrosis
-- [Transmural vs Subendocardial Infarct] Sebutkan poin-poin penting tentang Subendocardial infarct. :: • Mengenai inner 1/3–1/2 myocardium
+- [Transmural vs Subendocardial Infarct] Sebutkan hal-hal penting tentang Subendocardial infarct. :: • Mengenai inner 1/3–1/2 myocardium
   • Wilayah subendocardial paling rentan terhadap hypoperfusion
   • Dapat terjadi pada partial occlusion atau global hypotension
   • Sering berkaitan dengan NSTEMI
-- [Free Wall, Septal, dan Papillary Muscle Rupture] Sebutkan poin-poin penting tentang Papillary muscle rupture. :: • Acute severe mitral regurgitation
+- [Free Wall, Septal, dan Papillary Muscle Rupture] Sebutkan hal-hal penting tentang Papillary muscle rupture. :: • Acute severe mitral regurgitation
   • Pulmonary edema
   • Posteromedial papillary muscle lebih rentan karena single blood supply pada banyak orang
 - [Heart Failure — Konsep] Sebutkan klasifikasi praktis pada Heart Failure — Konsep. :: • Left-sided vs right-sided
@@ -876,19 +875,19 @@ Right:
 - [Right-Sided Heart Failure] Sebutkan penyebab lain pada Right-Sided Heart Failure. :: • Pulmonary hypertension
   • Chronic lung disease → cor pulmonale
   • Tricuspid/pulmonic valve disease
-- [Concentric vs Eccentric Hypertrophy] Sebutkan poin-poin penting tentang Eccentric hypertrophy. :: • Volume overload
+- [Concentric vs Eccentric Hypertrophy] Sebutkan hal-hal penting tentang Eccentric hypertrophy. :: • Volume overload
   • Sarcomeres added in series
   • Chamber dilation
   • Contoh: chronic regurgitation
-- [Rheumatic Fever & Rheumatic Heart Disease] Sebutkan poin-poin penting tentang Lesi histologis klasik. :: • Aschoff bodies
+- [Rheumatic Fever & Rheumatic Heart Disease] Sebutkan lesi histologis klasik pada Rheumatic Fever & Rheumatic Heart Disease. :: • Aschoff bodies
   • Anitschkow cells dengan “caterpillar nuclei”
-- [Libman–Sacks Endocarditis] Sebutkan poin-poin penting tentang Libman–Sacks endocarditis. :: • Sterile vegetations pada SLE
+- [Libman–Sacks Endocarditis] Sebutkan hal-hal penting tentang Libman–Sacks endocarditis. :: • Sterile vegetations pada SLE
   • Dapat berada pada kedua sisi valve leaflet
   • Terkait immune complex injury
 - [Vasculitis — Konsep Ringkas] Sebutkan klasifikasi sering berdasarkan ukuran vessel pada Vasculitis — Konsep Ringkas. :: • Large-vessel
   • Medium-vessel
   • Small-vessel
-- [Pulmonary Hypertension] Sebutkan poin-poin penting tentang Vascular changes. :: • Medial hypertrophy
+- [Pulmonary Hypertension] Sebutkan hal-hal penting tentang Vascular changes. :: • Medial hypertrophy
   • Intimal fibrosis
   • Plexiform lesions pada severe pulmonary arterial hypertension
 - [Faktor Risiko Atherosclerosis] Apa poin high-yield (pearl) tentang Faktor Risiko Atherosclerosis? :: Kombinasi smoking + HTN + hyperlipidemia + diabetes = paket klasik faktor risiko atherosclerosis.

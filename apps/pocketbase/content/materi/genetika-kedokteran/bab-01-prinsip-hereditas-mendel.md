@@ -580,51 +580,54 @@ expressivity = derajat.
 
 - [Punnett Square] Jelaskan Contoh Aa × Aa dalam konteks Punnett Square. :: Parent 1 gametes = A, a
 - [Addition rule — OR] Jelaskan Contoh Aa × Aa dalam konteks Addition rule — OR. :: Probabilitas offspring tidak terkena penyakit resesif = AA atau Aa
-- [Conditional probability] Apa yang dimaksud dengan Contoh klasik pada Conditional probability (Aturan Probabilitas)? :: Pada Aa × Aa, jika offspring diketahui TIDAK terkena penyakit resesif, genotype yang mungkin hanya AA atau Aa.
-- [Complete dominance] Jelaskan Contoh konsep. :: AA dan Aa tampak sama.
-- [Codominance] Jelaskan Contoh klasik dalam konteks Codominance (Complete Dominance, Incomplete Dominance, Codominance). :: Alel IA dan IB pada ABO blood group → phenotype AB.
+- [Conditional probability] Apa yang dimaksud dengan Contoh klasik pada Conditional probability? :: Pada Aa × Aa, jika offspring diketahui TIDAK terkena penyakit resesif, genotype yang mungkin hanya AA atau Aa.
+- [Complete dominance] Apa yang dimaksud dengan Contoh konsep pada Complete dominance? :: AA dan Aa tampak sama.
+- [Codominance] Apa yang dimaksud dengan Contoh klasik pada Codominance? :: Alel IA dan IB pada ABO blood group → phenotype AB.
 - [Penetrance] Jelaskan Complete penetrance. :: 100% individu dengan genotype patogenik menunjukkan phenotype.
 - [Penetrance] Jelaskan Incomplete/reduced penetrance. :: Sebagian carrier genotype patogenik tidak menunjukkan phenotype.
 - [Penetrance] Apa yang dimaksud dengan Contoh konsep pada Penetrance? :: Jika penetrance suatu dominant pathogenic variant 80%, maka tidak semua orang dengan variant tersebut akan tampak sakit.
 - [Locus Heterogeneity dan Allelic Heterogeneity] Jelaskan Locus heterogeneity. :: Variant pada gen yang berbeda dapat menghasilkan phenotype klinis yang mirip.
 - [Locus Heterogeneity dan Allelic Heterogeneity] Jelaskan Allelic heterogeneity. :: Variant berbeda pada gen yang sama dapat menghasilkan penyakit yang sama atau spektrum penyakit terkait.
 - [Contoh Cepat 1 — Autosomal Recessive] Apa yang dimaksud dengan Pertanyaan pada Contoh Cepat 1 — Autosomal Recessive? :: Berapa risiko anak terkena?
-- [Memory Map] Apa yang dimaksud dengan Meiosis pada Memory Map? :: Homolog segregation → Mendel first law.
-- [Memory Map] Jelaskan Monohybrid Aa × Aa dalam konteks Memory Map. :: 1 AA : 2 Aa : 1 aa → complete dominance = 3 : 1 phenotype.
-- [Memory Map] Jelaskan Dihybrid AaBb × AaBb dalam konteks Memory Map. :: 9 : 3 : 3 : 1 jika independent + complete dominance.
-- [Memory Map] Apa yang dimaksud dengan Pedigree pada Memory Map? :: Vertical pattern → pikir dominant.
-- [Memory Map] Apa yang dimaksud dengan Modifiers pada Memory Map? :: Penetrance = muncul/tidak.
+- [Memory Map] Apa yang dimaksud dengan Meiosis pada Prinsip Hereditas Mendel? :: Homolog segregation → Mendel first law.
+- [Memory Map] Jelaskan Monohybrid Aa × Aa dalam konteks Prinsip Hereditas Mendel. :: 1 AA : 2 Aa : 1 aa → complete dominance = 3 : 1 phenotype.
+- [Memory Map] Jelaskan Dihybrid AaBb × AaBb dalam konteks Prinsip Hereditas Mendel. :: 9 : 3 : 3 : 1 jika independent + complete dominance.
+- [Memory Map] Apa yang dimaksud dengan Pedigree pada Prinsip Hereditas Mendel? :: Vertical pattern → pikir dominant.
+- [Memory Map] Apa yang dimaksud dengan Modifiers pada Prinsip Hereditas Mendel? :: Penetrance = muncul/tidak.
 - [Prinsip Hereditas Mendel] Apa yang dimaksud dengan Setiap pregnancy pada Prinsip Hereditas Mendel? :: Event independen
 - [Prinsip Hereditas Mendel] Apa yang dimaksud dengan Penetrance pada Prinsip Hereditas Mendel? :: Apakah phenotype muncul
 - [Prinsip Hereditas Mendel] Apa yang dimaksud dengan Expressivity pada Prinsip Hereditas Mendel? :: Seberapa besar/beragam phenotype
 - [Prinsip Hereditas Mendel] Apa yang dimaksud dengan Satu phenotype karena banyak gen? :: Locus heterogeneity
 - [Prinsip Hereditas Mendel] Apa yang dimaksud dengan Banyak variant pada satu gen pada Prinsip Hereditas Mendel? :: Allelic heterogeneity
 - [Prinsip Hereditas Mendel] Apa yang perlu diingat tentang Aa × Aa pada Prinsip Hereditas Mendel? :: Genotype 1:2:1; phenotype 3:1 jika complete dominance
-- [Hukum Segregasi — Mendel's First Law] Sebutkan poin-poin penting tentang Genotype offspring. :: • 1/4 AA
+- [Hukum Segregasi — Mendel's First Law] Sebutkan hal-hal penting tentang Genotype offspring. :: • 1/4 AA
   • 1/2 Aa
   • 1/4 aa
-- [Hubungan Mendel dengan Meiosis] Sebutkan poin-poin penting tentang Metaphase I. :: • Orientasi setiap pasangan homolog relatif independen
+- [Hubungan Mendel dengan Meiosis] Sebutkan hal-hal penting tentang Metaphase I. :: • Orientasi setiap pasangan homolog relatif independen
   • Ini menjadi dasar chromosomal independent assortment
-- [Pengenalan Pola Autosomal Dominant] Sebutkan poin-poin penting tentang Karakteristik umum. :: • Sering tampak vertical transmission dari generasi ke generasi
+- [Pengenalan Pola Autosomal Dominant] Sebutkan karakteristik umum pada Pengenalan Pola Autosomal Dominant. :: • Sering tampak vertical transmission dari generasi ke generasi
   • Laki-laki dan perempuan dapat terkena
   • Male-to-male transmission dapat terjadi
   • Individu affected heterozygous dengan pasangan unaffected sering memberikan risiko sekitar 50% per pregnancy jika penetrance penuh
-- [Pengenalan Pola Autosomal Recessive] Sebutkan poin-poin penting tentang Carrier × carrier. :: • 25% affected
+- [Pengenalan Pola Autosomal Recessive] Sebutkan karakteristik umum pada Pengenalan Pola Autosomal Recessive. :: • Sering affected siblings dengan orang tua clinically unaffected
+  • Laki-laki dan perempuan terkena dengan frekuensi serupa
+  • Consanguinity dapat meningkatkan kemungkinan kedua orang tua membawa alel langka yang sama
+- [Pengenalan Pola Autosomal Recessive] Sebutkan hal-hal penting tentang Carrier × carrier. :: • 25% affected
   • 50% carrier
   • 25% non-carrier unaffected
-- [De Novo Variant] Sebutkan poin-poin penting tentang Implikasi Mendelian. :: • Penyakit dominant dapat muncul pada anak tanpa family history sebelumnya
+- [De Novo Variant] Sebutkan hal-hal penting tentang Implikasi Mendelian. :: • Penyakit dominant dapat muncul pada anak tanpa family history sebelumnya
   • Recurrence risk untuk saudara berikutnya sering lebih rendah daripada 50%, tetapi tidak selalu nol karena kemungkinan germline mosaicism
-- [Mosaicism — Pengantar] Sebutkan poin-poin penting tentang Somatic mosaicism. :: • Variant terjadi setelah fertilisasi pada sel somatik
+- [Mosaicism — Pengantar] Sebutkan hal-hal penting tentang Somatic mosaicism. :: • Variant terjadi setelah fertilisasi pada sel somatik
   • Phenotype tergantung jaringan dan proporsi sel yang membawa variant
-- [Mosaicism — Pengantar] Sebutkan poin-poin penting tentang Germline/gonadal mosaicism. :: • Sebagian gamet membawa variant meskipun darah parental dapat negatif
+- [Mosaicism — Pengantar] Sebutkan hal-hal penting tentang Germline/gonadal mosaicism. :: • Sebagian gamet membawa variant meskipun darah parental dapat negatif
   • Menjelaskan mengapa pasangan yang tampak tidak membawa variant dapat memiliki lebih dari satu anak dengan kondisi de novo yang sama
 - [Istilah Dasar Genetika] Apa jebakan yang sering muncul pada soal tentang Istilah Dasar Genetika? :: Genotype tidak selalu sama dengan phenotype. Fenotipe dapat dipengaruhi penetrance, expressivity, modifier genes, epigenetic regulation, dan lingkungan.
 - [Dominan dan Resesif] Apa jebakan yang sering muncul pada soal tentang Dominan dan Resesif? :: Dominan TIDAK berarti lebih sering, lebih kuat, lebih sehat, atau lebih berat. Resesif TIDAK berarti langka atau lemah. Dominance hanya menjelaskan hubungan fenotip antara dua alel pada heterozygote.
 - [Hukum Segregasi — Mendel's First Law] Apa poin high-yield (pearl) tentang Hukum Segregasi — Mendel's First Law? :: Rasio 3:1 adalah rasio FENOTIPE pada heterozygote × heterozygote dengan complete dominance. Rasio GENOTIPE tetap 1:2:1.
 - [Hukum Independent Assortment — Mendel's Second Law] Apa jebakan yang sering muncul pada soal tentang Hukum Independent Assortment — Mendel's Second Law? :: Independent assortment terutama berlaku untuk gen pada kromosom berbeda atau gen yang sangat berjauhan pada kromosom yang sama. Gen yang berdekatan pada kromosom yang sama dapat mengalami linkage dan tidak assort independently.
 - [Hubungan Mendel dengan Meiosis] Apa jebakan yang sering muncul pada soal tentang Hubungan Mendel dengan Meiosis? :: Crossing-over terjadi pada prophase I dan menghasilkan recombination antara kromosom homolog.
-- [Conditional probability] Apa poin high-yield (pearl) tentang Conditional probability (Aturan Probabilitas)? :: “Unaffected sibling of an affected child from two carrier parents” → carrier risk 2/3, bukan 1/2.
-- [Codominance] Apa jebakan yang sering muncul pada soal tentang Codominance (Complete Dominance, Incomplete Dominance, Codominance)? :: Incomplete dominance ≠ codominance. Incomplete dominance = phenotype intermediate. Codominance = kedua produk alel tampak bersama.
+- [Conditional probability] Apa poin high-yield (pearl) tentang Conditional probability? :: “Unaffected sibling of an affected child from two carrier parents” → carrier risk 2/3, bukan 1/2.
+- [Codominance] Apa jebakan yang sering muncul pada soal tentang Codominance? :: Incomplete dominance ≠ codominance. Incomplete dominance = phenotype intermediate. Codominance = kedua produk alel tampak bersama.
 - [Multiple Alleles dan ABO Blood Group] Apa jebakan yang sering muncul pada soal tentang Multiple Alleles dan ABO Blood Group? :: Multiple alleles menggambarkan variasi pada tingkat POPULASI; individu tetap hanya memiliki dua alel autosomal per locus.
 - [Pleiotropy] Apa jebakan yang sering muncul pada soal tentang Pleiotropy? :: Pleiotropy bukan berarti banyak gen menyebabkan satu penyakit; itu justru konsep berbeda.
 - [Locus Heterogeneity dan Allelic Heterogeneity] Apa poin high-yield (pearl) tentang Locus Heterogeneity dan Allelic Heterogeneity? :: Satu phenotype ← banyak gen = locus heterogeneity. Satu gen ← banyak variant patogenik = allelic heterogeneity.

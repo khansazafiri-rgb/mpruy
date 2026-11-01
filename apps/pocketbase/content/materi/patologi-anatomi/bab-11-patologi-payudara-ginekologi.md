@@ -324,9 +324,7 @@ Bilateral ovarian signet-ring metastases -> Krukenberg tumor.
 - [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang CA-125 pada Patologi Payudara & Ginekologi? :: Sering dipakai untuk monitoring epithelial ovarian carcinoma, tetapi bukan marker spesifik untuk skrining populasi umum
 - [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang AFP pada Patologi Payudara & Ginekologi? :: Yolk sac tumor; dapat meningkat pada beberapa germ-cell tumors
 - [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang hCG pada Patologi Payudara & Ginekologi? :: Dapat meningkat pada tumors dengan trophoblastic differentiation
-- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang Inhibin pada Patologi Payudara & Ginekologi? :: Granulosa-cell tumor
 - [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang CEA pada Patologi Payudara & Ginekologi? :: Dapat membantu dalam konteks mucinous tumor/metastatic GI differential
-- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang ER/PR/HER2 pada Patologi Payudara & Ginekologi? :: Biomarker penting pada breast carcinoma
 - [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Invasive lobular carcinoma klasik? :: Single-file infiltration
 - [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Koilocytosis pada Patologi Payudara & Ginekologi? :: Hallmark morphologic HPV effect
 - [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Serous endometrial carcinoma pada Patologi Payudara & Ginekologi? :: High-grade, atrophic background, TP53 abnormal

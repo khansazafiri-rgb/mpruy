@@ -516,8 +516,8 @@ Gunakan urutan:
 
 ## Flashcard {kartu}
 
-- [Peta Besar Sistem Digestif] Apa yang dimaksud dengan Hollow tract pada Peta Besar Sistem Digestif? :: Oral cavity → pharynx → esophagus → stomach → small intestine → large intestine → anal canal.
-- [Peta Besar Sistem Digestif] Jelaskan Accessory organs utama dalam konteks Peta Besar Sistem Digestif. :: Salivary glands, pancreas, liver, dan gallbladder.
+- [Peta Besar Sistem Digestif] Apa yang dimaksud dengan Hollow tract pada Histologi Sistem Digestif & Kelenjar Aksesoris? :: Oral cavity → pharynx → esophagus → stomach → small intestine → large intestine → anal canal.
+- [Peta Besar Sistem Digestif] Jelaskan Accessory organs utama dalam konteks Histologi Sistem Digestif & Kelenjar Aksesoris. :: Salivary glands, pancreas, liver, dan gallbladder.
 - [Tongue dan Lingual Papillae] Apa yang dimaksud dengan Praktikum clue pada Tongue dan Lingual Papillae? :: Skeletal muscle multidirectional + papillae = tongue.
 - [Esophagus] Apa yang dimaksud dengan middle third pada Esophagus? :: Mixed skeletal + smooth muscle
 - [Large Intestine / Colon] Apa yang dimaksud dengan Muscularis externa pada Large Intestine / Colon? :: Inner circular kontinu, outer longitudinal terkumpul menjadi taeniae coli pada sebagian besar colon.
@@ -543,18 +543,15 @@ Gunakan urutan:
 - [Histologi Sistem Digestif & Kelenjar Aksesoris] Apa yang dimaksud dengan Hepatic artery branch pada Histologi Sistem Digestif & Kelenjar Aksesoris? :: Smaller muscular wall
 - [Histologi Sistem Digestif & Kelenjar Aksesoris] Apa yang dimaksud dengan Bile duct pada Histologi Sistem Digestif & Kelenjar Aksesoris? :: Cuboidal lining
 - [Histologi Sistem Digestif & Kelenjar Aksesoris] Apa yang dimaksud dengan Gallbladder pada Histologi Sistem Digestif & Kelenjar Aksesoris? :: Folded simple columnar mucosa + no muscularis mucosae + no submucosa
-- [Esophagus] Sebutkan poin-poin penting tentang Muscularis externa berubah sepanjang esophagus. :: • Upper third: skeletal muscle
+- [Esophagus] Sebutkan hal-hal penting tentang Muscularis externa berubah sepanjang esophagus. :: • Upper third: skeletal muscle
   • Middle third: mixed skeletal + smooth muscle
   • Lower third: smooth muscle
-- [Fundus dan Body Stomach] Sebutkan poin-poin penting tentang Cell types utama. :: • Surface mucous cells
+- [Fundus dan Body Stomach] Sebutkan cell types utama pada Fundus dan Body Stomach. :: • Surface mucous cells
   • Mucous neck cells
   • Parietal/oxyntic cells
   • Chief/zymogenic cells
   • Enteroendocrine cells
   • Stem cells
-- [Small Intestine: Gambaran Umum] Sebutkan small intestine mempunyai tiga mekanisme peningkatan surface area pada Small Intestine: Gambaran Umum. :: • Plicae circulares = mucosa + submucosa
-  • Villi = projections of mucosa
-  • Microvilli = apical specialization enterocytes
 - [Islets of Langerhans] Sebutkan cell types utama secara fungsi pada Islets of Langerhans. :: • Beta cells → insulin
   • Alpha cells → glucagon
   • Delta cells → somatostatin

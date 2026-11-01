@@ -373,26 +373,24 @@ Spleen sangat vascular dan berdekatan dengan lower left ribs. Trauma dapat mengh
 - [Parts dan external landmarks] Apa yang dimaksud dengan Lesser curvature pada Parts dan external landmarks? :: Batas kanan/medial yang cekung; menjadi attachment lesser omentum.
 - [Parts dan external landmarks] Apa yang dimaksud dengan Greater curvature pada Parts dan external landmarks? :: Batas kiri/inferior yang konveks; memberi attachment gastrosplenic dan gastrocolic components.
 - [Parts dan external landmarks] Apa yang dimaksud dengan Rugae pada Parts dan external landmarks? :: Lipatan mukosa yang menonjol ketika stomach relatif kosong.
-- [Empat bagian] Apa yang dimaksud dengan Superior/first part pada Empat bagian (Duodenum)? :: Mulai dari pylorus dan berjalan posterolateral; proximal segment sering disebut duodenal cap/bulb.
-- [Empat bagian] Apa yang dimaksud dengan Descending/second part pada Empat bagian (Duodenum)? :: Turun di sisi kanan vertebral column dan menerima common bile duct serta main pancreatic duct pada major duodenal papilla melalui hepatopancreatic ampulla. Accessory pancreatic duct, bila paten, dapat membuka di minor papilla.
-- [Empat bagian] Apa yang dimaksud dengan Horizontal/third part pada Empat bagian (Duodenum)? :: Melintas dari kanan ke kiri; secara klasik berada anterior terhadap aorta/IVC dan posterior terhadap SMA/SMV.
-- [Empat bagian] Apa yang dimaksud dengan Ascending/fourth part pada Empat bagian (Duodenum)? :: Naik ke kiri menuju duodenojejunal flexure, yang ditopang suspensory muscle/ligament of Treitz.
+- [Empat bagian] Apa yang dimaksud dengan Superior/first part pada Empat bagian? :: Mulai dari pylorus dan berjalan posterolateral; proximal segment sering disebut duodenal cap/bulb.
+- [Empat bagian] Apa yang dimaksud dengan Descending/second part pada Empat bagian? :: Turun di sisi kanan vertebral column dan menerima common bile duct serta main pancreatic duct pada major duodenal papilla melalui hepatopancreatic ampulla. Accessory pancreatic duct, bila paten, dapat membuka di minor papilla.
+- [Empat bagian] Apa yang dimaksud dengan Horizontal/third part pada Empat bagian? :: Melintas dari kanan ke kiri; secara klasik berada anterior terhadap aorta/IVC dan posterior terhadap SMA/SMV.
+- [Empat bagian] Apa yang dimaksud dengan Ascending/fourth part pada Empat bagian? :: Naik ke kiri menuju duodenojejunal flexure, yang ditopang suspensory muscle/ligament of Treitz.
 - [Jejunum dan Ileum] Jelaskan Jejunum. :: Diameter lebih besar, wall lebih tebal, warna lebih merah, plicae circulares lebih tinggi/rapat.
 - [Jejunum dan Ileum] Jelaskan Ileum. :: Diameter relatif lebih kecil, wall lebih tipis, plicae berkurang ke distal, dan aggregated lymphoid nodules/Peyer patches lebih menonjol.
 - [Jejunum dan Ileum] Apa yang dimaksud dengan Jejunal mesentery pada Jejunum dan Ileum? :: Lebih sedikit arterial arcades dan vasa recta lebih panjang.
 - [Jejunum dan Ileum] Apa yang dimaksud dengan Ileal mesentery pada Jejunum dan Ileum? :: Lebih banyak arterial arcades, vasa recta lebih pendek, dan fat lebih banyak mendekati bowel wall.
 - [Pectinate line] Jelaskan: Lymphatic drainage juga berubah. :: Rectum mengalir ke pararectal/inferior mesenteric dan internal iliac pathways sesuai level; anal canal di bawah pectinate line terutama menuju superficial inguinal nodes.
-- [Portosystemic anastomoses] Jelaskan Lower esophagus. :: Left gastric vein (portal) ↔ esophageal/azygos veins (systemic). Dilatasi dapat membentuk esophageal varices.
-- [Portosystemic anastomoses] Jelaskan Paraumbilical region. :: Paraumbilical veins (portal) ↔ superficial epigastric/systemic veins. Dilatasi dapat menghasilkan pola caput medusae.
-- [Portosystemic anastomoses] Jelaskan Rectal region. :: Superior rectal vein (portal via IMV) ↔ middle/inferior rectal veins (systemic). Portal hypertension dapat menyebabkan rectal varices.
-- [Parts dan relations] Apa yang dimaksud dengan Head pada Parts dan relations (Pancreas)? :: Berada dalam C-loop duodenum.
-- [Parts dan relations] Apa yang dimaksud dengan Uncinate process pada Parts dan relations (Pancreas)? :: Menonjol dari inferior head dan berhubungan posterior terhadap superior mesenteric vessels.
-- [Parts dan relations] Apa yang dimaksud dengan Neck pada Parts dan relations (Pancreas)? :: Pendek; portal vein umumnya terbentuk posterior terhadap neck dari SMV + splenic vein.
-- [Parts dan relations] Apa yang dimaksud dengan Body pada Parts dan relations (Pancreas)? :: Melintas ke kiri di depan aorta dan struktur posterior wall; splenic artery berjalan sepanjang superior border.
-- [Parts dan relations] Apa yang dimaksud dengan Tail pada Parts dan relations (Pancreas)? :: Mencapai splenic hilum dalam splenorenal ligament dan berdekatan dengan splenic vessels.
-- [Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)] Apa yang perlu diketahui tentang Celiac branches klasik? :: Left gastric, splenic, common hepatic
+- [Portosystemic anastomoses] Apa yang dimaksud dengan Lower esophagus pada Portosystemic anastomoses? :: Left gastric vein (portal) ↔ esophageal/azygos veins (systemic). Dilatasi dapat membentuk esophageal varices.
+- [Portosystemic anastomoses] Apa yang dimaksud dengan Paraumbilical region pada Portosystemic anastomoses? :: Paraumbilical veins (portal) ↔ superficial epigastric/systemic veins. Dilatasi dapat menghasilkan pola caput medusae.
+- [Portosystemic anastomoses] Apa yang dimaksud dengan Rectal region pada Portosystemic anastomoses? :: Superior rectal vein (portal via IMV) ↔ middle/inferior rectal veins (systemic). Portal hypertension dapat menyebabkan rectal varices.
+- [Parts dan relations] Apa yang dimaksud dengan Head pada Parts dan relations? :: Berada dalam C-loop duodenum.
+- [Parts dan relations] Apa yang dimaksud dengan Uncinate process pada Parts dan relations? :: Menonjol dari inferior head dan berhubungan posterior terhadap superior mesenteric vessels.
+- [Parts dan relations] Apa yang dimaksud dengan Neck pada Parts dan relations? :: Pendek; portal vein umumnya terbentuk posterior terhadap neck dari SMV + splenic vein.
+- [Parts dan relations] Apa yang dimaksud dengan Body pada Parts dan relations? :: Melintas ke kiri di depan aorta dan struktur posterior wall; splenic artery berjalan sepanjang superior border.
+- [Parts dan relations] Apa yang dimaksud dengan Tail pada Parts dan relations? :: Mencapai splenic hilum dalam splenorenal ligament dan berdekatan dengan splenic vessels.
 - [Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)] Apa yang perlu diketahui tentang SMA branches high-yield? :: Inferior pancreaticoduodenal, jejunal/ileal, ileocolic, right colic, middle colic
-- [Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)] Apa yang perlu diketahui tentang IMA branches? :: Left colic, sigmoid, superior rectal
 - [Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)] Apa yang perlu diingat tentang Posterior duodenal ulcer? :: Pikirkan gastroduodenal artery
 - [Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)] Apa yang perlu diketahui tentang Large intestine? :: Taeniae coli + haustra + appendices epiploicae
 - [Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)] Apa yang perlu diingat tentang IMV paling sering? :: Splenic vein, tetapi variasi ada
@@ -401,6 +399,5 @@ Spleen sangat vascular dan berdekatan dengan lower left ribs. Trauma dapat mengh
 - [Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Cystic duct + common hepatic duct? :: Common bile duct
 - [Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)] Apa jawaban atau kesimpulan untuk petunjuk berikut: CBD + main pancreatic duct? :: Hepatopancreatic ampulla/major papilla pada pola klasik
 - [Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)] Apa yang perlu diketahui tentang Gastrosplenic ligament? :: Short gastric + left gastro-omental vessels
-- [Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)] Apa yang perlu diketahui tentang Splenorenal ligament? :: Splenic vessels + tail pancreas
 - [Anatomi Sistem Digestif (Gaster–Kolon, Hepar, Pankreas, Lien)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Splenic vein + SMV? :: Portal vein
 - [Vascular dan lymphatic supply] Apa korelasi klinis dari Vascular dan lymphatic supply? :: Splenic trauma dapat menyebabkan major intraperitoneal bleeding karena organ sangat vascular. Fraktur lower left ribs dapat berhubungan dengan splenic injury; diagnosis dan management membutuhkan penilaian trauma, bukan anatomi saja.

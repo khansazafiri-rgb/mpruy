@@ -493,22 +493,21 @@ Virus → genome DNA/RNA → capsid ± envelope → receptor & tropism → Balti
 - [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan HIV pada Virologi Umum: Struktur & Replikasi Virus? :: Baltimore VI
 - [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan HBV pada Virologi Umum: Struktur & Replikasi Virus? :: Baltimore VII
 - [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Giant cell/syncytium pada Virologi Umum: Struktur & Replikasi Virus? :: Salah satu CPE
-- [Virologi Umum: Struktur & Replikasi Virus] Apa yang perlu diketahui tentang Latent ≠ persistent pada Virologi Umum: Struktur & Replikasi Virus? :: Latent tidak berarti produksi virus aktif terus-menerus
 - [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Virus pada Virologi Umum: Struktur & Replikasi Virus? :: Obligate intracellular parasite dan memakai ribosom host
 - [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Baltimore classification pada Virologi Umum: Struktur & Replikasi Virus? :: Cara genome menghasilkan mRNA: 7 grup
 - [Virologi Umum: Struktur & Replikasi Virus] Apa yang perlu diketahui tentang Replikasi pada Virologi Umum: Struktur & Replikasi Virus? :: Attachment → penetration → uncoating → biosynthesis → assembly → release
-- [Naked vs Enveloped Virus] Sebutkan poin-poin penting tentang Naked virus. :: • Tidak memiliki lipid envelope
+- [Naked vs Enveloped Virus] Sebutkan hal-hal penting tentang Naked virus. :: • Tidak memiliki lipid envelope
   • Struktur utama = nucleocapsid
   • Lebih tahan terhadap pengeringan, asam, deterjen, dan lingkungan dibanding enveloped virus
   • Banyak naked enteric viruses dapat bertahan pada transmisi fecal–oral atau permukaan lingkungan
-- [Naked vs Enveloped Virus] Sebutkan poin-poin penting tentang Enveloped virus. :: • Memiliki lipid envelope berasal dari membran host
+- [Naked vs Enveloped Virus] Sebutkan hal-hal penting tentang Enveloped virus. :: • Memiliki lipid envelope berasal dari membran host
   • Envelope membawa viral glycoprotein/spike
   • Lebih rapuh terhadap pengeringan, deterjen, alkohol, dan gangguan lipid
   • Sering bergantung pada close contact, droplet/sekret, darah, atau transmisi lain yang menjaga envelope tetap utuh
 - [Tropism] Sebutkan faktor penting pada Tropism. :: • Ada/tidaknya receptor dan coreceptor yang sesuai
   • Kemampuan virus masuk dan melakukan uncoating
   • Apakah intracellular environment mendukung replikasi
-- [Jenis Genom Virus] Sebutkan poin-poin penting tentang Genom virus. :: • DsDNA
+- [Jenis Genom Virus] Sebutkan hal-hal penting tentang Genom virus. :: • DsDNA
   • SsDNA
   • DsRNA
   • +ssRNA
@@ -535,9 +534,9 @@ Virus → genome DNA/RNA → capsid ± envelope → receptor & tropism → Balti
   • Inapparent/subclinical infection
 - [Acute, Chronic, Latent, Inapparent] Sebutkan perbedaan penting pada Acute, Chronic, Latent, Inapparent. :: • Persistent/chronic → virus terus bereplikasi dalam jangka lama pada tingkat tertentu
   • Latent → genome virus bertahan tanpa produksi virus aktif yang terus-menerus, lalu dapat reaktivasi
-- [Molecular Test vs Serology] Sebutkan poin-poin penting tentang Molecular test. :: • Mendeteksi genome virus
+- [Molecular Test vs Serology] Sebutkan hal-hal penting tentang Molecular test. :: • Mendeteksi genome virus
   • Berguna untuk infeksi aktif bila specimen dan timing sesuai
-- [Big Picture: Virus Itu Apa?] Apa jebakan yang sering muncul pada soal tentang Big Picture: Virus Itu Apa? :: Virus di luar sel relatif inert; replikasi hanya berlangsung di dalam living host cell.
+- [Big Picture: Virus Itu Apa?] Apa jebakan yang sering muncul pada soal tentang Virologi Umum: Struktur & Replikasi Virus? :: Virus di luar sel relatif inert; replikasi hanya berlangsung di dalam living host cell.
 - [Naked vs Enveloped Virus] Apa poin high-yield (pearl) tentang Naked vs Enveloped Virus? :: Envelope = keuntungan untuk entry/immune interaction, tetapi membuat virus lebih fragile di lingkungan.
 - [Tropism] Apa jebakan yang sering muncul pada soal tentang Tropism? :: “Semua sel dapat diinfeksi virus bila virus masuk tubuh” → salah. Receptor specificity adalah salah satu dasar utama cell tropism.
 - [Jenis Genom Virus] Apa jebakan yang sering muncul pada soal tentang Jenis Genom Virus? :: “Virus punya DNA dan RNA sekaligus sebagai genom” = salah.
@@ -545,4 +544,4 @@ Virus → genome DNA/RNA → capsid ± envelope → receptor & tropism → Balti
 - [Baltimore Group VII — dsDNA-RT] Apa jebakan yang sering muncul pada soal tentang Baltimore Group VII — dsDNA-RT? :: HIV adalah jawaban klasik bila soal menanyakan retrovirus dengan reverse transcriptase, tetapi HBV juga menggunakan reverse transcriptase dalam siklus replikasinya.
 - [— Uncoating] Apa poin high-yield (pearl) tentang — Uncoating? :: Tahap pelepasan genome dari capsid = uncoating.
 - [— Release] Apa jebakan yang sering muncul pada soal tentang — Release? :: Budding bukan sekadar “keluar sel”; budding juga merupakan cara enveloped virus memperoleh envelope.
-- [Cytopathic Effect (CPE)] Apa jebakan yang sering muncul pada soal tentang Cytopathic Effect (CPE)? :: CPE dapat terlihat dengan light microscopy. CPE tidak otomatis patognomonik untuk satu virus. CPE sering berhubungan dengan cell injury/death.
+- [Cytopathic Effect (CPE)] Apa jebakan yang sering muncul pada soal tentang Cytopathic Effect? :: CPE dapat terlihat dengan light microscopy. CPE tidak otomatis patognomonik untuk satu virus. CPE sering berhubungan dengan cell injury/death.

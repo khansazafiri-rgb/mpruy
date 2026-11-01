@@ -454,17 +454,9 @@ T-tubule depolarization → DHP/CaV1.1 voltage sensor → RyR1 opens → SR Ca2+
 - [Isometric vs Isotonic Contraction] Jelaskan Isotonic. :: Muscle length berubah terhadap load yang relatif konstan dalam model sederhana.
 - [Isometric vs Isotonic Contraction] Apa yang dimaksud dengan Eccentric pada Isometric vs Isotonic Contraction? :: Muscle aktif sambil memanjang.
 - [Phosphocreatine System] Jelaskan Creatine kinase memfasilitasi dalam konteks Phosphocreatine System. :: Phosphocreatine + ADP + H+ ⇌ creatine + ATP.
-- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang RMP pada Fisiologi Otot Rangka, Jantung, Polos? :: Dominan K+ leak
-- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Na+/K+-ATPase pada Fisiologi Otot Rangka, Jantung, Polos? :: 3 Na+ out, 2 K+ in; menjaga gradient
-- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Graded potential pada Fisiologi Otot Rangka, Jantung, Polos? :: Variable, decremental, summates
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Action potential pada Fisiologi Otot Rangka, Jantung, Polos? :: Threshold, all-or-none, regenerative, nondecremental
-- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Depolarization neuron/skeletal muscle? :: Na+ influx
-- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Repolarization pada Fisiologi Otot Rangka, Jantung, Polos? :: K+ efflux + Na+ channel inactivation
-- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Absolute refractory pada Fisiologi Otot Rangka, Jantung, Polos? :: Na+ channels inactivated
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang NMJ pada Fisiologi Otot Rangka, Jantung, Polos? :: AP nerve → Ca2+ presynaptic → ACh → Nm → EPP → muscle AP
-- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Sarcomere pada Fisiologi Otot Rangka, Jantung, Polos? :: A band tetap
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Skeletal EC coupling pada Fisiologi Otot Rangka, Jantung, Polos? :: T-tubule → DHP/CaV1.1 → RyR1 → SR Ca2+ → TnC
-- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Smooth muscle pada Fisiologi Otot Rangka, Jantung, Polos? :: Ca2+ → calmodulin → MLCK
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa jawaban atau kesimpulan untuk petunjuk berikut: Cardiac: L-type Ca2+ influx? :: CICR dari SR
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang ATP pada Fisiologi Otot Rangka, Jantung, Polos? :: Detach myosin, recock head, SERCA, maintain gradients
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Whole-muscle force pada Fisiologi Otot Rangka, Jantung, Polos? :: Frequency summation + motor-unit recruitment
@@ -479,7 +471,7 @@ T-tubule depolarization → DHP/CaV1.1 voltage sensor → RyR1 opens → SR Ca2+
   • Net Na+ influx menghasilkan end-plate potential
   • Jika threshold tercapai, muscle action potential terbentuk
   • Action potential menyebar di sarcolemma dan T-tubules
-- [Organisasi Skeletal Muscle] Sebutkan poin-poin penting tentang Connective tissue. :: • Epimysium: seluruh muscle
+- [Organisasi Skeletal Muscle] Sebutkan hal-hal penting tentang Connective tissue. :: • Epimysium: seluruh muscle
   • Perimysium: fascicle
   • Endomysium: individual fiber
 - [Cross-Bridge Cycle] Sebutkan urutan atau langkah pada Cross-Bridge Cycle? :: • Myosin head “cocked” dengan ADP + Pi
@@ -493,7 +485,7 @@ T-tubule depolarization → DHP/CaV1.1 voltage sensor → RyR1 opens → SR Ca2+
   • Perubahan ion gradients
   • Gangguan excitation–contraction coupling
   • Central fatigue
-- [Cardiac Muscle: Perbedaan Utama] Sebutkan poin-poin penting tentang Cardiac muscle. :: • Striated
+- [Cardiac Muscle: Perbedaan Utama] Sebutkan hal-hal penting tentang Cardiac muscle. :: • Striated
   • Sel bercabang, biasanya satu nucleus
   • Intercalated discs
   • Gap junctions menghasilkan electrical coupling

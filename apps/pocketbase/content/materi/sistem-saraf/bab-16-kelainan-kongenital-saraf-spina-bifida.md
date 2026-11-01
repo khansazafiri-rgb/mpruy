@@ -452,7 +452,6 @@ Pantau hydrocephalus dan Chiari II → bila perlu shunt/ETV → surveillance uro
 - [Diagnosis Prenatal Neural Tube Defect] Apa yang dimaksud dengan Ultrasonography (USG) pada Diagnosis Prenatal Neural Tube Defect? :: Pemeriksaan struktural utama untuk mendeteksi spinal defect dan kelainan kranial penyerta.
 - [Diagnosis Prenatal Neural Tube Defect] Apa yang dimaksud dengan Fetal MRI pada Diagnosis Prenatal Neural Tube Defect? :: Pemeriksaan tambahan untuk memperjelas anatomi pada kasus tertentu.
 - [Diagnosis Prenatal Neural Tube Defect] Jelaskan: Amniotic fluid AFP dan acetylcholinesterase (AChE). :: Dapat mendukung diagnosis open NTD bila pemeriksaan invasif memang dilakukan atas indikasi yang sesuai.
-- [Kelainan Kongenital Saraf (Spina Bifida, Hidrosefalus)] Jelaskan: → High-dose folic acid prevention sesuai guideline. :: 4,000 mcg/hari sebelum konsepsi dan selama awal kehamilan
 - [Kelainan Kongenital Saraf (Spina Bifida, Hidrosefalus)] Apa pencegahan pada Kelainan Kongenital Saraf (Spina Bifida, Hidrosefalus)? :: Folic acid sebelum konsepsi; CDC 2026 memakai 400 mcg/hari sebagai pencegahan primer dan 4,000 mcg/hari pada riwayat kehamilan terdampak NTD
 - [Kelainan Kongenital Saraf (Spina Bifida, Hidrosefalus)] Apa yang dimaksud dengan VP shunt + gejala raised ICP pada Kelainan Kongenital Saraf (Spina Bifida, Hidrosefalus)? :: Curiga shunt malfunction sampai terbukti sebaliknya
 - [Manifestasi Klinis Spina Bifida] Sebutkan manifestasi yang perlu dicari pada Manifestasi Klinis Spina Bifida. :: • Kelemahan atau paralisis ekstremitas bawah
@@ -469,25 +468,25 @@ Pantau hydrocephalus dan Chiari II → bila perlu shunt/ETV → surveillance uro
   • Nilai kebocoran CSF, tanda infeksi, fungsi neurologis, dan kelainan lain
   • Libatkan neurosurgery dan tim multidisiplin sejak awal
   • Penutupan bedah dilakukan dini sesuai kondisi bayi dan protokol pusat
-- [Communicating hydrocephalus] Sebutkan poin-poin penting tentang Etiologi penting pada anak. :: • Aqueductal stenosis
+- [Communicating hydrocephalus] Sebutkan etiologi penting pada anak pada Communicating hydrocephalus. :: • Aqueductal stenosis
   • Chiari II/myelomeningocele
   • Malformasi posterior fossa, termasuk Dandy-Walker spectrum
   • Posthemorrhagic hydrocephalus, terutama setelah intraventricular hemorrhage pada prematur
   • Postinfectious hydrocephalus
   • Tumor atau lesi yang menghambat aliran CSF
-- [Manifestasi Hidrosefalus Menurut Usia] Sebutkan poin-poin penting tentang Anak lebih besar. :: • Headache, sering lebih berat pagi hari
+- [Manifestasi Hidrosefalus Menurut Usia] Sebutkan hal-hal penting tentang Anak lebih besar. :: • Headache, sering lebih berat pagi hari
   • Nausea/vomiting
   • Papilledema
   • Diplopia akibat CN VI palsy
   • Gangguan gait/koordinasi
   • Perubahan perilaku, prestasi sekolah, atau kognisi
   • Somnolence atau penurunan kesadaran pada dekompensasi
-- [VP Shunt Malfunction dan Infection: Red Flags] Sebutkan poin-poin penting tentang Curiga shunt infection bila terdapat. :: • Fever tanpa fokus yang jelas
+- [VP Shunt Malfunction dan Infection: Red Flags] Sebutkan hal-hal penting tentang Curiga shunt infection bila terdapat. :: • Fever tanpa fokus yang jelas
   • Erythema, tenderness, swelling, atau discharge sepanjang jalur shunt/wound
   • Meningeal signs atau systemic illness
   • Abdominal pain/peritonism pada sistem VP tertentu
   • Irritability, feeding difficulty, atau deterioration tanpa sebab jelas pada bayi
 - [Neurulation dan Neural Tube Defect] Apa poin high-yield (pearl) tentang Neurulation dan Neural Tube Defect? :: NTD terbentuk sangat dini, sering kali sebelum seseorang menyadari dirinya hamil. Karena itu, pencegahan dengan folic acid harus dimulai sebelum konsepsi, bukan menunggu kehamilan terkonfirmasi.
 - [Myelomeningocele, Chiari II, dan Hidrosefalus] Apa poin high-yield (pearl) tentang Myelomeningocele, Chiari II, dan Hidrosefalus? :: Myelomeningocele + hidrosefalus + hindbrain herniation = pikirkan Chiari II, bukan Chiari I.
-- [Communicating hydrocephalus] Apa poin high-yield (pearl) tentang Communicating hydrocephalus (Klasifikasi dan Penyebab Hidrosefalus)? :: Jika aqueduct tersumbat, lateral ventricles dan third ventricle membesar, sedangkan fourth ventricle relatif tidak membesar.
+- [Communicating hydrocephalus] Apa poin high-yield (pearl) tentang Communicating hydrocephalus? :: Jika aqueduct tersumbat, lateral ventricles dan third ventricle membesar, sedangkan fourth ventricle relatif tidak membesar.
 - [Manifestasi Hidrosefalus Menurut Usia] Apa poin high-yield (pearl) tentang Manifestasi Hidrosefalus Menurut Usia? :: Pada bayi, tren head circumference jauh lebih informatif daripada satu pengukuran tunggal.

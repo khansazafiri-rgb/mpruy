@@ -660,25 +660,26 @@ Jika nuclear molding + tiny hyperchromatic cells → small cell carcinoma.
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Curschmann spirals pada Patologi Sistem Respirasi? :: Whorled mucus plugs,
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Charcot–Leyden crystals pada Patologi Sistem Respirasi? :: Kristal dari eosinophil-derived proteins
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Emphysema pada Patologi Sistem Respirasi? :: Enlarged distal airspaces + septal destruction without prominent fibrosis
-- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Panacinar emphysema pada Patologi Sistem Respirasi? :: A1AT deficiency, lower lobes
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Centriacinar emphysema pada Patologi Sistem Respirasi? :: Smokers, upper lobes
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Chronic bronchitis pada Patologi Sistem Respirasi? :: Productive cough ≥3 months/year for ≥2 consecutive years
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Asthma pada Patologi Sistem Respirasi? :: Reversible bronchoconstriction + eosinophilic inflammation
-- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Bronchiectasis pada Patologi Sistem Respirasi? :: Permanent bronchial dilation akibat chronic necrotizing inflammation
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Curschmann spirals dan Charcot–Leyden crystals? :: Asthma
 - [Patologi Sistem Respirasi] Apa yang perlu diketahui tentang Lobar pneumonia pada Patologi Sistem Respirasi? :: Congestion → red hepatization → gray hepatization → resolution
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Ghon complex pada Patologi Sistem Respirasi? :: Primary lung focus + hilar nodes
-- [Patologi Sistem Respirasi] Apa yang dimaksud dengan UIP/IPF pada Patologi Sistem Respirasi? :: Patchy fibrosis + temporal heterogeneity + fibroblastic foci + honeycomb lung
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan TB granuloma klasik pada Patologi Sistem Respirasi? :: Caseating granuloma + Langhans giant cells
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Silicosis pada Patologi Sistem Respirasi? :: Upper lobes + eggshell calcification + increased TB risk
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Asbestosis pada Patologi Sistem Respirasi? :: Lower-lobe fibrosis + ferruginous bodies + pleural plaques
-- [Patologi Sistem Respirasi] Apa yang dimaksud dengan ARDS pada Patologi Sistem Respirasi? :: Diffuse alveolar damage + hyaline membranes
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Sarcoidosis pada Patologi Sistem Respirasi? :: Noncaseating granulomas + bilateral hilar lymphadenopathy
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Neonatal RDS pada Patologi Sistem Respirasi? :: Surfactant deficiency
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Heart failure cells pada Patologi Sistem Respirasi? :: Hemosiderin-laden macrophages pada chronic pulmonary congestion
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Adenocarcinoma pada Patologi Sistem Respirasi? :: Peripheral, gland/mucin, juga sering pada nonsmokers
-- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Squamous carcinoma pada Patologi Sistem Respirasi? :: Central, keratin pearls, PTHrP/hypercalcemia
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Small cell carcinoma pada Patologi Sistem Respirasi? :: Central, neuroendocrine, nuclear molding, ACTH/ADH
+- [Patologi Sistem Respirasi] Apa yang perlu diingat tentang Pancoast tumor pada Patologi Sistem Respirasi? :: Brachial plexus pain + Horner syndrome
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Honeycomb lung pada Patologi Sistem Respirasi? :: End-stage fibrotic pattern, bukan diagnosis tunggal
-- [Patologi Sistem Respirasi] Apa yang perlu diketahui tentang Cara tercepat soal respirasi pada Patologi Sistem Respirasi? :: Identifikasi PATTERN MORFOLOGI + LOKASI + EXPOSURE + PARANEOPLASTIC CLUE
 - [Patologi Sistem Respirasi] Apa yang perlu diketahui tentang COPD pada Patologi Sistem Respirasi? :: Emphysema = destruction; chronic bronchitis = mucus gland hyperplasia; asthma = eosinophils + reversible bronchospasm; bronchiectasis = permanent dilated airways
 - [Patologi Sistem Respirasi] Apa yang perlu diketahui tentang ILD pada Patologi Sistem Respirasi? :: UIP/IPF = patchy fibrosis + honeycomb; silica = upper lobe + TB; asbestos = lower lobe + ferruginous bodies
-- [Obstructive vs Restrictive Lung Disease] Sebutkan poin-poin penting tentang Obstructive disease. :: • Emphysema
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan ARDS pada Patologi Sistem Respirasi? :: Diffuse alveolar damage + hyaline membranes
+- [Obstructive vs Restrictive Lung Disease] Sebutkan hal-hal penting tentang Obstructive disease. :: • Emphysema
   • Chronic bronchitis
   • Asthma
   • Bronchiectasis
@@ -687,32 +688,32 @@ Jika nuclear molding + tiny hyperchromatic cells → small cell carcinoma.
   • Mucus plugging
   • Chronic inflammation
   • Bronchiolar fibrosis pada disease progression
-- [Pneumonia — Konsep Umum] Sebutkan poin-poin penting tentang Dua pola morfologi klasik. :: • Lobar pneumonia
+- [Pneumonia — Konsep Umum] Sebutkan dua pola morfologi klasik pada Pneumonia — Konsep Umum. :: • Lobar pneumonia
   • Bronchopneumonia
-- [Lobar Pneumonia — Empat Tahap Klasik] Sebutkan urutan atau langkah pada Lobar Pneumonia — Empat Tahap Klasik? :: • Congestion — vascular engorgement + intra-alveolar fluid
-  • Red hepatization — RBC, neutrophils, fibrin memenuhi alveoli
-  • Gray hepatization — RBC breakdown, fibrinosuppurative exudate menetap
-  • Resolution — debris dicerna dan dibersihkan
+- [Pneumonia — Komplikasi] Sebutkan komplikasi pada Pneumonia — Komplikasi. :: • Abscess formation
+  • Empyema
+  • Organization of intra-alveolar exudate
+  • Bacteremia/sepsis dengan metastatic infection
 - [Lung Abscess] Sebutkan penyebab penting pada Lung Abscess. :: • Aspiration
   • Pneumonia berat
   • Bronchial obstruction
   • Septic emboli
-- [TB — Histologi] Sebutkan temuan klasik pada TB — Histologi. :: • Caseating granuloma
-  • Epithelioid macrophages
-  • Langhans giant cells
-  • Peripheral lymphocytes
+- [Interstitial Lung Disease — Konsep] Sebutkan manifestasi umum pada Interstitial Lung Disease — Konsep. :: • Progressive dyspnea
+  • Nonproductive cough
+  • Inspiratory crackles
+  • Hypoxemia
 - [Sarcoidosis] Sebutkan organ tersering pada Sarcoidosis. :: • Lungs
   • Hilar lymph nodes
 - [Hypersensitivity Pneumonitis] Sebutkan contoh klasik pada Hypersensitivity Pneumonitis. :: • Farmer’s lung
   • Bird fancier’s lung
-- [Lung Cancer — Klasifikasi Besar] Sebutkan poin-poin penting tentang Primary lung cancers secara praktis. :: • Non-small cell lung carcinoma (NSCLC)
+- [Lung Cancer — Klasifikasi Besar] Sebutkan hal-hal penting tentang Primary lung cancers secara praktis. :: • Non-small cell lung carcinoma (NSCLC)
   • Small cell lung carcinoma (SCLC)
-- [Lung Cancer — Klasifikasi Besar] Sebutkan poin-poin penting tentang NSCLC utama. :: • Adenocarcinoma
+- [Lung Cancer — Klasifikasi Besar] Sebutkan NSCLC utama pada Lung Cancer — Klasifikasi Besar. :: • Adenocarcinoma
   • Squamous cell carcinoma
   • Large cell carcinoma
-- [Small Cell Lung Carcinoma] Sebutkan poin-poin penting tentang Paraneoplastic association. :: • ACTH
+- [Small Cell Lung Carcinoma] Sebutkan hal-hal penting tentang Paraneoplastic association. :: • ACTH
   • ADH/SIADH
-- [Pleural Effusion] Sebutkan poin-poin penting tentang Pleural effusion. :: • Transudate — heart failure, hypoalbuminemia
+- [Pleural Effusion] Sebutkan hal-hal penting tentang Pleural effusion. :: • Transudate — heart failure, hypoalbuminemia
   • Exudate — infection, malignancy, inflammation
   • Hemothorax — blood
   • Chylothorax — lymph/chyle akibat thoracic duct disruption

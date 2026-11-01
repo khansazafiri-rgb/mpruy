@@ -682,9 +682,8 @@ Imunoserologi adalah interpretasi reaksi antigen–antibodi, bukan sekadar memba
 - [Syphilis — Dua Algoritme yang Diterima] Apa yang dimaksud dengan Traditional sequence pada Syphilis — Dua Algoritme yang Diterima? :: Nontreponemal test → bila reactive, treponemal confirmation.
 - [Syphilis — Dua Algoritme yang Diterima] Apa yang dimaksud dengan Reverse sequence pada Syphilis — Dua Algoritme yang Diterima? :: Treponemal immunoassay → bila reactive, quantitative nontreponemal test → bila discordant, gunakan second treponemal assay dengan format/antigen berbeda.
 - [Anti-dsDNA, Anti-Sm, dan ENA] Apa yang dimaksud dengan Pesan penting pada Anti-dsDNA, Anti-Sm, dan ENA? :: Jangan memesan broad ENA panel hanya karena keluhan nonspesifik tanpa clinical suspicion.
-- [Pola Kasus: HIV Acute Infection] Pada Pola Kasus: HIV Acute Infection, apa interpretasinya? :: Acute HIV-1 infection sangat mungkin sesuai algoritme laboratorium.
-- [Pola Kasus: Syphilis Reverse Sequence Discordant] Pada Pola Kasus: Syphilis Reverse Sequence Discordant, apa langkah berikutnya? :: Second treponemal assay dengan antigen/format berbeda sesuai algoritme.
-- [Pola Kasus: ANA Positive Tanpa Gejala Spesifik] Pada Pola Kasus: ANA Positive Tanpa Gejala Spesifik, apa interpretasinya? :: Hasil tersebut tidak cukup untuk mendiagnosis SLE. Hindari “panel chasing” tanpa clinical indication.
+- [Pola Kasus: HIV Acute Infection] Pada Dasar Imunoserologi Klinik, apa interpretasinya? :: Acute HIV-1 infection sangat mungkin sesuai algoritme laboratorium.
+- [Pola Kasus: Syphilis Reverse Sequence Discordant] Pada Dasar Imunoserologi Klinik, apa langkah berikutnya? :: Second treponemal assay dengan antigen/format berbeda sesuai algoritme.
 - [Dasar Imunoserologi Klinik] Apa yang dimaksud dengan RPR/VDRL pada Dasar Imunoserologi Klinik? :: Nontreponemal tests
 - [Dasar Imunoserologi Klinik] Apa yang dimaksud dengan Imunoserologi pada Dasar Imunoserologi Klinik? :: Interpretasi reaksi antigen–antibodi, bukan sekadar membaca “positif” atau “negatif”. Mulai dari pretest probability, tentukan marker dan timing, lalu pahami metode, sensitivity/specificity, PPV/NPV, window period, cross-reactivity, dan kebutuhan confirmatory testing. Pada infeksi, bedakan bukti exposure dari active infection. Pada autoimunitas, mulai dari clinical phenotype dan hindari broad panel testing tanpa indikasi. HBV membutuhkan kombinasi HBsAg, anti-HBc, dan anti-HBs; HCV antibody reactive memerlukan HCV RNA; HIV mengikuti sequential algorithm; syphilis membutuhkan kombinasi treponemal dan nontreponemal testing. Autoantibody positive tidak sama dengan diagnosis
 - [Metode Immunoassay — Gambar Besar] Sebutkan metode yang sering dijumpai pada Metode Immunoassay — Gambar Besar. :: • ELISA/EIA
@@ -694,13 +693,13 @@ Imunoserologi adalah interpretasi reaksi antigen–antibodi, bukan sekadar memba
   • Agglutination
   • Indirect immunofluorescence (IIF/IFA)
   • Immunoblot/line immunoassay pada indikasi tertentu
-- [ELISA / Eia] Sebutkan poin-poin penting tentang Format umum. :: • Indirect assay → sering untuk mendeteksi antibodi
+- [ELISA / Eia] Sebutkan format umum pada ELISA / Eia. :: • Indirect assay → sering untuk mendeteksi antibodi
   • Sandwich assay → sering untuk mendeteksi antigen
   • Competitive assay → berguna untuk target tertentu
 - [Agglutination] Sebutkan contoh prinsip pada Agglutination. :: • Latex agglutination
   • Particle agglutination
   • Hemagglutination
-- [Cutoff, Borderline, dan Gray Zone] Sebutkan poin-poin penting tentang Nilai dekat cutoff lebih rentan terhadap. :: • Analytical variation
+- [Cutoff, Borderline, dan Gray Zone] Sebutkan hal-hal penting tentang Nilai dekat cutoff lebih rentan terhadap. :: • Analytical variation
   • Biological variation
   • Hasil discordant saat diulang dengan metode lain
 - [Window Period] Sebutkan contoh konsep pada Window Period. :: • Nucleic acid dapat muncul sebelum antibodi
@@ -713,13 +712,13 @@ Imunoserologi adalah interpretasi reaksi antigen–antibodi, bukan sekadar memba
   • Perhatikan vaksinasi dan infeksi lampau
   • Nilai cross-reactivity
   • Jangan abaikan epidemiologi lokal
-- [Syphilis — Nontreponemal vs Treponemal] Sebutkan poin-poin penting tentang Nontreponemal test. :: • RPR
+- [Syphilis — Nontreponemal vs Treponemal] Sebutkan hal-hal penting tentang Nontreponemal test. :: • RPR
   • VDRL
 - [Dengue — Timing Menentukan Test] Sebutkan prinsip praktis pada Dengue — Timing Menentukan Test. :: • Hari 0–7 → NAAT + IgM atau NS1 + IgM merupakan strategi yang digunakan dalam guidance CDC
   • Setelah hari ke-7 → IgM menjadi test utama serologis pada banyak konteks
-- [EBV — VCA dan EBNA] Sebutkan poin-poin penting tentang Pola dasar EBV serology. :: • VCA IgM positif + EBNA negatif → mendukung primary/recent EBV infection
+- [EBV — VCA dan EBNA] Sebutkan pola dasar EBV serology pada EBV — VCA dan EBNA. :: • VCA IgM positif + EBNA negatif → mendukung primary/recent EBV infection
   • VCA IgG positif + EBNA positif → lebih konsisten dengan past infection
-- [Antiphospholipid Antibodies] Sebutkan poin-poin penting tentang Panel laboratorium utama. :: • Lupus anticoagulant
+- [Antiphospholipid Antibodies] Sebutkan panel laboratorium utama pada Antiphospholipid Antibodies. :: • Lupus anticoagulant
   • Anticardiolipin antibody
   • Anti-β2-glycoprotein I antibody
 - [IgM, IgG, dan Keterbatasan “Aturan Klasik”] Apa poin high-yield (pearl) tentang IgM, IgG, dan Keterbatasan “Aturan Klasik”? :: Interpretasi IgM/IgG harus disease-specific, bukan memakai satu aturan untuk semua infeksi.

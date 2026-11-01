@@ -300,7 +300,7 @@ NICE NG41:
 
 ## Flashcard {kartu}
 
-- [Glasgow Coma Scale (GCS)] Apa yang dimaksud dengan Pearl ujian pada Glasgow Coma Scale (GCS)? :: GCS ≤8 menunjukkan severe TBI dan menimbulkan perhatian besar terhadap kemampuan pasien mempertahankan airway, tetapi keputusan airway tetap merupakan keputusan klinis berdasarkan kondisi keseluruhan.
+- [Glasgow Coma Scale (GCS)] Apa yang dimaksud dengan Pearl ujian pada Glasgow Coma Scale? :: GCS ≤8 menunjukkan severe TBI dan menimbulkan perhatian besar terhadap kemampuan pasien mempertahankan airway, tetapi keputusan airway tetap merupakan keputusan klinis berdasarkan kondisi keseluruhan.
 - [Indikasi CT Kepala pada Trauma] Apa yang dimaksud dengan Prinsip ujian pada Indikasi CT Kepala pada Trauma? :: Pasien dengan pola primary headache bukan konteks trauma. Setelah trauma, perubahan GCS, defisit fokal, seizure, muntah berulang, atau tanda fraktur dasar tengkorak adalah red flags imaging.
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan GCS pada Trauma Kepala & Cedera Medula Spinalis? :: Eye 4 + Verbal 5 + Motor 6
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan Non-contrast CT pada Trauma Kepala & Cedera Medula Spinalis? :: Imaging utama fase akut head injury
@@ -311,24 +311,19 @@ NICE NG41:
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang perlu diketahui tentang Anterior cord pada Trauma Kepala & Cedera Medula Spinalis? :: Motor + pain/temp hilang, dorsal column relatif terjaga
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang perlu diketahui tentang Brown-Séquard pada Trauma Kepala & Cedera Medula Spinalis? :: Ipsilateral motor/propriosepsi + contralateral pain/temp loss
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang perlu diketahui tentang Trauma kepala pada Trauma Kepala & Cedera Medula Spinalis? :: Cegah secondary injury—terutama hipoksia dan hipotensi
-- [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan GCS menilai eye, verbal, motor; severe TBI? :: GCS ≤8
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan EDH pada Trauma Kepala & Cedera Medula Spinalis? :: Middle meningeal artery, bikonveks, lucid interval
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan SDH pada Trauma Kepala & Cedera Medula Spinalis? :: Bridging veins, crescent, sering pada lansia
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan DAI pada Trauma Kepala & Cedera Medula Spinalis? :: High-speed rotational shear + koma dengan CT yang dapat tampak relatif minimal
-- [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan ICP tinggi dapat menyebabkan herniasi; pupil unilateral melebar? :: Red flag
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang perlu diketahui tentang Acute traumatic SCI pada Trauma Kepala & Cedera Medula Spinalis? :: Proteksi spine, cegah hipoksia/hipotensi, evaluasi imaging & spesialis; methylprednisolone tidak digunakan rutin untuk neuroprotection menurut NICE
-- [Glasgow Coma Scale (GCS)] Sebutkan GCS terdiri dari tiga komponen pada Glasgow Coma Scale (GCS). :: • Eye opening (E): 4 poin
-  • Verbal response (V): 5 poin
-  • Motor response (M): 6 poin
-- [Glasgow Coma Scale (GCS)] Sebutkan klasifikasi praktis pada Glasgow Coma Scale (GCS). :: • Mild TBI: GCS 13–15
+- [Glasgow Coma Scale (GCS)] Sebutkan klasifikasi praktis pada Glasgow Coma Scale. :: • Mild TBI: GCS 13–15
   • Moderate TBI: GCS 9–12
   • Severe TBI: GCS ≤8
-- [Epidural Hematoma (EDH)] Sebutkan poin-poin penting tentang Karakteristik high-yield. :: • Lokasi darah di antara tulang tengkorak dan dura
+- [Epidural Hematoma (EDH)] Sebutkan karakteristik high-yield pada Epidural Hematoma. :: • Lokasi darah di antara tulang tengkorak dan dura
   • CT: koleksi hiperdens lentiform/bikonveks
   • Umumnya tidak melintasi sutura karena dura melekat kuat pada sutura
   • Temporal bone fracture dapat merobek a. meningea media
   • Dapat memburuk cepat karena sumber arterial
-- [Intracranial Pressure (ICP) & Herniation] Sebutkan poin-poin penting tentang Uncal herniation klasik. :: • Penurunan kesadaran
+- [Intracranial Pressure (ICP) & Herniation] Sebutkan uncal herniation klasik pada Intracranial Pressure (ICP) & Herniation. :: • Penurunan kesadaran
   • Pupil ipsilateral melebar dan kurang reaktif/fiks akibat kompresi n. III
   • Dapat muncul hemiparesis kontralateral
 - [Cedera Medula Spinalis: Complete vs Incomplete] Sebutkan prinsip penting pada Cedera Medula Spinalis: Complete vs Incomplete. :: • “complete” adalah istilah neurologis, bukan berarti medula secara anatomis pasti terputus total

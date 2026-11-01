@@ -482,8 +482,8 @@ Myelin:
 
 ## Flashcard {kartu}
 
-- [Peta Besar Jaringan Saraf] Jelaskan central nervous system (CNS) dalam konteks Peta Besar Jaringan Saraf. :: Cerebrum, cerebellum, brainstem, dan spinal cord
-- [Peta Besar Jaringan Saraf] Jelaskan peripheral nervous system (PNS) dalam konteks Peta Besar Jaringan Saraf. :: Peripheral nerves, ganglia, dan sensory/motor nerve endings.
+- [Peta Besar Jaringan Saraf] Jelaskan central nervous system (CNS) dalam konteks Jaringan Dasar: Saraf. :: Cerebrum, cerebellum, brainstem, dan spinal cord
+- [Peta Besar Jaringan Saraf] Jelaskan peripheral nervous system (PNS) dalam konteks Jaringan Dasar: Saraf. :: Peripheral nerves, ganglia, dan sensory/motor nerve endings.
 - [Oligodendrocytes] Apa yang dimaksud dengan PNS pada Oligodendrocytes? :: Satu Schwann cell → satu internode pada satu axon
 - [Oligodendrocytes] Apa yang dimaksud dengan CNS pada Oligodendrocytes? :: Satu oligodendrocyte → beberapa internodes pada beberapa axons.
 - [Autonomic Ganglion] Apa yang dimaksud dengan Perbandingan cepat pada Autonomic Ganglion? :: Sensory ganglion = pseudounipolar + central nuclei + satellite ring rapi + no synapse.
@@ -500,9 +500,7 @@ Myelin:
 - [Jaringan Dasar: Saraf] Apa yang perlu diingat tentang Schwann: one cell pada Jaringan Dasar: Saraf? :: One internode of one axon
 - [Jaringan Dasar: Saraf] Apa yang perlu diingat tentang oligodendrocyte: one cell pada Jaringan Dasar: Saraf? :: Multiple internodes/axons
 - [Jaringan Dasar: Saraf] Apa yang perlu diketahui tentang Peripheral nerve CT pada Jaringan Dasar: Saraf? :: Endo = fiber; peri = fascicle; epi = whole nerve
-- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan Ganglia: sensory pada Jaringan Dasar: Saraf? :: Pseudounipolar + central nucleus + tight satellite ring + no synapse
 - [Jaringan Dasar: Saraf] Apa yang dimaksud dengan autonomic pada Jaringan Dasar: Saraf? :: Multipolar + nuclei lebih eccentric + satellite cells lebih loose + synapses
-- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan CNS: spinal cord pada Jaringan Dasar: Saraf? :: Gray inside, white outside
 - [Jaringan Dasar: Saraf] Apa yang dimaksud dengan cerebrum/cerebellum pada Jaringan Dasar: Saraf? :: Cortex gray outside, white inside
 - [Jaringan Dasar: Saraf] Apa yang dimaksud dengan cerebellum pada Jaringan Dasar: Saraf? :: Molecular → Purkinje → granular
 - [Jaringan Dasar: Saraf] Apa yang dimaksud dengan BBB pada Jaringan Dasar: Saraf? :: Endothelial tight junctions + basal lamina/pericytes + astrocyte support
@@ -510,7 +508,7 @@ Myelin:
   • Nucleus besar, bulat, dan euchromatic
   • Nucleolus menonjol
   • Cytoplasm mengandung Nissl substance
-- [Peripheral Nerve: Organisasi Umum] Sebutkan poin-poin penting tentang Connective tissue sheaths. :: • Endoneurium → mengelilingi individual nerve fiber
+- [Peripheral Nerve: Organisasi Umum] Sebutkan hal-hal penting tentang Connective tissue sheaths. :: • Endoneurium → mengelilingi individual nerve fiber
   • Perineurium → membungkus satu fascicle
   • Epineurium → membungkus seluruh peripheral nerve dan mengandung larger blood vessels
 - [Sensory Ganglion] Sebutkan ciri praktikum pada Sensory Ganglion. :: • Neuronal soma besar dan bulat
@@ -519,25 +517,25 @@ Myelin:
   • Neuron cenderung berkumpul di bagian peripheral ganglion
   • Axonal bundles melewati ganglion
   • Tidak terdapat synapses di dorsal root ganglion
-- [Synapse: Struktur Histologis Dasar] Sebutkan poin-poin penting tentang Chemical synapse. :: • Presynaptic terminal/bouton berisi synaptic vesicles
+- [Synapse: Struktur Histologis Dasar] Sebutkan hal-hal penting tentang Chemical synapse. :: • Presynaptic terminal/bouton berisi synaptic vesicles
   • Synaptic cleft
   • Postsynaptic membrane dengan receptors
 - [Synapse: Struktur Histologis Dasar] Sebutkan klasifikasi hubungan pada Synapse: Struktur Histologis Dasar. :: • Axodendritic
   • Axosomatic
   • Axoaxonic
-- [Gray Matter dan White Matter] Sebutkan poin-poin penting tentang Gray matter kaya. :: • Neuronal cell bodies
+- [Gray Matter dan White Matter] Sebutkan gray matter kaya pada Gray Matter dan White Matter. :: • Neuronal cell bodies
   • Dendrites
   • Synapses
   • Unmyelinated portions
   • Glia
-- [Gray Matter dan White Matter] Sebutkan poin-poin penting tentang Distribusinya berbeda. :: • Spinal cord: gray matter di pusat, white matter di perifer
+- [Gray Matter dan White Matter] Sebutkan hal-hal penting tentang Distribusinya berbeda. :: • Spinal cord: gray matter di pusat, white matter di perifer
   • Cerebrum/cerebellum: gray matter terutama membentuk cortex di luar, white matter lebih dalam
 - [Spinal Cord Histology] Sebutkan komponen penting pada Spinal Cord Histology. :: • Dorsal/posterior horn: lebih ramping, terkait sensory processing
   • Ventral/anterior horn: lebih besar dan berisi large multipolar motor neurons
   • Lateral horn tampak jelas terutama pada level thoracic tertentu
   • Central canal dilapisi ependymal cells
   • White matter mengelilingi gray matter
-- [Regenerasi Peripheral Nerve] Sebutkan poin-poin penting tentang Regenerasi lebih baik jika. :: • Neuronal soma tetap hidup
+- [Regenerasi Peripheral Nerve] Sebutkan hal-hal penting tentang Regenerasi lebih baik jika. :: • Neuronal soma tetap hidup
   • Connective tissue pathway masih sejajar
   • Jarak injury tidak terlalu besar
 - [Perkembangan Singkat Jaringan Saraf] Apa poin high-yield (pearl) tentang Perkembangan Singkat Jaringan Saraf? :: Neural tube → CNS; neural crest → banyak komponen PNS.

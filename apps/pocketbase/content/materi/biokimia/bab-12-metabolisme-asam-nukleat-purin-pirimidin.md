@@ -503,30 +503,30 @@ dUMP —thymidylate synthase + folate→ dTMP.
 
 ## Flashcard {kartu}
 
-- [Gambaran Besar Metabolisme Nukleotida] Apa yang dimaksud dengan Purin pada Gambaran Besar Metabolisme Nukleotida? :: Adenine (A) dan guanine (G).
-- [Gambaran Besar Metabolisme Nukleotida] Apa yang dimaksud dengan Pirimidin pada Gambaran Besar Metabolisme Nukleotida? :: Cytosine (C), thymine (T), dan uracil (U).
+- [Gambaran Besar Metabolisme Nukleotida] Jelaskan Purin. :: Adenine (A) dan guanine (G).
+- [Gambaran Besar Metabolisme Nukleotida] Jelaskan Pirimidin. :: Cytosine (C), thymine (T), dan uracil (U).
 - [Committed step sintesis purin] Pada Committed step sintesis purin, apa enzimnya? :: Glutamine-PRPP amidotransferase (amidophosphoribosyltransferase).
 - [Purine Degradation] Jelaskan Alur sederhana AMP dalam konteks Purine Degradation. :: AMP → adenosine/inosine → hypoxanthine → xanthine → uric acid.
 - [Purine Degradation] Jelaskan Alur sederhana GMP dalam konteks Purine Degradation. :: GMP → guanosine → guanine → xanthine → uric acid.
 - [Lesch–Nyhan Syndrome] Pada Lesch–Nyhan Syndrome, apa penyebabnya? :: Defisiensi berat HGPRT/HPRT akibat mutasi HPRT1, diwariskan X-linked recessive.
-- [Carbamoyl phosphate synthesis] Pada Carbamoyl phosphate synthesis (De Novo Pyrimidine Synthesis), apa enzimnya? :: Carbamoyl phosphate synthetase II (CPS II).
+- [Carbamoyl phosphate synthesis] Pada Carbamoyl phosphate synthesis, apa enzimnya? :: Carbamoyl phosphate synthetase II (CPS II).
 - [Carbamoyl phosphate + aspartate] Pada Carbamoyl phosphate + aspartate, apa enzimnya? :: Aspartate transcarbamoylase (ATCase).
 - [Carbamoyl phosphate + aspartate] Pada Carbamoyl phosphate + aspartate, apa produknya? :: Carbamoyl aspartate.
-- [Dihydroorotate → orotate] Pada Dihydroorotate → orotate (De Novo Pyrimidine Synthesis), apa enzimnya? :: Dihydroorotate dehydrogenase.
-- [Dihydroorotate → orotate] Jelaskan Lokasi pada mamalia dalam konteks Dihydroorotate → orotate (De Novo Pyrimidine Synthesis). :: Inner mitochondrial membrane.
+- [Dihydroorotate → orotate] Pada Dihydroorotate → orotate, apa enzimnya? :: Dihydroorotate dehydrogenase.
+- [Dihydroorotate → orotate] Jelaskan Lokasi pada mamalia dalam konteks Dihydroorotate → orotate. :: Inner mitochondrial membrane.
 - [Orotate + PRPP → OMP] Apa yang dimaksud dengan Aktivitas enzim pada Orotate + PRPP → OMP? :: Orotate phosphoribosyltransferase, bagian dari UMP synthase.
-- [OMP → UMP] Apa yang dimaksud dengan Aktivitas enzim pada OMP → UMP (De Novo Pyrimidine Synthesis)? :: OMP decarboxylase, juga bagian dari UMP synthase.
+- [OMP → UMP] Apa yang dimaksud dengan Aktivitas enzim pada OMP → UMP? :: OMP decarboxylase, juga bagian dari UMP synthase.
 - [Orotic Aciduria] Pada Orotic Aciduria, apa terapi klasiknya? :: Uridine supplementation, yang membantu bypass blok de novo melalui salvage pembentukan UMP.
 - [Ribonucleotide Reductase: Membuat Prekursor DNA] Apa yang dimaksud dengan Kaitan klinis pada Ribonucleotide Reductase: Membuat Prekursor DNA? :: ADA deficiency → dATP menumpuk → RNR terhambat → pembentukan dNTP terganggu → DNA synthesis terganggu.
 - [dTMP Synthesis dan Folate Cycle] Pada dTMP Synthesis dan Folate Cycle, apa enzimnya? :: Thymidylate synthase.
 - [dTMP Synthesis dan Folate Cycle] Apa yang dimaksud dengan Donor satu-karbon pada dTMP Synthesis dan Folate Cycle? :: N5,N10-methylene-tetrahydrofolate.
 - [dTMP Synthesis dan Folate Cycle] Jelaskan Hubungan dengan megaloblastic anemia dalam konteks dTMP Synthesis dan Folate Cycle. :: Defisiensi folate atau gangguan regenerasi THF → sintesis dTMP dan purin terganggu → DNA synthesis melambat → megaloblastic changes.
-- [PURIN] Apa yang dimaksud dengan Committed enzyme pada PURIN (Perbandingan Purin vs Pirimidin)? :: Glutamine-PRPP amidotransferase.
-- [PURIN] Apa yang dimaksud dengan Gangguan khas pada PURIN (Perbandingan Purin vs Pirimidin)? :: Gout, Lesch–Nyhan, ADA-SCID.
-- [Allopurinol / febuxostat] Pada Allopurinol / febuxostat (Obat yang Menarget Metabolisme Nukleotida), apa efeknya? :: Menurunkan pembentukan uric acid.
-- [Memory Map Cepat] Apa yang dimaksud dengan Purine pada Memory Map Cepat? :: Ribose-5-P → PRPP → 5-phosphoribosylamine → ... → IMP → AMP / GMP → degradation → uric acid.
-- [Memory Map Cepat] Apa yang dimaksud dengan Salvage pada Memory Map Cepat? :: Hypoxanthine + PRPP —HGPRT→ IMP.
-- [Memory Map Cepat] Apa yang dimaksud dengan Pyrimidine pada Memory Map Cepat? :: Glutamine + CO2 —CPS II→ carbamoyl phosphate → carbamoyl aspartate → dihydroorotate → orotate + PRPP → OMP → UMP → UTP → CTP.
+- [PURIN] Apa yang dimaksud dengan Committed enzyme pada PURIN? :: Glutamine-PRPP amidotransferase.
+- [PURIN] Apa yang dimaksud dengan Gangguan khas pada PURIN? :: Gout, Lesch–Nyhan, ADA-SCID.
+- [Allopurinol / febuxostat] Pada Allopurinol / febuxostat, apa efeknya? :: Menurunkan pembentukan uric acid.
+- [Memory Map Cepat] Apa yang dimaksud dengan Purine pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: Ribose-5-P → PRPP → 5-phosphoribosylamine → ... → IMP → AMP / GMP → degradation → uric acid.
+- [Memory Map Cepat] Apa yang dimaksud dengan Salvage pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: Hypoxanthine + PRPP —HGPRT→ IMP.
+- [Memory Map Cepat] Apa yang dimaksud dengan Pyrimidine pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: Glutamine + CO2 —CPS II→ carbamoyl phosphate → carbamoyl aspartate → dihydroorotate → orotate + PRPP → OMP → UMP → UTP → CTP.
 - [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa yang dimaksud dengan Adenosine pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: Adenine + ribosa
 - [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa yang dimaksud dengan AMP pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: Adenosine + fosfat
 - [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa yang dimaksud dengan Deoxyadenosine pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: Adenine + deoxyribose
@@ -539,51 +539,49 @@ dUMP —thymidylate synthase + folate→ dTMP.
 - [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa yang perlu diingat tentang UMP synthase deficiency pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: Orotic aciduria TANPA hyperammonemia khas
 - [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa yang perlu diingat tentang OTC deficiency pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: Orotic aciduria DENGAN hyperammonemia
 - [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa yang dimaksud dengan HGPRT pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: Salvage pathway, bukan de novo
-- [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa yang perlu diketahui tentang Ribonucleotide reductase pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: NDP → dNDP
-- [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa yang perlu diketahui tentang Thymidylate synthase pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: DUMP → dTMP
 - [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa yang perlu diketahui tentang Purin pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: Committed enzyme glutamine-PRPP amidotransferase; IMP menjadi prekursor AMP dan GMP
 - [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa jawaban atau kesimpulan untuk petunjuk berikut: HGPRT menyelamatkan hypoxanthine dan guanine; defisiensi berat? :: Lesch–Nyhan
 - [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa yang perlu diingat tentang Ribonucleotide reductase: NDP pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: DNDP; hydroxyurea menghambatnya
 - [Metabolisme Asam Nukleat (Purin, Pirimidin)] Apa yang perlu diingat tentang Thymidylate synthase: dUMP pada Metabolisme Asam Nukleat (Purin, Pirimidin)? :: DTMP; 5-FU menghambatnya
-- [Gambaran Besar Metabolisme Nukleotida] Sebutkan komponen dasar pada Gambaran Besar Metabolisme Nukleotida. :: • Basa nitrogen + gula pentosa = nucleoside
+- [Gambaran Besar Metabolisme Nukleotida] Sebutkan komponen dasar pada Metabolisme Asam Nukleat (Purin, Pirimidin). :: • Basa nitrogen + gula pentosa = nucleoside
   • Nucleoside + satu atau lebih gugus fosfat = nucleotide
   • Purin: adenine (A) dan guanine (G)
   • Pirimidin: cytosine (C), thymine (T), dan uracil (U)
-- [Sumber atom pada cincin purin] Sebutkan poin-poin penting tentang Cincin purin dibangun dari beberapa donor. :: • Glycine → C4, C5, N7
+- [Sumber atom pada cincin purin] Sebutkan hal-hal penting tentang Cincin purin dibangun dari beberapa donor. :: • Glycine → C4, C5, N7
   • Glutamine → N3 dan N9
   • Aspartate → N1
   • CO2/HCO3− → C6
   • N10-formyl-THF → C2 dan C8
-- [IMP → GMP] Sebutkan poin-poin penting tentang Pola reciprocal energy use. :: • Membuat AMP memakai GTP
+- [IMP → GMP] Sebutkan pola reciprocal energy use pada IMP → GMP. :: • Membuat AMP memakai GTP
   • Membuat GMP memakai ATP
-- [APRT (adenine phosphoribosyltransferase)] Sebutkan poin-poin penting tentang Keuntungan salvage. :: • Menghemat energi
+- [APRT (adenine phosphoribosyltransferase)] Sebutkan hal-hal penting tentang Keuntungan salvage. :: • Menghemat energi
   • Mengonsumsi PRPP sehingga dapat menekan dorongan de novo synthesis
   • Sangat penting pada jaringan yang kapasitas sintesis de novo-nya terbatas, termasuk sistem saraf
 - [Purine Degradation] Sebutkan xanthine oxidase mengatalisis dua langkah penting pada Purine Degradation. :: • Hypoxanthine → xanthine
   • Xanthine → uric acid
-- [Hyperuricemia dan Gout] Sebutkan poin-poin penting tentang Obat high-yield. :: • Allopurinol → menghambat xanthine oxidase
+- [Hyperuricemia dan Gout] Sebutkan obat high-yield pada Hyperuricemia dan Gout. :: • Allopurinol → menghambat xanthine oxidase
   • Febuxostat → menghambat xanthine oxidase
   • Rasburicase → mengubah uric acid menjadi allantoin yang lebih larut; terutama digunakan pada konteks tumor lysis tertentu
-- [Carbamoyl phosphate synthesis] Sebutkan poin-poin penting tentang Karakter CPS II. :: • Lokasi: sitosol
+- [Carbamoyl phosphate synthesis] Sebutkan hal-hal penting tentang Karakter CPS II. :: • Lokasi: sitosol
   • Nitrogen donor: glutamine
   • Fungsi: sintesis pirimidin
   • Pada mamalia merupakan bagian dari kompleks CAD
-- [Carbamoyl phosphate synthesis] Sebutkan poin-poin penting tentang Jangan tertukar dengan CPS I. :: • CPS I = mitokondria, urea cycle, menggunakan NH3 bebas
+- [Carbamoyl phosphate synthesis] Sebutkan hal-hal penting tentang Jangan tertukar dengan CPS I. :: • CPS I = mitokondria, urea cycle, menggunakan NH3 bebas
   • CPS II = sitosol, pyrimidine synthesis, menggunakan glutamine
-- [UTP → CTP] Sebutkan regulasi high-yield pada UTP → CTP (De Novo Pyrimidine Synthesis). :: • CPS II dihambat oleh UTP (feedback inhibition)
+- [UTP → CTP] Sebutkan regulasi high-yield pada UTP → CTP. :: • CPS II dihambat oleh UTP (feedback inhibition)
   • CPS II dapat dirangsang oleh PRPP dan ATP
 - [Orotic Aciduria] Sebutkan manifestasi khas pada Orotic Aciduria. :: • Megaloblastic anemia yang tidak membaik hanya dengan folate/B12
   • Failure to thrive
   • Orotic acid dalam urine meningkat
   • TIDAK ada hyperammonemia khas
-- [Orotic Aciduria] Sebutkan poin-poin penting tentang UMP synthase deficiency. :: • ↑orotic acid
+- [Orotic Aciduria] Sebutkan hal-hal penting tentang UMP synthase deficiency. :: • ↑orotic acid
   • Megaloblastic anemia
   • Tidak khas hyperammonemia
-- [Orotic Aciduria] Sebutkan poin-poin penting tentang OTC deficiency. :: • ↑orotic acid akibat carbamoyl phosphate berlebih masuk jalur pirimidin
+- [Orotic Aciduria] Sebutkan hal-hal penting tentang OTC deficiency. :: • ↑orotic acid akibat carbamoyl phosphate berlebih masuk jalur pirimidin
   • Hyperammonemia berat
   • Gangguan urea cycle
   • Bukan megaloblastic anemia primer
 - [Nomenklatur yang Sering Menjadi Jebakan] Apa jebakan yang sering muncul pada soal tentang Nomenklatur yang Sering Menjadi Jebakan? :: Nukleosida TIDAK memiliki fosfat. Nukleotida memiliki minimal satu fosfat. RNA menggunakan ribonukleotida dan uracil. DNA menggunakan deoxyribonucleotide dan thymine.
-- [Sumber atom pada cincin purin] Apa poin high-yield (pearl) tentang Sumber atom pada cincin purin? :: FOLATE menyumbang unit satu-karbon pada pembentukan cincin purin.
+- [Sumber atom pada cincin purin] Apa poin high-yield (pearl) tentang Metabolisme Asam Nukleat (Purin, Pirimidin)? :: FOLATE menyumbang unit satu-karbon pada pembentukan cincin purin.
 - [Hyperuricemia dan Gout] Apa poin high-yield (pearl) tentang Hyperuricemia dan Gout? :: Kristal monosodium urate memicu inflamasi sendi akut. Risiko meningkat pada keadaan hyperuricemia. Tumor lysis syndrome dapat menyebabkan pelepasan purin masif → uric acid meningkat → acute kidney injury.
 - [Lesch–Nyhan Syndrome] Apa poin high-yield (pearl) tentang Lesch–Nyhan Syndrome? :: Lesch–Nyhan = HGPRT deficiency + hyperuricemia + neurologic dysfunction + self-injury.

@@ -197,22 +197,20 @@ Sedatif menenangkan, sedangkan hipnotik mempermudah dan mempertahankan tidur. Ba
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang perlu diingat tentang Lansia + fentanyl pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Kebutuhan MAC sevoflurane menurun
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang dimaksud dengan Sedasi pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Calming dengan sedikit/tanpa efek motorik yang bermakna
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang dimaksud dengan Hipnotik pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Menyebabkan kantuk dan membantu onset/pemeliharaan tidur
-- [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang perlu diketahui tentang Kelas yang jelas pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Barbiturat, benzodiazepine, Z-drugs
-- [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang perlu diketahui tentang Z-drugs pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Zolpidem, zaleplon, eszopiclone
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang perlu diketahui tentang Komponen anestesi seimbang pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Hipnosis, amnesia, analgesia, imobilitas
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang dimaksud dengan Sevoflurane pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Contoh anestetik inhalasi
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang perlu diingat tentang Opioid presinaptik pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Ca²⁺ masuk berkurang
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang perlu diingat tentang Opioid postsinaptik pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Efflux K⁺ meningkat
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang perlu diingat tentang Efflux K⁺ postsinaptik pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Hiperpolarisasi dan neuron lebih sulit teraktivasi
-- [Sedasi vs Hipnosis] Sebutkan poin-poin penting tentang Sedasi (anxiolytic). :: • Efek menenangkan atau calming
+- [Sedasi vs Hipnosis] Sebutkan hal-hal penting tentang Sedasi (anxiolytic). :: • Efek menenangkan atau calming
   • Tidak menimbulkan, atau hanya sedikit menimbulkan, efek pada sistem motorik
 - [Kelas Sedatif–Hipnotik] Sebutkan kelas pada Kelas Sedatif–Hipnotik. :: • Barbiturat
   • Benzodiazepine
   • Z-drugs: zolpidem, zaleplon, eszopiclone
-- [Farmakokinetik Sedatif–Hipnotik] Sebutkan poin-poin penting tentang Ringkasan farmakokinetik. :: • Barbiturat — disebut biasanya diekskresikan langsung
+- [Farmakokinetik Sedatif–Hipnotik] Sebutkan hal-hal penting tentang Ringkasan farmakokinetik. :: • Barbiturat — disebut biasanya diekskresikan langsung
   • Benzodiazepine — metabolisme hepar melalui CYP3A4
   • Newer drugs — metabolisme hepar melalui CYP3A4
-- [Analgesik Opioid: Reseptor] Sebutkan poin-poin penting tentang Dua asosiasi reseptor yang penting. :: • Reseptor μ (mu) → berhubungan dengan depresi napas
+- [Analgesik Opioid: Reseptor] Sebutkan dua asosiasi reseptor yang penting pada Analgesik Opioid: Reseptor. :: • Reseptor μ (mu) → berhubungan dengan depresi napas
   • Reseptor κ (kappa) → berhubungan dengan efek psikotomimetik
 - [Sedasi vs Hipnosis] Apa poin high-yield (pearl) tentang Sedasi vs Hipnosis? :: Bila stem menyebut pasien tetap dapat merespons dan tujuan utamanya menenangkan, pikirkan sedasi/anxiolysis. Bila tujuan utama adalah menginduksi atau mempertahankan tidur, pikirkan efek hipnotik.
 - [Prinsip Anestesi Seimbang] Apa poin high-yield (pearl) tentang Prinsip Anestesi Seimbang? :: Kata kunci “kombinasi hipnotik + opioid + pelumpuh otot untuk mengurangi kebutuhan tiap obat” → anestesi seimbang.

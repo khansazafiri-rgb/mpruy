@@ -357,8 +357,6 @@ Bakteri → prokariot → bentuk & susunan → struktur sel → cell envelope �
 - [Dasar Klasifikasi Bakteri] Apa yang dimaksud dengan Susunan pada Dasar Klasifikasi Bakteri? :: Pasangan, rantai, cluster, tetrad, palisade, dll.
 - [Dasar Klasifikasi Bakteri] Apa yang dimaksud dengan Pewarnaan pada Dasar Klasifikasi Bakteri? :: Gram positif, Gram negatif, acid-fast, atau kelompok yang tidak mudah dinilai dengan Gram biasa.
 - [Dasar Klasifikasi Bakteri] Apa yang dimaksud dengan Kebutuhan oksigen pada Dasar Klasifikasi Bakteri? :: Aerob, anaerob, facultative, microaerophilic, aerotolerant.
-- [Ribosom 70S] Apa yang dimaksud dengan 30S pada Ribosom 70S? :: Aminoglycoside, tetracycline.
-- [Ribosom 70S] Apa yang dimaksud dengan 50S pada Ribosom 70S? :: Macrolide, clindamycin, chloramphenicol, linezolid.
 - [Kebutuhan Oksigen] Apa yang dimaksud dengan Obligate aerobe pada Kebutuhan Oksigen? :: Membutuhkan O₂ untuk pertumbuhan.
 - [Kebutuhan Oksigen] Apa yang dimaksud dengan Obligate anaerobe pada Kebutuhan Oksigen? :: O₂ bersifat toksik atau menghambat pertumbuhan.
 - [Kebutuhan Oksigen] Apa yang dimaksud dengan Facultative anaerobe pada Kebutuhan Oksigen? :: Dapat tumbuh dengan atau tanpa O₂; biasanya lebih efisien bila O₂ tersedia.
@@ -387,11 +385,18 @@ Bakteri → prokariot → bentuk & susunan → struktur sel → cell envelope �
   • Lokasi sistem respirasi dan pembentukan ATP
   • Berperan dalam biosintesis komponen dinding sel
   • Menjadi tempat berbagai protein transport dan sensor
-- [Gram Positif] Sebutkan poin-poin penting tentang Karakteristik utama. :: • Peptidoglycan tebal
+- [Gram Positif] Sebutkan karakteristik utama pada Gram Positif. :: • Peptidoglycan tebal
   • Tidak memiliki outer membrane
   • Memiliki teichoic acid dan lipoteichoic acid
   • Menahan kompleks crystal violet–iodine setelah dekolorisasi → tampak ungu
   • Umumnya lebih mudah ditembus beberapa molekul dibanding Gram negatif karena tidak ada outer membrane, walaupun sensitivitas antibiotik tetap bergantung pada spesies dan mekanisme resistensi
+- [Gram Negatif] Sebutkan karakteristik utama pada Gram Negatif. :: • Peptidoglycan tipis
+  • Memiliki outer membrane
+  • Memiliki periplasmic space
+  • Outer membrane mengandung LPS dan porin
+  • LPS terdiri dari lipid A, core polysaccharide, dan O antigen
+  • Lipid A = bagian endotoxin yang memicu respons inflamasi kuat
+  • Setelah dekolorisasi, crystal violet hilang dan sel mengambil counterstain safranin → merah muda/merah
 - [Ribosom 70S] Sebutkan contoh target pada Ribosom 70S. :: • 30S: aminoglycoside, tetracycline
   • 50S: macrolide, clindamycin, chloramphenicol, linezolid
 - [Media Kultur — Peta Dasar] Sebutkan contoh high-yield pada Media Kultur — Peta Dasar. :: • Blood agar → melihat hemolysis

@@ -319,6 +319,5 @@ Barrett → goblet cells → adenocarcinoma. H. pylori → gastritis/PUD/MALT/ga
 - [Patologi Sistem Digestif & Hepar] Apa yang dimaksud dengan Steatohepatitis pada Patologi Sistem Digestif & Hepar? :: Steatosis + hepatocyte injury + inflammation
 - [Patologi Sistem Digestif & Hepar] Apa yang dimaksud dengan Cirrhosis pada Patologi Sistem Digestif & Hepar? :: Diffuse fibrosis + regenerative nodules + architectural distortion
 - [Patologi Sistem Digestif & Hepar] Apa yang dimaksud dengan A1AT deficiency hepatocyte globules? :: PAS-positive, diastase-resistant
-- [Patologi Sistem Digestif & Hepar] Apa yang dimaksud dengan HCC sering trabecular; cholangiocarcinoma? :: Glandular + desmoplastic
 - [Patologi Sistem Digestif & Hepar] Apa yang perlu diingat tentang Acute pancreatitis pada Patologi Sistem Digestif & Hepar? :: Enzymatic fat necrosis + saponification
 - [Patologi Sistem Digestif & Hepar] Apa yang perlu diingat tentang Pancreatic ductal adenocarcinoma pada Patologi Sistem Digestif & Hepar? :: Malignant glands dalam dense desmoplastic stroma

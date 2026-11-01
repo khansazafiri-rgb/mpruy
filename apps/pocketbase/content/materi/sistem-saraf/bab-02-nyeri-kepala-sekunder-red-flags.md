@@ -274,7 +274,7 @@ Pola 8 — Change of Pattern
 
 ## Flashcard {kartu}
 
-- [Konsep Dasar: Apa Itu Nyeri Kepala Sekunder?] Apa yang dimaksud dengan Prinsip ujian pada Konsep Dasar: Apa Itu Nyeri Kepala Sekunder? :: Jika vignette memuat red flag, jangan buru-buru memilih TTH, migren, atau cluster hanya karena sebagian karakter nyerinya mirip.
+- [Konsep Dasar: Apa Itu Nyeri Kepala Sekunder?] Apa yang dimaksud dengan Prinsip ujian pada Nyeri Kepala Sekunder & Red Flags? :: Jika vignette memuat red flag, jangan buru-buru memilih TTH, migren, atau cluster hanya karena sebagian karakter nyerinya mirip.
 - [Thunderclap Headache & Perdarahan Subaraknoid] Apa yang dimaksud dengan Imaging pada Thunderclap Headache & Perdarahan Subaraknoid? :: ACR Appropriateness Criteria Headache (revised 2022) menilai CT kepala tanpa kontras sebagai initial imaging yang biasanya appropriate pada sudden severe headache yang mencapai maksimal dalam ≤1 jam. CTA kepala dapat dipertimbangkan pada konteks tertentu.
 - [Peningkatan Tekanan Intrakranial & Papiledema] Apa yang dimaksud dengan Safety pearl pada Peningkatan Tekanan Intrakranial & Papiledema? :: Pada pasien dengan headache progresif + muntah + papiledema, pungsi lumbal tidak boleh dilakukan sembarangan sebelum mengevaluasi kemungkinan mass effect/peningkatan tekanan intrakranial yang berbahaya.
 - [Nyeri Kepala Sekunder & Red Flags] Apa yang dimaksud dengan Secondary headache pada Nyeri Kepala Sekunder & Red Flags? :: Headache akibat kondisi lain
@@ -292,13 +292,10 @@ Pola 8 — Change of Pattern
 - [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Postpartum + kejang + papiledema? :: Pikirkan CVT
 - [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Red eye + acute visual loss + mid-dilated pupil? :: Acute angle-closure glaucoma
 - [Nyeri Kepala Sekunder & Red Flags] Apa yang perlu diingat tentang Orthostatic headache pada Nyeri Kepala Sekunder & Red Flags? :: Pikirkan gangguan tekanan CSF
-- [Thunderclap Headache & Perdarahan Subaraknoid] Sebutkan poin-poin penting tentang Poin high-yield. :: • SAH dapat muncul tanpa defisit neurologis fokal pada pemeriksaan awal
+- [Thunderclap Headache & Perdarahan Subaraknoid] Sebutkan poin high-yield pada Thunderclap Headache & Perdarahan Subaraknoid. :: • SAH dapat muncul tanpa defisit neurologis fokal pada pemeriksaan awal
   • Perbaikan nyeri setelah beberapa jam tidak menyingkirkan SAH atau penyebab vaskular serius
   • Aktivitas berat atau aktivitas seksual yang memicu first-ever thunderclap headache tetap membutuhkan evaluasi emergensi
   • “Sentinel headache” dapat mendahului ruptur aneurisma yang lebih berat
   • Meningismus/kaku kuduk dapat menyertai SAH
-- [Acute Angle-Closure Glaucoma] Sebutkan poin-poin penting tentang Pembeda penting acute angle-closure glaucoma. :: • Penurunan tajam penglihatan
-  • Mata merah dan nyeri
-  • Pupil mid-dilatasi yang menetap
 - [Infeksi SSP: Meningitis sebagai Penyebab Nyeri Kepala Sekunder] Apa poin high-yield (pearl) tentang Infeksi SSP: Meningitis sebagai Penyebab Nyeri Kepala Sekunder? :: Riwayat migren tidak “melindungi” pasien dari secondary headache. Pasien dengan migren lama yang tiba-tiba mengalami pola baru disertai demam dan kaku kuduk tetap harus dinilai sebagai kemungkinan meningitis.
 - [Giant-Cell Arteritis / Temporal Arteritis] Apa poin high-yield (pearl) tentang Giant-Cell Arteritis / Temporal Arteritis? :: “Usia lanjut + sakit kepala baru + sakit saat mengunyah + scalp tenderness” → pikirkan giant-cell arteritis, bukan migren baru.

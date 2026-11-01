@@ -363,19 +363,10 @@ Anion gap = Na+ − (Cl− + HCO3−).
 
 ## Flashcard {kartu}
 
-- [Gambaran Besar] Apa yang dimaksud dengan Prinsip high-yield pada Gambaran Besar? :: Tentukan dulu apakah hasil abnormal menunjukkan peningkatan produksi, penurunan eliminasi, kebocoran sel, gangguan sintesis, atau pergeseran distribusi cairan/elektrolit.
-- [Langkah Praktis Membaca Panel Lab] Pada Langkah Praktis Membaca Panel Lab, apa langkah 1nya? :: Cek identitas parameter, unit, dan reference range laboratorium.
-- [Langkah Praktis Membaca Panel Lab] Pada Langkah Praktis Membaca Panel Lab, apa langkah 2nya? :: Tentukan abnormalitas dominan: naik, turun, atau pola campuran.
-- [Langkah Praktis Membaca Panel Lab] Pada Langkah Praktis Membaca Panel Lab, apa langkah 3nya? :: Kelompokkan berdasarkan sistem: glukosa, ginjal, hati, lipid, elektrolit/asam-basa, protein, atau enzim.
-- [Langkah Praktis Membaca Panel Lab] Pada Langkah Praktis Membaca Panel Lab, apa langkah 4nya? :: Cari hubungan fisiologis antarnilai.
-- [Langkah Praktis Membaca Panel Lab] Pada Langkah Praktis Membaca Panel Lab, apa langkah 5nya? :: Cek kemungkinan faktor preanalitik sebelum menyimpulkan penyakit.
-- [eGFR] Apa yang dimaksud dengan G1 pada eGFR? :: ≥90 mL/min/1,73 m².
+- [Gambaran Besar] Apa yang dimaksud dengan Prinsip high-yield pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Tentukan dulu apakah hasil abnormal menunjukkan peningkatan produksi, penurunan eliminasi, kebocoran sel, gangguan sintesis, atau pergeseran distribusi cairan/elektrolit.
 - [Pola Lab Hepatocellular vs Cholestatic] Apa yang dimaksud dengan Hepatocellular pattern pada Pola Lab Hepatocellular vs Cholestatic? :: AST/ALT jauh lebih dominan dibanding ALP.
 - [Pola Lab Hepatocellular vs Cholestatic] Apa yang dimaksud dengan Cholestatic pattern pada Pola Lab Hepatocellular vs Cholestatic? :: ALP lebih dominan; bilirubin dapat meningkat, terutama bila aliran bile terganggu.
 - [Pola Lab Hepatocellular vs Cholestatic] Apa yang dimaksud dengan Mixed pattern pada Pola Lab Hepatocellular vs Cholestatic? :: AST/ALT dan ALP keduanya meningkat tanpa dominasi jelas.
-- [Empat Gangguan Asam–Basa Primer] Apa yang dimaksud dengan Metabolic acidosis pada Empat Gangguan Asam–Basa Primer? :: HCO3− primer turun.
-- [Empat Gangguan Asam–Basa Primer] Apa yang dimaksud dengan Metabolic alkalosis pada Empat Gangguan Asam–Basa Primer? :: HCO3− primer naik.
-- [Empat Gangguan Asam–Basa Primer] Apa yang dimaksud dengan Respiratory alkalosis pada Empat Gangguan Asam–Basa Primer? :: PCO2 primer turun.
 - [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa yang perlu diketahui tentang Formula Friedewald klasik pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: LDL-C ≈ total cholesterol − HDL-C − triglyceride/5 dalam mg/dL
 - [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa jawaban atau kesimpulan untuk petunjuk berikut: pCO2 aktual lebih tinggi dari expected? :: Ada tambahan respiratory acidosis
 - [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa jawaban atau kesimpulan untuk petunjuk berikut: pCO2 aktual lebih rendah dari expected? :: Ada tambahan respiratory alkalosis

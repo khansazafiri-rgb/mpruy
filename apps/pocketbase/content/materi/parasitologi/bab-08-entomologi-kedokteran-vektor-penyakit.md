@@ -605,8 +605,8 @@ Jika arachnid:
 
 ## Flashcard {kartu}
 
-- [Konsep Besar Entomologi Kedokteran] Apa yang dimaksud dengan INSECTA pada Konsep Besar Entomologi Kedokteran? :: Kepala–toraks–abdomen, 3 pasang kaki (6 kaki), biasanya memiliki antena.
-- [Konsep Besar Entomologi Kedokteran] Apa yang dimaksud dengan ARACHNIDA pada Konsep Besar Entomologi Kedokteran? :: Cephalothorax + abdomen, dewasa memiliki 4 pasang kaki (8 kaki), tanpa antena.
+- [Konsep Besar Entomologi Kedokteran] Apa yang dimaksud dengan INSECTA pada Entomologi Kedokteran (Vektor Penyakit)? :: Kepala–toraks–abdomen, 3 pasang kaki (6 kaki), biasanya memiliki antena.
+- [Konsep Besar Entomologi Kedokteran] Apa yang dimaksud dengan ARACHNIDA pada Entomologi Kedokteran (Vektor Penyakit)? :: Cephalothorax + abdomen, dewasa memiliki 4 pasang kaki (8 kaki), tanpa antena.
 - [Transmisi Mekanik vs Biologis] Apa yang dimaksud dengan Mechanical transmission pada Transmisi Mekanik vs Biologis? :: Pathogen tidak mengalami multiplication atau development dalam vector. Arthropod hanya membawa pathogen secara pasif, misalnya pada permukaan tubuh atau mouthparts.
 - [Transmisi Mekanik vs Biologis] Apa yang dimaksud dengan Biological transmission pada Transmisi Mekanik vs Biologis? :: Pathogen mengalami bagian penting siklus hidup di dalam vector.
 - [Transmisi Mekanik vs Biologis] Apa yang dimaksud dengan Propagative pada Transmisi Mekanik vs Biologis? :: Banyak arbovirus berkembang biak dalam mosquito.
@@ -638,7 +638,7 @@ Jika arachnid:
 - [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan ANOPHELES pada Entomologi Kedokteran (Vektor Penyakit)? :: Malaria; angled resting; larva parallel
 - [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan CULEX pada Entomologi Kedokteran (Vektor Penyakit)? :: JE/West Nile/filariasis; egg raft
 - [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan TRIATOMINE pada Entomologi Kedokteran (Vektor Penyakit)? :: T. cruzi via feces
-- [Konsep Besar Entomologi Kedokteran] Sebutkan kelompok high-yield pada Konsep Besar Entomologi Kedokteran. :: • Mosquitoes: Anopheles, Aedes, Culex, Mansonia
+- [Konsep Besar Entomologi Kedokteran] Sebutkan kelompok high-yield pada Entomologi Kedokteran (Vektor Penyakit). :: • Mosquitoes: Anopheles, Aedes, Culex, Mansonia
   • Flies: sandfly, tsetse fly, blackfly
   • Bugs: triatomine/kissing bug
   • Fleas
@@ -648,28 +648,28 @@ Jika arachnid:
 - [Transmisi Mekanik vs Biologis] Sebutkan tiga tipe klasik pada Transmisi Mekanik vs Biologis. :: • Propagative = pathogen MULTIPLY, tetapi tidak mengalami developmental change
   • Cyclodevelopmental = pathogen DEVELOP, tetapi tidak multiply
   • Cyclopropagative = pathogen DEVELOP + MULTIPLY
-- [Mosquito — Siklus Hidup Umum] Sebutkan poin-poin penting tentang Poin praktikum. :: • Larva Anopheles berbeda posisi di permukaan air dibanding Aedes/Culex
+- [Mosquito — Siklus Hidup Umum] Sebutkan hal-hal penting tentang Poin praktikum. :: • Larva Anopheles berbeda posisi di permukaan air dibanding Aedes/Culex
   • Bentuk telur dan siphon larva membantu identifikasi genus
 - [Anopheles — Identifikasi] Sebutkan ciri klasik pada Anopheles — Identifikasi. :: • Telur diletakkan satu-satu dan memiliki lateral floats
   • Larva berada hampir sejajar permukaan air karena tidak memiliki respiratory siphon panjang
   • Female palps kira-kira sepanjang proboscis
   • Sayap sering tampak spotted
   • Saat resting, tubuh adult membentuk sudut terhadap permukaan
-- [Aedes — Identifikasi] Sebutkan poin-poin penting tentang Aedes aegypti. :: • Tubuh gelap dengan white markings
+- [Aedes — Identifikasi] Sebutkan hal-hal penting tentang Aedes aegypti. :: • Tubuh gelap dengan white markings
   • Pola putih pada thorax dapat menyerupai lyre
-- [Sandfly] Sebutkan poin-poin penting tentang Genera penting. :: • Phlebotomus — Old World
+- [Sandfly] Sebutkan genera penting pada Sandfly. :: • Phlebotomus — Old World
   • Lutzomyia — New World
 - [Lice — Morfologi] Sebutkan jenis utama pada Lice — Morfologi. :: • Pediculus humanus capitis = head louse
   • Pediculus humanus humanus/corporis = body louse
   • Pthirus pubis = pubic/crab louse
-- [Body Louse — Penyakit Vektor] Sebutkan poin-poin penting tentang Body louse merupakan vector penting. :: • Rickettsia prowazekii → epidemic typhus
+- [Body Louse — Penyakit Vektor] Sebutkan body louse merupakan vector penting pada Body Louse — Penyakit Vektor. :: • Rickettsia prowazekii → epidemic typhus
   • Bartonella quintana → trench fever
   • Borrelia recurrentis → louse-borne relapsing fever
-- [Hard Tick vs Soft Tick] Sebutkan poin-poin penting tentang Hard tick (Ixodidae). :: • Memiliki scutum
+- [Hard Tick vs Soft Tick] Sebutkan hal-hal penting tentang Hard tick (Ixodidae). :: • Memiliki scutum
   • Capitulum/mouthparts dapat terlihat dari dorsal
   • Biasanya feeding lebih lama
   • Banyak spesies memiliki one-, two-, atau three-host life cycle
-- [Hard Tick vs Soft Tick] Sebutkan poin-poin penting tentang Soft tick (Argasidae). :: • Tidak memiliki scutum keras
+- [Hard Tick vs Soft Tick] Sebutkan hal-hal penting tentang Soft tick (Argasidae). :: • Tidak memiliki scutum keras
   • Integument tampak leathery
   • Capitulum dewasa berada lebih ventral dan tidak terlihat jelas dari dorsal
   • Feeding biasanya lebih singkat dan dapat berulang
@@ -677,7 +677,7 @@ Jika arachnid:
   • Wound myiasis
   • Cavitary
   • Intestinal pada kondisi tertentu
-- [Vector Control — Prinsip] Sebutkan poin-poin penting tentang Pendekatan. :: • Source reduction
+- [Vector Control — Prinsip] Sebutkan hal-hal penting tentang Pendekatan. :: • Source reduction
   • Environmental management
   • Larval control
   • Adult vector control
@@ -685,7 +685,7 @@ Jika arachnid:
   • Surveillance
   • Resistance monitoring
   • Community participation
-- [Konsep Besar Entomologi Kedokteran] Apa poin high-yield (pearl) tentang Konsep Besar Entomologi Kedokteran? :: Sebelum hafal penyakit, identifikasi dulu bentuk arthropod + cara transmisi + habitat/bite timing.
+- [Konsep Besar Entomologi Kedokteran] Apa poin high-yield (pearl) tentang Entomologi Kedokteran (Vektor Penyakit)? :: Sebelum hafal penyakit, identifikasi dulu bentuk arthropod + cara transmisi + habitat/bite timing.
 - [Anopheles — Identifikasi] Bagaimana cara mengingat Anopheles — Identifikasi? :: ANOPHELES = ANGLED resting + malaria.
 - [Aedes — Penyakit] Apa poin high-yield (pearl) tentang Aedes — Penyakit? :: DAY-BITING + black-and-white mosquito + container breeding → Aedes.
 - [Culex — Penyakit] Apa jebakan yang sering muncul pada soal tentang Culex — Penyakit? :: Malaria bukan penyakit utama Culex. Dengue bukan penyakit utama Culex.

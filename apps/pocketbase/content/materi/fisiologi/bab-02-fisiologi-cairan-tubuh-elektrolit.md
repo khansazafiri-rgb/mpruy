@@ -436,11 +436,11 @@ Jika variabel yang terganggu adalah volume/osmolality: perubahan ECF → osmorec
 
 ## Flashcard {kartu}
 
-- [Total Body Water (TBW)] Jelaskan adult male muda dalam konteks Total Body Water (TBW). :: Sekitar 60% berat badan
-- [Total Body Water (TBW)] Apa yang dimaksud dengan adult female pada Total Body Water (TBW)? :: Rata-rata lebih rendah, sering sekitar 50–55%
-- [Total Body Water (TBW)] Apa yang dimaksud dengan bayi pada Total Body Water (TBW)? :: Persentase lebih tinggi
-- [Total Body Water (TBW)] Jelaskan obesitas dan usia lanjut dalam konteks Total Body Water (TBW). :: Persentase TBW cenderung lebih rendah karena jaringan adiposa mengandung lebih sedikit air.
-- [Total Body Water (TBW)] Apa yang dimaksud dengan Contoh sederhana pada Total Body Water (TBW)? :: Pria 70 kg dengan asumsi TBW 60% → TBW ≈ 42 L.
+- [Total Body Water (TBW)] Jelaskan adult male muda dalam konteks Total Body Water. :: Sekitar 60% berat badan
+- [Total Body Water (TBW)] Apa yang dimaksud dengan adult female pada Total Body Water? :: Rata-rata lebih rendah, sering sekitar 50–55%
+- [Total Body Water (TBW)] Apa yang dimaksud dengan bayi pada Total Body Water? :: Persentase lebih tinggi
+- [Total Body Water (TBW)] Jelaskan obesitas dan usia lanjut dalam konteks Total Body Water. :: Persentase TBW cenderung lebih rendah karena jaringan adiposa mengandung lebih sedikit air.
+- [Total Body Water (TBW)] Apa yang dimaksud dengan Contoh sederhana pada Total Body Water? :: Pria 70 kg dengan asumsi TBW 60% → TBW ≈ 42 L.
 - [Tonicity: Shortcut Ujian] Apa yang dimaksud dengan Isotonic pada Tonicity: Shortcut Ujian? :: ECF volume ↑; ICF ↔; osmolality ↔.
 - [Tonicity: Shortcut Ujian] Apa yang dimaksud dengan Hypertonic pada Tonicity: Shortcut Ujian? :: ECF volume ↑; ICF volume ↓; osmolality ↑.
 - [Tonicity: Shortcut Ujian] Apa yang dimaksud dengan Hypotonic pada Tonicity: Shortcut Ujian? :: ECF volume ↑; ICF volume ↑; osmolality ↓.
@@ -456,26 +456,23 @@ Jika variabel yang terganggu adalah volume/osmolality: perubahan ECF → osmorec
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan ECF pada Fisiologi Cairan Tubuh & Elektrolit? :: 1/3 TBW
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Plasma pada Fisiologi Cairan Tubuh & Elektrolit? :: 1/4 ECF
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Interstitial pada Fisiologi Cairan Tubuh & Elektrolit? :: 3/4 ECF
-- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang perlu diketahui tentang ECF pada Fisiologi Cairan Tubuh & Elektrolit? :: Na+, Cl−, HCO3−
-- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang perlu diketahui tentang ICF pada Fisiologi Cairan Tubuh & Elektrolit? :: K+, Mg2+, phosphate, protein
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Osmolarity pada Fisiologi Cairan Tubuh & Elektrolit? :: Semua osmotically active particles per liter
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Tonicity pada Fisiologi Cairan Tubuh & Elektrolit? :: Efek effective osmoles terhadap cell volume
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang perlu diingat tentang 0.9% NaCl pada Fisiologi Cairan Tubuh & Elektrolit? :: ECF expansion, ICF relatif tetap
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang perlu diingat tentang Hypotonic pada Fisiologi Cairan Tubuh & Elektrolit? :: Air masuk sel
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang perlu diingat tentang Hypertonic pada Fisiologi Cairan Tubuh & Elektrolit? :: Air keluar sel
-- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang perlu diketahui tentang Edema pada Fisiologi Cairan Tubuh & Elektrolit? :: ↑ hydrostatic pressure,
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang perlu diketahui tentang Heat loss pada Fisiologi Cairan Tubuh & Elektrolit? :: Radiation, conduction, convection, evaporation
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Sweat gland pada Fisiologi Cairan Tubuh & Elektrolit? :: Sympathetic cholinergic
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Fever pada Fisiologi Cairan Tubuh & Elektrolit? :: Set point naik
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Hyperthermia pada Fisiologi Cairan Tubuh & Elektrolit? :: Set point tidak naik
-- [Total Body Water (TBW)] Sebutkan nilai pendekatan pada Total Body Water (TBW). :: • Adult male muda: sekitar 60% berat badan
+- [Total Body Water (TBW)] Sebutkan nilai pendekatan pada Total Body Water. :: • Adult male muda: sekitar 60% berat badan
   • Adult female: rata-rata lebih rendah, sering sekitar 50–55%
   • Bayi: persentase lebih tinggi
   • Obesitas dan usia lanjut: persentase TBW cenderung lebih rendah karena jaringan adiposa mengandung lebih sedikit air
-- [Komposisi Ion ICF dan ECF] Sebutkan poin-poin penting tentang ECF dominan. :: • Na+
+- [Komposisi Ion ICF dan ECF] Sebutkan hal-hal penting tentang ECF dominan. :: • Na+
   • Cl−
   • HCO3−
-- [Komposisi Ion ICF dan ECF] Sebutkan poin-poin penting tentang ICF dominan. :: • K+
+- [Komposisi Ion ICF dan ECF] Sebutkan hal-hal penting tentang ICF dominan. :: • K+
   • Mg2+
   • Phosphate
   • Protein bermuatan negatif
@@ -486,13 +483,13 @@ Jika variabel yang terganggu adalah volume/osmolality: perubahan ECF → osmorec
 - [Tekanan Onkotik] Sebutkan contoh penyebab pada Tekanan Onkotik. :: • Gangguan sintesis albumin
   • Kehilangan protein melalui ginjal
   • Malnutrisi berat
-- [Dehidrasi dan Perdarahan] Sebutkan poin-poin penting tentang Respons kompensasi. :: • Simpatis ↑
+- [Dehidrasi dan Perdarahan] Sebutkan hal-hal penting tentang Respons kompensasi. :: • Simpatis ↑
   • Heart rate ↑
   • Vasoconstriction ↑
   • RAAS ↑
   • ADH ↑
   • Rasa haus ↑
-- [Produksi Panas] Sebutkan poin-poin penting tentang Sumber panas utama. :: • Basal metabolism
+- [Produksi Panas] Sebutkan sumber panas utama pada Produksi Panas. :: • Basal metabolism
   • Aktivitas otot
   • Shivering
   • Efek hormon, terutama thyroid hormone

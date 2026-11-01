@@ -628,7 +628,7 @@ Kultur harus dimulai dari kualitas spesimen. Tentukan dulu apakah organisme meru
 - [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang dimaksud dengan Dalam EUCAST, I pada Interpretasi Kultur & Sensitivitas Mikrobiologi? :: Susceptible, increased exposure
 - [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang dimaksud dengan De-escalation pada Interpretasi Kultur & Sensitivitas Mikrobiologi? :: Prinsip stewardship penting
 - [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang perlu diketahui tentang Selalu baca report dengan urutan? :: Specimen → significance → organism → AST → resistance pattern → patient context
-- [Gram Stain — Nilai Klinis] Sebutkan poin-poin penting tentang Gram stain memberi informasi cepat tentang. :: • Gram-positive vs Gram-negative
+- [Gram Stain — Nilai Klinis] Sebutkan hal-hal penting tentang Gram stain memberi informasi cepat tentang. :: • Gram-positive vs Gram-negative
   • Cocci vs bacilli
   • Pola susunan organisme
   • Jumlah leukosit
@@ -643,37 +643,31 @@ Kultur harus dimulai dari kualitas spesimen. Tentukan dulu apakah organisme meru
   • Pengambilan dari dua lokasi perifer yang berbeda membantu membedakan kontaminasi dari bakteremia sejati
   • Hindari mengambil hanya dari catheter kecuali ada alasan khusus untuk menilai catheter-related bloodstream infection
   • Antibiotik sebelum kultur dapat menurunkan yield
-- [Kultur Urin — Interpretasi] Sebutkan poin-poin penting tentang Kultur urin harus dibaca bersama. :: • Gejala urinary tract infection
+- [Kultur Urin — Interpretasi] Sebutkan hal-hal penting tentang Kultur urin harus dibaca bersama. :: • Gejala urinary tract infection
   • Urinalysis
   • Pyuria
   • Metode pengambilan
   • Jumlah koloni
   • Jenis organisme
   • Kehamilan atau kondisi khusus
-- [Wound Culture] Sebutkan poin-poin penting tentang Interpretasi harus memperhatikan. :: • Kedalaman luka
+- [Wound Culture] Sebutkan hal-hal penting tentang Interpretasi harus memperhatikan. :: • Kedalaman luka
   • Debridement
   • Necrosis
   • Diabetic foot
   • Device/prosthesis
   • Kemungkinan polymicrobial infection
-- [Stool Culture] Sebutkan interpretasi tergantung pada Stool Culture. :: • Durasi dan berat gejala
-  • Darah pada feses
-  • Demam
-  • Epidemiologi
-  • Imunokompromais
-  • Outbreak/travel history
-- [Antimicrobial Susceptibility Testing (AST)] Sebutkan metode umum pada Antimicrobial Susceptibility Testing (AST). :: • Disk diffusion/Kirby–Bauer
+- [Antimicrobial Susceptibility Testing (AST)] Sebutkan metode umum pada Antimicrobial Susceptibility Testing. :: • Disk diffusion/Kirby–Bauer
   • Broth microdilution
   • Automated AST systems
   • Gradient diffusion strips
   • Molecular resistance testing sebagai pelengkap
-- [Breakpoint] Sebutkan poin-poin penting tentang Breakpoint mempertimbangkan. :: • Distribusi MIC
+- [Breakpoint] Sebutkan hal-hal penting tentang Breakpoint mempertimbangkan. :: • Distribusi MIC
   • PK/PD
   • Dosis dan regimen
   • Site of infection
   • Data outcome
   • Mekanisme resistensi
-- [Biofilm] Sebutkan poin-poin penting tentang Relevansi klinis. :: • Prosthetic joint infection
+- [Biofilm] Sebutkan hal-hal penting tentang Relevansi klinis. :: • Prosthetic joint infection
   • Central-line infection
   • Catheter-associated UTI
   • Endocarditis

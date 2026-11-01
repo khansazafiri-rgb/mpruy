@@ -171,6 +171,7 @@ test('catatan di apps/pocketbase/content/materi terurai utuh', { skip: !existsSy
     if (e.subject === 'sistem-saraf') assert.ok(!/\b(Slide|bank soal|source-derived|PPGD|Rekap (?:MEDCOEL|Bab)|materi internal|anchor|Drive)\b/i.test(text.replace(/thalamic drive/gi, '')), `${e.file}: catatan internal penyusun`);
     if (e.subject === 'farmakologi') assert.ok(!/\b(PCV|Classroom|bank soal|materi sumber|ekspansi (?:farmakologi )?standar|ekstraksi|terekstrak|UAB|Oculus|Rekap (?:MEDCOEL|Bab))\b/i.test(text), `${e.file}: catatan internal penyusun`);
     // Flashcard berbentuk pertanyaan/perintah yang berdiri sendiri (bukan sekadar topik) dan jawabannya tidak kosong.
+    for (const c of d.cards) assert.ok(!/\b(?:dengan|tentang) (?:Contoh|Poin|Langkah|Tahap|Kasus|Pola|Butir|Opsi) ?\d+\b/.test(c.front.replace(/pada .*/, '')), `${e.file}: kartu hanya berupa label bernomor: ${c.front}`);
     for (const c of d.cards) assert.ok(/\?$|^(Jelaskan|Sebutkan)\b/.test(c.front) && c.back.length >= 5, `${e.file}: kartu bukan pertanyaan: ${c.front}`);
     assert.ok(!/^#{1,3} .*[\u2600-\u27BF\u{1F300}-\u{1FAFF}]/mu.test(text), `${e.file}: judul bagian berisi emoji`);   // "•" di tengah kalimat = radikal bebas (O₂•⁻), bukan butir
     for (const s of d.sections) {

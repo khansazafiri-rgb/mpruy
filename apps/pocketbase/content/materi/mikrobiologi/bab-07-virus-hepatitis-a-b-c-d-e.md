@@ -495,30 +495,30 @@ Pasien dengan hepatitis viral → lihat jalur paparan → fecal–oral? pikir HA
   • Hemodialisis
   • Tenaga kesehatan dengan needle-stick injury
   • Pasangan seksual multipel
-- [HBV — Usia Infeksi dan Kronisitas] Sebutkan poin-poin penting tentang Konsekuensi infeksi kronik. :: • Hepatitis kronik
+- [HBV — Usia Infeksi dan Kronisitas] Sebutkan hal-hal penting tentang Konsekuensi infeksi kronik. :: • Hepatitis kronik
   • Sirosis
   • Hepatocellular carcinoma (HCC)
-- [Antibodi HBV] Sebutkan poin-poin penting tentang IgM anti-HBc. :: • Marker penting infeksi akut/recent
+- [Antibodi HBV] Sebutkan hal-hal penting tentang IgM anti-HBc. :: • Marker penting infeksi akut/recent
   • Menjadi marker kunci pada window period
-- [HBV — Pencegahan] Sebutkan poin-poin penting tentang Poin. :: • Vaksin HBV menggunakan recombinant HBsAg
+- [HBV — Pencegahan] Sebutkan hal-hal penting tentang Poin. :: • Vaksin HBV menggunakan recombinant HBsAg
   • HBIG menyediakan antibodi pasif anti-HBV
   • Pada pajanan tertentu, vaksin dan HBIG diberikan bersama di lokasi suntikan berbeda
   • Bayi dari ibu HBsAg positif memerlukan profilaksis sesegera mungkin setelah lahir sesuai protokol klinis
   • Alat steril, pembuangan jarum aman, dan pencegahan paparan darah penting
-- [HDV — Diagnosis & Pencegahan] Sebutkan poin-poin penting tentang Penanda. :: • Anti-HDV
+- [HDV — Diagnosis & Pencegahan] Sebutkan penanda pada HDV — Diagnosis & Pencegahan. :: • Anti-HDV
   • HDV RNA
   • Bersamaan dengan marker HBV
-- [HEV — Transmisi] Sebutkan poin-poin penting tentang Beberapa jalur penularan. :: • Fecal–oral terutama melalui air tercemar
+- [HEV — Transmisi] Sebutkan hal-hal penting tentang Beberapa jalur penularan. :: • Fecal–oral terutama melalui air tercemar
   • Wabah waterborne
   • Zoonosis pada beberapa genotype
   • Produk hewan/daging yang terkontaminasi dapat berperan
   • Transmisi melalui transfusi juga dapat terjadi dalam konteks tertentu
-- [Comparison: Fecal–Oral vs Parenteral] Sebutkan poin-poin penting tentang Fecal–oral utama. :: • HAV
+- [Comparison: Fecal–Oral vs Parenteral] Sebutkan fecal–oral utama pada Comparison: Fecal–Oral vs Parenteral. :: • HAV
   • HEV
-- [Comparison: Fecal–Oral vs Parenteral] Sebutkan poin-poin penting tentang Parenteral utama. :: • HBV
+- [Comparison: Fecal–Oral vs Parenteral] Sebutkan parenteral utama pada Comparison: Fecal–Oral vs Parenteral. :: • HBV
   • HCV
   • HDV bersama HBV
-- [Big Picture] Apa poin high-yield (pearl) tentang Big Picture? :: HAV, HCV, HDV, dan HEV adalah virus RNA; HBV adalah satu-satunya virus hepatitis utama yang memiliki genom DNA.
+- [Big Picture] Apa poin high-yield (pearl) tentang Virus Hepatitis (A, B, C, D, E)? :: HAV, HCV, HDV, dan HEV adalah virus RNA; HBV adalah satu-satunya virus hepatitis utama yang memiliki genom DNA.
 - [Diagnosis HAV] Apa jebakan yang sering muncul pada soal tentang Diagnosis HAV? :: Anti-HAV total tanpa membedakan IgM/IgG tidak selalu cukup untuk menyatakan hepatitis A akut.
 - [HBV — Replikasi yang Unik] Apa jebakan yang sering muncul pada soal tentang HBV — Replikasi yang Unik? :: Aktivitas reverse transcriptase bukan hanya milik HIV; HBV juga menggunakan reverse transcription pada siklus replikasinya. Namun dalam soal klasik “retrovirus dengan reverse transcriptase”, jawaban yang biasanya dicari adalah HIV.
 - [HBV — Pencegahan] Apa poin high-yield (pearl) tentang HBV — Pencegahan? :: Vaksin HBV → anti-HBs positif TANPA anti-HBc.

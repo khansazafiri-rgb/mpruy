@@ -486,15 +486,13 @@ Signal ekstraseluler → mengaktifkan/inhibisi transcription factor → transcri
 - [Trp operon — repressible operon] Apa yang dimaksud dengan Ringkas pada Trp operon — repressible operon? :: Lac = substrate hadir → sistem ON.
 - [Alternative Splicing: Satu Gen, Banyak Protein] Apa yang dimaksud dengan Contoh klasik pada Alternative Splicing: Satu Gen, Banyak Protein? :: Calcitonin/CGRP dari satu primary transcript dapat diproses berbeda di jaringan yang berbeda.
 - [Regulasi Ekspresi Gen] Apa jawaban atau kesimpulan untuk petunjuk berikut: DNA promoter hypermethylation biasanya? :: Transcription ↓
-- [Regulasi Ekspresi Gen] Apa yang perlu diketahui tentang Lac operon maksimal pada Regulasi Ekspresi Gen? :: Lactose ada + glucose rendah
 - [Regulasi Ekspresi Gen] Apa yang perlu diingat tentang Trp tinggi pada Regulasi Ekspresi Gen? :: Trp operon OFF
 - [Regulasi Ekspresi Gen] Apa yang perlu diingat tentang Low iron pada Regulasi Ekspresi Gen? :: Ferritin ↓, transferrin receptor ↑
 - [Regulasi Ekspresi Gen] Apa yang dimaksud dengan Fragile X pada Regulasi Ekspresi Gen? :: CGG expansion + methylation/silencing FMR1 pada full mutation
 - [Regulasi Ekspresi Gen] Apa yang perlu diketahui tentang miRNA pada Regulasi Ekspresi Gen? :: Drosha → Exportin-5 → Dicer → RISC/Argonaute → gene silencing
-- [Regulasi Ekspresi Gen] Apa yang perlu diketahui tentang Low iron pada Regulasi Ekspresi Gen? :: Ferritin ↓ dan transferrin receptor ↑
-- [Kromatin dan Nukleosom] Sebutkan poin-poin penting tentang Dua keadaan fungsional utama. :: • Euchromatin → relatif longgar, lebih mudah diakses, umumnya lebih aktif secara transkripsi
+- [Kromatin dan Nukleosom] Sebutkan dua keadaan fungsional utama pada Kromatin dan Nukleosom. :: • Euchromatin → relatif longgar, lebih mudah diakses, umumnya lebih aktif secara transkripsi
   • Heterochromatin → lebih padat, aksesibilitas rendah, umumnya lebih sedikit ditranskripsi
-- [Histone Acetylation: HAT vs HDAC] Sebutkan poin-poin penting tentang Histone acetyltransferase (HAT). :: • Menambahkan gugus asetil ke residu lysine pada histone tail
+- [Histone Acetylation: HAT vs HDAC] Sebutkan hal-hal penting tentang Histone acetyltransferase (HAT). :: • Menambahkan gugus asetil ke residu lysine pada histone tail
   • Mengurangi muatan positif lysine
   • Interaksi histon–DNA menjadi lebih longgar
   • Kromatin cenderung lebih terbuka
@@ -516,27 +514,27 @@ Signal ekstraseluler → mengaktifkan/inhibisi transcription factor → transcri
   • Alternative 3′ splice site
   • Mutually exclusive exons
   • Intron retention
-- [RNA Editing, mRNA Export, dan Quality Control] Sebutkan poin-poin penting tentang Nonsense-mediated decay (NMD). :: • Sistem quality control yang mendeteksi banyak mRNA dengan premature termination codon
+- [RNA Editing, mRNA Export, dan Quality Control] Sebutkan hal-hal penting tentang Nonsense-mediated decay (NMD). :: • Sistem quality control yang mendeteksi banyak mRNA dengan premature termination codon
   • MRNA abnormal kemudian didegradasi agar tidak menghasilkan truncated protein berlebihan
 - [Stabilitas mRNA sebagai Titik Regulasi] Sebutkan faktor yang memengaruhi stabilitas mRNA pada Stabilitas mRNA sebagai Titik Regulasi. :: • Panjang poly-A tail
   • Protein yang berikatan dengan 5′/3′ UTR
   • AU-rich elements pada beberapa mRNA
   • MicroRNA
-- [Protein Degradation: Ubiquitin–Proteasome System] Sebutkan poin-poin penting tentang Ubiquitin–proteasome pathway. :: • E1 = ubiquitin-activating enzyme
+- [Protein Degradation: Ubiquitin–Proteasome System] Sebutkan hal-hal penting tentang Ubiquitin–proteasome pathway. :: • E1 = ubiquitin-activating enzyme
   • E2 = ubiquitin-conjugating enzyme
   • E3 = ubiquitin ligase yang memberikan substrate specificity
   • Polyubiquitinated protein dikenali proteasome
   • Protein didegradasi menjadi peptide kecil
-- [Perbandingan Cepat Level Regulasi] Sebutkan poin-poin penting tentang Chromatin level. :: • DNA methylation
+- [Perbandingan Cepat Level Regulasi] Sebutkan hal-hal penting tentang Chromatin level. :: • DNA methylation
   • Histone modification
   • Chromatin remodeling
-- [Perbandingan Cepat Level Regulasi] Sebutkan poin-poin penting tentang Transcriptional level. :: • Promoter/enhancer/silencer
+- [Perbandingan Cepat Level Regulasi] Sebutkan hal-hal penting tentang Transcriptional level. :: • Promoter/enhancer/silencer
   • Transcription factors
   • Mediator
-- [Perbandingan Cepat Level Regulasi] Sebutkan poin-poin penting tentang Translational level. :: • Initiation factors
+- [Perbandingan Cepat Level Regulasi] Sebutkan hal-hal penting tentang Translational level. :: • Initiation factors
   • UTR regulatory proteins
   • MTOR/miRNA
-- [Big Picture: Kenapa Ekspresi Gen Harus Diatur?] Apa poin high-yield (pearl) tentang Big Picture: Kenapa Ekspresi Gen Harus Diatur? :: Pada eukariot, titik kontrol terpenting sering berada pada akses kromatin dan inisiasi transkripsi, tetapi kontrol pascatranskripsi juga sangat penting.
+- [Big Picture: Kenapa Ekspresi Gen Harus Diatur?] Apa poin high-yield (pearl) tentang Regulasi Ekspresi Gen? :: Pada eukariot, titik kontrol terpenting sering berada pada akses kromatin dan inisiasi transkripsi, tetapi kontrol pascatranskripsi juga sangat penting.
 - [Histone Acetylation: HAT vs HDAC] Apa jebakan yang sering muncul pada soal tentang Histone Acetylation: HAT vs HDAC? :: HAT → acetylation → open chromatin → transcription ↑ HDAC → deacetylation → closed chromatin → transcription ↓
 - [Stabilitas mRNA sebagai Titik Regulasi] Apa poin high-yield (pearl) tentang Stabilitas mRNA sebagai Titik Regulasi? :: 3′ UTR sangat penting sebagai lokasi binding berbagai regulatory proteins dan miRNA.
 - [microRNA (miRNA) dan RNA Interference] Apa jebakan yang sering muncul pada soal tentang microRNA (miRNA) dan RNA Interference? :: Drosha → nucleus. Dicer → cytoplasm. RISC/Argonaute → effector silencing.

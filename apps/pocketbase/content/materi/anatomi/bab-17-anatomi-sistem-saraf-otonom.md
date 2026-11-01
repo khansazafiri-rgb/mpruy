@@ -308,9 +308,9 @@ Jika melihat parasympathetic pathway:
 
 ## Flashcard {kartu}
 
-- [Peta Besar Sistem Saraf Otonom] Apa yang dimaksud dengan Preganglionic neuron pada Peta Besar Sistem Saraf Otonom? :: Cell body di CNS; axon menuju autonomic ganglion.
-- [Peta Besar Sistem Saraf Otonom] Apa yang dimaksud dengan Postganglionic neuron pada Peta Besar Sistem Saraf Otonom? :: Cell body di ganglion; axon menuju organ efektor.
-- [Peta Besar Sistem Saraf Otonom] Jelaskan Sympathetic division bersifat thoracolumbar dalam konteks Peta Besar Sistem Saraf Otonom. :: Preganglionic cell bodies terutama berada di intermediolateral cell column T1–L2. Parasympathetic division bersifat craniosacral: preganglionic fibers berasal dari brainstem melalui CN III, VII, IX, X dan dari sacral spinal cord S2–S4.
+- [Peta Besar Sistem Saraf Otonom] Apa yang dimaksud dengan Preganglionic neuron pada Anatomi Sistem Saraf Otonom? :: Cell body di CNS; axon menuju autonomic ganglion.
+- [Peta Besar Sistem Saraf Otonom] Apa yang dimaksud dengan Postganglionic neuron pada Anatomi Sistem Saraf Otonom? :: Cell body di ganglion; axon menuju organ efektor.
+- [Peta Besar Sistem Saraf Otonom] Jelaskan Sympathetic division bersifat thoracolumbar dalam konteks Anatomi Sistem Saraf Otonom. :: Preganglionic cell bodies terutama berada di intermediolateral cell column T1–L2. Parasympathetic division bersifat craniosacral: preganglionic fibers berasal dari brainstem melalui CN III, VII, IX, X dan dari sacral spinal cord S2–S4.
 - [Thoracic Splanchnic Nerves dan Prevertebral Ganglia] Jelaskan Greater splanchnic nerve dalam konteks Thoracic Splanchnic Nerves dan Prevertebral Ganglia. :: Terutama T5–T9 → dominan menuju celiac ganglia.
 - [Thoracic Splanchnic Nerves dan Prevertebral Ganglia] Jelaskan Lesser splanchnic nerve dalam konteks Thoracic Splanchnic Nerves dan Prevertebral Ganglia. :: Terutama T10–T11 → aorticorenal/superior mesenteric region.
 - [Thoracic Splanchnic Nerves dan Prevertebral Ganglia] Jelaskan Least splanchnic nerve dalam konteks Thoracic Splanchnic Nerves dan Prevertebral Ganglia. :: Terutama T12 → renal plexus.
@@ -324,29 +324,21 @@ Jika melihat parasympathetic pathway:
 - [Autonomic Supply pada Mata] Apa yang dimaksud dengan Sympathetic pada Autonomic Supply pada Mata? :: Upper thoracic spinal cord → sympathetic trunk → superior cervical ganglion → internal carotid plexus → long/short ciliary pathways → dilator pupillae.
 - [Anatomi Sistem Saraf Otonom] Apa yang perlu diketahui tentang Autonomic neuropathy pada Anatomi Sistem Saraf Otonom? :: Dapat menyebabkan orthostatic hypotension, abnormal sweating, gastrointestinal dysmotility, bladder dysfunction, atau sexual dysfunction tergantung fiber yang terkena
 - [Anatomi Sistem Saraf Otonom] Apa yang perlu diketahui tentang Pelvic plexus injury pada Anatomi Sistem Saraf Otonom? :: Dapat terjadi pada operasi pelvis dan menyebabkan gangguan bladder, bowel, erection/ejaculation
-- [Anatomi Sistem Saraf Otonom] Apa yang perlu diketahui tentang Superior cervical ganglion/carotid sympathetic injury? :: Dapat menimbulkan Horner syndrome
 - [Anatomi Sistem Saraf Otonom] Apa yang perlu diketahui tentang Vagus injury pada Anatomi Sistem Saraf Otonom? :: Manifestasi bergantung level; dapat memengaruhi laryngeal, cardiac, pulmonary, atau gastrointestinal function karena luasnya distribusi vagus
 - [Anatomi Sistem Saraf Otonom] Apa yang dimaksud dengan Horner syndrome pada Anatomi Sistem Saraf Otonom? :: Gangguan sympathetic pathway ke head
 - [Anatomi Sistem Saraf Otonom] Apa yang dimaksud dengan Adrenal medulla pada Anatomi Sistem Saraf Otonom? :: Modified sympathetic ganglion
-- [Peta Besar Sistem Saraf Otonom] Sebutkan ciri paling khas jalur eferen otonom adalah rantai dua-neuron pada Peta Besar Sistem Saraf Otonom. :: • Preganglionic neuron: cell body di CNS; axon menuju autonomic ganglion
+- [Peta Besar Sistem Saraf Otonom] Sebutkan ciri paling khas jalur eferen otonom adalah rantai dua-neuron pada Anatomi Sistem Saraf Otonom. :: • Preganglionic neuron: cell body di CNS; axon menuju autonomic ganglion
   • Postganglionic neuron: cell body di ganglion; axon menuju organ efektor
 - [Thoracic Splanchnic Nerves dan Prevertebral Ganglia] Sebutkan tiga kelompok utama pada Thoracic Splanchnic Nerves dan Prevertebral Ganglia. :: • Greater splanchnic nerve: terutama T5–T9 → dominan menuju celiac ganglia
   • Lesser splanchnic nerve: terutama T10–T11 → aorticorenal/superior mesenteric region
   • Least splanchnic nerve: terutama T12 → renal plexus
-- [Parasympathetic Division: Craniosacral Outflow] Sebutkan poin-poin penting tentang Cranial parasympathetic pathways. :: • CN III → ciliary ganglion → sphincter pupillae dan ciliary muscle
+- [Parasympathetic Division: Craniosacral Outflow] Sebutkan hal-hal penting tentang Cranial parasympathetic pathways. :: • CN III → ciliary ganglion → sphincter pupillae dan ciliary muscle
   • CN VII → pterygopalatine ganglion dan submandibular ganglion → lacrimal, nasal, palatal, submandibular, dan sublingual glands
   • CN IX → otic ganglion → parotid gland
   • CN X → thoracic dan sebagian besar abdominal viscera sampai kira-kira proximal two-thirds transverse colon
 - [Visceral Afferents dan Referred Pain] Sebutkan contoh high-yield pada Visceral Afferents dan Referred Pain. :: • Heart → T1–T5 → nyeri dapat dirasakan di chest dan medial upper limb
   • Diaphragmatic irritation → phrenic afferents C3–C5 → referred pain ke shoulder
   • Appendix awal → T10 → periumbilical pain; setelah parietal peritoneum terlibat, nyeri menjadi lebih terlokalisasi di right lower quadrant
-- [Autonomic Reflex Arc] Sebutkan poin-poin penting tentang Refleks otonom melibatkan. :: • Visceral receptor
-  • Visceral afferent fiber
-  • Integration center di spinal cord atau brainstem
-  • Preganglionic autonomic neuron
-  • Autonomic ganglion
-  • Postganglionic neuron
-  • Visceral effector
 - [Sympathetic Trunk dan Paravertebral Ganglia] Apa korelasi klinis dari Sympathetic Trunk dan Paravertebral Ganglia? :: Gangguan sympathetic pathway ke kepala dapat menyebabkan Horner syndrome: ptosis ringan, miosis, dan anhidrosis ipsilateral; enophthalmos tampak semu dapat menyertai.
 - [White dan Gray Rami Communicantes] Apa poin high-yield (pearl) tentang White dan Gray Rami Communicantes? :: White ramus = preganglionic → menuju trunk → hanya T1–L2. Gray ramus = postganglionic → kembali ke spinal nerve → semua level.
 - [Pelvic Splanchnic Nerves dan Inferior Hypogastric Plexus] Apa korelasi klinis dari Pelvic Splanchnic Nerves dan Inferior Hypogastric Plexus? :: Kerusakan pelvic autonomic plexus dapat menyebabkan bladder dysfunction, bowel dysfunction, dan sexual dysfunction.

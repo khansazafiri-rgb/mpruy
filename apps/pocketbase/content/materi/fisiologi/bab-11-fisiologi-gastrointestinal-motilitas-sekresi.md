@@ -181,16 +181,10 @@ Malabsorpsi dapat berkaitan dengan kekurangan nutrien, osteomalasia, anemia pern
 
 - [Regulasi Sekresi H+] Jelaskan Stimulator yang disebut dalam konteks Regulasi Sekresi H+. :: ACh melalui reseptor M3, gastrin melalui CCK-B, dan histamin melalui H2. Inhibitor: somatostatin dan prostaglandin. Jalur akhir sekresi H+ menggunakan H+-K+ ATPase.
 - [Refleks Gastrointestinal] Jelaskan Refleks yang dicantumkan sumber dalam konteks Refleks Gastrointestinal. :: Gastrocolic, enterogastric, ileogastric, duodenocolic, ileocolic, colonoileal, dan rectosphincteric. Masing-masing menghubungkan distensi segmen tertentu dengan perubahan motilitas atau sfingter.
-- [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang REPRODUKSI pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: GnRH → FSH/LH → gonad
 - [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang Sertoli pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Support + blood–testis barrier + ABP/inhibin
-- [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang Leydig pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Testosteron
 - [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang Siklus wanita pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Folikular → ovulasi → luteal → menstruasi bila tidak hamil
 - [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang Kontrasepsi pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Alamiah, barrier, hormonal, IUD, permanen
-- [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang RBC pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Hb, umur ±120 hari
-- [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang Innate pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Inflamasi, interferon, NK, komplemen
-- [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang Adaptive pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: B/humoral dan T/cell-mediated
 - [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang Hemostasis pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Spasme → platelet plug → koagulasi → repair
-- [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang Fibrinolisis pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Plasmin memecah fibrin
 - [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang dimaksud dengan Parietal pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: HCl + intrinsic factor
 - [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang dimaksud dengan Chief pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Pepsinogen
 - [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang dimaksud dengan G cell pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Gastrin

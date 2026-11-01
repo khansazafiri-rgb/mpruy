@@ -597,13 +597,13 @@ Parallel modulators:
 - [Depolarization, Repolarization, Hyperpolarization] Jelaskan Repolarization. :: Kembali menuju resting value setelah depolarization.
 - [Temporal dan Spatial Summation] Apa yang dimaksud dengan Temporal summation pada Temporal dan Spatial Summation? :: Stimulus berulang cepat dari input yang sama bertumpuk sebelum respons sebelumnya hilang.
 - [Fase Depolarisasi Action Potential] Jelaskan Proses bersifat regenerative dalam konteks Fase Depolarisasi Action Potential. :: Depolarization → lebih banyak Na+ channels terbuka → lebih banyak Na+ influx.
-- [Peta Besar Fisiologi Sensorimotor] Apa yang dimaksud dengan integration pada Peta Besar Fisiologi Sensorimotor? :: Memproses dan memilih respons
+- [Peta Besar Fisiologi Sensorimotor] Apa yang dimaksud dengan integration pada Fisiologi Saraf: Potensial Aksi & Sinaps? :: Memproses dan memilih respons
 - [Organisasi Sistem Saraf] Jelaskan Central nervous system (CNS) dalam konteks Organisasi Sistem Saraf. :: Otak dan medula spinalis.
 - [Tiga Tingkat Fungsional CNS] Jelaskan Lower brain level dalam konteks Tiga Tingkat Fungsional CNS. :: Medulla, pons, midbrain, hypothalamus, thalamus, cerebellum, basal ganglia.
 - [Neuron: Unit Fungsional] Pada Neuron: Unit Fungsional, apa klasifikasi strukturalnya? :: Multipolar, bipolar, pseudounipolar.
 - [Glial Cells] Apa yang dimaksud dengan Oligodendrocytes pada Glial Cells? :: Membentuk myelin di CNS; satu sel dapat memielinisasi beberapa segmen akson.
 - [Glial Cells] Apa yang dimaksud dengan Microglia pada Glial Cells? :: Sel imun/fagosit CNS.
-- [Cerebrospinal Fluid (CSF)] Pada Cerebrospinal Fluid (CSF), apa alur klasiknya? :: Lateral ventricles → foramen Monro → third ventricle → aqueduct of Sylvius → fourth ventricle → foramina Luschka/Magendie → subarachnoid space → arachnoid granulations → dural venous sinuses.
+- [Cerebrospinal Fluid (CSF)] Pada Cerebrospinal Fluid, apa alur klasiknya? :: Lateral ventricles → foramen Monro → third ventricle → aqueduct of Sylvius → fourth ventricle → foramina Luschka/Magendie → subarachnoid space → arachnoid granulations → dural venous sinuses.
 - [Integrasi Postsinaptik: Temporal dan Spatial Summation] Jelaskan Spatial summation. :: Beberapa input presinaptik aktif hampir bersamaan dan efeknya dijumlahkan.
 - [Presynaptic dan Postsynaptic Modulation] Apa yang dimaksud dengan Presynaptic facilitation pada Presynaptic dan Postsynaptic Modulation? :: Meningkatkan transmitter release.
 - [Sistem Motorik: Peta Besar] Apa yang dimaksud dengan cerebral cortex pada Sistem Motorik: Peta Besar? :: Voluntary command/planning
@@ -619,30 +619,21 @@ Parallel modulators:
 - [Sleep: NREM vs REM] Jelaskan REM. :: Rapid eye movements, vivid dreaming, cortical activity relatif tinggi, skeletal muscle atonia, autonomic variability.
 - [Clinical Correlations High-Yield] Apa yang dimaksud dengan Peripheral neuropathy pada Clinical Correlations High-Yield? :: Dapat memengaruhi sensory dan motor fibers.
 - [Clinical Correlations High-Yield] Apa yang dimaksud dengan Parkinson disease pada Clinical Correlations High-Yield? :: Dopamine nigrostriatal berkurang.
-- [Fisiologi Saraf: Potensial Aksi & Sinaps] Apa yang perlu diketahui tentang Awake relaxed eyes closed pada Fisiologi Saraf: Potensial Aksi & Sinaps? :: Alpha rhythm
-- [Fisiologi Saraf: Potensial Aksi & Sinaps] Apa yang perlu diketahui tentang Alert/active thinking pada Fisiologi Saraf: Potensial Aksi & Sinaps? :: Beta activity
-- [Fisiologi Saraf: Potensial Aksi & Sinaps] Apa yang perlu diketahui tentang NREM deep sleep pada Fisiologi Saraf: Potensial Aksi & Sinaps? :: Delta waves dominan
-- [Peta Besar Fisiologi Sensorimotor] Sebutkan tiga fungsi besar pada Peta Besar Fisiologi Sensorimotor. :: • Sensory input: mendeteksi perubahan internal dan eksternal
+- [Peta Besar Fisiologi Sensorimotor] Sebutkan tiga fungsi besar pada Fisiologi Saraf: Potensial Aksi & Sinaps. :: • Sensory input: mendeteksi perubahan internal dan eksternal
   • Integration: memproses dan memilih respons
   • Motor output: menghasilkan respons melalui otot atau kelenjar
-- [Organisasi Sistem Saraf] Sebutkan poin-poin penting tentang Eferen. :: • Somatic motor → skeletal muscle
+- [Organisasi Sistem Saraf] Sebutkan hal-hal penting tentang Eferen. :: • Somatic motor → skeletal muscle
   • Autonomic motor → smooth muscle, cardiac muscle, glands
-- [Tiga Tingkat Fungsional CNS] Sebutkan poin-poin penting tentang Spinal cord level. :: • Jalur naik sensorik dan turun motorik
+- [Tiga Tingkat Fungsional CNS] Sebutkan hal-hal penting tentang Spinal cord level. :: • Jalur naik sensorik dan turun motorik
   • Pusat banyak refleks cepat
-- [Electrical vs Chemical Synapse] Sebutkan poin-poin penting tentang Electrical synapse. :: • Melalui gap junction
+- [Electrical vs Chemical Synapse] Sebutkan hal-hal penting tentang Electrical synapse. :: • Melalui gap junction
   • Delay minimal
   • Sering bidirectional
   • Baik untuk sinkronisasi
-- [Electrical vs Chemical Synapse] Sebutkan poin-poin penting tentang Chemical synapse. :: • Neurotransmitter melalui synaptic cleft
+- [Electrical vs Chemical Synapse] Sebutkan hal-hal penting tentang Chemical synapse. :: • Neurotransmitter melalui synaptic cleft
   • Memiliki synaptic delay
   • Secara fisiologis unidirectional dari presinaptik ke postsinaptik
   • Jauh lebih mudah dimodulasi
-- [Sistem Motorik: Peta Besar] Sebutkan poin-poin penting tentang Motor control melibatkan. :: • Cerebral cortex: voluntary command/planning
-  • Basal ganglia: selection/initiation dan suppression gerakan
-  • Cerebellum: coordination, timing, error correction
-  • Brainstem: posture dan automatic motor patterns
-  • Spinal cord: final common pathways dan reflexes
-  • Lower motor neuron: langsung menuju skeletal muscle
 - [Tanda Lesi UMN] Sebutkan pola klasik setelah fase akut pada Tanda Lesi UMN. :: • Weakness
   • Spasticity
   • Hyperreflexia
@@ -654,18 +645,18 @@ Parallel modulators:
   • Balance
   • Error correction
   • Motor learning
-- [Higher Brain Function] Sebutkan poin-poin penting tentang Korteks serebri mendukung. :: • Perception
+- [Higher Brain Function] Sebutkan hal-hal penting tentang Korteks serebri mendukung. :: • Perception
   • Planning
   • Language
   • Executive function
   • Attention
   • Consciousness
   • Memory
-- [Limbic System dan Hypothalamus] Sebutkan poin-poin penting tentang Limbic circuits terkait. :: • Emotion
+- [Limbic System dan Hypothalamus] Sebutkan limbic circuits terkait pada Limbic System dan Hypothalamus. :: • Emotion
   • Motivation
   • Reward
   • Memory
-- [Master Flow Sensorimotor] Sebutkan poin-poin penting tentang Parallel modulators. :: • Spinal reflex circuits
+- [Master Flow Sensorimotor] Sebutkan hal-hal penting tentang Parallel modulators. :: • Spinal reflex circuits
   • Cerebellum for error correction
   • Basal ganglia for movement selection
   • ANS for visceral adaptation

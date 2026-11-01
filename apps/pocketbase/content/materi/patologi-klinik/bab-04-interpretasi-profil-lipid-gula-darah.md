@@ -828,7 +828,6 @@ Baca gula darah dengan urutan: kondisi fasting/random → plasma glucose → HbA
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Profil lipid dasar pada Interpretasi Profil Lipid & Gula Darah? :: TC, LDL-C, HDL-C, TG
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Non-HDL-C pada Interpretasi Profil Lipid & Gula Darah? :: TC − HDL-C
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan LDL-C pada Interpretasi Profil Lipid & Gula Darah? :: Marker utama atherogenic cholesterol dalam praktik rutin
-- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Friedewald: LDL pada Interpretasi Profil Lipid & Gula Darah? :: TC − HDL − TG/5 dalam mg/dL
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Diabetic dyslipidemia pada Interpretasi Profil Lipid & Gula Darah? :: TG ↑ + HDL ↓ + atherogenic remnants/small dense LDL
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan LDL-C ≥190 mg/dL pada Interpretasi Profil Lipid & Gula Darah? :: Red flag severe hypercholesterolemia/FH pada dewasa
 - [Interpretasi Profil Lipid & Gula Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tendon xanthoma + premature ASCVD + very high LDL? :: Pikirkan FH
@@ -845,7 +844,7 @@ Baca gula darah dengan urutan: kondisi fasting/random → plasma glucose → HbA
   • Leukositosis ekstrem dapat mempercepat konsumsi glukosa in vitro
   • Tabung dengan inhibitor glycolysis membantu tetapi tidak selalu menghentikan glycolysis secara instan
   • Sampel sebaiknya diproses sesuai protokol laboratorium
-- [Oral Glucose Tolerance Test — OGTT] Sebutkan poin-poin penting tentang Prosedur klasik dewasa non-hamil. :: • Pasien menjalani persiapan diet dan aktivitas seperti biasa sebelum tes
+- [Oral Glucose Tolerance Test — OGTT] Sebutkan prosedur klasik dewasa non-hamil pada Oral Glucose Tolerance Test — OGTT. :: • Pasien menjalani persiapan diet dan aktivitas seperti biasa sebelum tes
   • Puasa semalam
   • Ambil fasting plasma glucose
   • Minum 75 g anhydrous glucose
@@ -853,7 +852,7 @@ Baca gula darah dengan urutan: kondisi fasting/random → plasma glucose → HbA
 - [HbA1c — Apa yang Diukur?] Sebutkan kriteria umum pada HbA1c — Apa yang Diukur?. :: • <5.7% → normal
   • 5.7–6.4% → prediabetes
   • ≥6.5% → diabetes
-- [Hypoglycemia — Whipple Triad] Sebutkan poin-poin penting tentang Whipple triad. :: • Gejala konsisten dengan hypoglycemia
+- [Hypoglycemia — Whipple Triad] Sebutkan hal-hal penting tentang Whipple triad. :: • Gejala konsisten dengan hypoglycemia
   • Plasma glucose rendah saat gejala
   • Gejala membaik setelah glucose dinaikkan
 - [Hypoglycemia — Whipple Triad] Sebutkan gejala adrenergic pada Hypoglycemia — Whipple Triad. :: • Tremor
@@ -861,7 +860,7 @@ Baca gula darah dengan urutan: kondisi fasting/random → plasma glucose → HbA
   • Sweating
   • Anxiety
   • Hunger
-- [Insulin Eksogen vs Endogen] Sebutkan poin-poin penting tentang Endogenous hyperinsulinism. :: • Insulin tidak sesuai tinggi
+- [Insulin Eksogen vs Endogen] Sebutkan hal-hal penting tentang Endogenous hyperinsulinism. :: • Insulin tidak sesuai tinggi
   • C-peptide tinggi/tidak tertekan
   • Proinsulin tinggi
   • Beta-hydroxybutyrate rendah
@@ -873,17 +872,17 @@ Baca gula darah dengan urutan: kondisi fasting/random → plasma glucose → HbA
   • Anion gap
   • Creatinine
   • Potassium
-- [Fasting vs Nonfasting Lipid Profile] Sebutkan poin-poin penting tentang Fasting lebih berguna bila. :: • Triglycerides tinggi
+- [Fasting vs Nonfasting Lipid Profile] Sebutkan hal-hal penting tentang Fasting lebih berguna bila. :: • Triglycerides tinggi
   • Dugaan severe hypertriglyceridemia
   • Diperlukan perhitungan LDL tertentu
   • Hasil nonfasting sulit diinterpretasi
-- [LDL-C — Lipoprotein Aterogenik Utama] Sebutkan poin-poin penting tentang LDL-C harus ditafsirkan berdasarkan. :: • Riwayat ASCVD
+- [LDL-C — Lipoprotein Aterogenik Utama] Sebutkan hal-hal penting tentang LDL-C harus ditafsirkan berdasarkan. :: • Riwayat ASCVD
   • Diabetes
   • CKD
   • Usia
   • Faktor risiko kardiovaskular
   • Kemungkinan familial hypercholesterolemia
-- [Dyslipidemia pada Diabetes / Insulin Resistance] Sebutkan poin-poin penting tentang Pola klasik diabetic dyslipidemia. :: • Triglycerides ↑
+- [Dyslipidemia pada Diabetes / Insulin Resistance] Sebutkan pola klasik diabetic dyslipidemia pada Dyslipidemia pada Diabetes / Insulin Resistance. :: • Triglycerides ↑
   • HDL-C ↓
   • Small dense LDL meningkat
   • Remnant particles meningkat

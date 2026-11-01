@@ -331,7 +331,6 @@ Standing → venous pooling → venous return ↓ → EDV ↓ → SV ↓ → CO 
 
 - [Flow, Pressure, dan Resistance] Pada Flow, Pressure, dan Resistance, apa konsep dasarnya? :: Flow (Q) = ΔP / R.
 - [Pulse Pressure] Pada Pulse Pressure, apa rumusnya? :: Pulse Pressure = systolic pressure − diastolic pressure.
-- [Pulse Pressure] Apa yang dimaksud dengan Contoh sumber pada Pulse Pressure? :: 124 − 82 = 42 mmHg.
 - [Mean Arterial Pressure] Apa yang dimaksud dengan Contoh sumber pada Mean Arterial Pressure? :: 124/82 mmHg → PP = 42 mmHg → MAP ≈ 82 + 14 = 96 mmHg.
 - [Total Peripheral Resistance] Apa yang dimaksud dengan Vasoconstriction pada Total Peripheral Resistance? :: Radius ↓ → resistance ↑ → pada kondisi lain sama, pressure cenderung ↑ dan flow ke bed tersebut cenderung ↓.
 - [Contoh Hitung Net Filtration] Jelaskan Net outward force dalam konteks Contoh Hitung Net Filtration. :: (35 + 1) − (25 + 0) = 11 mmHg keluar kapiler.
@@ -343,19 +342,15 @@ Standing → venous pooling → venous return ↓ → EDV ↓ → SV ↓ → CO 
 - [Efek Parasimpatis] Pada Efek Parasimpatis, apa efek utamanya? :: Heart rate ↓ dan AV nodal conduction ↓.
 - [Respons terhadap Kehilangan Volume] Apa yang dimaksud dengan Kompensasi cepat pada Respons terhadap Kehilangan Volume? :: Sympathetic ↑ → tachycardia + vasoconstriction + venoconstriction.
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diketahui tentang Dual pump pada Fisiologi Tekanan Darah & Regulasinya? :: Right heart → pulmonary circulation; left heart → systemic circulation
-- [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diketahui tentang Hemodynamics pada Fisiologi Tekanan Darah & Regulasinya? :: Q = ΔP/R
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang dimaksud dengan Vena pada Fisiologi Tekanan Darah & Regulasinya? :: High compliance reservoir
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang dimaksud dengan Arteriol pada Fisiologi Tekanan Darah & Regulasinya? :: Resistance vessels
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diketahui tentang Electrical pada Fisiologi Tekanan Darah & Regulasinya? :: SA → AV → His → bundle branches → Purkinje
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang dimaksud dengan SA node pada Fisiologi Tekanan Darah & Regulasinya? :: Automaticity/funny current
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang dimaksud dengan Phase 2 pada Fisiologi Tekanan Darah & Regulasinya? :: Ca2+ plateau
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diingat tentang Long refractory period pada Fisiologi Tekanan Darah & Regulasinya? :: No tetanus
-- [Fisiologi Tekanan Darah & Regulasinya] Apa yang dimaksud dengan Mechanical: SV pada Fisiologi Tekanan Darah & Regulasinya? :: EDV − ESV
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diingat tentang Preload ↑ pada Fisiologi Tekanan Darah & Regulasinya? :: SV cenderung ↑
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diingat tentang Afterload ↑ pada Fisiologi Tekanan Darah & Regulasinya? :: ESV ↑, SV ↓
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diingat tentang Contractility ↑ pada Fisiologi Tekanan Darah & Regulasinya? :: ESV ↓, SV ↑
-- [Fisiologi Tekanan Darah & Regulasinya] Apa yang dimaksud dengan Pressure: PP pada Fisiologi Tekanan Darah & Regulasinya? :: SBP − DBP
-- [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diketahui tentang Standing pada Fisiologi Tekanan Darah & Regulasinya? :: Venous return ↓ first
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diketahui tentang Venous return pada Fisiologi Tekanan Darah & Regulasinya? :: Blood volume + venous tone + muscle pump + respiratory pump + valves
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diketahui tentang Exam anchor pada Fisiologi Tekanan Darah & Regulasinya? :: Electrical event comes first, then mechanical response
 - [Faktor yang Meningkatkan Venous Return] Sebutkan faktor penting pada Faktor yang Meningkatkan Venous Return. :: • Blood volume

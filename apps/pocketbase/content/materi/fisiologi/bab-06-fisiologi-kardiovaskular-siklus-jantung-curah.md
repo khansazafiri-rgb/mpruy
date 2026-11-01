@@ -397,7 +397,7 @@ Ventricular filling → atrial systole → EDV → isovolumetric contraction →
 
 ## Flashcard {kartu}
 
-- [Peta Besar Fisiologi Kardiovaskular] Jelaskan Urutan logika utama dalam konteks Peta Besar Fisiologi Kardiovaskular. :: Electrical impulse → myocardial contraction → pressure gradient → valve movement → blood flow → tissue perfusion → sensor detects change → autonomic/vascular response → pressure dan flow dikoreksi.
+- [Peta Besar Fisiologi Kardiovaskular] Jelaskan Urutan logika utama dalam konteks Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung. :: Electrical impulse → myocardial contraction → pressure gradient → valve movement → blood flow → tissue perfusion → sensor detects change → autonomic/vascular response → pressure dan flow dikoreksi.
 - [Sistem Konduksi Jantung] Pada Sistem Konduksi Jantung, apa tujuan sistemnya? :: Memastikan atrium berkontraksi sebelum ventrikel dan depolarisasi ventrikel berlangsung sinkron.
 - [Pengaruh Simpatis pada Pacemaker] Pada Pengaruh Simpatis pada Pacemaker, apa konsekuensinya? :: Heart rate meningkat.
 - [Pengaruh Parasimpatis pada Pacemaker] Pada Pengaruh Parasimpatis pada Pacemaker, apa konsekuensinya? :: Heart rate menurun.
@@ -416,17 +416,17 @@ Ventricular filling → atrial systole → EDV → isovolumetric contraction →
 - [Frank–Starling Mechanism] Jelaskan Sumber menekankan prinsip dalam konteks Frank–Starling Mechanism. :: Semakin besar filling/stretch awal dalam rentang fisiologis, semakin kuat contraction dan semakin besar stroke volume.
 - [PV Loop: Peningkatan Contractility] Pada PV Loop: Peningkatan Contractility, apa konsekuensinya? :: ESV menurun dan stroke volume meningkat.
 - [Cardiac Output saat Exercise] Jelaskan Sumber menggunakan nilai ilustratif dalam konteks Cardiac Output saat Exercise. :: Resting CO sekitar 5 L/min dan dapat meningkat beberapa kali lipat saat exercise berat.
-- [Peta Besar Fisiologi Kardiovaskular] Sebutkan poin-poin penting tentang Empat blok besar bab. :: • Sistem listrik jantung
+- [Peta Besar Fisiologi Kardiovaskular] Sebutkan hal-hal penting tentang Empat blok besar bab. :: • Sistem listrik jantung
   • Mekanika pompa dan cardiac cycle
   • Hemodinamika pembuluh
   • Regulasi tekanan darah dan venous return
 - [SA Node] Sebutkan karakteristik utamanya pada SA Node. :: • Spontaneous depolarization
   • Tidak memiliki resting membrane potential yang benar-benar stabil seperti sel ventrikel
   • Mencapai threshold secara otomatis
-- [Mengapa Konduksi AV Node Lambat?] Sebutkan poin-poin penting tentang Sumber pembahasan soal menekankan. :: • Sel lebih kecil
+- [Mengapa Konduksi AV Node Lambat?] Sebutkan hal-hal penting tentang Sumber pembahasan soal menekankan. :: • Sel lebih kecil
   • Gap junction lebih sedikit
   • Conduction lebih lambat
-- [Pressure–Volume Loop: Empat Sisi] Sebutkan poin-poin penting tentang PV loop secara konseptual. :: • Ventricular filling
+- [Pressure–Volume Loop: Empat Sisi] Sebutkan PV loop secara konseptual pada Pressure–Volume Loop: Empat Sisi. :: • Ventricular filling
   • Isovolumetric contraction
   • Ejection
   • Isovolumetric relaxation

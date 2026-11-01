@@ -525,8 +525,8 @@ Diffuse MALT = unencapsulated lymphocytes/follicles associated with mucosa.
 
 ## Flashcard {kartu}
 
-- [Peta Besar Sistem Limfatik dan Imun] Jelaskan Organ limfoid primer dalam konteks Peta Besar Sistem Limfatik dan Imun. :: - bone marrow -> pembentukan sel darah dan pematangan limfosit B; - thymus -> pematangan dan seleksi limfosit T.
-- [Peta Besar Sistem Limfatik dan Imun] Jelaskan Organ limfoid sekunder dalam konteks Peta Besar Sistem Limfatik dan Imun. :: - lymph node -> menyaring limfe; - spleen -> menyaring darah; - tonsils dan MALT -> menghadapi antigen pada permukaan mukosa.
+- [Peta Besar Sistem Limfatik dan Imun] Jelaskan Organ limfoid primer dalam konteks Histologi Organ Limfoid & Imun. :: - bone marrow -> pembentukan sel darah dan pematangan limfosit B; - thymus -> pematangan dan seleksi limfosit T.
+- [Peta Besar Sistem Limfatik dan Imun] Jelaskan Organ limfoid sekunder dalam konteks Histologi Organ Limfoid & Imun. :: - lymph node -> menyaring limfe; - spleen -> menyaring darah; - tonsils dan MALT -> menghadapi antigen pada permukaan mukosa.
 - [Pembuluh Limfatik: Konsep Dasar] Pada Pembuluh Limfatik: Konsep Dasar, apa urutan alirannya? :: Interstitial fluid -> lymphatic capillary -> collecting lymphatic vessel -> lymphatic trunk -> thoracic duct/right lymphatic duct -> venous circulation.
 - [Kapiler Limfatik versus Kapiler Darah] Apa yang dimaksud dengan Lymphatic capillary pada Kapiler Limfatik versus Kapiler Darah? :: - blind-ended; - lumen lebih irregular dan dapat lebih lebar; - endothelial cells overlap membentuk flap-like openings; - basal lamina tidak kontinu atau sangat tipis; - tidak berisi eritrosit pada keadaan normal.
 - [Kapiler Limfatik versus Kapiler Darah] Apa yang dimaksud dengan Blood capillary pada Kapiler Limfatik versus Kapiler Darah? :: - merupakan bagian sirkuit tertutup; - lumen biasanya lebih teratur; - basal lamina lebih kontinu; - sering mengandung erythrocytes.
@@ -560,16 +560,14 @@ Diffuse MALT = unencapsulated lymphocytes/follicles associated with mucosa.
 - [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Palatine tonsil pada Histologi Organ Limfoid & Imun? :: Squamous + deep crypts
 - [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Lingual tonsil pada Histologi Organ Limfoid & Imun? :: Squamous + one crypt + mucous glands
 - [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Pharyngeal tonsil pada Histologi Organ Limfoid & Imun? :: Respiratory epithelium + folds
-- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Spleen: white pulp pada Histologi Organ Limfoid & Imun? :: PALS + B-cell follicles around central arterioles
 - [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan red pulp pada Histologi Organ Limfoid & Imun? :: Sinusoids + Cords of Billroth
 - [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan PALS pada Histologi Organ Limfoid & Imun? :: T cells
-- [Histologi Organ Limfoid & Imun] Apa yang perlu diketahui tentang Thymus pada Histologi Organ Limfoid & Imun? :: Lobulated
 - [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan cortex pada Histologi Organ Limfoid & Imun? :: Peripheral dark, immature T cells
 - [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan medulla pada Histologi Organ Limfoid & Imun? :: Central pale
 - [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Hassall corpuscles pada Histologi Organ Limfoid & Imun? :: Concentric epithelial structures in medulla
 - [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan MALT pada Histologi Organ Limfoid & Imun? :: Lymphoid tissue associated with mucosa, usually without complete capsule
 - [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Peyer patches pada Histologi Organ Limfoid & Imun? :: Aggregated GALT in ileum
-- [Peta Besar Sistem Limfatik dan Imun] Apa clue praktikum untuk Peta Besar Sistem Limfatik dan Imun? :: Lymph node = cortex + medulla + sinus; spleen = white pulp + red pulp + central arteriole; thymus = lobules + dark cortex + pale medulla + Hassall corpuscles; tonsil = epithelium + crypts/folds + lymphoid follicles.
+- [Peta Besar Sistem Limfatik dan Imun] Apa clue praktikum untuk Histologi Organ Limfoid & Imun? :: Lymph node = cortex + medulla + sinus; spleen = white pulp + red pulp + central arteriole; thymus = lobules + dark cortex + pale medulla + Hassall corpuscles; tonsil = epithelium + crypts/folds + lymphoid follicles.
 - [Pembuluh Limfatik: Konsep Dasar] Apa clue praktikum untuk Pembuluh Limfatik: Konsep Dasar? :: Pembuluh limfatik sering tampak lebih tipis, kolaps, dan irregular dibanding vena dengan ukuran sebanding.
 - [Jaringan Limforetikuler] Apa poin high-yield (pearl) tentang Jaringan Limforetikuler? :: Thymus = epithelial reticular stroma.
 - [Lymphoid Follicle Sekunder] Apa clue praktikum untuk Lymphoid Follicle Sekunder? :: Pale center + dark mantle = secondary follicle.

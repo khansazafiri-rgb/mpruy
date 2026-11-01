@@ -297,7 +297,7 @@ Analgesik mengurangi nyeri tanpa menghilangkan kesadaran. Mekanisme nyeri dibagi
 ## Flashcard {kartu}
 
 - [Mekanisme Terjadinya Nyeri] Pada Mekanisme Terjadinya Nyeri, apa urutan besarnya? :: Transduksi → transmisi → modulasi → persepsi.
-- [Transduksi] Pada Transduksi (Mekanisme Terjadinya Nyeri), apa lokasinya? :: Free nerve ending pada jaringan perifer.
+- [Transduksi] Pada Transduksi, apa lokasinya? :: Free nerve ending pada jaringan perifer.
 - [Transmisi] Pada Mekanisme Terjadinya Nyeri, apa jalurnya? :: Nosiseptor → serabut Aδ/C → ganglion radiks dorsalis → kornu dorsalis medula spinalis → traktus spinotalamikus → talamus → korteks serebri.
 - [Farmakokinetik Ringkas NSAID] Pada Farmakokinetik Ringkas NSAID, apa distribusinya? :: Sekitar 95% terikat protein plasma
 - [Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik] Apa jawaban atau kesimpulan untuk petunjuk berikut: Nyeri tanpa kehilangan kesadaran? :: Konsep analgesia, bukan anestesi umum
@@ -315,33 +315,28 @@ Analgesik mengurangi nyeri tanpa menghilangkan kesadaran. Mekanisme nyeri dibagi
 - [Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik] Apa yang dimaksud dengan NSAID pada Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik? :: Analgesik + antipiretik + antiinflamasi
 - [Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik] Apa yang dimaksud dengan Mekanisme utama NSAID pada Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik? :: Inhibisi COX → prostaglandin menurun
 - [Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik] Apa yang perlu diketahui tentang Nonselektif pada Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik? :: Aspirin, ibuprofen, naproxen, diclofenac, ketorolac, indometasin, piroxicam
-- [Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik] Apa yang perlu diketahui tentang Selektif COX-2 pada Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik? :: Celecoxib, etoricoxib
 - [Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik] Apa yang perlu diketahui tentang Ringkasan PK NSAID pada Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik? :: Absorpsi oral baik, ikatan protein tinggi, metabolisme hati, ekskresi ginjal
 - [Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik] Apa yang dimaksud dengan Tukak lambung aktif pada Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik? :: Kontraindikasi
 - [Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik] Apa yang dimaksud dengan Gagal ginjal berat pada Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik? :: Kontraindikasi
 - [Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik] Apa yang dimaksud dengan Trimester III kehamilan pada Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik? :: Kontraindikasi
 - [Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik] Apa yang dimaksud dengan Perdarahan aktif pada Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik? :: Kontraindikasi
 - [Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik] Apa yang dimaksud dengan Gagal jantung berat pada Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik? :: Kontraindikasi
-- [Definisi Analgesik dan Nyeri] Sebutkan poin-poin penting tentang Karakteristik analgesik. :: • Mengurangi persepsi nyeri
+- [Definisi Analgesik dan Nyeri] Sebutkan karakteristik analgesik pada Definisi Analgesik dan Nyeri. :: • Mengurangi persepsi nyeri
   • Tidak menyebabkan anestesi umum
   • Tidak menghilangkan kesadaran
   • Dapat bekerja pada sistem saraf perifer maupun sistem saraf pusat
-- [Transduksi] Sebutkan target farmakologi pada Transduksi (Mekanisme Terjadinya Nyeri). :: • NSAID → menghambat COX sehingga produksi prostaglandin menurun
+- [Transduksi] Sebutkan target farmakologi pada Transduksi. :: • NSAID → menghambat COX sehingga produksi prostaglandin menurun
   • Kortikosteroid → menghambat fosfolipase A₂ sehingga pembentukan mediator asam arakidonat berkurang
 - [Transmisi] Sebutkan perbedaan serabut pada Mekanisme Terjadinya Nyeri. :: • Aδ: bermielin, cepat, nyeri tajam dan terlokalisasi
   • C: tidak bermielin, lambat, nyeri tumpul dan difus
 - [Transmisi] Sebutkan target farmakologi pada Mekanisme Terjadinya Nyeri. :: • Anestesi lokal seperti lidokain → blok kanal Na⁺ sehingga impuls tidak dihantarkan
   • Opioid → menghambat pelepasan neurotransmiter nyeri di medula spinalis
-- [Modulasi] Sebutkan poin-poin penting tentang Sistem analgesik endogen menggunakan. :: • Endorfin
-  • Enkefalin
-  • Serotonin (5-HT)
-  • Norepinefrin
-- [Klasifikasi Analgesik] Sebutkan poin-poin penting tentang Analgesik non-opioid. :: • Parasetamol
+- [Klasifikasi Analgesik] Sebutkan hal-hal penting tentang Analgesik non-opioid. :: • Parasetamol
   • Ibuprofen
   • Diklofenak
   • Aspirin
   • Naproxen
-- [Klasifikasi Analgesik] Sebutkan poin-poin penting tentang Analgesik opioid. :: • Morfin
+- [Klasifikasi Analgesik] Sebutkan hal-hal penting tentang Analgesik opioid. :: • Morfin
   • Fentanil
   • Tramadol
   • Oksikodon
@@ -352,16 +347,16 @@ Analgesik mengurangi nyeri tanpa menghilangkan kesadaran. Mekanisme nyeri dibagi
 - [COX-1 vs COX-2] Sebutkan fungsi COX-2 pada COX-1 vs COX-2. :: • Menghasilkan prostaglandin yang berkaitan dengan nyeri
   • Inflamasi
   • Demam
-- [Klasifikasi NSAID] Sebutkan poin-poin penting tentang NSAID nonselektif. :: • Aspirin
+- [Klasifikasi NSAID] Sebutkan hal-hal penting tentang NSAID nonselektif. :: • Aspirin
   • Ibuprofen
   • Naproxen
   • Diclofenac
   • Ketorolac
   • Indometasin
   • Piroxicam
-- [Klasifikasi NSAID] Sebutkan poin-poin penting tentang NSAID selektif COX-2. :: • Celecoxib
+- [Klasifikasi NSAID] Sebutkan hal-hal penting tentang NSAID selektif COX-2. :: • Celecoxib
   • Etoricoxib
-- [Farmakokinetik Ringkas NSAID] Sebutkan poin-poin penting tentang Ringkasan. :: • Absorpsi: baik secara oral
+- [Farmakokinetik Ringkas NSAID] Sebutkan hal-hal penting tentang Ringkasan. :: • Absorpsi: baik secara oral
   • Distribusi: sekitar 95% terikat protein plasma
   • Metabolisme: hati
   • Ekskresi: ginjal

@@ -431,9 +431,6 @@ Nematoda usus:
 - [Pattern Recognition Praktikum] Apa yang dimaksud dengan Kasus D pada Pattern Recognition Praktikum? :: Elephantiasis + hydrocele + microfilaria nokturnal → bancroftian filariasis sangat mungkin.
 - [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan Penyebab utama LF pada Nematoda Jaringan (Filaria)? :: W. bancrofti, B. malayi, B. timori
 - [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan Vektor pada Nematoda Jaringan (Filaria)? :: Mosquito
-- [Nematoda Jaringan (Filaria)] Apa yang perlu diketahui tentang W. bancrofti microfilaria pada Nematoda Jaringan (Filaria)? :: Sheathed, nuclei tidak sampai tail tip
-- [Nematoda Jaringan (Filaria)] Apa yang perlu diketahui tentang B. malayi pada Nematoda Jaringan (Filaria)? :: Sheathed, dua terminal nuclei khas
-- [Nematoda Jaringan (Filaria)] Apa yang perlu diketahui tentang B. timori pada Nematoda Jaringan (Filaria)? :: Lebih panjang, cephalic space panjang, lebih banyak tail nuclei
 - [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan TPE pada Nematoda Jaringan (Filaria)? :: Pulmonary symptoms + marked eosinophilia
 - [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan DEC pada Nematoda Jaringan (Filaria)? :: Drug of choice untuk individual LF pada pasien yang sesuai
 - [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan WUCHERERIA pada Nematoda Jaringan (Filaria)? :: Mosquito → L3 → adult di limfe → microfilaria di darah; tail tip kosong dari nuclei; hydrocele khas
@@ -458,11 +455,11 @@ Nematoda usus:
   • Cephalic space lebih panjang
   • Sheath tidak terwarnai dengan Giemsa
   • Lebih banyak nuclei tersusun single-file menuju bagian ekor
-- [Spektrum Klinis] Sebutkan poin-poin penting tentang Filariasis limfatik. :: • Asimtomatik/subklinis
+- [Spektrum Klinis] Sebutkan hal-hal penting tentang Filariasis limfatik. :: • Asimtomatik/subklinis
   • Manifestasi akut
   • Manifestasi kronik
   • Tropical pulmonary eosinophilia (TPE) pada sebagian pasien
-- [W. bancrofti vs Brugia — Pola Klinis] Sebutkan poin-poin penting tentang Brugian filariasis. :: • Lymphedema lebih sering mengenai ekstremitas distal
+- [W. bancrofti vs Brugia — Pola Klinis] Sebutkan hal-hal penting tentang Brugian filariasis. :: • Lymphedema lebih sering mengenai ekstremitas distal
   • Genital involvement umumnya lebih jarang
 - [Diagnosis — Mikroskopi Darah] Sebutkan pemeriksaan klasik pada Diagnosis — Mikroskopi Darah. :: • Thick blood smear → sensitivitas lebih tinggi untuk mendeteksi mikrofilaria
   • Thin blood smear → membantu menilai morfologi spesies
@@ -472,7 +469,7 @@ Nematoda usus:
   • Elevasi ekstremitas
   • Tata laksana luka dan infeksi sekunder
   • Alas kaki yang sesuai
-- [Filariasis di Indonesia] Sebutkan poin-poin penting tentang Spesies yang relevan. :: • W. bancrofti
+- [Filariasis di Indonesia] Sebutkan hal-hal penting tentang Spesies yang relevan. :: • W. bancrofti
   • B. malayi
   • B. timori
 - [Vector Control & Prevention] Sebutkan pencegahan pada Vector Control & Prevention. :: • Mosquito bite prevention
@@ -480,10 +477,10 @@ Nematoda usus:
   • Vector control
   • Partisipasi MDA pada daerah endemik
   • Surveilans setelah MDA dihentikan
-- [Pembeda dengan Nematoda Usus] Sebutkan poin-poin penting tentang Nematoda usus. :: • Banyak yang ditularkan telur atau larva dari tanah
+- [Pembeda dengan Nematoda Usus] Sebutkan hal-hal penting tentang Nematoda usus. :: • Banyak yang ditularkan telur atau larva dari tanah
   • Cacing dewasa dominan di lumen usus
   • Diagnosis sering dari telur/larva di feses
-- [Konsep Besar Filariasis Limfatik] Apa poin high-yield (pearl) tentang Konsep Besar Filariasis Limfatik? :: Filaria limfatik = ADULT di LIMFE, MICROFILARIA di DARAH.
+- [Konsep Besar Filariasis Limfatik] Apa poin high-yield (pearl) tentang Nematoda Jaringan (Filaria)? :: Filaria limfatik = ADULT di LIMFE, MICROFILARIA di DARAH.
 - [Vektor dan Distribusi] Apa poin high-yield (pearl) tentang Vektor dan Distribusi? :: Jangan menghafal “satu nyamuk = satu filaria” untuk W. bancrofti karena vektornya sangat bergantung daerah.
 - [Wuchereria bancrofti — Morfologi Mikrofilaria] Bagaimana cara mengingat Wuchereria bancrofti — Morfologi Mikrofilaria? :: BAN-crofti = “Blank tail” → tail tip tanpa nuclei.
 - [Brugia malayi — Morfologi Mikrofilaria] Bagaimana cara mengingat Brugia malayi — Morfologi Mikrofilaria? :: MALAYI = “2 nuclei at the tail”.

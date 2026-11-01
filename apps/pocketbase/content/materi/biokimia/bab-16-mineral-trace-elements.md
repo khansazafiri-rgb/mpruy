@@ -542,11 +542,11 @@ Se = antioxidant + thyroid conversion.
 
 - [Homeostasis Calcium: PTH, Vitamin D, dan Calcitonin] Apa yang dimaksud dengan Tulang pada Homeostasis Calcium: PTH, Vitamin D, dan Calcitonin? :: Meningkatkan mobilisasi Ca2+ secara tidak langsung melalui signaling osteoblast/osteocyte yang meningkatkan RANKL → aktivitas osteoclast meningkat.
 - [Homeostasis Calcium: PTH, Vitamin D, dan Calcitonin] Apa yang dimaksud dengan Ginjal pada Homeostasis Calcium: PTH, Vitamin D, dan Calcitonin? :: Meningkatkan reabsorpsi Ca2+ terutama di distal nephron.
-- [Peta Besar 30 Detik] Apa yang dimaksud dengan Ca/P pada Peta Besar 30 Detik? :: Low Ca2+ → PTH ↑ → kidney Ca reabsorption ↑ + phosphate excretion ↑ + calcitriol ↑ → intestinal Ca/P absorption ↑.
-- [Peta Besar 30 Detik] Apa yang dimaksud dengan Iron pada Peta Besar 30 Detik? :: Dietary Fe → enterocyte → ferroportin → transferrin → tissues/bone marrow → RBC → macrophage recycling.
-- [Peta Besar 30 Detik] Apa yang dimaksud dengan Copper pada Peta Besar 30 Detik? :: ATP7A → intestinal export/distribution.
-- [Peta Besar 30 Detik] Apa yang dimaksud dengan Thyroid pada Peta Besar 30 Detik? :: I− via NIS → TPO organification/coupling → T3/T4.
-- [Peta Besar 30 Detik] Jelaskan Trace enzyme memory dalam konteks Peta Besar 30 Detik. :: Zn = wound/taste/zinc finger.
+- [Peta Besar 30 Detik] Apa yang dimaksud dengan Ca/P pada Mineral & Trace Elements? :: Low Ca2+ → PTH ↑ → kidney Ca reabsorption ↑ + phosphate excretion ↑ + calcitriol ↑ → intestinal Ca/P absorption ↑.
+- [Peta Besar 30 Detik] Apa yang dimaksud dengan Iron pada Mineral & Trace Elements? :: Dietary Fe → enterocyte → ferroportin → transferrin → tissues/bone marrow → RBC → macrophage recycling.
+- [Peta Besar 30 Detik] Apa yang dimaksud dengan Copper pada Mineral & Trace Elements? :: ATP7A → intestinal export/distribution.
+- [Peta Besar 30 Detik] Apa yang dimaksud dengan Thyroid pada Mineral & Trace Elements? :: I− via NIS → TPO organification/coupling → T3/T4.
+- [Peta Besar 30 Detik] Jelaskan Trace enzyme memory dalam konteks Mineral & Trace Elements. :: Zn = wound/taste/zinc finger.
 - [Mineral & Trace Elements] Apa yang dimaksud dengan Ionized calcium pada Mineral & Trace Elements? :: Bentuk biologis aktif
 - [Mineral & Trace Elements] Apa yang dimaksud dengan Ferritin pada Mineral & Trace Elements? :: Storage protein + acute-phase reactant
 - [Mineral & Trace Elements] Apa yang dimaksud dengan Ferroportin pada Mineral & Trace Elements? :: Iron exporter
@@ -561,7 +561,7 @@ Se = antioxidant + thyroid conversion.
   • Aktivasi berbagai enzim
   • Koagulasi darah
   • Stabilitas membran dan excitability neuromuskular
-- [Phosphate — Fungsi dan Regulasi] Sebutkan poin-poin penting tentang Regulator utama phosphate. :: • PTH → menurunkan reabsorpsi phosphate proximal tubule → phosphate serum cenderung turun
+- [Phosphate — Fungsi dan Regulasi] Sebutkan regulator utama phosphate pada Phosphate — Fungsi dan Regulasi. :: • PTH → menurunkan reabsorpsi phosphate proximal tubule → phosphate serum cenderung turun
   • FGF23 dari osteocyte/osteoblast → meningkatkan phosphaturia dan menekan 1α-hydroxylase sehingga calcitriol turun
   • Calcitriol → meningkatkan absorpsi intestinal phosphate
 - [Zinc] Sebutkan contoh fungsi pada Zinc. :: • Carbonic anhydrase
@@ -573,13 +573,13 @@ Se = antioxidant + thyroid conversion.
   • Immune function
   • Taste dan smell
   • Pertumbuhan dan reproduksi
-- [Copper — Fungsi] Sebutkan poin-poin penting tentang Copper merupakan kofaktor enzyme penting. :: • Cytochrome c oxidase
+- [Copper — Fungsi] Sebutkan copper merupakan kofaktor enzyme penting pada Copper — Fungsi. :: • Cytochrome c oxidase
   • Lysyl oxidase — cross-link collagen/elastin
   • Dopamine β-hydroxylase
   • Tyrosinase — melanin synthesis
   • Superoxide dismutase
   • Ceruloplasmin/ferroxidase function
-- [Menkes Disease] Sebutkan poin-poin penting tentang Menkes disease. :: • X-linked
+- [Menkes Disease] Sebutkan hal-hal penting tentang Menkes disease. :: • X-linked
   • Mutasi ATP7A
   • Gangguan transport copper keluar dari enterocyte dan distribusi ke jaringan
 - [Wilson Disease] Sebutkan manifestasi klasik pada Wilson Disease. :: • Hepatitis/cirrhosis
@@ -589,11 +589,11 @@ Se = antioxidant + thyroid conversion.
 - [Iodine] Sebutkan urutan atau langkah pada Iodine? :: • I− masuk thyrocyte melalui sodium–iodide symporter (NIS) pada basolateral membrane
   • I− menuju colloid
   • Thyroid peroxidase (TPO) mengoksidasi iodide dan melakukan organification pada tyrosine thyroglobulin → MIT dan DIT
-- [Coupling] Sebutkan poin-poin penting tentang Defisiensi iodine. :: • Penurunan thyroid hormone
+- [Coupling] Sebutkan hal-hal penting tentang Defisiensi iodine. :: • Penurunan thyroid hormone
   • Peningkatan TSH
   • Goiter
   • Pada kehamilan/masa perkembangan dapat mengganggu neurodevelopment janin/anak
-- [Manganese] Sebutkan poin-poin penting tentang Manganese merupakan kofaktor beberapa enzyme, termasuk. :: • Mitochondrial Mn-superoxide dismutase
+- [Manganese] Sebutkan hal-hal penting tentang Manganese merupakan kofaktor beberapa enzyme, termasuk. :: • Mitochondrial Mn-superoxide dismutase
   • Arginase
   • Pyruvate carboxylase
 - [Mineral sebagai Komponen Metalloenzyme] Sebutkan contoh pasangan HIGH-YIELD pada Mineral sebagai Komponen Metalloenzyme. :: • Fe → cytochromes, catalase, hemoglobin
@@ -603,12 +603,12 @@ Se = antioxidant + thyroid conversion.
   • Mn → Mn-SOD, arginase, pyruvate carboxylase
   • Mo → xanthine oxidase, sulfite oxidase
   • Mg → banyak kinase/ATP-dependent enzymes
-- [Clinical Pattern — Iron Deficiency vs Chronic Inflammation] Sebutkan poin-poin penting tentang Chronic inflammation. :: • Ferritin cenderung dipertahankan/meningkat
+- [Clinical Pattern — Iron Deficiency vs Chronic Inflammation] Sebutkan hal-hal penting tentang Chronic inflammation. :: • Ferritin cenderung dipertahankan/meningkat
   • TIBC turun
   • Hepcidin meningkat
-- [Clinical Pattern — Calcium & Phosphate] Sebutkan poin-poin penting tentang Primary hyperparathyroidism secara klasik. :: • PTH ↑
+- [Clinical Pattern — Calcium & Phosphate] Sebutkan primary hyperparathyroidism secara klasik pada Clinical Pattern — Calcium & Phosphate. :: • PTH ↑
   • Ca2+ ↑
   • Phosphate ↓
-- [Gambaran Besar] Apa poin high-yield (pearl) tentang Gambaran Besar? :: “trace” tidak berarti tidak penting. Kekurangan sedikit trace element dapat mengganggu enzim atau hormon yang sangat fundamental.
+- [Gambaran Besar] Apa poin high-yield (pearl) tentang Mineral & Trace Elements? :: “trace” tidak berarti tidak penting. Kekurangan sedikit trace element dapat mengganggu enzim atau hormon yang sangat fundamental.
 - [Zinc] Apa poin high-yield (pearl) tentang Zinc? :: Konsumsi zinc berlebihan → pikirkan copper deficiency sekunder.
 - [Clinical Pattern — Menkes vs Wilson] Bagaimana cara mengingat Clinical Pattern — Menkes vs Wilson? :: Menkes = “can’t Move copper out of gut properly” Wilson = “copper Won’t leave liver into bile”

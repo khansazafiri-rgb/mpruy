@@ -116,7 +116,7 @@ Farmakodinamik = efek obat terhadap tubuh. Target dapat berupa reseptor, enzim, 
 - [Farmakodinamik: Mekanisme Kerja Obat & Reseptor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Obat dengan TI sempit pada pasien gagal ginjal? :: Risiko toksisitas meningkat bila eliminasi menurun
 - [Farmakodinamik: Mekanisme Kerja Obat & Reseptor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Efek obat steroid muncul lambat tetapi bertahan lama? :: Konsisten dengan reseptor intraseluler dan regulasi transkripsi gen
 - [Farmakodinamik: Mekanisme Kerja Obat & Reseptor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Efek sangat cepat setelah ikatan ligan? :: Pikirkan ligand-gated ion channel
-- [Konsep Dasar Farmakodinamik] Sebutkan poin-poin penting tentang Dua istilah dasar. :: • Afinitas — kekuatan kecenderungan obat berikatan dengan reseptor
+- [Konsep Dasar Farmakodinamik] Sebutkan hal-hal penting tentang Dua istilah dasar. :: • Afinitas — kekuatan kecenderungan obat berikatan dengan reseptor
   • Spesifisitas/selektivitas — kecenderungan obat atau reseptor berinteraksi lebih kuat pada target tertentu dibanding target lain
 - [Reseptor intraseluler] Apa poin high-yield (pearl) tentang Empat Famili Utama Reseptor? :: Urutan kecepatan konseptual: kanal ion paling cepat → GPCR → enzyme-linked → reseptor intraseluler paling lambat.
 - [Hubungan Dosis–Respons] Apa poin high-yield (pearl) tentang Hubungan Dosis–Respons? :: Kurva bergeser ke kiri = lebih poten jika Emax tetap. Kurva lebih tinggi = efikasi lebih besar. Jangan menyamakan potency dengan efficacy.

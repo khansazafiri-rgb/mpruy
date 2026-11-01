@@ -466,12 +466,10 @@ Menurut consensus practice guideline AAN/AAP/CNS/SCCM 2023, penentuan BD/DNC mem
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan E4 pada AVPU & Glasgow Coma Scale? :: Membuka mata spontan.
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan E3 pada AVPU & Glasgow Coma Scale? :: Membuka mata terhadap suara.
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan E2 pada AVPU & Glasgow Coma Scale? :: Membuka mata terhadap tekanan/nyeri.
-- [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan E1 pada AVPU & Glasgow Coma Scale? :: Tidak membuka mata.
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan V4 pada AVPU & Glasgow Coma Scale? :: Confused conversation.
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan V3 pada AVPU & Glasgow Coma Scale? :: Inappropriate words.
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan V2 pada AVPU & Glasgow Coma Scale? :: Incomprehensible sounds.
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan V1 pada AVPU & Glasgow Coma Scale? :: Tidak ada respons verbal.
-- [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan M6 pada AVPU & Glasgow Coma Scale? :: Mengikuti perintah.
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan M5 pada AVPU & Glasgow Coma Scale? :: Melokalisasi stimulus nyeri.
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan M4 pada AVPU & Glasgow Coma Scale? :: Withdraw terhadap nyeri.
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan M3 pada AVPU & Glasgow Coma Scale? :: Abnormal flexion/decorticate.
@@ -490,39 +488,38 @@ Menurut consensus practice guideline AAN/AAP/CNS/SCCM 2023, penentuan BD/DNC mem
 - [Penurunan Kesadaran & Koma] Apa yang perlu diingat tentang Pasien terintubasi pada Penurunan Kesadaran & Koma? :: Verbal GCS tidak dapat dinilai normal; dokumentasikan modifier/not testable
 - [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Koma + hilangnya beberapa brainstem reflexes? :: Bukan otomatis BD/DNC; pastikan prerequisites dan evaluasi formal
 - [Penurunan Kesadaran & Koma] Apa yang dimaksud dengan Consciousness pada Penurunan Kesadaran & Koma? :: Arousal (ARAS) + awareness (bilateral cortex)
-- [Penurunan Kesadaran & Koma] Apa yang dimaksud dengan Pasien tidak sadar → ABCDE dulu; Disability? :: AVPU/GCS + pupil, lalu cek glucose
 - [Penurunan Kesadaran & Koma] Apa yang dimaksud dengan Anisokoria/fixed dilated pupil + falling GCS? :: Herniation emergency
 - [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tidak pulih setelah kejang? :: Pikir nonconvulsive status dan EEG
-- [Pendekatan Awal ABCDE] Sebutkan poin-poin penting tentang Reversible causes yang harus dicari cepat. :: • Hipoglikemia → cek glukosa dan koreksi segera
+- [Pendekatan Awal ABCDE] Sebutkan hal-hal penting tentang Reversible causes yang harus dicari cepat. :: • Hipoglikemia → cek glukosa dan koreksi segera
   • Hipoksia/hiperkapnia → koreksi oksigenasi/ventilasi
   • Opioid toxicity dengan respiratory depression → airway/ventilation + naloxone sesuai protokol
   • Malnutrisi/alkohol berisiko defisiensi tiamin → berikan tiamin bila sesuai, tetapi jangan menunda glukosa pada hipoglikemia berat
-- [Structural vs Metabolic/Toxic Coma] Sebutkan poin-poin penting tentang Pola yang lebih mendukung lesi struktural. :: • Defisit neurologis fokal
+- [Structural vs Metabolic/Toxic Coma] Sebutkan pola yang lebih mendukung lesi struktural pada Structural vs Metabolic/Toxic Coma. :: • Defisit neurologis fokal
   • Anisokoria atau pupil asimetris
   • Gaze deviation
   • Respons motorik/posturing asimetris
   • Kejang fokal
   • Tanda peningkatan tekanan intrakranial
   • Onset neurologis fokal yang jelas
-- [Structural vs Metabolic/Toxic Coma] Sebutkan poin-poin penting tentang Pola yang lebih mendukung metabolik/toksik. :: • Disfungsi global relatif simetris
+- [Structural vs Metabolic/Toxic Coma] Sebutkan pola yang lebih mendukung metabolik/toksik pada Structural vs Metabolic/Toxic Coma. :: • Disfungsi global relatif simetris
   • Tidak ada lateralizing sign yang konsisten
   • Pupil sering simetris dan reaktif, walaupun toxidrome tertentu dapat menyebabkan miosis atau midriasis
   • Asterixis, multifocal myoclonus, atau tremor dapat muncul
-- [Pemeriksaan Pupil] Sebutkan poin-poin penting tentang Unilateral fixed dilated pupil. :: • Sangat mengkhawatirkan kompresi nervus III/uncal herniation bila disertai penurunan kesadaran
+- [Pemeriksaan Pupil] Sebutkan hal-hal penting tentang Unilateral fixed dilated pupil. :: • Sangat mengkhawatirkan kompresi nervus III/uncal herniation bila disertai penurunan kesadaran
   • Differential lain termasuk trauma okular atau efek obat/topikal, tetapi herniasi harus diprioritaskan pada pasien neurologis yang memburuk
-- [Pemeriksaan Pupil] Sebutkan poin-poin penting tentang Pinpoint pupils. :: • Opioid toxicity: terutama bila disertai respiratory depression
+- [Pemeriksaan Pupil] Sebutkan hal-hal penting tentang Pinpoint pupils. :: • Opioid toxicity: terutama bila disertai respiratory depression
   • Lesi pontin juga dapat menyebabkan pupil kecil; cari tanda batang otak lain
-- [Pemeriksaan Penunjang: Pilih Berdasarkan Clue] Sebutkan poin-poin penting tentang Lumbar puncture. :: • Dipertimbangkan pada dugaan meningitis/encephalitis bila aman
+- [Pemeriksaan Penunjang: Pilih Berdasarkan Clue] Sebutkan hal-hal penting tentang Lumbar puncture. :: • Dipertimbangkan pada dugaan meningitis/encephalitis bila aman
   • Jangan melakukan LP secara buta bila ada red flags mass effect/raised ICP seperti papiledema, focal deficit tertentu, atau penurunan kesadaran berat yang belum dievaluasi
-- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan poin-poin penting tentang Uncal herniation. :: • Penurunan kesadaran
+- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan hal-hal penting tentang Uncal herniation. :: • Penurunan kesadaran
   • Pupil ipsilateral melebar/fiks akibat kompresi CN III
   • Dapat muncul hemiparesis kontralateral
   • Memerlukan tindakan emergen untuk mengendalikan ICP dan penyebab mass effect
-- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan poin-poin penting tentang Central transtentorial herniation. :: • Penurunan kesadaran progresif
+- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan hal-hal penting tentang Central transtentorial herniation. :: • Penurunan kesadaran progresif
   • Perubahan pupil
   • Pola respirasi abnormal
   • Decorticate yang dapat berkembang menjadi decerebrate dalam pola klasik
-- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan poin-poin penting tentang Tonsillar herniation. :: • Cerebellar tonsils terdorong melalui foramen magnum
+- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan hal-hal penting tentang Tonsillar herniation. :: • Cerebellar tonsils terdorong melalui foramen magnum
   • Menekan medula → gangguan respirasi dan kardiovaskular yang mengancam nyawa
   • Posterior fossa mass sangat berbahaya karena ruang yang sempit
 - [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan prinsip awal bila herniasi dicurigai pada Herniasi Serebri — NEUROLOGIC EMERGENCY. :: • ABC dan cegah hipoksia/hipotensi
@@ -530,7 +527,7 @@ Menurut consensus practice guideline AAN/AAP/CNS/SCCM 2023, penentuan BD/DNC mem
   • Posisi leher netral untuk membantu venous drainage
   • Hyperosmolar therapy dan airway/ventilation sesuai protokol neurocritical/emergency
   • Konsultasi neurosurgery/neurocritical care segera dan terapi penyebab definitif
-- [Mimics & Disorders of Consciousness] Sebutkan poin-poin penting tentang Locked-in syndrome. :: • Awareness dipertahankan
+- [Mimics & Disorders of Consciousness] Sebutkan hal-hal penting tentang Locked-in syndrome. :: • Awareness dipertahankan
   • Quadriplegia + anarthria
   • Vertical eye movement dan blinking klasiknya masih dapat dipakai untuk komunikasi
   • Sering terkait lesi ventral pons, misalnya basilar artery occlusion

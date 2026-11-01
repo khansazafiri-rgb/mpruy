@@ -146,12 +146,11 @@ Kortisol dan GH lebih lambat dan penting dalam fasting/stress yang lebih panjang
 - [Master Flow: Glukosa] Apa yang dimaksud dengan Fed pada Master Flow: Glukosa? :: Glucose ↑ → insulin ↑ → storage + uptake ↑ → blood glucose turun.
 - [Master Flow: Glukosa] Apa yang dimaksud dengan Fasting pada Master Flow: Glukosa? :: Glucose ↓ → glucagon ↑ → hepatic glucose output ↑.
 - [Master Flow: Glukosa] Apa yang dimaksud dengan Hypoglycemia pada Master Flow: Glukosa? :: Glucagon + epinephrine bekerja cepat; cortisol + GH membantu respons lebih lambat.
-- [Fisiologi Pankreas Endokrin & Regulasi Glukosa] Apa yang perlu diketahui tentang Counter-regulatory hormones utama? :: Glucagon, epinephrine, cortisol, dan GH
-- [Pankreas Endokrin] Sebutkan poin-poin penting tentang Islets of Langerhans. :: • Β cell → insulin
+- [Pankreas Endokrin] Sebutkan hal-hal penting tentang Islets of Langerhans. :: • Β cell → insulin
   • Α cell → glucagon
   • Δ cell → somatostatin
   • PP/F cell → pancreatic polypeptide
-- [Faktor yang Meningkatkan Insulin] Sebutkan poin-poin penting tentang Stimulus insulin. :: • Peningkatan glukosa darah
+- [Faktor yang Meningkatkan Insulin] Sebutkan hal-hal penting tentang Stimulus insulin. :: • Peningkatan glukosa darah
   • Amino acids tertentu
   • Incretin GLP-1 dan GIP setelah makan
   • Parasympathetic activity
@@ -159,7 +158,7 @@ Kortisol dan GH lebih lambat dan penting dalam fasting/stress yang lebih panjang
 - [Glukagon] Sebutkan efek utama di hati pada Glukagon. :: • ↑ glycogenolysis
   • ↑ gluconeogenesis
   • ↑ ketogenesis
-- [Counter-Regulatory Hormones] Sebutkan poin-poin penting tentang Hormon yang melawan penurunan glukosa. :: • Glucagon
+- [Counter-Regulatory Hormones] Sebutkan hal-hal penting tentang Hormon yang melawan penurunan glukosa. :: • Glucagon
   • Epinephrine
   • Cortisol
   • GH
