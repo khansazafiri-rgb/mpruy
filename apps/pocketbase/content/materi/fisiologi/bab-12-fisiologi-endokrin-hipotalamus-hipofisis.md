@@ -400,20 +400,20 @@ Gunakan flow ini sebagai peta sebelum menghafal detail.
   • Gq → phospholipase C → IP3 + DAG → Ca²⁺/PKC
   • Receptor tyrosine kinase → phosphorylation cascade
   • JAK/STAT untuk beberapa reseptor sitokin/hormon
-- [Hipotalamus: Penghubung Saraf dan Endokrin] Sebutkan poin-poin penting tentang Hormon utama. :: • TRH → ↑ TSH
+- [Hipotalamus: Penghubung Saraf dan Endokrin] Sebutkan hormon utama pada Hipotalamus: Penghubung Saraf dan Endokrin. :: • TRH → ↑ TSH
   • CRH → ↑ ACTH
   • GnRH → ↑ LH/FSH
   • GHRH → ↑ GH
   • Somatostatin → ↓ GH dan dapat ↓ TSH
   • Dopamine → ↓ prolaktin
-- [ADH / Vasopresin: Stimulus Utama] Sebutkan poin-poin penting tentang ADH terutama meningkat ketika. :: • Osmolalitas plasma naik
+- [ADH / Vasopresin: Stimulus Utama] Sebutkan hal-hal penting tentang ADH terutama meningkat ketika. :: • Osmolalitas plasma naik
   • Volume efektif sirkulasi atau tekanan darah turun bermakna
 - [GH: Efek Langsung dan IGF-1] Sebutkan efek pertumbuhan pada GH: Efek Langsung dan IGF-1. :: • Meningkatkan proliferasi chondrocyte
   • Mendukung pertumbuhan tulang panjang sebelum epiphyseal closure
   • Meningkatkan sintesis protein dan pertumbuhan jaringan
 - [Dynamic Endocrine Testing: Konsep] Sebutkan contoh klasik pada Dynamic Endocrine Testing: Konsep. :: • Oral glucose suppression test pada GH excess
   • Dexamethasone suppression principle pada hypercortisolism
-- [Peta Besar Sistem Endokrin] Apa poin high-yield (pearl) tentang Peta Besar Sistem Endokrin? :: “endokrin” tidak identik dengan “lambat”. Katekolamin dapat bekerja sangat cepat, sedangkan hormon steroid atau tiroid cenderung memiliki onset lebih lambat karena banyak efeknya melibatkan perubahan ekspresi gen.
+- [Peta Besar Sistem Endokrin] Apa poin high-yield (pearl) tentang Fisiologi Endokrin: Hipotalamus-Hipofisis? :: “endokrin” tidak identik dengan “lambat”. Katekolamin dapat bekerja sangat cepat, sedangkan hormon steroid atau tiroid cenderung memiliki onset lebih lambat karena banyak efeknya melibatkan perubahan ekspresi gen.
 - [Empat Pola Komunikasi Kimia] Apa clue praktikum untuk Empat Pola Komunikasi Kimia? :: Yang menentukan kategori adalah jalur dan jarak penyampaian sinyal, bukan jenis molekulnya. Satu molekul dapat berperan sebagai neurotransmiter maupun hormon tergantung lokasi pelepasan.
 - [Hormon Hidrofilik vs Lipofilik] Apa poin high-yield (pearl) tentang Hormon Hidrofilik vs Lipofilik? :: Fraksi bebas adalah fraksi yang paling langsung tersedia untuk masuk ke jaringan dan menimbulkan efek biologis. Protein carrier memperpanjang half-life dan menjadi reservoir.
 - [Reseptor Membran dan Second Messenger] Bagaimana cara mengingat Reseptor Membran dan Second Messenger? :: Hormon adalah first messenger; molekul intrasel seperti cAMP, IP3, DAG, dan Ca²⁺ adalah second messenger.

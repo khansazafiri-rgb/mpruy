@@ -441,37 +441,34 @@ Pada chest compression, gaya diterapkan pada anterior thorax untuk menghasilkan 
 
 - [Apex dan base] Jelaskan Apex. :: Terutama left ventricle; pada orang dewasa biasanya diproyeksikan dekat left fifth intercostal space di sekitar midclavicular line, tetapi posisi aktual bervariasi dengan habitus, respirasi, dan posisi tubuh.
 - [Apex dan base] Jelaskan Base. :: Terutama posterior surface dari left atrium; menerima empat pulmonary veins dan berhubungan dekat dengan esophagus di posterior.
-- [Tributaries utama] Jelaskan Great cardiac vein dalam konteks Tributaries utama (Cardiac Venous Drainage). :: Berjalan bersama LAD di anterior interventricular sulcus, lalu mengikuti circumflex region menuju coronary sinus.
-- [Tributaries utama] Jelaskan Middle cardiac vein dalam konteks Tributaries utama (Cardiac Venous Drainage). :: Berjalan di posterior interventricular sulcus bersama posterior interventricular artery.
-- [Tributaries utama] Jelaskan Small cardiac vein dalam konteks Tributaries utama (Cardiac Venous Drainage). :: Berhubungan dengan right margin/right coronary sulcus dan bermuara ke coronary sinus.
-- [Visceral pain afferents] Jelaskan Pericardial pain berbeda dalam konteks Visceral pain afferents (Autonomic Innervation of the Heart). :: Fibrous/parietal pericardium mempunyai somatic sensory fibers melalui phrenic nerve, sehingga irritation dapat direferensikan ke shoulder region.
-- [Valve auscultation areas] Jelaskan Aortic area dalam konteks Valve auscultation areas (Surface Projection dan Auscultation). :: Right second intercostal space di parasternal/right sternal border.
-- [Valve auscultation areas] Jelaskan Pulmonary area dalam konteks Valve auscultation areas (Surface Projection dan Auscultation). :: Left second intercostal space di left sternal border.
-- [Valve auscultation areas] Jelaskan Tricuspid area dalam konteks Valve auscultation areas (Surface Projection dan Auscultation). :: Lower left sternal border, sekitar fourth–fifth intercostal spaces.
-- [Valve auscultation areas] Jelaskan Mitral area dalam konteks Valve auscultation areas (Surface Projection dan Auscultation). :: Apex region, sekitar left fifth intercostal space dekat midclavicular line.
+- [Tributaries utama] Jelaskan Great cardiac vein dalam konteks Tributaries utama. :: Berjalan bersama LAD di anterior interventricular sulcus, lalu mengikuti circumflex region menuju coronary sinus.
+- [Tributaries utama] Jelaskan Middle cardiac vein dalam konteks Tributaries utama. :: Berjalan di posterior interventricular sulcus bersama posterior interventricular artery.
+- [Tributaries utama] Jelaskan Small cardiac vein dalam konteks Tributaries utama. :: Berhubungan dengan right margin/right coronary sulcus dan bermuara ke coronary sinus.
+- [Visceral pain afferents] Jelaskan Pericardial pain berbeda dalam konteks Visceral pain afferents. :: Fibrous/parietal pericardium mempunyai somatic sensory fibers melalui phrenic nerve, sehingga irritation dapat direferensikan ke shoulder region.
+- [Valve auscultation areas] Apa yang dimaksud dengan Aortic area pada Valve auscultation areas? :: Right second intercostal space di parasternal/right sternal border.
+- [Valve auscultation areas] Apa yang dimaksud dengan Pulmonary area pada Valve auscultation areas? :: Left second intercostal space di left sternal border.
+- [Valve auscultation areas] Apa yang dimaksud dengan Tricuspid area pada Valve auscultation areas? :: Lower left sternal border, sekitar fourth–fifth intercostal spaces.
+- [Valve auscultation areas] Apa yang dimaksud dengan Mitral area pada Valve auscultation areas? :: Apex region, sekitar left fifth intercostal space dekat midclavicular line.
 - [Anatomi Jantung & Pembuluh Darah Besar] Apa yang dimaksud dengan Visceral serous pericardium pada Anatomi Jantung & Pembuluh Darah Besar? :: Epicardium
 - [Anatomi Jantung & Pembuluh Darah Besar] Apa yang dimaksud dengan Pericardial cavity pada Anatomi Jantung & Pembuluh Darah Besar? :: Potential space, bukan rongga besar normal
-- [Anatomi Jantung & Pembuluh Darah Besar] Apa yang perlu diketahui tentang Heart wall pada Anatomi Jantung & Pembuluh Darah Besar? :: Endocardium → myocardium → epicardium
 - [Anatomi Jantung & Pembuluh Darah Besar] Apa yang perlu diketahui tentang Right atrium pada Anatomi Jantung & Pembuluh Darah Besar? :: Sinus venarum smooth; anterior/auricle pectinate; crista terminalis memisahkan keduanya
 - [Anatomi Jantung & Pembuluh Darah Besar] Apa yang perlu diketahui tentang Right ventricle pada Anatomi Jantung & Pembuluh Darah Besar? :: Trabeculae carneae, papillary muscles, chordae, moderator band, conus arteriosus
 - [Anatomi Jantung & Pembuluh Darah Besar] Apa yang dimaksud dengan AV bundle pada Anatomi Jantung & Pembuluh Darah Besar? :: Normal electrical bridge melalui fibrous skeleton
-- [Serous pericardium] Sebutkan serous pericardium mempunyai dua lapisan pada Serous pericardium (Pericardium dan Pericardial Cavity). :: • Parietal layer — melapisi permukaan internal fibrous pericardium
-  • Visceral layer — menutupi permukaan jantung dan disebut epicardium
 - [Fibrous skeleton of the heart] Sebutkan fungsi penting fibrous skeleton pada Fibrous skeleton of the heart. :: • Menjaga valve orifices tetap terbuka dan mempertahankan bentuknya
   • Memberi attachment untuk valve cusps
   • Memberi attachment untuk atrial dan ventricular myocardium
   • Menjadi electrical insulator antara atrial dan ventricular myocardium
-- [Cardiac Valves dan One-Way Flow] Sebutkan poin-poin penting tentang Empat valve utama. :: • Tricuspid valve — right atrium → right ventricle
+- [Cardiac Valves dan One-Way Flow] Sebutkan empat valve utama pada Cardiac Valves dan One-Way Flow. :: • Tricuspid valve — right atrium → right ventricle
   • Pulmonary valve — right ventricle → pulmonary trunk
   • Mitral valve — left atrium → left ventricle
   • Aortic valve — left ventricle → ascending aorta
-- [Right coronary artery] Sebutkan cabang yang sering diuji pada Right coronary artery (Coronary Arterial Supply). :: • Right marginal branch, menuju acute/right margin
+- [Right coronary artery] Sebutkan cabang yang sering diuji pada Right coronary artery. :: • Right marginal branch, menuju acute/right margin
   • Posterior interventricular artery/PDA pada banyak individu, berjalan di posterior interventricular sulcus
   • SA nodal branch pada banyak tetapi tidak semua individu
   • AV nodal branch yang sering berasal dekat crux of heart
-- [Pericardial sinuses] Apa jebakan yang sering muncul pada soal tentang Pericardial sinuses (Pericardium dan Pericardial Cavity)? :: Pericardial sinus bukan venous sinus dan bukan coronary sinus. Istilah sinus di sini mengacu pada recess dalam pericardial cavity.
-- [Right atrioventricular orifice] Apa jebakan yang sering muncul pada soal tentang Right atrioventricular orifice (Right Atrium)? :: Right atrium tidak seluruhnya berisi pectinate muscles. Sinus venarum adalah smooth; pectinate muscles dominan di anterior wall/auricle.
+- [Pericardial sinuses] Apa jebakan yang sering muncul pada soal tentang Pericardial sinuses? :: Pericardial sinus bukan venous sinus dan bukan coronary sinus. Istilah sinus di sini mengacu pada recess dalam pericardial cavity.
+- [Right atrioventricular orifice] Apa jebakan yang sering muncul pada soal tentang Right atrioventricular orifice? :: Right atrium tidak seluruhnya berisi pectinate muscles. Sinus venarum adalah smooth; pectinate muscles dominan di anterior wall/auricle.
 - [Papillary muscles dan chordae tendineae] Apa poin high-yield (pearl) tentang Papillary muscles dan chordae tendineae? :: Papillary muscles tidak “menutup” valve. Closure terjadi terutama karena pressure gradient; papillary muscles dan chordae mempertahankan coaptation dan mencegah prolapse.
 - [Left Atrium] Apa jebakan yang sering muncul pada soal tentang Left Atrium? :: Pulmonary veins tidak memiliki valve besar seperti AV valves pada ostia normalnya. Fokus utama adalah empat venous openings ke smooth left atrium.
-- [Tributaries utama] Apa jebakan yang sering muncul pada soal tentang Tributaries utama (Cardiac Venous Drainage)? :: Coronary sinus adalah vena besar di posterior AV groove, bukan “sinus” pada pericardium atau aortic sinus.
-- [Valve auscultation areas] Apa jebakan yang sering muncul pada soal tentang Valve auscultation areas (Surface Projection dan Auscultation)? :: Anatomical valve locations berada lebih sentral/retrosternal daripada standard auscultation sites. Jangan menukar “letak valve” dengan “tempat paling baik mendengar bunyinya”.
+- [Tributaries utama] Apa jebakan yang sering muncul pada soal tentang Tributaries utama? :: Coronary sinus adalah vena besar di posterior AV groove, bukan “sinus” pada pericardium atau aortic sinus.
+- [Valve auscultation areas] Apa jebakan yang sering muncul pada soal tentang Valve auscultation areas? :: Anatomical valve locations berada lebih sentral/retrosternal daripada standard auscultation sites. Jangan menukar “letak valve” dengan “tempat paling baik mendengar bunyinya”.

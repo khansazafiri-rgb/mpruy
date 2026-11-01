@@ -328,8 +328,8 @@ Brachial artery injury dapat mengancam perfusi forearm/hand. Volkmann ischemic c
 
 ## Flashcard {kartu}
 
-- [Quadrangular Space] Pada Quadrangular Space (Scapular Region dan Scapular Spaces), apa batas umumnya? :: Superior teres minor, inferior teres major, medial long head triceps, lateral surgical neck humerus. Isinya adalah axillary nerve dan posterior circumflex humeral artery. Karena itu, fracture surgical neck humerus dapat mencederai keduanya.
-- [Cubital Fossa] Jelaskan Batas umum cubital fossa dalam konteks Cubital Fossa (Elbow dan Cubital Fossa). :: Superior garis antara epicondyles; medial pronator teres; lateral brachioradialis. Floor terutama brachialis dan supinator. Roof mencakup skin, superficial fascia, deep fascia, median cubital vein, dan bicipital aponeurosis.
+- [Quadrangular Space] Pada Quadrangular Space, apa batas umumnya? :: Superior teres minor, inferior teres major, medial long head triceps, lateral surgical neck humerus. Isinya adalah axillary nerve dan posterior circumflex humeral artery. Karena itu, fracture surgical neck humerus dapat mencederai keduanya.
+- [Cubital Fossa] Jelaskan Batas umum cubital fossa. :: Superior garis antara epicondyles; medial pronator teres; lateral brachioradialis. Floor terutama brachialis dan supinator. Roof mencakup skin, superficial fascia, deep fascia, median cubital vein, dan bicipital aponeurosis.
 - [Anatomi Ekstremitas Atas] Apa jawaban atau kesimpulan untuk petunjuk berikut: Long thoracic nerve berada superficial pada serratus anterior; injury? :: Winged scapula
 - [Anatomi Ekstremitas Atas] Apa yang dimaksud dengan SITS pada Anatomi Ekstremitas Atas? :: Supraspinatus, infraspinatus, teres minor, subscapularis
 - [Anatomi Ekstremitas Atas] Apa yang dimaksud dengan Brachial plexus pada Anatomi Ekstremitas Atas? :: C5–T1 → roots, trunks, divisions, cords, branches
@@ -337,7 +337,7 @@ Brachial artery injury dapat mengancam perfusi forearm/hand. Volkmann ischemic c
 - [Anatomi Ekstremitas Atas] Apa yang dimaksud dengan Anatomical snuffbox floor pada Anatomi Ekstremitas Atas? :: Scaphoid + trapezium; radial artery melintas
 - [Anatomi Ekstremitas Atas] Apa yang dimaksud dengan Recurrent branch median nerve pada Anatomi Ekstremitas Atas? :: Motor thenar branch; jangan disamakan dengan palmar cutaneous branch
 - [Anatomi Ekstremitas Atas] Apa yang dimaksud dengan Shoulder abduction 0–15/15–90/>90? :: Simplifikasi fungsional, bukan batas absolut
-- [Brachial Plexus] Sebutkan poin-poin penting tentang Terminal branches utama. :: • Musculocutaneous nerve — lateral cord
+- [Brachial Plexus] Sebutkan terminal branches utama pada Brachial Plexus. :: • Musculocutaneous nerve — lateral cord
   • Median nerve — kontribusi lateral dan medial cords
   • Ulnar nerve — medial cord
   • Axillary nerve — posterior cord

@@ -313,30 +313,25 @@ Contoh pola cepat:
 - [Antipsikotik typical / generasi pertama] Jelaskan: Contoh yang sering diuji. :: Haloperidol dan chlorpromazine.
 - [Antipsikotik typical / generasi pertama] Pada Antipsikotik typical / generasi pertama, apa pola mekanismenya? :: Antagonisme D2 relatif dominan.
 - [Antipsikotik typical / generasi pertama] Pada Antipsikotik typical / generasi pertama, apa konsekuensi high-yieldnya? :: EPS dan hiperprolaktinemia lebih menonjol, terutama pada obat berpotensi tinggi seperti haloperidol.
-- [Selective serotonin reuptake inhibitors (SSRI)] Pada Selective serotonin reuptake inhibitors (SSRI), apa mekanismenya? :: Menghambat serotonin transporter (SERT) sehingga transmisi serotonin meningkat.
-- [Selective serotonin reuptake inhibitors (SSRI)] Pada Selective serotonin reuptake inhibitors (SSRI), apa efek samping high-yieldnya? :: Gangguan gastrointestinal, disfungsi seksual, gangguan tidur, dan serotonin syndrome bila beban serotonergik berlebihan.
-- [Serotonin–norepinephrine reuptake inhibitors (SNRI)] Pada Serotonin–norepinephrine reuptake inhibitors (SNRI), apa mekanismenya? :: Menghambat reuptake 5-HT dan NE.
-- [Tricyclic antidepressants (TCA)] Pada Tricyclic antidepressants (TCA) (Antidepresan), apa mekanisme utamanya? :: Menghambat reuptake 5-HT dan NE, tetapi juga memiliki aktivitas pada reseptor muskarinik, histamin H1, dan α1.
-- [Tricyclic antidepressants (TCA)] Pada Tricyclic antidepressants (TCA) (Antidepresan), apa efek sampingnya? :: Mulut kering, konstipasi, retensi urin, sedasi, hipotensi ortostatik. Overdosis dapat menyebabkan kardiotoksisitas dan aritmia.
-- [Monoamine oxidase inhibitors (MAOI)] Pada Monoamine oxidase inhibitors (MAOI), apa mekanismenya? :: Menghambat metabolisme monoamin.
-- [Monoamine oxidase inhibitors (MAOI)] Pada Monoamine oxidase inhibitors (MAOI), apa pola soalnya? :: Kombinasi MAOI dengan makanan kaya tyramine dapat memicu krisis hipertensi; kombinasi dengan obat serotonergik meningkatkan risiko toksisitas serotonin.
-- [Bupropion] Pada Bupropion (Antidepresan), apa mekanismenya? :: Meningkatkan transmisi norepinefrin dan dopamin melalui hambatan reuptake.
-- [Bupropion] Apa yang dimaksud dengan Poin pembeda pada Bupropion (Antidepresan)? :: Cenderung lebih sedikit menimbulkan disfungsi seksual dibanding banyak SSRI, tetapi dapat menurunkan ambang kejang.
-- [Mirtazapine] Pada Mirtazapine (Antidepresan), apa mekanisme utamanya? :: Antagonisme reseptor α2 presinaptik dengan peningkatan pelepasan NE dan 5-HT.
-- [Mirtazapine] Pada Mirtazapine (Antidepresan), apa pola klinisnya? :: Sedasi dan kenaikan berat badan merupakan clue yang sering diuji.
-- [Mirtazapine] Jelaskan Pola yang mendukung dalam konteks Mirtazapine (Antidepresan). :: Paparan obat serotonergik + perubahan mental + hiperaktivitas otonom + temuan neuromuskular seperti clonus/hyperreflexia. Bedakan dengan NMS yang lebih khas dengan rigiditas berat dan kaitan dengan blokade dopamin.
+- [Selective serotonin reuptake inhibitors (SSRI)] Pada Selective serotonin reuptake inhibitors, apa mekanismenya? :: Menghambat serotonin transporter (SERT) sehingga transmisi serotonin meningkat.
+- [Selective serotonin reuptake inhibitors (SSRI)] Pada Selective serotonin reuptake inhibitors, apa efek samping high-yieldnya? :: Gangguan gastrointestinal, disfungsi seksual, gangguan tidur, dan serotonin syndrome bila beban serotonergik berlebihan.
+- [Serotonin–norepinephrine reuptake inhibitors (SNRI)] Pada Serotonin–norepinephrine reuptake inhibitors, apa mekanismenya? :: Menghambat reuptake 5-HT dan NE.
+- [Tricyclic antidepressants (TCA)] Pada Tricyclic antidepressants (TCA), apa mekanisme utamanya? :: Menghambat reuptake 5-HT dan NE, tetapi juga memiliki aktivitas pada reseptor muskarinik, histamin H1, dan α1.
+- [Tricyclic antidepressants (TCA)] Pada Tricyclic antidepressants (TCA), apa efek sampingnya? :: Mulut kering, konstipasi, retensi urin, sedasi, hipotensi ortostatik. Overdosis dapat menyebabkan kardiotoksisitas dan aritmia.
+- [Monoamine oxidase inhibitors (MAOI)] Pada Monoamine oxidase inhibitors, apa mekanismenya? :: Menghambat metabolisme monoamin.
+- [Monoamine oxidase inhibitors (MAOI)] Pada Monoamine oxidase inhibitors, apa pola soalnya? :: Kombinasi MAOI dengan makanan kaya tyramine dapat memicu krisis hipertensi; kombinasi dengan obat serotonergik meningkatkan risiko toksisitas serotonin.
+- [Bupropion] Pada Bupropion, apa mekanismenya? :: Meningkatkan transmisi norepinefrin dan dopamin melalui hambatan reuptake.
+- [Bupropion] Apa yang dimaksud dengan Poin pembeda pada Bupropion? :: Cenderung lebih sedikit menimbulkan disfungsi seksual dibanding banyak SSRI, tetapi dapat menurunkan ambang kejang.
+- [Mirtazapine] Pada Mirtazapine, apa mekanisme utamanya? :: Antagonisme reseptor α2 presinaptik dengan peningkatan pelepasan NE dan 5-HT.
+- [Mirtazapine] Pada Mirtazapine, apa pola klinisnya? :: Sedasi dan kenaikan berat badan merupakan clue yang sering diuji.
+- [Mirtazapine] Jelaskan Pola yang mendukung dalam konteks Mirtazapine. :: Paparan obat serotonergik + perubahan mental + hiperaktivitas otonom + temuan neuromuskular seperti clonus/hyperreflexia. Bedakan dengan NMS yang lebih khas dengan rigiditas berat dan kaitan dengan blokade dopamin.
 - [Ansiolitik & Sedatif-Hipnotik] Apa yang dimaksud dengan barbiturat pada Ansiolitik & Sedatif-Hipnotik? :: Tertulis biasanya diekskresikan langsung
 - [Ansiolitik & Sedatif-Hipnotik] Apa yang dimaksud dengan benzodiazepine pada Ansiolitik & Sedatif-Hipnotik? :: Metabolisme hepar CYP3A4; dan
 - [Ansiolitik & Sedatif-Hipnotik] Apa yang dimaksud dengan newer drugs pada Ansiolitik & Sedatif-Hipnotik? :: Metabolisme hepar CYP3A4.
 - [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Acute dystonia? :: Kontraksi otot spasmodik, tortikolis, deviasi mata; biasanya muncul dini
-- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Akathisia? :: Rasa gelisah dan tidak mampu diam
-- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Drug-induced parkinsonism? :: Tremor, rigiditas, bradikinesia
 - [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Tardive dyskinesia? :: Gerakan involunter, sering orofasial, terutama setelah paparan kronis
 - [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa pola klasik pada Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)? :: Demam, rigiditas berat, perubahan status mental, instabilitas otonom, dan peningkatan creatine kinase. Ini adalah keadaan gawat darurat
 - [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Jawaban pola? :: Drug-induced parkinsonism sebagai EPS akibat blokade dopamin nigrostriatal
-- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Hipotesis dopaminergik? :: Hiperaktivasi D2
-- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Hipotesis glutamat? :: Hipofungsi NMDA
-- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Hipotesis monoaminergik? :: Defisiensi 5-HT, NE, dan dopamin
 - [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang dimaksud dengan Haloperidol? :: Typical antipsychotic yang kuat diasosiasikan dengan EPS
 - [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diingat tentang Blokade D2 tuberoinfundibular? :: Prolaktin meningkat
 - [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diingat tentang MAOI + tyramine? :: Risiko krisis hipertensi
@@ -350,12 +345,12 @@ Contoh pola cepat:
 - [Ansiolitik & Sedatif-Hipnotik] Sebutkan farmakokinetik pada Ansiolitik & Sedatif-Hipnotik. :: • Barbiturat: tertulis biasanya diekskresikan langsung
   • Benzodiazepine: metabolisme hepar CYP3A4; dan
   • Newer drugs: metabolisme hepar CYP3A4
-- [Cara Membaca Soal Farmakologi Psikiatri] Sebutkan urutan atau langkah pada Cara Membaca Soal Farmakologi Psikiatri? :: • Tentukan target masalah: psikosis, depresi, kecemasan, insomnia, atau efek samping obat
+- [Cara Membaca Soal Farmakologi Psikiatri] Sebutkan urutan atau langkah pada Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)? :: • Tentukan target masalah: psikosis, depresi, kecemasan, insomnia, atau efek samping obat
   • Kenali kelas obat dan neurotransmiter dominan
   • Cari clue efek samping yang sangat khas
   • Cek interaksi, kontraindikasi, dan kebutuhan monitoring
 - [Dasar Neurobiologi Gangguan Psikiatri] Apa poin high-yield (pearl) tentang Dasar Neurobiologi Gangguan Psikiatri? :: Jika soal menyebut psikosis lalu menanyakan target neurotransmiter, ingat tiga poros: serotonin, dopamin, dan glutamat. Untuk gangguan mood, kata kunci utama adalah monoamin—5-HT, NE, dan dopamin.
 - [Antipsikotik atypical / generasi kedua] Pola banding typical vs atypical: apa isi atau ringkasannya? :: Typical: pikirkan D2 kuat → EPS/prolaktin. Atypical: pikirkan D2 + 5-HT2A → EPS umumnya lebih ringan, tetapi efek metabolik menjadi perhatian penting pada beberapa agen.
-- [Clozapine] Apa poin high-yield (pearl) tentang Clozapine (Efek Samping Antipsikotik yang High-Yield)? :: Pasien memakai antipsikotik lalu mengalami demam tinggi + rigiditas berat + instabilitas otonom → jangan berhenti pada “EPS”; pikirkan NMS.
-- [Serotonin–norepinephrine reuptake inhibitors (SNRI)] Apa poin high-yield (pearl) tentang Serotonin–norepinephrine reuptake inhibitors (SNRI)? :: Selain efek serotonergik, tekanan darah dapat meningkat pada beberapa pasien, terutama dengan venlafaxine.
+- [Clozapine] Apa poin high-yield (pearl) tentang Clozapine? :: Pasien memakai antipsikotik lalu mengalami demam tinggi + rigiditas berat + instabilitas otonom → jangan berhenti pada “EPS”; pikirkan NMS.
+- [Serotonin–norepinephrine reuptake inhibitors (SNRI)] Apa poin high-yield (pearl) tentang Serotonin–norepinephrine reuptake inhibitors? :: Selain efek serotonergik, tekanan darah dapat meningkat pada beberapa pasien, terutama dengan venlafaxine.
 - [Ansiolitik & Sedatif-Hipnotik] Pola banding benzodiazepine vs barbiturat vs buspirone: apa isi atau ringkasannya? :: Benzodiazepine: GABA-A, frequency ↑, onset relatif cepat, sedasi dan dependence menjadi perhatian. Barbiturat: GABA-A, duration ↑, depresi SSP lebih berat pada toksisitas. Buspirone: 5-HT1A partial agonist, onset lebih lambat, bukan obat untuk sedasi akut cepat.

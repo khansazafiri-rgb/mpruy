@@ -309,13 +309,10 @@ Terapi penyakit asam-peptik dapat dipahami melalui tiga strategi: menekan produk
 - [Obat Sistem Gastrointestinal (Antasida, PPI)] Apa yang dimaksud dengan PPI pada Obat Sistem Gastrointestinal (Antasida, PPI)? :: Penekan sekresi asam yang paling poten
 - [Obat Sistem Gastrointestinal (Antasida, PPI)] Apa yang perlu diketahui tentang Contoh PPI pada Obat Sistem Gastrointestinal (Antasida, PPI)? :: Omeprazole, lansoprazole, pantoprazole, esomeprazole, rabeprazole
 - [Obat Sistem Gastrointestinal (Antasida, PPI)] Apa yang perlu diketahui tentang H2 antagonist pada Obat Sistem Gastrointestinal (Antasida, PPI)? :: Cimetidine, ranitidine, famotidine, nizatidine
-- [Obat Sistem Gastrointestinal (Antasida, PPI)] Apa yang perlu diketahui tentang Potensi pada Obat Sistem Gastrointestinal (Antasida, PPI)? :: Famotidine > ranitidine > cimetidine
 - [Obat Sistem Gastrointestinal (Antasida, PPI)] Apa yang perlu diketahui tentang Efek H2 antagonist pada Obat Sistem Gastrointestinal (Antasida, PPI)? :: Ginekomastia, galaktorea, impotensi/penurunan libido, inhibisi CYP450
-- [Obat Sistem Gastrointestinal (Antasida, PPI)] Apa yang perlu diketahui tentang Antimuskarinik pada Obat Sistem Gastrointestinal (Antasida, PPI)? :: Pirenzepine dan scopolamine/hyoscine
 - [Obat Sistem Gastrointestinal (Antasida, PPI)] Apa efek samping antimuskarinik pada Obat Sistem Gastrointestinal (Antasida, PPI)? :: Mulut kering, pandangan kabur, retensi urin
-- [Obat Sistem Gastrointestinal (Antasida, PPI)] Apa yang perlu diketahui tentang Kombinasi antasida ideal pada Obat Sistem Gastrointestinal (Antasida, PPI)? :: Mg(OH)2 + Al(OH)3
 - [Obat Sistem Gastrointestinal (Antasida, PPI)] Jelaskan: Terapi penyakit asam-peptik dapat dipahami melalui tiga strategi. :: Menekan produksi asam, menetralkan asam, dan melindungi mukosa. PPI merupakan prodrug yang diaktifkan dalam lingkungan asam dan menghambat H+/K+-ATPase secara ireversibel; contoh utamanya omeprazole, lansoprazole, pantoprazole, esomeprazole, dan rabeprazole. H2 antagonist seperti cimetidine, ranitidine, famotidine, dan nizatidine memblok reseptor H2 pada sel parietal. Antasida bekerja dengan menetralkan asam; kombinasi yang disebut ideal adalah Mg(OH)2 + Al(OH)3. Misoprostol meningkatkan bikarbonat, mukus, dan aliran darah mukosa serta digunakan pada ulkus akibat NSAID, tetapi kontraindikasi pada kehamilan. Sucralfate membentuk gel pelindung dalam lingkungan asam dan dapat menghambat absorpsi beberapa obat. Colloidal bismuth digunakan pada konteks H. pylori dan dapat menyebabkan perubahan warna hitam pada mulut, gigi, lidah, atau feses
-- [Mekanisme] Sebutkan efek samping pada Proton Pump Inhibitor (PPI). :: • Penurunan absorpsi vitamin B12
+- [Mekanisme] Sebutkan efek samping pada Proton Pump Inhibitor. :: • Penurunan absorpsi vitamin B12
   • Hipergastrinemia
 - [Mekanisme] Sebutkan efek samping pada Antagonis Reseptor H2. :: • Ginekomastia
   • Galaktorea
@@ -324,15 +321,15 @@ Terapi penyakit asam-peptik dapat dipahami melalui tiga strategi: menekan produk
 - [Antimuskarinik pada Penyakit Asam-Peptik] Sebutkan efek samping pada Antimuskarinik pada Penyakit Asam-Peptik. :: • Mulut kering
   • Pandangan kabur
   • Retensi urin
-- [Antasida] Sebutkan poin-poin penting tentang Kombinasi yang disebut ideal. :: • Magnesium hydroxide — Mg(OH)2
+- [Antasida] Sebutkan hal-hal penting tentang Kombinasi yang disebut ideal. :: • Magnesium hydroxide — Mg(OH)2
   • Aluminium hydroxide — Al(OH)3
-- [Sucralfate] Sebutkan poin-poin penting tentang Karakteristik penting. :: • Bekerja pada lingkungan asam
+- [Sucralfate] Sebutkan karakteristik penting pada Sucralfate. :: • Bekerja pada lingkungan asam
   • Dianjurkan menghindari pemberian bersama antasida dan antagonis H2
 - [Colloidal Bismuth] Sebutkan efek samping khas pada Colloidal Bismuth. :: • Mulut dapat menjadi hitam
   • Gigi dapat menjadi hitam
   • Lidah dapat menjadi hitam
   • Feses dapat menjadi hitam
-- [Mekanisme] Apa poin high-yield (pearl) tentang Proton Pump Inhibitor (PPI)? :: PPI = prodrug + aktif pada lingkungan asam + menghambat H+/K+-ATPase secara ireversibel. Walaupun t1/2 plasma singkat, efeknya berlangsung jauh lebih lama karena pompa proton dihambat secara ireversibel.
+- [Mekanisme] Apa poin high-yield (pearl) tentang Proton Pump Inhibitor? :: PPI = prodrug + aktif pada lingkungan asam + menghambat H+/K+-ATPase secara ireversibel. Walaupun t1/2 plasma singkat, efeknya berlangsung jauh lebih lama karena pompa proton dihambat secara ireversibel.
 - [Catatan integrasi dengan bab Obat Sistem Respirasi: Bronkodilator dan Antihistamin] Apa poin high-yield (pearl) tentang Antagonis Reseptor H2? :: PPI dan H2 antagonist sama-sama menurunkan produksi asam, tetapi targetnya berbeda: PPI langsung menghambat H+/K+-ATPase, sedangkan H2 antagonist memblok reseptor H2 pada sel parietal.
 - [Antasida] Apa poin high-yield (pearl) tentang Antasida? :: Antasida ≠ PPI. Antasida menetralkan asam yang sudah terbentuk, sedangkan PPI menekan produksi asam melalui inhibisi pompa proton.
 - [Sucralfate] Apa poin high-yield (pearl) tentang Sucralfate? :: Sucralfate membutuhkan lingkungan asam untuk bekerja. Jadi bila soal menyebut obat pembentuk gel protektif yang harus dijauhkan dari antasida/H2 antagonist dan dapat menghambat absorpsi tetracycline, warfarin, phenytoin, atau digoxin, pikirkan sucralfate.

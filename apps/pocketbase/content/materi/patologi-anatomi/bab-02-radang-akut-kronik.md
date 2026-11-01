@@ -830,9 +830,9 @@ H. Foreign-body giant cell → nuclei tersebar tidak teratur.
 - [Radang Akut & Kronik] Apa yang perlu diketahui tentang Cara tercepat mengerjakan soal pada Radang Akut & Kronik? :: Identifikasi CELL DOMINAN + MEDIATOR + MORFOLOGI + DURASI
 - [Radang Akut & Kronik] Apa yang dimaksud dengan ACUTE pada Radang Akut & Kronik? :: Vasodilation + permeability → exudate/stasis → neutrophil recruitment
 - [Radang Akut & Kronik] Apa yang dimaksud dengan CHRONIC pada Radang Akut & Kronik? :: Macrophage + lymphocyte + tissue destruction + repair/fibrosis
-- [Konsep Besar Inflamasi] Sebutkan poin-poin penting tentang Dua pola utama. :: • Acute inflammation → onset cepat, durasi relatif singkat, eksudasi cairan/protein dan dominasi neutrophil
+- [Konsep Besar Inflamasi] Sebutkan dua pola utama pada Radang Akut & Kronik. :: • Acute inflammation → onset cepat, durasi relatif singkat, eksudasi cairan/protein dan dominasi neutrophil
   • Chronic inflammation → berlangsung lebih lama, dominasi macrophage, lymphocyte, plasma cell, disertai tissue destruction dan repair/fibrosis secara bersamaan
-- [PAMP, DAMP, dan PRR] Sebutkan poin-poin penting tentang PRR penting. :: • Toll-like receptors (TLR)
+- [PAMP, DAMP, dan PRR] Sebutkan PRR penting pada PAMP, DAMP, dan PRR. :: • Toll-like receptors (TLR)
   • NOD-like receptors
   • Inflammasome-associated sensors
 - [Increased Vascular Permeability] Sebutkan mekanisme penting pada Increased Vascular Permeability. :: • Endothelial contraction pada venules → immediate transient response; klasik dimediasi histamine, bradykinin, leukotrienes
@@ -840,34 +840,33 @@ H. Foreign-body giant cell → nuclei tersebar tidak teratur.
   • Leukocyte-mediated endothelial injury
   • Increased transcytosis
   • Leakage dari pembuluh baru saat angiogenesis
-- [Chemotaxis] Sebutkan poin-poin penting tentang Chemoattractants penting. :: • Bacterial products
+- [Chemotaxis] Sebutkan chemoattractants penting pada Chemotaxis. :: • Bacterial products
   • C5a
   • Leukotriene B4 (LTB4)
   • Chemokines seperti IL-8/CXCL8
-- [Phagocytosis — Tiga Langkah] Sebutkan poin-poin penting tentang Opsonin penting. :: • IgG
+- [Phagocytosis — Tiga Langkah] Sebutkan opsonin penting pada Phagocytosis — Tiga Langkah. :: • IgG
   • C3b
   • Collectins seperti mannose-binding lectin
-- [Arachidonic Acid Metabolites] Sebutkan poin-poin penting tentang Cyclooxygenase pathway. :: • Prostaglandins
+- [Arachidonic Acid Metabolites] Sebutkan hal-hal penting tentang Cyclooxygenase pathway. :: • Prostaglandins
   • Thromboxane
-- [Cytokines — TNF dan IL-1] Sebutkan efek sistemik pada Cytokines — TNF dan IL-1. :: • Fever
-  • Acute-phase responses
-  • Leukocyte production
-- [Bradykinin] Sebutkan efek penting pada Bradykinin. :: • Vasodilation
-  • Increased vascular permeability
-  • Pain
-  • Bronchoconstriction
+- [Complement System] Sebutkan komponen high-yield pada Complement System. :: • C3a → anaphylatoxin
+  • C5a → anaphylatoxin + chemotaxis + leukocyte activation
+  • C3b → opsonization
+  • C5b-9 → membrane attack complex (MAC)
+- [Morfologi Acute Inflammation] Sebutkan pola morfologi utama pada Morfologi Acute Inflammation. :: • Serous inflammation
+  • Fibrinous inflammation
+  • Suppurative/purulent inflammation
+  • Ulcer
 - [Chronic Inflammation — Definisi] Sebutkan sel dominan pada Chronic Inflammation — Definisi. :: • Macrophages
   • Lymphocytes
   • Plasma cells
-- [Macrophage Activation — M1 vs M2] Sebutkan poin-poin penting tentang M2 / alternatively activated. :: • Dipicu terutama IL-4 dan IL-13
-  • Berperan pada tissue repair
-  • Growth factor production
-  • Fibrosis
-  • Anti-inflammatory functions tertentu
-- [Caseating vs Noncaseating Granuloma] Sebutkan poin-poin penting tentang Caseating granuloma. :: • Central caseous necrosis
+- [Immune vs Foreign-Body Granuloma] Sebutkan hal-hal penting tentang Immune granuloma. :: • Dipicu agen persisten yang menginduksi T-cell response
+  • Macrophage activation melalui cytokines seperti IFN-γ
+  • Contoh klasik: tuberculosis
+- [Caseating vs Noncaseating Granuloma] Sebutkan hal-hal penting tentang Caseating granuloma. :: • Central caseous necrosis
   • Klasik pada tuberculosis
   • Dapat juga terlihat pada sebagian fungal infections
-- [Giant Cells] Sebutkan poin-poin penting tentang Langhans giant cell. :: • Nuclei tersusun perifer seperti horseshoe/arc
+- [Giant Cells] Sebutkan hal-hal penting tentang Langhans giant cell. :: • Nuclei tersusun perifer seperti horseshoe/arc
   • Sering dikaitkan dengan granulomatous inflammation seperti TB
 - [Transudate vs Exudate] Apa poin high-yield (pearl) tentang Transudate vs Exudate? :: HEART FAILURE → transudate. BACTERIAL PNEUMONIA → exudate.
 - [Leukocyte Recruitment — Urutan] Bagaimana cara mengingat Leukocyte Recruitment — Urutan? :: ROLL = selectins. STICK = integrins.

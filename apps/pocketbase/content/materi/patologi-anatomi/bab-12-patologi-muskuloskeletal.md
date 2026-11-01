@@ -469,8 +469,8 @@ Nyeri sendi first MTP mendadak + needle crystals negative birefringence → gout
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Paget disease pada Patologi Muskuloskeletal? :: Mosaic lamellar bone
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Salmonella pada Patologi Muskuloskeletal? :: High-yield osteomyelitis pada sickle cell disease
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Rheumatoid nodule pada Patologi Muskuloskeletal? :: Fibrinoid necrosis + palisading histiocytes
-- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Gout pada Patologi Muskuloskeletal? :: Needle-shaped monosodium urate, negative birefringence
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan CPPD pada Patologi Muskuloskeletal? :: Rhomboid, weak positive birefringence
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Osteochondroma pada Patologi Muskuloskeletal? :: Cartilage-capped exostosis
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Osteoid osteoma pada Patologi Muskuloskeletal? :: Nocturnal pain relieved by NSAIDs
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Giant cell tumor pada Patologi Muskuloskeletal? :: Epiphysis + soap bubble
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Osteosarcoma pada Patologi Muskuloskeletal? :: Metaphysis + malignant osteoid
@@ -478,13 +478,13 @@ Nyeri sendi first MTP mendadak + needle crystals negative birefringence → gout
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Lipoma pada Patologi Muskuloskeletal? :: Mature adipocytes without atypia
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Rhabdomyosarcoma pada Patologi Muskuloskeletal? :: Malignant skeletal muscle differentiation
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Synovial sarcoma pada Patologi Muskuloskeletal? :: SS18-SSX fusion
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Schwannoma pada Patologi Muskuloskeletal? :: Antoni A/B + Verocay bodies
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Desmoid fibromatosis pada Patologi Muskuloskeletal? :: Locally aggressive, non-metastasizing
-- [Patologi Muskuloskeletal] Apa yang perlu diketahui tentang Bone tumor diagnosis pada Patologi Muskuloskeletal? :: Age + site + bone compartment + matrix
-- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Paget pada Patologi Muskuloskeletal? :: Mosaic bone
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Osteomyelitis pada Patologi Muskuloskeletal? :: S. aureus; Salmonella pada sickle cell
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Epifisis pada Patologi Muskuloskeletal? :: Giant cell tumor
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Metafisis remaja pada Patologi Muskuloskeletal? :: Osteosarcoma
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Pelvis dewasa pada Patologi Muskuloskeletal? :: Chondrosarcoma
-- [Osteoporosis] Sebutkan poin-poin penting tentang Pola klinis penting. :: • Postmenopausal osteoporosis → terutama akibat peningkatan resorpsi tulang karena defisiensi estrogen
+- [Osteoporosis] Sebutkan pola klinis penting pada Osteoporosis. :: • Postmenopausal osteoporosis → terutama akibat peningkatan resorpsi tulang karena defisiensi estrogen
   • Senile osteoporosis → penurunan aktivitas osteoblas dan faktor usia
   • Secondary osteoporosis → misalnya glucocorticoid use, immobilization, hyperthyroidism, malabsorption
 - [Osteomalasia & Rickets] Sebutkan perbedaan utama pada Osteomalasia & Rickets. :: • Osteoporosis = bone quantity ↓, mineralisasi normal
@@ -507,7 +507,7 @@ Nyeri sendi first MTP mendadak + needle crystals negative birefringence → gout
   • Alcohol
   • Sickle cell disease
   • Decompression sickness
-- [Osteosarcoma] Sebutkan poin-poin penting tentang Poin klasik. :: • Umumnya remaja
+- [Osteosarcoma] Sebutkan poin klasik pada Osteosarcoma. :: • Umumnya remaja
   • Metafisis tulang panjang
   • Sekitar lutut: distal femur/proximal tibia
   • Histologi: malignant osteoid

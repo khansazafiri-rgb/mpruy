@@ -263,16 +263,16 @@ Ini adalah flow paling penting untuk menjawab soal PTH.
 - [Reseptor Adrenergik: Ringkasan] Apa yang dimaksud dengan β2 pada Reseptor Adrenergik: Ringkasan? :: Gs → bronchodilation dan vasodilation pada vascular bed tertentu.
 - [Reseptor Adrenergik: Ringkasan] Apa yang dimaksud dengan β3 pada Reseptor Adrenergik: Ringkasan? :: Gs → lipolysis pada adipose tissue.
 - [Vitamin D / Calcitriol] Apa yang dimaksud dengan Aktivasi pada Vitamin D / Calcitriol? :: Kulit/diet → vitamin D → hati menjadi 25-OH vitamin D → ginjal menjadi 1,25-(OH)₂ vitamin D (calcitriol).
-- [Kelenjar Adrenal: Zona dan Hormon] Sebutkan poin-poin penting tentang Korteks adrenal. :: • Zona glomerulosa → aldosterone
+- [Kelenjar Adrenal: Zona dan Hormon] Sebutkan hal-hal penting tentang Korteks adrenal. :: • Zona glomerulosa → aldosterone
   • Zona fasciculata → cortisol
   • Zona reticularis → adrenal androgens
-- [Aldosteron: Regulasi] Sebutkan poin-poin penting tentang Regulator utama aldosterone. :: • Angiotensin II
+- [Aldosteron: Regulasi] Sebutkan regulator utama aldosterone pada Aldosteron: Regulasi. :: • Angiotensin II
   • Peningkatan K⁺ plasma
-- [Efek Metabolik Kortisol] Sebutkan poin-poin penting tentang Kortisol membantu mempertahankan ketersediaan bahan bakar. :: • ↑ gluconeogenesis hati
+- [Efek Metabolik Kortisol] Sebutkan hal-hal penting tentang Kortisol membantu mempertahankan ketersediaan bahan bakar. :: • ↑ gluconeogenesis hati
   • ↑ proteolysis perifer → amino acid substrate
   • ↑ lipolysis
   • Menurunkan penggunaan glukosa di beberapa jaringan dan dapat meningkatkan insulin resistance
-- [Cushing dan Addison: Konsep Fisiologis] Sebutkan poin-poin penting tentang Primary adrenal insufficiency/Addison. :: • Cortisol rendah
+- [Cushing dan Addison: Konsep Fisiologis] Sebutkan hal-hal penting tentang Primary adrenal insufficiency/Addison. :: • Cortisol rendah
   • Aldosterone dapat rendah
   • ACTH tinggi karena hilangnya feedback
   • Hyperpigmentation dapat muncul akibat peningkatan produk POMC

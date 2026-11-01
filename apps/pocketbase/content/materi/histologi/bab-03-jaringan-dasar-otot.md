@@ -402,9 +402,9 @@ Smooth:
 
 ## Flashcard {kartu}
 
-- [Peta Besar Jaringan Otot] Apa yang dimaksud dengan skeletal muscle pada Peta Besar Jaringan Otot? :: Striated, voluntary, multinucleated, nuclei perifer
-- [Peta Besar Jaringan Otot] Apa yang dimaksud dengan cardiac muscle pada Peta Besar Jaringan Otot? :: Striated, involuntary, bercabang, 1–2 nuclei sentral, intercalated discs
-- [Peta Besar Jaringan Otot] Apa yang dimaksud dengan smooth muscle pada Peta Besar Jaringan Otot? :: Non-striated pada light microscopy, involuntary, spindle-shaped, satu nucleus sentral.
+- [Peta Besar Jaringan Otot] Apa yang dimaksud dengan skeletal muscle pada Jaringan Dasar: Otot? :: Striated, voluntary, multinucleated, nuclei perifer
+- [Peta Besar Jaringan Otot] Apa yang dimaksud dengan cardiac muscle pada Jaringan Dasar: Otot? :: Striated, involuntary, bercabang, 1–2 nuclei sentral, intercalated discs
+- [Peta Besar Jaringan Otot] Apa yang dimaksud dengan smooth muscle pada Jaringan Dasar: Otot? :: Non-striated pada light microscopy, involuntary, spindle-shaped, satu nucleus sentral.
 - [Sarcomere: Unit Kontraktil] Apa yang dimaksud dengan Z line pada Sarcomere: Unit Kontraktil? :: Batas sarcomere dan tempat anchoring thin filaments
 - [Sarcomere: Unit Kontraktil] Apa yang dimaksud dengan I band pada Sarcomere: Unit Kontraktil? :: Hanya thin filaments, tampak lebih terang
 - [Sarcomere: Unit Kontraktil] Apa yang dimaksud dengan A band pada Sarcomere: Unit Kontraktil? :: Sepanjang thick filament, tampak lebih gelap
@@ -417,19 +417,15 @@ Smooth:
 - [Jaringan Dasar: Otot] Apa yang perlu diketahui tentang Cardiac muscle cross section pada Jaringan Dasar: Otot? :: Fibers lebih kecil/irregular, nuclei sentral lebih sering, banyak capillaries, branching tidak selalu tampak pada cross section
 - [Jaringan Dasar: Otot] Apa yang perlu diketahui tentang Smooth muscle cross section pada Jaringan Dasar: Otot? :: Sangat bervariasi ukurannya, nuclei hanya pada sebagian profiles, tidak ada striation dan tidak ada polygonal large fibers seperti skeletal muscle
 - [Jaringan Dasar: Otot] Apa yang perlu diketahui tentang Dense connective tissue pada Jaringan Dasar: Otot? :: Extracellular collagen dominan; cell nuclei sedikit, pipih, dan berada di antara collagen bundles
-- [Jaringan Dasar: Otot] Apa yang dimaksud dengan Skeletal muscle pada Jaringan Dasar: Otot? :: Striated + long unbranched fiber + multinucleated + nuclei perifer
-- [Jaringan Dasar: Otot] Apa yang dimaksud dengan Cardiac muscle pada Jaringan Dasar: Otot? :: Striated + branched + central nucleus + intercalated discs
-- [Jaringan Dasar: Otot] Apa yang dimaksud dengan Smooth muscle pada Jaringan Dasar: Otot? :: Spindle-shaped + one central nucleus + no striation
 - [Jaringan Dasar: Otot] Apa yang dimaksud dengan endomysium pada Jaringan Dasar: Otot? :: Individual fiber
 - [Jaringan Dasar: Otot] Apa yang dimaksud dengan perimysium pada Jaringan Dasar: Otot? :: Fascicle
 - [Jaringan Dasar: Otot] Apa yang dimaksud dengan epimysium pada Jaringan Dasar: Otot? :: Whole muscle
-- [Jaringan Dasar: Otot] Apa yang perlu diketahui tentang Sarcomere pada Jaringan Dasar: Otot? :: Z — I — A(H–M–H) — I — Z
 - [Jaringan Dasar: Otot] Apa yang dimaksud dengan satellite cells pada Jaringan Dasar: Otot? :: Antara sarcolemma dan basal lamina
 - [Jaringan Dasar: Otot] Apa yang dimaksud dengan NMJ pada Jaringan Dasar: Otot? :: Motor neuron → motor end plate
 - [Jaringan Dasar: Otot] Apa yang dimaksud dengan muscle spindle pada Jaringan Dasar: Otot? :: Sensory stretch receptor
 - [Jaringan Dasar: Otot] Apa yang dimaksud dengan intercalated disc pada Jaringan Dasar: Otot? :: Fascia adherens + desmosomes + gap junctions
 - [Jaringan Dasar: Otot] Apa yang dimaksud dengan Purkinje fibers pada Jaringan Dasar: Otot? :: Large pale glycogen-rich modified cardiomyocytes di subendocardium
-- [Peta Besar Jaringan Otot] Sebutkan tiga tipe utama pada Peta Besar Jaringan Otot. :: • Skeletal muscle: striated, voluntary, multinucleated, nuclei perifer
+- [Peta Besar Jaringan Otot] Sebutkan tiga tipe utama pada Jaringan Dasar: Otot. :: • Skeletal muscle: striated, voluntary, multinucleated, nuclei perifer
   • Cardiac muscle: striated, involuntary, bercabang, 1–2 nuclei sentral, intercalated discs
   • Smooth muscle: non-striated pada light microscopy, involuntary, spindle-shaped, satu nucleus sentral
 - [Skeletal Muscle pada Longitudinal Section] Sebutkan ciri utama longitudinal section pada Skeletal Muscle pada Longitudinal Section. :: • Fiber panjang dan sejajar
@@ -442,7 +438,7 @@ Smooth:
   • A band: sepanjang thick filament, tampak lebih gelap
   • H zone: bagian tengah A band yang hanya berisi thick filaments
   • M line: garis tengah sarcomere tempat organisasi thick filaments
-- [Fiber Types pada Skeletal Muscle] Sebutkan poin-poin penting tentang Type I / slow oxidative fibers. :: • Myoglobin tinggi
+- [Fiber Types pada Skeletal Muscle] Sebutkan hal-hal penting tentang Type I / slow oxidative fibers. :: • Myoglobin tinggi
   • Mitochondria banyak
   • Capillary supply baik
   • Diameter relatif lebih kecil
@@ -467,22 +463,22 @@ Smooth:
   • Respiratory tract
   • Arrector pili
   • Iris dan ciliary body
-- [Smooth Muscle pada Longitudinal dan Cross Section] Sebutkan poin-poin penting tentang Transverse section. :: • Profil cells memiliki diameter bervariasi karena dipotong pada level berbeda
+- [Smooth Muscle pada Longitudinal dan Cross Section] Sebutkan hal-hal penting tentang Transverse section. :: • Profil cells memiliki diameter bervariasi karena dipotong pada level berbeda
   • Hanya sebagian profil menunjukkan nucleus karena nucleus tidak selalu ikut terpotong
   • Tidak terdapat fascicular striation
-- [Perbandingan Tiga Tipe Muscle] Sebutkan poin-poin penting tentang Skeletal muscle. :: • Striated
+- [Perbandingan Tiga Tipe Muscle] Sebutkan hal-hal penting tentang Skeletal muscle. :: • Striated
   • Long cylindrical unbranched fibers
   • Many peripheral nuclei
   • Voluntary
   • Satellite cells ada
   • Regeneration terbatas
-- [Perbandingan Tiga Tipe Muscle] Sebutkan poin-poin penting tentang Cardiac muscle. :: • Striated
+- [Perbandingan Tiga Tipe Muscle] Sebutkan hal-hal penting tentang Cardiac muscle. :: • Striated
   • Branched cells
   • 1–2 central nuclei
   • Intercalated discs
   • Involuntary
   • Regeneration sangat minimal
-- [Perbandingan Tiga Tipe Muscle] Sebutkan poin-poin penting tentang Smooth muscle. :: • Non-striated
+- [Perbandingan Tiga Tipe Muscle] Sebutkan hal-hal penting tentang Smooth muscle. :: • Non-striated
   • Spindle-shaped cells
   • One central nucleus
   • Involuntary

@@ -470,12 +470,6 @@ Hereditary cancer → germline predisposition sejak lahir → additional somatic
 - [Lynch Syndrome] Jelaskan Berbeda dari FAP dalam konteks Lynch Syndrome. :: Lynch tidak harus menghasilkan ribuan polip.
 - [Genomic Instability] Apa yang dimaksud dengan chromosomal instability pada Genomic Instability? :: Aneuploidy, gains/losses, structural rearrangements.
 - [Genomic Instability] Apa yang dimaksud dengan microsatellite instability pada Genomic Instability? :: Mismatch-repair deficiency.
-- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 1 pada Pattern Recognition Cepat? :: Anak dengan bilateral retinoblastoma → pikirkan germline RB1 + second hits somatic.
-- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 2 pada Pattern Recognition Cepat? :: Banyak adenomatous polyps sejak muda → pikirkan FAP/APC.
-- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 3 pada Pattern Recognition Cepat? :: Colorectal + endometrial cancers berulang dalam keluarga dengan MSI/MMR deficiency → pikirkan Lynch syndrome.
-- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 4 pada Pattern Recognition Cepat? :: Beragam kanker onset muda pada keluarga, termasuk sarcoma/breast/brain/adrenocortical → pikirkan Li–Fraumeni/TP53.
-- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 5 pada Pattern Recognition Cepat? :: Breast/ovarian cancer clustering dengan onset muda tertentu → pertimbangkan hereditary breast/ovarian predisposition dan genetic counseling/testing sesuai kriteria.
-- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 6 pada Pattern Recognition Cepat? :: CML dengan Philadelphia chromosome → BCR-ABL fusion oncogene.
 - [Dasar Genetika Kanker] Apa yang perlu diketahui tentang RAS pada Dasar Genetika Kanker? :: Small GTPase. Activating mutation membuat signaling proliferatif tetap aktif
 - [Dasar Genetika Kanker] Apa yang perlu diketahui tentang MYC pada Dasar Genetika Kanker? :: Transcription factor yang mendorong pertumbuhan dan proliferasi. c-MYC terkait Burkitt lymphoma melalui t(8;14)
 - [Dasar Genetika Kanker] Apa yang perlu diketahui tentang HER2/ERBB2 pada Dasar Genetika Kanker? :: Receptor tyrosine kinase; amplification dapat ditemukan pada sebagian kanker payudara dan kanker lain
@@ -484,13 +478,13 @@ Hereditary cancer → germline predisposition sejak lahir → additional somatic
 - [Dasar Genetika Kanker] Apa yang perlu diketahui tentang BRAF pada Dasar Genetika Kanker? :: Kinase pada MAPK pathway; activating mutation dapat ditemukan pada melanoma dan beberapa kanker lain
 - [Dasar Genetika Kanker] Apa yang dimaksud dengan Kanker pada Dasar Genetika Kanker? :: Penyakit genetik pada tingkat sel, tetapi tidak selalu herediter
 - [Dasar Genetika Kanker] Apa yang perlu diingat tentang Proto-oncogene pada Dasar Genetika Kanker? :: Oncogene melalui gain-of-function
-- [Oncogene vs Tumor Suppressor — Cara Cepat Membedakan] Sebutkan poin-poin penting tentang Tumor suppressor. :: • Perubahan utama = loss-of-function
+- [Oncogene vs Tumor Suppressor — Cara Cepat Membedakan] Sebutkan hal-hal penting tentang Tumor suppressor. :: • Perubahan utama = loss-of-function
   • Sering perlu kehilangan kedua alel pada tingkat sel
   • “brake failure”
   • Contoh: RB1, TP53, APC, PTEN
-- [Testing pada Genetika Kanker] Sebutkan poin-poin penting tentang Germline testing. :: • Digunakan ketika hereditary predisposition dicurigai
+- [Testing pada Genetika Kanker] Sebutkan hal-hal penting tentang Germline testing. :: • Digunakan ketika hereditary predisposition dicurigai
   • Membutuhkan counseling mengenai hasil positive, negative, VUS, dan familial implications
-- [Pedigree dalam Hereditary Cancer] Sebutkan poin-poin penting tentang Hal yang dicatat. :: • Jenis kanker
+- [Pedigree dalam Hereditary Cancer] Sebutkan hal-hal penting tentang Hal yang dicatat. :: • Jenis kanker
   • Usia diagnosis
   • Multiple primary cancers
   • Bilateral tumors

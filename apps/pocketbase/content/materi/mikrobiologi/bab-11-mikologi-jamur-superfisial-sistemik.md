@@ -249,19 +249,19 @@ Interpretasi harus membedakan colonization, contamination, dan true invasive dis
 - [Dasar Mikologi Medis] Sebutkan bentuk utama pada Dasar Mikologi Medis. :: • Yeast: uniseluler, membelah dengan budding. Contoh: Candida, Cryptococcus
   • Mold: multiseluler, membentuk hifa dan miselium. Contoh: Aspergillus, Mucorales, dermatofita
   • Dimorfik: bentuk mold di lingkungan dan berubah menjadi yeast atau bentuk jaringan khas di dalam tubuh. Prinsip klasik: “mold in the cold, yeast in the heat”, dengan pengecualian tertentu seperti Coccidioides yang membentuk sferul di jaringan
-- [Dasar Mikologi Medis] Sebutkan poin-poin penting tentang Hifa penting untuk ujian. :: • Septate, acute-angle branching sekitar 45° → Aspergillus
+- [Dasar Mikologi Medis] Sebutkan hifa penting untuk ujian pada Dasar Mikologi Medis. :: • Septate, acute-angle branching sekitar 45° → Aspergillus
   • Broad/ribbon-like, pauciseptate atau aseptate, branching lebar mendekati 90° → Mucorales
 - [Klasifikasi Mikosis] Sebutkan berdasarkan kedalaman jaringan pada Klasifikasi Mikosis. :: • Superfisial: terbatas pada stratum korneum atau batang rambut
   • Kutaneus: mengenai jaringan keratin seperti kulit, rambut, kuku; terutama dermatofita
   • Subkutaneus: masuk melalui trauma, kemudian berkembang di dermis/subkutis
   • Sistemik/endemic mycoses: umumnya masuk lewat inhalasi dan dapat menyebar dari paru
   • Oportunistik: terutama pada host imunokompromais, misalnya Candida, Aspergillus, Cryptococcus, dan Mucorales
-- [Dermatofita] Sebutkan poin-poin penting tentang Pola “tinea” ditentukan oleh lokasi. :: • Tinea capitis → scalp/rambut
+- [Dermatofita] Sebutkan pola “tinea” ditentukan oleh lokasi pada Dermatofita. :: • Tinea capitis → scalp/rambut
   • Tinea corporis → badan
   • Tinea cruris → lipat paha
   • Tinea pedis → kaki
   • Tinea unguium/onychomycosis → kuku
-- [Candida] Sebutkan poin-poin penting tentang Morfologi high-yield Candida albicans. :: • Budding yeast
+- [Candida] Sebutkan morfologi high-yield Candida albicans pada Candida. :: • Budding yeast
   • Pseudohyphae dan true hyphae
   • Germ tube positif
   • Dapat membentuk chlamydospore
@@ -274,11 +274,11 @@ Interpretasi harus membedakan colonization, contamination, dan true invasive dis
   • Transplantasi/imunosupresi berat
   • Iron overload/deferoxamine
   • Trauma atau luka bakar pada bentuk kutaneus
-- [Jamur Dimorfik Sistemik] Sebutkan poin-poin penting tentang Histoplasma capsulatum. :: • Terkait tanah yang terkontaminasi kotoran burung/kelelawar
+- [Jamur Dimorfik Sistemik] Sebutkan hal-hal penting tentang Histoplasma capsulatum. :: • Terkait tanah yang terkontaminasi kotoran burung/kelelawar
   • Yeast kecil intraseluler dalam makrofag
   • Dapat menyerupai TB; disseminated histoplasmosis lebih berat pada imunokompromais
-- [Jamur Dimorfik Sistemik] Sebutkan poin-poin penting tentang Blastomyces dermatitidis. :: • Broad-based budding yeast
+- [Jamur Dimorfik Sistemik] Sebutkan hal-hal penting tentang Blastomyces dermatitidis. :: • Broad-based budding yeast
   • Dapat mengenai paru, kulit, dan tulang
-- [Jamur Dimorfik Sistemik] Sebutkan poin-poin penting tentang Sporothrix schenckii. :: • Dimorfik, sering masuk melalui inokulasi kulit setelah trauma dengan tanaman/tanah
+- [Jamur Dimorfik Sistemik] Sebutkan hal-hal penting tentang Sporothrix schenckii. :: • Dimorfik, sering masuk melalui inokulasi kulit setelah trauma dengan tanaman/tanah
   • Pola nodul mengikuti aliran limfatik → “sporotrichoid spread”
   • Bentuk yeast klasik dapat digambarkan seperti cigar-shaped

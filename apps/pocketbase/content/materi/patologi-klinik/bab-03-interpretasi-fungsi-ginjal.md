@@ -1017,7 +1017,6 @@ Baca fungsi ginjal dengan urutan: creatinine dibanding baseline → eGFR → uri
 
 ## Flashcard {kartu}
 
-- [Definisi Chronic Kidney Disease (CKD)] Apa yang dimaksud dengan Kata kunci pada Definisi Chronic Kidney Disease (CKD)? :: PERSISTEN ≥3 bulan.
 - [Albuminuria — UACR] Apa yang dimaksud dengan Kategori albuminuria pada Albuminuria — UACR? :: A1: <30 mg/g — normal sampai mildly increased
 - [Albuminuria — UACR] Apa yang dimaksud dengan A2 pada Albuminuria — UACR? :: 30–300 mg/g — moderately increased
 - [Albuminuria — UACR] Apa yang dimaksud dengan A3 pada Albuminuria — UACR? :: >300 mg/g — severely increased
@@ -1052,7 +1051,7 @@ Baca fungsi ginjal dengan urutan: creatinine dibanding baseline → eGFR → uri
   • Severe shock
   • Bilateral renal vascular occlusion
   • Severe intrinsic renal failure tertentu
-- [Urine Sodium dan Urine Osmolality] Sebutkan poin-poin penting tentang Prerenal physiology klasik. :: • Urine Na rendah
+- [Urine Sodium dan Urine Osmolality] Sebutkan prerenal physiology klasik pada Urine Sodium dan Urine Osmolality. :: • Urine Na rendah
   • Urine lebih terkonsentrasi
   • FeNa rendah
 - [Acute Tubular Injury / Atn] Sebutkan penyebab umum pada Acute Tubular Injury / Atn. :: • Ischemia
@@ -1062,17 +1061,17 @@ Baca fungsi ginjal dengan urutan: creatinine dibanding baseline → eGFR → uri
   • Obat tertentu
 - [Postrenal AKI] Sebutkan pemeriksaan penting pada Postrenal AKI. :: • Bladder scan
   • Renal ultrasound untuk hydronephrosis
-- [AKI vs CKD — Petunjuk Praktis] Sebutkan poin-poin penting tentang Mendukung CKD. :: • Abnormalitas ≥3 bulan
+- [AKI vs CKD — Petunjuk Praktis] Sebutkan hal-hal penting tentang Mendukung CKD. :: • Abnormalitas ≥3 bulan
   • Anemia normocytic terkait EPO deficiency
   • CKD-mineral bone disorder
   • Kidney kecil/echogenic pada beberapa etiologi
   • Longstanding albuminuria
   • Riwayat CKD sebelumnya
-- [Urine Microscopy — RBC] Sebutkan poin-poin penting tentang Glomerular hematuria. :: • Dysmorphic RBC
+- [Urine Microscopy — RBC] Sebutkan hal-hal penting tentang Glomerular hematuria. :: • Dysmorphic RBC
   • Acanthocytes
   • RBC casts
   • Sering disertai proteinuria
-- [Nephritic vs Nephrotic Lab Pattern] Sebutkan poin-poin penting tentang Nephritic pattern. :: • Hematuria
+- [Nephritic vs Nephrotic Lab Pattern] Sebutkan hal-hal penting tentang Nephritic pattern. :: • Hematuria
   • Dysmorphic RBC / RBC casts
   • Proteinuria biasanya subnephrotic
   • Reduced GFR
@@ -1081,11 +1080,11 @@ Baca fungsi ginjal dengan urutan: creatinine dibanding baseline → eGFR → uri
 - [Diabetic Kidney Disease — Lab Clues] Sebutkan temuan penting pada Diabetic Kidney Disease — Lab Clues. :: • Persistent albuminuria
   • Declining eGFR
   • Hypertension
-- [Renal Tubular Acidosis — Konsep Dasar] Sebutkan poin-poin penting tentang Type 1 distal RTA. :: • Gangguan sekresi H+
+- [Renal Tubular Acidosis — Konsep Dasar] Sebutkan hal-hal penting tentang Type 1 distal RTA. :: • Gangguan sekresi H+
   • Urine pH sering >5.5 saat systemic acidosis
   • Hypokalemia
   • Nephrolithiasis/nephrocalcinosis risk
-- [Kapan Curiga Hasil Creatinine Tidak Sesuai?] Sebutkan poin-poin penting tentang Curiga bila. :: • Creatinine rendah pada pasien sangat cachectic meski klinis CKD
+- [Kapan Curiga Hasil Creatinine Tidak Sesuai?] Sebutkan hal-hal penting tentang Curiga bila. :: • Creatinine rendah pada pasien sangat cachectic meski klinis CKD
   • Creatinine naik setelah obat yang menghambat tubular secretion tanpa perubahan klinis besar
   • Creatinine berubah cepat pada AKI sehingga eGFR tampak menyesatkan
   • Creatinine tidak sesuai dengan cystatin C atau marker klinis lain

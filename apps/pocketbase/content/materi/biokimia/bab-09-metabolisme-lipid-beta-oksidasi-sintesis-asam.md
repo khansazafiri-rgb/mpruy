@@ -564,19 +564,18 @@ Fatty acid synthesis terjadi di cytosol pada keadaan kenyang. Acetyl-CoA keluar 
 ## Flashcard {kartu}
 
 - [Lipolisis di Jaringan Adiposa] Jelaskan Lipolisis berlangsung bertahap dalam konteks Lipolisis di Jaringan Adiposa. :: TAG → DAG → MAG → glycerol + fatty acids.
-- [Lipolisis di Jaringan Adiposa] Jelaskan hormone-sensitive lipase / HSL dalam konteks Lipolisis di Jaringan Adiposa. :: Terutama DAG → MAG
 - [Lipolisis di Jaringan Adiposa] Apa yang dimaksud dengan monoacylglycerol lipase pada Lipolisis di Jaringan Adiposa? :: MAG → glycerol + fatty acid.
 - [Aktivasi Asam Lemak] Pada Aktivasi Asam Lemak, apa reaksinya? :: Fatty acid + CoA + ATP → fatty acyl-CoA + AMP + PPi
 - [Aktivasi Asam Lemak] Pada Aktivasi Asam Lemak, apa enzimnya? :: Acyl-CoA synthetase / thiokinase.
 - [Masuknya Asam Lemak Rantai Panjang ke Mitokondria] Jelaskan Regulasi paling penting dalam konteks Masuknya Asam Lemak Rantai Panjang ke Mitokondria. :: Malonyl-CoA menghambat CPT-I.
 - [Empat Langkah Beta-Oksidasi] Jelaskan Urutan yang harus dihafal dalam konteks Empat Langkah Beta-Oksidasi. :: Oxidation → Hydration → Oxidation → Thiolysis.
-- [Oxidation pertama] Pada Oxidation pertama (Empat Langkah Beta-Oksidasi), apa enzimnya? :: Acyl-CoA dehydrogenase.
-- [Hydration] Pada Hydration (Empat Langkah Beta-Oksidasi), apa enzimnya? :: Enoyl-CoA hydratase.
-- [Oxidation kedua] Pada Oxidation kedua (Empat Langkah Beta-Oksidasi), apa enzimnya? :: Beta-hydroxyacyl-CoA dehydrogenase.
-- [Thiolysis] Pada Thiolysis (Empat Langkah Beta-Oksidasi), apa enzimnya? :: Beta-ketothiolase / thiolase.
+- [Oxidation pertama] Pada Oxidation pertama, apa enzimnya? :: Acyl-CoA dehydrogenase.
+- [Hydration] Pada Hydration, apa enzimnya? :: Enoyl-CoA hydratase.
+- [Oxidation kedua] Pada Oxidation kedua, apa enzimnya? :: Beta-hydroxyacyl-CoA dehydrogenase.
+- [Thiolysis] Pada Thiolysis, apa enzimnya? :: Beta-ketothiolase / thiolase.
 - [Perhitungan Beta-Oksidasi Palmitat] Jelaskan Jumlah siklus beta-oksidasi dalam konteks Perhitungan Beta-Oksidasi Palmitat. :: (n/2) − 1 = (16/2) − 1 = 7 siklus.
 - [Perhitungan Beta-Oksidasi Palmitat] Pada Perhitungan Beta-Oksidasi Palmitat, apa jumlah acetyl-CoAnya? :: N/2 = 8 acetyl-CoA.
-- [D-methylmalonyl-CoA → L-methylmalonyl-CoA] Pada D-methylmalonyl-CoA → L-methylmalonyl-CoA (Asam Lemak Rantai Ganjil), apa enzimnya? :: Methylmalonyl-CoA epimerase.
+- [D-methylmalonyl-CoA → L-methylmalonyl-CoA] Pada D-methylmalonyl-CoA → L-methylmalonyl-CoA, apa enzimnya? :: Methylmalonyl-CoA epimerase.
 - [Defisiensi MCAD] Apa yang dimaksud dengan Prinsip penting pada Defisiensi MCAD? :: Hindari puasa berkepanjangan.
 - [Acetyl-CoA Carboxylase / ACC] Pada Acetyl-CoA Carboxylase / ACC, apa enzimnya? :: Acetyl-CoA carboxylase / ACC.
 - [Acetyl-CoA Carboxylase / ACC] Apa yang dimaksud dengan Cofactor pada Acetyl-CoA Carboxylase / ACC? :: Biotin / vitamin B7.
@@ -589,13 +588,14 @@ Fatty acid synthesis terjadi di cytosol pada keadaan kenyang. Acetyl-CoA keluar 
 - [Alur yang Harus Dihafal] Apa yang dimaksud dengan Carnitine shuttle pada Alur yang Harus Dihafal? :: Fatty acyl-CoA → CPT-I → acyl-carnitine → translocase → CPT-II → matrix fatty acyl-CoA.
 - [Alur yang Harus Dihafal] Apa yang dimaksud dengan Beta-oksidasi pada Alur yang Harus Dihafal? :: Acyl-CoA → enoyl-CoA → hydroxyacyl-CoA → ketoacyl-CoA → acetyl-CoA + acyl-CoA lebih pendek.
 - [Alur yang Harus Dihafal] Apa yang dimaksud dengan Odd chain pada Alur yang Harus Dihafal? :: Propionyl-CoA → methylmalonyl-CoA → succinyl-CoA.
+- [Alur yang Harus Dihafal] Jelaskan Fatty acid synthesis dalam konteks Alur yang Harus Dihafal. :: Mitochondrial acetyl-CoA → citrate shuttle → cytosolic acetyl-CoA → ACC → malonyl-CoA → fatty acid synthase + NADPH → palmitate.
 - [Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak] Apa jawaban atau kesimpulan untuk petunjuk berikut: Aktivasi fatty acid menjadi acyl-CoA memakai ATP? :: AMP dan setara biaya 2 ATP
 - [Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak] Apa urutan beta-oksidasi pada Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak? :: Oxidation – hydration – oxidation – thiolysis
 - [Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak] Apa yang perlu diingat tentang MCAD deficiency pada Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak? :: Hypoketotic hypoglycemia + dicarboxylic aciduria
 - [Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak] Apa yang dimaksud dengan Rate-limiting enzyme fatty acid synthesis? :: Acetyl-CoA carboxylase / ACC
 - [Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak] Apa yang dimaksud dengan Produk utama de novo synthesis pada Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak? :: Palmitate C16:0
 - [Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak] Apa yang dimaksud dengan Essential fatty acids pada Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak? :: Linoleic acid dan alpha-linolenic acid
-- [Penyimpanan dan Mobilisasi Triacylglycerol] Sebutkan poin-poin penting tentang TAG terutama disimpan di adiposit karena. :: • Sangat tereduksi → menghasilkan energi tinggi
+- [Penyimpanan dan Mobilisasi Triacylglycerol] Sebutkan hal-hal penting tentang TAG terutama disimpan di adiposit karena. :: • Sangat tereduksi → menghasilkan energi tinggi
   • Hidrofobik → dapat disimpan tanpa menarik banyak air
   • Memberikan energi jauh lebih padat dibanding glycogen
 - [Lipolisis di Jaringan Adiposa] Sebutkan enzim penting pada Lipolisis di Jaringan Adiposa. :: • Adipose triglyceride lipase / ATGL: TAG → DAG
@@ -607,10 +607,10 @@ Fatty acid synthesis terjadi di cytosol pada keadaan kenyang. Acetyl-CoA keluar 
   • Carnitine–acylcarnitine translocase memindahkan acyl-carnitine melintasi inner mitochondrial membrane
   • CPT-II pada sisi matrix memindahkan kembali gugus acyl dari carnitine ke CoA → fatty acyl-CoA
   • Carnitine bebas dikembalikan keluar oleh translocase
-- [Hubungan Beta-Oksidasi dengan Ketogenesis] Sebutkan poin-poin penting tentang Ketone bodies utama. :: • Acetoacetate
+- [Hubungan Beta-Oksidasi dengan Ketogenesis] Sebutkan ketone bodies utama pada Hubungan Beta-Oksidasi dengan Ketogenesis. :: • Acetoacetate
   • Beta-hydroxybutyrate
   • Acetone
-- [Defisiensi MCAD] Sebutkan poin-poin penting tentang Masalah utama. :: • Medium-chain fatty acids tidak dapat dioksidasi secara efektif
+- [Defisiensi MCAD] Sebutkan masalah utama pada Defisiensi MCAD. :: • Medium-chain fatty acids tidak dapat dioksidasi secara efektif
   • Produksi acetyl-CoA dan ketone bodies saat puasa menurun
   • Tubuh menjadi lebih bergantung pada glucose
 - [Defisiensi MCAD] Sebutkan gambaran klasik pada Defisiensi MCAD. :: • Hypoketotic hypoglycemia
@@ -621,19 +621,18 @@ Fatty acid synthesis terjadi di cytosol pada keadaan kenyang. Acetyl-CoA keluar 
   • Jaringan lain yang aktif melakukan lipogenesis
 - [Fatty Acid Synthase Complex] Sebutkan perbedaan penting pada Fatty Acid Synthase Complex. :: • Beta-oksidasi membawa acyl group pada CoA
   • Fatty acid synthesis membawa growing chain pada ACP
-- [Sumber NADPH untuk Sintesis Asam Lemak] Sebutkan poin-poin penting tentang Sumber utama NADPH. :: • Pentose phosphate pathway / HMP shunt
+- [Sumber NADPH untuk Sintesis Asam Lemak] Sebutkan sumber utama NADPH pada Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak. :: • Pentose phosphate pathway / HMP shunt
   • Malic enzyme:
-- [Sumber NADPH untuk Sintesis Asam Lemak] Sebutkan NADPH berbeda fungsi dari NADH pada Sumber NADPH untuk Sintesis Asam Lemak. :: • NADPH terutama digunakan untuk biosynthetic/reductive reactions dan antioxidant defense
+- [Sumber NADPH untuk Sintesis Asam Lemak] Sebutkan NADPH berbeda fungsi dari NADH pada Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak. :: • NADPH terutama digunakan untuk biosynthetic/reductive reactions dan antioxidant defense
   • NADH terutama mengangkut reducing equivalents menuju ETC untuk produksi ATP
-- [Elongasi dan Desaturasi] Sebutkan poin-poin penting tentang Essential fatty acids. :: • Linoleic acid, omega-6
+- [Elongasi dan Desaturasi] Sebutkan hal-hal penting tentang Essential fatty acids. :: • Linoleic acid, omega-6
   • Alpha-linolenic acid, omega-3
-- [Gambaran Besar] Apa jebakan yang sering muncul pada soal tentang Gambaran Besar? :: Tubuh mencegah beta-oksidasi dan sintesis asam lemak aktif kuat secara bersamaan. Salah satu mekanisme utamanya adalah malonyl-CoA yang menghambat CPT-I.
+- [Gambaran Besar] Apa jebakan yang sering muncul pada soal tentang Metabolisme Lipid: Beta-Oksidasi, Sintesis Asam Lemak? :: Tubuh mencegah beta-oksidasi dan sintesis asam lemak aktif kuat secara bersamaan. Salah satu mekanisme utamanya adalah malonyl-CoA yang menghambat CPT-I.
 - [Lipolisis di Jaringan Adiposa] Apa poin high-yield (pearl) tentang Lipolisis di Jaringan Adiposa? :: Insulin = simpan energi. Catecholamine / kondisi puasa = mobilisasi energi.
 - [Aktivasi Asam Lemak] Apa jebakan yang sering muncul pada soal tentang Aktivasi Asam Lemak? :: Aktivasi asam lemak menghabiskan setara 2 ATP, walaupun hanya satu molekul ATP yang digunakan.
 - [Perhitungan Beta-Oksidasi Palmitat] Apa jebakan yang sering muncul pada soal tentang Perhitungan Beta-Oksidasi Palmitat? :: Buku lama kadang menggunakan nilai 129 ATP atau 131 ATP karena memakai rasio lama 3 ATP/NADH dan 2 ATP/FADH2. Untuk konsep modern, palmitat menghasilkan sekitar 106 ATP netto.
-- [Enzim: methylmalonyl-CoA mutase] Apa poin high-yield (pearl) tentang Enzim: methylmalonyl-CoA mutase (Asam Lemak Rantai Ganjil)? :: Odd-chain fatty acids dapat memberikan kontribusi net carbon untuk pembentukan glukosa melalui propionyl-CoA → succinyl-CoA.
+- [Enzim: methylmalonyl-CoA mutase] Apa poin high-yield (pearl) tentang Enzim: methylmalonyl-CoA mutase? :: Odd-chain fatty acids dapat memberikan kontribusi net carbon untuk pembentukan glukosa melalui propionyl-CoA → succinyl-CoA.
 - [Beta-Oksidasi di Peroksisom] Apa poin high-yield (pearl) tentang Beta-Oksidasi di Peroksisom? :: Peroxisome penting untuk very-long-chain fatty acids. Mitochondria merupakan lokasi utama beta-oksidasi untuk produksi ATP.
 - [Defisiensi MCAD] Apa jebakan yang sering muncul pada soal tentang Defisiensi MCAD? :: Hypoglycemia + ketone rendah saat puasa → pikirkan gangguan fatty acid oxidation, terutama MCAD.
 - [Acetyl-CoA Carboxylase / ACC] Apa jebakan yang sering muncul pada soal tentang Acetyl-CoA Carboxylase / ACC? :: ACC adalah rate-limiting enzyme sintesis asam lemak.
-- [Sumber NADPH untuk Sintesis Asam Lemak] Apa jebakan yang sering muncul pada soal tentang Sumber NADPH untuk Sintesis Asam Lemak? :: Fatty acid synthesis memakai NADPH, bukan NADH.
 - [Perbandingan Beta-Oksidasi vs Sintesis Asam Lemak] Apa jebakan yang sering muncul pada soal tentang Perbandingan Beta-Oksidasi vs Sintesis Asam Lemak? :: Kedua pathway bukan sekadar kebalikan satu sama lain. Lokasi, carrier, cofactor, enzim, dan regulasinya berbeda.

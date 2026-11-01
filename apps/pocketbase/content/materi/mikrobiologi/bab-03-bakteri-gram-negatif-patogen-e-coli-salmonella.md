@@ -521,14 +521,12 @@ Gram-negative enteric rod → MacConkey → LF pink = E. coli → tentukan patho
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Undercooked burger + bloody diarrhea + HUS? :: EHEC/STEC
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Prolonged systemic fever + rose spots + gallbladder carrier? :: S. Typhi
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diketahui tentang Enterobacteria pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Gram-negative rods, facultative anaerobes, oxidase negative, ferment glucose
-- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang dimaksud dengan E. coli pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: LF pink MacConkey, motile, indole +, TSI A/A
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang ETEC: LT↑cAMP, ST↑cGMP pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Watery traveler’s diarrhea
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: EPEC: attaching-effacing + intimin? :: Infantile diarrhea
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang EHEC/STEC: Shiga-like toxin pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Hemorrhagic colitis + HUS
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang EIEC: invasive pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Dysentery-like
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang EAEC: aggregative fimbriae pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Persistent watery diarrhea
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang dimaksud dengan Salmonella pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: NLF, motile, H₂S+, black center, TSI K/A
-- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diketahui tentang S. Typhi pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: O/H/Vi antigen, enteric fever, chronic carrier di gallbladder
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang dimaksud dengan Shigella pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: NLF, non-motile, H₂S−, TSI K/A, very low infectious dose
 - [TSI — Cara Membacanya] Sebutkan tujuan utama pada TSI — Cara Membacanya. :: • Melihat fermentasi gula
   • Produksi gas
@@ -540,27 +538,27 @@ Gram-negative enteric rod → MacConkey → LF pink = E. coli → tentukan patho
   • Kerusakan endotel mikrovaskular, terutama usus dan ginjal, menjelaskan bloody diarrhea serta risiko HUS
 - [Salmonella — Identitas Dasar] Sebutkan pola kultur pada Salmonella — Identitas Dasar. :: • MacConkey → colorless/pale
   • SS/XLD → black center karena H₂S
-- [Antigen Salmonella: O, H, Vi] Sebutkan poin-poin penting tentang Tiga antigen. :: • O antigen = somatic/cell-wall antigen, heat-stable; dipakai dalam pengelompokan serologis
+- [Antigen Salmonella: O, H, Vi] Sebutkan hal-hal penting tentang Tiga antigen. :: • O antigen = somatic/cell-wall antigen, heat-stable; dipakai dalam pengelompokan serologis
   • H antigen = flagellar antigen, lebih heat-labile; banyak Salmonella memiliki phase variation
   • Vi antigen = capsular virulence antigen, sangat terkait dengan S. Typhi dalam konteks ujian
-- [Salmonella Typhi — Enteric Fever] Sebutkan poin-poin penting tentang Salmonella enterica serovar Typhi. :: • Non-lactose fermenter
+- [Salmonella Typhi — Enteric Fever] Sebutkan hal-hal penting tentang Salmonella enterica serovar Typhi. :: • Non-lactose fermenter
   • Motile
   • H₂S-producing pattern dapat terlihat pada media selective
   • Memiliki Vi antigen
   • Manusia adalah reservoir utama dalam konteks typhoid fever
-- [Salmonella Typhi — Enteric Fever] Sebutkan poin-poin penting tentang Patogenesis konseptual. :: • Tertelan melalui makanan/air terkontaminasi
+- [Salmonella Typhi — Enteric Fever] Sebutkan patogenesis konseptual pada Salmonella Typhi — Enteric Fever. :: • Tertelan melalui makanan/air terkontaminasi
   • Menembus mukosa intestinal, termasuk melalui M cells/Peyer patches
   • Dapat bertahan di macrophage
   • Menyebar melalui sistem limfatik dan reticuloendothelial tissues
   • Menimbulkan systemic enteric fever
-- [Dosis Infektif Shigella — Sangat Rendah] Sebutkan poin-poin penting tentang Poin. :: • Shigella sekitar 10² organisme → infectious dose sangat rendah
+- [Dosis Infektif Shigella — Sangat Rendah] Sebutkan hal-hal penting tentang Poin. :: • Shigella sekitar 10² organisme → infectious dose sangat rendah
   • Salmonella membutuhkan inokulum yang jauh lebih besar
 - [Shigellosis / Bacillary Dysentery] Sebutkan manifestasi utama pada Shigellosis / Bacillary Dysentery. :: • Inflammatory diarrhea
   • Bloody stool
   • Mucus
   • Abdominal cramping
   • Tenesmus
-- [EHEC vs Shigella — Jangan Tertukar] Sebutkan poin-poin penting tentang Pembeda high-yield. :: • EHEC = E. coli pathotype; prototipe O157:H7; motile E. coli background; lactose-fermenting E. coli lineage tetapi O157:H7 punya sorbitol clue
+- [EHEC vs Shigella — Jangan Tertukar] Sebutkan pembeda high-yield pada EHEC vs Shigella — Jangan Tertukar. :: • EHEC = E. coli pathotype; prototipe O157:H7; motile E. coli background; lactose-fermenting E. coli lineage tetapi O157:H7 punya sorbitol clue
   • Shigella = genus tersendiri; non-motile; NLF; H₂S −; infectious dose sangat rendah; dysentery klasik
 - [coli — Identitas Dasar] Apa poin high-yield (pearl) tentang coli — Identitas Dasar? :: Jangan menyamakan “E. coli = flora normal” dengan “semua E. coli tidak patogen”. Pathotype ditentukan oleh virulence genes/factors.
 - [coli — Peta Pathotype] Bagaimana cara mengingat coli — Peta Pathotype? :: TOXIN cair → ETEC. PEDIATRIC attaching-effacing → EPEC.

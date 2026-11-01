@@ -206,7 +206,7 @@ Farmakokinetik = ADME. Absorpsi menentukan masuknya obat ke sirkulasi; bioavaila
   • Luas permukaan absorpsi dan aliran darah setempat
   • Motilitas gastrointestinal dan waktu pengosongan lambung
   • Makanan atau obat lain yang mengubah proses absorpsi
-- [Absorpsi Obat] Sebutkan poin-poin penting tentang Poin konsep. :: • Asam lemah cenderung lebih tidak terionisasi pada lingkungan asam
+- [Absorpsi Obat] Sebutkan hal-hal penting tentang Poin konsep. :: • Asam lemah cenderung lebih tidak terionisasi pada lingkungan asam
   • Basa lemah cenderung lebih tidak terionisasi pada lingkungan yang lebih basa
   • Tetapi lokasi absorpsi klinis juga sangat dipengaruhi luas permukaan, perfusi, dan waktu kontak
 - [Distribusi Obat] Sebutkan faktor utama yang memengaruhi distribusi pada Distribusi Obat. :: • Aliran darah organ
@@ -214,16 +214,16 @@ Farmakokinetik = ADME. Absorpsi menentukan masuknya obat ke sirkulasi; bioavaila
   • Ikatan protein plasma
   • Lipofilisitas obat
   • Ikatan obat pada jaringan
-- [Volume Distribusi (Vd)] Sebutkan interpretasi konseptual pada Volume Distribusi (Vd). :: • Vd kecil → obat lebih banyak tertahan di plasma atau sulit menembus jaringan
+- [Volume Distribusi (Vd)] Sebutkan interpretasi konseptual pada Volume Distribusi. :: • Vd kecil → obat lebih banyak tertahan di plasma atau sulit menembus jaringan
   • Vd sedang → distribusi terutama pada cairan ekstraseluler
   • Vd besar → obat banyak terakumulasi di jaringan atau lemak sehingga konsentrasi plasma relatif rendah
-- [Ekskresi Obat] Sebutkan poin-poin penting tentang Tiga proses utama pada ginjal. :: • Filtrasi glomerulus — terutama untuk obat bebas dengan ukuran molekul sesuai
+- [Ekskresi Obat] Sebutkan tiga proses utama pada ginjal pada Ekskresi Obat. :: • Filtrasi glomerulus — terutama untuk obat bebas dengan ukuran molekul sesuai
   • Sekresi tubular aktif — transporter pada tubulus proksimal memindahkan obat dari darah ke lumen
   • Reabsorpsi tubular pasif — obat yang lipofilik dan tidak terionisasi dapat kembali berdifusi ke darah
-- [Kinetika Eliminasi: Orde Pertama vs Orde Nol] Sebutkan poin-poin penting tentang Orde pertama. :: • Jumlah yang dieliminasi per satuan waktu proporsional terhadap konsentrasi
+- [Kinetika Eliminasi: Orde Pertama vs Orde Nol] Sebutkan hal-hal penting tentang Orde pertama. :: • Jumlah yang dieliminasi per satuan waktu proporsional terhadap konsentrasi
   • Persentase obat yang dieliminasi relatif tetap
   • Waktu paruh konstan
   • Berlaku pada sebagian besar obat dalam rentang dosis terapeutik
 - [Konsep Dasar Farmakokinetik] Apa poin high-yield (pearl) tentang Konsep Dasar Farmakokinetik? :: Farmakokinetik = tubuh terhadap obat. Farmakodinamik = obat terhadap tubuh. Ini adalah pembeda konsep paling dasar dan sering menjadi stem soal.
 - [Bioavailabilitas dan First-Pass Effect] Apa poin high-yield (pearl) tentang Bioavailabilitas dan First-Pass Effect? :: IV → F 100%. First-pass tinggi → bioavailabilitas oral dapat rendah walaupun obat telah terabsorpsi dari saluran cerna.
-- [Volume Distribusi (Vd)] Apa poin high-yield (pearl) tentang Volume Distribusi (Vd)? :: Vd bukan volume anatomi nyata. Vd adalah parameter “semu” yang membantu menggambarkan kecenderungan obat berada di plasma versus jaringan.
+- [Volume Distribusi (Vd)] Apa poin high-yield (pearl) tentang Volume Distribusi? :: Vd bukan volume anatomi nyata. Vd adalah parameter “semu” yang membantu menggambarkan kecenderungan obat berada di plasma versus jaringan.

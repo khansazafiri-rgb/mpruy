@@ -592,7 +592,7 @@ Glikogen adalah polimer glukosa bercabang dengan ikatan α(1→4) pada rantai li
 
 ## Flashcard {kartu}
 
-- [Peta Besar Bab] Pada Peta Besar Bab, apa inti babnya? :: Insulin mendorong penyimpanan glukosa sebagai glikogen, sedangkan glucagon/epinephrine mendorong pemecahan glikogen sesuai kebutuhan jaringan.
+- [Peta Besar Bab] Pada Metabolisme Glikogen, apa inti babnya? :: Insulin mendorong penyimpanan glukosa sebagai glikogen, sedangkan glucagon/epinephrine mendorong pemecahan glikogen sesuai kebutuhan jaringan.
 - [Langkah 2 — G6P → G1P] Pada Langkah 2 — G6P → G1P, apa enzimnya? :: Phosphoglucomutase.
 - [Langkah 3 — Aktivasi Menjadi UDP-Glucose] Pada Langkah 3 — Aktivasi Menjadi UDP-Glucose, apa enzimnya? :: UDP-glucose pyrophosphorylase.
 - [Glycogen Phosphorylase] Pada Glycogen Phosphorylase, apa produknya? :: Glikogen yang memendek + glucose-1-phosphate.
@@ -603,7 +603,6 @@ Glikogen adalah polimer glukosa bercabang dengan ikatan α(1→4) pada rantai li
 - [GSD Type I — Von Gierke] Apa yang dimaksud dengan Defek utama pada GSD Type I — Von Gierke? :: Glucose-6-phosphatase atau sistem transpor G6P terkait.
 - [GSD Type I — Von Gierke] Apa yang dimaksud dengan Poin mekanisme pada GSD Type I — Von Gierke? :: Glycogenolysis dan gluconeogenesis dapat menghasilkan G6P, tetapi tahap pelepasan glukosa terakhir terganggu.
 - [GSD Type II — Pompe] Apa yang dimaksud dengan Defek pada GSD Type II — Pompe? :: Lysosomal acid α-glucosidase (acid maltase).
-- [GSD Type III — Cori/Forbes] Apa yang dimaksud dengan Defek pada GSD Type III — Cori/Forbes? :: Debranching enzyme.
 - [GSD Type V — McArdle] Apa yang dimaksud dengan Defek pada GSD Type V — McArdle? :: Muscle glycogen phosphorylase (myophosphorylase).
 - [GSD Type VI — Hers] Apa yang dimaksud dengan Defek pada GSD Type VI — Hers? :: Liver glycogen phosphorylase.
 - [GSD Type VII — Tarui] Apa yang dimaksud dengan Defek pada GSD Type VII — Tarui? :: Phosphofructokinase-1 pada otot dan eritrosit, bukan enzim glycogenolysis langsung.
@@ -615,17 +614,13 @@ Glikogen adalah polimer glukosa bercabang dengan ikatan α(1→4) pada rantai li
 - [Master Flow Regulasi] Apa yang dimaksud dengan PKA juga pada Master Flow Regulasi? :: → glycogen synthase phosphorylation → glycogenesis ↓.
 - [Master Flow Regulasi] Apa yang dimaksud dengan FED STATE pada Master Flow Regulasi? :: Insulin → Akt + PP1 → glycogen synthase dephosphorylation/activation → phosphorylase pathway dephosphorylation/inactivation → glycogenesis ↑.
 - [Metabolisme Glikogen] Apa yang dimaksud dengan Glikogen pada Metabolisme Glikogen? :: Polimer glukosa bercabang dengan ikatan α(1→4) pada rantai linear dan α(1→6) pada titik cabang. Glycogenin membentuk primer, glycogen synthase memperpanjang rantai dengan ikatan α(1→4), dan branching enzyme membentuk cabang α(1→6). Pada glycogenolysis, glycogen phosphorylase menghasilkan G1P dari ikatan α(1→4), sedangkan debranching enzyme menangani titik cabang. G1P menjadi G6P; hati dapat mengubah G6P menjadi glukosa bebas karena memiliki glucose-6-phosphatase, sementara otot menggunakan G6P untuk glikolisis. Phosphorylation secara umum mengaktifkan glycogen phosphorylase tetapi menghambat glycogen synthase; PP1 membalikkan pola ini. Glucagon merangsang glycogenolysis hati, epinephrine bekerja pada hati dan otot, sedangkan Ca²⁺ dan AMP memberi kontrol cepat pada otot. Insulin mendorong glycogenesis. GSD high-yield meliputi von Gierke (G6Pase), Pompe (lysosomal acid α-glucosidase), Cori (debranching), Andersen (branching), McArdle (muscle phosphorylase), Hers (liver phosphorylase), dan type IX (phosphorylase kinase)
-- [Lokasi Penyimpanan Utama] Sebutkan poin-poin penting tentang Dua depot utama. :: • Hati
+- [Lokasi Penyimpanan Utama] Sebutkan dua depot utama pada Lokasi Penyimpanan Utama. :: • Hati
   • Otot rangka
 - [Insulin dan Penyimpanan Glikogen] Sebutkan efek keseluruhan pada Insulin dan Penyimpanan Glikogen. :: • Meningkatkan uptake/utilisasi glukosa pada jaringan yang sensitif
   • Menurunkan sinyal cAMP tertentu
   • Mengaktifkan protein phosphatase-1
   • Mendorong dephosphorylation glycogen synthase → aktif
   • Mendorong dephosphorylation phosphorylase/phosphorylase kinase → inaktif
-- [Glycogen Storage Diseases] Sebutkan manifestasi bergantung pada jaringan yang terdampak pada Glycogen Storage Diseases. :: • Hati → hepatomegaly dan fasting hypoglycemia
-  • Otot → exercise intolerance/cramps
-  • Jantung/lysosome → cardiomyopathy dan kelemahan otot
-  • Struktur abnormal → kerusakan jaringan progresif
 - [GSD Type I — Von Gierke] Sebutkan gambaran klasik pada GSD Type I — Von Gierke. :: • Severe fasting hypoglycemia
   • Hepatomegaly
   • Lactic acidosis

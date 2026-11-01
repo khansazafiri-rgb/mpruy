@@ -819,9 +819,8 @@ Pikirkan staghorn calculus bila sesuai imaging.
 
 - [Warna Urine — Clue, Bukan Diagnosis] Apa yang dimaksud dengan Normal pada Warna Urine — Clue, Bukan Diagnosis? :: Kuning pucat sampai amber akibat urochrome.
 - [Calcium Oxalate Crystals] Jelaskan Ethylene glycol clue dalam konteks Calcium Oxalate Crystals. :: High anion gap metabolic acidosis + AKI + calcium oxalate crystals.
-- [Pola Kasus: Cystitis] Pada Pola Kasus: Cystitis, apa gejalanya? :: Dysuria, frequency, urgency.
-- [Pola Kasus: Glomerulonephritis] Pada Pola Kasus: Glomerulonephritis, apa interpretasinya? :: Active nephritic sediment.
-- [Pola Kasus: Rhabdomyolysis] Pada Pola Kasus: Rhabdomyolysis, apa interpretasinya? :: Myoglobinuria sangat mungkin.
+- [Pola Kasus: Cystitis] Pada Interpretasi Analisis Urin, apa gejalanya? :: Dysuria, frequency, urgency.
+- [Pola Kasus: Glomerulonephritis] Apa interpretasinya? :: Active nephritic sediment.
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Urinalysis pada Interpretasi Analisis Urin? :: Physical + dipstick + microscopy
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Blood positif + banyak RBC pada Interpretasi Analisis Urin? :: Hematuria
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Blood positif + no RBC pada Interpretasi Analisis Urin? :: Myoglobinuria/hemoglobinuria
@@ -834,10 +833,10 @@ Pikirkan staghorn calculus bila sesuai imaging.
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Struvite pada Interpretasi Analisis Urin? :: Coffin-lid + alkaline urine + urease-positive organism
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Cystine pada Interpretasi Analisis Urin? :: Hexagonal crystal
 - [Interpretasi Analisis Urin] Apa yang perlu diingat tentang Glucosuria dengan normoglycemia pada Interpretasi Analisis Urin? :: Proximal tubular defect/SGLT2 effect
-- [Tiga Komponen Urinalysis] Sebutkan poin-poin penting tentang Urinalysis rutin. :: • Pemeriksaan fisik: warna, kejernihan, specific gravity
+- [Tiga Komponen Urinalysis] Sebutkan hal-hal penting tentang Urinalysis rutin. :: • Pemeriksaan fisik: warna, kejernihan, specific gravity
   • Pemeriksaan kimia dengan dipstick: pH, protein, blood/heme, glucose, ketone, bilirubin, urobilinogen, nitrite, leukocyte esterase
   • Pemeriksaan mikroskopis: RBC, WBC, epithelial cells, casts, crystals, bacteria, yeast, dan unsur lain
-- [Warna Urine — Clue, Bukan Diagnosis] Sebutkan poin-poin penting tentang Perubahan warna high-yield. :: • Merah/pink → RBC, hemoglobin, myoglobin, beetroot, obat tertentu
+- [Warna Urine — Clue, Bukan Diagnosis] Sebutkan perubahan warna high-yield pada Warna Urine — Clue, Bukan Diagnosis. :: • Merah/pink → RBC, hemoglobin, myoglobin, beetroot, obat tertentu
   • Coklat/tea/cola → glomerular hematuria, hemoglobin/myoglobin, bilirubin
   • Orange → bilirubin, obat tertentu
   • Keruh → WBC, RBC, crystals, bacteria, semen, kontaminasi
@@ -845,25 +844,25 @@ Pikirkan staghorn calculus bila sesuai imaging.
 - [Albuminuria — UACR] Sebutkan kategori umum pada Albuminuria — UACR. :: • A1 <30 mg/g
   • A2 30–300 mg/g
   • A3 >300 mg/g
-- [Hematuria Glomerular vs Nonglomerular] Sebutkan poin-poin penting tentang Glomerular hematuria. :: • Dysmorphic RBC
+- [Hematuria Glomerular vs Nonglomerular] Sebutkan hal-hal penting tentang Glomerular hematuria. :: • Dysmorphic RBC
   • Acanthocytes
   • RBC casts
   • Proteinuria dapat menyertai
   • Urine dapat tampak tea/cola-colored
-- [Hematuria Glomerular vs Nonglomerular] Sebutkan poin-poin penting tentang Nonglomerular hematuria. :: • RBC lebih isomorphic
+- [Hematuria Glomerular vs Nonglomerular] Sebutkan hal-hal penting tentang Nonglomerular hematuria. :: • RBC lebih isomorphic
   • Clots dapat muncul
   • Sumber dapat berupa stone, tumor, infection, trauma, prostate, bladder, ureter
-- [Nitrite] Sebutkan poin-poin penting tentang Nitrite negatif TIDAK menyingkirkan UTI karena. :: • Tidak semua organisme menghasilkan nitrite
+- [Nitrite] Sebutkan hal-hal penting tentang Nitrite negatif TIDAK menyingkirkan UTI karena. :: • Tidak semua organisme menghasilkan nitrite
   • Urine terlalu singkat berada di bladder
   • Diet nitrate rendah
   • Bacterial load rendah
-- [Epithelial Cells] Sebutkan poin-poin penting tentang Squamous epithelial cells. :: • Biasanya dari distal urethra/genital tract
+- [Epithelial Cells] Sebutkan hal-hal penting tentang Squamous epithelial cells. :: • Biasanya dari distal urethra/genital tract
   • Jumlah banyak → contamination clue
-- [Epithelial Cells] Sebutkan poin-poin penting tentang Transitional/urothelial cells. :: • Berasal dari renal pelvis, ureter, bladder
+- [Epithelial Cells] Sebutkan hal-hal penting tentang Transitional/urothelial cells. :: • Berasal dari renal pelvis, ureter, bladder
   • Dapat meningkat setelah instrumentation atau inflammation
-- [Epithelial Cells] Sebutkan poin-poin penting tentang Renal tubular epithelial cells. :: • Mengarah ke tubular injury bila banyak
+- [Epithelial Cells] Sebutkan hal-hal penting tentang Renal tubular epithelial cells. :: • Mengarah ke tubular injury bila banyak
   • Dapat muncul bersama epithelial cell casts
-- [Crystals — Prinsip Besar] Sebutkan poin-poin penting tentang Crystals dipengaruhi. :: • Urine pH
+- [Crystals — Prinsip Besar] Sebutkan hal-hal penting tentang Crystals dipengaruhi. :: • Urine pH
   • Solute concentration
   • Temperature
   • Obat

@@ -334,10 +334,10 @@ SSO terdiri dari simpatik dan parasimpatik. Semua neuron preganglionik memakai A
 
 ## Flashcard {kartu}
 
-- [M1] Pada M1 (Reseptor Kolinergik), apa efeknya? :: Meningkatkan sekresi asam lambung.
-- [M2] Pada M2 (Reseptor Kolinergik), apa efeknya? :: Menurunkan denyut jantung dan menurunkan konduksi AV.
-- [M3] Pada M3 (Reseptor Kolinergik), apa lokasinya? :: Mata, bronkus, saluran cerna, kandung kemih, dan kelenjar.
-- [M3] Pada M3 (Reseptor Kolinergik), apa efeknya? :: Bronkokonstriksi, miosis, kontraksi detrusor, peningkatan saliva, serta peningkatan motilitas usus.
+- [M1] Pada M1, apa efeknya? :: Meningkatkan sekresi asam lambung.
+- [M2] Pada M2, apa efeknya? :: Menurunkan denyut jantung dan menurunkan konduksi AV.
+- [M3] Pada M3, apa lokasinya? :: Mata, bronkus, saluran cerna, kandung kemih, dan kelenjar.
+- [M3] Pada M3, apa efeknya? :: Bronkokonstriksi, miosis, kontraksi detrusor, peningkatan saliva, serta peningkatan motilitas usus.
 - [Reseptor Adrenergik] Pada Reseptor Adrenergik, apa lokasinya? :: Pembuluh darah, iris, sfingter kandung kemih.
 - [Reseptor Adrenergik] Pada Reseptor Adrenergik, apa efeknya? :: Vasokonstriksi, midriasis, kontraksi sfingter.
 - [Parasimpatomimetik Langsung] Pada Parasimpatomimetik Langsung, apa mekanismenya? :: Mengaktivasi reseptor muskarinik atau meningkatkan efek ACh secara langsung pada target kolinergik.
@@ -357,7 +357,7 @@ SSO terdiri dari simpatik dan parasimpatik. Semua neuron preganglionik memakai A
 - [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Metoprolol, atenolol, bisoprolol, propranolol, carvedilol? :: Contoh β-blocker
 - [Gambaran Umum Sistem Saraf Otonom] Sebutkan efek umum yang digambarkan pada Gambaran Umum Sistem Saraf Otonom. :: • Aktivasi simpatik → jantung berdebar, napas lebih cepat, pupil melebar
   • Aktivasi parasimpatik → denyut jantung melambat, pencernaan meningkat, saliva bertambah
-- [Neurotransmiter: Aturan Utama dan Pengecualian] Sebutkan poin-poin penting tentang Pengecualian penting. :: • Kelenjar keringat termasuk jalur simpatik, tetapi neuron postganglioniknya melepaskan ACh dan bekerja pada reseptor muskarinik
+- [Neurotransmiter: Aturan Utama dan Pengecualian] Sebutkan pengecualian penting pada Neurotransmiter: Aturan Utama dan Pengecualian. :: • Kelenjar keringat termasuk jalur simpatik, tetapi neuron postganglioniknya melepaskan ACh dan bekerja pada reseptor muskarinik
   • Medula adrenal menerima stimulasi kolinergik melalui reseptor nikotinik dan kemudian berperan dalam pelepasan katekolamin
 - [Empat Kelompok Besar Obat Otonom] Sebutkan cara membedakan cepat pada Empat Kelompok Besar Obat Otonom. :: • “-mimetik” = meniru atau meningkatkan aktivitas sistem
   • “-litik” = menghambat aktivitas sistem
@@ -379,11 +379,11 @@ SSO terdiri dari simpatik dan parasimpatik. Semua neuron preganglionik memakai A
   • Salbutamol/Albuterol → agonis β2 untuk bronkodilatasi pada asma
   • Fenilefrin → hipotensi dan dekongestan
   • Mirabegron → overactive bladder
-- [Cara Membaca Soal Obat Otonom] Sebutkan urutan atau langkah pada Cara Membaca Soal Obat Otonom? :: • Tentukan organ atau gejala dominan
+- [Cara Membaca Soal Obat Otonom] Sebutkan urutan atau langkah pada Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)? :: • Tentukan organ atau gejala dominan
   • Tentukan reseptor yang paling sesuai
   • Tentukan apakah soal membutuhkan aktivasi atau blokade reseptor
   • Cocokkan dengan obat dan indikasi yang tersedia
-- [Cara Membaca Soal Obat Otonom] Sebutkan contoh pola pada Cara Membaca Soal Obat Otonom. :: • Asma + butuh bronkodilatasi → pikirkan β2 → salbutamol/albuterol
+- [Cara Membaca Soal Obat Otonom] Sebutkan contoh pola pada Obat Sistem Saraf Otonom (Kolinergik, Adrenergik). :: • Asma + butuh bronkodilatasi → pikirkan β2 → salbutamol/albuterol
   • Retensi urin → pikirkan peningkatan aktivitas muskarinik → bethanechol termasuk contoh
   • Bradikardia → pikirkan blokade muskarinik → atropine termasuk contoh
   • Overactive bladder → dapat muncul pada kelompok antimuskarinik seperti oxybutynin atau agonis β3 seperti mirabegron

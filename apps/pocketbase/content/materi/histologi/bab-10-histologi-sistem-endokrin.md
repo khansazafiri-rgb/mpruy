@@ -713,25 +713,19 @@ Setelah organ teridentifikasi, baru cari cell/region spesifik.
 - [Strategi Identifikasi Preparat Endokrin] Apa yang dimaksud dengan Thyroid pada Strategi Identifikasi Preparat Endokrin? :: Follicular cells, C cells, colloid, activity pattern.
 - [Strategi Identifikasi Preparat Endokrin] Apa yang dimaksud dengan Adrenal pada Strategi Identifikasi Preparat Endokrin? :: G → F → R → medulla.
 - [Histologi Sistem Endokrin] Apa yang dimaksud dengan Endocrine glands pada Histologi Sistem Endokrin? :: Ductless + rich capillary network
-- [Histologi Sistem Endokrin] Apa yang dimaksud dengan Pituitary: adenohypophysis pada Histologi Sistem Endokrin? :: Dark/cellular
 - [Histologi Sistem Endokrin] Apa yang perlu diingat tentang acidophil pada Histologi Sistem Endokrin? :: GH, PRL
 - [Histologi Sistem Endokrin] Apa yang perlu diingat tentang basophil pada Histologi Sistem Endokrin? :: FSH, LH, ACTH, TSH
 - [Histologi Sistem Endokrin] Apa yang dimaksud dengan neurohypophysis pada Histologi Sistem Endokrin? :: Pale neural tissue + pituicytes + Herring bodies
-- [Histologi Sistem Endokrin] Apa yang dimaksud dengan Thyroid: follicle + colloid pada Histologi Sistem Endokrin? :: Signature
 - [Histologi Sistem Endokrin] Apa yang perlu diingat tentang C cell pada Histologi Sistem Endokrin? :: Calcitonin
 - [Histologi Sistem Endokrin] Apa yang dimaksud dengan active pada Histologi Sistem Endokrin? :: Taller epithelium + scalloped/resorbing colloid
 - [Histologi Sistem Endokrin] Apa yang dimaksud dengan inactive pada Histologi Sistem Endokrin? :: Flatter epithelium + large colloid-rich follicles
-- [Histologi Sistem Endokrin] Apa yang perlu diketahui tentang Parathyroid pada Histologi Sistem Endokrin? :: Chief cell → PTH
 - [Histologi Sistem Endokrin] Apa yang dimaksud dengan oxyphil pada Histologi Sistem Endokrin? :: Large eosinophilic cell, bertambah dengan usia
-- [Histologi Sistem Endokrin] Apa yang dimaksud dengan Adrenal: GFR pada Histologi Sistem Endokrin? :: Glomerulosa → fasciculata → reticularis
 - [Histologi Sistem Endokrin] Apa yang dimaksud dengan medulla pada Histologi Sistem Endokrin? :: Chromaffin cells → catecholamines
-- [Histologi Sistem Endokrin] Apa yang dimaksud dengan Pancreas: islet pada Histologi Sistem Endokrin? :: Pale cluster dalam dark exocrine pancreas
 - [Histologi Sistem Endokrin] Apa yang perlu diingat tentang beta pada Histologi Sistem Endokrin? :: Insulin
 - [Histologi Sistem Endokrin] Apa yang perlu diingat tentang alpha pada Histologi Sistem Endokrin? :: Glucagon
 - [Histologi Sistem Endokrin] Apa yang perlu diingat tentang delta pada Histologi Sistem Endokrin? :: Somatostatin
 - [Histologi Sistem Endokrin] Apa yang perlu diingat tentang Pineal: pinealocytes pada Histologi Sistem Endokrin? :: Melatonin
-- [Histologi Sistem Endokrin] Apa yang perlu diketahui tentang Spot diagnosis mantra pada Histologi Sistem Endokrin? :: “Follicle? Two lobes? Three zones? Pale island? Oxyphil + fat? Brain sand?”
-- [Acidophils] Sebutkan poin-poin penting tentang Dua populasi fungsional utama. :: • Somatotrophs → growth hormone/GH
+- [Acidophils] Sebutkan dua populasi fungsional utama pada Acidophils. :: • Somatotrophs → growth hormone/GH
   • Lactotrophs atau mammotrophs → prolactin/PRL
 - [Basophils] Sebutkan kelompok utama pada Basophils. :: • Thyrotrophs → TSH
   • Gonadotrophs → FSH dan LH
@@ -741,15 +735,15 @@ Setelah organ teridentifikasi, baru cari cell/region spesifik.
   • Pituicytes
   • Fenestrated capillaries
   • Herring bodies
-- [Pars Nervosa Neurohypophysis] Sebutkan poin-poin penting tentang Hormone yang dilepas di neurohypophysis. :: • ADH/vasopressin
+- [Pars Nervosa Neurohypophysis] Sebutkan hal-hal penting tentang Hormone yang dilepas di neurohypophysis. :: • ADH/vasopressin
   • Oxytocin
-- [Thyroid Gland: Signature Follicles] Sebutkan poin-poin penting tentang Setiap follicle. :: • Follicular epithelial cells
+- [Thyroid Gland: Signature Follicles] Sebutkan hal-hal penting tentang Setiap follicle. :: • Follicular epithelial cells
   • Basement membrane
   • Central lumen berisi colloid
-- [Follicular Cells] Sebutkan poin-poin penting tentang Bentuk epitel berubah sesuai activity. :: • Relatively inactive gland → low cuboidal hingga flattened
+- [Follicular Cells] Sebutkan hal-hal penting tentang Bentuk epitel berubah sesuai activity. :: • Relatively inactive gland → low cuboidal hingga flattened
   • Moderately active → cuboidal
   • Highly active → taller cuboidal/columnar
-- [Parafollicular / C Cells] Sebutkan poin-poin penting tentang Parafollicular cells atau C cells berada. :: • Dalam follicular epithelium tetapi tidak mencapai lumen; atau
+- [Parafollicular / C Cells] Sebutkan hal-hal penting tentang Parafollicular cells atau C cells berada. :: • Dalam follicular epithelium tetapi tidak mencapai lumen; atau
   • Dalam small clusters di antara follicles
 - [Prinsip Sintesis Hormon Thyroid] Sebutkan urutan besar yang penting pada Prinsip Sintesis Hormon Thyroid. :: • Iodide trapping melalui Na+/I− symporter di basal membrane
   • Transport iodide ke apical side
@@ -759,9 +753,9 @@ Setelah organ teridentifikasi, baru cari cell/region spesifik.
   • Storage dalam colloid
   • TSH-stimulated endocytosis colloid
   • Lysosomal processing dan release T3/T4 ke darah
-- [Parathyroid Gland: Organisasi Umum] Sebutkan poin-poin penting tentang Dua cell types klasik. :: • Chief/principal cells
+- [Parathyroid Gland: Organisasi Umum] Sebutkan dua cell types klasik pada Parathyroid Gland: Organisasi Umum. :: • Chief/principal cells
   • Oxyphil cells
-- [Islet Cell Types] Sebutkan poin-poin penting tentang Cell types utama. :: • Beta cells → insulin
+- [Islet Cell Types] Sebutkan cell types utama pada Islet Cell Types. :: • Beta cells → insulin
   • Alpha cells → glucagon
   • Delta cells → somatostatin
   • PP/F cells → pancreatic polypeptide

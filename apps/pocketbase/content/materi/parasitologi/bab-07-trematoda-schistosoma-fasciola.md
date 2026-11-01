@@ -452,32 +452,28 @@ SCHISTOSOMA = freshwater cercaria → tembus kulit → adult di vena → telur m
 - [Pattern Recognition Praktikum] Apa yang dimaksud dengan Kasus C pada Pattern Recognition Praktikum? :: Telur relatif bulat dengan small lateral knob → S. japonicum.
 - [Pattern Recognition Praktikum] Apa yang dimaksud dengan Kasus D pada Pattern Recognition Praktikum? :: Telur besar operculated + RUQ pain + riwayat makan watercress → Fasciola.
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Schistosoma infektif bagi manusia? :: Cercaria
-- [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan S. mansoni pada Trematoda (Schistosoma, Fasciola)? :: Large lateral spine
-- [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan S. haematobium pada Trematoda (Schistosoma, Fasciola)? :: Terminal spine
-- [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan S. japonicum pada Trematoda (Schistosoma, Fasciola)? :: Small lateral knob
 - [Trematoda (Schistosoma, Fasciola)] Apa yang perlu diingat tentang S. mansoni/japonicum pada Trematoda (Schistosoma, Fasciola)? :: Stool eggs
 - [Trematoda (Schistosoma, Fasciola)] Apa yang perlu diingat tentang S. haematobium pada Trematoda (Schistosoma, Fasciola)? :: Urine eggs
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Katayama syndrome pada Trematoda (Schistosoma, Fasciola)? :: Acute systemic schistosomiasis + eosinophilia
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Symmers pipe-stem fibrosis pada Trematoda (Schistosoma, Fasciola)? :: Hepatosplenic schistosomiasis
-- [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Indonesia: S. japonicum di Napu, Lindu, Bada; snail? :: Oncomelania hupensis lindoensis
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Praziquantel pada Trematoda (Schistosoma, Fasciola)? :: Drug of choice schistosomiasis
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Fasciola infektif pada Trematoda (Schistosoma, Fasciola)? :: Metacercaria pada aquatic plants
 - [Trematoda (Schistosoma, Fasciola)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Fasciola juvenile bermigrasi melalui liver? :: Acute hepatic phase + eosinophilia
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Fasciola egg pada Trematoda (Schistosoma, Fasciola)? :: Large + operculated
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Triclabendazole pada Trematoda (Schistosoma, Fasciola)? :: Drug of choice fascioliasis; praziquantel tidak efektif untuk Fasciola
-- [Schistosoma — Spesies Penting] Sebutkan poin-poin penting tentang Spesies utama pada manusia. :: • S. mansoni → intestinal/hepatic schistosomiasis
+- [Schistosoma — Spesies Penting] Sebutkan spesies utama pada manusia pada Schistosoma — Spesies Penting. :: • S. mansoni → intestinal/hepatic schistosomiasis
   • S. japonicum → intestinal/hepatic schistosomiasis; penting di Asia termasuk Indonesia
   • S. haematobium → urinary schistosomiasis
   • S. mekongi dan S. intercalatum/guineensis juga dapat menyebabkan penyakit manusia di wilayah tertentu
-- [Diagnosis Schistosomiasis] Sebutkan poin-poin penting tentang Diagnosis parasitologis utama. :: • S. mansoni/japonicum → pemeriksaan telur pada feses
+- [Diagnosis Schistosomiasis] Sebutkan diagnosis parasitologis utama pada Diagnosis Schistosomiasis. :: • S. mansoni/japonicum → pemeriksaan telur pada feses
   • S. haematobium → pemeriksaan telur pada urin
 - [Diagnosis Schistosomiasis] Sebutkan pemeriksaan tambahan pada Diagnosis Schistosomiasis. :: • Serologi pada situasi tertentu
   • Antigen testing
   • Ultrasound/imaging untuk komplikasi
   • Eosinofilia sebagai temuan pendukung
-- [Terapi Schistosomiasis] Sebutkan poin-poin penting tentang Regimen rujukan CDC. :: • S. mansoni, S. haematobium, S. intercalatum: total 40 mg/kg dalam 2 dosis terbagi selama 1 hari
+- [Terapi Schistosomiasis] Sebutkan hal-hal penting tentang Regimen rujukan CDC. :: • S. mansoni, S. haematobium, S. intercalatum: total 40 mg/kg dalam 2 dosis terbagi selama 1 hari
   • S. japonicum dan S. mekongi: total 60 mg/kg dalam 3 dosis terbagi selama 1 hari
-- [Fasciola — Morfologi] Sebutkan poin-poin penting tentang Cacing dewasa. :: • Besar
+- [Fasciola — Morfologi] Sebutkan hal-hal penting tentang Cacing dewasa. :: • Besar
   • Pipih
   • Leaf-shaped
   • Memiliki oral dan ventral suckers

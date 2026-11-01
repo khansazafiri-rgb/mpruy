@@ -544,13 +544,13 @@ Kelainan jumlah:
 
 ## Flashcard {kartu}
 
-- [Big Picture] Apa yang dimaksud dengan Normal manusia pada Big Picture? :: 46 kromosom = 22 pasang autosom + 1 pasang kromosom seks.
+- [Big Picture] Apa yang dimaksud dengan Normal manusia pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: 46 kromosom = 22 pasang autosom + 1 pasang kromosom seks.
 - [Nondisjunction — Mekanisme Utama Aneuploidy] Jelaskan Meiosis I nondisjunction dalam konteks Nondisjunction — Mekanisme Utama Aneuploidy. :: Kromosom homolog gagal berpisah.
 - [Nondisjunction — Mekanisme Utama Aneuploidy] Jelaskan Meiosis II nondisjunction dalam konteks Nondisjunction — Mekanisme Utama Aneuploidy. :: Sister chromatids gagal berpisah.
 - [Fenotipe Klinefelter Syndrome] Pada Fenotipe Klinefelter Syndrome, apa mekanismenya? :: Primary testicular failure → hilangnya negative feedback → gonadotropin meningkat.
-- [Memory Map] Apa yang dimaksud dengan Turner pada Memory Map? :: SHORT female → short stature, streak ovaries, coarctation, high FSH/LH.
-- [Memory Map] Apa yang dimaksud dengan Klinefelter pada Memory Map? :: TALL male → small testes, gynecomastia, infertility, high FSH/LH.
-- [Memory Map] Apa yang dimaksud dengan Down pada Memory Map? :: 21 → hypotonia + AV canal + duodenal atresia + leukemia/early Alzheimer risk.
+- [Memory Map] Jelaskan Turner. :: SHORT female → short stature, streak ovaries, coarctation, high FSH/LH.
+- [Memory Map] Jelaskan Klinefelter. :: TALL male → small testes, gynecomastia, infertility, high FSH/LH.
+- [Memory Map] Jelaskan Down. :: 21 → hypotonia + AV canal + duodenal atresia + leukemia/early Alzheimer risk.
 - [Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)] Apa yang dimaksud dengan Down syndrome pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: Trisomy 21, bukan selalu “47 kromosom”; Robertsonian Down dapat memiliki jumlah kromosom total yang berbeda dari trisomy bebas
 - [Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)] Apa yang dimaksud dengan NIPT pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: Screening, bukan diagnosis
 - [Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)] Apa yang dimaksud dengan Turner klasik pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: 45,X, phenotypic female, hypergonadotropic hypogonadism
@@ -568,14 +568,14 @@ Kelainan jumlah:
   • Single transverse palmar crease dapat ditemukan
   • Intellectual disability dengan derajat bervariasi
   • Short stature
-- [Manifestasi Klinis Down Syndrome] Sebutkan poin-poin penting tentang Kelainan terkait yang HIGH-YIELD. :: • Congenital heart disease, terutama atrioventricular septal defect/endocardial cushion defect
+- [Manifestasi Klinis Down Syndrome] Sebutkan kelainan terkait yang HIGH-YIELD pada Manifestasi Klinis Down Syndrome. :: • Congenital heart disease, terutama atrioventricular septal defect/endocardial cushion defect
   • Duodenal atresia
   • Hirschsprung disease
   • Peningkatan risiko leukemia tertentu
   • Risiko Alzheimer disease onset lebih awal; APP terletak pada kromosom 21
   • Hypothyroidism lebih sering
   • Gangguan pendengaran dan penglihatan lebih sering
-- [Edwards Syndrome — Trisomy 18] Sebutkan poin-poin penting tentang Trisomy 18 / Edwards syndrome. :: • Severe developmental impairment
+- [Edwards Syndrome — Trisomy 18] Sebutkan hal-hal penting tentang Trisomy 18 / Edwards syndrome. :: • Severe developmental impairment
   • Low birth weight
   • Prominent occiput
   • Micrognathia
@@ -591,11 +591,11 @@ Kelainan jumlah:
   • Polydactyly
   • Congenital heart disease
   • Mortalitas tinggi pada infancy
-- [Fenotipe Klinefelter Syndrome] Sebutkan poin-poin penting tentang Hormonal pattern klasik. :: • Testosterone ↓
+- [Fenotipe Klinefelter Syndrome] Sebutkan hormonal pattern klasik pada Fenotipe Klinefelter Syndrome. :: • Testosterone ↓
   • FSH ↑
   • LH ↑
   • Estradiol relatif meningkat terhadap androgen
-- [Perbandingan Turner vs Klinefelter] Sebutkan poin-poin penting tentang Turner syndrome. :: • 45,X
+- [Perbandingan Turner vs Klinefelter] Sebutkan hal-hal penting tentang Turner syndrome. :: • 45,X
   • Phenotypic female
   • Short stature
   • Streak ovaries
@@ -603,7 +603,7 @@ Kelainan jumlah:
   • Estrogen ↓, FSH/LH ↑
   • Coarctation, bicuspid aortic valve
   • Barr body 0
-- [Perbandingan Turner vs Klinefelter] Sebutkan poin-poin penting tentang Klinefelter syndrome. :: • 47,XXY
+- [Perbandingan Turner vs Klinefelter] Sebutkan hal-hal penting tentang Klinefelter syndrome. :: • 47,XXY
   • Phenotypic male
   • Tall stature
   • Small firm testes
@@ -613,9 +613,9 @@ Kelainan jumlah:
   • Barr body 1
 - [Duplication] Sebutkan konsekuensi utama pada Duplication. :: • Gene dosage meningkat
   • Fenotipe tergantung ukuran dan gen yang terdampak
-- [Ring Chromosome dan Isochromosome] Sebutkan poin-poin penting tentang Ring chromosome. :: • Ujung kromosom mengalami break lalu menyatu membentuk cincin
+- [Ring Chromosome dan Isochromosome] Sebutkan hal-hal penting tentang Ring chromosome. :: • Ujung kromosom mengalami break lalu menyatu membentuk cincin
   • Dapat disertai kehilangan material genetik terminal
-- [Balanced vs Unbalanced Rearrangement] Sebutkan poin-poin penting tentang Unbalanced rearrangement. :: • Ada deletion dan/atau duplication material genetik
+- [Balanced vs Unbalanced Rearrangement] Sebutkan hal-hal penting tentang Unbalanced rearrangement. :: • Ada deletion dan/atau duplication material genetik
   • Lebih sering menyebabkan kelainan fenotip
 - [Maternal Age] Sebutkan konsep biologis pada Maternal Age. :: • Oocyte primer berhenti lama pada prophase I sejak masa fetal
   • Dengan bertambahnya usia, cohesin dan mekanisme segregasi kromosom dapat mengalami penurunan fungsi

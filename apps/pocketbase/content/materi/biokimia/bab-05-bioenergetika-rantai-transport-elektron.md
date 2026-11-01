@@ -516,7 +516,7 @@ Bioenergetika mempelajari perubahan energi dalam reaksi biokimia. Reaksi eksergo
 
 ## Flashcard {kartu}
 
-- [Peta Besar Bab] Pada Peta Besar Bab, apa inti babnya? :: Energi kimia → redoks → electron transport chain → proton gradient → ATP synthase → ATP.
+- [Peta Besar Bab] Pada Bioenergetika & Rantai Transport Elektron, apa inti babnya? :: Energi kimia → redoks → electron transport chain → proton gradient → ATP synthase → ATP.
 - [Hukum Termodinamika I] Apa yang dimaksud dengan Contoh sederhana pada Hukum Termodinamika I? :: Energi kimia glukosa → ATP → kerja mekanik / transport ion / impuls listrik / panas.
 - [Coupling Reaction] Jelaskan Contoh paling penting dalam konteks Coupling Reaction. :: Hidrolisis ATP → energi dilepas → digunakan untuk sintesis biomolekul atau transport aktif.
 - [ATP sebagai Mata Uang Energi] Apa yang dimaksud dengan Hidrolisis pada ATP sebagai Mata Uang Energi? :: ATP + H₂O → ADP + Pi
@@ -528,14 +528,14 @@ Bioenergetika mempelajari perubahan energi dalam reaksi biokimia. Reaksi eksergo
   • Dehydrogenases
   • Hydroperoxidases
   • Oxygenases
-- [Mitokondria sebagai Lokasi Fosforilasi Oksidatif] Sebutkan poin-poin penting tentang Kompartemen penting. :: • Membran luar
+- [Mitokondria sebagai Lokasi Fosforilasi Oksidatif] Sebutkan kompartemen penting pada Mitokondria sebagai Lokasi Fosforilasi Oksidatif. :: • Membran luar
   • Ruang antarmembran
   • Membran dalam dan cristae
   • Matriks
-- [Kompleks yang Memompa Proton] Sebutkan poin-poin penting tentang Kompleks yang memompa H⁺. :: • Kompleks I
+- [Kompleks yang Memompa Proton] Sebutkan hal-hal penting tentang Kompleks yang memompa H⁺. :: • Kompleks I
   • Kompleks III
   • Kompleks IV
-- [Shuttle NADH Sitosolik] Sebutkan poin-poin penting tentang Dua sistem utama. :: • Glycerol-3-phosphate shuttle
+- [Shuttle NADH Sitosolik] Sebutkan dua sistem utama pada Shuttle NADH Sitosolik. :: • Glycerol-3-phosphate shuttle
   • Malate-aspartate shuttle
 - [Respiratory Control] Sebutkan faktor penting pada Respiratory Control. :: • Ketersediaan ADP dan Pi
   • Ketersediaan NADH/FADH₂

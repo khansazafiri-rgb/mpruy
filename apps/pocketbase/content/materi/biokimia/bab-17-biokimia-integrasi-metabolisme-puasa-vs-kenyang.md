@@ -597,10 +597,10 @@ Secara konseptual:
 - [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang dimaksud dengan Glycerol dari adipose pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Substrate gluconeogenesis
 - [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang dimaksud dengan Lactate dan alanine pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Substrate gluconeogenesis penting
 - [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang dimaksud dengan Fasting state pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Insulin rendah/glucagon relatif tinggi → glycogenolysis, gluconeogenesis, lipolysis, β-oxidation
-- [Fed State / Absorptive State] Sebutkan poin-poin penting tentang Keadaan hormonal. :: • Insulin ↑
+- [Fed State / Absorptive State] Sebutkan hal-hal penting tentang Keadaan hormonal. :: • Insulin ↑
   • Glucagon ↓
   • Rasio insulin/glucagon ↑
-- [Liver pada Fed State] Sebutkan poin-poin penting tentang Nasib glucose di liver. :: • Glucose → glucose-6-phosphate melalui glucokinase
+- [Liver pada Fed State] Sebutkan hal-hal penting tentang Nasib glucose di liver. :: • Glucose → glucose-6-phosphate melalui glucokinase
   • G6P → glycogen melalui glycogenesis
   • G6P → pyruvate melalui glycolysis
   • Pyruvate → acetyl-CoA melalui pyruvate dehydrogenase
@@ -616,7 +616,7 @@ Secara konseptual:
   • Adipose lipolysis → free fatty acids + glycerol
   • Β-oxidation liver → ATP dan acetyl-CoA
   • Ketogenesis meningkat bila fasting berlanjut
-- [Glycogenolysis dan Batas Simpanan Glycogen] Sebutkan poin-poin penting tentang Hormonal control. :: • Glucagon → Gs → adenylyl cyclase → cAMP → PKA
+- [Glycogenolysis dan Batas Simpanan Glycogen] Sebutkan hal-hal penting tentang Hormonal control. :: • Glucagon → Gs → adenylyl cyclase → cAMP → PKA
   • PKA mengaktifkan phosphorylase kinase
   • Phosphorylase kinase mengaktifkan glycogen phosphorylase
   • Glycogen synthase terinaktivasi melalui phosphorylation
@@ -634,17 +634,17 @@ Secara konseptual:
   • Cardiac muscle
   • Renal cortex
   • Brain pada prolonged fasting
-- [Skeletal Muscle pada Fasting dan Starvation] Sebutkan poin-poin penting tentang Early fasting. :: • Fatty acid oxidation ↑
+- [Skeletal Muscle pada Fasting dan Starvation] Sebutkan hal-hal penting tentang Early fasting. :: • Fatty acid oxidation ↑
   • Ketone utilization dapat meningkat
   • Proteolysis menghasilkan alanine dan glutamine untuk gluconeogenesis
 - [Insulin: Sinyal “Energi Tersedia”] Sebutkan mekanisme reseptor pada Insulin: Sinyal “Energi Tersedia”. :: • Insulin receptor = receptor tyrosine kinase
   • IRS → PI3K → Akt adalah salah satu signaling axis penting
   • Akt mendorong GLUT4 translocation dan anabolic signaling
-- [Fed vs Fasted: Enzim yang Perlu Diingat] Sebutkan poin-poin penting tentang Fed / insulin. :: • Glycogen synthase aktif
+- [Fed vs Fasted: Enzim yang Perlu Diingat] Sebutkan hal-hal penting tentang Fed / insulin. :: • Glycogen synthase aktif
   • ACC aktif
   • HMG-CoA reductase aktif
   • PFK-2 hepatic cenderung menghasilkan F2,6BP → PFK-1 aktif
-- [Gambaran Besar: Tubuh Tidak Memakai Bahan Bakar yang Sama Terus-Menerus] Apa poin high-yield (pearl) tentang Gambaran Besar: Tubuh Tidak Memakai Bahan Bakar yang Sama Terus-Menerus? :: Insulin tinggi → simpan bahan bakar. Glucagon tinggi → mobilisasi bahan bakar. Liver bertindak sebagai pusat distribusi bahan bakar antarorgan.
+- [Gambaran Besar: Tubuh Tidak Memakai Bahan Bakar yang Sama Terus-Menerus] Apa poin high-yield (pearl) tentang Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Insulin tinggi → simpan bahan bakar. Glucagon tinggi → mobilisasi bahan bakar. Liver bertindak sebagai pusat distribusi bahan bakar antarorgan.
 - [Liver pada Fed State] Apa jebakan yang sering muncul pada soal tentang Liver pada Fed State? :: Liver mengambil glucose melalui GLUT2, BUKAN GLUT4. Karena itu entry glucose ke hepatocyte tidak bergantung langsung pada insulin, tetapi insulin mengatur pemakaian dan penyimpanannya.
 - [Skeletal Muscle pada Fed State] Apa jebakan yang sering muncul pada soal tentang Skeletal Muscle pada Fed State? :: Muscle glycogen hanya digunakan oleh muscle itu sendiri karena skeletal muscle tidak memiliki glucose-6-phosphatase untuk melepaskan free glucose ke darah.
 - [Adipose Tissue pada Fed State] Apa poin high-yield (pearl) tentang Adipose Tissue pada Fed State? :: Adipose tissue relatif kurang memiliki glycerol kinase, sehingga glycerol-3-phosphate terutama berasal dari glycolysis glucose.

@@ -324,9 +324,6 @@ Acid/base disturbance → chemical buffer segera → paru mengubah PaCO₂ dalam
 - [Anion Gap] Jelaskan Anion gap. :: AG = Na⁺ − (Cl⁻ + HCO₃⁻).
 - [Anion Gap] Apa yang dimaksud dengan High AG pada Anion Gap? :: Ada unmeasured anions meningkat.
 - [Anion Gap] Apa yang dimaksud dengan Normal AG pada Anion Gap? :: Sering akibat kehilangan HCO₃⁻ dengan compensatory Cl⁻ retention.
-- [Pendekatan ABG Langkah demi Langkah] Pada Pendekatan ABG Langkah demi Langkah, apa langkah 3nya? :: Nilai apakah kompensasi sesuai.
-- [Pendekatan ABG Langkah demi Langkah] Pada Pendekatan ABG Langkah demi Langkah, apa langkah 4nya? :: Bila metabolic acidosis → hitung anion gap.
-- [Pendekatan ABG Langkah demi Langkah] Pada Pendekatan ABG Langkah demi Langkah, apa langkah 5nya? :: Bila perlu cari mixed disorder.
 - [Shortcut Arah PaCO₂ dan HCO₃⁻] Apa yang dimaksud dengan Respiratory pada Shortcut Arah PaCO₂ dan HCO₃⁻? :: PH dan PaCO₂ bergerak berlawanan arah sebagai perubahan primer.
 - [Shortcut Arah PaCO₂ dan HCO₃⁻] Apa yang dimaksud dengan Metabolic pada Shortcut Arah PaCO₂ dan HCO₃⁻? :: PH dan HCO₃⁻ bergerak searah sebagai perubahan primer.
 - [Clinical Pattern: Hypoventilation] Jelaskan Hypoventilation. :: Alveolar ventilation ↓ → PaCO₂ ↑ → respiratory acidosis.
@@ -340,19 +337,15 @@ Acid/base disturbance → chemical buffer segera → paru mengubah PaCO₂ dalam
 - [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diingat tentang Restriktif pada Fisiologi Keseimbangan Asam-Basa? :: Volumes ↓, rasio biasanya normal/↑
 - [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diingat tentang V/Q rendah pada Fisiologi Keseimbangan Asam-Basa? :: Shunt-like
 - [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diingat tentang V/Q tinggi pada Fisiologi Keseimbangan Asam-Basa? :: Dead-space-like
-- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Respiratory acidosis pada Fisiologi Keseimbangan Asam-Basa? :: PaCO₂ ↑
-- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Respiratory alkalosis pada Fisiologi Keseimbangan Asam-Basa? :: PaCO₂ ↓
-- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Metabolic acidosis pada Fisiologi Keseimbangan Asam-Basa? :: HCO₃⁻ ↓
-- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Metabolic alkalosis pada Fisiologi Keseimbangan Asam-Basa? :: HCO₃⁻ ↑
 - [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang ABG pada Fisiologi Keseimbangan Asam-Basa? :: PH → PaCO₂/HCO₃⁻ → compensation → anion gap → mixed disorder
-- [Sistem Buffer] Sebutkan poin-poin penting tentang Buffer utama. :: • Bicarbonate
+- [Sistem Buffer] Sebutkan buffer utama pada Sistem Buffer. :: • Bicarbonate
   • Protein/hemoglobin
   • Phosphate
   • Buffer tulang pada konteks kronik
 - [Tiga Lapis Regulasi pH] Sebutkan urutan atau langkah pada Tiga Lapis Regulasi pH? :: • Chemical buffers → detik
   • Respiratory compensation → menit
   • Renal compensation → jam hingga hari
-- [Metabolic Acidosis] Sebutkan poin-poin penting tentang HCO₃⁻ turun akibat. :: • Penambahan asam
+- [Metabolic Acidosis] Sebutkan hal-hal penting tentang HCO₃⁻ turun akibat. :: • Penambahan asam
   • Kehilangan bicarbonate
   • Gangguan renal acid excretion
 - [High Anion Gap Metabolic Acidosis] Sebutkan contoh penting pada High Anion Gap Metabolic Acidosis. :: • Lactic acidosis

@@ -480,7 +480,6 @@ Ossification:
 - [Perbandingan Tiga Cartilage] Apa yang dimaksud dengan Fibrocartilage pada Perbandingan Tiga Cartilage? :: Collagen I dominan, rows of chondrocytes, paling tahan tensile/compressive stress, tanpa perichondrium.
 - [Intramembranous Ossification] Pada Intramembranous Ossification, apa urutan konsepnya? :: Mesenchymal condensation → osteoblast differentiation → osteoid secretion → mineralization → trabecular woven bone → remodeling menjadi lamellar bone.
 - [Endochondral Ossification] Pada Endochondral Ossification, apa urutan besarnya? :: Cartilage model → bone collar di diafisis → chondrocyte hypertrophy dan matrix calcification → vascular invasion → primary ossification center di diafisis → medullary cavity → secondary ossification centers di epiphyses.
-- [Pewarnaan dan Clue Praktikum] Jelaskan Collagen pada H&E dalam konteks Pewarnaan dan Clue Praktikum. :: Eosinophilic/pink.
 - [Pewarnaan dan Clue Praktikum] Apa yang dimaksud dengan Elastic fibers pada Pewarnaan dan Clue Praktikum? :: Lebih jelas dengan orcein atau VVG.
 - [Pewarnaan dan Clue Praktikum] Apa yang dimaksud dengan Reticular fibers pada Pewarnaan dan Clue Praktikum? :: Silver impregnation menunjukkan network hitam.
 - [Pewarnaan dan Clue Praktikum] Apa yang dimaksud dengan Cartilage matrix pada Pewarnaan dan Clue Praktikum? :: Sering basophilic karena sulfated GAG; toluidine blue dapat menunjukkan metachromasia.
@@ -506,7 +505,7 @@ Ossification:
 - [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan intramembranous pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Mesenchyme → bone
 - [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan endochondral pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Cartilage model → bone
 - [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang perlu diketahui tentang Growth plate pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Reserve → proliferation → hypertrophy → calcification → ossification
-- [Peta Besar Jaringan Ikat] Sebutkan komponen utama connective tissue pada Peta Besar Jaringan Ikat. :: • Cells
+- [Peta Besar Jaringan Ikat] Sebutkan komponen utama connective tissue pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang. :: • Cells
   • Fibers
   • Ground substance
 - [Elastic dan Reticular Fibers] Sebutkan lokasi penting pada Elastic dan Reticular Fibers. :: • Dinding arteri elastik
@@ -538,14 +537,14 @@ Ossification:
   • Epiglottis
   • External auditory canal
   • Auditory tube
-- [Bone: Prinsip Umum] Sebutkan poin-poin penting tentang Matrix bone. :: • Organic component terutama collagen type I dan ground substance proteins
+- [Bone: Prinsip Umum] Sebutkan hal-hal penting tentang Matrix bone. :: • Organic component terutama collagen type I dan ground substance proteins
   • Inorganic component terutama hydroxyapatite crystals
 - [Compact Bone dan Osteon] Sebutkan komponen osteon pada Compact Bone dan Osteon. :: • Central/Haversian canal berisi pembuluh darah dan saraf
   • Concentric lamellae
   • Osteocyte lacunae
   • Canaliculi yang menghubungkan lacunae
   • Cement line di batas osteon
-- [Bone Remodeling] Sebutkan poin-poin penting tentang Remodeling berfungsi. :: • Memperbaiki microdamage
+- [Bone Remodeling] Sebutkan hal-hal penting tentang Remodeling berfungsi. :: • Memperbaiki microdamage
   • Menyesuaikan struktur terhadap mechanical load
   • Berperan dalam calcium/phosphate homeostasis
   • Mengganti woven bone dengan lamellar bone

@@ -601,15 +601,15 @@ Kolesterol dibuat dari acetyl-CoA melalui HMG-CoA reductase, enzim rate-limiting
 - [Metabolisme Kolesterol & Lipoprotein] Apa yang dimaksud dengan Type III pada Metabolisme Kolesterol & Lipoprotein? :: ApoE/remnant disease
 - [Metabolisme Kolesterol & Lipoprotein] Apa yang dimaksud dengan Familial hypercholesterolemia klasik? :: LDL receptor defect
 - [Metabolisme Kolesterol & Lipoprotein] Apa yang perlu diingat tentang MTP defect pada Metabolisme Kolesterol & Lipoprotein? :: Abetalipoproteinemia
-- [Struktur Dasar Lipoprotein] Sebutkan poin-poin penting tentang Lipoprotein mempunyai. :: • Inti hidrofobik → trigliserida dan cholesteryl ester
-  • Permukaan hidrofilik → fosfolipid, free cholesterol, dan apolipoprotein
-- [HMG-CoA Reductase: Rate-Limiting Enzyme] Sebutkan poin-poin penting tentang Regulasi HMG-CoA reductase. :: • Insulin → meningkatkan aktivitas sintesis kolesterol
+- [Gambaran Besar] Sebutkan tubuh memperoleh kolesterol dari dua sumber utama pada Metabolisme Kolesterol & Lipoprotein. :: • Eksogen → berasal dari makanan dan diserap di usus
+  • Endogen → disintesis sendiri, terutama di hati, tetapi juga dapat dibuat oleh banyak sel berinti
+- [HMG-CoA Reductase: Rate-Limiting Enzyme] Sebutkan regulasi HMG-CoA reductase pada HMG-CoA Reductase: Rate-Limiting Enzyme. :: • Insulin → meningkatkan aktivitas sintesis kolesterol
   • Glucagon → menurunkan aktivitas
   • AMPK phosphorylation → menginaktivasi HMG-CoA reductase
   • Dephosphorylation → mengaktifkan enzim
   • Kadar kolesterol intrasel tinggi → menekan sintesis dan meningkatkan degradasi enzim
   • Kadar kolesterol rendah → meningkatkan ekspresi melalui SREBP
-- [HMG-CoA Reductase: Rate-Limiting Enzyme] Sebutkan poin-poin penting tentang Konsekuensi penurunan kolesterol hepatosit oleh statin. :: • Hepatosit meningkatkan LDL receptor
+- [HMG-CoA Reductase: Rate-Limiting Enzyme] Sebutkan hal-hal penting tentang Konsekuensi penurunan kolesterol hepatosit oleh statin. :: • Hepatosit meningkatkan LDL receptor
   • Uptake LDL dari plasma meningkat
   • Kadar LDL plasma turun
 - [Pembentukan Asam Empedu] Sebutkan fungsi bile salts pada Pembentukan Asam Empedu. :: • Emulsifikasi lipid
@@ -617,23 +617,23 @@ Kolesterol dibuat dari acetyl-CoA melalui HMG-CoA reductase, enzim rate-limiting
   • Mempermudah absorpsi lipid dan vitamin larut lemak
 - [Chylomicron: Exogenous Pathway] Sebutkan komponen penting pada Chylomicron: Exogenous Pathway. :: • Kaya trigliserida
   • Mengandung ApoB-48
-- [Chylomicron: Exogenous Pathway] Sebutkan poin-poin penting tentang Chylomicron remnant. :: • Relatif kaya kolesterol
+- [Chylomicron: Exogenous Pathway] Sebutkan hal-hal penting tentang Chylomicron remnant. :: • Relatif kaya kolesterol
   • Membawa ApoE
   • Diambil oleh hati melalui receptor yang mengenali ApoE
-- [LDL: Pengangkut Kolesterol ke Jaringan] Sebutkan poin-poin penting tentang LDL kemudian masuk lysosome. :: • ApoB-100 dipecah menjadi amino acids
+- [LDL: Pengangkut Kolesterol ke Jaringan] Sebutkan hal-hal penting tentang LDL kemudian masuk lysosome. :: • ApoB-100 dipecah menjadi amino acids
   • Cholesteryl ester dihidrolisis menjadi free cholesterol
 - [LDL: Pengangkut Kolesterol ke Jaringan] Sebutkan peningkatan kolesterol intrasel menimbulkan tiga efek penting pada LDL: Pengangkut Kolesterol ke Jaringan. :: • Menekan HMG-CoA reductase → sintesis kolesterol turun
   • Menurunkan sintesis LDL receptor → uptake LDL berkurang
   • Meningkatkan ACAT → esterifikasi dan penyimpanan kolesterol meningkat
-- [LPL vs Hormone-Sensitive Lipase] Sebutkan poin-poin penting tentang Lipoprotein lipase / LPL. :: • Berada pada permukaan luminal endotel kapiler
+- [LPL vs Hormone-Sensitive Lipase] Sebutkan hal-hal penting tentang Lipoprotein lipase / LPL. :: • Berada pada permukaan luminal endotel kapiler
   • Bekerja pada trigliserida dalam chylomicron dan VLDL
   • Diaktifkan ApoC-II
   • Menghasilkan fatty acids untuk jaringan
-- [LPL vs Hormone-Sensitive Lipase] Sebutkan poin-poin penting tentang Hormone-sensitive lipase / HSL. :: • Berada di dalam adipocyte
+- [LPL vs Hormone-Sensitive Lipase] Sebutkan hal-hal penting tentang Hormone-sensitive lipase / HSL. :: • Berada di dalam adipocyte
   • Memobilisasi trigliserida yang tersimpan dalam adiposa
   • Diaktifkan keadaan puasa/catecholamine
   • Dihambat insulin
-- [Apoc-II Deficiency] Sebutkan poin-poin penting tentang Defisiensi ApoC-II menyerupai defisiensi LPL. :: • Chylomicron tinggi
+- [Apoc-II Deficiency] Sebutkan hal-hal penting tentang Defisiensi ApoC-II menyerupai defisiensi LPL. :: • Chylomicron tinggi
   • Severe hypertriglyceridemia
   • Pancreatitis dapat terjadi
 - [HMG-CoA Reductase: Rate-Limiting Enzyme] Apa jebakan yang sering muncul pada soal tentang HMG-CoA Reductase: Rate-Limiting Enzyme? :: HMG-CoA reductase menggunakan NADPH dan berada pada membran endoplasmic reticulum.

@@ -555,16 +555,11 @@ Jika melihat cacing dewasa:
 - [Perbandingan Terapi Cepat] Apa yang dimaksud dengan Trichuris pada Perbandingan Terapi Cepat? :: Albendazole atau mebendazole biasanya diberikan beberapa hari.
 - [Perbandingan Terapi Cepat] Apa yang dimaksud dengan Hookworm pada Perbandingan Terapi Cepat? :: Albendazole dosis tunggal atau regimen mebendazole; koreksi anemia jika ada.
 - [Perbandingan Terapi Cepat] Apa yang dimaksud dengan Enterobius pada Perbandingan Terapi Cepat? :: Obat diulang 2 minggu + kontrol reinfeksi rumah tangga.
-- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang perlu diketahui tentang Vignette 1 pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Anak dengan distensi abdomen dan gambaran obstruksi, kemudian ditemukan cacing besar di usus → Ascaris
-- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang perlu diketahui tentang Vignette 2 pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Anak dengan diare kronik, tenesmus, anemia, dan rectal prolapse → Trichuris berat
-- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang perlu diketahui tentang Vignette 3 pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Petani sering berjalan tanpa alas kaki, awalnya gatal di kaki, kemudian batuk sementara, akhirnya anemia mikrositik hipokrom → hookworm
-- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang perlu diketahui tentang Vignette 4 pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Anak sekolah mengalami pruritus ani malam hari dan sulit tidur → Enterobius; lakukan tape test pagi hari
 - [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Ascaris, Trichuris, dan hookworm? :: Soil-transmitted helminths
 - [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Löffler syndrome pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Pulmonary eosinophilia saat migrasi larva; klasik pada Ascaris
 - [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Komplikasi mekanik khas Ascaris? :: Intestinal obstruction dan migrasi bilier
 - [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Trichuris egg pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Lemon/barrel shaped + bipolar plugs
 - [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Hookworm stadium infektif pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Filariform larva L3
-- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Hookworm masuk lewat kulit; rhabditiform? :: Feeding larva
 - [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Hookworm menyebabkan kehilangan darah kronik? :: Iron deficiency anemia
 - [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Diagnosis Enterobius pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Tape test pagi sebelum mandi/BAB
 - [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Enterobius egg pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Planoconvex / D-shaped
@@ -585,20 +580,20 @@ Jika melihat cacing dewasa:
   • Larva menembus alveolus, lalu naik melalui bronkiolus, bronkus, dan trakea
   • Larva tertelan kembali
   • Di usus halus, larva berkembang menjadi cacing dewasa
-- [Ascaris — Terapi] Sebutkan poin-poin penting tentang Regimen rujukan CDC untuk ascariasis. :: • Albendazole 400 mg oral dosis tunggal
+- [Ascaris — Terapi] Sebutkan hal-hal penting tentang Regimen rujukan CDC untuk ascariasis. :: • Albendazole 400 mg oral dosis tunggal
   • Mebendazole 500 mg oral dosis tunggal ATAU 100 mg dua kali sehari selama 3 hari
   • Ivermectin 150–200 mcg/kg oral dosis tunggal merupakan salah satu alternatif
 - [Trichuris Trichiura — Morfologi] Sebutkan ciri dewasa pada Trichuris Trichiura — Morfologi. :: • Bagian anterior panjang, sangat tipis, dan tertanam pada mukosa
   • Bagian posterior lebih tebal
   • Lokasi utama = sekum dan kolon asendens
-- [Trichuris — Diagnosis] Sebutkan poin-poin penting tentang Telur Trichuris. :: • Simetris
+- [Trichuris — Diagnosis] Sebutkan hal-hal penting tentang Telur Trichuris. :: • Simetris
   • Barrel/lemon shaped
   • Bipolar plugs
   • Warna kuning-cokelat
-- [Trichuris — Terapi] Sebutkan poin-poin penting tentang Regimen rujukan CDC untuk whipworm/trichuriasis. :: • Albendazole 400 mg oral sekali sehari selama 3 hari
+- [Trichuris — Terapi] Sebutkan hal-hal penting tentang Regimen rujukan CDC untuk whipworm/trichuriasis. :: • Albendazole 400 mg oral sekali sehari selama 3 hari
   • Mebendazole 100 mg oral dua kali sehari selama 3 hari
   • Ivermectin 200 mcg/kg/hari selama 3 hari merupakan salah satu alternatif
-- [Hookworm — Spesies Penting] Sebutkan poin-poin penting tentang Perbedaan morfologi mulut. :: • Ancylostoma duodenale → TEETH
+- [Hookworm — Spesies Penting] Sebutkan perbedaan morfologi mulut pada Hookworm — Spesies Penting. :: • Ancylostoma duodenale → TEETH
   • Necator americanus → CUTTING PLATES
 - [Hookworm — Siklus Hidup] Sebutkan urutan atau langkah pada Hookworm — Siklus Hidup? :: • Telur keluar bersama feses
   • Telur menetas di tanah menjadi larva rhabditiform
@@ -608,7 +603,7 @@ Jika melihat cacing dewasa:
   • Larva masuk alveoli → naik trakea → tertelan
   • Cacing dewasa berkembang di usus halus dan melekat pada mukosa
   • Telur diproduksi dan keluar melalui feses
-- [Hookworm — Terapi] Sebutkan poin-poin penting tentang Regimen rujukan CDC. :: • Albendazole 400 mg oral dosis tunggal
+- [Hookworm — Terapi] Sebutkan hal-hal penting tentang Regimen rujukan CDC. :: • Albendazole 400 mg oral dosis tunggal
   • Mebendazole 500 mg oral dosis tunggal ATAU 100 mg dua kali sehari selama 3 hari
   • Pyrantel pamoate 11 mg/kg/hari, maksimal 1 g, selama 3 hari merupakan alternatif
 - [Enterobius — Siklus Hidup] Sebutkan urutan atau langkah pada Enterobius — Siklus Hidup? :: • Telur infektif tertelan

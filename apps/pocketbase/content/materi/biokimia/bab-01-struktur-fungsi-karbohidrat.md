@@ -270,7 +270,7 @@ Karbohidrat dibagi menjadi monosakarida, disakarida, oligosakarida, dan polisaka
 - [GLUT-5] Pada GLUT-5, apa mekanismenya? :: Difusi terfasilitasi.
 - [GLUT-2] Pada GLUT-2, apa mekanismenya? :: Difusi terfasilitasi.
 - [Master Flow Absorpsi Monosakarida] Apa yang dimaksud dengan Lumen usus pada Master Flow Absorpsi Monosakarida? :: Glukosa/Galaktosa → SGLT-1 + Na+ → enterosit.
-- [Monosakarida Penting] Sebutkan poin-poin penting tentang Empat monosakarida. :: • Glukosa
+- [Monosakarida Penting] Sebutkan hal-hal penting tentang Empat monosakarida. :: • Glukosa
   • Ribosa
   • Fruktosa
   • Galaktosa

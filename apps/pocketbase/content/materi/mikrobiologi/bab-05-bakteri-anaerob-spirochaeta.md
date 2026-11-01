@@ -397,16 +397,16 @@ Spirochaeta → Treponema = syphilis → Borrelia = Lyme/relapsing fever → Lep
 
 ## Flashcard {kartu}
 
-- [Big Picture] Apa yang dimaksud dengan Bakteri anaerob pada Big Picture? :: Terutama Clostridium, Bacteroides fragilis, Prevotella, dan Fusobacterium.
-- [Big Picture] Apa yang dimaksud dengan Spirochaeta pada Big Picture? :: Treponema pallidum, Leptospira interrogans, dan Borrelia.
-- [Big Picture] Jelaskan Cara belajar tercepat dalam konteks Big Picture. :: Kenali morfologi → kebutuhan oksigen/pewarnaan → toksin atau faktor virulensi → penyakit khas → pemeriksaan laboratorium.
-- [Treponema pallidum] Apa yang dimaksud dengan Visualisasi pada Treponema pallidum (Perbandingan 3 Spirochaeta)? :: Dark-field/silver impregnation.
-- [Treponema pallidum] Apa yang dimaksud dengan Kultur rutin pada Treponema pallidum (Perbandingan 3 Spirochaeta)? :: Tidak bisa in vitro.
-- [Treponema pallidum] Apa yang dimaksud dengan Serologi pada Treponema pallidum (Perbandingan 3 Spirochaeta)? :: VDRL/RPR + treponemal tests.
-- [Borrelia] Apa yang dimaksud dengan Penyakit pada Borrelia (Perbandingan 3 Spirochaeta)? :: Lyme disease, relapsing fever.
-- [Borrelia] Pada Borrelia (Perbandingan 3 Spirochaeta), apa morfologinya? :: Spiral lebih besar.
-- [Leptospira interrogans] Pada Leptospira interrogans (Perbandingan 3 Spirochaeta), apa bentuknya? :: Thin spiral dengan hooked ends.
-- [Leptospira interrogans] Pada Leptospira interrogans (Perbandingan 3 Spirochaeta), apa pemeriksaannya? :: Dark-field, MAT/serologi, PCR.
+- [Big Picture] Jelaskan Bakteri anaerob. :: Terutama Clostridium, Bacteroides fragilis, Prevotella, dan Fusobacterium.
+- [Big Picture] Jelaskan Spirochaeta. :: Treponema pallidum, Leptospira interrogans, dan Borrelia.
+- [Big Picture] Jelaskan Cara belajar tercepat dalam konteks Bakteri Anaerob & Spirochaeta. :: Kenali morfologi → kebutuhan oksigen/pewarnaan → toksin atau faktor virulensi → penyakit khas → pemeriksaan laboratorium.
+- [Treponema pallidum] Apa yang dimaksud dengan Visualisasi pada Treponema pallidum? :: Dark-field/silver impregnation.
+- [Treponema pallidum] Apa yang dimaksud dengan Kultur rutin pada Treponema pallidum? :: Tidak bisa in vitro.
+- [Treponema pallidum] Apa yang dimaksud dengan Serologi pada Treponema pallidum? :: VDRL/RPR + treponemal tests.
+- [Borrelia] Apa yang dimaksud dengan Penyakit pada Borrelia? :: Lyme disease, relapsing fever.
+- [Borrelia] Pada Borrelia, apa morfologinya? :: Spiral lebih besar.
+- [Leptospira interrogans] Pada Leptospira interrogans, apa bentuknya? :: Thin spiral dengan hooked ends.
+- [Leptospira interrogans] Pada Leptospira interrogans, apa pemeriksaannya? :: Dark-field, MAT/serologi, PCR.
 - [Bakteri Anaerob & Spirochaeta] Apa yang dimaksud dengan Clostridium pada Bakteri Anaerob & Spirochaeta? :: Anaerob + spore-forming Gram-positive rods
 - [Bakteri Anaerob & Spirochaeta] Apa yang perlu diingat tentang B. fragilis pada Bakteri Anaerob & Spirochaeta? :: Gram-negative anaerobe, capsule, SOD, intraabdominal abscess
 - [Bakteri Anaerob & Spirochaeta] Apa yang perlu diingat tentang Prevotella pada Bakteri Anaerob & Spirochaeta? :: Periodontal/perioral abscess
@@ -414,11 +414,11 @@ Spirochaeta → Treponema = syphilis → Borrelia = Lyme/relapsing fever → Lep
 - [Bakteri Anaerob & Spirochaeta] Apa yang perlu diingat tentang T. pallidum pada Bakteri Anaerob & Spirochaeta? :: Syphilis; dark-field; tidak bisa kultur rutin in vitro
 - [Bakteri Anaerob & Spirochaeta] Apa yang perlu diingat tentang Borrelia pada Bakteri Anaerob & Spirochaeta? :: Lyme/relapsing fever
 - [Bakteri Anaerob & Spirochaeta] Apa yang perlu diingat tentang Leptospira pada Bakteri Anaerob & Spirochaeta? :: Hooked ends, urine rodent, masuk via kulit terabrasi; MAT/PCR
-- [Clostridium — Peta Besar] Sebutkan poin-poin penting tentang Clostridium klasik. :: • Gram-positive bacilli
+- [Clostridium — Peta Besar] Sebutkan clostridium klasik pada Clostridium — Peta Besar. :: • Gram-positive bacilli
   • Membentuk endospora
   • Anaerob
   • Penyakit terutama toxin-mediated
-- [Clostridium — Peta Besar] Sebutkan poin-poin penting tentang Empat pasangan WAJIB HAFAL. :: • C. tetani → tetanospasmin → tetanus/spastic paralysis
+- [Clostridium — Peta Besar] Sebutkan hal-hal penting tentang Empat pasangan WAJIB HAFAL. :: • C. tetani → tetanospasmin → tetanus/spastic paralysis
   • C. botulinum → botulinum neurotoxin → flaccid paralysis
   • C. perfringens → alpha toxin/lecithinase → gas gangrene + food poisoning
   • C. difficile → toxin A & B → antibiotic-associated diarrhea/pseudomembranous colitis
@@ -427,7 +427,7 @@ Spirochaeta → Treponema = syphilis → Borrelia = Lyme/relapsing fever → Lep
   • Opisthotonus
   • Spasme otot generalisata
   • Kesadaran biasanya tetap baik
-- [Spirochaeta — Gambaran Umum] Sebutkan poin-poin penting tentang Tiga genus high-yield. :: • Treponema
+- [Spirochaeta — Gambaran Umum] Sebutkan tiga genus high-yield pada Spirochaeta — Gambaran Umum. :: • Treponema
   • Borrelia
   • Leptospira
 - [Apa Itu Bakteri Anaerob?] HIGH-YIELD CLUE infeksi anaerob: apa isi atau ringkasannya? :: Abses. Bau busuk/foul-smelling discharge. Gas di jaringan. Nekrosis jaringan. Infeksi dekat permukaan mukosa yang kaya flora anaerob. Gram stain menunjukkan bakteri tetapi kultur aerob negatif.

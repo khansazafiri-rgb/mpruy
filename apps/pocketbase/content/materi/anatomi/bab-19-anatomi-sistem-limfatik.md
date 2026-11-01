@@ -283,12 +283,12 @@ Saat melihat specimen atau gambar sistem limfatik, identifikasi dengan urutan be
   • Cortex, terutama mengandung lymphoid follicles dan germinal centers
   • Paracortex, kaya T lymphocytes
   • Medulla, terdiri atas medullary cords dan medullary sinuses
-- [Thoracic Duct dan Cisterna Chyli] Sebutkan poin-poin penting tentang Course high-yield. :: • Berasal di abdomen sekitar L1–L2
+- [Thoracic Duct dan Cisterna Chyli] Sebutkan course high-yield pada Thoracic Duct dan Cisterna Chyli. :: • Berasal di abdomen sekitar L1–L2
   • Masuk thorax melalui aortic hiatus sekitar T12
   • Naik di posterior mediastinum, biasanya di antara aorta dan azygos vein serta anterior terhadap vertebral bodies
   • Awalnya berada di kanan garis tengah lalu menyilang ke kiri sekitar T5
   • Naik ke root of neck, membentuk arch, lalu berakhir di left venous angle—pertemuan left internal jugular dan left subclavian veins
-- [Right Lymphatic Duct] Sebutkan poin-poin penting tentang Territory right lymphatic duct. :: • Right side of head and neck
+- [Right Lymphatic Duct] Sebutkan hal-hal penting tentang Territory right lymphatic duct. :: • Right side of head and neck
   • Right upper limb
   • Right side of thorax
 - [Upper Limb dan Axillary Nodes] Sebutkan lima kelompok utama axillary nodes pada Upper Limb dan Axillary Nodes. :: • Pectoral/anterior — anterior thoracic wall dan sebagian besar breast
@@ -298,13 +298,13 @@ Saat melihat specimen atau gambar sistem limfatik, identifikasi dengan urutan be
   • Apical — menerima dari central group dan jalur cephalic/deltopectoral
 - [Lower Limb dan Inguinal Nodes] Sebutkan superficial lymphatics lower limb terbagi mengikuti vena superfisial pada Lower Limb dan Inguinal Nodes. :: • Jalur great saphenous vein → superficial inguinal nodes
   • Jalur small saphenous vein → popliteal nodes → deep inguinal nodes
-- [Spleen] Sebutkan poin-poin penting tentang Ligaments penting. :: • Gastrosplenic ligament — membawa short gastric dan left gastro-omental vessels
+- [Spleen] Sebutkan ligaments penting pada Spleen. :: • Gastrosplenic ligament — membawa short gastric dan left gastro-omental vessels
   • Splenorenal/lienorenal ligament — membawa splenic vessels dan berhubungan dekat dengan tail of pancreas
-- [Tonsils dan Mucosa-Associated Lymphoid Tissue] Sebutkan poin-poin penting tentang Waldeyer ring mengelilingi jalur masuk pharynx. :: • Pharyngeal tonsil di roof/posterior wall nasopharynx
+- [Tonsils dan Mucosa-Associated Lymphoid Tissue] Sebutkan hal-hal penting tentang Waldeyer ring mengelilingi jalur masuk pharynx. :: • Pharyngeal tonsil di roof/posterior wall nasopharynx
   • Paired tubal tonsils dekat openings auditory tubes
   • Paired palatine tonsils di oropharynx
   • Lingual tonsil di posterior tongue
-- [Peta Besar Sistem Limfatik] Apa poin high-yield (pearl) tentang Peta Besar Sistem Limfatik? :: Pikirkan alurnya sebagai jaringan bertingkat—tissue → lymphatic capillary → collecting vessel → regional node → lymphatic trunk → duct → venous angle.
+- [Peta Besar Sistem Limfatik] Apa poin high-yield (pearl) tentang Anatomi Sistem Limfatik? :: Pikirkan alurnya sebagai jaringan bertingkat—tissue → lymphatic capillary → collecting vessel → regional node → lymphatic trunk → duct → venous angle.
 - [Lymph Node: Struktur dan Arah Aliran] Apa korelasi klinis dari Lymph Node: Struktur dan Arah Aliran? :: Pembesaran node dapat terjadi pada respons inflamasi, infeksi, atau infiltrasi tumor. Lokasi node yang membesar sering membantu menebak organ atau regio asal proses penyakit.
 - [Thoracic Duct dan Cisterna Chyli] Apa korelasi klinis dari Thoracic Duct dan Cisterna Chyli? :: Trauma atau operasi thorax dapat mencederai thoracic duct dan menyebabkan chylothorax. Cairan pleura menjadi kaya triglyceride karena berisi chyle.
 - [Right Lymphatic Duct] Bagaimana cara mengingat Right Lymphatic Duct? :: Right upper quadrant. Semua wilayah lain pada prinsipnya kembali melalui thoracic duct.

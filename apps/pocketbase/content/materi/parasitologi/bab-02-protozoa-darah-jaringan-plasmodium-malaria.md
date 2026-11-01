@@ -393,18 +393,14 @@ Jika melihat:
 - [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan Plasmodium dan Toxoplasma pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Apicomplexa
 - [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan Sporozoit pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Bentuk Plasmodium yang masuk ke manusia saat gigitan nyamuk
 - [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan Merozoit pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Bentuk yang menginvasi eritrosit
-- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan P. vivax/P. ovale pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Hipnozoit → relapse
-- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan P. falciparum pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Multiple delicate ring forms + crescent gametocyte + malaria berat
-- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan P. malariae pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Band form + quartan
-- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan P. knowlesi pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: 24-hour erythrocytic cycle dan dapat berat
 - [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang perlu diingat tentang Severe malaria pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Emergensi; artesunate IV merupakan terapi utama guideline internasional
 - [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan Manusia pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Intermediate host Toxoplasma
 - [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa jawaban atau kesimpulan untuk petunjuk berikut: HIV + multiple ring-enhancing brain lesions? :: Cerebral toxoplasmosis
 - [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan Congenital toxoplasmosis klasik? :: Chorioretinitis + hydrocephalus + intracranial calcifications
 - [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang perlu diketahui tentang Malaria ditularkan Anopheles pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Sporozoit → hati → merozoit → eritrosit. P. falciparum paling berbahaya, P. vivax/ovale punya hipnozoit, malariae punya band form, dan knowlesi punya siklus 24 jam. Diagnosis utama thick/thin smear. Toxoplasma berasal dari siklus kucing, oocyst lingkungan atau tissue cyst daging; tachyzoite = akut, bradyzoite = laten. Waspadai congenital toxoplasmosis dan encephalitis pada HIV
-- [Gambaran Besar] Sebutkan poin-poin penting tentang Kunci belajar. :: • Malaria → pikirkan nyamuk Anopheles, fase hati, eritrosit, demam periodik, dan apusan darah
+- [Gambaran Besar] Sebutkan hal-hal penting tentang Kunci belajar. :: • Malaria → pikirkan nyamuk Anopheles, fase hati, eritrosit, demam periodik, dan apusan darah
   • Toxoplasma → pikirkan kucing, daging kurang matang, kehamilan, otak pada imunokompromais, dan chorioretinitis
-- [Malaria — Spesies Penting] Sebutkan poin-poin penting tentang Spesies utama yang menginfeksi manusia. :: • Plasmodium falciparum
+- [Malaria — Spesies Penting] Sebutkan spesies utama yang menginfeksi manusia pada Malaria — Spesies Penting. :: • Plasmodium falciparum
   • Plasmodium vivax
   • Plasmodium ovale
   • Plasmodium malariae
@@ -412,14 +408,14 @@ Jika melihat:
 - [Fase Eritrosit & Patogenesis Demam] Sebutkan pola klasik pada Fase Eritrosit & Patogenesis Demam. :: • Tertian ≈ setiap 48 jam: P. vivax, P. ovale; P. falciparum sering tidak teratur terutama awal
   • Quartan ≈ setiap 72 jam: P. malariae
   • Quotidian ≈ sekitar 24 jam: P. knowlesi
-- [Diagnosis Malaria — Thick vs Thin Smear] Sebutkan poin-poin penting tentang Thick smear. :: • Lebih sensitif untuk mendeteksi adanya parasit karena volume darah yang diperiksa lebih besar
+- [Diagnosis Malaria — Thick vs Thin Smear] Sebutkan hal-hal penting tentang Thick smear. :: • Lebih sensitif untuk mendeteksi adanya parasit karena volume darah yang diperiksa lebih besar
   • Struktur eritrosit tidak dipertahankan sebaik thin smear
 - [Toxoplasma Gondii — Konsep Dasar] Sebutkan bentuk penting pada Toxoplasma Gondii — Konsep Dasar. :: • Tachyzoite = proliferasi cepat, fase akut/diseminasi
   • Bradyzoite = berada dalam tissue cyst, fase laten/kronik
   • Oocyst = dihasilkan melalui siklus seksual pada kucing dan dapat mencemari lingkungan
 - [Congenital Toxoplasmosis] Sebutkan prinsip penting pada Congenital Toxoplasmosis. :: • Probabilitas transmisi umumnya meningkat seiring bertambahnya usia gestasi
   • Tetapi infeksi yang terjadi lebih awal cenderung menimbulkan penyakit janin yang lebih berat
-- [Congenital Toxoplasmosis] Sebutkan poin-poin penting tentang Trias klasik. :: • Chorioretinitis
+- [Congenital Toxoplasmosis] Sebutkan trias klasik pada Congenital Toxoplasmosis. :: • Chorioretinitis
   • Hydrocephalus
   • Intracranial calcifications
 - [Apicomplexa — Konsep Dasar] Apa poin high-yield (pearl) tentang Apicomplexa — Konsep Dasar? :: Plasmodium: hospes definitif = nyamuk Anopheles betina, karena reproduksi seksual terjadi di nyamuk. Manusia = hospes perantara untuk Plasmodium. Toxoplasma gondii: hospes definitif = famili Felidae/kucing; manusia dan hewan berdarah panas lain berperan sebagai hospes perantara.

@@ -383,8 +383,8 @@ Jika preparat adalah urinary passage:
 
 ## Flashcard {kartu}
 
-- [Peta Besar Sistem Urinarius] Apa yang dimaksud dengan renal parenchyma pada Peta Besar Sistem Urinarius? :: Nephron + collecting system
-- [Peta Besar Sistem Urinarius] Apa yang dimaksud dengan urinary passages pada Peta Besar Sistem Urinarius? :: Pelvis renalis, ureter, bladder, dan urethra.
+- [Peta Besar Sistem Urinarius] Apa yang dimaksud dengan renal parenchyma pada Histologi Sistem Urinarius? :: Nephron + collecting system
+- [Peta Besar Sistem Urinarius] Apa yang dimaksud dengan urinary passages pada Histologi Sistem Urinarius? :: Pelvis renalis, ureter, bladder, dan urethra.
 - [Renal Microcirculation] Jelaskan Alur arteri utama dalam konteks Renal Microcirculation. :: Renal artery → segmental → interlobar → arcuate → interlobular/cortical radiate artery → afferent arteriole → glomerulus → efferent arteriole.
 - [Histologi Sistem Urinarius] Apa yang dimaksud dengan Cortex ginjal pada Histologi Sistem Urinarius? :: Renal corpuscles + PCT + DCT
 - [Histologi Sistem Urinarius] Apa yang dimaksud dengan Medulla pada Histologi Sistem Urinarius? :: Loops of Henle + collecting ducts; tidak ada renal corpuscles
@@ -400,16 +400,12 @@ Jika preparat adalah urinary passage:
 - [Histologi Sistem Urinarius] Apa yang dimaksud dengan Ureter pada Histologi Sistem Urinarius? :: Stellate lumen + urothelium + thick organized smooth muscle
 - [Histologi Sistem Urinarius] Apa yang dimaksud dengan Bladder pada Histologi Sistem Urinarius? :: Urothelium + very thick detrusor bundles
 - [Histologi Sistem Urinarius] Apa yang dimaksud dengan Urethra pada Histologi Sistem Urinarius? :: Epithelium berubah dari proximal ke distal
-- [Histologi Sistem Urinarius] Apa yang perlu diketahui tentang Spot diagnosis framework pada Histologi Sistem Urinarius? :: "Ada glomerulus? Brush border? Urothelium? Bentuk lumen? Pola smooth muscle?"
-- [Glomerular Filtration Barrier] Sebutkan filtration barrier terdiri atas tiga komponen utama pada Glomerular Filtration Barrier. :: • Fenestrated endothelium kapiler glomerulus
-  • Glomerular basement membrane
-  • Filtration slits/slit diaphragm di antara pedicels podocyte
-- [Proximal Convoluted Tubule (PCT / TC I)] Sebutkan ciri histologis pada Proximal Convoluted Tubule (PCT / TC I). :: • Simple cuboidal epithelium
+- [Proximal Convoluted Tubule (PCT / TC I)] Sebutkan ciri histologis pada Proximal Convoluted Tubule. :: • Simple cuboidal epithelium
   • Brush border sangat berkembang
   • Cytoplasm lebih eosinophilic
   • Batas antar sel kurang jelas
   • Lumen tampak sempit, irregular, atau seperti "kotor" karena brush border
-- [Distal Convoluted Tubule (DCT / TC II)] Sebutkan ciri histologis pada Distal Convoluted Tubule (DCT / TC II). :: • Lumen lebih lebar dan lebih bersih
+- [Distal Convoluted Tubule (DCT / TC II)] Sebutkan ciri histologis pada Distal Convoluted Tubule. :: • Lumen lebih lebar dan lebih bersih
   • Sel tampak lebih kecil dan lebih pucat daripada PCT
   • Lebih banyak nuclei dapat terlihat mengelilingi satu lumen
   • Batas lumen lebih tegas
@@ -419,8 +415,8 @@ Jika preparat adalah urinary passage:
   • Tersusun lurus/paralel di medulla
 - [Renal Corpuscle] Apa clue praktikum untuk Renal Corpuscle? :: Cari struktur bulat dengan tuft kapiler padat di tengah dan clear space di perifer.
 - [Glomerular Filtration Barrier] Apa poin high-yield (pearl) tentang Glomerular Filtration Barrier? :: Endothelial fenestrae → GBM → podocyte slit diaphragm.
-- [Proximal Convoluted Tubule (PCT / TC I)] Apa clue praktikum untuk Proximal Convoluted Tubule (PCT / TC I)? :: PCT = pinker cytoplasm + fuzzy/dirty lumen.
-- [Distal Convoluted Tubule (DCT / TC II)] Apa clue praktikum untuk Distal Convoluted Tubule (DCT / TC II)? :: DCT = clearer, wider lumen; PCT = fuzzy, narrower lumen.
+- [Proximal Convoluted Tubule (PCT / TC I)] Apa clue praktikum untuk Proximal Convoluted Tubule? :: PCT = pinker cytoplasm + fuzzy/dirty lumen.
+- [Distal Convoluted Tubule (DCT / TC II)] Apa clue praktikum untuk Distal Convoluted Tubule? :: DCT = clearer, wider lumen; PCT = fuzzy, narrower lumen.
 - [Macula Densa] Apa clue praktikum untuk Macula Densa? :: Patch nuclei rapat pada DCT yang menempel ke vascular pole glomerulus.
 - [Loop of Henle] Apa jebakan yang sering muncul pada soal tentang Loop of Henle? :: Thin limb vs capillary. Cari erythrocytes di lumen untuk mendukung bahwa struktur tersebut adalah blood vessel.
 - [Collecting Tubules dan Collecting Ducts] Apa clue praktikum untuk Collecting Tubules dan Collecting Ducts? :: Lumen clean + batas sel sangat jelas + susunan lurus di medulla.

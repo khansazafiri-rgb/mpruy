@@ -472,54 +472,47 @@ ECHINOCOCCUS = dog/canid → eggs → human accidental intermediate host → hyd
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan manusia pada Cestoda (Taenia, Echinococcus)? :: Definitive host,
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan diagnosis pada Cestoda (Taenia, Echinococcus)? :: Stool egg/proglottid,
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan CE1 pada Cestoda (Taenia, Echinococcus)? :: Active, unilocular simple cyst dengan hydatid sand; “double line sign”
+- [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan CE2 pada Cestoda (Taenia, Echinococcus)? :: Active, multivesicular/multiseptated dengan daughter cysts; “honeycomb/rosette”
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan CE3a pada Cestoda (Taenia, Echinococcus)? :: Transitional, detached membranes; “water-lily sign”
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan CE3b pada Cestoda (Taenia, Echinococcus)? :: Transitional, daughter cysts dalam matrix solid
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan CE4 pada Cestoda (Taenia, Echinococcus)? :: Inactive, heterogenous degenerative contents
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan CE5 pada Cestoda (Taenia, Echinococcus)? :: Inactive, dinding sebagian/seluruhnya calcified
-- [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan T. solium pada Cestoda (Taenia, Echinococcus)? :: Pork tapeworm
-- [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan T. saginata scolex pada Cestoda (Taenia, Echinococcus)? :: Unarmed, tanpa hooklets
-- [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan T. solium scolex pada Cestoda (Taenia, Echinococcus)? :: Armed rostellum dengan hooklets
+- [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan “Hole-with-dot sign” pada Cestoda (Taenia, Echinococcus)? :: Cyst + eccentric scolex
 - [Cestoda (Taenia, Echinococcus)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Anthelmintic pada NCC dapat memperberat inflamasi? :: Corticosteroid sering diperlukan
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan Echinococcus definitive host utama? :: Dog/canid
 - [Cestoda (Taenia, Echinococcus)] Apa yang perlu diingat tentang E. granulosus pada Cestoda (Taenia, Echinococcus)? :: Hydatid cyst / cystic echinococcosis
+- [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan Liver dan lung pada Cestoda (Taenia, Echinococcus)? :: Organ tersering CE
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan Daughter cysts + hydatid sand pada Cestoda (Taenia, Echinococcus)? :: Classic echinococcosis
 - [Cestoda (Taenia, Echinococcus)] Apa yang perlu diingat tentang Rupture hydatid cyst pada Cestoda (Taenia, Echinococcus)? :: Anaphylaxis + secondary seeding
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan PAIR pada Cestoda (Taenia, Echinococcus)? :: Puncture–Aspiration–Injection–Re-aspiration
-- [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan E. multilocularis pada Cestoda (Taenia, Echinococcus)? :: Infiltrative tumor-like alveolar echinococcosis
-- [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan T. SAGINATA pada Cestoda (Taenia, Echinococcus)? :: Beef → cysticercus dimakan → adult worm di usus; unarmed scolex
+- [Cestoda (Taenia, Echinococcus)] Apa yang perlu diketahui tentang Cara tercepat soal cestoda pada Cestoda (Taenia, Echinococcus)? :: Tentukan apakah pasien punya ADULT WORM di usus atau LARVAL CYST di jaringan
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan NCC pada Cestoda (Taenia, Echinococcus)? :: Seizure + cystic brain lesions; terapi harus mempertimbangkan inflamasi, ICP, lokasi, dan jumlah cyst
+- [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan ECHINOCOCCUS pada Cestoda (Taenia, Echinococcus)? :: Dog/canid → eggs → human accidental intermediate host → hydatid cyst, terutama liver/lung; daughter cysts, hydatid sand, risiko anaphylaxis bila rupture. Treatment CE stage-specific: albendazole, PAIR, surgery, atau watch-and-wait
 - [Manifestasi Klinis Taeniasis] Sebutkan gejala yang mungkin pada Manifestasi Klinis Taeniasis. :: • Rasa tidak nyaman abdomen
   • Mual
   • Perubahan nafsu makan
   • Gangguan pola defekasi
   • Penurunan berat badan ringan
-- [Cysticercosis — Konsep Kunci] Sebutkan poin-poin penting tentang Sumber telur. :: • Kontaminasi fekal-oral dari carrier taeniasis T. solium
+- [Cysticercosis — Konsep Kunci] Sebutkan hal-hal penting tentang Sumber telur. :: • Kontaminasi fekal-oral dari carrier taeniasis T. solium
   • Makanan/air terkontaminasi
   • Autoinfeksi secara fekal-oral pada orang yang memiliki adult T. solium
-- [Neurocysticercosis (NCC)] Sebutkan manifestasi bergantung pada jumlah, ukuran, lokasi, dan fase cyst pada Neurocysticercosis (NCC). :: • Kejang paling umum
-  • Sakit kepala
-  • Focal neurologic deficit
-  • Edema
-  • Intracranial hypertension
-  • Hydrocephalus
-  • Meningitis/aracnoiditis pada bentuk extraparenchymal
 - [Diagnosis NCC — Prinsip] Sebutkan diagnosis menggabungkan pada Diagnosis NCC — Prinsip. :: • Gambaran klinis
   • Neuroimaging
   • Epidemiologi
   • Serologi bila relevan
-- [Echinococcus — Konsep Dasar] Sebutkan poin-poin penting tentang Spesies penting. :: • E. granulosus sensu lato → cystic echinococcosis (CE), hydatid cyst klasik
+- [Echinococcus — Konsep Dasar] Sebutkan spesies penting pada Echinococcus — Konsep Dasar. :: • E. granulosus sensu lato → cystic echinococcosis (CE), hydatid cyst klasik
   • E. multilocularis → alveolar echinococcosis (AE), infiltratif seperti tumor
-- [Struktur Hydatid Cyst] Sebutkan poin-poin penting tentang Hydatid cyst klasik. :: • Pericyst: reaksi fibrotik host
+- [Struktur Hydatid Cyst] Sebutkan hydatid cyst klasik pada Struktur Hydatid Cyst. :: • Pericyst: reaksi fibrotik host
   • Laminated membrane: lapisan parasit non-seluler
   • Germinal layer: lapisan hidup yang menghasilkan brood capsules
   • Protoscolices
   • Daughter cysts
-- [Organ yang Paling Sering Terkena] Sebutkan poin-poin penting tentang Lebih jarang. :: • Spleen
+- [Organ yang Paling Sering Terkena] Sebutkan hal-hal penting tentang Lebih jarang. :: • Spleen
   • Kidney
   • Bone
   • Brain
   • Muscle
-- [Diagnosis Cystic Echinococcosis] Sebutkan poin-poin penting tentang Imaging adalah dasar diagnosis. :: • Ultrasound sangat penting untuk liver CE
+- [Diagnosis Cystic Echinococcosis] Sebutkan hal-hal penting tentang Imaging adalah dasar diagnosis. :: • Ultrasound sangat penting untuk liver CE
   • CT/MRI membantu menentukan lokasi, komplikasi, dan struktur cyst
 - [Terapi Cystic Echinococcosis — Prinsip Stage-Specific] Sebutkan pilihan utama pada Terapi Cystic Echinococcosis — Prinsip Stage-Specific. :: • Albendazole
   • PAIR / catheter-based percutaneous treatment pada cyst tertentu

@@ -468,14 +468,12 @@ Airborne M. tuberculosis → alveolus → alveolar macrophage → intracellular 
 
 ## Flashcard {kartu}
 
-- [Big Picture: Kenapa Mycobacterium “Berbeda”] Apa yang dimaksud dengan Peta cepat pada Big Picture: Kenapa Mycobacterium “Berbeda”? :: Mycolic acid tinggi → tidak cocok dinilai hanya dengan Gram stain → gunakan acid-fast stain → Ziehl–Neelsen/Kinyoun atau fluorochrome → kultur khusus + pemeriksaan molekuler → hubungkan dengan TB, lepra, atau NTM.
+- [Big Picture: Kenapa Mycobacterium “Berbeda”] Apa yang dimaksud dengan Peta cepat pada Mycobacterium & Tuberkulosis? :: Mycolic acid tinggi → tidak cocok dinilai hanya dengan Gram stain → gunakan acid-fast stain → Ziehl–Neelsen/Kinyoun atau fluorochrome → kultur khusus + pemeriksaan molekuler → hubungkan dengan TB, lepra, atau NTM.
 - [Pemeriksaan Sputum: BTA Smear] Apa yang dimaksud dengan Keuntungan pada Pemeriksaan Sputum: BTA Smear? :: Cepat, sederhana, murah.
 - [Pemeriksaan Sputum: BTA Smear] Apa yang dimaksud dengan Keterbatasan pada Pemeriksaan Sputum: BTA Smear? :: Sensitivitas lebih rendah daripada NAAT/kultur dan acid-fast smear tidak selalu membedakan M. tuberculosis dari mycobacteria lain.
-- [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan M. leprae pada Mycobacterium & Tuberkulosis? :: Acid-fast bacillus penyebab lepra/Hansen disease
 - [Mycobacterium & Tuberkulosis] Apa manifestasi utama pada Mycobacterium & Tuberkulosis? :: Skin lesions + sensory loss + peripheral neuropathy
 - [Mycobacterium & Tuberkulosis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Mycobacterium punya dinding sangat kaya lipid/mycolic acid? :: ACID-FAST
 - [Mycobacterium & Tuberkulosis] Apa yang perlu diketahui tentang Ziehl–Neelsen pada Mycobacterium & Tuberkulosis? :: Carbol fuchsin + heat → acid-alcohol → counterstain; BTA tetap merah/fuchsia
-- [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan M. tuberculosis pada Mycobacterium & Tuberkulosis? :: Obligate aerobe, slow grower, tidak berspora
 - [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan Media klasik pada Mycobacterium & Tuberkulosis? :: Lowenstein–Jensen; koloni “rough, tough, buff”
 - [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan Penularan TB pada Mycobacterium & Tuberkulosis? :: Airborne
 - [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan Caseating granuloma dan Langhans giant cell? :: Temuan klasik, tetapi bukan identifikasi spesies sendiri
@@ -486,7 +484,7 @@ Airborne M. tuberculosis → alveolus → alveolar macrophage → intracellular 
   • Arabinogalactan
   • Mycolic acids
   • Lipoarabinomannan (LAM) dan berbagai glycolipid/lipid permukaan
-- [Arsitektur Dinding Sel Mycobacterium] Sebutkan poin-poin penting tentang Konsekuensi biologis dinding kaya lipid. :: • Retensi carbol fuchsin setelah acid-alcohol → acid-fastness
+- [Arsitektur Dinding Sel Mycobacterium] Sebutkan konsekuensi biologis dinding kaya lipid pada Arsitektur Dinding Sel Mycobacterium. :: • Retensi carbol fuchsin setelah acid-alcohol → acid-fastness
   • Permeabilitas rendah terhadap banyak molekul
   • Pertumbuhan lambat karena metabolisme dan pembentukan envelope kompleks
   • Dapat berkontribusi pada kemampuan bertahan hidup dalam host
@@ -498,14 +496,14 @@ Airborne M. tuberculosis → alveolus → alveolar macrophage → intracellular 
   • Multinucleated giant cells, termasuk Langhans-type giant cells
   • Lymphocytes di perifer
   • Dapat terbentuk central caseous necrosis
-- [Ghon Focus, Ghon Complex, dan Primary TB] Sebutkan poin-poin penting tentang Konsep klasik primary pulmonary TB. :: • Fokus parenkim awal disebut Ghon focus
+- [Ghon Focus, Ghon Complex, dan Primary TB] Sebutkan konsep klasik primary pulmonary TB pada Ghon Focus, Ghon Complex, dan Primary TB. :: • Fokus parenkim awal disebut Ghon focus
   • Bila disertai keterlibatan lymph node regional → Ghon complex
   • Penyembuhan dapat menghasilkan fibrosis dan calcification
-- [Latent TB Infection vs Active TB Disease] Sebutkan poin-poin penting tentang Latent TB infection. :: • Organisme persisten tetapi secara klinis tidak ada penyakit aktif
+- [Latent TB Infection vs Active TB Disease] Sebutkan hal-hal penting tentang Latent TB infection. :: • Organisme persisten tetapi secara klinis tidak ada penyakit aktif
   • Tidak ada gejala TB aktif
   • Individu tidak menularkan karena tidak ada penyakit paru aktif yang melepaskan basil ke udara
   • TST atau IGRA dapat menunjukkan bukti sensitisasi imun
-- [NAAT / TCM / GeneXpert] Sebutkan poin-poin penting tentang Poin. :: • NAAT/GeneXpert berguna untuk diagnosis cepat dari spesimen respirasi
+- [NAAT / TCM / GeneXpert] Sebutkan hal-hal penting tentang Poin. :: • NAAT/GeneXpert berguna untuk diagnosis cepat dari spesimen respirasi
   • GeneXpert MTB/RIF mendeteksi DNA M. tuberculosis complex dan dapat memberikan informasi mengenai resistensi rifampisin melalui target gen rpoB
 - [Interpretasi BTA, NAAT, dan Culture] Sebutkan pola berpikir pada Interpretasi BTA, NAAT, dan Culture. :: • Smear BTA → apakah terdapat acid-fast bacilli dalam jumlah yang cukup untuk terlihat?
   • NAAT → apakah DNA target M. tuberculosis complex terdeteksi?
@@ -513,10 +511,10 @@ Airborne M. tuberculosis → alveolus → alveolar macrophage → intracellular 
 - [Histopatologi TB] Sebutkan temuan klasik pada Histopatologi TB. :: • Granulomatous inflammation
   • Caseous necrosis dapat ditemukan
   • Langhans giant cells dapat tampak
-- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Sebutkan poin-poin penting tentang Tuberculoid pole. :: • Cell-mediated immunity lebih kuat
+- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Sebutkan hal-hal penting tentang Tuberculoid pole. :: • Cell-mediated immunity lebih kuat
   • Basil lebih sedikit (paucibacillary)
   • Lesi lebih terlokalisasi
-- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Sebutkan poin-poin penting tentang Lepromatous pole. :: • Cell-mediated immunity terhadap M. leprae lebih lemah
+- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Sebutkan hal-hal penting tentang Lepromatous pole. :: • Cell-mediated immunity terhadap M. leprae lebih lemah
   • Basil lebih banyak (multibacillary)
   • Lesi lebih luas dan simetris dapat terjadi
 - [Mengapa Apeks Sering Terlibat pada Reactivation TB?] Sebutkan konsep klasik pada Mengapa Apeks Sering Terlibat pada Reactivation TB?. :: • M. tuberculosis adalah obligate aerobe
@@ -529,6 +527,6 @@ Airborne M. tuberculosis → alveolus → alveolar macrophage → intracellular 
 - [Tuberculin Skin Test / Mantoux] Apa jebakan yang sering muncul pada soal tentang Tuberculin Skin Test / Mantoux? :: Cut-off ukuran indurasi bergantung pada kategori risiko dan guideline; jangan memakai satu angka untuk semua pasien tanpa konteks.
 - [Pemeriksaan Sputum: BTA Smear] Apa jebakan yang sering muncul pada soal tentang Pemeriksaan Sputum: BTA Smear? :: “BTA positif” ≠ identifikasi spesies M. tuberculosis secara definitif.
 - [NAAT / TCM / GeneXpert] Apa jebakan yang sering muncul pada soal tentang NAAT / TCM / GeneXpert? :: Pemeriksaan molekuler meningkatkan kecepatan diagnosis, tetapi kultur tetap penting terutama untuk konfirmasi dan drug-susceptibility testing yang lebih lengkap pada konteks tertentu.
-- [Mycobacterium Avium Complex (MAC)] Apa poin high-yield (pearl) tentang Mycobacterium Avium Complex (MAC)? :: MAC adalah non-tuberculous mycobacteria. Dapat menyebabkan disseminated infection pada HIV/AIDS berat, secara klasik ketika CD4 sangat rendah. Gejala dapat berupa demam berkepanjangan, weight loss, anemia, diare, dan hepatosplenomegaly. Banyak acid-fast bacilli dapat terlihat dalam macrophages pada penyakit diseminata.
-- [Mycobacterium Avium Complex (MAC)] Apa jebakan yang sering muncul pada soal tentang Mycobacterium Avium Complex (MAC)? :: Acid-fast bacilli pada pasien HIV tidak otomatis = M. tuberculosis. Pertimbangkan NTM/MAC sesuai gambaran klinis dan pemeriksaan spesifik.
+- [Mycobacterium Avium Complex (MAC)] Apa poin high-yield (pearl) tentang Mycobacterium Avium Complex? :: MAC adalah non-tuberculous mycobacteria. Dapat menyebabkan disseminated infection pada HIV/AIDS berat, secara klasik ketika CD4 sangat rendah. Gejala dapat berupa demam berkepanjangan, weight loss, anemia, diare, dan hepatosplenomegaly. Banyak acid-fast bacilli dapat terlihat dalam macrophages pada penyakit diseminata.
+- [Mycobacterium Avium Complex (MAC)] Apa jebakan yang sering muncul pada soal tentang Mycobacterium Avium Complex? :: Acid-fast bacilli pada pasien HIV tidak otomatis = M. tuberculosis. Pertimbangkan NTM/MAC sesuai gambaran klinis dan pemeriksaan spesifik.
 - [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Apa jebakan yang sering muncul pada soal tentang Tuberculoid vs Lepromatous Leprosy — Konsep Dasar? :: Spektrum klinis lepra lebih luas daripada dua kutub ini, tetapi kontras tuberculoid vs lepromatous sangat high-yield untuk memahami hubungan imunitas dengan bacterial load.

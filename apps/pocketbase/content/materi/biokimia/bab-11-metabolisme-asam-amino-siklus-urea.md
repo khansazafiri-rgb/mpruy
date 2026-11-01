@@ -678,7 +678,7 @@ OTC deficiency menyebabkan hyperammonemia dengan ↑ orotic acid. Leucine dan ly
 
 ## Flashcard {kartu}
 
-- [Gambaran Besar] Pada Gambaran Besar, apa konsep intinya? :: Asam amino → nitrogen + carbon skeleton.
+- [Gambaran Besar] Pada Metabolisme Asam Amino & Siklus Urea, apa konsep intinya? :: Asam amino → nitrogen + carbon skeleton.
 - [Transaminasi] Pada Transaminasi, apa reaksi umumnya? :: Amino acid + α-ketoglutarate ↔ α-keto acid + glutamate
 - [Transaminasi] Pada Transaminasi, apa enzimnya? :: Aminotransferase / transaminase.
 - [Transaminasi] Pada Transaminasi, apa kofaktor pentingnya? :: Pyridoxal phosphate (PLP), turunan vitamin B6.
@@ -694,9 +694,9 @@ OTC deficiency menyebabkan hyperammonemia dengan ↑ orotic acid. Leucine dan ly
 - [Langkah 5 — Arginine → Ornithine + Urea] Pada Langkah 5 — Arginine → Ornithine + Urea, apa lokasinya? :: Cytosol hepatocyte.
 - [OTC Deficiency] Pada OTC Deficiency, apa pewarisannya? :: X-linked recessive.
 - [CPS I Deficiency] Apa yang dimaksud dengan Perbandingan cepat pada CPS I Deficiency? :: OTC deficiency → ↑ orotic acid.
-- [Citrullinemia] Apa yang dimaksud dengan Defek pada Citrullinemia (Defisiensi Enzim Urea Cycle Lain)? :: Argininosuccinate synthetase. → citrulline meningkat.
-- [Argininosuccinic aciduria] Apa yang dimaksud dengan Defek pada Argininosuccinic aciduria (Defisiensi Enzim Urea Cycle Lain)? :: Argininosuccinate lyase. → argininosuccinate meningkat.
-- [Argininemia] Apa yang dimaksud dengan Defek pada Argininemia (Defisiensi Enzim Urea Cycle Lain)? :: Arginase. → arginine meningkat.
+- [Citrullinemia] Apa yang dimaksud dengan Defek pada Citrullinemia? :: Argininosuccinate synthetase. → citrulline meningkat.
+- [Argininosuccinic aciduria] Apa yang dimaksud dengan Defek pada Argininosuccinic aciduria? :: Argininosuccinate lyase. → argininosuccinate meningkat.
+- [Argininemia] Apa yang dimaksud dengan Defek pada Argininemia? :: Arginase. → arginine meningkat.
 - [Maple Syrup Urine Disease / MSUD] Apa yang dimaksud dengan Defek pada Maple Syrup Urine Disease / MSUD? :: Branched-chain α-ketoacid dehydrogenase.
 - [Phenylketonuria / PKU] Apa yang dimaksud dengan Normal pada Phenylketonuria / PKU? :: Phenylalanine → tyrosine
 - [Phenylketonuria / PKU] Pada Phenylketonuria / PKU, apa enzimnya? :: Phenylalanine hydroxylase.
@@ -704,7 +704,6 @@ OTC deficiency menyebabkan hyperammonemia dengan ↑ orotic acid. Leucine dan ly
 - [Homocystinuria] Jelaskan Banding dengan Marfan dalam konteks Homocystinuria. :: Homocystinuria → thrombosis + intellectual disability dapat menonjol.
 - [Aspartate dalam Urea Cycle] Jelaskan Aspartate dibentuk melalui transaminasi dalam konteks Aspartate dalam Urea Cycle. :: Oxaloacetate + glutamate ↔ aspartate + α-ketoglutarate
 - [Alur yang Harus Dihafal] Apa yang dimaksud dengan Nitrogen disposal pada Alur yang Harus Dihafal? :: Amino acid → transaminasi → glutamate → NH4+ → CPS I → carbamoyl phosphate → citrulline → argininosuccinate → arginine → urea + ornithine.
-- [Metabolisme Asam Amino & Siklus Urea] Apa yang perlu diketahui tentang Defek pada Metabolisme Asam Amino & Siklus Urea? :: Homogentisate oxidase
 - [Metabolisme Asam Amino & Siklus Urea] Apa yang dimaksud dengan Glutamate pada Metabolisme Asam Amino & Siklus Urea? :: Collector utama gugus amino
 - [Metabolisme Asam Amino & Siklus Urea] Apa yang dimaksud dengan Glutamine dan alanine pada Metabolisme Asam Amino & Siklus Urea? :: Bentuk penting transport nitrogen
 - [Metabolisme Asam Amino & Siklus Urea] Apa yang dimaksud dengan CPS I pada Metabolisme Asam Amino & Siklus Urea? :: Rate-limiting enzyme urea cycle
@@ -716,7 +715,7 @@ OTC deficiency menyebabkan hyperammonemia dengan ↑ orotic acid. Leucine dan ly
 - [Metabolisme Asam Amino & Siklus Urea] Apa yang dimaksud dengan PKU pada Metabolisme Asam Amino & Siklus Urea? :: Phenylalanine hydroxylase/BH4 pathway; tyrosine menjadi conditionally essential
 - [Metabolisme Asam Amino & Siklus Urea] Apa yang dimaksud dengan Homocystinuria klasik pada Metabolisme Asam Amino & Siklus Urea? :: Cystathionine β-synthase deficiency; thrombosis high-yield
 - [Metabolisme Asam Amino & Siklus Urea] Apa yang dimaksud dengan Alkaptonuria pada Metabolisme Asam Amino & Siklus Urea? :: Homogentisate oxidase deficiency
-- [Asam Amino Esensial dan Non-Esensial] Sebutkan poin-poin penting tentang Asam amino esensial klasik. :: • Histidine
+- [Asam Amino Esensial dan Non-Esensial] Sebutkan asam amino esensial klasik pada Asam Amino Esensial dan Non-Esensial. :: • Histidine
   • Isoleucine
   • Leucine
   • Lysine
@@ -733,18 +732,18 @@ OTC deficiency menyebabkan hyperammonemia dengan ↑ orotic acid. Leucine dan ly
   • Bahan bakar penting bagi enterocyte dan beberapa sel imun
   • Sumber nitrogen untuk sintesis nukleotida
   • Pada ginjal membantu pembuangan NH4+ dalam regulasi asam-basa
-- [Glucogenic vs Ketogenic Amino Acids] Sebutkan poin-poin penting tentang Hanya ketogenic murni. :: • Leucine
+- [Glucogenic vs Ketogenic Amino Acids] Sebutkan hal-hal penting tentang Hanya ketogenic murni. :: • Leucine
   • Lysine
-- [Glucogenic vs Ketogenic Amino Acids] Sebutkan poin-poin penting tentang Glucogenic sekaligus ketogenic. :: • Isoleucine
+- [Glucogenic vs Ketogenic Amino Acids] Sebutkan hal-hal penting tentang Glucogenic sekaligus ketogenic. :: • Isoleucine
   • Phenylalanine
   • Threonine
   • Tryptophan
   • Tyrosine
-- [Siklus Urea — Fungsi Utama] Sebutkan poin-poin penting tentang Urea membawa dua atom nitrogen. :: • Satu berasal dari NH4+ bebas
+- [Siklus Urea — Fungsi Utama] Sebutkan hal-hal penting tentang Urea membawa dua atom nitrogen. :: • Satu berasal dari NH4+ bebas
   • Satu berasal dari aspartate
-- [Regulasi Urea Cycle] Sebutkan poin-poin penting tentang Regulasi jangka lebih lama. :: • Aktivitas/ekspresi enzim urea cycle meningkat saat diet tinggi protein
+- [Regulasi Urea Cycle] Sebutkan regulasi jangka lebih lama pada Regulasi Urea Cycle. :: • Aktivitas/ekspresi enzim urea cycle meningkat saat diet tinggi protein
   • Meningkat pada keadaan katabolik atau puasa berkepanjangan karena breakdown asam amino bertambah
-- [Branched-Chain Amino Acids] Sebutkan poin-poin penting tentang Branched-chain amino acids / BCAA. :: • Leucine
+- [Branched-Chain Amino Acids] Sebutkan hal-hal penting tentang Branched-chain amino acids / BCAA. :: • Leucine
   • Isoleucine
   • Valine
 - [Branched-Chain Amino Acids] Sebutkan urutan atau langkah pada Branched-Chain Amino Acids? :: • Transaminasi

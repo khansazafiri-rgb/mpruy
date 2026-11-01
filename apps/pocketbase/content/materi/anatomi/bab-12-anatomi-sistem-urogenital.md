@@ -857,17 +857,16 @@ External sphincters dan rhythmic perineal contractions: somatic pudendal contrib
 - [Innervation Map: Somatic versus Autonomic] Apa yang dimaksud dengan Urinary bladder pada Innervation Map: Somatic versus Autonomic? :: Parasympathetic S2–S4 penting untuk detrusor contraction; pudendal somatic control untuk external urethral sphincter.
 - [Innervation Map: Somatic versus Autonomic] Jelaskan Lower vagina/vulva dan penis/scrotum dalam konteks Innervation Map: Somatic versus Autonomic. :: Somatic sensation terutama melalui pudendal dan regional somatic nerves.
 - [Anatomi Sistem Urogenital] Apa yang dimaksud dengan Renal segmental arteries pada Anatomi Sistem Urogenital? :: Functional end arteries
-- [Anatomi Sistem Urogenital] Apa yang perlu diketahui tentang Ureter memiliki tiga constrictions klasik? :: UPJ, pelvic brim/iliac crossing, UVJ
 - [Anatomi Sistem Urogenital] Apa yang dimaksud dengan Ampulla uterine tube pada Anatomi Sistem Urogenital? :: Lokasi fertilization tersering
 - [Anatomi Sistem Urogenital] Apa yang dimaksud dengan External urethral meatus pada Anatomi Sistem Urogenital? :: Bagian normal tersempit male urethra
-- [Relations of the Kidneys] Sebutkan poin-poin penting tentang Rib relation. :: • Left kidney berhubungan dengan ribs XI dan XII
+- [Relations of the Kidneys] Sebutkan hal-hal penting tentang Rib relation. :: • Left kidney berhubungan dengan ribs XI dan XII
   • Right kidney terutama dengan rib XII
-- [Relations of the Kidneys] Sebutkan poin-poin penting tentang Right kidney. :: • Right suprarenal gland pada superior pole
+- [Relations of the Kidneys] Sebutkan hal-hal penting tentang Right kidney. :: • Right suprarenal gland pada superior pole
   • Liver pada area anterior yang luas
   • Second part of duodenum dekat medial region
   • Right colic flexure/ascending colon inferolateral
   • Loops of small intestine pada bagian inferior
-- [Ureter: Course dan Relations] Sebutkan poin-poin penting tentang Abdominal course. :: • Dimulai dari ureteropelvic junction
+- [Ureter: Course dan Relations] Sebutkan hal-hal penting tentang Abdominal course. :: • Dimulai dari ureteropelvic junction
   • Turun pada anterior surface psoas major
   • Gonadal vessels dapat berhubungan dengannya
   • Menyeberangi pelvic brim dekat bifurcation common iliac atau external iliac vessels, tergantung level anatomi individu
@@ -875,21 +874,21 @@ External sphincters dan rhythmic perineal contractions: somatic pudendal contrib
   • Body
   • Fundus/base: terutama posteroinferior
   • Neck: bagian inferior yang berlanjut menjadi urethra
-- [Peta Besar Genitalia Wanita] Sebutkan poin-poin penting tentang Internal genital organs utama. :: • Ovaries
+- [Peta Besar Genitalia Wanita] Sebutkan internal genital organs utama pada Anatomi Sistem Urogenital. :: • Ovaries
   • Uterine tubes
   • Uterus
   • Vagina
-- [Ovarian Vessels, Lymphatics, dan Innervation] Sebutkan poin-poin penting tentang Venous drainage. :: • Right ovarian vein → inferior vena cava
+- [Ovarian Vessels, Lymphatics, dan Innervation] Sebutkan hal-hal penting tentang Venous drainage. :: • Right ovarian vein → inferior vena cava
   • Left ovarian vein → left renal vein
-- [Broad Ligament dan Uterine Supports] Sebutkan poin-poin penting tentang Broad ligament. :: • Mesometrium — bagian terbesar terkait uterus
+- [Broad Ligament dan Uterine Supports] Sebutkan hal-hal penting tentang Broad ligament. :: • Mesometrium — bagian terbesar terkait uterus
   • Mesosalpinx — terkait uterine tube
   • Mesovarium — terkait ovary
-- [Broad Ligament dan Uterine Supports] Sebutkan poin-poin penting tentang Support penting. :: • Pelvic diaphragm
+- [Broad Ligament dan Uterine Supports] Sebutkan support penting pada Broad Ligament dan Uterine Supports. :: • Pelvic diaphragm
   • Perineal body dan fascial support
   • Transverse cervical/cardinal ligaments
   • Uterosacral ligaments
   • Pubocervical ligaments
-- [Peta Besar Genitalia Pria] Sebutkan organ utama pada Peta Besar Genitalia Pria. :: • Testes
+- [Peta Besar Genitalia Pria] Sebutkan organ utama pada Anatomi Sistem Urogenital. :: • Testes
   • Epididymides
   • Ductus deferentes
   • Seminal vesicles
@@ -898,10 +897,10 @@ External sphincters dan rhythmic perineal contractions: somatic pudendal contrib
   • Bulbourethral glands
   • Penis
   • Scrotum
-- [Scrotum dan Testicular Coverings] Sebutkan poin-poin penting tentang Derivasi dinding abdomen. :: • External spermatic fascia ← external oblique aponeurosis
+- [Scrotum dan Testicular Coverings] Sebutkan hal-hal penting tentang Derivasi dinding abdomen. :: • External spermatic fascia ← external oblique aponeurosis
   • Cremasteric fascia/muscle ← internal oblique
   • Internal spermatic fascia ← transversalis fascia
-- [Spermatic Cord] Sebutkan poin-poin penting tentang Contents utama. :: • Ductus deferens
+- [Spermatic Cord] Sebutkan contents utama pada Spermatic Cord. :: • Ductus deferens
   • Testicular artery
   • Artery to ductus deferens
   • Cremasteric artery
@@ -910,7 +909,7 @@ External sphincters dan rhythmic perineal contractions: somatic pudendal contrib
   • Sympathetic/autonomic fibers
   • Lymphatic vessels
   • Remnant processus vaginalis bila ada
-- [Prostate] Sebutkan poin-poin penting tentang Zones yang penting klinis. :: • Peripheral zone — lokasi tersering prostate carcinoma
+- [Prostate] Sebutkan zones yang penting klinis pada Prostate. :: • Peripheral zone — lokasi tersering prostate carcinoma
   • Transition zone — mengelilingi proximal urethra dan merupakan lokasi khas benign prostatic hyperplasia
   • Central zone — mengelilingi ejaculatory ducts
 - [Coverings dan Fixation Kidney] Apa korelasi klinis dari Coverings dan Fixation Kidney? :: Hilangnya supporting fat yang ekstrem dapat meningkatkan mobilitas kidney, tetapi istilah nephroptosis harus dibedakan dari variasi normal descent saat inspirasi.

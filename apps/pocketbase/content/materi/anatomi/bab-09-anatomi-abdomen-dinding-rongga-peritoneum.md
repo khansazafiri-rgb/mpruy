@@ -460,15 +460,12 @@ Secara anatomi, akses ke peritoneal cavity harus mempertimbangkan inferior epiga
 - [Walls of the inguinal canal] Apa yang dimaksud dengan Floor pada Walls of the inguinal canal? :: Inguinal ligament, dengan lacunar ligament memberi kontribusi medial.
 - [Hesselbach Triangle dan Inguinal Hernia] Apa struktur atau batas medial pada Hesselbach Triangle dan Inguinal Hernia? :: Lateral border rectus abdominis
 - [Hesselbach Triangle dan Inguinal Hernia] Apa struktur atau batas lateral pada Hesselbach Triangle dan Inguinal Hernia? :: Inferior epigastric vessels
-- [Hesselbach Triangle dan Inguinal Hernia] Apa struktur atau batas inferior pada Hesselbach Triangle dan Inguinal Hernia? :: Inguinal ligament.
-- [Omental/epiploic foramen] Apa struktur atau batas anterior pada Omental/epiploic foramen (Mesenteries, Omenta, Ligaments, Greater Sac, dan Lesser Sac)? :: Hepatoduodenal ligament dengan portal triad
-- [Omental/epiploic foramen] Apa struktur atau batas posterior pada Omental/epiploic foramen (Mesenteries, Omenta, Ligaments, Greater Sac, dan Lesser Sac)? :: Inferior vena cava
-- [Omental/epiploic foramen] Apa struktur atau batas superior pada Omental/epiploic foramen (Mesenteries, Omenta, Ligaments, Greater Sac, dan Lesser Sac)? :: Caudate lobe of liver
-- [Omental/epiploic foramen] Apa struktur atau batas inferior pada Omental/epiploic foramen (Mesenteries, Omenta, Ligaments, Greater Sac, dan Lesser Sac)? :: First/superior part of duodenum.
-- [Attachments] Apa yang dimaksud dengan Sternal part pada Attachments (Diaphragm: Batas Superior Abdomen)? :: Posterior xiphoid region.
-- [Attachments] Apa yang dimaksud dengan Costal part pada Attachments (Diaphragm: Batas Superior Abdomen)? :: Internal surfaces lower six ribs/costal cartilages.
-- [Attachments] Apa yang dimaksud dengan Lumbar part pada Attachments (Diaphragm: Batas Superior Abdomen)? :: Right dan left crura serta arcuate ligaments.
-- [Anatomi Abdomen (Dinding, Rongga Peritoneum)] Apa yang dimaksud dengan Four quadrants ≠ nine regions; keduanya? :: Sistem surface localization
+- [Omental/epiploic foramen] Apa struktur atau batas anterior pada Omental/epiploic foramen? :: Hepatoduodenal ligament dengan portal triad
+- [Omental/epiploic foramen] Apa struktur atau batas superior pada Omental/epiploic foramen? :: Caudate lobe of liver
+- [Omental/epiploic foramen] Apa struktur atau batas inferior pada Omental/epiploic foramen? :: First/superior part of duodenum.
+- [Attachments] Apa yang dimaksud dengan Sternal part pada Attachments? :: Posterior xiphoid region.
+- [Attachments] Apa yang dimaksud dengan Costal part pada Attachments? :: Internal surfaces lower six ribs/costal cartilages.
+- [Attachments] Apa yang dimaksud dengan Lumbar part pada Attachments? :: Right dan left crura serta arcuate ligaments.
 - [Anatomi Abdomen (Dinding, Rongga Peritoneum)] Apa yang dimaksud dengan Layer deep setelah abdominal muscles? :: Transversalis fascia → extraperitoneal tissue → parietal peritoneum
 - [Anatomi Abdomen (Dinding, Rongga Peritoneum)] Apa yang dimaksud dengan Inguinal ligament pada Anatomi Abdomen (Dinding, Rongga Peritoneum)? :: ASIS → pubic tubercle
 - [Anatomi Abdomen (Dinding, Rongga Peritoneum)] Apa yang dimaksud dengan Deep inguinal ring pada Anatomi Abdomen (Dinding, Rongga Peritoneum)? :: Opening transversalis fascia dan lateral terhadap inferior epigastric vessels
@@ -476,9 +473,8 @@ Secara anatomi, akses ke peritoneal cavity harus mempertimbangkan inferior epiga
 - [Anatomi Abdomen (Dinding, Rongga Peritoneum)] Apa yang perlu diketahui tentang Hesselbach triangle pada Anatomi Abdomen (Dinding, Rongga Peritoneum)? :: Rectus lateral border, inferior epigastric vessels, inguinal ligament
 - [Anatomi Abdomen (Dinding, Rongga Peritoneum)] Apa yang dimaksud dengan Peritoneal cavity pada Anatomi Abdomen (Dinding, Rongga Peritoneum)? :: Potential space, bukan rongga normal berisi udara
 - [Anatomi Abdomen (Dinding, Rongga Peritoneum)] Apa yang perlu diketahui tentang Omental foramen boundaries pada Anatomi Abdomen (Dinding, Rongga Peritoneum)? :: Hepatoduodenal ligament anterior, IVC posterior, caudate lobe superior, first duodenum inferior
-- [Anatomi Abdomen (Dinding, Rongga Peritoneum)] Apa yang perlu diketahui tentang Diaphragm openings mnemonic pada Anatomi Abdomen (Dinding, Rongga Peritoneum)? :: IVC T8, esophagus T10, aorta T12
 - [Anatomi Abdomen (Dinding, Rongga Peritoneum)] Apa yang dimaksud dengan Phrenic C3–C5 pada Anatomi Abdomen (Dinding, Rongga Peritoneum)? :: Motor utama diaphragm
-- [Nine regions] Sebutkan nama regio pada Nine regions (Peta Besar Abdomen dan Surface Anatomy). :: • Right hypochondriac – epigastric – left hypochondriac
+- [Nine regions] Sebutkan nama regio pada Nine regions. :: • Right hypochondriac – epigastric – left hypochondriac
   • Right lumbar – umbilical – left lumbar
   • Right inguinal/iliac – hypogastric/pubic – left inguinal/iliac
 - [Fungsi integratif] Sebutkan bersama-sama otot abdominal wall pada Otot Anterolateral Abdominal Wall dan Aponeurosis. :: • Support dan compress abdominal viscera
@@ -486,29 +482,27 @@ Secara anatomi, akses ke peritoneal cavity harus mempertimbangkan inferior epiga
   • Flex, rotate, dan laterally flex trunk
   • Membantu stabilisasi pelvis dan lumbar spine
   • Bekerja sebagai accessory expiratory muscles
-- [Deep arterial supply] Sebutkan jalur penting. :: • Superior epigastric artery adalah continuation dari internal thoracic artery
+- [Deep arterial supply] Sebutkan jalur penting pada Deep arterial supply. :: • Superior epigastric artery adalah continuation dari internal thoracic artery
   • Inferior epigastric artery berasal dari external iliac artery
   • Keduanya berjalan pada deep/posterior aspect rectus region dan beranastomosis
   • Deep circumflex iliac artery berjalan lateral mengikuti iliac crest region
   • Lower posterior intercostal dan subcostal arteries memberi kontribusi lateral/posterior
-- [Direct inguinal hernia] Sebutkan poin-poin penting tentang Ringkasan spatial. :: • Indirect = lateral to inferior epigastric vessels + via deep ring
+- [Direct inguinal hernia] Sebutkan hal-hal penting tentang Ringkasan spatial. :: • Indirect = lateral to inferior epigastric vessels + via deep ring
   • Direct = medial to inferior epigastric vessels + through posterior wall/Hesselbach triangle
-- [Peritoneum dan Peritoneal Cavity] Sebutkan peritoneum adalah serous membrane terbesar tubuh dan mempunyai dua lapisan kontinu pada Peritoneum dan Peritoneal Cavity. :: • Parietal peritoneum melapisi abdominal/pelvic wall
-  • Visceral peritoneum menutupi permukaan organ
-- [Lesser omentum] Sebutkan dua bagian utama. :: • Hepatogastric ligament
+- [Lesser omentum] Sebutkan dua bagian utama pada Lesser omentum. :: • Hepatogastric ligament
   • Hepatoduodenal ligament
-- [Omental/epiploic foramen] Sebutkan batas high-yield. :: • Anterior: hepatoduodenal ligament dengan portal triad
+- [Omental/epiploic foramen] Sebutkan batas high-yield pada Omental/epiploic foramen. :: • Anterior: hepatoduodenal ligament dengan portal triad
   • Posterior: inferior vena cava
   • Superior: caudate lobe of liver
   • Inferior: first/superior part of duodenum
-- [Attachments] Sebutkan poin-poin penting tentang T8 — caval opening. :: • Berada pada central tendon
+- [Attachments] Sebutkan hal-hal penting tentang T8 — caval opening. :: • Berada pada central tendon
   • Dilalui inferior vena cava
   • Dapat disertai terminal branches right phrenic nerve
-- [Attachments] Sebutkan poin-poin penting tentang T10 — esophageal hiatus. :: • Terutama terbentuk dalam right crus
+- [Attachments] Sebutkan hal-hal penting tentang T10 — esophageal hiatus. :: • Terutama terbentuk dalam right crus
   • Dilalui esophagus
   • Anterior dan posterior vagal trunks
   • Esophageal vessels dan lymphatics kecil
-- [Attachments] Sebutkan poin-poin penting tentang T12 — aortic hiatus. :: • Posterior terhadap diaphragm antara crura/median arcuate region
+- [Attachments] Sebutkan hal-hal penting tentang T12 — aortic hiatus. :: • Posterior terhadap diaphragm antara crura/median arcuate region
   • Dilalui aorta dan thoracic duct
   • Azygos vein dapat menggunakan hiatus atau jalur berdekatan dan anatominya bervariasi
 - [Transversalis fascia dan extraperitoneal layer] Apa jebakan yang sering muncul pada soal tentang Transversalis fascia dan extraperitoneal layer? :: “transversalis fascia” tidak sama dengan “transversus abdominis”. Yang pertama adalah fascia; yang kedua adalah muscle.

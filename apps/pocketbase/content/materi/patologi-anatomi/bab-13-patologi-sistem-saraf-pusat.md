@@ -469,8 +469,6 @@ Kenali pola berikut secepat mungkin:
 - [Herniasi Otak] Apa yang dimaksud dengan Subfalcine herniation pada Herniasi Otak? :: Cingulate gyrus terdorong di bawah falx cerebri. Dapat menekan anterior cerebral artery.
 - [Herniasi Otak] Apa yang dimaksud dengan Transtentorial/uncal herniation pada Herniasi Otak? :: Medial temporal lobe terdorong melalui tentorial notch. Dapat menekan CN III → pupil ipsilateral dilatasi, serta posterior cerebral artery. Kompresi batang otak dapat menyebabkan Duret hemorrhages.
 - [Herniasi Otak] Apa yang dimaksud dengan Tonsillar herniation pada Herniasi Otak? :: Cerebellar tonsils terdorong melalui foramen magnum dan dapat menekan medulla. Ini merupakan keadaan yang sangat berbahaya karena dapat mengganggu pusat respirasi dan kardiovaskular.
-- [Cerebral Infarction] Apa yang dimaksud dengan 1–3 hari pada Cerebral Infarction? :: Neutrophils meningkat
-- [Cerebral Infarction] Apa yang dimaksud dengan 3–7 hari pada Cerebral Infarction? :: Macrophages/microglia membersihkan debris
 - [Cerebral Infarction] Pada Cerebral Infarction, apa minggu berikutnya? :: Reactive gliosis dan vascular proliferation
 - [Intracerebral Hemorrhage] Pada Intracerebral Hemorrhage, apa lokasi klasiknya? :: Basal ganglia, thalamus, pons, dan cerebellum.
 - [Subarachnoid Hemorrhage] Apa yang dimaksud dengan Clinical clue pada Subarachnoid Hemorrhage? :: Sudden severe “worst headache of life”, neck stiffness, dan kehilangan kesadaran.
@@ -487,7 +485,6 @@ Kenali pola berikut secepat mungkin:
 - [Oligodendroglioma] Jelaskan Definisi molecular klasik dalam konteks Oligodendroglioma. :: IDH-mutant dan 1p/19q-codeleted.
 - [Ependymoma] Apa yang dimaksud dengan Signature morphology pada Ependymoma? :: Perivascular pseudorosettes, dengan tumor cells tersusun mengelilingi pembuluh darah dan processes menuju vessel wall.
 - [Medulloblastoma] Pada Medulloblastoma, apa histologinya? :: Densely packed small round blue cells dengan high mitotic activity. Homer Wright rosettes dapat ditemukan.
-- [Schwannoma] Jelaskan Antoni B areas dalam konteks Schwannoma. :: Hypocellular/myxoid
 - [Schwannoma] Apa yang dimaksud dengan Verocay bodies pada Schwannoma? :: Palisading nuclei dengan acellular zones.
 - [Patologi Sistem Saraf Pusat] Apa yang dimaksud dengan Red neuron pada Patologi Sistem Saraf Pusat? :: Acute hypoxic-ischemic neuronal injury
 - [Patologi Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Uncal herniation dapat menekan CN III? :: Ipsilateral dilated pupil
@@ -511,34 +508,34 @@ Kenali pola berikut secepat mungkin:
 - [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Ependymoma pada Patologi Sistem Saraf Pusat? :: Perivascular pseudorosettes
 - [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Medulloblastoma pada Patologi Sistem Saraf Pusat? :: Child + cerebellum + small round blue cells + CSF drop metastases
 - [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Meningioma pada Patologi Sistem Saraf Pusat? :: Dural-based + whorls + psammoma bodies
-- [Hypoxic-Ischemic Encephalopathy] Sebutkan poin-poin penting tentang Selective vulnerability. :: • Hippocampal CA1 neurons sangat sensitif
+- [Hypoxic-Ischemic Encephalopathy] Sebutkan hal-hal penting tentang Selective vulnerability. :: • Hippocampal CA1 neurons sangat sensitif
   • Purkinje cells di cerebellum sensitif
   • Cortical neurons pada watershed zones juga rentan
-- [Cerebral Infarction] Sebutkan poin-poin penting tentang Perubahan morfologis secara umum. :: • 12–24 jam: red neurons
+- [Cerebral Infarction] Sebutkan perubahan morfologis secara umum pada Cerebral Infarction. :: • 12–24 jam: red neurons
   • 1–3 hari: neutrophils meningkat
   • 3–7 hari: macrophages/microglia membersihkan debris
   • Minggu berikutnya: reactive gliosis dan vascular proliferation
   • Akhirnya terbentuk cystic cavity dengan gliotic wall
-- [Epidural, Subdural, dan Subarachnoid Hemorrhage] Sebutkan poin-poin penting tentang Epidural hematoma. :: • Biasanya middle meningeal artery
+- [Epidural, Subdural, dan Subarachnoid Hemorrhage] Sebutkan hal-hal penting tentang Epidural hematoma. :: • Biasanya middle meningeal artery
   • Sering terkait temporal bone fracture
   • Lucid interval dapat terjadi
   • Bentuk imaging klasik lentiform/biconvex
-- [Epidural, Subdural, dan Subarachnoid Hemorrhage] Sebutkan poin-poin penting tentang Subdural hematoma. :: • Rupture bridging veins
+- [Epidural, Subdural, dan Subarachnoid Hemorrhage] Sebutkan hal-hal penting tentang Subdural hematoma. :: • Rupture bridging veins
   • Risiko meningkat pada elderly dan brain atrophy
   • Bentuk imaging crescent-shaped
-- [Epidural, Subdural, dan Subarachnoid Hemorrhage] Sebutkan poin-poin penting tentang Subarachnoid hemorrhage. :: • Darah berada di subarachnoid space dan bercampur CSF
+- [Epidural, Subdural, dan Subarachnoid Hemorrhage] Sebutkan hal-hal penting tentang Subarachnoid hemorrhage. :: • Darah berada di subarachnoid space dan bercampur CSF
   • Aneurysmal rupture adalah penyebab klasik nontraumatik
-- [Multiple Sclerosis] Sebutkan poin-poin penting tentang Active plaque. :: • Demyelination
+- [Multiple Sclerosis] Sebutkan hal-hal penting tentang Active plaque. :: • Demyelination
   • Macrophages berisi myelin debris
   • Perivascular lymphocytes
   • Relative axonal preservation pada fase awal
-- [Alzheimer Disease] Sebutkan poin-poin penting tentang Signature pathology. :: • Extracellular β-amyloid plaques
+- [Alzheimer Disease] Sebutkan hal-hal penting tentang Signature pathology. :: • Extracellular β-amyloid plaques
   • Intracellular neurofibrillary tangles berisi hyperphosphorylated tau
   • Neuronal loss dan gliosis
-- [Glioblastoma] Sebutkan poin-poin penting tentang Signature histology. :: • Necrosis dengan pseudopalisading tumor cells
+- [Glioblastoma] Sebutkan hal-hal penting tentang Signature histology. :: • Necrosis dengan pseudopalisading tumor cells
   • Microvascular/endothelial proliferation
   • Marked pleomorphism dan mitotic activity
-- [Pilocytic Astrocytoma] Sebutkan poin-poin penting tentang Signature morphology. :: • Biphasic pattern
+- [Pilocytic Astrocytoma] Sebutkan hal-hal penting tentang Signature morphology. :: • Biphasic pattern
   • Piloid cells
   • Rosenthal fibers
   • Eosinophilic granular bodies

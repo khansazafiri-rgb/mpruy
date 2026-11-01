@@ -386,7 +386,6 @@ Jika melihat vessel:
 ## Flashcard {kartu}
 
 - [Endothelium sebagai Jaringan Aktif] Jelaskan Histologisnya tetap sederhana dalam konteks Endothelium sebagai Jaringan Aktif. :: Satu lapis flattened cells dengan nuclei memanjang menonjol sedikit ke lumen.
-- [Histologi Sistem Kardiovaskular] Apa yang perlu diketahui tentang Heart wall pada Histologi Sistem Kardiovaskular? :: Epicardium → myocardium → endocardium
 - [Histologi Sistem Kardiovaskular] Apa yang dimaksud dengan Purkinje pada Histologi Sistem Kardiovaskular? :: Large pale glycogen-rich modified cardiomyocytes di subendocardium
 - [Histologi Sistem Kardiovaskular] Apa yang perlu diketahui tentang Vessel wall pada Histologi Sistem Kardiovaskular? :: Intima = endothelium; media = smooth muscle ± elastic tissue; adventitia = fibroelastic CT ± vasa/nervi vasorum
 - [Histologi Sistem Kardiovaskular] Apa yang dimaksud dengan Elastic artery pada Histologi Sistem Kardiovaskular? :: Many elastic lamellae in media
@@ -407,19 +406,19 @@ Jika melihat vessel:
   • Menopang valves
   • Mempertahankan bentuk orifices
   • Menjadi electrical insulation antara atrial dan ventricular myocardium, sehingga konduksi normal harus melewati AV conduction system
-- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan poin-poin penting tentang Tunica intima. :: • Endothelium
+- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan hal-hal penting tentang Tunica intima. :: • Endothelium
   • Basal lamina
   • Subendothelial connective tissue
   • Internal elastic lamina dapat menonjol pada muscular arteries
-- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan poin-poin penting tentang Tunica media. :: • Terutama smooth muscle arranged circumferentially
+- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan hal-hal penting tentang Tunica media. :: • Terutama smooth muscle arranged circumferentially
   • Jumlah smooth muscle dan elastic material berbeda menurut jenis vessel
-- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan poin-poin penting tentang Tunica adventitia/externa. :: • Connective tissue terutama collagen dan elastic fibers
+- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan hal-hal penting tentang Tunica adventitia/externa. :: • Connective tissue terutama collagen dan elastic fibers
   • Dapat mengandung vasa vasorum dan nervi vasorum pada vessel besar
 - [Arterioles] Sebutkan ciri histologis pada Arterioles. :: • Lumen kecil
   • Intima sangat tipis
   • Tunica media hanya sekitar 1–2 lapisan smooth muscle pada arterioles kecil dan beberapa lapis pada arterioles lebih besar
   • Adventitia tipis
-- [Capillaries: Struktur Umum] Sebutkan poin-poin penting tentang Dindingnya terutama. :: • Satu lapis endothelial cells
+- [Capillaries: Struktur Umum] Sebutkan hal-hal penting tentang Dindingnya terutama. :: • Satu lapis endothelial cells
   • Basal lamina
   • Pericytes pada sisi abluminal di banyak lokasi
 - [Continuous Capillaries] Sebutkan lokasi penting pada Continuous Capillaries. :: • Skeletal dan cardiac muscle

@@ -433,7 +433,6 @@ Alveolus:
 ## Flashcard {kartu}
 
 - [Respiratory Epithelium] Jelaskan ciliated columnar cells dalam konteks Respiratory Epithelium. :: Menggerakkan mucus menuju pharynx
-- [Respiratory Epithelium] Apa yang dimaksud dengan goblet cells pada Respiratory Epithelium? :: Menghasilkan mucus
 - [Respiratory Epithelium] Apa yang dimaksud dengan basal cells pada Respiratory Epithelium? :: Stem/progenitor cells yang menempel basal lamina
 - [Respiratory Epithelium] Apa yang dimaksud dengan brush cells pada Respiratory Epithelium? :: Memiliki microvilli dan berhubungan dengan sensory innervation
 - [Respiratory Epithelium] Jelaskan small granule/Kulchitsky cells dalam konteks Respiratory Epithelium. :: Neuroendocrine cells yang berada dekat basal lamina.
@@ -456,7 +455,7 @@ Alveolus:
 - [Histologi Sistem Respirasi] Apa yang dimaksud dengan macrophage pada Histologi Sistem Respirasi? :: Phagocytosis
 - [Histologi Sistem Respirasi] Apa yang dimaksud dengan Blood-air barrier pada Histologi Sistem Respirasi? :: Type I pneumocyte + fused basal laminae + capillary endothelium
 - [Histologi Sistem Respirasi] Apa yang perlu diketahui tentang Progression distal pada Histologi Sistem Respirasi? :: Epithelium ↓ height, goblet ↓, glands disappear, cartilage disappears, alveoli appear
-- [Peta Besar Sistem Respirasi] Sebutkan prinsip progresi distal yang sangat high-yield pada Peta Besar Sistem Respirasi. :: • Epitel makin rendah
+- [Peta Besar Sistem Respirasi] Sebutkan prinsip progresi distal yang sangat high-yield pada Histologi Sistem Respirasi. :: • Epitel makin rendah
   • Goblet cells dan glands makin berkurang lalu hilang
   • Cartilage makin berkurang lalu hilang
   • Smooth muscle relatif tetap penting sampai bronchioles
@@ -469,16 +468,11 @@ Alveolus:
   • Seromucous glands
   • Cartilage berbentuk irregular plates, bukan C-shaped rings
   • Pulmonary parenchyma/alveoli mengelilingi airway
-- [Perubahan Sepanjang Bronchial Tree] Sebutkan poin-poin penting tentang Semakin distal. :: • Tinggi epitel menurun dari pseudostratified columnar menuju simple columnar/cuboidal
+- [Perubahan Sepanjang Bronchial Tree] Sebutkan hal-hal penting tentang Semakin distal. :: • Tinggi epitel menurun dari pseudostratified columnar menuju simple columnar/cuboidal
   • Goblet cells berkurang
   • Glands berkurang lalu hilang
   • Cartilage plates mengecil lalu hilang
   • Smooth muscle menjadi komponen dinding yang relatif menonjol
-- [Alveoli] Sebutkan poin-poin penting tentang Interalveolar septa mengandung. :: • Capillaries
-  • Connective tissue tipis
-  • Elastic fibers
-  • Reticular fibers
-  • Type I dan type II pneumocytes
 - [Blood-Air Barrier] Sebutkan komponen dari udara ke darah pada Blood-Air Barrier. :: • Thin cytoplasm type I pneumocyte
   • Fused/closely apposed basal laminae alveolar epithelium dan capillary endothelium
   • Thin cytoplasm continuous capillary endothelial cell

@@ -653,13 +653,10 @@ Epidermis dari dalam ke luar: basale → spinosum → granulosum → lucidum →
   • Merkel cells
 - [Dermis: Gambaran Umum] Sebutkan dua lapisan pada Dermis: Gambaran Umum. :: • Papillary dermis
   • Reticular dermis
-- [Secretory Portion versus Duct Eccrine] Sebutkan poin-poin penting tentang Secretory portion. :: • Lumen relatif lebih lebar
+- [Secretory Portion versus Duct Eccrine] Sebutkan hal-hal penting tentang Secretory portion. :: • Lumen relatif lebih lebar
   • Satu lapis secretory cells
   • Clear cells dan dark cells dapat dibedakan pada preparasi tertentu
   • Myoepithelial cells berada di perifer
-- [Inner Root Sheath] Sebutkan poin-poin penting tentang Terdiri atas. :: • Cuticle of inner root sheath
-  • Huxley layer
-  • Henle layer
 - [Nail: Gambaran Umum] Sebutkan komponen utama pada Nail: Gambaran Umum. :: • Nail plate
   • Nail bed
   • Nail matrix
@@ -670,7 +667,7 @@ Epidermis dari dalam ke luar: basale → spinosum → granulosum → lucidum →
   • Lunula
 - [Sensory Receptors pada Kulit] Sebutkan dua struktur yang sangat high-yield pada Sensory Receptors pada Kulit. :: • Meissner corpuscle
   • Pacinian corpuscle
-- [Thick Skin: Spot Diagnosis] Sebutkan poin-poin penting tentang Cari kombinasi. :: • Very thick stratum corneum
+- [Thick Skin: Spot Diagnosis] Sebutkan hal-hal penting tentang Cari kombinasi. :: • Very thick stratum corneum
   • Clear stratum lucidum
   • Prominent epidermal ridges
   • No hair follicles

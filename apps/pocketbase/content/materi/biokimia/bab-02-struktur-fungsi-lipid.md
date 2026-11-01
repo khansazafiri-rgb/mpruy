@@ -341,11 +341,11 @@ Lipid adalah senyawa organik hidrofobik atau amfipatik yang tidak larut dalam ai
 
 ## Flashcard {kartu}
 
-- [Peta Besar Bab] Pada Peta Besar Bab, apa alur babnya? :: Definisi lipid → fungsi → karakteristik umum → klasifikasi → asam lemak → trigliserida/fosfolipid/kolesterol → lipoprotein → apolipoprotein dan enzim transport.
+- [Peta Besar Bab] Pada Struktur & Fungsi Lipid, apa alur babnya? :: Definisi lipid → fungsi → karakteristik umum → klasifikasi → asam lemak → trigliserida/fosfolipid/kolesterol → lipoprotein → apolipoprotein dan enzim transport.
 - [Kilomikron / Chylomicron] Pada Kilomikron / Chylomicron, apa urutan sumbernya? :: Usus → kilomikron → jaringan lemak & otot → sisa menuju hati.
 - [Lipoprotein Lipase / LPL] Jelaskan Lokasi yang disebut sumber dalam konteks Lipoprotein Lipase / LPL. :: Kapiler otot dan jaringan lemak.
 - [Struktur & Fungsi Lipid] Apa yang dimaksud dengan Lipid pada Struktur & Fungsi Lipid? :: Senyawa organik hidrofobik atau amfipatik yang tidak larut dalam air. Fungsinya mencakup sumber energi, penyusun membran, pelindung organ, isolator panas, prekursor hormon, dan membantu absorpsi vitamin. Lipid dibagi menjadi lipid sederhana, kompleks, dan turunan. Asam lemak mempunyai struktur dasar CH3-(CH2)n-COOH; saturated tidak memiliki ikatan rangkap, sedangkan unsaturated memiliki satu atau lebih ikatan rangkap. Trigliserida tersusun atas satu gliserol dan tiga asam lemak serta berfungsi sebagai penyimpanan energi. Fosfolipid penting untuk membran, sedangkan kolesterol mempunyai empat cincin steroid dan berfungsi dalam membran, hormon steroid, vitamin D, dan garam empedu. Karena lipid tidak larut dalam plasma, lipid diangkut melalui lipoprotein: kilomikron membawa TG makanan dari usus, VLDL membawa TG dari hati, IDL merupakan bentuk peralihan, LDL membawa kolesterol ke jaringan, dan HDL mengembalikan kolesterol ke hati. Apo B-48 berkaitan dengan kilomikron, Apo B-100 dengan LDL, Apo C-II mengaktifkan LPL, Apo E membantu uptake remnant oleh hati, dan LCAT membantu esterifikasi kolesterol untuk HDL
-- [Karakteristik Umum Lipid] Sebutkan poin-poin penting tentang Karakteristik. :: • Tidak larut dalam air
+- [Karakteristik Umum Lipid] Sebutkan karakteristik pada Karakteristik Umum Lipid. :: • Tidak larut dalam air
   • Larut dalam pelarut nonpolar
   • Mengandung karbon, hidrogen, dan oksigen
   • Sebagian lipid juga dapat mengandung fosfor, nitrogen, dan sulfur
@@ -353,7 +353,7 @@ Lipid adalah senyawa organik hidrofobik atau amfipatik yang tidak larut dalam ai
   • Asam lemak
   • Steroid
   • Vitamin A, D, E, K
-- [Sifat Asam Lemak Jenuh] Sebutkan poin-poin penting tentang Menurut sumber, asam lemak jenuh cenderung. :: • Padat
+- [Sifat Asam Lemak Jenuh] Sebutkan hal-hal penting tentang Menurut sumber, asam lemak jenuh cenderung. :: • Padat
   • Banyak terdapat pada lemak hewan
 - [Fungsi Kolesterol] Sebutkan fungsi pada Fungsi Kolesterol. :: • Penyusun membran
   • Pembentuk hormon steroid

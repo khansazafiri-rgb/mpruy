@@ -46,8 +46,13 @@ LIST_NOUN = re.compile(r'\b(jenis|tipe|macam|ciri|faktor|penyebab|langkah|urutan
                        r'komplikasi|manifestasi|fungsi|golongan|kelas|kelompok|klasifikasi|pemeriksaan|temuan|syarat|prinsip|kategori|subtipe|varian|pilihan|'
                        r'mekanisme|cara|metode|bagian|lapisan|struktur|otot|saraf|arteri|vena|cabang|nama|regio|organ|sel|jaringan|zona|fase|stadium|gen|enzim)\b', re.I)
 VERBISH = re.compile(r'\b(melakukan|terjadi|menyebabkan|dapat|akan|digunakan|memiliki|menghasilkan|berperan|bekerja|dibuat|menjadi|mengalami|bersifat|ditemukan|muncul|'
-                     r'diberikan|dipakai|dipilih|dibedakan|diingat|dihafal|dilakukan|membentuk|mengubah|mengaktifkan|menghambat|menurunkan|meningkatkan)\b', re.I)
+                     r'diberikan|dipakai|dipilih|dibedakan|diingat|dihafal|dilakukan|membentuk|mengubah|mengaktifkan|menghambat|menurunkan|meningkatkan|mendapat|mendapatkan|melibatkan|mengandung|mengalir|berasal|bergantung|berhubungan|berkaitan|membutuhkan|memerlukan|menggunakan|mempunyai|terdiri|berupa|tergantung)\b', re.I)
 DIRECTION = re.compile(r'^(?:superior|inferior|medial|lateral|anterior|posterior|proksimal|distal|dorsal|ventral|kranial|kaudal)(?: [a-z]+)?$', re.I)
+ORDINAL = re.compile(r'^(?:contoh|poin|langkah|tahap|kasus|pola|butir|item|opsi|pilihan|skenario|vignette|soal|bagian|catatan|rumus|gambar|tabel|fase|step)\s*[\dIVX]+[a-z]?\b', re.I)
+VAGUE_H3 = re.compile(r'^(?:istilah|bidang|posisi|contoh|poin|ringkasan|catatan|konsep|komponen|ciri|tabel|daftar|bagian|jenis|tipe|klasifikasi|kelompok|golongan|pembagian|pola|urutan|langkah|rangkuman|perbandingan|detail|aplikasi|clinical application)\b', re.I)
+GENERIC_LEAD = re.compile(r'\b(penting|utama|terkait|klasik|high-yield|khas|umum|lain|tambahan|kaya|jangka|konseptual|pola|karakteristik|penanda|clinical use|regulasi|perbedaan|singkat)\b', re.I)
+BAD_TERM = re.compile(r'[:;?≠=→]|\.\s|\.$|^\d')
+GENERIC_TOPIC = re.compile(r'^(?:peta besar|big picture|ringkasan|sumber|konsep besar|gambaran besar|poin high-yield|pola kasus|jebakan|cara membaca|checklist|memory map|ikhtisar)\b', re.I)
 SKIP_SECTIONS = ('tujuan', 'praktikum', 'sumber', 'kartu')
 HY_CTX = {'high-yield', 'high yield', 'pola kasus high-yield', 'poin high-yield untuk ujian', 'ringkasan 30 detik', 'poin high-yield'}
 
@@ -149,6 +154,8 @@ def q_def(term, back, topic):
     t_low = term.lower()
     words = len(term.split())
     same = topic and (topic.lower() == t_low or topic.lower() in t_low or t_low in topic.lower())
+    if BAD_TERM.search(term) and not (' + ' in term or '→' in term):
+        return None
     if FRAG_START.match(term) or FRAG_END.search(term) or JUNK_TERM.match(term):
         return None          # potongan kalimat atau label sampah, bukan istilah
     if re.search(r'\b(dianggap|disangka|dikira|tertukar|disalahartikan|dibaca sebagai)\b', term, re.I):
@@ -181,6 +188,8 @@ def q_hy(left, right, delim, topic):
         if n <= 3:
             return _ends_q(f'Apa yang perlu diingat tentang {left_c}' + (f' pada {topic}' if topic and len(topic) <= 60 else ''))
         return _ends_q(f'Apa jawaban atau kesimpulan untuk petunjuk berikut: {left_c}')
+    if delim in (' = ', ' adalah ', ': ') and BAD_TERM.search(left_c):
+        return None
     if delim in (' = ', ' adalah '):
         return _ends_q(f'Apa yang dimaksud dengan {left_c}' + (f' pada {topic}' if topic and len(topic) <= 60 and len(left_c) <= 30 else ''))
     if n > 5:
@@ -215,8 +224,10 @@ def q_list(lead, topic):
     if LIST_NOUN.search(core) or _is_prop(core):
         tail = f' pada {topic}' if topic and topic.lower() not in low and len(topic) <= 60 else ''
         return f'Sebutkan {low}{tail}.', True
-    if len(core.split()) <= 6:
-        return f'Sebutkan poin-poin penting tentang {core}.', True
+    if GENERIC_LEAD.search(core):
+        return (f'Sebutkan {low} pada {topic}.', True) if topic and topic.lower() not in low else (None, False)
+    if len(core.split()) <= 6 and not BAD_TERM.search(core):
+        return f'Sebutkan hal-hal penting tentang {core}.', True
     return None, False
 
 
@@ -257,12 +268,15 @@ def make_cards(md, chapter=''):
             continue
         sec = _topic(h3 or h2)
         h2t = _topic(h2)
-        if h3 and (_is_prop(sec) or sec.lower() in GENERIC or len(sec.split()) > 8):
-            topic = h2t if h2t.lower() not in HY_CTX else chapter           # "Indikasi" saja tidak informatif: pakai judul bagian induknya
+        if h3 and (_is_prop(sec) or sec.lower() in GENERIC or len(sec.split()) > 8 or VAGUE_H3.match(sec)):
+            topic = h2t if h2t.lower() not in HY_CTX else chapter           # "Indikasi"/"Istilah utama" saja tidak informatif: pakai judul bagian induknya
         elif h3 and len(sec.split()) <= 3 and h2t and h2t.lower() != sec.lower() and h2t.lower() not in HY_CTX and h2t.lower() != chapter.lower():
             topic = f'{sec} ({h2t})'
         else:
             topic = sec if sec.lower() not in HY_CTX else chapter
+        topic = re.sub(r'\s*\([^)]*\)\s*$', '', topic).strip() or topic
+        if GENERIC_TOPIC.match(topic) and chapter:
+            topic = chapter
         ctx = sec if sec.lower() not in HY_CTX else (chapter or sec)
         if t == 'box':
             _, var, title, body = el
@@ -289,6 +303,10 @@ def make_cards(md, chapter=''):
                     continue
                 left, right = plain.split(delim)
                 left, right = left.strip(), right.strip().rstrip('.')
+                if delim == ': ' and not _is_prop(left) and len(right) < 40:
+                    continue                      # "Kanan/kiri: milik pasien" tanpa konteks tidak jadi pertanyaan yang jelas
+                if ORDINAL.match(left) or re.match(r'^[“"‘\']', right):
+                    continue
                 if 3 <= len(left) <= 70 and len(left.split()) <= 9 and len(right) >= 6 and not re.match(r'^(Jangan|Detail|Gambar|Bab|Shortcut|Clue|Practical|Praktikum|Trap|Mnemonic|High-yield|Catatan)\b', left, re.I):
                     card = (left, right, delim)
                     break
@@ -302,7 +320,11 @@ def make_cards(md, chapter=''):
             term, back = _plain(m.group(1)), _plain(m.group(2)).rstrip(';')
             if term.lower() in GENERIC or len(back) > 320 or re.match(r'^(Gambar|lihat)\b', back, re.I):
                 continue
+            if ORDINAL.match(term) or re.match(r'^[“"‘\']', back):
+                continue                         # "Contoh 3", jawaban berupa kutipan saja: tidak bisa ditanyakan mandiri
             q = q_def(term, back, topic or chapter)
+            if q and not _is_prop(_clean_term(term)) and len(back) < 20:
+                q = None                         # istilah non-sifat dengan jawaban sangat pendek terlalu samar
             if q:
                 defs.append((ctx, q, _cap(back.rstrip(',;'))))
             continue

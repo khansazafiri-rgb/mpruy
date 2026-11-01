@@ -584,7 +584,7 @@ Glikolisis berlangsung di sitosol dan mengubah satu glukosa menjadi dua piruvat 
 
 ## Flashcard {kartu}
 
-- [Peta Besar Bab] Pada Peta Besar Bab, apa inti babnya? :: Glikolisis menghasilkan energi dari glukosa, sedangkan glukoneogenesis menggunakan energi untuk membentuk kembali glukosa.
+- [Peta Besar Bab] Pada Glikolisis & Glukoneogenesis, apa inti babnya? :: Glikolisis menghasilkan energi dari glukosa, sedangkan glukoneogenesis menggunakan energi untuk membentuk kembali glukosa.
 - [Dua Fase Glikolisis] Apa yang dimaksud dengan fase payoff/ATP-generating pada Dua Fase Glikolisis? :: Menghasilkan 4 ATP dan 2 NADH.
 - [Gambaran Jalur Glikolisis] Pada Gambaran Jalur Glikolisis, apa urutan utamanya? :: Glukosa → Glucose-6-phosphate → Fructose-6-phosphate → Fructose-1,6-bisphosphate → Glyceraldehyde-3-phosphate → 1,3-Bisphosphoglycerate → 3-Phosphoglycerate → 2-Phosphoglycerate → Phosphoenolpyruvate → Piruvat.
 - [Reaksi 1 — Glukosa → Glucose-6-Phosphate] Jelaskan Reaksi memakai 1 ATP dalam konteks Reaksi 1 — Glukosa → Glucose-6-Phosphate. :: Glukosa + ATP → Glucose-6-phosphate + ADP.
@@ -607,19 +607,25 @@ Glikolisis berlangsung di sitosol dan mengubah satu glukosa menjadi dua piruvat 
 - [Gambar Besar Glukoneogenesis] Jelaskan Alur utama dari piruvat dalam konteks Gambar Besar Glukoneogenesis. :: Piruvat → Oxaloacetate → PEP → reaksi reversibel glikolisis → Fructose-1,6-bisphosphate → Fructose-6-phosphate → Glucose-6-phosphate → Glukosa.
 - [Glucose–Alanine Cycle] Jelaskan Alanin dibawa ke hati dalam konteks Glucose–Alanine Cycle. :: Alanin → piruvat → glukoneogenesis → glukosa.
 - [Master Flow Glikolisis] Apa yang dimaksud dengan Net pada Master Flow Glikolisis? :: 2 ATP + 2 NADH + 2 piruvat per glukosa.
-- [Dua Fase Glikolisis] Sebutkan poin-poin penting tentang Glikolisis. :: • Fase investasi/preparatif: memakai 2 ATP
+- [Dua Fase Glikolisis] Sebutkan hal-hal penting tentang Glikolisis. :: • Fase investasi/preparatif: memakai 2 ATP
   • Fase payoff/ATP-generating: menghasilkan 4 ATP dan 2 NADH
-- [Dua Fase Glikolisis] Sebutkan poin-poin penting tentang Hasil bersih per glukosa. :: • 2 ATP
+- [Dua Fase Glikolisis] Sebutkan hal-hal penting tentang Hasil bersih per glukosa. :: • 2 ATP
   • 2 NADH
   • 2 piruvat
-- [Hexokinase] Sebutkan poin-poin penting tentang Karakteristik high-yield. :: • Km rendah
+- [Hexokinase] Sebutkan karakteristik high-yield pada Hexokinase. :: • Km rendah
   • Terdapat pada banyak jaringan
   • Vmax relatif lebih rendah
   • Dihambat oleh produk glucose-6-phosphate
-- [PFK-1: Enzim Regulasi Utama] Sebutkan poin-poin penting tentang Aktivator penting. :: • AMP
+- [Glucokinase] Sebutkan karakteristik high-yield pada Glucokinase. :: • Km lebih tinggi daripada hexokinase
+  • Vmax lebih tinggi
+  • Terutama di hati dan sel β pankreas
+  • Tidak dihambat langsung oleh glucose-6-phosphate
+- [PFK-1: Enzim Regulasi Utama] Sebutkan aktivator penting pada PFK-1: Enzim Regulasi Utama. :: • AMP
   • Fructose-2,6-bisphosphate
-- [PFK-1: Enzim Regulasi Utama] Sebutkan poin-poin penting tentang Inhibitor penting. :: • ATP
+- [PFK-1: Enzim Regulasi Utama] Sebutkan inhibitor penting pada PFK-1: Enzim Regulasi Utama. :: • ATP
   • Citrate
+- [Regulasi Pyruvate Kinase] Sebutkan inhibitor penting pada Regulasi Pyruvate Kinase. :: • ATP
+  • Alanin, terutama pada hati
 - [Lokasi Glukoneogenesis] Sebutkan organ utama pada Lokasi Glukoneogenesis. :: • Hati
   • Korteks ginjal, terutama makin penting pada puasa berkepanjangan
 - [Substrat Glukoneogenesis] Sebutkan substrat penting pada Substrat Glukoneogenesis. :: • Laktat
@@ -629,6 +635,6 @@ Glikolisis berlangsung di sitosol dan mengubah satu glukosa menjadi dua piruvat 
 - [Bypass 2 — F1,6BP → F6P] Sebutkan regulasi penting pada Bypass 2 — F1,6BP → F6P. :: • Dihambat AMP
   • Dihambat F2,6BP
   • Dapat didukung oleh status energi tinggi
-- [Alkohol dan Hipoglikemia Puasa] Sebutkan poin-poin penting tentang NADH tinggi mendorong. :: • Piruvat → laktat
+- [Alkohol dan Hipoglikemia Puasa] Sebutkan hal-hal penting tentang NADH tinggi mendorong. :: • Piruvat → laktat
   • Oxaloacetate → malate
 - [Pyruvate Kinase Deficiency] Apa korelasi klinis dari Pyruvate Kinase Deficiency? :: Enzim glikolisis terganggu → ATP eritrosit turun → hemolytic anemia.

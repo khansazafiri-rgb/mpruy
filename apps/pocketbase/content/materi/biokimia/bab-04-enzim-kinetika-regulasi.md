@@ -282,7 +282,6 @@ Ketika menemukan obat atau toksin yang menargetkan enzim, tanyakan tiga hal: (1)
 
 ## Flashcard {kartu}
 
-- [Konsep Dasar Enzim] Apa yang dimaksud dengan Skema umum pada Konsep Dasar Enzim? :: E + S ⇌ ES → E + P
 - [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Apoenzyme. :: Bagian protein enzim yang belum aktif tanpa komponen tambahannya.
 - [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Cofactor. :: Komponen nonprotein yang diperlukan untuk aktivitas enzim; dapat berupa ion logam atau molekul organik.
 - [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Coenzyme. :: Cofactor organik, sering berasal dari vitamin.
@@ -294,17 +293,18 @@ Ketika menemukan obat atau toksin yang menargetkan enzim, tanyakan tiga hal: (1)
 - [Korelasi Farmakologi & Toksikologi] Apa yang dimaksud dengan Aspirin pada Korelasi Farmakologi & Toksikologi? :: Mengasetilasi cyclooxygenase (COX) secara irreversible; pada trombosit efek berlangsung sepanjang umur trombosit karena trombosit tidak mampu mensintesis COX baru secara bermakna.
 - [Enzim Allosterik dan Kooperativitas] Jelaskan T (tense) state dalam konteks Enzim Allosterik dan Kooperativitas. :: Afinitas terhadap substrat lebih rendah.
 - [Enzim Allosterik dan Kooperativitas] Jelaskan R (relaxed) state dalam konteks Enzim Allosterik dan Kooperativitas. :: Afinitas terhadap substrat lebih tinggi.
-- [Covalent modification] Apa yang dimaksud dengan Contoh penting pada Covalent modification (Regulasi Aktivitas Enzim)? :: Metabolisme glikogen menggunakan regulasi fosforilasi yang resiprokal. Fosforilasi cenderung mengaktifkan glycogen phosphorylase dan menghambat glycogen synthase, sehingga sintesis dan pemecahan glikogen tidak aktif maksimal secara bersamaan.
+- [Covalent modification] Apa yang dimaksud dengan Contoh penting pada Covalent modification? :: Metabolisme glikogen menggunakan regulasi fosforilasi yang resiprokal. Fosforilasi cenderung mengaktifkan glycogen phosphorylase dan menghambat glycogen synthase, sehingga sintesis dan pemecahan glikogen tidak aktif maksimal secara bersamaan.
 - [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Competitive pada Enzim: Kinetika & Regulasi? :: Km ↑    | Vmax tetap | dapat dilawan dengan ↑ [S]
 - [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Pure noncompetitive pada Enzim: Kinetika & Regulasi? :: Km tetap | Vmax ↓   | tidak dipulihkan oleh ↑ [S]
 - [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Uncompetitive pada Enzim: Kinetika & Regulasi? :: Km ↓    | Vmax ↓     | inhibitor mengikat ES
+- [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Mixed pada Enzim: Kinetika & Regulasi? :: Km ↑/↓  | Vmax ↓     | afinitas E dan ES berbeda
 - [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Irreversible pada Enzim: Kinetika & Regulasi? :: Enzim aktif ↓ secara permanen/nyaris permanen
-- [Enzim: Kinetika & Regulasi] Apa yang perlu diketahui tentang Salah pada Enzim: Kinetika & Regulasi? :: “Enzim membuat ΔG menjadi lebih negatif.”
-- [Enzim: Kinetika & Regulasi] Apa yang perlu diketahui tentang Benar pada Enzim: Kinetika & Regulasi? :: Pada inhibisi kompetitif ideal, Vmax tetap dan apparent Km meningkat
+- [Enzim: Kinetika & Regulasi] Apa yang perlu diketahui tentang Benar pada Enzim: Kinetika & Regulasi? :: Enzim menurunkan Ea dan tidak mengubah ΔG
 - [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan Vmax pada Enzim: Kinetika & Regulasi? :: Kapasitas maksimal sistem enzim pada kondisi tertentu
+- [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan kcat pada Enzim: Kinetika & Regulasi? :: Jumlah molekul substrat yang diubah per molekul enzim per satuan waktu saat saturasi
 - [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan kcat/Km pada Enzim: Kinetika & Regulasi? :: Ukuran efisiensi katalitik
-- [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Mixed pada Enzim: Kinetika & Regulasi? :: V turun, K bisa naik atau turun
 - [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan Allosteric pada Enzim: Kinetika & Regulasi? :: Cepat dan reversibel
+- [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan Phosphorylation pada Enzim: Kinetika & Regulasi? :: Sakelar kovalen yang dapat dibalik
 - [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan Zymogen pada Enzim: Kinetika & Regulasi? :: Aktivasi proteolitik, biasanya irreversible
 - [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan Feedback inhibition pada Enzim: Kinetika & Regulasi? :: Produk akhir menghambat tahap awal
 - [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Sebutkan contoh coenzyme penting pada Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme. :: • NAD⁺/NADH — berasal dari niasin (vitamin B3), berperan pada reaksi oksidasi-reduksi
@@ -317,6 +317,6 @@ Ketika menemukan obat atau toksin yang menargetkan enzim, tanyakan tiga hal: (1)
   • Saat [S] ≫ Km, enzim mendekati saturasi; penambahan substrat hanya sedikit menaikkan laju dan reaksi mendekati zero-order terhadap substrat
 - [Kinetika Michaelis–Menten] Sebutkan pengaruh konsentrasi enzim pada Kinetika Michaelis–Menten. :: • Jika jumlah enzim dinaikkan, Vmax meningkat secara proporsional selama substrat mencukupi
   • Km pada prinsipnya tidak berubah hanya karena konsentrasi enzim dinaikkan
-- [Enzim Allosterik dan Kooperativitas] Sebutkan poin-poin penting tentang Model konseptual T dan R. :: • T (tense) state: afinitas terhadap substrat lebih rendah
+- [Enzim Allosterik dan Kooperativitas] Sebutkan model konseptual T dan R pada Enzim Allosterik dan Kooperativitas. :: • T (tense) state: afinitas terhadap substrat lebih rendah
   • R (relaxed) state: afinitas terhadap substrat lebih tinggi
 - [Konsep Dasar Enzim] Apa poin high-yield (pearl) tentang Konsep Dasar Enzim? :: Enzim menurunkan Ea, bukan ΔG. Enzim mempercepat reaksi maju dan balik. Enzim tidak mengubah Keq. Enzim tidak dikonsumsi secara permanen selama reaksi.

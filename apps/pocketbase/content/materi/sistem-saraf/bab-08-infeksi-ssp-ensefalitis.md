@@ -371,7 +371,7 @@ Karena itu outcome encephalitis bukan hanya survival, tetapi juga fungsi neuroko
   • Eastern/Western/Venezuelan equine encephalitis viruses
   • Rabies virus
   • Measles/mumps/CMV/EBV pada konteks tertentu
-- [Pemeriksaan pada Suspected Encephalitis] Sebutkan poin-poin penting tentang Evaluasi harus menjawab dua pertanyaan. :: • Apakah benar ada encephalitis/brain inflammation?
+- [Pemeriksaan pada Suspected Encephalitis] Sebutkan hal-hal penting tentang Evaluasi harus menjawab dua pertanyaan. :: • Apakah benar ada encephalitis/brain inflammation?
   • Apa etiologinya?
 - [Pemeriksaan pada Suspected Encephalitis] Sebutkan pemeriksaan penting pada Pemeriksaan pada Suspected Encephalitis. :: • Darah: CBC, elektrolit, fungsi ginjal/hati, glukosa, kultur bila sepsis dicurigai
   • CSF bila aman: cell count/differential, protein, glucose, serta microbiologic testing
@@ -380,18 +380,18 @@ Karena itu outcome encephalitis bukan hanya survival, tetapi juga fungsi neuroko
   • MRI otak
   • EEG
   • Pemeriksaan etiologi lain berdasarkan usia, imun, paparan, perjalanan penyakit, dan epidemiologi
-- [GUIDELINE UPDATE — Jangan Menunda Acyclovir] Sebutkan poin-poin penting tentang Guideline viral encephalitis dewasa merekomendasikan. :: • IV acyclovir 10 mg/kg setiap 8 jam pada dewasa dengan fungsi ginjal memadai
+- [GUIDELINE UPDATE — Jangan Menunda Acyclovir] Sebutkan hal-hal penting tentang Guideline viral encephalitis dewasa merekomendasikan. :: • IV acyclovir 10 mg/kg setiap 8 jam pada dewasa dengan fungsi ginjal memadai
   • Mulai bila CSF/imaging mendukung viral encephalitis
   • Bila hasil belum tersedia, pasien sangat sakit, atau memburuk, acyclovir tetap dimulai dalam beberapa jam pertama
   • Normalnya CSF awal atau imaging awal tidak boleh menghentikan terapi bila kecurigaan HSV/VZV masih tinggi
   • Dosis harus disesuaikan pada gangguan ginjal
-- [Arboviral Encephalitis] Sebutkan poin-poin penting tentang Virus penting. :: • Japanese encephalitis — Flavivirus, vektor Culex, reservoir terutama babi/burung; sangat relevan di Asia
+- [Arboviral Encephalitis] Sebutkan virus penting pada Arboviral Encephalitis. :: • Japanese encephalitis — Flavivirus, vektor Culex, reservoir terutama babi/burung; sangat relevan di Asia
   • West Nile virus — Flavivirus, vektor Culex, reservoir burung
   • St. Louis encephalitis virus
   • Eastern equine encephalitis virus
   • Western equine encephalitis virus
   • Venezuelan equine encephalitis virus
-- [Important Differential — Autoimmune Encephalitis] Sebutkan poin-poin penting tentang Anti-NMDAR encephalitis high-yield. :: • Dewasa muda
+- [Important Differential — Autoimmune Encephalitis] Sebutkan Anti-NMDAR encephalitis high-yield pada Important Differential — Autoimmune Encephalitis. :: • Dewasa muda
   • Perubahan perilaku/psikiatri
   • Kejang
   • Orofacial dyskinesia/movement disorder
@@ -404,7 +404,7 @@ Karena itu outcome encephalitis bukan hanya survival, tetapi juga fungsi neuroko
   • Aspiration
   • Secondary infection
   • ICU requirement
-- [Komplikasi Ensefalitis] Sebutkan poin-poin penting tentang Sekuela jangka panjang. :: • Memory impairment
+- [Komplikasi Ensefalitis] Sebutkan sekuela jangka panjang pada Komplikasi Ensefalitis. :: • Memory impairment
   • Epilepsy
   • Language dysfunction
   • Behavioral/personality change

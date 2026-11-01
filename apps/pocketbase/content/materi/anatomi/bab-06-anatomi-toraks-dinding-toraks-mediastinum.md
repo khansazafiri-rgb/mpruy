@@ -354,22 +354,16 @@ Mediastinum yang tampak melebar pada radiografi bukan diagnosis tunggal. Penyeba
 - [Iga: true, false, dan floating] Apa yang dimaksud dengan False ribs pada Iga: true, false, dan floating? :: Costa VIII–XII secara umum tidak mempunyai hubungan langsung independen ke sternum.
 - [Iga: true, false, dan floating] Apa yang dimaksud dengan Vertebrochondral ribs pada Iga: true, false, dan floating? :: Costa VIII–X biasanya bergabung ke kartilago iga di atasnya sehingga berkontribusi pada costal margin.
 - [Iga: true, false, dan floating] Apa yang dimaksud dengan Floating/free ribs pada Iga: true, false, dan floating? :: Costa XI–XII tidak mempunyai perlekatan anterior ke sternum atau costal margin.
-- [High-yield hubungan] Jelaskan posterior intercostal supply dalam konteks High-yield hubungan (Suplai Arteri Dinding Toraks). :: Thoracic aorta + supreme intercostal artery untuk upper spaces
-- [High-yield hubungan] Jelaskan anterior intercostal supply dalam konteks High-yield hubungan (Suplai Arteri Dinding Toraks). :: Internal thoracic/musculophrenic
+- [High-yield hubungan] Jelaskan posterior intercostal supply dalam konteks High-yield hubungan. :: Thoracic aorta + supreme intercostal artery untuk upper spaces
+- [High-yield hubungan] Jelaskan anterior intercostal supply dalam konteks High-yield hubungan. :: Internal thoracic/musculophrenic
 - [Anatomi Toraks (Dinding Toraks, Mediastinum)] Apa yang dimaksud dengan Thoracic cage pada Anatomi Toraks (Dinding Toraks, Mediastinum)? :: Sternum + 12 pasang ribs/cartilages + 12 thoracic vertebrae
 - [Anatomi Toraks (Dinding Toraks, Mediastinum)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Superior vs inferior mediastinum dipisahkan oleh plane sternal angle? :: T4–T5 disc
 - [Anatomi Toraks (Dinding Toraks, Mediastinum)] Apa yang dimaksud dengan Urutan bundle dari superior ke inferior? :: Vein–Artery–Nerve
 - [Anatomi Toraks (Dinding Toraks, Mediastinum)] Apa yang perlu diketahui tentang Posterior mediastinum pada Anatomi Toraks (Dinding Toraks, Mediastinum)? :: Ingat esophagus, descending aorta, azygos system, thoracic duct, vagal/autonomic structures
-- [Sternum] Sebutkan poin-poin penting tentang Sternum. :: • Manubrium
+- [Sternum] Sebutkan hal-hal penting tentang Sternum. :: • Manubrium
   • Corpus sterni
   • Processus xiphoideus
-- [Typical rib] Sebutkan poin-poin penting tentang Iga tipikal, terutama iga 3–9, mempunyai. :: • Head/caput dengan articular facets untuk corpus vertebra
-  • Neck/collum
-  • Tubercle/tuberculum yang berhubungan dengan transverse process vertebra yang sesuai
-  • Angle
-  • Shaft/body
-  • Costal groove pada permukaan internal dekat tepi inferior
-- [Intercostal Nerves, Dermatomes, dan Sympathetic Connections] Sebutkan poin-poin penting tentang Typical intercostal nerve memberi. :: • Muscular branches
+- [Intercostal Nerves, Dermatomes, dan Sympathetic Connections] Sebutkan hal-hal penting tentang Typical intercostal nerve memberi. :: • Muscular branches
   • Collateral branch
   • Lateral cutaneous branch, yang kemudian membelah anterior dan posterior
   • Anterior cutaneous branch dekat sternum

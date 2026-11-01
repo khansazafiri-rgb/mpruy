@@ -578,7 +578,7 @@ J. Acute pancreatitis dengan chalky deposits → fat necrosis.
 
 ## Flashcard {kartu}
 
-- [Konsep Besar] Pada Konsep Besar, apa alur intinya? :: NORMAL → STRESS → ADAPTATION
+- [Konsep Besar] Pada Jejas Sel & Adaptasi Sel, apa alur intinya? :: NORMAL → STRESS → ADAPTATION
 - [Hypertrophy] Apa yang dimaksud dengan Mechanism pada Hypertrophy? :: Mechanical stretch + growth factors → activation of signaling pathways → peningkatan ekspresi gen → peningkatan sintesis protein.
 - [Hyperplasia] Jelaskan hormonal hyperplasia. :: Proliferasi glandular epithelium payudara pada pubertas/kehamilan.
 - [Hyperplasia] Jelaskan compensatory hyperplasia. :: Regenerasi hati setelah partial hepatectomy.
@@ -593,7 +593,6 @@ J. Acute pancreatitis dengan chalky deposits → fat necrosis.
 - [Intracellular Accumulations] Apa yang dimaksud dengan Contoh penting pada Intracellular Accumulations? :: Steatosis, cholesterol accumulation, protein reabsorption droplets, glycogen accumulation pada diabetes/glycogen storage diseases.
 - [Pathologic Calcification] Pada Pathologic Calcification, apa penyebabnya? :: Hyperparathyroidism, bone destruction, vitamin D disorders, renal failure tertentu.
 - [Jejas Sel & Adaptasi Sel] Apa yang dimaksud dengan Metaplasia pada Jejas Sel & Adaptasi Sel? :: Reversible reprogramming menuju differentiated cell type lain
-- [Jejas Sel & Adaptasi Sel] Apa yang perlu diketahui tentang Reversible injury pada Jejas Sel & Adaptasi Sel? :: Hydropic swelling dan fatty change
 - [Jejas Sel & Adaptasi Sel] Apa yang perlu diketahui tentang Irreversible injury pada Jejas Sel & Adaptasi Sel? :: Severe mitochondrial dysfunction + membrane damage
 - [Jejas Sel & Adaptasi Sel] Apa yang dimaksud dengan Necrosis pada Jejas Sel & Adaptasi Sel? :: Swelling + membrane rupture + inflammation
 - [Jejas Sel & Adaptasi Sel] Apa yang dimaksud dengan Apoptosis pada Jejas Sel & Adaptasi Sel? :: Shrinkage + apoptotic bodies + minimal inflammation
@@ -602,13 +601,12 @@ J. Acute pancreatitis dengan chalky deposits → fat necrosis.
 - [Jejas Sel & Adaptasi Sel] Apa yang dimaksud dengan Fat necrosis pada Jejas Sel & Adaptasi Sel? :: Pancreatitis/trauma adipose tissue
 - [Jejas Sel & Adaptasi Sel] Apa yang perlu diingat tentang STRESS pada Jejas Sel & Adaptasi Sel? :: ADAPTATION: hypertrophy, hyperplasia, atrophy, metaplasia
 - [Jejas Sel & Adaptasi Sel] Apa yang perlu diingat tentang MILD INJURY pada Jejas Sel & Adaptasi Sel? :: Reversible: cell swelling, hydropic change, fatty change
-- [Jejas Sel & Adaptasi Sel] Apa yang perlu diketahui tentang SEVERE/PERSISTENT INJURY → irreversible? :: Mitochondrial failure + membrane damage → necrosis/apoptosis
 - [Jejas Sel & Adaptasi Sel] Apa yang perlu diketahui tentang APOPTOSIS pada Jejas Sel & Adaptasi Sel? :: Shrinkage, caspases, apoptotic bodies, minimal inflammation
-- [Adaptasi Sel — Empat Pola Utama] Sebutkan poin-poin penting tentang Empat adaptasi klasik. :: • Hypertrophy = peningkatan ukuran sel
+- [Adaptasi Sel — Empat Pola Utama] Sebutkan empat adaptasi klasik pada Adaptasi Sel — Empat Pola Utama. :: • Hypertrophy = peningkatan ukuran sel
   • Hyperplasia = peningkatan jumlah sel
   • Atrophy = penurunan ukuran sel, kadang disertai penurunan jumlah sel
   • Metaplasia = perubahan reversibel satu tipe sel matur menjadi tipe sel matur lain yang lebih tahan terhadap stres
-- [Hypertrophy vs Hyperplasia] Sebutkan poin-poin penting tentang Pattern soal. :: • Organ membesar karena sel makin besar → hypertrophy
+- [Hypertrophy vs Hyperplasia] Sebutkan hal-hal penting tentang Pattern soal. :: • Organ membesar karena sel makin besar → hypertrophy
   • Jaringan membesar karena jumlah sel bertambah → hyperplasia
 - [Metaplasia] Sebutkan contoh klasik pada Metaplasia. :: • Smoker’s bronchus: ciliated columnar epithelium → stratified squamous epithelium
   • Barrett esophagus: stratified squamous epithelium esofagus → intestinal-type columnar epithelium akibat chronic GERD
@@ -616,28 +614,24 @@ J. Acute pancreatitis dengan chalky deposits → fat necrosis.
   • Respiratory failure
   • Anemia
   • Carbon monoxide poisoning
-- [Reactive Oxygen Species (ROS)] Sebutkan poin-poin penting tentang ROS penting. :: • Superoxide anion O₂•⁻
+- [Reactive Oxygen Species (ROS)] Sebutkan ROS penting pada Reactive Oxygen Species. :: • Superoxide anion O₂•⁻
   • Hydrogen peroxide H₂O₂
   • Hydroxyl radical •OH
-- [Reversible Cell Injury] Sebutkan poin-poin penting tentang Dua pola morfologi utama. :: • Cellular swelling / hydropic change
+- [Reversible Cell Injury] Sebutkan dua pola morfologi utama pada Reversible Cell Injury. :: • Cellular swelling / hydropic change
   • Fatty change, terutama pada liver dan myocardium
-- [Hydropic Change] Sebutkan poin-poin penting tentang Light microscopy. :: • Sel membesar
+- [Hydropic Change] Sebutkan hal-hal penting tentang Light microscopy. :: • Sel membesar
   • Sitoplasma pucat
   • Vakuola jernih kecil
-- [Necrosis — Perubahan Nukleus] Sebutkan urutan klasik perubahan nukleus pada necrosis pada Necrosis — Perubahan Nukleus. :: • Pyknosis = nucleus mengecil, gelap, chromatin terkondensasi
-  • Karyorrhexis = nucleus terfragmentasi
-  • Karyolysis = basophilia nucleus menghilang karena DNA degradation
-- [Pola-Pola Necrosis] Sebutkan poin-poin penting tentang Liquefactive necrosis. :: • Enzymatic digestion dominan → jaringan cair
-  • Brain infarction dan bacterial/fungal abscess
-- [Pola-Pola Necrosis] Sebutkan poin-poin penting tentang Fat necrosis. :: • Enzymatic fat destruction + saponification
-  • Acute pancreatitis atau trauma pada fat
-- [Pola-Pola Necrosis] Sebutkan poin-poin penting tentang Gangrenous necrosis. :: • Istilah klinis, bukan pola histologis tersendiri
-  • Dry gangrene ≈ coagulative necrosis ekstremitas
-  • Wet gangrene = superimposed infection dengan liquefactive change
-- [Intracellular Accumulations] Sebutkan kategori utama pada Intracellular Accumulations. :: • Lipids
-  • Proteins
-  • Glycogen
-  • Pigments
+- [Irreversible Cell Injury — Point of No Return] Sebutkan dua perubahan penting yang menandai irreversible injury pada Irreversible Cell Injury — Point of No Return. :: • Ketidakmampuan membalikkan mitochondrial dysfunction
+  • Kerusakan berat membrane, terutama plasma membrane dan lysosomal membrane
+- [Pola-Pola Necrosis] Sebutkan hal-hal penting tentang Coagulative necrosis. :: • Architecture jaringan awalnya masih tampak
+  • Khas ischemic infarction solid organs selain brain
+- [Pola-Pola Necrosis] Sebutkan hal-hal penting tentang Caseous necrosis. :: • Debris granular friable seperti keju
+  • Khas tuberculosis dan beberapa granulomatous infections
+- [Pola-Pola Necrosis] Sebutkan hal-hal penting tentang Fibrinoid necrosis. :: • Bright eosinophilic deposition di dinding pembuluh
+  • Immune-mediated vascular injury atau severe hypertension tertentu
+- [Caspases] Sebutkan dua kelompok fungsional pada Caspases. :: • Initiator caspases: memulai cascade
+  • Executioner caspases: memecah cytoskeleton, nuclear proteins, dan cellular substrates
 - [Adaptasi Sel — Empat Pola Utama] Apa poin high-yield (pearl) tentang Adaptasi Sel — Empat Pola Utama? :: Adaptasi bukan berarti sel normal sepenuhnya. Adaptasi adalah keadaan baru yang memungkinkan sel bertahan di bawah tekanan tertentu.
 - [Hypertrophy] Apa poin high-yield (pearl) tentang Hypertrophy? :: Kardiomiosit tidak merespons peningkatan beban terutama dengan hyperplasia, tetapi dengan hypertrophy.
 - [Necrosis — Perubahan Nukleus] Bagaimana cara mengingat Necrosis — Perubahan Nukleus? :: Pyknotic = packed. Karyorrhexis = cracked. Karyolysis = lost.

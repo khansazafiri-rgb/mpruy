@@ -480,8 +480,6 @@ PaO₂ 90 pada room air berbeda maknanya dengan PaO₂ 90 pada FiO₂ 0.80.
 
 ## Flashcard {kartu}
 
-- [Parameter Utama pada ABG] Apa yang dimaksud dengan pH pada Parameter Utama pada ABG? :: Sekitar 7.35–7.45.
-- [Parameter Utama pada ABG] Apa yang dimaksud dengan PaCO₂ pada Parameter Utama pada ABG? :: Sekitar 35–45 mmHg.
 - [Parameter Utama pada ABG] Apa yang dimaksud dengan HCO₃⁻ pada Parameter Utama pada ABG? :: Sekitar 22–26 mEq/L.
 - [Parameter Utama pada ABG] Apa yang dimaksud dengan PaO₂ pada Parameter Utama pada ABG? :: Sangat dipengaruhi usia, FiO₂, ketinggian, dan kondisi paru.
 - [Parameter Utama pada ABG] Apa yang dimaksud dengan SaO₂ pada Parameter Utama pada ABG? :: Saturasi hemoglobin oleh oksigen.
@@ -501,13 +499,8 @@ PaO₂ 90 pada room air berbeda maknanya dengan PaO₂ 90 pada FiO₂ 0.80.
 - [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Acidemia + HCO₃⁻ ↓? :: Metabolic acidosis
 - [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Alkalemia + PaCO₂ ↓? :: Respiratory alkalosis
 - [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Alkalemia + HCO₃⁻ ↑? :: Metabolic alkalosis
-- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan Winter: expected PaCO₂ pada Interpretasi Analisis Gas Darah? :: 1.5 × HCO₃⁻ + 8 ±2
 - [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: PaCO₂ di atas Winter expected? :: Additional respiratory acidosis
 - [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: PaCO₂ di bawah Winter expected? :: Additional respiratory alkalosis
-- [Interpretasi Analisis Gas Darah] Apa yang perlu diketahui tentang Acute respiratory acidosis pada Interpretasi Analisis Gas Darah? :: HCO₃⁻ ↑ ~1 per PaCO₂ +10
-- [Interpretasi Analisis Gas Darah] Apa yang perlu diketahui tentang Chronic respiratory acidosis pada Interpretasi Analisis Gas Darah? :: HCO₃⁻ ↑ ~3.5–4 per +10
-- [Interpretasi Analisis Gas Darah] Apa yang perlu diketahui tentang Acute respiratory alkalosis pada Interpretasi Analisis Gas Darah? :: HCO₃⁻ ↓ ~2 per PaCO₂ −10
-- [Interpretasi Analisis Gas Darah] Apa yang perlu diketahui tentang Chronic respiratory alkalosis pada Interpretasi Analisis Gas Darah? :: HCO₃⁻ ↓ ~4–5 per −10
 - [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan GOLD MARK pada Interpretasi Analisis Gas Darah? :: Penyebab penting HAGMA
 - [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan Lactic acidosis dan DKA pada Interpretasi Analisis Gas Darah? :: HAGMA penting
 - [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan RTA pada Interpretasi Analisis Gas Darah? :: Penyebab renal NAGMA
@@ -527,7 +520,7 @@ PaO₂ 90 pada room air berbeda maknanya dengan PaO₂ 90 pada FiO₂ 0.80.
   • Bila anion gap meningkat, pertimbangkan delta ratio
   • Nilai PaO₂/oksigenasi secara terpisah
   • Integrasikan dengan elektrolit, laktat, keton, fungsi ginjal, dan klinis
-- [Langkah 2 — Tentukan Gangguan Primer] Sebutkan poin-poin penting tentang Empat gangguan primer. :: • Metabolic acidosis: pH ↓, HCO₃⁻ ↓
+- [Langkah 2 — Tentukan Gangguan Primer] Sebutkan hal-hal penting tentang Empat gangguan primer. :: • Metabolic acidosis: pH ↓, HCO₃⁻ ↓
   • Metabolic alkalosis: pH ↑, HCO₃⁻ ↑
   • Respiratory acidosis: pH ↓, PaCO₂ ↑
   • Respiratory alkalosis: pH ↑, PaCO₂ ↓

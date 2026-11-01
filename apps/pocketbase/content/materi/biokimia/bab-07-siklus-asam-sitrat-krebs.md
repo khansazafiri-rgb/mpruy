@@ -588,7 +588,7 @@ Siklus TCA berlangsung terutama di matriks mitokondria dan mengoksidasi acetyl-C
 - [Anaplerosis] Pada Anaplerosis, apa enzimnya? :: Pyruvate carboxylase.
 - [Mnemonic Produk Energi] Jelaskan: Mulai dari isocitrate. :: NADH → NADH → GTP → FADH₂ → — → NADH.
 - [Mnemonic Produk Energi] Jelaskan Urutan enzim penghasil energi dalam konteks Mnemonic Produk Energi. :: Isocitrate DH → α-KGDH → Succinyl-CoA synthetase → Succinate DH → Malate DH.
-- [Lima Kofaktor PDH] Sebutkan poin-poin penting tentang Lima kofaktor klasik PDH. :: • TPP (thiamine pyrophosphate; vitamin B1)
+- [Lima Kofaktor PDH] Sebutkan lima kofaktor klasik PDH pada Lima Kofaktor PDH. :: • TPP (thiamine pyrophosphate; vitamin B1)
   • Lipoic acid/lipoamide
   • CoA (berasal dari vitamin B5)
   • FAD (vitamin B2)
@@ -596,16 +596,14 @@ Siklus TCA berlangsung terutama di matriks mitokondria dan mengoksidasi acetyl-C
 - [Reaksi 3 — Isocitrate Dehydrogenase] Sebutkan produk penting pada Reaksi 3 — Isocitrate Dehydrogenase. :: • 1 NADH
   • 1 CO₂
   • Α-ketoglutarate (5C)
-- [Reaksi 6 — Succinate Dehydrogenase] Sebutkan poin-poin penting tentang Poin high-yield. :: • Satu-satunya enzim TCA yang berada di membran dalam mitokondria
+- [Reaksi 6 — Succinate Dehydrogenase] Sebutkan poin high-yield pada Reaksi 6 — Succinate Dehydrogenase. :: • Satu-satunya enzim TCA yang berada di membran dalam mitokondria
   • Merupakan Kompleks II ETC
   • Menghasilkan FADH₂
   • Tidak memompa proton ketika berfungsi sebagai Kompleks II
 - [Tiga Titik Regulasi Utama TCA] Sebutkan enzim regulasi utama pada Tiga Titik Regulasi Utama TCA. :: • Citrate synthase
   • Isocitrate dehydrogenase
   • Α-ketoglutarate dehydrogenase
-- [Propionyl-CoA → Succinyl-CoA] Sebutkan poin-poin penting tentang Tahapan penting membutuhkan. :: • Biotin pada propionyl-CoA carboxylase
-  • Vitamin B12 pada methylmalonyl-CoA mutase
-- [Succinate Dehydrogenase: Jembatan TCA–ETC] Sebutkan poin-poin penting tentang Succinate dehydrogenase unik karena merupakan. :: • Enzim siklus TCA
+- [Succinate Dehydrogenase: Jembatan TCA–ETC] Sebutkan hal-hal penting tentang Succinate dehydrogenase unik karena merupakan. :: • Enzim siklus TCA
   • Kompleks II rantai transpor elektron
 - [Malonate] Bagaimana cara mengingat Malonate? :: Malonate blocks succinate dehydrogenase.
 - [Mnemonic Urutan Intermediate] Bagaimana cara mengingat Mnemonic Urutan Intermediate? :: Can I Keep Selling Sex For Money, Officer?

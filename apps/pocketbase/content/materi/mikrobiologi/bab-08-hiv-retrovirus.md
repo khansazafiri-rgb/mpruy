@@ -440,19 +440,14 @@ Acute infection → viral load sangat tinggi, CD4 turun sementara → clinical l
 
 ## Flashcard {kartu}
 
-- [Big Picture] Apa yang dimaksud dengan Peta cepat pada Big Picture? :: HIV masuk → gp120 bind CD4 + CCR5/CXCR4 → gp41 fusion → RNA dilepas → reverse transcription → DNA virus → integration → provirus → transkripsi/translasi → assembly → budding → protease-mediated maturation.
+- [Big Picture] Apa yang dimaksud dengan Peta cepat pada HIV & Retrovirus? :: HIV masuk → gp120 bind CD4 + CCR5/CXCR4 → gp41 fusion → RNA dilepas → reverse transcription → DNA virus → integration → provirus → transkripsi/translasi → assembly → budding → protease-mediated maturation.
 - [Klasifikasi & Genom HIV] Jelaskan Genom. :: Dua salinan ssRNA (+) yang identik/diploid.
 - [Klasifikasi & Genom HIV] Apa yang dimaksud dengan Baltimore group pada Klasifikasi & Genom HIV? :: Group VI, +ssRNA-RT.
 - [Urutan Marker Dini] Apa yang dimaksud dengan Hafalan pada Urutan Marker Dini? :: RNA → p24 → antibody.
-- [HIV & Retrovirus] Apa yang perlu diketahui tentang Coreceptor pada HIV & Retrovirus? :: CCR5/CXCR4
-- [HIV & Retrovirus] Apa yang perlu diketahui tentang Reverse transcription pada HIV & Retrovirus? :: Reverse transcriptase
-- [HIV & Retrovirus] Apa yang perlu diketahui tentang Integration pada HIV & Retrovirus? :: Integrase
-- [HIV & Retrovirus] Apa yang perlu diketahui tentang Maturation pada HIV & Retrovirus? :: Protease
 - [HIV & Retrovirus] Apa yang dimaksud dengan HIV pada HIV & Retrovirus? :: Lentivirus, Retroviridae, enveloped +ssRNA virus dengan RT, integrase, protease
 - [HIV & Retrovirus] Apa jawaban atau kesimpulan untuk petunjuk berikut: RT tidak punya proofreading baik? :: Mutasi tinggi; HIV juga berekombinasi, tetapi tidak reassortment
 - [HIV & Retrovirus] Apa yang perlu diketahui tentang Acute HIV pada HIV & Retrovirus? :: Viremia tinggi, flu-like, sangat infeksius
 - [HIV & Retrovirus] Apa yang perlu diketahui tentang Clinical latency pada HIV & Retrovirus? :: Asimtomatik tetapi virus tetap bereplikasi dan CD4 turun perlahan
-- [HIV & Retrovirus] Apa yang perlu diketahui tentang AIDS pada HIV & Retrovirus? :: CD4 <200 dengan risiko IO/keganasan
 - [HIV & Retrovirus] Apa diagnosis dini pada HIV & Retrovirus? :: HIV RNA paling awal, lalu p24, lalu antibody
 - [HIV & Retrovirus] Apa yang dimaksud dengan PrEP, PEP, PMTCT, VCT/PITC, dan prevention behavior? :: Strategi pencegahan utama
 - [Gen Utama HIV] Sebutkan tiga gen utama pada Gen Utama HIV. :: • Gag → structural proteins, termasuk p17 dan p24
@@ -486,7 +481,7 @@ Acute infection → viral load sangat tinggi, CD4 turun sementara → clinical l
 - [Urutan Marker Dini] Sebutkan urutan atau langkah pada Urutan Marker Dini? :: • HIV RNA muncul paling awal, sekitar fase sangat awal setelah pajanan
   • Antigen p24 muncul setelahnya
   • Antibodi muncul lebih lambat
-- [NRTI] Sebutkan poin-poin penting tentang Nucleoside/nucleotide reverse transcriptase inhibitor. :: • Menghambat reverse transcriptase
+- [NRTI] Sebutkan hal-hal penting tentang Nucleoside/nucleotide reverse transcriptase inhibitor. :: • Menghambat reverse transcriptase
   • Menyebabkan chain termination
 - [NRTI] Sebutkan contoh yang disebut pada NRTI. :: • Zidovudine
   • Lamivudine
@@ -496,7 +491,7 @@ Acute infection → viral load sangat tinggi, CD4 turun sementara → clinical l
   • L74V → terkait didanosine/abacavir
   • Y181C → terkait NNRTI
   • Q151M → multi-NRTI resistance
-- [Prevention] Sebutkan poin-poin penting tentang Strategi pencegahan. :: • ABCDE: abstinence, be faithful, condom, drug/avoid needle sharing, education
+- [Prevention] Sebutkan hal-hal penting tentang Strategi pencegahan. :: • ABCDE: abstinence, be faithful, condom, drug/avoid needle sharing, education
   • PMTCT = prevention of mother-to-child transmission
   • VCT/PITC
   • PrEP = pre-exposure prophylaxis

@@ -319,7 +319,6 @@ Hipertensi dijelaskan melalui peningkatan cardiac output dan/atau TPR dengan per
 - [Non-DHP] Pada Non-DHP (Calcium Channel Blocker (CCB)), apa kontraindikasinya? :: HFrEF serta AV block derajat 2 atau 3.
 - [Non-DHP] Pada Non-DHP (Calcium Channel Blocker (CCB)), apa efek sampingnya? :: Bradikardia dan konstipasi, terutama verapamil.
 - [Obat Kardiovaskular: Antihipertensi] Apa yang dimaksud dengan SNS dan RAAS pada Obat Kardiovaskular: Antihipertensi? :: Dua sistem penting pada patofisiologi
-- [Obat Kardiovaskular: Antihipertensi] Apa yang perlu diketahui tentang Empat kelas lini pertama pada Obat Kardiovaskular: Antihipertensi? :: ACE-I, ARB, CCB, thiazide
 - [Obat Kardiovaskular: Antihipertensi] Apa yang perlu diingat tentang Amlodipin/nifedipin pada Obat Kardiovaskular: Antihipertensi? :: Vasodilatasi perifer
 - [Kelas Lini Pertama dan Algoritma Terapi] Sebutkan empat kelas lini pertama pada Kelas Lini Pertama dan Algoritma Terapi. :: • ACE inhibitor (ACE-I)
   • Angiotensin receptor blocker (ARB)
@@ -328,15 +327,15 @@ Hipertensi dijelaskan melalui peningkatan cardiac output dan/atau TPR dengan per
 - [Kelas Lini Pertama dan Algoritma Terapi] Sebutkan urutan atau langkah pada Kelas Lini Pertama dan Algoritma Terapi? :: • Stage 1 → inisiasi satu obat lini pertama, kecuali ada compelling indication tertentu seperti diabetes atau CKD yang diarahkan ke ACE-I/ARB
   • Stage 2 → inisiasi kombinasi dua obat dari kelas berbeda, misalnya ACE-I + CCB atau ARB + thiazide
   • Jangan mengombinasikan ACE-I dan ARB bersamaan
-- [ACE Inhibitor (ACE-I)] Sebutkan contoh obat pada ACE Inhibitor (ACE-I). :: • Captopril
+- [ACE Inhibitor (ACE-I)] Sebutkan contoh obat pada ACE Inhibitor. :: • Captopril
   • Lisinopril
   • Ramipril
   • Enalapril
-- [Mekanisme] Sebutkan efek samping utama pada ACE Inhibitor (ACE-I). :: • Batuk kering akibat akumulasi bradikinin
+- [Mekanisme] Sebutkan efek samping utama pada ACE Inhibitor. :: • Batuk kering akibat akumulasi bradikinin
   • Hiperkalemia
   • Hipotensi ortostatik
   • Angioedema
-- [Indikasi] Sebutkan efek samping pada Angiotensin Receptor Blocker (ARB). :: • Hiperkalemia
+- [Indikasi] Sebutkan efek samping pada Angiotensin Receptor Blocker. :: • Hiperkalemia
   • Pusing
   • Gangguan fungsi ginjal
   • Batuk/angioedema disebut jauh lebih jarang dibanding ACE-I
@@ -344,15 +343,15 @@ Hipertensi dijelaskan melalui peningkatan cardiac output dan/atau TPR dengan per
   • Hiponatremia
   • Hiperurisemia
   • Hiperglikemia
-- [Posisi terapi] Sebutkan efek samping pada Posisi terapi (Beta-Blocker dalam Hipertensi). :: • Bradikardia
+- [Posisi terapi] Sebutkan efek samping pada Beta-Blocker dalam Hipertensi. :: • Bradikardia
   • Bronkospasme
   • Fatigue
   • Dapat menyamarkan gejala hipoglikemia pada diabetes, kecuali berkeringat
-- [Cara Membaca Soal Antihipertensi] Sebutkan urutan atau langkah pada Cara Membaca Soal Antihipertensi? :: • Identifikasi apakah pasien hipertensi tanpa komplikasi atau memiliki compelling indication
+- [Cara Membaca Soal Antihipertensi] Sebutkan urutan atau langkah pada Obat Kardiovaskular: Antihipertensi? :: • Identifikasi apakah pasien hipertensi tanpa komplikasi atau memiliki compelling indication
   • Tentukan kelas obat yang sedang ditanyakan dari mekanisme atau efek sampingnya
   • Cari petunjuk spesifik: batuk kering, edema perifer, hipokalemia, bradikardia, gout, kehamilan, atau gangguan ginjal
   • Cocokkan dengan monitoring yang tepat
   • Periksa kombinasi obat; ACE-I + ARB adalah kombinasi yang secara eksplisit dilarang
 - [Definisi dan Patofisiologi Hipertensi] Apa poin high-yield (pearl) tentang Definisi dan Patofisiologi Hipertensi? :: Kalau stem meminta “mekanisme dasar hipertensi”, pikirkan dua jalur besar: peningkatan cardiac output dan/atau peningkatan TPR, dengan peran SNS dan RAAS.
-- [Mekanisme] Apa korelasi klinis dari ACE Inhibitor (ACE-I)? :: Captopril disebut sebaiknya diminum saat perut kosong, sekitar satu jam sebelum makan. Bila pasien mengalami batuk kering berat, disarankan mengganti ke golongan ARB.
+- [Mekanisme] Apa korelasi klinis dari ACE Inhibitor? :: Captopril disebut sebaiknya diminum saat perut kosong, sekitar satu jam sebelum makan. Bila pasien mengalami batuk kering berat, disarankan mengganti ke golongan ARB.
 - [Clinical pearl] Apa poin high-yield (pearl) tentang Clinical pearl (Angiotensin Receptor Blocker (ARB))? :: ACE-I + batuk kering → pikirkan akumulasi bradikinin. Jika pertanyaan meminta alternatif dengan efek batuk lebih minimal, jawabannya adalah ARB.

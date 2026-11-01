@@ -609,45 +609,34 @@ REGENERATION membutuhkan proliferative cells + ECM scaffold yang relatif utuh. B
 - [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan Infection pada Penyembuhan Luka & Regenerasi? :: Faktor lokal terpenting yang menunda healing
 - [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan Dehiscence pada Penyembuhan Luka & Regenerasi? :: Wound reopening
 - [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan Contracture pada Penyembuhan Luka & Regenerasi? :: Excessive contraction, klasik setelah burn
-- [Regenerasi vs Repair] Sebutkan poin-poin penting tentang Regeneration dominan bila. :: • Sel yang tersisa mampu membelah
+- [Regenerasi vs Repair] Sebutkan hal-hal penting tentang Regeneration dominan bila. :: • Sel yang tersisa mampu membelah
   • Stem/progenitor cells tersedia
   • ECM scaffold masih relatif utuh
-- [Regenerasi vs Repair] Sebutkan poin-poin penting tentang Repair dengan scar dominan bila. :: • Jaringan tersusun dari permanent cells
+- [Regenerasi vs Repair] Sebutkan hal-hal penting tentang Repair dengan scar dominan bila. :: • Jaringan tersusun dari permanent cells
   • Injury luas atau berulang
   • ECM rusak berat
   • Terdapat necrosis yang menghancurkan arsitektur jaringan
-- [Tiga Kategori Proliferasi Sel] Sebutkan poin-poin penting tentang Stable cells. :: • Biasanya quiescent di G0, tetapi dapat masuk kembali ke cell cycle setelah stimulasi
-  • Contoh: hepatocytes, renal tubular cells, endothelial cells, fibroblasts, smooth muscle cells
-- [Tiga Kategori Proliferasi Sel] Sebutkan poin-poin penting tentang Permanent cells. :: • Terminally differentiated dan hampir tidak mampu bereplikasi
+- [Tiga Kategori Proliferasi Sel] Sebutkan hal-hal penting tentang Labile cells. :: • Terus membelah sepanjang hidup
+  • Contoh: epidermis, epitel GI, epitel serviks, bone marrow hematopoietic cells
+- [Tiga Kategori Proliferasi Sel] Sebutkan hal-hal penting tentang Permanent cells. :: • Terminally differentiated dan hampir tidak mampu bereplikasi
   • Contoh utama: neurons dan cardiomyocytes
-- [Extracellular Matrix — Kenapa Penting?] Sebutkan poin-poin penting tentang ECM mengatur. :: • Cell adhesion
-  • Migration
-  • Proliferation
-  • Differentiation
-  • Tissue polarity
-  • Sequestration dan presentation growth factors
+- [Stem Cells & Progenitor Cells] Sebutkan contoh penting pada Stem Cells & Progenitor Cells. :: • Intestinal crypt stem cells
+  • Basal cells epidermis
+  • Hematopoietic stem cells di bone marrow
+  • Hepatic progenitor cells pada keadaan tertentu
 - [Extracellular Matrix — Kenapa Penting?] Sebutkan komponen utama pada Extracellular Matrix — Kenapa Penting?. :: • Collagen
   • Elastin
   • Proteoglycans dan hyaluronan
   • Adhesive glycoproteins seperti fibronectin dan laminin
-- [Interstitial Matrix vs Basement Membrane] Sebutkan poin-poin penting tentang Basement membrane. :: • Berada di bawah epitel dan mengelilingi beberapa sel seperti muscle/adipocyte
+- [Interstitial Matrix vs Basement Membrane] Sebutkan hal-hal penting tentang Interstitial matrix. :: • Berada di antara sel connective tissue
+  • Kaya collagen fibrillar, elastin, fibronectin, proteoglycans
+- [Interstitial Matrix vs Basement Membrane] Sebutkan hal-hal penting tentang Basement membrane. :: • Berada di bawah epitel dan mengelilingi beberapa sel seperti muscle/adipocyte
   • Terutama mengandung type IV collagen dan laminin
-- [Angiogenesis] Sebutkan urutan atau langkah pada Angiogenesis? :: • Vasodilation dan peningkatan permeability
-  • Detachment pericytes
-  • Degradation basement membrane
-  • Migration endothelial cells
-  • Proliferation endothelial cells
-  • Pembentukan capillary tube
-  • Recruitment pericytes/smooth muscle
-  • Maturation pembuluh
-- [Collagen Synthesis] Sebutkan poin-poin penting tentang Sintesis collagen melibatkan. :: • Sintesis preprocollagen
-  • Hydroxylation proline dan lysine
-  • Glycosylation
-  • Pembentukan triple helix procollagen
-  • Secretion
-  • Cleavage extracellular menjadi tropocollagen
-  • Cross-linking membentuk fibrils
-- [Fase Hemostasis] Sebutkan poin-poin penting tentang Peristiwa utama. :: • Vasoconstriction singkat
+- [Granulation Tissue] Sebutkan hal-hal penting tentang Gross appearance. :: • Merah muda/merah
+  • Lunak
+  • Granular
+  • Mudah berdarah karena banyak kapiler baru
+- [Fase Hemostasis] Sebutkan peristiwa utama pada Fase Hemostasis. :: • Vasoconstriction singkat
   • Platelet adhesion dan aggregation
   • Fibrin clot formation
 - [Faktor Lokal yang Mengganggu Healing] Sebutkan faktor lokal terpenting pada Faktor Lokal yang Mengganggu Healing. :: • Infection — penyebab paling penting delayed healing
