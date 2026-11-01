@@ -979,24 +979,24 @@ effective circulating volume ↓ → renal perfusion/NaCl delivery ↓ + sympath
 - [Aliran Darah Ginjal] Apa yang dimaksud dengan Keunikan pada Aliran Darah Ginjal? :: Glomerular capillaries berada di antara dua arteriol.
 - [Empat Proses Dasar Renal] Apa yang dimaksud dengan Filtration pada Empat Proses Dasar Renal? :: Plasma → Bowman space.
 - [Empat Proses Dasar Renal] Apa yang dimaksud dengan Secretion pada Empat Proses Dasar Renal? :: Blood → tubular lumen.
-- [Filtered Load] Jelaskan Filtered load zat X. :: Filtered loadₓ = GFR × Pₓ.
-- [Filtered Load] Apa yang dimaksud dengan Contoh konseptual pada Filtered Load? :: Jika plasma glucose meningkat, filtered glucose load juga meningkat selama GFR relatif tetap.
+- [Filtered Load] Jelaskan Filtered load zat X (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: Filtered loadₓ = GFR × Pₓ.
+- [Filtered Load] Apa yang dimaksud dengan Contoh konseptual pada Filtered Load (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi)? :: Jika plasma glucose meningkat, filtered glucose load juga meningkat selama GFR relatif tetap.
 - [Konstriksi Arteriol Eferen] Jelaskan Severe efferent constriction dalam konteks Konstriksi Arteriol Eferen. :: RBF turun berat dan oncotic pressure glomerulus meningkat sepanjang kapiler sehingga GFR akhirnya dapat menurun.
-- [Transcellular vs Paracellular] Jelaskan Transcellular. :: Zat melewati apical membrane → cytoplasm → basolateral membrane.
-- [Transcellular vs Paracellular] Jelaskan Paracellular. :: Zat bergerak di antara sel melalui tight-junction pathway.
+- [Transcellular vs Paracellular] Jelaskan Transcellular pada Transcellular vs Paracellular (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: Zat melewati apical membrane → cytoplasm → basolateral membrane.
+- [Transcellular vs Paracellular] Jelaskan Paracellular pada Transcellular vs Paracellular (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: Zat bergerak di antara sel melalui tight-junction pathway.
 - [Reabsorpsi Na⁺ di PCT] Apa yang dimaksud dengan Late PCT pada Reabsorpsi Na⁺ di PCT? :: Cl⁻ concentration lumen meningkat sehingga NaCl reabsorption menjadi lebih dominan, termasuk paracellular transport.
 - [Reabsorpsi Glucose: SGLT] Apa yang dimaksud dengan SGLT1 pada Reabsorpsi Glucose: SGLT? :: Lebih distal, high-affinity.
 - [Loop of Henle: Fungsi Besar] Apa yang dimaksud dengan Descending limb pada Loop of Henle: Fungsi Besar? :: Lebih water-permeable.
 - [Late Distal Tubule dan Collecting Duct] Apa yang dimaksud dengan Principal cells pada Late Distal Tubule dan Collecting Duct? :: Na⁺ reabsorption, K⁺ secretion, water reabsorption regulated by ADH.
-- [Countercurrent Multiplier] Pada Countercurrent Multiplier, apa hasilnya? :: Corticomedullary osmotic gradient.
-- [Osmolar Clearance] Jelaskan Osmolar clearance. :: Cosm = Uosm × V / Posm.
-- [Free-Water Clearance] Apa yang dimaksud dengan CH₂O negatif pada Free-Water Clearance? :: Ginjal menahan free water → urine concentrated.
+- [Countercurrent Multiplier] Pada Countercurrent Multiplier, apa hasilnya (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi)? :: Corticomedullary osmotic gradient.
+- [Osmolar Clearance] Jelaskan Osmolar clearance (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: Cosm = Uosm × V / Posm.
+- [Free-Water Clearance] Apa yang dimaksud dengan CH₂O negatif pada Free-Water Clearance (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi)? :: Ginjal menahan free water → urine concentrated.
 - [Volume Regulation: RAAS vs ANP] Jelaskan Volume atrial meningkat dalam konteks Volume Regulation: RAAS vs ANP. :: ANP/BNP pathways mendukung natriuresis dan menekan RAAS.
 - [Volume Regulation: RAAS vs ANP] Pada Volume Regulation: RAAS vs ANP, apa konsep besarnya? :: RAAS mempertahankan volume/pressure; natriuretic peptides membantu membuang excess Na⁺/volume.
 - [Renal Compensation pada Respiratory Disorders] Jelaskan Chronic respiratory alkalosis dalam konteks Renal Compensation pada Respiratory Disorders. :: Renal HCO₃⁻ excretion ↑.
 - [Diuretik: Peta Besar] Pada Diuretik: Peta Besar, apa urutan high-yieldnya? :: PCT → loop → DCT → collecting duct.
-- [Carbonic Anhydrase Inhibitor] Pada Carbonic Anhydrase Inhibitor, apa efeknya? :: HCO₃⁻ reabsorption ↓ → bicarbonaturia + mild natriuresis.
-- [Thiazide] Pada Thiazide, apa efeknya? :: Moderate natriuresis.
+- [Carbonic Anhydrase Inhibitor] Pada Carbonic Anhydrase Inhibitor, apa efeknya (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi)? :: HCO₃⁻ reabsorption ↓ → bicarbonaturia + mild natriuresis.
+- [Thiazide] Pada Thiazide, apa efeknya (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi)? :: Moderate natriuresis.
 - [Diuretic Exam Map] Apa yang dimaksud dengan PCT pada Diuretic Exam Map? :: Acetazolamide, mannitol.
 - [Diuretic Exam Map] Apa yang dimaksud dengan Collecting duct pada Diuretic Exam Map? :: Amiloride/triamterene → ENaC; spironolactone/eplerenone → aldosterone receptor; vaptan → V2 receptor.
 - [Common Calculation Patterns] Apa yang dimaksud dengan Net reabsorption pada Common Calculation Patterns? :: Filtered load − excretion rate, jika tidak ada secretion yang relevan.
@@ -1015,39 +1015,39 @@ effective circulating volume ↓ → renal perfusion/NaCl delivery ↓ + sympath
   • Sekresi renin dan erythropoietin
   • Aktivasi vitamin D
   • Gluconeogenesis pada kondisi tertentu
-- [Nefron Kortikal vs Juxtamedullary] Sebutkan hal-hal penting tentang Cortical nephron. :: • Mayoritas
+- [Nefron Kortikal vs Juxtamedullary] Sebutkan hal-hal penting tentang Cortical nephron pada Nefron Kortikal vs Juxtamedullary (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: • Mayoritas
   • Glomerulus lebih superfisial
   • Loop of Henle relatif pendek
   • Terutama kapiler peritubular
-- [Nefron Kortikal vs Juxtamedullary] Sebutkan hal-hal penting tentang Juxtamedullary nephron. :: • Jumlah lebih sedikit
+- [Nefron Kortikal vs Juxtamedullary] Sebutkan hal-hal penting tentang Juxtamedullary nephron pada Nefron Kortikal vs Juxtamedullary (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: • Jumlah lebih sedikit
   • Glomerulus dekat corticomedullary junction
   • Loop panjang ke medulla dalam
   • Berhubungan dengan vasa recta
   • Sangat penting untuk membentuk concentrated urine
-- [Konstriksi Arteriol Aferen] Sebutkan hal-hal penting tentang Afferent constriction. :: • Renal blood flow ↓
+- [Konstriksi Arteriol Aferen] Sebutkan hal-hal penting tentang Afferent constriction pada Konstriksi Arteriol Aferen (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: • Renal blood flow ↓
   • Glomerular capillary pressure ↓
   • GFR ↓
-- [Dilatasi Arteriol Aferen] Sebutkan hal-hal penting tentang Afferent dilation. :: • RBF ↑
+- [Dilatasi Arteriol Aferen] Sebutkan hal-hal penting tentang Afferent dilation pada Dilatasi Arteriol Aferen (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: • RBF ↑
   • Glomerular capillary pressure ↑
   • GFR cenderung ↑
-- [Konstriksi Arteriol Eferen] Sebutkan hal-hal penting tentang Mild–moderate efferent constriction. :: • RPF ↓
+- [Konstriksi Arteriol Eferen] Sebutkan hal-hal penting tentang Mild–moderate efferent constriction pada Konstriksi Arteriol Eferen. :: • RPF ↓
   • Glomerular capillary pressure ↑
   • GFR dapat dipertahankan atau meningkat
   • FF ↑
-- [Autoregulasi Ginjal] Sebutkan dua mekanisme utama pada Autoregulasi Ginjal. :: • Myogenic response
+- [Autoregulasi Ginjal] Sebutkan dua mekanisme utama pada Autoregulasi Ginjal (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: • Myogenic response
   • Tubuloglomerular feedback
-- [Juxtaglomerular Apparatus] Sebutkan hal-hal penting tentang JGA. :: • Macula densa
+- [Juxtaglomerular Apparatus] Sebutkan hal-hal penting tentang JGA pada Juxtaglomerular Apparatus (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: • Macula densa
   • Juxtaglomerular/granular cells
   • Extraglomerular mesangial cells
-- [Proximal Tubule: Overview] Sebutkan hal-hal penting tentang PCT mereabsorpsi kira-kira. :: • ~65% filtered Na⁺ dan water
+- [Proximal Tubule: Overview] Sebutkan hal-hal penting tentang PCT mereabsorpsi kira-kira pada Proximal Tubule: Overview. :: • ~65% filtered Na⁺ dan water
   • Sebagian besar HCO₃⁻
   • Hampir seluruh glucose dan amino acids dalam keadaan normal
   • Phosphate dan berbagai solut lain
 - [Thin Ascending Limb] Sebutkan hal-hal penting tentang Thin ascending limb. :: • Impermeabel terhadap water
   • NaCl dapat keluar secara pasif di bagian tertentu
-- [Regulasi ADH] Sebutkan hal-hal penting tentang ADH meningkat terutama ketika. :: • Plasma osmolality ↑
+- [Regulasi ADH] Sebutkan hal-hal penting tentang ADH meningkat terutama ketika pada Regulasi ADH (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: • Plasma osmolality ↑
   • Effective circulating volume turun bermakna
-- [Clinical Pattern: Aldosterone Excess vs Deficiency] Sebutkan hal-hal penting tentang Aldosterone excess. :: • Na⁺ retention/volume expansion
+- [Clinical Pattern: Aldosterone Excess vs Deficiency] Sebutkan hal-hal penting tentang Aldosterone excess pada Clinical Pattern: Aldosterone Excess vs Deficiency (Fisiologi Ginjal: Filtrasi, Reabsorpsi, Sekresi). :: • Na⁺ retention/volume expansion
   • Hypertension
   • Hypokalemia
   • Metabolic alkalosis tendency

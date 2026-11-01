@@ -330,33 +330,33 @@ Guillain–Barré syndrome:
 
 ## Flashcard {kartu}
 
-- [Diagnosis Tetanus] Apa yang dimaksud dengan CDC pada Diagnosis Tetanus? :: Tidak ada pemeriksaan laboratorium rutin yang dapat mengonfirmasi atau menyingkirkan tetanus secara definitif. Riwayat luka dan pola klinis lebih penting.
+- [Diagnosis Tetanus] Apa yang dimaksud dengan CDC pada Diagnosis Tetanus (Tetanus & Infeksi Neuromuskular)? :: Tidak ada pemeriksaan laboratorium rutin yang dapat mengonfirmasi atau menyingkirkan tetanus secara definitif. Riwayat luka dan pola klinis lebih penting.
 - [Netralisasi toksin bebas] Apa yang dimaksud dengan CDC pada Netralisasi toksin bebas? :: Human tetanus immune globulin (TIG) diberikan untuk menetralkan toksin yang belum berikatan dengan ujung saraf. CDC menyebut dosis terapi 500 IU IM sebagai dosis yang direkomendasikan oleh ahli. TIG tidak dapat membalikkan toksin yang sudah terikat pada saraf.
 - [Hilangkan sumber toksin] Apa yang dimaksud dengan Contoh antibiotik pada Hilangkan sumber toksin? :: Penicillin, tetracycline, dan clindamycin. Pemilihan regimen klinis aktual mengikuti protokol setempat.
 - [Mengapa Pasien Tetanus Tetap Harus Divaksin?] Apa yang dimaksud dengan CDC pada Mengapa Pasien Tetanus Tetap Harus Divaksin? :: Vaksin tetanus toxoid-containing tetap dimulai atau dilanjutkan ketika kondisi pasien stabil.
-- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Luka tusuk + trismus + spasme? :: Tetanus
+- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Luka tusuk + trismus + spasme pada Tetanus & Infeksi Neuromuskular? :: Tetanus
 - [Tetanus & Infeksi Neuromuskular] Apa yang perlu diingat tentang Risus sardonicus pada Tetanus & Infeksi Neuromuskular? :: Disinhibisi motorik akibat tetanospasmin
 - [Tetanus & Infeksi Neuromuskular] Apa yang perlu diingat tentang Opisthotonus setelah luka pada Tetanus & Infeksi Neuromuskular? :: Generalized tetanus
-- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Bayi dengan spasme setelah perawatan tali pusat tidak steril? :: Neonatal tetanus
+- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Bayi dengan spasme setelah perawatan tali pusat tidak steril pada Tetanus & Infeksi Neuromuskular? :: Neonatal tetanus
 - [Tetanus & Infeksi Neuromuskular] Apa yang perlu diingat tentang Tetanus aktif pada Tetanus & Infeksi Neuromuskular? :: TIG digunakan untuk toksin bebas, bukan membalikkan toksin yang sudah terikat saraf
-- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dirty wound + seri vaksin tidak lengkap? :: Vaksin + TIG profilaksis
+- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dirty wound + seri vaksin tidak lengkap pada Tetanus & Infeksi Neuromuskular? :: Vaksin + TIG profilaksis
 - [Tetanus & Infeksi Neuromuskular] Apa yang perlu diingat tentang Botulism dicurigai kuat pada Tetanus & Infeksi Neuromuskular? :: Antitoksin segera, jangan tunggu konfirmasi lab
-- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Botulism + respiratory weakness? :: Monitoring ventilasi dan airway adalah prioritas
-- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Antibiotik setelah luka hanya untuk “mencegah tetanus”? :: Bukan strategi profilaksis tetanus; vaksin/TIG + wound care yang menentukan
-- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Spora C. tetani terminal? :: Drumstick appearance
+- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Botulism + respiratory weakness pada Tetanus & Infeksi Neuromuskular? :: Monitoring ventilasi dan airway adalah prioritas
+- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Antibiotik setelah luka hanya untuk “mencegah tetanus” pada Tetanus & Infeksi Neuromuskular? :: Bukan strategi profilaksis tetanus; vaksin/TIG + wound care yang menentukan
+- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Spora C. tetani terminal pada Tetanus & Infeksi Neuromuskular? :: Drumstick appearance
 - [Tetanus & Infeksi Neuromuskular] Apa yang dimaksud dengan Neurotoksin utama pada Tetanus & Infeksi Neuromuskular? :: Tetanospasmin
 - [Tetanus & Infeksi Neuromuskular] Apa yang dimaksud dengan Trismus pada Tetanus & Infeksi Neuromuskular? :: Lockjaw
 - [Tetanus & Infeksi Neuromuskular] Apa yang dimaksud dengan Risus sardonicus pada Tetanus & Infeksi Neuromuskular? :: Spasme otot wajah khas
 - [Tetanus & Infeksi Neuromuskular] Apa yang dimaksud dengan Opisthotonus pada Tetanus & Infeksi Neuromuskular? :: Hiperekstensi punggung akibat spasme berat
 - [Tetanus & Infeksi Neuromuskular] Apa yang dimaksud dengan Tetanus pada Tetanus & Infeksi Neuromuskular? :: Medical emergency
-- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dirty/major wound + seri lengkap? :: Booster bila ≥5 tahun
-- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dirty wound + riwayat vaksin tidak lengkap/tidak diketahui? :: Pertimbangkan TIG + vaksin
+- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dirty/major wound + seri lengkap pada Tetanus & Infeksi Neuromuskular? :: Booster bila ≥5 tahun
+- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dirty wound + riwayat vaksin tidak lengkap/tidak diketahui pada Tetanus & Infeksi Neuromuskular? :: Pertimbangkan TIG + vaksin
 - [Tetanus & Infeksi Neuromuskular] Apa yang dimaksud dengan Descending symmetric paralysis pada Tetanus & Infeksi Neuromuskular? :: Clue botulism
 - [Tetanus & Infeksi Neuromuskular] Apa yang perlu diingat tentang Suspected botulism pada Tetanus & Infeksi Neuromuskular? :: Antitoxin sesegera mungkin, jangan menunggu konfirmasi laboratorium
-- [Tetanus & Infeksi Neuromuskular] Apa yang dimaksud dengan Trismus, risus sardonicus, opisthotonus? :: Tanda klasik
+- [Tetanus & Infeksi Neuromuskular] Apa yang dimaksud dengan Trismus, risus sardonicus, opisthotonus pada Tetanus & Infeksi Neuromuskular? :: Tanda klasik
 - [Tetanus & Infeksi Neuromuskular] Apa terapi pada Tetanus & Infeksi Neuromuskular? :: TIG + wound care/debridement + antibiotik + kontrol spasme + airway
-- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Penyakit tetanus tidak memberi imunitas? :: Pasien tetap perlu vaksin
-- [Faktor Risiko dan Jalan Masuk] Sebutkan hal-hal penting tentang Beberapa konteks yang perlu diketahui. :: • Luka tusuk, termasuk tertusuk benda tajam
+- [Tetanus & Infeksi Neuromuskular] Apa jawaban atau kesimpulan untuk petunjuk berikut: Penyakit tetanus tidak memberi imunitas pada Tetanus & Infeksi Neuromuskular? :: Pasien tetap perlu vaksin
+- [Faktor Risiko dan Jalan Masuk] Sebutkan hal-hal penting tentang Beberapa konteks yang perlu diketahui pada Faktor Risiko dan Jalan Masuk. :: • Luka tusuk, termasuk tertusuk benda tajam
   • Luka bakar
   • Luka operasi
   • Luka traumatik
@@ -367,18 +367,12 @@ Guillain–Barré syndrome:
   • Trismus / lockjaw
   • Risus sardonicus
   • Opisthotonus
-- [Komplikasi yang Harus Diingat] Sebutkan komplikasi bukan hanya spasme otot pada Komplikasi yang Harus Diingat. :: • Laringospasme dan gangguan airway
-  • Gagal napas akibat spasme atau kelelahan otot
-  • Aspirasi
-  • Fraktur atau rhabdomyolysis akibat spasme berat
-  • Disfungsi otonom: fluktuasi tekanan darah, takikardia, aritmia, diaforesis
-  • Komplikasi imobilisasi dan ICU
 - [Profilaksis Tetanus pada Luka] Sebutkan urutan atau langkah pada Profilaksis Tetanus pada Luka? :: • Tentukan jenis luka: clean/minor atau dirty/major
   • Tentukan apakah primary vaccination series sudah lengkap
   • Hitung waktu sejak dosis terakhir
   • Tentukan perlu booster atau tidak
   • Tentukan apakah TIG profilaksis diperlukan
-- [Manifestasi Botulism] Sebutkan pola klasik pada Manifestasi Botulism. :: • Diplopia
+- [Manifestasi Botulism] Sebutkan pola klasik pada Manifestasi Botulism (Tetanus & Infeksi Neuromuskular). :: • Diplopia
   • Ptosis
   • Blurred vision
   • Dysarthria
@@ -392,11 +386,11 @@ Guillain–Barré syndrome:
   • Jangan menunggu hasil laboratorium bila kecurigaan klinis sedang–tinggi
   • Intubasi dan ventilasi mekanik bila fungsi respirasi menurun
   • Pada wound botulism, sumber luka juga harus ditangani
-- [Tetanus vs Botulism vs Myasthenia vs Guillain–Barré] Sebutkan hal-hal penting tentang Myasthenia gravis. :: • Fatigable weakness
+- [Tetanus vs Botulism vs Myasthenia vs Guillain–Barré] Sebutkan hal-hal penting tentang Myasthenia gravis pada Tetanus vs Botulism vs Myasthenia vs Guillain–Barré (Tetanus & Infeksi Neuromuskular). :: • Fatigable weakness
   • Ocular/bulbar dominan
   • Sensorik normal
   • Tanpa demam dan tanpa riwayat toksin khas
-- [Tetanus vs Botulism vs Myasthenia vs Guillain–Barré] Sebutkan hal-hal penting tentang Guillain–Barré syndrome. :: • Ascending weakness lebih klasik
+- [Tetanus vs Botulism vs Myasthenia vs Guillain–Barré] Sebutkan hal-hal penting tentang Guillain–Barré syndrome pada Tetanus vs Botulism vs Myasthenia vs Guillain–Barré (Tetanus & Infeksi Neuromuskular). :: • Ascending weakness lebih klasik
   • Areflexia
   • Dapat disertai gangguan otonom
   • Tidak menyebabkan trismus atau risus sardonicus

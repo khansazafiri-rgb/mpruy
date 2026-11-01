@@ -518,12 +518,12 @@ Gunakan urutan:
 
 - [Peta Besar Sistem Digestif] Apa yang dimaksud dengan Hollow tract pada Histologi Sistem Digestif & Kelenjar Aksesoris? :: Oral cavity → pharynx → esophagus → stomach → small intestine → large intestine → anal canal.
 - [Peta Besar Sistem Digestif] Jelaskan Accessory organs utama dalam konteks Histologi Sistem Digestif & Kelenjar Aksesoris. :: Salivary glands, pancreas, liver, dan gallbladder.
-- [Tongue dan Lingual Papillae] Apa yang dimaksud dengan Praktikum clue pada Tongue dan Lingual Papillae? :: Skeletal muscle multidirectional + papillae = tongue.
-- [Esophagus] Apa yang dimaksud dengan middle third pada Esophagus? :: Mixed skeletal + smooth muscle
+- [Tongue dan Lingual Papillae] Pada Tongue dan Lingual Papillae, apa praktikum cluenya? :: Skeletal muscle multidirectional + papillae = tongue.
+- [Esophagus] Apa yang dimaksud dengan middle third pada Esophagus (Histologi Sistem Digestif & Kelenjar Aksesoris)? :: Mixed skeletal + smooth muscle
 - [Large Intestine / Colon] Apa yang dimaksud dengan Muscularis externa pada Large Intestine / Colon? :: Inner circular kontinu, outer longitudinal terkumpul menjadi taeniae coli pada sebagian besar colon.
 - [Salivary Glands: Organisasi Umum] Apa yang dimaksud dengan Duct system pada Salivary Glands: Organisasi Umum? :: Acinus → intercalated duct → striated duct → interlobular/excretory duct.
-- [Exocrine Pancreas] Apa yang dimaksud dengan Duct sequence pada Exocrine Pancreas? :: Centroacinar/intercalated → intralobular → interlobular ducts.
-- [Arah Blood Flow versus Bile Flow] Jelaskan Blood flow. :: Portal triad branches → sinusoids → central vein.
+- [Exocrine Pancreas] Apa yang dimaksud dengan Duct sequence pada Exocrine Pancreas (Histologi Sistem Digestif & Kelenjar Aksesoris)? :: Centroacinar/intercalated → intralobular → interlobular ducts.
+- [Arah Blood Flow versus Bile Flow] Jelaskan Blood flow pada Arah Blood Flow versus Bile Flow (Histologi Sistem Digestif & Kelenjar Aksesoris). :: Portal triad branches → sinusoids → central vein.
 - [Arah Blood Flow versus Bile Flow] Jelaskan Bile flow berlawanan arah dalam konteks Arah Blood Flow versus Bile Flow. :: Hepatocytes → bile canaliculi → canals of Hering → bile ductules/ducts di portal area.
 - [Histologi Sistem Digestif & Kelenjar Aksesoris] Apa yang dimaksud dengan GI wall pada Histologi Sistem Digestif & Kelenjar Aksesoris? :: Mucosa → submucosa → muscularis externa → serosa/adventitia
 - [Histologi Sistem Digestif & Kelenjar Aksesoris] Apa yang dimaksud dengan Esophagus pada Histologi Sistem Digestif & Kelenjar Aksesoris? :: Stratified squamous + submucosal glands
@@ -543,7 +543,7 @@ Gunakan urutan:
 - [Histologi Sistem Digestif & Kelenjar Aksesoris] Apa yang dimaksud dengan Hepatic artery branch pada Histologi Sistem Digestif & Kelenjar Aksesoris? :: Smaller muscular wall
 - [Histologi Sistem Digestif & Kelenjar Aksesoris] Apa yang dimaksud dengan Bile duct pada Histologi Sistem Digestif & Kelenjar Aksesoris? :: Cuboidal lining
 - [Histologi Sistem Digestif & Kelenjar Aksesoris] Apa yang dimaksud dengan Gallbladder pada Histologi Sistem Digestif & Kelenjar Aksesoris? :: Folded simple columnar mucosa + no muscularis mucosae + no submucosa
-- [Esophagus] Sebutkan hal-hal penting tentang Muscularis externa berubah sepanjang esophagus. :: • Upper third: skeletal muscle
+- [Esophagus] Sebutkan hal-hal penting tentang Muscularis externa berubah sepanjang esophagus (Histologi Sistem Digestif & Kelenjar Aksesoris). :: • Upper third: skeletal muscle
   • Middle third: mixed skeletal + smooth muscle
   • Lower third: smooth muscle
 - [Fundus dan Body Stomach] Sebutkan cell types utama pada Fundus dan Body Stomach. :: • Surface mucous cells
@@ -556,7 +556,7 @@ Gunakan urutan:
   • Alpha cells → glucagon
   • Delta cells → somatostatin
   • PP cells → pancreatic polypeptide
-- [Portal Triad] Sebutkan portal area klasik berisi cabang pada Portal Triad. :: • Portal vein — lumen paling besar, dinding relatif tipis
+- [Portal Triad] Sebutkan portal area klasik berisi cabang pada Portal Triad (Histologi Sistem Digestif & Kelenjar Aksesoris). :: • Portal vein — lumen paling besar, dinding relatif tipis
   • Hepatic artery — lebih kecil, dinding muscular lebih tebal
   • Bile duct — dilapisi simple cuboidal epithelium
 - [Strategi Identifikasi Preparat Digestif] Sebutkan urutan atau langkah pada Strategi Identifikasi Preparat Digestif? :: • Tentukan apakah hollow organ atau solid glandular organ
@@ -566,12 +566,12 @@ Gunakan urutan:
   • Cari special clue: Brunner glands, Peyer patches, taeniae, submucosal esophageal glands
   • Jika glandular, nilai serous/mucous pattern, duct system, islets, lobules, portal triads, atau sinusoids
 - [Enteric Nervous System] Apa poin high-yield (pearl) tentang Enteric Nervous System? :: Meissner = submucosa; Auerbach = antara circular dan longitudinal muscularis externa.
-- [Gastroesophageal Junction] Apa korelasi klinis dari Gastroesophageal Junction? :: Chronic gastroesophageal reflux dapat menyebabkan Barrett metaplasia, yaitu replacement epitel squamous distal esophagus oleh columnar epithelium dengan intestinal-type differentiation.
+- [Gastroesophageal Junction] Apa korelasi klinis dari Gastroesophageal Junction (Histologi Sistem Digestif & Kelenjar Aksesoris)? :: Chronic gastroesophageal reflux dapat menyebabkan Barrett metaplasia, yaitu replacement epitel squamous distal esophagus oleh columnar epithelium dengan intestinal-type differentiation.
 - [Enterocytes dan Goblet Cells] Apa clue praktikum untuk Enterocytes dan Goblet Cells? :: Villus + simple columnar brush border + goblet cells = small intestine.
-- [Duodenum] Apa clue praktikum untuk Duodenum? :: Villi + submucosal Brunner glands = duodenum.
+- [Duodenum] Apa clue praktikum untuk Duodenum (Histologi Sistem Digestif & Kelenjar Aksesoris)? :: Villi + submucosal Brunner glands = duodenum.
 - [Ileum dan Peyer Patches] Apa clue praktikum untuk Ileum dan Peyer Patches? :: Villi + large lymphoid aggregates = ileum.
 - [Large Intestine / Colon] Apa clue praktikum untuk Large Intestine / Colon? :: No villi + straight packed crypts + many goblet cells = colon.
-- [Parotid Gland] Apa clue praktikum untuk Parotid Gland? :: Pure serous + banyak ducts + adipose = parotid.
-- [Sublingual Gland] Apa clue praktikum untuk Sublingual Gland? :: Predominantly pale mucous units = sublingual.
-- [Portal Triad] Apa poin high-yield (pearl) tentang Portal Triad? :: Jangan cari tepat tiga struktur saja; “portal triad” adalah konsep, portal tract dapat memiliki lebih dari tiga profiles.
+- [Parotid Gland] Apa clue praktikum untuk Parotid Gland (Histologi Sistem Digestif & Kelenjar Aksesoris)? :: Pure serous + banyak ducts + adipose = parotid.
+- [Sublingual Gland] Apa clue praktikum untuk Sublingual Gland (Histologi Sistem Digestif & Kelenjar Aksesoris)? :: Predominantly pale mucous units = sublingual.
+- [Portal Triad] Apa poin high-yield (pearl) tentang Portal Triad (Histologi Sistem Digestif & Kelenjar Aksesoris)? :: Jangan cari tepat tiga struktur saja; “portal triad” adalah konsep, portal tract dapat memiliki lebih dari tiga profiles.
 - [Hepatic Acinus dan Zonation] Apa korelasi klinis dari Hepatic Acinus dan Zonation? :: Zone 3 lebih rentan terhadap ischemic injury dan sejumlah toxic injuries; zone 1 lebih awal terpapar substances dari portal circulation.

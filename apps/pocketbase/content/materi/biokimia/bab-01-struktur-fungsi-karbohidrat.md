@@ -265,12 +265,12 @@ Karbohidrat dibagi menjadi monosakarida, disakarida, oligosakarida, dan polisaka
 
 - [Gugus Fungsi Monosakarida] Apa yang dimaksud dengan Aldehid pada Gugus Fungsi Monosakarida? :: Mengandung gugus -CHO.
 - [Gugus Fungsi Monosakarida] Apa yang dimaksud dengan Keton pada Gugus Fungsi Monosakarida? :: Mengandung gugus C=O.
-- [Karbohidrat Kompleks] Jelaskan Contoh penting dalam materi dalam konteks Karbohidrat Kompleks. :: Glikogen, amilosa, dan amilopektin.
-- [SGLT-1] Pada SGLT-1, apa mekanismenya? :: Transport aktif sekunder bersama Na+.
-- [GLUT-5] Pada GLUT-5, apa mekanismenya? :: Difusi terfasilitasi.
-- [GLUT-2] Pada GLUT-2, apa mekanismenya? :: Difusi terfasilitasi.
+- [Karbohidrat Kompleks] Jelaskan Contoh penting dalam materi dalam konteks Karbohidrat Kompleks (Struktur & Fungsi Karbohidrat). :: Glikogen, amilosa, dan amilopektin.
+- [SGLT-1] Pada SGLT-1, apa mekanismenya (Struktur & Fungsi Karbohidrat)? :: Transport aktif sekunder bersama Na+.
+- [GLUT-5] Pada GLUT-5, apa mekanismenya (Struktur & Fungsi Karbohidrat)? :: Difusi terfasilitasi.
+- [GLUT-2] Pada GLUT-2, apa mekanismenya (Struktur & Fungsi Karbohidrat)? :: Difusi terfasilitasi.
 - [Master Flow Absorpsi Monosakarida] Apa yang dimaksud dengan Lumen usus pada Master Flow Absorpsi Monosakarida? :: Glukosa/Galaktosa → SGLT-1 + Na+ → enterosit.
-- [Monosakarida Penting] Sebutkan hal-hal penting tentang Empat monosakarida. :: • Glukosa
+- [Monosakarida Penting] Sebutkan hal-hal penting tentang Empat monosakarida pada Monosakarida Penting (Struktur & Fungsi Karbohidrat). :: • Glukosa
   • Ribosa
   • Fruktosa
   • Galaktosa
@@ -278,6 +278,6 @@ Karbohidrat dibagi menjadi monosakarida, disakarida, oligosakarida, dan polisaka
   • Keton: mengandung gugus C=O
 - [Straight Chain vs Branch Point] Sebutkan cara cepat membaca struktur pada Straight Chain vs Branch Point. :: • Rantai lurus → pikirkan ikatan α1→4
   • Titik cabang → pikirkan ikatan α1→6
-- [Sukrosa] Bagaimana cara mengingat Sukrosa? :: “sukrosa mengandung buah” → fruktosa.
-- [Laktosa] Bagaimana cara mengingat Laktosa? :: “laktosa = susu = Milky Way = galaksi” → galaktosa.
-- [Maltosa] Bagaimana cara mengingat Maltosa? :: “Maltwins” → anak kembar → dua glukosa.
+- [Sukrosa] Bagaimana cara mengingat Sukrosa (Struktur & Fungsi Karbohidrat)? :: “sukrosa mengandung buah” → fruktosa.
+- [Laktosa] Bagaimana cara mengingat Laktosa (Struktur & Fungsi Karbohidrat)? :: “laktosa = susu = Milky Way = galaksi” → galaktosa.
+- [Maltosa] Bagaimana cara mengingat Maltosa (Struktur & Fungsi Karbohidrat)? :: “Maltwins” → anak kembar → dua glukosa.

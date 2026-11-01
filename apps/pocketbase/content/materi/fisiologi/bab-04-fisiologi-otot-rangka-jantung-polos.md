@@ -445,19 +445,19 @@ T-tubule depolarization → DHP/CaV1.1 voltage sensor → RyR1 opens → SR Ca2+
 - [Clinical Correlation NMJ] Apa yang dimaksud dengan Botulinum toxin pada Clinical Correlation NMJ? :: Menghambat vesicular ACh release → flaccid paralysis.
 - [Clinical Correlation NMJ] Jelaskan Nondepolarizing neuromuscular blockers dalam konteks Clinical Correlation NMJ. :: Menghambat nicotinic Nm receptor secara kompetitif.
 - [Organisasi Skeletal Muscle] Apa yang dimaksud dengan Hierarki pada Organisasi Skeletal Muscle? :: Whole muscle → fascicle → muscle fiber → myofibril → sarcomere → myofilaments.
-- [Motor Unit] Jelaskan Small motor units. :: Kontrol halus, misalnya otot mata/tangan.
-- [Motor Unit] Jelaskan Large motor units. :: Menghasilkan force besar, kontrol lebih kasar.
-- [Motor-Unit Recruitment dan Size Principle] Jelaskan Size principle. :: Motor units kecil, low-threshold, fatigue-resistant direkrut terlebih dahulu; unit lebih besar direkrut ketika kebutuhan force meningkat.
-- [Length–Tension Relationship] Apa yang dimaksud dengan Terlalu pendek pada Length–Tension Relationship? :: Thin filaments saling overlap berlebihan dan geometry menjadi tidak optimal.
-- [Length–Tension Relationship] Apa yang dimaksud dengan Terlalu panjang pada Length–Tension Relationship? :: Overlap actin–myosin berkurang sehingga active force turun.
-- [Isometric vs Isotonic Contraction] Jelaskan Isometric. :: Muscle length relatif tetap sementara tension berubah.
-- [Isometric vs Isotonic Contraction] Jelaskan Isotonic. :: Muscle length berubah terhadap load yang relatif konstan dalam model sederhana.
+- [Motor Unit] Jelaskan Small motor units (Fisiologi Otot Rangka, Jantung, Polos). :: Kontrol halus, misalnya otot mata/tangan.
+- [Motor Unit] Jelaskan Large motor units (Fisiologi Otot Rangka, Jantung, Polos). :: Menghasilkan force besar, kontrol lebih kasar.
+- [Motor-Unit Recruitment dan Size Principle] Jelaskan Size principle pada Motor-Unit Recruitment dan Size Principle (Fisiologi Otot Rangka, Jantung, Polos). :: Motor units kecil, low-threshold, fatigue-resistant direkrut terlebih dahulu; unit lebih besar direkrut ketika kebutuhan force meningkat.
+- [Length–Tension Relationship] Apa yang dimaksud dengan Terlalu pendek pada Length–Tension Relationship (Fisiologi Otot Rangka, Jantung, Polos)? :: Thin filaments saling overlap berlebihan dan geometry menjadi tidak optimal.
+- [Length–Tension Relationship] Apa yang dimaksud dengan Terlalu panjang pada Length–Tension Relationship (Fisiologi Otot Rangka, Jantung, Polos)? :: Overlap actin–myosin berkurang sehingga active force turun.
+- [Isometric vs Isotonic Contraction] Jelaskan Isometric pada Isometric vs Isotonic Contraction (Fisiologi Otot Rangka, Jantung, Polos). :: Muscle length relatif tetap sementara tension berubah.
+- [Isometric vs Isotonic Contraction] Jelaskan Isotonic pada Isometric vs Isotonic Contraction (Fisiologi Otot Rangka, Jantung, Polos). :: Muscle length berubah terhadap load yang relatif konstan dalam model sederhana.
 - [Isometric vs Isotonic Contraction] Apa yang dimaksud dengan Eccentric pada Isometric vs Isotonic Contraction? :: Muscle aktif sambil memanjang.
-- [Phosphocreatine System] Jelaskan Creatine kinase memfasilitasi dalam konteks Phosphocreatine System. :: Phosphocreatine + ADP + H+ ⇌ creatine + ATP.
+- [Phosphocreatine System] Jelaskan Creatine kinase memfasilitasi dalam konteks Phosphocreatine System (Fisiologi Otot Rangka, Jantung, Polos). :: Phosphocreatine + ADP + H+ ⇌ creatine + ATP.
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Action potential pada Fisiologi Otot Rangka, Jantung, Polos? :: Threshold, all-or-none, regenerative, nondecremental
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang NMJ pada Fisiologi Otot Rangka, Jantung, Polos? :: AP nerve → Ca2+ presynaptic → ACh → Nm → EPP → muscle AP
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Skeletal EC coupling pada Fisiologi Otot Rangka, Jantung, Polos? :: T-tubule → DHP/CaV1.1 → RyR1 → SR Ca2+ → TnC
-- [Fisiologi Otot Rangka, Jantung, Polos] Apa jawaban atau kesimpulan untuk petunjuk berikut: Cardiac: L-type Ca2+ influx? :: CICR dari SR
+- [Fisiologi Otot Rangka, Jantung, Polos] Apa jawaban atau kesimpulan untuk petunjuk berikut: Cardiac: L-type Ca2+ influx pada Fisiologi Otot Rangka, Jantung, Polos? :: CICR dari SR
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang ATP pada Fisiologi Otot Rangka, Jantung, Polos? :: Detach myosin, recock head, SERCA, maintain gradients
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Whole-muscle force pada Fisiologi Otot Rangka, Jantung, Polos? :: Frequency summation + motor-unit recruitment
 - [Fisiologi Otot Rangka, Jantung, Polos] Apa yang dimaksud dengan Type I pada Fisiologi Otot Rangka, Jantung, Polos? :: Endurance
@@ -471,21 +471,21 @@ T-tubule depolarization → DHP/CaV1.1 voltage sensor → RyR1 opens → SR Ca2+
   • Net Na+ influx menghasilkan end-plate potential
   • Jika threshold tercapai, muscle action potential terbentuk
   • Action potential menyebar di sarcolemma dan T-tubules
-- [Organisasi Skeletal Muscle] Sebutkan hal-hal penting tentang Connective tissue. :: • Epimysium: seluruh muscle
+- [Organisasi Skeletal Muscle] Sebutkan hal-hal penting tentang Connective tissue pada Organisasi Skeletal Muscle (Fisiologi Otot Rangka, Jantung, Polos). :: • Epimysium: seluruh muscle
   • Perimysium: fascicle
   • Endomysium: individual fiber
-- [Cross-Bridge Cycle] Sebutkan urutan atau langkah pada Cross-Bridge Cycle? :: • Myosin head “cocked” dengan ADP + Pi
+- [Cross-Bridge Cycle] Sebutkan urutan atau langkah pada Cross-Bridge Cycle (Fisiologi Otot Rangka, Jantung, Polos)? :: • Myosin head “cocked” dengan ADP + Pi
   • Myosin binds exposed actin site
   • Pi release memperkuat binding dan memicu power stroke
   • ADP dilepas
   • ATP binds myosin → myosin lepas dari actin
   • ATP dihidrolisis → head kembali cocked
-- [Muscle Fatigue] Sebutkan penyebab multifaktorial pada Muscle Fatigue. :: • Perubahan metabolit
+- [Muscle Fatigue] Sebutkan penyebab multifaktorial pada Muscle Fatigue (Fisiologi Otot Rangka, Jantung, Polos). :: • Perubahan metabolit
   • Keterbatasan substrate/energy
   • Perubahan ion gradients
   • Gangguan excitation–contraction coupling
   • Central fatigue
-- [Cardiac Muscle: Perbedaan Utama] Sebutkan hal-hal penting tentang Cardiac muscle. :: • Striated
+- [Cardiac Muscle: Perbedaan Utama] Sebutkan hal-hal penting tentang Cardiac muscle pada Cardiac Muscle: Perbedaan Utama (Fisiologi Otot Rangka, Jantung, Polos). :: • Striated
   • Sel bercabang, biasanya satu nucleus
   • Intercalated discs
   • Gap junctions menghasilkan electrical coupling

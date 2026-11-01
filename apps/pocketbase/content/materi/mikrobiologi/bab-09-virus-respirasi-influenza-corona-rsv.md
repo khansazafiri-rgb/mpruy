@@ -590,7 +590,7 @@ Respiratory virus case → bayi + wheezing + syncytia? → RSV → demam tinggi 
 
 - [Big Picture: Cara Membedakan Virus Respirasi] Apa yang dimaksud dengan Influenza virus pada Virus Respirasi (Influenza, Corona, RSV)? :: Orthomyxoviridae, enveloped, (−)ssRNA, genome segmented; high-yield pada HA/NA, antigenic drift vs shift, dan influenza A sebagai tipe yang dapat mengalami shift.
 - [Big Picture: Cara Membedakan Virus Respirasi] Apa yang dimaksud dengan Coronavirus pada Virus Respirasi (Influenza, Corona, RSV)? :: Enveloped (+)ssRNA dengan genome RNA besar; spike protein menentukan attachment dan receptor tropism.
-- [Big Picture: Cara Membedakan Virus Respirasi] Jelaskan RSV. :: Virus RNA ber-envelope yang sangat khas pada bayi dengan bronchiolitis, wheezing, dan pembentukan syncytia/multinucleated giant cells.
+- [Big Picture: Cara Membedakan Virus Respirasi] Jelaskan RSV pada Virus Respirasi (Influenza, Corona, RSV). :: Virus RNA ber-envelope yang sangat khas pada bayi dengan bronchiolitis, wheezing, dan pembentukan syncytia/multinucleated giant cells.
 - [Influenza — Identitas Dasar] Apa yang dimaksud dengan Genome pada Influenza — Identitas Dasar? :: Negative-sense single-stranded RNA, segmented.
 - [Influenza — Identitas Dasar] Apa yang dimaksud dengan Komponen penting pada Influenza — Identitas Dasar? :: Hemagglutinin (HA), neuraminidase (NA), M2 ion channel, M1 matrix, nucleoprotein (NP), dan RNA-dependent RNA polymerase complex.
 - [Influenza — Identitas Dasar] Pada Influenza — Identitas Dasar, apa transmisinya? :: Droplet, aerosol, dan fomite.
@@ -598,28 +598,28 @@ Respiratory virus case → bayi + wheezing + syncytia? → RSV → demam tinggi 
 - [Virus Respiratorik — Peta Genome Cepat] Apa yang dimaksud dengan Coronavirus pada Virus Respiratorik — Peta Genome Cepat? :: (+)ssRNA, enveloped.
 - [Virus Respiratorik — Peta Genome Cepat] Apa yang dimaksud dengan RSV pada Virus Respiratorik — Peta Genome Cepat? :: (−)ssRNA, enveloped.
 - [Virus Respiratorik — Peta Genome Cepat] Apa yang dimaksud dengan Adenovirus pada Virus Respiratorik — Peta Genome Cepat? :: DsDNA, naked — pembeda virus respiratorik bergenom DNA.
-- [Influenza] Apa yang dimaksud dengan Genom pada Influenza? :: Segmented negative-sense ssRNA.
-- [Influenza] Apa yang dimaksud dengan Replikasi pada Influenza? :: Unik di antara banyak virus RNA karena sebagian proses replikasi berlangsung di nukleus.
-- [Influenza] Pada Influenza, apa gambaran klinis khasnya? :: Onset mendadak, demam, menggigil, sakit kepala, myalgia, malaise, dan batuk.
-- [Influenza] Pada Influenza, apa diagnosisnya? :: NAAT/PCR paling sensitif; rapid antigen lebih cepat tetapi sensitivitas lebih rendah.
-- [Influenza] Pada Influenza, apa terapi spesifiknya? :: Neuraminidase inhibitor seperti oseltamivir, zanamivir, atau peramivir; baloxavir menghambat cap-dependent endonuclease pada pasien yang sesuai.
-- [Influenza] Pada Influenza, apa pencegahannya? :: Vaksin influenza tahunan dan pengendalian transmisi droplet/respiratory secretion.
-- [SARS-CoV-2] Apa yang dimaksud dengan Protein penting pada SARS-CoV-2? :: Spike (S) berikatan dengan ACE2 dan memfasilitasi entry virus.
-- [SARS-CoV-2] Pada SARS-CoV-2, apa gambaran klinisnya? :: Sangat bervariasi, dari asimtomatik dan infeksi saluran napas atas hingga pneumonia berat dan gagal napas.
-- [SARS-CoV-2] Pada SARS-CoV-2, apa diagnosisnya? :: NAAT/PCR atau antigen sesuai konteks klinis dan waktu penyakit.
-- [SARS-CoV-2] Pada SARS-CoV-2, apa pencegahannya? :: Vaksinasi terkini, ventilasi baik, kebersihan tangan, dan tindakan pengendalian transmisi sesuai tingkat risiko.
-- [RSV] Apa yang dimaksud dengan Genom pada RSV? :: Nonsegmented negative-sense ssRNA.
-- [RSV] Pada RSV, apa gambaran klinis khasnya? :: Bronkiolitis pada bayi; dapat pula menyebabkan pneumonia pada bayi, lansia, dan imunokompromais.
-- [RSV] Pada RSV, apa diagnosisnya? :: Klinis pada banyak kasus; NAAT/PCR bila diperlukan.
-- [RSV] Pada RSV, apa terapinya? :: Terutama suportif.
-- [RSV] Pada RSV, apa pencegahannya? :: Strategi imunisasi maternal, antibodi monoklonal untuk bayi, dan vaksin RSV pada kelompok dewasa yang sesuai.
-- [Superinfeksi Bakteri setelah Influenza] Jelaskan: Patogen klasik yang perlu diingat. :: Staphylococcus aureus, Streptococcus pneumoniae, dan Haemophilus influenzae.
+- [Influenza] Apa yang dimaksud dengan Genom pada Influenza (Virus Respirasi (Influenza, Corona, RSV))? :: Segmented negative-sense ssRNA.
+- [Influenza] Apa yang dimaksud dengan Replikasi pada Influenza (Virus Respirasi (Influenza, Corona, RSV))? :: Unik di antara banyak virus RNA karena sebagian proses replikasi berlangsung di nukleus.
+- [Influenza] Pada Influenza, apa gambaran klinis khasnya (Virus Respirasi (Influenza, Corona, RSV))? :: Onset mendadak, demam, menggigil, sakit kepala, myalgia, malaise, dan batuk.
+- [Influenza] Pada Influenza, apa diagnosisnya (Virus Respirasi (Influenza, Corona, RSV))? :: NAAT/PCR paling sensitif; rapid antigen lebih cepat tetapi sensitivitas lebih rendah.
+- [Influenza] Pada Influenza, apa terapi spesifiknya (Virus Respirasi (Influenza, Corona, RSV))? :: Neuraminidase inhibitor seperti oseltamivir, zanamivir, atau peramivir; baloxavir menghambat cap-dependent endonuclease pada pasien yang sesuai.
+- [Influenza] Pada Influenza, apa pencegahannya (Virus Respirasi (Influenza, Corona, RSV))? :: Vaksin influenza tahunan dan pengendalian transmisi droplet/respiratory secretion.
+- [SARS-CoV-2] Apa yang dimaksud dengan Protein penting pada SARS-CoV-2 (Virus Respirasi (Influenza, Corona, RSV))? :: Spike (S) berikatan dengan ACE2 dan memfasilitasi entry virus.
+- [SARS-CoV-2] Pada SARS-CoV-2, apa gambaran klinisnya (Virus Respirasi (Influenza, Corona, RSV))? :: Sangat bervariasi, dari asimtomatik dan infeksi saluran napas atas hingga pneumonia berat dan gagal napas.
+- [SARS-CoV-2] Pada SARS-CoV-2, apa diagnosisnya (Virus Respirasi (Influenza, Corona, RSV))? :: NAAT/PCR atau antigen sesuai konteks klinis dan waktu penyakit.
+- [SARS-CoV-2] Pada SARS-CoV-2, apa pencegahannya (Virus Respirasi (Influenza, Corona, RSV))? :: Vaksinasi terkini, ventilasi baik, kebersihan tangan, dan tindakan pengendalian transmisi sesuai tingkat risiko.
+- [RSV] Apa yang dimaksud dengan Genom pada RSV (Virus Respirasi (Influenza, Corona, RSV))? :: Nonsegmented negative-sense ssRNA.
+- [RSV] Pada RSV, apa gambaran klinis khasnya (Virus Respirasi (Influenza, Corona, RSV))? :: Bronkiolitis pada bayi; dapat pula menyebabkan pneumonia pada bayi, lansia, dan imunokompromais.
+- [RSV] Pada RSV, apa diagnosisnya (Virus Respirasi (Influenza, Corona, RSV))? :: Klinis pada banyak kasus; NAAT/PCR bila diperlukan.
+- [RSV] Pada RSV, apa terapinya (Virus Respirasi (Influenza, Corona, RSV))? :: Terutama suportif.
+- [RSV] Pada RSV, apa pencegahannya (Virus Respirasi (Influenza, Corona, RSV))? :: Strategi imunisasi maternal, antibodi monoklonal untuk bayi, dan vaksin RSV pada kelompok dewasa yang sesuai.
+- [Superinfeksi Bakteri setelah Influenza] Jelaskan: Patogen klasik yang perlu diingat pada Superinfeksi Bakteri setelah Influenza (Virus Respirasi (Influenza, Corona, RSV)). :: Staphylococcus aureus, Streptococcus pneumoniae, dan Haemophilus influenzae.
 - [Virus Respirasi (Influenza, Corona, RSV)] Apa yang perlu diingat tentang MERS-CoV pada Virus Respirasi (Influenza, Corona, RSV)? :: DPP4/CD26
 - [Virus Respirasi (Influenza, Corona, RSV)] Apa yang dimaksud dengan “Shift pada Virus Respirasi (Influenza, Corona, RSV)? :: Point mutation” → SALAH; itu drift
 - [Virus Respirasi (Influenza, Corona, RSV)] Apa yang dimaksud dengan “Drift pada Virus Respirasi (Influenza, Corona, RSV)? :: Reassortment” → SALAH; itu shift
-- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pandemic potential paling klasik? :: Influenza A
+- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pandemic potential paling klasik pada Virus Respirasi (Influenza, Corona, RSV)? :: Influenza A
 - [Virus Respirasi (Influenza, Corona, RSV)] Apa yang perlu diingat tentang H5N1 receptor pada Virus Respirasi (Influenza, Corona, RSV)? :: Α-2,3 sialic acid
-- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Human influenza receptor dominan? :: Α-2,6 sialic acid
+- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Human influenza receptor dominan pada Virus Respirasi (Influenza, Corona, RSV)? :: Α-2,6 sialic acid
 - [Virus Respirasi (Influenza, Corona, RSV)] Apa yang dimaksud dengan Rhinovirus pada Virus Respirasi (Influenza, Corona, RSV)? :: Common cold, naked (+)RNA, optimum sekitar 33°C
 - [Virus Respirasi (Influenza, Corona, RSV)] Apa yang dimaksud dengan Influenza pada Virus Respirasi (Influenza, Corona, RSV)? :: Orthomyxoviridae, enveloped (−)ssRNA, 8 segmen
 - [Virus Respirasi (Influenza, Corona, RSV)] Apa yang dimaksud dengan Babi pada Virus Respirasi (Influenza, Corona, RSV)? :: Mixing vessel karena mempunyai receptor α-2,3 dan α-2,6
@@ -627,12 +627,12 @@ Respiratory virus case → bayi + wheezing + syncytia? → RSV → demam tinggi 
 - [Virus Respirasi (Influenza, Corona, RSV)] Apa yang dimaksud dengan RSV pada Virus Respirasi (Influenza, Corona, RSV)? :: Bayi + bronchiolitis + wheezing + syncytia/multinucleated giant cells
 - [Virus Respirasi (Influenza, Corona, RSV)] Apa yang dimaksud dengan Antigenic drift pada Virus Respirasi (Influenza, Corona, RSV)? :: Akumulasi mutasi kecil → epidemi musiman dan kebutuhan pembaruan vaksin
 - [Virus Respirasi (Influenza, Corona, RSV)] Apa yang dimaksud dengan Antigenic shift pada Virus Respirasi (Influenza, Corona, RSV)? :: Reassortment segmen genom → perubahan besar antigenik; terutama relevan pada influenza A dan berpotensi memicu pandemi
-- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Bayi + bronkiolitis + wheezing? :: RSV adalah diagnosis penting
-- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Influenza berat/rawat inap/risiko tinggi? :: Antiviral sesegera mungkin; jangan menjadikan batas 48 jam sebagai alasan untuk tidak mengobati pasien yang memang membutuhkan terapi
-- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Bronkiolitis RSV tanpa komplikasi? :: Suportif; antibiotik, steroid, dan bronkodilator bukan terapi rutin
-- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: “HA Hugs, NA lets it Navigate away.”? :: HA menempel, NA membantu virion lepas
+- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Bayi + bronkiolitis + wheezing pada Virus Respirasi (Influenza, Corona, RSV)? :: RSV adalah diagnosis penting
+- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Influenza berat/rawat inap/risiko tinggi pada Virus Respirasi (Influenza, Corona, RSV)? :: Antiviral sesegera mungkin; jangan menjadikan batas 48 jam sebagai alasan untuk tidak mengobati pasien yang memang membutuhkan terapi
+- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Bronkiolitis RSV tanpa komplikasi pada Virus Respirasi (Influenza, Corona, RSV)? :: Suportif; antibiotik, steroid, dan bronkodilator bukan terapi rutin
+- [Virus Respirasi (Influenza, Corona, RSV)] Apa jawaban atau kesimpulan untuk petunjuk berikut: “HA Hugs, NA lets it Navigate away.” pada Virus Respirasi (Influenza, Corona, RSV)? :: HA menempel, NA membantu virion lepas
 - [Virus Respirasi (Influenza, Corona, RSV)] Apa yang dimaksud dengan “RSV F pada Virus Respirasi (Influenza, Corona, RSV)? :: Fusion.”
-- [Hemagglutinin (HA)] Sebutkan fungsi utama HA pada Hemagglutinin. :: • Mengikat receptor sialic acid pada permukaan sel host
+- [Hemagglutinin (HA)] Sebutkan fungsi utama HA pada Hemagglutinin (Virus Respirasi (Influenza, Corona, RSV)). :: • Mengikat receptor sialic acid pada permukaan sel host
   • Memediasi attachment
   • Berperan dalam fusion membrane setelah virus masuk melalui endocytosis
   • Menjadi antigen permukaan utama yang memicu neutralizing antibody
@@ -645,7 +645,7 @@ Respiratory virus case → bayi + wheezing + syncytia? → RSV → demam tinggi 
   • Epitel saluran napas babi memiliki receptor sialic acid α-2,3 dan α-2,6
   • Bila dua strain berbeda menginfeksi sel yang sama, segmen RNA dapat mengalami reassortment
   • Hasilnya dapat berupa subtype baru dengan antigenic shift
-- [Patogenesis Influenza] Sebutkan urutan atau langkah pada Patogenesis Influenza? :: • Virus terhirup melalui droplet/aerosol
+- [Patogenesis Influenza] Sebutkan urutan atau langkah pada Patogenesis Influenza (Virus Respirasi (Influenza, Corona, RSV))? :: • Virus terhirup melalui droplet/aerosol
   • HA menempel ke sialic acid
   • Virus masuk melalui endocytosis
   • Replikasi terutama mengenai epitel trakeobronkial
@@ -661,7 +661,7 @@ Respiratory virus case → bayi + wheezing + syncytia? → RSV → demam tinggi 
   • Viral genome + protein assembled
   • Virion budding
   • NA memotong sialic acid → release virion baru
-- [Diagnosis Influenza] Sebutkan hal-hal penting tentang Poin diagnosis. :: • Diagnosis dapat bersifat klinis
+- [Diagnosis Influenza] Sebutkan hal-hal penting tentang Poin diagnosis pada Diagnosis Influenza (Virus Respirasi (Influenza, Corona, RSV)). :: • Diagnosis dapat bersifat klinis
   • Metode molekuler RT-PCR adalah metode pilihan untuk konfirmasi dan typing/strain differentiation
   • Spesimen saluran napas: nasopharyngeal/throat swab; pada pneumonia berat dapat digunakan aspirat trakea/BAL
   • Kultur dapat menunjukkan hemadsorption/hemagglutination sebelum cytopathic effect, tetapi sifatnya tidak spesifik
@@ -671,8 +671,8 @@ Respiratory virus case → bayi + wheezing + syncytia? → RSV → demam tinggi 
 - [Target Antivirus Coronavirus — Konsep] Sebutkan target antivirus pada Target Antivirus Coronavirus — Konsep. :: • RNA-dependent RNA polymerase/RdRp sebagai target antivirus
   • Contoh historis: remdesivir/favipiravir
   • Karena coronavirus adalah RNA virus, opsi yang menyebut target “plasmid DNA” merupakan jebakan yang tidak sesuai
-- [Hemagglutinin (HA)] Apa poin high-yield (pearl) tentang Hemagglutinin? :: HA = “Hold/Attach” → menempel ke sialic acid.
-- [Neuraminidase (NA)] Apa poin high-yield (pearl) tentang Neuraminidase? :: NA = “New virion Away” → membantu pelepasan virion.
+- [Hemagglutinin (HA)] Apa poin high-yield (pearl) tentang Hemagglutinin (Virus Respirasi (Influenza, Corona, RSV))? :: HA = “Hold/Attach” → menempel ke sialic acid.
+- [Neuraminidase (NA)] Apa poin high-yield (pearl) tentang Neuraminidase (Virus Respirasi (Influenza, Corona, RSV))? :: NA = “New virion Away” → membantu pelepasan virion.
 - [M1, M2, NP, dan Polymerase] Apa jebakan yang sering muncul pada soal tentang M1, M2, NP, dan Polymerase? :: Influenza adalah salah satu virus RNA yang replikasinya memiliki tahap penting di NUCLEUS, bukan seluruhnya di sitoplasma.
 - [Babi sebagai “Mixing Vessel”] Apa poin high-yield (pearl) tentang Babi sebagai “Mixing Vessel”? :: Babi = mixing vessel karena mendukung kedua pola receptor sialic acid dan memungkinkan reassortment.
 - [Reseptor Sialic Acid] Apa jebakan yang sering muncul pada soal tentang Reseptor Sialic Acid? :: CCR5, CXCR4, dan CD4 adalah konsep HIV, BUKAN receptor influenza.

@@ -46,11 +46,11 @@ LIST_NOUN = re.compile(r'\b(jenis|tipe|macam|ciri|faktor|penyebab|langkah|urutan
                        r'komplikasi|manifestasi|fungsi|golongan|kelas|kelompok|klasifikasi|pemeriksaan|temuan|syarat|prinsip|kategori|subtipe|varian|pilihan|'
                        r'mekanisme|cara|metode|bagian|lapisan|struktur|otot|saraf|arteri|vena|cabang|nama|regio|organ|sel|jaringan|zona|fase|stadium|gen|enzim)\b', re.I)
 VERBISH = re.compile(r'\b(melakukan|terjadi|menyebabkan|dapat|akan|digunakan|memiliki|menghasilkan|berperan|bekerja|dibuat|menjadi|mengalami|bersifat|ditemukan|muncul|'
-                     r'diberikan|dipakai|dipilih|dibedakan|diingat|dihafal|dilakukan|membentuk|mengubah|mengaktifkan|menghambat|menurunkan|meningkatkan|mendapat|mendapatkan|melibatkan|mengandung|mengalir|berasal|bergantung|berhubungan|berkaitan|membutuhkan|memerlukan|menggunakan|mempunyai|terdiri|berupa|tergantung)\b', re.I)
+                     r'diberikan|dipakai|dipilih|dibedakan|diingat|dihafal|dilakukan|membentuk|mengubah|mengaktifkan|menghambat|menurunkan|meningkatkan|ditentukan|dibagi|diberi|digunakan|dilakukan|diukur|dihitung|dipakai|disebut|dihasilkan|dibentuk|diaktifkan|dihambat|diubah|bukan|hanya|mendapat|mendapatkan|melibatkan|mengandung|mengalir|berasal|bergantung|berhubungan|berkaitan|membutuhkan|memerlukan|menggunakan|mempunyai|terdiri|berupa|tergantung)\b', re.I)
 DIRECTION = re.compile(r'^(?:superior|inferior|medial|lateral|anterior|posterior|proksimal|distal|dorsal|ventral|kranial|kaudal)(?: [a-z]+)?$', re.I)
 ORDINAL = re.compile(r'^(?:contoh|poin|langkah|tahap|kasus|pola|butir|item|opsi|pilihan|skenario|vignette|soal|bagian|catatan|rumus|gambar|tabel|fase|step)\s*[\dIVX]+[a-z]?\b', re.I)
 VAGUE_H3 = re.compile(r'^(?:istilah|bidang|posisi|contoh|poin|ringkasan|catatan|konsep|komponen|ciri|tabel|daftar|bagian|jenis|tipe|klasifikasi|kelompok|golongan|pembagian|pola|urutan|langkah|rangkuman|perbandingan|detail|aplikasi|clinical application)\b', re.I)
-GENERIC_LEAD = re.compile(r'\b(penting|utama|terkait|klasik|high-yield|khas|umum|lain|tambahan|kaya|jangka|konseptual|pola|karakteristik|penanda|clinical use|regulasi|perbedaan|singkat)\b', re.I)
+GENERIC_LEAD = re.compile(r'\b(wajib|hafal|pasangan|penting|utama|terkait|klasik|high-yield|khas|umum|lain|tambahan|kaya|jangka|konseptual|pola|karakteristik|penanda|clinical use|regulasi|perbedaan|singkat)\b', re.I)
 BAD_TERM = re.compile(r'[:;?≠=→]|\.\s|\.$|^\d')
 GENERIC_TOPIC = re.compile(r'^(?:peta besar|big picture|ringkasan|sumber|konsep besar|gambaran besar|poin high-yield|pola kasus|jebakan|cara membaca|checklist|memory map|ikhtisar)\b', re.I)
 SKIP_SECTIONS = ('tujuan', 'praktikum', 'sumber', 'kartu')
@@ -139,12 +139,12 @@ def _is_prop(term):
     for p in PROPS:
         if t == p or (t.startswith(p + ' ') and n <= len(p.split()) + 1):
             return True
-    return n <= 3 and t.endswith('nya')
+    return n <= 3 and (t.split()[0].endswith('nya') or t.endswith(' clue'))
 
 
 def _clean_term(term):
     term = re.sub(r'^[-–•]\s+', '', term.strip()).rstrip(':')
-    term = re.sub(r'\s+yang\s+(?:disebutkan|dicantumkan|ditekankan|tertulis|dibahas)$', '', term)
+    term = re.sub(r'\s+yang\s+(?:disebutkan|dicantumkan|ditekankan|tertulis|dibahas|disebut)(?: (?:dalam|sumber|materi))?$', '', term)
     return re.sub(r'\s+(?:adalah|yaitu|ialah|meliputi|mencakup)$', '', term, flags=re.I)
 
 
@@ -155,6 +155,8 @@ def q_def(term, back, topic):
     words = len(term.split())
     same = topic and (topic.lower() == t_low or topic.lower() in t_low or t_low in topic.lower())
     if BAD_TERM.search(term) and not (' + ' in term or '→' in term):
+        return None
+    if re.search(r'\+\s*\+|\+\s*$|^\s*\+', term):
         return None
     if FRAG_START.match(term) or FRAG_END.search(term) or JUNK_TERM.match(term):
         return None          # potongan kalimat atau label sampah, bukan istilah
@@ -188,7 +190,7 @@ def q_hy(left, right, delim, topic):
         if n <= 3:
             return _ends_q(f'Apa yang perlu diingat tentang {left_c}' + (f' pada {topic}' if topic and len(topic) <= 60 else ''))
         return _ends_q(f'Apa jawaban atau kesimpulan untuk petunjuk berikut: {left_c}')
-    if delim in (' = ', ' adalah ', ': ') and BAD_TERM.search(left_c):
+    if delim in (' = ', ' adalah ', ': ') and (BAD_TERM.search(left_c) or re.search(r'\+\s*\+|\+\s*$|^\s*\+', left_c)):
         return None
     if delim in (' = ', ' adalah '):
         return _ends_q(f'Apa yang dimaksud dengan {left_c}' + (f' pada {topic}' if topic and len(topic) <= 60 and len(left_c) <= 30 else ''))
@@ -283,7 +285,7 @@ def make_cards(md, chapter=''):
             body = _plain(body)
             if len(body) < 30 or len(body) > 320:
                 continue
-            boxes.append((ctx, q_box(var, title, topic), _cap(body)))
+            boxes.append((ctx, q_box(var, title, topic), _cap(body), topic))
             continue
         if t not in ('li', 'p'):
             continue
@@ -294,7 +296,7 @@ def make_cards(md, chapter=''):
             if len(body) > 330:
                 body = re.split(r'(?<=[a-z]{3}[.!?])\s+(?=[A-Z])', body)[0]      # bukan singkatan seperti "m." atau "n."
             if 40 <= len(body) <= 330 and not body.endswith(':') and not re.match(r'^(Gambar|Lihat)\b', body, re.I):
-                heads.append(('', f'Jelaskan {_low(_topic(h2))}.' if len(_topic(h2).split()) > 1 else f'Apa yang dimaksud dengan {_topic(h2)}?', body))
+                heads.append(('', f'Jelaskan {_low(_topic(h2))}.' if len(_topic(h2).split()) > 1 else f'Apa yang dimaksud dengan {_topic(h2)}?', body, _topic(h2)))
         if kind == 'highyield':
             plain = _plain(text).rstrip(';')
             card = None
@@ -313,7 +315,7 @@ def make_cards(md, chapter=''):
             if card:
                 qh = q_hy(card[0], card[1], card[2], chapter)
                 if qh:
-                    hys.append((chapter or ctx, qh, _cap(card[1])))
+                    hys.append((chapter or ctx, qh, _cap(card[1]), chapter))
             continue
         m = re.match(r'^\*\*(.{2,70}?)\*\*:\s+(.{18,})$', text)
         if m:
@@ -326,7 +328,7 @@ def make_cards(md, chapter=''):
             if q and not _is_prop(_clean_term(term)) and len(back) < 20:
                 q = None                         # istilah non-sifat dengan jawaban sangat pendek terlalu samar
             if q:
-                defs.append((ctx, q, _cap(back.rstrip(',;'))))
+                defs.append((ctx, q, _cap(back.rstrip(',;')), topic or chapter))
             continue
         # kalimat pengantar + daftar
         if t == 'p' and text.endswith(':') and 12 <= len(text) <= 130 and text[0].isupper() or (t == 'p' and text.endswith('**:') and len(text) <= 130):
@@ -340,20 +342,40 @@ def make_cards(md, chapter=''):
             if 2 <= len(items) <= 9 and sum(map(len, items)) <= 420 and len(lead.split()) >= 2:
                 q, ok = q_list(lead, topic or chapter)
                 if ok and q:
-                    lists.append((ctx, _short(q, 160), '\n'.join('• ' + _cap(x) for x in items)))
+                    lists.append((ctx, _short(q, 160), '\n'.join('• ' + _cap(x) for x in items), topic or chapter))
     cards = []
     for group, key in ((defs, 'def'), (hys, 'hy'), (lists, 'list'), (boxes, 'box')):
         cards.extend(_spread(group, LIMITS[key]))
     if len(cards) < MIN_CARDS:
         cards.extend(_spread(heads, LIMITS['head']))
     seen, uniq = set(), []
-    for ctx, front, back in cards:
+    for ctx, front, back, topic in cards:
+        front = front if topic is None else with_context(front, topic, chapter)
         k = front.lower()
         if k in seen:
             continue
         seen.add(k)
         uniq.append((ctx, front, back))
     return uniq
+
+
+def with_context(front, topic, chapter):
+    """Pertanyaan harus bisa dipahami tanpa membaca catatan: sebut topik bagiannya, dan judul BAB (dalam kurung) bila topiknya pendek/umum."""
+    topic = (topic or '').strip()
+    low = front.lower()
+    in_text = bool(topic) and topic.lower() in low
+    short_topic = len(topic.split()) <= 2 or bool(GENERIC_TOPIC.match(topic)) or not topic
+    need_topic = bool(topic) and not in_text and len(topic) <= 80
+    need_chapter = bool(chapter) and chapter.lower() not in low and chapter.lower() != topic.lower() and (short_topic or not (need_topic or in_text) or len(front.split()) < 7)
+    if not need_topic and not need_chapter:
+        return front
+    end = front[-1] if front[-1] in '.?' else ''
+    base = front[:-1] if end else front
+    if need_topic:
+        base += f' pada {topic}'
+    if need_chapter:
+        base += f' ({chapter})'
+    return base + end
 
 
 def cards_md(cards):

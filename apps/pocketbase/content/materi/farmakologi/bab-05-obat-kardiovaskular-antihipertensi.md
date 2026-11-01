@@ -327,11 +327,11 @@ Hipertensi dijelaskan melalui peningkatan cardiac output dan/atau TPR dengan per
 - [Kelas Lini Pertama dan Algoritma Terapi] Sebutkan urutan atau langkah pada Kelas Lini Pertama dan Algoritma Terapi? :: • Stage 1 → inisiasi satu obat lini pertama, kecuali ada compelling indication tertentu seperti diabetes atau CKD yang diarahkan ke ACE-I/ARB
   • Stage 2 → inisiasi kombinasi dua obat dari kelas berbeda, misalnya ACE-I + CCB atau ARB + thiazide
   • Jangan mengombinasikan ACE-I dan ARB bersamaan
-- [ACE Inhibitor (ACE-I)] Sebutkan contoh obat pada ACE Inhibitor. :: • Captopril
+- [ACE Inhibitor (ACE-I)] Sebutkan contoh obat pada ACE Inhibitor (Obat Kardiovaskular: Antihipertensi). :: • Captopril
   • Lisinopril
   • Ramipril
   • Enalapril
-- [Mekanisme] Sebutkan efek samping utama pada ACE Inhibitor. :: • Batuk kering akibat akumulasi bradikinin
+- [Mekanisme] Sebutkan efek samping utama pada ACE Inhibitor (Obat Kardiovaskular: Antihipertensi). :: • Batuk kering akibat akumulasi bradikinin
   • Hiperkalemia
   • Hipotensi ortostatik
   • Angioedema
@@ -339,7 +339,7 @@ Hipertensi dijelaskan melalui peningkatan cardiac output dan/atau TPR dengan per
   • Pusing
   • Gangguan fungsi ginjal
   • Batuk/angioedema disebut jauh lebih jarang dibanding ACE-I
-- [Mekanisme] Sebutkan efek samping pada Diuretik Thiazide. :: • Hipokalemia
+- [Mekanisme] Sebutkan efek samping pada Diuretik Thiazide (Obat Kardiovaskular: Antihipertensi). :: • Hipokalemia
   • Hiponatremia
   • Hiperurisemia
   • Hiperglikemia
@@ -353,5 +353,5 @@ Hipertensi dijelaskan melalui peningkatan cardiac output dan/atau TPR dengan per
   • Cocokkan dengan monitoring yang tepat
   • Periksa kombinasi obat; ACE-I + ARB adalah kombinasi yang secara eksplisit dilarang
 - [Definisi dan Patofisiologi Hipertensi] Apa poin high-yield (pearl) tentang Definisi dan Patofisiologi Hipertensi? :: Kalau stem meminta “mekanisme dasar hipertensi”, pikirkan dua jalur besar: peningkatan cardiac output dan/atau peningkatan TPR, dengan peran SNS dan RAAS.
-- [Mekanisme] Apa korelasi klinis dari ACE Inhibitor? :: Captopril disebut sebaiknya diminum saat perut kosong, sekitar satu jam sebelum makan. Bila pasien mengalami batuk kering berat, disarankan mengganti ke golongan ARB.
+- [Mekanisme] Apa korelasi klinis dari ACE Inhibitor (Obat Kardiovaskular: Antihipertensi)? :: Captopril disebut sebaiknya diminum saat perut kosong, sekitar satu jam sebelum makan. Bila pasien mengalami batuk kering berat, disarankan mengganti ke golongan ARB.
 - [Clinical pearl] Apa poin high-yield (pearl) tentang Clinical pearl (Angiotensin Receptor Blocker (ARB))? :: ACE-I + batuk kering → pikirkan akumulasi bradikinin. Jika pertanyaan meminta alternatif dengan efek batuk lebih minimal, jawabannya adalah ARB.

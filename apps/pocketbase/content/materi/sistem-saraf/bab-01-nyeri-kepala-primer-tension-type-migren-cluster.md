@@ -367,22 +367,22 @@ Pola 8 — Red Flag
 
 - [Pendekatan Klinis Cepat pada Pasien Nyeri Kepala] Apa yang dimaksud dengan TTH pada Pendekatan Klinis Cepat pada Pasien Nyeri Kepala? :: 30 menit sampai 7 hari
 - [Pendekatan Klinis Cepat pada Pasien Nyeri Kepala] Apa yang dimaksud dengan migren pada Pendekatan Klinis Cepat pada Pasien Nyeri Kepala? :: 4–72 jam pada dewasa
-- [Klasifikasi Frekuensi ICHD-3] Jelaskan Infrequent episodic TTH dalam konteks Tension-Type Headache. :: <1 hari/bulan secara rata-rata (<12 hari/tahun).
-- [Klasifikasi Frekuensi ICHD-3] Jelaskan Frequent episodic TTH dalam konteks Tension-Type Headache. :: 1–14 hari/bulan selama >3 bulan.
-- [Klasifikasi Frekuensi ICHD-3] Apa yang dimaksud dengan Chronic TTH pada Tension-Type Headache? :: ≥15 hari/bulan selama >3 bulan.
+- [Klasifikasi Frekuensi ICHD-3] Jelaskan Infrequent episodic TTH dalam konteks Tension-Type Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster)). :: <1 hari/bulan secara rata-rata (<12 hari/tahun).
+- [Klasifikasi Frekuensi ICHD-3] Jelaskan Frequent episodic TTH dalam konteks Tension-Type Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster)). :: 1–14 hari/bulan selama >3 bulan.
+- [Klasifikasi Frekuensi ICHD-3] Apa yang dimaksud dengan Chronic TTH pada Tension-Type Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: ≥15 hari/bulan selama >3 bulan.
 - [Migren dengan Aura] Apa yang dimaksud dengan visual pada Migren dengan Aura? :: Kilatan, garis zig-zag, scintillating scotoma, atau area hilang penglihatan
 - [Migren dengan Aura] Apa yang dimaksud dengan sensorik pada Migren dengan Aura? :: Kesemutan yang dapat diikuti rasa baal
-- [Tension-Type Headache] Apa yang dimaksud dengan Kualitas pada Tension-Type Headache? :: Pressing/tightening.
-- [Tension-Type Headache] Apa yang dimaksud dengan Photo/phonophobia pada Tension-Type Headache? :: Maksimal salah satu.
-- [Tension-Type Headache] Apa yang dimaksud dengan Perilaku pada Tension-Type Headache? :: Masih dapat melanjutkan aktivitas.
-- [Migren] Pada Migren, apa lokasinya? :: Sering unilateral, tetapi dapat bilateral.
-- [Migren] Apa yang dimaksud dengan Aktivitas pada Migren? :: Memperberat atau dihindari.
-- [Migren] Pada Migren, apa durasinya? :: 4–72 jam pada dewasa.
-- [Migren] Apa yang dimaksud dengan Perilaku pada Migren? :: Cenderung istirahat/ruangan gelap.
-- [Cluster Headache] Pada Cluster Headache, apa lokasinya? :: Strictly unilateral orbital/supraorbital/temporal.
-- [Cluster Headache] Apa yang dimaksud dengan Aktivitas pada Cluster Headache? :: Pasien sering restless/agitated.
-- [Cluster Headache] Apa yang dimaksud dengan Autonomic signs pada Cluster Headache? :: Ipsilateral tearing, red eye, nasal symptoms, ptosis/miosis.
-- [Cluster Headache] Pada Cluster Headache, apa polanya? :: Berulang beberapa kali sehari dalam cluster bout.
+- [Tension-Type Headache] Apa yang dimaksud dengan Kualitas pada Tension-Type Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: Pressing/tightening.
+- [Tension-Type Headache] Apa yang dimaksud dengan Photo/phonophobia pada Tension-Type Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: Maksimal salah satu.
+- [Tension-Type Headache] Apa yang dimaksud dengan Perilaku pada Tension-Type Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: Masih dapat melanjutkan aktivitas.
+- [Migren] Pada Migren, apa lokasinya (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: Sering unilateral, tetapi dapat bilateral.
+- [Migren] Apa yang dimaksud dengan Aktivitas pada Migren (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: Memperberat atau dihindari.
+- [Migren] Pada Migren, apa durasinya (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: 4–72 jam pada dewasa.
+- [Migren] Apa yang dimaksud dengan Perilaku pada Migren (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: Cenderung istirahat/ruangan gelap.
+- [Cluster Headache] Pada Cluster Headache, apa lokasinya (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: Strictly unilateral orbital/supraorbital/temporal.
+- [Cluster Headache] Apa yang dimaksud dengan Aktivitas pada Cluster Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: Pasien sering restless/agitated.
+- [Cluster Headache] Apa yang dimaksud dengan Autonomic signs pada Cluster Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: Ipsilateral tearing, red eye, nasal symptoms, ptosis/miosis.
+- [Cluster Headache] Pada Cluster Headache, apa polanya (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: Berulang beberapa kali sehari dalam cluster bout.
 - [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang dimaksud dengan TTH pada Nyeri Kepala Primer (Tension Type, Migren, Cluster)? :: Bilateral + pressing/tightening + mild–moderate
 - [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang perlu diketahui tentang TTH pada Nyeri Kepala Primer (Tension Type, Migren, Cluster)? :: Maksimal salah satu photophobia atau phonophobia
 - [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang dimaksud dengan Frequent episodic TTH pada Nyeri Kepala Primer (Tension Type, Migren, Cluster)? :: 1–14 hari/bulan >3 bulan
@@ -395,30 +395,30 @@ Pola 8 — Red Flag
 - [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang dimaksud dengan Acute cluster pada Nyeri Kepala Primer (Tension Type, Migren, Cluster)? :: High-flow oxygen dan/atau SC/nasal triptan
 - [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang dimaksud dengan Perubahan pola sakit kepala pada Nyeri Kepala Primer (Tension Type, Migren, Cluster)? :: Red flag
 - [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang dimaksud dengan New focal neurological deficit pada Nyeri Kepala Primer (Tension Type, Migren, Cluster)? :: Red flag
-- [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang dimaksud dengan Sudden maximal-intensity headache? :: Red flag
+- [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang dimaksud dengan Sudden maximal-intensity headache pada Nyeri Kepala Primer (Tension Type, Migren, Cluster)? :: Red flag
 - [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang dimaksud dengan Primary headache pada Nyeri Kepala Primer (Tension Type, Migren, Cluster)? :: Diagnosis klinis; imaging bukan syarat rutin bila pola jelas dan tanpa red flags
 - [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang perlu diketahui tentang Cluster pada Nyeri Kepala Primer (Tension Type, Migren, Cluster)? :: 15–180 menit, strictly unilateral orbital/temporal, sangat berat, autonomic signs ipsilateral, pasien gelisah
 - [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang perlu diketahui tentang Chronic migraine pada Nyeri Kepala Primer (Tension Type, Migren, Cluster)? :: ≥15 hari/bulan, ≥8 hari dengan fitur migren, >3 bulan
 - [Nyeri Kepala Primer (Tension Type, Migren, Cluster)] Apa yang perlu diketahui tentang Cluster akut pada Nyeri Kepala Primer (Tension Type, Migren, Cluster)? :: Oxygen high-flow dan/atau SC/nasal triptan
-- [Gambaran Klinis] Sebutkan TTH merupakan pola nyeri kepala yang umumnya pada Tension-Type Headache. :: • Bilateral
+- [Gambaran Klinis] Sebutkan TTH merupakan pola nyeri kepala yang umumnya pada Tension-Type Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster)). :: • Bilateral
   • Terasa menekan atau mengikat, non-pulsating
   • Intensitas ringan sampai sedang
   • Tidak diperberat aktivitas fisik rutin
   • Tidak disertai mual atau muntah
   • Dapat disertai photophobia ATAU phonophobia, tetapi biasanya bukan keduanya sekaligus
-- [Kriteria Karakteristik] Sebutkan syarat penyerta pada Tension-Type Headache. :: • Tidak ada nausea/vomiting
+- [Kriteria Karakteristik] Sebutkan syarat penyerta pada Tension-Type Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster)). :: • Tidak ada nausea/vomiting
   • Tidak lebih dari satu antara photophobia atau phonophobia
 - [Migren dengan Aura] Sebutkan gejala tipikal pada Migren dengan Aura. :: • Visual: kilatan, garis zig-zag, scintillating scotoma, atau area hilang penglihatan
   • Sensorik: kesemutan yang dapat diikuti rasa baal
   • Gangguan bicara
-- [Trigger dan Headache Diary] Sebutkan hal-hal penting tentang Headache diary berguna untuk mencatat. :: • Frekuensi
+- [Trigger dan Headache Diary] Sebutkan hal-hal penting tentang Headache diary berguna untuk mencatat pada Trigger dan Headache Diary. :: • Frekuensi
   • Durasi
   • Intensitas
   • Gejala penyerta
   • Obat akut yang digunakan
   • Kemungkinan pencetus
   • Hubungan dengan menstruasi
-- [Gambaran Klinis] Sebutkan gejala otonom ipsilateral pada Cluster Headache. :: • Conjunctival injection
+- [Gambaran Klinis] Sebutkan gejala otonom ipsilateral pada Cluster Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster)). :: • Conjunctival injection
   • Lacrimation
   • Nasal congestion
   • Rhinorrhoea
@@ -427,4 +427,4 @@ Pola 8 — Red Flag
   • Miosis
   • Ptosis
 - [Migren dengan Aura] Apa poin high-yield (pearl) tentang Migren dengan Aura? :: “Visual zig-zag 20–30 menit lalu nyeri berdenyut dengan nausea dan photophobia” sangat khas untuk migren dengan aura.
-- [Medication-Overuse Headache (MOH)] Apa poin high-yield (pearl) tentang Medication-Overuse Headache? :: Selalu tanyakan frekuensi analgesik/triptan; MOH dapat coexist dengan migren atau TTH; headache diary membantu mengidentifikasi pola penggunaan obat; jangan sekadar menaikkan dosis obat akut tanpa menilai overuse.
+- [Medication-Overuse Headache (MOH)] Apa poin high-yield (pearl) tentang Medication-Overuse Headache (Nyeri Kepala Primer (Tension Type, Migren, Cluster))? :: Selalu tanyakan frekuensi analgesik/triptan; MOH dapat coexist dengan migren atau TTH; headache diary membantu mengidentifikasi pola penggunaan obat; jangan sekadar menaikkan dosis obat akut tanpa menilai overuse.

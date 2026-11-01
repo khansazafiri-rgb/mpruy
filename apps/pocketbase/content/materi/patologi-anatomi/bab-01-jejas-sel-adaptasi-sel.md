@@ -579,19 +579,19 @@ J. Acute pancreatitis dengan chalky deposits → fat necrosis.
 ## Flashcard {kartu}
 
 - [Konsep Besar] Pada Jejas Sel & Adaptasi Sel, apa alur intinya? :: NORMAL → STRESS → ADAPTATION
-- [Hypertrophy] Apa yang dimaksud dengan Mechanism pada Hypertrophy? :: Mechanical stretch + growth factors → activation of signaling pathways → peningkatan ekspresi gen → peningkatan sintesis protein.
-- [Hyperplasia] Jelaskan hormonal hyperplasia. :: Proliferasi glandular epithelium payudara pada pubertas/kehamilan.
-- [Hyperplasia] Jelaskan compensatory hyperplasia. :: Regenerasi hati setelah partial hepatectomy.
-- [Atrophy] Apa yang dimaksud dengan Mechanism pada Atrophy? :: ↓ protein synthesis + ↑ protein degradation melalui ubiquitin-proteasome pathway + autophagy.
-- [Metaplasia] Apa yang dimaksud dengan smoker’s bronchus pada Metaplasia? :: Ciliated columnar epithelium → stratified squamous epithelium.
-- [Metaplasia] Apa yang dimaksud dengan Barrett esophagus pada Metaplasia? :: Stratified squamous epithelium esofagus → intestinal-type columnar epithelium akibat chronic GERD.
-- [Metaplasia] Pada Metaplasia, apa konsekuensinya? :: Sel baru lebih tahan terhadap stres, tetapi fungsi khusus jaringan dapat hilang. Persistent metaplasia dapat meningkatkan risiko dysplasia dan kanker.
-- [ATP Depletion] Apa yang dimaksud dengan Exam chain pada ATP Depletion? :: ISCHEMIA → ↓ O₂ → ↓ oxidative phosphorylation → ↓ ATP → pump failure → CELL SWELLING.
-- [Reperfusion Injury] Apa yang dimaksud dengan Contoh klasik pada Reperfusion Injury? :: Myocardial ischemia yang direperfusi.
+- [Hypertrophy] Apa yang dimaksud dengan Mechanism pada Hypertrophy (Jejas Sel & Adaptasi Sel)? :: Mechanical stretch + growth factors → activation of signaling pathways → peningkatan ekspresi gen → peningkatan sintesis protein.
+- [Hyperplasia] Jelaskan hormonal hyperplasia (Jejas Sel & Adaptasi Sel). :: Proliferasi glandular epithelium payudara pada pubertas/kehamilan.
+- [Hyperplasia] Jelaskan compensatory hyperplasia (Jejas Sel & Adaptasi Sel). :: Regenerasi hati setelah partial hepatectomy.
+- [Atrophy] Apa yang dimaksud dengan Mechanism pada Atrophy (Jejas Sel & Adaptasi Sel)? :: ↓ protein synthesis + ↑ protein degradation melalui ubiquitin-proteasome pathway + autophagy.
+- [Metaplasia] Apa yang dimaksud dengan smoker’s bronchus pada Metaplasia (Jejas Sel & Adaptasi Sel)? :: Ciliated columnar epithelium → stratified squamous epithelium.
+- [Metaplasia] Apa yang dimaksud dengan Barrett esophagus pada Metaplasia (Jejas Sel & Adaptasi Sel)? :: Stratified squamous epithelium esofagus → intestinal-type columnar epithelium akibat chronic GERD.
+- [Metaplasia] Pada Metaplasia, apa konsekuensinya (Jejas Sel & Adaptasi Sel)? :: Sel baru lebih tahan terhadap stres, tetapi fungsi khusus jaringan dapat hilang. Persistent metaplasia dapat meningkatkan risiko dysplasia dan kanker.
+- [ATP Depletion] Apa yang dimaksud dengan Exam chain pada ATP Depletion (Jejas Sel & Adaptasi Sel)? :: ISCHEMIA → ↓ O₂ → ↓ oxidative phosphorylation → ↓ ATP → pump failure → CELL SWELLING.
+- [Reperfusion Injury] Apa yang dimaksud dengan Contoh klasik pada Reperfusion Injury (Jejas Sel & Adaptasi Sel)? :: Myocardial ischemia yang direperfusi.
 - [Necrosis vs Apoptosis] Apa yang dimaksud dengan Pengecualian penting pada Necrosis vs Apoptosis? :: Necrosis juga dapat memiliki regulated pathways seperti necroptosis.
-- [Caspases] Jelaskan executioner caspases. :: Memecah cytoskeleton, nuclear proteins, dan cellular substrates.
-- [Intracellular Accumulations] Apa yang dimaksud dengan Contoh penting pada Intracellular Accumulations? :: Steatosis, cholesterol accumulation, protein reabsorption droplets, glycogen accumulation pada diabetes/glycogen storage diseases.
-- [Pathologic Calcification] Pada Pathologic Calcification, apa penyebabnya? :: Hyperparathyroidism, bone destruction, vitamin D disorders, renal failure tertentu.
+- [Caspases] Jelaskan executioner caspases (Jejas Sel & Adaptasi Sel). :: Memecah cytoskeleton, nuclear proteins, dan cellular substrates.
+- [Intracellular Accumulations] Apa yang dimaksud dengan Contoh penting pada Intracellular Accumulations (Jejas Sel & Adaptasi Sel)? :: Steatosis, cholesterol accumulation, protein reabsorption droplets, glycogen accumulation pada diabetes/glycogen storage diseases.
+- [Pathologic Calcification] Pada Pathologic Calcification, apa penyebabnya (Jejas Sel & Adaptasi Sel)? :: Hyperparathyroidism, bone destruction, vitamin D disorders, renal failure tertentu.
 - [Jejas Sel & Adaptasi Sel] Apa yang dimaksud dengan Metaplasia pada Jejas Sel & Adaptasi Sel? :: Reversible reprogramming menuju differentiated cell type lain
 - [Jejas Sel & Adaptasi Sel] Apa yang perlu diketahui tentang Irreversible injury pada Jejas Sel & Adaptasi Sel? :: Severe mitochondrial dysfunction + membrane damage
 - [Jejas Sel & Adaptasi Sel] Apa yang dimaksud dengan Necrosis pada Jejas Sel & Adaptasi Sel? :: Swelling + membrane rupture + inflammation
@@ -606,9 +606,9 @@ J. Acute pancreatitis dengan chalky deposits → fat necrosis.
   • Hyperplasia = peningkatan jumlah sel
   • Atrophy = penurunan ukuran sel, kadang disertai penurunan jumlah sel
   • Metaplasia = perubahan reversibel satu tipe sel matur menjadi tipe sel matur lain yang lebih tahan terhadap stres
-- [Hypertrophy vs Hyperplasia] Sebutkan hal-hal penting tentang Pattern soal. :: • Organ membesar karena sel makin besar → hypertrophy
+- [Hypertrophy vs Hyperplasia] Sebutkan hal-hal penting tentang Pattern soal pada Hypertrophy vs Hyperplasia (Jejas Sel & Adaptasi Sel). :: • Organ membesar karena sel makin besar → hypertrophy
   • Jaringan membesar karena jumlah sel bertambah → hyperplasia
-- [Metaplasia] Sebutkan contoh klasik pada Metaplasia. :: • Smoker’s bronchus: ciliated columnar epithelium → stratified squamous epithelium
+- [Metaplasia] Sebutkan contoh klasik pada Metaplasia (Jejas Sel & Adaptasi Sel). :: • Smoker’s bronchus: ciliated columnar epithelium → stratified squamous epithelium
   • Barrett esophagus: stratified squamous epithelium esofagus → intestinal-type columnar epithelium akibat chronic GERD
 - [Hypoxia vs Ischemia] Sebutkan penyebab hypoxia pada Hypoxia vs Ischemia. :: • Ischemia
   • Respiratory failure
@@ -619,20 +619,20 @@ J. Acute pancreatitis dengan chalky deposits → fat necrosis.
   • Hydroxyl radical •OH
 - [Reversible Cell Injury] Sebutkan dua pola morfologi utama pada Reversible Cell Injury. :: • Cellular swelling / hydropic change
   • Fatty change, terutama pada liver dan myocardium
-- [Hydropic Change] Sebutkan hal-hal penting tentang Light microscopy. :: • Sel membesar
+- [Hydropic Change] Sebutkan hal-hal penting tentang Light microscopy pada Hydropic Change (Jejas Sel & Adaptasi Sel). :: • Sel membesar
   • Sitoplasma pucat
   • Vakuola jernih kecil
 - [Irreversible Cell Injury — Point of No Return] Sebutkan dua perubahan penting yang menandai irreversible injury pada Irreversible Cell Injury — Point of No Return. :: • Ketidakmampuan membalikkan mitochondrial dysfunction
   • Kerusakan berat membrane, terutama plasma membrane dan lysosomal membrane
-- [Pola-Pola Necrosis] Sebutkan hal-hal penting tentang Coagulative necrosis. :: • Architecture jaringan awalnya masih tampak
+- [Pola-Pola Necrosis] Sebutkan hal-hal penting tentang Coagulative necrosis pada Pola-Pola Necrosis (Jejas Sel & Adaptasi Sel). :: • Architecture jaringan awalnya masih tampak
   • Khas ischemic infarction solid organs selain brain
-- [Pola-Pola Necrosis] Sebutkan hal-hal penting tentang Caseous necrosis. :: • Debris granular friable seperti keju
+- [Pola-Pola Necrosis] Sebutkan hal-hal penting tentang Caseous necrosis pada Pola-Pola Necrosis (Jejas Sel & Adaptasi Sel). :: • Debris granular friable seperti keju
   • Khas tuberculosis dan beberapa granulomatous infections
-- [Pola-Pola Necrosis] Sebutkan hal-hal penting tentang Fibrinoid necrosis. :: • Bright eosinophilic deposition di dinding pembuluh
+- [Pola-Pola Necrosis] Sebutkan hal-hal penting tentang Fibrinoid necrosis pada Pola-Pola Necrosis (Jejas Sel & Adaptasi Sel). :: • Bright eosinophilic deposition di dinding pembuluh
   • Immune-mediated vascular injury atau severe hypertension tertentu
-- [Caspases] Sebutkan dua kelompok fungsional pada Caspases. :: • Initiator caspases: memulai cascade
+- [Caspases] Sebutkan dua kelompok fungsional pada Caspases (Jejas Sel & Adaptasi Sel). :: • Initiator caspases: memulai cascade
   • Executioner caspases: memecah cytoskeleton, nuclear proteins, dan cellular substrates
 - [Adaptasi Sel — Empat Pola Utama] Apa poin high-yield (pearl) tentang Adaptasi Sel — Empat Pola Utama? :: Adaptasi bukan berarti sel normal sepenuhnya. Adaptasi adalah keadaan baru yang memungkinkan sel bertahan di bawah tekanan tertentu.
-- [Hypertrophy] Apa poin high-yield (pearl) tentang Hypertrophy? :: Kardiomiosit tidak merespons peningkatan beban terutama dengan hyperplasia, tetapi dengan hypertrophy.
+- [Hypertrophy] Apa poin high-yield (pearl) tentang Hypertrophy (Jejas Sel & Adaptasi Sel)? :: Kardiomiosit tidak merespons peningkatan beban terutama dengan hyperplasia, tetapi dengan hypertrophy.
 - [Necrosis — Perubahan Nukleus] Bagaimana cara mengingat Necrosis — Perubahan Nukleus? :: Pyknotic = packed. Karyorrhexis = cracked. Karyolysis = lost.
-- [Pathologic Calcification] Bagaimana cara mengingat Pathologic Calcification? :: DYSTROPHIC = DEAD tissue, calcium serum biasanya normal. METASTATIC = METABOLIC calcium problem.
+- [Pathologic Calcification] Bagaimana cara mengingat Pathologic Calcification (Jejas Sel & Adaptasi Sel)? :: DYSTROPHIC = DEAD tissue, calcium serum biasanya normal. METASTATIC = METABOLIC calcium problem.

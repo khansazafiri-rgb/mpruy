@@ -408,56 +408,56 @@ Langkah 8 — Baru tentukan diagnosis dan terapi yang paling tepat.
 - [Basal Ganglia–Thalamo–Cortical Loop] Apa yang dimaksud dengan Makna fisiologis pada Basal Ganglia–Thalamo–Cortical Loop? :: Basal ganglia membantu initiation, planning, dan execution of voluntary movement. Ia tidak sekadar “menyalakan otot”, tetapi menyeleksi dan memodulasi program gerak yang sesuai.
 - [Parkinson Disease: Inti Patofisiologi] Pada Parkinson Disease: Inti Patofisiologi, apa konsekuensi fungsionalnya? :: ↓ dopamine nigrostriatal → direct pathway kurang terfasilitasi → indirect pathway relatif lebih dominan → thalamic drive ke motor cortex menurun → bradykinesia dan hypokinesia.
 - [Fitur Nonmotor & Prodromal] Apa yang dimaksud dengan Poin soal pada Fitur Nonmotor & Prodromal? :: Pasien lansia dengan konstipasi, anosmia, gangguan tidur berupa “acting out dreams”, kemudian berkembang bradykinesia dan rest tremor → pola sangat mendukung Parkinson disease.
-- [Dyskinesia] Pada Dyskinesia, apa pola soalnya? :: Pasien Parkinson lama yang awalnya terkontrol baik tetapi sekarang kaku kembali menjelang dosis berikut → wearing-off.
-- [Dyskinesia] Apa yang dimaksud dengan Safety pearl pada Dyskinesia? :: Jangan menghentikan dopaminergic therapy secara mendadak tanpa alasan/penatalaksanaan yang tepat karena dapat menyebabkan deteriorasi berat dan sindrom menyerupai neuroleptic malignant syndrome.
-- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Finger tapping makin lama makin kecil dan lambat? :: Bradykinesia
-- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Rigiditas dengan sensasi “roda gigi”? :: Cogwheel rigidity
-- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Langkah pendek, tubuh membungkuk, sulit mulai berjalan? :: Parkinsonian gait/freezing
-- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tremor bilateral saat memegang gelas/menulis tanpa rigidity? :: Essential tremor
-- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Parkinsonism setelah dopamine-blocking antipsychotic? :: Drug-induced parkinsonism
-- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Parkinsonism + severe orthostatic/autonomic failure dini? :: Pikir MSA
-- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Early Parkinson dengan motor symptoms mengganggu quality of life? :: NICE: offer levodopa
-- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Gerakan involunter saat fase “on” setelah terapi levodopa lama? :: Dyskinesia
+- [Dyskinesia] Pada Dyskinesia, apa pola soalnya (Gangguan Gerak: Parkinson & Tremor)? :: Pasien Parkinson lama yang awalnya terkontrol baik tetapi sekarang kaku kembali menjelang dosis berikut → wearing-off.
+- [Dyskinesia] Apa yang dimaksud dengan Safety pearl pada Dyskinesia (Gangguan Gerak: Parkinson & Tremor)? :: Jangan menghentikan dopaminergic therapy secara mendadak tanpa alasan/penatalaksanaan yang tepat karena dapat menyebabkan deteriorasi berat dan sindrom menyerupai neuroleptic malignant syndrome.
+- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Finger tapping makin lama makin kecil dan lambat pada Gangguan Gerak: Parkinson & Tremor? :: Bradykinesia
+- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Rigiditas dengan sensasi “roda gigi” pada Gangguan Gerak: Parkinson & Tremor? :: Cogwheel rigidity
+- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Langkah pendek, tubuh membungkuk, sulit mulai berjalan pada Gangguan Gerak: Parkinson & Tremor? :: Parkinsonian gait/freezing
+- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tremor bilateral saat memegang gelas/menulis tanpa rigidity pada Gangguan Gerak: Parkinson & Tremor? :: Essential tremor
+- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Parkinsonism setelah dopamine-blocking antipsychotic pada Gangguan Gerak: Parkinson & Tremor? :: Drug-induced parkinsonism
+- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Parkinsonism + severe orthostatic/autonomic failure dini pada Gangguan Gerak: Parkinson & Tremor? :: Pikir MSA
+- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Early Parkinson dengan motor symptoms mengganggu quality of life pada Gangguan Gerak: Parkinson & Tremor? :: NICE: offer levodopa
+- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Gerakan involunter saat fase “on” setelah terapi levodopa lama pada Gangguan Gerak: Parkinson & Tremor? :: Dyskinesia
 - [Gangguan Gerak: Parkinson & Tremor] Apa yang dimaksud dengan Striatum pada Gangguan Gerak: Parkinson & Tremor? :: Caudate + putamen
 - [Gangguan Gerak: Parkinson & Tremor] Apa yang perlu diketahui tentang Motor loop pada Gangguan Gerak: Parkinson & Tremor? :: Cortex → putamen → GPi/SNr → VL/VA thalamus → cortex
 - [Gangguan Gerak: Parkinson & Tremor] Apa yang dimaksud dengan Parkinson pada Gangguan Gerak: Parkinson & Tremor? :: Movement disorder hypokinetic
 - [Gangguan Gerak: Parkinson & Tremor] Apa yang dimaksud dengan Bradykinesia pada Gangguan Gerak: Parkinson & Tremor? :: Slow movement + decrement pada gerakan repetitif
 - [Gangguan Gerak: Parkinson & Tremor] Apa yang dimaksud dengan Cogwheel rigidity pada Gangguan Gerak: Parkinson & Tremor? :: Rigidity dengan ratchety quality
 - [Gangguan Gerak: Parkinson & Tremor] Apa yang dimaksud dengan Micrographia dan hypomimia pada Gangguan Gerak: Parkinson & Tremor? :: Clue Parkinson
-- [Gangguan Gerak: Parkinson & Tremor] Apa yang dimaksud dengan Postural instability yang sangat dini? :: Red flag atypical
-- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Severe early autonomic failure? :: Pikir MSA
+- [Gangguan Gerak: Parkinson & Tremor] Apa yang dimaksud dengan Postural instability yang sangat dini pada Gangguan Gerak: Parkinson & Tremor? :: Red flag atypical
+- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Severe early autonomic failure pada Gangguan Gerak: Parkinson & Tremor? :: Pikir MSA
 - [Gangguan Gerak: Parkinson & Tremor] Apa yang dimaksud dengan Wearing-off pada Gangguan Gerak: Parkinson & Tremor? :: Manfaat dosis berakhir sebelum dosis berikut
 - [Gangguan Gerak: Parkinson & Tremor] Apa yang dimaksud dengan Propranolol dan primidone pada Gangguan Gerak: Parkinson & Tremor? :: Obat klasik high-yield untuk essential tremor
 - [Gangguan Gerak: Parkinson & Tremor] Apa yang perlu diketahui tentang Basal ganglia motor loop pada Gangguan Gerak: Parkinson & Tremor? :: Cortex → putamen → GPi/SNr → thalamus → cortex
-- [Gangguan Gerak: Parkinson & Tremor] Apa yang perlu diketahui tentang Nonmotor clue pada Gangguan Gerak: Parkinson & Tremor? :: Anosmia, constipation, REM sleep behavior disorder, depression/autonomic dysfunction
+- [Gangguan Gerak: Parkinson & Tremor] Apa nonmotor clue pada Gangguan Gerak: Parkinson & Tremor? :: Anosmia, constipation, REM sleep behavior disorder, depression/autonomic dysfunction
 - [Gangguan Gerak: Parkinson & Tremor] Apa yang perlu diingat tentang Drug-induced parkinsonism pada Gangguan Gerak: Parkinson & Tremor? :: Cek dopamine-blocking drugs
-- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: NICE: bila early motor symptoms mengganggu quality of life? :: Offer levodopa
+- [Gangguan Gerak: Parkinson & Tremor] Apa jawaban atau kesimpulan untuk petunjuk berikut: NICE: bila early motor symptoms mengganggu quality of life pada Gangguan Gerak: Parkinson & Tremor? :: Offer levodopa
 - [Basal Ganglia–Thalamo–Cortical Loop] Sebutkan struktur inti pada Basal Ganglia–Thalamo–Cortical Loop. :: • Striatum = caudate nucleus + putamen
   • Globus pallidus = GPe (external) + GPi (internal)
   • Subthalamic nucleus (STN)
   • Substantia nigra = SNc (pars compacta) + SNr (pars reticulata)
-- [Bradykinesia] Sebutkan contoh pemeriksaan pada Bradykinesia. :: • Finger tapping makin kecil/lambat
+- [Bradykinesia] Sebutkan contoh pemeriksaan pada Bradykinesia (Gangguan Gerak: Parkinson & Tremor). :: • Finger tapping makin kecil/lambat
   • Hand opening-closing mengalami decrement
   • Toe tapping melambat
 - [Gait dan postur] Sebutkan manifestasi lain pada Gait dan postur. :: • Hypomimia/masked facies
   • Hypophonia
   • Micrographia
   • Difficulty turning in bed
-- [Diagnosis Klinis Parkinsonisme] Sebutkan hal-hal penting tentang Kerangka praktis. :: • Pastikan ada bradykinesia
+- [Diagnosis Klinis Parkinsonisme] Sebutkan hal-hal penting tentang Kerangka praktis pada Diagnosis Klinis Parkinsonisme (Gangguan Gerak: Parkinson & Tremor). :: • Pastikan ada bradykinesia
   • Cari rigidity dan/atau rest tremor
   • Nilai asimetri, progresivitas, gait, dan respons terhadap terapi dopaminergik
   • Cari penyebab sekunder atau obat
   • Cari red flags atypical parkinsonism
-- [Diagnosis Klinis Parkinsonisme] Sebutkan hal-hal penting tentang Atypical parkinsonism yang perlu dikenal. :: • Progressive supranuclear palsy (PSP) → early falls + vertical gaze palsy
+- [Diagnosis Klinis Parkinsonisme] Sebutkan hal-hal penting tentang Atypical parkinsonism yang perlu dikenal pada Diagnosis Klinis Parkinsonisme. :: • Progressive supranuclear palsy (PSP) → early falls + vertical gaze palsy
   • Multiple system atrophy (MSA) → prominent autonomic failure ± cerebellar signs
   • Corticobasal syndrome → markedly asymmetric cortical + extrapyramidal features
   • Dementia with Lewy bodies → dementia/hallucinations menonjol dekat dengan onset parkinsonism
-- [Drug-induced parkinsonism] Sebutkan contoh kelas pada Drug-induced parkinsonism. :: • Antipsychotic tertentu
+- [Drug-induced parkinsonism] Sebutkan contoh kelas pada Drug-induced parkinsonism (Gangguan Gerak: Parkinson & Tremor). :: • Antipsychotic tertentu
   • Antiemetic dopamine antagonist tertentu
-- [Drug-induced parkinsonism] Sebutkan pola yang membantu pada Drug-induced parkinsonism. :: • Sering lebih simetris daripada idiopathic Parkinson disease
+- [Drug-induced parkinsonism] Sebutkan pola yang membantu pada Drug-induced parkinsonism (Gangguan Gerak: Parkinson & Tremor). :: • Sering lebih simetris daripada idiopathic Parkinson disease
   • Temporal relationship dengan obat penting
   • Rest tremor dapat lebih sedikit, walaupun pola klinis dapat tumpang tindih
-- [Anticholinergic] Sebutkan hal-hal penting tentang Non-pharmacological care. :: • Physiotherapy
+- [Anticholinergic] Sebutkan hal-hal penting tentang Non-pharmacological care pada Anticholinergic (Gangguan Gerak: Parkinson & Tremor). :: • Physiotherapy
   • Occupational therapy
   • Speech/swallow therapy
   • Exercise
@@ -466,4 +466,4 @@ Langkah 8 — Baru tentukan diagnosis dan terapi yang paling tepat.
   • Primidone
 - [Direct vs Indirect Pathway] Bagaimana cara mengingat Direct vs Indirect Pathway? :: DIRECT = “Do movement.” INDIRECT = “Inhibit competing movement.”
 - [Parkinson Disease: Inti Patofisiologi] Apa jebakan yang sering muncul pada soal tentang Parkinson Disease: Inti Patofisiologi? :: Tremor Parkinson tidak semata-mata dapat dijelaskan oleh “dopamine rendah”; gangguan jaringan basal ganglia–thalamo–cortical dan cerebello-thalamic juga berperan. Untuk soal dasar, fokuskan hubungan kehilangan dopamine dengan sindrom hypokinetic.
-- [Essential tremor] Apa jebakan yang sering muncul pada soal tentang Essential tremor? :: “tremor tangan” saja tidak cukup untuk membedakan keduanya. Kata kunci terbesar adalah:
+- [Essential tremor] Apa jebakan yang sering muncul pada soal tentang Essential tremor (Gangguan Gerak: Parkinson & Tremor)? :: “tremor tangan” saja tidak cukup untuk membedakan keduanya. Kata kunci terbesar adalah:

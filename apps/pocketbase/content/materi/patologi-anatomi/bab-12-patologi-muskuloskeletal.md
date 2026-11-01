@@ -449,12 +449,12 @@ Nyeri sendi first MTP mendadak + needle crystals negative birefringence → gout
 
 - [Osteomalasia & Rickets] Pada Osteomalasia & Rickets, apa penyebab klasiknya? :: Defisiensi vitamin D, gangguan absorpsi, penyakit ginjal kronik, atau gangguan metabolisme fosfat.
 - [Giant Cell Tumor of Bone] Apa yang dimaksud dengan Radiologi klasik pada Giant Cell Tumor of Bone? :: Expansile “soap-bubble” lesion.
-- [Osteosarcoma] Apa yang dimaksud dengan Sekitar lutut pada Osteosarcoma? :: Distal femur/proximal tibia.
-- [Osteosarcoma] Pada Osteosarcoma, apa histologinya? :: Malignant osteoid.
-- [Ewing Sarcoma] Pada Ewing Sarcoma, apa histologinya? :: Uniform small round blue cells dengan glycogen-rich cytoplasm.
-- [Ewing Sarcoma] Apa yang dimaksud dengan Radiologi pada Ewing Sarcoma? :: Onion-skin periosteal reaction.
+- [Osteosarcoma] Apa yang dimaksud dengan Sekitar lutut pada Osteosarcoma (Patologi Muskuloskeletal)? :: Distal femur/proximal tibia.
+- [Osteosarcoma] Pada Osteosarcoma, apa histologinya (Patologi Muskuloskeletal)? :: Malignant osteoid.
+- [Ewing Sarcoma] Pada Ewing Sarcoma, apa histologinya (Patologi Muskuloskeletal)? :: Uniform small round blue cells dengan glycogen-rich cytoplasm.
+- [Ewing Sarcoma] Apa yang dimaksud dengan Radiologi pada Ewing Sarcoma (Patologi Muskuloskeletal)? :: Onion-skin periosteal reaction.
 - [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan OA pada Praktikum: Pattern Recognition Cepat? :: Cartilage loss + subchondral sclerosis + osteophytes.
-- [Praktikum: Pattern Recognition Cepat] Jelaskan RA. :: Proliferative synovitis + pannus + chronic inflammation.
+- [Praktikum: Pattern Recognition Cepat] Jelaskan RA pada Praktikum: Pattern Recognition Cepat (Patologi Muskuloskeletal). :: Proliferative synovitis + pannus + chronic inflammation.
 - [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan Gout pada Praktikum: Pattern Recognition Cepat? :: Needle-shaped urate crystals/tophi + giant-cell reaction.
 - [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan Paget pada Praktikum: Pattern Recognition Cepat? :: Mosaic lamellar bone.
 - [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan Osteomyelitis pada Praktikum: Pattern Recognition Cepat? :: Necrotic bone + neutrophils pada fase akut; sequestrum/involucrum pada kronik.
@@ -484,34 +484,34 @@ Nyeri sendi first MTP mendadak + needle crystals negative birefringence → gout
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Epifisis pada Patologi Muskuloskeletal? :: Giant cell tumor
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Metafisis remaja pada Patologi Muskuloskeletal? :: Osteosarcoma
 - [Patologi Muskuloskeletal] Apa yang dimaksud dengan Pelvis dewasa pada Patologi Muskuloskeletal? :: Chondrosarcoma
-- [Osteoporosis] Sebutkan pola klinis penting pada Osteoporosis. :: • Postmenopausal osteoporosis → terutama akibat peningkatan resorpsi tulang karena defisiensi estrogen
+- [Osteoporosis] Sebutkan pola klinis penting pada Osteoporosis (Patologi Muskuloskeletal). :: • Postmenopausal osteoporosis → terutama akibat peningkatan resorpsi tulang karena defisiensi estrogen
   • Senile osteoporosis → penurunan aktivitas osteoblas dan faktor usia
   • Secondary osteoporosis → misalnya glucocorticoid use, immobilization, hyperthyroidism, malabsorption
 - [Osteomalasia & Rickets] Sebutkan perbedaan utama pada Osteomalasia & Rickets. :: • Osteoporosis = bone quantity ↓, mineralisasi normal
   • Osteomalacia/rickets = mineralisasi osteoid terganggu
-- [Osteomyelitis] Sebutkan pola penting pada Osteomyelitis. :: • Hematogenous osteomyelitis pada anak sering mengenai metafisis tulang panjang
+- [Osteomyelitis] Sebutkan pola penting pada Osteomyelitis (Patologi Muskuloskeletal). :: • Hematogenous osteomyelitis pada anak sering mengenai metafisis tulang panjang
   • Pada dewasa dapat mengenai vertebra
   • Salmonella sangat klasik pada pasien sickle cell disease
-- [Osteoarthritis] Sebutkan temuan morfologi pada Osteoarthritis. :: • Loss/fibrillation of articular cartilage
+- [Osteoarthritis] Sebutkan temuan morfologi pada Osteoarthritis (Patologi Muskuloskeletal). :: • Loss/fibrillation of articular cartilage
   • Subchondral sclerosis
   • Osteophytes
   • Subchondral cysts
   • “Joint mice” dari fragmen kartilago/tulang bebas
-- [Rheumatoid Arthritis] Sebutkan morfologi klasik pada Rheumatoid Arthritis. :: • Synovial hyperplasia
+- [Rheumatoid Arthritis] Sebutkan morfologi klasik pada Rheumatoid Arthritis (Patologi Muskuloskeletal). :: • Synovial hyperplasia
   • Dense chronic inflammatory infiltrate
   • Pannus formation
   • Erosi kartilago dan tulang
   • Fibrous lalu bony ankylosis pada penyakit lanjut
-- [Avascular Necrosis] Sebutkan faktor risiko penting pada Avascular Necrosis. :: • Trauma/fracture
+- [Avascular Necrosis] Sebutkan faktor risiko penting pada Avascular Necrosis (Patologi Muskuloskeletal). :: • Trauma/fracture
   • Glucocorticoids
   • Alcohol
   • Sickle cell disease
   • Decompression sickness
-- [Osteosarcoma] Sebutkan poin klasik pada Osteosarcoma. :: • Umumnya remaja
+- [Osteosarcoma] Sebutkan poin klasik pada Osteosarcoma (Patologi Muskuloskeletal). :: • Umumnya remaja
   • Metafisis tulang panjang
   • Sekitar lutut: distal femur/proximal tibia
   • Histologi: malignant osteoid
-- [Bone Metastasis] Sebutkan pola klasik pada Bone Metastasis. :: • Prostate carcinoma → osteoblastic metastases
+- [Bone Metastasis] Sebutkan pola klasik pada Bone Metastasis (Patologi Muskuloskeletal). :: • Prostate carcinoma → osteoblastic metastases
   • Breast carcinoma → dapat osteolytic, osteoblastic, atau mixed
   • Renal cell, thyroid, lung → sering osteolytic
-- [Pseudogout] Apa poin high-yield (pearl) tentang Pseudogout? :: Gout = needle + negative. Pseudogout = rhomboid + positive.
+- [Pseudogout] Apa poin high-yield (pearl) tentang Pseudogout (Patologi Muskuloskeletal)? :: Gout = needle + negative. Pseudogout = rhomboid + positive.

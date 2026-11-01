@@ -279,18 +279,18 @@ Pola 8 — Change of Pattern
 - [Peningkatan Tekanan Intrakranial & Papiledema] Apa yang dimaksud dengan Safety pearl pada Peningkatan Tekanan Intrakranial & Papiledema? :: Pada pasien dengan headache progresif + muntah + papiledema, pungsi lumbal tidak boleh dilakukan sembarangan sebelum mengevaluasi kemungkinan mass effect/peningkatan tekanan intrakranial yang berbahaya.
 - [Nyeri Kepala Sekunder & Red Flags] Apa yang dimaksud dengan Secondary headache pada Nyeri Kepala Sekunder & Red Flags? :: Headache akibat kondisi lain
 - [Nyeri Kepala Sekunder & Red Flags] Apa yang dimaksud dengan Thunderclap headache pada Nyeri Kepala Sekunder & Red Flags? :: Evaluasi emergensi
-- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Fever + neck stiffness? :: Pikirkan meningitis
-- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Imunosupresi + headache baru? :: Red flag kuat
-- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Perubahan pola headache lama? :: Red flag
+- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Fever + neck stiffness pada Nyeri Kepala Sekunder & Red Flags? :: Pikirkan meningitis
+- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Imunosupresi + headache baru pada Nyeri Kepala Sekunder & Red Flags? :: Red flag kuat
+- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Perubahan pola headache lama pada Nyeri Kepala Sekunder & Red Flags? :: Red flag
 - [Nyeri Kepala Sekunder & Red Flags] Apa yang perlu diingat tentang Papiledema pada Nyeri Kepala Sekunder & Red Flags? :: Pikirkan peningkatan tekanan intrakranial
-- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Valsalva-provoked headache + visual symptoms? :: Evaluasi papiledema/TIK
-- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Postpartum + headache + seizure? :: Pikirkan CVT
-- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Mata merah + penurunan visus tajam + mid-dilated pupil? :: Acute angle-closure glaucoma
-- [Nyeri Kepala Sekunder & Red Flags] Apa yang dimaksud dengan New cognitive dysfunction atau personality change? :: Red flag
+- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Valsalva-provoked headache + visual symptoms pada Nyeri Kepala Sekunder & Red Flags? :: Evaluasi papiledema/TIK
+- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Postpartum + headache + seizure pada Nyeri Kepala Sekunder & Red Flags? :: Pikirkan CVT
+- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Mata merah + penurunan visus tajam + mid-dilated pupil pada Nyeri Kepala Sekunder & Red Flags? :: Acute angle-closure glaucoma
+- [Nyeri Kepala Sekunder & Red Flags] Apa yang dimaksud dengan New cognitive dysfunction atau personality change pada Nyeri Kepala Sekunder & Red Flags? :: Red flag
 - [Nyeri Kepala Sekunder & Red Flags] Apa yang dimaksud dengan Impaired consciousness pada Nyeri Kepala Sekunder & Red Flags? :: Red flag
 - [Nyeri Kepala Sekunder & Red Flags] Apa yang perlu diingat tentang Thunderclap pada Nyeri Kepala Sekunder & Red Flags? :: Pikirkan SAH/penyebab vaskular sampai terbukti sebaliknya
-- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Postpartum + kejang + papiledema? :: Pikirkan CVT
-- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Red eye + acute visual loss + mid-dilated pupil? :: Acute angle-closure glaucoma
+- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Postpartum + kejang + papiledema pada Nyeri Kepala Sekunder & Red Flags? :: Pikirkan CVT
+- [Nyeri Kepala Sekunder & Red Flags] Apa jawaban atau kesimpulan untuk petunjuk berikut: Red eye + acute visual loss + mid-dilated pupil pada Nyeri Kepala Sekunder & Red Flags? :: Acute angle-closure glaucoma
 - [Nyeri Kepala Sekunder & Red Flags] Apa yang perlu diingat tentang Orthostatic headache pada Nyeri Kepala Sekunder & Red Flags? :: Pikirkan gangguan tekanan CSF
 - [Thunderclap Headache & Perdarahan Subaraknoid] Sebutkan poin high-yield pada Thunderclap Headache & Perdarahan Subaraknoid. :: • SAH dapat muncul tanpa defisit neurologis fokal pada pemeriksaan awal
   • Perbaikan nyeri setelah beberapa jam tidak menyingkirkan SAH atau penyebab vaskular serius

@@ -140,28 +140,28 @@ Kortisol dan GH lebih lambat dan penting dalam fasting/stress yang lebih panjang
 
 ## Flashcard {kartu}
 
-- [Sintesis Insulin] Apa yang dimaksud dengan Clinical clue pada Sintesis Insulin? :: C-peptide membantu menilai endogenous insulin production karena insulin eksogen tidak mengandung C-peptide.
-- [Fed State vs Fasting State] Jelaskan Fed state. :: Insulin dominan → uptake glukosa, glycogenesis, lipogenesis, protein synthesis.
-- [Fed State vs Fasting State] Jelaskan Fasting. :: Insulin turun, glucagon naik → hepatic glycogenolysis, gluconeogenesis, lipolysis, dan kemudian ketogenesis.
+- [Sintesis Insulin] Pada Sintesis Insulin, apa clinical cluenya (Fisiologi Pankreas Endokrin & Regulasi Glukosa)? :: C-peptide membantu menilai endogenous insulin production karena insulin eksogen tidak mengandung C-peptide.
+- [Fed State vs Fasting State] Jelaskan Fed state pada Fed State vs Fasting State (Fisiologi Pankreas Endokrin & Regulasi Glukosa). :: Insulin dominan → uptake glukosa, glycogenesis, lipogenesis, protein synthesis.
+- [Fed State vs Fasting State] Jelaskan Fasting pada Fed State vs Fasting State (Fisiologi Pankreas Endokrin & Regulasi Glukosa). :: Insulin turun, glucagon naik → hepatic glycogenolysis, gluconeogenesis, lipolysis, dan kemudian ketogenesis.
 - [Master Flow: Glukosa] Apa yang dimaksud dengan Fed pada Master Flow: Glukosa? :: Glucose ↑ → insulin ↑ → storage + uptake ↑ → blood glucose turun.
 - [Master Flow: Glukosa] Apa yang dimaksud dengan Fasting pada Master Flow: Glukosa? :: Glucose ↓ → glucagon ↑ → hepatic glucose output ↑.
 - [Master Flow: Glukosa] Apa yang dimaksud dengan Hypoglycemia pada Master Flow: Glukosa? :: Glucagon + epinephrine bekerja cepat; cortisol + GH membantu respons lebih lambat.
-- [Pankreas Endokrin] Sebutkan hal-hal penting tentang Islets of Langerhans. :: • Β cell → insulin
+- [Pankreas Endokrin] Sebutkan hal-hal penting tentang Islets of Langerhans pada Pankreas Endokrin (Fisiologi Pankreas Endokrin & Regulasi Glukosa). :: • Β cell → insulin
   • Α cell → glucagon
   • Δ cell → somatostatin
   • PP/F cell → pancreatic polypeptide
-- [Faktor yang Meningkatkan Insulin] Sebutkan hal-hal penting tentang Stimulus insulin. :: • Peningkatan glukosa darah
+- [Faktor yang Meningkatkan Insulin] Sebutkan hal-hal penting tentang Stimulus insulin pada Faktor yang Meningkatkan Insulin (Fisiologi Pankreas Endokrin & Regulasi Glukosa). :: • Peningkatan glukosa darah
   • Amino acids tertentu
   • Incretin GLP-1 dan GIP setelah makan
   • Parasympathetic activity
   • Beberapa hormon gastrointestinal
-- [Glukagon] Sebutkan efek utama di hati pada Glukagon. :: • ↑ glycogenolysis
+- [Glukagon] Sebutkan efek utama di hati pada Glukagon (Fisiologi Pankreas Endokrin & Regulasi Glukosa). :: • ↑ glycogenolysis
   • ↑ gluconeogenesis
   • ↑ ketogenesis
-- [Counter-Regulatory Hormones] Sebutkan hal-hal penting tentang Hormon yang melawan penurunan glukosa. :: • Glucagon
+- [Counter-Regulatory Hormones] Sebutkan hal-hal penting tentang Hormon yang melawan penurunan glukosa pada Counter-Regulatory Hormones (Fisiologi Pankreas Endokrin & Regulasi Glukosa). :: • Glucagon
   • Epinephrine
   • Cortisol
   • GH
 - [Efek Insulin pada Jaringan] Apa jebakan yang sering muncul pada soal tentang Efek Insulin pada Jaringan? :: Hepatocyte glucose uptake menggunakan GLUT2, bukan GLUT4.
-- [Glukagon] Apa poin high-yield (pearl) tentang Glukagon? :: Skeletal muscle tidak menjadi target utama glukagon untuk glycogenolysis karena tidak memiliki respons glukagon yang bermakna seperti hati.
-- [Counter-Regulatory Hormones] Apa poin high-yield (pearl) tentang Counter-Regulatory Hormones? :: Respons hipoglikemia adalah integrasi multi-hormon, bukan glukagon saja.
+- [Glukagon] Apa poin high-yield (pearl) tentang Glukagon (Fisiologi Pankreas Endokrin & Regulasi Glukosa)? :: Skeletal muscle tidak menjadi target utama glukagon untuk glycogenolysis karena tidak memiliki respons glukagon yang bermakna seperti hati.
+- [Counter-Regulatory Hormones] Apa poin high-yield (pearl) tentang Counter-Regulatory Hormones (Fisiologi Pankreas Endokrin & Regulasi Glukosa)? :: Respons hipoglikemia adalah integrasi multi-hormon, bukan glukagon saja.

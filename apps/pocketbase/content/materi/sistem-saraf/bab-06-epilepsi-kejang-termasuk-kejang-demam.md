@@ -430,7 +430,7 @@ Pola 10 — EEG Normal
 - [Kerangka ILAE 2017] Apa yang dimaksud dengan Atonic seizure pada Kerangka ILAE 2017? :: Kehilangan tonus mendadak → drop attack atau kepala mendadak menunduk.
 - [Kerangka ILAE 2017] Apa yang dimaksud dengan Typical absence pada Kerangka ILAE 2017? :: Onset mendadak, staring/behavioral arrest, spike-wave sekitar 3 Hz. Atypical absence cenderung lebih gradual dan EEG lebih lambat/ireguler.
 - [Adverse Effects, Monitoring, dan Kapan Menghentikan ASM] Jelaskan Update NICE NG217 dalam konteks Adverse Effects, Monitoring, dan Kapan Menghentikan ASM. :: Setelah pasien seizure-free selama 2 tahun, lakukan PENILAIAN INDIVIDUAL terhadap risiko recurrence sebelum memutuskan penghentian. Bila diputuskan stop, kebanyakan ASM diturunkan bertahap selama setidaknya 3 bulan; benzodiazepine/barbiturate biasanya lebih lambat.
-- [Kejang Demam] Pada Kejang Demam, apa definisi standarnya? :: Febrile seizure adalah seizure pada anak usia sekitar 6–60 bulan dengan demam ≥38°C tanpa bukti infeksi SSP, gangguan metabolik akut yang menjelaskan seizure, atau riwayat afebrile seizure/epilepsy.
+- [Kejang Demam] Pada Kejang Demam, apa definisi standarnya (Epilepsi & Kejang (termasuk Kejang Demam))? :: Febrile seizure adalah seizure pada anak usia sekitar 6–60 bulan dengan demam ≥38°C tanpa bukti infeksi SSP, gangguan metabolik akut yang menjelaskan seizure, atau riwayat afebrile seizure/epilepsy.
 - [Epilepsi & Kejang (termasuk Kejang Demam)] Apa yang perlu diketahui tentang Voltage-gated Ca2+ channel pada Epilepsi & Kejang (termasuk Kejang Demam)? :: Ethosuximide; gabapentin/pregabalin juga termasuk target Ca-related
 - [Epilepsi & Kejang (termasuk Kejang Demam)] Apa yang perlu diketahui tentang Focal seizure pada Epilepsi & Kejang (termasuk Kejang Demam)? :: Lamotrigine atau levetiracetam sebagai first-line monotherapy
 - [Epilepsi & Kejang (termasuk Kejang Demam)] Apa yang perlu diketahui tentang Generalized tonic-clonic pada Epilepsi & Kejang (termasuk Kejang Demam)? :: Lamotrigine, levetiracetam, atau sodium valproate; penggunaan valproate harus mengikuti pembatasan keselamatan reproduksi
@@ -445,18 +445,18 @@ Pola 10 — EEG Normal
 - [Epilepsi & Kejang (termasuk Kejang Demam)] Apa yang perlu diketahui tentang ILAE 2025 pada Epilepsi & Kejang (termasuk Kejang Demam)? :: Focal, generalized, unknown, unclassified
 - [Epilepsi & Kejang (termasuk Kejang Demam)] Apa yang dimaksud dengan Convulsive seizure ≥5 menit pada Epilepsi & Kejang (termasuk Kejang Demam)? :: Status pathway/emergency treatment
 - [Epilepsi & Kejang (termasuk Kejang Demam)] Apa yang dimaksud dengan Benzodiazepine pada Epilepsi & Kejang (termasuk Kejang Demam)? :: First-line convulsive status epilepticus
-- [Epilepsi & Kejang (termasuk Kejang Demam)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Gagal 2 dosis benzodiazepine? :: IV levetiracetam/phenytoin/valproate sebagai second-line menurut NICE
+- [Epilepsi & Kejang (termasuk Kejang Demam)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Gagal 2 dosis benzodiazepine pada Epilepsi & Kejang (termasuk Kejang Demam)? :: IV levetiracetam/phenytoin/valproate sebagai second-line menurut NICE
 - [Epilepsi & Kejang (termasuk Kejang Demam)] Apa yang dimaksud dengan Simple febrile seizure pada Epilepsi & Kejang (termasuk Kejang Demam)? :: Generalized, <15 menit, sekali/24 jam, usia tipikal 6–60 bulan
 - [Epilepsi & Kejang (termasuk Kejang Demam)] Apa yang dimaksud dengan Complex febrile seizure pada Epilepsi & Kejang (termasuk Kejang Demam)? :: Focal ATAU ≥15 menit ATAU recurrent within 24 h
-- [Epilepsi & Kejang (termasuk Kejang Demam)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Provoked seizure: ada pencetus akut? :: Hentikan seizure + koreksi penyebab
+- [Epilepsi & Kejang (termasuk Kejang Demam)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Provoked seizure: ada pencetus akut pada Epilepsi & Kejang (termasuk Kejang Demam)? :: Hentikan seizure + koreksi penyebab
 - [Epilepsi & Kejang (termasuk Kejang Demam)] Apa yang perlu diketahui tentang Epilepsy pada Epilepsi & Kejang (termasuk Kejang Demam)? :: Predisposisi unprovoked seizure; ≥2 unprovoked >24 jam adalah pola operasional klasik
-- [Epilepsi & Kejang (termasuk Kejang Demam)] Jelaskan: Klasifikasi ILAE 2017 diperbarui pada 2025 menjadi empat kelas. :: Focal, generalized, unknown, unclassified
-- [Epilepsy] Sebutkan definisi operasional pada Epilepsy. :: • ≥2 unprovoked seizures dengan jarak >24 jam; ATAU
+- [Epilepsi & Kejang (termasuk Kejang Demam)] Jelaskan: Klasifikasi ILAE 2017 diperbarui pada 2025 menjadi empat kelas pada Epilepsi & Kejang (termasuk Kejang Demam). :: Focal, generalized, unknown, unclassified
+- [Epilepsy] Sebutkan definisi operasional pada Epilepsy (Epilepsi & Kejang (termasuk Kejang Demam)). :: • ≥2 unprovoked seizures dengan jarak >24 jam; ATAU
   • 1 unprovoked seizure dengan risiko kekambuhan tinggi, sekitar ≥60% dalam 10 tahun
-- [Dasar Neurofisiologi Kejang] Sebutkan hal-hal penting tentang Keseimbangan antara sistem eksitatorik dan inhibitorik. :: • Glutamat = neurotransmitter eksitatorik utama, bekerja antara lain melalui reseptor NMDA dan non-NMDA
+- [Dasar Neurofisiologi Kejang] Sebutkan hal-hal penting tentang Keseimbangan antara sistem eksitatorik dan inhibitorik pada Dasar Neurofisiologi Kejang. :: • Glutamat = neurotransmitter eksitatorik utama, bekerja antara lain melalui reseptor NMDA dan non-NMDA
   • GABA = neurotransmitter inhibitorik utama, termasuk melalui reseptor GABA-A dan GABA-B
   • Elektrolit penting untuk eksitabilitas neuron mencakup Na+, Ca2+, K+, Mg2+, dan Cl−
-- [Unprovoked Seizure] Sebutkan hal-hal penting tentang Risiko recurrence lebih tinggi bila terdapat. :: • Defisit neurologis
+- [Unprovoked Seizure] Sebutkan hal-hal penting tentang Risiko recurrence lebih tinggi bila terdapat pada Unprovoked Seizure (Epilepsi & Kejang (termasuk Kejang Demam)). :: • Defisit neurologis
   • MRI abnormal
   • EEG dengan epileptiform activity
 - [Update ILAE 2025] Sebutkan ILAE 2025 mempertahankan empat kelas utama pada Update ILAE 2025. :: • Focal
@@ -468,7 +468,7 @@ Pola 10 — EEG Normal
   • Motor vs non-motor diganti menjadi observable vs non-observable manifestations
   • Semiologi dapat dideskripsikan secara kronologis
   • Epileptic negative myoclonus diakui sebagai seizure type
-- [EEG, Imaging, dan Evaluasi Pasien] Sebutkan hal-hal penting tentang EEG membantu. :: • Mendeteksi epileptiform activity
+- [EEG, Imaging, dan Evaluasi Pasien] Sebutkan hal-hal penting tentang EEG membantu pada EEG, Imaging, dan Evaluasi Pasien (Epilepsi & Kejang (termasuk Kejang Demam)). :: • Mendeteksi epileptiform activity
   • Menentukan pola focal atau generalized
   • Membantu klasifikasi epilepsy/syndrome
   • Mendukung pemilihan terapi
@@ -477,12 +477,12 @@ Pola 10 — EEG Normal
   • Lakukan substitusi ke monotherapy lain secara bertahap
   • Bila monotherapy tetap gagal, pertimbangkan add-on therapy
   • Hindari menghentikan ASM mendadak karena dapat memicu seizure/status
-- [Adverse Effects, Monitoring, dan Kapan Menghentikan ASM] Sebutkan hal-hal penting tentang Monitoring. :: • Adherence
+- [Adverse Effects, Monitoring, dan Kapan Menghentikan ASM] Sebutkan hal-hal penting tentang Monitoring pada Adverse Effects, Monitoring, dan Kapan Menghentikan ASM (Epilepsi & Kejang (termasuk Kejang Demam)). :: • Adherence
   • Anamnesis dan pemeriksaan fisik sesuai adverse effects
   • Pemeriksaan laboratorium bila relevan
   • Evaluasi seizure control
   • EEG pada indikasi tertentu
-- [Status Epilepticus] Sebutkan poin penting pada Status Epilepticus. :: • Semakin lama seizure berlangsung, semakin sulit dihentikan
+- [Status Epilepticus] Sebutkan poin penting pada Status Epilepticus (Epilepsi & Kejang (termasuk Kejang Demam)). :: • Semakin lama seizure berlangsung, semakin sulit dihentikan
   • Tujuan terapi: stop seizure, cari etiologi, dan cegah komplikasi
   • Intervensi dimulai sejak sekitar menit ke-5
 - [Update NICE NG217 — Convulsive Status Epilepticus] Sebutkan urutan atau langkah pada Update NICE NG217 — Convulsive Status Epilepticus? :: • ABC
@@ -490,7 +490,7 @@ Pola 10 — EEG Normal
   • Cek glukosa dan koreksi hipoglikemia
   • Identifikasi penyebab khusus seperti eclampsia atau alcohol withdrawal
   • Cek adherence ASM pada pasien epilepsy
-- [Unprovoked Seizure] Apa poin high-yield (pearl) tentang Unprovoked Seizure? :: “Hipoglikemia berat lalu generalized convulsion” → pikirkan provoked seizure dan koreksi glukosa. “Dua seizure tanpa pencetus, terpisah 3 bulan” → memenuhi pola operasional epilepsy.
+- [Unprovoked Seizure] Apa poin high-yield (pearl) tentang Unprovoked Seizure (Epilepsi & Kejang (termasuk Kejang Demam))? :: “Hipoglikemia berat lalu generalized convulsion” → pikirkan provoked seizure dan koreksi glukosa. “Dua seizure tanpa pencetus, terpisah 3 bulan” → memenuhi pola operasional epilepsy.
 - [Kerangka ILAE 2017] Apa poin high-yield (pearl) tentang Kerangka ILAE 2017? :: Focal seizure; generalized tonic-clonic seizure; tonic seizure; clonic seizure; myoclonic seizure; atonic seizure; typical absence; atypical absence.
 - [EEG, Imaging, dan Evaluasi Pasien] Apa poin high-yield (pearl) tentang EEG, Imaging, dan Evaluasi Pasien? :: EEG NORMAL TIDAK MENYINGKIRKAN EPILEPSY.
 - [Terapi Nonfarmakologis dan Drug-Resistant Epilepsy] Apa poin high-yield (pearl) tentang Terapi Nonfarmakologis dan Drug-Resistant Epilepsy? :: Epilepsy surgery — terutama pada focal drug-resistant epilepsy tertentu seperti mesial temporal lobe epilepsy; vagus nerve stimulation; ketogenic diet, terutama pada epilepsy anak yang sulit dikontrol.

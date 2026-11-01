@@ -679,11 +679,11 @@ OTC deficiency menyebabkan hyperammonemia dengan ↑ orotic acid. Leucine dan ly
 ## Flashcard {kartu}
 
 - [Gambaran Besar] Pada Metabolisme Asam Amino & Siklus Urea, apa konsep intinya? :: Asam amino → nitrogen + carbon skeleton.
-- [Transaminasi] Pada Transaminasi, apa reaksi umumnya? :: Amino acid + α-ketoglutarate ↔ α-keto acid + glutamate
-- [Transaminasi] Pada Transaminasi, apa enzimnya? :: Aminotransferase / transaminase.
-- [Transaminasi] Pada Transaminasi, apa kofaktor pentingnya? :: Pyridoxal phosphate (PLP), turunan vitamin B6.
-- [Oxidative Deamination] Pada Oxidative Deamination, apa lokasi utamanya? :: Mitochondrial matrix, terutama di hati.
-- [Oxidative Deamination] Pada Oxidative Deamination, apa enzimnya? :: Glutamate dehydrogenase.
+- [Transaminasi] Pada Transaminasi, apa reaksi umumnya (Metabolisme Asam Amino & Siklus Urea)? :: Amino acid + α-ketoglutarate ↔ α-keto acid + glutamate
+- [Transaminasi] Pada Transaminasi, apa enzimnya (Metabolisme Asam Amino & Siklus Urea)? :: Aminotransferase / transaminase.
+- [Transaminasi] Pada Transaminasi, apa kofaktor pentingnya (Metabolisme Asam Amino & Siklus Urea)? :: Pyridoxal phosphate (PLP), turunan vitamin B6.
+- [Oxidative Deamination] Pada Oxidative Deamination, apa lokasi utamanya (Metabolisme Asam Amino & Siklus Urea)? :: Mitochondrial matrix, terutama di hati.
+- [Oxidative Deamination] Pada Oxidative Deamination, apa enzimnya (Metabolisme Asam Amino & Siklus Urea)? :: Glutamate dehydrogenase.
 - [Glutamine sebagai Pembawa Nitrogen] Apa yang dimaksud dengan Glutamine synthetase pada Glutamine sebagai Pembawa Nitrogen? :: Glutamate + NH4+ + ATP → glutamine
 - [Langkah 1 — Pembentukan Carbamoyl Phosphate] Pada Langkah 1 — Pembentukan Carbamoyl Phosphate, apa enzimnya? :: Carbamoyl phosphate synthetase I / CPS I.
 - [Langkah 1 — Pembentukan Carbamoyl Phosphate] Pada Langkah 1 — Pembentukan Carbamoyl Phosphate, apa lokasinya? :: Mitochondrial matrix.
@@ -692,16 +692,16 @@ OTC deficiency menyebabkan hyperammonemia dengan ↑ orotic acid. Leucine dan ly
 - [Langkah 2 — Ornithine → Citrulline] Pada Langkah 2 — Ornithine → Citrulline, apa enzimnya? :: Ornithine transcarbamylase / OTC.
 - [Langkah 3 — Citrulline → Argininosuccinate] Pada Langkah 3 — Citrulline → Argininosuccinate, apa enzimnya? :: Argininosuccinate synthetase.
 - [Langkah 5 — Arginine → Ornithine + Urea] Pada Langkah 5 — Arginine → Ornithine + Urea, apa lokasinya? :: Cytosol hepatocyte.
-- [OTC Deficiency] Pada OTC Deficiency, apa pewarisannya? :: X-linked recessive.
+- [OTC Deficiency] Pada OTC Deficiency, apa pewarisannya (Metabolisme Asam Amino & Siklus Urea)? :: X-linked recessive.
 - [CPS I Deficiency] Apa yang dimaksud dengan Perbandingan cepat pada CPS I Deficiency? :: OTC deficiency → ↑ orotic acid.
-- [Citrullinemia] Apa yang dimaksud dengan Defek pada Citrullinemia? :: Argininosuccinate synthetase. → citrulline meningkat.
-- [Argininosuccinic aciduria] Apa yang dimaksud dengan Defek pada Argininosuccinic aciduria? :: Argininosuccinate lyase. → argininosuccinate meningkat.
-- [Argininemia] Apa yang dimaksud dengan Defek pada Argininemia? :: Arginase. → arginine meningkat.
+- [Citrullinemia] Apa yang dimaksud dengan Defek pada Citrullinemia (Metabolisme Asam Amino & Siklus Urea)? :: Argininosuccinate synthetase. → citrulline meningkat.
+- [Argininosuccinic aciduria] Apa yang dimaksud dengan Defek pada Argininosuccinic aciduria (Metabolisme Asam Amino & Siklus Urea)? :: Argininosuccinate lyase. → argininosuccinate meningkat.
+- [Argininemia] Apa yang dimaksud dengan Defek pada Argininemia (Metabolisme Asam Amino & Siklus Urea)? :: Arginase. → arginine meningkat.
 - [Maple Syrup Urine Disease / MSUD] Apa yang dimaksud dengan Defek pada Maple Syrup Urine Disease / MSUD? :: Branched-chain α-ketoacid dehydrogenase.
 - [Phenylketonuria / PKU] Apa yang dimaksud dengan Normal pada Phenylketonuria / PKU? :: Phenylalanine → tyrosine
-- [Phenylketonuria / PKU] Pada Phenylketonuria / PKU, apa enzimnya? :: Phenylalanine hydroxylase.
-- [Phenylketonuria / PKU] Pada Phenylketonuria / PKU, apa kofaktornya? :: Tetrahydrobiopterin / BH4.
-- [Homocystinuria] Jelaskan Banding dengan Marfan dalam konteks Homocystinuria. :: Homocystinuria → thrombosis + intellectual disability dapat menonjol.
+- [Phenylketonuria / PKU] Pada Phenylketonuria / PKU, apa enzimnya (Metabolisme Asam Amino & Siklus Urea)? :: Phenylalanine hydroxylase.
+- [Phenylketonuria / PKU] Pada Phenylketonuria / PKU, apa kofaktornya (Metabolisme Asam Amino & Siklus Urea)? :: Tetrahydrobiopterin / BH4.
+- [Homocystinuria] Jelaskan Banding dengan Marfan dalam konteks Homocystinuria (Metabolisme Asam Amino & Siklus Urea). :: Homocystinuria → thrombosis + intellectual disability dapat menonjol.
 - [Aspartate dalam Urea Cycle] Jelaskan Aspartate dibentuk melalui transaminasi dalam konteks Aspartate dalam Urea Cycle. :: Oxaloacetate + glutamate ↔ aspartate + α-ketoglutarate
 - [Alur yang Harus Dihafal] Apa yang dimaksud dengan Nitrogen disposal pada Alur yang Harus Dihafal? :: Amino acid → transaminasi → glutamate → NH4+ → CPS I → carbamoyl phosphate → citrulline → argininosuccinate → arginine → urea + ornithine.
 - [Metabolisme Asam Amino & Siklus Urea] Apa yang dimaksud dengan Glutamate pada Metabolisme Asam Amino & Siklus Urea? :: Collector utama gugus amino
@@ -724,25 +724,28 @@ OTC deficiency menyebabkan hyperammonemia dengan ↑ orotic acid. Leucine dan ly
   • Threonine
   • Tryptophan
   • Valine
-- [Oxidative Deamination] Sebutkan regulasi umum pada Oxidative Deamination. :: • ADP/GDP mengaktifkan → sinyal energi rendah
+- [Oxidative Deamination] Sebutkan regulasi umum pada Oxidative Deamination (Metabolisme Asam Amino & Siklus Urea). :: • ADP/GDP mengaktifkan → sinyal energi rendah
   • ATP/GTP menghambat → sinyal energi tinggi
-- [Transdeamination] Sebutkan banyak asam amino membuang nitrogen melalui kombinasi dua langkah pada Transdeamination. :: • Transaminasi → glutamate
+- [Transdeamination] Sebutkan banyak asam amino membuang nitrogen melalui kombinasi dua langkah pada Transdeamination (Metabolisme Asam Amino & Siklus Urea). :: • Transaminasi → glutamate
   • Oxidative deamination glutamate → NH4+
 - [Glutamine sebagai Pembawa Nitrogen] Sebutkan fungsi penting glutamine pada Glutamine sebagai Pembawa Nitrogen. :: • Transport nitrogen yang relatif aman
   • Bahan bakar penting bagi enterocyte dan beberapa sel imun
   • Sumber nitrogen untuk sintesis nukleotida
   • Pada ginjal membantu pembuangan NH4+ dalam regulasi asam-basa
-- [Glucogenic vs Ketogenic Amino Acids] Sebutkan hal-hal penting tentang Hanya ketogenic murni. :: • Leucine
-  • Lysine
-- [Glucogenic vs Ketogenic Amino Acids] Sebutkan hal-hal penting tentang Glucogenic sekaligus ketogenic. :: • Isoleucine
+- [Glucose–Alanine Cycle] Sebutkan fungsi glucose–alanine cycle (Metabolisme Asam Amino & Siklus Urea). :: • Mengangkut nitrogen dari otot ke hati
+  • Membawa carbon skeleton dalam bentuk alanine
+  • Membantu mempertahankan glucose selama puasa atau aktivitas
+- [Glucogenic vs Ketogenic Amino Acids] Sebutkan hal-hal penting tentang Glucogenic sekaligus ketogenic pada Glucogenic vs Ketogenic Amino Acids. :: • Isoleucine
   • Phenylalanine
   • Threonine
   • Tryptophan
   • Tyrosine
-- [Siklus Urea — Fungsi Utama] Sebutkan hal-hal penting tentang Urea membawa dua atom nitrogen. :: • Satu berasal dari NH4+ bebas
-  • Satu berasal dari aspartate
 - [Regulasi Urea Cycle] Sebutkan regulasi jangka lebih lama pada Regulasi Urea Cycle. :: • Aktivitas/ekspresi enzim urea cycle meningkat saat diet tinggi protein
   • Meningkat pada keadaan katabolik atau puasa berkepanjangan karena breakdown asam amino bertambah
+- [OTC Deficiency] Sebutkan temuan klasik pada OTC Deficiency (Metabolisme Asam Amino & Siklus Urea). :: • Hyperammonemia
+  • Orotic acid urine meningkat
+  • BUN rendah
+  • Tidak ada megaloblastic anemia akibat masalah ini
 - [Branched-Chain Amino Acids] Sebutkan hal-hal penting tentang Branched-chain amino acids / BCAA. :: • Leucine
   • Isoleucine
   • Valine
@@ -757,9 +760,9 @@ OTC deficiency menyebabkan hyperammonemia dengan ↑ orotic acid. Leucine dan ly
   • Musty/mousy odor
   • Hypopigmentation akibat berkurangnya precursor tyrosine untuk melanin
 - [Amino Acid Pool] Apa jebakan yang sering muncul pada soal tentang Amino Acid Pool? :: Tidak ada “gudang asam amino” khusus seperti glycogen atau triglyceride.
-- [Transaminasi] Apa poin high-yield (pearl) tentang Transaminasi? :: Vitamin B6 sangat penting pada reaksi transaminasi.
+- [Transaminasi] Apa poin high-yield (pearl) tentang Transaminasi (Metabolisme Asam Amino & Siklus Urea)? :: Vitamin B6 sangat penting pada reaksi transaminasi.
 - [AST / aspartate aminotransferase] Apa jebakan yang sering muncul pada soal tentang AST / aspartate aminotransferase? :: ALT dan AST membutuhkan PLP / vitamin B6.
 - [Glucogenic vs Ketogenic Amino Acids] Apa jebakan yang sering muncul pada soal tentang Glucogenic vs Ketogenic Amino Acids? :: Leucine dan lysine adalah dua asam amino yang ONLY ketogenic.
-- [OTC Deficiency] Apa jebakan yang sering muncul pada soal tentang OTC Deficiency? :: OTC deficiency = hyperammonemia + ↑ orotic acid.
+- [OTC Deficiency] Apa jebakan yang sering muncul pada soal tentang OTC Deficiency (Metabolisme Asam Amino & Siklus Urea)? :: OTC deficiency = hyperammonemia + ↑ orotic acid.
 - [Maple Syrup Urine Disease / MSUD] Apa jebakan yang sering muncul pada soal tentang Maple Syrup Urine Disease / MSUD? :: MSUD terkait BCAA: leucine, isoleucine, valine.
 - [Phenylketonuria / PKU] Apa jebakan yang sering muncul pada soal tentang Phenylketonuria / PKU? :: BH4 juga dibutuhkan pada beberapa reaksi hydroxylase lain.

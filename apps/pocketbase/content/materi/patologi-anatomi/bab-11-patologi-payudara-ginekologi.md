@@ -325,7 +325,7 @@ Bilateral ovarian signet-ring metastases -> Krukenberg tumor.
 - [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang AFP pada Patologi Payudara & Ginekologi? :: Yolk sac tumor; dapat meningkat pada beberapa germ-cell tumors
 - [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang hCG pada Patologi Payudara & Ginekologi? :: Dapat meningkat pada tumors dengan trophoblastic differentiation
 - [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang CEA pada Patologi Payudara & Ginekologi? :: Dapat membantu dalam konteks mucinous tumor/metastatic GI differential
-- [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Invasive lobular carcinoma klasik? :: Single-file infiltration
+- [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Invasive lobular carcinoma klasik pada Patologi Payudara & Ginekologi? :: Single-file infiltration
 - [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Koilocytosis pada Patologi Payudara & Ginekologi? :: Hallmark morphologic HPV effect
 - [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Serous endometrial carcinoma pada Patologi Payudara & Ginekologi? :: High-grade, atrophic background, TP53 abnormal
 - [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Leiomyoma pada Patologi Payudara & Ginekologi? :: Well-circumscribed whorled benign smooth-muscle tumor
@@ -339,8 +339,8 @@ Bilateral ovarian signet-ring metastases -> Krukenberg tumor.
 - [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang Endometrium pada Patologi Payudara & Ginekologi? :: EIN/endometrioid = estrogen pathway; serous = older/atrophic + TP53
 - [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang Uterus pada Patologi Payudara & Ginekologi? :: Leiomyoma = whorled bland smooth muscle; leiomyosarcoma = atypia + tumor cell necrosis + mitoses
 - [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang Ovarium pada Patologi Payudara & Ginekologi? :: Serous = papillary/high-grade; teratoma = mature tissues; dysgerminoma = clear cells + lymphocytes; yolk sac = AFP + Schiller-Duval; granulosa = Call-Exner + estrogen; Krukenberg = bilateral signet-ring metastasis
-- [Fibrocystic Changes] Apa poin high-yield (pearl) tentang Fibrocystic Changes? :: Perubahan nonproliferatif sederhana tidak meningkatkan risiko kanker secara bermakna. Risiko meningkat bila terdapat proliferative disease, terutama bila disertai atypical hyperplasia.
-- [Phyllodes Tumor] Apa clue praktikum untuk Phyllodes Tumor? :: Bila lesi fibroepitelial menunjukkan stroma sangat hiperseluler dengan proyeksi menyerupai daun, pikirkan phyllodes daripada fibroadenoma.
+- [Fibrocystic Changes] Apa poin high-yield (pearl) tentang Fibrocystic Changes (Patologi Payudara & Ginekologi)? :: Perubahan nonproliferatif sederhana tidak meningkatkan risiko kanker secara bermakna. Risiko meningkat bila terdapat proliferative disease, terutama bila disertai atypical hyperplasia.
+- [Phyllodes Tumor] Apa clue praktikum untuk Phyllodes Tumor (Patologi Payudara & Ginekologi)? :: Bila lesi fibroepitelial menunjukkan stroma sangat hiperseluler dengan proyeksi menyerupai daun, pikirkan phyllodes daripada fibroadenoma.
 - [Invasive Breast Carcinoma of No Special Type] Apa clue praktikum untuk Invasive Breast Carcinoma of No Special Type? :: Stroma keras/desmoplastik dengan struktur kelenjar irregular dan kehilangan myoepithelial boundary sangat mendukung invasi.
 - [Serous Endometrial Carcinoma] Apa jebakan yang sering muncul pada soal tentang Serous Endometrial Carcinoma? :: Endometrioid lebih sering terkait estrogen/EIN, sedangkan serous carcinoma lebih khas high-grade, atrophic background, dan TP53 abnormal.
-- [Leiomyosarcoma] Apa poin high-yield (pearl) tentang Leiomyosarcoma? :: Massa uterus yang besar tidak otomatis malignant; morfologi dan pola pertumbuhan lebih penting daripada ukuran semata.
+- [Leiomyosarcoma] Apa poin high-yield (pearl) tentang Leiomyosarcoma (Patologi Payudara & Ginekologi)? :: Massa uterus yang besar tidak otomatis malignant; morfologi dan pola pertumbuhan lebih penting daripada ukuran semata.

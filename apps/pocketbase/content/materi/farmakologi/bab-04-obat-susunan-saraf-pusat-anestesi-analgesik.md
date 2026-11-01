@@ -190,10 +190,10 @@ Sedatif menenangkan, sedangkan hipnotik mempermudah dan mempertahankan tidur. Ba
 ## Flashcard {kartu}
 
 - [Prinsip Anestesi Seimbang] Jelaskan Contoh pola soal dalam konteks Prinsip Anestesi Seimbang. :: Pasien akan menjalani laparoskopi, lalu digunakan kombinasi hipnotik, opioid, dan pelumpuh otot agar kebutuhan tiap obat lebih kecil. Prinsip yang sedang diterapkan adalah anestesi seimbang.
-- [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Laparoskopi + kombinasi hipnotik, opioid, pelumpuh otot? :: Anestesi seimbang
-- [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Hipotensi tajam setelah propofol tanpa perdarahan? :: Vasodilatasi + depresi miokard
-- [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tamponade + bergantung pada tonus simpatis? :: Ketamin
-- [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Sevoflurane + pertanyaan “1 MAC”? :: Mencegah gerakan terhadap stimulus bedah pada 50%
+- [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Laparoskopi + kombinasi hipnotik, opioid, pelumpuh otot pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Anestesi seimbang
+- [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Hipotensi tajam setelah propofol tanpa perdarahan pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Vasodilatasi + depresi miokard
+- [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tamponade + bergantung pada tonus simpatis pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Ketamin
+- [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Sevoflurane + pertanyaan “1 MAC” pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Mencegah gerakan terhadap stimulus bedah pada 50%
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang perlu diingat tentang Lansia + fentanyl pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Kebutuhan MAC sevoflurane menurun
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang dimaksud dengan Sedasi pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Calming dengan sedikit/tanpa efek motorik yang bermakna
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang dimaksud dengan Hipnotik pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Menyebabkan kantuk dan membantu onset/pemeliharaan tidur
@@ -202,18 +202,18 @@ Sedatif menenangkan, sedangkan hipnotik mempermudah dan mempertahankan tidur. Ba
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang perlu diingat tentang Opioid presinaptik pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Ca²⁺ masuk berkurang
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang perlu diingat tentang Opioid postsinaptik pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Efflux K⁺ meningkat
 - [Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)] Apa yang perlu diingat tentang Efflux K⁺ postsinaptik pada Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)? :: Hiperpolarisasi dan neuron lebih sulit teraktivasi
-- [Sedasi vs Hipnosis] Sebutkan hal-hal penting tentang Sedasi (anxiolytic). :: • Efek menenangkan atau calming
+- [Sedasi vs Hipnosis] Sebutkan hal-hal penting tentang Sedasi (anxiolytic) pada Sedasi vs Hipnosis (Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)). :: • Efek menenangkan atau calming
   • Tidak menimbulkan, atau hanya sedikit menimbulkan, efek pada sistem motorik
-- [Kelas Sedatif–Hipnotik] Sebutkan kelas pada Kelas Sedatif–Hipnotik. :: • Barbiturat
+- [Kelas Sedatif–Hipnotik] Sebutkan kelas pada Kelas Sedatif–Hipnotik (Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)). :: • Barbiturat
   • Benzodiazepine
   • Z-drugs: zolpidem, zaleplon, eszopiclone
-- [Farmakokinetik Sedatif–Hipnotik] Sebutkan hal-hal penting tentang Ringkasan farmakokinetik. :: • Barbiturat — disebut biasanya diekskresikan langsung
+- [Farmakokinetik Sedatif–Hipnotik] Sebutkan hal-hal penting tentang Ringkasan farmakokinetik pada Farmakokinetik Sedatif–Hipnotik (Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)). :: • Barbiturat — disebut biasanya diekskresikan langsung
   • Benzodiazepine — metabolisme hepar melalui CYP3A4
   • Newer drugs — metabolisme hepar melalui CYP3A4
 - [Analgesik Opioid: Reseptor] Sebutkan dua asosiasi reseptor yang penting pada Analgesik Opioid: Reseptor. :: • Reseptor μ (mu) → berhubungan dengan depresi napas
   • Reseptor κ (kappa) → berhubungan dengan efek psikotomimetik
 - [Sedasi vs Hipnosis] Apa poin high-yield (pearl) tentang Sedasi vs Hipnosis? :: Bila stem menyebut pasien tetap dapat merespons dan tujuan utamanya menenangkan, pikirkan sedasi/anxiolysis. Bila tujuan utama adalah menginduksi atau mempertahankan tidur, pikirkan efek hipnotik.
 - [Prinsip Anestesi Seimbang] Apa poin high-yield (pearl) tentang Prinsip Anestesi Seimbang? :: Kata kunci “kombinasi hipnotik + opioid + pelumpuh otot untuk mengurangi kebutuhan tiap obat” → anestesi seimbang.
-- [Ketamin] Pola banding cepat: apa isi atau ringkasannya? :: Hipotensi setelah propofol → pikirkan vasodilatasi + depresi kardiovaskular. Cadangan kardiovaskular sangat terbatas → etomidat menjadi pilihan. Membutuhkan dukungan tonus simpatis → ketamin menjadi pilihan.
+- [Ketamin] Pola banding cepat: apa isi atau ringkasannya pada Ketamin (Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid))? :: Hipotensi setelah propofol → pikirkan vasodilatasi + depresi kardiovaskular. Cadangan kardiovaskular sangat terbatas → etomidat menjadi pilihan. Membutuhkan dukungan tonus simpatis → ketamin menjadi pilihan.
 - [Anestetik Inhalasi dan Konsep MAC] Apa poin high-yield (pearl) tentang Anestetik Inhalasi dan Konsep MAC? :: MAC adalah ukuran potensi imobilisasi anestetik inhalasi; MAC bukan definisi hilangnya respons verbal; MAC tidak berarti menjamin amnesia pada semua pasien; kebutuhan MAC menurun pada usia lanjut; opioid seperti fentanyl dapat menurunkan kebutuhan MAC anestetik volatil.
 - [Hasil akhir] Apa poin high-yield (pearl) tentang Mekanisme Analgesik Opioid? :: Opioid tidak bekerja dengan meningkatkan influx Ca²⁺ postsinaptik. Pola yang muncul justru: Ca²⁺ presinaptik ↓, pelepasan glutamat ↓, efflux K⁺ postsinaptik ↑, hiperpolarisasi ↑.

@@ -573,8 +573,8 @@ Siklus TCA berlangsung terutama di matriks mitokondria dan mengoksidasi acetyl-C
 
 - [Lokasi Siklus TCA] Apa yang dimaksud dengan Pengecualian penting pada Lokasi Siklus TCA? :: Succinate dehydrogenase berada pada membran dalam mitokondria karena enzim ini sekaligus merupakan Kompleks II rantai transpor elektron.
 - [Jembatan Glikolisis ke TCA] Pada Jembatan Glikolisis ke TCA, apa reaksinya? :: Piruvat + CoA-SH + NAD⁺ → Acetyl-CoA + CO₂ + NADH + H⁺.
-- [Regulasi PDH] Apa yang dimaksud dengan PDH kinase pada Regulasi PDH? :: Memfosforilasi PDH → PDH inaktif.
-- [Regulasi PDH] Apa yang dimaksud dengan PDH phosphatase pada Regulasi PDH? :: Mendefosforilasi PDH → PDH aktif.
+- [Regulasi PDH] Apa yang dimaksud dengan PDH kinase pada Regulasi PDH (Siklus Asam Sitrat (Krebs))? :: Memfosforilasi PDH → PDH inaktif.
+- [Regulasi PDH] Apa yang dimaksud dengan PDH phosphatase pada Regulasi PDH (Siklus Asam Sitrat (Krebs))? :: Mendefosforilasi PDH → PDH aktif.
 - [Fluoroacetate dan Aconitase] Apa yang dimaksud dengan Clinical/toxicology anchor pada Fluoroacetate dan Aconitase? :: Fluoroacetate → fluorocitrate → aconitase inhibition → penurunan produksi energi.
 - [Reaksi 3 — Isocitrate Dehydrogenase] Pada Reaksi 3 — Isocitrate Dehydrogenase, apa enzimnya? :: Isocitrate dehydrogenase.
 - [Reaksi 4 — α-Ketoglutarate Dehydrogenase] Pada Reaksi 4 — α-Ketoglutarate Dehydrogenase, apa enzimnya? :: Α-ketoglutarate dehydrogenase complex.
@@ -584,9 +584,9 @@ Siklus TCA berlangsung terutama di matriks mitokondria dan mengoksidasi acetyl-C
 - [Reaksi 8 — Malate Dehydrogenase] Pada Reaksi 8 — Malate Dehydrogenase, apa enzimnya? :: Malate dehydrogenase.
 - [Mengapa TCA Disebut Amphibolic?] Apa yang dimaksud dengan katabolisme pada Mengapa TCA Disebut Amphibolic? :: Mengoksidasi acetyl-CoA untuk menghasilkan energi
 - [Mengapa TCA Disebut Amphibolic?] Apa yang dimaksud dengan anabolisme pada Mengapa TCA Disebut Amphibolic? :: Menyediakan intermediate untuk biosintesis.
-- [Anaplerosis] Jelaskan Reaksi paling penting dalam konteks Anaplerosis. :: Piruvat + CO₂ + ATP → Oxaloacetate.
-- [Anaplerosis] Pada Anaplerosis, apa enzimnya? :: Pyruvate carboxylase.
-- [Mnemonic Produk Energi] Jelaskan: Mulai dari isocitrate. :: NADH → NADH → GTP → FADH₂ → — → NADH.
+- [Anaplerosis] Jelaskan Reaksi paling penting dalam konteks Anaplerosis (Siklus Asam Sitrat (Krebs)). :: Piruvat + CO₂ + ATP → Oxaloacetate.
+- [Anaplerosis] Pada Anaplerosis, apa enzimnya (Siklus Asam Sitrat (Krebs))? :: Pyruvate carboxylase.
+- [Mnemonic Produk Energi] Jelaskan: Mulai dari isocitrate pada Mnemonic Produk Energi (Siklus Asam Sitrat (Krebs)). :: NADH → NADH → GTP → FADH₂ → — → NADH.
 - [Mnemonic Produk Energi] Jelaskan Urutan enzim penghasil energi dalam konteks Mnemonic Produk Energi. :: Isocitrate DH → α-KGDH → Succinyl-CoA synthetase → Succinate DH → Malate DH.
 - [Lima Kofaktor PDH] Sebutkan lima kofaktor klasik PDH pada Lima Kofaktor PDH. :: • TPP (thiamine pyrophosphate; vitamin B1)
   • Lipoic acid/lipoamide
@@ -603,7 +603,7 @@ Siklus TCA berlangsung terutama di matriks mitokondria dan mengoksidasi acetyl-C
 - [Tiga Titik Regulasi Utama TCA] Sebutkan enzim regulasi utama pada Tiga Titik Regulasi Utama TCA. :: • Citrate synthase
   • Isocitrate dehydrogenase
   • Α-ketoglutarate dehydrogenase
-- [Succinate Dehydrogenase: Jembatan TCA–ETC] Sebutkan hal-hal penting tentang Succinate dehydrogenase unik karena merupakan. :: • Enzim siklus TCA
+- [Succinate Dehydrogenase: Jembatan TCA–ETC] Sebutkan hal-hal penting tentang Succinate dehydrogenase unik karena merupakan pada Succinate Dehydrogenase: Jembatan TCA–ETC. :: • Enzim siklus TCA
   • Kompleks II rantai transpor elektron
-- [Malonate] Bagaimana cara mengingat Malonate? :: Malonate blocks succinate dehydrogenase.
-- [Mnemonic Urutan Intermediate] Bagaimana cara mengingat Mnemonic Urutan Intermediate? :: Can I Keep Selling Sex For Money, Officer?
+- [Malonate] Bagaimana cara mengingat Malonate (Siklus Asam Sitrat (Krebs))? :: Malonate blocks succinate dehydrogenase.
+- [Mnemonic Urutan Intermediate] Bagaimana cara mengingat Mnemonic Urutan Intermediate (Siklus Asam Sitrat (Krebs))? :: Can I Keep Selling Sex For Money, Officer?

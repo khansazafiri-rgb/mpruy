@@ -441,34 +441,34 @@ Glomerular disease dibedakan dengan syndrome + LM/IF/EM pattern. PSGN granular-h
 
 ## Flashcard {kartu}
 
-- [Nephritic vs Nephrotic Syndrome] Jelaskan NEPHRITIC. :: Inflamasi glomerulus → hematuria, RBC casts, azotemia, oliguria, hypertension, proteinuria biasanya subnephrotik. Kata kunci: “darah + inflamasi”.
-- [Poststreptococcal Glomerulonephritis (PSGN)] Apa yang dimaksud dengan LM pada Poststreptococcal Glomerulonephritis? :: Glomeruli hypercellular dengan leukocyte infiltration.
-- [Poststreptococcal Glomerulonephritis (PSGN)] Apa yang dimaksud dengan EM pada Poststreptococcal Glomerulonephritis? :: Subepithelial “humps”.
+- [Nephritic vs Nephrotic Syndrome] Jelaskan NEPHRITIC pada Nephritic vs Nephrotic Syndrome (Patologi Sistem Urogenital). :: Inflamasi glomerulus → hematuria, RBC casts, azotemia, oliguria, hypertension, proteinuria biasanya subnephrotik. Kata kunci: “darah + inflamasi”.
+- [Poststreptococcal Glomerulonephritis (PSGN)] Apa yang dimaksud dengan LM pada Poststreptococcal Glomerulonephritis (Patologi Sistem Urogenital)? :: Glomeruli hypercellular dengan leukocyte infiltration.
+- [Poststreptococcal Glomerulonephritis (PSGN)] Apa yang dimaksud dengan EM pada Poststreptococcal Glomerulonephritis (Patologi Sistem Urogenital)? :: Subepithelial “humps”.
 - [Rapidly Progressive (CRESCENTIC) Glomerulonephritis] Apa yang dimaksud dengan Type II pada Rapidly Progressive (CRESCENTIC) Glomerulonephritis? :: Immune-complex, IF granular.
-- [IgA Nephropathy] Apa yang dimaksud dengan LM pada IgA Nephropathy? :: Mesangial proliferation.
-- [IgA Nephropathy] Pada IgA Nephropathy, apa hubungan sistemiknya? :: IgA vasculitis dapat disertai purpura, abdominal pain, arthralgia, dan renal involvement.
+- [IgA Nephropathy] Apa yang dimaksud dengan LM pada IgA Nephropathy (Patologi Sistem Urogenital)? :: Mesangial proliferation.
+- [IgA Nephropathy] Pada IgA Nephropathy, apa hubungan sistemiknya (Patologi Sistem Urogenital)? :: IgA vasculitis dapat disertai purpura, abdominal pain, arthralgia, dan renal involvement.
 - [Minimal Change Disease] Apa yang dimaksud dengan EM pada Minimal Change Disease? :: Diffuse foot-process effacement pada podocyte.
-- [Membranous Nephropathy] Apa yang dimaksud dengan LM pada Membranous Nephropathy? :: Diffuse thickening of glomerular capillary walls.
-- [Membranous Nephropathy] Jelaskan EM. :: Subepithelial immune deposits.
+- [Membranous Nephropathy] Apa yang dimaksud dengan LM pada Membranous Nephropathy (Patologi Sistem Urogenital)? :: Diffuse thickening of glomerular capillary walls.
+- [Membranous Nephropathy] Jelaskan EM pada Membranous Nephropathy (Patologi Sistem Urogenital). :: Subepithelial immune deposits.
 - [Acute Tubular Injury / Acute Tubular Necrosis] Pada Acute Tubular Injury / Acute Tubular Necrosis, apa penyebab utamanya? :: Ischemic atau nephrotoxic injury.
 - [Acute Tubular Injury / Acute Tubular Necrosis] Jelaskan Fase klinis klasik dalam konteks Acute Tubular Injury / Acute Tubular Necrosis. :: Initiation → maintenance → recovery; recovery dapat disertai polyuria karena fungsi reabsorpsi belum pulih sepenuhnya.
-- [Acute Pyelonephritis] Apa yang dimaksud dengan Urine clue pada Acute Pyelonephritis? :: WBC casts menunjukkan sumber inflamasi berada di ginjal.
+- [Acute Pyelonephritis] Pada Acute Pyelonephritis, apa urine cluenya (Patologi Sistem Urogenital)? :: WBC casts menunjukkan sumber inflamasi berada di ginjal.
 - [Chronic Pyelonephritis / Reflux Nephropathy] Apa yang dimaksud dengan Gross pada Chronic Pyelonephritis / Reflux Nephropathy? :: Irregular asymmetric cortical scarring dan blunted/deformed calyces.
-- [Acute Interstitial Nephritis] Pada Acute Interstitial Nephritis, apa histologinya? :: Interstitial edema dan inflammatory infiltrate, sering prominent eosinophils pada drug-induced cases.
-- [Benign Nephrosclerosis] Pada Benign Nephrosclerosis, apa histologinya? :: Hyaline arteriolosclerosis dan vascular wall thickening → chronic ischemic parenchymal loss.
+- [Acute Interstitial Nephritis] Pada Acute Interstitial Nephritis, apa histologinya (Patologi Sistem Urogenital)? :: Interstitial edema dan inflammatory infiltrate, sering prominent eosinophils pada drug-induced cases.
+- [Benign Nephrosclerosis] Pada Benign Nephrosclerosis, apa histologinya (Patologi Sistem Urogenital)? :: Hyaline arteriolosclerosis dan vascular wall thickening → chronic ischemic parenchymal loss.
 - [Autosomal Dominant Polycystic Kidney Disease (ADPKD)] Apa yang dimaksud dengan Manifestasi/associations pada Autosomal Dominant Polycystic Kidney Disease? :: Hypertension, hematuria, renal failure, hepatic cysts, intracranial berry aneurysm, dan cardiac valve abnormalities.
 - [Clear Cell RCC] Apa yang dimaksud dengan Genetik klasik pada Clear Cell RCC? :: Loss/inactivation VHL pada chromosome 3p → peningkatan HIF signaling dan angiogenic factors.
-- [Clear Cell RCC] Pada Clear Cell RCC, apa histologinya? :: Nests/alveoli of clear cells dengan delicate branching vasculature.
-- [Papillary RCC] Jelaskan Molecular association klasik dalam konteks Papillary RCC. :: MET pathway pada sebagian kasus.
-- [Wilms Tumor (NEPHROBLASTOMA)] Jelaskan: Associations yang sering diuji. :: WT1-related syndromes seperti WAGR dan Denys–Drash; Beckwith–Wiedemann juga meningkatkan risiko Wilms tumor.
-- [Urothelial Carcinoma] Jelaskan High-grade flat/CIS pathway dalam konteks Urothelial Carcinoma. :: Severe atypia, high progression/invasion risk; TP53/RB pathway klasik.
+- [Clear Cell RCC] Pada Clear Cell RCC, apa histologinya (Patologi Sistem Urogenital)? :: Nests/alveoli of clear cells dengan delicate branching vasculature.
+- [Papillary RCC] Jelaskan Molecular association klasik dalam konteks Papillary RCC (Patologi Sistem Urogenital). :: MET pathway pada sebagian kasus.
+- [Wilms Tumor (NEPHROBLASTOMA)] Jelaskan: Associations yang sering diuji pada Wilms Tumor (Patologi Sistem Urogenital). :: WT1-related syndromes seperti WAGR dan Denys–Drash; Beckwith–Wiedemann juga meningkatkan risiko Wilms tumor.
+- [Urothelial Carcinoma] Jelaskan High-grade flat/CIS pathway dalam konteks Urothelial Carcinoma (Patologi Sistem Urogenital). :: Severe atypia, high progression/invasion risk; TP53/RB pathway klasik.
 - [Cystitis — Pola Dasar] Apa yang dimaksud dengan Chronic cystitis pada Cystitis — Pola Dasar? :: Chronic inflammatory infiltrate dan reactive epithelial changes.
-- [Seminoma] Apa yang dimaksud dengan Gross pada Seminoma? :: Homogeneous pale fleshy mass, biasanya tanpa extensive hemorrhage/necrosis.
-- [Seminoma] Apa yang dimaksud dengan Markers pada Seminoma? :: OCT3/4 dan PLAP sering positif. AFP TIDAK meningkat pada pure seminoma; hCG dapat meningkat bila ada syncytiotrophoblastic cells.
-- [Yolk Sac Tumor] Jelaskan Histologi pathognomonic clue dalam konteks Yolk Sac Tumor. :: Schiller–Duval body, menyerupai glomerulus dengan central vessel dikelilingi tumor cells dalam space.
-- [Prostatic Adenocarcinoma] Pada Prostatic Adenocarcinoma, apa histologinya? :: Small crowded malignant glands, infiltrative pattern, absent basal cell layer, dan prominent nucleoli.
-- [Patologi Sistem Urogenital] Apa yang perlu diketahui tentang Calcium oxalate/calcium phosphate? :: Tersering; dapat berbentuk envelope/dumbbell
-- [Patologi Sistem Urogenital] Apa yang perlu diketahui tentang Struvite (magnesium ammonium phosphate)? :: Terkait urease-positive organisms; dapat membentuk staghorn calculi
+- [Seminoma] Apa yang dimaksud dengan Gross pada Seminoma (Patologi Sistem Urogenital)? :: Homogeneous pale fleshy mass, biasanya tanpa extensive hemorrhage/necrosis.
+- [Seminoma] Apa yang dimaksud dengan Markers pada Seminoma (Patologi Sistem Urogenital)? :: OCT3/4 dan PLAP sering positif. AFP TIDAK meningkat pada pure seminoma; hCG dapat meningkat bila ada syncytiotrophoblastic cells.
+- [Yolk Sac Tumor] Pada Yolk Sac Tumor, apa histologi pathognomonic cluenya? :: Schiller–Duval body, menyerupai glomerulus dengan central vessel dikelilingi tumor cells dalam space.
+- [Prostatic Adenocarcinoma] Pada Prostatic Adenocarcinoma, apa histologinya (Patologi Sistem Urogenital)? :: Small crowded malignant glands, infiltrative pattern, absent basal cell layer, dan prominent nucleoli.
+- [Patologi Sistem Urogenital] Apa yang perlu diketahui tentang Calcium oxalate/calcium phosphate pada Patologi Sistem Urogenital? :: Tersering; dapat berbentuk envelope/dumbbell
+- [Patologi Sistem Urogenital] Apa yang perlu diketahui tentang Struvite (magnesium ammonium phosphate) pada Patologi Sistem Urogenital? :: Terkait urease-positive organisms; dapat membentuk staghorn calculi
 - [Patologi Sistem Urogenital] Apa yang perlu diketahui tentang Uric acid pada Patologi Sistem Urogenital? :: Radiolucent pada plain radiograph; rhomboid crystals
 - [Patologi Sistem Urogenital] Apa komplikasi penting pada Patologi Sistem Urogenital? :: Obstruction, hydronephrosis, infection, hematuria
 - [Patologi Sistem Urogenital] Apa yang dimaksud dengan PSGN pada Patologi Sistem Urogenital? :: Granular IF + subepithelial humps
@@ -489,18 +489,18 @@ Glomerular disease dibedakan dengan syndrome + LM/IF/EM pattern. PSGN granular-h
 - [Patologi Sistem Urogenital] Apa yang perlu diketahui tentang Seminoma pada Patologi Sistem Urogenital? :: AFP should remain normal in pure seminoma
 - [Patologi Sistem Urogenital] Apa yang dimaksud dengan Yolk sac tumor pada Patologi Sistem Urogenital? :: AFP + Schiller–Duval bodies
 - [Patologi Sistem Urogenital] Apa yang dimaksud dengan Choriocarcinoma pada Patologi Sistem Urogenital? :: HCG + early hematogenous spread
-- [Diabetic Nephropathy] Sebutkan perubahan utama pada Diabetic Nephropathy. :: • GBM thickening
+- [Diabetic Nephropathy] Sebutkan perubahan utama pada Diabetic Nephropathy (Patologi Sistem Urogenital). :: • GBM thickening
   • Diffuse mesangial sclerosis
   • Nodular glomerulosclerosis = Kimmelstiel–Wilson nodules
   • Hyaline arteriolosclerosis dapat mengenai afferent DAN efferent arterioles
-- [Malignant Hypertension] Sebutkan morfologi vaskular khas pada Malignant Hypertension. :: • Hyperplastic arteriolosclerosis → concentric “onion-skin” thickening
+- [Malignant Hypertension] Sebutkan morfologi vaskular khas pada Malignant Hypertension (Patologi Sistem Urogenital). :: • Hyperplastic arteriolosclerosis → concentric “onion-skin” thickening
   • Fibrinoid necrosis pada arterioles dalam injury berat
-- [Wilms Tumor (NEPHROBLASTOMA)] Sebutkan histologi klasik triphasic pada Wilms Tumor. :: • Blastemal small blue cells
+- [Wilms Tumor (NEPHROBLASTOMA)] Sebutkan histologi klasik triphasic pada Wilms Tumor (Patologi Sistem Urogenital). :: • Blastemal small blue cells
   • Primitive epithelial structures/tubules
   • Stromal component
-- [Urothelial Carcinoma] Sebutkan dua pola konseptual pada Urothelial Carcinoma. :: • Low-grade papillary pathway: sering papillary, recurrent tetapi lebih jarang invasive; FGFR3 pathway klasik
+- [Urothelial Carcinoma] Sebutkan dua pola konseptual pada Urothelial Carcinoma (Patologi Sistem Urogenital). :: • Low-grade papillary pathway: sering papillary, recurrent tetapi lebih jarang invasive; FGFR3 pathway klasik
   • High-grade flat/CIS pathway: severe atypia, high progression/invasion risk; TP53/RB pathway klasik
-- [Poststreptococcal Glomerulonephritis (PSGN)] Apa korelasi klinis dari Poststreptococcal Glomerulonephritis? :: Cola-colored urine, periorbital edema, hypertension, oliguria.
+- [Poststreptococcal Glomerulonephritis (PSGN)] Apa korelasi klinis dari Poststreptococcal Glomerulonephritis (Patologi Sistem Urogenital)? :: Cola-colored urine, periorbital edema, hypertension, oliguria.
 - [Minimal Change Disease] Apa jebakan yang sering muncul pada soal tentang Minimal Change Disease? :: Lesi “minimal” bukan berarti tidak ada kelainan; kelainan utamanya terlihat pada electron microscopy.
 - [Focal Segmental Glomerulosclerosis (FSGS)] Apa korelasi klinis dari Focal Segmental Glomerulosclerosis? :: Nephrotic syndrome, sering lebih sulit merespons steroid dibanding minimal change disease.
 - [Benign Prostatic Hyperplasia (BPH)] Apa korelasi klinis dari Benign Prostatic Hyperplasia? :: Compression of urethra → frequency, urgency, nocturia, weak stream, urinary retention.

@@ -305,7 +305,7 @@ NICE NG41:
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan GCS pada Trauma Kepala & Cedera Medula Spinalis? :: Eye 4 + Verbal 5 + Motor 6
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan Non-contrast CT pada Trauma Kepala & Cedera Medula Spinalis? :: Imaging utama fase akut head injury
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan Lucid interval pada Trauma Kepala & Cedera Medula Spinalis? :: Clue klasik EDH tetapi tidak selalu hadir
-- [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan Pupil ipsilateral melebar pada uncal herniation? :: Red flag emergensi
+- [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan Pupil ipsilateral melebar pada uncal herniation pada Trauma Kepala & Cedera Medula Spinalis? :: Red flag emergensi
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang dimaksud dengan Cushing response pada Trauma Kepala & Cedera Medula Spinalis? :: Tanda terlambat peningkatan ICP
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang perlu diketahui tentang Central cord pada Trauma Kepala & Cedera Medula Spinalis? :: Upper limb weakness > lower limb weakness
 - [Trauma Kepala & Cedera Medula Spinalis] Apa yang perlu diketahui tentang Anterior cord pada Trauma Kepala & Cedera Medula Spinalis? :: Motor + pain/temp hilang, dorsal column relatif terjaga
@@ -318,7 +318,7 @@ NICE NG41:
 - [Glasgow Coma Scale (GCS)] Sebutkan klasifikasi praktis pada Glasgow Coma Scale. :: • Mild TBI: GCS 13–15
   • Moderate TBI: GCS 9–12
   • Severe TBI: GCS ≤8
-- [Epidural Hematoma (EDH)] Sebutkan karakteristik high-yield pada Epidural Hematoma. :: • Lokasi darah di antara tulang tengkorak dan dura
+- [Epidural Hematoma (EDH)] Sebutkan karakteristik high-yield pada Epidural Hematoma (Trauma Kepala & Cedera Medula Spinalis). :: • Lokasi darah di antara tulang tengkorak dan dura
   • CT: koleksi hiperdens lentiform/bikonveks
   • Umumnya tidak melintasi sutura karena dura melekat kuat pada sutura
   • Temporal bone fracture dapat merobek a. meningea media

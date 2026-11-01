@@ -593,44 +593,44 @@ Parallel modulators:
 
 ## Flashcard {kartu}
 
-- [Depolarization, Repolarization, Hyperpolarization] Jelaskan Depolarization. :: Membrane potential menjadi kurang negatif / lebih positif.
-- [Depolarization, Repolarization, Hyperpolarization] Jelaskan Repolarization. :: Kembali menuju resting value setelah depolarization.
+- [Depolarization, Repolarization, Hyperpolarization] Jelaskan Depolarization pada Depolarization, Repolarization, Hyperpolarization (Fisiologi Saraf: Potensial Aksi & Sinaps). :: Membrane potential menjadi kurang negatif / lebih positif.
+- [Depolarization, Repolarization, Hyperpolarization] Jelaskan Repolarization pada Depolarization, Repolarization, Hyperpolarization (Fisiologi Saraf: Potensial Aksi & Sinaps). :: Kembali menuju resting value setelah depolarization.
 - [Temporal dan Spatial Summation] Apa yang dimaksud dengan Temporal summation pada Temporal dan Spatial Summation? :: Stimulus berulang cepat dari input yang sama bertumpuk sebelum respons sebelumnya hilang.
 - [Fase Depolarisasi Action Potential] Jelaskan Proses bersifat regenerative dalam konteks Fase Depolarisasi Action Potential. :: Depolarization → lebih banyak Na+ channels terbuka → lebih banyak Na+ influx.
 - [Peta Besar Fisiologi Sensorimotor] Apa yang dimaksud dengan integration pada Fisiologi Saraf: Potensial Aksi & Sinaps? :: Memproses dan memilih respons
 - [Organisasi Sistem Saraf] Jelaskan Central nervous system (CNS) dalam konteks Organisasi Sistem Saraf. :: Otak dan medula spinalis.
 - [Tiga Tingkat Fungsional CNS] Jelaskan Lower brain level dalam konteks Tiga Tingkat Fungsional CNS. :: Medulla, pons, midbrain, hypothalamus, thalamus, cerebellum, basal ganglia.
 - [Neuron: Unit Fungsional] Pada Neuron: Unit Fungsional, apa klasifikasi strukturalnya? :: Multipolar, bipolar, pseudounipolar.
-- [Glial Cells] Apa yang dimaksud dengan Oligodendrocytes pada Glial Cells? :: Membentuk myelin di CNS; satu sel dapat memielinisasi beberapa segmen akson.
-- [Glial Cells] Apa yang dimaksud dengan Microglia pada Glial Cells? :: Sel imun/fagosit CNS.
-- [Cerebrospinal Fluid (CSF)] Pada Cerebrospinal Fluid, apa alur klasiknya? :: Lateral ventricles → foramen Monro → third ventricle → aqueduct of Sylvius → fourth ventricle → foramina Luschka/Magendie → subarachnoid space → arachnoid granulations → dural venous sinuses.
-- [Integrasi Postsinaptik: Temporal dan Spatial Summation] Jelaskan Spatial summation. :: Beberapa input presinaptik aktif hampir bersamaan dan efeknya dijumlahkan.
+- [Glial Cells] Apa yang dimaksud dengan Oligodendrocytes pada Glial Cells (Fisiologi Saraf: Potensial Aksi & Sinaps)? :: Membentuk myelin di CNS; satu sel dapat memielinisasi beberapa segmen akson.
+- [Glial Cells] Apa yang dimaksud dengan Microglia pada Glial Cells (Fisiologi Saraf: Potensial Aksi & Sinaps)? :: Sel imun/fagosit CNS.
+- [Cerebrospinal Fluid (CSF)] Pada Cerebrospinal Fluid, apa alur klasiknya (Fisiologi Saraf: Potensial Aksi & Sinaps)? :: Lateral ventricles → foramen Monro → third ventricle → aqueduct of Sylvius → fourth ventricle → foramina Luschka/Magendie → subarachnoid space → arachnoid granulations → dural venous sinuses.
+- [Integrasi Postsinaptik: Temporal dan Spatial Summation] Jelaskan Spatial summation pada Integrasi Postsinaptik: Temporal dan Spatial Summation (Fisiologi Saraf: Potensial Aksi & Sinaps). :: Beberapa input presinaptik aktif hampir bersamaan dan efeknya dijumlahkan.
 - [Presynaptic dan Postsynaptic Modulation] Apa yang dimaksud dengan Presynaptic facilitation pada Presynaptic dan Postsynaptic Modulation? :: Meningkatkan transmitter release.
 - [Sistem Motorik: Peta Besar] Apa yang dimaksud dengan cerebral cortex pada Sistem Motorik: Peta Besar? :: Voluntary command/planning
 - [Sistem Motorik: Peta Besar] Apa yang dimaksud dengan basal ganglia pada Sistem Motorik: Peta Besar? :: Selection/initiation dan suppression gerakan
 - [Sistem Motorik: Peta Besar] Apa yang dimaksud dengan brainstem pada Sistem Motorik: Peta Besar? :: Posture dan automatic motor patterns
 - [Sistem Motorik: Peta Besar] Jelaskan lower motor neuron dalam konteks Sistem Motorik: Peta Besar. :: Langsung menuju skeletal muscle.
 - [Upper vs Lower Motor Neuron] Apa yang dimaksud dengan LMN pada Upper vs Lower Motor Neuron? :: Anterior horn cell atau motor cranial nucleus → peripheral nerve → skeletal muscle.
-- [Corticospinal Tract] Jelaskan Anterior corticospinal tract. :: Lebih terkait axial/proximal muscles dan banyak memiliki bilateral influence.
+- [Corticospinal Tract] Jelaskan Anterior corticospinal tract (Fisiologi Saraf: Potensial Aksi & Sinaps). :: Lebih terkait axial/proximal muscles dan banyak memiliki bilateral influence.
 - [Brainstem / Extrapyramidal Motor Pathways] Apa yang dimaksud dengan Reticulospinal pada Brainstem / Extrapyramidal Motor Pathways? :: Posture, locomotion, muscle tone, autonomic-motor integration.
-- [Reciprocal Inhibition] Jelaskan Contoh stretch reflex dalam konteks Reciprocal Inhibition. :: Quadriceps excitation disertai inhibition hamstrings.
+- [Reciprocal Inhibition] Jelaskan Contoh stretch reflex dalam konteks Reciprocal Inhibition (Fisiologi Saraf: Potensial Aksi & Sinaps). :: Quadriceps excitation disertai inhibition hamstrings.
 - [Memory: Declarative vs Nondeclarative] Apa yang dimaksud dengan Nondeclarative/implicit memory pada Memory: Declarative vs Nondeclarative? :: Skills, habits, conditioning, procedural learning; melibatkan basal ganglia, cerebellum, dan sistem lain tergantung jenisnya.
-- [Short-Term vs Long-Term Memory] Jelaskan Long-term memory. :: Memerlukan consolidation, perubahan synaptic strength, gene expression, dan structural remodeling.
-- [Sleep: NREM vs REM] Jelaskan REM. :: Rapid eye movements, vivid dreaming, cortical activity relatif tinggi, skeletal muscle atonia, autonomic variability.
+- [Short-Term vs Long-Term Memory] Jelaskan Long-term memory pada Short-Term vs Long-Term Memory (Fisiologi Saraf: Potensial Aksi & Sinaps). :: Memerlukan consolidation, perubahan synaptic strength, gene expression, dan structural remodeling.
+- [Sleep: NREM vs REM] Jelaskan REM pada Sleep: NREM vs REM (Fisiologi Saraf: Potensial Aksi & Sinaps). :: Rapid eye movements, vivid dreaming, cortical activity relatif tinggi, skeletal muscle atonia, autonomic variability.
 - [Clinical Correlations High-Yield] Apa yang dimaksud dengan Peripheral neuropathy pada Clinical Correlations High-Yield? :: Dapat memengaruhi sensory dan motor fibers.
 - [Clinical Correlations High-Yield] Apa yang dimaksud dengan Parkinson disease pada Clinical Correlations High-Yield? :: Dopamine nigrostriatal berkurang.
 - [Peta Besar Fisiologi Sensorimotor] Sebutkan tiga fungsi besar pada Fisiologi Saraf: Potensial Aksi & Sinaps. :: • Sensory input: mendeteksi perubahan internal dan eksternal
   • Integration: memproses dan memilih respons
   • Motor output: menghasilkan respons melalui otot atau kelenjar
-- [Organisasi Sistem Saraf] Sebutkan hal-hal penting tentang Eferen. :: • Somatic motor → skeletal muscle
+- [Organisasi Sistem Saraf] Sebutkan hal-hal penting tentang Eferen pada Organisasi Sistem Saraf (Fisiologi Saraf: Potensial Aksi & Sinaps). :: • Somatic motor → skeletal muscle
   • Autonomic motor → smooth muscle, cardiac muscle, glands
-- [Tiga Tingkat Fungsional CNS] Sebutkan hal-hal penting tentang Spinal cord level. :: • Jalur naik sensorik dan turun motorik
+- [Tiga Tingkat Fungsional CNS] Sebutkan hal-hal penting tentang Spinal cord level pada Tiga Tingkat Fungsional CNS. :: • Jalur naik sensorik dan turun motorik
   • Pusat banyak refleks cepat
-- [Electrical vs Chemical Synapse] Sebutkan hal-hal penting tentang Electrical synapse. :: • Melalui gap junction
+- [Electrical vs Chemical Synapse] Sebutkan hal-hal penting tentang Electrical synapse pada Electrical vs Chemical Synapse (Fisiologi Saraf: Potensial Aksi & Sinaps). :: • Melalui gap junction
   • Delay minimal
   • Sering bidirectional
   • Baik untuk sinkronisasi
-- [Electrical vs Chemical Synapse] Sebutkan hal-hal penting tentang Chemical synapse. :: • Neurotransmitter melalui synaptic cleft
+- [Electrical vs Chemical Synapse] Sebutkan hal-hal penting tentang Chemical synapse pada Electrical vs Chemical Synapse (Fisiologi Saraf: Potensial Aksi & Sinaps). :: • Neurotransmitter melalui synaptic cleft
   • Memiliki synaptic delay
   • Secara fisiologis unidirectional dari presinaptik ke postsinaptik
   • Jauh lebih mudah dimodulasi
@@ -640,12 +640,12 @@ Parallel modulators:
   • Increased tone
   • Babinski positive
   • Mild disuse atrophy
-- [Cerebellum] Sebutkan fungsi utama pada Cerebellum. :: • Koordinasi
+- [Cerebellum] Sebutkan fungsi utama pada Cerebellum (Fisiologi Saraf: Potensial Aksi & Sinaps). :: • Koordinasi
   • Timing
   • Balance
   • Error correction
   • Motor learning
-- [Higher Brain Function] Sebutkan hal-hal penting tentang Korteks serebri mendukung. :: • Perception
+- [Higher Brain Function] Sebutkan hal-hal penting tentang Korteks serebri mendukung pada Higher Brain Function. :: • Perception
   • Planning
   • Language
   • Executive function
@@ -656,7 +656,7 @@ Parallel modulators:
   • Motivation
   • Reward
   • Memory
-- [Master Flow Sensorimotor] Sebutkan hal-hal penting tentang Parallel modulators. :: • Spinal reflex circuits
+- [Master Flow Sensorimotor] Sebutkan hal-hal penting tentang Parallel modulators pada Master Flow Sensorimotor (Fisiologi Saraf: Potensial Aksi & Sinaps). :: • Spinal reflex circuits
   • Cerebellum for error correction
   • Basal ganglia for movement selection
   • ANS for visceral adaptation

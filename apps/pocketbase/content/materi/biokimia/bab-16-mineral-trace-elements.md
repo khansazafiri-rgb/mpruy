@@ -564,7 +564,7 @@ Se = antioxidant + thyroid conversion.
 - [Phosphate — Fungsi dan Regulasi] Sebutkan regulator utama phosphate pada Phosphate — Fungsi dan Regulasi. :: • PTH → menurunkan reabsorpsi phosphate proximal tubule → phosphate serum cenderung turun
   • FGF23 dari osteocyte/osteoblast → meningkatkan phosphaturia dan menekan 1α-hydroxylase sehingga calcitriol turun
   • Calcitriol → meningkatkan absorpsi intestinal phosphate
-- [Zinc] Sebutkan contoh fungsi pada Zinc. :: • Carbonic anhydrase
+- [Zinc] Sebutkan contoh fungsi pada Zinc (Mineral & Trace Elements). :: • Carbonic anhydrase
   • Alcohol dehydrogenase
   • Alkaline phosphatase
   • DNA/RNA-binding proteins
@@ -579,21 +579,21 @@ Se = antioxidant + thyroid conversion.
   • Tyrosinase — melanin synthesis
   • Superoxide dismutase
   • Ceruloplasmin/ferroxidase function
-- [Menkes Disease] Sebutkan hal-hal penting tentang Menkes disease. :: • X-linked
+- [Menkes Disease] Sebutkan hal-hal penting tentang Menkes disease (Mineral & Trace Elements). :: • X-linked
   • Mutasi ATP7A
   • Gangguan transport copper keluar dari enterocyte dan distribusi ke jaringan
-- [Wilson Disease] Sebutkan manifestasi klasik pada Wilson Disease. :: • Hepatitis/cirrhosis
+- [Wilson Disease] Sebutkan manifestasi klasik pada Wilson Disease (Mineral & Trace Elements). :: • Hepatitis/cirrhosis
   • Neurologic/psychiatric symptoms
   • Kayser–Fleischer rings
   • Coombs-negative hemolytic anemia dapat terjadi
-- [Iodine] Sebutkan urutan atau langkah pada Iodine? :: • I− masuk thyrocyte melalui sodium–iodide symporter (NIS) pada basolateral membrane
+- [Iodine] Sebutkan urutan atau langkah pada Iodine (Mineral & Trace Elements)? :: • I− masuk thyrocyte melalui sodium–iodide symporter (NIS) pada basolateral membrane
   • I− menuju colloid
   • Thyroid peroxidase (TPO) mengoksidasi iodide dan melakukan organification pada tyrosine thyroglobulin → MIT dan DIT
-- [Coupling] Sebutkan hal-hal penting tentang Defisiensi iodine. :: • Penurunan thyroid hormone
+- [Coupling] Sebutkan hal-hal penting tentang Defisiensi iodine pada Coupling (Mineral & Trace Elements). :: • Penurunan thyroid hormone
   • Peningkatan TSH
   • Goiter
   • Pada kehamilan/masa perkembangan dapat mengganggu neurodevelopment janin/anak
-- [Manganese] Sebutkan hal-hal penting tentang Manganese merupakan kofaktor beberapa enzyme, termasuk. :: • Mitochondrial Mn-superoxide dismutase
+- [Manganese] Sebutkan hal-hal penting tentang Manganese merupakan kofaktor beberapa enzyme, termasuk (Mineral & Trace Elements). :: • Mitochondrial Mn-superoxide dismutase
   • Arginase
   • Pyruvate carboxylase
 - [Mineral sebagai Komponen Metalloenzyme] Sebutkan contoh pasangan HIGH-YIELD pada Mineral sebagai Komponen Metalloenzyme. :: • Fe → cytochromes, catalase, hemoglobin
@@ -603,12 +603,12 @@ Se = antioxidant + thyroid conversion.
   • Mn → Mn-SOD, arginase, pyruvate carboxylase
   • Mo → xanthine oxidase, sulfite oxidase
   • Mg → banyak kinase/ATP-dependent enzymes
-- [Clinical Pattern — Iron Deficiency vs Chronic Inflammation] Sebutkan hal-hal penting tentang Chronic inflammation. :: • Ferritin cenderung dipertahankan/meningkat
+- [Clinical Pattern — Iron Deficiency vs Chronic Inflammation] Sebutkan hal-hal penting tentang Chronic inflammation pada Clinical Pattern — Iron Deficiency vs Chronic Inflammation (Mineral & Trace Elements). :: • Ferritin cenderung dipertahankan/meningkat
   • TIBC turun
   • Hepcidin meningkat
 - [Clinical Pattern — Calcium & Phosphate] Sebutkan primary hyperparathyroidism secara klasik pada Clinical Pattern — Calcium & Phosphate. :: • PTH ↑
   • Ca2+ ↑
   • Phosphate ↓
 - [Gambaran Besar] Apa poin high-yield (pearl) tentang Mineral & Trace Elements? :: “trace” tidak berarti tidak penting. Kekurangan sedikit trace element dapat mengganggu enzim atau hormon yang sangat fundamental.
-- [Zinc] Apa poin high-yield (pearl) tentang Zinc? :: Konsumsi zinc berlebihan → pikirkan copper deficiency sekunder.
+- [Zinc] Apa poin high-yield (pearl) tentang Zinc (Mineral & Trace Elements)? :: Konsumsi zinc berlebihan → pikirkan copper deficiency sekunder.
 - [Clinical Pattern — Menkes vs Wilson] Bagaimana cara mengingat Clinical Pattern — Menkes vs Wilson? :: Menkes = “can’t Move copper out of gut properly” Wilson = “copper Won’t leave liver into bile”

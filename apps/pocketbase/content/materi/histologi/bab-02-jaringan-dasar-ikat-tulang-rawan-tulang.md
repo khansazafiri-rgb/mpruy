@@ -478,8 +478,8 @@ Ossification:
 - [Perbandingan Tiga Cartilage] Apa yang dimaksud dengan Hyaline pada Perbandingan Tiga Cartilage? :: Glassy matrix, collagen II, perichondrium umumnya ada.
 - [Perbandingan Tiga Cartilage] Apa yang dimaksud dengan Elastic pada Perbandingan Tiga Cartilage? :: Collagen II + elastic fibers, paling fleksibel, perichondrium ada.
 - [Perbandingan Tiga Cartilage] Apa yang dimaksud dengan Fibrocartilage pada Perbandingan Tiga Cartilage? :: Collagen I dominan, rows of chondrocytes, paling tahan tensile/compressive stress, tanpa perichondrium.
-- [Intramembranous Ossification] Pada Intramembranous Ossification, apa urutan konsepnya? :: Mesenchymal condensation → osteoblast differentiation → osteoid secretion → mineralization → trabecular woven bone → remodeling menjadi lamellar bone.
-- [Endochondral Ossification] Pada Endochondral Ossification, apa urutan besarnya? :: Cartilage model → bone collar di diafisis → chondrocyte hypertrophy dan matrix calcification → vascular invasion → primary ossification center di diafisis → medullary cavity → secondary ossification centers di epiphyses.
+- [Intramembranous Ossification] Pada Intramembranous Ossification, apa urutan konsepnya (Jaringan Dasar: Ikat, Tulang Rawan, Tulang)? :: Mesenchymal condensation → osteoblast differentiation → osteoid secretion → mineralization → trabecular woven bone → remodeling menjadi lamellar bone.
+- [Endochondral Ossification] Pada Endochondral Ossification, apa urutan besarnya (Jaringan Dasar: Ikat, Tulang Rawan, Tulang)? :: Cartilage model → bone collar di diafisis → chondrocyte hypertrophy dan matrix calcification → vascular invasion → primary ossification center di diafisis → medullary cavity → secondary ossification centers di epiphyses.
 - [Pewarnaan dan Clue Praktikum] Apa yang dimaksud dengan Elastic fibers pada Pewarnaan dan Clue Praktikum? :: Lebih jelas dengan orcein atau VVG.
 - [Pewarnaan dan Clue Praktikum] Apa yang dimaksud dengan Reticular fibers pada Pewarnaan dan Clue Praktikum? :: Silver impregnation menunjukkan network hitam.
 - [Pewarnaan dan Clue Praktikum] Apa yang dimaksud dengan Cartilage matrix pada Pewarnaan dan Clue Praktikum? :: Sering basophilic karena sulfated GAG; toluidine blue dapat menunjukkan metachromasia.
@@ -527,34 +527,34 @@ Ossification:
   • Chondrocytes
   • Matrix kaya collagen dan proteoglycans
   • Perichondrium pada sebagian besar cartilage
-- [Hyaline Cartilage] Sebutkan lokasi penting pada Hyaline Cartilage. :: • Tracheal rings
+- [Hyaline Cartilage] Sebutkan lokasi penting pada Hyaline Cartilage (Jaringan Dasar: Ikat, Tulang Rawan, Tulang). :: • Tracheal rings
   • Nasal cartilage
   • Costal cartilage
   • Articular surfaces
   • Epiphyseal growth plate
   • Fetal skeleton sebelum endochondral ossification
-- [Elastic Cartilage] Sebutkan lokasi klasik pada Elastic Cartilage. :: • Auricle
+- [Elastic Cartilage] Sebutkan lokasi klasik pada Elastic Cartilage (Jaringan Dasar: Ikat, Tulang Rawan, Tulang). :: • Auricle
   • Epiglottis
   • External auditory canal
   • Auditory tube
-- [Bone: Prinsip Umum] Sebutkan hal-hal penting tentang Matrix bone. :: • Organic component terutama collagen type I dan ground substance proteins
+- [Bone: Prinsip Umum] Sebutkan hal-hal penting tentang Matrix bone pada Bone: Prinsip Umum (Jaringan Dasar: Ikat, Tulang Rawan, Tulang). :: • Organic component terutama collagen type I dan ground substance proteins
   • Inorganic component terutama hydroxyapatite crystals
 - [Compact Bone dan Osteon] Sebutkan komponen osteon pada Compact Bone dan Osteon. :: • Central/Haversian canal berisi pembuluh darah dan saraf
   • Concentric lamellae
   • Osteocyte lacunae
   • Canaliculi yang menghubungkan lacunae
   • Cement line di batas osteon
-- [Bone Remodeling] Sebutkan hal-hal penting tentang Remodeling berfungsi. :: • Memperbaiki microdamage
+- [Bone Remodeling] Sebutkan hal-hal penting tentang Remodeling berfungsi pada Bone Remodeling (Jaringan Dasar: Ikat, Tulang Rawan, Tulang). :: • Memperbaiki microdamage
   • Menyesuaikan struktur terhadap mechanical load
   • Berperan dalam calcium/phosphate homeostasis
   • Mengganti woven bone dengan lamellar bone
 - [Extracellular Matrix: Prinsip Dasar] Apa poin high-yield (pearl) tentang Extracellular Matrix: Prinsip Dasar? :: Collagen terutama menahan tarikan; proteoglycan/GAG terutama menahan kompresi karena mengikat air.
-- [Collagen Fibers] Apa korelasi klinis dari Collagen Fibers? :: Vitamin C diperlukan untuk hydroxylation residu proline dan lysine selama sintesis collagen. Kekurangan vitamin C melemahkan collagen dan menimbulkan scurvy. Kelainan sintesis/struktur collagen juga menjadi dasar sejumlah tipe Ehlers–Danlos syndrome.
+- [Collagen Fibers] Apa korelasi klinis dari Collagen Fibers (Jaringan Dasar: Ikat, Tulang Rawan, Tulang)? :: Vitamin C diperlukan untuk hydroxylation residu proline dan lysine selama sintesis collagen. Kekurangan vitamin C melemahkan collagen dan menimbulkan scurvy. Kelainan sintesis/struktur collagen juga menjadi dasar sejumlah tipe Ehlers–Danlos syndrome.
 - [Dense Regular Connective Tissue] Apa clue praktikum untuk Dense Regular Connective Tissue? :: Pola paralel seragam + sedikit inti pipih merupakan clue utama tendon.
-- [Adipose Tissue] Apa clue praktikum untuk Adipose Tissue? :: White adipocyte = satu vakuola lipid besar; brown adipocyte = banyak droplet kecil, inti lebih sentral, jaringan lebih eosinophilic.
-- [Hyaline Cartilage] Apa clue praktikum untuk Hyaline Cartilage? :: Matrix glassy/homogen, chondrocytes dalam lacunae, sering terdapat isogenous groups.
-- [Elastic Cartilage] Apa clue praktikum untuk Elastic Cartilage? :: Jika chondrocytes dalam lacunae jelas tetapi matrix tampak penuh serabut gelap seperti “benang kusut”, pikirkan elastic cartilage.
+- [Adipose Tissue] Apa clue praktikum untuk Adipose Tissue (Jaringan Dasar: Ikat, Tulang Rawan, Tulang)? :: White adipocyte = satu vakuola lipid besar; brown adipocyte = banyak droplet kecil, inti lebih sentral, jaringan lebih eosinophilic.
+- [Hyaline Cartilage] Apa clue praktikum untuk Hyaline Cartilage (Jaringan Dasar: Ikat, Tulang Rawan, Tulang)? :: Matrix glassy/homogen, chondrocytes dalam lacunae, sering terdapat isogenous groups.
+- [Elastic Cartilage] Apa clue praktikum untuk Elastic Cartilage (Jaringan Dasar: Ikat, Tulang Rawan, Tulang)? :: Jika chondrocytes dalam lacunae jelas tetapi matrix tampak penuh serabut gelap seperti “benang kusut”, pikirkan elastic cartilage.
 - [Perbandingan Tiga Cartilage] Apa jebakan yang sering muncul pada soal tentang Perbandingan Tiga Cartilage? :: Articular hyaline cartilage tidak memiliki perichondrium; fibrocartilage juga tidak memiliki perichondrium tetapi matrix-nya berbeda jelas.
-- [Sel Bone] Apa poin high-yield (pearl) tentang Sel Bone? :: Osteoblast builds; osteocyte maintains; osteoclast resorbs.
-- [Intramembranous Ossification] Apa poin high-yield (pearl) tentang Intramembranous Ossification? :: Intramembranous = mesenchyme langsung menjadi bone.
-- [Endochondral Ossification] Apa poin high-yield (pearl) tentang Endochondral Ossification? :: Endochondral = bone menggantikan cartilage model.
+- [Sel Bone] Apa poin high-yield (pearl) tentang Sel Bone (Jaringan Dasar: Ikat, Tulang Rawan, Tulang)? :: Osteoblast builds; osteocyte maintains; osteoclast resorbs.
+- [Intramembranous Ossification] Apa poin high-yield (pearl) tentang Intramembranous Ossification (Jaringan Dasar: Ikat, Tulang Rawan, Tulang)? :: Intramembranous = mesenchyme langsung menjadi bone.
+- [Endochondral Ossification] Apa poin high-yield (pearl) tentang Endochondral Ossification (Jaringan Dasar: Ikat, Tulang Rawan, Tulang)? :: Endochondral = bone menggantikan cartilage model.

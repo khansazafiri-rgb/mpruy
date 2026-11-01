@@ -315,15 +315,15 @@ Jika melihat ventricular system:
 - [Neuroanatomi: Otak & Batang Otak] Apa yang dimaksud dengan Brainstem pada Neuroanatomi: Otak & Batang Otak? :: Midbrain + pons + medulla; crossed findings sangat penting untuk localization
 - [Neuroanatomi: Otak & Batang Otak] Apa yang dimaksud dengan Trochlear nerve pada Neuroanatomi: Otak & Batang Otak? :: Cranial nerve yang keluar dorsal dari brainstem
 - [Neuroanatomi: Otak & Batang Otak] Apa yang perlu diketahui tentang CSF pada Neuroanatomi: Otak & Batang Otak? :: Lateral ventricles → Monro → third → aqueduct → fourth → Magendie/Luschka → subarachnoid space
-- [Hypothalamus] Sebutkan hubungan penting pada Hypothalamus. :: • Optic chiasm berada anterior-inferior terhadap hypothalamus
+- [Hypothalamus] Sebutkan hubungan penting pada Hypothalamus (Neuroanatomi: Otak & Batang Otak). :: • Optic chiasm berada anterior-inferior terhadap hypothalamus
   • Pituitary berhubungan melalui infundibulum
   • Mammillary bodies tampak di inferior surface dan berhubungan dengan limbic circuitry
-- [Cerebellum] Sebutkan hal-hal penting tentang Tiga functional divisions yang berguna. :: • Vestibulocerebellum → balance dan eye movements
+- [Cerebellum] Sebutkan hal-hal penting tentang Tiga functional divisions yang berguna pada Cerebellum (Neuroanatomi: Otak & Batang Otak). :: • Vestibulocerebellum → balance dan eye movements
   • Spinocerebellum → posture, gait, dan ongoing movement correction
   • Cerebrocerebellum → motor planning dan fine coordination
-- [Midbrain] Sebutkan hal-hal penting tentang Cranial nerve association. :: • CN III nucleus dan Edinger–Westphal nucleus berada di midbrain
+- [Midbrain] Sebutkan hal-hal penting tentang Cranial nerve association pada Midbrain (Neuroanatomi: Otak & Batang Otak). :: • CN III nucleus dan Edinger–Westphal nucleus berada di midbrain
   • CN IV nucleus juga di midbrain; trochlear nerve adalah satu-satunya cranial nerve yang keluar dari dorsal brainstem dan decussates sebelum keluar
-- [Pons] Sebutkan cranial nerve association secara umum pada Pons. :: • CN V berhubungan dengan mid-pons
+- [Pons] Sebutkan cranial nerve association secara umum pada Pons (Neuroanatomi: Otak & Batang Otak). :: • CN V berhubungan dengan mid-pons
   • CN VI, VII, dan VIII muncul di pontomedullary region
 - [Cranial Nerve Nuclei: Peta Cepat] Sebutkan nuclei fungsional penting pada Cranial Nerve Nuclei: Peta Cepat. :: • Edinger–Westphal → parasympathetic CN III
   • Trigeminal sensory nuclei → facial sensation
@@ -332,9 +332,9 @@ Jika melihat ventricular system:
   • Nucleus tractus solitarius → visceral sensation dan taste
   • Dorsal motor nucleus vagus → parasympathetic output
   • Hypoglossal nucleus → tongue motor
-- [Brainstem] Sebutkan contoh pola pada Brainstem. :: • Ipsilateral CN III palsy + contralateral weakness → midbrain localization
+- [Brainstem] Sebutkan contoh pola pada Brainstem (Neuroanatomi: Otak & Batang Otak). :: • Ipsilateral CN III palsy + contralateral weakness → midbrain localization
   • Ipsilateral CN VI/VII finding + contralateral long-tract deficit → pontine localization
   • Ipsilateral bulbar/cranial nerve findings + contralateral body deficit → medullary localization
 - [Functional Cortical Landmarks] Apa korelasi klinis dari Functional Cortical Landmarks? :: Dominant frontal lesion → dapat menyebabkan expressive/Broca aphasia. Dominant temporoparietal lesion → dapat menyebabkan receptive/Wernicke aphasia. Non-dominant parietal lesion → dapat menyebabkan hemispatial neglect.
-- [Basal Nuclei] Apa korelasi klinis dari Basal Nuclei? :: Degenerasi dopaminergic neurons substantia nigra pars compacta → Parkinson disease pattern. Lesi subthalamic nucleus → contralateral hemiballismus. Degenerasi striatal tertentu dapat menghasilkan choreiform movement.
+- [Basal Nuclei] Apa korelasi klinis dari Basal Nuclei (Neuroanatomi: Otak & Batang Otak)? :: Degenerasi dopaminergic neurons substantia nigra pars compacta → Parkinson disease pattern. Lesi subthalamic nucleus → contralateral hemiballismus. Degenerasi striatal tertentu dapat menghasilkan choreiform movement.
 - [Ventricular System dan Cerebrospinal Fluid] Apa korelasi klinis dari Ventricular System dan Cerebrospinal Fluid? :: Obstruksi cerebral aqueduct dapat menyebabkan non-communicating hydrocephalus dengan dilatasi ventricles proximal terhadap sumbatan. Gangguan absorpsi CSF di arachnoid granulations dapat menyebabkan communicating hydrocephalus.

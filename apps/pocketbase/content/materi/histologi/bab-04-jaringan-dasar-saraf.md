@@ -484,9 +484,9 @@ Myelin:
 
 - [Peta Besar Jaringan Saraf] Jelaskan central nervous system (CNS) dalam konteks Jaringan Dasar: Saraf. :: Cerebrum, cerebellum, brainstem, dan spinal cord
 - [Peta Besar Jaringan Saraf] Jelaskan peripheral nervous system (PNS) dalam konteks Jaringan Dasar: Saraf. :: Peripheral nerves, ganglia, dan sensory/motor nerve endings.
-- [Oligodendrocytes] Apa yang dimaksud dengan PNS pada Oligodendrocytes? :: Satu Schwann cell → satu internode pada satu axon
-- [Oligodendrocytes] Apa yang dimaksud dengan CNS pada Oligodendrocytes? :: Satu oligodendrocyte → beberapa internodes pada beberapa axons.
-- [Autonomic Ganglion] Apa yang dimaksud dengan Perbandingan cepat pada Autonomic Ganglion? :: Sensory ganglion = pseudounipolar + central nuclei + satellite ring rapi + no synapse.
+- [Oligodendrocytes] Apa yang dimaksud dengan PNS pada Oligodendrocytes (Jaringan Dasar: Saraf)? :: Satu Schwann cell → satu internode pada satu axon
+- [Oligodendrocytes] Apa yang dimaksud dengan CNS pada Oligodendrocytes (Jaringan Dasar: Saraf)? :: Satu oligodendrocyte → beberapa internodes pada beberapa axons.
+- [Autonomic Ganglion] Apa yang dimaksud dengan Perbandingan cepat pada Autonomic Ganglion (Jaringan Dasar: Saraf)? :: Sensory ganglion = pseudounipolar + central nuclei + satellite ring rapi + no synapse.
 - [Gray Matter dan White Matter] Apa yang dimaksud dengan spinal cord pada Gray Matter dan White Matter? :: Gray matter di pusat, white matter di perifer
 - [Gray Matter dan White Matter] Apa yang dimaksud dengan cerebrum/cerebellum pada Gray Matter dan White Matter? :: Gray matter terutama membentuk cortex di luar, white matter lebih dalam.
 - [Jaringan Dasar: Saraf] Apa yang dimaksud dengan soma pada Jaringan Dasar: Saraf? :: Nucleus besar euchromatic + nucleolus prominent
@@ -508,16 +508,16 @@ Myelin:
   • Nucleus besar, bulat, dan euchromatic
   • Nucleolus menonjol
   • Cytoplasm mengandung Nissl substance
-- [Peripheral Nerve: Organisasi Umum] Sebutkan hal-hal penting tentang Connective tissue sheaths. :: • Endoneurium → mengelilingi individual nerve fiber
+- [Peripheral Nerve: Organisasi Umum] Sebutkan hal-hal penting tentang Connective tissue sheaths pada Peripheral Nerve: Organisasi Umum. :: • Endoneurium → mengelilingi individual nerve fiber
   • Perineurium → membungkus satu fascicle
   • Epineurium → membungkus seluruh peripheral nerve dan mengandung larger blood vessels
-- [Sensory Ganglion] Sebutkan ciri praktikum pada Sensory Ganglion. :: • Neuronal soma besar dan bulat
+- [Sensory Ganglion] Sebutkan ciri praktikum pada Sensory Ganglion (Jaringan Dasar: Saraf). :: • Neuronal soma besar dan bulat
   • Nucleus biasanya central dengan prominent nucleolus
   • Satellite cells membentuk ring rapat dan teratur
   • Neuron cenderung berkumpul di bagian peripheral ganglion
   • Axonal bundles melewati ganglion
   • Tidak terdapat synapses di dorsal root ganglion
-- [Synapse: Struktur Histologis Dasar] Sebutkan hal-hal penting tentang Chemical synapse. :: • Presynaptic terminal/bouton berisi synaptic vesicles
+- [Synapse: Struktur Histologis Dasar] Sebutkan hal-hal penting tentang Chemical synapse pada Synapse: Struktur Histologis Dasar (Jaringan Dasar: Saraf). :: • Presynaptic terminal/bouton berisi synaptic vesicles
   • Synaptic cleft
   • Postsynaptic membrane dengan receptors
 - [Synapse: Struktur Histologis Dasar] Sebutkan klasifikasi hubungan pada Synapse: Struktur Histologis Dasar. :: • Axodendritic
@@ -528,22 +528,22 @@ Myelin:
   • Synapses
   • Unmyelinated portions
   • Glia
-- [Gray Matter dan White Matter] Sebutkan hal-hal penting tentang Distribusinya berbeda. :: • Spinal cord: gray matter di pusat, white matter di perifer
+- [Gray Matter dan White Matter] Sebutkan distribusinya berbeda pada Gray Matter dan White Matter. :: • Spinal cord: gray matter di pusat, white matter di perifer
   • Cerebrum/cerebellum: gray matter terutama membentuk cortex di luar, white matter lebih dalam
 - [Spinal Cord Histology] Sebutkan komponen penting pada Spinal Cord Histology. :: • Dorsal/posterior horn: lebih ramping, terkait sensory processing
   • Ventral/anterior horn: lebih besar dan berisi large multipolar motor neurons
   • Lateral horn tampak jelas terutama pada level thoracic tertentu
   • Central canal dilapisi ependymal cells
   • White matter mengelilingi gray matter
-- [Regenerasi Peripheral Nerve] Sebutkan hal-hal penting tentang Regenerasi lebih baik jika. :: • Neuronal soma tetap hidup
+- [Regenerasi Peripheral Nerve] Sebutkan hal-hal penting tentang Regenerasi lebih baik jika pada Regenerasi Peripheral Nerve. :: • Neuronal soma tetap hidup
   • Connective tissue pathway masih sejajar
   • Jarak injury tidak terlalu besar
 - [Perkembangan Singkat Jaringan Saraf] Apa poin high-yield (pearl) tentang Perkembangan Singkat Jaringan Saraf? :: Neural tube → CNS; neural crest → banyak komponen PNS.
 - [Klasifikasi Neuron Berdasarkan Jumlah Prosesus] Apa clue praktikum untuk Klasifikasi Neuron Berdasarkan Jumlah Prosesus? :: Bentuk process sering tidak utuh pada routine section, sehingga identifikasi tipe neuron harus dibantu konteks organ.
-- [Neuroglia: Peta Besar] Bagaimana cara mengingat Neuroglia: Peta Besar? :: AO-ME di CNS; Schwann + Satellite di PNS.
+- [Neuroglia: Peta Besar] Bagaimana cara mengingat Neuroglia: Peta Besar (Jaringan Dasar: Saraf)? :: AO-ME di CNS; Schwann + Satellite di PNS.
 - [Peripheral Nerve: Organisasi Umum] Bagaimana cara mengingat Peripheral Nerve: Organisasi Umum? :: Endo = one fiber; peri = one fascicle; epi = entire nerve.
 - [Peripheral Nerve pada Longitudinal Section] Apa jebakan yang sering muncul pada soal tentang Peripheral Nerve pada Longitudinal Section? :: Peripheral nerve longitudinal dapat mirip dense regular connective tissue. Nerve mempunyai Schwann nuclei, axonal profiles, serta fascicular organization; tendon didominasi parallel collagen dengan fibroblast nuclei tipis.
-- [Sensory Ganglion] Apa poin high-yield (pearl) tentang Sensory Ganglion? :: Ring satellite cells yang sangat rapi = sensory ganglion clue.
+- [Sensory Ganglion] Apa poin high-yield (pearl) tentang Sensory Ganglion (Jaringan Dasar: Saraf)? :: Ring satellite cells yang sangat rapi = sensory ganglion clue.
 - [Spinal Cord Histology] Apa clue praktikum untuk Spinal Cord Histology? :: Large multipolar neurons dengan prominent Nissl substance di ventral horn merupakan clue kuat.
-- [Cerebellar Cortex] Bagaimana cara mengingat Cerebellar Cortex? :: Pale → Purkinje row → purple-packed granules.
-- [Blood–Brain Barrier] Apa jebakan yang sering muncul pada soal tentang Blood–Brain Barrier? :: Astrocytes mendukung dan menginduksi karakter BBB, tetapi physical diffusion barrier utamanya adalah tight junctions antar endothelial cells.
+- [Cerebellar Cortex] Bagaimana cara mengingat Cerebellar Cortex (Jaringan Dasar: Saraf)? :: Pale → Purkinje row → purple-packed granules.
+- [Blood–Brain Barrier] Apa jebakan yang sering muncul pada soal tentang Blood–Brain Barrier (Jaringan Dasar: Saraf)? :: Astrocytes mendukung dan menginduksi karakter BBB, tetapi physical diffusion barrier utamanya adalah tight junctions antar endothelial cells.

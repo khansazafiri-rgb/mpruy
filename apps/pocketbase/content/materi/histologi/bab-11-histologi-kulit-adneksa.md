@@ -616,17 +616,17 @@ Epidermis dari dalam ke luar: basale → spinosum → granulosum → lucidum →
 
 ## Flashcard {kartu}
 
-- [Stratum Basale] Jelaskan: Istilah yang sering digunakan. :: Stratum germinativum karena aktivitas mitosis; stratum pigmentosum karena melanin banyak terlihat di bagian basal.
-- [Keratinisasi] Pada Keratinisasi, apa gambaran sederhananya? :: Mitosis di basale → diferensiasi di spinosum → keratohyalin granules di granulosum → kehilangan nucleus/organelles → corneocyte di corneum.
-- [Holocrine Secretion] Apa yang dimaksud dengan Bandingkan pada Holocrine Secretion? :: Merocrine = exocytosis tanpa kehilangan cytoplasm; apocrine = sebagian apical cytoplasm ikut terlepas; holocrine = seluruh cell menjadi secretion.
-- [Practical Traps yang Sering Salah] Jelaskan: stratum lucidum dicari pada semua kulit. :: Terutama jelas pada thick skin.
-- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: dermal papilla dianggap epidermal ridge? :: Dermal papilla naik; epidermal ridge turun.
-- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: melanocyte dan melanophage tertukar? :: Melanocyte di basal epidermis dan menghasilkan melanin; melanophage di dermis dan memfagositosis melanin.
-- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: eccrine duct dianggap secretory portion? :: Duct lebih gelap, dua lapis cuboidal, lumen sempit.
-- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: apocrine dianggap eccrine? :: Apocrine punya lumen jauh lebih lebar dan terkait hair follicle.
-- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: sebaceous dianggap sweat gland? :: Sebaceous berupa lobules pale foamy cells, bukan coiled tubules.
-- [Practical Traps yang Sering Salah] Jelaskan: thick skin dicari hair follicle. :: Thick skin normalnya tidak memiliki hair follicles.
-- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Meissner dan Pacinian tertukar? :: Meissner superficial; Pacinian deep dan onion-like.
+- [Stratum Basale] Jelaskan: Istilah yang sering digunakan pada Stratum Basale (Histologi Kulit & Adneksa). :: Stratum germinativum karena aktivitas mitosis; stratum pigmentosum karena melanin banyak terlihat di bagian basal.
+- [Keratinisasi] Pada Keratinisasi, apa gambaran sederhananya (Histologi Kulit & Adneksa)? :: Mitosis di basale → diferensiasi di spinosum → keratohyalin granules di granulosum → kehilangan nucleus/organelles → corneocyte di corneum.
+- [Holocrine Secretion] Apa yang dimaksud dengan Bandingkan pada Holocrine Secretion (Histologi Kulit & Adneksa)? :: Merocrine = exocytosis tanpa kehilangan cytoplasm; apocrine = sebagian apical cytoplasm ikut terlepas; holocrine = seluruh cell menjadi secretion.
+- [Practical Traps yang Sering Salah] Jelaskan: stratum lucidum dicari pada semua kulit pada Practical Traps yang Sering Salah. :: Terutama jelas pada thick skin.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: dermal papilla dianggap epidermal ridge pada Practical Traps yang Sering Salah? :: Dermal papilla naik; epidermal ridge turun.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: melanocyte dan melanophage tertukar pada Practical Traps yang Sering Salah? :: Melanocyte di basal epidermis dan menghasilkan melanin; melanophage di dermis dan memfagositosis melanin.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: eccrine duct dianggap secretory portion pada Practical Traps yang Sering Salah? :: Duct lebih gelap, dua lapis cuboidal, lumen sempit.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: apocrine dianggap eccrine pada Practical Traps yang Sering Salah? :: Apocrine punya lumen jauh lebih lebar dan terkait hair follicle.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: sebaceous dianggap sweat gland pada Practical Traps yang Sering Salah? :: Sebaceous berupa lobules pale foamy cells, bukan coiled tubules.
+- [Practical Traps yang Sering Salah] Jelaskan: thick skin dicari hair follicle pada Practical Traps yang Sering Salah (Histologi Kulit & Adneksa). :: Thick skin normalnya tidak memiliki hair follicles.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Meissner dan Pacinian tertukar pada Practical Traps yang Sering Salah? :: Meissner superficial; Pacinian deep dan onion-like.
 - [Histologi Kulit & Adneksa] Apa yang dimaksud dengan Thick skin pada Histologi Kulit & Adneksa? :: Thick corneum + lucidum + no hair + many eccrine glands
 - [Histologi Kulit & Adneksa] Apa yang dimaksud dengan Thin skin pada Histologi Kulit & Adneksa? :: Hair follicles + sebaceous glands + arrector pili
 - [Histologi Kulit & Adneksa] Apa yang perlu diketahui tentang Epidermis dari dalam ke luar pada Histologi Kulit & Adneksa? :: Basale → spinosum → granulosum → lucidum → corneum
@@ -643,7 +643,7 @@ Epidermis dari dalam ke luar: basale → spinosum → granulosum → lucidum →
 - [Histologi Kulit & Adneksa] Apa yang dimaksud dengan Eccrine pada Histologi Kulit & Adneksa? :: Small lumen, direct to surface
 - [Histologi Kulit & Adneksa] Apa yang dimaksud dengan Apocrine pada Histologi Kulit & Adneksa? :: Large lumen, opens to hair follicle
 - [Histologi Kulit & Adneksa] Apa yang dimaksud dengan Sebaceous pada Histologi Kulit & Adneksa? :: Holocrine, pale foamy cells, attached to hair
-- [Histologi Kulit & Adneksa] Apa yang dimaksud dengan Hair follicle + sebaceous gland + arrector pili? :: Pilosebaceous unit
+- [Histologi Kulit & Adneksa] Apa yang dimaksud dengan Hair follicle + sebaceous gland + arrector pili pada Histologi Kulit & Adneksa? :: Pilosebaceous unit
 - [Histologi Kulit & Adneksa] Apa yang dimaksud dengan Nail matrix pada Histologi Kulit & Adneksa? :: Growth
 - [Histologi Kulit & Adneksa] Apa yang dimaksud dengan Meissner pada Histologi Kulit & Adneksa? :: Superficial light touch
 - [Histologi Kulit & Adneksa] Apa yang dimaksud dengan Pacinian pada Histologi Kulit & Adneksa? :: Deep onion-like pressure receptor
@@ -653,7 +653,7 @@ Epidermis dari dalam ke luar: basale → spinosum → granulosum → lucidum →
   • Merkel cells
 - [Dermis: Gambaran Umum] Sebutkan dua lapisan pada Dermis: Gambaran Umum. :: • Papillary dermis
   • Reticular dermis
-- [Secretory Portion versus Duct Eccrine] Sebutkan hal-hal penting tentang Secretory portion. :: • Lumen relatif lebih lebar
+- [Secretory Portion versus Duct Eccrine] Sebutkan hal-hal penting tentang Secretory portion pada Secretory Portion versus Duct Eccrine (Histologi Kulit & Adneksa). :: • Lumen relatif lebih lebar
   • Satu lapis secretory cells
   • Clear cells dan dark cells dapat dibedakan pada preparasi tertentu
   • Myoepithelial cells berada di perifer
@@ -667,19 +667,19 @@ Epidermis dari dalam ke luar: basale → spinosum → granulosum → lucidum →
   • Lunula
 - [Sensory Receptors pada Kulit] Sebutkan dua struktur yang sangat high-yield pada Sensory Receptors pada Kulit. :: • Meissner corpuscle
   • Pacinian corpuscle
-- [Thick Skin: Spot Diagnosis] Sebutkan hal-hal penting tentang Cari kombinasi. :: • Very thick stratum corneum
+- [Thick Skin: Spot Diagnosis] Sebutkan hal-hal penting tentang Cari kombinasi pada Thick Skin: Spot Diagnosis (Histologi Kulit & Adneksa). :: • Very thick stratum corneum
   • Clear stratum lucidum
   • Prominent epidermal ridges
   • No hair follicles
   • No sebaceous glands
   • Numerous eccrine sweat glands
-- [Stratum Basale] Apa clue praktikum untuk Stratum Basale? :: Satu baris sel paling basal, paling dekat dermis = stratum basale.
-- [Stratum Spinosum] Apa clue praktikum untuk Stratum Spinosum? :: Lapisan paling tebal dari sel hidup polygonal dengan spiny appearance = stratum spinosum.
-- [Stratum Granulosum] Apa clue praktikum untuk Stratum Granulosum? :: Dark granular band tepat di bawah lucidum/corneum = stratum granulosum.
-- [Keratinisasi] Apa poin high-yield (pearl) tentang Keratinisasi? :: Keratinocyte adalah sel terbanyak epidermis dan bertanggung jawab terhadap pembentukan keratin serta barrier kulit.
+- [Stratum Basale] Apa clue praktikum untuk Stratum Basale (Histologi Kulit & Adneksa)? :: Satu baris sel paling basal, paling dekat dermis = stratum basale.
+- [Stratum Spinosum] Apa clue praktikum untuk Stratum Spinosum (Histologi Kulit & Adneksa)? :: Lapisan paling tebal dari sel hidup polygonal dengan spiny appearance = stratum spinosum.
+- [Stratum Granulosum] Apa clue praktikum untuk Stratum Granulosum (Histologi Kulit & Adneksa)? :: Dark granular band tepat di bawah lucidum/corneum = stratum granulosum.
+- [Keratinisasi] Apa poin high-yield (pearl) tentang Keratinisasi (Histologi Kulit & Adneksa)? :: Keratinocyte adalah sel terbanyak epidermis dan bertanggung jawab terhadap pembentukan keratin serta barrier kulit.
 - [Dermal Melanophage / Chromatophore] Apa jebakan yang sering muncul pada soal tentang Dermal Melanophage / Chromatophore? :: Melanocyte = menghasilkan melanin; melanophage = memakan/menyimpan melanin.
-- [Reticular Dermis] Apa clue praktikum untuk Reticular Dermis? :: Coarse collagen bundles + adnexal structures = reticular dermis.
+- [Reticular Dermis] Apa clue praktikum untuk Reticular Dermis (Histologi Kulit & Adneksa)? :: Coarse collagen bundles + adnexal structures = reticular dermis.
 - [Eccrine Sweat Gland] Apa clue praktikum untuk Eccrine Sweat Gland? :: Banyak coiled tubules di deep dermis, sebagian pucat dan sebagian lebih gelap → eccrine gland.
-- [Sebaceous Gland] Apa clue praktikum untuk Sebaceous Gland? :: Lobules of pale foamy cells melekat ke hair follicle = sebaceous gland.
+- [Sebaceous Gland] Apa clue praktikum untuk Sebaceous Gland (Histologi Kulit & Adneksa)? :: Lobules of pale foamy cells melekat ke hair follicle = sebaceous gland.
 - [Arrector Pili Muscle] Apa clue praktikum untuk Arrector Pili Muscle? :: Oblique eosinophilic smooth-muscle bundle menempel pada follicle = arrector pili.
-- [Meissner Corpuscle] Apa clue praktikum untuk Meissner Corpuscle? :: Small oval receptor di dermal papilla tepat di bawah epidermis = Meissner corpuscle.
+- [Meissner Corpuscle] Apa clue praktikum untuk Meissner Corpuscle (Histologi Kulit & Adneksa)? :: Small oval receptor di dermal papilla tepat di bawah epidermis = Meissner corpuscle.

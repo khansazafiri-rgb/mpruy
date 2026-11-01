@@ -425,7 +425,7 @@ Contoh konsekuensi:
 
 ## Flashcard {kartu}
 
-- [Gambaran Besar] Jelaskan Vitamin larut lemak. :: Absorpsinya mengikuti absorpsi lemak, memerlukan empedu/misel, dapat disimpan lebih banyak, dan karena itu defisiensi cenderung muncul lebih lambat tetapi toksisitas lebih mungkin terjadi.
+- [Gambaran Besar] Jelaskan Vitamin larut lemak pada Vitamin Larut Lemak & Larut Air. :: Absorpsinya mengikuti absorpsi lemak, memerlukan empedu/misel, dapat disimpan lebih banyak, dan karena itu defisiensi cenderung muncul lebih lambat tetapi toksisitas lebih mungkin terjadi.
 - [Gambaran Besar] Jelaskan Vitamin larut air dalam konteks Vitamin Larut Lemak & Larut Air. :: Umumnya memiliki cadangan tubuh lebih terbatas dan kelebihan lebih mudah diekskresikan melalui urin. Pengecualian penting: vitamin B12 memiliki cadangan hati yang besar sehingga defisiensi dapat membutuhkan waktu bertahun-tahun.
 - [Vitamin A — Retinoid] Apa yang dimaksud dengan Retinol pada Vitamin A — Retinoid? :: Bentuk alkohol dan bentuk transport/storage penting.
 - [Vitamin A — Retinoid] Apa yang dimaksud dengan Retinal pada Vitamin A — Retinoid? :: Aldehida; 11-cis-retinal penting pada siklus visual.
@@ -443,32 +443,32 @@ Contoh konsekuensi:
 - [Vitamin Larut Lemak & Larut Air] Apa yang perlu diingat tentang B12 cobalamin pada Vitamin Larut Lemak & Larut Air? :: Methionine synthase + methylmalonyl-CoA mutase
 - [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang Vitamin A pada Vitamin Larut Lemak & Larut Air? :: Retinal untuk vision; retinoic acid untuk gene transcription
 - [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang Vitamin D pada Vitamin Larut Lemak & Larut Air? :: Liver membuat 25(OH)D; kidney membuat 1,25(OH)2D
-- [Vitamin Larut Lemak & Larut Air] Apa jawaban atau kesimpulan untuk petunjuk berikut: Vitamin E: antioksidan lipid membrane; deficiency? :: Neurologic + hemolysis
+- [Vitamin Larut Lemak & Larut Air] Apa jawaban atau kesimpulan untuk petunjuk berikut: Vitamin E: antioksidan lipid membrane; deficiency pada Vitamin Larut Lemak & Larut Air? :: Neurologic + hemolysis
 - [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang Vitamin K pada Vitamin Larut Lemak & Larut Air? :: Γ-carboxylation faktor II, VII, IX, X, C, S
 - [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang B12 pada Vitamin Larut Lemak & Larut Air? :: Megaloblastic anemia + neurologic signs + ↑ homocysteine + ↑ MMA
-- [Vitamin Larut Lemak & Larut Air] Apa jawaban atau kesimpulan untuk petunjuk berikut: Vitamin C: collagen hydroxylation; deficiency? :: Scurvy
-- [Vitamin Larut Lemak & Larut Air] Apa jawaban atau kesimpulan untuk petunjuk berikut: E: antioksidan lipid; defisiensi? :: Neuropathy dan hemolysis
+- [Vitamin Larut Lemak & Larut Air] Apa jawaban atau kesimpulan untuk petunjuk berikut: Vitamin C: collagen hydroxylation; deficiency pada Vitamin Larut Lemak & Larut Air? :: Scurvy
+- [Vitamin Larut Lemak & Larut Air] Apa jawaban atau kesimpulan untuk petunjuk berikut: E: antioksidan lipid; defisiensi pada Vitamin Larut Lemak & Larut Air? :: Neuropathy dan hemolysis
 - [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang B9 deficiency pada Vitamin Larut Lemak & Larut Air? :: ↑ homocysteine, MMA normal, tanpa neuro khas
 - [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang B12 deficiency pada Vitamin Larut Lemak & Larut Air? :: ↑ homocysteine + ↑ MMA + neurologic dysfunction
 - [Vitamin A — Retinoid] Sebutkan bentuk utama vitamin A pada Vitamin A — Retinoid. :: • Retinol: bentuk alkohol dan bentuk transport/storage penting
   • Retinal: aldehida; 11-cis-retinal penting pada siklus visual
   • Retinoic acid: regulator transkripsi melalui nuclear receptor; tidak dapat dikonversi kembali menjadi retinal untuk fungsi visual
   • Β-carotene: provitamin A dari tumbuhan
-- [Warfarin dan Vitamin K Cycle] Sebutkan hal-hal penting tentang Defisiensi vitamin K. :: • Neonatus: cadangan rendah dan flora usus belum berkembang → diberikan vitamin K profilaksis setelah lahir
+- [Warfarin dan Vitamin K Cycle] Sebutkan hal-hal penting tentang Defisiensi vitamin K pada Warfarin dan Vitamin K Cycle. :: • Neonatus: cadangan rendah dan flora usus belum berkembang → diberikan vitamin K profilaksis setelah lahir
   • Malabsorpsi lemak atau terapi antibiotik spektrum luas dapat meningkatkan risiko defisiensi
-- [Vitamin B1 — Thiamine] Sebutkan hal-hal penting tentang Defisiensi B1. :: • Dry beriberi → peripheral neuropathy
+- [Vitamin B1 — Thiamine] Sebutkan hal-hal penting tentang Defisiensi B1 pada Vitamin B1 — Thiamine (Vitamin Larut Lemak & Larut Air). :: • Dry beriberi → peripheral neuropathy
   • Wet beriberi → high-output heart failure, edema
   • Wernicke encephalopathy → confusion, ophthalmoplegia/nystagmus, ataxia
   • Korsakoff syndrome → memory impairment, confabulation
 - [Vitamin B2 — Riboflavin] Sebutkan bentuk aktif pada Vitamin B2 — Riboflavin. :: • FAD
   • FMN
-- [Vitamin B2 — Riboflavin] Sebutkan hal-hal penting tentang Defisiensi riboflavin. :: • Angular cheilitis/cheilosis
+- [Vitamin B2 — Riboflavin] Sebutkan hal-hal penting tentang Defisiensi riboflavin pada Vitamin B2 — Riboflavin (Vitamin Larut Lemak & Larut Air). :: • Angular cheilitis/cheilosis
   • Stomatitis
   • Glossitis
   • Corneal vascularization dapat muncul
 - [Vitamin B3 — Niacin] Sebutkan bentuk aktif pada Vitamin B3 — Niacin. :: • NAD+
   • NADP+
-- [Vitamin B6 — Pyridoxine] Sebutkan hal-hal penting tentang Defisiensi B6. :: • Sideroblastic/microcytic anemia karena gangguan heme synthesis
+- [Vitamin B6 — Pyridoxine] Sebutkan hal-hal penting tentang Defisiensi B6 pada Vitamin B6 — Pyridoxine (Vitamin Larut Lemak & Larut Air). :: • Sideroblastic/microcytic anemia karena gangguan heme synthesis
   • Peripheral neuropathy
   • Seizures/irritability karena gangguan neurotransmitter
   • Cheilosis/glossitis
@@ -476,7 +476,7 @@ Contoh konsekuensi:
   • Acetyl-CoA carboxylase
   • Propionyl-CoA carboxylase
   • Methylcrotonyl-CoA carboxylase
-- [Vitamin B9 — Folate] Sebutkan hal-hal penting tentang Defisiensi B9. :: • Megaloblastic macrocytic anemia
+- [Vitamin B9 — Folate] Sebutkan hal-hal penting tentang Defisiensi B9 pada Vitamin B9 — Folate (Vitamin Larut Lemak & Larut Air). :: • Megaloblastic macrocytic anemia
   • Hypersegmented neutrophils
   • ↑ homocysteine
   • Methylmalonic acid NORMAL
@@ -484,7 +484,7 @@ Contoh konsekuensi:
 - [Vitamin B9 — Folate] Sebutkan obat terkait pada Vitamin B9 — Folate. :: • Methotrexate menghambat human dihydrofolate reductase (DHFR)
   • Trimethoprim menghambat bacterial DHFR
   • Pyrimethamine menghambat protozoal DHFR
-- [Vitamin B12 — Cobalamin] Sebutkan hal-hal penting tentang Defisiensi B12. :: • Megaloblastic anemia
+- [Vitamin B12 — Cobalamin] Sebutkan hal-hal penting tentang Defisiensi B12 pada Vitamin B12 — Cobalamin (Vitamin Larut Lemak & Larut Air). :: • Megaloblastic anemia
   • ↑ homocysteine
   • ↑ methylmalonic acid
   • Neurologic dysfunction, termasuk paresthesia, ataxia, dan posterior/lateral column involvement

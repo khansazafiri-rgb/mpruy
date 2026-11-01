@@ -596,7 +596,7 @@ Glikolisis berlangsung di sitosol dan mengubah satu glukosa menjadi dua piruvat 
 - [Reaksi 7 — ATP Pertama pada Payoff Phase] Jelaskan Ini adalah substrate-level phosphorylation dalam konteks Reaksi 7 — ATP Pertama pada Payoff Phase. :: ATP dibuat langsung dengan memindahkan gugus fosfat berenergi tinggi ke ADP.
 - [Reaksi 8 — 3-PG → 2-PG] Pada Reaksi 8 — 3-PG → 2-PG, apa enzimnya? :: Phosphoglycerate mutase.
 - [Nasib Piruvat pada Kondisi Anaerob] Pada Nasib Piruvat pada Kondisi Anaerob, apa enzimnya? :: Lactate dehydrogenase (LDH).
-- [2,3-Bisphosphoglycerate Shunt] Apa yang dimaksud dengan Trade-off pada 2,3-Bisphosphoglycerate Shunt? :: Jalur ini melewati langkah pembentukan ATP oleh phosphoglycerate kinase.
+- [2,3-Bisphosphoglycerate Shunt] Apa yang dimaksud dengan Trade-off pada 2,3-Bisphosphoglycerate Shunt (Glikolisis & Glukoneogenesis)? :: Jalur ini melewati langkah pembentukan ATP oleh phosphoglycerate kinase.
 - [Bypass 1A — Pyruvate → Oxaloacetate] Pada Bypass 1A — Pyruvate → Oxaloacetate, apa enzimnya? :: Pyruvate carboxylase.
 - [Bypass 1A — Pyruvate → Oxaloacetate] Pada Bypass 1A — Pyruvate → Oxaloacetate, apa lokasinya? :: Matriks mitokondria.
 - [Bypass 1A — Pyruvate → Oxaloacetate] Pada Bypass 1A — Pyruvate → Oxaloacetate, apa reaksinya? :: Piruvat + CO₂ + ATP → Oxaloacetate + ADP + Pi.
@@ -605,18 +605,18 @@ Glikolisis berlangsung di sitosol dan mengubah satu glukosa menjadi dua piruvat 
 - [Bypass 2 — F1,6BP → F6P] Pada Bypass 2 — F1,6BP → F6P, apa enzimnya? :: Fructose-1,6-bisphosphatase (FBPase-1).
 - [Bypass 3 — G6P → Glukosa] Pada Bypass 3 — G6P → Glukosa, apa enzimnya? :: Glucose-6-phosphatase.
 - [Gambar Besar Glukoneogenesis] Jelaskan Alur utama dari piruvat dalam konteks Gambar Besar Glukoneogenesis. :: Piruvat → Oxaloacetate → PEP → reaksi reversibel glikolisis → Fructose-1,6-bisphosphate → Fructose-6-phosphate → Glucose-6-phosphate → Glukosa.
-- [Glucose–Alanine Cycle] Jelaskan Alanin dibawa ke hati dalam konteks Glucose–Alanine Cycle. :: Alanin → piruvat → glukoneogenesis → glukosa.
+- [Glucose–Alanine Cycle] Jelaskan Alanin dibawa ke hati dalam konteks Glucose–Alanine Cycle (Glikolisis & Glukoneogenesis). :: Alanin → piruvat → glukoneogenesis → glukosa.
 - [Master Flow Glikolisis] Apa yang dimaksud dengan Net pada Master Flow Glikolisis? :: 2 ATP + 2 NADH + 2 piruvat per glukosa.
-- [Dua Fase Glikolisis] Sebutkan hal-hal penting tentang Glikolisis. :: • Fase investasi/preparatif: memakai 2 ATP
+- [Dua Fase Glikolisis] Sebutkan hal-hal penting tentang Glikolisis pada Dua Fase Glikolisis (Glikolisis & Glukoneogenesis). :: • Fase investasi/preparatif: memakai 2 ATP
   • Fase payoff/ATP-generating: menghasilkan 4 ATP dan 2 NADH
-- [Dua Fase Glikolisis] Sebutkan hal-hal penting tentang Hasil bersih per glukosa. :: • 2 ATP
+- [Dua Fase Glikolisis] Sebutkan hal-hal penting tentang Hasil bersih per glukosa pada Dua Fase Glikolisis. :: • 2 ATP
   • 2 NADH
   • 2 piruvat
-- [Hexokinase] Sebutkan karakteristik high-yield pada Hexokinase. :: • Km rendah
+- [Hexokinase] Sebutkan karakteristik high-yield pada Hexokinase (Glikolisis & Glukoneogenesis). :: • Km rendah
   • Terdapat pada banyak jaringan
   • Vmax relatif lebih rendah
   • Dihambat oleh produk glucose-6-phosphate
-- [Glucokinase] Sebutkan karakteristik high-yield pada Glucokinase. :: • Km lebih tinggi daripada hexokinase
+- [Glucokinase] Sebutkan karakteristik high-yield pada Glucokinase (Glikolisis & Glukoneogenesis). :: • Km lebih tinggi daripada hexokinase
   • Vmax lebih tinggi
   • Terutama di hati dan sel β pankreas
   • Tidak dihambat langsung oleh glucose-6-phosphate
@@ -626,15 +626,15 @@ Glikolisis berlangsung di sitosol dan mengubah satu glukosa menjadi dua piruvat 
   • Citrate
 - [Regulasi Pyruvate Kinase] Sebutkan inhibitor penting pada Regulasi Pyruvate Kinase. :: • ATP
   • Alanin, terutama pada hati
-- [Lokasi Glukoneogenesis] Sebutkan organ utama pada Lokasi Glukoneogenesis. :: • Hati
+- [Lokasi Glukoneogenesis] Sebutkan organ utama pada Lokasi Glukoneogenesis (Glikolisis & Glukoneogenesis). :: • Hati
   • Korteks ginjal, terutama makin penting pada puasa berkepanjangan
-- [Substrat Glukoneogenesis] Sebutkan substrat penting pada Substrat Glukoneogenesis. :: • Laktat
+- [Substrat Glukoneogenesis] Sebutkan substrat penting pada Substrat Glukoneogenesis (Glikolisis & Glukoneogenesis). :: • Laktat
   • Alanin dan asam amino glukogenik lain
   • Gliserol
   • Propionat dari oksidasi asam lemak rantai ganjil, dalam kontribusi yang lebih kecil pada manusia
 - [Bypass 2 — F1,6BP → F6P] Sebutkan regulasi penting pada Bypass 2 — F1,6BP → F6P. :: • Dihambat AMP
   • Dihambat F2,6BP
   • Dapat didukung oleh status energi tinggi
-- [Alkohol dan Hipoglikemia Puasa] Sebutkan hal-hal penting tentang NADH tinggi mendorong. :: • Piruvat → laktat
+- [Alkohol dan Hipoglikemia Puasa] Sebutkan hal-hal penting tentang NADH tinggi mendorong pada Alkohol dan Hipoglikemia Puasa. :: • Piruvat → laktat
   • Oxaloacetate → malate
 - [Pyruvate Kinase Deficiency] Apa korelasi klinis dari Pyruvate Kinase Deficiency? :: Enzim glikolisis terganggu → ATP eritrosit turun → hemolytic anemia.

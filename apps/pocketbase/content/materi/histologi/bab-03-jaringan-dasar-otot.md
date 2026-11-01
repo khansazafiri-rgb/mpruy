@@ -410,9 +410,9 @@ Smooth:
 - [Sarcomere: Unit Kontraktil] Apa yang dimaksud dengan A band pada Sarcomere: Unit Kontraktil? :: Sepanjang thick filament, tampak lebih gelap
 - [Sarcomere: Unit Kontraktil] Apa yang dimaksud dengan H zone pada Sarcomere: Unit Kontraktil? :: Bagian tengah A band yang hanya berisi thick filaments
 - [Sarcomere: Unit Kontraktil] Apa yang dimaksud dengan M line pada Sarcomere: Unit Kontraktil? :: Garis tengah sarcomere tempat organisasi thick filaments.
-- [Intercalated Discs] Apa yang dimaksud dengan fascia adherens pada Intercalated Discs? :: Menambatkan actin filaments terminal
-- [Intercalated Discs] Apa yang dimaksud dengan desmosomes/macula adherens pada Intercalated Discs? :: Memberi mechanical adhesion kuat
-- [Intercalated Discs] Apa yang dimaksud dengan gap junctions pada Intercalated Discs? :: Memungkinkan electrical coupling antar sel.
+- [Intercalated Discs] Apa yang dimaksud dengan fascia adherens pada Intercalated Discs (Jaringan Dasar: Otot)? :: Menambatkan actin filaments terminal
+- [Intercalated Discs] Apa yang dimaksud dengan desmosomes/macula adherens pada Intercalated Discs (Jaringan Dasar: Otot)? :: Memberi mechanical adhesion kuat
+- [Intercalated Discs] Apa yang dimaksud dengan gap junctions pada Intercalated Discs (Jaringan Dasar: Otot)? :: Memungkinkan electrical coupling antar sel.
 - [Jaringan Dasar: Otot] Apa yang perlu diketahui tentang Skeletal muscle cross section pada Jaringan Dasar: Otot? :: Fibers relatif besar, polygonal, nuclei perifer, endomysium jelas
 - [Jaringan Dasar: Otot] Apa yang perlu diketahui tentang Cardiac muscle cross section pada Jaringan Dasar: Otot? :: Fibers lebih kecil/irregular, nuclei sentral lebih sering, banyak capillaries, branching tidak selalu tampak pada cross section
 - [Jaringan Dasar: Otot] Apa yang perlu diketahui tentang Smooth muscle cross section pada Jaringan Dasar: Otot? :: Sangat bervariasi ukurannya, nuclei hanya pada sebagian profiles, tidak ada striation dan tidak ada polygonal large fibers seperti skeletal muscle
@@ -438,15 +438,15 @@ Smooth:
   • A band: sepanjang thick filament, tampak lebih gelap
   • H zone: bagian tengah A band yang hanya berisi thick filaments
   • M line: garis tengah sarcomere tempat organisasi thick filaments
-- [Fiber Types pada Skeletal Muscle] Sebutkan hal-hal penting tentang Type I / slow oxidative fibers. :: • Myoglobin tinggi
+- [Fiber Types pada Skeletal Muscle] Sebutkan hal-hal penting tentang Type I / slow oxidative fibers pada Fiber Types pada Skeletal Muscle. :: • Myoglobin tinggi
   • Mitochondria banyak
   • Capillary supply baik
   • Diameter relatif lebih kecil
   • Tahan lelah
-- [Intercalated Discs] Sebutkan komponen fungsional utama pada Intercalated Discs. :: • Fascia adherens: menambatkan actin filaments terminal
+- [Intercalated Discs] Sebutkan komponen fungsional utama pada Intercalated Discs (Jaringan Dasar: Otot). :: • Fascia adherens: menambatkan actin filaments terminal
   • Desmosomes/macula adherens: memberi mechanical adhesion kuat
   • Gap junctions: memungkinkan electrical coupling antar sel
-- [Purkinje Fibers] Sebutkan ciri histologis pada Purkinje Fibers. :: • Ukuran lebih besar daripada working cardiomyocytes
+- [Purkinje Fibers] Sebutkan ciri histologis pada Purkinje Fibers (Jaringan Dasar: Otot). :: • Ukuran lebih besar daripada working cardiomyocytes
   • Sitoplasma lebih pucat karena banyak glycogen
   • Myofibrils lebih sedikit dan terdorong ke perifer
   • Nucleus sentral
@@ -463,22 +463,22 @@ Smooth:
   • Respiratory tract
   • Arrector pili
   • Iris dan ciliary body
-- [Smooth Muscle pada Longitudinal dan Cross Section] Sebutkan hal-hal penting tentang Transverse section. :: • Profil cells memiliki diameter bervariasi karena dipotong pada level berbeda
+- [Smooth Muscle pada Longitudinal dan Cross Section] Sebutkan hal-hal penting tentang Transverse section pada Smooth Muscle pada Longitudinal dan Cross Section (Jaringan Dasar: Otot). :: • Profil cells memiliki diameter bervariasi karena dipotong pada level berbeda
   • Hanya sebagian profil menunjukkan nucleus karena nucleus tidak selalu ikut terpotong
   • Tidak terdapat fascicular striation
-- [Perbandingan Tiga Tipe Muscle] Sebutkan hal-hal penting tentang Skeletal muscle. :: • Striated
+- [Perbandingan Tiga Tipe Muscle] Sebutkan hal-hal penting tentang Skeletal muscle pada Perbandingan Tiga Tipe Muscle (Jaringan Dasar: Otot). :: • Striated
   • Long cylindrical unbranched fibers
   • Many peripheral nuclei
   • Voluntary
   • Satellite cells ada
   • Regeneration terbatas
-- [Perbandingan Tiga Tipe Muscle] Sebutkan hal-hal penting tentang Cardiac muscle. :: • Striated
+- [Perbandingan Tiga Tipe Muscle] Sebutkan hal-hal penting tentang Cardiac muscle pada Perbandingan Tiga Tipe Muscle (Jaringan Dasar: Otot). :: • Striated
   • Branched cells
   • 1–2 central nuclei
   • Intercalated discs
   • Involuntary
   • Regeneration sangat minimal
-- [Perbandingan Tiga Tipe Muscle] Sebutkan hal-hal penting tentang Smooth muscle. :: • Non-striated
+- [Perbandingan Tiga Tipe Muscle] Sebutkan hal-hal penting tentang Smooth muscle pada Perbandingan Tiga Tipe Muscle (Jaringan Dasar: Otot). :: • Non-striated
   • Spindle-shaped cells
   • One central nucleus
   • Involuntary
@@ -487,7 +487,7 @@ Smooth:
 - [Skeletal Muscle pada Transverse Section] Apa poin high-yield (pearl) tentang Skeletal Muscle pada Transverse Section? :: Longitudinal = striation paling jelas; transverse = hubungan fiber–endomysium–fascicle paling jelas.
 - [Connective Tissue Sheaths: Endomysium, Perimysium, Epimysium] Bagaimana cara mengingat Connective Tissue Sheaths: Endomysium, Perimysium, Epimysium? :: Endo = one fiber; peri = one fascicle; epi = entire muscle.
 - [Sarcomere: Unit Kontraktil] Apa jebakan yang sering muncul pada soal tentang Sarcomere: Unit Kontraktil? :: A band TIDAK memendek selama contraction.
-- [Muscle Spindle] Apa clue praktikum untuk Muscle Spindle? :: Cari struktur encapsulated yang berisi beberapa small muscle fibers dan nerve profiles di antara ordinary skeletal muscle fascicles.
+- [Muscle Spindle] Apa clue praktikum untuk Muscle Spindle (Jaringan Dasar: Otot)? :: Cari struktur encapsulated yang berisi beberapa small muscle fibers dan nerve profiles di antara ordinary skeletal muscle fascicles.
 - [Cardiac Muscle: Ciri Histologis Utama] Apa clue praktikum untuk Cardiac Muscle: Ciri Histologis Utama? :: Central nucleus + branching + intercalated disc adalah kombinasi paling kuat untuk cardiac muscle.
-- [Purkinje Fibers] Apa jebakan yang sering muncul pada soal tentang Purkinje Fibers? :: Purkinje fibers merupakan bagian jaringan konduksi ventrikel; jangan menyebut SA node atau AV node sebagai “Purkinje fibers”.
+- [Purkinje Fibers] Apa jebakan yang sering muncul pada soal tentang Purkinje Fibers (Jaringan Dasar: Otot)? :: Purkinje fibers merupakan bagian jaringan konduksi ventrikel; jangan menyebut SA node atau AV node sebagai “Purkinje fibers”.
 - [Smooth Muscle pada Longitudinal dan Cross Section] Apa jebakan yang sering muncul pada soal tentang Smooth Muscle pada Longitudinal dan Cross Section? :: Smooth muscle dapat mirip dense connective tissue. Smooth muscle memiliki cells lebih “penuh” dan eosinophilic dengan banyak central nuclei, sedangkan dense collagen lebih extracellular, wavy, dan nuclei fibroblast lebih tipis/gepeng.

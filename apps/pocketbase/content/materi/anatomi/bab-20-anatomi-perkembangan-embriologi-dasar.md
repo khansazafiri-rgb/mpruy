@@ -427,8 +427,8 @@ Bila diberi diagram tahap awal perkembangan:
 - [Anatomi Perkembangan (Embriologi Dasar)] Apa yang perlu diketahui tentang Minggu 4 pada Anatomi Perkembangan (Embriologi Dasar)? :: Folding jelas, neural tube closure berlangsung/selesai, pharyngeal arches dan limb buds mulai tampak
 - [Anatomi Perkembangan (Embriologi Dasar)] Apa yang perlu diketahui tentang Somite pada Anatomi Perkembangan (Embriologi Dasar)? :: Sclerotome = vertebra/rib, myotome = skeletal muscle, dermatome = dermis
 - [Anatomi Perkembangan (Embriologi Dasar)] Apa yang perlu diketahui tentang Placenta pada Anatomi Perkembangan (Embriologi Dasar)? :: Chorion frondosum fetal + decidua basalis maternal
-- [Anatomi Perkembangan (Embriologi Dasar)] Jelaskan: Test pertanyaan embriologi dengan tiga hal. :: Kapan terjadi, berasal dari germ layer apa, dan struktur dewasa apa yang dihasilkan
-- [Fertilisasi] Sebutkan urutan atau langkah pada Fertilisasi? :: • Sperm capacitation di traktus reproduksi wanita
+- [Anatomi Perkembangan (Embriologi Dasar)] Jelaskan: Test pertanyaan embriologi dengan tiga hal pada Anatomi Perkembangan (Embriologi Dasar). :: Kapan terjadi, berasal dari germ layer apa, dan struktur dewasa apa yang dihasilkan
+- [Fertilisasi] Sebutkan urutan atau langkah pada Fertilisasi (Anatomi Perkembangan (Embriologi Dasar))? :: • Sperm capacitation di traktus reproduksi wanita
   • Penetrasi corona radiata
   • Binding ke zona pellucida dan acrosome reaction
   • Penetrasi zona pellucida
@@ -436,7 +436,7 @@ Bila diberi diagram tahap awal perkembangan:
   • Cortical/zona reaction yang mencegah polyspermy
   • Secondary oocyte menyelesaikan meiosis II
   • Male dan female pronuclei terbentuk lalu menyatu membentuk zygote diploid
-- [Fertilisasi] Sebutkan konsekuensi fertilisasi. :: • Mengembalikan jumlah kromosom diploid
+- [Fertilisasi] Sebutkan konsekuensi fertilisasi (Anatomi Perkembangan (Embriologi Dasar)). :: • Mengembalikan jumlah kromosom diploid
   • Menentukan genetic sex berdasarkan kromosom X atau Y spermatozoon
   • Memulai cleavage
   • Menghasilkan kombinasi genetik baru
@@ -458,10 +458,10 @@ Bila diberi diagram tahap awal perkembangan:
   • Odontoblasts
   • Pia dan arachnoid mater
   • Conotruncal/aorticopulmonary septal components
-- [Mesoderm dan Somites] Sebutkan hal-hal penting tentang Intraembryonic mesoderm secara regional. :: • Paraxial mesoderm
+- [Mesoderm dan Somites] Sebutkan hal-hal penting tentang Intraembryonic mesoderm secara regional pada Mesoderm dan Somites. :: • Paraxial mesoderm
   • Intermediate mesoderm
   • Lateral plate mesoderm
-- [Embryonic Folding] Sebutkan hasil utama folding pada Embryonic Folding. :: • Bentuk tubuh berubah menjadi lebih silindris
+- [Embryonic Folding] Sebutkan hasil utama folding pada Embryonic Folding (Anatomi Perkembangan (Embriologi Dasar)). :: • Bentuk tubuh berubah menjadi lebih silindris
   • Sebagian yolk sac terinkorporasi menjadi primitive gut tube
   • Endoderm membentuk foregut, midgut, dan hindgut
   • Ventral body wall mendekat dan menutup
@@ -473,20 +473,20 @@ Bila diberi diagram tahap awal perkembangan:
   • Facial prominences berkembang dan menyatu
   • Physiologic midgut herniation terjadi sementara
   • Digits berkembang melalui pembentukan digital rays dan apoptosis jaringan interdigital
-- [Placenta dan Uteroplacental Circulation] Sebutkan hal-hal penting tentang Chorionic villi berkembang bertahap. :: • Primary villus: cytotrophoblast yang diselubungi syncytiotrophoblast
+- [Placenta dan Uteroplacental Circulation] Sebutkan hal-hal penting tentang Chorionic villi berkembang bertahap pada Placenta dan Uteroplacental Circulation. :: • Primary villus: cytotrophoblast yang diselubungi syncytiotrophoblast
   • Secondary villus: extraembryonic mesoderm masuk ke core
   • Tertiary villus: fetal capillaries terbentuk di core
-- [Placenta dan Uteroplacental Circulation] Sebutkan hal-hal penting tentang Umbilical vessels. :: • Dua umbilical arteries membawa darah relatif deoxygenated dari fetus ke placenta
+- [Placenta dan Uteroplacental Circulation] Sebutkan hal-hal penting tentang Umbilical vessels pada Placenta dan Uteroplacental Circulation (Anatomi Perkembangan (Embriologi Dasar)). :: • Dua umbilical arteries membawa darah relatif deoxygenated dari fetus ke placenta
   • Satu umbilical vein membawa darah relatively oxygenated dari placenta ke fetus
 - [Teratology dan Critical Periods] Sebutkan prinsip timing pada Teratology dan Critical Periods. :: • Awal sekali sebelum implantation sering mengikuti konsep “all-or-none”: embryo mati atau bertahan tanpa major structural defect
   • Minggu 3–8: risiko tertinggi major structural anomalies karena organogenesis
   • Fetal period: gangguan lebih sering memengaruhi growth dan functional maturation, walau organ tertentu tetap rentan
 - [Peta Besar Perkembangan Prenatal] Apa korelasi klinis dari Anatomi Perkembangan (Embriologi Dasar)? :: Periode minggu 3–8 adalah fase paling kritis untuk major structural malformations karena organogenesis sedang berlangsung aktif.
-- [Fertilisasi] Apa korelasi klinis dari Fertilisasi? :: Fertilisasi normal terjadi di tuba, sedangkan implantasi normal terjadi di endometrium uterus. Implantasi di tuba merupakan ectopic pregnancy.
+- [Fertilisasi] Apa korelasi klinis dari Fertilisasi (Anatomi Perkembangan (Embriologi Dasar))? :: Fertilisasi normal terjadi di tuba, sedangkan implantasi normal terjadi di endometrium uterus. Implantasi di tuba merupakan ectopic pregnancy.
 - [Implantation dan Diferensiasi Trophoblast] Apa korelasi klinis dari Implantation dan Diferensiasi Trophoblast? :: Trophoblast adalah komponen fetal placenta; endometrium maternal yang berhubungan dengan placenta terutama menjadi decidua basalis.
 - [Gastrulation: Pembentukan Trilaminar Disc] Apa korelasi klinis dari Gastrulation: Pembentukan Trilaminar Disc? :: Persistence primitive streak dapat berkaitan dengan sacrococcygeal teratoma karena sisa sel pluripotent di regio kaudal.
 - [Notochord dan Axial Organization] Apa korelasi klinis dari Notochord dan Axial Organization? :: Chordoma dapat berasal dari sisa notochord, sering di region sacrococcygeal atau clivus.
 - [Neurulation dan Neural Crest] Apa korelasi klinis dari Neurulation dan Neural Crest? :: Neural tube defects berkaitan dengan kegagalan closure neuropore; folate yang adekuat menurunkan risikonya.
-- [Endoderm] Bagaimana cara mengingat Endoderm? :: Ectoderm banyak berhubungan dengan “outside + nervous system”, mesoderm dengan “support/movement/circulation”, endoderm dengan “internal tube and its glands”.
+- [Endoderm] Bagaimana cara mengingat Endoderm (Anatomi Perkembangan (Embriologi Dasar))? :: Ectoderm banyak berhubungan dengan “outside + nervous system”, mesoderm dengan “support/movement/circulation”, endoderm dengan “internal tube and its glands”.
 - [Fetal Membranes dan Umbilical Cord] Apa korelasi klinis dari Fetal Membranes dan Umbilical Cord? :: Patent urachus dapat menyebabkan urine keluar melalui umbilicus; vitelline duct persistence dapat menghasilkan Meckel diverticulum atau fistula terkait umbilicus.
-- [Twinning] Apa korelasi klinis dari Twinning? :: Chorionicity lebih penting daripada zygosity untuk banyak risiko obstetri pada twin pregnancy.
+- [Twinning] Apa korelasi klinis dari Twinning (Anatomi Perkembangan (Embriologi Dasar))? :: Chorionicity lebih penting daripada zygosity untuk banyak risiko obstetri pada twin pregnancy.

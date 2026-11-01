@@ -405,25 +405,25 @@ Ventricular filling → atrial systole → EDV → isovolumetric contraction →
 - [Action Potential Sel Ventrikel: Gambaran Umum] Jelaskan Makna fisiologis terpenting dalam konteks Action Potential Sel Ventrikel: Gambaran Umum. :: Plateau memperpanjang refractory period sehingga otot jantung tidak mengalami tetanus fisiologis.
 - [Fase 0 Ventricular Action Potential] Jelaskan Arus dominan menurut sumber dalam konteks Fase 0 Ventricular Action Potential. :: Rapid Na+ influx melalui fast voltage-gated Na+ channels.
 - [Fase 2: Plateau] Apa yang dimaksud dengan Poin pada Fase 2: Plateau? :: L-type Ca2+ influx berperan penting mempertahankan plateau dan memicu contraction.
-- [Fase 3] Apa yang dimaksud dengan Arus dominan pada Fase 3? :: K+ efflux meningkat sehingga membrane potential kembali menjadi negatif.
+- [Fase 3] Apa yang dimaksud dengan Arus dominan pada Fase 3 (Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung)? :: K+ efflux meningkat sehingga membrane potential kembali menjadi negatif.
 - [ECG: Gambaran Umum] Apa yang dimaksud dengan Prinsip penting pada ECG: Gambaran Umum? :: ECG bukan rekaman kontraksi mekanik secara langsung; ECG merekam perubahan electrical activity yang mendahului mechanical response.
 - [Cardiac Cycle: Peta Besar] Jelaskan Satu cardiac cycle dalam konteks Cardiac Cycle: Peta Besar. :: Ventricular filling → atrial systole → isovolumetric contraction → ejection → isovolumetric relaxation → filling kembali.
 - [Heart Sounds: Konsep Dasar] Apa yang dimaksud dengan S1 pada Heart Sounds: Konsep Dasar? :: Closure AV valves pada awal ventricular systole.
 - [Heart Sounds: Konsep Dasar] Apa yang dimaksud dengan S2 pada Heart Sounds: Konsep Dasar? :: Closure semilunar valves pada awal diastole.
 - [Heart Sounds: Konsep Dasar] Apa yang dimaksud dengan Gunakan hubungan pada Heart Sounds: Konsep Dasar? :: Electrical event → mechanical event → valve closure → sound.
-- [Ejection Fraction] Pada Ejection Fraction, apa rumusnya? :: EF = SV / EDV × 100%.
-- [Cardiac Output] Apa yang dimaksud dengan Contoh sumber pada Cardiac Output? :: HR 75/min dan SV 70 mL → CO = 5250 mL/min atau 5.25 L/min.
-- [Frank–Starling Mechanism] Jelaskan Sumber menekankan prinsip dalam konteks Frank–Starling Mechanism. :: Semakin besar filling/stretch awal dalam rentang fisiologis, semakin kuat contraction dan semakin besar stroke volume.
+- [Ejection Fraction] Pada Ejection Fraction, apa rumusnya (Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung)? :: EF = SV / EDV × 100%.
+- [Cardiac Output] Apa yang dimaksud dengan Contoh sumber pada Cardiac Output (Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung)? :: HR 75/min dan SV 70 mL → CO = 5250 mL/min atau 5.25 L/min.
+- [Frank–Starling Mechanism] Jelaskan Sumber menekankan prinsip dalam konteks Frank–Starling Mechanism (Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung). :: Semakin besar filling/stretch awal dalam rentang fisiologis, semakin kuat contraction dan semakin besar stroke volume.
 - [PV Loop: Peningkatan Contractility] Pada PV Loop: Peningkatan Contractility, apa konsekuensinya? :: ESV menurun dan stroke volume meningkat.
 - [Cardiac Output saat Exercise] Jelaskan Sumber menggunakan nilai ilustratif dalam konteks Cardiac Output saat Exercise. :: Resting CO sekitar 5 L/min dan dapat meningkat beberapa kali lipat saat exercise berat.
-- [Peta Besar Fisiologi Kardiovaskular] Sebutkan hal-hal penting tentang Empat blok besar bab. :: • Sistem listrik jantung
+- [Peta Besar Fisiologi Kardiovaskular] Sebutkan hal-hal penting tentang Empat blok besar bab pada Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung. :: • Sistem listrik jantung
   • Mekanika pompa dan cardiac cycle
   • Hemodinamika pembuluh
   • Regulasi tekanan darah dan venous return
-- [SA Node] Sebutkan karakteristik utamanya pada SA Node. :: • Spontaneous depolarization
+- [SA Node] Sebutkan karakteristik utamanya pada SA Node (Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung). :: • Spontaneous depolarization
   • Tidak memiliki resting membrane potential yang benar-benar stabil seperti sel ventrikel
   • Mencapai threshold secara otomatis
-- [Mengapa Konduksi AV Node Lambat?] Sebutkan hal-hal penting tentang Sumber pembahasan soal menekankan. :: • Sel lebih kecil
+- [Mengapa Konduksi AV Node Lambat?] Sebutkan hal-hal penting tentang Sumber pembahasan soal menekankan pada Mengapa Konduksi AV Node Lambat?. :: • Sel lebih kecil
   • Gap junction lebih sedikit
   • Conduction lebih lambat
 - [Pressure–Volume Loop: Empat Sisi] Sebutkan PV loop secara konseptual pada Pressure–Volume Loop: Empat Sisi. :: • Ventricular filling

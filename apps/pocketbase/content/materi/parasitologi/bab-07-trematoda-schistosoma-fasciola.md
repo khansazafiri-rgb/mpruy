@@ -444,36 +444,36 @@ SCHISTOSOMA = freshwater cercaria → tembus kulit → adult di vena → telur m
 
 ## Flashcard {kartu}
 
-- [Terapi Fasciola] Jelaskan Poin sangat penting dalam konteks Terapi Fasciola. :: PRAZIQUANTEL umumnya TIDAK efektif untuk Fasciola dan tidak direkomendasikan sebagai terapi utama.
-- [Intermediate Host] Apa yang dimaksud dengan Schistosoma pada Intermediate Host? :: Freshwater snail → menghasilkan cercaria yang langsung menginfeksi manusia melalui kulit.
-- [Intermediate Host] Apa yang dimaksud dengan Fasciola pada Intermediate Host? :: Freshwater snail → cercaria keluar lalu encyst sebagai metacercaria pada tanaman air.
+- [Terapi Fasciola] Jelaskan Poin sangat penting dalam konteks Terapi Fasciola (Trematoda (Schistosoma, Fasciola)). :: PRAZIQUANTEL umumnya TIDAK efektif untuk Fasciola dan tidak direkomendasikan sebagai terapi utama.
+- [Intermediate Host] Apa yang dimaksud dengan Schistosoma pada Intermediate Host (Trematoda (Schistosoma, Fasciola))? :: Freshwater snail → menghasilkan cercaria yang langsung menginfeksi manusia melalui kulit.
+- [Intermediate Host] Apa yang dimaksud dengan Fasciola pada Intermediate Host (Trematoda (Schistosoma, Fasciola))? :: Freshwater snail → cercaria keluar lalu encyst sebagai metacercaria pada tanaman air.
 - [Pattern Recognition Praktikum] Apa yang dimaksud dengan Kasus A pada Pattern Recognition Praktikum? :: Telur besar dengan lateral spine → S. mansoni.
 - [Pattern Recognition Praktikum] Apa yang dimaksud dengan Kasus B pada Pattern Recognition Praktikum? :: Telur dengan terminal spine dalam urin → S. haematobium.
 - [Pattern Recognition Praktikum] Apa yang dimaksud dengan Kasus C pada Pattern Recognition Praktikum? :: Telur relatif bulat dengan small lateral knob → S. japonicum.
 - [Pattern Recognition Praktikum] Apa yang dimaksud dengan Kasus D pada Pattern Recognition Praktikum? :: Telur besar operculated + RUQ pain + riwayat makan watercress → Fasciola.
-- [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Schistosoma infektif bagi manusia? :: Cercaria
+- [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Schistosoma infektif bagi manusia pada Trematoda (Schistosoma, Fasciola)? :: Cercaria
 - [Trematoda (Schistosoma, Fasciola)] Apa yang perlu diingat tentang S. mansoni/japonicum pada Trematoda (Schistosoma, Fasciola)? :: Stool eggs
 - [Trematoda (Schistosoma, Fasciola)] Apa yang perlu diingat tentang S. haematobium pada Trematoda (Schistosoma, Fasciola)? :: Urine eggs
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Katayama syndrome pada Trematoda (Schistosoma, Fasciola)? :: Acute systemic schistosomiasis + eosinophilia
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Symmers pipe-stem fibrosis pada Trematoda (Schistosoma, Fasciola)? :: Hepatosplenic schistosomiasis
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Praziquantel pada Trematoda (Schistosoma, Fasciola)? :: Drug of choice schistosomiasis
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Fasciola infektif pada Trematoda (Schistosoma, Fasciola)? :: Metacercaria pada aquatic plants
-- [Trematoda (Schistosoma, Fasciola)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Fasciola juvenile bermigrasi melalui liver? :: Acute hepatic phase + eosinophilia
+- [Trematoda (Schistosoma, Fasciola)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Fasciola juvenile bermigrasi melalui liver pada Trematoda (Schistosoma, Fasciola)? :: Acute hepatic phase + eosinophilia
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Fasciola egg pada Trematoda (Schistosoma, Fasciola)? :: Large + operculated
 - [Trematoda (Schistosoma, Fasciola)] Apa yang dimaksud dengan Triclabendazole pada Trematoda (Schistosoma, Fasciola)? :: Drug of choice fascioliasis; praziquantel tidak efektif untuk Fasciola
 - [Schistosoma — Spesies Penting] Sebutkan spesies utama pada manusia pada Schistosoma — Spesies Penting. :: • S. mansoni → intestinal/hepatic schistosomiasis
   • S. japonicum → intestinal/hepatic schistosomiasis; penting di Asia termasuk Indonesia
   • S. haematobium → urinary schistosomiasis
   • S. mekongi dan S. intercalatum/guineensis juga dapat menyebabkan penyakit manusia di wilayah tertentu
-- [Diagnosis Schistosomiasis] Sebutkan diagnosis parasitologis utama pada Diagnosis Schistosomiasis. :: • S. mansoni/japonicum → pemeriksaan telur pada feses
+- [Diagnosis Schistosomiasis] Sebutkan diagnosis parasitologis utama pada Diagnosis Schistosomiasis (Trematoda (Schistosoma, Fasciola)). :: • S. mansoni/japonicum → pemeriksaan telur pada feses
   • S. haematobium → pemeriksaan telur pada urin
-- [Diagnosis Schistosomiasis] Sebutkan pemeriksaan tambahan pada Diagnosis Schistosomiasis. :: • Serologi pada situasi tertentu
+- [Diagnosis Schistosomiasis] Sebutkan pemeriksaan tambahan pada Diagnosis Schistosomiasis (Trematoda (Schistosoma, Fasciola)). :: • Serologi pada situasi tertentu
   • Antigen testing
   • Ultrasound/imaging untuk komplikasi
   • Eosinofilia sebagai temuan pendukung
-- [Terapi Schistosomiasis] Sebutkan hal-hal penting tentang Regimen rujukan CDC. :: • S. mansoni, S. haematobium, S. intercalatum: total 40 mg/kg dalam 2 dosis terbagi selama 1 hari
+- [Terapi Schistosomiasis] Sebutkan hal-hal penting tentang Regimen rujukan CDC pada Terapi Schistosomiasis (Trematoda (Schistosoma, Fasciola)). :: • S. mansoni, S. haematobium, S. intercalatum: total 40 mg/kg dalam 2 dosis terbagi selama 1 hari
   • S. japonicum dan S. mekongi: total 60 mg/kg dalam 3 dosis terbagi selama 1 hari
-- [Fasciola — Morfologi] Sebutkan hal-hal penting tentang Cacing dewasa. :: • Besar
+- [Fasciola — Morfologi] Sebutkan hal-hal penting tentang Cacing dewasa pada Fasciola — Morfologi (Trematoda (Schistosoma, Fasciola)). :: • Besar
   • Pipih
   • Leaf-shaped
   • Memiliki oral dan ventral suckers
@@ -486,5 +486,5 @@ SCHISTOSOMA = freshwater cercaria → tembus kulit → adult di vena → telur m
 - [S. haematobium — Urinary Schistosomiasis] Apa poin high-yield (pearl) tentang S. haematobium — Urinary Schistosomiasis? :: Schistosoma haematobium + hematuria kronik = risiko SCC bladder.
 - [Waktu Pengambilan Urin S. haematobium] Apa poin high-yield (pearl) tentang Waktu Pengambilan Urin S. haematobium? :: Urinary schistosomiasis → pikirkan urine microscopy, bukan stool examination.
 - [Fasciola — Morfologi] Apa jebakan yang sering muncul pada soal tentang Fasciola — Morfologi? :: Telur Fasciola dapat mirip dengan Fasciolopsis; konteks klinis dan epidemiologi membantu.
-- [Diagnosis Fascioliasis] Apa jebakan yang sering muncul pada soal tentang Diagnosis Fascioliasis? :: Fase akut + eosinofilia + RUQ pain + belum ada telur di feses TIDAK menyingkirkan Fasciola.
-- [Intermediate Host] Apa poin high-yield (pearl) tentang Intermediate Host? :: Schistosoma tidak butuh tanaman air. Fasciola klasiknya membutuhkan aquatic vegetation sebagai kendaraan metacercaria.
+- [Diagnosis Fascioliasis] Apa jebakan yang sering muncul pada soal tentang Diagnosis Fascioliasis (Trematoda (Schistosoma, Fasciola))? :: Fase akut + eosinofilia + RUQ pain + belum ada telur di feses TIDAK menyingkirkan Fasciola.
+- [Intermediate Host] Apa poin high-yield (pearl) tentang Intermediate Host (Trematoda (Schistosoma, Fasciola))? :: Schistosoma tidak butuh tanaman air. Fasciola klasiknya membutuhkan aquatic vegetation sebagai kendaraan metacercaria.

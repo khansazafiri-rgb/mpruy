@@ -500,12 +500,12 @@ per pregnancy.
 - [Genetika Populasi & Konseling Genetik] Apa yang dimaksud dengan Heritability pada Genetika Populasi & Konseling Genetik? :: Parameter populasi, bukan persentase penyebab penyakit pada individu
 - [Genetika Populasi & Konseling Genetik] Apa yang dimaksud dengan Drift pada Genetika Populasi & Konseling Genetik? :: Perubahan acak; founder effect dan bottleneck adalah bentuk drift
 - [Genetika Populasi & Konseling Genetik] Apa yang dimaksud dengan Genetic counseling pada Genetika Populasi & Konseling Genetik? :: Phenotype + pedigree + inheritance + risk + testing + patient values
-- [Hardy–Weinberg Equilibrium] Sebutkan hal-hal penting tentang Asumsi ideal HWE. :: • Population size sangat besar → genetic drift minimal
+- [Hardy–Weinberg Equilibrium] Sebutkan hal-hal penting tentang Asumsi ideal HWE pada Hardy–Weinberg Equilibrium (Genetika Populasi & Konseling Genetik). :: • Population size sangat besar → genetic drift minimal
   • Random mating
   • Tidak ada migration/gene flow bermakna
   • Tidak ada mutation bermakna
   • Tidak ada natural selection yang membedakan fitness genotype
-- [Hardy–Weinberg Equilibrium] Sebutkan interpretasi grafik pada Hardy–Weinberg Equilibrium. :: • Saat q rendah, q² jauh lebih kecil daripada q
+- [Hardy–Weinberg Equilibrium] Sebutkan interpretasi grafik pada Hardy–Weinberg Equilibrium (Genetika Populasi & Konseling Genetik). :: • Saat q rendah, q² jauh lebih kecil daripada q
   • Heterozygote 2pq mencapai maksimum ketika p dan q mendekati 0,5
   • Untuk penyakit autosomal recessive langka, jumlah carrier biasanya jauh lebih besar daripada jumlah affected
 - [Menghitung Carrier Frequency pada Autosomal Recessive] Sebutkan contoh klasik pada Menghitung Carrier Frequency pada Autosomal Recessive. :: • Penyakit AR terjadi pada 1 dari 10.000 individu
@@ -513,14 +513,14 @@ per pregnancy.
   • Q = 0,01 = 1/100
   • P ≈ 0,99
   • 2pq ≈ 2 × 0,99 × 0,01 ≈ 0,0198 ≈ 1/50
-- [Founder Effect dan Population Bottleneck] Sebutkan hal-hal penting tentang Founder effect. :: • Populasi baru dibentuk oleh sedikit individu dari populasi asal
+- [Founder Effect dan Population Bottleneck] Sebutkan hal-hal penting tentang Founder effect pada Founder Effect dan Population Bottleneck (Genetika Populasi & Konseling Genetik). :: • Populasi baru dibentuk oleh sedikit individu dari populasi asal
   • Alel yang kebetulan dibawa founders dapat menjadi jauh lebih sering daripada di populasi asal
-- [Nonrandom Mating, Consanguinity, dan Inbreeding] Sebutkan hal-hal penting tentang Inbreeding coefficient (F). :: • Menggambarkan probabilitas dua alel pada suatu locus identik karena berasal dari ancestor yang sama (identical by descent)
+- [Nonrandom Mating, Consanguinity, dan Inbreeding] Sebutkan hal-hal penting tentang Inbreeding coefficient (F) pada Nonrandom Mating, Consanguinity, dan Inbreeding. :: • Menggambarkan probabilitas dua alel pada suatu locus identik karena berasal dari ancestor yang sama (identical by descent)
   • Semakin dekat hubungan biologis orang tua, semakin tinggi F keturunannya
-- [Polygenic dan Multifactorial Inheritance] Sebutkan hal-hal penting tentang Threshold model. :: • Liability adalah kecenderungan total dari faktor genetik + lingkungan
+- [Polygenic dan Multifactorial Inheritance] Sebutkan hal-hal penting tentang Threshold model pada Polygenic dan Multifactorial Inheritance (Genetika Populasi & Konseling Genetik). :: • Liability adalah kecenderungan total dari faktor genetik + lingkungan
   • Penyakit muncul ketika liability melewati threshold tertentu
   • Risiko recurrence biasanya lebih tinggi bila: lebih banyak anggota keluarga affected,; phenotype pada proband lebih berat,; hubungan kerabat lebih dekat,; penyakit terjadi pada sex yang lebih jarang terkena untuk trait tertentu
-- [Genetic Counseling — Tujuan Utama] Sebutkan hal-hal penting tentang Genetic counseling bertujuan membantu individu/keluarga. :: • Memahami diagnosis atau kemungkinan diagnosis genetik
+- [Genetic Counseling — Tujuan Utama] Sebutkan hal-hal penting tentang Genetic counseling bertujuan membantu individu/keluarga pada Genetic Counseling — Tujuan Utama. :: • Memahami diagnosis atau kemungkinan diagnosis genetik
   • Memahami pola inheritance
   • Memperkirakan recurrence risk
   • Memahami pilihan testing
@@ -543,9 +543,9 @@ per pregnancy.
   • Pregnancy loss
   • Consanguinity
   • Ancestry yang relevan terhadap diagnosis tertentu
-- [Recurrence Risk: Empiric vs Mendelian] Sebutkan hal-hal penting tentang Mendelian risk. :: • Dihitung dari genotype dan pola inheritance
+- [Recurrence Risk: Empiric vs Mendelian] Sebutkan hal-hal penting tentang Mendelian risk pada Recurrence Risk: Empiric vs Mendelian (Genetika Populasi & Konseling Genetik). :: • Dihitung dari genotype dan pola inheritance
   • Contoh carrier AR × carrier AR → 25% affected per pregnancy
-- [Recurrence Risk: Empiric vs Mendelian] Sebutkan hal-hal penting tentang Empiric risk. :: • Dipakai bila mekanisme tidak sederhana atau genotype belum diketahui
+- [Recurrence Risk: Empiric vs Mendelian] Sebutkan hal-hal penting tentang Empiric risk pada Recurrence Risk: Empiric vs Mendelian (Genetika Populasi & Konseling Genetik). :: • Dipakai bila mekanisme tidak sederhana atau genotype belum diketahui
   • Berdasarkan data observasi populasi/family studies
 - [Bayesian Thinking dalam Genetika] Sebutkan contoh konsep pada Bayesian Thinking dalam Genetika. :: • Seseorang punya prior carrier risk dari pedigree
   • Tes carrier negatif menurunkan risiko, tetapi tidak selalu menjadi nol karena tes mungkin tidak mendeteksi seluruh pathogenic variant
@@ -554,9 +554,9 @@ per pregnancy.
 - [Istilah Dasar Population Genetics] Apa poin high-yield (pearl) tentang Istilah Dasar Population Genetics? :: Frekuensi alel dan frekuensi genotype adalah konsep berbeda. Jangan menyamakan q dengan q².
 - [Founder Effect dan Population Bottleneck] Apa jebakan yang sering muncul pada soal tentang Founder Effect dan Population Bottleneck? :: Founder effect dan bottleneck adalah bentuk genetic drift. Keduanya tidak membutuhkan keuntungan biologis alel tertentu.
 - [Nonrandom Mating, Consanguinity, dan Inbreeding] Apa jebakan yang sering muncul pada soal tentang Nonrandom Mating, Consanguinity, dan Inbreeding? :: Consanguinity tidak membuat alel recessive baru; ia meningkatkan kemungkinan dua copy alel recessive yang sudah ada bertemu pada anak.
-- [Linkage Disequilibrium] Apa jebakan yang sering muncul pada soal tentang Linkage Disequilibrium? :: Association ≠ causation. SNP yang berasosiasi dengan penyakit belum tentu merupakan variant kausal.
+- [Linkage Disequilibrium] Apa jebakan yang sering muncul pada soal tentang Linkage Disequilibrium (Genetika Populasi & Konseling Genetik)? :: Association ≠ causation. SNP yang berasosiasi dengan penyakit belum tentu merupakan variant kausal.
 - [Recurrence Risk: Empiric vs Mendelian] Apa jebakan yang sering muncul pada soal tentang Recurrence Risk: Empiric vs Mendelian? :: Setiap pregnancy merupakan event independen. Jika pasangan carrier AR sudah punya satu anak affected, risiko anak berikutnya tetap 25%, bukan “sudah terpakai”.
 - [Bayesian Thinking dalam Genetika] Apa jebakan yang sering muncul pada soal tentang Bayesian Thinking dalam Genetika? :: “Negative test” tidak selalu berarti “bukan carrier”.
 - [Sensitivity, Specificity, PPV, NPV dalam Genetic Screening] Apa jebakan yang sering muncul pada soal tentang Sensitivity, Specificity, PPV, NPV dalam Genetic Screening? :: PPV dan NPV dipengaruhi prevalence/pre-test probability. Pada kondisi sangat jarang, false positive dapat tetap menjadi masalah meski specificity tinggi. Family history kuat menaikkan pre-test probability dan dapat mengubah interpretasi hasil.
 - [Variant Classification dan Konseling] Apa jebakan yang sering muncul pada soal tentang Variant Classification dan Konseling? :: VUS ≠ diagnosis molekuler definitif.
-- [Cascade Testing] Apa jebakan yang sering muncul pada soal tentang Cascade Testing? :: Targeted familial variant testing biasanya berbeda dari mengulang seluruh panel pada setiap anggota keluarga.
+- [Cascade Testing] Apa jebakan yang sering muncul pada soal tentang Cascade Testing (Genetika Populasi & Konseling Genetik)? :: Targeted familial variant testing biasanya berbeda dari mengulang seluruh panel pada setiap anggota keluarga.

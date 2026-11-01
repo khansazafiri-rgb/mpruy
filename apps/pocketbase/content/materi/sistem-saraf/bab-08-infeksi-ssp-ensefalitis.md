@@ -331,28 +331,28 @@ Karena itu outcome encephalitis bukan hanya survival, tetapi juga fungsi neuroko
 - [HSV Encephalitis — Pola yang Wajib Dihafal] Apa yang dimaksud dengan Pearl lokasi pada HSV Encephalitis — Pola yang Wajib Dihafal? :: Temporal/limbic involvement sangat high-yield. Karena itu vignette berupa demam + confusion/behavioral change + seizure + temporal-lobe abnormality harus membuat HSV encephalitis berada sangat tinggi pada differential.
 - [Rabies sebagai Ensefalitis Fatal] Jelaskan Pearl paling penting dalam konteks Rabies sebagai Ensefalitis Fatal. :: Rabies simptomatik memiliki prognosis sangat buruk. Karena itu pencegahan melalui post-exposure prophylaxis jauh lebih penting daripada menunggu gejala neurologis.
 - [Important Differential — Autoimmune Encephalitis] Apa yang dimaksud dengan Prinsip penting pada Important Differential — Autoimmune Encephalitis? :: Jangan memberi label autoimmune terlalu cepat. Infeksi, terutama HSV, harus dievaluasi dan ditangani empiris bila masih mungkin.
-- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Demam + confusion + seizure + temporal lobe lesion? :: HSV encephalitis
+- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Demam + confusion + seizure + temporal lobe lesion pada Infeksi SSP: Ensefalitis? :: HSV encephalitis
 - [Infeksi SSP: Ensefalitis] Apa yang perlu diingat tentang Suspected HSV encephalitis pada Infeksi SSP: Ensefalitis? :: Mulai IV acyclovir tanpa menunggu PCR final
-- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: HSV PCR negatif sangat dini tetapi suspicion tinggi? :: Lanjutkan evaluasi/repeat PCR; jangan langsung stop acyclovir
+- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: HSV PCR negatif sangat dini tetapi suspicion tinggi pada Infeksi SSP: Ensefalitis? :: Lanjutkan evaluasi/repeat PCR; jangan langsung stop acyclovir
 - [Infeksi SSP: Ensefalitis] Apa yang perlu diingat tentang Acyclovir IV pada Infeksi SSP: Ensefalitis? :: Monitor ginjal dan sesuaikan dosis pada renal impairment
-- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Fever + altered behavior + memory disturbance + aphasia? :: Encephalitis lebih mungkin daripada meningitis murni
-- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Herpes zoster + encephalopathy/focal deficit? :: Pertimbangkan VZV encephalitis/vasculopathy
-- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Asia + mosquito exposure + encephalitis? :: Japanese encephalitis masuk differential
-- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Bird–Culex ecology + encephalitis? :: Pikirkan West Nile virus sesuai epidemiologi
-- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Encephalopathy tanpa convulsion jelas? :: EEG penting untuk menilai non-convulsive status
+- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Fever + altered behavior + memory disturbance + aphasia pada Infeksi SSP: Ensefalitis? :: Encephalitis lebih mungkin daripada meningitis murni
+- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Herpes zoster + encephalopathy/focal deficit pada Infeksi SSP: Ensefalitis? :: Pertimbangkan VZV encephalitis/vasculopathy
+- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Asia + mosquito exposure + encephalitis pada Infeksi SSP: Ensefalitis? :: Japanese encephalitis masuk differential
+- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Bird–Culex ecology + encephalitis pada Infeksi SSP: Ensefalitis? :: Pikirkan West Nile virus sesuai epidemiologi
+- [Infeksi SSP: Ensefalitis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Encephalopathy tanpa convulsion jelas pada Infeksi SSP: Ensefalitis? :: EEG penting untuk menilai non-convulsive status
 - [Infeksi SSP: Ensefalitis] Apa yang perlu diingat tentang Immunocompromised + encephalitis pada Infeksi SSP: Ensefalitis? :: Perluas differential ke CMV, VZV, HSV, HHV-6, fungal/parasitic causes
 - [Infeksi SSP: Ensefalitis] Apa yang dimaksud dengan Altered mental status pada Infeksi SSP: Ensefalitis? :: Clue inti ensefalitis
 - [Infeksi SSP: Ensefalitis] Apa yang dimaksud dengan Meningoensefalitis pada Infeksi SSP: Ensefalitis? :: Overlap keduanya
 - [Infeksi SSP: Ensefalitis] Apa yang dimaksud dengan HSV-1 pada Infeksi SSP: Ensefalitis? :: Penyebab klasik sporadic encephalitis dewasa
 - [Infeksi SSP: Ensefalitis] Apa yang dimaksud dengan CSF HSV PCR pada Infeksi SSP: Ensefalitis? :: Tes kunci
-- [Infeksi SSP: Ensefalitis] Apa yang perlu diketahui tentang Dosis dewasa acyclovir guideline? :: 10 mg/kg IV setiap 8 jam, disesuaikan fungsi ginjal
+- [Infeksi SSP: Ensefalitis] Apa yang perlu diketahui tentang Dosis dewasa acyclovir guideline pada Infeksi SSP: Ensefalitis? :: 10 mg/kg IV setiap 8 jam, disesuaikan fungsi ginjal
 - [Infeksi SSP: Ensefalitis] Apa yang dimaksud dengan West Nile pada Infeksi SSP: Ensefalitis? :: Flavivirus, Culex, reservoir burung
 - [Infeksi SSP: Ensefalitis] Apa yang dimaksud dengan EEE/WEE/VEE pada Infeksi SSP: Ensefalitis? :: Arbovirus yang dapat menyebabkan encephalitis
 - [Infeksi SSP: Ensefalitis] Apa yang dimaksud dengan Rabies pada Infeksi SSP: Ensefalitis? :: Progressive fatal encephalitis setelah pajanan mamalia
 - [Infeksi SSP: Ensefalitis] Apa yang perlu diketahui tentang Anti-NMDAR pada Infeksi SSP: Ensefalitis? :: Psychiatric symptoms + seizure + dyskinesia + dysautonomia
 - [Infeksi SSP: Ensefalitis] Apa yang dimaksud dengan Ensefalitis pada Infeksi SSP: Ensefalitis? :: Demam/infeksi + brain dysfunction: altered mental status, behavior change, seizure, focal signs
 - [Infeksi SSP: Ensefalitis] Apa yang dimaksud dengan MRI + CSF + EEG pada Infeksi SSP: Ensefalitis? :: Trio pemeriksaan penting
-- [Infeksi SSP: Ensefalitis] Apa yang dimaksud dengan VZV, Japanese encephalitis, West Nile, dan rabies? :: Etiologi yang wajib dikenali
+- [Infeksi SSP: Ensefalitis] Apa yang dimaksud dengan VZV, Japanese encephalitis, West Nile, dan rabies pada Infeksi SSP: Ensefalitis? :: Etiologi yang wajib dikenali
 - [Konsep Dasar: Apa Itu Ensefalitis?] Sebutkan manifestasi pada Konsep Dasar: Apa Itu Ensefalitis?. :: • Demam
   • Nyeri kepala
   • Perubahan kesadaran atau confusion
@@ -371,7 +371,7 @@ Karena itu outcome encephalitis bukan hanya survival, tetapi juga fungsi neuroko
   • Eastern/Western/Venezuelan equine encephalitis viruses
   • Rabies virus
   • Measles/mumps/CMV/EBV pada konteks tertentu
-- [Pemeriksaan pada Suspected Encephalitis] Sebutkan hal-hal penting tentang Evaluasi harus menjawab dua pertanyaan. :: • Apakah benar ada encephalitis/brain inflammation?
+- [Pemeriksaan pada Suspected Encephalitis] Sebutkan hal-hal penting tentang Evaluasi harus menjawab dua pertanyaan pada Pemeriksaan pada Suspected Encephalitis. :: • Apakah benar ada encephalitis/brain inflammation?
   • Apa etiologinya?
 - [Pemeriksaan pada Suspected Encephalitis] Sebutkan pemeriksaan penting pada Pemeriksaan pada Suspected Encephalitis. :: • Darah: CBC, elektrolit, fungsi ginjal/hati, glukosa, kultur bila sepsis dicurigai
   • CSF bila aman: cell count/differential, protein, glucose, serta microbiologic testing
@@ -380,12 +380,12 @@ Karena itu outcome encephalitis bukan hanya survival, tetapi juga fungsi neuroko
   • MRI otak
   • EEG
   • Pemeriksaan etiologi lain berdasarkan usia, imun, paparan, perjalanan penyakit, dan epidemiologi
-- [GUIDELINE UPDATE — Jangan Menunda Acyclovir] Sebutkan hal-hal penting tentang Guideline viral encephalitis dewasa merekomendasikan. :: • IV acyclovir 10 mg/kg setiap 8 jam pada dewasa dengan fungsi ginjal memadai
+- [GUIDELINE UPDATE — Jangan Menunda Acyclovir] Sebutkan hal-hal penting tentang Guideline viral encephalitis dewasa merekomendasikan pada GUIDELINE UPDATE — Jangan Menunda Acyclovir. :: • IV acyclovir 10 mg/kg setiap 8 jam pada dewasa dengan fungsi ginjal memadai
   • Mulai bila CSF/imaging mendukung viral encephalitis
   • Bila hasil belum tersedia, pasien sangat sakit, atau memburuk, acyclovir tetap dimulai dalam beberapa jam pertama
   • Normalnya CSF awal atau imaging awal tidak boleh menghentikan terapi bila kecurigaan HSV/VZV masih tinggi
   • Dosis harus disesuaikan pada gangguan ginjal
-- [Arboviral Encephalitis] Sebutkan virus penting pada Arboviral Encephalitis. :: • Japanese encephalitis — Flavivirus, vektor Culex, reservoir terutama babi/burung; sangat relevan di Asia
+- [Arboviral Encephalitis] Sebutkan virus penting pada Arboviral Encephalitis (Infeksi SSP: Ensefalitis). :: • Japanese encephalitis — Flavivirus, vektor Culex, reservoir terutama babi/burung; sangat relevan di Asia
   • West Nile virus — Flavivirus, vektor Culex, reservoir burung
   • St. Louis encephalitis virus
   • Eastern equine encephalitis virus
@@ -397,14 +397,14 @@ Karena itu outcome encephalitis bukan hanya survival, tetapi juga fungsi neuroko
   • Orofacial dyskinesia/movement disorder
   • Autonomic instability
   • Dapat terkait neoplasma tertentu
-- [Komplikasi Ensefalitis] Sebutkan komplikasi akut pada Komplikasi Ensefalitis. :: • Status epilepticus
+- [Komplikasi Ensefalitis] Sebutkan komplikasi akut pada Komplikasi Ensefalitis (Infeksi SSP: Ensefalitis). :: • Status epilepticus
   • Cerebral edema / raised ICP
   • Respiratory failure
   • Dysautonomia
   • Aspiration
   • Secondary infection
   • ICU requirement
-- [Komplikasi Ensefalitis] Sebutkan sekuela jangka panjang pada Komplikasi Ensefalitis. :: • Memory impairment
+- [Komplikasi Ensefalitis] Sebutkan sekuela jangka panjang pada Komplikasi Ensefalitis (Infeksi SSP: Ensefalitis). :: • Memory impairment
   • Epilepsy
   • Language dysfunction
   • Behavioral/personality change

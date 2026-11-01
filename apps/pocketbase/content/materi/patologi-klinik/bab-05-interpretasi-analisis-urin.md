@@ -818,9 +818,9 @@ Pikirkan staghorn calculus bila sesuai imaging.
 ## Flashcard {kartu}
 
 - [Warna Urine — Clue, Bukan Diagnosis] Apa yang dimaksud dengan Normal pada Warna Urine — Clue, Bukan Diagnosis? :: Kuning pucat sampai amber akibat urochrome.
-- [Calcium Oxalate Crystals] Jelaskan Ethylene glycol clue dalam konteks Calcium Oxalate Crystals. :: High anion gap metabolic acidosis + AKI + calcium oxalate crystals.
+- [Calcium Oxalate Crystals] Pada Calcium Oxalate Crystals, apa ethylene glycol cluenya? :: High anion gap metabolic acidosis + AKI + calcium oxalate crystals.
 - [Pola Kasus: Cystitis] Pada Interpretasi Analisis Urin, apa gejalanya? :: Dysuria, frequency, urgency.
-- [Pola Kasus: Glomerulonephritis] Apa interpretasinya? :: Active nephritic sediment.
+- [Pola Kasus: Glomerulonephritis] Apa interpretasinya pada Interpretasi Analisis Urin? :: Active nephritic sediment.
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Urinalysis pada Interpretasi Analisis Urin? :: Physical + dipstick + microscopy
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Blood positif + banyak RBC pada Interpretasi Analisis Urin? :: Hematuria
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Blood positif + no RBC pada Interpretasi Analisis Urin? :: Myoglobinuria/hemoglobinuria
@@ -829,11 +829,11 @@ Pikirkan staghorn calculus bila sesuai imaging.
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Muddy brown granular cast pada Interpretasi Analisis Urin? :: Acute tubular injury
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Fatty cast/oval fat body pada Interpretasi Analisis Urin? :: Nephrotic syndrome
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Broad waxy cast pada Interpretasi Analisis Urin? :: Advanced CKD
-- [Interpretasi Analisis Urin] Apa yang dimaksud dengan Squamous epithelial cells banyak? :: Kualitas clean-catch buruk
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan Squamous epithelial cells banyak pada Interpretasi Analisis Urin? :: Kualitas clean-catch buruk
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Struvite pada Interpretasi Analisis Urin? :: Coffin-lid + alkaline urine + urease-positive organism
 - [Interpretasi Analisis Urin] Apa yang dimaksud dengan Cystine pada Interpretasi Analisis Urin? :: Hexagonal crystal
 - [Interpretasi Analisis Urin] Apa yang perlu diingat tentang Glucosuria dengan normoglycemia pada Interpretasi Analisis Urin? :: Proximal tubular defect/SGLT2 effect
-- [Tiga Komponen Urinalysis] Sebutkan hal-hal penting tentang Urinalysis rutin. :: • Pemeriksaan fisik: warna, kejernihan, specific gravity
+- [Tiga Komponen Urinalysis] Sebutkan hal-hal penting tentang Urinalysis rutin pada Tiga Komponen Urinalysis (Interpretasi Analisis Urin). :: • Pemeriksaan fisik: warna, kejernihan, specific gravity
   • Pemeriksaan kimia dengan dipstick: pH, protein, blood/heme, glucose, ketone, bilirubin, urobilinogen, nitrite, leukocyte esterase
   • Pemeriksaan mikroskopis: RBC, WBC, epithelial cells, casts, crystals, bacteria, yeast, dan unsur lain
 - [Warna Urine — Clue, Bukan Diagnosis] Sebutkan perubahan warna high-yield pada Warna Urine — Clue, Bukan Diagnosis. :: • Merah/pink → RBC, hemoglobin, myoglobin, beetroot, obat tertentu
@@ -844,25 +844,25 @@ Pikirkan staghorn calculus bila sesuai imaging.
 - [Albuminuria — UACR] Sebutkan kategori umum pada Albuminuria — UACR. :: • A1 <30 mg/g
   • A2 30–300 mg/g
   • A3 >300 mg/g
-- [Hematuria Glomerular vs Nonglomerular] Sebutkan hal-hal penting tentang Glomerular hematuria. :: • Dysmorphic RBC
+- [Hematuria Glomerular vs Nonglomerular] Sebutkan hal-hal penting tentang Glomerular hematuria pada Hematuria Glomerular vs Nonglomerular (Interpretasi Analisis Urin). :: • Dysmorphic RBC
   • Acanthocytes
   • RBC casts
   • Proteinuria dapat menyertai
   • Urine dapat tampak tea/cola-colored
-- [Hematuria Glomerular vs Nonglomerular] Sebutkan hal-hal penting tentang Nonglomerular hematuria. :: • RBC lebih isomorphic
+- [Hematuria Glomerular vs Nonglomerular] Sebutkan hal-hal penting tentang Nonglomerular hematuria pada Hematuria Glomerular vs Nonglomerular (Interpretasi Analisis Urin). :: • RBC lebih isomorphic
   • Clots dapat muncul
   • Sumber dapat berupa stone, tumor, infection, trauma, prostate, bladder, ureter
-- [Nitrite] Sebutkan hal-hal penting tentang Nitrite negatif TIDAK menyingkirkan UTI karena. :: • Tidak semua organisme menghasilkan nitrite
+- [Nitrite] Sebutkan hal-hal penting tentang Nitrite negatif TIDAK menyingkirkan UTI karena (Interpretasi Analisis Urin). :: • Tidak semua organisme menghasilkan nitrite
   • Urine terlalu singkat berada di bladder
   • Diet nitrate rendah
   • Bacterial load rendah
-- [Epithelial Cells] Sebutkan hal-hal penting tentang Squamous epithelial cells. :: • Biasanya dari distal urethra/genital tract
+- [Epithelial Cells] Sebutkan hal-hal penting tentang Squamous epithelial cells (Interpretasi Analisis Urin). :: • Biasanya dari distal urethra/genital tract
   • Jumlah banyak → contamination clue
-- [Epithelial Cells] Sebutkan hal-hal penting tentang Transitional/urothelial cells. :: • Berasal dari renal pelvis, ureter, bladder
+- [Epithelial Cells] Sebutkan hal-hal penting tentang Transitional/urothelial cells pada Epithelial Cells (Interpretasi Analisis Urin). :: • Berasal dari renal pelvis, ureter, bladder
   • Dapat meningkat setelah instrumentation atau inflammation
-- [Epithelial Cells] Sebutkan hal-hal penting tentang Renal tubular epithelial cells. :: • Mengarah ke tubular injury bila banyak
+- [Epithelial Cells] Sebutkan hal-hal penting tentang Renal tubular epithelial cells (Interpretasi Analisis Urin). :: • Mengarah ke tubular injury bila banyak
   • Dapat muncul bersama epithelial cell casts
-- [Crystals — Prinsip Besar] Sebutkan hal-hal penting tentang Crystals dipengaruhi. :: • Urine pH
+- [Crystals — Prinsip Besar] Sebutkan hal-hal penting tentang Crystals dipengaruhi pada Crystals — Prinsip Besar (Interpretasi Analisis Urin). :: • Urine pH
   • Solute concentration
   • Temperature
   • Obat
@@ -870,11 +870,11 @@ Pikirkan staghorn calculus bila sesuai imaging.
 - [Uric Acid Crystals] Sebutkan morfologi bervariasi pada Uric Acid Crystals. :: • Rhomboid
   • Diamond
   • Rosette
-- [Drug Crystals] Sebutkan contoh yang sering dibahas pada Drug Crystals. :: • Sulfonamides
+- [Drug Crystals] Sebutkan contoh yang sering dibahas pada Drug Crystals (Interpretasi Analisis Urin). :: • Sulfonamides
   • Acyclovir
   • Indinavir
   • Methotrexate
-- [Isosthenuria] Apa poin high-yield (pearl) tentang Isosthenuria? :: SG “fixed” sekitar 1.010 pada pasien CKD berat = pikirkan isosthenuria.
-- [RBC Cast] Apa poin high-yield (pearl) tentang RBC Cast? :: Hematuria + proteinuria + RBC casts = nephritic glomerular process sampai terbukti bukan.
+- [Isosthenuria] Apa poin high-yield (pearl) tentang Isosthenuria (Interpretasi Analisis Urin)? :: SG “fixed” sekitar 1.010 pada pasien CKD berat = pikirkan isosthenuria.
+- [RBC Cast] Apa poin high-yield (pearl) tentang RBC Cast (Interpretasi Analisis Urin)? :: Hematuria + proteinuria + RBC casts = nephritic glomerular process sampai terbukti bukan.
 - [Granular / Muddy Brown Cast] Apa poin high-yield (pearl) tentang Granular / Muddy Brown Cast? :: Muddy brown cast = acute tubular injury sampai terbukti sebaliknya.
-- [Cystine Crystals] Apa poin high-yield (pearl) tentang Cystine Crystals? :: Hexagonal crystal = cystine sampai terbukti sebaliknya.
+- [Cystine Crystals] Apa poin high-yield (pearl) tentang Cystine Crystals (Interpretasi Analisis Urin)? :: Hexagonal crystal = cystine sampai terbukti sebaliknya.

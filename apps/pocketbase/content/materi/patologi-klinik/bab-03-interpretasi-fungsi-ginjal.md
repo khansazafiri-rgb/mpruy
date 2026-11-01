@@ -1020,9 +1020,9 @@ Baca fungsi ginjal dengan urutan: creatinine dibanding baseline → eGFR → uri
 - [Albuminuria — UACR] Apa yang dimaksud dengan Kategori albuminuria pada Albuminuria — UACR? :: A1: <30 mg/g — normal sampai mildly increased
 - [Albuminuria — UACR] Apa yang dimaksud dengan A2 pada Albuminuria — UACR? :: 30–300 mg/g — moderately increased
 - [Albuminuria — UACR] Apa yang dimaksud dengan A3 pada Albuminuria — UACR? :: >300 mg/g — severely increased
-- [Intrinsic renal AKI] Apa jawaban atau kesimpulan untuk petunjuk berikut: → kerusakan parenkim ginjal? :: Glomerulus, tubulus, interstitium, atau vaskular.
+- [Intrinsic renal AKI] Apa jawaban atau kesimpulan untuk petunjuk berikut: → kerusakan parenkim ginjal pada Intrinsic renal AKI? :: Glomerulus, tubulus, interstitium, atau vaskular.
 - [Urine Anion Gap] Apa yang dimaksud dengan UAG negatif pada Urine Anion Gap? :: → NH4+ excretion meningkat, mendukung extrarenal bicarbonate loss seperti diarrhea.
-- [Urine Anion Gap] Jelaskan: UAG positif/tidak negatif. :: → impaired renal acid excretion, mendukung RTA tertentu.
+- [Urine Anion Gap] Jelaskan: UAG positif/tidak negatif pada Urine Anion Gap (Interpretasi Fungsi Ginjal). :: → impaired renal acid excretion, mendukung RTA tertentu.
 - [Interpretasi Fungsi Ginjal] Apa yang perlu diketahui tentang AKI pada Interpretasi Fungsi Ginjal? :: Creatinine ↑ ≥0.3 mg/dL/48 h atau ≥1.5× baseline/7 hari atau oliguria
 - [Interpretasi Fungsi Ginjal] Apa yang dimaksud dengan Prerenal AKI pada Interpretasi Fungsi Ginjal? :: Perfusi rendah tanpa structural injury awal
 - [Interpretasi Fungsi Ginjal] Apa yang dimaksud dengan Muddy brown granular casts pada Interpretasi Fungsi Ginjal? :: Acute tubular injury
@@ -1030,7 +1030,7 @@ Baca fungsi ginjal dengan urutan: creatinine dibanding baseline → eGFR → uri
 - [Interpretasi Fungsi Ginjal] Apa yang dimaksud dengan WBC casts pada Interpretasi Fungsi Ginjal? :: Pyelonephritis/interstitial nephritis
 - [Interpretasi Fungsi Ginjal] Apa yang dimaksud dengan Fatty casts/oval fat bodies pada Interpretasi Fungsi Ginjal? :: Nephrotic syndrome
 - [Interpretasi Fungsi Ginjal] Apa yang dimaksud dengan Broad waxy casts pada Interpretasi Fungsi Ginjal? :: Advanced CKD
-- [Interpretasi Fungsi Ginjal] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dipstick blood + no RBC? :: Myoglobinuria/hemoglobinuria
+- [Interpretasi Fungsi Ginjal] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dipstick blood + no RBC pada Interpretasi Fungsi Ginjal? :: Myoglobinuria/hemoglobinuria
 - [Interpretasi Fungsi Ginjal] Apa yang dimaksud dengan Struvite crystal pada Interpretasi Fungsi Ginjal? :: Coffin-lid + urease-positive infection
 - [Interpretasi Fungsi Ginjal] Apa yang dimaksud dengan Cystine crystal pada Interpretasi Fungsi Ginjal? :: Hexagonal
 - [Interpretasi Fungsi Ginjal] Apa yang dimaksud dengan Hyperkalemia pada Interpretasi Fungsi Ginjal? :: Komplikasi penting AKI/advanced CKD
@@ -1038,8 +1038,8 @@ Baca fungsi ginjal dengan urutan: creatinine dibanding baseline → eGFR → uri
 - [Interpretasi Fungsi Ginjal] Apa yang dimaksud dengan Fanconi syndrome pada Interpretasi Fungsi Ginjal? :: Generalized proximal tubular dysfunction
 - [Interpretasi Fungsi Ginjal] Apa yang perlu diingat tentang Glucosuria dengan normoglycemia pada Interpretasi Fungsi Ginjal? :: Pikirkan proximal tubular dysfunction
 - [Interpretasi Fungsi Ginjal] Apa yang dimaksud dengan Uremia pada Interpretasi Fungsi Ginjal? :: Sindrom klinis, bukan sekadar BUN tinggi
-- [Interpretasi Fungsi Ginjal] Apa yang perlu diketahui tentang Baca fungsi ginjal dengan urutan? :: Creatinine dibanding baseline → eGFR → urine output → tentukan AKI/CKD → cek elektrolit dan HCO3− → urinalysis → UACR/UPCR → urine sediment → klasifikasikan prerenal/intrinsic/postrenal. Creatinine memiliki banyak keterbatasan dan eGFR tidak boleh dibaca mentah pada AKI non-steady-state. RBC casts menunjuk glomerulonephritis, WBC casts menunjuk pyelonephritis/AIN, muddy brown casts menunjuk acute tubular injury, dan fatty casts menunjuk nephrotic syndrome. CKD memerlukan abnormalitas persisten >3 bulan dan diklasifikasikan dengan Cause–GFR–Albuminuria
-- [Bun:creatinine Ratio] Sebutkan pola klasik pada Bun:creatinine Ratio. :: • BUN:Cr >20:1 → mendukung prerenal state
+- [Interpretasi Fungsi Ginjal] Apa yang perlu diketahui tentang Baca fungsi ginjal dengan urutan pada Interpretasi Fungsi Ginjal? :: Creatinine dibanding baseline → eGFR → urine output → tentukan AKI/CKD → cek elektrolit dan HCO3− → urinalysis → UACR/UPCR → urine sediment → klasifikasikan prerenal/intrinsic/postrenal. Creatinine memiliki banyak keterbatasan dan eGFR tidak boleh dibaca mentah pada AKI non-steady-state. RBC casts menunjuk glomerulonephritis, WBC casts menunjuk pyelonephritis/AIN, muddy brown casts menunjuk acute tubular injury, dan fatty casts menunjuk nephrotic syndrome. CKD memerlukan abnormalitas persisten >3 bulan dan diklasifikasikan dengan Cause–GFR–Albuminuria
+- [Bun:creatinine Ratio] Sebutkan pola klasik pada Bun:creatinine Ratio (Interpretasi Fungsi Ginjal). :: • BUN:Cr >20:1 → mendukung prerenal state
   • Rasio lebih rendah → dapat terlihat pada intrinsic renal injury
 - [Azotemia vs Uremia] Sebutkan uremia = sindrom klinis akibat advanced kidney failure dengan manifestasi seperti pada Azotemia vs Uremia. :: • Encephalopathy
   • Pericarditis
@@ -1059,19 +1059,19 @@ Baca fungsi ginjal dengan urutan: creatinine dibanding baseline → eGFR → uri
   • Nephrotoxins
   • Pigment nephropathy
   • Obat tertentu
-- [Postrenal AKI] Sebutkan pemeriksaan penting pada Postrenal AKI. :: • Bladder scan
+- [Postrenal AKI] Sebutkan pemeriksaan penting pada Postrenal AKI (Interpretasi Fungsi Ginjal). :: • Bladder scan
   • Renal ultrasound untuk hydronephrosis
-- [AKI vs CKD — Petunjuk Praktis] Sebutkan hal-hal penting tentang Mendukung CKD. :: • Abnormalitas ≥3 bulan
+- [AKI vs CKD — Petunjuk Praktis] Sebutkan hal-hal penting tentang Mendukung CKD pada AKI vs CKD — Petunjuk Praktis (Interpretasi Fungsi Ginjal). :: • Abnormalitas ≥3 bulan
   • Anemia normocytic terkait EPO deficiency
   • CKD-mineral bone disorder
   • Kidney kecil/echogenic pada beberapa etiologi
   • Longstanding albuminuria
   • Riwayat CKD sebelumnya
-- [Urine Microscopy — RBC] Sebutkan hal-hal penting tentang Glomerular hematuria. :: • Dysmorphic RBC
+- [Urine Microscopy — RBC] Sebutkan hal-hal penting tentang Glomerular hematuria pada Urine Microscopy — RBC (Interpretasi Fungsi Ginjal). :: • Dysmorphic RBC
   • Acanthocytes
   • RBC casts
   • Sering disertai proteinuria
-- [Nephritic vs Nephrotic Lab Pattern] Sebutkan hal-hal penting tentang Nephritic pattern. :: • Hematuria
+- [Nephritic vs Nephrotic Lab Pattern] Sebutkan hal-hal penting tentang Nephritic pattern pada Nephritic vs Nephrotic Lab Pattern (Interpretasi Fungsi Ginjal). :: • Hematuria
   • Dysmorphic RBC / RBC casts
   • Proteinuria biasanya subnephrotic
   • Reduced GFR
@@ -1080,14 +1080,14 @@ Baca fungsi ginjal dengan urutan: creatinine dibanding baseline → eGFR → uri
 - [Diabetic Kidney Disease — Lab Clues] Sebutkan temuan penting pada Diabetic Kidney Disease — Lab Clues. :: • Persistent albuminuria
   • Declining eGFR
   • Hypertension
-- [Renal Tubular Acidosis — Konsep Dasar] Sebutkan hal-hal penting tentang Type 1 distal RTA. :: • Gangguan sekresi H+
+- [Renal Tubular Acidosis — Konsep Dasar] Sebutkan hal-hal penting tentang Type 1 distal RTA pada Renal Tubular Acidosis — Konsep Dasar. :: • Gangguan sekresi H+
   • Urine pH sering >5.5 saat systemic acidosis
   • Hypokalemia
   • Nephrolithiasis/nephrocalcinosis risk
-- [Kapan Curiga Hasil Creatinine Tidak Sesuai?] Sebutkan hal-hal penting tentang Curiga bila. :: • Creatinine rendah pada pasien sangat cachectic meski klinis CKD
+- [Kapan Curiga Hasil Creatinine Tidak Sesuai?] Sebutkan hal-hal penting tentang Curiga bila pada Kapan Curiga Hasil Creatinine Tidak Sesuai? (Interpretasi Fungsi Ginjal). :: • Creatinine rendah pada pasien sangat cachectic meski klinis CKD
   • Creatinine naik setelah obat yang menghambat tubular secretion tanpa perubahan klinis besar
   • Creatinine berubah cepat pada AKI sehingga eGFR tampak menyesatkan
   • Creatinine tidak sesuai dengan cystatin C atau marker klinis lain
 - [Serum Creatinine — Apa yang Sebenarnya Diukur?] Apa poin high-yield (pearl) tentang Serum Creatinine — Apa yang Sebenarnya Diukur? :: Creatinine “normal” tidak selalu berarti GFR normal, terutama pada pasien dengan massa otot rendah.
 - [Acute Tubular Injury / Atn] Apa poin high-yield (pearl) tentang Acute Tubular Injury / Atn? :: Muddy brown granular casts = acute tubular injury sampai terbukti sebaliknya.
-- [Glomerular AKI] Apa clue praktikum untuk Glomerular AKI? :: Hematuria glomerular dysmorphic RBC RBC casts proteinuria hypertension edema penurunan GFR
+- [Glomerular AKI] Apa clue praktikum untuk Glomerular AKI (Interpretasi Fungsi Ginjal)? :: Hematuria glomerular dysmorphic RBC RBC casts proteinuria hypertension edema penurunan GFR

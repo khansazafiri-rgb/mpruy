@@ -530,26 +530,26 @@ Kalau hanya punya 30 detik:
 ## Flashcard {kartu}
 
 - [Multiple Sclerosis (MS)] Pada Multiple Sclerosis (MS), apa lokasi utamanya? :: Sistem saraf pusat — otak, medula spinalis, dan jalur visual/optic nerve dalam kerangka diagnostik modern.
-- [Multiple Sclerosis (MS)] Pada Multiple Sclerosis (MS), apa polanya? :: Episode neurologis fokal pada lokasi CNS yang berbeda dan/atau waktu berbeda, atau perjalanan progresif pada sebagian pasien.
+- [Multiple Sclerosis (MS)] Pada Multiple Sclerosis (MS), apa polanya (Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré))? :: Episode neurologis fokal pada lokasi CNS yang berbeda dan/atau waktu berbeda, atau perjalanan progresif pada sebagian pasien.
 - [Multiple Sclerosis (MS)] Pada Multiple Sclerosis (MS), apa tanda motornya? :: Dapat berupa pola upper motor neuron seperti spastisitas, hiperrefleksia, dan Babinski.
 - [Guillain-Barré Syndrome (GBS)] Pada Guillain-Barré Syndrome (GBS), apa lokasi utamanya? :: Akar saraf dan saraf perifer.
-- [Guillain-Barré Syndrome (GBS)] Pada Guillain-Barré Syndrome (GBS), apa polanya? :: Poliradikuloneuropati imun akut, biasanya progresif dalam hari–minggu.
+- [Guillain-Barré Syndrome (GBS)] Pada Guillain-Barré Syndrome (GBS), apa polanya (Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré))? :: Poliradikuloneuropati imun akut, biasanya progresif dalam hari–minggu.
 - [Guillain-Barré Syndrome (GBS)] Jelaskan Tanda motor klasik dalam konteks Guillain-Barré Syndrome (GBS). :: Kelemahan flaksid bilateral dengan hiporefleksia atau arefleksia.
 - [Guillain-Barré Syndrome (GBS)] Apa yang dimaksud dengan Bahaya utama pada Guillain-Barré Syndrome (GBS)? :: Gagal napas dan disautonomia.
 - [Fenotipe perjalanan penyakit] Apa yang dimaksud dengan Relapsing disease pada Fenotipe perjalanan penyakit? :: Episode neurologis baru/berulang dengan perbaikan parsial atau lengkap di antaranya.
 - [Fenotipe perjalanan penyakit] Apa yang dimaksud dengan Progressive disease pada Fenotipe perjalanan penyakit? :: Disabilitas neurologis bertambah secara bertahap tanpa harus selalu ada serangan yang jelas.
 - [Dissemination in time (DIT)] Jelaskan Contoh vignette klasik dalam konteks Dissemination in time. :: Episode optic neuritis sekarang + episode baal/kelemahan beberapa bulan sebelumnya pada distribusi berbeda → pikirkan lesi yang tersebar dalam lokasi dan waktu.
 - [Diagnosis terutama klinis] Pada Diagnosis terutama klinis, apa temuan klasiknya? :: PROTEIN MENINGKAT + JUMLAH SEL RENDAH/NORMAL.
-- [Diagnosis terutama klinis] Pada Diagnosis terutama klinis, apa pitfallnya? :: CSF dapat masih normal pada fase awal. Jadi CSF normal sangat dini tidak otomatis menyingkirkan GBS. Sebaliknya, pleositosis yang jelas harus mendorong pencarian diagnosis lain, terutama infeksi/inflamasi alternatif.
+- [Diagnosis terutama klinis] Pada Diagnosis terutama klinis, apa pitfallnya (Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré))? :: CSF dapat masih normal pada fase awal. Jadi CSF normal sangat dini tidak otomatis menyingkirkan GBS. Sebaliknya, pleositosis yang jelas harus mendorong pencarian diagnosis lain, terutama infeksi/inflamasi alternatif.
 - [Yang TIDAK dianjurkan] Apa yang dimaksud dengan Oral corticosteroids pada Yang TIDAK dianjurkan? :: Strongly recommended against untuk GBS.
 - [Yang TIDAK dianjurkan] Jelaskan IV methylprednisolone sendiri dalam konteks Yang TIDAK dianjurkan. :: Tidak dianjurkan sebagai terapi GBS rutin.
-- [Yang TIDAK dianjurkan] Jelaskan: PE yang segera diikuti IVIg. :: Tidak direkomendasikan rutin.
-- [Yang TIDAK dianjurkan] Jelaskan: Second course IVIg hanya karena prognosis buruk. :: Guideline tidak merekomendasikannya secara rutin.
-- [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa jawaban atau kesimpulan untuk petunjuk berikut: → Clue dissemination in space + time? :: MS sangat mungkin bila tidak ada diagnosis yang lebih baik
+- [Yang TIDAK dianjurkan] Jelaskan: PE yang segera diikuti IVIg pada Yang TIDAK dianjurkan (Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)). :: Tidak direkomendasikan rutin.
+- [Yang TIDAK dianjurkan] Jelaskan: Second course IVIg hanya karena prognosis buruk pada Yang TIDAK dianjurkan. :: Guideline tidak merekomendasikannya secara rutin.
+- [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa jawaban atau kesimpulan untuk petunjuk berikut: → Clue dissemination in space + time pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: MS sangat mungkin bila tidak ada diagnosis yang lebih baik
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang perlu diingat tentang → Lhermitte sign pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Cervical cord demyelination clue, tetapi tidak spesifik hanya MS
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang perlu diingat tentang → Internuclear ophthalmoplegia pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Lesi MLF; pada dewasa muda pikir MS
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang perlu diingat tentang → Albuminocytologic dissociation pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Mendukung GBS
-- [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa jawaban atau kesimpulan untuk petunjuk berikut: → High-risk respiratory/bulbar involvement? :: Monitoring intensif/ICU assessment
+- [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa jawaban atau kesimpulan untuk petunjuk berikut: → High-risk respiratory/bulbar involvement pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Monitoring intensif/ICU assessment
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang perlu diingat tentang → Dysautonomia pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Komplikasi serius
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang perlu diketahui tentang Optic neuritis tipikal pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Painful monocular/subacute visual loss + color desaturation
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang dimaksud dengan INO pada dewasa muda pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Clue klasik MS
@@ -557,16 +557,16 @@ Kalau hanya punya 30 detik:
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang dimaksud dengan Uhthoff pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Perburukan sementara gejala lama akibat peningkatan suhu; bukan otomatis relapse
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa lokasi lain pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Periventricular, cortical/juxtacortical, infratentorial, spinal cord
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang dimaksud dengan GBS klasik pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Progressive bilateral weakness + hypo/areflexia
-- [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang dimaksud dengan Respiratory failure dan dysautonomia? :: Komplikasi GBS yang paling mengancam jiwa
+- [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang dimaksud dengan Respiratory failure dan dysautonomia pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Komplikasi GBS yang paling mengancam jiwa
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang dimaksud dengan Albuminocytologic dissociation pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: CSF protein tinggi dengan sel rendah/normal
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang dimaksud dengan Miller Fisher pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Ophthalmoplegia + ataxia + areflexia; anti-GQ1b sering terkait
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang dimaksud dengan Terapi imun GBS pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: IVIg ATAU plasma exchange sesuai indikasi; steroid bukan terapi efektif
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang perlu diketahui tentang Update McDonald 2024 pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Optic nerve menjadi lokasi CNS kelima; biomarker/imaging spesifik baru dapat membantu diagnosis pada skenario tertentu
-- [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Acute MS relapse yang bermakna? :: High-dose methylprednisolone setelah menyingkirkan infeksi/pseudo-relapse; DMT adalah strategi jangka panjang yang berbeda
+- [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Acute MS relapse yang bermakna pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: High-dose methylprednisolone setelah menyingkirkan infeksi/pseudo-relapse; DMT adalah strategi jangka panjang yang berbeda
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang dimaksud dengan GBS pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Acute immune polyradiculoneuropathy PNS: progressive bilateral weakness + hypo/areflexia
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang perlu diketahui tentang CSF GBS pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Protein ↑ dengan sel rendah/normal; bisa belum tampak dini
 - [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang perlu diketahui tentang GBS treatment pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: IVIg atau plasma exchange. Steroid bukan terapi efektif
-- [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang dimaksud dengan Ophthalmoplegia + ataxia + areflexia? :: Miller Fisher
+- [Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)] Apa yang dimaksud dengan Ophthalmoplegia + ataxia + areflexia pada Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: Miller Fisher
 - [MRI pada MS] Sebutkan lokasi lesi yang high-yield pada MRI pada MS. :: • Periventricular
   • Cortical/juxtacortical
   • Infratentorial
@@ -575,11 +575,11 @@ Kalau hanya punya 30 detik:
 - [Miller Fisher syndrome] Sebutkan trias klasik pada Miller Fisher syndrome. :: • Ophthalmoplegia
   • Ataxia
   • Areflexia
-- [Pemeriksaan respirasi dan otonom] Sebutkan hal-hal penting tentang Pantau berulang. :: • Respiratory rate dan work of breathing
+- [Pemeriksaan respirasi dan otonom] Sebutkan hal-hal penting tentang Pantau berulang pada Pemeriksaan respirasi dan otonom (Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)). :: • Respiratory rate dan work of breathing
   • Kemampuan menghitung/berbicara dalam satu napas dan kekuatan batuk secara klinis
   • Vital capacity/FVC atau parameter respiratory mechanics yang tersedia
   • Bulbar function dan kemampuan membersihkan sekret
   • Heart rate dan rhythm
   • Blood pressure fluctuations
 - [Konsep Besar: Demielinasi CNS vs PNS] Apa poin high-yield (pearl) tentang Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)? :: CNS: mielin dibentuk oleh oligodendrosit. PNS: mielin dibentuk oleh sel Schwann. Nodus Ranvier adalah celah di antara segmen mielin tempat kanal ion terkonsentrasi dan potensial aksi diregenerasi.
-- [Csf] Apa poin high-yield (pearl) tentang Csf? :: Oligoclonal bands mendukung proses imun intratekal, tetapi bukan “tes tunggal konfirmasi MS”. Hasil harus diinterpretasikan bersama fenotipe klinis dan MRI.
+- [Csf] Apa poin high-yield (pearl) tentang Csf (Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré))? :: Oligoclonal bands mendukung proses imun intratekal, tetapi bukan “tes tunggal konfirmasi MS”. Hasil harus diinterpretasikan bersama fenotipe klinis dan MRI.

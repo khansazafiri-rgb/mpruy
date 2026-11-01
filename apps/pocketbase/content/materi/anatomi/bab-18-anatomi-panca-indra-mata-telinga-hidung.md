@@ -302,14 +302,14 @@ Hidung:
 - [Orbita: Dinding, Apertura, dan Isi] Jelaskan fissura orbitalis superior dalam konteks Orbita: Dinding, Apertura, dan Isi. :: Jalur CN III, IV, V1, VI dan vena ophthalmica superior
 - [Orbita: Dinding, Apertura, dan Isi] Jelaskan fissura orbitalis inferior dalam konteks Orbita: Dinding, Apertura, dan Isi. :: Berhubungan dengan fossa pterygopalatina dan infratemporalis
 - [Orbita: Dinding, Apertura, dan Isi] Jelaskan foramen/kanalis supraorbitalis dan infraorbitalis dalam konteks Orbita: Dinding, Apertura, dan Isi. :: Jalur saraf serta pembuluh dengan nama yang sama.
-- [Tunica fibrosa] Apa yang dimaksud dengan sclera pada Tunica fibrosa? :: Kuat, opak, mempertahankan bentuk bola mata dan menjadi tempat perlekatan otot ekstraokular
-- [Tunica fibrosa] Apa yang dimaksud dengan cornea pada Tunica fibrosa? :: Transparan, avaskular, merupakan media refraktif paling kuat.
+- [Tunica fibrosa] Apa yang dimaksud dengan sclera pada Tunica fibrosa (Anatomi Panca Indra (Mata, Telinga, Hidung))? :: Kuat, opak, mempertahankan bentuk bola mata dan menjadi tempat perlekatan otot ekstraokular
+- [Tunica fibrosa] Apa yang dimaksud dengan cornea pada Tunica fibrosa (Anatomi Panca Indra (Mata, Telinga, Hidung))? :: Transparan, avaskular, merupakan media refraktif paling kuat.
 - [Tunica vasculosa atau uvea] Apa yang dimaksud dengan choroidea pada Tunica vasculosa atau uvea? :: Kaya vaskular, memberi nutrisi terutama pada lapisan luar retina
 - [Tunica vasculosa atau uvea] Apa yang dimaksud dengan corpus ciliare pada Tunica vasculosa atau uvea? :: Mengandung m. ciliaris dan processus ciliares
 - [Tunica vasculosa atau uvea] Apa yang dimaksud dengan iris pada Tunica vasculosa atau uvea? :: Membentuk aperture central berupa pupil.
-- [Tunica interna] Jelaskan discus nervi optici dalam konteks Tunica interna. :: Tempat keluarnya CN II; tidak memiliki photoreceptor sehingga menjadi blind spot
-- [Tunica interna] Apa yang dimaksud dengan macula lutea pada Tunica interna? :: Area penglihatan sentral
-- [Tunica interna] Apa yang dimaksud dengan fovea centralis pada Tunica interna? :: Titik ketajaman visual tertinggi.
+- [Tunica interna] Jelaskan discus nervi optici dalam konteks Tunica interna (Anatomi Panca Indra (Mata, Telinga, Hidung)). :: Tempat keluarnya CN II; tidak memiliki photoreceptor sehingga menjadi blind spot
+- [Tunica interna] Apa yang dimaksud dengan macula lutea pada Tunica interna (Anatomi Panca Indra (Mata, Telinga, Hidung))? :: Area penglihatan sentral
+- [Tunica interna] Apa yang dimaksud dengan fovea centralis pada Tunica interna (Anatomi Panca Indra (Mata, Telinga, Hidung))? :: Titik ketajaman visual tertinggi.
 - [Otot Ekstraokular dan Arah Gerak Bola Mata] Apa yang dimaksud dengan LR6 pada Otot Ekstraokular dan Arah Gerak Bola Mata? :: Lateral rectus — CN VI
 - [Otot Ekstraokular dan Arah Gerak Bola Mata] Apa yang dimaksud dengan SO4 pada Otot Ekstraokular dan Arah Gerak Bola Mata? :: Superior oblique — CN IV
 - [Otot Ekstraokular dan Arah Gerak Bola Mata] Apa yang dimaksud dengan rectus superior pada Otot Ekstraokular dan Arah Gerak Bola Mata? :: Elevation, adduction, intorsion
@@ -319,18 +319,18 @@ Hidung:
 - [Telinga Tengah dan Ossicula Auditus] Pada Telinga Tengah dan Ossicula Auditus, apa urutan konduksinya? :: Membrana tympanica → malleus → incus → stapes → fenestra vestibuli.
 - [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa yang dimaksud dengan Cornea pada Anatomi Panca Indra (Mata, Telinga, Hidung)? :: Bagian transparan tunica fibrosa dan media refraktif utama
 - [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa yang perlu diketahui tentang Aqueous humor pada Anatomi Panca Indra (Mata, Telinga, Hidung)? :: Ciliary processes → posterior chamber → pupil → anterior chamber → trabecular meshwork → canal of Schlemm
-- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Chiasma opticum: nasal retinal fibers menyilang; lesi tengah? :: Bitemporal hemianopia
-- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Jelaskan: Meatus medius menerima sebagian besar sinus penting. :: Frontal, maxillary, anterior/middle ethmoid
-- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Meatus inferior menerima nasolacrimal duct; sphenoid sinus? :: Sphenoethmoidal recess
+- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Chiasma opticum: nasal retinal fibers menyilang; lesi tengah pada Anatomi Panca Indra (Mata, Telinga, Hidung)? :: Bitemporal hemianopia
+- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Jelaskan: Meatus medius menerima sebagian besar sinus penting pada Anatomi Panca Indra (Mata, Telinga, Hidung). :: Frontal, maxillary, anterior/middle ethmoid
+- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Meatus inferior menerima nasolacrimal duct; sphenoid sinus pada Anatomi Panca Indra (Mata, Telinga, Hidung)? :: Sphenoethmoidal recess
 - [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa yang dimaksud dengan Kiesselbach area pada Anatomi Panca Indra (Mata, Telinga, Hidung)? :: Lokasi klasik epistaxis anterior
-- [Orbita: Dinding, Apertura, dan Isi] Sebutkan hal-hal penting tentang Landmark yang harus dikenali. :: • Canalis opticus: membawa nervus opticus (CN II) dan arteria ophthalmica
+- [Orbita: Dinding, Apertura, dan Isi] Sebutkan hal-hal penting tentang Landmark yang harus dikenali pada Orbita: Dinding, Apertura, dan Isi. :: • Canalis opticus: membawa nervus opticus (CN II) dan arteria ophthalmica
   • Fissura orbitalis superior: jalur CN III, IV, V1, VI dan vena ophthalmica superior
   • Fissura orbitalis inferior: berhubungan dengan fossa pterygopalatina dan infratemporalis
   • Foramen/kanalis supraorbitalis dan infraorbitalis: jalur saraf serta pembuluh dengan nama yang sama
-- [Tunica interna] Sebutkan landmark retina penting pada Tunica interna. :: • Discus nervi optici: tempat keluarnya CN II; tidak memiliki photoreceptor sehingga menjadi blind spot
+- [Tunica interna] Sebutkan landmark retina penting pada Tunica interna (Anatomi Panca Indra (Mata, Telinga, Hidung)). :: • Discus nervi optici: tempat keluarnya CN II; tidak memiliki photoreceptor sehingga menjadi blind spot
   • Macula lutea: area penglihatan sentral
   • Fovea centralis: titik ketajaman visual tertinggi
-- [Otot Ekstraokular dan Arah Gerak Bola Mata] Sebutkan hal-hal penting tentang Innervasi wajib hafal. :: • LR6: lateral rectus — CN VI
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Sebutkan innervasi wajib hafal pada Otot Ekstraokular dan Arah Gerak Bola Mata. :: • LR6: lateral rectus — CN VI
   • SO4: superior oblique — CN IV
   • Semua yang lain terutama oleh CN III
 - [Otot Ekstraokular dan Arah Gerak Bola Mata] Sebutkan aksi high-yield pada Otot Ekstraokular dan Arah Gerak Bola Mata. :: • Rectus medialis: adduction
@@ -339,7 +339,7 @@ Hidung:
   • Rectus inferior: depression, adduction, extorsion
   • Obliquus superior: intorsion, depression, abduction
   • Obliquus inferior: extorsion, elevation, abduction
-- [Otot Ekstraokular dan Arah Gerak Bola Mata] Sebutkan hal-hal penting tentang Clinical localization. :: • Palsy CN VI → gagal abduksi dan mata cenderung deviasi medial
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Sebutkan hal-hal penting tentang Clinical localization pada Otot Ekstraokular dan Arah Gerak Bola Mata (Anatomi Panca Indra (Mata, Telinga, Hidung)). :: • Palsy CN VI → gagal abduksi dan mata cenderung deviasi medial
   • Palsy CN IV → kesulitan depresi mata saat adducted, keluhan sering saat turun tangga
   • Palsy CN III → ptosis, mata ‘down and out’, dan dapat disertai mydriasis bila serabut parasimpatik terkena
 - [Nervus Opticus dan Jalur Visual Dasar] Sebutkan pola lesi high-yield pada Nervus Opticus dan Jalur Visual Dasar. :: • Lesi CN II → monocular visual loss ipsilateral
@@ -359,7 +359,7 @@ Hidung:
   • Meatus medius menerima sinus frontalis, sinus maxillaris, serta anterior/middle ethmoidal cells melalui kompleks hiatus semilunaris–infundibulum
   • Meatus inferior menerima ductus nasolacrimalis
   • Recessus sphenoethmoidalis menerima sinus sphenoidalis
-- [Sinus Paranasales] Sebutkan hubungan anatomi penting pada Sinus Paranasales. :: • Sinus frontalis berada di frontal bone dan berhubungan dekat dengan orbita
+- [Sinus Paranasales] Sebutkan hubungan anatomi penting pada Sinus Paranasales (Anatomi Panca Indra (Mata, Telinga, Hidung)). :: • Sinus frontalis berada di frontal bone dan berhubungan dekat dengan orbita
   • Ethmoidal air cells berada di antara cavum nasi dan orbita; lamina papyracea yang sangat tipis memungkinkan penyebaran infeksi ke orbita
   • Sinus sphenoidalis berada dekat sella turcica, optic canal, cavernous sinus, dan internal carotid artery
   • Sinus maxillaris merupakan sinus terbesar dan dekat dengan akar gigi posterior maxilla

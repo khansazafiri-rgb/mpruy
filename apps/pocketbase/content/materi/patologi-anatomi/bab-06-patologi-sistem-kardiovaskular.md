@@ -812,8 +812,8 @@ Right:
 
 - [Stable vs Vulnerable Plaque] Apa yang dimaksud dengan Clinical link pada Stable vs Vulnerable Plaque? :: Plaque rupture/erosion → exposure thrombogenic material → acute thrombosis → acute coronary syndrome.
 - [Myocardial Infarction — Patogenesis] Pada Myocardial Infarction — Patogenesis, apa urutan klasiknya? :: Atherosclerotic plaque disruption → platelet activation → acute thrombosis → coronary occlusion → prolonged ischemia → coagulative necrosis of myocardium.
-- [Myocarditis] Jelaskan Classic pathology clue dalam konteks Myocarditis. :: Lymphocytic myocarditis + myocyte injury pada banyak viral cases.
-- [Cardiac Tamponade] Apa yang dimaksud dengan Pathology link pada Cardiac Tamponade? :: Kecepatan akumulasi cairan sama pentingnya dengan volume total.
+- [Myocarditis] Pada Myocarditis, apa classic pathology cluenya (Patologi Sistem Kardiovaskular)? :: Lymphocytic myocarditis + myocyte injury pada banyak viral cases.
+- [Cardiac Tamponade] Apa yang dimaksud dengan Pathology link pada Cardiac Tamponade (Patologi Sistem Kardiovaskular)? :: Kecepatan akumulasi cairan sama pentingnya dengan volume total.
 - [Pattern Recognition Praktikum] Apa yang dimaksud dengan Atherosclerosis pada Pattern Recognition Praktikum? :: Fibrous cap + necrotic lipid core + cholesterol clefts + foam cells.
 - [Pattern Recognition Praktikum] Apa yang dimaksud dengan Old MI pada Pattern Recognition Praktikum? :: Dense collagenous scar menggantikan myocardium.
 - [Pattern Recognition Praktikum] Jelaskan Recent MI 1–3 hari dalam konteks Pattern Recognition Praktikum. :: Coagulative necrosis + banyak neutrophils.
@@ -832,7 +832,7 @@ Right:
 - [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Volume overload pada Patologi Sistem Kardiovaskular? :: Eccentric hypertrophy
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Calcific aortic stenosis pada Patologi Sistem Kardiovaskular? :: Nodular calcification tanpa commissural fusion klasik
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Rheumatic valve disease pada Patologi Sistem Kardiovaskular? :: Commissural fusion + fish-mouth stenosis
-- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Aschoff body dan Anitschkow cells? :: Rheumatic carditis
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Aschoff body dan Anitschkow cells pada Patologi Sistem Kardiovaskular? :: Rheumatic carditis
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Viridans streptococci pada Patologi Sistem Kardiovaskular? :: Subacute IE klasik pada damaged valve
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan NBTE pada Patologi Sistem Kardiovaskular? :: Sterile bland vegetations + hypercoagulable state/malignancy
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan DCM pada Patologi Sistem Kardiovaskular? :: Dilation + systolic dysfunction
@@ -840,7 +840,7 @@ Right:
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Restrictive CM pada Patologi Sistem Kardiovaskular? :: Impaired filling, contoh amyloidosis
 - [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Free wall rupture pada Patologi Sistem Kardiovaskular? :: Hemopericardium + tamponade
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Hyaline arteriolosclerosis pada Patologi Sistem Kardiovaskular? :: Benign HTN/diabetes
-- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Hyperplastic arteriolosclerosis? :: Malignant/severe HTN
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Hyperplastic arteriolosclerosis pada Patologi Sistem Kardiovaskular? :: Malignant/severe HTN
 - [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Atrial myxoma pada Patologi Sistem Kardiovaskular? :: Primary benign cardiac tumor klasik pada dewasa
 - [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang HTN/aortic stenosis pada Patologi Sistem Kardiovaskular? :: Concentric LVH
 - [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Regurgitation pada Patologi Sistem Kardiovaskular? :: Eccentric hypertrophy
@@ -851,7 +851,7 @@ Right:
   • Smooth muscle cells
   • Extracellular matrix
   • Kadang calcification
-- [Response-to-Injury Hypothesis] Sebutkan urutan atau langkah pada Response-to-Injury Hypothesis? :: • Endothelial dysfunction/injury
+- [Response-to-Injury Hypothesis] Sebutkan urutan atau langkah pada Response-to-Injury Hypothesis (Patologi Sistem Kardiovaskular)? :: • Endothelial dysfunction/injury
   • LDL masuk ke intima dan mengalami modifikasi/oxidation
   • Monocyte adhesion dan migration
   • Monocyte → macrophage → foam cell
@@ -859,14 +859,14 @@ Right:
   • Smooth muscle migration dari media ke intima
   • Smooth muscle proliferation + ECM deposition
   • Terbentuk fibrofatty plaque
-- [Stable Angina vs Acute Coronary Syndrome] Sebutkan hal-hal penting tentang Stable angina. :: • Fixed stenosis
+- [Stable Angina vs Acute Coronary Syndrome] Sebutkan hal-hal penting tentang Stable angina pada Stable Angina vs Acute Coronary Syndrome (Patologi Sistem Kardiovaskular). :: • Fixed stenosis
   • Gejala saat exertion/stress
   • Tidak ada myocardial necrosis
-- [Transmural vs Subendocardial Infarct] Sebutkan hal-hal penting tentang Subendocardial infarct. :: • Mengenai inner 1/3–1/2 myocardium
+- [Transmural vs Subendocardial Infarct] Sebutkan hal-hal penting tentang Subendocardial infarct pada Transmural vs Subendocardial Infarct (Patologi Sistem Kardiovaskular). :: • Mengenai inner 1/3–1/2 myocardium
   • Wilayah subendocardial paling rentan terhadap hypoperfusion
   • Dapat terjadi pada partial occlusion atau global hypotension
   • Sering berkaitan dengan NSTEMI
-- [Free Wall, Septal, dan Papillary Muscle Rupture] Sebutkan hal-hal penting tentang Papillary muscle rupture. :: • Acute severe mitral regurgitation
+- [Free Wall, Septal, dan Papillary Muscle Rupture] Sebutkan hal-hal penting tentang Papillary muscle rupture pada Free Wall, Septal, dan Papillary Muscle Rupture. :: • Acute severe mitral regurgitation
   • Pulmonary edema
   • Posteromedial papillary muscle lebih rentan karena single blood supply pada banyak orang
 - [Heart Failure — Konsep] Sebutkan klasifikasi praktis pada Heart Failure — Konsep. :: • Left-sided vs right-sided
@@ -875,22 +875,22 @@ Right:
 - [Right-Sided Heart Failure] Sebutkan penyebab lain pada Right-Sided Heart Failure. :: • Pulmonary hypertension
   • Chronic lung disease → cor pulmonale
   • Tricuspid/pulmonic valve disease
-- [Concentric vs Eccentric Hypertrophy] Sebutkan hal-hal penting tentang Eccentric hypertrophy. :: • Volume overload
+- [Concentric vs Eccentric Hypertrophy] Sebutkan hal-hal penting tentang Eccentric hypertrophy pada Concentric vs Eccentric Hypertrophy (Patologi Sistem Kardiovaskular). :: • Volume overload
   • Sarcomeres added in series
   • Chamber dilation
   • Contoh: chronic regurgitation
 - [Rheumatic Fever & Rheumatic Heart Disease] Sebutkan lesi histologis klasik pada Rheumatic Fever & Rheumatic Heart Disease. :: • Aschoff bodies
   • Anitschkow cells dengan “caterpillar nuclei”
-- [Libman–Sacks Endocarditis] Sebutkan hal-hal penting tentang Libman–Sacks endocarditis. :: • Sterile vegetations pada SLE
+- [Libman–Sacks Endocarditis] Sebutkan hal-hal penting tentang Libman–Sacks endocarditis (Patologi Sistem Kardiovaskular). :: • Sterile vegetations pada SLE
   • Dapat berada pada kedua sisi valve leaflet
   • Terkait immune complex injury
 - [Vasculitis — Konsep Ringkas] Sebutkan klasifikasi sering berdasarkan ukuran vessel pada Vasculitis — Konsep Ringkas. :: • Large-vessel
   • Medium-vessel
   • Small-vessel
-- [Pulmonary Hypertension] Sebutkan hal-hal penting tentang Vascular changes. :: • Medial hypertrophy
+- [Pulmonary Hypertension] Sebutkan hal-hal penting tentang Vascular changes pada Pulmonary Hypertension (Patologi Sistem Kardiovaskular). :: • Medial hypertrophy
   • Intimal fibrosis
   • Plexiform lesions pada severe pulmonary arterial hypertension
 - [Faktor Risiko Atherosclerosis] Apa poin high-yield (pearl) tentang Faktor Risiko Atherosclerosis? :: Kombinasi smoking + HTN + hyperlipidemia + diabetes = paket klasik faktor risiko atherosclerosis.
 - [Stable Angina vs Acute Coronary Syndrome] Apa poin high-yield (pearl) tentang Stable Angina vs Acute Coronary Syndrome? :: Angina = ischemia tanpa necrosis. MI = ischemia dengan necrosis.
 - [Acute vs Subacute Endocarditis] Apa poin high-yield (pearl) tentang Acute vs Subacute Endocarditis? :: Staphylococcus aureus = klasik acute IE. Viridans streptococci = klasik subacute IE pada damaged valve.
-- [Hypertrophic Cardiomyopathy] Apa korelasi klinis dari Hypertrophic Cardiomyopathy? :: Young athlete + sudden death + family history → hypertrophic cardiomyopathy.
+- [Hypertrophic Cardiomyopathy] Apa korelasi klinis dari Hypertrophic Cardiomyopathy (Patologi Sistem Kardiovaskular)? :: Young athlete + sudden death + family history → hypertrophic cardiomyopathy.

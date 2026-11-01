@@ -272,11 +272,11 @@ E. histolytica menyerang kolon dan dapat menginvasi mukosa → disentri, flask-s
 - [Protozoa Usus (Entamoeba, Giardia)] Apa yang perlu diketahui tentang Giardia trophozoite pada Protozoa Usus (Entamoeba, Giardia)? :: 2 nukleus, flagella, ventral adhesive disc
 - [Protozoa Usus (Entamoeba, Giardia)] Apa yang perlu diingat tentang Giardia pada Protozoa Usus (Entamoeba, Giardia)? :: Greasy, foul-smelling diarrhea + malabsorption
 - [Protozoa Usus (Entamoeba, Giardia)] Apa yang dimaksud dengan Waterborne diarrhea + camping pada Protozoa Usus (Entamoeba, Giardia)? :: Giardia sampai terbukti lain
-- [Protozoa Usus (Entamoeba, Giardia)] Apa jawaban atau kesimpulan untuk petunjuk berikut: E. histolytica menyerang kolon dan dapat menginvasi mukosa? :: Disentri, flask-shaped ulcer, dan abses hati; trofozoit dengan eritrosit tertelan sangat khas. Giardia hidup di usus halus proksimal, menempel dengan ventral disc, tidak invasif, dan menyebabkan greasy diarrhea serta malabsorpsi. Keduanya ditularkan fecal–oral melalui kista
-- [Patogenesis Amebiasis] Sebutkan hal-hal penting tentang Flask-shaped ulcer. :: • Leher relatif sempit pada permukaan mukosa
+- [Protozoa Usus (Entamoeba, Giardia)] Apa jawaban atau kesimpulan untuk petunjuk berikut: E. histolytica menyerang kolon dan dapat menginvasi mukosa pada Protozoa Usus (Entamoeba, Giardia)? :: Disentri, flask-shaped ulcer, dan abses hati; trofozoit dengan eritrosit tertelan sangat khas. Giardia hidup di usus halus proksimal, menempel dengan ventral disc, tidak invasif, dan menyebabkan greasy diarrhea serta malabsorpsi. Keduanya ditularkan fecal–oral melalui kista
+- [Patogenesis Amebiasis] Sebutkan hal-hal penting tentang Flask-shaped ulcer pada Patogenesis Amebiasis (Protozoa Usus (Entamoeba, Giardia)). :: • Leher relatif sempit pada permukaan mukosa
   • Kerusakan meluas lebih lebar ke submukosa
   • Menjadi gambaran patologis klasik amebic colitis
-- [Manifestasi Klinis Amebiasis] Sebutkan hal-hal penting tentang Infeksi. :: • Asimtomatik
+- [Manifestasi Klinis Amebiasis] Sebutkan hal-hal penting tentang Infeksi pada Manifestasi Klinis Amebiasis (Protozoa Usus (Entamoeba, Giardia)). :: • Asimtomatik
   • Diare ringan sampai sedang
   • Amebic colitis dengan nyeri abdomen
   • Disentri: feses berdarah dan berlendir
@@ -289,10 +289,10 @@ E. histolytica menyerang kolon dan dapat menginvasi mukosa → disentri, flask-s
   • Day-care setting
   • Kontak fecal–oral
   • Kondisi dengan gangguan imunitas humoral tertentu dapat mempermudah infeksi persisten
-- [Diagnosis Giardiasis] Sebutkan pilihan pemeriksaan pada Diagnosis Giardiasis. :: • Stool antigen testing
+- [Diagnosis Giardiasis] Sebutkan pilihan pemeriksaan pada Diagnosis Giardiasis (Protozoa Usus (Entamoeba, Giardia)). :: • Stool antigen testing
   • Microscopy untuk kista/trofozoit
   • Molecular testing sesuai fasilitas
-- [Tatalaksana Giardiasis — Konsep Ujian] Sebutkan hal-hal penting tentang Obat yang efektif. :: • Tinidazole
+- [Tatalaksana Giardiasis — Konsep Ujian] Sebutkan hal-hal penting tentang Obat yang efektif pada Tatalaksana Giardiasis — Konsep Ujian. :: • Tinidazole
   • Nitazoxanide
   • Metronidazole
 - [Entamoeba histolytica — Overview] Apa poin high-yield (pearl) tentang Entamoeba histolytica — Overview? :: Stadium infektif: kista matang. Lokasi utama: kolon. Bentuk invasif: trofozoit. Penyakit klasik: disentri amebik dan abses hati amebik.

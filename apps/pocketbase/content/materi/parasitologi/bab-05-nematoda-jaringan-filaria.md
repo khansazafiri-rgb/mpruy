@@ -436,8 +436,8 @@ Nematoda usus:
 - [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan WUCHERERIA pada Nematoda Jaringan (Filaria)? :: Mosquito → L3 → adult di limfe → microfilaria di darah; tail tip kosong dari nuclei; hydrocele khas
 - [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan BRUGIA MALAYI pada Nematoda Jaringan (Filaria)? :: Asia Tenggara; dua terminal nuclei; lymphedema distal
 - [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan BRUGIA TIMORI pada Nematoda Jaringan (Filaria)? :: Indonesia timur/Lesser Sunda; microfilaria lebih panjang
-- [Nematoda Jaringan (Filaria)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Semua dapat menyebabkan lymphatic dysfunction? :: Lymphedema/elephantiasis. Diagnosis klasik = blood smear sesuai periodicity. Terapi individu utama = DEC pada pasien yang sesuai; chronic lymphedema memerlukan morbidity management
-- [Nocturnal Periodicity] Sebutkan konsekuensi diagnostik pada Nocturnal Periodicity. :: • Pengambilan darah sebaiknya disesuaikan dengan periodicity lokal
+- [Nematoda Jaringan (Filaria)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Semua dapat menyebabkan lymphatic dysfunction pada Nematoda Jaringan (Filaria)? :: Lymphedema/elephantiasis. Diagnosis klasik = blood smear sesuai periodicity. Terapi individu utama = DEC pada pasien yang sesuai; chronic lymphedema memerlukan morbidity management
+- [Nocturnal Periodicity] Sebutkan konsekuensi diagnostik pada Nocturnal Periodicity (Nematoda Jaringan (Filaria)). :: • Pengambilan darah sebaiknya disesuaikan dengan periodicity lokal
   • Pada strain nokturnal, blood smear malam meningkatkan sensitivitas
 - [Wuchereria bancrofti — Morfologi Mikrofilaria] Sebutkan ciri high-yield pada Wuchereria bancrofti — Morfologi Mikrofilaria. :: • Sheathed
   • Panjang kira-kira 240–300 µm pada blood smear
@@ -455,21 +455,21 @@ Nematoda usus:
   • Cephalic space lebih panjang
   • Sheath tidak terwarnai dengan Giemsa
   • Lebih banyak nuclei tersusun single-file menuju bagian ekor
-- [Spektrum Klinis] Sebutkan hal-hal penting tentang Filariasis limfatik. :: • Asimtomatik/subklinis
+- [Spektrum Klinis] Sebutkan hal-hal penting tentang Filariasis limfatik pada Spektrum Klinis (Nematoda Jaringan (Filaria)). :: • Asimtomatik/subklinis
   • Manifestasi akut
   • Manifestasi kronik
   • Tropical pulmonary eosinophilia (TPE) pada sebagian pasien
-- [W. bancrofti vs Brugia — Pola Klinis] Sebutkan hal-hal penting tentang Brugian filariasis. :: • Lymphedema lebih sering mengenai ekstremitas distal
+- [W. bancrofti vs Brugia — Pola Klinis] Sebutkan hal-hal penting tentang Brugian filariasis pada W. bancrofti vs Brugia — Pola Klinis (Nematoda Jaringan (Filaria)). :: • Lymphedema lebih sering mengenai ekstremitas distal
   • Genital involvement umumnya lebih jarang
 - [Diagnosis — Mikroskopi Darah] Sebutkan pemeriksaan klasik pada Diagnosis — Mikroskopi Darah. :: • Thick blood smear → sensitivitas lebih tinggi untuk mendeteksi mikrofilaria
   • Thin blood smear → membantu menilai morfologi spesies
-- [Lymphedema Management] Sebutkan manajemen morbiditas merupakan bagian utama tata laksana pada Lymphedema Management. :: • Kebersihan kulit dan kaki
+- [Lymphedema Management] Sebutkan manajemen morbiditas merupakan bagian utama tata laksana pada Lymphedema Management (Nematoda Jaringan (Filaria)). :: • Kebersihan kulit dan kaki
   • Menjaga kulit tetap kering dan mencegah luka
   • Exercise untuk membantu lymph flow
   • Elevasi ekstremitas
   • Tata laksana luka dan infeksi sekunder
   • Alas kaki yang sesuai
-- [Filariasis di Indonesia] Sebutkan hal-hal penting tentang Spesies yang relevan. :: • W. bancrofti
+- [Filariasis di Indonesia] Sebutkan hal-hal penting tentang Spesies yang relevan pada Filariasis di Indonesia. :: • W. bancrofti
   • B. malayi
   • B. timori
 - [Vector Control & Prevention] Sebutkan pencegahan pada Vector Control & Prevention. :: • Mosquito bite prevention
@@ -477,7 +477,11 @@ Nematoda usus:
   • Vector control
   • Partisipasi MDA pada daerah endemik
   • Surveilans setelah MDA dihentikan
-- [Pembeda dengan Nematoda Usus] Sebutkan hal-hal penting tentang Nematoda usus. :: • Banyak yang ditularkan telur atau larva dari tanah
+- [Pembeda dengan Nematoda Usus] Sebutkan hal-hal penting tentang Filariasis limfatik pada Pembeda dengan Nematoda Usus (Nematoda Jaringan (Filaria)). :: • Ditularkan nyamuk
+  • Stadium infektif L3
+  • Cacing dewasa di jaringan/limfatik
+  • Microfilaria di darah
+- [Pembeda dengan Nematoda Usus] Sebutkan hal-hal penting tentang Nematoda usus pada Pembeda dengan Nematoda Usus (Nematoda Jaringan (Filaria)). :: • Banyak yang ditularkan telur atau larva dari tanah
   • Cacing dewasa dominan di lumen usus
   • Diagnosis sering dari telur/larva di feses
 - [Konsep Besar Filariasis Limfatik] Apa poin high-yield (pearl) tentang Nematoda Jaringan (Filaria)? :: Filaria limfatik = ADULT di LIMFE, MICROFILARIA di DARAH.
@@ -486,5 +490,5 @@ Nematoda usus:
 - [Brugia malayi — Morfologi Mikrofilaria] Bagaimana cara mengingat Brugia malayi — Morfologi Mikrofilaria? :: MALAYI = “2 nuclei at the tail”.
 - [Pathogenesis — Mengapa Terjadi Limfedema?] Apa poin high-yield (pearl) tentang Pathogenesis — Mengapa Terjadi Limfedema? :: Beratnya penyakit kronik tidak hanya ditentukan jumlah mikrofilaria dalam darah; kerusakan limfatik dapat menetap walaupun parasit aktif sudah berkurang.
 - [Manifestasi Kronik — Lymphedema & Elephantiasis] Apa poin high-yield (pearl) tentang Manifestasi Kronik — Lymphedema & Elephantiasis? :: Obat antiparasit tidak otomatis membalikkan elephantiasis kronik yang sudah terbentuk.
-- [Hydrocele Management] Apa poin high-yield (pearl) tentang Hydrocele Management? :: DEC mengatasi infeksi aktif, tetapi hydrocele yang established sering tidak mengecil hanya dengan antiparasit.
+- [Hydrocele Management] Apa poin high-yield (pearl) tentang Hydrocele Management (Nematoda Jaringan (Filaria))? :: DEC mengatasi infeksi aktif, tetapi hydrocele yang established sering tidak mengecil hanya dengan antiparasit.
 - [Pembeda dengan Nematoda Usus] Apa poin high-yield (pearl) tentang Pembeda dengan Nematoda Usus? :: “microfilaria dalam darah” langsung pindahkan differential ke filaria, bukan Ascaris/Trichuris/hookworm.

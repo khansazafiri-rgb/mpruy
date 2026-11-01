@@ -432,10 +432,10 @@ Alveolus:
 
 ## Flashcard {kartu}
 
-- [Respiratory Epithelium] Jelaskan ciliated columnar cells dalam konteks Respiratory Epithelium. :: Menggerakkan mucus menuju pharynx
-- [Respiratory Epithelium] Apa yang dimaksud dengan basal cells pada Respiratory Epithelium? :: Stem/progenitor cells yang menempel basal lamina
-- [Respiratory Epithelium] Apa yang dimaksud dengan brush cells pada Respiratory Epithelium? :: Memiliki microvilli dan berhubungan dengan sensory innervation
-- [Respiratory Epithelium] Jelaskan small granule/Kulchitsky cells dalam konteks Respiratory Epithelium. :: Neuroendocrine cells yang berada dekat basal lamina.
+- [Respiratory Epithelium] Jelaskan ciliated columnar cells dalam konteks Respiratory Epithelium (Histologi Sistem Respirasi). :: Menggerakkan mucus menuju pharynx
+- [Respiratory Epithelium] Apa yang dimaksud dengan basal cells pada Respiratory Epithelium (Histologi Sistem Respirasi)? :: Stem/progenitor cells yang menempel basal lamina
+- [Respiratory Epithelium] Apa yang dimaksud dengan brush cells pada Respiratory Epithelium (Histologi Sistem Respirasi)? :: Memiliki microvilli dan berhubungan dengan sensory innervation
+- [Respiratory Epithelium] Jelaskan small granule/Kulchitsky cells dalam konteks Respiratory Epithelium (Histologi Sistem Respirasi). :: Neuroendocrine cells yang berada dekat basal lamina.
 - [Histologic Progression yang Harus Dihafal] Apa yang dimaksud dengan Trachea pada Histologic Progression yang Harus Dihafal? :: Respiratory epithelium + glands + C-shaped cartilage.
 - [Histologic Progression yang Harus Dihafal] Apa yang dimaksud dengan Intrapulmonary bronchus pada Histologic Progression yang Harus Dihafal? :: Respiratory epithelium + glands + cartilage plates + smooth muscle.
 - [Histologic Progression yang Harus Dihafal] Apa yang dimaksud dengan Bronchiole pada Histologic Progression yang Harus Dihafal? :: Simple columnar/cuboidal epithelium + smooth muscle + no cartilage + no glands.
@@ -460,7 +460,7 @@ Alveolus:
   • Cartilage makin berkurang lalu hilang
   • Smooth muscle relatif tetap penting sampai bronchioles
   • Alveoli mulai muncul pada respiratory bronchiole
-- [Cavum Nasi: Vestibulum, Respiratory Region, dan Olfactory Region] Sebutkan sel olfactory epithelium. :: • Olfactory receptor neurons
+- [Cavum Nasi: Vestibulum, Respiratory Region, dan Olfactory Region] Sebutkan sel olfactory epithelium pada Cavum Nasi: Vestibulum, Respiratory Region, dan Olfactory Region (Histologi Sistem Respirasi). :: • Olfactory receptor neurons
   • Sustentacular/supporting cells
   • Basal cells
 - [Bronchus Extrapulmonalis dan Intrapulmonalis] Sebutkan ciri intrapulmonary bronchus pada Bronchus Extrapulmonalis dan Intrapulmonalis. :: • Respiratory epithelium
@@ -468,12 +468,12 @@ Alveolus:
   • Seromucous glands
   • Cartilage berbentuk irregular plates, bukan C-shaped rings
   • Pulmonary parenchyma/alveoli mengelilingi airway
-- [Perubahan Sepanjang Bronchial Tree] Sebutkan hal-hal penting tentang Semakin distal. :: • Tinggi epitel menurun dari pseudostratified columnar menuju simple columnar/cuboidal
+- [Perubahan Sepanjang Bronchial Tree] Sebutkan hal-hal penting tentang Semakin distal pada Perubahan Sepanjang Bronchial Tree (Histologi Sistem Respirasi). :: • Tinggi epitel menurun dari pseudostratified columnar menuju simple columnar/cuboidal
   • Goblet cells berkurang
   • Glands berkurang lalu hilang
   • Cartilage plates mengecil lalu hilang
   • Smooth muscle menjadi komponen dinding yang relatif menonjol
-- [Blood-Air Barrier] Sebutkan komponen dari udara ke darah pada Blood-Air Barrier. :: • Thin cytoplasm type I pneumocyte
+- [Blood-Air Barrier] Sebutkan komponen dari udara ke darah pada Blood-Air Barrier (Histologi Sistem Respirasi). :: • Thin cytoplasm type I pneumocyte
   • Fused/closely apposed basal laminae alveolar epithelium dan capillary endothelium
   • Thin cytoplasm continuous capillary endothelial cell
 - [Strategi Identifikasi Preparat Respirasi] Sebutkan urutan atau langkah pada Strategi Identifikasi Preparat Respirasi? :: • Cari lumen airway atau alveolar spaces
@@ -483,13 +483,13 @@ Alveolus:
   • Nilai smooth muscle
   • Lihat apakah alveoli membuka langsung ke dinding
   • Gunakan surrounding tissue sebagai context
-- [Respiratory Epithelium] Apa clue praktikum untuk Respiratory Epithelium? :: Jika terlihat pseudostratified ciliated epithelium + goblet cells, pikirkan respiratory epithelium, tetapi gunakan struktur dinding untuk menentukan apakah preparat tersebut trachea atau bronchus.
+- [Respiratory Epithelium] Apa clue praktikum untuk Respiratory Epithelium (Histologi Sistem Respirasi)? :: Jika terlihat pseudostratified ciliated epithelium + goblet cells, pikirkan respiratory epithelium, tetapi gunakan struktur dinding untuk menentukan apakah preparat tersebut trachea atau bronchus.
 - [Cavum Nasi: Vestibulum, Respiratory Region, dan Olfactory Region] Apa poin high-yield (pearl) tentang Cavum Nasi: Vestibulum, Respiratory Region, dan Olfactory Region? :: Respiratory epithelium punya goblet cells; olfactory epithelium tidak, tetapi memiliki Bowman's glands dan olfactory nerve bundles.
-- [Pharynx] Apa clue praktikum untuk Pharynx? :: Perubahan epitel mengikuti functional stress. Area dengan airflow dominan cenderung respiratory epithelium; area yang juga dilewati makanan cenderung stratified squamous.
-- [Larynx] Apa poin high-yield (pearl) tentang Larynx? :: True vocal fold = stratified squamous + vocal ligament + skeletal muscle; false vocal fold = respiratory epithelium + glands.
+- [Pharynx] Apa clue praktikum untuk Pharynx (Histologi Sistem Respirasi)? :: Perubahan epitel mengikuti functional stress. Area dengan airflow dominan cenderung respiratory epithelium; area yang juga dilewati makanan cenderung stratified squamous.
+- [Larynx] Apa poin high-yield (pearl) tentang Larynx (Histologi Sistem Respirasi)? :: True vocal fold = stratified squamous + vocal ligament + skeletal muscle; false vocal fold = respiratory epithelium + glands.
 - [Tracheal Submucosa, Cartilage, dan Trachealis] Apa clue praktikum untuk Tracheal Submucosa, Cartilage, dan Trachealis? :: Kombinasi pseudostratified ciliated epithelium + abundant submucosal glands + large C-shaped hyaline cartilage merupakan pola klasik trachea.
 - [Bronchus Extrapulmonalis dan Intrapulmonalis] Apa poin high-yield (pearl) tentang Bronchus Extrapulmonalis dan Intrapulmonalis? :: Bronchus memiliki cartilage + glands; bronchiole tidak.
-- [Bronchioles] Apa clue praktikum untuk Bronchioles? :: Airway kecil + no cartilage + no glands + prominent smooth muscle = bronchiole.
-- [Terminal Bronchiole] Apa jebakan yang sering muncul pada soal tentang Terminal Bronchiole? :: Bila alveoli sudah muncul dari dinding airway, struktur tersebut bukan lagi terminal bronchiole.
-- [Respiratory Bronchiole] Apa poin high-yield (pearl) tentang Respiratory Bronchiole? :: Terminal bronchiole = no alveoli in wall; respiratory bronchiole = alveoli begin interrupting wall.
+- [Bronchioles] Apa clue praktikum untuk Bronchioles (Histologi Sistem Respirasi)? :: Airway kecil + no cartilage + no glands + prominent smooth muscle = bronchiole.
+- [Terminal Bronchiole] Apa jebakan yang sering muncul pada soal tentang Terminal Bronchiole (Histologi Sistem Respirasi)? :: Bila alveoli sudah muncul dari dinding airway, struktur tersebut bukan lagi terminal bronchiole.
+- [Respiratory Bronchiole] Apa poin high-yield (pearl) tentang Respiratory Bronchiole (Histologi Sistem Respirasi)? :: Terminal bronchiole = no alveoli in wall; respiratory bronchiole = alveoli begin interrupting wall.
 - [Alveolar Duct dan Alveolar Sac] Apa clue praktikum untuk Alveolar Duct dan Alveolar Sac? :: Jika dinding airway hampir seluruhnya terdiri atas alveoli dan tidak ada lagi continuous bronchiolar epithelium, pikirkan alveolar duct.

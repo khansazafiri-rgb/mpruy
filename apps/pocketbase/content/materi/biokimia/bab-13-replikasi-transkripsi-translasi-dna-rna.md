@@ -563,17 +563,17 @@ Translation membaca mRNA dalam codon triplet. AUG memulai translation; UAA, UAG,
 - [Replikasi DNA — Konsep Dasar] Apa yang dimaksud dengan Bidirectional pada Replikasi DNA — Konsep Dasar? :: Replikasi bergerak ke dua arah dari origin of replication.
 - [Inisiasi Replikasi DNA Eukariot] Jelaskan Cdc6 dan Cdt1 dalam konteks Inisiasi Replikasi DNA Eukariot. :: Membantu loading helicase.
 - [Inisiasi Replikasi DNA Eukariot] Apa yang dimaksud dengan MCM complex pada Inisiasi Replikasi DNA Eukariot? :: Helicase utama eukariot yang membuka double helix.
-- [Ribosome Eukariot] Jelaskan A site (aminoacyl site) dalam konteks Ribosome Eukariot. :: Aminoacyl-tRNA baru masuk.
-- [Ribosome Eukariot] Jelaskan P site (peptidyl site) dalam konteks Ribosome Eukariot. :: Memegang tRNA yang membawa growing peptide chain.
+- [Ribosome Eukariot] Jelaskan A site (aminoacyl site) dalam konteks Ribosome Eukariot (Replikasi, Transkripsi, Translasi DNA/RNA). :: Aminoacyl-tRNA baru masuk.
+- [Ribosome Eukariot] Jelaskan P site (peptidyl site) dalam konteks Ribosome Eukariot (Replikasi, Transkripsi, Translasi DNA/RNA). :: Memegang tRNA yang membawa growing peptide chain.
 - [Replikasi, Transkripsi, Translasi — Ringkasan Perbandingan] Apa yang dimaksud dengan arah protein pada Replikasi, Transkripsi, Translasi — Ringkasan Perbandingan? :: N-terminus → C-terminus.
 - [Replikasi, Transkripsi, Translasi DNA/RNA] Apa yang perlu diketahui tentang Tetracyclines pada Replikasi, Transkripsi, Translasi DNA/RNA? :: Menghambat masuknya aminoacyl-tRNA ke A site
 - [Replikasi, Transkripsi, Translasi DNA/RNA] Apa yang perlu diketahui tentang Aminoglycosides pada Replikasi, Transkripsi, Translasi DNA/RNA? :: Menyebabkan misreading mRNA dan mengganggu initiation
 - [Replikasi, Transkripsi, Translasi DNA/RNA] Apa yang perlu diketahui tentang Linezolid pada Replikasi, Transkripsi, Translasi DNA/RNA? :: Mengganggu pembentukan initiation complex
-- [Replikasi, Transkripsi, Translasi DNA/RNA] Apa jawaban atau kesimpulan untuk petunjuk berikut: Diphtheria toxin: ADP-ribosylation elongation factor-2 (EF-2)? :: Translation berhenti
-- [Replikasi, Transkripsi, Translasi DNA/RNA] Apa jawaban atau kesimpulan untuk petunjuk berikut: Ricin: merusak 28S rRNA pada 60S subunit? :: Protein synthesis berhenti
+- [Replikasi, Transkripsi, Translasi DNA/RNA] Apa jawaban atau kesimpulan untuk petunjuk berikut: Diphtheria toxin: ADP-ribosylation elongation factor-2 (EF-2) pada Replikasi, Transkripsi, Translasi DNA/RNA? :: Translation berhenti
+- [Replikasi, Transkripsi, Translasi DNA/RNA] Apa jawaban atau kesimpulan untuk petunjuk berikut: Ricin: merusak 28S rRNA pada 60S subunit pada Replikasi, Transkripsi, Translasi DNA/RNA? :: Protein synthesis berhenti
 - [Replikasi, Transkripsi, Translasi DNA/RNA] Apa yang dimaksud dengan Telomerase pada Replikasi, Transkripsi, Translasi DNA/RNA? :: Reverse transcriptase
 - [Replikasi, Transkripsi, Translasi DNA/RNA] Apa yang dimaksud dengan Ribosome eukariot 80S pada Replikasi, Transkripsi, Translasi DNA/RNA? :: 40S + 60S, bukan 100S
-- [Replikasi, Transkripsi, Translasi DNA/RNA] Apa jawaban atau kesimpulan untuk petunjuk berikut: DNA replication bersifat semiconservative dan berlangsung 5′? :: 3′. Helicase membuka DNA, topoisomerase meredakan supercoiling, primase/Pol α membuat primer, Pol ε terutama leading strand, Pol δ terutama lagging strand, lalu ligase menyambungkan Okazaki fragments. Telomerase memperpanjang telomere dengan aktivitas reverse transcriptase
+- [Replikasi, Transkripsi, Translasi DNA/RNA] Apa jawaban atau kesimpulan untuk petunjuk berikut: DNA replication bersifat semiconservative dan berlangsung 5′ pada Replikasi, Transkripsi, Translasi DNA/RNA? :: 3′. Helicase membuka DNA, topoisomerase meredakan supercoiling, primase/Pol α membuat primer, Pol ε terutama leading strand, Pol δ terutama lagging strand, lalu ligase menyambungkan Okazaki fragments. Telomerase memperpanjang telomere dengan aktivitas reverse transcriptase
 - [Gambaran Besar: Central Dogma] Sebutkan tiga proses utama pada Replikasi, Transkripsi, Translasi DNA/RNA. :: • Replication: DNA → DNA
   • Transcription: DNA → RNA
   • Translation: mRNA → protein
@@ -588,17 +588,17 @@ Translation membaca mRNA dalam codon triplet. AUG memulai translation; UAA, UAG,
   • Hanya satu strand DNA digunakan sebagai template untuk satu transcript
   • RNA mengandung uracil, bukan thymine
   • Produk dapat berupa mRNA, rRNA, tRNA, atau RNA noncoding lainnya
-- [Template Strand vs Coding Strand] Sebutkan hal-hal penting tentang Template strand. :: • Dibaca oleh RNA polymerase dalam arah 3′ → 5′
+- [Template Strand vs Coding Strand] Sebutkan hal-hal penting tentang Template strand pada Template Strand vs Coding Strand (Replikasi, Transkripsi, Translasi DNA/RNA). :: • Dibaca oleh RNA polymerase dalam arah 3′ → 5′
   • RNA disintesis komplementer terhadap template
-- [RNA Polymerase Eukariot] Sebutkan hal-hal penting tentang RNA polymerase II. :: • Menghasilkan pre-mRNA/mRNA
+- [RNA Polymerase Eukariot] Sebutkan hal-hal penting tentang RNA polymerase II pada RNA Polymerase Eukariot. :: • Menghasilkan pre-mRNA/mRNA
   • Juga menghasilkan beberapa snRNA dan miRNA
-- [RNA Polymerase Eukariot] Sebutkan hal-hal penting tentang RNA polymerase III. :: • Menghasilkan tRNA
+- [RNA Polymerase Eukariot] Sebutkan hal-hal penting tentang RNA polymerase III pada RNA Polymerase Eukariot. :: • Menghasilkan tRNA
   • 5S rRNA
   • Beberapa small RNAs lainnya
-- [Genetic Code] Sebutkan hal-hal penting tentang Stop codons. :: • UAA
+- [Genetic Code] Sebutkan hal-hal penting tentang Stop codons pada Genetic Code (Replikasi, Transkripsi, Translasi DNA/RNA). :: • UAA
   • UAG
   • UGA
-- [Ribosome Eukariot] Sebutkan tiga site penting pada Ribosome Eukariot. :: • A site (aminoacyl site): aminoacyl-tRNA baru masuk
+- [Ribosome Eukariot] Sebutkan tiga site penting pada Ribosome Eukariot (Replikasi, Transkripsi, Translasi DNA/RNA). :: • A site (aminoacyl site): aminoacyl-tRNA baru masuk
   • P site (peptidyl site): memegang tRNA yang membawa growing peptide chain
   • E site (exit site): tempat tRNA keluar
 - [Targeting Protein ke Rough ER] Sebutkan urutan atau langkah pada Targeting Protein ke Rough ER? :: • Translation dimulai pada free ribosome
@@ -607,12 +607,12 @@ Translation membaca mRNA dalam codon triplet. AUG memulai translation; UAA, UAG,
   • Ribosome berikatan dengan translocon
   • Translation dilanjutkan sambil polypeptide masuk ke lumen ER atau membrane
 - [Gambaran Besar: Central Dogma] Apa jebakan yang sering muncul pada soal tentang Replikasi, Transkripsi, Translasi DNA/RNA? :: DNA dan RNA selalu disintesis dalam arah 5′ → 3′. Template dibaca dalam arah 3′ → 5′. Protein disintesis dari ujung N-terminal menuju C-terminal. Reverse transcription merupakan pengecualian penting terhadap aliran klasik DNA → RNA, karena RNA dapat menjadi template pembentukan DNA melalui reverse transcriptase.
-- [Lagging strand] Apa jebakan yang sering muncul pada soal tentang Lagging strand? :: Walaupun leading dan lagging strand memiliki pola yang berbeda, DNA polymerase pada keduanya tetap hanya dapat mensintesis DNA dalam arah 5′ → 3′.
+- [Lagging strand] Apa jebakan yang sering muncul pada soal tentang Lagging strand (Replikasi, Transkripsi, Translasi DNA/RNA)? :: Walaupun leading dan lagging strand memiliki pola yang berbeda, DNA polymerase pada keduanya tetap hanya dapat mensintesis DNA dalam arah 5′ → 3′.
 - [Proofreading dan Fidelity] Apa jebakan yang sering muncul pada soal tentang Proofreading dan Fidelity? :: Polymerase activity: sintesis 5′ → 3′. Proofreading exonuclease: 3′ → 5′.
 - [Korelasi Klinis Replikasi] Apa jebakan yang sering muncul pada soal tentang Korelasi Klinis Replikasi? :: Topoisomerase tidak membuka hydrogen bond seperti helicase. Topoisomerase mengatasi supercoiling dan torsional stress dengan pemutusan sementara backbone DNA.
 - [mRNA: 5′-AUG Gaa Uuu-3′] Apa jebakan yang sering muncul pada soal tentang mRNA: 5′-AUG Gaa Uuu-3′? :: Jika soal memberi coding strand, jangan membuat komplemennya untuk menentukan mRNA. Cukup ganti T → U.
-- [Splicing] Apa jebakan yang sering muncul pada soal tentang Splicing? :: Intron = bagian yang dibuang dari mature mRNA. Exon = bagian yang dipertahankan dalam mature RNA.
+- [Splicing] Apa jebakan yang sering muncul pada soal tentang Splicing (Replikasi, Transkripsi, Translasi DNA/RNA)? :: Intron = bagian yang dibuang dari mature mRNA. Exon = bagian yang dipertahankan dalam mature RNA.
 - [Inhibitor Transkripsi High-Yield] Apa jebakan yang sering muncul pada soal tentang Inhibitor Transkripsi High-Yield? :: Rifampin menghambat transcription bakteri, bukan translation.
 - [tRNA dan Aminoacyl-tRNA Synthetase] Apa jebakan yang sering muncul pada soal tentang tRNA dan Aminoacyl-tRNA Synthetase? :: Akurasi translation sangat bergantung pada aminoacyl-tRNA synthetase. Ribosome membaca codon–anticodon, tetapi enzyme inilah yang menentukan apakah tRNA membawa asam amino yang tepat.
-- [Initiation] Apa jebakan yang sering muncul pada soal tentang Initiation? :: Pada initiation, initiator tRNA masuk langsung ke P site, bukan A site.
+- [Initiation] Apa jebakan yang sering muncul pada soal tentang Initiation (Replikasi, Transkripsi, Translasi DNA/RNA)? :: Pada initiation, initiator tRNA masuk langsung ke P site, bukan A site.
 - [Targeting Protein ke Rough ER] Apa jebakan yang sering muncul pada soal tentang Targeting Protein ke Rough ER? :: Ribosome “free” dan ribosome pada RER secara struktural sama. Perbedaannya adalah lokasi sementara akibat targeting signal pada protein yang sedang disintesis.

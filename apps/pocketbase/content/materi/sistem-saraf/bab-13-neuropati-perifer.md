@@ -517,11 +517,11 @@ SALAH. Obat nyeri terutama mengurangi gejala; etiologi dasar tetap harus ditanga
 - [Diabetic Distal Symmetric Polyneuropathy (DSPN)] Apa yang dimaksud dengan T1DM pada Diabetic Distal Symmetric Polyneuropathy? :: Mulai 5 tahun setelah diagnosis.
 - [Diabetic Distal Symmetric Polyneuropathy (DSPN)] Apa yang dimaksud dengan Small-fiber function pada Diabetic Distal Symmetric Polyneuropathy? :: Pinprick atau temperature.
 - [Diabetic Distal Symmetric Polyneuropathy (DSPN)] Apa yang dimaksud dengan Large-fiber function pada Diabetic Distal Symmetric Polyneuropathy? :: Vibrasi dengan tuning fork 128 Hz, refleks, propriosepsi.
-- [Mononeuropathy Multiplex] Pada Mononeuropathy Multiplex, apa definisi praktisnya? :: Neuropati multifokal asimetris yang mengenai saraf berbeda pada waktu berbeda.
+- [Mononeuropathy Multiplex] Pada Mononeuropathy Multiplex, apa definisi praktisnya (Neuropati Perifer)? :: Neuropati multifokal asimetris yang mengenai saraf berbeda pada waktu berbeda.
 - [Neuropati Perifer] Apa yang perlu diingat tentang SNAP abnormal pada Neuropati Perifer? :: Mendukung lesi post-ganglionic/peripheral sensory nerve
-- [Neuropati Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: SNAP preserved pada pola dermatomal? :: Pertimbangkan radiculopathy karena lesi proksimal terhadap dorsal root ganglion
+- [Neuropati Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: SNAP preserved pada pola dermatomal pada Neuropati Perifer? :: Pertimbangkan radiculopathy karena lesi proksimal terhadap dorsal root ganglion
 - [Neuropati Perifer] Apa yang perlu diingat tentang CMAP amplitude rendah pada Neuropati Perifer? :: Pikir kehilangan akson motor atau conduction failure sesuai konteks
-- [Neuropati Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Fibrillation potentials/positive sharp waves pada needle EMG? :: Denervation aktif
+- [Neuropati Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Fibrillation potentials/positive sharp waves pada needle EMG pada Neuropati Perifer? :: Denervation aktif
 - [Neuropati Perifer] Apa yang dimaksud dengan Neuropati perifer pada Neuropati Perifer? :: Gangguan saraf di luar otak dan medula spinalis
 - [Neuropati Perifer] Apa yang dimaksud dengan Mononeuropathy pada Neuropati Perifer? :: Satu saraf
 - [Neuropati Perifer] Apa yang dimaksud dengan Polyneuropathy pada Neuropati Perifer? :: Banyak saraf, sering simetris
@@ -531,10 +531,10 @@ SALAH. Obat nyeri terutama mengurangi gejala; etiologi dasar tetap harus ditanga
 - [Neuropati Perifer] Apa yang dimaksud dengan Carpal tunnel pada Neuropati Perifer? :: Median nerve
 - [Neuropati Perifer] Apa yang perlu diingat tentang Ulnar neuropathy pada Neuropati Perifer? :: Jari 4–5 + intrinsic hand weakness
 - [Neuropati Perifer] Apa yang perlu diingat tentang Radial neuropathy klasik pada Neuropati Perifer? :: Wrist drop
-- [Neuropati Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Common peroneal neuropathy klasik? :: Foot drop
+- [Neuropati Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Common peroneal neuropathy klasik pada Neuropati Perifer? :: Foot drop
 - [Neuropati Perifer] Apa yang perlu diketahui tentang CIDP typical pada Neuropati Perifer? :: Proximal + distal weakness, sensory loss, hyporeflexia/areflexia
 - [Neuropati Perifer] Apa yang perlu diingat tentang Stocking–glove pada Neuropati Perifer? :: Length-dependent polyneuropathy; diabetes adalah penyebab penting tetapi bukan satu-satunya
-- [Neuropati Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Burning pain + normal NCS? :: Pikir small-fiber neuropathy
+- [Neuropati Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Burning pain + normal NCS pada Neuropati Perifer? :: Pikir small-fiber neuropathy
 - [Neuropati Perifer] Apa yang dimaksud dengan CIDP pada Neuropati Perifer? :: >8 minggu, proximal + distal weakness, sensory loss, areflexia, demyelinating NCS
 - [Neuropati Perifer] Apa yang dimaksud dengan GBS pada Neuropati Perifer? :: Akut/subakut, nadir ≤4 minggu; jangan tertukar dengan CIDP
 - [Neuropati Perifer] Apa yang perlu diketahui tentang Red flags pada Neuropati Perifer? :: Rapid progression, marked asymmetry, motor-dominant, bulbar/respiratory, atau severe autonomic involvement
@@ -548,12 +548,12 @@ SALAH. Obat nyeri terutama mengurangi gejala; etiologi dasar tetap harus ditanga
   • Sensory level pada batang tubuh
   • Gangguan sfingter dengan tanda medula
   • Defisit kortikal, misalnya afasia atau neglect
-- [Serabut Saraf: Small Fiber vs Large Fiber] Sebutkan hal-hal penting tentang Small fibers (A-delta dan C fibers). :: • Membawa nyeri dan temperatur
+- [Serabut Saraf: Small Fiber vs Large Fiber] Sebutkan hal-hal penting tentang Small fibers (A-delta dan C fibers) pada Serabut Saraf: Small Fiber vs Large Fiber. :: • Membawa nyeri dan temperatur
   • Berperan dalam fungsi autonomik
   • Keluhan: burning pain, tingling, allodynia, nyeri tusuk, gangguan suhu, perubahan keringat
   • Kekuatan dan refleks dapat tetap normal pada small-fiber neuropathy murni
   • Routine NCS dapat normal karena NCS terutama menilai serabut bermielin besar
-- [Serabut Saraf: Small Fiber vs Large Fiber] Sebutkan hal-hal penting tentang Large fibers. :: • Membawa vibrasi dan propriosepsi
+- [Serabut Saraf: Small Fiber vs Large Fiber] Sebutkan hal-hal penting tentang Large fibers pada Serabut Saraf: Small Fiber vs Large Fiber (Neuropati Perifer). :: • Membawa vibrasi dan propriosepsi
   • Menyokong refleks tendon
   • Gangguan menimbulkan numbness, hilangnya vibrasi, sensory ataxia, positive Romberg, dan refleks menurun
 - [Aksonal vs Demielinating — Kunci NCS/EMG] Sebutkan pola dominan aksonal pada Aksonal vs Demielinating — Kunci NCS/EMG. :: • Amplitudo CMAP dan/atau SNAP menurun karena jumlah akson fungsional berkurang
@@ -571,12 +571,12 @@ SALAH. Obat nyeri terutama mengurangi gejala; etiologi dasar tetap harus ditanga
   • Large-fiber function: vibrasi dengan tuning fork 128 Hz, refleks, propriosepsi
   • 10-g monofilament: minimal tahunan untuk menilai kaki berisiko ulkus/amputasi
   • Monofilament tidak boleh menjadi satu-satunya tes untuk mendeteksi DPN dini
-- [Mononeuropathy Multiplex] Sebutkan etiologi penting pada Mononeuropathy Multiplex. :: • Vasculitis sistemik
+- [Mononeuropathy Multiplex] Sebutkan etiologi penting pada Mononeuropathy Multiplex (Neuropati Perifer). :: • Vasculitis sistemik
   • Diabetes
   • Amyloidosis
   • Infeksi tertentu
   • Sarcoidosis atau penyakit inflamasi lainnya sesuai konteks
-- [CIDP — Chronic Inflammatory Demyelinating Polyradiculoneuropathy] Sebutkan hal-hal penting tentang Klinis typical CIDP. :: • Progresif atau relapsing
+- [CIDP — Chronic Inflammatory Demyelinating Polyradiculoneuropathy] Sebutkan hal-hal penting tentang Klinis typical CIDP pada CIDP — Chronic Inflammatory Demyelinating Polyradiculoneuropathy. :: • Progresif atau relapsing
   • Durasi >8 minggu
   • Kelemahan proksimal DAN distal
   • Gangguan sensorik
@@ -591,6 +591,6 @@ SALAH. Obat nyeri terutama mengurangi gejala; etiologi dasar tetap harus ditanga
   • Defisiensi tembaga pada konteks tertentu
 - [Aksonal vs Demielinating — Kunci NCS/EMG] Apa jebakan yang sering muncul pada soal tentang Aksonal vs Demielinating — Kunci NCS/EMG? :: Amplitude rendah tidak selalu berarti “pure axonal”, dan velocity lambat tidak otomatis berarti “primary demyelinating”. Hasil harus dibaca sebagai pola beberapa saraf, dikaitkan dengan klinis, suhu ekstremitas, dan kualitas teknik pemeriksaan.
 - [Diabetic Distal Symmetric Polyneuropathy (DSPN)] Apa jebakan yang sering muncul pada soal tentang Diabetic Distal Symmetric Polyneuropathy? :: Neuropati pada pasien diabetes tetap diagnosis of exclusion. Bila onset cepat, sangat asimetris, motor-dominant, non-length-dependent, atau atipikal, cari etiologi lain.
-- [Small-Fiber Neuropathy] Apa clue praktikum untuk Small-Fiber Neuropathy? :: Burning feet. Nyeri tajam atau electric sensation. Allodynia. Hilang sensasi temperatur/pinprick. Gejala autonomik dapat menyertai. Strength, proprioception, vibration, dan reflex dapat relatif normal pada tahap awal.
-- [Small-Fiber Neuropathy] Apa jebakan yang sering muncul pada soal tentang Small-Fiber Neuropathy? :: Normal NCS ≠ “tidak ada neuropati” bila fenotipe sangat konsisten dengan small-fiber neuropathy.
+- [Small-Fiber Neuropathy] Apa clue praktikum untuk Small-Fiber Neuropathy (Neuropati Perifer)? :: Burning feet. Nyeri tajam atau electric sensation. Allodynia. Hilang sensasi temperatur/pinprick. Gejala autonomik dapat menyertai. Strength, proprioception, vibration, dan reflex dapat relatif normal pada tahap awal.
+- [Small-Fiber Neuropathy] Apa jebakan yang sering muncul pada soal tentang Small-Fiber Neuropathy (Neuropati Perifer)? :: Normal NCS ≠ “tidak ada neuropati” bila fenotipe sangat konsisten dengan small-fiber neuropathy.
 - [Hereditary Neuropathy — Charcot–Marie–Tooth (CMT)] Apa clue praktikum untuk Hereditary Neuropathy — Charcot–Marie–Tooth? :: Onset perlahan sejak usia muda atau dewasa muda. Distal weakness dan wasting, terutama tungkai bawah. Pes cavus/hammer toes. Refleks menurun. Gangguan sensorik distal. Riwayat keluarga dapat mendukung, tetapi de novo mutation atau family history yang tidak jelas tetap mungkin.

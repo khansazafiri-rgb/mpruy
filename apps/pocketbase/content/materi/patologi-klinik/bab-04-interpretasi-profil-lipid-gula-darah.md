@@ -816,13 +816,13 @@ Baca gula darah dengan urutan: kondisi fasting/random → plasma glucose → HbA
 - [Fasting Plasma Glucose] Apa yang dimaksud dengan Konversi pada Fasting Plasma Glucose? :: Mg/dL ÷ 18 ≈ mmol/L.
 - [Estimated Average Glucose] Jelaskan Rule of thumb dalam konteks Estimated Average Glucose. :: HbA1c 6% ≈ average glucose sekitar 126 mg/dL.
 - [Prediabetes — Tiga Cara Terdeteksi] Jelaskan impaired glucose tolerance dalam konteks Prediabetes — Tiga Cara Terdeteksi. :: 2-hour OGTT 140–199 mg/dL
-- [Friedewald LDL-C] Jelaskan Formula klasik dalam mg/dL dalam konteks Friedewald LDL-C. :: LDL-C = Total cholesterol − HDL-C − (Triglycerides/5).
+- [Friedewald LDL-C] Jelaskan Formula klasik dalam mg/dL dalam konteks Friedewald LDL-C (Interpretasi Profil Lipid & Gula Darah). :: LDL-C = Total cholesterol − HDL-C − (Triglycerides/5).
 - [Atherogenic Particles — Cara Memahami LDL, Non-HDL, ApoB] Apa yang dimaksud dengan Contoh discordance pada Atherogenic Particles — Cara Memahami LDL, Non-HDL, ApoB? :: Pasien diabetes dengan TG tinggi dapat memiliki LDL-C tidak terlalu tinggi tetapi ApoB/non-HDL-C tetap tinggi karena banyak remnant/VLDL particles.
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Prediabetes FPG pada Interpretasi Profil Lipid & Gula Darah? :: 100–125 mg/dL
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Prediabetes 2-hour OGTT pada Interpretasi Profil Lipid & Gula Darah? :: 140–199 mg/dL
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Prediabetes HbA1c pada Interpretasi Profil Lipid & Gula Darah? :: 5.7–6.4%
-- [Interpretasi Profil Lipid & Gula Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Insulin tinggi + C-peptide rendah saat hypoglycemia? :: Exogenous insulin
-- [Interpretasi Profil Lipid & Gula Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Insulin tinggi + C-peptide tinggi? :: Endogenous insulin atau secretagogue
+- [Interpretasi Profil Lipid & Gula Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Insulin tinggi + C-peptide rendah saat hypoglycemia pada Interpretasi Profil Lipid & Gula Darah? :: Exogenous insulin
+- [Interpretasi Profil Lipid & Gula Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Insulin tinggi + C-peptide tinggi pada Interpretasi Profil Lipid & Gula Darah? :: Endogenous insulin atau secretagogue
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan DKA pada Interpretasi Profil Lipid & Gula Darah? :: Ketosis + metabolic acidosis dengan hyperglycemia yang biasanya ada
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan HHS pada Interpretasi Profil Lipid & Gula Darah? :: Severe hyperglycemia + hyperosmolality + profound dehydration
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Profil lipid dasar pada Interpretasi Profil Lipid & Gula Darah? :: TC, LDL-C, HDL-C, TG
@@ -830,7 +830,7 @@ Baca gula darah dengan urutan: kondisi fasting/random → plasma glucose → HbA
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan LDL-C pada Interpretasi Profil Lipid & Gula Darah? :: Marker utama atherogenic cholesterol dalam praktik rutin
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Diabetic dyslipidemia pada Interpretasi Profil Lipid & Gula Darah? :: TG ↑ + HDL ↓ + atherogenic remnants/small dense LDL
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan LDL-C ≥190 mg/dL pada Interpretasi Profil Lipid & Gula Darah? :: Red flag severe hypercholesterolemia/FH pada dewasa
-- [Interpretasi Profil Lipid & Gula Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tendon xanthoma + premature ASCVD + very high LDL? :: Pikirkan FH
+- [Interpretasi Profil Lipid & Gula Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tendon xanthoma + premature ASCVD + very high LDL pada Interpretasi Profil Lipid & Gula Darah? :: Pikirkan FH
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan HDL-C pada Interpretasi Profil Lipid & Gula Darah? :: Risk marker, bukan target tunggal untuk dinaikkan
 - [Interpretasi Profil Lipid & Gula Darah] Apa yang perlu diketahui tentang Baca gula darah dengan urutan pada Interpretasi Profil Lipid & Gula Darah? :: Kondisi fasting/random → plasma glucose → HbA1c → cek concordance → gunakan FPG/OGTT/HbA1c/random symptomatic criteria untuk diagnosis. HbA1c dapat menyesatkan bila umur eritrosit abnormal. Pada hyperglycemic crisis, bedakan DKA dari HHS menggunakan ketone, acid-base, dan osmolality. Pada hypoglycemia, dokumentasikan Whipple triad dan ambil critical sample untuk membedakan exogenous vs endogenous insulin. Baca lipid dengan urutan TG → LDL-C → validitas perhitungan → non-HDL-C → HDL → ApoB/Lp(a) bila perlu → cari secondary causes → integrasikan ASCVD risk. Severe TG meningkatkan pancreatitis risk, sedangkan LDL/non-HDL/ApoB menggambarkan burden aterogenik
 - [Pemeriksaan Dasar Gula Darah] Sebutkan pemeriksaan utama pada Pemeriksaan Dasar Gula Darah. :: • Fasting plasma glucose (FPG)
@@ -852,50 +852,43 @@ Baca gula darah dengan urutan: kondisi fasting/random → plasma glucose → HbA
 - [HbA1c — Apa yang Diukur?] Sebutkan kriteria umum pada HbA1c — Apa yang Diukur?. :: • <5.7% → normal
   • 5.7–6.4% → prediabetes
   • ≥6.5% → diabetes
-- [Hypoglycemia — Whipple Triad] Sebutkan hal-hal penting tentang Whipple triad. :: • Gejala konsisten dengan hypoglycemia
-  • Plasma glucose rendah saat gejala
-  • Gejala membaik setelah glucose dinaikkan
+- [Prediabetes — Tiga Cara Terdeteksi] Sebutkan hal-hal penting tentang Prediabetes pada Prediabetes — Tiga Cara Terdeteksi (Interpretasi Profil Lipid & Gula Darah). :: • Impaired fasting glucose: FPG 100–125 mg/dL
+  • Impaired glucose tolerance: 2-hour OGTT 140–199 mg/dL
+  • HbA1c 5.7–6.4%
 - [Hypoglycemia — Whipple Triad] Sebutkan gejala adrenergic pada Hypoglycemia — Whipple Triad. :: • Tremor
   • Palpitations
   • Sweating
   • Anxiety
   • Hunger
-- [Insulin Eksogen vs Endogen] Sebutkan hal-hal penting tentang Endogenous hyperinsulinism. :: • Insulin tidak sesuai tinggi
+- [Insulin Eksogen vs Endogen] Sebutkan hal-hal penting tentang Endogenous hyperinsulinism pada Insulin Eksogen vs Endogen (Interpretasi Profil Lipid & Gula Darah). :: • Insulin tidak sesuai tinggi
   • C-peptide tinggi/tidak tertekan
   • Proinsulin tinggi
   • Beta-hydroxybutyrate rendah
-- [DKA — Diabetic Ketoacidosis] Sebutkan pemeriksaan penting pada DKA — Diabetic Ketoacidosis. :: • Glucose
-  • Electrolytes
-  • Bicarbonate
-  • Venous/arterial pH sesuai konteks
-  • Beta-hydroxybutyrate
-  • Anion gap
-  • Creatinine
-  • Potassium
-- [Fasting vs Nonfasting Lipid Profile] Sebutkan hal-hal penting tentang Fasting lebih berguna bila. :: • Triglycerides tinggi
-  • Dugaan severe hypertriglyceridemia
-  • Diperlukan perhitungan LDL tertentu
-  • Hasil nonfasting sulit diinterpretasi
-- [LDL-C — Lipoprotein Aterogenik Utama] Sebutkan hal-hal penting tentang LDL-C harus ditafsirkan berdasarkan. :: • Riwayat ASCVD
+- [DKA — Diabetic Ketoacidosis] Sebutkan hal-hal penting tentang DKA ditandai kombinasi pada DKA — Diabetic Ketoacidosis. :: • Hyperglycemia, walaupun pada kondisi tertentu glucose dapat tidak terlalu tinggi
+  • Ketonemia/ketosis
+  • High-anion-gap metabolic acidosis
+- [Profil Lipid — Komponen Dasar] Sebutkan hal-hal penting tentang Parameter turunan/pelengkap pada Profil Lipid — Komponen Dasar (Interpretasi Profil Lipid & Gula Darah). :: • Non-HDL-C
+  • ApoB
+  • Lipoprotein(a) / Lp(a)
+  • Direct LDL-C pada kondisi tertentu
+- [LDL-C — Lipoprotein Aterogenik Utama] Sebutkan hal-hal penting tentang LDL-C harus ditafsirkan berdasarkan pada LDL-C — Lipoprotein Aterogenik Utama. :: • Riwayat ASCVD
   • Diabetes
   • CKD
   • Usia
   • Faktor risiko kardiovaskular
   • Kemungkinan familial hypercholesterolemia
-- [Dyslipidemia pada Diabetes / Insulin Resistance] Sebutkan pola klasik diabetic dyslipidemia pada Dyslipidemia pada Diabetes / Insulin Resistance. :: • Triglycerides ↑
-  • HDL-C ↓
-  • Small dense LDL meningkat
-  • Remnant particles meningkat
-  • ApoB dapat meningkat
-- [Dyslipidemia dengan TG Tinggi — Apa yang Harus Dilihat?] Sebutkan urutan atau langkah pada Dyslipidemia dengan TG Tinggi — Apa yang Harus Dilihat? :: • Konfirmasi apakah fasting diperlukan
-  • Nilai glucose/HbA1c
-  • Tanyakan alcohol
-  • Nilai TSH bila sesuai
-  • Review obat
-  • Nilai kidney/liver disease
-  • Hitung non-HDL-C
-  • Pertimbangkan ApoB bila discordant
-  • Bila TG sangat tinggi, prioritaskan pancreatitis risk
+- [Triglycerides] Sebutkan penyebab TG meningkat pada Triglycerides (Interpretasi Profil Lipid & Gula Darah). :: • Uncontrolled diabetes
+  • Obesity/metabolic syndrome
+  • Alcohol
+  • Hypothyroidism
+  • CKD/nephrotic syndrome
+  • Pregnancy
+  • Obat tertentu
+  • Genetic hypertriglyceridemia
+- [Familial Hypercholesterolemia — Clue Lab] Sebutkan hal-hal penting tentang Curiga familial hypercholesterolemia (FH) bila terdapat pada Familial Hypercholesterolemia — Clue Lab. :: • LDL-C sangat tinggi, terutama sejak usia muda
+  • Tendon xanthomas
+  • Premature ASCVD
+  • Family history serupa
 - [Pre-Analitik Glukosa — Glikolisis Dapat Menurunkan Hasil] Apa poin high-yield (pearl) tentang Pre-Analitik Glukosa — Glikolisis Dapat Menurunkan Hasil? :: Glucose rendah tanpa gejala yang tidak sesuai kondisi pasien → pikirkan pre-analytical glycolysis terutama bila sampel terlambat diproses.
 - [Severe Hypertriglyceridemia dan Pancreatitis] Apa clue praktikum untuk Severe Hypertriglyceridemia dan Pancreatitis? :: Acute pancreatitis + milky/lipemic serum + TG sangat tinggi → hypertriglyceridemia dapat menjadi etiologi.
 - [Hypothyroidism dan Lipid] Apa clue praktikum untuk Hypothyroidism dan Lipid? :: LDL meningkat tanpa penyebab jelas + gejala hypothyroidism → periksa TSH sesuai konteks.

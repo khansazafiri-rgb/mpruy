@@ -613,8 +613,8 @@ Jika arachnid:
 - [Transmisi Mekanik vs Biologis] Apa yang dimaksud dengan Cyclodevelopmental pada Transmisi Mekanik vs Biologis? :: Filarial larvae berkembang dari microfilaria menjadi L3 di mosquito.
 - [Transmisi Mekanik vs Biologis] Apa yang dimaksud dengan Cyclopropagative pada Transmisi Mekanik vs Biologis? :: Plasmodium mengalami perkembangan seksual dan multiplication dalam Anopheles.
 - [Mosquito — Siklus Hidup Umum] Jelaskan Mosquito mengalami complete metamorphosis dalam konteks Mosquito — Siklus Hidup Umum. :: EGG → LARVA → PUPA → ADULT.
-- [Sandfly] Apa yang dimaksud dengan Pattern pada Sandfly? :: SAND FLY → LEISHMANIA.
-- [Tsetse Fly] Apa yang dimaksud dengan Penyakit pada Tsetse Fly? :: Human African trypanosomiasis akibat Trypanosoma brucei gambiense/rhodesiense.
+- [Sandfly] Apa yang dimaksud dengan Pattern pada Sandfly (Entomologi Kedokteran (Vektor Penyakit))? :: SAND FLY → LEISHMANIA.
+- [Tsetse Fly] Apa yang dimaksud dengan Penyakit pada Tsetse Fly (Entomologi Kedokteran (Vektor Penyakit))? :: Human African trypanosomiasis akibat Trypanosoma brucei gambiense/rhodesiense.
 - [Triatomine / Kissing Bug] Apa yang dimaksud dengan Transmission pada Triatomine / Kissing Bug? :: Metacyclic trypomastigotes terdapat dalam FECES vector. Infeksi terjadi ketika feses masuk melalui kulit yang terluka atau mukosa.
 - [Triatomine / Kissing Bug] Apa yang dimaksud dengan Pattern pada Triatomine / Kissing Bug? :: KISSING BUG + FECES → CHAGAS.
 - [Blackfly — Simulium] Apa yang dimaksud dengan Penyakit utama pada Blackfly — Simulium? :: Onchocerca volvulus → onchocerciasis / river blindness.
@@ -648,16 +648,16 @@ Jika arachnid:
 - [Transmisi Mekanik vs Biologis] Sebutkan tiga tipe klasik pada Transmisi Mekanik vs Biologis. :: • Propagative = pathogen MULTIPLY, tetapi tidak mengalami developmental change
   • Cyclodevelopmental = pathogen DEVELOP, tetapi tidak multiply
   • Cyclopropagative = pathogen DEVELOP + MULTIPLY
-- [Mosquito — Siklus Hidup Umum] Sebutkan hal-hal penting tentang Poin praktikum. :: • Larva Anopheles berbeda posisi di permukaan air dibanding Aedes/Culex
+- [Mosquito — Siklus Hidup Umum] Sebutkan hal-hal penting tentang Poin praktikum pada Mosquito — Siklus Hidup Umum (Entomologi Kedokteran (Vektor Penyakit)). :: • Larva Anopheles berbeda posisi di permukaan air dibanding Aedes/Culex
   • Bentuk telur dan siphon larva membantu identifikasi genus
 - [Anopheles — Identifikasi] Sebutkan ciri klasik pada Anopheles — Identifikasi. :: • Telur diletakkan satu-satu dan memiliki lateral floats
   • Larva berada hampir sejajar permukaan air karena tidak memiliki respiratory siphon panjang
   • Female palps kira-kira sepanjang proboscis
   • Sayap sering tampak spotted
   • Saat resting, tubuh adult membentuk sudut terhadap permukaan
-- [Aedes — Identifikasi] Sebutkan hal-hal penting tentang Aedes aegypti. :: • Tubuh gelap dengan white markings
+- [Aedes — Identifikasi] Sebutkan hal-hal penting tentang Aedes aegypti pada Aedes — Identifikasi (Entomologi Kedokteran (Vektor Penyakit)). :: • Tubuh gelap dengan white markings
   • Pola putih pada thorax dapat menyerupai lyre
-- [Sandfly] Sebutkan genera penting pada Sandfly. :: • Phlebotomus — Old World
+- [Sandfly] Sebutkan genera penting pada Sandfly (Entomologi Kedokteran (Vektor Penyakit)). :: • Phlebotomus — Old World
   • Lutzomyia — New World
 - [Lice — Morfologi] Sebutkan jenis utama pada Lice — Morfologi. :: • Pediculus humanus capitis = head louse
   • Pediculus humanus humanus/corporis = body louse
@@ -665,19 +665,19 @@ Jika arachnid:
 - [Body Louse — Penyakit Vektor] Sebutkan body louse merupakan vector penting pada Body Louse — Penyakit Vektor. :: • Rickettsia prowazekii → epidemic typhus
   • Bartonella quintana → trench fever
   • Borrelia recurrentis → louse-borne relapsing fever
-- [Hard Tick vs Soft Tick] Sebutkan hal-hal penting tentang Hard tick (Ixodidae). :: • Memiliki scutum
+- [Hard Tick vs Soft Tick] Sebutkan hal-hal penting tentang Hard tick (Ixodidae) pada Hard Tick vs Soft Tick. :: • Memiliki scutum
   • Capitulum/mouthparts dapat terlihat dari dorsal
   • Biasanya feeding lebih lama
   • Banyak spesies memiliki one-, two-, atau three-host life cycle
-- [Hard Tick vs Soft Tick] Sebutkan hal-hal penting tentang Soft tick (Argasidae). :: • Tidak memiliki scutum keras
+- [Hard Tick vs Soft Tick] Sebutkan hal-hal penting tentang Soft tick (Argasidae) pada Hard Tick vs Soft Tick. :: • Tidak memiliki scutum keras
   • Integument tampak leathery
   • Capitulum dewasa berada lebih ventral dan tidak terlihat jelas dari dorsal
   • Feeding biasanya lebih singkat dan dapat berulang
-- [Myiasis] Sebutkan bentuk pada Myiasis. :: • Cutaneous/furuncular
+- [Myiasis] Sebutkan bentuk pada Myiasis (Entomologi Kedokteran (Vektor Penyakit)). :: • Cutaneous/furuncular
   • Wound myiasis
   • Cavitary
   • Intestinal pada kondisi tertentu
-- [Vector Control — Prinsip] Sebutkan hal-hal penting tentang Pendekatan. :: • Source reduction
+- [Vector Control — Prinsip] Sebutkan hal-hal penting tentang Pendekatan pada Vector Control — Prinsip (Entomologi Kedokteran (Vektor Penyakit)). :: • Source reduction
   • Environmental management
   • Larval control
   • Adult vector control
@@ -686,12 +686,12 @@ Jika arachnid:
   • Resistance monitoring
   • Community participation
 - [Konsep Besar Entomologi Kedokteran] Apa poin high-yield (pearl) tentang Entomologi Kedokteran (Vektor Penyakit)? :: Sebelum hafal penyakit, identifikasi dulu bentuk arthropod + cara transmisi + habitat/bite timing.
-- [Anopheles — Identifikasi] Bagaimana cara mengingat Anopheles — Identifikasi? :: ANOPHELES = ANGLED resting + malaria.
+- [Anopheles — Identifikasi] Bagaimana cara mengingat Anopheles — Identifikasi (Entomologi Kedokteran (Vektor Penyakit))? :: ANOPHELES = ANGLED resting + malaria.
 - [Aedes — Penyakit] Apa poin high-yield (pearl) tentang Aedes — Penyakit? :: DAY-BITING + black-and-white mosquito + container breeding → Aedes.
 - [Culex — Penyakit] Apa jebakan yang sering muncul pada soal tentang Culex — Penyakit? :: Malaria bukan penyakit utama Culex. Dengue bukan penyakit utama Culex.
-- [Mansonia] Apa poin high-yield (pearl) tentang Mansonia? :: Mansonia → vector penting Brugia malayi pada wilayah tertentu.
-- [Blackfly — Simulium] Bagaimana cara mengingat Blackfly — Simulium? :: BLACKFLY + FAST RIVER → RIVER BLINDNESS.
-- [Xenopsylla Cheopis] Apa poin high-yield (pearl) tentang Xenopsylla Cheopis? :: RAT + FLEA + painful buboes → plague.
+- [Mansonia] Apa poin high-yield (pearl) tentang Mansonia (Entomologi Kedokteran (Vektor Penyakit))? :: Mansonia → vector penting Brugia malayi pada wilayah tertentu.
+- [Blackfly — Simulium] Bagaimana cara mengingat Blackfly — Simulium (Entomologi Kedokteran (Vektor Penyakit))? :: BLACKFLY + FAST RIVER → RIVER BLINDNESS.
+- [Xenopsylla Cheopis] Apa poin high-yield (pearl) tentang Xenopsylla Cheopis (Entomologi Kedokteran (Vektor Penyakit))? :: RAT + FLEA + painful buboes → plague.
 - [Body Louse — Penyakit Vektor] Bagaimana cara mengingat Body Louse — Penyakit Vektor? :: BODY LOUSE = TYphus + TRENCH + RELAPSING fever.
-- [Mites] Apa poin high-yield (pearl) tentang Mites? :: SCABIES = mite causes disease directly. SCRUB TYPHUS = chigger mite acts as vector.
-- [Tick Paralysis] Apa clue praktikum untuk Tick Paralysis? :: Progressive ascending weakness, tick masih melekat, membaik setelah tick dihilangkan.
+- [Mites] Apa poin high-yield (pearl) tentang Mites (Entomologi Kedokteran (Vektor Penyakit))? :: SCABIES = mite causes disease directly. SCRUB TYPHUS = chigger mite acts as vector.
+- [Tick Paralysis] Apa clue praktikum untuk Tick Paralysis (Entomologi Kedokteran (Vektor Penyakit))? :: Progressive ascending weakness, tick masih melekat, membaik setelah tick dihilangkan.

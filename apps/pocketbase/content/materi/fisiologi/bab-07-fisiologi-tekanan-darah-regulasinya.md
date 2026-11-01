@@ -330,16 +330,16 @@ Standing → venous pooling → venous return ↓ → EDV ↓ → SV ↓ → CO 
 ## Flashcard {kartu}
 
 - [Flow, Pressure, dan Resistance] Pada Flow, Pressure, dan Resistance, apa konsep dasarnya? :: Flow (Q) = ΔP / R.
-- [Pulse Pressure] Pada Pulse Pressure, apa rumusnya? :: Pulse Pressure = systolic pressure − diastolic pressure.
+- [Pulse Pressure] Pada Pulse Pressure, apa rumusnya (Fisiologi Tekanan Darah & Regulasinya)? :: Pulse Pressure = systolic pressure − diastolic pressure.
 - [Mean Arterial Pressure] Apa yang dimaksud dengan Contoh sumber pada Mean Arterial Pressure? :: 124/82 mmHg → PP = 42 mmHg → MAP ≈ 82 + 14 = 96 mmHg.
 - [Total Peripheral Resistance] Apa yang dimaksud dengan Vasoconstriction pada Total Peripheral Resistance? :: Radius ↓ → resistance ↑ → pada kondisi lain sama, pressure cenderung ↑ dan flow ke bed tersebut cenderung ↓.
 - [Contoh Hitung Net Filtration] Jelaskan Net outward force dalam konteks Contoh Hitung Net Filtration. :: (35 + 1) − (25 + 0) = 11 mmHg keluar kapiler.
 - [Shear Stress dan Endothelium] Apa yang dimaksud dengan Poin pada Shear Stress dan Endothelium? :: Shear stress dapat menyebabkan vasodilation melalui respons endothelium, termasuk pelepasan nitric oxide.
-- [Pulmonary vs Systemic Circulation] Apa yang dimaksud dengan Perbedaannya terutama pada Pulmonary vs Systemic Circulation? :: Pulmonary circuit beroperasi pada pressure/resistance lebih rendah dibanding systemic circuit.
-- [Respiratory Pump] Apa yang dimaksud dengan Poin pada Respiratory Pump? :: Right atrial pressure menjadi lebih negatif → gradient dari peripheral veins menuju thorax meningkat → venous return meningkat.
-- [Venoconstriction] Pada Venoconstriction, apa efeknya? :: Venous return dan preload dapat meningkat.
-- [Baroreceptor Reflex] Apa yang dimaksud dengan Respons pusat pada Baroreceptor Reflex? :: Sympathetic ↑ dan parasympathetic ↓.
-- [Efek Parasimpatis] Pada Efek Parasimpatis, apa efek utamanya? :: Heart rate ↓ dan AV nodal conduction ↓.
+- [Pulmonary vs Systemic Circulation] Pada Pulmonary vs Systemic Circulation, apa perbedaannya terutamanya? :: Pulmonary circuit beroperasi pada pressure/resistance lebih rendah dibanding systemic circuit.
+- [Respiratory Pump] Apa yang dimaksud dengan Poin pada Respiratory Pump (Fisiologi Tekanan Darah & Regulasinya)? :: Right atrial pressure menjadi lebih negatif → gradient dari peripheral veins menuju thorax meningkat → venous return meningkat.
+- [Venoconstriction] Pada Venoconstriction, apa efeknya (Fisiologi Tekanan Darah & Regulasinya)? :: Venous return dan preload dapat meningkat.
+- [Baroreceptor Reflex] Apa yang dimaksud dengan Respons pusat pada Baroreceptor Reflex (Fisiologi Tekanan Darah & Regulasinya)? :: Sympathetic ↑ dan parasympathetic ↓.
+- [Efek Parasimpatis] Pada Efek Parasimpatis, apa efek utamanya (Fisiologi Tekanan Darah & Regulasinya)? :: Heart rate ↓ dan AV nodal conduction ↓.
 - [Respons terhadap Kehilangan Volume] Apa yang dimaksud dengan Kompensasi cepat pada Respons terhadap Kehilangan Volume? :: Sympathetic ↑ → tachycardia + vasoconstriction + venoconstriction.
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diketahui tentang Dual pump pada Fisiologi Tekanan Darah & Regulasinya? :: Right heart → pulmonary circulation; left heart → systemic circulation
 - [Fisiologi Tekanan Darah & Regulasinya] Apa yang dimaksud dengan Vena pada Fisiologi Tekanan Darah & Regulasinya? :: High compliance reservoir

@@ -343,44 +343,44 @@ Lipid adalah senyawa organik hidrofobik atau amfipatik yang tidak larut dalam ai
 
 - [Peta Besar Bab] Pada Struktur & Fungsi Lipid, apa alur babnya? :: Definisi lipid → fungsi → karakteristik umum → klasifikasi → asam lemak → trigliserida/fosfolipid/kolesterol → lipoprotein → apolipoprotein dan enzim transport.
 - [Kilomikron / Chylomicron] Pada Kilomikron / Chylomicron, apa urutan sumbernya? :: Usus → kilomikron → jaringan lemak & otot → sisa menuju hati.
-- [Lipoprotein Lipase / LPL] Jelaskan Lokasi yang disebut sumber dalam konteks Lipoprotein Lipase / LPL. :: Kapiler otot dan jaringan lemak.
+- [Lipoprotein Lipase / LPL] Pada Lipoprotein Lipase / LPL, apa lokasinya? :: Kapiler otot dan jaringan lemak.
 - [Struktur & Fungsi Lipid] Apa yang dimaksud dengan Lipid pada Struktur & Fungsi Lipid? :: Senyawa organik hidrofobik atau amfipatik yang tidak larut dalam air. Fungsinya mencakup sumber energi, penyusun membran, pelindung organ, isolator panas, prekursor hormon, dan membantu absorpsi vitamin. Lipid dibagi menjadi lipid sederhana, kompleks, dan turunan. Asam lemak mempunyai struktur dasar CH3-(CH2)n-COOH; saturated tidak memiliki ikatan rangkap, sedangkan unsaturated memiliki satu atau lebih ikatan rangkap. Trigliserida tersusun atas satu gliserol dan tiga asam lemak serta berfungsi sebagai penyimpanan energi. Fosfolipid penting untuk membran, sedangkan kolesterol mempunyai empat cincin steroid dan berfungsi dalam membran, hormon steroid, vitamin D, dan garam empedu. Karena lipid tidak larut dalam plasma, lipid diangkut melalui lipoprotein: kilomikron membawa TG makanan dari usus, VLDL membawa TG dari hati, IDL merupakan bentuk peralihan, LDL membawa kolesterol ke jaringan, dan HDL mengembalikan kolesterol ke hati. Apo B-48 berkaitan dengan kilomikron, Apo B-100 dengan LDL, Apo C-II mengaktifkan LPL, Apo E membantu uptake remnant oleh hati, dan LCAT membantu esterifikasi kolesterol untuk HDL
-- [Karakteristik Umum Lipid] Sebutkan karakteristik pada Karakteristik Umum Lipid. :: • Tidak larut dalam air
+- [Karakteristik Umum Lipid] Sebutkan karakteristik pada Karakteristik Umum Lipid (Struktur & Fungsi Lipid). :: • Tidak larut dalam air
   • Larut dalam pelarut nonpolar
   • Mengandung karbon, hidrogen, dan oksigen
   • Sebagian lipid juga dapat mengandung fosfor, nitrogen, dan sulfur
-- [Lipid Turunan] Sebutkan contoh pada sumber pada Lipid Turunan. :: • Kolesterol
+- [Lipid Turunan] Sebutkan contoh pada sumber pada Lipid Turunan (Struktur & Fungsi Lipid). :: • Kolesterol
   • Asam lemak
   • Steroid
   • Vitamin A, D, E, K
-- [Sifat Asam Lemak Jenuh] Sebutkan hal-hal penting tentang Menurut sumber, asam lemak jenuh cenderung. :: • Padat
+- [Sifat Asam Lemak Jenuh] Sebutkan hal-hal penting tentang Menurut sumber, asam lemak jenuh cenderung pada Sifat Asam Lemak Jenuh. :: • Padat
   • Banyak terdapat pada lemak hewan
-- [Fungsi Kolesterol] Sebutkan fungsi pada Fungsi Kolesterol. :: • Penyusun membran
+- [Fungsi Kolesterol] Sebutkan fungsi pada Fungsi Kolesterol (Struktur & Fungsi Lipid). :: • Penyusun membran
   • Pembentuk hormon steroid
   • Pembentuk vitamin D
   • Pembentuk garam empedu
 - [Apa Itu Lipoprotein?] Sebutkan struktur umumnya menurut sumber pada Apa Itu Lipoprotein?. :: • Bagian luar bersifat hidrofilik
   • Bagian dalam bersifat hidrofobik
-- [Apolipoprotein] Sebutkan fungsi pada Apolipoprotein. :: • Pengenal reseptor
+- [Apolipoprotein] Sebutkan fungsi pada Apolipoprotein (Struktur & Fungsi Lipid). :: • Pengenal reseptor
   • Aktivator enzim
   • Menjaga struktur lipoprotein
-- Jelaskan peta Besar Bab. :: Lipid adalah kelompok senyawa hidrofobik atau amfipatik. Karena sifatnya tidak larut dalam air, lipid memiliki fungsi struktural, penyimpanan energi, dan transport khusus melalui lipoprotein.
-- Jelaskan apa Itu Lipid?. :: Menurut sumber, lipid adalah kelompok senyawa organik yang bersifat hidrofobik atau amfipatik sehingga tidak larut dalam air, tetapi larut dalam pelarut organik seperti eter, kloroform, dan benzena.
-- Jelaskan fungsi Lipid: Sumber Energi. :: Sumber menempatkan lipid sebagai salah satu sumber energi tubuh.
-- Jelaskan fungsi Lipid: Pelindung Organ. :: Lipid dapat berfungsi sebagai pelindung organ.
-- Jelaskan fungsi Lipid: Isolator Panas. :: Lipid membantu berfungsi sebagai isolator panas.
-- Jelaskan fungsi Lipid: Membantu Absorpsi Vitamin. :: Sumber menekankan bahwa lipid membantu absorpsi vitamin, terutama vitamin larut lemak yang kemudian disebut sebagai vitamin A, D, E, dan K.
-- Jelaskan lemak / Fat. :: Lemak adalah ester asam lemak dengan gliserol.
-- Apa yang dimaksud dengan Minyak? :: Sumber menyebut minyak sebagai lemak dalam bentuk cair.
-- Jelaskan lipid Kompleks. :: Lipid kompleks mencakup fosfolipid, glikolipid/glikosfingolipid, serta lipid kompleks lain seperti sulfolipid dan amino lipid.
-- Jelaskan glikolipid / Glikosfingolipid. :: Glikolipid disebut mengandung asam lemak, sfingosin, dan karbohidrat.
-- Jelaskan lipid Turunan. :: Lipid turunan merupakan hasil pemecahan lipid.
-- Jelaskan asam Lemak: Struktur Umum. :: Struktur umum asam lemak pada sumber: CH3-(CH2)n-COOH.
-- Jelaskan asam Lemak Tidak Jenuh. :: Asam lemak tidak jenuh mempunyai satu atau lebih ikatan rangkap.
-- Jelaskan fosfolipid sebagai Komponen Membran. :: Fosfolipid ditekankan sebagai penyusun membran sel.
-- Jelaskan mengapa Lipid Membutuhkan Sistem Transport?. :: Karena lemak tidak larut dalam air, sumber menjelaskan bahwa lipid tidak dapat beredar sendiri di dalam darah.
-- Jelaskan master Comparison Lipoprotein. :: Kilomikron → berasal dari usus → TG makanan ke jaringan.
-- Jelaskan apo A-I. :: Apo A-I dikaitkan dengan HDL dalam sumber.
-- Jelaskan apo C-II. :: Apo C-II berfungsi mengaktifkan lipoprotein lipase (LPL).
-- Jelaskan hepatic Lipase. :: Hepatic lipase membantu metabolisme IDL, LDL, dan HDL di hati menurut sumber.
-- Jelaskan master Flow Struktur Lipid. :: Lipid → sederhana / kompleks / turunan → asam lemak + trigliserida + fosfolipid + kolesterol → fungsi energi / membran / proteksi / hormon / absorpsi vitamin.
+- Jelaskan peta Besar Bab (Struktur & Fungsi Lipid). :: Lipid adalah kelompok senyawa hidrofobik atau amfipatik. Karena sifatnya tidak larut dalam air, lipid memiliki fungsi struktural, penyimpanan energi, dan transport khusus melalui lipoprotein.
+- Jelaskan apa Itu Lipid? (Struktur & Fungsi Lipid). :: Menurut sumber, lipid adalah kelompok senyawa organik yang bersifat hidrofobik atau amfipatik sehingga tidak larut dalam air, tetapi larut dalam pelarut organik seperti eter, kloroform, dan benzena.
+- Jelaskan fungsi Lipid: Sumber Energi (Struktur & Fungsi Lipid). :: Sumber menempatkan lipid sebagai salah satu sumber energi tubuh.
+- Jelaskan fungsi Lipid: Pelindung Organ (Struktur & Fungsi Lipid). :: Lipid dapat berfungsi sebagai pelindung organ.
+- Jelaskan fungsi Lipid: Isolator Panas (Struktur & Fungsi Lipid). :: Lipid membantu berfungsi sebagai isolator panas.
+- Jelaskan fungsi Lipid: Membantu Absorpsi Vitamin (Struktur & Fungsi Lipid). :: Sumber menekankan bahwa lipid membantu absorpsi vitamin, terutama vitamin larut lemak yang kemudian disebut sebagai vitamin A, D, E, dan K.
+- Jelaskan lemak / Fat (Struktur & Fungsi Lipid). :: Lemak adalah ester asam lemak dengan gliserol.
+- Apa yang dimaksud dengan Minyak (Struktur & Fungsi Lipid)? :: Sumber menyebut minyak sebagai lemak dalam bentuk cair.
+- Jelaskan lipid Kompleks (Struktur & Fungsi Lipid). :: Lipid kompleks mencakup fosfolipid, glikolipid/glikosfingolipid, serta lipid kompleks lain seperti sulfolipid dan amino lipid.
+- Jelaskan glikolipid / Glikosfingolipid (Struktur & Fungsi Lipid). :: Glikolipid disebut mengandung asam lemak, sfingosin, dan karbohidrat.
+- Jelaskan lipid Turunan (Struktur & Fungsi Lipid). :: Lipid turunan merupakan hasil pemecahan lipid.
+- Jelaskan asam Lemak: Struktur Umum (Struktur & Fungsi Lipid). :: Struktur umum asam lemak pada sumber: CH3-(CH2)n-COOH.
+- Jelaskan asam Lemak Tidak Jenuh (Struktur & Fungsi Lipid). :: Asam lemak tidak jenuh mempunyai satu atau lebih ikatan rangkap.
+- Jelaskan fosfolipid sebagai Komponen Membran (Struktur & Fungsi Lipid). :: Fosfolipid ditekankan sebagai penyusun membran sel.
+- Jelaskan mengapa Lipid Membutuhkan Sistem Transport? (Struktur & Fungsi Lipid). :: Karena lemak tidak larut dalam air, sumber menjelaskan bahwa lipid tidak dapat beredar sendiri di dalam darah.
+- Jelaskan master Comparison Lipoprotein (Struktur & Fungsi Lipid). :: Kilomikron → berasal dari usus → TG makanan ke jaringan.
+- Jelaskan apo A-I (Struktur & Fungsi Lipid). :: Apo A-I dikaitkan dengan HDL dalam sumber.
+- Jelaskan apo C-II (Struktur & Fungsi Lipid). :: Apo C-II berfungsi mengaktifkan lipoprotein lipase (LPL).
+- Jelaskan hepatic Lipase (Struktur & Fungsi Lipid). :: Hepatic lipase membantu metabolisme IDL, LDL, dan HDL di hati menurut sumber.
+- Jelaskan master Flow Struktur Lipid (Struktur & Fungsi Lipid). :: Lipid → sederhana / kompleks / turunan → asam lemak + trigliserida + fosfolipid + kolesterol → fungsi energi / membran / proteksi / hormon / absorpsi vitamin.
