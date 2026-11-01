@@ -40,13 +40,13 @@ export const PLAN = {
     S('explore', 'motion', 39.4, 'explore-rot2'),                             // 50 bingkai
     // 43.28-47.88: kamu yang pilih
     S('free', 'still', 43.05, 'start', { tin: 0.3 }),
-    S('free', 'click', 43.75, 'Muscles on', { approach: 0.55 }),
-    S('free', 'click', 44.45, 'Skeleton off', { approach: 0.45 }),
-    S('free', 'click', 45.15, 'Arteries on', { approach: 0.45 }),
-    S('free', 'click', 45.85, 'Lymphatic off', { approach: 0.45 }),
-    S('free', 'click', 46.55, 'Veins on', { approach: 0.45 }),
-    S('free', 'click', 47.15, 'Muscles -1', { approach: 0.4 }),
-    S('free', 'motion', 47.5, 'free-rot'),                                    // 36 bingkai
+    S('free', 'click', 43.7, 'Veins on', { approach: 0.55 }),
+    S('free', 'click', 44.35, 'Skeleton off', { approach: 0.4 }),
+    S('free', 'click', 45.0, 'Lymphatic on', { approach: 0.4 }),
+    S('free', 'click', 45.65, 'Muscles on', { approach: 0.4 }),
+    S('free', 'click', 46.3, 'Muscles -1', { approach: 0.4 }),
+    S('free', 'click', 46.95, 'Muscles -2', { approach: 0.4 }),
+    S('free', 'motion', 47.45, 'free-rot'),                                    // 36 bingkai
   ],
   // kamera: [t, cx, cy, skala]; tampilan penuh = (540, 960, 1)
   cam: [
@@ -54,7 +54,7 @@ export const PLAN = {
     [5.8, 560, 1500, 1.3], [6.5, 460, 1730, 2.0], [7.55, 460, 1730, 2.0], [8.2, 330, 700, 1.5],       // ke tombol Front
     [8.7, 150, 520, 2.4], [9.7, 150, 520, 2.4], [10.4, 190, 540, 2.3], [11.9, 190, 540, 2.3],        // ke sidebar (preset + baris otot)
     [12.5, 457, 830, 1.18], [16.6, 457, 830, 1.18],
-    [17.1, 330, 760, 1.5], [18.0, 457, 840, 1.18], [22.2, 457, 840, 1.18],
+    [17.0, 457, 840, 1.18], [22.2, 457, 840, 1.18],
     [22.6, 457, 840, 1.18], [27.8, 457, 840, 1.18], [28.1, 457, 840, 1.18], [32.6, 457, 840, 1.18],
     [33.2, 540, 960, 1.0], [36.0, 600, 930, 1.04], [38.4, 600, 930, 1.04], [42.9, 560, 940, 1.1],
     [43.3, 457, 830, 1.18], [47.9, 457, 830, 1.18], [48.6, 540, 960, 1],
