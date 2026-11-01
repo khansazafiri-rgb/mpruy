@@ -1,0 +1,21 @@
+# REVIEW CANDIDATE ONLY — insert inside the existing medcoel.com block,
+# before its general SPA handle. Existing /api and /_ proxies stay unchanged.
+# Verify this document root against the real host before deployment.
+handle /anatomy/viewer {
+    redir /anatomy/viewer/ 308
+}
+handle /anatomy/viewer/* {
+    root * /opt/medcoel/app/apps/web/dist
+    # The existing global X-Frame-Options DENY would block the atlas iframe.
+    header X-Frame-Options SAMEORIGIN
+    header Content-Security-Policy "frame-ancestors 'self'"
+    header Cache-Control "no-cache"
+    @anatomy_glb path *.glb
+    header @anatomy_glb Content-Type model/gltf-binary
+    @anatomy_wasm path *.wasm
+    header @anatomy_wasm Content-Type application/wasm
+    # No try_files /index.html: missing GLB/Draco/JS/CSS must return 404.
+    file_server
+}
+# The main /anatomy URL remains in the EXISTING main SPA handle / RequireAuth.
+# Client RequireAuth protects page navigation, not these public dataset files.

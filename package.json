@@ -7,7 +7,10 @@
     "dev": "concurrently --kill-others --raw \"npm run dev --prefix apps/web\" \"npm run dev --prefix apps/pocketbase\"",
     "build": "npm run build --prefix apps/web",
     "lint": "npm run lint --prefix apps/web",
-    "test": "npm run test --prefix apps/web && npm run test --prefix apps/pocketbase"
+    "test": "npm run test --prefix apps/web && npm run test --prefix apps/pocketbase",
+    "test:anatomy-integration": "node --test scripts/anatomy-preview-server.test.mjs",
+    "preview:anatomy": "node scripts/anatomy-preview-server.mjs",
+    "stage:anatomy": "node scripts/stage-anatomy.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
