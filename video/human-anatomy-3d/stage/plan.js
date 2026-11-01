@@ -50,7 +50,7 @@ export const PLAN = {
   ],
   // kamera: [t, cx, cy, skala]; tampilan penuh = (540, 960, 1)
   cam: [
-    [0, 540, 960, 1], [2.0, 540, 960, 1], [2.4, 560, 950, 1.03], [5.5, 620, 940, 1.1],
+    [0, 540, 960, 1], [2.0, 540, 960, 1], [2.4, 540, 960, 1.0], [5.5, 545, 955, 1.04],
     [5.8, 560, 1500, 1.3], [6.5, 460, 1730, 2.0], [7.55, 460, 1730, 2.0], [8.2, 330, 700, 1.5],       // ke tombol Front
     [8.7, 150, 520, 2.4], [9.7, 150, 520, 2.4], [10.4, 190, 540, 2.3], [11.9, 190, 540, 2.3],        // ke sidebar (preset + baris otot)
     [12.5, 457, 830, 1.18], [16.6, 457, 830, 1.18],
@@ -66,12 +66,12 @@ export const PLAN = {
     { take: 'hero_layers', t0: 10.0, t1: 12.2, rect: [192, 466, 90, 32] },
   ],
   // tombol-tombol yang tetap di atas model (UI di atas kanvas), koordinat halaman
-  overlayClip: `path('M329 213h163v36h-163z M334 1806h250v34h-250z M953 1695h88v118h-88z M18 1190h0z')`,
+  overlayClip: `path('M329 211h255v40h-255z M329 1798h260v46h-260z M950 1692h96v125h-96z')`,
 };
 export const CHIPS = [
   { t0: 2.4, t1: 7.3, text: 'JELAJAHI ANATOMI 3D · GRATIS', w: 700, fs: 34, bg: '#E8665F' },
-  { t0: 9.6, t1: 12.4, text: 'ATUR LAYER SESUAI KEBUTUHAN', w: 760, fs: 32 },
-  { t0: 12.9, t1: 16.55, w: 880, fs: 30, text: (t, h) => {
+  { t0: 9.6, t1: 12.4, text: 'ATUR LAYER SESUAI KEBUTUHAN', w: 720, fs: 30, x: 700 },
+  { t0: 12.9, t1: 16.55, w: 800, fs: 28, x: 690, text: (t, h) => {
     const s = h.STEPS.filter((x) => x.kind === 'click' && /^Muscles -/.test(x.label) && x.t0 <= t).pop();
     const name = s ? s.ev.titles[0].replace(/&amp;/g, '&').split(' · ')[1] : 'Fascia & connective covering';
     return 'LAYER OTOT: ' + name.toUpperCase().replace(/&/g, '&amp;');

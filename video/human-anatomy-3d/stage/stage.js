@@ -30,7 +30,7 @@ function pchip(keys) {
 
 // ---------------------------------------------------------------- manifes rekaman
 const MAN = {};
-for (const take of PLAN.takes) MAN[take] = await (await fetch(`media/${take}/manifest.json`)).json();
+for (const take of PLAN.takes) { try { const r = await fetch(`media/${take}/manifest.json`); if (r.ok) { const j = await r.json(); if (j.some((e) => e.type === 'end')) MAN[take] = j; } } catch (e) { /* take belum direkam */ } }
 const evOf = (take, label) => {
   if (label === 'start') return MAN[take].find((e) => e.type === 'start');
   const e = MAN[take].find((x) => x.label === label); if (!e) throw new Error(`peristiwa tidak ada: ${take}/${label}`); return e;
@@ -40,7 +40,7 @@ const lastOf = (e) => (e.frames ? e.frames[e.frames.length - 1] : e.frame);
 
 // ---------------------------------------------------------------- langkah -> keadaan layar
 // setiap langkah: { take, kind: still|motion|click, t0 (saat mulai/klik), ev, ... }
-const STEPS = PLAN.steps.map((s) => {
+const STEPS = PLAN.steps.filter((s) => MAN[s.take]).map((s) => {
   const ev = evOf(s.take, s.label || 'start');
   return { ...s, ev, geo: MAN[s.take][0].geo };
 });
