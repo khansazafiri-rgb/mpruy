@@ -1,0 +1,445 @@
+[
+ {
+  "find": "(?i)^CATATAN SUMBER:?$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^BASIS MATERI BAB$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^(?:ANCHOR SOURCE-DERIVED|EXPANSI KLINIS/GUIDELINE) — ",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^• \\[(?:SOURCE-DERIVED|GUIDELINE UPDATE)\\]",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^• Catatan penting: bank soal lama",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Slide “Bangkitan Epileptik dan Epilepsi” tidak menjabarkan",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Bagian ini adalah GUIDELINE UPDATE, bukan isi",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Basis materi:$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^• (?:Rekap Bab per Mata Kuliah|International Classification of Headache|NICE CG150: Headaches in over 12s: diagnosis and management, last updated|Bank Soal Neurologi)",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^• (?:MEDCOEL — Soal Neurologi|Rekap Bab per Mata Kuliah|Gangguan Keseimbangan — materi)",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Bab (?:\\d+|ini) (?:mengikuti|memakai|disusun dari) ",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Sumber kuliah utama Bab",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": " Pola ini juga konsisten dengan bank soal Neurologi proyek MEDCOEL.",
+  "replace": "",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Bank soal memberi pola klasik perempuan muda dengan obesitas",
+  "replace": "Pola klasiknya adalah perempuan muda dengan obesitas",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi Gangguan Keseimbangan mendefinisikan vertigo sebagai",
+  "replace": "Vertigo didefinisikan sebagai",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": " pada materi dibagi menjadi",
+  "replace": " dibagi menjadi",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi mengaitkannya dengan displacement",
+  "replace": "Penyebabnya adalah displacement",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi juga mencantumkan Semont, Yocovino, Lampert, dan latihan Brandt–Daroff",
+  "replace": "Manuver lain: Semont, Yocovino, Lampert, dan latihan Brandt–Daroff",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi mencantumkan mual/muntah, tinnitus, dan hearing loss sebagai gejala yang dapat menyertai.",
+  "replace": "Mual/muntah, tinnitus, dan hearing loss dapat menyertai.",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi mencantumkan vestibular suppressant dan antiemetik untuk fase akut dalam durasi singkat.",
+  "replace": "Vestibular suppressant dan antiemetik dapat diberikan untuk fase akut dalam durasi singkat.",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Bank soal MEDCOEL secara konsisten menganggap acute vertigo",
+  "replace": "Acute vertigo",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": " sebagai sentral sampai terbukti sebaliknya.",
+  "replace": " dianggap sentral sampai terbukti sebaliknya.",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; materi mencantumkan MRI sebagai pemeriksaan penting.",
+  "replace": "; MRI adalah pemeriksaan penting.",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "perubahan klasifikasi ILAE dari kerangka 2017 pada slide menjadi",
+  "replace": "perubahan klasifikasi ILAE dari kerangka 2017 menjadi",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Slide menggambarkan depolarisasi cepat melalui",
+  "replace": "Depolarisasi cepat terjadi melalui",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "6.4 Klasifikasi Seizure: Slide ILAE 2017 dan Update ILAE 2025",
+  "replace": "6.4 Klasifikasi Seizure: ILAE 2017 dan Update ILAE 2025",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "KERANGKA PADA SLIDE — ILAE 2017",
+  "replace": "KERANGKA ILAE 2017",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "MEKANISME YANG DICANTUMKAN SLIDE",
+  "replace": "MEKANISME KERJA",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; slide juga mengelompokkan gabapentin/pregabalin pada target Ca-related.",
+  "replace": "; gabapentin/pregabalin juga termasuk target Ca-related.",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "untuk ujian berbasis slide lama",
+  "replace": "untuk ujian berbasis kriteria lama",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Slide memakai ILAE 2017; update 2025 memakai empat kelas:",
+  "replace": "Klasifikasi ILAE 2017 diperbarui pada 2025 menjadi empat kelas:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi Mikrobiologi Drive menekankan pneumococcus sebagai alpha-hemolytic",
+  "replace": "Pneumococcus bersifat alpha-hemolytic",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": " pada materi Mikrobiologi.",
+  "replace": ".",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi Mikrobiologi Drive menekankan Cryptococcus sebagai ragi berkapsul",
+  "replace": "Cryptococcus adalah ragi berkapsul",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "materi Mikrobiologi Drive menekankan kapsul Cryptococcus dan meningitis pada pasien HIV.",
+  "replace": "Cryptococcus: kapsul dan meningitis pada pasien HIV.",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi Herpesviridae di Drive menekankan bahwa HSV adalah",
+  "replace": "HSV adalah",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Dari materi Herpesviridae:",
+  "replace": "Poin penting:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi ARBO di Drive menekankan bahwa beberapa arbovirus",
+  "replace": "Beberapa arbovirus",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Menurut materi Bakteri Anaerob:",
+  "replace": "Poin penting:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi kuliah menekankan beberapa konteks:",
+  "replace": "Beberapa konteks yang perlu diketahui:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": " yang disebut dalam materi:",
+  "replace": ":",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Ekspansi neurofisiologi standar: target",
+  "replace": "Target",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi kuliah mencantumkan masa tunas dari beberapa hari hingga beberapa minggu dan tanda klasik:",
+  "replace": "Masa tunas dari beberapa hari hingga beberapa minggu; tanda klasik:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi kuliah menyebut penicillin, tetracycline, dan clindamycin sebagai contoh antibiotik.",
+  "replace": "Contoh antibiotik: penicillin, tetracycline, dan clindamycin.",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi Bakteri Anaerob mencantumkan:",
+  "replace": "Meliputi:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi Patologi Anatomi Drive menekankan bahwa EDH klasik",
+  "replace": "EDH klasik",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi Neurofisiologi 2026 menyebut basal ganglia sebagai",
+  "replace": "Basal ganglia adalah",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sesuai materi Saraf 1:",
+  "replace": "Poin penting:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Bank soal MEDCOEL banyak memakai konsep ini dan tetap sangat penting untuk pattern recognition.",
+  "replace": "Konsep ini sering muncul dan tetap sangat penting untuk pattern recognition.",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi PPGD menggunakan AVPU untuk penilaian cepat:",
+  "replace": "AVPU digunakan untuk penilaian cepat:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi PPGD menempatkan pasien dalam primary survey ABCDE:",
+  "replace": "Pasien dinilai dalam primary survey ABCDE:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; faktor-faktor ini merupakan EKSPANSI KLINIS dan bukan poin utama yang ditemukan.",
+  "replace": ".",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi internal menekankan dua faktor risiko yang sangat penting:",
+  "replace": "Dua faktor risiko yang sangat penting:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi internal mencantumkan ventriculoperitoneal (VP) shunt sebagai terapi penting hidrosefalus.",
+  "replace": "Ventriculoperitoneal (VP) shunt adalah terapi penting hidrosefalus.",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Empat diagnosis perifer utama materi:",
+  "replace": "Empat diagnosis perifer utama:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": " Slide menekankan:",
+  "replace": " Poin penting:",
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+—\\s+SOURCE-DERIVED[^—]*$",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^SOURCE-DERIVED \\+ (?:EKSPANSI KLINIS|GUIDELINE)$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^(?:EKSPANSI (?:KLINIS|GUIDELINE|NEUROLOGI)(?: STANDAR)?|SOURCE-DERIVED(?: \\+ EKSPANSI KLINIS)?|ANCHOR BANK SOAL:?|GUIDELINE / EKSPANSI|KETERANGAN SUMBER|BASIS MATERI BAB|Basis materi dan cara membaca bab ini|Basis Drive utama:|Sumber Drive:|Ekspansi klinis standar(?: / CDC)?:?|PERBEDAAN SUMBER YANG PENTING:|SOURCE-DERIVED = .*|EKSPANSI KLINIS/GUIDELINE = .*)$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^ANCHOR SOURCE-DERIVED — ",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^(?:EKSPANSI KLINIS STANDAR|EKSPANSI KLINIS|EKSPANSI GUIDELINE|GUIDELINE UPDATE) — ",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+—\\s+(?:SOURCE-DERIVED \\+ )?EKSPANSI (?:KLINIS|GUIDELINE)$",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+—\\s+Ekspansi Pediatri$",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^\\[SOURCE-DERIVED\\]\\s*",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+(?:pada|dalam|dari|menurut|sesuai|oleh|berdasarkan)\\s+(?:pola\\s+)?(?:latihan\\s+)?(?:soal\\s+)?(?:bank soal(?: Neurologi)?(?: MEDCOEL)?|slide|PCV|sumber)(?:\\s+tambahan|\\s+utama|\\s+lama)?(?=[.,;:)—]|\\s+(?:dan|atau|serta|karena|bahwa|sehingga|yang|juga|menurut|adalah|dibagi|menjadi)\\b|$)",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+(?:pada|dalam|dari|menurut|sesuai|oleh|berdasarkan)\\s+(?:konteks\\s+sumber|materi(?:\\s+kuliah|\\s+internal)?)(?=[.,;:)—]|\\s+(?:dan|atau|serta|karena|bahwa|sehingga|yang|juga|menurut|adalah|dibagi|menjadi)\\b|$)",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+yang\\s+(?:sangat\\s+)?(?:dicantumkan|ditekankan|disebutkan|ditonjolkan|dituliskan|tercantum|ditegaskan)(?:\\s+(?:pada\\s+|oleh\\s+|dalam\\s+)?(?:materi|sumber|slide|bank soal)(?:\\s+kuliah)?)?(?=[.,;:)—]|\\s+(?:dan|atau|serta|karena|bahwa|sehingga|yang|juga|menurut|adalah|dibagi|menjadi)\\b|$)",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^(?:Bank soal(?: Neurologi)?(?: MEDCOEL)?|Slide|Materi(?: kuliah| internal| utama)?) (?:juga )?(?:menekankan|menegaskan|menyebut|membahas|mencantumkan):$",
+  "replace": "Poin penting:",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\b[Bb]ank soal(?: MEDCOEL| Neurologi)? (?:juga )?(?:menekankan|menegaskan|menyebut|menyatakan) (?:bahwa )?(\\w)",
+  "replace": "\\1",
+  "regex": true,
+  "all": true,
+  "cap": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\b[Ss]lide (?:juga )?(?:menekankan|menegaskan|menyebut|menyatakan) (?:bahwa )?(\\w)",
+  "replace": "\\1",
+  "regex": true,
+  "all": true,
+  "cap": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\b[Mm]ateri(?: kuliah| internal)? (?:juga )?(?:menekankan|menegaskan|menyebut|menyatakan) (?:bahwa )?(\\w)",
+  "replace": "\\1",
+  "regex": true,
+  "all": true,
+  "cap": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\b[Pp]ada materi, (\\w)",
+  "replace": "\\1",
+  "regex": true,
+  "all": true,
+  "cap": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\b[Mm]enurut materi, (\\w)",
+  "replace": "\\1",
+  "regex": true,
+  "all": true,
+  "cap": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+(?:pada|menurut|dalam)\\s+bank soal(?: Neurologi)?(?: MEDCOEL)?(?=[.,;:)—]|\\s+(?:dan|atau|serta|karena|bahwa|sehingga|yang|juga|menurut|adalah|dibagi|menjadi)\\b|$)",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\b(?:Dalam|Pada) bank soal(?: Neurologi)?(?: MEDCOEL)?, (\\w)",
+  "replace": "\\1",
+  "regex": true,
+  "all": true,
+  "cap": true,
+  "why": "catatan asal-usul penyusun (bank soal/slide/materi sumber/Drive) dibuang dari kalimat pelajaran"
+ }
+]

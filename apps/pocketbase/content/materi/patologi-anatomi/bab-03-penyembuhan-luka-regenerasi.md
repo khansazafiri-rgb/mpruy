@@ -596,65 +596,77 @@ REGENERATION membutuhkan proliferative cells + ECM scaffold yang relatif utuh. B
 
 ## Flashcard {kartu}
 
-- [Granulation Tissue] Jangan tertukar :: granulation tissue ≠ granuloma. Granulation tissue = wound repair; granuloma = chronic inflammatory structure.
-- [High-yield] Pattern soal wound healing :: collagen III lebih dominan awal → kemudian diremodel menjadi collagen I yang lebih kuat
-- [High-yield] Hepatocyte :: stable cell
-- [High-yield] Neuron dan cardiomyocyte :: permanent cells
-- [High-yield] VEGF :: angiogenesis
-- [High-yield] TGF-β :: mediator fibrosis paling penting
-- [High-yield] Granulation tissue :: new vessels + fibroblasts + loose ECM + inflammatory cells
-- [High-yield] Macrophage adalah sel kunci transisi inflammation :: repair
-- [High-yield] First intention :: little tissue loss, little contraction, small scar
-- [High-yield] Second intention :: more granulation tissue, contraction, larger scar
-- [High-yield] Infection :: faktor lokal terpenting yang menunda healing
-- [High-yield] Dehiscence :: wound reopening
-- [High-yield] Contracture :: excessive contraction, klasik setelah burn
-- [Regenerasi vs Repair] Regeneration dominan bila … :: • sel yang tersisa mampu membelah,
-  • stem/progenitor cells tersedia,
+- [Granulation Tissue] Bagaimana cara menghindari kesalahan berikut: Jangan tertukar? :: Granulation tissue ≠ granuloma. Granulation tissue = wound repair; granuloma = chronic inflammatory structure.
+- [Penyembuhan Luka & Regenerasi] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pattern soal wound healing: collagen III lebih dominan awal? :: Kemudian diremodel menjadi collagen I yang lebih kuat
+- [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan Hepatocyte pada Penyembuhan Luka & Regenerasi? :: Stable cell
+- [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan Neuron dan cardiomyocyte pada Penyembuhan Luka & Regenerasi? :: Permanent cells
+- [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan VEGF pada Penyembuhan Luka & Regenerasi? :: Angiogenesis
+- [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan TGF-β pada Penyembuhan Luka & Regenerasi? :: Mediator fibrosis paling penting
+- [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan Granulation tissue pada Penyembuhan Luka & Regenerasi? :: New vessels + fibroblasts + loose ECM + inflammatory cells
+- [Penyembuhan Luka & Regenerasi] Apa jawaban atau kesimpulan untuk petunjuk berikut: Macrophage adalah sel kunci transisi inflammation? :: Repair
+- [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan First intention pada Penyembuhan Luka & Regenerasi? :: Little tissue loss, little contraction, small scar
+- [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan Second intention pada Penyembuhan Luka & Regenerasi? :: More granulation tissue, contraction, larger scar
+- [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan Infection pada Penyembuhan Luka & Regenerasi? :: Faktor lokal terpenting yang menunda healing
+- [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan Dehiscence pada Penyembuhan Luka & Regenerasi? :: Wound reopening
+- [Penyembuhan Luka & Regenerasi] Apa yang dimaksud dengan Contracture pada Penyembuhan Luka & Regenerasi? :: Excessive contraction, klasik setelah burn
+- [Regenerasi vs Repair] Sebutkan poin-poin penting tentang Regeneration dominan bila. :: • Sel yang tersisa mampu membelah
+  • Stem/progenitor cells tersedia
   • ECM scaffold masih relatif utuh
-- [Regenerasi vs Repair] Repair dengan scar dominan bila … :: • jaringan tersusun dari permanent cells,
-  • injury luas atau berulang,
-  • ECM rusak berat,
-  • terdapat necrosis yang menghancurkan arsitektur jaringan
-- [Stem Cells & Progenitor Cells] Stem cells memiliki dua sifat utama … :: • self-renewal,
-  • kemampuan menghasilkan differentiated progeny
-- [Granulation Tissue] Granulation tissue adalah jaringan repair muda yang terdiri dari … :: • proliferating capillaries,
-  • fibroblasts,
-  • loose ECM,
-  • inflammatory cells terutama macrophages
-- [Collagen Synthesis] Sintesis collagen melibatkan … :: • sintesis preprocollagen,
-  • hydroxylation proline dan lysine,
-  • glycosylation,
-  • pembentukan triple helix procollagen,
-  • secretion,
-  • cleavage extracellular menjadi tropocollagen,
-  • cross-linking membentuk fibrils
-- [Tahap Penyembuhan Luka] Secara praktis dapat dibagi menjadi … :: • Hemostasis
-  • Inflammation
+- [Regenerasi vs Repair] Sebutkan poin-poin penting tentang Repair dengan scar dominan bila. :: • Jaringan tersusun dari permanent cells
+  • Injury luas atau berulang
+  • ECM rusak berat
+  • Terdapat necrosis yang menghancurkan arsitektur jaringan
+- [Tiga Kategori Proliferasi Sel] Sebutkan poin-poin penting tentang Stable cells. :: • Biasanya quiescent di G0, tetapi dapat masuk kembali ke cell cycle setelah stimulasi
+  • Contoh: hepatocytes, renal tubular cells, endothelial cells, fibroblasts, smooth muscle cells
+- [Tiga Kategori Proliferasi Sel] Sebutkan poin-poin penting tentang Permanent cells. :: • Terminally differentiated dan hampir tidak mampu bereplikasi
+  • Contoh utama: neurons dan cardiomyocytes
+- [Extracellular Matrix — Kenapa Penting?] Sebutkan poin-poin penting tentang ECM mengatur. :: • Cell adhesion
+  • Migration
   • Proliferation
-  • Remodeling/maturation
-- [Fase Hemostasis] Clot berfungsi untuk … :: • menghentikan perdarahan,
-  • menyediakan provisional matrix,
-  • menjadi reservoir growth factors dan cytokines
-- [Healing by First Intention] Primary union/first intention terjadi pada luka … :: • bersih,
-  • tepi berdekatan,
-  • kehilangan jaringan minimal,
-  • contohnya surgical incision yang disuturing
-- [Healing by Second Intention] Secondary intention terjadi pada luka … :: • luas,
-  • tepi berjauhan,
-  • kehilangan jaringan besar,
-  • ulcer atau luka terbuka besar
-- [Faktor Lokal yang Mengganggu Healing] Faktor lokal terpenting … :: • infection — penyebab paling penting delayed healing,
-  • poor blood supply/ischemia,
-  • foreign body,
-  • mechanical stress,
-  • ukuran, lokasi, dan tipe luka,
-  • edema atau hematoma berlebihan
-- [Regenerasi vs Repair] Exam pearl: Regenerasi vs Repair :: Kerusakan parenkim ringan + basement membrane utuh → regenerasi lebih mungkin; kerusakan luas + ECM hancur → scar/fibrosis.
-- [Tiga Kategori Proliferasi Sel] Poin ujian: Tiga Kategori Proliferasi Sel :: Hepatosit = stable, bukan labile; neuron dan cardiac myocyte = permanent.
-- [Collagen Synthesis] Exam pearl: Collagen Synthesis :: Vitamin C deficiency → defective collagen → poor wound healing, bleeding gums, mudah memar.
-- [Tensile Strength] High-yield: Tensile Strength :: sekitar akhir minggu pertama kekuatan masih rendah, meningkat cepat selama beberapa minggu berikutnya, setelah beberapa bulan dapat mencapai sekitar 70–80% tensile strength jaringan normal, biasanya tidak pernah kembali 100%.
-- [Healing by Second Intention] Exam pearl: Healing by Second Intention :: Secondary intention = more granulation + more contraction + larger scar.
-- [Faktor Lokal yang Mengganggu Healing] Exam pearl: Faktor Lokal yang Mengganggu Healing :: Kalau ditanya faktor paling penting yang memperlambat wound healing secara lokal → infection.
-- [Excessive Scar — Hypertrophic Scar vs Keloid] Exam pearl: Excessive Scar — Hypertrophic Scar vs Keloid :: Keluar melewati original wound margin = keloid.
-- [Repair pada Myocardial Infarction] Exam pearl: Repair pada Myocardial Infarction :: Infarct jantung → repair by fibrosis/scar, bukan regeneration sejati.
+  • Differentiation
+  • Tissue polarity
+  • Sequestration dan presentation growth factors
+- [Extracellular Matrix — Kenapa Penting?] Sebutkan komponen utama pada Extracellular Matrix — Kenapa Penting?. :: • Collagen
+  • Elastin
+  • Proteoglycans dan hyaluronan
+  • Adhesive glycoproteins seperti fibronectin dan laminin
+- [Interstitial Matrix vs Basement Membrane] Sebutkan poin-poin penting tentang Basement membrane. :: • Berada di bawah epitel dan mengelilingi beberapa sel seperti muscle/adipocyte
+  • Terutama mengandung type IV collagen dan laminin
+- [Angiogenesis] Sebutkan urutan atau langkah pada Angiogenesis? :: • Vasodilation dan peningkatan permeability
+  • Detachment pericytes
+  • Degradation basement membrane
+  • Migration endothelial cells
+  • Proliferation endothelial cells
+  • Pembentukan capillary tube
+  • Recruitment pericytes/smooth muscle
+  • Maturation pembuluh
+- [Collagen Synthesis] Sebutkan poin-poin penting tentang Sintesis collagen melibatkan. :: • Sintesis preprocollagen
+  • Hydroxylation proline dan lysine
+  • Glycosylation
+  • Pembentukan triple helix procollagen
+  • Secretion
+  • Cleavage extracellular menjadi tropocollagen
+  • Cross-linking membentuk fibrils
+- [Fase Hemostasis] Sebutkan poin-poin penting tentang Peristiwa utama. :: • Vasoconstriction singkat
+  • Platelet adhesion dan aggregation
+  • Fibrin clot formation
+- [Faktor Lokal yang Mengganggu Healing] Sebutkan faktor lokal terpenting pada Faktor Lokal yang Mengganggu Healing. :: • Infection — penyebab paling penting delayed healing
+  • Poor blood supply/ischemia
+  • Foreign body
+  • Mechanical stress
+  • Ukuran, lokasi, dan tipe luka
+  • Edema atau hematoma berlebihan
+- [Faktor Sistemik] Sebutkan faktor sistemik. :: • Malnutrition, terutama protein deficiency
+  • Vitamin C deficiency
+  • Diabetes mellitus
+  • Glucocorticoids
+  • Poor perfusion/anemia berat dalam konteks tertentu
+  • Usia dan kondisi umum pasien
+- [Regenerasi vs Repair] Apa poin high-yield (pearl) tentang Regenerasi vs Repair? :: Kerusakan parenkim ringan + basement membrane utuh → regenerasi lebih mungkin; kerusakan luas + ECM hancur → scar/fibrosis.
+- [Tiga Kategori Proliferasi Sel] Apa poin high-yield (pearl) tentang Tiga Kategori Proliferasi Sel? :: Hepatosit = stable, bukan labile; neuron dan cardiac myocyte = permanent.
+- [Collagen Synthesis] Apa poin high-yield (pearl) tentang Collagen Synthesis? :: Vitamin C deficiency → defective collagen → poor wound healing, bleeding gums, mudah memar.
+- [Tensile Strength] Apa poin high-yield (pearl) tentang Tensile Strength? :: Sekitar akhir minggu pertama kekuatan masih rendah, meningkat cepat selama beberapa minggu berikutnya, setelah beberapa bulan dapat mencapai sekitar 70–80% tensile strength jaringan normal, biasanya tidak pernah kembali 100%.
+- [Healing by Second Intention] Apa poin high-yield (pearl) tentang Healing by Second Intention? :: Secondary intention = more granulation + more contraction + larger scar.
+- [Faktor Lokal yang Mengganggu Healing] Apa poin high-yield (pearl) tentang Faktor Lokal yang Mengganggu Healing? :: Kalau ditanya faktor paling penting yang memperlambat wound healing secara lokal → infection.
+- [Excessive Scar — Hypertrophic Scar vs Keloid] Apa poin high-yield (pearl) tentang Excessive Scar — Hypertrophic Scar vs Keloid? :: Keluar melewati original wound margin = keloid.
+- [Repair pada Myocardial Infarction] Apa poin high-yield (pearl) tentang Repair pada Myocardial Infarction? :: Infarct jantung → repair by fibrosis/scar, bukan regeneration sejati.

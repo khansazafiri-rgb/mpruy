@@ -817,58 +817,65 @@ Pikirkan staghorn calculus bila sesuai imaging.
 
 ## Flashcard {kartu}
 
-- [Warna Urine — Clue, Bukan Diagnosis] Normal :: kuning pucat sampai amber akibat urochrome.
-- [Blood Positif + Sedikit/Tidak Ada RBC] Clue rhabdomyolysis :: muscle pain/weakness + CK sangat tinggi + blood dipstick positif tetapi RBC minimal.
-- [Calcium Oxalate Crystals] Ethylene glycol clue :: high anion gap metabolic acidosis + AKI + calcium oxalate crystals.
-- [Pola Kasus: Cystitis] Gejala :: dysuria, frequency, urgency.
-- [Pola Kasus: Glomerulonephritis] Interpretasi :: active nephritic sediment.
-- [Pola Kasus: Rhabdomyolysis] Interpretasi :: myoglobinuria sangat mungkin.
-- [High-yield] Urinalysis :: physical + dipstick + microscopy
-- [High-yield] Blood positif + banyak RBC :: hematuria
-- [High-yield] Blood positif + no RBC :: myoglobinuria/hemoglobinuria
-- [High-yield] RBC cast :: glomerulonephritis sampai terbukti bukan
-- [High-yield] WBC cast :: pyelonephritis atau interstitial nephritis
-- [High-yield] Muddy brown granular cast :: acute tubular injury
-- [High-yield] Fatty cast/oval fat body :: nephrotic syndrome
-- [High-yield] Broad waxy cast :: advanced CKD
-- [High-yield] Squamous epithelial cells banyak :: kualitas clean-catch buruk
-- [High-yield] Struvite :: coffin-lid + alkaline urine + urease-positive organism
-- [High-yield] Cystine :: hexagonal crystal
-- [High-yield] Glucosuria dengan normoglycemia :: proximal tubular defect/SGLT2 effect
-- [Tiga Komponen Urinalysis] Urinalysis rutin terdiri dari … :: • Pemeriksaan fisik: warna, kejernihan, specific gravity
+- [Warna Urine — Clue, Bukan Diagnosis] Apa yang dimaksud dengan Normal pada Warna Urine — Clue, Bukan Diagnosis? :: Kuning pucat sampai amber akibat urochrome.
+- [Calcium Oxalate Crystals] Jelaskan Ethylene glycol clue dalam konteks Calcium Oxalate Crystals. :: High anion gap metabolic acidosis + AKI + calcium oxalate crystals.
+- [Pola Kasus: Cystitis] Pada Pola Kasus: Cystitis, apa gejalanya? :: Dysuria, frequency, urgency.
+- [Pola Kasus: Glomerulonephritis] Pada Pola Kasus: Glomerulonephritis, apa interpretasinya? :: Active nephritic sediment.
+- [Pola Kasus: Rhabdomyolysis] Pada Pola Kasus: Rhabdomyolysis, apa interpretasinya? :: Myoglobinuria sangat mungkin.
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan Urinalysis pada Interpretasi Analisis Urin? :: Physical + dipstick + microscopy
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan Blood positif + banyak RBC pada Interpretasi Analisis Urin? :: Hematuria
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan Blood positif + no RBC pada Interpretasi Analisis Urin? :: Myoglobinuria/hemoglobinuria
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan RBC cast pada Interpretasi Analisis Urin? :: Glomerulonephritis sampai terbukti bukan
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan WBC cast pada Interpretasi Analisis Urin? :: Pyelonephritis atau interstitial nephritis
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan Muddy brown granular cast pada Interpretasi Analisis Urin? :: Acute tubular injury
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan Fatty cast/oval fat body pada Interpretasi Analisis Urin? :: Nephrotic syndrome
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan Broad waxy cast pada Interpretasi Analisis Urin? :: Advanced CKD
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan Squamous epithelial cells banyak? :: Kualitas clean-catch buruk
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan Struvite pada Interpretasi Analisis Urin? :: Coffin-lid + alkaline urine + urease-positive organism
+- [Interpretasi Analisis Urin] Apa yang dimaksud dengan Cystine pada Interpretasi Analisis Urin? :: Hexagonal crystal
+- [Interpretasi Analisis Urin] Apa yang perlu diingat tentang Glucosuria dengan normoglycemia pada Interpretasi Analisis Urin? :: Proximal tubular defect/SGLT2 effect
+- [Tiga Komponen Urinalysis] Sebutkan poin-poin penting tentang Urinalysis rutin. :: • Pemeriksaan fisik: warna, kejernihan, specific gravity
   • Pemeriksaan kimia dengan dipstick: pH, protein, blood/heme, glucose, ketone, bilirubin, urobilinogen, nitrite, leukocyte esterase
   • Pemeriksaan mikroskopis: RBC, WBC, epithelial cells, casts, crystals, bacteria, yeast, dan unsur lain
-- [Warna Urine — Clue, Bukan Diagnosis] Perubahan warna high-yield … :: • merah/pink → RBC, hemoglobin, myoglobin, beetroot, obat tertentu
-  • coklat/tea/cola → glomerular hematuria, hemoglobin/myoglobin, bilirubin
-  • orange → bilirubin, obat tertentu
-  • keruh → WBC, RBC, crystals, bacteria, semen, kontaminasi
-  • sangat pucat → dilute urine
-- [Urine pH] Urine lebih asam dapat terjadi pada … :: • high-protein diet
-  • metabolic acidosis dengan respons renal adekuat
-  • ketosis
-- [False Positive / False Negative Protein] False negative dapat terjadi pada … :: • urine sangat dilute
-  • protein dominan bukan albumin
-  • kadar albumin masih rendah tetapi klinis bermakna
-- [Nephrotic-Range Proteinuria] Nephrotic syndrome biasanya menunjukkan … :: • heavy proteinuria
-  • hypoalbuminemia
-  • edema
-  • hyperlipidemia
-  • lipiduria
-- [Nitrite] Nitrite negatif TIDAK menyingkirkan UTI karena … :: • tidak semua organisme menghasilkan nitrite
-  • urine terlalu singkat berada di bladder
-  • diet nitrate rendah
-  • bacterial load rendah
-- [Bacteriuria dan Kontaminasi] Bacteria pada microscopy dapat berasal dari … :: • true UTI
-  • asymptomatic bacteriuria
-  • kontaminasi
-- [Epithelial Cells] Renal tubular epithelial cells … :: • mengarah ke tubular injury bila banyak
-  • dapat muncul bersama epithelial cell casts
-- [Glucosuria] Glucose urine positif terjadi bila … :: • plasma glucose melebihi renal threshold, atau
-  • proximal tubular reabsorption terganggu
-- [Bilirubin Urine] Urine bilirubin positif mengarah pada conjugated hyperbilirubinemia akibat … :: • cholestasis
-  • hepatocellular dysfunction dengan impaired excretion
-  • biliary obstruction
-- [Isosthenuria] EXAM PEARL: Isosthenuria :: SG “fixed” sekitar 1.010 pada pasien CKD berat = pikirkan isosthenuria.
-- [RBC Cast] EXAM PEARL: RBC Cast :: Hematuria + proteinuria + RBC casts = nephritic glomerular process sampai terbukti bukan.
-- [Granular / Muddy Brown Cast] EXAM PEARL: Granular / Muddy Brown Cast :: Muddy brown cast = acute tubular injury sampai terbukti sebaliknya.
-- [Cystine Crystals] EXAM PEARL: Cystine Crystals :: Hexagonal crystal = cystine sampai terbukti sebaliknya.
+- [Warna Urine — Clue, Bukan Diagnosis] Sebutkan poin-poin penting tentang Perubahan warna high-yield. :: • Merah/pink → RBC, hemoglobin, myoglobin, beetroot, obat tertentu
+  • Coklat/tea/cola → glomerular hematuria, hemoglobin/myoglobin, bilirubin
+  • Orange → bilirubin, obat tertentu
+  • Keruh → WBC, RBC, crystals, bacteria, semen, kontaminasi
+  • Sangat pucat → dilute urine
+- [Albuminuria — UACR] Sebutkan kategori umum pada Albuminuria — UACR. :: • A1 <30 mg/g
+  • A2 30–300 mg/g
+  • A3 >300 mg/g
+- [Hematuria Glomerular vs Nonglomerular] Sebutkan poin-poin penting tentang Glomerular hematuria. :: • Dysmorphic RBC
+  • Acanthocytes
+  • RBC casts
+  • Proteinuria dapat menyertai
+  • Urine dapat tampak tea/cola-colored
+- [Hematuria Glomerular vs Nonglomerular] Sebutkan poin-poin penting tentang Nonglomerular hematuria. :: • RBC lebih isomorphic
+  • Clots dapat muncul
+  • Sumber dapat berupa stone, tumor, infection, trauma, prostate, bladder, ureter
+- [Nitrite] Sebutkan poin-poin penting tentang Nitrite negatif TIDAK menyingkirkan UTI karena. :: • Tidak semua organisme menghasilkan nitrite
+  • Urine terlalu singkat berada di bladder
+  • Diet nitrate rendah
+  • Bacterial load rendah
+- [Epithelial Cells] Sebutkan poin-poin penting tentang Squamous epithelial cells. :: • Biasanya dari distal urethra/genital tract
+  • Jumlah banyak → contamination clue
+- [Epithelial Cells] Sebutkan poin-poin penting tentang Transitional/urothelial cells. :: • Berasal dari renal pelvis, ureter, bladder
+  • Dapat meningkat setelah instrumentation atau inflammation
+- [Epithelial Cells] Sebutkan poin-poin penting tentang Renal tubular epithelial cells. :: • Mengarah ke tubular injury bila banyak
+  • Dapat muncul bersama epithelial cell casts
+- [Crystals — Prinsip Besar] Sebutkan poin-poin penting tentang Crystals dipengaruhi. :: • Urine pH
+  • Solute concentration
+  • Temperature
+  • Obat
+  • Metabolic abnormalities
+- [Uric Acid Crystals] Sebutkan morfologi bervariasi pada Uric Acid Crystals. :: • Rhomboid
+  • Diamond
+  • Rosette
+- [Drug Crystals] Sebutkan contoh yang sering dibahas pada Drug Crystals. :: • Sulfonamides
+  • Acyclovir
+  • Indinavir
+  • Methotrexate
+- [Isosthenuria] Apa poin high-yield (pearl) tentang Isosthenuria? :: SG “fixed” sekitar 1.010 pada pasien CKD berat = pikirkan isosthenuria.
+- [RBC Cast] Apa poin high-yield (pearl) tentang RBC Cast? :: Hematuria + proteinuria + RBC casts = nephritic glomerular process sampai terbukti bukan.
+- [Granular / Muddy Brown Cast] Apa poin high-yield (pearl) tentang Granular / Muddy Brown Cast? :: Muddy brown cast = acute tubular injury sampai terbukti sebaliknya.
+- [Cystine Crystals] Apa poin high-yield (pearl) tentang Cystine Crystals? :: Hexagonal crystal = cystine sampai terbukti sebaliknya.

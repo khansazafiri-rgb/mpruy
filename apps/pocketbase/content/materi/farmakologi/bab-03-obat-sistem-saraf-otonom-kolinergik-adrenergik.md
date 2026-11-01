@@ -334,65 +334,64 @@ SSO terdiri dari simpatik dan parasimpatik. Semua neuron preganglionik memakai A
 
 ## Flashcard {kartu}
 
-- [M1] Efek :: meningkatkan sekresi asam lambung.
-- [M2] Efek :: menurunkan denyut jantung dan menurunkan konduksi AV.
-- [M3] Lokasi :: mata, bronkus, saluran cerna, kandung kemih, dan kelenjar.
-- [M3] Efek :: bronkokonstriksi, miosis, kontraksi detrusor, peningkatan saliva, serta peningkatan motilitas usus.
-- [Reseptor Adrenergik] Lokasi :: pembuluh darah, iris, sfingter kandung kemih.
-- [Reseptor Adrenergik] Efek :: vasokonstriksi, midriasis, kontraksi sfingter.
-- [Reseptor Adrenergik] Efek :: menghambat pelepasan norepinefrin sehingga aktivitas simpatik menurun.
-- [Reseptor Adrenergik] Lokasi :: jantung dan ginjal.
-- [Reseptor Adrenergik] Efek :: denyut jantung meningkat, kontraktilitas meningkat, sekresi renin meningkat.
-- [Reseptor Adrenergik] Lokasi :: bronkus, hati, uterus, pembuluh darah otot.
-- [Reseptor Adrenergik] Efek :: bronkodilatasi, relaksasi uterus, vasodilatasi, dan peningkatan glikogenolisis.
-- [Reseptor Adrenergik] Lokasi :: jaringan lemak dan kandung kemih.
-- [Reseptor Adrenergik] Efek :: lipolisis dan relaksasi detrusor.
-- [Parasimpatomimetik Langsung] Mekanisme :: mengaktivasi reseptor muskarinik atau meningkatkan efek ACh secara langsung pada target kolinergik.
-- [Parasimpatomimetik Tidak Langsung: Antikolinesterase] Mekanisme :: menghambat asetilkolinesterase sehingga kadar ACh meningkat di celah sinaps.
-- [Parasimpatolitik / Antimuskarinik] Mekanisme :: memblok reseptor muskarinik sehingga efek parasimpatik berkurang.
-- [Simpatomimetik / Agonis Adrenergik] Mekanisme umum :: mengaktivasi reseptor adrenergik.
-- [High-yield] Kelenjar keringat :: pengecualian simpatik kolinergik
-- [High-yield] Epinefrin :: anafilaksis/henti jantung
-- [High-yield] Norepinefrin :: syok septik
-- [High-yield] Dobutamin :: gagal jantung akut
-- [High-yield] Fenilefrin :: hipotensi/dekongestan
-- [High-yield] Mirabegron :: overactive bladder
-- [High-yield] Prazosin/tamsulosin :: α-blocker
-- [Gambaran Umum Sistem Saraf Otonom] SSO dibagi menjadi dua komponen besar … :: • Sistem simpatik — “fight or flight”, dominan ketika tubuh menghadapi stres, aktivitas fisik, keadaan darurat, syok, atau perdarahan
-  • Sistem parasimpatik — “rest and digest”, dominan ketika tubuh beristirahat, setelah makan, tidur, dan relaksasi
-- [Gambaran Umum Sistem Saraf Otonom] Efek umum yang digambarkan … :: • Aktivasi simpatik → jantung berdebar, napas lebih cepat, pupil melebar
+- [M1] Pada M1 (Reseptor Kolinergik), apa efeknya? :: Meningkatkan sekresi asam lambung.
+- [M2] Pada M2 (Reseptor Kolinergik), apa efeknya? :: Menurunkan denyut jantung dan menurunkan konduksi AV.
+- [M3] Pada M3 (Reseptor Kolinergik), apa lokasinya? :: Mata, bronkus, saluran cerna, kandung kemih, dan kelenjar.
+- [M3] Pada M3 (Reseptor Kolinergik), apa efeknya? :: Bronkokonstriksi, miosis, kontraksi detrusor, peningkatan saliva, serta peningkatan motilitas usus.
+- [Reseptor Adrenergik] Pada Reseptor Adrenergik, apa lokasinya? :: Pembuluh darah, iris, sfingter kandung kemih.
+- [Reseptor Adrenergik] Pada Reseptor Adrenergik, apa efeknya? :: Vasokonstriksi, midriasis, kontraksi sfingter.
+- [Parasimpatomimetik Langsung] Pada Parasimpatomimetik Langsung, apa mekanismenya? :: Mengaktivasi reseptor muskarinik atau meningkatkan efek ACh secara langsung pada target kolinergik.
+- [Parasimpatomimetik Tidak Langsung: Antikolinesterase] Pada Parasimpatomimetik Tidak Langsung: Antikolinesterase, apa mekanismenya? :: Menghambat asetilkolinesterase sehingga kadar ACh meningkat di celah sinaps.
+- [Parasimpatolitik / Antimuskarinik] Pada Parasimpatolitik / Antimuskarinik, apa mekanismenya? :: Memblok reseptor muskarinik sehingga efek parasimpatik berkurang.
+- [Simpatomimetik / Agonis Adrenergik] Pada Simpatomimetik / Agonis Adrenergik, apa mekanisme umumnya? :: Mengaktivasi reseptor adrenergik.
+- [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Apa yang dimaksud dengan Kelenjar keringat pada Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)? :: Pengecualian simpatik kolinergik
+- [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Jelaskan: Antimuskarinik memberi pola kebalikan dari banyak efek muskarinik. :: Mulut kering, midriasis, takikardia, konstipasi, retensi urin
+- [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Apa yang dimaksud dengan Neostigmine, pyridostigmine, physostigmine, dan donepezil? :: Contoh inhibitor asetilkolinesterase
+- [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Apa yang dimaksud dengan Atropine, ipratropium, tiotropium, oxybutynin, dan scopolamine? :: Contoh antimuskarinik
+- [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Apa yang perlu diingat tentang Epinefrin pada Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)? :: Anafilaksis/henti jantung
+- [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Apa yang perlu diingat tentang Norepinefrin pada Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)? :: Syok septik
+- [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Apa yang perlu diingat tentang Dobutamin pada Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)? :: Gagal jantung akut
+- [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Apa yang perlu diingat tentang Fenilefrin pada Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)? :: Hipotensi/dekongestan
+- [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Apa yang perlu diingat tentang Mirabegron pada Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)? :: Overactive bladder
+- [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Apa yang perlu diingat tentang Prazosin/tamsulosin pada Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)? :: Α-blocker
+- [Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Metoprolol, atenolol, bisoprolol, propranolol, carvedilol? :: Contoh β-blocker
+- [Gambaran Umum Sistem Saraf Otonom] Sebutkan efek umum yang digambarkan pada Gambaran Umum Sistem Saraf Otonom. :: • Aktivasi simpatik → jantung berdebar, napas lebih cepat, pupil melebar
   • Aktivasi parasimpatik → denyut jantung melambat, pencernaan meningkat, saliva bertambah
-- [Empat Kelompok Besar Obat Otonom] Obat SSO dibagi menjadi empat kelompok … :: • Parasimpatomimetik / kolinergik — meningkatkan aktivitas kolinergik
-  • Parasimpatolitik / antimuskarinik — memblok reseptor muskarinik
-  • Simpatomimetik / agonis adrenergik — mengaktivasi reseptor adrenergik
-  • Simpatolitik / antagonis adrenergik — menghambat efek adrenergik
-- [Empat Kelompok Besar Obat Otonom] Cara membedakan cepat … :: • “-mimetik” = meniru atau meningkatkan aktivitas sistem
+- [Neurotransmiter: Aturan Utama dan Pengecualian] Sebutkan poin-poin penting tentang Pengecualian penting. :: • Kelenjar keringat termasuk jalur simpatik, tetapi neuron postganglioniknya melepaskan ACh dan bekerja pada reseptor muskarinik
+  • Medula adrenal menerima stimulasi kolinergik melalui reseptor nikotinik dan kemudian berperan dalam pelepasan katekolamin
+- [Empat Kelompok Besar Obat Otonom] Sebutkan cara membedakan cepat pada Empat Kelompok Besar Obat Otonom. :: • “-mimetik” = meniru atau meningkatkan aktivitas sistem
   • “-litik” = menghambat aktivitas sistem
-- [Parasimpatomimetik Langsung] Efek samping kolinergik dapat diingat dengan SLUDGE … :: • Salivation
-  • Lacrimation
-  • Urination
-  • Defecation
-  • Gastrointestinal cramps
-  • Emesis
-- [Parasimpatolitik / Antimuskarinik] Efek samping khas … :: • mulut kering
-  • midriasis
-  • takikardia
-  • konstipasi
-  • retensi urin
-  • hipertermia
-  • delirium pada lansia
-- [Simpatomimetik / Agonis Adrenergik] Contoh dan penggunaan … :: • Epinefrin → anafilaksis, henti jantung
+- [Parasimpatomimetik Tidak Langsung: Antikolinesterase] Sebutkan efek samping pada Parasimpatomimetik Tidak Langsung: Antikolinesterase. :: • Bradikardia
+  • Diare
+  • Hipersalivasi
+  • Bronkospasme
+  • Miosis
+- [Parasimpatolitik / Antimuskarinik] Sebutkan efek samping khas pada Parasimpatolitik / Antimuskarinik. :: • Mulut kering
+  • Midriasis
+  • Takikardia
+  • Konstipasi
+  • Retensi urin
+  • Hipertermia
+  • Delirium pada lansia
+- [Simpatomimetik / Agonis Adrenergik] Sebutkan contoh dan penggunaan pada Simpatomimetik / Agonis Adrenergik. :: • Epinefrin → anafilaksis, henti jantung
   • Norepinefrin → syok septik
   • Dobutamin → gagal jantung akut
   • Salbutamol/Albuterol → agonis β2 untuk bronkodilatasi pada asma
   • Fenilefrin → hipotensi dan dekongestan
   • Mirabegron → overactive bladder
-- [Cara Membaca Soal Obat Otonom] Gunakan urutan empat langkah … :: • Tentukan organ atau gejala dominan
+- [Cara Membaca Soal Obat Otonom] Sebutkan urutan atau langkah pada Cara Membaca Soal Obat Otonom? :: • Tentukan organ atau gejala dominan
   • Tentukan reseptor yang paling sesuai
   • Tentukan apakah soal membutuhkan aktivasi atau blokade reseptor
   • Cocokkan dengan obat dan indikasi yang tersedia
-- [Gambaran Umum Sistem Saraf Otonom] Exam pearl: Gambaran Umum Sistem Saraf Otonom :: Bila stem menggambarkan “fight or flight”, pikirkan dominasi adrenergik/simpatik. Bila menggambarkan “rest and digest”, pikirkan dominasi kolinergik/parasimpatik.
-- [Neurotransmiter: Aturan Utama dan Pengecualian] Exam pearl: Neurotransmiter: Aturan Utama dan Pengecualian :: Kalimat hafalan paling aman: “Semua preganglionik = ACh; parasimpatik postganglionik = ACh; simpatik postganglionik = biasanya norepinefrin; kelenjar keringat adalah pengecualian kolinergik.”
-- [Reseptor Adrenergik] Exam pearl: Reseptor Adrenergik :: β1 = terutama “1 heart” + renin. β2 = bronkus dan relaksasi otot polos. β3 = kandung kemih/lemak. α1 = konstriksi. α2 = menurunkan pelepasan norepinefrin.
-- [Parasimpatomimetik Tidak Langsung: Antikolinesterase] Exam pearl: Parasimpatomimetik Tidak Langsung: Antikolinesterase :: Bila pertanyaan menyebut “menghambat asetilkolinesterase”, mekanismenya bukan agonis muskarinik langsung, tetapi meningkatkan ACh endogen di sinaps.
-- [Parasimpatolitik / Antimuskarinik] Pola banding cepat: Parasimpatolitik / Antimuskarinik :: Kolinergik berlebih → basah, banyak sekresi, miosis, bradikardia, bronkospasme. Antimuskarinik → kering, midriasis, takikardia, retensi urin, konstipasi, risiko delirium pada lansia.
+- [Cara Membaca Soal Obat Otonom] Sebutkan contoh pola pada Cara Membaca Soal Obat Otonom. :: • Asma + butuh bronkodilatasi → pikirkan β2 → salbutamol/albuterol
+  • Retensi urin → pikirkan peningkatan aktivitas muskarinik → bethanechol termasuk contoh
+  • Bradikardia → pikirkan blokade muskarinik → atropine termasuk contoh
+  • Overactive bladder → dapat muncul pada kelompok antimuskarinik seperti oxybutynin atau agonis β3 seperti mirabegron
+  • BPH → α-blocker seperti tamsulosin
+  • Syok septik → norepinefrin
+  • Anafilaksis → epinefrin
+- [Gambaran Umum Sistem Saraf Otonom] Apa poin high-yield (pearl) tentang Gambaran Umum Sistem Saraf Otonom? :: Bila stem menggambarkan “fight or flight”, pikirkan dominasi adrenergik/simpatik. Bila menggambarkan “rest and digest”, pikirkan dominasi kolinergik/parasimpatik.
+- [Neurotransmiter: Aturan Utama dan Pengecualian] Apa poin high-yield (pearl) tentang Neurotransmiter: Aturan Utama dan Pengecualian? :: Kalimat hafalan paling aman: “Semua preganglionik = ACh; parasimpatik postganglionik = ACh; simpatik postganglionik = biasanya norepinefrin; kelenjar keringat adalah pengecualian kolinergik.”
+- [Reseptor Adrenergik] Apa poin high-yield (pearl) tentang Reseptor Adrenergik? :: Β1 = terutama “1 heart” + renin. β2 = bronkus dan relaksasi otot polos. β3 = kandung kemih/lemak. α1 = konstriksi. α2 = menurunkan pelepasan norepinefrin.
+- [Parasimpatomimetik Tidak Langsung: Antikolinesterase] Apa poin high-yield (pearl) tentang Parasimpatomimetik Tidak Langsung: Antikolinesterase? :: Bila pertanyaan menyebut “menghambat asetilkolinesterase”, mekanismenya bukan agonis muskarinik langsung, tetapi meningkatkan ACh endogen di sinaps.
+- [Parasimpatolitik / Antimuskarinik] Pola banding cepat: apa isi atau ringkasannya? :: Kolinergik berlebih → basah, banyak sekresi, miosis, bradikardia, bronkospasme. Antimuskarinik → kering, midriasis, takikardia, retensi urin, konstipasi, risiko delirium pada lansia.

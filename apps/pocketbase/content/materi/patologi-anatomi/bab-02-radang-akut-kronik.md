@@ -799,82 +799,83 @@ H. Foreign-body giant cell → nuclei tersebar tidak teratur.
 
 ## Flashcard {kartu}
 
-- [Tanda Kardinal Inflamasi] Dasarnya :: vasodilation → rubor + calor.
-- [Killing of Microbes — ROS] NADPH oxidase :: O₂ → superoxide → H₂O₂.
-- [Killing of Microbes — ROS] Chronic granulomatous disease (CGD) :: defect NADPH oxidase → impaired respiratory burst → recurrent infections terutama catalase-positive organisms.
-- [Morfologi Acute Inflammation] Serous :: cairan tipis, relatif sedikit sel; contoh blister.
-- [Morfologi Acute Inflammation] Fibrinous :: permeability tinggi → fibrinogen keluar → fibrin deposition; contoh fibrinous pericarditis.
-- [Morfologi Acute Inflammation] Suppurative :: pus kaya neutrophils + necrotic debris; abscess adalah localized collection of pus.
-- [Morfologi Acute Inflammation] Ulcer :: defek lokal pada permukaan epitel akibat sloughing jaringan nekrotik/inflamasi.
-- [Eosinophils] Granule protein penting :: major basic protein (MBP), yang toksik bagi parasit tetapi juga dapat merusak epitel host.
-- [Caseating vs Noncaseating Granuloma] Penting :: morfologi granuloma saja tidak selalu cukup menentukan etiologi; clinical context, stain, culture, dan molecular testing dapat diperlukan.
-- [Giant Cells] Jebakan :: Langhans giant cells tidak eksklusif untuk TB.
-- [TB Granuloma — Pattern Recognition] Pattern klasik :: central caseous necrosis → epithelioid macrophages → Langhans-type giant cells → surrounding lymphocytes → fibrosis pada lesi lama.
-- [High-yield] Acute inflammation :: neutrophils + edema/exudate
-- [High-yield] Chronic inflammation :: macrophages/lymphocytes + tissue destruction + fibrosis
-- [High-yield] Stasis :: margination leukocytes
-- [High-yield] Selectins :: rolling
-- [High-yield] Integrins :: firm adhesion
-- [High-yield] C5a, LTB4, IL-8 :: chemotaxis
-- [High-yield] IgG dan C3b :: opsonins
-- [High-yield] NADPH oxidase :: respiratory burst
-- [High-yield] CGD :: defective NADPH oxidase
-- [High-yield] LTB4 :: chemotaxis
-- [High-yield] LTC4/D4/E4 :: bronchoconstriction + permeability
-- [High-yield] C3a/C5a :: anaphylatoxins
-- [High-yield] C3b :: opsonin
-- [High-yield] Bradykinin :: pain + vasodilation + permeability
-- [High-yield] IL-6 :: hepatic acute-phase proteins
-- [High-yield] Abscess :: localized collection of pus
-- [High-yield] Granuloma :: epithelioid macrophages ± giant cells
-- [High-yield] Langhans giant cell :: peripheral horseshoe nuclei
-- [High-yield] ESR/CRP :: inflammatory markers tetapi nonspecific
-- [High-yield] Cara tercepat mengerjakan soal :: identifikasi CELL DOMINAN + MEDIATOR + MORFOLOGI + DURASI
-- [High-yield] ACUTE :: vasodilation + permeability → exudate/stasis → neutrophil recruitment
-- [High-yield] CHRONIC :: macrophage + lymphocyte + tissue destruction + repair/fibrosis
-- [Konsep Besar Inflamasi] Dua pola utama … :: • Acute inflammation → onset cepat, durasi relatif singkat, eksudasi cairan/protein dan dominasi neutrophil
+- [Tanda Kardinal Inflamasi] Pada Tanda Kardinal Inflamasi, apa dasarnya? :: Vasodilation → rubor + calor.
+- [Killing of Microbes — ROS] Apa yang dimaksud dengan NADPH oxidase pada Killing of Microbes — ROS? :: O₂ → superoxide → H₂O₂.
+- [Killing of Microbes — ROS] Jelaskan Chronic granulomatous disease (CGD) dalam konteks Killing of Microbes — ROS. :: Defect NADPH oxidase → impaired respiratory burst → recurrent infections terutama catalase-positive organisms.
+- [Morfologi Acute Inflammation] Apa yang dimaksud dengan Serous pada Morfologi Acute Inflammation? :: Cairan tipis, relatif sedikit sel; contoh blister.
+- [Morfologi Acute Inflammation] Apa yang dimaksud dengan Fibrinous pada Morfologi Acute Inflammation? :: Permeability tinggi → fibrinogen keluar → fibrin deposition; contoh fibrinous pericarditis.
+- [Morfologi Acute Inflammation] Apa yang dimaksud dengan Suppurative pada Morfologi Acute Inflammation? :: Pus kaya neutrophils + necrotic debris; abscess adalah localized collection of pus.
+- [Morfologi Acute Inflammation] Apa yang dimaksud dengan Ulcer pada Morfologi Acute Inflammation? :: Defek lokal pada permukaan epitel akibat sloughing jaringan nekrotik/inflamasi.
+- [Eosinophils] Jelaskan Granule protein penting dalam konteks Eosinophils. :: Major basic protein (MBP), yang toksik bagi parasit tetapi juga dapat merusak epitel host.
+- [TB Granuloma — Pattern Recognition] Apa yang dimaksud dengan Pattern klasik pada TB Granuloma — Pattern Recognition? :: Central caseous necrosis → epithelioid macrophages → Langhans-type giant cells → surrounding lymphocytes → fibrosis pada lesi lama.
+- [Radang Akut & Kronik] Apa yang dimaksud dengan Acute inflammation pada Radang Akut & Kronik? :: Neutrophils + edema/exudate
+- [Radang Akut & Kronik] Apa yang dimaksud dengan Chronic inflammation pada Radang Akut & Kronik? :: Macrophages/lymphocytes + tissue destruction + fibrosis
+- [Radang Akut & Kronik] Apa yang perlu diingat tentang Stasis pada Radang Akut & Kronik? :: Margination leukocytes
+- [Radang Akut & Kronik] Apa yang dimaksud dengan Selectins pada Radang Akut & Kronik? :: Rolling
+- [Radang Akut & Kronik] Apa yang dimaksud dengan Integrins pada Radang Akut & Kronik? :: Firm adhesion
+- [Radang Akut & Kronik] Apa yang dimaksud dengan C5a, LTB4, IL-8 pada Radang Akut & Kronik? :: Chemotaxis
+- [Radang Akut & Kronik] Apa yang dimaksud dengan IgG dan C3b pada Radang Akut & Kronik? :: Opsonins
+- [Radang Akut & Kronik] Apa yang perlu diingat tentang NADPH oxidase pada Radang Akut & Kronik? :: Respiratory burst
+- [Radang Akut & Kronik] Apa yang dimaksud dengan CGD pada Radang Akut & Kronik? :: Defective NADPH oxidase
+- [Radang Akut & Kronik] Apa yang dimaksud dengan LTB4 pada Radang Akut & Kronik? :: Chemotaxis
+- [Radang Akut & Kronik] Apa yang dimaksud dengan LTC4/D4/E4 pada Radang Akut & Kronik? :: Bronchoconstriction + permeability
+- [Radang Akut & Kronik] Apa yang dimaksud dengan C3a/C5a pada Radang Akut & Kronik? :: Anaphylatoxins
+- [Radang Akut & Kronik] Apa yang dimaksud dengan C3b pada Radang Akut & Kronik? :: Opsonin
+- [Radang Akut & Kronik] Apa yang dimaksud dengan Bradykinin pada Radang Akut & Kronik? :: Pain + vasodilation + permeability
+- [Radang Akut & Kronik] Apa yang perlu diingat tentang IL-6 pada Radang Akut & Kronik? :: Hepatic acute-phase proteins
+- [Radang Akut & Kronik] Apa yang dimaksud dengan Abscess pada Radang Akut & Kronik? :: Localized collection of pus
+- [Radang Akut & Kronik] Apa yang dimaksud dengan Granuloma pada Radang Akut & Kronik? :: Epithelioid macrophages ± giant cells
+- [Radang Akut & Kronik] Apa yang dimaksud dengan Langhans giant cell pada Radang Akut & Kronik? :: Peripheral horseshoe nuclei
+- [Radang Akut & Kronik] Apa yang dimaksud dengan ESR/CRP pada Radang Akut & Kronik? :: Inflammatory markers tetapi nonspecific
+- [Radang Akut & Kronik] Apa yang perlu diketahui tentang Cara tercepat mengerjakan soal pada Radang Akut & Kronik? :: Identifikasi CELL DOMINAN + MEDIATOR + MORFOLOGI + DURASI
+- [Radang Akut & Kronik] Apa yang dimaksud dengan ACUTE pada Radang Akut & Kronik? :: Vasodilation + permeability → exudate/stasis → neutrophil recruitment
+- [Radang Akut & Kronik] Apa yang dimaksud dengan CHRONIC pada Radang Akut & Kronik? :: Macrophage + lymphocyte + tissue destruction + repair/fibrosis
+- [Konsep Besar Inflamasi] Sebutkan poin-poin penting tentang Dua pola utama. :: • Acute inflammation → onset cepat, durasi relatif singkat, eksudasi cairan/protein dan dominasi neutrophil
   • Chronic inflammation → berlangsung lebih lama, dominasi macrophage, lymphocyte, plasma cell, disertai tissue destruction dan repair/fibrosis secara bersamaan
-- [Pemicu Inflamasi] Inflamasi dapat dipicu oleh … :: • infection,
-  • tissue necrosis,
-  • foreign bodies,
-  • immune reactions,
-  • trauma dan physical/chemical injury
-- [Perubahan Vaskular — Vasodilation] Mediator utama vasodilation … :: • histamine,
-  • nitric oxide
-- [Neutrophil vs Monocyte/Macrophage] Pada banyak acute bacterial inflammation … :: • neutrophils dominan sekitar 6–24 jam awal,
-  • monocytes/macrophages lebih dominan sekitar 24–48 jam berikutnya
-- [Nets — Neutrophil Extracellular Traps] Tetapi NETs juga dapat berkontribusi pada … :: • endothelial injury,
-  • thrombosis,
-  • autoimmune responses tertentu
-- [Abscess] Abscess biasanya disebabkan pyogenic bacteria dan terdiri atas … :: • pusat necrotic debris + neutrophils,
-  • zona leukocytes,
-  • kemudian vascular dilation dan fibroblast proliferation di tepi
-- [Outcome of Acute Inflammation] Resolution paling mungkin bila … :: • injury singkat,
-  • tissue dapat regenerate,
-  • extracellular matrix relatif utuh,
-  • debris dapat dibersihkan
-- [Macrophage Activation — M1 vs M2] M2 / alternatively activated … :: • dipicu terutama IL-4 dan IL-13,
-  • berperan pada tissue repair,
-  • growth factor production,
-  • fibrosis,
-  • anti-inflammatory functions tertentu
-- [Giant Cells] Langhans giant cell … :: • nuclei tersusun perifer seperti horseshoe/arc
-  • sering dikaitkan dengan granulomatous inflammation seperti TB
-- [Systemic Effects of Inflammation] Acute-phase response mencakup … :: • fever,
-  • leukocytosis,
-  • acute-phase protein elevation,
-  • malaise,
-  • tachycardia,
-  • chills,
-  • anorexia,
-  • somnolence
-- [Transudate vs Exudate] Exam pearl: Transudate vs Exudate :: HEART FAILURE → transudate. BACTERIAL PNEUMONIA → exudate.
-- [Leukocyte Recruitment — Urutan] Mnemonic: Leukocyte Recruitment — Urutan :: ROLL = selectins. STICK = integrins.
-- [Firm Adhesion — Integrins] Exam pearl: Firm Adhesion — Integrins :: INTEGRINS = firm adhesion. Leukocyte adhesion deficiency tipe 1 berkaitan dengan defect integrin CD18 → impaired adhesion dan recurrent bacterial infection.
-- [Transmigration / Diapedesis] Exam pearl: Transmigration / Diapedesis :: PECAM-1 = leukocyte diapedesis.
-- [Chemotaxis] Mnemonic cepat: Chemotaxis :: C5a + LTB4 + IL-8 = panggil neutrophil ke lokasi radang.
-- [Phagocytosis — Tiga Langkah] Exam pearl: Phagocytosis — Tiga Langkah :: IgG + C3b = dua opsonin klasik.
-- [Arachidonic Acid Metabolites] High-yield: Arachidonic Acid Metabolites :: PGE2 → pain + fever. PGI2 → vasodilation + inhibits platelet aggregation. TXA2 → vasoconstriction + platelet aggregation. LTB4 → chemotaxis. LTC4/LTD4/LTE4 → bronchoconstriction + increased vascular permeability. Lipoxins → inhibit neutrophil recruitment; pro-resolution.
-- [Complement System] Mnemonic: Complement System :: C3b = Binds bacteria → opsonin. C5a = Attracts cells → chemotaxis. C5b-9 = punches membrane.
-- [Bradykinin] Exam pearl: Bradykinin :: Pain pada inflamasi terutama berkaitan dengan bradykinin dan PGE2.
-- [Eosinophils] Clue: Eosinophils :: Asthma/allergy atau helminth infection + eosinophil-rich infiltrate.
+- [PAMP, DAMP, dan PRR] Sebutkan poin-poin penting tentang PRR penting. :: • Toll-like receptors (TLR)
+  • NOD-like receptors
+  • Inflammasome-associated sensors
+- [Increased Vascular Permeability] Sebutkan mekanisme penting pada Increased Vascular Permeability. :: • Endothelial contraction pada venules → immediate transient response; klasik dimediasi histamine, bradykinin, leukotrienes
+  • Direct endothelial injury → leakage lebih lama
+  • Leukocyte-mediated endothelial injury
+  • Increased transcytosis
+  • Leakage dari pembuluh baru saat angiogenesis
+- [Chemotaxis] Sebutkan poin-poin penting tentang Chemoattractants penting. :: • Bacterial products
+  • C5a
+  • Leukotriene B4 (LTB4)
+  • Chemokines seperti IL-8/CXCL8
+- [Phagocytosis — Tiga Langkah] Sebutkan poin-poin penting tentang Opsonin penting. :: • IgG
+  • C3b
+  • Collectins seperti mannose-binding lectin
+- [Arachidonic Acid Metabolites] Sebutkan poin-poin penting tentang Cyclooxygenase pathway. :: • Prostaglandins
+  • Thromboxane
+- [Cytokines — TNF dan IL-1] Sebutkan efek sistemik pada Cytokines — TNF dan IL-1. :: • Fever
+  • Acute-phase responses
+  • Leukocyte production
+- [Bradykinin] Sebutkan efek penting pada Bradykinin. :: • Vasodilation
+  • Increased vascular permeability
+  • Pain
+  • Bronchoconstriction
+- [Chronic Inflammation — Definisi] Sebutkan sel dominan pada Chronic Inflammation — Definisi. :: • Macrophages
+  • Lymphocytes
+  • Plasma cells
+- [Macrophage Activation — M1 vs M2] Sebutkan poin-poin penting tentang M2 / alternatively activated. :: • Dipicu terutama IL-4 dan IL-13
+  • Berperan pada tissue repair
+  • Growth factor production
+  • Fibrosis
+  • Anti-inflammatory functions tertentu
+- [Caseating vs Noncaseating Granuloma] Sebutkan poin-poin penting tentang Caseating granuloma. :: • Central caseous necrosis
+  • Klasik pada tuberculosis
+  • Dapat juga terlihat pada sebagian fungal infections
+- [Giant Cells] Sebutkan poin-poin penting tentang Langhans giant cell. :: • Nuclei tersusun perifer seperti horseshoe/arc
+  • Sering dikaitkan dengan granulomatous inflammation seperti TB
+- [Transudate vs Exudate] Apa poin high-yield (pearl) tentang Transudate vs Exudate? :: HEART FAILURE → transudate. BACTERIAL PNEUMONIA → exudate.
+- [Leukocyte Recruitment — Urutan] Bagaimana cara mengingat Leukocyte Recruitment — Urutan? :: ROLL = selectins. STICK = integrins.
+- [Firm Adhesion — Integrins] Apa poin high-yield (pearl) tentang Firm Adhesion — Integrins? :: INTEGRINS = firm adhesion. Leukocyte adhesion deficiency tipe 1 berkaitan dengan defect integrin CD18 → impaired adhesion dan recurrent bacterial infection.
+- [Transmigration / Diapedesis] Apa poin high-yield (pearl) tentang Transmigration / Diapedesis? :: PECAM-1 = leukocyte diapedesis.
+- [Chemotaxis] Bagaimana cara mengingat Chemotaxis? :: C5a + LTB4 + IL-8 = panggil neutrophil ke lokasi radang.
+- [Phagocytosis — Tiga Langkah] Apa poin high-yield (pearl) tentang Phagocytosis — Tiga Langkah? :: IgG + C3b = dua opsonin klasik.
+- [Arachidonic Acid Metabolites] Apa poin high-yield (pearl) tentang Arachidonic Acid Metabolites? :: PGE2 → pain + fever. PGI2 → vasodilation + inhibits platelet aggregation. TXA2 → vasoconstriction + platelet aggregation. LTB4 → chemotaxis. LTC4/LTD4/LTE4 → bronchoconstriction + increased vascular permeability. Lipoxins → inhibit neutrophil recruitment; pro-resolution.
+- [Complement System] Bagaimana cara mengingat Complement System? :: C3b = Binds bacteria → opsonin. C5a = Attracts cells → chemotaxis. C5b-9 = punches membrane.
+- [Bradykinin] Apa poin high-yield (pearl) tentang Bradykinin? :: Pain pada inflamasi terutama berkaitan dengan bradykinin dan PGE2.
+- [Eosinophils] Apa clue praktikum untuk Eosinophils? :: Asthma/allergy atau helminth infection + eosinophil-rich infiltrate.

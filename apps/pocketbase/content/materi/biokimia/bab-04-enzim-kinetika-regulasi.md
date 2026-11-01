@@ -282,51 +282,41 @@ Ketika menemukan obat atau toksin yang menargetkan enzim, tanyakan tiga hal: (1)
 
 ## Flashcard {kartu}
 
-- [Konsep Dasar Enzim] Skema umum :: E + S ⇌ ES → E + P
-- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Apoenzyme :: bagian protein enzim yang belum aktif tanpa komponen tambahannya.
-- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Cofactor :: komponen nonprotein yang diperlukan untuk aktivitas enzim; dapat berupa ion logam atau molekul organik.
-- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Coenzyme :: cofactor organik, sering berasal dari vitamin.
-- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Prosthetic group :: cofactor yang terikat sangat kuat atau permanen pada enzim.
-- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Holoenzyme :: kompleks apoenzyme + cofactor yang aktif secara katalitik.
-- [Korelasi Farmakologi & Toksikologi] Statin :: menghambat HMG-CoA reductase secara kompetitif dan menurunkan sintesis kolesterol.
-- [Korelasi Farmakologi & Toksikologi] Methotrexate :: menghambat dihydrofolate reductase dan mengganggu regenerasi tetrahydrofolate yang diperlukan untuk sintesis nukleotida.
-- [Korelasi Farmakologi & Toksikologi] Organofosfat :: menghambat acetylcholinesterase secara sangat kuat/irreversible melalui fosforilasi enzim, menyebabkan akumulasi asetilkolin.
-- [Korelasi Farmakologi & Toksikologi] Aspirin :: mengasetilasi cyclooxygenase (COX) secara irreversible; pada trombosit efek berlangsung sepanjang umur trombosit karena trombosit tidak mampu mensintesis COX baru secara bermakna.
-- [Enzim Allosterik dan Kooperativitas] T (tense) state :: afinitas terhadap substrat lebih rendah.
-- [Enzim Allosterik dan Kooperativitas] R (relaxed) state :: afinitas terhadap substrat lebih tinggi.
-- [C. Covalent modification] Contoh penting :: metabolisme glikogen menggunakan regulasi fosforilasi yang resiprokal. Fosforilasi cenderung mengaktifkan glycogen phosphorylase dan menghambat glycogen synthase, sehingga sintesis dan pemecahan glikogen tidak aktif maksimal secara bersamaan.
-- [Isoenzyme dan Enzim sebagai Penanda Klinis] PENTING :: peningkatan aktivitas enzim dalam darah tidak selalu berarti enzim tersebut menyebabkan penyakit; sering kali enzim hanya menjadi marker adanya kerusakan atau perubahan jaringan.
-- [High-yield] Competitive :: Km ↑    | Vmax tetap | dapat dilawan dengan ↑ [S]
-- [High-yield] Pure noncompetitive :: Km tetap | Vmax ↓   | tidak dipulihkan oleh ↑ [S]
-- [High-yield] Uncompetitive :: Km ↓    | Vmax ↓     | inhibitor mengikat ES
-- [High-yield] Irreversible :: enzim aktif ↓ secara permanen/nyaris permanen
-- [High-yield] Salah :: “Enzim membuat ΔG menjadi lebih negatif.”
-- [High-yield] Salah :: “Competitive inhibitor menurunkan Vmax.”
-- [High-yield] Benar :: pada inhibisi kompetitif ideal, Vmax tetap dan apparent Km meningkat
-- [High-yield] Salah :: “Semua inhibitor yang mengikat di luar active site adalah noncompetitive.”
-- [High-yield] Salah :: “Km selalu merupakan ukuran langsung afinitas.”
-- [High-yield] Benar :: hubungan tersebut hanya dapat digunakan secara sederhana pada kondisi/mekanisme tertentu
-- [High-yield] Benar :: menaikkan konsentrasi enzim menaikkan Vmax, sedangkan Km tidak berubah hanya karena [E] berubah
-- [High-yield] Salah :: “Semua enzim mengikuti kurva Michaelis–Menten.”
-- [High-yield] Benar :: banyak enzim allosterik menunjukkan kinetika sigmoidal dan tidak mengikuti model Michaelis–Menten klasik
-- [High-yield] Benar :: proteolytic activation umumnya irreversible
-- [High-yield] Vmax :: kapasitas maksimal sistem enzim pada kondisi tertentu
-- [High-yield] kcat/Km :: ukuran efisiensi katalitik
-- [High-yield] Competitive :: K naik, V tetap
-- [High-yield] Pure noncompetitive :: K tetap, V turun
-- [High-yield] Mixed :: V turun, K bisa naik atau turun
-- [High-yield] Allosteric :: cepat dan reversibel
-- [High-yield] Zymogen :: aktivasi proteolitik, biasanya irreversible
-- [High-yield] Feedback inhibition :: produk akhir menghambat tahap awal
-- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Contoh coenzyme penting … :: • NAD⁺/NADH — berasal dari niasin (vitamin B3), berperan pada reaksi oksidasi-reduksi
+- [Konsep Dasar Enzim] Apa yang dimaksud dengan Skema umum pada Konsep Dasar Enzim? :: E + S ⇌ ES → E + P
+- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Apoenzyme. :: Bagian protein enzim yang belum aktif tanpa komponen tambahannya.
+- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Cofactor. :: Komponen nonprotein yang diperlukan untuk aktivitas enzim; dapat berupa ion logam atau molekul organik.
+- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Coenzyme. :: Cofactor organik, sering berasal dari vitamin.
+- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Apa yang dimaksud dengan Prosthetic group pada Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme? :: Cofactor yang terikat sangat kuat atau permanen pada enzim.
+- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Holoenzyme. :: Kompleks apoenzyme + cofactor yang aktif secara katalitik.
+- [Korelasi Farmakologi & Toksikologi] Apa yang dimaksud dengan Statin pada Korelasi Farmakologi & Toksikologi? :: Menghambat HMG-CoA reductase secara kompetitif dan menurunkan sintesis kolesterol.
+- [Korelasi Farmakologi & Toksikologi] Apa yang dimaksud dengan Methotrexate pada Korelasi Farmakologi & Toksikologi? :: Menghambat dihydrofolate reductase dan mengganggu regenerasi tetrahydrofolate yang diperlukan untuk sintesis nukleotida.
+- [Korelasi Farmakologi & Toksikologi] Apa yang dimaksud dengan Organofosfat pada Korelasi Farmakologi & Toksikologi? :: Menghambat acetylcholinesterase secara sangat kuat/irreversible melalui fosforilasi enzim, menyebabkan akumulasi asetilkolin.
+- [Korelasi Farmakologi & Toksikologi] Apa yang dimaksud dengan Aspirin pada Korelasi Farmakologi & Toksikologi? :: Mengasetilasi cyclooxygenase (COX) secara irreversible; pada trombosit efek berlangsung sepanjang umur trombosit karena trombosit tidak mampu mensintesis COX baru secara bermakna.
+- [Enzim Allosterik dan Kooperativitas] Jelaskan T (tense) state dalam konteks Enzim Allosterik dan Kooperativitas. :: Afinitas terhadap substrat lebih rendah.
+- [Enzim Allosterik dan Kooperativitas] Jelaskan R (relaxed) state dalam konteks Enzim Allosterik dan Kooperativitas. :: Afinitas terhadap substrat lebih tinggi.
+- [Covalent modification] Apa yang dimaksud dengan Contoh penting pada Covalent modification (Regulasi Aktivitas Enzim)? :: Metabolisme glikogen menggunakan regulasi fosforilasi yang resiprokal. Fosforilasi cenderung mengaktifkan glycogen phosphorylase dan menghambat glycogen synthase, sehingga sintesis dan pemecahan glikogen tidak aktif maksimal secara bersamaan.
+- [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Competitive pada Enzim: Kinetika & Regulasi? :: Km ↑    | Vmax tetap | dapat dilawan dengan ↑ [S]
+- [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Pure noncompetitive pada Enzim: Kinetika & Regulasi? :: Km tetap | Vmax ↓   | tidak dipulihkan oleh ↑ [S]
+- [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Uncompetitive pada Enzim: Kinetika & Regulasi? :: Km ↓    | Vmax ↓     | inhibitor mengikat ES
+- [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Irreversible pada Enzim: Kinetika & Regulasi? :: Enzim aktif ↓ secara permanen/nyaris permanen
+- [Enzim: Kinetika & Regulasi] Apa yang perlu diketahui tentang Salah pada Enzim: Kinetika & Regulasi? :: “Enzim membuat ΔG menjadi lebih negatif.”
+- [Enzim: Kinetika & Regulasi] Apa yang perlu diketahui tentang Benar pada Enzim: Kinetika & Regulasi? :: Pada inhibisi kompetitif ideal, Vmax tetap dan apparent Km meningkat
+- [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan Vmax pada Enzim: Kinetika & Regulasi? :: Kapasitas maksimal sistem enzim pada kondisi tertentu
+- [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan kcat/Km pada Enzim: Kinetika & Regulasi? :: Ukuran efisiensi katalitik
+- [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Mixed pada Enzim: Kinetika & Regulasi? :: V turun, K bisa naik atau turun
+- [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan Allosteric pada Enzim: Kinetika & Regulasi? :: Cepat dan reversibel
+- [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan Zymogen pada Enzim: Kinetika & Regulasi? :: Aktivasi proteolitik, biasanya irreversible
+- [Enzim: Kinetika & Regulasi] Apa yang dimaksud dengan Feedback inhibition pada Enzim: Kinetika & Regulasi? :: Produk akhir menghambat tahap awal
+- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Sebutkan contoh coenzyme penting pada Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme. :: • NAD⁺/NADH — berasal dari niasin (vitamin B3), berperan pada reaksi oksidasi-reduksi
   • FAD/FADH₂ — berasal dari riboflavin (vitamin B2), membawa elektron/hidrogen
   • Coenzyme A — berasal dari asam pantotenat (vitamin B5), membawa gugus asil
   • TPP — berasal dari tiamin (vitamin B1), penting pada dekarboksilasi oksidatif
   • PLP — berasal dari vitamin B6, penting pada metabolisme asam amino
-- [Kinetika Michaelis–Menten] Pengaruh konsentrasi enzim … :: • Jika jumlah enzim dinaikkan, Vmax meningkat secara proporsional selama substrat mencukupi
+- [Kinetika Michaelis–Menten] Sebutkan interpretasi kurva pada Kinetika Michaelis–Menten. :: • Saat [S] ≪ Km, penambahan substrat meningkatkan laju hampir secara linear; reaksi mendekati first-order terhadap substrat
+  • Saat [S] = Km, v = ½ Vmax
+  • Saat [S] ≫ Km, enzim mendekati saturasi; penambahan substrat hanya sedikit menaikkan laju dan reaksi mendekati zero-order terhadap substrat
+- [Kinetika Michaelis–Menten] Sebutkan pengaruh konsentrasi enzim pada Kinetika Michaelis–Menten. :: • Jika jumlah enzim dinaikkan, Vmax meningkat secara proporsional selama substrat mencukupi
   • Km pada prinsipnya tidak berubah hanya karena konsentrasi enzim dinaikkan
-- [Enzim Allosterik dan Kooperativitas] Model konseptual T dan R … :: • T (tense) state: afinitas terhadap substrat lebih rendah
+- [Enzim Allosterik dan Kooperativitas] Sebutkan poin-poin penting tentang Model konseptual T dan R. :: • T (tense) state: afinitas terhadap substrat lebih rendah
   • R (relaxed) state: afinitas terhadap substrat lebih tinggi
-- [Isoenzyme dan Enzim sebagai Penanda Klinis] Enzim plasma juga dapat meningkat akibat kerusakan sel atau obstruksi … :: • ALT dan AST sering digunakan dalam evaluasi cedera hepatoseluler
-  • ALP dan GGT membantu menilai pola kolestasis, meskipun interpretasi harus selalu mempertimbangkan sumber jaringan dan konteks klinis
-- [Konsep Dasar Enzim] High-yield: Konsep Dasar Enzim :: Enzim menurunkan Ea, bukan ΔG. Enzim mempercepat reaksi maju dan balik. Enzim tidak mengubah Keq. Enzim tidak dikonsumsi secara permanen selama reaksi.
+- [Konsep Dasar Enzim] Apa poin high-yield (pearl) tentang Konsep Dasar Enzim? :: Enzim menurunkan Ea, bukan ΔG. Enzim mempercepat reaksi maju dan balik. Enzim tidak mengubah Keq. Enzim tidak dikonsumsi secara permanen selama reaksi.

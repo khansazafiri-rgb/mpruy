@@ -140,26 +140,29 @@ Kortisol dan GH lebih lambat dan penting dalam fasting/stress yang lebih panjang
 
 ## Flashcard {kartu}
 
-- [Sintesis Insulin] Insulin dibuat sebagai :: preproinsulin → proinsulin → insulin + C-peptide.
-- [Sintesis Insulin] Clinical clue :: C-peptide membantu menilai endogenous insulin production karena insulin eksogen tidak mengandung C-peptide.
-- [Sekresi Insulin: Mekanisme KATP] High-yield chain :: glucose ↑ → ATP ↑ → KATP close → depolarization → Ca²⁺ influx → insulin release.
-- [Fed State vs Fasting State] Fed state :: insulin dominan → uptake glukosa, glycogenesis, lipogenesis, protein synthesis.
-- [Fed State vs Fasting State] Fasting :: insulin turun, glucagon naik → hepatic glycogenolysis, gluconeogenesis, lipolysis, dan kemudian ketogenesis.
-- [Master Flow: Glukosa] Fed :: glucose ↑ → insulin ↑ → storage + uptake ↑ → blood glucose turun.
-- [Master Flow: Glukosa] Fasting :: glucose ↓ → glucagon ↑ → hepatic glucose output ↑.
-- [Master Flow: Glukosa] Hypoglycemia :: glucagon + epinephrine bekerja cepat; cortisol + GH membantu respons lebih lambat.
-- [High-yield] Counter-regulatory hormones utama :: glucagon, epinephrine, cortisol, dan GH
-- [Pankreas Endokrin] Islets of Langerhans … :: • β cell → insulin
-  • α cell → glucagon
-  • δ cell → somatostatin
+- [Sintesis Insulin] Apa yang dimaksud dengan Clinical clue pada Sintesis Insulin? :: C-peptide membantu menilai endogenous insulin production karena insulin eksogen tidak mengandung C-peptide.
+- [Fed State vs Fasting State] Jelaskan Fed state. :: Insulin dominan → uptake glukosa, glycogenesis, lipogenesis, protein synthesis.
+- [Fed State vs Fasting State] Jelaskan Fasting. :: Insulin turun, glucagon naik → hepatic glycogenolysis, gluconeogenesis, lipolysis, dan kemudian ketogenesis.
+- [Master Flow: Glukosa] Apa yang dimaksud dengan Fed pada Master Flow: Glukosa? :: Glucose ↑ → insulin ↑ → storage + uptake ↑ → blood glucose turun.
+- [Master Flow: Glukosa] Apa yang dimaksud dengan Fasting pada Master Flow: Glukosa? :: Glucose ↓ → glucagon ↑ → hepatic glucose output ↑.
+- [Master Flow: Glukosa] Apa yang dimaksud dengan Hypoglycemia pada Master Flow: Glukosa? :: Glucagon + epinephrine bekerja cepat; cortisol + GH membantu respons lebih lambat.
+- [Fisiologi Pankreas Endokrin & Regulasi Glukosa] Apa yang perlu diketahui tentang Counter-regulatory hormones utama? :: Glucagon, epinephrine, cortisol, dan GH
+- [Pankreas Endokrin] Sebutkan poin-poin penting tentang Islets of Langerhans. :: • Β cell → insulin
+  • Α cell → glucagon
+  • Δ cell → somatostatin
   • PP/F cell → pancreatic polypeptide
-- [Glukagon] Efek utama di hati … :: • ↑ glycogenolysis
+- [Faktor yang Meningkatkan Insulin] Sebutkan poin-poin penting tentang Stimulus insulin. :: • Peningkatan glukosa darah
+  • Amino acids tertentu
+  • Incretin GLP-1 dan GIP setelah makan
+  • Parasympathetic activity
+  • Beberapa hormon gastrointestinal
+- [Glukagon] Sebutkan efek utama di hati pada Glukagon. :: • ↑ glycogenolysis
   • ↑ gluconeogenesis
   • ↑ ketogenesis
-- [Counter-Regulatory Hormones] Hormon yang melawan penurunan glukosa … :: • glucagon
-  • epinephrine
-  • cortisol
+- [Counter-Regulatory Hormones] Sebutkan poin-poin penting tentang Hormon yang melawan penurunan glukosa. :: • Glucagon
+  • Epinephrine
+  • Cortisol
   • GH
-- [Efek Insulin pada Jaringan] Trap: Efek Insulin pada Jaringan :: Hepatocyte glucose uptake menggunakan GLUT2, bukan GLUT4.
-- [Glukagon] High-yield: Glukagon :: Skeletal muscle tidak menjadi target utama glukagon untuk glycogenolysis karena tidak memiliki respons glukagon yang bermakna seperti hati.
-- [Counter-Regulatory Hormones] High-yield: Counter-Regulatory Hormones :: Respons hipoglikemia adalah integrasi multi-hormon, bukan glukagon saja.
+- [Efek Insulin pada Jaringan] Apa jebakan yang sering muncul pada soal tentang Efek Insulin pada Jaringan? :: Hepatocyte glucose uptake menggunakan GLUT2, bukan GLUT4.
+- [Glukagon] Apa poin high-yield (pearl) tentang Glukagon? :: Skeletal muscle tidak menjadi target utama glukagon untuk glycogenolysis karena tidak memiliki respons glukagon yang bermakna seperti hati.
+- [Counter-Regulatory Hormones] Apa poin high-yield (pearl) tentang Counter-Regulatory Hormones? :: Respons hipoglikemia adalah integrasi multi-hormon, bukan glukagon saja.

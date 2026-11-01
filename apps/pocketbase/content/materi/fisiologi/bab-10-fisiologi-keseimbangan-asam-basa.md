@@ -320,36 +320,43 @@ Acid/base disturbance → chemical buffer segera → paru mengubah PaCO₂ dalam
 
 ## Flashcard {kartu}
 
-- [Definisi Asam dan Basa] Menurut Brønsted-Lowry :: asam = proton donor.
-- [Henderson-Hasselbalch] Untuk sistem bicarbonate :: pH ≈ 6.1 + log(HCO₃⁻ / (0.03 × PaCO₂)).
-- [Renal Compensation] Pada respiratory acidosis kronik :: ginjal meningkatkan H⁺ secretion dan HCO₃⁻ reabsorption/generation.
-- [Renal Compensation] Pada respiratory alkalosis kronik :: ginjal meningkatkan kehilangan HCO₃⁻.
-- [Anion Gap] Anion gap :: AG = Na⁺ − (Cl⁻ + HCO₃⁻).
-- [Anion Gap] High AG :: ada unmeasured anions meningkat.
-- [Anion Gap] Normal AG :: sering akibat kehilangan HCO₃⁻ dengan compensatory Cl⁻ retention.
-- [Winter’s Formula] Untuk metabolic acidosis :: expected PaCO₂ ≈ 1.5 × HCO₃⁻ + 8 ± 2.
-- [Pendekatan ABG Langkah demi Langkah] Langkah 3 :: nilai apakah kompensasi sesuai.
-- [Pendekatan ABG Langkah demi Langkah] Langkah 4 :: bila metabolic acidosis → hitung anion gap.
-- [Pendekatan ABG Langkah demi Langkah] Langkah 5 :: bila perlu cari mixed disorder.
-- [Shortcut Arah PaCO₂ dan HCO₃⁻] Respiratory :: pH dan PaCO₂ bergerak berlawanan arah sebagai perubahan primer.
-- [Shortcut Arah PaCO₂ dan HCO₃⁻] Metabolic :: pH dan HCO₃⁻ bergerak searah sebagai perubahan primer.
-- [Clinical Pattern: Hypoventilation] Hypoventilation :: alveolar ventilation ↓ → PaCO₂ ↑ → respiratory acidosis.
-- [Clinical Pattern: Hyperventilation] Hyperventilation :: alveolar ventilation ↑ → PaCO₂ ↓ → respiratory alkalosis.
-- [Clinical Pattern: Pulmonary Embolism] Pulmonary embolism :: perfusion pada sebagian unit ↓ → V/Q tinggi / dead-space effect.
-- [High-yield] Inspirasi :: diaphragm contract → Pip makin negatif → Palv turun → udara masuk
-- [High-yield] Ekspirasi tenang :: elastic recoil → Palv naik → udara keluar
-- [High-yield] V̇E :: TV × RR
-- [High-yield] V̇A :: (TV − VD) × RR
-- [High-yield] Obstruktif :: FEV₁/FVC ↓
-- [High-yield] Restriktif :: volumes ↓, rasio biasanya normal/↑
-- [High-yield] V/Q rendah :: shunt-like
-- [High-yield] V/Q tinggi :: dead-space-like
-- [High-yield] Respiratory acidosis :: PaCO₂ ↑
-- [High-yield] Respiratory alkalosis :: PaCO₂ ↓
-- [High-yield] Metabolic acidosis :: HCO₃⁻ ↓
-- [High-yield] Metabolic alkalosis :: HCO₃⁻ ↑
-- [High-yield] ABG :: pH → PaCO₂/HCO₃⁻ → compensation → anion gap → mixed disorder
-- [Metabolic Acidosis] HCO₃⁻ turun akibat … :: • penambahan asam
-  • kehilangan bicarbonate
-  • gangguan renal acid excretion
-- [Shortcut Arah PaCO₂ dan HCO₃⁻] Mnemonic: Shortcut Arah PaCO₂ dan HCO₃⁻ :: ROME = Respiratory Opposite, Metabolic Equal.
+- [Definisi Asam dan Basa] Apa yang dimaksud dengan Menurut Brønsted-Lowry pada Definisi Asam dan Basa? :: Asam = proton donor.
+- [Anion Gap] Jelaskan Anion gap. :: AG = Na⁺ − (Cl⁻ + HCO₃⁻).
+- [Anion Gap] Apa yang dimaksud dengan High AG pada Anion Gap? :: Ada unmeasured anions meningkat.
+- [Anion Gap] Apa yang dimaksud dengan Normal AG pada Anion Gap? :: Sering akibat kehilangan HCO₃⁻ dengan compensatory Cl⁻ retention.
+- [Pendekatan ABG Langkah demi Langkah] Pada Pendekatan ABG Langkah demi Langkah, apa langkah 3nya? :: Nilai apakah kompensasi sesuai.
+- [Pendekatan ABG Langkah demi Langkah] Pada Pendekatan ABG Langkah demi Langkah, apa langkah 4nya? :: Bila metabolic acidosis → hitung anion gap.
+- [Pendekatan ABG Langkah demi Langkah] Pada Pendekatan ABG Langkah demi Langkah, apa langkah 5nya? :: Bila perlu cari mixed disorder.
+- [Shortcut Arah PaCO₂ dan HCO₃⁻] Apa yang dimaksud dengan Respiratory pada Shortcut Arah PaCO₂ dan HCO₃⁻? :: PH dan PaCO₂ bergerak berlawanan arah sebagai perubahan primer.
+- [Shortcut Arah PaCO₂ dan HCO₃⁻] Apa yang dimaksud dengan Metabolic pada Shortcut Arah PaCO₂ dan HCO₃⁻? :: PH dan HCO₃⁻ bergerak searah sebagai perubahan primer.
+- [Clinical Pattern: Hypoventilation] Jelaskan Hypoventilation. :: Alveolar ventilation ↓ → PaCO₂ ↑ → respiratory acidosis.
+- [Clinical Pattern: Hyperventilation] Jelaskan Hyperventilation. :: Alveolar ventilation ↑ → PaCO₂ ↓ → respiratory alkalosis.
+- [Clinical Pattern: Pulmonary Embolism] Jelaskan Pulmonary embolism. :: Perfusion pada sebagian unit ↓ → V/Q tinggi / dead-space effect.
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Inspirasi pada Fisiologi Keseimbangan Asam-Basa? :: Diaphragm contract → Pip makin negatif → Palv turun → udara masuk
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Ekspirasi tenang pada Fisiologi Keseimbangan Asam-Basa? :: Elastic recoil → Palv naik → udara keluar
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang dimaksud dengan V̇E pada Fisiologi Keseimbangan Asam-Basa? :: TV × RR
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang dimaksud dengan V̇A pada Fisiologi Keseimbangan Asam-Basa? :: (TV − VD) × RR
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diingat tentang Obstruktif pada Fisiologi Keseimbangan Asam-Basa? :: FEV₁/FVC ↓
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diingat tentang Restriktif pada Fisiologi Keseimbangan Asam-Basa? :: Volumes ↓, rasio biasanya normal/↑
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diingat tentang V/Q rendah pada Fisiologi Keseimbangan Asam-Basa? :: Shunt-like
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diingat tentang V/Q tinggi pada Fisiologi Keseimbangan Asam-Basa? :: Dead-space-like
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Respiratory acidosis pada Fisiologi Keseimbangan Asam-Basa? :: PaCO₂ ↑
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Respiratory alkalosis pada Fisiologi Keseimbangan Asam-Basa? :: PaCO₂ ↓
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Metabolic acidosis pada Fisiologi Keseimbangan Asam-Basa? :: HCO₃⁻ ↓
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Metabolic alkalosis pada Fisiologi Keseimbangan Asam-Basa? :: HCO₃⁻ ↑
+- [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang ABG pada Fisiologi Keseimbangan Asam-Basa? :: PH → PaCO₂/HCO₃⁻ → compensation → anion gap → mixed disorder
+- [Sistem Buffer] Sebutkan poin-poin penting tentang Buffer utama. :: • Bicarbonate
+  • Protein/hemoglobin
+  • Phosphate
+  • Buffer tulang pada konteks kronik
+- [Tiga Lapis Regulasi pH] Sebutkan urutan atau langkah pada Tiga Lapis Regulasi pH? :: • Chemical buffers → detik
+  • Respiratory compensation → menit
+  • Renal compensation → jam hingga hari
+- [Metabolic Acidosis] Sebutkan poin-poin penting tentang HCO₃⁻ turun akibat. :: • Penambahan asam
+  • Kehilangan bicarbonate
+  • Gangguan renal acid excretion
+- [High Anion Gap Metabolic Acidosis] Sebutkan contoh penting pada High Anion Gap Metabolic Acidosis. :: • Lactic acidosis
+  • Ketoacidosis
+  • Renal failure/uremia
+  • Toxins tertentu
+- [Shortcut Arah PaCO₂ dan HCO₃⁻] Bagaimana cara mengingat Shortcut Arah PaCO₂ dan HCO₃⁻? :: ROME = Respiratory Opposite, Metabolic Equal.

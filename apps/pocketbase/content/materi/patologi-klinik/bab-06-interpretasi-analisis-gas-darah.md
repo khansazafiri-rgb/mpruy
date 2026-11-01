@@ -480,46 +480,46 @@ PaO₂ 90 pada room air berbeda maknanya dengan PaO₂ 90 pada FiO₂ 0.80.
 
 ## Flashcard {kartu}
 
-- [Parameter Utama pada ABG] pH :: sekitar 7.35–7.45.
-- [Parameter Utama pada ABG] PaCO₂ :: sekitar 35–45 mmHg.
-- [Parameter Utama pada ABG] HCO₃⁻ :: sekitar 22–26 mEq/L.
-- [Parameter Utama pada ABG] PaO₂ :: sangat dipengaruhi usia, FiO₂, ketinggian, dan kondisi paru.
-- [Parameter Utama pada ABG] SaO₂ :: saturasi hemoglobin oleh oksigen.
-- [Parameter Utama pada ABG] Base excess/base deficit :: membantu menggambarkan komponen metabolik.
-- [Contoh Winter’s Formula] ABG :: pH 7.20, HCO₃⁻ 12 mEq/L, PaCO₂ 26 mmHg.
-- [Metabolic Acidosis — Anion Gap] Rumus tanpa kalium :: AG = Na⁺ − (Cl⁻ + HCO₃⁻).
-- [Penyebab HAGMA — GOLD MARK] G — Glycols :: ethylene glycol, propylene glycol
-- [Penyebab HAGMA — GOLD MARK] O — Oxoproline :: 5-oxoproline/pyroglutamic acid
-- [Lactic Acidosis] Penyebab penting :: shock/hypoperfusion, sepsis, hypoxemia berat, kejang, iskemia jaringan, dan beberapa obat/toksin. Interpretasi laktat harus mempertimbangkan perfusi, fungsi hati, obat, waktu pengambilan, dan tren.
-- [Penyebab NAGMA] Penyebab penting :: diare, renal tubular acidosis, large-volume normal saline, acetazolamide, diversi urin tertentu, dan fase tertentu gangguan ginjal.
-- [Metabolic Alkalosis — Penyebab Utama] Penyebab :: muntah/NG suction, diuretik, kontraksi volume, mineralocorticoid excess, hypokalemia, alkali load tertentu, dan post-hypercapnic alkalosis.
-- [Mixed Acid–Base Disorder] Petunjuk :: kompensasi tidak sesuai rumus, pH normal tetapi PaCO₂/HCO₃⁻ sangat abnormal, delta ratio abnormal, atau konteks klinis mendukung lebih dari satu proses.
-- [Oxyhemoglobin Dissociation Curve] Shift right :: acidosis, CO₂ tinggi, suhu tinggi, 2,3-BPG tinggi → Hb lebih mudah melepas O₂.
-- [Oxyhemoglobin Dissociation Curve] Shift left :: alkalosis, CO₂ rendah, suhu rendah, fetal Hb, carbon monoxide → afinitas Hb meningkat.
-- [Metabolic Acidosis pada DKA] DKA klasik :: HAGMA, HCO₃⁻ rendah, ketone/beta-hydroxybutyrate meningkat, glukosa biasanya meningkat. Setelah terapi saline, NAGMA hyperchloremic dapat muncul sementara.
-- [High-yield] Acidemia + PaCO₂ ↑ :: respiratory acidosis
-- [High-yield] Acidemia + HCO₃⁻ ↓ :: metabolic acidosis
-- [High-yield] Alkalemia + PaCO₂ ↓ :: respiratory alkalosis
-- [High-yield] Alkalemia + HCO₃⁻ ↑ :: metabolic alkalosis
-- [High-yield] Winter: expected PaCO₂ :: 1.5 × HCO₃⁻ + 8 ±2
-- [High-yield] PaCO₂ di atas Winter expected :: additional respiratory acidosis
-- [High-yield] PaCO₂ di bawah Winter expected :: additional respiratory alkalosis
-- [High-yield] Acute respiratory acidosis :: HCO₃⁻ ↑ ~1 per PaCO₂ +10
-- [High-yield] Chronic respiratory acidosis :: HCO₃⁻ ↑ ~3.5–4 per +10
-- [High-yield] Acute respiratory alkalosis :: HCO₃⁻ ↓ ~2 per PaCO₂ −10
-- [High-yield] Chronic respiratory alkalosis :: HCO₃⁻ ↓ ~4–5 per −10
-- [High-yield] GOLD MARK :: penyebab penting HAGMA
-- [High-yield] Lactic acidosis dan DKA :: HAGMA penting
-- [High-yield] RTA :: penyebab renal NAGMA
-- [High-yield] PE sering :: respiratory alkalosis + hypoxemia
-- [High-yield] Severe asthma dengan PaCO₂ meningkat :: tanda berbahaya
-- [High-yield] P/F ratio :: PaO₂/FiO₂
-- [High-yield] pH normal + PaCO₂/HCO₃⁻ abnormal :: pikirkan kompensasi atau mixed disorder
-- [High-yield] Analisis acid–base dan oxygenation :: dua langkah berbeda
-- [High-yield] Jika metabolic acidosis :: hitung AG
-- [High-yield] Jika HAGMA :: pertimbangkan delta ratio
-- [High-yield] Cari penyebab :: lactate, ketone, renal failure, toxin, GI/renal HCO₃ loss
-- [Tujuan Interpretasi Gas Darah] Urutan yang aman … :: • Pastikan jenis sampel dan kualitas spesimen
+- [Parameter Utama pada ABG] Apa yang dimaksud dengan pH pada Parameter Utama pada ABG? :: Sekitar 7.35–7.45.
+- [Parameter Utama pada ABG] Apa yang dimaksud dengan PaCO₂ pada Parameter Utama pada ABG? :: Sekitar 35–45 mmHg.
+- [Parameter Utama pada ABG] Apa yang dimaksud dengan HCO₃⁻ pada Parameter Utama pada ABG? :: Sekitar 22–26 mEq/L.
+- [Parameter Utama pada ABG] Apa yang dimaksud dengan PaO₂ pada Parameter Utama pada ABG? :: Sangat dipengaruhi usia, FiO₂, ketinggian, dan kondisi paru.
+- [Parameter Utama pada ABG] Apa yang dimaksud dengan SaO₂ pada Parameter Utama pada ABG? :: Saturasi hemoglobin oleh oksigen.
+- [Parameter Utama pada ABG] Jelaskan Base excess/base deficit dalam konteks Parameter Utama pada ABG. :: Membantu menggambarkan komponen metabolik.
+- [Contoh Winter’s Formula] Apa yang dimaksud dengan ABG pada Contoh Winter’s Formula? :: PH 7.20, HCO₃⁻ 12 mEq/L, PaCO₂ 26 mmHg.
+- [Metabolic Acidosis — Anion Gap] Jelaskan Rumus tanpa kalium dalam konteks Metabolic Acidosis — Anion Gap. :: AG = Na⁺ − (Cl⁻ + HCO₃⁻).
+- [Penyebab HAGMA — GOLD MARK] Jelaskan G — Glycols dalam konteks Penyebab HAGMA — GOLD MARK. :: Ethylene glycol, propylene glycol
+- [Penyebab HAGMA — GOLD MARK] Jelaskan O — Oxoproline dalam konteks Penyebab HAGMA — GOLD MARK. :: 5-oxoproline/pyroglutamic acid
+- [Lactic Acidosis] Pada Lactic Acidosis, apa penyebab pentingnya? :: Shock/hypoperfusion, sepsis, hypoxemia berat, kejang, iskemia jaringan, dan beberapa obat/toksin. Interpretasi laktat harus mempertimbangkan perfusi, fungsi hati, obat, waktu pengambilan, dan tren.
+- [Penyebab NAGMA] Pada Penyebab NAGMA, apa penyebab pentingnya? :: Diare, renal tubular acidosis, large-volume normal saline, acetazolamide, diversi urin tertentu, dan fase tertentu gangguan ginjal.
+- [Metabolic Alkalosis — Penyebab Utama] Apa penyebabnya? :: Muntah/NG suction, diuretik, kontraksi volume, mineralocorticoid excess, hypokalemia, alkali load tertentu, dan post-hypercapnic alkalosis.
+- [Mixed Acid–Base Disorder] Apa yang dimaksud dengan Petunjuk pada Mixed Acid–Base Disorder? :: Kompensasi tidak sesuai rumus, pH normal tetapi PaCO₂/HCO₃⁻ sangat abnormal, delta ratio abnormal, atau konteks klinis mendukung lebih dari satu proses.
+- [Oxyhemoglobin Dissociation Curve] Apa yang dimaksud dengan Shift right pada Oxyhemoglobin Dissociation Curve? :: Acidosis, CO₂ tinggi, suhu tinggi, 2,3-BPG tinggi → Hb lebih mudah melepas O₂.
+- [Oxyhemoglobin Dissociation Curve] Apa yang dimaksud dengan Shift left pada Oxyhemoglobin Dissociation Curve? :: Alkalosis, CO₂ rendah, suhu rendah, fetal Hb, carbon monoxide → afinitas Hb meningkat.
+- [Metabolic Acidosis pada DKA] Apa yang dimaksud dengan DKA klasik pada Metabolic Acidosis pada DKA? :: HAGMA, HCO₃⁻ rendah, ketone/beta-hydroxybutyrate meningkat, glukosa biasanya meningkat. Setelah terapi saline, NAGMA hyperchloremic dapat muncul sementara.
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Acidemia + PaCO₂ ↑? :: Respiratory acidosis
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Acidemia + HCO₃⁻ ↓? :: Metabolic acidosis
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Alkalemia + PaCO₂ ↓? :: Respiratory alkalosis
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Alkalemia + HCO₃⁻ ↑? :: Metabolic alkalosis
+- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan Winter: expected PaCO₂ pada Interpretasi Analisis Gas Darah? :: 1.5 × HCO₃⁻ + 8 ±2
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: PaCO₂ di atas Winter expected? :: Additional respiratory acidosis
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: PaCO₂ di bawah Winter expected? :: Additional respiratory alkalosis
+- [Interpretasi Analisis Gas Darah] Apa yang perlu diketahui tentang Acute respiratory acidosis pada Interpretasi Analisis Gas Darah? :: HCO₃⁻ ↑ ~1 per PaCO₂ +10
+- [Interpretasi Analisis Gas Darah] Apa yang perlu diketahui tentang Chronic respiratory acidosis pada Interpretasi Analisis Gas Darah? :: HCO₃⁻ ↑ ~3.5–4 per +10
+- [Interpretasi Analisis Gas Darah] Apa yang perlu diketahui tentang Acute respiratory alkalosis pada Interpretasi Analisis Gas Darah? :: HCO₃⁻ ↓ ~2 per PaCO₂ −10
+- [Interpretasi Analisis Gas Darah] Apa yang perlu diketahui tentang Chronic respiratory alkalosis pada Interpretasi Analisis Gas Darah? :: HCO₃⁻ ↓ ~4–5 per −10
+- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan GOLD MARK pada Interpretasi Analisis Gas Darah? :: Penyebab penting HAGMA
+- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan Lactic acidosis dan DKA pada Interpretasi Analisis Gas Darah? :: HAGMA penting
+- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan RTA pada Interpretasi Analisis Gas Darah? :: Penyebab renal NAGMA
+- [Interpretasi Analisis Gas Darah] Apa yang perlu diingat tentang PE sering pada Interpretasi Analisis Gas Darah? :: Respiratory alkalosis + hypoxemia
+- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan Severe asthma dengan PaCO₂ meningkat? :: Tanda berbahaya
+- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan P/F ratio pada Interpretasi Analisis Gas Darah? :: PaO₂/FiO₂
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: pH normal + PaCO₂/HCO₃⁻ abnormal? :: Pikirkan kompensasi atau mixed disorder
+- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan Analisis acid–base dan oxygenation? :: Dua langkah berbeda
+- [Interpretasi Analisis Gas Darah] Apa yang perlu diingat tentang Jika metabolic acidosis pada Interpretasi Analisis Gas Darah? :: Hitung AG
+- [Interpretasi Analisis Gas Darah] Apa yang perlu diingat tentang Jika HAGMA pada Interpretasi Analisis Gas Darah? :: Pertimbangkan delta ratio
+- [Interpretasi Analisis Gas Darah] Apa yang perlu diketahui tentang Cari penyebab pada Interpretasi Analisis Gas Darah? :: Lactate, ketone, renal failure, toxin, GI/renal HCO₃ loss
+- [Tujuan Interpretasi Gas Darah] Sebutkan urutan atau langkah pada Tujuan Interpretasi Gas Darah? :: • Pastikan jenis sampel dan kualitas spesimen
   • Nilai pH
   • Tentukan proses primer dari PaCO₂ dan HCO₃⁻
   • Hitung kompensasi yang diharapkan
@@ -527,15 +527,11 @@ PaO₂ 90 pada room air berbeda maknanya dengan PaO₂ 90 pada FiO₂ 0.80.
   • Bila anion gap meningkat, pertimbangkan delta ratio
   • Nilai PaO₂/oksigenasi secara terpisah
   • Integrasikan dengan elektrolit, laktat, keton, fungsi ginjal, dan klinis
-- [Parameter Utama pada ABG] Parameter yang paling sering digunakan … :: • pH: sekitar 7.35–7.45
-  • PaCO₂: sekitar 35–45 mmHg
-  • HCO₃⁻: sekitar 22–26 mEq/L
-  • PaO₂: sangat dipengaruhi usia, FiO₂, ketinggian, dan kondisi paru
-  • SaO₂: saturasi hemoglobin oleh oksigen
-  • Base excess/base deficit: membantu menggambarkan komponen metabolik
-- [Langkah 2 — Tentukan Gangguan Primer] Empat gangguan primer … :: • Metabolic acidosis: pH ↓, HCO₃⁻ ↓
+- [Langkah 2 — Tentukan Gangguan Primer] Sebutkan poin-poin penting tentang Empat gangguan primer. :: • Metabolic acidosis: pH ↓, HCO₃⁻ ↓
   • Metabolic alkalosis: pH ↑, HCO₃⁻ ↑
   • Respiratory acidosis: pH ↓, PaCO₂ ↑
   • Respiratory alkalosis: pH ↑, PaCO₂ ↓
-- [Mengapa Anion Gap Penting?] Karena itu metabolic acidosis dibagi menjadi … :: • High-anion-gap metabolic acidosis (HAGMA)
-  • Normal-anion-gap metabolic acidosis (NAGMA/hyperchloremic metabolic acidosis)
+- [Delta Gap / Delta Ratio] Sebutkan interpretasi kasar pada Delta Gap / Delta Ratio. :: • <0.4 → dominan NAGMA
+  • 0.4–0.8 → HAGMA + NAGMA
+  • 0.8–2.0 → relatif sesuai HAGMA
+  • >2 → pertimbangkan HAGMA + metabolic alkalosis atau keadaan dengan HCO₃⁻ baseline tinggi

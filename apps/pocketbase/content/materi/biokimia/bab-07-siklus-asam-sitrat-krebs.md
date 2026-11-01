@@ -571,61 +571,41 @@ Siklus TCA berlangsung terutama di matriks mitokondria dan mengoksidasi acetyl-C
 
 ## Flashcard {kartu}
 
-- [Lokasi Siklus TCA] Pengecualian penting :: succinate dehydrogenase berada pada membran dalam mitokondria karena enzim ini sekaligus merupakan Kompleks II rantai transpor elektron.
-- [Ketergantungan terhadap Oksigen] Tanpa O₂ :: NADH/FADH₂ menumpuk → NAD⁺/FAD berkurang → reaksi dehidrogenase melambat → siklus TCA ikut terhambat.
-- [Jembatan Glikolisis ke TCA] Reaksi :: Piruvat + CoA-SH + NAD⁺ → Acetyl-CoA + CO₂ + NADH + H⁺.
-- [Regulasi PDH] PDH kinase :: memfosforilasi PDH → PDH inaktif.
-- [Regulasi PDH] PDH phosphatase :: mendefosforilasi PDH → PDH aktif.
-- [Fluoroacetate dan Aconitase] Clinical/toxicology anchor :: fluoroacetate → fluorocitrate → aconitase inhibition → penurunan produksi energi.
-- [Reaksi 3 — Isocitrate Dehydrogenase] Enzim :: isocitrate dehydrogenase.
-- [Reaksi 4 — α-Ketoglutarate Dehydrogenase] Enzim :: α-ketoglutarate dehydrogenase complex.
-- [Reaksi 5 — Succinyl-CoA Synthetase] Enzim :: succinyl-CoA synthetase, juga disebut succinate thiokinase.
-- [Substrate-Level Phosphorylation] Dalam TCA :: succinyl-CoA → succinate menghasilkan 1 GTP per putaran.
-- [Reaksi 6 — Succinate Dehydrogenase] Enzim :: succinate dehydrogenase.
-- [Malonate] Akibat :: succinate → fumarate terhambat.
-- [Reaksi 7 — Fumarase] Enzim :: fumarase/fumarate hydratase.
-- [Reaksi 8 — Malate Dehydrogenase] Enzim :: malate dehydrogenase.
-- [Hasil per Acetyl-CoA] Dengan P/O ratio modern :: 3 NADH × 2,5 ATP = 7,5 ATP.
-- [Mengapa TCA Disebut Amphibolic?] katabolisme :: mengoksidasi acetyl-CoA untuk menghasilkan energi
-- [Mengapa TCA Disebut Amphibolic?] anabolisme :: menyediakan intermediate untuk biosintesis.
-- [Anaplerosis] Reaksi paling penting :: Piruvat + CO₂ + ATP → Oxaloacetate.
-- [Anaplerosis] Enzim :: pyruvate carboxylase.
-- [Hubungan TCA dengan Glukoneogenesis] Saat puasa :: OAA dapat digunakan untuk membuat glukosa.
-- [Hubungan TCA dengan Sintesis Asam Lemak] Saat energi berlimpah :: acetyl-CoA mitokondrial tidak dapat langsung keluar ke sitosol.
-- [Mnemonic Produk Energi] Mulai dari isocitrate :: NADH → NADH → GTP → FADH₂ → — → NADH.
-- [Mnemonic Produk Energi] Urutan enzim penghasil energi :: Isocitrate DH → α-KGDH → Succinyl-CoA synthetase → Succinate DH → Malate DH.
-- [Peta Besar Bab] Acetyl-CoA juga dapat berasal dari … :: • β-oksidasi asam lemak
-  • katabolisme asam amino ketogenik
-  • metabolisme badan keton di jaringan ekstrahepatik
-- [Pyruvate Dehydrogenase Complex] PDH adalah kompleks multienzim yang memiliki tiga komponen katalitik … :: • E1 = pyruvate dehydrogenase
-  • E2 = dihydrolipoyl transacetylase
-  • E3 = dihydrolipoyl dehydrogenase
-- [Citrate sebagai Sinyal Energi] Di sitosol, citrate … :: • menyediakan acetyl-CoA untuk sintesis asam lemak dan kolesterol
-  • menghambat PFK-1 sehingga glikolisis melambat
-  • menandakan keadaan energi/nutrien yang cukup
-- [Kofaktor α-Ketoglutarate Dehydrogenase] Kompleks α-ketoglutarate dehydrogenase menggunakan kofaktor yang mirip dengan PDH … :: • TPP
-  • lipoate
-  • CoA
-  • FAD
-  • NAD⁺
-- [Hasil per Acetyl-CoA] Satu putaran siklus TCA menghasilkan … :: • 3 NADH
-  • 1 FADH₂
-  • 1 GTP
-  • 2 CO₂
-- [Jika PDH Ikut Dihitung] Dua piruvat dari satu glukosa menghasilkan melalui PDH … :: • 2 acetyl-CoA
-  • 2 NADH
-  • 2 CO₂
-- [Peran Ca²⁺ pada Otot] Ca²⁺ membantu meningkatkan aliran oksidatif dengan mengaktifkan … :: • PDH phosphatase → PDH aktif
-  • isocitrate dehydrogenase
-  • α-ketoglutarate dehydrogenase
-- [Mengapa TCA Disebut Amphibolic?] Siklus TCA bersifat amphibolic karena berperan pada … :: • katabolisme: mengoksidasi acetyl-CoA untuk menghasilkan energi
-  • anabolisme: menyediakan intermediate untuk biosintesis
-- [Propionyl-CoA → Succinyl-CoA] Propionyl-CoA berasal antara lain dari … :: • asam lemak rantai ganjil
-  • valine
-  • isoleucine
-  • methionine
-  • threonine
-- [Thiamine Deficiency] Vitamin B1 dibutuhkan sebagai TPP oleh … :: • pyruvate dehydrogenase
-  • α-ketoglutarate dehydrogenase
-- [Malonate] Mnemonic: Malonate :: Malonate blocks succinate dehydrogenase.
-- [Mnemonic Urutan Intermediate] Mnemonic sederhana: Mnemonic Urutan Intermediate :: Can I Keep Selling Sex For Money, Officer?
+- [Lokasi Siklus TCA] Apa yang dimaksud dengan Pengecualian penting pada Lokasi Siklus TCA? :: Succinate dehydrogenase berada pada membran dalam mitokondria karena enzim ini sekaligus merupakan Kompleks II rantai transpor elektron.
+- [Jembatan Glikolisis ke TCA] Pada Jembatan Glikolisis ke TCA, apa reaksinya? :: Piruvat + CoA-SH + NAD⁺ → Acetyl-CoA + CO₂ + NADH + H⁺.
+- [Regulasi PDH] Apa yang dimaksud dengan PDH kinase pada Regulasi PDH? :: Memfosforilasi PDH → PDH inaktif.
+- [Regulasi PDH] Apa yang dimaksud dengan PDH phosphatase pada Regulasi PDH? :: Mendefosforilasi PDH → PDH aktif.
+- [Fluoroacetate dan Aconitase] Apa yang dimaksud dengan Clinical/toxicology anchor pada Fluoroacetate dan Aconitase? :: Fluoroacetate → fluorocitrate → aconitase inhibition → penurunan produksi energi.
+- [Reaksi 3 — Isocitrate Dehydrogenase] Pada Reaksi 3 — Isocitrate Dehydrogenase, apa enzimnya? :: Isocitrate dehydrogenase.
+- [Reaksi 4 — α-Ketoglutarate Dehydrogenase] Pada Reaksi 4 — α-Ketoglutarate Dehydrogenase, apa enzimnya? :: Α-ketoglutarate dehydrogenase complex.
+- [Reaksi 5 — Succinyl-CoA Synthetase] Pada Reaksi 5 — Succinyl-CoA Synthetase, apa enzimnya? :: Succinyl-CoA synthetase, juga disebut succinate thiokinase.
+- [Reaksi 6 — Succinate Dehydrogenase] Pada Reaksi 6 — Succinate Dehydrogenase, apa enzimnya? :: Succinate dehydrogenase.
+- [Reaksi 7 — Fumarase] Pada Reaksi 7 — Fumarase, apa enzimnya? :: Fumarase/fumarate hydratase.
+- [Reaksi 8 — Malate Dehydrogenase] Pada Reaksi 8 — Malate Dehydrogenase, apa enzimnya? :: Malate dehydrogenase.
+- [Mengapa TCA Disebut Amphibolic?] Apa yang dimaksud dengan katabolisme pada Mengapa TCA Disebut Amphibolic? :: Mengoksidasi acetyl-CoA untuk menghasilkan energi
+- [Mengapa TCA Disebut Amphibolic?] Apa yang dimaksud dengan anabolisme pada Mengapa TCA Disebut Amphibolic? :: Menyediakan intermediate untuk biosintesis.
+- [Anaplerosis] Jelaskan Reaksi paling penting dalam konteks Anaplerosis. :: Piruvat + CO₂ + ATP → Oxaloacetate.
+- [Anaplerosis] Pada Anaplerosis, apa enzimnya? :: Pyruvate carboxylase.
+- [Mnemonic Produk Energi] Jelaskan: Mulai dari isocitrate. :: NADH → NADH → GTP → FADH₂ → — → NADH.
+- [Mnemonic Produk Energi] Jelaskan Urutan enzim penghasil energi dalam konteks Mnemonic Produk Energi. :: Isocitrate DH → α-KGDH → Succinyl-CoA synthetase → Succinate DH → Malate DH.
+- [Lima Kofaktor PDH] Sebutkan poin-poin penting tentang Lima kofaktor klasik PDH. :: • TPP (thiamine pyrophosphate; vitamin B1)
+  • Lipoic acid/lipoamide
+  • CoA (berasal dari vitamin B5)
+  • FAD (vitamin B2)
+  • NAD⁺ (vitamin B3)
+- [Reaksi 3 — Isocitrate Dehydrogenase] Sebutkan produk penting pada Reaksi 3 — Isocitrate Dehydrogenase. :: • 1 NADH
+  • 1 CO₂
+  • Α-ketoglutarate (5C)
+- [Reaksi 6 — Succinate Dehydrogenase] Sebutkan poin-poin penting tentang Poin high-yield. :: • Satu-satunya enzim TCA yang berada di membran dalam mitokondria
+  • Merupakan Kompleks II ETC
+  • Menghasilkan FADH₂
+  • Tidak memompa proton ketika berfungsi sebagai Kompleks II
+- [Tiga Titik Regulasi Utama TCA] Sebutkan enzim regulasi utama pada Tiga Titik Regulasi Utama TCA. :: • Citrate synthase
+  • Isocitrate dehydrogenase
+  • Α-ketoglutarate dehydrogenase
+- [Propionyl-CoA → Succinyl-CoA] Sebutkan poin-poin penting tentang Tahapan penting membutuhkan. :: • Biotin pada propionyl-CoA carboxylase
+  • Vitamin B12 pada methylmalonyl-CoA mutase
+- [Succinate Dehydrogenase: Jembatan TCA–ETC] Sebutkan poin-poin penting tentang Succinate dehydrogenase unik karena merupakan. :: • Enzim siklus TCA
+  • Kompleks II rantai transpor elektron
+- [Malonate] Bagaimana cara mengingat Malonate? :: Malonate blocks succinate dehydrogenase.
+- [Mnemonic Urutan Intermediate] Bagaimana cara mengingat Mnemonic Urutan Intermediate? :: Can I Keep Selling Sex For Money, Officer?

@@ -544,65 +544,78 @@ Insulin meningkatkan translokasi GLUT-4, uptake glukosa perifer, dan sintesis gl
 
 ## Flashcard {kartu}
 
-- [Sulfonilurea] Mekanisme :: menutup kanal KATP pada sel β pankreas → meningkatkan sekresi insulin.
-- [Thiazolidinedione (TZD)] Mekanisme :: agonis PPAR-γ → meningkatkan sensitivitas insulin pada jaringan perifer.
-- [Sumbu Hipotalamus–Hipofisis–Tiroid] Sumbu regulasi :: hipotalamus → TRH → hipofisis anterior → TSH → kelenjar tiroid → T4 dan T3 → organ target.
-- [Levotiroksin (L-T4)] Mekanisme :: T4 dikonversi menjadi T3 di jaringan perifer → T3 berikatan dengan reseptor hormon tiroid di inti sel → meningkatkan transkripsi gen dan aktivitas metabolik.
-- [Levotiroksin (L-T4)] Sediaan di Indonesia :: 25, 50, 75, 100, 125, dan 150 µg.
-- [Methimazole] Mekanisme :: menghambat thyroid peroxidase (TPO) → menghambat oksidasi iodida, organifikasi, dan coupling iodotyrosine → sintesis T3/T4 menurun.
-- [Methimazole] sedang–berat :: 20–40 mg/hari, kemudian diturunkan menjadi maintenance setelah euthyroid.
-- [High-yield] DM tipe 1 :: insulin merupakan terapi utama
-- [High-yield] DM tipe 2 belum terkontrol dengan OHO :: insulin dapat digunakan
-- [High-yield] Insulin + berkeringat/gemetar/gejala hipoglikemia :: pikirkan adverse effect insulin
-- [High-yield] Insulin basal baru dimulai :: 10 unit/hari atau 0,1–0,2 U/kgBB/hari
-- [High-yield] Metformin + eGFR <30 mL/menit/1,73 m² :: kontraindikasi
-- [High-yield] Metformin jangka panjang :: monitor vitamin B12
-- [High-yield] Glimepirid + hipoglikemia/berat badan naik :: sulfonilurea
-- [High-yield] Empagliflozin + infeksi genital/poliuria :: pola SGLT2 inhibitor
-- [High-yield] Hipotiroidisme primer :: levotiroksin
-- [High-yield] Levotiroksin + besi/kalsium/antasida bersamaan :: absorpsi dapat menurun
-- [High-yield] Hipertiroidisme Graves pada kebanyakan pasien :: methimazole sebagai first line
-- [High-yield] Hipertiroid + takikardia/tremor :: propranolol untuk gejala
-- [High-yield] Persiapan operasi tiroid :: Lugol dapat digunakan untuk menghambat release hormon dan menurunkan vaskularisasi kelenjar
-- [High-yield] Rapid acting :: lispro, aspart, glulisine
-- [High-yield] Regular insulin :: short acting
-- [High-yield] Glargine, detemir, degludec :: long acting
-- [High-yield] Efek samping insulin tersering :: hipoglikemia
-- [High-yield] Metformin :: lini pertama DM tipe 2
-- [High-yield] eGFR <30 mL/menit/1,73 m² :: kontraindikasi metformin
-- [High-yield] Empagliflozin :: contoh SGLT2 inhibitor; adverse effect meliputi infeksi genital, poliuria, dehidrasi
-- [High-yield] Pioglitazone :: agonis PPAR-γ dan meningkatkan sensitivitas insulin perifer
-- [High-yield] Sumbu tiroid :: TRH → TSH → T4/T3
-- [Tujuan Terapi Diabetes Melitus] Empat tujuan utama terapi diabetes … :: • mengontrol glukosa darah
-  • mencegah komplikasi mikrovaskular dan makrovaskular
-  • menurunkan mortalitas
-  • meningkatkan kualitas hidup pasien
-- [Insulin: Mekanisme Kerja] Insulin berikatan dengan reseptor insulin dan kemudian … :: • meningkatkan translokasi GLUT-4 ke membran sel
-  • meningkatkan masuknya glukosa ke otot dan jaringan lemak
-  • menurunkan glukoneogenesis hati
-  • meningkatkan sintesis glikogen
-- [Insulin Basal: Dosis Awal, Titrasi, Efek Samping, Monitoring] Dosis awal insulin basal … :: • 10 unit/hari; atau
+- [Sulfonilurea] Pada Sulfonilurea, apa mekanismenya? :: Menutup kanal KATP pada sel β pankreas → meningkatkan sekresi insulin.
+- [Thiazolidinedione (TZD)] Pada Thiazolidinedione (TZD) (Golongan Antidiabetes Lain), apa mekanismenya? :: Agonis PPAR-γ → meningkatkan sensitivitas insulin pada jaringan perifer.
+- [Sumbu Hipotalamus–Hipofisis–Tiroid] Apa yang dimaksud dengan Sumbu regulasi pada Sumbu Hipotalamus–Hipofisis–Tiroid? :: Hipotalamus → TRH → hipofisis anterior → TSH → kelenjar tiroid → T4 dan T3 → organ target.
+- [Levotiroksin (L-T4)] Pada Levotiroksin (L-T4), apa mekanismenya? :: T4 dikonversi menjadi T3 di jaringan perifer → T3 berikatan dengan reseptor hormon tiroid di inti sel → meningkatkan transkripsi gen dan aktivitas metabolik.
+- [Levotiroksin (L-T4)] Jelaskan Sediaan di Indonesia dalam konteks Levotiroksin (L-T4). :: 25, 50, 75, 100, 125, dan 150 µg.
+- [Methimazole] Pada Methimazole, apa mekanismenya? :: Menghambat thyroid peroxidase (TPO) → menghambat oksidasi iodida, organifikasi, dan coupling iodotyrosine → sintesis T3/T4 menurun.
+- [Methimazole] Apa yang dimaksud dengan sedang–berat pada Methimazole? :: 20–40 mg/hari, kemudian diturunkan menjadi maintenance setelah euthyroid.
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang perlu diingat tentang DM tipe 1 pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Insulin merupakan terapi utama
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: DM tipe 2 belum terkontrol dengan OHO? :: Insulin dapat digunakan
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Insulin + berkeringat/gemetar/gejala hipoglikemia? :: Pikirkan adverse effect insulin
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Insulin basal baru dimulai? :: 10 unit/hari atau 0,1–0,2 U/kgBB/hari
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Metformin + eGFR <30 mL/menit/1,73 m²? :: Kontraindikasi
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang perlu diingat tentang Metformin jangka panjang pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Monitor vitamin B12
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Glimepirid + hipoglikemia/berat badan naik? :: Sulfonilurea
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Empagliflozin + infeksi genital/poliuria? :: Pola SGLT2 inhibitor
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang perlu diingat tentang Hipotiroidisme primer pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Levotiroksin
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Levotiroksin + besi/kalsium/antasida bersamaan? :: Absorpsi dapat menurun
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Hipertiroidisme Graves pada kebanyakan pasien? :: Methimazole sebagai first line
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang perlu diingat tentang Hipertiroid + takikardia/tremor pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Propranolol untuk gejala
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang perlu diingat tentang Persiapan operasi tiroid pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Lugol dapat digunakan untuk menghambat release hormon dan menurunkan vaskularisasi kelenjar
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang perlu diketahui tentang Rapid acting pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Lispro, aspart, glulisine
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang dimaksud dengan Regular insulin pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Short acting
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang dimaksud dengan Glargine, detemir, degludec pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Long acting
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang dimaksud dengan Efek samping insulin tersering pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Hipoglikemia
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang dimaksud dengan Metformin pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Lini pertama DM tipe 2
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang dimaksud dengan eGFR <30 mL/menit/1,73 m² pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Kontraindikasi metformin
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang dimaksud dengan Empagliflozin pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Contoh SGLT2 inhibitor; adverse effect meliputi infeksi genital, poliuria, dehidrasi
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang dimaksud dengan Pioglitazone pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: Agonis PPAR-γ dan meningkatkan sensitivitas insulin perifer
+- [Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)] Apa yang perlu diketahui tentang Sumbu tiroid pada Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)? :: TRH → TSH → T4/T3
+- [Tujuan Terapi Diabetes Melitus] Sebutkan poin-poin penting tentang Empat tujuan utama terapi diabetes. :: • Mengontrol glukosa darah
+  • Mencegah komplikasi mikrovaskular dan makrovaskular
+  • Menurunkan mortalitas
+  • Meningkatkan kualitas hidup pasien
+- [Insulin Basal: Dosis Awal, Titrasi, Efek Samping, Monitoring] Sebutkan poin-poin penting tentang Dosis awal insulin basal. :: • 10 unit/hari; atau
   • 0,1–0,2 unit/kgBB/hari
-- [Thiazolidinedione (TZD)] Sediaan dan dosis … :: • tablet 15 mg dan 30 mg
-  • dosis 15–45 mg/hari
-- [Sumbu Hipotalamus–Hipofisis–Tiroid] Fungsi hormon tiroid … :: • meningkatkan metabolisme basal
-  • meningkatkan konsumsi oksigen
-  • berperan pada pertumbuhan dan perkembangan sistem saraf pusat
-  • meningkatkan denyut jantung
-  • memengaruhi metabolisme karbohidrat, protein, dan lemak
-- [Levotiroksin (L-T4)] Pasien >60 tahun atau dengan penyakit jantung … :: • mulai 12,5–25 µg/hari
-  • naikkan secara bertahap setiap 4–6 minggu berdasarkan TSH
-- [Levotiroksin (L-T4)] Efek samping bila dosis berlebih … :: • takikardia
-  • palpitasi
-  • tremor
-  • insomnia
-  • penurunan berat badan
-  • osteoporosis pada penggunaan berlebih jangka panjang
-  • aritmia
-- [Insulin: Mekanisme Kerja] Exam pearl: Insulin: Mekanisme Kerja :: Jika stem menyebut translokasi GLUT-4 ke membran sel, peningkatan uptake glukosa di otot/adiposa, penurunan glukoneogenesis hati, dan peningkatan sintesis glikogen, pikirkan efek insulin yang dirangkum.
-- [Insulin Basal: Dosis Awal, Titrasi, Efek Samping, Monitoring] Exam pearl: Insulin Basal: Dosis Awal, Titrasi, Efek Samping, Monitoring :: Insulin + gejala hipoglikemia adalah pola adverse effect paling penting. Pada insulin basal, titik awalnya 10 unit/hari atau 0,1–0,2 U/kgBB/hari.
-- [Biguanid — Metformin] Exam pearl: Biguanid — Metformin :: DM tipe 2 + obat lini pertama + gangguan gastrointestinal → metformin adalah pola yang sangat khas. eGFR <30 mL/menit/1,73 m² merupakan kontraindikasi yang tertulis jelas.
-- [Sulfonilurea] Exam pearl: Sulfonilurea :: “Menutup KATP sel β pankreas” + “sekresi insulin meningkat” → sulfonilurea. Efek samping yang paling mudah dikenali pada soal adalah hipoglikemia dan peningkatan berat badan.
-- [Levotiroksin (L-T4)] Exam pearl: Levotiroksin (L-T4) :: Levotiroksin biasanya merupakan terapi jangka panjang pada hipotiroidisme primer. Cara minum pada perut kosong dan jarak dari besi/kalsium/antasida adalah pola soal interaksi absorpsi yang penting.
-- [Methimazole] Exam pearl: Methimazole :: Pasien methimazole mengalami demam + sakit tenggorok → pikirkan agranulositosis dan evaluasi leukosit.
-- [Propylthiouracil (PTU)] Pola banding cepat: Propylthiouracil (PTU) :: Methimazole → lini pertama pada sebagian besar pasien hipertiroid. PTU → trimester I kehamilan atau thyroid storm. Pembeda mekanisme high-yield → PTU juga menghambat konversi perifer T4 menjadi T3.
+- [Biguanid — Metformin] Sebutkan mekanisme kerja pada Biguanid — Metformin. :: • Menurunkan glukoneogenesis hati
+  • Meningkatkan sensitivitas insulin
+  • Menurunkan absorpsi glukosa usus
+- [Biguanid — Metformin] Sebutkan efek samping pada Biguanid — Metformin. :: • Mual
+  • Diare
+  • Nyeri perut
+  • Defisiensi vitamin B12
+  • Asidosis laktat — jarang
+- [SGLT2 inhibitor] Sebutkan efek samping pada SGLT2 inhibitor (Golongan Antidiabetes Lain). :: • Infeksi genital
+  • Poliuria
+  • Dehidrasi
+- [Thiazolidinedione (TZD)] Sebutkan poin-poin penting tentang Sediaan dan dosis. :: • Tablet 15 mg dan 30 mg
+  • Dosis 15–45 mg/hari
+- [Sumbu Hipotalamus–Hipofisis–Tiroid] Sebutkan poin-poin penting tentang Proporsi hormon. :: • T4 sekitar 90%
+  • T3 sekitar 10%
+- [Sumbu Hipotalamus–Hipofisis–Tiroid] Sebutkan tujuan terapi pada Sumbu Hipotalamus–Hipofisis–Tiroid. :: • Hipotiroidisme → mengganti hormon yang kurang
+  • Hipertiroidisme → mengurangi produksi hormon atau memblok efeknya
+- [Levotiroksin (L-T4)] Sebutkan efek samping bila dosis berlebih pada Levotiroksin (L-T4). :: • Takikardia
+  • Palpitasi
+  • Tremor
+  • Insomnia
+  • Penurunan berat badan
+  • Osteoporosis pada penggunaan berlebih jangka panjang
+  • Aritmia
+- [Methimazole] Sebutkan kontraindikasi/perhatian penting pada Methimazole. :: • Hipersensitivitas
+  • Kehamilan trimester I — PTU lebih dipilih
+- [Propylthiouracil (PTU)] Sebutkan indikasi utama pada Propylthiouracil (PTU). :: • Hipertiroidisme pada trimester I kehamilan
+  • Thyroid storm
+  • Intoleransi terhadap methimazole
+- [Propranolol] Sebutkan efek samping pada Propranolol (Terapi Simptomatik dan Adjuvan Hipertiroid). :: • Bradikardia
+  • Hipotensi
+  • Bronkospasme
+  • Fatigue
+- [Insulin: Mekanisme Kerja] Apa poin high-yield (pearl) tentang Insulin: Mekanisme Kerja? :: Jika stem menyebut translokasi GLUT-4 ke membran sel, peningkatan uptake glukosa di otot/adiposa, penurunan glukoneogenesis hati, dan peningkatan sintesis glikogen, pikirkan efek insulin yang dirangkum.
+- [Insulin Basal: Dosis Awal, Titrasi, Efek Samping, Monitoring] Apa poin high-yield (pearl) tentang Insulin Basal: Dosis Awal, Titrasi, Efek Samping, Monitoring? :: Insulin + gejala hipoglikemia adalah pola adverse effect paling penting. Pada insulin basal, titik awalnya 10 unit/hari atau 0,1–0,2 U/kgBB/hari.
+- [Biguanid — Metformin] Apa poin high-yield (pearl) tentang Biguanid — Metformin? :: DM tipe 2 + obat lini pertama + gangguan gastrointestinal → metformin adalah pola yang sangat khas. eGFR <30 mL/menit/1,73 m² merupakan kontraindikasi yang tertulis jelas.
+- [Sulfonilurea] Apa poin high-yield (pearl) tentang Sulfonilurea? :: “Menutup KATP sel β pankreas” + “sekresi insulin meningkat” → sulfonilurea. Efek samping yang paling mudah dikenali pada soal adalah hipoglikemia dan peningkatan berat badan.
+- [Levotiroksin (L-T4)] Apa poin high-yield (pearl) tentang Levotiroksin (L-T4)? :: Levotiroksin biasanya merupakan terapi jangka panjang pada hipotiroidisme primer. Cara minum pada perut kosong dan jarak dari besi/kalsium/antasida adalah pola soal interaksi absorpsi yang penting.
+- [Methimazole] Apa poin high-yield (pearl) tentang Methimazole? :: Pasien methimazole mengalami demam + sakit tenggorok → pikirkan agranulositosis dan evaluasi leukosit.
+- [Propylthiouracil (PTU)] Pola banding cepat: apa isi atau ringkasannya? :: Methimazole → lini pertama pada sebagian besar pasien hipertiroid. PTU → trimester I kehamilan atau thyroid storm. Pembeda mekanisme high-yield → PTU juga menghambat konversi perifer T4 menjadi T3.

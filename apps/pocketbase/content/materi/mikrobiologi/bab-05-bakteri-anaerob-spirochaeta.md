@@ -397,46 +397,46 @@ Spirochaeta → Treponema = syphilis → Borrelia = Lyme/relapsing fever → Lep
 
 ## Flashcard {kartu}
 
-- [Big Picture] Bakteri anaerob :: terutama Clostridium, Bacteroides fragilis, Prevotella, dan Fusobacterium.
-- [Big Picture] Spirochaeta :: Treponema pallidum, Leptospira interrogans, dan Borrelia.
-- [Big Picture] Cara belajar tercepat :: kenali morfologi → kebutuhan oksigen/pewarnaan → toksin atau faktor virulensi → penyakit khas → pemeriksaan laboratorium.
-- [Treponema pallidum] Visualisasi :: dark-field/silver impregnation.
-- [Treponema pallidum] Kultur rutin :: tidak bisa in vitro.
-- [Treponema pallidum] Serologi :: VDRL/RPR + treponemal tests.
-- [Borrelia] Penyakit :: Lyme disease, relapsing fever.
-- [Borrelia] Morfologi :: spiral lebih besar.
-- [Leptospira interrogans] Bentuk :: thin spiral dengan hooked ends.
-- [Leptospira interrogans] Pemeriksaan :: dark-field, MAT/serologi, PCR.
-- [High-yield] Clostridium :: anaerob + spore-forming Gram-positive rods
-- [High-yield] B. fragilis :: Gram-negative anaerobe, capsule, SOD, intraabdominal abscess
-- [High-yield] Prevotella :: periodontal/perioral abscess
-- [High-yield] Fusobacterium :: Lemierre syndrome
-- [High-yield] T. pallidum :: syphilis; dark-field; tidak bisa kultur rutin in vitro
-- [High-yield] Borrelia :: Lyme/relapsing fever
-- [High-yield] Leptospira :: hooked ends, urine rodent, masuk via kulit terabrasi; MAT/PCR
-- [Big Picture] Dua kelompok besar pada bab ini … :: • Bakteri anaerob: terutama Clostridium, Bacteroides fragilis, Prevotella, dan Fusobacterium
-  • Spirochaeta: Treponema pallidum, Leptospira interrogans, dan Borrelia
-  • Cara belajar tercepat: kenali morfologi → kebutuhan oksigen/pewarnaan → toksin atau faktor virulensi → penyakit khas → pemeriksaan laboratorium
-- [Clostridium — Peta Besar] Empat pasangan WAJIB HAFAL … :: • C. tetani → tetanospasmin → tetanus/spastic paralysis
+- [Big Picture] Apa yang dimaksud dengan Bakteri anaerob pada Big Picture? :: Terutama Clostridium, Bacteroides fragilis, Prevotella, dan Fusobacterium.
+- [Big Picture] Apa yang dimaksud dengan Spirochaeta pada Big Picture? :: Treponema pallidum, Leptospira interrogans, dan Borrelia.
+- [Big Picture] Jelaskan Cara belajar tercepat dalam konteks Big Picture. :: Kenali morfologi → kebutuhan oksigen/pewarnaan → toksin atau faktor virulensi → penyakit khas → pemeriksaan laboratorium.
+- [Treponema pallidum] Apa yang dimaksud dengan Visualisasi pada Treponema pallidum (Perbandingan 3 Spirochaeta)? :: Dark-field/silver impregnation.
+- [Treponema pallidum] Apa yang dimaksud dengan Kultur rutin pada Treponema pallidum (Perbandingan 3 Spirochaeta)? :: Tidak bisa in vitro.
+- [Treponema pallidum] Apa yang dimaksud dengan Serologi pada Treponema pallidum (Perbandingan 3 Spirochaeta)? :: VDRL/RPR + treponemal tests.
+- [Borrelia] Apa yang dimaksud dengan Penyakit pada Borrelia (Perbandingan 3 Spirochaeta)? :: Lyme disease, relapsing fever.
+- [Borrelia] Pada Borrelia (Perbandingan 3 Spirochaeta), apa morfologinya? :: Spiral lebih besar.
+- [Leptospira interrogans] Pada Leptospira interrogans (Perbandingan 3 Spirochaeta), apa bentuknya? :: Thin spiral dengan hooked ends.
+- [Leptospira interrogans] Pada Leptospira interrogans (Perbandingan 3 Spirochaeta), apa pemeriksaannya? :: Dark-field, MAT/serologi, PCR.
+- [Bakteri Anaerob & Spirochaeta] Apa yang dimaksud dengan Clostridium pada Bakteri Anaerob & Spirochaeta? :: Anaerob + spore-forming Gram-positive rods
+- [Bakteri Anaerob & Spirochaeta] Apa yang perlu diingat tentang B. fragilis pada Bakteri Anaerob & Spirochaeta? :: Gram-negative anaerobe, capsule, SOD, intraabdominal abscess
+- [Bakteri Anaerob & Spirochaeta] Apa yang perlu diingat tentang Prevotella pada Bakteri Anaerob & Spirochaeta? :: Periodontal/perioral abscess
+- [Bakteri Anaerob & Spirochaeta] Apa yang perlu diingat tentang Fusobacterium pada Bakteri Anaerob & Spirochaeta? :: Lemierre syndrome
+- [Bakteri Anaerob & Spirochaeta] Apa yang perlu diingat tentang T. pallidum pada Bakteri Anaerob & Spirochaeta? :: Syphilis; dark-field; tidak bisa kultur rutin in vitro
+- [Bakteri Anaerob & Spirochaeta] Apa yang perlu diingat tentang Borrelia pada Bakteri Anaerob & Spirochaeta? :: Lyme/relapsing fever
+- [Bakteri Anaerob & Spirochaeta] Apa yang perlu diingat tentang Leptospira pada Bakteri Anaerob & Spirochaeta? :: Hooked ends, urine rodent, masuk via kulit terabrasi; MAT/PCR
+- [Clostridium — Peta Besar] Sebutkan poin-poin penting tentang Clostridium klasik. :: • Gram-positive bacilli
+  • Membentuk endospora
+  • Anaerob
+  • Penyakit terutama toxin-mediated
+- [Clostridium — Peta Besar] Sebutkan poin-poin penting tentang Empat pasangan WAJIB HAFAL. :: • C. tetani → tetanospasmin → tetanus/spastic paralysis
   • C. botulinum → botulinum neurotoxin → flaccid paralysis
   • C. perfringens → alpha toxin/lecithinase → gas gangrene + food poisoning
   • C. difficile → toxin A & B → antibiotic-associated diarrhea/pseudomembranous colitis
-- [Clostridium botulinum] Gejala yang sering menjadi clue … :: • Diplopia
-  • Dysphagia
-  • Dysarthria
-  • Dry mouth
-  • Descending weakness
-  • Respiratory failure pada kasus berat
-- [Spirochaeta — Gambaran Umum] Tiga genus high-yield … :: • Treponema
+- [Tetanospasmin — Mekanisme] Sebutkan manifestasi khas pada Tetanospasmin — Mekanisme. :: • Trismus/lockjaw
+  • Risus sardonicus
+  • Opisthotonus
+  • Spasme otot generalisata
+  • Kesadaran biasanya tetap baik
+- [Spirochaeta — Gambaran Umum] Sebutkan poin-poin penting tentang Tiga genus high-yield. :: • Treponema
   • Borrelia
   • Leptospira
-- [Apa Itu Bakteri Anaerob?] HIGH-YIELD CLUE infeksi anaerob :: Abses. Bau busuk/foul-smelling discharge. Gas di jaringan. Nekrosis jaringan. Infeksi dekat permukaan mukosa yang kaya flora anaerob. Gram stain menunjukkan bakteri tetapi kultur aerob negatif.
-- [Tetanospasmin — Mekanisme] Tambahan high-yield: Tetanospasmin — Mekanisme :: Tetanospasmin adalah neurotoxin. Toksin masuk ke nerve terminal lalu bergerak secara retrograde menuju CNS. Target utama adalah interneuron inhibitorik. Toksin menghambat pelepasan neurotransmiter inhibitorik GABA dan glycine. Akibatnya terjadi disinhibisi motor neuron → rigiditas dan spastic paralysis.
-- [Foodborne vs Infant Botulism] Jebakan: Foodborne vs Infant Botulism :: Tetanus → spastic. Botulism → flaccid.
-- [Clostridium difficile] Jebakan: Clostridium difficile :: “Pseudomembrane” juga muncul pada diphtheria, tetapi lokasinya berbeda. C. difficile → pseudomembrane di kolon. C. diphtheriae → pseudomembrane pada orofaring.
-- [Fusobacterium] Poin penting: Fusobacterium :: Anaerobic Gram-negative bacillus. Sering terkait infeksi periodontal. High-yield association: Lemierre syndrome.
-- [Sifilis Sekunder] Tambahan high-yield: Sifilis Sekunder :: Disseminated disease. Demam, malaise, generalized lymphadenopathy. Maculopapular rash dapat melibatkan palms dan soles. Condylomata lata dapat muncul. Mucous patches juga dapat ditemukan.
-- [Tes Non-Treponemal] Mnemonic: Tes Non-Treponemal :: RPR/VDRL → titer dapat turun setelah terapi berhasil, sehingga berguna untuk follow-up.
-- [Borrelia] Poin penting: Borrelia :: Spirochaeta yang dapat terlihat dengan pewarnaan seperti Giemsa lebih mudah daripada Treponema. Penyakit penting: Lyme disease dan relapsing fever.
-- [Borrelia & Relapsing Fever] Tambahan high-yield: Borrelia & Relapsing Fever :: Relapsing fever berkaitan dengan variasi antigen permukaan. Pergantian antigen memungkinkan organisme lolos dari antibodi → episode spirochetemia dan demam dapat berulang.
-- [Leptospirosis — Manifestasi] Tambahan high-yield: Leptospirosis — Manifestasi :: Fase awal dapat berupa demam akut, headache, myalgia; calf tenderness sering menjadi clue klasik. Conjunctival suffusion dapat membantu mengarahkan diagnosis. Bentuk berat/Weil disease dapat disertai jaundice, renal dysfunction, dan hemorrhagic manifestations.
+- [Apa Itu Bakteri Anaerob?] HIGH-YIELD CLUE infeksi anaerob: apa isi atau ringkasannya? :: Abses. Bau busuk/foul-smelling discharge. Gas di jaringan. Nekrosis jaringan. Infeksi dekat permukaan mukosa yang kaya flora anaerob. Gram stain menunjukkan bakteri tetapi kultur aerob negatif.
+- [Tetanospasmin — Mekanisme] Apa poin high-yield (pearl) tentang Tetanospasmin — Mekanisme? :: Tetanospasmin adalah neurotoxin. Toksin masuk ke nerve terminal lalu bergerak secara retrograde menuju CNS. Target utama adalah interneuron inhibitorik. Toksin menghambat pelepasan neurotransmiter inhibitorik GABA dan glycine. Akibatnya terjadi disinhibisi motor neuron → rigiditas dan spastic paralysis.
+- [Foodborne vs Infant Botulism] Apa jebakan yang sering muncul pada soal tentang Foodborne vs Infant Botulism? :: Tetanus → spastic. Botulism → flaccid.
+- [Clostridium difficile] Apa jebakan yang sering muncul pada soal tentang Clostridium difficile? :: “Pseudomembrane” juga muncul pada diphtheria, tetapi lokasinya berbeda. C. difficile → pseudomembrane di kolon. C. diphtheriae → pseudomembrane pada orofaring.
+- [Fusobacterium] Apa poin high-yield (pearl) tentang Fusobacterium? :: Anaerobic Gram-negative bacillus. Sering terkait infeksi periodontal. High-yield association: Lemierre syndrome.
+- [Sifilis Sekunder] Apa poin high-yield (pearl) tentang Sifilis Sekunder? :: Disseminated disease. Demam, malaise, generalized lymphadenopathy. Maculopapular rash dapat melibatkan palms dan soles. Condylomata lata dapat muncul. Mucous patches juga dapat ditemukan.
+- [Tes Non-Treponemal] Bagaimana cara mengingat Tes Non-Treponemal? :: RPR/VDRL → titer dapat turun setelah terapi berhasil, sehingga berguna untuk follow-up.
+- [Borrelia] Apa poin high-yield (pearl) tentang Borrelia? :: Spirochaeta yang dapat terlihat dengan pewarnaan seperti Giemsa lebih mudah daripada Treponema. Penyakit penting: Lyme disease dan relapsing fever.
+- [Borrelia & Relapsing Fever] Apa poin high-yield (pearl) tentang Borrelia & Relapsing Fever? :: Relapsing fever berkaitan dengan variasi antigen permukaan. Pergantian antigen memungkinkan organisme lolos dari antibodi → episode spirochetemia dan demam dapat berulang.
+- [Leptospirosis — Manifestasi] Apa poin high-yield (pearl) tentang Leptospirosis — Manifestasi? :: Fase awal dapat berupa demam akut, headache, myalgia; calf tenderness sering menjadi clue klasik. Conjunctival suffusion dapat membantu mengarahkan diagnosis. Bentuk berat/Weil disease dapat disertai jaundice, renal dysfunction, dan hemorrhagic manifestations.

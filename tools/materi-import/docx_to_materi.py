@@ -165,7 +165,7 @@ CALLOUT_RULES = [
     (re.compile(r'^(Mnemonic(?: praktis| visual| relasional| konseptual)?(?: [^:]{0,30})?)\s*:\s*', re.I), 'tip', None),
 ]
 
-SOURCE_H2 = re.compile(r'^(sumber dan provenance|rujukan dan atribusi gambar|visual sources(?: ?/ ?attribution)?|sumber(?: dan atribusi)?|sumber(?: guideline| rujukan)? utama(?: bab (?:[\d–-]+|ini))?|referensi|daftar pustaka)$', re.I)
+SOURCE_H2 = re.compile(r'^(sumber dan provenance|rujukan dan atribusi gambar|visual sources(?: ?/ ?attribution)?|sumber(?: dan atribusi)?|(?:\d{1,2}\.\d{1,2} )?sumber(?: guideline| rujukan)? utama(?: bab (?:[\d–-]+|ini))?(?: & guideline update)?|catatan basis sumber|keterangan sumber|referensi|daftar pustaka)$', re.I)
 DROP_H2 = re.compile(r'retrieval', re.I)
 
 
@@ -481,7 +481,8 @@ def normalize_upper(paras):
         after_label = bool(out) and out[-1].text.endswith(':')
         if (len(t) < 80 and upper_ratio(t) > 0.9 and not t.startswith(('•', 'http')) and not re.search(r'[.:;,]$', t) and not re.search(r'→|⊣| = | \+ ', t)
                 and (len(t.split()) >= 2 or len(t) >= 6) and not acronyms_only and not after_label and len(re.sub(r'[^A-Za-z]', '', t)) >= 6):
-            if in_numbered and nxt_ is not None and nxt_.text.startswith('•') and not nxt_.blank_before and not SOURCE_H2.match(t):
+            if re.match(r'^(?:POLA|PATTERN|VIGNETTE|KASUS) \d+\b', t) or (out and out[-1].lvl == 2 and out[-1].force_h and out[-1].i + 1 >= p.i - 1 and not SOURCE_H2.match(t)) or (in_numbered and nxt_ is not None and nxt_.text.startswith('•') and not nxt_.blank_before and not SOURCE_H2.match(t)
+                                                                               and not re.match(r'^(RINGKASAN|POLA KASUS|EXAM TRAPS?)\b', t)):
                 out.append(Para(p.i, 3, smart_title(t, acr), p.blank_before, False, p.trail))      # "INFLUENZA" + butir di bawah "9.5 PERBANDINGAN ..." = subjudul
             else:
                 out.append(Para(p.i, 2, smart_title(t, acr), p.blank_before, False, p.trail, True))
@@ -720,10 +721,14 @@ def group_sections(chapter):
             cur = sections[-1]
         elif tk['k'] == 'h2':
             title = clean_h2(tk['text'], tk.get('force'))
-            cur = {'title': title, 'raw': tk['text'], 'kind': section_kind(title), 'toks': [], 'src': tk['src']}
+            cur = {'title': title, 'raw': tk['text'], 'kind': section_kind(title), 'toks': [], 'src': tk['src'], 'opening': (not sections) or sections[-1]['kind'] == 'tujuan'}
             sections.append(cur)
         elif cur is None:
             pre.append(tk)
+        elif cur['kind'] == 'sumber' and tk['k'] == 'h3' and tk.get('numbered') and cur['toks'] is not None and cur.get('opening'):
+            # "Catatan Basis Sumber" di awal BAB berakhir di judul bernomor berikutnya (N.M), yang menjadi bagian baru
+            cur = {'title': clean_h2(tk['text'], tk.get('force')), 'raw': tk['text'], 'kind': 'isi', 'toks': [], 'src': tk['src']}
+            sections.append(cur)
         else:
             cur['toks'].append(tk)
     return pre, sections
@@ -1129,7 +1134,7 @@ def figure_md_part(b, ctx, credits, ordered):
     return fig_md(f)
 
 
-def chapter_to_md(ch, subject, report, names):
+def chapter_to_md(ch, subject, report, names, title=''):
     ctx = Ctx(ch['num'], subject, names)
     promote_parts(ch)
     pre, sections = group_sections(ch)
@@ -1188,7 +1193,7 @@ def chapter_to_md(ch, subject, report, names):
         if s['kind'] == 'sumber':
             ctx.dropped.append((s['src'], s['raw'], 'bagian sumber & atribusi (atribusi ada di tiap gambar)'))
     md = '\n\n'.join(parts).rstrip() + '\n'
-    cards = flashcards.make_cards(md)
+    cards = flashcards.make_cards(md, title)
     if cards:
         md += '\n' + flashcards.cards_md(cards) + '\n'
     ctx.n_cards = len(cards)
@@ -1265,7 +1270,7 @@ def main():
         if old_file.endswith('.md'):
             os.remove(os.path.join(outdir, old_file))
     for ch in chapters:
-        md = chapter_to_md(ch, a.subject, report, names)
+        md = chapter_to_md(ch, a.subject, report, names, titles[ch['num']])
         fname = f'bab-{ch["num"]:02d}-{slug(titles[ch["num"]])}.md'
         with open(os.path.join(outdir, fname), 'w', encoding='utf-8') as f:
             f.write(md)

@@ -712,56 +712,62 @@ Baca panel hati dengan urutan AST/ALT → ALP/GGT → bilirubin total/direct →
 
 ## Flashcard {kartu}
 
-- [GGT — Gamma-Glutamyl Transferase] Pola high-yield :: ALP ↑ + GGT ↑ → sumber hepatobiliary lebih mungkin.
-- [Jaundice — Pendekatan Praktis] Jika bilirubin meningkat :: Langkah 1 → fractionate menjadi direct dan indirect.
-- [Acute Hepatitis Pattern] Red flag :: jaundice + coagulopathy + altered mental status → pikirkan acute liver failure.
-- [Pola Kasus: Acute Viral Hepatitis] Contoh pola :: AST 600 U/L, ALT 900 U/L, ALP sedikit meningkat, bilirubin 5 mg/dL.
-- [High-yield] Aminotransferase ribuan :: pikirkan ischemic, toxin/drug, acute viral, dan severe acute hepatitis lainnya
-- [High-yield] Cholestatic pattern :: ALP dominan
-- [High-yield] Hepatocellular pattern :: AST/ALT dominan
-- [High-yield] R factor ≥5 :: hepatocellular
-- [High-yield] R factor ≤2 :: cholestatic
-- [High-yield] Hemolysis :: indirect bilirubin ↑ + LDH ↑ + haptoglobin ↓ + reticulocyte ↑
-- [High-yield] Gilbert syndrome :: isolated mild unconjugated hyperbilirubinemia dengan enzim hati normal
-- [High-yield] PBC klasik :: cholestatic pattern + AMA positif
-- [Panel Dasar Fungsi Hati] Panel yang sering dinilai meliputi … :: • AST / SGOT
-  • ALT / SGPT
-  • alkaline phosphatase (ALP)
-  • gamma-glutamyl transferase (GGT)
-  • bilirubin total dan direct/conjugated bilirubin
-  • albumin dan total protein
-  • prothrombin time (PT) / INR
-- [AST — Aspartate Aminotransferase] Penyebab AST meningkat dapat meliputi … :: • hepatocellular injury
-  • muscle injury / rhabdomyolysis
-  • myocardial injury
-  • hemolysis pada sampel tertentu
-  • intense exercise
-- [Derajat Kenaikan Aminotransferase] Aminotransferase yang mencapai ribuan U/L terutama mengarahkan pada beberapa penyebab penting seperti … :: • ischemic hepatitis / hypoxic liver injury
-  • drug/toxin-induced injury, terutama acetaminophen
-  • acute viral hepatitis
-  • acute severe autoimmune hepatitis
-  • acute vascular injury tertentu
-- [Pola Campuran] Sering ditemukan pada … :: • drug-induced liver injury
-  • beberapa hepatitis
-  • kombinasi hepatocellular injury + cholestasis
-- [Unconjugated vs Conjugated Bilirubin] Unconjugated / indirect bilirubin … :: • belum larut air
-  • berikatan dengan albumin
-  • tidak diekskresikan ke urin
-- [Urine Bilirubin dan Urobilinogen] Complete biliary obstruction … :: • urine bilirubin positif
-  • urobilinogen dapat sangat rendah/absen
-- [PT / INR — Penanda Sintesis yang Lebih Cepat Berubah] PT/INR memanjang dapat terjadi pada … :: • severe hepatic dysfunction
-  • vitamin K deficiency
-  • warfarin therapy
-  • disseminated intravascular coagulation
-  • congenital factor deficiency
-- [Acute Hepatitis Pattern] Pola laboratorium yang umum … :: • AST/ALT dominan meningkat
-  • ALT sering lebih tinggi dari AST pada banyak acute viral hepatitides
-  • bilirubin dapat meningkat bila jaundice
-  • ALP biasanya tidak dominan
-  • PT/INR menjadi penting untuk menilai severity
-- [Drug-Induced Liver Injury (DILI)] DILI dapat memberikan pola … :: • hepatocellular
-  • cholestatic
-  • mixed
-- [Thrombocytopenia sebagai Petunjuk Portal Hypertension] Pada chronic liver disease, trombositopenia dapat muncul akibat … :: • splenic sequestration dari portal hypertension
-  • penurunan thrombopoietin
-  • marrow suppression atau faktor lain
+- [GGT — Gamma-Glutamyl Transferase] Pada GGT — Gamma-Glutamyl Transferase, apa pola high-yieldnya? :: ALP ↑ + GGT ↑ → sumber hepatobiliary lebih mungkin.
+- [Acute Hepatitis Pattern] Apa yang dimaksud dengan Red flag pada Acute Hepatitis Pattern? :: Jaundice + coagulopathy + altered mental status → pikirkan acute liver failure.
+- [Pola Kasus: Acute Viral Hepatitis] Apa yang dimaksud dengan Contoh pola pada Pola Kasus: Acute Viral Hepatitis? :: AST 600 U/L, ALT 900 U/L, ALP sedikit meningkat, bilirubin 5 mg/dL.
+- [Interpretasi Fungsi Hati] Apa yang perlu diingat tentang Aminotransferase ribuan pada Interpretasi Fungsi Hati? :: Pikirkan ischemic, toxin/drug, acute viral, dan severe acute hepatitis lainnya
+- [Interpretasi Fungsi Hati] Apa yang dimaksud dengan Cholestatic pattern pada Interpretasi Fungsi Hati? :: ALP dominan
+- [Interpretasi Fungsi Hati] Apa yang dimaksud dengan Hepatocellular pattern pada Interpretasi Fungsi Hati? :: AST/ALT dominan
+- [Interpretasi Fungsi Hati] Apa yang dimaksud dengan R factor ≥5 pada Interpretasi Fungsi Hati? :: Hepatocellular
+- [Interpretasi Fungsi Hati] Apa yang dimaksud dengan R factor ≤2 pada Interpretasi Fungsi Hati? :: Cholestatic
+- [Interpretasi Fungsi Hati] Apa yang perlu diingat tentang Hemolysis pada Interpretasi Fungsi Hati? :: Indirect bilirubin ↑ + LDH ↑ + haptoglobin ↓ + reticulocyte ↑
+- [Interpretasi Fungsi Hati] Apa yang perlu diingat tentang Gilbert syndrome pada Interpretasi Fungsi Hati? :: Isolated mild unconjugated hyperbilirubinemia dengan enzim hati normal
+- [Interpretasi Fungsi Hati] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pale stool + pruritus + direct bilirubin ↑? :: Pikirkan cholestasis/obstruction
+- [Interpretasi Fungsi Hati] Apa yang perlu diketahui tentang PBC klasik pada Interpretasi Fungsi Hati? :: Cholestatic pattern + AMA positif
+- [Langkah Pertama — Tentukan Pola, Bukan Satu Angka] Sebutkan urutan atau langkah pada Langkah Pertama — Tentukan Pola, Bukan Satu Angka? :: • Lihat AST dan ALT
+  • Lihat ALP
+  • Bandingkan derajat kenaikan AST/ALT dengan ALP
+  • Lihat bilirubin total dan direct
+  • Nilai albumin dan PT/INR
+  • Integrasikan gejala, obat, alkohol, faktor risiko infeksi, imaging, dan pemeriksaan etiologi
+- [Derajat Kenaikan Aminotransferase] Sebutkan aminotransferase yang mencapai ribuan U/L terutama mengarahkan pada beberapa penyebab penting seperti pada Derajat Kenaikan Aminotransferase. :: • Ischemic hepatitis / hypoxic liver injury
+  • Drug/toxin-induced injury, terutama acetaminophen
+  • Acute viral hepatitis
+  • Acute severe autoimmune hepatitis
+  • Acute vascular injury tertentu
+- [R Factor — Cara Formal Membedakan Pola] Sebutkan interpretasi umum pada R Factor — Cara Formal Membedakan Pola. :: • R ≥5 → hepatocellular pattern
+  • R ≤2 → cholestatic pattern
+  • R >2 dan <5 → mixed pattern
+- [Unconjugated vs Conjugated Bilirubin] Sebutkan poin-poin penting tentang Unconjugated / indirect bilirubin. :: • Belum larut air
+  • Berikatan dengan albumin
+  • Tidak diekskresikan ke urin
+- [Hyperbilirubinemia Terkonjugasi] Sebutkan penyebab utama pada Hyperbilirubinemia Terkonjugasi. :: • Hepatocellular dysfunction
+  • Impaired canalicular secretion
+  • Intrahepatic cholestasis
+  • Extrahepatic obstruction
+  • Dubin–Johnson syndrome
+  • Rotor syndrome
+- [Urine Bilirubin dan Urobilinogen] Sebutkan poin-poin penting tentang Complete biliary obstruction. :: • Urine bilirubin positif
+  • Urobilinogen dapat sangat rendah/absen
+- [Total Protein dan Globulin] Sebutkan poin-poin penting tentang Perubahan penting. :: • Albumin rendah → chronic liver disease, nephrotic syndrome, malnutrition, dll
+  • Globulin dapat meningkat pada chronic inflammatory liver disease
+  • Polyclonal hypergammaglobulinemia dapat terlihat pada autoimmune hepatitis atau cirrhosis
+- [MASLD / Steatotic Liver Disease] Sebutkan pola laboratorium pada MASLD / Steatotic Liver Disease. :: • ALT dapat sedikit meningkat
+  • AST dapat sedikit meningkat
+  • Enzim dapat normal meskipun penyakit ada
+- [Drug-Induced Liver Injury (DILI)] Sebutkan urutan atau langkah pada Drug-Induced Liver Injury (DILI)? :: • Buat timeline obat/suplemen
+  • Hitung R factor bila sesuai
+  • Eksklusi penyebab lain
+  • Perhatikan bilirubin dan INR untuk severity
+- [Ischemic / Hypoxic Hepatitis] Sebutkan poin-poin penting tentang Konteks klasik. :: • Shock
+  • Severe hypotension
+  • Cardiac failure
+  • Severe hypoxemia
+- [Primary Biliary Cholangitis (PBC)] Sebutkan pola laboratorium pada Primary Biliary Cholangitis (PBC). :: • ALP meningkat dominan
+  • GGT meningkat
+  • Bilirubin dapat meningkat pada penyakit lanjut
+  • Antimitochondrial antibody (AMA) sering positif
+- [Pola Kasus: Acute Viral Hepatitis] Sebutkan urutan atau langkah pada Pola Kasus: Acute Viral Hepatitis? :: • Nilai PT/INR
+  • Serologi hepatitis sesuai konteks
+  • Review obat/toxin
+  • Nilai severity klinis

@@ -108,17 +108,17 @@ Ventrikel lateral kanan-kiri berhubungan dengan ventrikel III melalui foramina i
 
 ## Flashcard {kartu}
 
-- [Cavitas cranii dan tiga fossa] Batas antarfossa membantu orientasi :: tepi posterior ala minor sphenoid memisahkan anterior dari media; tepi superior pars petrosa temporal dan dorsum sellae memisahkan media dari posterior. Saat melihat gambar, cari sella di tengah, foramen magnum di posterior, dan lamina cribrosa di anterior sebelum menghafal lubang lain.
-- [High-yield] Urutan lapisan :: tulang → dura → arachnoid → ruang subarachnoid → pia → otak
-- [High-yield] Jalur CSS :: lateral → III → IV → subarachnoid → resorpsi; tanda panah Monro dan aqueductus harus tepat
-- [Meninges dan ruang antar lapisan] Mnemonic: Meninges dan ruang antar lapisan :: Kulit kepala dapat diingat sebagai SCALP: Skin, dense Connective tissue, Aponeurosis, Loose connective tissue, Pericranium. Lapisan jaringan ikat longgar memungkinkan pergeseran kulit kepala dan menjadi jalur penyebaran cairan atau infeksi.
-- Peta besar cranium :: Cranium melindungi encephalon, memberi rangka wajah, dan membentuk orbit, rongga hidung, serta rongga mulut bagian atas.
-- Cranium tampak anterior, lateral, superior, dan posterior :: Tampak anterior: os frontale membentuk dahi dan margo supraorbitalis; glabella berada di antara arcus superciliares.
-- Tulang kunci dan basis cranii eksternal :: Os sphenoidale menjadi tulang sentral basis cranii.
-- Cavitas cranii dan tiga fossa :: Fossa cranii anterior paling dangkal; dasar utamanya os frontale, ethmoidale, dan ala minor sphenoidale.
-- Foramen dan fissura: isi yang harus dikenali :: Fossa anterior: foramina lamina cribrosa dilalui filamen n. olfactorius (I); canalis opticus di perbatasan anterior-media dilalui n. opticus (II) dan a. ophthalmica.
-- Dua belas pasang saraf kranial: fungsi dan jalur keluar :: I olfactorius—penciuman; II opticus—penglihatan.
-- Meninges dan ruang antar lapisan :: Dura mater cranialis memiliki lapisan periosteal yang melekat pada tulang serta lapisan meningeal yang lebih dalam.
-- Sinus vena dural dan drainase :: Sinus sagittalis superior berjalan di tepi atas falx cerebri dan menerima vena-vena corticalis serta granulationes arachnoideae.
-- Suplai arteri intracranial dan hubungan meningeal :: Aliran ke otak berasal dari pasangan a. carotis interna dan aa. vertebrales.
-- Ventrikel dan sirkulasi cairan serebrospinal :: Ventrikel lateral kanan-kiri berhubungan dengan ventrikel III melalui foramina interventricularia (Monro). Ventrikel III berhubungan dengan ventrikel IV melalui aqueductus cerebri di mesencephalon.
+- [Cavitas cranii dan tiga fossa] Jelaskan Batas antarfossa membantu orientasi dalam konteks Cavitas cranii dan tiga fossa. :: Tepi posterior ala minor sphenoid memisahkan anterior dari media; tepi superior pars petrosa temporal dan dorsum sellae memisahkan media dari posterior. Saat melihat gambar, cari sella di tengah, foramen magnum di posterior, dan lamina cribrosa di anterior sebelum menghafal lubang lain.
+- [Anatomi Cranium & Isi Rongga Tengkorak] Apa urutan lapisan pada Anatomi Cranium & Isi Rongga Tengkorak? :: Tulang → dura → arachnoid → ruang subarachnoid → pia → otak
+- [Anatomi Cranium & Isi Rongga Tengkorak] Apa jalur CSS pada Anatomi Cranium & Isi Rongga Tengkorak? :: Lateral → III → IV → subarachnoid → resorpsi; tanda panah Monro dan aqueductus harus tepat
+- [Meninges dan ruang antar lapisan] Bagaimana cara mengingat Meninges dan ruang antar lapisan? :: Kulit kepala dapat diingat sebagai SCALP: Skin, dense Connective tissue, Aponeurosis, Loose connective tissue, Pericranium. Lapisan jaringan ikat longgar memungkinkan pergeseran kulit kepala dan menjadi jalur penyebaran cairan atau infeksi.
+- Jelaskan peta besar cranium. :: Cranium melindungi encephalon, memberi rangka wajah, dan membentuk orbit, rongga hidung, serta rongga mulut bagian atas.
+- Jelaskan cranium tampak anterior, lateral, superior, dan posterior. :: Tampak anterior: os frontale membentuk dahi dan margo supraorbitalis; glabella berada di antara arcus superciliares.
+- Jelaskan tulang kunci dan basis cranii eksternal. :: Os sphenoidale menjadi tulang sentral basis cranii.
+- Jelaskan cavitas cranii dan tiga fossa. :: Fossa cranii anterior paling dangkal; dasar utamanya os frontale, ethmoidale, dan ala minor sphenoidale.
+- Jelaskan foramen dan fissura: isi yang harus dikenali. :: Fossa anterior: foramina lamina cribrosa dilalui filamen n. olfactorius (I); canalis opticus di perbatasan anterior-media dilalui n. opticus (II) dan a. ophthalmica.
+- Jelaskan dua belas pasang saraf kranial: fungsi dan jalur keluar. :: I olfactorius—penciuman; II opticus—penglihatan.
+- Jelaskan meninges dan ruang antar lapisan. :: Dura mater cranialis memiliki lapisan periosteal yang melekat pada tulang serta lapisan meningeal yang lebih dalam.
+- Jelaskan sinus vena dural dan drainase. :: Sinus sagittalis superior berjalan di tepi atas falx cerebri dan menerima vena-vena corticalis serta granulationes arachnoideae.
+- Jelaskan suplai arteri intracranial dan hubungan meningeal. :: Aliran ke otak berasal dari pasangan a. carotis interna dan aa. vertebrales.
+- Jelaskan ventrikel dan sirkulasi cairan serebrospinal. :: Ventrikel lateral kanan-kiri berhubungan dengan ventrikel III melalui foramina interventricularia (Monro). Ventrikel III berhubungan dengan ventrikel IV melalui aqueductus cerebri di mesencephalon.

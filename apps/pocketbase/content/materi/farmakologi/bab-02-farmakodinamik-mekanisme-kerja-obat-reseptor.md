@@ -112,18 +112,18 @@ Farmakodinamik = efek obat terhadap tubuh. Target dapat berupa reseptor, enzim, 
 
 ## Flashcard {kartu}
 
-- [Menghubungkan Farmakokinetik dengan Farmakodinamik] Alur konseptual :: Dosis diberikan → obat mengalami ADME → terbentuk konsentrasi di tempat aksi → obat berinteraksi dengan target/reseptor → timbul respons terapeutik dan/atau toksik.
-- [High-yield] Efek sangat cepat setelah ikatan ligan :: pikirkan ligand-gated ion channel
-- [Konsep Dasar Farmakodinamik] Dua istilah dasar … :: • afinitas — kekuatan kecenderungan obat berikatan dengan reseptor
-  • spesifisitas/selektivitas — kecenderungan obat atau reseptor berinteraksi lebih kuat pada target tertentu dibanding target lain
-- [Hubungan Dosis–Respons] Dua parameter yang sangat penting … :: • Potensi — jumlah/konsentrasi obat yang diperlukan untuk menghasilkan efek tertentu. Sering dibandingkan menggunakan EC50
-  • Efikasi — efek maksimal (Emax) yang mampu dihasilkan oleh suatu obat
-- [4. Reseptor intraseluler] Exam pearl: 4. Reseptor intraseluler :: Urutan kecepatan konseptual: kanal ion paling cepat → GPCR → enzyme-linked → reseptor intraseluler paling lambat.
-- [Hubungan Dosis–Respons] Exam pearl: Hubungan Dosis–Respons :: Kurva bergeser ke kiri = lebih poten jika Emax tetap. Kurva lebih tinggi = efikasi lebih besar. Jangan menyamakan potency dengan efficacy.
-- Konsep Dasar Farmakodinamik :: Farmakodinamik menjawab pertanyaan “apa yang dilakukan obat terhadap tubuh?”. Fokusnya adalah mekanisme kerja obat, target molekuler, interaksi dengan reseptor, dan hubungan antara konsentrasi/dosis dengan respons biologis.
-- Empat Famili Utama Reseptor :: Reseptor obat dibagi menjadi empat kelompok besar.
-- Agonis dan Antagonis :: Agonis berikatan dengan reseptor dan mengaktifkannya sehingga menghasilkan respons. Agonis penuh dapat menghasilkan respons maksimal sistem, sedangkan agonis parsial memiliki efek maksimal yang lebih rendah walaupun seluruh reseptor telah banyak terikat.
-- Hubungan Dosis–Respons :: Semakin tinggi dosis atau konsentrasi obat, respons umumnya meningkat hingga mencapai plateau ketika respons maksimal telah tercapai.
-- Indeks Terapeutik dan Margin Keamanan :: Indeks terapeutik menggambarkan margin keamanan obat dengan membandingkan dosis yang menimbulkan toksisitas dengan dosis yang menghasilkan efek terapeutik.
-- Variasi Respons Obat Antarindividu :: Respons obat tidak selalu sama pada setiap pasien. Variasi dapat muncul karena perbedaan usia, komposisi tubuh, fungsi hati dan ginjal, faktor genetik, penyakit penyerta, interaksi obat, toleransi, serta perbedaan sensitivitas target.
-- Menghubungkan Farmakokinetik dengan Farmakodinamik :: Farmakokinetik dan farmakodinamik tidak berdiri sendiri.
+- [Menghubungkan Farmakokinetik dengan Farmakodinamik] Pada Menghubungkan Farmakokinetik dengan Farmakodinamik, apa alur konseptualnya? :: Dosis diberikan → obat mengalami ADME → terbentuk konsentrasi di tempat aksi → obat berinteraksi dengan target/reseptor → timbul respons terapeutik dan/atau toksik.
+- [Farmakodinamik: Mekanisme Kerja Obat & Reseptor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Obat dengan TI sempit pada pasien gagal ginjal? :: Risiko toksisitas meningkat bila eliminasi menurun
+- [Farmakodinamik: Mekanisme Kerja Obat & Reseptor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Efek obat steroid muncul lambat tetapi bertahan lama? :: Konsisten dengan reseptor intraseluler dan regulasi transkripsi gen
+- [Farmakodinamik: Mekanisme Kerja Obat & Reseptor] Apa jawaban atau kesimpulan untuk petunjuk berikut: Efek sangat cepat setelah ikatan ligan? :: Pikirkan ligand-gated ion channel
+- [Konsep Dasar Farmakodinamik] Sebutkan poin-poin penting tentang Dua istilah dasar. :: • Afinitas — kekuatan kecenderungan obat berikatan dengan reseptor
+  • Spesifisitas/selektivitas — kecenderungan obat atau reseptor berinteraksi lebih kuat pada target tertentu dibanding target lain
+- [Reseptor intraseluler] Apa poin high-yield (pearl) tentang Empat Famili Utama Reseptor? :: Urutan kecepatan konseptual: kanal ion paling cepat → GPCR → enzyme-linked → reseptor intraseluler paling lambat.
+- [Hubungan Dosis–Respons] Apa poin high-yield (pearl) tentang Hubungan Dosis–Respons? :: Kurva bergeser ke kiri = lebih poten jika Emax tetap. Kurva lebih tinggi = efikasi lebih besar. Jangan menyamakan potency dengan efficacy.
+- Jelaskan konsep Dasar Farmakodinamik. :: Farmakodinamik menjawab pertanyaan “apa yang dilakukan obat terhadap tubuh?”. Fokusnya adalah mekanisme kerja obat, target molekuler, interaksi dengan reseptor, dan hubungan antara konsentrasi/dosis dengan respons biologis.
+- Jelaskan empat Famili Utama Reseptor. :: Reseptor obat dibagi menjadi empat kelompok besar.
+- Jelaskan agonis dan Antagonis. :: Agonis berikatan dengan reseptor dan mengaktifkannya sehingga menghasilkan respons. Agonis penuh dapat menghasilkan respons maksimal sistem, sedangkan agonis parsial memiliki efek maksimal yang lebih rendah walaupun seluruh reseptor telah banyak terikat.
+- Jelaskan hubungan Dosis–Respons. :: Semakin tinggi dosis atau konsentrasi obat, respons umumnya meningkat hingga mencapai plateau ketika respons maksimal telah tercapai.
+- Jelaskan indeks Terapeutik dan Margin Keamanan. :: Indeks terapeutik menggambarkan margin keamanan obat dengan membandingkan dosis yang menimbulkan toksisitas dengan dosis yang menghasilkan efek terapeutik.
+- Jelaskan variasi Respons Obat Antarindividu. :: Respons obat tidak selalu sama pada setiap pasien. Variasi dapat muncul karena perbedaan usia, komposisi tubuh, fungsi hati dan ginjal, faktor genetik, penyakit penyerta, interaksi obat, toleransi, serta perbedaan sensitivitas target.
+- Jelaskan menghubungkan Farmakokinetik dengan Farmakodinamik. :: Farmakokinetik dan farmakodinamik tidak berdiri sendiri.

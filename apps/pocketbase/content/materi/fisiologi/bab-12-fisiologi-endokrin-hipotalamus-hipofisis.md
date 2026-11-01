@@ -363,52 +363,63 @@ Gunakan flow ini sebagai peta sebelum menghafal detail.
 
 ## Flashcard {kartu}
 
-- [Empat Pola Komunikasi Kimia] Autocrine :: mediator bekerja pada sel yang mensekresikannya sendiri.
-- [Empat Pola Komunikasi Kimia] Paracrine :: mediator bekerja pada sel tetangga.
-- [Empat Pola Komunikasi Kimia] Endocrine :: hormon masuk darah dan bekerja pada target jauh.
-- [Empat Pola Komunikasi Kimia] Synaptic/neurocrine :: neurotransmiter dilepas ke celah sinaps.
-- [Klasifikasi Hormon Berdasarkan Kimia] Peptida/protein :: insulin, glukagon, GH, prolaktin, ACTH, ADH.
-- [Klasifikasi Hormon Berdasarkan Kimia] Steroid :: kortisol, aldosteron, androgen, estrogen, progesteron.
-- [Klasifikasi Hormon Berdasarkan Kimia] Turunan asam amino :: katekolamin dan hormon tiroid.
-- [Up-Regulation dan Down-Regulation] Contoh konseptual :: stimulasi terus-menerus oleh agonis dapat membuat respons sel berkurang meskipun hormon tetap tinggi.
-- [Interaksi Antarhormon] Permissive :: satu hormon memungkinkan hormon lain bekerja optimal. Contoh: hormon tiroid meningkatkan ekspresi reseptor β-adrenergik sehingga memperkuat respons terhadap katekolamin.
-- [Interaksi Antarhormon] Synergistic :: dua hormon bersama menghasilkan efek lebih besar daripada masing-masing.
-- [Interaksi Antarhormon] Antagonistic :: hormon menghasilkan efek berlawanan, misalnya insulin vs glukagon terhadap glukosa darah.
-- [Ritme Sekresi Hormon] ultradian :: beberapa siklus dalam 24 jam
-- [Ritme Sekresi Hormon] circadian :: kira-kira satu siklus per 24 jam
-- [Sumbu Hipotalamus–Hipofisis–Target] Pola klasik :: hipotalamus → releasing/inhibiting hormone → adenohipofisis → tropic hormone → kelenjar target → hormon akhir.
-- [Sumbu Hipotalamus–Hipofisis–Target] Long-loop feedback :: hormon target menghambat pusat atas.
-- [Sumbu Hipotalamus–Hipofisis–Target] Short-loop feedback :: hormon hipofisis memengaruhi hipotalamus.
-- [Sumbu Hipotalamus–Hipofisis–Target] Ultra-short loop :: hormon hipotalamus memodulasi neuron penghasilnya sendiri.
-- [Diabetes Insipidus dan SIADH] Central diabetes insipidus :: produksi/pelepasan ADH tidak adekuat.
-- [Diabetes Insipidus dan SIADH] Nephrogenic diabetes insipidus :: ginjal tidak responsif terhadap ADH.
-- [Diabetes Insipidus dan SIADH] SIADH :: aktivitas ADH berlebihan → retensi air → hiponatremia dilusional dan urin yang tidak seencer yang seharusnya.
-- [Primary, Secondary, dan Tertiary Endocrine Disorders] Primary disorder :: masalah pada target endocrine gland.
-- [Primary, Secondary, dan Tertiary Endocrine Disorders] Secondary disorder :: masalah pada pituitary.
-- [Primary, Secondary, dan Tertiary Endocrine Disorders] Tertiary disorder :: masalah pada hypothalamus.
-- [Primary, Secondary, dan Tertiary Endocrine Disorders] Contoh pola :: primary hypothyroidism → T4 rendah, TSH tinggi.
-- [Primary, Secondary, dan Tertiary Endocrine Disorders] Strategi soal :: selalu tentukan “hormon target” dan “hormon tropik” lalu gunakan prinsip negative feedback.
-- [Konsep Sel Target] Respons sel target ditentukan oleh … :: • jumlah reseptor
-  • afinitas reseptor
-  • coupling ke jalur sinyal intrasel
-  • status metabolik sel
-  • adanya hormon lain yang bersifat permisif, sinergis, atau antagonistik
-- [Klasifikasi Hormon Berdasarkan Kimia] Tiga kelompok utama … :: • Peptida/protein: insulin, glukagon, GH, prolaktin, ACTH, ADH
+- [Empat Pola Komunikasi Kimia] Apa yang dimaksud dengan Autocrine pada Empat Pola Komunikasi Kimia? :: Mediator bekerja pada sel yang mensekresikannya sendiri.
+- [Empat Pola Komunikasi Kimia] Apa yang dimaksud dengan Paracrine pada Empat Pola Komunikasi Kimia? :: Mediator bekerja pada sel tetangga.
+- [Empat Pola Komunikasi Kimia] Apa yang dimaksud dengan Endocrine pada Empat Pola Komunikasi Kimia? :: Hormon masuk darah dan bekerja pada target jauh.
+- [Empat Pola Komunikasi Kimia] Apa yang dimaksud dengan Synaptic/neurocrine pada Empat Pola Komunikasi Kimia? :: Neurotransmiter dilepas ke celah sinaps.
+- [Klasifikasi Hormon Berdasarkan Kimia] Apa yang dimaksud dengan Peptida/protein pada Klasifikasi Hormon Berdasarkan Kimia? :: Insulin, glukagon, GH, prolaktin, ACTH, ADH.
+- [Klasifikasi Hormon Berdasarkan Kimia] Apa yang dimaksud dengan Steroid pada Klasifikasi Hormon Berdasarkan Kimia? :: Kortisol, aldosteron, androgen, estrogen, progesteron.
+- [Klasifikasi Hormon Berdasarkan Kimia] Jelaskan Turunan asam amino dalam konteks Klasifikasi Hormon Berdasarkan Kimia. :: Katekolamin dan hormon tiroid.
+- [Up-Regulation dan Down-Regulation] Apa yang dimaksud dengan Contoh konseptual pada Up-Regulation dan Down-Regulation? :: Stimulasi terus-menerus oleh agonis dapat membuat respons sel berkurang meskipun hormon tetap tinggi.
+- [Interaksi Antarhormon] Apa yang dimaksud dengan Permissive pada Interaksi Antarhormon? :: Satu hormon memungkinkan hormon lain bekerja optimal. Contoh: hormon tiroid meningkatkan ekspresi reseptor β-adrenergik sehingga memperkuat respons terhadap katekolamin.
+- [Interaksi Antarhormon] Apa yang dimaksud dengan Synergistic pada Interaksi Antarhormon? :: Dua hormon bersama menghasilkan efek lebih besar daripada masing-masing.
+- [Interaksi Antarhormon] Apa yang dimaksud dengan Antagonistic pada Interaksi Antarhormon? :: Hormon menghasilkan efek berlawanan, misalnya insulin vs glukagon terhadap glukosa darah.
+- [Ritme Sekresi Hormon] Apa yang dimaksud dengan ultradian pada Ritme Sekresi Hormon? :: Beberapa siklus dalam 24 jam
+- [Ritme Sekresi Hormon] Apa yang dimaksud dengan circadian pada Ritme Sekresi Hormon? :: Kira-kira satu siklus per 24 jam
+- [Sumbu Hipotalamus–Hipofisis–Target] Pada Sumbu Hipotalamus–Hipofisis–Target, apa pola klasiknya? :: Hipotalamus → releasing/inhibiting hormone → adenohipofisis → tropic hormone → kelenjar target → hormon akhir.
+- [Sumbu Hipotalamus–Hipofisis–Target] Apa yang dimaksud dengan Long-loop feedback pada Sumbu Hipotalamus–Hipofisis–Target? :: Hormon target menghambat pusat atas.
+- [Sumbu Hipotalamus–Hipofisis–Target] Apa yang dimaksud dengan Short-loop feedback pada Sumbu Hipotalamus–Hipofisis–Target? :: Hormon hipofisis memengaruhi hipotalamus.
+- [Sumbu Hipotalamus–Hipofisis–Target] Apa yang dimaksud dengan Ultra-short loop pada Sumbu Hipotalamus–Hipofisis–Target? :: Hormon hipotalamus memodulasi neuron penghasilnya sendiri.
+- [Diabetes Insipidus dan SIADH] Jelaskan Central diabetes insipidus dalam konteks Diabetes Insipidus dan SIADH. :: Produksi/pelepasan ADH tidak adekuat.
+- [Diabetes Insipidus dan SIADH] Jelaskan Nephrogenic diabetes insipidus dalam konteks Diabetes Insipidus dan SIADH. :: Ginjal tidak responsif terhadap ADH.
+- [Diabetes Insipidus dan SIADH] Jelaskan SIADH. :: Aktivitas ADH berlebihan → retensi air → hiponatremia dilusional dan urin yang tidak seencer yang seharusnya.
+- [Primary, Secondary, dan Tertiary Endocrine Disorders] Apa yang dimaksud dengan Primary disorder pada Primary, Secondary, dan Tertiary Endocrine Disorders? :: Masalah pada target endocrine gland.
+- [Primary, Secondary, dan Tertiary Endocrine Disorders] Apa yang dimaksud dengan Secondary disorder pada Primary, Secondary, dan Tertiary Endocrine Disorders? :: Masalah pada pituitary.
+- [Primary, Secondary, dan Tertiary Endocrine Disorders] Apa yang dimaksud dengan Tertiary disorder pada Primary, Secondary, dan Tertiary Endocrine Disorders? :: Masalah pada hypothalamus.
+- [Primary, Secondary, dan Tertiary Endocrine Disorders] Apa yang dimaksud dengan Contoh pola pada Primary, Secondary, dan Tertiary Endocrine Disorders? :: Primary hypothyroidism → T4 rendah, TSH tinggi.
+- [Primary, Secondary, dan Tertiary Endocrine Disorders] Apa yang dimaksud dengan Strategi soal pada Primary, Secondary, dan Tertiary Endocrine Disorders? :: Selalu tentukan “hormon target” dan “hormon tropik” lalu gunakan prinsip negative feedback.
+- [Klasifikasi Hormon Berdasarkan Kimia] Sebutkan tiga kelompok utama pada Klasifikasi Hormon Berdasarkan Kimia. :: • Peptida/protein: insulin, glukagon, GH, prolaktin, ACTH, ADH
   • Steroid: kortisol, aldosteron, androgen, estrogen, progesteron
   • Turunan asam amino: katekolamin dan hormon tiroid
-- [Ritme Sekresi Hormon] Sekresi hormon dapat bersifat … :: • pulsatile
-  • ultradian: beberapa siklus dalam 24 jam
-  • circadian: kira-kira satu siklus per 24 jam
-  • dipicu makan, tidur, stres, aktivitas, atau siklus reproduksi
-- [ADH / Vasopresin: Stimulus Utama] ADH terutama meningkat ketika … :: • osmolalitas plasma naik
-  • volume efektif sirkulasi atau tekanan darah turun bermakna
-- [Peta Besar Sistem Endokrin] High-yield: Peta Besar Sistem Endokrin :: “endokrin” tidak identik dengan “lambat”. Katekolamin dapat bekerja sangat cepat, sedangkan hormon steroid atau tiroid cenderung memiliki onset lebih lambat karena banyak efeknya melibatkan perubahan ekspresi gen.
-- [Empat Pola Komunikasi Kimia] Practical clue: Empat Pola Komunikasi Kimia :: Yang menentukan kategori adalah jalur dan jarak penyampaian sinyal, bukan jenis molekulnya. Satu molekul dapat berperan sebagai neurotransmiter maupun hormon tergantung lokasi pelepasan.
-- [Hormon Hidrofilik vs Lipofilik] High-yield: Hormon Hidrofilik vs Lipofilik :: Fraksi bebas adalah fraksi yang paling langsung tersedia untuk masuk ke jaringan dan menimbulkan efek biologis. Protein carrier memperpanjang half-life dan menjadi reservoir.
-- [Reseptor Membran dan Second Messenger] Mnemonic konseptual: Reseptor Membran dan Second Messenger :: Hormon adalah first messenger; molekul intrasel seperti cAMP, IP3, DAG, dan Ca²⁺ adalah second messenger.
-- [Amplifikasi Sinyal] High-yield: Amplifikasi Sinyal :: Amplifikasi terjadi di berbagai tingkat, termasuk sumbu hipotalamus → hipofisis → kelenjar target.
-- [Ritme Sekresi Hormon] Trap: Ritme Sekresi Hormon :: Satu nilai hormon acak tidak selalu mencerminkan fungsi sumbu endokrin karena sekresi dapat sangat dipengaruhi waktu.
-- [Sistem Porta Hipotalamus–Hipofisis] Trap: Sistem Porta Hipotalamus–Hipofisis :: Adenohipofisis diatur terutama melalui sistem porta, sedangkan neurohipofisis menerima hormon melalui transport akson.
-- [ADH: Reseptor V2 dan Reabsorpsi Air] High-yield: ADH: Reseptor V2 dan Reabsorpsi Air :: ADH mengatur water permeability, bukan terutama reabsorpsi Na⁺ secara langsung.
-- [Diabetes Insipidus dan SIADH] Trap: Diabetes Insipidus dan SIADH :: Masalah utama SIADH adalah excess water relative to solute, bukan “kelebihan natrium”.
-- [Kekurangan dan Kelebihan GH] High-yield: Kekurangan dan Kelebihan GH :: IGF-1 sering lebih stabil daripada GH acak karena GH disekresikan pulsatile.
+- [Protein Carrier dan Free Hormone] Sebutkan contoh carrier pada Protein Carrier dan Free Hormone. :: • TBG untuk T3/T4
+  • CBG/transcortin untuk kortisol
+  • SHBG untuk hormon seks
+  • Albumin dengan afinitas lebih rendah tetapi kapasitas besar
+- [Reseptor Membran dan Second Messenger] Sebutkan jalur penting pada Reseptor Membran dan Second Messenger. :: • Gs → adenylate cyclase → cAMP → PKA
+  • Gi → ↓ adenylate cyclase → ↓ cAMP
+  • Gq → phospholipase C → IP3 + DAG → Ca²⁺/PKC
+  • Receptor tyrosine kinase → phosphorylation cascade
+  • JAK/STAT untuk beberapa reseptor sitokin/hormon
+- [Hipotalamus: Penghubung Saraf dan Endokrin] Sebutkan poin-poin penting tentang Hormon utama. :: • TRH → ↑ TSH
+  • CRH → ↑ ACTH
+  • GnRH → ↑ LH/FSH
+  • GHRH → ↑ GH
+  • Somatostatin → ↓ GH dan dapat ↓ TSH
+  • Dopamine → ↓ prolaktin
+- [ADH / Vasopresin: Stimulus Utama] Sebutkan poin-poin penting tentang ADH terutama meningkat ketika. :: • Osmolalitas plasma naik
+  • Volume efektif sirkulasi atau tekanan darah turun bermakna
+- [GH: Efek Langsung dan IGF-1] Sebutkan efek pertumbuhan pada GH: Efek Langsung dan IGF-1. :: • Meningkatkan proliferasi chondrocyte
+  • Mendukung pertumbuhan tulang panjang sebelum epiphyseal closure
+  • Meningkatkan sintesis protein dan pertumbuhan jaringan
+- [Dynamic Endocrine Testing: Konsep] Sebutkan contoh klasik pada Dynamic Endocrine Testing: Konsep. :: • Oral glucose suppression test pada GH excess
+  • Dexamethasone suppression principle pada hypercortisolism
+- [Peta Besar Sistem Endokrin] Apa poin high-yield (pearl) tentang Peta Besar Sistem Endokrin? :: “endokrin” tidak identik dengan “lambat”. Katekolamin dapat bekerja sangat cepat, sedangkan hormon steroid atau tiroid cenderung memiliki onset lebih lambat karena banyak efeknya melibatkan perubahan ekspresi gen.
+- [Empat Pola Komunikasi Kimia] Apa clue praktikum untuk Empat Pola Komunikasi Kimia? :: Yang menentukan kategori adalah jalur dan jarak penyampaian sinyal, bukan jenis molekulnya. Satu molekul dapat berperan sebagai neurotransmiter maupun hormon tergantung lokasi pelepasan.
+- [Hormon Hidrofilik vs Lipofilik] Apa poin high-yield (pearl) tentang Hormon Hidrofilik vs Lipofilik? :: Fraksi bebas adalah fraksi yang paling langsung tersedia untuk masuk ke jaringan dan menimbulkan efek biologis. Protein carrier memperpanjang half-life dan menjadi reservoir.
+- [Reseptor Membran dan Second Messenger] Bagaimana cara mengingat Reseptor Membran dan Second Messenger? :: Hormon adalah first messenger; molekul intrasel seperti cAMP, IP3, DAG, dan Ca²⁺ adalah second messenger.
+- [Amplifikasi Sinyal] Apa poin high-yield (pearl) tentang Amplifikasi Sinyal? :: Amplifikasi terjadi di berbagai tingkat, termasuk sumbu hipotalamus → hipofisis → kelenjar target.
+- [Ritme Sekresi Hormon] Apa jebakan yang sering muncul pada soal tentang Ritme Sekresi Hormon? :: Satu nilai hormon acak tidak selalu mencerminkan fungsi sumbu endokrin karena sekresi dapat sangat dipengaruhi waktu.
+- [Sistem Porta Hipotalamus–Hipofisis] Apa jebakan yang sering muncul pada soal tentang Sistem Porta Hipotalamus–Hipofisis? :: Adenohipofisis diatur terutama melalui sistem porta, sedangkan neurohipofisis menerima hormon melalui transport akson.
+- [ADH: Reseptor V2 dan Reabsorpsi Air] Apa poin high-yield (pearl) tentang ADH: Reseptor V2 dan Reabsorpsi Air? :: ADH mengatur water permeability, bukan terutama reabsorpsi Na⁺ secara langsung.
+- [Diabetes Insipidus dan SIADH] Apa jebakan yang sering muncul pada soal tentang Diabetes Insipidus dan SIADH? :: Masalah utama SIADH adalah excess water relative to solute, bukan “kelebihan natrium”.
+- [Kekurangan dan Kelebihan GH] Apa poin high-yield (pearl) tentang Kekurangan dan Kelebihan GH? :: IGF-1 sering lebih stabil daripada GH acak karena GH disekresikan pulsatile.

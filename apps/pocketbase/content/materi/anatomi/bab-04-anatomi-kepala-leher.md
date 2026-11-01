@@ -111,19 +111,18 @@ Laring berada di depan laringofaring dan berlanjut ke trakea. Rangka utamanya me
 
 ## Flashcard {kartu}
 
-- [Peta anatomi kepala dan leher] Cara membaca regio :: identifikasi tulang/otot penanda → tentukan lapisan dari kulit ke dalam → cari saraf dan pembuluh → hubungkan dengan rongga atau organ terdekat. Hubungan ruang lebih penting daripada menghafal daftar struktur tanpa lokasi.
-- [Kelenjar saliva] Sekresi parotis :: IX → n. petrosus minor → ganglion oticum → n. auriculotemporalis. Sekresi submandibularis dan sublingualis: VII → chorda tympani → n. lingualis → ganglion submandibulare. Karena n. lingualis membawa lebih dari satu jenis serabut, fungsi sensorik umum dan jalur parasimpatis perlu dibedakan.
-- [High-yield] Saraf laring :: cricothyroideus oleh cabang eksternal laryngeus superior; mayoritas otot intrinsik lain oleh recurrens
-- [Wajah superfisial: mimik, sensasi, dan kelenjar parotis] Klinis: Wajah superfisial: mimik, sensasi, dan kelenjar parotis :: Paresis VII perifer melemahkan otot mimik pada sisi yang sama, termasuk penutupan mata. Defisit sensasi wajah mengarahkan pemeriksaan ke cabang V. Pembesaran parotis dapat menekan struktur di sekitarnya; lokasi lesi menentukan gejala.
-- [Otot pengunyahan dan sendi temporomandibular] Klinis: Otot pengunyahan dan sendi temporomandibular :: Nyeri, bunyi klik, atau keterbatasan gerak dapat terkait gangguan diskus maupun otot; temuan tunggal tidak cukup untuk diagnosis. Dislokasi anterior terjadi bila kondilus bergerak melewati eminensia artikular dan gagal kembali.
-- [Rongga hidung dan sinus paranasal] Klinis: Rongga hidung dan sinus paranasal :: Ostium sinus maksilaris relatif tinggi pada dinding medialnya sehingga drainase pasif dapat kurang efisien. Saat membaca CT atau diagram, bedakan konka (tonjolan tulang) dari meatus (ruang di bawahnya).
-- [Faring dan laring] Klinis: Faring dan laring :: Gangguan n. laryngeus recurrens dapat mengubah suara dan gerak pita suara; gangguan bilateral berpotensi mengganggu jalan napas. Evaluasi fungsi laring memerlukan pemeriksaan klinis yang sesuai, bukan inferensi dari satu gejala saja.
-- Peta anatomi kepala dan leher :: Kepala bagian luar mencakup wajah, regio temporal, rongga hidung, rongga mulut, dan ruang dalam wajah.
-- Wajah superfisial: mimik, sensasi, dan kelenjar parotis :: Otot mimik umumnya berinsersi pada kulit, sehingga kontraksinya menggerakkan ekspresi.
-- Otot pengunyahan dan sendi temporomandibular :: Empat otot pengunyahan utama adalah masseter, temporalis, pterygoideus medialis, dan pterygoideus lateralis; semuanya motorik oleh V3. Masseter, temporalis, dan pterygoideus medialis mengangkat mandibula.
-- Ruang dalam wajah :: Fossa temporalis terletak di atas arcus zygomaticus dan menampung m. temporalis.
-- Rongga hidung dan sinus paranasal :: Septum hidung membagi rongga kanan-kiri; komponen utamanya lempeng tegak ethmoid, vomer, dan kartilago septum.
-- Rongga mulut, lidah, palatum, dan gigi :: Vestibulum adalah ruang antara bibir/pipi dan gigi/gingiva; cavitas oris propria terletak di dalam arcus dentalis.
-- Kelenjar saliva :: Tiga pasang kelenjar saliva mayor adalah parotis, submandibularis, dan sublingualis.
-- Fasia, ruang, dan segitiga leher :: Fasia servikal superfisial berada di bawah kulit dan mengandung platysma.
-- Otot dan jalur neurovaskular leher :: SCM berorigo di manubrium dan klavikula menuju prosesus mastoideus; kontraksi satu sisi memiringkan kepala ke sisi yang sama dan memutar wajah ke sisi berlawanan.
+- [Kelenjar saliva] Apa yang dimaksud dengan Sekresi parotis pada Kelenjar saliva? :: IX → n. petrosus minor → ganglion oticum → n. auriculotemporalis. Sekresi submandibularis dan sublingualis: VII → chorda tympani → n. lingualis → ganglion submandibulare. Karena n. lingualis membawa lebih dari satu jenis serabut, fungsi sensorik umum dan jalur parasimpatis perlu dibedakan.
+- [Anatomi Kepala & Leher] Apa yang perlu diketahui tentang Saraf laring pada Anatomi Kepala & Leher? :: Cricothyroideus oleh cabang eksternal laryngeus superior; mayoritas otot intrinsik lain oleh recurrens
+- [Wajah superfisial: mimik, sensasi, dan kelenjar parotis] Apa korelasi klinis dari Wajah superfisial: mimik, sensasi, dan kelenjar parotis? :: Paresis VII perifer melemahkan otot mimik pada sisi yang sama, termasuk penutupan mata. Defisit sensasi wajah mengarahkan pemeriksaan ke cabang V. Pembesaran parotis dapat menekan struktur di sekitarnya; lokasi lesi menentukan gejala.
+- [Otot pengunyahan dan sendi temporomandibular] Apa korelasi klinis dari Otot pengunyahan dan sendi temporomandibular? :: Nyeri, bunyi klik, atau keterbatasan gerak dapat terkait gangguan diskus maupun otot; temuan tunggal tidak cukup untuk diagnosis. Dislokasi anterior terjadi bila kondilus bergerak melewati eminensia artikular dan gagal kembali.
+- [Rongga hidung dan sinus paranasal] Apa korelasi klinis dari Rongga hidung dan sinus paranasal? :: Ostium sinus maksilaris relatif tinggi pada dinding medialnya sehingga drainase pasif dapat kurang efisien. Saat membaca CT atau diagram, bedakan konka (tonjolan tulang) dari meatus (ruang di bawahnya).
+- [Faring dan laring] Apa korelasi klinis dari Faring dan laring? :: Gangguan n. laryngeus recurrens dapat mengubah suara dan gerak pita suara; gangguan bilateral berpotensi mengganggu jalan napas. Evaluasi fungsi laring memerlukan pemeriksaan klinis yang sesuai, bukan inferensi dari satu gejala saja.
+- Jelaskan peta anatomi kepala dan leher. :: Kepala bagian luar mencakup wajah, regio temporal, rongga hidung, rongga mulut, dan ruang dalam wajah.
+- Jelaskan wajah superfisial: mimik, sensasi, dan kelenjar parotis. :: Otot mimik umumnya berinsersi pada kulit, sehingga kontraksinya menggerakkan ekspresi.
+- Jelaskan otot pengunyahan dan sendi temporomandibular. :: Empat otot pengunyahan utama adalah masseter, temporalis, pterygoideus medialis, dan pterygoideus lateralis; semuanya motorik oleh V3. Masseter, temporalis, dan pterygoideus medialis mengangkat mandibula.
+- Jelaskan ruang dalam wajah. :: Fossa temporalis terletak di atas arcus zygomaticus dan menampung m. temporalis.
+- Jelaskan rongga hidung dan sinus paranasal. :: Septum hidung membagi rongga kanan-kiri; komponen utamanya lempeng tegak ethmoid, vomer, dan kartilago septum.
+- Jelaskan rongga mulut, lidah, palatum, dan gigi. :: Vestibulum adalah ruang antara bibir/pipi dan gigi/gingiva; cavitas oris propria terletak di dalam arcus dentalis.
+- Jelaskan kelenjar saliva. :: Tiga pasang kelenjar saliva mayor adalah parotis, submandibularis, dan sublingualis.
+- Jelaskan fasia, ruang, dan segitiga leher. :: Fasia servikal superfisial berada di bawah kulit dan mengandung platysma.
+- Jelaskan otot dan jalur neurovaskular leher. :: SCM berorigo di manubrium dan klavikula menuju prosesus mastoideus; kontraksi satu sisi memiringkan kepala ke sisi yang sama dan memutar wajah ke sisi berlawanan.

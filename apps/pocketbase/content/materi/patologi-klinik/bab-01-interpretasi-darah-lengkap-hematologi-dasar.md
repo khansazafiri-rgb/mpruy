@@ -748,101 +748,99 @@ Unexplained cytopenia multiple lines → smear + reticulocyte + nutritional/infe
 
 ## Flashcard {kartu}
 
-- [Indeks Eritrosit] Iron deficiency anemia :: MCV ↓, MCH/MCHC ↓, RDW sering ↑.
-- [Indeks Eritrosit] Thalassemia trait :: MCV sangat ↓ tetapi RDW dapat normal atau hanya sedikit ↑; RBC count relatif tinggi.
-- [Indeks Eritrosit] Anemia penyakit kronik :: sering normocytic, kadang microcytic ringan.
-- [Indeks Eritrosit] Megaloblastic anemia :: MCV ↑ dan RDW sering ↑.
-- [Algoritme Pertama pada Anemia] Jika Hb rendah :: Langkah 1 → lihat MCV.
-- [Macrocytic Anemia] Megaloblastic anemia :: Penyebab klasik → vitamin B12 deficiency dan folate deficiency.
-- [Erythrocytosis / Polycythemia] Relative erythrocytosis :: volume plasma menurun, misalnya dehidrasi.
-- [Erythrocytosis / Polycythemia] Kerangka pikir :: Hb/Hct tinggi → nilai status hidrasi → cek saturasi oksigen/konteks hipoksia → nilai EPO → evaluasi kemungkinan myeloproliferative neoplasm bila sesuai.
-- [Pancytopenia] Kerangka diagnosis :: A. Produksi sumsum gagal/tertekan
-- [C. Peripheral sequestration/destruction] Langkah penting :: reticulocyte count, smear, review obat, pemeriksaan nutrisi, dan bila diperlukan bone marrow evaluation.
-- [Pola Kasus: Iron Deficiency Anemia] CBC :: Hb ↓, MCV ↓, MCHC ↓, RDW ↑.
-- [Pola Kasus: Iron Deficiency Anemia] Smear :: microcytic hypochromic RBC, anisopoikilocytosis, pencil cells.
-- [Pola Kasus: Iron Deficiency Anemia] Tes berikut :: ferritin terlebih dahulu pada banyak situasi klinis, lalu integrasikan serum iron/TIBC/transferrin saturation bila diperlukan.
-- [Pola Kasus: Iron Deficiency Anemia] Clue vignette :: perempuan dengan menorrhagia + fatigue + pica + microcytic anemia → IDA sangat mungkin.
-- [Pola Kasus: Thalassemia Trait] CBC :: Hb sedikit ↓, MCV sangat ↓, RBC count relatif tinggi, RDW sering tidak terlalu meningkat.
-- [Pola Kasus: Thalassemia Trait] Smear :: microcytosis + target cells.
-- [Pola Kasus: Thalassemia Trait] Clue vignette :: “microcytosis disproportionate to anemia” dengan ferritin normal → pikirkan thalassemia trait.
-- [Pola Kasus: Acute Hemolysis] CBC :: anemia + reticulocytosis.
-- [Pola Kasus: Acute Hemolysis] Biokimia :: LDH ↑, indirect bilirubin ↑, haptoglobin ↓.
-- [Pola Kasus: Megaloblastic Anemia] CBC :: macrocytic anemia; dapat disertai leukopenia dan thrombocytopenia bila berat.
-- [Pola Kasus: Megaloblastic Anemia] Smear :: macro-ovalocytes + hypersegmented neutrophils.
-- [Pola Kasus: Bacterial Infection] CBC :: leukocytosis dengan neutrophilia, kadang left shift.
-- [Pola Kasus: Bacterial Infection] Smear :: toxic granulation, Döhle bodies, vacuolization dapat muncul.
-- [Pola Kasus: Suspected Acute Leukemia] Kesalahan klasik ujian :: menganggap leukemia akut harus selalu menyebabkan leukositosis tinggi. Tidak benar.
-- [Pola Kasus: TTP / Microangiopathic Hemolytic Anemia] CBC :: anemia + thrombocytopenia.
-- [Pola Kasus: TTP / Microangiopathic Hemolytic Anemia] Hemolysis labs :: LDH ↑, indirect bilirubin ↑, haptoglobin ↓.
-- [High-yield] Microcyte :: eritrosit lebih kecil dari normal; sering pada IDA dan thalassemia
-- [High-yield] Macro-ovalocyte :: khas pada megaloblastic anemia
-- [High-yield] Spherocyte :: bulat tanpa central pallor; dapat terlihat pada hereditary spherocytosis atau autoimmune hemolytic anemia
-- [High-yield] Target cell :: bull’s-eye appearance; dapat muncul pada thalassemia, liver disease, hemoglobinopathy, post-splenectomy
-- [High-yield] Sickle cell :: bentuk sabit pada sickling disorders
-- [High-yield] Bite cell :: terkait oxidative damage setelah splenic removal of Heinz body
-- [High-yield] Elliptocyte :: dapat terlihat pada hereditary elliptocytosis dan beberapa anemia
-- [High-yield] Agglutination :: clumping tidak beraturan, misalnya cold agglutinin
-- [High-yield] Howell–Jolly body :: nuclear remnant; terlihat pada hyposplenism/asplenia atau setelah splenectomy
-- [High-yield] Pappenheimer bodies :: iron-containing granules
-- [High-yield] Heinz bodies :: denatured Hb; biasanya memerlukan supravital stain dan berkaitan dengan oxidative injury seperti G6PD deficiency
-- [High-yield] Toxic granulation :: reactive neutrophil change pada severe infection/inflammation
-- [High-yield] Döhle body :: agregat rough ER berwarna biru pucat pada neutrofil; dapat muncul pada infeksi berat/inflamasi
-- [High-yield] Auer rod :: crystalline azurophilic inclusion pada myeloid blast; sangat mendukung myeloid lineage
-- [High-yield] Atypical/reactive lymphocyte :: sitoplasma luas dan reaktif, sering pada infeksi virus
-- [High-yield] RDW tinggi :: anisocytosis meningkat
-- [High-yield] Ferritin :: acute-phase reactant sehingga dapat meningkat saat inflamasi
-- [High-yield] Hemolysis :: LDH ↑, indirect bilirubin ↑, haptoglobin ↓, reticulocyte ↑
-- [High-yield] Macro-ovalocyte + hypersegmented neutrophil :: megaloblastic anemia
-- [High-yield] ANC <0.5 ×10^9/L :: severe neutropenia
-- [High-yield] Trombositopenia + schistocyte :: pola kegawatan microangiopathic hemolysis
-- [High-yield] Smear :: alat konfirmasi penting saat hasil analyzer tidak sesuai klinis
-- [Prinsip Besar] Interpretasi terbaik selalu menjawab empat pertanyaan … :: • Apakah kelainan benar-benar ada dan bukan artefak pre-analitik?
-  • Garis sel mana yang terganggu: eritrosit, leukosit, trombosit, atau lebih dari satu?
-  • Apakah pola menunjukkan gangguan produksi, kehilangan/destruksi, redistribusi, atau proliferasi klonal?
-  • Apakah morfologi apusan darah mendukung hipotesis tersebut?
-- [Hemoglobin, Hematokrit, dan RBC Count] Secara kasar pada dewasa, nilai Hb sering berada sekitar … :: • laki-laki: ±13–17 g/dL
-  • perempuan: ±12–15 g/dL
-- [Microcytic Anemia — Peta Diagnosis] Iron deficiency anemia (IDA) … :: • ferritin ↓
-  • serum iron ↓
-  • TIBC/transferrin ↑
-  • transferrin saturation ↓
-  • RDW sering ↑
-  • smear: microcytosis, hypochromia, anisopoikilocytosis; pencil cells dapat terlihat
-- [Microcytic Anemia — Peta Diagnosis] Anemia of chronic inflammation … :: • serum iron ↓
-  • ferritin normal atau ↑
+- [Indeks Eritrosit] Jelaskan Iron deficiency anemia dalam konteks Indeks Eritrosit. :: MCV ↓, MCH/MCHC ↓, RDW sering ↑.
+- [Indeks Eritrosit] Apa yang dimaksud dengan Thalassemia trait pada Indeks Eritrosit? :: MCV sangat ↓ tetapi RDW dapat normal atau hanya sedikit ↑; RBC count relatif tinggi.
+- [Indeks Eritrosit] Jelaskan Anemia penyakit kronik dalam konteks Indeks Eritrosit. :: Sering normocytic, kadang microcytic ringan.
+- [Indeks Eritrosit] Apa yang dimaksud dengan Megaloblastic anemia pada Indeks Eritrosit? :: MCV ↑ dan RDW sering ↑.
+- [Macrocytic Anemia] Apa yang dimaksud dengan Megaloblastic anemia pada Macrocytic Anemia? :: Penyebab klasik → vitamin B12 deficiency dan folate deficiency.
+- [Erythrocytosis / Polycythemia] Apa yang dimaksud dengan Relative erythrocytosis pada Erythrocytosis / Polycythemia? :: Volume plasma menurun, misalnya dehidrasi.
+- [Erythrocytosis / Polycythemia] Apa yang dimaksud dengan Kerangka pikir pada Erythrocytosis / Polycythemia? :: Hb/Hct tinggi → nilai status hidrasi → cek saturasi oksigen/konteks hipoksia → nilai EPO → evaluasi kemungkinan myeloproliferative neoplasm bila sesuai.
+- [Pancytopenia] Apa yang dimaksud dengan Kerangka diagnosis pada Pancytopenia? :: A. Produksi sumsum gagal/tertekan
+- [Peripheral sequestration/destruction] Pada Peripheral sequestration/destruction (Pancytopenia), apa langkah pentingnya? :: Reticulocyte count, smear, review obat, pemeriksaan nutrisi, dan bila diperlukan bone marrow evaluation.
+- [Pola Kasus: Iron Deficiency Anemia] Apa yang dimaksud dengan CBC pada Pola Kasus: Iron Deficiency Anemia? :: Hb ↓, MCV ↓, MCHC ↓, RDW ↑.
+- [Pola Kasus: Iron Deficiency Anemia] Apa yang dimaksud dengan Smear pada Pola Kasus: Iron Deficiency Anemia? :: Microcytic hypochromic RBC, anisopoikilocytosis, pencil cells.
+- [Pola Kasus: Iron Deficiency Anemia] Apa yang dimaksud dengan Tes berikut pada Pola Kasus: Iron Deficiency Anemia? :: Ferritin terlebih dahulu pada banyak situasi klinis, lalu integrasikan serum iron/TIBC/transferrin saturation bila diperlukan.
+- [Pola Kasus: Thalassemia Trait] Apa yang dimaksud dengan CBC pada Pola Kasus: Thalassemia Trait? :: Hb sedikit ↓, MCV sangat ↓, RBC count relatif tinggi, RDW sering tidak terlalu meningkat.
+- [Pola Kasus: Thalassemia Trait] Apa yang dimaksud dengan Smear pada Pola Kasus: Thalassemia Trait? :: Microcytosis + target cells.
+- [Pola Kasus: Acute Hemolysis] Apa yang dimaksud dengan CBC pada Pola Kasus: Acute Hemolysis? :: Anemia + reticulocytosis.
+- [Pola Kasus: Acute Hemolysis] Apa yang dimaksud dengan Biokimia pada Pola Kasus: Acute Hemolysis? :: LDH ↑, indirect bilirubin ↑, haptoglobin ↓.
+- [Pola Kasus: Megaloblastic Anemia] Apa yang dimaksud dengan CBC pada Pola Kasus: Megaloblastic Anemia? :: Macrocytic anemia; dapat disertai leukopenia dan thrombocytopenia bila berat.
+- [Pola Kasus: Megaloblastic Anemia] Apa yang dimaksud dengan Smear pada Pola Kasus: Megaloblastic Anemia? :: Macro-ovalocytes + hypersegmented neutrophils.
+- [Pola Kasus: Bacterial Infection] Apa yang dimaksud dengan CBC pada Pola Kasus: Bacterial Infection? :: Leukocytosis dengan neutrophilia, kadang left shift.
+- [Pola Kasus: Bacterial Infection] Apa yang dimaksud dengan Smear pada Pola Kasus: Bacterial Infection? :: Toxic granulation, Döhle bodies, vacuolization dapat muncul.
+- [Pola Kasus: Suspected Acute Leukemia] Jelaskan Kesalahan klasik ujian dalam konteks Pola Kasus: Suspected Acute Leukemia. :: Menganggap leukemia akut harus selalu menyebabkan leukositosis tinggi. Tidak benar.
+- [Pola Kasus: TTP / Microangiopathic Hemolytic Anemia] Apa yang dimaksud dengan CBC pada Pola Kasus: TTP / Microangiopathic Hemolytic Anemia? :: Anemia + thrombocytopenia.
+- [Pola Kasus: TTP / Microangiopathic Hemolytic Anemia] Apa yang dimaksud dengan Hemolysis labs pada Pola Kasus: TTP / Microangiopathic Hemolytic Anemia? :: LDH ↑, indirect bilirubin ↑, haptoglobin ↓.
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Microcyte pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Eritrosit lebih kecil dari normal; sering pada IDA dan thalassemia
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Macro-ovalocyte pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Khas pada megaloblastic anemia
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Spherocyte pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Bulat tanpa central pallor; dapat terlihat pada hereditary spherocytosis atau autoimmune hemolytic anemia
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Target cell pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Bull’s-eye appearance; dapat muncul pada thalassemia, liver disease, hemoglobinopathy, post-splenectomy
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Sickle cell pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Bentuk sabit pada sickling disorders
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Bite cell pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Terkait oxidative damage setelah splenic removal of Heinz body
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Elliptocyte pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Dapat terlihat pada hereditary elliptocytosis dan beberapa anemia
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Agglutination pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Clumping tidak beraturan, misalnya cold agglutinin
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Howell–Jolly body pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Nuclear remnant; terlihat pada hyposplenism/asplenia atau setelah splenectomy
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Pappenheimer bodies pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Iron-containing granules
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Heinz bodies pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Denatured Hb; biasanya memerlukan supravital stain dan berkaitan dengan oxidative injury seperti G6PD deficiency
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Toxic granulation pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Reactive neutrophil change pada severe infection/inflammation
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Döhle body pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Agregat rough ER berwarna biru pucat pada neutrofil; dapat muncul pada infeksi berat/inflamasi
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Auer rod pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Crystalline azurophilic inclusion pada myeloid blast; sangat mendukung myeloid lineage
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diingat tentang Atypical/reactive lymphocyte pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Sitoplasma luas dan reaktif, sering pada infeksi virus
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan RDW tinggi pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Anisocytosis meningkat
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan Ferritin pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Acute-phase reactant sehingga dapat meningkat saat inflamasi
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diketahui tentang Hemolysis pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: LDH ↑, indirect bilirubin ↑, haptoglobin ↓, reticulocyte ↑
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan Macro-ovalocyte + hypersegmented neutrophil? :: Megaloblastic anemia
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan ANC <0.5 ×10^9/L pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Severe neutropenia
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan Trombositopenia + schistocyte pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Pola kegawatan microangiopathic hemolysis
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan Smear pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Alat konfirmasi penting saat hasil analyzer tidak sesuai klinis
+- [Indeks Eritrosit] Sebutkan pola high-yield pada Indeks Eritrosit. :: • Iron deficiency anemia: MCV ↓, MCH/MCHC ↓, RDW sering ↑
+  • Thalassemia trait: MCV sangat ↓ tetapi RDW dapat normal atau hanya sedikit ↑; RBC count relatif tinggi
+  • Anemia penyakit kronik: sering normocytic, kadang microcytic ringan
+  • Megaloblastic anemia: MCV ↑ dan RDW sering ↑
+- [Algoritme Pertama pada Anemia] Sebutkan klasifikasi morfologis pada Algoritme Pertama pada Anemia. :: • Microcytic anemia → pikirkan iron deficiency, thalassemia, anemia of chronic inflammation, sideroblastic anemia, lead toxicity
+  • Normocytic anemia → pikirkan perdarahan akut, hemolisis, penyakit kronik, gangguan ginjal, gangguan sumsum tulang
+  • Macrocytic anemia → pisahkan megaloblastic vs non-megaloblastic
+- [Microcytic Anemia — Peta Diagnosis] Sebutkan poin-poin penting tentang Anemia of chronic inflammation. :: • Serum iron ↓
+  • Ferritin normal atau ↑
   • TIBC cenderung ↓
-  • transferrin saturation ↓
-- [Neutrophilia dan Left Shift] Neutrophilia dapat terjadi pada … :: • infeksi bakteri
-  • inflamasi/nekrosis jaringan
-  • stres fisiologis
-  • kortikosteroid
-  • merokok
-  • myeloproliferative neoplasm
-- [Neutrophilia dan Left Shift] Reactive bacterial pattern dapat meliputi … :: • neutrophilia
-  • left shift
-  • toxic granulation
-  • Döhle bodies
-  • cytoplasmic vacuolization
-- [Lymphocytosis dan Lymphopenia] Lymphopenia dapat terjadi pada … :: • kortikosteroid
-  • severe illness
-  • immunodeficiency
-  • chemotherapy/radiotherapy
-  • kondisi autoimun tertentu
-- [Trombositopenia — Baca Bersama Garis Sel Lain] Thrombocytopenia + anemia hemolitik mikroangiopatik … :: • cari schistocytes
-  • pikirkan TTP/HUS/DIC sesuai konteks
-- [Peripheral Blood Smear — Kenapa Masih Penting?] Evaluasi smear meliputi … :: • ukuran RBC
-  • warna/central pallor
-  • variasi ukuran dan bentuk
-  • inklusi eritrosit
-  • morfologi leukosit
-  • keberadaan blast/immature cells
-  • jumlah dan ukuran trombosit
-  • platelet clumping
-  • parasit darah bila ada
-- [Pola Kasus: Acute Hemolysis] Smear bergantung penyebab … :: • spherocyte → immune hemolysis/hereditary spherocytosis
-  • schistocyte → microangiopathic/mechanical destruction
-  • bite cell → oxidative hemolysis
-- [Pre-Analitik — Jangan Salah Menafsirkan Artefak] EXAM PEARL: Pre-Analitik — Jangan Salah Menafsirkan Artefak :: Trombosit sangat rendah tanpa manifestasi perdarahan, tetapi analyzer memberi flag platelet clumps → pikirkan pseudothrombocytopenia sebelum mendiagnosis ITP.
-- [Macrocytic Anemia] EXAM PEARL: Macrocytic Anemia :: Macrocytosis + hypersegmented neutrophils = pikirkan gangguan sintesis DNA terlebih dahulu.
-- [Pola Kasus: Megaloblastic Anemia] Clue: Pola Kasus: Megaloblastic Anemia :: Macrocytosis + neurologic symptoms → vitamin B12 deficiency harus dipikirkan.
-- [Pola Kasus: Bacterial Infection] Clue: Pola Kasus: Bacterial Infection :: Jangan menyamakan neutrophilia dengan infeksi bakteri secara otomatis; steroid, stres, inflamasi, dan nekrosis juga dapat menyebabkan pola ini.
+  • Transferrin saturation ↓
+- [Microcytic Anemia — Peta Diagnosis] Sebutkan poin-poin penting tentang Thalassemia trait. :: • MCV dapat sangat rendah dibanding derajat anemia
+  • RBC count sering relatif tinggi
+  • Target cells dapat terlihat
+  • Ferritin tidak harus rendah
+  • Konfirmasi bergantung tipe thalassemia dan dapat memerlukan hemoglobin analysis atau pemeriksaan molekuler
+- [Macrocytic Anemia] Sebutkan poin-poin penting tentang Non-megaloblastic macrocytosis. :: • Alcohol use
+  • Liver disease
+  • Hypothyroidism
+  • Reticulocytosis
+  • Beberapa obat
+  • Myelodysplastic syndrome
+- [Erythrocytosis / Polycythemia] Sebutkan poin-poin penting tentang Absolute erythrocytosis. :: • Primary → proliferasi eritroid intrinsik, klasik pada polycythemia vera
+  • Secondary → peningkatan erythropoietin karena hipoksia atau produksi EPO patologis
+- [Absolute Neutrophil Count (ANC)] Sebutkan interpretasi umum pada Absolute Neutrophil Count (ANC). :: • ANC ≥1.5 ×10^9/L → umumnya normal
+  • 1.0–1.5 → mild neutropenia
+  • 0.5–1.0 → moderate neutropenia
+  • <0.5 → severe neutropenia; risiko infeksi meningkat nyata
+- [Neutropenia] Sebutkan penyebab penting pada Neutropenia. :: • Obat/kemoterapi
+  • Infeksi virus tertentu
+  • Severe sepsis
+  • Autoimmune neutropenia
+  • Aplastic anemia
+  • Marrow infiltration
+  • Nutritional deficiency tertentu
+- [Trombositopenia — Baca Bersama Garis Sel Lain] Sebutkan poin-poin penting tentang Thrombocytopenia + anemia hemolitik mikroangiopatik. :: • Cari schistocytes
+  • Pikirkan TTP/HUS/DIC sesuai konteks
+- [Trombositosis] Sebutkan poin-poin penting tentang Reactive thrombocytosis. :: • Infection/inflammation
+  • Iron deficiency
+  • Post-surgery
+  • Tissue injury
+  • Post-splenectomy
+- [Pola Kasus: Acute Hemolysis] Sebutkan smear bergantung penyebab pada Pola Kasus: Acute Hemolysis. :: • Spherocyte → immune hemolysis/hereditary spherocytosis
+  • Schistocyte → microangiopathic/mechanical destruction
+  • Bite cell → oxidative hemolysis
+- [Pola Kasus: ITP vs Marrow Failure] Sebutkan poin-poin penting tentang Marrow failure. :: • Lebih sering melibatkan multiple cell lines
+  • Reticulocyte cenderung rendah bila eritropoiesis terganggu
+- [Pre-Analitik — Jangan Salah Menafsirkan Artefak] Apa poin high-yield (pearl) tentang Pre-Analitik — Jangan Salah Menafsirkan Artefak? :: Trombosit sangat rendah tanpa manifestasi perdarahan, tetapi analyzer memberi flag platelet clumps → pikirkan pseudothrombocytopenia sebelum mendiagnosis ITP.
+- [Macrocytic Anemia] Apa poin high-yield (pearl) tentang Macrocytic Anemia? :: Macrocytosis + hypersegmented neutrophils = pikirkan gangguan sintesis DNA terlebih dahulu.
+- [Pola Kasus: Megaloblastic Anemia] Apa clue praktikum untuk Pola Kasus: Megaloblastic Anemia? :: Macrocytosis + neurologic symptoms → vitamin B12 deficiency harus dipikirkan.
+- [Pola Kasus: Bacterial Infection] Apa clue praktikum untuk Pola Kasus: Bacterial Infection? :: Jangan menyamakan neutrophilia dengan infeksi bakteri secara otomatis; steroid, stres, inflamasi, dan nekrosis juga dapat menyebabkan pola ini.

@@ -606,82 +606,95 @@ Hipertiroid/hipotiroid, hypercalcemia, episodic hypertension, hypoglycemia, acro
 
 ## Flashcard {kartu}
 
-- [Tiroid Normal — Landasan Histologi] Kunci praktikum :: folikel + colloid = identitas tiroid. Perubahan tinggi epitel, bentuk colloid, infiltrat limfoid, fibrosis, dan pola nukleus sangat membantu diagnosis.
-- [Hashimoto Thyroiditis] Hubungan klinis :: anti-TPO dan anti-thyroglobulin sering ditemukan. Inflamasi limfoid kronik meningkatkan risiko primary thyroid lymphoma, terutama tipe B-cell.
-- [Subacute Granulomatous (De Quervain) Thyroiditis] Clue soal :: nyeri leher + fase tirotoksik sementara + giant cells/granuloma = subacute granulomatous thyroiditis.
-- [Riedel Thyroiditis] Kunci pembeda :: Hashimoto → fibrosis biasanya terbatas di dalam kelenjar.
-- [Follicular Thyroid Carcinoma] Capsular invasion :: sel tumor menembus seluruh ketebalan kapsul.
-- [Follicular Thyroid Carcinoma] Vascular invasion :: tumor masuk ke pembuluh, terutama pada atau di luar kapsul.
-- [Follicular Thyroid Carcinoma] Penyebaran :: cenderung hematogenous ke tulang, paru, atau hati, berbeda dengan papillary carcinoma yang lebih sering menyebar melalui limfatik.
-- [Papillary Thyroid Carcinoma] Penyebaran :: terutama melalui lymphatics ke cervical lymph nodes. Metastasis nodal tidak selalu berarti prognosis buruk seperti pada banyak kanker lain.
-- [Parathyroid Hyperplasia] Pembeda high-yield :: Adenoma → biasanya single gland.
-- [Lactotroph Tumor / Prolactinoma] Perlu diingat :: “stalk effect” juga dapat meningkatkan prolaktin akibat berkurangnya inhibisi dopamin, sehingga hyperprolactinemia tidak otomatis berarti prolactinoma.
-- [Congenital Adrenal Hyperplasia] Alur high-yield :: ↓ cortisol → hilangnya negative feedback → ↑ ACTH → bilateral adrenal cortical hyperplasia.
-- [Pheochromocytoma] Asosiasi herediter penting :: MEN2/RET, VHL, NF1, dan mutasi gen succinate dehydrogenase (SDH).
-- [Komplikasi Mikrovaskular Diabetes] Hubungan antar-bab :: Kimmelstiel–Wilson nodule yang dipelajari pada BAB 9 merupakan manifestasi mikroangiopati diabetes.
-- [Glucagonoma] Clue soal klasik :: pancreatic endocrine tumor + diabetes + characteristic migratory erythematous rash → glucagonoma.
-- [Multiple Endocrine Neoplasia (MEN)] Exam priority :: MEN2 hampir selalu harus mengingat medullary thyroid carcinoma + pheochromocytoma.
-- [Praktikum — Cara Membaca Slide Endokrin] Paratiroid :: chief cells + adipocytes.
-- [Praktikum — Cara Membaca Slide Endokrin] Adrenal :: cortex berlapis + medulla sentral.
-- [Praktikum — Cara Membaca Slide Endokrin] Pituitari :: sel endokrin padat, tanpa struktur folikular.
-- [Praktikum — Cara Membaca Slide Endokrin] Pankreas :: islets pucat di antara acini eksokrin.
-- [Vignette Clues — Cepat] Vignette 2 :: wanita dengan hypothyroidism; tiroid berisi germinal centers dan Hürthle cells → Hashimoto thyroiditis.
-- [Vignette Clues — Cepat] Vignette 3 :: massa tiroid; FNA menunjukkan follicular cells tetapi tidak dapat menentukan benign vs malignant → perlu evaluasi capsular/vascular invasion untuk follicular neoplasm.
-- [Vignette Clues — Cepat] Vignette 4 :: thyroid carcinoma dengan clear nuclei, grooves, dan psammoma bodies → papillary thyroid carcinoma.
-- [Vignette Clues — Cepat] Vignette 5 :: thyroid tumor menghasilkan calcitonin dan memiliki amyloid stroma → medullary thyroid carcinoma.
-- [Vignette Clues — Cepat] Vignette 7 :: episodic headache, sweating, palpitations, hypertension; adrenal mass dengan zellballen → pheochromocytoma.
-- [Vignette Clues — Cepat] Vignette 8 :: anak dengan adrenal mass; small round blue cells + Homer Wright rosettes → neuroblastoma.
-- [Vignette Clues — Cepat] Vignette 9 :: hypoglycemia membaik setelah glukosa; pancreatic neuroendocrine tumor → insulinoma.
-- [High-yield] Graves :: diffuse hyperplasia + tall crowded epithelium + scalloped colloid
-- [High-yield] Hashimoto :: lymphoid follicles/germinal centers + Hürthle cells
-- [High-yield] De Quervain :: painful thyroid + granulomatous inflammation + giant cells around spilled colloid
-- [High-yield] Papillary thyroid carcinoma :: Orphan Annie nuclei + nuclear grooves + pseudoinclusions ± psammoma bodies
-- [High-yield] Medullary carcinoma :: C cell + calcitonin + amyloid; pikirkan RET/MEN2
-- [High-yield] Anaplastic carcinoma :: usia lanjut + massa cepat tumbuh + pleomorphic giant/spindle cells
-- [High-yield] Brown tumor :: lesi reaktif akibat PTH tinggi, bukan tumor sejati
-- [High-yield] Pituitary macro-lesion dapat menekan optic chiasm :: bitemporal hemianopia
-- [High-yield] Cushing disease :: pituitary ACTH-producing tumor
-- [High-yield] Adamantinomatous craniopharyngioma :: child + wet keratin + calcification
-- [High-yield] Pheochromocytoma :: zellballen + catecholamines
-- [High-yield] Neuroblastoma :: child + small round blue cells + neuropil/Homer Wright rosette
-- [High-yield] PanNET :: salt-and-pepper chromatin + neuroendocrine markers
-- [High-yield] MEN1 :: Parathyroid + Pancreatic NET + Pituitary
-- [High-yield] MEN2A :: Medullary thyroid + Pheo + Parathyroid
-- [High-yield] MEN2B :: Medullary thyroid + Pheo + Mucosal neuromas
-- [Konsep Besar Patologi Endokrin] Pola pikir praktikum … :: • Apakah lesi bersifat difus atau nodular?
+- [Tiroid Normal — Landasan Histologi] Apa yang dimaksud dengan Kunci praktikum pada Tiroid Normal — Landasan Histologi? :: Folikel + colloid = identitas tiroid. Perubahan tinggi epitel, bentuk colloid, infiltrat limfoid, fibrosis, dan pola nukleus sangat membantu diagnosis.
+- [Hashimoto Thyroiditis] Pada Hashimoto Thyroiditis, apa hubungan klinisnya? :: Anti-TPO dan anti-thyroglobulin sering ditemukan. Inflamasi limfoid kronik meningkatkan risiko primary thyroid lymphoma, terutama tipe B-cell.
+- [Riedel Thyroiditis] Apa yang dimaksud dengan Kunci pembeda pada Riedel Thyroiditis? :: Hashimoto → fibrosis biasanya terbatas di dalam kelenjar.
+- [Thyroid Follicular Adenoma] Apa yang dimaksud dengan Kunci ujian pada Thyroid Follicular Adenoma? :: Adenoma vs follicular carcinoma ditentukan oleh invasi, bukan sekadar tampilan sitologi.
+- [Follicular Thyroid Carcinoma] Apa yang dimaksud dengan Capsular invasion pada Follicular Thyroid Carcinoma? :: Sel tumor menembus seluruh ketebalan kapsul.
+- [Follicular Thyroid Carcinoma] Apa yang dimaksud dengan Vascular invasion pada Follicular Thyroid Carcinoma? :: Tumor masuk ke pembuluh, terutama pada atau di luar kapsul.
+- [Follicular Thyroid Carcinoma] Apa yang dimaksud dengan Penyebaran pada Follicular Thyroid Carcinoma? :: Cenderung hematogenous ke tulang, paru, atau hati, berbeda dengan papillary carcinoma yang lebih sering menyebar melalui limfatik.
+- [Anaplastic Thyroid Carcinoma] Apa yang dimaksud dengan Kunci ujian pada Anaplastic Thyroid Carcinoma? :: Older patient + rapidly enlarging neck mass + undifferentiated pleomorphic giant/spindle cells = anaplastic carcinoma.
+- [Parathyroid Hyperplasia] Apa yang dimaksud dengan Pembeda high-yield pada Parathyroid Hyperplasia? :: Adenoma → biasanya single gland.
+- [Lactotroph Tumor / Prolactinoma] Apa yang dimaksud dengan Perlu diingat pada Lactotroph Tumor / Prolactinoma? :: “stalk effect” juga dapat meningkatkan prolaktin akibat berkurangnya inhibisi dopamin, sehingga hyperprolactinemia tidak otomatis berarti prolactinoma.
+- [Congenital Adrenal Hyperplasia] Pada Congenital Adrenal Hyperplasia, apa alur high-yieldnya? :: ↓ cortisol → hilangnya negative feedback → ↑ ACTH → bilateral adrenal cortical hyperplasia.
+- [Pheochromocytoma] Jelaskan Asosiasi herediter penting dalam konteks Pheochromocytoma. :: MEN2/RET, VHL, NF1, dan mutasi gen succinate dehydrogenase (SDH).
+- [Komplikasi Mikrovaskular Diabetes] Pada Komplikasi Mikrovaskular Diabetes, apa hubungan antar-babnya? :: Kimmelstiel–Wilson nodule yang dipelajari pada BAB 9 merupakan manifestasi mikroangiopati diabetes.
+- [Multiple Endocrine Neoplasia (MEN)] Apa yang dimaksud dengan Exam priority pada Multiple Endocrine Neoplasia (MEN)? :: MEN2 hampir selalu harus mengingat medullary thyroid carcinoma + pheochromocytoma.
+- [Praktikum — Cara Membaca Slide Endokrin] Apa yang dimaksud dengan Paratiroid pada Praktikum — Cara Membaca Slide Endokrin? :: Chief cells + adipocytes.
+- [Praktikum — Cara Membaca Slide Endokrin] Apa yang dimaksud dengan Adrenal pada Praktikum — Cara Membaca Slide Endokrin? :: Cortex berlapis + medulla sentral.
+- [Praktikum — Cara Membaca Slide Endokrin] Apa yang dimaksud dengan Pituitari pada Praktikum — Cara Membaca Slide Endokrin? :: Sel endokrin padat, tanpa struktur folikular.
+- [Praktikum — Cara Membaca Slide Endokrin] Apa yang dimaksud dengan Pankreas pada Praktikum — Cara Membaca Slide Endokrin? :: Islets pucat di antara acini eksokrin.
+- [Vignette Clues — Cepat] Apa yang dimaksud dengan Vignette 1 pada Vignette Clues — Cepat? :: Wanita muda, hyperthyroid, diffuse goiter; histologi menunjukkan tall crowded follicular cells dan scalloped colloid → Graves disease.
+- [Vignette Clues — Cepat] Apa yang dimaksud dengan Vignette 2 pada Vignette Clues — Cepat? :: Wanita dengan hypothyroidism; tiroid berisi germinal centers dan Hürthle cells → Hashimoto thyroiditis.
+- [Vignette Clues — Cepat] Apa yang dimaksud dengan Vignette 4 pada Vignette Clues — Cepat? :: Thyroid carcinoma dengan clear nuclei, grooves, dan psammoma bodies → papillary thyroid carcinoma.
+- [Vignette Clues — Cepat] Apa yang dimaksud dengan Vignette 5 pada Vignette Clues — Cepat? :: Thyroid tumor menghasilkan calcitonin dan memiliki amyloid stroma → medullary thyroid carcinoma.
+- [Vignette Clues — Cepat] Apa yang dimaksud dengan Vignette 6 pada Vignette Clues — Cepat? :: Hypercalcemia + PTH tinggi + satu parathyroid gland membesar → parathyroid adenoma.
+- [Vignette Clues — Cepat] Apa yang dimaksud dengan Vignette 7 pada Vignette Clues — Cepat? :: Episodic headache, sweating, palpitations, hypertension; adrenal mass dengan zellballen → pheochromocytoma.
+- [Vignette Clues — Cepat] Apa yang dimaksud dengan Vignette 8 pada Vignette Clues — Cepat? :: Anak dengan adrenal mass; small round blue cells + Homer Wright rosettes → neuroblastoma.
+- [Vignette Clues — Cepat] Apa yang dimaksud dengan Vignette 9 pada Vignette Clues — Cepat? :: Hypoglycemia membaik setelah glukosa; pancreatic neuroendocrine tumor → insulinoma.
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan Graves pada Patologi Sistem Endokrin? :: Diffuse hyperplasia + tall crowded epithelium + scalloped colloid
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan Hashimoto pada Patologi Sistem Endokrin? :: Lymphoid follicles/germinal centers + Hürthle cells
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan De Quervain pada Patologi Sistem Endokrin? :: Painful thyroid + granulomatous inflammation + giant cells around spilled colloid
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan Papillary thyroid carcinoma pada Patologi Sistem Endokrin? :: Orphan Annie nuclei + nuclear grooves + pseudoinclusions ± psammoma bodies
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan Medullary carcinoma pada Patologi Sistem Endokrin? :: C cell + calcitonin + amyloid; pikirkan RET/MEN2
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan Anaplastic carcinoma pada Patologi Sistem Endokrin? :: Usia lanjut + massa cepat tumbuh + pleomorphic giant/spindle cells
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan Brown tumor pada Patologi Sistem Endokrin? :: Lesi reaktif akibat PTH tinggi, bukan tumor sejati
+- [Patologi Sistem Endokrin] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pituitary macro-lesion dapat menekan optic chiasm? :: Bitemporal hemianopia
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan Cushing disease pada Patologi Sistem Endokrin? :: Pituitary ACTH-producing tumor
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan Adamantinomatous craniopharyngioma? :: Child + wet keratin + calcification
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan Pheochromocytoma pada Patologi Sistem Endokrin? :: Zellballen + catecholamines
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan Neuroblastoma pada Patologi Sistem Endokrin? :: Child + small round blue cells + neuropil/Homer Wright rosette
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan PanNET pada Patologi Sistem Endokrin? :: Salt-and-pepper chromatin + neuroendocrine markers
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan MEN1 pada Patologi Sistem Endokrin? :: Parathyroid + Pancreatic NET + Pituitary
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan MEN2A pada Patologi Sistem Endokrin? :: Medullary thyroid + Pheo + Parathyroid
+- [Patologi Sistem Endokrin] Apa yang dimaksud dengan MEN2B pada Patologi Sistem Endokrin? :: Medullary thyroid + Pheo + Mucosal neuromas
+- [Konsep Besar Patologi Endokrin] Sebutkan poin-poin penting tentang Pola pikir praktikum. :: • Apakah lesi bersifat difus atau nodular?
   • Apakah terdapat destruksi parenkim, infiltrat inflamasi, atau hiperplasia?
   • Jika tumor: apakah terenkapsulasi, invasif, nekrotik, atau bermetastasis?
   • Adakah pola histologi khas seperti scalloped colloid, Hürthle cell, Orphan Annie nuclei, amyloid, zellballen, rosette, atau salt-and-pepper chromatin?
-- [Follicular Thyroid Carcinoma] Diagnosis membutuhkan bukti … :: • Capsular invasion: sel tumor menembus seluruh ketebalan kapsul
-  • Vascular invasion: tumor masuk ke pembuluh, terutama pada atau di luar kapsul
-- [Pituitary — Konsep Tumor] Dua konsekuensi utama … :: • Hyperfunction → kelebihan hormon
+- [Graves Disease] Sebutkan morfologi khas pada Graves Disease. :: • Epitel folikel tinggi, crowded, dan dapat membentuk papillary infoldings ke lumen
+  • Colloid tampak pucat dengan scalloping pada tepi akibat resorpsi aktif
+  • Stroma dapat mengandung infiltrat limfosit dan germinal centers
+  • Tidak terdapat fibrovascular cores sejati seperti pada papillary thyroid carcinoma
+- [Hashimoto Thyroiditis] Sebutkan morfologi khas pada Hashimoto Thyroiditis. :: • Infiltrat limfosit padat dengan pembentukan germinal centers
+  • Atrofi dan destruksi folikel
+  • Hürthle cells: sel folikular metaplastik besar dengan sitoplasma eosinofilik granular akibat banyak mitokondria
+  • Fibrosis dapat ada, tetapi biasanya tidak meluas jauh ke jaringan leher seperti pada Riedel thyroiditis
+- [Papillary Thyroid Carcinoma] Sebutkan poin-poin penting tentang Signature morphology. :: • Orphan Annie eye nuclei: nukleus tampak optically clear/ground-glass
+  • Nuclear grooves
+  • Intranuclear cytoplasmic pseudoinclusions
+  • Psammoma bodies dapat ditemukan
+  • Papila dengan fibrovascular cores pada varian klasik
+- [Pituitary — Konsep Tumor] Sebutkan poin-poin penting tentang Dua konsekuensi utama. :: • Hyperfunction → kelebihan hormon
   • Mass effect → sakit kepala, gangguan lapang pandang, hipopituitarisme
-- [Somatotroph Tumor] Tumor penghasil growth hormone menyebabkan … :: • Gigantism jika terjadi sebelum penutupan epifisis
-  • Acromegaly jika terjadi setelah penutupan epifisis
-- [Pituitary Apoplexy] Manifestasi dapat berupa … :: • Sakit kepala sangat berat mendadak
+- [Pituitary Apoplexy] Sebutkan manifestasi pada Pituitary Apoplexy. :: • Sakit kepala sangat berat mendadak
   • Gangguan penglihatan/ophthalmoplegia
   • Penurunan kesadaran
   • Acute adrenal insufficiency akibat defisiensi ACTH
-- [Adrenal Normal — Glomerulosa, Fasciculata, Reticularis] Korteks adrenal memiliki tiga zona … :: • Zona glomerulosa → mineralocorticoids, terutama aldosterone
-  • Zona fasciculata → glucocorticoids, terutama cortisol
-  • Zona reticularis → adrenal androgens
-- [Cushing Syndrome — Morfologi Adrenal] ACTH-independent adrenal tumor … :: • Cortisol-producing adenoma/carcinoma → tumor pada satu sisi
+- [Craniopharyngioma] Sebutkan poin-poin penting tentang Papillary type. :: • Lebih sering dewasa
+  • Squamous epithelium matang
+  • Biasanya tanpa wet keratin khas
+- [Cushing Syndrome — Morfologi Adrenal] Sebutkan poin-poin penting tentang ACTH-independent adrenal tumor. :: • Cortisol-producing adenoma/carcinoma → tumor pada satu sisi
   • Korteks adrenal non-neoplastik dan adrenal kontralateral dapat mengalami atrofi karena ACTH tersupresi
-- [Diabetes Mellitus — Patologi Pankreas] Type 1 diabetes mellitus … :: • Autoimmune beta-cell destruction
-  • Insulitis dapat terlihat terutama pada fase awal
-  • Jumlah dan ukuran islet berkurang seiring penyakit berlangsung
-- [Diabetes Mellitus — Patologi Pankreas] Type 2 diabetes mellitus … :: • Islets dapat menunjukkan deposition of amyloid derived from islet amyloid polypeptide (IAPP/amylin)
+- [Pheochromocytoma] Sebutkan morfologi klasik pada Pheochromocytoma. :: • Zellballen pattern: sarang-sarang sel tumor dipisahkan stroma vaskular
+  • Sustentacular cells berada di perifer sarang
+  • Sitoplasma tumor granular karena neurosecretory granules
+- [Diabetes Mellitus — Patologi Pankreas] Sebutkan poin-poin penting tentang Type 2 diabetes mellitus. :: • Islets dapat menunjukkan deposition of amyloid derived from islet amyloid polypeptide (IAPP/amylin)
   • Amyloid menjadi lebih nyata pada penyakit kronik
-- [Multiple Endocrine Neoplasia (MEN)] MEN1 — “3 P's” … :: • Parathyroid tumors/hyperplasia
-  • Pancreatic neuroendocrine tumors
-  • Pituitary tumors
-- [Goiter — Konsep Dasar] Exam pearl: Goiter — Konsep Dasar :: Multinodular goiter sering tampak sangat heterogen secara makroskopik. Nodul yang dominan tetap perlu dievaluasi karena lesi neoplastik dapat muncul bersamaan.
-- [Hashimoto Thyroiditis] Practical clue: Hashimoto Thyroiditis :: “thyroid + germinal centers + Hürthle cells” → pikirkan Hashimoto.
-- [Papillary Thyroid Carcinoma] Exam trap: Papillary Thyroid Carcinoma :: Papillary infoldings pada Graves ≠ papillary carcinoma. Pada carcinoma, cari signature nuclear features.
-- [Perbandingan Tumor Tiroid — Ringkas] Mnemonic sederhana: Perbandingan Tumor Tiroid — Ringkas :: “P-F-M-A”: P = Papillary → Pale nuclei. F = Follicular → Finds vessels/capsule. M = Medullary → Makes calcitonin + amyloid. A = Anaplastic → Aggressive.
-- [Parathyroid Adenoma] Clue: Parathyroid Adenoma :: Hypercalcemia + elevated PTH + satu kelenjar membesar → adenoma.
-- [Corticotroph Tumor & Cushing Disease] Exam trap: Corticotroph Tumor & Cushing Disease :: Cushing disease = pituitary ACTH source. Cushing syndrome = fenotipe hiperkortisolisme dari berbagai etiologi.
-- [Craniopharyngioma] Practical clue: Craniopharyngioma :: Suprasellar mass pada anak + calcification + wet keratin = adamantinomatous craniopharyngioma.
-- [Primary Hyperaldosteronism / Conn Syndrome] Klinis: Primary Hyperaldosteronism / Conn Syndrome :: Hipertensi, hypokalemia, metabolic alkalosis, dan renin rendah.
-- [Neuroblastoma] Clue: Neuroblastoma :: Child + abdominal mass + small round blue cells + neuropil/Homer Wright rosettes = neuroblastoma.
-- [Diabetes Mellitus — Patologi Pankreas] Practical clue: Diabetes Mellitus — Patologi Pankreas :: Islet amyloid pada pasien dewasa dengan DM → mendukung type 2 DM.
+- [Komplikasi Mikrovaskular Diabetes] Sebutkan poin-poin penting tentang Lesi penting. :: • Diabetic nephropathy: glomerular basement membrane thickening, mesangial expansion, dan nodular glomerulosclerosis (Kimmelstiel–Wilson lesions)
+  • Hyaline arteriolosclerosis mengenai arteriol aferen DAN eferen
+  • Diabetic retinopathy
+  • Peripheral neuropathy
+- [Pancreatic Neuroendocrine Tumor (PanNET)] Sebutkan histologi umum pada Pancreatic Neuroendocrine Tumor (PanNET). :: • Sel relatif monoton dalam pola nested, trabecular, atau gland-like
+  • Chromatin halus granular klasik “salt-and-pepper”
+  • Neuroendocrine markers seperti synaptophysin dan chromogranin umumnya positif
+- [Goiter — Konsep Dasar] Apa poin high-yield (pearl) tentang Goiter — Konsep Dasar? :: Multinodular goiter sering tampak sangat heterogen secara makroskopik. Nodul yang dominan tetap perlu dievaluasi karena lesi neoplastik dapat muncul bersamaan.
+- [Hashimoto Thyroiditis] Apa clue praktikum untuk Hashimoto Thyroiditis? :: “thyroid + germinal centers + Hürthle cells” → pikirkan Hashimoto.
+- [Papillary Thyroid Carcinoma] Apa jebakan yang sering muncul pada soal tentang Papillary Thyroid Carcinoma? :: Papillary infoldings pada Graves ≠ papillary carcinoma. Pada carcinoma, cari signature nuclear features.
+- [Perbandingan Tumor Tiroid — Ringkas] Bagaimana cara mengingat Perbandingan Tumor Tiroid — Ringkas? :: “P-F-M-A”: P = Papillary → Pale nuclei. F = Follicular → Finds vessels/capsule. M = Medullary → Makes calcitonin + amyloid. A = Anaplastic → Aggressive.
+- [Parathyroid Adenoma] Apa clue praktikum untuk Parathyroid Adenoma? :: Hypercalcemia + elevated PTH + satu kelenjar membesar → adenoma.
+- [Corticotroph Tumor & Cushing Disease] Apa jebakan yang sering muncul pada soal tentang Corticotroph Tumor & Cushing Disease? :: Cushing disease = pituitary ACTH source. Cushing syndrome = fenotipe hiperkortisolisme dari berbagai etiologi.
+- [Craniopharyngioma] Apa clue praktikum untuk Craniopharyngioma? :: Suprasellar mass pada anak + calcification + wet keratin = adamantinomatous craniopharyngioma.
+- [Primary Hyperaldosteronism / Conn Syndrome] Apa korelasi klinis dari Primary Hyperaldosteronism / Conn Syndrome? :: Hipertensi, hypokalemia, metabolic alkalosis, dan renin rendah.
+- [Neuroblastoma] Apa clue praktikum untuk Neuroblastoma? :: Child + abdominal mass + small round blue cells + neuropil/Homer Wright rosettes = neuroblastoma.
+- [Diabetes Mellitus — Patologi Pankreas] Apa clue praktikum untuk Diabetes Mellitus — Patologi Pankreas? :: Islet amyloid pada pasien dewasa dengan DM → mendukung type 2 DM.

@@ -462,43 +462,45 @@ Hereditary cancer → germline predisposition sejak lahir → additional somatic
 
 ## Flashcard {kartu}
 
-- [Sporadic vs Hereditary Cancer — Clue Klinis] PENTING :: tidak ada satu clue yang otomatis membuktikan hereditary cancer; diagnosis membutuhkan interpretasi pedigree, phenotype, dan testing yang sesuai.
-- [Hereditary Retinoblastoma] Inheritance predisposition :: autosomal dominant.
-- [Hereditary Retinoblastoma] Tumorigenesis :: second somatic hit pada retinal cell.
-- [Li–Fraumeni Syndrome] Inheritance :: autosomal dominant cancer predisposition.
-- [Li–Fraumeni Syndrome] Konsep utama :: germline loss of one TP53 allele menurunkan threshold menuju tumorigenesis; additional somatic events mendorong kanker.
-- [Lynch Syndrome] Inheritance :: autosomal dominant predisposition.
-- [Lynch Syndrome] Berbeda dari FAP :: Lynch tidak harus menghasilkan ribuan polip.
-- [Genomic Instability] chromosomal instability :: aneuploidy, gains/losses, structural rearrangements.
-- [Genomic Instability] microsatellite instability :: mismatch-repair deficiency.
-- [Pattern Recognition Cepat] Kasus 1 :: Anak dengan bilateral retinoblastoma → pikirkan germline RB1 + second hits somatic.
-- [Pattern Recognition Cepat] Kasus 2 :: Banyak adenomatous polyps sejak muda → pikirkan FAP/APC.
-- [Pattern Recognition Cepat] Kasus 3 :: Colorectal + endometrial cancers berulang dalam keluarga dengan MSI/MMR deficiency → pikirkan Lynch syndrome.
-- [Pattern Recognition Cepat] Kasus 4 :: Beragam kanker onset muda pada keluarga, termasuk sarcoma/breast/brain/adrenocortical → pikirkan Li–Fraumeni/TP53.
-- [Pattern Recognition Cepat] Kasus 5 :: Breast/ovarian cancer clustering dengan onset muda tertentu → pertimbangkan hereditary breast/ovarian predisposition dan genetic counseling/testing sesuai kriteria.
-- [Pattern Recognition Cepat] Kasus 6 :: CML dengan Philadelphia chromosome → BCR-ABL fusion oncogene.
-- [High-yield] RAS :: small GTPase. Activating mutation membuat signaling proliferatif tetap aktif
-- [High-yield] MYC :: transcription factor yang mendorong pertumbuhan dan proliferasi. c-MYC terkait Burkitt lymphoma melalui t(8;14)
-- [High-yield] HER2/ERBB2 :: receptor tyrosine kinase; amplification dapat ditemukan pada sebagian kanker payudara dan kanker lain
-- [High-yield] BCR-ABL :: fusion tyrosine kinase dari t(9;22), Philadelphia chromosome, klasik pada CML
-- [High-yield] RET :: receptor tyrosine kinase; activating germline variants dapat menyebabkan MEN2
-- [High-yield] BRAF :: kinase pada MAPK pathway; activating mutation dapat ditemukan pada melanoma dan beberapa kanker lain
-- [High-yield] Kanker :: penyakit genetik pada tingkat sel, tetapi tidak selalu herediter
-- [High-yield] Proto-oncogene :: oncogene melalui gain-of-function
-- [Sporadic vs Hereditary Cancer — Clue Klinis] Clue yang meningkatkan kecurigaan hereditary cancer syndrome … :: • kanker pada usia relatif muda
-  • multiple primary cancers pada satu individu
-  • bilateral/multifocal tumors pada organ berpasangan tertentu
-  • banyak kerabat terkena kanker yang sesuai pola syndrome
-  • rare tumor tertentu
-  • kombinasi kanker khas dalam keluarga
-  • known pathogenic variant dalam keluarga
-- [Pedigree dalam Hereditary Cancer] Hal yang dicatat … :: • jenis kanker
-  • usia diagnosis
-  • multiple primary cancers
-  • bilateral tumors
-  • lineage maternal vs paternal
-  • usia sekarang/usia meninggal
-  • ancestry bila relevan
-  • hasil genetic testing sebelumnya
-  • minimal beberapa generasi bila memungkinkan
-- [Pedigree dalam Hereditary Cancer] HIGH-YIELD: Pedigree dalam Hereditary Cancer :: Paternal family history sama pentingnya dengan maternal family history untuk autosomal hereditary cancer syndromes.
+- [Hereditary Retinoblastoma] Pada Hereditary Retinoblastoma, apa inheritance predispositionnya? :: Autosomal dominant.
+- [Hereditary Retinoblastoma] Apa yang dimaksud dengan Tumorigenesis pada Hereditary Retinoblastoma? :: Second somatic hit pada retinal cell.
+- [Li–Fraumeni Syndrome] Pada Li–Fraumeni Syndrome, apa inheritancenya? :: Autosomal dominant cancer predisposition.
+- [Li–Fraumeni Syndrome] Pada Li–Fraumeni Syndrome, apa konsep utamanya? :: Germline loss of one TP53 allele menurunkan threshold menuju tumorigenesis; additional somatic events mendorong kanker.
+- [Lynch Syndrome] Pada Lynch Syndrome, apa inheritancenya? :: Autosomal dominant predisposition.
+- [Lynch Syndrome] Jelaskan Berbeda dari FAP dalam konteks Lynch Syndrome. :: Lynch tidak harus menghasilkan ribuan polip.
+- [Genomic Instability] Apa yang dimaksud dengan chromosomal instability pada Genomic Instability? :: Aneuploidy, gains/losses, structural rearrangements.
+- [Genomic Instability] Apa yang dimaksud dengan microsatellite instability pada Genomic Instability? :: Mismatch-repair deficiency.
+- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 1 pada Pattern Recognition Cepat? :: Anak dengan bilateral retinoblastoma → pikirkan germline RB1 + second hits somatic.
+- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 2 pada Pattern Recognition Cepat? :: Banyak adenomatous polyps sejak muda → pikirkan FAP/APC.
+- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 3 pada Pattern Recognition Cepat? :: Colorectal + endometrial cancers berulang dalam keluarga dengan MSI/MMR deficiency → pikirkan Lynch syndrome.
+- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 4 pada Pattern Recognition Cepat? :: Beragam kanker onset muda pada keluarga, termasuk sarcoma/breast/brain/adrenocortical → pikirkan Li–Fraumeni/TP53.
+- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 5 pada Pattern Recognition Cepat? :: Breast/ovarian cancer clustering dengan onset muda tertentu → pertimbangkan hereditary breast/ovarian predisposition dan genetic counseling/testing sesuai kriteria.
+- [Pattern Recognition Cepat] Apa yang dimaksud dengan Kasus 6 pada Pattern Recognition Cepat? :: CML dengan Philadelphia chromosome → BCR-ABL fusion oncogene.
+- [Dasar Genetika Kanker] Apa yang perlu diketahui tentang RAS pada Dasar Genetika Kanker? :: Small GTPase. Activating mutation membuat signaling proliferatif tetap aktif
+- [Dasar Genetika Kanker] Apa yang perlu diketahui tentang MYC pada Dasar Genetika Kanker? :: Transcription factor yang mendorong pertumbuhan dan proliferasi. c-MYC terkait Burkitt lymphoma melalui t(8;14)
+- [Dasar Genetika Kanker] Apa yang perlu diketahui tentang HER2/ERBB2 pada Dasar Genetika Kanker? :: Receptor tyrosine kinase; amplification dapat ditemukan pada sebagian kanker payudara dan kanker lain
+- [Dasar Genetika Kanker] Apa yang perlu diketahui tentang BCR-ABL pada Dasar Genetika Kanker? :: Fusion tyrosine kinase dari t(9;22), Philadelphia chromosome, klasik pada CML
+- [Dasar Genetika Kanker] Apa yang perlu diketahui tentang RET pada Dasar Genetika Kanker? :: Receptor tyrosine kinase; activating germline variants dapat menyebabkan MEN2
+- [Dasar Genetika Kanker] Apa yang perlu diketahui tentang BRAF pada Dasar Genetika Kanker? :: Kinase pada MAPK pathway; activating mutation dapat ditemukan pada melanoma dan beberapa kanker lain
+- [Dasar Genetika Kanker] Apa yang dimaksud dengan Kanker pada Dasar Genetika Kanker? :: Penyakit genetik pada tingkat sel, tetapi tidak selalu herediter
+- [Dasar Genetika Kanker] Apa yang perlu diingat tentang Proto-oncogene pada Dasar Genetika Kanker? :: Oncogene melalui gain-of-function
+- [Oncogene vs Tumor Suppressor — Cara Cepat Membedakan] Sebutkan poin-poin penting tentang Tumor suppressor. :: • Perubahan utama = loss-of-function
+  • Sering perlu kehilangan kedua alel pada tingkat sel
+  • “brake failure”
+  • Contoh: RB1, TP53, APC, PTEN
+- [Testing pada Genetika Kanker] Sebutkan poin-poin penting tentang Germline testing. :: • Digunakan ketika hereditary predisposition dicurigai
+  • Membutuhkan counseling mengenai hasil positive, negative, VUS, dan familial implications
+- [Pedigree dalam Hereditary Cancer] Sebutkan poin-poin penting tentang Hal yang dicatat. :: • Jenis kanker
+  • Usia diagnosis
+  • Multiple primary cancers
+  • Bilateral tumors
+  • Lineage maternal vs paternal
+  • Usia sekarang/usia meninggal
+  • Ancestry bila relevan
+  • Hasil genetic testing sebelumnya
+  • Minimal beberapa generasi bila memungkinkan
+- [Genomic Instability] Sebutkan jenis besar pada Genomic Instability. :: • Chromosomal instability: aneuploidy, gains/losses, structural rearrangements
+  • Microsatellite instability: mismatch-repair deficiency
+  • Mutation accumulation akibat repair deficiency lain
+  • Genomic instability mempercepat tumor evolution tetapi juga dapat menghasilkan vulnerabilities terapeutik tertentu
+- [Pedigree dalam Hereditary Cancer] Apa poin high-yield (pearl) tentang Pedigree dalam Hereditary Cancer? :: Paternal family history sama pentingnya dengan maternal family history untuk autosomal hereditary cancer syndromes.

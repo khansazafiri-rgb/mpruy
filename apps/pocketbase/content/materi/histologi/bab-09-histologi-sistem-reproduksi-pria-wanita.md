@@ -600,81 +600,87 @@ Jika preparat wanita:
 
 ## Flashcard {kartu}
 
-- [Peta Besar Sistem Reproduksi] Pria :: testis → tubuli recti → rete testis → ductuli efferentes → epididymis → ductus deferens → ejaculatory duct → urethra.
-- [Peta Besar Sistem Reproduksi] Wanita :: ovarium → uterine tube → uterus → cervix → vagina.
-- [Tubulus Seminiferus dan Urutan Spermatogenesis] Urutan yang paling penting :: spermatogonium → primary spermatocyte → secondary spermatocyte → spermatid → spermatozoon.
-- [Tubulus Seminiferus dan Urutan Spermatogenesis] High-yield urutan visual :: basal = spermatogonia; tengah = large primary spermatocytes; luminal = spermatids/spermatozoa.
-- [Leydig Cells] Shortcut paling aman :: Sertoli = di dalam tubulus.
-- [Ductus Deferens] Practical clue paling kuat :: small stellate lumen + extraordinarily thick smooth-muscle wall = ductus deferens.
-- [Mature / Graafian Follicle] Clue utama :: huge antrum + eccentric oocyte + cumulus oophorus = mature/Graafian follicle.
-- [Corpus Albicans] Shortcut :: corpus luteum = cellular and vascular.
-- [Practical Traps yang Sering Salah] Sertoli dan Leydig tertukar :: cek apakah sel berada di dalam atau di luar seminiferous tubule.
-- [Practical Traps yang Sering Salah] Epididymis dianggap ductus deferens :: bandingkan jumlah duct profiles dan ketebalan muscularis.
-- [Practical Traps yang Sering Salah] Stereocilia disebut motile cilia :: stereocilia epididymis adalah long microvilli berbasis actin.
-- [Practical Traps yang Sering Salah] Ductuli efferentes dianggap epididymis :: cari scalloped lumen akibat alternating tall dan short cells.
-- [Practical Traps yang Sering Salah] Vesicula seminalis dianggap prostate :: seminal vesicle mempunyai satu lumen sangat folded; prostate mempunyai banyak glands terpisah.
-- [Practical Traps yang Sering Salah] Primary follicle dianggap secondary follicle :: true antrum adalah kunci antral/secondary follicle.
-- [Practical Traps yang Sering Salah] Corpus luteum dianggap follicle :: corpus luteum tidak memiliki oocyte dan didominasi lutein cells.
-- [Practical Traps yang Sering Salah] Uterine tube dianggap uterus :: tube punya highly folded mucosa tanpa endometrial glands; uterus punya glands dalam endometrial stroma dan myometrium tebal.
-- [Practical Traps yang Sering Salah] Cervix dianggap vagina :: cervix memiliki endocervical mucous epithelium/glands; vagina tidak memiliki glands.
-- [Practical Traps yang Sering Salah] Maternal dan fetal blood pada placenta dianggap bercampur :: keduanya berada pada compartments berbeda.
-- [High-yield] Testis :: seminiferous tubules + spermatogenic series
-- [High-yield] Basal → lumen :: spermatogonium → primary spermatocyte → spermatid → spermatozoon
-- [High-yield] Sertoli :: inside tubule, pale nucleus, support + blood-testis barrier
-- [High-yield] Leydig :: interstitial, eosinophilic endocrine cells, testosterone
-- [High-yield] Ductuli efferentes :: scalloped lumen
-- [High-yield] Epididymis :: pseudostratified + stereocilia + sperm-filled lumen
-- [High-yield] Ductus deferens :: stellate lumen + massive muscularis
-- [High-yield] Seminal vesicle :: extremely folded labyrinthine mucosa
-- [High-yield] Ovary :: follicles
-- [High-yield] Primordial :: flattened follicular cells
-- [High-yield] Primary :: cuboidal/multilayer granulosa, no true antrum
-- [High-yield] Antral :: antrum present
-- [High-yield] Graafian :: huge antrum + cumulus oophorus/corona radiata
-- [High-yield] Corpus luteum :: large pale lutein cells + rich vessels
-- [High-yield] Corpus albicans :: collagenous scar
-- [High-yield] Uterus :: endometrial glands + thick myometrium
-- [High-yield] Proliferative :: straight glands
-- [High-yield] Secretory :: tortuous/saw-tooth glands
-- [High-yield] Menstrual :: breakdown + hemorrhage
-- [High-yield] Endocervix :: simple columnar mucous
-- [High-yield] Ectocervix/vagina :: non-keratinized stratified squamous
-- [High-yield] Vagina :: no glands
-- [Sertoli Cells] Ciri nucleus Sertoli … :: • relatif besar
-  • pucat/euchromatic
-  • berbentuk oval atau agak triangular
-  • memiliki prominent nucleolus
-  • berada dekat basal compartment tetapi tidak sebasal spermatogonia
-- [Blood-Testis Barrier] Barrier ini membagi seminiferous epithelium menjadi … :: • basal compartment, terutama berisi spermatogonia dan early primary spermatocytes
-  • adluminal compartment, tempat tahap meiosis lanjut dan spermiogenesis berlangsung
-- [Epididymis] Dua cell types utama … :: • principal cells dengan stereocilia
-  • basal cells dekat basal lamina
-- [Ductus Deferens] Ciri paling mencolok adalah muscularis yang sangat tebal, secara klasik terdiri atas … :: • inner longitudinal
-  • middle circular
-  • outer longitudinal smooth muscle
-- [Penis] Penis tersusun atas tiga erectile bodies … :: • dua corpora cavernosa
-  • satu corpus spongiosum yang mengelilingi penile urethra
-- [Ovarium: Organisasi Umum] Parenkim dibagi menjadi … :: • cortex di perifer, mengandung ovarian follicles pada berbagai tahap, corpora lutea, dan corpora albicantia
-  • medulla di pusat, berupa loose connective tissue kaya blood vessels, lymphatics, dan nerves
-- [Follicular Atresia] Ciri histologis dapat mencakup … :: • degenerating oocyte
-  • disorganized granulosa cells
-  • pyknotic nuclei/apoptotic bodies
-  • collapse atau irregularity of follicular wall
-  • thickened glassy basal lamina
-- [Uterine Tube] Epitel berupa simple columnar dengan dua cell types utama … :: • ciliated cells yang membantu transport oocyte/zygote
-  • non-ciliated secretory/peg cells yang menghasilkan secretions untuk luminal environment
-- [Uterus: Organisasi Dinding] Uterus memiliki tiga lapisan utama … :: • endometrium
-  • myometrium
-  • perimetrium
-- [Uterus: Organisasi Dinding] Endometrium dibagi menjadi … :: • stratum functionalis, mengalami perubahan siklik dan luruh saat menstruasi
-  • stratum basalis, dipertahankan dan menjadi sumber regenerasi functionalis
-- [Testis: Organisasi Umum] Practical clue: Testis: Organisasi Umum :: Banyak circular/oval tubules dengan sel berlapis dari basal menuju lumen = testis.
-- [Blood-Testis Barrier] High-yield correction: Blood-Testis Barrier :: Barrier bukan dibentuk oleh endothelium kapiler testis, melainkan terutama oleh Sertoli-Sertoli tight junctions.
-- [Epididymis] Practical clue: Epididymis :: Banyak duct profiles + lumen besar berisi sperm + pseudostratified epithelium dengan stereocilia = epididymis.
-- [Vesicula Seminalis] Trap: Vesicula Seminalis :: Jangan keliru dengan prostate. Seminal vesicle didominasi satu sistem lumen sangat folded, sedangkan prostate terdiri atas banyak glandular acini terpisah dalam fibromuscular stroma.
-- [Ovarium: Organisasi Umum] Practical clue: Ovarium: Organisasi Umum :: Oocyte-containing follicles di cortex = ovarium.
-- [Primary Follicle] High-yield: Primary Follicle :: Primary follicle = cuboidal/multilayer granulosa tetapi belum memiliki true antrum.
-- [Ovulation dan Corpus Luteum] Practical clue: Ovulation dan Corpus Luteum :: Large folded endocrine-looking mass + pale eosinophilic lutein cells + rich vascularity = corpus luteum.
-- [Proliferative Endometrium] Shortcut praktikum: Proliferative Endometrium :: Straight tubular glands = proliferative phase.
-- [Cervix] Practical clue: Cervix :: Abrupt/simple-columnar mucous epithelium versus thick non-keratinized stratified squamous epithelium = cervix/transformation region.
-- [Placenta dan Chorionic Villi] High-yield: Placenta dan Chorionic Villi :: Maternal blood berada di intervillous space; fetal blood tetap berada di fetal capillaries dalam villi.
+- [Peta Besar Sistem Reproduksi] Apa yang dimaksud dengan Pria pada Peta Besar Sistem Reproduksi? :: Testis → tubuli recti → rete testis → ductuli efferentes → epididymis → ductus deferens → ejaculatory duct → urethra.
+- [Peta Besar Sistem Reproduksi] Apa yang dimaksud dengan Wanita pada Peta Besar Sistem Reproduksi? :: Ovarium → uterine tube → uterus → cervix → vagina.
+- [Tubulus Seminiferus dan Urutan Spermatogenesis] Jelaskan Urutan yang paling penting dalam konteks Tubulus Seminiferus dan Urutan Spermatogenesis. :: Spermatogonium → primary spermatocyte → secondary spermatocyte → spermatid → spermatozoon.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Sertoli dan Leydig tertukar? :: Cek apakah sel berada di dalam atau di luar seminiferous tubule.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Epididymis dianggap ductus deferens? :: Bandingkan jumlah duct profiles dan ketebalan muscularis.
+- [Practical Traps yang Sering Salah] Jelaskan Stereocilia disebut motile cilia dalam konteks Practical Traps yang Sering Salah. :: Stereocilia epididymis adalah long microvilli berbasis actin.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Ductuli efferentes dianggap epididymis? :: Cari scalloped lumen akibat alternating tall dan short cells.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Vesicula seminalis dianggap prostate? :: Seminal vesicle mempunyai satu lumen sangat folded; prostate mempunyai banyak glands terpisah.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Primary follicle dianggap secondary follicle? :: True antrum adalah kunci antral/secondary follicle.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Corpus luteum dianggap follicle? :: Corpus luteum tidak memiliki oocyte dan didominasi lutein cells.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Uterine tube dianggap uterus? :: Tube punya highly folded mucosa tanpa endometrial glands; uterus punya glands dalam endometrial stroma dan myometrium tebal.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Cervix dianggap vagina? :: Cervix memiliki endocervical mucous epithelium/glands; vagina tidak memiliki glands.
+- [Practical Traps yang Sering Salah] Bagaimana cara menghindari kesalahan berikut: Maternal dan fetal blood pada placenta dianggap bercampur? :: Keduanya berada pada compartments berbeda.
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Testis pada Histologi Sistem Reproduksi Pria & Wanita? :: Seminiferous tubules + spermatogenic series
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang perlu diketahui tentang Basal → lumen pada Histologi Sistem Reproduksi Pria & Wanita? :: Spermatogonium → primary spermatocyte → spermatid → spermatozoon
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Sertoli pada Histologi Sistem Reproduksi Pria & Wanita? :: Inside tubule, pale nucleus, support + blood-testis barrier
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Leydig pada Histologi Sistem Reproduksi Pria & Wanita? :: Interstitial, eosinophilic endocrine cells, testosterone
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Ductuli efferentes pada Histologi Sistem Reproduksi Pria & Wanita? :: Scalloped lumen
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Epididymis pada Histologi Sistem Reproduksi Pria & Wanita? :: Pseudostratified + stereocilia + sperm-filled lumen
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Ductus deferens pada Histologi Sistem Reproduksi Pria & Wanita? :: Stellate lumen + massive muscularis
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Seminal vesicle pada Histologi Sistem Reproduksi Pria & Wanita? :: Extremely folded labyrinthine mucosa
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Ovary pada Histologi Sistem Reproduksi Pria & Wanita? :: Follicles
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Primordial pada Histologi Sistem Reproduksi Pria & Wanita? :: Flattened follicular cells
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Primary pada Histologi Sistem Reproduksi Pria & Wanita? :: Cuboidal/multilayer granulosa, no true antrum
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Antral pada Histologi Sistem Reproduksi Pria & Wanita? :: Antrum present
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Graafian pada Histologi Sistem Reproduksi Pria & Wanita? :: Huge antrum + cumulus oophorus/corona radiata
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Corpus luteum pada Histologi Sistem Reproduksi Pria & Wanita? :: Large pale lutein cells + rich vessels
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Corpus albicans pada Histologi Sistem Reproduksi Pria & Wanita? :: Collagenous scar
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Uterus pada Histologi Sistem Reproduksi Pria & Wanita? :: Endometrial glands + thick myometrium
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Proliferative pada Histologi Sistem Reproduksi Pria & Wanita? :: Straight glands
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Secretory pada Histologi Sistem Reproduksi Pria & Wanita? :: Tortuous/saw-tooth glands
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Menstrual pada Histologi Sistem Reproduksi Pria & Wanita? :: Breakdown + hemorrhage
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Endocervix pada Histologi Sistem Reproduksi Pria & Wanita? :: Simple columnar mucous
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Ectocervix/vagina pada Histologi Sistem Reproduksi Pria & Wanita? :: Non-keratinized stratified squamous
+- [Histologi Sistem Reproduksi Pria & Wanita] Apa yang dimaksud dengan Vagina pada Histologi Sistem Reproduksi Pria & Wanita? :: No glands
+- [Sertoli Cells] Sebutkan ciri nucleus Sertoli pada Sertoli Cells. :: • Relatif besar
+  • Pucat/euchromatic
+  • Berbentuk oval atau agak triangular
+  • Memiliki prominent nucleolus
+  • Berada dekat basal compartment tetapi tidak sebasal spermatogonia
+- [Sertoli Cells] Sebutkan fungsi penting pada Sertoli Cells. :: • Menopang dan memberi nutrisi germ cells
+  • Membentuk blood-testis barrier
+  • Memfagosit residual bodies
+  • Mensekresi androgen-binding protein
+  • Menghasilkan inhibin B
+  • Pada perkembangan fetal menghasilkan anti-Müllerian hormone
+- [Epididymis] Sebutkan poin-poin penting tentang Dua cell types utama. :: • Principal cells dengan stereocilia
+  • Basal cells dekat basal lamina
+- [Ductus Deferens] Sebutkan ciri paling mencolok adalah muscularis yang sangat tebal, secara klasik pada Ductus Deferens. :: • Inner longitudinal
+  • Middle circular
+  • Outer longitudinal smooth muscle
+- [Epididymis versus Ductus Deferens] Sebutkan poin-poin penting tentang Ductus deferens. :: • Biasanya satu lumen utama
+  • Lumen lebih kecil/stellate
+  • Mucosa folded
+  • Muscularis sangat tebal
+- [Penis] Sebutkan poin-poin penting tentang Penis tersusun atas tiga erectile bodies. :: • Dua corpora cavernosa
+  • Satu corpus spongiosum yang mengelilingi penile urethra
+- [Ovarium: Organisasi Umum] Sebutkan poin-poin penting tentang Parenkim. :: • Cortex di perifer, mengandung ovarian follicles pada berbagai tahap, corpora lutea, dan corpora albicantia
+  • Medulla di pusat, berupa loose connective tissue kaya blood vessels, lymphatics, dan nerves
+- [Secondary / Antral Follicle] Sebutkan komponen penting pada Secondary / Antral Follicle. :: • Primary oocyte
+  • Zona pellucida
+  • Granulosa layer
+  • Antrum
+  • Theca interna
+  • Theca externa
+- [Uterine Tube] Sebutkan poin-poin penting tentang Region comparison. :: • Ampulla = lumen luas, mucosal folds paling kompleks
+  • Isthmus = lumen lebih sempit, folds lebih sederhana, muscular wall lebih tebal
+- [Uterus: Organisasi Dinding] Sebutkan poin-poin penting tentang Endometrium. :: • Stratum functionalis, mengalami perubahan siklik dan luruh saat menstruasi
+  • Stratum basalis, dipertahankan dan menjadi sumber regenerasi functionalis
+- [Proliferative Endometrium] Sebutkan ciri histologis pada Proliferative Endometrium. :: • Endometrium sedang menebal
+  • Glands relatif straight, tubular, dan sempit
+  • Glandular epithelium dapat menunjukkan mitoses
+  • Stroma padat dan cellular
+  • Spiral arteries memanjang tetapi belum sangat coiled
+- [Testis: Organisasi Umum] Apa clue praktikum untuk Testis: Organisasi Umum? :: Banyak circular/oval tubules dengan sel berlapis dari basal menuju lumen = testis.
+- [Blood-Testis Barrier] Apa jebakan yang sering muncul pada soal tentang Blood-Testis Barrier? :: Barrier bukan dibentuk oleh endothelium kapiler testis, melainkan terutama oleh Sertoli-Sertoli tight junctions.
+- [Epididymis] Apa clue praktikum untuk Epididymis? :: Banyak duct profiles + lumen besar berisi sperm + pseudostratified epithelium dengan stereocilia = epididymis.
+- [Vesicula Seminalis] Apa jebakan yang sering muncul pada soal tentang Vesicula Seminalis? :: Jangan keliru dengan prostate. Seminal vesicle didominasi satu sistem lumen sangat folded, sedangkan prostate terdiri atas banyak glandular acini terpisah dalam fibromuscular stroma.
+- [Ovarium: Organisasi Umum] Apa clue praktikum untuk Ovarium: Organisasi Umum? :: Oocyte-containing follicles di cortex = ovarium.
+- [Primary Follicle] Apa poin high-yield (pearl) tentang Primary Follicle? :: Primary follicle = cuboidal/multilayer granulosa tetapi belum memiliki true antrum.
+- [Ovulation dan Corpus Luteum] Apa clue praktikum untuk Ovulation dan Corpus Luteum? :: Large folded endocrine-looking mass + pale eosinophilic lutein cells + rich vascularity = corpus luteum.
+- [Proliferative Endometrium] Apa clue praktikum untuk Proliferative Endometrium? :: Straight tubular glands = proliferative phase.
+- [Cervix] Apa clue praktikum untuk Cervix? :: Abrupt/simple-columnar mucous epithelium versus thick non-keratinized stratified squamous epithelium = cervix/transformation region.
+- [Placenta dan Chorionic Villi] Apa poin high-yield (pearl) tentang Placenta dan Chorionic Villi? :: Maternal blood berada di intervillous space; fetal blood tetap berada di fetal capillaries dalam villi.

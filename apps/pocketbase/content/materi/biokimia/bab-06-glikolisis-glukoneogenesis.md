@@ -584,56 +584,51 @@ Glikolisis berlangsung di sitosol dan mengubah satu glukosa menjadi dua piruvat 
 
 ## Flashcard {kartu}
 
-- [Peta Besar Bab] Inti bab :: glikolisis menghasilkan energi dari glukosa, sedangkan glukoneogenesis menggunakan energi untuk membentuk kembali glukosa.
-- [Dua Fase Glikolisis] fase payoff/ATP-generating :: menghasilkan 4 ATP dan 2 NADH.
-- [Gambaran Jalur Glikolisis] Urutan utama :: Glukosa → Glucose-6-phosphate → Fructose-6-phosphate → Fructose-1,6-bisphosphate → Glyceraldehyde-3-phosphate → 1,3-Bisphosphoglycerate → 3-Phosphoglycerate → 2-Phosphoglycerate → Phosphoenolpyruvate → Piruvat.
-- [Reaksi 1 — Glukosa → Glucose-6-Phosphate] Reaksi memakai 1 ATP :: Glukosa + ATP → Glucose-6-phosphate + ADP.
-- [Reaksi 2 — G6P → Fructose-6-Phosphate] Enzim :: phosphoglucose isomerase.
-- [Reaksi 3 — F6P → Fructose-1,6-Bisphosphate] Enzim :: phosphofructokinase-1 (PFK-1).
-- [Reaksi 5 — DHAP → G3P] Enzim :: triose phosphate isomerase.
-- [Reaksi 6 — Oksidasi G3P] Enzim :: glyceraldehyde-3-phosphate dehydrogenase.
-- [Reaksi 7 — ATP Pertama pada Payoff Phase] Enzim :: phosphoglycerate kinase.
-- [Reaksi 7 — ATP Pertama pada Payoff Phase] Ini adalah substrate-level phosphorylation :: ATP dibuat langsung dengan memindahkan gugus fosfat berenergi tinggi ke ADP.
-- [Reaksi 8 — 3-PG → 2-PG] Enzim :: phosphoglycerate mutase.
-- [Regulasi Pyruvate Kinase] Pada hati :: glukagon → cAMP → PKA → fosforilasi pyruvate kinase → enzim kurang aktif.
-- [Nasib Piruvat pada Kondisi Anaerob] Enzim :: lactate dehydrogenase (LDH).
-- [Bypass 1A — Pyruvate → Oxaloacetate] Enzim :: pyruvate carboxylase.
-- [Bypass 1A — Pyruvate → Oxaloacetate] Lokasi :: matriks mitokondria.
-- [Bypass 1A — Pyruvate → Oxaloacetate] Reaksi :: Piruvat + CO₂ + ATP → Oxaloacetate + ADP + Pi.
-- [Bypass 1B — Oxaloacetate → PEP] Enzim :: phosphoenolpyruvate carboxykinase (PEPCK).
-- [Bypass 1B — Oxaloacetate → PEP] Reaksi :: Oxaloacetate + GTP → PEP + GDP + CO₂.
-- [Bypass 2 — F1,6BP → F6P] Enzim :: fructose-1,6-bisphosphatase (FBPase-1).
-- [Bypass 3 — G6P → Glukosa] Enzim :: glucose-6-phosphatase.
-- [Gambar Besar Glukoneogenesis] Alur utama dari piruvat :: Piruvat → Oxaloacetate → PEP → reaksi reversibel glikolisis → Fructose-1,6-bisphosphate → Fructose-6-phosphate → Glucose-6-phosphate → Glukosa.
-- [Insulin vs Glukagon] Setelah makan :: insulin tinggi → F2,6BP meningkat di hati → PFK-1 aktif → glikolisis meningkat → glukoneogenesis menurun.
-- [Insulin vs Glukagon] Saat puasa :: glukagon tinggi → cAMP/PKA → F2,6BP menurun → PFK-1 kurang aktif dan FBPase-1 lebih aktif → glukoneogenesis meningkat.
-- [Insulin vs Glukagon] Shortcut :: Insulin = “pakai/simpan glukosa”.
-- [Siklus Cori] Di hati :: laktat → piruvat → glukoneogenesis → glukosa.
-- [Glucose–Alanine Cycle] Alanin dibawa ke hati :: alanin → piruvat → glukoneogenesis → glukosa.
-- [Lokasi Glikolisis] Karena tidak membutuhkan mitokondria, glikolisis sangat penting pada … :: • eritrosit matang
-  • jaringan dengan kebutuhan energi cepat
-  • jaringan yang mengalami hipoksia atau aktivitas anaerob sementara
-- [Dua Fase Glikolisis] Glikolisis dibagi menjadi … :: • fase investasi/preparatif: memakai 2 ATP
-  • fase payoff/ATP-generating: menghasilkan 4 ATP dan 2 NADH
-- [Dua Fase Glikolisis] Hasil bersih per glukosa … :: • 2 ATP
+- [Peta Besar Bab] Pada Peta Besar Bab, apa inti babnya? :: Glikolisis menghasilkan energi dari glukosa, sedangkan glukoneogenesis menggunakan energi untuk membentuk kembali glukosa.
+- [Dua Fase Glikolisis] Apa yang dimaksud dengan fase payoff/ATP-generating pada Dua Fase Glikolisis? :: Menghasilkan 4 ATP dan 2 NADH.
+- [Gambaran Jalur Glikolisis] Pada Gambaran Jalur Glikolisis, apa urutan utamanya? :: Glukosa → Glucose-6-phosphate → Fructose-6-phosphate → Fructose-1,6-bisphosphate → Glyceraldehyde-3-phosphate → 1,3-Bisphosphoglycerate → 3-Phosphoglycerate → 2-Phosphoglycerate → Phosphoenolpyruvate → Piruvat.
+- [Reaksi 1 — Glukosa → Glucose-6-Phosphate] Jelaskan Reaksi memakai 1 ATP dalam konteks Reaksi 1 — Glukosa → Glucose-6-Phosphate. :: Glukosa + ATP → Glucose-6-phosphate + ADP.
+- [Reaksi 2 — G6P → Fructose-6-Phosphate] Pada Reaksi 2 — G6P → Fructose-6-Phosphate, apa enzimnya? :: Phosphoglucose isomerase.
+- [Reaksi 3 — F6P → Fructose-1,6-Bisphosphate] Pada Reaksi 3 — F6P → Fructose-1,6-Bisphosphate, apa enzimnya? :: Phosphofructokinase-1 (PFK-1).
+- [Reaksi 5 — DHAP → G3P] Pada Reaksi 5 — DHAP → G3P, apa enzimnya? :: Triose phosphate isomerase.
+- [Reaksi 6 — Oksidasi G3P] Pada Reaksi 6 — Oksidasi G3P, apa enzimnya? :: Glyceraldehyde-3-phosphate dehydrogenase.
+- [Reaksi 7 — ATP Pertama pada Payoff Phase] Pada Reaksi 7 — ATP Pertama pada Payoff Phase, apa enzimnya? :: Phosphoglycerate kinase.
+- [Reaksi 7 — ATP Pertama pada Payoff Phase] Jelaskan Ini adalah substrate-level phosphorylation dalam konteks Reaksi 7 — ATP Pertama pada Payoff Phase. :: ATP dibuat langsung dengan memindahkan gugus fosfat berenergi tinggi ke ADP.
+- [Reaksi 8 — 3-PG → 2-PG] Pada Reaksi 8 — 3-PG → 2-PG, apa enzimnya? :: Phosphoglycerate mutase.
+- [Nasib Piruvat pada Kondisi Anaerob] Pada Nasib Piruvat pada Kondisi Anaerob, apa enzimnya? :: Lactate dehydrogenase (LDH).
+- [2,3-Bisphosphoglycerate Shunt] Apa yang dimaksud dengan Trade-off pada 2,3-Bisphosphoglycerate Shunt? :: Jalur ini melewati langkah pembentukan ATP oleh phosphoglycerate kinase.
+- [Bypass 1A — Pyruvate → Oxaloacetate] Pada Bypass 1A — Pyruvate → Oxaloacetate, apa enzimnya? :: Pyruvate carboxylase.
+- [Bypass 1A — Pyruvate → Oxaloacetate] Pada Bypass 1A — Pyruvate → Oxaloacetate, apa lokasinya? :: Matriks mitokondria.
+- [Bypass 1A — Pyruvate → Oxaloacetate] Pada Bypass 1A — Pyruvate → Oxaloacetate, apa reaksinya? :: Piruvat + CO₂ + ATP → Oxaloacetate + ADP + Pi.
+- [Bypass 1B — Oxaloacetate → PEP] Pada Bypass 1B — Oxaloacetate → PEP, apa enzimnya? :: Phosphoenolpyruvate carboxykinase (PEPCK).
+- [Bypass 1B — Oxaloacetate → PEP] Pada Bypass 1B — Oxaloacetate → PEP, apa reaksinya? :: Oxaloacetate + GTP → PEP + GDP + CO₂.
+- [Bypass 2 — F1,6BP → F6P] Pada Bypass 2 — F1,6BP → F6P, apa enzimnya? :: Fructose-1,6-bisphosphatase (FBPase-1).
+- [Bypass 3 — G6P → Glukosa] Pada Bypass 3 — G6P → Glukosa, apa enzimnya? :: Glucose-6-phosphatase.
+- [Gambar Besar Glukoneogenesis] Jelaskan Alur utama dari piruvat dalam konteks Gambar Besar Glukoneogenesis. :: Piruvat → Oxaloacetate → PEP → reaksi reversibel glikolisis → Fructose-1,6-bisphosphate → Fructose-6-phosphate → Glucose-6-phosphate → Glukosa.
+- [Glucose–Alanine Cycle] Jelaskan Alanin dibawa ke hati dalam konteks Glucose–Alanine Cycle. :: Alanin → piruvat → glukoneogenesis → glukosa.
+- [Master Flow Glikolisis] Apa yang dimaksud dengan Net pada Master Flow Glikolisis? :: 2 ATP + 2 NADH + 2 piruvat per glukosa.
+- [Dua Fase Glikolisis] Sebutkan poin-poin penting tentang Glikolisis. :: • Fase investasi/preparatif: memakai 2 ATP
+  • Fase payoff/ATP-generating: menghasilkan 4 ATP dan 2 NADH
+- [Dua Fase Glikolisis] Sebutkan poin-poin penting tentang Hasil bersih per glukosa. :: • 2 ATP
   • 2 NADH
   • 2 piruvat
-- [Neraca Energi Glikolisis] ATP yang dipakai … :: • 1 ATP pada hexokinase/glucokinase
-  • 1 ATP pada PFK-1
-- [Neraca Energi Glikolisis] ATP yang dibuat … :: • 2 ATP pada phosphoglycerate kinase
-  • 2 ATP pada pyruvate kinase
-- [Energi Glikolisis Anaerob] Pada glikolisis anaerob … :: • glikolisis menghasilkan 2 NADH
-  • reduksi piruvat menjadi laktat memakai kembali 2 NADH
-- [Energi Glikolisis Anaerob] Karena itu hasil bersih … :: • 2 ATP
-  • 0 NADH bersih
-  • 2 laktat
-- [Lokasi Glukoneogenesis] Secara subseluler, reaksi glukoneogenesis tersebar di … :: • mitokondria
-  • sitosol
-  • retikulum endoplasma untuk langkah glucose-6-phosphatase
-- [Glukoneogenesis Bukan Sekadar Glikolisis Terbalik] Namun tiga reaksi irreversibel glikolisis memerlukan bypass khusus … :: • pyruvate kinase
-  • PFK-1
-  • hexokinase/glucokinase
-- [Biaya Energi Glukoneogenesis] Untuk membentuk 1 glukosa dari 2 piruvat dibutuhkan … :: • 4 ATP
-  • 2 GTP
-  • 2 NADH
-- [Pyruvate Kinase Deficiency] Clinical anchor: Pyruvate Kinase Deficiency :: Enzim glikolisis terganggu → ATP eritrosit turun → hemolytic anemia.
+- [Hexokinase] Sebutkan poin-poin penting tentang Karakteristik high-yield. :: • Km rendah
+  • Terdapat pada banyak jaringan
+  • Vmax relatif lebih rendah
+  • Dihambat oleh produk glucose-6-phosphate
+- [PFK-1: Enzim Regulasi Utama] Sebutkan poin-poin penting tentang Aktivator penting. :: • AMP
+  • Fructose-2,6-bisphosphate
+- [PFK-1: Enzim Regulasi Utama] Sebutkan poin-poin penting tentang Inhibitor penting. :: • ATP
+  • Citrate
+- [Lokasi Glukoneogenesis] Sebutkan organ utama pada Lokasi Glukoneogenesis. :: • Hati
+  • Korteks ginjal, terutama makin penting pada puasa berkepanjangan
+- [Substrat Glukoneogenesis] Sebutkan substrat penting pada Substrat Glukoneogenesis. :: • Laktat
+  • Alanin dan asam amino glukogenik lain
+  • Gliserol
+  • Propionat dari oksidasi asam lemak rantai ganjil, dalam kontribusi yang lebih kecil pada manusia
+- [Bypass 2 — F1,6BP → F6P] Sebutkan regulasi penting pada Bypass 2 — F1,6BP → F6P. :: • Dihambat AMP
+  • Dihambat F2,6BP
+  • Dapat didukung oleh status energi tinggi
+- [Alkohol dan Hipoglikemia Puasa] Sebutkan poin-poin penting tentang NADH tinggi mendorong. :: • Piruvat → laktat
+  • Oxaloacetate → malate
+- [Pyruvate Kinase Deficiency] Apa korelasi klinis dari Pyruvate Kinase Deficiency? :: Enzim glikolisis terganggu → ATP eritrosit turun → hemolytic anemia.

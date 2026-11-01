@@ -328,34 +328,42 @@ K14 menampilkan percussion sebagai clinical correlation. Perkusi membandingkan r
 
 ## Flashcard {kartu}
 
-- [Bagian pleura parietalis] Costal pleura :: melapisi permukaan internal ribs, intercostal spaces, dan lateral thoracic wall.
-- [Bagian pleura parietalis] Mediastinal pleura :: melapisi sisi lateral mediastinum dan berlanjut ke visceral pleura di root.
-- [Bagian pleura parietalis] Diaphragmatic pleura :: menutupi superior surface diaphragm.
-- [Bagian pleura parietalis] Cervical pleura/cupula :: memanjang ke root of neck di atas costa I; bagian ini diperkuat oleh suprapleural membrane/Sibson fascia.
-- [Bronchial Tree dan Peralihan ke Respiratory Zone] Urutan besar airway :: Trachea → main/primary bronchi → lobar/secondary bronchi → segmental/tertiary bronchi → smaller bronchi → bronchioles → terminal bronchioles → respiratory bronchioles → alveolar ducts → alveolar sacs/alveoli.
-- [Pulmonary Circulation] Alur utama :: Right ventricle → pulmonary trunk → right/left pulmonary arteries → lobar/segmental arterial branches → alveolar capillary networks → pulmonary venules → superior/inferior pulmonary veins → left atrium.
-- [Lymphatic Drainage] Aliran secara sederhana :: pulmonary/intrapulmonary nodes → bronchopulmonary (hilar) nodes → inferior dan superior tracheobronchial nodes → paratracheal nodes → bronchomediastinal trunks → venous angles atau lymphatic ducts sesuai sisi dan variasi.
-- [High-yield] Pleural cavity :: potential space dengan sedikit fluid, bukan rongga normal berisi udara
-- [High-yield] Pleural recess ≠ lung lobe. Costodiaphragmatic recess :: ruang potensial antara pleura costal dan diaphragmatic
-- [High-yield] Inferior border :: lung 6–8–10; pleura 8–10–12 pada landmark klasik
-- [High-yield] Lingula :: bagian superior lobe kiri, bukan lobe ketiga
-- [High-yield] RALS :: right pulmonary artery anterior to bronchus; left pulmonary artery superior to bronchus
-- [Batas permukaan klasik] Batas inferior lung pada quiet respiration secara klasik diproyeksikan kira-kira … :: • rib VI pada midclavicular line
-  • rib VIII pada midaxillary line
-  • rib X dekat scapular/paravertebral line
-- [Batas permukaan klasik] Pleural reflection turun sekitar dua iga lebih rendah … :: • rib VIII pada midclavicular line
-  • rib X pada midaxillary line
-  • mencapai sekitar rib XII posteriorly
-- [Root, Hilum, dan Pulmonary Ligament] Isi root secara umum … :: • main/lobar bronchus
-  • pulmonary artery
-  • superior dan inferior pulmonary veins
-  • bronchial arteries dan veins
-  • lymphatics dan bronchopulmonary nodes
-  • autonomic nerves dari pulmonary plexus
-  • connective tissue
-- [Relasi high-yield] Hubungan pulmonary artery dengan bronchus sering diingat dengan RALS … :: • Right pulmonary artery = Anterior terhadap bronchus
-  • Left pulmonary artery = Superior terhadap bronchus
-- [Lymphatic Drainage] Paru mempunyai dua jaringan lymphatic utama … :: • superficial/subpleural plexus di bawah visceral pleura
-  • deep plexus yang mengikuti bronchi dan pulmonary vessels
-- [Batas permukaan klasik] Mnemonic praktis: Batas permukaan klasik :: Lung 6–8–10, pleura 8–10–12. Angka ini adalah landmark anatomi klasik, bukan batas absolut; posisi berubah dengan fase respirasi, postur, habitus, dan variasi individual.
-- [Pulmonary Circulation] Exam trap: Pulmonary Circulation :: “artery” dan “vein” ditentukan arah aliran relatif terhadap heart, bukan oxygen content. Pulmonary artery membawa deoxygenated blood; pulmonary vein membawa oxygenated blood.
+- [Bagian pleura parietalis] Apa yang dimaksud dengan Costal pleura pada Bagian pleura parietalis (Pleura dan Pleural Cavity)? :: Melapisi permukaan internal ribs, intercostal spaces, dan lateral thoracic wall.
+- [Bagian pleura parietalis] Apa yang dimaksud dengan Mediastinal pleura pada Bagian pleura parietalis (Pleura dan Pleural Cavity)? :: Melapisi sisi lateral mediastinum dan berlanjut ke visceral pleura di root.
+- [Bagian pleura parietalis] Apa yang dimaksud dengan Diaphragmatic pleura pada Bagian pleura parietalis (Pleura dan Pleural Cavity)? :: Menutupi superior surface diaphragm.
+- [Bagian pleura parietalis] Apa yang dimaksud dengan Cervical pleura/cupula pada Bagian pleura parietalis (Pleura dan Pleural Cavity)? :: Memanjang ke root of neck di atas costa I; bagian ini diperkuat oleh suprapleural membrane/Sibson fascia.
+- [Bronchial Tree dan Peralihan ke Respiratory Zone] Jelaskan Urutan besar airway dalam konteks Bronchial Tree dan Peralihan ke Respiratory Zone. :: Trachea → main/primary bronchi → lobar/secondary bronchi → segmental/tertiary bronchi → smaller bronchi → bronchioles → terminal bronchioles → respiratory bronchioles → alveolar ducts → alveolar sacs/alveoli.
+- [Pulmonary Circulation] Pada Pulmonary Circulation, apa alur utamanya? :: Right ventricle → pulmonary trunk → right/left pulmonary arteries → lobar/segmental arterial branches → alveolar capillary networks → pulmonary venules → superior/inferior pulmonary veins → left atrium.
+- [Lymphatic Drainage] Jelaskan Aliran secara sederhana dalam konteks Lymphatic Drainage. :: Pulmonary/intrapulmonary nodes → bronchopulmonary (hilar) nodes → inferior dan superior tracheobronchial nodes → paratracheal nodes → bronchomediastinal trunks → venous angles atau lymphatic ducts sesuai sisi dan variasi.
+- [Anatomi Paru & Saluran Napas] Apa yang dimaksud dengan Pleural cavity pada Anatomi Paru & Saluran Napas? :: Potential space dengan sedikit fluid, bukan rongga normal berisi udara
+- [Anatomi Paru & Saluran Napas] Apa yang dimaksud dengan Pleural recess ≠ lung lobe. Costodiaphragmatic recess? :: Ruang potensial antara pleura costal dan diaphragmatic
+- [Anatomi Paru & Saluran Napas] Apa yang perlu diketahui tentang Inferior border pada Anatomi Paru & Saluran Napas? :: Lung 6–8–10; pleura 8–10–12 pada landmark klasik
+- [Anatomi Paru & Saluran Napas] Apa yang dimaksud dengan Lingula pada Anatomi Paru & Saluran Napas? :: Bagian superior lobe kiri, bukan lobe ketiga
+- [Anatomi Paru & Saluran Napas] Apa yang perlu diketahui tentang RALS pada Anatomi Paru & Saluran Napas? :: Right pulmonary artery anterior to bronchus; left pulmonary artery superior to bronchus
+- [Anatomi Paru & Saluran Napas] Apa jawaban atau kesimpulan untuk petunjuk berikut: Right main bronchus lebih pendek, lebar, dan vertikal? :: Aspiration lebih sering ke kanan
+- [Root, Hilum, dan Pulmonary Ligament] Sebutkan poin-poin penting tentang Isi root secara umum. :: • Main/lobar bronchus
+  • Pulmonary artery
+  • Superior dan inferior pulmonary veins
+  • Bronchial arteries dan veins
+  • Lymphatics dan bronchopulmonary nodes
+  • Autonomic nerves dari pulmonary plexus
+  • Connective tissue
+- [Right lung] Sebutkan poin-poin penting tentang Superior lobe. :: • S1 apical
+  • S2 posterior
+  • S3 anterior
+- [Right lung] Sebutkan poin-poin penting tentang Middle lobe. :: • S4 lateral
+  • S5 medial
+- [Right lung] Sebutkan poin-poin penting tentang Inferior lobe. :: • S6 superior
+  • S7 medial basal
+  • S8 anterior basal
+  • S9 lateral basal
+  • S10 posterior basal
+- [Lymphatic Drainage] Sebutkan paru mempunyai dua jaringan lymphatic utama pada Lymphatic Drainage. :: • Superficial/subpleural plexus di bawah visceral pleura
+  • Deep plexus yang mengikuti bronchi dan pulmonary vessels
+- [Surface Anatomy dan Auscultation] Sebutkan poin-poin penting tentang Anterior chest. :: • Upper lobes mendominasi
+  • Right middle lobe dinilai terutama di right anterolateral chest
+  • Lingula dinilai di left anterolateral chest
+- [Surface Anatomy dan Auscultation] Sebutkan poin-poin penting tentang Posterior chest. :: • Lower lobes menempati area besar di bawah level scapular spine
+  • Upper lobes hanya menempati area superior yang relatif lebih kecil
+- [Batas permukaan klasik] Bagaimana cara mengingat Batas permukaan klasik (Pleural Recesses dan Surface Projection)? :: Lung 6–8–10, pleura 8–10–12. Angka ini adalah landmark anatomi klasik, bukan batas absolut; posisi berubah dengan fase respirasi, postur, habitus, dan variasi individual.
+- [Pulmonary Circulation] Apa jebakan yang sering muncul pada soal tentang Pulmonary Circulation? :: “artery” dan “vein” ditentukan arah aliran relatif terhadap heart, bukan oxygen content. Pulmonary artery membawa deoxygenated blood; pulmonary vein membawa oxygenated blood.

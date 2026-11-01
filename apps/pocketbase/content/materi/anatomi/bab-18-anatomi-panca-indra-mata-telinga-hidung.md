@@ -298,59 +298,75 @@ Hidung:
 
 ## Flashcard {kartu}
 
-- [Orbita: Dinding, Apertura, dan Isi] canalis opticus :: membawa nervus opticus (CN II) dan arteria ophthalmica
-- [Orbita: Dinding, Apertura, dan Isi] fissura orbitalis superior :: jalur CN III, IV, V1, VI dan vena ophthalmica superior
-- [Orbita: Dinding, Apertura, dan Isi] fissura orbitalis inferior :: berhubungan dengan fossa pterygopalatina dan infratemporalis
-- [Orbita: Dinding, Apertura, dan Isi] foramen/kanalis supraorbitalis dan infraorbitalis :: jalur saraf serta pembuluh dengan nama yang sama.
-- [Tunica fibrosa] sclera :: kuat, opak, mempertahankan bentuk bola mata dan menjadi tempat perlekatan otot ekstraokular
-- [Tunica fibrosa] cornea :: transparan, avaskular, merupakan media refraktif paling kuat.
-- [Tunica vasculosa atau uvea] choroidea :: kaya vaskular, memberi nutrisi terutama pada lapisan luar retina
-- [Tunica vasculosa atau uvea] corpus ciliare :: mengandung m. ciliaris dan processus ciliares
-- [Tunica vasculosa atau uvea] iris :: membentuk aperture central berupa pupil.
-- [Tunica interna] discus nervi optici :: tempat keluarnya CN II; tidak memiliki photoreceptor sehingga menjadi blind spot
-- [Tunica interna] macula lutea :: area penglihatan sentral
-- [Tunica interna] fovea centralis :: titik ketajaman visual tertinggi.
-- [Otot Ekstraokular dan Arah Gerak Bola Mata] LR6 :: lateral rectus — CN VI
-- [Otot Ekstraokular dan Arah Gerak Bola Mata] SO4 :: superior oblique — CN IV
-- [Otot Ekstraokular dan Arah Gerak Bola Mata] rectus superior :: elevation, adduction, intorsion
-- [Otot Ekstraokular dan Arah Gerak Bola Mata] rectus inferior :: depression, adduction, extorsion
-- [Otot Ekstraokular dan Arah Gerak Bola Mata] obliquus superior :: intorsion, depression, abduction
-- [Otot Ekstraokular dan Arah Gerak Bola Mata] obliquus inferior :: extorsion, elevation, abduction.
-- [Telinga Tengah dan Ossicula Auditus] Urutan konduksi :: membrana tympanica → malleus → incus → stapes → fenestra vestibuli.
-- [High-yield] Cornea :: bagian transparan tunica fibrosa dan media refraktif utama
-- [High-yield] Aqueous humor :: ciliary processes → posterior chamber → pupil → anterior chamber → trabecular meshwork → canal of Schlemm
-- [High-yield] Chiasma opticum :: nasal retinal fibers menyilang; lesi tengah → bitemporal hemianopia
-- [High-yield] Ossicles :: malleus → incus → stapes → oval window
-- [High-yield] Meatus medius menerima sebagian besar sinus penting :: frontal, maxillary, anterior/middle ethmoid
-- [High-yield] Kiesselbach area :: lokasi klasik epistaxis anterior
-- [Orbita: Dinding, Apertura, dan Isi] Landmark yang harus dikenali … :: • canalis opticus: membawa nervus opticus (CN II) dan arteria ophthalmica
-  • fissura orbitalis superior: jalur CN III, IV, V1, VI dan vena ophthalmica superior
-  • fissura orbitalis inferior: berhubungan dengan fossa pterygopalatina dan infratemporalis
-  • foramen/kanalis supraorbitalis dan infraorbitalis: jalur saraf serta pembuluh dengan nama yang sama
-- [Tunica interna] Landmark retina penting … :: • discus nervi optici: tempat keluarnya CN II; tidak memiliki photoreceptor sehingga menjadi blind spot
-  • macula lutea: area penglihatan sentral
-  • fovea centralis: titik ketajaman visual tertinggi
-- [Otot Ekstraokular dan Arah Gerak Bola Mata] Innervasi wajib hafal … :: • LR6: lateral rectus — CN VI
+- [Orbita: Dinding, Apertura, dan Isi] Apa yang dimaksud dengan canalis opticus pada Orbita: Dinding, Apertura, dan Isi? :: Membawa nervus opticus (CN II) dan arteria ophthalmica
+- [Orbita: Dinding, Apertura, dan Isi] Jelaskan fissura orbitalis superior dalam konteks Orbita: Dinding, Apertura, dan Isi. :: Jalur CN III, IV, V1, VI dan vena ophthalmica superior
+- [Orbita: Dinding, Apertura, dan Isi] Jelaskan fissura orbitalis inferior dalam konteks Orbita: Dinding, Apertura, dan Isi. :: Berhubungan dengan fossa pterygopalatina dan infratemporalis
+- [Orbita: Dinding, Apertura, dan Isi] Jelaskan foramen/kanalis supraorbitalis dan infraorbitalis dalam konteks Orbita: Dinding, Apertura, dan Isi. :: Jalur saraf serta pembuluh dengan nama yang sama.
+- [Tunica fibrosa] Apa yang dimaksud dengan sclera pada Tunica fibrosa (Bulbus Oculi: Tiga Tunica)? :: Kuat, opak, mempertahankan bentuk bola mata dan menjadi tempat perlekatan otot ekstraokular
+- [Tunica fibrosa] Apa yang dimaksud dengan cornea pada Tunica fibrosa (Bulbus Oculi: Tiga Tunica)? :: Transparan, avaskular, merupakan media refraktif paling kuat.
+- [Tunica vasculosa atau uvea] Apa yang dimaksud dengan choroidea pada Tunica vasculosa atau uvea? :: Kaya vaskular, memberi nutrisi terutama pada lapisan luar retina
+- [Tunica vasculosa atau uvea] Apa yang dimaksud dengan corpus ciliare pada Tunica vasculosa atau uvea? :: Mengandung m. ciliaris dan processus ciliares
+- [Tunica vasculosa atau uvea] Apa yang dimaksud dengan iris pada Tunica vasculosa atau uvea? :: Membentuk aperture central berupa pupil.
+- [Tunica interna] Jelaskan discus nervi optici dalam konteks Tunica interna (Bulbus Oculi: Tiga Tunica). :: Tempat keluarnya CN II; tidak memiliki photoreceptor sehingga menjadi blind spot
+- [Tunica interna] Apa yang dimaksud dengan macula lutea pada Tunica interna (Bulbus Oculi: Tiga Tunica)? :: Area penglihatan sentral
+- [Tunica interna] Apa yang dimaksud dengan fovea centralis pada Tunica interna (Bulbus Oculi: Tiga Tunica)? :: Titik ketajaman visual tertinggi.
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Apa yang dimaksud dengan LR6 pada Otot Ekstraokular dan Arah Gerak Bola Mata? :: Lateral rectus — CN VI
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Apa yang dimaksud dengan SO4 pada Otot Ekstraokular dan Arah Gerak Bola Mata? :: Superior oblique — CN IV
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Apa yang dimaksud dengan rectus superior pada Otot Ekstraokular dan Arah Gerak Bola Mata? :: Elevation, adduction, intorsion
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Apa yang dimaksud dengan rectus inferior pada Otot Ekstraokular dan Arah Gerak Bola Mata? :: Depression, adduction, extorsion
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Apa yang dimaksud dengan obliquus superior pada Otot Ekstraokular dan Arah Gerak Bola Mata? :: Intorsion, depression, abduction
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Apa yang dimaksud dengan obliquus inferior pada Otot Ekstraokular dan Arah Gerak Bola Mata? :: Extorsion, elevation, abduction.
+- [Telinga Tengah dan Ossicula Auditus] Pada Telinga Tengah dan Ossicula Auditus, apa urutan konduksinya? :: Membrana tympanica → malleus → incus → stapes → fenestra vestibuli.
+- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa yang dimaksud dengan Cornea pada Anatomi Panca Indra (Mata, Telinga, Hidung)? :: Bagian transparan tunica fibrosa dan media refraktif utama
+- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa yang perlu diketahui tentang Aqueous humor pada Anatomi Panca Indra (Mata, Telinga, Hidung)? :: Ciliary processes → posterior chamber → pupil → anterior chamber → trabecular meshwork → canal of Schlemm
+- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Chiasma opticum: nasal retinal fibers menyilang; lesi tengah? :: Bitemporal hemianopia
+- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa yang perlu diketahui tentang Ossicles pada Anatomi Panca Indra (Mata, Telinga, Hidung)? :: Malleus → incus → stapes → oval window
+- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Jelaskan: Meatus medius menerima sebagian besar sinus penting. :: Frontal, maxillary, anterior/middle ethmoid
+- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Meatus inferior menerima nasolacrimal duct; sphenoid sinus? :: Sphenoethmoidal recess
+- [Anatomi Panca Indra (Mata, Telinga, Hidung)] Apa yang dimaksud dengan Kiesselbach area pada Anatomi Panca Indra (Mata, Telinga, Hidung)? :: Lokasi klasik epistaxis anterior
+- [Orbita: Dinding, Apertura, dan Isi] Sebutkan poin-poin penting tentang Landmark yang harus dikenali. :: • Canalis opticus: membawa nervus opticus (CN II) dan arteria ophthalmica
+  • Fissura orbitalis superior: jalur CN III, IV, V1, VI dan vena ophthalmica superior
+  • Fissura orbitalis inferior: berhubungan dengan fossa pterygopalatina dan infratemporalis
+  • Foramen/kanalis supraorbitalis dan infraorbitalis: jalur saraf serta pembuluh dengan nama yang sama
+- [Tunica interna] Sebutkan poin-poin penting tentang Landmark retina penting. :: • Discus nervi optici: tempat keluarnya CN II; tidak memiliki photoreceptor sehingga menjadi blind spot
+  • Macula lutea: area penglihatan sentral
+  • Fovea centralis: titik ketajaman visual tertinggi
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Sebutkan poin-poin penting tentang Innervasi wajib hafal. :: • LR6: lateral rectus — CN VI
   • SO4: superior oblique — CN IV
-  • semua yang lain terutama oleh CN III
-- [Nervus Opticus dan Jalur Visual Dasar] Pola lesi high-yield … :: • lesi CN II → monocular visual loss ipsilateral
-  • lesi chiasma tengah → bitemporal hemianopia
-  • lesi tractus opticus/optic radiation/cortex → contralateral homonymous visual field defect
-- [Telinga Tengah dan Ossicula Auditus] Dua otot kecil … :: • m. tensor tympani — CN V3
-  • m. stapedius — CN VII
-- [Telinga Dalam: Bony dan Membranous Labyrinth] Komponen sensorik utama … :: • cochlear duct → pendengaran
-  • utriculus dan sacculus → percepatan linear dan posisi kepala relatif terhadap gravitasi
-  • semicircular ducts → percepatan angular/rotasi
-- [Hidung Luar dan Cavum Nasi] Komponen septum utama … :: • lamina perpendicularis ossis ethmoidalis
-  • vomer
-  • cartilago septi nasi
-- [Sinus Paranasales] Hubungan anatomi penting … :: • sinus frontalis berada di frontal bone dan berhubungan dekat dengan orbita
-  • ethmoidal air cells berada di antara cavum nasi dan orbita; lamina papyracea yang sangat tipis memungkinkan penyebaran infeksi ke orbita
-  • sinus sphenoidalis berada dekat sella turcica, optic canal, cavernous sinus, dan internal carotid artery
-  • sinus maxillaris merupakan sinus terbesar dan dekat dengan akar gigi posterior maxilla
-- [Orbita: Dinding, Apertura, dan Isi] Clinical anchor: Orbita: Dinding, Apertura, dan Isi :: Dinding medial dan floor orbita relatif tipis. Blow-out fracture pada floor orbita dapat menjebak m. rectus inferior dan menyebabkan diplopia, terutama saat melihat ke atas.
-- [Chambers, Aqueous Humor, Lens, dan Vitreous Body] Clinical anchor: Chambers, Aqueous Humor, Lens, dan Vitreous Body :: Hambatan aliran keluar aqueous humor dapat meningkatkan tekanan intraokular dan berkontribusi terhadap glaucoma.
-- [Telinga Tengah dan Ossicula Auditus] Clinical anchor: Telinga Tengah dan Ossicula Auditus :: Paralisis m. stapedius pada lesi CN VII dapat menyebabkan hyperacusis.
-- [Vestibular Apparatus dan Keseimbangan] Clinical anchor: Vestibular Apparatus dan Keseimbangan :: Gangguan vestibular dapat menimbulkan vertigo, nystagmus, dan gangguan keseimbangan. Hubungan vestibulo-ocular reflex menjelaskan keterkaitan kuat antara input telinga dalam dan gerakan mata.
-- [Conchae, Meatus, dan Drainase Sinus] Clinical anchor: Conchae, Meatus, dan Drainase Sinus :: Ostium sinus maxillaris berada relatif tinggi pada dinding medial sinus sehingga drainase alami tidak selalu optimal saat berdiri. Hubungan sinus dengan gigi molar superior juga penting pada penyebaran infeksi.
-- [Olfactory Region dan Jalur Olfaktorius Dasar] Clinical anchor: Olfactory Region dan Jalur Olfaktorius Dasar :: Fraktur cribriform plate dapat merusak fila olfactoria dan menyebabkan anosmia serta dapat disertai rhinorrhea cairan serebrospinal.
+  • Semua yang lain terutama oleh CN III
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Sebutkan poin-poin penting tentang Aksi high-yield. :: • Rectus medialis: adduction
+  • Rectus lateralis: abduction
+  • Rectus superior: elevation, adduction, intorsion
+  • Rectus inferior: depression, adduction, extorsion
+  • Obliquus superior: intorsion, depression, abduction
+  • Obliquus inferior: extorsion, elevation, abduction
+- [Otot Ekstraokular dan Arah Gerak Bola Mata] Sebutkan poin-poin penting tentang Clinical localization. :: • Palsy CN VI → gagal abduksi dan mata cenderung deviasi medial
+  • Palsy CN IV → kesulitan depresi mata saat adducted, keluhan sering saat turun tangga
+  • Palsy CN III → ptosis, mata ‘down and out’, dan dapat disertai mydriasis bila serabut parasimpatik terkena
+- [Nervus Opticus dan Jalur Visual Dasar] Sebutkan poin-poin penting tentang Pola lesi high-yield. :: • Lesi CN II → monocular visual loss ipsilateral
+  • Lesi chiasma tengah → bitemporal hemianopia
+  • Lesi tractus opticus/optic radiation/cortex → contralateral homonymous visual field defect
+- [Telinga Tengah dan Ossicula Auditus] Sebutkan dua otot kecil pada Telinga Tengah dan Ossicula Auditus. :: • M. tensor tympani — CN V3
+  • M. stapedius — CN VII
+- [Telinga Dalam: Bony dan Membranous Labyrinth] Sebutkan komponen sensorik utama pada Telinga Dalam: Bony dan Membranous Labyrinth. :: • Cochlear duct → pendengaran
+  • Utriculus dan sacculus → percepatan linear dan posisi kepala relatif terhadap gravitasi
+  • Semicircular ducts → percepatan angular/rotasi
+- [Cochlea dan Organ of Corti] Sebutkan poin-poin penting tentang Fenestration penting. :: • Oval window menerima gerakan footplate stapes
+  • Round window memungkinkan pelepasan tekanan dalam sistem fluida cochlea
+- [Hidung Luar dan Cavum Nasi] Sebutkan komponen septum utama pada Hidung Luar dan Cavum Nasi. :: • Lamina perpendicularis ossis ethmoidalis
+  • Vomer
+  • Cartilago septi nasi
+- [Conchae, Meatus, dan Drainase Sinus] Sebutkan poin-poin penting tentang Drainase high-yield. :: • Meatus superior menerima posterior ethmoidal air cells
+  • Meatus medius menerima sinus frontalis, sinus maxillaris, serta anterior/middle ethmoidal cells melalui kompleks hiatus semilunaris–infundibulum
+  • Meatus inferior menerima ductus nasolacrimalis
+  • Recessus sphenoethmoidalis menerima sinus sphenoidalis
+- [Sinus Paranasales] Sebutkan poin-poin penting tentang Hubungan anatomi penting. :: • Sinus frontalis berada di frontal bone dan berhubungan dekat dengan orbita
+  • Ethmoidal air cells berada di antara cavum nasi dan orbita; lamina papyracea yang sangat tipis memungkinkan penyebaran infeksi ke orbita
+  • Sinus sphenoidalis berada dekat sella turcica, optic canal, cavernous sinus, dan internal carotid artery
+  • Sinus maxillaris merupakan sinus terbesar dan dekat dengan akar gigi posterior maxilla
+- [Orbita: Dinding, Apertura, dan Isi] Apa korelasi klinis dari Orbita: Dinding, Apertura, dan Isi? :: Dinding medial dan floor orbita relatif tipis. Blow-out fracture pada floor orbita dapat menjebak m. rectus inferior dan menyebabkan diplopia, terutama saat melihat ke atas.
+- [Chambers, Aqueous Humor, Lens, dan Vitreous Body] Apa korelasi klinis dari Chambers, Aqueous Humor, Lens, dan Vitreous Body? :: Hambatan aliran keluar aqueous humor dapat meningkatkan tekanan intraokular dan berkontribusi terhadap glaucoma.
+- [Telinga Tengah dan Ossicula Auditus] Apa korelasi klinis dari Telinga Tengah dan Ossicula Auditus? :: Paralisis m. stapedius pada lesi CN VII dapat menyebabkan hyperacusis.
+- [Vestibular Apparatus dan Keseimbangan] Apa korelasi klinis dari Vestibular Apparatus dan Keseimbangan? :: Gangguan vestibular dapat menimbulkan vertigo, nystagmus, dan gangguan keseimbangan. Hubungan vestibulo-ocular reflex menjelaskan keterkaitan kuat antara input telinga dalam dan gerakan mata.
+- [Conchae, Meatus, dan Drainase Sinus] Apa korelasi klinis dari Conchae, Meatus, dan Drainase Sinus? :: Ostium sinus maxillaris berada relatif tinggi pada dinding medial sinus sehingga drainase alami tidak selalu optimal saat berdiri. Hubungan sinus dengan gigi molar superior juga penting pada penyebaran infeksi.
+- [Olfactory Region dan Jalur Olfaktorius Dasar] Apa korelasi klinis dari Olfactory Region dan Jalur Olfaktorius Dasar? :: Fraktur cribriform plate dapat merusak fila olfactoria dan menyebabkan anosmia serta dapat disertai rhinorrhea cairan serebrospinal.

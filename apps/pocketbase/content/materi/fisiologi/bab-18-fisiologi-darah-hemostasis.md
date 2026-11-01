@@ -120,24 +120,24 @@ Plasma membawa protein penting; eritrosit mengangkut O2; EPO mengatur eritropoie
 
 ## Flashcard {kartu}
 
-- [Hemostasis] Tahapan hemostasis dalam sumber :: spasme vaskular → platelet plug → koagulasi → penyembuhan jaringan. Koagulasi melibatkan konversi protrombin menjadi trombin dan fibrinogen menjadi fibrin.
-- Peta Besar Darah & Hemostasis :: Fungsi darah dalam sumber dibagi menjadi transport, regulasi, proteksi, dan pemeliharaan volume. Komponen utama yang dibahas adalah plasma, eritrosit, leukosit, dan platelet.
-- Volume Darah :: Sumber mencantumkan volume darah sekitar 8% berat badan, dengan contoh sekitar 5,4 L pada orang 70 kg.
-- Plasma :: Plasma terutama terdiri dari air, protein plasma, dan solut lain. Fungsinya meliputi media transport, pengaturan suhu, buffer pH, dan kontribusi pada tekanan osmotik.
-- Eritrosit: Struktur dan Fungsi :: Eritrosit berbentuk bikonkaf dan fleksibel sehingga dapat melewati kapiler. Peran utama adalah membawa hemoglobin untuk transport oksigen, serta ikut menjaga keseimbangan asam-basa melalui hemoglobin dan carbonic anhydrase.
-- Jenis Hemoglobin :: Sumber mencantumkan HbA, HbA2, HbF, dan HbA1c. HbF dominan pada janin, sedangkan HbA1c menggambarkan hemoglobin yang berikatan dengan glukosa dan digunakan dalam konteks kontrol diabetes.
-- Umur Eritrosit dan Daur Ulang :: Umur eritrosit sekitar 120 hari. Eritrosit tua dihancurkan di limpa, hati, dan sumsum tulang; besi didaur ulang, sedangkan heme diubah menjadi bilirubin dan diekskresikan melalui empedu/feses.
-- Eritropoiesis :: Eritropoiesis berlangsung di lokasi berbeda sepanjang perkembangan: yolk sac pada embrio awal, hati pada trimester tengah, dan sumsum tulang setelah lahir.
-- Nutrisi Eritropoiesis :: Bahan yang disebut sumber meliputi protein, besi, vitamin B12, dan folat. Defisiensi B12 atau folat dikaitkan dengan anemia megaloblastik.
-- Absorpsi Vitamin B12 :: Vitamin B12 memerlukan intrinsic factor untuk absorpsi di ileum terminal dan disimpan di hati.
-- Anemia :: Anemia didefinisikan sebagai kadar hemoglobin rendah yang menurunkan kapasitas transport oksigen. Jenis yang dicantumkan meliputi perdarahan, aplastik, megaloblastik, hemolitik, dan defisiensi nutrisi.
-- Efek Fisiologis Anemia :: Sumber mengaitkan anemia dengan hipoksia, penurunan viskositas darah, vasodilatasi, dan peningkatan cardiac output. CKD disebut dapat menyebabkan anemia karena penurunan EPO.
-- Polycythemia :: Polycythemia adalah peningkatan eritrosit. Sumber membedakan primer seperti polycythemia vera dan sekunder akibat hipoksia seperti dataran tinggi. Dampaknya antara lain viskositas meningkat dan aliran darah menurun.
-- Reaksi Transfusi :: Reaksi transfusi yang disebut meliputi febril non-hemolitik, hemolitik, alergi, TRALI, GVHD, dan delayed hemolytic transfusion reaction.
-- Leukosit :: Leukosit berfungsi pada pertahanan tubuh dan berasal dari sumsum tulang serta jaringan limfoid. Mekanisme pertahanan mencakup fagositosis, antibodi, dan aktivitas sel tersensitisasi.
-- Platelet :: Platelet merupakan fragmen megakariosit, berjumlah sekitar 150.000–400.000/µL, berumur sekitar 8–12 hari, dan berfungsi dalam hemostasis.
-- Hemostasis :: Tahapan hemostasis dalam sumber: spasme vaskular → platelet plug → koagulasi → penyembuhan jaringan. Koagulasi melibatkan konversi protrombin menjadi trombin dan fibrinogen menjadi fibrin.
-- Platelet Plug :: Kontak platelet dengan kolagen menyebabkan perubahan bentuk, adhesi melalui kolagen dan von Willebrand factor, serta pelepasan ADP dan tromboksan A2 untuk merekrut platelet lain.
-- Koagulasi :: Koagulasi menghasilkan fibrin yang memperkuat bekuan. Sumber membahas jalur ekstrinsik dan intrinsik serta perlunya vitamin K, faktor koagulasi, dan trombosit.
-- Fibrinolisis :: Fibrin dapat dipecah oleh plasmin menjadi fragmen fibrin. Fibrinolisis membantu membuka kembali pembuluh setelah proses penyembuhan.
-- Gangguan Hemostasis :: Sumber mengelompokkan gangguan pada pembuluh, trombosit, faktor koagulasi, fibrinolisis, DIC, dan regulasi antikoagulan. Manifestasi dapat berupa perdarahan, trombosis, atau kombinasi keduanya.
+- [Hemostasis] Jelaskan Tahapan hemostasis dalam sumber. :: Spasme vaskular → platelet plug → koagulasi → penyembuhan jaringan. Koagulasi melibatkan konversi protrombin menjadi trombin dan fibrinogen menjadi fibrin.
+- Jelaskan peta Besar Darah & Hemostasis. :: Fungsi darah dalam sumber dibagi menjadi transport, regulasi, proteksi, dan pemeliharaan volume. Komponen utama yang dibahas adalah plasma, eritrosit, leukosit, dan platelet.
+- Jelaskan volume Darah. :: Sumber mencantumkan volume darah sekitar 8% berat badan, dengan contoh sekitar 5,4 L pada orang 70 kg.
+- Apa yang dimaksud dengan Plasma? :: Plasma terutama terdiri dari air, protein plasma, dan solut lain. Fungsinya meliputi media transport, pengaturan suhu, buffer pH, dan kontribusi pada tekanan osmotik.
+- Jelaskan eritrosit: Struktur dan Fungsi. :: Eritrosit berbentuk bikonkaf dan fleksibel sehingga dapat melewati kapiler. Peran utama adalah membawa hemoglobin untuk transport oksigen, serta ikut menjaga keseimbangan asam-basa melalui hemoglobin dan carbonic anhydrase.
+- Jelaskan jenis Hemoglobin. :: Sumber mencantumkan HbA, HbA2, HbF, dan HbA1c. HbF dominan pada janin, sedangkan HbA1c menggambarkan hemoglobin yang berikatan dengan glukosa dan digunakan dalam konteks kontrol diabetes.
+- Jelaskan umur Eritrosit dan Daur Ulang. :: Umur eritrosit sekitar 120 hari. Eritrosit tua dihancurkan di limpa, hati, dan sumsum tulang; besi didaur ulang, sedangkan heme diubah menjadi bilirubin dan diekskresikan melalui empedu/feses.
+- Apa yang dimaksud dengan Eritropoiesis? :: Eritropoiesis berlangsung di lokasi berbeda sepanjang perkembangan: yolk sac pada embrio awal, hati pada trimester tengah, dan sumsum tulang setelah lahir.
+- Jelaskan nutrisi Eritropoiesis. :: Bahan yang disebut sumber meliputi protein, besi, vitamin B12, dan folat. Defisiensi B12 atau folat dikaitkan dengan anemia megaloblastik.
+- Jelaskan absorpsi Vitamin B12. :: Vitamin B12 memerlukan intrinsic factor untuk absorpsi di ileum terminal dan disimpan di hati.
+- Apa yang dimaksud dengan Anemia? :: Anemia didefinisikan sebagai kadar hemoglobin rendah yang menurunkan kapasitas transport oksigen. Jenis yang dicantumkan meliputi perdarahan, aplastik, megaloblastik, hemolitik, dan defisiensi nutrisi.
+- Jelaskan efek Fisiologis Anemia. :: Sumber mengaitkan anemia dengan hipoksia, penurunan viskositas darah, vasodilatasi, dan peningkatan cardiac output. CKD disebut dapat menyebabkan anemia karena penurunan EPO.
+- Apa yang dimaksud dengan Polycythemia? :: Polycythemia adalah peningkatan eritrosit. Sumber membedakan primer seperti polycythemia vera dan sekunder akibat hipoksia seperti dataran tinggi. Dampaknya antara lain viskositas meningkat dan aliran darah menurun.
+- Jelaskan reaksi Transfusi. :: Reaksi transfusi yang disebut meliputi febril non-hemolitik, hemolitik, alergi, TRALI, GVHD, dan delayed hemolytic transfusion reaction.
+- Apa yang dimaksud dengan Leukosit? :: Leukosit berfungsi pada pertahanan tubuh dan berasal dari sumsum tulang serta jaringan limfoid. Mekanisme pertahanan mencakup fagositosis, antibodi, dan aktivitas sel tersensitisasi.
+- Apa yang dimaksud dengan Platelet? :: Platelet merupakan fragmen megakariosit, berjumlah sekitar 150.000–400.000/µL, berumur sekitar 8–12 hari, dan berfungsi dalam hemostasis.
+- Apa yang dimaksud dengan Hemostasis? :: Tahapan hemostasis dalam sumber: spasme vaskular → platelet plug → koagulasi → penyembuhan jaringan. Koagulasi melibatkan konversi protrombin menjadi trombin dan fibrinogen menjadi fibrin.
+- Jelaskan platelet Plug. :: Kontak platelet dengan kolagen menyebabkan perubahan bentuk, adhesi melalui kolagen dan von Willebrand factor, serta pelepasan ADP dan tromboksan A2 untuk merekrut platelet lain.
+- Apa yang dimaksud dengan Koagulasi? :: Koagulasi menghasilkan fibrin yang memperkuat bekuan. Sumber membahas jalur ekstrinsik dan intrinsik serta perlunya vitamin K, faktor koagulasi, dan trombosit.
+- Apa yang dimaksud dengan Fibrinolisis? :: Fibrin dapat dipecah oleh plasmin menjadi fragmen fibrin. Fibrinolisis membantu membuka kembali pembuluh setelah proses penyembuhan.
+- Jelaskan gangguan Hemostasis. :: Sumber mengelompokkan gangguan pada pembuluh, trombosit, faktor koagulasi, fibrinolisis, DIC, dan regulasi antikoagulan. Manifestasi dapat berupa perdarahan, trombosis, atau kombinasi keduanya.

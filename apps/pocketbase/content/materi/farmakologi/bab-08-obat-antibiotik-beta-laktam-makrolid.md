@@ -285,59 +285,69 @@ Antibiotik bekerja melalui toksisitas selektif dan dapat bersifat bakterisidal a
 
 ## Flashcard {kartu}
 
-- [Konsep Dasar Antibiotik] Konsep toksisitas selektif :: antibiotik menarget struktur atau proses mikroba yang berbeda dari sel manusia, seperti dinding sel, ribosom bakteri, DNA gyrase, atau jalur metabolik tertentu.
-- [Konsep Dasar Antibiotik] Prinsip penggunaan :: tepat obat, tepat dosis, tepat waktu, dan tepat cara untuk membantu mencegah resistensi.
-- [A. Natural penicillin] Spektrum :: streptokokus dan meningokokus.
-- [C. Broad-spectrum aminopenicillin] Spektrum :: Gram-positif ditambah sebagian Gram-negatif.
-- [Makrolida] Mekanisme :: makrolida bekerja pada ribosom 50S dan menghambat elongasi rantai polipeptida sehingga sintesis protein menurun.
-- [High-yield] Infeksi ringan dengan natural penicillin oral :: Penicillin V lebih tahan asam dibanding Penicillin G
-- [High-yield] Butuh broad-spectrum aminopenicillin :: ampicillin/amoxicillin
-- [High-yield] Bakteri penghasil beta-laktamase :: pertimbangkan kombinasi beta-laktam + inhibitor seperti amoxicillin-clavulanate
-- [High-yield] Cephalosporin generasi II :: cefuroxime
-- [High-yield] Generasi III dengan contoh Neisseria :: ceftriaxone
-- [High-yield] Generasi IV spektrum luas :: cefepime
-- [High-yield] ESBL :: carbapenem seperti imipenem/meropenem
-- [High-yield] Gagal ginjal + gentamicin :: risiko akumulasi meningkat karena eliminasi glomerulus
-- [High-yield] Gangguan pendengaran setelah aminoglikosida :: pikirkan ototoksisitas
-- [High-yield] Erythromycin + banyak interaksi obat :: pikirkan inhibisi CYP3A4
-- [High-yield] Antibiotik + reaksi hipersensitivitas/anafilaksis :: penicillin menjadi pola penting
-- [High-yield] Toksisitas selektif :: prinsip penting terapi antimikroba
-- [High-yield] Penicillin G/V :: natural penicillin
-- [High-yield] Oxacillin/Nafcillin :: penicillinase-resistant antistaphylococcal penicillin
-- [High-yield] Amoxicillin-clavulanate :: kombinasi beta-laktam + inhibitor beta-laktamase
-- [High-yield] Cefazolin :: cephalosporin generasi I
-- [High-yield] Ceftriaxone/Ceftazidime :: generasi III
-- [High-yield] Cefepime :: generasi IV
-- [High-yield] Aztreonam :: monobactam untuk Gram-negatif aerob
-- [High-yield] Hipersensitivitas/anafilaksis :: adverse effect penting penicillin
-- [High-yield] Gagal ginjal :: risiko akumulasi aminoglikosida
-- [High-yield] Ototoksisitas dan nefrotoksisitas :: toksisitas utama aminoglikosida
-- [Konsep Dasar Antibiotik] Dua istilah dasar … :: • Bactericidal → membunuh bakteri
+- [Konsep Dasar Antibiotik] Jelaskan Konsep toksisitas selektif dalam konteks Konsep Dasar Antibiotik. :: Antibiotik menarget struktur atau proses mikroba yang berbeda dari sel manusia, seperti dinding sel, ribosom bakteri, DNA gyrase, atau jalur metabolik tertentu.
+- [Konsep Dasar Antibiotik] Apa yang dimaksud dengan Prinsip penggunaan pada Konsep Dasar Antibiotik? :: Tepat obat, tepat dosis, tepat waktu, dan tepat cara untuk membantu mencegah resistensi.
+- [Natural penicillin] Pada Natural penicillin (Penicillin), apa spektrumnya? :: Streptokokus dan meningokokus.
+- [Broad-spectrum aminopenicillin] Pada Broad-spectrum aminopenicillin (Penicillin), apa spektrumnya? :: Gram-positif ditambah sebagian Gram-negatif.
+- [Makrolida] Pada Makrolida, apa mekanismenya? :: Makrolida bekerja pada ribosom 50S dan menghambat elongasi rantai polipeptida sehingga sintesis protein menurun.
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa jawaban atau kesimpulan untuk petunjuk berikut: Infeksi stafilokokus penghasil penicillinase yang masih sensitif? :: Oxacillin/nafcillin
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa jawaban atau kesimpulan untuk petunjuk berikut: Infeksi ringan dengan natural penicillin oral? :: Penicillin V lebih tahan asam dibanding Penicillin G
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang perlu diingat tentang Bakteri penghasil beta-laktamase pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Pertimbangkan kombinasi beta-laktam + inhibitor seperti amoxicillin-clavulanate
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang perlu diingat tentang Cephalosporin generasi I pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Cefazolin
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa jawaban atau kesimpulan untuk petunjuk berikut: Generasi III dengan contoh Neisseria? :: Ceftriaxone
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa jawaban atau kesimpulan untuk petunjuk berikut: Generasi III dengan konteks Pseudomonas? :: Ceftazidime
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang perlu diingat tentang ESBL pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Carbapenem seperti imipenem/meropenem
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa jawaban atau kesimpulan untuk petunjuk berikut: Gram-negatif aerob + monobactam? :: Aztreonam
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa jawaban atau kesimpulan untuk petunjuk berikut: Gagal ginjal + gentamicin? :: Risiko akumulasi meningkat karena eliminasi glomerulus
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa jawaban atau kesimpulan untuk petunjuk berikut: Gangguan pendengaran setelah aminoglikosida? :: Pikirkan ototoksisitas
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa jawaban atau kesimpulan untuk petunjuk berikut: Erythromycin + banyak interaksi obat? :: Pikirkan inhibisi CYP3A4
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa jawaban atau kesimpulan untuk petunjuk berikut: Probenecid diberikan bersama penicillin? :: Sekresi tubulus penicillin terhambat
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang dimaksud dengan Toksisitas selektif pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Prinsip penting terapi antimikroba
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang dimaksud dengan Oxacillin/Nafcillin pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Penicillinase-resistant antistaphylococcal penicillin
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang dimaksud dengan Ampicillin/Amoxicillin pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Broad-spectrum aminopenicillin
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang dimaksud dengan Cefazolin pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Cephalosporin generasi I
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang dimaksud dengan Cefuroxime pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Generasi II
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang dimaksud dengan Cefepime pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Generasi IV
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang perlu diketahui tentang Carbapenem pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Imipenem dan meropenem
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang dimaksud dengan Hipersensitivitas/anafilaksis pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Adverse effect penting penicillin
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang perlu diketahui tentang Contoh pada Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida? :: Gentamicin, streptomycin, amikacin, tobramycin
+- [Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida] Apa yang dimaksud dengan Ototoksisitas dan nefrotoksisitas? :: Toksisitas utama aminoglikosida
+- [Konsep Dasar Antibiotik] Sebutkan poin-poin penting tentang Dua istilah dasar. :: • Bactericidal → membunuh bakteri
   • Bacteriostatic → menghambat pertumbuhan atau reproduksi bakteri sehingga eliminasi dapat dilanjutkan oleh sistem imun
-- [Target Utama Antibiotik] Target antibiotik dibagi menjadi empat kelompok besar … :: • Sintesis dinding sel → beta-laktam dan obat penghambat dinding sel lain
-  • Sintesis protein → ribosom 30S/50S, termasuk aminoglikosida dan makrolida
-  • Sintesis asam nukleat → fluorokuinolon, rifampin, metronidazol
-  • Antimetabolit → sulfonamid, trimethoprim, dan obat terkait
-- [Beta-Laktam: Gambaran Besar] Kelompok beta-laktam mencakup … :: • penicillin
-  • cephalosporin
-  • carbapenem
-  • monobactam
-  • kombinasi dengan beta-lactamase inhibitor
-- [Beta-Lactamase Inhibitor Combination] Kombinasi yang ditulis jelas … :: • amoxicillin–clavulanate
-  • piperacillin–tazobactam
-- [Cephalosporin] Cephalosporin dibagi berdasarkan generasi … :: • Generasi I → aktivitas Gram-positif dominan; contoh cefazolin
+- [Beta-Laktam: Gambaran Besar] Sebutkan kelompok beta-laktam pada Beta-Laktam: Gambaran Besar. :: • Penicillin
+  • Cephalosporin
+  • Carbapenem
+  • Monobactam
+  • Kombinasi dengan beta-lactamase inhibitor
+- [Natural penicillin] Sebutkan poin-poin penting tentang Penjelasan tambahan. :: • Penicillin G sensitif terhadap asam lambung sehingga terutama digunakan secara parenteral
+  • Penicillin V lebih tahan asam dan dapat diberikan oral
+  • Kelompok ini memiliki spektrum relatif sempit
+- [Beta-Lactamase Inhibitor Combination] Sebutkan poin-poin penting tentang Kombinasi yang ditulis jelas. :: • Amoxicillin–clavulanate
+  • Piperacillin–tazobactam
+- [Cephalosporin] Sebutkan poin-poin penting tentang Cephalosporin dibagi berdasarkan generasi. :: • Generasi I → aktivitas Gram-positif dominan; contoh cefazolin
   • Generasi II → aktivitas Gram-negatif lebih luas; contoh cefuroxime
   • Generasi III → aktivitas terhadap Neisseria dan beberapa agen Gram-negatif; contoh ceftriaxone dan ceftazidime. Aktivitas terhadap Pseudomonas pada generasi III dicontohkan oleh ceftazidime
   • Generasi IV → spektrum luas; contoh cefepime
-- [Efek Samping dan Farmakokinetik Penicillin] Efek samping penicillin … :: • gangguan gastrointestinal
-  • hipersensitivitas dan anafilaksis
-  • kejang pada dosis tinggi terutama pada pasien dengan gagal ginjal
-  • ampicillin → kolitis pseudomembran
-  • nafcillin → neutropenia
-  • oxacillin → hepatitis
-  • methicillin → nefritis interstisial
-  • superinfeksi dan resistensi
-- [Konsep Dasar Antibiotik] Exam pearl: Konsep Dasar Antibiotik :: Bakterisidal = membunuh. Bakteriostatik = menahan pertumbuhan. Jangan menyamakan istilah ini dengan “spektrum luas” atau “spektrum sempit”, karena itu adalah klasifikasi yang berbeda.
-- [Beta-Lactamase Inhibitor Combination] Exam pearl: Beta-Lactamase Inhibitor Combination :: Bila stem menyebut “bakteri penghasil beta-laktamase” lalu pilihan mencantumkan amoxicillin-clavulanate atau piperacillin-tazobactam, pikirkan fungsi inhibitor beta-laktamase sebagai pelindung antibiotik beta-laktam.
-- [Carbapenem] Poin penting: Carbapenem :: Spektrum luas dan aktif terhadap bakteri penghasil ESBL.
-- [Monobactam] Poin penting: Monobactam :: Aktivitas terhadap bakteri Gram-negatif aerob.
+- [Efek Samping dan Farmakokinetik Penicillin] Sebutkan efek samping penicillin pada Efek Samping dan Farmakokinetik Penicillin. :: • Gangguan gastrointestinal
+  • Hipersensitivitas dan anafilaksis
+  • Kejang pada dosis tinggi terutama pada pasien dengan gagal ginjal
+  • Ampicillin → kolitis pseudomembran
+  • Nafcillin → neutropenia
+  • Oxacillin → hepatitis
+  • Methicillin → nefritis interstisial
+  • Superinfeksi dan resistensi
+- [Efek Samping dan Farmakokinetik Penicillin] Sebutkan farmakokinetik ringkas pada Efek Samping dan Farmakokinetik Penicillin. :: • Distribusi luas ke jaringan, tetapi kadar lebih rendah pada mata, prostat, dan CNS
+  • Eliminasi utama melalui ginjal
+  • Sekresi tubulus penicillin dapat dihambat probenecid
+- [Aminoglikosida] Sebutkan toksisitas high-yield pada Aminoglikosida. :: • Ototoksisitas
+  • Nefrotoksisitas
+  • Gangguan keseimbangan lebih ditekankan pada gentamicin, tobramycin, dan streptomycin
+  • Gangguan pendengaran lebih ditekankan pada amikacin, kanamycin, dan neomycin
+  • Aminoglikosida tidak dianjurkan pada ibu hamil/neonatus
+- [Aminoglikosida] Sebutkan poin-poin penting tentang Konteks klinis. :: • Gentamicin digunakan sistemik terutama pada infeksi Gram-negatif
+  • Neomycin dan kanamycin dapat digunakan topikal/oral pada konteks tertentu
+  • Streptomycin juga digunakan pada terapi tuberkulosis
+- [Konsep Dasar Antibiotik] Apa poin high-yield (pearl) tentang Konsep Dasar Antibiotik? :: Bakterisidal = membunuh. Bakteriostatik = menahan pertumbuhan. Jangan menyamakan istilah ini dengan “spektrum luas” atau “spektrum sempit”, karena itu adalah klasifikasi yang berbeda.
+- [Beta-Lactamase Inhibitor Combination] Apa poin high-yield (pearl) tentang Beta-Lactamase Inhibitor Combination? :: Bila stem menyebut “bakteri penghasil beta-laktamase” lalu pilihan mencantumkan amoxicillin-clavulanate atau piperacillin-tazobactam, pikirkan fungsi inhibitor beta-laktamase sebagai pelindung antibiotik beta-laktam.
+- [Carbapenem] Apa poin high-yield (pearl) tentang Carbapenem (Carbapenem dan Monobactam)? :: Spektrum luas dan aktif terhadap bakteri penghasil ESBL.
+- [Monobactam] Apa poin high-yield (pearl) tentang Monobactam (Carbapenem dan Monobactam)? :: Aktivitas terhadap bakteri Gram-negatif aerob.

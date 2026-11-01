@@ -631,80 +631,85 @@ Bab ini fokus pada structural framework pelvis dan perineum. Anatomi organ uroge
 
 ## Flashcard {kartu}
 
-- [Orientasi Umum Pelvis] Greater pelvis (false pelvis) :: superior terhadap pelvic inlet, secara fungsional lebih merupakan bagian inferior abdominal cavity.
-- [Orientasi Umum Pelvis] Lesser pelvis (true pelvis) :: inferior terhadap pelvic inlet, merupakan pelvic cavity sejati yang menampung pelvic viscera dan berlanjut ke perineum melalui pelvic outlet.
-- [Pelvic Inlet] Posterior :: sacral promontory.
-- [Pelvic Inlet] Lateral :: arcuate line of ilium.
-- [Pelvic Inlet] Anterolateral :: pecten pubis/pectineal line.
-- [Pelvic Inlet] Anterior :: pubic crest dan superior margin of pubic symphysis.
-- [Pelvic Outlet] Anterior :: inferior border of pubic symphysis.
-- [Pelvic Outlet] Lateral :: ischial tuberosities.
-- [Pelvic Outlet] Posterolateral :: sacrotuberous ligaments.
-- [Conjugates of Pelvic Inlet] Anatomical/true conjugate :: sacral promontory → superior border of pubic symphysis.
-- [Conjugates of Pelvic Inlet] Obstetric conjugate :: sacral promontory → titik terdekat pada posterior surface pubic symphysis. Ini merupakan diameter anteroposterior paling sempit yang penting untuk passage fetal head.
-- [Conjugates of Pelvic Inlet] Diagonal conjugate :: sacral promontory → inferior border pubic symphysis; dapat diperkirakan secara klinis melalui pemeriksaan vaginal dan digunakan untuk mengestimasi obstetric conjugate.
-- [Ischioanal Fossa] Medial :: external anal sphincter dan levator ani.
-- [Ischioanal Fossa] Lateral :: obturator internus dan obturator fascia.
-- [Ischioanal Fossa] Posterior :: sacrotuberous ligament/gluteus maximus region.
-- [Ischioanal Fossa] Anterior :: recess yang dapat memanjang ke urogenital triangle di atas perineal membrane.
-- [Perineal Tears] First degree :: skin/perineal mucosa.
-- [Perineal Tears] Second degree :: perineal muscles tanpa anal sphincter.
-- [Perineal Tears] Third degree :: melibatkan anal sphincter complex.
-- [Perineal Tears] Fourth degree :: meluas melalui anal sphincter sampai anorectal mucosa.
-- [Perineal Tears] Anatomical importance :: semakin posterior/deep tear, semakin besar risiko kerusakan perineal body dan anal continence mechanism.
-- [High-yield] Pelvic inlet :: sacral promontory + arcuate line + pecten pubis + superior pubic symphysis
-- [High-yield] Pelvic outlet :: pubic symphysis inferiorly/anteriorly, ischiopubic rami, ischial tuberosities, sacrotuberous ligaments, coccyx
-- [High-yield] Pudendal nerve/internal pudendal vessels :: greater sciatic foramen → around ischial spine/sacrospinous ligament → lesser sciatic foramen → pudendal canal
-- [High-yield] Levator ani :: puborectalis + pubococcygeus + iliococcygeus
-- [High-yield] Obstetric conjugate :: AP diameter inlet yang paling relevan untuk passage fetal head; diagonal conjugate dapat dinilai klinis untuk estimasi
-- [High-yield] Rectouterine pouch (Douglas) :: dependent peritoneal recess pada female pelvis; rectovesical pouch pada male
-- [Orientasi Umum Pelvis] Pelvic brim membagi ruang menjadi … :: • Greater pelvis (false pelvis): superior terhadap pelvic inlet, secara fungsional lebih merupakan bagian inferior abdominal cavity
-  • Lesser pelvis (true pelvis): inferior terhadap pelvic inlet, merupakan pelvic cavity sejati yang menampung pelvic viscera dan berlanjut ke perineum melalui pelvic outlet
-- [Pubis] Pubis membentuk bagian anterior hip bone … :: • Body of pubis
-  • Superior dan inferior pubic rami
-  • Pubic crest dan pubic tubercle
-  • Pecten pubis (pectineal line), bagian pelvic brim
-  • Symphyseal surface untuk pubic symphysis
-- [Pelvic Outlet] Pelvic outlet (inferior pelvic aperture) dibatasi oleh … :: • Anterior: inferior border of pubic symphysis
-  • Anterolateral: ischiopubic rami
-  • Lateral: ischial tuberosities
-  • Posterolateral: sacrotuberous ligaments
-  • Posterior: tip of coccyx
-- [Sexual Dimorphism of the Pelvis] Female pelvis umumnya … :: • Tulang relatif lebih ringan dan tipis
-  • Pelvic inlet lebih bulat/oval dan lebih lebar
-  • Pelvic outlet lebih luas
-  • Subpubic angle lebih besar
-  • Greater sciatic notch lebih lebar
-  • Ischial spines relatif kurang menonjol ke medial
-  • Sacrum relatif lebih pendek, lebar, dan kurang melengkung
-  • Lesser pelvis lebih lebar dan dangkal
-- [Levator Ani] Pembagian yang sering digunakan … :: • Puborectalis
-  • Pubococcygeus
-  • Iliococcygeus
-- [Internal Iliac Artery] Posterior division umumnya … :: • Iliolumbar artery
-  • Lateral sacral arteries
-  • Superior gluteal artery
-- [Internal Iliac Artery] Anterior division memberi sebagian besar visceral dan perineal branches, yang dapat mencakup … :: • Umbilical artery → superior vesical arteries
-  • Obturator artery
-  • Uterine artery pada perempuan
-  • Vaginal artery pada perempuan
-  • Inferior vesical artery terutama pada laki-laki
-  • Middle rectal artery
-  • Internal pudendal artery
-  • Inferior gluteal artery
-- [Perineum: Batas dan Pembagian] Garis transversal antara kedua ischial tuberosities membagi perineum menjadi … :: • Anterior urogenital triangle
-  • Posterior anal triangle
-- [Superficial Fascia] Superficial perineal fascia memiliki … :: • Fatty layer yang berkesinambungan dengan Camper fascia
-  • Membranous layer (Colles fascia) yang berkesinambungan dengan Scarpa fascia abdomen dan Dartos fascia external genitalia
-- [Anal Sphincters dan Continence] External anal sphincter … :: • Skeletal muscle
+- [Orientasi Umum Pelvis] Jelaskan Greater pelvis (false pelvis) dalam konteks Orientasi Umum Pelvis. :: Superior terhadap pelvic inlet, secara fungsional lebih merupakan bagian inferior abdominal cavity.
+- [Orientasi Umum Pelvis] Jelaskan Lesser pelvis (true pelvis) dalam konteks Orientasi Umum Pelvis. :: Inferior terhadap pelvic inlet, merupakan pelvic cavity sejati yang menampung pelvic viscera dan berlanjut ke perineum melalui pelvic outlet.
+- [Pelvic Inlet] Apa struktur atau batas posterior pada Pelvic Inlet (Pelvic Inlet, Pelvic Outlet, dan Pelvic Cavity)? :: Sacral promontory.
+- [Pelvic Inlet] Apa struktur atau batas lateral pada Pelvic Inlet (Pelvic Inlet, Pelvic Outlet, dan Pelvic Cavity)? :: Arcuate line of ilium.
+- [Pelvic Inlet] Jelaskan Anterolateral dalam konteks Pelvic Inlet (Pelvic Inlet, Pelvic Outlet, dan Pelvic Cavity). :: Pecten pubis/pectineal line.
+- [Pelvic Inlet] Apa struktur atau batas anterior pada Pelvic Inlet (Pelvic Inlet, Pelvic Outlet, dan Pelvic Cavity)? :: Pubic crest dan superior margin of pubic symphysis.
+- [Pelvic Outlet] Apa struktur atau batas anterior pada Pelvic Outlet (Pelvic Inlet, Pelvic Outlet, dan Pelvic Cavity)? :: Inferior border of pubic symphysis.
+- [Pelvic Outlet] Apa struktur atau batas lateral pada Pelvic Outlet (Pelvic Inlet, Pelvic Outlet, dan Pelvic Cavity)? :: Ischial tuberosities.
+- [Pelvic Outlet] Jelaskan Posterolateral dalam konteks Pelvic Outlet (Pelvic Inlet, Pelvic Outlet, dan Pelvic Cavity). :: Sacrotuberous ligaments.
+- [Conjugates of Pelvic Inlet] Apa yang dimaksud dengan Anatomical/true conjugate pada Conjugates of Pelvic Inlet? :: Sacral promontory → superior border of pubic symphysis.
+- [Conjugates of Pelvic Inlet] Apa yang dimaksud dengan Obstetric conjugate pada Conjugates of Pelvic Inlet? :: Sacral promontory → titik terdekat pada posterior surface pubic symphysis. Ini merupakan diameter anteroposterior paling sempit yang penting untuk passage fetal head.
+- [Conjugates of Pelvic Inlet] Apa yang dimaksud dengan Diagonal conjugate pada Conjugates of Pelvic Inlet? :: Sacral promontory → inferior border pubic symphysis; dapat diperkirakan secara klinis melalui pemeriksaan vaginal dan digunakan untuk mengestimasi obstetric conjugate.
+- [Perineum: Batas dan Pembagian] Apa struktur atau batas lateral pada Perineum: Batas dan Pembagian? :: Ischial tuberosities.
+- [Perineum: Batas dan Pembagian] Apa yang dimaksud dengan Posterolateral pada Perineum: Batas dan Pembagian? :: Sacrotuberous ligaments.
+- [Ischioanal Fossa] Apa struktur atau batas medial pada Ischioanal Fossa (Anal Triangle dan Ischioanal Fossa)? :: External anal sphincter dan levator ani.
+- [Ischioanal Fossa] Apa struktur atau batas lateral pada Ischioanal Fossa (Anal Triangle dan Ischioanal Fossa)? :: Obturator internus dan obturator fascia.
+- [Ischioanal Fossa] Apa struktur atau batas posterior pada Ischioanal Fossa (Anal Triangle dan Ischioanal Fossa)? :: Sacrotuberous ligament/gluteus maximus region.
+- [Ischioanal Fossa] Apa struktur atau batas anterior pada Ischioanal Fossa (Anal Triangle dan Ischioanal Fossa)? :: Recess yang dapat memanjang ke urogenital triangle di atas perineal membrane.
+- [Perineal Tears] Apa yang dimaksud dengan First degree pada Perineal Tears (Clinical Correlations)? :: Skin/perineal mucosa.
+- [Perineal Tears] Apa yang dimaksud dengan Second degree pada Perineal Tears (Clinical Correlations)? :: Perineal muscles tanpa anal sphincter.
+- [Perineal Tears] Apa yang dimaksud dengan Third degree pada Perineal Tears (Clinical Correlations)? :: Melibatkan anal sphincter complex.
+- [Perineal Tears] Apa yang dimaksud dengan Fourth degree pada Perineal Tears (Clinical Correlations)? :: Meluas melalui anal sphincter sampai anorectal mucosa.
+- [Perineal Tears] Apa yang dimaksud dengan Anatomical importance pada Perineal Tears (Clinical Correlations)? :: Semakin posterior/deep tear, semakin besar risiko kerusakan perineal body dan anal continence mechanism.
+- [Anatomi Pelvis & Perineum] Apa yang dimaksud dengan Pelvic inlet pada Anatomi Pelvis & Perineum? :: Sacral promontory + arcuate line + pecten pubis + superior pubic symphysis
+- [Anatomi Pelvis & Perineum] Apa yang dimaksud dengan Pelvic outlet pada Anatomi Pelvis & Perineum? :: Pubic symphysis inferiorly/anteriorly, ischiopubic rami, ischial tuberosities, sacrotuberous ligaments, coccyx
+- [Anatomi Pelvis & Perineum] Apa yang perlu diketahui tentang Pudendal nerve/internal pudendal vessels? :: Greater sciatic foramen → around ischial spine/sacrospinous ligament → lesser sciatic foramen → pudendal canal
+- [Anatomi Pelvis & Perineum] Apa yang dimaksud dengan Levator ani pada Anatomi Pelvis & Perineum? :: Puborectalis + pubococcygeus + iliococcygeus
+- [Anatomi Pelvis & Perineum] Apa yang dimaksud dengan Obstetric conjugate pada Anatomi Pelvis & Perineum? :: AP diameter inlet yang paling relevan untuk passage fetal head; diagonal conjugate dapat dinilai klinis untuk estimasi
+- [Anatomi Pelvis & Perineum] Apa yang dimaksud dengan Rectouterine pouch (Douglas) pada Anatomi Pelvis & Perineum? :: Dependent peritoneal recess pada female pelvis; rectovesical pouch pada male
+- [Ilium] Sebutkan poin-poin penting tentang Landmark penting. :: • Iliac crest
+  • Anterior superior iliac spine (ASIS) dan anterior inferior iliac spine (AIIS)
+  • Posterior superior iliac spine (PSIS) dan posterior inferior iliac spine (PIIS)
+  • Iliac fossa pada permukaan medial
+  • Auricular surface untuk articulatio sacroiliaca
+  • Arcuate line sebagai bagian linea terminalis/pelvic brim
+  • Greater sciatic notch posterior-inferior
+- [Functions of Pelvic Floor] Sebutkan poin-poin penting tentang Pelvic floor. :: • Menopang bladder, uterus/prostate, rectum, dan pelvic viscera lainnya
+  • Menahan peningkatan intra-abdominal pressure saat batuk, mengejan, mengangkat beban, dan aktivitas lainnya
+  • Berkontribusi pada urinary dan fecal continence
+  • Berpartisipasi dalam micturition, defecation, sexual function, serta childbirth
+  • Menjaga hubungan anatomi pelvic organs melalui integrasi muscle + fascia
+- [Pelvic Peritoneum dan Pouches] Sebutkan poin-poin penting tentang Female pelvis. :: • Vesicouterine pouch berada antara bladder dan uterus
+  • Rectouterine pouch (pouch of Douglas) berada antara uterus/posterior fornix vagina dan rectum; merupakan bagian terendah peritoneal cavity pada perempuan saat berdiri
+- [Somatic Nerves] Sebutkan poin-poin penting tentang Pudendal nerve. :: • Roots: ventral rami S2–S4
+  • Keluar greater sciatic foramen inferior to piriformis
+  • Melintas dekat ischial spine dan sacrospinous ligament
+  • Masuk lesser sciatic foramen
+  • Berjalan dalam pudendal/Alcock canal pada obturator fascia
+  • Branches utama: inferior rectal nerve, perineal nerve, dorsal nerve of penis/clitoris
+- [Autonomic Innervation] Sebutkan poin-poin penting tentang Key distinction. :: • Pudendal nerve = somatic S2–S4
+  • Pelvic splanchnic nerves = parasympathetic S2–S4
+- [Superficial Perineal Space (Superficial Pouch)] Sebutkan poin-poin penting tentang Common contents. :: • Roots/erectile tissues of external genitalia
+  • Ischiocavernosus
+  • Bulbospongiosus
+  • Superficial transverse perineal muscles
+  • Branches of internal pudendal vessels dan pudendal nerve
+- [Superficial Perineal Space (Superficial Pouch)] Sebutkan poin-poin penting tentang Male-specific emphasis. :: • Root of penis: bulb dan paired crura
+  • Proximal spongy urethra berada dalam bulb
+  • Bulbospongiosus menutupi bulb; ischiocavernosus menutupi crura
+- [Ischioanal Fossa] Sebutkan poin-poin penting tentang Boundaries konseptual. :: • Medial: external anal sphincter dan levator ani
+  • Lateral: obturator internus dan obturator fascia
+  • Inferior: skin
+  • Posterior: sacrotuberous ligament/gluteus maximus region
+  • Anterior: recess yang dapat memanjang ke urogenital triangle di atas perineal membrane
+- [Anal Sphincters dan Continence] Sebutkan poin-poin penting tentang Internal anal sphincter. :: • Thickening of circular smooth muscle of rectum
+  • Involuntary/autonomic
+  • Memberikan tonic closure besar pada anal canal
+- [Anal Sphincters dan Continence] Sebutkan poin-poin penting tentang External anal sphincter. :: • Skeletal muscle
   • Voluntary/somatic, terutama via inferior rectal branches of pudendal nerve dengan kontribusi langsung sacral roots
   • Berintegrasi dengan puborectalis dan perineal body
-- [Sexual Dimorphism of the Pelvis] Exam trap: Sexual Dimorphism of the Pelvis :: “greater pelvis” tidak berarti bagian yang lebih penting secara obstetric. Birth canal terutama melibatkan lesser pelvis, yaitu ruang di bawah pelvic inlet.
-- [Pelvic Outlet] Clinical orientation: Pelvic Outlet :: Pelvimetry harus dipahami sebagai kombinasi dimensi tiga dimensi dan hubungan fetus–pelvis; satu angka tunggal tidak menggambarkan seluruh mekanisme persalinan.
-- [Functions of Pelvic Floor] Exam trap: Functions of Pelvic Floor :: Pelvic floor bukan hanya “levator ani”. Coccygeus dan fascial support juga penting.
-- [Pelvic Peritoneum dan Pouches] Clinical correlation: Pelvic Peritoneum dan Pouches :: Free intraperitoneal fluid dapat terkumpul di dependent pouches. Hubungan posterior fornix vagina dengan rectouterine pouch menjelaskan akses klinis historis melalui culdocentesis, walaupun penggunaan klinis modern bergantung konteks dan modalitas imaging.
-- [Internal Iliac Artery] High-yield: Internal Iliac Artery :: Branch pattern internal iliac sangat bervariasi. Untuk ujian, kuasai territory dan hubungan klinis, bukan hanya satu diagram branching.
-- [Deep Perineal Space (Deep Pouch)] Exam trap: Deep Perineal Space (Deep Pouch) :: Superficial pouch = erectile roots + superficial perineal muscles. Deep pouch = external urethral sphincter complex + urethral structures + deeper neurovascular elements.
-- [Ischioanal Fossa] Clinical correlation: Ischioanal Fossa :: Abscess dapat terbentuk di ischioanal fossa dan dapat menyebar ke sisi berlawanan melalui posterior communication, menghasilkan pola horseshoe abscess.
-- [Anal Sphincters dan Continence] High-yield: Anal Sphincters dan Continence :: Continence adalah fungsi terpadu internal anal sphincter + external anal sphincter + puborectalis + rectal sensation + stool consistency; jangan menganggap satu muscle bekerja sendiri.
-- [Pudendal Nerve Block] Exam trap: Pudendal Nerve Block :: Pudendal block tidak memblok visceral pain dari uterine contractions pada first stage labor; target utamanya somatic perineal pain pada distribusi pudendal.
+- [Pudendal Canal dan Pudendal Neurovascular Bundle] Sebutkan poin-poin penting tentang Branching nerve. :: • Inferior rectal nerve — sering menembus medial wall canal menuju ischioanal fossa dan external anal sphincter
+  • Perineal nerve — memberi deep muscular branch serta superficial posterior scrotal/labial branches
+  • Dorsal nerve of penis/clitoris — terminal sensory branch ke erectile organ
+- [Sexual Dimorphism of the Pelvis] Apa jebakan yang sering muncul pada soal tentang Sexual Dimorphism of the Pelvis? :: “greater pelvis” tidak berarti bagian yang lebih penting secara obstetric. Birth canal terutama melibatkan lesser pelvis, yaitu ruang di bawah pelvic inlet.
+- [Pelvic Outlet] Apa korelasi klinis dari Pelvic Outlet (Obstetric Diameters dan Pelvic Measurements)? :: Pelvimetry harus dipahami sebagai kombinasi dimensi tiga dimensi dan hubungan fetus–pelvis; satu angka tunggal tidak menggambarkan seluruh mekanisme persalinan.
+- [Functions of Pelvic Floor] Apa jebakan yang sering muncul pada soal tentang Functions of Pelvic Floor? :: Pelvic floor bukan hanya “levator ani”. Coccygeus dan fascial support juga penting.
+- [Pelvic Peritoneum dan Pouches] Apa korelasi klinis dari Pelvic Peritoneum dan Pouches? :: Free intraperitoneal fluid dapat terkumpul di dependent pouches. Hubungan posterior fornix vagina dengan rectouterine pouch menjelaskan akses klinis historis melalui culdocentesis, walaupun penggunaan klinis modern bergantung konteks dan modalitas imaging.
+- [Internal Iliac Artery] Apa poin high-yield (pearl) tentang Internal Iliac Artery (Arterial Supply of the Pelvis)? :: Branch pattern internal iliac sangat bervariasi. Untuk ujian, kuasai territory dan hubungan klinis, bukan hanya satu diagram branching.
+- [Deep Perineal Space (Deep Pouch)] Apa jebakan yang sering muncul pada soal tentang Deep Perineal Space (Deep Pouch)? :: Superficial pouch = erectile roots + superficial perineal muscles. Deep pouch = external urethral sphincter complex + urethral structures + deeper neurovascular elements.
+- [Ischioanal Fossa] Apa korelasi klinis dari Ischioanal Fossa (Anal Triangle dan Ischioanal Fossa)? :: Abscess dapat terbentuk di ischioanal fossa dan dapat menyebar ke sisi berlawanan melalui posterior communication, menghasilkan pola horseshoe abscess.
+- [Anal Sphincters dan Continence] Apa poin high-yield (pearl) tentang Anal Sphincters dan Continence? :: Continence adalah fungsi terpadu internal anal sphincter + external anal sphincter + puborectalis + rectal sensation + stool consistency; jangan menganggap satu muscle bekerja sendiri.
+- [Pudendal Nerve Block] Apa jebakan yang sering muncul pada soal tentang Pudendal Nerve Block (Clinical Correlations)? :: Pudendal block tidak memblok visceral pain dari uterine contractions pada first stage labor; target utamanya somatic perineal pain pada distribusi pudendal.

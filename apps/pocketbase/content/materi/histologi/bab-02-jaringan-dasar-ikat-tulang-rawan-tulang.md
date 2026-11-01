@@ -475,49 +475,87 @@ Ossification:
 
 ## Flashcard {kartu}
 
-- [Perbandingan Tiga Cartilage] Hyaline :: glassy matrix, collagen II, perichondrium umumnya ada.
-- [Perbandingan Tiga Cartilage] Elastic :: collagen II + elastic fibers, paling fleksibel, perichondrium ada.
-- [Perbandingan Tiga Cartilage] Fibrocartilage :: collagen I dominan, rows of chondrocytes, paling tahan tensile/compressive stress, tanpa perichondrium.
-- [Intramembranous Ossification] Urutan konsep :: mesenchymal condensation → osteoblast differentiation → osteoid secretion → mineralization → trabecular woven bone → remodeling menjadi lamellar bone.
-- [Endochondral Ossification] Urutan besar :: cartilage model → bone collar di diafisis → chondrocyte hypertrophy dan matrix calcification → vascular invasion → primary ossification center di diafisis → medullary cavity → secondary ossification centers di epiphyses.
-- [Pewarnaan dan Clue Praktikum] Collagen pada H&E :: eosinophilic/pink.
-- [Pewarnaan dan Clue Praktikum] Elastic fibers :: lebih jelas dengan orcein atau VVG.
-- [Pewarnaan dan Clue Praktikum] Reticular fibers :: silver impregnation menunjukkan network hitam.
-- [Pewarnaan dan Clue Praktikum] Cartilage matrix :: sering basophilic karena sulfated GAG; toluidine blue dapat menunjukkan metachromasia.
-- [Pewarnaan dan Clue Praktikum] Bone matrix yang terdecalcification :: eosinophilic; osteoid tampak sebagai seam lebih pucat yang belum termineralisasi.
-- [Clinical Correlations High-Yield] Scurvy :: hydroxylation collagen terganggu akibat deficiency vitamin C sehingga connective tissue rapuh.
-- [Clinical Correlations High-Yield] Ehlers–Danlos syndrome :: kelompok penyakit akibat kelainan collagen synthesis/structure dengan manifestasi seperti skin hyperextensibility, joint hypermobility, dan tissue fragility.
-- [Clinical Correlations High-Yield] Marfan syndrome :: kelainan fibrillin-1 memengaruhi elastic tissue dan memiliki konsekuensi penting pada aorta serta struktur lain.
-- [Clinical Correlations High-Yield] Osteoporosis :: bone mass menurun, tetapi matrix yang tersisa masih termineralisasi normal; berbeda dari osteomalacia yang terutama merupakan gangguan mineralisasi osteoid.
-- [High-yield] Connective tissue :: cells + fibers + ground substance
-- [High-yield] collagen I :: tensile strength
-- [High-yield] collagen II :: cartilage
-- [High-yield] collagen III :: reticular fibers
-- [High-yield] collagen IV :: basal lamina
-- [High-yield] elastic fibers :: stretch/recoil
-- [High-yield] loose :: more cells/ground substance, fibers longgar
-- [High-yield] dense regular :: parallel collagen
-- [High-yield] dense irregular :: collagen multidirectional
-- [High-yield] hyaline :: collagen II + glassy matrix
-- [High-yield] elastic :: collagen II + elastic fibers
-- [High-yield] fibrocartilage :: collagen I dominan + rows of chondrocytes + no perichondrium
-- [High-yield] Compact bone :: osteons
-- [High-yield] Spongy bone :: trabeculae + marrow spaces
-- [High-yield] intramembranous :: mesenchyme → bone
-- [High-yield] endochondral :: cartilage model → bone
-- [High-yield] Growth plate :: reserve → proliferation → hypertrophy → calcification → ossification
-- [Peta Besar Jaringan Ikat] Komponen utama connective tissue … :: • cells
-  • fibers
-  • ground substance
-- [Bone: Prinsip Umum] Matrix bone terdiri atas … :: • organic component terutama collagen type I dan ground substance proteins
-  • inorganic component terutama hydroxyapatite crystals
-- [Extracellular Matrix: Prinsip Dasar] High-yield: Extracellular Matrix: Prinsip Dasar :: Collagen terutama menahan tarikan; proteoglycan/GAG terutama menahan kompresi karena mengikat air.
-- [Collagen Fibers] Clinical anchor: Collagen Fibers :: Vitamin C diperlukan untuk hydroxylation residu proline dan lysine selama sintesis collagen. Kekurangan vitamin C melemahkan collagen dan menimbulkan scurvy. Kelainan sintesis/struktur collagen juga menjadi dasar sejumlah tipe Ehlers–Danlos syndrome.
-- [Dense Regular Connective Tissue] Praktikum: Dense Regular Connective Tissue :: Pola paralel seragam + sedikit inti pipih merupakan clue utama tendon.
-- [Adipose Tissue] Praktikum: Adipose Tissue :: White adipocyte = satu vakuola lipid besar; brown adipocyte = banyak droplet kecil, inti lebih sentral, jaringan lebih eosinophilic.
-- [Hyaline Cartilage] Praktikum: Hyaline Cartilage :: Matrix glassy/homogen, chondrocytes dalam lacunae, sering terdapat isogenous groups.
-- [Elastic Cartilage] Praktikum: Elastic Cartilage :: Jika chondrocytes dalam lacunae jelas tetapi matrix tampak penuh serabut gelap seperti “benang kusut”, pikirkan elastic cartilage.
-- [Perbandingan Tiga Cartilage] Trap ujian: Perbandingan Tiga Cartilage :: Articular hyaline cartilage tidak memiliki perichondrium; fibrocartilage juga tidak memiliki perichondrium tetapi matrix-nya berbeda jelas.
-- [Sel Bone] High-yield: Sel Bone :: Osteoblast builds; osteocyte maintains; osteoclast resorbs.
-- [Intramembranous Ossification] High-yield: Intramembranous Ossification :: Intramembranous = mesenchyme langsung menjadi bone.
-- [Endochondral Ossification] High-yield: Endochondral Ossification :: Endochondral = bone menggantikan cartilage model.
+- [Perbandingan Tiga Cartilage] Apa yang dimaksud dengan Hyaline pada Perbandingan Tiga Cartilage? :: Glassy matrix, collagen II, perichondrium umumnya ada.
+- [Perbandingan Tiga Cartilage] Apa yang dimaksud dengan Elastic pada Perbandingan Tiga Cartilage? :: Collagen II + elastic fibers, paling fleksibel, perichondrium ada.
+- [Perbandingan Tiga Cartilage] Apa yang dimaksud dengan Fibrocartilage pada Perbandingan Tiga Cartilage? :: Collagen I dominan, rows of chondrocytes, paling tahan tensile/compressive stress, tanpa perichondrium.
+- [Intramembranous Ossification] Pada Intramembranous Ossification, apa urutan konsepnya? :: Mesenchymal condensation → osteoblast differentiation → osteoid secretion → mineralization → trabecular woven bone → remodeling menjadi lamellar bone.
+- [Endochondral Ossification] Pada Endochondral Ossification, apa urutan besarnya? :: Cartilage model → bone collar di diafisis → chondrocyte hypertrophy dan matrix calcification → vascular invasion → primary ossification center di diafisis → medullary cavity → secondary ossification centers di epiphyses.
+- [Pewarnaan dan Clue Praktikum] Jelaskan Collagen pada H&E dalam konteks Pewarnaan dan Clue Praktikum. :: Eosinophilic/pink.
+- [Pewarnaan dan Clue Praktikum] Apa yang dimaksud dengan Elastic fibers pada Pewarnaan dan Clue Praktikum? :: Lebih jelas dengan orcein atau VVG.
+- [Pewarnaan dan Clue Praktikum] Apa yang dimaksud dengan Reticular fibers pada Pewarnaan dan Clue Praktikum? :: Silver impregnation menunjukkan network hitam.
+- [Pewarnaan dan Clue Praktikum] Apa yang dimaksud dengan Cartilage matrix pada Pewarnaan dan Clue Praktikum? :: Sering basophilic karena sulfated GAG; toluidine blue dapat menunjukkan metachromasia.
+- [Pewarnaan dan Clue Praktikum] Jelaskan Bone matrix yang terdecalcification dalam konteks Pewarnaan dan Clue Praktikum. :: Eosinophilic; osteoid tampak sebagai seam lebih pucat yang belum termineralisasi.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Scurvy pada Clinical Correlations High-Yield? :: Hydroxylation collagen terganggu akibat deficiency vitamin C sehingga connective tissue rapuh.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Ehlers–Danlos syndrome pada Clinical Correlations High-Yield? :: Kelompok penyakit akibat kelainan collagen synthesis/structure dengan manifestasi seperti skin hyperextensibility, joint hypermobility, dan tissue fragility.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Marfan syndrome pada Clinical Correlations High-Yield? :: Kelainan fibrillin-1 memengaruhi elastic tissue dan memiliki konsekuensi penting pada aorta serta struktur lain.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Osteoporosis pada Clinical Correlations High-Yield? :: Bone mass menurun, tetapi matrix yang tersisa masih termineralisasi normal; berbeda dari osteomalacia yang terutama merupakan gangguan mineralisasi osteoid.
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan Connective tissue pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Cells + fibers + ground substance
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan collagen I pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Tensile strength
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan collagen II pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Cartilage
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan collagen III pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Reticular fibers
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan collagen IV pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Basal lamina
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan elastic fibers pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Stretch/recoil
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan loose pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: More cells/ground substance, fibers longgar
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan dense regular pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Parallel collagen
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan dense irregular pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Collagen multidirectional
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan hyaline pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Collagen II + glassy matrix
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan elastic pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Collagen II + elastic fibers
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan fibrocartilage pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Collagen I dominan + rows of chondrocytes + no perichondrium
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan Compact bone pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Osteons
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan Spongy bone pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Trabeculae + marrow spaces
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan intramembranous pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Mesenchyme → bone
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang dimaksud dengan endochondral pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Cartilage model → bone
+- [Jaringan Dasar: Ikat, Tulang Rawan, Tulang] Apa yang perlu diketahui tentang Growth plate pada Jaringan Dasar: Ikat, Tulang Rawan, Tulang? :: Reserve → proliferation → hypertrophy → calcification → ossification
+- [Peta Besar Jaringan Ikat] Sebutkan komponen utama connective tissue pada Peta Besar Jaringan Ikat. :: • Cells
+  • Fibers
+  • Ground substance
+- [Elastic dan Reticular Fibers] Sebutkan lokasi penting pada Elastic dan Reticular Fibers. :: • Dinding arteri elastik
+  • Ligament elastik
+  • Elastic cartilage
+  • Paru
+- [Loose Connective Tissue] Sebutkan lokasi umum pada Loose Connective Tissue. :: • Lamina propria di bawah epitel
+  • Sekitar pembuluh darah dan saraf kecil
+  • Stroma banyak organ
+- [Loose Connective Tissue] Sebutkan ciri preparat pada Loose Connective Tissue. :: • Banyak ruang/ground substance
+  • Collagen fibers relatif tipis dan tersebar
+  • Lebih banyak variasi sel
+  • Sering mengandung kapiler
+- [Dense Irregular Connective Tissue] Sebutkan contoh utama pada Dense Irregular Connective Tissue. :: • Reticular dermis
+  • Capsule organ
+  • Submucosa beberapa organ
+- [Cartilage: Prinsip Umum] Sebutkan komponen utama pada Cartilage: Prinsip Umum. :: • Chondrogenic cells
+  • Chondroblasts
+  • Chondrocytes
+  • Matrix kaya collagen dan proteoglycans
+  • Perichondrium pada sebagian besar cartilage
+- [Hyaline Cartilage] Sebutkan lokasi penting pada Hyaline Cartilage. :: • Tracheal rings
+  • Nasal cartilage
+  • Costal cartilage
+  • Articular surfaces
+  • Epiphyseal growth plate
+  • Fetal skeleton sebelum endochondral ossification
+- [Elastic Cartilage] Sebutkan lokasi klasik pada Elastic Cartilage. :: • Auricle
+  • Epiglottis
+  • External auditory canal
+  • Auditory tube
+- [Bone: Prinsip Umum] Sebutkan poin-poin penting tentang Matrix bone. :: • Organic component terutama collagen type I dan ground substance proteins
+  • Inorganic component terutama hydroxyapatite crystals
+- [Compact Bone dan Osteon] Sebutkan komponen osteon pada Compact Bone dan Osteon. :: • Central/Haversian canal berisi pembuluh darah dan saraf
+  • Concentric lamellae
+  • Osteocyte lacunae
+  • Canaliculi yang menghubungkan lacunae
+  • Cement line di batas osteon
+- [Bone Remodeling] Sebutkan poin-poin penting tentang Remodeling berfungsi. :: • Memperbaiki microdamage
+  • Menyesuaikan struktur terhadap mechanical load
+  • Berperan dalam calcium/phosphate homeostasis
+  • Mengganti woven bone dengan lamellar bone
+- [Extracellular Matrix: Prinsip Dasar] Apa poin high-yield (pearl) tentang Extracellular Matrix: Prinsip Dasar? :: Collagen terutama menahan tarikan; proteoglycan/GAG terutama menahan kompresi karena mengikat air.
+- [Collagen Fibers] Apa korelasi klinis dari Collagen Fibers? :: Vitamin C diperlukan untuk hydroxylation residu proline dan lysine selama sintesis collagen. Kekurangan vitamin C melemahkan collagen dan menimbulkan scurvy. Kelainan sintesis/struktur collagen juga menjadi dasar sejumlah tipe Ehlers–Danlos syndrome.
+- [Dense Regular Connective Tissue] Apa clue praktikum untuk Dense Regular Connective Tissue? :: Pola paralel seragam + sedikit inti pipih merupakan clue utama tendon.
+- [Adipose Tissue] Apa clue praktikum untuk Adipose Tissue? :: White adipocyte = satu vakuola lipid besar; brown adipocyte = banyak droplet kecil, inti lebih sentral, jaringan lebih eosinophilic.
+- [Hyaline Cartilage] Apa clue praktikum untuk Hyaline Cartilage? :: Matrix glassy/homogen, chondrocytes dalam lacunae, sering terdapat isogenous groups.
+- [Elastic Cartilage] Apa clue praktikum untuk Elastic Cartilage? :: Jika chondrocytes dalam lacunae jelas tetapi matrix tampak penuh serabut gelap seperti “benang kusut”, pikirkan elastic cartilage.
+- [Perbandingan Tiga Cartilage] Apa jebakan yang sering muncul pada soal tentang Perbandingan Tiga Cartilage? :: Articular hyaline cartilage tidak memiliki perichondrium; fibrocartilage juga tidak memiliki perichondrium tetapi matrix-nya berbeda jelas.
+- [Sel Bone] Apa poin high-yield (pearl) tentang Sel Bone? :: Osteoblast builds; osteocyte maintains; osteoclast resorbs.
+- [Intramembranous Ossification] Apa poin high-yield (pearl) tentang Intramembranous Ossification? :: Intramembranous = mesenchyme langsung menjadi bone.
+- [Endochondral Ossification] Apa poin high-yield (pearl) tentang Endochondral Ossification? :: Endochondral = bone menggantikan cartilage model.
