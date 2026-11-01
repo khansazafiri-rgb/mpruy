@@ -1,0 +1,836 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 5.2,
+   "text": "Besok praktikum anatomi, tapi kamu masih bingung lihat tulang dan otot dari berbagai sisi?",
+   "words": [
+    {
+     "w": "Besok",
+     "s": 0.0,
+     "e": 0.42
+    },
+    {
+     "w": "praktikum",
+     "s": 0.42,
+     "e": 0.86
+    },
+    {
+     "w": "anatomi,",
+     "s": 0.86,
+     "e": 1.36
+    },
+    {
+     "w": "tapi",
+     "s": 1.82,
+     "e": 2.16
+    },
+    {
+     "w": "kamu",
+     "s": 2.16,
+     "e": 2.62
+    },
+    {
+     "w": "masih",
+     "s": 2.62,
+     "e": 2.84
+    },
+    {
+     "w": "bingung",
+     "s": 2.84,
+     "e": 3.28
+    },
+    {
+     "w": "lihat",
+     "s": 3.28,
+     "e": 3.56
+    },
+    {
+     "w": "tulang",
+     "s": 3.56,
+     "e": 3.88
+    },
+    {
+     "w": "dan",
+     "s": 3.88,
+     "e": 4.02
+    },
+    {
+     "w": "otot",
+     "s": 4.02,
+     "e": 4.36
+    },
+    {
+     "w": "dari",
+     "s": 4.36,
+     "e": 4.56
+    },
+    {
+     "w": "berbagai",
+     "s": 4.56,
+     "e": 4.88
+    },
+    {
+     "w": "sisi?",
+     "s": 4.88,
+     "e": 5.2
+    }
+   ]
+  },
+  {
+   "start": 5.82,
+   "end": 7.64,
+   "text": "Dari depan kelihatannya paham.",
+   "words": [
+    {
+     "w": "Dari",
+     "s": 5.82,
+     "e": 6.08
+    },
+    {
+     "w": "depan",
+     "s": 6.08,
+     "e": 6.5
+    },
+    {
+     "w": "kelihatannya",
+     "s": 6.5,
+     "e": 7.04
+    },
+    {
+     "w": "paham.",
+     "s": 7.04,
+     "e": 7.64
+    }
+   ]
+  },
+  {
+   "start": 7.98,
+   "end": 12.66,
+   "text": "Begitu dilihat dari samping, kamu mulai ragu, diputar sedikit lagi.",
+   "words": [
+    {
+     "w": "Begitu",
+     "s": 7.98,
+     "e": 8.36
+    },
+    {
+     "w": "dilihat",
+     "s": 8.36,
+     "e": 8.68
+    },
+    {
+     "w": "dari",
+     "s": 8.68,
+     "e": 8.88
+    },
+    {
+     "w": "samping,",
+     "s": 8.88,
+     "e": 9.42
+    },
+    {
+     "w": "kamu",
+     "s": 9.82,
+     "e": 10.02
+    },
+    {
+     "w": "mulai",
+     "s": 10.02,
+     "e": 10.3
+    },
+    {
+     "w": "ragu,",
+     "s": 10.3,
+     "e": 10.82
+    },
+    {
+     "w": "diputar",
+     "s": 11.28,
+     "e": 11.82
+    },
+    {
+     "w": "sedikit",
+     "s": 11.82,
+     "e": 12.2
+    },
+    {
+     "w": "lagi.",
+     "s": 12.2,
+     "e": 12.66
+    }
+   ]
+  },
+  {
+   "start": 13.46,
+   "end": 15.8,
+   "text": "Tunggu, ini bagian yang tadi sebelah mana?",
+   "words": [
+    {
+     "w": "Tunggu,",
+     "s": 13.46,
+     "e": 13.74
+    },
+    {
+     "w": "ini",
+     "s": 14.24,
+     "e": 14.36
+    },
+    {
+     "w": "bagian",
+     "s": 14.36,
+     "e": 14.72
+    },
+    {
+     "w": "yang",
+     "s": 14.72,
+     "e": 14.86
+    },
+    {
+     "w": "tadi",
+     "s": 14.86,
+     "e": 15.18
+    },
+    {
+     "w": "sebelah",
+     "s": 15.18,
+     "e": 15.48
+    },
+    {
+     "w": "mana?",
+     "s": 15.48,
+     "e": 15.8
+    }
+   ]
+  },
+  {
+   "start": 16.42,
+   "end": 21.4,
+   "text": "Akhirnya kamu menatap atlas, memiringkan kepala, lalu memutar bukunya.",
+   "words": [
+    {
+     "w": "Akhirnya",
+     "s": 16.42,
+     "e": 16.94
+    },
+    {
+     "w": "kamu",
+     "s": 16.94,
+     "e": 17.24
+    },
+    {
+     "w": "menatap",
+     "s": 17.24,
+     "e": 17.68
+    },
+    {
+     "w": "atlas,",
+     "s": 17.68,
+     "e": 18.18
+    },
+    {
+     "w": "memiringkan",
+     "s": 18.56,
+     "e": 19.04
+    },
+    {
+     "w": "kepala,",
+     "s": 19.04,
+     "e": 19.54
+    },
+    {
+     "w": "lalu",
+     "s": 19.92,
+     "e": 20.36
+    },
+    {
+     "w": "memutar",
+     "s": 20.36,
+     "e": 20.84
+    },
+    {
+     "w": "bukunya.",
+     "s": 20.84,
+     "e": 21.4
+    }
+   ]
+  },
+  {
+   "start": 21.78,
+   "end": 23.84,
+   "text": "Bukunya sudah berputar kemana-mana.",
+   "words": [
+    {
+     "w": "Bukunya",
+     "s": 21.78,
+     "e": 22.3
+    },
+    {
+     "w": "sudah",
+     "s": 22.3,
+     "e": 22.52
+    },
+    {
+     "w": "berputar",
+     "s": 22.52,
+     "e": 23.26
+    },
+    {
+     "w": "kemana",
+     "s": 23.26,
+     "e": 23.58
+    },
+    {
+     "w": "-mana.",
+     "s": 23.58,
+     "e": 23.84
+    }
+   ]
+  },
+  {
+   "start": 24.34,
+   "end": 26.86,
+   "text": "Pemahamanmu masih mencari jalan pulang.",
+   "words": [
+    {
+     "w": "Pemahamanmu",
+     "s": 24.34,
+     "e": 25.04
+    },
+    {
+     "w": "masih",
+     "s": 25.04,
+     "e": 25.68
+    },
+    {
+     "w": "mencari",
+     "s": 25.68,
+     "e": 26.02
+    },
+    {
+     "w": "jalan",
+     "s": 26.02,
+     "e": 26.26
+    },
+    {
+     "w": "pulang.",
+     "s": 26.26,
+     "e": 26.86
+    }
+   ]
+  },
+  {
+   "start": 26.86,
+   "end": 33.3,
+   "text": "Apalagi waktu kamu harus membayangkan bagaimana tulang, otot, dan pembuluh darah tersusun di dalam tubuh.",
+   "words": [
+    {
+     "w": "Apalagi",
+     "s": 26.86,
+     "e": 27.76
+    },
+    {
+     "w": "waktu",
+     "s": 27.76,
+     "e": 27.98
+    },
+    {
+     "w": "kamu",
+     "s": 27.98,
+     "e": 28.3
+    },
+    {
+     "w": "harus",
+     "s": 28.3,
+     "e": 28.48
+    },
+    {
+     "w": "membayangkan",
+     "s": 28.48,
+     "e": 29.1
+    },
+    {
+     "w": "bagaimana",
+     "s": 29.1,
+     "e": 29.58
+    },
+    {
+     "w": "tulang,",
+     "s": 29.58,
+     "e": 30.14
+    },
+    {
+     "w": "otot,",
+     "s": 30.46,
+     "e": 30.86
+    },
+    {
+     "w": "dan",
+     "s": 31.18,
+     "e": 31.22
+    },
+    {
+     "w": "pembuluh",
+     "s": 31.22,
+     "e": 31.58
+    },
+    {
+     "w": "darah",
+     "s": 31.58,
+     "e": 31.94
+    },
+    {
+     "w": "tersusun",
+     "s": 31.94,
+     "e": 32.56
+    },
+    {
+     "w": "di",
+     "s": 32.56,
+     "e": 32.68
+    },
+    {
+     "w": "dalam",
+     "s": 32.68,
+     "e": 32.86
+    },
+    {
+     "w": "tubuh.",
+     "s": 32.86,
+     "e": 33.3
+    }
+   ]
+  },
+  {
+   "start": 33.58,
+   "end": 38.0,
+   "text": "Nah, supaya lebih kebayang, coba buka 3D Anatomy di Medcoil.",
+   "words": [
+    {
+     "w": "Nah,",
+     "s": 33.58,
+     "e": 33.88
+    },
+    {
+     "w": "supaya",
+     "s": 34.2,
+     "e": 34.46
+    },
+    {
+     "w": "lebih",
+     "s": 34.46,
+     "e": 34.68
+    },
+    {
+     "w": "kebayang,",
+     "s": 34.68,
+     "e": 35.24
+    },
+    {
+     "w": "coba",
+     "s": 35.54,
+     "e": 35.86
+    },
+    {
+     "w": "buka",
+     "s": 35.86,
+     "e": 36.16
+    },
+    {
+     "w": "3D",
+     "s": 36.16,
+     "e": 36.6
+    },
+    {
+     "w": "Anatomy",
+     "s": 36.6,
+     "e": 37.08
+    },
+    {
+     "w": "di",
+     "s": 37.08,
+     "e": 37.44
+    },
+    {
+     "w": "Medcoil.",
+     "s": 37.44,
+     "e": 38.0
+    }
+   ]
+  },
+  {
+   "start": 38.34,
+   "end": 43.0,
+   "text": "Kamu bisa memutar dan memperbesar model tubuh untuk melihatnya dari sudut yang berbeda.",
+   "words": [
+    {
+     "w": "Kamu",
+     "s": 38.34,
+     "e": 38.7
+    },
+    {
+     "w": "bisa",
+     "s": 38.7,
+     "e": 38.88
+    },
+    {
+     "w": "memutar",
+     "s": 38.88,
+     "e": 39.32
+    },
+    {
+     "w": "dan",
+     "s": 39.32,
+     "e": 39.58
+    },
+    {
+     "w": "memperbesar",
+     "s": 39.58,
+     "e": 40.1
+    },
+    {
+     "w": "model",
+     "s": 40.1,
+     "e": 40.28
+    },
+    {
+     "w": "tubuh",
+     "s": 40.28,
+     "e": 40.84
+    },
+    {
+     "w": "untuk",
+     "s": 40.84,
+     "e": 41.16
+    },
+    {
+     "w": "melihatnya",
+     "s": 41.16,
+     "e": 41.72
+    },
+    {
+     "w": "dari",
+     "s": 41.72,
+     "e": 41.92
+    },
+    {
+     "w": "sudut",
+     "s": 41.92,
+     "e": 42.3
+    },
+    {
+     "w": "yang",
+     "s": 42.3,
+     "e": 42.44
+    },
+    {
+     "w": "berbeda.",
+     "s": 42.44,
+     "e": 43.0
+    }
+   ]
+  },
+  {
+   "start": 43.32,
+   "end": 45.8,
+   "text": "Mau melihat kerangka, kurangi tampilan ototnya.",
+   "words": [
+    {
+     "w": "Mau",
+     "s": 43.32,
+     "e": 43.48
+    },
+    {
+     "w": "melihat",
+     "s": 43.48,
+     "e": 43.76
+    },
+    {
+     "w": "kerangka,",
+     "s": 43.76,
+     "e": 44.22
+    },
+    {
+     "w": "kurangi",
+     "s": 44.54,
+     "e": 44.94
+    },
+    {
+     "w": "tampilan",
+     "s": 44.94,
+     "e": 45.28
+    },
+    {
+     "w": "ototnya.",
+     "s": 45.28,
+     "e": 45.8
+    }
+   ]
+  },
+  {
+   "start": 46.24,
+   "end": 47.74,
+   "text": "Penasaran posisi pembuluh darah?",
+   "words": [
+    {
+     "w": "Penasaran",
+     "s": 46.24,
+     "e": 46.7
+    },
+    {
+     "w": "posisi",
+     "s": 46.7,
+     "e": 47.06
+    },
+    {
+     "w": "pembuluh",
+     "s": 47.06,
+     "e": 47.4
+    },
+    {
+     "w": "darah?",
+     "s": 47.4,
+     "e": 47.74
+    }
+   ]
+  },
+  {
+   "start": 48.06,
+   "end": 51.68,
+   "text": "Tampilkan sistemnya dan lihat hubungannya dengan struktur di sekitarnya.",
+   "words": [
+    {
+     "w": "Tampilkan",
+     "s": 48.06,
+     "e": 48.52
+    },
+    {
+     "w": "sistemnya",
+     "s": 48.52,
+     "e": 49.06
+    },
+    {
+     "w": "dan",
+     "s": 49.06,
+     "e": 49.38
+    },
+    {
+     "w": "lihat",
+     "s": 49.38,
+     "e": 49.72
+    },
+    {
+     "w": "hubungannya",
+     "s": 49.72,
+     "e": 50.3
+    },
+    {
+     "w": "dengan",
+     "s": 50.3,
+     "e": 50.56
+    },
+    {
+     "w": "struktur",
+     "s": 50.56,
+     "e": 51.04
+    },
+    {
+     "w": "di",
+     "s": 51.04,
+     "e": 51.26
+    },
+    {
+     "w": "sekitarnya.",
+     "s": 51.26,
+     "e": 51.68
+    }
+   ]
+  },
+  {
+   "start": 51.68,
+   "end": 56.72,
+   "text": "Setelah eksplorasi, kamu juga bisa lanjut baca catatan materi dan latihan soal.",
+   "words": [
+    {
+     "w": "Setelah",
+     "s": 51.68,
+     "e": 52.6
+    },
+    {
+     "w": "eksplorasi,",
+     "s": 52.6,
+     "e": 53.26
+    },
+    {
+     "w": "kamu",
+     "s": 53.5,
+     "e": 53.74
+    },
+    {
+     "w": "juga",
+     "s": 53.74,
+     "e": 53.96
+    },
+    {
+     "w": "bisa",
+     "s": 53.96,
+     "e": 54.14
+    },
+    {
+     "w": "lanjut",
+     "s": 54.14,
+     "e": 54.56
+    },
+    {
+     "w": "baca",
+     "s": 54.56,
+     "e": 54.84
+    },
+    {
+     "w": "catatan",
+     "s": 54.84,
+     "e": 55.18
+    },
+    {
+     "w": "materi",
+     "s": 55.18,
+     "e": 55.72
+    },
+    {
+     "w": "dan",
+     "s": 55.72,
+     "e": 55.94
+    },
+    {
+     "w": "latihan",
+     "s": 55.94,
+     "e": 56.32
+    },
+    {
+     "w": "soal.",
+     "s": 56.32,
+     "e": 56.72
+    }
+   ]
+  },
+  {
+   "start": 57.02,
+   "end": 60.98,
+   "text": "Jadi, sebelum kepalamu ikut berputar, coba putar modelnya dulu.",
+   "words": [
+    {
+     "w": "Jadi,",
+     "s": 57.02,
+     "e": 57.38
+    },
+    {
+     "w": "sebelum",
+     "s": 57.74,
+     "e": 58.16
+    },
+    {
+     "w": "kepalamu",
+     "s": 58.16,
+     "e": 58.6
+    },
+    {
+     "w": "ikut",
+     "s": 58.6,
+     "e": 58.82
+    },
+    {
+     "w": "berputar,",
+     "s": 58.82,
+     "e": 59.46
+    },
+    {
+     "w": "coba",
+     "s": 59.72,
+     "e": 60.06
+    },
+    {
+     "w": "putar",
+     "s": 60.06,
+     "e": 60.34
+    },
+    {
+     "w": "modelnya",
+     "s": 60.34,
+     "e": 60.74
+    },
+    {
+     "w": "dulu.",
+     "s": 60.74,
+     "e": 60.98
+    }
+   ]
+  },
+  {
+   "start": 61.46,
+   "end": 66.86,
+   "text": "Yuk, belajar kedokteran gratis di Medcoil. Buka Medcoil.com dan mulai eksplorasi.",
+   "words": [
+    {
+     "w": "Yuk,",
+     "s": 61.46,
+     "e": 61.68
+    },
+    {
+     "w": "belajar",
+     "s": 62.0,
+     "e": 62.28
+    },
+    {
+     "w": "kedokteran",
+     "s": 62.28,
+     "e": 62.76
+    },
+    {
+     "w": "gratis",
+     "s": 62.76,
+     "e": 63.24
+    },
+    {
+     "w": "di",
+     "s": 63.24,
+     "e": 63.42
+    },
+    {
+     "w": "Medcoil.",
+     "s": 63.42,
+     "e": 64.02
+    },
+    {
+     "w": "Buka",
+     "s": 64.26,
+     "e": 64.6
+    },
+    {
+     "w": "Medcoil",
+     "s": 64.6,
+     "e": 65.04
+    },
+    {
+     "w": ".com",
+     "s": 65.04,
+     "e": 65.5
+    },
+    {
+     "w": "dan",
+     "s": 65.5,
+     "e": 65.76
+    },
+    {
+     "w": "mulai",
+     "s": 65.76,
+     "e": 66.22
+    },
+    {
+     "w": "eksplorasi.",
+     "s": 66.22,
+     "e": 66.86
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,283 @@
+[
+ {
+  "type": "start",
+  "frame": "f00000.png",
+  "ui": "u_000.png",
+  "geo": {
+   "canvas": [
+    301,
+    89,
+    762,
+    1814
+   ],
+   "front": [
+    334,
+    1806,
+    49.3,
+    34
+   ],
+   "side": [
+    386.3,
+    1806,
+    45.1,
+    34
+   ],
+   "back": [
+    434.4,
+    1806,
+    48,
+    34
+   ],
+   "top": [
+    485.4,
+    1806,
+    41.8,
+    34
+   ],
+   "reset": [
+    530.1,
+    1806,
+    51.6,
+    34
+   ],
+   "zin": [
+    953.3,
+    1695,
+    87.7,
+    36
+   ],
+   "zout": [
+    953.3,
+    1736,
+    87.7,
+    36
+   ],
+   "pan": [
+    953.3,
+    1777,
+    87.7,
+    36
+   ],
+   "presetMuscles": [
+    18,
+    419,
+    56.7,
+    25
+   ],
+   "presetBones": [
+    79.7,
+    419,
+    48.4,
+    25
+   ],
+   "presetAll": [
+    190.8,
+    419,
+    70.6,
+    25
+   ],
+   "restore": [
+    396.3,
+    213,
+    96.1,
+    36
+   ],
+   "undo": [
+    329,
+    213,
+    62.3,
+    36
+   ]
+  },
+  "titles": [
+   "Muscles & fascia · Fascia & connective covering · 669 structures",
+   "Skeleton · Bones · 277 structures",
+   "Joints & ligaments · Hidden · 349 structures · not loaded",
+   "Arteries · Hidden · 427 structures · not loaded",
+   "Veins · Hidden · 229 structures · not loaded",
+   "Heart · Hidden · 20 structures · not loaded",
+   "Nervous system & senses · Hidden · 580 structures · not loaded",
+   "Lymphatic system · Hidden · 158 structures · not loaded",
+   "Respiratory system · Hidden · 37 structures · not loaded",
+   "Digestive system · Hidden · 49 structures · not loaded",
+   "Urinary system · Hidden · 8 structures · not loaded",
+   "Reproductive system · Hidden · 14 structures · not loaded",
+   "Endocrine system · Hidden · 10 structures · not loaded"
+  ]
+ },
+ {
+  "type": "mark",
+  "label": "ready",
+  "frame": "f00003.png",
+  "ui": "u_001.png",
+  "titles": [
+   "Muscles & fascia · Deep muscles · 669 structures",
+   "Skeleton · Bones · 277 structures",
+   "Joints & ligaments · Hidden · 349 structures · not loaded",
+   "Arteries · Hidden · 427 structures · not loaded",
+   "Veins · Hidden · 229 structures · not loaded",
+   "Heart · Hidden · 20 structures · not loaded",
+   "Nervous system & senses · Hidden · 580 structures · not loaded",
+   "Lymphatic system · Hidden · 158 structures · not loaded",
+   "Respiratory system · Hidden · 37 structures · not loaded",
+   "Digestive system · Hidden · 49 structures · not loaded",
+   "Urinary system · Hidden · 8 structures · not loaded",
+   "Reproductive system · Hidden · 14 structures · not loaded",
+   "Endocrine system · Hidden · 10 structures · not loaded"
+  ]
+ },
+ {
+  "type": "click",
+  "label": "Muscles off",
+  "selector": "[data-toggle=\"muscular\"]",
+  "rect": [
+   18,
+   474,
+   14,
+   14
+  ],
+  "row": [
+   18,
+   466,
+   263,
+   30
+  ],
+  "beforeUi": "u_002.png",
+  "afterUi": "u_003.png",
+  "frames": [
+   "f00004.png"
+  ],
+  "titles": [
+   "Muscles & fascia · Hidden · 669 structures",
+   "Skeleton · Bones · 277 structures",
+   "Joints & ligaments · Hidden · 349 structures · not loaded",
+   "Arteries · Hidden · 427 structures · not loaded",
+   "Veins · Hidden · 229 structures · not loaded",
+   "Heart · Hidden · 20 structures · not loaded",
+   "Nervous system & senses · Hidden · 580 structures · not loaded",
+   "Lymphatic system · Hidden · 158 structures · not loaded",
+   "Respiratory system · Hidden · 37 structures · not loaded",
+   "Digestive system · Hidden · 49 structures · not loaded",
+   "Urinary system · Hidden · 8 structures · not loaded",
+   "Reproductive system · Hidden · 14 structures · not loaded",
+   "Endocrine system · Hidden · 10 structures · not loaded"
+  ]
+ },
+ {
+  "type": "motion",
+  "label": "skeleton-rot",
+  "kind": "drag",
+  "frames": [
+   "f00005.png",
+   "f00006.png",
+   "f00007.png",
+   "f00008.png",
+   "f00009.png",
+   "f00010.png",
+   "f00011.png",
+   "f00012.png",
+   "f00013.png",
+   "f00014.png",
+   "f00015.png",
+   "f00016.png",
+   "f00017.png",
+   "f00018.png",
+   "f00019.png",
+   "f00020.png",
+   "f00021.png",
+   "f00022.png",
+   "f00023.png",
+   "f00024.png",
+   "f00025.png",
+   "f00026.png",
+   "f00027.png",
+   "f00028.png",
+   "f00029.png",
+   "f00030.png",
+   "f00031.png",
+   "f00032.png",
+   "f00033.png",
+   "f00034.png",
+   "f00035.png",
+   "f00036.png",
+   "f00037.png",
+   "f00038.png",
+   "f00039.png",
+   "f00040.png",
+   "f00041.png",
+   "f00042.png",
+   "f00043.png",
+   "f00044.png",
+   "f00045.png",
+   "f00046.png",
+   "f00047.png",
+   "f00048.png",
+   "f00049.png",
+   "f00050.png",
+   "f00051.png",
+   "f00052.png",
+   "f00053.png",
+   "f00054.png",
+   "f00055.png",
+   "f00056.png",
+   "f00057.png",
+   "f00058.png",
+   "f00059.png",
+   "f00060.png",
+   "f00061.png",
+   "f00062.png",
+   "f00063.png",
+   "f00064.png",
+   "f00065.png",
+   "f00066.png",
+   "f00067.png",
+   "f00068.png",
+   "f00069.png",
+   "f00070.png",
+   "f00071.png",
+   "f00072.png",
+   "f00073.png",
+   "f00074.png",
+   "f00075.png",
+   "f00076.png",
+   "f00077.png",
+   "f00078.png",
+   "f00079.png",
+   "f00080.png",
+   "f00081.png",
+   "f00082.png",
+   "f00083.png",
+   "f00084.png",
+   "f00085.png",
+   "f00086.png",
+   "f00087.png",
+   "f00088.png",
+   "f00089.png",
+   "f00090.png",
+   "f00091.png",
+   "f00092.png",
+   "f00093.png",
+   "f00094.png",
+   "f00095.png",
+   "f00096.png",
+   "f00097.png",
+   "f00098.png",
+   "f00099.png",
+   "f00100.png",
+   "f00101.png",
+   "f00102.png",
+   "f00103.png",
+   "f00104.png"
+  ],
+  "ui": "u_004.png",
+  "totalX": 700,
+  "totalY": 0,
+  "cursor": {
+   "x": 682,
+   "y": 1213.68
+  }
+ },
+ {
+  "type": "end"
+ }
+]
