@@ -1,74 +1,111 @@
-# MEDCOEL
+> **Featured project.** A browser-based 3D atlas that makes more than 2,800 anatomical structures explorable without installing specialist software.
 
-Web belajar gratis berbasis komunitas untuk mahasiswa kedokteran (medcoel.com).
-Dibangun dari PRD MEDCOEL Draf 2 (21 Oktober 2026), dengan web lama
-PCV Classroom (repo `kons`) sebagai rujukan teknis.
+# 3D Anatomy
 
-Stack sama dengan web lama supaya panduan VPS-nya tetap berlaku:
-**React (Vite) + Tailwind**, **PocketBase 0.40.5** (database, aturan akses, hook
-server), dan **Caddy** di satu VPS.
+An interactive 3D atlas of human anatomy: 2827 structures across seven systems,
+built on the [Z-Anatomy](https://www.z-anatomy.com/) dataset and rendered in the
+browser with three.js.
 
-## Isi repositori
+Live: <https://nqwrc.github.io/3d-anatomy/>
 
-```
-apps/web/          tampilan (React)
-apps/pocketbase/
-  pb_migrations/   skema, aturan akses, data awal (kampus, mata kuliah)
-  pb_hooks/        endpoint /api/medcoel/*, tugas terjadwal, logika server
-  pb_hooks/lib/    format soal, penilaian (port dari web lama), Google Drive, dll
-  test/            tes format impor dan tes API per peran
-  scripts/         unduh PocketBase, data contoh pengembangan
-deploy/            Caddyfile, systemd, skrip pasang/update/backup
-tools/             alat bantu: lab-ingest (dataset Lab), materi-import (dokumen catatan -> catatan materi per BAB)
-docs/              panduan dan kontrak (lihat daftar di bawah)
-```
+## Running it
 
-## Menjalankan di laptop
-
-Butuh Node.js 22.
+Node 22.12 or newer (see `.nvmrc`).
 
 ```bash
-npm run setup                          # npm install + unduh PocketBase (versi di apps/pocketbase/.pocketbase-version)
-cd apps/pocketbase
-./pocketbase migrate up --dir=./pb_data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks
-./pocketbase superuser upsert kamu@contoh.test passwordpanjang --dir=./pb_data
-cd ../..
-npm run dev                            # web :3000, PocketBase :8090 (mode pengembangan)
+npm ci        # postinstall copies the Draco decoder into public/draco/
+npm run dev   # http://localhost:3000
+npm test      # unit tests for the pure logic
+npm run lint  # zero errors is the standard; console warnings are tolerated
+npm run build # writes dist/, about 21 MB
 ```
 
-Isi data contoh (akun admin + pengguna dengan password acak, dan 37 soal Anatomi):
+`npm ci` is deliberate: `package.json` and the lockfile are kept in sync, and
+the lockfile is the source of truth for the stack that has actually been tested.
+
+## How the models work
+
+The seven `.glb` files in `public/models/` are exported from the Z-Anatomy
+Blender file, which is **not** in this repository — it is 630 MB and lives in
+`assets-src/` (gitignored). Download it from the Z-Anatomy site if you need to
+regenerate the models.
+
+Three conventions matter:
+
+**`za_name` carries identity.** The glTF exporter rewrites object names — spaces
+become underscores, dots vanish — and paired structures share their mesh data,
+so `Femur.l` and `Femur.r` would collapse onto the same name. Every exported
+object therefore carries its exact Z-Anatomy name in a custom property, written
+into the glTF as `extras.za_name`. The application registers structures by that
+value; nothing else is a stable id.
+
+**The graph is flattened at load.** 868 structures are children of another
+structure in the source, and three.js propagates `visible` down the subtree, so
+hiding a parent used to hide unrelated children. `loadModel.js` detaches nested
+structures to the model root (preserving the world transform) and records the
+containment relation separately, which is what the details panel shows.
+
+**Materials are shared.** The seven GLBs ship 65 materials (47 unique names)
+for thousands of meshes. The loader keeps that sharing and clones a material
+only when a single mesh is modified, restoring the shared reference afterwards.
+
+### Regenerating the models
+
+Objects whose name ends in `.j` or `.g` are Z-Anatomy's text labels and are
+skipped; so are meshes with one polygon or fewer, which are muscle insertion
+markers. Select the collection for one system, then export GLB with
+`export_extras=True` (for `za_name`), `export_apply=True` and Draco compression.
+Deselect object by object rather than with `select_all(action='DESELECT')`:
+the operator skips hidden objects, and a leftover selection silently ends up in
+the next file.
+
+Then run the optimiser, which also rewrites `systems.json` from what actually
+survived, so the index can never list a structure the models do not contain:
 
 ```bash
-cd apps/pocketbase
-PB_SU_EMAIL=kamu@contoh.test PB_SU_PASSWORD=passwordpanjang node scripts/seed-dev.mjs
+node tools/optimise-models.mjs
 ```
 
-Di mode pengembangan (`MEDCOEL_DEV_MODE=1`, otomatis lewat `npm run dev`):
-email belum perlu diatur (kode verifikasi tampil di layar dan di log),
-captcha dilewati, dan file tersimpan lokal bila Google Drive belum diatur.
+### Regenerating the lexicon
 
-## Tes
+Latin names and definitions ship inside the Blender file: a `Translations` text
+block and one text block per structure, sourced from Wikipedia.
 
 ```bash
-npm test                               # tes konten kaya (web) + format impor (server)
-cd apps/pocketbase && npm run test:api # tes API per peran, butuh server dev berjalan dengan data kosong
+blender --background assets-src/Z-Anatomy/Startup.blend --python tools/export-lexicon.py
 ```
 
-Tes API memeriksa dengan akun pengunjung, pengguna kampus A, pengguna kampus B,
-admin, dan agen: naik peran ditolak, data orang lain tidak terbaca, soal
-terbatas kampus ditegakkan di server, kunci jawaban tidak terkirim sebelum
-waktunya, alur pengajuan sampai impor Hermes, pengumuman, jadwal, dan
-penonaktifan akun.
+This writes `public/data/lexicon.json` (Latin names, non-official-terminology
+flags) and `public/data/definitions.json` (definitions truncated to roughly 600
+characters, with a link to the full article in the UI).
 
-## Dokumen
+## What may live in public/
 
-| Dokumen | Isi |
-|---|---|
-| [docs/KEPUTUSAN.md](docs/KEPUTUSAN.md) | Jawaban sementara untuk semua bagian **[ISI]** di PRD, dan cara mengubahnya |
-| [docs/DEPLOY.md](docs/DEPLOY.md) | Pasang di VPS, SMTP, akun admin dan agen, backup |
-| [docs/GOOGLE_DRIVE.md](docs/GOOGLE_DRIVE.md) | Menyambungkan Google Drive admin untuk PDF dan foto bukti |
-| [docs/HERMES_AGENT.md](docs/HERMES_AGENT.md) | Kontrak API untuk Hermes Agent |
-| [docs/FORMAT_SOAL.md](docs/FORMAT_SOAL.md) | Format JSON soal dan blok konten kaya (untuk skill konverter) |
-| [docs/CATATAN_MATERI.md](docs/CATATAN_MATERI.md) | Catatan materi per BAB ("Belajar materi"): format, konverter dari Google Docs/Word, impor ke server |
-| [docs/LAB_BACKGROUND_JOBS.md](docs/LAB_BACKGROUND_JOBS.md) | Worker akuisisi OCT, pemulihan job, keamanan, dan langkah deployment |
-| [docs/AUDIT_DEPENDENSI.md](docs/AUDIT_DEPENDENSI.md) | Hasil npm audit: mana yang runtime, mana yang build, dan alasan sisa temuan |
+Only what should be served verbatim: the models, the upstream license notice
+they ship with (`public/models/License.txt`, required by LICENSE/NOTICE), the
+JSON data, the Draco decoder, the favicon. Anything Vite should process — the
+stylesheet, the fonts —
+belongs in `src/`, so it gets a content hash and cannot be served stale from a
+browser cache. `public/` once held 900 MB of Blender sources and every build
+copied them into `dist/`.
+
+## Deployment
+
+GitHub Actions builds and publishes to GitHub Pages on every push to `master`;
+the workflow runs `npm ci`, `npm run lint` and `npm run build`, and the lint step
+is blocking.
+
+The site is served from a sub-path, so asset URLs are built from
+`import.meta.env.BASE_URL` through `src/utils/paths.js`. Setting `base` in
+`vite.config.js` alone would not rewrite string literals passed to `fetch()` or
+to the loaders.
+
+## Licence
+
+The anatomical models are derived from BodyParts3D (CC BY-SA 2.1 Japan) and
+Z-Anatomy (CC BY-SA 4.0), and definitions come from Wikipedia (CC BY-SA 3.0 /
+GFDL). Two components are non-commercial — the inner ear (CC BY-NC-SA 4.0) and
+the kidney (CC BY-NC 4.0) — so the work as distributed is **CC BY-NC-SA 4.0**:
+attribution and share-alike are required and commercial use is not permitted.
+Removing those two structures would allow the remainder to be redistributed
+under CC BY-SA 4.0. See `LICENSE` and `NOTICE`.

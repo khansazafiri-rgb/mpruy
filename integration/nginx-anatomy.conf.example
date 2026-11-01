@@ -1,0 +1,15 @@
+# Review-only snippet inside the EXISTING MEDCOEL server block.
+# Separate static release; do not replace the main SPA location or API locations.
+# Place the reviewed dist under /srv/medcoel-anatomy/releases/RELEASE_ID.
+# Then point /srv/medcoel-anatomy/current to that release as a deployment step.
+location = /anatomy/viewer { return 308 /anatomy/viewer/; }
+location ^~ /anatomy/viewer/ {
+    alias /srv/medcoel-anatomy/current/;
+    index index.html;
+    add_header X-Content-Type-Options nosniff always;
+    # No SPA fallback here: missing model/JS must be a 404, never main index.html.
+}
+# /anatomy is handled by the existing main SPA fallback, then RequireAuth.
+# This controls the page route only. Public static model URLs are NOT private.
+# If model access must be restricted, add a validated SERVER-side auth gate
+# before enabling this location; do not treat a React guard as asset security.
