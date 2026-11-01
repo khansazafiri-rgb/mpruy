@@ -66,8 +66,8 @@ export const ease = (t) => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
 
 // Lengan: bahu tetap, pergelangan (wx, wy), siku (ex, ey) = titik yang dilewati lengan, jari (0..1 panjang
 // telunjuk, fa = arah jari dalam derajat SVG, -90 = lurus ke atas), front (1 = digambar di depan badan).
-const ARM_DOWN_L = { wx: 86, wy: 556, ex: 88, ey: 488, finger: 0, fa: -90, front: 0 };
-const ARM_DOWN_R = { wx: 314, wy: 556, ex: 312, ey: 488, finger: 0, fa: -90, front: 0 };
+const ARM_DOWN_L = { wx: 86, wy: 556, ex: 88, ey: 488, finger: 0, fa: -90, front: 0, hold: 0, holdRot: 0 };
+const ARM_DOWN_R = { wx: 314, wy: 556, ex: 312, ey: 488, finger: 0, fa: -90, front: 0, hold: 0, holdRot: 0 };
 
 /** Keadaan netral. Semua nilai angka supaya bisa diinterpolasi. */
 export const NEUTRAL = {
@@ -292,7 +292,19 @@ function armSvg(side, a, P, blood = 0) {
   const c = mix(P.sweater, P.sleeveFront, a.front);
   return `<g class="raka-arm-${side}" fill="${c}">`
     + dots.map((p) => `<circle cx="${r1(p[0])}" cy="${r1(p[1])}" r="${r1(p[2])}"/>`).join('')
+    + holdSvg(a, hx, hy, side)
     + `<circle cx="${r1(hx)}" cy="${r1(hy)}" r="22" fill="${P.skin}"/>${finger}${bloodArm(blood, hx, hy, dx, dy, side)}</g>`;
+}
+// benda yang dipegang tangan (a.hold: 0 = tidak ada, 1 = cangkir kopi). Cangkir digambar DI BELAKANG telapak (tangan menggenggam sisinya),
+// holdRot memiringkan cangkir (derajat; negatif = bibir cangkir condong ke wajah saat minum). Bernilai 0 -> tidak menggambar apa-apa.
+function holdSvg(a, hx, hy, side) {
+  const k = clamp(a.hold || 0, 0, 1); if (k < 0.02) return '';
+  const sx = side === 'L' ? -1 : 1;
+  return `<g transform="translate(${r1(hx)} ${r1(hy)}) scale(${sx} 1) rotate(${r1((a.holdRot || 0) * sx)}) scale(${r1(k * 1000) / 1000})" class="raka-mug">`
+    + `<path d="M40 -22Q74 -22 74 4Q74 30 40 30" fill="none" stroke="#F4EBD8" stroke-width="12" stroke-linecap="round"/>`
+    + `<rect x="-22" y="-52" width="68" height="76" rx="14" fill="#F4EBD8"/><rect x="-22" y="-52" width="68" height="76" rx="14" fill="#E4D6BC" opacity=".5" clip-path="inset(0 0 0 58px)"/>`
+    + `<ellipse cx="12" cy="-50" rx="31" ry="8" fill="#6B4A33"/>`
+    + `<rect x="-22" y="-14" width="68" height="10" fill="#1D7B75" opacity=".9"/></g>`;
 }
 // bercak darah di lengan baju dan punggung tangan: gumpalan kecil tak beraturan, dipasang relatif terhadap arah lengan bawah
 function bloodArm(k, hx, hy, dx, dy, side) {
