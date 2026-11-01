@@ -151,6 +151,19 @@ rakaSvg(raka('netral', 'pov_perut', { blood: 1 }), { shadow: false }).replace('v
 
 Tes `berbaring (rebah)` menjaga bahwa kepala menumpuk pada pangkal leher, sepatu dan lengan berada di dalam kanvas, dan semua grup SVG seimbang. SVG statisnya: `svg/raka-berbaring-pingsan.svg`, `raka-berbaring-bingung.svg`, `raka-berbaring-sadar.svg`, `raka-darurat.svg` (berdiri, bingung, berdarah), dan `raka-pov-perut.svg`.
 
+## Memegang cangkir kopi
+
+Untuk video "Kenapa kopi bikin kita nggak ngantuk?". Lengan punya dua angka tambahan: `hold` (0 = kosong, 1 = cangkir kopi; nilai di antaranya mengecilkan cangkir, jadi bisa diinterpolasi) dan `holdRot` (derajat; negatif = bibir cangkir condong ke wajah). Cangkir digambar **di belakang telapak**, jadi tangan menggenggam sisinya dan tetap menyatu dengan lengan. Bernilai 0 menghasilkan gambar yang sama persis dengan sebelumnya.
+
+```js
+// minum: pergelangan di depan dagu, cangkir miring ke wajah
+raka('netral', null, { blink: 1, happyEyes: 0.5, armR: { wx: 262, wy: 338, ex: 336, ey: 420, finger: 0, fa: -90, front: 1, hold: 1, holdRot: -24 } });
+// memegang cangkir di depan dada
+raka('lega', null, { armR: { wx: 300, wy: 470, ex: 340, ey: 520, finger: 0, fa: -90, front: 1, hold: 1, holdRot: -4 } });
+```
+
+Duduk di balik meja: gambar Raka pada skala 1,3 dengan pinggang (y = 580 koordinat Raka) tepat di tepi meja (lihat `video/kopi-kafein-adenosin/stage/world.js`, `rakaDesk()`). Ekspresi mengantuk memakai `blink` 0,6, `bags` 1, `slump` 1, dan `tilt` negatif.
+
 ## Animasi
 
 Karena keadaan hanya angka, animasi = menginterpolasi dua keadaan lalu menggambar ulang:

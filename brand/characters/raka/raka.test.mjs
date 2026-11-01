@@ -206,3 +206,15 @@ test('ekspresi pingsan dan bingung: mata tertutup penuh dan setengah', () => {
   assert.ok(raka('bingung').blink > 0.3 && raka('bingung').blink < 0.6);
   assert.ok(POSES.berbaring && POSES.pov_perut);
 });
+
+test('memegang cangkir: hold = 0 tidak menggambar apa-apa (gambar lama identik); hold = 1 menambah cangkir di belakang telapak', () => {
+  assert.equal(raka('netral').armR.hold, 0);
+  assert.doesNotMatch(rakaSvg(raka('netral')), /raka-mug/);
+  const st = raka('netral', null, { armR: { wx: 262, wy: 338, ex: 336, ey: 420, finger: 0, fa: -90, front: 1, hold: 1, holdRot: -24 } });
+  const svg = rakaSvg(st);
+  assert.match(svg, /raka-mug/);
+  assert.ok(svg.indexOf('raka-mug') < svg.indexOf('r="22" fill="#F7BC8E"', svg.indexOf('raka-arm-R')), 'cangkir digambar sebelum telapak sehingga tangan menggenggam sisinya');
+  assert.doesNotMatch(svg, /NaN/);
+  const mid = lerpState(raka('netral'), st, 0.5);
+  assert.ok(mid.armR.hold > 0 && mid.armR.hold < 1);
+});
