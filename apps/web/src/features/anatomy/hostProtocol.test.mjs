@@ -1,4 +1,5 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';
+import {URL} from 'node:url';
 import {acceptsAtlasMessage,ANATOMY_VIEWER_PATH} from './hostProtocol.mjs';
 test('same-origin atlas protocol rejects foreign frames, origins and unknown messages',()=>{
  const frame={},origin='https://medcoel.example';const event={origin,source:frame,data:{type:'medcoel:anatomy-ready',version:1}};
