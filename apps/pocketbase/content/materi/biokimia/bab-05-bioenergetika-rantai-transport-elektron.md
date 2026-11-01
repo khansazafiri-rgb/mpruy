@@ -518,13 +518,13 @@ Bioenergetika mempelajari perubahan energi dalam reaksi biokimia. Reaksi eksergo
 
 - [Peta Besar Bab] Pada Bioenergetika & Rantai Transport Elektron, apa inti babnya? :: Energi kimia → redoks → electron transport chain → proton gradient → ATP synthase → ATP.
 - [Hukum Termodinamika I] Apa yang dimaksud dengan Contoh sederhana pada Hukum Termodinamika I? :: Energi kimia glukosa → ATP → kerja mekanik / transport ion / impuls listrik / panas.
-- [Coupling Reaction] Jelaskan Contoh paling penting dalam konteks Coupling Reaction. :: Hidrolisis ATP → energi dilepas → digunakan untuk sintesis biomolekul atau transport aktif.
+- [Coupling Reaction] Jelaskan Contoh paling penting dalam konteks Coupling Reaction (Bioenergetika & Rantai Transport Elektron). :: Hidrolisis ATP → energi dilepas → digunakan untuk sintesis biomolekul atau transport aktif.
 - [ATP sebagai Mata Uang Energi] Apa yang dimaksud dengan Hidrolisis pada ATP sebagai Mata Uang Energi? :: ATP + H₂O → ADP + Pi
-- [Dasar Reaksi Redoks] Jelaskan: Keduanya selalu terjadi berpasangan. :: Jika satu molekul teroksidasi, molekul lain harus direduksi.
+- [Dasar Reaksi Redoks] Jelaskan: Keduanya selalu terjadi berpasangan pada Dasar Reaksi Redoks (Bioenergetika & Rantai Transport Elektron). :: Jika satu molekul teroksidasi, molekul lain harus direduksi.
 - [Rantai Respirasi: Gambaran Umum] Pada Rantai Respirasi: Gambaran Umum, apa alur utamanya? :: NADH/FADH₂ → Kompleks I atau II → Koenzim Q → Kompleks III → sitokrom c → Kompleks IV → O₂ → H₂O.
-- [Glycerol-3-Phosphate Shuttle] Pada Glycerol-3-Phosphate Shuttle, apa konsekuensinya? :: Hasil energinya setara dengan jalur FADH₂, sekitar 1,5 ATP per NADH sitosolik.
-- [Malate-Aspartate Shuttle] Pada Malate-Aspartate Shuttle, apa konsekuensinya? :: Hasil energinya setara NADH mitokondrial, sekitar 2,5 ATP per NADH sitosolik.
-- [Enzim Oksidoreduktase] Sebutkan kelompok pada Enzim Oksidoreduktase. :: • Oxidases
+- [Glycerol-3-Phosphate Shuttle] Pada Glycerol-3-Phosphate Shuttle, apa konsekuensinya (Bioenergetika & Rantai Transport Elektron)? :: Hasil energinya setara dengan jalur FADH₂, sekitar 1,5 ATP per NADH sitosolik.
+- [Malate-Aspartate Shuttle] Pada Malate-Aspartate Shuttle, apa konsekuensinya (Bioenergetika & Rantai Transport Elektron)? :: Hasil energinya setara NADH mitokondrial, sekitar 2,5 ATP per NADH sitosolik.
+- [Enzim Oksidoreduktase] Sebutkan kelompok pada Enzim Oksidoreduktase (Bioenergetika & Rantai Transport Elektron). :: • Oxidases
   • Dehydrogenases
   • Hydroperoxidases
   • Oxygenases
@@ -532,12 +532,12 @@ Bioenergetika mempelajari perubahan energi dalam reaksi biokimia. Reaksi eksergo
   • Ruang antarmembran
   • Membran dalam dan cristae
   • Matriks
-- [Kompleks yang Memompa Proton] Sebutkan hal-hal penting tentang Kompleks yang memompa H⁺. :: • Kompleks I
+- [Kompleks yang Memompa Proton] Sebutkan hal-hal penting tentang Kompleks yang memompa H⁺ pada Kompleks yang Memompa Proton. :: • Kompleks I
   • Kompleks III
   • Kompleks IV
 - [Shuttle NADH Sitosolik] Sebutkan dua sistem utama pada Shuttle NADH Sitosolik. :: • Glycerol-3-phosphate shuttle
   • Malate-aspartate shuttle
-- [Respiratory Control] Sebutkan faktor penting pada Respiratory Control. :: • Ketersediaan ADP dan Pi
+- [Respiratory Control] Sebutkan faktor penting pada Respiratory Control (Bioenergetika & Rantai Transport Elektron). :: • Ketersediaan ADP dan Pi
   • Ketersediaan NADH/FADH₂
   • Ketersediaan O₂
   • Integritas membran dalam
@@ -545,8 +545,8 @@ Bioenergetika mempelajari perubahan energi dalam reaksi biokimia. Reaksi eksergo
 - [Inhibitor Kompleks I] Sebutkan contoh inhibitor pada Inhibitor Kompleks I. :: • Rotenone
   • Amobarbital
   • Piericidin A
-- [Uncoupler] Sebutkan contoh pada materi pada Uncoupler. :: • 2,4-dinitrophenol (DNP)
+- [Uncoupler] Sebutkan contoh pada materi pada Uncoupler (Bioenergetika & Rantai Transport Elektron). :: • 2,4-dinitrophenol (DNP)
   • Thermogenin/UCP1
   • Dinitrocresol
   • Pentachlorophenol
-- [Kompleks II] Apa poin high-yield (pearl) tentang Kompleks II? :: Kompleks II tidak memompa proton.
+- [Kompleks II] Apa poin high-yield (pearl) tentang Kompleks II (Bioenergetika & Rantai Transport Elektron)? :: Kompleks II tidak memompa proton.

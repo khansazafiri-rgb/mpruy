@@ -328,31 +328,31 @@ Brachial artery injury dapat mengancam perfusi forearm/hand. Volkmann ischemic c
 
 ## Flashcard {kartu}
 
-- [Quadrangular Space] Pada Quadrangular Space, apa batas umumnya? :: Superior teres minor, inferior teres major, medial long head triceps, lateral surgical neck humerus. Isinya adalah axillary nerve dan posterior circumflex humeral artery. Karena itu, fracture surgical neck humerus dapat mencederai keduanya.
-- [Cubital Fossa] Jelaskan Batas umum cubital fossa. :: Superior garis antara epicondyles; medial pronator teres; lateral brachioradialis. Floor terutama brachialis dan supinator. Roof mencakup skin, superficial fascia, deep fascia, median cubital vein, dan bicipital aponeurosis.
-- [Anatomi Ekstremitas Atas] Apa jawaban atau kesimpulan untuk petunjuk berikut: Long thoracic nerve berada superficial pada serratus anterior; injury? :: Winged scapula
+- [Quadrangular Space] Pada Quadrangular Space, apa batas umumnya (Anatomi Ekstremitas Atas)? :: Superior teres minor, inferior teres major, medial long head triceps, lateral surgical neck humerus. Isinya adalah axillary nerve dan posterior circumflex humeral artery. Karena itu, fracture surgical neck humerus dapat mencederai keduanya.
+- [Cubital Fossa] Jelaskan Batas umum cubital fossa (Anatomi Ekstremitas Atas). :: Superior garis antara epicondyles; medial pronator teres; lateral brachioradialis. Floor terutama brachialis dan supinator. Roof mencakup skin, superficial fascia, deep fascia, median cubital vein, dan bicipital aponeurosis.
+- [Anatomi Ekstremitas Atas] Apa jawaban atau kesimpulan untuk petunjuk berikut: Long thoracic nerve berada superficial pada serratus anterior; injury pada Anatomi Ekstremitas Atas? :: Winged scapula
 - [Anatomi Ekstremitas Atas] Apa yang dimaksud dengan SITS pada Anatomi Ekstremitas Atas? :: Supraspinatus, infraspinatus, teres minor, subscapularis
 - [Anatomi Ekstremitas Atas] Apa yang dimaksud dengan Brachial plexus pada Anatomi Ekstremitas Atas? :: C5–T1 → roots, trunks, divisions, cords, branches
 - [Anatomi Ekstremitas Atas] Apa yang perlu diketahui tentang Cubital fossa pada Anatomi Ekstremitas Atas? :: Tendon–artery–median nerve; radial nerve berada lebih lateral
 - [Anatomi Ekstremitas Atas] Apa yang dimaksud dengan Anatomical snuffbox floor pada Anatomi Ekstremitas Atas? :: Scaphoid + trapezium; radial artery melintas
 - [Anatomi Ekstremitas Atas] Apa yang dimaksud dengan Recurrent branch median nerve pada Anatomi Ekstremitas Atas? :: Motor thenar branch; jangan disamakan dengan palmar cutaneous branch
-- [Anatomi Ekstremitas Atas] Apa yang dimaksud dengan Shoulder abduction 0–15/15–90/>90? :: Simplifikasi fungsional, bukan batas absolut
-- [Brachial Plexus] Sebutkan terminal branches utama pada Brachial Plexus. :: • Musculocutaneous nerve — lateral cord
+- [Anatomi Ekstremitas Atas] Apa yang dimaksud dengan Shoulder abduction 0–15/15–90/>90 pada Anatomi Ekstremitas Atas? :: Simplifikasi fungsional, bukan batas absolut
+- [Brachial Plexus] Sebutkan terminal branches utama pada Brachial Plexus (Anatomi Ekstremitas Atas). :: • Musculocutaneous nerve — lateral cord
   • Median nerve — kontribusi lateral dan medial cords
   • Ulnar nerve — medial cord
   • Axillary nerve — posterior cord
   • Radial nerve — posterior cord
-- Jelaskan peta Besar Ekstremitas Atas dan Compartment Logic. :: Ekstremitas atas dirancang terutama untuk mobilitas dan positioning tangan.
-- Jelaskan pectoral Region. :: Pectoralis major memiliki clavicular head dan sternocostal head.
-- Jelaskan scapular Region dan Scapular Spaces. :: Posterior shoulder mencakup trapezius, deltoid, supraspinatus, infraspinatus, teres minor, teres major, dan long head triceps.
-- Jelaskan shoulder Complex. :: Shoulder complex mencakup sternoclavicular, acromioclavicular, dan glenohumeral joints serta scapulothoracic articulation fungsional. Glenohumeral joint adalah synovial ball-and-socket joint dengan mobility besar namun stability osseous relatif kecil karena glenoid fossa dangkal. Glenoid labrum memperdalam socket.
-- Apa yang dimaksud dengan Axilla? :: Axilla merupakan ruang pyramidal antara thoracic wall dan upper limb yang berfungsi sebagai distribution center neurovascular dan lymphatic.
-- Jelaskan brachial Plexus. :: Brachial plexus terutama berasal dari anterior rami C5–T1. Organisasi klasik adalah Roots → Trunks → Divisions → Cords → Branches.
-- Apa yang dimaksud dengan Arm? :: Deep brachial fascia dan medial/lateral intermuscular septa membagi arm menjadi anterior dan posterior compartments.
-- Jelaskan elbow dan Cubital Fossa. :: Elbow complex mencakup humeroulnar, humeroradial, dan proximal radioulnar articulations. Flexion-extension terutama pada humeroulnar/humeroradial joints; pronation-supination melibatkan proximal dan distal radioulnar joints.
-- Jelaskan forearm Anterior: Flexor–Pronator Compartment. :: Mayoritas otot anterior berasal dari common flexor origin pada medial epicondyle dan dipersarafi median nerve.
-- Apa yang dimaksud dengan Wrist? :: Carpal bones dari lateral ke medial: Proximal row — scaphoid, lunate, triquetrum, pisiform.
-- Apa yang dimaksud dengan Hand? :: Palmar aponeurosis menstabilkan skin palm dan melindungi struktur lebih dalam. Flexor tendons berjalan dalam synovial sheaths. FDS berinsersi pada middle phalanges setelah membelah untuk memberi jalan FDP; FDP menuju distal phalanges. Extensor expansion mengintegrasikan tendon extensor dengan lumbricals dan interossei.
-- Jelaskan anatomical Snuffbox. :: Batas lateral/anterior dibentuk tendons abductor pollicis longus dan extensor pollicis brevis; batas medial/posterior oleh extensor pollicis longus. Floor terutama scaphoid dan trapezium. Radial artery melintasi floor.
-- Jelaskan cutaneous Innervation dan Dermatomes. :: Peripheral nerve territories tidak sama dengan dermatomes.
-- Jelaskan integrated Peripheral Nerve Lesion Map. :: Risk: surgical neck fracture, inferior shoulder dislocation. Motor: deltoid dan teres minor. Defisit: abduction terutama setelah fase awal, flattened shoulder contour pada denervation berat. Sensory: superior lateral arm.
+- Jelaskan peta Besar Ekstremitas Atas dan Compartment Logic (Anatomi Ekstremitas Atas). :: Ekstremitas atas dirancang terutama untuk mobilitas dan positioning tangan.
+- Jelaskan pectoral Region (Anatomi Ekstremitas Atas). :: Pectoralis major memiliki clavicular head dan sternocostal head.
+- Jelaskan scapular Region dan Scapular Spaces (Anatomi Ekstremitas Atas). :: Posterior shoulder mencakup trapezius, deltoid, supraspinatus, infraspinatus, teres minor, teres major, dan long head triceps.
+- Jelaskan shoulder Complex (Anatomi Ekstremitas Atas). :: Shoulder complex mencakup sternoclavicular, acromioclavicular, dan glenohumeral joints serta scapulothoracic articulation fungsional. Glenohumeral joint adalah synovial ball-and-socket joint dengan mobility besar namun stability osseous relatif kecil karena glenoid fossa dangkal. Glenoid labrum memperdalam socket.
+- Apa yang dimaksud dengan Axilla (Anatomi Ekstremitas Atas)? :: Axilla merupakan ruang pyramidal antara thoracic wall dan upper limb yang berfungsi sebagai distribution center neurovascular dan lymphatic.
+- Jelaskan brachial Plexus (Anatomi Ekstremitas Atas). :: Brachial plexus terutama berasal dari anterior rami C5–T1. Organisasi klasik adalah Roots → Trunks → Divisions → Cords → Branches.
+- Apa yang dimaksud dengan Arm (Anatomi Ekstremitas Atas)? :: Deep brachial fascia dan medial/lateral intermuscular septa membagi arm menjadi anterior dan posterior compartments.
+- Jelaskan elbow dan Cubital Fossa (Anatomi Ekstremitas Atas). :: Elbow complex mencakup humeroulnar, humeroradial, dan proximal radioulnar articulations. Flexion-extension terutama pada humeroulnar/humeroradial joints; pronation-supination melibatkan proximal dan distal radioulnar joints.
+- Jelaskan forearm Anterior: Flexor–Pronator Compartment (Anatomi Ekstremitas Atas). :: Mayoritas otot anterior berasal dari common flexor origin pada medial epicondyle dan dipersarafi median nerve.
+- Apa yang dimaksud dengan Wrist (Anatomi Ekstremitas Atas)? :: Carpal bones dari lateral ke medial: Proximal row — scaphoid, lunate, triquetrum, pisiform.
+- Apa yang dimaksud dengan Hand (Anatomi Ekstremitas Atas)? :: Palmar aponeurosis menstabilkan skin palm dan melindungi struktur lebih dalam. Flexor tendons berjalan dalam synovial sheaths. FDS berinsersi pada middle phalanges setelah membelah untuk memberi jalan FDP; FDP menuju distal phalanges. Extensor expansion mengintegrasikan tendon extensor dengan lumbricals dan interossei.
+- Jelaskan anatomical Snuffbox (Anatomi Ekstremitas Atas). :: Batas lateral/anterior dibentuk tendons abductor pollicis longus dan extensor pollicis brevis; batas medial/posterior oleh extensor pollicis longus. Floor terutama scaphoid dan trapezium. Radial artery melintasi floor.
+- Jelaskan cutaneous Innervation dan Dermatomes (Anatomi Ekstremitas Atas). :: Peripheral nerve territories tidak sama dengan dermatomes.
+- Jelaskan integrated Peripheral Nerve Lesion Map (Anatomi Ekstremitas Atas). :: Risk: surgical neck fracture, inferior shoulder dislocation. Motor: deltoid dan teres minor. Defisit: abduction terutama setelah fase awal, flattened shoulder contour pada denervation berat. Sensory: superior lateral arm.

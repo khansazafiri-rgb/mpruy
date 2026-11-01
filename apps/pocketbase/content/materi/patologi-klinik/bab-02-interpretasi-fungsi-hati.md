@@ -722,7 +722,7 @@ Baca panel hati dengan urutan AST/ALT → ALP/GGT → bilirubin total/direct →
 - [Interpretasi Fungsi Hati] Apa yang dimaksud dengan R factor ≤2 pada Interpretasi Fungsi Hati? :: Cholestatic
 - [Interpretasi Fungsi Hati] Apa yang perlu diingat tentang Hemolysis pada Interpretasi Fungsi Hati? :: Indirect bilirubin ↑ + LDH ↑ + haptoglobin ↓ + reticulocyte ↑
 - [Interpretasi Fungsi Hati] Apa yang perlu diingat tentang Gilbert syndrome pada Interpretasi Fungsi Hati? :: Isolated mild unconjugated hyperbilirubinemia dengan enzim hati normal
-- [Interpretasi Fungsi Hati] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pale stool + pruritus + direct bilirubin ↑? :: Pikirkan cholestasis/obstruction
+- [Interpretasi Fungsi Hati] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pale stool + pruritus + direct bilirubin ↑ pada Interpretasi Fungsi Hati? :: Pikirkan cholestasis/obstruction
 - [Langkah Pertama — Tentukan Pola, Bukan Satu Angka] Sebutkan urutan atau langkah pada Langkah Pertama — Tentukan Pola, Bukan Satu Angka? :: • Lihat AST dan ALT
   • Lihat ALP
   • Bandingkan derajat kenaikan AST/ALT dengan ALP
@@ -737,16 +737,16 @@ Baca panel hati dengan urutan AST/ALT → ALP/GGT → bilirubin total/direct →
 - [R Factor — Cara Formal Membedakan Pola] Sebutkan interpretasi umum pada R Factor — Cara Formal Membedakan Pola. :: • R ≥5 → hepatocellular pattern
   • R ≤2 → cholestatic pattern
   • R >2 dan <5 → mixed pattern
-- [Unconjugated vs Conjugated Bilirubin] Sebutkan hal-hal penting tentang Unconjugated / indirect bilirubin. :: • Belum larut air
+- [Unconjugated vs Conjugated Bilirubin] Sebutkan hal-hal penting tentang Unconjugated / indirect bilirubin pada Unconjugated vs Conjugated Bilirubin. :: • Belum larut air
   • Berikatan dengan albumin
   • Tidak diekskresikan ke urin
-- [Hyperbilirubinemia Terkonjugasi] Sebutkan penyebab utama pada Hyperbilirubinemia Terkonjugasi. :: • Hepatocellular dysfunction
+- [Hyperbilirubinemia Terkonjugasi] Sebutkan penyebab utama pada Hyperbilirubinemia Terkonjugasi (Interpretasi Fungsi Hati). :: • Hepatocellular dysfunction
   • Impaired canalicular secretion
   • Intrahepatic cholestasis
   • Extrahepatic obstruction
   • Dubin–Johnson syndrome
   • Rotor syndrome
-- [Urine Bilirubin dan Urobilinogen] Sebutkan hal-hal penting tentang Complete biliary obstruction. :: • Urine bilirubin positif
+- [Urine Bilirubin dan Urobilinogen] Sebutkan hal-hal penting tentang Complete biliary obstruction pada Urine Bilirubin dan Urobilinogen. :: • Urine bilirubin positif
   • Urobilinogen dapat sangat rendah/absen
 - [Total Protein dan Globulin] Sebutkan perubahan penting pada Total Protein dan Globulin. :: • Albumin rendah → chronic liver disease, nephrotic syndrome, malnutrition, dll
   • Globulin dapat meningkat pada chronic inflammatory liver disease

@@ -597,10 +597,10 @@ Secara konseptual:
 - [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang dimaksud dengan Glycerol dari adipose pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Substrate gluconeogenesis
 - [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang dimaksud dengan Lactate dan alanine pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Substrate gluconeogenesis penting
 - [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang dimaksud dengan Fasting state pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Insulin rendah/glucagon relatif tinggi → glycogenolysis, gluconeogenesis, lipolysis, β-oxidation
-- [Fed State / Absorptive State] Sebutkan hal-hal penting tentang Keadaan hormonal. :: • Insulin ↑
+- [Fed State / Absorptive State] Sebutkan hal-hal penting tentang Keadaan hormonal pada Fed State / Absorptive State (Biokimia Integrasi Metabolisme (Puasa vs Kenyang)). :: • Insulin ↑
   • Glucagon ↓
   • Rasio insulin/glucagon ↑
-- [Liver pada Fed State] Sebutkan hal-hal penting tentang Nasib glucose di liver. :: • Glucose → glucose-6-phosphate melalui glucokinase
+- [Liver pada Fed State] Sebutkan hal-hal penting tentang Nasib glucose di liver pada Liver pada Fed State. :: • Glucose → glucose-6-phosphate melalui glucokinase
   • G6P → glycogen melalui glycogenesis
   • G6P → pyruvate melalui glycolysis
   • Pyruvate → acetyl-CoA melalui pyruvate dehydrogenase
@@ -616,7 +616,7 @@ Secara konseptual:
   • Adipose lipolysis → free fatty acids + glycerol
   • Β-oxidation liver → ATP dan acetyl-CoA
   • Ketogenesis meningkat bila fasting berlanjut
-- [Glycogenolysis dan Batas Simpanan Glycogen] Sebutkan hal-hal penting tentang Hormonal control. :: • Glucagon → Gs → adenylyl cyclase → cAMP → PKA
+- [Glycogenolysis dan Batas Simpanan Glycogen] Sebutkan hal-hal penting tentang Hormonal control pada Glycogenolysis dan Batas Simpanan Glycogen (Biokimia Integrasi Metabolisme (Puasa vs Kenyang)). :: • Glucagon → Gs → adenylyl cyclase → cAMP → PKA
   • PKA mengaktifkan phosphorylase kinase
   • Phosphorylase kinase mengaktifkan glycogen phosphorylase
   • Glycogen synthase terinaktivasi melalui phosphorylation
@@ -634,13 +634,13 @@ Secara konseptual:
   • Cardiac muscle
   • Renal cortex
   • Brain pada prolonged fasting
-- [Skeletal Muscle pada Fasting dan Starvation] Sebutkan hal-hal penting tentang Early fasting. :: • Fatty acid oxidation ↑
+- [Skeletal Muscle pada Fasting dan Starvation] Sebutkan hal-hal penting tentang Early fasting pada Skeletal Muscle pada Fasting dan Starvation (Biokimia Integrasi Metabolisme (Puasa vs Kenyang)). :: • Fatty acid oxidation ↑
   • Ketone utilization dapat meningkat
   • Proteolysis menghasilkan alanine dan glutamine untuk gluconeogenesis
 - [Insulin: Sinyal “Energi Tersedia”] Sebutkan mekanisme reseptor pada Insulin: Sinyal “Energi Tersedia”. :: • Insulin receptor = receptor tyrosine kinase
   • IRS → PI3K → Akt adalah salah satu signaling axis penting
   • Akt mendorong GLUT4 translocation dan anabolic signaling
-- [Fed vs Fasted: Enzim yang Perlu Diingat] Sebutkan hal-hal penting tentang Fed / insulin. :: • Glycogen synthase aktif
+- [Fed vs Fasted: Enzim yang Perlu Diingat] Sebutkan hal-hal penting tentang Fed / insulin pada Fed vs Fasted: Enzim yang Perlu Diingat. :: • Glycogen synthase aktif
   • ACC aktif
   • HMG-CoA reductase aktif
   • PFK-2 hepatic cenderung menghasilkan F2,6BP → PFK-1 aktif
@@ -652,5 +652,5 @@ Secara konseptual:
 - [Adipose Tissue Saat Fasting: Lipolysis] Apa jebakan yang sering muncul pada soal tentang Adipose Tissue Saat Fasting: Lipolysis? :: Free fatty acid tidak beredar bebas tanpa carrier; mayoritas dibawa oleh albumin.
 - [Ketone Bodies sebagai Bahan Bakar] Apa poin high-yield (pearl) tentang Ketone Bodies sebagai Bahan Bakar? :: Liver = produsen ketone bodies, bukan konsumen.
 - [Perubahan Brain pada Prolonged Fasting] Apa jebakan yang sering muncul pada soal tentang Perubahan Brain pada Prolonged Fasting? :: RBC tetap membutuhkan glucose sepanjang waktu karena tidak memiliki mitochondria.
-- [Cori Cycle] Apa jebakan yang sering muncul pada soal tentang Cori Cycle? :: Cori cycle memindahkan beban energi dari peripheral tissue ke liver. Liver menggunakan ATP untuk gluconeogenesis agar jaringan anaerob tetap memperoleh glucose.
+- [Cori Cycle] Apa jebakan yang sering muncul pada soal tentang Cori Cycle (Biokimia Integrasi Metabolisme (Puasa vs Kenyang))? :: Cori cycle memindahkan beban energi dari peripheral tissue ke liver. Liver menggunakan ATP untuk gluconeogenesis agar jaringan anaerob tetap memperoleh glucose.
 - [Glucagon: Sinyal “Pertahankan Glucose Darah”] Apa poin high-yield (pearl) tentang Glucagon: Sinyal “Pertahankan Glucose Darah”? :: Glucagon memiliki efek metabolik utama di liver; skeletal muscle tidak memiliki respons glucagon klasik yang bermakna seperti liver.

@@ -385,7 +385,7 @@ Jika melihat vessel:
 
 ## Flashcard {kartu}
 
-- [Endothelium sebagai Jaringan Aktif] Jelaskan Histologisnya tetap sederhana dalam konteks Endothelium sebagai Jaringan Aktif. :: Satu lapis flattened cells dengan nuclei memanjang menonjol sedikit ke lumen.
+- [Endothelium sebagai Jaringan Aktif] Pada Endothelium sebagai Jaringan Aktif, apa histologisnya tetap sederhananya? :: Satu lapis flattened cells dengan nuclei memanjang menonjol sedikit ke lumen.
 - [Histologi Sistem Kardiovaskular] Apa yang dimaksud dengan Purkinje pada Histologi Sistem Kardiovaskular? :: Large pale glycogen-rich modified cardiomyocytes di subendocardium
 - [Histologi Sistem Kardiovaskular] Apa yang perlu diketahui tentang Vessel wall pada Histologi Sistem Kardiovaskular? :: Intima = endothelium; media = smooth muscle ± elastic tissue; adventitia = fibroelastic CT ± vasa/nervi vasorum
 - [Histologi Sistem Kardiovaskular] Apa yang dimaksud dengan Elastic artery pada Histologi Sistem Kardiovaskular? :: Many elastic lamellae in media
@@ -394,7 +394,7 @@ Jika melihat vessel:
 - [Histologi Sistem Kardiovaskular] Apa yang dimaksud dengan Capillary pada Histologi Sistem Kardiovaskular? :: Endothelium + basal lamina ± pericyte
 - [Histologi Sistem Kardiovaskular] Apa yang dimaksud dengan Vein pada Histologi Sistem Kardiovaskular? :: Large irregular lumen + thin media + relatively thick adventitia
 - [Histologi Sistem Kardiovaskular] Apa yang perlu diketahui tentang Capillary types pada Histologi Sistem Kardiovaskular? :: Continuous = continuous endothelium/basal lamina; fenestrated = endothelial pores, basal lamina continuous; sinusoidal = wide irregular lumen + discontinuous endothelial/basal-lamina barrier
-- [Intercalated Discs] Sebutkan komponen utama pada Intercalated Discs. :: • Fascia adherens — menambatkan actin terminal
+- [Intercalated Discs] Sebutkan komponen utama pada Intercalated Discs (Histologi Sistem Kardiovaskular). :: • Fascia adherens — menambatkan actin terminal
   • Desmosomes — memberi mechanical adhesion
   • Gap junctions — memungkinkan electrical coupling
 - [Purkinje Fibers dan Subendocardial Layer] Sebutkan ciri histologis pada Purkinje Fibers dan Subendocardial Layer. :: • Lebih besar daripada working cardiomyocytes
@@ -402,30 +402,30 @@ Jika melihat vessel:
   • Myofibrils lebih sedikit dan terutama di perifer
   • Nucleus sentral
   • Terletak terutama pada subendocardial connective tissue
-- [Cardiac Skeleton] Sebutkan fungsi anatomi-histologis pada Cardiac Skeleton. :: • Memberi attachment bagi cardiac muscle
+- [Cardiac Skeleton] Sebutkan fungsi anatomi-histologis pada Cardiac Skeleton (Histologi Sistem Kardiovaskular). :: • Memberi attachment bagi cardiac muscle
   • Menopang valves
   • Mempertahankan bentuk orifices
   • Menjadi electrical insulation antara atrial dan ventricular myocardium, sehingga konduksi normal harus melewati AV conduction system
-- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan hal-hal penting tentang Tunica intima. :: • Endothelium
+- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan hal-hal penting tentang Tunica intima pada Prinsip Umum Dinding Pembuluh Darah (Histologi Sistem Kardiovaskular). :: • Endothelium
   • Basal lamina
   • Subendothelial connective tissue
   • Internal elastic lamina dapat menonjol pada muscular arteries
-- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan hal-hal penting tentang Tunica media. :: • Terutama smooth muscle arranged circumferentially
+- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan hal-hal penting tentang Tunica media pada Prinsip Umum Dinding Pembuluh Darah (Histologi Sistem Kardiovaskular). :: • Terutama smooth muscle arranged circumferentially
   • Jumlah smooth muscle dan elastic material berbeda menurut jenis vessel
-- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan hal-hal penting tentang Tunica adventitia/externa. :: • Connective tissue terutama collagen dan elastic fibers
+- [Prinsip Umum Dinding Pembuluh Darah] Sebutkan hal-hal penting tentang Tunica adventitia/externa pada Prinsip Umum Dinding Pembuluh Darah (Histologi Sistem Kardiovaskular). :: • Connective tissue terutama collagen dan elastic fibers
   • Dapat mengandung vasa vasorum dan nervi vasorum pada vessel besar
-- [Arterioles] Sebutkan ciri histologis pada Arterioles. :: • Lumen kecil
+- [Arterioles] Sebutkan ciri histologis pada Arterioles (Histologi Sistem Kardiovaskular). :: • Lumen kecil
   • Intima sangat tipis
   • Tunica media hanya sekitar 1–2 lapisan smooth muscle pada arterioles kecil dan beberapa lapis pada arterioles lebih besar
   • Adventitia tipis
-- [Capillaries: Struktur Umum] Sebutkan hal-hal penting tentang Dindingnya terutama. :: • Satu lapis endothelial cells
+- [Capillaries: Struktur Umum] Sebutkan dindingnya terutama pada Capillaries: Struktur Umum. :: • Satu lapis endothelial cells
   • Basal lamina
   • Pericytes pada sisi abluminal di banyak lokasi
-- [Continuous Capillaries] Sebutkan lokasi penting pada Continuous Capillaries. :: • Skeletal dan cardiac muscle
+- [Continuous Capillaries] Sebutkan lokasi penting pada Continuous Capillaries (Histologi Sistem Kardiovaskular). :: • Skeletal dan cardiac muscle
   • Lung
   • Connective tissue
   • CNS, dengan tight junction yang sangat ketat sebagai bagian blood–brain barrier
-- [Fenestrated Capillaries] Sebutkan lokasi klasik pada Fenestrated Capillaries. :: • Endocrine glands
+- [Fenestrated Capillaries] Sebutkan lokasi klasik pada Fenestrated Capillaries (Histologi Sistem Kardiovaskular). :: • Endocrine glands
   • Intestinal mucosa
   • Kidney glomeruli, dengan caveat bahwa glomerular endothelial fenestrae khas tidak memiliki diaphragm seperti banyak fenestrated capillaries lain
 - [Endothelium sebagai Jaringan Aktif] Sebutkan fungsi penting pada Endothelium sebagai Jaringan Aktif. :: • Mengatur permeability
@@ -437,9 +437,9 @@ Jika melihat vessel:
 - [Pericardium dan Epicardium] Apa clue praktikum untuk Pericardium dan Epicardium? :: Epicardium sering dikenali sebagai mesothelium tipis dengan loose connective tissue/adipose tissue dan coronary vessels di bawahnya.
 - [Pericardium dan Epicardium] Apa korelasi klinis dari Pericardium dan Epicardium? :: Pericardial effusion yang berlebihan dapat meningkatkan tekanan intrapericardial dan menyebabkan cardiac tamponade.
 - [Purkinje Fibers dan Subendocardial Layer] Apa poin high-yield (pearl) tentang Purkinje Fibers dan Subendocardial Layer? :: Jangan menyebut SA node atau AV node sebagai Purkinje fibers. Purkinje fibers adalah bagian distal sistem konduksi ventricular.
-- [Arterioles] Apa clue praktikum untuk Arterioles? :: Jika vessel sangat kecil tetapi memiliki satu atau beberapa continuous rings of smooth muscle around the lumen, pikirkan arteriole, bukan capillary.
-- [Fenestrated Capillaries] Apa poin high-yield (pearl) tentang Fenestrated Capillaries? :: “fenestrated” mengacu pada endothelium, bukan berarti basal lamina ikut terputus.
-- [Venules] Apa clue praktikum untuk Venules? :: Postcapillary venule dapat tampak seperti capillary yang lebih lebar, dengan lumen relatif besar dibanding ketebalan dinding.
-- [Veins] Apa clue praktikum untuk Veins? :: Lumen kolaps + media tipis + adventitia relatif tebal adalah kombinasi clue kuat untuk vein.
+- [Arterioles] Apa clue praktikum untuk Arterioles (Histologi Sistem Kardiovaskular)? :: Jika vessel sangat kecil tetapi memiliki satu atau beberapa continuous rings of smooth muscle around the lumen, pikirkan arteriole, bukan capillary.
+- [Fenestrated Capillaries] Apa poin high-yield (pearl) tentang Fenestrated Capillaries (Histologi Sistem Kardiovaskular)? :: “fenestrated” mengacu pada endothelium, bukan berarti basal lamina ikut terputus.
+- [Venules] Apa clue praktikum untuk Venules (Histologi Sistem Kardiovaskular)? :: Postcapillary venule dapat tampak seperti capillary yang lebih lebar, dengan lumen relatif besar dibanding ketebalan dinding.
+- [Veins] Apa clue praktikum untuk Veins (Histologi Sistem Kardiovaskular)? :: Lumen kolaps + media tipis + adventitia relatif tebal adalah kombinasi clue kuat untuk vein.
 - [Artery versus Vein: Cara Cepat] Apa jebakan yang sering muncul pada soal tentang Artery versus Vein: Cara Cepat? :: Jangan mengidentifikasi hanya berdasarkan ada/tidaknya erythrocytes karena keduanya dapat mengandung darah atau tampak kosong akibat processing.
 - [Microcirculation dan Lymphatic Contrast] Apa poin high-yield (pearl) tentang Microcirculation dan Lymphatic Contrast? :: Keberadaan erythrocytes sangat membantu mengenali blood capillary tetapi ketiadaannya tidak selalu membuktikan bahwa struktur adalah lymphatic.

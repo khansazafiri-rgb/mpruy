@@ -332,7 +332,7 @@ Jika melihat parasympathetic pathway:
 - [Thoracic Splanchnic Nerves dan Prevertebral Ganglia] Sebutkan tiga kelompok utama pada Thoracic Splanchnic Nerves dan Prevertebral Ganglia. :: • Greater splanchnic nerve: terutama T5–T9 → dominan menuju celiac ganglia
   • Lesser splanchnic nerve: terutama T10–T11 → aorticorenal/superior mesenteric region
   • Least splanchnic nerve: terutama T12 → renal plexus
-- [Parasympathetic Division: Craniosacral Outflow] Sebutkan hal-hal penting tentang Cranial parasympathetic pathways. :: • CN III → ciliary ganglion → sphincter pupillae dan ciliary muscle
+- [Parasympathetic Division: Craniosacral Outflow] Sebutkan hal-hal penting tentang Cranial parasympathetic pathways pada Parasympathetic Division: Craniosacral Outflow. :: • CN III → ciliary ganglion → sphincter pupillae dan ciliary muscle
   • CN VII → pterygopalatine ganglion dan submandibular ganglion → lacrimal, nasal, palatal, submandibular, dan sublingual glands
   • CN IX → otic ganglion → parotid gland
   • CN X → thoracic dan sebagian besar abdominal viscera sampai kira-kira proximal two-thirds transverse colon
@@ -342,4 +342,4 @@ Jika melihat parasympathetic pathway:
 - [Sympathetic Trunk dan Paravertebral Ganglia] Apa korelasi klinis dari Sympathetic Trunk dan Paravertebral Ganglia? :: Gangguan sympathetic pathway ke kepala dapat menyebabkan Horner syndrome: ptosis ringan, miosis, dan anhidrosis ipsilateral; enophthalmos tampak semu dapat menyertai.
 - [White dan Gray Rami Communicantes] Apa poin high-yield (pearl) tentang White dan Gray Rami Communicantes? :: White ramus = preganglionic → menuju trunk → hanya T1–L2. Gray ramus = postganglionic → kembali ke spinal nerve → semua level.
 - [Pelvic Splanchnic Nerves dan Inferior Hypogastric Plexus] Apa korelasi klinis dari Pelvic Splanchnic Nerves dan Inferior Hypogastric Plexus? :: Kerusakan pelvic autonomic plexus dapat menyebabkan bladder dysfunction, bowel dysfunction, dan sexual dysfunction.
-- [Autonomic Supply dan Sexual Function] Mnemonic konseptual yang sering dipakai: apa isi atau ringkasannya? :: “point = parasympathetic, shoot = sympathetic,” tetapi pemahaman anatomi plexus dan jalur serabut tetap lebih penting daripada mnemonic.
+- [Autonomic Supply dan Sexual Function] Mnemonic konseptual yang sering dipakai: apa isi atau ringkasannya pada Autonomic Supply dan Sexual Function? :: “point = parasympathetic, shoot = sympathetic,” tetapi pemahaman anatomi plexus dan jalur serabut tetap lebih penting daripada mnemonic.

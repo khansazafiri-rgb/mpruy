@@ -445,8 +445,8 @@ Jika variabel yang terganggu adalah volume/osmolality: perubahan ECF → osmorec
 - [Tonicity: Shortcut Ujian] Apa yang dimaksud dengan Hypertonic pada Tonicity: Shortcut Ujian? :: ECF volume ↑; ICF volume ↓; osmolality ↑.
 - [Tonicity: Shortcut Ujian] Apa yang dimaksud dengan Hypotonic pada Tonicity: Shortcut Ujian? :: ECF volume ↑; ICF volume ↑; osmolality ↓.
 - [Termoregulasi: Tujuan Utama] Apa yang dimaksud dengan Keseimbangan panas pada Termoregulasi: Tujuan Utama? :: Heat production = heat loss → suhu stabil.
-- [Fever vs Hyperthermia] Jelaskan Fever. :: Hypothalamic set point meningkat, biasanya dipicu pyrogens melalui mediator seperti prostaglandin E2.
-- [Fever vs Hyperthermia] Jelaskan Hyperthermia. :: Set point tidak meningkat; produksi/masuknya panas melebihi kemampuan heat loss.
+- [Fever vs Hyperthermia] Jelaskan Fever pada Fever vs Hyperthermia (Fisiologi Cairan Tubuh & Elektrolit). :: Hypothalamic set point meningkat, biasanya dipicu pyrogens melalui mediator seperti prostaglandin E2.
+- [Fever vs Hyperthermia] Jelaskan Hyperthermia pada Fever vs Hyperthermia (Fisiologi Cairan Tubuh & Elektrolit). :: Set point tidak meningkat; produksi/masuknya panas melebihi kemampuan heat loss.
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Homeostasis pada Fisiologi Cairan Tubuh & Elektrolit? :: Dynamic regulation dalam physiological range
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Negative feedback pada Fisiologi Cairan Tubuh & Elektrolit? :: Melawan perubahan awal
 - [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Positive feedback pada Fisiologi Cairan Tubuh & Elektrolit? :: Memperkuat perubahan sampai endpoint
@@ -469,10 +469,10 @@ Jika variabel yang terganggu adalah volume/osmolality: perubahan ECF → osmorec
   • Adult female: rata-rata lebih rendah, sering sekitar 50–55%
   • Bayi: persentase lebih tinggi
   • Obesitas dan usia lanjut: persentase TBW cenderung lebih rendah karena jaringan adiposa mengandung lebih sedikit air
-- [Komposisi Ion ICF dan ECF] Sebutkan hal-hal penting tentang ECF dominan. :: • Na+
+- [Komposisi Ion ICF dan ECF] Sebutkan hal-hal penting tentang ECF dominan pada Komposisi Ion ICF dan ECF (Fisiologi Cairan Tubuh & Elektrolit). :: • Na+
   • Cl−
   • HCO3−
-- [Komposisi Ion ICF dan ECF] Sebutkan hal-hal penting tentang ICF dominan. :: • K+
+- [Komposisi Ion ICF dan ECF] Sebutkan hal-hal penting tentang ICF dominan pada Komposisi Ion ICF dan ECF (Fisiologi Cairan Tubuh & Elektrolit). :: • K+
   • Mg2+
   • Phosphate
   • Protein bermuatan negatif
@@ -480,16 +480,16 @@ Jika variabel yang terganggu adalah volume/osmolality: perubahan ECF → osmorec
   • Plasma colloid osmotic/oncotic pressure menarik air ke arah plasma
   • Interstitial hydrostatic dan oncotic pressures ikut memodulasi arah filtrasi
   • Lymphatic drainage mengembalikan excess interstitial fluid dan protein ke sirkulasi
-- [Tekanan Onkotik] Sebutkan contoh penyebab pada Tekanan Onkotik. :: • Gangguan sintesis albumin
+- [Tekanan Onkotik] Sebutkan contoh penyebab pada Tekanan Onkotik (Fisiologi Cairan Tubuh & Elektrolit). :: • Gangguan sintesis albumin
   • Kehilangan protein melalui ginjal
   • Malnutrisi berat
-- [Dehidrasi dan Perdarahan] Sebutkan hal-hal penting tentang Respons kompensasi. :: • Simpatis ↑
+- [Dehidrasi dan Perdarahan] Sebutkan hal-hal penting tentang Respons kompensasi pada Dehidrasi dan Perdarahan (Fisiologi Cairan Tubuh & Elektrolit). :: • Simpatis ↑
   • Heart rate ↑
   • Vasoconstriction ↑
   • RAAS ↑
   • ADH ↑
   • Rasa haus ↑
-- [Produksi Panas] Sebutkan sumber panas utama pada Produksi Panas. :: • Basal metabolism
+- [Produksi Panas] Sebutkan sumber panas utama pada Produksi Panas (Fisiologi Cairan Tubuh & Elektrolit). :: • Basal metabolism
   • Aktivitas otot
   • Shivering
   • Efek hormon, terutama thyroid hormone

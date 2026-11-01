@@ -230,16 +230,16 @@ Pola 8 — Central Nystagmus
 
 ## Flashcard {kartu}
 
-- [Anatomi Singkat & Lokalisasi Lesi] Bagaimana alur vestibular dapat diringkas? :: Labirin → nervus vestibularis → nuklei vestibularis → koneksi ke traktus vestibulospinal, cerebellum flocculonodular, nukleus okulomotor melalui medial longitudinal fasciculus, formatio reticularis, dan korteks.
+- [Anatomi Singkat & Lokalisasi Lesi] Bagaimana alur vestibular dapat diringkas pada Anatomi Singkat & Lokalisasi Lesi (Vertigo Perifer & Sentral)? :: Labirin → nervus vestibularis → nuklei vestibularis → koneksi ke traktus vestibulospinal, cerebellum flocculonodular, nukleus okulomotor melalui medial longitudinal fasciculus, formatio reticularis, dan korteks.
 - [Anatomi Singkat & Lokalisasi Lesi] Apa yang dimaksud dengan Vertigo perifer pada Anatomi Singkat & Lokalisasi Lesi? :: Lesi labirin dan/atau nervus vestibularis.
 - [Anatomi Singkat & Lokalisasi Lesi] Apa yang dimaksud dengan Vertigo sentral pada Anatomi Singkat & Lokalisasi Lesi? :: Lesi mulai nukleus vestibularis hingga jalur sentral/korteks.
 - [Anatomi Singkat & Lokalisasi Lesi] Jelaskan Penyebab perifer utama dalam konteks Anatomi Singkat & Lokalisasi Lesi. :: BPPV, Ménière, labirinitis, dan neuritis vestibular. Penyebab sentral: stroke vertebrobasilar/posterior circulation, tumor fossa posterior, trauma fossa posterior, dan lesi sentral lain.
 - [Benign Paroxysmal Positional Vertigo (BPPV)] Pada Benign Paroxysmal Positional Vertigo, apa tata laksananya? :: Canalith repositioning, terutama Epley maneuver. Manuver lain: Semont, Yocovino, Lampert, dan latihan Brandt–Daroff sesuai kanal/konteks.
-- [Labirinitis] Apa yang dimaksud dengan Pembeda penting pada Labirinitis? :: Vertigo akut + gejala pendengaran membuat labirinitis atau gangguan kokleovestibular lain lebih sesuai dibanding pure vestibular neuritis.
+- [Labirinitis] Apa yang dimaksud dengan Pembeda penting pada Labirinitis (Vertigo Perifer & Sentral)? :: Vertigo akut + gejala pendengaran membuat labirinitis atau gangguan kokleovestibular lain lebih sesuai dibanding pure vestibular neuritis.
 - [Vertigo Sentral & Red Flags] Jelaskan Penyebab sentral penting dalam konteks Vertigo Sentral & Red Flags. :: Stroke posterior/vertebrobasilar, tumor fossa posterior, trauma, multiple sclerosis, dan lesi sentral lain.
 - [Nistagmus, Head Impulse, dan HINTS] Apa yang dimaksud dengan Kerangka bedside pada Nistagmus, Head Impulse, dan HINTS? :: PERIFER — head impulse abnormal dengan catch-up saccade, nistagmus umumnya unidirectional, dan tidak ada tanda sentral lain.
 - [Nistagmus, Head Impulse, dan HINTS] Apa yang dimaksud dengan SAFETY UPDATE pada Nistagmus, Head Impulse, dan HINTS? :: GRACE-3 menyarankan HINTS pada acute vestibular syndrome dengan nistagmus hanya bila dilakukan oleh klinisi yang terlatih. HINTS bukan tes untuk semua pasien dizziness dan bukan pengganti Dix–Hallpike pada brief triggered positional vertigo. HINTS sentral atau equivocal → MRI/MRA.
-- [Prinsip Imaging] Apa yang dimaksud dengan Jangan terjebak pada Prinsip Imaging? :: CT kepala normal tidak otomatis menyingkirkan stroke posterior pada acute vestibular syndrome yang mencurigakan.
+- [Prinsip Imaging] Apa yang dimaksud dengan Jangan terjebak pada Prinsip Imaging (Vertigo Perifer & Sentral)? :: CT kepala normal tidak otomatis menyingkirkan stroke posterior pada acute vestibular syndrome yang mencurigakan.
 - [Vertigo Perifer & Sentral] Apa yang dimaksud dengan Vertigo pada Vertigo Perifer & Sentral? :: Persepsi gerakan yang salah
 - [Vertigo Perifer & Sentral] Apa yang dimaksud dengan BPPV pada Vertigo Perifer & Sentral? :: Vertigo singkat dipicu perubahan posisi kepala
 - [Vertigo Perifer & Sentral] Apa yang dimaksud dengan Epley pada Vertigo Perifer & Sentral? :: Reposisi utama posterior BPPV
@@ -254,15 +254,15 @@ Pola 8 — Central Nystagmus
 - [Vertigo Perifer & Sentral] Apa yang perlu diketahui tentang Ménière pada Vertigo Perifer & Sentral? :: 20 menit–12 jam + tinnitus/fullness + hearing loss fluktuatif
 - [Vertigo Perifer & Sentral] Apa yang perlu diketahui tentang Vestibular neuritis pada Vertigo Perifer & Sentral? :: Acute continuous vertigo + hearing normal + abnormal head impulse perifer
 - [Vertigo Perifer & Sentral] Apa yang perlu diketahui tentang Sentral pada Vertigo Perifer & Sentral? :: Diplopia/disartria/defisit fokal, severe ataxia, vertical atau direction-changing nystagmus
-- [Penyakit Ménière] Sebutkan kriteria definite pada Penyakit Ménière. :: • ≥2 episode vertigo 20 menit–12 jam
+- [Penyakit Ménière] Sebutkan kriteria definite pada Penyakit Ménière (Vertigo Perifer & Sentral). :: • ≥2 episode vertigo 20 menit–12 jam
   • Low-to-mid-frequency hearing loss pada audiometri
   • Gejala aural fluktuatif seperti tinnitus, fullness, atau hearing loss
   • Tidak lebih baik dijelaskan gangguan vestibular lain
-- [Vestibular Neuritis] Sebutkan pola tipikal pada Vestibular Neuritis. :: • Onset akut
+- [Vestibular Neuritis] Sebutkan pola tipikal pada Vestibular Neuritis (Vertigo Perifer & Sentral). :: • Onset akut
   • Vertigo kontinu selama berhari-hari
   • Mual/muntah dan gait imbalance
   • Hearing tetap normal pada pola tipikal
-- [Vertigo Sentral & Red Flags] Sebutkan hal-hal penting tentang Red flags sentral. :: • Diplopia
+- [Vertigo Sentral & Red Flags] Sebutkan hal-hal penting tentang Red flags sentral pada Vertigo Sentral & Red Flags. :: • Diplopia
   • Disartria
   • Defisit saraf kranial/fokal
   • Limb dysmetria
@@ -270,4 +270,4 @@ Pola 8 — Central Nystagmus
   • Nistagmus vertikal murni
   • Direction-changing gaze-evoked nystagmus
   • Head impulse normal pada acute vestibular syndrome dapat meningkatkan kecurigaan sentral
-- [Penyakit Ménière] Apa poin high-yield (pearl) tentang Penyakit Ménière? :: Vertigo 1–2 jam berulang + tinnitus + telinga penuh + hearing loss fluktuatif → pikirkan Ménière.
+- [Penyakit Ménière] Apa poin high-yield (pearl) tentang Penyakit Ménière (Vertigo Perifer & Sentral)? :: Vertigo 1–2 jam berulang + tinnitus + telinga penuh + hearing loss fluktuatif → pikirkan Ménière.

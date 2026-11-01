@@ -529,7 +529,7 @@ Penurunan kesadaran, abnormal pupil, posturing, atau tanda brain herniation meme
 
 ## Flashcard {kartu}
 
-- [Peningkatan Tekanan Intrakranial (ICP)] Pada Peningkatan Tekanan Intrakranial, apa mekanismenya? :: Massa intrakranial + edema + obstruksi CSF dapat meningkatkan volume intrakranial. Setelah mekanisme kompensasi terlampaui, ICP meningkat.
+- [Peningkatan Tekanan Intrakranial (ICP)] Pada Peningkatan Tekanan Intrakranial, apa mekanismenya (Tumor Sistem Saraf Pusat)? :: Massa intrakranial + edema + obstruksi CSF dapat meningkatkan volume intrakranial. Setelah mekanisme kompensasi terlampaui, ICP meningkat.
 - [Peningkatan Tekanan Intrakranial (ICP)] Apa yang dimaksud dengan Pungsi lumbal pada Peningkatan Tekanan Intrakranial? :: Pada pasien dengan dugaan space-occupying lesion, papiledema, penurunan kesadaran, atau defisit fokal, LP tidak boleh dilakukan secara rutin tanpa evaluasi yang sesuai karena perubahan gradien tekanan dapat meningkatkan risiko herniasi.
 - [Imaging: Apa yang Dipilih?] Apa yang dimaksud dengan Glioblastoma pada Imaging: Apa yang Dipilih? :: Heterogen, nekrosis, irregular ring enhancement, edema; dapat melintasi corpus callosum.
 - [Imaging: Apa yang Dipilih?] Apa yang dimaksud dengan Meningioma pada Imaging: Apa yang Dipilih? :: Extra-axial, broad dural attachment, enhancement kuat; dural tail mendukung diagnosis tetapi tidak patognomonik.
@@ -537,11 +537,11 @@ Penurunan kesadaran, abnormal pupil, posturing, atau tanda brain herniation meme
 - [Imaging: Apa yang Dipilih?] Jelaskan Low-grade diffuse glioma dalam konteks Imaging: Apa yang Dipilih?. :: Sering T2/FLAIR hyperintense dan minimal/non-enhancing.
 - [Imaging: Apa yang Dipilih?] Apa yang dimaksud dengan Pituitary macroadenoma pada Imaging: Apa yang Dipilih? :: Sellar/suprasellar mass.
 - [Tumor Sistem Saraf Pusat] Apa yang perlu diingat tentang Obstruksi CSF pada Tumor Sistem Saraf Pusat? :: Hydrocephalus
-- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pria 45 tahun, progressive unilateral hearing loss + tinnitus? :: Vestibular schwannoma/CPA lesion
-- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Anak dengan 4th ventricle mass dan hydrocephalus? :: Ependymoma
-- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dewasa dengan diffuse glioma IDH-mutant tanpa 1p/19q codeletion? :: Astrocytoma, IDH-mutant
-- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dewasa dengan diffuse high-grade glioma IDH-wildtype? :: Glioblastoma bila memenuhi integrated diagnostic criteria
-- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Brain tumor ditemukan insidental, pasien tidak pernah seizure? :: Jangan otomatis memberi antiseizure prophylaxis rutin
+- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pria 45 tahun, progressive unilateral hearing loss + tinnitus pada Tumor Sistem Saraf Pusat? :: Vestibular schwannoma/CPA lesion
+- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Anak dengan 4th ventricle mass dan hydrocephalus pada Tumor Sistem Saraf Pusat? :: Ependymoma
+- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dewasa dengan diffuse glioma IDH-mutant tanpa 1p/19q codeletion pada Tumor Sistem Saraf Pusat? :: Astrocytoma, IDH-mutant
+- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Dewasa dengan diffuse high-grade glioma IDH-wildtype pada Tumor Sistem Saraf Pusat? :: Glioblastoma bila memenuhi integrated diagnostic criteria
+- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Brain tumor ditemukan insidental, pasien tidak pernah seizure pada Tumor Sistem Saraf Pusat? :: Jangan otomatis memberi antiseizure prophylaxis rutin
 - [Tumor Sistem Saraf Pusat] Apa yang dimaksud dengan Papiledema pada Tumor Sistem Saraf Pusat? :: Tanda raised ICP sampai dibuktikan lain
 - [Tumor Sistem Saraf Pusat] Apa yang perlu diingat tentang Personality change pada Tumor Sistem Saraf Pusat? :: Frontal lobe clue
 - [Tumor Sistem Saraf Pusat] Apa yang perlu diingat tentang Neglect pada Tumor Sistem Saraf Pusat? :: Nondominant parietal
@@ -551,52 +551,52 @@ Penurunan kesadaran, abnormal pupil, posturing, atau tanda brain herniation meme
 - [Tumor Sistem Saraf Pusat] Apa yang dimaksud dengan Meningioma pada Tumor Sistem Saraf Pusat? :: Extra-axial + dural attachment
 - [Tumor Sistem Saraf Pusat] Apa yang dimaksud dengan Astrocytoma dewasa utama pada Tumor Sistem Saraf Pusat? :: IDH-mutant
 - [Tumor Sistem Saraf Pusat] Apa yang dimaksud dengan Glioblastoma adult-type pada Tumor Sistem Saraf Pusat? :: IDH-wildtype
-- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: 4th ventricle mass pada anak? :: Ependymoma high-yield
-- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Cyst + mural nodule cerebellum anak? :: Pilocytic astrocytoma
+- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: 4th ventricle mass pada anak pada Tumor Sistem Saraf Pusat? :: Ependymoma high-yield
+- [Tumor Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Cyst + mural nodule cerebellum anak pada Tumor Sistem Saraf Pusat? :: Pilocytic astrocytoma
 - [Tumor Sistem Saraf Pusat] Apa yang perlu diketahui tentang Lokalisasi dulu pada Tumor Sistem Saraf Pusat? :: Frontal, parietal, temporal, occipital, cerebellar, sellar/CPA, atau spinal
 - [Tumor Sistem Saraf Pusat] Apa yang dimaksud dengan Oligodendroglioma pada Tumor Sistem Saraf Pusat? :: IDH-mutant + 1p/19q-codeleted
 - [Tumor Sistem Saraf Pusat] Apa yang dimaksud dengan Astrocytoma adult-type pada Tumor Sistem Saraf Pusat? :: IDH-mutant
 - [Tumor Sistem Saraf Pusat] Apa yang perlu diingat tentang Anak: posterior fossa pada Tumor Sistem Saraf Pusat? :: Medulloblastoma / ependymoma / pilocytic astrocytoma
 - [Tumor Sistem Saraf Pusat] Apa yang perlu diingat tentang Papiledema/space-occupying lesion pada Tumor Sistem Saraf Pusat? :: Jangan LP sembarangan
-- [Imaging: Apa yang Dipilih?] Sebutkan hal-hal penting tentang CT kepala tetap berguna. :: • Situasi emergensi
+- [Imaging: Apa yang Dipilih?] Sebutkan hal-hal penting tentang CT kepala tetap berguna pada Imaging: Apa yang Dipilih?. :: • Situasi emergensi
   • Pasien tidak stabil
   • MRI tidak tersedia/kontraindikasi
   • Deteksi cepat perdarahan, hidrosefalus, calcification, atau mass effect
-- [Glioblastoma] Sebutkan ciri high-yield pada Glioblastoma. :: • Tumor primer otak ganas yang sangat agresif pada dewasa
+- [Glioblastoma] Sebutkan ciri high-yield pada Glioblastoma (Tumor Sistem Saraf Pusat). :: • Tumor primer otak ganas yang sangat agresif pada dewasa
   • Dalam WHO CNS5: glioblastoma adalah IDH-wildtype
   • MRI sering menunjukkan massa infiltratif heterogen dengan nekrosis dan irregular ring enhancement
   • Dapat melintasi corpus callosum → “butterfly” appearance
   • Ring enhancement bukan spesifik untuk GBM: metastasis, abses, demyelinating lesion, dan lesi lain dapat memberi pola serupa
-- [Meningioma] Sebutkan ciri klinis pada Meningioma. :: • Dapat insidental/asimtomatik
+- [Meningioma] Sebutkan ciri klinis pada Meningioma (Tumor Sistem Saraf Pusat). :: • Dapat insidental/asimtomatik
   • Gejala tergantung lokasi dan ukuran
   • Dapat menyebabkan seizure atau focal deficit
   • Skull-base meningioma dapat melibatkan cranial nerves
-- [Meningioma] Sebutkan ciri imaging pada Meningioma. :: • Extra-axial
+- [Meningioma] Sebutkan ciri imaging pada Meningioma (Tumor Sistem Saraf Pusat). :: • Extra-axial
   • Broad-based dural attachment
   • Enhancement kuat/homogen sering dijumpai
   • Dural tail dapat muncul
   • Hyperostosis tulang berdekatan dapat ditemukan
-- [Meningioma] Sebutkan prinsip terapi pada Meningioma. :: • Tumor kecil, insidental, asimtomatik dapat dipantau dengan serial imaging pada kasus terpilih
+- [Meningioma] Sebutkan prinsip terapi pada Meningioma (Tumor Sistem Saraf Pusat). :: • Tumor kecil, insidental, asimtomatik dapat dipantau dengan serial imaging pada kasus terpilih
   • Tumor simptomatik atau bertumbuh → surgery biasanya menjadi terapi utama bila feasible
   • Radiosurgery/fractionated radiotherapy digunakan pada kasus terpilih, termasuk residual, recurrent, atau lokasi yang sulit
-- [Intramedullary] Sebutkan hal-hal penting tentang Red flags cord compression. :: • Severe/progressive back pain
+- [Intramedullary] Sebutkan hal-hal penting tentang Red flags cord compression pada Intramedullary (Tumor Sistem Saraf Pusat). :: • Severe/progressive back pain
   • Radicular pain
   • Progressive limb weakness
   • Sensory level
   • Upper motor neuron signs di bawah lesi
   • Bladder/bowel dysfunction
   • Saddle symptoms tergantung level
-- [Pendekatan Diagnosis Langkah Demi Langkah] Sebutkan hal-hal penting tentang Apakah dominan. :: • Seizure?
+- [Pendekatan Diagnosis Langkah Demi Langkah] Sebutkan hal-hal penting tentang Apakah dominan pada Pendekatan Diagnosis Langkah Demi Langkah (Tumor Sistem Saraf Pusat). :: • Seizure?
   • Focal deficit?
   • Raised ICP?
   • Cognitive/behavior change?
   • Cranial neuropathy?
   • Spinal cord syndrome?
 - [Peningkatan Tekanan Intrakranial (ICP)] Apa jebakan yang sering muncul pada soal tentang Peningkatan Tekanan Intrakranial? :: “Morning headache” dapat terjadi, tetapi tidak cukup spesifik untuk menegakkan tumor otak.
-- [Glioblastoma, IDH-wildtype] Apa poin high-yield (pearl) tentang Glioblastoma, IDH-wildtype? :: IDH + 1p/19q = dua marker yang harus langsung teringat ketika soal menanyakan klasifikasi diffuse glioma pada dewasa.
-- [Meningioma] Apa jebakan yang sering muncul pada soal tentang Meningioma? :: “Meningioma = benign” terlalu simplistik. Banyak meningioma memang low grade, tetapi lokasi, ukuran, invasi, grade, dan recurrence menentukan morbiditas.
-- [Brain Metastases] Apa clue praktikum untuk Brain Metastases? :: Riwayat kanker. Multiple lesions. Lesi di gray–white junction. Vasogenic edema prominent. New seizure, focal deficit, headache, atau cognitive change.
-- [Pituitary macroadenoma] Apa clue praktikum untuk Pituitary macroadenoma? :: Bitemporal hemianopia. Headache. Endocrine symptoms. Pituitary hormone excess atau deficiency.
-- [Vestibular schwannoma] Apa clue praktikum untuk Vestibular schwannoma? :: Progressive unilateral sensorineural hearing loss. Tinnitus. Imbalance. Lesi besar dapat melibatkan CN V dan VII.
-- [Brainstem glioma] Apa poin high-yield (pearl) tentang Brainstem glioma? :: Anak + morning vomiting/progressive headache + ataxia = jangan otomatis gastroenteritis; pikir posterior fossa mass/hydrocephalus bila pola neurologis mendukung.
-- [Seizure] Apa jebakan yang sering muncul pada soal tentang Seizure? :: Pada pasien dengan newly diagnosed brain tumor yang BELUM pernah mengalami seizure, guideline SNO/EANO menyatakan antiseizure drug tidak diberikan rutin hanya sebagai prophylaxis untuk mencegah seizure.
+- [Glioblastoma, IDH-wildtype] Apa poin high-yield (pearl) tentang Glioblastoma, IDH-wildtype (Tumor Sistem Saraf Pusat)? :: IDH + 1p/19q = dua marker yang harus langsung teringat ketika soal menanyakan klasifikasi diffuse glioma pada dewasa.
+- [Meningioma] Apa jebakan yang sering muncul pada soal tentang Meningioma (Tumor Sistem Saraf Pusat)? :: “Meningioma = benign” terlalu simplistik. Banyak meningioma memang low grade, tetapi lokasi, ukuran, invasi, grade, dan recurrence menentukan morbiditas.
+- [Brain Metastases] Apa clue praktikum untuk Brain Metastases (Tumor Sistem Saraf Pusat)? :: Riwayat kanker. Multiple lesions. Lesi di gray–white junction. Vasogenic edema prominent. New seizure, focal deficit, headache, atau cognitive change.
+- [Pituitary macroadenoma] Apa clue praktikum untuk Pituitary macroadenoma (Tumor Sistem Saraf Pusat)? :: Bitemporal hemianopia. Headache. Endocrine symptoms. Pituitary hormone excess atau deficiency.
+- [Vestibular schwannoma] Apa clue praktikum untuk Vestibular schwannoma (Tumor Sistem Saraf Pusat)? :: Progressive unilateral sensorineural hearing loss. Tinnitus. Imbalance. Lesi besar dapat melibatkan CN V dan VII.
+- [Brainstem glioma] Apa poin high-yield (pearl) tentang Brainstem glioma (Tumor Sistem Saraf Pusat)? :: Anak + morning vomiting/progressive headache + ataxia = jangan otomatis gastroenteritis; pikir posterior fossa mass/hydrocephalus bila pola neurologis mendukung.
+- [Seizure] Apa jebakan yang sering muncul pada soal tentang Seizure (Tumor Sistem Saraf Pusat)? :: Pada pasien dengan newly diagnosed brain tumor yang BELUM pernah mengalami seizure, guideline SNO/EANO menyatakan antiseizure drug tidak diberikan rutin hanya sebagai prophylaxis untuk mencegah seizure.

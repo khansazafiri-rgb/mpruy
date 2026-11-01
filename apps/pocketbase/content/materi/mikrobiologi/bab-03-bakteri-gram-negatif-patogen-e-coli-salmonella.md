@@ -518,11 +518,11 @@ Gram-negative enteric rod → MacConkey → LF pink = E. coli → tentukan patho
 - [Common Exam Traps] Apa yang dimaksud dengan UPEC pada Common Exam Traps? :: Pili/capsule/endotoxin → UTI.
 - [Common Exam Traps] Apa yang dimaksud dengan Salmonella antigens pada Common Exam Traps? :: O = wall/somatic, H = flagellar, Vi = capsule.
 - [Common Exam Traps] Apa yang dimaksud dengan Shigella pada Common Exam Traps? :: Infectious dose sangat rendah.
-- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Undercooked burger + bloody diarrhea + HUS? :: EHEC/STEC
-- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Prolonged systemic fever + rose spots + gallbladder carrier? :: S. Typhi
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Undercooked burger + bloody diarrhea + HUS pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: EHEC/STEC
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Prolonged systemic fever + rose spots + gallbladder carrier pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: S. Typhi
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diketahui tentang Enterobacteria pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Gram-negative rods, facultative anaerobes, oxidase negative, ferment glucose
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang ETEC: LT↑cAMP, ST↑cGMP pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Watery traveler’s diarrhea
-- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: EPEC: attaching-effacing + intimin? :: Infantile diarrhea
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: EPEC: attaching-effacing + intimin pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Infantile diarrhea
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang EHEC/STEC: Shiga-like toxin pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Hemorrhagic colitis + HUS
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang EIEC: invasive pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Dysentery-like
 - [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang EAEC: aggregative fimbriae pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Persistent watery diarrhea
@@ -538,10 +538,10 @@ Gram-negative enteric rod → MacConkey → LF pink = E. coli → tentukan patho
   • Kerusakan endotel mikrovaskular, terutama usus dan ginjal, menjelaskan bloody diarrhea serta risiko HUS
 - [Salmonella — Identitas Dasar] Sebutkan pola kultur pada Salmonella — Identitas Dasar. :: • MacConkey → colorless/pale
   • SS/XLD → black center karena H₂S
-- [Antigen Salmonella: O, H, Vi] Sebutkan hal-hal penting tentang Tiga antigen. :: • O antigen = somatic/cell-wall antigen, heat-stable; dipakai dalam pengelompokan serologis
+- [Antigen Salmonella: O, H, Vi] Sebutkan hal-hal penting tentang Tiga antigen pada Antigen Salmonella: O, H, Vi (Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)). :: • O antigen = somatic/cell-wall antigen, heat-stable; dipakai dalam pengelompokan serologis
   • H antigen = flagellar antigen, lebih heat-labile; banyak Salmonella memiliki phase variation
   • Vi antigen = capsular virulence antigen, sangat terkait dengan S. Typhi dalam konteks ujian
-- [Salmonella Typhi — Enteric Fever] Sebutkan hal-hal penting tentang Salmonella enterica serovar Typhi. :: • Non-lactose fermenter
+- [Salmonella Typhi — Enteric Fever] Sebutkan hal-hal penting tentang Salmonella enterica serovar Typhi pada Salmonella Typhi — Enteric Fever. :: • Non-lactose fermenter
   • Motile
   • H₂S-producing pattern dapat terlihat pada media selective
   • Memiliki Vi antigen
@@ -551,7 +551,7 @@ Gram-negative enteric rod → MacConkey → LF pink = E. coli → tentukan patho
   • Dapat bertahan di macrophage
   • Menyebar melalui sistem limfatik dan reticuloendothelial tissues
   • Menimbulkan systemic enteric fever
-- [Dosis Infektif Shigella — Sangat Rendah] Sebutkan hal-hal penting tentang Poin. :: • Shigella sekitar 10² organisme → infectious dose sangat rendah
+- [Dosis Infektif Shigella — Sangat Rendah] Sebutkan hal-hal penting tentang Poin pada Dosis Infektif Shigella — Sangat Rendah (Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)). :: • Shigella sekitar 10² organisme → infectious dose sangat rendah
   • Salmonella membutuhkan inokulum yang jauh lebih besar
 - [Shigellosis / Bacillary Dysentery] Sebutkan manifestasi utama pada Shigellosis / Bacillary Dysentery. :: • Inflammatory diarrhea
   • Bloody stool

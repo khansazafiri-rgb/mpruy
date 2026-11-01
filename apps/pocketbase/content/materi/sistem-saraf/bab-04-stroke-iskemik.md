@@ -359,16 +359,16 @@ Pola 10 — Minor Non-Disabling
 - [Stroke Iskemik] Apa yang perlu diingat tentang MCA nondominan pada Stroke Iskemik? :: Neglect kontralateral
 - [Stroke Iskemik] Apa yang perlu diingat tentang ACA pada Stroke Iskemik? :: Leg > arm deficit
 - [Stroke Iskemik] Apa yang perlu diingat tentang PCA pada Stroke Iskemik? :: Hemianopia homonim kontralateral
-- [Stroke Iskemik] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pure motor hemiparesis tanpa cortical signs? :: Pikirkan lacunar stroke
-- [Stroke Iskemik] Apa jawaban atau kesimpulan untuk petunjuk berikut: Vertigo + diplopia + disartria + ataksia? :: Pikirkan posterior circulation stroke
-- [Stroke Iskemik] Apa jawaban atau kesimpulan untuk petunjuk berikut: Defisit disabling yang eligible dalam ≤4,5 jam? :: Reperfusi IV secepat mungkin
+- [Stroke Iskemik] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pure motor hemiparesis tanpa cortical signs pada Stroke Iskemik? :: Pikirkan lacunar stroke
+- [Stroke Iskemik] Apa jawaban atau kesimpulan untuk petunjuk berikut: Vertigo + diplopia + disartria + ataksia pada Stroke Iskemik? :: Pikirkan posterior circulation stroke
+- [Stroke Iskemik] Apa jawaban atau kesimpulan untuk petunjuk berikut: Defisit disabling yang eligible dalam ≤4,5 jam pada Stroke Iskemik? :: Reperfusi IV secepat mungkin
 - [Stroke Iskemik] Apa yang perlu diketahui tentang Alteplase pada Stroke Iskemik? :: 0,9 mg/kg, maksimum 90 mg; 10% bolus, sisanya infus 60 menit
 - [Stroke Iskemik] Apa yang perlu diingat tentang LVO yang eligible pada Stroke Iskemik? :: Evaluasi mechanical thrombectomy segera
 - [Stroke Iskemik] Apa yang perlu diketahui tentang AHA/ASA 2026 pada Stroke Iskemik? :: Tenecteplase 0,25 mg/kg maks 25 mg atau alteplase 0,9 mg/kg maks 90 mg
 - [Stroke Iskemik] Apa yang perlu diingat tentang LVO pada Stroke Iskemik? :: Mechanical thrombectomy; selected patients tetap eligible sampai 24 jam
-- [Lokalisasi Berdasarkan Teritori Vaskular] Sebutkan hal-hal penting tentang Stroke lakunar. :: • Dapat menimbulkan pure motor hemiparesis atau sindrom lakunar lain
+- [Lokalisasi Berdasarkan Teritori Vaskular] Sebutkan hal-hal penting tentang Stroke lakunar pada Lokalisasi Berdasarkan Teritori Vaskular (Stroke Iskemik). :: • Dapat menimbulkan pure motor hemiparesis atau sindrom lakunar lain
   • Tidak terdapat cortical signs seperti afasia, neglect, atau hemianopia pada pure motor lacunar syndrome
-- [Lokalisasi Berdasarkan Teritori Vaskular] Sebutkan hal-hal penting tentang Sirkulasi posterior. :: • Vertigo akut
+- [Lokalisasi Berdasarkan Teritori Vaskular] Sebutkan hal-hal penting tentang Sirkulasi posterior pada Lokalisasi Berdasarkan Teritori Vaskular (Stroke Iskemik). :: • Vertigo akut
   • Diplopia
   • Disartria
   • Ataksia
@@ -379,7 +379,7 @@ Pola 10 — Minor Non-Disabling
   • Endovascular thrombectomy (EVT) = pengambilan trombus secara mekanik pada LVO yang memenuhi kriteria
 - [IV Thrombolysis — Update AHA/ASA 2026] Sebutkan AHA/ASA 2026 mendukung dua agen utama pada IV Thrombolysis — Update AHA/ASA 2026. :: • Tenecteplase: 0,25 mg/kg IV bolus, maksimal 25 mg
   • Alteplase: 0,9 mg/kg, maksimal 90 mg; 10% sebagai bolus, sisanya infus selama 60 menit
-- [Antiplatelet pada Stroke Iskemik] Sebutkan hal-hal penting tentang Update AHA/ASA 2026. :: • Minor noncardioembolic AIS dengan NIHSS ≤3 atau high-risk TIA tertentu yang TIDAK menerima IVT dapat memperoleh short-term DAPT aspirin + clopidogrel
+- [Antiplatelet pada Stroke Iskemik] Sebutkan hal-hal penting tentang Update AHA/ASA 2026 pada Antiplatelet pada Stroke Iskemik. :: • Minor noncardioembolic AIS dengan NIHSS ≤3 atau high-risk TIA tertentu yang TIDAK menerima IVT dapat memperoleh short-term DAPT aspirin + clopidogrel
   • Salah satu regimen yang direkomendasikan adalah 21 hari, kemudian dilanjutkan single antiplatelet therapy
   • DAPT jangka panjang tidak diberikan rutin karena risiko perdarahan meningkat
 - [Glukosa, Suhu, dan Supportive Care] Sebutkan supportive care lain pada Glukosa, Suhu, dan Supportive Care. :: • Jaga airway, breathing, dan oxygenation

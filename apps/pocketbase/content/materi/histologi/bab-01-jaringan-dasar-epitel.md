@@ -432,8 +432,6 @@ Gland:
   • Menjadi filter selektif pada lokasi tertentu
   • Menjadi scaffold untuk regenerasi
   • Membatasi dan mengarahkan migrasi sel
-- [Prinsip Klasifikasi Epitel] Sebutkan nama epitel ditentukan terutama oleh dua hal pada Prinsip Klasifikasi Epitel. :: • Jumlah lapisan
-  • Bentuk sel pada permukaan bebas
 - [Simple Squamous Epithelium] Sebutkan contoh lokasi pada Simple Squamous Epithelium. :: • Alveoli paru
   • Endothelium pembuluh darah dan limfatik
   • Mesothelium rongga serosa
@@ -447,7 +445,7 @@ Gland:
   • Superficial umbrella cells besar dan dapat tampak dome-shaped saat relaksasi
   • Saat organ teregang, epitel menjadi lebih tipis dan umbrella cells tampak lebih pipih
   • Apical membrane mengandung uroplakin yang membantu membentuk barrier terhadap urin
-- [Stereocilia] Sebutkan contoh klasik pada Stereocilia. :: • Epididymis
+- [Stereocilia] Sebutkan contoh klasik pada Stereocilia (Jaringan Dasar: Epitel). :: • Epididymis
   • Sensory hair cells telinga dalam, meskipun fungsi dan organisasinya berbeda
 - [Simple versus Compound Glands] Sebutkan contoh pola yang sering ditanya pada Simple versus Compound Glands. :: • Intestinal gland = simple tubular
   • Eccrine sweat gland = simple coiled tubular
@@ -467,9 +465,9 @@ Gland:
   • Skin → keratinized stratified squamous
   • Urinary bladder → transitional/urothelium
 - [Basement Membrane dan Basal Lamina] Apa korelasi klinis dari Basement Membrane dan Basal Lamina? :: Invasi carcinoma menembus basement membrane. Karena itu, konsep “belum menembus” versus “sudah menembus” basement membrane penting secara klinis walaupun detail staging dipelajari lebih lanjut di patologi.
-- [Cell Junctions] Apa poin high-yield (pearl) tentang Cell Junctions? :: Tight = seal; adherens/desmosome = anchor antarsel; gap = communication; hemidesmosome = anchor ke basement membrane.
+- [Cell Junctions] Apa poin high-yield (pearl) tentang Cell Junctions (Jaringan Dasar: Epitel)? :: Tight = seal; adherens/desmosome = anchor antarsel; gap = communication; hemidesmosome = anchor ke basement membrane.
 - [Simple Squamous Epithelium] Apa clue praktikum untuk Simple Squamous Epithelium? :: Jangan menilai ketebalan sitoplasma saja. Cari inti pipih yang sejajar dengan permukaan dan hanya satu lapis.
 - [Pseudostratified Columnar Epithelium] Apa jebakan yang sering muncul pada soal tentang Pseudostratified Columnar Epithelium? :: “tampak banyak lapis” tidak otomatis berarti stratified. Tanyakan apakah semua sel menyentuh basal lamina.
 - [Transitional Epithelium / Urothelium] Apa clue praktikum untuk Transitional Epithelium / Urothelium? :: Umbrella cells merupakan clue terkuat. Jangan menilai urothelium hanya dari jumlah lapisan karena ketebalannya berubah sesuai distensi.
-- [Motile Cilia] Apa poin high-yield (pearl) tentang Motile Cilia? :: Microvilli/stereocilia berbasis actin; motile cilia berbasis microtubules.
-- [Mekanisme Pelepasan Sekret] Bagaimana cara mengingat Mekanisme Pelepasan Sekret? :: Mero = membrane fusion/exocytosis; apo = apical portion ikut lepas; holo = whole cell lepas.
+- [Motile Cilia] Apa poin high-yield (pearl) tentang Motile Cilia (Jaringan Dasar: Epitel)? :: Microvilli/stereocilia berbasis actin; motile cilia berbasis microtubules.
+- [Mekanisme Pelepasan Sekret] Bagaimana cara mengingat Mekanisme Pelepasan Sekret (Jaringan Dasar: Epitel)? :: Mero = membrane fusion/exocytosis; apo = apical portion ikut lepas; holo = whole cell lepas.

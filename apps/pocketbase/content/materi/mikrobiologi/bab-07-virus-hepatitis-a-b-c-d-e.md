@@ -466,21 +466,19 @@ Pasien dengan hepatitis viral → lihat jalur paparan → fecal–oral? pikir HA
 ## Flashcard {kartu}
 
 - [HBV — Replikasi yang Unik] Pada HBV — Replikasi yang Unik, apa alur konsepnya? :: DNA virus → cccDNA di nucleus → viral RNA/pregenomic RNA → reverse transcription → DNA progeny.
-- [HCV — Transmisi & Natural History] Jelaskan Natural history. :: Hepatitis kronik → sirosis dalam perjalanan bertahun-tahun → HCC/end-stage liver disease.
+- [HCV — Transmisi & Natural History] Jelaskan Natural history pada HCV — Transmisi & Natural History (Virus Hepatitis (A, B, C, D, E)). :: Hepatitis kronik → sirosis dalam perjalanan bertahun-tahun → HCC/end-stage liver disease.
 - [Hepatitis D Virus — Defective Virus] Pada Hepatitis D Virus — Defective Virus, apa konsekuensinya? :: HDV hanya dapat menginfeksi seseorang bila HBV/HBsAg juga ada.
 - [Virus Hepatitis (A, B, C, D, E)] Apa yang dimaksud dengan HBV pada Virus Hepatitis (A, B, C, D, E)? :: DNA virus tetapi memakai reverse transcriptase
 - [Virus Hepatitis (A, B, C, D, E)] Apa yang dimaksud dengan HAV dan HEV pada Virus Hepatitis (A, B, C, D, E)? :: Fecal–oral utama
-- [Virus Hepatitis (A, B, C, D, E)] Apa jawaban atau kesimpulan untuk petunjuk berikut: HCV antibody positif tidak otomatis berarti infeksi aktif? :: Cek HCV RNA
-- [Virus Hepatitis (A, B, C, D, E)] Apa yang dimaksud dengan HBsAg + pada Virus Hepatitis (A, B, C, D, E)? :: Infeksi HBV sedang ada
+- [Virus Hepatitis (A, B, C, D, E)] Apa jawaban atau kesimpulan untuk petunjuk berikut: HCV antibody positif tidak otomatis berarti infeksi aktif pada Virus Hepatitis (A, B, C, D, E)? :: Cek HCV RNA
 - [Virus Hepatitis (A, B, C, D, E)] Apa yang dimaksud dengan IgM anti-HBc pada Virus Hepatitis (A, B, C, D, E)? :: Akut/recent dan marker window period
 - [Virus Hepatitis (A, B, C, D, E)] Apa yang dimaksud dengan Anti-HBs + saja pada Virus Hepatitis (A, B, C, D, E)? :: Vaksinasi
-- [Virus Hepatitis (A, B, C, D, E)] Apa yang dimaksud dengan Anti-HBs + + anti-HBc IgG + pada Virus Hepatitis (A, B, C, D, E)? :: Sembuh dari infeksi alami
 - [Virus Hepatitis (A, B, C, D, E)] Apa yang dimaksud dengan HBeAg pada Virus Hepatitis (A, B, C, D, E)? :: Replikasi/infectivity tinggi secara klasik
 - [Virus Hepatitis (A, B, C, D, E)] Apa yang perlu diketahui tentang Chronic HBV pada Virus Hepatitis (A, B, C, D, E)? :: HBsAg persisten ≥6 bulan + IgG anti-HBc + + anti-HBs −
 - [Virus Hepatitis (A, B, C, D, E)] Apa yang dimaksud dengan HEV trimester 3 pada Virus Hepatitis (A, B, C, D, E)? :: Pikirkan fulminant hepatitis
 - [Virus Hepatitis (A, B, C, D, E)] Apa yang dimaksud dengan HCV pada Virus Hepatitis (A, B, C, D, E)? :: Flaviviridae/Hepacivirus, bukan Hepadnaviridae
 - [Virus Hepatitis (A, B, C, D, E)] Apa yang dimaksud dengan A dan E pada Virus Hepatitis (A, B, C, D, E)? :: Enteric/fecal–oral, naked RNA, biasanya akut
-- [Diagnosis HAV] Sebutkan prinsip serologi pada Diagnosis HAV. :: • IgM anti-HAV → infeksi akut/recent
+- [Diagnosis HAV] Sebutkan prinsip serologi pada Diagnosis HAV (Virus Hepatitis (A, B, C, D, E)). :: • IgM anti-HAV → infeksi akut/recent
   • IgG anti-HAV → infeksi lampau atau imunitas
 - [Hepatitis B Virus — Struktur] Sebutkan struktur utama pada Hepatitis B Virus — Struktur. :: • Virion infeksius klasik disebut Dane particle, sekitar 42 nm
   • Memiliki lipid envelope
@@ -495,35 +493,43 @@ Pasien dengan hepatitis viral → lihat jalur paparan → fecal–oral? pikir HA
   • Hemodialisis
   • Tenaga kesehatan dengan needle-stick injury
   • Pasangan seksual multipel
-- [HBV — Usia Infeksi dan Kronisitas] Sebutkan hal-hal penting tentang Konsekuensi infeksi kronik. :: • Hepatitis kronik
+- [HBV — Usia Infeksi dan Kronisitas] Sebutkan hal-hal penting tentang Konsekuensi infeksi kronik pada HBV — Usia Infeksi dan Kronisitas. :: • Hepatitis kronik
   • Sirosis
   • Hepatocellular carcinoma (HCC)
-- [Antibodi HBV] Sebutkan hal-hal penting tentang IgM anti-HBc. :: • Marker penting infeksi akut/recent
+- [Antibodi HBV] Sebutkan hal-hal penting tentang IgM anti-HBc pada Antibodi HBV (Virus Hepatitis (A, B, C, D, E)). :: • Marker penting infeksi akut/recent
   • Menjadi marker kunci pada window period
-- [HBV — Pencegahan] Sebutkan hal-hal penting tentang Poin. :: • Vaksin HBV menggunakan recombinant HBsAg
+- [HBV — Pencegahan] Sebutkan hal-hal penting tentang Poin pada HBV — Pencegahan (Virus Hepatitis (A, B, C, D, E)). :: • Vaksin HBV menggunakan recombinant HBsAg
   • HBIG menyediakan antibodi pasif anti-HBV
   • Pada pajanan tertentu, vaksin dan HBIG diberikan bersama di lokasi suntikan berbeda
   • Bayi dari ibu HBsAg positif memerlukan profilaksis sesegera mungkin setelah lahir sesuai protokol klinis
   • Alat steril, pembuangan jarum aman, dan pencegahan paparan darah penting
+- [Terapi & Pencegahan HCV] Sebutkan hal-hal penting tentang Poin pada Terapi & Pencegahan HCV (Virus Hepatitis (A, B, C, D, E)). :: • Tidak ada vaksin HCV
+  • Tidak ada imunoglobulin spesifik HCV untuk profilaksis
+  • Pencegahan: skrining donor, alat steril, hindari berbagi jarum dan benda pribadi yang dapat terkontaminasi darah
+  • Direct-acting antivirals (DAA) merupakan terapi utama yang ditekankan
+  • Contoh target yang disebut: NS5B polymerase dan NS5A
 - [HDV — Diagnosis & Pencegahan] Sebutkan penanda pada HDV — Diagnosis & Pencegahan. :: • Anti-HDV
   • HDV RNA
   • Bersamaan dengan marker HBV
-- [HEV — Transmisi] Sebutkan hal-hal penting tentang Beberapa jalur penularan. :: • Fecal–oral terutama melalui air tercemar
+- [HEV — Transmisi] Sebutkan hal-hal penting tentang Beberapa jalur penularan pada HEV — Transmisi. :: • Fecal–oral terutama melalui air tercemar
   • Wabah waterborne
   • Zoonosis pada beberapa genotype
   • Produk hewan/daging yang terkontaminasi dapat berperan
   • Transmisi melalui transfusi juga dapat terjadi dalam konteks tertentu
+- [Diagnosis HEV] Sebutkan hal-hal penting tentang Poin pada Diagnosis HEV (Virus Hepatitis (A, B, C, D, E)). :: • IgM anti-HEV dapat dipakai pada infeksi akut
+  • HEV RNA dapat dideteksi dengan RT-PCR pada darah/feses dalam konteks yang sesuai
+  • Terapi acute HEV bersifat suportif
 - [Comparison: Fecal–Oral vs Parenteral] Sebutkan fecal–oral utama pada Comparison: Fecal–Oral vs Parenteral. :: • HAV
   • HEV
 - [Comparison: Fecal–Oral vs Parenteral] Sebutkan parenteral utama pada Comparison: Fecal–Oral vs Parenteral. :: • HBV
   • HCV
   • HDV bersama HBV
 - [Big Picture] Apa poin high-yield (pearl) tentang Virus Hepatitis (A, B, C, D, E)? :: HAV, HCV, HDV, dan HEV adalah virus RNA; HBV adalah satu-satunya virus hepatitis utama yang memiliki genom DNA.
-- [Diagnosis HAV] Apa jebakan yang sering muncul pada soal tentang Diagnosis HAV? :: Anti-HAV total tanpa membedakan IgM/IgG tidak selalu cukup untuk menyatakan hepatitis A akut.
+- [Diagnosis HAV] Apa jebakan yang sering muncul pada soal tentang Diagnosis HAV (Virus Hepatitis (A, B, C, D, E))? :: Anti-HAV total tanpa membedakan IgM/IgG tidak selalu cukup untuk menyatakan hepatitis A akut.
 - [HBV — Replikasi yang Unik] Apa jebakan yang sering muncul pada soal tentang HBV — Replikasi yang Unik? :: Aktivitas reverse transcriptase bukan hanya milik HIV; HBV juga menggunakan reverse transcription pada siklus replikasinya. Namun dalam soal klasik “retrovirus dengan reverse transcriptase”, jawaban yang biasanya dicari adalah HIV.
 - [HBV — Pencegahan] Apa poin high-yield (pearl) tentang HBV — Pencegahan? :: Vaksin HBV → anti-HBs positif TANPA anti-HBc.
 - [HCV — Mutasi, Genotipe, dan Vaksin] Apa poin high-yield (pearl) tentang HCV — Mutasi, Genotipe, dan Vaksin? :: RNA polymerase HCV tidak memiliki proofreading yang efektif. Variasi genetik tinggi menghasilkan quasispecies dan banyak genotype/subtype. Hal ini ikut menjelaskan mengapa antibodi tidak memberi proteksi steril yang kuat dan mengapa tidak tersedia vaksin HCV.
-- [Diagnosis HCV] Apa poin high-yield (pearl) tentang Diagnosis HCV? :: Anti-HCV + ≠ pasti active infection. Konfirmasi aktivitas → HCV RNA.
+- [Diagnosis HCV] Apa poin high-yield (pearl) tentang Diagnosis HCV (Virus Hepatitis (A, B, C, D, E))? :: Anti-HCV + ≠ pasti active infection. Konfirmasi aktivitas → HCV RNA.
 - [Koinfeksi vs Superinfeksi HDV] Bagaimana cara mengingat Koinfeksi vs Superinfeksi HDV? :: CO-infection = datang bersama. SUPER-infection = HDV datang “di atas” HBV yang sudah ada.
 - [HEV — Kehamilan] Apa jebakan yang sering muncul pada soal tentang HEV — Kehamilan? :: Risiko yang ditekankan adalah fulminant hepatitis/gagal hati dan kematian ibu/janin, BUKAN “menyebabkan kelainan kongenital khas”.
 - [Comparison: Fecal–Oral vs Parenteral] Bagaimana cara mengingat Comparison: Fecal–Oral vs Parenteral? :: “A & E = Enteric.” “B, C, D = Blood/body fluids pattern.”

@@ -462,14 +462,14 @@ Hereditary cancer → germline predisposition sejak lahir → additional somatic
 
 ## Flashcard {kartu}
 
-- [Hereditary Retinoblastoma] Pada Hereditary Retinoblastoma, apa inheritance predispositionnya? :: Autosomal dominant.
-- [Hereditary Retinoblastoma] Apa yang dimaksud dengan Tumorigenesis pada Hereditary Retinoblastoma? :: Second somatic hit pada retinal cell.
-- [Li–Fraumeni Syndrome] Pada Li–Fraumeni Syndrome, apa inheritancenya? :: Autosomal dominant cancer predisposition.
-- [Li–Fraumeni Syndrome] Pada Li–Fraumeni Syndrome, apa konsep utamanya? :: Germline loss of one TP53 allele menurunkan threshold menuju tumorigenesis; additional somatic events mendorong kanker.
-- [Lynch Syndrome] Pada Lynch Syndrome, apa inheritancenya? :: Autosomal dominant predisposition.
-- [Lynch Syndrome] Jelaskan Berbeda dari FAP dalam konteks Lynch Syndrome. :: Lynch tidak harus menghasilkan ribuan polip.
-- [Genomic Instability] Apa yang dimaksud dengan chromosomal instability pada Genomic Instability? :: Aneuploidy, gains/losses, structural rearrangements.
-- [Genomic Instability] Apa yang dimaksud dengan microsatellite instability pada Genomic Instability? :: Mismatch-repair deficiency.
+- [Hereditary Retinoblastoma] Pada Hereditary Retinoblastoma, apa inheritance predispositionnya (Dasar Genetika Kanker)? :: Autosomal dominant.
+- [Hereditary Retinoblastoma] Apa yang dimaksud dengan Tumorigenesis pada Hereditary Retinoblastoma (Dasar Genetika Kanker)? :: Second somatic hit pada retinal cell.
+- [Li–Fraumeni Syndrome] Pada Li–Fraumeni Syndrome, apa inheritancenya (Dasar Genetika Kanker)? :: Autosomal dominant cancer predisposition.
+- [Li–Fraumeni Syndrome] Pada Li–Fraumeni Syndrome, apa konsep utamanya (Dasar Genetika Kanker)? :: Germline loss of one TP53 allele menurunkan threshold menuju tumorigenesis; additional somatic events mendorong kanker.
+- [Lynch Syndrome] Pada Lynch Syndrome, apa inheritancenya (Dasar Genetika Kanker)? :: Autosomal dominant predisposition.
+- [Lynch Syndrome] Jelaskan Berbeda dari FAP dalam konteks Lynch Syndrome (Dasar Genetika Kanker). :: Lynch tidak harus menghasilkan ribuan polip.
+- [Genomic Instability] Apa yang dimaksud dengan chromosomal instability pada Genomic Instability (Dasar Genetika Kanker)? :: Aneuploidy, gains/losses, structural rearrangements.
+- [Genomic Instability] Apa yang dimaksud dengan microsatellite instability pada Genomic Instability (Dasar Genetika Kanker)? :: Mismatch-repair deficiency.
 - [Dasar Genetika Kanker] Apa yang perlu diketahui tentang RAS pada Dasar Genetika Kanker? :: Small GTPase. Activating mutation membuat signaling proliferatif tetap aktif
 - [Dasar Genetika Kanker] Apa yang perlu diketahui tentang MYC pada Dasar Genetika Kanker? :: Transcription factor yang mendorong pertumbuhan dan proliferasi. c-MYC terkait Burkitt lymphoma melalui t(8;14)
 - [Dasar Genetika Kanker] Apa yang perlu diketahui tentang HER2/ERBB2 pada Dasar Genetika Kanker? :: Receptor tyrosine kinase; amplification dapat ditemukan pada sebagian kanker payudara dan kanker lain
@@ -478,13 +478,13 @@ Hereditary cancer → germline predisposition sejak lahir → additional somatic
 - [Dasar Genetika Kanker] Apa yang perlu diketahui tentang BRAF pada Dasar Genetika Kanker? :: Kinase pada MAPK pathway; activating mutation dapat ditemukan pada melanoma dan beberapa kanker lain
 - [Dasar Genetika Kanker] Apa yang dimaksud dengan Kanker pada Dasar Genetika Kanker? :: Penyakit genetik pada tingkat sel, tetapi tidak selalu herediter
 - [Dasar Genetika Kanker] Apa yang perlu diingat tentang Proto-oncogene pada Dasar Genetika Kanker? :: Oncogene melalui gain-of-function
-- [Oncogene vs Tumor Suppressor — Cara Cepat Membedakan] Sebutkan hal-hal penting tentang Tumor suppressor. :: • Perubahan utama = loss-of-function
+- [Oncogene vs Tumor Suppressor — Cara Cepat Membedakan] Sebutkan hal-hal penting tentang Tumor suppressor pada Oncogene vs Tumor Suppressor — Cara Cepat Membedakan (Dasar Genetika Kanker). :: • Perubahan utama = loss-of-function
   • Sering perlu kehilangan kedua alel pada tingkat sel
   • “brake failure”
   • Contoh: RB1, TP53, APC, PTEN
-- [Testing pada Genetika Kanker] Sebutkan hal-hal penting tentang Germline testing. :: • Digunakan ketika hereditary predisposition dicurigai
+- [Testing pada Genetika Kanker] Sebutkan hal-hal penting tentang Germline testing pada Testing pada Genetika Kanker (Dasar Genetika Kanker). :: • Digunakan ketika hereditary predisposition dicurigai
   • Membutuhkan counseling mengenai hasil positive, negative, VUS, dan familial implications
-- [Pedigree dalam Hereditary Cancer] Sebutkan hal-hal penting tentang Hal yang dicatat. :: • Jenis kanker
+- [Pedigree dalam Hereditary Cancer] Sebutkan hal-hal penting tentang Hal yang dicatat pada Pedigree dalam Hereditary Cancer. :: • Jenis kanker
   • Usia diagnosis
   • Multiple primary cancers
   • Bilateral tumors
@@ -493,7 +493,7 @@ Hereditary cancer → germline predisposition sejak lahir → additional somatic
   • Ancestry bila relevan
   • Hasil genetic testing sebelumnya
   • Minimal beberapa generasi bila memungkinkan
-- [Genomic Instability] Sebutkan jenis besar pada Genomic Instability. :: • Chromosomal instability: aneuploidy, gains/losses, structural rearrangements
+- [Genomic Instability] Sebutkan jenis besar pada Genomic Instability (Dasar Genetika Kanker). :: • Chromosomal instability: aneuploidy, gains/losses, structural rearrangements
   • Microsatellite instability: mismatch-repair deficiency
   • Mutation accumulation akibat repair deficiency lain
   • Genomic instability mempercepat tumor evolution tetapi juga dapat menghasilkan vulnerabilities terapeutik tertentu

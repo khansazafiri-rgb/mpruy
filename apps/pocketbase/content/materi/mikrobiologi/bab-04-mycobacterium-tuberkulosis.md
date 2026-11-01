@@ -472,11 +472,11 @@ Airborne M. tuberculosis → alveolus → alveolar macrophage → intracellular 
 - [Pemeriksaan Sputum: BTA Smear] Apa yang dimaksud dengan Keuntungan pada Pemeriksaan Sputum: BTA Smear? :: Cepat, sederhana, murah.
 - [Pemeriksaan Sputum: BTA Smear] Apa yang dimaksud dengan Keterbatasan pada Pemeriksaan Sputum: BTA Smear? :: Sensitivitas lebih rendah daripada NAAT/kultur dan acid-fast smear tidak selalu membedakan M. tuberculosis dari mycobacteria lain.
 - [Mycobacterium & Tuberkulosis] Apa manifestasi utama pada Mycobacterium & Tuberkulosis? :: Skin lesions + sensory loss + peripheral neuropathy
-- [Mycobacterium & Tuberkulosis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Mycobacterium punya dinding sangat kaya lipid/mycolic acid? :: ACID-FAST
+- [Mycobacterium & Tuberkulosis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Mycobacterium punya dinding sangat kaya lipid/mycolic acid pada Mycobacterium & Tuberkulosis? :: ACID-FAST
 - [Mycobacterium & Tuberkulosis] Apa yang perlu diketahui tentang Ziehl–Neelsen pada Mycobacterium & Tuberkulosis? :: Carbol fuchsin + heat → acid-alcohol → counterstain; BTA tetap merah/fuchsia
 - [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan Media klasik pada Mycobacterium & Tuberkulosis? :: Lowenstein–Jensen; koloni “rough, tough, buff”
 - [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan Penularan TB pada Mycobacterium & Tuberkulosis? :: Airborne
-- [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan Caseating granuloma dan Langhans giant cell? :: Temuan klasik, tetapi bukan identifikasi spesies sendiri
+- [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan Caseating granuloma dan Langhans giant cell pada Mycobacterium & Tuberkulosis? :: Temuan klasik, tetapi bukan identifikasi spesies sendiri
 - [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan TST pada Mycobacterium & Tuberkulosis? :: Type IV hypersensitivity dan menilai induration; IGRA menilai IFN-γ response
 - [Mycobacterium & Tuberkulosis] Apa yang perlu diingat tentang M. leprae pada Mycobacterium & Tuberkulosis? :: Lepra, kulit + saraf, tidak dapat dikultur rutin in vitro
 - [Mycobacterium & Tuberkulosis] Apa yang perlu diingat tentang MAC pada Mycobacterium & Tuberkulosis? :: Oportunistik penting pada imunosupresi berat
@@ -492,29 +492,29 @@ Airborne M. tuberculosis → alveolus → alveolar macrophage → intracellular 
   • Heat/pemanasan
   • Acid-alcohol decolorization
   • Counterstain
-- [Granuloma TB] Sebutkan komponen granuloma secara konsep pada Granuloma TB. :: • Epithelioid macrophages
+- [Granuloma TB] Sebutkan komponen granuloma secara konsep pada Granuloma TB (Mycobacterium & Tuberkulosis). :: • Epithelioid macrophages
   • Multinucleated giant cells, termasuk Langhans-type giant cells
   • Lymphocytes di perifer
   • Dapat terbentuk central caseous necrosis
 - [Ghon Focus, Ghon Complex, dan Primary TB] Sebutkan konsep klasik primary pulmonary TB pada Ghon Focus, Ghon Complex, dan Primary TB. :: • Fokus parenkim awal disebut Ghon focus
   • Bila disertai keterlibatan lymph node regional → Ghon complex
   • Penyembuhan dapat menghasilkan fibrosis dan calcification
-- [Latent TB Infection vs Active TB Disease] Sebutkan hal-hal penting tentang Latent TB infection. :: • Organisme persisten tetapi secara klinis tidak ada penyakit aktif
+- [Latent TB Infection vs Active TB Disease] Sebutkan hal-hal penting tentang Latent TB infection pada Latent TB Infection vs Active TB Disease. :: • Organisme persisten tetapi secara klinis tidak ada penyakit aktif
   • Tidak ada gejala TB aktif
   • Individu tidak menularkan karena tidak ada penyakit paru aktif yang melepaskan basil ke udara
   • TST atau IGRA dapat menunjukkan bukti sensitisasi imun
-- [NAAT / TCM / GeneXpert] Sebutkan hal-hal penting tentang Poin. :: • NAAT/GeneXpert berguna untuk diagnosis cepat dari spesimen respirasi
+- [NAAT / TCM / GeneXpert] Sebutkan hal-hal penting tentang Poin pada NAAT / TCM / GeneXpert (Mycobacterium & Tuberkulosis). :: • NAAT/GeneXpert berguna untuk diagnosis cepat dari spesimen respirasi
   • GeneXpert MTB/RIF mendeteksi DNA M. tuberculosis complex dan dapat memberikan informasi mengenai resistensi rifampisin melalui target gen rpoB
 - [Interpretasi BTA, NAAT, dan Culture] Sebutkan pola berpikir pada Interpretasi BTA, NAAT, dan Culture. :: • Smear BTA → apakah terdapat acid-fast bacilli dalam jumlah yang cukup untuk terlihat?
   • NAAT → apakah DNA target M. tuberculosis complex terdeteksi?
   • Culture → apakah organisme hidup dapat tumbuh?
-- [Histopatologi TB] Sebutkan temuan klasik pada Histopatologi TB. :: • Granulomatous inflammation
+- [Histopatologi TB] Sebutkan temuan klasik pada Histopatologi TB (Mycobacterium & Tuberkulosis). :: • Granulomatous inflammation
   • Caseous necrosis dapat ditemukan
   • Langhans giant cells dapat tampak
-- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Sebutkan hal-hal penting tentang Tuberculoid pole. :: • Cell-mediated immunity lebih kuat
+- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Sebutkan hal-hal penting tentang Tuberculoid pole pada Tuberculoid vs Lepromatous Leprosy — Konsep Dasar (Mycobacterium & Tuberkulosis). :: • Cell-mediated immunity lebih kuat
   • Basil lebih sedikit (paucibacillary)
   • Lesi lebih terlokalisasi
-- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Sebutkan hal-hal penting tentang Lepromatous pole. :: • Cell-mediated immunity terhadap M. leprae lebih lemah
+- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Sebutkan hal-hal penting tentang Lepromatous pole pada Tuberculoid vs Lepromatous Leprosy — Konsep Dasar (Mycobacterium & Tuberkulosis). :: • Cell-mediated immunity terhadap M. leprae lebih lemah
   • Basil lebih banyak (multibacillary)
   • Lesi lebih luas dan simetris dapat terjadi
 - [Mengapa Apeks Sering Terlibat pada Reactivation TB?] Sebutkan konsep klasik pada Mengapa Apeks Sering Terlibat pada Reactivation TB?. :: • M. tuberculosis adalah obligate aerobe

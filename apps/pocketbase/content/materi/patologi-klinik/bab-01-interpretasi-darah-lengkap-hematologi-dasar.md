@@ -748,15 +748,15 @@ Unexplained cytopenia multiple lines → smear + reticulocyte + nutritional/infe
 
 ## Flashcard {kartu}
 
-- [Indeks Eritrosit] Jelaskan Iron deficiency anemia dalam konteks Indeks Eritrosit. :: MCV ↓, MCH/MCHC ↓, RDW sering ↑.
-- [Indeks Eritrosit] Apa yang dimaksud dengan Thalassemia trait pada Indeks Eritrosit? :: MCV sangat ↓ tetapi RDW dapat normal atau hanya sedikit ↑; RBC count relatif tinggi.
-- [Indeks Eritrosit] Jelaskan Anemia penyakit kronik dalam konteks Indeks Eritrosit. :: Sering normocytic, kadang microcytic ringan.
-- [Indeks Eritrosit] Apa yang dimaksud dengan Megaloblastic anemia pada Indeks Eritrosit? :: MCV ↑ dan RDW sering ↑.
-- [Macrocytic Anemia] Apa yang dimaksud dengan Megaloblastic anemia pada Macrocytic Anemia? :: Penyebab klasik → vitamin B12 deficiency dan folate deficiency.
+- [Indeks Eritrosit] Jelaskan Iron deficiency anemia dalam konteks Indeks Eritrosit (Interpretasi Darah Lengkap (Hematologi Dasar)). :: MCV ↓, MCH/MCHC ↓, RDW sering ↑.
+- [Indeks Eritrosit] Apa yang dimaksud dengan Thalassemia trait pada Indeks Eritrosit (Interpretasi Darah Lengkap (Hematologi Dasar))? :: MCV sangat ↓ tetapi RDW dapat normal atau hanya sedikit ↑; RBC count relatif tinggi.
+- [Indeks Eritrosit] Jelaskan Anemia penyakit kronik dalam konteks Indeks Eritrosit (Interpretasi Darah Lengkap (Hematologi Dasar)). :: Sering normocytic, kadang microcytic ringan.
+- [Indeks Eritrosit] Apa yang dimaksud dengan Megaloblastic anemia pada Indeks Eritrosit (Interpretasi Darah Lengkap (Hematologi Dasar))? :: MCV ↑ dan RDW sering ↑.
+- [Macrocytic Anemia] Apa yang dimaksud dengan Megaloblastic anemia pada Macrocytic Anemia (Interpretasi Darah Lengkap (Hematologi Dasar))? :: Penyebab klasik → vitamin B12 deficiency dan folate deficiency.
 - [Erythrocytosis / Polycythemia] Apa yang dimaksud dengan Relative erythrocytosis pada Erythrocytosis / Polycythemia? :: Volume plasma menurun, misalnya dehidrasi.
 - [Erythrocytosis / Polycythemia] Apa yang dimaksud dengan Kerangka pikir pada Erythrocytosis / Polycythemia? :: Hb/Hct tinggi → nilai status hidrasi → cek saturasi oksigen/konteks hipoksia → nilai EPO → evaluasi kemungkinan myeloproliferative neoplasm bila sesuai.
-- [Pancytopenia] Apa yang dimaksud dengan Kerangka diagnosis pada Pancytopenia? :: A. Produksi sumsum gagal/tertekan
-- [Peripheral sequestration/destruction] Pada Peripheral sequestration/destruction, apa langkah pentingnya? :: Reticulocyte count, smear, review obat, pemeriksaan nutrisi, dan bila diperlukan bone marrow evaluation.
+- [Pancytopenia] Apa yang dimaksud dengan Kerangka diagnosis pada Pancytopenia (Interpretasi Darah Lengkap (Hematologi Dasar))? :: A. Produksi sumsum gagal/tertekan
+- [Peripheral sequestration/destruction] Pada Peripheral sequestration/destruction, apa langkah pentingnya (Interpretasi Darah Lengkap (Hematologi Dasar))? :: Reticulocyte count, smear, review obat, pemeriksaan nutrisi, dan bila diperlukan bone marrow evaluation.
 - [Pola Kasus: Iron Deficiency Anemia] Apa yang dimaksud dengan CBC pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Hb ↓, MCV ↓, MCHC ↓, RDW ↑.
 - [Pola Kasus: Iron Deficiency Anemia] Apa yang dimaksud dengan Smear pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Microcytic hypochromic RBC, anisopoikilocytosis, pencil cells.
 - [Pola Kasus: Iron Deficiency Anemia] Apa yang dimaksud dengan Tes berikut pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Ferritin terlebih dahulu pada banyak situasi klinis, lalu integrasikan serum iron/TIBC/transferrin saturation bila diperlukan.
@@ -781,35 +781,35 @@ Unexplained cytopenia multiple lines → smear + reticulocyte + nutritional/infe
 - [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan RDW tinggi pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Anisocytosis meningkat
 - [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan Ferritin pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Acute-phase reactant sehingga dapat meningkat saat inflamasi
 - [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang perlu diketahui tentang Hemolysis pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: LDH ↑, indirect bilirubin ↑, haptoglobin ↓, reticulocyte ↑
-- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan Macro-ovalocyte + hypersegmented neutrophil? :: Megaloblastic anemia
+- [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan Macro-ovalocyte + hypersegmented neutrophil pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Megaloblastic anemia
 - [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan ANC <0.5 ×10^9/L pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Severe neutropenia
 - [Interpretasi Darah Lengkap (Hematologi Dasar)] Apa yang dimaksud dengan Trombositopenia + schistocyte pada Interpretasi Darah Lengkap (Hematologi Dasar)? :: Pola kegawatan microangiopathic hemolysis
-- [Indeks Eritrosit] Sebutkan pola high-yield pada Indeks Eritrosit. :: • Iron deficiency anemia: MCV ↓, MCH/MCHC ↓, RDW sering ↑
+- [Indeks Eritrosit] Sebutkan pola high-yield pada Indeks Eritrosit (Interpretasi Darah Lengkap (Hematologi Dasar)). :: • Iron deficiency anemia: MCV ↓, MCH/MCHC ↓, RDW sering ↑
   • Thalassemia trait: MCV sangat ↓ tetapi RDW dapat normal atau hanya sedikit ↑; RBC count relatif tinggi
   • Anemia penyakit kronik: sering normocytic, kadang microcytic ringan
   • Megaloblastic anemia: MCV ↑ dan RDW sering ↑
 - [Algoritme Pertama pada Anemia] Sebutkan klasifikasi morfologis pada Algoritme Pertama pada Anemia. :: • Microcytic anemia → pikirkan iron deficiency, thalassemia, anemia of chronic inflammation, sideroblastic anemia, lead toxicity
   • Normocytic anemia → pikirkan perdarahan akut, hemolisis, penyakit kronik, gangguan ginjal, gangguan sumsum tulang
   • Macrocytic anemia → pisahkan megaloblastic vs non-megaloblastic
-- [Microcytic Anemia — Peta Diagnosis] Sebutkan hal-hal penting tentang Iron deficiency anemia (IDA). :: • Ferritin ↓
+- [Microcytic Anemia — Peta Diagnosis] Sebutkan hal-hal penting tentang Iron deficiency anemia (IDA) pada Microcytic Anemia — Peta Diagnosis. :: • Ferritin ↓
   • Serum iron ↓
   • TIBC/transferrin ↑
   • Transferrin saturation ↓
   • RDW sering ↑
   • Smear: microcytosis, hypochromia, anisopoikilocytosis; pencil cells dapat terlihat
-- [Microcytic Anemia — Peta Diagnosis] Sebutkan hal-hal penting tentang Thalassemia trait. :: • MCV dapat sangat rendah dibanding derajat anemia
+- [Microcytic Anemia — Peta Diagnosis] Sebutkan hal-hal penting tentang Thalassemia trait pada Microcytic Anemia — Peta Diagnosis (Interpretasi Darah Lengkap (Hematologi Dasar)). :: • MCV dapat sangat rendah dibanding derajat anemia
   • RBC count sering relatif tinggi
   • Target cells dapat terlihat
   • Ferritin tidak harus rendah
   • Konfirmasi bergantung tipe thalassemia dan dapat memerlukan hemoglobin analysis atau pemeriksaan molekuler
-- [Normocytic Anemia] Sebutkan hal-hal penting tentang Hemolysis pattern. :: • Reticulocyte ↑
+- [Normocytic Anemia] Sebutkan hal-hal penting tentang Hemolysis pattern pada Normocytic Anemia (Interpretasi Darah Lengkap (Hematologi Dasar)). :: • Reticulocyte ↑
   • LDH ↑
   • Indirect bilirubin ↑
   • Haptoglobin ↓ terutama pada intravascular hemolysis
   • Smear dapat memberi petunjuk etiologi
-- [Erythrocytosis / Polycythemia] Sebutkan hal-hal penting tentang Absolute erythrocytosis. :: • Primary → proliferasi eritroid intrinsik, klasik pada polycythemia vera
+- [Erythrocytosis / Polycythemia] Sebutkan hal-hal penting tentang Absolute erythrocytosis pada Erythrocytosis / Polycythemia (Interpretasi Darah Lengkap (Hematologi Dasar)). :: • Primary → proliferasi eritroid intrinsik, klasik pada polycythemia vera
   • Secondary → peningkatan erythropoietin karena hipoksia atau produksi EPO patologis
-- [Leukosit Total dan Differential Count] Sebutkan hal-hal penting tentang Differential count kasar pada dewasa. :: • Neutrofil ±40–70%
+- [Leukosit Total dan Differential Count] Sebutkan hal-hal penting tentang Differential count kasar pada dewasa pada Leukosit Total dan Differential Count. :: • Neutrofil ±40–70%
   • Limfosit ±20–40%
   • Monosit ±2–8%
   • Eosinofil ±1–4%
@@ -818,11 +818,11 @@ Unexplained cytopenia multiple lines → smear + reticulocyte + nutritional/infe
   • 1.0–1.5 → mild neutropenia
   • 0.5–1.0 → moderate neutropenia
   • <0.5 → severe neutropenia; risiko infeksi meningkat nyata
-- [Lymphocytosis dan Lymphopenia] Sebutkan hal-hal penting tentang Reactive lymphocytosis. :: • Sering pada infeksi virus
+- [Lymphocytosis dan Lymphopenia] Sebutkan hal-hal penting tentang Reactive lymphocytosis pada Lymphocytosis dan Lymphopenia (Interpretasi Darah Lengkap (Hematologi Dasar)). :: • Sering pada infeksi virus
   • Atypical/reactive lymphocytes dapat terlihat, misalnya pada infectious mononucleosis
-- [Trombositopenia — Baca Bersama Garis Sel Lain] Sebutkan hal-hal penting tentang Thrombocytopenia + anemia hemolitik mikroangiopatik. :: • Cari schistocytes
+- [Trombositopenia — Baca Bersama Garis Sel Lain] Sebutkan hal-hal penting tentang Thrombocytopenia + anemia hemolitik mikroangiopatik pada Trombositopenia — Baca Bersama Garis Sel Lain. :: • Cari schistocytes
   • Pikirkan TTP/HUS/DIC sesuai konteks
-- [Peripheral Blood Smear — Kenapa Masih Penting?] Sebutkan hal-hal penting tentang Evaluasi smear. :: • Ukuran RBC
+- [Peripheral Blood Smear — Kenapa Masih Penting?] Sebutkan hal-hal penting tentang Evaluasi smear pada Peripheral Blood Smear — Kenapa Masih Penting? (Interpretasi Darah Lengkap (Hematologi Dasar)). :: • Ukuran RBC
   • Warna/central pallor
   • Variasi ukuran dan bentuk
   • Inklusi eritrosit
@@ -831,8 +831,8 @@ Unexplained cytopenia multiple lines → smear + reticulocyte + nutritional/infe
   • Jumlah dan ukuran trombosit
   • Platelet clumping
   • Parasit darah bila ada
-- [Pola Kasus: ITP vs Marrow Failure] Sebutkan hal-hal penting tentang Marrow failure. :: • Lebih sering melibatkan multiple cell lines
+- [Pola Kasus: ITP vs Marrow Failure] Sebutkan hal-hal penting tentang Marrow failure pada Interpretasi Darah Lengkap (Hematologi Dasar). :: • Lebih sering melibatkan multiple cell lines
   • Reticulocyte cenderung rendah bila eritropoiesis terganggu
 - [Pre-Analitik — Jangan Salah Menafsirkan Artefak] Apa poin high-yield (pearl) tentang Pre-Analitik — Jangan Salah Menafsirkan Artefak? :: Trombosit sangat rendah tanpa manifestasi perdarahan, tetapi analyzer memberi flag platelet clumps → pikirkan pseudothrombocytopenia sebelum mendiagnosis ITP.
-- [Macrocytic Anemia] Apa poin high-yield (pearl) tentang Macrocytic Anemia? :: Macrocytosis + hypersegmented neutrophils = pikirkan gangguan sintesis DNA terlebih dahulu.
+- [Macrocytic Anemia] Apa poin high-yield (pearl) tentang Macrocytic Anemia (Interpretasi Darah Lengkap (Hematologi Dasar))? :: Macrocytosis + hypersegmented neutrophils = pikirkan gangguan sintesis DNA terlebih dahulu.
 - [Pola Kasus: Megaloblastic Anemia] Apa clue praktikum untuk Interpretasi Darah Lengkap (Hematologi Dasar)? :: Macrocytosis + neurologic symptoms → vitamin B12 deficiency harus dipikirkan.

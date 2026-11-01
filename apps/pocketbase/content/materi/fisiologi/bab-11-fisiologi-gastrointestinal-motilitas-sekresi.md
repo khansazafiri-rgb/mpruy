@@ -179,8 +179,8 @@ Malabsorpsi dapat berkaitan dengan kekurangan nutrien, osteomalasia, anemia pern
 
 ## Flashcard {kartu}
 
-- [Regulasi Sekresi H+] Jelaskan Stimulator yang disebut dalam konteks Regulasi Sekresi H+. :: ACh melalui reseptor M3, gastrin melalui CCK-B, dan histamin melalui H2. Inhibitor: somatostatin dan prostaglandin. Jalur akhir sekresi H+ menggunakan H+-K+ ATPase.
-- [Refleks Gastrointestinal] Jelaskan Refleks yang dicantumkan sumber dalam konteks Refleks Gastrointestinal. :: Gastrocolic, enterogastric, ileogastric, duodenocolic, ileocolic, colonoileal, dan rectosphincteric. Masing-masing menghubungkan distensi segmen tertentu dengan perubahan motilitas atau sfingter.
+- [Regulasi Sekresi H+] Apa yang dimaksud dengan Stimulator pada Regulasi Sekresi H+? :: ACh melalui reseptor M3, gastrin melalui CCK-B, dan histamin melalui H2. Inhibitor: somatostatin dan prostaglandin. Jalur akhir sekresi H+ menggunakan H+-K+ ATPase.
+- [Refleks Gastrointestinal] Jelaskan Refleks pada Refleks Gastrointestinal (Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi). :: Gastrocolic, enterogastric, ileogastric, duodenocolic, ileocolic, colonoileal, dan rectosphincteric. Masing-masing menghubungkan distensi segmen tertentu dengan perubahan motilitas atau sfingter.
 - [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang Sertoli pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Support + blood–testis barrier + ABP/inhibin
 - [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang Siklus wanita pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Folikular → ovulasi → luteal → menstruasi bila tidak hamil
 - [Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi] Apa yang perlu diketahui tentang Kontrasepsi pada Fisiologi Gastrointestinal: Motilitas, Sekresi, Absorpsi? :: Alamiah, barrier, hormonal, IUD, permanen

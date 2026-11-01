@@ -263,16 +263,16 @@ Ini adalah flow paling penting untuk menjawab soal PTH.
 - [Reseptor Adrenergik: Ringkasan] Apa yang dimaksud dengan β2 pada Reseptor Adrenergik: Ringkasan? :: Gs → bronchodilation dan vasodilation pada vascular bed tertentu.
 - [Reseptor Adrenergik: Ringkasan] Apa yang dimaksud dengan β3 pada Reseptor Adrenergik: Ringkasan? :: Gs → lipolysis pada adipose tissue.
 - [Vitamin D / Calcitriol] Apa yang dimaksud dengan Aktivasi pada Vitamin D / Calcitriol? :: Kulit/diet → vitamin D → hati menjadi 25-OH vitamin D → ginjal menjadi 1,25-(OH)₂ vitamin D (calcitriol).
-- [Kelenjar Adrenal: Zona dan Hormon] Sebutkan hal-hal penting tentang Korteks adrenal. :: • Zona glomerulosa → aldosterone
+- [Kelenjar Adrenal: Zona dan Hormon] Sebutkan hal-hal penting tentang Korteks adrenal pada Kelenjar Adrenal: Zona dan Hormon (Fisiologi Tiroid, Paratiroid, Adrenal). :: • Zona glomerulosa → aldosterone
   • Zona fasciculata → cortisol
   • Zona reticularis → adrenal androgens
-- [Aldosteron: Regulasi] Sebutkan regulator utama aldosterone pada Aldosteron: Regulasi. :: • Angiotensin II
+- [Aldosteron: Regulasi] Sebutkan regulator utama aldosterone pada Aldosteron: Regulasi (Fisiologi Tiroid, Paratiroid, Adrenal). :: • Angiotensin II
   • Peningkatan K⁺ plasma
-- [Efek Metabolik Kortisol] Sebutkan hal-hal penting tentang Kortisol membantu mempertahankan ketersediaan bahan bakar. :: • ↑ gluconeogenesis hati
+- [Efek Metabolik Kortisol] Sebutkan hal-hal penting tentang Kortisol membantu mempertahankan ketersediaan bahan bakar pada Efek Metabolik Kortisol. :: • ↑ gluconeogenesis hati
   • ↑ proteolysis perifer → amino acid substrate
   • ↑ lipolysis
   • Menurunkan penggunaan glukosa di beberapa jaringan dan dapat meningkatkan insulin resistance
-- [Cushing dan Addison: Konsep Fisiologis] Sebutkan hal-hal penting tentang Primary adrenal insufficiency/Addison. :: • Cortisol rendah
+- [Cushing dan Addison: Konsep Fisiologis] Sebutkan hal-hal penting tentang Primary adrenal insufficiency/Addison pada Cushing dan Addison: Konsep Fisiologis. :: • Cortisol rendah
   • Aldosterone dapat rendah
   • ACTH tinggi karena hilangnya feedback
   • Hyperpigmentation dapat muncul akibat peningkatan produk POMC
@@ -281,5 +281,5 @@ Ini adalah flow paling penting untuk menjawab soal PTH.
 - [Hipertiroid vs Hipotiroid: Pola Sumbu] Apa poin high-yield (pearl) tentang Hipertiroid vs Hipotiroid: Pola Sumbu? :: Selalu identifikasi apakah masalah berada di kelenjar target atau di pusat pengatur.
 - [Cushing dan Addison: Konsep Fisiologis] Apa jebakan yang sering muncul pada soal tentang Cushing dan Addison: Konsep Fisiologis? :: Hyperpigmentation lebih mendukung primary, bukan secondary adrenal insufficiency.
 - [Reseptor Adrenergik: Ringkasan] Apa poin high-yield (pearl) tentang Reseptor Adrenergik: Ringkasan? :: Efek katekolamin tergantung distribusi reseptor, bukan sekadar kadar hormon.
-- [PTH di Ginjal] Bagaimana cara mengingat PTH di Ginjal? :: PTH raises Ca²⁺, lowers phosphate plasma secara langsung melalui phosphaturia.
-- [Calcitonin] Apa jebakan yang sering muncul pada soal tentang Calcitonin? :: Jangan menempatkan calcitonin sebagai regulator utama tunggal kalsium plasma.
+- [PTH di Ginjal] Bagaimana cara mengingat PTH di Ginjal (Fisiologi Tiroid, Paratiroid, Adrenal)? :: PTH raises Ca²⁺, lowers phosphate plasma secara langsung melalui phosphaturia.
+- [Calcitonin] Apa jebakan yang sering muncul pada soal tentang Calcitonin (Fisiologi Tiroid, Paratiroid, Adrenal)? :: Jangan menempatkan calcitonin sebagai regulator utama tunggal kalsium plasma.

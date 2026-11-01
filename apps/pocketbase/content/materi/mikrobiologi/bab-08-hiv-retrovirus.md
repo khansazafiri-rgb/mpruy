@@ -441,15 +441,15 @@ Acute infection → viral load sangat tinggi, CD4 turun sementara → clinical l
 ## Flashcard {kartu}
 
 - [Big Picture] Apa yang dimaksud dengan Peta cepat pada HIV & Retrovirus? :: HIV masuk → gp120 bind CD4 + CCR5/CXCR4 → gp41 fusion → RNA dilepas → reverse transcription → DNA virus → integration → provirus → transkripsi/translasi → assembly → budding → protease-mediated maturation.
-- [Klasifikasi & Genom HIV] Jelaskan Genom. :: Dua salinan ssRNA (+) yang identik/diploid.
+- [Klasifikasi & Genom HIV] Jelaskan Genom pada Klasifikasi & Genom HIV (HIV & Retrovirus). :: Dua salinan ssRNA (+) yang identik/diploid.
 - [Klasifikasi & Genom HIV] Apa yang dimaksud dengan Baltimore group pada Klasifikasi & Genom HIV? :: Group VI, +ssRNA-RT.
 - [Urutan Marker Dini] Apa yang dimaksud dengan Hafalan pada Urutan Marker Dini? :: RNA → p24 → antibody.
 - [HIV & Retrovirus] Apa yang dimaksud dengan HIV pada HIV & Retrovirus? :: Lentivirus, Retroviridae, enveloped +ssRNA virus dengan RT, integrase, protease
-- [HIV & Retrovirus] Apa jawaban atau kesimpulan untuk petunjuk berikut: RT tidak punya proofreading baik? :: Mutasi tinggi; HIV juga berekombinasi, tetapi tidak reassortment
+- [HIV & Retrovirus] Apa jawaban atau kesimpulan untuk petunjuk berikut: RT tidak punya proofreading baik pada HIV & Retrovirus? :: Mutasi tinggi; HIV juga berekombinasi, tetapi tidak reassortment
 - [HIV & Retrovirus] Apa yang perlu diketahui tentang Acute HIV pada HIV & Retrovirus? :: Viremia tinggi, flu-like, sangat infeksius
 - [HIV & Retrovirus] Apa yang perlu diketahui tentang Clinical latency pada HIV & Retrovirus? :: Asimtomatik tetapi virus tetap bereplikasi dan CD4 turun perlahan
 - [HIV & Retrovirus] Apa diagnosis dini pada HIV & Retrovirus? :: HIV RNA paling awal, lalu p24, lalu antibody
-- [HIV & Retrovirus] Apa yang dimaksud dengan PrEP, PEP, PMTCT, VCT/PITC, dan prevention behavior? :: Strategi pencegahan utama
+- [HIV & Retrovirus] Apa yang dimaksud dengan PrEP, PEP, PMTCT, VCT/PITC, dan prevention behavior pada HIV & Retrovirus? :: Strategi pencegahan utama
 - [Gen Utama HIV] Sebutkan tiga gen utama pada Gen Utama HIV. :: • Gag → structural proteins, termasuk p17 dan p24
   • Pol → reverse transcriptase, integrase, protease
   • Env → gp120 dan gp41
@@ -472,41 +472,41 @@ Acute infection → viral load sangat tinggi, CD4 turun sementara → clinical l
   • Assembly
   • Budding
   • Protease-mediated maturation
-- [AIDS] Sebutkan contoh yang disebut pada AIDS. :: • Pneumocystis jirovecii pneumonia
-  • Tuberculosis
-  • Toxoplasmosis
-  • Candidiasis
-  • Kaposi sarcoma
-  • Lymphoma
+- [Diagnosis — Kerangka Sumber] Sebutkan hal-hal penting tentang Poin pada Diagnosis — Kerangka Sumber (HIV & Retrovirus). :: • Tes antibodi/ELISA sebagai screening serologis
+  • Western blot sebagai konfirmasi klasik
+  • Antigen p24 membantu memperpendek window period
+  • HIV RNA PCR dapat terdeteksi paling awal pada acute infection
+  • CD4 dan viral load digunakan untuk menilai status imun, prognosis, dan respons terapi, bukan sebagai satu-satunya tes diagnosis awal
 - [Urutan Marker Dini] Sebutkan urutan atau langkah pada Urutan Marker Dini? :: • HIV RNA muncul paling awal, sekitar fase sangat awal setelah pajanan
   • Antigen p24 muncul setelahnya
   • Antibodi muncul lebih lambat
-- [NRTI] Sebutkan hal-hal penting tentang Nucleoside/nucleotide reverse transcriptase inhibitor. :: • Menghambat reverse transcriptase
+- [NRTI] Sebutkan hal-hal penting tentang Nucleoside/nucleotide reverse transcriptase inhibitor pada NRTI (HIV & Retrovirus). :: • Menghambat reverse transcriptase
   • Menyebabkan chain termination
-- [NRTI] Sebutkan contoh yang disebut pada NRTI. :: • Zidovudine
-  • Lamivudine
-  • Tenofovir
-- [Resistensi Antiretroviral] Sebutkan contoh high-yield pada Resistensi Antiretroviral. :: • M184V → resistensi tinggi terhadap lamivudine/emtricitabine
+- [Resistensi Antiretroviral] Sebutkan contoh high-yield pada Resistensi Antiretroviral (HIV & Retrovirus). :: • M184V → resistensi tinggi terhadap lamivudine/emtricitabine
   • K65R → resistensi/penurunan sensitivitas terhadap tenofovir
   • L74V → terkait didanosine/abacavir
   • Y181C → terkait NNRTI
   • Q151M → multi-NRTI resistance
-- [Prevention] Sebutkan hal-hal penting tentang Strategi pencegahan. :: • ABCDE: abstinence, be faithful, condom, drug/avoid needle sharing, education
+- [Prevention] Sebutkan hal-hal penting tentang Strategi pencegahan pada Prevention (HIV & Retrovirus). :: • ABCDE: abstinence, be faithful, condom, drug/avoid needle sharing, education
   • PMTCT = prevention of mother-to-child transmission
   • VCT/PITC
   • PrEP = pre-exposure prophylaxis
   • PEP = post-exposure prophylaxis
   • Alat steril untuk jarum/tato/tindik
-- [Target 95–95–95] Sebutkan target 95–95–95. :: • 95% orang dengan HIV mengetahui statusnya
+- [Target 95–95–95] Sebutkan target 95–95–95 (HIV & Retrovirus). :: • 95% orang dengan HIV mengetahui statusnya
   • 95% dari yang mengetahui status mendapat ART
   • 95% dari yang mendapat ART mencapai viral suppression
+- [HIV vs Retrovirus — Konsep Dasar] Sebutkan retrovirus secara umum pada HIV vs Retrovirus — Konsep Dasar. :: • Memiliki RNA genome
+  • Menggunakan reverse transcriptase
+  • Membentuk DNA intermediate
+  • Mengintegrasikan DNA ke genom host
 - [Klasifikasi & Genom HIV] Apa poin high-yield (pearl) tentang Klasifikasi & Genom HIV? :: HIV adalah RNA virus tetapi memiliki DNA intermediate.
 - [Fungsi Protein Struktural] Apa jebakan yang sering muncul pada soal tentang Fungsi Protein Struktural? :: Gp120 = attachment, bukan fusion. gp41 = fusion, bukan reseptor. CD4 = reseptor utama; CCR5/CXCR4 = koreseptor.
 - [Gen Utama HIV] Apa jebakan yang sering muncul pada soal tentang Gen Utama HIV? :: Mutasi resistensi obat sering terjadi pada gen pol karena gen ini mengode target utama banyak antiretroviral.
-- [Reverse Transcription] Apa jebakan yang sering muncul pada soal tentang Reverse Transcription? :: HIV tidak mengalami reassortment karena genomnya tidak segmented.
+- [Reverse Transcription] Apa jebakan yang sering muncul pada soal tentang Reverse Transcription (HIV & Retrovirus)? :: HIV tidak mengalami reassortment karena genomnya tidak segmented.
 - [Assembly, Budding, Maturation] Apa jebakan yang sering muncul pada soal tentang Assembly, Budding, Maturation? :: Protease inhibitor tidak mencegah integration; ia mengganggu maturation.
-- [Transmisi HIV] Apa jebakan yang sering muncul pada soal tentang Transmisi HIV? :: Pasien asimtomatik tetap dapat menularkan HIV.
-- [Clinical Latency] Apa poin high-yield (pearl) tentang Clinical Latency? :: Clinical latency ≠ virus tidur total.
+- [Transmisi HIV] Apa jebakan yang sering muncul pada soal tentang Transmisi HIV (HIV & Retrovirus)? :: Pasien asimtomatik tetap dapat menularkan HIV.
+- [Clinical Latency] Apa poin high-yield (pearl) tentang Clinical Latency (HIV & Retrovirus)? :: Clinical latency ≠ virus tidur total.
 - [Diagnosis — Kerangka Sumber] Apa jebakan yang sering muncul pada soal tentang Diagnosis — Kerangka Sumber? :: Dalam fase sangat dini, antibodi dapat belum terbentuk sehingga antibody-only test dapat negatif.
-- [NRTI] Apa jebakan yang sering muncul pada soal tentang NRTI? :: Lamivudine dan tenofovir aktif terhadap HIV dan HBV.
-- [Resistensi Antiretroviral] Apa jebakan yang sering muncul pada soal tentang Resistensi Antiretroviral? :: Monotherapy mempermudah seleksi strain resisten.
+- [NRTI] Apa jebakan yang sering muncul pada soal tentang NRTI (HIV & Retrovirus)? :: Lamivudine dan tenofovir aktif terhadap HIV dan HBV.
+- [Resistensi Antiretroviral] Apa jebakan yang sering muncul pada soal tentang Resistensi Antiretroviral (HIV & Retrovirus)? :: Monotherapy mempermudah seleksi strain resisten.

@@ -488,27 +488,27 @@ PaO₂ 90 pada room air berbeda maknanya dengan PaO₂ 90 pada FiO₂ 0.80.
 - [Metabolic Acidosis — Anion Gap] Jelaskan Rumus tanpa kalium dalam konteks Metabolic Acidosis — Anion Gap. :: AG = Na⁺ − (Cl⁻ + HCO₃⁻).
 - [Penyebab HAGMA — GOLD MARK] Jelaskan G — Glycols dalam konteks Penyebab HAGMA — GOLD MARK. :: Ethylene glycol, propylene glycol
 - [Penyebab HAGMA — GOLD MARK] Jelaskan O — Oxoproline dalam konteks Penyebab HAGMA — GOLD MARK. :: 5-oxoproline/pyroglutamic acid
-- [Lactic Acidosis] Pada Lactic Acidosis, apa penyebab pentingnya? :: Shock/hypoperfusion, sepsis, hypoxemia berat, kejang, iskemia jaringan, dan beberapa obat/toksin. Interpretasi laktat harus mempertimbangkan perfusi, fungsi hati, obat, waktu pengambilan, dan tren.
-- [Penyebab NAGMA] Pada Penyebab NAGMA, apa penyebab pentingnya? :: Diare, renal tubular acidosis, large-volume normal saline, acetazolamide, diversi urin tertentu, dan fase tertentu gangguan ginjal.
-- [Metabolic Alkalosis — Penyebab Utama] Apa penyebabnya? :: Muntah/NG suction, diuretik, kontraksi volume, mineralocorticoid excess, hypokalemia, alkali load tertentu, dan post-hypercapnic alkalosis.
+- [Lactic Acidosis] Pada Lactic Acidosis, apa penyebab pentingnya (Interpretasi Analisis Gas Darah)? :: Shock/hypoperfusion, sepsis, hypoxemia berat, kejang, iskemia jaringan, dan beberapa obat/toksin. Interpretasi laktat harus mempertimbangkan perfusi, fungsi hati, obat, waktu pengambilan, dan tren.
+- [Penyebab NAGMA] Pada Penyebab NAGMA, apa penyebab pentingnya (Interpretasi Analisis Gas Darah)? :: Diare, renal tubular acidosis, large-volume normal saline, acetazolamide, diversi urin tertentu, dan fase tertentu gangguan ginjal.
+- [Metabolic Alkalosis — Penyebab Utama] Apa penyebabnya pada Metabolic Alkalosis — Penyebab Utama (Interpretasi Analisis Gas Darah)? :: Muntah/NG suction, diuretik, kontraksi volume, mineralocorticoid excess, hypokalemia, alkali load tertentu, dan post-hypercapnic alkalosis.
 - [Mixed Acid–Base Disorder] Apa yang dimaksud dengan Petunjuk pada Mixed Acid–Base Disorder? :: Kompensasi tidak sesuai rumus, pH normal tetapi PaCO₂/HCO₃⁻ sangat abnormal, delta ratio abnormal, atau konteks klinis mendukung lebih dari satu proses.
 - [Oxyhemoglobin Dissociation Curve] Apa yang dimaksud dengan Shift right pada Oxyhemoglobin Dissociation Curve? :: Acidosis, CO₂ tinggi, suhu tinggi, 2,3-BPG tinggi → Hb lebih mudah melepas O₂.
 - [Oxyhemoglobin Dissociation Curve] Apa yang dimaksud dengan Shift left pada Oxyhemoglobin Dissociation Curve? :: Alkalosis, CO₂ rendah, suhu rendah, fetal Hb, carbon monoxide → afinitas Hb meningkat.
 - [Metabolic Acidosis pada DKA] Apa yang dimaksud dengan DKA klasik pada Metabolic Acidosis pada DKA? :: HAGMA, HCO₃⁻ rendah, ketone/beta-hydroxybutyrate meningkat, glukosa biasanya meningkat. Setelah terapi saline, NAGMA hyperchloremic dapat muncul sementara.
-- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Acidemia + PaCO₂ ↑? :: Respiratory acidosis
-- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Acidemia + HCO₃⁻ ↓? :: Metabolic acidosis
-- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Alkalemia + PaCO₂ ↓? :: Respiratory alkalosis
-- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Alkalemia + HCO₃⁻ ↑? :: Metabolic alkalosis
-- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: PaCO₂ di atas Winter expected? :: Additional respiratory acidosis
-- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: PaCO₂ di bawah Winter expected? :: Additional respiratory alkalosis
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Acidemia + PaCO₂ ↑ pada Interpretasi Analisis Gas Darah? :: Respiratory acidosis
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Acidemia + HCO₃⁻ ↓ pada Interpretasi Analisis Gas Darah? :: Metabolic acidosis
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Alkalemia + PaCO₂ ↓ pada Interpretasi Analisis Gas Darah? :: Respiratory alkalosis
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Alkalemia + HCO₃⁻ ↑ pada Interpretasi Analisis Gas Darah? :: Metabolic alkalosis
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: PaCO₂ di atas Winter expected pada Interpretasi Analisis Gas Darah? :: Additional respiratory acidosis
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: PaCO₂ di bawah Winter expected pada Interpretasi Analisis Gas Darah? :: Additional respiratory alkalosis
 - [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan GOLD MARK pada Interpretasi Analisis Gas Darah? :: Penyebab penting HAGMA
 - [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan Lactic acidosis dan DKA pada Interpretasi Analisis Gas Darah? :: HAGMA penting
 - [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan RTA pada Interpretasi Analisis Gas Darah? :: Penyebab renal NAGMA
 - [Interpretasi Analisis Gas Darah] Apa yang perlu diingat tentang PE sering pada Interpretasi Analisis Gas Darah? :: Respiratory alkalosis + hypoxemia
-- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan Severe asthma dengan PaCO₂ meningkat? :: Tanda berbahaya
+- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan Severe asthma dengan PaCO₂ meningkat pada Interpretasi Analisis Gas Darah? :: Tanda berbahaya
 - [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan P/F ratio pada Interpretasi Analisis Gas Darah? :: PaO₂/FiO₂
-- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: pH normal + PaCO₂/HCO₃⁻ abnormal? :: Pikirkan kompensasi atau mixed disorder
-- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan Analisis acid–base dan oxygenation? :: Dua langkah berbeda
+- [Interpretasi Analisis Gas Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: pH normal + PaCO₂/HCO₃⁻ abnormal pada Interpretasi Analisis Gas Darah? :: Pikirkan kompensasi atau mixed disorder
+- [Interpretasi Analisis Gas Darah] Apa yang dimaksud dengan Analisis acid–base dan oxygenation pada Interpretasi Analisis Gas Darah? :: Dua langkah berbeda
 - [Interpretasi Analisis Gas Darah] Apa yang perlu diingat tentang Jika metabolic acidosis pada Interpretasi Analisis Gas Darah? :: Hitung AG
 - [Interpretasi Analisis Gas Darah] Apa yang perlu diingat tentang Jika HAGMA pada Interpretasi Analisis Gas Darah? :: Pertimbangkan delta ratio
 - [Interpretasi Analisis Gas Darah] Apa yang perlu diketahui tentang Cari penyebab pada Interpretasi Analisis Gas Darah? :: Lactate, ketone, renal failure, toxin, GI/renal HCO₃ loss
@@ -520,7 +520,7 @@ PaO₂ 90 pada room air berbeda maknanya dengan PaO₂ 90 pada FiO₂ 0.80.
   • Bila anion gap meningkat, pertimbangkan delta ratio
   • Nilai PaO₂/oksigenasi secara terpisah
   • Integrasikan dengan elektrolit, laktat, keton, fungsi ginjal, dan klinis
-- [Langkah 2 — Tentukan Gangguan Primer] Sebutkan hal-hal penting tentang Empat gangguan primer. :: • Metabolic acidosis: pH ↓, HCO₃⁻ ↓
+- [Langkah 2 — Tentukan Gangguan Primer] Sebutkan hal-hal penting tentang Empat gangguan primer pada Langkah 2 — Tentukan Gangguan Primer. :: • Metabolic acidosis: pH ↓, HCO₃⁻ ↓
   • Metabolic alkalosis: pH ↑, HCO₃⁻ ↑
   • Respiratory acidosis: pH ↓, PaCO₂ ↑
   • Respiratory alkalosis: pH ↑, PaCO₂ ↓

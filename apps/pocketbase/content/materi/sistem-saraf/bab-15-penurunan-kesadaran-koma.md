@@ -476,21 +476,21 @@ Menurut consensus practice guideline AAN/AAP/CNS/SCCM 2023, penentuan BD/DNC mem
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan M2 pada AVPU & Glasgow Coma Scale? :: Extension/decerebrate.
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan M1 pada AVPU & Glasgow Coma Scale? :: Tidak ada respons motorik.
 - [AVPU & Glasgow Coma Scale] Apa yang dimaksud dengan SAFETY PEARL pada AVPU & Glasgow Coma Scale? :: GCS ≤8 adalah red flag klasik untuk gangguan kesadaran berat dan risiko proteksi airway, tetapi keputusan airway tidak boleh hanya bergantung pada satu angka. Nilai refleks protektif, ventilasi, oksigenasi, trajectory, dan etiologi.
-- [Pemeriksaan Pupil] Apa yang dimaksud dengan SAFETY PEARL pada Pemeriksaan Pupil? :: Anisokoria baru + penurunan GCS = emergency sampai terbukti sebaliknya.
-- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pasien diabetes berkeringat, tremor, lalu bingung/tidak responsif? :: Cek bedside glucose segera; hipoglikemia adalah reversible emergency
-- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pasien tidak sadar, RR 6/menit, pupil pinpoint? :: Opioid toxicity sangat mungkin; airway/ventilation adalah prioritas bersama naloxone sesuai protokol
-- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Demam + perubahan perilaku + kejang? :: Encephalitis, terutama HSV dalam differential
-- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pasien tetap tidak sadar setelah convulsive seizure berhenti? :: Bedakan postictal berkepanjangan dari nonconvulsive status; pertimbangkan EEG
-- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Sirosis + kebingungan + asterixis? :: Hepatic encephalopathy
-- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Gagal ginjal berat + confusion + myoclonus? :: Uremic encephalopathy
-- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Natrium sangat rendah + kejang + koma? :: Symptomatic severe hyponatremia adalah emergency
-- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pasien tidak bicara tetapi mengikuti perintah nonverbal dan sadar? :: Jangan salah menilai aphasia sebagai coma
+- [Pemeriksaan Pupil] Apa yang dimaksud dengan SAFETY PEARL pada Pemeriksaan Pupil (Penurunan Kesadaran & Koma)? :: Anisokoria baru + penurunan GCS = emergency sampai terbukti sebaliknya.
+- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pasien diabetes berkeringat, tremor, lalu bingung/tidak responsif pada Penurunan Kesadaran & Koma? :: Cek bedside glucose segera; hipoglikemia adalah reversible emergency
+- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pasien tidak sadar, RR 6/menit, pupil pinpoint pada Penurunan Kesadaran & Koma? :: Opioid toxicity sangat mungkin; airway/ventilation adalah prioritas bersama naloxone sesuai protokol
+- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Demam + perubahan perilaku + kejang pada Penurunan Kesadaran & Koma? :: Encephalitis, terutama HSV dalam differential
+- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pasien tetap tidak sadar setelah convulsive seizure berhenti pada Penurunan Kesadaran & Koma? :: Bedakan postictal berkepanjangan dari nonconvulsive status; pertimbangkan EEG
+- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Sirosis + kebingungan + asterixis pada Penurunan Kesadaran & Koma? :: Hepatic encephalopathy
+- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Gagal ginjal berat + confusion + myoclonus pada Penurunan Kesadaran & Koma? :: Uremic encephalopathy
+- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Natrium sangat rendah + kejang + koma pada Penurunan Kesadaran & Koma? :: Symptomatic severe hyponatremia adalah emergency
+- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pasien tidak bicara tetapi mengikuti perintah nonverbal dan sadar pada Penurunan Kesadaran & Koma? :: Jangan salah menilai aphasia sebagai coma
 - [Penurunan Kesadaran & Koma] Apa yang perlu diingat tentang Pasien terintubasi pada Penurunan Kesadaran & Koma? :: Verbal GCS tidak dapat dinilai normal; dokumentasikan modifier/not testable
-- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Koma + hilangnya beberapa brainstem reflexes? :: Bukan otomatis BD/DNC; pastikan prerequisites dan evaluasi formal
+- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Koma + hilangnya beberapa brainstem reflexes pada Penurunan Kesadaran & Koma? :: Bukan otomatis BD/DNC; pastikan prerequisites dan evaluasi formal
 - [Penurunan Kesadaran & Koma] Apa yang dimaksud dengan Consciousness pada Penurunan Kesadaran & Koma? :: Arousal (ARAS) + awareness (bilateral cortex)
-- [Penurunan Kesadaran & Koma] Apa yang dimaksud dengan Anisokoria/fixed dilated pupil + falling GCS? :: Herniation emergency
-- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tidak pulih setelah kejang? :: Pikir nonconvulsive status dan EEG
-- [Pendekatan Awal ABCDE] Sebutkan hal-hal penting tentang Reversible causes yang harus dicari cepat. :: • Hipoglikemia → cek glukosa dan koreksi segera
+- [Penurunan Kesadaran & Koma] Apa yang dimaksud dengan Anisokoria/fixed dilated pupil + falling GCS pada Penurunan Kesadaran & Koma? :: Herniation emergency
+- [Penurunan Kesadaran & Koma] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tidak pulih setelah kejang pada Penurunan Kesadaran & Koma? :: Pikir nonconvulsive status dan EEG
+- [Pendekatan Awal ABCDE] Sebutkan hal-hal penting tentang Reversible causes yang harus dicari cepat pada Pendekatan Awal ABCDE. :: • Hipoglikemia → cek glukosa dan koreksi segera
   • Hipoksia/hiperkapnia → koreksi oksigenasi/ventilasi
   • Opioid toxicity dengan respiratory depression → airway/ventilation + naloxone sesuai protokol
   • Malnutrisi/alkohol berisiko defisiensi tiamin → berikan tiamin bila sesuai, tetapi jangan menunda glukosa pada hipoglikemia berat
@@ -505,21 +505,21 @@ Menurut consensus practice guideline AAN/AAP/CNS/SCCM 2023, penentuan BD/DNC mem
   • Tidak ada lateralizing sign yang konsisten
   • Pupil sering simetris dan reaktif, walaupun toxidrome tertentu dapat menyebabkan miosis atau midriasis
   • Asterixis, multifocal myoclonus, atau tremor dapat muncul
-- [Pemeriksaan Pupil] Sebutkan hal-hal penting tentang Unilateral fixed dilated pupil. :: • Sangat mengkhawatirkan kompresi nervus III/uncal herniation bila disertai penurunan kesadaran
+- [Pemeriksaan Pupil] Sebutkan hal-hal penting tentang Unilateral fixed dilated pupil pada Pemeriksaan Pupil (Penurunan Kesadaran & Koma). :: • Sangat mengkhawatirkan kompresi nervus III/uncal herniation bila disertai penurunan kesadaran
   • Differential lain termasuk trauma okular atau efek obat/topikal, tetapi herniasi harus diprioritaskan pada pasien neurologis yang memburuk
-- [Pemeriksaan Pupil] Sebutkan hal-hal penting tentang Pinpoint pupils. :: • Opioid toxicity: terutama bila disertai respiratory depression
+- [Pemeriksaan Pupil] Sebutkan hal-hal penting tentang Pinpoint pupils pada Pemeriksaan Pupil (Penurunan Kesadaran & Koma). :: • Opioid toxicity: terutama bila disertai respiratory depression
   • Lesi pontin juga dapat menyebabkan pupil kecil; cari tanda batang otak lain
-- [Pemeriksaan Penunjang: Pilih Berdasarkan Clue] Sebutkan hal-hal penting tentang Lumbar puncture. :: • Dipertimbangkan pada dugaan meningitis/encephalitis bila aman
+- [Pemeriksaan Penunjang: Pilih Berdasarkan Clue] Sebutkan hal-hal penting tentang Lumbar puncture pada Pemeriksaan Penunjang: Pilih Berdasarkan Clue (Penurunan Kesadaran & Koma). :: • Dipertimbangkan pada dugaan meningitis/encephalitis bila aman
   • Jangan melakukan LP secara buta bila ada red flags mass effect/raised ICP seperti papiledema, focal deficit tertentu, atau penurunan kesadaran berat yang belum dievaluasi
-- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan hal-hal penting tentang Uncal herniation. :: • Penurunan kesadaran
+- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan hal-hal penting tentang Uncal herniation pada Herniasi Serebri — NEUROLOGIC EMERGENCY (Penurunan Kesadaran & Koma). :: • Penurunan kesadaran
   • Pupil ipsilateral melebar/fiks akibat kompresi CN III
   • Dapat muncul hemiparesis kontralateral
   • Memerlukan tindakan emergen untuk mengendalikan ICP dan penyebab mass effect
-- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan hal-hal penting tentang Central transtentorial herniation. :: • Penurunan kesadaran progresif
+- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan hal-hal penting tentang Central transtentorial herniation pada Herniasi Serebri — NEUROLOGIC EMERGENCY. :: • Penurunan kesadaran progresif
   • Perubahan pupil
   • Pola respirasi abnormal
   • Decorticate yang dapat berkembang menjadi decerebrate dalam pola klasik
-- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan hal-hal penting tentang Tonsillar herniation. :: • Cerebellar tonsils terdorong melalui foramen magnum
+- [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan hal-hal penting tentang Tonsillar herniation pada Herniasi Serebri — NEUROLOGIC EMERGENCY (Penurunan Kesadaran & Koma). :: • Cerebellar tonsils terdorong melalui foramen magnum
   • Menekan medula → gangguan respirasi dan kardiovaskular yang mengancam nyawa
   • Posterior fossa mass sangat berbahaya karena ruang yang sempit
 - [Herniasi Serebri — NEUROLOGIC EMERGENCY] Sebutkan prinsip awal bila herniasi dicurigai pada Herniasi Serebri — NEUROLOGIC EMERGENCY. :: • ABC dan cegah hipoksia/hipotensi
@@ -527,7 +527,7 @@ Menurut consensus practice guideline AAN/AAP/CNS/SCCM 2023, penentuan BD/DNC mem
   • Posisi leher netral untuk membantu venous drainage
   • Hyperosmolar therapy dan airway/ventilation sesuai protokol neurocritical/emergency
   • Konsultasi neurosurgery/neurocritical care segera dan terapi penyebab definitif
-- [Mimics & Disorders of Consciousness] Sebutkan hal-hal penting tentang Locked-in syndrome. :: • Awareness dipertahankan
+- [Mimics & Disorders of Consciousness] Sebutkan hal-hal penting tentang Locked-in syndrome pada Mimics & Disorders of Consciousness (Penurunan Kesadaran & Koma). :: • Awareness dipertahankan
   • Quadriplegia + anarthria
   • Vertical eye movement dan blinking klasiknya masih dapat dipakai untuk komunikasi
   • Sering terkait lesi ventral pons, misalnya basilar artery occlusion

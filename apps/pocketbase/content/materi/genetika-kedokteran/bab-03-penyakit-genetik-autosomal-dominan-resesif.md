@@ -581,8 +581,8 @@ Probability shortcuts:
 
 ## Flashcard {kartu}
 
-- [Anticipation] Apa yang dimaksud dengan Huntington pada Anticipation? :: CAG repeat, paternal anticipation menonjol.
-- [Anticipation] Apa yang dimaksud dengan Myotonic dystrophy pada Anticipation? :: CTG repeat, anticipation juga penting.
+- [Anticipation] Apa yang dimaksud dengan Huntington pada Anticipation (Penyakit Genetik Autosomal (Dominan & Resesif))? :: CAG repeat, paternal anticipation menonjol.
+- [Anticipation] Apa yang dimaksud dengan Myotonic dystrophy pada Anticipation (Penyakit Genetik Autosomal (Dominan & Resesif))? :: CTG repeat, anticipation juga penting.
 - [Risk Calculation — Autosomal Dominant] Apa yang dimaksud dengan Kasus klasik pada Risk Calculation — Autosomal Dominant? :: Affected heterozygote (Aa) × unaffected (aa)
 - [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang dimaksud dengan Huntington pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: CAG repeat + AD + anticipation
 - [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang dimaksud dengan Achondroplasia pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: FGFR3 gain-of-function + AD + advanced paternal age
@@ -598,7 +598,7 @@ Probability shortcuts:
   • Individu terkena biasanya memiliki salah satu orang tua yang terkena
   • Affected male dapat menurunkan penyakit kepada anak laki-laki
   • Affected heterozygous parent × unaffected parent sering menghasilkan sekitar 50% affected offspring dalam populasi besar
-- [Marfan Syndrome] Sebutkan manifestasi high-yield pada Marfan Syndrome. :: • Tall stature, long limbs, arachnodactyly
+- [Marfan Syndrome] Sebutkan manifestasi high-yield pada Marfan Syndrome (Penyakit Genetik Autosomal (Dominan & Resesif)). :: • Tall stature, long limbs, arachnodactyly
   • Pectus deformity dan scoliosis dapat terjadi
   • Aortic root dilatation → risiko aneurysm/dissection
   • Mitral valve prolapse dapat terjadi
@@ -609,26 +609,26 @@ Probability shortcuts:
   • Plexiform neurofibroma
   • Lisch nodules pada iris
   • Risiko optic pathway glioma dan malignancy tertentu meningkat
-- [Compound Heterozygosity dan Pseudodominance] Sebutkan hal-hal penting tentang Compound heterozygote. :: • Individu memiliki dua pathogenic variants yang berbeda pada gen yang sama, satu dari masing-masing orang tua
+- [Compound Heterozygosity dan Pseudodominance] Sebutkan hal-hal penting tentang Compound heterozygote pada Compound Heterozygosity dan Pseudodominance (Penyakit Genetik Autosomal (Dominan & Resesif)). :: • Individu memiliki dua pathogenic variants yang berbeda pada gen yang sama, satu dari masing-masing orang tua
   • Secara fungsional tetap merupakan penyakit recessive karena kedua copy gen terganggu
-- [Cystic Fibrosis] Sebutkan fungsi CFTR pada Cystic Fibrosis. :: • Chloride channel pada epitel
+- [Cystic Fibrosis] Sebutkan fungsi CFTR pada Cystic Fibrosis (Penyakit Genetik Autosomal (Dominan & Resesif)). :: • Chloride channel pada epitel
   • Gangguan transport Cl− dan air menghasilkan secretions yang lebih kental pada berbagai organ
-- [Phenylketonuria (PKU)] Sebutkan manifestasi tanpa terapi pada Phenylketonuria. :: • Intellectual disability
+- [Phenylketonuria (PKU)] Sebutkan manifestasi tanpa terapi pada Phenylketonuria (Penyakit Genetik Autosomal (Dominan & Resesif)). :: • Intellectual disability
   • Seizure
   • Eczema
   • Musty/mousy odor
   • Hypopigmentation dapat terjadi
-- [Phenylketonuria (PKU)] Sebutkan terapi konsep pada Phenylketonuria. :: • Restrict phenylalanine
+- [Phenylketonuria (PKU)] Sebutkan terapi konsep pada Phenylketonuria (Penyakit Genetik Autosomal (Dominan & Resesif)). :: • Restrict phenylalanine
   • Supplement tyrosine
   • Beberapa pasien responsif terhadap BH4 (tetrahydrobiopterin)
-- [Wilson Disease] Sebutkan laboratorium klasik pada Wilson Disease. :: • Ceruloplasmin sering rendah
+- [Wilson Disease] Sebutkan laboratorium klasik pada Wilson Disease (Penyakit Genetik Autosomal (Dominan & Resesif)). :: • Ceruloplasmin sering rendah
   • Urinary copper meningkat
   • Hepatic copper meningkat
-- [Locus Heterogeneity vs Allelic Heterogeneity] Sebutkan hal-hal penting tentang Locus heterogeneity. :: • Mutasi pada gen berbeda dapat menghasilkan phenotype yang mirip
+- [Locus Heterogeneity vs Allelic Heterogeneity] Sebutkan hal-hal penting tentang Locus heterogeneity pada Locus Heterogeneity vs Allelic Heterogeneity (Penyakit Genetik Autosomal (Dominan & Resesif)). :: • Mutasi pada gen berbeda dapat menghasilkan phenotype yang mirip
   • Contoh konsep: hereditary hearing loss dapat disebabkan banyak gen berbeda
-- [Locus Heterogeneity vs Allelic Heterogeneity] Sebutkan hal-hal penting tentang Allelic heterogeneity. :: • Varian berbeda dalam satu gen dapat menyebabkan phenotype yang sama atau spektrum phenotype berbeda
+- [Locus Heterogeneity vs Allelic Heterogeneity] Sebutkan hal-hal penting tentang Allelic heterogeneity pada Locus Heterogeneity vs Allelic Heterogeneity (Penyakit Genetik Autosomal (Dominan & Resesif)). :: • Varian berbeda dalam satu gen dapat menyebabkan phenotype yang sama atau spektrum phenotype berbeda
   • CFTR memiliki sangat banyak pathogenic variants dengan dampak klinis berbeda
-- [Autosomal Dominant vs Autosomal Recessive — Rapid Comparison] Sebutkan hal-hal penting tentang Autosomal recessive. :: • Dua pathogenic alleles diperlukan
+- [Autosomal Dominant vs Autosomal Recessive — Rapid Comparison] Sebutkan hal-hal penting tentang Autosomal recessive pada Autosomal Dominant vs Autosomal Recessive — Rapid Comparison (Penyakit Genetik Autosomal (Dominan & Resesif)). :: • Dua pathogenic alleles diperlukan
   • Sering horizontal pattern
   • Orang tua affected child sering carrier dan tampak sehat
   • Aa × Aa → 25% affected
@@ -636,10 +636,10 @@ Probability shortcuts:
   • Contoh: cystic fibrosis, PKU, Tay–Sachs, Wilson, classic galactosemia, 21-hydroxylase deficiency
 - [Big Picture] Apa poin high-yield (pearl) tentang Penyakit Genetik Autosomal (Dominan & Resesif)? :: AD biasanya tampak vertikal antar-generasi. AR sering tampak horizontal pada saudara kandung dengan orang tua tidak terkena. Father-to-son transmission dapat terjadi pada penyakit autosomal; ini membantu membedakan dari X-linked inheritance.
 - [Cara Membaca Pedigree Autosomal Dominant] Apa jebakan yang sering muncul pada soal tentang Penyakit Genetik Autosomal (Dominan & Resesif)? :: Pedigree kecil dapat tampak “skip generation” hanya karena kebetulan statistik. Reduced penetrance dapat benar-benar membuat individu membawa varian tetapi tidak menunjukkan fenotipe. De novo mutation dapat menyebabkan anak terkena walau kedua orang tua klinis normal.
-- [Marfan Syndrome] Apa jebakan yang sering muncul pada soal tentang Marfan Syndrome? :: Penyebab mortalitas utama yang harus diingat adalah komplikasi aorta. Marfan berbeda dari homocystinuria: pada homocystinuria lens displacement klasiknya inferonasal dan terdapat risiko thrombosis.
-- [Achondroplasia] Apa poin high-yield (pearl) tentang Achondroplasia? :: Banyak kasus berasal dari de novo mutation. Risiko de novo meningkat dengan advanced paternal age. Homozygous achondroplasia biasanya jauh lebih berat dan sering lethal.
+- [Marfan Syndrome] Apa jebakan yang sering muncul pada soal tentang Marfan Syndrome (Penyakit Genetik Autosomal (Dominan & Resesif))? :: Penyebab mortalitas utama yang harus diingat adalah komplikasi aorta. Marfan berbeda dari homocystinuria: pada homocystinuria lens displacement klasiknya inferonasal dan terdapat risiko thrombosis.
+- [Achondroplasia] Apa poin high-yield (pearl) tentang Achondroplasia (Penyakit Genetik Autosomal (Dominan & Resesif))? :: Banyak kasus berasal dari de novo mutation. Risiko de novo meningkat dengan advanced paternal age. Homozygous achondroplasia biasanya jauh lebih berat dan sering lethal.
 - [Autosomal Dominant Polycystic Kidney Disease (ADPKD)] Apa jebakan yang sering muncul pada soal tentang Autosomal Dominant Polycystic Kidney Disease? :: ADPKD biasanya muncul lebih lambat daripada autosomal recessive polycystic kidney disease yang klasik pada anak.
 - [Osteogenesis Imperfecta — Konsep Dominant-Negative] Apa poin high-yield (pearl) tentang Osteogenesis Imperfecta — Konsep Dominant-Negative? :: Quantitative collagen defect sering lebih ringan dibanding dominant-negative qualitative defect yang mengganggu triple helix.
 - [Thalassemia — Konsep Autosomal Recessive] Apa jebakan yang sering muncul pada soal tentang Thalassemia — Konsep Autosomal Recessive? :: Thalassemia = quantitative globin synthesis defect. Sickle cell = qualitative structural hemoglobin variant.
-- [Classic Galactosemia] Apa jebakan yang sering muncul pada soal tentang Classic Galactosemia? :: Galactokinase deficiency juga dapat menyebabkan cataract, tetapi biasanya tanpa severe liver disease seperti classic galactosemia.
+- [Classic Galactosemia] Apa jebakan yang sering muncul pada soal tentang Classic Galactosemia (Penyakit Genetik Autosomal (Dominan & Resesif))? :: Galactokinase deficiency juga dapat menyebabkan cataract, tetapi biasanya tanpa severe liver disease seperti classic galactosemia.
 - [Penetrance vs Expressivity] Apa poin high-yield (pearl) tentang Penetrance vs Expressivity? :: Penetrance = apakah phenotype muncul atau tidak. Expressivity = seberapa berat/bagaimana phenotype muncul.

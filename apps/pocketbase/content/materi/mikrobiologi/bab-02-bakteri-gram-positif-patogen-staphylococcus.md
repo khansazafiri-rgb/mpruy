@@ -467,17 +467,17 @@ Catalase (−) → Streptococcus/Enterococcus → blood agar hemolysis → beta:
   • Jika katalase negatif → pikirkan Streptococcus/Enterococcus
   • Staphylococcus → lanjut koagulase, novobiocin, dan/atau mannitol salt agar
   • Streptococcus → lihat hemolisis alpha/beta/gamma, lalu bacitracin, CAMP, optochin, bile solubility, bile esculin, dan pertumbuhan 6.5% NaCl sesuai konteks
-- [Uji Katalase] Sebutkan interpretasi high-yield pada Uji Katalase. :: • Staphylococcus → katalase positif
+- [Uji Katalase] Sebutkan interpretasi high-yield pada Uji Katalase (Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus)). :: • Staphylococcus → katalase positif
   • Streptococcus → katalase negatif
   • Enterococcus → katalase negatif
-- [Penyakit S. aureus] Sebutkan hal-hal penting tentang Poin. :: • Abses kulit
+- [Penyakit S. aureus] Sebutkan hal-hal penting tentang Poin pada Penyakit S. aureus (Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus)). :: • Abses kulit
   • Infeksi kulit/jaringan lunak
   • Pneumonia
   • Bakteremia
   • Endokarditis
   • Penyakit yang dimediasi toksin
   • MRSA perlu dipertimbangkan pada konteks klinis/laboratorium yang sesuai
-- [Toksin S. aureus — Wajib Hafal] Sebutkan hal-hal penting tentang Pasangan toksin dan manifestasinya. :: • Enterotoxin → food poisoning; onset dan recovery relatif cepat dalam beberapa jam
+- [Toksin S. aureus — Wajib Hafal] Sebutkan pasangan toksin dan manifestasinya pada Toksin S. aureus — Wajib Hafal. :: • Enterotoxin → food poisoning; onset dan recovery relatif cepat dalam beberapa jam
   • TSST-1 → toxic shock syndrome: fever, rash, desquamation, vomiting, diarrhea
   • Exfoliative toxin → scalded skin syndrome, terutama pada bayi
   • Leukocidin → membunuh leukosit/WBC
@@ -485,30 +485,30 @@ Catalase (−) → Streptococcus/Enterococcus → blood agar hemolysis → beta:
 - [Streptococcus — Gambaran Umum] Sebutkan tiga pola hemolisis pada Streptococcus — Gambaran Umum. :: • Alpha hemolysis = incomplete/partial hemolysis, menghasilkan warna kehijauan
   • Beta hemolysis = complete hemolysis, zona clearing
   • Gamma = non-hemolytic
-- [Hemolisis: Peta Wajib] Sebutkan hal-hal penting tentang Gamma / non-hemolitik pada algoritme dasar. :: • Enterococcus Group D
+- [Hemolisis: Peta Wajib] Sebutkan hal-hal penting tentang Gamma / non-hemolitik pada algoritme dasar pada Hemolisis: Peta Wajib. :: • Enterococcus Group D
   • Group D non-enterococcus seperti S. bovis/S. equinus
 - [Komplikasi Pasca Streptococcus Group A] Sebutkan dua komplikasi non-supuratif utama pada Komplikasi Pasca Streptococcus Group A. :: • Acute rheumatic fever
   • Post-streptococcal acute glomerulonephritis
-- [Komplikasi Pasca Streptococcus Group A] Sebutkan hal-hal penting tentang Rheumatic fever — pattern recall. :: • Arthritis
+- [Komplikasi Pasca Streptococcus Group A] Sebutkan hal-hal penting tentang Rheumatic fever — pattern recall pada Komplikasi Pasca Streptococcus Group A. :: • Arthritis
   • Carditis
   • Chorea
   • Erythema marginatum
   • Subcutaneous nodules
-- [S. pneumoniae vs Viridans — Jangan Ketuker] Sebutkan hal-hal penting tentang Viridans streptococci. :: • Biasanya chain
+- [S. pneumoniae vs Viridans — Jangan Ketuker] Sebutkan hal-hal penting tentang Viridans streptococci pada S. pneumoniae vs Viridans — Jangan Ketuker (Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus)). :: • Biasanya chain
   • Optochin resistant
   • Bile solubility negative
   • Flora mulut
-- [Viridans Streptococci] Sebutkan kelompok yang termasuk pada Viridans Streptococci. :: • S. mitis
+- [Viridans Streptococci] Sebutkan kelompok yang termasuk pada Viridans Streptococci (Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus)). :: • S. mitis
   • S. mutans
   • S. salivarius
   • S. sanguis/sanguinis
-- [Uji Katalase] Apa jebakan yang sering muncul pada soal tentang Uji Katalase? :: Jangan menilai “gumpalan”; yang dicari pada uji katalase adalah BUBBLE karena terbentuk O2.
+- [Uji Katalase] Apa jebakan yang sering muncul pada soal tentang Uji Katalase (Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus))? :: Jangan menilai “gumpalan”; yang dicari pada uji katalase adalah BUBBLE karena terbentuk O2.
 - [Toksin S. aureus — Wajib Hafal] Bagaimana cara mengingat Toksin S. aureus — Wajib Hafal? :: FOOD → enterotoxin. SHOCK → TSST-1. SKIN PEELING → exfoliative toxin. WBC DAMAGE → leukocidin.
-- [Invasive/pyogenic disease] Apa poin high-yield (pearl) tentang Invasive/pyogenic disease? :: Kalau gejala muncul sangat cepat setelah makanan dan dominan muntah/keluhan GI, pikirkan preformed enterotoxin, bukan invasi bakteri ke jaringan usus.
-- [Staphylococcus Lugdunensis] Apa jebakan yang sering muncul pada soal tentang Staphylococcus Lugdunensis? :: Jangan menganggap semua CoNS otomatis “tidak berbahaya”.
+- [Invasive/pyogenic disease] Apa poin high-yield (pearl) tentang Invasive/pyogenic disease (Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus))? :: Kalau gejala muncul sangat cepat setelah makanan dan dominan muntah/keluhan GI, pikirkan preformed enterotoxin, bukan invasi bakteri ke jaringan usus.
+- [Staphylococcus Lugdunensis] Apa jebakan yang sering muncul pada soal tentang Staphylococcus Lugdunensis (Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus))? :: Jangan menganggap semua CoNS otomatis “tidak berbahaya”.
 - [Komplikasi Pasca Streptococcus Group A] Apa jebakan yang sering muncul pada soal tentang Komplikasi Pasca Streptococcus Group A? :: Kalau soal menyebut komplikasi muncul beberapa minggu setelah infeksi streptokokus dan mekanismenya imunologis, pikirkan rheumatic fever atau PSGN, bukan toksin langsung.
 - [Streptococcus agalactiae — Group B Strep (GBS)] Apa clue praktikum untuk Streptococcus agalactiae — Group B Strep? :: Beta-hemolitik. Group B. Bacitracin resistant pada algoritme klasik. CAMP positive.
-- [Viridans Streptococci] Apa clue praktikum untuk Viridans Streptococci? :: Alpha-hemolitik. Optochin resistant. Bile solubility negative. Flora normal mulut.
-- [Viridans Streptococci] Apa korelasi klinis dari Viridans Streptococci? :: Dental caries, terutama S. mutans. Subacute endocarditis, terutama dalam konteks bakteremia dari rongga mulut seperti setelah prosedur gigi.
+- [Viridans Streptococci] Apa clue praktikum untuk Viridans Streptococci (Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus))? :: Alpha-hemolitik. Optochin resistant. Bile solubility negative. Flora normal mulut.
+- [Viridans Streptococci] Apa korelasi klinis dari Viridans Streptococci (Bakteri Gram Positif Patogen (Staphylococcus, Streptococcus))? :: Dental caries, terutama S. mutans. Subacute endocarditis, terutama dalam konteks bakteremia dari rongga mulut seperti setelah prosedur gigi.
 - [Enterococcus — Kerabat Pembeda Penting] Apa clue praktikum untuk Enterococcus — Kerabat Pembeda Penting? :: Group D klasik. Gamma/non-hemolytic pada algoritme dasar. Bile esculin positif. Tumbuh pada 6.5% NaCl. Dapat PYR positif.
 - [Enterococcus — Kerabat Pembeda Penting] Apa korelasi klinis dari Enterococcus — Kerabat Pembeda Penting? :: UTI. Infeksi intraabdominal. Endokarditis. Resistensi antimikroba penting secara klinis.

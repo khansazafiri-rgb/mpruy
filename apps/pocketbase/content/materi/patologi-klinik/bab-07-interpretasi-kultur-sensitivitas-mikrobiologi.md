@@ -627,8 +627,8 @@ Kultur harus dimulai dari kualitas spesimen. Tentukan dulu apakah organisme meru
 - [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang dimaksud dengan MIC pada Interpretasi Kultur & Sensitivitas Mikrobiologi? :: Lowest concentration inhibiting visible growth
 - [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang dimaksud dengan Dalam EUCAST, I pada Interpretasi Kultur & Sensitivitas Mikrobiologi? :: Susceptible, increased exposure
 - [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang dimaksud dengan De-escalation pada Interpretasi Kultur & Sensitivitas Mikrobiologi? :: Prinsip stewardship penting
-- [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang perlu diketahui tentang Selalu baca report dengan urutan? :: Specimen → significance → organism → AST → resistance pattern → patient context
-- [Gram Stain — Nilai Klinis] Sebutkan hal-hal penting tentang Gram stain memberi informasi cepat tentang. :: • Gram-positive vs Gram-negative
+- [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang perlu diketahui tentang Selalu baca report dengan urutan pada Interpretasi Kultur & Sensitivitas Mikrobiologi? :: Specimen → significance → organism → AST → resistance pattern → patient context
+- [Gram Stain — Nilai Klinis] Sebutkan hal-hal penting tentang Gram stain memberi informasi cepat tentang pada Gram Stain — Nilai Klinis. :: • Gram-positive vs Gram-negative
   • Cocci vs bacilli
   • Pola susunan organisme
   • Jumlah leukosit
@@ -643,14 +643,14 @@ Kultur harus dimulai dari kualitas spesimen. Tentukan dulu apakah organisme meru
   • Pengambilan dari dua lokasi perifer yang berbeda membantu membedakan kontaminasi dari bakteremia sejati
   • Hindari mengambil hanya dari catheter kecuali ada alasan khusus untuk menilai catheter-related bloodstream infection
   • Antibiotik sebelum kultur dapat menurunkan yield
-- [Kultur Urin — Interpretasi] Sebutkan hal-hal penting tentang Kultur urin harus dibaca bersama. :: • Gejala urinary tract infection
+- [Kultur Urin — Interpretasi] Sebutkan hal-hal penting tentang Kultur urin harus dibaca bersama pada Kultur Urin — Interpretasi. :: • Gejala urinary tract infection
   • Urinalysis
   • Pyuria
   • Metode pengambilan
   • Jumlah koloni
   • Jenis organisme
   • Kehamilan atau kondisi khusus
-- [Wound Culture] Sebutkan hal-hal penting tentang Interpretasi harus memperhatikan. :: • Kedalaman luka
+- [Wound Culture] Sebutkan hal-hal penting tentang Interpretasi harus memperhatikan pada Wound Culture (Interpretasi Kultur & Sensitivitas Mikrobiologi). :: • Kedalaman luka
   • Debridement
   • Necrosis
   • Diabetic foot
@@ -661,13 +661,13 @@ Kultur harus dimulai dari kualitas spesimen. Tentukan dulu apakah organisme meru
   • Automated AST systems
   • Gradient diffusion strips
   • Molecular resistance testing sebagai pelengkap
-- [Breakpoint] Sebutkan hal-hal penting tentang Breakpoint mempertimbangkan. :: • Distribusi MIC
+- [Breakpoint] Sebutkan hal-hal penting tentang Breakpoint mempertimbangkan (Interpretasi Kultur & Sensitivitas Mikrobiologi). :: • Distribusi MIC
   • PK/PD
   • Dosis dan regimen
   • Site of infection
   • Data outcome
   • Mekanisme resistensi
-- [Biofilm] Sebutkan hal-hal penting tentang Relevansi klinis. :: • Prosthetic joint infection
+- [Biofilm] Sebutkan hal-hal penting tentang Relevansi klinis pada Biofilm (Interpretasi Kultur & Sensitivitas Mikrobiologi). :: • Prosthetic joint infection
   • Central-line infection
   • Catheter-associated UTI
   • Endocarditis
@@ -677,13 +677,13 @@ Kultur harus dimulai dari kualitas spesimen. Tentukan dulu apakah organisme meru
   • Decreased permeability
   • Efflux pump
   • Metabolic bypass
-- [Beta-Lactamase] Sebutkan kelompok klinis penting pada Beta-Lactamase. :: • Penicillinase
+- [Beta-Lactamase] Sebutkan kelompok klinis penting pada Beta-Lactamase (Interpretasi Kultur & Sensitivitas Mikrobiologi). :: • Penicillinase
   • ESBL
   • AmpC
   • Carbapenemase
-- [Carbapenemase] Sebutkan contoh mekanisme pada Carbapenemase. :: • KPC
+- [Carbapenemase] Sebutkan contoh mekanisme pada Carbapenemase (Interpretasi Kultur & Sensitivitas Mikrobiologi). :: • KPC
   • NDM dan metallo-beta-lactamase lain
   • OXA-48-like
-- [Asymptomatic Bacteriuria] Apa poin high-yield (pearl) tentang Asymptomatic Bacteriuria? :: Jangan menyamakan bacteriuria dengan symptomatic UTI. Interpretasi dan indikasi terapi bergantung pada kelompok pasien serta pedoman klinis.
+- [Asymptomatic Bacteriuria] Apa poin high-yield (pearl) tentang Asymptomatic Bacteriuria (Interpretasi Kultur & Sensitivitas Mikrobiologi)? :: Jangan menyamakan bacteriuria dengan symptomatic UTI. Interpretasi dan indikasi terapi bergantung pada kelompok pasien serta pedoman klinis.
 - [MIC — Minimum Inhibitory Concentration] Apa jebakan yang sering muncul pada soal tentang MIC — Minimum Inhibitory Concentration? :: MIC lebih rendah tidak otomatis berarti antibiotik “lebih kuat” dibanding antibiotik lain. MIC harus dibandingkan dengan breakpoint untuk kombinasi organisme–antibiotik tersebut. Jangan membandingkan angka MIC antar-antibiotik secara langsung tanpa konteks breakpoint dan farmakokinetik/farmakodinamik.
 - [S / I / R] Apa poin high-yield (pearl) tentang S / I / R? :: Kategori S/I/R tidak boleh dibaca tanpa mengetahui standard/breakpoint system yang dipakai lab.

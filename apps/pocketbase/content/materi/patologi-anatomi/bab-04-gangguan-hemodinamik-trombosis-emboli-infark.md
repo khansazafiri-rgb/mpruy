@@ -738,8 +738,8 @@ Bowel:
 - [Abnormal Blood Flow] Apa yang dimaksud dengan Contoh stasis pada Abnormal Blood Flow? :: Prolonged immobilization dan atrial fibrillation.
 - [Abnormal Blood Flow] Apa yang dimaksud dengan Contoh turbulence pada Abnormal Blood Flow? :: Aneurysm dan atherosclerotic plaque.
 - [Factor V Leiden] Apa yang dimaksud dengan Pattern soal pada Factor V Leiden? :: Recurrent DVT pada pasien relatif muda + family history → pikirkan inherited thrombophilia.
-- [Morfologi Infarct] Apa yang dimaksud dengan Exception utama pada Morfologi Infarct? :: Brain infarction → liquefactive necrosis.
-- [Septic Infarct] Apa yang dimaksud dengan Contoh klasik pada Septic Infarct? :: Infective endocarditis dengan septic emboli.
+- [Morfologi Infarct] Apa yang dimaksud dengan Exception utama pada Morfologi Infarct (Gangguan Hemodinamik (Trombosis, Emboli, Infark))? :: Brain infarction → liquefactive necrosis.
+- [Septic Infarct] Apa yang dimaksud dengan Contoh klasik pada Septic Infarct (Gangguan Hemodinamik (Trombosis, Emboli, Infark))? :: Infective endocarditis dengan septic emboli.
 - [Shock — Definisi] Jelaskan Final common pathway dalam konteks Shock — Definisi. :: ↓ tissue perfusion → cellular hypoxia → metabolic dysfunction → organ injury → bila persisten, multiorgan failure dan death.
 - [Virchow Triad — Vignette Pattern] Apa yang dimaksud dengan Scenario 1 pada Virchow Triad — Vignette Pattern? :: Pasien post-operative immobilized beberapa hari → stasis → DVT.
 - [Virchow Triad — Vignette Pattern] Apa yang dimaksud dengan Scenario 2 pada Virchow Triad — Vignette Pattern? :: Atherosclerotic plaque rupture → endothelial injury → arterial thrombosis.
@@ -766,24 +766,24 @@ Bowel:
 - [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang perlu diketahui tentang Cara tercepat mengerjakan soal pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Identifikasi TEMPAT CLOT → ARAH ALIRAN → ORGAN TARGET → TIPE NECROSIS
 - [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan THROMBOSIS pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: VIRCHOW TRIAD: endothelial injury + abnormal flow + hypercoagulability
 - [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan BRAIN infarct pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Liquefactive necrosis
-- [Mekanisme Edema] Sebutkan lima mekanisme utama pada Mekanisme Edema. :: • ↑ hydrostatic pressure
+- [Mekanisme Edema] Sebutkan lima mekanisme utama pada Mekanisme Edema (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • ↑ hydrostatic pressure
   • ↓ plasma oncotic pressure
   • Lymphatic obstruction
   • Sodium and water retention
   • Inflammation → ↑ vascular permeability
-- [Hemorrhage] Sebutkan istilah penting pada Hemorrhage. :: • Petechiae = perdarahan sangat kecil, biasanya 1–2 mm
+- [Hemorrhage] Sebutkan istilah penting pada Hemorrhage (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Petechiae = perdarahan sangat kecil, biasanya 1–2 mm
   • Purpura = lebih besar, sekitar beberapa mm
   • Ecchymosis = subcutaneous hematoma lebih besar
   • Hematoma = akumulasi darah lokal dalam jaringan
-- [Thrombosis — Definisi] Sebutkan hal-hal penting tentang Thrombus berbeda dari postmortem clot. :: • Thrombus melekat pada dinding dan sering menunjukkan Lines of Zahn
+- [Thrombosis — Definisi] Sebutkan hal-hal penting tentang Thrombus berbeda dari postmortem clot pada Thrombosis — Definisi. :: • Thrombus melekat pada dinding dan sering menunjukkan Lines of Zahn
   • Postmortem clot tidak melekat kuat dan dapat memiliki bagian “chicken fat” serta “currant jelly”
-- [Virchow Triad] Sebutkan tiga faktor utama thrombosis pada Virchow Triad. :: • Endothelial injury
+- [Virchow Triad] Sebutkan tiga faktor utama thrombosis pada Virchow Triad (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Endothelial injury
   • Abnormal blood flow: stasis atau turbulence
   • Hypercoagulability
-- [Hypercoagulability] Sebutkan hal-hal penting tentang Inherited causes. :: • Factor V Leiden mutation → resistance terhadap activated protein C
+- [Hypercoagulability] Sebutkan hal-hal penting tentang Inherited causes pada Hypercoagulability (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Factor V Leiden mutation → resistance terhadap activated protein C
   • Prothrombin gene mutation
   • Deficiency antithrombin, protein C, atau protein S
-- [Hypercoagulability] Sebutkan hal-hal penting tentang Acquired causes. :: • Prolonged immobilization
+- [Hypercoagulability] Sebutkan hal-hal penting tentang Acquired causes pada Hypercoagulability (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Prolonged immobilization
   • Malignancy
   • Pregnancy/postpartum
   • Oral estrogen exposure
@@ -799,23 +799,23 @@ Bowel:
   • Fat embolism
   • Air/gas embolism
   • Amniotic fluid embolism
-- [Red vs White Infarct] Sebutkan hal-hal penting tentang Red/hemorrhagic infarct. :: • Venous occlusion
+- [Red vs White Infarct] Sebutkan hal-hal penting tentang Red/hemorrhagic infarct pada Red vs White Infarct (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Venous occlusion
   • Loose tissues
   • Dual circulation
   • Previously congested tissue
   • Reperfusion
-- [Red vs White Infarct] Sebutkan hal-hal penting tentang White/anemic infarct. :: • Arterial occlusion
+- [Red vs White Infarct] Sebutkan hal-hal penting tentang White/anemic infarct pada Red vs White Infarct (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Arterial occlusion
   • Solid organs dengan end-arterial circulation
-- [Praktikum — Thrombus vs Postmortem Clot] Sebutkan hal-hal penting tentang Postmortem clot. :: • Not attached
+- [Praktikum — Thrombus vs Postmortem Clot] Sebutkan hal-hal penting tentang Postmortem clot pada Praktikum — Thrombus vs Postmortem Clot (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Not attached
   • Gelatinous
   • “chicken fat” upper yellow layer
   • “currant jelly” dependent red layer
   • No true Lines of Zahn
-- [Praktikum — Organ Congestion] Sebutkan hal-hal penting tentang Lung chronic congestion. :: • Hemosiderin-laden macrophages
+- [Praktikum — Organ Congestion] Sebutkan hal-hal penting tentang Lung chronic congestion pada Praktikum — Organ Congestion. :: • Hemosiderin-laden macrophages
   • Septal fibrosis
   • Heart failure cells
 - [Transudate vs Exudate] Apa poin high-yield (pearl) tentang Transudate vs Exudate? :: Edema pada heart failure biasanya transudative; inflammatory edema biasanya exudative.
-- [Platelet Aggregation] Bagaimana cara mengingat Platelet Aggregation? :: AGGREGATION = GpIIb/IIIa + FIBRINOGEN.
-- [Virchow Triad] Apa poin high-yield (pearl) tentang Virchow Triad? :: Arterial/cardiac thrombosis lebih sering didorong endothelial injury/turbulence; venous thrombosis sangat kuat terkait stasis.
+- [Platelet Aggregation] Bagaimana cara mengingat Platelet Aggregation (Gangguan Hemodinamik (Trombosis, Emboli, Infark))? :: AGGREGATION = GpIIb/IIIa + FIBRINOGEN.
+- [Virchow Triad] Apa poin high-yield (pearl) tentang Virchow Triad (Gangguan Hemodinamik (Trombosis, Emboli, Infark))? :: Arterial/cardiac thrombosis lebih sering didorong endothelial injury/turbulence; venous thrombosis sangat kuat terkait stasis.
 - [Antiphospholipid Antibody Syndrome] Apa poin high-yield (pearl) tentang Antiphospholipid Antibody Syndrome? :: Lupus anticoagulant → prolonged phospholipid-dependent clotting test tetapi thrombosis secara klinis.
-- [Paradoxical Embolism] Apa clue praktikum untuk Paradoxical Embolism? :: DVT + stroke/systemic arterial embolus tanpa sumber kiri yang jelas → pertimbangkan paradoxical embolism.
+- [Paradoxical Embolism] Apa clue praktikum untuk Paradoxical Embolism (Gangguan Hemodinamik (Trombosis, Emboli, Infark))? :: DVT + stroke/systemic arterial embolus tanpa sumber kiri yang jelas → pertimbangkan paradoxical embolism.

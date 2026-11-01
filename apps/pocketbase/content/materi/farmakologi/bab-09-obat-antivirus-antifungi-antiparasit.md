@@ -331,12 +331,12 @@ Antivirus menarget tahap spesifik siklus hidup virus. Acyclovir/valacyclovir men
 ## Flashcard {kartu}
 
 - [Virus dan Target Terapi Antivirus] Jelaskan Urutan siklus hidup virus dalam konteks Virus dan Target Terapi Antivirus. :: Recognition → attachment → penetration → uncoating → transcription → protein synthesis → replication → assembly → lysis/release.
-- [Acyclovir dan Valacyclovir] Pada Acyclovir dan Valacyclovir, apa mekanismenya? :: Acyclovir mengalami fosforilasi menjadi bentuk triphosphate aktif → berkompetisi dengan dGTP → menghambat DNA polymerase virus dan sintesis DNA virus.
+- [Acyclovir dan Valacyclovir] Pada Acyclovir dan Valacyclovir, apa mekanismenya (Obat Antivirus, Antifungi, Antiparasit)? :: Acyclovir mengalami fosforilasi menjadi bentuk triphosphate aktif → berkompetisi dengan dGTP → menghambat DNA polymerase virus dan sintesis DNA virus.
 - [Cidofovir, Famciclovir, dan Penciclovir] Pada Cidofovir, Famciclovir, dan Penciclovir, apa mekanisme cidofovirnya? :: Fosforilasi oleh enzim seluler → cidofovir diphosphate → berkompetisi dengan dCTP → menghambat sintesis DNA virus.
-- [Anti-Influenza] Pada Anti-Influenza, apa mekanismenya? :: Inhibisi neuraminidase → virion baru gagal dilepaskan secara efektif dari permukaan sel → virus beragregasi pada permukaan sel dan penyebaran di traktus respiratorius berkurang.
-- [Anti-Influenza] Pada Anti-Influenza, apa indikasinya? :: Influenza A dan B.
-- [Echinocandin] Pada Echinocandin, apa mekanismenya? :: Menghambat β-(1,3)-D-glucan synthase → pembentukan β-glucan dinding sel menurun → dinding sel menjadi rapuh. Efek fungisidal terhadap Candida, fungistatik terhadap Aspergillus, dan tidak efektif terhadap Cryptococcus.
-- [Antiektoparasit: Scabies] Jelaskan Pola soal scabies dalam konteks Antiektoparasit: Scabies. :: Kunikulus, papul, dan gatal khas. Terapinya adalah permethrin 5% topikal, dengan pengulangan setelah 7 hari.
+- [Anti-Influenza] Pada Anti-Influenza, apa mekanismenya (Obat Antivirus, Antifungi, Antiparasit)? :: Inhibisi neuraminidase → virion baru gagal dilepaskan secara efektif dari permukaan sel → virus beragregasi pada permukaan sel dan penyebaran di traktus respiratorius berkurang.
+- [Anti-Influenza] Pada Anti-Influenza, apa indikasinya (Obat Antivirus, Antifungi, Antiparasit)? :: Influenza A dan B.
+- [Echinocandin] Pada Echinocandin, apa mekanismenya (Obat Antivirus, Antifungi, Antiparasit)? :: Menghambat β-(1,3)-D-glucan synthase → pembentukan β-glucan dinding sel menurun → dinding sel menjadi rapuh. Efek fungisidal terhadap Candida, fungistatik terhadap Aspergillus, dan tidak efektif terhadap Cryptococcus.
+- [Antiektoparasit: Scabies] Jelaskan Pola soal scabies dalam konteks Antiektoparasit: Scabies (Obat Antivirus, Antifungi, Antiparasit). :: Kunikulus, papul, dan gatal khas. Terapinya adalah permethrin 5% topikal, dengan pengulangan setelah 7 hari.
 - [Obat Antivirus, Antifungi, Antiparasit] Apa yang perlu diingat tentang Ivermectin pada Obat Antivirus, Antifungi, Antiparasit? :: Paralisis parasit melalui mekanisme GABA-mediated
 - [Obat Antivirus, Antifungi, Antiparasit] Apa yang perlu diingat tentang Piperazine pada Obat Antivirus, Antifungi, Antiparasit? :: Flaccid paralysis melalui blokade ACh
 - [Obat Antivirus, Antifungi, Antiparasit] Apa yang perlu diingat tentang Praziquantel pada Obat Antivirus, Antifungi, Antiparasit? :: Meningkatkan permeabilitas membran parasit terhadap Ca²⁺
@@ -346,15 +346,15 @@ Antivirus menarget tahap spesifik siklus hidup virus. Acyclovir/valacyclovir men
 - [Obat Antivirus, Antifungi, Antiparasit] Apa yang perlu diingat tentang taeniasis pada Obat Antivirus, Antifungi, Antiparasit? :: Praziquantel
 - [Obat Antivirus, Antifungi, Antiparasit] Apa yang perlu diingat tentang schistosomiasis pada Obat Antivirus, Antifungi, Antiparasit? :: Praziquantel
 - [Obat Antivirus, Antifungi, Antiparasit] Apa yang perlu diingat tentang fascioliasis pada Obat Antivirus, Antifungi, Antiparasit? :: Triclabendazole
-- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Butuh versi oral dengan absorpsi lebih baik dari acyclovir? :: Valacyclovir
-- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: CMV + supresi sumsum tulang/neutropenia? :: Ganciclovir menjadi pola penting
-- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Analog pirofosfat + nefrotoksisitas + hipokalsemia/hipomagnesemia? :: Foscarnet
-- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Influenza A/B + hambat neuraminidase? :: Oseltamivir/zanamivir/peramivir
-- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: HIV entry + target CCR5? :: Maraviroc
-- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Antifungi + hambat β-(1,3)-D-glucan synthase? :: Echinocandin
-- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Antifungi + ikat ergosterol dan membentuk pori? :: Amphotericin B
+- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Butuh versi oral dengan absorpsi lebih baik dari acyclovir pada Obat Antivirus, Antifungi, Antiparasit? :: Valacyclovir
+- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: CMV + supresi sumsum tulang/neutropenia pada Obat Antivirus, Antifungi, Antiparasit? :: Ganciclovir menjadi pola penting
+- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Analog pirofosfat + nefrotoksisitas + hipokalsemia/hipomagnesemia pada Obat Antivirus, Antifungi, Antiparasit? :: Foscarnet
+- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Influenza A/B + hambat neuraminidase pada Obat Antivirus, Antifungi, Antiparasit? :: Oseltamivir/zanamivir/peramivir
+- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: HIV entry + target CCR5 pada Obat Antivirus, Antifungi, Antiparasit? :: Maraviroc
+- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Antifungi + hambat β-(1,3)-D-glucan synthase pada Obat Antivirus, Antifungi, Antiparasit? :: Echinocandin
+- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Antifungi + ikat ergosterol dan membentuk pori pada Obat Antivirus, Antifungi, Antiparasit? :: Amphotericin B
 - [Obat Antivirus, Antifungi, Antiparasit] Apa yang perlu diingat tentang Strongyloidiasis/onchocerciasis pada Obat Antivirus, Antifungi, Antiparasit? :: Ivermectin Antihelminth
-- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Vivax/ovale + kebutuhan radical cure hypnozoite? :: Primaquine; cek kontraindikasi G6PD/kehamilan
+- [Obat Antivirus, Antifungi, Antiparasit] Apa jawaban atau kesimpulan untuk petunjuk berikut: Vivax/ovale + kebutuhan radical cure hypnozoite pada Obat Antivirus, Antifungi, Antiparasit? :: Primaquine; cek kontraindikasi G6PD/kehamilan
 - [Obat Antivirus, Antifungi, Antiparasit] Apa yang dimaksud dengan Virus pada Obat Antivirus, Antifungi, Antiparasit? :: Parasit intraseluler obligat
 - [Obat Antivirus, Antifungi, Antiparasit] Apa yang dimaksud dengan Acyclovir pada Obat Antivirus, Antifungi, Antiparasit? :: Analog guanosin yang menghambat viral DNA polymerase
 - [Obat Antivirus, Antifungi, Antiparasit] Apa yang dimaksud dengan Foscarnet pada Obat Antivirus, Antifungi, Antiparasit? :: Analog pirofosfat yang langsung menghambat polymerase/RT
@@ -363,28 +363,28 @@ Antivirus menarget tahap spesifik siklus hidup virus. Acyclovir/valacyclovir men
   • Oral → pusing dan keluhan gastrointestinal
   • Parenteral → gangguan fungsi ginjal sementara, terutama pada kondisi dehidrasi
   • Thrombotic thrombocytopenic purpura juga dilaporkan pada penggunaan valacyclovir dosis tinggi dalam konteks pasien AIDS
-- [Cidofovir, Famciclovir, dan Penciclovir] Sebutkan hal-hal penting tentang Farmakokinetik dan toksisitas. :: • Bioavailabilitas oral sangat rendah
+- [Cidofovir, Famciclovir, dan Penciclovir] Sebutkan hal-hal penting tentang Farmakokinetik dan toksisitas pada Cidofovir, Famciclovir, dan Penciclovir. :: • Bioavailabilitas oral sangat rendah
   • Tidak dimetabolisme secara bermakna
   • Eliminasi ginjal melalui filtrasi dan sekresi tubular
   • Nefrotoksisitas bersifat dose-dependent
   • Probenecid diberikan bersama cidofovir untuk menurunkan paparan/toksisitas renal
-- [Ganciclovir, Valganciclovir, dan Foscarnet] Sebutkan hal-hal penting tentang Poin foscarnet. :: • Absorpsi oral buruk
+- [Ganciclovir, Valganciclovir, dan Foscarnet] Sebutkan hal-hal penting tentang Poin foscarnet pada Ganciclovir, Valganciclovir, dan Foscarnet (Obat Antivirus, Antifungi, Antiparasit). :: • Absorpsi oral buruk
   • Dieliminasi melalui ginjal dalam bentuk tidak berubah
   • Dapat digunakan pada konteks herpesvirus dan HIV tertentu
   • Efek samping utama: nefrotoksisitas, hipokalsemia, hipomagnesemia, toksisitas SSP, serta iritasi/ulkus lokal
   • Dosis perlu disesuaikan bila fungsi ginjal menurun
-- [Anti-Influenza] Sebutkan kelompok yang paling jelas dibahas adalah neuraminidase inhibitor pada Anti-Influenza. :: • Oseltamivir
+- [Anti-Influenza] Sebutkan kelompok yang paling jelas dibahas adalah neuraminidase inhibitor pada Anti-Influenza (Obat Antivirus, Antifungi, Antiparasit). :: • Oseltamivir
   • Zanamivir
   • Peramivir
-- [Anti-Influenza] Sebutkan efek samping pada Anti-Influenza. :: • Oseltamivir → mual/muntah atau keluhan GI; dapat berkurang bila diminum bersama makanan
+- [Anti-Influenza] Sebutkan efek samping pada Anti-Influenza (Obat Antivirus, Antifungi, Antiparasit). :: • Oseltamivir → mual/muntah atau keluhan GI; dapat berkurang bila diminum bersama makanan
   • Zanamivir → iritasi saluran napas
   • Peramivir → diare dan reaksi hipersensitivitas
-- [Anti-HIV dan Hepatitis Virus: Peta Kelas] Sebutkan hal-hal penting tentang Target masuk HIV. :: • Gp120 berikatan dengan CD4 lalu koreseptor CCR5/CXCR4
+- [Anti-HIV dan Hepatitis Virus: Peta Kelas] Sebutkan hal-hal penting tentang Target masuk HIV pada Anti-HIV dan Hepatitis Virus: Peta Kelas. :: • Gp120 berikatan dengan CD4 lalu koreseptor CCR5/CXCR4
   • Gp41 memediasi fusi membran
   • Maraviroc bekerja pada CCR5
   • Enfuvirtide menarget gp41
 - [Virus dan Target Terapi Antivirus] Apa poin high-yield (pearl) tentang Virus dan Target Terapi Antivirus? :: Jika soal menanyakan “di tahap mana obat bekerja”, jangan langsung menghafal nama virus. Tentukan dulu proses yang diblok: masuk sel, uncoating, sintesis genom/protein, integrasi, pematangan, atau release.
 - [Acyclovir dan Valacyclovir] Apa poin high-yield (pearl) tentang Acyclovir dan Valacyclovir? :: Acyclovir + dehidrasi + pemberian parenteral → pikirkan risiko gangguan ginjal. Valacyclovir = prodrug dengan absorpsi oral lebih baik.
-- [Ganciclovir, Valganciclovir, dan Foscarnet] Pola banding cepat anti-herpes: apa isi atau ringkasannya? :: Acyclovir/Valacyclovir → HSV/VZV; DNA polymerase; ginjal penting. Ganciclovir/Valganciclovir → CMV; pikirkan supresi sumsum tulang. Cidofovir → aktivasi oleh enzim seluler; nefrotoksik; probenecid. Foscarnet → langsung menghambat polymerase/RT; nefrotoksik + gangguan elektrolit.
-- [Anti-Influenza] Apa poin high-yield (pearl) tentang Anti-Influenza? :: Oseltamivir/zanamivir/peramivir → neuraminidase → release virus ↓. Zanamivir = rute inhalasi karena absorpsi oral buruk.
-- [Griseofulvin] Apa poin high-yield (pearl) tentang Griseofulvin? :: Cara hafal target antifungi: membran/ergosterol langsung → amphotericin B; sintesis ergosterol → azole; dinding β-glucan → echinocandin; DNA/RNA → flucytosine; mikrotubulus → griseofulvin.
+- [Ganciclovir, Valganciclovir, dan Foscarnet] Pola banding cepat anti-herpes: apa isi atau ringkasannya pada Ganciclovir, Valganciclovir, dan Foscarnet? :: Acyclovir/Valacyclovir → HSV/VZV; DNA polymerase; ginjal penting. Ganciclovir/Valganciclovir → CMV; pikirkan supresi sumsum tulang. Cidofovir → aktivasi oleh enzim seluler; nefrotoksik; probenecid. Foscarnet → langsung menghambat polymerase/RT; nefrotoksik + gangguan elektrolit.
+- [Anti-Influenza] Apa poin high-yield (pearl) tentang Anti-Influenza (Obat Antivirus, Antifungi, Antiparasit)? :: Oseltamivir/zanamivir/peramivir → neuraminidase → release virus ↓. Zanamivir = rute inhalasi karena absorpsi oral buruk.
+- [Griseofulvin] Apa poin high-yield (pearl) tentang Griseofulvin (Obat Antivirus, Antifungi, Antiparasit)? :: Cara hafal target antifungi: membran/ergosterol langsung → amphotericin B; sintesis ergosterol → azole; dinding β-glucan → echinocandin; DNA/RNA → flucytosine; mikrotubulus → griseofulvin.

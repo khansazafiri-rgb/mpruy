@@ -838,15 +838,15 @@ External sphincters dan rhythmic perineal contractions: somatic pudendal contrib
 - [Clinical Anatomy Urinary Tract] Apa yang dimaksud dengan Ureteric injury pada Clinical Anatomy Urinary Tract? :: Pelvic surgery terutama dekat uterine artery/cervix berisiko mencederai ureter. Identifikasi ureter sebelum ligation struktur vascular adalah prinsip operasi penting.
 - [Clinical Anatomy Urinary Tract] Apa yang dimaksud dengan Suprapubic access pada Clinical Anatomy Urinary Tract? :: Bladder yang distended naik superior terhadap pubic symphysis dan mendorong peritoneum ke atas, sehingga akses suprapubic tertentu dapat mencapai bladder tanpa memasuki peritoneal cavity jika dilakukan pada plane yang tepat.
 - [Ovarian Vessels, Lymphatics, dan Innervation] Apa yang dimaksud dengan Lymphatic drainage pada Ovarian Vessels, Lymphatics, dan Innervation? :: Ovary → lumbar/lateral aortic (para-aortic) nodes, bukan superficial inguinal nodes.
-- [Vagina] Pada Vagina, apa konsekuensi klinisnya? :: Sensitivity dan pain character berbeda antara upper dan lower vagina.
+- [Vagina] Pada Vagina, apa konsekuensi klinisnya (Anatomi Sistem Urogenital)? :: Sensitivity dan pain character berbeda antara upper dan lower vagina.
 - [Clinical Anatomy Female Genitalia] Apa yang dimaksud dengan Ureter injury pada Clinical Anatomy Female Genitalia? :: Uterine artery–ureter relation membuat ureter vulnerable saat uterine artery ligation/hysterectomy.
 - [Clinical Anatomy Female Genitalia] Apa yang dimaksud dengan Ovarian torsion pada Clinical Anatomy Female Genitalia? :: Rotation ovary/adnexa dapat mengganggu venous/lymphatic outflow lebih dulu dan kemudian arterial inflow. Suspensory and ovarian ligament relationships menjelaskan axis of twisting.
 - [Clinical Anatomy Female Genitalia] Apa struktur atau batas posterior fornix pada Clinical Anatomy Female Genitalia? :: Kedekatan dengan rectouterine pouch merupakan landmark penting untuk drainage/access procedures dan untuk memahami spread of pelvic fluid.
 - [Testis: Gross Anatomy dan Vessels] Apa yang dimaksud dengan Arterial supply pada Testis: Gross Anatomy dan Vessels? :: Testicular artery dari abdominal aorta.
 - [Testicular Lymphatics versus Scrotal Lymphatics] Apa yang dimaksud dengan Scrotal skin pada Testicular Lymphatics versus Scrotal Lymphatics? :: → superficial inguinal nodes.
-- [Bulbourethral Glands] Apa yang dimaksud dengan Homolog wanita pada Bulbourethral Glands? :: Greater vestibular glands.
-- [Erection, Emission, dan Ejaculation: Anatomy of Control] Jelaskan Erection. :: Terutama parasympathetic pathways S2–S4 melalui pelvic splanchnic nerves dan cavernous nerves menyebabkan vasodilation erectile tissue.
-- [Erection, Emission, dan Ejaculation: Anatomy of Control] Jelaskan Emission. :: Sympathetic pathways mendorong sperm/secretions menuju prostatic urethra dan mengontraksikan internal bladder neck region untuk mengurangi retrograde flow.
+- [Bulbourethral Glands] Apa yang dimaksud dengan Homolog wanita pada Bulbourethral Glands (Anatomi Sistem Urogenital)? :: Greater vestibular glands.
+- [Erection, Emission, dan Ejaculation: Anatomy of Control] Jelaskan Erection pada Erection, Emission, dan Ejaculation: Anatomy of Control (Anatomi Sistem Urogenital). :: Terutama parasympathetic pathways S2–S4 melalui pelvic splanchnic nerves dan cavernous nerves menyebabkan vasodilation erectile tissue.
+- [Erection, Emission, dan Ejaculation: Anatomy of Control] Jelaskan Emission pada Erection, Emission, dan Ejaculation: Anatomy of Control (Anatomi Sistem Urogenital). :: Sympathetic pathways mendorong sperm/secretions menuju prostatic urethra dan mengontraksikan internal bladder neck region untuk mengurangi retrograde flow.
 - [Clinical Anatomy Male Genitalia] Apa yang dimaksud dengan Testicular torsion pada Clinical Anatomy Male Genitalia? :: Twisting spermatic cord dapat menghambat venous outflow dan kemudian arterial inflow. Ini adalah surgical emergency. Anatomy cord and tunica vaginalis menentukan mobility.
 - [Clinical Anatomy Male Genitalia] Apa yang dimaksud dengan Hydrocele pada Clinical Anatomy Male Genitalia? :: Fluid dapat terkumpul dalam tunica vaginalis; congenital communicating hydrocele terkait patent processus vaginalis.
 - [Clinical Anatomy Male Genitalia] Apa yang dimaksud dengan Vasectomy pada Clinical Anatomy Male Genitalia? :: Ductus deferens dipotong/dioklusi pada spermatic cord/scrotal region; testicular endocrine function dan testosterone production tetap karena vascular supply testis dipertahankan.
@@ -859,14 +859,14 @@ External sphincters dan rhythmic perineal contractions: somatic pudendal contrib
 - [Anatomi Sistem Urogenital] Apa yang dimaksud dengan Renal segmental arteries pada Anatomi Sistem Urogenital? :: Functional end arteries
 - [Anatomi Sistem Urogenital] Apa yang dimaksud dengan Ampulla uterine tube pada Anatomi Sistem Urogenital? :: Lokasi fertilization tersering
 - [Anatomi Sistem Urogenital] Apa yang dimaksud dengan External urethral meatus pada Anatomi Sistem Urogenital? :: Bagian normal tersempit male urethra
-- [Relations of the Kidneys] Sebutkan hal-hal penting tentang Rib relation. :: • Left kidney berhubungan dengan ribs XI dan XII
+- [Relations of the Kidneys] Sebutkan hal-hal penting tentang Rib relation pada Relations of the Kidneys (Anatomi Sistem Urogenital). :: • Left kidney berhubungan dengan ribs XI dan XII
   • Right kidney terutama dengan rib XII
-- [Relations of the Kidneys] Sebutkan hal-hal penting tentang Right kidney. :: • Right suprarenal gland pada superior pole
+- [Relations of the Kidneys] Sebutkan hal-hal penting tentang Right kidney pada Relations of the Kidneys (Anatomi Sistem Urogenital). :: • Right suprarenal gland pada superior pole
   • Liver pada area anterior yang luas
   • Second part of duodenum dekat medial region
   • Right colic flexure/ascending colon inferolateral
   • Loops of small intestine pada bagian inferior
-- [Ureter: Course dan Relations] Sebutkan hal-hal penting tentang Abdominal course. :: • Dimulai dari ureteropelvic junction
+- [Ureter: Course dan Relations] Sebutkan hal-hal penting tentang Abdominal course pada Ureter: Course dan Relations (Anatomi Sistem Urogenital). :: • Dimulai dari ureteropelvic junction
   • Turun pada anterior surface psoas major
   • Gonadal vessels dapat berhubungan dengannya
   • Menyeberangi pelvic brim dekat bifurcation common iliac atau external iliac vessels, tergantung level anatomi individu
@@ -878,9 +878,9 @@ External sphincters dan rhythmic perineal contractions: somatic pudendal contrib
   • Uterine tubes
   • Uterus
   • Vagina
-- [Ovarian Vessels, Lymphatics, dan Innervation] Sebutkan hal-hal penting tentang Venous drainage. :: • Right ovarian vein → inferior vena cava
+- [Ovarian Vessels, Lymphatics, dan Innervation] Sebutkan hal-hal penting tentang Venous drainage pada Ovarian Vessels, Lymphatics, dan Innervation (Anatomi Sistem Urogenital). :: • Right ovarian vein → inferior vena cava
   • Left ovarian vein → left renal vein
-- [Broad Ligament dan Uterine Supports] Sebutkan hal-hal penting tentang Broad ligament. :: • Mesometrium — bagian terbesar terkait uterus
+- [Broad Ligament dan Uterine Supports] Sebutkan hal-hal penting tentang Broad ligament pada Broad Ligament dan Uterine Supports (Anatomi Sistem Urogenital). :: • Mesometrium — bagian terbesar terkait uterus
   • Mesosalpinx — terkait uterine tube
   • Mesovarium — terkait ovary
 - [Broad Ligament dan Uterine Supports] Sebutkan support penting pada Broad Ligament dan Uterine Supports. :: • Pelvic diaphragm
@@ -897,10 +897,10 @@ External sphincters dan rhythmic perineal contractions: somatic pudendal contrib
   • Bulbourethral glands
   • Penis
   • Scrotum
-- [Scrotum dan Testicular Coverings] Sebutkan hal-hal penting tentang Derivasi dinding abdomen. :: • External spermatic fascia ← external oblique aponeurosis
+- [Scrotum dan Testicular Coverings] Sebutkan hal-hal penting tentang Derivasi dinding abdomen pada Scrotum dan Testicular Coverings. :: • External spermatic fascia ← external oblique aponeurosis
   • Cremasteric fascia/muscle ← internal oblique
   • Internal spermatic fascia ← transversalis fascia
-- [Spermatic Cord] Sebutkan contents utama pada Spermatic Cord. :: • Ductus deferens
+- [Spermatic Cord] Sebutkan contents utama pada Spermatic Cord (Anatomi Sistem Urogenital). :: • Ductus deferens
   • Testicular artery
   • Artery to ductus deferens
   • Cremasteric artery
@@ -909,7 +909,7 @@ External sphincters dan rhythmic perineal contractions: somatic pudendal contrib
   • Sympathetic/autonomic fibers
   • Lymphatic vessels
   • Remnant processus vaginalis bila ada
-- [Prostate] Sebutkan zones yang penting klinis pada Prostate. :: • Peripheral zone — lokasi tersering prostate carcinoma
+- [Prostate] Sebutkan zones yang penting klinis pada Prostate (Anatomi Sistem Urogenital). :: • Peripheral zone — lokasi tersering prostate carcinoma
   • Transition zone — mengelilingi proximal urethra dan merupakan lokasi khas benign prostatic hyperplasia
   • Central zone — mengelilingi ejaculatory ducts
 - [Coverings dan Fixation Kidney] Apa korelasi klinis dari Coverings dan Fixation Kidney? :: Hilangnya supporting fat yang ekstrem dapat meningkatkan mobilitas kidney, tetapi istilah nephroptosis harus dibedakan dari variasi normal descent saat inspirasi.
@@ -917,8 +917,8 @@ External sphincters dan rhythmic perineal contractions: somatic pudendal contrib
 - [Internal Anatomy Kidney] Apa poin high-yield (pearl) tentang Internal Anatomy Kidney? :: Renal hilum = “pintu” pada medial border; renal sinus = cavity internal setelah melewati hilum; renal pelvis = collecting funnel di dalam sinus.
 - [Ureter: Course dan Relations] Bagaimana cara mengingat Ureter: Course dan Relations? :: “water under the bridge” — ureter (water) lewat di bawah uterine artery (bridge).
 - [Tiga Penyempitan Ureter] Apa jebakan yang sering muncul pada soal tentang Tiga Penyempitan Ureter? :: Jangan menghafal “tiga titik” tanpa memahami course. Jika ditanya lokasi batu pada imaging atau pain migration, ikuti ureter dari kidney ke bladder.
-- [Urethra] Apa jebakan yang sering muncul pada soal tentang Urethra? :: Bagian paling sempit dari male urethra secara anatomi normal adalah external urethral meatus; membranous urethra penting karena relatif fixed dan berkaitan dengan sphincter/deep perineal structures.
+- [Urethra] Apa jebakan yang sering muncul pada soal tentang Urethra (Anatomi Sistem Urogenital)? :: Bagian paling sempit dari male urethra secara anatomi normal adalah external urethral meatus; membranous urethra penting karena relatif fixed dan berkaitan dengan sphincter/deep perineal structures.
 - [Ovarian Vessels, Lymphatics, dan Innervation] Apa poin high-yield (pearl) tentang Ovarian Vessels, Lymphatics, dan Innervation? :: Gonadal blood supply dan lymphatics “mengingat” tempat asal embrioniknya yang tinggi di abdomen.
 - [Broad Ligament dan Uterine Supports] Apa jebakan yang sering muncul pada soal tentang Broad Ligament dan Uterine Supports? :: Broad ligament = peritoneal fold/mesentery-like structure, bukan primary anti-prolapse ligament.
-- [Ductus Deferens] Mnemonic relation near bladder: apa isi atau ringkasannya? :: Pada pria, ductus deferens crosses over ureter.
-- [Spermatic Cord] Apa jebakan yang sering muncul pada soal tentang Spermatic Cord? :: Ilioinguinal nerve berjalan melalui bagian inguinal canal dan keluar superficial ring, tetapi bukan true content spermatic cord karena tidak masuk melalui deep inguinal ring dan tidak berada dalam seluruh cord coverings.
+- [Ductus Deferens] Mnemonic relation near bladder: apa isi atau ringkasannya pada Ductus Deferens (Anatomi Sistem Urogenital)? :: Pada pria, ductus deferens crosses over ureter.
+- [Spermatic Cord] Apa jebakan yang sering muncul pada soal tentang Spermatic Cord (Anatomi Sistem Urogenital)? :: Ilioinguinal nerve berjalan melalui bagian inguinal canal dan keluar superficial ring, tetapi bukan true content spermatic cord karena tidak masuk melalui deep inguinal ring dan tidak berada dalam seluruh cord coverings.

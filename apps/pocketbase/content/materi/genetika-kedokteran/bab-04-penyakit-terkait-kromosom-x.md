@@ -483,12 +483,12 @@ Autosomal recessive:
 
 ## Flashcard {kartu}
 
-- [X-Linked Recessive (XLR)] Jelaskan Setiap anak laki-laki dalam konteks X-Linked Recessive. :: 50% affected, 50% normal.
-- [X-Linked Recessive (XLR)] Jelaskan Setiap anak perempuan dalam konteks X-Linked Recessive. :: 50% carrier, 50% non-carrier.
+- [X-Linked Recessive (XLR)] Jelaskan Setiap anak laki-laki dalam konteks X-Linked Recessive (Penyakit Terkait Kromosom X). :: 50% affected, 50% normal.
+- [X-Linked Recessive (XLR)] Jelaskan Setiap anak perempuan dalam konteks X-Linked Recessive (Penyakit Terkait Kromosom X). :: 50% carrier, 50% non-carrier.
 - [X-Inactivation / Lyonization] Jelaskan Rumus Barr body dalam konteks X-Inactivation / Lyonization. :: Jumlah Barr body ≈ jumlah kromosom X − 1.
-- [Fragile X Syndrome] Pada Fragile X Syndrome, apa mekanismenya? :: Normal repeat → premutation → full mutation.
+- [Fragile X Syndrome] Pada Fragile X Syndrome, apa mekanismenya (Penyakit Terkait Kromosom X)? :: Normal repeat → premutation → full mutation.
 - [Fragile X Syndrome] Apa yang dimaksud dengan Anticipation pada Fragile X Syndrome? :: Repeat dapat bertambah antar generasi sehingga risiko/keparahan dapat meningkat pada keturunan berikutnya.
-- [X-Linked Hypophosphatemic Rickets] Apa yang dimaksud dengan Pedigree clue pada X-Linked Hypophosphatemic Rickets? :: Affected father → seluruh daughters affected, tidak ada sons affected melalui ayah.
+- [X-Linked Hypophosphatemic Rickets] Pada X-Linked Hypophosphatemic Rickets, apa pedigree cluenya? :: Affected father → seluruh daughters affected, tidak ada sons affected melalui ayah.
 - [Pola Kasus Klinis yang Sering Keluar] Apa yang dimaksud dengan Pattern 1 pada Penyakit Terkait Kromosom X? :: Anak laki-laki, recurrent hemarthrosis, aPTT memanjang, maternal uncle dengan keluhan sama. → Hemophilia A/B; pikirkan X-linked recessive.
 - [Pola Kasus Klinis yang Sering Keluar] Apa yang dimaksud dengan Pattern 2 pada Penyakit Terkait Kromosom X? :: Anak laki-laki usia dini dengan proximal weakness, Gowers sign, calf pseudohypertrophy, CK sangat tinggi. → Duchenne muscular dystrophy.
 - [Pola Kasus Klinis yang Sering Keluar] Apa yang dimaksud dengan Pattern 3 pada Penyakit Terkait Kromosom X? :: Pria mengalami hemolysis setelah primaquine/fava beans, ditemukan bite cells. → G6PD deficiency.
@@ -496,7 +496,7 @@ Autosomal recessive:
 - [Pola Kasus Klinis yang Sering Keluar] Apa yang dimaksud dengan Pattern 5 pada Penyakit Terkait Kromosom X? :: Pedigree menunjukkan ayah affected dan seluruh anak perempuan affected tanpa anak laki-laki affected. → X-linked dominant.
 - [Pola Kasus Klinis yang Sering Keluar] Apa yang dimaksud dengan Pattern 6 pada Penyakit Terkait Kromosom X? :: Laki-laki infant dengan hyperammonemia dan urinary orotic acid tinggi. → OTC deficiency.
 - [Penyakit Terkait Kromosom X] Apa yang perlu diingat tentang Affected father XLD pada Penyakit Terkait Kromosom X? :: Semua daughters affected
-- [Penyakit Terkait Kromosom X] Apa jawaban atau kesimpulan untuk petunjuk berikut: Affected father XLR + normal mother? :: Semua daughters carrier, sons normal terhadap alel ayah
+- [Penyakit Terkait Kromosom X] Apa jawaban atau kesimpulan untuk petunjuk berikut: Affected father XLR + normal mother pada Penyakit Terkait Kromosom X? :: Semua daughters carrier, sons normal terhadap alel ayah
 - [Penyakit Terkait Kromosom X] Apa yang perlu diingat tentang Carrier XLR mother pada Penyakit Terkait Kromosom X? :: 50% sons affected
 - [Penyakit Terkait Kromosom X] Apa yang dimaksud dengan Barr body pada Penyakit Terkait Kromosom X? :: Jumlah X − 1
 - [Penyakit Terkait Kromosom X] Apa yang dimaksud dengan DMD pada Penyakit Terkait Kromosom X? :: Dystrophin, biasanya out-of-frame; Becker biasanya in-frame
@@ -507,24 +507,24 @@ Autosomal recessive:
 - [Penyakit Terkait Kromosom X] Apa yang perlu diingat tentang XLD: affected father pada Penyakit Terkait Kromosom X? :: Seluruh daughters affected, sons tidak
 - [Penyakit Terkait Kromosom X] Apa yang dimaksud dengan G6PD pada Penyakit Terkait Kromosom X? :: Oxidative hemolysis, Heinz bodies, bite cells
 - [Penyakit Terkait Kromosom X] Apa yang dimaksud dengan OTC pada Penyakit Terkait Kromosom X? :: Hyperammonemia + orotic acid ↑
-- [X-Linked Recessive (XLR)] Sebutkan karakteristik pedigree pada X-Linked Recessive. :: • Lebih sering mengenai laki-laki
+- [X-Linked Recessive (XLR)] Sebutkan karakteristik pedigree pada X-Linked Recessive (Penyakit Terkait Kromosom X). :: • Lebih sering mengenai laki-laki
   • Dapat melewati satu atau beberapa generasi melalui perempuan carrier
   • Tidak ada transmisi ayah → anak laki-laki
   • Anak laki-laki affected biasanya mendapat alel mutan dari ibu carrier
   • Perempuan affected jauh lebih jarang
-- [X-Linked Dominant (XLD)] Sebutkan pola pedigree pada X-Linked Dominant. :: • Dapat mengenai laki-laki dan perempuan
+- [X-Linked Dominant (XLD)] Sebutkan pola pedigree pada X-Linked Dominant (Penyakit Terkait Kromosom X). :: • Dapat mengenai laki-laki dan perempuan
   • Sering tampak vertikal antar generasi
   • Tidak ada father-to-son transmission
-- [Hemophilia A & B] Sebutkan hal-hal penting tentang Hemophilia B. :: • Gen: F9
+- [Hemophilia A & B] Sebutkan hal-hal penting tentang Hemophilia B pada Hemophilia A & B (Penyakit Terkait Kromosom X). :: • Gen: F9
   • Kekurangan factor IX
   • Juga X-linked recessive
 - [Hemophilia A & B] Sebutkan pola laboratorium klasik pada Hemophilia A & B. :: • APTT memanjang
   • PT umumnya normal
   • Platelet count normal
   • Bleeding time/primary hemostasis umumnya normal
-- [Hemophilia A & B] Sebutkan hal-hal penting tentang Clinical genetics. :: • Family history dapat membantu tetapi mutasi de novo tetap mungkin
+- [Hemophilia A & B] Sebutkan hal-hal penting tentang Clinical genetics pada Hemophilia A & B (Penyakit Terkait Kromosom X). :: • Family history dapat membantu tetapi mutasi de novo tetap mungkin
   • Carrier perempuan dapat memiliki factor level rendah karena lyonization dan dapat mengalami bleeding tendency
-- [Duchenne & Becker Muscular Dystrophy] Sebutkan hal-hal penting tentang Duchenne muscular dystrophy (DMD). :: • X-linked recessive
+- [Duchenne & Becker Muscular Dystrophy] Sebutkan hal-hal penting tentang Duchenne muscular dystrophy (DMD) pada Duchenne & Becker Muscular Dystrophy. :: • X-linked recessive
   • Biasanya akibat mutasi yang menyebabkan out-of-frame transcript → dystrophin sangat sedikit/absen
   • Onset usia dini
   • Progressive proximal muscle weakness
@@ -534,36 +534,36 @@ Autosomal recessive:
   • Cardiomyopathy dan respiratory muscle weakness dapat terjadi
 - [Duchenne & Becker Muscular Dystrophy] Sebutkan pemeriksaan genetik pada Duchenne & Becker Muscular Dystrophy. :: • Deletion/duplication analysis seperti MLPA berguna karena banyak kasus melibatkan copy-number change
   • Sequencing digunakan untuk varian kecil bila deletion/duplication tidak ditemukan
-- [Lesch–Nyhan Syndrome] Sebutkan hal-hal penting tentang Clinical clues. :: • Hyperuricemia
+- [Lesch–Nyhan Syndrome] Sebutkan hal-hal penting tentang Clinical clues pada Lesch–Nyhan Syndrome (Penyakit Terkait Kromosom X). :: • Hyperuricemia
   • Neurologic dysfunction/dystonia
   • Self-injurious behavior
-- [Fabry Disease] Sebutkan manifestasi klasik pada Fabry Disease. :: • Acroparesthesia
+- [Fabry Disease] Sebutkan manifestasi klasik pada Fabry Disease (Penyakit Terkait Kromosom X). :: • Acroparesthesia
   • Angiokeratoma
   • Hypohidrosis
   • Corneal verticillata
   • Progressive kidney disease
   • Cardiomyopathy
   • Cerebrovascular complications
-- [Rett Syndrome] Sebutkan clinical course klasik pada Rett Syndrome. :: • Awal perkembangan tampak relatif normal
+- [Rett Syndrome] Sebutkan clinical course klasik pada Rett Syndrome (Penyakit Terkait Kromosom X). :: • Awal perkembangan tampak relatif normal
   • Kemudian developmental regression
   • Loss of purposeful hand use
   • Stereotypic hand movements
   • Impaired language
   • Gait abnormalities
   • Dapat disertai seizures
-- [Cara Membedakan XLR, XLD, AD, AR dari Pedigree] Sebutkan hal-hal penting tentang X-linked recessive. :: • Lebih banyak laki-laki affected
+- [Cara Membedakan XLR, XLD, AD, AR dari Pedigree] Sebutkan hal-hal penting tentang X-linked recessive pada Cara Membedakan XLR, XLD, AD, AR dari Pedigree (Penyakit Terkait Kromosom X). :: • Lebih banyak laki-laki affected
   • Dapat skip generation
   • Tidak ada father-to-son
   • Affected father → semua daughters minimal menerima alel mutan
-- [Cara Membedakan XLR, XLD, AD, AR dari Pedigree] Sebutkan hal-hal penting tentang Autosomal dominant. :: • Vertical transmission
+- [Cara Membedakan XLR, XLD, AD, AR dari Pedigree] Sebutkan hal-hal penting tentang Autosomal dominant pada Cara Membedakan XLR, XLD, AD, AR dari Pedigree (Penyakit Terkait Kromosom X). :: • Vertical transmission
   • Laki-laki dan perempuan sama
   • Father-to-son BISA terjadi
 - [Big Picture: Kenapa Penyakit X-Linked Punya Pola Khas?] Apa jebakan yang sering muncul pada soal tentang Penyakit Terkait Kromosom X? :: Pada penyakit X-linked klasik, TIDAK ada transmisi ayah → anak laki-laki karena ayah memberikan kromosom Y kepada anak laki-lakinya. Ayah selalu memberikan kromosom X kepada seluruh anak perempuannya. Pernyataan “tidak ada male-to-male transmission” adalah petunjuk pedigree yang sangat kuat untuk sifat X-linked.
-- [X-Linked Recessive (XLR)] Apa jebakan yang sering muncul pada soal tentang X-Linked Recessive? :: “Seorang ayah hemofilia memiliki anak laki-laki hemofilia.” → Penyakit anak laki-laki TIDAK diwariskan dari ayah. Cari carrier status ibu atau mutasi de novo.
+- [X-Linked Recessive (XLR)] Apa jebakan yang sering muncul pada soal tentang X-Linked Recessive (Penyakit Terkait Kromosom X)? :: “Seorang ayah hemofilia memiliki anak laki-laki hemofilia.” → Penyakit anak laki-laki TIDAK diwariskan dari ayah. Cari carrier status ibu atau mutasi de novo.
 - [Kapan Perempuan Bisa Terkena Penyakit X-Linked Recessive?] Apa poin high-yield (pearl) tentang Kapan Perempuan Bisa Terkena Penyakit X-Linked Recessive? :: Carrier perempuan bukan selalu “100% sehat”. Karena X-inactivation, sebagian carrier dapat memiliki gejala ringan sampai bermakna.
-- [Lesch–Nyhan Syndrome] Apa jebakan yang sering muncul pada soal tentang Lesch–Nyhan Syndrome? :: Lesch–Nyhan adalah contoh hubungan langsung antara X-linked inheritance dan metabolisme purin.
-- [Fabry Disease] Apa jebakan yang sering muncul pada soal tentang Fabry Disease? :: Perempuan heterozygous dapat memiliki manifestasi signifikan karena random/skewed X-inactivation. Jadi jangan menganggap semua perempuan heterozygous hanya “carrier tanpa gejala”.
+- [Lesch–Nyhan Syndrome] Apa jebakan yang sering muncul pada soal tentang Lesch–Nyhan Syndrome (Penyakit Terkait Kromosom X)? :: Lesch–Nyhan adalah contoh hubungan langsung antara X-linked inheritance dan metabolisme purin.
+- [Fabry Disease] Apa jebakan yang sering muncul pada soal tentang Fabry Disease (Penyakit Terkait Kromosom X)? :: Perempuan heterozygous dapat memiliki manifestasi signifikan karena random/skewed X-inactivation. Jadi jangan menganggap semua perempuan heterozygous hanya “carrier tanpa gejala”.
 - [Ornithine Transcarbamylase (OTC) Deficiency] Apa jebakan yang sering muncul pada soal tentang Ornithine Transcarbamylase (OTC) Deficiency? :: OTC deficiency → hyperammonemia + ↑orotic acid. CPS I deficiency → hyperammonemia tetapi orotic acid tidak meningkat seperti OTC.
-- [Incontinentia Pigmenti] Apa poin high-yield (pearl) tentang Incontinentia Pigmenti? :: Pola kulit mosaic pada perempuan sangat ilustratif untuk efek lyonization.
+- [Incontinentia Pigmenti] Apa poin high-yield (pearl) tentang Incontinentia Pigmenti (Penyakit Terkait Kromosom X)? :: Pola kulit mosaic pada perempuan sangat ilustratif untuk efek lyonization.
 - [Pseudoautosomal Regions — Pengecualian Penting] Apa jebakan yang sering muncul pada soal tentang Pseudoautosomal Regions — Pengecualian Penting? :: “Semua gen kromosom X tidak bisa ditransmisikan ayah ke anak laki-laki” → SALAH untuk gen di pseudoautosomal region.
 - [Diagnosis Molekuler — Pilih Tes Berdasarkan Penyakit] Apa jebakan yang sering muncul pada soal tentang Diagnosis Molekuler — Pilih Tes Berdasarkan Penyakit? :: Tes “genetik” bukan satu tes tunggal. Metode harus disesuaikan dengan tipe mutasi yang dicurigai.

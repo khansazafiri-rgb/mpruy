@@ -282,18 +282,18 @@ Ketika menemukan obat atau toksin yang menargetkan enzim, tanyakan tiga hal: (1)
 
 ## Flashcard {kartu}
 
-- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Apoenzyme. :: Bagian protein enzim yang belum aktif tanpa komponen tambahannya.
-- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Cofactor. :: Komponen nonprotein yang diperlukan untuk aktivitas enzim; dapat berupa ion logam atau molekul organik.
-- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Coenzyme. :: Cofactor organik, sering berasal dari vitamin.
+- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Apoenzyme pada Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme (Enzim: Kinetika & Regulasi). :: Bagian protein enzim yang belum aktif tanpa komponen tambahannya.
+- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Cofactor pada Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme (Enzim: Kinetika & Regulasi). :: Komponen nonprotein yang diperlukan untuk aktivitas enzim; dapat berupa ion logam atau molekul organik.
+- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Coenzyme pada Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme (Enzim: Kinetika & Regulasi). :: Cofactor organik, sering berasal dari vitamin.
 - [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Apa yang dimaksud dengan Prosthetic group pada Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme? :: Cofactor yang terikat sangat kuat atau permanen pada enzim.
-- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Holoenzyme. :: Kompleks apoenzyme + cofactor yang aktif secara katalitik.
+- [Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme] Jelaskan Holoenzyme pada Apoenzyme, Cofactor, Coenzyme, dan Holoenzyme (Enzim: Kinetika & Regulasi). :: Kompleks apoenzyme + cofactor yang aktif secara katalitik.
 - [Korelasi Farmakologi & Toksikologi] Apa yang dimaksud dengan Statin pada Korelasi Farmakologi & Toksikologi? :: Menghambat HMG-CoA reductase secara kompetitif dan menurunkan sintesis kolesterol.
 - [Korelasi Farmakologi & Toksikologi] Apa yang dimaksud dengan Methotrexate pada Korelasi Farmakologi & Toksikologi? :: Menghambat dihydrofolate reductase dan mengganggu regenerasi tetrahydrofolate yang diperlukan untuk sintesis nukleotida.
 - [Korelasi Farmakologi & Toksikologi] Apa yang dimaksud dengan Organofosfat pada Korelasi Farmakologi & Toksikologi? :: Menghambat acetylcholinesterase secara sangat kuat/irreversible melalui fosforilasi enzim, menyebabkan akumulasi asetilkolin.
 - [Korelasi Farmakologi & Toksikologi] Apa yang dimaksud dengan Aspirin pada Korelasi Farmakologi & Toksikologi? :: Mengasetilasi cyclooxygenase (COX) secara irreversible; pada trombosit efek berlangsung sepanjang umur trombosit karena trombosit tidak mampu mensintesis COX baru secara bermakna.
 - [Enzim Allosterik dan Kooperativitas] Jelaskan T (tense) state dalam konteks Enzim Allosterik dan Kooperativitas. :: Afinitas terhadap substrat lebih rendah.
 - [Enzim Allosterik dan Kooperativitas] Jelaskan R (relaxed) state dalam konteks Enzim Allosterik dan Kooperativitas. :: Afinitas terhadap substrat lebih tinggi.
-- [Covalent modification] Apa yang dimaksud dengan Contoh penting pada Covalent modification? :: Metabolisme glikogen menggunakan regulasi fosforilasi yang resiprokal. Fosforilasi cenderung mengaktifkan glycogen phosphorylase dan menghambat glycogen synthase, sehingga sintesis dan pemecahan glikogen tidak aktif maksimal secara bersamaan.
+- [Covalent modification] Apa yang dimaksud dengan Contoh penting pada Covalent modification (Enzim: Kinetika & Regulasi)? :: Metabolisme glikogen menggunakan regulasi fosforilasi yang resiprokal. Fosforilasi cenderung mengaktifkan glycogen phosphorylase dan menghambat glycogen synthase, sehingga sintesis dan pemecahan glikogen tidak aktif maksimal secara bersamaan.
 - [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Competitive pada Enzim: Kinetika & Regulasi? :: Km ↑    | Vmax tetap | dapat dilawan dengan ↑ [S]
 - [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Pure noncompetitive pada Enzim: Kinetika & Regulasi? :: Km tetap | Vmax ↓   | tidak dipulihkan oleh ↑ [S]
 - [Enzim: Kinetika & Regulasi] Apa yang perlu diingat tentang Uncompetitive pada Enzim: Kinetika & Regulasi? :: Km ↓    | Vmax ↓     | inhibitor mengikat ES
@@ -312,10 +312,10 @@ Ketika menemukan obat atau toksin yang menargetkan enzim, tanyakan tiga hal: (1)
   • Coenzyme A — berasal dari asam pantotenat (vitamin B5), membawa gugus asil
   • TPP — berasal dari tiamin (vitamin B1), penting pada dekarboksilasi oksidatif
   • PLP — berasal dari vitamin B6, penting pada metabolisme asam amino
-- [Kinetika Michaelis–Menten] Sebutkan interpretasi kurva pada Kinetika Michaelis–Menten. :: • Saat [S] ≪ Km, penambahan substrat meningkatkan laju hampir secara linear; reaksi mendekati first-order terhadap substrat
+- [Kinetika Michaelis–Menten] Sebutkan interpretasi kurva pada Kinetika Michaelis–Menten (Enzim: Kinetika & Regulasi). :: • Saat [S] ≪ Km, penambahan substrat meningkatkan laju hampir secara linear; reaksi mendekati first-order terhadap substrat
   • Saat [S] = Km, v = ½ Vmax
   • Saat [S] ≫ Km, enzim mendekati saturasi; penambahan substrat hanya sedikit menaikkan laju dan reaksi mendekati zero-order terhadap substrat
-- [Kinetika Michaelis–Menten] Sebutkan pengaruh konsentrasi enzim pada Kinetika Michaelis–Menten. :: • Jika jumlah enzim dinaikkan, Vmax meningkat secara proporsional selama substrat mencukupi
+- [Kinetika Michaelis–Menten] Sebutkan pengaruh konsentrasi enzim pada Kinetika Michaelis–Menten (Enzim: Kinetika & Regulasi). :: • Jika jumlah enzim dinaikkan, Vmax meningkat secara proporsional selama substrat mencukupi
   • Km pada prinsipnya tidak berubah hanya karena konsentrasi enzim dinaikkan
 - [Enzim Allosterik dan Kooperativitas] Sebutkan model konseptual T dan R pada Enzim Allosterik dan Kooperativitas. :: • T (tense) state: afinitas terhadap substrat lebih rendah
   • R (relaxed) state: afinitas terhadap substrat lebih tinggi

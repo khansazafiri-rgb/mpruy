@@ -321,14 +321,14 @@ Acid/base disturbance → chemical buffer segera → paru mengubah PaCO₂ dalam
 ## Flashcard {kartu}
 
 - [Definisi Asam dan Basa] Apa yang dimaksud dengan Menurut Brønsted-Lowry pada Definisi Asam dan Basa? :: Asam = proton donor.
-- [Anion Gap] Jelaskan Anion gap. :: AG = Na⁺ − (Cl⁻ + HCO₃⁻).
-- [Anion Gap] Apa yang dimaksud dengan High AG pada Anion Gap? :: Ada unmeasured anions meningkat.
-- [Anion Gap] Apa yang dimaksud dengan Normal AG pada Anion Gap? :: Sering akibat kehilangan HCO₃⁻ dengan compensatory Cl⁻ retention.
+- [Anion Gap] Jelaskan Anion gap (Fisiologi Keseimbangan Asam-Basa). :: AG = Na⁺ − (Cl⁻ + HCO₃⁻).
+- [Anion Gap] Apa yang dimaksud dengan High AG pada Anion Gap (Fisiologi Keseimbangan Asam-Basa)? :: Ada unmeasured anions meningkat.
+- [Anion Gap] Apa yang dimaksud dengan Normal AG pada Anion Gap (Fisiologi Keseimbangan Asam-Basa)? :: Sering akibat kehilangan HCO₃⁻ dengan compensatory Cl⁻ retention.
 - [Shortcut Arah PaCO₂ dan HCO₃⁻] Apa yang dimaksud dengan Respiratory pada Shortcut Arah PaCO₂ dan HCO₃⁻? :: PH dan PaCO₂ bergerak berlawanan arah sebagai perubahan primer.
 - [Shortcut Arah PaCO₂ dan HCO₃⁻] Apa yang dimaksud dengan Metabolic pada Shortcut Arah PaCO₂ dan HCO₃⁻? :: PH dan HCO₃⁻ bergerak searah sebagai perubahan primer.
-- [Clinical Pattern: Hypoventilation] Jelaskan Hypoventilation. :: Alveolar ventilation ↓ → PaCO₂ ↑ → respiratory acidosis.
-- [Clinical Pattern: Hyperventilation] Jelaskan Hyperventilation. :: Alveolar ventilation ↑ → PaCO₂ ↓ → respiratory alkalosis.
-- [Clinical Pattern: Pulmonary Embolism] Jelaskan Pulmonary embolism. :: Perfusion pada sebagian unit ↓ → V/Q tinggi / dead-space effect.
+- [Clinical Pattern: Hypoventilation] Jelaskan Hypoventilation pada Clinical Pattern: Hypoventilation (Fisiologi Keseimbangan Asam-Basa). :: Alveolar ventilation ↓ → PaCO₂ ↑ → respiratory acidosis.
+- [Clinical Pattern: Hyperventilation] Jelaskan Hyperventilation pada Clinical Pattern: Hyperventilation (Fisiologi Keseimbangan Asam-Basa). :: Alveolar ventilation ↑ → PaCO₂ ↓ → respiratory alkalosis.
+- [Clinical Pattern: Pulmonary Embolism] Jelaskan Pulmonary embolism pada Clinical Pattern: Pulmonary Embolism (Fisiologi Keseimbangan Asam-Basa). :: Perfusion pada sebagian unit ↓ → V/Q tinggi / dead-space effect.
 - [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Inspirasi pada Fisiologi Keseimbangan Asam-Basa? :: Diaphragm contract → Pip makin negatif → Palv turun → udara masuk
 - [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang Ekspirasi tenang pada Fisiologi Keseimbangan Asam-Basa? :: Elastic recoil → Palv naik → udara keluar
 - [Fisiologi Keseimbangan Asam-Basa] Apa yang dimaksud dengan V̇E pada Fisiologi Keseimbangan Asam-Basa? :: TV × RR
@@ -338,14 +338,14 @@ Acid/base disturbance → chemical buffer segera → paru mengubah PaCO₂ dalam
 - [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diingat tentang V/Q rendah pada Fisiologi Keseimbangan Asam-Basa? :: Shunt-like
 - [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diingat tentang V/Q tinggi pada Fisiologi Keseimbangan Asam-Basa? :: Dead-space-like
 - [Fisiologi Keseimbangan Asam-Basa] Apa yang perlu diketahui tentang ABG pada Fisiologi Keseimbangan Asam-Basa? :: PH → PaCO₂/HCO₃⁻ → compensation → anion gap → mixed disorder
-- [Sistem Buffer] Sebutkan buffer utama pada Sistem Buffer. :: • Bicarbonate
+- [Sistem Buffer] Sebutkan buffer utama pada Sistem Buffer (Fisiologi Keseimbangan Asam-Basa). :: • Bicarbonate
   • Protein/hemoglobin
   • Phosphate
   • Buffer tulang pada konteks kronik
 - [Tiga Lapis Regulasi pH] Sebutkan urutan atau langkah pada Tiga Lapis Regulasi pH? :: • Chemical buffers → detik
   • Respiratory compensation → menit
   • Renal compensation → jam hingga hari
-- [Metabolic Acidosis] Sebutkan hal-hal penting tentang HCO₃⁻ turun akibat. :: • Penambahan asam
+- [Metabolic Acidosis] Sebutkan hal-hal penting tentang HCO₃⁻ turun akibat pada Metabolic Acidosis (Fisiologi Keseimbangan Asam-Basa). :: • Penambahan asam
   • Kehilangan bicarbonate
   • Gangguan renal acid excretion
 - [High Anion Gap Metabolic Acidosis] Sebutkan contoh penting pada High Anion Gap Metabolic Acidosis. :: • Lactic acidosis

@@ -343,12 +343,12 @@ Jika diminta localization:
 - [Penampang Medula Spinalis: Gray Matter dan White Matter] Apa yang dimaksud dengan Orientasi penting pada Penampang Medula Spinalis: Gray Matter dan White Matter? :: Anterior median fissure lebih dalam dan lebar daripada posterior median sulcus. Ini membantu menentukan anterior–posterior pada spesimen penampang.
 - [Dorsal Root, Ventral Root, Spinal Nerve, dan Rami] Apa yang dimaksud dengan Common confusion pada Dorsal Root, Ventral Root, Spinal Nerve, dan Rami? :: Dorsal root adalah sensory, tetapi dorsal ramus BUKAN sensory-only. Dorsal dan ventral rami sama-sama mixed nerves.
 - [Conus Medullaris versus Cauda Equina] Jelaskan Red flag klinis dalam konteks Conus Medullaris versus Cauda Equina. :: Saddle anesthesia, urinary retention/incontinence, progressive bilateral leg weakness, atau severe radicular symptoms memerlukan evaluasi segera.
-- [Neuroanatomi: Medula Spinalis & Saraf Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Ipsilateral UMN weakness di bawah lesi? :: Corticospinal tract
-- [Neuroanatomi: Medula Spinalis & Saraf Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Ipsilateral loss vibration/proprioception di bawah lesi? :: Dorsal columns
+- [Neuroanatomi: Medula Spinalis & Saraf Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Ipsilateral UMN weakness di bawah lesi pada Neuroanatomi: Medula Spinalis & Saraf Perifer? :: Corticospinal tract
+- [Neuroanatomi: Medula Spinalis & Saraf Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Ipsilateral loss vibration/proprioception di bawah lesi pada Neuroanatomi: Medula Spinalis & Saraf Perifer? :: Dorsal columns
 - [Neuroanatomi: Medula Spinalis & Saraf Perifer] Apa yang perlu diketahui tentang Brown-Séquard pada Neuroanatomi: Medula Spinalis & Saraf Perifer? :: Ipsilateral motor + proprioception loss, contralateral pain/temperature loss
 - [Peta Besar: Medula Spinalis sebagai Jalur dan Pusat Segmental] Sebutkan dua enlargement penting pada Neuroanatomi: Medula Spinalis & Saraf Perifer. :: • Cervical enlargement → neuron yang berhubungan dengan upper limb
   • Lumbosacral enlargement → neuron yang berhubungan dengan lower limb
-- [Penampang Medula Spinalis: Gray Matter dan White Matter] Sebutkan hal-hal penting tentang Gray matter. :: • Posterior/dorsal horn → menerima dan memproses input sensorik
+- [Penampang Medula Spinalis: Gray Matter dan White Matter] Sebutkan hal-hal penting tentang Gray matter pada Penampang Medula Spinalis: Gray Matter dan White Matter (Neuroanatomi: Medula Spinalis & Saraf Perifer). :: • Posterior/dorsal horn → menerima dan memproses input sensorik
   • Anterior/ventral horn → berisi lower motor neurons untuk skeletal muscle
   • Lateral horn → paling jelas pada thoracic dan upper lumbar cord; berkaitan dengan autonomic outflow
   • Gray commissure → menghubungkan kedua sisi gray matter dan mengelilingi central canal
@@ -363,11 +363,11 @@ Jika diminta localization:
   • Achilles reflex → S1–S2, dominan S1, tibial nerve
 - [Plexus Logic dan Saraf Perifer] Sebutkan contoh localization pada Plexus Logic dan Saraf Perifer. :: • C6 radiculopathy dapat mengenai sensory thumb/lateral forearm dan beberapa otot dari lebih dari satu named peripheral nerve
   • Radial neuropathy memengaruhi otot dan kulit sesuai territory radial nerve, tetapi tidak mengikuti satu dermatome tunggal
-- [Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord?] Sebutkan hal-hal penting tentang Root lesion/radiculopathy. :: • Pain dapat menjalar dalam pola dermatomal
+- [Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord?] Sebutkan hal-hal penting tentang Root lesion/radiculopathy pada Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord? (Neuroanatomi: Medula Spinalis & Saraf Perifer). :: • Pain dapat menjalar dalam pola dermatomal
   • Sensory change mengikuti dermatome
   • Weakness mengikuti myotome dan dapat melibatkan otot dari beberapa named nerves
   • Reflex sesuai root dapat menurun
-- [Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord?] Sebutkan hal-hal penting tentang Spinal cord lesion. :: • Dapat menghasilkan sensory level pada trunk
+- [Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord?] Sebutkan hal-hal penting tentang Spinal cord lesion pada Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord?. :: • Dapat menghasilkan sensory level pada trunk
   • UMN signs di bawah lesi
   • LMN signs dapat muncul tepat pada level anterior horn/root yang terkena
   • Bowel/bladder involvement lebih mengarah ke cord/conus/cauda daripada isolated mononeuropathy

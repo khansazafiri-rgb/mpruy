@@ -663,7 +663,7 @@ Jika nuclear molding + tiny hyperchromatic cells → small cell carcinoma.
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Centriacinar emphysema pada Patologi Sistem Respirasi? :: Smokers, upper lobes
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Chronic bronchitis pada Patologi Sistem Respirasi? :: Productive cough ≥3 months/year for ≥2 consecutive years
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Asthma pada Patologi Sistem Respirasi? :: Reversible bronchoconstriction + eosinophilic inflammation
-- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Curschmann spirals dan Charcot–Leyden crystals? :: Asthma
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Curschmann spirals dan Charcot–Leyden crystals pada Patologi Sistem Respirasi? :: Asthma
 - [Patologi Sistem Respirasi] Apa yang perlu diketahui tentang Lobar pneumonia pada Patologi Sistem Respirasi? :: Congestion → red hepatization → gray hepatization → resolution
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan Ghon complex pada Patologi Sistem Respirasi? :: Primary lung focus + hilar nodes
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan TB granuloma klasik pada Patologi Sistem Respirasi? :: Caseating granuloma + Langhans giant cells
@@ -679,7 +679,7 @@ Jika nuclear molding + tiny hyperchromatic cells → small cell carcinoma.
 - [Patologi Sistem Respirasi] Apa yang perlu diketahui tentang COPD pada Patologi Sistem Respirasi? :: Emphysema = destruction; chronic bronchitis = mucus gland hyperplasia; asthma = eosinophils + reversible bronchospasm; bronchiectasis = permanent dilated airways
 - [Patologi Sistem Respirasi] Apa yang perlu diketahui tentang ILD pada Patologi Sistem Respirasi? :: UIP/IPF = patchy fibrosis + honeycomb; silica = upper lobe + TB; asbestos = lower lobe + ferruginous bodies
 - [Patologi Sistem Respirasi] Apa yang dimaksud dengan ARDS pada Patologi Sistem Respirasi? :: Diffuse alveolar damage + hyaline membranes
-- [Obstructive vs Restrictive Lung Disease] Sebutkan hal-hal penting tentang Obstructive disease. :: • Emphysema
+- [Obstructive vs Restrictive Lung Disease] Sebutkan hal-hal penting tentang Obstructive disease pada Obstructive vs Restrictive Lung Disease (Patologi Sistem Respirasi). :: • Emphysema
   • Chronic bronchitis
   • Asthma
   • Bronchiectasis
@@ -690,11 +690,11 @@ Jika nuclear molding + tiny hyperchromatic cells → small cell carcinoma.
   • Bronchiolar fibrosis pada disease progression
 - [Pneumonia — Konsep Umum] Sebutkan dua pola morfologi klasik pada Pneumonia — Konsep Umum. :: • Lobar pneumonia
   • Bronchopneumonia
-- [Pneumonia — Komplikasi] Sebutkan komplikasi pada Pneumonia — Komplikasi. :: • Abscess formation
+- [Pneumonia — Komplikasi] Sebutkan komplikasi pada Pneumonia — Komplikasi (Patologi Sistem Respirasi). :: • Abscess formation
   • Empyema
   • Organization of intra-alveolar exudate
   • Bacteremia/sepsis dengan metastatic infection
-- [Lung Abscess] Sebutkan penyebab penting pada Lung Abscess. :: • Aspiration
+- [Lung Abscess] Sebutkan penyebab penting pada Lung Abscess (Patologi Sistem Respirasi). :: • Aspiration
   • Pneumonia berat
   • Bronchial obstruction
   • Septic emboli
@@ -702,24 +702,24 @@ Jika nuclear molding + tiny hyperchromatic cells → small cell carcinoma.
   • Nonproductive cough
   • Inspiratory crackles
   • Hypoxemia
-- [Sarcoidosis] Sebutkan organ tersering pada Sarcoidosis. :: • Lungs
+- [Sarcoidosis] Sebutkan organ tersering pada Sarcoidosis (Patologi Sistem Respirasi). :: • Lungs
   • Hilar lymph nodes
-- [Hypersensitivity Pneumonitis] Sebutkan contoh klasik pada Hypersensitivity Pneumonitis. :: • Farmer’s lung
+- [Hypersensitivity Pneumonitis] Sebutkan contoh klasik pada Hypersensitivity Pneumonitis (Patologi Sistem Respirasi). :: • Farmer’s lung
   • Bird fancier’s lung
-- [Lung Cancer — Klasifikasi Besar] Sebutkan hal-hal penting tentang Primary lung cancers secara praktis. :: • Non-small cell lung carcinoma (NSCLC)
+- [Lung Cancer — Klasifikasi Besar] Sebutkan hal-hal penting tentang Primary lung cancers secara praktis pada Lung Cancer — Klasifikasi Besar. :: • Non-small cell lung carcinoma (NSCLC)
   • Small cell lung carcinoma (SCLC)
 - [Lung Cancer — Klasifikasi Besar] Sebutkan NSCLC utama pada Lung Cancer — Klasifikasi Besar. :: • Adenocarcinoma
   • Squamous cell carcinoma
   • Large cell carcinoma
-- [Small Cell Lung Carcinoma] Sebutkan hal-hal penting tentang Paraneoplastic association. :: • ACTH
+- [Small Cell Lung Carcinoma] Sebutkan hal-hal penting tentang Paraneoplastic association pada Small Cell Lung Carcinoma (Patologi Sistem Respirasi). :: • ACTH
   • ADH/SIADH
-- [Pleural Effusion] Sebutkan hal-hal penting tentang Pleural effusion. :: • Transudate — heart failure, hypoalbuminemia
+- [Pleural Effusion] Sebutkan hal-hal penting tentang Pleural effusion (Patologi Sistem Respirasi). :: • Transudate — heart failure, hypoalbuminemia
   • Exudate — infection, malignancy, inflammation
   • Hemothorax — blood
   • Chylothorax — lymph/chyle akibat thoracic duct disruption
-- [Panacinar Emphysema] Bagaimana cara mengingat Panacinar Emphysema? :: PAN = seluruh acinus. A1AT = lower lobes.
+- [Panacinar Emphysema] Bagaimana cara mengingat Panacinar Emphysema (Patologi Sistem Respirasi)? :: PAN = seluruh acinus. A1AT = lower lobes.
 - [Alpha-1 Antitrypsin Deficiency] Apa poin high-yield (pearl) tentang Alpha-1 Antitrypsin Deficiency? :: Young nonsmoker + basal panacinar emphysema + liver disease → pikirkan A1AT deficiency.
 - [Asthma — Morfologi High-Yield] Apa poin high-yield (pearl) tentang Asthma — Morfologi High-Yield? :: Spirals + eosinophils + episodic wheeze = asthma.
 - [Lobar Pneumonia — Empat Tahap Klasik] Bagaimana cara mengingat Lobar Pneumonia — Empat Tahap Klasik? :: CONGEST → RED → GRAY → RESOLVE.
-- [Asbestosis] Apa poin high-yield (pearl) tentang Asbestosis? :: Smoking + asbestos → risiko bronchogenic carcinoma meningkat sinergistik. Smoking tidak memperkuat risiko mesothelioma secara serupa.
-- [Sarcoidosis] Apa clue praktikum untuk Sarcoidosis? :: Bilateral hilar lymphadenopathy, noncaseating granulomas, dapat disertai hypercalcemia karena macrophage 1-alpha hydroxylase activity.
+- [Asbestosis] Apa poin high-yield (pearl) tentang Asbestosis (Patologi Sistem Respirasi)? :: Smoking + asbestos → risiko bronchogenic carcinoma meningkat sinergistik. Smoking tidak memperkuat risiko mesothelioma secara serupa.
+- [Sarcoidosis] Apa clue praktikum untuk Sarcoidosis (Patologi Sistem Respirasi)? :: Bilateral hilar lymphadenopathy, noncaseating granulomas, dapat disertai hypercalcemia karena macrophage 1-alpha hydroxylase activity.

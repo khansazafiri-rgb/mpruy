@@ -462,13 +462,13 @@ ECHINOCOCCUS = dog/canid → eggs → human accidental intermediate host → hyd
 ## Flashcard {kartu}
 
 - [Konsep Dasar Cestoda] Jelaskan Exam pearl paling penting dalam konteks Konsep Dasar Cestoda. :: Makan daging sapi/babi yang mengandung CYSTICERCUS → TAENIASIS.
-- [Terapi Taeniasis] Apa yang dimaksud dengan Perhatian penting pada Terapi Taeniasis? :: Praziquantel atau albendazole dapat memicu gejala neurologis pada pasien dengan cysticercosis yang tidak terdiagnosis karena kematian larva memicu inflamasi.
+- [Terapi Taeniasis] Apa yang dimaksud dengan Perhatian penting pada Terapi Taeniasis (Cestoda (Taenia, Echinococcus))? :: Praziquantel atau albendazole dapat memicu gejala neurologis pada pasien dengan cysticercosis yang tidak terdiagnosis karena kematian larva memicu inflamasi.
 - [Terapi NCC — Prioritas Pertama] Apa yang dimaksud dengan Prinsip modern pada Terapi NCC — Prioritas Pertama? :: Kendalikan masalah neurologis yang mengancam terlebih dahulu.
 - [Struktur Hydatid Cyst] Apa yang dimaksud dengan pericyst pada Struktur Hydatid Cyst? :: Reaksi fibrotik host
 - [Struktur Hydatid Cyst] Apa yang dimaksud dengan laminated membrane pada Struktur Hydatid Cyst? :: Lapisan parasit non-seluler
 - [Struktur Hydatid Cyst] Apa yang dimaksud dengan germinal layer pada Struktur Hydatid Cyst? :: Lapisan hidup yang menghasilkan brood capsules
 - [Organ yang Paling Sering Terkena] Jelaskan Gejala bergantung efek massa dalam konteks Organ yang Paling Sering Terkena. :: Liver → abdominal pain, hepatomegaly, biliary complications.
-- [Watch-and-Wait] Jelaskan Ini konsep penting dalam konteks Watch-and-Wait. :: ACTIVE cyst ≠ INACTIVE calcified cyst.
+- [Watch-and-Wait] Jelaskan Ini konsep penting dalam konteks Watch-and-Wait (Cestoda (Taenia, Echinococcus)). :: ACTIVE cyst ≠ INACTIVE calcified cyst.
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan manusia pada Cestoda (Taenia, Echinococcus)? :: Definitive host,
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan diagnosis pada Cestoda (Taenia, Echinococcus)? :: Stool egg/proglottid,
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan CE1 pada Cestoda (Taenia, Echinococcus)? :: Active, unilocular simple cyst dengan hydatid sand; “double line sign”
@@ -478,8 +478,8 @@ ECHINOCOCCUS = dog/canid → eggs → human accidental intermediate host → hyd
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan CE4 pada Cestoda (Taenia, Echinococcus)? :: Inactive, heterogenous degenerative contents
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan CE5 pada Cestoda (Taenia, Echinococcus)? :: Inactive, dinding sebagian/seluruhnya calcified
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan “Hole-with-dot sign” pada Cestoda (Taenia, Echinococcus)? :: Cyst + eccentric scolex
-- [Cestoda (Taenia, Echinococcus)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Anthelmintic pada NCC dapat memperberat inflamasi? :: Corticosteroid sering diperlukan
-- [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan Echinococcus definitive host utama? :: Dog/canid
+- [Cestoda (Taenia, Echinococcus)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Anthelmintic pada NCC dapat memperberat inflamasi pada Cestoda (Taenia, Echinococcus)? :: Corticosteroid sering diperlukan
+- [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan Echinococcus definitive host utama pada Cestoda (Taenia, Echinococcus)? :: Dog/canid
 - [Cestoda (Taenia, Echinococcus)] Apa yang perlu diingat tentang E. granulosus pada Cestoda (Taenia, Echinococcus)? :: Hydatid cyst / cystic echinococcosis
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan Liver dan lung pada Cestoda (Taenia, Echinococcus)? :: Organ tersering CE
 - [Cestoda (Taenia, Echinococcus)] Apa yang dimaksud dengan Daughter cysts + hydatid sand pada Cestoda (Taenia, Echinococcus)? :: Classic echinococcosis
@@ -493,7 +493,7 @@ ECHINOCOCCUS = dog/canid → eggs → human accidental intermediate host → hyd
   • Perubahan nafsu makan
   • Gangguan pola defekasi
   • Penurunan berat badan ringan
-- [Cysticercosis — Konsep Kunci] Sebutkan hal-hal penting tentang Sumber telur. :: • Kontaminasi fekal-oral dari carrier taeniasis T. solium
+- [Cysticercosis — Konsep Kunci] Sebutkan hal-hal penting tentang Sumber telur pada Cysticercosis — Konsep Kunci (Cestoda (Taenia, Echinococcus)). :: • Kontaminasi fekal-oral dari carrier taeniasis T. solium
   • Makanan/air terkontaminasi
   • Autoinfeksi secara fekal-oral pada orang yang memiliki adult T. solium
 - [Diagnosis NCC — Prinsip] Sebutkan diagnosis menggabungkan pada Diagnosis NCC — Prinsip. :: • Gambaran klinis
@@ -507,20 +507,20 @@ ECHINOCOCCUS = dog/canid → eggs → human accidental intermediate host → hyd
   • Germinal layer: lapisan hidup yang menghasilkan brood capsules
   • Protoscolices
   • Daughter cysts
-- [Organ yang Paling Sering Terkena] Sebutkan hal-hal penting tentang Lebih jarang. :: • Spleen
+- [Organ yang Paling Sering Terkena] Sebutkan hal-hal penting tentang Lebih jarang pada Organ yang Paling Sering Terkena (Cestoda (Taenia, Echinococcus)). :: • Spleen
   • Kidney
   • Bone
   • Brain
   • Muscle
-- [Diagnosis Cystic Echinococcosis] Sebutkan hal-hal penting tentang Imaging adalah dasar diagnosis. :: • Ultrasound sangat penting untuk liver CE
+- [Diagnosis Cystic Echinococcosis] Sebutkan hal-hal penting tentang Imaging adalah dasar diagnosis pada Diagnosis Cystic Echinococcosis. :: • Ultrasound sangat penting untuk liver CE
   • CT/MRI membantu menentukan lokasi, komplikasi, dan struktur cyst
 - [Terapi Cystic Echinococcosis — Prinsip Stage-Specific] Sebutkan pilihan utama pada Terapi Cystic Echinococcosis — Prinsip Stage-Specific. :: • Albendazole
   • PAIR / catheter-based percutaneous treatment pada cyst tertentu
   • Surgery
   • Watch-and-wait untuk inactive uncomplicated cyst
-- [Diagnosis Taeniasis] Apa poin high-yield (pearl) tentang Diagnosis Taeniasis? :: Telur T. saginata dan T. solium tampak sangat mirip. Species identification lebih baik menggunakan morfologi gravid proglottid atau scolex. Pemeriksaan beberapa spesimen feses pada hari berbeda dapat meningkatkan sensitivitas.
+- [Diagnosis Taeniasis] Apa poin high-yield (pearl) tentang Diagnosis Taeniasis (Cestoda (Taenia, Echinococcus))? :: Telur T. saginata dan T. solium tampak sangat mirip. Species identification lebih baik menggunakan morfologi gravid proglottid atau scolex. Pemeriksaan beberapa spesimen feses pada hari berbeda dapat meningkatkan sensitivitas.
 - [Fase Lesi NCC] Apa poin high-yield (pearl) tentang Fase Lesi NCC? :: Gejala dapat memburuk justru ketika cyst mati karena respons inflamasi host meningkat.
 - [Taeniasis vs Cysticercosis — Jebakan Favorit] Bagaimana cara mengingat Taeniasis vs Cysticercosis — Jebakan Favorit? :: CYST in meat → adult in gut. EGG of solium → cyst in human tissue.
 - [Struktur Hydatid Cyst] Apa poin high-yield (pearl) tentang Struktur Hydatid Cyst? :: Daughter cysts di dalam mother cyst sangat khas cystic echinococcosis.
 - [WHO Staging CE1–CE5 — High-Yield] Bagaimana cara mengingat WHO Staging CE1–CE5 — High-Yield? :: 1 simple active. 2 daughter cysts. 3 membrane/daughter transition. 4 degenerating. 5 calcified.
-- [PAIR] Apa poin high-yield (pearl) tentang PAIR? :: “PAIR” sangat identik dengan hydatid cyst/Echinococcus.
+- [PAIR] Apa poin high-yield (pearl) tentang PAIR (Cestoda (Taenia, Echinococcus))? :: “PAIR” sangat identik dengan hydatid cyst/Echinococcus.

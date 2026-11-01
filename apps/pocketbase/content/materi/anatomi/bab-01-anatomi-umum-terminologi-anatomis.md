@@ -290,10 +290,10 @@ Dorsum pada kaki berarti permukaan atas; ini berbeda dengan plantar surface di t
 - [Contoh regio permukaan yang sering muncul] Apa yang dimaksud dengan Kepala/wajah pada Pembagian dan Regio Tubuh? :: Frontal, orbital, nasal, buccal, oral, mental.
 - [Contoh regio permukaan yang sering muncul] Apa yang dimaksud dengan Abdomen/pelvis pada Pembagian dan Regio Tubuh? :: Abdominal, umbilical, inguinal, pubic.
 - [Contoh regio permukaan yang sering muncul] Apa yang dimaksud dengan Ekstremitas atas pada Pembagian dan Regio Tubuh? :: Acromial, brachial, antecubital, olecranal, antebrachial, carpal, palmar, digital.
-- [Dorsal cavity] Apa yang dimaksud dengan Vertebral/spinal cavity pada Dorsal cavity? :: Menampung medula spinalis.
-- [Ventral cavity] Apa yang dimaksud dengan Thoracic cavity pada Ventral cavity? :: Berada superior terhadap diafragma dan mencakup dua rongga pleura serta mediastinum. Jantung berada dalam rongga perikardial di mediastinum.
+- [Dorsal cavity] Apa yang dimaksud dengan Vertebral/spinal cavity pada Dorsal cavity (Anatomi Umum & Terminologi Anatomis)? :: Menampung medula spinalis.
+- [Ventral cavity] Apa yang dimaksud dengan Thoracic cavity pada Ventral cavity (Anatomi Umum & Terminologi Anatomis)? :: Berada superior terhadap diafragma dan mencakup dua rongga pleura serta mediastinum. Jantung berada dalam rongga perikardial di mediastinum.
 - [Anatomi Umum & Terminologi Anatomis] Apa yang dimaksud dengan Kanan/kiri pada Anatomi Umum & Terminologi Anatomis? :: Milik pasien, bukan pengamat
 - [Anatomi Umum & Terminologi Anatomis] Apa yang dimaksud dengan Dorsiflexion–plantarflexion pada Anatomi Umum & Terminologi Anatomis? :: Istilah utama untuk gerak di ankle
 - [Anatomi Umum & Terminologi Anatomis] Apa yang dimaksud dengan Circumduction pada Anatomi Umum & Terminologi Anatomis? :: Gerakan kombinasi, bukan satu jenis rotation
-- [Anatomi Umum & Terminologi Anatomis] Apa yang dimaksud dengan “Rongga serosa” dalam kondisi normal? :: Ruang potensial, bukan ruang kosong besar
-- [Membran serosa] Apa korelasi klinis dari Membran serosa? :: Cairan berlebih dalam pleural cavity dapat memisahkan pleura parietal dan visceral. Prinsip yang sama membantu memahami pericardial effusion dan cairan intraperitoneal, walaupun detail patologi dibahas pada blok klinis.
+- [Anatomi Umum & Terminologi Anatomis] Apa yang dimaksud dengan “Rongga serosa” dalam kondisi normal pada Anatomi Umum & Terminologi Anatomis? :: Ruang potensial, bukan ruang kosong besar
+- [Membran serosa] Apa korelasi klinis dari Membran serosa (Anatomi Umum & Terminologi Anatomis)? :: Cairan berlebih dalam pleural cavity dapat memisahkan pleura parietal dan visceral. Prinsip yang sama membantu memahami pericardial effusion dan cairan intraperitoneal, walaupun detail patologi dibahas pada blok klinis.

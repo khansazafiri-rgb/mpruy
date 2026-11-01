@@ -298,19 +298,19 @@ Saat melihat specimen atau gambar sistem limfatik, identifikasi dengan urutan be
   • Apical — menerima dari central group dan jalur cephalic/deltopectoral
 - [Lower Limb dan Inguinal Nodes] Sebutkan superficial lymphatics lower limb terbagi mengikuti vena superfisial pada Lower Limb dan Inguinal Nodes. :: • Jalur great saphenous vein → superficial inguinal nodes
   • Jalur small saphenous vein → popliteal nodes → deep inguinal nodes
-- [Spleen] Sebutkan ligaments penting pada Spleen. :: • Gastrosplenic ligament — membawa short gastric dan left gastro-omental vessels
+- [Spleen] Sebutkan ligaments penting pada Spleen (Anatomi Sistem Limfatik). :: • Gastrosplenic ligament — membawa short gastric dan left gastro-omental vessels
   • Splenorenal/lienorenal ligament — membawa splenic vessels dan berhubungan dekat dengan tail of pancreas
-- [Tonsils dan Mucosa-Associated Lymphoid Tissue] Sebutkan hal-hal penting tentang Waldeyer ring mengelilingi jalur masuk pharynx. :: • Pharyngeal tonsil di roof/posterior wall nasopharynx
+- [Tonsils dan Mucosa-Associated Lymphoid Tissue] Sebutkan hal-hal penting tentang Waldeyer ring mengelilingi jalur masuk pharynx pada Tonsils dan Mucosa-Associated Lymphoid Tissue. :: • Pharyngeal tonsil di roof/posterior wall nasopharynx
   • Paired tubal tonsils dekat openings auditory tubes
   • Paired palatine tonsils di oropharynx
   • Lingual tonsil di posterior tongue
 - [Peta Besar Sistem Limfatik] Apa poin high-yield (pearl) tentang Anatomi Sistem Limfatik? :: Pikirkan alurnya sebagai jaringan bertingkat—tissue → lymphatic capillary → collecting vessel → regional node → lymphatic trunk → duct → venous angle.
 - [Lymph Node: Struktur dan Arah Aliran] Apa korelasi klinis dari Lymph Node: Struktur dan Arah Aliran? :: Pembesaran node dapat terjadi pada respons inflamasi, infeksi, atau infiltrasi tumor. Lokasi node yang membesar sering membantu menebak organ atau regio asal proses penyakit.
 - [Thoracic Duct dan Cisterna Chyli] Apa korelasi klinis dari Thoracic Duct dan Cisterna Chyli? :: Trauma atau operasi thorax dapat mencederai thoracic duct dan menyebabkan chylothorax. Cairan pleura menjadi kaya triglyceride karena berisi chyle.
-- [Right Lymphatic Duct] Bagaimana cara mengingat Right Lymphatic Duct? :: Right upper quadrant. Semua wilayah lain pada prinsipnya kembali melalui thoracic duct.
+- [Right Lymphatic Duct] Bagaimana cara mengingat Right Lymphatic Duct (Anatomi Sistem Limfatik)? :: Right upper quadrant. Semua wilayah lain pada prinsipnya kembali melalui thoracic duct.
 - [Head and Neck Lymphatic Drainage] Apa korelasi klinis dari Head and Neck Lymphatic Drainage? :: Lokasi cervical lymphadenopathy harus selalu dihubungkan dengan territory kepala–leher yang dialirinya, bukan hanya dianggap “node leher”.
 - [Thoracic Lymphatics: Lung dan Mediastinum] Apa korelasi klinis dari Thoracic Lymphatics: Lung dan Mediastinum? :: Metastasis lung cancer dapat mengikuti nodal chains dari hilar ke mediastinal dan supraclavicular regions. Karena adanya komunikasi lintas sisi, pola metastasis tidak selalu ipsilateral secara sederhana.
 - [Abdomen: Pre-aortic dan Para-aortic Logic] Apa poin high-yield (pearl) tentang Abdomen: Pre-aortic dan Para-aortic Logic? :: Organ gastrointestinal cenderung mengikuti arterial supply ke pre-aortic nodes, sedangkan organ retroperitoneal dan gonads banyak menuju lumbar/para-aortic nodes.
 - [Pelvis dan Perineum] Apa korelasi klinis dari Pelvis dan Perineum? :: “testis ≠ scrotum” adalah pembeda klasik. Massa testis menyebar ke para-aortic nodes, sedangkan lesi kulit scrotum cenderung ke superficial inguinal nodes.
-- [Spleen] Apa poin high-yield (pearl) tentang Spleen? :: Spleen memfilter darah, bukan lymph. Ia tidak berada “di tengah” aliran limfe seperti lymph node dan pada dasarnya tidak memiliki afferent lymphatic vessels. Efferent lymphatics keluar di hilum.
-- [Thymus] Apa poin high-yield (pearl) tentang Thymus? :: Thymus juga tidak memiliki afferent lymphatic vessels; lymphatics yang ada terutama efferent.
+- [Spleen] Apa poin high-yield (pearl) tentang Spleen (Anatomi Sistem Limfatik)? :: Spleen memfilter darah, bukan lymph. Ia tidak berada “di tengah” aliran limfe seperti lymph node dan pada dasarnya tidak memiliki afferent lymphatic vessels. Efferent lymphatics keluar di hilum.
+- [Thymus] Apa poin high-yield (pearl) tentang Thymus (Anatomi Sistem Limfatik)? :: Thymus juga tidak memiliki afferent lymphatic vessels; lymphatics yang ada terutama efferent.

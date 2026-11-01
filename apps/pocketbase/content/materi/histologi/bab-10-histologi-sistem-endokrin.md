@@ -725,9 +725,9 @@ Setelah organ teridentifikasi, baru cari cell/region spesifik.
 - [Histologi Sistem Endokrin] Apa yang perlu diingat tentang alpha pada Histologi Sistem Endokrin? :: Glucagon
 - [Histologi Sistem Endokrin] Apa yang perlu diingat tentang delta pada Histologi Sistem Endokrin? :: Somatostatin
 - [Histologi Sistem Endokrin] Apa yang perlu diingat tentang Pineal: pinealocytes pada Histologi Sistem Endokrin? :: Melatonin
-- [Acidophils] Sebutkan dua populasi fungsional utama pada Acidophils. :: • Somatotrophs → growth hormone/GH
+- [Acidophils] Sebutkan dua populasi fungsional utama pada Acidophils (Histologi Sistem Endokrin). :: • Somatotrophs → growth hormone/GH
   • Lactotrophs atau mammotrophs → prolactin/PRL
-- [Basophils] Sebutkan kelompok utama pada Basophils. :: • Thyrotrophs → TSH
+- [Basophils] Sebutkan kelompok utama pada Basophils (Histologi Sistem Endokrin). :: • Thyrotrophs → TSH
   • Gonadotrophs → FSH dan LH
   • Corticotrophs → ACTH
 - [Pars Nervosa Neurohypophysis] Sebutkan komponen utama pada Pars Nervosa Neurohypophysis. :: • Unmyelinated axons dari hypothalamic neurosecretory neurons
@@ -735,15 +735,15 @@ Setelah organ teridentifikasi, baru cari cell/region spesifik.
   • Pituicytes
   • Fenestrated capillaries
   • Herring bodies
-- [Pars Nervosa Neurohypophysis] Sebutkan hal-hal penting tentang Hormone yang dilepas di neurohypophysis. :: • ADH/vasopressin
+- [Pars Nervosa Neurohypophysis] Sebutkan hal-hal penting tentang Hormone yang dilepas di neurohypophysis pada Pars Nervosa Neurohypophysis. :: • ADH/vasopressin
   • Oxytocin
-- [Thyroid Gland: Signature Follicles] Sebutkan hal-hal penting tentang Setiap follicle. :: • Follicular epithelial cells
+- [Thyroid Gland: Signature Follicles] Sebutkan hal-hal penting tentang Setiap follicle pada Thyroid Gland: Signature Follicles (Histologi Sistem Endokrin). :: • Follicular epithelial cells
   • Basement membrane
   • Central lumen berisi colloid
-- [Follicular Cells] Sebutkan hal-hal penting tentang Bentuk epitel berubah sesuai activity. :: • Relatively inactive gland → low cuboidal hingga flattened
+- [Follicular Cells] Sebutkan hal-hal penting tentang Bentuk epitel berubah sesuai activity pada Follicular Cells (Histologi Sistem Endokrin). :: • Relatively inactive gland → low cuboidal hingga flattened
   • Moderately active → cuboidal
   • Highly active → taller cuboidal/columnar
-- [Parafollicular / C Cells] Sebutkan hal-hal penting tentang Parafollicular cells atau C cells berada. :: • Dalam follicular epithelium tetapi tidak mencapai lumen; atau
+- [Parafollicular / C Cells] Sebutkan hal-hal penting tentang Parafollicular cells atau C cells berada pada Parafollicular / C Cells. :: • Dalam follicular epithelium tetapi tidak mencapai lumen; atau
   • Dalam small clusters di antara follicles
 - [Prinsip Sintesis Hormon Thyroid] Sebutkan urutan besar yang penting pada Prinsip Sintesis Hormon Thyroid. :: • Iodide trapping melalui Na+/I− symporter di basal membrane
   • Transport iodide ke apical side
@@ -769,11 +769,11 @@ Setelah organ teridentifikasi, baru cari cell/region spesifik.
   • Ada calcified brain sand? → pineal
 - [Pola Histologis Kelenjar Endokrin] Apa clue praktikum untuk Pola Histologis Kelenjar Endokrin? :: Jika suatu organ sangat vascular tetapi tidak memiliki duct, pikirkan endocrine tissue. Setelah itu cari signature structure: follicle, zonation, pale islet, atau neural appearance.
 - [Pituitary Gland: Organisasi Umum] Apa clue praktikum untuk Pituitary Gland: Organisasi Umum? :: Dark densely cellular anterior lobe bersebelahan dengan pale neural posterior lobe = pituitary.
-- [Acidophils] Apa clue praktikum untuk Acidophils? :: Sel pars distalis yang cytoplasm-nya pink/red pada H&E termasuk kelompok acidophil, tetapi jangan mencoba membedakan somatotroph vs lactotroph hanya dari H&E biasa.
-- [Pars Intermedia] Apa clue praktikum untuk Pars Intermedia? :: Small colloid-filled cystic spaces di boundary anterior-posterior pituitary mendukung pars intermedia.
+- [Acidophils] Apa clue praktikum untuk Acidophils (Histologi Sistem Endokrin)? :: Sel pars distalis yang cytoplasm-nya pink/red pada H&E termasuk kelompok acidophil, tetapi jangan mencoba membedakan somatotroph vs lactotroph hanya dari H&E biasa.
+- [Pars Intermedia] Apa clue praktikum untuk Pars Intermedia (Histologi Sistem Endokrin)? :: Small colloid-filled cystic spaces di boundary anterior-posterior pituitary mendukung pars intermedia.
 - [Thyroid Gland: Signature Follicles] Apa clue praktikum untuk Thyroid Gland: Signature Follicles? :: Many round follicles filled with homogeneous eosinophilic colloid = thyroid.
 - [Parafollicular / C Cells] Apa jebakan yang sering muncul pada soal tentang Parafollicular / C Cells? :: Jangan menganggap setiap pale interfollicular cell sebagai C cell tanpa konteks.
-- [Oxyphil Cells] Apa clue praktikum untuk Oxyphil Cells? :: Large intensely pink cell cluster di antara small chief cells = oxyphil cells.
-- [Zona Glomerulosa] Apa clue praktikum untuk Zona Glomerulosa? :: Thin outer cortical band with clustered cells immediately under capsule = zona glomerulosa.
-- [Adrenal Medulla] Apa clue praktikum untuk Adrenal Medulla? :: Cortex berzona mengelilingi central medulla = adrenal gland.
+- [Oxyphil Cells] Apa clue praktikum untuk Oxyphil Cells (Histologi Sistem Endokrin)? :: Large intensely pink cell cluster di antara small chief cells = oxyphil cells.
+- [Zona Glomerulosa] Apa clue praktikum untuk Zona Glomerulosa (Histologi Sistem Endokrin)? :: Thin outer cortical band with clustered cells immediately under capsule = zona glomerulosa.
+- [Adrenal Medulla] Apa clue praktikum untuk Adrenal Medulla (Histologi Sistem Endokrin)? :: Cortex berzona mengelilingi central medulla = adrenal gland.
 - [Endocrine Pancreas: Islets of Langerhans] Apa clue praktikum untuk Endocrine Pancreas: Islets of Langerhans? :: Pale island inside dark serous acinar tissue = pancreatic islet.
