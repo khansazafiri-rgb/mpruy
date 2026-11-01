@@ -476,6 +476,26 @@ routerAdd("GET", "/api/medcoel/admin/reports", (e) => {
 // Kampus: gabungkan dua nama yang sama
 // ---------------------------------------------------------------------------
 
+// Tes koneksi penyimpanan file: bila Drive dipakai, ambil token baru dan baca folder induknya.
+// Hasilnya selalu 200 dengan { ok, message } supaya alasan kegagalan tampil di halaman Sistem.
+routerAdd("GET", "/api/medcoel/admin/storage-check", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const storage = require(`${__hooks}/lib/storage.js`);
+  u.requireAdmin(e);
+  if (storage.mode() !== "drive") {
+    return e.json(200, { mode: storage.mode(), ok: true, message: "Memakai penyimpanan lokal (mode pengembangan). Google Drive belum dipakai." });
+  }
+  const drive = require(`${__hooks}/lib/drive.js`);
+  try {
+    const r = drive.check(e.app);
+    return e.json(200, { mode: "drive", ok: true, message: "Google Drive terhubung. Folder induk: " + r.folder + "." });
+  } catch (err) {
+    const v = err && err.value;
+    const text = v && v.message ? String(v.message) : String((err && err.message) || err);
+    return e.json(200, { mode: "drive", ok: false, message: text });
+  }
+});
+
 routerAdd("POST", "/api/medcoel/admin/campuses/merge", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
   const cs = require(`${__hooks}/lib/campusSelect.js`);

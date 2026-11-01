@@ -369,6 +369,14 @@ await langkah('laporkan soal: pelapor dapat notifikasi saat selesai', async () =
 
 console.log('Pengajuan soal dan Hermes Agent');
 let subId = '';
+await langkah('tes koneksi penyimpanan hanya untuk admin dan melaporkan mode', async () => {
+  await call('GET', '/api/medcoel/admin/storage-check', undefined, userA.token, 403);
+  await call('GET', '/api/medcoel/admin/storage-check', undefined, null, 401);
+  const r = (await call('GET', '/api/medcoel/admin/storage-check', undefined, admin.token, 200)).data;
+  assert.equal(r.mode, 'local');
+  assert.equal(r.ok, true);
+  assert.match(r.message, /lokal/);
+});
 await langkah('satu pengajuan boleh 1 sampai 10 PDF; 11 ditolak dan tidak ada jalur WhatsApp', async () => {
   const ok = await call('POST', '/api/medcoel/submissions', { subject: mk.id, hasKey: false, language: 'id', scope: 'all', pdfCount: 10 }, userB.token, 200);
   assert.equal(ok.data.pdfCount, 10);

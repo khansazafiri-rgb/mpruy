@@ -127,3 +127,19 @@ terbaca.
 - [ ] Tautan komunitas WA, Instagram, dan nomor WA admin diisi di Pengaturan
 - [ ] `npm run test:api` dijalankan ke salinan server (bukan produksi)
 - [ ] Backup harian berjalan dan uji pulih berhasil
+
+## Unggahan foto bukti atau PDF gagal
+
+Pesan merahnya sekarang menyebut penyebab. Ada tiga bentuk:
+
+- **"Penyimpanan Google Drive tidak bisa diakses ... (Drive 400 invalid_grant)"**: token Drive ditolak
+  Google. Penyebab paling umum adalah refresh token kedaluwarsa atau dicabut. Aplikasi OAuth yang
+  masih berstatus *Testing* di Google Cloud membuat refresh token mati tiap 7 hari; ubah ke
+  *In production*, lalu buat token baru dan isi `GDRIVE_REFRESH_TOKEN`.
+- **"... folder induk tidak bisa dibaca (Drive 404 ...)"**: `GDRIVE_ROOT_FOLDER_ID` salah atau akun
+  Drive tidak lagi punya izin ke folder itu.
+- **"Terjadi kesalahan di server ... dengan kode ABC123"**: kesalahan tak terduga. Detail lengkapnya
+  ada di log dengan kode yang sama: `sudo journalctl -u pocketbase | grep ABC123`.
+
+Cara cepat memeriksa: **Admin > Pengaturan > Sistem > Tes koneksi penyimpanan**. Tombol itu mengambil
+token baru dan membaca folder induk, lalu menampilkan hasilnya (atau alasannya) tanpa perlu membuka log.

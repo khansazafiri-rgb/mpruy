@@ -32,6 +32,20 @@ function configured() {
   return !!(u.env("GDRIVE_CLIENT_ID") && u.env("GDRIVE_CLIENT_SECRET") && u.env("GDRIVE_REFRESH_TOKEN") && u.env("GDRIVE_ROOT_FOLDER_ID"));
 }
 
+// Alasan singkat dari jawaban Google (kode HTTP + alasan), supaya pesan galat memberi tahu masalahnya.
+// Hanya kode dan alasan yang diambil, tidak pernah isi jawaban penuh.
+function reason(res) {
+  const j = res && res.json;
+  let r = "";
+  if (j && typeof j.error === "string") r = j.error;
+  else if (j && j.error && typeof j.error === "object") {
+    r = String(j.error.status || j.error.code || "");
+    const first = j.error.errors && j.error.errors[0];
+    if (first && first.reason) r += (r ? "/" : "") + first.reason;
+  }
+  return "Drive " + (res ? res.statusCode : "?") + (r ? " " + r : "");
+}
+
 function accessToken(app) {
   const store = app.store();
   const cached = store.get("medcoel_gdrive_token");
@@ -49,7 +63,7 @@ function accessToken(app) {
   });
   if (res.statusCode !== 200 || !res.json || !res.json.access_token) {
     console.log("drive: gagal mengambil access token", res.statusCode, toString(res.body));
-    throw new Error("Penyimpanan Google Drive tidak bisa diakses. Coba lagi nanti atau hubungi admin.");
+    throw new ApiError(503, "Penyimpanan Google Drive tidak bisa diakses sekarang. Ini masalah di server, bukan filemu. Coba lagi nanti atau beri tahu admin (" + reason(res) + ").");
   }
   const token = res.json.access_token;
   store.set("medcoel_gdrive_token", { token: token, exp: Date.now() + (res.json.expires_in || 3000) * 1000 });
@@ -94,7 +108,7 @@ function ensureFolder(app, parts) {
       });
       if (created.statusCode >= 300 || !created.json || !created.json.id) {
         console.log("drive: gagal membuat folder", created.statusCode, toString(created.body));
-        throw new Error("Folder penyimpanan di Google Drive tidak bisa dibuat.");
+        throw new ApiError(503, "Folder penyimpanan di Google Drive tidak bisa dibuat. Beri tahu admin (" + reason(created) + ").");
       }
       id = created.json.id;
     }
@@ -129,7 +143,7 @@ function startUpload(app, opts) {
   const url = Array.isArray(loc) ? loc[0] : loc;
   if (res.statusCode !== 200 || !url) {
     console.log("drive: gagal membuka sesi unggah", res.statusCode, toString(res.body));
-    throw new Error("Sesi unggah ke Google Drive gagal dibuka. Coba lagi sebentar lagi.");
+    throw new ApiError(503, "Sesi unggah ke Google Drive gagal dibuka. Coba lagi sebentar lagi; kalau tetap begini, beri tahu admin (" + reason(res) + ").");
   }
   return url;
 }
@@ -197,4 +211,18 @@ function sniff(bytes) {
   return "";
 }
 
-module.exports = { configured, ensureFolder, startUpload, getMeta, headBytes, remove, moveTo, viewLink, sniff };
+// Tes koneksi untuk halaman admin: token baru, lalu folder induk bisa dibaca. Melempar ApiError
+// dengan alasannya bila gagal.
+function check(app) {
+  app.store().remove("medcoel_gdrive_token");
+  accessToken(app);
+  const root = u.env("GDRIVE_ROOT_FOLDER_ID");
+  const res = call(app, "GET", API + "/files/" + encodeURIComponent(root) + "?fields=id,name&supportsAllDrives=true");
+  if (res.statusCode !== 200 || !res.json || !res.json.id) {
+    console.log("drive: folder induk tidak bisa dibaca", res.statusCode, toString(res.body));
+    throw new ApiError(503, "Token Google Drive berfungsi, tetapi folder induk tidak bisa dibaca (" + reason(res) + "). Periksa GDRIVE_ROOT_FOLDER_ID dan izin akunnya.");
+  }
+  return { folder: res.json.name || root };
+}
+
+module.exports = { check, configured, ensureFolder, startUpload, getMeta, headBytes, remove, moveTo, viewLink, sniff };

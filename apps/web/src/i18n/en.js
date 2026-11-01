@@ -1861,4 +1861,10 @@ export default {
   "Simpan prodi dan kampus": "Save program and campus",
   "Program studi dan kampus": "Program and campus",
   "Paling banyak {0} PDF per pengajuan. Kalau punya lebih, kirim sebagai pengajuan terpisah.": "Up to {0} PDFs per submission. If you have more, send them as separate submissions.",
+  "Server gagal memproses langkah ini ({0}). Ini bukan salah isianmu. Coba lagi; kalau tetap begini, beri tahu admin dan sebutkan langkah itu.": "The server failed to process this step ({0}). It is not your entries. Try again; if it keeps happening, tell the admin and mention this step.",
+  "Terjadi kesalahan di server saat memproses ini. Ini masalah di server, bukan di isianmu. Coba lagi; kalau tetap begini, beri tahu admin dengan kode {0}.": "Something went wrong on the server while processing this. It is a server problem, not your entries. Try again; if it keeps happening, tell the admin with code {0}.",
+  "Server tidak bisa menghubungi layanan luar yang dibutuhkan. Coba lagi sebentar lagi; kalau tetap begini, beri tahu admin dengan kode {0}.": "The server could not reach an outside service it needs. Try again shortly; if it keeps happening, tell the admin with code {0}.",
+  "Penyimpanan Google Drive tidak bisa diakses sekarang. Ini masalah di server, bukan filemu. Coba lagi nanti atau beri tahu admin ({0}).": "Google Drive storage cannot be reached right now. This is a server problem, not your file. Try again later or tell the admin ({0}).",
+  "Folder penyimpanan di Google Drive tidak bisa dibuat. Beri tahu admin ({0}).": "The Google Drive storage folder could not be created. Tell the admin ({0}).",
+  "Sesi unggah ke Google Drive gagal dibuka. Coba lagi sebentar lagi; kalau tetap begini, beri tahu admin ({0}).": "The Google Drive upload session could not be opened. Try again shortly; if it keeps happening, tell the admin ({0}).",
 };
