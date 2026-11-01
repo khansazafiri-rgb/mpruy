@@ -127,12 +127,12 @@ function kos(t) {
   const lp = clamp((t - 33.0) / 0.5, 0, 1);
   const lapScreen = lp > 0 ? `<g transform="translate(0 0)">${R(-190, -214, 380, 192, '#0A3830', 8)}${T(0, -108, 'MEDCOEL', '#9DE0BD', 54)}${E(0, -60, 70, 8, 'rgba(255,255,255,.12)')}</g>` : '';
   const laptop_ = `<g transform="translate(860 ${DESKTOP})">${A.laptop(lp > 0 ? 1 : 0.92, lp > 0 ? '#0A3830' : '#1B2A3A', '')}${lapScreen}</g>`;
-  const thought = (t >= 24.3 && t < 26.95) ? 'bulb' : (t >= 26.86 && t < 33.5) ? 'layers' : null;
+  const thought = (t >= 24.3 && t < 27.2) ? 'bulb' : (t >= 26.86 && t < 33.7) ? 'layers' : null;
   let tb = '';
   if (thought === 'bulb') {
     const u = t - 24.3, wob = Math.sin(u * 3) * 18, px = 520 + Math.sin(u * 1.6) * 150, py = 440;
     const pop = eob(u / 0.4);
-    tb = `<g transform="translate(0 0) scale(1)" opacity="${clamp(u / 0.2, 0, 1)}">${bubbleCloud(560, 520, 800, 520)}`
+    tb = `<g transform="translate(0 0) scale(1)" opacity="${clamp(u / 0.2, 0, 1) * clamp((27.2 - t) / 0.35, 0, 1)}">${bubbleCloud(560, 520, 800, 520)}`
       + `<path d="M170 650C320 600 380 450 540 520C700 590 760 420 940 470" fill="none" stroke="#B7C6CC" stroke-width="8" stroke-dasharray="3 22" stroke-linecap="round"/>`
       + `<g transform="translate(${f1(px)} ${f1(py + wob * 0.2)}) scale(${(0.85 * pop).toFixed(3)}) rotate(${f1(Math.sin(u * 2.4) * 8)})">${A.bulb(t)}</g>`
       + `<g transform="translate(850 620)">${L('M0 40V-90', '#8A5A34', 10)}${R(-70, -150, 150, 56, '#F8C038', 10)}${T(5, -112, 'PULANG', '#172B38', 28)}${P('M-70 -122l-34 -0l20 -22z', '#F8C038')}</g>`
@@ -140,7 +140,7 @@ function kos(t) {
       + T(560, 720, 'PEMAHAMAN', '#8A9AA3', 30) + `</g>`;
   } else if (thought === 'layers') {
     const u = t - 26.86;
-    tb = `<g opacity="${clamp(u / 0.3, 0, 1)}">${bubbleCloud(580, 470, 860, 640)}<g transform="translate(580 500) scale(${(0.82 * eob(u / 0.5)).toFixed(3)})">${A.layersBody(t, 1)}</g><g transform="translate(580 300)">${A.qmarks(t * 0.8, 3, 230)}</g></g>`;
+    tb = `<g opacity="${clamp(u / 0.35, 0, 1) * clamp((33.7 - t) / 0.35, 0, 1)}">${bubbleCloud(580, 470, 860, 640)}<g transform="translate(580 500) scale(${(0.82 * eob(u / 0.5)).toFixed(3)})">${A.layersBody(t, 1)}</g><g transform="translate(580 300)">${A.qmarks(t * 0.8, 3, 230)}</g></g>`;
   }
   const svg = `<g transform="${CAM(c, 0, shake, shake)}">${A.kosBg(t)}${A.lampCone(t)}${A.lamp()}${R(-100, 1190, 1280, 34, '#B3744A', 8)}${rakaG}${R(-100, 1224, 1280, 220, '#8A5A34')}${R(40, 1224, 380, 150, '#7A4D2C', 10)}${notes}${laptop_}${book}${motion}${tb}</g>`;
   return { svg };

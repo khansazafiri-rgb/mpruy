@@ -156,7 +156,7 @@ async function renderFrame(t) {
   if (atlasOn) {
     const sc = screenAt(t), cam = camFn(t);
     $('cam').style.transform = `translate(${f1(540 - cam[0] * cam[2])}px, ${f1(960 - cam[1] * cam[2])}px) scale(${cam[2].toFixed(4)})`;
-    al.style.opacity = clamp((t - PLAN.atlasT0) / 0.35, 0, 1) * clamp((PLAN.atlasT1 - t) / 0.05, 0, 1);
+    al.style.opacity = clamp((t - PLAN.atlasT0) / 0.35, 0, 1) * clamp((PLAN.atlasT1 - t) / 0.3, 0, 1);
     if (sc) {
       const mix = sc.k;
       await Promise.all([setImg(imgs.uiA, sc.a.ui), setImg(imgs.uiB, sc.b.ui), setImg(imgs.frA, sc.a.fr), setImg(imgs.frB, sc.b.fr), setImg(imgs.uiTop, sc.b.ui)]);

@@ -3,7 +3,7 @@
 const S = (take, kind, t0, label, o = {}) => ({ take, kind, t0, label, ...o });
 export const PLAN = {
   takes: ['intro', 'hero_layers', 'skeleton', 'vessels', 'lymph'],
-  atlasT0: 34.1, atlasT1: 51.75, panelT0: 51.6, panelT1: 57.05, sideCapT0: 34.4, sideCapT1: 51.7,
+  atlasT0: 34.1, atlasT1: 51.9, panelT0: 51.6, panelT1: 57.05, sideCapT0: 34.4, sideCapT1: 51.7,
   steps: [
     S('intro', 'still', 34.2, 'ready', { tin: 0.01 }),
     S('intro', 'motion', 38.4, 'intro-rot'),                                  // 70 bingkai: depan -> samping
