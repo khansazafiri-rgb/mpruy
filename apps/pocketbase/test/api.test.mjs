@@ -1218,8 +1218,8 @@ await langkah('urutan BAB semua mata kuliah mengikuti Google Doc (bukan A-Z), ju
   assert.equal(anat[0], 'Anatomi Umum & Terminologi Anatomis');
 });
 
-await langkah('catatan materi bawaan: Anatomi (20 BAB), Histologi (12), Fisiologi (20), Biokimia (18), Genetika Kedokteran (6), Patologi Anatomi (13), Parasitologi (8), dan Mikrobiologi (11) terbaca siswa, berurutan, dengan flashcard', async () => {
-  for (const [slug, jumlah] of [['anatomi', 20], ['histologi', 12], ['fisiologi', 20], ['biokimia', 18], ['genetika-kedokteran', 6], ['patologi-anatomi', 13], ['parasitologi', 8], ['mikrobiologi', 11]]) {
+await langkah('catatan materi bawaan: Anatomi (20 BAB), Histologi (12), Fisiologi (20), Biokimia (18), Genetika Kedokteran (6), Patologi Anatomi (13), Parasitologi (8), Mikrobiologi (11), Farmakologi (14), dan Patologi Klinik (8) terbaca siswa, berurutan, dengan flashcard', async () => {
+  for (const [slug, jumlah] of [['anatomi', 20], ['histologi', 12], ['fisiologi', 20], ['biokimia', 18], ['genetika-kedokteran', 6], ['patologi-anatomi', 13], ['parasitologi', 8], ['mikrobiologi', 11], ['farmakologi', 14], ['patologi-klinik', 8]]) {
     const sub = subjects.find((s) => s.slug === slug);
     assert.ok(sub, `mata kuliah ${slug} dari katalog`);
     const noted = (await call('GET', `/api/medcoel/subjects/${slug}`, undefined, userA.token, 200)).data.chapters.filter((c) => c.hasNotes);
@@ -1243,7 +1243,7 @@ await langkah('catatan materi bawaan: Anatomi (20 BAB), Histologi (12), Fisiolog
     }
   }
   // BAB tanpa catatan tidak punya flashcard.
-  const plain = (await call('GET', `/api/medcoel/subjects/${subjects.find((s) => s.slug === 'farmakologi').slug}`, undefined, userA.token, 200)).data.chapters;
+  const plain = (await call('GET', `/api/medcoel/subjects/${subjects.find((s) => s.slug === 'radiologi-dasar').slug}`, undefined, userA.token, 200)).data.chapters;
   assert.ok(plain.every((c) => !c.hasNotes && !c.hasCards));
 });
 

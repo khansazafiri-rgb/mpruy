@@ -1,0 +1,1121 @@
+[
+ {
+  "find": "(?i)^Catatan Basis Sumber$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Bab (?:\\d+|ini) (?:mengikuti|disusun dari) .*",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^CATATAN SUMBER$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Bagian berlabel “Materi sumber”.*",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Materi sumber$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Ekspansi farmakologi standar$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Ekspansi farmakologi standar\\s*[—,-] .*",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Sumber utama Bab 1[34]$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^• (?:PCV Classroom|Struktur bab|Seluruh bagian berlabel|Semua bagian bertanda|Materi FK UNAIR|Bank Soal|Referensi yang tercantum|Bagian adrenal serta|Rekap Bab per|Materi kuliah Farmakologi)",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Catatan fidelity sumber:",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "mekanisme yang ditekankan adalah vasodilatasi",
+  "replace": "mekanismenya adalah vasodilatasi",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "dalam rentang waktu yang disebutkan sumber, karena",
+  "replace": "dalam rentang waktu tertentu, karena",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Contoh pada PCV dan materi kuliah:",
+  "replace": "Contoh:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "B. Dekontaminasi Saluran Cerna — sesuai materi sumber",
+  "replace": "B. Dekontaminasi Saluran Cerna",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "DHP + primaquine pada materi malaria",
+  "replace": "DHP + primaquine pada malaria",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": ", sesuai daftar obat sumber.",
+  "replace": ".",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Poin yang ditegaskan bank soal:",
+  "replace": "Poin penting:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Bank soal Farmakologi menekankan dua asosiasi reseptor:",
+  "replace": "Dua asosiasi reseptor yang penting:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Visual 1A — Gambaran umum perjalanan obat dalam tubuh",
+  "replace": "Visual 1A — Gambaran umum perjalanan obat dalam tubuh Sumber: Scivit, Wikimedia Commons, CC BY 4.0.",
+  "why": "kredit gambar dipindah dari daftar sumber ke keterangan gambar"
+ },
+ {
+  "find": "Visual 1B — Kurva konsentrasi plasma, Cmax, Tmax, AUC, dan waktu paruh",
+  "replace": "Visual 1B — Kurva konsentrasi plasma, Cmax, Tmax, AUC, dan waktu paruh Sumber: NCBI Bookshelf, Assay Guidance Manual.",
+  "why": "kredit gambar dipindah dari daftar sumber ke keterangan gambar"
+ },
+ {
+  "find": "Visual 1C — Loading dose, maintenance dose, dan pencapaian konsentrasi terapeutik",
+  "replace": "Visual 1C — Loading dose, maintenance dose, dan pencapaian konsentrasi terapeutik Sumber: Jan Štěch / ShadyMedic, Wikimedia Commons, CC BY 4.0.",
+  "why": "kredit gambar dipindah dari daftar sumber ke keterangan gambar"
+ },
+ {
+  "find": "Visual 2A — Perbandingan kurva agonis penuh dan agonis parsial",
+  "replace": "Visual 2A — Perbandingan kurva agonis penuh dan agonis parsial Sumber: Radio89 (Dario Cambié), Wikimedia Commons, CC BY-SA 3.0.",
+  "why": "kredit gambar dipindah dari daftar sumber ke keterangan gambar"
+ },
+ {
+  "find": "Visual 2B — Kurva dosis–respons dan konsep potensi",
+  "replace": "Visual 2B — Kurva dosis–respons dan konsep potensi Sumber: Radio89 (Dario Cambié), Wikimedia Commons, CC BY-SA 3.0.",
+  "why": "kredit gambar dipindah dari daftar sumber ke keterangan gambar"
+ },
+ {
+  "find": "POLA BANDING CEPAT BETA-LAKTAM",
+  "replace": "Pola banding cepat beta-laktam:",
+  "why": "label kotak ditulis huruf besar tanpa titik dua; diseragamkan agar menjadi kotak"
+ },
+ {
+  "find": "POLA BANDING CEPAT ANTI-HERPES",
+  "replace": "Pola banding cepat anti-herpes:",
+  "why": "label kotak ditulis huruf besar tanpa titik dua; diseragamkan agar menjadi kotak"
+ },
+ {
+  "find": "POLA BANDING CEPAT OAD",
+  "replace": "Pola banding cepat OAD:",
+  "why": "label kotak ditulis huruf besar tanpa titik dua; diseragamkan agar menjadi kotak"
+ },
+ {
+  "find": "POLA BANDING — Typical vs Atypical",
+  "replace": "Pola banding typical vs atypical:",
+  "why": "label kotak ditulis huruf besar tanpa titik dua; diseragamkan agar menjadi kotak"
+ },
+ {
+  "find": "POLA BANDING — Benzodiazepine vs Barbiturat vs Buspirone",
+  "replace": "Pola banding benzodiazepine vs barbiturat vs buspirone:",
+  "why": "label kotak ditulis huruf besar tanpa titik dua; diseragamkan agar menjadi kotak"
+ },
+ {
+  "find": "^POLA BANDING CEPAT$",
+  "replace": "Pola banding cepat:",
+  "regex": true,
+  "all": true,
+  "why": "label kotak ditulis huruf besar tanpa titik dua; diseragamkan agar menjadi kotak"
+ },
+ {
+  "find": "Mekanisme yang didukung langsung oleh pembahasan UAB Farmakologi:",
+  "replace": "Mekanisme kerja opioid:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+(?:pada|dalam|dari|menurut|sesuai|oleh|berdasarkan)\\s+(?:pola\\s+)?(?:latihan\\s+)?(?:soal\\s+)?(?:materi\\s+)?(?:sumber|slide|PCV)(?:\\s+tambahan|\\s+utama)?(?=[\\s.,;:)—]|$)",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+(?:pada|dalam|menurut)\\s+bank soal(?:\\s+tambahan)?(?=[\\s.,;:)—]|$)",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+(?:pada|dalam|menurut)\\s+(?:konteks\\s+sumber|materi(?:\\s+kuliah)?)(?=[\\s.,;:)—]|$)",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+yang\\s+(?:sangat\\s+)?(?:dicantumkan|ditekankan|disebutkan|ditonjolkan|dituliskan|tercantum|ditegaskan)(?:\\s+(?:pada\\s+|oleh\\s+|dalam\\s+)?(?:materi|sumber|slide|PCV)(?:\\s+kuliah)?)?(?=[\\s.,;:)—]|$)",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi PCV Classroom membedakan sedasi dan hipnosis sebagai berikut.",
+  "replace": "Sedasi dan hipnosis dibedakan sebagai berikut.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Materi juga mencantumkan ramelteon.*$",
+  "replace": "Obat yang lebih baru meliputi ramelteon, tasimelteon, eszopiclone, dan buspirone.",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "4.3 Farmakokinetik Sedatif–Hipnotik: Sesuai Ringkasan Sumber",
+  "replace": "4.3 Farmakokinetik Sedatif–Hipnotik",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Ringkasan farmakokinetik sumber dituliskan secara singkat:",
+  "replace": "Ringkasan farmakokinetik:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Catatan penting: bagian ini sengaja mengikuti ringkasan slide",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Bank soal Anestesi di Drive mendefinisikan anestesi seimbang sebagai",
+  "replace": "Anestesi seimbang didefinisikan sebagai",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Contoh pola soal sumber:",
+  "replace": "Contoh pola soal:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber soal Anestesi memberikan tiga pola klinis yang sangat high-yield.",
+  "replace": "Tiga pola klinis yang sangat high-yield:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "menjadi pola jawaban sumber",
+  "replace": "menjadi pilihan",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran",
+  "all": true
+ },
+ {
+  "find": "Pada soal sumber, sevoflurane digunakan",
+  "replace": "Sevoflurane digunakan",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "4.7 Analgesik Opioid: Reseptor yang Ditekankan Sumber",
+  "replace": "4.7 Analgesik Opioid: Reseptor",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Sumber tidak memberikan uraian lengkap semua efek",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Dalam bank soal Anestesi, fentanyl digunakan bersama sevoflurane.",
+  "replace": "Fentanyl dapat digunakan bersama sevoflurane.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "yang bermakna menurut definisi slide.",
+  "replace": "yang bermakna.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Benzodiazepine pada ringkasan slide dimetabolisme",
+  "replace": "Benzodiazepine dimetabolisme",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Komponen yang disebut bank soal:",
+  "replace": "Komponen anestesi seimbang:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "dikaitkan sumber dengan",
+  "replace": "dikaitkan dengan",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran",
+  "all": true
+ },
+ {
+  "find": "Materi mencantumkan barbiturat, benzodiazepine, dan Z-drugs sebagai kelas sedatif-hipnotik.",
+  "replace": "Barbiturat, benzodiazepine, dan Z-drugs adalah kelas sedatif-hipnotik.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Pada pola soal sumber, propofol dapat menyebabkan",
+  "replace": "Propofol dapat menyebabkan",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber membedakan terapi akut dan profilaksis.",
+  "replace": "Terapi dibedakan menjadi akut dan profilaksis.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "sumber menempatkan beta-blocker sebagai lini pertama",
+  "replace": "beta-blocker menjadi lini pertama",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Clinical pearl sumber:",
+  "replace": "Clinical pearl:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; sumber menegaskan obat ini tidak efektif",
+  "replace": "; obat ini tidak efektif",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; sumber memberi contoh pemeliharaan irama sinus",
+  "replace": "; contohnya pemeliharaan irama sinus",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber menyebut kelas IA makin",
+  "replace": "Kelas IA makin",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber menekankan selektivitas pada",
+  "replace": "Selektivitasnya ditekankan pada",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; sumber mencantumkan waktu paruh sekitar 9 menit dan menekankan kegunaannya untuk",
+  "replace": "; waktu paruhnya sekitar 9 menit sehingga berguna untuk",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber menekankan bahwa amiodarone memiliki",
+  "replace": "Amiodarone memiliki",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber memperingatkan agar verapamil atau diltiazem IV tidak diberikan",
+  "replace": "Verapamil atau diltiazem IV tidak boleh diberikan",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "6.12 Diuretik pada Materi Sumber",
+  "replace": "6.12 Diuretik",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber Bab 6 tidak memiliki bab diuretik tersendiri. Dua kelompok yang dibahas eksplisit adalah",
+  "replace": "Dua kelompok diuretik yang dibahas adalah",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber menyebut chlorthalidone lebih poten",
+  "replace": "Chlorthalidone lebih poten",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Diuretik yang Didukung Materi Sumber",
+  "replace": "Diuretik Thiazide dan Loop",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; sumber juga menerapkan larangan ini pada nicorandil.",
+  "replace": "; larangan ini juga berlaku pada nicorandil.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "jangan langsung memilih verapamil/diltiazem menurut kontraindikasi sumber",
+  "replace": "jangan langsung memilih verapamil/diltiazem karena kontraindikasi",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Bagian diuretik sumber mendukung dua kelompok:",
+  "replace": "Diuretik yang dibahas terdiri atas dua kelompok:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "sumber membagi analgesik menjadi:",
+  "replace": "analgesik dibagi menjadi:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "7.9 Farmakokinetik Ringkas NSAID pada Slide",
+  "replace": "7.9 Farmakokinetik Ringkas NSAID",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Catatan: ringkasan tersebut dipertahankan sebagai ringkasan slide",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "ingat daftar kontraindikasi sumber",
+  "replace": "ingat daftar kontraindikasi NSAID",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "contoh sumber lidokain",
+  "replace": "contohnya lidokain",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Aspirin → sumber menekankan efek antiplatelet",
+  "replace": "Aspirin → efek antiplatelet",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Ringkasan PK sumber:",
+  "replace": "Ringkasan PK NSAID:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "termasuk indikasi sumber.",
+  "replace": "termasuk indikasi NSAID.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "tetapi sumber menyebutnya sebagai pengecualian",
+  "replace": "tetapi merupakan pengecualian",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber menekankan konsep toksisitas selektif:",
+  "replace": "Konsep toksisitas selektif:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber PCV membagi target antibiotik menjadi empat kelompok besar:",
+  "replace": "Target antibiotik dibagi menjadi empat kelompok besar:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi kuliah tambahan menjelaskan:",
+  "replace": "Penjelasan tambahan:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi kuliah juga mencantumkan methicillin,",
+  "replace": "Obat lain yang termasuk: methicillin,",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Spektrum sumber:",
+  "replace": "Spektrum:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "PCV membagi cephalosporin berdasarkan generasi:",
+  "replace": "Cephalosporin dibagi berdasarkan generasi:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "PCV secara khusus mencantumkan Pseudomonas pada bagian generasi III melalui ceftazidime.",
+  "replace": "Aktivitas terhadap Pseudomonas pada generasi III dicontohkan oleh ceftazidime.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi kuliah menekankan bahwa dibanding penicillin,",
+  "replace": "Dibanding penicillin,",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Poin sumber:",
+  "replace": "Poin penting:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran",
+  "all": true
+ },
+ {
+  "find": "8.8 Efek Samping dan Farmakokinetik Penicillin yang Ditekankan Materi",
+  "replace": "8.8 Efek Samping dan Farmakokinetik Penicillin",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^PCV menempatkan aminoglikosida.*$",
+  "replace": "Aminoglikosida adalah inhibitor sintesis protein pada ribosom 30S dan menyebabkan “premature release protein”. Gentamicin adalah prototipe aminoglikosida sistemik, neomycin dipakai untuk penggunaan lokal, dan spectinomycin termasuk aminocyclitol.",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Erythromycin ditekankan memiliki aktivitas",
+  "replace": "Erythromycin memiliki aktivitas",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "juga dicantumkan;",
+  "replace": "juga dapat terjadi;",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber utama membagi antivirus secara praktis menjadi beberapa kelompok:",
+  "replace": "Antivirus dapat dibagi secara praktis menjadi beberapa kelompok:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; sumber juga membahas peramivir pada kelompok neuraminidase inhibitor.",
+  "replace": "; peramivir juga termasuk neuraminidase inhibitor.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "slide juga mencantumkan thrombotic thrombocytopenic purpura pada",
+  "replace": "thrombotic thrombocytopenic purpura juga dilaporkan pada",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber juga mencantumkan beberapa agen tambahan:",
+  "replace": "Agen tambahan:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber juga mencantumkan amantadine dan rimantadine sebagai uncoating inhibitor serta ribavirin pada bagian anti-influenza.",
+  "replace": "Amantadine dan rimantadine adalah uncoating inhibitor, sedangkan ribavirin juga termasuk obat anti-influenza.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber utama tidak menguraikan seluruh regimen HIV secara rinci, tetapi menekankan empat target kelas:",
+  "replace": "Obat anti-HIV dikelompokkan menjadi empat target kelas:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Bank soal Mikrobiologi tambahan membantu menghubungkan target masuk HIV:",
+  "replace": "Target masuk HIV:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Untuk hepatitis virus, sumber utama.*$",
+  "replace": "Untuk hepatitis virus, obat yang digunakan meliputi lamivudine, tenofovir, sofosbuvir, dan interferon. Pada hepatitis B kronis, entecavir atau tenofovir adalah pilihan dengan barrier resistensi tinggi, sedangkan PEG-interferon merupakan alternatif.",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Pada hasil ekstraksi PDF Farmakologi utama.*$",
+  "replace": "Target obat antifungi berikut perlu diketahui.",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber tambahan menekankan nefrotoksisitas sebagai adverse effect penting.",
+  "replace": "Nefrotoksisitas adalah adverse effect penting.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Contoh sumber:",
+  "replace": "Contoh:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Bank soal menyebut efek fungisidal",
+  "replace": "Efek fungisidal",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber tambahan menekankan bahwa penggunaan tunggal",
+  "replace": "Penggunaan tunggal",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Bank soal tambahan menghubungkan griseofulvin.*$",
+  "replace": "Griseofulvin berikatan dengan tubulin dan mengganggu spindle mitosis; digunakan pada dermatofitosis.",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "PDF Farmakologi utama membagi antiparasit menjadi tiga kelompok besar:",
+  "replace": "Antiparasit dibagi menjadi tiga kelompok besar:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Karena rincian obat tidak terbaca pada bagian tersebut",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "sumber menyebut pemberian saat perut kosong",
+  "replace": "pemberian saat perut kosong",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi Plasmodium di Drive menekankan terapi berbasis derivat artemisinin. Regimen yang tertulis menggunakan",
+  "replace": "Terapi malaria berbasis derivat artemisinin. Regimen yang digunakan adalah",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Poin high-yield sumber:",
+  "replace": "Poin high-yield:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi Entomologi/Parasitologi memberikan pola soal scabies dengan kunikulus, papul, dan gatal khas. Jawaban terapi adalah",
+  "replace": "Pola soal scabies: kunikulus, papul, dan gatal khas. Terapinya adalah",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Kelas anti-HIV sumber:",
+  "replace": "Kelas anti-HIV:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Pada insulin basal, sumber menggunakan titik awal 10 unit/hari",
+  "replace": "Pada insulin basal, titik awalnya 10 unit/hari",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber juga mencantumkan glibenklamid:",
+  "replace": "Glibenklamid:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Catatan sumber: pada hasil ekstraksi",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Catatan sumber: mekanisme SGLT2",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "sumber menekankan nasofaringitis",
+  "replace": "efek sampingnya nasofaringitis",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "dicantumkan sebagai adverse effect metformin",
+  "replace": "tercatat sebagai adverse effect metformin",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "adverse effect sumber meliputi",
+  "replace": "adverse effect meliputi",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; sumber juga mencantumkan sitagliptin, empagliflozin, dan pioglitazone.",
+  "replace": "; obat lain meliputi sitagliptin, empagliflozin, dan pioglitazone.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "tiga jalur utama sumber:",
+  "replace": "tiga jalur utama:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Pada latihan soal sumber, blokade",
+  "replace": "Blokade",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber menekankan ipratropium lebih efektif",
+  "replace": "Ipratropium lebih efektif",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Dalam latihan soal sumber, montelukast",
+  "replace": "Montelukast",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber menyebut histamin disimpan",
+  "replace": "Histamin disimpan",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Pada lansia, sumber menekankan risiko",
+  "replace": "Pada lansia, perlu diwaspadai risiko",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Karakteristik sumber:",
+  "replace": "Karakteristik:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "lebih sesuai dengan pola sumber.",
+  "replace": "lebih sesuai.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Tiga golongan utama sumber:",
+  "replace": "Tiga golongan utama:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "• sumber menyebut regurgitasi",
+  "replace": "• regurgitasi",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber menyebut kelompok ini selektif",
+  "replace": "Kelompok ini selektif",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber menuliskan kombinasi Mg(OH)2 + Al(OH)3 dengan tujuan",
+  "replace": "Kombinasi Mg(OH)2 + Al(OH)3 bertujuan",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Pada latihan soal sumber, pasien pengguna",
+  "replace": "Pasien pengguna",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Ini menjadi pola kasus high-yield langsung dari materi.",
+  "replace": "Ini adalah pola kasus high-yield.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Sumber menyarankan memberikan jarak sekitar 2 jam.",
+  "replace": "Beri jarak sekitar 2 jam.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Materi tidak memberikan regimen eradikasi H. pylori",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Interaksi PPI dengan clopidogrel dicantumkan.",
+  "replace": "PPI berinteraksi dengan clopidogrel.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Colloidal bismuth dicantumkan dalam konteks eradikasi",
+  "replace": "Colloidal bismuth digunakan dalam konteks eradikasi",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Colloidal bismuth dicantumkan pada konteks H. pylori",
+  "replace": "Colloidal bismuth digunakan pada konteks H. pylori",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Untuk psikosis, slide mencantumkan tiga hipotesis:",
+  "replace": "Untuk psikosis, terdapat tiga hipotesis:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Untuk gangguan mood, slide mencantumkan:",
+  "replace": "Untuk gangguan mood:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Slide menempatkan antipsikotik bersama.*$",
+  "replace": "Antipsikotik dikelompokkan bersama “penstabil mood” dan dibedakan menjadi typical vs atypical antipsychotic. Farmakokinetik antipsikotik:",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "slide menuliskan metabolisme di liver oleh CYP2D6, CYP1A2, dan CYP2A4.",
+  "replace": "metabolisme di liver oleh CYP2D6, CYP1A2, dan CYP3A4.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^PDF hanya menampilkan heading “Antidepresan”",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Slide mendefinisikan sedasi (anxiolytic) sebagai",
+  "replace": "Sedasi (anxiolytic) didefinisikan sebagai",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi sumber mengaitkan psikosis dengan",
+  "replace": "Psikosis dikaitkan dengan",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Slide menyebut benzodiazepine dimetabolisme",
+  "replace": "Benzodiazepine dimetabolisme",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; ini adalah ekspansi farmakologi standar.",
+  "replace": ".",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; ini juga ekspansi standar.",
+  "replace": ".",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; slide mencantumkan metabolisme CYP hepatik.",
+  "replace": "; metabolismenya melalui CYP hepatik.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "; rincian ini adalah ekspansi standar karena tabel antidepresan tidak terekstrak.",
+  "replace": ".",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Catatan sumber: pemberian",
+  "replace": "Catatan: pemberian",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Daftar di atas dicatat untuk menjaga kesetiaan.*?(Penggunaan ipecac.*?berlaku\\.)\\s*Kalimat ini.*$",
+  "replace": "\\1",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^(HCl lambung .*?absorpsi\\.) Materi memberikan.*$",
+  "replace": "\\1 Contohnya kombinasi antasida dengan beberapa obat; arah perubahan absorpsi tidak sama untuk semua contoh, sehingga tidak dapat dijadikan aturan universal.",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Untuk membandingkan sediaan oral dan intravena, materi menggunakan konsep",
+  "replace": "Untuk membandingkan sediaan oral dan intravena, digunakan konsep",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi memberi contoh probenesid yang dapat",
+  "replace": "Contohnya probenesid, yang dapat",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi membagi reseptor obat menjadi empat kelompok besar.",
+  "replace": "Reseptor obat dibagi menjadi empat kelompok besar.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi membagi obat SSO menjadi empat kelompok:",
+  "replace": "Obat SSO dibagi menjadi empat kelompok:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi membagi kelompok ini secara praktis menjadi",
+  "replace": "Kelompok ini dibagi secara praktis menjadi",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "materi menyarankan mengganti ke golongan ARB.",
+  "replace": "disarankan mengganti ke golongan ARB.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "pola jawaban materi adalah ARB.",
+  "replace": "jawabannya adalah ARB.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi membagi CCB menjadi dua kelompok:",
+  "replace": "CCB dibagi menjadi dua kelompok:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "1. Materi mendefinisikan hipertensi dengan ambang",
+  "replace": "1. Hipertensi didefinisikan dengan ambang",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi mengaitkan kelas IC dengan peningkatan mortalitas pasca-MI pada studi CAST dan menekankan penggunaannya hanya",
+  "replace": "Kelas IC dikaitkan dengan peningkatan mortalitas pasca-MI pada studi CAST sehingga digunakan hanya",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Urutan besar yang digunakan materi adalah:",
+  "replace": "Urutan besarnya adalah:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Saat jaringan mengalami cedera, materi menggambarkan urutan:",
+  "replace": "Saat jaringan mengalami cedera, urutannya:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi Farmakologi Antibiotik menjelaskan mekanisme penicillin melalui",
+  "replace": "Penicillin bekerja melalui",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi tambahan mencantumkan carbenicillin,",
+  "replace": "Carbenicillin,",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "azlocillin, dengan aktivitas Gram-negatif yang lebih luas",
+  "replace": "azlocillin juga termasuk golongan ini, dengan aktivitas Gram-negatif yang lebih luas",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi Farmakologi Antibiotik mencantumkan efek samping penicillin:",
+  "replace": "Efek samping penicillin:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "• pada anak, materi mengingatkan pemantauan warna urine;",
+  "replace": "• pada anak, pantau warna urine;",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "• materi membedakan relapse akibat",
+  "replace": "• relapse dibedakan dari recrudescence: relapse akibat",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "dari recrudescence akibat parasit darah",
+  "replace": "sedangkan recrudescence akibat parasit darah",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi menggambarkan sumbu regulasi:",
+  "replace": "Sumbu regulasi:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "• kehamilan trimester I — materi lebih memilih PTU.",
+  "replace": "• kehamilan trimester I — PTU lebih dipilih.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi membuka bagian ini dengan tiga kondisi utama.",
+  "replace": "Tiga kondisi utama:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Secara farmakologis, materi membagi pendekatan terapi penyakit asam-peptik menjadi",
+  "replace": "Secara farmakologis, pendekatan terapi penyakit asam-peptik dibagi menjadi",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "8. Materi menyarankan menghindari PPI",
+  "replace": "8. Hindari PPI",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Materi mendefinisikan psikosis sebagai",
+  "replace": "Psikosis didefinisikan sebagai",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "18. Materi mendefinisikan sedasi sebagai",
+  "replace": "18. Sedasi didefinisikan sebagai",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi juga memasukkan evaluasi keamanan (safety evaluation) dan penilaian risiko (risk assessment) sebagai bagian",
+  "replace": "Cakupan toksikologi juga meliputi evaluasi keamanan (safety evaluation) dan penilaian risiko (risk assessment), yang menjadi bagian",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi mendeskripsikan theophylline sebagai",
+  "replace": "Theophylline adalah",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi membahas beberapa mekanisme:",
+  "replace": "Beberapa mekanisme:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi menggambarkan keseimbangan:",
+  "replace": "Keseimbangan:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "—pada materi dibagi menjadi sinergis dan antagonis.",
+  "replace": "—dibagi menjadi sinergis dan antagonis.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Antidot high-yield materi:",
+  "replace": "Antidot high-yield:",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Materi mencantumkan:$",
+  "replace": "Meliputi:",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^• Materi Antihelminth",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "• streptomycin dibahas juga pada terapi tuberkulosis, tetapi bagian antimikobakteria tidak diperluas di bab ini.",
+  "replace": "• streptomycin juga digunakan pada terapi tuberkulosis.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi juga menyebut nyeri sebagai “the fifth vital sign” dan menekankan bahwa nyeri perlu",
+  "replace": "Nyeri disebut sebagai “the fifth vital sign”, dan nyeri perlu",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi mencantumkan penggunaan pada HSV dan VZV serta efek samping seperti",
+  "replace": "Digunakan pada HSV dan VZV; efek samping seperti",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi menekankan efek ini pada aspirin melalui penghambatan TXA₂",
+  "replace": "Efek ini paling dikenal pada aspirin melalui penghambatan TXA₂",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi juga mencantumkan indacaterol, olodaterol, dan vilanterol sebagai agonis",
+  "replace": "Indacaterol, olodaterol, dan vilanterol juga termasuk agonis",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi menyebut nortriptyline sebagai antidepresan trisiklik",
+  "replace": "Nortriptyline adalah antidepresan trisiklik",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "^Materi mencantumkan tata laksana suportif.*$",
+  "replace": "Tata laksana meliputi terapi suportif, whole bowel irrigation, activated charcoal, serta high-dose insulin euglycemia therapy. Infus glukosa diberikan untuk mempertahankan euglikemia.",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi juga menyebut barbiturat, benzodiazepin, serta obat sedatif-hipnotik lain dalam kelompok ini.",
+  "replace": "Barbiturat, benzodiazepin, serta obat sedatif-hipnotik lain termasuk dalam kelompok ini.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "23. Materi mencantumkan produksi sekitar T4 90% dan T3 10%.",
+  "replace": "23. Produksi tiroid sekitar T4 90% dan T3 10%.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "Materi mencantumkan insulin sebagai terapi utama pada DM tipe 1.",
+  "replace": "Insulin adalah terapi utama pada DM tipe 1.",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "indikasinya disebut mirip dengan ACE-I dan ARB menjadi alternatif utama",
+  "replace": "indikasinya mirip dengan ACE-I; ARB menjadi alternatif utama",
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+(?:pada|dari)\\s+Materi(?:\\s+Parasitologi)?$",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\s+(?:sesuai|dari|di|menurut|dalam)\\s+(?:klasifikasi\\s+)?materi(?=[\\s.,;:)—]|$)",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\b[Mm]ateri (?:juga )?(?:menekankan|menegaskan|menyebut|menyatakan) (?:bahwa )?(\\w)",
+  "replace": "\\1",
+  "regex": true,
+  "all": true,
+  "cap": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\b[Pp]ada materi, (\\w)",
+  "replace": "\\1",
+  "regex": true,
+  "all": true,
+  "cap": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\b[Mm]enurut materi, (\\w)",
+  "replace": "\\1",
+  "regex": true,
+  "all": true,
+  "cap": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ },
+ {
+  "find": "\\b[Mm]ateri (?:juga )?mencantumkan (?=\\w)(\\w)",
+  "replace": "\\1",
+  "regex": true,
+  "all": true,
+  "cap": true,
+  "why": "catatan asal-usul penyusun (sumber/slide/PCV/bank soal) dibuang dari kalimat pelajaran"
+ }
+]

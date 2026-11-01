@@ -754,5 +754,159 @@
     "chapter": "Uji Sensitivitas Antibiotik & Resistensi",
     "file": "mikrobiologi/bab-12-uji-sensitivitas-antibiotik-resistensi.md",
     "docBab": 12
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Farmakokinetik: Absorpsi, Distribusi, Metabolisme, Ekskresi",
+    "file": "farmakologi/bab-01-farmakokinetik-absorpsi-distribusi-metabolisme.md",
+    "docBab": 1
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Farmakodinamik: Mekanisme Kerja Obat & Reseptor",
+    "file": "farmakologi/bab-02-farmakodinamik-mekanisme-kerja-obat-reseptor.md",
+    "docBab": 2
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Obat Sistem Saraf Otonom (Kolinergik, Adrenergik)",
+    "file": "farmakologi/bab-03-obat-sistem-saraf-otonom-kolinergik-adrenergik.md",
+    "docBab": 3
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Obat Susunan Saraf Pusat (Anestesi, Analgesik Opioid)",
+    "file": "farmakologi/bab-04-obat-susunan-saraf-pusat-anestesi-analgesik.md",
+    "docBab": 4
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Obat Kardiovaskular: Antihipertensi",
+    "file": "farmakologi/bab-05-obat-kardiovaskular-antihipertensi.md",
+    "docBab": 5
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik",
+    "file": "farmakologi/bab-06-obat-kardiovaskular-antiaritmia-antiangina.md",
+    "docBab": 6
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Obat Antiinflamasi Nonsteroid (NSAID) & Analgesik",
+    "file": "farmakologi/bab-07-obat-antiinflamasi-nonsteroid-nsaid-analgesik.md",
+    "docBab": 7
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Obat Antibiotik: Beta-Laktam, Makrolid, Aminoglikosida",
+    "file": "farmakologi/bab-08-obat-antibiotik-beta-laktam-makrolid.md",
+    "docBab": 8
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Obat Antivirus, Antifungi, Antiparasit",
+    "file": "farmakologi/bab-09-obat-antivirus-antifungi-antiparasit.md",
+    "docBab": 9
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Obat Sistem Endokrin (Insulin, OAD, Hormon Tiroid)",
+    "file": "farmakologi/bab-10-obat-sistem-endokrin-insulin-oad-hormon-tiroid.md",
+    "docBab": 10
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Obat Sistem Respirasi (Bronkodilator, Antihistamin)",
+    "file": "farmakologi/bab-11-obat-sistem-respirasi-bronkodilator-antihistamin.md",
+    "docBab": 11
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Obat Sistem Gastrointestinal (Antasida, PPI)",
+    "file": "farmakologi/bab-12-obat-sistem-gastrointestinal-antasida-ppi.md",
+    "docBab": 12
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)",
+    "file": "farmakologi/bab-13-farmakologi-psikiatri-antipsikotik-antidepresan.md",
+    "docBab": 13
+  },
+  {
+    "subject": "farmakologi",
+    "subjectName": "Farmakologi",
+    "chapter": "Toksikologi Dasar & Keracunan Obat",
+    "file": "farmakologi/bab-14-toksikologi-dasar-keracunan-obat.md",
+    "docBab": 14
+  },
+  {
+    "subject": "patologi-klinik",
+    "subjectName": "Patologi Klinik",
+    "chapter": "Interpretasi Darah Lengkap (Hematologi Dasar)",
+    "file": "patologi-klinik/bab-01-interpretasi-darah-lengkap-hematologi-dasar.md",
+    "docBab": 1
+  },
+  {
+    "subject": "patologi-klinik",
+    "subjectName": "Patologi Klinik",
+    "chapter": "Interpretasi Fungsi Hati",
+    "file": "patologi-klinik/bab-02-interpretasi-fungsi-hati.md",
+    "docBab": 2
+  },
+  {
+    "subject": "patologi-klinik",
+    "subjectName": "Patologi Klinik",
+    "chapter": "Interpretasi Fungsi Ginjal",
+    "file": "patologi-klinik/bab-03-interpretasi-fungsi-ginjal.md",
+    "docBab": 3
+  },
+  {
+    "subject": "patologi-klinik",
+    "subjectName": "Patologi Klinik",
+    "chapter": "Interpretasi Profil Lipid & Gula Darah",
+    "file": "patologi-klinik/bab-04-interpretasi-profil-lipid-gula-darah.md",
+    "docBab": 4
+  },
+  {
+    "subject": "patologi-klinik",
+    "subjectName": "Patologi Klinik",
+    "chapter": "Interpretasi Analisis Urin",
+    "file": "patologi-klinik/bab-05-interpretasi-analisis-urin.md",
+    "docBab": 5
+  },
+  {
+    "subject": "patologi-klinik",
+    "subjectName": "Patologi Klinik",
+    "chapter": "Interpretasi Analisis Gas Darah",
+    "file": "patologi-klinik/bab-06-interpretasi-analisis-gas-darah.md",
+    "docBab": 6
+  },
+  {
+    "subject": "patologi-klinik",
+    "subjectName": "Patologi Klinik",
+    "chapter": "Interpretasi Kultur & Sensitivitas Mikrobiologi",
+    "file": "patologi-klinik/bab-07-interpretasi-kultur-sensitivitas-mikrobiologi.md",
+    "docBab": 7
+  },
+  {
+    "subject": "patologi-klinik",
+    "subjectName": "Patologi Klinik",
+    "chapter": "Dasar Imunoserologi Klinik",
+    "file": "patologi-klinik/bab-08-dasar-imunoserologi-klinik.md",
+    "docBab": 8
   }
 ]
