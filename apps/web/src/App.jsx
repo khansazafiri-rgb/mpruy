@@ -13,6 +13,8 @@ import Subjects from './pages/Subjects';
 import SubjectDetail from './pages/SubjectDetail';
 import NotFound from './pages/NotFound';
 
+const HumanAnatomy = lazy(() => import('./pages/HumanAnatomy'));
+
 const Lab = lazy(() => import('./pages/Lab'));
 const LabObject = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabObject })));
 const LabPathway = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabPathway })));
@@ -56,7 +58,7 @@ function RequireAuth({ children, admin = false }) {
   const { me, ready } = useAuth();
   const loc = useLocation();
   if (!ready) return <PageLoader />;
-  if (!me) return <Navigate to={`/masuk?lanjut=${encodeURIComponent(loc.pathname + loc.search)}`} replace />;
+  if (!me) return <Navigate to={`/masuk?lanjut=${encodeURIComponent(loc.pathname + loc.search + loc.hash)}`} replace />;
   if (admin && me.role !== 'admin') return <Navigate to="/beranda" replace />;
   return children;
 }
@@ -79,6 +81,7 @@ export default function App() {
           <Route path="/daftar" element={<GuestOnly><Signup /></GuestOnly>} />
           <Route path="/lupa-password" element={<ForgotPassword />} />
           <Route path="/kebijakan-privasi" element={<Privacy />} />
+          <Route path="/anatomy" element={<RequireAuth><HumanAnatomy /></RequireAuth>} />
           <Route path="/kerjakan/:id" element={<RequireAuth><Runner /></RequireAuth>} />
           <Route element={<RequireAuth><AppShell /></RequireAuth>}>
             <Route path="/beranda" element={<Home />} />
