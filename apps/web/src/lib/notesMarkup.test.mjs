@@ -168,6 +168,7 @@ test('catatan di apps/pocketbase/content/materi terurai utuh', { skip: !existsSy
     assert.ok(!/^\s*• /m.test(text.split('## Flashcard')[0]), `${e.file}: sisa butir mentah`);
     // Catatan asal-usul penyusun dokumen (sumber UTB/IUP, slide, PPT, bank soal) bukan isi pelajaran.
     if (e.subject === 'mikrobiologi') assert.ok(!/\b(UTB|IUP|PPT\d*|materi sumber|bank soal|sumber praktikum)\b/i.test(text), `${e.file}: catatan internal penyusun`);
+    if (e.subject === 'farmakologi') assert.ok(!/\b(PCV|Classroom|bank soal|materi sumber|ekspansi (?:farmakologi )?standar|ekstraksi|terekstrak|UAB|Oculus|Rekap (?:MEDCOEL|Bab))\b/i.test(text), `${e.file}: catatan internal penyusun`);
     assert.ok(!/^#{1,3} .*[\u2600-\u27BF\u{1F300}-\u{1FAFF}]/mu.test(text), `${e.file}: judul bagian berisi emoji`);   // "•" di tengah kalimat = radikal bebas (O₂•⁻), bukan butir
     for (const s of d.sections) {
       if (s.kind === 'intro') continue;

@@ -94,6 +94,10 @@ test('setiap catatan di index.json menunjuk BAB yang ada di katalog', () => {
   const have = index.filter((e) => e.subject === 'mikrobiologi').map((e) => e.chapter);
   assert.deepEqual([...mikro.filter((c) => !have.includes(c))], ['Virus Eksantematous (Campak, Rubella, Varicella)']);
   assert.equal(have.length, 11);
+  const farmako = cat.find((s) => s.slug === 'farmakologi').chapters;
+  assert.deepEqual(index.filter((e) => e.subject === 'farmakologi').map((e) => e.chapter).sort(), [...farmako].sort(), 'ke-14 BAB Farmakologi lengkap');
+  const pk = cat.find((s) => s.slug === 'patologi-klinik').chapters;
+  assert.deepEqual(index.filter((e) => e.subject === 'patologi-klinik').map((e) => e.chapter).sort(), [...pk].sort(), 'ke-8 BAB Patologi Klinik lengkap');
 });
 
 function seeded() {

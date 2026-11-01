@@ -147,7 +147,7 @@ Inhibitor dapat berikatan dengan enzim bebas maupun kompleks ES tetapi dengan af
 
 Inhibitor menonaktifkan enzim secara permanen atau sangat kuat, sering melalui ikatan kovalen. Secara fungsional, jumlah enzim aktif berkurang.
 
-![Ilustrasi pendukung: E. Irreversible inhibition](https://lh3.googleusercontent.com/d/1rofA7gRvC7ZdfRoj35dRUjFGWiZZAxVc)
+![Ilustrasi pendukung: Irreversible inhibition](https://lh3.googleusercontent.com/d/1rofA7gRvC7ZdfRoj35dRUjFGWiZZAxVc)
 
 ## Tabel High-Yield Inhibisi {highyield}
 
