@@ -1,0 +1,690 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 1.64,
+   "text": "Feature Unlocked.",
+   "words": [
+    {
+     "w": "Feature",
+     "s": 0.0,
+     "e": 0.48
+    },
+    {
+     "w": "Unlocked.",
+     "s": 0.48,
+     "e": 1.64
+    }
+   ]
+  },
+  {
+   "start": 1.64,
+   "end": 7.32,
+   "text": "Sekarang, kamu bisa menjelajahi anatomy tubuh dalam 3 dimensi, gratis di Medcoil.",
+   "words": [
+    {
+     "w": "Sekarang,",
+     "s": 1.64,
+     "e": 2.24
+    },
+    {
+     "w": "kamu",
+     "s": 2.48,
+     "e": 2.66
+    },
+    {
+     "w": "bisa",
+     "s": 2.66,
+     "e": 2.92
+    },
+    {
+     "w": "menjelajahi",
+     "s": 2.92,
+     "e": 3.46
+    },
+    {
+     "w": "anatomy",
+     "s": 3.46,
+     "e": 3.78
+    },
+    {
+     "w": "tubuh",
+     "s": 3.78,
+     "e": 4.32
+    },
+    {
+     "w": "dalam",
+     "s": 4.32,
+     "e": 4.54
+    },
+    {
+     "w": "3",
+     "s": 4.54,
+     "e": 4.96
+    },
+    {
+     "w": "dimensi,",
+     "s": 4.96,
+     "e": 5.56
+    },
+    {
+     "w": "gratis",
+     "s": 5.82,
+     "e": 6.46
+    },
+    {
+     "w": "di",
+     "s": 6.46,
+     "e": 6.66
+    },
+    {
+     "w": "Medcoil.",
+     "s": 6.66,
+     "e": 7.32
+    }
+   ]
+  },
+  {
+   "start": 7.64,
+   "end": 12.4,
+   "text": "Mulai dari tampilan otot, kamu bisa mengatur layar sesuai bagian yang ingin kamu lihat.",
+   "words": [
+    {
+     "w": "Mulai",
+     "s": 7.64,
+     "e": 7.96
+    },
+    {
+     "w": "dari",
+     "s": 7.96,
+     "e": 8.16
+    },
+    {
+     "w": "tampilan",
+     "s": 8.16,
+     "e": 8.48
+    },
+    {
+     "w": "otot,",
+     "s": 8.48,
+     "e": 8.88
+    },
+    {
+     "w": "kamu",
+     "s": 9.2,
+     "e": 9.44
+    },
+    {
+     "w": "bisa",
+     "s": 9.44,
+     "e": 9.68
+    },
+    {
+     "w": "mengatur",
+     "s": 9.68,
+     "e": 10.0
+    },
+    {
+     "w": "layar",
+     "s": 10.0,
+     "e": 10.4
+    },
+    {
+     "w": "sesuai",
+     "s": 10.4,
+     "e": 10.78
+    },
+    {
+     "w": "bagian",
+     "s": 10.78,
+     "e": 11.26
+    },
+    {
+     "w": "yang",
+     "s": 11.26,
+     "e": 11.46
+    },
+    {
+     "w": "ingin",
+     "s": 11.46,
+     "e": 11.88
+    },
+    {
+     "w": "kamu",
+     "s": 11.88,
+     "e": 12.08
+    },
+    {
+     "w": "lihat.",
+     "s": 12.08,
+     "e": 12.4
+    }
+   ]
+  },
+  {
+   "start": 12.82,
+   "end": 16.52,
+   "text": "Kurangi layar ototnya, dan perhatikan struktur yang ada di bawahnya.",
+   "words": [
+    {
+     "w": "Kurangi",
+     "s": 12.82,
+     "e": 13.12
+    },
+    {
+     "w": "layar",
+     "s": 13.12,
+     "e": 13.42
+    },
+    {
+     "w": "ototnya,",
+     "s": 13.42,
+     "e": 13.9
+    },
+    {
+     "w": "dan",
+     "s": 14.22,
+     "e": 14.42
+    },
+    {
+     "w": "perhatikan",
+     "s": 14.42,
+     "e": 14.94
+    },
+    {
+     "w": "struktur",
+     "s": 14.94,
+     "e": 15.46
+    },
+    {
+     "w": "yang",
+     "s": 15.46,
+     "e": 15.74
+    },
+    {
+     "w": "ada",
+     "s": 15.74,
+     "e": 15.94
+    },
+    {
+     "w": "di",
+     "s": 15.94,
+     "e": 16.06
+    },
+    {
+     "w": "bawahnya.",
+     "s": 16.06,
+     "e": 16.52
+    }
+   ]
+  },
+  {
+   "start": 16.96,
+   "end": 22.1,
+   "text": "Mau fokus ke kerangka, tampilkan sistem rangka dan lihat bentuk tulang dari berbagai sudut.",
+   "words": [
+    {
+     "w": "Mau",
+     "s": 16.96,
+     "e": 17.14
+    },
+    {
+     "w": "fokus",
+     "s": 17.14,
+     "e": 17.44
+    },
+    {
+     "w": "ke",
+     "s": 17.44,
+     "e": 17.58
+    },
+    {
+     "w": "kerangka,",
+     "s": 17.58,
+     "e": 18.0
+    },
+    {
+     "w": "tampilkan",
+     "s": 18.36,
+     "e": 18.9
+    },
+    {
+     "w": "sistem",
+     "s": 18.9,
+     "e": 19.14
+    },
+    {
+     "w": "rangka",
+     "s": 19.14,
+     "e": 19.64
+    },
+    {
+     "w": "dan",
+     "s": 19.64,
+     "e": 20.06
+    },
+    {
+     "w": "lihat",
+     "s": 20.06,
+     "e": 20.34
+    },
+    {
+     "w": "bentuk",
+     "s": 20.34,
+     "e": 20.7
+    },
+    {
+     "w": "tulang",
+     "s": 20.7,
+     "e": 21.02
+    },
+    {
+     "w": "dari",
+     "s": 21.02,
+     "e": 21.22
+    },
+    {
+     "w": "berbagai",
+     "s": 21.22,
+     "e": 21.68
+    },
+    {
+     "w": "sudut.",
+     "s": 21.68,
+     "e": 22.1
+    }
+   ]
+  },
+  {
+   "start": 22.5,
+   "end": 27.84,
+   "text": "Sekarang, coba tampilkan pembuluh darah untuk melihat bagaimana strukturnya berada di dalam tubuh.",
+   "words": [
+    {
+     "w": "Sekarang,",
+     "s": 22.5,
+     "e": 23.06
+    },
+    {
+     "w": "coba",
+     "s": 23.3,
+     "e": 23.54
+    },
+    {
+     "w": "tampilkan",
+     "s": 23.54,
+     "e": 24.0
+    },
+    {
+     "w": "pembuluh",
+     "s": 24.0,
+     "e": 24.32
+    },
+    {
+     "w": "darah",
+     "s": 24.32,
+     "e": 24.72
+    },
+    {
+     "w": "untuk",
+     "s": 24.72,
+     "e": 25.0
+    },
+    {
+     "w": "melihat",
+     "s": 25.0,
+     "e": 25.38
+    },
+    {
+     "w": "bagaimana",
+     "s": 25.38,
+     "e": 25.92
+    },
+    {
+     "w": "strukturnya",
+     "s": 25.92,
+     "e": 26.6
+    },
+    {
+     "w": "berada",
+     "s": 26.6,
+     "e": 27.04
+    },
+    {
+     "w": "di",
+     "s": 27.04,
+     "e": 27.22
+    },
+    {
+     "w": "dalam",
+     "s": 27.22,
+     "e": 27.4
+    },
+    {
+     "w": "tubuh.",
+     "s": 27.4,
+     "e": 27.84
+    }
+   ]
+  },
+  {
+   "start": 27.84,
+   "end": 29.66,
+   "text": "Penasaran dengan sistem lymphatik?",
+   "words": [
+    {
+     "w": "Penasaran",
+     "s": 27.84,
+     "e": 28.62
+    },
+    {
+     "w": "dengan",
+     "s": 28.62,
+     "e": 28.8
+    },
+    {
+     "w": "sistem",
+     "s": 28.8,
+     "e": 29.08
+    },
+    {
+     "w": "lymphatik?",
+     "s": 29.08,
+     "e": 29.66
+    }
+   ]
+  },
+  {
+   "start": 29.98,
+   "end": 32.6,
+   "text": "Pilih layarnya dan jelajahi tampilannya juga.",
+   "words": [
+    {
+     "w": "Pilih",
+     "s": 29.98,
+     "e": 30.3
+    },
+    {
+     "w": "layarnya",
+     "s": 30.3,
+     "e": 30.66
+    },
+    {
+     "w": "dan",
+     "s": 30.66,
+     "e": 31.16
+    },
+    {
+     "w": "jelajahi",
+     "s": 31.16,
+     "e": 31.82
+    },
+    {
+     "w": "tampilannya",
+     "s": 31.82,
+     "e": 32.3
+    },
+    {
+     "w": "juga.",
+     "s": 32.3,
+     "e": 32.6
+    }
+   ]
+  },
+  {
+   "start": 33.02,
+   "end": 35.94,
+   "text": "Kamu bisa mengatur tampilan sesuai kebutuhan belajarmu.",
+   "words": [
+    {
+     "w": "Kamu",
+     "s": 33.02,
+     "e": 33.34
+    },
+    {
+     "w": "bisa",
+     "s": 33.34,
+     "e": 33.48
+    },
+    {
+     "w": "mengatur",
+     "s": 33.48,
+     "e": 33.84
+    },
+    {
+     "w": "tampilan",
+     "s": 33.84,
+     "e": 34.34
+    },
+    {
+     "w": "sesuai",
+     "s": 34.34,
+     "e": 34.92
+    },
+    {
+     "w": "kebutuhan",
+     "s": 34.92,
+     "e": 35.36
+    },
+    {
+     "w": "belajarmu.",
+     "s": 35.36,
+     "e": 35.94
+    }
+   ]
+  },
+  {
+   "start": 36.24,
+   "end": 39.46,
+   "text": "Putar modelnya, perbesar bagian yang ingin kamu perhatikan",
+   "words": [
+    {
+     "w": "Putar",
+     "s": 36.24,
+     "e": 36.56
+    },
+    {
+     "w": "modelnya,",
+     "s": 36.56,
+     "e": 37.08
+    },
+    {
+     "w": "perbesar",
+     "s": 37.48,
+     "e": 37.88
+    },
+    {
+     "w": "bagian",
+     "s": 37.88,
+     "e": 38.26
+    },
+    {
+     "w": "yang",
+     "s": 38.26,
+     "e": 38.42
+    },
+    {
+     "w": "ingin",
+     "s": 38.42,
+     "e": 38.76
+    },
+    {
+     "w": "kamu",
+     "s": 38.76,
+     "e": 38.94
+    },
+    {
+     "w": "perhatikan",
+     "s": 38.94,
+     "e": 39.46
+    }
+   ]
+  },
+  {
+   "start": 39.46,
+   "end": 42.86,
+   "text": "dan pelajari hubungan antarstruktur dengan lebih jelas.",
+   "words": [
+    {
+     "w": "dan",
+     "s": 39.46,
+     "e": 40.0
+    },
+    {
+     "w": "pelajari",
+     "s": 40.0,
+     "e": 40.52
+    },
+    {
+     "w": "hubungan",
+     "s": 40.52,
+     "e": 40.96
+    },
+    {
+     "w": "antarstruktur",
+     "s": 40.96,
+     "e": 41.66
+    },
+    {
+     "w": "dengan",
+     "s": 41.66,
+     "e": 41.98
+    },
+    {
+     "w": "lebih",
+     "s": 41.98,
+     "e": 42.38
+    },
+    {
+     "w": "jelas.",
+     "s": 42.38,
+     "e": 42.86
+    }
+   ]
+  },
+  {
+   "start": 43.28,
+   "end": 47.88,
+   "text": "Mau mulai dari otot, tulang, pembuluh darah atau lymphatik, kamu yang pilih.",
+   "words": [
+    {
+     "w": "Mau",
+     "s": 43.28,
+     "e": 43.46
+    },
+    {
+     "w": "mulai",
+     "s": 43.46,
+     "e": 43.74
+    },
+    {
+     "w": "dari",
+     "s": 43.74,
+     "e": 43.9
+    },
+    {
+     "w": "otot,",
+     "s": 43.9,
+     "e": 44.36
+    },
+    {
+     "w": "tulang,",
+     "s": 44.58,
+     "e": 45.0
+    },
+    {
+     "w": "pembuluh",
+     "s": 45.22,
+     "e": 45.56
+    },
+    {
+     "w": "darah",
+     "s": 45.56,
+     "e": 46.02
+    },
+    {
+     "w": "atau",
+     "s": 46.02,
+     "e": 46.2
+    },
+    {
+     "w": "lymphatik,",
+     "s": 46.2,
+     "e": 46.76
+    },
+    {
+     "w": "kamu",
+     "s": 46.96,
+     "e": 47.24
+    },
+    {
+     "w": "yang",
+     "s": 47.24,
+     "e": 47.42
+    },
+    {
+     "w": "pilih.",
+     "s": 47.42,
+     "e": 47.88
+    }
+   ]
+  },
+  {
+   "start": 48.16,
+   "end": 52.5,
+   "text": "Yuk, coba human anatomy gratis di Medcoil melalui Medcoil.com",
+   "words": [
+    {
+     "w": "Yuk,",
+     "s": 48.16,
+     "e": 48.32
+    },
+    {
+     "w": "coba",
+     "s": 48.62,
+     "e": 48.82
+    },
+    {
+     "w": "human",
+     "s": 48.82,
+     "e": 49.02
+    },
+    {
+     "w": "anatomy",
+     "s": 49.02,
+     "e": 49.42
+    },
+    {
+     "w": "gratis",
+     "s": 49.42,
+     "e": 50.08
+    },
+    {
+     "w": "di",
+     "s": 50.08,
+     "e": 50.24
+    },
+    {
+     "w": "Medcoil",
+     "s": 50.24,
+     "e": 50.86
+    },
+    {
+     "w": "melalui",
+     "s": 50.86,
+     "e": 51.52
+    },
+    {
+     "w": "Medcoil",
+     "s": 51.52,
+     "e": 52.08
+    },
+    {
+     "w": ".com",
+     "s": 52.08,
+     "e": 52.5
+    }
+   ]
+  }
+ ]
+}

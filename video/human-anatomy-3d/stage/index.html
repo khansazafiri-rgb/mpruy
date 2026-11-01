@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Feature unlocked: 3D Anatomy</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root { --forest:#0A3830; --green:#007060; --mint:#9DE0BD; --cream:#F7F2E4; --gold:#F8C038; --coral:#E8665F; --ink:#172B38; }
+  html,body{margin:0;padding:0;background:#000;}
+  #root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans','Inter',sans-serif;color:var(--ink);background:#F4F1E8}
+  #cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;will-change:transform}
+  #cam img{position:absolute;display:block}
+  .ui{left:0;top:0;width:1080px;height:1920px}
+  .fr{left:301px;top:89px;width:762px;height:1814px}
+  #cam svg{position:absolute;left:0;top:0;overflow:visible}
+  #over{position:absolute;left:0;top:0;width:1080px;height:1920px}
+  #over svg{position:absolute;left:0;top:0}
+  #cap{position:absolute;left:14px;width:278px;top:1196px;display:flex;align-items:flex-start}
+  #cap .box{background:rgba(10,56,48,.96);border-radius:26px;padding:16px 16px 18px;text-align:left;font-weight:800;font-size:34px;line-height:1.22;color:#fff;letter-spacing:-.01em;width:100%;box-sizing:border-box;box-shadow:0 6px 0 rgba(0,0,0,.16)}
+  #cap .w{display:inline-block;margin:0 5px 0 0}
+  #cap .box .w.on{color:var(--gold)}
+  #cap .box .w.fut{color:rgba(255,255,255,.88)}
+</style></head>
+<body>
+<div id="root">
+  <div id="cam">
+    <img id="uiA" class="ui"><img id="uiB" class="ui">
+    <img id="frA" class="fr"><img id="frB" class="fr">
+    <img id="uiTop" class="ui">
+    <svg id="fx" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  </div>
+  <div id="over"><svg id="ov" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+    <div id="cap"><div class="box" id="capbox"></div></div></div>
+</div>
+<script type="module" src="stage.js"></script>
+</body></html>
