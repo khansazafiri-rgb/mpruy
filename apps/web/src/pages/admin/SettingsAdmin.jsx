@@ -92,6 +92,12 @@ function General() {
 function System() {
   const [summary, setSummary] = useState(null);
   const [out, setOut] = useState('');
+  const [store, setStore] = useState(null);
+  const [checking, setChecking] = useState(false);
+  const checkStorage = async () => {
+    setChecking(true); setStore(null);
+    try { setStore(await api('admin/storage-check')); } catch (e) { setStore({ ok: false, message: e.message }); } finally { setChecking(false); }
+  };
   useEffect(() => { api('admin/summary').then(setSummary).catch(() => {}); }, []);
   const job = async (name) => { try { setOut(JSON.stringify(await api(`admin/run-job/${name}`, { method: 'POST', body: {} }))); } catch (e) { setOut(e.message); } };
   return (
@@ -99,6 +105,11 @@ function System() {
       <section className="card space-y-2 p-5 text-sm">
         <h2 className="font-display text-lg font-semibold">Status layanan</h2>
         <p>Penyimpanan file: <b>{summary?.storageMode === 'drive' ? 'Google Drive' : 'lokal (mode pengembangan)'}</b></p>
+        <div className="flex flex-wrap items-center gap-2">
+          <button type="button" className="btn-secondary btn-sm" onClick={checkStorage} disabled={checking}>{checking ? 'Memeriksa...' : 'Tes koneksi penyimpanan'}</button>
+          <span className="text-ink-muted">Dipakai bila unggahan foto bukti atau PDF siswa gagal.</span>
+        </div>
+        {store && <Alert kind={store.ok ? 'success' : 'error'}>{store.message}</Alert>}
         <p>Email (SMTP): <b>{summary?.smtp ? 'aktif' : 'belum diatur'}</b> · atur di dashboard PocketBase <code>/_/</code> &gt; Settings &gt; Mail settings</p>
         <p>Captcha Turnstile: <b>{summary?.turnstile ? 'aktif' : 'belum diatur'}</b></p>
         <p className="text-ink-muted">Kredensial Drive, Turnstile, dan Hermes disimpan di file lingkungan server, bukan di repositori. Lihat docs/DEPLOY.md.</p>

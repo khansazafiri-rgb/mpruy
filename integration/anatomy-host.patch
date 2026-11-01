@@ -1,0 +1,69 @@
+--- a/src/main.js
++++ b/src/main.js
+@@ -1,3 +1,4 @@
++import {reportAtlasStatus} from './integration/host.js';
+ import "@fontsource-variable/inter";
+ import "@fontsource-variable/plus-jakarta-sans";
+ import "./styles/main.css";
+@@ -51,11 +52,13 @@
+     await initUI();
+     initSelection(viewer);
+     overlay.classList.add("hidden");
++    reportAtlasStatus("ready");
+     document.addEventListener("visibilitychange", () =>
+       document.hidden ? viewer.stopRenderLoop() : viewer.startRenderLoop(),
+     );
+   } catch (error) {
+     console.error(error);
++    reportAtlasStatus("error");
+     overlay.querySelector(".loading-text").textContent = error.message;
+     overlay.querySelector(".loading-spinner").hidden = true;
+     const retry = document.createElement("button");
+--- a/src/atlas/ui.js
++++ b/src/atlas/ui.js
+@@ -1,3 +1,4 @@
++import {hostedShareUrl} from "../integration/host.js";
+ import * as THREE from "three";
+ import {ghostAllExcept, clearGhost} from "../viewer/visibility.js";
+ import { state, subscribe } from "../state/store.js";
+@@ -370,12 +371,12 @@
+   $("footerShowAllBtn").onclick = restoreScene;
+   $("shareAtlas").onclick = async () => {
+     try {
+-      await navigator.clipboard.writeText(shareView());
++      await navigator.clipboard.writeText(hostedShareUrl(shareView()));
+       announce("View link copied");
+     } catch {
+       const input = $("shareUrl");
+       input.hidden = false;
+-      input.value = shareView();
++      input.value = hostedShareUrl(shareView());
+       input.focus();
+       input.select();
+       announce("Copy the selected view link");
+--- /dev/null
++++ b/src/integration/host.js
+@@ -0,0 +1,12 @@
++// Lifecycle status only. No account data or auth tokens cross the frame boundary.
++export function reportAtlasStatus(status) {
++  if (window.parent === window) return;
++  window.parent.postMessage({type:status === 'ready' ? 'medcoel:anatomy-ready' : 'medcoel:anatomy-error',version:1},window.location.origin);
++}
++export function hostedShareUrl(viewerUrl) {
++  if (window.parent === window) return viewerUrl;
++  const source=new URL(viewerUrl);
++  const host=new URL('/anatomy',window.location.origin);
++  host.hash=source.hash;
++  return host.href;
++}
+--- /dev/null
++++ b/tests/host.test.js
+@@ -0,0 +1,8 @@
++import {it,expect,vi} from 'vitest';
++import {hostedShareUrl,reportAtlasStatus} from '../src/integration/host.js';
++it('embedded sharing stays on the main anatomy route without account data',()=>{
++ const postMessage=vi.fn();const parent={postMessage};
++ vi.stubGlobal('window',{parent,location:{origin:'https://medcoel.example'}});
++ expect(hostedShareUrl('https://medcoel.example/anatomy/viewer/#atlas=state')).toBe('https://medcoel.example/anatomy#atlas=state');
++ reportAtlasStatus('ready');expect(postMessage).toHaveBeenCalledWith({type:'medcoel:anatomy-ready',version:1},'https://medcoel.example');vi.unstubAllGlobals();
++});

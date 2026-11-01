@@ -60,7 +60,7 @@ function Item({ it }) {
   );
 }
 
-// presetSubject: mata kuliah terpilih dari awal. drillingOnly: BAB tetap Drilling (soal General tanpa BAB).
+// presetSubject: mata kuliah terpilih dari awal. drillingOnly: BAB tetap Drilling (soal tanpa BAB; General atau khusus kampus).
 export default function ImportPanel({ submission = null, onDone, presetSubject = '', drillingOnly = false }) {
   const { subjects, chapters, chapterChoicesOf, reload } = useCatalog();
   const [subject, setSubject] = useState(presetSubject);
@@ -78,11 +78,10 @@ export default function ImportPanel({ submission = null, onDone, presetSubject =
   // Dengan drillingOnly, BAB otomatis BAB Drilling mata kuliah itu begitu daftar BAB termuat.
   const drillingId = chapters.find((c) => c.subject === subj && c.drilling)?.id || '';
   useEffect(() => { if (drillingOnly) setChapter(drillingId); }, [drillingOnly, drillingId]);
-  const toDrilling = !!chapterChoicesOf(subj).find((c) => c.id === chapter)?.drilling;
 
   const body = (dryRun) => ({
     text, dryRun, skipInvalid: skip, status, chapter,
-    ...(submission ? { submission: submission.id } : { subject, scope: toDrilling ? 'all' : scope, campuses: toDrilling ? [] : campuses }),
+    ...(submission ? { submission: submission.id } : { subject, scope, campuses }),
   });
 
   const run = async (dryRun) => {
@@ -120,7 +119,7 @@ export default function ImportPanel({ submission = null, onDone, presetSubject =
             </select>
           </Field>
           <Field label="Pembatasan kampus" htmlFor="im-scope">
-            <select id="im-scope" className="input" value={toDrilling ? 'all' : scope} disabled={toDrilling} onChange={(e) => setScope(e.target.value)}>
+            <select id="im-scope" className="input" value={scope} onChange={(e) => setScope(e.target.value)}>
               <option value="all">Soal General (semua pengguna)</option>
               <option value="campus">Hanya kampus tertentu</option>
             </select>
@@ -133,8 +132,8 @@ export default function ImportPanel({ submission = null, onDone, presetSubject =
           </Field>
         </div>
       )}
-      {!submission && !toDrilling && scope === 'campus' && <Field label="Kampus yang boleh melihat"><CampusMulti value={campuses} onChange={setCampuses} /></Field>}
-      <Field label="BAB" htmlFor="im-ch" hint="Pilih satu BAB untuk memasukkan semua soal ke BAB itu, atau biarkan mengikuti field chapter di tiap soal (BAB baru dibuat otomatis). Pilih Drilling untuk soal General tanpa BAB.">
+      {!submission && scope === 'campus' && <Field label="Kampus yang boleh melihat"><CampusMulti value={campuses} onChange={setCampuses} /></Field>}
+      <Field label="BAB" htmlFor="im-ch" hint="Pilih satu BAB untuk memasukkan semua soal ke BAB itu, atau biarkan mengikuti field chapter di tiap soal (BAB baru dibuat otomatis). Pilih Drilling untuk soal tanpa BAB (General, atau khusus kampus bila pembatasan kampus dipilih).">
         <select id="im-ch" className="input" value={chapter} onChange={(e) => setChapter(e.target.value)} disabled={!subj || drillingOnly}>
           {!drillingOnly && <option value="">Ikuti field BAB di file</option>}
           {chapterChoicesOf(subj).filter((c) => !drillingOnly || c.drilling).map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}

@@ -21,3 +21,6 @@ apps/web/public/lab-content/medmnist/
 # Python
 __pycache__/
 *.pyc
+
+# Local Anatomy integration QA build
+apps/web/dist-anatomy-preview/

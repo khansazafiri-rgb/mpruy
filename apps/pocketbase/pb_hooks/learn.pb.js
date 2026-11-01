@@ -156,13 +156,13 @@ routerAdd("POST", "/api/medcoel/attempts/practice", (e) => {
   return e.json(200, att.payload(e.app, user, rec));
 });
 
-// Drilling: soal General tanpa BAB. Menu hanya terbuka bila sakelar admin menyala dan
-// sudah ada soal; mata kuliah tanpa soal Drilling tidak muncul.
+// Drilling: soal tanpa BAB (General, atau khusus kampus pengguna). Menu hanya terbuka bila sakelar admin menyala dan
+// ada soal yang bisa dikerjakan pengguna ini; mata kuliah tanpa soal Drilling untuknya tidak muncul.
 routerAdd("GET", "/api/medcoel/drilling", (e) => {
   const u = require(`${__hooks}/lib/util.js`);
   const learn = require(`${__hooks}/lib/learn.js`);
   const user = u.requireUser(e);
-  const st = learn.drillingStatus(e.app);
+  const st = learn.drillingStatus(e.app, user);
   // Admin boleh melihat Drilling walau belum dibuka untuk pengguna (pratinjau).
   const preview = !st.available && u.roleOf(user) === "admin";
   if (!st.available && !preview) return e.json(200, { enabled: st.enabled, available: false, subjects: [] });
@@ -170,10 +170,12 @@ routerAdd("GET", "/api/medcoel/drilling", (e) => {
   e.app.findRecordsByFilter("chapters", "drilling = true && hidden = false", "", 0, 0).forEach((c) => { chapterSubject[c.id] = c.getString("subject"); });
   const count = {};
   const seen = {};
+  const ownCampus = {};
   learn.pool(e.app, user, { drilling: "only" }).forEach((it) => {
     const s = chapterSubject[it.chapter];
     count[s] = (count[s] || 0) + 1;
     if (it.seen) seen[s] = (seen[s] || 0) + 1;
+    if (it.scope === "campus") ownCampus[s] = (ownCampus[s] || 0) + 1;
   });
   const out = e.app.findRecordsByFilter("subjects", "hidden = false", "order,name", 200, 0)
     .filter((s) => count[s.id])
@@ -187,6 +189,7 @@ routerAdd("GET", "/api/medcoel/drilling", (e) => {
       collectionId: s.collection().id,
       studying: user.getStringSlice("studyingSubjects").indexOf(s.id) >= 0,
       questionCount: count[s.id],
+      campusQuestionCount: ownCampus[s.id] || 0,
       answeredCount: seen[s.id] || 0,
       order: s.getInt("order"),
     }));
@@ -206,7 +209,7 @@ routerAdd("POST", "/api/medcoel/attempts/drilling", (e) => {
   const att = require(`${__hooks}/lib/attempts.js`);
   const user = u.requireUser(e);
   const b = u.body(e);
-  const st = learn.drillingStatus(e.app);
+  const st = learn.drillingStatus(e.app, user);
   if (!st.available && u.roleOf(user) !== "admin") throw new NotFoundError("Drilling belum dibuka.");
   let subject;
   try { subject = e.app.findRecordById("subjects", String(b.subject || "")); } catch (_) { subject = null; }

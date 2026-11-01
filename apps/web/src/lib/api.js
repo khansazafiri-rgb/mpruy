@@ -18,14 +18,17 @@ export class ApiError extends Error {
   }
 }
 
-function friendly(status, message) {
+// Nama langkah dari alamat API, mis. "/api/medcoel/signup/proof?x=1" -> "signup/proof".
+const stepOf = (path) => String(path || '').replace(/^\/api\/medcoel\//, '').replace(/^\//, '').replace(/[?#].*$/, '').slice(0, 60);
+
+function friendly(status, message, path) {
   if (status === 0) return 'Tidak tersambung ke server. Periksa koneksi internetmu lalu coba lagi.';
   if (status === 429) return 'Terlalu banyak percobaan dalam waktu singkat. Tunggu beberapa menit lalu coba lagi.';
   if (status === 401 && (!message || /authorization|token/i.test(message))) return 'Sesi masuk sudah berakhir. Silakan masuk lagi.';
   if (status >= 500 && !message) return 'Server sedang bermasalah. Coba lagi beberapa saat lagi.';
   if (message && /^(Something went wrong|The requested resource)/.test(message)) {
     // PocketBase menjawab begini bila alamat API-nya tidak ada: biasanya server belum dijalankan ulang setelah pembaruan.
-    return status === 404 ? 'Fitur ini belum ada di server (server belum diperbarui). Minta pengelola menjalankan ulang PocketBase dengan versi terbaru, lalu muat ulang halaman.' : 'Permintaan belum bisa diproses. Periksa isiannya lalu coba lagi.';
+    return status === 404 ? 'Fitur ini belum ada di server (server belum diperbarui). Minta pengelola menjalankan ulang PocketBase dengan versi terbaru, lalu muat ulang halaman.' : `Server gagal memproses langkah ini (${stepOf(path) || 'tidak diketahui'}). Ini bukan salah isianmu. Coba lagi; kalau tetap begini, beri tahu admin dan sebutkan langkah itu.`;
   }
   return message || 'Terjadi kesalahan. Coba lagi.';
 }
@@ -59,7 +62,7 @@ export async function api(path, { method = 'GET', body, query } = {}) {
   try { data = text ? JSON.parse(text) : null; } catch { data = null; }
   if (!res.ok) {
     if (res.status === 401 && pb.authStore.isValid) pb.authStore.clear();
-    const err = new ApiError(friendly(res.status, data?.message), res.status, data?.data);
+    const err = new ApiError(friendly(res.status, data?.message, url), res.status, data?.data);
     err.body = data;
     throw err;
   }
