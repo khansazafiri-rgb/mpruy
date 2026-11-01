@@ -18,28 +18,28 @@ export const PLAN = {
     S('hero_layers', 'click', 15.25, 'Muscles -3', { approach: 0.6 }),
     S('hero_layers', 'motion', 15.75, 'peek'),                                // 40 bingkai: intip struktur di bawahnya
     // 16.96-22.10: kerangka
-    S('skeleton', 'still', 16.7, 'start', { tin: 0.3 }),
+    S('skeleton', 'still', 16.7, 'ready', { tin: 0.3 }),
     S('skeleton', 'click', 17.75, 'Muscles off', { approach: 0.8 }),
     S('skeleton', 'motion', 18.5, 'skeleton-rot'),                            // 100 bingkai
     // 22.50-27.84: pembuluh darah
-    S('vessels', 'still', 22.3, 'start', { tin: 0.3 }),
+    S('vessels', 'still', 22.3, 'ready', { tin: 0.3 }),
     S('vessels', 'click', 23.2, 'Arteries on', { approach: 0.8 }),
     S('vessels', 'click', 24.75, 'Veins on', { approach: 0.6 }),
     S('vessels', 'motion', 25.6, 'vessels-rot'),                              // 60 bingkai
     // 27.84-32.60: limfatik
-    S('lymph', 'still', 27.7, 'start', { tin: 0.3 }),
+    S('lymph', 'still', 27.7, 'ready', { tin: 0.3 }),
     S('lymph', 'click', 28.45, 'Arteries off', { approach: 0.6 }),
     S('lymph', 'click', 29.25, 'Veins off', { approach: 0.5 }),
     S('lymph', 'click', 30.35, 'Lymphatic on', { approach: 0.7 }),
     S('lymph', 'motion', 31.0, 'lymph-rot'),                                  // 50 bingkai
     // 33.02-42.86: atur tampilan: putar, perbesar, pelajari
-    S('explore', 'still', 32.85, 'start', { tin: 0.3 }),
+    S('explore', 'still', 32.85, 'ready', { tin: 0.3 }),
     S('explore', 'motion', 33.2, 'explore-rot1'),                             // 70 bingkai
     S('explore', 'motion', 36.4, 'explore-zoom'),                             // 50 bingkai
     S('explore', 'motion', 38.2, 'explore-pan'),                              // 24 bingkai
     S('explore', 'motion', 39.4, 'explore-rot2'),                             // 50 bingkai
     // 43.28-47.88: kamu yang pilih
-    S('free', 'still', 43.05, 'start', { tin: 0.3 }),
+    S('free', 'still', 43.05, 'ready', { tin: 0.3 }),
     S('free', 'click', 43.7, 'Veins on', { approach: 0.55 }),
     S('free', 'click', 44.35, 'Skeleton off', { approach: 0.4 }),
     S('free', 'click', 45.0, 'Lymphatic on', { approach: 0.4 }),
@@ -52,8 +52,8 @@ export const PLAN = {
   cam: [
     [0, 540, 960, 1], [2.0, 540, 960, 1], [2.4, 540, 960, 1.0], [5.5, 545, 955, 1.04],
     [5.8, 560, 1500, 1.3], [6.5, 460, 1730, 2.0], [7.55, 460, 1730, 2.0], [8.2, 330, 700, 1.5],       // ke tombol Front
-    [8.7, 150, 520, 2.4], [9.7, 150, 520, 2.4], [10.4, 190, 540, 2.3], [11.9, 190, 540, 2.3],        // ke sidebar (preset + baris otot)
-    [12.5, 457, 830, 1.18], [16.6, 457, 830, 1.18],
+    [8.7, 150, 520, 2.4], [9.7, 150, 520, 2.4], [10.4, 190, 540, 2.3], [11.7, 190, 540, 2.3],        // ke sidebar (preset + baris otot)
+    [12.6, 457, 830, 1.18], [16.6, 457, 830, 1.18],
     [17.0, 457, 840, 1.18], [22.2, 457, 840, 1.18],
     [22.6, 457, 840, 1.18], [27.8, 457, 840, 1.18], [28.1, 457, 840, 1.18], [32.6, 457, 840, 1.18],
     [33.2, 540, 960, 1.0], [36.0, 600, 930, 1.04], [38.4, 600, 930, 1.04], [42.9, 560, 940, 1.1],
@@ -88,6 +88,10 @@ const LOGO = 'logo-full.webp';
 PLAN.extra = (t, h) => {
   const { eo, eob, win, sm, f1, clamp, wd } = h;
   let o = '';
+  if (h.COVER) { // sampul: judul besar di atas model (zona aman atas), logo, gratis
+    const T0 = (x, y, txt, size, fill, e = '') => `<text x="${x}" y="${y}" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="${size}" fill="${fill}" ${e}>${txt}</text>`;
+    return `<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#062622" stop-opacity=".94"/><stop offset="1" stop-color="#062622" stop-opacity="0"/></linearGradient></defs><rect width="1080" height="560" fill="url(#cg)"/>${T0(540, 330, 'FEATURE', 124, '#fff')}${T0(540, 458, 'UNLOCKED!', 134, '#F8C038')}<g transform="translate(540 1470)"><rect x="-330" y="-86" width="660" height="128" rx="64" fill="#E8665F"/>${T0(0, 6, '3D ANATOMY', 88, '#fff')}</g><g transform="translate(540 1630)"><rect x="-250" y="-52" width="500" height="92" rx="46" fill="#fff"/>${T0(0, 20, 'GRATIS · MEDCOEL', 46, '#007060')}</g>`;
+  }
   const T = (x, y, txt, size, fill, e = '') => `<text x="${x}" y="${y}" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="${size}" fill="${fill}" ${e}>${txt}</text>`;
   const pop = (a, d = 0.35) => 0.6 + 0.4 * eob((t - a) / d);
   // ---- FEATURE UNLOCKED (0 - 2,3 dtk), membuka seperti iris ke atlas pada 1,64

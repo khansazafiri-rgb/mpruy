@@ -4,6 +4,7 @@ import { PLAN, CHIPS } from './plan.js';
 const NS = 'http://www.w3.org/2000/svg';
 const $ = (id) => document.getElementById(id);
 const CLEAN = new URLSearchParams(location.search).has('clean');
+const COVER = new URLSearchParams(location.search).has('cover');
 const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
 const lerp = (a, b, t) => a + (b - a) * t;
 const sm = (x) => { x = clamp(x, 0, 1); return x * x * (3 - 2 * x); };
@@ -33,6 +34,7 @@ const MAN = {};
 for (const take of PLAN.takes) { try { const r = await fetch(`media/${take}/manifest.json`); if (r.ok) { const j = await r.json(); if (j.some((e) => e.type === 'end')) MAN[take] = j; } } catch (e) { /* take belum direkam */ } }
 const evOf = (take, label) => {
   if (label === 'start') return MAN[take].find((e) => e.type === 'start');
+  if (label === 'ready') return MAN[take].find((e) => e.type === 'mark' && e.label === 'ready');
   const e = MAN[take].find((x) => x.label === label); if (!e) throw new Error(`peristiwa tidak ada: ${take}/${label}`); return e;
 };
 const media = (take, f) => (f ? `media/${take}/${f}` : '');
@@ -125,7 +127,7 @@ function updateCaption(t) {
 }
 
 const wdFn = (id, i) => DATA.lines.find((l) => l.id === id).words[i].s;
-const HELP = { eo, eob, win, sm, f1, clamp, wd: wdFn, MAN, STEPS };
+const HELP = { eo, eob, win, sm, f1, clamp, wd: wdFn, MAN, STEPS, COVER };
 // ---------------------------------------------------------------- gambar
 const imgs = { uiA: $('uiA'), uiB: $('uiB'), frA: $('frA'), frB: $('frB'), uiTop: $('uiTop') };
 const loaded = new Map();
