@@ -308,45 +308,41 @@ Bilateral ovarian signet-ring metastases -> Krukenberg tumor.
 
 ## Flashcard {kartu}
 
-- [Practical Differentiation — Lesi Payudara] Fibroadenoma :: well-circumscribed, biphasic, stroma relatif bland.
-- [Practical Differentiation — Lesi Payudara] Phyllodes :: leaf-like, stromal hypercellularity.
-- [Practical Differentiation — Lesi Payudara] DCIS :: malignant cells confined within ducts; myoepithelial/basement membrane boundary intact.
-- [Practical Differentiation — Lesi Payudara] Invasive NST :: irregular infiltrating glands/nests plus desmoplastic stroma.
-- [Practical Differentiation — Lesi Payudara] Invasive lobular :: single-file, discohesive cells, E-cadherin loss.
-- [Practical Differentiation — Lesi Payudara] Paget :: malignant pale cells within nipple epidermis.
-- [Practical Differentiation — Ovarium] High-grade serous carcinoma :: papillary/solid high-grade tumor, marked atypia, TP53 abnormal, psammoma bodies dapat ada.
-- [Practical Differentiation — Ovarium] Mucinous tumor :: multiloculated mucinous cystic mass, sering sangat besar.
-- [Practical Differentiation — Ovarium] Mature teratoma :: mature tissues seperti skin, hair follicles, sebaceous glands, cartilage, atau respiratory/GI epithelium.
-- [Practical Differentiation — Ovarium] Dysgerminoma :: large clear cells + fibrous septa + lymphocytes.
-- [Practical Differentiation — Ovarium] Yolk sac tumor :: Schiller-Duval bodies + AFP.
-- [Practical Differentiation — Ovarium] Granulosa-cell tumor :: Call-Exner bodies + coffee-bean grooves + estrogenic effects.
-- [Practical Differentiation — Ovarium] Krukenberg :: bilateral ovarian metastases with signet-ring cells.
-- [High-yield] CA-125 :: sering dipakai untuk monitoring epithelial ovarian carcinoma, tetapi bukan marker spesifik untuk skrining populasi umum
-- [High-yield] AFP :: yolk sac tumor; dapat meningkat pada beberapa germ-cell tumors
-- [High-yield] hCG :: dapat meningkat pada tumors dengan trophoblastic differentiation
-- [High-yield] Inhibin :: granulosa-cell tumor
-- [High-yield] CEA :: dapat membantu dalam konteks mucinous tumor/metastatic GI differential
-- [High-yield] ER/PR/HER2 :: biomarker penting pada breast carcinoma
-- [High-yield] Invasive lobular carcinoma klasik :: single-file infiltration
-- [High-yield] Koilocytosis :: hallmark morphologic HPV effect
-- [High-yield] Serous endometrial carcinoma :: high-grade, atrophic background, TP53 abnormal
-- [High-yield] Leiomyoma :: well-circumscribed whorled benign smooth-muscle tumor
-- [High-yield] Endometriosis :: endometrial glands + stroma di luar uterus; hemosiderin macrophages dapat membantu diagnosis
-- [High-yield] Dysgerminoma :: large clear cells, fibrous septa, lymphocytes
-- [High-yield] Yolk sac tumor :: AFP + Schiller-Duval bodies
-- [High-yield] Granulosa-cell tumor :: inhibin, estrogen, Call-Exner bodies, coffee-bean nuclei
-- [High-yield] Krukenberg tumor :: bilateral ovarian metastases with signet-ring cells
-- [High-yield] Payudara :: fibroadenoma itu mobile dan biphasic; phyllodes itu leaf-like dan stromanya lebih cellular; DCIS masih in situ; invasive NST menimbulkan desmoplasia; invasive lobular = single-file + E-cadherin loss
-- [High-yield] Serviks :: persistent high-risk HPV -> E6/p53 dan E7/RB -> LSIL/HSIL -> invasive carcinoma bila basement membrane ditembus
-- [High-yield] Endometrium :: EIN/endometrioid = estrogen pathway; serous = older/atrophic + TP53
-- [High-yield] Uterus :: leiomyoma = whorled bland smooth muscle; leiomyosarcoma = atypia + tumor cell necrosis + mitoses
-- [High-yield] Ovarium :: serous = papillary/high-grade; teratoma = mature tissues; dysgerminoma = clear cells + lymphocytes; yolk sac = AFP + Schiller-Duval; granulosa = Call-Exner + estrogen; Krukenberg = bilateral signet-ring metastasis
-- [Ovarian Tumors — Klasifikasi Besar] Secara praktis, tumor ovarium dibagi menjadi … :: • Surface epithelial tumors: serous, mucinous, endometrioid, clear-cell, Brenner, dan lainnya
-  • Germ-cell tumors: teratoma, dysgerminoma, yolk sac tumor, dan lainnya
-  • Sex-cord stromal tumors: granulosa-cell tumor, thecoma-fibroma, Sertoli-Leydig, dan lainnya
-  • Metastatic tumors
-- [Fibrocystic Changes] Poin ujian: Fibrocystic Changes :: Perubahan nonproliferatif sederhana tidak meningkatkan risiko kanker secara bermakna. Risiko meningkat bila terdapat proliferative disease, terutama bila disertai atypical hyperplasia.
-- [Phyllodes Tumor] Practical clue: Phyllodes Tumor :: Bila lesi fibroepitelial menunjukkan stroma sangat hiperseluler dengan proyeksi menyerupai daun, pikirkan phyllodes daripada fibroadenoma.
-- [Invasive Breast Carcinoma of No Special Type] Practical clue: Invasive Breast Carcinoma of No Special Type :: Stroma keras/desmoplastik dengan struktur kelenjar irregular dan kehilangan myoepithelial boundary sangat mendukung invasi.
-- [Serous Endometrial Carcinoma] Exam trap: Serous Endometrial Carcinoma :: Endometrioid lebih sering terkait estrogen/EIN, sedangkan serous carcinoma lebih khas high-grade, atrophic background, dan TP53 abnormal.
-- [Leiomyosarcoma] Poin penting: Leiomyosarcoma :: Massa uterus yang besar tidak otomatis malignant; morfologi dan pola pertumbuhan lebih penting daripada ukuran semata.
+- [Practical Differentiation — Lesi Payudara] Apa yang dimaksud dengan Fibroadenoma pada Practical Differentiation — Lesi Payudara? :: Well-circumscribed, biphasic, stroma relatif bland.
+- [Practical Differentiation — Lesi Payudara] Apa yang dimaksud dengan Phyllodes pada Practical Differentiation — Lesi Payudara? :: Leaf-like, stromal hypercellularity.
+- [Practical Differentiation — Lesi Payudara] Apa yang dimaksud dengan DCIS pada Practical Differentiation — Lesi Payudara? :: Malignant cells confined within ducts; myoepithelial/basement membrane boundary intact.
+- [Practical Differentiation — Lesi Payudara] Apa yang dimaksud dengan Invasive NST pada Practical Differentiation — Lesi Payudara? :: Irregular infiltrating glands/nests plus desmoplastic stroma.
+- [Practical Differentiation — Lesi Payudara] Apa yang dimaksud dengan Invasive lobular pada Practical Differentiation — Lesi Payudara? :: Single-file, discohesive cells, E-cadherin loss.
+- [Practical Differentiation — Lesi Payudara] Apa yang dimaksud dengan Paget pada Practical Differentiation — Lesi Payudara? :: Malignant pale cells within nipple epidermis.
+- [Practical Differentiation — Ovarium] Jelaskan High-grade serous carcinoma dalam konteks Practical Differentiation — Ovarium. :: Papillary/solid high-grade tumor, marked atypia, TP53 abnormal, psammoma bodies dapat ada.
+- [Practical Differentiation — Ovarium] Apa yang dimaksud dengan Mucinous tumor pada Practical Differentiation — Ovarium? :: Multiloculated mucinous cystic mass, sering sangat besar.
+- [Practical Differentiation — Ovarium] Apa yang dimaksud dengan Mature teratoma pada Practical Differentiation — Ovarium? :: Mature tissues seperti skin, hair follicles, sebaceous glands, cartilage, atau respiratory/GI epithelium.
+- [Practical Differentiation — Ovarium] Apa yang dimaksud dengan Dysgerminoma pada Practical Differentiation — Ovarium? :: Large clear cells + fibrous septa + lymphocytes.
+- [Practical Differentiation — Ovarium] Jelaskan Yolk sac tumor dalam konteks Practical Differentiation — Ovarium. :: Schiller-Duval bodies + AFP.
+- [Practical Differentiation — Ovarium] Apa yang dimaksud dengan Granulosa-cell tumor pada Practical Differentiation — Ovarium? :: Call-Exner bodies + coffee-bean grooves + estrogenic effects.
+- [Practical Differentiation — Ovarium] Apa yang dimaksud dengan Krukenberg pada Practical Differentiation — Ovarium? :: Bilateral ovarian metastases with signet-ring cells.
+- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang CA-125 pada Patologi Payudara & Ginekologi? :: Sering dipakai untuk monitoring epithelial ovarian carcinoma, tetapi bukan marker spesifik untuk skrining populasi umum
+- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang AFP pada Patologi Payudara & Ginekologi? :: Yolk sac tumor; dapat meningkat pada beberapa germ-cell tumors
+- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang hCG pada Patologi Payudara & Ginekologi? :: Dapat meningkat pada tumors dengan trophoblastic differentiation
+- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang Inhibin pada Patologi Payudara & Ginekologi? :: Granulosa-cell tumor
+- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang CEA pada Patologi Payudara & Ginekologi? :: Dapat membantu dalam konteks mucinous tumor/metastatic GI differential
+- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang ER/PR/HER2 pada Patologi Payudara & Ginekologi? :: Biomarker penting pada breast carcinoma
+- [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Invasive lobular carcinoma klasik? :: Single-file infiltration
+- [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Koilocytosis pada Patologi Payudara & Ginekologi? :: Hallmark morphologic HPV effect
+- [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Serous endometrial carcinoma pada Patologi Payudara & Ginekologi? :: High-grade, atrophic background, TP53 abnormal
+- [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Leiomyoma pada Patologi Payudara & Ginekologi? :: Well-circumscribed whorled benign smooth-muscle tumor
+- [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Endometriosis pada Patologi Payudara & Ginekologi? :: Endometrial glands + stroma di luar uterus; hemosiderin macrophages dapat membantu diagnosis
+- [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Dysgerminoma pada Patologi Payudara & Ginekologi? :: Large clear cells, fibrous septa, lymphocytes
+- [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Yolk sac tumor pada Patologi Payudara & Ginekologi? :: AFP + Schiller-Duval bodies
+- [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Granulosa-cell tumor pada Patologi Payudara & Ginekologi? :: Inhibin, estrogen, Call-Exner bodies, coffee-bean nuclei
+- [Patologi Payudara & Ginekologi] Apa yang dimaksud dengan Krukenberg tumor pada Patologi Payudara & Ginekologi? :: Bilateral ovarian metastases with signet-ring cells
+- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang Payudara pada Patologi Payudara & Ginekologi? :: Fibroadenoma itu mobile dan biphasic; phyllodes itu leaf-like dan stromanya lebih cellular; DCIS masih in situ; invasive NST menimbulkan desmoplasia; invasive lobular = single-file + E-cadherin loss
+- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang Serviks pada Patologi Payudara & Ginekologi? :: Persistent high-risk HPV -> E6/p53 dan E7/RB -> LSIL/HSIL -> invasive carcinoma bila basement membrane ditembus
+- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang Endometrium pada Patologi Payudara & Ginekologi? :: EIN/endometrioid = estrogen pathway; serous = older/atrophic + TP53
+- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang Uterus pada Patologi Payudara & Ginekologi? :: Leiomyoma = whorled bland smooth muscle; leiomyosarcoma = atypia + tumor cell necrosis + mitoses
+- [Patologi Payudara & Ginekologi] Apa yang perlu diketahui tentang Ovarium pada Patologi Payudara & Ginekologi? :: Serous = papillary/high-grade; teratoma = mature tissues; dysgerminoma = clear cells + lymphocytes; yolk sac = AFP + Schiller-Duval; granulosa = Call-Exner + estrogen; Krukenberg = bilateral signet-ring metastasis
+- [Fibrocystic Changes] Apa poin high-yield (pearl) tentang Fibrocystic Changes? :: Perubahan nonproliferatif sederhana tidak meningkatkan risiko kanker secara bermakna. Risiko meningkat bila terdapat proliferative disease, terutama bila disertai atypical hyperplasia.
+- [Phyllodes Tumor] Apa clue praktikum untuk Phyllodes Tumor? :: Bila lesi fibroepitelial menunjukkan stroma sangat hiperseluler dengan proyeksi menyerupai daun, pikirkan phyllodes daripada fibroadenoma.
+- [Invasive Breast Carcinoma of No Special Type] Apa clue praktikum untuk Invasive Breast Carcinoma of No Special Type? :: Stroma keras/desmoplastik dengan struktur kelenjar irregular dan kehilangan myoepithelial boundary sangat mendukung invasi.
+- [Serous Endometrial Carcinoma] Apa jebakan yang sering muncul pada soal tentang Serous Endometrial Carcinoma? :: Endometrioid lebih sering terkait estrogen/EIN, sedangkan serous carcinoma lebih khas high-grade, atrophic background, dan TP53 abnormal.
+- [Leiomyosarcoma] Apa poin high-yield (pearl) tentang Leiomyosarcoma? :: Massa uterus yang besar tidak otomatis malignant; morfologi dan pola pertumbuhan lebih penting daripada ukuran semata.

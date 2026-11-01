@@ -476,66 +476,101 @@ Antiangina dibagi menjadi terapi serangan akut dengan nitrat sublingual dan prof
 
 ## Flashcard {kartu}
 
-- [Nitrat] Mekanisme :: Nitrat diubah menjadi nitric oxide (NO) → menstimulasi guanylyl cyclase → meningkatkan cGMP → vasodilatasi, terutama vena, serta vasodilatasi arteri koroner. Efek akhirnya adalah penurunan preload dan peningkatan suplai oksigen.
-- [Ranolazine] Mekanisme :: Menghambat late sodium current pada sel miokard selama fase iskemik.
-- [Ranolazine] Indikasi :: Terapi tambahan pada angina pektoris stabil kronis yang belum terkontrol dengan beta-blocker, CCB, atau nitrat.
-- [Ivabradine] Mekanisme :: Menghambat funny current secara selektif di nodus sinoatrial sehingga menurunkan denyut jantung.
-- [Ivabradine] Indikasi :: Angina stabil kronis pada pasien dengan irama sinus normal yang tidak toleran atau memiliki kontraindikasi terhadap beta-blocker, atau sebagai kombinasi bila beta-blocker dosis maksimal belum efektif.
-- [Nicorandil] Indikasi :: Pencegahan dan terapi jangka panjang angina pektoris stabil kronis sebagai alternatif lini kedua.
-- [Kelas IA] Mekanisme :: Memblok kanal natrium dengan efek sedang dan sebagian kanal kalium, sehingga memperpanjang action potential duration (APD) serta interval QT.
-- [Kelas IA] Indikasi :: Aritmia supraventrikular dan ventrikular; contohnya pemeliharaan irama sinus pada atrial fibrilasi.
-- [Kelas IA] Monitoring :: EKG, terutama QRS dan QTc.
-- [Kelas IB] Mekanisme :: Blok kanal natrium lemah dan mempercepat repolarisasi sehingga APD sedikit memendek. Selektivitasnya ditekankan pada jaringan ventrikel yang iskemik atau terdepolarisasi tinggi.
-- [Kelas IB] Indikasi :: Aritmia ventrikular, terutama VT/VF akut terkait infark miokard atau iskemia.
-- [Kelas IC] Mekanisme :: Blok kanal natrium kuat sehingga sangat memperlambat konduksi tetapi tidak banyak mengubah APD.
-- [Kelas IC] Indikasi :: Mengembalikan atau mempertahankan irama sinus pada atrial fibrilasi; strategi pill-in-the-pocket.
-- [Kelas IC] Kontraindikasi :: Penyakit jantung struktural seperti riwayat infark miokard, gagal jantung, atau hipertrofi ventrikel kiri.
-- [Kelas IC] Efek samping :: Pro-aritmia berat, termasuk VT.
-- [Kelas IC] Monitoring :: EKG untuk pelebaran QRS.
-- [Kelas II — Beta-Blocker] Mekanisme :: Blokade beta-1 → aktivitas adenylate cyclase menurun → cAMP menurun → influks kalsium menurun. Akibatnya otomatisitas nodus SA turun dan konduksi nodus AV melambat.
-- [Kelas II — Beta-Blocker] Monitoring :: HR dan tekanan darah sebelum/sesudah pemberian.
-- [Kelas III — Potassium Channel Blocker] Mekanisme :: Memblok kanal kalium keluar pada fase 3 repolarisasi → APD dan effective refractory period memanjang di atrium maupun ventrikel.
-- [Kelas IV — Non-DHP Calcium Channel Blocker] Mekanisme :: Memblok kanal kalsium tipe L pada jaringan nodal SA/AV, memperlambat konduksi AV dan memperpanjang masa refrakter nodus AV.
-- [Kelas IV — Non-DHP Calcium Channel Blocker] Monitoring :: tekanan darah, denyut nadi, dan status gagal jantung.
-- [A. Thiazide] Mekanisme :: Menghambat cotransporter Na⁺/Cl⁻ pada tubulus kontortus distal → ekskresi natrium, klorida, dan air meningkat.
-- [A. Thiazide] Konteks penggunaan :: Hipertensi lini pertama dan hipertensi dengan edema.
-- [B. Loop Diuretic] Mekanisme :: Menghambat cotransporter Na⁺/K⁺/2Cl⁻ pada thick ascending limb ansa Henle → ekskresi air dan elektrolit meningkat besar.
-- [B. Loop Diuretic] Konteks penggunaan :: Overload cairan berupa edema paru atau edema perifer pada gagal jantung akut maupun kronis. Furosemide digunakan untuk meredakan kongesti secara simptomatik dan bukan untuk menurunkan mortalitas.
-- [High-yield] Serangan angina akut :: nitrogliserin/ISDN sublingual
-- [High-yield] Pasien menggunakan sildenafil :: hindari nitrat; larangan ini juga berlaku pada nicorandil
-- [High-yield] VT/VF akut terkait iskemia :: lidocaine kelas IB
-- [High-yield] Butuh rate control cepat dan mudah dititrasi :: esmolol IV
-- [High-yield] Amiodarone jangka panjang :: ingat monitoring paru, tiroid, hati, dan EKG
-- [High-yield] Edema paru pada gagal jantung :: furosemide untuk mengurangi kongesti
-- [High-yield] Hipertensi dengan pilihan diuretik lini pertama :: thiazide
-- [High-yield] Gout berat :: thiazide menjadi masalah karena hiperurisemia
-- [High-yield] Serangan akut :: nitrat sublingual
-- [High-yield] Profilaksis :: beta-blocker adalah lini pertama
-- [High-yield] Ranolazine :: blok late Na⁺ current
-- [High-yield] Ivabradine :: blok funny current di SA node
-- [High-yield] Nicorandil :: KATP opener + nitrate-like action
-- [High-yield] Procainamide :: lupus-like syndrome
-- [High-yield] Quinidine :: cinchonism
-- [High-yield] Esmolol :: IV sangat short-acting untuk kontrol laju cepat
-- [High-yield] Vaughan Williams III :: K⁺ channel blocker
-- [High-yield] Sotalol :: Torsades de Pointes
-- [High-yield] Vaughan Williams IV :: verapamil/diltiazem
-- [High-yield] Verapamil/diltiazem :: perlambat AV node
-- [High-yield] Thiazide :: hipokalemia, hiponatremia, hiperurisemia, hiperglikemia
-- [High-yield] Furosemide :: Na⁺/K⁺/2Cl⁻ cotransporter di thick ascending limb
-- [Strategi Terapi Antiangina] Pencegahan jangka panjang … :: • beta-blocker sebagai lini pertama untuk menurunkan demand oksigen
-  • bila beta-blocker kontraindikasi atau kurang efektif, dapat ditambahkan atau diganti dengan CCB DHP/non-DHP atau nitrat kerja panjang seperti ISDN oral atau isosorbid mononitrat
-- [Kelas IA] Efek samping khas … :: • procainamide → lupus-like syndrome
-  • quinidine → cinchonism berupa sakit kepala dan tinnitus
-- [Kelas III — Potassium Channel Blocker] Efek samping khas … :: • sotalol → risiko Torsades de Pointes akibat pemanjangan QT
-  • amiodarone → fibrosis paru, disfungsi tiroid, mikrodeposit kornea, hepatotoksisitas, dan warna kulit kebiruan/slate-blue
-- [Strategi Terapi Antiangina] Exam pearl: Strategi Terapi Antiangina :: Serangan angina akut → pikirkan nitrat sublingual. Profilaksis angina stabil → beta-blocker menjadi lini pertama untuk menurunkan kebutuhan oksigen miokard.
-- [Nitrat] Clinical pearl: Nitrat :: Untuk mencegah toleransi nitrat, berikan nitrate-free interval sekitar 10–12 jam per hari.
-- [Ranolazine] Clinical pearl: Ranolazine :: Ranolazine menjadi pilihan pada pasien angina yang memiliki tekanan darah rendah atau bradikardia karena disebut tidak menurunkan tekanan darah maupun denyut jantung.
-- [Ivabradine] Clinical pearl: Ivabradine :: Ivabradine hanya bekerja bila irama pasien adalah sinus; obat ini tidak efektif pada atrial fibrilasi atau aritmia lain.
-- [Kelas IB] Clinical pearl: Kelas IB :: Lidocaine tidak diposisikan untuk aritmia atrium seperti AF atau SVT.
-- [Kelas IC] Clinical pearl: Kelas IC :: Kelas IC dikaitkan dengan peningkatan mortalitas pasca-MI pada studi CAST sehingga digunakan hanya pada jantung yang struktural normal.
-- [Kelas II — Beta-Blocker] Clinical pearl: Kelas II — Beta-Blocker :: Esmolol adalah beta-blocker IV dengan durasi sangat pendek; waktu paruhnya sekitar 9 menit sehingga berguna untuk kontrol laju yang cepat serta mudah dititrasi di ICU/UGD.
-- [Kelas IV — Non-DHP Calcium Channel Blocker] Clinical pearl: Kelas IV — Non-DHP Calcium Channel Blocker :: Verapamil atau diltiazem IV tidak boleh diberikan bersama beta-blocker IV karena risiko hipotensi berat dan cardiac arrest akibat efek sinergis.
-- [Kelas IV — Non-DHP Calcium Channel Blocker] Exam pearl: Kelas IV — Non-DHP Calcium Channel Blocker :: Cara hafal cepat Vaughan Williams: I = Na⁺, II = beta, III = K⁺, IV = Ca²⁺ non-DHP. Untuk kelas I, bedakan IA = APD/QT memanjang, IB = APD memendek + ventrikel iskemik, IC = konduksi sangat lambat + hindari structural heart disease.
-- [A. Thiazide] Clinical pearl: A. Thiazide :: Chlorthalidone lebih poten dan berdurasi lebih panjang daripada HCT.
+- [Nitrat] Pada Nitrat, apa mekanismenya? :: Nitrat diubah menjadi nitric oxide (NO) → menstimulasi guanylyl cyclase → meningkatkan cGMP → vasodilatasi, terutama vena, serta vasodilatasi arteri koroner. Efek akhirnya adalah penurunan preload dan peningkatan suplai oksigen.
+- [Ranolazine] Pada Ranolazine, apa mekanismenya? :: Menghambat late sodium current pada sel miokard selama fase iskemik.
+- [Ranolazine] Pada Ranolazine, apa indikasinya? :: Terapi tambahan pada angina pektoris stabil kronis yang belum terkontrol dengan beta-blocker, CCB, atau nitrat.
+- [Ivabradine] Pada Ivabradine, apa mekanismenya? :: Menghambat funny current secara selektif di nodus sinoatrial sehingga menurunkan denyut jantung.
+- [Ivabradine] Pada Ivabradine, apa indikasinya? :: Angina stabil kronis pada pasien dengan irama sinus normal yang tidak toleran atau memiliki kontraindikasi terhadap beta-blocker, atau sebagai kombinasi bila beta-blocker dosis maksimal belum efektif.
+- [Nicorandil] Pada Nicorandil, apa indikasinya? :: Pencegahan dan terapi jangka panjang angina pektoris stabil kronis sebagai alternatif lini kedua.
+- [Kelas IA] Pada Kelas IA (Kelas I — Sodium Channel Blocker), apa mekanismenya? :: Memblok kanal natrium dengan efek sedang dan sebagian kanal kalium, sehingga memperpanjang action potential duration (APD) serta interval QT.
+- [Kelas IA] Pada Kelas IA (Kelas I — Sodium Channel Blocker), apa indikasinya? :: Aritmia supraventrikular dan ventrikular; contohnya pemeliharaan irama sinus pada atrial fibrilasi.
+- [Kelas IA] Apa yang dimaksud dengan Monitoring pada Kelas IA (Kelas I — Sodium Channel Blocker)? :: EKG, terutama QRS dan QTc.
+- [Kelas IB] Pada Kelas IB (Kelas I — Sodium Channel Blocker), apa mekanismenya? :: Blok kanal natrium lemah dan mempercepat repolarisasi sehingga APD sedikit memendek. Selektivitasnya ditekankan pada jaringan ventrikel yang iskemik atau terdepolarisasi tinggi.
+- [Kelas IB] Pada Kelas IB (Kelas I — Sodium Channel Blocker), apa indikasinya? :: Aritmia ventrikular, terutama VT/VF akut terkait infark miokard atau iskemia.
+- [Kelas IC] Pada Kelas IC (Kelas I — Sodium Channel Blocker), apa mekanismenya? :: Blok kanal natrium kuat sehingga sangat memperlambat konduksi tetapi tidak banyak mengubah APD.
+- [Kelas IC] Pada Kelas IC (Kelas I — Sodium Channel Blocker), apa indikasinya? :: Mengembalikan atau mempertahankan irama sinus pada atrial fibrilasi; strategi pill-in-the-pocket.
+- [Kelas IC] Pada Kelas IC (Kelas I — Sodium Channel Blocker), apa kontraindikasinya? :: Penyakit jantung struktural seperti riwayat infark miokard, gagal jantung, atau hipertrofi ventrikel kiri.
+- [Kelas IC] Pada Kelas IC (Kelas I — Sodium Channel Blocker), apa efek sampingnya? :: Pro-aritmia berat, termasuk VT.
+- [Kelas IC] Apa yang dimaksud dengan Monitoring pada Kelas IC (Kelas I — Sodium Channel Blocker)? :: EKG untuk pelebaran QRS.
+- [Kelas II — Beta-Blocker] Pada Kelas II — Beta-Blocker, apa mekanismenya? :: Blokade beta-1 → aktivitas adenylate cyclase menurun → cAMP menurun → influks kalsium menurun. Akibatnya otomatisitas nodus SA turun dan konduksi nodus AV melambat.
+- [Kelas II — Beta-Blocker] Apa yang dimaksud dengan Monitoring pada Kelas II — Beta-Blocker? :: HR dan tekanan darah sebelum/sesudah pemberian.
+- [Kelas III — Potassium Channel Blocker] Pada Kelas III — Potassium Channel Blocker, apa mekanismenya? :: Memblok kanal kalium keluar pada fase 3 repolarisasi → APD dan effective refractory period memanjang di atrium maupun ventrikel.
+- [Kelas IV — Non-DHP Calcium Channel Blocker] Pada Kelas IV — Non-DHP Calcium Channel Blocker, apa mekanismenya? :: Memblok kanal kalsium tipe L pada jaringan nodal SA/AV, memperlambat konduksi AV dan memperpanjang masa refrakter nodus AV.
+- [Kelas IV — Non-DHP Calcium Channel Blocker] Apa yang dimaksud dengan Monitoring pada Kelas IV — Non-DHP Calcium Channel Blocker? :: Tekanan darah, denyut nadi, dan status gagal jantung.
+- [Thiazide] Pada Thiazide (Diuretik), apa mekanismenya? :: Menghambat cotransporter Na⁺/Cl⁻ pada tubulus kontortus distal → ekskresi natrium, klorida, dan air meningkat.
+- [Thiazide] Apa yang dimaksud dengan Konteks penggunaan pada Thiazide (Diuretik)? :: Hipertensi lini pertama dan hipertensi dengan edema.
+- [Loop Diuretic] Pada Loop Diuretic (Diuretik), apa mekanismenya? :: Menghambat cotransporter Na⁺/K⁺/2Cl⁻ pada thick ascending limb ansa Henle → ekskresi air dan elektrolit meningkat besar.
+- [Loop Diuretic] Apa yang dimaksud dengan Konteks penggunaan pada Loop Diuretic (Diuretik)? :: Overload cairan berupa edema paru atau edema perifer pada gagal jantung akut maupun kronis. Furosemide digunakan untuk meredakan kongesti secara simptomatik dan bukan untuk menurunkan mortalitas.
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Serangan angina akut pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Nitrogliserin/ISDN sublingual
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa jawaban atau kesimpulan untuk petunjuk berikut: Pasien angina dengan tekanan darah rendah atau bradikardia? :: Ranolazine menjadi pola
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Pasien menggunakan sildenafil pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Hindari nitrat; larangan ini juga berlaku pada nicorandil
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa jawaban atau kesimpulan untuk petunjuk berikut: VT/VF akut terkait iskemia? :: Lidocaine kelas IB
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Structural heart disease/pasca-MI pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Hindari kelas IC
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa jawaban atau kesimpulan untuk petunjuk berikut: Butuh rate control cepat dan mudah dititrasi? :: Esmolol IV
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa jawaban atau kesimpulan untuk petunjuk berikut: HFrEF + perlu rate control? :: Jangan langsung memilih verapamil/diltiazem karena kontraindikasi
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa jawaban atau kesimpulan untuk petunjuk berikut: Edema paru pada gagal jantung? :: Furosemide untuk mengurangi kongesti
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Gout berat pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Thiazide menjadi masalah karena hiperurisemia
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang dimaksud dengan Angina pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Mismatch suplai dan kebutuhan oksigen miokard
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Profilaksis pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Beta-blocker adalah lini pertama
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Ranolazine pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Blok late Na⁺ current
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Ivabradine pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Blok funny current di SA node
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang dimaksud dengan Vaughan Williams I pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Na⁺ channel blocker
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Procainamide pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Lupus-like syndrome
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang dimaksud dengan Vaughan Williams II pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Beta-blocker
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang dimaksud dengan Esmolol pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: IV sangat short-acting untuk kontrol laju cepat
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Sotalol pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Torsades de Pointes
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Amiodarone pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Paru, tiroid, hati, kornea, kulit
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Verapamil/diltiazem pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Perlambat AV node
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Thiazide pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Na⁺/Cl⁻ cotransporter di DCT
+- [Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik] Apa yang perlu diingat tentang Furosemide pada Obat Kardiovaskular: Antiaritmia, Antiangina, Diuretik? :: Na⁺/K⁺/2Cl⁻ cotransporter di thick ascending limb
+- [Angina Pektoris: Konsep Dasar] Sebutkan gambaran klinis pada Angina Pektoris: Konsep Dasar. :: • Nyeri retrosternal
+  • Dipicu aktivitas atau stres emosional
+  • Membaik dengan istirahat atau nitrat
+- [Strategi Terapi Antiangina] Sebutkan poin-poin penting tentang Pencegahan jangka panjang. :: • Beta-blocker sebagai lini pertama untuk menurunkan demand oksigen
+  • Bila beta-blocker kontraindikasi atau kurang efektif, dapat ditambahkan atau diganti dengan CCB DHP/non-DHP atau nitrat kerja panjang seperti ISDN oral atau isosorbid mononitrat
+- [Nitrat] Sebutkan efek samping pada Nitrat. :: • Sakit kepala hebat
+  • Flushing
+  • Hipotensi ortostatik
+  • Takikardia refleks
+- [Ivabradine] Sebutkan efek samping pada Ivabradine. :: • Fenomena fosfen
+  • Bradikardia
+  • Atrial fibrilasi
+  • Pusing
+- [Nicorandil] Sebutkan mekanisme ganda pada Nicorandil. :: • Aktivator kanal kalium sensitif-ATP → vasodilatasi arteri → afterload menurun
+  • Memiliki gugus nitrat → venodilatasi → preload menurun
+- [Nicorandil] Sebutkan efek samping pada Nicorandil. :: • Sakit kepala
+  • Pusing
+  • Flushing
+  • Ulserasi mukosa pada penggunaan jangka panjang
+- [Kelas IA] Sebutkan efek samping khas pada Kelas IA (Kelas I — Sodium Channel Blocker). :: • Procainamide → lupus-like syndrome
+  • Quinidine → cinchonism berupa sakit kepala dan tinnitus
+- [Kelas IB] Sebutkan efek samping pada Kelas IB (Kelas I — Sodium Channel Blocker). :: • Kejang
+  • Tremor
+  • Nistagmus
+  • Disorientasi
+- [Kelas II — Beta-Blocker] Sebutkan efek samping pada Kelas II — Beta-Blocker. :: • Bradikardia
+  • Bronkospasme
+  • Fatigue
+  • Disfungsi ereksi
+- [Kelas III — Potassium Channel Blocker] Sebutkan poin-poin penting tentang Monitoring amiodarone. :: • Fungsi tiroid
+  • Fungsi hati
+  • Rontgen dada/fungsi paru berkala
+  • Interval QTc pada EKG
+- [Kelas IV — Non-DHP Calcium Channel Blocker] Sebutkan efek samping pada Kelas IV — Non-DHP Calcium Channel Blocker. :: • Konstipasi, terutama verapamil
+  • Bradikardia
+  • Hipotensi
+  • Edema perifer
+- [Thiazide] Sebutkan efek samping pada Thiazide (Diuretik). :: • Hipokalemia
+  • Hiponatremia
+  • Hiperurisemia
+  • Hiperglikemia
+- [Strategi Terapi Antiangina] Apa poin high-yield (pearl) tentang Strategi Terapi Antiangina? :: Serangan angina akut → pikirkan nitrat sublingual. Profilaksis angina stabil → beta-blocker menjadi lini pertama untuk menurunkan kebutuhan oksigen miokard.
+- [Nitrat] Apa korelasi klinis dari Nitrat? :: Untuk mencegah toleransi nitrat, berikan nitrate-free interval sekitar 10–12 jam per hari.
+- [Ranolazine] Apa korelasi klinis dari Ranolazine? :: Ranolazine menjadi pilihan pada pasien angina yang memiliki tekanan darah rendah atau bradikardia karena disebut tidak menurunkan tekanan darah maupun denyut jantung.
+- [Ivabradine] Apa korelasi klinis dari Ivabradine? :: Ivabradine hanya bekerja bila irama pasien adalah sinus; obat ini tidak efektif pada atrial fibrilasi atau aritmia lain.
+- [Kelas IB] Apa korelasi klinis dari Kelas IB (Kelas I — Sodium Channel Blocker)? :: Lidocaine tidak diposisikan untuk aritmia atrium seperti AF atau SVT.
+- [Kelas IC] Apa korelasi klinis dari Kelas IC (Kelas I — Sodium Channel Blocker)? :: Kelas IC dikaitkan dengan peningkatan mortalitas pasca-MI pada studi CAST sehingga digunakan hanya pada jantung yang struktural normal.
+- [Kelas II — Beta-Blocker] Apa korelasi klinis dari Kelas II — Beta-Blocker? :: Esmolol adalah beta-blocker IV dengan durasi sangat pendek; waktu paruhnya sekitar 9 menit sehingga berguna untuk kontrol laju yang cepat serta mudah dititrasi di ICU/UGD.
+- [Kelas IV — Non-DHP Calcium Channel Blocker] Apa korelasi klinis dari Kelas IV — Non-DHP Calcium Channel Blocker? :: Verapamil atau diltiazem IV tidak boleh diberikan bersama beta-blocker IV karena risiko hipotensi berat dan cardiac arrest akibat efek sinergis.
+- [Kelas IV — Non-DHP Calcium Channel Blocker] Apa poin high-yield (pearl) tentang Kelas IV — Non-DHP Calcium Channel Blocker? :: Cara hafal cepat Vaughan Williams: I = Na⁺, II = beta, III = K⁺, IV = Ca²⁺ non-DHP. Untuk kelas I, bedakan IA = APD/QT memanjang, IB = APD memendek + ventrikel iskemik, IC = konduksi sangat lambat + hindari structural heart disease.
+- [Thiazide] Apa korelasi klinis dari Thiazide (Diuretik)? :: Chlorthalidone lebih poten dan berdurasi lebih panjang daripada HCT.

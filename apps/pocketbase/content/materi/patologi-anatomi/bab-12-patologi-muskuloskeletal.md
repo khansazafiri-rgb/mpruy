@@ -447,64 +447,71 @@ Nyeri sendi first MTP mendadak + needle crystals negative birefringence → gout
 
 ## Flashcard {kartu}
 
-- [Gambaran Umum] High-yield rule :: untuk tumor tulang, pikirkan empat hal secara berurutan — usia, tulang yang terkena, bagian tulang (epifisis/metafisis/diafisis), lalu matriks yang dihasilkan tumor.
-- [Osteomalasia & Rickets] Penyebab klasik :: defisiensi vitamin D, gangguan absorpsi, penyakit ginjal kronik, atau gangguan metabolisme fosfat.
-- [Giant Cell Tumor of Bone] Radiologi klasik :: expansile “soap-bubble” lesion.
-- [Osteosarcoma] Sekitar lutut :: distal femur/proximal tibia.
-- [Osteosarcoma] Histologi :: malignant osteoid.
-- [Ewing Sarcoma] Histologi :: uniform small round blue cells dengan glycogen-rich cytoplasm.
-- [Ewing Sarcoma] Radiologi :: onion-skin periosteal reaction.
-- [Praktikum: Pattern Recognition Cepat] OA :: cartilage loss + subchondral sclerosis + osteophytes.
-- [Praktikum: Pattern Recognition Cepat] RA :: proliferative synovitis + pannus + chronic inflammation.
-- [Praktikum: Pattern Recognition Cepat] Gout :: needle-shaped urate crystals/tophi + giant-cell reaction.
-- [Praktikum: Pattern Recognition Cepat] Paget :: mosaic lamellar bone.
-- [Praktikum: Pattern Recognition Cepat] Osteomyelitis :: necrotic bone + neutrophils pada fase akut; sequestrum/involucrum pada kronik.
-- [Praktikum: Pattern Recognition Cepat] Osteosarcoma :: malignant cells directly producing osteoid.
-- [Praktikum: Pattern Recognition Cepat] Chondrosarcoma :: atypical chondrocytes in lacunae producing malignant cartilage.
-- [Praktikum: Pattern Recognition Cepat] Ewing :: sheets of small round blue cells.
-- [Praktikum: Pattern Recognition Cepat] Giant cell tumor :: numerous evenly distributed osteoclast-type giant cells.
-- [Praktikum: Pattern Recognition Cepat] Schwannoma :: Antoni A/B + Verocay bodies.
-- [High-yield] Osteoporosis :: low bone mass dengan normal mineralization
-- [High-yield] Osteomalacia :: defective mineralization pada dewasa
-- [High-yield] Rickets :: defective mineralization pada anak + growth plate abnormality
-- [High-yield] Paget disease :: mosaic lamellar bone
-- [High-yield] Salmonella :: high-yield osteomyelitis pada sickle cell disease
-- [High-yield] Rheumatoid nodule :: fibrinoid necrosis + palisading histiocytes
-- [High-yield] Gout :: needle-shaped monosodium urate, negative birefringence
-- [High-yield] CPPD :: rhomboid, weak positive birefringence
-- [High-yield] Osteoid osteoma :: nocturnal pain relieved by NSAIDs
-- [High-yield] Giant cell tumor :: epiphysis + soap bubble
-- [High-yield] Osteosarcoma :: metaphysis + malignant osteoid
-- [High-yield] Ewing sarcoma :: diaphysis + small round blue cells + t(11;22)
-- [High-yield] Lipoma :: mature adipocytes without atypia
-- [High-yield] Rhabdomyosarcoma :: malignant skeletal muscle differentiation
-- [High-yield] Synovial sarcoma :: SS18-SSX fusion
-- [High-yield] Desmoid fibromatosis :: locally aggressive, non-metastasizing
-- [High-yield] Bone tumor diagnosis :: age + site + bone compartment + matrix
-- [High-yield] Paget :: mosaic bone
-- [High-yield] Osteomyelitis :: S. aureus; Salmonella pada sickle cell
-- [High-yield] Metafisis remaja :: osteosarcoma
-- [High-yield] Pelvis dewasa :: chondrosarcoma
-- [High-yield] Osteoid osteoma :: night pain relieved by NSAIDs
-- [Osteoporosis] Pola klinis penting … :: • Postmenopausal osteoporosis → terutama akibat peningkatan resorpsi tulang karena defisiensi estrogen
+- [Osteomalasia & Rickets] Pada Osteomalasia & Rickets, apa penyebab klasiknya? :: Defisiensi vitamin D, gangguan absorpsi, penyakit ginjal kronik, atau gangguan metabolisme fosfat.
+- [Giant Cell Tumor of Bone] Apa yang dimaksud dengan Radiologi klasik pada Giant Cell Tumor of Bone? :: Expansile “soap-bubble” lesion.
+- [Osteosarcoma] Apa yang dimaksud dengan Sekitar lutut pada Osteosarcoma? :: Distal femur/proximal tibia.
+- [Osteosarcoma] Pada Osteosarcoma, apa histologinya? :: Malignant osteoid.
+- [Ewing Sarcoma] Pada Ewing Sarcoma, apa histologinya? :: Uniform small round blue cells dengan glycogen-rich cytoplasm.
+- [Ewing Sarcoma] Apa yang dimaksud dengan Radiologi pada Ewing Sarcoma? :: Onion-skin periosteal reaction.
+- [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan OA pada Praktikum: Pattern Recognition Cepat? :: Cartilage loss + subchondral sclerosis + osteophytes.
+- [Praktikum: Pattern Recognition Cepat] Jelaskan RA. :: Proliferative synovitis + pannus + chronic inflammation.
+- [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan Gout pada Praktikum: Pattern Recognition Cepat? :: Needle-shaped urate crystals/tophi + giant-cell reaction.
+- [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan Paget pada Praktikum: Pattern Recognition Cepat? :: Mosaic lamellar bone.
+- [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan Osteomyelitis pada Praktikum: Pattern Recognition Cepat? :: Necrotic bone + neutrophils pada fase akut; sequestrum/involucrum pada kronik.
+- [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan Osteosarcoma pada Praktikum: Pattern Recognition Cepat? :: Malignant cells directly producing osteoid.
+- [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan Chondrosarcoma pada Praktikum: Pattern Recognition Cepat? :: Atypical chondrocytes in lacunae producing malignant cartilage.
+- [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan Ewing pada Praktikum: Pattern Recognition Cepat? :: Sheets of small round blue cells.
+- [Praktikum: Pattern Recognition Cepat] Jelaskan Giant cell tumor dalam konteks Praktikum: Pattern Recognition Cepat. :: Numerous evenly distributed osteoclast-type giant cells.
+- [Praktikum: Pattern Recognition Cepat] Apa yang dimaksud dengan Schwannoma pada Praktikum: Pattern Recognition Cepat? :: Antoni A/B + Verocay bodies.
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Osteoporosis pada Patologi Muskuloskeletal? :: Low bone mass dengan normal mineralization
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Osteomalacia pada Patologi Muskuloskeletal? :: Defective mineralization pada dewasa
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Rickets pada Patologi Muskuloskeletal? :: Defective mineralization pada anak + growth plate abnormality
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Paget disease pada Patologi Muskuloskeletal? :: Mosaic lamellar bone
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Salmonella pada Patologi Muskuloskeletal? :: High-yield osteomyelitis pada sickle cell disease
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Rheumatoid nodule pada Patologi Muskuloskeletal? :: Fibrinoid necrosis + palisading histiocytes
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Gout pada Patologi Muskuloskeletal? :: Needle-shaped monosodium urate, negative birefringence
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan CPPD pada Patologi Muskuloskeletal? :: Rhomboid, weak positive birefringence
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Osteoid osteoma pada Patologi Muskuloskeletal? :: Nocturnal pain relieved by NSAIDs
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Giant cell tumor pada Patologi Muskuloskeletal? :: Epiphysis + soap bubble
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Osteosarcoma pada Patologi Muskuloskeletal? :: Metaphysis + malignant osteoid
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Ewing sarcoma pada Patologi Muskuloskeletal? :: Diaphysis + small round blue cells + t(11;22)
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Lipoma pada Patologi Muskuloskeletal? :: Mature adipocytes without atypia
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Rhabdomyosarcoma pada Patologi Muskuloskeletal? :: Malignant skeletal muscle differentiation
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Synovial sarcoma pada Patologi Muskuloskeletal? :: SS18-SSX fusion
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Desmoid fibromatosis pada Patologi Muskuloskeletal? :: Locally aggressive, non-metastasizing
+- [Patologi Muskuloskeletal] Apa yang perlu diketahui tentang Bone tumor diagnosis pada Patologi Muskuloskeletal? :: Age + site + bone compartment + matrix
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Paget pada Patologi Muskuloskeletal? :: Mosaic bone
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Osteomyelitis pada Patologi Muskuloskeletal? :: S. aureus; Salmonella pada sickle cell
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Metafisis remaja pada Patologi Muskuloskeletal? :: Osteosarcoma
+- [Patologi Muskuloskeletal] Apa yang dimaksud dengan Pelvis dewasa pada Patologi Muskuloskeletal? :: Chondrosarcoma
+- [Osteoporosis] Sebutkan poin-poin penting tentang Pola klinis penting. :: • Postmenopausal osteoporosis → terutama akibat peningkatan resorpsi tulang karena defisiensi estrogen
   • Senile osteoporosis → penurunan aktivitas osteoblas dan faktor usia
   • Secondary osteoporosis → misalnya glucocorticoid use, immobilization, hyperthyroidism, malabsorption
-- [Gout] Pada polarized light microscopy, kristal urat … :: • berbentuk needle
-  • menunjukkan strong negative birefringence
-- [Fracture Healing] Penyembuhan fraktur berlangsung melalui … :: • Hematoma + inflammation
-  • Soft callus
-  • Hard bony callus
-  • Remodeling menjadi lamellar bone
-- [Avascular Necrosis] Faktor risiko penting … :: • Trauma/fracture
+- [Osteomalasia & Rickets] Sebutkan perbedaan utama pada Osteomalasia & Rickets. :: • Osteoporosis = bone quantity ↓, mineralisasi normal
+  • Osteomalacia/rickets = mineralisasi osteoid terganggu
+- [Osteomyelitis] Sebutkan pola penting pada Osteomyelitis. :: • Hematogenous osteomyelitis pada anak sering mengenai metafisis tulang panjang
+  • Pada dewasa dapat mengenai vertebra
+  • Salmonella sangat klasik pada pasien sickle cell disease
+- [Osteoarthritis] Sebutkan temuan morfologi pada Osteoarthritis. :: • Loss/fibrillation of articular cartilage
+  • Subchondral sclerosis
+  • Osteophytes
+  • Subchondral cysts
+  • “Joint mice” dari fragmen kartilago/tulang bebas
+- [Rheumatoid Arthritis] Sebutkan morfologi klasik pada Rheumatoid Arthritis. :: • Synovial hyperplasia
+  • Dense chronic inflammatory infiltrate
+  • Pannus formation
+  • Erosi kartilago dan tulang
+  • Fibrous lalu bony ankylosis pada penyakit lanjut
+- [Avascular Necrosis] Sebutkan faktor risiko penting pada Avascular Necrosis. :: • Trauma/fracture
   • Glucocorticoids
   • Alcohol
   • Sickle cell disease
   • Decompression sickness
-- [Soft-Tissue Sarcoma — Morphologic Red Flags] Fitur yang meningkatkan kecurigaan keganasan … :: • Deep location
-  • Ukuran besar
-  • Infiltrative margin
-  • Marked atypia
-  • High mitotic activity
-  • Necrosis
-  • Vascular invasion
-- [Pseudogout] High-yield: Pseudogout :: Gout = needle + negative. Pseudogout = rhomboid + positive.
+- [Osteosarcoma] Sebutkan poin-poin penting tentang Poin klasik. :: • Umumnya remaja
+  • Metafisis tulang panjang
+  • Sekitar lutut: distal femur/proximal tibia
+  • Histologi: malignant osteoid
+- [Bone Metastasis] Sebutkan pola klasik pada Bone Metastasis. :: • Prostate carcinoma → osteoblastic metastases
+  • Breast carcinoma → dapat osteolytic, osteoblastic, atau mixed
+  • Renal cell, thyroid, lung → sering osteolytic
+- [Pseudogout] Apa poin high-yield (pearl) tentang Pseudogout? :: Gout = needle + negative. Pseudogout = rhomboid + positive.

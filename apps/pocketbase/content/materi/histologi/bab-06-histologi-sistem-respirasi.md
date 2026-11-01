@@ -432,62 +432,70 @@ Alveolus:
 
 ## Flashcard {kartu}
 
-- [Respiratory Epithelium] ciliated columnar cells :: menggerakkan mucus menuju pharynx
-- [Respiratory Epithelium] goblet cells :: menghasilkan mucus
-- [Respiratory Epithelium] basal cells :: stem/progenitor cells yang menempel basal lamina
-- [Respiratory Epithelium] brush cells :: memiliki microvilli dan berhubungan dengan sensory innervation
-- [Respiratory Epithelium] small granule/Kulchitsky cells :: neuroendocrine cells yang berada dekat basal lamina.
-- [Histologic Progression yang Harus Dihafal] Trachea :: respiratory epithelium + glands + C-shaped cartilage.
-- [Histologic Progression yang Harus Dihafal] Intrapulmonary bronchus :: respiratory epithelium + glands + cartilage plates + smooth muscle.
-- [Histologic Progression yang Harus Dihafal] Bronchiole :: simple columnar/cuboidal epithelium + smooth muscle + no cartilage + no glands.
-- [Histologic Progression yang Harus Dihafal] Terminal bronchiole :: simple cuboidal + club cells + no alveoli in wall.
-- [Histologic Progression yang Harus Dihafal] Respiratory bronchiole :: bronchiolar wall interrupted by alveoli.
-- [Histologic Progression yang Harus Dihafal] Alveolar duct :: wall almost entirely alveolar openings.
-- [Histologic Progression yang Harus Dihafal] Alveoli :: type I + type II pneumocytes + capillaries + thin septa.
-- [High-yield] Respiratory epithelium :: pseudostratified ciliated columnar + goblet cells
-- [High-yield] Trachea :: C-shaped hyaline cartilage + submucosal glands
-- [High-yield] Bronchus :: cartilage plates + glands
-- [High-yield] Bronchiole :: no cartilage + no glands + smooth muscle
-- [High-yield] Terminal bronchiole :: no alveoli in wall
-- [High-yield] Respiratory bronchiole :: alveoli interrupt wall
-- [High-yield] Club cells :: bronchiolar secretory/protective cells
-- [High-yield] type I pneumocyte :: thin gas-exchange cell
-- [High-yield] type II pneumocyte :: surfactant + regeneration
-- [High-yield] macrophage :: phagocytosis
-- [High-yield] Blood-air barrier :: type I pneumocyte + fused basal laminae + capillary endothelium
-- [High-yield] Progression distal :: epithelium ↓ height, goblet ↓, glands disappear, cartilage disappears, alveoli appear
-- [Peta Besar Sistem Respirasi] Prinsip progresi distal yang sangat high-yield … :: • epitel makin rendah
-  • goblet cells dan glands makin berkurang lalu hilang
-  • cartilage makin berkurang lalu hilang
-  • smooth muscle relatif tetap penting sampai bronchioles
-  • alveoli mulai muncul pada respiratory bronchiole
-- [Cavum Nasi: Vestibulum, Respiratory Region, dan Olfactory Region] Sel olfactory epithelium … :: • olfactory receptor neurons
-  • sustentacular/supporting cells
-  • basal cells
-- [Trachea: Gambaran Umum] Dari lumen ke luar … :: • mucosa
-  • submucosa
-  • hyaline cartilage
-  • adventitia
-- [Bronchus Extrapulmonalis dan Intrapulmonalis] Ciri intrapulmonary bronchus … :: • respiratory epithelium
-  • continuous/circular smooth muscle layer di bawah mucosa
-  • seromucous glands
-  • cartilage berbentuk irregular plates, bukan C-shaped rings
-  • pulmonary parenchyma/alveoli mengelilingi airway
-- [Alveoli] Interalveolar septa mengandung … :: • capillaries
-  • connective tissue tipis
-  • elastic fibers
-  • reticular fibers
-  • type I dan type II pneumocytes
-- [Blood-Air Barrier] Komponen dari udara ke darah … :: • thin cytoplasm type I pneumocyte
-  • fused/closely apposed basal laminae alveolar epithelium dan capillary endothelium
-  • thin cytoplasm continuous capillary endothelial cell
-- [Respiratory Epithelium] Praktikum: Respiratory Epithelium :: Jika terlihat pseudostratified ciliated epithelium + goblet cells, pikirkan respiratory epithelium, tetapi gunakan struktur dinding untuk menentukan apakah preparat tersebut trachea atau bronchus.
-- [Cavum Nasi: Vestibulum, Respiratory Region, dan Olfactory Region] High-yield: Cavum Nasi: Vestibulum, Respiratory Region, dan Olfactory Region :: Respiratory epithelium punya goblet cells; olfactory epithelium tidak, tetapi memiliki Bowman's glands dan olfactory nerve bundles.
-- [Pharynx] Praktikum: Pharynx :: Perubahan epitel mengikuti functional stress. Area dengan airflow dominan cenderung respiratory epithelium; area yang juga dilewati makanan cenderung stratified squamous.
-- [Larynx] High-yield: Larynx :: True vocal fold = stratified squamous + vocal ligament + skeletal muscle; false vocal fold = respiratory epithelium + glands.
-- [Tracheal Submucosa, Cartilage, dan Trachealis] Praktikum: Tracheal Submucosa, Cartilage, dan Trachealis :: Kombinasi pseudostratified ciliated epithelium + abundant submucosal glands + large C-shaped hyaline cartilage merupakan pola klasik trachea.
-- [Bronchus Extrapulmonalis dan Intrapulmonalis] High-yield: Bronchus Extrapulmonalis dan Intrapulmonalis :: Bronchus memiliki cartilage + glands; bronchiole tidak.
-- [Bronchioles] Praktikum: Bronchioles :: Airway kecil + no cartilage + no glands + prominent smooth muscle = bronchiole.
-- [Terminal Bronchiole] Trap utama: Terminal Bronchiole :: Bila alveoli sudah muncul dari dinding airway, struktur tersebut bukan lagi terminal bronchiole.
-- [Respiratory Bronchiole] High-yield distinction: Respiratory Bronchiole :: terminal bronchiole = no alveoli in wall; respiratory bronchiole = alveoli begin interrupting wall.
-- [Alveolar Duct dan Alveolar Sac] Praktikum: Alveolar Duct dan Alveolar Sac :: Jika dinding airway hampir seluruhnya terdiri atas alveoli dan tidak ada lagi continuous bronchiolar epithelium, pikirkan alveolar duct.
+- [Respiratory Epithelium] Jelaskan ciliated columnar cells dalam konteks Respiratory Epithelium. :: Menggerakkan mucus menuju pharynx
+- [Respiratory Epithelium] Apa yang dimaksud dengan goblet cells pada Respiratory Epithelium? :: Menghasilkan mucus
+- [Respiratory Epithelium] Apa yang dimaksud dengan basal cells pada Respiratory Epithelium? :: Stem/progenitor cells yang menempel basal lamina
+- [Respiratory Epithelium] Apa yang dimaksud dengan brush cells pada Respiratory Epithelium? :: Memiliki microvilli dan berhubungan dengan sensory innervation
+- [Respiratory Epithelium] Jelaskan small granule/Kulchitsky cells dalam konteks Respiratory Epithelium. :: Neuroendocrine cells yang berada dekat basal lamina.
+- [Histologic Progression yang Harus Dihafal] Apa yang dimaksud dengan Trachea pada Histologic Progression yang Harus Dihafal? :: Respiratory epithelium + glands + C-shaped cartilage.
+- [Histologic Progression yang Harus Dihafal] Apa yang dimaksud dengan Intrapulmonary bronchus pada Histologic Progression yang Harus Dihafal? :: Respiratory epithelium + glands + cartilage plates + smooth muscle.
+- [Histologic Progression yang Harus Dihafal] Apa yang dimaksud dengan Bronchiole pada Histologic Progression yang Harus Dihafal? :: Simple columnar/cuboidal epithelium + smooth muscle + no cartilage + no glands.
+- [Histologic Progression yang Harus Dihafal] Apa yang dimaksud dengan Terminal bronchiole pada Histologic Progression yang Harus Dihafal? :: Simple cuboidal + club cells + no alveoli in wall.
+- [Histologic Progression yang Harus Dihafal] Apa yang dimaksud dengan Respiratory bronchiole pada Histologic Progression yang Harus Dihafal? :: Bronchiolar wall interrupted by alveoli.
+- [Histologic Progression yang Harus Dihafal] Apa yang dimaksud dengan Alveolar duct pada Histologic Progression yang Harus Dihafal? :: Wall almost entirely alveolar openings.
+- [Histologic Progression yang Harus Dihafal] Apa yang dimaksud dengan Alveoli pada Histologic Progression yang Harus Dihafal? :: Type I + type II pneumocytes + capillaries + thin septa.
+- [Histologi Sistem Respirasi] Apa yang dimaksud dengan Respiratory epithelium pada Histologi Sistem Respirasi? :: Pseudostratified ciliated columnar + goblet cells
+- [Histologi Sistem Respirasi] Apa yang dimaksud dengan Trachea pada Histologi Sistem Respirasi? :: C-shaped hyaline cartilage + submucosal glands
+- [Histologi Sistem Respirasi] Apa yang dimaksud dengan Bronchus pada Histologi Sistem Respirasi? :: Cartilage plates + glands
+- [Histologi Sistem Respirasi] Apa yang dimaksud dengan Bronchiole pada Histologi Sistem Respirasi? :: No cartilage + no glands + smooth muscle
+- [Histologi Sistem Respirasi] Apa yang dimaksud dengan Terminal bronchiole pada Histologi Sistem Respirasi? :: No alveoli in wall
+- [Histologi Sistem Respirasi] Apa yang dimaksud dengan Respiratory bronchiole pada Histologi Sistem Respirasi? :: Alveoli interrupt wall
+- [Histologi Sistem Respirasi] Apa yang dimaksud dengan Club cells pada Histologi Sistem Respirasi? :: Bronchiolar secretory/protective cells
+- [Histologi Sistem Respirasi] Apa yang dimaksud dengan type I pneumocyte pada Histologi Sistem Respirasi? :: Thin gas-exchange cell
+- [Histologi Sistem Respirasi] Apa yang dimaksud dengan type II pneumocyte pada Histologi Sistem Respirasi? :: Surfactant + regeneration
+- [Histologi Sistem Respirasi] Apa yang dimaksud dengan macrophage pada Histologi Sistem Respirasi? :: Phagocytosis
+- [Histologi Sistem Respirasi] Apa yang dimaksud dengan Blood-air barrier pada Histologi Sistem Respirasi? :: Type I pneumocyte + fused basal laminae + capillary endothelium
+- [Histologi Sistem Respirasi] Apa yang perlu diketahui tentang Progression distal pada Histologi Sistem Respirasi? :: Epithelium ↓ height, goblet ↓, glands disappear, cartilage disappears, alveoli appear
+- [Peta Besar Sistem Respirasi] Sebutkan prinsip progresi distal yang sangat high-yield pada Peta Besar Sistem Respirasi. :: • Epitel makin rendah
+  • Goblet cells dan glands makin berkurang lalu hilang
+  • Cartilage makin berkurang lalu hilang
+  • Smooth muscle relatif tetap penting sampai bronchioles
+  • Alveoli mulai muncul pada respiratory bronchiole
+- [Cavum Nasi: Vestibulum, Respiratory Region, dan Olfactory Region] Sebutkan sel olfactory epithelium. :: • Olfactory receptor neurons
+  • Sustentacular/supporting cells
+  • Basal cells
+- [Bronchus Extrapulmonalis dan Intrapulmonalis] Sebutkan ciri intrapulmonary bronchus pada Bronchus Extrapulmonalis dan Intrapulmonalis. :: • Respiratory epithelium
+  • Continuous/circular smooth muscle layer di bawah mucosa
+  • Seromucous glands
+  • Cartilage berbentuk irregular plates, bukan C-shaped rings
+  • Pulmonary parenchyma/alveoli mengelilingi airway
+- [Perubahan Sepanjang Bronchial Tree] Sebutkan poin-poin penting tentang Semakin distal. :: • Tinggi epitel menurun dari pseudostratified columnar menuju simple columnar/cuboidal
+  • Goblet cells berkurang
+  • Glands berkurang lalu hilang
+  • Cartilage plates mengecil lalu hilang
+  • Smooth muscle menjadi komponen dinding yang relatif menonjol
+- [Alveoli] Sebutkan poin-poin penting tentang Interalveolar septa mengandung. :: • Capillaries
+  • Connective tissue tipis
+  • Elastic fibers
+  • Reticular fibers
+  • Type I dan type II pneumocytes
+- [Blood-Air Barrier] Sebutkan komponen dari udara ke darah pada Blood-Air Barrier. :: • Thin cytoplasm type I pneumocyte
+  • Fused/closely apposed basal laminae alveolar epithelium dan capillary endothelium
+  • Thin cytoplasm continuous capillary endothelial cell
+- [Strategi Identifikasi Preparat Respirasi] Sebutkan urutan atau langkah pada Strategi Identifikasi Preparat Respirasi? :: • Cari lumen airway atau alveolar spaces
+  • Tentukan tipe epitel
+  • Cari cartilage
+  • Cari submucosal glands
+  • Nilai smooth muscle
+  • Lihat apakah alveoli membuka langsung ke dinding
+  • Gunakan surrounding tissue sebagai context
+- [Respiratory Epithelium] Apa clue praktikum untuk Respiratory Epithelium? :: Jika terlihat pseudostratified ciliated epithelium + goblet cells, pikirkan respiratory epithelium, tetapi gunakan struktur dinding untuk menentukan apakah preparat tersebut trachea atau bronchus.
+- [Cavum Nasi: Vestibulum, Respiratory Region, dan Olfactory Region] Apa poin high-yield (pearl) tentang Cavum Nasi: Vestibulum, Respiratory Region, dan Olfactory Region? :: Respiratory epithelium punya goblet cells; olfactory epithelium tidak, tetapi memiliki Bowman's glands dan olfactory nerve bundles.
+- [Pharynx] Apa clue praktikum untuk Pharynx? :: Perubahan epitel mengikuti functional stress. Area dengan airflow dominan cenderung respiratory epithelium; area yang juga dilewati makanan cenderung stratified squamous.
+- [Larynx] Apa poin high-yield (pearl) tentang Larynx? :: True vocal fold = stratified squamous + vocal ligament + skeletal muscle; false vocal fold = respiratory epithelium + glands.
+- [Tracheal Submucosa, Cartilage, dan Trachealis] Apa clue praktikum untuk Tracheal Submucosa, Cartilage, dan Trachealis? :: Kombinasi pseudostratified ciliated epithelium + abundant submucosal glands + large C-shaped hyaline cartilage merupakan pola klasik trachea.
+- [Bronchus Extrapulmonalis dan Intrapulmonalis] Apa poin high-yield (pearl) tentang Bronchus Extrapulmonalis dan Intrapulmonalis? :: Bronchus memiliki cartilage + glands; bronchiole tidak.
+- [Bronchioles] Apa clue praktikum untuk Bronchioles? :: Airway kecil + no cartilage + no glands + prominent smooth muscle = bronchiole.
+- [Terminal Bronchiole] Apa jebakan yang sering muncul pada soal tentang Terminal Bronchiole? :: Bila alveoli sudah muncul dari dinding airway, struktur tersebut bukan lagi terminal bronchiole.
+- [Respiratory Bronchiole] Apa poin high-yield (pearl) tentang Respiratory Bronchiole? :: Terminal bronchiole = no alveoli in wall; respiratory bronchiole = alveoli begin interrupting wall.
+- [Alveolar Duct dan Alveolar Sac] Apa clue praktikum untuk Alveolar Duct dan Alveolar Sac? :: Jika dinding airway hampir seluruhnya terdiri atas alveoli dan tidak ada lagi continuous bronchiolar epithelium, pikirkan alveolar duct.

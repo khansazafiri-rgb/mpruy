@@ -813,81 +813,90 @@ Baca gula darah dengan urutan: kondisi fasting/random → plasma glucose → HbA
 
 ## Flashcard {kartu}
 
-- [Fasting Plasma Glucose] Konversi :: mg/dL ÷ 18 ≈ mmol/L.
-- [Kondisi yang Membuat HbA1c Menyesatkan] Clue penting :: jika HbA1c sangat tidak sesuai dengan serial glucose, cari faktor yang mengganggu RBC lifespan atau assay.
-- [Estimated Average Glucose] Rule of thumb :: HbA1c 6% ≈ average glucose sekitar 126 mg/dL.
-- [Prediabetes — Tiga Cara Terdeteksi] impaired glucose tolerance :: 2-hour OGTT 140–199 mg/dL
-- [Friedewald LDL-C] Formula klasik dalam mg/dL :: LDL-C = Total cholesterol − HDL-C − (Triglycerides/5).
-- [Atherogenic Particles — Cara Memahami LDL, Non-HDL, ApoB] Contoh discordance :: pasien diabetes dengan TG tinggi dapat memiliki LDL-C tidak terlalu tinggi tetapi ApoB/non-HDL-C tetap tinggi karena banyak remnant/VLDL particles.
-- [Nephrotic Syndrome dan Lipid] Clue kombinasi :: heavy proteinuria + hypoalbuminemia + edema + hyperlipidemia.
-- [High-yield] Prediabetes FPG :: 100–125 mg/dL
-- [High-yield] Prediabetes 2-hour OGTT :: 140–199 mg/dL
-- [High-yield] Prediabetes HbA1c :: 5.7–6.4%
-- [High-yield] Insulin tinggi + C-peptide rendah saat hypoglycemia :: exogenous insulin
-- [High-yield] Insulin tinggi + C-peptide tinggi :: endogenous insulin atau secretagogue
-- [High-yield] DKA :: ketosis + metabolic acidosis dengan hyperglycemia yang biasanya ada
-- [High-yield] HHS :: severe hyperglycemia + hyperosmolality + profound dehydration
-- [High-yield] Profil lipid dasar :: TC, LDL-C, HDL-C, TG
-- [High-yield] Non-HDL-C :: TC − HDL-C
-- [High-yield] LDL-C :: marker utama atherogenic cholesterol dalam praktik rutin
-- [High-yield] Friedewald: LDL :: TC − HDL − TG/5 dalam mg/dL
-- [High-yield] Diabetic dyslipidemia :: TG ↑ + HDL ↓ + atherogenic remnants/small dense LDL
-- [High-yield] LDL-C ≥190 mg/dL :: red flag severe hypercholesterolemia/FH pada dewasa
-- [High-yield] HDL-C :: risk marker, bukan target tunggal untuk dinaikkan
-- [High-yield] Baca gula darah dengan urutan :: kondisi fasting/random → plasma glucose → HbA1c → cek concordance → gunakan FPG/OGTT/HbA1c/random symptomatic criteria untuk diagnosis. HbA1c dapat menyesatkan bila umur eritrosit abnormal. Pada hyperglycemic crisis, bedakan DKA dari HHS menggunakan ketone, acid-base, dan osmolality. Pada hypoglycemia, dokumentasikan Whipple triad dan ambil critical sample untuk membedakan exogenous vs endogenous insulin. Baca lipid dengan urutan TG → LDL-C → validitas perhitungan → non-HDL-C → HDL → ApoB/Lp(a) bila perlu → cari secondary causes → integrasikan ASCVD risk. Severe TG meningkatkan pancreatitis risk, sedangkan LDL/non-HDL/ApoB menggambarkan burden aterogenik
-- [Pemeriksaan Dasar Gula Darah] Pemeriksaan utama meliputi … :: • fasting plasma glucose (FPG)
-  • random plasma glucose
+- [Fasting Plasma Glucose] Apa yang dimaksud dengan Konversi pada Fasting Plasma Glucose? :: Mg/dL ÷ 18 ≈ mmol/L.
+- [Estimated Average Glucose] Jelaskan Rule of thumb dalam konteks Estimated Average Glucose. :: HbA1c 6% ≈ average glucose sekitar 126 mg/dL.
+- [Prediabetes — Tiga Cara Terdeteksi] Jelaskan impaired glucose tolerance dalam konteks Prediabetes — Tiga Cara Terdeteksi. :: 2-hour OGTT 140–199 mg/dL
+- [Friedewald LDL-C] Jelaskan Formula klasik dalam mg/dL dalam konteks Friedewald LDL-C. :: LDL-C = Total cholesterol − HDL-C − (Triglycerides/5).
+- [Atherogenic Particles — Cara Memahami LDL, Non-HDL, ApoB] Apa yang dimaksud dengan Contoh discordance pada Atherogenic Particles — Cara Memahami LDL, Non-HDL, ApoB? :: Pasien diabetes dengan TG tinggi dapat memiliki LDL-C tidak terlalu tinggi tetapi ApoB/non-HDL-C tetap tinggi karena banyak remnant/VLDL particles.
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Prediabetes FPG pada Interpretasi Profil Lipid & Gula Darah? :: 100–125 mg/dL
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Prediabetes 2-hour OGTT pada Interpretasi Profil Lipid & Gula Darah? :: 140–199 mg/dL
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Prediabetes HbA1c pada Interpretasi Profil Lipid & Gula Darah? :: 5.7–6.4%
+- [Interpretasi Profil Lipid & Gula Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Insulin tinggi + C-peptide rendah saat hypoglycemia? :: Exogenous insulin
+- [Interpretasi Profil Lipid & Gula Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Insulin tinggi + C-peptide tinggi? :: Endogenous insulin atau secretagogue
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan DKA pada Interpretasi Profil Lipid & Gula Darah? :: Ketosis + metabolic acidosis dengan hyperglycemia yang biasanya ada
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan HHS pada Interpretasi Profil Lipid & Gula Darah? :: Severe hyperglycemia + hyperosmolality + profound dehydration
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Profil lipid dasar pada Interpretasi Profil Lipid & Gula Darah? :: TC, LDL-C, HDL-C, TG
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Non-HDL-C pada Interpretasi Profil Lipid & Gula Darah? :: TC − HDL-C
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan LDL-C pada Interpretasi Profil Lipid & Gula Darah? :: Marker utama atherogenic cholesterol dalam praktik rutin
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Friedewald: LDL pada Interpretasi Profil Lipid & Gula Darah? :: TC − HDL − TG/5 dalam mg/dL
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan Diabetic dyslipidemia pada Interpretasi Profil Lipid & Gula Darah? :: TG ↑ + HDL ↓ + atherogenic remnants/small dense LDL
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan LDL-C ≥190 mg/dL pada Interpretasi Profil Lipid & Gula Darah? :: Red flag severe hypercholesterolemia/FH pada dewasa
+- [Interpretasi Profil Lipid & Gula Darah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tendon xanthoma + premature ASCVD + very high LDL? :: Pikirkan FH
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang dimaksud dengan HDL-C pada Interpretasi Profil Lipid & Gula Darah? :: Risk marker, bukan target tunggal untuk dinaikkan
+- [Interpretasi Profil Lipid & Gula Darah] Apa yang perlu diketahui tentang Baca gula darah dengan urutan pada Interpretasi Profil Lipid & Gula Darah? :: Kondisi fasting/random → plasma glucose → HbA1c → cek concordance → gunakan FPG/OGTT/HbA1c/random symptomatic criteria untuk diagnosis. HbA1c dapat menyesatkan bila umur eritrosit abnormal. Pada hyperglycemic crisis, bedakan DKA dari HHS menggunakan ketone, acid-base, dan osmolality. Pada hypoglycemia, dokumentasikan Whipple triad dan ambil critical sample untuk membedakan exogenous vs endogenous insulin. Baca lipid dengan urutan TG → LDL-C → validitas perhitungan → non-HDL-C → HDL → ApoB/Lp(a) bila perlu → cari secondary causes → integrasikan ASCVD risk. Severe TG meningkatkan pancreatitis risk, sedangkan LDL/non-HDL/ApoB menggambarkan burden aterogenik
+- [Pemeriksaan Dasar Gula Darah] Sebutkan pemeriksaan utama pada Pemeriksaan Dasar Gula Darah. :: • Fasting plasma glucose (FPG)
+  • Random plasma glucose
   • 2-hour plasma glucose pada oral glucose tolerance test (OGTT)
   • HbA1c
-  • capillary blood glucose untuk monitoring tertentu
-  • continuous glucose monitoring pada konteks klinis tertentu
-  • fructosamine/glycated albumin bila HbA1c tidak representatif
-- [Oral Glucose Tolerance Test — OGTT] Prosedur klasik dewasa non-hamil … :: • Pasien menjalani persiapan diet dan aktivitas seperti biasa sebelum tes
+  • Capillary blood glucose untuk monitoring tertentu
+  • Continuous glucose monitoring pada konteks klinis tertentu
+  • Fructosamine/glycated albumin bila HbA1c tidak representatif
+- [Pre-Analitik Glukosa — Glikolisis Dapat Menurunkan Hasil] Sebutkan faktor penting pada Pre-Analitik Glukosa — Glikolisis Dapat Menurunkan Hasil. :: • Penundaan sentrifugasi → glucose falsely low
+  • Leukositosis ekstrem dapat mempercepat konsumsi glukosa in vitro
+  • Tabung dengan inhibitor glycolysis membantu tetapi tidak selalu menghentikan glycolysis secara instan
+  • Sampel sebaiknya diproses sesuai protokol laboratorium
+- [Oral Glucose Tolerance Test — OGTT] Sebutkan poin-poin penting tentang Prosedur klasik dewasa non-hamil. :: • Pasien menjalani persiapan diet dan aktivitas seperti biasa sebelum tes
   • Puasa semalam
   • Ambil fasting plasma glucose
   • Minum 75 g anhydrous glucose
   • Ukur plasma glucose 2 jam kemudian
-- [Kondisi yang Membuat HbA1c Menyesatkan] HbA1c dapat tampak lebih rendah bila umur RBC memendek … :: • hemolysis
-  • acute blood loss
-  • recovery setelah perdarahan
-  • transfusi tertentu
-  • beberapa kondisi CKD dengan anemia/ESA therapy
-- [Prediabetes — Tiga Cara Terdeteksi] Prediabetes dapat berupa … :: • impaired fasting glucose: FPG 100–125 mg/dL
-  • impaired glucose tolerance: 2-hour OGTT 140–199 mg/dL
-  • HbA1c 5.7–6.4%
-- [HHS — Hyperosmolar Hyperglycemic State] HHS biasanya ditandai … :: • severe hyperglycemia
-  • marked hyperosmolality
-  • profound dehydration
-  • minimal/moderate ketosis dibanding DKA
-  • perubahan kesadaran dapat menonjol
-- [LDL-C — Lipoprotein Aterogenik Utama] LDL-C harus ditafsirkan berdasarkan … :: • riwayat ASCVD
-  • diabetes
+- [HbA1c — Apa yang Diukur?] Sebutkan kriteria umum pada HbA1c — Apa yang Diukur?. :: • <5.7% → normal
+  • 5.7–6.4% → prediabetes
+  • ≥6.5% → diabetes
+- [Hypoglycemia — Whipple Triad] Sebutkan poin-poin penting tentang Whipple triad. :: • Gejala konsisten dengan hypoglycemia
+  • Plasma glucose rendah saat gejala
+  • Gejala membaik setelah glucose dinaikkan
+- [Hypoglycemia — Whipple Triad] Sebutkan gejala adrenergic pada Hypoglycemia — Whipple Triad. :: • Tremor
+  • Palpitations
+  • Sweating
+  • Anxiety
+  • Hunger
+- [Insulin Eksogen vs Endogen] Sebutkan poin-poin penting tentang Endogenous hyperinsulinism. :: • Insulin tidak sesuai tinggi
+  • C-peptide tinggi/tidak tertekan
+  • Proinsulin tinggi
+  • Beta-hydroxybutyrate rendah
+- [DKA — Diabetic Ketoacidosis] Sebutkan pemeriksaan penting pada DKA — Diabetic Ketoacidosis. :: • Glucose
+  • Electrolytes
+  • Bicarbonate
+  • Venous/arterial pH sesuai konteks
+  • Beta-hydroxybutyrate
+  • Anion gap
+  • Creatinine
+  • Potassium
+- [Fasting vs Nonfasting Lipid Profile] Sebutkan poin-poin penting tentang Fasting lebih berguna bila. :: • Triglycerides tinggi
+  • Dugaan severe hypertriglyceridemia
+  • Diperlukan perhitungan LDL tertentu
+  • Hasil nonfasting sulit diinterpretasi
+- [LDL-C — Lipoprotein Aterogenik Utama] Sebutkan poin-poin penting tentang LDL-C harus ditafsirkan berdasarkan. :: • Riwayat ASCVD
+  • Diabetes
   • CKD
-  • usia
-  • faktor risiko kardiovaskular
-  • kemungkinan familial hypercholesterolemia
-- [ApoB — Jumlah Partikel Aterogenik] ApoB sangat berguna bila terjadi discordance antara LDL-C dan atherogenic particle burden, misalnya … :: • hypertriglyceridemia
-  • diabetes
-  • metabolic syndrome
-  • obesity
-- [Dyslipidemia pada Diabetes / Insulin Resistance] Pola klasik diabetic dyslipidemia … :: • triglycerides ↑
+  • Usia
+  • Faktor risiko kardiovaskular
+  • Kemungkinan familial hypercholesterolemia
+- [Dyslipidemia pada Diabetes / Insulin Resistance] Sebutkan poin-poin penting tentang Pola klasik diabetic dyslipidemia. :: • Triglycerides ↑
   • HDL-C ↓
-  • small dense LDL meningkat
-  • remnant particles meningkat
+  • Small dense LDL meningkat
+  • Remnant particles meningkat
   • ApoB dapat meningkat
-- [Secondary Dyslipidemia — Selalu Cari Penyebab] Sebelum menyebut dyslipidemia primer/genetik, pikirkan penyebab sekunder … :: • diabetes tidak terkontrol
-  • hypothyroidism
-  • nephrotic syndrome
-  • CKD
-  • cholestatic liver disease
-  • obesity
-  • alcohol
-  • pregnancy
-  • obat seperti glucocorticoid, retinoid, beberapa antipsychotic, dan lainnya
-- [Familial Hypercholesterolemia — Clue Lab] Curiga familial hypercholesterolemia (FH) bila terdapat … :: • LDL-C sangat tinggi, terutama sejak usia muda
-  • tendon xanthomas
-  • premature ASCVD
-  • family history serupa
-- [Pre-Analitik Glukosa — Glikolisis Dapat Menurunkan Hasil] EXAM PEARL: Pre-Analitik Glukosa — Glikolisis Dapat Menurunkan Hasil :: Glucose rendah tanpa gejala yang tidak sesuai kondisi pasien → pikirkan pre-analytical glycolysis terutama bila sampel terlambat diproses.
-- [Severe Hypertriglyceridemia dan Pancreatitis] Clue: Severe Hypertriglyceridemia dan Pancreatitis :: Acute pancreatitis + milky/lipemic serum + TG sangat tinggi → hypertriglyceridemia dapat menjadi etiologi.
-- [Hypothyroidism dan Lipid] Clue: Hypothyroidism dan Lipid :: LDL meningkat tanpa penyebab jelas + gejala hypothyroidism → periksa TSH sesuai konteks.
+- [Dyslipidemia dengan TG Tinggi — Apa yang Harus Dilihat?] Sebutkan urutan atau langkah pada Dyslipidemia dengan TG Tinggi — Apa yang Harus Dilihat? :: • Konfirmasi apakah fasting diperlukan
+  • Nilai glucose/HbA1c
+  • Tanyakan alcohol
+  • Nilai TSH bila sesuai
+  • Review obat
+  • Nilai kidney/liver disease
+  • Hitung non-HDL-C
+  • Pertimbangkan ApoB bila discordant
+  • Bila TG sangat tinggi, prioritaskan pancreatitis risk
+- [Pre-Analitik Glukosa — Glikolisis Dapat Menurunkan Hasil] Apa poin high-yield (pearl) tentang Pre-Analitik Glukosa — Glikolisis Dapat Menurunkan Hasil? :: Glucose rendah tanpa gejala yang tidak sesuai kondisi pasien → pikirkan pre-analytical glycolysis terutama bila sampel terlambat diproses.
+- [Severe Hypertriglyceridemia dan Pancreatitis] Apa clue praktikum untuk Severe Hypertriglyceridemia dan Pancreatitis? :: Acute pancreatitis + milky/lipemic serum + TG sangat tinggi → hypertriglyceridemia dapat menjadi etiologi.
+- [Hypothyroidism dan Lipid] Apa clue praktikum untuk Hypothyroidism dan Lipid? :: LDL meningkat tanpa penyebab jelas + gejala hypothyroidism → periksa TSH sesuai konteks.

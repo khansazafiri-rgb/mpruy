@@ -593,71 +593,81 @@ Parallel modulators:
 
 ## Flashcard {kartu}
 
-- [Depolarization, Repolarization, Hyperpolarization] Depolarization :: membrane potential menjadi kurang negatif / lebih positif.
-- [Depolarization, Repolarization, Hyperpolarization] Hyperpolarization :: membrane potential menjadi lebih negatif daripada resting level.
-- [Temporal dan Spatial Summation] Spatial summation :: input dari beberapa lokasi/sinaps aktif hampir bersamaan dan dijumlahkan.
-- [Myelin dan Saltatory Conduction] Hasilnya :: conduction lebih cepat dan hemat energi.
-- [Peta Besar Fisiologi Sensorimotor] integration :: memproses dan memilih respons
-- [Organisasi Sistem Saraf] Central nervous system (CNS) :: otak dan medula spinalis.
-- [Tiga Tingkat Fungsional CNS] Lower brain level :: medulla, pons, midbrain, hypothalamus, thalamus, cerebellum, basal ganglia.
-- [Neuron: Unit Fungsional] Klasifikasi struktural :: multipolar, bipolar, pseudounipolar.
-- [Glial Cells] Oligodendrocytes :: membentuk myelin di CNS; satu sel dapat memielinisasi beberapa segmen akson.
-- [Glial Cells] Ependymal cells :: melapisi ventrikel dan central canal; berkaitan dengan produksi dan sirkulasi CSF.
-- [Gray Matter vs White Matter] Di otak :: cortex umumnya gray matter superfisial dengan white matter lebih dalam.
-- [Integrasi Postsinaptik: Temporal dan Spatial Summation] Temporal summation :: satu input presinaptik firing berulang dengan interval pendek sehingga postsynaptic potentials menumpuk.
-- [Presynaptic dan Postsynaptic Modulation] Presynaptic inhibition :: mengurangi Ca2+ entry atau transmitter release dari terminal presinaptik.
-- [Presynaptic dan Postsynaptic Modulation] Postsynaptic inhibition :: menurunkan excitability neuron target melalui IPSP atau shunting.
-- [Sistem Motorik: Peta Besar] basal ganglia :: selection/initiation dan suppression gerakan
-- [Sistem Motorik: Peta Besar] brainstem :: posture dan automatic motor patterns
-- [Sistem Motorik: Peta Besar] lower motor neuron :: langsung menuju skeletal muscle.
-- [Upper vs Lower Motor Neuron] LMN :: anterior horn cell atau motor cranial nucleus → peripheral nerve → skeletal muscle.
-- [Brainstem / Extrapyramidal Motor Pathways] Vestibulospinal :: posture dan balance; terutama extensor tone.
-- [Brainstem / Extrapyramidal Motor Pathways] Rubrospinal :: lebih menonjol pada beberapa spesies; pada manusia perannya lebih kecil dibanding corticospinal.
-- [Reciprocal Inhibition] Contoh stretch reflex :: quadriceps excitation disertai inhibition hamstrings.
-- [Memory: Declarative vs Nondeclarative] Declarative/explicit memory :: fakta dan kejadian; sangat bergantung pada medial temporal structures untuk pembentukan.
-- [Short-Term vs Long-Term Memory] Short-term/working memory :: detik–menit, sangat bergantung pada sustained neural activity dan short-lived synaptic changes.
-- [Sleep: NREM vs REM] NREM :: terdiri dari N1, N2, N3; N3 = slow-wave/deep sleep.
-- [Clinical Correlations High-Yield] Multiple sclerosis :: CNS demyelination → conduction terganggu.
-- [Clinical Correlations High-Yield] Spinal cord hemisection :: menghasilkan pola defisit ipsilateral DCML/UMN di bawah lesi dan contralateral pain-temperature setelah beberapa segmen.
-- [High-yield] Awake relaxed eyes closed :: alpha rhythm
-- [High-yield] Alert/active thinking :: beta activity
-- [High-yield] NREM deep sleep :: delta waves dominan
-- [Voltage-Gated Na+ Channel: Activation dan Inactivation] Voltage-gated Na+ channel memiliki gating behavior penting … :: • activation gate membuka sangat cepat saat depolarization
-  • inactivation gate menutup segera sesudahnya
-- [Repolarization] Repolarization terutama terjadi karena … :: • Na+ channels mengalami inactivation
-  • voltage-gated K+ channels terbuka lebih lambat
-  • K+ keluar dari sel
-- [Myelin dan Saltatory Conduction] Pada myelinated axon, myelin … :: • meningkatkan membrane resistance
-  • menurunkan membrane capacitance
-  • meminimalkan current leak
-- [Faktor yang Mempengaruhi Conduction Velocity] Kecepatan konduksi meningkat dengan … :: • diameter axon lebih besar
-  • myelination
-  • kondisi membrane/channel yang baik
-- [Peta Besar Fisiologi Sensorimotor] Tiga fungsi besar … :: • sensory input: mendeteksi perubahan internal dan eksternal
-  • integration: memproses dan memilih respons
-  • motor output: menghasilkan respons melalui otot atau kelenjar
-- [Tiga Tingkat Fungsional CNS] Spinal cord level … :: • jalur naik sensorik dan turun motorik
-  • pusat banyak refleks cepat
-- [Chemical Synaptic Transmission] Terminasi neurotransmitter melalui … :: • reuptake
-  • enzymatic degradation
-  • diffusion
-- [Sistem Motorik: Peta Besar] Motor control melibatkan … :: • cerebral cortex: voluntary command/planning
-  • basal ganglia: selection/initiation dan suppression gerakan
-  • cerebellum: coordination, timing, error correction
-  • brainstem: posture dan automatic motor patterns
-  • spinal cord: final common pathways dan reflexes
-  • lower motor neuron: langsung menuju skeletal muscle
-- [Tanda Lesi UMN] Pola klasik setelah fase akut … :: • weakness
-  • spasticity
-  • hyperreflexia
-  • increased tone
+- [Depolarization, Repolarization, Hyperpolarization] Jelaskan Depolarization. :: Membrane potential menjadi kurang negatif / lebih positif.
+- [Depolarization, Repolarization, Hyperpolarization] Jelaskan Repolarization. :: Kembali menuju resting value setelah depolarization.
+- [Temporal dan Spatial Summation] Apa yang dimaksud dengan Temporal summation pada Temporal dan Spatial Summation? :: Stimulus berulang cepat dari input yang sama bertumpuk sebelum respons sebelumnya hilang.
+- [Fase Depolarisasi Action Potential] Jelaskan Proses bersifat regenerative dalam konteks Fase Depolarisasi Action Potential. :: Depolarization → lebih banyak Na+ channels terbuka → lebih banyak Na+ influx.
+- [Peta Besar Fisiologi Sensorimotor] Apa yang dimaksud dengan integration pada Peta Besar Fisiologi Sensorimotor? :: Memproses dan memilih respons
+- [Organisasi Sistem Saraf] Jelaskan Central nervous system (CNS) dalam konteks Organisasi Sistem Saraf. :: Otak dan medula spinalis.
+- [Tiga Tingkat Fungsional CNS] Jelaskan Lower brain level dalam konteks Tiga Tingkat Fungsional CNS. :: Medulla, pons, midbrain, hypothalamus, thalamus, cerebellum, basal ganglia.
+- [Neuron: Unit Fungsional] Pada Neuron: Unit Fungsional, apa klasifikasi strukturalnya? :: Multipolar, bipolar, pseudounipolar.
+- [Glial Cells] Apa yang dimaksud dengan Oligodendrocytes pada Glial Cells? :: Membentuk myelin di CNS; satu sel dapat memielinisasi beberapa segmen akson.
+- [Glial Cells] Apa yang dimaksud dengan Microglia pada Glial Cells? :: Sel imun/fagosit CNS.
+- [Cerebrospinal Fluid (CSF)] Pada Cerebrospinal Fluid (CSF), apa alur klasiknya? :: Lateral ventricles → foramen Monro → third ventricle → aqueduct of Sylvius → fourth ventricle → foramina Luschka/Magendie → subarachnoid space → arachnoid granulations → dural venous sinuses.
+- [Integrasi Postsinaptik: Temporal dan Spatial Summation] Jelaskan Spatial summation. :: Beberapa input presinaptik aktif hampir bersamaan dan efeknya dijumlahkan.
+- [Presynaptic dan Postsynaptic Modulation] Apa yang dimaksud dengan Presynaptic facilitation pada Presynaptic dan Postsynaptic Modulation? :: Meningkatkan transmitter release.
+- [Sistem Motorik: Peta Besar] Apa yang dimaksud dengan cerebral cortex pada Sistem Motorik: Peta Besar? :: Voluntary command/planning
+- [Sistem Motorik: Peta Besar] Apa yang dimaksud dengan basal ganglia pada Sistem Motorik: Peta Besar? :: Selection/initiation dan suppression gerakan
+- [Sistem Motorik: Peta Besar] Apa yang dimaksud dengan brainstem pada Sistem Motorik: Peta Besar? :: Posture dan automatic motor patterns
+- [Sistem Motorik: Peta Besar] Jelaskan lower motor neuron dalam konteks Sistem Motorik: Peta Besar. :: Langsung menuju skeletal muscle.
+- [Upper vs Lower Motor Neuron] Apa yang dimaksud dengan LMN pada Upper vs Lower Motor Neuron? :: Anterior horn cell atau motor cranial nucleus → peripheral nerve → skeletal muscle.
+- [Corticospinal Tract] Jelaskan Anterior corticospinal tract. :: Lebih terkait axial/proximal muscles dan banyak memiliki bilateral influence.
+- [Brainstem / Extrapyramidal Motor Pathways] Apa yang dimaksud dengan Reticulospinal pada Brainstem / Extrapyramidal Motor Pathways? :: Posture, locomotion, muscle tone, autonomic-motor integration.
+- [Reciprocal Inhibition] Jelaskan Contoh stretch reflex dalam konteks Reciprocal Inhibition. :: Quadriceps excitation disertai inhibition hamstrings.
+- [Memory: Declarative vs Nondeclarative] Apa yang dimaksud dengan Nondeclarative/implicit memory pada Memory: Declarative vs Nondeclarative? :: Skills, habits, conditioning, procedural learning; melibatkan basal ganglia, cerebellum, dan sistem lain tergantung jenisnya.
+- [Short-Term vs Long-Term Memory] Jelaskan Long-term memory. :: Memerlukan consolidation, perubahan synaptic strength, gene expression, dan structural remodeling.
+- [Sleep: NREM vs REM] Jelaskan REM. :: Rapid eye movements, vivid dreaming, cortical activity relatif tinggi, skeletal muscle atonia, autonomic variability.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Peripheral neuropathy pada Clinical Correlations High-Yield? :: Dapat memengaruhi sensory dan motor fibers.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Parkinson disease pada Clinical Correlations High-Yield? :: Dopamine nigrostriatal berkurang.
+- [Fisiologi Saraf: Potensial Aksi & Sinaps] Apa yang perlu diketahui tentang Awake relaxed eyes closed pada Fisiologi Saraf: Potensial Aksi & Sinaps? :: Alpha rhythm
+- [Fisiologi Saraf: Potensial Aksi & Sinaps] Apa yang perlu diketahui tentang Alert/active thinking pada Fisiologi Saraf: Potensial Aksi & Sinaps? :: Beta activity
+- [Fisiologi Saraf: Potensial Aksi & Sinaps] Apa yang perlu diketahui tentang NREM deep sleep pada Fisiologi Saraf: Potensial Aksi & Sinaps? :: Delta waves dominan
+- [Peta Besar Fisiologi Sensorimotor] Sebutkan tiga fungsi besar pada Peta Besar Fisiologi Sensorimotor. :: • Sensory input: mendeteksi perubahan internal dan eksternal
+  • Integration: memproses dan memilih respons
+  • Motor output: menghasilkan respons melalui otot atau kelenjar
+- [Organisasi Sistem Saraf] Sebutkan poin-poin penting tentang Eferen. :: • Somatic motor → skeletal muscle
+  • Autonomic motor → smooth muscle, cardiac muscle, glands
+- [Tiga Tingkat Fungsional CNS] Sebutkan poin-poin penting tentang Spinal cord level. :: • Jalur naik sensorik dan turun motorik
+  • Pusat banyak refleks cepat
+- [Electrical vs Chemical Synapse] Sebutkan poin-poin penting tentang Electrical synapse. :: • Melalui gap junction
+  • Delay minimal
+  • Sering bidirectional
+  • Baik untuk sinkronisasi
+- [Electrical vs Chemical Synapse] Sebutkan poin-poin penting tentang Chemical synapse. :: • Neurotransmitter melalui synaptic cleft
+  • Memiliki synaptic delay
+  • Secara fisiologis unidirectional dari presinaptik ke postsinaptik
+  • Jauh lebih mudah dimodulasi
+- [Sistem Motorik: Peta Besar] Sebutkan poin-poin penting tentang Motor control melibatkan. :: • Cerebral cortex: voluntary command/planning
+  • Basal ganglia: selection/initiation dan suppression gerakan
+  • Cerebellum: coordination, timing, error correction
+  • Brainstem: posture dan automatic motor patterns
+  • Spinal cord: final common pathways dan reflexes
+  • Lower motor neuron: langsung menuju skeletal muscle
+- [Tanda Lesi UMN] Sebutkan pola klasik setelah fase akut pada Tanda Lesi UMN. :: • Weakness
+  • Spasticity
+  • Hyperreflexia
+  • Increased tone
   • Babinski positive
-  • mild disuse atrophy
-- [Higher Brain Function] Korteks serebri mendukung … :: • perception
-  • planning
-  • language
-  • executive function
-  • attention
-  • consciousness
-  • memory
-- [Parkinsonism dan Basal Ganglia] High-yield: Parkinsonism dan Basal Ganglia :: Basal ganglia tidak langsung mengirim LMN ke otot; efeknya dimediasi melalui thalamocortical dan brainstem motor circuits.
+  • Mild disuse atrophy
+- [Cerebellum] Sebutkan fungsi utama pada Cerebellum. :: • Koordinasi
+  • Timing
+  • Balance
+  • Error correction
+  • Motor learning
+- [Higher Brain Function] Sebutkan poin-poin penting tentang Korteks serebri mendukung. :: • Perception
+  • Planning
+  • Language
+  • Executive function
+  • Attention
+  • Consciousness
+  • Memory
+- [Limbic System dan Hypothalamus] Sebutkan poin-poin penting tentang Limbic circuits terkait. :: • Emotion
+  • Motivation
+  • Reward
+  • Memory
+- [Master Flow Sensorimotor] Sebutkan poin-poin penting tentang Parallel modulators. :: • Spinal reflex circuits
+  • Cerebellum for error correction
+  • Basal ganglia for movement selection
+  • ANS for visceral adaptation
+  • Limbic/hypothalamic networks for emotional-autonomic integration
+- [Parkinsonism dan Basal Ganglia] Apa poin high-yield (pearl) tentang Parkinsonism dan Basal Ganglia? :: Basal ganglia tidak langsung mengirim LMN ke otot; efeknya dimediasi melalui thalamocortical dan brainstem motor circuits.

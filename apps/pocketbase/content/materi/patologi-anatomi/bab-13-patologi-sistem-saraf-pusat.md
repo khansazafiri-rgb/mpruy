@@ -455,7 +455,8 @@ Kenali pola berikut secepat mungkin:
 31. Meningioma → dural-based + whorls + psammoma bodies.
 32. Schwannoma → Antoni A/B + Verocay bodies; bilateral vestibular tumors suggest NF2.
 
-- Ringkasan 30 Detik — bab ini
+## Ringkasan 30 Detik — bab ini {highyield}
+
 - Ischemia otak → red neurons → liquefactive necrosis.
 - Epidural = middle meningeal artery; subdural = bridging veins; SAH klasik = berry aneurysm.
 - MS = inflammatory demyelinating plaques; PML = JC virus pada oligodendrocytes.
@@ -464,59 +465,85 @@ Kenali pola berikut secepat mungkin:
 
 ## Flashcard {kartu}
 
-- [Cerebral Edema] Clinical clue :: edema serebri berat → peningkatan ICP → sakit kepala, muntah, penurunan kesadaran, papilledema, dan risiko herniasi.
-- [Herniasi Otak] Subfalcine herniation :: cingulate gyrus terdorong di bawah falx cerebri. Dapat menekan anterior cerebral artery.
-- [Herniasi Otak] Transtentorial/uncal herniation :: medial temporal lobe terdorong melalui tentorial notch. Dapat menekan CN III → pupil ipsilateral dilatasi, serta posterior cerebral artery. Kompresi batang otak dapat menyebabkan Duret hemorrhages.
-- [Herniasi Otak] Tonsillar herniation :: cerebellar tonsils terdorong melalui foramen magnum dan dapat menekan medulla. Ini merupakan keadaan yang sangat berbahaya karena dapat mengganggu pusat respirasi dan kardiovaskular.
-- [Cerebral Infarction] 1–3 hari :: neutrophils meningkat
-- [Cerebral Infarction] 3–7 hari :: macrophages/microglia membersihkan debris
-- [Cerebral Infarction] minggu berikutnya :: reactive gliosis dan vascular proliferation
-- [Intracerebral Hemorrhage] Lokasi klasik :: basal ganglia, thalamus, pons, dan cerebellum.
-- [Subarachnoid Hemorrhage] Clinical clue :: sudden severe “worst headache of life”, neck stiffness, dan kehilangan kesadaran.
-- [Diffuse Axonal Injury] Clinical clue :: severe trauma dengan koma yang tidak dapat dijelaskan oleh mass lesion besar.
-- [Acute Bacterial Meningitis] Komplikasi :: cerebral edema, vasculitis, infarction, hydrocephalus, dan cranial nerve injury.
-- [HSV Encephalitis] Clinical clue :: fever + altered mental status + seizures + temporal-lobe abnormalities.
-- [Multiple Sclerosis] Lokasi umum :: periventricular white matter, optic nerves, brainstem, cerebellar pathways, dan spinal cord.
-- [Multiple Sclerosis] Imaging clue :: periventricular lesions yang dapat tersusun seperti Dawson fingers.
-- [Parkinson Disease] Signature pathology :: Lewy bodies, yaitu intracytoplasmic inclusions yang mengandung α-synuclein.
-- [Huntington Disease] Morfologi khas :: atrophy caudate nucleus dan putamen → enlargement of lateral ventricles.
-- [Huntington Disease] Clinical clue :: chorea + psychiatric symptoms + progressive cognitive decline.
-- [Amyotrophic Lateral Sclerosis] Clinical clue :: progressive weakness dengan kombinasi UMN + LMN signs, umumnya tanpa sensory loss dominan.
-- [Glioblastoma] Clinical clue :: rapidly progressive neurologic deficit dengan infiltrative cerebral mass.
-- [Oligodendroglioma] Definisi molecular klasik :: IDH-mutant dan 1p/19q-codeleted.
-- [Ependymoma] Signature morphology :: perivascular pseudorosettes, dengan tumor cells tersusun mengelilingi pembuluh darah dan processes menuju vessel wall.
-- [Medulloblastoma] Histologi :: densely packed small round blue cells dengan high mitotic activity. Homer Wright rosettes dapat ditemukan.
-- [Schwannoma] Antoni B areas :: hypocellular/myxoid
-- [Schwannoma] Verocay bodies :: palisading nuclei dengan acellular zones.
-- [High-yield] Red neuron :: acute hypoxic-ischemic neuronal injury
-- [High-yield] Uncal herniation dapat menekan CN III :: ipsilateral dilated pupil
-- [High-yield] Berry aneurysm rupture :: subarachnoid hemorrhage
-- [High-yield] Epidural hematoma :: middle meningeal artery + lucid interval
-- [High-yield] Subdural hematoma :: bridging veins + crescent-shaped collection
-- [High-yield] Diffuse axonal injury :: rotational acceleration/deceleration + corpus callosum/brainstem lesions
-- [High-yield] Bacterial meningitis :: neutrophils, high protein, low glucose
-- [High-yield] Viral meningitis :: lymphocytes dan glucose relatif normal
-- [High-yield] HSV encephalitis :: temporal-lobe hemorrhagic necrosis
-- [High-yield] Negri bodies :: rabies
-- [High-yield] PML :: JC virus infects oligodendrocytes
-- [High-yield] NMOSD :: anti-AQP4, optic nerve + spinal cord dominant
-- [High-yield] Alzheimer :: extracellular Aβ plaques + intracellular hyperphosphorylated tau tangles
-- [High-yield] Parkinson :: substantia nigra neuronal loss + α-synuclein Lewy bodies
-- [High-yield] Huntington :: CAG expansion + caudate atrophy
-- [High-yield] CJD :: spongiform change + rapidly progressive dementia + minimal inflammation
-- [High-yield] Glioblastoma :: pseudopalisading necrosis + microvascular proliferation
-- [High-yield] Pilocytic astrocytoma :: Rosenthal fibers + eosinophilic granular bodies
-- [High-yield] Oligodendroglioma :: IDH-mutant + 1p/19q-codeleted + fried egg/chicken wire
-- [High-yield] Ependymoma :: perivascular pseudorosettes
-- [High-yield] Medulloblastoma :: child + cerebellum + small round blue cells + CSF drop metastases
-- [High-yield] Meningioma :: dural-based + whorls + psammoma bodies
-- [Cerebral Infarction] Perubahan morfologis secara umum … :: • 12–24 jam: red neurons
+- [Cerebral Edema] Apa yang dimaksud dengan Clinical clue pada Cerebral Edema? :: Edema serebri berat → peningkatan ICP → sakit kepala, muntah, penurunan kesadaran, papilledema, dan risiko herniasi.
+- [Herniasi Otak] Apa yang dimaksud dengan Subfalcine herniation pada Herniasi Otak? :: Cingulate gyrus terdorong di bawah falx cerebri. Dapat menekan anterior cerebral artery.
+- [Herniasi Otak] Apa yang dimaksud dengan Transtentorial/uncal herniation pada Herniasi Otak? :: Medial temporal lobe terdorong melalui tentorial notch. Dapat menekan CN III → pupil ipsilateral dilatasi, serta posterior cerebral artery. Kompresi batang otak dapat menyebabkan Duret hemorrhages.
+- [Herniasi Otak] Apa yang dimaksud dengan Tonsillar herniation pada Herniasi Otak? :: Cerebellar tonsils terdorong melalui foramen magnum dan dapat menekan medulla. Ini merupakan keadaan yang sangat berbahaya karena dapat mengganggu pusat respirasi dan kardiovaskular.
+- [Cerebral Infarction] Apa yang dimaksud dengan 1–3 hari pada Cerebral Infarction? :: Neutrophils meningkat
+- [Cerebral Infarction] Apa yang dimaksud dengan 3–7 hari pada Cerebral Infarction? :: Macrophages/microglia membersihkan debris
+- [Cerebral Infarction] Pada Cerebral Infarction, apa minggu berikutnya? :: Reactive gliosis dan vascular proliferation
+- [Intracerebral Hemorrhage] Pada Intracerebral Hemorrhage, apa lokasi klasiknya? :: Basal ganglia, thalamus, pons, dan cerebellum.
+- [Subarachnoid Hemorrhage] Apa yang dimaksud dengan Clinical clue pada Subarachnoid Hemorrhage? :: Sudden severe “worst headache of life”, neck stiffness, dan kehilangan kesadaran.
+- [Diffuse Axonal Injury] Apa yang dimaksud dengan Clinical clue pada Diffuse Axonal Injury? :: Severe trauma dengan koma yang tidak dapat dijelaskan oleh mass lesion besar.
+- [Acute Bacterial Meningitis] Pada Acute Bacterial Meningitis, apa komplikasinya? :: Cerebral edema, vasculitis, infarction, hydrocephalus, dan cranial nerve injury.
+- [HSV Encephalitis] Apa yang dimaksud dengan Clinical clue pada HSV Encephalitis? :: Fever + altered mental status + seizures + temporal-lobe abnormalities.
+- [Multiple Sclerosis] Pada Multiple Sclerosis, apa lokasi umumnya? :: Periventricular white matter, optic nerves, brainstem, cerebellar pathways, dan spinal cord.
+- [Multiple Sclerosis] Apa yang dimaksud dengan Imaging clue pada Multiple Sclerosis? :: Periventricular lesions yang dapat tersusun seperti Dawson fingers.
+- [Parkinson Disease] Apa yang dimaksud dengan Signature pathology pada Parkinson Disease? :: Lewy bodies, yaitu intracytoplasmic inclusions yang mengandung α-synuclein.
+- [Huntington Disease] Pada Huntington Disease, apa morfologi khasnya? :: Atrophy caudate nucleus dan putamen → enlargement of lateral ventricles.
+- [Huntington Disease] Apa yang dimaksud dengan Clinical clue pada Huntington Disease? :: Chorea + psychiatric symptoms + progressive cognitive decline.
+- [Amyotrophic Lateral Sclerosis] Apa yang dimaksud dengan Clinical clue pada Amyotrophic Lateral Sclerosis? :: Progressive weakness dengan kombinasi UMN + LMN signs, umumnya tanpa sensory loss dominan.
+- [Glioblastoma] Apa yang dimaksud dengan Clinical clue pada Glioblastoma? :: Rapidly progressive neurologic deficit dengan infiltrative cerebral mass.
+- [Oligodendroglioma] Jelaskan Definisi molecular klasik dalam konteks Oligodendroglioma. :: IDH-mutant dan 1p/19q-codeleted.
+- [Ependymoma] Apa yang dimaksud dengan Signature morphology pada Ependymoma? :: Perivascular pseudorosettes, dengan tumor cells tersusun mengelilingi pembuluh darah dan processes menuju vessel wall.
+- [Medulloblastoma] Pada Medulloblastoma, apa histologinya? :: Densely packed small round blue cells dengan high mitotic activity. Homer Wright rosettes dapat ditemukan.
+- [Schwannoma] Jelaskan Antoni B areas dalam konteks Schwannoma. :: Hypocellular/myxoid
+- [Schwannoma] Apa yang dimaksud dengan Verocay bodies pada Schwannoma? :: Palisading nuclei dengan acellular zones.
+- [Patologi Sistem Saraf Pusat] Apa yang dimaksud dengan Red neuron pada Patologi Sistem Saraf Pusat? :: Acute hypoxic-ischemic neuronal injury
+- [Patologi Sistem Saraf Pusat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Uncal herniation dapat menekan CN III? :: Ipsilateral dilated pupil
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Berry aneurysm rupture pada Patologi Sistem Saraf Pusat? :: Subarachnoid hemorrhage
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Epidural hematoma pada Patologi Sistem Saraf Pusat? :: Middle meningeal artery + lucid interval
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Subdural hematoma pada Patologi Sistem Saraf Pusat? :: Bridging veins + crescent-shaped collection
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Diffuse axonal injury pada Patologi Sistem Saraf Pusat? :: Rotational acceleration/deceleration + corpus callosum/brainstem lesions
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Bacterial meningitis pada Patologi Sistem Saraf Pusat? :: Neutrophils, high protein, low glucose
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Viral meningitis pada Patologi Sistem Saraf Pusat? :: Lymphocytes dan glucose relatif normal
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang HSV encephalitis pada Patologi Sistem Saraf Pusat? :: Temporal-lobe hemorrhagic necrosis
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Negri bodies pada Patologi Sistem Saraf Pusat? :: Rabies
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang PML pada Patologi Sistem Saraf Pusat? :: JC virus infects oligodendrocytes
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang NMOSD pada Patologi Sistem Saraf Pusat? :: Anti-AQP4, optic nerve + spinal cord dominant
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Alzheimer pada Patologi Sistem Saraf Pusat? :: Extracellular Aβ plaques + intracellular hyperphosphorylated tau tangles
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Parkinson pada Patologi Sistem Saraf Pusat? :: Substantia nigra neuronal loss + α-synuclein Lewy bodies
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Huntington pada Patologi Sistem Saraf Pusat? :: CAG expansion + caudate atrophy
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang CJD pada Patologi Sistem Saraf Pusat? :: Spongiform change + rapidly progressive dementia + minimal inflammation
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Glioblastoma pada Patologi Sistem Saraf Pusat? :: Pseudopalisading necrosis + microvascular proliferation
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Pilocytic astrocytoma pada Patologi Sistem Saraf Pusat? :: Rosenthal fibers + eosinophilic granular bodies
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Oligodendroglioma pada Patologi Sistem Saraf Pusat? :: IDH-mutant + 1p/19q-codeleted + fried egg/chicken wire
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Ependymoma pada Patologi Sistem Saraf Pusat? :: Perivascular pseudorosettes
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Medulloblastoma pada Patologi Sistem Saraf Pusat? :: Child + cerebellum + small round blue cells + CSF drop metastases
+- [Patologi Sistem Saraf Pusat] Apa yang perlu diingat tentang Meningioma pada Patologi Sistem Saraf Pusat? :: Dural-based + whorls + psammoma bodies
+- [Hypoxic-Ischemic Encephalopathy] Sebutkan poin-poin penting tentang Selective vulnerability. :: • Hippocampal CA1 neurons sangat sensitif
+  • Purkinje cells di cerebellum sensitif
+  • Cortical neurons pada watershed zones juga rentan
+- [Cerebral Infarction] Sebutkan poin-poin penting tentang Perubahan morfologis secara umum. :: • 12–24 jam: red neurons
   • 1–3 hari: neutrophils meningkat
   • 3–7 hari: macrophages/microglia membersihkan debris
-  • minggu berikutnya: reactive gliosis dan vascular proliferation
-  • akhirnya terbentuk cystic cavity dengan gliotic wall
-- [Watershed Infarction] High-yield clue: Watershed Infarction :: Severe hypotension → bilateral border-zone infarcts.
-- [Neuromyelitis Optica Spectrum Disorder] Exam trap: Neuromyelitis Optica Spectrum Disorder :: NMOSD bukan sekadar “MS yang lebih berat”; patogenesis dan target antigennya berbeda.
-- [Parkinson Disease] Clinical correlation: Parkinson Disease :: Bradykinesia, rigidity, resting tremor, dan postural instability.
-- [Prion Disease — Creutzfeldt–Jakob Disease] Exam pearl: Prion Disease — Creutzfeldt–Jakob Disease :: Spongiform encephalopathy + rapidly progressive dementia → pikirkan prion disease.
-- [Oligodendroglioma] Exam pearl: Oligodendroglioma :: Fried egg + chicken wire + 1p/19q codeletion → oligodendroglioma.
+  • Minggu berikutnya: reactive gliosis dan vascular proliferation
+  • Akhirnya terbentuk cystic cavity dengan gliotic wall
+- [Epidural, Subdural, dan Subarachnoid Hemorrhage] Sebutkan poin-poin penting tentang Epidural hematoma. :: • Biasanya middle meningeal artery
+  • Sering terkait temporal bone fracture
+  • Lucid interval dapat terjadi
+  • Bentuk imaging klasik lentiform/biconvex
+- [Epidural, Subdural, dan Subarachnoid Hemorrhage] Sebutkan poin-poin penting tentang Subdural hematoma. :: • Rupture bridging veins
+  • Risiko meningkat pada elderly dan brain atrophy
+  • Bentuk imaging crescent-shaped
+- [Epidural, Subdural, dan Subarachnoid Hemorrhage] Sebutkan poin-poin penting tentang Subarachnoid hemorrhage. :: • Darah berada di subarachnoid space dan bercampur CSF
+  • Aneurysmal rupture adalah penyebab klasik nontraumatik
+- [Multiple Sclerosis] Sebutkan poin-poin penting tentang Active plaque. :: • Demyelination
+  • Macrophages berisi myelin debris
+  • Perivascular lymphocytes
+  • Relative axonal preservation pada fase awal
+- [Alzheimer Disease] Sebutkan poin-poin penting tentang Signature pathology. :: • Extracellular β-amyloid plaques
+  • Intracellular neurofibrillary tangles berisi hyperphosphorylated tau
+  • Neuronal loss dan gliosis
+- [Glioblastoma] Sebutkan poin-poin penting tentang Signature histology. :: • Necrosis dengan pseudopalisading tumor cells
+  • Microvascular/endothelial proliferation
+  • Marked pleomorphism dan mitotic activity
+- [Pilocytic Astrocytoma] Sebutkan poin-poin penting tentang Signature morphology. :: • Biphasic pattern
+  • Piloid cells
+  • Rosenthal fibers
+  • Eosinophilic granular bodies
+- [Watershed Infarction] Apa poin high-yield (pearl) tentang Watershed Infarction? :: Severe hypotension → bilateral border-zone infarcts.
+- [Neuromyelitis Optica Spectrum Disorder] Apa jebakan yang sering muncul pada soal tentang Neuromyelitis Optica Spectrum Disorder? :: NMOSD bukan sekadar “MS yang lebih berat”; patogenesis dan target antigennya berbeda.
+- [Parkinson Disease] Apa korelasi klinis dari Parkinson Disease? :: Bradykinesia, rigidity, resting tremor, dan postural instability.
+- [Prion Disease — Creutzfeldt–Jakob Disease] Apa poin high-yield (pearl) tentang Prion Disease — Creutzfeldt–Jakob Disease? :: Spongiform encephalopathy + rapidly progressive dementia → pikirkan prion disease.
+- [Oligodendroglioma] Apa poin high-yield (pearl) tentang Oligodendroglioma? :: Fried egg + chicken wire + 1p/19q codeletion → oligodendroglioma.

@@ -483,61 +483,61 @@ Signal ekstraseluler → mengaktifkan/inhibisi transcription factor → transcri
 
 ## Flashcard {kartu}
 
-- [Kromatin dan Nukleosom] Jebakan soal :: “Heterochromatin = DNA tidak ada.” SALAH. DNA tetap ada, tetapi berada dalam struktur yang lebih kompak dan kurang accessible terhadap transcription machinery.
-- [Histone Methylation Tidak Selalu Berarti Represi] Jebakan soal :: “Semua histone methylation menekan transkripsi.” SALAH. Efek histone methylation bersifat site-dependent.
-- [Chromatin Remodeling Complex] HIGH-YIELD klinis :: Mutasi komponen SWI/SNF ditemukan pada berbagai kanker karena perubahan akses chromatin dapat mengubah ekspresi banyak gen sekaligus.
-- [Transcription Factors dan DNA-Binding Domains] PENTING :: Hormon steroid bekerja terutama melalui perubahan transcription sehingga onset efek umumnya lebih lambat tetapi dapat bertahan lebih lama dibanding signaling membran yang hanya memodifikasi protein yang sudah ada.
-- [1. Lac operon — inducible operon] Jebakan soal :: Presence of lactose saja tidak selalu menghasilkan ekspresi maksimum. Jika glucose tinggi, cAMP rendah dan aktivasi CAP berkurang.
-- [2. Trp operon — repressible operon] Ringkas :: lac = substrate hadir → sistem ON.
-- [Alternative Splicing: Satu Gen, Banyak Protein] Contoh klasik :: calcitonin/CGRP dari satu primary transcript dapat diproses berbeda di jaringan yang berbeda.
-- [Alternative Splicing: Satu Gen, Banyak Protein] Jebakan soal :: Alternative splicing mengubah RNA product, BUKAN sequence DNA genomiknya.
-- [microRNA (miRNA) dan RNA Interference] Jebakan soal :: miRNA tidak harus mengubah DNA. Efek utamanya adalah regulasi RNA/mRNA.
-- [Iron Response Element (IRE) System] HIGH-YIELD mnemonic :: Low iron → Ferritin LOW, transferrin receptor HIGH.
-- [1. Genomic imprinting] Jebakan soal :: Kedua penyakit dapat melibatkan region kromosom yang sama, tetapi parent-of-origin berbeda.
-- [High-yield] DNA promoter hypermethylation biasanya :: transcription ↓
-- [High-yield] Lac operon maksimal :: lactose ada + glucose rendah
-- [High-yield] Trp tinggi :: trp operon OFF
-- [High-yield] Low iron :: ferritin ↓, transferrin receptor ↑
-- [High-yield] Fragile X :: CGG expansion + methylation/silencing FMR1 pada full mutation
-- [High-yield] miRNA :: Drosha → Exportin-5 → Dicer → RISC/Argonaute → gene silencing
-- [High-yield] Low iron :: ferritin ↓ dan transferrin receptor ↑
-- [Big Picture: Kenapa Ekspresi Gen Harus Diatur?] Regulasi dapat terjadi pada banyak tingkat … :: • Struktur kromatin dan epigenetik → menentukan apakah DNA dapat diakses
-  • Transkripsi → menentukan berapa banyak RNA yang dibuat
-  • Pemrosesan RNA → menentukan bentuk mRNA matang
-  • Stabilitas/degradasi mRNA → menentukan berapa lama mRNA tersedia
-  • Translasi → menentukan berapa banyak protein dibuat dari setiap mRNA
-  • Modifikasi dan degradasi protein → menentukan aktivitas serta umur protein
-- [Kromatin dan Nukleosom] Dua keadaan fungsional utama … :: • Euchromatin → relatif longgar, lebih mudah diakses, umumnya lebih aktif secara transkripsi
+- [Trp operon — repressible operon] Apa yang dimaksud dengan Ringkas pada Trp operon — repressible operon? :: Lac = substrate hadir → sistem ON.
+- [Alternative Splicing: Satu Gen, Banyak Protein] Apa yang dimaksud dengan Contoh klasik pada Alternative Splicing: Satu Gen, Banyak Protein? :: Calcitonin/CGRP dari satu primary transcript dapat diproses berbeda di jaringan yang berbeda.
+- [Regulasi Ekspresi Gen] Apa jawaban atau kesimpulan untuk petunjuk berikut: DNA promoter hypermethylation biasanya? :: Transcription ↓
+- [Regulasi Ekspresi Gen] Apa yang perlu diketahui tentang Lac operon maksimal pada Regulasi Ekspresi Gen? :: Lactose ada + glucose rendah
+- [Regulasi Ekspresi Gen] Apa yang perlu diingat tentang Trp tinggi pada Regulasi Ekspresi Gen? :: Trp operon OFF
+- [Regulasi Ekspresi Gen] Apa yang perlu diingat tentang Low iron pada Regulasi Ekspresi Gen? :: Ferritin ↓, transferrin receptor ↑
+- [Regulasi Ekspresi Gen] Apa yang dimaksud dengan Fragile X pada Regulasi Ekspresi Gen? :: CGG expansion + methylation/silencing FMR1 pada full mutation
+- [Regulasi Ekspresi Gen] Apa yang perlu diketahui tentang miRNA pada Regulasi Ekspresi Gen? :: Drosha → Exportin-5 → Dicer → RISC/Argonaute → gene silencing
+- [Regulasi Ekspresi Gen] Apa yang perlu diketahui tentang Low iron pada Regulasi Ekspresi Gen? :: Ferritin ↓ dan transferrin receptor ↑
+- [Kromatin dan Nukleosom] Sebutkan poin-poin penting tentang Dua keadaan fungsional utama. :: • Euchromatin → relatif longgar, lebih mudah diakses, umumnya lebih aktif secara transkripsi
   • Heterochromatin → lebih padat, aksesibilitas rendah, umumnya lebih sedikit ditranskripsi
-- [Histone Acetylation: HAT vs HDAC] Histone acetyltransferase (HAT) … :: • Menambahkan gugus asetil ke residu lysine pada histone tail
+- [Histone Acetylation: HAT vs HDAC] Sebutkan poin-poin penting tentang Histone acetyltransferase (HAT). :: • Menambahkan gugus asetil ke residu lysine pada histone tail
   • Mengurangi muatan positif lysine
   • Interaksi histon–DNA menjadi lebih longgar
   • Kromatin cenderung lebih terbuka
   • Secara umum mempermudah transkripsi
-- [DNA Methylation dan CpG Island] DNA methylation dapat menekan ekspresi dengan … :: • Menghambat binding transcription factor tertentu
-  • Merekrut methyl-CpG-binding proteins dan kompleks represif
-  • Mendorong pembentukan chromatin yang lebih kompak
-- [Transcription Factors dan DNA-Binding Domains] Transcription factor biasanya memiliki … :: • DNA-binding domain
-  • Activation/repression domain
-  • Kadang ligand-binding domain
-- [Alternative Splicing: Satu Gen, Banyak Protein] Mekanismenya dapat berupa … :: • Exon skipping
+- [Histone Methylation Tidak Selalu Berarti Represi] Sebutkan contoh high-yield pada Histone Methylation Tidak Selalu Berarti Represi. :: • H3K4 methylation sering berhubungan dengan chromatin aktif
+  • H3K9 dan H3K27 methylation sering berhubungan dengan chromatin represif
+- [Regulasi Inisiasi Transkripsi Eukariot] Sebutkan urutan atau langkah pada Regulasi Inisiasi Transkripsi Eukariot? :: • Specific transcription factor/activator berikatan dengan enhancer
+  • DNA membentuk loop sehingga enhancer mendekati promoter
+  • Mediator complex membantu menghubungkan activator dengan general transcription machinery
+  • General transcription factors berkumpul pada promoter
+  • RNA polymerase II direkrut dan membentuk pre-initiation complex
+  • Transkripsi dimulai
+- [Transcription Factors dan DNA-Binding Domains] Sebutkan contoh ligand pada Transcription Factors dan DNA-Binding Domains. :: • Steroid hormones
+  • Thyroid hormone
+  • Retinoic acid
+  • Vitamin D
+- [Alternative Splicing: Satu Gen, Banyak Protein] Sebutkan mekanismenya pada Alternative Splicing: Satu Gen, Banyak Protein. :: • Exon skipping
   • Alternative 5′ splice site
   • Alternative 3′ splice site
   • Mutually exclusive exons
   • Intron retention
-- [RNA Editing, mRNA Export, dan Quality Control] Sebelum mRNA eukariot ditranslasi, umumnya mengalami … :: • 5′ capping
-  • Splicing
-  • 3′ polyadenylation
-  • Export dari nucleus
-- [RNA Editing, mRNA Export, dan Quality Control] Nonsense-mediated decay (NMD) … :: • Sistem quality control yang mendeteksi banyak mRNA dengan premature termination codon
-  • mRNA abnormal kemudian didegradasi agar tidak menghasilkan truncated protein berlebihan
-- [Protein Degradation: Ubiquitin–Proteasome System] Berbeda dengan proteasome, lysosome/autophagy berperan besar dalam degradasi … :: • Protein extracellular yang diendositosis
-  • Protein membran
-  • Organel dan komponen sitoplasma melalui autophagy
-- [1. Genomic imprinting] Contoh chromosome 15q11-q13 … :: • Prader–Willi syndrome → kehilangan ekspresi gen paternal pada region terkait
-  • Angelman syndrome → kehilangan ekspresi maternal UBE3A pada jaringan yang relevan, terutama sistem saraf
-- [Big Picture: Kenapa Ekspresi Gen Harus Diatur?] HIGH-YIELD: Big Picture: Kenapa Ekspresi Gen Harus Diatur? :: Pada eukariot, titik kontrol terpenting sering berada pada akses kromatin dan inisiasi transkripsi, tetapi kontrol pascatranskripsi juga sangat penting.
-- [Histone Acetylation: HAT vs HDAC] Penting: Histone Acetylation: HAT vs HDAC :: HAT → acetylation → open chromatin → transcription ↑ HDAC → deacetylation → closed chromatin → transcription ↓
-- [Stabilitas mRNA sebagai Titik Regulasi] HIGH-YIELD: Stabilitas mRNA sebagai Titik Regulasi :: 3′ UTR sangat penting sebagai lokasi binding berbagai regulatory proteins dan miRNA.
-- [microRNA (miRNA) dan RNA Interference] Penting: microRNA (miRNA) dan RNA Interference :: Drosha → nucleus. Dicer → cytoplasm. RISC/Argonaute → effector silencing.
-- [Protein Degradation: Ubiquitin–Proteasome System] HIGH-YIELD: Protein Degradation: Ubiquitin–Proteasome System :: E3 ligase adalah komponen yang sangat menentukan protein target mana yang akan diberi ubiquitin.
+- [RNA Editing, mRNA Export, dan Quality Control] Sebutkan poin-poin penting tentang Nonsense-mediated decay (NMD). :: • Sistem quality control yang mendeteksi banyak mRNA dengan premature termination codon
+  • MRNA abnormal kemudian didegradasi agar tidak menghasilkan truncated protein berlebihan
+- [Stabilitas mRNA sebagai Titik Regulasi] Sebutkan faktor yang memengaruhi stabilitas mRNA pada Stabilitas mRNA sebagai Titik Regulasi. :: • Panjang poly-A tail
+  • Protein yang berikatan dengan 5′/3′ UTR
+  • AU-rich elements pada beberapa mRNA
+  • MicroRNA
+- [Protein Degradation: Ubiquitin–Proteasome System] Sebutkan poin-poin penting tentang Ubiquitin–proteasome pathway. :: • E1 = ubiquitin-activating enzyme
+  • E2 = ubiquitin-conjugating enzyme
+  • E3 = ubiquitin ligase yang memberikan substrate specificity
+  • Polyubiquitinated protein dikenali proteasome
+  • Protein didegradasi menjadi peptide kecil
+- [Perbandingan Cepat Level Regulasi] Sebutkan poin-poin penting tentang Chromatin level. :: • DNA methylation
+  • Histone modification
+  • Chromatin remodeling
+- [Perbandingan Cepat Level Regulasi] Sebutkan poin-poin penting tentang Transcriptional level. :: • Promoter/enhancer/silencer
+  • Transcription factors
+  • Mediator
+- [Perbandingan Cepat Level Regulasi] Sebutkan poin-poin penting tentang Translational level. :: • Initiation factors
+  • UTR regulatory proteins
+  • MTOR/miRNA
+- [Big Picture: Kenapa Ekspresi Gen Harus Diatur?] Apa poin high-yield (pearl) tentang Big Picture: Kenapa Ekspresi Gen Harus Diatur? :: Pada eukariot, titik kontrol terpenting sering berada pada akses kromatin dan inisiasi transkripsi, tetapi kontrol pascatranskripsi juga sangat penting.
+- [Histone Acetylation: HAT vs HDAC] Apa jebakan yang sering muncul pada soal tentang Histone Acetylation: HAT vs HDAC? :: HAT → acetylation → open chromatin → transcription ↑ HDAC → deacetylation → closed chromatin → transcription ↓
+- [Stabilitas mRNA sebagai Titik Regulasi] Apa poin high-yield (pearl) tentang Stabilitas mRNA sebagai Titik Regulasi? :: 3′ UTR sangat penting sebagai lokasi binding berbagai regulatory proteins dan miRNA.
+- [microRNA (miRNA) dan RNA Interference] Apa jebakan yang sering muncul pada soal tentang microRNA (miRNA) dan RNA Interference? :: Drosha → nucleus. Dicer → cytoplasm. RISC/Argonaute → effector silencing.
+- [Protein Degradation: Ubiquitin–Proteasome System] Apa poin high-yield (pearl) tentang Protein Degradation: Ubiquitin–Proteasome System? :: E3 ligase adalah komponen yang sangat menentukan protein target mana yang akan diberi ubiquitin.

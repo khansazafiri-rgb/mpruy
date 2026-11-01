@@ -581,41 +581,68 @@ Probability shortcuts:
 
 ## Flashcard {kartu}
 
-- [Anticipation] Huntington :: CAG repeat, paternal anticipation menonjol.
-- [Anticipation] Myotonic dystrophy :: CTG repeat, anticipation juga penting.
-- [Risk Calculation — Autosomal Dominant] Kasus klasik :: Affected heterozygote (Aa) × unaffected (aa)
-- [Memory Map] Autosomal dominant :: “Vertical + 50% + one allele” → Marfan, Achondroplasia, Huntington, NF1, ADPKD.
-- [Memory Map] Autosomal recessive :: “Horizontal + 25% + two alleles” → CF, PKU, Tay–Sachs, Wilson, Galactosemia, CAH.
-- [High-yield] Huntington :: CAG repeat + AD + anticipation
-- [High-yield] Achondroplasia :: FGFR3 gain-of-function + AD + advanced paternal age
-- [High-yield] Marfan :: FBN1 + aortic root disease + ectopia lentis superotemporal
-- [High-yield] NF1 :: chromosome 17 + neurofibromin/RAS + café-au-lait + neurofibromas
-- [High-yield] PKU :: PAH + AR + phenylalanine ↑
-- [High-yield] Tay–Sachs :: HEXA + cherry-red spot TANPA hepatosplenomegaly
-- [High-yield] Wilson :: ATP7B + copper accumulation + Kayser–Fleischer
-- [High-yield] CAH 21-hydroxylase :: AR + 17-OHP ↑ + androgen ↑ ± salt wasting
-- [High-yield] AD high-yield :: Marfan–FBN1, achondroplasia–FGFR3, Huntington–HTT CAG, NF1, ADPKD
-- [High-yield] AR high-yield :: CF–CFTR, PKU–PAH, Tay–Sachs–HEXA, Wilson–ATP7B, GALT deficiency, 21-hydroxylase deficiency
-- [Familial Hypercholesterolemia] Gen yang dapat terlibat … :: • LDLR paling klasik
-  • APOB dan gain-of-function PCSK9 juga dapat menyebabkan phenotype dominan
-- [Familial Hypercholesterolemia] Konsep dosis gen … :: • Heterozygous familial hypercholesterolemia sudah bermakna klinis
-  • Biallelic/severe forms jauh lebih berat dan dapat menyebabkan penyakit kardiovaskular sangat dini
-- [Phenylketonuria (PKU)] Manifestasi tanpa terapi … :: • Intellectual disability
+- [Anticipation] Apa yang dimaksud dengan Huntington pada Anticipation? :: CAG repeat, paternal anticipation menonjol.
+- [Anticipation] Apa yang dimaksud dengan Myotonic dystrophy pada Anticipation? :: CTG repeat, anticipation juga penting.
+- [Risk Calculation — Autosomal Dominant] Apa yang dimaksud dengan Kasus klasik pada Risk Calculation — Autosomal Dominant? :: Affected heterozygote (Aa) × unaffected (aa)
+- [Memory Map] Apa yang dimaksud dengan Autosomal dominant pada Memory Map? :: “Vertical + 50% + one allele” → Marfan, Achondroplasia, Huntington, NF1, ADPKD.
+- [Memory Map] Apa yang dimaksud dengan Autosomal recessive pada Memory Map? :: “Horizontal + 25% + two alleles” → CF, PKU, Tay–Sachs, Wilson, Galactosemia, CAH.
+- [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang dimaksud dengan Huntington pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: CAG repeat + AD + anticipation
+- [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang dimaksud dengan Achondroplasia pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: FGFR3 gain-of-function + AD + advanced paternal age
+- [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang dimaksud dengan Marfan pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: FBN1 + aortic root disease + ectopia lentis superotemporal
+- [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang dimaksud dengan NF1 pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: Chromosome 17 + neurofibromin/RAS + café-au-lait + neurofibromas
+- [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang dimaksud dengan PKU pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: PAH + AR + phenylalanine ↑
+- [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang dimaksud dengan Tay–Sachs pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: HEXA + cherry-red spot TANPA hepatosplenomegaly
+- [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang dimaksud dengan Wilson pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: ATP7B + copper accumulation + Kayser–Fleischer
+- [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang dimaksud dengan CAH 21-hydroxylase pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: AR + 17-OHP ↑ + androgen ↑ ± salt wasting
+- [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang perlu diketahui tentang AD high-yield pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: Marfan–FBN1, achondroplasia–FGFR3, Huntington–HTT CAG, NF1, ADPKD
+- [Penyakit Genetik Autosomal (Dominan & Resesif)] Apa yang perlu diketahui tentang AR high-yield pada Penyakit Genetik Autosomal (Dominan & Resesif)? :: CF–CFTR, PKU–PAH, Tay–Sachs–HEXA, Wilson–ATP7B, GALT deficiency, 21-hydroxylase deficiency
+- [Cara Membaca Pedigree Autosomal Dominant] Sebutkan poin-poin penting tentang Petunjuk klasik. :: • Penyakit muncul di hampir setiap generasi
+  • Individu terkena biasanya memiliki salah satu orang tua yang terkena
+  • Affected male dapat menurunkan penyakit kepada anak laki-laki
+  • Affected heterozygous parent × unaffected parent sering menghasilkan sekitar 50% affected offspring dalam populasi besar
+- [Marfan Syndrome] Sebutkan manifestasi high-yield pada Marfan Syndrome. :: • Tall stature, long limbs, arachnodactyly
+  • Pectus deformity dan scoliosis dapat terjadi
+  • Aortic root dilatation → risiko aneurysm/dissection
+  • Mitral valve prolapse dapat terjadi
+  • Ectopia lentis klasiknya superotemporal
+- [Neurofibromatosis Type 1] Sebutkan manifestasi klasik pada Neurofibromatosis Type 1. :: • Café-au-lait macules
+  • Axillary/inguinal freckling
+  • Multiple neurofibromas
+  • Plexiform neurofibroma
+  • Lisch nodules pada iris
+  • Risiko optic pathway glioma dan malignancy tertentu meningkat
+- [Compound Heterozygosity dan Pseudodominance] Sebutkan poin-poin penting tentang Compound heterozygote. :: • Individu memiliki dua pathogenic variants yang berbeda pada gen yang sama, satu dari masing-masing orang tua
+  • Secara fungsional tetap merupakan penyakit recessive karena kedua copy gen terganggu
+- [Cystic Fibrosis] Sebutkan fungsi CFTR pada Cystic Fibrosis. :: • Chloride channel pada epitel
+  • Gangguan transport Cl− dan air menghasilkan secretions yang lebih kental pada berbagai organ
+- [Phenylketonuria (PKU)] Sebutkan manifestasi tanpa terapi pada Phenylketonuria (PKU). :: • Intellectual disability
   • Seizure
   • Eczema
   • Musty/mousy odor
   • Hypopigmentation dapat terjadi
-- [Classic Galactosemia] Manifestasi setelah konsumsi milk/lactose … :: • Jaundice/hepatomegaly
-  • Failure to thrive
-  • Cataract
-  • Risiko E. coli sepsis pada bayi
-- [Big Picture] High-yield: Big Picture :: AD biasanya tampak vertikal antar-generasi. AR sering tampak horizontal pada saudara kandung dengan orang tua tidak terkena. Father-to-son transmission dapat terjadi pada penyakit autosomal; ini membantu membedakan dari X-linked inheritance.
-- [Cara Membaca Pedigree Autosomal Dominant] Jebakan soal: Cara Membaca Pedigree Autosomal Dominant :: Pedigree kecil dapat tampak “skip generation” hanya karena kebetulan statistik. Reduced penetrance dapat benar-benar membuat individu membawa varian tetapi tidak menunjukkan fenotipe. De novo mutation dapat menyebabkan anak terkena walau kedua orang tua klinis normal.
-- [Marfan Syndrome] Penting: Marfan Syndrome :: Penyebab mortalitas utama yang harus diingat adalah komplikasi aorta. Marfan berbeda dari homocystinuria: pada homocystinuria lens displacement klasiknya inferonasal dan terdapat risiko thrombosis.
-- [Achondroplasia] High-yield: Achondroplasia :: Banyak kasus berasal dari de novo mutation. Risiko de novo meningkat dengan advanced paternal age. Homozygous achondroplasia biasanya jauh lebih berat dan sering lethal.
-- [Autosomal Dominant Polycystic Kidney Disease (ADPKD)] Jebakan: Autosomal Dominant Polycystic Kidney Disease (ADPKD) :: ADPKD biasanya muncul lebih lambat daripada autosomal recessive polycystic kidney disease yang klasik pada anak.
-- [Osteogenesis Imperfecta — Konsep Dominant-Negative] Konsep penting: Osteogenesis Imperfecta — Konsep Dominant-Negative :: Quantitative collagen defect sering lebih ringan dibanding dominant-negative qualitative defect yang mengganggu triple helix.
-- [Cara Membaca Pedigree Autosomal Recessive] High-yield: Cara Membaca Pedigree Autosomal Recessive :: AR sering tampak “horizontal” dalam pedigree. Consanguinity merupakan clue kuat, tetapi tidak wajib ada.
-- [Thalassemia — Konsep Autosomal Recessive] Penting: Thalassemia — Konsep Autosomal Recessive :: Thalassemia = quantitative globin synthesis defect. Sickle cell = qualitative structural hemoglobin variant.
-- [Classic Galactosemia] Jebakan: Classic Galactosemia :: Galactokinase deficiency juga dapat menyebabkan cataract, tetapi biasanya tanpa severe liver disease seperti classic galactosemia.
-- [Penetrance vs Expressivity] High-yield: Penetrance vs Expressivity :: Penetrance = apakah phenotype muncul atau tidak. Expressivity = seberapa berat/bagaimana phenotype muncul.
+- [Phenylketonuria (PKU)] Sebutkan terapi konsep pada Phenylketonuria (PKU). :: • Restrict phenylalanine
+  • Supplement tyrosine
+  • Beberapa pasien responsif terhadap BH4 (tetrahydrobiopterin)
+- [Wilson Disease] Sebutkan poin-poin penting tentang Laboratorium klasik. :: • Ceruloplasmin sering rendah
+  • Urinary copper meningkat
+  • Hepatic copper meningkat
+- [Locus Heterogeneity vs Allelic Heterogeneity] Sebutkan poin-poin penting tentang Locus heterogeneity. :: • Mutasi pada gen berbeda dapat menghasilkan phenotype yang mirip
+  • Contoh konsep: hereditary hearing loss dapat disebabkan banyak gen berbeda
+- [Locus Heterogeneity vs Allelic Heterogeneity] Sebutkan poin-poin penting tentang Allelic heterogeneity. :: • Varian berbeda dalam satu gen dapat menyebabkan phenotype yang sama atau spektrum phenotype berbeda
+  • CFTR memiliki sangat banyak pathogenic variants dengan dampak klinis berbeda
+- [Autosomal Dominant vs Autosomal Recessive — Rapid Comparison] Sebutkan poin-poin penting tentang Autosomal recessive. :: • Dua pathogenic alleles diperlukan
+  • Sering horizontal pattern
+  • Orang tua affected child sering carrier dan tampak sehat
+  • Aa × Aa → 25% affected
+  • Consanguinity merupakan clue
+  • Contoh: cystic fibrosis, PKU, Tay–Sachs, Wilson, classic galactosemia, 21-hydroxylase deficiency
+- [Big Picture] Apa poin high-yield (pearl) tentang Big Picture? :: AD biasanya tampak vertikal antar-generasi. AR sering tampak horizontal pada saudara kandung dengan orang tua tidak terkena. Father-to-son transmission dapat terjadi pada penyakit autosomal; ini membantu membedakan dari X-linked inheritance.
+- [Cara Membaca Pedigree Autosomal Dominant] Apa jebakan yang sering muncul pada soal tentang Cara Membaca Pedigree Autosomal Dominant? :: Pedigree kecil dapat tampak “skip generation” hanya karena kebetulan statistik. Reduced penetrance dapat benar-benar membuat individu membawa varian tetapi tidak menunjukkan fenotipe. De novo mutation dapat menyebabkan anak terkena walau kedua orang tua klinis normal.
+- [Marfan Syndrome] Apa jebakan yang sering muncul pada soal tentang Marfan Syndrome? :: Penyebab mortalitas utama yang harus diingat adalah komplikasi aorta. Marfan berbeda dari homocystinuria: pada homocystinuria lens displacement klasiknya inferonasal dan terdapat risiko thrombosis.
+- [Achondroplasia] Apa poin high-yield (pearl) tentang Achondroplasia? :: Banyak kasus berasal dari de novo mutation. Risiko de novo meningkat dengan advanced paternal age. Homozygous achondroplasia biasanya jauh lebih berat dan sering lethal.
+- [Autosomal Dominant Polycystic Kidney Disease (ADPKD)] Apa jebakan yang sering muncul pada soal tentang Autosomal Dominant Polycystic Kidney Disease (ADPKD)? :: ADPKD biasanya muncul lebih lambat daripada autosomal recessive polycystic kidney disease yang klasik pada anak.
+- [Osteogenesis Imperfecta — Konsep Dominant-Negative] Apa poin high-yield (pearl) tentang Osteogenesis Imperfecta — Konsep Dominant-Negative? :: Quantitative collagen defect sering lebih ringan dibanding dominant-negative qualitative defect yang mengganggu triple helix.
+- [Cara Membaca Pedigree Autosomal Recessive] Apa poin high-yield (pearl) tentang Cara Membaca Pedigree Autosomal Recessive? :: AR sering tampak “horizontal” dalam pedigree. Consanguinity merupakan clue kuat, tetapi tidak wajib ada.
+- [Thalassemia — Konsep Autosomal Recessive] Apa jebakan yang sering muncul pada soal tentang Thalassemia — Konsep Autosomal Recessive? :: Thalassemia = quantitative globin synthesis defect. Sickle cell = qualitative structural hemoglobin variant.
+- [Classic Galactosemia] Apa jebakan yang sering muncul pada soal tentang Classic Galactosemia? :: Galactokinase deficiency juga dapat menyebabkan cataract, tetapi biasanya tanpa severe liver disease seperti classic galactosemia.
+- [Penetrance vs Expressivity] Apa poin high-yield (pearl) tentang Penetrance vs Expressivity? :: Penetrance = apakah phenotype muncul atau tidak. Expressivity = seberapa berat/bagaimana phenotype muncul.

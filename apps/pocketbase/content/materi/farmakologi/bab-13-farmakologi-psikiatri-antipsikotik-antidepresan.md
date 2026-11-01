@@ -290,7 +290,8 @@ Contoh pola cepat:
 23. Benzodiazepine jangka panjang tidak sebaiknya dihentikan mendadak karena withdrawal dan risiko kejang.
 24. Pada soal, identifikasi kelas → mekanisme → adverse effect khas → monitoring/interaksi.
 
-- Ringkasan 30 Detik — bab ini
+## Ringkasan 30 Detik — bab ini {highyield}
+
 - Psikosis: hipotesis serotoninergik, D2, dan NMDA; gangguan mood: monoaminergik, reseptor, dan neuroprogresi.
 - Antipsikotik banyak bersifat lipofilik/protein bound dan terdistribusi luas; metabolismenya melalui CYP hepatik.
 - Typical antipsychotic: pikirkan EPS/prolaktin; atypical: perhatikan pula efek metabolik.
@@ -301,73 +302,60 @@ Contoh pola cepat:
 
 ## Flashcard {kartu}
 
-- [Dasar Neurobiologi Gangguan Psikiatri] hipotesis serotoninergik :: hiperaktivasi 5-HT2A dan 5-HT
-- [Dasar Neurobiologi Gangguan Psikiatri] hipotesis dopaminergik :: hiperaktivasi D2; dan
-- [Dasar Neurobiologi Gangguan Psikiatri] hipotesis monoaminergik :: defisiensi 5-HT, norepinefrin (NE), dan dopamin (D)
-- [Dasar Neurobiologi Gangguan Psikiatri] hipotesis reseptor :: upregulasi reseptor; dan
-- [Dasar Neurobiologi Gangguan Psikiatri] hipotesis neuroprogresi :: perubahan neuron yang progresif.
-- [Dasar Neurobiologi Gangguan Psikiatri] Penting :: ketiga kelompok penjelasan di atas adalah model/hipotesis patofisiologi. Jangan membaca satu hipotesis sebagai penyebab tunggal yang menjelaskan seluruh manifestasi penyakit psikiatri.
-- [Antipsikotik: Prinsip Umum & Farmakokinetik] Absorpsi :: kebanyakan mudah diabsorpsi, tetapi tidak complete.
-- [Antipsikotik: Prinsip Umum & Farmakokinetik] Distribusi :: kebanyakan antipsikotik bersifat lipid soluble dan protein binding sehingga terdistribusi luas.
-- [Antipsikotik: Prinsip Umum & Farmakokinetik] Metabolisme :: metabolisme di liver oleh CYP2D6, CYP1A2, dan CYP3A4.
-- [Antipsikotik typical / generasi pertama] Contoh yang sering diuji :: haloperidol dan chlorpromazine.
-- [Antipsikotik typical / generasi pertama] Pola mekanisme :: antagonisme D2 relatif dominan.
-- [Antipsikotik typical / generasi pertama] Konsekuensi high-yield :: EPS dan hiperprolaktinemia lebih menonjol, terutama pada obat berpotensi tinggi seperti haloperidol.
-- [A. Selective serotonin reuptake inhibitors (SSRI)] Mekanisme :: menghambat serotonin transporter (SERT) sehingga transmisi serotonin meningkat.
-- [A. Selective serotonin reuptake inhibitors (SSRI)] Efek samping high-yield :: gangguan gastrointestinal, disfungsi seksual, gangguan tidur, dan serotonin syndrome bila beban serotonergik berlebihan.
-- [B. Serotonin–norepinephrine reuptake inhibitors (SNRI)] Mekanisme :: menghambat reuptake 5-HT dan NE.
-- [C. Tricyclic antidepressants (TCA)] Mekanisme utama :: menghambat reuptake 5-HT dan NE, tetapi juga memiliki aktivitas pada reseptor muskarinik, histamin H1, dan α1.
-- [C. Tricyclic antidepressants (TCA)] Efek samping :: mulut kering, konstipasi, retensi urin, sedasi, hipotensi ortostatik. Overdosis dapat menyebabkan kardiotoksisitas dan aritmia.
-- [D. Monoamine oxidase inhibitors (MAOI)] Mekanisme :: menghambat metabolisme monoamin.
-- [D. Monoamine oxidase inhibitors (MAOI)] Pola soal :: kombinasi MAOI dengan makanan kaya tyramine dapat memicu krisis hipertensi; kombinasi dengan obat serotonergik meningkatkan risiko toksisitas serotonin.
-- [E. Bupropion] Mekanisme :: meningkatkan transmisi norepinefrin dan dopamin melalui hambatan reuptake.
-- [E. Bupropion] Poin pembeda :: cenderung lebih sedikit menimbulkan disfungsi seksual dibanding banyak SSRI, tetapi dapat menurunkan ambang kejang.
-- [F. Mirtazapine] Mekanisme utama :: antagonisme reseptor α2 presinaptik dengan peningkatan pelepasan NE dan 5-HT.
-- [F. Mirtazapine] Pola klinis :: sedasi dan kenaikan berat badan merupakan clue yang sering diuji.
-- [F. Mirtazapine] Pola yang mendukung :: paparan obat serotonergik + perubahan mental + hiperaktivitas otonom + temuan neuromuskular seperti clonus/hyperreflexia. Bedakan dengan NMS yang lebih khas dengan rigiditas berat dan kaitan dengan blokade dopamin.
-- [Ansiolitik & Sedatif-Hipnotik] barbiturat :: tertulis biasanya diekskresikan langsung
-- [Ansiolitik & Sedatif-Hipnotik] benzodiazepine :: metabolisme hepar CYP3A4; dan
-- [High-yield] Acute dystonia :: kontraksi otot spasmodik, tortikolis, deviasi mata; biasanya muncul dini
-- [High-yield] Akathisia :: rasa gelisah dan tidak mampu diam
-- [High-yield] Drug-induced parkinsonism :: tremor, rigiditas, bradikinesia
-- [High-yield] Tardive dyskinesia :: gerakan involunter, sering orofasial, terutama setelah paparan kronis
-- [High-yield] Pola klasik :: demam, rigiditas berat, perubahan status mental, instabilitas otonom, dan peningkatan creatine kinase. Ini adalah keadaan gawat darurat
-- [High-yield] Jawaban pola :: drug-induced parkinsonism sebagai EPS akibat blokade dopamin nigrostriatal
-- [High-yield] Jawaban pola :: neuroleptic malignant syndrome
-- [High-yield] Jawaban pola :: peningkatan prolaktin akibat blokade D2 tuberoinfundibular
-- [High-yield] Jawaban pola :: adverse metabolic effect dari antipsikotik atypical tertentu
-- [High-yield] Jawaban pola :: serotonin syndrome
-- [High-yield] Jawaban pola :: toksisitas TCA; efek kardiak adalah red flag utama
-- [High-yield] Jawaban pola :: hypertensive crisis akibat interaksi tyramine–MAOI
-- [High-yield] Jawaban pola :: benzodiazepine withdrawal
-- [High-yield] Hipotesis dopaminergik :: hiperaktivasi D2
-- [High-yield] Hipotesis glutamat :: hipofungsi NMDA
-- [High-yield] Hipotesis monoaminergik :: defisiensi 5-HT, NE, dan dopamin
-- [High-yield] Haloperidol :: typical antipsychotic yang kuat diasosiasikan dengan EPS
-- [High-yield] Blokade D2 tuberoinfundibular :: prolaktin meningkat
-- [High-yield] MAOI + tyramine :: risiko krisis hipertensi
-- [High-yield] Serotonin syndrome :: pikirkan clonus dan hyperreflexia pada konteks serotonergik
-- [High-yield] Buspirone :: partial agonist 5-HT1A dan onsetnya lebih lambat daripada benzodiazepine
-- [High-yield] NMS :: demam + rigiditas berat + perubahan mental/autonomik; serotonin syndrome lebih khas dengan clonus/hyperreflexia
-- [Dasar Neurobiologi Gangguan Psikiatri] Untuk psikosis, terdapat tiga hipotesis … :: • hipotesis serotoninergik: hiperaktivasi 5-HT2A dan 5-HT
-  • hipotesis dopaminergik: hiperaktivasi D2; dan
-  • hipotesis glutamat: hipofungsi NMDA
-- [Dasar Neurobiologi Gangguan Psikiatri] Untuk gangguan mood … :: • hipotesis monoaminergik: defisiensi 5-HT, norepinefrin (NE), dan dopamin (D)
-  • hipotesis reseptor: upregulasi reseptor; dan
-  • hipotesis neuroprogresi: perubahan neuron yang progresif
-- [Ansiolitik & Sedatif-Hipnotik] Klasifikasi yang terbaca mencakup … :: • barbiturat
-  • benzodiazepine
+- [Dasar Neurobiologi Gangguan Psikiatri] Apa yang dimaksud dengan hipotesis serotoninergik pada Dasar Neurobiologi Gangguan Psikiatri? :: Hiperaktivasi 5-HT2A dan 5-HT
+- [Dasar Neurobiologi Gangguan Psikiatri] Apa yang dimaksud dengan hipotesis dopaminergik pada Dasar Neurobiologi Gangguan Psikiatri? :: Hiperaktivasi D2; dan
+- [Dasar Neurobiologi Gangguan Psikiatri] Apa yang dimaksud dengan hipotesis monoaminergik pada Dasar Neurobiologi Gangguan Psikiatri? :: Defisiensi 5-HT, norepinefrin (NE), dan dopamin (D)
+- [Dasar Neurobiologi Gangguan Psikiatri] Apa yang dimaksud dengan hipotesis reseptor pada Dasar Neurobiologi Gangguan Psikiatri? :: Upregulasi reseptor; dan
+- [Dasar Neurobiologi Gangguan Psikiatri] Apa yang dimaksud dengan hipotesis neuroprogresi pada Dasar Neurobiologi Gangguan Psikiatri? :: Perubahan neuron yang progresif.
+- [Antipsikotik: Prinsip Umum & Farmakokinetik] Pada Antipsikotik: Prinsip Umum & Farmakokinetik, apa absorpsinya? :: Kebanyakan mudah diabsorpsi, tetapi tidak complete.
+- [Antipsikotik: Prinsip Umum & Farmakokinetik] Pada Antipsikotik: Prinsip Umum & Farmakokinetik, apa distribusinya? :: Kebanyakan antipsikotik bersifat lipid soluble dan protein binding sehingga terdistribusi luas.
+- [Antipsikotik: Prinsip Umum & Farmakokinetik] Pada Antipsikotik: Prinsip Umum & Farmakokinetik, apa metabolismenya? :: Metabolisme di liver oleh CYP2D6, CYP1A2, dan CYP3A4.
+- [Antipsikotik typical / generasi pertama] Jelaskan: Contoh yang sering diuji. :: Haloperidol dan chlorpromazine.
+- [Antipsikotik typical / generasi pertama] Pada Antipsikotik typical / generasi pertama, apa pola mekanismenya? :: Antagonisme D2 relatif dominan.
+- [Antipsikotik typical / generasi pertama] Pada Antipsikotik typical / generasi pertama, apa konsekuensi high-yieldnya? :: EPS dan hiperprolaktinemia lebih menonjol, terutama pada obat berpotensi tinggi seperti haloperidol.
+- [Selective serotonin reuptake inhibitors (SSRI)] Pada Selective serotonin reuptake inhibitors (SSRI), apa mekanismenya? :: Menghambat serotonin transporter (SERT) sehingga transmisi serotonin meningkat.
+- [Selective serotonin reuptake inhibitors (SSRI)] Pada Selective serotonin reuptake inhibitors (SSRI), apa efek samping high-yieldnya? :: Gangguan gastrointestinal, disfungsi seksual, gangguan tidur, dan serotonin syndrome bila beban serotonergik berlebihan.
+- [Serotonin–norepinephrine reuptake inhibitors (SNRI)] Pada Serotonin–norepinephrine reuptake inhibitors (SNRI), apa mekanismenya? :: Menghambat reuptake 5-HT dan NE.
+- [Tricyclic antidepressants (TCA)] Pada Tricyclic antidepressants (TCA) (Antidepresan), apa mekanisme utamanya? :: Menghambat reuptake 5-HT dan NE, tetapi juga memiliki aktivitas pada reseptor muskarinik, histamin H1, dan α1.
+- [Tricyclic antidepressants (TCA)] Pada Tricyclic antidepressants (TCA) (Antidepresan), apa efek sampingnya? :: Mulut kering, konstipasi, retensi urin, sedasi, hipotensi ortostatik. Overdosis dapat menyebabkan kardiotoksisitas dan aritmia.
+- [Monoamine oxidase inhibitors (MAOI)] Pada Monoamine oxidase inhibitors (MAOI), apa mekanismenya? :: Menghambat metabolisme monoamin.
+- [Monoamine oxidase inhibitors (MAOI)] Pada Monoamine oxidase inhibitors (MAOI), apa pola soalnya? :: Kombinasi MAOI dengan makanan kaya tyramine dapat memicu krisis hipertensi; kombinasi dengan obat serotonergik meningkatkan risiko toksisitas serotonin.
+- [Bupropion] Pada Bupropion (Antidepresan), apa mekanismenya? :: Meningkatkan transmisi norepinefrin dan dopamin melalui hambatan reuptake.
+- [Bupropion] Apa yang dimaksud dengan Poin pembeda pada Bupropion (Antidepresan)? :: Cenderung lebih sedikit menimbulkan disfungsi seksual dibanding banyak SSRI, tetapi dapat menurunkan ambang kejang.
+- [Mirtazapine] Pada Mirtazapine (Antidepresan), apa mekanisme utamanya? :: Antagonisme reseptor α2 presinaptik dengan peningkatan pelepasan NE dan 5-HT.
+- [Mirtazapine] Pada Mirtazapine (Antidepresan), apa pola klinisnya? :: Sedasi dan kenaikan berat badan merupakan clue yang sering diuji.
+- [Mirtazapine] Jelaskan Pola yang mendukung dalam konteks Mirtazapine (Antidepresan). :: Paparan obat serotonergik + perubahan mental + hiperaktivitas otonom + temuan neuromuskular seperti clonus/hyperreflexia. Bedakan dengan NMS yang lebih khas dengan rigiditas berat dan kaitan dengan blokade dopamin.
+- [Ansiolitik & Sedatif-Hipnotik] Apa yang dimaksud dengan barbiturat pada Ansiolitik & Sedatif-Hipnotik? :: Tertulis biasanya diekskresikan langsung
+- [Ansiolitik & Sedatif-Hipnotik] Apa yang dimaksud dengan benzodiazepine pada Ansiolitik & Sedatif-Hipnotik? :: Metabolisme hepar CYP3A4; dan
+- [Ansiolitik & Sedatif-Hipnotik] Apa yang dimaksud dengan newer drugs pada Ansiolitik & Sedatif-Hipnotik? :: Metabolisme hepar CYP3A4.
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Acute dystonia? :: Kontraksi otot spasmodik, tortikolis, deviasi mata; biasanya muncul dini
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Akathisia? :: Rasa gelisah dan tidak mampu diam
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Drug-induced parkinsonism? :: Tremor, rigiditas, bradikinesia
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Tardive dyskinesia? :: Gerakan involunter, sering orofasial, terutama setelah paparan kronis
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa pola klasik pada Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)? :: Demam, rigiditas berat, perubahan status mental, instabilitas otonom, dan peningkatan creatine kinase. Ini adalah keadaan gawat darurat
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Jawaban pola? :: Drug-induced parkinsonism sebagai EPS akibat blokade dopamin nigrostriatal
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Hipotesis dopaminergik? :: Hiperaktivasi D2
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Hipotesis glutamat? :: Hipofungsi NMDA
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Hipotesis monoaminergik? :: Defisiensi 5-HT, NE, dan dopamin
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang dimaksud dengan Haloperidol? :: Typical antipsychotic yang kuat diasosiasikan dengan EPS
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diingat tentang Blokade D2 tuberoinfundibular? :: Prolaktin meningkat
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diingat tentang MAOI + tyramine? :: Risiko krisis hipertensi
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang perlu diketahui tentang Serotonin syndrome? :: Pikirkan clonus dan hyperreflexia pada konteks serotonergik
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang dimaksud dengan Buspirone? :: Partial agonist 5-HT1A dan onsetnya lebih lambat daripada benzodiazepine
+- [Farmakologi Psikiatri (Antipsikotik, Antidepresan, Ansiolitik)] Apa yang dimaksud dengan NMS? :: Demam + rigiditas berat + perubahan mental/autonomik; serotonin syndrome lebih khas dengan clonus/hyperreflexia
+- [Ansiolitik & Sedatif-Hipnotik] Sebutkan klasifikasi yang terbaca pada Ansiolitik & Sedatif-Hipnotik. :: • Barbiturat
+  • Benzodiazepine
   • Z-drugs: zolpidem, zaleplon, eszopiclone; dan
-  • newer drugs yang mencantumkan ramelteon dan tasimelteon
-- [Ansiolitik & Sedatif-Hipnotik] Farmakokinetik yang tertulis … :: • barbiturat: tertulis biasanya diekskresikan langsung
-  • benzodiazepine: metabolisme hepar CYP3A4; dan
-  • newer drugs: metabolisme hepar CYP3A4
-- [Cara Membaca Soal Farmakologi Psikiatri] Gunakan empat langkah … :: • Tentukan target masalah: psikosis, depresi, kecemasan, insomnia, atau efek samping obat
+  • Newer drugs yang mencantumkan ramelteon dan tasimelteon
+- [Ansiolitik & Sedatif-Hipnotik] Sebutkan farmakokinetik pada Ansiolitik & Sedatif-Hipnotik. :: • Barbiturat: tertulis biasanya diekskresikan langsung
+  • Benzodiazepine: metabolisme hepar CYP3A4; dan
+  • Newer drugs: metabolisme hepar CYP3A4
+- [Cara Membaca Soal Farmakologi Psikiatri] Sebutkan urutan atau langkah pada Cara Membaca Soal Farmakologi Psikiatri? :: • Tentukan target masalah: psikosis, depresi, kecemasan, insomnia, atau efek samping obat
   • Kenali kelas obat dan neurotransmiter dominan
   • Cari clue efek samping yang sangat khas
   • Cek interaksi, kontraindikasi, dan kebutuhan monitoring
-- [Dasar Neurobiologi Gangguan Psikiatri] Exam pearl: Dasar Neurobiologi Gangguan Psikiatri :: Jika soal menyebut psikosis lalu menanyakan target neurotransmiter, ingat tiga poros: serotonin, dopamin, dan glutamat. Untuk gangguan mood, kata kunci utama adalah monoamin—5-HT, NE, dan dopamin.
-- [Antipsikotik atypical / generasi kedua] Pola banding typical vs atypical :: Typical: pikirkan D2 kuat → EPS/prolaktin. Atypical: pikirkan D2 + 5-HT2A → EPS umumnya lebih ringan, tetapi efek metabolik menjadi perhatian penting pada beberapa agen.
-- [6. Clozapine] Exam pearl: 6. Clozapine :: Pasien memakai antipsikotik lalu mengalami demam tinggi + rigiditas berat + instabilitas otonom → jangan berhenti pada “EPS”; pikirkan NMS.
-- [B. Serotonin–norepinephrine reuptake inhibitors (SNRI)] Poin penting: B. Serotonin–norepinephrine reuptake inhibitors (SNRI) :: Selain efek serotonergik, tekanan darah dapat meningkat pada beberapa pasien, terutama dengan venlafaxine.
-- [Ansiolitik & Sedatif-Hipnotik] Pola banding benzodiazepine vs barbiturat vs buspirone :: Benzodiazepine: GABA-A, frequency ↑, onset relatif cepat, sedasi dan dependence menjadi perhatian. Barbiturat: GABA-A, duration ↑, depresi SSP lebih berat pada toksisitas. Buspirone: 5-HT1A partial agonist, onset lebih lambat, bukan obat untuk sedasi akut cepat.
+- [Dasar Neurobiologi Gangguan Psikiatri] Apa poin high-yield (pearl) tentang Dasar Neurobiologi Gangguan Psikiatri? :: Jika soal menyebut psikosis lalu menanyakan target neurotransmiter, ingat tiga poros: serotonin, dopamin, dan glutamat. Untuk gangguan mood, kata kunci utama adalah monoamin—5-HT, NE, dan dopamin.
+- [Antipsikotik atypical / generasi kedua] Pola banding typical vs atypical: apa isi atau ringkasannya? :: Typical: pikirkan D2 kuat → EPS/prolaktin. Atypical: pikirkan D2 + 5-HT2A → EPS umumnya lebih ringan, tetapi efek metabolik menjadi perhatian penting pada beberapa agen.
+- [Clozapine] Apa poin high-yield (pearl) tentang Clozapine (Efek Samping Antipsikotik yang High-Yield)? :: Pasien memakai antipsikotik lalu mengalami demam tinggi + rigiditas berat + instabilitas otonom → jangan berhenti pada “EPS”; pikirkan NMS.
+- [Serotonin–norepinephrine reuptake inhibitors (SNRI)] Apa poin high-yield (pearl) tentang Serotonin–norepinephrine reuptake inhibitors (SNRI)? :: Selain efek serotonergik, tekanan darah dapat meningkat pada beberapa pasien, terutama dengan venlafaxine.
+- [Ansiolitik & Sedatif-Hipnotik] Pola banding benzodiazepine vs barbiturat vs buspirone: apa isi atau ringkasannya? :: Benzodiazepine: GABA-A, frequency ↑, onset relatif cepat, sedasi dan dependence menjadi perhatian. Barbiturat: GABA-A, duration ↑, depresi SSP lebih berat pada toksisitas. Buspirone: 5-HT1A partial agonist, onset lebih lambat, bukan obat untuk sedasi akut cepat.

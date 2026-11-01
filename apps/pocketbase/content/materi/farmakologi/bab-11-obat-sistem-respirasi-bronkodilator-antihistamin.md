@@ -385,61 +385,89 @@ Bronkodilator dibagi menjadi β₂-agonis, antimuskarinik, dan metilxantin. Salb
 
 ## Flashcard {kartu}
 
-- [β₂-Agonis] Mekanisme salbutamol :: β₂ reseptor → aktivasi protein Gs → adenilat siklase meningkat → cAMP meningkat → aktivasi protein kinase A → Ca²⁺ intrasel menurun → relaksasi otot polos bronkus.
-- [Antimuskarinik: SAMA dan LAMA] Onset :: sekitar 15–30 menit.
-- [Antimuskarinik: SAMA dan LAMA] Indikasi :: PPOK dan eksaserbasi asma.
-- [Antimuskarinik: SAMA dan LAMA] Indikasi :: PPOK dan asma berat sebagai terapi tambahan.
-- [Histamin dan Reseptornya] lokasi :: bronkus, pembuluh darah, SSP
-- [Histamin dan Reseptornya] efek :: vasodilatasi, bronkokonstriksi, edema, gatal, nyeri.
-- [H2] efek :: meningkatkan sekresi HCl.
-- [H3] efek :: mengatur pelepasan neurotransmiter.
-- [H4] efek :: mengatur migrasi eosinofil dan inflamasi.
-- [Antihistamin H1 Generasi Pertama] Mekanisme :: H1 generasi pertama merupakan inverse agonist reseptor H1. Obat menghambat efek histamin berupa vasodilatasi, peningkatan permeabilitas kapiler, bronkokonstriksi, dan pruritus. Karena mudah melewati BBB, obat juga menghambat H1 di SSP sehingga menyebabkan sedasi.
-- [Antihistamin H1 Generasi Kedua] Mekanisme :: inverse agonist reseptor H1.
-- [Antagonis H2: Pembeda Cepat] Mekanisme :: blok reseptor H2 pada sel parietal lambung → cAMP menurun → sekresi HCl menurun.
-- [High-yield] alkohol :: sedasi meningkat
-- [High-yield] benzodiazepine :: depresi SSP meningkat
-- [High-yield] antidepresan trisiklik :: efek antikolinergik meningkat
-- [High-yield] MAOI :: memperpanjang efek antihistamin
-- [High-yield] erythromycin :: meningkatkan kadar loratadine
-- [High-yield] rifampicin :: menurunkan efektivitas
-- [High-yield] antasida Al/Mg :: menurunkan absorpsi fexofenadine
-- [High-yield] Serangan asma akut + bronkospasme :: salbutamol/terbutalin
-- [High-yield] LABA pada pasien asma :: jangan monoterapi; kombinasikan dengan ICS
-- [High-yield] PPOK + perlu blok reseptor M3 :: ipratropium
-- [High-yield] Asma kronis + kontrol inflamasi :: ICS, bukan bronkodilator langsung
-- [High-yield] Asma alergi + antagonis CysLT1 :: montelukast/zafirlukast
-- [High-yield] Motion sickness + antiemetik + sedasi :: antihistamin H1 generasi pertama
-- [High-yield] Lansia + antihistamin generasi pertama :: waspadai delirium, jatuh, dan kebingungan
-- [High-yield] Cetirizine :: generasi kedua tetapi masih dapat sedikit menyebabkan kantuk
-- [High-yield] Fexofenadine + antasida Al/Mg :: absorpsi dapat menurun
-- [High-yield] Efek β₂-agonis :: tremor, takikardia, hipokalemia, hiperglikemia, palpitasi
-- [High-yield] Teofilin/aminofilin :: metilxantin
-- [High-yield] ICS :: antiinflamasi utama pada asma, bukan bronkodilator
-- [High-yield] Contoh ICS :: budesonide, beclomethasone, fluticasone, ciclesonide
-- [High-yield] Contoh generasi pertama :: diphenhydramine, chlorpheniramine, promethazine, dimenhydrinate
-- [High-yield] Contoh generasi kedua :: loratadine, cetirizine, levocetirizine, fexofenadine, desloratadine
-- [Bronkodilator: Definisi dan Tujuan] Tiga golongan besar … :: • β₂-agonis — salbutamol, terbutalin, formoterol, salmeterol
-  • antimuskarinik — ipratropium, tiotropium
-  • metilxantin — teofilin, aminofilin
-- [β₂-Agonis] Efek samping β₂-agonis … :: • tremor — aktivasi β₂ pada otot rangka
-  • takikardia — efek β₁ tidak langsung/refleks
-  • hipokalemia — perpindahan K⁺ ke dalam sel
-  • hiperglikemia — peningkatan glikogenolisis
-  • palpitasi — efek simpatomimetik
-- [Antiinflamasi dalam Konteks Asma] Antagonis reseptor leukotrien … :: • montelukast
-  • zafirlukast
-- [Antiinflamasi dalam Konteks Asma] Pola terapi asma akut yang ditulis … :: • oksigen 40–60% dengan target saturasi 93–95%
-  • kortikosteroid oral, contoh prednisolon 1 mg/kgBB
-  • salbutamol/terbutalin melalui nebulisasi atau inhalasi
-  • bila respons kurang, ipratropium nebulizer ditambah aminofilin IV atau β₂-agonis IV
-  • adrenalin dapat menjadi pengganti β₂-agonis bila diperlukan
-- [Antagonis H2: Pembeda Cepat] Efek samping khusus cimetidine … :: • ginekomastia
-  • impotensi
-  • galaktorea
-- [Bronkodilator: Definisi dan Tujuan] Exam pearl: Bronkodilator: Definisi dan Tujuan :: Jika soal bertanya “obat yang langsung melebarkan bronkus”, pikirkan tiga jalur utama: β₂-agonis, blokade muskarinik, atau metilxantin. ICS bukan bronkodilator; fungsinya mengendalikan inflamasi kronis saluran napas.
-- [β₂-Agonis] Poin penting: β₂-Agonis :: LABA tidak boleh digunakan sebagai monoterapi pada asma; kombinasi dengan inhaled corticosteroid (ICS).
-- [β₂-Agonis] Exam pearl: β₂-Agonis :: Salbutamol + pertanyaan mekanisme → β₂ → Gs → adenilat siklase ↑ → cAMP ↑ → Ca²⁺ intrasel ↓ → bronkodilatasi.
-- [Antimuskarinik: SAMA dan LAMA] Pola banding cepat: Antimuskarinik: SAMA dan LAMA :: Salbutamol → β₂-agonis → cAMP meningkat. Ipratropium → blok M3. Tiotropium → LAMA dengan durasi ≥24 jam.
-- [Metilxantin: Teofilin dan Aminofilin] Exam pearl: Metilxantin: Teofilin dan Aminofilin :: Teofilin + “indeks terapi sempit” → ingat kebutuhan monitoring. Teofilin bukan β₂-agonis dan bukan antimuskarinik; mekanisme adalah inhibisi PDE dan antagonisme reseptor adenosin.
-- [Antihistamin H1 Generasi Kedua] Exam pearl: Antihistamin H1 Generasi Kedua :: Generasi I → menembus BBB → sedasi + efek antimuskarinik. Generasi II → penetrasi BBB jauh lebih rendah → sedasi lebih minimal dan durasi lebih panjang.
+- [β₂-Agonis] Pada β₂-Agonis (Bronkodilator: Definisi dan Tujuan), apa mekanisme salbutamolnya? :: Β₂ reseptor → aktivasi protein Gs → adenilat siklase meningkat → cAMP meningkat → aktivasi protein kinase A → Ca²⁺ intrasel menurun → relaksasi otot polos bronkus.
+- [Antimuskarinik: SAMA dan LAMA] Pada Antimuskarinik: SAMA dan LAMA, apa onsetnya? :: Sekitar 15–30 menit.
+- [Antimuskarinik: SAMA dan LAMA] Pada Antimuskarinik: SAMA dan LAMA, apa indikasinya? :: PPOK dan eksaserbasi asma.
+- [Histamin dan Reseptornya] Pada Histamin dan Reseptornya, apa lokasinya? :: Bronkus, pembuluh darah, SSP
+- [Histamin dan Reseptornya] Pada Histamin dan Reseptornya, apa efeknya? :: Vasodilatasi, bronkokonstriksi, edema, gatal, nyeri.
+- [H2] Pada H2 (Histamin dan Reseptornya), apa efeknya? :: Meningkatkan sekresi HCl.
+- [H3] Pada H3 (Histamin dan Reseptornya), apa efeknya? :: Mengatur pelepasan neurotransmiter.
+- [H4] Pada H4 (Histamin dan Reseptornya), apa efeknya? :: Mengatur migrasi eosinofil dan inflamasi.
+- [Antihistamin H1 Generasi Pertama] Pada Antihistamin H1 Generasi Pertama, apa mekanismenya? :: H1 generasi pertama merupakan inverse agonist reseptor H1. Obat menghambat efek histamin berupa vasodilatasi, peningkatan permeabilitas kapiler, bronkokonstriksi, dan pruritus. Karena mudah melewati BBB, obat juga menghambat H1 di SSP sehingga menyebabkan sedasi.
+- [Antihistamin H1 Generasi Kedua] Pada Antihistamin H1 Generasi Kedua, apa mekanismenya? :: Inverse agonist reseptor H1.
+- [Antagonis H2: Pembeda Cepat] Pada Antagonis H2: Pembeda Cepat, apa mekanismenya? :: Blok reseptor H2 pada sel parietal lambung → cAMP menurun → sekresi HCl menurun.
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diingat tentang alkohol pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Sedasi meningkat
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diingat tentang benzodiazepine pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Depresi SSP meningkat
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diingat tentang antidepresan trisiklik pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Efek antikolinergik meningkat
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diingat tentang MAOI pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Memperpanjang efek antihistamin
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diingat tentang erythromycin pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Meningkatkan kadar loratadine
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diingat tentang rifampicin pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Menurunkan efektivitas
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diingat tentang antasida Al/Mg pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Menurunkan absorpsi fexofenadine
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diingat tentang β₂-agonis + tremor/palpitasi/hipokalemia pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Efek simpatomimetik
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa jawaban atau kesimpulan untuk petunjuk berikut: LABA pada pasien asma? :: Jangan monoterapi; kombinasikan dengan ICS
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Perlu antimuskarinik kerja ≥24 jam? :: Tiotropium
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Obat bronkodilator + inhibisi PDE + indeks terapi sempit? :: Teofilin
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Asma alergi + antagonis CysLT1? :: Montelukast/zafirlukast
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Motion sickness + antiemetik + sedasi? :: Antihistamin H1 generasi pertama
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Lansia + antihistamin generasi pertama? :: Waspadai delirium, jatuh, dan kebingungan
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diingat tentang Cetirizine pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Generasi kedua tetapi masih dapat sedikit menyebabkan kantuk
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Fexofenadine + antasida Al/Mg? :: Absorpsi dapat menurun
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diketahui tentang Tiga golongan utama pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Β₂-agonis, antimuskarinik, metilxantin
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang dimaksud dengan Teofilin/aminofilin pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Metilxantin
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diingat tentang Teofilin menghambat PDE pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: CAMP ↑
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diketahui tentang Contoh ICS pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Budesonide, beclomethasone, fluticasone, ciclesonide
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang dimaksud dengan Montelukast/zafirlukast pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Antagonis CysLT1
+- [Obat Sistem Respirasi (Bronkodilator, Antihistamin)] Apa yang perlu diketahui tentang Contoh generasi kedua pada Obat Sistem Respirasi (Bronkodilator, Antihistamin)? :: Loratadine, cetirizine, levocetirizine, fexofenadine, desloratadine
+- [Bronkodilator: Definisi dan Tujuan] Sebutkan tujuan pada Bronkodilator: Definisi dan Tujuan. :: • Mengurangi bronkospasme
+  • Mengurangi sesak napas
+  • Mengurangi eksaserbasi
+  • Meningkatkan toleransi aktivitas
+- [Bronkodilator: Definisi dan Tujuan] Sebutkan tiga golongan besar pada Bronkodilator: Definisi dan Tujuan. :: • Β₂-agonis — salbutamol, terbutalin, formoterol, salmeterol
+  • Antimuskarinik — ipratropium, tiotropium
+  • Metilxantin — teofilin, aminofilin
+- [β₂-Agonis] Sebutkan efek samping β₂-agonis pada β₂-Agonis (Bronkodilator: Definisi dan Tujuan). :: • Tremor — aktivasi β₂ pada otot rangka
+  • Takikardia — efek β₁ tidak langsung/refleks
+  • Hipokalemia — perpindahan K⁺ ke dalam sel
+  • Hiperglikemia — peningkatan glikogenolisis
+  • Palpitasi — efek simpatomimetik
+- [Antiinflamasi dalam Konteks Asma] Sebutkan poin-poin penting tentang Antagonis reseptor leukotrien. :: • Montelukast
+  • Zafirlukast
+- [Antiinflamasi dalam Konteks Asma] Sebutkan poin-poin penting tentang Pola terapi asma akut yang ditulis. :: • Oksigen 40–60% dengan target saturasi 93–95%
+  • Kortikosteroid oral, contoh prednisolon 1 mg/kgBB
+  • Salbutamol/terbutalin melalui nebulisasi atau inhalasi
+  • Bila respons kurang, ipratropium nebulizer ditambah aminofilin IV atau β₂-agonis IV
+  • Adrenalin dapat menjadi pengganti β₂-agonis bila diperlukan
+- [Antihistamin H1 Generasi Pertama] Sebutkan efek tambahan pada Antihistamin H1 Generasi Pertama. :: • Antimuskarinik
+  • Antiemetik
+  • Antitusif
+- [Antihistamin H1 Generasi Pertama] Sebutkan poin-poin penting tentang Clinical use. :: • Rhinitis alergi
+  • Urtikaria
+  • Konjungtivitis alergi
+  • Motion sickness
+  • Vertigo
+  • Mual muntah
+  • Insomnia, terutama diphenhydramine
+  • Pruritus
+- [Antihistamin H1 Generasi Pertama] Sebutkan efek samping pada Antihistamin H1 Generasi Pertama. :: • Sedasi dan mengantuk
+  • Mulut kering
+  • Retensi urin
+  • Konstipasi
+  • Penglihatan kabur
+  • Hipotensi ortostatik
+  • Gangguan konsentrasi
+- [Antihistamin H1 Generasi Kedua] Sebutkan efek samping pada Antihistamin H1 Generasi Kedua. :: • Sakit kepala
+  • Mulut kering
+  • Fatigue
+  • Sedikit mengantuk, terutama cetirizine
+- [Antagonis H2: Pembeda Cepat] Sebutkan poin-poin penting tentang Antagonis H2. :: • Ranitidine
+  • Cimetidine
+  • Famotidine
+  • Nizatidine
+- [Antagonis H2: Pembeda Cepat] Sebutkan efek samping khusus cimetidine pada Antagonis H2: Pembeda Cepat. :: • Ginekomastia
+  • Impotensi
+  • Galaktorea
+- [Bronkodilator: Definisi dan Tujuan] Apa poin high-yield (pearl) tentang Bronkodilator: Definisi dan Tujuan? :: Jika soal bertanya “obat yang langsung melebarkan bronkus”, pikirkan tiga jalur utama: β₂-agonis, blokade muskarinik, atau metilxantin. ICS bukan bronkodilator; fungsinya mengendalikan inflamasi kronis saluran napas.
+- [β₂-Agonis] Apa poin high-yield (pearl) tentang β₂-Agonis (Bronkodilator: Definisi dan Tujuan)? :: LABA tidak boleh digunakan sebagai monoterapi pada asma; kombinasi dengan inhaled corticosteroid (ICS).
+- [Antimuskarinik: SAMA dan LAMA] Pola banding cepat: apa isi atau ringkasannya? :: Salbutamol → β₂-agonis → cAMP meningkat. Ipratropium → blok M3. Tiotropium → LAMA dengan durasi ≥24 jam.
+- [Metilxantin: Teofilin dan Aminofilin] Apa poin high-yield (pearl) tentang Metilxantin: Teofilin dan Aminofilin? :: Teofilin + “indeks terapi sempit” → ingat kebutuhan monitoring. Teofilin bukan β₂-agonis dan bukan antimuskarinik; mekanisme adalah inhibisi PDE dan antagonisme reseptor adenosin.
+- [Antihistamin H1 Generasi Kedua] Apa poin high-yield (pearl) tentang Antihistamin H1 Generasi Kedua? :: Generasi I → menembus BBB → sedasi + efek antimuskarinik. Generasi II → penetrasi BBB jauh lebih rendah → sedasi lebih minimal dan durasi lebih panjang.

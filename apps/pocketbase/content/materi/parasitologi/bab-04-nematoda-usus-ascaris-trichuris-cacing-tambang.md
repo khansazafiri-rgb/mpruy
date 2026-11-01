@@ -544,38 +544,40 @@ Jika melihat cacing dewasa:
 
 ## Flashcard {kartu}
 
-- [Konsep Dasar Nematoda Usus] Jebakan utama :: Ascaris dan hookworm sama-sama dapat melalui paru, tetapi rute masuknya berbeda. Ascaris masuk sebagai telur melalui mulut, sedangkan hookworm masuk sebagai larva melalui kulit.
-- [Trichuris — Manifestasi Klinis] Cara mengingat :: TRICHURIS → “TRI” = colon, chronic diarrhea, rectal prolapse.
-- [Hookworm — Ground Itch & Fase Paru] Pola klinis soal :: Berjalan tanpa alas kaki → lesi gatal di kaki → beberapa waktu kemudian batuk/eosinofilia → kemudian anemia = hookworm.
-- [Enterobius — Manifestasi Klinis] Clue soal paling khas :: Anak sulit tidur + menggaruk anus pada malam hari = Enterobius.
-- [Perbandingan Rute Transmisi] Ascaris :: Telur berembrio → tertelan → usus → hati → paru → tertelan kembali → usus.
-- [Perbandingan Rute Transmisi] Trichuris :: Telur berembrio → tertelan → berkembang terutama di kolon; tidak ada lung migration klasik.
-- [Perbandingan Rute Transmisi] Hookworm :: Larva filariform L3 → penetrasi kulit → paru → tertelan → usus.
-- [Perbandingan Rute Transmisi] Enterobius :: Telur → tertelan → kolon → betina keluar malam → telur perianal → autoinfeksi/kontak.
-- [Lung Migration — Siapa yang Lewat Paru?] Hookworm :: larva MENEMBUS KULIT dulu.
-- [Perbandingan Terapi Cepat] Ascaris :: Albendazole dosis tunggal sering cukup.
-- [Perbandingan Terapi Cepat] Trichuris :: Albendazole atau mebendazole biasanya diberikan beberapa hari.
-- [Perbandingan Terapi Cepat] Hookworm :: Albendazole dosis tunggal atau regimen mebendazole; koreksi anemia jika ada.
-- [Perbandingan Terapi Cepat] Enterobius :: Obat diulang 2 minggu + kontrol reinfeksi rumah tangga.
-- [High-yield] Vignette 1 :: Anak dengan distensi abdomen dan gambaran obstruksi, kemudian ditemukan cacing besar di usus → Ascaris
-- [High-yield] Vignette 2 :: Anak dengan diare kronik, tenesmus, anemia, dan rectal prolapse → Trichuris berat
-- [High-yield] Vignette 3 :: Petani sering berjalan tanpa alas kaki, awalnya gatal di kaki, kemudian batuk sementara, akhirnya anemia mikrositik hipokrom → hookworm
-- [High-yield] Vignette 4 :: Anak sekolah mengalami pruritus ani malam hari dan sulit tidur → Enterobius; lakukan tape test pagi hari
-- [High-yield] Ascaris, Trichuris, dan hookworm :: soil-transmitted helminths
-- [High-yield] Löffler syndrome :: pulmonary eosinophilia saat migrasi larva; klasik pada Ascaris
-- [High-yield] Komplikasi mekanik khas Ascaris :: intestinal obstruction dan migrasi bilier
-- [High-yield] Trichuris egg :: lemon/barrel shaped + bipolar plugs
-- [High-yield] Hookworm stadium infektif :: filariform larva L3
-- [High-yield] Hookworm masuk lewat kulit; rhabditiform :: feeding larva
-- [High-yield] Hookworm menyebabkan kehilangan darah kronik :: iron deficiency anemia
-- [High-yield] Diagnosis Enterobius :: tape test pagi sebelum mandi/BAB
-- [High-yield] Enterobius egg :: planoconvex / D-shaped
-- [High-yield] Cara tercepat mengerjakan soal :: identifikasi RUTE MASUK + MORFOLOGI TELUR + KOMPLIKASI KLASIK
-- [High-yield] ASCARIS :: telan telur → paru → usus; Löffler; obstruksi/bilier; telur mamillated
-- [High-yield] TRICHURIS :: telan telur → kolon; bipolar plugs; diare kronik + rectal prolapse
-- [High-yield] HOOKWORM :: L3 menembus kulit → paru → usus; ground itch; anemia defisiensi besi; telur thin-shelled
-- [High-yield] ENTEROBIUS :: telur tertelan → kolon → telur perianal malam hari; pruritus ani; tape test; terapi ulang 2 minggu
-- [Ascaris — Siklus Hidup] Urutan yang wajib hafal … :: • Telur keluar bersama feses
+- [Trichuris — Manifestasi Klinis] Apa yang dimaksud dengan Cara mengingat pada Trichuris — Manifestasi Klinis? :: TRICHURIS → “TRI” = colon, chronic diarrhea, rectal prolapse.
+- [Hookworm — Ground Itch & Fase Paru] Jelaskan Pola klinis soal dalam konteks Hookworm — Ground Itch & Fase Paru. :: Berjalan tanpa alas kaki → lesi gatal di kaki → beberapa waktu kemudian batuk/eosinofilia → kemudian anemia = hookworm.
+- [Perbandingan Rute Transmisi] Apa yang dimaksud dengan Ascaris pada Perbandingan Rute Transmisi? :: Telur berembrio → tertelan → usus → hati → paru → tertelan kembali → usus.
+- [Perbandingan Rute Transmisi] Apa yang dimaksud dengan Trichuris pada Perbandingan Rute Transmisi? :: Telur berembrio → tertelan → berkembang terutama di kolon; tidak ada lung migration klasik.
+- [Perbandingan Rute Transmisi] Apa yang dimaksud dengan Hookworm pada Perbandingan Rute Transmisi? :: Larva filariform L3 → penetrasi kulit → paru → tertelan → usus.
+- [Perbandingan Rute Transmisi] Apa yang dimaksud dengan Enterobius pada Perbandingan Rute Transmisi? :: Telur → tertelan → kolon → betina keluar malam → telur perianal → autoinfeksi/kontak.
+- [Lung Migration — Siapa yang Lewat Paru?] Apa yang dimaksud dengan Hookworm pada Lung Migration — Siapa yang Lewat Paru? :: Larva MENEMBUS KULIT dulu.
+- [Perbandingan Terapi Cepat] Apa yang dimaksud dengan Ascaris pada Perbandingan Terapi Cepat? :: Albendazole dosis tunggal sering cukup.
+- [Perbandingan Terapi Cepat] Apa yang dimaksud dengan Trichuris pada Perbandingan Terapi Cepat? :: Albendazole atau mebendazole biasanya diberikan beberapa hari.
+- [Perbandingan Terapi Cepat] Apa yang dimaksud dengan Hookworm pada Perbandingan Terapi Cepat? :: Albendazole dosis tunggal atau regimen mebendazole; koreksi anemia jika ada.
+- [Perbandingan Terapi Cepat] Apa yang dimaksud dengan Enterobius pada Perbandingan Terapi Cepat? :: Obat diulang 2 minggu + kontrol reinfeksi rumah tangga.
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang perlu diketahui tentang Vignette 1 pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Anak dengan distensi abdomen dan gambaran obstruksi, kemudian ditemukan cacing besar di usus → Ascaris
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang perlu diketahui tentang Vignette 2 pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Anak dengan diare kronik, tenesmus, anemia, dan rectal prolapse → Trichuris berat
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang perlu diketahui tentang Vignette 3 pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Petani sering berjalan tanpa alas kaki, awalnya gatal di kaki, kemudian batuk sementara, akhirnya anemia mikrositik hipokrom → hookworm
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang perlu diketahui tentang Vignette 4 pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Anak sekolah mengalami pruritus ani malam hari dan sulit tidur → Enterobius; lakukan tape test pagi hari
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Ascaris, Trichuris, dan hookworm? :: Soil-transmitted helminths
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Löffler syndrome pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Pulmonary eosinophilia saat migrasi larva; klasik pada Ascaris
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Komplikasi mekanik khas Ascaris? :: Intestinal obstruction dan migrasi bilier
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Trichuris egg pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Lemon/barrel shaped + bipolar plugs
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Hookworm stadium infektif pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Filariform larva L3
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Hookworm masuk lewat kulit; rhabditiform? :: Feeding larva
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Hookworm menyebabkan kehilangan darah kronik? :: Iron deficiency anemia
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Diagnosis Enterobius pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Tape test pagi sebelum mandi/BAB
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan Enterobius egg pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Planoconvex / D-shaped
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang perlu diketahui tentang Cara tercepat mengerjakan soal pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Identifikasi RUTE MASUK + MORFOLOGI TELUR + KOMPLIKASI KLASIK
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan ASCARIS pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Telan telur → paru → usus; Löffler; obstruksi/bilier; telur mamillated
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan TRICHURIS pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Telan telur → kolon; bipolar plugs; diare kronik + rectal prolapse
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan HOOKWORM pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: L3 menembus kulit → paru → usus; ground itch; anemia defisiensi besi; telur thin-shelled
+- [Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)] Apa yang dimaksud dengan ENTEROBIUS pada Nematoda Usus (Ascaris, Trichuris, Cacing Tambang)? :: Telur tertelan → kolon → telur perianal malam hari; pruritus ani; tape test; terapi ulang 2 minggu
+- [Ascaris Lumbricoides — Morfologi] Sebutkan ciri dewasa pada Ascaris Lumbricoides — Morfologi. :: • Betina lebih besar daripada jantan
+  • Jantan memiliki ujung posterior melengkung
+  • Warna pucat putih-kekuningan
+  • Mulut memiliki tiga bibir
+- [Ascaris — Siklus Hidup] Sebutkan urutan yang wajib hafal pada Ascaris — Siklus Hidup. :: • Telur keluar bersama feses
   • Di lingkungan, telur berkembang menjadi telur berembrio yang infektif
   • Manusia menelan telur melalui makanan, air, atau tangan yang terkontaminasi
   • Larva menetas di usus halus
@@ -583,43 +585,53 @@ Jika melihat cacing dewasa:
   • Larva menembus alveolus, lalu naik melalui bronkiolus, bronkus, dan trakea
   • Larva tertelan kembali
   • Di usus halus, larva berkembang menjadi cacing dewasa
-- [Ascaris — Fase Paru & Löffler Syndrome] Gambaran yang dapat muncul … :: • batuk kering,
-  • sesak/wheezing,
-  • demam ringan,
-  • infiltrat paru sementara,
-  • eosinofilia perifer
-- [Ascaris — Fase Intestinal & Komplikasi] Ascaris juga dapat bermigrasi ke saluran lain dan menyebabkan … :: • obstruksi bilier,
-  • kolangitis,
-  • kolesistitis,
-  • pankreatitis,
-  • kadang migrasi ke appendix
-- [Ascaris — Diagnosis] Temuan lain yang dapat membantu … :: • cacing dewasa keluar melalui feses atau muntahan,
-  • eosinofilia terutama pada fase migrasi jaringan,
-  • imaging dapat membantu pada komplikasi bilier atau obstruksi
-- [Trichuris — Manifestasi Klinis] Infeksi berat, terutama pada anak, dapat menyebabkan … :: • nyeri abdomen,
-  • diare kronik,
-  • tenesmus,
-  • anemia,
-  • gangguan pertumbuhan,
-  • Trichuris dysentery syndrome
-- [Trichuris — Terapi] Regimen rujukan CDC untuk whipworm/trichuriasis … :: • Albendazole 400 mg oral sekali sehari selama 3 hari
+- [Ascaris — Terapi] Sebutkan poin-poin penting tentang Regimen rujukan CDC untuk ascariasis. :: • Albendazole 400 mg oral dosis tunggal
+  • Mebendazole 500 mg oral dosis tunggal ATAU 100 mg dua kali sehari selama 3 hari
+  • Ivermectin 150–200 mcg/kg oral dosis tunggal merupakan salah satu alternatif
+- [Trichuris Trichiura — Morfologi] Sebutkan ciri dewasa pada Trichuris Trichiura — Morfologi. :: • Bagian anterior panjang, sangat tipis, dan tertanam pada mukosa
+  • Bagian posterior lebih tebal
+  • Lokasi utama = sekum dan kolon asendens
+- [Trichuris — Diagnosis] Sebutkan poin-poin penting tentang Telur Trichuris. :: • Simetris
+  • Barrel/lemon shaped
+  • Bipolar plugs
+  • Warna kuning-cokelat
+- [Trichuris — Terapi] Sebutkan poin-poin penting tentang Regimen rujukan CDC untuk whipworm/trichuriasis. :: • Albendazole 400 mg oral sekali sehari selama 3 hari
   • Mebendazole 100 mg oral dua kali sehari selama 3 hari
   • Ivermectin 200 mcg/kg/hari selama 3 hari merupakan salah satu alternatif
-- [Hookworm — Spesies Penting] Perbedaan morfologi mulut … :: • Ancylostoma duodenale → TEETH
+- [Hookworm — Spesies Penting] Sebutkan poin-poin penting tentang Perbedaan morfologi mulut. :: • Ancylostoma duodenale → TEETH
   • Necator americanus → CUTTING PLATES
-- [Hookworm — Stadium Larva] Dua istilah larva sangat high-yield … :: • Rhabditiform larva → feeding stage; umumnya non-infektif
-  • Filariform larva (L3) → stadium INFEKTIF yang menembus kulit
-- [Hookworm — Terapi] Regimen rujukan CDC … :: • Albendazole 400 mg oral dosis tunggal
+- [Hookworm — Siklus Hidup] Sebutkan urutan atau langkah pada Hookworm — Siklus Hidup? :: • Telur keluar bersama feses
+  • Telur menetas di tanah menjadi larva rhabditiform
+  • Larva berkembang menjadi filariform L3
+  • Larva filariform menembus kulit, biasanya kaki yang kontak dengan tanah
+  • Larva masuk sirkulasi → jantung → paru
+  • Larva masuk alveoli → naik trakea → tertelan
+  • Cacing dewasa berkembang di usus halus dan melekat pada mukosa
+  • Telur diproduksi dan keluar melalui feses
+- [Hookworm — Terapi] Sebutkan poin-poin penting tentang Regimen rujukan CDC. :: • Albendazole 400 mg oral dosis tunggal
   • Mebendazole 500 mg oral dosis tunggal ATAU 100 mg dua kali sehari selama 3 hari
   • Pyrantel pamoate 11 mg/kg/hari, maksimal 1 g, selama 3 hari merupakan alternatif
-- [Lung Migration — Siapa yang Lewat Paru?] Tidak memiliki fase paru klasik pada siklus biasa … :: • Trichuris
-  • Enterobius
-- [Ascaris — Siklus Hidup] Mnemonic alur: Ascaris — Siklus Hidup :: MOUTH → GUT → LIVER → LUNG → THROAT → GUT.
-- [Ascaris — Siklus Hidup] Poin ujian: Ascaris — Siklus Hidup :: Fase paru terjadi saat LARVA bermigrasi, bukan karena cacing dewasa berada di paru.
-- [Ascaris — Fase Intestinal & Komplikasi] Exam pearl: Ascaris — Fase Intestinal & Komplikasi :: Nematoda yang terkenal dapat menyebabkan “worm bolus” dan obstruksi usus = Ascaris.
-- [Trichuris — Siklus Hidup] Jebakan soal: Trichuris — Siklus Hidup :: “Telur lemon-shaped dengan bipolar plugs + tidak ada lung migration” = Trichuris.
-- [Trichuris — Terapi] Exam pearl: Trichuris — Terapi :: Dibanding ascariasis, terapi Trichuris sering membutuhkan regimen beberapa hari, bukan sekadar satu dosis albendazole.
-- [Hookworm — Spesies Penting] Mnemonic: Hookworm — Spesies Penting :: Ancylostoma = “A has actual teeth”. Necator = “N has no teeth → cutting plates”.
-- [Hookworm — Anemia] Exam pearl: Hookworm — Anemia :: Ascaris → obstruksi. Trichuris → rectal prolapse. Hookworm → iron deficiency anemia. Enterobius → nocturnal perianal pruritus.
-- [Enterobius — Diagnosis: Tape Test] Exam pearl: Enterobius — Diagnosis: Tape Test :: “tape test” hampir selalu menunjuk Enterobius.
-- [Morfologi Telur — Pattern Recognition] Mnemonic cepat: Morfologi Telur — Pattern Recognition :: MAMILLATED = Ascaris. PLUGS = Trichuris. THIN SHELL + MORULA = Hookworm. D-SHAPED = Enterobius.
+- [Enterobius — Siklus Hidup] Sebutkan urutan atau langkah pada Enterobius — Siklus Hidup? :: • Telur infektif tertelan
+  • Larva menetas di usus
+  • Cacing dewasa hidup di kolon
+  • Betina gravid bermigrasi keluar anus pada malam hari
+  • Betina meletakkan telur di kulit perianal
+  • Telur menyebabkan pruritus → pasien menggaruk
+  • Telur menempel pada jari/kuku → kembali ke mulut atau menyebar ke benda sekitar
+- [Enterobius — Diagnosis: Tape Test] Sebutkan cara pengambilan pada Enterobius — Diagnosis: Tape Test. :: • Dilakukan PAGI HARI
+  • Sebelum mandi
+  • Sebelum buang air besar
+  • Sebelum membersihkan daerah perianal
+  • Tape ditempelkan pada kulit perianal lalu diperiksa secara mikroskopis
+- [Enterobius — Terapi & Pencegahan] Sebutkan pilihan regimen pada Enterobius — Terapi & Pencegahan. :: • Mebendazole 100 mg sekali, ulang 2 minggu
+  • Pyrantel pamoate 11 mg/kg sekali, maksimum 1 g, ulang 2 minggu
+  • Albendazole 400 mg sekali, ulang 2 minggu
+- [Ascaris — Siklus Hidup] Bagaimana cara mengingat Ascaris — Siklus Hidup? :: MOUTH → GUT → LIVER → LUNG → THROAT → GUT.
+- [Ascaris — Siklus Hidup] Apa poin high-yield (pearl) tentang Ascaris — Siklus Hidup? :: Fase paru terjadi saat LARVA bermigrasi, bukan karena cacing dewasa berada di paru.
+- [Ascaris — Fase Intestinal & Komplikasi] Apa poin high-yield (pearl) tentang Ascaris — Fase Intestinal & Komplikasi? :: Nematoda yang terkenal dapat menyebabkan “worm bolus” dan obstruksi usus = Ascaris.
+- [Trichuris — Siklus Hidup] Apa jebakan yang sering muncul pada soal tentang Trichuris — Siklus Hidup? :: “Telur lemon-shaped dengan bipolar plugs + tidak ada lung migration” = Trichuris.
+- [Trichuris — Terapi] Apa poin high-yield (pearl) tentang Trichuris — Terapi? :: Dibanding ascariasis, terapi Trichuris sering membutuhkan regimen beberapa hari, bukan sekadar satu dosis albendazole.
+- [Hookworm — Spesies Penting] Bagaimana cara mengingat Hookworm — Spesies Penting? :: Ancylostoma = “A has actual teeth”. Necator = “N has no teeth → cutting plates”.
+- [Hookworm — Anemia] Apa poin high-yield (pearl) tentang Hookworm — Anemia? :: Ascaris → obstruksi. Trichuris → rectal prolapse. Hookworm → iron deficiency anemia. Enterobius → nocturnal perianal pruritus.
+- [Enterobius — Diagnosis: Tape Test] Apa poin high-yield (pearl) tentang Enterobius — Diagnosis: Tape Test? :: “tape test” hampir selalu menunjuk Enterobius.
+- [Morfologi Telur — Pattern Recognition] Bagaimana cara mengingat Morfologi Telur — Pattern Recognition? :: MAMILLATED = Ascaris. PLUGS = Trichuris. THIN SHELL + MORULA = Hookworm. D-SHAPED = Enterobius.

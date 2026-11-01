@@ -496,7 +496,8 @@ Gunakan urutan berikut:
 25. Fase I mencakup oksidasi, reduksi, hidrolisis; Fase II mencakup konjugasi.
 26. CYP450 berperan besar pada reaksi oksidasi Fase I.
 
-- Ringkasan 30 Detik — bab ini
+## Ringkasan 30 Detik — bab ini {highyield}
+
 - Toksikologi mempelajari adverse effects agen kimia/fisik; dosis menentukan toksisitas.
 - Pada keracunan, prioritaskan ABCDE, lalu identifikasi toksikan, pajanan, toksidrom, dan terapi spesifik.
 - Antidot high-yield: NAC–parasetamol; atropin/pralidoksim–organofosfat; glukagon–β-blocker; Digoxin immune Fab–digoksin; fomepizole/etanol–toxic alcohol; antidot sianida.
@@ -507,87 +508,96 @@ Gunakan urutan berikut:
 
 ## Flashcard {kartu}
 
-- [Konsep Dasar Toksikologi] Akut (acute) :: terjadi akibat satu kejadian atau satu episode pajanan.
-- [Konsep Dasar Toksikologi] Subkronik (subchronic) :: pajanan berulang selama beberapa minggu hingga beberapa bulan.
-- [Konsep Dasar Toksikologi] Kronik (chronic) :: pajanan berulang selama berbulan-bulan hingga bertahun-tahun.
-- [Konsep Dasar Toksikologi] Occupational toxicology :: pajanan bahan kimia di lingkungan kerja.
-- [Konsep Dasar Toksikologi] Environmental toxicology :: dampak zat toksik terhadap lingkungan dan manusia.
-- [Konsep Dasar Toksikologi] Forensic toxicology :: digunakan dalam penyelidikan hukum, penyebab kematian, keracunan, narkotika, alkohol, dan sebagainya.
-- [Konsep Dasar Toksikologi] Clinical toxicology :: diagnosis dan tata laksana pasien dengan keracunan.
-- [A. Anticholinergic Agents] Tata laksana agitasi :: sedasi dengan benzodiazepin atau antipsikotik, misalnya haloperidol atau olanzapine.
-- [A. Anticholinergic Agents] Antidot :: physostigmine 0,5–1 mg IV.
-- [B. Tricyclic Antidepressant (TCA) Toxicity] Penatalaksanaan :: natrium bikarbonat untuk memperbaiki gangguan konduksi jantung dan mengatasi asidosis.
-- [B. β-Blocker Overdose] Antidot :: glukagon 5–10 mg IV.
-- [B. β-Blocker Overdose] Mekanisme :: meningkatkan denyut jantung dan tekanan darah.
-- [A. Cholinesterase Inhibitor] Antidot :: atropin dan pralidoksim.
-- [B. Cyanide] Penyebab yang dibahas :: paparan asap kebakaran dan keracunan sianida.
-- [C. Digoxin] Tata laksana :: activated charcoal.
-- [C. Digoxin] Antidot :: digoxin antibody fragments / Digoxin immune Fab.
-- [A. Ethanol & Sedative-Hypnotic Drugs] Tata laksana :: jalan napas, ventilasi, dan pemantauan. Barbiturat, benzodiazepin, serta obat sedatif-hipnotik lain termasuk dalam kelompok ini.
-- [B. Ethylene Glycol & Methanol] Prinsip terapi :: menghambat alcohol dehydrogenase.
-- [B. Ethylene Glycol & Methanol] Antidot :: fomepizole atau etanol.
-- [C. Antidot] Definisi :: penawar/obat untuk menetralkan efek racun.
-- [C. Antidot] Mechanical :: mencegah absorpsi; contoh activated charcoal.
-- [C. Antidot] Physiologic :: menghasilkan efek fisiologis yang berlawanan; contoh atropin pada keracunan organofosfat.
-- [A. Dialisis] Peritoneal dialysis :: disebut kurang efisien.
-- [A. Dialisis] Hemodialisis :: lebih efisien; dapat mengoreksi ketidakseimbangan cairan dan elektrolit sekaligus meningkatkan pembuangan metabolit toksik.
-- [A. Distribusi] Keseimbangan :: Obat terikat protein plasma (albumin) ⇄ obat bebas (unbound/free).
-- [B. Metabolisme] Fase I :: oksidasi, reduksi, atau hidrolisis.
-- [High-yield] Overdosis parasetamol + awalnya relatif asimtomatik :: pikirkan hepatotoksisitas tertunda; antidot NAC
-- [High-yield] TCA overdose + QRS >100 ms :: natrium bikarbonat
-- [High-yield] Tinnitus + hiperventilasi + mixed acid-base disturbance :: salicylate toxicity
-- [High-yield] Bradikardia + hipotensi setelah β-blocker overdose :: glukagon
-- [High-yield] Bradikardia/hipotensi setelah CCB overdose :: high-dose insulin euglycemia therapy
-- [High-yield] AKI + kristal kalsium oksalat + asidosis :: ethylene glycol
-- [High-yield] Kebakaran + asidosis laktat berat + kolaps :: pertimbangkan cyanide exposure
-- [High-yield] “The dose makes the poison” :: prinsip dasar toksikologi
-- [High-yield] Parasetamol :: antidot NAC
-- [High-yield] Organofosfat/karbamat :: atropin + pralidoksim
-- [High-yield] Anticholinergic syndrome :: kering, panas, midriasis, delirium, retensi urin
-- [High-yield] TCA :: QRS >100 ms adalah clue penting; natrium bikarbonat digunakan
-- [High-yield] Salisilat :: hiperventilasi, tinnitus, gangguan asam-basa; alkalinisasi dapat digunakan
-- [High-yield] β-blocker overdose :: glukagon
-- [High-yield] CCB overdose :: high-dose insulin euglycemia therapy
-- [High-yield] Digoksin :: Digoxin immune Fab
-- [High-yield] Metanol :: gangguan visual + asidosis metabolik
-- [High-yield] Etilen glikol :: AKI + kristal kalsium oksalat + asidosis metabolik
-- [High-yield] Toxic alcohol :: fomepizole/etanol menghambat alcohol dehydrogenase
-- [High-yield] Antidot high-yield :: NAC–parasetamol; atropin/pralidoksim–organofosfat; glukagon–β-blocker; Digoxin immune Fab–digoksin; fomepizole/etanol–toxic alcohol; antidot sianida
-- [High-yield] Drug interaction :: farmakokinetik = ADME; farmakodinamik = sinergis/antagonis
-- [High-yield] Metabolisme :: Fase I dan Fase II; CYP450 penting pada banyak reaksi Fase I
-- [Konsep Dasar Toksikologi] Jenis pajanan menurut frekuensi dan durasinya … :: • Akut (acute): terjadi akibat satu kejadian atau satu episode pajanan
+- [Konsep Dasar Toksikologi] Apa yang dimaksud dengan Akut (acute) pada Konsep Dasar Toksikologi? :: Terjadi akibat satu kejadian atau satu episode pajanan.
+- [Konsep Dasar Toksikologi] Apa yang dimaksud dengan Subkronik (subchronic) pada Konsep Dasar Toksikologi? :: Pajanan berulang selama beberapa minggu hingga beberapa bulan.
+- [Konsep Dasar Toksikologi] Apa yang dimaksud dengan Kronik (chronic) pada Konsep Dasar Toksikologi? :: Pajanan berulang selama berbulan-bulan hingga bertahun-tahun.
+- [Konsep Dasar Toksikologi] Apa yang dimaksud dengan Occupational toxicology pada Konsep Dasar Toksikologi? :: Pajanan bahan kimia di lingkungan kerja.
+- [Konsep Dasar Toksikologi] Apa yang dimaksud dengan Environmental toxicology pada Konsep Dasar Toksikologi? :: Dampak zat toksik terhadap lingkungan dan manusia.
+- [Konsep Dasar Toksikologi] Apa yang dimaksud dengan Forensic toxicology pada Konsep Dasar Toksikologi? :: Digunakan dalam penyelidikan hukum, penyebab kematian, keracunan, narkotika, alkohol, dan sebagainya.
+- [Konsep Dasar Toksikologi] Apa yang dimaksud dengan Clinical toxicology pada Konsep Dasar Toksikologi? :: Diagnosis dan tata laksana pasien dengan keracunan.
+- [Anticholinergic Agents] Pada Anticholinergic Agents (Anticholinergic Syndrome dan TCA Toxicity), apa tata laksana agitasinya? :: Sedasi dengan benzodiazepin atau antipsikotik, misalnya haloperidol atau olanzapine.
+- [Anticholinergic Agents] Pada Anticholinergic Agents (Anticholinergic Syndrome dan TCA Toxicity), apa antidotnya? :: Physostigmine 0,5–1 mg IV.
+- [Tricyclic Antidepressant (TCA) Toxicity] Pada Tricyclic Antidepressant (TCA) Toxicity, apa penatalaksanaannya? :: Natrium bikarbonat untuk memperbaiki gangguan konduksi jantung dan mengatasi asidosis.
+- [β-Blocker Overdose] Pada β-Blocker Overdose (Salisilat, β-Blocker, dan Calcium Channel Blocker), apa antidotnya? :: Glukagon 5–10 mg IV.
+- [β-Blocker Overdose] Pada β-Blocker Overdose (Salisilat, β-Blocker, dan Calcium Channel Blocker), apa mekanismenya? :: Meningkatkan denyut jantung dan tekanan darah.
+- [Cholinesterase Inhibitor] Pada Cholinesterase Inhibitor (Cholinesterase Inhibitor, Sianida, dan Digoksin), apa antidotnya? :: Atropin dan pralidoksim.
+- [Cyanide] Pada Cyanide (Cholinesterase Inhibitor, Sianida, dan Digoksin), apa penyebabnya? :: Paparan asap kebakaran dan keracunan sianida.
+- [Digoxin] Pada Digoxin (Cholinesterase Inhibitor, Sianida, dan Digoksin), apa tata laksananya? :: Activated charcoal.
+- [Digoxin] Pada Digoxin (Cholinesterase Inhibitor, Sianida, dan Digoksin), apa antidotnya? :: Digoxin antibody fragments / Digoxin immune Fab.
+- [Ethanol & Sedative-Hypnotic Drugs] Pada Ethanol & Sedative-Hypnotic Drugs, apa tata laksananya? :: Jalan napas, ventilasi, dan pemantauan. Barbiturat, benzodiazepin, serta obat sedatif-hipnotik lain termasuk dalam kelompok ini.
+- [Ethylene Glycol & Methanol] Apa yang dimaksud dengan Prinsip terapi pada Ethylene Glycol & Methanol? :: Menghambat alcohol dehydrogenase.
+- [Ethylene Glycol & Methanol] Pada Ethylene Glycol & Methanol, apa antidotnya? :: Fomepizole atau etanol.
+- [Antidot] Pada Dekontaminasi dan Antidot, apa definisinya? :: Penawar/obat untuk menetralkan efek racun.
+- [Antidot] Apa yang dimaksud dengan Mechanical pada Dekontaminasi dan Antidot? :: Mencegah absorpsi; contoh activated charcoal.
+- [Antidot] Apa yang dimaksud dengan Physiologic pada Dekontaminasi dan Antidot? :: Menghasilkan efek fisiologis yang berlawanan; contoh atropin pada keracunan organofosfat.
+- [Dialisis] Apa yang dimaksud dengan Peritoneal dialysis pada Dialisis (Enhancing Elimination of Toxin)? :: Disebut kurang efisien.
+- [Dialisis] Apa yang dimaksud dengan Hemodialisis pada Dialisis (Enhancing Elimination of Toxin)? :: Lebih efisien; dapat mengoreksi ketidakseimbangan cairan dan elektrolit sekaligus meningkatkan pembuangan metabolit toksik.
+- [Distribusi] Apa yang dimaksud dengan Keseimbangan pada Interaksi pada Distribusi, Metabolisme, dan Ekskresi? :: Obat terikat protein plasma (albumin) ⇄ obat bebas (unbound/free).
+- [Metabolisme] Apa yang dimaksud dengan Fase I pada Interaksi pada Distribusi, Metabolisme, dan Ekskresi? :: Oksidasi, reduksi, atau hidrolisis.
+- [Toksikologi Dasar & Keracunan Obat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Overdosis parasetamol + awalnya relatif asimtomatik? :: Pikirkan hepatotoksisitas tertunda; antidot NAC
+- [Toksikologi Dasar & Keracunan Obat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Miosis + hipersekresi bronkus + hipersalivasi + fasikulasi? :: Cholinesterase inhibitor; atropin + pralidoksim
+- [Toksikologi Dasar & Keracunan Obat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Kulit kering + midriasis + delirium + retensi urin? :: Anticholinergic syndrome
+- [Toksikologi Dasar & Keracunan Obat] Apa jawaban atau kesimpulan untuk petunjuk berikut: TCA overdose + QRS >100 ms? :: Natrium bikarbonat
+- [Toksikologi Dasar & Keracunan Obat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Tinnitus + hiperventilasi + mixed acid-base disturbance? :: Salicylate toxicity
+- [Toksikologi Dasar & Keracunan Obat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Bradikardia + hipotensi setelah β-blocker overdose? :: Glukagon
+- [Toksikologi Dasar & Keracunan Obat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Bradikardia/hipotensi setelah CCB overdose? :: High-dose insulin euglycemia therapy
+- [Toksikologi Dasar & Keracunan Obat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Gangguan penglihatan + asidosis metabolik setelah toxic alcohol? :: Metanol; inhibisi alcohol dehydrogenase dengan fomepizole/etanol
+- [Toksikologi Dasar & Keracunan Obat] Apa jawaban atau kesimpulan untuk petunjuk berikut: Kebakaran + asidosis laktat berat + kolaps? :: Pertimbangkan cyanide exposure
+- [Toksikologi Dasar & Keracunan Obat] Apa yang dimaksud dengan “The dose makes the poison” pada Toksikologi Dasar & Keracunan Obat? :: Prinsip dasar toksikologi
+- [Toksikologi Dasar & Keracunan Obat] Apa yang perlu diketahui tentang Parasetamol pada Toksikologi Dasar & Keracunan Obat? :: Antidot NAC
+- [Toksikologi Dasar & Keracunan Obat] Apa yang perlu diketahui tentang Organofosfat/karbamat pada Toksikologi Dasar & Keracunan Obat? :: Atropin + pralidoksim
+- [Toksikologi Dasar & Keracunan Obat] Apa yang perlu diketahui tentang Anticholinergic syndrome pada Toksikologi Dasar & Keracunan Obat? :: Kering, panas, midriasis, delirium, retensi urin
+- [Toksikologi Dasar & Keracunan Obat] Apa yang perlu diketahui tentang TCA pada Toksikologi Dasar & Keracunan Obat? :: QRS >100 ms adalah clue penting; natrium bikarbonat digunakan
+- [Toksikologi Dasar & Keracunan Obat] Apa yang perlu diketahui tentang Salisilat pada Toksikologi Dasar & Keracunan Obat? :: Hiperventilasi, tinnitus, gangguan asam-basa; alkalinisasi dapat digunakan
+- [Toksikologi Dasar & Keracunan Obat] Apa yang perlu diketahui tentang CCB overdose pada Toksikologi Dasar & Keracunan Obat? :: High-dose insulin euglycemia therapy
+- [Toksikologi Dasar & Keracunan Obat] Apa yang perlu diketahui tentang Digoksin pada Toksikologi Dasar & Keracunan Obat? :: Digoxin immune Fab
+- [Toksikologi Dasar & Keracunan Obat] Apa yang perlu diketahui tentang Metanol pada Toksikologi Dasar & Keracunan Obat? :: Gangguan visual + asidosis metabolik
+- [Toksikologi Dasar & Keracunan Obat] Apa yang perlu diketahui tentang Etilen glikol pada Toksikologi Dasar & Keracunan Obat? :: AKI + kristal kalsium oksalat + asidosis metabolik
+- [Toksikologi Dasar & Keracunan Obat] Apa yang perlu diketahui tentang Toxic alcohol pada Toksikologi Dasar & Keracunan Obat? :: Fomepizole/etanol menghambat alcohol dehydrogenase
+- [Toksikologi Dasar & Keracunan Obat] Apa antidot high-yield pada Toksikologi Dasar & Keracunan Obat? :: NAC–parasetamol; atropin/pralidoksim–organofosfat; glukagon–β-blocker; Digoxin immune Fab–digoksin; fomepizole/etanol–toxic alcohol; antidot sianida
+- [Toksikologi Dasar & Keracunan Obat] Apa yang perlu diketahui tentang Drug interaction pada Toksikologi Dasar & Keracunan Obat? :: Farmakokinetik = ADME; farmakodinamik = sinergis/antagonis
+- [Konsep Dasar Toksikologi] Sebutkan jenis pajanan menurut frekuensi dan durasinya pada Konsep Dasar Toksikologi. :: • Akut (acute): terjadi akibat satu kejadian atau satu episode pajanan
   • Subkronik (subchronic): pajanan berulang selama beberapa minggu hingga beberapa bulan
   • Kronik (chronic): pajanan berulang selama berbulan-bulan hingga bertahun-tahun
-- [A. Acetaminophen / Parasetamol] Potentially toxic dose … :: • Anak: 150–200 mg/kgBB
-  • Dewasa: 7 g total
-- [B. Amphetamines & Other Stimulants] Dosis tinggi dapat menyebabkan … :: • restlessness dan agitasi
-  • psikosis akut
-  • hipertensi dan takikardia
-  • aktivitas otot berlebihan atau kejang
-  • hipertermia dan rhabdomiolisis
-- [C. Digoxin] Faktor risiko toksisitas … :: • overdosis akut
-  • akumulasi digoksin pada pasien gagal ginjal
-- [Initial Management Keracunan] Tujuan initial management … :: • Menyelamatkan nyawa
+- [Konsep Dasar Toksikologi] Sebutkan cabang toksikologi pada Konsep Dasar Toksikologi. :: • Occupational toxicology: pajanan bahan kimia di lingkungan kerja
+  • Environmental toxicology: dampak zat toksik terhadap lingkungan dan manusia
+  • Forensic toxicology: digunakan dalam penyelidikan hukum, penyebab kematian, keracunan, narkotika, alkohol, dan sebagainya
+  • Clinical toxicology: diagnosis dan tata laksana pasien dengan keracunan
+- [Acetaminophen / Parasetamol] Sebutkan gambaran klinis. :: • Metabolit toksik diproduksi di hati
+  • Fase awal dapat asimtomatik atau disertai gejala gastrointestinal seperti mual dan muntah
+  • Setelah 24–36 jam dapat timbul liver injury, peningkatan aminotransferase (SGOT/SGPT), dan hipoprotrombinemia
+  • Keracunan berat dapat berkembang menjadi fulminant liver failure, hepatic encephalopathy, dan renal failure
+- [Aspirin / Salicylate] Sebutkan manifestasi lain. :: • Hipertermia dan berkeringat banyak
+  • Muntah
+  • Edema paru
+  • Penurunan kesadaran
+  • Nyeri ulu hati, gastritis, perdarahan GI, dan diare
+  • Tinnitus
+- [Ethanol & Sedative-Hypnotic Drugs] Sebutkan penyebab kematian pada Ethanol & Sedative-Hypnotic Drugs. :: • Depresi napas
+  • Aspirasi muntah
+- [Ethylene Glycol & Methanol] Sebutkan poin-poin penting tentang Etilen glikol. :: • Gagal ginjal akut
+  • Asidosis metabolik
+  • Kristal kalsium oksalat dalam urin
+- [Theophylline] Sebutkan manifestasi toksisitas pada Theophylline (Ethanol, Toxic Alcohols, dan Theophylline). :: • Mual dan muntah
+  • Tremor
+  • Takikardia dan aritmia
+  • Hipokalemia
+  • Kejang
+  • Hipertermia
+- [Initial Management Keracunan] Sebutkan poin-poin penting tentang Tujuan initial management. :: • Menyelamatkan nyawa
   • Mencegah absorpsi toksin
   • Mempercepat eliminasi toksin
   • Memberikan antidot bila tersedia
-- [Initial Management Keracunan] Langkah awal menggunakan ABCDE … :: • Airway
-  • Breathing
-  • Circulation
-  • Disability
-  • Exposure
-- [C. Antidot] Tiga tipe antidot … :: • Chemical: bereaksi secara kimia dengan racun sehingga terbentuk senyawa yang tidak berbahaya; contoh yang diberikan adalah chelators untuk logam berat
+- [Initial Management Keracunan] Sebutkan poin-poin penting tentang Anamnesis penting. :: • Jenis racun
+  • Dosis
+  • Waktu paparan
+  • Cara pajanan
+  • Riwayat penyakit
+  • Obat yang digunakan
+- [Antidot] Sebutkan tiga tipe antidot pada Dekontaminasi dan Antidot. :: • Chemical: bereaksi secara kimia dengan racun sehingga terbentuk senyawa yang tidak berbahaya; contoh yang diberikan adalah chelators untuk logam berat
   • Mechanical: mencegah absorpsi; contoh activated charcoal
   • Physiologic: menghasilkan efek fisiologis yang berlawanan; contoh atropin pada keracunan organofosfat
-- [B. Metabolisme] Dua jenis reaksi utama … :: • Fase I: oksidasi, reduksi, atau hidrolisis
+- [Metabolisme] Sebutkan dua jenis reaksi utama pada Interaksi pada Distribusi, Metabolisme, dan Ekskresi. :: • Fase I: oksidasi, reduksi, atau hidrolisis
   • Fase II: konjugasi dengan zat lain, misalnya glucuronidation
-- [C. Ekskresi] Ginjal mengekskresi obat melalui proses renal termasuk … :: • filtrasi glomerulus
-  • sekresi tubulus
-  • proses ekskresi renal lain yang dibahas
-- [Cara Membaca Soal Toksikologi] Gunakan urutan berikut … :: • Stabilkan dulu → cari ancaman airway, breathing, circulation
-  • Kenali toksidrom/pola organ → pupil, kulit, sekresi, suhu, HR/BP, status mental, EKG
-  • Cari clue toksikan spesifik → contoh tinnitus pada salisilat, gangguan visual pada metanol, kristal kalsium oksalat pada etilen glikol, QRS lebar pada TCA
-  • Pasangkan dengan antidot atau terapi spesifik
-  • Pertimbangkan dekontaminasi/eliminasi hanya bila sesuai indikasi
-- [B. Dekontaminasi Saluran Cerna] Catatan pembeda: B. Dekontaminasi Saluran Cerna :: Penggunaan ipecac, gastric lavage, cathartics, maupun metode dekontaminasi lain dalam praktik klinis tidak boleh diasumsikan sebagai tindakan rutin untuk setiap keracunan; pemilihan tindakan bergantung indikasi, toksikan, waktu pajanan, risiko aspirasi, dan protokol klinis yang berlaku.
-- [C. Ekskresi] Exam pearl: C. Ekskresi :: Interaksi farmakokinetik mengubah perjalanan/konsentrasi obat melalui ADME. Interaksi farmakodinamik mengubah efek obat di tingkat respons—dibagi menjadi sinergis dan antagonis.
+- [Dekontaminasi Saluran Cerna] Apa catatan penting tentang Dekontaminasi Saluran Cerna (Dekontaminasi dan Antidot)? :: Penggunaan ipecac, gastric lavage, cathartics, maupun metode dekontaminasi lain dalam praktik klinis tidak boleh diasumsikan sebagai tindakan rutin untuk setiap keracunan; pemilihan tindakan bergantung indikasi, toksikan, waktu pajanan, risiko aspirasi, dan protokol klinis yang berlaku.
+- [Ekskresi] Apa poin high-yield (pearl) tentang Interaksi pada Distribusi, Metabolisme, dan Ekskresi? :: Interaksi farmakokinetik mengubah perjalanan/konsentrasi obat melalui ADME. Interaksi farmakodinamik mengubah efek obat di tingkat respons—dibagi menjadi sinergis dan antagonis.

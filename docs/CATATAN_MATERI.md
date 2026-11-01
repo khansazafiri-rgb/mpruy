@@ -108,6 +108,7 @@ Mata kuliah yang sudah diproses dengan cara ini (`--subject` = slug folder, `--s
 | Mikrobiologi | `--subject mikrobiologi --subject-name Mikrobiologi --skip-unmatched --allow-missing` (+ `corrections/mikrobiologi.json`) |
 | Farmakologi | `--subject farmakologi --subject-name Farmakologi --skip-unmatched --allow-missing` (+ `corrections/farmakologi.json`) |
 | Patologi Klinik | `--subject patologi-klinik --subject-name "Patologi Klinik" --skip-unmatched --allow-missing` (+ `corrections/patologi-klinik.json`) |
+| Sistem Saraf | `--subject sistem-saraf --subject-name "Sistem Saraf" --skip-unmatched --allow-missing` (+ `corrections/sistem-saraf.json`) |
 
 Dua gaya dokumen dikenali. Gaya biasa: `Bab N — Judul` (Heading 1) dan bagian `N. Judul` (Heading 2). Gaya huruf besar (Genetika dan
 lampiran Biokimia): `BAB N — JUDUL`, bagian `A. JUDUL` / `4.1 JUDUL`, label `PENTING:` / `HIGH-YIELD:` / `JEBAKAN SOAL:` (jadi kotak sorot),
@@ -173,11 +174,16 @@ Yang diubah konverter:
   (tidak masuk daftar isi).
 - Dokumen yang memecah satu paragraf atau keterangan gambar menjadi beberapa paragraf (sering di Histologi) disambung lagi otomatis;
   keterangan dipasangkan ke gambar menurut urutan, dan beberapa gambar dengan satu keterangan menjadi galeri.
-- Flashcard dibuat otomatis oleh `tools/materi-import/flashcards.py` **hanya dari teks catatan itu sendiri**
-  (definisi "Istilah: penjelasan" / "X = Y" / "X adalah Y", poin high-yield, daftar ciri, kotak klinis dan praktikum),
-  tanpa menambah isi baru. BAB yang sangat ringkas (kartu < 12, mis. beberapa BAB Fisiologi) juga memakai judul bagian + paragraf
-  pertamanya sebagai kartu. Kualitasnya berbasis aturan, jadi kartu yang janggal cukup diedit atau dihapus langsung di
-  bagian `## Flashcard {kartu}` lewat editor catatan admin (catatan yang disunting admin tidak ditimpa sinkronisasi).
+- Flashcard dibuat otomatis oleh `tools/materi-import/flashcards.py` **hanya dari teks catatan itu sendiri**, dan tiap kartu berupa
+  **pertanyaan yang bisa dipahami tanpa membaca catatan** dengan jawaban berupa poin besar/deskripsi dari catatan:
+  "**Indikasi**: ..." -> "Pada Captopril, apa indikasinya?"; "**Istilah**: ..." -> "Apa yang dimaksud dengan Istilah ...?" / "Jelaskan Istilah ...";
+  poin high-yield "A → B" -> "Apa jawaban atau kesimpulan untuk petunjuk berikut: A?"; kalimat pengantar + daftar -> "Sebutkan ..."; kotak sorot ->
+  "Apa korelasi klinis / jebakan / poin high-yield tentang <topik>?". Label yang bukan istilah (potongan kalimat, "PENTING", "Sumber visual")
+  dilewati daripada dijadikan kartu janggal. BAB yang sangat ringkas (kartu < 12) juga memakai judul bagian + paragraf pertamanya
+  ("Jelaskan <judul>."). Kualitasnya berbasis aturan, jadi kartu yang janggal cukup diedit atau dihapus langsung di bagian
+  `## Flashcard {kartu}` lewat editor catatan admin (catatan yang disunting admin tidak ditimpa sinkronisasi). Tes
+  `notesMarkup.test.mjs` memastikan setiap kartu berbentuk pertanyaan/perintah. Menulis ulang kartu mengubah kode kartunya, jadi tanda "hafal"
+  siswa pada kartu lama tidak terbawa.
 
 Yang sengaja **tidak** dimasukkan karena urusan penyusun dokumen: baris pembuka (`Sumber utama`, `STATUS`, `Aturan visual`),
 bagian "Ringkasan untuk Retrieval AI MEDCOEL", "Catatan editorial", dan kalimat "master note" di sumber.

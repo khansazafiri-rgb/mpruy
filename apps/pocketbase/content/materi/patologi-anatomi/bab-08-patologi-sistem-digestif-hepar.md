@@ -299,26 +299,26 @@ Barrett → goblet cells → adenocarcinoma. H. pylori → gastritis/PUD/MALT/ga
 
 ## Flashcard {kartu}
 
-- [Acute Appendicitis] Kriteria histopatologi penting :: neutrofil masuk ke muscularis propria. Mukosa dapat mengalami ulserasi dengan inflamasi transmural, edema, dan serositis. Komplikasi: perforasi dan peritonitis.
-- [Alcohol-Related Liver Disease] Spektrum :: steatosis → steatohepatitis → fibrosis/sirosis. Mallory–Denk bodies berupa agregat intermediate filaments eosinofilik dalam hepatosit dan tidak eksklusif untuk alkohol.
-- [Hepatocellular Carcinoma] Faktor risiko utama :: sirosis berbagai etiologi, HBV, HCV, aflatoxin, dan penyakit hati kronik tertentu. Histologi dapat menunjukkan trabecular pattern, pseudoacinar pattern, bile production, dan atypical hepatocytes.
-- [Pattern Recognition Praktikum] Barrett :: goblet cells di mukosa esofagus distal.
-- [Pattern Recognition Praktikum] Gastric diffuse carcinoma :: signet-ring cells ± linitis plastica.
-- [Pattern Recognition Praktikum] Celiac :: villous atrophy + crypt hyperplasia + intraepithelial lymphocytes.
-- [Pattern Recognition Praktikum] Crohn :: transmural inflammation + granuloma ± fistula.
-- [Pattern Recognition Praktikum] UC :: mucosal continuous inflammation + crypt abscess.
-- [Pattern Recognition Praktikum] Appendicitis :: neutrophils di muscularis propria.
-- [Pattern Recognition Praktikum] Alcoholic steatohepatitis :: ballooning + Mallory–Denk bodies + neutrophils.
-- [Pattern Recognition Praktikum] Cirrhosis :: regenerative nodules dikelilingi fibrous septa.
-- [Pattern Recognition Praktikum] HCC :: trabecular malignant hepatocytes ± bile.
-- [Pattern Recognition Praktikum] Pancreatic adenocarcinoma :: malignant glands + dense desmoplasia.
-- [High-yield] Barrett :: intestinal metaplasia dengan goblet cells; risiko adenokarsinoma
-- [High-yield] H. pylori :: chronic gastritis, peptic ulcer, gastric adenocarcinoma, MALT lymphoma
-- [High-yield] Diffuse gastric carcinoma :: signet-ring cells + E-cadherin/CDH1
-- [High-yield] Celiac :: villous atrophy + crypt hyperplasia + ↑ intraepithelial lymphocytes
-- [High-yield] Steatohepatitis :: steatosis + hepatocyte injury + inflammation
-- [High-yield] Cirrhosis :: diffuse fibrosis + regenerative nodules + architectural distortion
-- [High-yield] A1AT deficiency hepatocyte globules :: PAS-positive, diastase-resistant
-- [High-yield] HCC sering trabecular; cholangiocarcinoma :: glandular + desmoplastic
-- [High-yield] Acute pancreatitis :: enzymatic fat necrosis + saponification
-- [High-yield] Pancreatic ductal adenocarcinoma :: malignant glands dalam dense desmoplastic stroma
+- [Acute Appendicitis] Jelaskan Kriteria histopatologi penting dalam konteks Acute Appendicitis. :: Neutrofil masuk ke muscularis propria. Mukosa dapat mengalami ulserasi dengan inflamasi transmural, edema, dan serositis. Komplikasi: perforasi dan peritonitis.
+- [Alcohol-Related Liver Disease] Pada Alcohol-Related Liver Disease, apa spektrumnya? :: Steatosis → steatohepatitis → fibrosis/sirosis. Mallory–Denk bodies berupa agregat intermediate filaments eosinofilik dalam hepatosit dan tidak eksklusif untuk alkohol.
+- [Hepatocellular Carcinoma] Pada Hepatocellular Carcinoma, apa faktor risiko utamanya? :: Sirosis berbagai etiologi, HBV, HCV, aflatoxin, dan penyakit hati kronik tertentu. Histologi dapat menunjukkan trabecular pattern, pseudoacinar pattern, bile production, dan atypical hepatocytes.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Barrett pada Pattern Recognition Praktikum? :: Goblet cells di mukosa esofagus distal.
+- [Pattern Recognition Praktikum] Jelaskan Gastric diffuse carcinoma dalam konteks Pattern Recognition Praktikum. :: Signet-ring cells ± linitis plastica.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Celiac pada Pattern Recognition Praktikum? :: Villous atrophy + crypt hyperplasia + intraepithelial lymphocytes.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Crohn pada Pattern Recognition Praktikum? :: Transmural inflammation + granuloma ± fistula.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan UC pada Pattern Recognition Praktikum? :: Mucosal continuous inflammation + crypt abscess.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Appendicitis pada Pattern Recognition Praktikum? :: Neutrophils di muscularis propria.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Alcoholic steatohepatitis pada Pattern Recognition Praktikum? :: Ballooning + Mallory–Denk bodies + neutrophils.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Cirrhosis pada Pattern Recognition Praktikum? :: Regenerative nodules dikelilingi fibrous septa.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan HCC pada Pattern Recognition Praktikum? :: Trabecular malignant hepatocytes ± bile.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Pancreatic adenocarcinoma pada Pattern Recognition Praktikum? :: Malignant glands + dense desmoplasia.
+- [Patologi Sistem Digestif & Hepar] Apa yang dimaksud dengan Barrett pada Patologi Sistem Digestif & Hepar? :: Intestinal metaplasia dengan goblet cells; risiko adenokarsinoma
+- [Patologi Sistem Digestif & Hepar] Apa yang perlu diingat tentang H. pylori pada Patologi Sistem Digestif & Hepar? :: Chronic gastritis, peptic ulcer, gastric adenocarcinoma, MALT lymphoma
+- [Patologi Sistem Digestif & Hepar] Apa yang perlu diingat tentang Diffuse gastric carcinoma pada Patologi Sistem Digestif & Hepar? :: Signet-ring cells + E-cadherin/CDH1
+- [Patologi Sistem Digestif & Hepar] Apa yang dimaksud dengan Celiac pada Patologi Sistem Digestif & Hepar? :: Villous atrophy + crypt hyperplasia + ↑ intraepithelial lymphocytes
+- [Patologi Sistem Digestif & Hepar] Apa yang dimaksud dengan Steatohepatitis pada Patologi Sistem Digestif & Hepar? :: Steatosis + hepatocyte injury + inflammation
+- [Patologi Sistem Digestif & Hepar] Apa yang dimaksud dengan Cirrhosis pada Patologi Sistem Digestif & Hepar? :: Diffuse fibrosis + regenerative nodules + architectural distortion
+- [Patologi Sistem Digestif & Hepar] Apa yang dimaksud dengan A1AT deficiency hepatocyte globules? :: PAS-positive, diastase-resistant
+- [Patologi Sistem Digestif & Hepar] Apa yang dimaksud dengan HCC sering trabecular; cholangiocarcinoma? :: Glandular + desmoplastic
+- [Patologi Sistem Digestif & Hepar] Apa yang perlu diingat tentang Acute pancreatitis pada Patologi Sistem Digestif & Hepar? :: Enzymatic fat necrosis + saponification
+- [Patologi Sistem Digestif & Hepar] Apa yang perlu diingat tentang Pancreatic ductal adenocarcinoma pada Patologi Sistem Digestif & Hepar? :: Malignant glands dalam dense desmoplastic stroma

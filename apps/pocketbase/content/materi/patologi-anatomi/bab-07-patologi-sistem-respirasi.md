@@ -654,70 +654,71 @@ Jika nuclear molding + tiny hyperchromatic cells → small cell carcinoma.
 
 ## Flashcard {kartu}
 
-- [Konsep Besar Patologi Respirasi] Clue penting ujian :: OBSTRUCTIVE = sulit mengeluarkan udara, FEV1 turun lebih besar daripada FVC.
-- [Emphysema — Definisi] Mekanisme utama :: protease–antiprotease imbalance + oxidant injury → destruksi elastin dan septa alveolus → hilangnya elastic recoil → air trapping.
-- [ARDS — Diffuse Alveolar Damage] Mekanisme :: injury alveolar epithelium + capillary endothelium → increased permeability → protein-rich edema → severe hypoxemia.
-- [Granulomatosis With Polyangiitis] Clue klasik :: ENT disease + pulmonary nodules/cavitation + glomerulonephritis.
-- [Superior Sulcus / Pancoast Tumor] Horner syndrome :: ptosis + miosis + anhidrosis.
-- [High-yield] Curschmann spirals :: whorled mucus plugs,
-- [High-yield] Charcot–Leyden crystals :: kristal dari eosinophil-derived proteins
-- [High-yield] Emphysema :: enlarged distal airspaces + septal destruction without prominent fibrosis
-- [High-yield] Panacinar emphysema :: A1AT deficiency, lower lobes
-- [High-yield] Chronic bronchitis :: productive cough ≥3 months/year for ≥2 consecutive years
-- [High-yield] Asthma :: reversible bronchoconstriction + eosinophilic inflammation
-- [High-yield] Bronchiectasis :: permanent bronchial dilation akibat chronic necrotizing inflammation
-- [High-yield] Lobar pneumonia :: congestion → red hepatization → gray hepatization → resolution
-- [High-yield] Ghon complex :: primary lung focus + hilar nodes
-- [High-yield] UIP/IPF :: patchy fibrosis + temporal heterogeneity + fibroblastic foci + honeycomb lung
-- [High-yield] Silicosis :: upper lobes + eggshell calcification + increased TB risk
-- [High-yield] Asbestosis :: lower-lobe fibrosis + ferruginous bodies + pleural plaques
-- [High-yield] ARDS :: diffuse alveolar damage + hyaline membranes
-- [High-yield] Neonatal RDS :: surfactant deficiency
-- [High-yield] Adenocarcinoma :: peripheral, gland/mucin, juga sering pada nonsmokers
-- [High-yield] Squamous carcinoma :: central, keratin pearls, PTHrP/hypercalcemia
-- [High-yield] Small cell carcinoma :: central, neuroendocrine, nuclear molding, ACTH/ADH
-- [High-yield] Honeycomb lung :: end-stage fibrotic pattern, bukan diagnosis tunggal
-- [High-yield] Cara tercepat soal respirasi :: identifikasi PATTERN MORFOLOGI + LOKASI + EXPOSURE + PARANEOPLASTIC CLUE
-- [High-yield] COPD :: emphysema = destruction; chronic bronchitis = mucus gland hyperplasia; asthma = eosinophils + reversible bronchospasm; bronchiectasis = permanent dilated airways
-- [High-yield] ILD :: UIP/IPF = patchy fibrosis + honeycomb; silica = upper lobe + TB; asbestos = lower lobe + ferruginous bodies
-- [Konsep Besar Patologi Respirasi] Patologi sistem respirasi paling mudah dipahami dengan membagi penyakit menjadi beberapa pola besar … :: • obstructive lung disease,
-  • restrictive/interstitial lung disease,
-  • infectious disease,
-  • vascular lung disease,
-  • acute lung injury,
-  • neoplasia
-- [Obstructive vs Restrictive Lung Disease] Obstructive disease meliputi … :: • emphysema,
-  • chronic bronchitis,
-  • asthma,
-  • bronchiectasis
-- [Pneumonia — Konsep Umum] Dua pola morfologi klasik … :: • lobar pneumonia,
-  • bronchopneumonia
-- [Pneumonia — Komplikasi] Komplikasi dapat berupa … :: • abscess formation,
-  • empyema,
-  • organization of intra-alveolar exudate,
-  • bacteremia/sepsis dengan metastatic infection
-- [Pulmonary Edema] Pulmonary edema dapat bersifat … :: • cardiogenic — increased hydrostatic pressure, misalnya left heart failure,
-  • noncardiogenic — increased vascular permeability, seperti ARDS
-- [Pulmonary Embolism] Akibat bergantung ukuran dan cardiopulmonary reserve … :: • silent embolus,
-  • pulmonary hemorrhage,
-  • pulmonary infarction,
-  • acute right heart strain,
-  • sudden death bila massive saddle embolus
-- [Pulmonary Hypertension] Pulmonary hypertension menyebabkan vascular remodeling … :: • medial hypertrophy,
-  • intimal fibrosis,
-  • advanced disease dapat menghasilkan plexiform lesions
-- [Granulomatosis With Polyangiitis] GPA merupakan necrotizing granulomatous vasculitis yang dapat melibatkan … :: • upper respiratory tract,
-  • lungs,
-  • kidneys
-- [Neuroendocrine Tumors — Carcinoid] Histologi dapat menunjukkan … :: • organoid nesting,
-  • trabeculae,
-  • rosettes,
-  • finely granular “salt-and-pepper” chromatin
-- [Superior Sulcus / Pancoast Tumor] Pancoast tumor dapat menyebabkan … :: • shoulder/arm pain akibat brachial plexus involvement,
-  • Horner syndrome akibat sympathetic chain involvement
-- [Panacinar Emphysema] Mnemonic: Panacinar Emphysema :: PAN = seluruh acinus. A1AT = lower lobes.
-- [Alpha-1 Antitrypsin Deficiency] Exam pearl: Alpha-1 Antitrypsin Deficiency :: Young nonsmoker + basal panacinar emphysema + liver disease → pikirkan A1AT deficiency.
-- [Asthma — Morfologi High-Yield] Exam pearl: Asthma — Morfologi High-Yield :: Spirals + eosinophils + episodic wheeze = asthma.
-- [Lobar Pneumonia — Empat Tahap Klasik] Mnemonic: Lobar Pneumonia — Empat Tahap Klasik :: CONGEST → RED → GRAY → RESOLVE.
-- [Asbestosis] Exam pearl: Asbestosis :: smoking + asbestos → risiko bronchogenic carcinoma meningkat sinergistik. Smoking tidak memperkuat risiko mesothelioma secara serupa.
-- [Sarcoidosis] Clue: Sarcoidosis :: bilateral hilar lymphadenopathy, noncaseating granulomas, dapat disertai hypercalcemia karena macrophage 1-alpha hydroxylase activity.
+- [Emphysema — Definisi] Pada Emphysema — Definisi, apa mekanisme utamanya? :: Protease–antiprotease imbalance + oxidant injury → destruksi elastin dan septa alveolus → hilangnya elastic recoil → air trapping.
+- [ARDS — Diffuse Alveolar Damage] Pada ARDS — Diffuse Alveolar Damage, apa mekanismenya? :: Injury alveolar epithelium + capillary endothelium → increased permeability → protein-rich edema → severe hypoxemia.
+- [Superior Sulcus / Pancoast Tumor] Apa yang dimaksud dengan Horner syndrome pada Superior Sulcus / Pancoast Tumor? :: Ptosis + miosis + anhidrosis.
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Curschmann spirals pada Patologi Sistem Respirasi? :: Whorled mucus plugs,
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Charcot–Leyden crystals pada Patologi Sistem Respirasi? :: Kristal dari eosinophil-derived proteins
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Emphysema pada Patologi Sistem Respirasi? :: Enlarged distal airspaces + septal destruction without prominent fibrosis
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Panacinar emphysema pada Patologi Sistem Respirasi? :: A1AT deficiency, lower lobes
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Chronic bronchitis pada Patologi Sistem Respirasi? :: Productive cough ≥3 months/year for ≥2 consecutive years
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Asthma pada Patologi Sistem Respirasi? :: Reversible bronchoconstriction + eosinophilic inflammation
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Bronchiectasis pada Patologi Sistem Respirasi? :: Permanent bronchial dilation akibat chronic necrotizing inflammation
+- [Patologi Sistem Respirasi] Apa yang perlu diketahui tentang Lobar pneumonia pada Patologi Sistem Respirasi? :: Congestion → red hepatization → gray hepatization → resolution
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Ghon complex pada Patologi Sistem Respirasi? :: Primary lung focus + hilar nodes
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan UIP/IPF pada Patologi Sistem Respirasi? :: Patchy fibrosis + temporal heterogeneity + fibroblastic foci + honeycomb lung
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Silicosis pada Patologi Sistem Respirasi? :: Upper lobes + eggshell calcification + increased TB risk
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Asbestosis pada Patologi Sistem Respirasi? :: Lower-lobe fibrosis + ferruginous bodies + pleural plaques
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan ARDS pada Patologi Sistem Respirasi? :: Diffuse alveolar damage + hyaline membranes
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Neonatal RDS pada Patologi Sistem Respirasi? :: Surfactant deficiency
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Adenocarcinoma pada Patologi Sistem Respirasi? :: Peripheral, gland/mucin, juga sering pada nonsmokers
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Squamous carcinoma pada Patologi Sistem Respirasi? :: Central, keratin pearls, PTHrP/hypercalcemia
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Small cell carcinoma pada Patologi Sistem Respirasi? :: Central, neuroendocrine, nuclear molding, ACTH/ADH
+- [Patologi Sistem Respirasi] Apa yang dimaksud dengan Honeycomb lung pada Patologi Sistem Respirasi? :: End-stage fibrotic pattern, bukan diagnosis tunggal
+- [Patologi Sistem Respirasi] Apa yang perlu diketahui tentang Cara tercepat soal respirasi pada Patologi Sistem Respirasi? :: Identifikasi PATTERN MORFOLOGI + LOKASI + EXPOSURE + PARANEOPLASTIC CLUE
+- [Patologi Sistem Respirasi] Apa yang perlu diketahui tentang COPD pada Patologi Sistem Respirasi? :: Emphysema = destruction; chronic bronchitis = mucus gland hyperplasia; asthma = eosinophils + reversible bronchospasm; bronchiectasis = permanent dilated airways
+- [Patologi Sistem Respirasi] Apa yang perlu diketahui tentang ILD pada Patologi Sistem Respirasi? :: UIP/IPF = patchy fibrosis + honeycomb; silica = upper lobe + TB; asbestos = lower lobe + ferruginous bodies
+- [Obstructive vs Restrictive Lung Disease] Sebutkan poin-poin penting tentang Obstructive disease. :: • Emphysema
+  • Chronic bronchitis
+  • Asthma
+  • Bronchiectasis
+- [Chronic Bronchitis — Morfologi] Sebutkan temuan utama pada Chronic Bronchitis — Morfologi. :: • Mucous gland enlargement
+  • Goblet cell hyperplasia
+  • Mucus plugging
+  • Chronic inflammation
+  • Bronchiolar fibrosis pada disease progression
+- [Pneumonia — Konsep Umum] Sebutkan poin-poin penting tentang Dua pola morfologi klasik. :: • Lobar pneumonia
+  • Bronchopneumonia
+- [Lobar Pneumonia — Empat Tahap Klasik] Sebutkan urutan atau langkah pada Lobar Pneumonia — Empat Tahap Klasik? :: • Congestion — vascular engorgement + intra-alveolar fluid
+  • Red hepatization — RBC, neutrophils, fibrin memenuhi alveoli
+  • Gray hepatization — RBC breakdown, fibrinosuppurative exudate menetap
+  • Resolution — debris dicerna dan dibersihkan
+- [Lung Abscess] Sebutkan penyebab penting pada Lung Abscess. :: • Aspiration
+  • Pneumonia berat
+  • Bronchial obstruction
+  • Septic emboli
+- [TB — Histologi] Sebutkan temuan klasik pada TB — Histologi. :: • Caseating granuloma
+  • Epithelioid macrophages
+  • Langhans giant cells
+  • Peripheral lymphocytes
+- [Sarcoidosis] Sebutkan organ tersering pada Sarcoidosis. :: • Lungs
+  • Hilar lymph nodes
+- [Hypersensitivity Pneumonitis] Sebutkan contoh klasik pada Hypersensitivity Pneumonitis. :: • Farmer’s lung
+  • Bird fancier’s lung
+- [Lung Cancer — Klasifikasi Besar] Sebutkan poin-poin penting tentang Primary lung cancers secara praktis. :: • Non-small cell lung carcinoma (NSCLC)
+  • Small cell lung carcinoma (SCLC)
+- [Lung Cancer — Klasifikasi Besar] Sebutkan poin-poin penting tentang NSCLC utama. :: • Adenocarcinoma
+  • Squamous cell carcinoma
+  • Large cell carcinoma
+- [Small Cell Lung Carcinoma] Sebutkan poin-poin penting tentang Paraneoplastic association. :: • ACTH
+  • ADH/SIADH
+- [Pleural Effusion] Sebutkan poin-poin penting tentang Pleural effusion. :: • Transudate — heart failure, hypoalbuminemia
+  • Exudate — infection, malignancy, inflammation
+  • Hemothorax — blood
+  • Chylothorax — lymph/chyle akibat thoracic duct disruption
+- [Panacinar Emphysema] Bagaimana cara mengingat Panacinar Emphysema? :: PAN = seluruh acinus. A1AT = lower lobes.
+- [Alpha-1 Antitrypsin Deficiency] Apa poin high-yield (pearl) tentang Alpha-1 Antitrypsin Deficiency? :: Young nonsmoker + basal panacinar emphysema + liver disease → pikirkan A1AT deficiency.
+- [Asthma — Morfologi High-Yield] Apa poin high-yield (pearl) tentang Asthma — Morfologi High-Yield? :: Spirals + eosinophils + episodic wheeze = asthma.
+- [Lobar Pneumonia — Empat Tahap Klasik] Bagaimana cara mengingat Lobar Pneumonia — Empat Tahap Klasik? :: CONGEST → RED → GRAY → RESOLVE.
+- [Asbestosis] Apa poin high-yield (pearl) tentang Asbestosis? :: Smoking + asbestos → risiko bronchogenic carcinoma meningkat sinergistik. Smoking tidak memperkuat risiko mesothelioma secara serupa.
+- [Sarcoidosis] Apa clue praktikum untuk Sarcoidosis? :: Bilateral hilar lymphadenopathy, noncaseating granulomas, dapat disertai hypercalcemia karena macrophage 1-alpha hydroxylase activity.

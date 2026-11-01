@@ -194,30 +194,36 @@ Farmakokinetik = ADME. Absorpsi menentukan masuknya obat ke sirkulasi; bioavaila
 
 ## Flashcard {kartu}
 
-- [Klirens, Waktu Paruh, dan Steady State] Hubungan penting :: t½ = 0,693 × Vd / CL
-- [Kinetika Eliminasi: Orde Pertama vs Orde Nol] Cara hafal :: FIRST order = fraction tetap; ZERO order = jumlah absolut tetap.
-- [Loading Dose dan Maintenance Dose] Konsep rumus :: Loading dose ≈ Vd × konsentrasi target / F
-- [Loading Dose dan Maintenance Dose] Konsep rumus :: Maintenance dose = (CL × konsentrasi target × interval dosis) / F
-- [High-yield] Obat sangat terikat protein plasma :: fraksi bebas lebih kecil dan Vd dapat relatif kecil
-- [High-yield] Obat sangat lipofilik dan terakumulasi jaringan :: Vd besar
-- [High-yield] Obat dengan first-pass tinggi :: pemberian oral dapat menghasilkan bioavailabilitas rendah
-- [High-yield] Sistem eliminasi jenuh :: dapat berubah dari perilaku orde pertama menjadi kinetika nonlinier/orde nol
-- [Absorpsi Obat] Faktor yang memengaruhi absorpsi meliputi … :: • sifat fisikokimia obat: kelarutan lemak/air, ukuran molekul, dan derajat ionisasi
-  • bentuk sediaan serta formulasi
-  • rute pemberian
-  • luas permukaan absorpsi dan aliran darah setempat
-  • motilitas gastrointestinal dan waktu pengosongan lambung
-  • makanan atau obat lain yang mengubah proses absorpsi
-- [Distribusi Obat] Faktor utama yang memengaruhi distribusi … :: • aliran darah organ
-  • permeabilitas kapiler dan sawar biologis
-  • ikatan protein plasma
-  • lipofilisitas obat
-  • ikatan obat pada jaringan
-- [Ekskresi Obat] Tiga proses utama pada ginjal adalah … :: • filtrasi glomerulus — terutama untuk obat bebas dengan ukuran molekul sesuai
-  • sekresi tubular aktif — transporter pada tubulus proksimal memindahkan obat dari darah ke lumen
-  • reabsorpsi tubular pasif — obat yang lipofilik dan tidak terionisasi dapat kembali berdifusi ke darah
-- [Loading Dose dan Maintenance Dose] Hubungan yang sangat high-yield … :: • loading dose ↔ Vd
-  • maintenance dose ↔ CL
-- [Konsep Dasar Farmakokinetik] Exam pearl: Konsep Dasar Farmakokinetik :: Farmakokinetik = tubuh terhadap obat. Farmakodinamik = obat terhadap tubuh. Ini adalah pembeda konsep paling dasar dan sering menjadi stem soal.
-- [Bioavailabilitas dan First-Pass Effect] Exam pearl: Bioavailabilitas dan First-Pass Effect :: IV → F 100%. First-pass tinggi → bioavailabilitas oral dapat rendah walaupun obat telah terabsorpsi dari saluran cerna.
-- [Volume Distribusi (Vd)] Exam pearl: Volume Distribusi (Vd) :: Vd bukan volume anatomi nyata. Vd adalah parameter “semu” yang membantu menggambarkan kecenderungan obat berada di plasma versus jaringan.
+- [Klirens, Waktu Paruh, dan Steady State] Pada Klirens, Waktu Paruh, dan Steady State, apa hubungan pentingnya? :: T½ = 0,693 × Vd / CL
+- [Loading Dose dan Maintenance Dose] Pada Loading Dose dan Maintenance Dose, apa konsep rumusnya? :: Loading dose ≈ Vd × konsentrasi target / F
+- [Farmakokinetik: Absorpsi, Distribusi, Metabolisme, Ekskresi] Apa jawaban atau kesimpulan untuk petunjuk berikut: Obat sangat terikat protein plasma? :: Fraksi bebas lebih kecil dan Vd dapat relatif kecil
+- [Farmakokinetik: Absorpsi, Distribusi, Metabolisme, Ekskresi] Apa jawaban atau kesimpulan untuk petunjuk berikut: Obat sangat lipofilik dan terakumulasi jaringan? :: Vd besar
+- [Farmakokinetik: Absorpsi, Distribusi, Metabolisme, Ekskresi] Apa jawaban atau kesimpulan untuk petunjuk berikut: Obat dengan first-pass tinggi? :: Pemberian oral dapat menghasilkan bioavailabilitas rendah
+- [Farmakokinetik: Absorpsi, Distribusi, Metabolisme, Ekskresi] Apa yang perlu diingat tentang Sistem eliminasi jenuh pada Farmakokinetik: Absorpsi, Distribusi, Metabolisme, Ekskresi? :: Dapat berubah dari perilaku orde pertama menjadi kinetika nonlinier/orde nol
+- [Absorpsi Obat] Sebutkan faktor yang memengaruhi absorpsi pada Absorpsi Obat. :: • Sifat fisikokimia obat: kelarutan lemak/air, ukuran molekul, dan derajat ionisasi
+  • Bentuk sediaan serta formulasi
+  • Rute pemberian
+  • Luas permukaan absorpsi dan aliran darah setempat
+  • Motilitas gastrointestinal dan waktu pengosongan lambung
+  • Makanan atau obat lain yang mengubah proses absorpsi
+- [Absorpsi Obat] Sebutkan poin-poin penting tentang Poin konsep. :: • Asam lemah cenderung lebih tidak terionisasi pada lingkungan asam
+  • Basa lemah cenderung lebih tidak terionisasi pada lingkungan yang lebih basa
+  • Tetapi lokasi absorpsi klinis juga sangat dipengaruhi luas permukaan, perfusi, dan waktu kontak
+- [Distribusi Obat] Sebutkan faktor utama yang memengaruhi distribusi pada Distribusi Obat. :: • Aliran darah organ
+  • Permeabilitas kapiler dan sawar biologis
+  • Ikatan protein plasma
+  • Lipofilisitas obat
+  • Ikatan obat pada jaringan
+- [Volume Distribusi (Vd)] Sebutkan interpretasi konseptual pada Volume Distribusi (Vd). :: • Vd kecil → obat lebih banyak tertahan di plasma atau sulit menembus jaringan
+  • Vd sedang → distribusi terutama pada cairan ekstraseluler
+  • Vd besar → obat banyak terakumulasi di jaringan atau lemak sehingga konsentrasi plasma relatif rendah
+- [Ekskresi Obat] Sebutkan poin-poin penting tentang Tiga proses utama pada ginjal. :: • Filtrasi glomerulus — terutama untuk obat bebas dengan ukuran molekul sesuai
+  • Sekresi tubular aktif — transporter pada tubulus proksimal memindahkan obat dari darah ke lumen
+  • Reabsorpsi tubular pasif — obat yang lipofilik dan tidak terionisasi dapat kembali berdifusi ke darah
+- [Kinetika Eliminasi: Orde Pertama vs Orde Nol] Sebutkan poin-poin penting tentang Orde pertama. :: • Jumlah yang dieliminasi per satuan waktu proporsional terhadap konsentrasi
+  • Persentase obat yang dieliminasi relatif tetap
+  • Waktu paruh konstan
+  • Berlaku pada sebagian besar obat dalam rentang dosis terapeutik
+- [Konsep Dasar Farmakokinetik] Apa poin high-yield (pearl) tentang Konsep Dasar Farmakokinetik? :: Farmakokinetik = tubuh terhadap obat. Farmakodinamik = obat terhadap tubuh. Ini adalah pembeda konsep paling dasar dan sering menjadi stem soal.
+- [Bioavailabilitas dan First-Pass Effect] Apa poin high-yield (pearl) tentang Bioavailabilitas dan First-Pass Effect? :: IV → F 100%. First-pass tinggi → bioavailabilitas oral dapat rendah walaupun obat telah terabsorpsi dari saluran cerna.
+- [Volume Distribusi (Vd)] Apa poin high-yield (pearl) tentang Volume Distribusi (Vd)? :: Vd bukan volume anatomi nyata. Vd adalah parameter “semu” yang membantu menggambarkan kecenderungan obat berada di plasma versus jaringan.

@@ -605,81 +605,93 @@ Jika arachnid:
 
 ## Flashcard {kartu}
 
-- [Konsep Besar Entomologi Kedokteran] INSECTA :: kepala–toraks–abdomen, 3 pasang kaki (6 kaki), biasanya memiliki antena.
-- [Konsep Besar Entomologi Kedokteran] ARACHNIDA :: cephalothorax + abdomen, dewasa memiliki 4 pasang kaki (8 kaki), tanpa antena.
-- [Transmisi Mekanik vs Biologis] Mechanical transmission :: Pathogen tidak mengalami multiplication atau development dalam vector. Arthropod hanya membawa pathogen secara pasif, misalnya pada permukaan tubuh atau mouthparts.
-- [Transmisi Mekanik vs Biologis] Biological transmission :: Pathogen mengalami bagian penting siklus hidup di dalam vector.
-- [Transmisi Mekanik vs Biologis] Propagative :: banyak arbovirus berkembang biak dalam mosquito.
-- [Transmisi Mekanik vs Biologis] Cyclodevelopmental :: filarial larvae berkembang dari microfilaria menjadi L3 di mosquito.
-- [Transmisi Mekanik vs Biologis] Cyclopropagative :: Plasmodium mengalami perkembangan seksual dan multiplication dalam Anopheles.
-- [Mosquito — Siklus Hidup Umum] Mosquito mengalami complete metamorphosis :: EGG → LARVA → PUPA → ADULT.
-- [Sandfly] Pattern :: SAND FLY → LEISHMANIA.
-- [Tsetse Fly] Penyakit :: Human African trypanosomiasis akibat Trypanosoma brucei gambiense/rhodesiense.
-- [Triatomine / Kissing Bug] Transmission :: Metacyclic trypomastigotes terdapat dalam FECES vector. Infeksi terjadi ketika feses masuk melalui kulit yang terluka atau mukosa.
-- [Triatomine / Kissing Bug] Pattern :: KISSING BUG + FECES → CHAGAS.
-- [Blackfly — Simulium] Penyakit utama :: Onchocerca volvulus → onchocerciasis / river blindness.
-- [Fleas — Morfologi] Life cycle :: EGG → LARVA → PUPA → ADULT.
-- [Tick Paralysis] Jebakan :: jangan langsung menganggap semua penyakit akibat tick adalah infectious disease.
-- [High-yield] Aedes :: dengue/chikungunya
-- [High-yield] Anopheles :: malaria
-- [High-yield] Mansonia/Anopheles/Aedes tertentu :: filariasis sesuai wilayah
-- [High-yield] Filaria dalam mosquito :: cyclodevelopmental
-- [High-yield] Tick paralysis :: toxin, bukan infection
-- [High-yield] Propagative :: multiplication tanpa developmental change
-- [High-yield] Cyclopropagative :: development + multiplication
-- [High-yield] Plasmodium dalam Anopheles :: cyclopropagative
-- [High-yield] Aedes :: dengue/chikungunya/Zika/yellow fever
-- [High-yield] Sandfly :: Leishmania
-- [High-yield] Triatomine feces :: T. cruzi
-- [High-yield] Flea :: laterally compressed
-- [High-yield] Louse :: dorsoventrally flattened
-- [High-yield] Sarcoptes :: scabies
-- [High-yield] Chigger :: Orientia tsutsugamushi / scrub typhus
-- [High-yield] Hyalomma :: Crimean-Congo haemorrhagic fever
-- [High-yield] ANOPHELES :: malaria; angled resting; larva parallel
-- [High-yield] CULEX :: JE/West Nile/filariasis; egg raft
-- [High-yield] TRIATOMINE :: T. cruzi via feces
-- [High-yield] FLEA :: plague
-- [High-yield] CHIGGER :: scrub typhus
-- [Konsep Besar Entomologi Kedokteran] Dua kelompok besar arthropoda yang wajib dibedakan … :: • INSECTA: kepala–toraks–abdomen, 3 pasang kaki (6 kaki), biasanya memiliki antena
-  • ARACHNIDA: cephalothorax + abdomen, dewasa memiliki 4 pasang kaki (8 kaki), tanpa antena
-- [Transmisi Mekanik vs Biologis] Tiga tipe klasik … :: • Propagative = pathogen MULTIPLY, tetapi tidak mengalami developmental change
+- [Konsep Besar Entomologi Kedokteran] Apa yang dimaksud dengan INSECTA pada Konsep Besar Entomologi Kedokteran? :: Kepala–toraks–abdomen, 3 pasang kaki (6 kaki), biasanya memiliki antena.
+- [Konsep Besar Entomologi Kedokteran] Apa yang dimaksud dengan ARACHNIDA pada Konsep Besar Entomologi Kedokteran? :: Cephalothorax + abdomen, dewasa memiliki 4 pasang kaki (8 kaki), tanpa antena.
+- [Transmisi Mekanik vs Biologis] Apa yang dimaksud dengan Mechanical transmission pada Transmisi Mekanik vs Biologis? :: Pathogen tidak mengalami multiplication atau development dalam vector. Arthropod hanya membawa pathogen secara pasif, misalnya pada permukaan tubuh atau mouthparts.
+- [Transmisi Mekanik vs Biologis] Apa yang dimaksud dengan Biological transmission pada Transmisi Mekanik vs Biologis? :: Pathogen mengalami bagian penting siklus hidup di dalam vector.
+- [Transmisi Mekanik vs Biologis] Apa yang dimaksud dengan Propagative pada Transmisi Mekanik vs Biologis? :: Banyak arbovirus berkembang biak dalam mosquito.
+- [Transmisi Mekanik vs Biologis] Apa yang dimaksud dengan Cyclodevelopmental pada Transmisi Mekanik vs Biologis? :: Filarial larvae berkembang dari microfilaria menjadi L3 di mosquito.
+- [Transmisi Mekanik vs Biologis] Apa yang dimaksud dengan Cyclopropagative pada Transmisi Mekanik vs Biologis? :: Plasmodium mengalami perkembangan seksual dan multiplication dalam Anopheles.
+- [Mosquito — Siklus Hidup Umum] Jelaskan Mosquito mengalami complete metamorphosis dalam konteks Mosquito — Siklus Hidup Umum. :: EGG → LARVA → PUPA → ADULT.
+- [Sandfly] Apa yang dimaksud dengan Pattern pada Sandfly? :: SAND FLY → LEISHMANIA.
+- [Tsetse Fly] Apa yang dimaksud dengan Penyakit pada Tsetse Fly? :: Human African trypanosomiasis akibat Trypanosoma brucei gambiense/rhodesiense.
+- [Triatomine / Kissing Bug] Apa yang dimaksud dengan Transmission pada Triatomine / Kissing Bug? :: Metacyclic trypomastigotes terdapat dalam FECES vector. Infeksi terjadi ketika feses masuk melalui kulit yang terluka atau mukosa.
+- [Triatomine / Kissing Bug] Apa yang dimaksud dengan Pattern pada Triatomine / Kissing Bug? :: KISSING BUG + FECES → CHAGAS.
+- [Blackfly — Simulium] Apa yang dimaksud dengan Penyakit utama pada Blackfly — Simulium? :: Onchocerca volvulus → onchocerciasis / river blindness.
+- [Fleas — Morfologi] Apa yang dimaksud dengan Life cycle pada Fleas — Morfologi? :: EGG → LARVA → PUPA → ADULT.
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang perlu diingat tentang Aedes pada Entomologi Kedokteran (Vektor Penyakit)? :: Dengue/chikungunya
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang perlu diingat tentang Anopheles pada Entomologi Kedokteran (Vektor Penyakit)? :: Malaria
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang perlu diingat tentang Mansonia/Anopheles/Aedes tertentu pada Entomologi Kedokteran (Vektor Penyakit)? :: Filariasis sesuai wilayah
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Filaria dalam mosquito pada Entomologi Kedokteran (Vektor Penyakit)? :: Cyclodevelopmental
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Tick paralysis pada Entomologi Kedokteran (Vektor Penyakit)? :: Toxin, bukan infection
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Propagative pada Entomologi Kedokteran (Vektor Penyakit)? :: Multiplication tanpa developmental change
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Cyclopropagative pada Entomologi Kedokteran (Vektor Penyakit)? :: Development + multiplication
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Plasmodium dalam Anopheles pada Entomologi Kedokteran (Vektor Penyakit)? :: Cyclopropagative
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Aedes pada Entomologi Kedokteran (Vektor Penyakit)? :: Dengue/chikungunya/Zika/yellow fever
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Sandfly pada Entomologi Kedokteran (Vektor Penyakit)? :: Leishmania
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Triatomine feces pada Entomologi Kedokteran (Vektor Penyakit)? :: T. cruzi
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Flea pada Entomologi Kedokteran (Vektor Penyakit)? :: Laterally compressed
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Louse pada Entomologi Kedokteran (Vektor Penyakit)? :: Dorsoventrally flattened
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Sarcoptes pada Entomologi Kedokteran (Vektor Penyakit)? :: Scabies
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Chigger pada Entomologi Kedokteran (Vektor Penyakit)? :: Orientia tsutsugamushi / scrub typhus
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan Hyalomma pada Entomologi Kedokteran (Vektor Penyakit)? :: Crimean-Congo haemorrhagic fever
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan ANOPHELES pada Entomologi Kedokteran (Vektor Penyakit)? :: Malaria; angled resting; larva parallel
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan CULEX pada Entomologi Kedokteran (Vektor Penyakit)? :: JE/West Nile/filariasis; egg raft
+- [Entomologi Kedokteran (Vektor Penyakit)] Apa yang dimaksud dengan TRIATOMINE pada Entomologi Kedokteran (Vektor Penyakit)? :: T. cruzi via feces
+- [Konsep Besar Entomologi Kedokteran] Sebutkan kelompok high-yield pada Konsep Besar Entomologi Kedokteran. :: • Mosquitoes: Anopheles, Aedes, Culex, Mansonia
+  • Flies: sandfly, tsetse fly, blackfly
+  • Bugs: triatomine/kissing bug
+  • Fleas
+  • Lice
+  • Mites
+  • Ticks
+- [Transmisi Mekanik vs Biologis] Sebutkan tiga tipe klasik pada Transmisi Mekanik vs Biologis. :: • Propagative = pathogen MULTIPLY, tetapi tidak mengalami developmental change
   • Cyclodevelopmental = pathogen DEVELOP, tetapi tidak multiply
   • Cyclopropagative = pathogen DEVELOP + MULTIPLY
-- [Aedes — Penyakit] Aedes merupakan vector penting untuk … :: • dengue,
-  • chikungunya,
-  • Zika,
-  • yellow fever,
-  • beberapa filariasis pada wilayah tertentu
-- [Culex — Penyakit] Culex merupakan vector penting untuk … :: • Japanese encephalitis,
-  • West Nile fever,
-  • lymphatic filariasis pada daerah tertentu
-- [Xenopsylla Cheopis] Penyakit paling klasik … :: • Yersinia pestis → plague
-  • Rickettsia typhi → murine typhus
-- [Body Louse — Penyakit Vektor] Body louse merupakan vector penting … :: • Rickettsia prowazekii → epidemic typhus
+- [Mosquito — Siklus Hidup Umum] Sebutkan poin-poin penting tentang Poin praktikum. :: • Larva Anopheles berbeda posisi di permukaan air dibanding Aedes/Culex
+  • Bentuk telur dan siphon larva membantu identifikasi genus
+- [Anopheles — Identifikasi] Sebutkan ciri klasik pada Anopheles — Identifikasi. :: • Telur diletakkan satu-satu dan memiliki lateral floats
+  • Larva berada hampir sejajar permukaan air karena tidak memiliki respiratory siphon panjang
+  • Female palps kira-kira sepanjang proboscis
+  • Sayap sering tampak spotted
+  • Saat resting, tubuh adult membentuk sudut terhadap permukaan
+- [Aedes — Identifikasi] Sebutkan poin-poin penting tentang Aedes aegypti. :: • Tubuh gelap dengan white markings
+  • Pola putih pada thorax dapat menyerupai lyre
+- [Sandfly] Sebutkan poin-poin penting tentang Genera penting. :: • Phlebotomus — Old World
+  • Lutzomyia — New World
+- [Lice — Morfologi] Sebutkan jenis utama pada Lice — Morfologi. :: • Pediculus humanus capitis = head louse
+  • Pediculus humanus humanus/corporis = body louse
+  • Pthirus pubis = pubic/crab louse
+- [Body Louse — Penyakit Vektor] Sebutkan poin-poin penting tentang Body louse merupakan vector penting. :: • Rickettsia prowazekii → epidemic typhus
   • Bartonella quintana → trench fever
   • Borrelia recurrentis → louse-borne relapsing fever
-- [Ticks — Konsep Dasar] Dua kelompok besar … :: • Ixodidae = hard ticks
-  • Argasidae = soft ticks
-- [Hard Tick vs Soft Tick] Hard tick (Ixodidae) … :: • memiliki scutum,
-  • capitulum/mouthparts dapat terlihat dari dorsal,
-  • biasanya feeding lebih lama,
-  • banyak spesies memiliki one-, two-, atau three-host life cycle
-- [Hard Tick vs Soft Tick] Soft tick (Argasidae) … :: • tidak memiliki scutum keras,
-  • integument tampak leathery,
-  • capitulum dewasa berada lebih ventral dan tidak terlihat jelas dari dorsal,
-  • feeding biasanya lebih singkat dan dapat berulang
-- [Myiasis] Bentuk dapat berupa … :: • cutaneous/furuncular,
-  • wound myiasis,
-  • cavitary,
-  • intestinal pada kondisi tertentu
-- [Konsep Besar Entomologi Kedokteran] Exam pearl: Konsep Besar Entomologi Kedokteran :: Sebelum hafal penyakit, identifikasi dulu bentuk arthropod + cara transmisi + habitat/bite timing.
-- [Anopheles — Identifikasi] Mnemonic: Anopheles — Identifikasi :: ANOPHELES = ANGLED resting + malaria.
-- [Aedes — Penyakit] Exam pearl: Aedes — Penyakit :: DAY-BITING + black-and-white mosquito + container breeding → Aedes.
-- [Culex — Penyakit] Jebakan: Culex — Penyakit :: Malaria bukan penyakit utama Culex. Dengue bukan penyakit utama Culex.
-- [Mansonia] High-yield: Mansonia :: Mansonia → vector penting Brugia malayi pada wilayah tertentu.
-- [Blackfly — Simulium] Mnemonic: Blackfly — Simulium :: BLACKFLY + FAST RIVER → RIVER BLINDNESS.
-- [Xenopsylla Cheopis] Exam pearl: Xenopsylla Cheopis :: RAT + FLEA + painful buboes → plague.
-- [Body Louse — Penyakit Vektor] Mnemonic: Body Louse — Penyakit Vektor :: BODY LOUSE = TYphus + TRENCH + RELAPSING fever.
-- [Mites] High-yield: Mites :: SCABIES = mite causes disease directly. SCRUB TYPHUS = chigger mite acts as vector.
-- [Tick Paralysis] Clue: Tick Paralysis :: progressive ascending weakness, tick masih melekat, membaik setelah tick dihilangkan.
+- [Hard Tick vs Soft Tick] Sebutkan poin-poin penting tentang Hard tick (Ixodidae). :: • Memiliki scutum
+  • Capitulum/mouthparts dapat terlihat dari dorsal
+  • Biasanya feeding lebih lama
+  • Banyak spesies memiliki one-, two-, atau three-host life cycle
+- [Hard Tick vs Soft Tick] Sebutkan poin-poin penting tentang Soft tick (Argasidae). :: • Tidak memiliki scutum keras
+  • Integument tampak leathery
+  • Capitulum dewasa berada lebih ventral dan tidak terlihat jelas dari dorsal
+  • Feeding biasanya lebih singkat dan dapat berulang
+- [Myiasis] Sebutkan bentuk pada Myiasis. :: • Cutaneous/furuncular
+  • Wound myiasis
+  • Cavitary
+  • Intestinal pada kondisi tertentu
+- [Vector Control — Prinsip] Sebutkan poin-poin penting tentang Pendekatan. :: • Source reduction
+  • Environmental management
+  • Larval control
+  • Adult vector control
+  • Personal protection
+  • Surveillance
+  • Resistance monitoring
+  • Community participation
+- [Konsep Besar Entomologi Kedokteran] Apa poin high-yield (pearl) tentang Konsep Besar Entomologi Kedokteran? :: Sebelum hafal penyakit, identifikasi dulu bentuk arthropod + cara transmisi + habitat/bite timing.
+- [Anopheles — Identifikasi] Bagaimana cara mengingat Anopheles — Identifikasi? :: ANOPHELES = ANGLED resting + malaria.
+- [Aedes — Penyakit] Apa poin high-yield (pearl) tentang Aedes — Penyakit? :: DAY-BITING + black-and-white mosquito + container breeding → Aedes.
+- [Culex — Penyakit] Apa jebakan yang sering muncul pada soal tentang Culex — Penyakit? :: Malaria bukan penyakit utama Culex. Dengue bukan penyakit utama Culex.
+- [Mansonia] Apa poin high-yield (pearl) tentang Mansonia? :: Mansonia → vector penting Brugia malayi pada wilayah tertentu.
+- [Blackfly — Simulium] Bagaimana cara mengingat Blackfly — Simulium? :: BLACKFLY + FAST RIVER → RIVER BLINDNESS.
+- [Xenopsylla Cheopis] Apa poin high-yield (pearl) tentang Xenopsylla Cheopis? :: RAT + FLEA + painful buboes → plague.
+- [Body Louse — Penyakit Vektor] Bagaimana cara mengingat Body Louse — Penyakit Vektor? :: BODY LOUSE = TYphus + TRENCH + RELAPSING fever.
+- [Mites] Apa poin high-yield (pearl) tentang Mites? :: SCABIES = mite causes disease directly. SCRUB TYPHUS = chigger mite acts as vector.
+- [Tick Paralysis] Apa clue praktikum untuk Tick Paralysis? :: Progressive ascending weakness, tick masih melekat, membaik setelah tick dihilangkan.

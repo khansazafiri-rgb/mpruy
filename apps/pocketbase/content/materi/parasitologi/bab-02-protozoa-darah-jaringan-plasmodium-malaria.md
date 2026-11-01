@@ -379,46 +379,51 @@ Jika melihat:
 
 ## Flashcard {kartu}
 
-- [Fase Eritrosit & Patogenesis Demam] Tertian ≈ setiap 48 jam :: P. vivax, P. ovale; P. falciparum sering tidak teratur terutama awal.
-- [Cerebral Malaria] Vignette :: pasien dari daerah endemis + demam + penurunan kesadaran/kejang → pikirkan malaria falciparum berat sampai terbukti sebaliknya.
-- [Diagnosis Malaria — Thick vs Thin Smear] Prinsip praktikum :: thick = “ada parasit atau tidak?”, thin = “spesies apa dan berapa parasitemianya?”
-- [Toxoplasmic Encephalitis pada HIV/Imunosupresi] Imaging klasik :: multiple ring-enhancing lesions, sering di basal ganglia/corticomedullary junction. Pada pasien HIV dengan CD4 sangat rendah, pola ini adalah vignette klasik.
-- [Malaria vs Toxoplasma — Perbandingan Cepat] target utama klinis :: hepatosit lalu eritrosit
-- [Malaria vs Toxoplasma — Perbandingan Cepat] diagnosis utama :: thick/thin blood smear ± RDT/PCR
-- [Malaria vs Toxoplasma — Perbandingan Cepat] komplikasi khas :: malaria berat/cerebral malaria
-- [Malaria vs Toxoplasma — Perbandingan Cepat] relapse :: P. vivax/P. ovale karena hipnozoit
-- [Malaria vs Toxoplasma — Perbandingan Cepat] penularan :: oocyst lingkungan, tissue cyst daging, transplasental
-- [Malaria vs Toxoplasma — Perbandingan Cepat] target jaringan :: otak, retina, otot, plasenta/janin
-- [Malaria vs Toxoplasma — Perbandingan Cepat] bentuk laten :: bradyzoite dalam tissue cyst
-- [Malaria vs Toxoplasma — Perbandingan Cepat] komplikasi khas :: encephalitis pada imunokompromais, congenital toxoplasmosis, chorioretinitis
-- [High-yield] Plasmodium dan Toxoplasma :: Apicomplexa
-- [High-yield] Sporozoit :: bentuk Plasmodium yang masuk ke manusia saat gigitan nyamuk
-- [High-yield] Merozoit :: bentuk yang menginvasi eritrosit
-- [High-yield] P. vivax/P. ovale :: hipnozoit → relapse
-- [High-yield] P. falciparum :: multiple delicate ring forms + crescent gametocyte + malaria berat
-- [High-yield] P. malariae :: band form + quartan
-- [High-yield] P. knowlesi :: 24-hour erythrocytic cycle dan dapat berat
-- [High-yield] Severe malaria :: emergensi; artesunate IV merupakan terapi utama guideline internasional
-- [High-yield] Manusia :: intermediate host Toxoplasma
-- [High-yield] HIV + multiple ring-enhancing brain lesions :: cerebral toxoplasmosis
-- [High-yield] Congenital toxoplasmosis klasik :: chorioretinitis + hydrocephalus + intracranial calcifications
-- [High-yield] Malaria ditularkan Anopheles :: sporozoit → hati → merozoit → eritrosit. P. falciparum paling berbahaya, P. vivax/ovale punya hipnozoit, malariae punya band form, dan knowlesi punya siklus 24 jam. Diagnosis utama thick/thin smear. Toxoplasma berasal dari siklus kucing, oocyst lingkungan atau tissue cyst daging; tachyzoite = akut, bradyzoite = laten. Waspadai congenital toxoplasmosis dan encephalitis pada HIV
-- [Malaria — Spesies Penting] Spesies utama yang menginfeksi manusia … :: • Plasmodium falciparum
+- [Fase Eritrosit & Patogenesis Demam] Jelaskan: Tertian ≈ setiap 48 jam. :: P. vivax, P. ovale; P. falciparum sering tidak teratur terutama awal.
+- [Cerebral Malaria] Apa yang dimaksud dengan Vignette pada Cerebral Malaria? :: Pasien dari daerah endemis + demam + penurunan kesadaran/kejang → pikirkan malaria falciparum berat sampai terbukti sebaliknya.
+- [Diagnosis Malaria — Thick vs Thin Smear] Apa yang dimaksud dengan Prinsip praktikum pada Diagnosis Malaria — Thick vs Thin Smear? :: Thick = “ada parasit atau tidak?”, thin = “spesies apa dan berapa parasitemianya?”
+- [Toxoplasmic Encephalitis pada HIV/Imunosupresi] Apa yang dimaksud dengan Imaging klasik pada Toxoplasmic Encephalitis pada HIV/Imunosupresi? :: Multiple ring-enhancing lesions, sering di basal ganglia/corticomedullary junction. Pada pasien HIV dengan CD4 sangat rendah, pola ini adalah vignette klasik.
+- [Malaria vs Toxoplasma — Perbandingan Cepat] Jelaskan target utama klinis dalam konteks Malaria vs Toxoplasma — Perbandingan Cepat. :: Hepatosit lalu eritrosit
+- [Malaria vs Toxoplasma — Perbandingan Cepat] Pada Malaria vs Toxoplasma — Perbandingan Cepat, apa diagnosis utamanya? :: Thick/thin blood smear ± RDT/PCR
+- [Malaria vs Toxoplasma — Perbandingan Cepat] Pada Malaria vs Toxoplasma — Perbandingan Cepat, apa komplikasi khasnya? :: Malaria berat/cerebral malaria
+- [Malaria vs Toxoplasma — Perbandingan Cepat] Apa yang dimaksud dengan relapse pada Malaria vs Toxoplasma — Perbandingan Cepat? :: P. vivax/P. ovale karena hipnozoit
+- [Malaria vs Toxoplasma — Perbandingan Cepat] Pada Malaria vs Toxoplasma — Perbandingan Cepat, apa penularannya? :: Oocyst lingkungan, tissue cyst daging, transplasental
+- [Malaria vs Toxoplasma — Perbandingan Cepat] Pada Malaria vs Toxoplasma — Perbandingan Cepat, apa target jaringannya? :: Otak, retina, otot, plasenta/janin
+- [Malaria vs Toxoplasma — Perbandingan Cepat] Pada Malaria vs Toxoplasma — Perbandingan Cepat, apa bentuk latennya? :: Bradyzoite dalam tissue cyst
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan Plasmodium dan Toxoplasma pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Apicomplexa
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan Sporozoit pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Bentuk Plasmodium yang masuk ke manusia saat gigitan nyamuk
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan Merozoit pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Bentuk yang menginvasi eritrosit
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan P. vivax/P. ovale pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Hipnozoit → relapse
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan P. falciparum pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Multiple delicate ring forms + crescent gametocyte + malaria berat
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan P. malariae pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Band form + quartan
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan P. knowlesi pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: 24-hour erythrocytic cycle dan dapat berat
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang perlu diingat tentang Severe malaria pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Emergensi; artesunate IV merupakan terapi utama guideline internasional
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan Manusia pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Intermediate host Toxoplasma
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa jawaban atau kesimpulan untuk petunjuk berikut: HIV + multiple ring-enhancing brain lesions? :: Cerebral toxoplasmosis
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang dimaksud dengan Congenital toxoplasmosis klasik? :: Chorioretinitis + hydrocephalus + intracranial calcifications
+- [Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)] Apa yang perlu diketahui tentang Malaria ditularkan Anopheles pada Protozoa Darah & Jaringan (Plasmodium/Malaria, Toxoplasma)? :: Sporozoit → hati → merozoit → eritrosit. P. falciparum paling berbahaya, P. vivax/ovale punya hipnozoit, malariae punya band form, dan knowlesi punya siklus 24 jam. Diagnosis utama thick/thin smear. Toxoplasma berasal dari siklus kucing, oocyst lingkungan atau tissue cyst daging; tachyzoite = akut, bradyzoite = laten. Waspadai congenital toxoplasmosis dan encephalitis pada HIV
+- [Gambaran Besar] Sebutkan poin-poin penting tentang Kunci belajar. :: • Malaria → pikirkan nyamuk Anopheles, fase hati, eritrosit, demam periodik, dan apusan darah
+  • Toxoplasma → pikirkan kucing, daging kurang matang, kehamilan, otak pada imunokompromais, dan chorioretinitis
+- [Malaria — Spesies Penting] Sebutkan poin-poin penting tentang Spesies utama yang menginfeksi manusia. :: • Plasmodium falciparum
   • Plasmodium vivax
   • Plasmodium ovale
   • Plasmodium malariae
   • Plasmodium knowlesi
-- [Morfologi P. malariae] Clue paling terkenal … :: • band-form trophozoite melintang eritrosit
-  • skizon dapat memberi gambaran rosette/daisy head
-  • eritrosit tidak membesar
-  • lebih menyukai eritrosit tua
-  • pola demam quartan klasik
-- [Hemolisis & Anemia pada Malaria] Anemia malaria terjadi melalui beberapa mekanisme … :: • hemolisis eritrosit terinfeksi saat skizon pecah
-  • clearance eritrosit terinfeksi maupun tidak terinfeksi oleh limpa
-  • supresi eritropoiesis/inflamasi
-  • pada infeksi berulang dapat terjadi anemia kronik
-- [Apicomplexa — Konsep Dasar] High-yield: Apicomplexa — Konsep Dasar :: Plasmodium: hospes definitif = nyamuk Anopheles betina, karena reproduksi seksual terjadi di nyamuk. Manusia = hospes perantara untuk Plasmodium. Toxoplasma gondii: hospes definitif = famili Felidae/kucing; manusia dan hewan berdarah panas lain berperan sebagai hospes perantara.
-- [Infective Form & Diagnostic Form Malaria] Exam trap: Infective Form & Diagnostic Form Malaria :: “bentuk yang diinokulasikan nyamuk ke manusia” = sporozoit, BUKAN merozoit.
-- [Morfologi P. vivax] Clue: Morfologi P. vivax :: menyerang retikulosit eritrosit membesar Schüffner dots trofozoit dapat berbentuk amoeboid dapat ditemukan semua stadium pada darah perifer memiliki hipnozoit
-- [Morfologi P. ovale] Clue: Morfologi P. ovale :: eritrosit membesar dan cenderung oval tepi eritrosit dapat tampak fimbriated/bergerigi Schüffner-like dots menyerang retikulosit memiliki hipnozoit
-- [Host Toxoplasma] Exam trap: Host Toxoplasma :: Manusia BUKAN hospes definitif Toxoplasma karena tidak menghasilkan ookista melalui siklus seksual intestinal.
+- [Fase Eritrosit & Patogenesis Demam] Sebutkan pola klasik pada Fase Eritrosit & Patogenesis Demam. :: • Tertian ≈ setiap 48 jam: P. vivax, P. ovale; P. falciparum sering tidak teratur terutama awal
+  • Quartan ≈ setiap 72 jam: P. malariae
+  • Quotidian ≈ sekitar 24 jam: P. knowlesi
+- [Diagnosis Malaria — Thick vs Thin Smear] Sebutkan poin-poin penting tentang Thick smear. :: • Lebih sensitif untuk mendeteksi adanya parasit karena volume darah yang diperiksa lebih besar
+  • Struktur eritrosit tidak dipertahankan sebaik thin smear
+- [Toxoplasma Gondii — Konsep Dasar] Sebutkan bentuk penting pada Toxoplasma Gondii — Konsep Dasar. :: • Tachyzoite = proliferasi cepat, fase akut/diseminasi
+  • Bradyzoite = berada dalam tissue cyst, fase laten/kronik
+  • Oocyst = dihasilkan melalui siklus seksual pada kucing dan dapat mencemari lingkungan
+- [Congenital Toxoplasmosis] Sebutkan prinsip penting pada Congenital Toxoplasmosis. :: • Probabilitas transmisi umumnya meningkat seiring bertambahnya usia gestasi
+  • Tetapi infeksi yang terjadi lebih awal cenderung menimbulkan penyakit janin yang lebih berat
+- [Congenital Toxoplasmosis] Sebutkan poin-poin penting tentang Trias klasik. :: • Chorioretinitis
+  • Hydrocephalus
+  • Intracranial calcifications
+- [Apicomplexa — Konsep Dasar] Apa poin high-yield (pearl) tentang Apicomplexa — Konsep Dasar? :: Plasmodium: hospes definitif = nyamuk Anopheles betina, karena reproduksi seksual terjadi di nyamuk. Manusia = hospes perantara untuk Plasmodium. Toxoplasma gondii: hospes definitif = famili Felidae/kucing; manusia dan hewan berdarah panas lain berperan sebagai hospes perantara.
+- [Infective Form & Diagnostic Form Malaria] Apa jebakan yang sering muncul pada soal tentang Infective Form & Diagnostic Form Malaria? :: “bentuk yang diinokulasikan nyamuk ke manusia” = sporozoit, BUKAN merozoit.
+- [Morfologi P. vivax] Apa clue praktikum untuk Morfologi P. vivax? :: Menyerang retikulosit eritrosit membesar Schüffner dots trofozoit dapat berbentuk amoeboid dapat ditemukan semua stadium pada darah perifer memiliki hipnozoit
+- [Morfologi P. ovale] Apa clue praktikum untuk Morfologi P. ovale? :: Eritrosit membesar dan cenderung oval tepi eritrosit dapat tampak fimbriated/bergerigi Schüffner-like dots menyerang retikulosit memiliki hipnozoit
+- [Host Toxoplasma] Apa jebakan yang sering muncul pada soal tentang Host Toxoplasma? :: Manusia BUKAN hospes definitif Toxoplasma karena tidak menghasilkan ookista melalui siklus seksual intestinal.

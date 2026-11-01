@@ -226,52 +226,38 @@ Artinya, perubahan permeability dapat mengubah membrane potential walaupun konse
 
 ## Flashcard {kartu}
 
-- [Effector] Contoh termoregulasi :: kenaikan suhu inti → thermoreceptor → hypothalamus → aktivasi keringat + vasodilatasi kulit → suhu turun.
-- [Positive Feedback] Contoh klasik :: kontraksi uterus → cervical stretch → oxytocin ↑ → kontraksi lebih kuat → stretch makin besar → berlanjut sampai bayi lahir.
-- [Positive Feedback] Contoh lain :: aktivasi platelet pada pembentukan clot.
-- [Feedforward Control] Feedforward adalah respons anticipatory :: tubuh menyiapkan respons sebelum perubahan internal penuh terjadi.
-- [Feedforward Control] Perbedaan :: feedback merespons error yang sudah terjadi; feedforward memprediksi kebutuhan yang akan datang.
-- [Homeostasis vs Allostasis] Contoh allostatic response :: exercise → heart rate, ventilation, dan cardiac output meningkat untuk memenuhi kebutuhan metabolik.
-- [Excitable Tissue] excitability :: merespons stimulus
-- [Excitable Tissue] conductivity :: menghantarkan perubahan listrik
-- [Excitable Tissue] contractility :: menghasilkan force/shortening
-- [Excitable Tissue] extensibility :: dapat diregangkan
-- [Excitable Tissue] elasticity :: kembali menuju panjang awal setelah regangan.
-- [Distribusi Ion ECF vs ICF] Secara konseptual :: ECF kaya Na+, Cl−, dan Ca2+.
-- [Distribusi Ion ECF vs ICF] Na+ :: ECF ~140 mEq/L, ICF ~10–15 mEq/L
-- [Distribusi Ion ECF vs ICF] K+ :: ECF ~4 mEq/L, ICF ~140 mEq/L
-- [Electrochemical Gradient] chemical gradient :: kecenderungan bergerak dari konsentrasi tinggi ke rendah
-- [Electrochemical Gradient] electrical gradient :: tarikan/tolakan akibat beda muatan.
-- [Equilibrium Potential dan Konsep Nernst] Shortcut :: semakin besar gradien konsentrasi suatu ion, semakin besar potensial listrik yang dibutuhkan untuk menyeimbangkannya.
-- [Peta Besar Fisiologi Dasar] Empat tema utama bab ini … :: • homeostasis dan sistem kontrol
-  • membran, distribusi ion, dan excitable tissue
-  • electrochemical gradient, Na+/K+-ATPase, dan equilibrium potential
-  • membrane potential, resting membrane potential, dan prinsip Goldman-Hodgkin-Katz
-- [Milieu Intérieur: “Lingkungan Internal”] Variabel internal yang dipertahankan dalam rentang fisiologis antara lain … :: • suhu
-  • pH
-  • glukosa
-  • tekanan darah
-  • konsentrasi O2 dan CO2
-  • osmolaritas
-  • konsentrasi elektrolit
-- [Excitable Tissue] Sifat otot yang sering diuji … :: • excitability: merespons stimulus
-  • conductivity: menghantarkan perubahan listrik
-  • contractility: menghasilkan force/shortening
-  • extensibility: dapat diregangkan
-  • elasticity: kembali menuju panjang awal setelah regangan
-- [Distribusi Ion ECF vs ICF] Nilai pendekatan yang sering digunakan … :: • Na+: ECF ~140 mEq/L, ICF ~10–15 mEq/L
-  • K+: ECF ~4 mEq/L, ICF ~140 mEq/L
-  • free Ca2+ sitosolik sangat rendah dibanding ECF
-  • Cl− umumnya lebih tinggi di ECF
-- [Electrochemical Gradient] Pergerakan ion ditentukan oleh dua gaya … :: • chemical gradient: kecenderungan bergerak dari konsentrasi tinggi ke rendah
-  • electrical gradient: tarikan/tolakan akibat beda muatan
-- [Membrane Potential] Nilainya muncul karena … :: • unequal ion distribution
-  • selective membrane permeability
-  • impermeant intracellular anions
-  • kontribusi electrogenic Na+/K+-ATPase
-- [Konsep Goldman-Hodgkin-Katz] Goldman equation memperhitungkan … :: • concentration gradient beberapa ion
-  • relative permeability membran terhadap masing-masing ion
-- [Milieu Intérieur: “Lingkungan Internal”] High-yield: Milieu Intérieur: “Lingkungan Internal” :: Tubuh mempertahankan “rentang” fisiologis, bukan angka yang benar-benar konstan setiap detik.
-- [Positive Feedback] High-yield: Positive Feedback :: Positive feedback bukan mekanisme utama pemeliharaan stabilitas harian.
-- [Na+/K+-ATPase] High-yield correction: Na+/K+-ATPase :: Pompa Na+/K+ bukan penyebab langsung fase repolarisasi action potential. Repolarisasi cepat terutama disebabkan perubahan conductance kanal ion, khususnya K+ efflux.
-- [Resting Membrane Potential (RMP)] High-yield: Resting Membrane Potential (RMP) :: RMP paling dekat dengan equilibrium potential K+, tetapi tidak identik karena membran juga permeabel terhadap ion lain.
+- [Effector] Apa yang dimaksud dengan Contoh termoregulasi pada Effector (Komponen Sistem Kontrol Fisiologis)? :: Kenaikan suhu inti → thermoreceptor → hypothalamus → aktivasi keringat + vasodilatasi kulit → suhu turun.
+- [Positive Feedback] Apa yang dimaksud dengan Contoh klasik pada Positive Feedback? :: Kontraksi uterus → cervical stretch → oxytocin ↑ → kontraksi lebih kuat → stretch makin besar → berlanjut sampai bayi lahir.
+- [Positive Feedback] Apa yang dimaksud dengan Contoh lain pada Positive Feedback? :: Aktivasi platelet pada pembentukan clot.
+- [Feedforward Control] Jelaskan Feedforward adalah respons anticipatory dalam konteks Feedforward Control. :: Tubuh menyiapkan respons sebelum perubahan internal penuh terjadi.
+- [Feedforward Control] Pada Feedforward Control, apa perbedaannya? :: Feedback merespons error yang sudah terjadi; feedforward memprediksi kebutuhan yang akan datang.
+- [Homeostasis vs Allostasis] Jelaskan Contoh allostatic response dalam konteks Homeostasis vs Allostasis. :: Exercise → heart rate, ventilation, dan cardiac output meningkat untuk memenuhi kebutuhan metabolik.
+- [Excitable Tissue] Apa yang dimaksud dengan excitability pada Excitable Tissue? :: Merespons stimulus
+- [Excitable Tissue] Apa yang dimaksud dengan conductivity pada Excitable Tissue? :: Menghantarkan perubahan listrik
+- [Excitable Tissue] Apa yang dimaksud dengan contractility pada Excitable Tissue? :: Menghasilkan force/shortening
+- [Excitable Tissue] Apa yang dimaksud dengan extensibility pada Excitable Tissue? :: Dapat diregangkan
+- [Excitable Tissue] Apa yang dimaksud dengan elasticity pada Excitable Tissue? :: Kembali menuju panjang awal setelah regangan.
+- [Distribusi Ion ECF vs ICF] Apa yang dimaksud dengan Na+ pada Distribusi Ion ECF vs ICF? :: ECF ~140 mEq/L, ICF ~10–15 mEq/L
+- [Distribusi Ion ECF vs ICF] Apa yang dimaksud dengan K+ pada Distribusi Ion ECF vs ICF? :: ECF ~4 mEq/L, ICF ~140 mEq/L
+- [Electrochemical Gradient] Jelaskan chemical gradient. :: Kecenderungan bergerak dari konsentrasi tinggi ke rendah
+- [Electrochemical Gradient] Apa yang dimaksud dengan electrical gradient pada Electrochemical Gradient? :: Tarikan/tolakan akibat beda muatan.
+- [Excitable Tissue] Sebutkan jaringan utama pada Excitable Tissue. :: • Neuron
+  • Skeletal muscle
+  • Cardiac muscle
+  • Smooth muscle tertentu
+- [Excitable Tissue] Sebutkan sifat otot yang sering diuji pada Excitable Tissue. :: • Excitability: merespons stimulus
+  • Conductivity: menghantarkan perubahan listrik
+  • Contractility: menghasilkan force/shortening
+  • Extensibility: dapat diregangkan
+  • Elasticity: kembali menuju panjang awal setelah regangan
+- [Na+/K+-ATPase] Sebutkan fungsi utama pada Na+/K+-ATPase. :: • Mempertahankan gradien Na+ dan K+ jangka panjang
+  • Membantu mempertahankan volume sel
+  • Bersifat electrogenic karena net satu muatan positif keluar per siklus
+- [Electrochemical Gradient] Sebutkan poin-poin penting tentang Pergerakan ion ditentukan oleh dua gaya. :: • Chemical gradient: kecenderungan bergerak dari konsentrasi tinggi ke rendah
+  • Electrical gradient: tarikan/tolakan akibat beda muatan
+- [Konsep Goldman-Hodgkin-Katz] Sebutkan poin-poin penting tentang Goldman equation memperhitungkan. :: • Concentration gradient beberapa ion
+  • Relative permeability membran terhadap masing-masing ion
+- [Milieu Intérieur: “Lingkungan Internal”] Apa poin high-yield (pearl) tentang Milieu Intérieur: “Lingkungan Internal”? :: Tubuh mempertahankan “rentang” fisiologis, bukan angka yang benar-benar konstan setiap detik.
+- [Positive Feedback] Apa poin high-yield (pearl) tentang Positive Feedback? :: Positive feedback bukan mekanisme utama pemeliharaan stabilitas harian.
+- [Na+/K+-ATPase] Apa jebakan yang sering muncul pada soal tentang Na+/K+-ATPase? :: Pompa Na+/K+ bukan penyebab langsung fase repolarisasi action potential. Repolarisasi cepat terutama disebabkan perubahan conductance kanal ion, khususnya K+ efflux.
+- [Resting Membrane Potential (RMP)] Apa poin high-yield (pearl) tentang Resting Membrane Potential (RMP)? :: RMP paling dekat dengan equilibrium potential K+, tetapi tidak identik karena membran juga permeabel terhadap ion lain.

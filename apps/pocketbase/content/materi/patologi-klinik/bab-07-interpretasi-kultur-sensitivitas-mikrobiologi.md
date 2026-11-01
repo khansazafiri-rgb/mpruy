@@ -622,58 +622,74 @@ Kultur harus dimulai dari kualitas spesimen. Tentukan dulu apakah organisme meru
 
 ## Flashcard {kartu}
 
-- [Alur Pemeriksaan Mikrobiologi] Alur umum :: Spesimen → pemeriksaan langsung/Gram stain bila relevan → inokulasi media → inkubasi → pertumbuhan koloni → identifikasi organisme → antimicrobial susceptibility testing (AST) → interpretasi S/I/R → pelaporan → korelasi klinis.
-- [Empiric vs Definitive Therapy] Target utama stewardship :: de-escalation bila memungkinkan.
-- [High-yield] MIC :: lowest concentration inhibiting visible growth
-- [High-yield] Dalam EUCAST, I :: susceptible, increased exposure
-- [High-yield] De-escalation :: prinsip stewardship penting
-- [High-yield] Selalu baca report dengan urutan :: specimen → significance → organism → AST → resistance pattern → patient context
-- [Gram Stain — Nilai Klinis] Gram stain memberi informasi cepat tentang … :: • Gram-positive vs Gram-negative,
-  • cocci vs bacilli,
-  • pola susunan organisme,
-  • jumlah leukosit,
-  • kualitas spesimen tertentu,
-  • kemungkinan infeksi polimikroba
-- [Gram Stain — Nilai Klinis] Contoh clue klasik … :: • Gram-positive cocci in clusters → curiga Staphylococcus
+- [Alur Pemeriksaan Mikrobiologi] Pada Alur Pemeriksaan Mikrobiologi, apa alur umumnya? :: Spesimen → pemeriksaan langsung/Gram stain bila relevan → inokulasi media → inkubasi → pertumbuhan koloni → identifikasi organisme → antimicrobial susceptibility testing (AST) → interpretasi S/I/R → pelaporan → korelasi klinis.
+- [Empiric vs Definitive Therapy] Jelaskan Target utama stewardship dalam konteks Empiric vs Definitive Therapy. :: De-escalation bila memungkinkan.
+- [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang dimaksud dengan MIC pada Interpretasi Kultur & Sensitivitas Mikrobiologi? :: Lowest concentration inhibiting visible growth
+- [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang dimaksud dengan Dalam EUCAST, I pada Interpretasi Kultur & Sensitivitas Mikrobiologi? :: Susceptible, increased exposure
+- [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang dimaksud dengan De-escalation pada Interpretasi Kultur & Sensitivitas Mikrobiologi? :: Prinsip stewardship penting
+- [Interpretasi Kultur & Sensitivitas Mikrobiologi] Apa yang perlu diketahui tentang Selalu baca report dengan urutan? :: Specimen → significance → organism → AST → resistance pattern → patient context
+- [Gram Stain — Nilai Klinis] Sebutkan poin-poin penting tentang Gram stain memberi informasi cepat tentang. :: • Gram-positive vs Gram-negative
+  • Cocci vs bacilli
+  • Pola susunan organisme
+  • Jumlah leukosit
+  • Kualitas spesimen tertentu
+  • Kemungkinan infeksi polimikroba
+- [Gram Stain — Nilai Klinis] Sebutkan contoh clue klasik pada Gram Stain — Nilai Klinis. :: • Gram-positive cocci in clusters → curiga Staphylococcus
   • Gram-positive cocci in chains/pairs → Streptococcus/Enterococcus
   • Gram-negative diplococci → dapat mengarah ke Neisseria pada konteks tepat
   • Gram-negative rods → kelompok Enterobacterales/non-fermenter dan lain-lain
-- [Kultur Urin — Interpretasi] Kultur urin harus dibaca bersama … :: • gejala urinary tract infection,
-  • urinalysis,
-  • pyuria,
-  • metode pengambilan,
-  • jumlah koloni,
-  • jenis organisme,
-  • kehamilan atau kondisi khusus
-- [Sputum Culture — Kualitas Spesimen] Kualitas sputum dinilai antara lain dari … :: • banyaknya neutrofil,
-  • sedikitnya squamous epithelial cells,
-  • konsistensi dengan gambaran Gram stain dan klinis
-- [CSF Culture] Pada meningitis, CSF dapat dievaluasi dengan … :: • Gram stain,
-  • kultur,
-  • cell count,
-  • protein/glukosa,
-  • molecular testing bila tersedia
-- [Pcr / Molecular Testing vs Culture] Tes molekuler dapat cepat dan sensitif, tetapi … :: • dapat mendeteksi DNA/RNA organisme yang tidak lagi viable,
-  • tidak selalu memberikan phenotypic susceptibility lengkap,
-  • dapat mendeteksi kolonisasi,
-  • panel hanya mendeteksi target yang tercakup
-- [Empiric vs Definitive Therapy] Empiric therapy diberikan sebelum hasil mikrobiologi final berdasarkan … :: • lokasi infeksi,
-  • severity,
-  • epidemiologi lokal,
-  • faktor risiko resistensi,
-  • riwayat kultur sebelumnya
-- [Pseudomonas & Non-Fermenters] Pseudomonas aeruginosa dapat memiliki berbagai mekanisme resistensi … :: • efflux,
-  • porin loss,
-  • beta-lactamase,
-  • target mutation
-- [Polymicrobial Culture] Multiple organisms dapat berarti … :: • true polymicrobial infection,
-  • colonization,
-  • contamination
-- [Blood Culture: Single Positive vs Multiple Sets] Namun, interpretasi berubah pada … :: • prosthetic valve,
-  • central line,
-  • implant,
-  • immunosuppression,
-  • persistent fever
-- [Asymptomatic Bacteriuria] High-yield: Asymptomatic Bacteriuria :: Jangan menyamakan bacteriuria dengan symptomatic UTI. Interpretasi dan indikasi terapi bergantung pada kelompok pasien serta pedoman klinis.
-- [MIC — Minimum Inhibitory Concentration] Penting: MIC — Minimum Inhibitory Concentration :: MIC lebih rendah tidak otomatis berarti antibiotik “lebih kuat” dibanding antibiotik lain. MIC harus dibandingkan dengan breakpoint untuk kombinasi organisme–antibiotik tersebut. Jangan membandingkan angka MIC antar-antibiotik secara langsung tanpa konteks breakpoint dan farmakokinetik/farmakodinamik.
-- [S / I / R] High-yield: S / I / R :: Kategori S/I/R tidak boleh dibaca tanpa mengetahui standard/breakpoint system yang dipakai lab.
+- [Kultur Darah — Prinsip Dasar] Sebutkan prinsip praktis pada Kultur Darah — Prinsip Dasar. :: • Volume darah merupakan faktor utama yield kultur
+  • “Set” biasanya terdiri dari botol aerob dan anaerob
+  • Pengambilan dari dua lokasi perifer yang berbeda membantu membedakan kontaminasi dari bakteremia sejati
+  • Hindari mengambil hanya dari catheter kecuali ada alasan khusus untuk menilai catheter-related bloodstream infection
+  • Antibiotik sebelum kultur dapat menurunkan yield
+- [Kultur Urin — Interpretasi] Sebutkan poin-poin penting tentang Kultur urin harus dibaca bersama. :: • Gejala urinary tract infection
+  • Urinalysis
+  • Pyuria
+  • Metode pengambilan
+  • Jumlah koloni
+  • Jenis organisme
+  • Kehamilan atau kondisi khusus
+- [Wound Culture] Sebutkan poin-poin penting tentang Interpretasi harus memperhatikan. :: • Kedalaman luka
+  • Debridement
+  • Necrosis
+  • Diabetic foot
+  • Device/prosthesis
+  • Kemungkinan polymicrobial infection
+- [Stool Culture] Sebutkan interpretasi tergantung pada Stool Culture. :: • Durasi dan berat gejala
+  • Darah pada feses
+  • Demam
+  • Epidemiologi
+  • Imunokompromais
+  • Outbreak/travel history
+- [Antimicrobial Susceptibility Testing (AST)] Sebutkan metode umum pada Antimicrobial Susceptibility Testing (AST). :: • Disk diffusion/Kirby–Bauer
+  • Broth microdilution
+  • Automated AST systems
+  • Gradient diffusion strips
+  • Molecular resistance testing sebagai pelengkap
+- [Breakpoint] Sebutkan poin-poin penting tentang Breakpoint mempertimbangkan. :: • Distribusi MIC
+  • PK/PD
+  • Dosis dan regimen
+  • Site of infection
+  • Data outcome
+  • Mekanisme resistensi
+- [Biofilm] Sebutkan poin-poin penting tentang Relevansi klinis. :: • Prosthetic joint infection
+  • Central-line infection
+  • Catheter-associated UTI
+  • Endocarditis
+  • Chronic wound
+- [Resistensi Intrinsik vs Acquired] Sebutkan mekanisme umum pada Resistensi Intrinsik vs Acquired. :: • Drug-inactivating enzyme
+  • Target modification
+  • Decreased permeability
+  • Efflux pump
+  • Metabolic bypass
+- [Beta-Lactamase] Sebutkan kelompok klinis penting pada Beta-Lactamase. :: • Penicillinase
+  • ESBL
+  • AmpC
+  • Carbapenemase
+- [Carbapenemase] Sebutkan contoh mekanisme pada Carbapenemase. :: • KPC
+  • NDM dan metallo-beta-lactamase lain
+  • OXA-48-like
+- [Asymptomatic Bacteriuria] Apa poin high-yield (pearl) tentang Asymptomatic Bacteriuria? :: Jangan menyamakan bacteriuria dengan symptomatic UTI. Interpretasi dan indikasi terapi bergantung pada kelompok pasien serta pedoman klinis.
+- [MIC — Minimum Inhibitory Concentration] Apa jebakan yang sering muncul pada soal tentang MIC — Minimum Inhibitory Concentration? :: MIC lebih rendah tidak otomatis berarti antibiotik “lebih kuat” dibanding antibiotik lain. MIC harus dibandingkan dengan breakpoint untuk kombinasi organisme–antibiotik tersebut. Jangan membandingkan angka MIC antar-antibiotik secara langsung tanpa konteks breakpoint dan farmakokinetik/farmakodinamik.
+- [S / I / R] Apa poin high-yield (pearl) tentang S / I / R? :: Kategori S/I/R tidak boleh dibaca tanpa mengetahui standard/breakpoint system yang dipakai lab.

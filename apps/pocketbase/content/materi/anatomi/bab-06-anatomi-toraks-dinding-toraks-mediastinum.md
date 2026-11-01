@@ -350,46 +350,29 @@ Mediastinum yang tampak melebar pada radiografi bukan diagnosis tunggal. Penyeba
 
 ## Flashcard {kartu}
 
-- [Iga: true, false, dan floating] True ribs/vertebrosternal ribs :: costa I–VII, masing-masing mempunyai hubungan langsung ke sternum melalui kartilago kostalisnya.
-- [Iga: true, false, dan floating] False ribs :: costa VIII–XII secara umum tidak mempunyai hubungan langsung independen ke sternum.
-- [Iga: true, false, dan floating] Vertebrochondral ribs :: costa VIII–X biasanya bergabung ke kartilago iga di atasnya sehingga berkontribusi pada costal margin.
-- [Iga: true, false, dan floating] Floating/free ribs :: costa XI–XII tidak mempunyai perlekatan anterior ke sternum atau costal margin.
-- [High-yield hubungan] posterior intercostal supply :: thoracic aorta + supreme intercostal artery untuk upper spaces
-- [High-yield hubungan] anterior intercostal supply :: internal thoracic/musculophrenic
-- [High-yield] Thoracic cage :: sternum + 12 pasang ribs/cartilages + 12 thoracic vertebrae
-- [High-yield] Urutan bundle dari superior ke inferior :: Vein–Artery–Nerve
-- [High-yield] Posterior mediastinum :: ingat esophagus, descending aorta, azygos system, thoracic duct, vagal/autonomic structures
-- [Lapisan dari superficial ke deep] Secara praktis, dari luar ke dalam dapat dipikirkan sebagai … :: • skin
-  • superficial fascia/subcutaneous tissue
-  • deep fascia dan otot dinding toraks
-  • endothoracic fascia
-  • parietal pleura
-- [Sternum] Sternum terdiri atas … :: • manubrium
-  • corpus sterni
-  • processus xiphoideus
-- [Typical rib] Iga tipikal, terutama iga 3–9, mempunyai … :: • head/caput dengan articular facets untuk corpus vertebra
-  • neck/collum
-  • tubercle/tuberculum yang berhubungan dengan transverse process vertebra yang sesuai
-  • angle
-  • shaft/body
-  • costal groove pada permukaan internal dekat tepi inferior
-- [Intercostal Nerves, Dermatomes, dan Sympathetic Connections] Typical intercostal nerve memberi … :: • muscular branches
-  • collateral branch
-  • lateral cutaneous branch, yang kemudian membelah anterior dan posterior
-  • anterior cutaneous branch dekat sternum
-  • sensory fibers ke kulit serta struktur parietal
-  • koneksi ke sympathetic trunk melalui rami communicantes
-- [Pembagian utama] Transverse thoracic plane dari sternal angle ke discus T4–T5 membagi mediastinum menjadi … :: • superior mediastinum
-  • inferior mediastinum
-- [Pembagian utama] Inferior mediastinum dibagi oleh hubungan dengan pericardium menjadi … :: • anterior mediastinum — antara sternum dan pericardium
-  • middle mediastinum — pericardium dan struktur yang berkaitan langsung dengan jantung/root of great vessels
-  • posterior mediastinum — antara pericardium dan columna vertebralis
-- [Posterior mediastinum] Posterior mediastinum berisi jalur longitudinal yang menghubungkan thorax dengan abdomen dan leher … :: • descending thoracic aorta
-  • esophagus
-  • thoracic duct
-  • azygos dan hemiazygos system
-  • vagal/esophageal plexus
-  • sympathetic trunks
-  • greater, lesser, dan least thoracic splanchnic nerves
-  • lymph nodes
-- [Phrenic vs vagus] Mnemonic relasional yang berguna :: phrenic nerve → anterior to root of lung; vagus nerve → posterior to root of lung.
+- [Iga: true, false, dan floating] Jelaskan True ribs/vertebrosternal ribs dalam konteks Iga: true, false, dan floating. :: Costa I–VII, masing-masing mempunyai hubungan langsung ke sternum melalui kartilago kostalisnya.
+- [Iga: true, false, dan floating] Apa yang dimaksud dengan False ribs pada Iga: true, false, dan floating? :: Costa VIII–XII secara umum tidak mempunyai hubungan langsung independen ke sternum.
+- [Iga: true, false, dan floating] Apa yang dimaksud dengan Vertebrochondral ribs pada Iga: true, false, dan floating? :: Costa VIII–X biasanya bergabung ke kartilago iga di atasnya sehingga berkontribusi pada costal margin.
+- [Iga: true, false, dan floating] Apa yang dimaksud dengan Floating/free ribs pada Iga: true, false, dan floating? :: Costa XI–XII tidak mempunyai perlekatan anterior ke sternum atau costal margin.
+- [High-yield hubungan] Jelaskan posterior intercostal supply dalam konteks High-yield hubungan (Suplai Arteri Dinding Toraks). :: Thoracic aorta + supreme intercostal artery untuk upper spaces
+- [High-yield hubungan] Jelaskan anterior intercostal supply dalam konteks High-yield hubungan (Suplai Arteri Dinding Toraks). :: Internal thoracic/musculophrenic
+- [Anatomi Toraks (Dinding Toraks, Mediastinum)] Apa yang dimaksud dengan Thoracic cage pada Anatomi Toraks (Dinding Toraks, Mediastinum)? :: Sternum + 12 pasang ribs/cartilages + 12 thoracic vertebrae
+- [Anatomi Toraks (Dinding Toraks, Mediastinum)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Superior vs inferior mediastinum dipisahkan oleh plane sternal angle? :: T4–T5 disc
+- [Anatomi Toraks (Dinding Toraks, Mediastinum)] Apa yang dimaksud dengan Urutan bundle dari superior ke inferior? :: Vein–Artery–Nerve
+- [Anatomi Toraks (Dinding Toraks, Mediastinum)] Apa yang perlu diketahui tentang Posterior mediastinum pada Anatomi Toraks (Dinding Toraks, Mediastinum)? :: Ingat esophagus, descending aorta, azygos system, thoracic duct, vagal/autonomic structures
+- [Sternum] Sebutkan poin-poin penting tentang Sternum. :: • Manubrium
+  • Corpus sterni
+  • Processus xiphoideus
+- [Typical rib] Sebutkan poin-poin penting tentang Iga tipikal, terutama iga 3–9, mempunyai. :: • Head/caput dengan articular facets untuk corpus vertebra
+  • Neck/collum
+  • Tubercle/tuberculum yang berhubungan dengan transverse process vertebra yang sesuai
+  • Angle
+  • Shaft/body
+  • Costal groove pada permukaan internal dekat tepi inferior
+- [Intercostal Nerves, Dermatomes, dan Sympathetic Connections] Sebutkan poin-poin penting tentang Typical intercostal nerve memberi. :: • Muscular branches
+  • Collateral branch
+  • Lateral cutaneous branch, yang kemudian membelah anterior dan posterior
+  • Anterior cutaneous branch dekat sternum
+  • Sensory fibers ke kulit serta struktur parietal
+  • Koneksi ke sympathetic trunk melalui rami communicantes
+- [Phrenic vs vagus] Mnemonic relasional yang berguna: apa isi atau ringkasannya? :: Phrenic nerve → anterior to root of lung; vagus nerve → posterior to root of lung.

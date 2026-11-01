@@ -908,5 +908,117 @@
     "chapter": "Dasar Imunoserologi Klinik",
     "file": "patologi-klinik/bab-08-dasar-imunoserologi-klinik.md",
     "docBab": 8
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Nyeri Kepala Primer (Tension Type, Migren, Cluster)",
+    "file": "sistem-saraf/bab-01-nyeri-kepala-primer-tension-type-migren-cluster.md",
+    "docBab": 1
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Nyeri Kepala Sekunder & Red Flags",
+    "file": "sistem-saraf/bab-02-nyeri-kepala-sekunder-red-flags.md",
+    "docBab": 2
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Vertigo Perifer & Sentral",
+    "file": "sistem-saraf/bab-03-vertigo-perifer-sentral.md",
+    "docBab": 3
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Stroke Iskemik",
+    "file": "sistem-saraf/bab-04-stroke-iskemik.md",
+    "docBab": 4
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Stroke Hemoragik & Perdarahan Intrakranial",
+    "file": "sistem-saraf/bab-05-stroke-hemoragik-perdarahan-intrakranial.md",
+    "docBab": 5
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Epilepsi & Kejang (termasuk Kejang Demam)",
+    "file": "sistem-saraf/bab-06-epilepsi-kejang-termasuk-kejang-demam.md",
+    "docBab": 6
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Infeksi SSP: Meningitis",
+    "file": "sistem-saraf/bab-07-infeksi-ssp-meningitis.md",
+    "docBab": 7
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Infeksi SSP: Ensefalitis",
+    "file": "sistem-saraf/bab-08-infeksi-ssp-ensefalitis.md",
+    "docBab": 8
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Tetanus & Infeksi Neuromuskular",
+    "file": "sistem-saraf/bab-09-tetanus-infeksi-neuromuskular.md",
+    "docBab": 9
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Trauma Kepala & Cedera Medula Spinalis",
+    "file": "sistem-saraf/bab-10-trauma-kepala-cedera-medula-spinalis.md",
+    "docBab": 10
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Gangguan Gerak: Parkinson & Tremor",
+    "file": "sistem-saraf/bab-11-gangguan-gerak-parkinson-tremor.md",
+    "docBab": 11
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Penyakit Demielinisasi (Multiple Sclerosis, Guillain-Barré)",
+    "file": "sistem-saraf/bab-12-penyakit-demielinisasi-multiple-sclerosis.md",
+    "docBab": 12
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Neuropati Perifer",
+    "file": "sistem-saraf/bab-13-neuropati-perifer.md",
+    "docBab": 13
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Tumor Sistem Saraf Pusat",
+    "file": "sistem-saraf/bab-14-tumor-sistem-saraf-pusat.md",
+    "docBab": 14
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Penurunan Kesadaran & Koma",
+    "file": "sistem-saraf/bab-15-penurunan-kesadaran-koma.md",
+    "docBab": 15
+  },
+  {
+    "subject": "sistem-saraf",
+    "subjectName": "Sistem Saraf",
+    "chapter": "Kelainan Kongenital Saraf (Spina Bifida, Hidrosefalus)",
+    "file": "sistem-saraf/bab-16-kelainan-kongenital-saraf-spina-bifida.md",
+    "docBab": 16
   }
 ]

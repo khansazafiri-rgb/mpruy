@@ -425,84 +425,83 @@ Contoh konsekuensi:
 
 ## Flashcard {kartu}
 
-- [Gambaran Besar] Vitamin larut lemak :: absorpsinya mengikuti absorpsi lemak, memerlukan empedu/misel, dapat disimpan lebih banyak, dan karena itu defisiensi cenderung muncul lebih lambat tetapi toksisitas lebih mungkin terjadi.
-- [Gambaran Besar] Vitamin larut air :: umumnya memiliki cadangan tubuh lebih terbatas dan kelebihan lebih mudah diekskresikan melalui urin. Pengecualian penting: vitamin B12 memiliki cadangan hati yang besar sehingga defisiensi dapat membutuhkan waktu bertahun-tahun.
-- [Gambaran Besar] PENTING :: malabsorpsi lemak, penyakit kolestatik, insufisiensi pankreas, atau gangguan pembentukan misel dapat menyebabkan defisiensi vitamin A, D, E, dan K secara bersamaan.
-- [Vitamin A — Retinoid] Retinol :: bentuk alkohol dan bentuk transport/storage penting.
-- [Vitamin A — Retinoid] Retinal :: aldehida; 11-cis-retinal penting pada siklus visual.
-- [Vitamin A — Retinoid] Retinoic acid :: regulator transkripsi melalui nuclear receptor; tidak dapat dikonversi kembali menjadi retinal untuk fungsi visual.
-- [Vitamin A — Retinoid] β-carotene :: provitamin A dari tumbuhan.
-- [Vitamin A sebagai Regulator Gen] Jebakan soal :: β-carotene berlebih dapat memberi warna kekuningan pada kulit, tetapi tidak sama dengan toksisitas retinoid berat dan biasanya tidak menyebabkan scleral icterus.
-- [Vitamin D — Prohormone Steroid] Vitamin D3 (cholecalciferol) :: berasal dari kulit atau sumber hewani.
-- [Vitamin D — Prohormone Steroid] Kulit :: 7-dehydrocholesterol —UVB→ previtamin D3 → vitamin D3.
-- [Vitamin D — Prohormone Steroid] Hati :: Vitamin D —25-hydroxylase, terutama CYP2R1→ 25-hydroxyvitamin D [25(OH)D, calcidiol].
-- [Vitamin D — Prohormone Steroid] Ginjal :: 25(OH)D —1α-hydroxylase/CYP27B1→ 1,25-dihydroxyvitamin D [1,25(OH)2D, calcitriol], bentuk hormonal aktif.
-- [Regulasi Vitamin D] PENTING :: marker yang paling umum digunakan untuk menilai status vitamin D tubuh adalah 25(OH)D, bukan 1,25(OH)2D.
-- [Vitamin B1 — Thiamine] Bentuk aktif :: thiamine pyrophosphate (TPP).
-- [Vitamin B1 — Thiamine] PENTING :: pada pasien berisiko defisiensi thiamine, thiamine harus diberikan segera sebelum atau bersamaan dengan pemberian glukosa bila memungkinkan agar beban metabolik glukosa tidak memperburuk defisiensi.
-- [Vitamin B5 — Pantothenic Acid] PENTING :: CoA membawa acyl group dalam banyak jalur:
-- [Vitamin B6 — Pyridoxine] Bentuk aktif :: pyridoxal phosphate (PLP).
-- [Vitamin B6 — Pyridoxine] Penyebab klasik :: isoniazid, hydralazine, penicillamine, sebagian obat tertentu, dan malnutrisi.
-- [Korelasi Malabsorpsi] PENTING :: pasien dengan cholestasis, pancreatic insufficiency, short bowel, atau penyakit usus tertentu dapat mengalami kombinasi defisiensi ini.
-- [Clinical Pattern Recognition] Kasus 1 :: alcoholic patient, confusion + ophthalmoplegia + ataxia → pikirkan B1 deficiency/Wernicke.
-- [Clinical Pattern Recognition] Kasus 2 :: photosensitive dermatitis + diarrhea + dementia → B3 deficiency/pellagra.
-- [Clinical Pattern Recognition] Kasus 3 :: TB treatment dengan isoniazid + neuropathy → B6 deficiency.
-- [Clinical Pattern Recognition] Kasus 4 :: macrocytic anemia + loss of vibration/proprioception → B12 deficiency.
-- [Clinical Pattern Recognition] Kasus 5 :: macrocytic anemia tanpa neurologic signs pada diet rendah folate → B9 deficiency.
-- [Clinical Pattern Recognition] Kasus 6 :: bleeding gums + perifollicular hemorrhage + poor wound healing → vitamin C deficiency.
-- [Clinical Pattern Recognition] Kasus 7 :: prolonged PT pada pasien fat malabsorption → vitamin K deficiency.
-- [High-yield] B7 biotin :: carboxylation
-- [High-yield] B12 cobalamin :: methionine synthase + methylmalonyl-CoA mutase
-- [High-yield] Vitamin A :: retinal untuk vision; retinoic acid untuk gene transcription
-- [High-yield] Vitamin D :: liver membuat 25(OH)D; kidney membuat 1,25(OH)2D
-- [High-yield] Vitamin E: antioksidan lipid membrane; deficiency :: neurologic + hemolysis
-- [High-yield] Vitamin K :: γ-carboxylation faktor II, VII, IX, X, C, S
-- [High-yield] B12 :: megaloblastic anemia + neurologic signs + ↑ homocysteine + ↑ MMA
-- [High-yield] Vitamin C: collagen hydroxylation; deficiency :: scurvy
-- [High-yield] E: antioksidan lipid; defisiensi :: neuropathy dan hemolysis
-- [High-yield] B9 deficiency :: ↑ homocysteine, MMA normal, tanpa neuro khas
-- [High-yield] B12 deficiency :: ↑ homocysteine + ↑ MMA + neurologic dysfunction
-- [Vitamin A — Retinoid] Bentuk utama vitamin A … :: • Retinol: bentuk alkohol dan bentuk transport/storage penting
+- [Gambaran Besar] Jelaskan Vitamin larut lemak dalam konteks Gambaran Besar. :: Absorpsinya mengikuti absorpsi lemak, memerlukan empedu/misel, dapat disimpan lebih banyak, dan karena itu defisiensi cenderung muncul lebih lambat tetapi toksisitas lebih mungkin terjadi.
+- [Gambaran Besar] Jelaskan Vitamin larut air dalam konteks Gambaran Besar. :: Umumnya memiliki cadangan tubuh lebih terbatas dan kelebihan lebih mudah diekskresikan melalui urin. Pengecualian penting: vitamin B12 memiliki cadangan hati yang besar sehingga defisiensi dapat membutuhkan waktu bertahun-tahun.
+- [Vitamin A — Retinoid] Apa yang dimaksud dengan Retinol pada Vitamin A — Retinoid? :: Bentuk alkohol dan bentuk transport/storage penting.
+- [Vitamin A — Retinoid] Apa yang dimaksud dengan Retinal pada Vitamin A — Retinoid? :: Aldehida; 11-cis-retinal penting pada siklus visual.
+- [Vitamin A — Retinoid] Apa yang dimaksud dengan Retinoic acid pada Vitamin A — Retinoid? :: Regulator transkripsi melalui nuclear receptor; tidak dapat dikonversi kembali menjadi retinal untuk fungsi visual.
+- [Vitamin A — Retinoid] Apa yang dimaksud dengan β-carotene pada Vitamin A — Retinoid? :: Provitamin A dari tumbuhan.
+- [Vitamin D — Prohormone Steroid] Jelaskan Vitamin D3 (cholecalciferol) dalam konteks Vitamin D — Prohormone Steroid. :: Berasal dari kulit atau sumber hewani.
+- [Vitamin D — Prohormone Steroid] Jelaskan Vitamin D2 (ergocalciferol) dalam konteks Vitamin D — Prohormone Steroid. :: Berasal dari sumber tumbuhan/fungi.
+- [Vitamin D — Prohormone Steroid] Apa yang dimaksud dengan Kulit pada Vitamin D — Prohormone Steroid? :: 7-dehydrocholesterol —UVB→ previtamin D3 → vitamin D3.
+- [Vitamin D — Prohormone Steroid] Apa yang dimaksud dengan Hati pada Vitamin D — Prohormone Steroid? :: Vitamin D —25-hydroxylase, terutama CYP2R1→ 25-hydroxyvitamin D [25(OH)D, calcidiol].
+- [Vitamin D — Prohormone Steroid] Apa yang dimaksud dengan Ginjal pada Vitamin D — Prohormone Steroid? :: 25(OH)D —1α-hydroxylase/CYP27B1→ 1,25-dihydroxyvitamin D [1,25(OH)2D, calcitriol], bentuk hormonal aktif.
+- [Vitamin B1 — Thiamine] Pada Vitamin B1 — Thiamine, apa bentuk aktifnya? :: Thiamine pyrophosphate (TPP).
+- [Vitamin B6 — Pyridoxine] Pada Vitamin B6 — Pyridoxine, apa bentuk aktifnya? :: Pyridoxal phosphate (PLP).
+- [Vitamin B6 — Pyridoxine] Pada Vitamin B6 — Pyridoxine, apa penyebab klasiknya? :: Isoniazid, hydralazine, penicillamine, sebagian obat tertentu, dan malnutrisi.
+- [Clinical Pattern Recognition] Apa yang dimaksud dengan Kasus 1 pada Clinical Pattern Recognition? :: Alcoholic patient, confusion + ophthalmoplegia + ataxia → pikirkan B1 deficiency/Wernicke.
+- [Clinical Pattern Recognition] Apa yang dimaksud dengan Kasus 2 pada Clinical Pattern Recognition? :: Photosensitive dermatitis + diarrhea + dementia → B3 deficiency/pellagra.
+- [Clinical Pattern Recognition] Apa yang dimaksud dengan Kasus 3 pada Clinical Pattern Recognition? :: TB treatment dengan isoniazid + neuropathy → B6 deficiency.
+- [Clinical Pattern Recognition] Apa yang dimaksud dengan Kasus 4 pada Clinical Pattern Recognition? :: Macrocytic anemia + loss of vibration/proprioception → B12 deficiency.
+- [Clinical Pattern Recognition] Apa yang dimaksud dengan Kasus 5 pada Clinical Pattern Recognition? :: Macrocytic anemia tanpa neurologic signs pada diet rendah folate → B9 deficiency.
+- [Clinical Pattern Recognition] Apa yang dimaksud dengan Kasus 6 pada Clinical Pattern Recognition? :: Bleeding gums + perifollicular hemorrhage + poor wound healing → vitamin C deficiency.
+- [Clinical Pattern Recognition] Apa yang dimaksud dengan Kasus 7 pada Clinical Pattern Recognition? :: Prolonged PT pada pasien fat malabsorption → vitamin K deficiency.
+- [Clinical Pattern Recognition] Apa yang dimaksud dengan Kasus 8 pada Clinical Pattern Recognition? :: Anak dengan bowing legs/growth plate abnormality → vitamin D deficiency/rickets.
+- [Vitamin Larut Lemak & Larut Air] Apa yang perlu diingat tentang B7 biotin pada Vitamin Larut Lemak & Larut Air? :: Carboxylation
+- [Vitamin Larut Lemak & Larut Air] Apa yang perlu diingat tentang B12 cobalamin pada Vitamin Larut Lemak & Larut Air? :: Methionine synthase + methylmalonyl-CoA mutase
+- [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang Vitamin A pada Vitamin Larut Lemak & Larut Air? :: Retinal untuk vision; retinoic acid untuk gene transcription
+- [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang Vitamin D pada Vitamin Larut Lemak & Larut Air? :: Liver membuat 25(OH)D; kidney membuat 1,25(OH)2D
+- [Vitamin Larut Lemak & Larut Air] Apa jawaban atau kesimpulan untuk petunjuk berikut: Vitamin E: antioksidan lipid membrane; deficiency? :: Neurologic + hemolysis
+- [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang Vitamin K pada Vitamin Larut Lemak & Larut Air? :: Γ-carboxylation faktor II, VII, IX, X, C, S
+- [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang B12 pada Vitamin Larut Lemak & Larut Air? :: Megaloblastic anemia + neurologic signs + ↑ homocysteine + ↑ MMA
+- [Vitamin Larut Lemak & Larut Air] Apa jawaban atau kesimpulan untuk petunjuk berikut: Vitamin C: collagen hydroxylation; deficiency? :: Scurvy
+- [Vitamin Larut Lemak & Larut Air] Apa jawaban atau kesimpulan untuk petunjuk berikut: E: antioksidan lipid; defisiensi? :: Neuropathy dan hemolysis
+- [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang B9 deficiency pada Vitamin Larut Lemak & Larut Air? :: ↑ homocysteine, MMA normal, tanpa neuro khas
+- [Vitamin Larut Lemak & Larut Air] Apa yang perlu diketahui tentang B12 deficiency pada Vitamin Larut Lemak & Larut Air? :: ↑ homocysteine + ↑ MMA + neurologic dysfunction
+- [Vitamin Larut Lemak & Larut Air] Apa yang dimaksud dengan Vitamin C: collagen hydroxylation; deficiency? :: Scurvy
+- [Vitamin A — Retinoid] Sebutkan poin-poin penting tentang Bentuk utama vitamin A. :: • Retinol: bentuk alkohol dan bentuk transport/storage penting
   • Retinal: aldehida; 11-cis-retinal penting pada siklus visual
   • Retinoic acid: regulator transkripsi melalui nuclear receptor; tidak dapat dikonversi kembali menjadi retinal untuk fungsi visual
-  • β-carotene: provitamin A dari tumbuhan
-- [Vitamin D — Prohormone Steroid] Vitamin D terdiri terutama dari … :: • Vitamin D3 (cholecalciferol): berasal dari kulit atau sumber hewani
-  • Vitamin D2 (ergocalciferol): berasal dari sumber tumbuhan/fungi
-- [Defisiensi dan Toksisitas Vitamin D] Temuan biokimia yang dapat muncul pada defisiensi berat … :: • ↓ absorpsi Ca/P
-  • secondary hyperparathyroidism
-  • ↑ alkaline phosphatase karena peningkatan aktivitas osteoblast pada proses remodeling
-- [Vitamin K — γ-Carboxylation] Protein yang bergantung vitamin K … :: • Faktor koagulasi II, VII, IX, X
+  • Β-carotene: provitamin A dari tumbuhan
+- [Vitamin K — γ-Carboxylation] Sebutkan poin-poin penting tentang Protein yang bergantung vitamin K. :: • Faktor koagulasi II, VII, IX, X
   • Protein C dan Protein S
-- [Warfarin dan Vitamin K Cycle] Defisiensi vitamin K … :: • Neonatus: cadangan rendah dan flora usus belum berkembang → diberikan vitamin K profilaksis setelah lahir
+- [Warfarin dan Vitamin K Cycle] Sebutkan poin-poin penting tentang Defisiensi vitamin K. :: • Neonatus: cadangan rendah dan flora usus belum berkembang → diberikan vitamin K profilaksis setelah lahir
   • Malabsorpsi lemak atau terapi antibiotik spektrum luas dapat meningkatkan risiko defisiensi
-- [Vitamin B1 — Thiamine] Enzim HIGH-YIELD yang membutuhkan TPP … :: • Pyruvate dehydrogenase
-  • α-Ketoglutarate dehydrogenase
+- [Vitamin B1 — Thiamine] Sebutkan enzim HIGH-YIELD yang membutuhkan TPP pada Vitamin B1 — Thiamine. :: • Pyruvate dehydrogenase
+  • Α-Ketoglutarate dehydrogenase
   • Branched-chain α-ketoacid dehydrogenase
   • Transketolase pada pentose phosphate pathway
-- [Vitamin B3 — Niacin] Defisiensi niacin → pellagra … :: • Dermatitis photosensitive
-  • Diarrhea
-  • Dementia
-  • Bila berat: Death
-- [Vitamin B6 — Pyridoxine] PLP diperlukan untuk … :: • Transamination oleh aminotransferases
-  • Decarboxylation amino acid → neurotransmitter
-  • Glycogen phosphorylase
-  • ALA synthase pada heme synthesis
-  • Konversi tryptophan → niacin
-  • Homocysteine → cystathionine melalui cystathionine β-synthase
-- [Vitamin B12 — Cobalamin] B12 berasal terutama dari produk hewani dan memerlukan proses absorpsi kompleks … :: • Dilepas dari makanan di lambung
-  • Berikatan dengan haptocorrin/R-protein
-  • Protease pankreas membebaskan B12 di duodenum
-  • B12 kemudian berikatan dengan intrinsic factor dari parietal cell
-  • Kompleks IF–B12 diserap di terminal ileum
-- [Vitamin C — Ascorbic Acid] Defisiensi → scurvy … :: • Gingival bleeding
-  • Petechiae/perifollicular hemorrhage
-  • Easy bruising
-  • Poor wound healing
-  • Corkscrew hairs
-  • Anemia dapat terjadi akibat perdarahan dan gangguan absorpsi besi
-- [Vitamin A dan Siklus Visual] High-yield: Vitamin A dan Siklus Visual :: Vitamin A deficiency → gangguan adaptasi gelap/night blindness. Defisiensi lebih berat → xerophthalmia, Bitot spots, keratomalacia. Retinoic acid bekerja terutama pada ekspresi gen, bukan sebagai chromophore visual.
-- [Vitamin E — Tocopherol] HIGH-YIELD: Vitamin E — Tocopherol :: Vitamin E melindungi membran RBC dan neuron dari oxidative damage.
-- [Vitamin K — γ-Carboxylation] Mnemonic klasik: Vitamin K — γ-Carboxylation :: “1972” → 10, 9, 7, 2 + C dan S.
-- [Warfarin dan Vitamin K Cycle] High-yield: Warfarin dan Vitamin K Cycle :: Factor VII memiliki half-life relatif pendek → PT/INR berubah lebih awal. Protein C juga memiliki half-life pendek → pada awal terapi warfarin dapat terjadi transient hypercoagulable state, sehingga pada pasien tertentu diperlukan bridging anticoagulation sesuai indikasi klinis.
-- [Vitamin B1 — Thiamine] Mnemonic: Vitamin B1 — Thiamine :: “TPP for oxidative DECARBOXYLATION + transketolase.”
-- [Vitamin B6 — Pyridoxine] HIGH-YIELD: Vitamin B6 — Pyridoxine :: Isoniazid dapat menyebabkan B6 deficiency → neuropathy; pyridoxine diberikan sebagai pencegahan pada pasien berisiko.
+- [Vitamin B2 — Riboflavin] Sebutkan bentuk aktif pada Vitamin B2 — Riboflavin. :: • FAD
+  • FMN
+- [Vitamin B2 — Riboflavin] Sebutkan poin-poin penting tentang Defisiensi riboflavin. :: • Angular cheilitis/cheilosis
+  • Stomatitis
+  • Glossitis
+  • Corneal vascularization dapat muncul
+- [Vitamin B3 — Niacin] Sebutkan bentuk aktif pada Vitamin B3 — Niacin. :: • NAD+
+  • NADP+
+- [Vitamin B6 — Pyridoxine] Sebutkan poin-poin penting tentang Defisiensi B6. :: • Sideroblastic/microcytic anemia karena gangguan heme synthesis
+  • Peripheral neuropathy
+  • Seizures/irritability karena gangguan neurotransmitter
+  • Cheilosis/glossitis
+- [Vitamin B9 — Folate] Sebutkan poin-poin penting tentang Defisiensi B9. :: • Megaloblastic macrocytic anemia
+  • Hypersegmented neutrophils
+  • ↑ homocysteine
+  • Methylmalonic acid NORMAL
+  • Neural tube defects pada janin bila maternal folate rendah
+- [Vitamin B9 — Folate] Sebutkan poin-poin penting tentang Obat terkait. :: • Methotrexate menghambat human dihydrofolate reductase (DHFR)
+  • Trimethoprim menghambat bacterial DHFR
+  • Pyrimethamine menghambat protozoal DHFR
+- [Vitamin B12 — Cobalamin] Sebutkan poin-poin penting tentang Defisiensi B12. :: • Megaloblastic anemia
+  • ↑ homocysteine
+  • ↑ methylmalonic acid
+  • Neurologic dysfunction, termasuk paresthesia, ataxia, dan posterior/lateral column involvement
+- [Vitamin C — Ascorbic Acid] Sebutkan fungsi penting pada Vitamin C — Ascorbic Acid. :: • Hydroxylation proline dan lysine pada collagen synthesis
+  • Membantu absorpsi besi dengan mempertahankan Fe dalam bentuk yang lebih mudah diserap
+  • Berperan pada sintesis catecholamine melalui dopamine β-hydroxylase
+  • Antioksidan larut air
+- [Vitamin A dan Siklus Visual] Apa poin high-yield (pearl) tentang Vitamin A dan Siklus Visual? :: Vitamin A deficiency → gangguan adaptasi gelap/night blindness. Defisiensi lebih berat → xerophthalmia, Bitot spots, keratomalacia. Retinoic acid bekerja terutama pada ekspresi gen, bukan sebagai chromophore visual.
+- [Vitamin E — Tocopherol] Apa poin high-yield (pearl) tentang Vitamin E — Tocopherol? :: Vitamin E melindungi membran RBC dan neuron dari oxidative damage.
+- [Vitamin K — γ-Carboxylation] Bagaimana cara mengingat Vitamin K — γ-Carboxylation? :: “1972” → 10, 9, 7, 2 + C dan S.
+- [Warfarin dan Vitamin K Cycle] Apa poin high-yield (pearl) tentang Warfarin dan Vitamin K Cycle? :: Factor VII memiliki half-life relatif pendek → PT/INR berubah lebih awal. Protein C juga memiliki half-life pendek → pada awal terapi warfarin dapat terjadi transient hypercoagulable state, sehingga pada pasien tertentu diperlukan bridging anticoagulation sesuai indikasi klinis.
+- [Vitamin B1 — Thiamine] Bagaimana cara mengingat Vitamin B1 — Thiamine? :: “TPP for oxidative DECARBOXYLATION + transketolase.”
+- [Vitamin B6 — Pyridoxine] Apa poin high-yield (pearl) tentang Vitamin B6 — Pyridoxine? :: Isoniazid dapat menyebabkan B6 deficiency → neuropathy; pyridoxine diberikan sebagai pencegahan pada pasien berisiko.
