@@ -18,6 +18,7 @@ const ALL_NAV = [
   { to: '/beranda', label: 'Beranda', short: 'Beranda', icon: Home },
   { to: '/mata-kuliah', label: 'Mata kuliah', short: 'Matkul', icon: BookOpen },
   { to: '/simulasi-dokter', label: 'Simulasi dokter', desk: 'Simulasi', icon: Stethoscope, noBottom: true },
+  { to: '/anatomy', label: 'Human Anatomy', icon: FlaskConical, noBottom: true },
   { to: '/lab', label: 'MEDCOEL Lab', desk: 'Lab', icon: FlaskConical, noBottom: true },
   { to: '/drilling', label: 'Drilling', icon: Crosshair, noBottom: true, drilling: true },
   { to: '/progres', label: 'Progres', short: 'Progres', icon: TrendingUp },
