@@ -77,3 +77,14 @@
 .anatomy-hero-model img{mix-blend-mode:lighten}
 .anatomy-product .anatomy-search input:focus-visible{outline:none}
 .anatomy-search:focus-within{border-color:rgb(var(--brand));box-shadow:0 0 0 3px rgb(var(--brand)/.15)}
+/* System cards carry a picture of the whole system. */
+.library-system-picture{display:block;width:100%;margin-bottom:12px}
+.library-system-card .system-thumbnail{width:100%;height:auto;aspect-ratio:1/1;border-radius:10px}
+.library-system-card .system-thumbnail img{transition:transform .25s}
+.library-system-card:not(:disabled):hover .system-thumbnail img{transform:scale(1.05)}
+.library-system-card{padding:10px 10px 14px}
+.library-system-card h3{font-size:13px;padding:0 4px}
+.library-system-card p{font-size:11px;padding:0 4px;margin:4px 0 12px}
+.library-system-card small{font-size:10px;padding:0 4px}
+.library-system-card > svg.library-system-icon{margin:6px 4px 14px}
+@media (prefers-reduced-motion:reduce){.library-system-card .system-thumbnail img{transition:none}}

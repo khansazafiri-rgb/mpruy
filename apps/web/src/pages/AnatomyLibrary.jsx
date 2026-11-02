@@ -297,7 +297,7 @@ function LandingContent() {
             const Icon = SYSTEM_ICONS[s.id];
             return (
               <Link key={s.id} className={'library-system-card system-' + s.id} to={'/anatomy/system/' + s.id}>
-                <Icon size={23} />
+                <SystemPicture registry={registry} system={s} Icon={Icon} />
                 <h3>{s.name}</h3>
                 <p>{s.description}</p>
                 <small>{count(s.count)} struktur <ArrowRight size={14} /></small>
@@ -523,6 +523,17 @@ function RegionChoices({ registry, onChoose, system = '', selected = '' }) {
   );
 }
 
+// Picture of the whole system rendered from the atlas meshes; the icon stays as a fallback.
+function SystemPicture({ registry, system, Icon }) {
+  const path = registry.previews.systems?.[system.id]?.url;
+  if (!path) return <Icon size={22} className="library-system-icon" />;
+  return (
+    <span className="library-system-picture">
+      <StructureThumbnail path={path} name={'Sistem ' + system.name} className="system-thumbnail" />
+    </span>
+  );
+}
+
 function SystemChoices({ registry, region, onChoose, selected }) {
   return (
     <div className="library-system-grid">
@@ -531,7 +542,7 @@ function SystemChoices({ registry, region, onChoose, selected }) {
         const Icon = SYSTEM_ICONS[s.id];
         return (
           <button type="button" className="library-system-card" key={s.id} disabled={!n} aria-pressed={selected === s.id} onClick={() => onChoose(s.id)}>
-            <Icon size={22} />
+            <SystemPicture registry={registry} system={s} Icon={Icon} />
             <h3>{s.name}</h3>
             <p>{s.description}</p>
             <small>{count(n)} struktur</small>

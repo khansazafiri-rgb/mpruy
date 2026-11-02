@@ -42,7 +42,7 @@ export function relatedStructures(registry,row,limit=8) {
 }
 
 // Accept only local, generated atlas assets. Never send searches or identifiers to an image service.
-export function previewPath(path){return typeof path==='string'&&/^thumbnails\/(?:structures\/[a-f0-9]{24}|regions\/[a-zA-Z]+|hero)\.webp$/.test(path)?path:null;}
+export function previewPath(path){return typeof path==='string'&&/^thumbnails\/(?:structures\/[a-f0-9]{24}|regions\/[a-zA-Z]+|systems\/[a-zA-Z]+|hero)\.webp$/.test(path)?path:null;}
 export function browseStructures(rows){
  const extent=r=>r.bounds?Math.max(...[0,1,2].map(i=>r.bounds[i+3]-r.bounds[i])):0;
  return [...rows].sort((a,b)=>Number(b.nameKnown)-Number(a.nameKnown)||Number(!!a.parentId)-Number(!!b.parentId)||extent(b)-extent(a)||a.name.localeCompare(b.name,'en'));
