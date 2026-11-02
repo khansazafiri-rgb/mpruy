@@ -60,6 +60,7 @@ function Chips({ options, onPick, label = 'Pilihan balasan' }) {
   );
 }
 
+const KINDS = [{ value: 'soal', label: 'Soal (PDF soal)' }, { value: 'materi', label: 'PPT materi (slide kuliah)' }];
 const LANG = [{ value: 'id', label: 'Indonesia' }, { value: 'en', label: 'Inggris' }, { value: 'both', label: 'Keduanya' }];
 
 // Jawaban yang sudah dipilih, dengan tombol untuk memilih ulang (kembali ke langkah itu).
@@ -111,7 +112,7 @@ function UploadFlow({ sid, onStatus, onMenu }) {
     try {
       const d = await api('submissions', {
         method: 'POST',
-        body: { subject: mine.subject, hasKey: mine.hasKey === 'yes', language: mine.language, scope: mine.scope, pdfCount: Number(value) },
+        body: { subject: mine.subject, contentKind: mine.kind === 'materi' ? 'materi' : 'soal', hasKey: mine.kind !== 'materi' && mine.hasKey === 'yes', language: mine.kind === 'materi' ? 'id' : mine.language, scope: mine.scope, pdfCount: Number(value) },
       });
       setDraft(d);
     } catch (e) { setStep('count'); fail(e, 'Coba lagi', () => createDraft(value, mine)); } finally { setBusy(false); }
@@ -163,24 +164,30 @@ function UploadFlow({ sid, onStatus, onMenu }) {
   const leave = (fn) => { setLeft(true); fn(); };
   const campusName = me?.campusName || 'kampusmu';
   const waNumber = settings?.adminWhatsapp;
-  const steps = ['subject', 'hasKey', 'language', 'scope', 'count', 'files', 'summary', 'sent'];
+  const steps = ['subject', 'kind', 'hasKey', 'language', 'scope', 'count', 'files', 'summary', 'sent'];
+  const materi = a.kind === 'materi'; // PPT materi: tanpa pertanyaan kunci jawaban dan bahasa
   const at = (s) => steps.indexOf(step) >= steps.indexOf(s);
 
   return (
     <>
-      <Bubble>Siap! Aku bantu ubah PDF soalmu jadi soal latihan di web. <b>Soal ini untuk mata kuliah apa?</b></Bubble>
-      {step === 'subject' && (subjects.length ? <Chips label="Pilih mata kuliah" options={subjects.map((s) => ({ value: s.id, label: s.name }))} onPick={(o) => answer('subject', o, 'hasKey')} /> : !error && <div className="chat-chips"><Spinner /></div>)}
-      {at('hasKey') && <Answer text={a.subjectLabel} onChange={() => goBack('subject')} disabled={step === 'subject' || busy || step === 'sent'} />}
+      <Bubble>Siap! Aku bantu ubah PDF soal atau PPT materimu jadi bahan belajar di web. <b>Untuk mata kuliah apa?</b></Bubble>
+      {step === 'subject' && (subjects.length ? <Chips label="Pilih mata kuliah" options={subjects.map((s) => ({ value: s.id, label: s.name }))} onPick={(o) => answer('subject', o, 'kind')} /> : !error && <div className="chat-chips"><Spinner /></div>)}
+      {at('kind') && <Answer text={a.subjectLabel} onChange={() => goBack('subject')} disabled={step === 'subject' || busy || step === 'sent'} />}
 
-      {at('hasKey') && <Bubble><b>Apakah PDF sudah memuat pembahasan dan kunci jawaban?</b></Bubble>}
-      {step === 'hasKey' && <Chips options={[{ value: 'yes', label: 'Ya, sudah ada' }, { value: 'no', label: 'Belum ada' }]} onPick={(o) => answer('hasKey', o, 'language')} />}
-      {at('language') && <Answer text={a.hasKeyLabel} onChange={() => goBack('hasKey')} disabled={step === 'hasKey' || busy || step === 'sent'} />}
+      {at('kind') && <Bubble><b>PDF ini isinya apa?</b> Pilih sesuai isi file, ya.</Bubble>}
+      {step === 'kind' && <Chips options={KINDS} onPick={(o) => answer('kind', o, o.value === 'materi' ? 'scope' : 'hasKey')} />}
+      {step === 'kind' && <p className="chat-aside">PPT materi: ekspor dulu PPT-nya ke PDF (Simpan sebagai PDF), satu PDF per PPT. Setelah dicek, slide-nya tayang di Drilling lengkap dengan penjelasan.</p>}
+      {at('hasKey') && <Answer text={a.kindLabel} onChange={() => goBack('kind')} disabled={step === 'kind' || busy || step === 'sent'} />}
 
-      {at('language') && <Bubble><b>Soalnya pakai bahasa apa?</b></Bubble>}
-      {step === 'language' && <Chips options={LANG} onPick={(o) => answer('language', o, 'scope')} />}
-      {at('scope') && <Answer text={a.languageLabel} onChange={() => goBack('language')} disabled={step === 'language' || busy || step === 'sent'} />}
+      {!materi && at('hasKey') && <Bubble><b>Apakah PDF sudah memuat pembahasan dan kunci jawaban?</b></Bubble>}
+      {!materi && step === 'hasKey' && <Chips options={[{ value: 'yes', label: 'Ya, sudah ada' }, { value: 'no', label: 'Belum ada' }]} onPick={(o) => answer('hasKey', o, 'language')} />}
+      {!materi && at('language') && <Answer text={a.hasKeyLabel} onChange={() => goBack('hasKey')} disabled={step === 'hasKey' || busy || step === 'sent'} />}
 
-      {at('scope') && <Bubble><b>Soal ini hanya untuk pengguna dari prodi dan kampusmu, atau General (boleh dipakai semua pengguna)?</b></Bubble>}
+      {!materi && at('language') && <Bubble><b>Soalnya pakai bahasa apa?</b></Bubble>}
+      {!materi && step === 'language' && <Chips options={LANG} onPick={(o) => answer('language', o, 'scope')} />}
+      {!materi && at('scope') && <Answer text={a.languageLabel} onChange={() => goBack('language')} disabled={step === 'language' || busy || step === 'sent'} />}
+
+      {at('scope') && <Bubble><b>{materi ? 'Materi' : 'Soal'} ini hanya untuk pengguna dari prodi dan kampusmu, atau General (boleh dipakai semua pengguna)?</b></Bubble>}
       {step === 'scope' && (
         <Chips
           options={[
@@ -190,10 +197,10 @@ function UploadFlow({ sid, onStatus, onMenu }) {
           onPick={(o) => answer('scope', o, 'count')}
         />
       )}
-      {step === 'scope' && !me?.campus && <p className="chat-aside">Akunmu belum punya prodi dan kampus, jadi pilihan Hanya prodi dan kampus saya belum tersedia. Soalmu akan jadi General. Kamu bisa mengisinya di Profil kapan saja.</p>}
+      {step === 'scope' && !me?.campus && <p className="chat-aside">Akunmu belum punya prodi dan kampus, jadi pilihan Hanya prodi dan kampus saya belum tersedia. {materi ? 'Materimu' : 'Soalmu'} akan jadi General. Kamu bisa mengisinya di Profil kapan saja.</p>}
       {at('count') && <Answer text={a.scopeLabel} onChange={() => goBack('scope')} disabled={step === 'scope' || busy || step === 'sent'} />}
 
-      {at('count') && <Bubble><b>Berapa PDF yang mau kamu kirim?</b></Bubble>}
+      {at('count') && <Bubble><b>Berapa PDF {materi ? 'PPT materi' : ''} yang mau kamu kirim?</b></Bubble>}
       {step === 'count' && <Chips options={Array.from({ length: MAX_PDF }, (_, i) => ({ value: String(i + 1), label: String(i + 1) }))} onPick={pickCount} />}
       {step === 'count' && <p className="chat-aside">Paling banyak {MAX_PDF} PDF per pengajuan. Kalau punya lebih, kirim sebagai pengajuan terpisah.</p>}
       {at('files') && <Answer text={`${a.countLabel} PDF`} onChange={() => goBack('count')} disabled={step === 'count' || busy || step === 'sent'} />}
@@ -236,8 +243,8 @@ function UploadFlow({ sid, onStatus, onMenu }) {
           <p className="font-semibold">Ringkasan pengajuan</p>
           <dl className="chat-summary">
             <dt>Mata kuliah</dt><dd>{draft.subjectName}</dd>
-            <dt>Kunci & pembahasan</dt><dd>{draft.hasKey ? 'Sudah ada di PDF' : 'Belum ada'}</dd>
-            <dt>Bahasa</dt><dd>{a.languageLabel}</dd>
+            <dt>Isi PDF</dt><dd>{draft.contentKind === 'materi' ? 'PPT materi (tayang di Drilling)' : 'Soal'}</dd>
+            {draft.contentKind !== 'materi' && <><dt>Kunci & pembahasan</dt><dd>{draft.hasKey ? 'Sudah ada di PDF' : 'Belum ada'}</dd><dt>Bahasa</dt><dd>{a.languageLabel}</dd></>}
             <dt>Dapat dilihat</dt><dd>{draft.scope === 'campus' ? `Hanya pengguna ${draft.campusName}` : 'General, semua pengguna'}</dd>
             <dt>File</dt><dd>{draft.files.map((f) => f.name).join(', ')}</dd>
             <dt>Antrean</dt><dd>{draft.queue?.pdfAhead || 0} PDF di depan. Perkiraan selesai sekitar <b>{draft.queue?.estimateDays} hari</b> setelah dikonfirmasi (paling lama sekitar 5 hari). Ini perkiraan, bukan janji.</dd>
@@ -303,7 +310,7 @@ function MyRequests() {
   };
   if (error) return <Alert>{error}</Alert>;
   if (!items) return <Spinner />;
-  if (!items.length) return <p>Kamu belum pernah mengajukan soal. Kalau punya PDF soal, pilih <b>Upload soal PDF</b> ya.</p>;
+  if (!items.length) return <p>Kamu belum pernah mengajukan soal atau materi. Kalau punya PDF soal atau PPT kuliah, pilih <b>Upload soal atau PPT materi (PDF)</b> ya.</p>;
   return (
     <div className="space-y-2">
       <p>Ini pengajuan soalmu, dari yang terbaru:</p>
@@ -322,7 +329,7 @@ function MyRequests() {
 }
 
 const MENU = [
-  { value: 'upload', label: 'Upload soal PDF', icon: FileUp, tone: 'mint' },
+  { value: 'upload', label: 'Upload soal atau PPT materi (PDF)', icon: FileUp, tone: 'mint' },
   { value: 'question', label: 'Tanya admin', icon: CircleHelp, tone: 'sky' },
   { value: 'problem', label: 'Laporkan kendala', icon: TriangleAlert, tone: 'rose' },
   { value: 'feedback', label: 'Kasih saran', icon: Lightbulb, tone: 'sun' },

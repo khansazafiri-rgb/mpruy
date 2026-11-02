@@ -54,14 +54,23 @@ routerAdd("GET", "/api/medcoel/admin/drilling", (e) => {
   e.app.db().newQuery("SELECT q.subject AS subject, q.status AS status, q.scope AS scope, COUNT(*) AS n FROM questions q JOIN chapters c ON c.id = q.chapter WHERE c.drilling = TRUE GROUP BY q.subject, q.status, q.scope").all(rows);
   const per = {};
   rows.forEach((r) => { const p = (per[r.subject] = per[r.subject] || { published: 0, draft: 0, campusOnly: 0 }); p[r.status] = (p[r.status] || 0) + r.n; if (r.scope === "campus") { p.campusOnly += r.n; if (r.status === "published") campusPublished += r.n; } });
+  const deckRows = arrayOf(new DynamicModel({ subject: "", status: "", n: 0, slides: 0 }));
+  e.app.db().newQuery("SELECT subject AS subject, status AS status, COUNT(*) AS n, COALESCE(SUM(slideCount), 0) AS slides FROM drilling_decks GROUP BY subject, status").all(deckRows);
+  const decks = {};
+  deckRows.forEach((r) => { const d = (decks[r.subject] = decks[r.subject] || { published: 0, draft: 0, slides: 0 }); d[r.status] = r.n; if (r.status === "published") d.slides += r.slides; });
   const subjects = e.app.findRecordsByFilter("subjects", "id != ''", "order,name", 500, 0).map((s) => {
     const ch = learn.ensureDrillingChapter(e.app, s.id);
     const p = per[s.id] || { published: 0, draft: 0, campusOnly: 0 };
-    return { id: s.id, name: s.getString("name"), subjectHidden: s.getBool("hidden"), published: p.published, draft: p.draft, campusOnly: p.campusOnly, chapter: ch.id, hidden: ch.getBool("hidden") };
+    const d = decks[s.id] || { published: 0, draft: 0, slides: 0 };
+    return { id: s.id, name: s.getString("name"), subjectHidden: s.getBool("hidden"), published: p.published, draft: p.draft, campusOnly: p.campusOnly, deckPublished: d.published, deckDraft: d.draft, deckSlides: d.slides, chapter: ch.id, hidden: ch.getBool("hidden") };
   });
   const total = subjects.reduce((a, s) => a + s.published, 0);
   const drafts = subjects.reduce((a, s) => a + s.draft, 0);
-  return e.json(200, { enabled: st.enabled, available: st.enabled && st.total + campusPublished > 0, total: st.total, campusPublished: campusPublished, published: total, drafts: drafts, subjects: subjects });
+  const deckPublished = subjects.reduce((a, s) => a + s.deckPublished, 0);
+  const deckDrafts = subjects.reduce((a, s) => a + s.deckDraft, 0);
+  const deckCampus = arrayOf(new DynamicModel({ n: 0 }));
+  e.app.db().newQuery("SELECT COUNT(*) AS n FROM drilling_decks WHERE status = 'published' AND scope = 'campus'").all(deckCampus);
+  return e.json(200, { enabled: st.enabled, available: st.enabled && st.total + campusPublished + st.deckTotal + (deckCampus.length ? deckCampus[0].n : 0) > 0, total: st.total, campusPublished: campusPublished, published: total, drafts: drafts, deckPublished: deckPublished, deckDrafts: deckDrafts, subjects: subjects });
 });
 
 // Siapa yang bisa melihat soal Drilling satu mata kuliah: jumlah soal General dan, per kampus, jumlah soal serta
