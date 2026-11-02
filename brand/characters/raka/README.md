@@ -66,7 +66,7 @@ rakaSvg(raka('senang'));      // mata "^ ^", mulut terbuka, dua tangan terkepal
 rakaSvg(raka('sedih'));       // alis turun, mulut cemberut
 ```
 
-`raka(ekspresi, pose, perubahan)` menggabungkan **ekspresi wajah** (`netral kaget berpikir senang menunjuk sedih perih batuk khawatir lega pingsan bingung`) dan **pose** (`netral kaget berpikir menunjuk senang sapa batuk usap_mata jalan berhenti jongkok`). Keduanya bisa dicampur dan setiap nilai bisa diganti:
+`raka(ekspresi, pose, perubahan)` menggabungkan **ekspresi wajah** (`netral kaget berpikir senang menunjuk sedih perih batuk khawatir lega pingsan bingung lapar ngantuk`) dan **pose** (`netral kaget berpikir menunjuk senang sapa batuk usap_mata pegang_perut jalan berhenti jongkok`). Keduanya bisa dicampur dan setiap nilai bisa diganti:
 
 ```js
 raka('senang', 'sapa');                              // senang sambil melambai
@@ -193,3 +193,19 @@ node --test brand/characters/raka/raka.test.mjs       # tes
 ```
 
 Setiap mengubah `raka.js`, jalankan `build.mjs` (juga membuat `svg/raka-demo-*.svg` dan `svg/raka-jas-*.svg`) (tes membandingkan `svg/` dengan keluaran kode) dan lihat `preview/raka-lembar.png`, `raka-ukuran-kecil.png`, dan `raka-filmstrip.png` sebelum menyimpan.
+
+## Lapar dan ngantuk (video "Kenapa malam-malam lapar?")
+
+Tambahan tanpa mengubah desain kanonik (SVG lama tidak berubah):
+
+| Nama | Apa |
+|---|---|
+| ekspresi `lapar` | Mata lebar berharap, alis naik di tengah (memelas), mulut kecil terbuka. |
+| ekspresi `ngantuk` | Kelopak setengah turun, alis turun sedikit, mulut menguap kecil; tambahkan `bags: 0.5` untuk kantung mata. |
+| pose `pegang_perut` | Dua tangan di depan perut. Lengan tetap satu bentuk yang menyatu dengan bahu. |
+
+```js
+rakaSvg(idle(raka('lapar', 'pegang_perut', { bags: 0.3 }), t), { outfit: 'harian' });   // lapar dan bingung, baju santai
+rakaSvg(idle(raka('ngantuk', 'jalan', { bags: 0.6 }), t), { outfit: 'harian' });        // begadang
+```
+Karakter tubuh yang menemani Raka di video ini ada di `brand/characters/grelin` dan `brand/characters/jambi` (lihat `brand/characters/README.md`).
