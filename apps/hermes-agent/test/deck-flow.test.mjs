@@ -10,7 +10,8 @@ import { countSlides, detectKind } from '../src/json-paste.mjs';
 import { describeFile } from '../src/files.mjs';
 
 const BASE = { id: 'rec2', code: 'MC261102-PPTX', status: 'antre', subject: { id: 's1', name: 'Anatomi' }, restriction: 'campus', campus: { id: 'c1', name: 'FK UNER' }, language: 'id', pdfCount: 2, files: [], user: { name: 'Sari', loginId: 'sari.uji' } };
-const MATERI = { ...BASE, contentKind: 'materi', kindLabel: 'PPT materi' };
+const MATERI = { ...BASE, contentKind: 'materi', kindLabel: 'PPT materi', files: [{ n: 1, title: 'Histologi Epitel Kuliah1' }] };
+const MULTI = { ...BASE, contentKind: 'materi', pdfCount: 3, files: [{ n: 1, title: 'Bab 1 Pengantar' }, { n: 2, title: 'Bab 2 Epitel' }, { n: 3, title: 'Bab 3 Ikat' }] };
 const DECK = { title: 'Osteologi', slides: [{ image: 'https://lh3.googleusercontent.com/d/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', explanation: '1. a\n\t- b' }, { explanation: 'dua' }] };
 
 async function setup(sub) {
@@ -22,7 +23,7 @@ async function setup(sub) {
   const telegram = { sendMessage: async (chatId, text) => { sent.push(text); }, downloadFile: async () => { throw new Error('tidak dipakai'); } };
   const medcoel = {
     getSubmission: async () => sub,
-    importDeckSubmission: async (id, p) => { calls.deck.push({ id, dryRun: p.dryRun, text: p.text }); return { blocked: false, title: 'Osteologi', slideCount: 2, created: p.dryRun ? 1 : 1, replaced: false, warnings: ['Slide 2: Slide belum punya penjelasan.'] }; },
+    importDeckSubmission: async (id, p) => { calls.deck.push({ id, dryRun: p.dryRun, text: p.text, pdf: p.pdf }); return { blocked: false, title: 'Osteologi', slideCount: 2, created: p.dryRun ? 1 : 1, replaced: false, warnings: ['Slide 2: Slide belum punya penjelasan.'] }; },
     importSubmission: async (id, p) => { calls.soal.push(p); return { valid: 1, invalid: 0, duplicates: 0, created: 1 }; },
     importDrillingSubmission: async (id, p) => { calls.drilling.push(p); return { valid: 1, invalid: 0, duplicates: 0, created: 1 }; },
   };
@@ -136,5 +137,55 @@ test('server menjawab 400 untuk materi diblokir: Hermes menampilkan galat per sl
   assert.match(sent.at(-1), /Slide 1: Gambar harus tautan lh3/);
   assert.match(sent.at(-1), /Slide 3: Slide kosong/);
   assert.doesNotMatch(sent.at(-1), /HTTP 400/);
+  await fs.rm(dir, { recursive: true });
+});
+
+test('satu PDF: kartu rencana menampilkan judul PDF dan impor mengirim nomor PDF 1', async () => {
+  const { dir, flow, sent, calls, msg } = await setup(MATERI);
+  const text = `/put MC261102-PPTX\n${JSON.stringify(DECK)}`;
+  await flow.handleMessage(msg(text), text);
+  assert.match(sent.at(-1), /Judul materi di web: <b>Histologi Epitel Kuliah1<\/b> <i>\(judul PDF 1\)<\/i>/);
+  await flow.handleMessage(msg('/confirm'), '/confirm');
+  assert.deepEqual(calls.deck.map((c) => c.pdf), [1, 1]);
+  await fs.rm(dir, { recursive: true });
+});
+
+test('beberapa PDF: tanpa nomor ada peringatan; /put KODE 2 memilih judul PDF ke-2 dan mengirim nomornya', async () => {
+  const noTitle = JSON.stringify({ slides: DECK.slides });
+  const a = await setup(MULTI);
+  await a.flow.handleMessage(a.msg(`/put MC261102-PPTX\n${noTitle}`), `/put MC261102-PPTX\n${noTitle}`);
+  assert.match(a.sent.at(-1), /belum bisa ditentukan, ada 3 PDF/);
+  assert.match(a.sent.at(-1), /\/put MC261102-PPTX 2/);
+  await fs.rm(a.dir, { recursive: true });
+
+  const b = await setup(MULTI);
+  await b.flow.handleMessage(b.msg(`/put MC261102-PPTX 2\n${noTitle}`), `/put MC261102-PPTX 2\n${noTitle}`);
+  assert.match(b.sent.at(-1), /<b>Bab 2 Epitel<\/b> <i>\(judul PDF 2 dari 3\)<\/i>/);
+  await b.flow.handleMessage(b.msg('/confirm'), '/confirm');
+  assert.deepEqual(b.calls.deck.map((c) => c.pdf), [2, 2]);
+  await fs.rm(b.dir, { recursive: true });
+
+  // Nomor yang tidak ada ditolak sebelum rencana dibuat.
+  const c = await setup(MULTI);
+  await c.flow.handleMessage(c.msg(`/put MC261102-PPTX 9\n${noTitle}`), `/put MC261102-PPTX 9\n${noTitle}`);
+  assert.match(c.sent.at(-1), /PDF nomor 9 tidak ada/);
+  await fs.rm(c.dir, { recursive: true });
+});
+
+test('JSON materi yang punya title dan pengajuan beberapa PDF tanpa nomor: judul JSON dipakai', async () => {
+  const { dir, flow, sent, msg } = await setup(MULTI);
+  const text = `/put MC261102-PPTX\n${JSON.stringify(DECK)}`;
+  await flow.handleMessage(msg(text), text);
+  assert.match(sent.at(-1), /Judul materi di web: <b>Osteologi<\/b> <i>\(dari JSON\)<\/i>/);
+  await fs.rm(dir, { recursive: true });
+});
+
+test('soal ke Drilling: kartu rencana menampilkan bagian dari judul PDF dan impor mengirim nomor PDF', async () => {
+  const { dir, flow, sent, calls, msg } = await setup({ ...BASE, contentKind: 'soal', pdfCount: 2, files: [{ n: 1, title: 'UTS 2025' }, { n: 2, title: 'UAS 2025' }] });
+  const soal = JSON.stringify([{ type: 'A', text: 'x?', options: ['a', 'b'] }]);
+  await flow.handleMessage(msg(`/put MC261102-PPTX 2\n${soal}`), `/put MC261102-PPTX 2\n${soal}`);
+  assert.match(sent.at(-1), /Bagian soal di web: <b>UAS 2025<\/b>/);
+  await flow.handleMessage(msg('/confirm'), '/confirm');
+  assert.deepEqual(calls.drilling.map((c) => c.pdf), [2, 2]);
   await fs.rm(dir, { recursive: true });
 });

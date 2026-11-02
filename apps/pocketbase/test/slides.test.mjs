@@ -98,3 +98,13 @@ test('teks bukan HTML: tag dibiarkan sebagai teks biasa dan tidak mengubah struk
   assert.equal(p.type, 'paragraph');
   assert.equal(p.text, '<img src=x onerror=alert(1)>');
 });
+
+test('judul dari nama berkas PDF: ekstensi, akhiran compressed, dan garis bawah dirapikan', () => {
+  const { pdfTitle } = require('../pb_hooks/lib/submissions.js');
+  assert.equal(pdfTitle('Tissue Bahas Pena B15 UB.docx_compressed.pdf'), 'Tissue Bahas Pena B15 UB');
+  assert.equal(pdfTitle('Histologi_Epitel_Kuliah1.pdf'), 'Histologi Epitel Kuliah1');
+  assert.equal(pdfTitle('Kuliah 3 - Jaringan Ikat.PPTX.pdf'), 'Kuliah 3 - Jaringan Ikat');
+  assert.equal(pdfTitle('UTB 2025.PDF'), 'UTB 2025');
+  assert.equal(pdfTitle('.pdf'), '');
+  assert.ok(pdfTitle('x'.repeat(300) + '.pdf').length <= 200);
+});

@@ -67,6 +67,7 @@ Saat mengajukan, pengaju memilih **isi PDF**: Soal (bawaan) atau **PPT materi**.
 - Pengajuan **PPT materi** diimpor lewat `POST /api/medcoel/agent/submissions/{id atau kode}/materi-import` (JSON slide + penjelasan, lihat `docs/MATERI_SLIDE.md`). Kampus dan cakupan tetap dari pengajuan; berhasil: materi tayang di Drilling, status `selesai`, `importedCount` = jumlah slide.
 - Salah jalur ditolak dengan pesan yang menyebut jalur yang benar (materi di `/import`, soal di `/materi-import`).
 - Di Telegram: `/put KODE` (tempel atau file `.json`), `/plan`, `/confirm` sama seperti soal. Untuk PPT materi Hermes mengenali bentuk JSON (slide vs soal) dan menolak yang salah jalur sebelum rencana dibuat; tujuannya otomatis `DRILLING · MATERI`, dan `/change chapter` atau `/change drilling` ditolak.
+- **Judul di web diambil dari judul PDF** pengajuan (materi maupun bagian soal Drilling). Kontrak pengajuan memuat per berkas `n` (nomor PDF, sama dengan `/files KODE n`) dan `title` (judul dari nama berkas). Satu PDF: otomatis. Beberapa PDF: `/put KODE 2` (atau `#2`, `pdf 2`), atau nama file JSON `KODE_PDF-02-dari-3_nama.json`; Hermes mengirim `pdf` ke server dan kartu rencana menampilkan judulnya. Endpoint `/import`, `/drilling-import`, dan `/materi-import` menerima `pdf` dan `title` (eksplisit, mengalahkan judul PDF). Lihat `docs/MATERI_SLIDE.md`.
 - Materi tambahan dari admin tanpa pengajuan: `POST /api/medcoel/agent/materi-import` `{ subject, scope, campuses, ... }`.
 
 ## Mengubah status

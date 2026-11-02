@@ -24,7 +24,8 @@ test('serverIsBehind', () => {
   assert.equal(serverIsBehind('1800002600_chapter_notes_seed_hash.js'), true);
   assert.equal(serverIsBehind('1800002700_chapter_doc_order.js'), true);
   assert.equal(serverIsBehind('1800002800_programs_campus_offerings.js'), true);
-  assert.equal(serverIsBehind('1800002900_drilling_decks.js'), false);
+  assert.equal(serverIsBehind('1800002900_drilling_decks.js'), true);
+  assert.equal(serverIsBehind('1800003000_question_set_title.js'), false);
   assert.equal(serverIsBehind('1800001500_drilling_chapters.js'), true);
   assert.equal(serverIsBehind('1800001600_explanation_english.js'), true);
   assert.equal(serverIsBehind('1800001700_global_language.js'), true);

@@ -53,7 +53,7 @@ export function compactSubmission(sub) {
 
 // Petunjuk singkat "mau mengumpulkan hasilnya, ketik apa". Kode pengajuan sudah terisi supaya
 // cukup ketuk (salin) lalu kirim.
-export function howToSubmit(code, status, kind = 'soal') {
+export function howToSubmit(code, status, kind = 'soal', pdfCount = 1) {
   const c = escapeHtml(code);
   const lines = [];
   const materi = kind === 'materi';
@@ -68,6 +68,9 @@ export function howToSubmit(code, status, kind = 'soal') {
     lines.push(`1) Kirim JSON: <code>/put ${c}</code> lalu tempel JSON-nya di chat (boleh beberapa pesan). Atau kirim file .json dengan caption <code>/put ${c}</code>.`);
     lines.push('2) Cek rencana dengan <code>/plan</code>, lalu <code>/confirm</code> untuk mengimpor.');
   }
+  lines.push(pdfCount > 1
+    ? `Judul di web diambil dari judul PDF. Pengajuan ini punya ${pdfCount} PDF, jadi sebut nomor PDF-nya: <code>/put ${c} 2</code> (nomor sama dengan <code>/files ${c} 2</code>).`
+    : 'Judul di web otomatis diambil dari judul PDF.');
   lines.push('Kalau JSON ditempel lewat beberapa pesan dan belum selesai otomatis, kirim <code>/selesai</code>. Batalkan dengan <code>/cancelplan</code>.');
   return lines.join('\n');
 }
@@ -78,7 +81,7 @@ export function newSubmissionMessage(sub, queue) {
   const head = waiting
     ? `🆕 <b>Pengajuan baru masuk</b> · ${tag} · menunggu konfirmasi\n\n`
     : `✅ <b>Pengajuan masuk antrean</b> · ${tag}\n\n`;
-  return `${head}${queueCard(sub, queue)}\n\n${howToSubmit(sub.code || sub.id, sub.status, kindOf(sub))}`;
+  return `${head}${queueCard(sub, queue)}\n\n${howToSubmit(sub.code || sub.id, sub.status, kindOf(sub), Number(sub.pdfCount || (sub.files || []).length))}`;
 }
 
 export const BOT_COMMANDS = [
@@ -87,7 +90,7 @@ export const BOT_COMMANDS = [
   { command: 'files', description: 'Kirim PDF pengajuan: /files KODE' },
   { command: 'terima', description: 'Terima pengajuan (jadi Antre): /terima KODE' },
   { command: 'claim', description: 'Tandai Diproses: /claim KODE' },
-  { command: 'put', description: 'Kirim JSON hasil: /put KODE lalu tempel JSON' },
+  { command: 'put', description: 'Kirim JSON hasil: /put KODE [NOMOR PDF] lalu tempel JSON' },
   { command: 'selesai', description: 'Akhiri tempel JSON beberapa pesan' },
   { command: 'plan', description: 'Lihat rencana impor aktif' },
   { command: 'confirm', description: 'Impor sekarang (setelah dry-run)' },

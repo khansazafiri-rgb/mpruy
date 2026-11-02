@@ -314,7 +314,16 @@ routerAdd("POST", "/api/medcoel/admin/import", (e) => {
   if (b.submission) {
     try { submission = e.app.findRecordById("submissions", String(b.submission)); } catch (_) { throw new BadRequestError("Pengajuan tidak ditemukan."); }
   }
+  // Soal Drilling dikelompokkan per bagian: judul dari `title`, atau dari PDF pengajuan (nomor `pdf`, atau satu-satunya PDF).
+  let setTitle = u.cleanStr(b.title, 200);
+  let titleNote = "";
+  if (!setTitle && submission) {
+    const t = subs.titleFor(e.app, submission, b.pdf);
+    setTitle = t.title;
+    if (!setTitle && t.count > 1) titleNote = subs.titleNeeded(submission, t.count);
+  }
   const result = importer.run(e.app, {
+    setTitle: setTitle,
     input: b.text !== undefined ? b.text : b.questions,
     subject: submission ? submission.getString("subject") : b.subject,
     chapter: b.chapter || "",
@@ -327,6 +336,7 @@ routerAdd("POST", "/api/medcoel/admin/import", (e) => {
     dryRun: b.dryRun === true,
     status: b.status,
   });
+  if (titleNote) result.titleNote = titleNote;
   if (result.blocked) return e.json(400, Object.assign({ status: 400 }, result));
   if (!b.dryRun && submission && result.created > 0) {
     submission.set("importedCount", submission.getInt("importedCount") + result.created);

@@ -33,6 +33,15 @@ function makeCode() {
   return "MC" + d + "-" + $security.randomStringWithAlphabet(4, "ABCDEFGHJKLMNPQRSTUVWXYZ23456789");
 }
 
+// Judul dari nama berkas PDF: buang ".pdf", sisa ekstensi dokumen asal (.docx/.pptx) dan akhiran "compressed",
+// garis bawah jadi spasi. "Tissue Bahas Pena B15 UB.docx_compressed.pdf" -> "Tissue Bahas Pena B15 UB".
+function pdfTitle(name) {
+  let t = String(name || "").replace(/\.pdf$/i, "");
+  t = t.replace(/[_\s-]*compressed$/i, "");
+  t = t.replace(/\.(docx?|pptx?|xlsx?|odt|odp)$/i, "");
+  return t.replace(/_+/g, " ").replace(/\s+/g, " ").trim().slice(0, 200);
+}
+
 function files(app, sub) {
   return app.findRecordsByFilter("stored_files", "submission = {:s} && (status = 'ready' || status = 'archived')", "created", 0, 0, { s: sub.id });
 }
@@ -101,9 +110,10 @@ function summary(app, sub, opts) {
     completedAt: sub.getString("completedAt"),
     files: files(app, sub).map((f) => {
       const s = storage.summary(app, f);
+      s.title = pdfTitle(s.name);
       if (o.withLinks) s.link = storage.linkFor(app, f, o.auth).url;
       return s;
-    }),
+    }).map((s, i) => Object.assign(s, { n: i + 1 })),
   };
   if (st === "antre" || st === "diproses" || st === "menunggu_konfirmasi" || st === "draft") out.queue = queueInfo(app, sub);
   if (o.withUser) {
@@ -138,7 +148,8 @@ function contract(app, sub, auth) {
     language: s.language,
     restriction: s.scope === "campus" ? "campus" : "all",
     pdfCount: s.pdfCount,
-    files: s.files.map((f) => ({ id: f.id, name: f.name, size: f.size, driveFileId: f.driveFileId, link: f.link })),
+    // n = nomor PDF (urutan unggah, sama dengan /files KODE N di Hermes); title = judul dari nama berkas.
+    files: s.files.map((f) => ({ id: f.id, n: f.n, name: f.name, title: f.title, size: f.size, driveFileId: f.driveFileId, link: f.link })),
   };
 }
 
@@ -256,8 +267,12 @@ function agentImport(e, forceDrilling) {
     throw new BadRequestError("Pengajuan " + sub.getString("code") + " berisi PPT materi, bukan soal. Kirim lewat /materi-import (di Hermes: /put lalu /confirm).");
   }
   // Kampus selalu dari pengajuan, apa pun isi JSON-nya. Pengajuan "kampus saja" yang masuk Drilling
-  // hanya terlihat oleh pengguna kampus itu.
+  // hanya terlihat oleh pengguna kampus itu. Soal Drilling dikelompokkan per bagian bernama judul PDF.
+  const drillingTarget = forceDrilling === true || b.drilling === true;
+  const t = titleFor(e.app, sub, b.pdf);
+  const setTitle = drillingTarget ? u.cleanStr(b.title, 200) || t.title : "";
   const result = importer.run(e.app, {
+    setTitle: setTitle,
     input: b.questions !== undefined ? b.questions : b.text,
     subject: sub.getString("subject"),
     chapter: b.chapter || "",
@@ -266,9 +281,14 @@ function agentImport(e, forceDrilling) {
     source: "submission",
     submission: sub.id,
     skipInvalid: b.skipInvalid === true,
-    drilling: forceDrilling === true || b.drilling === true,
+    drilling: drillingTarget,
     dryRun: b.dryRun === true,
   });
+  if (drillingTarget) {
+    result.setTitle = setTitle;
+    result.pdf = t.index || undefined;
+    if (!setTitle && t.count > 1) result.titleNote = titleNeeded(sub, t.count);
+  }
   if (result.blocked) return e.json(400, Object.assign({ status: 400 }, result));
   if (!b.dryRun) {
     if (st !== "diproses") setStatus(e.app, sub, "diproses", sub.getString("statusNote"), "agent");
@@ -277,6 +297,29 @@ function agentImport(e, forceDrilling) {
     setStatus(e.app, sub, "selesai", sub.getString("statusNote"), "agent");
   }
   return e.json(200, result);
+}
+
+/**
+ * Judul bagian dari PDF pengajuan. `pdf` = nomor PDF (1..n, opsional). Satu PDF saja: judulnya otomatis.
+ * Beberapa PDF tanpa nomor: tidak ada judul (title kosong, count > 1) dan pemanggil memutuskan.
+ * Mengembalikan { title, index, count, explicit }.
+ */
+function titleFor(app, sub, pdf) {
+  const list = files(app, sub);
+  if (pdf !== undefined && pdf !== null && String(pdf).trim() !== "") {
+    const n = parseInt(pdf, 10);
+    if (!(n >= 1 && n <= list.length)) {
+      throw new BadRequestError("PDF nomor " + pdf + " tidak ada. Pengajuan " + sub.getString("code") + " punya " + list.length + " PDF (nomor 1 sampai " + list.length + ").");
+    }
+    return { title: pdfTitle(list[n - 1].getString("name")), index: n, count: list.length, explicit: true };
+  }
+  if (list.length === 1) return { title: pdfTitle(list[0].getString("name")), index: 1, count: 1, explicit: false };
+  return { title: "", index: 0, count: list.length, explicit: false };
+}
+
+/** Pesan bila judul tidak bisa ditentukan karena pengajuan punya beberapa PDF. */
+function titleNeeded(sub, count) {
+  return "Pengajuan " + sub.getString("code") + " punya " + count + " PDF, jadi judulnya belum bisa dipilih otomatis. Sebutkan nomor PDF-nya (di Hermes: /put " + sub.getString("code") + " 2, nomornya sama dengan /files " + sub.getString("code") + " 2).";
 }
 
 /**
@@ -298,12 +341,18 @@ function agentImportDeck(e) {
     throw new BadRequestError("Pengajuan " + sub.getString("code") + " berisi soal, bukan PPT materi. Kirim lewat /import.");
   }
   const campus = sub.getString("scope") === "campus";
+  // Judul materi di web: permintaan eksplisit (title) > judul PDF (satu PDF, atau nomor PDF dipilih lewat `pdf`) > judul di JSON.
+  const t = titleFor(e.app, sub, b.pdf);
+  const asked = u.cleanStr(b.title, 200);
   const result = decks.importDeck(e.app, {
     input: decks.inputOf(b),
     subject: sub.getString("subject"),
     scope: campus ? "campus" : "all",
     campuses: campus ? [sub.getString("campus")] : [],
-    title: b.title,
+    forceTitle: asked || t.title,
+    forceSource: asked ? "request" : "pdf",
+    titleError: titleNeeded(sub, t.count),
+    pdf: t.index || undefined,
     status: b.status === "draft" ? "draft" : "published",
     source: "submission",
     submission: sub.id,
@@ -319,4 +368,4 @@ function agentImportDeck(e) {
   return e.json(200, result);
 }
 
-module.exports = { MAX_PDFS, LABEL, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck };
+module.exports = { MAX_PDFS, LABEL, pdfTitle, titleFor, titleNeeded, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck };

@@ -71,6 +71,8 @@ export default function ImportPanel({ submission = null, onDone, presetSubject =
   const [text, setText] = useState('');
   const [preview, setPreview] = useState(null);
   const [skip, setSkip] = useState(false);
+  const [setTitle, setSetTitle] = useState(''); // judul bagian soal Drilling (kosong = otomatis dari PDF pengajuan)
+  const [pdf, setPdf] = useState(''); // nomor PDF pengajuan (wajib dipilih bila pengajuan punya beberapa PDF dan soal masuk Drilling)
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [result, setResult] = useState(null);
@@ -79,9 +81,11 @@ export default function ImportPanel({ submission = null, onDone, presetSubject =
   const drillingId = chapters.find((c) => c.subject === subj && c.drilling)?.id || '';
   useEffect(() => { if (drillingOnly) setChapter(drillingId); }, [drillingOnly, drillingId]);
 
+  const isDrilling = drillingOnly || chapters.find((c) => c.id === chapter)?.drilling;
   const body = (dryRun) => ({
     text, dryRun, skipInvalid: skip, status, chapter,
-    ...(submission ? { submission: submission.id } : { subject, scope, campuses }),
+    ...(isDrilling && setTitle.trim() ? { title: setTitle.trim() } : {}),
+    ...(submission ? { submission: submission.id, ...(pdf ? { pdf: Number(pdf) } : {}) } : { subject, scope, campuses }),
   });
 
   const run = async (dryRun) => {
@@ -139,6 +143,21 @@ export default function ImportPanel({ submission = null, onDone, presetSubject =
           {chapterChoicesOf(subj).filter((c) => !drillingOnly || c.drilling).map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
         </select>
       </Field>
+      {isDrilling && (
+        <div className="grid gap-3 md:grid-cols-2">
+          <Field label="Judul bagian (opsional)" htmlFor="im-set" hint="Soal Drilling tampil per bagian bernama judul ini di halaman mata kuliah. Kosong: otomatis dari judul PDF pengajuan (satu PDF, atau nomor PDF di samping).">
+            <input id="im-set" className="input" value={setTitle} maxLength={200} onChange={(e) => setSetTitle(e.target.value)} placeholder={submission?.files?.length === 1 ? submission.files[0].title : 'mis. UTS Histologi 2025'} />
+          </Field>
+          {submission && submission.files?.length > 1 && (
+            <Field label="Judul diambil dari PDF nomor" htmlFor="im-pdf">
+              <select id="im-pdf" className="input" value={pdf} onChange={(e) => setPdf(e.target.value)}>
+                <option value="">Belum dipilih (bagian: Soal lainnya)</option>
+                {submission.files.map((f) => <option key={f.id} value={f.n}>{f.n}. {f.title || f.name}</option>)}
+              </select>
+            </Field>
+          )}
+        </div>
+      )}
       <Field label="Kode soal" htmlFor="im-text" hint="JSON murni atau array JavaScript (kunci tanpa tanda kutip, koma di akhir boleh). Nama field lama PCV Classroom, Web Olimp, dan Event/Lomba juga diterima.">
         <textarea id="im-text" className="input min-h-[220px] font-mono text-[13px]" value={text} onChange={(e) => { setText(e.target.value); setPreview(null); }} placeholder={CONTOH} spellCheck={false} />
       </Field>
@@ -148,6 +167,7 @@ export default function ImportPanel({ submission = null, onDone, presetSubject =
         <button type="button" className="btn-primary ml-auto" onClick={() => run(true)} disabled={busy}>{busy ? 'Memeriksa...' : 'Pratinjau'}</button>
       </div>
       <Alert>{error}</Alert>
+      {result?.setTitle && <Alert kind="info">Bagian di Drilling: <b>{result.setTitle}</b></Alert>}
       {result && <Alert kind="success">{result.created} soal tersimpan{result.chaptersCreated ? `, ${result.chaptersCreated} BAB baru dibuat` : ''}{result.duplicates ? `, ${result.duplicates} duplikat dilewati` : ''}.</Alert>}
 
       {preview && (

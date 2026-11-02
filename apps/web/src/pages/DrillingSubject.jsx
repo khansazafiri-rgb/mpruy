@@ -40,22 +40,26 @@ export default function DrillingSubject() {
   const nav = useNavigate();
   const { data, error, loading } = useApi(`drilling/subject/${slug}`);
   const [prefs, setPrefsState] = useState(read);
-  const [busy, setBusy] = useState(false);
+  const [busy, setBusy] = useState(''); // kunci tombol yang sedang menyiapkan sesi ('all' atau judul bagian)
   const [err, setErr] = useState('');
   const setPrefs = (p) => { setPrefsState(p); try { localStorage.setItem(PREFS, JSON.stringify(p)); } catch { /* penyimpanan perangkat tidak tersedia */ } };
 
-  const start = async () => {
-    setBusy(true); setErr('');
+  // set === undefined: semua soal; selain itu judul bagian ('' = Soal lainnya).
+  const start = async (set) => {
+    setBusy(set === undefined ? 'all' : `set:${set}`); setErr('');
     try {
-      const r = await api('attempts/drilling', { method: 'POST', body: { subject: data.subject.id, count: prefs.count, mode: prefs.mode } });
+      const r = await api('attempts/drilling', { method: 'POST', body: { subject: data.subject.id, count: prefs.count, mode: prefs.mode, ...(set === undefined ? {} : { set }) } });
       nav(`/kerjakan/${r.attempt.id}`);
-    } catch (e) { setErr(e.message); setBusy(false); }
+    } catch (e) { setErr(e.message); setBusy(''); }
   };
 
   if (loading) return <PageLoader />;
   if (error) return <div className="space-y-4"><Alert>{error.status === 404 ? 'Mata kuliah ini belum punya file Drilling untukmu.' : error.message}</Alert><Link to="/drilling" className="btn-secondary inline-flex"><ArrowLeft size={16} aria-hidden /> Kembali ke Drilling</Link></div>;
 
   const { subject, decks, questionCount, campusQuestionCount, answeredCount } = data;
+  const sets = data.sets || [];
+  // Bagian ditampilkan bila soal berasal dari lebih dari satu PDF, atau satu-satunya bagian punya judul.
+  const sectioned = sets.length > 1 || (sets.length === 1 && !!sets[0].title);
   const slides = decks.reduce((n, d) => n + d.slideCount, 0);
   return (
     <div className="space-y-9">
@@ -91,7 +95,27 @@ export default function DrillingSubject() {
                 {MODES.map(([v, l, Icon]) => <button key={v} type="button" aria-pressed={prefs.mode === v} onClick={() => setPrefs({ ...prefs, mode: v })}><Icon size={14} aria-hidden /> {l}</button>)}
               </div>
             </div>
-            <button type="button" className="btn-primary" onClick={start} disabled={busy}><Zap size={16} aria-hidden /> {busy ? 'Menyiapkan...' : 'Mulai drilling'}</button>
+            {!sectioned && <button type="button" className="btn-primary" onClick={() => start()} disabled={!!busy}><Zap size={16} aria-hidden /> {busy ? 'Menyiapkan...' : 'Mulai drilling'}</button>}
+            {sectioned && (
+              <ul className="deck-sets" aria-label="Bagian soal">
+                {sets.length > 1 && (
+                  <li className="deck-set is-all">
+                    <span className="deck-set-main"><b>Semua bagian</b><small>{questionCount} soal dari {sets.length} bagian, diacak</small></span>
+                    <button type="button" className="btn-primary btn-sm" onClick={() => start()} disabled={!!busy}><Zap size={15} aria-hidden /> {busy === 'all' ? 'Menyiapkan...' : 'Mulai'}</button>
+                  </li>
+                )}
+                {sets.map((g) => (
+                  <li key={g.title} className="deck-set">
+                    <span className="deck-set-main">
+                      <b>{g.title || 'Soal lainnya'}</b>
+                      <small>{g.answeredCount}/{g.questionCount} soal dikerjakan{g.campusQuestionCount ? ' · khusus kampusmu' : ''}</small>
+                      <ProgressBar value={g.answeredCount} max={g.questionCount || 1} className="tone-track !h-1.5" color="tone-fill" label={`Progres ${g.title || 'soal lainnya'}`} />
+                    </span>
+                    <button type="button" className="btn-secondary btn-sm" onClick={() => start(g.title)} disabled={!!busy}><Zap size={15} aria-hidden /> {busy === `set:${g.title}` ? 'Menyiapkan...' : 'Mulai'}</button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
       </section>

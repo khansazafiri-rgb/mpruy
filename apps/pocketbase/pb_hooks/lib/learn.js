@@ -47,13 +47,15 @@ function pool(app, user, opts) {
   // Hanya BAB dan mata kuliah yang tidak disembunyikan.
   where.push("c.hidden = FALSE AND s.hidden = FALSE");
   where.push(opts.drilling === "only" ? "c.drilling = TRUE" : "COALESCE(c.drilling, FALSE) = FALSE");
+  // Bagian Drilling (judul PDF); "" = soal tanpa judul bagian.
+  if (opts.setTitle !== undefined && opts.setTitle !== null) { where.push("COALESCE(q.setTitle, '') = {:setTitle}"); params.setTitle = String(opts.setTitle); }
   params.user = user.id;
 
-  const rows = arrayOf(new DynamicModel({ id: "", chapter: "", difficulty: "", qtype: "", scope: "", seen: 0, wrong: 0 }));
+  const rows = arrayOf(new DynamicModel({ id: "", chapter: "", difficulty: "", qtype: "", scope: "", setTitle: "", seen: 0, wrong: 0 }));
   app
     .db()
     .newQuery(
-      "SELECT q.id AS id, q.chapter AS chapter, q.difficulty AS difficulty, q.qtype AS qtype, q.scope AS scope, " +
+      "SELECT q.id AS id, q.chapter AS chapter, q.difficulty AS difficulty, q.qtype AS qtype, q.scope AS scope, COALESCE(q.setTitle, '') AS setTitle, " +
         "(SELECT COUNT(*) FROM answers a WHERE a.user = {:user} AND a.question = q.id) AS seen, " +
         "(SELECT COUNT(*) FROM answers a WHERE a.user = {:user} AND a.question = q.id AND a.scored = TRUE AND a.correct = FALSE AND a.locked = TRUE) AS wrong " +
         "FROM questions q JOIN chapters c ON c.id = q.chapter JOIN subjects s ON s.id = q.subject " +
@@ -67,6 +69,7 @@ function pool(app, user, opts) {
     difficulty: r.difficulty,
     qtype: r.qtype,
     scope: r.scope,
+    setTitle: r.setTitle,
     seen: r.seen > 0,
     wrong: r.wrong > 0,
   }));
