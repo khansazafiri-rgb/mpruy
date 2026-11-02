@@ -1,4 +1,5 @@
 import {SYSTEMS,REGIONS} from './registry.mjs';
+import {structureKind} from './kind.mjs';
 export const STUDY_MODES=[['identify','Identify highlighted structure','Kenali struktur yang disorot di atlas.'],['find','Find requested structure in 3D','Pilih struktur yang diminta langsung pada model.'],['system','Guess system','Hubungkan struktur dengan sistemnya.'],['region','Guess region','Tentukan regio dari struktur yang disorot.']].map(([id,name,description])=>({id,name,description}));
 const shuffled=(items,rng)=>{const a=[...items];for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 export function makeQuestion(registry,{mode='identify',system='',region='',excludeId='',rng=Math.random}={}) {
@@ -11,9 +12,13 @@ export function makeQuestion(registry,{mode='identify',system='',region='',exclu
  let answerId=target.id,options=[],prompt='Apa nama struktur yang disorot?';
  if(mode==='identify') {
   const candidates=registry.rows.filter(r=>r.available&&r.nameKnown&&r.base!==target.base);
-  const tier=r=>r.system===target.system&&r.regions.some(v=>target.regions.includes(v))?0:r.system===target.system?1:r.regions.some(v=>target.regions.includes(v))?2:3;
-  const ordered=shuffled(candidates,rng).sort((a,b)=>tier(a)-tier(b)),seen=new Set([target.base]),distractors=[];
-  for(const row of ordered){if(!seen.has(row.base)){seen.add(row.base);distractors.push(row);}if(distractors.length===3)break;}
+  // Distractors of the same kind first (tooth -> other teeth, rib -> other ribs), near the target first,
+  // then the same catalogue group, then the same system. Same side preferred so "(left)" gives nothing away.
+  const kind=structureKind(target),near=r=>r.regions.some(v=>target.regions.includes(v));
+  const tier=r=>{const k=structureKind(r)===kind;return k&&near(r)?0:k?1:r.group===target.group&&near(r)?2:r.group===target.group?3:r.system===target.system&&near(r)?4:r.system===target.system?5:near(r)?6:7;};
+  const rank=r=>tier(r)*2+(r.side===target.side?0:1);
+  const ordered=shuffled(candidates,rng).sort((a,b)=>rank(a)-rank(b)),seen=new Set([target.base]),names=new Set([target.nameKey]),distractors=[];
+  for(const row of ordered){if(!seen.has(row.base)&&!names.has(row.nameKey)){seen.add(row.base);names.add(row.nameKey);distractors.push(row);}if(distractors.length===3)break;}
   options=shuffled([target,...distractors].map(r=>({id:r.id,label:r.name})),rng);
  } else if(mode==='system') {
   answerId=target.system;prompt='Struktur yang disorot termasuk sistem apa?';
