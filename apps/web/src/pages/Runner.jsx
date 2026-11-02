@@ -4,9 +4,9 @@
 // Jawaban dikirim ke server satu per satu; kunci tidak pernah ada di browser
 // sebelum waktunya.
 import clsx from 'clsx';
-import { ArrowLeft, ChevronLeft, ChevronRight, BookOpen, Check, ChevronDown, Clock, Grid3X3, Loader2, RotateCcw, Trophy } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, BookOpen, Check, ChevronDown, Clock, Grid3X3, ListX, Loader2, RotateCcw, Trophy, XCircle } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import QuestionView from '@/components/QuestionView';
 import ReportDialog from '@/components/ReportDialog';
 import { Alert, Badge, Modal, PageLoader, ProgressBar, Tabs } from '@/components/ui';
@@ -266,11 +266,20 @@ function resultTip(score) {
 function Result({ data }) {
   const nav = useNavigate();
   const a = data.attempt;
-  const [filter, setFilter] = useState('all');
+  const [params] = useSearchParams();
+  // Dari Riwayat ("N salah · Lihat") hasil langsung menampilkan soal yang salah.
+  const [filter, setFilter] = useState(params.get('tampil') === 'salah' ? 'wrong' : 'all');
+  const reviewRef = useRef(null);
   const [retrying, setRetrying] = useState(false);
   const [error, setError] = useState('');
   const [report, setReport] = useState(null);
   const bd = a.breakdown || {};
+
+  const wrongCount = useMemo(() => data.questions.filter((q) => q.qtype !== 'esai' && !data.answers[q.id]?.correct).length, [data]);
+  const rightCount = useMemo(() => data.questions.filter((q) => data.answers[q.id]?.correct).length, [data]);
+  // Buka langsung di bagian soal yang salah bila datang dari tautan "Lihat".
+  useEffect(() => { if (params.get('tampil') === 'salah') reviewRef.current?.scrollIntoView({ block: 'start' }); }, [params]);
+  const showWrong = () => { setFilter('wrong'); reviewRef.current?.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); };
 
   const list = useMemo(() => data.questions.map((q, i) => ({ q, i, ans: data.answers[q.id] })).filter(({ q, ans }) => {
     if (filter === 'wrong') return q.qtype !== 'esai' && !ans?.correct;
@@ -283,7 +292,9 @@ function Result({ data }) {
     const s = a.settings || {};
     try {
       let r;
-      if (a.kind === 'practice') r = await api('attempts/practice', { method: 'POST', body: { chapter: s.chapter, count: s.count, mode: s.mode } });
+      if (s.wrongRetry) r = await api('attempts/wrong', { method: 'POST', body: { subject: s.subject, chapter: s.chapter, count: s.count, mode: s.mode } });
+      else if (s.drilling) r = await api('attempts/drilling', { method: 'POST', body: { subject: s.subject, count: s.count, mode: s.mode, ...(s.set !== undefined ? { set: s.set } : {}) } });
+      else if (a.kind === 'practice') r = await api('attempts/practice', { method: 'POST', body: { chapter: s.chapter, count: s.count, mode: s.mode } });
       else if (a.kind === 'simulation') r = await api('attempts/simulation', { method: 'POST', body: { ...s } });
       else r = await api('attempts/package', { method: 'POST', body: { package: s.package, mode: s.mode } });
       nav(`/kerjakan/${r.attempt.id}`);
@@ -315,6 +326,20 @@ function Result({ data }) {
         </div>
       </section>
 
+      {wrongCount > 0 ? (
+        <section className="card flex flex-wrap items-center gap-3 border-coral/30 bg-coral-soft/40 p-4" aria-label="Soal yang salah">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-coral-soft text-coral"><XCircle size={22} aria-hidden /></span>
+          <div className="min-w-0 flex-1">
+            <p className="font-display text-lg font-bold">{wrongCount} soal salah di percobaan ini</p>
+            <p className="text-sm text-ink-muted">Lihat jawabanmu, kunci, dan pembahasannya. Soal ini juga tersimpan di Riwayat &gt; Soal salah untuk diulang nanti.</p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <button type="button" className="btn-primary btn-sm" onClick={showWrong}><XCircle size={15} aria-hidden /> Lihat soal yang salah</button>
+            <Link to="/riwayat?tab=salah" className="btn-secondary btn-sm"><ListX size={15} aria-hidden /> Semua soal salahku</Link>
+          </div>
+        </section>
+      ) : a.scoredCount > 0 && <p className="text-center text-sm font-semibold text-brand">Semua soal dinilai benar. Mantap!</p>}
+
       <div className="grid gap-4 md:grid-cols-2">
         <section className="card p-4">
           <h2 className="mb-2 font-display font-semibold">Per BAB</h2>
@@ -341,10 +366,10 @@ function Result({ data }) {
         </section>
       </div>
 
-      <section>
+      <section ref={reviewRef} className="scroll-mt-20">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <h2 className="section-title">Review pembahasan</h2>
-          <Tabs value={filter} onChange={setFilter} tabs={[{ value: 'all', label: 'Semua' }, { value: 'wrong', label: 'Salah' }, { value: 'right', label: 'Benar' }]} />
+          <Tabs value={filter} onChange={setFilter} tabs={[{ value: 'all', label: `Semua (${data.questions.length})` }, { value: 'wrong', label: `Salah (${wrongCount})` }, { value: 'right', label: `Benar (${rightCount})` }]} />
         </div>
         <div className="space-y-4">
           {list.map(({ q, i, ans }) => (

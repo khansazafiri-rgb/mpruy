@@ -7,6 +7,7 @@ import { KIND, scoreText } from '@/lib/labels';
 import pb from '@/lib/pb';
 import { duration, fmtDateTime } from '@/lib/time';
 import PageHead from '@/components/PageHead';
+import WrongBank from '@/components/WrongBank';
 
 function DoctorSims() {
   const [page, setPage] = useState(1);
@@ -61,14 +62,20 @@ function DoctorSims() {
 
 export default function History() {
   const [params, setParams] = useSearchParams();
-  const [kind, setKindState] = useState(params.get('tab') === 'dokter' ? 'dokter' : '');
-  const setKind = (v) => { setKindState(v); setParams(v === 'dokter' ? { tab: 'dokter' } : {}, { replace: true }); };
+  const tab = params.get('tab');
+  const [kind, setKindState] = useState(tab === 'dokter' || tab === 'salah' ? tab : '');
+  // Tab dokter dan soal salah tersimpan di alamat (bisa dibagikan/diulang); soal salah juga menyimpan saringannya.
+  const setKind = (v) => { setKindState(v); setParams(v === 'dokter' || v === 'salah' ? { tab: v } : {}, { replace: true }); };
+  const wrongSubject = params.get('subject') || '';
+  const wrongChapter = params.get('chapter') || '';
+  const wrongPage = Math.max(1, parseInt(params.get('page'), 10) || 1);
+  const filterWrong = ({ subject = '', chapter = '', page = 1 }) => setParams({ tab: 'salah', ...(subject ? { subject } : {}), ...(subject && chapter ? { chapter } : {}), ...(page > 1 ? { page: String(page) } : {}) }, { replace: true });
   const [page, setPage] = useState(1);
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (kind === 'dokter') return;
+    if (kind === 'dokter' || kind === 'salah') return;
     setData(null);
     pb.collection('attempts').getList(page, 20, { sort: '-created', filter: kind ? `kind = "${kind}"` : '', expand: 'subject' })
       .then(setData).catch((e) => setError(errorText(e)));
@@ -77,8 +84,8 @@ export default function History() {
   return (
     <div className="space-y-7">
       <PageHead eyebrow="Catatan belajarmu" title="Riwayat">Buka lagi untuk review, atau ulangi dengan pengaturan yang sama.</PageHead>
-      <Tabs value={kind} onChange={(v) => { setKind(v); setPage(1); }} tabs={[{ value: '', label: 'Semua' }, { value: 'simulation', label: 'Simulasi' }, { value: 'package', label: 'Paket' }, { value: 'practice', label: 'Latihan topik' }, { value: 'dokter', label: 'Simulasi dokter' }]} />
-      {kind === 'dokter' ? <DoctorSims /> : (<>
+      <Tabs value={kind} onChange={(v) => { setKind(v); setPage(1); }} tabs={[{ value: '', label: 'Semua' }, { value: 'simulation', label: 'Simulasi' }, { value: 'package', label: 'Paket' }, { value: 'practice', label: 'Latihan topik' }, { value: 'salah', label: 'Soal salah' }, { value: 'dokter', label: 'Simulasi dokter' }]} />
+      {kind === 'dokter' ? <DoctorSims /> : kind === 'salah' ? <WrongBank subject={wrongSubject} chapter={wrongChapter} page={wrongPage} onFilter={filterWrong} /> : (<>
       <Alert>{error}</Alert>
       {!data ? <PageLoader /> : !data.items.length ? (
         <EmptyState icon={HistoryIcon} title="Belum ada riwayat">Mulai latihan dari halaman mata kuliah.</EmptyState>
@@ -87,8 +94,11 @@ export default function History() {
           {data.items.map((a) => {
             const s = a.settings || {};
             const done = a.status === 'finished';
+            // Soal yang dinilai tetapi salah (esai tidak dinilai, jadi tidak dihitung).
+            const wrong = done ? Math.max(0, (a.scoredCount || 0) - (a.correctCount || 0)) : 0;
             return (
-              <Link key={a.id} to={`/kerjakan/${a.id}`} className="flex flex-wrap items-center gap-3 p-4 hover:bg-page">
+              <div key={a.id} className="flex flex-wrap items-center gap-x-3 gap-y-2 hover:bg-page">
+              <Link to={`/kerjakan/${a.id}`} className="flex min-w-0 flex-1 flex-wrap items-center gap-3 p-4">
                 <div className="min-w-0 flex-1">
                   <p className="font-semibold">{a.title}</p>
                   <p className="text-xs text-ink-muted">
@@ -104,6 +114,9 @@ export default function History() {
                   </div>
                 ) : <Badge className="bg-gold-soft text-[#6b4f00]"><PlayCircle size={13} /> Lanjutkan</Badge>}
               </Link>
+              {wrong > 0 && <Link to={`/kerjakan/${a.id}?tampil=salah`} className="btn-secondary btn-sm mr-4 shrink-0 text-coral" aria-label={`${wrong} soal salah di ${a.title}, lihat yang salah`}><XCircle size={15} aria-hidden /> {wrong} salah · Lihat</Link>}
+              {done && wrong === 0 && a.scoredCount > 0 && <span className="mr-4 inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-brand"><CheckCircle2 size={14} aria-hidden /> Semua benar</span>}
+              </div>
             );
           })}
         </div>
