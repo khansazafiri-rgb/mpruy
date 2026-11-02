@@ -104,7 +104,7 @@ test('tanpa opsi baru, gambar lama tidak berubah: kaki kanonik tetap dipakai dan
   const svg = rakaSvg(raka('netral'));
   assert.ok(svg.includes('M130 566L194 566') && !svg.includes('raka-legs'));
   assert.equal(raka('netral').legs.on, 0);
-  assert.deepEqual(Object.keys(OUTFITS), ['harian', 'demo', 'jas']);
+  assert.deepEqual(Object.keys(OUTFITS), ['harian', 'demo', 'jaket', 'jas']);
   assert.equal(rakaSvg(raka('netral'), { uid: 'x' }), rakaSvg(raka('netral'), { uid: 'x', outfit: 'harian' }));
 });
 
@@ -217,4 +217,12 @@ test('memegang cangkir: hold = 0 tidak menggambar apa-apa (gambar lama identik);
   assert.doesNotMatch(svg, /NaN/);
   const mid = lerpState(raka('netral'), st, 0.5);
   assert.ok(mid.armR.hold > 0 && mid.armR.hold < 1);
+});
+
+test('outfit jaket: jaket puffer oranye dengan resleting, patch logo tetap ada, kaki dan wajah tidak berubah', () => {
+  const h = rakaSvg(raka('netral')), j = rakaSvg(raka('netral'), { outfit: 'jaket' });
+  assert.match(j, /raka-jaket/); assert.match(j, /raka-patch/); assert.doesNotMatch(h, /raka-jaket/);
+  assert.ok(j.includes('#F2A03D') && !h.includes('#F2A03D'));
+  assert.doesNotMatch(j, /NaN/);
+  assert.ok(j.includes('M130 566L194 566'), 'kaki kanonik sama');
 });
