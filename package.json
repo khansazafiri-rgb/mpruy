@@ -16,7 +16,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "catalog": "node tools/build-atlas-catalog.mjs",
-    "serve": "node serve.mjs"
+    "serve": "node serve.mjs",
+    "prebuild": "node tools/export-library-reference.mjs",
+    "previews:prepare": "vite build --config vite.thumbnails.config.js",
+    "previews:generate": "node tools/thumbnail-server.mjs"
   },
   "devDependencies": {
     "@gltf-transform/core": "^4.4.2",

@@ -1,0 +1,33 @@
+name: Assemble reviewed Anatomy source only
+on:
+  push:
+    branches: [handoff/anatomy-visual-learning]
+permissions:
+  contents: read
+jobs:
+  assemble:
+    if: github.ref == 'refs/heads/handoff/anatomy-visual-learning'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Restore and verify reviewed preview assets
+        run: node tools/restore-previews-once.mjs
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build -- --base=/anatomy/viewer/
+      - name: Commit complete reviewed source on handoff branch
+        run: |
+          rm -r handoff-assets
+          rm tools/restore-previews-once.mjs .github/workflows/publish-once.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Complete reviewed Anatomy handoff with verified mesh previews'
+          git push origin HEAD:refs/heads/handoff/anatomy-visual-learning

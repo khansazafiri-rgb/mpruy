@@ -1,3 +1,4 @@
+import {loadStructurePreviews,structurePreview} from '../data/previews.js';
 import {hostedShareUrl} from "../integration/host.js";
 import * as THREE from "three";
 import {ghostAllExcept, clearGhost} from "../viewer/visibility.js";
@@ -181,7 +182,7 @@ function showSearch() {
   const panel = $("searchResults");
   panel.classList.add("show");
   $("searchInput").setAttribute("aria-expanded", "true");
-  panel.innerHTML = `<div class="search-scope">Search all regions · selecting a result reveals it</div>${searchRows.map((r, i) => `<button type="button" role="option" aria-selected="false" id="atlas-result-${i}" class="atlas-result" data-result="${i}"><span>${escape(r.label)}</span><small>${r.system ? "View all available structures together" : `${GROUPS.find((g) => g.id === r.group).label} · ${REGIONS.find((g) => g[0] === metadata(r.id).regions[0])?.[1] || "Whole body"}`}</small></button>`).join("") || '<p class="search-empty">No matching structure in this model.</p>'}`;
+  panel.innerHTML = `<div class="search-scope">Search all regions · selecting a result reveals it</div>${searchRows.map((r, i) => `<button type="button" role="option" aria-selected="false" id="atlas-result-${i}" class="atlas-result" data-result="${i}">${!r.system&&structurePreview(r.id)?`<img class="atlas-result-preview" src="${escape(structurePreview(r.id))}" alt="" loading="lazy"/>`:""}<span>${escape(r.label)}</span><small>${r.system ? "View all available structures together" : `${GROUPS.find((g) => g.id === r.group).label} · ${REGIONS.find((g) => g[0] === metadata(r.id).regions[0])?.[1] || "Whole body"}`}</small></button>`).join("") || '<p class="search-empty">No matching structure in this model.</p>'}`;
 }
 async function chooseSearch(index) {
   const row = searchRows[index];
@@ -305,7 +306,7 @@ function initPanels() {
   setInert($("helpModal"), true);
 }
 export async function initUI() {
-  await loadAllData();
+  await Promise.all([loadAllData(),loadStructurePreviews()]);
   $("systemsList").innerHTML =
     `<div class="atlas-kicker">EXPLORE THE HUMAN BODY</div><div class="atlas-region-grid">${REGIONS.map(([id, label]) => `<button type="button" data-region="${id}" aria-pressed="${settings.region === id}">${label}</button>`).join("")}</div>
  <div class="atlas-section-heading"><h3>Systems & layers</h3><span>Outer → inner</span></div>

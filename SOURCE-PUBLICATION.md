@@ -8,10 +8,12 @@ MEDCOEL UI checkpoint: `b89d529a6b4b069431dde19aa75286aa656d2b8b`.
 Original local checkpoint: `753c1aa05ae2c54fde1d5c5a0ff28bc5568d6279`.
 This is not the older Hermes manual checkout `c3952c3` / upstream `8ca3b74`.
 
-Publication adds this provenance record, a SHA-256 file inventory, complete lint
-coverage for Node scripts/tests, and error/standalone host protocol tests.
-The reviewed UI, runtime engine, model files, catalogs, and host implementation
-remain byte-identical to the reviewed preview source.
+The initial publication recorded the complete reviewed source. This feature branch
+adds the optional Human Anatomy Annotator v1; see ANNOTATOR.md for its architecture
+and validation. The approved branding, model files, catalogs and existing host
+ready/error integration remain unchanged. Runtime hooks are limited to annotation
+mode bootstrap, selection suppression, and keeping normal atlas-session storage
+untouched during annotation.
 
 ## Build without deployment
 
@@ -43,3 +45,11 @@ originals are not required to run/build the atlas and remain excluded.
 
 `SOURCE-MANIFEST.json` records SHA-256 hashes of every other tracked source file
 at publication. Verify these before using the checkout on a server.
+
+## Anatomy Library v1 companion
+
+The current feature branch adds a metadata reference export and an independent
+library/study host bridge. Main MEDCOEL generates library pages from existing
+metadata; no annotations are required. See LIBRARY.md. The seven GLBs, original
+metadata and Annotator modules/data remain unchanged. The additional engine guard
+only prevents study mode from overwriting normal atlas-session storage.

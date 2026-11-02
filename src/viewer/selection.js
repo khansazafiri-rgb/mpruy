@@ -1,8 +1,10 @@
+import {structurePreview} from '../data/previews.js';
+import {createSelectionGlow} from './selectionGlow.js';
 // Selection - Raycasting, highlighting, and selection management
 import * as THREE from 'three';
 import {GROUPS,REGIONS} from '../atlas/catalog.js';
 import { state, setSelectedPart, getStructureInfo, translate } from '../state/store.js';
-import { getMeshRegistry, getPickTargets, getStructure } from './loadModel.js';
+import { getMeshRegistry, getPickTargets, getStructure, ownMeshesOf } from './loadModel.js';
 import { highlightMesh, clearHighlight, ghostAllExcept, clearGhost, isolatePart, hidePart } from './visibility.js';
 import { focusOnMesh } from './camera.js';
 import { showCallout, hideCallout } from '../ui/callout.js';
@@ -22,6 +24,7 @@ let raycaster = new THREE.Raycaster();
 raycaster.firstHitOnly = true;
 let mouse = new THREE.Vector2();
 let lastSelectedMesh = null;
+let releaseGlow = null;
 let lastIntersectedMesh = null;
 let touchStart = null;
 let pointerDown = null;
@@ -32,6 +35,7 @@ let orbiting = false;
 // Raycasting against the model roots tests each subtree once; the registry
 // holds nested structures, so it would test shared geometry repeatedly.
 function pickAt(event, viewer) {
+  if (document.body.classList.contains('anatomy-annotator-active')) return null;
   getEventPosition(event, viewer.canvas);
   raycaster.setFromCamera(mouse, viewer.camera);
 
@@ -239,6 +243,7 @@ function findParentMesh(object) {
 }
 
 export function selectPart(partId, viewer) {
+  releaseGlow?.(); releaseGlow = null;
   // Clear previous selection highlight
   if (lastSelectedMesh) {
     clearHighlight(lastSelectedMesh.userData.partId);
@@ -259,12 +264,14 @@ export function selectPart(partId, viewer) {
   };
 
   // Highlight selected mesh
-  highlightMesh(partId, 0xffdf5d, 0.8);
+  // Ghosting restores the selected material, so apply its tint afterwards.
   lastSelectedMesh = mesh;
 
   // Everything else drops to a ghost, so an occluded structure is still
   // readable, and the camera eases in to answer "where is it".
   ghostAllExcept(partId);
+  highlightMesh(partId, 0xffdf5d, 0.8);
+  releaseGlow = createSelectionGlow(ownMeshesOf(partId));
 
   showCallout(partId, partData.displayName, {
     isolate: id => isolatePart(id),
@@ -291,6 +298,7 @@ export function selectPart(partId, viewer) {
 }
 
 export function deselectPart() {
+  releaseGlow?.(); releaseGlow = null;
   if (lastSelectedMesh) {
     clearHighlight(lastSelectedMesh.userData.partId);
     lastSelectedMesh = null;
@@ -340,6 +348,7 @@ function showInfoPanel(partData) {
         </div>
       </div>
     </div>
+    ${structurePreview(partData.id)?`<figure class="structure-isolated-preview"><img src="${escapeHtml(structurePreview(partData.id))}" alt="${escapeHtml(name)} — isolated 3D preview"/><figcaption>Isolated preview · main view keeps anatomical context</figcaption></figure>`:""}
     ${relationMarkup(partData.id, lang)}
     <div class="structure-description" data-definition>${escapeHtml(translate('loading_definition', lang))}</div>
   `;

@@ -1,3 +1,4 @@
+import {contextualBounds} from './framing.js';
 import * as THREE from "three";
 import { state, subscribe, notify, setIsolatedPart } from "../state/store.js";
 import {
@@ -266,6 +267,8 @@ export async function reveal(id) {
     const band = bands[settings.region];
     if (band && (yMin < band[0] - 0.005 || yMax > band[1] + 0.005))
       settings.region = "whole";
+    settings.groups.skeletal.enabled = true;
+    settings.groups.skeletal.removed = 0;
     settings.groups[meta.group].enabled = true;
     settings.groups[meta.group].removed = Math.min(
       settings.groups[meta.group].removed,
@@ -276,11 +279,7 @@ export async function reveal(id) {
   quiet(() => showPart(id));
   mask();
   selectPartById(id, state.viewer);
-  const b = new THREE.Box3(
-    new THREE.Vector3(...meta.box.slice(0, 3)),
-    new THREE.Vector3(...meta.box.slice(3)),
-  );
-  await frame(b);
+  await frame(contextualBounds(meta));
   changed();
 }
 export function isolateSelected() {
@@ -370,6 +369,8 @@ function serialise() {
   };
 }
 function save() {
+  if (globalThis.document?.body?.classList.contains('anatomy-annotator-active')) return;
+  if (globalThis.document?.body?.classList.contains('anatomy-study-active')) return;
   try {
     localStorage.setItem("medcoel:atlas:v2", JSON.stringify(serialise()));
   } catch {
