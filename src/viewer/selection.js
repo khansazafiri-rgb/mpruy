@@ -270,8 +270,8 @@ export function selectPart(partId, viewer) {
   // Everything else drops to a ghost, so an occluded structure is still
   // readable, and the camera eases in to answer "where is it".
   ghostAllExcept(partId);
-  highlightMesh(partId, 0xffdf5d, 0.8);
-  releaseGlow = createSelectionGlow(ownMeshesOf(partId));
+  highlightMesh(partId, 0xffdf5d, 0.45);
+  releaseGlow = createSelectionGlow(ownMeshesOf(partId), () => viewer.render());
 
   showCallout(partId, partData.displayName, {
     isolate: id => isolatePart(id),

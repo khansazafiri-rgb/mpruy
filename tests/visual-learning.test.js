@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import {readFileSync,statSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {contextualBounds} from '../src/atlas/framing.js';
-import {createSelectionGlow} from '../src/viewer/selectionGlow.js';
+import {createSelectionGlow,sweepAxisOf} from '../src/viewer/selectionGlow.js';
 const publicUrl=new URL('../public/',import.meta.url);
 it('context framing preserves the complete target and enough regional context for small structures',()=>{
  for(const regions of [['headNeck'],['thorax'],['upperLimb']]){
@@ -12,11 +12,21 @@ it('context framing preserves the complete target and enough regional context fo
  }
  const big=contextualBounds({box:[-1,0,-1,1,2,1],regions:['whole']});expect(big.containsBox(new THREE.Box3(new THREE.Vector3(-1,0,-1),new THREE.Vector3(1,2,1)))).toBe(true);
 });
-it('halo uses render-only shared geometry and cleans up without altering or disposing the original mesh',()=>{
- const geometry=new THREE.BoxGeometry(.1,.1,.1),mesh=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial()),positions=geometry.attributes.position.array.slice(),dispose=vi.spyOn(geometry,'dispose');
- const release=createSelectionGlow([mesh]);expect(mesh.children).toHaveLength(2);const materials=mesh.children.map(shell=>vi.spyOn(shell.material,'dispose'));
- for(const shell of mesh.children){expect(shell.geometry).toBe(geometry);const hit=[];shell.raycast(null,hit);expect(hit).toEqual([]);expect(shell.material.depthWrite).toBe(false);expect(shell.material.depthTest).toBe(false);}
- release();expect(mesh.children).toHaveLength(0);expect(dispose).not.toHaveBeenCalled();for(const spy of materials)expect(spy).toHaveBeenCalledOnce();expect(geometry.attributes.position.array).toEqual(positions);
+it('selection sweep is a render-only overlay on shared geometry and cleans up without touching the mesh',()=>{
+ const geometry=new THREE.BoxGeometry(.1,.1,.1),mesh=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial()),positions=geometry.attributes.position.array.slice(),dispose=vi.spyOn(geometry,'dispose'),frames=vi.fn();
+ const release=createSelectionGlow([mesh],frames);expect(mesh.children).toHaveLength(1);expect(frames).toHaveBeenCalled();
+ const overlay=mesh.children[0],spy=vi.spyOn(overlay.material,'dispose');
+ expect(overlay.geometry).toBe(geometry);const hit=[];overlay.raycast(null,hit);expect(hit).toEqual([]);
+ expect(overlay.material.depthWrite).toBe(false);expect(overlay.material.depthTest).toBe(true);expect(overlay.material.blending).toBe(THREE.AdditiveBlending);
+ release();expect(mesh.children).toHaveLength(0);expect(dispose).not.toHaveBeenCalled();expect(spy).toHaveBeenCalledOnce();expect(geometry.attributes.position.array).toEqual(positions);
+});
+it('sweep travels along the long axis and starts at the upper end',()=>{
+ const geometry=new THREE.CylinderGeometry(.01,.01,1,8,8),mesh=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial());
+ const {axis,span}=sweepAxisOf(geometry);expect(Math.abs(axis.y)).toBeGreaterThan(.99);expect(span).toBeCloseTo(1,2);
+ createSelectionGlow([mesh]);const u=mesh.children[0].material.uniforms;
+ // vAlong = (dot(p,axis)-min)/span must be 0 at the top (y=+.5) and 1 at the bottom (y=-.5).
+ const along=y=>(new THREE.Vector3(0,y,0).dot(u.sweepAxis.value)-u.sweepMin.value)/u.sweepSpan.value;
+ expect(along(.5)).toBeCloseTo(0,3);expect(along(-.5)).toBeCloseTo(1,3);
 });
 it('all selectable structures and regions have actual WebP previews tied to unchanged GLB sources',()=>{
  const manifest=JSON.parse(readFileSync(new URL('data/structure-thumbnails.json',publicUrl))),systems=JSON.parse(readFileSync(new URL('data/systems.json',publicUrl)));
