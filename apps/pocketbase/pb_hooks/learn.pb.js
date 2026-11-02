@@ -177,8 +177,10 @@ routerAdd("GET", "/api/medcoel/drilling", (e) => {
     if (it.seen) seen[s] = (seen[s] || 0) + 1;
     if (it.scope === "campus") ownCampus[s] = (ownCampus[s] || 0) + 1;
   });
+  // Berkas materi (slide) ikut dihitung: mata kuliah yang hanya punya materi juga tampil.
+  const deckCount = require(`${__hooks}/lib/decks.js`).countsFor(e.app, user);
   const out = e.app.findRecordsByFilter("subjects", "hidden = false", "order,name", 200, 0)
-    .filter((s) => count[s.id])
+    .filter((s) => count[s.id] || deckCount[s.id])
     .map((s) => ({
       id: s.id,
       name: s.getString("name"),
@@ -188,8 +190,11 @@ routerAdd("GET", "/api/medcoel/drilling", (e) => {
       illustration: s.getString("illustration"),
       collectionId: s.collection().id,
       studying: user.getStringSlice("studyingSubjects").indexOf(s.id) >= 0,
-      questionCount: count[s.id],
+      questionCount: count[s.id] || 0,
       campusQuestionCount: ownCampus[s.id] || 0,
+      deckCount: (deckCount[s.id] || {}).deckCount || 0,
+      slideCount: (deckCount[s.id] || {}).slideCount || 0,
+      campusDeckCount: (deckCount[s.id] || {}).campusDeckCount || 0,
       answeredCount: seen[s.id] || 0,
       order: s.getInt("order"),
     }));

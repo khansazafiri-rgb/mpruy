@@ -303,7 +303,10 @@ function drillingStatus(app, user) {
   const mine = campus
     ? count("q.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(q.campuses) WHERE value = {:campus})", { campus: campus })
     : 0;
-  return { enabled: enabled, total: total, mine: mine, available: enabled && total + mine > 0 };
+  // Berkas materi (drilling_decks) juga membuka menu Drilling; `total`/`mine` tetap menghitung soal saja.
+  let decks = { total: 0, mine: 0 };
+  try { decks = require(HOOKS + "/lib/decks.js").status(app, user); } catch (err) { console.log("[drilling] hitungan materi gagal:", err); }
+  return { enabled: enabled, total: total, mine: mine, deckTotal: decks.total, deckMine: decks.mine, available: enabled && total + mine + decks.total + decks.mine > 0 };
 }
 
 // BAB mata kuliah yang punya catatan materi berisi. Hanya id yang dibaca,

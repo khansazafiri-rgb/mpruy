@@ -18,16 +18,17 @@ export function waLink(phone, text) {
 const BAHASA = { id: 'Indonesia', en: 'Inggris', both: 'Indonesia dan Inggris' };
 
 export function confirmMessage(sub, user) {
+  const materi = sub.contentKind === 'materi';
   return [
-    'Halo Admin MEDCOEL, saya ingin mengonfirmasi pengajuan soal.',
+    `Halo Admin MEDCOEL, saya ingin mengonfirmasi pengajuan ${materi ? 'PPT materi' : 'soal'}.`,
     '',
     `Kode pengajuan: ${sub.code}`,
     `Nama: ${user?.name || '-'} (${user?.loginId || '-'})`,
     `Kampus: ${user?.campusName || '-'}`,
     `Mata kuliah: ${sub.subjectName}`,
+    `Isi PDF: ${materi ? 'PPT materi' : 'Soal'}`,
     `Jumlah PDF: ${sub.pdfCount}`,
-    `Pembahasan & kunci di PDF: ${sub.hasKey ? 'Ada' : 'Belum ada'}`,
-    `Bahasa: ${BAHASA[sub.language] || '-'}`,
+    ...(materi ? [] : [`Pembahasan & kunci di PDF: ${sub.hasKey ? 'Ada' : 'Belum ada'}`, `Bahasa: ${BAHASA[sub.language] || '-'}`]),
     `Dilihat oleh: ${sub.scope === 'campus' ? 'Hanya kampus saya' : 'General'}`,
   ].join('\n');
 }

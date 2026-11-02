@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import { escapeHtml } from './telegram.mjs';
-import { parsePut, joinChunks, tryParse, countQuestions } from './json-paste.mjs';
+import { parsePut, joinChunks, tryParse, countQuestions, countSlides, detectKind } from './json-paste.mjs';
+import { kindOf } from './notify.mjs';
 
 const PLAN_TTL_MS = 2 * 60 * 60 * 1000;
 
@@ -25,6 +26,7 @@ export class ImportPlanFlow {
       '<code>/put</code> saja memakai pengajuan yang terakhir diumumkan.',
       'Alternatif: kirim file .json dengan caption <code>/put [KODE]</code>.',
       '<code>/plan</code> — lihat rencana aktif',
+      'Untuk pengajuan <b>PPT materi</b> isinya JSON materi (slide + penjelasan); tujuannya otomatis Drilling (materi).',
       '<code>/change drilling</code> — tujuan ke section Drilling',
       '<code>/change chapter ID_BAB</code> — tujuan ke bab pada mata kuliah submission',
       '<code>/confirm</code> — dry-run final lalu impor',
@@ -110,6 +112,15 @@ export class ImportPlanFlow {
   // Dipakai bersama oleh jalur file dan jalur tempel teks.
   async createPlanFromRaw(msg, submissionId, raw, parsedValue, { fileName, telegramFileId = '', destination }) {
     const sub = await this.medcoel.getSubmission(submissionId);
+    const kind = kindOf(sub);
+    // JSON yang salah jalur ditolak sebelum rencana dibuat: PPT materi butuh JSON slide, pengajuan soal butuh JSON soal.
+    const found = detectKind(parsedValue);
+    if (found !== 'unknown' && found !== kind) {
+      return this.telegram.sendMessage(msg.chat.id, wrongKindMessage(sub.code || submissionId, kind, found));
+    }
+    if (kind === 'materi' && destination?.type === 'subject') {
+      return this.telegram.sendMessage(msg.chat.id, `❌ <b>${escapeHtml(sub.code || submissionId)}</b> adalah PPT materi, jadi tidak bisa dimasukkan ke BAB. Materi tayang di Drilling mata kuliahnya.`);
+    }
     const bodyRef = telegramFileId ? '' : await this.state.putBody(msg.chat.id, msg.from.id, raw);
     const plan = await this.state.putImportPlan(msg.chat.id, msg.from.id, {
       chatId: String(msg.chat.id),
@@ -120,7 +131,9 @@ export class ImportPlanFlow {
       bodyRef,
       fileName,
       fileHash: hashRaw(raw),
-      questionCount: countQuestions(parsedValue),
+      contentKind: kind,
+      questionCount: kind === 'materi' ? 0 : countQuestions(parsedValue),
+      slideCount: kind === 'materi' ? countSlides(parsedValue) : 0,
       source: {
         subjectId: sub.subject?.id || '',
         subjectName: sub.subject?.name || '',
@@ -131,7 +144,7 @@ export class ImportPlanFlow {
       },
       // Jangan menebak bab dari isi JSON. /put default ke Drilling, sedangkan
       // /dryrun legacy membawa chapter eksplisit.
-      destination,
+      destination: kind === 'materi' ? { type: 'deck' } : destination,
     });
 
     return this.telegram.sendMessage(msg.chat.id, planCard(plan));
@@ -216,6 +229,7 @@ export class ImportPlanFlow {
 
   async changeToDrilling(chatId, actorId) {
     const plan = this.requirePlan(chatId, actorId);
+    if (plan.contentKind === 'materi') return this.telegram.sendMessage(chatId, 'PPT materi selalu tayang di Drilling (materi). Tidak ada tujuan lain; kirim <code>/confirm</code> bila rencananya sudah benar.');
     plan.destination = { type: 'drilling' };
     const updated = await this.state.putImportPlan(chatId, actorId, plan);
     return this.telegram.sendMessage(chatId, `✏️ Tujuan diubah.\n\n${planCard(updated)}`);
@@ -223,6 +237,7 @@ export class ImportPlanFlow {
 
   async changeToChapter(chatId, actorId, chapterId) {
     const plan = this.requirePlan(chatId, actorId);
+    if (plan.contentKind === 'materi') return this.telegram.sendMessage(chatId, '❌ PPT materi tidak bisa dimasukkan ke BAB. Materi tayang di Drilling mata kuliahnya.');
     plan.destination = { type: 'subject', chapterId: String(chapterId) };
     const updated = await this.state.putImportPlan(chatId, actorId, plan);
     return this.telegram.sendMessage(chatId, `✏️ Tujuan diubah.\n\n${planCard(updated)}`);
@@ -273,12 +288,33 @@ export class ImportPlanFlow {
     try {
       check = await this.runImport(plan, raw, true);
     } catch (err) {
+      // Server menjawab 400 untuk materi yang diblokir; tampilkan per slide, bukan galat HTTP mentah.
+      if (plan.contentKind === 'materi' && err?.status === 400 && Array.isArray(err.body?.items)) {
+        return this.telegram.sendMessage(chatId, `❌ <b>Import materi diblokir</b>${summarizeIssues(err.body.items, 'Slide ')}\n\nPerbaiki JSON-nya lalu kirim ulang dengan <code>/put</code>.`);
+      }
       if (plan.destination?.type === 'drilling' && err?.status === 404) {
         return this.telegram.sendMessage(chatId,
           '⚠️ Import Plan aman dan belum menulis data, tetapi endpoint Drilling MEDCOEL belum aktif. Selesaikan backend Drilling lalu jalankan <code>/confirm</code> lagi.'
         );
       }
       throw err;
+    }
+
+    if (plan.contentKind === 'materi') {
+      if (check?.blocked) {
+        return this.telegram.sendMessage(chatId, `❌ <b>Import materi diblokir</b>${summarizeIssues(check?.items || [], 'Slide ')}\n\nPerbaiki JSON-nya lalu kirim ulang dengan <code>/put</code>.`);
+      }
+      const imported = await this.runImport(plan, raw, false);
+      await this.state.deleteImportPlan(chatId, actorId);
+      return this.telegram.sendMessage(chatId,
+        `🚀 <b>Materi berhasil diimpor</b>\n` +
+        `Pengajuan: <b>${escapeHtml(plan.submissionCode)}</b>\n` +
+        `Judul: ${escapeHtml(imported?.title || check?.title || '—')}\n` +
+        `Slide: ${Number(imported?.slideCount || 0)}${imported?.replaced ? ' <i>(memperbarui materi dengan judul yang sama)</i>' : ''}\n` +
+        `Tujuan: ${destinationLabel(plan.destination)}\n` +
+        `Hash: <code>${escapeHtml(plan.fileHash)}</code>`
+        + warningsText(imported?.warnings)
+      );
     }
 
     const invalid = Number(check?.invalid || 0);
@@ -304,6 +340,7 @@ export class ImportPlanFlow {
 
   runImport(plan, raw, dryRun) {
     const common = { text: raw, skipInvalid: false, dryRun };
+    if (plan.destination?.type === 'deck') return this.medcoel.importDeckSubmission(plan.submissionId, { text: raw, dryRun });
     if (plan.destination?.type === 'drilling') {
       return this.medcoel.importDrillingSubmission(plan.submissionId, common);
     }
@@ -329,6 +366,21 @@ function planCard(plan) {
   const scope = s.restriction === 'campus'
     ? `Kampus saja${s.campusName ? ` · ${escapeHtml(s.campusName)}` : ''}`
     : 'Semua kampus';
+  if (plan.contentKind === 'materi') {
+    return [
+      '<b>📦 IMPORT PLAN · 📚 PPT MATERI</b>',
+      `<b>${escapeHtml(plan.submissionCode)}</b>`,
+      '',
+      `JSON: ${escapeHtml(plan.fileName)}`,
+      `Slide terdeteksi: ${Number(plan.slideCount || 0) || '—'}`,
+      `Sumber mata kuliah: ${escapeHtml(s.subjectName || s.subjectId || '—')}`,
+      `Tujuan: ${destinationLabel(plan.destination)}`,
+      `Scope: ${scope} <i>(locked dari submission)</i>`,
+      '',
+      '<b>Belum ada perubahan ke database.</b>',
+      'Jika sudah benar, kirim <code>/confirm</code> (periksa ulang lalu impor).',
+    ].join('\n');
+  }
   return [
     '<b>📦 IMPORT PLAN</b>',
     `<b>${escapeHtml(plan.submissionCode)}</b>`,
@@ -347,6 +399,7 @@ function planCard(plan) {
 }
 
 function destinationLabel(destination) {
+  if (destination?.type === 'deck') return '<b>DRILLING · MATERI</b> <i>(slide + penjelasan)</i>';
   if (destination?.type === 'drilling') return '<b>DRILLING</b> <i>(section terpisah)</i>';
   if (destination?.type === 'subject') return `Mata kuliah → BAB <code>${escapeHtml(destination.chapterId || '—')}</code>`;
   return '—';
@@ -367,10 +420,22 @@ function safeEqual(a, b) {
   return aa.length === bb.length && crypto.timingSafeEqual(aa, bb);
 }
 
-function summarizeIssues(items) {
+function summarizeIssues(items, label = '#') {
   const bad = items.filter((x) => Array.isArray(x?.errors) && x.errors.length).slice(0, 8);
   if (!bad.length) return '';
   return '\n\n<b>Masalah:</b>\n' + bad
-    .map((x) => `#${escapeHtml(x.index ?? x.number ?? '?')}: ${escapeHtml(x.errors.join('; '))}`)
+    .map((x) => `${label}${escapeHtml(x.index ?? x.number ?? '?')}: ${escapeHtml(x.errors.join('; '))}`)
     .join('\n');
+}
+
+function warningsText(warnings) {
+  const list = (Array.isArray(warnings) ? warnings : []).slice(0, 5);
+  return list.length ? `\n\n<b>Catatan:</b>\n${list.map((w) => `• ${escapeHtml(w)}`).join('\n')}` : '';
+}
+
+function wrongKindMessage(code, expected, found) {
+  const c = escapeHtml(code);
+  return expected === 'materi'
+    ? `❌ <b>${c}</b> adalah <b>PPT materi</b>, tetapi JSON-nya terlihat seperti soal. Kirim JSON materi: <code>{ "title": ..., "slides": [ { "image": "https://lh3...", "explanation": "..." } ] }</code>.`
+    : `❌ <b>${c}</b> adalah <b>pengajuan soal</b>, tetapi JSON-nya terlihat seperti materi (slide). Kirim JSON soal, atau pastikan pengaju memilih "PPT materi" untuk berkas slide.`;
 }

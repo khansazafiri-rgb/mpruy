@@ -33,6 +33,8 @@ const ChatAdmin = lazy(() => import('./pages/ChatAdmin'));
 const Profile = lazy(() => import('./pages/Profile'));
 const SimulasiDokter = lazy(() => import('./pages/SimulasiDokter'));
 const Drilling = lazy(() => import('./pages/Drilling'));
+const DrillingSubject = lazy(() => import('./pages/DrillingSubject'));
+const DrillingDeck = lazy(() => import('./pages/DrillingDeck'));
 const TutorialLatihan = lazy(() => import('./pages/TutorialLatihan'));
 const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'));
 const AdminSummary = lazy(() => import('./pages/admin/Summary'));
@@ -102,6 +104,8 @@ export default function App() {
             <Route path="/lab/jalur/:slug" element={<LabPathway />} />
             <Route path="/lab/modul/:key" element={<LabAuthoredModule />} />
             <Route path="/drilling" element={<Drilling />} />
+            <Route path="/drilling/materi/:id" element={<DrillingDeck />} />
+            <Route path="/drilling/:slug" element={<DrillingSubject />} />
             <Route path="/tutorial/latihan-soal" element={<TutorialLatihan />} />
           </Route>
           <Route path="/admin" element={<RequireAuth admin><AdminLayout /></RequireAuth>}>

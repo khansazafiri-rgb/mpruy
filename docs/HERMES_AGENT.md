@@ -46,6 +46,8 @@ Password agen disimpan di file lingkungan server AI, bukan di repositori.
       "subject": { "id": "s1", "name": "Parasitologi" },
       "hasKeyAndExplanation": true,
       "language": "id",
+      "contentKind": "soal",      // atau "materi" (PPT)
+      "kindLabel": "Soal",
       "restriction": "campus",   // "all" = General (semua pengguna)
       "pdfCount": 2,
       "files": [{ "id": "f1", "name": "UTB 2025.pdf", "size": 812345, "driveFileId": "1AbC...", "link": "https://drive.google.com/file/d/1AbC.../view" }]
@@ -56,6 +58,16 @@ Password agen disimpan di file lingkungan server AI, bukan di repositori.
 ```
 
 `GET /api/medcoel/agent/submissions/{id atau kode}` mengembalikan satu objek yang sama.
+
+## Isi PDF: soal atau PPT materi
+
+Saat mengajukan, pengaju memilih **isi PDF**: Soal (bawaan) atau **PPT materi**. Pilihan itu ada di setiap pengajuan sebagai `contentKind` (`"soal"` | `"materi"`) dan `kindLabel` (`"Soal"` | `"PPT materi"`); server lama tanpa field ini berarti soal. Hermes menampilkannya ke admin: judul notifikasi `📝 SOAL` atau `📚 PPT MATERI`, baris `Isi PDF`, nama berkas PDF `KODE_MATERI_PDF-1-dari-2_...pdf` dan keterangan `📚 PPT MATERI · KODE · ...` untuk PPT.
+
+- Pengajuan **soal** diimpor lewat `/import` atau `/drilling-import` (JSON soal, lihat `docs/FORMAT_SOAL.md`).
+- Pengajuan **PPT materi** diimpor lewat `POST /api/medcoel/agent/submissions/{id atau kode}/materi-import` (JSON slide + penjelasan, lihat `docs/MATERI_SLIDE.md`). Kampus dan cakupan tetap dari pengajuan; berhasil: materi tayang di Drilling, status `selesai`, `importedCount` = jumlah slide.
+- Salah jalur ditolak dengan pesan yang menyebut jalur yang benar (materi di `/import`, soal di `/materi-import`).
+- Di Telegram: `/put KODE` (tempel atau file `.json`), `/plan`, `/confirm` sama seperti soal. Untuk PPT materi Hermes mengenali bentuk JSON (slide vs soal) dan menolak yang salah jalur sebelum rencana dibuat; tujuannya otomatis `DRILLING · MATERI`, dan `/change chapter` atau `/change drilling` ditolak.
+- Materi tambahan dari admin tanpa pengajuan: `POST /api/medcoel/agent/materi-import` `{ subject, scope, campuses, ... }`.
 
 ## Mengubah status
 

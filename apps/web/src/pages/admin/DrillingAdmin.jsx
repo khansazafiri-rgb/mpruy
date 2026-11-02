@@ -1,10 +1,11 @@
 // Pengelolaan Drilling. Admin bebas: menyalakan menu, menyembunyikan per mata kuliah, menambah soal
 // (impor massal atau satu per satu) langsung di sini, mengelola soal yang sudah ada, dan memakai aksi massal
 // per mata kuliah. Semua mata kuliah tampil, juga yang belum punya soal Drilling.
-import { Eye, EyeOff, FilePlus2, ListChecks, Plus, Send, Trash2, Undo2, Users } from 'lucide-react';
+import { BookOpenText, Eye, EyeOff, FilePlus2, ListChecks, Plus, Send, Trash2, Undo2, Users } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DrillingAudience from '@/components/admin/DrillingAudience';
+import DrillingDecks from '@/components/admin/DrillingDecks';
 import ImportPanel from '@/components/admin/ImportPanel';
 import QuestionEditor from '@/components/admin/QuestionEditor';
 import { useCatalog } from '@/components/admin/useCatalog';
@@ -21,6 +22,7 @@ export default function DrillingAdmin() {
   const [onlyFilled, setOnlyFilled] = useState(false);
   const [adding, setAdding] = useState(null); // { kind: 'import' | 'one', subject }
   const [audience, setAudience] = useState(''); // id mata kuliah yang panel "siapa yang melihat"-nya terbuka
+  const [decks, setDecks] = useState(''); // id mata kuliah yang panel materinya terbuka
   const { chaptersOf, reload: reloadCatalog } = useCatalog();
   const load = useCallback(() => api('admin/drilling').then((d) => { setData(d); setError(''); }).catch((e) => setError(e.message)), []);
   useEffect(() => { load(); }, [load]);
@@ -53,15 +55,15 @@ export default function DrillingAdmin() {
 
   if (!data) return error ? <Alert>{error}</Alert> : <PageLoader />;
   const status = data.available ? { cls: 'bg-mint-soft text-brand', label: 'Tampil untuk pengguna' }
-    : data.enabled ? { cls: 'bg-gold-soft text-[#6b4f00]', label: 'Menyala, tetapi tersembunyi: belum ada soal Drilling yang tayang' }
+    : data.enabled ? { cls: 'bg-gold-soft text-[#6b4f00]', label: 'Menyala, tetapi tersembunyi: belum ada materi atau soal Drilling yang tayang' }
       : { cls: 'bg-page text-ink-muted', label: 'Tersembunyi untuk pengguna' };
-  const withQuestions = data.subjects.filter((s) => s.published > 0).length;
+  const withQuestions = data.subjects.filter((s) => s.published > 0 || s.deckPublished > 0).length;
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="page-title">Drilling</h1>
-          <p className="mt-1 text-sm text-ink-muted">Soal per mata kuliah tanpa BAB: General (semua pengguna) atau khusus kampus tertentu. Menu Drilling di sebelah Simulasi tampil untuk pengguna bila sakelar menyala dan ada soal tayang yang bisa mereka lihat (General, atau soal kampusnya). Kamu, sebagai admin, selalu bisa membukanya untuk mencoba.</p>
+          <p className="mt-1 text-sm text-ink-muted">"File kampusmu" per mata kuliah: materi (slide PPT dengan penjelasan) dan soal tanpa BAB, General (semua pengguna) atau khusus kampus tertentu. Menu Drilling di sebelah Simulasi tampil untuk pengguna bila sakelar menyala dan ada materi atau soal tayang yang bisa mereka lihat (General, atau milik kampusnya). Kamu, sebagai admin, selalu bisa membukanya untuk mencoba.</p>
         </div>
         <div className="flex flex-wrap gap-2">
           <button type="button" className="btn-primary" onClick={() => setAdding({ kind: 'import', subject: '' })}><FilePlus2 size={18} /> Impor soal Drilling</button>
@@ -80,7 +82,8 @@ export default function DrillingAdmin() {
             {data.enabled ? <><EyeOff size={17} /> Sembunyikan Drilling</> : <><Eye size={17} /> Tampilkan Drilling</>}
           </button>
         </div>
-        <dl className="grid grid-cols-3 gap-3 text-center">
+        <dl className="grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
+          <div className="rounded-xl bg-page p-3"><dt className="text-xs text-ink-muted">Materi tayang</dt><dd className="font-display text-2xl font-bold">{data.deckPublished || 0}</dd></div>
           <div className="rounded-xl bg-page p-3"><dt className="text-xs text-ink-muted">Soal tayang</dt><dd className="font-display text-2xl font-bold">{data.published}</dd></div>
           <div className="rounded-xl bg-page p-3"><dt className="text-xs text-ink-muted">Draf</dt><dd className="font-display text-2xl font-bold">{data.drafts}</dd></div>
           <div className="rounded-xl bg-page p-3"><dt className="text-xs text-ink-muted">Mata kuliah berisi</dt><dd className="font-display text-2xl font-bold">{withQuestions}<span className="text-sm font-normal text-ink-muted"> / {data.subjects.length}</span></dd></div>
@@ -98,9 +101,10 @@ export default function DrillingAdmin() {
               <div className="flex flex-wrap items-center gap-3">
                 <div className="min-w-[14rem] flex-1">
                   <p className="font-semibold">{s.name}</p>
-                  <p className="text-sm text-ink-muted">{s.published} tayang{s.draft ? ` · ${s.draft} draf` : ''}{s.hidden ? ' · disembunyikan' : ''}{s.subjectHidden ? ' · mata kuliah disembunyikan' : ''}{s.campusOnly ? ` · ${s.campusOnly} soal khusus kampus (hanya tampil bagi kampus itu)` : ''}</p>
+                  <p className="text-sm text-ink-muted">{s.deckPublished ? `${s.deckPublished} materi (${s.deckSlides} slide) · ` : ''}{s.deckDraft ? `${s.deckDraft} materi draf · ` : ''}{s.published} soal tayang{s.draft ? ` · ${s.draft} draf` : ''}{s.hidden ? ' · disembunyikan' : ''}{s.subjectHidden ? ' · mata kuliah disembunyikan' : ''}{s.campusOnly ? ` · ${s.campusOnly} soal khusus kampus (hanya tampil bagi kampus itu)` : ''}</p>
                 </div>
-                <button type="button" className="btn-secondary btn-sm" onClick={() => setAdding({ kind: 'import', subject: s.id })}><FilePlus2 size={15} /> Impor</button>
+                <button type="button" className="btn-secondary btn-sm" onClick={() => setDecks(decks === s.id ? '' : s.id)} aria-expanded={decks === s.id}><BookOpenText size={15} /> Materi</button>
+                <button type="button" className="btn-secondary btn-sm" onClick={() => setAdding({ kind: 'import', subject: s.id })}><FilePlus2 size={15} /> Impor soal</button>
                 <button type="button" className="btn-secondary btn-sm" onClick={() => setAdding({ kind: 'one', subject: s.id })}><Plus size={15} /> Satu soal</button>
                 <Link to={`/admin/soal?subject=${s.id}&chapter=${s.chapter}`} className="btn-ghost btn-sm"><ListChecks size={15} /> Kelola soal</Link>
                 <button type="button" className="btn-ghost btn-sm" onClick={() => setAudience(audience === s.id ? '' : s.id)} aria-expanded={audience === s.id}><Users size={15} /> Siapa yang melihat</button>
@@ -108,6 +112,7 @@ export default function DrillingAdmin() {
                   {s.hidden ? <><Eye size={15} /> Tampilkan</> : <><EyeOff size={15} /> Sembunyikan</>}
                 </button>
               </div>
+              {decks === s.id && <DrillingDecks subject={s} onChanged={load} />}
               {audience === s.id && <DrillingAudience subject={s} onChanged={(msg) => { load(); setNote(msg); }} />}
               {(s.published + s.draft > 0) && (
                 <div className="mt-2 flex flex-wrap gap-1.5 text-xs">
