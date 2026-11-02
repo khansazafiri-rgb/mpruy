@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "revision": 0,
+  "spatialSource": {
+    "provider": "Z-Anatomy",
+    "sourceCommit": "a874a3dcb111d5b4de543c5be6253f5013416f4d",
+    "system": "skeletal",
+    "partId": "Humerus.r",
+    "modelSha256": "c2b70b31ddec4062cbc5ba969fc24ecfed61d00397a0bca795e2701d997200f8",
+    "geometryIndexing": "three-mesh-bvh@0.9.13/three@0.185.1"
+  },
+  "landmarks": [
+    {
+      "id": "head",
+      "name_en": "Head of humerus",
+      "name_la": "Caput humeri",
+      "parentPart": "Humerus.r",
+      "representation": "surface_region",
+      "status": "NOT_MAPPED",
+      "terminology": [],
+      "geometry": null,
+      "review": {}
+    },
+    {
+      "id": "greater-tubercle",
+      "name_en": "Greater tubercle",
+      "name_la": "Tuberculum majus",
+      "parentPart": "Humerus.r",
+      "representation": "surface_region",
+      "status": "NOT_MAPPED",
+      "terminology": [],
+      "geometry": null,
+      "review": {}
+    },
+    {
+      "id": "lesser-tubercle",
+      "name_en": "Lesser tubercle",
+      "name_la": "Tuberculum minus",
+      "parentPart": "Humerus.r",
+      "representation": "surface_region",
+      "status": "NOT_MAPPED",
+      "terminology": [],
+      "geometry": null,
+      "review": {}
+    },
+    {
+      "id": "deltoid-tuberosity",
+      "name_en": "Deltoid tuberosity",
+      "name_la": "Tuberositas deltoidea",
+      "parentPart": "Humerus.r",
+      "representation": "surface_region",
+      "status": "NOT_MAPPED",
+      "terminology": [],
+      "geometry": null,
+      "review": {}
+    },
+    {
+      "id": "intertubercular-sulcus",
+      "name_en": "Intertubercular sulcus",
+      "name_la": "Sulcus intertubercularis",
+      "parentPart": "Humerus.r",
+      "representation": "surface_line",
+      "status": "NOT_MAPPED",
+      "terminology": [],
+      "geometry": null,
+      "review": {}
+    },
+    {
+      "id": "radial-groove",
+      "name_en": "Radial groove",
+      "name_la": "Sulcus nervi radialis",
+      "parentPart": "Humerus.r",
+      "representation": "surface_line",
+      "status": "NOT_MAPPED",
+      "terminology": [],
+      "geometry": null,
+      "review": {}
+    }
+  ]
+}

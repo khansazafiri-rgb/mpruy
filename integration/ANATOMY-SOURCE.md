@@ -1,10 +1,10 @@
-# Separate Anatomy source
+# Complete current Anatomy source
 
-This patch contains the reviewed host integration for the separately managed Anatomy source.
-Base: b89d529a6b4b069431dde19aa75286aa656d2b8b
-Integrated commit: da3588ac175ecea4846c73213e307815bd074dc2
-Apply only after checking the Anatomy checkout matches the reviewed source.
+Repository: https://github.com/khansazafiri-rgb/mpruy
+Branch: handoff/anatomy-visual-learning
+Commit: 982dae673e2f761ae9e8a08235df6122a040317e
+Project: standalone Anatomy at repository root, not apps/web.
 
-Build Anatomy with base /anatomy/viewer/. Set ANATOMY_DIST to its dist directory when running scripts/stage-anatomy.mjs or the preview server. The default ../anatomy/dist matches the reviewed two-frontend workspace.
+Use the complete source from that branch. It contains the reviewed latest UI/engine, unchanged GLBs, all mesh thumbnails, current Library and Annotator protocols, and existing ready/error/share host integration. The previous anatomy-host.patch is historical and is not needed.
 
-No GLB or engine modifications are included. This file is not a production deployment instruction.
+See integration/CLAUDE-ANATOMY-HANDOFF.md for separate clone locations, validation and preview commands. Build the Anatomy viewer with base /anatomy/viewer/ and keep the main product routes on the main frontend. This handoff does not deploy, modify Caddy or restart any service.

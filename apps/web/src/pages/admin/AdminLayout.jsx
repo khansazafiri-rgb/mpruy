@@ -18,6 +18,7 @@ export const ADMIN_GROUPS = [
   ] },
   { label: 'Konten belajar', items: [
     { to: '/admin/lab', label: 'MEDCOEL Lab', icon: FlaskConical },
+    { to: '/admin/anatomy', label: 'Human Anatomy', icon: Stethoscope },
     { to: '/admin/soal', label: 'Edit Soal', icon: FileQuestion },
     { to: '/admin/mata-kuliah', label: 'Mata kuliah & BAB', icon: BookMarked },
     { to: '/admin/paket', label: 'Paket simulasi', icon: Package },
@@ -68,6 +69,7 @@ function ServerBehind() {
 
 export default function AdminLayout() {
   const badges = useNavBadges();
+  const anatomy = useLocation().pathname === '/admin/anatomy';
   const link = (n) => (
     <NavLink key={n.to} to={n.to} end={n.end} className={({ isActive }) => clsx('flex min-h-[44px] shrink-0 items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-semibold lg:min-h-[40px]', isActive ? 'bg-brand-soft text-brand-dark' : 'text-ink-muted hover:bg-page hover:text-ink')}>
       <n.icon size={18} aria-hidden /> {n.label}
@@ -92,7 +94,7 @@ export default function AdminLayout() {
         </nav>
       </aside>
       <main className="admin-main min-w-0 flex-1 px-4 py-6 lg:px-8 lg:py-8">
-        <div className="mx-auto max-w-6xl">
+        <div className={anatomy ? 'mx-auto max-w-none' : 'mx-auto max-w-6xl'}>
           <ServerBehind />
           <Outlet />
         </div>
