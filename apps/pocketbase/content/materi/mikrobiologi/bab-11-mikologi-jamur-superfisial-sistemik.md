@@ -205,65 +205,75 @@ Interpretasi harus membedakan colonization, contamination, dan true invasive dis
 
 ## Flashcard {kartu}
 
-- [Dasar Mikologi Medis] Yeast :: uniseluler, membelah dengan budding. Contoh: Candida, Cryptococcus.
-- [Dasar Mikologi Medis] Mold :: multiseluler, membentuk hifa dan miselium. Contoh: Aspergillus, Mucorales, dermatofita.
-- [Dasar Mikologi Medis] Dimorfik :: bentuk mold di lingkungan dan berubah menjadi yeast atau bentuk jaringan khas di dalam tubuh. Prinsip klasik: “mold in the cold, yeast in the heat”, dengan pengecualian tertentu seperti Coccidioides yang membentuk sferul di jaringan.
-- [Klasifikasi Mikosis] Superfisial :: terbatas pada stratum korneum atau batang rambut.
-- [Klasifikasi Mikosis] Kutaneus :: mengenai jaringan keratin seperti kulit, rambut, kuku; terutama dermatofita.
-- [Klasifikasi Mikosis] Subkutaneus :: masuk melalui trauma, kemudian berkembang di dermis/subkutis.
-- [Klasifikasi Mikosis] Sistemik/endemic mycoses :: umumnya masuk lewat inhalasi dan dapat menyebar dari paru.
-- [Dermatofita] Terapi high-yield :: infeksi lokal kulit dapat memakai azol atau allylamine topikal; tinea capitis dan onikomikosis umumnya membutuhkan terapi sistemik karena obat topikal sulit menembus folikel rambut atau nail plate.
-- [Candida] Oral thrush :: plak putih yang dapat dikerok.
-- [Candida] Vulvovaginal candidiasis :: pruritus, eritem, sekret putih kental; pH vagina biasanya tetap normal.
-- [Candida] Esophageal candidiasis :: odinofagia/disfagia, terutama pada imunokompromais.
-- [Aspergillus] Allergic bronchopulmonary aspergillosis (ABPA) :: terutama pada asma/cystic fibrosis; mekanisme dominan hipersensitivitas.
-- [Aspergillus] Aspergilloma :: fungal ball dalam kavitas paru lama, misalnya bekas TB; dapat menyebabkan hemoptisis.
-- [Aspergillus] Chronic pulmonary aspergillosis :: penyakit paru kronik pada struktur paru abnormal.
-- [Aspergillus] Terapi invasive pulmonary aspergillosis :: voriconazole merupakan terapi utama klasik; isavuconazole atau liposomal amphotericin B dapat menjadi alternatif pada kondisi tertentu. Terapi perlu dimulai dini bila kecurigaan klinis kuat.
-- [Cryptococcus] Penyakit penting :: meningitis/meningoencephalitis terutama pada gangguan imunitas sel T, termasuk HIV lanjut. Gejala dapat berupa sakit kepala subakut, demam, perubahan mental, serta tekanan intrakranial meningkat.
-- [Cryptococcus] Diagnosis utama :: CrAg serum/CSF dan pemeriksaan CSF; kultur tetap penting. Pada meningitis kriptokokus, pengukuran opening pressure sangat penting karena hipertensi intrakranial dapat membutuhkan pungsi lumbal terapeutik berulang.
-- [Cryptococcus] Konsep terapi :: fase induksi menggunakan regimen berbasis amphotericin B + flucytosine pada penyakit CNS berat, kemudian dilanjutkan fase konsolidasi dan maintenance dengan fluconazole sesuai populasi pasien dan pedoman klinis.
-- [Mucormycosis] Morfologi :: hifa lebar, ribbon-like, pauciseptate/aseptate, dengan branching lebar mendekati 90°.
-- [Mucormycosis] Rhino-orbital-cerebral mucormycosis :: nyeri wajah/sinus, edema, proptosis, gangguan penglihatan, hingga black necrotic eschar. Jamur bersifat angioinvasif sehingga menyebabkan trombosis dan nekrosis jaringan.
-- [Jamur Dimorfik Sistemik] Konsep umum :: banyak endemic fungi masuk melalui inhalasi, memulai infeksi paru, lalu dapat menyebar pada kondisi tertentu.
-- [Diagnosis Mikologis] Pilih spesimen sesuai lokasi :: kerokan kulit/kuku, sputum/BAL, darah, jaringan biopsi, atau CSF.
-- [Obat Antijamur — Target & Toxicity] Azoles :: menghambat 14-alpha-demethylase → sintesis ergosterol terganggu. Contoh fluconazole, itraconazole, voriconazole, posaconazole, isavuconazole. Perhatikan hepatotoksisitas dan interaksi CYP; masing-masing obat memiliki spektrum berbeda.
-- [Obat Antijamur — Target & Toxicity] Polyenes :: amphotericin B berikatan dengan ergosterol dan membentuk pori membran. Efek samping klasik: nefrotoksisitas, gangguan elektrolit, dan infusion reactions; formulasi liposomal lebih rendah nefrotoksisitasnya dibanding deoxycholate.
-- [Obat Antijamur — Target & Toxicity] Echinocandins :: menghambat beta-(1,3)-D-glucan synthase → gangguan dinding sel. Sangat penting pada candidemia; aktivitas terhadap Aspergillus bersifat terbatas dan bukan monoterapi utama invasive aspergillosis.
-- [Obat Antijamur — Target & Toxicity] Flucytosine :: diubah menjadi metabolit yang mengganggu sintesis DNA/RNA jamur. Risiko bone-marrow suppression dan hepatotoksisitas; resistensi cepat bila digunakan sendiri.
-- [High-yield] Candida albicans :: budding yeast + pseudohyphae/true hyphae, germ tube positif
-- [High-yield] Cryptococcus :: encapsulated narrow-based budding yeast
-- [High-yield] Aspergillus :: septate hyphae, acute-angle branching sekitar 45°
-- [High-yield] Mucorales :: broad pauciseptate/aseptate hyphae, branching lebar sekitar 90°
-- [High-yield] Blastomyces :: broad-based budding yeast
-- [High-yield] Histoplasma :: small intracellular yeast dalam macrophage
-- [High-yield] Coccidioides :: spherules berisi endospora di jaringan
-- [High-yield] Sporothrix :: cigar-shaped yeast; nodular lymphangitis
-- [High-yield] Ergosterol :: komponen khas membran jamur dan target banyak antijamur
-- [High-yield] Kitin/glukan :: komponen penting dinding sel jamur
-- [High-yield] Germ tube positif :: pikirkan Candida albicans/C. dubliniensis, bukan seluruh spesies Candida
-- [High-yield] DKA + nyeri sinus/wajah + black eschar :: mucormycosis sampai terbukti sebaliknya
-- [High-yield] Voriconazole :: Aspergillus; bukan Mucorales
-- [High-yield] Echinocandin :: pilihan awal penting candidemia
-- [High-yield] Dermatofita makan keratin :: skin, hair, nails
-- [Dasar Mikologi Medis] Hifa penting untuk ujian … :: • Septate, acute-angle branching sekitar 45° → Aspergillus
+- [Dasar Mikologi Medis] Apa yang dimaksud dengan Yeast pada Dasar Mikologi Medis? :: Uniseluler, membelah dengan budding. Contoh: Candida, Cryptococcus.
+- [Dasar Mikologi Medis] Apa yang dimaksud dengan Mold pada Dasar Mikologi Medis? :: Multiseluler, membentuk hifa dan miselium. Contoh: Aspergillus, Mucorales, dermatofita.
+- [Dasar Mikologi Medis] Apa yang dimaksud dengan Dimorfik pada Dasar Mikologi Medis? :: Bentuk mold di lingkungan dan berubah menjadi yeast atau bentuk jaringan khas di dalam tubuh. Prinsip klasik: “mold in the cold, yeast in the heat”, dengan pengecualian tertentu seperti Coccidioides yang membentuk sferul di jaringan.
+- [Klasifikasi Mikosis] Apa yang dimaksud dengan Superfisial pada Klasifikasi Mikosis (Mikologi: Jamur Superfisial & Sistemik)? :: Terbatas pada stratum korneum atau batang rambut.
+- [Klasifikasi Mikosis] Apa yang dimaksud dengan Kutaneus pada Klasifikasi Mikosis (Mikologi: Jamur Superfisial & Sistemik)? :: Mengenai jaringan keratin seperti kulit, rambut, kuku; terutama dermatofita.
+- [Klasifikasi Mikosis] Apa yang dimaksud dengan Subkutaneus pada Klasifikasi Mikosis (Mikologi: Jamur Superfisial & Sistemik)? :: Masuk melalui trauma, kemudian berkembang di dermis/subkutis.
+- [Klasifikasi Mikosis] Apa yang dimaksud dengan Sistemik/endemic mycoses pada Klasifikasi Mikosis (Mikologi: Jamur Superfisial & Sistemik)? :: Umumnya masuk lewat inhalasi dan dapat menyebar dari paru.
+- [Dermatofita] Pada Dermatofita, apa terapi high-yieldnya (Mikologi: Jamur Superfisial & Sistemik)? :: Infeksi lokal kulit dapat memakai azol atau allylamine topikal; tinea capitis dan onikomikosis umumnya membutuhkan terapi sistemik karena obat topikal sulit menembus folikel rambut atau nail plate.
+- [Candida] Apa yang dimaksud dengan Oral thrush pada Candida (Mikologi: Jamur Superfisial & Sistemik)? :: Plak putih yang dapat dikerok.
+- [Candida] Apa yang dimaksud dengan Vulvovaginal candidiasis pada Candida (Mikologi: Jamur Superfisial & Sistemik)? :: Pruritus, eritem, sekret putih kental; pH vagina biasanya tetap normal.
+- [Candida] Apa yang dimaksud dengan Esophageal candidiasis pada Candida (Mikologi: Jamur Superfisial & Sistemik)? :: Odinofagia/disfagia, terutama pada imunokompromais.
+- [Aspergillus] Jelaskan Allergic bronchopulmonary aspergillosis (ABPA) dalam konteks Aspergillus (Mikologi: Jamur Superfisial & Sistemik). :: Terutama pada asma/cystic fibrosis; mekanisme dominan hipersensitivitas.
+- [Aspergillus] Apa yang dimaksud dengan Aspergilloma pada Aspergillus (Mikologi: Jamur Superfisial & Sistemik)? :: Fungal ball dalam kavitas paru lama, misalnya bekas TB; dapat menyebabkan hemoptisis.
+- [Aspergillus] Jelaskan Chronic pulmonary aspergillosis dalam konteks Aspergillus (Mikologi: Jamur Superfisial & Sistemik). :: Penyakit paru kronik pada struktur paru abnormal.
+- [Aspergillus] Jelaskan Terapi invasive pulmonary aspergillosis dalam konteks Aspergillus (Mikologi: Jamur Superfisial & Sistemik). :: Voriconazole merupakan terapi utama klasik; isavuconazole atau liposomal amphotericin B dapat menjadi alternatif pada kondisi tertentu. Terapi perlu dimulai dini bila kecurigaan klinis kuat.
+- [Cryptococcus] Apa yang dimaksud dengan Penyakit penting pada Cryptococcus (Mikologi: Jamur Superfisial & Sistemik)? :: Meningitis/meningoencephalitis terutama pada gangguan imunitas sel T, termasuk HIV lanjut. Gejala dapat berupa sakit kepala subakut, demam, perubahan mental, serta tekanan intrakranial meningkat.
+- [Cryptococcus] Pada Cryptococcus, apa diagnosis utamanya (Mikologi: Jamur Superfisial & Sistemik)? :: CrAg serum/CSF dan pemeriksaan CSF; kultur tetap penting. Pada meningitis kriptokokus, pengukuran opening pressure sangat penting karena hipertensi intrakranial dapat membutuhkan pungsi lumbal terapeutik berulang.
+- [Cryptococcus] Pada Cryptococcus, apa konsep terapinya (Mikologi: Jamur Superfisial & Sistemik)? :: Fase induksi menggunakan regimen berbasis amphotericin B + flucytosine pada penyakit CNS berat, kemudian dilanjutkan fase konsolidasi dan maintenance dengan fluconazole sesuai populasi pasien dan pedoman klinis.
+- [Mucormycosis] Pada Mucormycosis, apa morfologinya (Mikologi: Jamur Superfisial & Sistemik)? :: Hifa lebar, ribbon-like, pauciseptate/aseptate, dengan branching lebar mendekati 90°.
+- [Mucormycosis] Jelaskan Rhino-orbital-cerebral mucormycosis (Mikologi: Jamur Superfisial & Sistemik). :: Nyeri wajah/sinus, edema, proptosis, gangguan penglihatan, hingga black necrotic eschar. Jamur bersifat angioinvasif sehingga menyebabkan trombosis dan nekrosis jaringan.
+- [Jamur Dimorfik Sistemik] Pada Jamur Dimorfik Sistemik, apa konsep umumnya? :: Banyak endemic fungi masuk melalui inhalasi, memulai infeksi paru, lalu dapat menyebar pada kondisi tertentu.
+- [Diagnosis Mikologis] Jelaskan Pilih spesimen sesuai lokasi dalam konteks Diagnosis Mikologis (Mikologi: Jamur Superfisial & Sistemik). :: Kerokan kulit/kuku, sputum/BAL, darah, jaringan biopsi, atau CSF.
+- [Obat Antijamur — Target & Toxicity] Apa yang dimaksud dengan Azoles pada Obat Antijamur — Target & Toxicity? :: Menghambat 14-alpha-demethylase → sintesis ergosterol terganggu. Contoh fluconazole, itraconazole, voriconazole, posaconazole, isavuconazole. Perhatikan hepatotoksisitas dan interaksi CYP; masing-masing obat memiliki spektrum berbeda.
+- [Obat Antijamur — Target & Toxicity] Apa yang dimaksud dengan Polyenes pada Obat Antijamur — Target & Toxicity? :: Amphotericin B berikatan dengan ergosterol dan membentuk pori membran. Efek samping klasik: nefrotoksisitas, gangguan elektrolit, dan infusion reactions; formulasi liposomal lebih rendah nefrotoksisitasnya dibanding deoxycholate.
+- [Obat Antijamur — Target & Toxicity] Apa yang dimaksud dengan Echinocandins pada Obat Antijamur — Target & Toxicity? :: Menghambat beta-(1,3)-D-glucan synthase → gangguan dinding sel. Sangat penting pada candidemia; aktivitas terhadap Aspergillus bersifat terbatas dan bukan monoterapi utama invasive aspergillosis.
+- [Obat Antijamur — Target & Toxicity] Apa yang dimaksud dengan Flucytosine pada Obat Antijamur — Target & Toxicity? :: Diubah menjadi metabolit yang mengganggu sintesis DNA/RNA jamur. Risiko bone-marrow suppression dan hepatotoksisitas; resistensi cepat bila digunakan sendiri.
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Candida albicans pada Mikologi: Jamur Superfisial & Sistemik? :: Budding yeast + pseudohyphae/true hyphae, germ tube positif
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Cryptococcus pada Mikologi: Jamur Superfisial & Sistemik? :: Encapsulated narrow-based budding yeast
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Aspergillus pada Mikologi: Jamur Superfisial & Sistemik? :: Septate hyphae, acute-angle branching sekitar 45°
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Mucorales pada Mikologi: Jamur Superfisial & Sistemik? :: Broad pauciseptate/aseptate hyphae, branching lebar sekitar 90°
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Blastomyces pada Mikologi: Jamur Superfisial & Sistemik? :: Broad-based budding yeast
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Histoplasma pada Mikologi: Jamur Superfisial & Sistemik? :: Small intracellular yeast dalam macrophage
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Coccidioides pada Mikologi: Jamur Superfisial & Sistemik? :: Spherules berisi endospora di jaringan
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Sporothrix pada Mikologi: Jamur Superfisial & Sistemik? :: Cigar-shaped yeast; nodular lymphangitis
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang dimaksud dengan Ergosterol pada Mikologi: Jamur Superfisial & Sistemik? :: Komponen khas membran jamur dan target banyak antijamur
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang dimaksud dengan Kitin/glukan pada Mikologi: Jamur Superfisial & Sistemik? :: Komponen penting dinding sel jamur
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Germ tube positif pada Mikologi: Jamur Superfisial & Sistemik? :: Pikirkan Candida albicans/C. dubliniensis, bukan seluruh spesies Candida
+- [Mikologi: Jamur Superfisial & Sistemik] Apa jawaban atau kesimpulan untuk petunjuk berikut: DKA + nyeri sinus/wajah + black eschar pada Mikologi: Jamur Superfisial & Sistemik? :: Mucormycosis sampai terbukti sebaliknya
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Voriconazole pada Mikologi: Jamur Superfisial & Sistemik? :: Aspergillus; bukan Mucorales
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Echinocandin pada Mikologi: Jamur Superfisial & Sistemik? :: Pilihan awal penting candidemia
+- [Mikologi: Jamur Superfisial & Sistemik] Apa yang perlu diingat tentang Dermatofita makan keratin pada Mikologi: Jamur Superfisial & Sistemik? :: Skin, hair, nails
+- [Dasar Mikologi Medis] Sebutkan bentuk utama pada Dasar Mikologi Medis. :: • Yeast: uniseluler, membelah dengan budding. Contoh: Candida, Cryptococcus
+  • Mold: multiseluler, membentuk hifa dan miselium. Contoh: Aspergillus, Mucorales, dermatofita
+  • Dimorfik: bentuk mold di lingkungan dan berubah menjadi yeast atau bentuk jaringan khas di dalam tubuh. Prinsip klasik: “mold in the cold, yeast in the heat”, dengan pengecualian tertentu seperti Coccidioides yang membentuk sferul di jaringan
+- [Dasar Mikologi Medis] Sebutkan hifa penting untuk ujian pada Dasar Mikologi Medis. :: • Septate, acute-angle branching sekitar 45° → Aspergillus
   • Broad/ribbon-like, pauciseptate atau aseptate, branching lebar mendekati 90° → Mucorales
-- [Klasifikasi Mikosis] Berdasarkan kedalaman jaringan … :: • Superfisial: terbatas pada stratum korneum atau batang rambut
+- [Klasifikasi Mikosis] Sebutkan berdasarkan kedalaman jaringan pada Klasifikasi Mikosis (Mikologi: Jamur Superfisial & Sistemik). :: • Superfisial: terbatas pada stratum korneum atau batang rambut
   • Kutaneus: mengenai jaringan keratin seperti kulit, rambut, kuku; terutama dermatofita
   • Subkutaneus: masuk melalui trauma, kemudian berkembang di dermis/subkutis
   • Sistemik/endemic mycoses: umumnya masuk lewat inhalasi dan dapat menyebar dari paru
   • Oportunistik: terutama pada host imunokompromais, misalnya Candida, Aspergillus, Cryptococcus, dan Mucorales
-- [Dermatofita] Pola “tinea” ditentukan oleh lokasi … :: • Tinea capitis → scalp/rambut
-  • Tinea corporis → badan
-  • Tinea cruris → lipat paha
-  • Tinea pedis → kaki
-  • Tinea unguium/onychomycosis → kuku
-- [Candida] Morfologi high-yield Candida albicans … :: • Budding yeast
+- [Candida] Sebutkan morfologi high-yield Candida albicans pada Candida (Mikologi: Jamur Superfisial & Sistemik). :: • Budding yeast
   • Pseudohyphae dan true hyphae
   • Germ tube positif
   • Dapat membentuk chlamydospore
-- [Mucormycosis] Faktor risiko klasik … :: • Diabetic ketoacidosis
+- [Candida] Sebutkan diagnosis invasif pada Candida (Mikologi: Jamur Superfisial & Sistemik). :: • Blood culture penting tetapi sensitivitas tidak sempurna
+  • Beta-D-glucan dapat mendukung diagnosis tetapi tidak spesifik hanya untuk Candida
+- [Candida] Sebutkan terapi high-yield pada Candida (Mikologi: Jamur Superfisial & Sistemik). :: • Candidemia: echinocandin merupakan terapi awal utama pada banyak pasien; step-down ke fluconazole bila stabil, isolat sensitif, dan kultur darah sudah negatif
+  • Candida dari sekret respirasi biasanya mencerminkan kolonisasi, bukan pneumonia Candida, sehingga tidak otomatis membutuhkan antijamur
+- [Mucormycosis] Sebutkan faktor risiko klasik pada Mucormycosis (Mikologi: Jamur Superfisial & Sistemik). :: • Diabetic ketoacidosis
   • Neutropenia atau keganasan hematologi
   • Transplantasi/imunosupresi berat
   • Iron overload/deferoxamine
   • Trauma atau luka bakar pada bentuk kutaneus
+- [Jamur Dimorfik Sistemik] Sebutkan hal-hal penting tentang Histoplasma capsulatum pada Jamur Dimorfik Sistemik (Mikologi: Jamur Superfisial & Sistemik). :: • Terkait tanah yang terkontaminasi kotoran burung/kelelawar
+  • Yeast kecil intraseluler dalam makrofag
+  • Dapat menyerupai TB; disseminated histoplasmosis lebih berat pada imunokompromais
+- [Jamur Dimorfik Sistemik] Sebutkan hal-hal penting tentang Blastomyces dermatitidis pada Jamur Dimorfik Sistemik (Mikologi: Jamur Superfisial & Sistemik). :: • Broad-based budding yeast
+  • Dapat mengenai paru, kulit, dan tulang
+- [Jamur Dimorfik Sistemik] Sebutkan hal-hal penting tentang Sporothrix schenckii pada Jamur Dimorfik Sistemik (Mikologi: Jamur Superfisial & Sistemik). :: • Dimorfik, sering masuk melalui inokulasi kulit setelah trauma dengan tanaman/tanah
+  • Pola nodul mengikuti aliran limfatik → “sporotrichoid spread”
+  • Bentuk yeast klasik dapat digambarkan seperti cigar-shaped

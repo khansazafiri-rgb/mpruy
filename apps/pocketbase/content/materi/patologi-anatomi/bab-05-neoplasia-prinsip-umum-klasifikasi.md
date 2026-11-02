@@ -822,76 +822,87 @@ H. Gland-forming malignant epithelial tumor → adenocarcinoma.
 
 ## Flashcard {kartu}
 
-- [Hamartoma vs Choristoma] Cara cepat :: HAMARTOMA = “right tissue, wrong arrangement”.
-- [Metastatic Cascade] Cascade :: primary tumor → local invasion → intravasation → survival in circulation → adhesion at distant site → extravasation → micrometastasis → colonization.
-- [Oncogenes vs Tumor Suppressor Genes] Analogi :: ONCOGENE = accelerator stuck ON.
-- [RAS] Pathway sederhana :: growth factor → receptor tyrosine kinase → RAS → RAF → MAPK → proliferation.
-- [Apoptosis Evasion] Poin :: BCL-2 terutama meningkatkan survival, bukan langsung meningkatkan mitosis.
-- [Cancer Metabolism — Warburg Effect] Dasar penggunaan FDG-PET :: tumor metabolically active sering mengambil glucose analog lebih banyak.
-- [Multistep Carcinogenesis] Konsep :: normal cell → driver alterations → clonal expansion → additional alterations → malignant phenotype.
-- [Chemical Carcinogenesis] Initiation :: permanent DNA damage.
-- [Chemical Carcinogenesis] Promotion :: stimulates proliferation of initiated cells; promotor sendiri umumnya tidak mutagenik.
-- [Chemical Carcinogenesis] Progression :: additional genetic changes → more aggressive phenotype.
-- [HPV E6 & E7] Akibat :: checkpoint control menurun → proliferation meningkat.
-- [Tumor-Promoting Inflammation] Contoh konsep :: chronic hepatitis → HCC risk,
-- [High-yield] Cancer :: malignant neoplasm
-- [High-yield] Malignant epithelial :: carcinoma
-- [High-yield] Melanoma, lymphoma, seminoma, mesothelioma :: malignant meski berakhiran -oma
-- [High-yield] Metastasis :: hallmark paling definitif malignancy
-- [High-yield] Anaplasia :: pleomorphism, hyperchromatic nuclei, high N:C ratio, atypical mitoses
-- [High-yield] CIS :: full-thickness atypia tanpa breach basement membrane
-- [High-yield] Liver dan lung :: common metastatic sites
-- [High-yield] RAS :: growth signaling oncogene
-- [High-yield] MYC t(8;14) :: Burkitt lymphoma
-- [High-yield] BCL2 overexpression :: ↓ apoptosis; t(14;18) follicular lymphoma
-- [High-yield] Warburg effect :: aerobic glycolysis
-- [High-yield] BRCA :: homologous recombination repair
-- [High-yield] Mismatch repair defect :: Lynch syndrome/MSI
-- [High-yield] TNM :: Tumor, Nodes, Metastasis
-- [High-yield] BENIGN :: well differentiated, circumscribed, no metastasis
-- [High-yield] MALIGNANT :: variable differentiation, invasion, potential metastasis
-- [High-yield] ANAPLASIA :: pleomorphism + hyperchromasia + atypical mitoses + loss of polarity
-- [High-yield] METASTASIS :: lymphatic, hematogenous, transcoelomic
-- [High-yield] MOLECULAR CORE :: oncogenes ON + tumor suppressor loss + DNA repair defects + apoptosis evasion
-- [High-yield] KEY GENES :: RAS, MYC, BCR-ABL, RB, TP53, BCL2, BRCA/MMR
-- [High-yield] TNM :: T primary tumor, N nodes, M distant metastasis
-- [Konsep Besar Neoplasia] Neoplasm/tumor terdiri dari … :: • parenchyma = sel neoplastik yang menentukan nama dan perilaku biologis tumor,
-  • stroma = jaringan penunjang, pembuluh darah, fibroblast, inflammatory cells, dan extracellular matrix
-- [Nomenklatur Tumor — Aturan Dasar] Malignant mesenchymal tumor = sarcoma … :: • fibrosarcoma,
-  • liposarcoma,
-  • osteosarcoma,
-  • leiomyosarcoma
-- [Benign vs Malignant — Empat Pembeda Utama] Empat parameter utama … :: • differentiation/anaplasia,
-  • rate of growth,
-  • local invasion,
-  • metastasis
-- [Dysplasia vs Anaplasia] Dysplasia = disordered growth pada epitel, dengan … :: • cellular pleomorphism,
-  • nuclear hyperchromasia,
-  • increased mitoses,
-  • loss of architectural orientation
-- [Tumor Stem Cells] Sebagian tumor mengandung subpopulasi tumor-initiating/stem-like cells yang memiliki kemampuan … :: • self-renewal,
-  • menghasilkan berbagai populasi sel tumor,
-  • mempertahankan pertumbuhan tumor
-- [Hematogenous Spread] Tumor dengan pola khas … :: • colon carcinoma → portal circulation → liver,
-  • renal cell carcinoma dapat tumbuh ke renal vein/IVC,
-  • hepatocellular carcinoma dapat invade hepatic/portal veins
-- [Angiogenesis] Tumor vessels sering abnormal … :: • tortuous,
-  • leaky,
-  • disorganized
-- [HPV E6 & E7] High-risk HPV proteins … :: • E6 → promotes degradation of p53,
-  • E7 → binds/inactivates RB
-- [Tumor Markers] Tumor markers dapat membantu … :: • monitoring response,
-  • detecting recurrence,
-  • selected screening/risk assessment contexts
-- [Immunohistochemistry] IHC mendeteksi protein menggunakan antibodies dan membantu … :: • menentukan lineage,
-  • menentukan site of origin,
-  • klasifikasi tumor,
-  • predictive/prognostic biomarkers
-- [Konsep Besar Neoplasia] Exam pearl: Konsep Besar Neoplasia :: Proliferasi neoplastik bersifat clonal dan didorong perubahan genetik/epigenetik yang memberi growth advantage.
-- [Adenoma, Papilloma, Cystadenoma, Polyp] Exam pearl: Adenoma, Papilloma, Cystadenoma, Polyp :: “polyp” adalah deskripsi bentuk, bukan otomatis diagnosis histologis.
-- [Anaplasia — Ciri Morfologi] Exam pearl: Anaplasia — Ciri Morfologi :: Bizarre multipolar mitotic figures sangat mendukung malignancy.
-- [Carcinoma in Situ] Exam pearl: Carcinoma in Situ :: CIS = malignant cytology WITHOUT invasion. Invasive carcinoma = breach basement membrane.
-- [Lymphatic Spread] Poin penting: Lymphatic Spread :: Nodal enlargement tidak selalu metastasis; dapat berupa reactive hyperplasia.
-- [MYC] Exam pearl: MYC :: t(8;14) → c-MYC → Burkitt lymphoma.
-- [Tumor Markers] Poin penting: Tumor Markers :: Tumor marker umumnya TIDAK cukup spesifik untuk menegakkan diagnosis kanker sendirian.
-- [Grading vs Staging] Exam pearl: Grading vs Staging :: GRADE = “what it looks like”. STAGE = “where it has gone”.
+- [Hamartoma vs Choristoma] Apa yang dimaksud dengan Cara cepat pada Hamartoma vs Choristoma? :: HAMARTOMA = “right tissue, wrong arrangement”.
+- [Metastatic Cascade] Jelaskan Cascade pada Metastatic Cascade (Neoplasia: Prinsip Umum & Klasifikasi). :: Primary tumor → local invasion → intravasation → survival in circulation → adhesion at distant site → extravasation → micrometastasis → colonization.
+- [Oncogenes vs Tumor Suppressor Genes] Apa yang dimaksud dengan Analogi pada Oncogenes vs Tumor Suppressor Genes? :: ONCOGENE = accelerator stuck ON.
+- [RAS] Apa yang dimaksud dengan Pathway sederhana pada RAS (Neoplasia: Prinsip Umum & Klasifikasi)? :: Growth factor → receptor tyrosine kinase → RAS → RAF → MAPK → proliferation.
+- [Apoptosis Evasion] Apa yang dimaksud dengan Poin pada Apoptosis Evasion (Neoplasia: Prinsip Umum & Klasifikasi)? :: BCL-2 terutama meningkatkan survival, bukan langsung meningkatkan mitosis.
+- [Cancer Metabolism — Warburg Effect] Jelaskan Dasar penggunaan FDG-PET dalam konteks Cancer Metabolism — Warburg Effect. :: Tumor metabolically active sering mengambil glucose analog lebih banyak.
+- [Multistep Carcinogenesis] Pada Multistep Carcinogenesis, apa konsepnya (Neoplasia: Prinsip Umum & Klasifikasi)? :: Normal cell → driver alterations → clonal expansion → additional alterations → malignant phenotype.
+- [Chemical Carcinogenesis] Apa yang dimaksud dengan Initiation pada Chemical Carcinogenesis (Neoplasia: Prinsip Umum & Klasifikasi)? :: Permanent DNA damage.
+- [Chemical Carcinogenesis] Apa yang dimaksud dengan Promotion pada Chemical Carcinogenesis (Neoplasia: Prinsip Umum & Klasifikasi)? :: Stimulates proliferation of initiated cells; promotor sendiri umumnya tidak mutagenik.
+- [Chemical Carcinogenesis] Apa yang dimaksud dengan Progression pada Chemical Carcinogenesis (Neoplasia: Prinsip Umum & Klasifikasi)? :: Additional genetic changes → more aggressive phenotype.
+- [Tumor-Promoting Inflammation] Apa yang dimaksud dengan Contoh konsep pada Tumor-Promoting Inflammation (Neoplasia: Prinsip Umum & Klasifikasi)? :: Chronic hepatitis → HCC risk
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Cancer pada Neoplasia: Prinsip Umum & Klasifikasi? :: Malignant neoplasm
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Malignant epithelial pada Neoplasia: Prinsip Umum & Klasifikasi? :: Carcinoma
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Melanoma, lymphoma, seminoma, mesothelioma pada Neoplasia: Prinsip Umum & Klasifikasi? :: Malignant meski berakhiran -oma
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Metastasis pada Neoplasia: Prinsip Umum & Klasifikasi? :: Hallmark paling definitif malignancy
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang perlu diketahui tentang Anaplasia pada Neoplasia: Prinsip Umum & Klasifikasi? :: Pleomorphism, hyperchromatic nuclei, high N:C ratio, atypical mitoses
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan CIS pada Neoplasia: Prinsip Umum & Klasifikasi? :: Full-thickness atypia tanpa breach basement membrane
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Liver dan lung pada Neoplasia: Prinsip Umum & Klasifikasi? :: Common metastatic sites
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan RAS pada Neoplasia: Prinsip Umum & Klasifikasi? :: Growth signaling oncogene
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang perlu diingat tentang BCL2 overexpression pada Neoplasia: Prinsip Umum & Klasifikasi? :: ↓ apoptosis; t(14;18) follicular lymphoma
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan Warburg effect pada Neoplasia: Prinsip Umum & Klasifikasi? :: Aerobic glycolysis
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan BRCA pada Neoplasia: Prinsip Umum & Klasifikasi? :: Homologous recombination repair
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang perlu diingat tentang Mismatch repair defect pada Neoplasia: Prinsip Umum & Klasifikasi? :: Lynch syndrome/MSI
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan TNM pada Neoplasia: Prinsip Umum & Klasifikasi? :: Tumor, Nodes, Metastasis
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan BENIGN pada Neoplasia: Prinsip Umum & Klasifikasi? :: Well differentiated, circumscribed, no metastasis
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan MALIGNANT pada Neoplasia: Prinsip Umum & Klasifikasi? :: Variable differentiation, invasion, potential metastasis
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang dimaksud dengan ANAPLASIA pada Neoplasia: Prinsip Umum & Klasifikasi? :: Pleomorphism + hyperchromasia + atypical mitoses + loss of polarity
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang perlu diketahui tentang MOLECULAR CORE pada Neoplasia: Prinsip Umum & Klasifikasi? :: Oncogenes ON + tumor suppressor loss + DNA repair defects + apoptosis evasion
+- [Neoplasia: Prinsip Umum & Klasifikasi] Apa yang perlu diketahui tentang KEY GENES pada Neoplasia: Prinsip Umum & Klasifikasi? :: RAS, MYC, BCR-ABL, RB, TP53, BCL2, BRCA/MMR
+- [Konsep Besar Neoplasia] Sebutkan hal-hal penting tentang Neoplasm/tumor pada Neoplasia: Prinsip Umum & Klasifikasi. :: • Parenchyma = sel neoplastik yang menentukan nama dan perilaku biologis tumor
+  • Stroma = jaringan penunjang, pembuluh darah, fibroblast, inflammatory cells, dan extracellular matrix
+- [Pengecualian Akhiran “-Oma”] Sebutkan hal-hal penting tentang Beberapa tumor malignant tetap berakhiran -oma pada Pengecualian Akhiran “-Oma”. :: • Melanoma
+  • Lymphoma
+  • Mesothelioma
+  • Seminoma
+- [Differentiation] Sebutkan hal-hal penting tentang Well-differentiated tumor pada Differentiation (Neoplasia: Prinsip Umum & Klasifikasi). :: • Menyerupai jaringan asal
+  • Dapat mempertahankan fungsi khusus
+- [Carcinoma in Situ] Sebutkan hal-hal penting tentang Carcinoma in situ (CIS). :: • Full-thickness epithelial atypia
+  • Basement membrane masih utuh
+  • Belum ada stromal invasion
+- [Local Invasion] Sebutkan hal-hal penting tentang Malignant tumor pada Local Invasion (Neoplasia: Prinsip Umum & Klasifikasi). :: • Infiltrative
+  • Irregular
+  • Destructive
+  • Tidak memiliki batas tegas
+- [Hematogenous Spread] Sebutkan tumor dengan pola khas pada Hematogenous Spread (Neoplasia: Prinsip Umum & Klasifikasi). :: • Colon carcinoma → portal circulation → liver
+  • Renal cell carcinoma dapat tumbuh ke renal vein/IVC
+  • Hepatocellular carcinoma dapat invade hepatic/portal veins
+- [Hallmarks of Cancer — Gambar Besar] Sebutkan hal-hal penting tentang Core capabilities pada Hallmarks of Cancer — Gambar Besar (Neoplasia: Prinsip Umum & Klasifikasi). :: • Sustained proliferative signaling
+  • Evasion of growth suppressors
+  • Resistance to cell death
+  • Replicative immortality
+  • Induction/access to vasculature
+  • Invasion and metastasis
+  • Altered cellular metabolism
+  • Evasion of immune destruction
+- [MYC] Sebutkan hal-hal penting tentang MYC adalah transcription factor yang mendorong (Neoplasia: Prinsip Umum & Klasifikasi). :: • Cell growth
+  • Metabolism
+  • Proliferation
+- [DNA Repair Genes] Sebutkan contoh high-yield pada DNA Repair Genes. :: • BRCA1/BRCA2 → homologous recombination repair
+  • Mismatch repair genes (MLH1, MSH2, MSH6, PMS2) → Lynch syndrome
+  • Nucleotide excision repair defect → xeroderma pigmentosum
+- [Radiation Carcinogenesis] Sebutkan hal-hal penting tentang Ionizing radiation pada Radiation Carcinogenesis (Neoplasia: Prinsip Umum & Klasifikasi). :: • DNA strand breaks
+  • Chromosomal damage
+  • Meningkatkan risiko leukemia dan berbagai solid tumors tergantung paparan
+- [Cancer Cachexia] Sebutkan hal-hal penting tentang Cancer cachexia (Neoplasia: Prinsip Umum & Klasifikasi). :: • Progressive loss of fat and lean body mass
+  • Weakness
+  • Anorexia
+  • Systemic inflammation
+- [Tumor Diagnosis — Histopathology] Sebutkan hal-hal penting tentang Patologist menilai pada Tumor Diagnosis — Histopathology (Neoplasia: Prinsip Umum & Klasifikasi). :: • Architecture
+  • Cytology
+  • Invasion
+  • Necrosis
+  • Mitoses
+  • Differentiation
+  • Margins
+  • Lymphovascular invasion bila relevan
+- [Konsep Besar Neoplasia] Apa poin high-yield (pearl) tentang Neoplasia: Prinsip Umum & Klasifikasi? :: Proliferasi neoplastik bersifat clonal dan didorong perubahan genetik/epigenetik yang memberi growth advantage.
+- [Adenoma, Papilloma, Cystadenoma, Polyp] Apa poin high-yield (pearl) tentang Adenoma, Papilloma, Cystadenoma, Polyp? :: “polyp” adalah deskripsi bentuk, bukan otomatis diagnosis histologis.
+- [Anaplasia — Ciri Morfologi] Apa poin high-yield (pearl) tentang Anaplasia — Ciri Morfologi? :: Bizarre multipolar mitotic figures sangat mendukung malignancy.
+- [Carcinoma in Situ] Apa poin high-yield (pearl) tentang Carcinoma in Situ? :: CIS = malignant cytology WITHOUT invasion. Invasive carcinoma = breach basement membrane.
+- [Lymphatic Spread] Apa poin high-yield (pearl) tentang Lymphatic Spread (Neoplasia: Prinsip Umum & Klasifikasi)? :: Nodal enlargement tidak selalu metastasis; dapat berupa reactive hyperplasia.
+- [MYC] Apa poin high-yield (pearl) tentang MYC (Neoplasia: Prinsip Umum & Klasifikasi)? :: T(8;14) → c-MYC → Burkitt lymphoma.
+- [Tumor Markers] Apa poin high-yield (pearl) tentang Tumor Markers (Neoplasia: Prinsip Umum & Klasifikasi)? :: Tumor marker umumnya TIDAK cukup spesifik untuk menegakkan diagnosis kanker sendirian.
+- [Grading vs Staging] Apa poin high-yield (pearl) tentang Grading vs Staging? :: GRADE = “what it looks like”. STAGE = “where it has gone”.

@@ -340,42 +340,35 @@ Jika diminta localization:
 
 ## Flashcard {kartu}
 
-- [Penampang Medula Spinalis: Gray Matter dan White Matter] Orientasi penting :: anterior median fissure lebih dalam dan lebar daripada posterior median sulcus. Ini membantu menentukan anterior–posterior pada spesimen penampang.
-- [Dorsal Root, Ventral Root, Spinal Nerve, dan Rami] Common confusion :: dorsal root adalah sensory, tetapi dorsal ramus BUKAN sensory-only. Dorsal dan ventral rami sama-sama mixed nerves.
-- [Conus Medullaris versus Cauda Equina] Red flag klinis :: saddle anesthesia, urinary retention/incontinence, progressive bilateral leg weakness, atau severe radicular symptoms memerlukan evaluasi segera.
-- [High-yield] Ipsilateral UMN weakness di bawah lesi :: corticospinal tract
-- [High-yield] Ipsilateral loss vibration/proprioception di bawah lesi :: dorsal columns
-- [High-yield] 31 pasang spinal nerves :: 8C, 12T, 5L, 5S, 1Co
-- [High-yield] Brown-Séquard :: ipsilateral motor + proprioception loss, contralateral pain/temperature loss
-- [Peta Besar: Medula Spinalis sebagai Jalur dan Pusat Segmental] Dua enlargement penting … :: • Cervical enlargement → neuron yang berhubungan dengan upper limb
+- [Penampang Medula Spinalis: Gray Matter dan White Matter] Apa yang dimaksud dengan Orientasi penting pada Penampang Medula Spinalis: Gray Matter dan White Matter? :: Anterior median fissure lebih dalam dan lebar daripada posterior median sulcus. Ini membantu menentukan anterior–posterior pada spesimen penampang.
+- [Dorsal Root, Ventral Root, Spinal Nerve, dan Rami] Apa yang dimaksud dengan Common confusion pada Dorsal Root, Ventral Root, Spinal Nerve, dan Rami? :: Dorsal root adalah sensory, tetapi dorsal ramus BUKAN sensory-only. Dorsal dan ventral rami sama-sama mixed nerves.
+- [Conus Medullaris versus Cauda Equina] Jelaskan Red flag klinis dalam konteks Conus Medullaris versus Cauda Equina. :: Saddle anesthesia, urinary retention/incontinence, progressive bilateral leg weakness, atau severe radicular symptoms memerlukan evaluasi segera.
+- [Neuroanatomi: Medula Spinalis & Saraf Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Ipsilateral UMN weakness di bawah lesi pada Neuroanatomi: Medula Spinalis & Saraf Perifer? :: Corticospinal tract
+- [Neuroanatomi: Medula Spinalis & Saraf Perifer] Apa jawaban atau kesimpulan untuk petunjuk berikut: Ipsilateral loss vibration/proprioception di bawah lesi pada Neuroanatomi: Medula Spinalis & Saraf Perifer? :: Dorsal columns
+- [Neuroanatomi: Medula Spinalis & Saraf Perifer] Apa yang perlu diketahui tentang Brown-Séquard pada Neuroanatomi: Medula Spinalis & Saraf Perifer? :: Ipsilateral motor + proprioception loss, contralateral pain/temperature loss
+- [Peta Besar: Medula Spinalis sebagai Jalur dan Pusat Segmental] Sebutkan dua enlargement penting pada Neuroanatomi: Medula Spinalis & Saraf Perifer. :: • Cervical enlargement → neuron yang berhubungan dengan upper limb
   • Lumbosacral enlargement → neuron yang berhubungan dengan lower limb
-- [Segmen Spinal Cord dan Hubungannya dengan Vertebra] Aturan keluar spinal nerves … :: • C1–C7 keluar superior terhadap vertebra dengan nomor yang sama
-  • C8 keluar antara C7 dan T1
-  • T1 ke bawah keluar inferior terhadap vertebra dengan nomor yang sama
-- [Penampang Medula Spinalis: Gray Matter dan White Matter] Perbedaan level secara umum … :: • Cervical cord → paling banyak white matter; diameter besar
+- [Penampang Medula Spinalis: Gray Matter dan White Matter] Sebutkan hal-hal penting tentang Gray matter pada Penampang Medula Spinalis: Gray Matter dan White Matter (Neuroanatomi: Medula Spinalis & Saraf Perifer). :: • Posterior/dorsal horn → menerima dan memproses input sensorik
+  • Anterior/ventral horn → berisi lower motor neurons untuk skeletal muscle
+  • Lateral horn → paling jelas pada thoracic dan upper lumbar cord; berkaitan dengan autonomic outflow
+  • Gray commissure → menghubungkan kedua sisi gray matter dan mengelilingi central canal
+- [Penampang Medula Spinalis: Gray Matter dan White Matter] Sebutkan perbedaan level secara umum pada Penampang Medula Spinalis: Gray Matter dan White Matter. :: • Cervical cord → paling banyak white matter; diameter besar
   • Thoracic cord → gray matter lebih kecil; lateral horn jelas
   • Lumbar cord → gray matter relatif besar karena lumbosacral enlargement
   • Sacral cord → rasio gray:white matter tinggi karena sedikit ascending/descending fibers yang tersisa
-- [Upper Motor Neuron versus Lower Motor Neuron] Upper motor neuron lesion biasanya menghasilkan … :: • Weakness dengan pola pyramidal
-  • Hyperreflexia
-  • Increased tone/spasticity
-  • Babinski sign
-  • Minimal early muscle atrophy
-- [Upper Motor Neuron versus Lower Motor Neuron] Lower motor neuron lesion biasanya menghasilkan … :: • Flaccid weakness
-  • Hyporeflexia/areflexia
-  • Marked denervation atrophy
-  • Fasciculations dapat muncul
-- [Plexus Logic dan Saraf Perifer] Ventral rami membentuk empat plexus besar … :: • Cervical plexus → C1–C4
-  • Brachial plexus → C5–T1
-  • Lumbar plexus → L1–L4
-  • Sacral plexus → L4–S4
-- [Struktur Saraf Perifer dan Regenerasi] Peripheral nerve terdiri dari axons yang dibungkus connective tissue … :: • Endoneurium → mengelilingi individual axon
-  • Perineurium → membungkus fascicle dan membentuk blood–nerve barrier penting
-  • Epineurium → membungkus seluruh nerve dan memberi mechanical protection
-- [Blood Supply Medula Spinalis] Longitudinal supply utama berasal dari … :: • Satu anterior spinal artery → menyuplai sekitar anterior two-thirds spinal cord
-  • Dua posterior spinal arteries → menyuplai posterior cord
-- [Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord?] Spinal cord lesion … :: • Dapat menghasilkan sensory level pada trunk
+- [Reflex Arc dan Segmental Localization] Sebutkan reflex high-yield pada Reflex Arc dan Segmental Localization. :: • Biceps reflex → C5–C6, dominan C5, musculocutaneous nerve
+  • Brachioradialis reflex → C5–C6, dominan C6, radial nerve
+  • Triceps reflex → C7–C8, dominan C7, radial nerve
+  • Patellar reflex → L3–L4, dominan L4, femoral nerve
+  • Achilles reflex → S1–S2, dominan S1, tibial nerve
+- [Plexus Logic dan Saraf Perifer] Sebutkan contoh localization pada Plexus Logic dan Saraf Perifer. :: • C6 radiculopathy dapat mengenai sensory thumb/lateral forearm dan beberapa otot dari lebih dari satu named peripheral nerve
+  • Radial neuropathy memengaruhi otot dan kulit sesuai territory radial nerve, tetapi tidak mengikuti satu dermatome tunggal
+- [Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord?] Sebutkan hal-hal penting tentang Root lesion/radiculopathy pada Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord? (Neuroanatomi: Medula Spinalis & Saraf Perifer). :: • Pain dapat menjalar dalam pola dermatomal
+  • Sensory change mengikuti dermatome
+  • Weakness mengikuti myotome dan dapat melibatkan otot dari beberapa named nerves
+  • Reflex sesuai root dapat menurun
+- [Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord?] Sebutkan hal-hal penting tentang Spinal cord lesion pada Clinical Localization: Root, Plexus, Peripheral Nerve, atau Cord?. :: • Dapat menghasilkan sensory level pada trunk
   • UMN signs di bawah lesi
   • LMN signs dapat muncul tepat pada level anterior horn/root yang terkena
   • Bowel/bladder involvement lebih mengarah ke cord/conus/cauda daripada isolated mononeuropathy
-- [Segmen Spinal Cord dan Hubungannya dengan Vertebra] Clinical anchor: Segmen Spinal Cord dan Hubungannya dengan Vertebra :: Lesi pada satu vertebral level tidak selalu berarti segmen medula dengan nomor yang sama terkena. Prinsip ini penting ketika menginterpretasi trauma, MRI, dan spinal cord compression.
+- [Segmen Spinal Cord dan Hubungannya dengan Vertebra] Apa korelasi klinis dari Segmen Spinal Cord dan Hubungannya dengan Vertebra? :: Lesi pada satu vertebral level tidak selalu berarti segmen medula dengan nomor yang sama terkena. Prinsip ini penting ketika menginterpretasi trauma, MRI, dan spinal cord compression.

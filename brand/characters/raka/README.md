@@ -84,12 +84,14 @@ Pakaian dipilih lewat opsi gambar `outfit`; bawaannya `harian` (tampilan kanonik
 |---|---|
 | `harian` | Sweater teal, celana navy, sepatu krem (kanonik). |
 | `demo` | Kaus lengan panjang **hitam**, celana abu tua, sepatu krem. Patch logo MEDCOEL kecil tetap di dada. Dibuat untuk video "gas air mata saat demo". |
+| `jaket` | **Jaket puffer oranye** (`#F2A03D`) dengan kerah tinggi, resleting, dan garis jahitan; patch logo MEDCOEL tetap terlihat di dada. Dibuat untuk video "Kenapa dingin bikin pengen pipis?" (menggigil di kelas ber-AC, memeluk jaket, berjalan cepat). Dipakai dengan kaki berengsel untuk berjalan. |
 | `jas` | **Jas dokter putih** (kerah, V-leher dengan sweater teal, lapel, kancing, saku, stetoskop) di atas badan. Panjang sampai lutut; pada duduk di balik meja, bagian bawahnya tersembunyi meja. |
 
 ```js
 import { raka, rakaSvg } from './raka.js';
 rakaSvg(raka('kaget'), { outfit: 'demo' });              // baju demo hitam
 rakaSvg(raka('netral'), { outfit: 'jas' });              // jas dokter
+rakaSvg(raka('khawatir'), { outfit: 'jaket' });          // jaket puffer oranye (lihat video/dingin-pengen-pipis/stage/world.js: HUG = memeluk jaket, shiver() = menggigil)
 rakaSvg(raka('netral'), { outfit: 'demo', dark: true });  // warna diangkat sedikit untuk latar gelap
 ```
 
@@ -151,6 +153,19 @@ rakaSvg(raka('netral', 'pov_perut', { blood: 1 }), { shadow: false }).replace('v
 | `blood` (0..1) | Bercak darah secukupnya di baju (sisi kiri layar, jadi patch logo tidak tertutup), lengan dan tangan, dan satu goresan kecil di pelipis. Hanya penanda keadaan darurat, tanpa luka detail. Nilai 0 menghasilkan gambar yang sama persis dengan sebelumnya. |
 
 Tes `berbaring (rebah)` menjaga bahwa kepala menumpuk pada pangkal leher, sepatu dan lengan berada di dalam kanvas, dan semua grup SVG seimbang. SVG statisnya: `svg/raka-berbaring-pingsan.svg`, `raka-berbaring-bingung.svg`, `raka-berbaring-sadar.svg`, `raka-darurat.svg` (berdiri, bingung, berdarah), dan `raka-pov-perut.svg`.
+
+## Memegang cangkir kopi
+
+Untuk video "Kenapa kopi bikin kita nggak ngantuk?". Lengan punya dua angka tambahan: `hold` (0 = kosong, 1 = cangkir kopi; nilai di antaranya mengecilkan cangkir, jadi bisa diinterpolasi) dan `holdRot` (derajat; negatif = bibir cangkir condong ke wajah). Cangkir digambar **di belakang telapak**, jadi tangan menggenggam sisinya dan tetap menyatu dengan lengan. Bernilai 0 menghasilkan gambar yang sama persis dengan sebelumnya.
+
+```js
+// minum: pergelangan di depan dagu, cangkir miring ke wajah
+raka('netral', null, { blink: 1, happyEyes: 0.5, armR: { wx: 262, wy: 338, ex: 336, ey: 420, finger: 0, fa: -90, front: 1, hold: 1, holdRot: -24 } });
+// memegang cangkir di depan dada
+raka('lega', null, { armR: { wx: 300, wy: 470, ex: 340, ey: 520, finger: 0, fa: -90, front: 1, hold: 1, holdRot: -4 } });
+```
+
+Duduk di balik meja: gambar Raka pada skala 1,3 dengan pinggang (y = 580 koordinat Raka) tepat di tepi meja (lihat `video/kopi-kafein-adenosin/stage/world.js`, `rakaDesk()`). Ekspresi mengantuk memakai `blink` 0,6, `bags` 1, `slump` 1, dan `tilt` negatif.
 
 ## Animasi
 

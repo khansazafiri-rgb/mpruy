@@ -440,58 +440,56 @@ T-tubule depolarization → DHP/CaV1.1 voltage sensor → RyR1 opens → SR Ca2+
 
 ## Flashcard {kartu}
 
-- [Clinical Correlation NMJ] Myasthenia gravis :: gangguan postsynaptic nicotinic ACh receptor/associated proteins → safety factor turun → fatigable weakness.
-- [Clinical Correlation NMJ] Lambert–Eaton myasthenic syndrome :: gangguan presynaptic voltage-gated Ca2+ channels → ACh release menurun.
-- [Clinical Correlation NMJ] Botulinum toxin :: menghambat vesicular ACh release → flaccid paralysis.
-- [Clinical Correlation NMJ] Nondepolarizing neuromuscular blockers :: menghambat nicotinic Nm receptor secara kompetitif.
-- [Organisasi Skeletal Muscle] Hierarki :: whole muscle → fascicle → muscle fiber → myofibril → sarcomere → myofilaments.
-- [Motor Unit] Small motor units :: kontrol halus, misalnya otot mata/tangan.
-- [Motor Unit] Large motor units :: menghasilkan force besar, kontrol lebih kasar.
-- [Motor-Unit Recruitment dan Size Principle] Size principle :: motor units kecil, low-threshold, fatigue-resistant direkrut terlebih dahulu; unit lebih besar direkrut ketika kebutuhan force meningkat.
-- [Length–Tension Relationship] Terlalu pendek :: thin filaments saling overlap berlebihan dan geometry menjadi tidak optimal.
-- [Length–Tension Relationship] Terlalu panjang :: overlap actin–myosin berkurang sehingga active force turun.
-- [Force–Velocity Relationship] Untuk concentric contraction :: semakin besar load, semakin rendah shortening velocity.
-- [Isometric vs Isotonic Contraction] Isometric :: muscle length relatif tetap sementara tension berubah.
-- [Isometric vs Isotonic Contraction] Isotonic :: muscle length berubah terhadap load yang relatif konstan dalam model sederhana.
-- [Isometric vs Isotonic Contraction] Eccentric :: muscle aktif sambil memanjang.
-- [Phosphocreatine System] Creatine kinase memfasilitasi :: phosphocreatine + ADP + H+ ⇌ creatine + ATP.
-- [High-yield] RMP :: dominan K+ leak
-- [High-yield] Na+/K+-ATPase :: 3 Na+ out, 2 K+ in; menjaga gradient
-- [High-yield] Graded potential :: variable, decremental, summates
-- [High-yield] Action potential :: threshold, all-or-none, regenerative, nondecremental
-- [High-yield] Depolarization neuron/skeletal muscle :: Na+ influx
-- [High-yield] Repolarization :: K+ efflux + Na+ channel inactivation
-- [High-yield] Absolute refractory :: Na+ channels inactivated
-- [High-yield] NMJ :: AP nerve → Ca2+ presynaptic → ACh → Nm → EPP → muscle AP
-- [High-yield] Sarcomere :: A band tetap
-- [High-yield] Skeletal EC coupling :: T-tubule → DHP/CaV1.1 → RyR1 → SR Ca2+ → TnC
-- [High-yield] Smooth muscle :: Ca2+ → calmodulin → MLCK
-- [High-yield] Cardiac: L-type Ca2+ influx :: CICR dari SR
-- [High-yield] ATP :: detach myosin, recock head, SERCA, maintain gradients
-- [High-yield] Whole-muscle force :: frequency summation + motor-unit recruitment
-- [High-yield] Type I :: endurance
-- [High-yield] Type IIx :: power/fast fatigue
-- [Urutan Transmisi di NMJ] Urutan wajib hafal … :: • motor-neuron action potential tiba di terminal
-  • voltage-gated Ca2+ channels terbuka
+- [Clinical Correlation NMJ] Apa yang dimaksud dengan Myasthenia gravis pada Clinical Correlation NMJ? :: Gangguan postsynaptic nicotinic ACh receptor/associated proteins → safety factor turun → fatigable weakness.
+- [Clinical Correlation NMJ] Jelaskan Lambert–Eaton myasthenic syndrome dalam konteks Clinical Correlation NMJ. :: Gangguan presynaptic voltage-gated Ca2+ channels → ACh release menurun.
+- [Clinical Correlation NMJ] Apa yang dimaksud dengan Botulinum toxin pada Clinical Correlation NMJ? :: Menghambat vesicular ACh release → flaccid paralysis.
+- [Clinical Correlation NMJ] Jelaskan Nondepolarizing neuromuscular blockers dalam konteks Clinical Correlation NMJ. :: Menghambat nicotinic Nm receptor secara kompetitif.
+- [Organisasi Skeletal Muscle] Apa yang dimaksud dengan Hierarki pada Organisasi Skeletal Muscle? :: Whole muscle → fascicle → muscle fiber → myofibril → sarcomere → myofilaments.
+- [Motor Unit] Jelaskan Small motor units (Fisiologi Otot Rangka, Jantung, Polos). :: Kontrol halus, misalnya otot mata/tangan.
+- [Motor Unit] Jelaskan Large motor units (Fisiologi Otot Rangka, Jantung, Polos). :: Menghasilkan force besar, kontrol lebih kasar.
+- [Motor-Unit Recruitment dan Size Principle] Jelaskan Size principle pada Motor-Unit Recruitment dan Size Principle (Fisiologi Otot Rangka, Jantung, Polos). :: Motor units kecil, low-threshold, fatigue-resistant direkrut terlebih dahulu; unit lebih besar direkrut ketika kebutuhan force meningkat.
+- [Length–Tension Relationship] Apa yang dimaksud dengan Terlalu pendek pada Length–Tension Relationship (Fisiologi Otot Rangka, Jantung, Polos)? :: Thin filaments saling overlap berlebihan dan geometry menjadi tidak optimal.
+- [Length–Tension Relationship] Apa yang dimaksud dengan Terlalu panjang pada Length–Tension Relationship (Fisiologi Otot Rangka, Jantung, Polos)? :: Overlap actin–myosin berkurang sehingga active force turun.
+- [Isometric vs Isotonic Contraction] Jelaskan Isometric pada Isometric vs Isotonic Contraction (Fisiologi Otot Rangka, Jantung, Polos). :: Muscle length relatif tetap sementara tension berubah.
+- [Isometric vs Isotonic Contraction] Jelaskan Isotonic pada Isometric vs Isotonic Contraction (Fisiologi Otot Rangka, Jantung, Polos). :: Muscle length berubah terhadap load yang relatif konstan dalam model sederhana.
+- [Isometric vs Isotonic Contraction] Apa yang dimaksud dengan Eccentric pada Isometric vs Isotonic Contraction? :: Muscle aktif sambil memanjang.
+- [Phosphocreatine System] Jelaskan Creatine kinase memfasilitasi dalam konteks Phosphocreatine System (Fisiologi Otot Rangka, Jantung, Polos). :: Phosphocreatine + ADP + H+ ⇌ creatine + ATP.
+- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Action potential pada Fisiologi Otot Rangka, Jantung, Polos? :: Threshold, all-or-none, regenerative, nondecremental
+- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang NMJ pada Fisiologi Otot Rangka, Jantung, Polos? :: AP nerve → Ca2+ presynaptic → ACh → Nm → EPP → muscle AP
+- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Skeletal EC coupling pada Fisiologi Otot Rangka, Jantung, Polos? :: T-tubule → DHP/CaV1.1 → RyR1 → SR Ca2+ → TnC
+- [Fisiologi Otot Rangka, Jantung, Polos] Apa jawaban atau kesimpulan untuk petunjuk berikut: Cardiac: L-type Ca2+ influx pada Fisiologi Otot Rangka, Jantung, Polos? :: CICR dari SR
+- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang ATP pada Fisiologi Otot Rangka, Jantung, Polos? :: Detach myosin, recock head, SERCA, maintain gradients
+- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang perlu diketahui tentang Whole-muscle force pada Fisiologi Otot Rangka, Jantung, Polos? :: Frequency summation + motor-unit recruitment
+- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang dimaksud dengan Type I pada Fisiologi Otot Rangka, Jantung, Polos? :: Endurance
+- [Fisiologi Otot Rangka, Jantung, Polos] Apa yang dimaksud dengan Type IIx pada Fisiologi Otot Rangka, Jantung, Polos? :: Power/fast fatigue
+- [Urutan Transmisi di NMJ] Sebutkan urutan atau langkah pada Urutan Transmisi di NMJ? :: • Motor-neuron action potential tiba di terminal
+  • Voltage-gated Ca2+ channels terbuka
   • Ca2+ masuk terminal presynaptic
-  • vesikel ACh berfusi dan ACh dilepas
+  • Vesikel ACh berfusi dan ACh dilepas
   • ACh berikatan dengan nicotinic Nm receptors
-  • ligand-gated cation channels terbuka
-  • net Na+ influx menghasilkan end-plate potential
-  • jika threshold tercapai, muscle action potential terbentuk
-  • action potential menyebar di sarcolemma dan T-tubules
-- [Thin Filament] Thin filament terdiri terutama dari … :: • actin
-  • tropomyosin
-  • troponin complex
-- [Peran ATP pada Kontraksi dan Relaksasi] ATP dibutuhkan untuk … :: • melepaskan myosin dari actin
-  • recocking myosin head setelah hydrolysis
-  • menjalankan SERCA yang memompa Ca2+ kembali ke SR
-  • mempertahankan ion gradients melalui ATP-dependent pumps
-- [Motor-Unit Recruitment dan Size Principle] Whole-muscle force dapat ditingkatkan dengan … :: • meningkatkan firing frequency unit aktif
-  • merekrut lebih banyak motor units
-- [All-or-None: Fiber vs Whole Muscle] Tetapi whole-muscle force bersifat graded karena … :: • motor-unit recruitment
-  • firing-frequency modulation
-  • panjang awal muscle
-  • fatigue dan metabolic state
-- [Excitation–Contraction Coupling pada Skeletal Muscle] High-yield: Excitation–Contraction Coupling pada Skeletal Muscle :: Pada skeletal muscle, DHP receptor terutama bertindak sebagai voltage sensor yang berkopel mekanis dengan RyR1. Trigger utama Ca2+ contraction berasal dari SR, berbeda dari cardiac muscle yang sangat bergantung pada Ca2+-induced Ca2+ release.
-- [Isometric vs Isotonic Contraction] High-yield: Isometric vs Isotonic Contraction :: Isometric contraction tetap melibatkan cross-bridge cycling; “tidak memendek” bukan berarti “tidak berkontraksi”.
+  • Ligand-gated cation channels terbuka
+  • Net Na+ influx menghasilkan end-plate potential
+  • Jika threshold tercapai, muscle action potential terbentuk
+  • Action potential menyebar di sarcolemma dan T-tubules
+- [Organisasi Skeletal Muscle] Sebutkan hal-hal penting tentang Connective tissue pada Organisasi Skeletal Muscle (Fisiologi Otot Rangka, Jantung, Polos). :: • Epimysium: seluruh muscle
+  • Perimysium: fascicle
+  • Endomysium: individual fiber
+- [Cross-Bridge Cycle] Sebutkan urutan atau langkah pada Cross-Bridge Cycle (Fisiologi Otot Rangka, Jantung, Polos)? :: • Myosin head “cocked” dengan ADP + Pi
+  • Myosin binds exposed actin site
+  • Pi release memperkuat binding dan memicu power stroke
+  • ADP dilepas
+  • ATP binds myosin → myosin lepas dari actin
+  • ATP dihidrolisis → head kembali cocked
+- [Muscle Fatigue] Sebutkan penyebab multifaktorial pada Muscle Fatigue (Fisiologi Otot Rangka, Jantung, Polos). :: • Perubahan metabolit
+  • Keterbatasan substrate/energy
+  • Perubahan ion gradients
+  • Gangguan excitation–contraction coupling
+  • Central fatigue
+- [Cardiac Muscle: Perbedaan Utama] Sebutkan hal-hal penting tentang Cardiac muscle pada Cardiac Muscle: Perbedaan Utama (Fisiologi Otot Rangka, Jantung, Polos). :: • Striated
+  • Sel bercabang, biasanya satu nucleus
+  • Intercalated discs
+  • Gap junctions menghasilkan electrical coupling
+  • Memiliki long refractory period
+  • Ca2+ dari ECF melalui L-type channels penting sebagai trigger untuk Ca2+-induced Ca2+ release dari SR
+- [Excitation–Contraction Coupling pada Skeletal Muscle] Apa poin high-yield (pearl) tentang Excitation–Contraction Coupling pada Skeletal Muscle? :: Pada skeletal muscle, DHP receptor terutama bertindak sebagai voltage sensor yang berkopel mekanis dengan RyR1. Trigger utama Ca2+ contraction berasal dari SR, berbeda dari cardiac muscle yang sangat bergantung pada Ca2+-induced Ca2+ release.
+- [Isometric vs Isotonic Contraction] Apa poin high-yield (pearl) tentang Isometric vs Isotonic Contraction? :: Isometric contraction tetap melibatkan cross-bridge cycling; “tidak memendek” bukan berarti “tidak berkontraksi”.

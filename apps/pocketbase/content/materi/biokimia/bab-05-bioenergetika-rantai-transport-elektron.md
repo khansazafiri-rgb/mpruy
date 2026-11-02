@@ -516,45 +516,37 @@ Bioenergetika mempelajari perubahan energi dalam reaksi biokimia. Reaksi eksergo
 
 ## Flashcard {kartu}
 
-- [Peta Besar Bab] Inti bab :: energi kimia → redoks → electron transport chain → proton gradient → ATP synthase → ATP.
-- [Hukum Termodinamika I] Contoh sederhana :: energi kimia glukosa → ATP → kerja mekanik / transport ion / impuls listrik / panas.
-- [Coupling Reaction] Contoh paling penting :: hidrolisis ATP → energi dilepas → digunakan untuk sintesis biomolekul atau transport aktif.
-- [ATP sebagai Mata Uang Energi] Hidrolisis :: ATP + H₂O → ADP + Pi
-- [Dasar Reaksi Redoks] Keduanya selalu terjadi berpasangan :: jika satu molekul teroksidasi, molekul lain harus direduksi.
-- [Dasar Reaksi Redoks] Shortcut :: OIL RIG → Oxidation Is Loss, Reduction Is Gain.
-- [Nad⁺/Nadh] Secara praktis :: NAD⁺ = bentuk teroksidasi.
-- [Rantai Respirasi: Gambaran Umum] Alur utama :: NADH/FADH₂ → Kompleks I atau II → Koenzim Q → Kompleks III → sitokrom c → Kompleks IV → O₂ → H₂O.
-- [Glycerol-3-Phosphate Shuttle] Konsekuensi :: hasil energinya setara dengan jalur FADH₂, sekitar 1,5 ATP per NADH sitosolik.
-- [Malate-Aspartate Shuttle] Konsekuensi :: hasil energinya setara NADH mitokondrial, sekitar 2,5 ATP per NADH sitosolik.
-- [Inhibitor Kompleks I] Akibat :: transfer elektron dari Kompleks I ke Koenzim Q terhambat dan produksi ATP menurun.
-- [Inhibitor Kompleks II] Akibat :: aliran elektron yang berasal dari oksidasi suksinat melalui Kompleks II terganggu.
-- [Inhibitor Kompleks III] Akibat :: transfer elektron dari Koenzim Q menuju sitokrom c terhenti.
-- [Inhibitor Kompleks IV] Akibat :: elektron tidak dapat ditransfer secara normal ke oksigen, pembentukan H₂O berhenti, dan produksi ATP melalui fosforilasi oksidatif turun drastis.
-- [Atractyloside] Akibat :: ketersediaan ADP di matriks berkurang dan pemanfaatan ATP hasil fosforilasi oksidatif terganggu.
-- [Superoxide Dismutase] Secara konseptual :: superoxide → H₂O₂.
-- [Sumber ATP] ATP terutama diperoleh melalui … :: • fosforilasi oksidatif
-  • fosforilasi tingkat substrat pada glikolisis
-  • fosforilasi tingkat substrat pada siklus TCA
-  • sistem fosfagen seperti kreatin fosfat sebagai buffer energi cepat
-- [Enzim Oksidoreduktase] Kelompok yang ditekankan dalam materi meliputi … :: • oxidases
-  • dehydrogenases
-  • hydroperoxidases
-  • oxygenases
-- [Kompleks yang Memompa Proton] Kompleks yang memompa H⁺ … :: • Kompleks I
+- [Peta Besar Bab] Pada Bioenergetika & Rantai Transport Elektron, apa inti babnya? :: Energi kimia → redoks → electron transport chain → proton gradient → ATP synthase → ATP.
+- [Hukum Termodinamika I] Apa yang dimaksud dengan Contoh sederhana pada Hukum Termodinamika I? :: Energi kimia glukosa → ATP → kerja mekanik / transport ion / impuls listrik / panas.
+- [Coupling Reaction] Jelaskan Contoh paling penting dalam konteks Coupling Reaction (Bioenergetika & Rantai Transport Elektron). :: Hidrolisis ATP → energi dilepas → digunakan untuk sintesis biomolekul atau transport aktif.
+- [ATP sebagai Mata Uang Energi] Apa yang dimaksud dengan Hidrolisis pada ATP sebagai Mata Uang Energi? :: ATP + H₂O → ADP + Pi
+- [Dasar Reaksi Redoks] Jelaskan: Keduanya selalu terjadi berpasangan pada Dasar Reaksi Redoks (Bioenergetika & Rantai Transport Elektron). :: Jika satu molekul teroksidasi, molekul lain harus direduksi.
+- [Rantai Respirasi: Gambaran Umum] Pada Rantai Respirasi: Gambaran Umum, apa alur utamanya? :: NADH/FADH₂ → Kompleks I atau II → Koenzim Q → Kompleks III → sitokrom c → Kompleks IV → O₂ → H₂O.
+- [Glycerol-3-Phosphate Shuttle] Pada Glycerol-3-Phosphate Shuttle, apa konsekuensinya (Bioenergetika & Rantai Transport Elektron)? :: Hasil energinya setara dengan jalur FADH₂, sekitar 1,5 ATP per NADH sitosolik.
+- [Malate-Aspartate Shuttle] Pada Malate-Aspartate Shuttle, apa konsekuensinya (Bioenergetika & Rantai Transport Elektron)? :: Hasil energinya setara NADH mitokondrial, sekitar 2,5 ATP per NADH sitosolik.
+- [Enzim Oksidoreduktase] Sebutkan kelompok pada Enzim Oksidoreduktase (Bioenergetika & Rantai Transport Elektron). :: • Oxidases
+  • Dehydrogenases
+  • Hydroperoxidases
+  • Oxygenases
+- [Mitokondria sebagai Lokasi Fosforilasi Oksidatif] Sebutkan kompartemen penting pada Mitokondria sebagai Lokasi Fosforilasi Oksidatif. :: • Membran luar
+  • Ruang antarmembran
+  • Membran dalam dan cristae
+  • Matriks
+- [Kompleks yang Memompa Proton] Sebutkan hal-hal penting tentang Kompleks yang memompa H⁺ pada Kompleks yang Memompa Proton. :: • Kompleks I
   • Kompleks III
   • Kompleks IV
-- [P/O Ratio] Nilai high-yield yang digunakan pada materi modern … :: • 1 NADH ≈ 2,5 ATP
-  • 1 FADH₂ ≈ 1,5 ATP
-- [Shuttle NADH Sitosolik] Dua sistem utama … :: • glycerol-3-phosphate shuttle
-  • malate-aspartate shuttle
-- [Inhibitor Kompleks I] Contoh inhibitor yang ditekankan … :: • rotenone
-  • amobarbital
-  • piericidin A
-- [Inhibitor Kompleks IV] Kompleks IV dapat dihambat oleh … :: • sianida (CN⁻)
-  • karbon monoksida (CO)
-  • hidrogen sulfida (H₂S)
-- [Uncoupler] Contoh pada materi … :: • 2,4-dinitrophenol (DNP)
-  • thermogenin/UCP1
-  • dinitrocresol
-  • pentachlorophenol
-- [Kompleks II] Poin penting: Kompleks II :: Kompleks II tidak memompa proton.
+- [Shuttle NADH Sitosolik] Sebutkan dua sistem utama pada Shuttle NADH Sitosolik. :: • Glycerol-3-phosphate shuttle
+  • Malate-aspartate shuttle
+- [Respiratory Control] Sebutkan faktor penting pada Respiratory Control (Bioenergetika & Rantai Transport Elektron). :: • Ketersediaan ADP dan Pi
+  • Ketersediaan NADH/FADH₂
+  • Ketersediaan O₂
+  • Integritas membran dalam
+  • Fungsi kompleks I–IV dan ATP synthase
+- [Inhibitor Kompleks I] Sebutkan contoh inhibitor pada Inhibitor Kompleks I. :: • Rotenone
+  • Amobarbital
+  • Piericidin A
+- [Uncoupler] Sebutkan contoh pada materi pada Uncoupler (Bioenergetika & Rantai Transport Elektron). :: • 2,4-dinitrophenol (DNP)
+  • Thermogenin/UCP1
+  • Dinitrocresol
+  • Pentachlorophenol
+- [Kompleks II] Apa poin high-yield (pearl) tentang Kompleks II (Bioenergetika & Rantai Transport Elektron)? :: Kompleks II tidak memompa proton.

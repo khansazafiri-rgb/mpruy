@@ -423,64 +423,72 @@ Nematoda usus:
 
 ## Flashcard {kartu}
 
-- [Stadium Infektif vs Diagnostik] Jebakan :: manusia tidak tertular dengan menelan telur atau mikrofilaria.
-- [Perbandingan Praktikum Mikrofilaria] Pola tercepat :: EMPTY TIP = Wuchereria.
-- [Hydrocele & Genital Disease] Mekanisme :: obstruksi/dysfunction limfatik skrotal → akumulasi cairan pada tunica vaginalis → pembesaran skrotum.
-- [Tropical Pulmonary Eosinophilia] Jebakan soal :: TPE bukan berarti cacing dewasa “tinggal di paru”. Manifestasi paru berasal dari respons imun terhadap mikrofilaria/antigen.
-- [Terapi Individu — Prinsip] Untuk ujian :: LF aktif → pikirkan DEC.
-- [Pattern Recognition Praktikum] Kasus A :: Microfilaria sheathed, tail tip tanpa nuclei → W. bancrofti.
-- [Pattern Recognition Praktikum] Kasus B :: Microfilaria sheathed, lebih pendek, dua terminal nuclei terpisah → B. malayi.
-- [Pattern Recognition Praktikum] Kasus C :: Microfilaria panjang dari pasien Indonesia timur, cephalic space panjang, banyak nuclei menuju tail → B. timori.
-- [Pattern Recognition Praktikum] Kasus D :: Elephantiasis + hydrocele + microfilaria nokturnal → bancroftian filariasis sangat mungkin.
-- [High-yield] Penyebab utama LF :: W. bancrofti, B. malayi, B. timori
-- [High-yield] Vektor :: mosquito
-- [High-yield] W. bancrofti microfilaria :: sheathed, nuclei tidak sampai tail tip
-- [High-yield] B. malayi :: sheathed, dua terminal nuclei khas
-- [High-yield] B. timori :: lebih panjang, cephalic space panjang, lebih banyak tail nuclei
-- [High-yield] TPE :: pulmonary symptoms + marked eosinophilia
-- [High-yield] DEC :: drug of choice untuk individual LF pada pasien yang sesuai
-- [High-yield] WUCHERERIA :: mosquito → L3 → adult di limfe → microfilaria di darah; tail tip kosong dari nuclei; hydrocele khas
-- [High-yield] BRUGIA MALAYI :: Asia Tenggara; dua terminal nuclei; lymphedema distal
-- [High-yield] BRUGIA TIMORI :: Indonesia timur/Lesser Sunda; microfilaria lebih panjang
-- [High-yield] Semua dapat menyebabkan lymphatic dysfunction :: lymphedema/elephantiasis. Diagnosis klasik = blood smear sesuai periodicity. Terapi individu utama = DEC pada pasien yang sesuai; chronic lymphedema memerlukan morbidity management
-- [Pathogenesis — Mengapa Terjadi Limfedema?] Cacing dewasa hidup bertahun-tahun di sistem limfatik dan memicu … :: • dilatasi pembuluh limfe,
-  • dysfunction katup limfatik,
-  • inflamasi,
-  • remodeling jaringan,
-  • gangguan drainase limfe
-- [Spektrum Klinis] Filariasis limfatik dapat dibagi menjadi … :: • Asimtomatik/subklinis
+- [Perbandingan Praktikum Mikrofilaria] Pada Perbandingan Praktikum Mikrofilaria, apa pola tercepatnya? :: EMPTY TIP = Wuchereria.
+- [Hydrocele & Genital Disease] Pada Hydrocele & Genital Disease, apa mekanismenya? :: Obstruksi/dysfunction limfatik skrotal → akumulasi cairan pada tunica vaginalis → pembesaran skrotum.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Kasus A pada Pattern Recognition Praktikum? :: Microfilaria sheathed, tail tip tanpa nuclei → W. bancrofti.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Kasus B pada Pattern Recognition Praktikum? :: Microfilaria sheathed, lebih pendek, dua terminal nuclei terpisah → B. malayi.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Kasus C pada Pattern Recognition Praktikum? :: Microfilaria panjang dari pasien Indonesia timur, cephalic space panjang, banyak nuclei menuju tail → B. timori.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Kasus D pada Pattern Recognition Praktikum? :: Elephantiasis + hydrocele + microfilaria nokturnal → bancroftian filariasis sangat mungkin.
+- [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan Penyebab utama LF pada Nematoda Jaringan (Filaria)? :: W. bancrofti, B. malayi, B. timori
+- [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan Vektor pada Nematoda Jaringan (Filaria)? :: Mosquito
+- [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan TPE pada Nematoda Jaringan (Filaria)? :: Pulmonary symptoms + marked eosinophilia
+- [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan DEC pada Nematoda Jaringan (Filaria)? :: Drug of choice untuk individual LF pada pasien yang sesuai
+- [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan WUCHERERIA pada Nematoda Jaringan (Filaria)? :: Mosquito → L3 → adult di limfe → microfilaria di darah; tail tip kosong dari nuclei; hydrocele khas
+- [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan BRUGIA MALAYI pada Nematoda Jaringan (Filaria)? :: Asia Tenggara; dua terminal nuclei; lymphedema distal
+- [Nematoda Jaringan (Filaria)] Apa yang dimaksud dengan BRUGIA TIMORI pada Nematoda Jaringan (Filaria)? :: Indonesia timur/Lesser Sunda; microfilaria lebih panjang
+- [Nematoda Jaringan (Filaria)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Semua dapat menyebabkan lymphatic dysfunction pada Nematoda Jaringan (Filaria)? :: Lymphedema/elephantiasis. Diagnosis klasik = blood smear sesuai periodicity. Terapi individu utama = DEC pada pasien yang sesuai; chronic lymphedema memerlukan morbidity management
+- [Nocturnal Periodicity] Sebutkan konsekuensi diagnostik pada Nocturnal Periodicity (Nematoda Jaringan (Filaria)). :: • Pengambilan darah sebaiknya disesuaikan dengan periodicity lokal
+  • Pada strain nokturnal, blood smear malam meningkatkan sensitivitas
+- [Wuchereria bancrofti — Morfologi Mikrofilaria] Sebutkan ciri high-yield pada Wuchereria bancrofti — Morfologi Mikrofilaria. :: • Sheathed
+  • Panjang kira-kira 240–300 µm pada blood smear
+  • Tubuh melengkung lembut
+  • Nuclear column relatif longgar
+  • Nuklei TIDAK mencapai ujung ekor
+  • Ujung ekor meruncing dan tampak kosong dari nuklei
+- [Brugia malayi — Morfologi Mikrofilaria] Sebutkan ciri high-yield pada Brugia malayi — Morfologi Mikrofilaria. :: • Sheathed
+  • Lebih pendek, sekitar 175–230 µm pada stained blood smear
+  • Ekor meruncing
+  • Terdapat gap jelas antara subterminal nucleus dan terminal nucleus
+  • Secara klasik tampak dua nuclei terminal yang terpisah dari nuclear column utama
+- [Brugia timori — Morfologi Mikrofilaria] Sebutkan ciri penting pada Brugia timori — Morfologi Mikrofilaria. :: • Sheathed
+  • Lebih panjang daripada B. malayi, rata-rata sekitar 310 µm pada stained smear
+  • Cephalic space lebih panjang
+  • Sheath tidak terwarnai dengan Giemsa
+  • Lebih banyak nuclei tersusun single-file menuju bagian ekor
+- [Spektrum Klinis] Sebutkan hal-hal penting tentang Filariasis limfatik pada Spektrum Klinis (Nematoda Jaringan (Filaria)). :: • Asimtomatik/subklinis
   • Manifestasi akut
   • Manifestasi kronik
   • Tropical pulmonary eosinophilia (TPE) pada sebagian pasien
-- [Manifestasi Akut] Episode acute adenolymphangitis dapat mencakup … :: • demam,
-  • nyeri,
-  • lymphangitis,
-  • lymphadenitis,
-  • pembengkakan lokal
-- [Manifestasi Kronik — Lymphedema & Elephantiasis] Kerusakan limfatik jangka panjang dapat menyebabkan … :: • lymphedema persisten,
-  • pembesaran ekstremitas,
-  • penebalan kulit,
-  • fibrosis,
-  • elephantiasis pada stadium lanjut
-- [Pemeriksaan Tambahan] Pemeriksaan tambahan dapat mencakup … :: • ultrasonografi limfatik yang kadang menunjukkan gerakan cacing hidup (“filarial dance sign”),
-  • serologi/antibodi pada konteks tertentu,
-  • PCR untuk identifikasi molekuler,
-  • eosinofilia,
-  • imaging untuk mengevaluasi komplikasi
-- [Lymphedema Management] Manajemen morbiditas merupakan bagian utama tata laksana … :: • kebersihan kulit dan kaki,
-  • menjaga kulit tetap kering dan mencegah luka,
-  • exercise untuk membantu lymph flow,
-  • elevasi ekstremitas,
-  • tata laksana luka dan infeksi sekunder,
-  • alas kaki yang sesuai
-- [Filariasis di Indonesia] Spesies yang relevan … :: • W. bancrofti,
-  • B. malayi,
+- [W. bancrofti vs Brugia — Pola Klinis] Sebutkan hal-hal penting tentang Brugian filariasis pada W. bancrofti vs Brugia — Pola Klinis (Nematoda Jaringan (Filaria)). :: • Lymphedema lebih sering mengenai ekstremitas distal
+  • Genital involvement umumnya lebih jarang
+- [Diagnosis — Mikroskopi Darah] Sebutkan pemeriksaan klasik pada Diagnosis — Mikroskopi Darah. :: • Thick blood smear → sensitivitas lebih tinggi untuk mendeteksi mikrofilaria
+  • Thin blood smear → membantu menilai morfologi spesies
+- [Lymphedema Management] Sebutkan manajemen morbiditas merupakan bagian utama tata laksana pada Lymphedema Management (Nematoda Jaringan (Filaria)). :: • Kebersihan kulit dan kaki
+  • Menjaga kulit tetap kering dan mencegah luka
+  • Exercise untuk membantu lymph flow
+  • Elevasi ekstremitas
+  • Tata laksana luka dan infeksi sekunder
+  • Alas kaki yang sesuai
+- [Filariasis di Indonesia] Sebutkan hal-hal penting tentang Spesies yang relevan pada Filariasis di Indonesia. :: • W. bancrofti
+  • B. malayi
   • B. timori
-- [Konsep Besar Filariasis Limfatik] Exam pearl: Konsep Besar Filariasis Limfatik :: Filaria limfatik = ADULT di LIMFE, MICROFILARIA di DARAH.
-- [Vektor dan Distribusi] Poin ujian: Vektor dan Distribusi :: Jangan menghafal “satu nyamuk = satu filaria” untuk W. bancrofti karena vektornya sangat bergantung daerah.
-- [Wuchereria bancrofti — Morfologi Mikrofilaria] Mnemonic: Wuchereria bancrofti — Morfologi Mikrofilaria :: BAN-crofti = “Blank tail” → tail tip tanpa nuclei.
-- [Brugia malayi — Morfologi Mikrofilaria] Mnemonic: Brugia malayi — Morfologi Mikrofilaria :: MALAYI = “2 nuclei at the tail”.
-- [Pathogenesis — Mengapa Terjadi Limfedema?] Poin penting: Pathogenesis — Mengapa Terjadi Limfedema? :: Beratnya penyakit kronik tidak hanya ditentukan jumlah mikrofilaria dalam darah; kerusakan limfatik dapat menetap walaupun parasit aktif sudah berkurang.
-- [Manifestasi Kronik — Lymphedema & Elephantiasis] Exam pearl: Manifestasi Kronik — Lymphedema & Elephantiasis :: Obat antiparasit tidak otomatis membalikkan elephantiasis kronik yang sudah terbentuk.
-- [Hydrocele Management] Poin ujian: Hydrocele Management :: DEC mengatasi infeksi aktif, tetapi hydrocele yang established sering tidak mengecil hanya dengan antiparasit.
-- [Pembeda dengan Nematoda Usus] Exam pearl: Pembeda dengan Nematoda Usus :: “microfilaria dalam darah” langsung pindahkan differential ke filaria, bukan Ascaris/Trichuris/hookworm.
+- [Vector Control & Prevention] Sebutkan pencegahan pada Vector Control & Prevention. :: • Mosquito bite prevention
+  • Penggunaan kelambu/repellent sesuai setting
+  • Vector control
+  • Partisipasi MDA pada daerah endemik
+  • Surveilans setelah MDA dihentikan
+- [Pembeda dengan Nematoda Usus] Sebutkan hal-hal penting tentang Filariasis limfatik pada Pembeda dengan Nematoda Usus (Nematoda Jaringan (Filaria)). :: • Ditularkan nyamuk
+  • Stadium infektif L3
+  • Cacing dewasa di jaringan/limfatik
+  • Microfilaria di darah
+- [Pembeda dengan Nematoda Usus] Sebutkan hal-hal penting tentang Nematoda usus pada Pembeda dengan Nematoda Usus (Nematoda Jaringan (Filaria)). :: • Banyak yang ditularkan telur atau larva dari tanah
+  • Cacing dewasa dominan di lumen usus
+  • Diagnosis sering dari telur/larva di feses
+- [Konsep Besar Filariasis Limfatik] Apa poin high-yield (pearl) tentang Nematoda Jaringan (Filaria)? :: Filaria limfatik = ADULT di LIMFE, MICROFILARIA di DARAH.
+- [Vektor dan Distribusi] Apa poin high-yield (pearl) tentang Vektor dan Distribusi? :: Jangan menghafal “satu nyamuk = satu filaria” untuk W. bancrofti karena vektornya sangat bergantung daerah.
+- [Wuchereria bancrofti — Morfologi Mikrofilaria] Bagaimana cara mengingat Wuchereria bancrofti — Morfologi Mikrofilaria? :: BAN-crofti = “Blank tail” → tail tip tanpa nuclei.
+- [Brugia malayi — Morfologi Mikrofilaria] Bagaimana cara mengingat Brugia malayi — Morfologi Mikrofilaria? :: MALAYI = “2 nuclei at the tail”.
+- [Pathogenesis — Mengapa Terjadi Limfedema?] Apa poin high-yield (pearl) tentang Pathogenesis — Mengapa Terjadi Limfedema? :: Beratnya penyakit kronik tidak hanya ditentukan jumlah mikrofilaria dalam darah; kerusakan limfatik dapat menetap walaupun parasit aktif sudah berkurang.
+- [Manifestasi Kronik — Lymphedema & Elephantiasis] Apa poin high-yield (pearl) tentang Manifestasi Kronik — Lymphedema & Elephantiasis? :: Obat antiparasit tidak otomatis membalikkan elephantiasis kronik yang sudah terbentuk.
+- [Hydrocele Management] Apa poin high-yield (pearl) tentang Hydrocele Management (Nematoda Jaringan (Filaria))? :: DEC mengatasi infeksi aktif, tetapi hydrocele yang established sering tidak mengecil hanya dengan antiparasit.
+- [Pembeda dengan Nematoda Usus] Apa poin high-yield (pearl) tentang Pembeda dengan Nematoda Usus? :: “microfilaria dalam darah” langsung pindahkan differential ke filaria, bukan Ascaris/Trichuris/hookworm.

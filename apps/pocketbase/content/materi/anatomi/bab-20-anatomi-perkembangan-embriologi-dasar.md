@@ -398,94 +398,95 @@ Bila diberi diagram tahap awal perkembangan:
 
 ## Flashcard {kartu}
 
-- [Peta Besar Perkembangan Prenatal] pre-embryonic/germinal period :: fertilisasi sampai sekitar akhir minggu ke-2
-- [Peta Besar Perkembangan Prenatal] embryonic period :: minggu ke-3 sampai ke-8, saat body plan dan sebagian besar organ primordia terbentuk
-- [Peta Besar Perkembangan Prenatal] fetal period :: mulai minggu ke-9 sampai lahir, dominan berupa pertumbuhan dan maturasi organ.
-- [Cleavage, Morula, dan Blastocyst] Urutan konseptual :: zygote → 2-cell → 4-cell → 8-cell → compaction → morula → blastocyst.
-- [Cleavage, Morula, dan Blastocyst] trophoblast :: lapisan luar, berperan besar dalam implantasi dan fetal component placenta
-- [Cleavage, Morula, dan Blastocyst] embryoblast/inner cell mass :: membentuk embryo proper
-- [Cleavage, Morula, dan Blastocyst] blastocoel :: rongga blastocyst.
-- [Implantation dan Diferensiasi Trophoblast] cytotrophoblast :: lapisan sel mononuklear dengan batas sel jelas dan kemampuan mitosis
-- [Implantation dan Diferensiasi Trophoblast] syncytiotrophoblast :: massa multinuklear invasif tanpa batas sel individual yang jelas.
-- [Placenta dan Uteroplacental Circulation] primary villus :: cytotrophoblast yang diselubungi syncytiotrophoblast
-- [Placenta dan Uteroplacental Circulation] secondary villus :: extraembryonic mesoderm masuk ke core
-- [Placenta dan Uteroplacental Circulation] tertiary villus :: fetal capillaries terbentuk di core.
-- [Teratology dan Critical Periods] minggu 3–8 :: risiko tertinggi major structural anomalies karena organogenesis
-- [Teratology dan Critical Periods] fetal period :: gangguan lebih sering memengaruhi growth dan functional maturation, walau organ tertentu tetap rentan.
-- [Teratology dan Critical Periods] Contoh faktor :: alkohol, retinoic acid, beberapa obat, infeksi maternal tertentu, radiasi dosis tinggi, dan penyakit maternal yang tidak terkontrol.
-- [Clinical Correlations High-Yield] Ectopic pregnancy :: implantation di luar endometrium uterus, tersering di tuba uterina.
-- [Clinical Correlations High-Yield] Placenta previa :: placenta menutupi atau mendekati internal cervical os karena implantation site rendah.
-- [Clinical Correlations High-Yield] Neural tube defect :: kegagalan neurulation/neuropore closure, contoh anencephaly dan spina bifida spectrum.
-- [Clinical Correlations High-Yield] Sacrococcygeal teratoma :: berkaitan dengan sisa primitive streak pluripotent cells.
-- [Clinical Correlations High-Yield] Meckel diverticulum :: persistence bagian vitelline duct; secara klasik berada di ileum.
-- [Clinical Correlations High-Yield] Omphalocele :: herniasi viscera melalui umbilical ring dan diselubungi membran.
-- [Clinical Correlations High-Yield] Gastroschisis :: bowel herniates melalui defect ventral body wall, biasanya paraumbilical dan tidak diselubungi membran yang sama seperti omphalocele.
-- [Clinical Correlations High-Yield] Congenital diaphragmatic hernia :: abnormal closure diaphragmatic components dapat memungkinkan abdominal viscera masuk thorax dan mengganggu perkembangan lung.
-- [Clinical Correlations High-Yield] Conotruncal cardiac defects :: dapat berkaitan dengan gangguan neural crest migration.
-- [High-yield] Neural crest :: lihat bagian neurulation; prinsipnya banyak struktur PNS, pigment cells, craniofacial mesenchyme, dan adrenal medulla
-- [High-yield] Hari 0 :: fertilisasi
-- [High-yield] Hari 1–3 :: cleavage
-- [High-yield] Hari 3–4 :: morula
-- [High-yield] Hari 4–5 :: blastocyst
-- [High-yield] Hari 6–7 :: implantation mulai
-- [High-yield] Minggu 2 :: bilaminar disc, amnion, yolk sac, chorionic cavity
-- [High-yield] Minggu 3 :: gastrulation, trilaminar disc, primitive streak, notochord, awal neurulation dan somites
-- [High-yield] Minggu 4 :: folding jelas, neural tube closure berlangsung/selesai, pharyngeal arches dan limb buds mulai tampak
-- [High-yield] Minggu 4–8 :: major organogenesis
-- [High-yield] Minggu 9–lahir :: fetal period, growth dan maturation
-- [High-yield] Somite :: sclerotome = vertebra/rib, myotome = skeletal muscle, dermatome = dermis
-- [High-yield] Placenta :: chorion frondosum fetal + decidua basalis maternal
-- [High-yield] Umbilical cord normal :: 2 arteries + 1 vein
-- [High-yield] Test pertanyaan embriologi dengan tiga hal :: kapan terjadi, berasal dari germ layer apa, dan struktur dewasa apa yang dihasilkan
-- [Peta Besar Perkembangan Prenatal] Perkembangan prenatal dapat dipahami dalam tiga periode besar … :: • pre-embryonic/germinal period: fertilisasi sampai sekitar akhir minggu ke-2
-  • embryonic period: minggu ke-3 sampai ke-8, saat body plan dan sebagian besar organ primordia terbentuk
-  • fetal period: mulai minggu ke-9 sampai lahir, dominan berupa pertumbuhan dan maturasi organ
-- [Implantation dan Diferensiasi Trophoblast] Trophoblast berdiferensiasi menjadi … :: • cytotrophoblast: lapisan sel mononuklear dengan batas sel jelas dan kemampuan mitosis
-  • syncytiotrophoblast: massa multinuklear invasif tanpa batas sel individual yang jelas
-- [Minggu Kedua: Bilaminar Embryonic Disc] Embryoblast berdiferensiasi menjadi dua lapisan … :: • epiblast, sel kolumnar yang berhubungan dengan amniotic cavity
-  • hypoblast, sel lebih kuboid yang menghadap yolk sac
-- [Minggu Kedua: Bilaminar Embryonic Disc] Struktur penting minggu ke-2 … :: • amniotic cavity di sisi epiblast
-  • primary lalu secondary yolk sac di sisi hypoblast
-  • extraembryonic mesoderm
-  • extraembryonic coelom/chorionic cavity
-  • connecting stalk yang kelak berkontribusi pada umbilical cord
-  • chorion yang tersusun dari trophoblast dan extraembryonic somatic mesoderm
-- [Neurulation dan Neural Crest] Derivatif high-yield neural crest meliputi … :: • dorsal root ganglia dan banyak ganglia PNS
-  • autonomic ganglia
+- [Peta Besar Perkembangan Prenatal] Apa yang dimaksud dengan pre-embryonic/germinal period pada Anatomi Perkembangan (Embriologi Dasar)? :: Fertilisasi sampai sekitar akhir minggu ke-2
+- [Peta Besar Perkembangan Prenatal] Apa yang dimaksud dengan embryonic period pada Anatomi Perkembangan (Embriologi Dasar)? :: Minggu ke-3 sampai ke-8, saat body plan dan sebagian besar organ primordia terbentuk
+- [Peta Besar Perkembangan Prenatal] Apa yang dimaksud dengan fetal period pada Anatomi Perkembangan (Embriologi Dasar)? :: Mulai minggu ke-9 sampai lahir, dominan berupa pertumbuhan dan maturasi organ.
+- [Cleavage, Morula, dan Blastocyst] Pada Cleavage, Morula, dan Blastocyst, apa urutan konseptualnya? :: Zygote → 2-cell → 4-cell → 8-cell → compaction → morula → blastocyst.
+- [Cleavage, Morula, dan Blastocyst] Apa yang dimaksud dengan trophoblast pada Cleavage, Morula, dan Blastocyst? :: Lapisan luar, berperan besar dalam implantasi dan fetal component placenta
+- [Cleavage, Morula, dan Blastocyst] Jelaskan embryoblast/inner cell mass dalam konteks Cleavage, Morula, dan Blastocyst. :: Membentuk embryo proper
+- [Implantation dan Diferensiasi Trophoblast] Apa yang dimaksud dengan cytotrophoblast pada Implantation dan Diferensiasi Trophoblast? :: Lapisan sel mononuklear dengan batas sel jelas dan kemampuan mitosis
+- [Implantation dan Diferensiasi Trophoblast] Apa yang dimaksud dengan syncytiotrophoblast pada Implantation dan Diferensiasi Trophoblast? :: Massa multinuklear invasif tanpa batas sel individual yang jelas.
+- [Placenta dan Uteroplacental Circulation] Apa yang dimaksud dengan primary villus pada Placenta dan Uteroplacental Circulation? :: Cytotrophoblast yang diselubungi syncytiotrophoblast
+- [Placenta dan Uteroplacental Circulation] Apa yang dimaksud dengan secondary villus pada Placenta dan Uteroplacental Circulation? :: Extraembryonic mesoderm masuk ke core
+- [Placenta dan Uteroplacental Circulation] Apa yang dimaksud dengan tertiary villus pada Placenta dan Uteroplacental Circulation? :: Fetal capillaries terbentuk di core.
+- [Teratology dan Critical Periods] Apa yang dimaksud dengan minggu 3–8 pada Teratology dan Critical Periods? :: Risiko tertinggi major structural anomalies karena organogenesis
+- [Teratology dan Critical Periods] Apa yang dimaksud dengan fetal period pada Teratology dan Critical Periods? :: Gangguan lebih sering memengaruhi growth dan functional maturation, walau organ tertentu tetap rentan.
+- [Teratology dan Critical Periods] Apa yang dimaksud dengan Contoh faktor pada Teratology dan Critical Periods? :: Alkohol, retinoic acid, beberapa obat, infeksi maternal tertentu, radiasi dosis tinggi, dan penyakit maternal yang tidak terkontrol.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Ectopic pregnancy pada Clinical Correlations High-Yield? :: Implantation di luar endometrium uterus, tersering di tuba uterina.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Placenta previa pada Clinical Correlations High-Yield? :: Placenta menutupi atau mendekati internal cervical os karena implantation site rendah.
+- [Clinical Correlations High-Yield] Jelaskan Neural tube defect dalam konteks Clinical Correlations High-Yield. :: Kegagalan neurulation/neuropore closure, contoh anencephaly dan spina bifida spectrum.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Sacrococcygeal teratoma pada Clinical Correlations High-Yield? :: Berkaitan dengan sisa primitive streak pluripotent cells.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Meckel diverticulum pada Clinical Correlations High-Yield? :: Persistence bagian vitelline duct; secara klasik berada di ileum.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Omphalocele pada Clinical Correlations High-Yield? :: Herniasi viscera melalui umbilical ring dan diselubungi membran.
+- [Clinical Correlations High-Yield] Apa yang dimaksud dengan Gastroschisis pada Clinical Correlations High-Yield? :: Bowel herniates melalui defect ventral body wall, biasanya paraumbilical dan tidak diselubungi membran yang sama seperti omphalocele.
+- [Clinical Correlations High-Yield] Jelaskan Congenital diaphragmatic hernia dalam konteks Clinical Correlations High-Yield. :: Abnormal closure diaphragmatic components dapat memungkinkan abdominal viscera masuk thorax dan mengganggu perkembangan lung.
+- [Clinical Correlations High-Yield] Jelaskan Conotruncal cardiac defects dalam konteks Clinical Correlations High-Yield. :: Dapat berkaitan dengan gangguan neural crest migration.
+- [Anatomi Perkembangan (Embriologi Dasar)] Apa yang perlu diketahui tentang Neural crest pada Anatomi Perkembangan (Embriologi Dasar)? :: Lihat bagian neurulation; prinsipnya banyak struktur PNS, pigment cells, craniofacial mesenchyme, dan adrenal medulla
+- [Anatomi Perkembangan (Embriologi Dasar)] Apa yang perlu diketahui tentang Minggu 2 pada Anatomi Perkembangan (Embriologi Dasar)? :: Bilaminar disc, amnion, yolk sac, chorionic cavity
+- [Anatomi Perkembangan (Embriologi Dasar)] Apa yang perlu diketahui tentang Minggu 3 pada Anatomi Perkembangan (Embriologi Dasar)? :: Gastrulation, trilaminar disc, primitive streak, notochord, awal neurulation dan somites
+- [Anatomi Perkembangan (Embriologi Dasar)] Apa yang perlu diketahui tentang Minggu 4 pada Anatomi Perkembangan (Embriologi Dasar)? :: Folding jelas, neural tube closure berlangsung/selesai, pharyngeal arches dan limb buds mulai tampak
+- [Anatomi Perkembangan (Embriologi Dasar)] Apa yang perlu diketahui tentang Somite pada Anatomi Perkembangan (Embriologi Dasar)? :: Sclerotome = vertebra/rib, myotome = skeletal muscle, dermatome = dermis
+- [Anatomi Perkembangan (Embriologi Dasar)] Apa yang perlu diketahui tentang Placenta pada Anatomi Perkembangan (Embriologi Dasar)? :: Chorion frondosum fetal + decidua basalis maternal
+- [Anatomi Perkembangan (Embriologi Dasar)] Jelaskan: Test pertanyaan embriologi dengan tiga hal pada Anatomi Perkembangan (Embriologi Dasar). :: Kapan terjadi, berasal dari germ layer apa, dan struktur dewasa apa yang dihasilkan
+- [Fertilisasi] Sebutkan urutan atau langkah pada Fertilisasi (Anatomi Perkembangan (Embriologi Dasar))? :: • Sperm capacitation di traktus reproduksi wanita
+  • Penetrasi corona radiata
+  • Binding ke zona pellucida dan acrosome reaction
+  • Penetrasi zona pellucida
+  • Fusi membran sperm–oocyte
+  • Cortical/zona reaction yang mencegah polyspermy
+  • Secondary oocyte menyelesaikan meiosis II
+  • Male dan female pronuclei terbentuk lalu menyatu membentuk zygote diploid
+- [Fertilisasi] Sebutkan konsekuensi fertilisasi (Anatomi Perkembangan (Embriologi Dasar)). :: • Mengembalikan jumlah kromosom diploid
+  • Menentukan genetic sex berdasarkan kromosom X atau Y spermatozoon
+  • Memulai cleavage
+  • Menghasilkan kombinasi genetik baru
+- [Minggu Kedua: Bilaminar Embryonic Disc] Sebutkan struktur penting minggu ke-2 pada Minggu Kedua: Bilaminar Embryonic Disc. :: • Amniotic cavity di sisi epiblast
+  • Primary lalu secondary yolk sac di sisi hypoblast
+  • Extraembryonic mesoderm
+  • Extraembryonic coelom/chorionic cavity
+  • Connecting stalk yang kelak berkontribusi pada umbilical cord
+  • Chorion yang tersusun dari trophoblast dan extraembryonic somatic mesoderm
+- [Gastrulation: Pembentukan Trilaminar Disc] Sebutkan urutan atau langkah pada Gastrulation: Pembentukan Trilaminar Disc? :: • Gelombang pertama menggantikan hypoblast → definitive endoderm
+  • Gelombang berikutnya berada di antara epiblast dan endoderm → intraembryonic mesoderm
+  • Sel epiblast yang tersisa → ectoderm
+- [Neurulation dan Neural Crest] Sebutkan derivatif high-yield neural crest pada Neurulation dan Neural Crest. :: • Dorsal root ganglia dan banyak ganglia PNS
+  • Autonomic ganglia
   • Schwann cells
-  • melanocytes
-  • adrenal medulla chromaffin cells
-  • sebagian craniofacial cartilage/bone dan connective tissue
-  • odontoblasts
-  • pia dan arachnoid mater
-  • conotruncal/aorticopulmonary septal components
-- [Mesoderm dan Somites] Intraembryonic mesoderm secara regional dibagi menjadi … :: • paraxial mesoderm
-  • intermediate mesoderm
-  • lateral plate mesoderm
-- [Mesoderm dan Somites] Tiap somite berdiferensiasi menjadi … :: • sclerotome → vertebrae dan ribs
-  • myotome → skeletal muscle
-  • dermatome → dermis terutama pada trunk posterior
-- [Embryonic Folding] Hasil utama folding … :: • bentuk tubuh berubah menjadi lebih silindris
-  • sebagian yolk sac terinkorporasi menjadi primitive gut tube
-  • endoderm membentuk foregut, midgut, dan hindgut
-  • ventral body wall mendekat dan menutup
-  • connecting stalk dan yolk sac connection terdorong ke region ventral yang kelak menjadi umbilical ring
-- [Minggu 4–8: Organogenesis] Peristiwa umum high-yield … :: • neural tube dan brain vesicles berkembang cepat
-  • pharyngeal arches tampak di head/neck region
-  • heart prominence menonjol dan jantung mulai berfungsi sangat dini
-  • limb buds muncul dan memanjang
-  • facial prominences berkembang dan menyatu
-  • physiologic midgut herniation terjadi sementara
-  • digits berkembang melalui pembentukan digital rays dan apoptosis jaringan interdigital
-- [Placenta dan Uteroplacental Circulation] Chorionic villi berkembang bertahap … :: • primary villus: cytotrophoblast yang diselubungi syncytiotrophoblast
-  • secondary villus: extraembryonic mesoderm masuk ke core
-  • tertiary villus: fetal capillaries terbentuk di core
-- [Peta Besar Perkembangan Prenatal] Clinical anchor: Peta Besar Perkembangan Prenatal :: Periode minggu 3–8 adalah fase paling kritis untuk major structural malformations karena organogenesis sedang berlangsung aktif.
-- [Fertilisasi] Clinical anchor: Fertilisasi :: Fertilisasi normal terjadi di tuba, sedangkan implantasi normal terjadi di endometrium uterus. Implantasi di tuba merupakan ectopic pregnancy.
-- [Implantation dan Diferensiasi Trophoblast] Clinical anchor: Implantation dan Diferensiasi Trophoblast :: Trophoblast adalah komponen fetal placenta; endometrium maternal yang berhubungan dengan placenta terutama menjadi decidua basalis.
-- [Gastrulation: Pembentukan Trilaminar Disc] Clinical anchor: Gastrulation: Pembentukan Trilaminar Disc :: Persistence primitive streak dapat berkaitan dengan sacrococcygeal teratoma karena sisa sel pluripotent di regio kaudal.
-- [Notochord dan Axial Organization] Clinical anchor: Notochord dan Axial Organization :: Chordoma dapat berasal dari sisa notochord, sering di region sacrococcygeal atau clivus.
-- [Neurulation dan Neural Crest] Clinical anchor: Neurulation dan Neural Crest :: Neural tube defects berkaitan dengan kegagalan closure neuropore; folate yang adekuat menurunkan risikonya.
-- [Endoderm] Mnemonic reasoning: Endoderm :: Ectoderm banyak berhubungan dengan “outside + nervous system”, mesoderm dengan “support/movement/circulation”, endoderm dengan “internal tube and its glands”.
-- [Fetal Membranes dan Umbilical Cord] Clinical anchor: Fetal Membranes dan Umbilical Cord :: patent urachus dapat menyebabkan urine keluar melalui umbilicus; vitelline duct persistence dapat menghasilkan Meckel diverticulum atau fistula terkait umbilicus.
-- [Twinning] Clinical anchor: Twinning :: Chorionicity lebih penting daripada zygosity untuk banyak risiko obstetri pada twin pregnancy.
+  • Melanocytes
+  • Adrenal medulla chromaffin cells
+  • Sebagian craniofacial cartilage/bone dan connective tissue
+  • Odontoblasts
+  • Pia dan arachnoid mater
+  • Conotruncal/aorticopulmonary septal components
+- [Mesoderm dan Somites] Sebutkan hal-hal penting tentang Intraembryonic mesoderm secara regional pada Mesoderm dan Somites. :: • Paraxial mesoderm
+  • Intermediate mesoderm
+  • Lateral plate mesoderm
+- [Embryonic Folding] Sebutkan hasil utama folding pada Embryonic Folding (Anatomi Perkembangan (Embriologi Dasar)). :: • Bentuk tubuh berubah menjadi lebih silindris
+  • Sebagian yolk sac terinkorporasi menjadi primitive gut tube
+  • Endoderm membentuk foregut, midgut, dan hindgut
+  • Ventral body wall mendekat dan menutup
+  • Connecting stalk dan yolk sac connection terdorong ke region ventral yang kelak menjadi umbilical ring
+- [Minggu 4–8: Organogenesis] Sebutkan peristiwa umum high-yield pada Minggu 4–8: Organogenesis. :: • Neural tube dan brain vesicles berkembang cepat
+  • Pharyngeal arches tampak di head/neck region
+  • Heart prominence menonjol dan jantung mulai berfungsi sangat dini
+  • Limb buds muncul dan memanjang
+  • Facial prominences berkembang dan menyatu
+  • Physiologic midgut herniation terjadi sementara
+  • Digits berkembang melalui pembentukan digital rays dan apoptosis jaringan interdigital
+- [Placenta dan Uteroplacental Circulation] Sebutkan hal-hal penting tentang Chorionic villi berkembang bertahap pada Placenta dan Uteroplacental Circulation. :: • Primary villus: cytotrophoblast yang diselubungi syncytiotrophoblast
+  • Secondary villus: extraembryonic mesoderm masuk ke core
+  • Tertiary villus: fetal capillaries terbentuk di core
+- [Placenta dan Uteroplacental Circulation] Sebutkan hal-hal penting tentang Umbilical vessels pada Placenta dan Uteroplacental Circulation (Anatomi Perkembangan (Embriologi Dasar)). :: • Dua umbilical arteries membawa darah relatif deoxygenated dari fetus ke placenta
+  • Satu umbilical vein membawa darah relatively oxygenated dari placenta ke fetus
+- [Teratology dan Critical Periods] Sebutkan prinsip timing pada Teratology dan Critical Periods. :: • Awal sekali sebelum implantation sering mengikuti konsep “all-or-none”: embryo mati atau bertahan tanpa major structural defect
+  • Minggu 3–8: risiko tertinggi major structural anomalies karena organogenesis
+  • Fetal period: gangguan lebih sering memengaruhi growth dan functional maturation, walau organ tertentu tetap rentan
+- [Peta Besar Perkembangan Prenatal] Apa korelasi klinis dari Anatomi Perkembangan (Embriologi Dasar)? :: Periode minggu 3–8 adalah fase paling kritis untuk major structural malformations karena organogenesis sedang berlangsung aktif.
+- [Fertilisasi] Apa korelasi klinis dari Fertilisasi (Anatomi Perkembangan (Embriologi Dasar))? :: Fertilisasi normal terjadi di tuba, sedangkan implantasi normal terjadi di endometrium uterus. Implantasi di tuba merupakan ectopic pregnancy.
+- [Implantation dan Diferensiasi Trophoblast] Apa korelasi klinis dari Implantation dan Diferensiasi Trophoblast? :: Trophoblast adalah komponen fetal placenta; endometrium maternal yang berhubungan dengan placenta terutama menjadi decidua basalis.
+- [Gastrulation: Pembentukan Trilaminar Disc] Apa korelasi klinis dari Gastrulation: Pembentukan Trilaminar Disc? :: Persistence primitive streak dapat berkaitan dengan sacrococcygeal teratoma karena sisa sel pluripotent di regio kaudal.
+- [Notochord dan Axial Organization] Apa korelasi klinis dari Notochord dan Axial Organization? :: Chordoma dapat berasal dari sisa notochord, sering di region sacrococcygeal atau clivus.
+- [Neurulation dan Neural Crest] Apa korelasi klinis dari Neurulation dan Neural Crest? :: Neural tube defects berkaitan dengan kegagalan closure neuropore; folate yang adekuat menurunkan risikonya.
+- [Endoderm] Bagaimana cara mengingat Endoderm (Anatomi Perkembangan (Embriologi Dasar))? :: Ectoderm banyak berhubungan dengan “outside + nervous system”, mesoderm dengan “support/movement/circulation”, endoderm dengan “internal tube and its glands”.
+- [Fetal Membranes dan Umbilical Cord] Apa korelasi klinis dari Fetal Membranes dan Umbilical Cord? :: Patent urachus dapat menyebabkan urine keluar melalui umbilicus; vitelline duct persistence dapat menghasilkan Meckel diverticulum atau fistula terkait umbilicus.
+- [Twinning] Apa korelasi klinis dari Twinning (Anatomi Perkembangan (Embriologi Dasar))? :: Chorionicity lebih penting daripada zygosity untuk banyak risiko obstetri pada twin pregnancy.

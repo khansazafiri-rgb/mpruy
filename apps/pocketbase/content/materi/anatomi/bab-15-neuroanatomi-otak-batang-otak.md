@@ -308,41 +308,33 @@ Jika melihat ventricular system:
 
 ## Flashcard {kartu}
 
-- [Ventricular System dan Cerebrospinal Fluid] Aliran CSF :: Lateral ventricles → interventricular foramina (Monro) → third ventricle → cerebral aqueduct → fourth ventricle → median aperture (Magendie) dan lateral apertures (Luschka) → subarachnoid space → arachnoid granulations → dural venous sinuses.
-- [High-yield] Internal capsule :: compact projection fibers; lesion kecil dapat memberi deficit besar
-- [High-yield] Thalamus :: major sensory relay kecuali olfaction
-- [High-yield] Hypothalamus :: autonomic + endocrine + homeostasis
-- [High-yield] Brainstem :: midbrain + pons + medulla; crossed findings sangat penting untuk localization
-- [High-yield] Trochlear nerve :: cranial nerve yang keluar dorsal dari brainstem
-- [High-yield] CSF :: lateral ventricles → Monro → third → aqueduct → fourth → Magendie/Luschka → subarachnoid space
-- [Peta Besar Encephalon] Secara sederhana, neuroanatomi otak dapat dipahami dengan tiga pertanyaan … :: • Di mana gray matter berada?
-  • Jalur white matter mana yang menghubungkan area tersebut?
-  • Struktur neurovascular apa yang berdekatan sehingga lesi menghasilkan pola defisit tertentu?
-- [Cerebellum] Tiga functional divisions yang berguna … :: • Vestibulocerebellum → balance dan eye movements
+- [Ventricular System dan Cerebrospinal Fluid] Apa yang dimaksud dengan Aliran CSF pada Ventricular System dan Cerebrospinal Fluid? :: Lateral ventricles → interventricular foramina (Monro) → third ventricle → cerebral aqueduct → fourth ventricle → median aperture (Magendie) dan lateral apertures (Luschka) → subarachnoid space → arachnoid granulations → dural venous sinuses.
+- [Neuroanatomi: Otak & Batang Otak] Apa yang dimaksud dengan Internal capsule pada Neuroanatomi: Otak & Batang Otak? :: Compact projection fibers; lesion kecil dapat memberi deficit besar
+- [Neuroanatomi: Otak & Batang Otak] Apa yang dimaksud dengan Thalamus pada Neuroanatomi: Otak & Batang Otak? :: Major sensory relay kecuali olfaction
+- [Neuroanatomi: Otak & Batang Otak] Apa yang dimaksud dengan Hypothalamus pada Neuroanatomi: Otak & Batang Otak? :: Autonomic + endocrine + homeostasis
+- [Neuroanatomi: Otak & Batang Otak] Apa yang dimaksud dengan Brainstem pada Neuroanatomi: Otak & Batang Otak? :: Midbrain + pons + medulla; crossed findings sangat penting untuk localization
+- [Neuroanatomi: Otak & Batang Otak] Apa yang dimaksud dengan Trochlear nerve pada Neuroanatomi: Otak & Batang Otak? :: Cranial nerve yang keluar dorsal dari brainstem
+- [Neuroanatomi: Otak & Batang Otak] Apa yang perlu diketahui tentang CSF pada Neuroanatomi: Otak & Batang Otak? :: Lateral ventricles → Monro → third → aqueduct → fourth → Magendie/Luschka → subarachnoid space
+- [Hypothalamus] Sebutkan hubungan penting pada Hypothalamus (Neuroanatomi: Otak & Batang Otak). :: • Optic chiasm berada anterior-inferior terhadap hypothalamus
+  • Pituitary berhubungan melalui infundibulum
+  • Mammillary bodies tampak di inferior surface dan berhubungan dengan limbic circuitry
+- [Cerebellum] Sebutkan hal-hal penting tentang Tiga functional divisions yang berguna pada Cerebellum (Neuroanatomi: Otak & Batang Otak). :: • Vestibulocerebellum → balance dan eye movements
   • Spinocerebellum → posture, gait, dan ongoing movement correction
   • Cerebrocerebellum → motor planning dan fine coordination
-- [Cerebellum] Cerebellum terhubung dengan brainstem melalui tiga peduncles … :: • Superior cerebellar peduncle → terutama output menuju midbrain/thalamus
-  • Middle cerebellar peduncle → input terbesar dari contralateral pontine nuclei
-  • Inferior cerebellar peduncle → banyak input dari medulla, spinal cord, dan vestibular system
-- [Midbrain] Cranial nerve association … :: • CN III nucleus dan Edinger–Westphal nucleus berada di midbrain
+- [Midbrain] Sebutkan hal-hal penting tentang Cranial nerve association pada Midbrain (Neuroanatomi: Otak & Batang Otak). :: • CN III nucleus dan Edinger–Westphal nucleus berada di midbrain
   • CN IV nucleus juga di midbrain; trochlear nerve adalah satu-satunya cranial nerve yang keluar dari dorsal brainstem dan decussates sebelum keluar
-- [Pons] Cranial nerve association secara umum … :: • CN V berhubungan dengan mid-pons
+- [Pons] Sebutkan cranial nerve association secara umum pada Pons (Neuroanatomi: Otak & Batang Otak). :: • CN V berhubungan dengan mid-pons
   • CN VI, VII, dan VIII muncul di pontomedullary region
-- [Cranial Nerve Nuclei: Peta Cepat] Level kasar yang harus diingat … :: • Midbrain → CN III, IV
-  • Pons → terutama CN V; pontomedullary junction → CN VI, VII, VIII
-  • Medulla → CN IX, X, XI, XII
-- [Cranial Nerve Nuclei: Peta Cepat] Nuclei fungsional penting … :: • Edinger–Westphal → parasympathetic CN III
+- [Cranial Nerve Nuclei: Peta Cepat] Sebutkan nuclei fungsional penting pada Cranial Nerve Nuclei: Peta Cepat. :: • Edinger–Westphal → parasympathetic CN III
   • Trigeminal sensory nuclei → facial sensation
   • Facial motor nucleus → muscles of facial expression
   • Nucleus ambiguus → branchial motor fibers terutama IX–X
   • Nucleus tractus solitarius → visceral sensation dan taste
   • Dorsal motor nucleus vagus → parasympathetic output
   • Hypoglossal nucleus → tongue motor
-- [Vascular Supply Otak] Otak mendapat darah dari dua sistem utama … :: • Internal carotid circulation → anterior circulation
-  • Vertebrobasilar circulation → posterior circulation
-- [Brainstem dan Cerebellar Supply] High-yield vascular localization … :: • PICA territory medulla → lateral medullary/Wallenberg pattern
-  • Paramedian basilar branches → medial pontine lesions
-  • AICA territory → lateral pontine syndrome dengan keterlibatan facial structures yang lebih menonjol
-- [Functional Cortical Landmarks] Clinical anchor: Functional Cortical Landmarks :: Dominant frontal lesion → dapat menyebabkan expressive/Broca aphasia. Dominant temporoparietal lesion → dapat menyebabkan receptive/Wernicke aphasia. Non-dominant parietal lesion → dapat menyebabkan hemispatial neglect.
-- [Basal Nuclei] Clinical anchors: Basal Nuclei :: Degenerasi dopaminergic neurons substantia nigra pars compacta → Parkinson disease pattern. Lesi subthalamic nucleus → contralateral hemiballismus. Degenerasi striatal tertentu dapat menghasilkan choreiform movement.
-- [Ventricular System dan Cerebrospinal Fluid] Clinical anchors: Ventricular System dan Cerebrospinal Fluid :: Obstruksi cerebral aqueduct dapat menyebabkan non-communicating hydrocephalus dengan dilatasi ventricles proximal terhadap sumbatan. Gangguan absorpsi CSF di arachnoid granulations dapat menyebabkan communicating hydrocephalus.
+- [Brainstem] Sebutkan contoh pola pada Brainstem (Neuroanatomi: Otak & Batang Otak). :: • Ipsilateral CN III palsy + contralateral weakness → midbrain localization
+  • Ipsilateral CN VI/VII finding + contralateral long-tract deficit → pontine localization
+  • Ipsilateral bulbar/cranial nerve findings + contralateral body deficit → medullary localization
+- [Functional Cortical Landmarks] Apa korelasi klinis dari Functional Cortical Landmarks? :: Dominant frontal lesion → dapat menyebabkan expressive/Broca aphasia. Dominant temporoparietal lesion → dapat menyebabkan receptive/Wernicke aphasia. Non-dominant parietal lesion → dapat menyebabkan hemispatial neglect.
+- [Basal Nuclei] Apa korelasi klinis dari Basal Nuclei (Neuroanatomi: Otak & Batang Otak)? :: Degenerasi dopaminergic neurons substantia nigra pars compacta → Parkinson disease pattern. Lesi subthalamic nucleus → contralateral hemiballismus. Degenerasi striatal tertentu dapat menghasilkan choreiform movement.
+- [Ventricular System dan Cerebrospinal Fluid] Apa korelasi klinis dari Ventricular System dan Cerebrospinal Fluid? :: Obstruksi cerebral aqueduct dapat menyebabkan non-communicating hydrocephalus dengan dilatasi ventricles proximal terhadap sumbatan. Gangguan absorpsi CSF di arachnoid granulations dapat menyebabkan communicating hydrocephalus.

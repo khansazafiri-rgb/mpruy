@@ -397,43 +397,39 @@ Ventricular filling → atrial systole → EDV → isovolumetric contraction →
 
 ## Flashcard {kartu}
 
-- [Peta Besar Fisiologi Kardiovaskular] Urutan logika utama :: electrical impulse → myocardial contraction → pressure gradient → valve movement → blood flow → tissue perfusion → sensor detects change → autonomic/vascular response → pressure dan flow dikoreksi.
-- [Sistem Konduksi Jantung] Tujuan sistem :: memastikan atrium berkontraksi sebelum ventrikel dan depolarisasi ventrikel berlangsung sinkron.
-- [Funny Current (If)] Saat akhir repolarization/hyperpolarization :: If aktif → inward current perlahan → membrane potential bergerak menuju threshold.
-- [Pengaruh Simpatis pada Pacemaker] Konsekuensi :: heart rate meningkat.
-- [Pengaruh Simpatis pada Pacemaker] Secara konsep ujian :: sympathetic stimulation → positive chronotropy.
-- [Pengaruh Parasimpatis pada Pacemaker] Konsekuensi :: heart rate menurun.
-- [AV Node dan AV Delay] Makna fisiologis :: atrium mendapat waktu menyelesaikan kontraksi dan mendorong darah ke ventrikel sebelum ventricular contraction dimulai.
-- [His–Purkinje System] Setelah AV node :: impuls masuk ke His bundle → bundle branches → Purkinje fibers.
-- [Action Potential Sel Ventrikel: Gambaran Umum] Makna fisiologis terpenting :: plateau memperpanjang refractory period sehingga otot jantung tidak mengalami tetanus fisiologis.
-- [Fase 0 Ventricular Action Potential] Arus dominan menurut sumber :: rapid Na+ influx melalui fast voltage-gated Na+ channels.
-- [Fase 2: Plateau] Poin yang ditekankan :: L-type Ca2+ influx berperan penting mempertahankan plateau dan memicu contraction.
-- [Fase 3] Arus dominan :: K+ efflux meningkat sehingga membrane potential kembali menjadi negatif.
-- [ECG: Gambaran Umum] Prinsip penting :: ECG bukan rekaman kontraksi mekanik secara langsung; ECG merekam perubahan electrical activity yang mendahului mechanical response.
-- [Cardiac Cycle: Peta Besar] Satu cardiac cycle mencakup :: ventricular filling → atrial systole → isovolumetric contraction → ejection → isovolumetric relaxation → filling kembali.
-- [Isovolumetric Contraction] Setelah ventricular depolarization :: ventricle mulai berkontraksi.
-- [Heart Sounds: Konsep Dasar] S1 :: closure AV valves pada awal ventricular systole.
-- [Heart Sounds: Konsep Dasar] S2 :: closure semilunar valves pada awal diastole.
-- [Heart Sounds: Konsep Dasar] Gunakan hubungan :: electrical event → mechanical event → valve closure → sound.
-- [Ejection Fraction] Rumus :: EF = SV / EDV × 100%.
-- [Cardiac Output] Contoh sumber :: HR 75/min dan SV 70 mL → CO = 5250 mL/min atau 5.25 L/min.
-- [Frank–Starling Mechanism] Sumber menekankan prinsip :: semakin besar filling/stretch awal dalam rentang fisiologis, semakin kuat contraction dan semakin besar stroke volume.
-- [PV Loop: Peningkatan Contractility] Konsekuensi :: ESV menurun dan stroke volume meningkat.
-- [Cardiac Output saat Exercise] Sumber menggunakan nilai ilustratif :: resting CO sekitar 5 L/min dan dapat meningkat beberapa kali lipat saat exercise berat.
-- [Peta Besar Fisiologi Kardiovaskular] Empat blok besar bab … :: • sistem listrik jantung
-  • mekanika pompa dan cardiac cycle
-  • hemodinamika pembuluh
-  • regulasi tekanan darah dan venous return
-- [Mengapa Konduksi AV Node Lambat?] Sumber pembahasan soal menekankan … :: • sel lebih kecil
-  • gap junction lebih sedikit
-  • conduction lebih lambat
-- [Preload] Secara praktis berhubungan dengan … :: • venous return
-  • EDV
-  • blood volume
-- [Pressure–Volume Loop: Empat Sisi] PV loop secara konseptual … :: • ventricular filling
-  • isovolumetric contraction
-  • ejection
-  • isovolumetric relaxation
-- [Mengapa Konduksi AV Node Lambat?] High-yield: Mengapa Konduksi AV Node Lambat? :: AV delay meningkatkan efisiensi ventricular filling.
-- [Katup Jantung Bekerja karena Pressure Gradient] High-yield: Katup Jantung Bekerja karena Pressure Gradient :: Valve tidak membutuhkan kontraksi aktif untuk membuka/menutup.
-- [Chronotropy, Inotropy, dan Dromotropy] Mnemonic ujian: Chronotropy, Inotropy, dan Dromotropy :: Sympathetic → +chronotropy, +inotropy, +dromotropy.
+- [Peta Besar Fisiologi Kardiovaskular] Jelaskan Urutan logika utama dalam konteks Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung. :: Electrical impulse → myocardial contraction → pressure gradient → valve movement → blood flow → tissue perfusion → sensor detects change → autonomic/vascular response → pressure dan flow dikoreksi.
+- [Sistem Konduksi Jantung] Pada Sistem Konduksi Jantung, apa tujuan sistemnya? :: Memastikan atrium berkontraksi sebelum ventrikel dan depolarisasi ventrikel berlangsung sinkron.
+- [Pengaruh Simpatis pada Pacemaker] Pada Pengaruh Simpatis pada Pacemaker, apa konsekuensinya? :: Heart rate meningkat.
+- [Pengaruh Parasimpatis pada Pacemaker] Pada Pengaruh Parasimpatis pada Pacemaker, apa konsekuensinya? :: Heart rate menurun.
+- [AV Node dan AV Delay] Apa yang dimaksud dengan Makna fisiologis pada AV Node dan AV Delay? :: Atrium mendapat waktu menyelesaikan kontraksi dan mendorong darah ke ventrikel sebelum ventricular contraction dimulai.
+- [Action Potential Sel Ventrikel: Gambaran Umum] Jelaskan Makna fisiologis terpenting dalam konteks Action Potential Sel Ventrikel: Gambaran Umum. :: Plateau memperpanjang refractory period sehingga otot jantung tidak mengalami tetanus fisiologis.
+- [Fase 0 Ventricular Action Potential] Jelaskan Arus dominan menurut sumber dalam konteks Fase 0 Ventricular Action Potential. :: Rapid Na+ influx melalui fast voltage-gated Na+ channels.
+- [Fase 2: Plateau] Apa yang dimaksud dengan Poin pada Fase 2: Plateau? :: L-type Ca2+ influx berperan penting mempertahankan plateau dan memicu contraction.
+- [Fase 3] Apa yang dimaksud dengan Arus dominan pada Fase 3 (Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung)? :: K+ efflux meningkat sehingga membrane potential kembali menjadi negatif.
+- [ECG: Gambaran Umum] Apa yang dimaksud dengan Prinsip penting pada ECG: Gambaran Umum? :: ECG bukan rekaman kontraksi mekanik secara langsung; ECG merekam perubahan electrical activity yang mendahului mechanical response.
+- [Cardiac Cycle: Peta Besar] Jelaskan Satu cardiac cycle dalam konteks Cardiac Cycle: Peta Besar. :: Ventricular filling → atrial systole → isovolumetric contraction → ejection → isovolumetric relaxation → filling kembali.
+- [Heart Sounds: Konsep Dasar] Apa yang dimaksud dengan S1 pada Heart Sounds: Konsep Dasar? :: Closure AV valves pada awal ventricular systole.
+- [Heart Sounds: Konsep Dasar] Apa yang dimaksud dengan S2 pada Heart Sounds: Konsep Dasar? :: Closure semilunar valves pada awal diastole.
+- [Heart Sounds: Konsep Dasar] Apa yang dimaksud dengan Gunakan hubungan pada Heart Sounds: Konsep Dasar? :: Electrical event → mechanical event → valve closure → sound.
+- [Ejection Fraction] Pada Ejection Fraction, apa rumusnya (Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung)? :: EF = SV / EDV × 100%.
+- [Cardiac Output] Apa yang dimaksud dengan Contoh sumber pada Cardiac Output (Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung)? :: HR 75/min dan SV 70 mL → CO = 5250 mL/min atau 5.25 L/min.
+- [Frank–Starling Mechanism] Jelaskan Sumber menekankan prinsip dalam konteks Frank–Starling Mechanism (Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung). :: Semakin besar filling/stretch awal dalam rentang fisiologis, semakin kuat contraction dan semakin besar stroke volume.
+- [PV Loop: Peningkatan Contractility] Pada PV Loop: Peningkatan Contractility, apa konsekuensinya? :: ESV menurun dan stroke volume meningkat.
+- [Cardiac Output saat Exercise] Jelaskan Sumber menggunakan nilai ilustratif dalam konteks Cardiac Output saat Exercise. :: Resting CO sekitar 5 L/min dan dapat meningkat beberapa kali lipat saat exercise berat.
+- [Peta Besar Fisiologi Kardiovaskular] Sebutkan hal-hal penting tentang Empat blok besar bab pada Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung. :: • Sistem listrik jantung
+  • Mekanika pompa dan cardiac cycle
+  • Hemodinamika pembuluh
+  • Regulasi tekanan darah dan venous return
+- [SA Node] Sebutkan karakteristik utamanya pada SA Node (Fisiologi Kardiovaskular: Siklus Jantung, Curah Jantung). :: • Spontaneous depolarization
+  • Tidak memiliki resting membrane potential yang benar-benar stabil seperti sel ventrikel
+  • Mencapai threshold secara otomatis
+- [Mengapa Konduksi AV Node Lambat?] Sebutkan hal-hal penting tentang Sumber pembahasan soal menekankan pada Mengapa Konduksi AV Node Lambat?. :: • Sel lebih kecil
+  • Gap junction lebih sedikit
+  • Conduction lebih lambat
+- [Pressure–Volume Loop: Empat Sisi] Sebutkan PV loop secara konseptual pada Pressure–Volume Loop: Empat Sisi. :: • Ventricular filling
+  • Isovolumetric contraction
+  • Ejection
+  • Isovolumetric relaxation
+- [Mengapa Konduksi AV Node Lambat?] Apa poin high-yield (pearl) tentang Mengapa Konduksi AV Node Lambat? :: AV delay meningkatkan efisiensi ventricular filling.
+- [Katup Jantung Bekerja karena Pressure Gradient] Apa poin high-yield (pearl) tentang Katup Jantung Bekerja karena Pressure Gradient? :: Valve tidak membutuhkan kontraksi aktif untuk membuka/menutup.
+- [Chronotropy, Inotropy, dan Dromotropy] Bagaimana cara mengingat Chronotropy, Inotropy, dan Dromotropy? :: Sympathetic → +chronotropy, +inotropy, +dromotropy.

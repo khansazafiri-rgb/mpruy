@@ -544,41 +544,38 @@ Kelainan jumlah:
 
 ## Flashcard {kartu}
 
-- [Big Picture] Normal manusia :: 46 kromosom = 22 pasang autosom + 1 pasang kromosom seks.
-- [Big Picture] PENTING :: kelainan kromosom biasanya melibatkan banyak gen sekaligus, sehingga manifestasi klinisnya sering multisistem.
-- [Nondisjunction — Mekanisme Utama Aneuploidy] Meiosis I nondisjunction :: kromosom homolog gagal berpisah.
-- [Nondisjunction — Mekanisme Utama Aneuploidy] Meiosis II nondisjunction :: sister chromatids gagal berpisah.
-- [Robertsonian Translocation] PENTING :: pada bayi dengan Down syndrome akibat translocation, evaluasi karyotype orang tua dapat diperlukan untuk menilai risiko berulang pada kehamilan berikutnya.
-- [Manifestasi Klinis Down Syndrome] Jebakan soal :: single palmar crease bukan temuan yang eksklusif untuk Down syndrome.
-- [Screening vs Diagnosis Down Syndrome] PENTING :: NIPT adalah SCREENING, bukan tes diagnostik definitif.
-- [Barr Body] Aturan praktis :: Jumlah Barr body ≈ jumlah kromosom X − 1.
-- [Barr Body] PENTING :: X-inactivation tidak mematikan semua gen pada X; beberapa gen, terutama di pseudoautosomal region, dapat escape X-inactivation.
-- [Fenotipe Klinefelter Syndrome] Mekanisme :: primary testicular failure → hilangnya negative feedback → gonadotropin meningkat.
-- [4. Sequencing] PENTING :: pilih tes sesuai ukuran dan jenis kelainan yang dicurigai.
-- [Prenatal Genetic Testing — Screening vs Diagnostic] Jebakan soal :: hasil screening positif meningkatkan probabilitas tetapi bukan diagnosis final.
-- [Maternal Age] PENTING :: faktor usia meningkatkan risiko, tetapi aneuploidy juga dapat terjadi pada ibu muda.
-- [Memory Map] Turner :: SHORT female → short stature, streak ovaries, coarctation, high FSH/LH.
-- [Memory Map] Klinefelter :: TALL male → small testes, gynecomastia, infertility, high FSH/LH.
-- [Memory Map] Down :: 21 → hypotonia + AV canal + duodenal atresia + leukemia/early Alzheimer risk.
-- [High-yield] Down syndrome :: trisomy 21, bukan selalu “47 kromosom”; Robertsonian Down dapat memiliki jumlah kromosom total yang berbeda dari trisomy bebas
-- [High-yield] NIPT :: screening, bukan diagnosis
-- [High-yield] Turner klasik :: 45,X, phenotypic female, hypergonadotropic hypogonadism
-- [High-yield] Klinefelter :: 47,XXY, phenotypic male, hypergonadotropic hypogonadism
-- [High-yield] Barr body :: jumlah X − 1 sebagai aturan praktis
-- [High-yield] Down syndrome paling klasik :: trisomy 21; dapat juga akibat Robertsonian translocation atau mosaicism
-- [High-yield] Turner :: 45,X → phenotypic female, short stature, streak ovaries, coarctation, estrogen ↓ dan FSH/LH ↑
-- [High-yield] Klinefelter :: 47,XXY → phenotypic male, tall stature, small testes, infertility, testosterone ↓ dan FSH/LH ↑
-- [High-yield] Structural abnormalities :: deletion, duplication, inversion, translocation, ring, isochromosome
-- [Manifestasi Klinis Down Syndrome] Kelainan terkait yang HIGH-YIELD … :: • Congenital heart disease, terutama atrioventricular septal defect/endocardial cushion defect
+- [Big Picture] Apa yang dimaksud dengan Normal manusia pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: 46 kromosom = 22 pasang autosom + 1 pasang kromosom seks.
+- [Nondisjunction — Mekanisme Utama Aneuploidy] Jelaskan Meiosis I nondisjunction dalam konteks Nondisjunction — Mekanisme Utama Aneuploidy. :: Kromosom homolog gagal berpisah.
+- [Nondisjunction — Mekanisme Utama Aneuploidy] Jelaskan Meiosis II nondisjunction dalam konteks Nondisjunction — Mekanisme Utama Aneuploidy. :: Sister chromatids gagal berpisah.
+- [Fenotipe Klinefelter Syndrome] Pada Fenotipe Klinefelter Syndrome, apa mekanismenya (Kelainan Kromosom (Down Syndrome, Turner, Klinefelter))? :: Primary testicular failure → hilangnya negative feedback → gonadotropin meningkat.
+- [Memory Map] Jelaskan Turner pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter). :: SHORT female → short stature, streak ovaries, coarctation, high FSH/LH.
+- [Memory Map] Jelaskan Klinefelter pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter). :: TALL male → small testes, gynecomastia, infertility, high FSH/LH.
+- [Memory Map] Jelaskan Down pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter). :: 21 → hypotonia + AV canal + duodenal atresia + leukemia/early Alzheimer risk.
+- [Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)] Apa yang dimaksud dengan Down syndrome pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: Trisomy 21, bukan selalu “47 kromosom”; Robertsonian Down dapat memiliki jumlah kromosom total yang berbeda dari trisomy bebas
+- [Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)] Apa yang dimaksud dengan NIPT pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: Screening, bukan diagnosis
+- [Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)] Apa yang dimaksud dengan Turner klasik pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: 45,X, phenotypic female, hypergonadotropic hypogonadism
+- [Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)] Apa yang dimaksud dengan Klinefelter pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: 47,XXY, phenotypic male, hypergonadotropic hypogonadism
+- [Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)] Apa yang dimaksud dengan Barr body pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: Jumlah X − 1 sebagai aturan praktis
+- [Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)] Apa yang dimaksud dengan Down syndrome paling klasik pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: Trisomy 21; dapat juga akibat Robertsonian translocation atau mosaicism
+- [Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)] Apa yang dimaksud dengan Turner pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: 45,X → phenotypic female, short stature, streak ovaries, coarctation, estrogen ↓ dan FSH/LH ↑
+- [Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)] Apa yang perlu diketahui tentang Structural abnormalities pada Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)? :: Deletion, duplication, inversion, translocation, ring, isochromosome
+- [Down Syndrome — Trisomy 21] Sebutkan karyotype klasik pada Down Syndrome — Trisomy 21. :: • 47,XX,+21 atau
+  • 47,XY,+21
+- [Manifestasi Klinis Down Syndrome] Sebutkan temuan klasik pada Manifestasi Klinis Down Syndrome. :: • Hypotonia neonatal
+  • Flat facial profile
+  • Upslanting palpebral fissures
+  • Epicanthal folds
+  • Single transverse palmar crease dapat ditemukan
+  • Intellectual disability dengan derajat bervariasi
+  • Short stature
+- [Manifestasi Klinis Down Syndrome] Sebutkan kelainan terkait yang HIGH-YIELD pada Manifestasi Klinis Down Syndrome. :: • Congenital heart disease, terutama atrioventricular septal defect/endocardial cushion defect
   • Duodenal atresia
   • Hirschsprung disease
   • Peningkatan risiko leukemia tertentu
   • Risiko Alzheimer disease onset lebih awal; APP terletak pada kromosom 21
   • Hypothyroidism lebih sering
   • Gangguan pendengaran dan penglihatan lebih sering
-- [Screening vs Diagnosis Down Syndrome] Diagnosis definitif prenatal membutuhkan sampel fetal/placental untuk analisis kromosom, misalnya … :: • Chorionic villus sampling (CVS)
-  • Amniocentesis
-- [Edwards Syndrome — Trisomy 18] Trisomy 18 / Edwards syndrome … :: • Severe developmental impairment
+- [Edwards Syndrome — Trisomy 18] Sebutkan hal-hal penting tentang Trisomy 18 / Edwards syndrome pada Edwards Syndrome — Trisomy 18. :: • Severe developmental impairment
   • Low birth weight
   • Prominent occiput
   • Micrognathia
@@ -587,19 +584,43 @@ Kelainan jumlah:
   • Rocker-bottom feet
   • Congenital heart disease
   • Mortalitas tinggi pada infancy
-- [SHOX Gene dan Short Stature] Haploinsufficiency SHOX berkontribusi terhadap … :: • Short stature pada Turner syndrome
-  • Beberapa abnormalitas skeletal
-- [Fenotipe Klinefelter Syndrome] Hormonal pattern klasik … :: • Testosterone ↓
+- [Patau Syndrome — Trisomy 13] Sebutkan temuan klasik pada Patau Syndrome — Trisomy 13. :: • Severe intellectual/developmental impairment
+  • Holoprosencephaly
+  • Cleft lip/palate
+  • Microphthalmia
+  • Polydactyly
+  • Congenital heart disease
+  • Mortalitas tinggi pada infancy
+- [Fenotipe Klinefelter Syndrome] Sebutkan hormonal pattern klasik pada Fenotipe Klinefelter Syndrome. :: • Testosterone ↓
   • FSH ↑
   • LH ↑
   • Estradiol relatif meningkat terhadap androgen
-- [Autosomal Trisomy yang Dapat Hidup Sampai Lahir] Tiga trisomy autosom yang klasik dapat ditemukan pada live birth … :: • Trisomy 21 — Down syndrome
-  • Trisomy 18 — Edwards syndrome
-  • Trisomy 13 — Patau syndrome
-- [Mengapa Sex-Chromosome Aneuploidy Sering Lebih Ringan?] Dibanding banyak autosomal aneuploidy, kelainan jumlah kromosom seks sering lebih compatible with life karena … :: • Sebagian besar gen pada kromosom X ekstra mengalami X-inactivation
-  • Kromosom Y memiliki jumlah gen yang lebih sedikit dibanding autosom besar
-- [Nondisjunction — Mekanisme Utama Aneuploidy] High-yield: Nondisjunction — Mekanisme Utama Aneuploidy :: Risiko beberapa trisomy meningkat seiring maternal age, terutama trisomy 21. Nondisjunction mitotik setelah fertilisasi dapat menghasilkan mosaicism.
-- [Fenotipe Turner Syndrome] High-yield: Fenotipe Turner Syndrome :: Phenotypic female. Short stature. Webbed neck. Shield chest dan widely spaced nipples. Lymphedema tangan/kaki dapat tampak pada neonatus. Streak ovaries / gonadal dysgenesis. Primary amenorrhea. Infertility sering terjadi.
-- [Fenotipe Klinefelter Syndrome] High-yield: Fenotipe Klinefelter Syndrome :: Phenotypic male. Tall stature dengan long limbs / eunuchoid habitus dapat ditemukan. Small, firm testes. Testicular failure. Infertility, sering karena azoospermia atau severe oligospermia. Gynecomastia dapat terjadi. Facial/body hair dapat berkurang.
-- [Klinefelter dan Barr Body] Jebakan soal: Klinefelter dan Barr Body :: Ada kromosom Y → phenotypic male karena SRY biasanya hadir. Adanya extra X tidak membuat individu menjadi perempuan.
-- [XYY Syndrome] Jebakan penting: XYY Syndrome :: XYY tidak identik dengan perilaku agresif; stereotip tersebut tidak boleh dipakai sebagai dasar diagnosis.
+- [Perbandingan Turner vs Klinefelter] Sebutkan hal-hal penting tentang Turner syndrome pada Perbandingan Turner vs Klinefelter (Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)). :: • 45,X
+  • Phenotypic female
+  • Short stature
+  • Streak ovaries
+  • Primary amenorrhea
+  • Estrogen ↓, FSH/LH ↑
+  • Coarctation, bicuspid aortic valve
+  • Barr body 0
+- [Perbandingan Turner vs Klinefelter] Sebutkan hal-hal penting tentang Klinefelter syndrome pada Perbandingan Turner vs Klinefelter (Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)). :: • 47,XXY
+  • Phenotypic male
+  • Tall stature
+  • Small firm testes
+  • Infertility/azoospermia
+  • Testosterone ↓, FSH/LH ↑
+  • Gynecomastia
+  • Barr body 1
+- [Duplication] Sebutkan konsekuensi utama pada Duplication (Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)). :: • Gene dosage meningkat
+  • Fenotipe tergantung ukuran dan gen yang terdampak
+- [Ring Chromosome dan Isochromosome] Sebutkan hal-hal penting tentang Ring chromosome pada Ring Chromosome dan Isochromosome (Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)). :: • Ujung kromosom mengalami break lalu menyatu membentuk cincin
+  • Dapat disertai kehilangan material genetik terminal
+- [Balanced vs Unbalanced Rearrangement] Sebutkan hal-hal penting tentang Unbalanced rearrangement pada Balanced vs Unbalanced Rearrangement (Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)). :: • Ada deletion dan/atau duplication material genetik
+  • Lebih sering menyebabkan kelainan fenotip
+- [Maternal Age] Sebutkan konsep biologis pada Maternal Age (Kelainan Kromosom (Down Syndrome, Turner, Klinefelter)). :: • Oocyte primer berhenti lama pada prophase I sejak masa fetal
+  • Dengan bertambahnya usia, cohesin dan mekanisme segregasi kromosom dapat mengalami penurunan fungsi
+- [Nondisjunction — Mekanisme Utama Aneuploidy] Apa poin high-yield (pearl) tentang Nondisjunction — Mekanisme Utama Aneuploidy? :: Risiko beberapa trisomy meningkat seiring maternal age, terutama trisomy 21. Nondisjunction mitotik setelah fertilisasi dapat menghasilkan mosaicism.
+- [Fenotipe Turner Syndrome] Apa poin high-yield (pearl) tentang Fenotipe Turner Syndrome? :: Phenotypic female. Short stature. Webbed neck. Shield chest dan widely spaced nipples. Lymphedema tangan/kaki dapat tampak pada neonatus. Streak ovaries / gonadal dysgenesis. Primary amenorrhea. Infertility sering terjadi.
+- [Fenotipe Klinefelter Syndrome] Apa poin high-yield (pearl) tentang Fenotipe Klinefelter Syndrome? :: Phenotypic male. Tall stature dengan long limbs / eunuchoid habitus dapat ditemukan. Small, firm testes. Testicular failure. Infertility, sering karena azoospermia atau severe oligospermia. Gynecomastia dapat terjadi. Facial/body hair dapat berkurang.
+- [Klinefelter dan Barr Body] Apa jebakan yang sering muncul pada soal tentang Klinefelter dan Barr Body? :: Ada kromosom Y → phenotypic male karena SRY biasanya hadir. Adanya extra X tidak membuat individu menjadi perempuan.
+- [XYY Syndrome] Apa jebakan yang sering muncul pada soal tentang XYY Syndrome (Kelainan Kromosom (Down Syndrome, Turner, Klinefelter))? :: XYY tidak identik dengan perilaku agresif; stereotip tersebut tidak boleh dipakai sebagai dasar diagnosis.

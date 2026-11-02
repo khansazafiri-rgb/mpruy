@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Kenapa dingin bikin pengen pipis?</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans',sans-serif}
+.title{position:absolute;left:90px;top:445px;width:920px;font-weight:800;font-size:92px;line-height:1.02;color:#fff;letter-spacing:-.02em;text-shadow:0 8px 0 rgba(6,24,48,.45)}
+.title em{font-style:normal;color:#F8C038}
+.logo{position:absolute;left:90px;top:1400px;width:300px;filter:brightness(0) invert(1);opacity:.97}
+.tag{position:absolute;left:90px;top:1330px;font-weight:800;font-size:40px;color:#CFE9FF;letter-spacing:.02em}
+</style></head><body><div id="root"><svg id="art" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0"></svg>
+<div class="title">Kenapa dingin<br>bikin <em>pengen pipis?</em></div>
+<img class="logo" src="logo-full.webp" alt="MEDCOEL"></div>
+<script type="module">
+import { raka, rakaSvg, idle } from '../../../brand/characters/raka/raka.js';
+import { HUG, flake, toiletDoor, acUnit } from './world.js';
+await document.fonts.ready;
+const g = (inner, o = {}) => `<g transform="translate(${o.x||0} ${o.y||0}) rotate(${o.r||0}) scale(${o.s||1})" opacity="${o.o??1}">${inner}</g>`;
+let s = `<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12335A"/><stop offset=".55" stop-color="#2A6AA6"/><stop offset="1" stop-color="#9AD3F5"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#bg)"/>`;
+for (let i = 0; i < 14; i++) { const x = 60 + ((i * 197) % 980), y = 180 + ((i * 331) % 1500); s += flake(x, y, 0.6 + (i % 4) * 0.25, i * 25, 0.35 + (i % 3) * 0.15, '#DDF2FF'); }
+for (let i = 0; i < 4; i++) s += `<path d="M${-40 + i * 120} ${900 + i * 120}q220 -70 440 0t440 0" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity=".16"/>`;
+// tanda toilet di kanan
+s += g(toiletDoor(0, 0, 0, { glow: 0.9 }), { x: 790, y: 780, s: 0.85 });
+// Raka berjaket: menggigil, mata membesar, melirik tanda toilet
+const st = idle(raka('khawatir', null, { ...HUG, wide: 1, mouth: { w: 12, up: -2, lo: 5 }, sweat: 1, bags: 0.2, browL: { y: -8, rot: 12 }, browR: { y: -8, rot: -12 } }), 1.2);
+st.yaw = 0.8; st.gazeX = 1; st.tilt = 4;
+s += g(rakaSvg(st, { bare: true, shadow: false, uid: 'cv', outfit: 'jaket' }), { x: 560 - 200 * 1.12, y: 1440 - 700 * 1.12, s: 1.12 });
+s += g(`<text x="0" y="0" font-family="Plus Jakarta Sans" font-weight="800" font-size="74" fill="#fff" stroke="#2A6AA6" stroke-width="10" paint-order="stroke" text-anchor="middle">brrr…</text>`, { x: 270, y: 960, r: -10 });
+document.getElementById('art').innerHTML = s;
+window.__ready = true;
+</script></body></html>

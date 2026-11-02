@@ -266,39 +266,34 @@ Dorsum pada kaki berarti permukaan atas; ini berbeda dengan plantar surface di t
 
 ## Flashcard {kartu}
 
-- [Pendekatan mempelajari anatomi] Anatomi regional :: mempelajari seluruh struktur dalam satu regio, misalnya toraks atau pelvis, sekaligus hubungan tulang, otot, pembuluh, saraf, dan organ di regio tersebut.
-- [Pendekatan mempelajari anatomi] Anatomi sistemik :: mempelajari satu sistem di seluruh tubuh, misalnya sistem kardiovaskular atau sistem saraf.
-- [Pendekatan mempelajari anatomi] Anatomi klinis/aplikatif :: menggunakan hubungan anatomi untuk memahami pemeriksaan, prosedur, trauma, dan penyakit.
-- [Pendekatan mempelajari anatomi] Anatomi radiologis :: mempelajari struktur pada X-ray, CT, MRI, ultrasonografi, dan modalitas pencitraan lain.
-- [Posisi klinis terkait] Prone :: berbaring tengkurap, wajah menghadap ke bawah.
-- [Bidang utama] Median/midsagittal plane :: bidang vertikal tepat melalui garis tengah yang membagi tubuh menjadi bagian kanan dan kiri yang sama.
-- [Bidang utama] Sagittal plane :: bidang vertikal sejajar dengan bidang median; bila tidak tepat di garis tengah sering disebut parasagittal.
-- [Bidang utama] Transverse/axial/horizontal plane :: bidang yang membagi struktur menjadi bagian superior dan inferior; pada CT sering disebut axial section.
-- [Istilah utama] Anterior (ventral) :: lebih dekat ke permukaan depan tubuh. Sternum anterior terhadap jantung.
-- [Istilah utama] Posterior (dorsal) :: lebih dekat ke permukaan belakang tubuh. Vertebra posterior terhadap jantung.
-- [Istilah utama] Inferior (caudal) :: lebih dekat ke arah kaki. Lambung inferior terhadap jantung.
-- [Istilah utama] Lateral :: lebih jauh dari bidang median. Paru lateral terhadap mediastinum.
-- [Istilah utama] Intermediate :: berada di antara struktur medial dan lateral.
-- [Istilah utama] Distal :: lebih jauh dari pangkal atau titik perlekatan. Siku proximal terhadap pergelangan tangan; jari distal terhadap pergelangan.
-- [Istilah utama] Deep/profundus :: lebih jauh dari permukaan tubuh. Kulit superficial terhadap otot; tulang biasanya deep terhadap otot.
-- [Istilah utama] Internal dan external :: lebih dekat ke atau lebih jauh dari bagian dalam suatu organ/rongga; penggunaannya tergantung konteks.
-- [Hubungan sisi tubuh] Ipsilateral :: dua struktur atau kejadian berada pada sisi yang sama.
-- [Istilah khusus ekstremitas] Palmar/volar :: permukaan telapak tangan.
-- [Istilah khusus ekstremitas] Dorsum of hand :: permukaan belakang tangan.
-- [Contoh regio permukaan yang sering muncul] Kepala/wajah :: frontal, orbital, nasal, buccal, oral, mental.
-- [Contoh regio permukaan yang sering muncul] Abdomen/pelvis :: abdominal, umbilical, inguinal, pubic.
-- [Contoh regio permukaan yang sering muncul] Ekstremitas atas :: acromial, brachial, antecubital, olecranal, antebrachial, carpal, palmar, digital.
-- [Dorsal cavity] Vertebral/spinal cavity :: menampung medula spinalis.
-- [Ventral cavity] Abdominopelvic cavity :: berada inferior terhadap diafragma dan secara praktis dibagi menjadi abdominal dan pelvic cavities.
-- [Clinical Application: Mengubah Terminologi Menjadi Informasi] Contoh 1 :: “Luka berada di aspek anteromedial lengan bawah kanan.”
-- [Clinical Application: Mengubah Terminologi Menjadi Informasi] Contoh 3 :: “CT axial menunjukkan massa lateral terhadap aorta.”
-- [High-yield] Kanan/kiri :: milik pasien, bukan pengamat
-- [High-yield] Dorsiflexion–plantarflexion :: istilah utama untuk gerak di ankle
-- [High-yield] Circumduction :: gerakan kombinasi, bukan satu jenis rotation
-- [High-yield] “Rongga serosa” dalam kondisi normal :: ruang potensial, bukan ruang kosong besar
-- [Sumbu gerak] Gerakan juga dapat dipahami terhadap sumbu … :: • sumbu mediolateral/transversal terutama berkaitan dengan flexion–extension
-  • sumbu anteroposterior/sagital terutama berkaitan dengan abduction–adduction
-  • sumbu longitudinal/vertikal terutama berkaitan dengan rotation
-- [Membran serosa] Pleura, pericardium serosum, dan peritoneum merupakan contoh membran serosa yang membentuk dua lapisan … :: • lapisan parietal melapisi dinding rongga
-  • lapisan visceral menutupi permukaan organ
-- [Membran serosa] Contoh klinis: Membran serosa :: Cairan berlebih dalam pleural cavity dapat memisahkan pleura parietal dan visceral. Prinsip yang sama membantu memahami pericardial effusion dan cairan intraperitoneal, walaupun detail patologi dibahas pada blok klinis.
+- [Pendekatan mempelajari anatomi] Apa yang dimaksud dengan Anatomi regional pada Pendekatan mempelajari anatomi? :: Mempelajari seluruh struktur dalam satu regio, misalnya toraks atau pelvis, sekaligus hubungan tulang, otot, pembuluh, saraf, dan organ di regio tersebut.
+- [Pendekatan mempelajari anatomi] Apa yang dimaksud dengan Anatomi sistemik pada Pendekatan mempelajari anatomi? :: Mempelajari satu sistem di seluruh tubuh, misalnya sistem kardiovaskular atau sistem saraf.
+- [Pendekatan mempelajari anatomi] Apa yang dimaksud dengan Anatomi klinis/aplikatif pada Pendekatan mempelajari anatomi? :: Menggunakan hubungan anatomi untuk memahami pemeriksaan, prosedur, trauma, dan penyakit.
+- [Pendekatan mempelajari anatomi] Apa yang dimaksud dengan Anatomi radiologis pada Pendekatan mempelajari anatomi? :: Mempelajari struktur pada X-ray, CT, MRI, ultrasonografi, dan modalitas pencitraan lain.
+- [Posisi klinis terkait] Apa yang dimaksud dengan Prone pada Posisi Anatomis Standar? :: Berbaring tengkurap, wajah menghadap ke bawah.
+- [Posisi klinis terkait] Apa yang dimaksud dengan Lateral/side-lying pada Posisi Anatomis Standar? :: Berbaring pada salah satu sisi.
+- [Bidang utama] Apa yang dimaksud dengan Sagittal plane pada Bidang, Potongan, dan Sumbu Tubuh? :: Bidang vertikal sejajar dengan bidang median; bila tidak tepat di garis tengah sering disebut parasagittal.
+- [Bidang utama] Apa yang dimaksud dengan Coronal/frontal plane pada Bidang, Potongan, dan Sumbu Tubuh? :: Bidang vertikal yang membagi struktur menjadi bagian anterior dan posterior.
+- [Bidang utama] Apa yang dimaksud dengan Oblique plane pada Bidang, Potongan, dan Sumbu Tubuh? :: Bidang yang memotong tubuh pada sudut yang tidak sejajar dengan tiga bidang utama.
+- [Istilah utama] Apa yang dimaksud dengan Anterior (ventral) pada Istilah Arah dan Hubungan Antarstruktur? :: Lebih dekat ke permukaan depan tubuh. Sternum anterior terhadap jantung.
+- [Istilah utama] Apa yang dimaksud dengan Superior (cranial) pada Istilah Arah dan Hubungan Antarstruktur? :: Lebih dekat ke arah kepala. Jantung superior terhadap diafragma.
+- [Istilah utama] Apa yang dimaksud dengan Inferior (caudal) pada Istilah Arah dan Hubungan Antarstruktur? :: Lebih dekat ke arah kaki. Lambung inferior terhadap jantung.
+- [Istilah utama] Apa struktur atau batas lateral pada Istilah Arah dan Hubungan Antarstruktur? :: Lebih jauh dari bidang median. Paru lateral terhadap mediastinum.
+- [Istilah utama] Apa yang dimaksud dengan Intermediate pada Istilah Arah dan Hubungan Antarstruktur? :: Berada di antara struktur medial dan lateral.
+- [Istilah utama] Apa struktur atau batas distal pada Istilah Arah dan Hubungan Antarstruktur? :: Lebih jauh dari pangkal atau titik perlekatan. Siku proximal terhadap pergelangan tangan; jari distal terhadap pergelangan.
+- [Istilah utama] Apa yang dimaksud dengan Superficial pada Istilah Arah dan Hubungan Antarstruktur? :: Lebih dekat ke permukaan tubuh.
+- [Istilah utama] Jelaskan Internal dan external dalam konteks Istilah Arah dan Hubungan Antarstruktur. :: Lebih dekat ke atau lebih jauh dari bagian dalam suatu organ/rongga; penggunaannya tergantung konteks.
+- [Istilah utama] Jelaskan Central dan peripheral dalam konteks Istilah Arah dan Hubungan Antarstruktur. :: Lebih dekat ke pusat atau lebih jauh ke perifer suatu struktur/sistem.
+- [Hubungan sisi tubuh] Apa yang dimaksud dengan Contralateral pada Hubungan sisi tubuh? :: Berada pada sisi yang berlawanan.
+- [Istilah khusus ekstremitas] Apa yang dimaksud dengan Palmar/volar pada Istilah Arah dan Hubungan Antarstruktur? :: Permukaan telapak tangan.
+- [Istilah khusus ekstremitas] Jelaskan Dorsum of foot dalam konteks Istilah Arah dan Hubungan Antarstruktur. :: Permukaan atas kaki.
+- [Contoh regio permukaan yang sering muncul] Apa yang dimaksud dengan Kepala/wajah pada Pembagian dan Regio Tubuh? :: Frontal, orbital, nasal, buccal, oral, mental.
+- [Contoh regio permukaan yang sering muncul] Apa yang dimaksud dengan Abdomen/pelvis pada Pembagian dan Regio Tubuh? :: Abdominal, umbilical, inguinal, pubic.
+- [Contoh regio permukaan yang sering muncul] Apa yang dimaksud dengan Ekstremitas atas pada Pembagian dan Regio Tubuh? :: Acromial, brachial, antecubital, olecranal, antebrachial, carpal, palmar, digital.
+- [Dorsal cavity] Apa yang dimaksud dengan Vertebral/spinal cavity pada Dorsal cavity (Anatomi Umum & Terminologi Anatomis)? :: Menampung medula spinalis.
+- [Ventral cavity] Apa yang dimaksud dengan Thoracic cavity pada Ventral cavity (Anatomi Umum & Terminologi Anatomis)? :: Berada superior terhadap diafragma dan mencakup dua rongga pleura serta mediastinum. Jantung berada dalam rongga perikardial di mediastinum.
+- [Anatomi Umum & Terminologi Anatomis] Apa yang dimaksud dengan Kanan/kiri pada Anatomi Umum & Terminologi Anatomis? :: Milik pasien, bukan pengamat
+- [Anatomi Umum & Terminologi Anatomis] Apa yang dimaksud dengan Dorsiflexion–plantarflexion pada Anatomi Umum & Terminologi Anatomis? :: Istilah utama untuk gerak di ankle
+- [Anatomi Umum & Terminologi Anatomis] Apa yang dimaksud dengan Circumduction pada Anatomi Umum & Terminologi Anatomis? :: Gerakan kombinasi, bukan satu jenis rotation
+- [Anatomi Umum & Terminologi Anatomis] Apa yang dimaksud dengan “Rongga serosa” dalam kondisi normal pada Anatomi Umum & Terminologi Anatomis? :: Ruang potensial, bukan ruang kosong besar
+- [Membran serosa] Apa korelasi klinis dari Membran serosa (Anatomi Umum & Terminologi Anatomis)? :: Cairan berlebih dalam pleural cavity dapat memisahkan pleura parietal dan visceral. Prinsip yang sama membantu memahami pericardial effusion dan cairan intraperitoneal, walaupun detail patologi dibahas pada blok klinis.

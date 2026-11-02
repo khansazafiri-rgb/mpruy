@@ -353,50 +353,61 @@ Bakteri → prokariot → bentuk & susunan → struktur sel → cell envelope �
 
 ## Flashcard {kartu}
 
-- [Dasar Klasifikasi Bakteri] Morfologi :: kokus, basil, coccobacillus, vibrio, spiral/spirochete.
-- [Dasar Klasifikasi Bakteri] Susunan :: pasangan, rantai, cluster, tetrad, palisade, dll.
-- [Dasar Klasifikasi Bakteri] Pewarnaan :: Gram positif, Gram negatif, acid-fast, atau kelompok yang tidak mudah dinilai dengan Gram biasa.
-- [Dasar Klasifikasi Bakteri] Kebutuhan oksigen :: aerob, anaerob, facultative, microaerophilic, aerotolerant.
-- [Ribosom 70S] 30S :: aminoglycoside, tetracycline.
-- [Ribosom 70S] 50S :: macrolide, clindamycin, chloramphenicol, linezolid.
-- [Kebutuhan Oksigen] Obligate aerobe :: membutuhkan O₂ untuk pertumbuhan.
-- [Kebutuhan Oksigen] Obligate anaerobe :: O₂ bersifat toksik atau menghambat pertumbuhan.
-- [Kebutuhan Oksigen] Facultative anaerobe :: dapat tumbuh dengan atau tanpa O₂; biasanya lebih efisien bila O₂ tersedia.
-- [Kebutuhan Oksigen] Microaerophile :: membutuhkan kadar O₂ lebih rendah daripada atmosfer.
-- [Kebutuhan Oksigen] Aerotolerant anaerobe :: tidak menggunakan O₂ tetapi dapat mentoleransinya.
-- [Media Kultur — Peta Dasar] General-purpose media :: mendukung banyak bakteri nonfastidious.
-- [Media Kultur — Peta Dasar] Enriched media :: media dasar + nutrien tambahan, misalnya blood agar atau chocolate agar.
-- [Media Kultur — Peta Dasar] Selective media :: menghambat kelompok tertentu dan memilih kelompok lain.
-- [Media Kultur — Peta Dasar] Differential media :: membedakan organisme berdasarkan reaksi biokimia/visual.
-- [High-yield] Mycoplasma tidak memiliki cell wall klasik :: tidak dapat diklasifikasikan dengan Gram berdasarkan peptidoglycan seperti bakteri biasa
-- [High-yield] Bakteri :: prokariot dengan nucleoid, 70S ribosome, cell membrane, dan umumnya peptidoglycan cell wall
-- [High-yield] Gram positif :: peptidoglycan tebal + teichoic acid, ungu
-- [High-yield] Gram negatif :: peptidoglycan tipis + outer membrane + LPS/porin, merah muda
-- [High-yield] Lipid A :: endotoxin
-- [High-yield] Endospora :: bentuk dorman resisten pada Bacillus/Clostridium, bukan alat reproduksi
-- [High-yield] Gram stain :: crystal violet → iodine → decolorizer → safranin
-- [High-yield] Identifikasi bakteri paling cepat dimulai dari :: bentuk → susunan → Gram → oxygen → biochemical test/media
-- [Bakteri = Prokariot] Ciri utama sel prokariot … :: • Tidak memiliki membran inti sejati
+- [Dasar Klasifikasi Bakteri] Pada Dasar Klasifikasi Bakteri, apa morfologinya (Bakteriologi Umum: Struktur & Klasifikasi Bakteri)? :: Kokus, basil, coccobacillus, vibrio, spiral/spirochete.
+- [Dasar Klasifikasi Bakteri] Apa yang dimaksud dengan Susunan pada Dasar Klasifikasi Bakteri? :: Pasangan, rantai, cluster, tetrad, palisade, dll.
+- [Dasar Klasifikasi Bakteri] Apa yang dimaksud dengan Pewarnaan pada Dasar Klasifikasi Bakteri? :: Gram positif, Gram negatif, acid-fast, atau kelompok yang tidak mudah dinilai dengan Gram biasa.
+- [Dasar Klasifikasi Bakteri] Apa yang dimaksud dengan Kebutuhan oksigen pada Dasar Klasifikasi Bakteri? :: Aerob, anaerob, facultative, microaerophilic, aerotolerant.
+- [Kebutuhan Oksigen] Apa yang dimaksud dengan Obligate aerobe pada Kebutuhan Oksigen (Bakteriologi Umum: Struktur & Klasifikasi Bakteri)? :: Membutuhkan O₂ untuk pertumbuhan.
+- [Kebutuhan Oksigen] Apa yang dimaksud dengan Obligate anaerobe pada Kebutuhan Oksigen (Bakteriologi Umum: Struktur & Klasifikasi Bakteri)? :: O₂ bersifat toksik atau menghambat pertumbuhan.
+- [Kebutuhan Oksigen] Apa yang dimaksud dengan Facultative anaerobe pada Kebutuhan Oksigen (Bakteriologi Umum: Struktur & Klasifikasi Bakteri)? :: Dapat tumbuh dengan atau tanpa O₂; biasanya lebih efisien bila O₂ tersedia.
+- [Kebutuhan Oksigen] Apa yang dimaksud dengan Microaerophile pada Kebutuhan Oksigen (Bakteriologi Umum: Struktur & Klasifikasi Bakteri)? :: Membutuhkan kadar O₂ lebih rendah daripada atmosfer.
+- [Kebutuhan Oksigen] Apa yang dimaksud dengan Aerotolerant anaerobe pada Kebutuhan Oksigen (Bakteriologi Umum: Struktur & Klasifikasi Bakteri)? :: Tidak menggunakan O₂ tetapi dapat mentoleransinya.
+- [Media Kultur — Peta Dasar] Apa yang dimaksud dengan General-purpose media pada Media Kultur — Peta Dasar? :: Mendukung banyak bakteri nonfastidious.
+- [Media Kultur — Peta Dasar] Apa yang dimaksud dengan Enriched media pada Media Kultur — Peta Dasar? :: Media dasar + nutrien tambahan, misalnya blood agar atau chocolate agar.
+- [Media Kultur — Peta Dasar] Apa yang dimaksud dengan Selective media pada Media Kultur — Peta Dasar? :: Menghambat kelompok tertentu dan memilih kelompok lain.
+- [Media Kultur — Peta Dasar] Apa yang dimaksud dengan Differential media pada Media Kultur — Peta Dasar? :: Membedakan organisme berdasarkan reaksi biokimia/visual.
+- [Bakteriologi Umum: Struktur & Klasifikasi Bakteri] Apa jawaban atau kesimpulan untuk petunjuk berikut: Mycoplasma tidak memiliki cell wall klasik pada Bakteriologi Umum: Struktur & Klasifikasi Bakteri? :: Tidak dapat diklasifikasikan dengan Gram berdasarkan peptidoglycan seperti bakteri biasa
+- [Bakteriologi Umum: Struktur & Klasifikasi Bakteri] Apa yang dimaksud dengan Bakteri pada Bakteriologi Umum: Struktur & Klasifikasi Bakteri? :: Prokariot dengan nucleoid, 70S ribosome, cell membrane, dan umumnya peptidoglycan cell wall
+- [Bakteriologi Umum: Struktur & Klasifikasi Bakteri] Apa yang perlu diketahui tentang Gram positif pada Bakteriologi Umum: Struktur & Klasifikasi Bakteri? :: Peptidoglycan tebal + teichoic acid, ungu
+- [Bakteriologi Umum: Struktur & Klasifikasi Bakteri] Apa yang perlu diketahui tentang Gram negatif pada Bakteriologi Umum: Struktur & Klasifikasi Bakteri? :: Peptidoglycan tipis + outer membrane + LPS/porin, merah muda
+- [Bakteriologi Umum: Struktur & Klasifikasi Bakteri] Apa yang dimaksud dengan Lipid A pada Bakteriologi Umum: Struktur & Klasifikasi Bakteri? :: Endotoxin
+- [Bakteriologi Umum: Struktur & Klasifikasi Bakteri] Apa yang dimaksud dengan Endospora pada Bakteriologi Umum: Struktur & Klasifikasi Bakteri? :: Bentuk dorman resisten pada Bacillus/Clostridium, bukan alat reproduksi
+- [Bakteriologi Umum: Struktur & Klasifikasi Bakteri] Apa yang perlu diketahui tentang Gram stain pada Bakteriologi Umum: Struktur & Klasifikasi Bakteri? :: Crystal violet → iodine → decolorizer → safranin
+- [Bakteriologi Umum: Struktur & Klasifikasi Bakteri] Jelaskan: Identifikasi bakteri paling cepat dimulai dari pada Bakteriologi Umum: Struktur & Klasifikasi Bakteri. :: Bentuk → susunan → Gram → oxygen → biochemical test/media
+- [Bakteri = Prokariot] Sebutkan ciri utama sel prokariot pada Bakteri = Prokariot. :: • Tidak memiliki membran inti sejati
   • DNA utama berada di nucleoid
   • Tidak memiliki mitokondria, retikulum endoplasma, atau Golgi
   • Ribosom bakteri adalah 70S, tersusun dari subunit 50S + 30S
   • Respirasi dan electron transport berlangsung pada membran sitoplasma, bukan mitokondria
   • Umumnya bereproduksi melalui binary fission
-- [Susunan Kokus] Susunan kokus sering membantu identifikasi … :: • Diplococci = berpasangan
-  • Streptococci = membentuk rantai
-  • Staphylococci = cluster menyerupai buah anggur
-  • Tetrad = kelompok empat
-  • Sarcina = paket kuboidal
-- [Acid-Fast Stain — Pengantar] Walaupun Mycobacterium dibahas lebih dalam pada bab Mycobacterium dan Tuberkulosis, fondasinya perlu tahu … :: • Dinding sel Mycobacterium kaya mycolic acid dan lipid
-  • Ziehl–Neelsen menggunakan carbol fuchsin dan pemanasan untuk membantu penetrasi stain
-  • Setelah acid-alcohol decolorization, acid-fast bacilli mempertahankan warna merah
-- [Kebutuhan Oksigen] Contoh pola yang sering dipakai untuk orientasi … :: • Mycobacterium dan Pseudomonas → obligate aerobes
-  • Clostridium → obligate anaerobe
-  • Banyak Enterobacterales → facultative anaerobes
-- [Bakteri = Prokariot] Penting: Bakteri = Prokariot :: “Tidak punya inti” berarti tidak punya nucleus bermembran; bakteri tetap memiliki DNA. “Tidak punya mitokondria” bukan berarti bakteri tidak dapat menghasilkan ATP.
-- [Klasifikasi Molekuler & 16S rRNA] High-yield: Klasifikasi Molekuler & 16S rRNA :: Three-domain classification secara klasik dikaitkan dengan perbandingan small-subunit rRNA; untuk bakteri, 16S rRNA adalah marker utama.
-- [Susunan Kokus] Jebakan: Susunan Kokus :: “Staphylococcus” menggambarkan pola cluster dan genus; jangan menganggap semua kokus cluster otomatis S. aureus tanpa uji lanjutan.
-- [Membran Sitoplasma] Penting: Membran Sitoplasma :: Bakteri tidak memiliki mitokondria → oxidative phosphorylation berlangsung pada membran sitoplasma.
-- [Pili & Fimbriae] Jebakan: Pili & Fimbriae :: Pili ≠ alat gerak utama. Motilitas terutama berkaitan dengan flagella.
-- [Endospora] High-yield: Endospora :: Endospora ≠ “anak bakteri”. Satu sel vegetatif membentuk satu spora dan satu spora kembali menjadi satu sel vegetatif.
-- [Binary Fission & Pertumbuhan] Penting: Binary Fission & Pertumbuhan :: Banyak antibiotik yang menargetkan sintesis dinding lebih efektif pada bakteri yang aktif membelah.
+- [Membran Sitoplasma] Sebutkan fungsi utama pada Membran Sitoplasma (Bakteriologi Umum: Struktur & Klasifikasi Bakteri). :: • Permeability barrier selektif
+  • Transport zat masuk dan keluar sel
+  • Lokasi sistem respirasi dan pembentukan ATP
+  • Berperan dalam biosintesis komponen dinding sel
+  • Menjadi tempat berbagai protein transport dan sensor
+- [Gram Positif] Sebutkan karakteristik utama pada Gram Positif (Bakteriologi Umum: Struktur & Klasifikasi Bakteri). :: • Peptidoglycan tebal
+  • Tidak memiliki outer membrane
+  • Memiliki teichoic acid dan lipoteichoic acid
+  • Menahan kompleks crystal violet–iodine setelah dekolorisasi → tampak ungu
+  • Umumnya lebih mudah ditembus beberapa molekul dibanding Gram negatif karena tidak ada outer membrane, walaupun sensitivitas antibiotik tetap bergantung pada spesies dan mekanisme resistensi
+- [Gram Negatif] Sebutkan karakteristik utama pada Gram Negatif (Bakteriologi Umum: Struktur & Klasifikasi Bakteri). :: • Peptidoglycan tipis
+  • Memiliki outer membrane
+  • Memiliki periplasmic space
+  • Outer membrane mengandung LPS dan porin
+  • LPS terdiri dari lipid A, core polysaccharide, dan O antigen
+  • Lipid A = bagian endotoxin yang memicu respons inflamasi kuat
+  • Setelah dekolorisasi, crystal violet hilang dan sel mengambil counterstain safranin → merah muda/merah
+- [Ribosom 70S] Sebutkan contoh target pada Ribosom 70S (Bakteriologi Umum: Struktur & Klasifikasi Bakteri). :: • 30S: aminoglycoside, tetracycline
+  • 50S: macrolide, clindamycin, chloramphenicol, linezolid
+- [Media Kultur — Peta Dasar] Sebutkan contoh high-yield pada Media Kultur — Peta Dasar. :: • Blood agar → melihat hemolysis
+  • MacConkey → selective untuk banyak Gram-negative enteric rods dan differential berdasarkan lactose fermentation
+  • Mannitol salt agar → kadar garam tinggi memilih Staphylococcus; mannitol fermentation memberi perubahan warna
+  • Thayer–Martin → selective untuk Neisseria
+  • Lowenstein–Jensen → media klasik Mycobacterium
+- [Bakteri = Prokariot] Apa jebakan yang sering muncul pada soal tentang Bakteri = Prokariot? :: “Tidak punya inti” berarti tidak punya nucleus bermembran; bakteri tetap memiliki DNA. “Tidak punya mitokondria” bukan berarti bakteri tidak dapat menghasilkan ATP.
+- [Klasifikasi Molekuler & 16S rRNA] Apa poin high-yield (pearl) tentang Klasifikasi Molekuler & 16S rRNA? :: Three-domain classification secara klasik dikaitkan dengan perbandingan small-subunit rRNA; untuk bakteri, 16S rRNA adalah marker utama.
+- [Susunan Kokus] Apa jebakan yang sering muncul pada soal tentang Susunan Kokus (Bakteriologi Umum: Struktur & Klasifikasi Bakteri)? :: “Staphylococcus” menggambarkan pola cluster dan genus; jangan menganggap semua kokus cluster otomatis S. aureus tanpa uji lanjutan.
+- [Membran Sitoplasma] Apa jebakan yang sering muncul pada soal tentang Membran Sitoplasma (Bakteriologi Umum: Struktur & Klasifikasi Bakteri)? :: Bakteri tidak memiliki mitokondria → oxidative phosphorylation berlangsung pada membran sitoplasma.
+- [Pili & Fimbriae] Apa jebakan yang sering muncul pada soal tentang Pili & Fimbriae? :: Pili ≠ alat gerak utama. Motilitas terutama berkaitan dengan flagella.
+- [Endospora] Apa poin high-yield (pearl) tentang Endospora (Bakteriologi Umum: Struktur & Klasifikasi Bakteri)? :: Endospora ≠ “anak bakteri”. Satu sel vegetatif membentuk satu spora dan satu spora kembali menjadi satu sel vegetatif.
+- [Binary Fission & Pertumbuhan] Apa jebakan yang sering muncul pada soal tentang Binary Fission & Pertumbuhan? :: Banyak antibiotik yang menargetkan sintesis dinding lebih efektif pada bakteri yang aktif membelah.

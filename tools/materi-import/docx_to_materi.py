@@ -160,10 +160,12 @@ CALLOUT_RULES = [
     (re.compile(r'^(Penting|Jebakan(?: soal)?)\s*:\s*$', re.I), 'warning', None),
     (re.compile(r'^(Praktikum|Practical clue|Practical rule|Practical emphasis|Shortcut praktikum|Clue(?: terkuat)?)\s*:\s*', re.I), 'praktikum', None),
     (re.compile(r'^(High-yield(?: distinction| principle)?|Konsep high-yield|Poin penting|Konsep penting|Tambahan high-yield(?: [^:]{0,40})?|High-yield clue(?: [^:]{0,30})?|Exam pearl|Poin ujian)\s*:\s*', re.I), 'highyield', None),
+    (re.compile(r'^(Pola banding(?: cepat)?[^:]{0,70})\s*:\s*', re.I), 'tip', None),
+    (re.compile(r'^(Catatan pembeda)\s*:\s*', re.I), 'info', None),
     (re.compile(r'^(Mnemonic(?: praktis| visual| relasional| konseptual)?(?: [^:]{0,30})?)\s*:\s*', re.I), 'tip', None),
 ]
 
-SOURCE_H2 = re.compile(r'^(sumber dan provenance|rujukan dan atribusi gambar|sumber(?: dan atribusi)?|sumber(?: guideline| rujukan)? utama|referensi|daftar pustaka)$', re.I)
+SOURCE_H2 = re.compile(r'^(sumber dan provenance|rujukan dan atribusi gambar|visual sources(?: ?/ ?attribution)?|sumber(?: dan atribusi)?|(?:\d{1,2}\.\d{1,2} )?sumber(?: guideline| rujukan)? utama(?: bab (?:[\d–-]+|ini))?(?: & guideline update)?|catatan basis sumber|keterangan sumber|referensi|daftar pustaka)$', re.I)
 DROP_H2 = re.compile(r'retrieval', re.I)
 
 
@@ -209,10 +211,17 @@ def inline_text(p, rels, keep_drive_links=False):
 CORRECTIONS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'corrections')
 
 
+def _cap_repl(m):
+    """Aturan "cap": pola dengan satu grup tangkapan (kata berikutnya); hasilnya grup itu saja, huruf besar bila yang dibuang diawali huruf besar."""
+    g = m.group(1)
+    first = next((c for c in m.group(0) if c.isalpha()), '')
+    return g[:1].upper() + g[1:] if first.isupper() else g
+
+
 def apply_corrections(paras, subject):
     """Koreksi hasil QC (salah ketik, kekeliruan, catatan internal) dari corrections/<mata-kuliah>.json, diterapkan ke teks sumber.
     Tiap aturan: {"find": teks, "replace": teks, "drop": true bila seluruh paragraf dibuang, "all": true bila boleh cocok di banyak tempat,
-    "regex": true, "why": alasan}. Aturan yang tidak cocok atau ambigu (cocok > 1 tanpa "all") tidak diterapkan dan dilaporkan.
+    "regex": true, "cap": true (hapus frasa pembuka dan kapitalkan kata berikutnya; pola punya satu grup), "why": alasan}. Aturan yang tidak cocok atau ambigu (cocok > 1 tanpa "all") tidak diterapkan dan dilaporkan.
     Mengembalikan (paragraf, laporan)."""
     path = os.path.join(CORRECTIONS_DIR, f'{subject}.json')
     if not os.path.exists(path):
@@ -232,7 +241,7 @@ def apply_corrections(paras, subject):
             if r.get('drop'):
                 q.text = ''
             else:
-                q.text = rx.sub(r['replace'], q.text) if rx else q.text.replace(r['find'], r['replace'])
+                q.text = (rx.sub(_cap_repl, q.text) if r.get('cap') else rx.sub(r['replace'], q.text)) if rx else q.text.replace(r['find'], r['replace'])
         notes.append(f'koreksi #{k + 1} diterapkan ({len(hit)}x): {r.get("why", "")[:90]}')
     return [q for q in paras if q.text.strip()], notes
 
@@ -265,11 +274,11 @@ RULE_LINE = re.compile(r'^[═━─=_*~\-]{5,}$')
 END_MARK = re.compile(r'^SELESAI\s*[—–-]')
 UP_LETTER = re.compile(r'^([A-Z]{1,2})\.\s+(\S.*)$')
 EMOJI_PREFIX = re.compile(r'^[\u2600-\u27BF\u2B00-\u2BFF\U0001F300-\U0001FAFF\uFE0F]+\s*')
-UP_LABELS = {'PENTING', 'HIGH-YIELD', 'BEDAKAN', 'JEBAKAN SOAL', 'JEBAKAN', 'CATATAN', 'CONTOH'}
+UP_LABELS = {'PENTING', 'HIGH-YIELD', 'BEDAKAN', 'JEBAKAN SOAL', 'JEBAKAN', 'CATATAN', 'CONTOH', 'EXAM PEARL', 'CATATAN PEMBEDA'}
 UP_NUMBERED = re.compile(r'^(\d{1,2}\.\d{1,2})\s+(\S.*)$')
 LOWER_WORDS = {'dan', 'atau', 'yang', 'di', 'ke', 'dari', 'pada', 'untuk', 'dengan', 'dalam', 'antara', 'sebagai', 'secara', 'oleh', 'bagi', 'vs', 'of', 'the', 'and', 'in', 'to', 'as', 'by'}
 CASE_FIX = {'MACCONKEY': 'MacConkey', 'GENEXPERT': 'GeneXpert', 'HBEAG': 'HBeAg', 'HBSAG': 'HBsAg', 'HBCAG': 'HBcAg', 'HDAG': 'HDAg', 'LOWENSTEIN': 'Lowenstein'}
-NOT_ACRONYMS = {'GAMBAR', 'VISUAL', 'TABEL', 'BAB', 'CATATAN', 'PENTING', 'CONTOH', 'SUMBER', 'END', 'SELESAI', 'DAN', 'ATAU'}
+NOT_ACRONYMS = {'EXAM', 'GAMBAR', 'VISUAL', 'TABEL', 'BAB', 'CATATAN', 'PENTING', 'CONTOH', 'SUMBER', 'END', 'SELESAI', 'DAN', 'ATAU'}
 ROMAN = re.compile(r'^(?:I{1,3}|IV|V|VI{0,3}|IX|X)$')
 
 
@@ -472,7 +481,8 @@ def normalize_upper(paras):
         after_label = bool(out) and out[-1].text.endswith(':')
         if (len(t) < 80 and upper_ratio(t) > 0.9 and not t.startswith(('•', 'http')) and not re.search(r'[.:;,]$', t) and not re.search(r'→|⊣| = | \+ ', t)
                 and (len(t.split()) >= 2 or len(t) >= 6) and not acronyms_only and not after_label and len(re.sub(r'[^A-Za-z]', '', t)) >= 6):
-            if in_numbered and nxt_ is not None and nxt_.text.startswith('•') and not nxt_.blank_before and not SOURCE_H2.match(t):
+            if re.match(r'^(?:POLA|PATTERN|VIGNETTE|KASUS) \d+\b', t) or (out and out[-1].lvl == 2 and out[-1].force_h and out[-1].i + 1 >= p.i - 1 and not SOURCE_H2.match(t)) or (in_numbered and nxt_ is not None and nxt_.text.startswith('•') and not nxt_.blank_before and not SOURCE_H2.match(t)
+                                                                               and not re.match(r'^(RINGKASAN|POLA KASUS|EXAM TRAPS?)\b', t)):
                 out.append(Para(p.i, 3, smart_title(t, acr), p.blank_before, False, p.trail))      # "INFLUENZA" + butir di bawah "9.5 PERBANDINGAN ..." = subjudul
             else:
                 out.append(Para(p.i, 2, smart_title(t, acr), p.blank_before, False, p.trail, True))
@@ -711,10 +721,14 @@ def group_sections(chapter):
             cur = sections[-1]
         elif tk['k'] == 'h2':
             title = clean_h2(tk['text'], tk.get('force'))
-            cur = {'title': title, 'raw': tk['text'], 'kind': section_kind(title), 'toks': [], 'src': tk['src']}
+            cur = {'title': title, 'raw': tk['text'], 'kind': section_kind(title), 'toks': [], 'src': tk['src'], 'opening': (not sections) or sections[-1]['kind'] == 'tujuan'}
             sections.append(cur)
         elif cur is None:
             pre.append(tk)
+        elif cur['kind'] == 'sumber' and tk['k'] == 'h3' and tk.get('numbered') and cur['toks'] is not None and cur.get('opening'):
+            # "Catatan Basis Sumber" di awal BAB berakhir di judul bernomor berikutnya (N.M), yang menjadi bagian baru
+            cur = {'title': clean_h2(tk['text'], tk.get('force')), 'raw': tk['text'], 'kind': 'isi', 'toks': [], 'src': tk['src']}
+            sections.append(cur)
         else:
             cur['toks'].append(tk)
     return pre, sections
@@ -781,6 +795,16 @@ def figure_groups(run):
     Dokumen menaruh beberapa gambar berurutan lalu keterangannya. Sebanyak gambar = sebanyak keterangan: berpasangan
     berurutan. Satu keterangan untuk beberapa gambar: satu galeri. Keterangan sebelum gambar (urutan terbalik) ikut
     gambar sesudahnya."""
+    if run and run[0]['k'] != 'img' and run[-1]['k'] == 'img' and not any(a['k'] != 'img' and b['k'] != 'img' for a, b in zip(run, run[1:])) \
+            and (len(run) > 2 and sum(tk['k'] != 'img' for tk in run) >= 1) and sum(tk['k'] == 'img' for tk in run) > 1:
+        # keterangan lebih dulu, gambar menyusul (satu atau lebih, bisa berulang): tiap keterangan memegang gambar sesudahnya
+        groups = []
+        for tk in run:
+            if tk['k'] != 'img':
+                groups.append({'imgs': [], 'cap': tk, 'warn': ''})
+            else:
+                groups[-1]['imgs'].append(tk)
+        return groups
     segs, imgs, caps = [], [], []
     for tk in run:
         if tk['k'] == 'img':
@@ -943,7 +967,7 @@ def render_blocks(toks, ctx, in_sources=False):
                 m = CAPTION.match(fg['cap']['text']) if fg['cap'] else None
                 ctx.render_n += 1
                 old = m.group(1) if m else f'x{ctx.render_n}'
-                cap_text = prose(m.group(2), ctx) if m else (f'Ilustrasi pendukung: {ctx.last_heading}' if ctx.last_heading else 'Ilustrasi pendukung')
+                cap_text = prose(m.group(2), ctx) if m else (f"Ilustrasi pendukung: {re.sub(r'^[A-F]\.\s+', '', ctx.last_heading)}" if ctx.last_heading else 'Ilustrasi pendukung')
                 ctx.figs.append({'old': old, 'new': ctx.render_n, 'urls': [im['url'] for im in fg['imgs']], 'caption': cap_text, 'src': fg['imgs'][0]['src'], 'warn': fg['warn']})
                 out.append(('fig', len(ctx.figs) - 1))
             i = j
@@ -1110,7 +1134,7 @@ def figure_md_part(b, ctx, credits, ordered):
     return fig_md(f)
 
 
-def chapter_to_md(ch, subject, report, names):
+def chapter_to_md(ch, subject, report, names, title=''):
     ctx = Ctx(ch['num'], subject, names)
     promote_parts(ch)
     pre, sections = group_sections(ch)
@@ -1169,7 +1193,7 @@ def chapter_to_md(ch, subject, report, names):
         if s['kind'] == 'sumber':
             ctx.dropped.append((s['src'], s['raw'], 'bagian sumber & atribusi (atribusi ada di tiap gambar)'))
     md = '\n\n'.join(parts).rstrip() + '\n'
-    cards = flashcards.make_cards(md)
+    cards = flashcards.make_cards(md, title)
     if cards:
         md += '\n' + flashcards.cards_md(cards) + '\n'
     ctx.n_cards = len(cards)
@@ -1246,7 +1270,7 @@ def main():
         if old_file.endswith('.md'):
             os.remove(os.path.join(outdir, old_file))
     for ch in chapters:
-        md = chapter_to_md(ch, a.subject, report, names)
+        md = chapter_to_md(ch, a.subject, report, names, titles[ch['num']])
         fname = f'bab-{ch["num"]:02d}-{slug(titles[ch["num"]])}.md'
         with open(os.path.join(outdir, fname), 'w', encoding='utf-8') as f:
             f.write(md)

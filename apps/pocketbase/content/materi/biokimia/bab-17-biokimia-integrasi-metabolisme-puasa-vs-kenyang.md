@@ -581,25 +581,26 @@ Secara konseptual:
 
 ## Flashcard {kartu}
 
-- [Reciprocal Regulation: Kenapa Jalur Berlawanan Tidak Aktif Bersama?] Contoh paling high-yield :: Malonyl-CoA tinggi → CPT-I inhibited → fatty acid synthesis aktif, β-oxidation dicegah.
-- [Fasting vs Diabetes Mellitus Tipe 1] Perbedaan penting :: Pada physiologic fasting, insulin rendah tetapi masih ada sehingga ketogenesis tetap terkontrol. Pada absolute insulin deficiency, ketogenesis dapat menjadi sangat berlebihan.
-- [Alur Super Singkat] FED :: Meal → glucose ↑ → insulin ↑ → GLUT4 ↑ → glycolysis + glycogenesis + lipogenesis + protein synthesis ↑ → fuel disimpan.
-- [Alur Super Singkat] Early fast :: Insulin ↓ / glucagon ↑ → hepatic glycogenolysis + gluconeogenesis ↑ → adipose lipolysis ↑ → FFA dipakai liver/muscle.
-- [Alur Super Singkat] Prolonged fast :: Glycogen ↓ → gluconeogenesis dominan + β-oxidation ↑ → acetyl-CoA ↑ → ketogenesis ↑ → brain memakai ketone → protein sparing.
-- [High-yield] Liver: Fed :: glucose dominan; glycogen/lipid synthesis
-- [High-yield] Fasting :: fatty acid oxidation; menghasilkan glucose dan ketone bodies untuk organ lain
-- [High-yield] Muscle: Fed :: glucose, amino acids; glycogen/protein synthesis
-- [High-yield] Fasting :: fatty acids dominan; dapat memakai ketone; memberi alanine/glutamine
-- [High-yield] Adipose: Fed :: menyimpan TAG
-- [High-yield] Brain: Fed/short fast :: glucose
-- [High-yield] Prolonged fasting :: glucose + ketone bodies
-- [High-yield] RBC: Selalu glucose :: lactate
-- [High-yield] Fed state :: insulin tinggi, bukan glucagon tinggi
-- [High-yield] Glycerol dari adipose :: substrate gluconeogenesis
-- [High-yield] Lactate dan alanine :: substrate gluconeogenesis penting
-- [High-yield] Fed state :: insulin dominan → simpan glucose sebagai glycogen dan fat, serta tingkatkan protein synthesis
-- [High-yield] Fasting state :: insulin rendah/glucagon relatif tinggi → glycogenolysis, gluconeogenesis, lipolysis, β-oxidation
-- [Liver pada Fed State] Nasib glucose di liver … :: • Glucose → glucose-6-phosphate melalui glucokinase
+- [Reciprocal Regulation: Kenapa Jalur Berlawanan Tidak Aktif Bersama?] Jelaskan Contoh paling high-yield dalam konteks Reciprocal Regulation: Kenapa Jalur Berlawanan Tidak Aktif Bersama?. :: Malonyl-CoA tinggi → CPT-I inhibited → fatty acid synthesis aktif, β-oxidation dicegah.
+- [Fasting vs Diabetes Mellitus Tipe 1] Pada Fasting vs Diabetes Mellitus Tipe 1, apa perbedaan pentingnya? :: Pada physiologic fasting, insulin rendah tetapi masih ada sehingga ketogenesis tetap terkontrol. Pada absolute insulin deficiency, ketogenesis dapat menjadi sangat berlebihan.
+- [Alur Super Singkat] Apa yang dimaksud dengan FED pada Alur Super Singkat? :: Meal → glucose ↑ → insulin ↑ → GLUT4 ↑ → glycolysis + glycogenesis + lipogenesis + protein synthesis ↑ → fuel disimpan.
+- [Alur Super Singkat] Apa yang dimaksud dengan Early fast pada Alur Super Singkat? :: Insulin ↓ / glucagon ↑ → hepatic glycogenolysis + gluconeogenesis ↑ → adipose lipolysis ↑ → FFA dipakai liver/muscle.
+- [Alur Super Singkat] Apa yang dimaksud dengan Prolonged fast pada Alur Super Singkat? :: Glycogen ↓ → gluconeogenesis dominan + β-oxidation ↑ → acetyl-CoA ↑ → ketogenesis ↑ → brain memakai ketone → protein sparing.
+- [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang perlu diingat tentang Liver: Fed pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Glucose dominan; glycogen/lipid synthesis
+- [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang perlu diingat tentang Fasting pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Fatty acid oxidation; menghasilkan glucose dan ketone bodies untuk organ lain
+- [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang perlu diingat tentang Muscle: Fed pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Glucose, amino acids; glycogen/protein synthesis
+- [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang perlu diingat tentang Adipose: Fed pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Menyimpan TAG
+- [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang perlu diingat tentang Brain: Fed/short fast pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Glucose
+- [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang perlu diingat tentang Prolonged fasting pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Glucose + ketone bodies
+- [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang perlu diingat tentang RBC: Selalu glucose pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Lactate
+- [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang dimaksud dengan Fed state pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Insulin tinggi, bukan glucagon tinggi
+- [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang dimaksud dengan Glycerol dari adipose pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Substrate gluconeogenesis
+- [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang dimaksud dengan Lactate dan alanine pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Substrate gluconeogenesis penting
+- [Biokimia Integrasi Metabolisme (Puasa vs Kenyang)] Apa yang dimaksud dengan Fasting state pada Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Insulin rendah/glucagon relatif tinggi → glycogenolysis, gluconeogenesis, lipolysis, β-oxidation
+- [Fed State / Absorptive State] Sebutkan hal-hal penting tentang Keadaan hormonal pada Fed State / Absorptive State (Biokimia Integrasi Metabolisme (Puasa vs Kenyang)). :: • Insulin ↑
+  • Glucagon ↓
+  • Rasio insulin/glucagon ↑
+- [Liver pada Fed State] Sebutkan hal-hal penting tentang Nasib glucose di liver pada Liver pada Fed State. :: • Glucose → glucose-6-phosphate melalui glucokinase
   • G6P → glycogen melalui glycogenesis
   • G6P → pyruvate melalui glycolysis
   • Pyruvate → acetyl-CoA melalui pyruvate dehydrogenase
@@ -607,49 +608,49 @@ Secara konseptual:
   • Fatty acid + glycerol → TAG
   • TAG dikemas dalam VLDL untuk dikirim ke jaringan perifer
   • Sebagian G6P masuk pentose phosphate pathway untuk menghasilkan NADPH yang diperlukan untuk lipogenesis
-- [Liver pada Fed State] Enzim yang aktif pada fed state … :: • Glucokinase
-  • PFK-1
-  • Pyruvate kinase
-  • Glycogen synthase
-  • Acetyl-CoA carboxylase (ACC)
-  • Fatty acid synthase
-  • HMG-CoA reductase
-- [Transisi Menuju Fasting] Beberapa jam setelah makan … :: • Glucose darah mulai turun
-  • Insulin turun
-  • Glucagon naik relatif terhadap insulin
-  • Metabolisme bergeser dari storage menuju mobilization
-- [Transisi Menuju Fasting] Urutan sumber bahan bakar secara umum … :: • Hepatic glycogenolysis
+- [Liver pada Fed State] Sebutkan regulasi penting pada Liver pada Fed State. :: • Insulin mengaktifkan phosphatase → dephosphorylation berbagai enzim anabolic
+  • ACC aktif dalam bentuk dephosphorylated
+  • Malonyl-CoA meningkat dan menghambat CPT-I → β-oxidation ditekan saat lipogenesis berlangsung
+- [Transisi Menuju Fasting] Sebutkan urutan sumber bahan bakar secara umum pada Transisi Menuju Fasting. :: • Hepatic glycogenolysis
   • Gluconeogenesis makin meningkat
   • Adipose lipolysis → free fatty acids + glycerol
-  • β-oxidation liver → ATP dan acetyl-CoA
+  • Β-oxidation liver → ATP dan acetyl-CoA
   • Ketogenesis meningkat bila fasting berlanjut
-- [β-Oxidation pada Fasting] Fungsi β-oxidation saat fasting … :: • Menyediakan ATP untuk gluconeogenesis
+- [Glycogenolysis dan Batas Simpanan Glycogen] Sebutkan hal-hal penting tentang Hormonal control pada Glycogenolysis dan Batas Simpanan Glycogen (Biokimia Integrasi Metabolisme (Puasa vs Kenyang)). :: • Glucagon → Gs → adenylyl cyclase → cAMP → PKA
+  • PKA mengaktifkan phosphorylase kinase
+  • Phosphorylase kinase mengaktifkan glycogen phosphorylase
+  • Glycogen synthase terinaktivasi melalui phosphorylation
+- [Gluconeogenesis Saat Fasting] Sebutkan substrat utama pada Gluconeogenesis Saat Fasting. :: • Lactate → pyruvate
+  • Alanine → pyruvate
+  • Glycerol → DHAP
+  • Glucogenic amino acids → pyruvate atau TCA intermediates
+- [Adipose Tissue Saat Fasting: Lipolysis] Sebutkan urutan atau langkah pada Adipose Tissue Saat Fasting: Lipolysis? :: • TAG → DAG oleh ATGL
+  • DAG → MAG oleh HSL
+  • MAG → glycerol + fatty acid oleh monoacylglycerol lipase
+- [β-Oxidation pada Fasting] Sebutkan fungsi β-oxidation saat fasting pada β-Oxidation pada Fasting. :: • Menyediakan ATP untuk gluconeogenesis
   • Menghasilkan acetyl-CoA untuk mengaktifkan pyruvate carboxylase
   • Kelebihan acetyl-CoA menjadi substrate ketogenesis
-- [Ketone Bodies sebagai Bahan Bakar] Jaringan pemakai ketone bodies … :: • Skeletal muscle
+- [Ketone Bodies sebagai Bahan Bakar] Sebutkan jaringan pemakai ketone bodies pada Ketone Bodies sebagai Bahan Bakar. :: • Skeletal muscle
   • Cardiac muscle
   • Renal cortex
   • Brain pada prolonged fasting
-- [Ketone Bodies sebagai Bahan Bakar] Tidak dapat menggunakan ketone bodies … :: • Liver → tidak memiliki thiophorase
-  • RBC → tidak memiliki mitochondria
-- [Epinephrine] Perbedaan dengan glucagon … :: • Glucagon terutama liver
-  • Epinephrine dapat bekerja kuat pada liver dan skeletal muscle
-- [Fed vs Fasted: Enzim yang Perlu Diingat] Fed / insulin … :: • Glycogen synthase aktif
+- [Skeletal Muscle pada Fasting dan Starvation] Sebutkan hal-hal penting tentang Early fasting pada Skeletal Muscle pada Fasting dan Starvation (Biokimia Integrasi Metabolisme (Puasa vs Kenyang)). :: • Fatty acid oxidation ↑
+  • Ketone utilization dapat meningkat
+  • Proteolysis menghasilkan alanine dan glutamine untuk gluconeogenesis
+- [Insulin: Sinyal “Energi Tersedia”] Sebutkan mekanisme reseptor pada Insulin: Sinyal “Energi Tersedia”. :: • Insulin receptor = receptor tyrosine kinase
+  • IRS → PI3K → Akt adalah salah satu signaling axis penting
+  • Akt mendorong GLUT4 translocation dan anabolic signaling
+- [Fed vs Fasted: Enzim yang Perlu Diingat] Sebutkan hal-hal penting tentang Fed / insulin pada Fed vs Fasted: Enzim yang Perlu Diingat. :: • Glycogen synthase aktif
   • ACC aktif
   • HMG-CoA reductase aktif
   • PFK-2 hepatic cenderung menghasilkan F2,6BP → PFK-1 aktif
-- [Fed vs Fasted: Enzim yang Perlu Diingat] Fasting / glucagon … :: • Glycogen phosphorylase aktif
-  • Hormone-sensitive lipase lebih aktif dalam konteks low-insulin/catecholamine state
-  • Fructose-1,6-bisphosphatase didukung karena F2,6BP rendah
-  • CPT-I lebih aktif karena malonyl-CoA rendah
-  • Mitochondrial HMG-CoA synthase mendukung ketogenesis
-- [Gambaran Besar: Tubuh Tidak Memakai Bahan Bakar yang Sama Terus-Menerus] High-yield: Gambaran Besar: Tubuh Tidak Memakai Bahan Bakar yang Sama Terus-Menerus :: Insulin tinggi → simpan bahan bakar. Glucagon tinggi → mobilisasi bahan bakar. Liver bertindak sebagai pusat distribusi bahan bakar antarorgan.
-- [Liver pada Fed State] Jebakan soal: Liver pada Fed State :: Liver mengambil glucose melalui GLUT2, BUKAN GLUT4. Karena itu entry glucose ke hepatocyte tidak bergantung langsung pada insulin, tetapi insulin mengatur pemakaian dan penyimpanannya.
-- [Skeletal Muscle pada Fed State] Penting: Skeletal Muscle pada Fed State :: Muscle glycogen hanya digunakan oleh muscle itu sendiri karena skeletal muscle tidak memiliki glucose-6-phosphatase untuk melepaskan free glucose ke darah.
-- [Adipose Tissue pada Fed State] High-yield: Adipose Tissue pada Fed State :: Adipose tissue relatif kurang memiliki glycerol kinase, sehingga glycerol-3-phosphate terutama berasal dari glycolysis glucose.
-- [Early Fasting / Postabsorptive State] Jebakan soal: Early Fasting / Postabsorptive State :: Fatty acids berantai genap TIDAK menghasilkan net glucose pada manusia karena acetyl-CoA tidak dapat dikonversi kembali menjadi pyruvate dan carbon TCA hilang sebagai CO2.
-- [Adipose Tissue Saat Fasting: Lipolysis] Penting: Adipose Tissue Saat Fasting: Lipolysis :: Free fatty acid tidak beredar bebas tanpa carrier; mayoritas dibawa oleh albumin.
-- [Ketone Bodies sebagai Bahan Bakar] High-yield: Ketone Bodies sebagai Bahan Bakar :: Liver = produsen ketone bodies, bukan konsumen.
-- [Perubahan Brain pada Prolonged Fasting] Penting: Perubahan Brain pada Prolonged Fasting :: RBC tetap membutuhkan glucose sepanjang waktu karena tidak memiliki mitochondria.
-- [Cori Cycle] Penting: Cori Cycle :: Cori cycle memindahkan beban energi dari peripheral tissue ke liver. Liver menggunakan ATP untuk gluconeogenesis agar jaringan anaerob tetap memperoleh glucose.
-- [Glucagon: Sinyal “Pertahankan Glucose Darah”] High-yield: Glucagon: Sinyal “Pertahankan Glucose Darah” :: Glucagon memiliki efek metabolik utama di liver; skeletal muscle tidak memiliki respons glucagon klasik yang bermakna seperti liver.
+- [Gambaran Besar: Tubuh Tidak Memakai Bahan Bakar yang Sama Terus-Menerus] Apa poin high-yield (pearl) tentang Biokimia Integrasi Metabolisme (Puasa vs Kenyang)? :: Insulin tinggi → simpan bahan bakar. Glucagon tinggi → mobilisasi bahan bakar. Liver bertindak sebagai pusat distribusi bahan bakar antarorgan.
+- [Liver pada Fed State] Apa jebakan yang sering muncul pada soal tentang Liver pada Fed State? :: Liver mengambil glucose melalui GLUT2, BUKAN GLUT4. Karena itu entry glucose ke hepatocyte tidak bergantung langsung pada insulin, tetapi insulin mengatur pemakaian dan penyimpanannya.
+- [Skeletal Muscle pada Fed State] Apa jebakan yang sering muncul pada soal tentang Skeletal Muscle pada Fed State? :: Muscle glycogen hanya digunakan oleh muscle itu sendiri karena skeletal muscle tidak memiliki glucose-6-phosphatase untuk melepaskan free glucose ke darah.
+- [Adipose Tissue pada Fed State] Apa poin high-yield (pearl) tentang Adipose Tissue pada Fed State? :: Adipose tissue relatif kurang memiliki glycerol kinase, sehingga glycerol-3-phosphate terutama berasal dari glycolysis glucose.
+- [Early Fasting / Postabsorptive State] Apa jebakan yang sering muncul pada soal tentang Early Fasting / Postabsorptive State? :: Fatty acids berantai genap TIDAK menghasilkan net glucose pada manusia karena acetyl-CoA tidak dapat dikonversi kembali menjadi pyruvate dan carbon TCA hilang sebagai CO2.
+- [Adipose Tissue Saat Fasting: Lipolysis] Apa jebakan yang sering muncul pada soal tentang Adipose Tissue Saat Fasting: Lipolysis? :: Free fatty acid tidak beredar bebas tanpa carrier; mayoritas dibawa oleh albumin.
+- [Ketone Bodies sebagai Bahan Bakar] Apa poin high-yield (pearl) tentang Ketone Bodies sebagai Bahan Bakar? :: Liver = produsen ketone bodies, bukan konsumen.
+- [Perubahan Brain pada Prolonged Fasting] Apa jebakan yang sering muncul pada soal tentang Perubahan Brain pada Prolonged Fasting? :: RBC tetap membutuhkan glucose sepanjang waktu karena tidak memiliki mitochondria.
+- [Cori Cycle] Apa jebakan yang sering muncul pada soal tentang Cori Cycle (Biokimia Integrasi Metabolisme (Puasa vs Kenyang))? :: Cori cycle memindahkan beban energi dari peripheral tissue ke liver. Liver menggunakan ATP untuk gluconeogenesis agar jaringan anaerob tetap memperoleh glucose.
+- [Glucagon: Sinyal “Pertahankan Glucose Darah”] Apa poin high-yield (pearl) tentang Glucagon: Sinyal “Pertahankan Glucose Darah”? :: Glucagon memiliki efek metabolik utama di liver; skeletal muscle tidak memiliki respons glucagon klasik yang bermakna seperti liver.

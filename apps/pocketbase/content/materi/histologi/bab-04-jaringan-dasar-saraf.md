@@ -482,68 +482,68 @@ Myelin:
 
 ## Flashcard {kartu}
 
-- [Peta Besar Jaringan Saraf] central nervous system (CNS) :: cerebrum, cerebellum, brainstem, dan spinal cord
-- [Peta Besar Jaringan Saraf] peripheral nervous system (PNS) :: peripheral nerves, ganglia, dan sensory/motor nerve endings.
-- [Oligodendrocytes] PNS :: satu Schwann cell → satu internode pada satu axon
-- [Oligodendrocytes] CNS :: satu oligodendrocyte → beberapa internodes pada beberapa axons.
-- [Autonomic Ganglion] Perbandingan cepat :: sensory ganglion = pseudounipolar + central nuclei + satellite ring rapi + no synapse.
-- [Gray Matter dan White Matter] spinal cord :: gray matter di pusat, white matter di perifer
-- [Gray Matter dan White Matter] cerebrum/cerebellum :: gray matter terutama membentuk cortex di luar, white matter lebih dalam.
-- [High-yield] soma :: nucleus besar euchromatic + nucleolus prominent
-- [High-yield] Nissl :: rER/ribosomes di soma dan dendrite
-- [High-yield] astrocyte :: support/homeostasis/BBB support
-- [High-yield] oligodendrocyte :: CNS myelin
-- [High-yield] microglia :: resident macrophage
-- [High-yield] ependymal :: ventricles/central canal
-- [High-yield] Schwann :: PNS myelin + regeneration
-- [High-yield] satellite :: mengelilingi ganglion neurons
-- [High-yield] Schwann: one cell :: one internode of one axon
-- [High-yield] oligodendrocyte: one cell :: multiple internodes/axons
-- [High-yield] Peripheral nerve CT :: endo = fiber; peri = fascicle; epi = whole nerve
-- [High-yield] Ganglia: sensory :: pseudounipolar + central nucleus + tight satellite ring + no synapse
-- [High-yield] autonomic :: multipolar + nuclei lebih eccentric + satellite cells lebih loose + synapses
-- [High-yield] CNS: spinal cord :: gray inside, white outside
-- [High-yield] cerebrum/cerebellum :: cortex gray outside, white inside
-- [High-yield] cerebellum :: molecular → Purkinje → granular
-- [High-yield] BBB :: endothelial tight junctions + basal lamina/pericytes + astrocyte support
-- [Peta Besar Jaringan Saraf] Secara anatomis, jaringan saraf terbagi menjadi … :: • central nervous system (CNS): cerebrum, cerebellum, brainstem, dan spinal cord
-  • peripheral nervous system (PNS): peripheral nerves, ganglia, dan sensory/motor nerve endings
-- [Neuron: Soma, Dendrit, dan Akson] Neuron memiliki tiga komponen utama … :: • cell body/perikaryon/soma
-  • dendrites
-  • axon
-- [Nissl Substance dan Neurofibrils] Nissl substance ditemukan pada … :: • soma
-  • dendrites
-- [Nissl Substance dan Neurofibrils] Nissl substance TIDAK terdapat pada … :: • axon hillock
-  • axon
-- [Peripheral Nerve: Organisasi Umum] Connective tissue sheaths … :: • endoneurium → mengelilingi individual nerve fiber
-  • perineurium → membungkus satu fascicle
-  • epineurium → membungkus seluruh peripheral nerve dan mengandung larger blood vessels
-- [Peripheral Nerve pada Transverse Section] Pada cross section … :: • myelinated fibers tampak bulat/oval
-  • axon berada di pusat
-  • area myelin sering tampak sebagai clear ring pada H&E
-  • endoneurium berada di antara individual fibers
-  • satu fascicle dibatasi perineurium
-  • epineurium mengisi area di antara fascicles dan membawa vessels
-- [Synapse: Struktur Histologis Dasar] Chemical synapse terdiri atas … :: • presynaptic terminal/bouton berisi synaptic vesicles
-  • synaptic cleft
-  • postsynaptic membrane dengan receptors
-- [Cerebral Cortex] Pada routine practical, lebih penting mengenali … :: • cortex di luar
-  • neuron, termasuk pyramidal cells
-  • neuropil
-  • white matter lebih dalam
-- [Cerebellar Cortex] Cerebellar cortex memiliki tiga layers yang sangat khas … :: • molecular layer — paling luar, relatif pucat dan sedikit cells
-  • Purkinje cell layer — satu baris large flask-shaped Purkinje neurons
-  • granular layer — paling dalam, sangat padat oleh small dark nuclei
-- [Blood–Brain Barrier] BBB terutama dibentuk oleh … :: • nonfenestrated CNS capillary endothelial cells dengan tight junctions
-  • continuous basal lamina
-  • pericytes
-  • astrocyte end-feet sebagai komponen supporting/regulatory
-- [Perkembangan Singkat Jaringan Saraf] High-yield: Perkembangan Singkat Jaringan Saraf :: neural tube → CNS; neural crest → banyak komponen PNS.
-- [Klasifikasi Neuron Berdasarkan Jumlah Prosesus] Praktikum: Klasifikasi Neuron Berdasarkan Jumlah Prosesus :: Bentuk process sering tidak utuh pada routine section, sehingga identifikasi tipe neuron harus dibantu konteks organ.
-- [Neuroglia: Peta Besar] Mnemonic: Neuroglia: Peta Besar :: AO-ME di CNS; Schwann + Satellite di PNS.
-- [Peripheral Nerve: Organisasi Umum] Mnemonic: Peripheral Nerve: Organisasi Umum :: Endo = one fiber; peri = one fascicle; epi = entire nerve.
-- [Peripheral Nerve pada Longitudinal Section] Praktikum trap: Peripheral Nerve pada Longitudinal Section :: Peripheral nerve longitudinal dapat mirip dense regular connective tissue. Nerve mempunyai Schwann nuclei, axonal profiles, serta fascicular organization; tendon didominasi parallel collagen dengan fibroblast nuclei tipis.
-- [Sensory Ganglion] High-yield: Sensory Ganglion :: Ring satellite cells yang sangat rapi = sensory ganglion clue.
-- [Spinal Cord Histology] Praktikum: Spinal Cord Histology :: Large multipolar neurons dengan prominent Nissl substance di ventral horn merupakan clue kuat.
-- [Cerebellar Cortex] Mnemonic visual: Cerebellar Cortex :: Pale → Purkinje row → purple-packed granules.
-- [Blood–Brain Barrier] High-yield correction: Blood–Brain Barrier :: Astrocytes mendukung dan menginduksi karakter BBB, tetapi physical diffusion barrier utamanya adalah tight junctions antar endothelial cells.
+- [Peta Besar Jaringan Saraf] Jelaskan central nervous system (CNS) dalam konteks Jaringan Dasar: Saraf. :: Cerebrum, cerebellum, brainstem, dan spinal cord
+- [Peta Besar Jaringan Saraf] Jelaskan peripheral nervous system (PNS) dalam konteks Jaringan Dasar: Saraf. :: Peripheral nerves, ganglia, dan sensory/motor nerve endings.
+- [Oligodendrocytes] Apa yang dimaksud dengan PNS pada Oligodendrocytes (Jaringan Dasar: Saraf)? :: Satu Schwann cell → satu internode pada satu axon
+- [Oligodendrocytes] Apa yang dimaksud dengan CNS pada Oligodendrocytes (Jaringan Dasar: Saraf)? :: Satu oligodendrocyte → beberapa internodes pada beberapa axons.
+- [Autonomic Ganglion] Apa yang dimaksud dengan Perbandingan cepat pada Autonomic Ganglion (Jaringan Dasar: Saraf)? :: Sensory ganglion = pseudounipolar + central nuclei + satellite ring rapi + no synapse.
+- [Gray Matter dan White Matter] Apa yang dimaksud dengan spinal cord pada Gray Matter dan White Matter? :: Gray matter di pusat, white matter di perifer
+- [Gray Matter dan White Matter] Apa yang dimaksud dengan cerebrum/cerebellum pada Gray Matter dan White Matter? :: Gray matter terutama membentuk cortex di luar, white matter lebih dalam.
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan soma pada Jaringan Dasar: Saraf? :: Nucleus besar euchromatic + nucleolus prominent
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan Nissl pada Jaringan Dasar: Saraf? :: RER/ribosomes di soma dan dendrite
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan astrocyte pada Jaringan Dasar: Saraf? :: Support/homeostasis/BBB support
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan oligodendrocyte pada Jaringan Dasar: Saraf? :: CNS myelin
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan microglia pada Jaringan Dasar: Saraf? :: Resident macrophage
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan ependymal pada Jaringan Dasar: Saraf? :: Ventricles/central canal
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan Schwann pada Jaringan Dasar: Saraf? :: PNS myelin + regeneration
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan satellite pada Jaringan Dasar: Saraf? :: Mengelilingi ganglion neurons
+- [Jaringan Dasar: Saraf] Apa yang perlu diingat tentang Schwann: one cell pada Jaringan Dasar: Saraf? :: One internode of one axon
+- [Jaringan Dasar: Saraf] Apa yang perlu diingat tentang oligodendrocyte: one cell pada Jaringan Dasar: Saraf? :: Multiple internodes/axons
+- [Jaringan Dasar: Saraf] Apa yang perlu diketahui tentang Peripheral nerve CT pada Jaringan Dasar: Saraf? :: Endo = fiber; peri = fascicle; epi = whole nerve
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan autonomic pada Jaringan Dasar: Saraf? :: Multipolar + nuclei lebih eccentric + satellite cells lebih loose + synapses
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan cerebrum/cerebellum pada Jaringan Dasar: Saraf? :: Cortex gray outside, white inside
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan cerebellum pada Jaringan Dasar: Saraf? :: Molecular → Purkinje → granular
+- [Jaringan Dasar: Saraf] Apa yang dimaksud dengan BBB pada Jaringan Dasar: Saraf? :: Endothelial tight junctions + basal lamina/pericytes + astrocyte support
+- [Neuron: Soma, Dendrit, dan Akson] Sebutkan ciri histologisnya pada Neuron: Soma, Dendrit, dan Akson. :: • Ukuran relatif besar
+  • Nucleus besar, bulat, dan euchromatic
+  • Nucleolus menonjol
+  • Cytoplasm mengandung Nissl substance
+- [Peripheral Nerve: Organisasi Umum] Sebutkan hal-hal penting tentang Connective tissue sheaths pada Peripheral Nerve: Organisasi Umum. :: • Endoneurium → mengelilingi individual nerve fiber
+  • Perineurium → membungkus satu fascicle
+  • Epineurium → membungkus seluruh peripheral nerve dan mengandung larger blood vessels
+- [Sensory Ganglion] Sebutkan ciri praktikum pada Sensory Ganglion (Jaringan Dasar: Saraf). :: • Neuronal soma besar dan bulat
+  • Nucleus biasanya central dengan prominent nucleolus
+  • Satellite cells membentuk ring rapat dan teratur
+  • Neuron cenderung berkumpul di bagian peripheral ganglion
+  • Axonal bundles melewati ganglion
+  • Tidak terdapat synapses di dorsal root ganglion
+- [Synapse: Struktur Histologis Dasar] Sebutkan hal-hal penting tentang Chemical synapse pada Synapse: Struktur Histologis Dasar (Jaringan Dasar: Saraf). :: • Presynaptic terminal/bouton berisi synaptic vesicles
+  • Synaptic cleft
+  • Postsynaptic membrane dengan receptors
+- [Synapse: Struktur Histologis Dasar] Sebutkan klasifikasi hubungan pada Synapse: Struktur Histologis Dasar. :: • Axodendritic
+  • Axosomatic
+  • Axoaxonic
+- [Gray Matter dan White Matter] Sebutkan gray matter kaya pada Gray Matter dan White Matter. :: • Neuronal cell bodies
+  • Dendrites
+  • Synapses
+  • Unmyelinated portions
+  • Glia
+- [Gray Matter dan White Matter] Sebutkan distribusinya berbeda pada Gray Matter dan White Matter. :: • Spinal cord: gray matter di pusat, white matter di perifer
+  • Cerebrum/cerebellum: gray matter terutama membentuk cortex di luar, white matter lebih dalam
+- [Spinal Cord Histology] Sebutkan komponen penting pada Spinal Cord Histology. :: • Dorsal/posterior horn: lebih ramping, terkait sensory processing
+  • Ventral/anterior horn: lebih besar dan berisi large multipolar motor neurons
+  • Lateral horn tampak jelas terutama pada level thoracic tertentu
+  • Central canal dilapisi ependymal cells
+  • White matter mengelilingi gray matter
+- [Regenerasi Peripheral Nerve] Sebutkan hal-hal penting tentang Regenerasi lebih baik jika pada Regenerasi Peripheral Nerve. :: • Neuronal soma tetap hidup
+  • Connective tissue pathway masih sejajar
+  • Jarak injury tidak terlalu besar
+- [Perkembangan Singkat Jaringan Saraf] Apa poin high-yield (pearl) tentang Perkembangan Singkat Jaringan Saraf? :: Neural tube → CNS; neural crest → banyak komponen PNS.
+- [Klasifikasi Neuron Berdasarkan Jumlah Prosesus] Apa clue praktikum untuk Klasifikasi Neuron Berdasarkan Jumlah Prosesus? :: Bentuk process sering tidak utuh pada routine section, sehingga identifikasi tipe neuron harus dibantu konteks organ.
+- [Neuroglia: Peta Besar] Bagaimana cara mengingat Neuroglia: Peta Besar (Jaringan Dasar: Saraf)? :: AO-ME di CNS; Schwann + Satellite di PNS.
+- [Peripheral Nerve: Organisasi Umum] Bagaimana cara mengingat Peripheral Nerve: Organisasi Umum? :: Endo = one fiber; peri = one fascicle; epi = entire nerve.
+- [Peripheral Nerve pada Longitudinal Section] Apa jebakan yang sering muncul pada soal tentang Peripheral Nerve pada Longitudinal Section? :: Peripheral nerve longitudinal dapat mirip dense regular connective tissue. Nerve mempunyai Schwann nuclei, axonal profiles, serta fascicular organization; tendon didominasi parallel collagen dengan fibroblast nuclei tipis.
+- [Sensory Ganglion] Apa poin high-yield (pearl) tentang Sensory Ganglion (Jaringan Dasar: Saraf)? :: Ring satellite cells yang sangat rapi = sensory ganglion clue.
+- [Spinal Cord Histology] Apa clue praktikum untuk Spinal Cord Histology? :: Large multipolar neurons dengan prominent Nissl substance di ventral horn merupakan clue kuat.
+- [Cerebellar Cortex] Bagaimana cara mengingat Cerebellar Cortex (Jaringan Dasar: Saraf)? :: Pale → Purkinje row → purple-packed granules.
+- [Blood–Brain Barrier] Apa jebakan yang sering muncul pada soal tentang Blood–Brain Barrier (Jaringan Dasar: Saraf)? :: Astrocytes mendukung dan menginduksi karakter BBB, tetapi physical diffusion barrier utamanya adalah tight junctions antar endothelial cells.

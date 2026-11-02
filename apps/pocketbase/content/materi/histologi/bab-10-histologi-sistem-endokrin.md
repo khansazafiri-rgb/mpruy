@@ -698,81 +698,82 @@ Setelah organ teridentifikasi, baru cari cell/region spesifik.
 
 ## Flashcard {kartu}
 
-- [Pola Histologis Kelenjar Endokrin] Cord/cluster pattern :: sel endokrin tersusun dalam cords atau clusters yang berdekatan dengan capillaries. Pola ini terlihat pada pituitary, parathyroid, adrenal, dan islets pancreas.
-- [Pola Histologis Kelenjar Endokrin] Follicular pattern :: sel membentuk follicle mengelilingi lumen berisi secretory material. Pola khas ini terdapat pada thyroid.
-- [Pola Histologis Kelenjar Endokrin] Neuroendocrine pattern :: hormon dibuat oleh neuron atau sel yang berasal dari neural tissue. Neurohypophysis dan adrenal medulla merupakan contoh penting.
-- [Hypothalamo-Hypophyseal Portal System] Alur konsep :: superior hypophyseal arteries → primary capillary plexus di median eminence → hypophyseal portal veins → secondary capillary plexus di pars distalis.
-- [Pars Nervosa Neurohypophysis] Penting :: hormone ini disintesis di hypothalamus, terutama nuclei supraoptic dan paraventricular, kemudian diangkut sepanjang axons ke pars nervosa untuk disimpan dan dilepas.
-- [Prinsip Sintesis Hormon Thyroid] Konsep histologis terpenting :: synthesis berlangsung di follicular cell dan apical interface, sedangkan precursor hormone disimpan extracellularly dalam colloid.
-- [Adrenal Gland: Cortex dan Medulla] Dari luar ke dalam :: capsule → cortex → medulla.
-- [Vascularization Islets] Practical contrast :: exocrine acini memiliki lumens/duct system dan zymogen granules
-- [Interstitial Glial Cells] Practical distinction :: pale larger nuclei = lebih mendukung pinealocyte
-- [Perbandingan Cepat Organ Endokrin] Pituitary :: dua wilayah berbeda; anterior cellular, posterior pale neural.
-- [Perbandingan Cepat Organ Endokrin] Thyroid :: round follicles + colloid.
-- [Perbandingan Cepat Organ Endokrin] Parathyroid :: solid cellular cords + chief/oxyphil cells + adipocytes, tanpa follicles.
-- [Perbandingan Cepat Organ Endokrin] Adrenal :: cortex dengan tiga zona + central medulla.
-- [Perbandingan Cepat Organ Endokrin] Endocrine pancreas :: pale islets di antara dark exocrine acini.
-- [Perbandingan Cepat Organ Endokrin] Pineal :: pinealocytes + corpora arenacea.
-- [Strategi Identifikasi Preparat Endokrin] Pituitary :: acidophil vs basophil vs chromophobe; pars nervosa; Herring bodies.
-- [Strategi Identifikasi Preparat Endokrin] Thyroid :: follicular cells, C cells, colloid, activity pattern.
-- [Strategi Identifikasi Preparat Endokrin] Adrenal :: G → F → R → medulla.
-- [High-yield] Endocrine glands :: ductless + rich capillary network
-- [High-yield] Pituitary: adenohypophysis :: dark/cellular
-- [High-yield] acidophil :: GH, PRL
-- [High-yield] basophil :: FSH, LH, ACTH, TSH
-- [High-yield] neurohypophysis :: pale neural tissue + pituicytes + Herring bodies
-- [High-yield] Thyroid: follicle + colloid :: signature
-- [High-yield] C cell :: calcitonin
-- [High-yield] active :: taller epithelium + scalloped/resorbing colloid
-- [High-yield] inactive :: flatter epithelium + large colloid-rich follicles
-- [High-yield] Parathyroid :: chief cell → PTH
-- [High-yield] oxyphil :: large eosinophilic cell, bertambah dengan usia
-- [High-yield] Adrenal: GFR :: glomerulosa → fasciculata → reticularis
-- [High-yield] medulla :: chromaffin cells → catecholamines
-- [High-yield] Pancreas: islet :: pale cluster dalam dark exocrine pancreas
-- [High-yield] beta :: insulin
-- [High-yield] alpha :: glucagon
-- [High-yield] delta :: somatostatin
-- [High-yield] Pineal: pinealocytes :: melatonin
-- [High-yield] Spot diagnosis mantra :: “Follicle? Two lobes? Three zones? Pale island? Oxyphil + fat? Brain sand?”
-- [Peta Besar Sistem Endokrin] Karena itu, ciri umum jaringan endokrin adalah … :: • sel tersusun sebagai cords, clusters, plates, atau follicles
-  • vascularization sangat kaya
-  • banyak capillaries bersifat fenestrated
-  • tidak terdapat sistem duct eksokrin untuk menyalurkan hormon
-- [Pituitary Gland: Organisasi Umum] Pituitary/hypophysis terletak pada sella turcica dan secara fungsional memiliki dua bagian besar … :: • adenohypophysis
-  • neurohypophysis
-- [Pituitary Gland: Organisasi Umum] Neurohypophysis berasal dari neuroectoderm diencephalon dan mencakup … :: • pars nervosa
-  • infundibulum
-- [Chromophobes] Kelompok ini dapat mencakup … :: • degranulated chromophils
-  • stem/progenitor-like cells
-  • cells yang granules-nya tidak menonjol pada pewarnaan rutin
-- [Thyroid Gland: Signature Follicles] Setiap follicle terdiri atas … :: • follicular epithelial cells
-  • basement membrane
-  • central lumen berisi colloid
-- [Parafollicular / C Cells] Parafollicular cells atau C cells berada … :: • dalam follicular epithelium tetapi tidak mencapai lumen; atau
-  • dalam small clusters di antara follicles
-- [Prinsip Sintesis Hormon Thyroid] Urutan besar yang penting … :: • iodide trapping melalui Na+/I− symporter di basal membrane
-  • transport iodide ke apical side
-  • oxidation dan organification oleh thyroid peroxidase
-  • iodination tyrosine residues pada thyroglobulin membentuk MIT dan DIT
-  • coupling membentuk T3 dan T4
-  • storage dalam colloid
+- [Pola Histologis Kelenjar Endokrin] Apa yang dimaksud dengan Cord/cluster pattern pada Pola Histologis Kelenjar Endokrin? :: Sel endokrin tersusun dalam cords atau clusters yang berdekatan dengan capillaries. Pola ini terlihat pada pituitary, parathyroid, adrenal, dan islets pancreas.
+- [Pola Histologis Kelenjar Endokrin] Apa yang dimaksud dengan Follicular pattern pada Pola Histologis Kelenjar Endokrin? :: Sel membentuk follicle mengelilingi lumen berisi secretory material. Pola khas ini terdapat pada thyroid.
+- [Pola Histologis Kelenjar Endokrin] Apa yang dimaksud dengan Neuroendocrine pattern pada Pola Histologis Kelenjar Endokrin? :: Hormon dibuat oleh neuron atau sel yang berasal dari neural tissue. Neurohypophysis dan adrenal medulla merupakan contoh penting.
+- [Hypothalamo-Hypophyseal Portal System] Pada Hypothalamo-Hypophyseal Portal System, apa alur konsepnya? :: Superior hypophyseal arteries → primary capillary plexus di median eminence → hypophyseal portal veins → secondary capillary plexus di pars distalis.
+- [Prinsip Sintesis Hormon Thyroid] Jelaskan Konsep histologis terpenting dalam konteks Prinsip Sintesis Hormon Thyroid. :: Synthesis berlangsung di follicular cell dan apical interface, sedangkan precursor hormone disimpan extracellularly dalam colloid.
+- [Perbandingan Cepat Organ Endokrin] Apa yang dimaksud dengan Pituitary pada Perbandingan Cepat Organ Endokrin? :: Dua wilayah berbeda; anterior cellular, posterior pale neural.
+- [Perbandingan Cepat Organ Endokrin] Apa yang dimaksud dengan Thyroid pada Perbandingan Cepat Organ Endokrin? :: Round follicles + colloid.
+- [Perbandingan Cepat Organ Endokrin] Apa yang dimaksud dengan Parathyroid pada Perbandingan Cepat Organ Endokrin? :: Solid cellular cords + chief/oxyphil cells + adipocytes, tanpa follicles.
+- [Perbandingan Cepat Organ Endokrin] Apa yang dimaksud dengan Adrenal pada Perbandingan Cepat Organ Endokrin? :: Cortex dengan tiga zona + central medulla.
+- [Perbandingan Cepat Organ Endokrin] Apa yang dimaksud dengan Endocrine pancreas pada Perbandingan Cepat Organ Endokrin? :: Pale islets di antara dark exocrine acini.
+- [Perbandingan Cepat Organ Endokrin] Apa yang dimaksud dengan Pineal pada Perbandingan Cepat Organ Endokrin? :: Pinealocytes + corpora arenacea.
+- [Strategi Identifikasi Preparat Endokrin] Apa yang dimaksud dengan Pituitary pada Strategi Identifikasi Preparat Endokrin? :: Acidophil vs basophil vs chromophobe; pars nervosa; Herring bodies.
+- [Strategi Identifikasi Preparat Endokrin] Apa yang dimaksud dengan Thyroid pada Strategi Identifikasi Preparat Endokrin? :: Follicular cells, C cells, colloid, activity pattern.
+- [Strategi Identifikasi Preparat Endokrin] Apa yang dimaksud dengan Adrenal pada Strategi Identifikasi Preparat Endokrin? :: G → F → R → medulla.
+- [Histologi Sistem Endokrin] Apa yang dimaksud dengan Endocrine glands pada Histologi Sistem Endokrin? :: Ductless + rich capillary network
+- [Histologi Sistem Endokrin] Apa yang perlu diingat tentang acidophil pada Histologi Sistem Endokrin? :: GH, PRL
+- [Histologi Sistem Endokrin] Apa yang perlu diingat tentang basophil pada Histologi Sistem Endokrin? :: FSH, LH, ACTH, TSH
+- [Histologi Sistem Endokrin] Apa yang dimaksud dengan neurohypophysis pada Histologi Sistem Endokrin? :: Pale neural tissue + pituicytes + Herring bodies
+- [Histologi Sistem Endokrin] Apa yang perlu diingat tentang C cell pada Histologi Sistem Endokrin? :: Calcitonin
+- [Histologi Sistem Endokrin] Apa yang dimaksud dengan active pada Histologi Sistem Endokrin? :: Taller epithelium + scalloped/resorbing colloid
+- [Histologi Sistem Endokrin] Apa yang dimaksud dengan inactive pada Histologi Sistem Endokrin? :: Flatter epithelium + large colloid-rich follicles
+- [Histologi Sistem Endokrin] Apa yang dimaksud dengan oxyphil pada Histologi Sistem Endokrin? :: Large eosinophilic cell, bertambah dengan usia
+- [Histologi Sistem Endokrin] Apa yang dimaksud dengan medulla pada Histologi Sistem Endokrin? :: Chromaffin cells → catecholamines
+- [Histologi Sistem Endokrin] Apa yang perlu diingat tentang beta pada Histologi Sistem Endokrin? :: Insulin
+- [Histologi Sistem Endokrin] Apa yang perlu diingat tentang alpha pada Histologi Sistem Endokrin? :: Glucagon
+- [Histologi Sistem Endokrin] Apa yang perlu diingat tentang delta pada Histologi Sistem Endokrin? :: Somatostatin
+- [Histologi Sistem Endokrin] Apa yang perlu diingat tentang Pineal: pinealocytes pada Histologi Sistem Endokrin? :: Melatonin
+- [Acidophils] Sebutkan dua populasi fungsional utama pada Acidophils (Histologi Sistem Endokrin). :: • Somatotrophs → growth hormone/GH
+  • Lactotrophs atau mammotrophs → prolactin/PRL
+- [Basophils] Sebutkan kelompok utama pada Basophils (Histologi Sistem Endokrin). :: • Thyrotrophs → TSH
+  • Gonadotrophs → FSH dan LH
+  • Corticotrophs → ACTH
+- [Pars Nervosa Neurohypophysis] Sebutkan komponen utama pada Pars Nervosa Neurohypophysis. :: • Unmyelinated axons dari hypothalamic neurosecretory neurons
+  • Axon terminals
+  • Pituicytes
+  • Fenestrated capillaries
+  • Herring bodies
+- [Pars Nervosa Neurohypophysis] Sebutkan hal-hal penting tentang Hormone yang dilepas di neurohypophysis pada Pars Nervosa Neurohypophysis. :: • ADH/vasopressin
+  • Oxytocin
+- [Thyroid Gland: Signature Follicles] Sebutkan hal-hal penting tentang Setiap follicle pada Thyroid Gland: Signature Follicles (Histologi Sistem Endokrin). :: • Follicular epithelial cells
+  • Basement membrane
+  • Central lumen berisi colloid
+- [Follicular Cells] Sebutkan hal-hal penting tentang Bentuk epitel berubah sesuai activity pada Follicular Cells (Histologi Sistem Endokrin). :: • Relatively inactive gland → low cuboidal hingga flattened
+  • Moderately active → cuboidal
+  • Highly active → taller cuboidal/columnar
+- [Parafollicular / C Cells] Sebutkan hal-hal penting tentang Parafollicular cells atau C cells berada pada Parafollicular / C Cells. :: • Dalam follicular epithelium tetapi tidak mencapai lumen; atau
+  • Dalam small clusters di antara follicles
+- [Prinsip Sintesis Hormon Thyroid] Sebutkan urutan besar yang penting pada Prinsip Sintesis Hormon Thyroid. :: • Iodide trapping melalui Na+/I− symporter di basal membrane
+  • Transport iodide ke apical side
+  • Oxidation dan organification oleh thyroid peroxidase
+  • Iodination tyrosine residues pada thyroglobulin membentuk MIT dan DIT
+  • Coupling membentuk T3 dan T4
+  • Storage dalam colloid
   • TSH-stimulated endocytosis colloid
-  • lysosomal processing dan release T3/T4 ke darah
-- [Oxyphil Cells] Sel ini biasanya … :: • muncul setelah masa kanak-kanak
-  • bertambah jumlahnya dengan usia
-  • dapat ditemukan soliter atau dalam clusters
-- [Adrenal Medulla] Chromaffin cells tersusun dalam clusters/cords dekat sinusoidal vessels dan menghasilkan catecholamines … :: • epinephrine
-  • norepinephrine
-- [Pineal Gland: Organisasi Umum] Dua komponen seluler utama … :: • pinealocytes
-  • interstitial glial cells
-- [Pola Histologis Kelenjar Endokrin] Practical rule: Pola Histologis Kelenjar Endokrin :: Jika suatu organ sangat vascular tetapi tidak memiliki duct, pikirkan endocrine tissue. Setelah itu cari signature structure: follicle, zonation, pale islet, atau neural appearance.
-- [Pituitary Gland: Organisasi Umum] Practical clue: Pituitary Gland: Organisasi Umum :: Dark densely cellular anterior lobe bersebelahan dengan pale neural posterior lobe = pituitary.
-- [Acidophils] Practical clue: Acidophils :: Sel pars distalis yang cytoplasm-nya pink/red pada H&E termasuk kelompok acidophil, tetapi jangan mencoba membedakan somatotroph vs lactotroph hanya dari H&E biasa.
-- [Pars Intermedia] Practical clue: Pars Intermedia :: Small colloid-filled cystic spaces di boundary anterior-posterior pituitary mendukung pars intermedia.
-- [Thyroid Gland: Signature Follicles] Practical clue: Thyroid Gland: Signature Follicles :: Many round follicles filled with homogeneous eosinophilic colloid = thyroid.
-- [Parafollicular / C Cells] Practical trap: Parafollicular / C Cells :: Jangan menganggap setiap pale interfollicular cell sebagai C cell tanpa konteks.
-- [Oxyphil Cells] Practical clue: Oxyphil Cells :: Large intensely pink cell cluster di antara small chief cells = oxyphil cells.
-- [Zona Glomerulosa] Practical clue: Zona Glomerulosa :: Thin outer cortical band with clustered cells immediately under capsule = zona glomerulosa.
-- [Adrenal Medulla] Practical clue: Adrenal Medulla :: Cortex berzona mengelilingi central medulla = adrenal gland.
-- [Endocrine Pancreas: Islets of Langerhans] Practical clue: Endocrine Pancreas: Islets of Langerhans :: Pale island inside dark serous acinar tissue = pancreatic islet.
+  • Lysosomal processing dan release T3/T4 ke darah
+- [Parathyroid Gland: Organisasi Umum] Sebutkan dua cell types klasik pada Parathyroid Gland: Organisasi Umum. :: • Chief/principal cells
+  • Oxyphil cells
+- [Islet Cell Types] Sebutkan cell types utama pada Islet Cell Types. :: • Beta cells → insulin
+  • Alpha cells → glucagon
+  • Delta cells → somatostatin
+  • PP/F cells → pancreatic polypeptide
+- [Pineal Gland: Organisasi Umum] Sebutkan dua komponen seluler utama pada Pineal Gland: Organisasi Umum. :: • Pinealocytes
+  • Interstitial glial cells
+- [Strategi Identifikasi Preparat Endokrin] Sebutkan urutan atau langkah pada Strategi Identifikasi Preparat Endokrin? :: • Ada follicles berisi colloid? → thyroid
+  • Ada cortex berlapis tiga + medulla? → adrenal
+  • Ada pale islands di tengah dark acini? → pancreas
+  • Ada dua lobe dengan cellularity sangat berbeda? → pituitary
+  • Solid endocrine cells + adipocytes + oxyphils tanpa follicles? → parathyroid
+  • Ada calcified brain sand? → pineal
+- [Pola Histologis Kelenjar Endokrin] Apa clue praktikum untuk Pola Histologis Kelenjar Endokrin? :: Jika suatu organ sangat vascular tetapi tidak memiliki duct, pikirkan endocrine tissue. Setelah itu cari signature structure: follicle, zonation, pale islet, atau neural appearance.
+- [Pituitary Gland: Organisasi Umum] Apa clue praktikum untuk Pituitary Gland: Organisasi Umum? :: Dark densely cellular anterior lobe bersebelahan dengan pale neural posterior lobe = pituitary.
+- [Acidophils] Apa clue praktikum untuk Acidophils (Histologi Sistem Endokrin)? :: Sel pars distalis yang cytoplasm-nya pink/red pada H&E termasuk kelompok acidophil, tetapi jangan mencoba membedakan somatotroph vs lactotroph hanya dari H&E biasa.
+- [Pars Intermedia] Apa clue praktikum untuk Pars Intermedia (Histologi Sistem Endokrin)? :: Small colloid-filled cystic spaces di boundary anterior-posterior pituitary mendukung pars intermedia.
+- [Thyroid Gland: Signature Follicles] Apa clue praktikum untuk Thyroid Gland: Signature Follicles? :: Many round follicles filled with homogeneous eosinophilic colloid = thyroid.
+- [Parafollicular / C Cells] Apa jebakan yang sering muncul pada soal tentang Parafollicular / C Cells? :: Jangan menganggap setiap pale interfollicular cell sebagai C cell tanpa konteks.
+- [Oxyphil Cells] Apa clue praktikum untuk Oxyphil Cells (Histologi Sistem Endokrin)? :: Large intensely pink cell cluster di antara small chief cells = oxyphil cells.
+- [Zona Glomerulosa] Apa clue praktikum untuk Zona Glomerulosa (Histologi Sistem Endokrin)? :: Thin outer cortical band with clustered cells immediately under capsule = zona glomerulosa.
+- [Adrenal Medulla] Apa clue praktikum untuk Adrenal Medulla (Histologi Sistem Endokrin)? :: Cortex berzona mengelilingi central medulla = adrenal gland.
+- [Endocrine Pancreas: Islets of Langerhans] Apa clue praktikum untuk Endocrine Pancreas: Islets of Langerhans? :: Pale island inside dark serous acinar tissue = pancreatic islet.

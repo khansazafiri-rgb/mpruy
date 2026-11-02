@@ -810,77 +810,87 @@ Right:
 
 ## Flashcard {kartu}
 
-- [Stable vs Vulnerable Plaque] Clinical link :: plaque rupture/erosion → exposure thrombogenic material → acute thrombosis → acute coronary syndrome.
-- [Myocardial Infarction — Patogenesis] Urutan klasik :: atherosclerotic plaque disruption → platelet activation → acute thrombosis → coronary occlusion → prolonged ischemia → coagulative necrosis of myocardium.
-- [Distribusi Coronary Infarct] Practical pearl :: anterior MI besar → pikirkan LAD.
-- [Myocarditis] Classic pathology clue :: lymphocytic myocarditis + myocyte injury pada banyak viral cases.
-- [Cardiac Tamponade] Pathology link :: kecepatan akumulasi cairan sama pentingnya dengan volume total.
-- [Pattern Recognition Praktikum] Atherosclerosis :: fibrous cap + necrotic lipid core + cholesterol clefts + foam cells.
-- [Pattern Recognition Praktikum] Old MI :: dense collagenous scar menggantikan myocardium.
-- [Pattern Recognition Praktikum] Recent MI 1–3 hari :: coagulative necrosis + banyak neutrophils.
-- [Pattern Recognition Praktikum] MI 3–7 hari :: macrophages dominan, tissue soft.
-- [Pattern Recognition Praktikum] Rheumatic heart disease :: commissural fusion + chordal shortening + fish-mouth mitral valve.
-- [Pattern Recognition Praktikum] Rheumatic myocarditis :: Aschoff body + Anitschkow cells.
-- [Pattern Recognition Praktikum] Infective endocarditis :: friable vegetations dengan fibrin, inflammation, microorganisms.
-- [Pattern Recognition Praktikum] Hypertrophic cardiomyopathy :: myofiber disarray.
-- [Pattern Recognition Praktikum] Amyloid restrictive cardiomyopathy :: amorphous extracellular deposits; Congo red positive dengan apple-green birefringence.
-- [High-yield] myocardium paling lemah :: rupture risk tinggi
-- [High-yield] Exam pearl paling penting: 3–7 hari :: macrophages + wall rupture risk
-- [High-yield] Vulnerable plaque :: thin cap + large lipid core + inflammation
-- [High-yield] 1–3 hari post-MI :: neutrophils dominan
-- [High-yield] 3–7 hari :: macrophages dominan dan rupture risk tinggi
-- [High-yield] LAD :: anterior wall/septum/apex
-- [High-yield] Left heart failure :: pulmonary congestion + heart failure cells
-- [High-yield] Right heart failure :: systemic venous congestion
-- [High-yield] Pressure overload :: concentric hypertrophy
-- [High-yield] Calcific aortic stenosis :: nodular calcification tanpa commissural fusion klasik
-- [High-yield] Rheumatic valve disease :: commissural fusion + fish-mouth stenosis
-- [High-yield] Aschoff body dan Anitschkow cells :: rheumatic carditis
-- [High-yield] S. aureus :: acute IE klasik
-- [High-yield] Viridans streptococci :: subacute IE klasik pada damaged valve
-- [High-yield] DCM :: dilation + systolic dysfunction
-- [High-yield] HCM :: asymmetric septal hypertrophy + myofiber disarray
-- [High-yield] Restrictive CM :: impaired filling, contoh amyloidosis
-- [High-yield] Free wall rupture :: hemopericardium + tamponade
-- [High-yield] Hyperplastic arteriolosclerosis :: malignant/severe HTN
-- [High-yield] Atrial myxoma :: primary benign cardiac tumor klasik pada dewasa
-- [High-yield] HTN/aortic stenosis :: concentric LVH
-- [High-yield] Regurgitation :: eccentric hypertrophy
-- [Peta Besar Patologi Kardiovaskular] Patologi kardiovaskular paling mudah dipahami dengan empat pertanyaan … :: • Apakah masalah utamanya pada pembuluh darah?
-  • Apakah miokard mengalami iskemia, hipertrofi, atau inflamasi?
-  • Apakah katup mengalami stenosis, regurgitasi, atau infeksi?
-  • Apakah gangguan akhirnya menimbulkan gagal jantung, aritmia, trombus, atau emboli?
-- [Atherosclerosis — Konsep Dasar] Lokasi yang sering … :: • abdominal aorta,
-  • coronary arteries,
-  • popliteal arteries,
-  • internal carotid arteries,
-  • Circle of Willis
-- [Faktor Risiko Atherosclerosis] Faktor risiko mayor yang dapat dimodifikasi … :: • hyperlipidemia, terutama LDL tinggi,
-  • hypertension,
-  • smoking,
-  • diabetes mellitus
-- [Stable Angina vs Acute Coronary Syndrome] Acute coronary syndrome … :: • biasanya akibat plaque disruption + thrombosis,
-  • dapat berupa unstable angina, NSTEMI, atau STEMI
-- [Free Wall, Septal, dan Papillary Muscle Rupture] Free wall rupture … :: • hemopericardium,
-  • cardiac tamponade,
-  • sudden death
-- [Left-Sided Heart Failure] Konsekuensi pulmonary venous congestion … :: • pulmonary edema,
-  • dyspnea,
-  • orthopnea,
-  • paroxysmal nocturnal dyspnea
-- [Left-Sided Heart Failure] Morphology paru kronik … :: • hemosiderin-laden macrophages = heart failure cells,
-  • brown induration pada congestion kronik
-- [Mitral Valve Prolapse] Dapat asimtomatik atau menyebabkan … :: • mitral regurgitation,
-  • arrhythmia,
-  • endocarditis risk pada kelompok tertentu,
-  • jarang chordal rupture
-- [Rheumatic Fever & Rheumatic Heart Disease] Chronic rheumatic heart disease … :: • leaflet thickening,
-  • commissural fusion,
-  • chordal shortening,
-  • fish-mouth/buttonhole mitral stenosis
-- [Aortic Aneurysm] Abdominal aortic aneurysm … :: • sangat terkait atherosclerosis,
-  • paling sering infrarenal
-- [Faktor Risiko Atherosclerosis] Exam pearl: Faktor Risiko Atherosclerosis :: Kombinasi smoking + HTN + hyperlipidemia + diabetes = paket klasik faktor risiko atherosclerosis.
-- [Stable Angina vs Acute Coronary Syndrome] Exam pearl: Stable Angina vs Acute Coronary Syndrome :: angina = ischemia tanpa necrosis. MI = ischemia dengan necrosis.
-- [Acute vs Subacute Endocarditis] Exam pearl: Acute vs Subacute Endocarditis :: Staphylococcus aureus = klasik acute IE. Viridans streptococci = klasik subacute IE pada damaged valve.
-- [Hypertrophic Cardiomyopathy] Clinical pearl: Hypertrophic Cardiomyopathy :: Young athlete + sudden death + family history → hypertrophic cardiomyopathy.
+- [Stable vs Vulnerable Plaque] Apa yang dimaksud dengan Clinical link pada Stable vs Vulnerable Plaque? :: Plaque rupture/erosion → exposure thrombogenic material → acute thrombosis → acute coronary syndrome.
+- [Myocardial Infarction — Patogenesis] Pada Myocardial Infarction — Patogenesis, apa urutan klasiknya? :: Atherosclerotic plaque disruption → platelet activation → acute thrombosis → coronary occlusion → prolonged ischemia → coagulative necrosis of myocardium.
+- [Myocarditis] Pada Myocarditis, apa classic pathology cluenya (Patologi Sistem Kardiovaskular)? :: Lymphocytic myocarditis + myocyte injury pada banyak viral cases.
+- [Cardiac Tamponade] Apa yang dimaksud dengan Pathology link pada Cardiac Tamponade (Patologi Sistem Kardiovaskular)? :: Kecepatan akumulasi cairan sama pentingnya dengan volume total.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Atherosclerosis pada Pattern Recognition Praktikum? :: Fibrous cap + necrotic lipid core + cholesterol clefts + foam cells.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Old MI pada Pattern Recognition Praktikum? :: Dense collagenous scar menggantikan myocardium.
+- [Pattern Recognition Praktikum] Jelaskan Recent MI 1–3 hari dalam konteks Pattern Recognition Praktikum. :: Coagulative necrosis + banyak neutrophils.
+- [Pattern Recognition Praktikum] Jelaskan MI 3–7 hari dalam konteks Pattern Recognition Praktikum. :: Macrophages dominan, tissue soft.
+- [Pattern Recognition Praktikum] Jelaskan Rheumatic heart disease dalam konteks Pattern Recognition Praktikum. :: Commissural fusion + chordal shortening + fish-mouth mitral valve.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Rheumatic myocarditis pada Pattern Recognition Praktikum? :: Aschoff body + Anitschkow cells.
+- [Pattern Recognition Praktikum] Apa yang dimaksud dengan Infective endocarditis pada Pattern Recognition Praktikum? :: Friable vegetations dengan fibrin, inflammation, microorganisms.
+- [Pattern Recognition Praktikum] Jelaskan Amyloid restrictive cardiomyopathy dalam konteks Pattern Recognition Praktikum. :: Amorphous extracellular deposits; Congo red positive dengan apple-green birefringence.
+- [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang myocardium paling lemah pada Patologi Sistem Kardiovaskular? :: Rupture risk tinggi
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Vulnerable plaque pada Patologi Sistem Kardiovaskular? :: Thin cap + large lipid core + inflammation
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Old MI pada Patologi Sistem Kardiovaskular? :: Fibrous scar
+- [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang LAD pada Patologi Sistem Kardiovaskular? :: Anterior wall/septum/apex
+- [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Left heart failure pada Patologi Sistem Kardiovaskular? :: Pulmonary congestion + heart failure cells
+- [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Right heart failure pada Patologi Sistem Kardiovaskular? :: Systemic venous congestion
+- [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Pressure overload pada Patologi Sistem Kardiovaskular? :: Concentric hypertrophy
+- [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Volume overload pada Patologi Sistem Kardiovaskular? :: Eccentric hypertrophy
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Calcific aortic stenosis pada Patologi Sistem Kardiovaskular? :: Nodular calcification tanpa commissural fusion klasik
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Rheumatic valve disease pada Patologi Sistem Kardiovaskular? :: Commissural fusion + fish-mouth stenosis
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Aschoff body dan Anitschkow cells pada Patologi Sistem Kardiovaskular? :: Rheumatic carditis
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Viridans streptococci pada Patologi Sistem Kardiovaskular? :: Subacute IE klasik pada damaged valve
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan NBTE pada Patologi Sistem Kardiovaskular? :: Sterile bland vegetations + hypercoagulable state/malignancy
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan DCM pada Patologi Sistem Kardiovaskular? :: Dilation + systolic dysfunction
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan HCM pada Patologi Sistem Kardiovaskular? :: Asymmetric septal hypertrophy + myofiber disarray
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Restrictive CM pada Patologi Sistem Kardiovaskular? :: Impaired filling, contoh amyloidosis
+- [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Free wall rupture pada Patologi Sistem Kardiovaskular? :: Hemopericardium + tamponade
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Hyaline arteriolosclerosis pada Patologi Sistem Kardiovaskular? :: Benign HTN/diabetes
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Hyperplastic arteriolosclerosis pada Patologi Sistem Kardiovaskular? :: Malignant/severe HTN
+- [Patologi Sistem Kardiovaskular] Apa yang dimaksud dengan Atrial myxoma pada Patologi Sistem Kardiovaskular? :: Primary benign cardiac tumor klasik pada dewasa
+- [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang HTN/aortic stenosis pada Patologi Sistem Kardiovaskular? :: Concentric LVH
+- [Patologi Sistem Kardiovaskular] Apa yang perlu diingat tentang Regurgitation pada Patologi Sistem Kardiovaskular? :: Eccentric hypertrophy
+- [Atherosclerosis — Konsep Dasar] Sebutkan komponen plaque pada Atherosclerosis — Konsep Dasar. :: • Fibrous cap
+  • Necrotic lipid core
+  • Cholesterol clefts
+  • Macrophage-derived foam cells
+  • Smooth muscle cells
+  • Extracellular matrix
+  • Kadang calcification
+- [Response-to-Injury Hypothesis] Sebutkan urutan atau langkah pada Response-to-Injury Hypothesis (Patologi Sistem Kardiovaskular)? :: • Endothelial dysfunction/injury
+  • LDL masuk ke intima dan mengalami modifikasi/oxidation
+  • Monocyte adhesion dan migration
+  • Monocyte → macrophage → foam cell
+  • Platelet adhesion dan mediator pertumbuhan
+  • Smooth muscle migration dari media ke intima
+  • Smooth muscle proliferation + ECM deposition
+  • Terbentuk fibrofatty plaque
+- [Stable Angina vs Acute Coronary Syndrome] Sebutkan hal-hal penting tentang Stable angina pada Stable Angina vs Acute Coronary Syndrome (Patologi Sistem Kardiovaskular). :: • Fixed stenosis
+  • Gejala saat exertion/stress
+  • Tidak ada myocardial necrosis
+- [Transmural vs Subendocardial Infarct] Sebutkan hal-hal penting tentang Subendocardial infarct pada Transmural vs Subendocardial Infarct (Patologi Sistem Kardiovaskular). :: • Mengenai inner 1/3–1/2 myocardium
+  • Wilayah subendocardial paling rentan terhadap hypoperfusion
+  • Dapat terjadi pada partial occlusion atau global hypotension
+  • Sering berkaitan dengan NSTEMI
+- [Free Wall, Septal, dan Papillary Muscle Rupture] Sebutkan hal-hal penting tentang Papillary muscle rupture pada Free Wall, Septal, dan Papillary Muscle Rupture. :: • Acute severe mitral regurgitation
+  • Pulmonary edema
+  • Posteromedial papillary muscle lebih rentan karena single blood supply pada banyak orang
+- [Heart Failure — Konsep] Sebutkan klasifikasi praktis pada Heart Failure — Konsep. :: • Left-sided vs right-sided
+  • Systolic vs diastolic
+  • Acute vs chronic
+- [Right-Sided Heart Failure] Sebutkan penyebab lain pada Right-Sided Heart Failure. :: • Pulmonary hypertension
+  • Chronic lung disease → cor pulmonale
+  • Tricuspid/pulmonic valve disease
+- [Concentric vs Eccentric Hypertrophy] Sebutkan hal-hal penting tentang Eccentric hypertrophy pada Concentric vs Eccentric Hypertrophy (Patologi Sistem Kardiovaskular). :: • Volume overload
+  • Sarcomeres added in series
+  • Chamber dilation
+  • Contoh: chronic regurgitation
+- [Rheumatic Fever & Rheumatic Heart Disease] Sebutkan lesi histologis klasik pada Rheumatic Fever & Rheumatic Heart Disease. :: • Aschoff bodies
+  • Anitschkow cells dengan “caterpillar nuclei”
+- [Libman–Sacks Endocarditis] Sebutkan hal-hal penting tentang Libman–Sacks endocarditis (Patologi Sistem Kardiovaskular). :: • Sterile vegetations pada SLE
+  • Dapat berada pada kedua sisi valve leaflet
+  • Terkait immune complex injury
+- [Vasculitis — Konsep Ringkas] Sebutkan klasifikasi sering berdasarkan ukuran vessel pada Vasculitis — Konsep Ringkas. :: • Large-vessel
+  • Medium-vessel
+  • Small-vessel
+- [Pulmonary Hypertension] Sebutkan hal-hal penting tentang Vascular changes pada Pulmonary Hypertension (Patologi Sistem Kardiovaskular). :: • Medial hypertrophy
+  • Intimal fibrosis
+  • Plexiform lesions pada severe pulmonary arterial hypertension
+- [Faktor Risiko Atherosclerosis] Apa poin high-yield (pearl) tentang Faktor Risiko Atherosclerosis? :: Kombinasi smoking + HTN + hyperlipidemia + diabetes = paket klasik faktor risiko atherosclerosis.
+- [Stable Angina vs Acute Coronary Syndrome] Apa poin high-yield (pearl) tentang Stable Angina vs Acute Coronary Syndrome? :: Angina = ischemia tanpa necrosis. MI = ischemia dengan necrosis.
+- [Acute vs Subacute Endocarditis] Apa poin high-yield (pearl) tentang Acute vs Subacute Endocarditis? :: Staphylococcus aureus = klasik acute IE. Viridans streptococci = klasik subacute IE pada damaged valve.
+- [Hypertrophic Cardiomyopathy] Apa korelasi klinis dari Hypertrophic Cardiomyopathy (Patologi Sistem Kardiovaskular)? :: Young athlete + sudden death + family history → hypertrophic cardiomyopathy.

@@ -363,37 +363,25 @@ Anion gap = Na+ − (Cl− + HCO3−).
 
 ## Flashcard {kartu}
 
-- [Gambaran Besar] PENTING :: hasil laboratorium tidak dibaca sebagai angka terpisah. Interpretasi harus mempertimbangkan gejala, waktu pengambilan sampel, obat, status hidrasi, fungsi organ, dan pola beberapa parameter sekaligus.
-- [Gambaran Besar] Prinsip high-yield :: tentukan dulu apakah hasil abnormal menunjukkan peningkatan produksi, penurunan eliminasi, kebocoran sel, gangguan sintesis, atau pergeseran distribusi cairan/elektrolit.
-- [Langkah Praktis Membaca Panel Lab] Langkah 1 :: cek identitas parameter, unit, dan reference range laboratorium.
-- [Langkah Praktis Membaca Panel Lab] Langkah 2 :: tentukan abnormalitas dominan: naik, turun, atau pola campuran.
-- [Langkah Praktis Membaca Panel Lab] Langkah 3 :: kelompokkan berdasarkan sistem: glukosa, ginjal, hati, lipid, elektrolit/asam-basa, protein, atau enzim.
-- [Langkah Praktis Membaca Panel Lab] Langkah 4 :: cari hubungan fisiologis antarnilai.
-- [Langkah Praktis Membaca Panel Lab] Langkah 5 :: cek kemungkinan faktor preanalitik sebelum menyimpulkan penyakit.
-- [eGFR] G1 :: ≥90 mL/min/1,73 m².
-- [eGFR] PENTING :: G1 atau G2 saja tidak otomatis berarti chronic kidney disease; harus ada bukti kelainan ginjal yang persisten.
-- [Pola Lab Hepatocellular vs Cholestatic] Hepatocellular pattern :: AST/ALT jauh lebih dominan dibanding ALP.
-- [Pola Lab Hepatocellular vs Cholestatic] Cholestatic pattern :: ALP lebih dominan; bilirubin dapat meningkat, terutama bila aliran bile terganggu.
-- [Pola Lab Hepatocellular vs Cholestatic] Mixed pattern :: AST/ALT dan ALP keduanya meningkat tanpa dominasi jelas.
-- [Pola Lab Hepatocellular vs Cholestatic] HIGH-YIELD :: jangan menyamakan ALT/AST tinggi dengan “fungsi hati buruk”. Enzim tinggi = injury; fungsi sintesis dinilai antara lain dengan albumin dan PT/INR.
-- [Empat Gangguan Asam–Basa Primer] Metabolic acidosis :: HCO3− primer turun.
-- [Empat Gangguan Asam–Basa Primer] Metabolic alkalosis :: HCO3− primer naik.
-- [Empat Gangguan Asam–Basa Primer] Respiratory alkalosis :: pCO2 primer turun.
-- [High-yield] Jebakan soal :: ketiga tes mengukur aspek glukosa yang berbeda sehingga tidak selalu memberikan klasifikasi identik pada pasien yang sama
-- [High-yield] Formula Friedewald klasik :: LDL-C ≈ total cholesterol − HDL-C − triglyceride/5 dalam mg/dL
-- [High-yield] pCO2 aktual lebih tinggi dari expected :: ada tambahan respiratory acidosis
-- [High-yield] pCO2 aktual lebih rendah dari expected :: ada tambahan respiratory alkalosis
-- [High-yield] Glucose ↑ + HbA1c ↑ :: chronic hyperglycemia lebih mungkin
-- [High-yield] Glucose ↑ + HbA1c normal/relatif rendah :: pertimbangkan onset akut, stress hyperglycemia, atau masalah HbA1c
-- [High-yield] Creatinine ↑ + eGFR ↓ :: reduced filtration, tetapi tetap lihat baseline dan perubahan akut/kronik
-- [High-yield] AST/ALT dominan ↑ :: hepatocellular injury pattern
-- [High-yield] ALP + GGT dominan ↑ :: cholestatic/hepatobiliary pattern
-- [High-yield] Unconjugated bilirubin dominan ↑ :: hemolysis atau impaired conjugation/uptake
-- [High-yield] Conjugated bilirubin dominan ↑ :: impaired excretion/cholestasis
-- [High-yield] Na−Cl−HCO3 pattern abnormal :: pikirkan water balance dan acid–base, bukan hanya satu elektrolit
-- [High-yield] Troponin tinggi :: myocardial injury, bukan otomatis MI
-- [High-yield] Glucose/HbA1c :: acute vs chronic glycemia; diagnosis diabetes memakai kriteria standar
-- [High-yield] Kidney :: creatinine + eGFR + albuminuria dibaca bersama; creatinine dipengaruhi massa otot
-- [High-yield] Liver :: AST/ALT = injury; ALP/GGT = cholestasis; albumin/PT-INR = synthetic function; bilirubin = production-conjugation-excretion
-- [High-yield] Lipid panel :: LDL/non-HDL/ApoB menggambarkan atherogenic burden; TG dipengaruhi kondisi metabolik/postprandial
-- [High-yield] Acid–base :: HCO3− = metabolic, pCO2 = respiratory; gunakan anion gap dan compensation untuk mengenali mixed disorder
+- [Gambaran Besar] Apa yang dimaksud dengan Prinsip high-yield pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Tentukan dulu apakah hasil abnormal menunjukkan peningkatan produksi, penurunan eliminasi, kebocoran sel, gangguan sintesis, atau pergeseran distribusi cairan/elektrolit.
+- [Pola Lab Hepatocellular vs Cholestatic] Apa yang dimaksud dengan Hepatocellular pattern pada Pola Lab Hepatocellular vs Cholestatic? :: AST/ALT jauh lebih dominan dibanding ALP.
+- [Pola Lab Hepatocellular vs Cholestatic] Apa yang dimaksud dengan Cholestatic pattern pada Pola Lab Hepatocellular vs Cholestatic? :: ALP lebih dominan; bilirubin dapat meningkat, terutama bila aliran bile terganggu.
+- [Pola Lab Hepatocellular vs Cholestatic] Apa yang dimaksud dengan Mixed pattern pada Pola Lab Hepatocellular vs Cholestatic? :: AST/ALT dan ALP keduanya meningkat tanpa dominasi jelas.
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa yang perlu diketahui tentang Formula Friedewald klasik pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: LDL-C ≈ total cholesterol − HDL-C − triglyceride/5 dalam mg/dL
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa jawaban atau kesimpulan untuk petunjuk berikut: pCO2 aktual lebih tinggi dari expected pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Ada tambahan respiratory acidosis
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa jawaban atau kesimpulan untuk petunjuk berikut: pCO2 aktual lebih rendah dari expected pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Ada tambahan respiratory alkalosis
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Glucose ↑ + HbA1c ↑ pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Chronic hyperglycemia lebih mungkin
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Glucose ↑ + HbA1c normal/relatif rendah pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Pertimbangkan onset akut, stress hyperglycemia, atau masalah HbA1c
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Creatinine ↑ + eGFR ↓ pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Reduced filtration, tetapi tetap lihat baseline dan perubahan akut/kronik
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa yang perlu diingat tentang AST/ALT dominan ↑ pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Hepatocellular injury pattern
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa jawaban atau kesimpulan untuk petunjuk berikut: ALP + GGT dominan ↑ pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Cholestatic/hepatobiliary pattern
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Unconjugated bilirubin dominan ↑ pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Hemolysis atau impaired conjugation/uptake
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Conjugated bilirubin dominan ↑ pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Impaired excretion/cholestasis
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Albumin ↓ + PT/INR memanjang dalam konteks liver disease pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Synthetic dysfunction lebih mengkhawatirkan daripada aminotransferase tinggi saja
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa yang perlu diingat tentang Na−Cl−HCO3 pattern abnormal pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Pikirkan water balance dan acid–base, bukan hanya satu elektrolit
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa yang dimaksud dengan Troponin tinggi pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Myocardial injury, bukan otomatis MI
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa yang dimaksud dengan Glucose/HbA1c pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Acute vs chronic glycemia; diagnosis diabetes memakai kriteria standar
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa yang perlu diketahui tentang Kidney pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: Creatinine + eGFR + albuminuria dibaca bersama; creatinine dipengaruhi massa otot
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa yang perlu diketahui tentang Liver pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: AST/ALT = injury; ALP/GGT = cholestasis; albumin/PT-INR = synthetic function; bilirubin = production-conjugation-excretion
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa yang perlu diketahui tentang Lipid panel pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: LDL/non-HDL/ApoB menggambarkan atherogenic burden; TG dipengaruhi kondisi metabolik/postprandial
+- [Biokimia Klinik Dasar (Interpretasi Lab Sederhana)] Apa yang perlu diketahui tentang Acid–base pada Biokimia Klinik Dasar (Interpretasi Lab Sederhana)? :: HCO3− = metabolic, pCO2 = respiratory; gunakan anion gap dan compensation untuk mengenali mixed disorder

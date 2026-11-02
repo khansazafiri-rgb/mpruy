@@ -239,31 +239,25 @@ Asam amino adalah unit penyusun protein dan dibedakan antara kelompok esensial, 
 
 ## Flashcard {kartu}
 
-- [Struktur Umum Asam Amino] Tambahan standar biokimia :: asam amino proteinogenik mempunyai karbon α yang terikat pada gugus amino, gugus karboksil, atom H, dan gugus R.
-- [Zwitterion] Tambahan standar biokimia :: pada pH fisiologis, banyak asam amino berada dalam bentuk zwitterion, dengan gugus amino bermuatan positif dan gugus karboksilat bermuatan negatif.
-- [Arginin sebagai Semi/Conditionally Essential] Konsep praktis :: kebutuhan arginin dapat melampaui kapasitas sintesis endogen pada kondisi pertumbuhan atau keadaan fisiologis tertentu.
-- [Struktur Protein: Gambaran Empat Tingkat] Tambahan standar biokimia :: struktur protein dibahas secara hierarkis sebagai primer → sekunder → tersier → kuartener.
-- [Arah N-Terminus ke C-Terminus] Tambahan standar biokimia :: rantai polipeptida mempunyai N-terminus dengan gugus amino bebas dan C-terminus dengan gugus karboksil bebas.
-- [Struktur Sekunder] Tambahan standar biokimia :: ikatan hidrogen backbone berperan besar dalam menstabilkan struktur sekunder.
-- [Denaturasi: Konsep] Tambahan standar biokimia :: denaturasi mengganggu struktur tingkat tinggi protein tanpa harus memutus seluruh ikatan peptida pada struktur primer.
-- [High-yield] Asam amino :: unit penyusun protein dan dibedakan antara kelompok esensial, nonesensial, serta conditionally/semi-essential. Asam amino dihubungkan melalui ikatan peptida menjadi polipeptida yang mempunyai arah N-terminus ke C-terminus. Struktur protein tersusun hierarkis menjadi primer, sekunder, tersier, dan kuartener; struktur tiga dimensi yang tepat diperlukan untuk fungsi biologis. Poin sumber yang sangat sering diuji meliputi arginin sebagai semi-esensial, leusin dan lisin sebagai ketogenik, tirosin sebagai prekursor katekolamin/melanin/hormon tiroid, triptofan sebagai prekursor serotonin dan melatonin, histidin menjadi urokanat, arginin sebagai prekursor NO, serta hidroksilasi prolin dan lisin dalam sintesis kolagen
-- Peta Besar Bab :: Asam amino → dihubungkan oleh ikatan peptida → membentuk polipeptida → folding menjadi struktur tiga dimensi → menghasilkan protein fungsional.
-- Gugus R / Side Chain :: Gugus R dapat berbeda dalam ukuran, muatan, polaritas, dan sifat hidrofobik.
-- Asam Amino Esensial :: Sumber menekankan bahwa asam amino esensial harus diperoleh dari diet.
-- Asam Amino Nonesensial :: Asam amino nonesensial dapat disintesis tubuh.
-- Sistein dan Hubungan dengan Asam Amino Esensial :: Sumber soal menyebut sistein sebagai asam amino nonesensial yang dapat disintesis dari asam amino esensial.
-- Struktur Protein: Gambaran Empat Tingkat :: Tambahan standar biokimia: struktur protein dibahas secara hierarkis sebagai primer → sekunder → tersier → kuartener.
-- Arah N-Terminus ke C-Terminus :: Tambahan standar biokimia: rantai polipeptida mempunyai N-terminus dengan gugus amino bebas dan C-terminus dengan gugus karboksil bebas.
-- Struktur Sekunder :: Struktur sekunder mencakup pola lokal backbone seperti α-helix dan β-sheet.
-- β-Sheet :: β-Sheet adalah struktur sekunder ketika segmen rantai polipeptida tersusun berdampingan membentuk lembaran.
-- Struktur Kuartener :: Struktur kuartener terbentuk bila protein fungsional tersusun atas lebih dari satu subunit polipeptida.
-- Denaturasi: Konsep :: Tambahan standar biokimia: denaturasi mengganggu struktur tingkat tinggi protein tanpa harus memutus seluruh ikatan peptida pada struktur primer.
-- Protein Struktural :: Kolagen dan elastin merupakan contoh protein yang berperan mempertahankan struktur jaringan.
-- Tirosin sebagai Prekursor Senyawa Khusus :: Sumber berulang kali menempatkan tirosin sebagai prekursor senyawa biologis penting.
-- Tirosin → Melanin :: Melanin juga merupakan salah satu produk khusus yang dikaitkan dengan tirosin pada sumber.
-- Triptofan → Serotonin dan Melatonin :: Sumber menekankan bahwa serotonin dan melatonin berasal dari asam amino yang sama, yaitu triptofan.
-- Histidin → Urokanat :: Pada sumber, histidin dengan bantuan histidase diubah menjadi urokanat.
-- Leusin dan Lisin: Ketogenik :: Sumber soal menekankan leusin dan lisin sebagai pasangan asam amino ketogenik.
-- 3-Fosfogliserat sebagai Prekursor Asam Amino :: Sumber menguji 3-phosphoglycerate sebagai intermediate metabolisme karbohidrat yang dapat berkontribusi pada sintesis asam amino.
-- Phenylketonuria: Exam Anchor :: Sumber mengaitkan defek phenylalanine hydroxylase dengan phenylketonuria klasik.
-- Nutritional Protein Disorders :: Sumber soal membedakan gangguan nutrisi protein seperti marasmus dan kwashiorkor dari beberapa kelainan protein struktural yang bersifat genetik.
+- [Arginin sebagai Semi/Conditionally Essential] Pada Arginin sebagai Semi/Conditionally Essential, apa konsep praktisnya? :: Kebutuhan arginin dapat melampaui kapasitas sintesis endogen pada kondisi pertumbuhan atau keadaan fisiologis tertentu.
+- [Struktur & Fungsi Protein & Asam Amino] Apa yang dimaksud dengan Asam amino pada Struktur & Fungsi Protein & Asam Amino? :: Unit penyusun protein dan dibedakan antara kelompok esensial, nonesensial, serta conditionally/semi-essential. Asam amino dihubungkan melalui ikatan peptida menjadi polipeptida yang mempunyai arah N-terminus ke C-terminus. Struktur protein tersusun hierarkis menjadi primer, sekunder, tersier, dan kuartener; struktur tiga dimensi yang tepat diperlukan untuk fungsi biologis. Poin sumber yang sangat sering diuji meliputi arginin sebagai semi-esensial, leusin dan lisin sebagai ketogenik, tirosin sebagai prekursor katekolamin/melanin/hormon tiroid, triptofan sebagai prekursor serotonin dan melatonin, histidin menjadi urokanat, arginin sebagai prekursor NO, serta hidroksilasi prolin dan lisin dalam sintesis kolagen
+- Jelaskan peta Besar Bab (Struktur & Fungsi Protein & Asam Amino). :: Asam amino → dihubungkan oleh ikatan peptida → membentuk polipeptida → folding menjadi struktur tiga dimensi → menghasilkan protein fungsional.
+- Jelaskan gugus R / Side Chain (Struktur & Fungsi Protein & Asam Amino). :: Gugus R dapat berbeda dalam ukuran, muatan, polaritas, dan sifat hidrofobik.
+- Jelaskan asam Amino Esensial (Struktur & Fungsi Protein & Asam Amino). :: Sumber menekankan bahwa asam amino esensial harus diperoleh dari diet.
+- Jelaskan asam Amino Nonesensial (Struktur & Fungsi Protein & Asam Amino). :: Asam amino nonesensial dapat disintesis tubuh.
+- Jelaskan sistein dan Hubungan dengan Asam Amino Esensial. :: Sumber soal menyebut sistein sebagai asam amino nonesensial yang dapat disintesis dari asam amino esensial.
+- Jelaskan struktur Protein: Gambaran Empat Tingkat (Struktur & Fungsi Protein & Asam Amino). :: Tambahan standar biokimia: struktur protein dibahas secara hierarkis sebagai primer → sekunder → tersier → kuartener.
+- Jelaskan arah N-Terminus ke C-Terminus (Struktur & Fungsi Protein & Asam Amino). :: Tambahan standar biokimia: rantai polipeptida mempunyai N-terminus dengan gugus amino bebas dan C-terminus dengan gugus karboksil bebas.
+- Jelaskan struktur Sekunder (Struktur & Fungsi Protein & Asam Amino). :: Struktur sekunder mencakup pola lokal backbone seperti α-helix dan β-sheet.
+- Apa yang dimaksud dengan β-Sheet (Struktur & Fungsi Protein & Asam Amino)? :: β-Sheet adalah struktur sekunder ketika segmen rantai polipeptida tersusun berdampingan membentuk lembaran.
+- Jelaskan struktur Kuartener (Struktur & Fungsi Protein & Asam Amino). :: Struktur kuartener terbentuk bila protein fungsional tersusun atas lebih dari satu subunit polipeptida.
+- Jelaskan denaturasi: Konsep (Struktur & Fungsi Protein & Asam Amino). :: Tambahan standar biokimia: denaturasi mengganggu struktur tingkat tinggi protein tanpa harus memutus seluruh ikatan peptida pada struktur primer.
+- Jelaskan protein Struktural (Struktur & Fungsi Protein & Asam Amino). :: Kolagen dan elastin merupakan contoh protein yang berperan mempertahankan struktur jaringan.
+- Jelaskan tirosin sebagai Prekursor Senyawa Khusus (Struktur & Fungsi Protein & Asam Amino). :: Sumber berulang kali menempatkan tirosin sebagai prekursor senyawa biologis penting.
+- Jelaskan tirosin → Melanin (Struktur & Fungsi Protein & Asam Amino). :: Melanin juga merupakan salah satu produk khusus yang dikaitkan dengan tirosin pada sumber.
+- Jelaskan triptofan → Serotonin dan Melatonin (Struktur & Fungsi Protein & Asam Amino). :: Sumber menekankan bahwa serotonin dan melatonin berasal dari asam amino yang sama, yaitu triptofan.
+- Jelaskan histidin → Urokanat (Struktur & Fungsi Protein & Asam Amino). :: Pada sumber, histidin dengan bantuan histidase diubah menjadi urokanat.
+- Jelaskan leusin dan Lisin: Ketogenik (Struktur & Fungsi Protein & Asam Amino). :: Sumber soal menekankan leusin dan lisin sebagai pasangan asam amino ketogenik.
+- Jelaskan 3-Fosfogliserat sebagai Prekursor Asam Amino (Struktur & Fungsi Protein & Asam Amino). :: Sumber menguji 3-phosphoglycerate sebagai intermediate metabolisme karbohidrat yang dapat berkontribusi pada sintesis asam amino.
+- Jelaskan phenylketonuria: Exam Anchor (Struktur & Fungsi Protein & Asam Amino). :: Sumber mengaitkan defek phenylalanine hydroxylase dengan phenylketonuria klasik.
+- Jelaskan nutritional Protein Disorders (Struktur & Fungsi Protein & Asam Amino). :: Sumber soal membedakan gangguan nutrisi protein seperti marasmus dan kwashiorkor dari beberapa kelainan protein struktural yang bersifat genetik.

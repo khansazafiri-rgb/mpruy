@@ -436,62 +436,70 @@ Jika variabel yang terganggu adalah volume/osmolality: perubahan ECF → osmorec
 
 ## Flashcard {kartu}
 
-- [Total Body Water (TBW)] adult male muda :: sekitar 60% berat badan
-- [Total Body Water (TBW)] adult female :: rata-rata lebih rendah, sering sekitar 50–55%
-- [Total Body Water (TBW)] bayi :: persentase lebih tinggi
-- [Total Body Water (TBW)] obesitas dan usia lanjut :: persentase TBW cenderung lebih rendah karena jaringan adiposa mengandung lebih sedikit air.
-- [Total Body Water (TBW)] Contoh sederhana :: pria 70 kg dengan asumsi TBW 60% → TBW ≈ 42 L.
-- [Plasma] Pada ECF 14 L :: interstitial fluid ≈ 10.5 L.
-- [Tonisitas] Maka :: osmolarity = menghitung seluruh partikel terlarut; tonicity = mempertimbangkan terutama partikel yang efektif menahan air di suatu kompartemen.
-- [Distribusi Normal Saline] Dengan pendekatan ECF :: ≈ 1/4 ke plasma; ≈ 3/4 ke interstitial fluid.
-- [Tonicity: Shortcut Ujian] Isotonic :: ECF volume ↑; ICF ↔; osmolality ↔.
-- [Tonicity: Shortcut Ujian] Hypertonic :: ECF volume ↑; ICF volume ↓; osmolality ↑.
-- [Tonicity: Shortcut Ujian] Hypotonic :: ECF volume ↑; ICF volume ↑; osmolality ↓.
-- [Termoregulasi: Tujuan Utama] Keseimbangan panas :: heat production = heat loss → suhu stabil.
-- [Fever vs Hyperthermia] Fever :: hypothalamic set point meningkat, biasanya dipicu pyrogens melalui mediator seperti prostaglandin E2.
-- [Fever vs Hyperthermia] Hyperthermia :: set point tidak meningkat; produksi/masuknya panas melebihi kemampuan heat loss.
-- [High-yield] Homeostasis :: dynamic regulation dalam physiological range
-- [High-yield] Negative feedback :: melawan perubahan awal
-- [High-yield] Positive feedback :: memperkuat perubahan sampai endpoint
-- [High-yield] Feedforward :: anticipatory response
-- [High-yield] Allostasis :: stability through change
-- [High-yield] ICF :: 2/3 TBW
-- [High-yield] ECF :: 1/3 TBW
-- [High-yield] Plasma :: 1/4 ECF
-- [High-yield] Interstitial :: 3/4 ECF
-- [High-yield] ECF :: Na+, Cl−, HCO3−
-- [High-yield] ICF :: K+, Mg2+, phosphate, protein
-- [High-yield] Osmolarity :: semua osmotically active particles per liter
-- [High-yield] Tonicity :: efek effective osmoles terhadap cell volume
-- [High-yield] 0.9% NaCl :: ECF expansion, ICF relatif tetap
-- [High-yield] Hypotonic :: air masuk sel
-- [High-yield] Hypertonic :: air keluar sel
-- [High-yield] Edema :: ↑ hydrostatic pressure,
-- [High-yield] Heat loss :: radiation, conduction, convection, evaporation
-- [High-yield] Sweat gland :: sympathetic cholinergic
-- [High-yield] Fever :: set point naik
-- [High-yield] Hyperthermia :: set point tidak naik
-- [Edema: Empat Mekanisme Besar] Edema dapat muncul melalui … :: • peningkatan capillary hydrostatic pressure
-  • penurunan plasma oncotic pressure
-  • peningkatan capillary permeability
-  • gangguan lymphatic drainage
-- [Prinsip Dasar Terapi Cairan] Sebelum memprediksi efek infus, tanyakan … :: • cairan masuk ke kompartemen mana?
-  • apakah solut dapat menembus cell membrane?
-  • apakah larutan mengubah ECF tonicity?
-  • ke mana air akan bergerak setelah equilibrium?
-- [Produksi Panas] Sumber panas utama … :: • basal metabolism
-  • aktivitas otot
-  • shivering
-  • efek hormon, terutama thyroid hormone
-  • aktivitas simpatis/catecholamine
-  • thermic effect of food
-- [Respons terhadap Panas] Ketika core temperature meningkat … :: • cutaneous vasodilation ↑
-  • sweating ↑
-  • heat production ditekan
-  • perilaku mencari lingkungan dingin meningkat
-- [Respons terhadap Dingin] Ketika suhu menurun … :: • cutaneous vasoconstriction ↑
-  • shivering ↑
-  • metabolic heat production ↑
-  • perilaku mencari panas meningkat
-- [Effective vs Ineffective Osmoles] High-yield: Effective vs Ineffective Osmoles :: Hyperosmotic tidak selalu identik dengan hypertonic.
-- [Respons terhadap Panas] High-yield: Respons terhadap Panas :: Simpatis tidak selalu adrenergik; innervasi kelenjar keringat adalah contoh penting sympathetic cholinergic.
+- [Total Body Water (TBW)] Jelaskan adult male muda dalam konteks Total Body Water. :: Sekitar 60% berat badan
+- [Total Body Water (TBW)] Apa yang dimaksud dengan adult female pada Total Body Water? :: Rata-rata lebih rendah, sering sekitar 50–55%
+- [Total Body Water (TBW)] Apa yang dimaksud dengan bayi pada Total Body Water? :: Persentase lebih tinggi
+- [Total Body Water (TBW)] Jelaskan obesitas dan usia lanjut dalam konteks Total Body Water. :: Persentase TBW cenderung lebih rendah karena jaringan adiposa mengandung lebih sedikit air.
+- [Total Body Water (TBW)] Apa yang dimaksud dengan Contoh sederhana pada Total Body Water? :: Pria 70 kg dengan asumsi TBW 60% → TBW ≈ 42 L.
+- [Tonicity: Shortcut Ujian] Apa yang dimaksud dengan Isotonic pada Tonicity: Shortcut Ujian? :: ECF volume ↑; ICF ↔; osmolality ↔.
+- [Tonicity: Shortcut Ujian] Apa yang dimaksud dengan Hypertonic pada Tonicity: Shortcut Ujian? :: ECF volume ↑; ICF volume ↓; osmolality ↑.
+- [Tonicity: Shortcut Ujian] Apa yang dimaksud dengan Hypotonic pada Tonicity: Shortcut Ujian? :: ECF volume ↑; ICF volume ↑; osmolality ↓.
+- [Termoregulasi: Tujuan Utama] Apa yang dimaksud dengan Keseimbangan panas pada Termoregulasi: Tujuan Utama? :: Heat production = heat loss → suhu stabil.
+- [Fever vs Hyperthermia] Jelaskan Fever pada Fever vs Hyperthermia (Fisiologi Cairan Tubuh & Elektrolit). :: Hypothalamic set point meningkat, biasanya dipicu pyrogens melalui mediator seperti prostaglandin E2.
+- [Fever vs Hyperthermia] Jelaskan Hyperthermia pada Fever vs Hyperthermia (Fisiologi Cairan Tubuh & Elektrolit). :: Set point tidak meningkat; produksi/masuknya panas melebihi kemampuan heat loss.
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Homeostasis pada Fisiologi Cairan Tubuh & Elektrolit? :: Dynamic regulation dalam physiological range
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Negative feedback pada Fisiologi Cairan Tubuh & Elektrolit? :: Melawan perubahan awal
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Positive feedback pada Fisiologi Cairan Tubuh & Elektrolit? :: Memperkuat perubahan sampai endpoint
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Feedforward pada Fisiologi Cairan Tubuh & Elektrolit? :: Anticipatory response
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Allostasis pada Fisiologi Cairan Tubuh & Elektrolit? :: Stability through change
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan ICF pada Fisiologi Cairan Tubuh & Elektrolit? :: 2/3 TBW
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan ECF pada Fisiologi Cairan Tubuh & Elektrolit? :: 1/3 TBW
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Plasma pada Fisiologi Cairan Tubuh & Elektrolit? :: 1/4 ECF
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Interstitial pada Fisiologi Cairan Tubuh & Elektrolit? :: 3/4 ECF
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Osmolarity pada Fisiologi Cairan Tubuh & Elektrolit? :: Semua osmotically active particles per liter
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Tonicity pada Fisiologi Cairan Tubuh & Elektrolit? :: Efek effective osmoles terhadap cell volume
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang perlu diingat tentang 0.9% NaCl pada Fisiologi Cairan Tubuh & Elektrolit? :: ECF expansion, ICF relatif tetap
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang perlu diingat tentang Hypotonic pada Fisiologi Cairan Tubuh & Elektrolit? :: Air masuk sel
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang perlu diingat tentang Hypertonic pada Fisiologi Cairan Tubuh & Elektrolit? :: Air keluar sel
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang perlu diketahui tentang Heat loss pada Fisiologi Cairan Tubuh & Elektrolit? :: Radiation, conduction, convection, evaporation
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Sweat gland pada Fisiologi Cairan Tubuh & Elektrolit? :: Sympathetic cholinergic
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Fever pada Fisiologi Cairan Tubuh & Elektrolit? :: Set point naik
+- [Fisiologi Cairan Tubuh & Elektrolit] Apa yang dimaksud dengan Hyperthermia pada Fisiologi Cairan Tubuh & Elektrolit? :: Set point tidak naik
+- [Total Body Water (TBW)] Sebutkan nilai pendekatan pada Total Body Water. :: • Adult male muda: sekitar 60% berat badan
+  • Adult female: rata-rata lebih rendah, sering sekitar 50–55%
+  • Bayi: persentase lebih tinggi
+  • Obesitas dan usia lanjut: persentase TBW cenderung lebih rendah karena jaringan adiposa mengandung lebih sedikit air
+- [Komposisi Ion ICF dan ECF] Sebutkan hal-hal penting tentang ECF dominan pada Komposisi Ion ICF dan ECF (Fisiologi Cairan Tubuh & Elektrolit). :: • Na+
+  • Cl−
+  • HCO3−
+- [Komposisi Ion ICF dan ECF] Sebutkan hal-hal penting tentang ICF dominan pada Komposisi Ion ICF dan ECF (Fisiologi Cairan Tubuh & Elektrolit). :: • K+
+  • Mg2+
+  • Phosphate
+  • Protein bermuatan negatif
+- [Perpindahan Cairan Plasma–Interstitium] Sebutkan konsep utama pada Perpindahan Cairan Plasma–Interstitium. :: • Capillary hydrostatic pressure mendorong cairan keluar kapiler
+  • Plasma colloid osmotic/oncotic pressure menarik air ke arah plasma
+  • Interstitial hydrostatic dan oncotic pressures ikut memodulasi arah filtrasi
+  • Lymphatic drainage mengembalikan excess interstitial fluid dan protein ke sirkulasi
+- [Tekanan Onkotik] Sebutkan contoh penyebab pada Tekanan Onkotik (Fisiologi Cairan Tubuh & Elektrolit). :: • Gangguan sintesis albumin
+  • Kehilangan protein melalui ginjal
+  • Malnutrisi berat
+- [Dehidrasi dan Perdarahan] Sebutkan hal-hal penting tentang Respons kompensasi pada Dehidrasi dan Perdarahan (Fisiologi Cairan Tubuh & Elektrolit). :: • Simpatis ↑
+  • Heart rate ↑
+  • Vasoconstriction ↑
+  • RAAS ↑
+  • ADH ↑
+  • Rasa haus ↑
+- [Produksi Panas] Sebutkan sumber panas utama pada Produksi Panas (Fisiologi Cairan Tubuh & Elektrolit). :: • Basal metabolism
+  • Aktivitas otot
+  • Shivering
+  • Efek hormon, terutama thyroid hormone
+  • Aktivitas simpatis/catecholamine
+  • Thermic effect of food
+- [Pola Hitungan Kompartemen Cairan] Sebutkan urutan atau langkah pada Pola Hitungan Kompartemen Cairan? :: • Tentukan berat badan
+  • Tentukan asumsi TBW yang sesuai soal
+  • ICF = 2/3 TBW
+  • ECF = 1/3 TBW
+  • Plasma = 1/4 ECF
+  • Interstitial = 3/4 ECF
+- [Effective vs Ineffective Osmoles] Apa poin high-yield (pearl) tentang Effective vs Ineffective Osmoles? :: Hyperosmotic tidak selalu identik dengan hypertonic.
+- [Respons terhadap Panas] Apa poin high-yield (pearl) tentang Respons terhadap Panas? :: Simpatis tidak selalu adrenergik; innervasi kelenjar keringat adalah contoh penting sympathetic cholinergic.

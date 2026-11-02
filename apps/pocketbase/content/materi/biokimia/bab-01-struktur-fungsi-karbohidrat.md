@@ -263,28 +263,21 @@ Karbohidrat dibagi menjadi monosakarida, disakarida, oligosakarida, dan polisaka
 
 ## Flashcard {kartu}
 
-- [Katabolisme] Shortcut sumber :: “katana = dipotong” → besar menjadi kecil.
-- [Gugus Fungsi Monosakarida] Aldehid :: mengandung gugus -CHO.
-- [Gugus Fungsi Monosakarida] Keton :: mengandung gugus C=O.
-- [Karbohidrat Kompleks] Contoh penting dalam materi :: glikogen, amilosa, dan amilopektin.
-- [SGLT-1] Mekanisme yang ditekankan :: transport aktif sekunder bersama Na+.
-- [GLUT-5] Mekanisme :: difusi terfasilitasi.
-- [Master Flow Absorpsi Monosakarida] Lumen usus :: Glukosa/Galaktosa → SGLT-1 + Na+ → enterosit.
-- [Klasifikasi Karbohidrat] Karbohidrat diklasifikasikan berdasarkan jumlah unit gula penyusunnya … :: • Monosakarida = 1 unit gula
-  • Disakarida = 2 unit gula
-  • Oligosakarida = 3–10 unit gula
-  • Polisakarida/karbohidrat kompleks = rantai gula yang panjang
-- [Monosakarida Penting] Empat monosakarida yang ditekankan dalam sumber … :: • Glukosa
+- [Gugus Fungsi Monosakarida] Apa yang dimaksud dengan Aldehid pada Gugus Fungsi Monosakarida? :: Mengandung gugus -CHO.
+- [Gugus Fungsi Monosakarida] Apa yang dimaksud dengan Keton pada Gugus Fungsi Monosakarida? :: Mengandung gugus C=O.
+- [Karbohidrat Kompleks] Jelaskan Contoh penting dalam materi dalam konteks Karbohidrat Kompleks (Struktur & Fungsi Karbohidrat). :: Glikogen, amilosa, dan amilopektin.
+- [SGLT-1] Pada SGLT-1, apa mekanismenya (Struktur & Fungsi Karbohidrat)? :: Transport aktif sekunder bersama Na+.
+- [GLUT-5] Pada GLUT-5, apa mekanismenya (Struktur & Fungsi Karbohidrat)? :: Difusi terfasilitasi.
+- [GLUT-2] Pada GLUT-2, apa mekanismenya (Struktur & Fungsi Karbohidrat)? :: Difusi terfasilitasi.
+- [Master Flow Absorpsi Monosakarida] Apa yang dimaksud dengan Lumen usus pada Master Flow Absorpsi Monosakarida? :: Glukosa/Galaktosa → SGLT-1 + Na+ → enterosit.
+- [Monosakarida Penting] Sebutkan hal-hal penting tentang Empat monosakarida pada Monosakarida Penting (Struktur & Fungsi Karbohidrat). :: • Glukosa
   • Ribosa
   • Fruktosa
   • Galaktosa
-- [Gugus Fungsi Monosakarida] Materi membedakan monosakarida berdasarkan gugus fungsi utama … :: • Aldehid: mengandung gugus -CHO
+- [Gugus Fungsi Monosakarida] Sebutkan materi membedakan monosakarida berdasarkan gugus fungsi utama pada Gugus Fungsi Monosakarida. :: • Aldehid: mengandung gugus -CHO
   • Keton: mengandung gugus C=O
-- [Straight Chain vs Branch Point] Cara cepat membaca struktur … :: • Rantai lurus → pikirkan ikatan α1→4
+- [Straight Chain vs Branch Point] Sebutkan cara cepat membaca struktur pada Straight Chain vs Branch Point. :: • Rantai lurus → pikirkan ikatan α1→4
   • Titik cabang → pikirkan ikatan α1→6
-- [Hasil Akhir Pencernaan] Tiga monosakarida absorptif yang paling ditekankan … :: • Glukosa
-  • Galaktosa
-  • Fruktosa
-- [Sukrosa] Mnemonic sumber: Sukrosa :: “sukrosa mengandung buah” → fruktosa.
-- [Laktosa] Mnemonic sumber: Laktosa :: “laktosa = susu = Milky Way = galaksi” → galaktosa.
-- [Maltosa] Mnemonic sumber: Maltosa :: “Maltwins” → anak kembar → dua glukosa.
+- [Sukrosa] Bagaimana cara mengingat Sukrosa (Struktur & Fungsi Karbohidrat)? :: “sukrosa mengandung buah” → fruktosa.
+- [Laktosa] Bagaimana cara mengingat Laktosa (Struktur & Fungsi Karbohidrat)? :: “laktosa = susu = Milky Way = galaksi” → galaktosa.
+- [Maltosa] Bagaimana cara mengingat Maltosa (Struktur & Fungsi Karbohidrat)? :: “Maltwins” → anak kembar → dua glukosa.

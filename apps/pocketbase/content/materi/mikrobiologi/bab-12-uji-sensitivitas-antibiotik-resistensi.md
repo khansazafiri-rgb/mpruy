@@ -206,50 +206,59 @@ Antibiogram adalah ringkasan persentase isolat lokal yang sensitif terhadap anti
 
 ## Flashcard {kartu}
 
-- [Mekanisme Resistensi Antimikroba] Conjugation :: transfer plasmid melalui kontak langsung/pilus; sangat penting dalam penyebaran gen resistensi.
-- [Mekanisme Resistensi Antimikroba] Transformation :: pengambilan DNA bebas dari lingkungan.
-- [Mekanisme Resistensi Antimikroba] Transduction :: transfer DNA melalui bakteriofag.
-- [Mekanisme Resistensi Antimikroba] Transposon/integron :: elemen genetik bergerak yang dapat membawa resistance cassette.
-- [Istilah MDR, XDR, PDR & Resistensi Penting] MDR (multidrug-resistant) :: tidak sensitif terhadap sedikitnya satu agen dalam ≥3 kategori antimikroba yang relevan.
-- [Istilah MDR, XDR, PDR & Resistensi Penting] XDR (extensively drug-resistant) :: tidak sensitif terhadap setidaknya satu agen di hampir semua kategori; hanya tersisa sensitivitas pada sangat sedikit kategori.
-- [Istilah MDR, XDR, PDR & Resistensi Penting] PDR (pandrug-resistant) :: tidak sensitif terhadap seluruh agen pada seluruh kategori antimikroba yang diuji dan relevan.
-- [Istilah MDR, XDR, PDR & Resistensi Penting] MRSA :: mecA/mecC → PBP2a dengan afinitas rendah terhadap sebagian besar beta-laktam.
-- [Istilah MDR, XDR, PDR & Resistensi Penting] VRE :: gen van, terutama vanA/vanB → perubahan target D-Ala-D-Ala menjadi D-Ala-D-Lac/D-Ser sehingga afinitas vancomycin turun.
-- [Istilah MDR, XDR, PDR & Resistensi Penting] ESBL :: beta-laktamase yang menghidrolisis banyak penicillin dan cephalosporin spektrum luas; sering pada E. coli/Klebsiella.
-- [Istilah MDR, XDR, PDR & Resistensi Penting] AmpC :: dapat bersifat kromosomal atau plasmid-mediated; resistensi terhadap banyak cephalosporin dan tidak dihambat secara andal oleh inhibitor beta-laktamase klasik tertentu.
-- [Istilah MDR, XDR, PDR & Resistensi Penting] Carbapenemase :: misalnya KPC, NDM, VIM, IMP, OXA-48-like; menyebabkan resistensi carbapenem dengan implikasi infection control besar.
-- [Healthcare-Associated Infections (HAI)] Rantai transmisi :: reservoir/source → portal of exit → mode of transmission → portal of entry → susceptible host.
-- [Healthcare-Associated Infections (HAI)] Faktor risiko :: perangkat invasif, lama rawat, ICU, antibiotik spektrum luas, operasi, imunosupresi, kepadatan pasien, dan kepatuhan infection control rendah.
-- [Disinfection, Antisepsis & Sterilization] Cleaning :: menghilangkan kotoran/organic material; langkah awal penting sebelum disinfeksi/sterilisasi.
-- [Disinfection, Antisepsis & Sterilization] Antisepsis :: penggunaan agen kimia pada jaringan hidup untuk menurunkan mikroorganisme.
-- [Disinfection, Antisepsis & Sterilization] Disinfection :: menghancurkan banyak/semua mikroorganisme patogen pada benda mati, tetapi tidak selalu spora bakteri.
-- [Disinfection, Antisepsis & Sterilization] Sterilization :: menghancurkan seluruh bentuk kehidupan mikroba termasuk spora.
-- [Disinfection, Antisepsis & Sterilization] Metode sterilisasi klasik :: steam under pressure/autoclave. Heat-sensitive equipment dapat memerlukan metode low-temperature tertentu sesuai kompatibilitas alat.
-- [Antibiogram] Keterbatasan :: antibiogram populasi tidak menggantikan hasil kultur pasien individual, dapat dipengaruhi case-mix, lokasi unit, jenis spesimen, dan metode penyusunan. ICU-specific atau syndrome-specific antibiogram dapat berbeda dari antibiogram rumah sakit secara keseluruhan.
-- [High-yield] Mutation + horizontal gene transfer :: dua jalur besar munculnya resistensi
-- [High-yield] vanA/vanB :: target vancomycin berubah
-- [High-yield] ESBL dan carbapenemase :: mekanisme enzimatik penting pada Gram-negatif
-- [High-yield] Setelah kultur keluar :: de-escalate bila memungkinkan
-- [Mekanisme Resistensi Antimikroba] Horizontal gene transfer … :: • Conjugation: transfer plasmid melalui kontak langsung/pilus; sangat penting dalam penyebaran gen resistensi
+- [Mekanisme Resistensi Antimikroba] Apa yang dimaksud dengan Conjugation pada Mekanisme Resistensi Antimikroba? :: Transfer plasmid melalui kontak langsung/pilus; sangat penting dalam penyebaran gen resistensi.
+- [Mekanisme Resistensi Antimikroba] Apa yang dimaksud dengan Transformation pada Mekanisme Resistensi Antimikroba? :: Pengambilan DNA bebas dari lingkungan.
+- [Mekanisme Resistensi Antimikroba] Apa yang dimaksud dengan Transduction pada Mekanisme Resistensi Antimikroba? :: Transfer DNA melalui bakteriofag.
+- [Mekanisme Resistensi Antimikroba] Apa yang dimaksud dengan Transposon/integron pada Mekanisme Resistensi Antimikroba? :: Elemen genetik bergerak yang dapat membawa resistance cassette.
+- [Istilah MDR, XDR, PDR & Resistensi Penting] Apa yang dimaksud dengan MDR (multidrug-resistant) pada Istilah MDR, XDR, PDR & Resistensi Penting? :: Tidak sensitif terhadap sedikitnya satu agen dalam ≥3 kategori antimikroba yang relevan.
+- [Istilah MDR, XDR, PDR & Resistensi Penting] Jelaskan XDR (extensively drug-resistant) dalam konteks Istilah MDR, XDR, PDR & Resistensi Penting. :: Tidak sensitif terhadap setidaknya satu agen di hampir semua kategori; hanya tersisa sensitivitas pada sangat sedikit kategori.
+- [Istilah MDR, XDR, PDR & Resistensi Penting] Apa yang dimaksud dengan PDR (pandrug-resistant) pada Istilah MDR, XDR, PDR & Resistensi Penting? :: Tidak sensitif terhadap seluruh agen pada seluruh kategori antimikroba yang diuji dan relevan.
+- [Istilah MDR, XDR, PDR & Resistensi Penting] Apa yang dimaksud dengan MRSA pada Istilah MDR, XDR, PDR & Resistensi Penting? :: MecA/mecC → PBP2a dengan afinitas rendah terhadap sebagian besar beta-laktam.
+- [Istilah MDR, XDR, PDR & Resistensi Penting] Apa yang dimaksud dengan VRE pada Istilah MDR, XDR, PDR & Resistensi Penting? :: Gen van, terutama vanA/vanB → perubahan target D-Ala-D-Ala menjadi D-Ala-D-Lac/D-Ser sehingga afinitas vancomycin turun.
+- [Istilah MDR, XDR, PDR & Resistensi Penting] Apa yang dimaksud dengan ESBL pada Istilah MDR, XDR, PDR & Resistensi Penting? :: Beta-laktamase yang menghidrolisis banyak penicillin dan cephalosporin spektrum luas; sering pada E. coli/Klebsiella.
+- [Istilah MDR, XDR, PDR & Resistensi Penting] Apa yang dimaksud dengan AmpC pada Istilah MDR, XDR, PDR & Resistensi Penting? :: Dapat bersifat kromosomal atau plasmid-mediated; resistensi terhadap banyak cephalosporin dan tidak dihambat secara andal oleh inhibitor beta-laktamase klasik tertentu.
+- [Istilah MDR, XDR, PDR & Resistensi Penting] Apa yang dimaksud dengan Carbapenemase pada Istilah MDR, XDR, PDR & Resistensi Penting? :: Misalnya KPC, NDM, VIM, IMP, OXA-48-like; menyebabkan resistensi carbapenem dengan implikasi infection control besar.
+- [Healthcare-Associated Infections (HAI)] Apa yang dimaksud dengan Rantai transmisi pada Healthcare-Associated Infections (Uji Sensitivitas Antibiotik & Resistensi)? :: Reservoir/source → portal of exit → mode of transmission → portal of entry → susceptible host.
+- [Healthcare-Associated Infections (HAI)] Pada Healthcare-Associated Infections, apa faktor risikonya (Uji Sensitivitas Antibiotik & Resistensi)? :: Perangkat invasif, lama rawat, ICU, antibiotik spektrum luas, operasi, imunosupresi, kepadatan pasien, dan kepatuhan infection control rendah.
+- [Disinfection, Antisepsis & Sterilization] Apa yang dimaksud dengan Cleaning pada Disinfection, Antisepsis & Sterilization? :: Menghilangkan kotoran/organic material; langkah awal penting sebelum disinfeksi/sterilisasi.
+- [Disinfection, Antisepsis & Sterilization] Jelaskan Antisepsis pada Disinfection, Antisepsis & Sterilization (Uji Sensitivitas Antibiotik & Resistensi). :: Penggunaan agen kimia pada jaringan hidup untuk menurunkan mikroorganisme.
+- [Disinfection, Antisepsis & Sterilization] Jelaskan Disinfection pada Disinfection, Antisepsis & Sterilization (Uji Sensitivitas Antibiotik & Resistensi). :: Menghancurkan banyak/semua mikroorganisme patogen pada benda mati, tetapi tidak selalu spora bakteri.
+- [Disinfection, Antisepsis & Sterilization] Jelaskan Sterilization pada Disinfection, Antisepsis & Sterilization (Uji Sensitivitas Antibiotik & Resistensi). :: Menghancurkan seluruh bentuk kehidupan mikroba termasuk spora.
+- [Disinfection, Antisepsis & Sterilization] Jelaskan Metode sterilisasi klasik dalam konteks Disinfection, Antisepsis & Sterilization. :: Steam under pressure/autoclave. Heat-sensitive equipment dapat memerlukan metode low-temperature tertentu sesuai kompatibilitas alat.
+- [Antibiogram] Apa yang dimaksud dengan Keterbatasan pada Antibiogram (Uji Sensitivitas Antibiotik & Resistensi)? :: Antibiogram populasi tidak menggantikan hasil kultur pasien individual, dapat dipengaruhi case-mix, lokasi unit, jenis spesimen, dan metode penyusunan. ICU-specific atau syndrome-specific antibiogram dapat berbeda dari antibiogram rumah sakit secara keseluruhan.
+- [Uji Sensitivitas Antibiotik & Resistensi] Apa yang dimaksud dengan Mutation + horizontal gene transfer pada Uji Sensitivitas Antibiotik & Resistensi? :: Dua jalur besar munculnya resistensi
+- [Uji Sensitivitas Antibiotik & Resistensi] Apa yang perlu diingat tentang vanA/vanB pada Uji Sensitivitas Antibiotik & Resistensi? :: Target vancomycin berubah
+- [Uji Sensitivitas Antibiotik & Resistensi] Apa yang dimaksud dengan ESBL dan carbapenemase pada Uji Sensitivitas Antibiotik & Resistensi? :: Mekanisme enzimatik penting pada Gram-negatif
+- [Uji Sensitivitas Antibiotik & Resistensi] Apa yang perlu diingat tentang Setelah kultur keluar pada Uji Sensitivitas Antibiotik & Resistensi? :: De-escalate bila memungkinkan
+- [Mekanisme Resistensi Antimikroba] Sebutkan hal-hal penting tentang Horizontal gene transfer pada Mekanisme Resistensi Antimikroba. :: • Conjugation: transfer plasmid melalui kontak langsung/pilus; sangat penting dalam penyebaran gen resistensi
   • Transformation: pengambilan DNA bebas dari lingkungan
   • Transduction: transfer DNA melalui bakteriofag
   • Transposon/integron: elemen genetik bergerak yang dapat membawa resistance cassette
-- [PPRA / Antimicrobial Stewardship] WHO AWaRe classification … :: • Access → pilihan lini pertama/kedua untuk banyak infeksi umum, potensi resistensi relatif lebih rendah
+- [Antimicrobial Susceptibility Testing (AST)] Sebutkan metode penting pada Antimicrobial Susceptibility Testing. :: • Kirby–Bauer disk diffusion → ukur diameter zona hambat lalu interpretasi menurut breakpoint standar
+  • Broth microdilution → menentukan MIC (minimum inhibitory concentration)
+  • E-test/gradient diffusion → estimasi MIC dari titik perpotongan ellipse inhibisi dengan strip konsentrasi
+  • Automated systems → banyak digunakan di laboratorium klinik
+- [PPRA / Antimicrobial Stewardship] Sebutkan hal-hal penting tentang WHO AWaRe classification pada PPRA / Antimicrobial Stewardship. :: • Access → pilihan lini pertama/kedua untuk banyak infeksi umum, potensi resistensi relatif lebih rendah
   • Watch → risiko seleksi resistensi lebih tinggi; penggunaannya perlu lebih terkontrol
   • Reserve → “last resort” untuk infeksi oleh organisme multidrug-resistant tertentu
-- [Standard Precautions & Transmission-Based Precautions] Standard precautions diterapkan pada semua pasien tanpa memandang diagnosis … :: • Hand hygiene
-  • Penggunaan PPE sesuai risiko pajanan
-  • Respiratory hygiene/cough etiquette
-  • Safe injection practice
-  • Sharps safety
-  • Pembersihan lingkungan dan pemrosesan alat yang tepat
-  • Pengelolaan linen/limbah sesuai prosedur
-- [Standard Precautions & Transmission-Based Precautions] Transmission-based precautions ditambahkan bila diperlukan … :: • Contact precautions → patogen yang menyebar terutama melalui kontak langsung/tidak langsung; gunakan gown/gloves sesuai kebijakan dan kondisi klinis
+- [Healthcare-Associated Infections (HAI)] Sebutkan HAI penting pada Healthcare-Associated Infections (Uji Sensitivitas Antibiotik & Resistensi). :: • CLABSI → central line-associated bloodstream infection
+  • CAUTI → catheter-associated urinary tract infection
+  • VAP → ventilator-associated pneumonia
+  • SSI → surgical site infection
+  • Infeksi terkait organisme resisten dan transmisi silang di fasilitas kesehatan
+- [Standard Precautions & Transmission-Based Precautions] Sebutkan hal-hal penting tentang Transmission-based precautions ditambahkan bila diperlukan pada Standard Precautions & Transmission-Based Precautions. :: • Contact precautions → patogen yang menyebar terutama melalui kontak langsung/tidak langsung; gunakan gown/gloves sesuai kebijakan dan kondisi klinis
   • Droplet precautions → droplet respiratorik jarak dekat; masker medis/surgical mask sesuai kebijakan
   • Airborne precautions → partikel aerosol yang dapat bertahan di udara; respirator seperti N95 dan ruang tekanan negatif bila tersedia/diindikasikan
-- [Hand Hygiene — 5 Moments] Lima momen WHO … :: • Before touching a patient
+- [Standard Precautions & Transmission-Based Precautions] Sebutkan contoh high-yield pada Standard Precautions & Transmission-Based Precautions. :: • TB paru/laring aktif → airborne
+  • Measles → airborne
+  • Varicella → airborne + contact
+  • Influenza → droplet dalam sebagian besar situasi rutin, dengan perlindungan lebih tinggi saat aerosol-generating procedures
+- [Hand Hygiene — 5 Moments] Sebutkan hal-hal penting tentang Lima momen WHO pada Hand Hygiene — 5 Moments. :: • Before touching a patient
   • Before clean/aseptic procedure
   • After body fluid exposure/risk
   • After touching a patient
   • After touching patient surroundings
-- [Konsep Dasar Antimikroba & Resistensi] Poin penting: Konsep Dasar Antimikroba & Resistensi :: Yang menjadi resisten adalah mikroorganismenya, bukan tubuh pasien. Penggunaan antimikroba yang tidak perlu, pilihan obat yang terlalu luas, dosis/durasi yang tidak tepat, transmisi organisme resisten, dan lemahnya pencegahan infeksi mempercepat seleksi serta penyebaran resistensi.
+- [Disinfection, Antisepsis & Sterilization] Sebutkan hal-hal penting tentang Spaulding classification pada Disinfection, Antisepsis & Sterilization (Uji Sensitivitas Antibiotik & Resistensi). :: • Critical items masuk jaringan steril/vascular system → harus steril
+  • Semicritical items kontak mukosa/nonintact skin → minimal high-level disinfection
+  • Noncritical items kontak kulit utuh → low/intermediate-level disinfection sesuai risiko
+- [Konsep Dasar Antimikroba & Resistensi] Apa poin high-yield (pearl) tentang Konsep Dasar Antimikroba & Resistensi? :: Yang menjadi resisten adalah mikroorganismenya, bukan tubuh pasien. Penggunaan antimikroba yang tidak perlu, pilihan obat yang terlalu luas, dosis/durasi yang tidak tepat, transmisi organisme resisten, dan lemahnya pencegahan infeksi mempercepat seleksi serta penyebaran resistensi.

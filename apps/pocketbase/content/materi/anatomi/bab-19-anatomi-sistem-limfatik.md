@@ -272,42 +272,45 @@ Saat melihat specimen atau gambar sistem limfatik, identifikasi dengan urutan be
 
 ## Flashcard {kartu}
 
-- [Lymph Node: Struktur dan Arah Aliran] Aliran limfe :: afferent vessels → subcapsular sinus → cortical/trabecular sinuses → medullary sinuses → efferent vessel di hilum.
-- [Thoracic Duct dan Cisterna Chyli] Territory thoracic duct :: hampir seluruh tubuh kecuali right upper quadrant.
-- [Lymphedema dan Chylous Leakage] Contoh penting :: axillary node dissection dapat mengganggu drainage upper limb dan menyebabkan arm lymphedema.
-- [High-yield] Lymph :: tissue → capillary → collecting vessel → node → trunk → duct → venous angle
-- [High-yield] Thoracic duct :: cisterna chyli L1–L2 → aortic hiatus T12 → cross sekitar T5 → left venous angle
-- [High-yield] Lymph node :: banyak afferent vessels masuk di convex surface; satu/lebih sedikit efferent keluar di hilum
-- [High-yield] Axillary flow :: pectoral/subscapular/humeral → central → apical → subclavian trunk
-- [Lymphatic Trunks] Trunks utama yang perlu diingat … :: • jugular trunks — kepala dan leher
-  • subclavian trunks — ekstremitas atas dan bagian superficial thoracic wall
-  • bronchomediastinal trunks — struktur thorax
-  • lumbar trunks — lower limbs, pelvis, posterior abdominal wall, kidneys, gonads, dan sebagian organ retroperitoneal
-  • intestinal trunk — sebagian besar gastrointestinal tract dan organ terkait
-- [Right Lymphatic Duct] Territory right lymphatic duct … :: • right side of head and neck
-  • right upper limb
-  • right side of thorax
-- [Upper Limb dan Axillary Nodes] Lima kelompok utama axillary nodes … :: • pectoral/anterior — anterior thoracic wall dan sebagian besar breast
-  • subscapular/posterior — posterior thoracic wall dan scapular region
-  • humeral/lateral — sebagian besar upper limb
-  • central — menerima dari pectoral, subscapular, dan humeral groups
-  • apical — menerima dari central group dan jalur cephalic/deltopectoral
-- [Abdomen: Pre-aortic dan Para-aortic Logic] Pre-aortic nodes mengikuti tiga unpaired anterior branches aorta … :: • celiac nodes — foregut territory
-  • superior mesenteric nodes — midgut territory
-  • inferior mesenteric nodes — hindgut territory
-- [Lower Limb dan Inguinal Nodes] Superficial lymphatics lower limb terbagi mengikuti vena superfisial … :: • jalur great saphenous vein → superficial inguinal nodes
-  • jalur small saphenous vein → popliteal nodes → deep inguinal nodes
-- [Tonsils dan Mucosa-Associated Lymphoid Tissue] Waldeyer ring mengelilingi jalur masuk pharynx … :: • pharyngeal tonsil di roof/posterior wall nasopharynx
-  • paired tubal tonsils dekat openings auditory tubes
-  • paired palatine tonsils di oropharynx
-  • lingual tonsil di posterior tongue
-- [Peta Besar Sistem Limfatik] Konsep high-yield: Peta Besar Sistem Limfatik :: Pikirkan alurnya sebagai jaringan bertingkat—tissue → lymphatic capillary → collecting vessel → regional node → lymphatic trunk → duct → venous angle.
-- [Lymph Node: Struktur dan Arah Aliran] Clinical anchor: Lymph Node: Struktur dan Arah Aliran :: Pembesaran node dapat terjadi pada respons inflamasi, infeksi, atau infiltrasi tumor. Lokasi node yang membesar sering membantu menebak organ atau regio asal proses penyakit.
-- [Thoracic Duct dan Cisterna Chyli] Clinical anchor: Thoracic Duct dan Cisterna Chyli :: Trauma atau operasi thorax dapat mencederai thoracic duct dan menyebabkan chylothorax. Cairan pleura menjadi kaya triglyceride karena berisi chyle.
-- [Right Lymphatic Duct] Mnemonic wilayah: Right Lymphatic Duct :: Right upper quadrant. Semua wilayah lain pada prinsipnya kembali melalui thoracic duct.
-- [Head and Neck Lymphatic Drainage] Clinical anchor: Head and Neck Lymphatic Drainage :: Lokasi cervical lymphadenopathy harus selalu dihubungkan dengan territory kepala–leher yang dialirinya, bukan hanya dianggap “node leher”.
-- [Thoracic Lymphatics: Lung dan Mediastinum] Clinical anchor: Thoracic Lymphatics: Lung dan Mediastinum :: Metastasis lung cancer dapat mengikuti nodal chains dari hilar ke mediastinal dan supraclavicular regions. Karena adanya komunikasi lintas sisi, pola metastasis tidak selalu ipsilateral secara sederhana.
-- [Abdomen: Pre-aortic dan Para-aortic Logic] High-yield principle: Abdomen: Pre-aortic dan Para-aortic Logic :: Organ gastrointestinal cenderung mengikuti arterial supply ke pre-aortic nodes, sedangkan organ retroperitoneal dan gonads banyak menuju lumbar/para-aortic nodes.
-- [Pelvis dan Perineum] Clinical anchor: Pelvis dan Perineum :: “testis ≠ scrotum” adalah pembeda klasik. Massa testis menyebar ke para-aortic nodes, sedangkan lesi kulit scrotum cenderung ke superficial inguinal nodes.
-- [Spleen] Konsep penting: Spleen :: Spleen memfilter darah, bukan lymph. Ia tidak berada “di tengah” aliran limfe seperti lymph node dan pada dasarnya tidak memiliki afferent lymphatic vessels. Efferent lymphatics keluar di hilum.
-- [Thymus] High-yield: Thymus :: Thymus juga tidak memiliki afferent lymphatic vessels; lymphatics yang ada terutama efferent.
+- [Lymph Node: Struktur dan Arah Aliran] Apa yang dimaksud dengan Aliran limfe pada Lymph Node: Struktur dan Arah Aliran? :: Afferent vessels → subcapsular sinus → cortical/trabecular sinuses → medullary sinuses → efferent vessel di hilum.
+- [Thoracic Duct dan Cisterna Chyli] Jelaskan Territory thoracic duct dalam konteks Thoracic Duct dan Cisterna Chyli. :: Hampir seluruh tubuh kecuali right upper quadrant.
+- [Lymphedema dan Chylous Leakage] Apa yang dimaksud dengan Contoh penting pada Lymphedema dan Chylous Leakage? :: Axillary node dissection dapat mengganggu drainage upper limb dan menyebabkan arm lymphedema.
+- [Anatomi Sistem Limfatik] Apa yang perlu diketahui tentang Lymph pada Anatomi Sistem Limfatik? :: Tissue → capillary → collecting vessel → node → trunk → duct → venous angle
+- [Anatomi Sistem Limfatik] Apa yang perlu diketahui tentang Thoracic duct pada Anatomi Sistem Limfatik? :: Cisterna chyli L1–L2 → aortic hiatus T12 → cross sekitar T5 → left venous angle
+- [Anatomi Sistem Limfatik] Apa yang perlu diketahui tentang Lymph node pada Anatomi Sistem Limfatik? :: Banyak afferent vessels masuk di convex surface; satu/lebih sedikit efferent keluar di hilum
+- [Anatomi Sistem Limfatik] Apa yang perlu diketahui tentang Axillary flow pada Anatomi Sistem Limfatik? :: Pectoral/subscapular/humeral → central → apical → subclavian trunk
+- [Lymph Node: Struktur dan Arah Aliran] Sebutkan lapisan utama pada Lymph Node: Struktur dan Arah Aliran. :: • Capsule jaringan ikat dengan trabeculae ke arah dalam
+  • Cortex, terutama mengandung lymphoid follicles dan germinal centers
+  • Paracortex, kaya T lymphocytes
+  • Medulla, terdiri atas medullary cords dan medullary sinuses
+- [Thoracic Duct dan Cisterna Chyli] Sebutkan course high-yield pada Thoracic Duct dan Cisterna Chyli. :: • Berasal di abdomen sekitar L1–L2
+  • Masuk thorax melalui aortic hiatus sekitar T12
+  • Naik di posterior mediastinum, biasanya di antara aorta dan azygos vein serta anterior terhadap vertebral bodies
+  • Awalnya berada di kanan garis tengah lalu menyilang ke kiri sekitar T5
+  • Naik ke root of neck, membentuk arch, lalu berakhir di left venous angle—pertemuan left internal jugular dan left subclavian veins
+- [Right Lymphatic Duct] Sebutkan hal-hal penting tentang Territory right lymphatic duct. :: • Right side of head and neck
+  • Right upper limb
+  • Right side of thorax
+- [Upper Limb dan Axillary Nodes] Sebutkan lima kelompok utama axillary nodes pada Upper Limb dan Axillary Nodes. :: • Pectoral/anterior — anterior thoracic wall dan sebagian besar breast
+  • Subscapular/posterior — posterior thoracic wall dan scapular region
+  • Humeral/lateral — sebagian besar upper limb
+  • Central — menerima dari pectoral, subscapular, dan humeral groups
+  • Apical — menerima dari central group dan jalur cephalic/deltopectoral
+- [Lower Limb dan Inguinal Nodes] Sebutkan superficial lymphatics lower limb terbagi mengikuti vena superfisial pada Lower Limb dan Inguinal Nodes. :: • Jalur great saphenous vein → superficial inguinal nodes
+  • Jalur small saphenous vein → popliteal nodes → deep inguinal nodes
+- [Spleen] Sebutkan ligaments penting pada Spleen (Anatomi Sistem Limfatik). :: • Gastrosplenic ligament — membawa short gastric dan left gastro-omental vessels
+  • Splenorenal/lienorenal ligament — membawa splenic vessels dan berhubungan dekat dengan tail of pancreas
+- [Tonsils dan Mucosa-Associated Lymphoid Tissue] Sebutkan hal-hal penting tentang Waldeyer ring mengelilingi jalur masuk pharynx pada Tonsils dan Mucosa-Associated Lymphoid Tissue. :: • Pharyngeal tonsil di roof/posterior wall nasopharynx
+  • Paired tubal tonsils dekat openings auditory tubes
+  • Paired palatine tonsils di oropharynx
+  • Lingual tonsil di posterior tongue
+- [Peta Besar Sistem Limfatik] Apa poin high-yield (pearl) tentang Anatomi Sistem Limfatik? :: Pikirkan alurnya sebagai jaringan bertingkat—tissue → lymphatic capillary → collecting vessel → regional node → lymphatic trunk → duct → venous angle.
+- [Lymph Node: Struktur dan Arah Aliran] Apa korelasi klinis dari Lymph Node: Struktur dan Arah Aliran? :: Pembesaran node dapat terjadi pada respons inflamasi, infeksi, atau infiltrasi tumor. Lokasi node yang membesar sering membantu menebak organ atau regio asal proses penyakit.
+- [Thoracic Duct dan Cisterna Chyli] Apa korelasi klinis dari Thoracic Duct dan Cisterna Chyli? :: Trauma atau operasi thorax dapat mencederai thoracic duct dan menyebabkan chylothorax. Cairan pleura menjadi kaya triglyceride karena berisi chyle.
+- [Right Lymphatic Duct] Bagaimana cara mengingat Right Lymphatic Duct (Anatomi Sistem Limfatik)? :: Right upper quadrant. Semua wilayah lain pada prinsipnya kembali melalui thoracic duct.
+- [Head and Neck Lymphatic Drainage] Apa korelasi klinis dari Head and Neck Lymphatic Drainage? :: Lokasi cervical lymphadenopathy harus selalu dihubungkan dengan territory kepala–leher yang dialirinya, bukan hanya dianggap “node leher”.
+- [Thoracic Lymphatics: Lung dan Mediastinum] Apa korelasi klinis dari Thoracic Lymphatics: Lung dan Mediastinum? :: Metastasis lung cancer dapat mengikuti nodal chains dari hilar ke mediastinal dan supraclavicular regions. Karena adanya komunikasi lintas sisi, pola metastasis tidak selalu ipsilateral secara sederhana.
+- [Abdomen: Pre-aortic dan Para-aortic Logic] Apa poin high-yield (pearl) tentang Abdomen: Pre-aortic dan Para-aortic Logic? :: Organ gastrointestinal cenderung mengikuti arterial supply ke pre-aortic nodes, sedangkan organ retroperitoneal dan gonads banyak menuju lumbar/para-aortic nodes.
+- [Pelvis dan Perineum] Apa korelasi klinis dari Pelvis dan Perineum? :: “testis ≠ scrotum” adalah pembeda klasik. Massa testis menyebar ke para-aortic nodes, sedangkan lesi kulit scrotum cenderung ke superficial inguinal nodes.
+- [Spleen] Apa poin high-yield (pearl) tentang Spleen (Anatomi Sistem Limfatik)? :: Spleen memfilter darah, bukan lymph. Ia tidak berada “di tengah” aliran limfe seperti lymph node dan pada dasarnya tidak memiliki afferent lymphatic vessels. Efferent lymphatics keluar di hilum.
+- [Thymus] Apa poin high-yield (pearl) tentang Thymus (Anatomi Sistem Limfatik)? :: Thymus juga tidak memiliki afferent lymphatic vessels; lymphatics yang ada terutama efferent.

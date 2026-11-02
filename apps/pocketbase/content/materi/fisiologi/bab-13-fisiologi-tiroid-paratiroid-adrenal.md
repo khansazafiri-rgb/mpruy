@@ -252,42 +252,34 @@ Ini adalah flow paling penting untuk menjawab soal PTH.
 
 ## Flashcard {kartu}
 
-- [Hipertiroid vs Hipotiroid: Pola Sumbu] Primary hyperthyroidism :: T3/T4 tinggi → TSH rendah.
-- [Hipertiroid vs Hipotiroid: Pola Sumbu] Primary hypothyroidism :: T3/T4 rendah → TSH tinggi.
-- [Hipertiroid vs Hipotiroid: Pola Sumbu] Secondary hypothyroidism akibat hipofisis :: T3/T4 rendah dan TSH rendah/tidak adekuat.
-- [Aldosteron: Efek Ginjal] Konsekuensi excess aldosterone :: hipertensi, hipokalemia, metabolic alkalosis.
-- [Aldosteron: Efek Ginjal] Deficiency :: hiperkalemia dan kecenderungan hypotension.
-- [Reseptor Adrenergik: Ringkasan] α1 :: umumnya Gq → vasoconstriction.
-- [Reseptor Adrenergik: Ringkasan] α2 :: umumnya Gi → ↓ cAMP, sering menghambat pelepasan neurotransmiter.
-- [Reseptor Adrenergik: Ringkasan] β1 :: Gs → ↑ heart rate/contractility dan ↑ renin.
-- [Reseptor Adrenergik: Ringkasan] β2 :: Gs → bronchodilation dan vasodilation pada vascular bed tertentu.
-- [Reseptor Adrenergik: Ringkasan] β3 :: Gs → lipolysis pada adipose tissue.
-- [Vitamin D / Calcitriol] Aktivasi :: kulit/diet → vitamin D → hati menjadi 25-OH vitamin D → ginjal menjadi 1,25-(OH)₂ vitamin D (calcitriol).
-- [Integrasi PTH, Calcitriol, dan Calcitonin] Saat Ca²⁺ turun :: PTH ↑ → renal Ca²⁺ retention ↑, phosphate excretion ↑, calcitriol ↑ → intestinal Ca²⁺ absorption ↑.
-- [Sintesis Hormon Tiroid: TPO, Organification, Coupling] Thyroid peroxidase (TPO) berperan dalam … :: • oksidasi iodide
-  • iodination residu tirosin pada thyroglobulin (organification)
-  • coupling iodotyrosine
-- [Efek Hormon Tiroid] Hormon tiroid juga penting untuk … :: • pertumbuhan dan maturasi sistem saraf
-  • efek permisif terhadap katekolamin
-  • fungsi kardiovaskular
-  • pertumbuhan normal bersama GH
-- [Aldosteron: Regulasi] Regulator utama aldosterone … :: • angiotensin II
-  • peningkatan K⁺ plasma
-- [Aldosteron: Efek Ginjal] Pada principal cell … :: • ↑ ENaC dan reabsorpsi Na⁺
-  • ↑ Na⁺/K⁺-ATPase
-  • ↑ sekresi K⁺
-- [Efek Metabolik Kortisol] Kortisol membantu mempertahankan ketersediaan bahan bakar … :: • ↑ gluconeogenesis hati
+- [Hipertiroid vs Hipotiroid: Pola Sumbu] Apa yang dimaksud dengan Primary hyperthyroidism pada Hipertiroid vs Hipotiroid: Pola Sumbu? :: T3/T4 tinggi → TSH rendah.
+- [Hipertiroid vs Hipotiroid: Pola Sumbu] Apa yang dimaksud dengan Primary hypothyroidism pada Hipertiroid vs Hipotiroid: Pola Sumbu? :: T3/T4 rendah → TSH tinggi.
+- [Hipertiroid vs Hipotiroid: Pola Sumbu] Jelaskan Secondary hypothyroidism akibat hipofisis dalam konteks Hipertiroid vs Hipotiroid: Pola Sumbu. :: T3/T4 rendah dan TSH rendah/tidak adekuat.
+- [Aldosteron: Efek Ginjal] Jelaskan Konsekuensi excess aldosterone dalam konteks Aldosteron: Efek Ginjal. :: Hipertensi, hipokalemia, metabolic alkalosis.
+- [Aldosteron: Efek Ginjal] Apa yang dimaksud dengan Deficiency pada Aldosteron: Efek Ginjal? :: Hiperkalemia dan kecenderungan hypotension.
+- [Reseptor Adrenergik: Ringkasan] Apa yang dimaksud dengan α1 pada Reseptor Adrenergik: Ringkasan? :: Umumnya Gq → vasoconstriction.
+- [Reseptor Adrenergik: Ringkasan] Apa yang dimaksud dengan α2 pada Reseptor Adrenergik: Ringkasan? :: Umumnya Gi → ↓ cAMP, sering menghambat pelepasan neurotransmiter.
+- [Reseptor Adrenergik: Ringkasan] Apa yang dimaksud dengan β1 pada Reseptor Adrenergik: Ringkasan? :: Gs → ↑ heart rate/contractility dan ↑ renin.
+- [Reseptor Adrenergik: Ringkasan] Apa yang dimaksud dengan β2 pada Reseptor Adrenergik: Ringkasan? :: Gs → bronchodilation dan vasodilation pada vascular bed tertentu.
+- [Reseptor Adrenergik: Ringkasan] Apa yang dimaksud dengan β3 pada Reseptor Adrenergik: Ringkasan? :: Gs → lipolysis pada adipose tissue.
+- [Vitamin D / Calcitriol] Apa yang dimaksud dengan Aktivasi pada Vitamin D / Calcitriol? :: Kulit/diet → vitamin D → hati menjadi 25-OH vitamin D → ginjal menjadi 1,25-(OH)₂ vitamin D (calcitriol).
+- [Kelenjar Adrenal: Zona dan Hormon] Sebutkan hal-hal penting tentang Korteks adrenal pada Kelenjar Adrenal: Zona dan Hormon (Fisiologi Tiroid, Paratiroid, Adrenal). :: • Zona glomerulosa → aldosterone
+  • Zona fasciculata → cortisol
+  • Zona reticularis → adrenal androgens
+- [Aldosteron: Regulasi] Sebutkan regulator utama aldosterone pada Aldosteron: Regulasi (Fisiologi Tiroid, Paratiroid, Adrenal). :: • Angiotensin II
+  • Peningkatan K⁺ plasma
+- [Efek Metabolik Kortisol] Sebutkan hal-hal penting tentang Kortisol membantu mempertahankan ketersediaan bahan bakar pada Efek Metabolik Kortisol. :: • ↑ gluconeogenesis hati
   • ↑ proteolysis perifer → amino acid substrate
   • ↑ lipolysis
-  • menurunkan penggunaan glukosa di beberapa jaringan dan dapat meningkatkan insulin resistance
-- [Cushing dan Addison: Konsep Fisiologis] Primary adrenal insufficiency/Addison … :: • cortisol rendah
-  • aldosterone dapat rendah
+  • Menurunkan penggunaan glukosa di beberapa jaringan dan dapat meningkatkan insulin resistance
+- [Cushing dan Addison: Konsep Fisiologis] Sebutkan hal-hal penting tentang Primary adrenal insufficiency/Addison pada Cushing dan Addison: Konsep Fisiologis. :: • Cortisol rendah
+  • Aldosterone dapat rendah
   • ACTH tinggi karena hilangnya feedback
-  • hyperpigmentation dapat muncul akibat peningkatan produk POMC
-- [Sintesis Hormon Tiroid: TPO, Organification, Coupling] High-yield: Sintesis Hormon Tiroid: TPO, Organification, Coupling :: Gangguan TPO menghambat beberapa langkah sekaligus.
-- [Transport Hormon Tiroid] Trap: Transport Hormon Tiroid :: Perubahan TBG dapat mengubah total T4 tanpa harus mengubah free T4.
-- [Hipertiroid vs Hipotiroid: Pola Sumbu] High-yield: Hipertiroid vs Hipotiroid: Pola Sumbu :: Selalu identifikasi apakah masalah berada di kelenjar target atau di pusat pengatur.
-- [Cushing dan Addison: Konsep Fisiologis] Trap: Cushing dan Addison: Konsep Fisiologis :: Hyperpigmentation lebih mendukung primary, bukan secondary adrenal insufficiency.
-- [Reseptor Adrenergik: Ringkasan] High-yield: Reseptor Adrenergik: Ringkasan :: Efek katekolamin tergantung distribusi reseptor, bukan sekadar kadar hormon.
-- [PTH di Ginjal] Mnemonic konseptual: PTH di Ginjal :: PTH raises Ca²⁺, lowers phosphate plasma secara langsung melalui phosphaturia.
-- [Calcitonin] Trap: Calcitonin :: Jangan menempatkan calcitonin sebagai regulator utama tunggal kalsium plasma.
+  • Hyperpigmentation dapat muncul akibat peningkatan produk POMC
+- [Sintesis Hormon Tiroid: TPO, Organification, Coupling] Apa poin high-yield (pearl) tentang Sintesis Hormon Tiroid: TPO, Organification, Coupling? :: Gangguan TPO menghambat beberapa langkah sekaligus.
+- [Transport Hormon Tiroid] Apa jebakan yang sering muncul pada soal tentang Transport Hormon Tiroid? :: Perubahan TBG dapat mengubah total T4 tanpa harus mengubah free T4.
+- [Hipertiroid vs Hipotiroid: Pola Sumbu] Apa poin high-yield (pearl) tentang Hipertiroid vs Hipotiroid: Pola Sumbu? :: Selalu identifikasi apakah masalah berada di kelenjar target atau di pusat pengatur.
+- [Cushing dan Addison: Konsep Fisiologis] Apa jebakan yang sering muncul pada soal tentang Cushing dan Addison: Konsep Fisiologis? :: Hyperpigmentation lebih mendukung primary, bukan secondary adrenal insufficiency.
+- [Reseptor Adrenergik: Ringkasan] Apa poin high-yield (pearl) tentang Reseptor Adrenergik: Ringkasan? :: Efek katekolamin tergantung distribusi reseptor, bukan sekadar kadar hormon.
+- [PTH di Ginjal] Bagaimana cara mengingat PTH di Ginjal (Fisiologi Tiroid, Paratiroid, Adrenal)? :: PTH raises Ca²⁺, lowers phosphate plasma secara langsung melalui phosphaturia.
+- [Calcitonin] Apa jebakan yang sering muncul pada soal tentang Calcitonin (Fisiologi Tiroid, Paratiroid, Adrenal)? :: Jangan menempatkan calcitonin sebagai regulator utama tunggal kalsium plasma.

@@ -383,43 +383,42 @@ Jika preparat adalah urinary passage:
 
 ## Flashcard {kartu}
 
-- [Peta Besar Sistem Urinarius] renal parenchyma :: nephron + collecting system
-- [Peta Besar Sistem Urinarius] urinary passages :: pelvis renalis, ureter, bladder, dan urethra.
-- [Organisasi Ginjal: Cortex dan Medulla] High-yield practical rule :: bila terlihat glomerulus, area tersebut adalah cortex.
-- [Renal Microcirculation] Alur arteri utama :: renal artery → segmental → interlobar → arcuate → interlobular/cortical radiate artery → afferent arteriole → glomerulus → efferent arteriole.
-- [High-yield] Cortex ginjal :: renal corpuscles + PCT + DCT
-- [High-yield] Medulla :: loops of Henle + collecting ducts; tidak ada renal corpuscles
-- [High-yield] Renal corpuscle :: glomerulus + Bowman capsule
-- [High-yield] Filtration barrier :: fenestrated endothelium + GBM + podocyte slit diaphragm
-- [High-yield] PCT :: eosinophilic + brush border + fuzzy lumen
-- [High-yield] DCT :: paler + no prominent brush border + clean lumen
-- [High-yield] Macula densa :: dense nuclei pada DCT dekat vascular pole
-- [High-yield] JGA :: macula densa + juxtaglomerular cells + extraglomerular mesangial cells
-- [High-yield] Thin limb :: simple squamous
-- [High-yield] Collecting duct :: wide clean lumen + clear cell borders
-- [High-yield] Urothelium :: transitional epithelium + umbrella cells + uroplakin
-- [High-yield] Ureter :: stellate lumen + urothelium + thick organized smooth muscle
-- [High-yield] Bladder :: urothelium + very thick detrusor bundles
-- [High-yield] Urethra :: epithelium berubah dari proximal ke distal
-- [High-yield] Spot diagnosis framework :: "Ada glomerulus? Brush border? Urothelium? Bentuk lumen? Pola smooth muscle?"
-- [Peta Besar Sistem Urinarius] Secara histologis, bab ini paling mudah dibaca sebagai dua kelompok besar … :: • renal parenchyma: nephron + collecting system
-  • urinary passages: pelvis renalis, ureter, bladder, dan urethra
-- [Nephron dan Uriniferous Tubule] Nephron adalah unit fungsional ginjal yang terdiri atas … :: • renal corpuscle
-  • proximal tubule
-  • loop of Henle
-  • distal tubule
-- [Glomerular Filtration Barrier] Filtration barrier terdiri atas tiga komponen utama … :: • fenestrated endothelium kapiler glomerulus
-  • glomerular basement membrane
-  • filtration slits/slit diaphragm di antara pedicels podocyte
-- [Renal Pelvis] Dinding umumnya terdiri atas … :: • mucosa dengan urothelium dan lamina propria
-  • smooth muscle
-  • adventitia
-- [Renal Corpuscle] Practical clue: Renal Corpuscle :: Cari struktur bulat dengan tuft kapiler padat di tengah dan clear space di perifer.
-- [Glomerular Filtration Barrier] High-yield: Glomerular Filtration Barrier :: Endothelial fenestrae → GBM → podocyte slit diaphragm.
-- [Proximal Convoluted Tubule (PCT / TC I)] Practical rule: Proximal Convoluted Tubule (PCT / TC I) :: PCT = pinker cytoplasm + fuzzy/dirty lumen.
-- [Distal Convoluted Tubule (DCT / TC II)] Practical rule: Distal Convoluted Tubule (DCT / TC II) :: DCT = clearer, wider lumen; PCT = fuzzy, narrower lumen.
-- [Macula Densa] Practical clue: Macula Densa :: Patch nuclei rapat pada DCT yang menempel ke vascular pole glomerulus.
-- [Loop of Henle] Practical trap: Loop of Henle :: Thin limb vs capillary. Cari erythrocytes di lumen untuk mendukung bahwa struktur tersebut adalah blood vessel.
-- [Collecting Tubules dan Collecting Ducts] Practical clue: Collecting Tubules dan Collecting Ducts :: Lumen clean + batas sel sangat jelas + susunan lurus di medulla.
-- [Ureter] Practical clue: Ureter :: Star-shaped lumen + urothelium + thick smooth muscle wall.
-- [Vesica Urinaria / Urinary Bladder] Practical clue: Vesica Urinaria / Urinary Bladder :: Urothelium + very thick irregular/interlacing smooth muscle = bladder.
+- [Peta Besar Sistem Urinarius] Apa yang dimaksud dengan renal parenchyma pada Histologi Sistem Urinarius? :: Nephron + collecting system
+- [Peta Besar Sistem Urinarius] Apa yang dimaksud dengan urinary passages pada Histologi Sistem Urinarius? :: Pelvis renalis, ureter, bladder, dan urethra.
+- [Renal Microcirculation] Jelaskan Alur arteri utama dalam konteks Renal Microcirculation (Histologi Sistem Urinarius). :: Renal artery → segmental → interlobar → arcuate → interlobular/cortical radiate artery → afferent arteriole → glomerulus → efferent arteriole.
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan Cortex ginjal pada Histologi Sistem Urinarius? :: Renal corpuscles + PCT + DCT
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan Medulla pada Histologi Sistem Urinarius? :: Loops of Henle + collecting ducts; tidak ada renal corpuscles
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan Renal corpuscle pada Histologi Sistem Urinarius? :: Glomerulus + Bowman capsule
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan Filtration barrier pada Histologi Sistem Urinarius? :: Fenestrated endothelium + GBM + podocyte slit diaphragm
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan PCT pada Histologi Sistem Urinarius? :: Eosinophilic + brush border + fuzzy lumen
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan DCT pada Histologi Sistem Urinarius? :: Paler + no prominent brush border + clean lumen
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan Macula densa pada Histologi Sistem Urinarius? :: Dense nuclei pada DCT dekat vascular pole
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan JGA pada Histologi Sistem Urinarius? :: Macula densa + juxtaglomerular cells + extraglomerular mesangial cells
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan Thin limb pada Histologi Sistem Urinarius? :: Simple squamous
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan Collecting duct pada Histologi Sistem Urinarius? :: Wide clean lumen + clear cell borders
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan Urothelium pada Histologi Sistem Urinarius? :: Transitional epithelium + umbrella cells + uroplakin
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan Ureter pada Histologi Sistem Urinarius? :: Stellate lumen + urothelium + thick organized smooth muscle
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan Bladder pada Histologi Sistem Urinarius? :: Urothelium + very thick detrusor bundles
+- [Histologi Sistem Urinarius] Apa yang dimaksud dengan Urethra pada Histologi Sistem Urinarius? :: Epithelium berubah dari proximal ke distal
+- [Proximal Convoluted Tubule (PCT / TC I)] Sebutkan ciri histologis pada Proximal Convoluted Tubule. :: • Simple cuboidal epithelium
+  • Brush border sangat berkembang
+  • Cytoplasm lebih eosinophilic
+  • Batas antar sel kurang jelas
+  • Lumen tampak sempit, irregular, atau seperti "kotor" karena brush border
+- [Distal Convoluted Tubule (DCT / TC II)] Sebutkan ciri histologis pada Distal Convoluted Tubule. :: • Lumen lebih lebar dan lebih bersih
+  • Sel tampak lebih kecil dan lebih pucat daripada PCT
+  • Lebih banyak nuclei dapat terlihat mengelilingi satu lumen
+  • Batas lumen lebih tegas
+- [Collecting Tubules dan Collecting Ducts] Sebutkan ciri histologis pada Collecting Tubules dan Collecting Ducts. :: • Lumen relatif lebar dan sangat jelas
+  • Cell borders lebih mudah terlihat
+  • Epithelium berubah dari simple cuboidal di bagian lebih proximal menjadi lebih columnar menuju papilla
+  • Tersusun lurus/paralel di medulla
+- [Renal Corpuscle] Apa clue praktikum untuk Renal Corpuscle (Histologi Sistem Urinarius)? :: Cari struktur bulat dengan tuft kapiler padat di tengah dan clear space di perifer.
+- [Glomerular Filtration Barrier] Apa poin high-yield (pearl) tentang Glomerular Filtration Barrier? :: Endothelial fenestrae → GBM → podocyte slit diaphragm.
+- [Proximal Convoluted Tubule (PCT / TC I)] Apa clue praktikum untuk Proximal Convoluted Tubule? :: PCT = pinker cytoplasm + fuzzy/dirty lumen.
+- [Distal Convoluted Tubule (DCT / TC II)] Apa clue praktikum untuk Distal Convoluted Tubule? :: DCT = clearer, wider lumen; PCT = fuzzy, narrower lumen.
+- [Macula Densa] Apa clue praktikum untuk Macula Densa (Histologi Sistem Urinarius)? :: Patch nuclei rapat pada DCT yang menempel ke vascular pole glomerulus.
+- [Loop of Henle] Apa jebakan yang sering muncul pada soal tentang Loop of Henle? :: Thin limb vs capillary. Cari erythrocytes di lumen untuk mendukung bahwa struktur tersebut adalah blood vessel.
+- [Collecting Tubules dan Collecting Ducts] Apa clue praktikum untuk Collecting Tubules dan Collecting Ducts? :: Lumen clean + batas sel sangat jelas + susunan lurus di medulla.
+- [Ureter] Apa clue praktikum untuk Ureter (Histologi Sistem Urinarius)? :: Star-shaped lumen + urothelium + thick smooth muscle wall.
+- [Vesica Urinaria / Urinary Bladder] Apa clue praktikum untuk Vesica Urinaria / Urinary Bladder? :: Urothelium + very thick irregular/interlacing smooth muscle = bladder.

@@ -468,52 +468,65 @@ Airborne M. tuberculosis → alveolus → alveolar macrophage → intracellular 
 
 ## Flashcard {kartu}
 
-- [Big Picture: Kenapa Mycobacterium “Berbeda”] Peta cepat :: Mycolic acid tinggi → tidak cocok dinilai hanya dengan Gram stain → gunakan acid-fast stain → Ziehl–Neelsen/Kinyoun atau fluorochrome → kultur khusus + pemeriksaan molekuler → hubungkan dengan TB, lepra, atau NTM.
-- [Respons Imun: Th1, IFN-γ, TNF] High-yield klinis :: Gangguan jalur IL-12/IFN-γ atau terapi yang menghambat TNF dapat meningkatkan risiko mycobacterial disease/reactivation.
-- [Pemeriksaan Sputum: BTA Smear] Keuntungan :: cepat, sederhana, murah.
-- [Pemeriksaan Sputum: BTA Smear] Keterbatasan :: sensitivitas lebih rendah daripada NAAT/kultur dan acid-fast smear tidak selalu membedakan M. tuberculosis dari mycobacteria lain.
-- [High-yield] M. leprae :: acid-fast bacillus penyebab lepra/Hansen disease
-- [High-yield] Manifestasi utama :: skin lesions + sensory loss + peripheral neuropathy
-- [High-yield] Ziehl–Neelsen :: carbol fuchsin + heat → acid-alcohol → counterstain; BTA tetap merah/fuchsia
-- [High-yield] M. tuberculosis :: obligate aerobe, slow grower, tidak berspora
-- [High-yield] Media klasik :: Lowenstein–Jensen; koloni “rough, tough, buff”
-- [High-yield] Penularan TB :: airborne
-- [High-yield] Caseating granuloma dan Langhans giant cell :: temuan klasik, tetapi bukan identifikasi spesies sendiri
-- [High-yield] TST :: type IV hypersensitivity dan menilai induration; IGRA menilai IFN-γ response
-- [High-yield] M. leprae :: lepra, kulit + saraf, tidak dapat dikultur rutin in vitro
-- [High-yield] MAC :: oportunistik penting pada imunosupresi berat
-- [Arsitektur Dinding Sel Mycobacterium] Konsekuensi biologis dinding kaya lipid … :: • Retensi carbol fuchsin setelah acid-alcohol → acid-fastness
+- [Big Picture: Kenapa Mycobacterium “Berbeda”] Apa yang dimaksud dengan Peta cepat pada Mycobacterium & Tuberkulosis? :: Mycolic acid tinggi → tidak cocok dinilai hanya dengan Gram stain → gunakan acid-fast stain → Ziehl–Neelsen/Kinyoun atau fluorochrome → kultur khusus + pemeriksaan molekuler → hubungkan dengan TB, lepra, atau NTM.
+- [Pemeriksaan Sputum: BTA Smear] Apa yang dimaksud dengan Keuntungan pada Pemeriksaan Sputum: BTA Smear? :: Cepat, sederhana, murah.
+- [Pemeriksaan Sputum: BTA Smear] Apa yang dimaksud dengan Keterbatasan pada Pemeriksaan Sputum: BTA Smear? :: Sensitivitas lebih rendah daripada NAAT/kultur dan acid-fast smear tidak selalu membedakan M. tuberculosis dari mycobacteria lain.
+- [Mycobacterium & Tuberkulosis] Apa manifestasi utama pada Mycobacterium & Tuberkulosis? :: Skin lesions + sensory loss + peripheral neuropathy
+- [Mycobacterium & Tuberkulosis] Apa jawaban atau kesimpulan untuk petunjuk berikut: Mycobacterium punya dinding sangat kaya lipid/mycolic acid pada Mycobacterium & Tuberkulosis? :: ACID-FAST
+- [Mycobacterium & Tuberkulosis] Apa yang perlu diketahui tentang Ziehl–Neelsen pada Mycobacterium & Tuberkulosis? :: Carbol fuchsin + heat → acid-alcohol → counterstain; BTA tetap merah/fuchsia
+- [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan Media klasik pada Mycobacterium & Tuberkulosis? :: Lowenstein–Jensen; koloni “rough, tough, buff”
+- [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan Penularan TB pada Mycobacterium & Tuberkulosis? :: Airborne
+- [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan Caseating granuloma dan Langhans giant cell pada Mycobacterium & Tuberkulosis? :: Temuan klasik, tetapi bukan identifikasi spesies sendiri
+- [Mycobacterium & Tuberkulosis] Apa yang dimaksud dengan TST pada Mycobacterium & Tuberkulosis? :: Type IV hypersensitivity dan menilai induration; IGRA menilai IFN-γ response
+- [Mycobacterium & Tuberkulosis] Apa yang perlu diingat tentang M. leprae pada Mycobacterium & Tuberkulosis? :: Lepra, kulit + saraf, tidak dapat dikultur rutin in vitro
+- [Mycobacterium & Tuberkulosis] Apa yang perlu diingat tentang MAC pada Mycobacterium & Tuberkulosis? :: Oportunistik penting pada imunosupresi berat
+- [Arsitektur Dinding Sel Mycobacterium] Sebutkan lapisan penting pada Arsitektur Dinding Sel Mycobacterium. :: • Peptidoglycan
+  • Arabinogalactan
+  • Mycolic acids
+  • Lipoarabinomannan (LAM) dan berbagai glycolipid/lipid permukaan
+- [Arsitektur Dinding Sel Mycobacterium] Sebutkan konsekuensi biologis dinding kaya lipid pada Arsitektur Dinding Sel Mycobacterium. :: • Retensi carbol fuchsin setelah acid-alcohol → acid-fastness
   • Permeabilitas rendah terhadap banyak molekul
   • Pertumbuhan lambat karena metabolisme dan pembentukan envelope kompleks
   • Dapat berkontribusi pada kemampuan bertahan hidup dalam host
-- [Granuloma TB] Komponen granuloma secara konsep … :: • Epithelioid macrophages
+- [Ziehl–Neelsen Stain — Urutan Wajib Hafal] Sebutkan urutan atau langkah pada Ziehl–Neelsen Stain — Urutan Wajib Hafal? :: • Carbol fuchsin
+  • Heat/pemanasan
+  • Acid-alcohol decolorization
+  • Counterstain
+- [Granuloma TB] Sebutkan komponen granuloma secara konsep pada Granuloma TB (Mycobacterium & Tuberkulosis). :: • Epithelioid macrophages
   • Multinucleated giant cells, termasuk Langhans-type giant cells
   • Lymphocytes di perifer
   • Dapat terbentuk central caseous necrosis
-- [Ghon Focus, Ghon Complex, dan Primary TB] Konsep klasik primary pulmonary TB … :: • Fokus parenkim awal disebut Ghon focus
+- [Ghon Focus, Ghon Complex, dan Primary TB] Sebutkan konsep klasik primary pulmonary TB pada Ghon Focus, Ghon Complex, dan Primary TB. :: • Fokus parenkim awal disebut Ghon focus
   • Bila disertai keterlibatan lymph node regional → Ghon complex
   • Penyembuhan dapat menghasilkan fibrosis dan calcification
-- [Latent TB Infection vs Active TB Disease] Latent TB infection … :: • Organisme persisten tetapi secara klinis tidak ada penyakit aktif
+- [Latent TB Infection vs Active TB Disease] Sebutkan hal-hal penting tentang Latent TB infection pada Latent TB Infection vs Active TB Disease. :: • Organisme persisten tetapi secara klinis tidak ada penyakit aktif
   • Tidak ada gejala TB aktif
   • Individu tidak menularkan karena tidak ada penyakit paru aktif yang melepaskan basil ke udara
   • TST atau IGRA dapat menunjukkan bukti sensitisasi imun
-- [Tuberculin Skin Test / Mantoux] Faktor yang dapat memengaruhi interpretasi … :: • BCG vaccination
-  • Paparan NTM
-  • Imunosupresi → false-negative/anergy
-  • Infeksi sangat baru → respons belum terbentuk
-- [NAAT / TCM / GeneXpert] Poin yang ditekankan … :: • NAAT/GeneXpert berguna untuk diagnosis cepat dari spesimen respirasi
+- [NAAT / TCM / GeneXpert] Sebutkan hal-hal penting tentang Poin pada NAAT / TCM / GeneXpert (Mycobacterium & Tuberkulosis). :: • NAAT/GeneXpert berguna untuk diagnosis cepat dari spesimen respirasi
   • GeneXpert MTB/RIF mendeteksi DNA M. tuberculosis complex dan dapat memberikan informasi mengenai resistensi rifampisin melalui target gen rpoB
-- [Antituberculosis Drug Targets — Orientasi Dasar] Untuk menghubungkan dengan mikrobiologi … :: • Isoniazid → mengganggu sintesis mycolic acid
-  • Rifampicin → menghambat bacterial RNA polymerase
-  • Ethambutol → mengganggu arabinogalactan cell wall synthesis
-  • Pyrazinamide → aktif terutama pada lingkungan asam dan berperan pada organisme persisten tertentu
-- [Sifat Umum Mycobacterium] High-yield: Sifat Umum Mycobacterium :: Acid-fast → pikirkan MYCOLIC ACID. M. tuberculosis → obligate aerobe + slow grower. M. leprae → tidak dapat dikultur rutin in vitro pada media buatan. MAC → oportunistik penting pada imunosupresi berat.
-- [Arsitektur Dinding Sel Mycobacterium] Jebakan: Arsitektur Dinding Sel Mycobacterium :: BTA bukan berarti bakteri “tahan terhadap semua asam” dalam tubuh; istilah ini merujuk pada kemampuan mempertahankan pewarna setelah proses dekolorisasi dengan acid-alcohol.
-- [3. Lipoarabinomannan dan lipid dinding sel] Penting: 3. Lipoarabinomannan dan lipid dinding sel :: TB bukan penyakit yang terutama disebabkan oleh satu exotoxin kuat. Kerusakan jaringan sangat dipengaruhi respons imun host, terutama cell-mediated immunity dan delayed-type hypersensitivity.
-- [Latent TB Infection vs Active TB Disease] Penting: Latent TB Infection vs Active TB Disease :: TST/IGRA membantu mendeteksi immune sensitization, BUKAN secara langsung membuktikan basil hidup atau membedakan latent dari active TB tanpa konteks klinis/mikrobiologis.
-- [Tuberculin Skin Test / Mantoux] Penting: Tuberculin Skin Test / Mantoux :: Cut-off ukuran indurasi bergantung pada kategori risiko dan guideline; jangan memakai satu angka untuk semua pasien tanpa konteks.
-- [Pemeriksaan Sputum: BTA Smear] Jebakan soal: Pemeriksaan Sputum: BTA Smear :: “BTA positif” ≠ identifikasi spesies M. tuberculosis secara definitif.
-- [NAAT / TCM / GeneXpert] Penting: NAAT / TCM / GeneXpert :: Pemeriksaan molekuler meningkatkan kecepatan diagnosis, tetapi kultur tetap penting terutama untuk konfirmasi dan drug-susceptibility testing yang lebih lengkap pada konteks tertentu.
-- [Mycobacterium Avium Complex (MAC)] Poin penting: Mycobacterium Avium Complex (MAC) :: MAC adalah non-tuberculous mycobacteria. Dapat menyebabkan disseminated infection pada HIV/AIDS berat, secara klasik ketika CD4 sangat rendah. Gejala dapat berupa demam berkepanjangan, weight loss, anemia, diare, dan hepatosplenomegaly. Banyak acid-fast bacilli dapat terlihat dalam macrophages pada penyakit diseminata.
-- [Mycobacterium Avium Complex (MAC)] Jebakan: Mycobacterium Avium Complex (MAC) :: Acid-fast bacilli pada pasien HIV tidak otomatis = M. tuberculosis. Pertimbangkan NTM/MAC sesuai gambaran klinis dan pemeriksaan spesifik.
-- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Penting: Tuberculoid vs Lepromatous Leprosy — Konsep Dasar :: Spektrum klinis lepra lebih luas daripada dua kutub ini, tetapi kontras tuberculoid vs lepromatous sangat high-yield untuk memahami hubungan imunitas dengan bacterial load.
+- [Interpretasi BTA, NAAT, dan Culture] Sebutkan pola berpikir pada Interpretasi BTA, NAAT, dan Culture. :: • Smear BTA → apakah terdapat acid-fast bacilli dalam jumlah yang cukup untuk terlihat?
+  • NAAT → apakah DNA target M. tuberculosis complex terdeteksi?
+  • Culture → apakah organisme hidup dapat tumbuh?
+- [Histopatologi TB] Sebutkan temuan klasik pada Histopatologi TB (Mycobacterium & Tuberkulosis). :: • Granulomatous inflammation
+  • Caseous necrosis dapat ditemukan
+  • Langhans giant cells dapat tampak
+- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Sebutkan hal-hal penting tentang Tuberculoid pole pada Tuberculoid vs Lepromatous Leprosy — Konsep Dasar (Mycobacterium & Tuberkulosis). :: • Cell-mediated immunity lebih kuat
+  • Basil lebih sedikit (paucibacillary)
+  • Lesi lebih terlokalisasi
+- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Sebutkan hal-hal penting tentang Lepromatous pole pada Tuberculoid vs Lepromatous Leprosy — Konsep Dasar (Mycobacterium & Tuberkulosis). :: • Cell-mediated immunity terhadap M. leprae lebih lemah
+  • Basil lebih banyak (multibacillary)
+  • Lesi lebih luas dan simetris dapat terjadi
+- [Mengapa Apeks Sering Terlibat pada Reactivation TB?] Sebutkan konsep klasik pada Mengapa Apeks Sering Terlibat pada Reactivation TB?. :: • M. tuberculosis adalah obligate aerobe
+  • Daerah apikal paru memiliki oxygen tension relatif tinggi
+  • Hal ini menjadi salah satu alasan klasik predileksi reactivation TB pada upper lobes/apices
+- [Sifat Umum Mycobacterium] Apa poin high-yield (pearl) tentang Sifat Umum Mycobacterium? :: Acid-fast → pikirkan MYCOLIC ACID. M. tuberculosis → obligate aerobe + slow grower. M. leprae → tidak dapat dikultur rutin in vitro pada media buatan. MAC → oportunistik penting pada imunosupresi berat.
+- [Arsitektur Dinding Sel Mycobacterium] Apa jebakan yang sering muncul pada soal tentang Arsitektur Dinding Sel Mycobacterium? :: BTA bukan berarti bakteri “tahan terhadap semua asam” dalam tubuh; istilah ini merujuk pada kemampuan mempertahankan pewarna setelah proses dekolorisasi dengan acid-alcohol.
+- [Lipoarabinomannan dan lipid dinding sel] Apa jebakan yang sering muncul pada soal tentang Lipoarabinomannan dan lipid dinding sel? :: TB bukan penyakit yang terutama disebabkan oleh satu exotoxin kuat. Kerusakan jaringan sangat dipengaruhi respons imun host, terutama cell-mediated immunity dan delayed-type hypersensitivity.
+- [Latent TB Infection vs Active TB Disease] Apa jebakan yang sering muncul pada soal tentang Latent TB Infection vs Active TB Disease? :: TST/IGRA membantu mendeteksi immune sensitization, BUKAN secara langsung membuktikan basil hidup atau membedakan latent dari active TB tanpa konteks klinis/mikrobiologis.
+- [Tuberculin Skin Test / Mantoux] Apa jebakan yang sering muncul pada soal tentang Tuberculin Skin Test / Mantoux? :: Cut-off ukuran indurasi bergantung pada kategori risiko dan guideline; jangan memakai satu angka untuk semua pasien tanpa konteks.
+- [Pemeriksaan Sputum: BTA Smear] Apa jebakan yang sering muncul pada soal tentang Pemeriksaan Sputum: BTA Smear? :: “BTA positif” ≠ identifikasi spesies M. tuberculosis secara definitif.
+- [NAAT / TCM / GeneXpert] Apa jebakan yang sering muncul pada soal tentang NAAT / TCM / GeneXpert? :: Pemeriksaan molekuler meningkatkan kecepatan diagnosis, tetapi kultur tetap penting terutama untuk konfirmasi dan drug-susceptibility testing yang lebih lengkap pada konteks tertentu.
+- [Mycobacterium Avium Complex (MAC)] Apa poin high-yield (pearl) tentang Mycobacterium Avium Complex? :: MAC adalah non-tuberculous mycobacteria. Dapat menyebabkan disseminated infection pada HIV/AIDS berat, secara klasik ketika CD4 sangat rendah. Gejala dapat berupa demam berkepanjangan, weight loss, anemia, diare, dan hepatosplenomegaly. Banyak acid-fast bacilli dapat terlihat dalam macrophages pada penyakit diseminata.
+- [Mycobacterium Avium Complex (MAC)] Apa jebakan yang sering muncul pada soal tentang Mycobacterium Avium Complex? :: Acid-fast bacilli pada pasien HIV tidak otomatis = M. tuberculosis. Pertimbangkan NTM/MAC sesuai gambaran klinis dan pemeriksaan spesifik.
+- [Tuberculoid vs Lepromatous Leprosy — Konsep Dasar] Apa jebakan yang sering muncul pada soal tentang Tuberculoid vs Lepromatous Leprosy — Konsep Dasar? :: Spektrum klinis lepra lebih luas daripada dua kutub ini, tetapi kontras tuberculoid vs lepromatous sangat high-yield untuk memahami hubungan imunitas dengan bacterial load.

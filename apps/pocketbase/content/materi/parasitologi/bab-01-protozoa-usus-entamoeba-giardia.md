@@ -262,50 +262,40 @@ E. histolytica menyerang kolon dan dapat menginvasi mukosa → disentri, flask-s
 
 ## Flashcard {kartu}
 
-- [Siklus Hidup E. histolytica] Urutan utama :: Kista matang tertelan → excystation di usus halus → trofozoit menuju kolon → multiplikasi → sebagian tetap luminal dan mengalami encystation → kista keluar bersama feses.
-- [Siklus Hidup E. histolytica] Cabang invasif :: Trofozoit menembus mukosa kolon → ulkus → dapat masuk sirkulasi portal → hepar → abses hati amebik.
-- [Tatalaksana Amebiasis — Konsep Ujian] Contoh obat jaringan :: metronidazole atau tinidazole.
-- [Tatalaksana Amebiasis — Konsep Ujian] Contoh luminal agent :: paromomycin; alternatif tertentu dapat berbeda menurut ketersediaan lokal.
-- [E. histolytica vs Giardia — Perbandingan Cepat] Ekstraintestinal :: abses hati klasik.
-- [E. histolytica vs Giardia — Perbandingan Cepat] Trofozoit :: 2 nukleus + ventral disc + flagella.
-- [Differential Pattern — Favorit Soal] Vignette 1 :: Pasien dengan disentri setelah paparan sanitasi buruk + trofozoit berisi eritrosit → pikirkan E. histolytica.
-- [Differential Pattern — Favorit Soal] Vignette 2 :: Demam + nyeri RUQ + riwayat amebiasis/daerah endemik → pikirkan abses hati amebik.
-- [Differential Pattern — Favorit Soal] Vignette 3 :: Pendaki minum air sungai → beberapa hari kemudian diare berbau, greasy, bloating → pikirkan Giardia.
-- [Differential Pattern — Favorit Soal] Vignette 4 :: Anak day-care dengan diare persisten tanpa darah + malabsorpsi → Giardia harus masuk differential.
-- [High-yield] E. histolytica: stadium infektif :: kista matang
-- [High-yield] E. histolytica trophozoite + ingested RBC :: temuan diagnostik klasik
-- [High-yield] Amoebic colitis :: flask-shaped ulcer
-- [High-yield] Penyebaran portal :: abses hati
-- [High-yield] Terapi amebiasis invasif :: tissue-active agent lalu luminal agent
-- [High-yield] Giardia :: stadium infektif = kista
-- [High-yield] Giardia trophozoite :: 2 nukleus, flagella, ventral adhesive disc
-- [High-yield] Giardia :: greasy, foul-smelling diarrhea + malabsorption
-- [High-yield] Waterborne diarrhea + camping :: Giardia sampai terbukti lain
-- [Konsep Dasar Protozoa Usus] Konsep bentuk yang wajib dibedakan … :: • Trofozoit = bentuk aktif, motil, berkembang biak, umumnya lebih rapuh di lingkungan
-  • Kista = bentuk resisten di lingkungan dan sering menjadi stadium infektif
-- [Manifestasi Klinis Amebiasis] Infeksi dapat berupa … :: • Asimtomatik
+- [Siklus Hidup E. histolytica] Pada Siklus Hidup E. histolytica, apa urutan utamanya? :: Kista matang tertelan → excystation di usus halus → trofozoit menuju kolon → multiplikasi → sebagian tetap luminal dan mengalami encystation → kista keluar bersama feses.
+- [Siklus Hidup E. histolytica] Apa yang dimaksud dengan Cabang invasif pada Siklus Hidup E. histolytica? :: Trofozoit menembus mukosa kolon → ulkus → dapat masuk sirkulasi portal → hepar → abses hati amebik.
+- [Tatalaksana Amebiasis — Konsep Ujian] Pada Tatalaksana Amebiasis — Konsep Ujian, apa contoh obat jaringannya? :: Metronidazole atau tinidazole.
+- [Tatalaksana Amebiasis — Konsep Ujian] Jelaskan Contoh luminal agent dalam konteks Tatalaksana Amebiasis — Konsep Ujian. :: Paromomycin; alternatif tertentu dapat berbeda menurut ketersediaan lokal.
+- [histolytica vs Giardia — Perbandingan Cepat] Apa yang dimaksud dengan Trofozoit pada histolytica vs Giardia — Perbandingan Cepat? :: 2 nukleus + ventral disc + flagella.
+- [Protozoa Usus (Entamoeba, Giardia)] Apa yang perlu diingat tentang Amoebic colitis pada Protozoa Usus (Entamoeba, Giardia)? :: Flask-shaped ulcer
+- [Protozoa Usus (Entamoeba, Giardia)] Apa yang perlu diingat tentang Penyebaran portal pada Protozoa Usus (Entamoeba, Giardia)? :: Abses hati
+- [Protozoa Usus (Entamoeba, Giardia)] Apa yang perlu diketahui tentang Giardia trophozoite pada Protozoa Usus (Entamoeba, Giardia)? :: 2 nukleus, flagella, ventral adhesive disc
+- [Protozoa Usus (Entamoeba, Giardia)] Apa yang perlu diingat tentang Giardia pada Protozoa Usus (Entamoeba, Giardia)? :: Greasy, foul-smelling diarrhea + malabsorption
+- [Protozoa Usus (Entamoeba, Giardia)] Apa yang dimaksud dengan Waterborne diarrhea + camping pada Protozoa Usus (Entamoeba, Giardia)? :: Giardia sampai terbukti lain
+- [Protozoa Usus (Entamoeba, Giardia)] Apa jawaban atau kesimpulan untuk petunjuk berikut: E. histolytica menyerang kolon dan dapat menginvasi mukosa pada Protozoa Usus (Entamoeba, Giardia)? :: Disentri, flask-shaped ulcer, dan abses hati; trofozoit dengan eritrosit tertelan sangat khas. Giardia hidup di usus halus proksimal, menempel dengan ventral disc, tidak invasif, dan menyebabkan greasy diarrhea serta malabsorpsi. Keduanya ditularkan fecal–oral melalui kista
+- [Patogenesis Amebiasis] Sebutkan hal-hal penting tentang Flask-shaped ulcer pada Patogenesis Amebiasis (Protozoa Usus (Entamoeba, Giardia)). :: • Leher relatif sempit pada permukaan mukosa
+  • Kerusakan meluas lebih lebar ke submukosa
+  • Menjadi gambaran patologis klasik amebic colitis
+- [Manifestasi Klinis Amebiasis] Sebutkan hal-hal penting tentang Infeksi pada Manifestasi Klinis Amebiasis (Protozoa Usus (Entamoeba, Giardia)). :: • Asimtomatik
   • Diare ringan sampai sedang
   • Amebic colitis dengan nyeri abdomen
   • Disentri: feses berdarah dan berlendir
   • Abses hati amebik: demam, nyeri kuadran kanan atas, hepatomegali
-- [Diagnosis E. histolytica] Pemeriksaan dapat mencakup … :: • Mikroskopi feses untuk kista/trofozoit
-  • Antigen detection
-  • Molecular testing/PCR bila tersedia
-  • Serologi terutama membantu pada penyakit ekstra-intestinal seperti abses hati
-- [Patogenesis Giardiasis] Gangguan permukaan mukosa dapat menyebabkan … :: • Penurunan absorpsi
-  • Gangguan absorpsi lemak
-  • Steatorrhea
-  • Penurunan berat badan pada kasus berkepanjangan
-  • Intoleransi laktosa sekunder pada sebagian pasien
-- [Manifestasi Klinis Giardiasis] Faktor risiko klasik … :: • Air yang tidak aman
+- [Tatalaksana Amebiasis — Konsep Ujian] Sebutkan prinsip terpenting pada Tatalaksana Amebiasis — Konsep Ujian. :: • Penyakit invasif memerlukan obat jaringan, kemudian obat luminal untuk eradikasi parasit di lumen kolon
+  • Terapi luminal saja tidak cukup untuk amebiasis invasif
+  • Carrier/asymptomatic intestinal infection tetap memerlukan eradikasi luminal bila benar-benar terkonfirmasi E. histolytica
+- [Manifestasi Klinis Giardiasis] Sebutkan faktor risiko klasik pada Manifestasi Klinis Giardiasis. :: • Air yang tidak aman
   • Backpacking/camping dengan konsumsi air permukaan tanpa pengolahan adekuat
   • Day-care setting
   • Kontak fecal–oral
   • Kondisi dengan gangguan imunitas humoral tertentu dapat mempermudah infeksi persisten
-- [Tatalaksana Giardiasis — Konsep Ujian] Obat yang efektif antara lain … :: • Tinidazole
+- [Diagnosis Giardiasis] Sebutkan pilihan pemeriksaan pada Diagnosis Giardiasis (Protozoa Usus (Entamoeba, Giardia)). :: • Stool antigen testing
+  • Microscopy untuk kista/trofozoit
+  • Molecular testing sesuai fasilitas
+- [Tatalaksana Giardiasis — Konsep Ujian] Sebutkan hal-hal penting tentang Obat yang efektif pada Tatalaksana Giardiasis — Konsep Ujian. :: • Tinidazole
   • Nitazoxanide
   • Metronidazole
-- [Entamoeba histolytica — Overview] High-yield: Entamoeba histolytica — Overview :: Stadium infektif: kista matang. Lokasi utama: kolon. Bentuk invasif: trofozoit. Penyakit klasik: disentri amebik dan abses hati amebik.
-- [Morfologi E. histolytica] EXAM PEARL: Morfologi E. histolytica :: “Trofozoit berisi RBC” sangat mendukung E. histolytica invasif.
-- [Tatalaksana Amebiasis — Konsep Ujian] EXAM TRAP: Tatalaksana Amebiasis — Konsep Ujian :: Selesai metronidazole bukan berarti terapi invasif otomatis lengkap—ingat fase luminal.
-- [Giardia Duodenalis — Overview] High-yield: Giardia Duodenalis — Overview :: Stadium infektif: kista. Lokasi utama: duodenum/jejunum. Mekanisme: attachment, bukan invasi jaringan dalam. Gambaran klinis: diare berbau, greasy stool/steatorrhea, bloating, malabsorpsi.
+- [Entamoeba histolytica — Overview] Apa poin high-yield (pearl) tentang Entamoeba histolytica — Overview? :: Stadium infektif: kista matang. Lokasi utama: kolon. Bentuk invasif: trofozoit. Penyakit klasik: disentri amebik dan abses hati amebik.
+- [Morfologi E. histolytica] Apa poin high-yield (pearl) tentang Morfologi E. histolytica? :: “Trofozoit berisi RBC” sangat mendukung E. histolytica invasif.
+- [Tatalaksana Amebiasis — Konsep Ujian] Apa jebakan yang sering muncul pada soal tentang Tatalaksana Amebiasis — Konsep Ujian? :: Selesai metronidazole bukan berarti terapi invasif otomatis lengkap—ingat fase luminal.
+- [Giardia Duodenalis — Overview] Apa poin high-yield (pearl) tentang Giardia Duodenalis — Overview? :: Stadium infektif: kista. Lokasi utama: duodenum/jejunum. Mekanisme: attachment, bukan invasi jaringan dalam. Gambaran klinis: diare berbau, greasy stool/steatorrhea, bloating, malabsorpsi.

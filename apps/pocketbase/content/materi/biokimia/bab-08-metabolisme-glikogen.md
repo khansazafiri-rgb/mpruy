@@ -592,60 +592,37 @@ Glikogen adalah polimer glukosa bercabang dengan ikatan α(1→4) pada rantai li
 
 ## Flashcard {kartu}
 
-- [Peta Besar Bab] Setelah makan :: Glukosa → G6P → G1P → UDP-glucose → glikogen.
-- [Peta Besar Bab] Di hati :: G6P → glukosa bebas → darah.
-- [Peta Besar Bab] Di otot :: G6P → glikolisis → ATP untuk kontraksi.
-- [Peta Besar Bab] Inti bab :: insulin mendorong penyimpanan glukosa sebagai glikogen, sedangkan glucagon/epinephrine mendorong pemecahan glikogen sesuai kebutuhan jaringan.
-- [Langkah 2 — G6P → G1P] Enzim :: phosphoglucomutase.
-- [Langkah 3 — Aktivasi Menjadi UDP-Glucose] Enzim :: UDP-glucose pyrophosphorylase.
-- [Glycogen Phosphorylase] Produk :: glikogen yang memendek + glucose-1-phosphate.
-- [Nasib G6P di Otot] Karena itu :: G6P → glikolisis → ATP.
-- [Glucagon pada Hati] Alur :: glucagon receptor (Gs) → adenylyl cyclase → cAMP → protein kinase A (PKA) → phosphorylase kinase terfosforilasi/aktif → glycogen phosphorylase a → glycogenolysis meningkat.
-- [Insulin dan Penyimpanan Glikogen] Hasil akhir :: glycogenesis meningkat, glycogenolysis menurun.
-- [Protein Phosphatase-1] Efek bersih PP1 :: sintesis glikogen naik dan pemecahan glikogen turun.
-- [GSD Type I — Von Gierke] Defek utama :: glucose-6-phosphatase atau sistem transpor G6P terkait.
-- [GSD Type I — Von Gierke] Akibat :: hati tidak dapat mengubah G6P menjadi glukosa bebas secara efektif.
-- [GSD Type I — Von Gierke] Poin mekanisme :: glycogenolysis dan gluconeogenesis dapat menghasilkan G6P, tetapi tahap pelepasan glukosa terakhir terganggu.
-- [GSD Type II — Pompe] Defek :: lysosomal acid α-glucosidase (acid maltase).
-- [GSD Type III — Cori/Forbes] Defek :: debranching enzyme.
-- [GSD Type III — Cori/Forbes] Akibat :: pemecahan cabang tidak tuntas dan terbentuk limit dextrin.
-- [GSD Type VI — Hers] Defek :: liver glycogen phosphorylase.
-- [GSD Type VII — Tarui] Defek :: phosphofructokinase-1 pada otot dan eritrosit, bukan enzim glycogenolysis langsung.
-- [Master Flow Sintesis dan Pemecahan] SINTESIS :: Glukosa → G6P → G1P → UDP-glucose → glycogenin primer → glycogen synthase → branching enzyme → GLIKOGEN.
-- [Master Flow Sintesis dan Pemecahan] PEMECAHAN :: GLIKOGEN → glycogen phosphorylase → G1P → G6P.
-- [Master Flow Sintesis dan Pemecahan] Hati :: G6P → glucose → darah.
-- [Master Flow Sintesis dan Pemecahan] Otot :: G6P → glycolysis → ATP.
-- [Master Flow Regulasi] PUASA / STRESS :: Glucagon (hati) atau epinephrine → Gs → adenylyl cyclase → cAMP → PKA → phosphorylase kinase ↑ → glycogen phosphorylase ↑ → glycogenolysis ↑.
-- [Master Flow Regulasi] PKA juga :: → glycogen synthase phosphorylation → glycogenesis ↓.
-- [High-yield] Glikogen :: polimer glukosa bercabang dengan ikatan α(1→4) pada rantai linear dan α(1→6) pada titik cabang. Glycogenin membentuk primer, glycogen synthase memperpanjang rantai dengan ikatan α(1→4), dan branching enzyme membentuk cabang α(1→6). Pada glycogenolysis, glycogen phosphorylase menghasilkan G1P dari ikatan α(1→4), sedangkan debranching enzyme menangani titik cabang. G1P menjadi G6P; hati dapat mengubah G6P menjadi glukosa bebas karena memiliki glucose-6-phosphatase, sementara otot menggunakan G6P untuk glikolisis. Phosphorylation secara umum mengaktifkan glycogen phosphorylase tetapi menghambat glycogen synthase; PP1 membalikkan pola ini. Glucagon merangsang glycogenolysis hati, epinephrine bekerja pada hati dan otot, sedangkan Ca²⁺ dan AMP memberi kontrol cepat pada otot. Insulin mendorong glycogenesis. GSD high-yield meliputi von Gierke (G6Pase), Pompe (lysosomal acid α-glucosidase), Cori (debranching), Andersen (branching), McArdle (muscle phosphorylase), Hers (liver phosphorylase), dan type IX (phosphorylase kinase)
-- [Lokasi Penyimpanan Utama] Dua depot utama adalah … :: • hati
-  • otot rangka
-- [Glycogenesis: Definisi] Jalur ini meningkat pada keadaan fed state, terutama ketika … :: • glukosa tersedia
-  • insulin tinggi
-  • kebutuhan energi akut sudah tercukupi
-- [Mengapa Memakai UDP-Glucose?] Aktivasi menjadi UDP-glucose … :: • membuat gugus glukosil lebih mudah ditransfer
-  • memberi leaving group UDP yang baik
-  • memungkinkan sintesis berlangsung terarah
-- [Glycogenolysis: Definisi] Jalur ini meningkat … :: • di hati saat glukosa darah menurun
-  • di otot saat kontraksi dan kebutuhan ATP meningkat
-- [Protein Phosphatase-1] PP1 adalah regulator penting yang menghilangkan gugus fosfat dari … :: • glycogen synthase
-  • glycogen phosphorylase
-  • phosphorylase kinase
-- [Exercise State] Pada otot aktif … :: • epinephrine dapat meningkat
-  • AMP meningkat
-  • Ca²⁺ meningkat
-  • phosphorylase kinase dan glycogen phosphorylase diaktifkan
-- [Mengapa Glikogen Hati dan Otot Tidak Identik?] Perbedaan tujuan ini menjelaskan perbedaan … :: • reseptor hormon
-  • regulasi alosterik
-  • keberadaan glucose-6-phosphatase
-  • nasib akhir G6P
-- [GSD Type II — Pompe] Bentuk infantile klasik dapat menyebabkan … :: • cardiomegaly/hypertrophic cardiomyopathy
-  • hypotonia
-  • kelemahan otot
-- [GSD Type IV — Andersen] Akumulasi polimer abnormal dapat merusak hati dan menyebabkan … :: • hepatosplenomegaly
-  • progressive cirrhosis
-  • liver failure pada bentuk klasik
-- [GSD Type VII — Tarui] Namun penyakit ini sering dibahas bersama GSD karena menyebabkan … :: • exercise intolerance
-  • akumulasi glikogen otot
-  • respons laktat exercise rendah
-  • hemolytic anemia karena eritrosit bergantung pada glikolisis
+- [Peta Besar Bab] Pada Metabolisme Glikogen, apa inti babnya? :: Insulin mendorong penyimpanan glukosa sebagai glikogen, sedangkan glucagon/epinephrine mendorong pemecahan glikogen sesuai kebutuhan jaringan.
+- [Langkah 2 — G6P → G1P] Pada Langkah 2 — G6P → G1P, apa enzimnya? :: Phosphoglucomutase.
+- [Langkah 3 — Aktivasi Menjadi UDP-Glucose] Pada Langkah 3 — Aktivasi Menjadi UDP-Glucose, apa enzimnya? :: UDP-glucose pyrophosphorylase.
+- [Glycogen Phosphorylase] Pada Glycogen Phosphorylase, apa produknya (Metabolisme Glikogen)? :: Glikogen yang memendek + glucose-1-phosphate.
+- [G1P → G6P] Pada G1P → G6P, apa enzimnya (Metabolisme Glikogen)? :: Phosphoglucomutase.
+- [Glucagon pada Hati] Pada Glucagon pada Hati, apa alurnya (Metabolisme Glikogen)? :: Glucagon receptor (Gs) → adenylyl cyclase → cAMP → protein kinase A (PKA) → phosphorylase kinase terfosforilasi/aktif → glycogen phosphorylase a → glycogenolysis meningkat.
+- [Insulin dan Penyimpanan Glikogen] Pada Insulin dan Penyimpanan Glikogen, apa hasil akhirnya? :: Glycogenesis meningkat, glycogenolysis menurun.
+- [Protein Phosphatase-1] Jelaskan Efek bersih PP1 dalam konteks Protein Phosphatase-1 (Metabolisme Glikogen). :: Sintesis glikogen naik dan pemecahan glikogen turun.
+- [GSD Type I — Von Gierke] Apa yang dimaksud dengan Defek utama pada GSD Type I — Von Gierke? :: Glucose-6-phosphatase atau sistem transpor G6P terkait.
+- [GSD Type I — Von Gierke] Apa yang dimaksud dengan Poin mekanisme pada GSD Type I — Von Gierke? :: Glycogenolysis dan gluconeogenesis dapat menghasilkan G6P, tetapi tahap pelepasan glukosa terakhir terganggu.
+- [GSD Type II — Pompe] Apa yang dimaksud dengan Defek pada GSD Type II — Pompe? :: Lysosomal acid α-glucosidase (acid maltase).
+- [GSD Type V — McArdle] Apa yang dimaksud dengan Defek pada GSD Type V — McArdle? :: Muscle glycogen phosphorylase (myophosphorylase).
+- [GSD Type VI — Hers] Apa yang dimaksud dengan Defek pada GSD Type VI — Hers? :: Liver glycogen phosphorylase.
+- [GSD Type VII — Tarui] Apa yang dimaksud dengan Defek pada GSD Type VII — Tarui? :: Phosphofructokinase-1 pada otot dan eritrosit, bukan enzim glycogenolysis langsung.
+- [Master Flow Sintesis dan Pemecahan] Jelaskan SINTESIS pada Master Flow Sintesis dan Pemecahan (Metabolisme Glikogen). :: Glukosa → G6P → G1P → UDP-glucose → glycogenin primer → glycogen synthase → branching enzyme → GLIKOGEN.
+- [Master Flow Sintesis dan Pemecahan] Jelaskan PEMECAHAN pada Master Flow Sintesis dan Pemecahan (Metabolisme Glikogen). :: GLIKOGEN → glycogen phosphorylase → G1P → G6P.
+- [Master Flow Sintesis dan Pemecahan] Apa yang dimaksud dengan Hati pada Master Flow Sintesis dan Pemecahan? :: G6P → glucose → darah.
+- [Master Flow Sintesis dan Pemecahan] Apa yang dimaksud dengan Otot pada Master Flow Sintesis dan Pemecahan? :: G6P → glycolysis → ATP.
+- [Master Flow Regulasi] Jelaskan PUASA / STRESS dalam konteks Master Flow Regulasi. :: Glucagon (hati) atau epinephrine → Gs → adenylyl cyclase → cAMP → PKA → phosphorylase kinase ↑ → glycogen phosphorylase ↑ → glycogenolysis ↑.
+- [Master Flow Regulasi] Apa yang dimaksud dengan PKA juga pada Master Flow Regulasi? :: → glycogen synthase phosphorylation → glycogenesis ↓.
+- [Master Flow Regulasi] Apa yang dimaksud dengan FED STATE pada Master Flow Regulasi? :: Insulin → Akt + PP1 → glycogen synthase dephosphorylation/activation → phosphorylase pathway dephosphorylation/inactivation → glycogenesis ↑.
+- [Metabolisme Glikogen] Apa yang dimaksud dengan Glikogen pada Metabolisme Glikogen? :: Polimer glukosa bercabang dengan ikatan α(1→4) pada rantai linear dan α(1→6) pada titik cabang. Glycogenin membentuk primer, glycogen synthase memperpanjang rantai dengan ikatan α(1→4), dan branching enzyme membentuk cabang α(1→6). Pada glycogenolysis, glycogen phosphorylase menghasilkan G1P dari ikatan α(1→4), sedangkan debranching enzyme menangani titik cabang. G1P menjadi G6P; hati dapat mengubah G6P menjadi glukosa bebas karena memiliki glucose-6-phosphatase, sementara otot menggunakan G6P untuk glikolisis. Phosphorylation secara umum mengaktifkan glycogen phosphorylase tetapi menghambat glycogen synthase; PP1 membalikkan pola ini. Glucagon merangsang glycogenolysis hati, epinephrine bekerja pada hati dan otot, sedangkan Ca²⁺ dan AMP memberi kontrol cepat pada otot. Insulin mendorong glycogenesis. GSD high-yield meliputi von Gierke (G6Pase), Pompe (lysosomal acid α-glucosidase), Cori (debranching), Andersen (branching), McArdle (muscle phosphorylase), Hers (liver phosphorylase), dan type IX (phosphorylase kinase)
+- [Lokasi Penyimpanan Utama] Sebutkan dua depot utama pada Lokasi Penyimpanan Utama. :: • Hati
+  • Otot rangka
+- [Insulin dan Penyimpanan Glikogen] Sebutkan efek keseluruhan pada Insulin dan Penyimpanan Glikogen. :: • Meningkatkan uptake/utilisasi glukosa pada jaringan yang sensitif
+  • Menurunkan sinyal cAMP tertentu
+  • Mengaktifkan protein phosphatase-1
+  • Mendorong dephosphorylation glycogen synthase → aktif
+  • Mendorong dephosphorylation phosphorylase/phosphorylase kinase → inaktif
+- [GSD Type I — Von Gierke] Sebutkan gambaran klasik pada GSD Type I — Von Gierke. :: • Severe fasting hypoglycemia
+  • Hepatomegaly
+  • Lactic acidosis
+  • Hyperuricemia
+  • Hyperlipidemia

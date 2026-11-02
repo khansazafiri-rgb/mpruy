@@ -329,45 +329,37 @@ Standing → venous pooling → venous return ↓ → EDV ↓ → SV ↓ → CO 
 
 ## Flashcard {kartu}
 
-- [Flow, Pressure, dan Resistance] Konsep dasar :: Flow (Q) = ΔP / R.
-- [Analogi Hukum Ohm pada Sirkulasi] Untuk sirkulasi sistemik :: MAP − right atrial pressure ≈ CO × TPR.
-- [Pulse Pressure] Rumus :: Pulse Pressure = systolic pressure − diastolic pressure.
-- [Pulse Pressure] Contoh sumber :: 124 − 82 = 42 mmHg.
-- [Mean Arterial Pressure] Contoh sumber :: 124/82 mmHg → PP = 42 mmHg → MAP ≈ 82 + 14 = 96 mmHg.
-- [Total Peripheral Resistance] Vasoconstriction :: radius ↓ → resistance ↑ → pada kondisi lain sama, pressure cenderung ↑ dan flow ke bed tersebut cenderung ↓.
-- [Contoh Hitung Net Filtration] Net outward force :: (35 + 1) − (25 + 0) = 11 mmHg keluar kapiler.
-- [Shear Stress dan Endothelium] Poin yang ditekankan :: shear stress dapat menyebabkan vasodilation melalui respons endothelium, termasuk pelepasan nitric oxide.
-- [Pulmonary vs Systemic Circulation] Perbedaannya terutama :: pulmonary circuit beroperasi pada pressure/resistance lebih rendah dibanding systemic circuit.
-- [Respiratory Pump] Saat inspiration :: intrathoracic pressure menjadi lebih negatif.
-- [Respiratory Pump] Poin yang ditekankan :: right atrial pressure menjadi lebih negatif → gradient dari peripheral veins menuju thorax meningkat → venous return meningkat.
-- [Skeletal Muscle Pump] Dengan bantuan one-way valves :: darah terdorong menuju jantung dan backward flow diminimalkan.
-- [Venoconstriction] Efek :: venous return dan preload dapat meningkat.
-- [Berdiri Mendadak: Perubahan Awal] Lalu :: EDV/preload ↓ → SV ↓ → CO ↓ → arterial pressure cenderung ↓.
-- [Baroreceptor Reflex] Respons pusat :: sympathetic ↑ dan parasympathetic ↓.
-- [Efek Parasimpatis] Efek utama :: heart rate ↓ dan AV nodal conduction ↓.
-- [Respons terhadap Kehilangan Volume] Pada dehydration/hemorrhage :: effective circulating volume ↓ → venous return ↓ → preload ↓ → CO cenderung ↓.
-- [Respons terhadap Kehilangan Volume] Kompensasi cepat :: sympathetic ↑ → tachycardia + vasoconstriction + venoconstriction.
-- [High-yield] Dual pump :: right heart → pulmonary circulation; left heart → systemic circulation
-- [High-yield] Hemodynamics :: Q = ΔP/R
-- [High-yield] Vena :: high compliance reservoir
-- [High-yield] Arteriol :: resistance vessels
-- [High-yield] Electrical :: SA → AV → His → bundle branches → Purkinje
-- [High-yield] SA node :: automaticity/funny current
-- [High-yield] Phase 2 :: Ca2+ plateau
-- [High-yield] Long refractory period :: no tetanus
-- [High-yield] Mechanical: SV :: EDV − ESV
-- [High-yield] Preload ↑ :: SV cenderung ↑
-- [High-yield] Afterload ↑ :: ESV ↑, SV ↓
-- [High-yield] Contractility ↑ :: ESV ↓, SV ↑
-- [High-yield] Pressure: PP :: SBP − DBP
-- [High-yield] Standing :: venous return ↓ first
-- [High-yield] Venous return :: blood volume + venous tone + muscle pump + respiratory pump + valves
-- [High-yield] Exam anchor :: electrical event comes first, then mechanical response
-- [Efek Simpatis pada Sistem Kardiovaskular] Sumber menekankan sympathetic stimulation dapat meningkatkan … :: • heart rate
-  • contractility
-  • venous return melalui venoconstriction
-  • arteriolar tone pada banyak vascular beds
-- [Radius adalah Faktor Hemodinamik yang Sangat Kuat] High-yield: Radius adalah Faktor Hemodinamik yang Sangat Kuat :: Arteriol adalah resistance vessels karena perubahan tonusnya sangat efektif mengubah resistance.
-- [Shear Stress dan Endothelium] High-yield: Shear Stress dan Endothelium :: Bukan sekadar “dilatasi mekanis langsung” smooth muscle.
-- [Distribusi Cardiac Output saat Istirahat] High-yield: Distribusi Cardiac Output saat Istirahat :: Organ dengan flow total tertinggi tidak selalu sama dengan organ dengan flow per gram jaringan tertinggi.
-- [Respons pada Orthostatic Stress] Exam trap: Respons pada Orthostatic Stress :: Yang turun paling awal adalah venous return; sympathetic activity justru meningkat sebagai kompensasi.
+- [Flow, Pressure, dan Resistance] Pada Flow, Pressure, dan Resistance, apa konsep dasarnya? :: Flow (Q) = ΔP / R.
+- [Pulse Pressure] Pada Pulse Pressure, apa rumusnya (Fisiologi Tekanan Darah & Regulasinya)? :: Pulse Pressure = systolic pressure − diastolic pressure.
+- [Mean Arterial Pressure] Apa yang dimaksud dengan Contoh sumber pada Mean Arterial Pressure? :: 124/82 mmHg → PP = 42 mmHg → MAP ≈ 82 + 14 = 96 mmHg.
+- [Total Peripheral Resistance] Apa yang dimaksud dengan Vasoconstriction pada Total Peripheral Resistance? :: Radius ↓ → resistance ↑ → pada kondisi lain sama, pressure cenderung ↑ dan flow ke bed tersebut cenderung ↓.
+- [Contoh Hitung Net Filtration] Jelaskan Net outward force dalam konteks Contoh Hitung Net Filtration. :: (35 + 1) − (25 + 0) = 11 mmHg keluar kapiler.
+- [Shear Stress dan Endothelium] Apa yang dimaksud dengan Poin pada Shear Stress dan Endothelium? :: Shear stress dapat menyebabkan vasodilation melalui respons endothelium, termasuk pelepasan nitric oxide.
+- [Pulmonary vs Systemic Circulation] Pada Pulmonary vs Systemic Circulation, apa perbedaannya terutamanya? :: Pulmonary circuit beroperasi pada pressure/resistance lebih rendah dibanding systemic circuit.
+- [Respiratory Pump] Apa yang dimaksud dengan Poin pada Respiratory Pump (Fisiologi Tekanan Darah & Regulasinya)? :: Right atrial pressure menjadi lebih negatif → gradient dari peripheral veins menuju thorax meningkat → venous return meningkat.
+- [Venoconstriction] Pada Venoconstriction, apa efeknya (Fisiologi Tekanan Darah & Regulasinya)? :: Venous return dan preload dapat meningkat.
+- [Baroreceptor Reflex] Apa yang dimaksud dengan Respons pusat pada Baroreceptor Reflex (Fisiologi Tekanan Darah & Regulasinya)? :: Sympathetic ↑ dan parasympathetic ↓.
+- [Efek Parasimpatis] Pada Efek Parasimpatis, apa efek utamanya (Fisiologi Tekanan Darah & Regulasinya)? :: Heart rate ↓ dan AV nodal conduction ↓.
+- [Respons terhadap Kehilangan Volume] Apa yang dimaksud dengan Kompensasi cepat pada Respons terhadap Kehilangan Volume? :: Sympathetic ↑ → tachycardia + vasoconstriction + venoconstriction.
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diketahui tentang Dual pump pada Fisiologi Tekanan Darah & Regulasinya? :: Right heart → pulmonary circulation; left heart → systemic circulation
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang dimaksud dengan Vena pada Fisiologi Tekanan Darah & Regulasinya? :: High compliance reservoir
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang dimaksud dengan Arteriol pada Fisiologi Tekanan Darah & Regulasinya? :: Resistance vessels
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diketahui tentang Electrical pada Fisiologi Tekanan Darah & Regulasinya? :: SA → AV → His → bundle branches → Purkinje
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang dimaksud dengan SA node pada Fisiologi Tekanan Darah & Regulasinya? :: Automaticity/funny current
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang dimaksud dengan Phase 2 pada Fisiologi Tekanan Darah & Regulasinya? :: Ca2+ plateau
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diingat tentang Long refractory period pada Fisiologi Tekanan Darah & Regulasinya? :: No tetanus
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diingat tentang Preload ↑ pada Fisiologi Tekanan Darah & Regulasinya? :: SV cenderung ↑
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diingat tentang Afterload ↑ pada Fisiologi Tekanan Darah & Regulasinya? :: ESV ↑, SV ↓
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diingat tentang Contractility ↑ pada Fisiologi Tekanan Darah & Regulasinya? :: ESV ↓, SV ↑
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diketahui tentang Venous return pada Fisiologi Tekanan Darah & Regulasinya? :: Blood volume + venous tone + muscle pump + respiratory pump + valves
+- [Fisiologi Tekanan Darah & Regulasinya] Apa yang perlu diketahui tentang Exam anchor pada Fisiologi Tekanan Darah & Regulasinya? :: Electrical event comes first, then mechanical response
+- [Faktor yang Meningkatkan Venous Return] Sebutkan faktor penting pada Faktor yang Meningkatkan Venous Return. :: • Blood volume
+  • Venous tone
+  • Skeletal muscle pump
+  • Respiratory pump
+  • Pressure gradient menuju right atrium
+  • One-way venous valves
+- [Radius adalah Faktor Hemodinamik yang Sangat Kuat] Apa poin high-yield (pearl) tentang Radius adalah Faktor Hemodinamik yang Sangat Kuat? :: Arteriol adalah resistance vessels karena perubahan tonusnya sangat efektif mengubah resistance.
+- [Shear Stress dan Endothelium] Apa poin high-yield (pearl) tentang Shear Stress dan Endothelium? :: Bukan sekadar “dilatasi mekanis langsung” smooth muscle.
+- [Distribusi Cardiac Output saat Istirahat] Apa poin high-yield (pearl) tentang Distribusi Cardiac Output saat Istirahat? :: Organ dengan flow total tertinggi tidak selalu sama dengan organ dengan flow per gram jaringan tertinggi.
+- [Respons pada Orthostatic Stress] Apa jebakan yang sering muncul pada soal tentang Respons pada Orthostatic Stress? :: Yang turun paling awal adalah venous return; sympathetic activity justru meningkat sebagai kompensasi.

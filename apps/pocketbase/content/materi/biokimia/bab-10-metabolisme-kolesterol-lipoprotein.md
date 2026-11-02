@@ -582,62 +582,62 @@ Kolesterol dibuat dari acetyl-CoA melalui HMG-CoA reductase, enzim rate-limiting
 
 ## Flashcard {kartu}
 
-- [Struktur Dasar Lipoprotein] Urutan kandungan trigliserida terbesar :: Chylomicron > VLDL > IDL > LDL > HDL
-- [Sintesis Kolesterol] Alur sederhananya :: Acetyl-CoA → acetoacetyl-CoA → HMG-CoA → mevalonate → isopentenyl pyrophosphate → farnesyl pyrophosphate → squalene → lanosterol → cholesterol.
-- [HMG-CoA Reductase: Rate-Limiting Enzyme] Enzim :: HMG-CoA reductase.
-- [Apolipoprotein yang Harus Dihafal] High-yield mnemonic :: A-I → Activates LCAT.
-- [Chylomicron: Exogenous Pathway] LPL menghidrolisis trigliserida :: TG → free fatty acids + glycerol
-- [Rangkaian Besar Metabolisme Lipoprotein] Exogenous pathway :: Dietary lipid → intestine → chylomicron → LPL → chylomicron remnant → liver.
-- [Rangkaian Besar Metabolisme Lipoprotein] Endogenous pathway :: Liver → VLDL → LPL → IDL → LDL → peripheral tissue/liver.
-- [Rangkaian Besar Metabolisme Lipoprotein] Reverse cholesterol transport :: Peripheral cholesterol → HDL → liver.
-- [Perbandingan Chylomicron, VLDL, LDL, HDL] sumber :: metabolisme VLDL/IDL
-- [Perbandingan Chylomicron, VLDL, LDL, HDL] sumber :: liver dan intestine
-- [Alur yang Harus Dihafal] Sintesis cholesterol :: Acetyl-CoA → HMG-CoA → mevalonate → isoprenoid units → squalene → lanosterol → cholesterol.
-- [Alur yang Harus Dihafal] Eksogen :: Intestine → chylomicron (B-48) → +C-II/E dari HDL → LPL → remnant (E) → liver.
-- [Alur yang Harus Dihafal] Endogen :: Liver → VLDL (B-100) → LPL → IDL → LDL → LDL receptor.
-- [Alur yang Harus Dihafal] Reverse transport :: Peripheral cholesterol → HDL (A-I) → LCAT → liver.
-- [High-yield] Rate-limiting cholesterol synthesis :: HMG-CoA reductase
-- [High-yield] Cholesterol 7-alpha-hydroxylase :: rate-limiting bile acid synthesis
-- [High-yield] Type I hyperlipoproteinemia :: LPL/ApoC-II defect
-- [High-yield] Type IIa :: LDL tinggi, familial hypercholesterolemia
-- [High-yield] Type III :: ApoE/remnant disease
-- [High-yield] Familial hypercholesterolemia klasik :: LDL receptor defect
-- [High-yield] MTP defect :: abetalipoproteinemia
-- [Gambaran Besar] Kolesterol adalah sterol penting yang dibutuhkan tubuh untuk … :: • menjaga struktur dan fluiditas membran sel
-  • menjadi prekursor hormon steroid
-  • menjadi prekursor asam empedu dan garam empedu
-  • menjadi prekursor vitamin D
-- [Gambaran Besar] Tubuh memperoleh kolesterol dari dua sumber utama … :: • eksogen → berasal dari makanan dan diserap di usus
-  • endogen → disintesis sendiri, terutama di hati, tetapi juga dapat dibuat oleh banyak sel berinti
-- [HMG-CoA Reductase: Rate-Limiting Enzyme] Regulasi HMG-CoA reductase … :: • insulin → meningkatkan aktivitas sintesis kolesterol
-  • glucagon → menurunkan aktivitas
+- [Struktur Dasar Lipoprotein] Jelaskan Urutan kandungan trigliserida terbesar dalam konteks Struktur Dasar Lipoprotein. :: Chylomicron > VLDL > IDL > LDL > HDL
+- [Sintesis Kolesterol] Pada Sintesis Kolesterol, apa alur sederhananya (Metabolisme Kolesterol & Lipoprotein)? :: Acetyl-CoA → acetoacetyl-CoA → HMG-CoA → mevalonate → isopentenyl pyrophosphate → farnesyl pyrophosphate → squalene → lanosterol → cholesterol.
+- [HMG-CoA Reductase: Rate-Limiting Enzyme] Pada HMG-CoA Reductase: Rate-Limiting Enzyme, apa enzimnya? :: HMG-CoA reductase.
+- [Chylomicron: Exogenous Pathway] Jelaskan LPL menghidrolisis trigliserida dalam konteks Chylomicron: Exogenous Pathway. :: TG → free fatty acids + glycerol
+- [Rangkaian Besar Metabolisme Lipoprotein] Apa yang dimaksud dengan Exogenous pathway pada Rangkaian Besar Metabolisme Lipoprotein? :: Dietary lipid → intestine → chylomicron → LPL → chylomicron remnant → liver.
+- [Rangkaian Besar Metabolisme Lipoprotein] Apa yang dimaksud dengan Endogenous pathway pada Rangkaian Besar Metabolisme Lipoprotein? :: Liver → VLDL → LPL → IDL → LDL → peripheral tissue/liver.
+- [Rangkaian Besar Metabolisme Lipoprotein] Jelaskan Reverse cholesterol transport dalam konteks Rangkaian Besar Metabolisme Lipoprotein. :: Peripheral cholesterol → HDL → liver.
+- [Perbandingan Chylomicron, VLDL, LDL, HDL] Apa yang dimaksud dengan sumber pada Perbandingan Chylomicron, VLDL, LDL, HDL? :: Metabolisme VLDL/IDL
+- [Alur yang Harus Dihafal] Apa yang dimaksud dengan Sintesis cholesterol pada Alur yang Harus Dihafal? :: Acetyl-CoA → HMG-CoA → mevalonate → isoprenoid units → squalene → lanosterol → cholesterol.
+- [Alur yang Harus Dihafal] Apa yang dimaksud dengan Eksogen pada Alur yang Harus Dihafal? :: Intestine → chylomicron (B-48) → +C-II/E dari HDL → LPL → remnant (E) → liver.
+- [Alur yang Harus Dihafal] Apa yang dimaksud dengan Endogen pada Alur yang Harus Dihafal? :: Liver → VLDL (B-100) → LPL → IDL → LDL → LDL receptor.
+- [Alur yang Harus Dihafal] Apa yang dimaksud dengan Reverse transport pada Alur yang Harus Dihafal? :: Peripheral cholesterol → HDL (A-I) → LCAT → liver.
+- [Metabolisme Kolesterol & Lipoprotein] Apa yang dimaksud dengan Rate-limiting cholesterol synthesis pada Metabolisme Kolesterol & Lipoprotein? :: HMG-CoA reductase
+- [Metabolisme Kolesterol & Lipoprotein] Apa yang dimaksud dengan Cholesterol 7-alpha-hydroxylase pada Metabolisme Kolesterol & Lipoprotein? :: Rate-limiting bile acid synthesis
+- [Metabolisme Kolesterol & Lipoprotein] Apa yang dimaksud dengan Type I hyperlipoproteinemia pada Metabolisme Kolesterol & Lipoprotein? :: LPL/ApoC-II defect
+- [Metabolisme Kolesterol & Lipoprotein] Apa yang dimaksud dengan Type IIa pada Metabolisme Kolesterol & Lipoprotein? :: LDL tinggi, familial hypercholesterolemia
+- [Metabolisme Kolesterol & Lipoprotein] Apa yang dimaksud dengan Type III pada Metabolisme Kolesterol & Lipoprotein? :: ApoE/remnant disease
+- [Metabolisme Kolesterol & Lipoprotein] Apa yang dimaksud dengan Familial hypercholesterolemia klasik pada Metabolisme Kolesterol & Lipoprotein? :: LDL receptor defect
+- [Metabolisme Kolesterol & Lipoprotein] Apa yang perlu diingat tentang MTP defect pada Metabolisme Kolesterol & Lipoprotein? :: Abetalipoproteinemia
+- [Gambaran Besar] Sebutkan tubuh memperoleh kolesterol dari dua sumber utama pada Metabolisme Kolesterol & Lipoprotein. :: • Eksogen → berasal dari makanan dan diserap di usus
+  • Endogen → disintesis sendiri, terutama di hati, tetapi juga dapat dibuat oleh banyak sel berinti
+- [HMG-CoA Reductase: Rate-Limiting Enzyme] Sebutkan regulasi HMG-CoA reductase pada HMG-CoA Reductase: Rate-Limiting Enzyme. :: • Insulin → meningkatkan aktivitas sintesis kolesterol
+  • Glucagon → menurunkan aktivitas
   • AMPK phosphorylation → menginaktivasi HMG-CoA reductase
-  • dephosphorylation → mengaktifkan enzim
-  • kadar kolesterol intrasel tinggi → menekan sintesis dan meningkatkan degradasi enzim
-  • kadar kolesterol rendah → meningkatkan ekspresi melalui SREBP
-- [Nasib Kolesterol] Kolesterol dapat digunakan untuk … :: • membran sel
-  • steroidogenesis di adrenal dan gonad
-  • pembentukan bile acids/bile salts
-  • pembentukan vitamin D
-  • esterifikasi menjadi cholesteryl ester untuk penyimpanan atau transport
-- [Pembentukan Asam Empedu] Fungsi bile salts … :: • emulsifikasi lipid
-  • membantu pembentukan micelle
-  • mempermudah absorpsi lipid dan vitamin larut lemak
-- [VLDL: Endogenous Triglyceride Transport] Di plasma, VLDL memperoleh … :: • ApoC-II
-  • ApoE dari HDL
-- [LDL: Pengangkut Kolesterol ke Jaringan] Peningkatan kolesterol intrasel menimbulkan tiga efek penting … :: • menekan HMG-CoA reductase → sintesis kolesterol turun
-  • menurunkan sintesis LDL receptor → uptake LDL berkurang
-  • meningkatkan ACAT → esterifikasi dan penyimpanan kolesterol meningkat
-- [HDL dan Reverse Cholesterol Transport] HDL awal dibentuk terutama oleh … :: • hati
-  • usus
-- [LPL vs Hormone-Sensitive Lipase] Hormone-sensitive lipase / HSL … :: • berada di dalam adipocyte
-  • memobilisasi trigliserida yang tersimpan dalam adiposa
-  • diaktifkan keadaan puasa/catecholamine
-  • dihambat insulin
-- [Familial Hypercholesterolemia] Dapat pula berkaitan dengan … :: • ApoB-100 abnormal
-  • gain-of-function PCSK9
-- [HMG-CoA Reductase: Rate-Limiting Enzyme] Penting: HMG-CoA Reductase: Rate-Limiting Enzyme :: HMG-CoA reductase menggunakan NADPH dan berada pada membran endoplasmic reticulum.
-- [ACAT vs LCAT] Jebakan soal: ACAT vs LCAT :: ACAT = intracellular cholesterol esterification. LCAT = plasma/HDL cholesterol esterification.
-- [LPL vs Hormone-Sensitive Lipase] Jebakan soal: LPL vs Hormone-Sensitive Lipase :: LPL = lipid dalam darah. HSL = lipid tersimpan di adipocyte.
-- [Aterosklerosis dan Modified LDL] High-yield: Aterosklerosis dan Modified LDL :: LDL receptor uptake ≠ scavenger receptor uptake.
-- [Tangier Disease] High-yield: Tangier Disease :: ABCA1 penting untuk pembentukan HDL nascent dan reverse cholesterol transport.
+  • Dephosphorylation → mengaktifkan enzim
+  • Kadar kolesterol intrasel tinggi → menekan sintesis dan meningkatkan degradasi enzim
+  • Kadar kolesterol rendah → meningkatkan ekspresi melalui SREBP
+- [HMG-CoA Reductase: Rate-Limiting Enzyme] Sebutkan hal-hal penting tentang Konsekuensi penurunan kolesterol hepatosit oleh statin pada HMG-CoA Reductase: Rate-Limiting Enzyme. :: • Hepatosit meningkatkan LDL receptor
+  • Uptake LDL dari plasma meningkat
+  • Kadar LDL plasma turun
+- [Pembentukan Asam Empedu] Sebutkan fungsi bile salts pada Pembentukan Asam Empedu. :: • Emulsifikasi lipid
+  • Membantu pembentukan micelle
+  • Mempermudah absorpsi lipid dan vitamin larut lemak
+- [Chylomicron: Exogenous Pathway] Sebutkan komponen penting pada Chylomicron: Exogenous Pathway. :: • Kaya trigliserida
+  • Mengandung ApoB-48
+- [Chylomicron: Exogenous Pathway] Sebutkan hal-hal penting tentang Chylomicron remnant pada Chylomicron: Exogenous Pathway (Metabolisme Kolesterol & Lipoprotein). :: • Relatif kaya kolesterol
+  • Membawa ApoE
+  • Diambil oleh hati melalui receptor yang mengenali ApoE
+- [LDL: Pengangkut Kolesterol ke Jaringan] Sebutkan hal-hal penting tentang LDL kemudian masuk lysosome pada LDL: Pengangkut Kolesterol ke Jaringan. :: • ApoB-100 dipecah menjadi amino acids
+  • Cholesteryl ester dihidrolisis menjadi free cholesterol
+- [LDL: Pengangkut Kolesterol ke Jaringan] Sebutkan peningkatan kolesterol intrasel menimbulkan tiga efek penting pada LDL: Pengangkut Kolesterol ke Jaringan. :: • Menekan HMG-CoA reductase → sintesis kolesterol turun
+  • Menurunkan sintesis LDL receptor → uptake LDL berkurang
+  • Meningkatkan ACAT → esterifikasi dan penyimpanan kolesterol meningkat
+- [LPL vs Hormone-Sensitive Lipase] Sebutkan hal-hal penting tentang Lipoprotein lipase / LPL pada LPL vs Hormone-Sensitive Lipase. :: • Berada pada permukaan luminal endotel kapiler
+  • Bekerja pada trigliserida dalam chylomicron dan VLDL
+  • Diaktifkan ApoC-II
+  • Menghasilkan fatty acids untuk jaringan
+- [LPL vs Hormone-Sensitive Lipase] Sebutkan hal-hal penting tentang Hormone-sensitive lipase / HSL pada LPL vs Hormone-Sensitive Lipase. :: • Berada di dalam adipocyte
+  • Memobilisasi trigliserida yang tersimpan dalam adiposa
+  • Diaktifkan keadaan puasa/catecholamine
+  • Dihambat insulin
+- [Apoc-II Deficiency] Sebutkan hal-hal penting tentang Defisiensi ApoC-II menyerupai defisiensi LPL pada Apoc-II Deficiency (Metabolisme Kolesterol & Lipoprotein). :: • Chylomicron tinggi
+  • Severe hypertriglyceridemia
+  • Pancreatitis dapat terjadi
+- [HMG-CoA Reductase: Rate-Limiting Enzyme] Apa jebakan yang sering muncul pada soal tentang HMG-CoA Reductase: Rate-Limiting Enzyme? :: HMG-CoA reductase menggunakan NADPH dan berada pada membran endoplasmic reticulum.
+- [ACAT vs LCAT] Apa jebakan yang sering muncul pada soal tentang ACAT vs LCAT? :: ACAT = intracellular cholesterol esterification. LCAT = plasma/HDL cholesterol esterification.
+- [LPL vs Hormone-Sensitive Lipase] Apa jebakan yang sering muncul pada soal tentang LPL vs Hormone-Sensitive Lipase? :: LPL = lipid dalam darah. HSL = lipid tersimpan di adipocyte.
+- [Aterosklerosis dan Modified LDL] Apa poin high-yield (pearl) tentang Aterosklerosis dan Modified LDL? :: LDL receptor uptake ≠ scavenger receptor uptake.
+- [Tangier Disease] Apa poin high-yield (pearl) tentang Tangier Disease (Metabolisme Kolesterol & Lipoprotein)? :: ABCA1 penting untuk pembentukan HDL nascent dan reverse cholesterol transport.

@@ -1,0 +1,25 @@
+# Teks narasi final (hasil pengenalan suara Whisper pada audio asli, dikoreksi ejaan istilah), dibagi menjadi frasa takarir.
+# Tiap entri: (awal, akhir) ucapan menurut jeda audio, daftar frasa takarir. Titik potong antar-frasa dicari oleh align_breaks.py.
+CAPS = [
+ (0.08, 0.69, ["Kenapa sih,"]),
+ (1.06, 3.91, ["setelah minum kopi,", "kita bisa merasa nggak ngantuk?"]),
+ (4.47, 6.80, ["Apa yang sebenarnya terjadi di dalam tubuhmu?"]),
+ (7.44, 11.53, ["Saat kamu terjaga,", "ada zat di otakmu yang disebut adenosin."]),
+ (12.09, 15.78, ["Salah satu perannya adalah", "membantu membangun dorongan untuk tidur."]),
+ (16.27, 20.44, ["Semakin lama kamu terjaga,", "tekanan untuk tidur biasanya semakin besar."]),
+ (20.93, 25.74, ["Itulah salah satu alasan kenapa matamu", "terasa berat setelah seharian beraktivitas."]),
+ (26.19, 27.77, ["Lalu kamu minum kopi."]),
+ (28.27, 34.85, ["Kafein di dalam kopi diserap", "melalui saluran pencernaan,", "masuk ke aliran darah,", "dan terbawa sampai ke otak."]),
+ (35.40, 41.67, ["Di sana, kafein menempel pada reseptor adenosin", "dan menghalangi adenosin", "bekerja pada reseptor tersebut."]),
+ (42.14, 46.17, ["Akibatnya, salah satu sinyal", "yang mendorong rasa kantuk jadi berkurang."]),
+ (46.61, 50.39, ["Itulah kenapa kamu bisa merasa lebih terjaga", "setelah minum kopi."]),
+ (50.90, 54.17, ["Tapi apakah itu berarti", "tubuhmu sudah tidak butuh tidur?"]),
+ (54.65, 56.07, ["Jawabannya? Nggak."]),
+ (56.50, 59.78, ["Kafein bisa membantumu", "tetap waspada untuk sementara."]),
+ (60.15, 61.95, ["Tapi tidak menggantikan tidur."]),
+ (62.40, 69.59, ["Dalam sebuah penelitian terhadap 276 peserta,", "kafein membantu mengurangi gangguan perhatian", "akibat kurang tidur."]),
+ (70.02, 74.09, ["Namun, kafein tidak memperbaiki", "semua jenis kemampuan yang diuji."]),
+ (74.52, 82.07, ["Jadi, meskipun setelah minum kopi", "kamu merasa siap menyelesaikan semua tugas malam ini,", "tubuhmu tetap butuh istirahat."]),
+ (82.60, 84.43, ["Penasaran bagaimana tubuhmu bekerja?"]),
+ (84.80, 88.24, ["Belajar bareng MEDCOEL,", "gratis di medcoel.com."]),
+]

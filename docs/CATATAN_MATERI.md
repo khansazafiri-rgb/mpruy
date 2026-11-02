@@ -106,6 +106,9 @@ Mata kuliah yang sudah diproses dengan cara ini (`--subject` = slug folder, `--s
 | Patologi Anatomi | `--subject patologi-anatomi --subject-name "Patologi Anatomi" --skip-unmatched --allow-missing` |
 | Parasitologi | `--subject parasitologi --subject-name Parasitologi --skip-unmatched --allow-missing` |
 | Mikrobiologi | `--subject mikrobiologi --subject-name Mikrobiologi --skip-unmatched --allow-missing` (+ `corrections/mikrobiologi.json`) |
+| Farmakologi | `--subject farmakologi --subject-name Farmakologi --skip-unmatched --allow-missing` (+ `corrections/farmakologi.json`) |
+| Patologi Klinik | `--subject patologi-klinik --subject-name "Patologi Klinik" --skip-unmatched --allow-missing` (+ `corrections/patologi-klinik.json`) |
+| Sistem Saraf | `--subject sistem-saraf --subject-name "Sistem Saraf" --skip-unmatched --allow-missing` (+ `corrections/sistem-saraf.json`) |
 
 Dua gaya dokumen dikenali. Gaya biasa: `Bab N — Judul` (Heading 1) dan bagian `N. Judul` (Heading 2). Gaya huruf besar (Genetika dan
 lampiran Biokimia): `BAB N — JUDUL`, bagian `A. JUDUL` / `4.1 JUDUL`, label `PENTING:` / `HIGH-YIELD:` / `JEBAKAN SOAL:` (jadi kotak sorot),
@@ -114,7 +117,7 @@ Judul huruf besar diubah menjadi huruf kapital awal, singkatan (ATP, CFTR) diper
 
 Variasi gaya huruf besar yang juga dikenali: judul `PATOLOGI ANATOMI — BAB 6: JUDUL` / `PARASITOLOGI — BAB 1: JUDUL`, subjudul bergaya `N.M Judul`
 (huruf besar atau biasa, selama nomor depannya sama dengan nomor BAB), keterangan gambar `GAMBAR PA 1A — ...`, `VISUAL 8B — ...`, `Visual 9A. ...`,
-`Gambar 11A — ...` (diberi nomor urut per BAB), garis pemisah `═══`, penutup `END OF ... BAB N`, dan `SELESAI — ... (N BAB RESMI)`:
+`Gambar 11A — ...` (diberi nomor urut per BAB), garis pemisah `═══`, penutup `END OF ... BAB N`, label kotak `EXAM PEARL` / `POLA BANDING ...` / `CATATAN PEMBEDA`, satu keterangan di depan lalu beberapa gambar (galeri), dan `SELESAI — ... (N BAB RESMI)`:
 semua yang ada di bawah baris "SELESAI" sampai BAB berikutnya (materi tambahan di luar BAB resmi) dibuang. Daftar topik di bawah judul BAB
 (`Ginjal • Testis • Prostat`) dan bagian `SUMBER UTAMA` / `SUMBER GUIDELINE UTAMA` tidak dimasukkan. Judul huruf besar mengikuti singkatan yang
 dipakai di badan teks (ATP, TSI, COVID-19) dan nama khas (MacConkey, GeneXpert, HBeAg); epitet spesies setelah nama genus (S. aureus) tetap huruf kecil.
@@ -138,6 +141,11 @@ cocok di beberapa tempat; `"regex": true` untuk pola. Aturan yang tidak cocok (m
 `all`) tidak diterapkan dan dilaporkan di `--report` pada baris berawalan `>>`. Contoh pemakaian pada Mikrobiologi: membuang catatan asal-usul penyusun
 ("sumber UTB/IUP", "materi sumber", "slide", "PPT12", catatan koreksi slide), memperbaiki mnemonik yang keliru (RPR/VDRL), dan salah ketik.
 Frasa asal-usul yang umum (`Sumber UTB menekankan:` dan sejenisnya) ditangani langsung oleh `SCRUB` di konverter.
+Farmakologi: dokumennya banyak menulis asal-usul penyusun di dalam kalimat ("pada soal sumber", "PCV Classroom", "bank soal", "slide mencantumkan",
+"ekspansi farmakologi standar", catatan "Basis Sumber"). `corrections/farmakologi.json` (dibuat dari aturan umum berbentuk regex lalu penulisan ulang
+kalimat satu per satu) membuang frasa itu tanpa mengubah isi medisnya; aturan `"cap": true` menghapus pembuka seperti "Materi menyebut ..." dan
+mengkapitalkan kata berikutnya. Tes `notesMarkup.test.mjs` menjaga agar kata-kata itu tidak kembali. Kredit gambar Bab 1-2 (daftar "Visual sources /
+attribution" di akhir bab) dipasang ke keterangan gambar masing-masing lewat aturan koreksi, lalu daftarnya dibuang.
 Setelah mengubah konverter, jalankan ulang ketiganya dan periksa `git diff content/materi` supaya perubahan tidak merusak yang lain.
 
 Konverter memetakan tiap BAB di dokumen ke BAB di web lewat **judulnya** (docs/MATA_KULIAH.md), bukan nomornya,
@@ -166,11 +174,16 @@ Yang diubah konverter:
   (tidak masuk daftar isi).
 - Dokumen yang memecah satu paragraf atau keterangan gambar menjadi beberapa paragraf (sering di Histologi) disambung lagi otomatis;
   keterangan dipasangkan ke gambar menurut urutan, dan beberapa gambar dengan satu keterangan menjadi galeri.
-- Flashcard dibuat otomatis oleh `tools/materi-import/flashcards.py` **hanya dari teks catatan itu sendiri**
-  (definisi "Istilah: penjelasan" / "X = Y" / "X adalah Y", poin high-yield, daftar ciri, kotak klinis dan praktikum),
-  tanpa menambah isi baru. BAB yang sangat ringkas (kartu < 12, mis. beberapa BAB Fisiologi) juga memakai judul bagian + paragraf
-  pertamanya sebagai kartu. Kualitasnya berbasis aturan, jadi kartu yang janggal cukup diedit atau dihapus langsung di
-  bagian `## Flashcard {kartu}` lewat editor catatan admin (catatan yang disunting admin tidak ditimpa sinkronisasi).
+- Flashcard dibuat otomatis oleh `tools/materi-import/flashcards.py` **hanya dari teks catatan itu sendiri**, dan tiap kartu berupa
+  **pertanyaan yang bisa dipahami tanpa membaca catatan** dengan jawaban berupa poin besar/deskripsi dari catatan:
+  "**Indikasi**: ..." -> "Pada Captopril, apa indikasinya?"; "**Istilah**: ..." -> "Apa yang dimaksud dengan Istilah ...?" / "Jelaskan Istilah ...";
+  poin high-yield "A → B" -> "Apa jawaban atau kesimpulan untuk petunjuk berikut: A?"; kalimat pengantar + daftar -> "Sebutkan ..."; kotak sorot ->
+  "Apa korelasi klinis / jebakan / poin high-yield tentang <topik>?". Label yang bukan istilah (potongan kalimat, "PENTING", "Sumber visual")
+  dilewati daripada dijadikan kartu janggal. BAB yang sangat ringkas (kartu < 12) juga memakai judul bagian + paragraf pertamanya
+  ("Jelaskan <judul>."). Kualitasnya berbasis aturan, jadi kartu yang janggal cukup diedit atau dihapus langsung di bagian
+  `## Flashcard {kartu}` lewat editor catatan admin (catatan yang disunting admin tidak ditimpa sinkronisasi). Tes
+  `notesMarkup.test.mjs` memastikan setiap kartu berbentuk pertanyaan/perintah. Menulis ulang kartu mengubah kode kartunya, jadi tanda "hafal"
+  siswa pada kartu lama tidak terbawa.
 
 Yang sengaja **tidak** dimasukkan karena urusan penyusun dokumen: baris pembuka (`Sumber utama`, `STATUS`, `Aturan visual`),
 bagian "Ringkasan untuk Retrieval AI MEDCOEL", "Catatan editorial", dan kalimat "master note" di sumber.

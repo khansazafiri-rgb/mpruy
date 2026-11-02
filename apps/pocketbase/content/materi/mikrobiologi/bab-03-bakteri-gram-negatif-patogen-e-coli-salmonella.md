@@ -507,66 +507,64 @@ Gram-negative enteric rod → MacConkey → LF pink = E. coli → tentukan patho
 
 ## Flashcard {kartu}
 
-- [MacConkey Agar — Gerbang Pertama] Selective :: bile salts + crystal violet menghambat banyak bakteri Gram positif.
-- [MacConkey Agar — Gerbang Pertama] Differential :: lactose + neutral red membedakan lactose fermenter dan non-lactose fermenter.
-- [Antigen Salmonella: O, H, Vi] Cara hafal :: O = outer/somatic wall.
-- [Specimen & Diagnostic Thinking] Prinsip penting :: Media culture memberi clue, bukan selalu definitive species identification sendirian.
-- [Common Exam Traps] ETEC :: LT → cAMP, ST → cGMP.
-- [Common Exam Traps] EPEC :: intimin + loss of microvilli / attaching-effacing.
-- [Common Exam Traps] EHEC :: Shiga-like toxin → 60S inhibition → hemorrhagic colitis + HUS.
-- [Common Exam Traps] EIEC :: invasion → dysentery-like.
-- [Common Exam Traps] EAEC :: aggregative adherence fimbriae → persistent watery diarrhea.
-- [Common Exam Traps] UPEC :: pili/capsule/endotoxin → UTI.
-- [Common Exam Traps] Salmonella antigens :: O = wall/somatic, H = flagellar, Vi = capsule.
-- [Common Exam Traps] Shigella :: infectious dose sangat rendah.
-- [High-yield] Undercooked burger + bloody diarrhea + HUS :: EHEC/STEC
-- [High-yield] Enterobacteria :: Gram-negative rods, facultative anaerobes, oxidase negative, ferment glucose
-- [High-yield] E. coli :: LF pink MacConkey, motile, indole +, TSI A/A
-- [High-yield] ETEC: LT↑cAMP, ST↑cGMP :: watery traveler’s diarrhea
-- [High-yield] EPEC: attaching-effacing + intimin :: infantile diarrhea
-- [High-yield] EHEC/STEC: Shiga-like toxin :: hemorrhagic colitis + HUS
-- [High-yield] EIEC: invasive :: dysentery-like
-- [High-yield] EAEC: aggregative fimbriae :: persistent watery diarrhea
-- [High-yield] Salmonella :: NLF, motile, H₂S+, black center, TSI K/A
-- [High-yield] S. Typhi :: O/H/Vi antigen, enteric fever, chronic carrier di gallbladder
-- [High-yield] Shigella :: NLF, non-motile, H₂S−, TSI K/A, very low infectious dose
-- [TSI — Cara Membacanya] Pola bab ini … :: • E. coli → A/A, sering gas +, H₂S −
-  • Salmonella → K/A, H₂S +
-  • Shigella → K/A, gas −, H₂S −
-- [E. coli — Peta Pathotype] Enam kelompok yang perlu langsung muncul di kepala … :: • ETEC = enterotoxigenic
-  • EPEC = enteropathogenic
-  • EHEC/STEC = enterohemorrhagic / Shiga toxin-producing
-  • EIEC = enteroinvasive
-  • EAEC = enteroaggregative
-  • UPEC = uropathogenic
-- [EHEC / STEC — Enterohemorrhagic E. coli] Mekanisme Shiga-like toxin … :: • Menghambat fungsi ribosom 60S → menghambat sintesis protein
+- [MacConkey Agar — Gerbang Pertama] Apa yang dimaksud dengan Selective pada MacConkey Agar — Gerbang Pertama? :: Bile salts + crystal violet menghambat banyak bakteri Gram positif.
+- [MacConkey Agar — Gerbang Pertama] Apa yang dimaksud dengan Differential pada MacConkey Agar — Gerbang Pertama? :: Lactose + neutral red membedakan lactose fermenter dan non-lactose fermenter.
+- [Specimen & Diagnostic Thinking] Apa yang dimaksud dengan Prinsip penting pada Specimen & Diagnostic Thinking? :: Media culture memberi clue, bukan selalu definitive species identification sendirian.
+- [Common Exam Traps] Apa yang dimaksud dengan ETEC pada Common Exam Traps? :: LT → cAMP, ST → cGMP.
+- [Common Exam Traps] Apa yang dimaksud dengan EPEC pada Common Exam Traps? :: Intimin + loss of microvilli / attaching-effacing.
+- [Common Exam Traps] Apa yang dimaksud dengan EHEC pada Common Exam Traps? :: Shiga-like toxin → 60S inhibition → hemorrhagic colitis + HUS.
+- [Common Exam Traps] Apa yang dimaksud dengan EIEC pada Common Exam Traps? :: Invasion → dysentery-like.
+- [Common Exam Traps] Apa yang dimaksud dengan EAEC pada Common Exam Traps? :: Aggregative adherence fimbriae → persistent watery diarrhea.
+- [Common Exam Traps] Apa yang dimaksud dengan UPEC pada Common Exam Traps? :: Pili/capsule/endotoxin → UTI.
+- [Common Exam Traps] Apa yang dimaksud dengan Salmonella antigens pada Common Exam Traps? :: O = wall/somatic, H = flagellar, Vi = capsule.
+- [Common Exam Traps] Apa yang dimaksud dengan Shigella pada Common Exam Traps? :: Infectious dose sangat rendah.
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Undercooked burger + bloody diarrhea + HUS pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: EHEC/STEC
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: Prolonged systemic fever + rose spots + gallbladder carrier pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: S. Typhi
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diketahui tentang Enterobacteria pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Gram-negative rods, facultative anaerobes, oxidase negative, ferment glucose
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang ETEC: LT↑cAMP, ST↑cGMP pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Watery traveler’s diarrhea
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa jawaban atau kesimpulan untuk petunjuk berikut: EPEC: attaching-effacing + intimin pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Infantile diarrhea
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang EHEC/STEC: Shiga-like toxin pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Hemorrhagic colitis + HUS
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang EIEC: invasive pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Dysentery-like
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang perlu diingat tentang EAEC: aggregative fimbriae pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: Persistent watery diarrhea
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang dimaksud dengan Salmonella pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: NLF, motile, H₂S+, black center, TSI K/A
+- [Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)] Apa yang dimaksud dengan Shigella pada Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)? :: NLF, non-motile, H₂S−, TSI K/A, very low infectious dose
+- [TSI — Cara Membacanya] Sebutkan tujuan utama pada TSI — Cara Membacanya. :: • Melihat fermentasi gula
+  • Produksi gas
+  • Produksi H₂S
+- [ETEC — Enterotoxigenic E. coli] Sebutkan mekanisme toxin pada ETEC — Enterotoxigenic E. coli. :: • LT → aktivasi adenylate cyclase → ↑ cAMP
+  • ST → aktivasi guanylate cyclase → ↑ cGMP
+  • Kedua jalur meningkatkan sekresi elektrolit dan air ke lumen → secretory watery diarrhea
+- [EHEC / STEC — Enterohemorrhagic E. coli] Sebutkan mekanisme Shiga-like toxin pada EHEC / STEC — Enterohemorrhagic E. coli. :: • Menghambat fungsi ribosom 60S → menghambat sintesis protein
   • Kerusakan endotel mikrovaskular, terutama usus dan ginjal, menjelaskan bloody diarrhea serta risiko HUS
-- [EHEC / STEC — Enterohemorrhagic E. coli] Clue high-yield O157:H7 … :: • Paparan daging sapi giling/burger kurang matang atau produk tidak dipasteurisasi sering dipakai dalam soal
-  • O157:H7 klasik tidak memfermentasi sorbitol pada sorbitol-MacConkey agar
-- [Antigen Salmonella: O, H, Vi] Tiga antigen yang ditekankan … :: • O antigen = somatic/cell-wall antigen, heat-stable; dipakai dalam pengelompokan serologis
+- [Salmonella — Identitas Dasar] Sebutkan pola kultur pada Salmonella — Identitas Dasar. :: • MacConkey → colorless/pale
+  • SS/XLD → black center karena H₂S
+- [Antigen Salmonella: O, H, Vi] Sebutkan hal-hal penting tentang Tiga antigen pada Antigen Salmonella: O, H, Vi (Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)). :: • O antigen = somatic/cell-wall antigen, heat-stable; dipakai dalam pengelompokan serologis
   • H antigen = flagellar antigen, lebih heat-labile; banyak Salmonella memiliki phase variation
   • Vi antigen = capsular virulence antigen, sangat terkait dengan S. Typhi dalam konteks ujian
-- [Salmonella Typhi — Enteric Fever] Salmonella enterica serovar Typhi … :: • Non-lactose fermenter
+- [Salmonella Typhi — Enteric Fever] Sebutkan hal-hal penting tentang Salmonella enterica serovar Typhi pada Salmonella Typhi — Enteric Fever. :: • Non-lactose fermenter
   • Motile
   • H₂S-producing pattern dapat terlihat pada media selective
   • Memiliki Vi antigen
   • Manusia adalah reservoir utama dalam konteks typhoid fever
-- [Salmonella Typhi — Enteric Fever] Clue klinis yang sering muncul … :: • prolonged fever
-  • abdominal symptoms
-  • rose spots
-  • relative bradycardia dapat muncul
-  • komplikasi intestinal berhubungan dengan Peyer patches
-- [Nontyphoidal Salmonella] Untuk ujian dasar, bedakan konsep … :: • Typhi/Paratyphi → enteric fever sistemik
-  • Nontyphoidal Salmonella → gastroenteritis lebih dominan
-- [Shigella — Identitas Dasar] Pada SS agar … :: • colorless/translucent
-  • tidak memiliki black center
-- [Dosis Infektif Shigella — Sangat Rendah] Poin yang ditekankan … :: • Shigella sekitar 10² organisme → infectious dose sangat rendah
+- [Salmonella Typhi — Enteric Fever] Sebutkan patogenesis konseptual pada Salmonella Typhi — Enteric Fever. :: • Tertelan melalui makanan/air terkontaminasi
+  • Menembus mukosa intestinal, termasuk melalui M cells/Peyer patches
+  • Dapat bertahan di macrophage
+  • Menyebar melalui sistem limfatik dan reticuloendothelial tissues
+  • Menimbulkan systemic enteric fever
+- [Dosis Infektif Shigella — Sangat Rendah] Sebutkan hal-hal penting tentang Poin pada Dosis Infektif Shigella — Sangat Rendah (Bakteri Gram Negatif Patogen (E. coli, Salmonella, Shigella)). :: • Shigella sekitar 10² organisme → infectious dose sangat rendah
   • Salmonella membutuhkan inokulum yang jauh lebih besar
-- [E. coli — Identitas Dasar] High-yield: E. coli — Identitas Dasar :: Jangan menyamakan “E. coli = flora normal” dengan “semua E. coli tidak patogen”. Pathotype ditentukan oleh virulence genes/factors.
-- [E. coli — Peta Pathotype] Mnemonic konseptual: E. coli — Peta Pathotype :: TOXIN cair → ETEC. PEDIATRIC attaching-effacing → EPEC.
-- [ETEC — Enterotoxigenic E. coli] Jebakan: ETEC — Enterotoxigenic E. coli :: ETEC biasanya tidak menyebabkan bloody inflammatory diarrhea karena mekanisme utamanya toksigenik/sekretorik, bukan invasi destruktif mukosa.
-- [EPEC — Enteropathogenic E. coli] Penting: EPEC — Enteropathogenic E. coli :: EPEC = attachment + effacement, bukan Shiga toxin dan bukan invasi kolon seperti EIEC.
-- [EHEC / STEC — Enterohemorrhagic E. coli] Jebakan soal: EHEC / STEC — Enterohemorrhagic E. coli :: Bloody diarrhea + HUS setelah daging kurang matang → pikirkan EHEC/STEC.
-- [UPEC — Uropathogenic E. coli] Penting: UPEC — Uropathogenic E. coli :: Diare akibat E. coli ≠ UPEC. Organismenya satu species, tetapi virulence repertoire dan tissue tropism berbeda.
-- [Chronic Carrier S. Typhi] Jebakan soal: Chronic Carrier S. Typhi :: “Typhoid carrier menetap di mana?” → kandung empedu.
-- [Shiga Toxin — S. dysenteriae] Penting: Shiga Toxin — S. dysenteriae :: Shiga toxin pada Shigella dysenteriae dan Shiga-like toxin pada EHEC adalah konsep yang sangat berhubungan dalam soal.
+- [Shigellosis / Bacillary Dysentery] Sebutkan manifestasi utama pada Shigellosis / Bacillary Dysentery. :: • Inflammatory diarrhea
+  • Bloody stool
+  • Mucus
+  • Abdominal cramping
+  • Tenesmus
+- [EHEC vs Shigella — Jangan Tertukar] Sebutkan pembeda high-yield pada EHEC vs Shigella — Jangan Tertukar. :: • EHEC = E. coli pathotype; prototipe O157:H7; motile E. coli background; lactose-fermenting E. coli lineage tetapi O157:H7 punya sorbitol clue
+  • Shigella = genus tersendiri; non-motile; NLF; H₂S −; infectious dose sangat rendah; dysentery klasik
+- [coli — Identitas Dasar] Apa poin high-yield (pearl) tentang coli — Identitas Dasar? :: Jangan menyamakan “E. coli = flora normal” dengan “semua E. coli tidak patogen”. Pathotype ditentukan oleh virulence genes/factors.
+- [coli — Peta Pathotype] Bagaimana cara mengingat coli — Peta Pathotype? :: TOXIN cair → ETEC. PEDIATRIC attaching-effacing → EPEC.
+- [ETEC — Enterotoxigenic E. coli] Apa jebakan yang sering muncul pada soal tentang ETEC — Enterotoxigenic E. coli? :: ETEC biasanya tidak menyebabkan bloody inflammatory diarrhea karena mekanisme utamanya toksigenik/sekretorik, bukan invasi destruktif mukosa.
+- [EPEC — Enteropathogenic E. coli] Apa jebakan yang sering muncul pada soal tentang EPEC — Enteropathogenic E. coli? :: EPEC = attachment + effacement, bukan Shiga toxin dan bukan invasi kolon seperti EIEC.
+- [EHEC / STEC — Enterohemorrhagic E. coli] Apa jebakan yang sering muncul pada soal tentang EHEC / STEC — Enterohemorrhagic E. coli? :: Bloody diarrhea + HUS setelah daging kurang matang → pikirkan EHEC/STEC.
+- [UPEC — Uropathogenic E. coli] Apa jebakan yang sering muncul pada soal tentang UPEC — Uropathogenic E. coli? :: Diare akibat E. coli ≠ UPEC. Organismenya satu species, tetapi virulence repertoire dan tissue tropism berbeda.
+- [Chronic Carrier S. Typhi] Apa jebakan yang sering muncul pada soal tentang Chronic Carrier S. Typhi? :: “Typhoid carrier menetap di mana?” → kandung empedu.
+- [Shiga Toxin — S. dysenteriae] Apa jebakan yang sering muncul pada soal tentang Shiga Toxin — S. dysenteriae? :: Shiga toxin pada Shigella dysenteriae dan Shiga-like toxin pada EHEC adalah konsep yang sangat berhubungan dalam soal.

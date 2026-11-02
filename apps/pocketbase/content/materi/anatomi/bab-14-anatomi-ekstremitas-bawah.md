@@ -426,69 +426,72 @@ Jika melihat neurovascular bundle:
 
 ## Flashcard {kartu}
 
-- [Femoral Triangle] Superior :: inguinal ligament.
-- [Femoral Triangle] Lateral :: medial border sartorius.
-- [Femoral Triangle] Medial :: medial border adductor longus.
-- [Femoral Triangle] Floor :: iliopsoas dan pectineus.
-- [Femoral Triangle] Roof :: fascia lata dan superficial fascia.
-- [Popliteal Fossa] Superomedial :: semimembranosus dan semitendinosus.
-- [Popliteal Fossa] Inferolateral :: lateral head gastrocnemius.
-- [Popliteal Fossa] Inferomedial :: medial head gastrocnemius.
-- [Anterior Compartment] Otot utama :: tibialis anterior, extensor hallucis longus, extensor digitorum longus, dan fibularis tertius.
-- [Anterior Compartment] Aksi dominan :: dorsiflexion; toe extension; tibialis anterior juga inversion.
-- [Anterior Compartment] Innervasi :: deep fibular nerve.
-- [Anterior Compartment] Vaskularisasi :: anterior tibial artery.
-- [Lateral Compartment] Otot utama :: fibularis longus dan fibularis brevis.
-- [Lateral Compartment] Aksi dominan :: eversion; membantu plantarflexion.
-- [Lateral Compartment] Innervasi :: superficial fibular nerve.
-- [Posterior Compartment — Superficial] Innervasi :: tibial nerve. Blood supply terutama posterior tibial dan fibular arteries.
-- [Sole of Foot] Layer 1 :: abductor hallucis, flexor digitorum brevis, abductor digiti minimi.
-- [Sole of Foot] Layer 2 :: quadratus plantae dan lumbricals, bersama tendons FDL/FHL.
-- [Sole of Foot] Layer 3 :: flexor hallucis brevis, adductor hallucis, flexor digiti minimi brevis.
-- [Sole of Foot] Layer 4 :: plantar dan dorsal interossei, bersama tendons fibularis longus dan tibialis posterior.
-- [Vaskularisasi dan Vena Superfisial] Femoral pulse :: mid-inguinal point.
-- [Vaskularisasi dan Vena Superfisial] Popliteal pulse :: deep di popliteal fossa dengan knee flexed.
-- [Vaskularisasi dan Vena Superfisial] Posterior tibial pulse :: posterior-inferior to medial malleolus.
-- [Vaskularisasi dan Vena Superfisial] Dorsalis pedis pulse :: dorsum foot, lateral to tendon extensor hallucis longus.
-- [Integrasi Klinis High-Yield] Compartment syndrome :: Peningkatan tekanan dalam closed fascial compartment mengganggu perfusi dan nerve function. Nyeri out of proportion dan pain on passive stretch merupakan tanda awal penting; pulselessness adalah tanda terlambat.
-- [High-yield] Lower limb :: stability + weight-bearing + locomotion
-- [High-yield] Adductor hiatus :: femoral vessels masuk popliteal fossa
-- [High-yield] Popliteal fossa :: tibial nerve → popliteal vein → popliteal artery dari superficial ke deep
-- [High-yield] Common fibular nerve rentan di fibular neck :: foot drop
-- [High-yield] ATFL :: ligament ankle yang paling sering cedera pada inversion sprain
-- [High-yield] Tarsal tunnel :: TP → FDL → posterior tibial vessels → tibial nerve → FHL
-- [High-yield] Dorsalis pedis dan posterior tibial pulses :: pemeriksaan vaskular distal utama
-- [Peta Besar Ekstremitas Bawah dan Compartment Logic] Pola inti yang harus diingat … :: • Anterior thigh → dominan hip flexion dan knee extension → femoral nerve
-  • Medial thigh → dominan hip adduction → obturator nerve
-  • Posterior thigh → dominan hip extension dan knee flexion → tibial division of sciatic nerve
-  • Anterior leg → dorsiflexion dan toe extension → deep fibular nerve
-  • Lateral leg → eversion → superficial fibular nerve
-  • Posterior leg → plantarflexion dan toe flexion → tibial nerve
-- [Femoral Triangle] Batas femoral triangle … :: • Superior: inguinal ligament
+- [Femoral Triangle] Apa struktur atau batas lateral pada Femoral Triangle (Anatomi Ekstremitas Bawah)? :: Medial border sartorius.
+- [Femoral Triangle] Apa struktur atau batas medial pada Femoral Triangle (Anatomi Ekstremitas Bawah)? :: Medial border adductor longus.
+- [Femoral Triangle] Apa yang dimaksud dengan Floor pada Femoral Triangle (Anatomi Ekstremitas Bawah)? :: Iliopsoas dan pectineus.
+- [Femoral Triangle] Apa yang dimaksud dengan Roof pada Femoral Triangle (Anatomi Ekstremitas Bawah)? :: Fascia lata dan superficial fascia.
+- [Popliteal Fossa] Apa yang dimaksud dengan Superomedial pada Popliteal Fossa (Anatomi Ekstremitas Bawah)? :: Semimembranosus dan semitendinosus.
+- [Popliteal Fossa] Apa yang dimaksud dengan Inferolateral pada Popliteal Fossa (Anatomi Ekstremitas Bawah)? :: Lateral head gastrocnemius.
+- [Popliteal Fossa] Apa yang dimaksud dengan Inferomedial pada Popliteal Fossa (Anatomi Ekstremitas Bawah)? :: Medial head gastrocnemius.
+- [Anterior Compartment] Apa yang dimaksud dengan Otot utama pada Anterior Compartment (Anatomi Ekstremitas Bawah)? :: Tibialis anterior, extensor hallucis longus, extensor digitorum longus, dan fibularis tertius.
+- [Anterior Compartment] Apa yang dimaksud dengan Aksi dominan pada Anterior Compartment (Anatomi Ekstremitas Bawah)? :: Dorsiflexion; toe extension; tibialis anterior juga inversion.
+- [Anterior Compartment] Pada Anterior Compartment, apa innervasinya (Anatomi Ekstremitas Bawah)? :: Deep fibular nerve.
+- [Anterior Compartment] Pada Anterior Compartment, apa vaskularisasinya (Anatomi Ekstremitas Bawah)? :: Anterior tibial artery.
+- [Lateral Compartment] Apa yang dimaksud dengan Otot utama pada Lateral Compartment (Anatomi Ekstremitas Bawah)? :: Fibularis longus dan fibularis brevis.
+- [Lateral Compartment] Apa yang dimaksud dengan Aksi dominan pada Lateral Compartment (Anatomi Ekstremitas Bawah)? :: Eversion; membantu plantarflexion.
+- [Lateral Compartment] Pada Lateral Compartment, apa innervasinya (Anatomi Ekstremitas Bawah)? :: Superficial fibular nerve.
+- [Posterior Compartment — Superficial] Pada Posterior Compartment — Superficial, apa innervasinya? :: Tibial nerve. Blood supply terutama posterior tibial dan fibular arteries.
+- [Sole of Foot] Apa yang dimaksud dengan Layer 1 pada Sole of Foot? :: Abductor hallucis, flexor digitorum brevis, abductor digiti minimi.
+- [Sole of Foot] Apa yang dimaksud dengan Layer 2 pada Sole of Foot? :: Quadratus plantae dan lumbricals, bersama tendons FDL/FHL.
+- [Sole of Foot] Apa yang dimaksud dengan Layer 3 pada Sole of Foot? :: Flexor hallucis brevis, adductor hallucis, flexor digiti minimi brevis.
+- [Sole of Foot] Apa yang dimaksud dengan Layer 4 pada Sole of Foot? :: Plantar dan dorsal interossei, bersama tendons fibularis longus dan tibialis posterior.
+- [Vaskularisasi dan Vena Superfisial] Apa yang dimaksud dengan Popliteal pulse pada Vaskularisasi dan Vena Superfisial? :: Deep di popliteal fossa dengan knee flexed.
+- [Vaskularisasi dan Vena Superfisial] Jelaskan Posterior tibial pulse dalam konteks Vaskularisasi dan Vena Superfisial. :: Posterior-inferior to medial malleolus.
+- [Vaskularisasi dan Vena Superfisial] Jelaskan Dorsalis pedis pulse dalam konteks Vaskularisasi dan Vena Superfisial. :: Dorsum foot, lateral to tendon extensor hallucis longus.
+- [Integrasi Klinis High-Yield] Apa yang dimaksud dengan Compartment syndrome pada Integrasi Klinis High-Yield? :: Peningkatan tekanan dalam closed fascial compartment mengganggu perfusi dan nerve function. Nyeri out of proportion dan pain on passive stretch merupakan tanda awal penting; pulselessness adalah tanda terlambat.
+- [Anatomi Ekstremitas Bawah] Apa yang dimaksud dengan Lower limb pada Anatomi Ekstremitas Bawah? :: Stability + weight-bearing + locomotion
+- [Anatomi Ekstremitas Bawah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Gluteus medius/minimus menjaga pelvis level; lesi superior gluteal pada Anatomi Ekstremitas Bawah? :: Trendelenburg
+- [Anatomi Ekstremitas Bawah] Apa yang perlu diketahui tentang Popliteal fossa pada Anatomi Ekstremitas Bawah? :: Tibial nerve → popliteal vein → popliteal artery dari superficial ke deep
+- [Anatomi Ekstremitas Bawah] Apa jawaban atau kesimpulan untuk petunjuk berikut: Common fibular nerve rentan di fibular neck pada Anatomi Ekstremitas Bawah? :: Foot drop
+- [Anatomi Ekstremitas Bawah] Apa yang dimaksud dengan ATFL pada Anatomi Ekstremitas Bawah? :: Ligament ankle yang paling sering cedera pada inversion sprain
+- [Anatomi Ekstremitas Bawah] Apa yang perlu diketahui tentang Tarsal tunnel pada Anatomi Ekstremitas Bawah? :: TP → FDL → posterior tibial vessels → tibial nerve → FHL
+- [Anatomi Ekstremitas Bawah] Apa yang dimaksud dengan Dorsalis pedis dan posterior tibial pulses pada Anatomi Ekstremitas Bawah? :: Pemeriksaan vaskular distal utama
+- [Femoral Triangle] Sebutkan hal-hal penting tentang Batas femoral triangle (Anatomi Ekstremitas Bawah). :: • Superior: inguinal ligament
   • Lateral: medial border sartorius
   • Medial: medial border adductor longus
   • Floor: iliopsoas dan pectineus
   • Roof: fascia lata dan superficial fascia
-- [Medial Thigh dan Obturator Pathway] Adductor magnus memiliki dua bagian fungsional … :: • Adductor part → obturator nerve → hip adduction/flexion
-  • Hamstring part → tibial division of sciatic nerve → hip extension
-- [Popliteal Fossa] Batas popliteal fossa … :: • Superolateral: biceps femoris
+- [Popliteal Fossa] Sebutkan hal-hal penting tentang Batas popliteal fossa (Anatomi Ekstremitas Bawah). :: • Superolateral: biceps femoris
   • Superomedial: semimembranosus dan semitendinosus
   • Inferolateral: lateral head gastrocnemius
   • Inferomedial: medial head gastrocnemius
-- [Vaskularisasi dan Vena Superfisial] Pulse points penting … :: • Femoral pulse: mid-inguinal point
+- [Ligamen Utama] Sebutkan hal-hal penting tentang Clinical tests pada Ligamen Utama (Anatomi Ekstremitas Bawah). :: • Anterior drawer/Lachman → ACL
+  • Posterior drawer → PCL
+  • Valgus stress → MCL
+  • Varus stress → LCL
+- [Vaskularisasi dan Vena Superfisial] Sebutkan pulse points penting pada Vaskularisasi dan Vena Superfisial. :: • Femoral pulse: mid-inguinal point
   • Popliteal pulse: deep di popliteal fossa dengan knee flexed
   • Posterior tibial pulse: posterior-inferior to medial malleolus
   • Dorsalis pedis pulse: dorsum foot, lateral to tendon extensor hallucis longus
-- [Integrasi Klinis High-Yield] Femoral nerve lesion … :: • Weak knee extension
+- [Vaskularisasi dan Vena Superfisial] Sebutkan hal-hal penting tentang Superficial veins pada Vaskularisasi dan Vena Superfisial (Anatomi Ekstremitas Bawah). :: • Great saphenous vein berjalan anterior to medial malleolus, naik di medial leg/thigh, lalu masuk femoral vein melalui saphenous opening
+  • Small saphenous vein berjalan posterior to lateral malleolus dan biasanya berakhir di popliteal vein
+- [Sensory Landmarks] Sebutkan dermatome high-yield pada Sensory Landmarks (Anatomi Ekstremitas Bawah). :: • L1 → inguinal region
+  • L2 → anterior thigh
+  • L3 → medial knee
+  • L4 → medial leg/medial malleolus
+  • L5 → dorsum foot/great toe
+  • S1 → lateral foot/little toe
+  • S2 → posterior thigh
+- [Integrasi Klinis High-Yield] Sebutkan hal-hal penting tentang Femoral nerve lesion pada Integrasi Klinis High-Yield. :: • Weak knee extension
   • Reduced/absent patellar reflex
   • Sensory loss anterior thigh dan medial leg via saphenous distribution
-- [Integrasi Klinis High-Yield] Obturator nerve lesion … :: • Weak hip adduction
+- [Integrasi Klinis High-Yield] Sebutkan hal-hal penting tentang Obturator nerve lesion pada Integrasi Klinis High-Yield. :: • Weak hip adduction
   • Sensory deficit kecil medial thigh
-- [Integrasi Klinis High-Yield] Superior gluteal nerve lesion … :: • Positive Trendelenburg sign
+- [Integrasi Klinis High-Yield] Sebutkan hal-hal penting tentang Superior gluteal nerve lesion pada Integrasi Klinis High-Yield. :: • Positive Trendelenburg sign
   • Pelvis drops contralateral to lesion during single-leg stance
-- [Integrasi Klinis High-Yield] Sciatic nerve lesion … :: • Weak knee flexion plus severe weakness below knee tergantung level
+- [Integrasi Klinis High-Yield] Sebutkan hal-hal penting tentang Sciatic nerve lesion pada Integrasi Klinis High-Yield. :: • Weak knee flexion plus severe weakness below knee tergantung level
   • Sensory deficit luas kecuali medial leg yang dipersarafi saphenous nerve
-- [Integrasi Klinis High-Yield] Common fibular nerve lesion at fibular neck … :: • Foot drop
-  • Loss of dorsiflexion dan eversion
-  • Sensory loss pada anterolateral leg/dorsum foot, dengan pola sesuai cabang
-- [Femur] Clinical anchor: Femur :: Fracture of femoral neck dapat mengganggu retinacular branches terutama dari medial circumflex femoral artery dan meningkatkan risiko avascular necrosis of femoral head.
+- [Integrasi Klinis High-Yield] Sebutkan hal-hal penting tentang Tibial nerve lesion pada Integrasi Klinis High-Yield. :: • Weak plantarflexion dan toe flexion
+  • Difficulty standing on tiptoe
+  • Sensory loss sole
+- [Femur] Apa korelasi klinis dari Femur (Anatomi Ekstremitas Bawah)? :: Fracture of femoral neck dapat mengganggu retinacular branches terutama dari medial circumflex femoral artery dan meningkatkan risiko avascular necrosis of femoral head.

@@ -525,58 +525,56 @@ Diffuse MALT = unencapsulated lymphocytes/follicles associated with mucosa.
 
 ## Flashcard {kartu}
 
-- [Peta Besar Sistem Limfatik dan Imun] Organ limfoid primer :: - bone marrow -> pembentukan sel darah dan pematangan limfosit B; - thymus -> pematangan dan seleksi limfosit T.
-- [Peta Besar Sistem Limfatik dan Imun] Organ limfoid sekunder :: - lymph node -> menyaring limfe; - spleen -> menyaring darah; - tonsils dan MALT -> menghadapi antigen pada permukaan mukosa.
-- [Pembuluh Limfatik: Konsep Dasar] Urutan aliran :: interstitial fluid -> lymphatic capillary -> collecting lymphatic vessel -> lymphatic trunk -> thoracic duct/right lymphatic duct -> venous circulation.
-- [Kapiler Limfatik versus Kapiler Darah] Blood capillary :: - merupakan bagian sirkuit tertutup; - lumen biasanya lebih teratur; - basal lamina lebih kontinu; - sering mengandung erythrocytes.
-- [Jaringan Limforetikuler] Pengecualian penting adalah thymus :: stromanya terutama dibentuk oleh epithelial reticular cells, bukan jaringan retikular collagenous klasik.
-- [Jaringan Limfoid Difus] Lokasi umum :: - lamina propria saluran pencernaan; - saluran respirasi; - saluran genitourinaria; - area interfollicular MALT.
-- [Lymphoid Follicle Primer] Histologi :: - bulat/oval; - homogen; - padat; - basofilik gelap; - tidak memiliki germinal center.
-- [Organ Limfoid Primer versus Sekunder] Primary lymphoid organs :: - bone marrow; - thymus.
-- [Lymph Node: Gambaran Umum] Secara umum terbagi menjadi :: - cortex di perifer; - paracortex di antara cortex dan medulla; - medulla di bagian sentral/hilar.
-- [Medulla Lymph Node] Medulla terdiri atas :: - medullary cords; - medullary sinuses.
-- [Aliran Limfe melalui Lymph Node] Urutan yang wajib hafal :: afferent lymphatic -> subcapsular sinus -> trabecular/cortical sinus -> medullary sinus -> efferent lymphatic.
-- [Aliran Limfe melalui Lymph Node] Jangan tertukar dengan spleen :: spleen tidak menyaring limfe dan tidak memiliki pola afferent lymphatics seperti lymph node.
-- [Tonsils dan Waldeyer Ring] Tiga preparat penting :: - palatine tonsil; - lingual tonsil; - pharyngeal tonsil.
-- [Palatine Tonsil] Ciri histologi :: - stratified squamous non-keratinized epithelium; - banyak deep branching tonsillar crypts; - lymphoid follicles dengan germinal centers; - lymphocytes sering menginfiltrasi epithelium; - partial connective tissue capsule pada deep surface.
-- [Perbandingan Tiga Tonsil] Palatine :: - stratified squamous; - multiple deep crypts; - partial capsule.
-- [Perbandingan Tiga Tonsil] Pharyngeal :: - respiratory epithelium; - folds, bukan deep crypts; - nasopharyngeal location.
-- [PALS dan B-Cell Follicle] Jadi pada white pulp :: PALS = T-cell region.
-- [Sirkulasi Spleen] Urutan sederhana :: splenic artery -> trabecular artery -> central arteriole -> penicillar arterioles -> sheathed capillaries -> red pulp/sinusoids -> pulp veins -> trabecular veins -> splenic vein.
-- [Lymph Node versus Spleen] Lymph node :: - cortex dan medulla; - follicles dominan di cortex; - subcapsular sinus; - medullary cords/sinuses; - menyaring lymph.
-- [Lymph Node versus Spleen] Shortcut :: central arteriole inside lymphoid island = spleen.
-- [Thymus: Gambaran Umum] Setiap lobule mempunyai :: - dark peripheral cortex; - pale central medulla.
-- [Cortex Thymus] Juga terdapat :: - epithelial reticular cells; - macrophages; - developing thymocytes.
-- [Hassall Corpuscles] Spot-slide clue :: concentric pink "onion-like" body in pale medulla = Hassall corpuscle -> thymus.
-- [Blood-Thymus Barrier] Komponen konseptual :: - continuous capillary endothelium dengan tight junctions; - basal lamina; - perivascular connective tissue dengan macrophages; - epithelial reticular cells dan basal lamina.
-- [Thymus versus Lymph Node] Lymph node :: - cortex dengan follicles; - paracortex; - medulla dengan cords dan sinuses; - tidak ada Hassall corpuscles.
-- [Thymus versus Lymph Node] Shortcut :: Hassall corpuscle = thymus, hampir pathognomonic untuk spot histology.
-- [High-yield] Primary lymphoid organs :: bone marrow + thymus
-- [High-yield] Secondary lymphoid organs :: lymph node + spleen + tonsils/MALT
-- [High-yield] Primary follicle :: dark and homogeneous, no germinal center
-- [High-yield] Secondary follicle :: pale germinal center + dark mantle
-- [High-yield] Lymph node :: capsule -> subcapsular sinus -> cortex follicles -> paracortex -> medullary cords/sinuses
-- [High-yield] B cells :: follicles
-- [High-yield] T cells :: paracortex
-- [High-yield] Palatine tonsil :: squamous + deep crypts
-- [High-yield] Lingual tonsil :: squamous + one crypt + mucous glands
-- [High-yield] Pharyngeal tonsil :: respiratory epithelium + folds
-- [High-yield] Spleen: white pulp :: PALS + B-cell follicles around central arterioles
-- [High-yield] red pulp :: sinusoids + Cords of Billroth
-- [High-yield] PALS :: T cells
-- [High-yield] Thymus :: lobulated
-- [High-yield] cortex :: peripheral dark, immature T cells
-- [High-yield] medulla :: central pale
-- [High-yield] Hassall corpuscles :: concentric epithelial structures in medulla
-- [High-yield] MALT :: lymphoid tissue associated with mucosa, usually without complete capsule
-- [High-yield] Peyer patches :: aggregated GALT in ileum
-- [Peta Besar Sistem Limfatik dan Imun] Shortcut praktikum: Peta Besar Sistem Limfatik dan Imun :: Lymph node = cortex + medulla + sinus; spleen = white pulp + red pulp + central arteriole; thymus = lobules + dark cortex + pale medulla + Hassall corpuscles; tonsil = epithelium + crypts/folds + lymphoid follicles.
-- [Pembuluh Limfatik: Konsep Dasar] Practical clue: Pembuluh Limfatik: Konsep Dasar :: Pembuluh limfatik sering tampak lebih tipis, kolaps, dan irregular dibanding vena dengan ukuran sebanding.
-- [Jaringan Limforetikuler] High-yield: Jaringan Limforetikuler :: Thymus = epithelial reticular stroma.
-- [Lymphoid Follicle Sekunder] Practical clue: Lymphoid Follicle Sekunder :: Pale center + dark mantle = secondary follicle.
-- [Paracortex Lymph Node] High-yield: Paracortex Lymph Node :: Follicle/cortex = B-cell dominant.
-- [Palatine Tonsil] Practical clue: Palatine Tonsil :: Squamous epithelium + banyak deep crypts + lymphoid follicles = palatine tonsil.
-- [Pharyngeal Tonsil] Practical clue: Pharyngeal Tonsil :: Respiratory epithelium + lymphoid tissue = pharyngeal tonsil.
-- [White Pulp Spleen] Practical clue: White Pulp Spleen :: Lymphoid nodule + eccentric central arteriole = spleen white pulp.
-- [Cortex Thymus] Practical clue: Cortex Thymus :: Dark outer rim of each lobule = thymic cortex.
-- [Involusi Thymus] Trap: Involusi Thymus :: Adanya banyak adipocytes pada thymus dewasa bukan berarti seluruh organ berubah menjadi lemak tanpa fungsi.
+- [Peta Besar Sistem Limfatik dan Imun] Jelaskan Organ limfoid primer dalam konteks Histologi Organ Limfoid & Imun. :: - bone marrow -> pembentukan sel darah dan pematangan limfosit B; - thymus -> pematangan dan seleksi limfosit T.
+- [Peta Besar Sistem Limfatik dan Imun] Jelaskan Organ limfoid sekunder dalam konteks Histologi Organ Limfoid & Imun. :: - lymph node -> menyaring limfe; - spleen -> menyaring darah; - tonsils dan MALT -> menghadapi antigen pada permukaan mukosa.
+- [Pembuluh Limfatik: Konsep Dasar] Pada Pembuluh Limfatik: Konsep Dasar, apa urutan alirannya? :: Interstitial fluid -> lymphatic capillary -> collecting lymphatic vessel -> lymphatic trunk -> thoracic duct/right lymphatic duct -> venous circulation.
+- [Kapiler Limfatik versus Kapiler Darah] Apa yang dimaksud dengan Lymphatic capillary pada Kapiler Limfatik versus Kapiler Darah? :: - blind-ended; - lumen lebih irregular dan dapat lebih lebar; - endothelial cells overlap membentuk flap-like openings; - basal lamina tidak kontinu atau sangat tipis; - tidak berisi eritrosit pada keadaan normal.
+- [Kapiler Limfatik versus Kapiler Darah] Apa yang dimaksud dengan Blood capillary pada Kapiler Limfatik versus Kapiler Darah? :: - merupakan bagian sirkuit tertutup; - lumen biasanya lebih teratur; - basal lamina lebih kontinu; - sering mengandung erythrocytes.
+- [Sel Utama pada Jaringan Limfoid] Jelaskan Plasma cells memiliki dalam konteks Sel Utama pada Jaringan Limfoid. :: - eccentric nucleus; - clumped "clock-face/cartwheel" chromatin; - basophilic cytoplasm; - pale perinuclear hof karena Golgi apparatus.
+- [Jaringan Limfoid Difus] Pada Jaringan Limfoid Difus, apa lokasi umumnya? :: - lamina propria saluran pencernaan; - saluran respirasi; - saluran genitourinaria; - area interfollicular MALT.
+- [Lymphoid Follicle Primer] Pada Lymphoid Follicle Primer, apa histologinya (Histologi Organ Limfoid & Imun)? :: - bulat/oval; - homogen; - padat; - basofilik gelap; - tidak memiliki germinal center.
+- [Organ Limfoid Primer versus Sekunder] Jelaskan Primary lymphoid organs dalam konteks Organ Limfoid Primer versus Sekunder. :: - bone marrow; - thymus.
+- [Medulla Lymph Node] Jelaskan Medulla terdiri atas dalam konteks Medulla Lymph Node. :: - medullary cords; - medullary sinuses.
+- [Sinus pada Lymph Node] Jelaskan Urutan utama sinus dalam konteks Sinus pada Lymph Node. :: Subcapsular sinus -> cortical/trabecular sinuses -> medullary sinuses.
+- [Aliran Limfe melalui Lymph Node] Jelaskan Urutan yang wajib hafal dalam konteks Aliran Limfe melalui Lymph Node. :: Afferent lymphatic -> subcapsular sinus -> trabecular/cortical sinus -> medullary sinus -> efferent lymphatic.
+- [Aliran Limfe melalui Lymph Node] Bagaimana cara menghindari kesalahan berikut: Jangan tertukar dengan spleen pada Aliran Limfe melalui Lymph Node? :: Spleen tidak menyaring limfe dan tidak memiliki pola afferent lymphatics seperti lymph node.
+- [Tonsils dan Waldeyer Ring] Jelaskan Tiga preparat penting dalam konteks Tonsils dan Waldeyer Ring. :: - palatine tonsil; - lingual tonsil; - pharyngeal tonsil.
+- [Palatine Tonsil] Pada Palatine Tonsil, apa ciri histologinya (Histologi Organ Limfoid & Imun)? :: - stratified squamous non-keratinized epithelium; - banyak deep branching tonsillar crypts; - lymphoid follicles dengan germinal centers; - lymphocytes sering menginfiltrasi epithelium; - partial connective tissue capsule pada deep surface.
+- [Perbandingan Tiga Tonsil] Apa yang dimaksud dengan Palatine pada Perbandingan Tiga Tonsil? :: - stratified squamous; - multiple deep crypts; - partial capsule.
+- [Perbandingan Tiga Tonsil] Apa yang dimaksud dengan Lingual pada Perbandingan Tiga Tonsil? :: - stratified squamous; - usually one crypt per nodule; - mucous glands dan tongue skeletal muscle.
+- [Perbandingan Tiga Tonsil] Apa yang dimaksud dengan Pharyngeal pada Perbandingan Tiga Tonsil? :: - respiratory epithelium; - folds, bukan deep crypts; - nasopharyngeal location.
+- [Sirkulasi Spleen] Pada Sirkulasi Spleen, apa urutan sederhananya (Histologi Organ Limfoid & Imun)? :: Splenic artery -> trabecular artery -> central arteriole -> penicillar arterioles -> sheathed capillaries -> red pulp/sinusoids -> pulp veins -> trabecular veins -> splenic vein.
+- [Lymph Node versus Spleen] Jelaskan Lymph node pada Lymph Node versus Spleen (Histologi Organ Limfoid & Imun). :: - cortex dan medulla; - follicles dominan di cortex; - subcapsular sinus; - medullary cords/sinuses; - menyaring lymph.
+- [Lymph Node versus Spleen] Jelaskan Spleen pada Lymph Node versus Spleen (Histologi Organ Limfoid & Imun). :: - tidak ada cortex-medulla; - white pulp dan red pulp; - central arteriole; - menyaring blood.
+- [Thymus: Gambaran Umum] Jelaskan Setiap lobule mempunyai dalam konteks Thymus: Gambaran Umum. :: - dark peripheral cortex; - pale central medulla.
+- [Hassall Corpuscles] Pada Hassall Corpuscles, apa spot-slide cluenya (Histologi Organ Limfoid & Imun)? :: Concentric pink "onion-like" body in pale medulla = Hassall corpuscle -> thymus.
+- [Blood-Thymus Barrier] Apa yang dimaksud dengan Komponen konseptual pada Blood-Thymus Barrier (Histologi Organ Limfoid & Imun)? :: - continuous capillary endothelium dengan tight junctions; - basal lamina; - perivascular connective tissue dengan macrophages; - epithelial reticular cells dan basal lamina.
+- [Thymus versus Lymph Node] Jelaskan Thymus pada Thymus versus Lymph Node (Histologi Organ Limfoid & Imun). :: - lobulated; - dark cortex + pale medulla tiap lobule; - Hassall corpuscles; - tidak ada follicles/germinal centers; - tidak ada lymphatic sinuses seperti lymph node.
+- [Thymus versus Lymph Node] Jelaskan Lymph node pada Thymus versus Lymph Node (Histologi Organ Limfoid & Imun). :: - cortex dengan follicles; - paracortex; - medulla dengan cords dan sinuses; - tidak ada Hassall corpuscles.
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Primary lymphoid organs pada Histologi Organ Limfoid & Imun? :: Bone marrow + thymus
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Secondary lymphoid organs pada Histologi Organ Limfoid & Imun? :: Lymph node + spleen + tonsils/MALT
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Primary follicle pada Histologi Organ Limfoid & Imun? :: Dark and homogeneous, no germinal center
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Secondary follicle pada Histologi Organ Limfoid & Imun? :: Pale germinal center + dark mantle
+- [Histologi Organ Limfoid & Imun] Apa yang perlu diketahui tentang Lymph node pada Histologi Organ Limfoid & Imun? :: Capsule -> subcapsular sinus -> cortex follicles -> paracortex -> medullary cords/sinuses
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan B cells pada Histologi Organ Limfoid & Imun? :: Follicles
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan T cells pada Histologi Organ Limfoid & Imun? :: Paracortex
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Palatine tonsil pada Histologi Organ Limfoid & Imun? :: Squamous + deep crypts
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Lingual tonsil pada Histologi Organ Limfoid & Imun? :: Squamous + one crypt + mucous glands
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Pharyngeal tonsil pada Histologi Organ Limfoid & Imun? :: Respiratory epithelium + folds
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan red pulp pada Histologi Organ Limfoid & Imun? :: Sinusoids + Cords of Billroth
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan PALS pada Histologi Organ Limfoid & Imun? :: T cells
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan cortex pada Histologi Organ Limfoid & Imun? :: Peripheral dark, immature T cells
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan medulla pada Histologi Organ Limfoid & Imun? :: Central pale
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Hassall corpuscles pada Histologi Organ Limfoid & Imun? :: Concentric epithelial structures in medulla
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan MALT pada Histologi Organ Limfoid & Imun? :: Lymphoid tissue associated with mucosa, usually without complete capsule
+- [Histologi Organ Limfoid & Imun] Apa yang dimaksud dengan Peyer patches pada Histologi Organ Limfoid & Imun? :: Aggregated GALT in ileum
+- [Peta Besar Sistem Limfatik dan Imun] Apa clue praktikum untuk Histologi Organ Limfoid & Imun? :: Lymph node = cortex + medulla + sinus; spleen = white pulp + red pulp + central arteriole; thymus = lobules + dark cortex + pale medulla + Hassall corpuscles; tonsil = epithelium + crypts/folds + lymphoid follicles.
+- [Pembuluh Limfatik: Konsep Dasar] Apa clue praktikum untuk Pembuluh Limfatik: Konsep Dasar? :: Pembuluh limfatik sering tampak lebih tipis, kolaps, dan irregular dibanding vena dengan ukuran sebanding.
+- [Jaringan Limforetikuler] Apa poin high-yield (pearl) tentang Jaringan Limforetikuler (Histologi Organ Limfoid & Imun)? :: Thymus = epithelial reticular stroma.
+- [Lymphoid Follicle Sekunder] Apa clue praktikum untuk Lymphoid Follicle Sekunder? :: Pale center + dark mantle = secondary follicle.
+- [Paracortex Lymph Node] Apa poin high-yield (pearl) tentang Paracortex Lymph Node? :: Follicle/cortex = B-cell dominant.
+- [Palatine Tonsil] Apa clue praktikum untuk Palatine Tonsil (Histologi Organ Limfoid & Imun)? :: Squamous epithelium + banyak deep crypts + lymphoid follicles = palatine tonsil.
+- [Pharyngeal Tonsil] Apa clue praktikum untuk Pharyngeal Tonsil (Histologi Organ Limfoid & Imun)? :: Respiratory epithelium + lymphoid tissue = pharyngeal tonsil.
+- [White Pulp Spleen] Apa clue praktikum untuk White Pulp Spleen? :: Lymphoid nodule + eccentric central arteriole = spleen white pulp.
+- [Cortex Thymus] Apa clue praktikum untuk Cortex Thymus (Histologi Organ Limfoid & Imun)? :: Dark outer rim of each lobule = thymic cortex.
+- [Involusi Thymus] Apa jebakan yang sering muncul pada soal tentang Involusi Thymus (Histologi Organ Limfoid & Imun)? :: Adanya banyak adipocytes pada thymus dewasa bukan berarti seluruh organ berubah menjadi lemak tanpa fungsi.

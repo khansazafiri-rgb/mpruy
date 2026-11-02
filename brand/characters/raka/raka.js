@@ -52,6 +52,7 @@ export const PALETTE_ON_DARK = { hair: '#3A4468', pants: '#38426A', sweater: '#2
 export const OUTFITS = {
   harian: { label: 'Pakaian sehari-hari: sweater teal', palette: {}, onDark: PALETTE_ON_DARK },
   demo: { label: 'Baju demo: kaus lengan panjang hitam, celana abu tua', palette: { sweater: '#1F2429', sleeveFront: '#191E22', pants: '#2E3744' }, onDark: { hair: '#3A4468', sweater: '#38414B', sleeveFront: '#2F3841', pants: '#4A5565' } },
+  jaket: { label: 'Jaket tebal oranye (puffer) dengan kerah tinggi dan resleting', palette: { sweater: '#F2A03D', sleeveFront: '#E58F2C' }, jacket: true, onDark: { hair: '#3A4468', pants: '#38426A' } },
   jas: { label: 'Jas dokter putih di atas sweater teal', palette: { sweater: '#F6F9FA', sleeveFront: '#E9EFF1' }, coat: true, coatLong: true, onDark: { hair: '#3A4468', pants: '#38426A' } },
 };
 
@@ -66,8 +67,8 @@ export const ease = (t) => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
 
 // Lengan: bahu tetap, pergelangan (wx, wy), siku (ex, ey) = titik yang dilewati lengan, jari (0..1 panjang
 // telunjuk, fa = arah jari dalam derajat SVG, -90 = lurus ke atas), front (1 = digambar di depan badan).
-const ARM_DOWN_L = { wx: 86, wy: 556, ex: 88, ey: 488, finger: 0, fa: -90, front: 0 };
-const ARM_DOWN_R = { wx: 314, wy: 556, ex: 312, ey: 488, finger: 0, fa: -90, front: 0 };
+const ARM_DOWN_L = { wx: 86, wy: 556, ex: 88, ey: 488, finger: 0, fa: -90, front: 0, hold: 0, holdRot: 0 };
+const ARM_DOWN_R = { wx: 314, wy: 556, ex: 312, ey: 488, finger: 0, fa: -90, front: 0, hold: 0, holdRot: 0 };
 
 /** Keadaan netral. Semua nilai angka supaya bisa diinterpolasi. */
 export const NEUTRAL = {
@@ -302,7 +303,19 @@ function armSvg(side, a, P, blood = 0) {
   const c = mix(P.sweater, P.sleeveFront, a.front);
   return `<g class="raka-arm-${side}" fill="${c}">`
     + dots.map((p) => `<circle cx="${r1(p[0])}" cy="${r1(p[1])}" r="${r1(p[2])}"/>`).join('')
+    + holdSvg(a, hx, hy, side)
     + `<circle cx="${r1(hx)}" cy="${r1(hy)}" r="22" fill="${P.skin}"/>${finger}${bloodArm(blood, hx, hy, dx, dy, side)}</g>`;
+}
+// benda yang dipegang tangan (a.hold: 0 = tidak ada, 1 = cangkir kopi). Cangkir digambar DI BELAKANG telapak (tangan menggenggam sisinya),
+// holdRot memiringkan cangkir (derajat; negatif = bibir cangkir condong ke wajah saat minum). Bernilai 0 -> tidak menggambar apa-apa.
+function holdSvg(a, hx, hy, side) {
+  const k = clamp(a.hold || 0, 0, 1); if (k < 0.02) return '';
+  const sx = side === 'L' ? -1 : 1;
+  return `<g transform="translate(${r1(hx)} ${r1(hy)}) scale(${sx} 1) rotate(${r1((a.holdRot || 0) * sx)}) scale(${r1(k * 1000) / 1000})" class="raka-mug">`
+    + `<path d="M40 -22Q74 -22 74 4Q74 30 40 30" fill="none" stroke="#F4EBD8" stroke-width="12" stroke-linecap="round"/>`
+    + `<rect x="-22" y="-52" width="68" height="76" rx="14" fill="#F4EBD8"/><rect x="-22" y="-52" width="68" height="76" rx="14" fill="#E4D6BC" opacity=".5" clip-path="inset(0 0 0 58px)"/>`
+    + `<ellipse cx="12" cy="-50" rx="31" ry="8" fill="#6B4A33"/>`
+    + `<rect x="-22" y="-14" width="68" height="10" fill="#1D7B75" opacity=".9"/></g>`;
 }
 // bercak darah di lengan baju dan punggung tangan: gumpalan kecil tak beraturan, dipasang relatif terhadap arah lengan bawah
 function bloodArm(k, hx, hy, dx, dy, side) {
@@ -403,6 +416,16 @@ function coatSvg(P, opts) {
     + `<path d="M168 384C150 468 250 468 232 384" fill="none" stroke="#2B3A44" stroke-width="7" stroke-linecap="round"/><circle cx="200" cy="470" r="11" fill="#B7C6CC"/><circle cx="200" cy="470" r="5" fill="#8FA6A9"/>`;
 }
 
+// jaket puffer: kerah tinggi, resleting, garis jahitan mengembang, dua saku. Dipasang di atas badan (outfit 'jaket'). Patch logo tetap terlihat.
+function jacketSvg() {
+  const D = '#D8862A', Z = '#7A4A12';
+  return `<g class="raka-jaket">`
+    + `<path d="M118 470Q200 484 282 470M114 520Q200 536 286 520" fill="none" stroke="${D}" stroke-width="6" stroke-linecap="round"/>`
+    + `<path d="M200 392V566" stroke="${Z}" stroke-width="5" stroke-linecap="round"/><rect x="195" y="402" width="10" height="16" rx="4" fill="#F5E8D6"/>`
+    + `<path d="M138 546Q160 556 182 546M218 546Q240 556 262 546" fill="none" stroke="${D}" stroke-width="5" stroke-linecap="round"/>`
+    + `<path d="M162 378Q200 362 238 378L246 404Q200 392 154 404Z" fill="${D}"/><path d="M168 380Q200 368 232 380L236 396Q200 386 164 396Z" fill="#F2A03D"/></g>`;
+}
+
 /* ------------------------------------------------------------------ kaki berengsel halus (jalan, lari, jongkok) */
 
 // Setiap kaki = SATU bentuk celana meruncing dari pinggul ke pergelangan (lingkaran berwarna sama sepanjang kurva), lalu sepatu
@@ -487,6 +510,7 @@ function mouthSvg(m, P, uid) {
 export function rakaSvg(state, opts = {}) {
   const outfit = OUTFITS[opts.outfit || 'harian'];
   if (!outfit) throw new Error(`Pakaian tidak dikenal: ${opts.outfit}. Pilihan: ${Object.keys(OUTFITS).join(', ')}`);
+  const jacket = !!(opts.jacket ?? outfit.jacket);
   const coat = !!(opts.coat ?? outfit.coat), coatLong = !!(opts.coatLong ?? (outfit.coat && outfit.coatLong));
   const P = { ...PALETTE, ...outfit.palette, ...(opts.dark ? outfit.onDark : {}), ...(opts.palette || {}) };
   const s = state;
@@ -525,7 +549,7 @@ export function rakaSvg(state, opts = {}) {
   // ---- badan
   const breath = 1 + s.breath * 0.012;
   const torso = `<g transform="translate(200 580) scale(1 ${r1(breath)}) translate(-200 -580)">`
-    + `<path d="M114 452C112 396 150 374 172 372C182 388 218 388 228 372C250 374 288 396 286 452L296 566C250 588 150 588 104 566Z" fill="${P.sweater}"/>${coat ? coatSvg(P, { coatLong: coatLong && opts.coatLong !== false }) : ''}${bloodTorso(s)}</g>`;
+    + `<path d="M114 452C112 396 150 374 172 372C182 388 218 388 228 372C250 374 288 396 286 452L296 566C250 588 150 588 104 566Z" fill="${P.sweater}"/>${coat ? coatSvg(P, { coatLong: coatLong && opts.coatLong !== false }) : ''}${jacket ? jacketSvg() : ''}${bloodTorso(s)}</g>`;
   const slump = clamp(s.slump, 0, 40);
   const neck = `<rect x="170" y="336" width="60" height="${r1(62 + slump)}" rx="16" fill="${P.skinShade}"/>`;
   const sl = (x) => (slump ? `<g transform="translate(0 ${r1(slump)})">${x}</g>` : x);

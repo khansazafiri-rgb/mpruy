@@ -396,58 +396,78 @@ Gland:
 
 ## Flashcard {kartu}
 
-- [Mekanisme Pelepasan Sekret] Merocrine :: produk dilepas melalui exocytosis tanpa kehilangan bagian sel. Contoh: salivary glands, exocrine pancreas, eccrine sweat glands.
-- [Mekanisme Pelepasan Sekret] Apocrine :: bagian apikal sel ikut terlepas bersama produk sekret. Contoh klasik: lipid secretion pada mammary gland.
-- [Mekanisme Pelepasan Sekret] Holocrine :: seluruh sel menjadi bagian dari sekret dan mati. Contoh: sebaceous gland.
-- [High-yield] Epitel :: rapat, polarized, avascular, melekat pada basement membrane, regeneratif
-- [High-yield] simple :: satu lapis
-- [High-yield] stratified :: ≥2 lapis
-- [High-yield] pseudostratified :: satu lapis yang tampak berlapis
-- [High-yield] transitional/urothelium :: epitel urinary tract dengan umbrella cells
-- [High-yield] Bentuk sel :: squamous, cuboidal, columnar
-- [High-yield] Simple squamous :: difusi/filtrasi
-- [High-yield] Simple cuboidal :: sekresi/absorpsi
-- [High-yield] Simple columnar :: absorpsi/sekresi
-- [High-yield] Stratified squamous :: proteksi abrasi
-- [High-yield] Pseudostratified ciliated :: respiratory tract
-- [High-yield] Urothelium :: distensi + barrier urin
-- [High-yield] adherens/desmosome :: anchor
-- [High-yield] gap :: communication
-- [High-yield] hemidesmosome :: basement membrane
-- [High-yield] microvilli :: actin, absorpsi
-- [High-yield] stereocilia :: long actin-based microvilli
-- [High-yield] motile cilia :: microtubules, gerak
-- [High-yield] endocrine :: tanpa duct
-- [High-yield] merocrine :: exocytosis
-- [High-yield] apocrine :: apical part lepas
-- [High-yield] holocrine :: whole cell lepas
-- [Peta Besar Jaringan Epitel] Ciri kunci yang hampir selalu dicari saat melihat preparat … :: • sel tersusun rapat
-  • mempunyai free/apical surface
-  • melekat pada basement membrane
-  • avaskular, sehingga nutrisi diperoleh melalui difusi dari jaringan ikat di bawahnya
-  • umumnya memiliki kemampuan regenerasi tinggi
-  • menunjukkan polaritas struktural dan fungsional
-- [Basement Membrane dan Basal Lamina] Fungsi utama basement membrane … :: • memberi mechanical support
-  • mempertahankan polaritas dan organisasi jaringan
-  • menjadi filter selektif pada lokasi tertentu
-  • menjadi scaffold untuk regenerasi
-  • membatasi dan mengarahkan migrasi sel
-- [Prinsip Klasifikasi Epitel] Nama epitel ditentukan terutama oleh dua hal … :: • jumlah lapisan
-  • bentuk sel pada permukaan bebas
-- [Simple versus Compound Glands] Contoh pola yang sering ditanya … :: • intestinal gland = simple tubular
-  • eccrine sweat gland = simple coiled tubular
-  • sebaceous gland = simple branched acinar/alveolar
-  • salivary glands dan exocrine pancreas = compound glands
-- [Strategi Identifikasi Preparat Epitel] Gunakan urutan tetap … :: • Temukan lumen/free surface
+- [Mekanisme Pelepasan Sekret] Apa yang dimaksud dengan Merocrine pada Mekanisme Pelepasan Sekret? :: Produk dilepas melalui exocytosis tanpa kehilangan bagian sel. Contoh: salivary glands, exocrine pancreas, eccrine sweat glands.
+- [Mekanisme Pelepasan Sekret] Apa yang dimaksud dengan Apocrine pada Mekanisme Pelepasan Sekret? :: Bagian apikal sel ikut terlepas bersama produk sekret. Contoh klasik: lipid secretion pada mammary gland.
+- [Mekanisme Pelepasan Sekret] Apa yang dimaksud dengan Holocrine pada Mekanisme Pelepasan Sekret? :: Seluruh sel menjadi bagian dari sekret dan mati. Contoh: sebaceous gland.
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan Epitel pada Jaringan Dasar: Epitel? :: Rapat, polarized, avascular, melekat pada basement membrane, regeneratif
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan simple pada Jaringan Dasar: Epitel? :: Satu lapis
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan stratified pada Jaringan Dasar: Epitel? :: ≥2 lapis
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan pseudostratified pada Jaringan Dasar: Epitel? :: Satu lapis yang tampak berlapis
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan transitional/urothelium pada Jaringan Dasar: Epitel? :: Epitel urinary tract dengan umbrella cells
+- [Jaringan Dasar: Epitel] Apa bentuk sel pada Jaringan Dasar: Epitel? :: Squamous, cuboidal, columnar
+- [Jaringan Dasar: Epitel] Apa yang perlu diingat tentang Simple squamous pada Jaringan Dasar: Epitel? :: Difusi/filtrasi
+- [Jaringan Dasar: Epitel] Apa yang perlu diingat tentang Simple cuboidal pada Jaringan Dasar: Epitel? :: Sekresi/absorpsi
+- [Jaringan Dasar: Epitel] Apa yang perlu diingat tentang Simple columnar pada Jaringan Dasar: Epitel? :: Absorpsi/sekresi
+- [Jaringan Dasar: Epitel] Apa yang perlu diingat tentang Stratified squamous pada Jaringan Dasar: Epitel? :: Proteksi abrasi
+- [Jaringan Dasar: Epitel] Apa yang perlu diingat tentang Pseudostratified ciliated pada Jaringan Dasar: Epitel? :: Respiratory tract
+- [Jaringan Dasar: Epitel] Apa yang perlu diingat tentang Urothelium pada Jaringan Dasar: Epitel? :: Distensi + barrier urin
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan adherens/desmosome pada Jaringan Dasar: Epitel? :: Anchor
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan gap pada Jaringan Dasar: Epitel? :: Communication
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan hemidesmosome pada Jaringan Dasar: Epitel? :: Basement membrane
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan microvilli pada Jaringan Dasar: Epitel? :: Actin, absorpsi
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan stereocilia pada Jaringan Dasar: Epitel? :: Long actin-based microvilli
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan motile cilia pada Jaringan Dasar: Epitel? :: Microtubules, gerak
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan endocrine pada Jaringan Dasar: Epitel? :: Tanpa duct
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan merocrine pada Jaringan Dasar: Epitel? :: Exocytosis
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan apocrine pada Jaringan Dasar: Epitel? :: Apical part lepas
+- [Jaringan Dasar: Epitel] Apa yang dimaksud dengan holocrine pada Jaringan Dasar: Epitel? :: Whole cell lepas
+- [Peta Besar Jaringan Epitel] Sebutkan ciri kunci yang hampir selalu dicari saat melihat preparat pada Jaringan Dasar: Epitel. :: • Sel tersusun rapat
+  • Mempunyai free/apical surface
+  • Melekat pada basement membrane
+  • Avaskular, sehingga nutrisi diperoleh melalui difusi dari jaringan ikat di bawahnya
+  • Umumnya memiliki kemampuan regenerasi tinggi
+  • Menunjukkan polaritas struktural dan fungsional
+- [Basement Membrane dan Basal Lamina] Sebutkan fungsi utama basement membrane pada Basement Membrane dan Basal Lamina. :: • Memberi mechanical support
+  • Mempertahankan polaritas dan organisasi jaringan
+  • Menjadi filter selektif pada lokasi tertentu
+  • Menjadi scaffold untuk regenerasi
+  • Membatasi dan mengarahkan migrasi sel
+- [Simple Squamous Epithelium] Sebutkan contoh lokasi pada Simple Squamous Epithelium. :: • Alveoli paru
+  • Endothelium pembuluh darah dan limfatik
+  • Mesothelium rongga serosa
+  • Parietal layer Bowman capsule
+- [Simple Columnar Epithelium] Sebutkan lokasi umum pada Simple Columnar Epithelium. :: • Lambung
+  • Usus
+  • Gallbladder
+  • Sebagian tractus genitalis wanita
+- [Transitional Epithelium / Urothelium] Sebutkan ciri penting pada Transitional Epithelium / Urothelium. :: • Basal cells kecil
+  • Intermediate cells berbentuk polyhedral
+  • Superficial umbrella cells besar dan dapat tampak dome-shaped saat relaksasi
+  • Saat organ teregang, epitel menjadi lebih tipis dan umbrella cells tampak lebih pipih
+  • Apical membrane mengandung uroplakin yang membantu membentuk barrier terhadap urin
+- [Stereocilia] Sebutkan contoh klasik pada Stereocilia (Jaringan Dasar: Epitel). :: • Epididymis
+  • Sensory hair cells telinga dalam, meskipun fungsi dan organisasinya berbeda
+- [Simple versus Compound Glands] Sebutkan contoh pola yang sering ditanya pada Simple versus Compound Glands. :: • Intestinal gland = simple tubular
+  • Eccrine sweat gland = simple coiled tubular
+  • Sebaceous gland = simple branched acinar/alveolar
+  • Salivary glands dan exocrine pancreas = compound glands
+- [Strategi Identifikasi Preparat Epitel] Sebutkan urutan atau langkah pada Strategi Identifikasi Preparat Epitel? :: • Temukan lumen/free surface
   • Tentukan simple, stratified, pseudostratified, atau transitional
   • Jika stratified, lihat bentuk sel paling superfisial
   • Cari specializations: cilia, brush border, keratin, umbrella cells
   • Cari goblet cells atau pola secretory units bila ada
   • Cocokkan dengan organ context
-- [Basement Membrane dan Basal Lamina] Clinical anchor: Basement Membrane dan Basal Lamina :: Invasi carcinoma menembus basement membrane. Karena itu, konsep “belum menembus” versus “sudah menembus” basement membrane penting secara klinis walaupun detail staging dipelajari lebih lanjut di patologi.
-- [Cell Junctions] High-yield: Cell Junctions :: Tight = seal; adherens/desmosome = anchor antarsel; gap = communication; hemidesmosome = anchor ke basement membrane.
-- [Simple Squamous Epithelium] Praktikum: Simple Squamous Epithelium :: Jangan menilai ketebalan sitoplasma saja. Cari inti pipih yang sejajar dengan permukaan dan hanya satu lapis.
-- [Pseudostratified Columnar Epithelium] High-yield trap: Pseudostratified Columnar Epithelium :: “tampak banyak lapis” tidak otomatis berarti stratified. Tanyakan apakah semua sel menyentuh basal lamina.
-- [Transitional Epithelium / Urothelium] Praktikum: Transitional Epithelium / Urothelium :: Umbrella cells merupakan clue terkuat. Jangan menilai urothelium hanya dari jumlah lapisan karena ketebalannya berubah sesuai distensi.
-- [Motile Cilia] High-yield: Motile Cilia :: Microvilli/stereocilia berbasis actin; motile cilia berbasis microtubules.
-- [Mekanisme Pelepasan Sekret] Mnemonic fungsional: Mekanisme Pelepasan Sekret :: mero = membrane fusion/exocytosis; apo = apical portion ikut lepas; holo = whole cell lepas.
+- [Strategi Identifikasi Preparat Epitel] Sebutkan contoh cepat pada Strategi Identifikasi Preparat Epitel. :: • Alveolus → simple squamous
+  • Renal tubule → simple cuboidal
+  • Small intestine → simple columnar + brush border/goblet cells
+  • Trachea → pseudostratified ciliated columnar + goblet cells
+  • Esophagus → non-keratinized stratified squamous
+  • Skin → keratinized stratified squamous
+  • Urinary bladder → transitional/urothelium
+- [Basement Membrane dan Basal Lamina] Apa korelasi klinis dari Basement Membrane dan Basal Lamina? :: Invasi carcinoma menembus basement membrane. Karena itu, konsep “belum menembus” versus “sudah menembus” basement membrane penting secara klinis walaupun detail staging dipelajari lebih lanjut di patologi.
+- [Cell Junctions] Apa poin high-yield (pearl) tentang Cell Junctions (Jaringan Dasar: Epitel)? :: Tight = seal; adherens/desmosome = anchor antarsel; gap = communication; hemidesmosome = anchor ke basement membrane.
+- [Simple Squamous Epithelium] Apa clue praktikum untuk Simple Squamous Epithelium? :: Jangan menilai ketebalan sitoplasma saja. Cari inti pipih yang sejajar dengan permukaan dan hanya satu lapis.
+- [Pseudostratified Columnar Epithelium] Apa jebakan yang sering muncul pada soal tentang Pseudostratified Columnar Epithelium? :: “tampak banyak lapis” tidak otomatis berarti stratified. Tanyakan apakah semua sel menyentuh basal lamina.
+- [Transitional Epithelium / Urothelium] Apa clue praktikum untuk Transitional Epithelium / Urothelium? :: Umbrella cells merupakan clue terkuat. Jangan menilai urothelium hanya dari jumlah lapisan karena ketebalannya berubah sesuai distensi.
+- [Motile Cilia] Apa poin high-yield (pearl) tentang Motile Cilia (Jaringan Dasar: Epitel)? :: Microvilli/stereocilia berbasis actin; motile cilia berbasis microtubules.
+- [Mekanisme Pelepasan Sekret] Bagaimana cara mengingat Mekanisme Pelepasan Sekret (Jaringan Dasar: Epitel)? :: Mero = membrane fusion/exocytosis; apo = apical portion ikut lepas; holo = whole cell lepas.

@@ -735,77 +735,87 @@ Bowel:
 
 ## Flashcard {kartu}
 
-- [Abnormal Blood Flow] Contoh stasis :: prolonged immobilization dan atrial fibrillation.
-- [Abnormal Blood Flow] Contoh turbulence :: aneurysm dan atherosclerotic plaque.
-- [Factor V Leiden] Pattern soal :: recurrent DVT pada pasien relatif muda + family history → pikirkan inherited thrombophilia.
-- [Morfologi Infarct] Exception utama :: brain infarction → liquefactive necrosis.
-- [Septic Infarct] Contoh klasik :: infective endocarditis dengan septic emboli.
-- [Shock — Definisi] Final common pathway :: ↓ tissue perfusion → cellular hypoxia → metabolic dysfunction → organ injury → bila persisten, multiorgan failure dan death.
-- [Virchow Triad — Vignette Pattern] Scenario 1 :: Pasien post-operative immobilized beberapa hari → stasis → DVT.
-- [Virchow Triad — Vignette Pattern] Scenario 2 :: Atherosclerotic plaque rupture → endothelial injury → arterial thrombosis.
-- [Virchow Triad — Vignette Pattern] Scenario 3 :: Atrial fibrillation → abnormal flow/stasis di atrium → mural thrombus → systemic embolism.
-- [Virchow Triad — Vignette Pattern] Scenario 4 :: Young patient recurrent DVT + family history → inherited hypercoagulability.
-- [High-yield] mengubah fibrinogen :: fibrin,
-- [High-yield] Jadi thrombin :: central amplifier pada secondary hemostasis
-- [High-yield] Thrombus :: terbentuk lokal dalam vessel/heart
-- [High-yield] Embolus :: material berpindah melalui circulation
-- [High-yield] Infarct :: area tissue necrosis akibat vascular occlusion
-- [High-yield] Alur klasik :: DVT → pulmonary embolus → pulmonary vascular obstruction
-- [High-yield] Heart failure cells :: hemosiderin-laden alveolar macrophages
-- [High-yield] Nutmeg liver :: chronic passive hepatic congestion
-- [High-yield] Platelet adhesion :: vWF + GpIb
-- [High-yield] Platelet aggregation :: GpIIb/IIIa + fibrinogen
-- [High-yield] Virchow triad :: endothelial injury + abnormal flow + hypercoagulability
-- [High-yield] DVT komplikasi utama :: pulmonary embolism
-- [High-yield] Fate thrombus :: propagation, embolization, dissolution, organization/recanalization
-- [High-yield] Fat embolism syndrome :: respiratory distress + neurologic symptoms + petechiae
-- [High-yield] Infarct :: ischemic necrosis akibat vascular occlusion
-- [High-yield] White infarct :: solid end-arterial organs seperti heart/kidney/spleen
-- [High-yield] Red infarct :: venous occlusion, dual circulation, loose tissues, reperfusion
-- [High-yield] DIC :: platelet ↓, PT/aPTT ↑, D-dimer ↑, fibrinogen ↓
-- [High-yield] Cara tercepat mengerjakan soal :: identifikasi TEMPAT CLOT → ARAH ALIRAN → ORGAN TARGET → TIPE NECROSIS
-- [High-yield] EDEMA :: hydrostatic/oncotic/lymphatic/Na⁺/permeability problem
-- [High-yield] THROMBOSIS :: VIRCHOW TRIAD: endothelial injury + abnormal flow + hypercoagulability
-- [High-yield] BRAIN infarct :: liquefactive necrosis
-- [Mekanisme Edema] Lima mekanisme utama … :: • ↑ hydrostatic pressure
+- [Abnormal Blood Flow] Apa yang dimaksud dengan Contoh stasis pada Abnormal Blood Flow? :: Prolonged immobilization dan atrial fibrillation.
+- [Abnormal Blood Flow] Apa yang dimaksud dengan Contoh turbulence pada Abnormal Blood Flow? :: Aneurysm dan atherosclerotic plaque.
+- [Factor V Leiden] Apa yang dimaksud dengan Pattern soal pada Factor V Leiden? :: Recurrent DVT pada pasien relatif muda + family history → pikirkan inherited thrombophilia.
+- [Morfologi Infarct] Apa yang dimaksud dengan Exception utama pada Morfologi Infarct (Gangguan Hemodinamik (Trombosis, Emboli, Infark))? :: Brain infarction → liquefactive necrosis.
+- [Septic Infarct] Apa yang dimaksud dengan Contoh klasik pada Septic Infarct (Gangguan Hemodinamik (Trombosis, Emboli, Infark))? :: Infective endocarditis dengan septic emboli.
+- [Shock — Definisi] Jelaskan Final common pathway dalam konteks Shock — Definisi. :: ↓ tissue perfusion → cellular hypoxia → metabolic dysfunction → organ injury → bila persisten, multiorgan failure dan death.
+- [Virchow Triad — Vignette Pattern] Apa yang dimaksud dengan Scenario 1 pada Virchow Triad — Vignette Pattern? :: Pasien post-operative immobilized beberapa hari → stasis → DVT.
+- [Virchow Triad — Vignette Pattern] Apa yang dimaksud dengan Scenario 2 pada Virchow Triad — Vignette Pattern? :: Atherosclerotic plaque rupture → endothelial injury → arterial thrombosis.
+- [Virchow Triad — Vignette Pattern] Apa yang dimaksud dengan Scenario 3 pada Virchow Triad — Vignette Pattern? :: Atrial fibrillation → abnormal flow/stasis di atrium → mural thrombus → systemic embolism.
+- [Virchow Triad — Vignette Pattern] Apa yang dimaksud dengan Scenario 4 pada Virchow Triad — Vignette Pattern? :: Young patient recurrent DVT + family history → inherited hypercoagulability.
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang perlu diingat tentang mengubah fibrinogen pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Fibrin,
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Jadi thrombin pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Central amplifier pada secondary hemostasis
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang perlu diketahui tentang Infarct pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Area tissue necrosis akibat vascular occlusion
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa alur klasik pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: DVT → pulmonary embolus → pulmonary vascular obstruction
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Edema pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Excess interstitial fluid
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Heart failure cells pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Hemosiderin-laden alveolar macrophages
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Nutmeg liver pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Chronic passive hepatic congestion
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Platelet adhesion pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: VWF + GpIb
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Platelet aggregation pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: GpIIb/IIIa + fibrinogen
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Virchow triad pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Endothelial injury + abnormal flow + hypercoagulability
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Factor V Leiden pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Resistance terhadap activated protein C
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Fate thrombus pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Propagation, embolization, dissolution, organization/recanalization
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang perlu diketahui tentang Fat embolism syndrome pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Respiratory distress + neurologic symptoms + petechiae
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Infarct pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Ischemic necrosis akibat vascular occlusion
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan White infarct pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Solid end-arterial organs seperti heart/kidney/spleen
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Red infarct pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Venous occlusion, dual circulation, loose tissues, reperfusion
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan Shock pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Systemic hypoperfusion
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang perlu diketahui tentang DIC pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Platelet ↓, PT/aPTT ↑, D-dimer ↑, fibrinogen ↓
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang perlu diketahui tentang Cara tercepat mengerjakan soal pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Identifikasi TEMPAT CLOT → ARAH ALIRAN → ORGAN TARGET → TIPE NECROSIS
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan THROMBOSIS pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: VIRCHOW TRIAD: endothelial injury + abnormal flow + hypercoagulability
+- [Gangguan Hemodinamik (Trombosis, Emboli, Infark)] Apa yang dimaksud dengan BRAIN infarct pada Gangguan Hemodinamik (Trombosis, Emboli, Infark)? :: Liquefactive necrosis
+- [Mekanisme Edema] Sebutkan lima mekanisme utama pada Mekanisme Edema (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • ↑ hydrostatic pressure
   • ↓ plasma oncotic pressure
   • Lymphatic obstruction
   • Sodium and water retention
   • Inflammation → ↑ vascular permeability
-- [Endothelium — Antithrombotic vs Prothrombotic] Endothelium normal bersifat antithrombotic melalui … :: • prostacyclin (PGI₂),
-  • nitric oxide,
-  • ADPase,
-  • thrombomodulin,
-  • heparin-like molecules,
-  • tissue plasminogen activator (t-PA)
-- [Thrombosis — Definisi] Thrombus berbeda dari postmortem clot … :: • thrombus melekat pada dinding dan sering menunjukkan Lines of Zahn,
-  • postmortem clot tidak melekat kuat dan dapat memiliki bagian “chicken fat” serta “currant jelly”
-- [Abnormal Blood Flow] Turbulence dan stasis … :: • mengganggu laminar flow,
-  • membawa platelet lebih dekat ke endothelium,
-  • mengurangi dilution clotting factors,
-  • mengurangi inflow anticoagulants,
-  • menghambat washout activated factors,
-  • mengaktivasi endothelium
-- [Morfologi Thrombus & Lines of Zahn] Thrombus yang terbentuk dalam darah mengalir dapat menunjukkan laminasi … :: • lapisan pucat = platelet + fibrin,
-  • lapisan gelap = red cells
-- [Pulmonary Thromboembolism] Outcome bergantung ukuran dan status cardiopulmonary pasien … :: • emboli kecil → sering silent,
-  • emboli sedang → pulmonary hemorrhage/infarction pada kondisi tertentu,
-  • massive embolus → dapat menyumbat pulmonary trunk atau bifurcation sebagai saddle embolus → sudden death/right heart strain,
-  • recurrent emboli → pulmonary hypertension
-- [Fat Embolism] Fat emboli dapat terjadi setelah … :: • long-bone fracture,
-  • severe soft tissue trauma
-- [Amniotic Fluid Embolism] Manifestasi dapat meliputi … :: • sudden dyspnea,
-  • cyanosis,
-  • hypotension/shock,
-  • neurologic dysfunction,
-  • DIC
-- [Morfologi Infarct] Kebanyakan infarct berbentuk wedge … :: • apex mengarah ke vessel yang tersumbat,
-  • base mengarah ke permukaan organ
-- [Praktikum — Organ Congestion] Lung chronic congestion … :: • hemosiderin-laden macrophages,
-  • septal fibrosis,
-  • heart failure cells
-- [Transudate vs Exudate] Exam pearl: Transudate vs Exudate :: Edema pada heart failure biasanya transudative; inflammatory edema biasanya exudative.
-- [Platelet Aggregation] Mnemonic: Platelet Aggregation :: AGGREGATION = GpIIb/IIIa + FIBRINOGEN.
-- [Virchow Triad] Poin ujian: Virchow Triad :: Arterial/cardiac thrombosis lebih sering didorong endothelial injury/turbulence; venous thrombosis sangat kuat terkait stasis.
-- [Antiphospholipid Antibody Syndrome] Exam pearl: Antiphospholipid Antibody Syndrome :: Lupus anticoagulant → prolonged phospholipid-dependent clotting test tetapi thrombosis secara klinis.
-- [Paradoxical Embolism] Clue: Paradoxical Embolism :: DVT + stroke/systemic arterial embolus tanpa sumber kiri yang jelas → pertimbangkan paradoxical embolism.
+- [Hemorrhage] Sebutkan istilah penting pada Hemorrhage (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Petechiae = perdarahan sangat kecil, biasanya 1–2 mm
+  • Purpura = lebih besar, sekitar beberapa mm
+  • Ecchymosis = subcutaneous hematoma lebih besar
+  • Hematoma = akumulasi darah lokal dalam jaringan
+- [Thrombosis — Definisi] Sebutkan hal-hal penting tentang Thrombus berbeda dari postmortem clot pada Thrombosis — Definisi. :: • Thrombus melekat pada dinding dan sering menunjukkan Lines of Zahn
+  • Postmortem clot tidak melekat kuat dan dapat memiliki bagian “chicken fat” serta “currant jelly”
+- [Virchow Triad] Sebutkan tiga faktor utama thrombosis pada Virchow Triad (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Endothelial injury
+  • Abnormal blood flow: stasis atau turbulence
+  • Hypercoagulability
+- [Hypercoagulability] Sebutkan hal-hal penting tentang Inherited causes pada Hypercoagulability (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Factor V Leiden mutation → resistance terhadap activated protein C
+  • Prothrombin gene mutation
+  • Deficiency antithrombin, protein C, atau protein S
+- [Hypercoagulability] Sebutkan hal-hal penting tentang Acquired causes pada Hypercoagulability (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Prolonged immobilization
+  • Malignancy
+  • Pregnancy/postpartum
+  • Oral estrogen exposure
+  • Antiphospholipid antibody syndrome
+  • Heparin-induced thrombocytopenia
+  • Smoking dan obesity sebagai faktor kontribusi
+- [Fate of Thrombus] Sebutkan empat nasib utama thrombus pada Fate of Thrombus. :: • Propagation → thrombus membesar
+  • Embolization → fragmen lepas dan berpindah
+  • Dissolution → fibrinolysis, terutama thrombus baru
+  • Organization + recanalization → ingrowth endothelial/smooth muscle/fibroblast dan terbentuk channel baru
+- [Embolism — Definisi] Sebutkan tipe penting pada Embolism — Definisi. :: • Pulmonary thromboembolism
+  • Systemic thromboembolism
+  • Fat embolism
+  • Air/gas embolism
+  • Amniotic fluid embolism
+- [Red vs White Infarct] Sebutkan hal-hal penting tentang Red/hemorrhagic infarct pada Red vs White Infarct (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Venous occlusion
+  • Loose tissues
+  • Dual circulation
+  • Previously congested tissue
+  • Reperfusion
+- [Red vs White Infarct] Sebutkan hal-hal penting tentang White/anemic infarct pada Red vs White Infarct (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Arterial occlusion
+  • Solid organs dengan end-arterial circulation
+- [Praktikum — Thrombus vs Postmortem Clot] Sebutkan hal-hal penting tentang Postmortem clot pada Praktikum — Thrombus vs Postmortem Clot (Gangguan Hemodinamik (Trombosis, Emboli, Infark)). :: • Not attached
+  • Gelatinous
+  • “chicken fat” upper yellow layer
+  • “currant jelly” dependent red layer
+  • No true Lines of Zahn
+- [Praktikum — Organ Congestion] Sebutkan hal-hal penting tentang Lung chronic congestion pada Praktikum — Organ Congestion. :: • Hemosiderin-laden macrophages
+  • Septal fibrosis
+  • Heart failure cells
+- [Transudate vs Exudate] Apa poin high-yield (pearl) tentang Transudate vs Exudate? :: Edema pada heart failure biasanya transudative; inflammatory edema biasanya exudative.
+- [Platelet Aggregation] Bagaimana cara mengingat Platelet Aggregation (Gangguan Hemodinamik (Trombosis, Emboli, Infark))? :: AGGREGATION = GpIIb/IIIa + FIBRINOGEN.
+- [Virchow Triad] Apa poin high-yield (pearl) tentang Virchow Triad (Gangguan Hemodinamik (Trombosis, Emboli, Infark))? :: Arterial/cardiac thrombosis lebih sering didorong endothelial injury/turbulence; venous thrombosis sangat kuat terkait stasis.
+- [Antiphospholipid Antibody Syndrome] Apa poin high-yield (pearl) tentang Antiphospholipid Antibody Syndrome? :: Lupus anticoagulant → prolonged phospholipid-dependent clotting test tetapi thrombosis secara klinis.
+- [Paradoxical Embolism] Apa clue praktikum untuk Paradoxical Embolism (Gangguan Hemodinamik (Trombosis, Emboli, Infark))? :: DVT + stroke/systemic arterial embolus tanpa sumber kiri yang jelas → pertimbangkan paradoxical embolism.

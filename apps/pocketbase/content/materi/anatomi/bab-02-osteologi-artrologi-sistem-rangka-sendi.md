@@ -451,42 +451,63 @@ Konsep trade-off ini lebih berguna daripada sekadar menghafal daftar ligament.
 
 ## Flashcard {kartu}
 
-- [Klasifikasi tulang berdasarkan bentuk] Long bones :: lebih panjang daripada lebar dan bekerja sebagai lever; contoh humerus, radius, ulna, femur, tibia, fibula, metacarpals, metatarsals, dan phalanges.
-- [Klasifikasi tulang berdasarkan bentuk] Flat bones :: tipis dan sering melengkung; contoh scapula, sternum, ribs, dan sebagian tulang cranium. Memberi permukaan luas untuk perlekatan dan proteksi.
-- [Depressions dan openings] Fissure :: celah sempit di antara bagian tulang; sering menjadi jalur neurovascular.
-- [Depressions dan openings] Foramen :: lubang yang dilalui pembuluh, saraf, atau struktur lain.
-- [Processes dan prominences] Condyle :: tonjolan besar, membulat, biasanya memiliki permukaan artikular.
-- [Processes dan prominences] Head :: ujung artikular membulat yang sering ditopang oleh neck.
-- [Processes dan prominences] Line/linea :: ridge yang lebih rendah daripada crest.
-- [Processes dan prominences] Trochanter :: proyeksi sangat besar; istilah khas femur.
-- [Clavicle] sternal end :: lebih besar dan medial
-- [Clavicle] Orientasi :: medial 2/3 cembung ke anterior dan lateral 1/3 cekung ke anterior. Conoid tubercle berada inferoposterior dekat ujung lateral.
-- [Femur] Proximal :: head dengan fovea capitis, neck, greater dan lesser trochanters, intertrochanteric line anterior, intertrochanteric crest posterior.
-- [Femur] Distal :: medial/lateral condyles dan epicondyles, intercondylar fossa posterior, patellar surface anterior, serta adductor tubercle di medial.
-- [Klasifikasi struktural] Cartilaginous joints :: tulang dihubungkan oleh hyaline cartilage atau fibrocartilage.
-- [Synarthroses dan fibrous/cartilaginous unions] Suture :: fibrous joint khas cranium.
-- [Synarthroses dan fibrous/cartilaginous unions] Syndesmosis :: tulang dihubungkan ligament/interosseous membrane; mobilitas lebih besar daripada suture, contoh distal tibiofibular articulation.
-- [Synarthroses dan fibrous/cartilaginous unions] Schindylesis :: istilah yang ditampilkan pada K12 untuk artikulasi ketika ridge satu tulang masuk ke groove tulang lain; ini merupakan bentuk fibrous articulation yang jarang dibahas pada klasifikasi modern dasar.
-- [Articular capsule] inner synovial membrane :: jaringan vascular yang melapisi permukaan internal capsule kecuali permukaan articular cartilage; menghasilkan synovial fluid.
-- [Ligaments] intracapsular :: berada di dalam fibrous capsule tetapi tidak selalu berada dalam synovial cavity secara bebas.
-- [Accessory structures] Labrum/articular lip :: fibrocartilaginous rim yang memperdalam socket, misalnya glenoid labrum dan acetabular labrum.
-- [Bentuk Synovial Joint, Axis, dan Gerak] Plane/gliding joint — nonaxial :: sliding/gliding; contoh intercarpal/intertarsal joints.
-- [Bentuk Synovial Joint, Axis, dan Gerak] Pivot joint — uniaxial :: rotation; contoh proximal radioulnar joint dan median atlanto-axial joint.
-- [Bentuk Synovial Joint, Axis, dan Gerak] Ball-and-socket joint — multiaxial/triaxial :: flexion–extension, abduction–adduction, rotation, circumduction; contoh shoulder dan hip.
-- [Blood supply] Fibrous capsule dan ligament :: relatif poor vascularity.
-- [Peran otot selama gerak] Secondary/assisting mover :: membantu prime mover.
-- [Peran otot selama gerak] Synergist :: bekerja bersama agonist untuk memperkuat gerak atau mengurangi gerakan yang tidak diinginkan.
-- [Joint stability–mobility trade-off] Shoulder :: mobility tinggi, bony stability relatif rendah.
-- [High-yield] Appendicular skeleton :: girdles + limbs; bukan seluruh rangka
-- [High-yield] Condyle biasanya artikular; epicondyle :: prominence di dekat condyle dan umumnya tempat attachment
-- [High-yield] Semua synovial joints :: diarthroses, tetapi tidak semua diarthroses memiliki ROM yang sama
-- [High-yield] Meniscus/disc, labrum, bursa, dan tendon sheath :: accessory structures—tidak ada pada setiap synovial joint
-- [Articular capsule] Capsule terdiri dari … :: • outer fibrous layer/capsule: dense irregular connective tissue yang berlanjut dengan periosteum dan menahan kedua tulang agar tidak terpisah berlebihan
-  • inner synovial membrane: jaringan vascular yang melapisi permukaan internal capsule kecuali permukaan articular cartilage; menghasilkan synovial fluid
-- [Range of Motion dan Peran Otot] Faktor yang membatasi ROM … :: • shape dan congruency tulang
-  • capsule dan ligament tension
-  • muscle/tendon extensibility
-  • soft-tissue approximation
-  • nyeri, effusion, atau pathology
-- [Tibia dan fibula] Clinical landmark: Tibia dan fibula :: Common fibular nerve berhubungan erat dengan neck of fibula.
-- [Synarthroses dan fibrous/cartilaginous unions] Exam trap: Synarthroses dan fibrous/cartilaginous unions :: Jangan menyamakan “fibrous = selalu synarthrosis” atau “cartilaginous = selalu amphiarthrosis”. Klasifikasi struktural menjawab “dihubungkan oleh apa?”, sedangkan klasifikasi fungsional menjawab “seberapa banyak geraknya?”.
+- [Klasifikasi tulang berdasarkan bentuk] Apa yang dimaksud dengan Long bones pada Konsep Dasar Osteologi? :: Lebih panjang daripada lebar dan bekerja sebagai lever; contoh humerus, radius, ulna, femur, tibia, fibula, metacarpals, metatarsals, dan phalanges.
+- [Klasifikasi tulang berdasarkan bentuk] Apa yang dimaksud dengan Flat bones pada Konsep Dasar Osteologi? :: Tipis dan sering melengkung; contoh scapula, sternum, ribs, dan sebagian tulang cranium. Memberi permukaan luas untuk perlekatan dan proteksi.
+- [Depressions dan openings] Apa yang dimaksud dengan Fissure pada Depressions dan openings? :: Celah sempit di antara bagian tulang; sering menjadi jalur neurovascular.
+- [Depressions dan openings] Apa yang dimaksud dengan Foramen pada Depressions dan openings? :: Lubang yang dilalui pembuluh, saraf, atau struktur lain.
+- [Processes dan prominences] Apa yang dimaksud dengan Condyle pada Processes dan prominences? :: Tonjolan besar, membulat, biasanya memiliki permukaan artikular.
+- [Processes dan prominences] Apa yang dimaksud dengan Head pada Processes dan prominences? :: Ujung artikular membulat yang sering ditopang oleh neck.
+- [Processes dan prominences] Apa yang dimaksud dengan Line/linea pada Processes dan prominences? :: Ridge yang lebih rendah daripada crest.
+- [Processes dan prominences] Apa yang dimaksud dengan Trochanter pada Processes dan prominences? :: Proyeksi sangat besar; istilah khas femur.
+- [Clavicle] Apa yang dimaksud dengan sternal end pada Clavicle (Osteologi & Artrologi (Sistem Rangka & Sendi))? :: Lebih besar dan medial
+- [Clavicle] Apa yang dimaksud dengan Orientasi pada Clavicle (Osteologi & Artrologi (Sistem Rangka & Sendi))? :: Medial 2/3 cembung ke anterior dan lateral 1/3 cekung ke anterior. Conoid tubercle berada inferoposterior dekat ujung lateral.
+- [Femur] Apa yang dimaksud dengan Proximal pada Femur (Osteologi & Artrologi (Sistem Rangka & Sendi))? :: Head dengan fovea capitis, neck, greater dan lesser trochanters, intertrochanteric line anterior, intertrochanteric crest posterior.
+- [Femur] Apa struktur atau batas distal pada Femur (Osteologi & Artrologi (Sistem Rangka & Sendi))? :: Medial/lateral condyles dan epicondyles, intercondylar fossa posterior, patellar surface anterior, serta adductor tubercle di medial.
+- [Klasifikasi struktural] Apa yang dimaksud dengan Cartilaginous joints pada Klasifikasi Sendi (Osteologi & Artrologi (Sistem Rangka & Sendi))? :: Tulang dihubungkan oleh hyaline cartilage atau fibrocartilage.
+- [Klasifikasi fungsional] Apa yang dimaksud dengan Synarthrosis pada Klasifikasi Sendi (Osteologi & Artrologi (Sistem Rangka & Sendi))? :: Immobile atau hampir immobile.
+- [Synarthroses dan fibrous/cartilaginous unions] Apa yang dimaksud dengan Syndesmosis pada Synarthroses dan fibrous/cartilaginous unions? :: Tulang dihubungkan ligament/interosseous membrane; mobilitas lebih besar daripada suture, contoh distal tibiofibular articulation.
+- [Synarthroses dan fibrous/cartilaginous unions] Apa yang dimaksud dengan Symphysis pada Synarthroses dan fibrous/cartilaginous unions? :: Fibrocartilage menghubungkan tulang, contoh pubic symphysis dan intervertebral discs.
+- [Articular capsule] Jelaskan inner synovial membrane dalam konteks Articular capsule (Osteologi & Artrologi (Sistem Rangka & Sendi)). :: Jaringan vascular yang melapisi permukaan internal capsule kecuali permukaan articular cartilage; menghasilkan synovial fluid.
+- [Ligaments] Apa yang dimaksud dengan extracapsular/extrinsic pada Ligaments (Osteologi & Artrologi (Sistem Rangka & Sendi))? :: Berada di luar capsule
+- [Accessory structures] Apa yang dimaksud dengan Labrum/articular lip pada Accessory structures (Osteologi & Artrologi (Sistem Rangka & Sendi))? :: Fibrocartilaginous rim yang memperdalam socket, misalnya glenoid labrum dan acetabular labrum.
+- [Accessory structures] Jelaskan Synovial tendon sheath dalam konteks Accessory structures (Osteologi & Artrologi (Sistem Rangka & Sendi)). :: Elongated bursa yang membungkus tendon yang bergerak dalam jalur dengan friction tinggi.
+- [Bentuk Synovial Joint, Axis, dan Gerak] Jelaskan Pivot joint — uniaxial dalam konteks Bentuk Synovial Joint, Axis, dan Gerak. :: Rotation; contoh proximal radioulnar joint dan median atlanto-axial joint.
+- [Bentuk Synovial Joint, Axis, dan Gerak] Jelaskan Saddle joint — biaxial dalam konteks Bentuk Synovial Joint, Axis, dan Gerak. :: Flexion–extension + abduction–adduction dengan rotasi aksesoris; contoh first carpometacarpal joint.
+- [Blood supply] Jelaskan Fibrous capsule dan ligament dalam konteks Blood supply (Osteologi & Artrologi (Sistem Rangka & Sendi)). :: Relatif poor vascularity.
+- [Peran otot selama gerak] Apa yang dimaksud dengan Secondary/assisting mover pada Peran otot selama gerak? :: Membantu prime mover.
+- [Peran otot selama gerak] Apa yang dimaksud dengan Stabilizer/fixator pada Peran otot selama gerak? :: Menahan segmen agar agonist dapat bekerja efisien.
+- [Joint stability–mobility trade-off] Apa yang dimaksud dengan Shoulder pada Joint stability–mobility trade-off? :: Mobility tinggi, bony stability relatif rendah.
+- [Osteologi & Artrologi (Sistem Rangka & Sendi)] Apa yang dimaksud dengan Appendicular skeleton pada Osteologi & Artrologi (Sistem Rangka & Sendi)? :: Girdles + limbs; bukan seluruh rangka
+- [Osteologi & Artrologi (Sistem Rangka & Sendi)] Apa yang dimaksud dengan Semua synovial joints pada Osteologi & Artrologi (Sistem Rangka & Sendi)? :: Diarthroses, tetapi tidak semua diarthroses memiliki ROM yang sama
+- [Osteologi & Artrologi (Sistem Rangka & Sendi)] Apa yang dimaksud dengan Meniscus/disc, labrum, bursa, dan tendon sheath pada Osteologi & Artrologi (Sistem Rangka & Sendi)? :: Accessory structures—tidak ada pada setiap synovial joint
+- [Humerus] Sebutkan hal-hal penting tentang Landmark proximal pada Humerus (Osteologi & Artrologi (Sistem Rangka & Sendi)). :: • Head menghadap superomedial
+  • Anatomical neck mengelilingi head
+  • Surgical neck berada distal terhadap tubercles dan clinically important pada fraktur
+  • Greater dan lesser tubercles dipisahkan intertubercular sulcus
+- [Humerus] Sebutkan hal-hal penting tentang Distal humerus (Osteologi & Artrologi (Sistem Rangka & Sendi)). :: • Capitulum lateral berartikulasi dengan radius
+  • Trochlea lebih medial berartikulasi dengan ulna
+  • Medial dan lateral epicondyles sebagai prominences
+  • Radial dan coronoid fossae di anterior, olecranon fossa di posterior
+  • Ulnar nerve berjalan posterior terhadap medial epicondyle
+- [Bony pelvis dan hip bone] Sebutkan landmark penting pada Bony pelvis dan hip bone. :: • Iliac crest
+  • ASIS, AIIS, PSIS, PIIS
+  • Greater dan lesser sciatic notches
+  • Acetabulum
+  • Obturator foramen
+  • Ischial spine dan ischial tuberosity
+  • Superior dan inferior pubic rami
+  • Pubic symphysis
+- [Struktur Synovial Joint] Sebutkan komponen dasar pada Struktur Synovial Joint. :: • Articular surfaces yang umumnya dilapisi hyaline articular cartilage
+  • Articular capsule
+  • Joint/synovial cavity
+  • Synovial fluid
+  • Ligaments
+- [Articular capsule] Sebutkan hal-hal penting tentang Capsule pada Articular capsule (Osteologi & Artrologi (Sistem Rangka & Sendi)). :: • Outer fibrous layer/capsule: dense irregular connective tissue yang berlanjut dengan periosteum dan menahan kedua tulang agar tidak terpisah berlebihan
+  • Inner synovial membrane: jaringan vascular yang melapisi permukaan internal capsule kecuali permukaan articular cartilage; menghasilkan synovial fluid
+- [Range of Motion dan Peran Otot] Sebutkan faktor yang membatasi ROM pada Range of Motion dan Peran Otot. :: • Shape dan congruency tulang
+  • Capsule dan ligament tension
+  • Muscle/tendon extensibility
+  • Soft-tissue approximation
+  • Nyeri, effusion, atau pathology
+- [Tibia dan fibula] Apa korelasi klinis dari Tibia dan fibula? :: Common fibular nerve berhubungan erat dengan neck of fibula.
+- [Synarthroses dan fibrous/cartilaginous unions] Apa jebakan yang sering muncul pada soal tentang Synarthroses dan fibrous/cartilaginous unions? :: Jangan menyamakan “fibrous = selalu synarthrosis” atau “cartilaginous = selalu amphiarthrosis”. Klasifikasi struktural menjawab “dihubungkan oleh apa?”, sedangkan klasifikasi fungsional menjawab “seberapa banyak geraknya?”.

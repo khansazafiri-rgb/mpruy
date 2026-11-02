@@ -503,47 +503,40 @@ Adaptasi berikutnya mencakup kompensasi renal terhadap alkalosis serta peningkat
 
 ## Flashcard {kartu}
 
-- [Peta Besar Fisiologi Respirasi] Alur inti sistem respirasi :: ventilation → gas reaches alveoli → diffusion across alveolar-capillary membrane → pulmonary perfusion → transport in blood → tissue diffusion → cellular metabolism.
-- [Conducting Zone vs Respiratory Zone] Conducting zone :: hidung → faring → laring → trakea → bronkus → bronkiolus terminal.
-- [Conducting Zone vs Respiratory Zone] Respiratory zone :: bronkiolus respiratorius → alveolar ducts → alveoli.
-- [Tekanan Atmosfer, Alveolar, dan Intrapleura] Palv :: turun sedikit di bawah atmosfer saat inspirasi → udara masuk.
-- [Compliance Paru] Contoh compliance turun :: pulmonary fibrosis.
-- [FEV₁, FVC, dan Pola Obstruktif] Obstruktif :: FEV₁ turun relatif lebih besar daripada FVC → FEV₁/FVC menurun.
-- [Pola Restriktif] Restriktif :: lung volumes menurun.
-- [Minute Ventilation] Minute ventilation :: V̇E = tidal volume × respiratory rate.
-- [Alveolar Ventilation] Alveolar ventilation :: V̇A = (TV − VD) × respiratory rate.
-- [Diffusion-Limited vs Perfusion-Limited] Perfusion-limited :: pertukaran gas dibatasi jumlah darah yang lewat setelah tekanan gas cepat equilibrate.
-- [Diffusion-Limited vs Perfusion-Limited] Diffusion-limited :: gas belum mencapai equilibrium sempurna sebelum darah meninggalkan kapiler karena hambatan difusi.
-- [Distribusi Ventilasi dan Perfusi] Dalam posisi berdiri :: ventilation dan perfusion sama-sama lebih tinggi di basis dibanding apex.
-- [Rasio V/Q] V/Q rendah :: ventilation terlalu rendah relatif terhadap perfusion.
-- [Rasio V/Q] V/Q tinggi :: perfusion terlalu rendah relatif terhadap ventilation.
-- [V/Q → ∞: Dead-Space Effect] Contoh penting :: pulmonary embolism pada unit yang terkena.
-- [Kurva Disosiasi Oxyhemoglobin] Di paru :: PO₂ tinggi → loading O₂.
-- [Kurva Disosiasi Oxyhemoglobin] Di jaringan :: PO₂ lebih rendah → unloading O₂.
-- [Bohr Effect] Di jaringan metabolik :: CO₂/H⁺ ↑ → Hb melepas O₂ lebih mudah.
-- [Carbonic Anhydrase] Dalam eritrosit :: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻.
-- [Chloride Shift] Di jaringan :: HCO₃⁻ keluar eritrosit ke plasma dan Cl⁻ masuk untuk menjaga electroneutrality.
-- [Haldane Effect] Di jaringan :: deoxygenation memfasilitasi uptake CO₂.
-- [Haldane Effect] Di paru :: oxygenation Hb memfasilitasi pelepasan CO₂.
-- [Exercise dan Ventilasi] Saat exercise :: O₂ consumption dan CO₂ production meningkat.
-- [High Altitude] Respons akut :: hyperventilation → PaCO₂ turun → respiratory alkalosis.
-- [Inspirasi dan Ekspirasi Paksa] Ekspirasi paksa menggunakan … :: • internal intercostal
-  • abdominal muscles
-- [Work of Breathing] Kerja napas digunakan untuk mengatasi … :: • elastic resistance paru/dinding dada
-  • tissue resistance
-  • airway resistance
-- [Hukum Henry] Jumlah gas yang larut dalam cairan bergantung pada … :: • partial pressure
-  • solubility gas
-- [Hukum Fick] Laju difusi meningkat dengan … :: • luas permukaan ↑
-  • diffusion coefficient ↑
-  • pressure gradient ↑
-- [Transport CO₂] CO₂ diangkut dalam tiga bentuk … :: • dissolved CO₂
-  • carbamino compounds terutama carbaminohemoglobin
-  • bicarbonate (HCO₃⁻), bentuk terbesar
-- [Peripheral Chemoreceptor] Carotid bodies dan aortic bodies merespons … :: • PaO₂ rendah
+- [Peta Besar Fisiologi Respirasi] Jelaskan Alur inti sistem respirasi dalam konteks Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas. :: Ventilation → gas reaches alveoli → diffusion across alveolar-capillary membrane → pulmonary perfusion → transport in blood → tissue diffusion → cellular metabolism.
+- [Conducting Zone vs Respiratory Zone] Jelaskan Conducting zone pada Conducting Zone vs Respiratory Zone (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas). :: Hidung → faring → laring → trakea → bronkus → bronkiolus terminal.
+- [Conducting Zone vs Respiratory Zone] Jelaskan Respiratory zone pada Conducting Zone vs Respiratory Zone (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas). :: Bronkiolus respiratorius → alveolar ducts → alveoli.
+- [Tekanan Atmosfer, Alveolar, dan Intrapleura] Apa yang dimaksud dengan Palv pada Tekanan Atmosfer, Alveolar, dan Intrapleura? :: Turun sedikit di bawah atmosfer saat inspirasi → udara masuk.
+- [FEV₁, FVC, dan Pola Obstruktif] Jelaskan Obstruktif pada FEV₁, FVC, dan Pola Obstruktif (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas). :: FEV₁ turun relatif lebih besar daripada FVC → FEV₁/FVC menurun.
+- [Pola Restriktif] Jelaskan Restriktif pada Pola Restriktif (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas). :: Lung volumes menurun.
+- [Minute Ventilation] Jelaskan Minute ventilation (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas). :: V̇E = tidal volume × respiratory rate.
+- [Alveolar Ventilation] Jelaskan Alveolar ventilation (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas). :: V̇A = (TV − VD) × respiratory rate.
+- [Diffusion-Limited vs Perfusion-Limited] Jelaskan Perfusion-limited pada Diffusion-Limited vs Perfusion-Limited (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas). :: Pertukaran gas dibatasi jumlah darah yang lewat setelah tekanan gas cepat equilibrate.
+- [Diffusion-Limited vs Perfusion-Limited] Jelaskan Diffusion-limited pada Diffusion-Limited vs Perfusion-Limited (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas). :: Gas belum mencapai equilibrium sempurna sebelum darah meninggalkan kapiler karena hambatan difusi.
+- [Rasio V/Q] Apa yang dimaksud dengan V/Q rendah pada Rasio V/Q (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas)? :: Ventilation terlalu rendah relatif terhadap perfusion.
+- [Rasio V/Q] Apa yang dimaksud dengan V/Q tinggi pada Rasio V/Q (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas)? :: Perfusion terlalu rendah relatif terhadap ventilation.
+- [V/Q → ∞: Dead-Space Effect] Apa yang dimaksud dengan Contoh penting pada V/Q → ∞: Dead-Space Effect? :: Pulmonary embolism pada unit yang terkena.
+- [High Altitude] Apa yang dimaksud dengan Respons akut pada High Altitude (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas)? :: Hyperventilation → PaCO₂ turun → respiratory alkalosis.
+- [Fungsi Sistem Respirasi] Sebutkan fungsi utama pada Fungsi Sistem Respirasi. :: • Mengambil O₂
+  • Membuang CO₂
+  • Membantu regulasi pH
+  • Menghasilkan suara melalui aliran udara laring
+  • Berperan pada olfaksi
+  • Membantu pertahanan saluran napas
+  • Ikut mengatur kehilangan panas dan air
+- [Oksigen dalam Darah] Sebutkan hal-hal penting tentang O₂ diangkut pada Oksigen dalam Darah (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas). :: • Sebagian kecil terlarut dalam plasma
+  • Sebagian besar terikat hemoglobin
+- [Right Shift Kurva Hb-O₂] Sebutkan penyebab klasik pada Right Shift Kurva Hb-O₂. :: • H⁺ ↑ / pH ↓
+  • PCO₂ ↑
+  • Temperature ↑
+  • 2,3-BPG ↑
+- [Transport CO₂] Sebutkan hal-hal penting tentang CO₂ diangkut dalam tiga bentuk pada Transport CO₂ (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas). :: • Dissolved CO₂
+  • Carbamino compounds terutama carbaminohemoglobin
+  • Bicarbonate (HCO₃⁻), bentuk terbesar
+- [Peripheral Chemoreceptor] Sebutkan hal-hal penting tentang Carotid bodies dan aortic bodies merespons pada Peripheral Chemoreceptor (Fisiologi Respirasi: Ventilasi, Difusi, Transport Gas). :: • PaO₂ rendah
   • PaCO₂ tinggi
   • H⁺ meningkat
-- [Exercise dan Ventilasi] Ventilasi meningkat melalui kombinasi … :: • central command
-  • proprioceptive input
-  • chemical feedback
-- [Right Shift Kurva Hb-O₂] Mnemonic: Right Shift Kurva Hb-O₂ :: “CADET, face Right” sering dipakai: CO₂, Acid, 2,3-DPG, Exercise, Temperature.
+- [Exercise dan Ventilasi] Sebutkan hal-hal penting tentang Ventilasi meningkat melalui kombinasi pada Exercise dan Ventilasi. :: • Central command
+  • Proprioceptive input
+  • Chemical feedback
+- [Right Shift Kurva Hb-O₂] Bagaimana cara mengingat Right Shift Kurva Hb-O₂? :: “CADET, face Right” sering dipakai: CO₂, Acid, 2,3-DPG, Exercise, Temperature.

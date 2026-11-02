@@ -470,75 +470,80 @@ Virus → genome DNA/RNA → capsid ± envelope → receptor & tropism → Balti
 
 ## Flashcard {kartu}
 
-- [Komponen Dasar Virion] Capsid :: selubung protein yang melindungi genom.
-- [Komponen Dasar Virion] Capsomere :: unit morfologis penyusun capsid pada virus tertentu.
-- [Komponen Dasar Virion] Envelope :: membran lipid yang diperoleh dari membran sel inang saat proses budding/maturation.
-- [Komponen Dasar Virion] Glycoprotein spike/peplomer :: protein virus pada envelope yang membantu attachment ke reseptor sel.
-- [Baltimore Classification — Konsep Utama] Tujuan akhirnya sama :: semua virus harus menghasilkan mRNA yang dapat dibaca ribosom host.
-- [Baltimore Group I — dsDNA] Pengecualian penting :: poxvirus bereplikasi di cytoplasm.
-- [Baltimore Group II — ssDNA] Jalur :: ssDNA → dsDNA → mRNA.
-- [Baltimore Group VI — +ssRNA-RT] Jalur :: RNA → DNA → integrated/proviral DNA → mRNA.
-- [Baltimore Group VII — dsDNA-RT] Jalur :: DNA → RNA intermediate → DNA.
-- [Naked vs Enveloped — Hubungan dengan Release] Naked :: capsid cukup untuk melindungi virion → dapat keluar lewat lysis.
-- [Naked vs Enveloped — Hubungan dengan Release] Enveloped :: membutuhkan membrane envelope dengan spikes → biasanya melalui budding atau proses membran terkait.
-- [Spread & Shedding] Alur sederhana :: Entry → local replication → spread → target tissue replication → shedding.
-- [High-yield] Virion :: partikel virus utuh, bukan hanya genome
-- [High-yield] Genome virus :: DNA ATAU RNA
-- [High-yield] Capsid :: protein coat
-- [High-yield] Envelope :: lipid host-derived + viral glycoproteins
-- [High-yield] Attachment :: interaksi virion dengan receptor
-- [High-yield] Uncoating :: pelepasan genome dari capsid
-- [High-yield] Urutan :: attachment → penetration → uncoating → biosynthesis → assembly → release
-- [High-yield] Reverse transcriptase :: RNA-dependent DNA polymerase
-- [High-yield] HIV :: Baltimore VI
-- [High-yield] HBV :: Baltimore VII
-- [High-yield] Giant cell/syncytium :: salah satu CPE
-- [High-yield] Latent ≠ persistent :: latent tidak berarti produksi virus aktif terus-menerus
-- [High-yield] Virion :: genome + capsid ± envelope
-- [High-yield] Virus :: obligate intracellular parasite dan memakai ribosom host
-- [High-yield] Baltimore classification :: cara genome menghasilkan mRNA: 7 grup
-- [High-yield] Replikasi :: attachment → penetration → uncoating → biosynthesis → assembly → release
-- [Bentuk & Simetri Capsids] Secara umum capsid dapat memiliki pola … :: • Icosahedral/cubic symmetry
-  • Helical symmetry
-  • Complex structure pada virus tertentu
-- [Jenis Genom Virus] Genom virus dapat berupa … :: • dsDNA
-  • ssDNA
-  • dsRNA
+- [Komponen Dasar Virion] Apa yang dimaksud dengan Capsid pada Komponen Dasar Virion? :: Selubung protein yang melindungi genom.
+- [Komponen Dasar Virion] Apa yang dimaksud dengan Capsomere pada Komponen Dasar Virion? :: Unit morfologis penyusun capsid pada virus tertentu.
+- [Komponen Dasar Virion] Apa yang dimaksud dengan Envelope pada Komponen Dasar Virion? :: Membran lipid yang diperoleh dari membran sel inang saat proses budding/maturation.
+- [Komponen Dasar Virion] Apa yang dimaksud dengan Glycoprotein spike/peplomer pada Komponen Dasar Virion? :: Protein virus pada envelope yang membantu attachment ke reseptor sel.
+- [Baltimore Classification — Konsep Utama] Jelaskan Tujuan akhirnya sama dalam konteks Baltimore Classification — Konsep Utama. :: Semua virus harus menghasilkan mRNA yang dapat dibaca ribosom host.
+- [Baltimore Group I — dsDNA] Apa yang dimaksud dengan Pengecualian penting pada Baltimore Group I — dsDNA? :: Poxvirus bereplikasi di cytoplasm.
+- [Baltimore Group II — ssDNA] Pada Baltimore Group II — ssDNA, apa jalurnya? :: SsDNA → dsDNA → mRNA.
+- [Baltimore Group VI — +ssRNA-RT] Pada Baltimore Group VI — +ssRNA-RT, apa jalurnya? :: RNA → DNA → integrated/proviral DNA → mRNA.
+- [Baltimore Group VII — dsDNA-RT] Pada Baltimore Group VII — dsDNA-RT, apa jalurnya? :: DNA → RNA intermediate → DNA.
+- [Naked vs Enveloped — Hubungan dengan Release] Jelaskan Naked pada Naked vs Enveloped — Hubungan dengan Release (Virologi Umum: Struktur & Replikasi Virus). :: Capsid cukup untuk melindungi virion → dapat keluar lewat lysis.
+- [Naked vs Enveloped — Hubungan dengan Release] Jelaskan Enveloped pada Naked vs Enveloped — Hubungan dengan Release (Virologi Umum: Struktur & Replikasi Virus). :: Membutuhkan membrane envelope dengan spikes → biasanya melalui budding atau proses membran terkait.
+- [Spread & Shedding] Pada Spread & Shedding, apa alur sederhananya? :: Entry → local replication → spread → target tissue replication → shedding.
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Virion pada Virologi Umum: Struktur & Replikasi Virus? :: Partikel virus utuh, bukan hanya genome
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Genome virus pada Virologi Umum: Struktur & Replikasi Virus? :: DNA ATAU RNA
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Capsid pada Virologi Umum: Struktur & Replikasi Virus? :: Protein coat
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Envelope pada Virologi Umum: Struktur & Replikasi Virus? :: Lipid host-derived + viral glycoproteins
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Attachment pada Virologi Umum: Struktur & Replikasi Virus? :: Interaksi virion dengan receptor
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Uncoating pada Virologi Umum: Struktur & Replikasi Virus? :: Pelepasan genome dari capsid
+- [Virologi Umum: Struktur & Replikasi Virus] Apa urutan pada Virologi Umum: Struktur & Replikasi Virus? :: Attachment → penetration → uncoating → biosynthesis → assembly → release
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Reverse transcriptase pada Virologi Umum: Struktur & Replikasi Virus? :: RNA-dependent DNA polymerase
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan HIV pada Virologi Umum: Struktur & Replikasi Virus? :: Baltimore VI
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan HBV pada Virologi Umum: Struktur & Replikasi Virus? :: Baltimore VII
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Giant cell/syncytium pada Virologi Umum: Struktur & Replikasi Virus? :: Salah satu CPE
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Virus pada Virologi Umum: Struktur & Replikasi Virus? :: Obligate intracellular parasite dan memakai ribosom host
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang dimaksud dengan Baltimore classification pada Virologi Umum: Struktur & Replikasi Virus? :: Cara genome menghasilkan mRNA: 7 grup
+- [Virologi Umum: Struktur & Replikasi Virus] Apa yang perlu diketahui tentang Replikasi pada Virologi Umum: Struktur & Replikasi Virus? :: Attachment → penetration → uncoating → biosynthesis → assembly → release
+- [Naked vs Enveloped Virus] Sebutkan hal-hal penting tentang Naked virus pada Naked vs Enveloped Virus (Virologi Umum: Struktur & Replikasi Virus). :: • Tidak memiliki lipid envelope
+  • Struktur utama = nucleocapsid
+  • Lebih tahan terhadap pengeringan, asam, deterjen, dan lingkungan dibanding enveloped virus
+  • Banyak naked enteric viruses dapat bertahan pada transmisi fecal–oral atau permukaan lingkungan
+- [Naked vs Enveloped Virus] Sebutkan hal-hal penting tentang Enveloped virus pada Naked vs Enveloped Virus (Virologi Umum: Struktur & Replikasi Virus). :: • Memiliki lipid envelope berasal dari membran host
+  • Envelope membawa viral glycoprotein/spike
+  • Lebih rapuh terhadap pengeringan, deterjen, alkohol, dan gangguan lipid
+  • Sering bergantung pada close contact, droplet/sekret, darah, atau transmisi lain yang menjaga envelope tetap utuh
+- [Tropism] Sebutkan faktor penting pada Tropism (Virologi Umum: Struktur & Replikasi Virus). :: • Ada/tidaknya receptor dan coreceptor yang sesuai
+  • Kemampuan virus masuk dan melakukan uncoating
+  • Apakah intracellular environment mendukung replikasi
+- [Jenis Genom Virus] Sebutkan hal-hal penting tentang Genom virus pada Jenis Genom Virus (Virologi Umum: Struktur & Replikasi Virus). :: • DsDNA
+  • SsDNA
+  • DsRNA
   • +ssRNA
   • −ssRNA
   • RNA yang bereplikasi melalui DNA intermediate
   • DNA yang bereplikasi melalui RNA intermediate
-- [Siklus Replikasi Virus — Urutan Wajib] Urutan siklus replikasi … :: • Attachment/adsorption
+- [Siklus Replikasi Virus — Urutan Wajib] Sebutkan urutan atau langkah pada Siklus Replikasi Virus — Urutan Wajib? :: • Attachment/adsorption
   • Penetration/entry
   • Uncoating
   • Biosynthesis: transcription, translation, genome replication
   • Assembly/maturation
   • Release
-- [2 — Penetration / Entry] Virus masuk ke dalam sel melalui mekanisme seperti … :: • Receptor-mediated endocytosis
+- [— Penetration / Entry] Sebutkan virus masuk ke dalam sel melalui mekanisme seperti pada — Penetration / Entry. :: • Receptor-mediated endocytosis
   • Fusion antara viral envelope dan cellular membrane pada enveloped viruses
-- [Empat Luaran Infeksi Virus pada Sel] Beberapa luaran infeksi virus pada sel … :: • Cell death/cytolytic effect
+- [— Release] Sebutkan hal-hal penting tentang Enveloped virus pada — Release (Virologi Umum: Struktur & Replikasi Virus). :: • Sering keluar melalui budding
+  • Pada budding, virus memperoleh lipid envelope dari host membrane yang sudah mengandung viral glycoprotein
+- [Segmented Genome, Reassortment, dan Variasi] Sebutkan konsekuensi konsep pada Segmented Genome, Reassortment, dan Variasi. :: • Segmentasi memungkinkan pertukaran segmen bila dua virus yang kompatibel menginfeksi satu sel
+  • Pada influenza, konsep ini mendasari reassortment
+- [Empat Luaran Infeksi Virus pada Sel] Sebutkan beberapa luaran infeksi virus pada sel pada Empat Luaran Infeksi Virus pada Sel. :: • Cell death/cytolytic effect
   • Latency
   • Transformation
   • Haemadsorption pada virus tertentu
-- [Empat Luaran Infeksi Virus pada Sel] Contoh yang diberikan … :: • Poliovirus → cell death
-  • HPV → transformation
-  • VZV → latency
-  • Influenza → haemadsorption
-- [Acute, Chronic, Latent, Inapparent] Pola infeksi dapat berupa … :: • Acute infection
+- [Acute, Chronic, Latent, Inapparent] Sebutkan pola infeksi pada Acute, Chronic, Latent, Inapparent. :: • Acute infection
   • Chronic/persistent infection
   • Latent infection
   • Inapparent/subclinical infection
-- [Viral Diagnosis — Peta Dasar] Metode dapat mendeteksi … :: • Viral nucleic acid → NAAT/PCR/RT-PCR
-  • Viral antigen
-  • Host antibody/serology
-  • Virus melalui culture/cell culture pada konteks tertentu
-  • Cytopathic effect dapat membantu tetapi tidak selalu spesifik
-- [Big Picture: Virus Itu Apa?] Penting: Big Picture: Virus Itu Apa? :: Virus di luar sel relatif inert; replikasi hanya berlangsung di dalam living host cell.
-- [Naked vs Enveloped Virus] High-yield: Naked vs Enveloped Virus :: Envelope = keuntungan untuk entry/immune interaction, tetapi membuat virus lebih fragile di lingkungan.
-- [Tropism] Jebakan soal: Tropism :: “Semua sel dapat diinfeksi virus bila virus masuk tubuh” → salah. Receptor specificity adalah salah satu dasar utama cell tropism.
-- [Jenis Genom Virus] Penting: Jenis Genom Virus :: “Virus punya DNA dan RNA sekaligus sebagai genom” = salah.
-- [Positive-Sense vs Negative-Sense RNA] High-yield: Positive-Sense vs Negative-Sense RNA :: Virus −ssRNA membawa RNA-dependent RNA polymerase di dalam partikel virus.
-- [Baltimore Group VII — dsDNA-RT] Jebakan: Baltimore Group VII — dsDNA-RT :: HIV adalah jawaban klasik bila soal menanyakan retrovirus dengan reverse transcriptase, tetapi HBV juga menggunakan reverse transcriptase dalam siklus replikasinya.
-- [3 — Uncoating] High-yield: 3 — Uncoating :: Tahap pelepasan genome dari capsid = uncoating.
-- [6 — Release] Jebakan: 6 — Release :: Budding bukan sekadar “keluar sel”; budding juga merupakan cara enveloped virus memperoleh envelope.
-- [Cytopathic Effect (CPE)] Penting: Cytopathic Effect (CPE) :: CPE dapat terlihat dengan light microscopy. CPE tidak otomatis patognomonik untuk satu virus. CPE sering berhubungan dengan cell injury/death.
+- [Acute, Chronic, Latent, Inapparent] Sebutkan perbedaan penting pada Acute, Chronic, Latent, Inapparent. :: • Persistent/chronic → virus terus bereplikasi dalam jangka lama pada tingkat tertentu
+  • Latent → genome virus bertahan tanpa produksi virus aktif yang terus-menerus, lalu dapat reaktivasi
+- [Molecular Test vs Serology] Sebutkan hal-hal penting tentang Molecular test pada Molecular Test vs Serology (Virologi Umum: Struktur & Replikasi Virus). :: • Mendeteksi genome virus
+  • Berguna untuk infeksi aktif bila specimen dan timing sesuai
+- [Big Picture: Virus Itu Apa?] Apa jebakan yang sering muncul pada soal tentang Virologi Umum: Struktur & Replikasi Virus? :: Virus di luar sel relatif inert; replikasi hanya berlangsung di dalam living host cell.
+- [Naked vs Enveloped Virus] Apa poin high-yield (pearl) tentang Naked vs Enveloped Virus? :: Envelope = keuntungan untuk entry/immune interaction, tetapi membuat virus lebih fragile di lingkungan.
+- [Tropism] Apa jebakan yang sering muncul pada soal tentang Tropism (Virologi Umum: Struktur & Replikasi Virus)? :: “Semua sel dapat diinfeksi virus bila virus masuk tubuh” → salah. Receptor specificity adalah salah satu dasar utama cell tropism.
+- [Jenis Genom Virus] Apa jebakan yang sering muncul pada soal tentang Jenis Genom Virus? :: “Virus punya DNA dan RNA sekaligus sebagai genom” = salah.
+- [Positive-Sense vs Negative-Sense RNA] Apa poin high-yield (pearl) tentang Positive-Sense vs Negative-Sense RNA? :: Virus −ssRNA membawa RNA-dependent RNA polymerase di dalam partikel virus.
+- [Baltimore Group VII — dsDNA-RT] Apa jebakan yang sering muncul pada soal tentang Baltimore Group VII — dsDNA-RT? :: HIV adalah jawaban klasik bila soal menanyakan retrovirus dengan reverse transcriptase, tetapi HBV juga menggunakan reverse transcriptase dalam siklus replikasinya.
+- [— Uncoating] Apa poin high-yield (pearl) tentang — Uncoating (Virologi Umum: Struktur & Replikasi Virus)? :: Tahap pelepasan genome dari capsid = uncoating.
+- [— Release] Apa jebakan yang sering muncul pada soal tentang — Release (Virologi Umum: Struktur & Replikasi Virus)? :: Budding bukan sekadar “keluar sel”; budding juga merupakan cara enveloped virus memperoleh envelope.
+- [Cytopathic Effect (CPE)] Apa jebakan yang sering muncul pada soal tentang Cytopathic Effect (Virologi Umum: Struktur & Replikasi Virus)? :: CPE dapat terlihat dengan light microscopy. CPE tidak otomatis patognomonik untuk satu virus. CPE sering berhubungan dengan cell injury/death.

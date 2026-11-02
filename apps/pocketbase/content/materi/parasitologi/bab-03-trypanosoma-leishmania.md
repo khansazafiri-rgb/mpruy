@@ -409,43 +409,37 @@ Trypanosoma brucei ditularkan tsetse fly dan hidup sebagai trypomastigote ekstra
 
 ## Flashcard {kartu}
 
-- [Konsep Besar Hemoflagellata] Peta cepat :: - Trypanosoma brucei: tsetse fly (Glossina) -> trypomastigote ekstraseluler -> African sleeping sickness.
-- [Konsep Besar Hemoflagellata] - Trypanosoma cruzi :: triatomine/kissing bug -> trypomastigote dalam darah + amastigote intraseluler jaringan -> Chagas disease.
-- [Bentuk Morfologi Utama] - Promastigote :: memanjang, kinetoplast di anterior, satu flagelum bebas, tanpa undulating membrane.
-- [Bentuk Morfologi Utama] - Epimastigote :: kinetoplast berada anterior terhadap nukleus; undulating membrane pendek.
-- [Bentuk Morfologi Utama] Pada manusia :: - T. brucei terutama berupa trypomastigote ekstraseluler.
-- [Bentuk Morfologi Utama] - Leishmania :: amastigote intraseluler di makrofag.
-- [Siklus Hidup T. brucei] Poin paling penting :: seluruh bentuk T. brucei pada mammalian host adalah ekstraseluler; tidak ada fase amastigote jaringan seperti T. cruzi.
-- [Dua Stadium Human African Trypanosomiasis] Stadium 1 - hemolymphatic :: - demam intermiten,
-- [Chagas Kronik] Pattern ujian klasik :: pasien dari Amerika Latin + sinkop/aritmia atau dilated cardiomyopathy + riwayat kissing bug -> pikirkan T. cruzi.
-- [Diagnosis Chagas] Fase akut :: - direct microscopy dapat menemukan bloodstream trypomastigotes,
-- [Diagnosis Chagas] Fase kronik :: parasitemia rendah sehingga mikroskop sering negatif. Diagnosis terutama menggunakan serologi, dan umumnya memerlukan dua pemeriksaan serologis dengan prinsip/antigen berbeda untuk konfirmasi.
-- [Leishmania - Konsep Dasar] - Old World :: terutama Phlebotomus.
-- [Cutaneous Leishmaniasis] Ciri klasik :: - papule/nodule berkembang menjadi ulcer,
-- [Mucocutaneous Leishmaniasis] Pattern ujian :: riwayat ulkus kulit di Amerika Latin kemudian destruksi naso-orofaring -> mucocutaneous leishmaniasis.
-- [Diagnosis Leishmaniasis] Metode utama :: - mikroskopi jaringan/aspirat/biopsi untuk melihat amastigotes,
-- [Diagnosis Leishmaniasis] - visceral :: bone marrow, splenic aspirate pada setting berpengalaman, atau jaringan reticuloendothelial lain.
-- [Terapi Leishmaniasis] High-yield ujian :: visceral leishmaniasis berat sering diasosiasikan dengan liposomal amphotericin B, tetapi jangan menganggap regimen satu wilayah berlaku universal.
-- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] - Transmisi :: diinokulasikan saat gigitan.
-- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] - Bentuk manusia :: trypomastigote ekstraseluler.
-- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] - Organ utama :: darah/limfe -> CNS.
-- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] - Transmisi :: feses vektor masuk luka/mukosa.
-- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] - Bentuk manusia :: trypomastigote darah + amastigote jaringan.
-- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] Leishmania :: - Vector: female sandfly.
-- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] - Bentuk manusia :: amastigote di macrophage.
-- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] - Penyakit :: cutaneous, mucocutaneous, visceral.
-- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] - Organ utama :: kulit/mukosa atau reticuloendothelial system.
-- [High-yield] Winterbottom sign :: posterior cervical lymphadenopathy
-- [High-yield] Stadium 2 HAT :: CNS involvement; terapi harus menembus BBB
-- [High-yield] Romana sign :: unilateral periorbital edema pada acute Chagas
-- [High-yield] Chronic Chagas :: cardiomyopathy + megaesophagus/megacolon
-- [High-yield] Leishmania :: promastigote pada sandfly, amastigote pada macrophage manusia
-- [High-yield] Cutaneous leishmaniasis :: ulcer dengan raised border
-- [High-yield] Mucocutaneous :: destruksi mukosa, klasik New World/Viannia
-- [High-yield] Visceral leishmaniasis :: fever + weight loss + massive splenomegaly + pancytopenia
-- [High-yield] Leishman-Donovan bodies :: amastigotes dalam macrophage
-- [High-yield] Vector triad wajib hafal :: Glossina - T. brucei; triatomine - T. cruzi; sandfly - Leishmania
-- [Konsep Besar Hemoflagellata] Exam pearl: Konsep Besar Hemoflagellata :: Kalau vignette menanyakan "kinetoplast + undulating membrane + flagellum", pikirkan hemoflagellata.
-- [Antigenic Variation] Exam pearl: Antigenic Variation :: Demam yang naik-turun berulang pada sleeping sickness berhubungan dengan antigenic variation VSG.
-- [Leishmania - Konsep Dasar] Mnemonic: Leishmania - Konsep Dasar :: "PROMA in fly, AMA in macrophage."
-- [Morfologi Leishmania Amastigote] Exam pearl: Morfologi Leishmania Amastigote :: "macrophage penuh badan kecil dengan nucleus + kinetoplast" sangat mengarah ke Leishmania.
+- [Konsep Besar Hemoflagellata] Apa yang dimaksud dengan Peta cepat pada Trypanosoma & Leishmania? :: - Trypanosoma brucei: tsetse fly (Glossina) -> trypomastigote ekstraseluler -> African sleeping sickness.
+- [Konsep Besar Hemoflagellata] Apa yang dimaksud dengan Trypanosoma cruzi pada Trypanosoma & Leishmania? :: Triatomine/kissing bug -> trypomastigote dalam darah + amastigote intraseluler jaringan -> Chagas disease.
+- [Bentuk Morfologi Utama] Apa yang dimaksud dengan Promastigote pada Bentuk Morfologi Utama? :: Memanjang, kinetoplast di anterior, satu flagelum bebas, tanpa undulating membrane.
+- [Bentuk Morfologi Utama] Apa yang dimaksud dengan Epimastigote pada Bentuk Morfologi Utama? :: Kinetoplast berada anterior terhadap nukleus; undulating membrane pendek.
+- [Bentuk Morfologi Utama] Apa yang dimaksud dengan Trypomastigote pada Bentuk Morfologi Utama? :: Kinetoplast posterior terhadap nukleus; undulating membrane nyata dan flagelum memanjang.
+- [Bentuk Morfologi Utama] Apa yang dimaksud dengan Leishmania pada Bentuk Morfologi Utama? :: Amastigote intraseluler di makrofag.
+- [Siklus Hidup T. brucei] Jelaskan Poin paling penting dalam konteks Siklus Hidup T. brucei. :: Seluruh bentuk T. brucei pada mammalian host adalah ekstraseluler; tidak ada fase amastigote jaringan seperti T. cruzi.
+- [Dua Stadium Human African Trypanosomiasis] Jelaskan Stadium 2 - meningoencephalitic dalam konteks Dua Stadium Human African Trypanosomiasis. :: Parasit melewati blood-brain barrier dan melibatkan CNS, menyebabkan perubahan perilaku, gangguan konsentrasi, tremor, gangguan neurologis, dan perubahan pola tidur yang akhirnya memberi nama "sleeping sickness".
+- [Chagas Kronik] Jelaskan Pattern ujian klasik dalam konteks Chagas Kronik (Trypanosoma & Leishmania). :: Pasien dari Amerika Latin + sinkop/aritmia atau dilated cardiomyopathy + riwayat kissing bug -> pikirkan T. cruzi.
+- [Diagnosis Chagas] Apa yang dimaksud dengan Fase akut pada Diagnosis Chagas (Trypanosoma & Leishmania)? :: - direct microscopy dapat menemukan bloodstream trypomastigotes
+- [Diagnosis Chagas] Apa yang dimaksud dengan Fase kronik pada Diagnosis Chagas (Trypanosoma & Leishmania)? :: Parasitemia rendah sehingga mikroskop sering negatif. Diagnosis terutama menggunakan serologi, dan umumnya memerlukan dua pemeriksaan serologis dengan prinsip/antigen berbeda untuk konfirmasi.
+- [Leishmania - Konsep Dasar] Apa yang dimaksud dengan Old World pada Leishmania - Konsep Dasar? :: Terutama Phlebotomus.
+- [Cutaneous Leishmaniasis] Pada Cutaneous Leishmaniasis, apa ciri klasiknya (Trypanosoma & Leishmania)? :: - papule/nodule berkembang menjadi ulcer
+- [Mucocutaneous Leishmaniasis] Apa yang dimaksud dengan Pattern ujian pada Mucocutaneous Leishmaniasis (Trypanosoma & Leishmania)? :: Riwayat ulkus kulit di Amerika Latin kemudian destruksi naso-orofaring -> mucocutaneous leishmaniasis.
+- [Diagnosis Leishmaniasis] Apa yang dimaksud dengan Metode utama pada Diagnosis Leishmaniasis (Trypanosoma & Leishmania)? :: - mikroskopi jaringan/aspirat/biopsi untuk melihat amastigotes
+- [Diagnosis Leishmaniasis] Jelaskan Spesimen bergantung bentuk klinis dalam konteks Diagnosis Leishmaniasis (Trypanosoma & Leishmania). :: - cutaneous: scraping/aspirate/biopsy lesi
+- [Diagnosis Leishmaniasis] Apa yang dimaksud dengan visceral pada Diagnosis Leishmaniasis (Trypanosoma & Leishmania)? :: Bone marrow, splenic aspirate pada setting berpengalaman, atau jaringan reticuloendothelial lain.
+- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] Pada Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania, apa transmisinya? :: Diinokulasikan saat gigitan.
+- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] Pada Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania, apa bentuk manusianya? :: Trypomastigote ekstraseluler.
+- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] Apa yang dimaksud dengan Penyakit pada Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania? :: African sleeping sickness.
+- [Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania] Jelaskan Leishmania pada Perbandingan Cepat - T. brucei vs T. cruzi vs Leishmania (Trypanosoma & Leishmania). :: - Vector: female sandfly.
+- [Trypanosoma & Leishmania] Apa yang dimaksud dengan Winterbottom sign pada Trypanosoma & Leishmania? :: Posterior cervical lymphadenopathy
+- [Trypanosoma & Leishmania] Apa yang dimaksud dengan Stadium 2 HAT pada Trypanosoma & Leishmania? :: CNS involvement; terapi harus menembus BBB
+- [Trypanosoma & Leishmania] Apa yang dimaksud dengan Romana sign pada Trypanosoma & Leishmania? :: Unilateral periorbital edema pada acute Chagas
+- [Trypanosoma & Leishmania] Apa yang dimaksud dengan Chronic Chagas pada Trypanosoma & Leishmania? :: Cardiomyopathy + megaesophagus/megacolon
+- [Trypanosoma & Leishmania] Apa yang perlu diketahui tentang Leishmania pada Trypanosoma & Leishmania? :: Promastigote pada sandfly, amastigote pada macrophage manusia
+- [Trypanosoma & Leishmania] Apa yang perlu diketahui tentang Mucocutaneous pada Trypanosoma & Leishmania? :: Destruksi mukosa, klasik New World/Viannia
+- [Trypanosoma & Leishmania] Apa yang perlu diketahui tentang Visceral leishmaniasis pada Trypanosoma & Leishmania? :: Fever + weight loss + massive splenomegaly + pancytopenia
+- [Trypanosoma & Leishmania] Apa yang dimaksud dengan Leishman-Donovan bodies pada Trypanosoma & Leishmania? :: Amastigotes dalam macrophage
+- [Trypanosoma & Leishmania] Apa yang perlu diketahui tentang Vector triad wajib hafal pada Trypanosoma & Leishmania? :: Glossina - T. brucei; triatomine - T. cruzi; sandfly - Leishmania
+- [Konsep Besar Hemoflagellata] Apa poin high-yield (pearl) tentang Trypanosoma & Leishmania? :: Kalau vignette menanyakan "kinetoplast + undulating membrane + flagellum", pikirkan hemoflagellata.
+- [Antigenic Variation] Apa poin high-yield (pearl) tentang Antigenic Variation (Trypanosoma & Leishmania)? :: Demam yang naik-turun berulang pada sleeping sickness berhubungan dengan antigenic variation VSG.
+- [Leishmania - Konsep Dasar] Bagaimana cara mengingat Leishmania - Konsep Dasar? :: "PROMA in fly, AMA in macrophage."
+- [Morfologi Leishmania Amastigote] Apa poin high-yield (pearl) tentang Morfologi Leishmania Amastigote? :: "macrophage penuh badan kecil dengan nucleus + kinetoplast" sangat mengarah ke Leishmania.
