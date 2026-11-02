@@ -1,16 +1,17 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Spinner } from '@/components/ui';
-import { atlasFrameSrc, acceptsAtlasMessage } from '../features/anatomy/hostProtocol.mjs';
+import { atlasFrameSrc, acceptsAtlasMessage, withBackLink } from '../features/anatomy/hostProtocol.mjs';
 
 // A separate document keeps the existing Three.js and CSS lifecycles isolated.
 const AnatomyLandmarkStudy = lazy(() => import('../features/anatomy/AnatomyLandmarkStudy'));
-export default function HumanAnatomy() {
+// back: {path,label} for the atlas's own back link.
+export default function HumanAnatomy({ back = null }) {
   const {search} = useLocation();
   if (new URLSearchParams(search).get('landmarks') === 'Humerus.r') return <Suspense fallback={<Spinner label="Memuat landmark" />}><AnatomyLandmarkStudy /></Suspense>;
-  return <Atlas />;
+  return <Atlas back={back} />;
 }
-function Atlas() {
+function Atlas({ back }) {
   const iframe = useRef(null);
   const {hash} = useLocation();
   const [attempt, setAttempt] = useState(0);
@@ -27,8 +28,8 @@ function Atlas() {
   }, [attempt]);
   const retry = () => { setStatus('loading'); setAttempt(a => a + 1); };
   return <main aria-label="Human Anatomy" style={{height:'100dvh',position:'relative',background:'rgb(var(--paper))'}}>
-    <iframe key={attempt} ref={iframe} title="Human Anatomy — Interactive 3D Atlas"
-      src={atlasFrameSrc(hash)} allow="clipboard-write"
+    <iframe key={attempt} ref={iframe} title="Atlas Anatomi 3D MEDCOEL"
+      src={withBackLink(atlasFrameSrc(hash), back)} allow="clipboard-write"
       onError={()=>setStatus('error')}
       style={{width:'100%',height:'100%',border:0,display:'block'}} />
     {status === 'loading' && <div role="status" style={{position:'absolute',inset:0,display:'grid',placeItems:'center',background:'rgb(var(--paper))'}}><Spinner label="Memuat Human Anatomy" /></div>}
