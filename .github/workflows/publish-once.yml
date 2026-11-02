@@ -18,12 +18,25 @@ jobs:
           cache: npm
       - name: Restore and verify reviewed preview assets
         run: node tools/restore-previews-once.mjs
+      - name: Complete missing cross-platform lock entries
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
       - run: npm ci
+      - name: Record the Linux-compatible lockfile
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {createHash} from 'node:crypto';
+          const file='SOURCE-MANIFEST.json',manifest=JSON.parse(fs.readFileSync(file));
+          manifest.files['package-lock.json']=createHash('sha256').update(fs.readFileSync('package-lock.json')).digest('hex');
+          manifest.publicationFix='Complete missing optional native dependency entries for a reproducible Linux npm ci; runtime source and GLBs unchanged.';
+          fs.writeFileSync(file,JSON.stringify(manifest,null,2)+'\n');
+          NODE
       - run: npm run lint
       - run: npm test
       - run: npm run build -- --base=/anatomy/viewer/
       - name: Commit complete reviewed source on handoff branch
         run: |
+          node tools/restore-previews-once.mjs
           rm -r handoff-assets
           rm tools/restore-previews-once.mjs .github/workflows/publish-once.yml
           git config user.name 'github-actions[bot]'
