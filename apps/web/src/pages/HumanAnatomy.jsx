@@ -1,10 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Spinner } from '@/components/ui';
 import { atlasFrameSrc, acceptsAtlasMessage } from '../features/anatomy/hostProtocol.mjs';
 
 // A separate document keeps the existing Three.js and CSS lifecycles isolated.
+const AnatomyLandmarkStudy = lazy(() => import('../features/anatomy/AnatomyLandmarkStudy'));
 export default function HumanAnatomy() {
+  const {search} = useLocation();
+  if (new URLSearchParams(search).get('landmarks') === 'Humerus.r') return <Suspense fallback={<Spinner label="Memuat landmark" />}><AnatomyLandmarkStudy /></Suspense>;
+  return <Atlas />;
+}
+function Atlas() {
   const iframe = useRef(null);
   const {hash} = useLocation();
   const [attempt, setAttempt] = useState(0);

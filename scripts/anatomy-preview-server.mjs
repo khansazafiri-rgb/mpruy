@@ -22,7 +22,8 @@ export function createPreviewServer({mainRoot=path.join(repo,'apps/web/dist-anat
    if(info?.isDirectory()){file=path.join(file,'index.html');try{info=await stat(file);}catch{info=null;}}
    if(!info?.isFile()){
     // Only the main SPA receives HTML fallback. Asset misses are always 404.
-    if(atlas||path.extname(pathname)||pathname.startsWith('/assets/'))return send(404,'Asset not found');
+    const anatomyPage=pathname==='/anatomy'||/^\/anatomy\/(library|structure|region|system|study|explore)(\/|$)/.test(pathname);
+    if(atlas||(!anatomyPage&&path.extname(pathname))||pathname.startsWith('/assets/'))return send(404,'Asset not found');
     file=path.join(root,'index.html');
    }
    return send(200,await readFile(file),types[path.extname(file)]||'application/octet-stream');

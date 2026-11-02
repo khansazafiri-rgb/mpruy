@@ -13,7 +13,8 @@ import Subjects from './pages/Subjects';
 import SubjectDetail from './pages/SubjectDetail';
 import NotFound from './pages/NotFound';
 
-const HumanAnatomy = lazy(() => import('./pages/HumanAnatomy'));
+const AnatomyProduct = lazy(() => import('./pages/AnatomyLibrary'));
+const AnatomyAnnotator = lazy(() => import('./pages/admin/AnatomyAnnotator'));
 
 const Lab = lazy(() => import('./pages/Lab'));
 const LabObject = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabObject })));
@@ -81,7 +82,7 @@ export default function App() {
           <Route path="/daftar" element={<GuestOnly><Signup /></GuestOnly>} />
           <Route path="/lupa-password" element={<ForgotPassword />} />
           <Route path="/kebijakan-privasi" element={<Privacy />} />
-          <Route path="/anatomy" element={<RequireAuth><HumanAnatomy /></RequireAuth>} />
+          <Route path="/anatomy/*" element={<RequireAuth><AnatomyProduct /></RequireAuth>} />
           <Route path="/kerjakan/:id" element={<RequireAuth><Runner /></RequireAuth>} />
           <Route element={<RequireAuth><AppShell /></RequireAuth>}>
             <Route path="/beranda" element={<Home />} />
@@ -109,6 +110,7 @@ export default function App() {
             <Route path="pesan" element={<AdminSupport />} />
             <Route path="pengajuan" element={<AdminSubmissions />} />
             <Route path="lab" element={<LabAdmin />} />
+            <Route path="anatomy" element={<AnatomyAnnotator />} />
             <Route path="soal" element={<AdminQuestions />} />
             <Route path="laporan" element={<AdminReports />} />
             <Route path="pengumuman" element={<AdminAnnouncements />} />

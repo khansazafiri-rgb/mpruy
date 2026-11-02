@@ -1,4 +1,6 @@
 export function apiFixture(path){
+ if(path==='/api/medcoel/admin/server-version')return {migration:'1800002800_local_preview'};
+ if(path==='/api/medcoel/admin/summary')return {waitingConfirm:0,newReports:0};
  if(path==='/api/medcoel/public-settings')return {showMascots:false};
  if(path==='/api/medcoel/announcements/active')return {items:[]};
  if(path==='/api/medcoel/lab/overview')return {continue:null};
