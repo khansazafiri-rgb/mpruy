@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <g class="mc-float">
+    <ellipse cx="161" cy="285" rx="73" ry="10" fill="#172B38" opacity=".09"/>
+    <g fill="#007060" stroke="#172B38" stroke-width="7" stroke-linejoin="round">
+      <path d="M116 240q-23 19-19 33 6 18 33 8l18-27z"/>
+      <path d="M205 240q23 19 19 33-6 18-33 8l-18-27z"/>
+    </g>
+    <path d="M94 145q-46-26-50 0-3 23 43 41z" fill="#B8F0D5" stroke="#172B38" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M225 145q46-26 50 0 3 23-43 41z" fill="#B8F0D5" stroke="#172B38" stroke-width="7" stroke-linejoin="round"/>
+    <g class="mc-wave mc-arm-right"><path d="M230 192q21-16 37-2 13 12-1 25-13 11-31 4z" fill="#F9D76F" stroke="#172B38" stroke-width="7"/></g>
+    <path d="M91 195q-23-16-37-1-12 13 3 25 13 10 32 2z" fill="#F9D76F" stroke="#172B38" stroke-width="7"/>
+    <path class="mc-body" d="M163 65q22 42 51 54 36 23 35 65-1 76-88 83-88-7-88-83-1-42 35-65 30-13 55-54z" fill="#FFD56B" stroke="#172B38" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M121 113q-35 24-29 70" fill="none" stroke="#FFEDAA" stroke-width="13" stroke-linecap="round"/>
+    <ellipse cx="112" cy="188" rx="15" ry="9" fill="#F3A99A"/><ellipse cx="210" cy="188" rx="15" ry="9" fill="#F3A99A"/>
+    <g class="mc-eyes">
+      <g class="mc-eyes-normal" fill="#172B38"><ellipse cx="133" cy="158" rx="8" ry="12"/><ellipse cx="190" cy="158" rx="8" ry="12"/></g>
+      <g class="mc-eyes-happy" fill="none" stroke="#172B38" stroke-width="7" stroke-linecap="round" opacity="0"><path d="M120 162q13-16 26 0M177 162q13-16 26 0"/></g>
+      <circle cx="130" cy="153" r="2.5" fill="#fff"/><circle cx="187" cy="153" r="2.5" fill="#fff"/>
+    </g>
+    <path class="mc-mouth-normal" d="M148 187q13 13 26 0" fill="none" stroke="#172B38" stroke-width="6" stroke-linecap="round"/>
+    <path class="mc-mouth-happy" d="M144 181q18 28 35 0z" fill="#172B38" opacity="0"/>
+    <path class="mc-mouth-think" d="M155 188q7-5 14 0" fill="none" stroke="#172B38" stroke-width="5" stroke-linecap="round" opacity="0"/>
+    <g class="mc-spark" fill="none" stroke="#F8C038" stroke-width="7" stroke-linecap="round"><path d="M250 67l8-19M267 76l17-10M248 87l19 6"/></g>
+  </g>
+</svg>

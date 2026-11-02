@@ -335,6 +335,8 @@ function showInfoPanel(partData) {
 
   const sideKey = info.side === 'left' ? 'side_left' : info.side === 'right' ? 'side_right' : null;
 
+  // The action row (Isolate, Hide, Fade...) is one static element; keep it right under the title.
+  const actions = document.getElementById('footerBar');
   structureInfo.innerHTML = `
     <div class="structure-header">
       <div class="structure-title">
@@ -348,10 +350,12 @@ function showInfoPanel(partData) {
         </div>
       </div>
     </div>
-    ${structurePreview(partData.id)?`<figure class="structure-isolated-preview"><img src="${escapeHtml(structurePreview(partData.id))}" alt="${escapeHtml(name)} — isolated 3D preview"/><figcaption>Isolated preview · main view keeps anatomical context</figcaption></figure>`:""}
+    ${structurePreview(partData.id)?`<figure class="structure-isolated-preview"><img src="${escapeHtml(structurePreview(partData.id))}" alt="${escapeHtml(name)} — isolated 3D preview"/><figcaption>Pratinjau terisolasi · tampilan utama tetap memperlihatkan konteks</figcaption></figure>`:""}
     ${relationMarkup(partData.id, lang)}
     <div class="structure-description" data-definition>${escapeHtml(translate('loading_definition', lang))}</div>
   `;
+
+  if (actions) structureInfo.querySelector('.structure-header')?.after(actions);
 
   structureInfo.querySelectorAll('[data-relation]').forEach(link => {
     link.addEventListener('click', () => selectPartById(link.dataset.relation, state.viewer));
