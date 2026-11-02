@@ -28,7 +28,7 @@
     "integration/INTEGRATION.md": "6f56ccf3b53c6aa697ecabe614a2fcf3ab40b8cc6400c245d4c464fb29f91424",
     "integration/main-web.patch": "e7456d1f880e8e7281d4bf8dc36039d4d99f0a36e0479241c7cf73da763535c6",
     "integration/nginx-anatomy.conf.example": "d590d5b6b000e4fd7c328f5cc1ea200eb66c23628eafb84db3d38725d1b5c544",
-    "package-lock.json": "860e6668bdce6362e4e5b1ed33eb4e81d7d3b8c2b19405f836f1fa47bec425e7",
+    "package-lock.json": "0e8fd05c234c0770cc80e92a5686410d68c0090f675c1a7d70407b4350638ffa",
     "package.json": "d149694cc79f89e61284055806f91c9ae7ed46379c9abd0d6508b97c00eca85c",
     "public/LICENSE": "5f6927ff4cb93ed3cd1b7fb4a264b333b8ab62800826af6d20c66522d4903e8c",
     "public/NOTICE": "c2b1832bc2b9c3d0bc6ad4d5f22612ef96fedf58d8e7be6d63f5573f1739db91",
@@ -2956,5 +2956,6 @@
     "vite.config.js": "2ec421db8d1a96f08495b7d2f10e6c1afa92cd24bf6ff7a60c4886045c001f2b",
     "vite.thumbnails.config.js": "bab1491cc9fdef8f560cfc6a9b1dfaa1e6b7bdaa6844513d610d6a372ab428bd",
     "HANDOFF.md": "13dde04612c79e71893801e58d5740de6f45c5249439564bf10fa3bb2740b6f3"
-  }
+  },
+  "publicationFix": "Complete missing optional native dependency entries for a reproducible Linux npm ci; runtime source and GLBs unchanged."
 }
