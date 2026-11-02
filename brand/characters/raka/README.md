@@ -136,6 +136,7 @@ rakaSvg(raka('pingsan', 'berbaring', { blood: 1 }), { rebah: true });          /
 rakaSvg(raka('bingung', 'berbaring', { blood: 1 }), { rebah: true });          // setengah sadar sebentar
 rakaSvg(raka('lega', 'berbaring'), { rebah: true, rebahTilt: -5 });            // sudah sadar dan tenang
 rakaSvg(raka('pingsan', 'berbaring', { flip: 1 }), { rebah: true });           // kepala di kanan, kaki ke kiri
+rakaSvg(raka('lega', 'berbaring', { happyEyes: 0.6 }), { rebah: true, rebahTilt: -90 });  // tidur/istirahat: kepala SEJAJAR badan (rebahTilt -90), muka menyamping; letakkan di atas bantal, selimut menutup kaki (video introvert/ekstrovert)
 
 // 2. Pandangan dari mata sendiri saat berbaring: pose pov_perut (dua tangan di perut), lalu potong tampilan ke badan (tanpa kepala)
 rakaSvg(raka('netral', 'pov_perut', { blood: 1 }), { shadow: false }).replace('viewBox="0 0 400 800"', 'viewBox="30 366 340 250"');

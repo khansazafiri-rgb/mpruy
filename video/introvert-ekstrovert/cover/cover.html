@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Apa bedanya introvert & ekstrovert?</title>
+<link rel="stylesheet" href="../stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#c{width:1080px;height:1920px;position:relative;overflow:hidden}svg{display:block}</style></head>
+<body><div id="c"></div>
+<script type="module">
+import { raka, rakaSvg } from '../../../brand/characters/raka/raka.js';
+import { teman, temanSvg } from '../../../brand/characters/teman/teman.js';
+import * as A from '../stage/art.js';
+await document.fonts.load('800 60px "Plus Jakarta Sans"'); await document.fonts.ready;
+const { R, C, E, P, L, T, f1 } = A;
+const logo = await new Promise(async (r) => { const b = await (await fetch('../stage/logo-full.webp')).blob(); const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(b); });
+const guide = new URLSearchParams(location.search).has('guide');
+const STAND = { on: 1, dir: 1, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } };
+const FY = 1470, K = 0.98;
+// Raka: tenang, tersenyum, mulai mengantuk
+const rs = raka('lega', 'netral', { yaw: 0.25, flip: 0, bags: 0.5, happyEyes: 0.55, legs: STAND, mouth: { w: 18, up: 9, lo: 9 }, sparkle: 0 });
+const rk = `<g transform="translate(${f1(300 - 200 * K)} ${f1(FY - 778 * K)}) scale(${K})">${rakaSvg(rs, { bare: true, uid: 'rc', outfit: 'harian' })}</g>`;
+// Tala: bersemangat mengajak
+const ts = teman('semangat', 'ajak', { yaw: -0.15, flip: 0, armR: { wx: 352, wy: 214, ex: 380, ey: 362, finger: 0, front: 1 } });
+const tk = `<g transform="translate(${f1(790 - 200 * K)} ${f1(FY - 778 * K)}) scale(${K})">${temanSvg(ts, { bare: true, uid: 'tc' })}</g>`;
+// latar sore kampus (pakai campusBg + bunting)
+const bg = A.campusBg(0, 1200) + `<rect x="-200" y="-300" width="1700" height="2300" fill="#FF9A55" opacity=".12"/>` + A.bunting(-20, 1100, 520, 0) + A.confetti(2.1, 40, 1040, 560, 1400, 20, 5);
+// gelembung pikiran: kasur (Raka) dan ajakan nongkrong (Tala)
+const bed = `<g transform="translate(300 640)">${A.thought(-150, -100, 300, 150, '#fff', [10, 130])}<g transform="translate(0 -26) scale(1.2)">${R(-80, 14, 160, 26, '#8E7CE8', 10)}${R(-80, 40, 12, 26, '#6B5CC8')}${R(68, 40, 12, 26, '#6B5CC8')}${R(-76, -12, 56, 28, '#fff', 14)}${R(-18, -8, 96, 24, '#B9A8FF', 10)}</g></g>`;
+const mug = `<g transform="translate(790 640)">${A.thought(-150, -100, 300, 150, '#fff', [-10, 130])}<g transform="translate(-70 -26)">${A.chatIcon(0, 0, 1.0, '#5BD0E6')}</g><g transform="translate(10 -34)">${A.note(0, 0, 1.0)}</g><g transform="translate(86 -30)">${A.heart(0, 0, 1.1)}</g></g>`;
+// judul
+const ST = 'stroke="#0A1A2E" stroke-width="16" paint-order="stroke" stroke-linejoin="round"';
+const title = `${T(540, 330, 'Apa bedanya', '#fff', 94, ST)}${T(540, 440, `<tspan fill="#5BD0E6">introvert</tspan> &amp; <tspan fill="#F8A04A">ekstrovert</tspan>?`, '#fff', 78, ST)}`;
+const lg = `<g transform="translate(540 1600)">${R(-190, -42 + 6, 380, 84, 'rgba(0,0,0,.3)', 42)}${R(-190, -42, 380, 84, '#fff', 42)}<image href="${logo}" x="-150" y="-20" width="300" height="60.4"/></g>`;
+const ground = R(-100, FY - 4, 1300, 600, '#E9D5B5') + R(-100, FY - 8, 1300, 8, '#D4BE9A');
+const g = guide ? `<rect x="0" y="0" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="1680" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="240" width="1080" height="1440" fill="none" stroke="#0f0" stroke-width="6"/>` : '';
+document.getElementById('c').innerHTML = `<svg width="1080" height="1920" viewBox="0 0 1080 1920">${bg}${ground}${A.person ? '' : ''}${rk}${tk}${bed}${mug}${title}${lg}${g}</svg>`;
+window.__ready = true;
+</script></body></html>
