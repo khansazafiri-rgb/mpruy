@@ -10,6 +10,14 @@ Drilling berisi "file kampusmu" per mata kuliah: **materi** (slide PPT yang suda
 4. **Impor**: kirim JSON ke Hermes dengan `/put KODE` lalu `/plan` dan `/confirm` (untuk pengajuan PPT materi tujuannya otomatis Drilling > materi), atau tempel di **Admin > Drilling > Materi > Impor materi (JSON)**.
 5. **Siswa** membuka **Drilling > mata kuliah > Materi**: slide di kiri, penjelasan di kanan (di bawah pada layar sempit), panah kiri/kanan untuk berpindah, deretan slide di bawah, gambar bisa diperbesar. Slide terakhir yang dibuka diingat.
 
+**Judul di web = judul PDF.** Judul materi (dan bagian soal) yang dilihat siswa diambil otomatis dari nama PDF yang dikirim pengaju, dirapikan: `Histologi_Epitel Kuliah1.pptx.pdf` menjadi **Histologi Epitel Kuliah1** (".pdf", sisa ekstensi dokumen asal, akhiran "compressed" dibuang, garis bawah jadi spasi). Aturannya:
+
+- **Satu PDF** di pengajuan: judulnya otomatis dari PDF itu. Judul di JSON tidak dipakai (judul PDF menang).
+- **Beberapa PDF**: sebut nomor PDF-nya saat mengimpor, supaya judul diambil dari PDF itu: di Hermes `/put KODE 2` (nomornya sama dengan `/files KODE 2`), atau beri nama file JSON seperti nama PDF kiriman Hermes (`KODE_PDF-02-dari-3_nama.json`). Di API: field `pdf`.
+- Beberapa PDF **tanpa nomor**: materi memakai `title` di JSON bila ada; bila tidak ada, impor ditolak dengan pesan yang menyebut cara memilih nomor PDF. Soal Drilling tanpa nomor masuk bagian "Soal lainnya".
+- Judul bisa dipaksa lewat field `title` di permintaan (mengalahkan semuanya). Respons impor memuat `title`, `titleSource` (`pdf` | `json` | `request` | `default`), dan `pdf`.
+- Judul sama di mata kuliah dan cakupan yang sama berarti memperbarui materi yang ada, jadi mengirim ulang PDF yang sama memperbarui, bukan menggandakan.
+
 Materi mengikuti hak lihat yang sama dengan soal Drilling: **General** (semua pengguna) atau **khusus kampus** (pengajuan "hanya prodi dan kampus saya" hanya terlihat pengguna kampus itu). Menu Drilling terbuka bila ada materi atau soal yang bisa dilihat pengguna dan sakelar admin menyala.
 
 ## Format JSON (schemaVersion 1)
@@ -113,7 +121,7 @@ Admin:
 
 Hermes Agent:
 
-- `POST /api/medcoel/agent/submissions/{id atau kode}/materi-import` `{ text | deck | slides, title?, status?, dryRun? }`. Hanya untuk pengajuan `contentKind: "materi"` berstatus antre, diproses, atau perlu_perbaikan; cakupan dan kampus selalu dari pengajuan. Berhasil: berkas tayang, pengajuan selesai (`importedCount` = jumlah slide), pengaju mendapat notifikasi dengan tautan ke Drilling. Pengajuan soal ditolak di sini, dan pengajuan materi ditolak di `/import` dan `/drilling-import`.
+- `POST /api/medcoel/agent/submissions/{id atau kode}/materi-import` `{ text | deck | slides, pdf?, title?, status?, dryRun? }`. Hanya untuk pengajuan `contentKind: "materi"` berstatus antre, diproses, atau perlu_perbaikan; cakupan dan kampus selalu dari pengajuan. Berhasil: berkas tayang, pengajuan selesai (`importedCount` = jumlah slide), pengaju mendapat notifikasi dengan tautan ke Drilling. Pengajuan soal ditolak di sini, dan pengajuan materi ditolak di `/import` dan `/drilling-import`.
 - `POST /api/medcoel/agent/materi-import` `{ subject, scope, campuses, ... }` materi tambahan dari admin tanpa pengajuan.
 
 Respons impor: `{ blocked, created, updated, replaced, title, scope, slideCount, warnings, items }`. Bila `blocked: true` (status 400), `items[]` berisi `{ index, errors }` per nomor slide dan tidak ada yang tersimpan.
