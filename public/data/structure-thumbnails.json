@@ -19850,5 +19850,42 @@
     "url": "thumbnails/hero.webp",
     "width": 800,
     "height": 1050
+  },
+  "systems": {
+    "skeletal": {
+      "url": "thumbnails/systems/skeletal.webp",
+      "width": 256,
+      "height": 256
+    },
+    "joints": {
+      "url": "thumbnails/systems/joints.webp",
+      "width": 256,
+      "height": 256
+    },
+    "muscular": {
+      "url": "thumbnails/systems/muscular.webp",
+      "width": 256,
+      "height": 256
+    },
+    "cardiovascular": {
+      "url": "thumbnails/systems/cardiovascular.webp",
+      "width": 256,
+      "height": 256
+    },
+    "lymphatic": {
+      "url": "thumbnails/systems/lymphatic.webp",
+      "width": 256,
+      "height": 256
+    },
+    "nervous": {
+      "url": "thumbnails/systems/nervous.webp",
+      "width": 256,
+      "height": 256
+    },
+    "visceral": {
+      "url": "thumbnails/systems/visceral.webp",
+      "width": 256,
+      "height": 256
+    }
   }
 }

@@ -1,10 +1,8 @@
 import {reportAtlasStatus} from './integration/host.js';
 import "@fontsource-variable/inter";
 import "@fontsource-variable/plus-jakarta-sans";
-import "./styles/main.css";
-import "./styles/atlas.css";
 import "./styles/medcoel-tokens.css";
-import "./styles/medcoel-shell.css";
+import "./styles/atlas-v3.css";
 import { createScene } from "./viewer/createScene.js";
 import { initSelection } from "./viewer/selection.js";
 import {
@@ -21,7 +19,7 @@ import {
 } from "./data/anatomy.js";
 import { translationsIt, translationsEn } from "./data/translations.js";
 import { asset } from "./utils/paths.js";
-import { initAtlas } from "./atlas/engine.js";
+import { initAtlas, settings } from "./atlas/engine.js";
 import { initUI } from "./atlas/ui.js";
 async function start() {
   const overlay = document.getElementById("loadingOverlay");
@@ -49,6 +47,9 @@ async function start() {
     setSystemsData(systems);
     setPartsData(parts);
     loadDefinitions();
+    // First view shows superficial muscles and bones, as atlases usually open; + brings the fascia back.
+    // A saved or shared view (hash or local session) still wins inside initAtlas.
+    settings.groups.muscular.removed = 1;
     await initAtlas(catalog);
     await initUI();
     initSelection(viewer);
@@ -70,7 +71,7 @@ async function start() {
     overlay.querySelector(".loading-spinner").hidden = true;
     const retry = document.createElement("button");
     retry.className = "action-btn";
-    retry.textContent = "Reload anatomy";
+    retry.textContent = "Muat ulang atlas";
     retry.onclick = () => location.reload();
     overlay.appendChild(retry);
   }

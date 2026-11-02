@@ -1,4 +1,5 @@
-import {loadStructurePreviews,structurePreview} from '../data/previews.js';
+import {loadStructurePreviews,structurePreview,regionPreview} from '../data/previews.js';
+import {deselectPart} from '../viewer/selection.js';
 import {hostedShareUrl} from "../integration/host.js";
 import * as THREE from "three";
 import {ghostAllExcept, clearGhost} from "../viewer/visibility.js";
@@ -62,60 +63,66 @@ async function run(fn) {
     update();
   }
 }
+
+// Short labels for the bottom systems bar; the full label stays in the tooltip and the browse panel.
+const SHORT = {muscular:"Otot",skeletal:"Tulang",joints:"Sendi",arterial:"Arteri",venous:"Vena",heart:"Jantung",nervous:"Saraf",lymphatic:"Limfatik",respiratory:"Napas",digestive:"Cerna",urinary:"Kemih",reproductive:"Reproduksi",endocrine:"Endokrin"};
+const PRESETS = [["muscles","Otot"],["bones","Tulang"],["organs","Organ"],["all","Semua"]];
+// Systems bar, like Complete Anatomy: one tile per system, + and − above it step through its layers
+// (+ adds the next outer layer back, − peels the outermost visible one), the tile toggles the system.
 function renderGroups() {
   $("atlasGroups").innerHTML = GROUPS.map((g) => {
-    const value = settings.groups[g.id],
-      count = counts(g.id),
-      loaded = state.loadedSystems.includes(g.source);
-    return `<section class="atlas-group" style="--group-color:${g.color}">
-   <div class="atlas-compact-row"><label class="atlas-group-label"><input type="checkbox" data-toggle="${g.id}" ${value.enabled ? "checked" : ""} ${pending ? "disabled" : ""}><span class="group-dot"></span><strong title="${g.label} · ${value.enabled ? g.layers[value.removed] : "Hidden"} · ${count} structures${loaded ? "" : " · not loaded"}">${g.label}</strong></label><button type="button" data-step="${g.id}" data-delta="-1" aria-label="Remove outer layer of ${g.label}" ${pending || !value.enabled ? "disabled" : ""}>−</button><button type="button" data-step="${g.id}" data-delta="1" aria-label="Add outer layer of ${g.label}" ${pending || (value.enabled && value.removed === 0) ? "disabled" : ""}>+</button><button type="button" data-browse="${g.id}" aria-label="Browse ${g.label}" aria-expanded="${detailGroup === g.id}">⋯</button></div>
-   ${detailGroup === g.id ? '<div id="atlasPartList"></div>' : ""}
-  </section>`;
+    const value = settings.groups[g.id], count = counts(g.id), loaded = state.loadedSystems.includes(g.source);
+    const total = g.layers.length, shown = value.enabled ? total - value.removed : 0;
+    const layerName = value.enabled ? g.layers[value.removed] : "Disembunyikan";
+    const dots = total > 1 ? `<span class="sys-layers" aria-hidden="true">${g.layers.map((_, i) => `<i class="${i >= total - shown ? "on" : ""}"></i>`).join("")}</span>` : "";
+    return `<div class="sys-tile${value.enabled ? " is-on" : ""}${detailGroup === g.id ? " is-browsing" : ""}" style="--group-color:${g.color}">
+   <div class="sys-steps"><button type="button" data-step="${g.id}" data-delta="1" aria-label="Tambah lapisan luar ${escape(g.label)}" title="Tambah lapisan luar" ${pending || (value.enabled && value.removed === 0) ? "disabled" : ""}>+</button><button type="button" data-step="${g.id}" data-delta="-1" aria-label="Buka lapisan ${escape(g.label)} lebih dalam" title="Buka ke lapisan lebih dalam" ${pending || !value.enabled ? "disabled" : ""}>−</button></div>
+   <button type="button" class="sys-toggle" data-toggle="${g.id}" aria-pressed="${value.enabled}" ${pending ? "disabled" : ""} title="${escape(g.label)} · ${escape(layerName)} · ${count} struktur${loaded ? "" : " · belum dimuat"}"><span class="sys-dot"></span><span class="sys-name">${SHORT[g.id] || escape(g.label)}</span>${dots}</button>
+   <button type="button" class="sys-more" data-browse="${g.id}" aria-label="Daftar struktur ${escape(g.label)}" aria-expanded="${detailGroup === g.id}" title="Daftar struktur">⋯</button>
+  </div>`;
   }).join("");
-  if (detailGroup) renderPartList();
+  renderPartList();
 }
 function renderPartList() {
-  const container = $("atlasPartList");
-  if (!container) return;
+  const panel = $("atlasBrowse");
+  if (!panel) return;
+  panel.hidden = !detailGroup;
+  if (!detailGroup) { panel.innerHTML = ""; return; }
+  const group = GROUPS.find((g) => g.id === detailGroup);
   const ids = idsForGroup(detailGroup).sort((a, b) => a.localeCompare(b));
-  container.innerHTML = `<button type="button" class="atlas-view-system" data-view-system="${detailGroup}">View whole ${escape(GROUPS.find(g => g.id === detailGroup).label)} ↗</button><div class="atlas-parts">${
-    ids
-      .slice(0, listLimit)
-      .map(
-        (id) =>
-          `<button type="button" data-part="${escape(id)}">${escape(state.partsData[id]?.name.en || id)}</button>`,
-      )
-      .join("") || "<p>No structures in this region.</p>"
-  }</div>${ids.length > listLimit ? `<button type="button" class="browse-structures" data-more>Show 50 more (${ids.length - listLimit} remaining)</button>` : ""}`;
+  panel.innerHTML = `<div class="atlas-browse-head" style="--group-color:${group.color}"><span class="sys-dot"></span><strong>${escape(group.label)}</strong><small>${ids.length} struktur di regio ini</small><button type="button" data-browse="${detailGroup}" aria-label="Tutup daftar">×</button></div>
+  <button type="button" class="atlas-view-system" data-view-system="${detailGroup}">Lihat seluruh ${escape(group.label)} ↗</button>
+  <div id="atlasPartList" class="atlas-parts">${ids.slice(0, listLimit).map((id) => {
+    const image = structurePreview(id);
+    return `<button type="button" data-part="${escape(id)}">${image ? `<img src="${escape(image)}" alt="" loading="lazy"/>` : "<i></i>"}<span>${escape(state.partsData[id]?.name.en || id)}</span></button>`;
+  }).join("") || "<p>Tidak ada struktur di regio ini.</p>"}</div>${ids.length > listLimit ? `<button type="button" class="browse-structures" data-more>Tampilkan 50 lagi (${ids.length - listLimit} tersisa)</button>` : ""}`;
+}
+function renderRegions() {
+  $("regionMenu").innerHTML = `<p class="atlas-region-menu-title">Pilih regio tubuh</p><div class="atlas-region-grid">${REGIONS.map(([id, label, sub]) => {
+    const image = regionPreview(id);
+    return `<button type="button" data-region="${id}" aria-pressed="${settings.region === id}">${image ? `<img src="${escape(image)}" alt="" loading="lazy"/>` : ""}<span><strong>${escape(label)}</strong><small>${escape(sub)}</small></span></button>`;
+  }).join("")}</div>`;
 }
 function update() {
   if (!$("atlasGroups")) return;
   renderGroups();
   document.querySelectorAll("[data-region]").forEach((b) => {
-    b.setAttribute(
-      "aria-pressed",
-      String(b.dataset.region === settings.region),
-    );
+    b.setAttribute("aria-pressed", String(b.dataset.region === settings.region));
     b.disabled = !!pending;
   });
-  document.querySelectorAll("[data-preset]").forEach((b) => {
-    b.disabled = !!pending;
-  });
-  $("sceneTitle").textContent =
-    REGIONS.find((r) => r[0] === settings.region)?.[1] || "Whole body";
-  $("sceneSubtitle").textContent =
-    REGIONS.find((r) => r[0] === settings.region)?.[2] || "";
+  document.querySelectorAll("[data-preset]").forEach((b) => { b.disabled = !!pending; });
+  const region = REGIONS.find((r) => r[0] === settings.region);
+  $("sceneTitle").textContent = region?.[1] || "Seluruh tubuh";
+  $("sceneSubtitle").textContent = region?.[2] || "";
+  const thumb = regionPreview(settings.region);
+  $("regionThumb").hidden = !thumb;
+  if (thumb && $("regionThumb").getAttribute("src") !== thumb) $("regionThumb").src = thumb;
   $("undoAtlas").disabled = !canUndo() || !!pending;
   $("returnContext").hidden = !hasIsolation();
   $("footerIsolateBtn").disabled = hasIsolation();
-  $("atlasStatus").textContent = pending
-    ? getStatus()
-    : getStatus() === "Ready"
-      ? "Ready to explore"
-      : getStatus();
+  $("atlasStatus").textContent = pending ? getStatus() : getStatus() === "Ready" ? "Siap dijelajahi" : getStatus();
   $("emptyScene").hidden = !visibleBounds().isEmpty() || !!pending;
-  $("atlasSelection").textContent =
-    state.selectedPart?.displayName || "Select a structure to study";
+  $("atlasSelection").textContent = state.selectedPart?.displayName || "Pilih struktur untuk dipelajari";
   $("footerBar").style.display = state.selectedPart ? "flex" : "none";
 }
 function search(query) {
@@ -182,12 +189,18 @@ function showSearch() {
   const panel = $("searchResults");
   panel.classList.add("show");
   $("searchInput").setAttribute("aria-expanded", "true");
-  panel.innerHTML = `<div class="search-scope">Search all regions · selecting a result reveals it</div>${searchRows.map((r, i) => `<button type="button" role="option" aria-selected="false" id="atlas-result-${i}" class="atlas-result" data-result="${i}">${!r.system&&structurePreview(r.id)?`<img class="atlas-result-preview" src="${escape(structurePreview(r.id))}" alt="" loading="lazy"/>`:""}<span>${escape(r.label)}</span><small>${r.system ? "View all available structures together" : `${GROUPS.find((g) => g.id === r.group).label} · ${REGIONS.find((g) => g[0] === metadata(r.id).regions[0])?.[1] || "Whole body"}`}</small></button>`).join("") || '<p class="search-empty">No matching structure in this model.</p>'}`;
+  panel.innerHTML = `<div class="search-scope">${searchRows.length ? `${searchRows.length} hasil · semua regio · memilih hasil langsung menampilkannya` : "Semua regio"}</div>${searchRows.map((r, i) => {
+    const group = GROUPS.find((g) => g.id === r.group), image = !r.system && structurePreview(r.id);
+    const where = r.system ? "Tampilkan seluruh sistem" : `${group.label} · ${REGIONS.find((g) => g[0] === metadata(r.id).regions[0])?.[1] || "Seluruh tubuh"}`;
+    return `<button type="button" role="option" aria-selected="false" id="atlas-result-${i}" class="atlas-result${r.system ? " is-system" : ""}" data-result="${i}" style="--group-color:${group.color}"><span class="atlas-result-thumb">${image ? `<img class="atlas-result-preview" src="${escape(image)}" alt="" decoding="async"/>` : `<i aria-hidden="true"></i>`}</span><span class="atlas-result-text"><span>${escape(r.label)}</span><small><i class="group-dot" aria-hidden="true"></i>${escape(where)}</small></span></button>`;
+  }).join("") || '<p class="search-empty">Tidak ada struktur yang cocok. Coba nama Latin, Inggris, atau Indonesia.</p>'}`;
 }
 async function chooseSearch(index) {
   const row = searchRows[index];
   if (!row) return;
   closeSearch();
+  document.querySelector(".header").classList.remove("search-open");
+  $("searchOpen").setAttribute("aria-expanded", "false");
   $("searchInput").blur();
   await run(async () => {
     if (row.system) await viewGroup(row.group); else await reveal(row.id);
@@ -247,53 +260,50 @@ function initSearch() {
     if (!e.target.closest(".search-container")) closeSearch();
   });
 }
+
 function initPanels() {
-  const app = $("app"),
-    narrow = matchMedia("(max-width: 1024px)");
-  function panel(name, on) {
-    app.classList.toggle(name + "-open", on);
-    const el = $(name === "systems" ? "systemsSidebar" : "infoSidebar");
-    if (name === "systems")
-      el.style.transform = narrow.matches
-        ? on
-          ? "translateX(0)"
-          : "translateX(-100%)"
-        : "";
-    else el.style.transform = on ? "translateX(0)" : "translateX(100%)";
-    setInert(el, name === "systems" ? !on && narrow.matches : !on);
-    $(name === "systems" ? "systemsOpen" : "infoOpen").setAttribute(
-      "aria-expanded",
-      String(on),
-    );
+  const app = $("app");
+  // The infobox follows the selection: open while something is selected, closing it deselects.
+  function info(on) {
+    app.classList.toggle("info-open", on);
+    setInert($("infoSidebar"), !on);
+    $("infoOpen").setAttribute("aria-expanded", String(on));
   }
-  for (const name of ["systems", "info"]) {
-    $(name === "systems" ? "systemsOpen" : "infoOpen").onclick = () =>
-      panel(name, !app.classList.contains(name + "-open"));
-    $(name === "systems" ? "systemsToggle" : "infoToggle").onclick = () =>
-      panel(name, false);
-  }
-  narrow.addEventListener("change", () => {
-    panel("systems", app.classList.contains("systems-open"));
-    panel("info", app.classList.contains("info-open"));
-  });
-  subscribe("selectedPart", (part) => {
-    if (!narrow.matches || !part) panel("info", !!part);
-    update();
-  });
-  panel("systems", false);
-  panel("info", false);
+  $("infoOpen").onclick = () => info(!app.classList.contains("info-open"));
+  // On phones the infobox opens compact (name + actions) so the selected structure stays in view.
+  const expand = (on) => { app.classList.toggle("info-expanded", on); $("infoExpand").setAttribute("aria-expanded", String(on)); $("infoExpand").textContent = on ? "Ringkas" : "Detail"; };
+  $("infoExpand").onclick = () => expand(!app.classList.contains("info-expanded"));
+  subscribe("selectedPart", () => expand(false));
+  $("infoToggle").onclick = () => { info(false); deselectPart(); };
+  subscribe("selectedPart", (part) => { info(!!part); update(); });
+  info(false);
   $("searchOpen").onclick = () => {
-    document.querySelector(".header").classList.toggle("search-open");
-    $("searchInput").focus();
+    const open = !document.querySelector(".header").classList.contains("search-open");
+    document.querySelector(".header").classList.toggle("search-open", open);
+    $("searchOpen").setAttribute("aria-expanded", String(open));
+    if (open) $("searchInput").focus();
   };
+  // Region picker.
+  const menu = $("regionMenu"), button = $("regionButton");
+  const regionMenu = (open) => { menu.hidden = !open; button.setAttribute("aria-expanded", String(open)); if (open) menu.querySelector('[aria-pressed="true"]')?.focus(); };
+  button.onclick = () => regionMenu(menu.hidden);
+  menu.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-region]");
+    if (!b) return;
+    regionMenu(false);
+    run(() => chooseRegion(b.dataset.region));
+  });
+  document.addEventListener("click", (e) => { if (!menu.hidden && !e.target.closest(".atlas-region")) regionMenu(false); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (!menu.hidden) { regionMenu(false); button.focus(); }
+    else if (detailGroup) { detailGroup = null; renderGroups(); }
+  });
   let release;
   $("helpBtn").onclick = () => {
     $("helpModal").classList.remove("hidden");
     setInert($("helpModal"), false);
-    release = trapFocus(document.querySelector(".modal-content"), {
-      onEscape: closeHelp,
-      returnFocusTo: $("helpBtn"),
-    });
+    release = trapFocus(document.querySelector(".modal-content"), { onEscape: closeHelp, returnFocusTo: $("helpBtn") });
     focusFirst(document.querySelector(".modal-content"));
   };
   function closeHelp() {
@@ -304,21 +314,40 @@ function initPanels() {
   $("helpClose").onclick = closeHelp;
   document.querySelector(".modal-overlay").onclick = closeHelp;
   setInert($("helpModal"), true);
+  initTip();
+  initBackLink();
+}
+// Kori's first-visit tip. Shown once per device; never inside a quiz or the annotator.
+function initTip() {
+  const tip = $("atlasTip"), key = "medcoel.atlas.tip.v1";
+  let seen = false;
+  try { seen = localStorage.getItem(key) === "1"; } catch { seen = true; }
+  const embedded = new URLSearchParams(location.search).get("annotator") === "1";
+  if (seen || embedded) return;
+  tip.hidden = false;
+  const close = () => { tip.hidden = true; try { localStorage.setItem(key, "1"); } catch { /* storage off */ } };
+  $("atlasTipClose").onclick = close;
+  subscribe("selectedPart", (part) => { if (part) close(); });
+}
+// The host page says where "back" goes (structure page, library...). Only same-site paths are accepted.
+function initBackLink() {
+  const params = new URLSearchParams(location.search);
+  const back = params.get("back") || "", label = (params.get("backLabel") || "").slice(0, 40);
+  if (/^\/(anatomy|lab|beranda)(\/[\w%.\-/]*)?$/.test(back)) $("atlasBack").href = back;
+  if (label) $("atlasBackLabel").textContent = label;
 }
 export async function initUI() {
-  await Promise.all([loadAllData(),loadStructurePreviews()]);
-  $("systemsList").innerHTML =
-    `<div class="atlas-kicker">EXPLORE THE HUMAN BODY</div><div class="atlas-region-grid">${REGIONS.map(([id, label]) => `<button type="button" data-region="${id}" aria-pressed="${settings.region === id}">${label}</button>`).join("")}</div>
- <div class="atlas-section-heading"><h3>Systems & layers</h3><span>Outer → inner</span></div>
- <div class="atlas-presets"><button data-preset="muscles">Muscles</button><button data-preset="bones">Bones</button><button data-preset="organs">Organs</button><button data-preset="all">All systems</button></div>
- <div id="atlasGroups"></div><p class="atlas-data-note">Explore the supplied Z-Anatomy structures. Layer groups are curated study controls; skin and muscle motion are not included in this model.</p>`;
+  await Promise.all([loadAllData(), loadStructurePreviews()]);
+  $("systemsList").innerHTML = `<div class="atlas-presets" role="group" aria-label="Tampilan cepat"><span>Cepat</span>${PRESETS.map(([id, label]) => `<button type="button" data-preset="${id}">${label}</button>`).join("")}</div>
+ <div id="atlasGroups" class="atlas-groups"></div>
+ <div id="atlasBrowse" class="atlas-browse" hidden></div>`;
+  renderRegions();
   $("systemsList").addEventListener("click", (e) => {
     const b = e.target.closest("button");
     if (!b) return;
-    if (b.dataset.region) run(() => chooseRegion(b.dataset.region));
-    else if (b.dataset.preset) run(() => preset(b.dataset.preset));
-    else if (b.dataset.step)
-      run(() => stepGroup(b.dataset.step, Number(b.dataset.delta)));
+    if (b.dataset.preset) run(() => preset(b.dataset.preset));
+    else if (b.dataset.step) run(() => stepGroup(b.dataset.step, Number(b.dataset.delta)));
+    else if (b.dataset.toggle) run(() => toggleGroup(b.dataset.toggle, !settings.groups[b.dataset.toggle].enabled));
     else if (b.dataset.viewSystem) run(() => viewGroup(b.dataset.viewSystem));
     else if (b.dataset.browse) {
       detailGroup = detailGroup === b.dataset.browse ? null : b.dataset.browse;
@@ -329,17 +358,10 @@ export async function initUI() {
       renderPartList();
     } else if (b.dataset.part) run(() => reveal(b.dataset.part));
   });
-  $("systemsList").addEventListener("change", (e) => {
-    if (e.target.dataset.toggle)
-      run(() => toggleGroup(e.target.dataset.toggle, e.target.checked));
-  });
-  $("frontViewBtn").onclick = () =>
-    frame(undefined, new THREE.Vector3(0, 0, 1));
-  $("backViewBtn").onclick = () =>
-    frame(undefined, new THREE.Vector3(0, 0, -1));
+  $("frontViewBtn").onclick = () => frame(undefined, new THREE.Vector3(0, 0, 1));
+  $("backViewBtn").onclick = () => frame(undefined, new THREE.Vector3(0, 0, -1));
   $("sideViewBtn").onclick = () => frame(undefined, new THREE.Vector3(1, 0, 0));
-  $("topViewBtn").onclick = () =>
-    frame(undefined, new THREE.Vector3(0, 1, 0.001).normalize());
+  $("topViewBtn").onclick = () => frame(undefined, new THREE.Vector3(0, 1, 0.001).normalize());
   $("resetBtn").onclick = () => frame();
   $("panAtlas").onclick = () => {
     moveMode = !moveMode;
@@ -347,7 +369,8 @@ export async function initUI() {
     c.mouseButtons.LEFT = moveMode ? THREE.MOUSE.PAN : THREE.MOUSE.ROTATE;
     c.touches.ONE = moveMode ? THREE.TOUCH.PAN : THREE.TOUCH.ROTATE;
     $("panAtlas").setAttribute("aria-pressed", String(moveMode));
-    $("panAtlas").textContent = moveMode ? "Move mode" : "Rotate mode";
+    $("panAtlas").title = moveMode ? "Mode geser aktif · klik untuk kembali memutar" : "Mode geser (atau Shift + seret)";
+    announce(moveMode ? "Mode geser: seret untuk menggeser model" : "Mode putar: seret untuk memutar model");
   };
   $("zoomInAtlas").onclick = () => zoom(0.8);
   $("zoomOutAtlas").onclick = () => zoom(1.25);
@@ -355,17 +378,25 @@ export async function initUI() {
   $("restoreAtlas").onclick = restoreScene;
   $("returnContext").onclick = returnContext;
   $("footerFocusBtn").onclick = () => {
-    const meta=metadata(state.selectedPart?.id);if(!meta)return;
-    frame(new THREE.Box3(new THREE.Vector3(...meta.box.slice(0,3)),new THREE.Vector3(...meta.box.slice(3))));
+    const meta = metadata(state.selectedPart?.id);
+    if (!meta) return;
+    frame(new THREE.Box3(new THREE.Vector3(...meta.box.slice(0, 3)), new THREE.Vector3(...meta.box.slice(3))));
   };
-  let fadedOthers=true;
+  let fadedOthers = true;
   $("footerFadeOthersBtn").onclick = () => {
-    if(!state.selectedPart)return;
-    fadedOthers=!fadedOthers;
-    if(fadedOthers)ghostAllExcept(state.selectedPart.id);else clearGhost();
-    $("footerFadeOthersBtn").setAttribute('aria-pressed',String(fadedOthers));
+    if (!state.selectedPart) return;
+    fadedOthers = !fadedOthers;
+    if (fadedOthers) ghostAllExcept(state.selectedPart.id);
+    else clearGhost();
+    $("footerFadeOthersBtn").setAttribute("aria-pressed", String(fadedOthers));
+    $("footerFadeOthersBtn").textContent = fadedOthers ? "Tampilkan lainnya" : "Pudarkan lainnya";
   };
-  subscribe('selectedPart',part=>{fadedOthers=!!part;$("footerFadeOthersBtn").setAttribute('aria-pressed',String(!!part));});
+  subscribe("selectedPart", (part) => {
+    // Selecting no longer fades the rest of the body (the quiz still does).
+    fadedOthers = !!part && document.body.classList.contains("anatomy-study-active");
+    $("footerFadeOthersBtn").setAttribute("aria-pressed", String(fadedOthers));
+    $("footerFadeOthersBtn").textContent = fadedOthers ? "Tampilkan lainnya" : "Pudarkan lainnya";
+  });
   $("footerIsolateBtn").onclick = isolateSelected;
   $("footerHideBtn").onclick = hideSelected;
   $("footerTransparentBtn").onclick = fadeSelected;
@@ -373,14 +404,14 @@ export async function initUI() {
   $("shareAtlas").onclick = async () => {
     try {
       await navigator.clipboard.writeText(hostedShareUrl(shareView()));
-      announce("View link copied");
+      announce("Tautan tampilan disalin");
     } catch {
       const input = $("shareUrl");
       input.hidden = false;
       input.value = hostedShareUrl(shareView());
       input.focus();
       input.select();
-      announce("Copy the selected view link");
+      announce("Salin tautan tampilan yang terpilih");
     }
   };
   $("emptyRestore").onclick = restoreScene;
@@ -389,7 +420,6 @@ export async function initUI() {
   subscribe("atlasChanged", update);
   subscribe("atlasLoading", announce);
   update();
-  // Native click selection remains available for the complete scene graph.
   state.viewer.canvas.addEventListener("keydown", (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") {
       e.preventDefault();
