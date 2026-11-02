@@ -51,6 +51,7 @@ function chapterIndex(app, subjectId) {
 //   source       "admin" | "submission" | "agent"
 //   submission   id pengajuan (opsional)
 //   skipInvalid  true = soal valid tetap masuk walau ada yang bermasalah
+//   setTitle     judul bagian untuk soal Drilling (mis. judul PDF); soal Drilling dikelompokkan per judul ini
 //   dryRun       true = hanya pratinjau
 //   status       "published" (bawaan) | "draft"
 function run(app, opts) {
@@ -200,6 +201,7 @@ function run(app, opts) {
       r.set("scope", scope);
       r.set("campuses", campuses);
       r.set("source", opts.source || "admin");
+      if (drilling) r.set("setTitle", String(opts.setTitle || "").slice(0, 200));
       if (opts.submission) r.set("submission", opts.submission);
       r.set("status", opts.status === "draft" ? "draft" : "published");
       r.set("schemaVersion", format.SCHEMA_VERSION);

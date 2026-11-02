@@ -29,11 +29,21 @@ routerAdd("GET", "/api/medcoel/drilling/subject/{subject}", (e) => {
   let questionCount = 0;
   let campusQuestionCount = 0;
   let answeredCount = 0;
+  // Bagian soal = judul PDF tempat soal itu berasal ("" = soal lainnya, tanpa judul).
+  const sets = [];
+  const setIndex = {};
   learn.pool(e.app, user, { subject: s.id, drilling: "only" }).forEach((it) => {
     questionCount++;
     if (it.seen) answeredCount++;
     if (it.scope === "campus") campusQuestionCount++;
+    if (setIndex[it.setTitle] === undefined) { setIndex[it.setTitle] = sets.length; sets.push({ title: it.setTitle, questionCount: 0, answeredCount: 0, campusQuestionCount: 0 }); }
+    const g = sets[setIndex[it.setTitle]];
+    g.questionCount++;
+    if (it.seen) g.answeredCount++;
+    if (it.scope === "campus") g.campusQuestionCount++;
   });
+  // Bagian bernama lebih dulu (A-Z), soal tanpa judul terakhir.
+  sets.sort((a, b2) => (a.title === "" ? 1 : b2.title === "" ? -1 : a.title.localeCompare(b2.title)));
   return e.json(200, {
     preview: !st.available,
     subject: {
@@ -49,6 +59,7 @@ routerAdd("GET", "/api/medcoel/drilling/subject/{subject}", (e) => {
     questionCount: questionCount,
     campusQuestionCount: campusQuestionCount,
     answeredCount: answeredCount,
+    sets: sets,
   });
 });
 

@@ -306,6 +306,7 @@ routerAdd("POST", "/api/medcoel/agent/import", (e) => {
   u.requireAgent(e);
   const b = u.body(e);
   const result = importer.run(e.app, {
+    setTitle: u.cleanStr(b.title, 200),
     input: b.questions !== undefined ? b.questions : b.text,
     subject: b.subject,
     chapter: b.chapter || "",

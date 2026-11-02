@@ -155,7 +155,7 @@ async function showQueue(chatId) {
 
 async function showSubmission(chatId, id) {
   const sub = await medcoel.getSubmission(id);
-  return telegram.sendMessage(chatId, `${queueCard(sub)}\n\n${howToSubmit(sub.code || id, sub.status, kindOf(sub))}`);
+  return telegram.sendMessage(chatId, `${queueCard(sub)}\n\n${howToSubmit(sub.code || id, sub.status, kindOf(sub), Number(sub.pdfCount || (sub.files || []).length))}`);
 }
 
 async function showFiles(chatId, id, only) {
@@ -187,7 +187,7 @@ async function accept(chatId, id) {
   await state.setLastNotified(code);
   // Pengumuman "masuk antrean" untuk pengajuan ini tidak perlu dikirim lagi: admin baru saja menerimanya.
   await state.markAnnounced(`${sub.id}:${sub.updated || sub.confirmedAt || sub.status || 'antre'}`);
-  return telegram.sendMessage(chatId, `✅ <b>${escapeHtml(code)}</b> sekarang ${escapeHtml(statusLabel(sub.status))}.\n\n${howToSubmit(code, sub.status, kindOf(sub))}`);
+  return telegram.sendMessage(chatId, `✅ <b>${escapeHtml(code)}</b> sekarang ${escapeHtml(statusLabel(sub.status))}.\n\n${howToSubmit(code, sub.status, kindOf(sub), Number(sub.pdfCount || (sub.files || []).length))}`);
 }
 
 async function claim(chatId, id) {

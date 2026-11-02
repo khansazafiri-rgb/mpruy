@@ -219,8 +219,10 @@ routerAdd("POST", "/api/medcoel/attempts/drilling", (e) => {
   let subject;
   try { subject = e.app.findRecordById("subjects", String(b.subject || "")); } catch (_) { subject = null; }
   if (!subject || subject.getBool("hidden")) throw new NotFoundError("Mata kuliah tidak ditemukan.");
-  const items = learn.pool(e.app, user, { subject: subject.id, drilling: "only" });
-  if (!items.length) throw new BadRequestError("Mata kuliah ini belum punya soal Drilling.");
+  // `set` (judul bagian, "" = soal lainnya) membatasi latihan ke satu bagian; tanpa `set` semua soal Drilling mata kuliah ini.
+  const bySet = b.set !== undefined && b.set !== null;
+  const items = learn.pool(e.app, user, bySet ? { subject: subject.id, drilling: "only", setTitle: String(b.set) } : { subject: subject.id, drilling: "only" });
+  if (!items.length) throw new BadRequestError(bySet ? "Bagian ini belum punya soal." : "Mata kuliah ini belum punya soal Drilling.");
   // Langsung mulai: tanpa jumlah, 20 soal (atau semua bila kurang); jumlah berlebih dipotong ke yang tersedia.
   const want = b.count === "all" ? 100 : parseInt(b.count, 10) || 20;
   const n = Math.max(1, Math.min(100, want, items.length));
@@ -230,8 +232,8 @@ routerAdd("POST", "/api/medcoel/attempts/drilling", (e) => {
     kind: "practice",
     mode: mode,
     subject: subject.id,
-    title: "Drilling " + subject.getString("name"),
-    settings: { drilling: true, subject: subject.id, count: n, mode: mode },
+    title: "Drilling " + subject.getString("name") + (bySet && String(b.set) ? " · " + String(b.set) : ""),
+    settings: { drilling: true, subject: subject.id, count: n, mode: mode, set: bySet ? String(b.set) : undefined },
     ids: picked.map((x) => x.id),
     timerMinutes: 0,
   });

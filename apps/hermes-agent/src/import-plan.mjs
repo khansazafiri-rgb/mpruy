@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
 import { escapeHtml } from './telegram.mjs';
-import { parsePut, joinChunks, tryParse, countQuestions, countSlides, detectKind } from './json-paste.mjs';
+import { parsePut, joinChunks, tryParse, countQuestions, countSlides, detectKind, pdfNumberFromName, resolvePdf } from './json-paste.mjs';
 import { kindOf } from './notify.mjs';
 
 const PLAN_TTL_MS = 2 * 60 * 60 * 1000;
@@ -24,6 +24,7 @@ export class ImportPlanFlow {
       '<b>Kirim hasil (JSON)</b>',
       '<code>/put KODE</code> lalu tempel JSON langsung di chat. Boleh beberapa pesan; selesai otomatis saat JSON lengkap, atau kirim <code>/selesai</code>.',
       '<code>/put</code> saja memakai pengajuan yang terakhir diumumkan.',
+      'Judul di web otomatis dari <b>judul PDF</b> pengajuan. Kalau pengajuan punya beberapa PDF, tambahkan nomor PDF-nya: <code>/put KODE 2</code> (nomor sama dengan <code>/files KODE 2</code>), atau beri nama file JSON seperti nama PDF-nya (<code>KODE_PDF-02-dari-3_nama.json</code>).',
       'Alternatif: kirim file .json dengan caption <code>/put [KODE]</code>.',
       '<code>/plan</code> — lihat rencana aktif',
       'Untuk pengajuan <b>PPT materi</b> isinya JSON materi (slide + penjelasan); tujuannya otomatis Drilling (materi).',
@@ -87,16 +88,18 @@ export class ImportPlanFlow {
 
   async handlePut(msg, caption) {
     const fileName = String(msg.document.file_name || 'upload');
-    const explicit = caption.match(/^\/put(?:\s+(\S+))?$/i)?.[1] || '';
+    const cap = caption.match(/^\/put(?:\s+(\S+))?(?:\s+(?:#|no\.?\s*|nomor\s*|pdf\s*#?\s*)?(\d{1,2}))?$/i);
+    const explicit = cap?.[1] || '';
     const inferred = fileName.match(/MC\d{6}-[A-Z0-9]{4}/i)?.[0] || '';
     const submissionId = explicit || inferred || this.state.data.lastNotified;
+    const pdf = Number(cap?.[2] || 0) || pdfNumberFromName(fileName);
     if (!submissionId) {
       return this.telegram.sendMessage(msg.chat.id, 'Kode pengajuan tidak ditemukan. Gunakan caption <code>/put MC261024-ABCD</code> atau beri nama file yang memuat kode MC.');
     }
-    return this.createPlanFromDocument(msg, submissionId, { type: 'drilling' });
+    return this.createPlanFromDocument(msg, submissionId, { type: 'drilling' }, pdf);
   }
 
-  async createPlanFromDocument(msg, submissionId, destination) {
+  async createPlanFromDocument(msg, submissionId, destination, pdf = 0) {
     const fileName = String(msg.document.file_name || 'upload');
     if (!/\.(json|txt)$/i.test(fileName)) {
       return this.telegram.sendMessage(msg.chat.id, 'Hermes menerima JSON sebagai Telegram document <code>.json</code> (atau .txt berisi JSON murni). Bisa juga ditempel langsung: <code>/put KODE</code> lalu isi JSON-nya.');
@@ -106,11 +109,11 @@ export class ImportPlanFlow {
     const raw = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
     const parsed = tryParse(raw);
     if (!parsed.ok) return this.telegram.sendMessage(msg.chat.id, jsonErrorMessage(parsed));
-    return this.createPlanFromRaw(msg, submissionId, raw, parsed.value, { fileName, telegramFileId: String(msg.document.file_id), destination });
+    return this.createPlanFromRaw(msg, submissionId, raw, parsed.value, { fileName, telegramFileId: String(msg.document.file_id), destination, pdf });
   }
 
   // Dipakai bersama oleh jalur file dan jalur tempel teks.
-  async createPlanFromRaw(msg, submissionId, raw, parsedValue, { fileName, telegramFileId = '', destination }) {
+  async createPlanFromRaw(msg, submissionId, raw, parsedValue, { fileName, telegramFileId = '', destination, pdf = 0 }) {
     const sub = await this.medcoel.getSubmission(submissionId);
     const kind = kindOf(sub);
     // JSON yang salah jalur ditolak sebelum rencana dibuat: PPT materi butuh JSON slide, pengajuan soal butuh JSON soal.
@@ -120,6 +123,11 @@ export class ImportPlanFlow {
     }
     if (kind === 'materi' && destination?.type === 'subject') {
       return this.telegram.sendMessage(msg.chat.id, `❌ <b>${escapeHtml(sub.code || submissionId)}</b> adalah PPT materi, jadi tidak bisa dimasukkan ke BAB. Materi tayang di Drilling mata kuliahnya.`);
+    }
+    // Judul di web diambil dari judul PDF pengajuan (satu PDF otomatis; beberapa PDF lewat nomor PDF).
+    const picked = resolvePdf(sub.files, pdf);
+    if (picked.missing) {
+      return this.telegram.sendMessage(msg.chat.id, `❌ PDF nomor ${escapeHtml(pdf)} tidak ada. <b>${escapeHtml(sub.code || submissionId)}</b> punya ${picked.count} PDF (nomor 1 sampai ${picked.count}).`);
     }
     const bodyRef = telegramFileId ? '' : await this.state.putBody(msg.chat.id, msg.from.id, raw);
     const plan = await this.state.putImportPlan(msg.chat.id, msg.from.id, {
@@ -132,6 +140,10 @@ export class ImportPlanFlow {
       fileName,
       fileHash: hashRaw(raw),
       contentKind: kind,
+      pdfNumber: picked.pdf,
+      pdfCount: picked.count,
+      pdfTitle: picked.title,
+      jsonTitle: kind === 'materi' && typeof parsedValue?.title === 'string' ? parsedValue.title.trim() : '',
       questionCount: kind === 'materi' ? 0 : countQuestions(parsedValue),
       slideCount: kind === 'materi' ? countSlides(parsedValue) : 0,
       source: {
@@ -163,6 +175,7 @@ export class ImportPlanFlow {
     this.sessions.set(this.sessionKey(chatId, msg.from.id), {
       submissionId: sub.id || code,
       submissionCode: sub.code || code,
+      pdf: put.pdf || 0,
       chunks: [],
       bytes: 0,
       startedAt: now,
@@ -220,6 +233,7 @@ export class ImportPlanFlow {
     return this.createPlanFromRaw(msg, session.submissionId, raw, parsed.value, {
       fileName: '(ditempel lewat teks)',
       destination: { type: 'drilling' },
+      pdf: session.pdf || 0,
     });
   }
   async showPlan(chatId, actorId) {
@@ -309,7 +323,7 @@ export class ImportPlanFlow {
       return this.telegram.sendMessage(chatId,
         `🚀 <b>Materi berhasil diimpor</b>\n` +
         `Pengajuan: <b>${escapeHtml(plan.submissionCode)}</b>\n` +
-        `Judul: ${escapeHtml(imported?.title || check?.title || '—')}\n` +
+        `Judul di web: <b>${escapeHtml(imported?.title || check?.title || '—')}</b>${imported?.titleSource === 'pdf' ? ' <i>(dari judul PDF)</i>' : imported?.titleSource === 'json' ? ' <i>(dari JSON)</i>' : ''}\n` +
         `Slide: ${Number(imported?.slideCount || 0)}${imported?.replaced ? ' <i>(memperbarui materi dengan judul yang sama)</i>' : ''}\n` +
         `Tujuan: ${destinationLabel(plan.destination)}\n` +
         `Hash: <code>${escapeHtml(plan.fileHash)}</code>`
@@ -332,17 +346,20 @@ export class ImportPlanFlow {
       `🚀 <b>Import berhasil</b>\n` +
       `Pengajuan: <b>${escapeHtml(plan.submissionCode)}</b>\n` +
       `Tujuan: ${destinationLabel(plan.destination)}\n` +
+      (plan.destination?.type === 'drilling' ? `Bagian di web: <b>${escapeHtml(imported?.setTitle || 'Soal lainnya')}</b>\n` : '') +
       `Created: ${Number(imported?.created || 0)}\n` +
       `Duplikat dilewati: ${Number(imported?.duplicates || 0)}\n` +
       `Hash: <code>${escapeHtml(plan.fileHash)}</code>`
+      + (imported?.titleNote ? `\n\n⚠️ ${escapeHtml(imported.titleNote)}` : '')
     );
   }
 
   runImport(plan, raw, dryRun) {
     const common = { text: raw, skipInvalid: false, dryRun };
-    if (plan.destination?.type === 'deck') return this.medcoel.importDeckSubmission(plan.submissionId, { text: raw, dryRun });
+    const pdf = plan.pdfNumber || undefined;
+    if (plan.destination?.type === 'deck') return this.medcoel.importDeckSubmission(plan.submissionId, { text: raw, dryRun, pdf });
     if (plan.destination?.type === 'drilling') {
-      return this.medcoel.importDrillingSubmission(plan.submissionId, common);
+      return this.medcoel.importDrillingSubmission(plan.submissionId, { ...common, pdf });
     }
     return this.medcoel.importSubmission(plan.submissionId, {
       ...common,
@@ -373,6 +390,7 @@ function planCard(plan) {
       '',
       `JSON: ${escapeHtml(plan.fileName)}`,
       `Slide terdeteksi: ${Number(plan.slideCount || 0) || '—'}`,
+      titleLine(plan, 'materi'),
       `Sumber mata kuliah: ${escapeHtml(s.subjectName || s.subjectId || '—')}`,
       `Tujuan: ${destinationLabel(plan.destination)}`,
       `Scope: ${scope} <i>(locked dari submission)</i>`,
@@ -387,6 +405,7 @@ function planCard(plan) {
     '',
     `JSON: ${escapeHtml(plan.fileName)}`,
     `Soal terdeteksi: ${Number(plan.questionCount || 0) || '—'}`,
+    ...(plan.destination?.type === 'drilling' ? [titleLine(plan, 'soal')] : []),
     `Sumber mata kuliah: ${escapeHtml(s.subjectName || s.subjectId || '—')}`,
     `Tujuan: ${destinationLabel(plan.destination)}`,
     `Scope: ${scope} <i>(locked dari submission)</i>`,
@@ -396,6 +415,16 @@ function planCard(plan) {
     'Ubah tujuan dengan <code>/change drilling</code> atau <code>/change chapter ID_BAB</code>.',
     'Jika sudah benar, kirim <code>/confirm</code>.',
   ].join('\n');
+}
+
+// Baris "Judul" di kartu rencana. Judul di web: nama PDF (satu PDF otomatis, atau nomor PDF dipilih lewat /put KODE N).
+function titleLine(plan, kind) {
+  const code = escapeHtml(plan.submissionCode);
+  const label = kind === 'materi' ? 'Judul materi di web' : 'Bagian soal di web';
+  if (plan.pdfTitle) return `${label}: <b>${escapeHtml(plan.pdfTitle)}</b> <i>(judul PDF ${plan.pdfNumber}${plan.pdfCount > 1 ? ` dari ${plan.pdfCount}` : ''})</i>`;
+  if (kind === 'materi' && plan.jsonTitle) return `${label}: <b>${escapeHtml(plan.jsonTitle)}</b> <i>(dari JSON)</i>`;
+  if (plan.pdfCount > 1) return `${label}: ⚠️ belum bisa ditentukan, ada ${plan.pdfCount} PDF. Kirim ulang dengan nomor PDF-nya: <code>/put ${code} 2</code>${kind === 'materi' ? ' (atau isi title di JSON)' : ' (tanpa nomor, soal masuk "Soal lainnya")'}.`;
+  return `${label}: ${kind === 'materi' ? 'judul bawaan bertanggal' : 'Soal lainnya'}`;
 }
 
 function destinationLabel(destination) {

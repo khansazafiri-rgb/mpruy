@@ -82,3 +82,12 @@
 /* Sel tabel tidak dipotong di tengah kata; tabel yang lebar bergulir ke samping di dalam kotaknya. */
 .deck-table table { min-width: 30rem; }
 .deck-table th, .deck-table td { overflow-wrap: break-word; word-break: normal; }
+
+/* Bagian soal Drilling (satu bagian = satu PDF) */
+.deck-sets { display: grid; gap: .6rem; }
+.deck-set { display: flex; align-items: center; gap: .9rem; padding: .8rem 1rem; border-radius: 16px; background: #fff; border: 1.5px solid rgb(var(--ink) / .1); }
+.deck-set.is-all { background: rgb(var(--brand-soft)); border-color: rgb(var(--brand) / .35); }
+.deck-set-main { display: grid; gap: .25rem; min-width: 0; flex: 1; }
+.deck-set-main b { font-size: 16px; overflow-wrap: anywhere; }
+.deck-set-main small { font-size: 13px; color: rgb(var(--ink-muted)); }
+@media (max-width: 480px) { .deck-set { flex-wrap: wrap; } .deck-set > button { width: 100%; justify-content: center; } }

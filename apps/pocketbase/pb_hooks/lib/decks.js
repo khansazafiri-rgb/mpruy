@@ -136,7 +136,13 @@ function importDeck(app, opts) {
   const base = { slideCount: parsed.slideCount, warnings: parsed.warnings };
   if (parsed.blocked) return Object.assign({ blocked: true, created: 0, updated: 0 }, base, { items: parsed.items });
   const deck = parsed.deck;
-  const title = String(deck.title || opts.title || "").trim() || "Materi " + u.localDate(new Date(), "WIB");
+  // Judul: forceTitle (mis. judul PDF) > judul di JSON > opts.title > judul bawaan bertanggal.
+  const forced = String(opts.forceTitle || "").trim();
+  if (!forced && !deck.title && opts.titleError) {
+    return Object.assign({ blocked: true, created: 0, updated: 0 }, base, { items: [{ index: 0, errors: [opts.titleError] }] });
+  }
+  const title = forced || String(deck.title || opts.title || "").trim() || "Materi " + u.localDate(new Date(), "WIB");
+  const titleSource = forced ? opts.forceSource || "request" : deck.title ? "json" : opts.title ? "request" : "default";
   const scope = opts.scope === "campus" ? "campus" : "all";
   const campuses = scope === "campus" ? resolveCampuses(app, opts.campuses) : [];
   if (scope === "campus" && !campuses.length) throw new BadRequestError("Pilih minimal satu kampus untuk materi khusus kampus.");
@@ -152,7 +158,7 @@ function importDeck(app, opts) {
       return a === campuses.slice().sort().join(",");
     })[0] || null;
   } catch (_) { existing = null; }
-  const result = Object.assign({ blocked: false, title: title, scope: scope, created: existing ? 0 : 1, updated: existing ? 1 : 0, replaced: !!existing }, base, { items: [] });
+  const result = Object.assign({ blocked: false, title: title, titleSource: titleSource, pdf: opts.pdf, scope: scope, created: existing ? 0 : 1, updated: existing ? 1 : 0, replaced: !!existing }, base, { items: [] });
   if (opts.dryRun) return result;
 
   const rec = existing || new Record(app.findCollectionByNameOrId("drilling_decks"));
