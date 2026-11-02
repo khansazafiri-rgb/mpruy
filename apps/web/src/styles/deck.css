@@ -1,0 +1,84 @@
+/* Penjelasan slide materi (components/SlideBlocks.jsx) dan pembaca slide (pages/DrillingDeck.jsx). */
+.deck-body { font-size: 16px; line-height: 1.72; color: rgb(var(--ink)); overflow-wrap: anywhere; }
+.deck-body > * + * { margin-top: .8rem; }
+.deck-body strong { font-weight: 700; }
+.deck-p { white-space: pre-line; }
+.deck-indent[data-indent="1"] { margin-left: 1.4rem; }
+.deck-indent[data-indent="2"] { margin-left: 2.8rem; }
+.deck-indent[data-indent="3"] { margin-left: 4.2rem; }
+.deck-h { font-weight: 800; letter-spacing: -.02em; line-height: 1.3; margin-top: 1.2rem; }
+.deck-h.is-1 { font-size: 22px; }
+.deck-h.is-2 { font-size: 18.5px; }
+.deck-h.is-3 { font-size: 16px; text-transform: uppercase; letter-spacing: .05em; color: rgb(var(--brand-dark)); }
+.deck-body > .deck-h:first-child { margin-top: 0; }
+
+/* Daftar: nomor di kiri, teks sejajar rapi (jorokan gantung), anak butir menjorok lebih dalam. */
+.deck-list { display: grid; gap: .4rem; padding-left: 1.85rem; }
+.deck-list .deck-list { margin-top: .4rem; padding-left: 1.65rem; }
+.deck-list.is-number { list-style: decimal; }
+.deck-list.is-alpha { list-style: lower-alpha; }
+.deck-list.is-bullet { list-style: disc; }
+.deck-list.is-bullet .deck-list.is-bullet { list-style: circle; }
+.deck-list.is-bullet .deck-list.is-bullet .deck-list.is-bullet { list-style: square; }
+.deck-list.is-alpha .deck-list.is-alpha { list-style: lower-roman; }
+.deck-list > li { padding-left: .2rem; }
+.deck-list > li::marker { color: rgb(var(--brand-dark)); font-weight: 700; }
+.deck-li-text { white-space: pre-line; }
+.deck-li-body { display: block; min-width: 0; }
+.deck-list.is-check { list-style: none; padding-left: 0; }
+.deck-list.is-check .deck-list { padding-left: 1.6rem; }
+.deck-check { display: flex; align-items: flex-start; gap: .6rem; padding-left: 0; }
+.deck-check-box { display: grid; place-items: center; width: 22px; height: 22px; flex-shrink: 0; margin-top: .2rem; border-radius: 7px; border: 1.5px solid rgb(var(--ink) / .25); background: #fff; color: rgb(var(--brand-dark)); }
+.deck-check.is-done .deck-check-box { background: rgb(var(--brand-soft)); border-color: rgb(var(--brand)); }
+.deck-quote { border-left: 4px solid rgb(var(--brand) / .55); padding: .2rem 0 .2rem 1rem; color: rgb(var(--ink) / .8); font-style: italic; }
+.deck-hr { border: 0; border-top: 1.5px dashed rgb(var(--ink) / .15); margin: 1.2rem 0; }
+.deck-callout { margin: 1rem 0; }
+.deck-callout .notes-callout-body > * + * { margin-top: .5rem; }
+.deck-table { overflow-x: auto; border-radius: 14px; border: 1.5px solid rgb(var(--ink) / .1); }
+.deck-table table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.deck-table th { text-align: left; background: rgb(var(--brand-soft)); font-weight: 700; }
+.deck-table th, .deck-table td { padding: .55rem .8rem; border-bottom: 1px solid rgb(var(--ink) / .08); vertical-align: top; }
+.deck-table tr:last-child td { border-bottom: 0; }
+
+/* Pembaca slide */
+.deck-stage { display: grid; gap: 1.25rem; }
+@media (min-width: 1024px) { .deck-stage { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; } .deck-visual { position: sticky; top: 1rem; } }
+.deck-visual { display: grid; gap: .75rem; }
+.deck-frame { position: relative; display: block; width: 100%; padding: .55rem; border-radius: 20px; background: #fff; border: 1.5px solid rgb(var(--ink) / .1); box-shadow: 0 4px 0 rgb(var(--nm, var(--brand)) / .5), 0 18px 34px -24px rgb(var(--ink) / .45); cursor: zoom-in; }
+.deck-frame img { display: block; width: 100%; height: auto; max-height: 70dvh; object-fit: contain; border-radius: 12px; background: rgb(var(--paper)); }
+.deck-frame .deck-zoom { position: absolute; right: 1rem; bottom: 1rem; display: inline-flex; align-items: center; gap: .3rem; padding: .3rem .6rem; border-radius: 99px; background: rgb(var(--ink) / .72); color: #fff; font-size: 12px; font-weight: 700; }
+.deck-broken { display: grid; place-items: center; gap: .4rem; min-height: 12rem; padding: 1rem; text-align: center; color: rgb(var(--ink-muted)); font-size: 14px; }
+.deck-extra { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: .5rem; }
+.deck-extra button { padding: .3rem; border-radius: 12px; border: 1.5px solid rgb(var(--ink) / .1); background: #fff; }
+.deck-extra button[aria-current="true"] { border-color: rgb(var(--brand)); box-shadow: 0 0 0 2px rgb(var(--brand-soft)); }
+.deck-extra img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; }
+.deck-explain { padding: 1.1rem 1.15rem 1.3rem; border-radius: 22px; background: #fff; border: 1.5px solid rgb(var(--ink) / .1); box-shadow: 0 4px 0 rgb(var(--ink) / .06); }
+.deck-explain-head { display: flex; align-items: center; gap: .55rem; margin-bottom: .8rem; font-size: 12.5px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: rgb(var(--brand-dark)); }
+.deck-empty-note { color: rgb(var(--ink-muted)); font-size: 15px; }
+.deck-nav { display: flex; align-items: center; gap: .6rem; }
+.deck-nav .deck-progress { flex: 1; height: 8px; border-radius: 99px; background: rgb(var(--ink) / .1); overflow: hidden; }
+.deck-nav .deck-progress > span { display: block; height: 100%; border-radius: inherit; background: rgb(var(--brand)); transition: width .25s; }
+.deck-strip { display: flex; gap: .5rem; overflow-x: auto; padding: .25rem .1rem .6rem; scroll-snap-type: x proximity; }
+.deck-strip button { flex: 0 0 auto; width: 7.2rem; scroll-snap-align: center; padding: .25rem; border-radius: 12px; border: 1.5px solid rgb(var(--ink) / .1); background: #fff; text-align: left; }
+.deck-strip button[aria-current="true"] { border-color: rgb(var(--brand)); box-shadow: 0 0 0 2px rgb(var(--brand-soft)); }
+.deck-strip img, .deck-strip .deck-thumb-blank { display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; background: rgb(var(--paper)); }
+.deck-strip .deck-thumb-blank { display: grid; place-items: center; font-weight: 800; color: rgb(var(--ink-muted)); }
+.deck-strip small { display: block; margin-top: .2rem; font-size: 11px; font-weight: 700; color: rgb(var(--ink-muted)); }
+@media (prefers-reduced-motion: reduce) { .deck-nav .deck-progress > span { transition: none; } }
+
+/* Kartu materi di halaman mata kuliah Drilling */
+.deck-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+.deck-card { display: flex; flex-direction: column; overflow: hidden; background: #fff; text-decoration: none; }
+.deck-card-cover { position: relative; display: block; aspect-ratio: 16/10; background: rgb(var(--paper)); overflow: hidden; }
+.deck-card-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+.deck-card:hover .deck-card-cover img { transform: scale(1.04); }
+.deck-card-blank { position: absolute; inset: 0; display: grid; place-items: center; color: rgb(var(--ink-muted)); }
+.deck-card-count { position: absolute; left: .6rem; bottom: .6rem; display: inline-flex; align-items: center; gap: .3rem; padding: .22rem .55rem; border-radius: 99px; background: rgb(var(--ink) / .74); color: #fff; font-size: 12px; font-weight: 700; }
+.deck-card-body { display: flex; flex-direction: column; gap: .35rem; padding: .9rem 1rem 1rem; }
+.deck-card-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 13.5px; line-height: 1.5; color: rgb(var(--ink-muted)); }
+.deck-card-meta { display: inline-flex; align-items: center; gap: .3rem; font-size: 12.5px; font-weight: 700; color: rgb(var(--brand-dark)); }
+@media (prefers-reduced-motion: reduce) { .deck-card-cover img { transition: none; } }
+
+/* Sel tabel tidak dipotong di tengah kata; tabel yang lebar bergulir ke samping di dalam kotaknya. */
+.deck-table table { min-width: 30rem; }
+.deck-table th, .deck-table td { overflow-wrap: break-word; word-break: normal; }

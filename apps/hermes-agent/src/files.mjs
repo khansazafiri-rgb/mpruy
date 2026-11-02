@@ -10,15 +10,20 @@ function safeName(raw) {
   return (base.length > MAX_ORIGINAL ? base.slice(0, MAX_ORIGINAL).trim() : base) || 'tanpa-nama';
 }
 
-/** index berbasis 0. Mengembalikan { filename, caption } untuk satu PDF dari `total` PDF. */
-export function describeFile(code, index, total, originalName) {
+/**
+ * index berbasis 0. Mengembalikan { filename, caption } untuk satu PDF dari `total` PDF.
+ * kind: "materi" (PPT) atau "soal" (bawaan). PPT materi diberi penanda MATERI di nama berkas dan keterangan,
+ * jadi jenisnya tetap terbaca setelah PDF diteruskan atau diunduh.
+ */
+export function describeFile(code, index, total, originalName, kind = 'soal') {
   const n = index + 1;
   const width = String(total).length;
   const num = String(n).padStart(width, '0');
   const name = safeName(originalName);
+  const materi = kind === 'materi';
   return {
-    filename: `${code}_PDF-${num}-dari-${total}_${name}.pdf`,
-    caption: `${code} · PDF ${n}/${total} · ${name}`,
+    filename: `${code}${materi ? '_MATERI' : ''}_PDF-${num}-dari-${total}_${name}.pdf`,
+    caption: `${materi ? `📚 PPT MATERI · ${code}` : code} · PDF ${n}/${total} · ${name}`,
   };
 }
 

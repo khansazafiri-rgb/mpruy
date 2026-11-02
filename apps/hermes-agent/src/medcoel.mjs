@@ -70,6 +70,14 @@ export class MedcoelClient {
     });
   }
 
+  // Pengajuan PPT materi: slide + penjelasan masuk sebagai berkas materi di Drilling.
+  importDeckSubmission(id, payload) {
+    return this.request(`/api/medcoel/agent/submissions/${encodeURIComponent(id)}/materi-import`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+  }
+
   importAdmin(payload) {
     return this.request('/api/medcoel/agent/import', {
       method: 'POST',

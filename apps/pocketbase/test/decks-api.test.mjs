@@ -1,0 +1,225 @@
+// TES API MATERI DRILLING (berkas slide + penjelasan) dan pilihan isi PDF pengajuan (soal / PPT materi).
+//
+//   MEDCOEL_DEV_MODE=1 ./pocketbase serve --http=127.0.0.1:8090 --dir=/tmp/pb-test --migrationsDir=./pb_migrations --hooksDir=./pb_hooks
+//   ./pocketbase superuser upsert dev@medcoel.local devpassword123 --dir=/tmp/pb-test
+//   PB_URL=http://127.0.0.1:8090 node test/decks-api.test.mjs
+//
+// Tes ini MENGISI database dengan data uji; jangan dijalankan ke server produksi.
+import assert from 'node:assert/strict';
+
+const B = process.env.PB_URL || 'http://127.0.0.1:8090';
+const SU = { identity: process.env.PB_SU_EMAIL || 'dev@medcoel.local', password: process.env.PB_SU_PASSWORD || 'devpassword123' };
+const RUN = Date.now().toString(36);
+const LH3 = (c) => 'https://lh3.googleusercontent.com/d/' + c.repeat(30);
+const PDF = Buffer.from('%PDF-1.4\n1 0 obj<<>>endobj\ntrailer<<>>\n%%EOF\n');
+
+let lulus = 0;
+const langkah = async (nama, fn) => {
+  try { await fn(); lulus++; console.log('  ok', nama); } catch (e) { console.error('GAGAL:', nama, '\n', e); process.exitCode = 1; }
+};
+
+async function call(method, path, body, token, expect) {
+  const headers = {};
+  if (token) headers.Authorization = token;
+  let payload;
+  if (body instanceof FormData) payload = body;
+  else if (body !== undefined) { headers['Content-Type'] = 'application/json'; payload = JSON.stringify(body); }
+  const r = await fetch(B + path, { method, headers, body: payload });
+  const text = await r.text();
+  let data; try { data = JSON.parse(text); } catch { data = text; }
+  if (expect !== undefined && r.status !== expect) throw new Error(`${method} ${path} -> ${r.status}, harapannya ${expect}: ${text.slice(0, 500)}`);
+  return { status: r.status, data };
+}
+
+const su = (await call('POST', '/api/collections/_superusers/auth-with-password', SU, null, 200)).data.token;
+async function akun(role, campus) {
+  const loginId = `${role}${campus ? 'k' : 'n'}${RUN}${Math.random().toString(36).slice(2, 5)}`;
+  const password = 'rahasia-' + RUN;
+  await call('POST', '/api/collections/users/records', { loginId, name: `${role} Uji`, email: `${loginId}@contoh.test`, password, passwordConfirm: password, role, verified: true, ...(campus ? { campus } : {}) }, su, 200);
+  const a = (await call('POST', '/api/collections/users/auth-with-password', { identity: loginId, password }, null, 200)).data;
+  return { token: a.token, id: a.record.id };
+}
+async function upload(subId, token) {
+  const i = (await call('POST', '/api/medcoel/upload/init', { kind: 'submission_pdf', name: 'ppt.pdf', size: PDF.length, mime: 'application/pdf', submission: subId }, token, 200)).data;
+  const fd = new FormData();
+  fd.append('fileId', i.fileId); fd.append('uploadKey', i.uploadKey);
+  fd.append('file', new Blob([PDF], { type: 'application/pdf' }), 'ppt.pdf');
+  await call('POST', '/api/medcoel/upload/local', fd, token, 200);
+}
+
+const campuses = (await call('GET', '/api/collections/campuses/records?perPage=5&sort=order', undefined, null, 200)).data.items;
+const [kampusA, kampusB] = campuses;
+const subjects = (await call('GET', '/api/medcoel/public-subjects', undefined, null, 200)).data.items;
+const mk = subjects[6];
+const admin = await akun('admin');
+const agent = await akun('agent');
+const userA = await akun('user', kampusA.id);
+const userB = await akun('user', kampusB.id);
+const userC = await akun('user');
+const setting = (await call('GET', '/api/collections/app_settings/records?perPage=1', undefined, admin.token, 200)).data.items[0];
+const drilling = (on) => call('PATCH', `/api/collections/app_settings/records/${setting.id}`, { drillingEnabled: on }, admin.token, 200);
+await drilling(false);
+
+const deck = (judul, extra = {}) => ({
+  title: judul + ' ' + RUN,
+  slides: [
+    { image: LH3('A'), explanation: '## Pengantar\nTulang panjang punya **diafisis**.\n\n1. Satu\n\t- anak a\n\t- anak b\n2. Dua' },
+    { image: LH3('B'), blocks: [{ type: 'callout', kind: 'klinis', title: 'Klinis', text: 'Fraktur 🦴' }] },
+  ],
+  ...extra,
+});
+
+console.log('Materi Drilling');
+await langkah('materi tidak membuka menu selama sakelar mati; hanya admin yang bisa mengimpor', async () => {
+  await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, slides: deck('X').slides }, userA.token, 403);
+  await call('POST', '/api/medcoel/agent/materi-import', { subject: mk.id, deck: deck('X') }, userA.token, 403);
+  await call('GET', '/api/medcoel/admin/drilling/decks', undefined, userA.token, 403);
+});
+
+await langkah('admin: dry-run memeriksa tanpa menyimpan; galat jelas per slide; gambar bukan lh3 ditolak', async () => {
+  const dry = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, deck: deck('Osteologi'), dryRun: true }, admin.token, 200)).data;
+  assert.equal(dry.slideCount, 2);
+  assert.equal(dry.created, 1);
+  assert.equal((await call('GET', `/api/medcoel/admin/drilling/decks?subject=${mk.id}`, undefined, admin.token, 200)).data.items.length, 0);
+  const bad = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, deck: { slides: [{ image: 'https://evil.example/x.png', explanation: 'x' }, {}] } }, admin.token, 400)).data;
+  assert.equal(bad.blocked, true);
+  assert.equal(bad.items.length, 2);
+  assert.match(bad.items[0].errors[0], /lh3/);
+  assert.match(bad.message, /Slide 1: .*lh3/, 'respons 400 membawa kalimat galat yang bisa langsung ditampilkan');
+  await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, scope: 'campus', campuses: [], deck: deck('Tanpa kampus') }, admin.token, 400);
+});
+
+let general; let khusus;
+await langkah('impor General dan khusus kampus; impor ulang judul yang sama memperbarui, tidak menggandakan', async () => {
+  general = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, deck: deck('Osteologi') }, admin.token, 200)).data;
+  assert.equal(general.created, 1);
+  const again = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, deck: deck('Osteologi') }, admin.token, 200)).data;
+  assert.equal(again.updated, 1);
+  assert.equal(again.id, general.id);
+  khusus = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, scope: 'campus', campuses: [kampusA.id], deck: deck('Khusus A') }, admin.token, 200)).data;
+  const list = (await call('GET', `/api/medcoel/admin/drilling/decks?subject=${mk.id}`, undefined, admin.token, 200)).data.items;
+  assert.equal(list.length, 2);
+  const k = list.find((x) => x.id === khusus.id);
+  assert.deepEqual(k.campuses.map((c) => c.id), [kampusA.id]);
+  assert.equal(k.slideCount, 2);
+});
+
+await langkah('menu Drilling terbuka setelah sakelar menyala; hak lihat per kampus (A melihat dua, B dan tanpa kampus satu)', async () => {
+  for (const u of [userA, userB, userC]) assert.equal((await call('GET', '/api/medcoel/me', undefined, u.token, 200)).data.drillingAvailable, false);
+  await drilling(true);
+  for (const u of [userA, userB, userC]) assert.equal((await call('GET', '/api/medcoel/me', undefined, u.token, 200)).data.drillingAvailable, true);
+  const lihat = async (u) => (await call('GET', `/api/medcoel/drilling/subject/${mk.slug}`, undefined, u.token, 200)).data;
+  assert.deepEqual((await lihat(userA)).decks.map((d) => d.title).sort(), ['Khusus A ' + RUN, 'Osteologi ' + RUN]);
+  assert.deepEqual((await lihat(userB)).decks.map((d) => d.title), ['Osteologi ' + RUN]);
+  assert.deepEqual((await lihat(userC)).decks.map((d) => d.title), ['Osteologi ' + RUN]);
+  const hub = (await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data;
+  const row = hub.subjects.find((s) => s.id === mk.id);
+  assert.equal(row.deckCount, 2);
+  assert.equal(row.slideCount, 4);
+  assert.equal(row.campusDeckCount, 1);
+  assert.equal(row.questionCount, 0);
+  const rowB = (await call('GET', '/api/medcoel/drilling', undefined, userB.token, 200)).data.subjects.find((s) => s.id === mk.id);
+  assert.equal(rowB.deckCount, 1);
+});
+
+await langkah('berkas lengkap: blok bersarang tersimpan; kampus lain mendapat 404', async () => {
+  const d = (await call('GET', `/api/medcoel/drilling/deck/${khusus.id}`, undefined, userA.token, 200)).data;
+  assert.equal(d.slides.length, 2);
+  const list = d.slides[0].blocks.find((b) => b.type === 'list');
+  assert.equal(list.style, 'number');
+  assert.equal(list.items[0].children[0].items.length, 2);
+  assert.equal(d.slides[1].blocks[0].kind, 'klinis');
+  assert.equal(d.subjectSlug, mk.slug);
+  await call('GET', `/api/medcoel/drilling/deck/${khusus.id}`, undefined, userB.token, 404);
+  await call('GET', `/api/medcoel/drilling/deck/${khusus.id}`, undefined, userC.token, 404);
+  await call('GET', `/api/medcoel/drilling/deck/${general.id}`, undefined, null, 401);
+});
+
+await langkah('draf tidak terlihat pengguna; admin bisa mengubah status, kampus, dan menghapus', async () => {
+  await call('POST', `/api/medcoel/admin/drilling/decks/${general.id}`, { status: 'draft' }, admin.token, 200);
+  // Satu-satunya materi yang terlihat B adalah draf ini, jadi menu Drilling tertutup untuknya.
+  await call('GET', `/api/medcoel/drilling/subject/${mk.slug}`, undefined, userB.token, 404);
+  await call('GET', `/api/medcoel/drilling/deck/${general.id}`, undefined, userB.token, 404);
+  assert.equal((await call('GET', `/api/medcoel/admin/drilling/decks/${general.id}`, undefined, admin.token, 200)).data.slides.length, 2);
+  await call('POST', `/api/medcoel/admin/drilling/decks/${general.id}`, { status: 'published', scope: 'campus', campuses: [kampusB.id] }, admin.token, 200);
+  assert.deepEqual((await call('GET', `/api/medcoel/drilling/subject/${mk.slug}`, undefined, userB.token, 200)).data.decks.map((d) => d.title), ['Osteologi ' + RUN]);
+  // Tanpa kampus dan tanpa materi General, menu Drilling tertutup untuknya (sama seperti soal).
+  await call('GET', `/api/medcoel/drilling/subject/${mk.slug}`, undefined, userC.token, 404);
+  assert.equal((await call('GET', '/api/medcoel/me', undefined, userC.token, 200)).data.drillingAvailable, false);
+  await call('POST', `/api/medcoel/admin/drilling/decks/${general.id}/delete`, {}, userA.token, 403);
+  await call('POST', `/api/medcoel/admin/drilling/decks/${general.id}/delete`, {}, admin.token, 200);
+  await call('GET', `/api/medcoel/admin/drilling/decks/${general.id}`, undefined, admin.token, 404);
+});
+
+console.log('Pengajuan PPT materi');
+let sub; let soalSub;
+await langkah('pengaju memilih isi PDF: PPT materi tanpa kunci/bahasa; bawaan tetap soal', async () => {
+  soalSub = (await call('POST', '/api/medcoel/submissions', { subject: mk.id, hasKey: true, language: 'id', scope: 'all', pdfCount: 1 }, userC.token, 200)).data;
+  assert.equal(soalSub.contentKind, 'soal');
+  sub = (await call('POST', '/api/medcoel/submissions', { subject: mk.id, contentKind: 'materi', scope: 'campus', pdfCount: 1 }, userA.token, 200)).data;
+  assert.equal(sub.contentKind, 'materi');
+  assert.equal(sub.hasKey, false);
+  await upload(sub.id, userA.token);
+  const sent = (await call('POST', `/api/medcoel/submissions/${sub.id}/send`, { agreement: true }, userA.token, 200)).data;
+  assert.equal(sent.contentKind, 'materi');
+  await call('POST', `/api/medcoel/admin/submissions/${sub.id}/status`, { status: 'antre' }, admin.token, 200);
+});
+
+await langkah('Hermes melihat jenis isi (contentKind, kindLabel) di antrean dan detail', async () => {
+  const list = (await call('GET', '/api/medcoel/agent/submissions?status=antre', undefined, agent.token, 200)).data.items;
+  const mine = list.find((x) => x.id === sub.id);
+  assert.equal(mine.contentKind, 'materi');
+  assert.equal(mine.kindLabel, 'PPT materi');
+  assert.equal((await call('GET', `/api/medcoel/agent/submissions/${sub.code}`, undefined, agent.token, 200)).data.contentKind, 'materi');
+});
+
+await langkah('pengajuan materi tidak bisa diimpor sebagai soal, dan sebaliknya', async () => {
+  const r = await call('POST', `/api/medcoel/agent/submissions/${sub.id}/import`, { questions: [{ type: 'A', text: 'x?', options: ['a', { text: 'b', correct: true }] }] }, agent.token, 400);
+  assert.match(r.data.message, /PPT materi/);
+  const dr = await call('POST', `/api/medcoel/agent/submissions/${sub.id}/drilling-import`, { questions: [] }, agent.token, 400);
+  assert.match(dr.data.message, /PPT materi/);
+  // Pengajuan soal biasa tidak bisa diimpor sebagai materi.
+  await upload(soalSub.id, userC.token);
+  await call('POST', `/api/medcoel/submissions/${soalSub.id}/send`, { agreement: true }, userC.token, 200);
+  await call('POST', `/api/medcoel/admin/submissions/${soalSub.id}/status`, { status: 'antre' }, admin.token, 200);
+  const sm = await call('POST', `/api/medcoel/agent/submissions/${soalSub.id}/materi-import`, { deck: deck('Salah jalur') }, agent.token, 400);
+  assert.match(sm.data.message, /berisi soal/);
+});
+
+await langkah('impor materi lewat pengajuan: dry-run, galat, lalu tayang khusus kampus pengaju dan pengajuan selesai', async () => {
+  await call('POST', `/api/medcoel/agent/submissions/${sub.id}/materi-import`, { deck: deck('PPT Pengajuan') }, userA.token, 403);
+  const dry = (await call('POST', `/api/medcoel/agent/submissions/${sub.id}/materi-import`, { deck: deck('PPT Pengajuan'), dryRun: true }, agent.token, 200)).data;
+  assert.equal(dry.slideCount, 2);
+  assert.equal((await call('GET', '/api/medcoel/submissions/mine', undefined, userA.token, 200)).data.items.find((x) => x.id === sub.id).status, 'antre');
+  const bad = (await call('POST', `/api/medcoel/agent/submissions/${sub.id}/materi-import`, { slides: [{ image: 'https://x.test/a.png', explanation: 'x' }] }, agent.token, 400)).data;
+  assert.equal(bad.blocked, true);
+  const ok = (await call('POST', `/api/medcoel/agent/submissions/${sub.id}/materi-import`, { text: JSON.stringify(deck('PPT Pengajuan')) }, agent.token, 200)).data;
+  assert.equal(ok.created, 1);
+  assert.equal(ok.scope, 'campus');
+  const mine = (await call('GET', '/api/medcoel/submissions/mine', undefined, userA.token, 200)).data.items.find((x) => x.id === sub.id);
+  assert.equal(mine.status, 'selesai');
+  assert.equal(mine.importedCount, 2);
+  const titles = async (u) => { const r = await call('GET', `/api/medcoel/drilling/subject/${mk.slug}`, undefined, u.token); return r.status === 200 ? r.data.decks.map((d) => d.title) : []; };
+  assert.ok((await titles(userA)).includes('PPT Pengajuan ' + RUN));
+  assert.ok(!(await titles(userB)).includes('PPT Pengajuan ' + RUN));
+  const notif = (await call('GET', '/api/collections/notifications/records?perPage=50&sort=-created', undefined, userA.token, 200)).data.items;
+  assert.ok(notif.some((n) => n.title.includes('Materi dari pengajuan') && n.link === `/drilling/${mk.slug}`), 'pengaju diberi tahu bahwa materinya tayang');
+  await call('POST', `/api/medcoel/agent/submissions/${sub.id}/materi-import`, { deck: deck('Lagi') }, agent.token, 400);
+});
+
+await langkah('materi tambahan dari agen tanpa pengajuan (General)', async () => {
+  const r = (await call('POST', '/api/medcoel/agent/materi-import', { subject: mk.slug, deck: deck('Agen Umum') }, agent.token, 200)).data;
+  assert.equal(r.created, 1);
+  assert.ok((await call('GET', `/api/medcoel/drilling/subject/${mk.slug}`, undefined, userC.token, 200)).data.decks.some((d) => d.title === 'Agen Umum ' + RUN));
+});
+
+await langkah('ringkasan admin Drilling memuat jumlah materi per mata kuliah', async () => {
+  const s = (await call('GET', '/api/medcoel/admin/drilling', undefined, admin.token, 200)).data;
+  const row = s.subjects.find((x) => x.id === mk.id);
+  assert.ok(row.deckPublished >= 3);
+  assert.ok(row.deckSlides >= 6);
+  assert.ok(s.deckPublished >= row.deckPublished);
+});
+
+await drilling(false);
+console.log(`decks-api.test: ${lulus} langkah lulus${process.exitCode ? ', ADA YANG GAGAL' : ''}`);

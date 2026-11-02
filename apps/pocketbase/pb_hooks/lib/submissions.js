@@ -91,6 +91,7 @@ function summary(app, sub, opts) {
     campusName: campusName,
     programName: programName,
     pdfCount: sub.getInt("pdfCount"),
+    contentKind: sub.getString("contentKind") === "materi" ? "materi" : "soal",
     viaWhatsapp: sub.getBool("viaWhatsapp"),
     createdByAdmin: sub.getBool("createdByAdmin"),
     importedCount: sub.getInt("importedCount"),
@@ -129,6 +130,10 @@ function contract(app, sub, auth) {
     user: s.user ? { id: s.user.id, name: s.user.name, loginId: s.user.loginId } : null,
     campus: { id: s.campus, name: s.campusName, program: s.programName },
     subject: { id: s.subject, name: s.subjectName },
+    // Apa isi PDF-nya, dipilih pengaju: "soal" atau "materi" (PPT). Hermes memakainya untuk memberi tahu admin
+    // dan memilih jalur impor (/import atau /materi-import).
+    contentKind: s.contentKind,
+    kindLabel: s.contentKind === "materi" ? "PPT materi" : "Soal",
     hasKeyAndExplanation: s.hasKey,
     language: s.language,
     restriction: s.scope === "campus" ? "campus" : "all",
@@ -163,6 +168,12 @@ const USER_MESSAGES = {
   kedaluwarsa: ["Pengajuan {code} kedaluwarsa", "Pengajuan tidak dikonfirmasi lewat WhatsApp tepat waktu, jadi filenya dihapus. Silakan ajukan ulang."],
 };
 
+// Pesan untuk pengajuan PPT materi (menggantikan pesan soal bila ada).
+const DECK_MESSAGES = {
+  diproses: ["Pengajuan {code} sedang diproses", "Admin sedang mengubah PPT-mu menjadi materi."],
+  selesai: ["Materi dari pengajuan {code} sudah tayang", "{count} slide sudah bisa dipelajari di Drilling. Terima kasih sudah berbagi!"],
+};
+
 function setStatus(app, sub, status, note, actor) {
   const from = sub.getString("status");
   if (from === status) return sub;
@@ -186,7 +197,8 @@ function setStatus(app, sub, status, note, actor) {
     });
   }
 
-  const msg = USER_MESSAGES[status];
+  const isDeck = sub.getString("contentKind") === "materi";
+  const msg = isDeck && DECK_MESSAGES[status] ? DECK_MESSAGES[status] : USER_MESSAGES[status];
   if (msg && !(status === "dibatalkan" && actor === "user")) {
     const q = queueInfo(app, sub);
     const fill = (t) =>
@@ -197,7 +209,7 @@ function setStatus(app, sub, status, note, actor) {
         .replace("{note}", sub.getString("statusNote") || (status === "dibatalkan" ? "Pengajuan dibatalkan admin." : ""));
     let link = "/chat-admin";
     if (status === "selesai") {
-      try { link = "/mata-kuliah/" + app.findRecordById("subjects", sub.getString("subject")).getString("slug"); } catch (_) {}
+      try { link = (isDeck ? "/drilling/" : "/mata-kuliah/") + app.findRecordById("subjects", sub.getString("subject")).getString("slug"); } catch (_) {}
     }
     u.notify(app, sub.getString("user"), status === "selesai" ? "question_live" : "submission", fill(msg[0]), fill(msg[1]), link);
   }
@@ -213,7 +225,7 @@ function notifyAdmins(app, sub) {
   try {
     const s = summary(app, sub, { withUser: true });
     const who = s.user ? s.user.name + " (" + s.user.loginId + ")" : "pengguna";
-    const body = (s.subjectName || "Mata kuliah") + " · " + s.pdfCount + " PDF · " + (s.campusName || "kampus belum terdaftar") + ". Menunggu konfirmasi lewat WhatsApp.";
+    const body = (s.subjectName || "Mata kuliah") + " · " + s.pdfCount + (s.contentKind === "materi" ? " PDF PPT materi · " : " PDF · ") + + (s.campusName || "kampus belum terdaftar") + ". Menunggu konfirmasi lewat WhatsApp.";
     app.findRecordsByFilter("users", "role = 'admin' && deletedAt = ''", "", 0, 0).forEach((a) => {
       u.notify(app, a.id, "submission", "Pengajuan baru " + s.code + " dari " + who, body, "/admin/pengajuan?status=menunggu_konfirmasi");
     });
@@ -240,6 +252,9 @@ function agentImport(e, forceDrilling) {
   if (["antre", "diproses", "perlu_perbaikan"].indexOf(st) < 0) {
     throw new BadRequestError("Pengajuan berstatus " + (LABEL[st] || st) + " tidak bisa diimpor. Konfirmasi dulu pengajuannya.");
   }
+  if (sub.getString("contentKind") === "materi") {
+    throw new BadRequestError("Pengajuan " + sub.getString("code") + " berisi PPT materi, bukan soal. Kirim lewat /materi-import (di Hermes: /put lalu /confirm).");
+  }
   // Kampus selalu dari pengajuan, apa pun isi JSON-nya. Pengajuan "kampus saja" yang masuk Drilling
   // hanya terlihat oleh pengguna kampus itu.
   const result = importer.run(e.app, {
@@ -264,4 +279,44 @@ function agentImport(e, forceDrilling) {
   return e.json(200, result);
 }
 
-module.exports = { MAX_PDFS, LABEL, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport };
+/**
+ * Impor materi (slide + penjelasan) untuk satu pengajuan PPT materi. Kampus dan cakupan selalu dari pengajuan.
+ * Berhasil: berkas tayang di Drilling mata kuliah itu, pengajuan menjadi selesai, pengaju diberi tahu.
+ */
+function agentImportDeck(e) {
+  const decks = require(HOOKS + "/lib/decks.js");
+  u.requireAgent(e);
+  const b = u.body(e);
+  let sub;
+  try { sub = e.app.findFirstRecordByFilter("submissions", "id = {:x} || code = {:x}", { x: e.request.pathValue("id") }); } catch (_) { sub = null; }
+  if (!sub) throw new NotFoundError("Pengajuan tidak ditemukan.");
+  const st = sub.getString("status");
+  if (["antre", "diproses", "perlu_perbaikan"].indexOf(st) < 0) {
+    throw new BadRequestError("Pengajuan berstatus " + (LABEL[st] || st) + " tidak bisa diimpor. Konfirmasi dulu pengajuannya.");
+  }
+  if (sub.getString("contentKind") !== "materi") {
+    throw new BadRequestError("Pengajuan " + sub.getString("code") + " berisi soal, bukan PPT materi. Kirim lewat /import.");
+  }
+  const campus = sub.getString("scope") === "campus";
+  const result = decks.importDeck(e.app, {
+    input: decks.inputOf(b),
+    subject: sub.getString("subject"),
+    scope: campus ? "campus" : "all",
+    campuses: campus ? [sub.getString("campus")] : [],
+    title: b.title,
+    status: b.status === "draft" ? "draft" : "published",
+    source: "submission",
+    submission: sub.id,
+    dryRun: b.dryRun === true,
+  });
+  if (result.blocked) return e.json(400, Object.assign({ status: 400, message: decks.blockedMessage(result) }, result));
+  if (!b.dryRun) {
+    if (st !== "diproses") setStatus(e.app, sub, "diproses", sub.getString("statusNote"), "agent");
+    sub.set("importedCount", result.slideCount);
+    e.app.save(sub);
+    setStatus(e.app, sub, "selesai", sub.getString("statusNote"), "agent");
+  }
+  return e.json(200, result);
+}
+
+module.exports = { MAX_PDFS, LABEL, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck };

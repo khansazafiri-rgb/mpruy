@@ -66,6 +66,38 @@ export function countQuestions(parsed) {
   return 0;
 }
 
+// Jumlah slide pada JSON materi: { slides: [...] }, { materi: { slides } }, atau array slide.
+export function countSlides(parsed) {
+  if (Array.isArray(parsed?.slides)) return parsed.slides.length;
+  if (Array.isArray(parsed?.materi?.slides)) return parsed.materi.slides.length;
+  if (Array.isArray(parsed) && looksLikeSlides(parsed)) return parsed.length;
+  return 0;
+}
+
+const SLIDE_KEYS = ['image', 'gambar', 'images', 'imageUrl', 'lh3', 'explanation', 'penjelasan', 'blocks', 'keterangan'];
+const QUESTION_KEYS = ['options', 'opsi', 'statements', 'pernyataan', 'answer', 'jawaban', 'correct', 'type', 'tipe'];
+function looksLikeSlides(list) {
+  const first = list.find((x) => x && typeof x === 'object');
+  return !!first && SLIDE_KEYS.some((k) => k in first) && !QUESTION_KEYS.some((k) => k in first);
+}
+
+// Menebak isi JSON: "materi" (slide + penjelasan), "soal", atau "unknown". Dipakai untuk menolak JSON yang salah jalur
+// sebelum rencana impor dibuat (server tetap memeriksa lagi).
+export function detectKind(parsed) {
+  if (parsed && !Array.isArray(parsed) && typeof parsed === 'object') {
+    if (Array.isArray(parsed.slides) || Array.isArray(parsed.materi?.slides)) return 'materi';
+    if (Array.isArray(parsed.questions) || Array.isArray(parsed.chapters)) return 'soal';
+    return 'unknown';
+  }
+  if (Array.isArray(parsed) && parsed.length) {
+    if (looksLikeSlides(parsed)) return 'materi';
+    const first = parsed.find((x) => x && typeof x === 'object');
+    if (first && QUESTION_KEYS.some((k) => k in first)) return 'soal';
+    if (first && ('text' in first || 'pertanyaan' in first || 'question' in first)) return 'soal';
+  }
+  return 'unknown';
+}
+
 // Kode pengajuan yang bentuknya MC + 6 angka + 4 karakter, dicari di teks bebas.
 export function findSubmissionCode(text) {
   return /MC\d{6}-[A-Z0-9]{4}/i.exec(String(text || ''))?.[0]?.toUpperCase() || '';

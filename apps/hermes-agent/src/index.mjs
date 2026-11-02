@@ -5,7 +5,7 @@ import { TelegramClient, escapeHtml } from './telegram.mjs';
 import { DriveClient } from './drive.mjs';
 import { describeFile, pickFiles } from './files.mjs';
 import { ImportPlanFlow } from './import-plan.mjs';
-import { newSubmissionMessage, queueCard, compactSubmission, howToSubmit, BOT_COMMANDS, statusLabel } from './notify.mjs';
+import { newSubmissionMessage, queueCard, compactSubmission, howToSubmit, BOT_COMMANDS, statusLabel, kindOf } from './notify.mjs';
 
 const config = loadConfig();
 const medcoel = new MedcoelClient(config);
@@ -155,7 +155,7 @@ async function showQueue(chatId) {
 
 async function showSubmission(chatId, id) {
   const sub = await medcoel.getSubmission(id);
-  return telegram.sendMessage(chatId, `${queueCard(sub)}\n\n${howToSubmit(sub.code || id, sub.status)}`);
+  return telegram.sendMessage(chatId, `${queueCard(sub)}\n\n${howToSubmit(sub.code || id, sub.status, kindOf(sub))}`);
 }
 
 async function showFiles(chatId, id, only) {
@@ -176,7 +176,7 @@ async function relaySubmissionFiles(chatId, sub, only) {
 
   for (const { file, index } of picked) {
     const response = await drive.openFile(file.driveFileId);
-    const { filename, caption } = describeFile(sub.code || sub.id, index, files.length, file.name);
+    const { filename, caption } = describeFile(sub.code || sub.id, index, files.length, file.name, kindOf(sub));
     await telegram.sendDocumentStream(chatId, filename, response, caption);
   }
 }
@@ -187,7 +187,7 @@ async function accept(chatId, id) {
   await state.setLastNotified(code);
   // Pengumuman "masuk antrean" untuk pengajuan ini tidak perlu dikirim lagi: admin baru saja menerimanya.
   await state.markAnnounced(`${sub.id}:${sub.updated || sub.confirmedAt || sub.status || 'antre'}`);
-  return telegram.sendMessage(chatId, `✅ <b>${escapeHtml(code)}</b> sekarang ${escapeHtml(statusLabel(sub.status))}.\n\n${howToSubmit(code, sub.status)}`);
+  return telegram.sendMessage(chatId, `✅ <b>${escapeHtml(code)}</b> sekarang ${escapeHtml(statusLabel(sub.status))}.\n\n${howToSubmit(code, sub.status, kindOf(sub))}`);
 }
 
 async function claim(chatId, id) {

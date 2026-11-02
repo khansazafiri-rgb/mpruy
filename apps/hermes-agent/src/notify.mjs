@@ -13,6 +13,14 @@ export function statusLabel(status) {
   return STATUS_LABEL[status] || String(status || '-');
 }
 
+// Jenis isi PDF yang dipilih pengaju: "soal" atau "materi" (PPT). Tanpa field (server lama) dianggap soal.
+export function kindOf(sub) {
+  return sub?.contentKind === 'materi' ? 'materi' : 'soal';
+}
+export function kindLabel(sub) {
+  return kindOf(sub) === 'materi' ? '📚 PPT materi' : '📝 Soal';
+}
+
 function scopeLabel(sub) {
   return sub.restriction === 'campus'
     ? `campus${sub.campus?.name ? ` · ${escapeHtml(sub.campus.name)}` : ''}`
@@ -30,29 +38,32 @@ export function queueCard(sub, queue) {
   return `<b>📥 ${escapeHtml(sub.code || sub.id)}</b>\n`
     + `Status: ${escapeHtml(statusLabel(sub.status))}\n`
     + who
+    + `<b>Isi PDF: ${kindLabel(sub)}</b>\n`
     + `Sumber mata kuliah: ${escapeHtml(sub.subject?.name || sub.subject?.id || '-')}\n`
     + `Cakupan: ${scopeLabel(sub)}\n`
-    + `Bahasa: ${escapeHtml(sub.language || '-')}\n`
+    + (kindOf(sub) === 'materi' ? '' : `Bahasa: ${escapeHtml(sub.language || '-')}\n`)
     + `PDF: ${Number(sub.pdfCount || (sub.files || []).length)}\n`
     + `${files}${q}`;
 }
 
 export function compactSubmission(sub) {
-  return `<b>${escapeHtml(sub.code || sub.id)}</b> · ${escapeHtml(sub.subject?.name || '-')} · ${Number(sub.pdfCount || 0)} PDF`
+  return `<b>${escapeHtml(sub.code || sub.id)}</b> · ${kindLabel(sub)} · ${escapeHtml(sub.subject?.name || '-')} · ${Number(sub.pdfCount || 0)} PDF`
     + (sub.status && sub.status !== 'antre' ? ` · ${escapeHtml(statusLabel(sub.status))}` : '');
 }
 
 // Petunjuk singkat "mau mengumpulkan hasilnya, ketik apa". Kode pengajuan sudah terisi supaya
 // cukup ketuk (salin) lalu kirim.
-export function howToSubmit(code, status) {
+export function howToSubmit(code, status, kind = 'soal') {
   const c = escapeHtml(code);
   const lines = [];
-  lines.push('<b>Cara mengumpulkan hasilnya (JSON)</b>');
+  const materi = kind === 'materi';
+  lines.push(materi ? '<b>Cara mengumpulkan hasilnya (JSON materi: slide + penjelasan)</b>' : '<b>Cara mengumpulkan hasilnya (JSON)</b>');
+  if (materi) lines.push('Ini <b>PPT materi</b>: tiap slide jadi gambar lh3 dengan penjelasannya, tayang di Drilling mata kuliahnya. Format: docs/MATERI_SLIDE.md.');
   if (status === 'menunggu_konfirmasi') {
     lines.push(`1) Terima dulu pengajuannya: <code>/terima ${c}</code>`);
     lines.push(`2) Kirim JSON: <code>/put ${c}</code> lalu tempel JSON-nya di chat (boleh beberapa pesan). Atau kirim file .json dengan caption <code>/put ${c}</code>.`);
     lines.push('3) Cek rencana dengan <code>/plan</code>, lalu <code>/confirm</code> untuk mengimpor.');
-    lines.push('<i>Belum dikonfirmasi: soal baru bisa diimpor setelah status Antre.</i>');
+    lines.push(`<i>Belum dikonfirmasi: ${materi ? 'materi' : 'soal'} baru bisa diimpor setelah status Antre.</i>`);
   } else {
     lines.push(`1) Kirim JSON: <code>/put ${c}</code> lalu tempel JSON-nya di chat (boleh beberapa pesan). Atau kirim file .json dengan caption <code>/put ${c}</code>.`);
     lines.push('2) Cek rencana dengan <code>/plan</code>, lalu <code>/confirm</code> untuk mengimpor.');
@@ -63,10 +74,11 @@ export function howToSubmit(code, status) {
 
 export function newSubmissionMessage(sub, queue) {
   const waiting = sub.status === 'menunggu_konfirmasi';
+  const tag = kindOf(sub) === 'materi' ? '📚 <b>PPT MATERI</b>' : '📝 <b>SOAL</b>';
   const head = waiting
-    ? '🆕 <b>Pengajuan baru masuk</b> · menunggu konfirmasi\n\n'
-    : '✅ <b>Pengajuan masuk antrean</b>\n\n';
-  return `${head}${queueCard(sub, queue)}\n\n${howToSubmit(sub.code || sub.id, sub.status)}`;
+    ? `🆕 <b>Pengajuan baru masuk</b> · ${tag} · menunggu konfirmasi\n\n`
+    : `✅ <b>Pengajuan masuk antrean</b> · ${tag}\n\n`;
+  return `${head}${queueCard(sub, queue)}\n\n${howToSubmit(sub.code || sub.id, sub.status, kindOf(sub))}`;
 }
 
 export const BOT_COMMANDS = [

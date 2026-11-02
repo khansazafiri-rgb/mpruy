@@ -54,7 +54,9 @@ routerAdd("POST", "/api/medcoel/submissions", (e) => {
   if (scope === "campus" && !user.getString("campus")) {
     throw new BadRequestError("Kamu belum punya kampus di akunmu, jadi pilihan Hanya kampus saya belum bisa dipakai. Pilih General, atau isi kampusmu dulu di Profil.");
   }
-  const lang = ["id", "en", "both"].indexOf(b.language) >= 0 ? b.language : "";
+  // Isi PDF: "soal" (bawaan) atau "materi" (PPT yang diekspor jadi PDF). PPT materi tidak punya kunci jawaban.
+  const kind = b.contentKind === "materi" ? "materi" : "soal";
+  const lang = ["id", "en", "both"].indexOf(b.language) >= 0 ? b.language : kind === "materi" ? "id" : "";
   if (!lang) throw new BadRequestError("Pilih bahasa soalnya.");
 
   // Draf lama yang belum dikirim dipakai ulang supaya tidak menumpuk.
@@ -67,7 +69,8 @@ routerAdd("POST", "/api/medcoel/submissions", (e) => {
     sub.set("status", "draft");
   }
   sub.set("subject", subject.id);
-  sub.set("hasKey", b.hasKey === true);
+  sub.set("hasKey", kind === "soal" && b.hasKey === true);
+  sub.set("contentKind", kind);
   sub.set("language", lang);
   sub.set("scope", scope);
   sub.set("campus", user.getString("campus"));
@@ -185,7 +188,8 @@ routerAdd("POST", "/api/medcoel/admin/submissions", (e) => {
   sub.set("code", subs.makeCode());
   sub.set("user", usr.id);
   sub.set("subject", subject.id);
-  sub.set("hasKey", b.hasKey === true);
+  sub.set("hasKey", b.contentKind !== "materi" && b.hasKey === true);
+  sub.set("contentKind", b.contentKind === "materi" ? "materi" : "soal");
   sub.set("language", ["id", "en", "both"].indexOf(b.language) >= 0 ? b.language : "id");
   sub.set("scope", scope);
   sub.set("campus", usr.getString("campus"));
@@ -266,6 +270,34 @@ routerAdd("POST", "/api/medcoel/agent/submissions/{id}/import", (e) => {
 // Sama dengan /import dengan drilling: true; chapter diabaikan.
 routerAdd("POST", "/api/medcoel/agent/submissions/{id}/drilling-import", (e) => {
   return require(`${__hooks}/lib/submissions.js`).agentImport(e, true);
+});
+
+// Jalur materi: pengajuan yang isinya PPT materi (contentKind = "materi") masuk sebagai berkas materi di
+// Drilling mata kuliah itu (General atau khusus kampus pengaju), bukan sebagai soal. Lihat docs/MATERI_SLIDE.md.
+routerAdd("POST", "/api/medcoel/agent/submissions/{id}/materi-import", (e) => {
+  return require(`${__hooks}/lib/submissions.js`).agentImportDeck(e);
+});
+
+// Materi tambahan dari admin tanpa pengajuan: { subject, scope, campuses, title?, text | slides | deck, status?, dryRun? }.
+routerAdd("POST", "/api/medcoel/agent/materi-import", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const importer = require(`${__hooks}/lib/importer.js`);
+  const decks = require(`${__hooks}/lib/decks.js`);
+  u.requireAgent(e);
+  const b = u.body(e);
+  const subject = importer.findSubject(e.app, b.subject);
+  const result = decks.importDeck(e.app, {
+    input: decks.inputOf(b),
+    subject: subject.id,
+    scope: b.scope === "campus" ? "campus" : "all",
+    campuses: b.campuses || [],
+    title: b.title,
+    status: b.status === "draft" ? "draft" : "published",
+    source: "agent",
+    dryRun: b.dryRun === true,
+  });
+  if (result.blocked) return e.json(400, Object.assign({ status: 400, message: decks.blockedMessage(result) }, result));
+  return e.json(200, result);
 });
 
 routerAdd("POST", "/api/medcoel/agent/import", (e) => {
