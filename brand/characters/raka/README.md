@@ -84,12 +84,14 @@ Pakaian dipilih lewat opsi gambar `outfit`; bawaannya `harian` (tampilan kanonik
 |---|---|
 | `harian` | Sweater teal, celana navy, sepatu krem (kanonik). |
 | `demo` | Kaus lengan panjang **hitam**, celana abu tua, sepatu krem. Patch logo MEDCOEL kecil tetap di dada. Dibuat untuk video "gas air mata saat demo". |
+| `jaket` | **Jaket puffer oranye** (`#F2A03D`) dengan kerah tinggi, resleting, dan garis jahitan; patch logo MEDCOEL tetap terlihat di dada. Dibuat untuk video "Kenapa dingin bikin pengen pipis?" (menggigil di kelas ber-AC, memeluk jaket, berjalan cepat). Dipakai dengan kaki berengsel untuk berjalan. |
 | `jas` | **Jas dokter putih** (kerah, V-leher dengan sweater teal, lapel, kancing, saku, stetoskop) di atas badan. Panjang sampai lutut; pada duduk di balik meja, bagian bawahnya tersembunyi meja. |
 
 ```js
 import { raka, rakaSvg } from './raka.js';
 rakaSvg(raka('kaget'), { outfit: 'demo' });              // baju demo hitam
 rakaSvg(raka('netral'), { outfit: 'jas' });              // jas dokter
+rakaSvg(raka('khawatir'), { outfit: 'jaket' });          // jaket puffer oranye (lihat video/dingin-pengen-pipis/stage/world.js: HUG = memeluk jaket, shiver() = menggigil)
 rakaSvg(raka('netral'), { outfit: 'demo', dark: true });  // warna diangkat sedikit untuk latar gelap
 ```
 
