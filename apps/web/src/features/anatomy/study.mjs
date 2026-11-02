@@ -1,6 +1,6 @@
 import {SYSTEMS,REGIONS} from './registry.mjs';
 import {structureKind} from './kind.mjs';
-export const STUDY_MODES=[['identify','Identify highlighted structure','Kenali struktur yang disorot di atlas.'],['find','Find requested structure in 3D','Pilih struktur yang diminta langsung pada model.'],['system','Guess system','Hubungkan struktur dengan sistemnya.'],['region','Guess region','Tentukan regio dari struktur yang disorot.']].map(([id,name,description])=>({id,name,description}));
+export const STUDY_MODES=[['identify','Kenali struktur','Struktur bersinar di model, pilih namanya.'],['find','Temukan di 3D','Nama diberikan, klik strukturnya langsung di model.'],['system','Tebak sistem','Hubungkan struktur yang disorot dengan sistemnya.'],['region','Tebak regio','Tentukan regio tempat struktur itu berada.']].map(([id,name,description])=>({id,name,description}));
 const shuffled=(items,rng)=>{const a=[...items];for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 export function makeQuestion(registry,{mode='identify',system='',region='',excludeId='',rng=Math.random}={}) {
  if(!STUDY_MODES.some(m=>m.id===mode))throw Error('Unknown study mode');

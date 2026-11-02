@@ -11,7 +11,7 @@ const PLURAL = {
 // Head nouns that already name a kind on their own, per catalogue group. Anything else in these groups
 // falls back to the group's generic kind (e.g. "Clavicle" -> bone, "Extensor digitorum" -> muscle).
 const OWN = {
-  skeletal: ['rib', 'vertebra', 'phalanx', 'cartilage', 'cells', 'concha', 'sacrum', 'coccyx', 'hyoid', 'sternum'],
+  skeletal: ['rib', 'vertebra', 'phalanx', 'cartilage', 'cells', 'concha', 'sacrum', 'coccyx', 'hyoid', 'sternum', 'process', 'sinus', 'suture', 'foramen', 'fossa'],
   muscular: ['fascia', 'retinaculum', 'tendon', 'bursa', 'sheath', 'aponeurosis', 'head', 'part', 'belly', 'septum', 'raphe'],
   joints: ['ligament', 'capsule', 'disc', 'meniscus', 'labrum', 'membrane', 'pulposus', 'joint', 'bursa'],
   arterial: ['branch', 'arch', 'trunk', 'anastomosis', 'network', 'plexus'],
@@ -44,6 +44,7 @@ export function structureKind(row) {
   if (/\bsegmental bronchus\b/.test(name)) return 'segmental-bronchus';
   if (/\bsegment of liver\b/.test(name)) return 'liver-segment';
   if (/\bphalanx\b/.test(name)) return 'phalanx';
+  if (group === 'skeletal' && /\bcartilages?\b/.test(name)) return 'skeletal:cartilage';
   if (/\b(metacarpal|metatarsal)\b/.test(name) && /\bbone\b/.test(name)) return 'metapodial';
   const before = name.split(' of ')[0].trim();
   let head = before.split(' ').pop() || '';

@@ -47,3 +47,10 @@ test('ribs get rib distractors before any other bone',()=>{
  if(structureKind(target)==='skeletal:rib')assert.ok(others.every(r=>structureKind(r)==='skeletal:rib'));
  else assert.ok(others.filter(r=>structureKind(r)==='skeletal:rib').length>=3);
 });
+test('cartilage and named bone parts are not plain bones',()=>{
+ assert.equal(k('Lateral process of nasal septal cartilage (right)','skeletal'),'skeletal:cartilage');
+ assert.equal(k('Thyroid cartilage','skeletal'),'skeletal:cartilage');
+ assert.equal(k('Sinus of sphenoid bone','skeletal'),'skeletal:sinus');
+ assert.equal(k('Parietal bone (right)','skeletal'),'bone');
+ assert.equal(k('Body of sternum','skeletal'),'bone');
+});

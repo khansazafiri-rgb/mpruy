@@ -14,3 +14,15 @@ test('forward only anatomy study state to the frame',async()=>{
  const result=atlasFrameSrc('#atlas='+encodeURIComponent(state)+'&unrelated=x');
  assert.equal(new URL(result,'https://medcoel.example').hash,'#atlas='+encodeURIComponent(state));
 });
+test('back link for the atlas survives structure ids with brackets and keeps the atlas hash',async()=>{
+ const {withBackLink,atlasFrameSrc}=await import('./hostProtocol.mjs');
+ const {structureHref}=await import('./registry.mjs');
+ const src=withBackLink(ANATOMY_VIEWER_PATH,{path:structureHref('(Muscle variant).l'),label:'Detail struktur'});
+ const params=new URL(src,'https://medcoel.example').searchParams;
+ assert.match(params.get('back'),/^\/(anatomy|lab|beranda)(\/[\w%.\-/]*)?$/);
+ assert.equal(decodeURIComponent(params.get('back').slice('/anatomy/structure/'.length)),'(Muscle variant).l');
+ assert.equal(params.get('backLabel'),'Detail struktur');
+ const withHash=withBackLink(atlasFrameSrc('#atlas=x'),{path:'/anatomy'});
+ assert.equal(new URL(withHash,'https://medcoel.example').hash,'#atlas=x');
+ assert.equal(withBackLink('/anatomy/viewer/',null),'/anatomy/viewer/');
+});
