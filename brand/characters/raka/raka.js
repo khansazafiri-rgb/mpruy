@@ -113,6 +113,10 @@ export const EXPRESSIONS = {
   bingung:  { happyEyes: 0, wide: 0, blink: 0.45, browL: { y: -9, rot: 14 }, browR: { y: -3, rot: -6 }, mouth: { w: 10, up: 3, lo: 8 } },
   // lega: mata melengkung lembut, senyum kecil, alis santai
   lega:     { happyEyes: 0.75, wide: 0, browL: { y: -4, rot: 2 }, browR: { y: -4, rot: -2 }, mouth: { w: 17, up: 6, lo: 8 } },
+  // lapar: mata lebar berharap, alis naik di tengah (memelas), mulut kecil terbuka
+  lapar:    { happyEyes: 0, wide: 0.7, browL: { y: -8, rot: 13 }, browR: { y: -8, rot: -13 }, mouth: { w: 11, up: 2, lo: 13 } },
+  // ngantuk: kelopak setengah turun, alis turun sedikit, mulut menguap kecil
+  ngantuk:  { happyEyes: 0, wide: 0, blink: 0.58, browL: { y: 3, rot: 6 }, browR: { y: 3, rot: -6 }, mouth: { w: 10, up: 2, lo: 14 } },
 };
 
 /** Pose badan dan lengan. Koordinat pergelangan (wx, wy) dan lekukan siku (bend, px). */
@@ -146,6 +150,12 @@ export const POSES = {
     lean: 4,
     armR: { wx: 226, wy: 336, ex: 322, ey: 400, finger: 0, front: 1 },
     armL: { wx: 100, wy: 560, ex: 94, ey: 494, finger: 0, front: 0 },
+  },
+  // dua tangan memegang perut (lapar); lengan tetap satu bentuk, tangan bertemu di depan perut
+  pegang_perut: {
+    lean: 1,
+    armL: { wx: 178, wy: 520, ex: 84, ey: 500, finger: 0, front: 1 },
+    armR: { wx: 224, wy: 530, ex: 318, ey: 504, finger: 0, front: 1 },
   },
   // tangan kanan mengusap mata kanan
   usap_mata: {

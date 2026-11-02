@@ -206,3 +206,12 @@ test('ekspresi pingsan dan bingung: mata tertutup penuh dan setengah', () => {
   assert.ok(raka('bingung').blink > 0.3 && raka('bingung').blink < 0.6);
   assert.ok(POSES.berbaring && POSES.pov_perut);
 });
+
+test('lapar, ngantuk, dan pose pegang_perut tergambar tanpa mengubah desain kanonik', async () => {
+  const { raka, rakaSvg, EXPRESSIONS, POSES } = await import('./raka.js');
+  for (const e of ['lapar', 'ngantuk']) assert.ok(EXPRESSIONS[e], e);
+  assert.ok(POSES.pegang_perut);
+  const base = rakaSvg(raka('netral'));
+  for (const [e, p] of [['lapar', 'pegang_perut'], ['ngantuk', 'jalan'], ['lapar', 'jalan']]) { const s = rakaSvg(raka(e, p, { bags: 0.4 })); assert.match(s, /^<svg /); assert.ok(!/NaN|undefined/.test(s)); assert.notEqual(s, base); }
+  assert.equal(rakaSvg(raka('netral')), base);
+});

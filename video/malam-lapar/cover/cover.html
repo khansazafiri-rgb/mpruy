@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Kenapa malam-malam lapar?</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#c{width:1080px;height:1920px;position:relative;overflow:hidden}svg{display:block}</style></head>
+<body><div id="c"></div>
+<script type="module">
+import { raka, rakaSvg } from '../../../brand/characters/raka/raka.js';
+import { grelin, grelinSvg } from '../../../brand/characters/grelin/grelin.js';
+await document.fonts.load('800 60px "Plus Jakarta Sans"'); await document.fonts.ready;
+const R = (x, y, w, h, f, rx = 0, e = '') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${f}" ${e}/>`;
+const C = (x, y, r, f, e = '') => `<circle cx="${x}" cy="${y}" r="${r}" fill="${f}" ${e}/>`;
+const T = (x, y, t, f, s, e = '', a = 'middle') => `<text x="${x}" y="${y}" text-anchor="${a}" font-family="Plus Jakarta Sans" font-weight="800" font-size="${s}" fill="${f}" ${e}>${t}</text>`;
+const logo = await new Promise(async (r) => { const b = await (await fetch('logo-full.webp')).blob(); const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(b); });
+const p = new URLSearchParams(location.search);
+const guide = p.has('guide');
+// ---- kulkas terbuka
+const fridge = `<g transform="translate(70 520)">
+  ${R(-10, 10, 520, 820, 'rgba(0,0,0,.28)', 40)}
+  ${R(0, 0, 500, 820, '#DDE5E9', 38)}
+  ${R(26, 26, 448, 768, '#FFF3C9', 22)}
+  <defs><linearGradient id="fi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFBE6"/><stop offset="1" stop-color="#FFE9A8"/></linearGradient></defs>
+  ${R(26, 26, 448, 768, 'url(#fi)', 22)}
+  ${[260, 470, 650].map((y) => R(26, y, 448, 14, '#C9D9E0')).join('')}
+  <!-- rak 1: susu, telur, selai -->
+  <g transform="translate(60 150)">${R(0, 0, 70, 110, '#fff', 8)}${R(0, 0, 70, 38, '#5BD0E6', 8)}${R(10, 52, 50, 10, '#B7C6CC', 5)}${R(100, 36, 150, 74, '#F3E3B8', 14)}${[0, 1, 2, 3, 4].map((i) => `<ellipse cx="${126 + i * 30}" cy="${48 + (i % 2) * 6}" rx="14" ry="19" fill="#FFF9EA"/>`).join('')}${R(280, 30, 70, 80, '#E8665F', 12)}${R(290, 12, 50, 26, '#8A3A2E', 8)}${R(364, 44, 52, 66, '#8E7CE8', 10)}</g>
+  <!-- rak 2: sisa makanan -->
+  <g transform="translate(60 330)">${R(0, 40, 170, 80, '#fff', 14)}${R(0, 40, 170, 80, 'none', 14, 'stroke="#C9D9E0" stroke-width="5"')}${C(60, 66, 26, '#F8C038')}${C(100, 76, 22, '#E8665F')}${C(130, 62, 18, '#3DB46E')}${R(210, 20, 120, 100, '#F4E1B3', 16)}<path d="M214 40h112l-18 78h-76z" fill="#E8665F" opacity=".9"/>${R(350, 60, 70, 60, '#fff', 10)}${R(350, 60, 70, 18, '#9DE0BD', 10)}</g>
+  <!-- rak 3: buah dan yogurt -->
+  <g transform="translate(60 520)">${C(40, 70, 44, '#E8665F')}${C(110, 82, 38, '#F2A950')}<path d="M104 46q16-26 40-18" fill="none" stroke="#3DB46E" stroke-width="8" stroke-linecap="round"/>${R(190, 24, 62, 100, '#fff', 12)}${R(190, 24, 62, 36, '#F8A8C0', 12)}${R(268, 24, 62, 100, '#fff', 12)}${R(268, 24, 62, 36, '#9DE0BD', 12)}${R(350, 50, 70, 74, '#F2C29B', 14)}</g>
+  <!-- laci bawah -->
+  ${R(26, 690, 448, 104, '#CFE0E8', 14)}${R(170, 724, 160, 22, '#9AA9AF', 11)}
+</g>
+<g transform="translate(70 520) skewY(-3)" opacity="0">${R(0, 0, 10, 10, '#fff')}</g>`;
+const door = `<g>${`<path d="M70 530L40 560L40 1290L70 1340Z" fill="#B7C6CC"/>`}${R(560, 530, 30, 810, '#C4CFD5', 14)}${R(574, 880, 10, 180, '#7B8A93', 5)}</g>`;
+const glow = `<defs><radialGradient id="gl" cx="42%" cy="50%" r="60%"><stop offset="0" stop-color="#FFF1BD" stop-opacity=".62"/><stop offset=".55" stop-color="#FFE9A8" stop-opacity=".22"/><stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/></radialGradient></defs><ellipse cx="420" cy="960" rx="760" ry="900" fill="url(#gl)"/><path d="M570 560L1080 330V1330L570 1330Z" fill="#FFF1BD" opacity=".10"/>`;
+// ---- jam dinding
+const clock = (cx, cy) => `<g transform="translate(${cx} ${cy})">${C(0, 8, 66, 'rgba(0,0,0,.25)')}${C(0, 0, 64, '#fff')}${C(0, 0, 64, 'none', 'stroke="#3B4A8C" stroke-width="12"')}${Array.from({ length: 12 }, (_, i) => { const a = i * Math.PI / 6; return `<line x1="${Math.sin(a) * 56}" y1="${-Math.cos(a) * 56}" x2="${Math.sin(a) * 64}" y2="${-Math.cos(a) * 64}" stroke="#B7C6CC" stroke-width="${i % 3 ? 3 : 5}" stroke-linecap="round"/>`; }).join('')}<line x1="0" y1="0" x2="${Math.sin(Math.PI * 2 * (11.8 / 12)) * 34}" y2="${-Math.cos(Math.PI * 2 * (11.8 / 12)) * 34}" stroke="#172B38" stroke-width="8" stroke-linecap="round"/><line x1="0" y1="0" x2="${Math.sin(Math.PI * 2 * 47 / 60) * 52}" y2="${-Math.cos(Math.PI * 2 * 47 / 60) * 52}" stroke="#E8665F" stroke-width="5" stroke-linecap="round"/>${C(0, 0, 6, '#172B38')}</g>${T(cx, cy + 112, '23.47', '#F4EBC8', 40)}`;
+// ---- Raka (menghadap kulkas, baju santai, lapar + bingung)
+const st = raka('lapar', 'pegang_perut', { flip: 1, yaw: 0.45, gazeX: 0.8, bags: 0.45, sweat: 0, browL: { y: -9, rot: 14 }, browR: { y: -3, rot: -6 }, legs: { on: 1, dir: 1 } });
+const K = 0.92, RX = 748, FY = 1330;
+const rk = `<g transform="translate(${RX - 200 * K} ${FY - 778 * K}) scale(${K})">${rakaSvg(st, { bare: true, outfit: 'harian', uid: 'rc' })}</g>`;
+// ---- Grelin kecil menyapa perut Raka (lapar)
+const gst = grelin('lapar', 'pegang_perut', { flip: 1 });
+const gl = `<g transform="translate(908 1090) scale(.6)">${grelinSvg(gst, { bare: true, uid: 'gc' })}</g>${T(975, 1072, 'grrk…', '#FFD9A0', 38, 'transform="rotate(-8 930 1090)"')}`;
+// ---- teks
+const title = `${T(540, 330, 'Kenapa <tspan fill="#F8C038">malam-malam</tspan>', '#fff', 82, 'stroke="#0A1A2E" stroke-width="16" paint-order="stroke" stroke-linejoin="round"')}${T(540, 432, 'tiba-tiba <tspan fill="#FF8A7A">lapar?</tspan>', '#fff', 82, 'stroke="#0A1A2E" stroke-width="16" paint-order="stroke" stroke-linejoin="round"')}`;
+const sub = `<g transform="translate(540 1500)">${R(-410, -52 + 8, 820, 108, 'rgba(0,0,0,.3)', 54)}${R(-410, -52, 820, 108, '#fff', 54)}${T(0, 20, 'Apa yang terjadi di <tspan fill="#E8665F">tubuhmu?</tspan>', '#0A3830', 54)}</g>`;
+const lg = `<g transform="translate(540 1622)">${R(-190, -42 + 6, 380, 84, 'rgba(0,0,0,.3)', 42)}${R(-190, -42, 380, 84, '#fff', 42)}<image href="${logo}" x="-150" y="-20" width="300" height="60.4"/></g>`;
+const bg = `<defs><linearGradient id="bgk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A2D52"/><stop offset="1" stop-color="#231F3D"/></linearGradient></defs>${R(0, 0, 1080, 1920, 'url(#bgk)')}${R(0, 1330, 1080, 600, '#2B2540')}${R(0, 1326, 1080, 10, '#171A33')}${[[130, 200], [300, 130], [820, 190], [980, 120]].map(([x, y]) => C(x, y, 4, '#fff', 'opacity=".55"')).join('')}`;
+// area aman crop profil IG (3:4 tengah = y 240..1680)
+const g = guide ? `<rect x="0" y="0" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="1680" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="240" width="1080" height="1440" fill="none" stroke="#0f0" stroke-width="6"/>` : '';
+document.getElementById('c').innerHTML = `<svg width="1080" height="1920" viewBox="0 0 1080 1920">${bg}${clock(945, 585)}${fridge}${door}${glow}${rk}${gl}${title}${sub}${lg}${g}</svg>`;
+window.__ready = true;
+</script></body></html>

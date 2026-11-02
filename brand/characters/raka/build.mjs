@@ -39,6 +39,7 @@ for (const outfit of ['demo', 'jas']) {
 const extra = [
   ['raka-berbaring-pingsan.svg', rakaSvg(raka('pingsan', 'berbaring', { blood: 1 }), { uid: 'berbaring-pingsan', rebah: true })],
   ['raka-berbaring-bingung.svg', rakaSvg(raka('bingung', 'berbaring', { blood: 1 }), { uid: 'berbaring-bingung', rebah: true })],
+  ['raka-berbaring-sejajar.svg', rakaSvg(raka('lega', 'berbaring', { happyEyes: 0.6 }), { uid: 'berbaring-sejajar', rebah: true, rebahTilt: -90 })],
   ['raka-berbaring-sadar.svg', rakaSvg(raka('lega', 'berbaring'), { uid: 'berbaring-sadar', rebah: true, rebahTilt: -5 })],
   ['raka-darurat.svg', rakaSvg(raka('bingung', null, { blood: 1 }), { uid: 'darurat' })],
   ['raka-pov-perut.svg', rakaSvg(raka('netral', 'pov_perut', { blood: 1 }), { uid: 'pov-perut', shadow: false }).replace('viewBox="0 0 400 800"', 'viewBox="30 366 340 250"')],
