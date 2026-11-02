@@ -3,7 +3,7 @@ import {createSelectionGlow} from './selectionGlow.js';
 // Selection - Raycasting, highlighting, and selection management
 import * as THREE from 'three';
 import {GROUPS,REGIONS} from '../atlas/catalog.js';
-import { state, setSelectedPart, getStructureInfo, translate } from '../state/store.js';
+import { state, setSelectedPart, getStructureInfo, translate, subscribe } from '../state/store.js';
 import { getMeshRegistry, getPickTargets, getStructure, ownMeshesOf } from './loadModel.js';
 import { highlightMesh, clearHighlight, ghostAllExcept, clearGhost, isolatePart, hidePart } from './visibility.js';
 import { focusOnMesh } from './camera.js';
@@ -25,6 +25,16 @@ raycaster.firstHitOnly = true;
 let mouse = new THREE.Vector2();
 let lastSelectedMesh = null;
 let releaseGlow = null;
+let glowViewer = null;
+// The light sweep marks the selection among visible neighbours. An isolated structure is alone on
+// screen, so it gets no sweep; leaving isolation brings it back.
+function syncGlow() {
+  const want = !!lastSelectedMesh && !state.isolatedPart && !!glowViewer;
+  if (want && !releaseGlow) releaseGlow = createSelectionGlow(ownMeshesOf(lastSelectedMesh.userData.partId), () => glowViewer.render());
+  else if (!want && releaseGlow) { releaseGlow(); releaseGlow = null; }
+  glowViewer?.render();
+}
+const studyActive = () => !!globalThis.document?.body?.classList.contains('anatomy-study-active');
 let lastIntersectedMesh = null;
 let touchStart = null;
 let pointerDown = null;
@@ -50,6 +60,8 @@ function pickAt(event, viewer) {
 }
 
 export function initSelection(viewer) {
+  glowViewer = viewer;
+  subscribe('isolatedPart', () => syncGlow());
   const { canvas, controls } = viewer;
 
   // Picking during an orbit is wasted work: the pointer is dragging, not
@@ -267,11 +279,14 @@ export function selectPart(partId, viewer) {
   // Ghosting restores the selected material, so apply its tint afterwards.
   lastSelectedMesh = mesh;
 
-  // Everything else drops to a ghost, so an occluded structure is still
-  // readable, and the camera eases in to answer "where is it".
-  ghostAllExcept(partId);
-  highlightMesh(partId, 0xffdf5d, 0.45);
-  releaseGlow = createSelectionGlow(ownMeshesOf(partId), () => viewer.render());
+  // As in Complete Anatomy the rest of the body stays as it is and the light sweep shows which
+  // structure is selected; "Pudarkan lainnya" fades the others on request. The quiz keeps its
+  // contextual fade so the target reads even when it sits deep.
+  if (studyActive()) ghostAllExcept(partId);
+  else clearGhost();
+  highlightMesh(partId, 0xffc21f, 0.1);
+  glowViewer = viewer;
+  syncGlow();
 
   showCallout(partId, partData.displayName, {
     isolate: id => isolatePart(id),

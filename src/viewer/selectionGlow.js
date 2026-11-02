@@ -1,14 +1,18 @@
 import * as THREE from 'three';
-// Selection sweep: a thin band of light that travels along the selected structure from one end to the
-// other (top end first), then starts again from the top. It is a render-only overlay that shares the
-// structure's geometry; no vertex or index is changed and nothing here can be picked.
+// Selection sweep, after Complete Anatomy: the structure keeps its own colour and texture, and a soft
+// yellow band with a thin bright leading edge travels along it from the upper end to the lower end,
+// then starts again from the top. It is a render-only overlay that shares the structure's geometry;
+// no vertex or index is changed and nothing here can be picked.
 //
 // The travel axis is the structure's own long axis (principal component of its vertices), so a muscle
 // is swept along its fibres' general direction and a long bone from one epiphysis to the other.
 
-const PERIOD = 2.6;      // seconds for one pass plus the pause before the next
-const TRAVEL = 0.78;     // share of the period the band is moving
-const WIDTH = 0.022;     // half-width of the bright core, as a share of the structure's length
+const PERIOD = 3.0;      // seconds for one pass plus the pause before the next
+const TRAVEL = 0.8;      // share of the period the band is moving
+const WIDTH = 0.11;      // half-width of the yellow band, as a share of the structure's length
+const EDGE = 0.012;      // half-width of the bright leading edge
+const BAND_ALPHA = 0.46; // the structure stays readable under the band
+const EDGE_ALPHA = 0.55;
 
 const vertexShader = `
 uniform vec3 sweepAxis; uniform float sweepMin; uniform float sweepSpan;
@@ -22,26 +26,32 @@ void main(){
 }`;
 
 const fragmentShader = `
-uniform float sweepTime; uniform float sweepWidth; uniform vec3 sweepColor; uniform float sweepStatic;
+uniform float sweepTime; uniform float sweepWidth; uniform vec3 sweepColor; uniform vec3 edgeColor; uniform float sweepStatic;
 varying float vAlong; varying vec3 vNormal; varying vec3 vView;
 void main(){
-  float rim = pow(1.0 - abs(dot(normalize(vNormal), normalize(vView))), 2.0);
-  float light;
+  vec3 n = normalize(vNormal);
+  if (!gl_FrontFacing) n = -n;
+  float shade = 0.55 + 0.45 * max(dot(n, normalize(vec3(0.35, 0.6, 1.0))), 0.0);
+  float body; float edge;
   if (sweepStatic > 0.5) {
-    light = 0.18 + 0.35 * rim;                       // reduced motion: a still, soft sheen
+    body = 0.45; edge = 0.0;                         // reduced motion: a still, light tint
   } else {
     float phase = fract(sweepTime / ${PERIOD.toFixed(2)});
     float travel = clamp(phase / ${TRAVEL.toFixed(2)}, 0.0, 1.0);
     float eased = travel * travel * (3.0 - 2.0 * travel);
-    float centre = mix(-3.0 * sweepWidth, 1.0 + 3.0 * sweepWidth, eased);
-    float d = abs(vAlong - centre);
-    float core = 1.0 - smoothstep(0.0, sweepWidth, d);
-    float halo = exp(-(d * d) / (sweepWidth * sweepWidth * 14.0)) * 0.32;
-    float fade = 1.0 - smoothstep(0.92, 1.0, travel);  // dims as it leaves the far end
-    light = (core * (0.75 + 0.6 * rim) + halo * (0.6 + 0.6 * rim)) * fade;
+    float centre = mix(-sweepWidth * 1.2, 1.0 + sweepWidth * 1.2, eased);
+    float d = vAlong - centre;                         // > 0 is ahead of the band (further down)
+    body = 1.0 - smoothstep(sweepWidth * 0.45, sweepWidth, abs(d));
+    edge = 1.0 - smoothstep(0.0, ${EDGE.toFixed(3)}, abs(d - sweepWidth * 0.82));
+    float visible = smoothstep(0.0, 0.06, travel) * (1.0 - smoothstep(0.94, 1.0, travel));
+    body *= visible; edge *= visible;
   }
-  if (light < 0.003) discard;
-  gl_FragColor = vec4(sweepColor * light, light);
+  float aBody = body * ${BAND_ALPHA.toFixed(2)};
+  float aEdge = edge * ${EDGE_ALPHA.toFixed(2)};
+  float alpha = aBody + aEdge * (1.0 - aBody);
+  if (alpha < 0.004) discard;
+  vec3 colour = (sweepColor * shade * aBody + edgeColor * aEdge * (1.0 - aBody)) / alpha;
+  gl_FragColor = vec4(colour, alpha);
 }`;
 
 // Long axis of a geometry in its local space, cached on the geometry. Power iteration on the vertex
@@ -99,13 +109,14 @@ export function createSelectionGlow(meshes, requestFrame = () => {}) {
         sweepSpan: { value: span },
         sweepTime: { value: 0 },
         sweepWidth: { value: WIDTH },
-        sweepColor: { value: new THREE.Color('#f2fffb') },
+        sweepColor: { value: new THREE.Color('#ffc21f') },
+        edgeColor: { value: new THREE.Color('#fff7dc') },
         sweepStatic: { value: still ? 1 : 0 },
       },
       vertexShader, fragmentShader,
       transparent: true, depthWrite: false, depthTest: true, depthFunc: THREE.LessEqualDepth,
       polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1,
-      blending: THREE.AdditiveBlending, toneMapped: false, side: THREE.FrontSide,
+      blending: THREE.NormalBlending, toneMapped: false, side: THREE.FrontSide,
     });
     const overlay = new THREE.Mesh(mesh.geometry, material);
     overlay.name = 'MEDCOEL selection sweep';

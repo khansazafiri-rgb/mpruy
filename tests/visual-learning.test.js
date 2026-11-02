@@ -17,7 +17,7 @@ it('selection sweep is a render-only overlay on shared geometry and cleans up wi
  const release=createSelectionGlow([mesh],frames);expect(mesh.children).toHaveLength(1);expect(frames).toHaveBeenCalled();
  const overlay=mesh.children[0],spy=vi.spyOn(overlay.material,'dispose');
  expect(overlay.geometry).toBe(geometry);const hit=[];overlay.raycast(null,hit);expect(hit).toEqual([]);
- expect(overlay.material.depthWrite).toBe(false);expect(overlay.material.depthTest).toBe(true);expect(overlay.material.blending).toBe(THREE.AdditiveBlending);
+ expect(overlay.material.depthWrite).toBe(false);expect(overlay.material.depthTest).toBe(true);expect(overlay.material.blending).toBe(THREE.NormalBlending);
  release();expect(mesh.children).toHaveLength(0);expect(dispose).not.toHaveBeenCalled();expect(spy).toHaveBeenCalledOnce();expect(geometry.attributes.position.array).toEqual(positions);
 });
 it('sweep travels along the long axis and starts at the upper end',()=>{

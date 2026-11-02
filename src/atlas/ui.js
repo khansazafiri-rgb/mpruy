@@ -392,9 +392,10 @@ export async function initUI() {
     $("footerFadeOthersBtn").textContent = fadedOthers ? "Tampilkan lainnya" : "Pudarkan lainnya";
   };
   subscribe("selectedPart", (part) => {
-    fadedOthers = !!part;
-    $("footerFadeOthersBtn").setAttribute("aria-pressed", String(!!part));
-    $("footerFadeOthersBtn").textContent = part ? "Tampilkan lainnya" : "Pudarkan lainnya";
+    // Selecting no longer fades the rest of the body (the quiz still does).
+    fadedOthers = !!part && document.body.classList.contains("anatomy-study-active");
+    $("footerFadeOthersBtn").setAttribute("aria-pressed", String(fadedOthers));
+    $("footerFadeOthersBtn").textContent = fadedOthers ? "Tampilkan lainnya" : "Pudarkan lainnya";
   });
   $("footerIsolateBtn").onclick = isolateSelected;
   $("footerHideBtn").onclick = hideSelected;
