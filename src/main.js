@@ -27,6 +27,7 @@ async function start() {
   const overlay = document.getElementById("loadingOverlay");
   try {
     const viewer = createScene();
+    if (window.parent !== window && new URLSearchParams(location.search).get('annotator') === '1') document.body.classList.add('anatomy-annotator-active');
     setViewer(viewer);
     viewer.startRenderLoop();
     setTranslations({ it: translationsIt, en: translationsEn });
@@ -51,7 +52,13 @@ async function start() {
     await initAtlas(catalog);
     await initUI();
     initSelection(viewer);
+    const {installLibraryBridge} = await import('./library/bridge.js');
+    installLibraryBridge(viewer);
     overlay.classList.add("hidden");
+    if (window.parent !== window && new URLSearchParams(location.search).get('annotator') === '1') {
+      const {installAnnotator} = await import('./annotations/annotator.js');
+      installAnnotator(viewer);
+    }
     reportAtlasStatus("ready");
     document.addEventListener("visibilitychange", () =>
       document.hidden ? viewer.stopRenderLoop() : viewer.startRenderLoop(),

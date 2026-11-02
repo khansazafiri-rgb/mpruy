@@ -3,11 +3,11 @@ import globals from 'globals';
 
 export default [
   {
-    ignores: ['dist/**', 'node_modules/**', 'assets-src/**', 'public/draco/**']
+    ignores: ['dist/**', 'dist-thumbnails/**', 'node_modules/**', 'assets-src/**', 'public/draco/**']
   },
   js.configs.recommended,
   {
-    files: ['src/**/*.js', 'tools/**/*.mjs', 'tests/**/*.js', '*.js', '*.mjs'],
+    files: ['src/**/*.js', 'tools/**/*.mjs', 'tools/**/*.js', 'tests/**/*.js', '*.js', '*.mjs'],
     languageOptions: {
       ecmaVersion: 2023,
       sourceType: 'module',
