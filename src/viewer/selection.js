@@ -333,7 +333,6 @@ function showInfoPanel(partData) {
   const name = info.name?.[lang] || info.name?.en || partData.displayName;
   const systemLabel = GROUPS.find(g => g.id === info.studyGroup)?.label || getSystemLabel(info.system || partData.system, lang);
 
-  const sideKey = info.side === 'left' ? 'side_left' : info.side === 'right' ? 'side_right' : null;
 
   // The action row (Isolate, Hide, Fade...) is one static element; keep it right under the title.
   const actions = document.getElementById('footerBar');
@@ -345,7 +344,7 @@ function showInfoPanel(partData) {
         <div class="structure-tags">
           <span class="structure-system">${escapeHtml(systemLabel)}</span>
           ${info.studyRegions ? `<span class="structure-tag">${escapeHtml(info.studyRegions.map(r => REGIONS.find(row => row[0] === r)?.[1]).join(" · "))}</span>` : ''}
-          ${sideKey ? `<span class="structure-tag">${escapeHtml(translate(sideKey, lang))}</span>` : ''}
+          ${info.side ? `<span class="structure-tag">${info.side === 'left' ? 'Kiri' : 'Kanan'}</span>` : ''}
           ${info.official === false ? `<span class="structure-tag warn" title="${escapeHtml(translate('non_official_hint', lang))}">${escapeHtml(translate('non_official', lang))}</span>` : ''}
         </div>
       </div>

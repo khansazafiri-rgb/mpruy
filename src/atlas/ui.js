@@ -112,7 +112,7 @@ function update() {
   });
   document.querySelectorAll("[data-preset]").forEach((b) => { b.disabled = !!pending; });
   const region = REGIONS.find((r) => r[0] === settings.region);
-  $("sceneTitle").textContent = region?.[1] || "Whole body";
+  $("sceneTitle").textContent = region?.[1] || "Seluruh tubuh";
   $("sceneSubtitle").textContent = region?.[2] || "";
   const thumb = regionPreview(settings.region);
   $("regionThumb").hidden = !thumb;
@@ -191,7 +191,7 @@ function showSearch() {
   $("searchInput").setAttribute("aria-expanded", "true");
   panel.innerHTML = `<div class="search-scope">${searchRows.length ? `${searchRows.length} hasil · semua regio · memilih hasil langsung menampilkannya` : "Semua regio"}</div>${searchRows.map((r, i) => {
     const group = GROUPS.find((g) => g.id === r.group), image = !r.system && structurePreview(r.id);
-    const where = r.system ? "Tampilkan seluruh sistem" : `${group.label} · ${REGIONS.find((g) => g[0] === metadata(r.id).regions[0])?.[1] || "Whole body"}`;
+    const where = r.system ? "Tampilkan seluruh sistem" : `${group.label} · ${REGIONS.find((g) => g[0] === metadata(r.id).regions[0])?.[1] || "Seluruh tubuh"}`;
     return `<button type="button" role="option" aria-selected="false" id="atlas-result-${i}" class="atlas-result${r.system ? " is-system" : ""}" data-result="${i}" style="--group-color:${group.color}"><span class="atlas-result-thumb">${image ? `<img class="atlas-result-preview" src="${escape(image)}" alt="" decoding="async"/>` : `<i aria-hidden="true"></i>`}</span><span class="atlas-result-text"><span>${escape(r.label)}</span><small><i class="group-dot" aria-hidden="true"></i>${escape(where)}</small></span></button>`;
   }).join("") || '<p class="search-empty">Tidak ada struktur yang cocok. Coba nama Latin, Inggris, atau Indonesia.</p>'}`;
 }

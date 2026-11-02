@@ -4,43 +4,43 @@
   "regions": [
     {
       "id": "whole",
-      "name": "Whole body",
-      "description": "All regions"
+      "name": "Seluruh tubuh",
+      "description": "Semua regio"
     },
     {
       "id": "headNeck",
-      "name": "Head & neck",
-      "description": "Skull, face and neck"
+      "name": "Kepala & leher",
+      "description": "Tengkorak, wajah, dan leher"
     },
     {
       "id": "thorax",
-      "name": "Thorax",
-      "description": "Chest and mediastinum"
+      "name": "Toraks",
+      "description": "Dada dan mediastinum"
     },
     {
       "id": "abdomen",
       "name": "Abdomen",
-      "description": "Abdominal wall and organs"
+      "description": "Dinding perut dan organnya"
     },
     {
       "id": "pelvis",
       "name": "Pelvis",
-      "description": "Pelvis and perineum"
+      "description": "Panggul dan perineum"
     },
     {
       "id": "upperLimb",
-      "name": "Upper limbs",
-      "description": "Shoulder to fingertips"
+      "name": "Ekstremitas atas",
+      "description": "Bahu sampai ujung jari"
     },
     {
       "id": "lowerLimb",
-      "name": "Lower limbs",
-      "description": "Hip and thigh to toes"
+      "name": "Ekstremitas bawah",
+      "description": "Pinggul sampai jari kaki"
     },
     {
       "id": "back",
-      "name": "Back",
-      "description": "Vertebral column and back muscles"
+      "name": "Punggung",
+      "description": "Kolumna vertebralis dan otot punggung"
     }
   ],
   "synonyms": {
