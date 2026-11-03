@@ -782,7 +782,7 @@ function StudyContent() {
       if (!r) return;
       const n = Number(e.key);
       if (!r.answer && n >= 1 && n <= r.question.options.length) { e.preventDefault(); pick(r.question.options[n - 1].id); }
-      else if (r.answer && (r.question.mode !== 'find' || r.answer.correct) && e.key === 'Enter' && e.target?.tagName !== 'BUTTON' && e.target?.tagName !== 'A') { e.preventDefault(); next(); }
+      else if (r.answer && e.key === 'Enter' && e.target?.tagName !== 'BUTTON' && e.target?.tagName !== 'A') { e.preventDefault(); next(); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -900,10 +900,10 @@ function StudyContent() {
       {round && (
         <div className="library-quiz-layout" ref={quizTop}>
           <div className="library-quiz-viewer">
-            <div className="library-model-prompt"><strong>{round.question.prompt}</strong>{mode === 'find' && round.answer && <span role="status">{round.answer.correct ? 'Benar! Lanjutkan ke soal berikutnya.' : 'Belum tepat. Coba lagi tanpa membuka lokasi jawaban.'}</span>}</div>
+            <div className="library-model-prompt"><strong>{round.question.prompt}</strong>{mode === 'find' && round.answer && <span role="status">{round.answer.correct ? 'Benar! Lanjutkan ke soal berikutnya.' : `Jawaban yang benar: ${answerLabel}. Ditunjukkan pada model.`}</span>}</div>
             <LibraryViewer
               structureId={round.question.targetId}
-              mode={mode}
+              mode={mode === 'find' && round.answer && !round.answer.correct ? 'identify' : mode}
               region={region}
               system={system}
               requestKey={round.key}
@@ -944,13 +944,13 @@ function StudyContent() {
                   title={round.answer.correct ? 'Benar, mantap!' : 'Belum tepat, santai saja.'}
                 >
                   {chosenLabel && <p>Kamu memilih <b>{chosenLabel}</b>.</p>}
-                  {mode === 'find' && !round.answer.correct ? <p>Belum tepat. Cari lagi pada model; lokasi jawaban tetap dirahasiakan.</p> : <p>Jawabannya <b>{answerLabel}</b>{mode === 'find' ? ', kini ditampilkan di model.' : '.'}</p>}
+                  <p>Jawaban yang benar: <b>{answerLabel}</b>{mode === 'find' ? ', ditunjukkan pada model.' : '.'}</p>
                 </MascotTip>
-                {(mode !== 'find' || round.answer.correct) && <span>{systemName(target.system)} · {target.regions.map(regionName).join(', ')}</span>}
-                {(mode !== 'find' || round.answer.correct) && <div className="library-feedback-actions">
+                <span>{systemName(target.system)} · {target.regions.map(regionName).join(', ')}</span>
+                <div className="library-feedback-actions">
                   <button className="btn-primary" onClick={nextQuestion} autoFocus>Soal berikutnya <ArrowRight size={16} /></button>
                   <Link target="_blank" to={structureHref(target.id)} rel="noreferrer">Baca tentang struktur ini ↗</Link>
-                </div>}
+                </div>
               </div>
             )}
             <p className="library-question-note">

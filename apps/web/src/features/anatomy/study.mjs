@@ -37,9 +37,9 @@ export function studyScope(registry,{region='',system='',systemChosen=false,mode
  return {regionChosen,eligibleCount,ready:regionChosen&&systemChosen&&validSystem&&validMode&&eligibleCount>=4};
 }
 
-// Find permits another explicit attempt after a miss; exploration is not an attempt.
+// Every intentional answer ends the question; exploration is never an attempt.
 export function evaluateStudyAttempt(question,id,{ready=true,locked=false}={}) {
  if(!question||!ready||locked||typeof id!=='string'||!id)return null;
  const correct=checkAnswer(question,id);
- return {id,correct,locked:question.mode!=='find'||correct};
+ return {id,correct,locked:true};
 }

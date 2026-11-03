@@ -89,10 +89,10 @@ test('answers require explicit intent, current frame and request; visibility eve
  assert.equal(acceptsLibraryEvent({...event,data:{...event.data,intent:'answer'}},origin,viewer,requestId),true);
  for(const mode of ['system','region'])assert.equal(acceptsLibraryCommand({...event,data:{...event.data,type:LIBRARY_COMMAND,mode}},origin,viewer,{}),true);
 });
-test('find attempts permit retry without revealing or advancing; identify locks after one answer',async()=>{
+test('all quiz modes end after an explicit answer so feedback cannot be used to rescore',async()=>{
  const {evaluateStudyAttempt}=await import('./study.mjs');const q=makeQuestion(registry,{mode:'find',rng:()=>0});
  assert.deepEqual(evaluateStudyAttempt(q,q.targetId),{id:q.targetId,correct:true,locked:true});
- assert.deepEqual(evaluateStudyAttempt(q,'wrong'),{id:'wrong',correct:false,locked:false});
+ assert.deepEqual(evaluateStudyAttempt(q,'wrong'),{id:'wrong',correct:false,locked:true});
  for(const state of [{ready:false},{locked:true}])assert.equal(evaluateStudyAttempt(q,q.targetId,state),null);
  assert.equal(evaluateStudyAttempt({...q,mode:'identify'},'wrong').locked,true);
  assert.equal(evaluateStudyAttempt(q,''),null);

@@ -104,7 +104,7 @@ retains hashed viewer assets and a previous release pointer. Keep a backup of th
 old web dist for rollback; existing web tabs may require refresh after the swap.
 Acceptance: desktop, iPad landscape/portrait, phone; all four modes; find starts
 unselected and unframed to target; hide/unhide/show all do not score; an explicit
-wrong answer permits retry; a correct answer offers next; next/restart clear hides;
+wrong answer immediately reveals the correct answer; every answer offers next; next/restart clear hides;
 identify has four choices and no target label in the model; Explore/search/library
 and Annotator still work. Verify API and Hermes service health without restarting.
 

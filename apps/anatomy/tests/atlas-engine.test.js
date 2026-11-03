@@ -262,3 +262,12 @@ describe('study exploration reuses actual visibility and camera engine',()=>{
   await engine.prepareStudy({region:'whole',system:'skeletal'});expect(env.meshes.get('Ulna.l')[0].visible).toBe(true);expect(state.hiddenParts.size).toBe(0);expect(state.isolatedPart).toBeNull();
  });
 });
+it('next Find question restores scope framing after revealing an incorrect answer',async()=>{
+ await engine.prepareStudy({region:'headNeck',system:'muscular'});
+ await engine.reveal('Platysma');
+ const feedbackPosition=state.viewer.camera.position.clone();
+ await engine.prepareStudy({region:'headNeck',system:'muscular'});
+ expect(state.selectedPart).toBeNull();expect(state.isolatedPart).toBeNull();
+ expect(state.viewer.camera.position.distanceTo(feedbackPosition)).toBeGreaterThan(.01);
+ for(const id of ['Fascia','Platysma','Deep neck'])expect(env.meshes.get(id)[0].visible).toBe(true);
+});

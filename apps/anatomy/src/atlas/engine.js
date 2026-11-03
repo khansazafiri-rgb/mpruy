@@ -268,6 +268,9 @@ export async function reveal(id) {
   const meta = catalog[id];
   if (!meta)
     throw new Error("This structure is not available in the supplied model.");
+  // Revealing feedback changes the camera: the next Find question frames its
+  // participant scope again rather than retaining the previous answer close-up.
+  studyScopeKey = null;
   const token = ++selectRevision;
   const applied = await commit(() => {
     const yMin = meta.box[1],

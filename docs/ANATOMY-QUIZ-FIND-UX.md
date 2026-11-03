@@ -36,13 +36,17 @@ Hide, unhide, show all, camera operations and focus on a participant-selected me
 never submit. Multiple structures may be hidden sequentially. Find does not ghost
 all other structures on selection.
 
-A wrong explicit find attempt gives short feedback and permits retry without
-revealing, framing or isolating the answer, or offering a revealing structure link.
-Each explicit attempt counts in the displayed **percobaan** score and existing
-local-first progress. Correct attempts lock scoring for that question and offer
-Next. The manually selected correct structure already has a selection glow; the
-camera and visibility are not changed after success. Question numbers use the
-round serial, not the attempt count. Identify retains its existing one-attempt rule.
+Every explicit answer now ends the question, following the user's revised feedback
+preference. A wrong Find answer immediately shows the correct name and reveals/
+highlights that structure through the existing identify/reveal path. Next and the
+structure detail link are available immediately. Correct selections retain their
+existing glow. The first answer is scored once; seeing the answer cannot be used
+to turn a miss into a correct score. Identify/system/region also show the correct
+option immediately. Selection and visibility actions still never count as answers.
+After wrong-answer feedback changes framing, the next Find question frames the
+chosen scope again, so it cannot inherit a close-up of the previous answer.
+Question numbers use round serials.
+
 
 Next restores all hidden/faded parts for the selected scope. Restart, mode, system
 and region changes unmount the study frame, so the next session gets fresh study
@@ -89,8 +93,8 @@ checks are not a claim of hardware certification.
 
 - Web suite: 138 tests, including registry, search, filters, routing, all four public
   modes, four identify choices, no duplicate distractors, find answer identity,
-  invalid-mode rejection, explicit intent and find retry/lock semantics.
-- Viewer suite: 78 tests, including actual Three.js visibility, reset across
+  invalid-mode rejection, explicit intent and single-attempt feedback/lock semantics.
+- Viewer suite: 79 tests, including actual Three.js visibility, reset across
   questions, camera retention, selection versus answer, multiple hides, unhide,
   show all, invalid structures, study scope, touch gesture classification, ordinary
   atlas, GLB/thumbnail provenance, host and Annotator regressions.
