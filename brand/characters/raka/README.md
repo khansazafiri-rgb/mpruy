@@ -84,10 +84,16 @@ Pakaian dipilih lewat opsi gambar `outfit`; bawaannya `harian` (tampilan kanonik
 |---|---|
 | `harian` | Sweater teal, celana navy, sepatu krem (kanonik). |
 | `demo` | Kaus lengan panjang **hitam**, celana abu tua, sepatu krem. Patch logo MEDCOEL kecil tetap di dada. Dibuat untuk video "gas air mata saat demo". |
+| `kuliah` | **Pulang kuliah**: kemeja biru muda, celana navy, sepatu krem, dan **ransel** di punggung (badan ransel menyembul di sisi, dua tali di dada; aksesori `ransel`, bisa dimatikan dengan `{ ransel: false }` atau dipasang di pakaian lain dengan `{ ransel: true }`). Dibuat untuk video "Makan malam bikin berat badan naik?". |
+| `santai` | **Santai di kos**: kaus oblong coral, celana training abu, sepatu krem. Dibuat untuk video yang sama. |
 | `jas` | **Jas dokter putih** (kerah, V-leher dengan sweater teal, lapel, kancing, saku, stetoskop) di atas badan. Panjang sampai lutut; pada duduk di balik meja, bagian bawahnya tersembunyi meja. |
+
+Pratinjau pakaian baru: `preview/raka-kuliah-santai.png` (dibuat dengan `node brand/characters/raka/render-pakaian.mjs`). SVG statis: `svg/raka-kuliah-*.svg`, `svg/raka-santai-*.svg`.
 
 ```js
 import { raka, rakaSvg } from './raka.js';
+rakaSvg(raka('lapar', 'pegang_perut'), { outfit: 'kuliah' });   // pulang kuliah, berransel
+rakaSvg(raka('senang'), { outfit: 'santai' });                    // santai di kos
 rakaSvg(raka('kaget'), { outfit: 'demo' });              // baju demo hitam
 rakaSvg(raka('netral'), { outfit: 'jas' });              // jas dokter
 rakaSvg(raka('netral'), { outfit: 'demo', dark: true });  // warna diangkat sedikit untuk latar gelap

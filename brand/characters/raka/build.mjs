@@ -27,7 +27,7 @@ export const OUTFIT_SHEET = [
   ['jongkok', raka('khawatir', 'jongkok')],
 ];
 let nOutfit = 0;
-for (const outfit of ['demo', 'jas']) {
+for (const outfit of ['demo', 'jas', 'kuliah', 'santai']) {
   for (const [pose, state] of OUTFIT_SHEET) {
     const file = `raka-${outfit}-${pose}.svg`;
     fs.writeFileSync(path.join(out, file), `${rakaSvg(state, { uid: file.replace('.svg', ''), outfit })}\n`);
