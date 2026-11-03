@@ -33,7 +33,7 @@ test('question generation is deterministic, excludes opposite-side equivalents, 
  assert.notEqual(makeQuestion(registry,{system:'skeletal',excludeId:q.targetId,rng}).targetId,q.targetId);
 });
 test('all study modes use real structures, valid source systems and non-ambiguous region distractors',()=>{
- for(const mode of ['identify','find'])for(let i=0;i<20;i++){
+ for(const mode of ['identify','find','system','region'])for(let i=0;i<20;i++){
   const q=makeQuestion(registry,{mode,rng:()=>i/21});assert.ok(registry.byId.has(q.targetId));
   if(mode==='find'){assert.equal(q.options.length,0);assert.equal(q.answerId,q.targetId);}
   if(mode==='system')assert.equal(q.answerId,registry.byId.get(q.targetId).system);
@@ -57,7 +57,7 @@ test('local-first progress isolates accounts and source, advances mastery after 
 test('unlabelled source meshes stay addressable but are excluded from quiz targets and distractors',()=>{
  const data=globalThis.structuredClone(input);for(const id of ['?x.r','????????']){data.systems.cardiovascular.push(id);data.catalog[id]={source:'cardiovascular',group:'arterial',regions:['thorax'],box:[0,0,0,1,1,1]};}
  const r=buildRegistry(data);assert.equal(r.byId.get('?x.r').name,'Unlabelled structure (right)');assert.equal(r.byId.get('?x.r').available,true);assert.equal(r.byId.get('?x.r').nameKnown,false);assert.equal(filterStructures(r,{query:'?x.r'})[0].id,'?x.r');
- for(const mode of ['identify','find'])for(const random of [0,.5,.999]){const q=makeQuestion(r,{mode,rng:()=>random});assert.equal(r.byId.get(q.targetId).nameKnown,true);if(mode==='identify')assert.ok(q.options.every(o=>r.byId.get(o.id).nameKnown));}
+ for(const mode of ['identify','find','system','region'])for(const random of [0,.5,.999]){const q=makeQuestion(r,{mode,rng:()=>random});assert.equal(r.byId.get(q.targetId).nameKnown,true);if(mode==='identify')assert.ok(q.options.every(o=>r.byId.get(o.id).nameKnown));}
 });
 
 test('local mesh previews reject external paths and traversal, and browsing places parent overview structures first',async()=>{
@@ -75,19 +75,19 @@ test('guided quiz requires an explicit region and system choice before a valid s
  assert.equal(studyScope(registry,{region:'upperLimb',system:'skeletal',systemChosen:true}).ready,true);
  assert.equal(studyScope(registry,{region:'whole',system:'',systemChosen:true}).ready,true);
  for(const invalid of [{region:'unknown',systemChosen:true},{region:'whole',system:'unknown',systemChosen:true},{region:'whole',mode:'unknown',systemChosen:true}])assert.equal(studyScope(registry,invalid).ready,false);
- for(const mode of ['identify','find']){const question=makeQuestion(registry,{region:'upperLimb',system:'skeletal',mode,rng:()=>.4});assert.ok(registry.byId.has(question.targetId));if(mode==='identify')assert.ok(question.options.every(o=>registry.byId.has(o.id)));}
+ for(const mode of ['identify','find','system','region']){const question=makeQuestion(registry,{region:'upperLimb',system:'skeletal',mode,rng:()=>.4});assert.ok(registry.byId.has(question.targetId));if(mode==='identify')assert.ok(question.options.every(o=>registry.byId.has(o.id)));}
 });
 
-test('only two public modes exist; hidden and invalid modes are rejected by scope and generator',async()=>{
- const {studyScope}=await import('./study.mjs');assert.deepEqual(STUDY_MODES.map(m=>m.id),['identify','find']);
- for(const mode of ['system','region','unknown']){assert.throws(()=>makeQuestion(registry,{mode}));assert.equal(studyScope(registry,{mode,region:'whole',systemChosen:true}).ready,false);}
- for(const mode of ['identify','find'])assert.equal(studyScope(registry,{mode,region:'whole',systemChosen:true}).ready,true);
+test('all four public modes are available; invalid modes are rejected by scope and generator',async()=>{
+ const {studyScope}=await import('./study.mjs');assert.deepEqual(STUDY_MODES.map(m=>m.id),['identify','find','system','region']);
+ for(const mode of ['unknown','landmarks']){assert.throws(()=>makeQuestion(registry,{mode}));assert.equal(studyScope(registry,{mode,region:'whole',systemChosen:true}).ready,false);}
+ for(const mode of ['identify','find','system','region'])assert.equal(studyScope(registry,{mode,region:'whole',systemChosen:true}).ready,true);
 });
 test('answers require explicit intent, current frame and request; visibility events cannot answer',()=>{
  const viewer={},origin='https://medcoel.example',requestId='intent-test-123';const event={source:viewer,origin,data:{type:LIBRARY_PICK,version:1,requestId,structureId:'Ulna.r'}};
  for(const intent of [undefined,'select','hide','unhide','show-all','focus','fade'])assert.equal(acceptsLibraryEvent({...event,data:{...event.data,intent}},origin,viewer,requestId),false);
  assert.equal(acceptsLibraryEvent({...event,data:{...event.data,intent:'answer'}},origin,viewer,requestId),true);
- for(const mode of ['system','region'])assert.equal(acceptsLibraryCommand({...event,data:{...event.data,type:LIBRARY_COMMAND,mode}},origin,viewer,{}),false);
+ for(const mode of ['system','region'])assert.equal(acceptsLibraryCommand({...event,data:{...event.data,type:LIBRARY_COMMAND,mode}},origin,viewer,{}),true);
 });
 test('find attempts permit retry without revealing or advancing; identify locks after one answer',async()=>{
  const {evaluateStudyAttempt}=await import('./study.mjs');const q=makeQuestion(registry,{mode:'find',rng:()=>0});

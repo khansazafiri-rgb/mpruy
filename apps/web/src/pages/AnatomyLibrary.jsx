@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Route, Routes, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import {
-  ArrowLeft, ArrowRight, BookOpen, Bone, Box, Brain, Check, ChevronRight, Eye, Heart, Keyboard, Layers,
+  ArrowLeft, ArrowRight, BookOpen, Bone, Box, Brain, Check, ChevronRight, Eye, Heart, Keyboard, Layers, MapPin,
   MousePointerClick, Search, Target,
 } from 'lucide-react';
 import Logo from '@/components/Logo';
@@ -21,7 +21,7 @@ import './AnatomyLibrary.css';
 const SYSTEM_ICONS = {
   skeletal: Bone, muscular: Layers, joints: Layers, cardiovascular: Heart, nervous: Brain, lymphatic: Layers, visceral: Heart,
 };
-const MODE_ICONS = { identify: Eye, find: MousePointerClick };
+const MODE_ICONS = { identify: Eye, find: MousePointerClick, system: Layers, region: MapPin };
 const PROGRESS_LABELS = { NOT_STUDIED: 'Belum dipelajari', LEARNING: 'Sedang dipelajari', MASTERED: 'Dikuasai' };
 const SIDE_LABELS = { left: 'kiri', right: 'kanan' };
 const systemName = (id) => SYSTEMS.find((s) => s.id === id)?.name || '';
@@ -327,7 +327,7 @@ function LandingContent() {
         <div>
           <p className="library-eyebrow">BIAR NEMPEL DI KEPALA</p>
           <h2>Kuis anatomi 3D</h2>
-          <p>Kenali struktur yang disorot atau cari sendiri struktur yang diminta pada model 3D.</p>
+          <p>Kenali struktur, temukan di 3D, atau uji pengetahuan sistem dan regionya.</p>
           <div className="library-study-tags">
             <span>{STUDY_MODES.length} mode kuis</span>
             <span>Pengecoh sejenis</span>
@@ -801,11 +801,12 @@ function StudyContent() {
   const chosenLabel = round?.answer && !round.answer.correct
     ? round.question.options.find((o) => o.id === round.answer.id)?.label || registry.byId.get(round.answer.id)?.name || ''
     : '';
+  const answerLabel = round?.question.options.find((o) => o.id === round.question.answerId)?.label || target?.name || '';
   const accuracy = score.total ? Math.round((score.correct / score.total) * 100) : 0;
 
   return (
     <>
-      <PageIntro title="Kuis anatomi" eyebrow="ACTIVE RECALL, LANGSUNG DI 3D" description="Kenali struktur yang disorot atau temukan sendiri pada model 3D." />
+      <PageIntro title="Kuis anatomi" eyebrow="ACTIVE RECALL, LANGSUNG DI 3D" description="Kenali struktur, temukan di 3D, atau tebak sistem dan regionya." />
       {!round ? (
         <section className="library-quiz-setup">
           {mascots && (
@@ -943,7 +944,7 @@ function StudyContent() {
                   title={round.answer.correct ? 'Benar, mantap!' : 'Belum tepat, santai saja.'}
                 >
                   {chosenLabel && <p>Kamu memilih <b>{chosenLabel}</b>.</p>}
-                  {mode === 'find' && !round.answer.correct ? <p>Belum tepat. Cari lagi pada model; lokasi jawaban tetap dirahasiakan.</p> : <p>Jawabannya <b>{target.name}</b>{mode === 'find' ? ', kini ditampilkan di model.' : '.'}</p>}
+                  {mode === 'find' && !round.answer.correct ? <p>Belum tepat. Cari lagi pada model; lokasi jawaban tetap dirahasiakan.</p> : <p>Jawabannya <b>{answerLabel}</b>{mode === 'find' ? ', kini ditampilkan di model.' : '.'}</p>}
                 </MascotTip>
                 {(mode !== 'find' || round.answer.correct) && <span>{systemName(target.system)} · {target.regions.map(regionName).join(', ')}</span>}
                 {(mode !== 'find' || round.answer.correct) && <div className="library-feedback-actions">

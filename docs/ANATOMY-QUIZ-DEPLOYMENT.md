@@ -102,7 +102,7 @@ ANATOMY_SMOKE_BASE=https://medcoel.com node scripts/anatomy-smoke.mjs
 No Caddy reload or service restart is required for these static files. The installer
 retains hashed viewer assets and a previous release pointer. Keep a backup of the
 old web dist for rollback; existing web tabs may require refresh after the swap.
-Acceptance: desktop, iPad landscape/portrait, phone; only two modes; find starts
+Acceptance: desktop, iPad landscape/portrait, phone; all four modes; find starts
 unselected and unframed to target; hide/unhide/show all do not score; an explicit
 wrong answer permits retry; a correct answer offers next; next/restart clear hides;
 identify has four choices and no target label in the model; Explore/search/library

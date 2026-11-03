@@ -126,7 +126,7 @@ function wasDrag(event, gesture) {
 }
 
 function onClick(event) {
-  if (studyActive() && document.body.dataset.studyMode === 'identify') return;
+  if (studyActive() && document.body.dataset.studyMode !== 'find') return;
   const viewer = state.viewer;
   if (!viewer) return;
 
@@ -148,7 +148,7 @@ function onClick(event) {
 }
 
 function onDoubleClick(event) {
-  if (studyActive() && document.body.dataset.studyMode === 'identify') return;
+  if (studyActive() && document.body.dataset.studyMode !== 'find') return;
   const viewer = state.viewer;
   if (!viewer) return;
 
@@ -161,7 +161,7 @@ function onDoubleClick(event) {
 // Pointer events fire far more often than frames; coalescing to one pick per
 // animation frame keeps a full-scene raycast off the critical path.
 function onPointerMove(event) {
-  if (studyActive() && document.body.dataset.studyMode === 'identify') return;
+  if (studyActive() && document.body.dataset.studyMode !== 'find') return;
   // Touch drives selection through the tap handler; hovering with a finger is
   // not a gesture.
   if (event.pointerType && event.pointerType !== 'mouse') return;
@@ -220,7 +220,7 @@ function onTouchStart(event) {
 }
 
 function onTouchEnd(event) {
-  if (studyActive() && document.body.dataset.studyMode === 'identify') { touchStart = null; return; }
+  if (studyActive() && document.body.dataset.studyMode !== 'find') { touchStart = null; return; }
   const start = touchStart;
   touchStart = null;
 

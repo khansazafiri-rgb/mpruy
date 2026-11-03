@@ -8,7 +8,7 @@ const validScope=d=>d.mode!=='find'||(regions.includes(d.region)&&systems.includ
 const validRequest=id=>typeof id==='string'&&/^[\w-]{8,100}$/.test(id);
 export function acceptsLibraryCommand(event,origin,parentWindow,selfWindow) {
  const d=event.data;
- return !!parentWindow&&parentWindow!==selfWindow&&event.origin===origin&&event.source===parentWindow&&d?.version===1&&d.type===LIBRARY_COMMAND&&validRequest(d.requestId)&&validStructureId(d.structureId)&&validScope(d)&&['explore','identify','find'].includes(d.mode);
+ return !!parentWindow&&parentWindow!==selfWindow&&event.origin===origin&&event.source===parentWindow&&d?.version===1&&d.type===LIBRARY_COMMAND&&validRequest(d.requestId)&&validStructureId(d.structureId)&&validScope(d)&&['explore','identify','find','system','region'].includes(d.mode);
 }
 export function acceptsLibraryEvent(event,origin,viewerWindow,requestId) {
  if(!viewerWindow||event.origin!==origin||event.source!==viewerWindow)return false;

@@ -32,3 +32,7 @@ it('identify restores hidden state before revealing the new target; explore pres
  await executeLibrarySelection({structureId:'Ulna.r',mode:'identify'},api);expect(api.restoreScene).toHaveBeenCalledOnce();expect(api.reveal).toHaveBeenCalledWith('Ulna.r');
  api.restoreScene.mockClear();await executeLibrarySelection({structureId:'Ulna.r',mode:'explore'},api);expect(api.restoreScene).not.toHaveBeenCalled();
 });
+
+it('system and region quizzes restore context and highlight the structure without automatic isolation',async()=>{
+ for(const mode of ['system','region']){const api={catalog:()=>catalog,reveal:vi.fn(),restoreScene:vi.fn(),prepareStudy:vi.fn(),isolate:vi.fn()};await executeLibrarySelection({structureId:'Ulna.r',mode},api);expect(api.restoreScene).toHaveBeenCalledOnce();expect(api.reveal).toHaveBeenCalledWith('Ulna.r');expect(api.prepareStudy).not.toHaveBeenCalled();expect(api.isolate).not.toHaveBeenCalled();}
+});

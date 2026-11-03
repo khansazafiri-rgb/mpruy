@@ -101,3 +101,6 @@
 .library-model-prompt>span{font-size:12px;color:rgb(var(--brand-dark))}
 .library-feedback-actions button,.library-answer-options button{min-height:44px}
 @media(min-width:768px) and (max-width:1000px){.library-quiz-layout{grid-template-columns:1fr}.library-quiz-viewer>.library-viewer{height:65dvh;min-height:500px;max-height:720px}}
+/* Four public quiz modes; retain comfortable cards on tablets and phones. */
+.library-mode-cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1100px){.library-mode-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}

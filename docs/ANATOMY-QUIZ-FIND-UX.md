@@ -1,14 +1,18 @@
-# Anatomy Quiz v1: two modes and explicit answers
+# Anatomy Quiz v1: four modes and explicit find answers
 
 Branch: `fix/anatomy-quiz-find-ux` (from `fix/hermes-anatomy-reliability-latest`,
 `2d9f2ee4633ab001d171ac228c0fb5b8393ca034`). No production deployment or merge.
 
 ## UI and scoring
 
-Only **Kenali Struktur** (`identify`) and **Temukan di 3D** (`find`) are public.
-Landing copy and mode counts use these two modes. Old `system`/`region` query
-parameters fall back to identify; generation, scope validation and iframe commands
-reject these modes. Region/system selectors remain learning-scope filters.
+Public modes are **Kenali Struktur** (identify), **Temukan di 3D** (find),
+**Tebak Sistem** (system) and **Tebak Regio** (region). The two latter modes were
+restored following the user's revised preference. Mode counts and landing copy
+include all four; invalid modes still fall back to identify in the UI and are
+rejected by generation/protocol validation. Region/system selectors remain
+learning-scope filters. System/region quizzes highlight a structure and provide
+four system/region options; their context resets between questions.
+
 
 Identify retains four unique, similarly ranked structure-name options, one attempt
 and existing progress scoring. The target is highlighted with faded contextual
@@ -83,10 +87,10 @@ checks are not a claim of hardware certification.
 
 ## Validation and files
 
-- Web suite: 138 tests, including registry, search, filters, routing, both public
+- Web suite: 138 tests, including registry, search, filters, routing, all four public
   modes, four identify choices, no duplicate distractors, find answer identity,
-  hidden-mode rejection, explicit intent and find retry/lock semantics.
-- Viewer suite: 77 tests, including actual Three.js visibility, reset across
+  invalid-mode rejection, explicit intent and find retry/lock semantics.
+- Viewer suite: 78 tests, including actual Three.js visibility, reset across
   questions, camera retention, selection versus answer, multiple hides, unhide,
   show all, invalid structures, study scope, touch gesture classification, ordinary
   atlas, GLB/thumbnail provenance, host and Annotator regressions.
