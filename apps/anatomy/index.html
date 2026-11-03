@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Atlas 3D anatomi manusia MEDCOEL, dibangun di atas Z-Anatomy">
+  <title>Human Anatomy | MEDCOEL</title>
+  <link rel="icon" type="image/webp" href="/brand/logo-mark.webp">
+</head>
+<body>
+  <div id="app" class="atlas-app">
+    <!-- Bilah atas: kembali, pencarian bergambar, aksi adegan. -->
+    <header class="header atlas-topbar">
+      <div class="header-left">
+        <a id="atlasBack" class="atlas-back" href="/anatomy" target="_top" aria-label="Kembali"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span id="atlasBackLabel">Anatomi</span></a>
+        <span class="atlas-brand"><img class="medcoel-mark" src="/brand/logo-mark.webp" alt="" width="28" height="28"><span class="medcoel-page-name">Atlas 3D</span></span>
+      </div>
+      <div class="header-center">
+        <div class="search-container">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Cari struktur · ulna, jantung, platysma…" autocomplete="off">
+          <div id="searchResults" class="search-results"></div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button id="searchOpen" class="btn-icon drawer-open" aria-label="Cari" title="Cari" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+        <button id="undoAtlas" class="btn-icon" title="Urungkan (Ctrl+Z)" aria-label="Urungkan"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg></button>
+        <button id="restoreAtlas" class="btn-icon" title="Pulihkan semua struktur" aria-label="Pulihkan semua struktur"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
+        <button id="shareAtlas" class="btn-icon" title="Salin tautan tampilan ini" aria-label="Salin tautan tampilan ini"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
+        <button id="helpBtn" class="btn-icon" aria-label="Bantuan" title="Bantuan">?</button>
+        <button id="infoOpen" class="btn-icon atlas-only-narrow" aria-label="Detail struktur" title="Detail struktur" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></button>
+        <button id="systemsOpen" class="btn-icon" aria-label="Sistem" title="Sistem" hidden></button>
+      </div>
+    </header>
+
+    <main class="main-layout atlas-stage">
+      <section class="viewer-section">
+        <div id="viewerContainer" class="viewer-container">
+          <canvas id="threeCanvas" tabindex="0" role="application" aria-label="Penampil anatomi 3D. Tombol panah memutar, plus dan minus memperbesar."></canvas>
+
+          <!-- Regio: tombol di kiri atas, daftar bergambar saat dibuka. -->
+          <div class="atlas-region">
+            <button id="regionButton" class="atlas-region-button" aria-haspopup="true" aria-expanded="false" aria-controls="regionMenu">
+              <img id="regionThumb" alt="" width="40" height="40" hidden>
+              <span class="atlas-region-text"><small>Regio</small><strong id="sceneTitle">Whole body</strong><span id="sceneSubtitle">All regions</span></span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div id="regionMenu" class="atlas-region-menu" hidden></div>
+          </div>
+
+          <button id="returnContext" class="atlas-return" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg> Kembali ke konteks</button>
+          <input id="shareUrl" class="atlas-share-url" hidden aria-label="Salin tautan tampilan">
+
+          <div id="emptyScene" class="atlas-empty" hidden>
+            <img src="/brand/mascots/nilo.svg" alt="" width="72" height="72">
+            <strong>Tidak ada struktur yang terlihat</strong>
+            <p>Nyalakan satu sistem di bilah bawah, atau pulihkan struktur yang tersembunyi.</p>
+            <button id="emptyRestore">Pulihkan struktur</button>
+          </div>
+
+          <!-- Alat navigasi di kanan, seperti atlas profesional. -->
+          <div class="atlas-tools" role="toolbar" aria-label="Navigasi kamera">
+            <div class="atlas-navigation">
+              <button id="zoomInAtlas" aria-label="Perbesar" title="Perbesar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+              <button id="zoomOutAtlas" aria-label="Perkecil" title="Perkecil"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+              <button id="panAtlas" aria-pressed="false" aria-label="Mode geser" title="Mode geser (atau Shift + seret)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20M12 2l-3 3M12 2l3 3M12 22l-3-3M12 22l3-3M2 12l3-3M2 12l3 3M22 12l-3-3M22 12l-3 3"/></svg></button>
+            </div>
+            <div class="viewer-controls" id="viewerControls">
+              <button class="control-btn" id="frontViewBtn" title="Tampak depan">Dpn</button>
+              <button class="control-btn" id="sideViewBtn" title="Tampak samping">Smp</button>
+              <button class="control-btn" id="backViewBtn" title="Tampak belakang">Blk</button>
+              <button class="control-btn" id="topViewBtn" title="Tampak atas">Ats</button>
+              <button class="control-btn" id="resetBtn" title="Atur ulang kamera" aria-label="Atur ulang kamera"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
+            </div>
+          </div>
+
+          <div class="atlas-scene-bottom"><span id="atlasStatus" role="status" aria-live="polite">Memuat anatomi…</span><span class="atlas-hint">Seret untuk memutar · Shift + seret untuk menggeser · Gulir untuk zoom</span></div>
+
+          <!-- Panduan pertama dari Kori; ditutup sekali, tidak muncul lagi di perangkat ini. -->
+          <aside id="atlasTip" class="atlas-tip" hidden>
+            <img src="/brand/mascots/kori.svg" alt="" width="56" height="56">
+            <div><strong>Hai, aku Kori!</strong><p>Ketuk satu struktur untuk melihat namanya. Tombol <b>+</b> dan <b>−</b> di atas tiap sistem membuka lapisan dari luar ke dalam.</p></div>
+            <button id="atlasTipClose" aria-label="Tutup panduan">×</button>
+          </aside>
+
+          <div id="loadingOverlay" class="loading-overlay">
+            <img class="loading-mascot" src="/brand/mascots/kori.svg" alt="" width="80" height="80">
+            <div class="loading-spinner"></div>
+            <span class="loading-text">Menyiapkan model 3D…</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Infobox: muncul di kiri saat struktur dipilih, berisi semua aksi untuk struktur itu. -->
+      <aside class="sidebar sidebar-info atlas-infobox" id="infoSidebar" aria-label="Detail struktur">
+        <div class="sidebar-header">
+          <span class="atlas-infobox-kicker">Struktur terpilih</span>
+          <button id="infoExpand" class="atlas-expand" aria-expanded="false" aria-controls="infoContent">Detail</button>
+          <button class="sidebar-toggle" id="infoToggle" aria-label="Tutup detail"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        </div>
+        <div class="sidebar-content" id="infoContent">
+          <div class="info-placeholder"><p>Pilih struktur pada model</p><span class="hint">Klik atau ketuk model 3D untuk melihat detailnya</span></div>
+          <div id="structureInfo" class="structure-info hidden"></div>
+        </div>
+        <!-- Dipindah ke bawah judul struktur oleh selection.js. -->
+        <div class="footer-bar atlas-actions" id="footerBar" style="display: none;">
+          <span id="atlasSelection" class="sr-only"></span>
+          <div class="footer-actions">
+            <button class="action-btn" id="footerIsolateBtn">Isolasi</button>
+            <button class="action-btn" id="footerHideBtn">Sembunyikan</button>
+            <button class="action-btn" id="footerTransparentBtn">Pudarkan</button>
+            <button class="action-btn secondary" id="footerFadeOthersBtn">Pudarkan lainnya</button>
+            <button class="action-btn secondary" id="footerFocusBtn">Fokus</button>
+            <button class="action-btn secondary" id="footerShowAllBtn">Pulihkan</button>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Bilah sistem di bawah: tombol +/- di atas tiap sistem membuka atau menutup lapisan. -->
+    <nav class="sidebar sidebar-systems atlas-systembar" id="systemsSidebar" aria-label="Sistem dan lapisan">
+      <button class="sidebar-toggle" id="systemsToggle" aria-label="Tutup sistem" hidden></button>
+      <div class="sidebar-content" id="systemsList"></div>
+    </nav>
+
+    <div class="modal hidden" id="helpModal" role="dialog" aria-labelledby="helpTitle" aria-modal="true">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="/brand/mascots/kila.svg" alt="" width="48" height="48">
+          <h3 id="helpTitle">Cara memakai atlas</h3>
+          <button class="modal-close" id="helpClose" aria-label="Tutup">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="help-section">
+            <h4>Komputer</h4>
+            <ul>
+              <li><kbd>Seret kiri</kbd> <span>Memutar model</span></li>
+              <li><kbd>Gulir</kbd> <span>Zoom</span></li>
+              <li><kbd>Shift + seret / seret kanan</kbd> <span>Menggeser</span></li>
+              <li><kbd>Klik</kbd> <span>Memilih struktur</span></li>
+              <li><kbd>Ctrl + Z</kbd> <span>Urungkan</span></li>
+            </ul>
+          </div>
+          <div class="help-section">
+            <h4>Layar sentuh</h4>
+            <ul>
+              <li><kbd>Satu jari</kbd> <span>Memutar model</span></li>
+              <li><kbd>Cubit</kbd> <span>Zoom</span></li>
+              <li><kbd>Dua jari</kbd> <span>Menggeser</span></li>
+              <li><kbd>Ketuk</kbd> <span>Memilih struktur</span></li>
+            </ul>
+          </div>
+          <div class="help-section">
+            <h4>Tata letak</h4>
+            <ul>
+              <li><b>Bilah bawah</b>: nyalakan sistem; <b>+</b> menambah lapisan luar, <b>−</b> membuka ke lapisan lebih dalam; <b>⋯</b> daftar strukturnya.</li>
+              <li><b>Kiri atas</b>: pilih regio tubuh.</li>
+              <li><b>Kiri</b>: detail dan aksi struktur terpilih (isolasi, sembunyikan, pudarkan).</li>
+              <li><b>Kanan</b>: zoom, mode geser, dan tampak depan/samping/belakang/atas.</li>
+            </ul>
+          </div>
+          <div class="help-section">
+            <h4 data-i18n="help_credits">Credits and licences</h4>
+            <ul>
+              <li><a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener" style="color: var(--accent);">BodyParts3D</a> anatomical models, CC BY-SA 2.1 Japan</li>
+              <li><a href="https://www.z-anatomy.com/" target="_blank" rel="noopener" style="color: var(--accent);">Z-Anatomy</a> model rework, CC BY-SA 4.0</li>
+              <li><a href="https://en.wikipedia.org/wiki/Wikipedia:Copyrights" target="_blank" rel="noopener" style="color: var(--accent);">Wikipedia</a> structure definitions, CC BY-SA 3.0 and GFDL</li>
+              <li>University of Dundee, CAHID: cranial nerves and foramina, CC BY 4.0</li>
+              <li>University of Dundee: inner ear, CC BY-NC-SA 4.0</li>
+              <li>lissiecowley: kidney, CC BY-NC 4.0</li>
+            </ul>
+            <p class="hint" style="margin-top: 12px;">Mixed-licence derivative work, distributed NON-COMMERCIALLY (CC BY-NC-SA 4.0): the NC clause comes from the inner ear and kidney models. Attribution and share-alike are required. See LICENSE and NOTICE in the repository.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

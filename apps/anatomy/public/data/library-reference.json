@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "spatialSource": "a874a3dcb111d5b4de543c5be6253f5013416f4d",
+  "regions": [
+    {
+      "id": "whole",
+      "name": "Seluruh tubuh",
+      "description": "Semua regio"
+    },
+    {
+      "id": "headNeck",
+      "name": "Kepala & leher",
+      "description": "Tengkorak, wajah, dan leher"
+    },
+    {
+      "id": "thorax",
+      "name": "Toraks",
+      "description": "Dada dan mediastinum"
+    },
+    {
+      "id": "abdomen",
+      "name": "Abdomen",
+      "description": "Dinding perut dan organnya"
+    },
+    {
+      "id": "pelvis",
+      "name": "Pelvis",
+      "description": "Panggul dan perineum"
+    },
+    {
+      "id": "upperLimb",
+      "name": "Ekstremitas atas",
+      "description": "Bahu sampai ujung jari"
+    },
+    {
+      "id": "lowerLimb",
+      "name": "Ekstremitas bawah",
+      "description": "Pinggul sampai jari kaki"
+    },
+    {
+      "id": "back",
+      "name": "Punggung",
+      "description": "Kolumna vertebralis dan otot punggung"
+    }
+  ],
+  "synonyms": {
+    "id": {
+      "ulna": [
+        "tulang hasta"
+      ],
+      "radius": [
+        "tulang pengumpil"
+      ],
+      "femur": [
+        "tulang paha"
+      ],
+      "tibia": [
+        "tulang kering"
+      ],
+      "fibula": [
+        "tulang betis"
+      ],
+      "humerus": [
+        "lengan atas"
+      ],
+      "heart": [
+        "jantung",
+        "cor"
+      ],
+      "stomach": [
+        "lambung",
+        "gaster"
+      ],
+      "liver": [
+        "hati",
+        "hepar"
+      ],
+      "lung": [
+        "paru",
+        "pulmo"
+      ],
+      "kidney": [
+        "ginjal",
+        "ren"
+      ],
+      "brain": [
+        "otak"
+      ],
+      "oesophagus": [
+        "esofagus",
+        "kerongkongan"
+      ],
+      "trachea": [
+        "trakea"
+      ],
+      "thyroid": [
+        "tiroid"
+      ],
+      "pancreas": [
+        "pankreas"
+      ],
+      "colon": [
+        "usus besar"
+      ],
+      "jejunum": [
+        "usus halus"
+      ],
+      "duodenum": [
+        "usus dua belas jari"
+      ],
+      "platysma": [
+        "platisma"
+      ],
+      "sternocleidomastoid": [
+        "scm"
+      ],
+      "scapula": [
+        "belikat"
+      ],
+      "clavicle": [
+        "selangka"
+      ],
+      "sternum": [
+        "dada"
+      ],
+      "patella": [
+        "tempurung lutut"
+      ]
+    }
+  }
+}

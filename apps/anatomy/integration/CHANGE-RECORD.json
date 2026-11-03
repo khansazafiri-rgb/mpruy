@@ -1,0 +1,36 @@
+{
+  "checkpoint": "753c1aa05ae2c54fde1d5c5a0ff28bc5568d6279",
+  "branch": "preview/medcoel-anatomy-native",
+  "commit": "f7df227641b67c4fefd8fa194689d4228691631e",
+  "changes": [
+    ".claude/launch.json",
+    ".env.example",
+    ".github/workflows/deploy.yml",
+    ".gitignore",
+    ".nvmrc",
+    "README.md",
+    "STATUS.md",
+    "index.html",
+    "integration/App.proposed.jsx",
+    "integration/AppShell.proposed.jsx",
+    "integration/DESIGN-AUDIT.md",
+    "integration/HumanAnatomy.jsx",
+    "integration/INTEGRATION.md",
+    "integration/main-web.patch",
+    "integration/nginx-anatomy.conf.example",
+    "package-lock.json",
+    "package.json",
+    "public/brand/logo-full.webp",
+    "public/brand/logo-mark.webp",
+    "serve.mjs",
+    "src/atlas/ui.js",
+    "src/main.js",
+    "src/styles/medcoel-shell.css",
+    "src/styles/medcoel-tokens.css",
+    "vite.config.js"
+  ],
+  "checks": {
+    "jsxSyntax": true,
+    "engineUnchanged": true
+  }
+}

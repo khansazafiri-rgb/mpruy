@@ -11,6 +11,7 @@ export class MedcoelClient {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ identity: this.identity, password: this.password }),
+      signal: AbortSignal.timeout(45000),
     });
     const body = await readJson(res);
     if (!res.ok || !body?.token) throw apiError('MEDCOEL login failed', res, body);
@@ -23,7 +24,9 @@ export class MedcoelClient {
     const headers = new Headers(options.headers || {});
     headers.set('authorization', this.token);
     if (options.body && !headers.has('content-type')) headers.set('content-type', 'application/json');
-    const res = await fetch(`${this.baseUrl}${path}`, { ...options, headers });
+    // Bound queue reads; preserve existing import mutation/confirmation semantics.
+    const signal = options.signal || (!options.method || options.method === 'GET' ? AbortSignal.timeout(45000) : undefined);
+    const res = await fetch(`${this.baseUrl}${path}`, { ...options, headers, signal });
     if (res.status === 401 && retry) {
       this.token = '';
       await this.login();
@@ -78,12 +81,6 @@ export class MedcoelClient {
     });
   }
 
-  importAdmin(payload) {
-    return this.request('/api/medcoel/agent/import', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-    });
-  }
 }
 
 async function readJson(res) {

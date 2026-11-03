@@ -14,6 +14,22 @@ test('forward only anatomy study state to the frame',async()=>{
  const result=atlasFrameSrc('#atlas='+encodeURIComponent(state)+'&unrelated=x');
  assert.equal(new URL(result,'https://medcoel.example').hash,'#atlas='+encodeURIComponent(state));
 });
+test('interactive reveals the viewer before background ready, while progress never regresses a usable state',async()=>{
+ const {nextAtlasStatus}=await import('./hostProtocol.mjs');
+ assert.equal(nextAtlasStatus('loading','medcoel:anatomy-interactive'),'interactive');assert.equal(nextAtlasStatus('interactive','medcoel:anatomy-loading'),'interactive');assert.equal(nextAtlasStatus('ready','medcoel:anatomy-interactive'),'ready');assert.equal(nextAtlasStatus('ready','medcoel:anatomy-error'),'error');
+});
+test('progress is accepted only from the exact frame/origin with bounded lifecycle-only data',()=>{
+ const frame={},origin='https://medcoel.example',base={source:frame,origin,data:{type:'medcoel:anatomy-loading',version:1,progress:50,phase:'model'}};
+ assert.equal(acceptsAtlasMessage(base,origin,frame),true);
+ for(const event of [{...base,source:{}},{...base,origin:'https://foreign.example'},{...base,data:{...base.data,progress:NaN}},{...base,data:{...base.data,progress:200}},{...base,data:{...base.data,token:'private'}}])assert.equal(acceptsAtlasMessage(event,origin,frame),false);
+});
+test('viewer asset health distinguishes a missing static mount from a slow model',async()=>{
+ const {checkViewerAsset}=await import('./hostProtocol.mjs');let method;
+ await checkViewerAsset(async(path,options)=>{assert.equal(path,'/anatomy/viewer/');method=options.method;return new globalThis.Response('',{headers:{'content-type':'text/html'}});});assert.equal(method,'HEAD');
+ await assert.rejects(checkViewerAsset(async()=>new globalThis.Response('',{status:404})),/HTTP 404/);
+ await assert.rejects(checkViewerAsset(async()=>new globalThis.Response('{}',{headers:{'content-type':'application/json'}})),/tipe file/);
+});
+
 test('back link for the atlas survives structure ids with brackets and keeps the atlas hash',async()=>{
  const {withBackLink,atlasFrameSrc}=await import('./hostProtocol.mjs');
  const {structureHref}=await import('./registry.mjs');

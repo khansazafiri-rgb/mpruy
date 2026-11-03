@@ -1,0 +1,11 @@
+body.anatomy-study-active #app{display:block;height:100dvh}
+body.anatomy-study-active .header,body.anatomy-study-active .sidebar,body.anatomy-study-active .footer-bar,body.anatomy-study-active .callout-layer,body.anatomy-study-active .atlas-scene-heading,body.anatomy-study-active .atlas-scene-actions,body.anatomy-study-active .atlas-scene-bottom,body.anatomy-study-active .atlas-return,body.anatomy-study-active .atlas-empty{display:none!important}
+body.anatomy-study-active .main-layout{display:block;height:100dvh}
+body.anatomy-study-active .viewer-section{height:100%;padding:0!important}
+body.anatomy-study-active .viewer-container{height:100%;border:0;border-radius:0}
+body.anatomy-study-active .atlas-navigation{right:14px;top:14px;bottom:auto}
+body.anatomy-study-active .viewer-controls{bottom:14px}
+body.anatomy-study-active #resetBtn{display:none}
+/* The normal footer remains in the DOM while study hides it. Its selected-state
+   offsets must not push camera buttons into the middle of the quiz model. */
+body.anatomy-study-active #app .viewer-controls{bottom:14px;left:14px}

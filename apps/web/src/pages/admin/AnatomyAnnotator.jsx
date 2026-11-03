@@ -26,6 +26,7 @@ export default function AnatomyAnnotator() {
   const listener=event=>{
    if(acceptsAtlasMessage(event,location.origin,iframe.current?.contentWindow)) {
     if(event.data.type==='medcoel:anatomy-error'){setStatus('error');setError('Viewer gagal dimuat. Coba lagi.');return;}
+    if(event.data.type!=='medcoel:anatomy-ready')return;
     setStatus('initializing');send('enter',{document:docRef.current});return;
    }
    if(!acceptsAnnotationEvent(event,location.origin,iframe.current?.contentWindow,session.current))return;

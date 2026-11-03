@@ -13,13 +13,28 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/anatomy/package-lock.json
       - run: npm ci
+      - name: Install Anatomy viewer
+        run: npm ci --prefix apps/anatomy
       - name: Lint
         run: npm run lint
       - name: Tes unit (konten kaya + format impor)
         run: npm test
       - name: Build web
         run: npm run build
+      - name: Hermes delivery and import workflows
+        run: npm run check --prefix apps/hermes-agent && npm test --prefix apps/hermes-agent
+      - name: Anatomy release and host integration
+        run: npm run test:anatomy-integration
+      - name: Anatomy viewer tests and lint
+        run: npm run test:anatomy && npm run lint:anatomy
+      - name: Build Anatomy viewer
+        env:
+          ANATOMY_BASE: /anatomy/viewer/
+        run: npm run build --prefix apps/anatomy
       - name: Tes API per peran
         working-directory: apps/pocketbase
         run: |
@@ -30,3 +45,11 @@ jobs:
           for i in $(seq 1 30); do curl -sf http://127.0.0.1:8090/api/health && break; sleep 1; done
           PB_SU_EMAIL=ci@medcoel.test PB_SU_PASSWORD=ci-password-123 node test/api.test.mjs
           PB_SU_EMAIL=ci@medcoel.test PB_SU_PASSWORD=ci-password-123 node test/lab-api.test.mjs
+          # Isolate materi fixtures: they intentionally populate Drilling and
+          # would invalidate the earlier API suite's empty-state assumptions.
+          DECK_DB=$(mktemp -d)
+          ./pocketbase migrate up --dir="$DECK_DB" --migrationsDir=./pb_migrations --hooksDir=./pb_hooks
+          ./pocketbase superuser upsert ci@medcoel.test ci-password-123 --dir="$DECK_DB"
+          MEDCOEL_DEV_MODE=1 ./pocketbase serve --http=127.0.0.1:8091 --dir="$DECK_DB" --migrationsDir=./pb_migrations --hooksDir=./pb_hooks --hooksWatch=false &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:8091/api/health && break; sleep 1; done
+          PB_URL=http://127.0.0.1:8091 PB_SU_EMAIL=ci@medcoel.test PB_SU_PASSWORD=ci-password-123 node test/decks-api.test.mjs

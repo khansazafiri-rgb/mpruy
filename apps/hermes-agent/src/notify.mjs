@@ -29,10 +29,10 @@ function scopeLabel(sub) {
 
 export function queueCard(sub, queue) {
   const files = (sub.files || [])
-    .map((f) => `• ${escapeHtml(f.name)}${f.driveFileId ? ' · siap dikirim dari Drive' : ''}`)
+    .map((f) => `• ${escapeHtml(f.name)}${f.driveFileId ? ' · tautan Drive tersedia (belum konfirmasi terkirim)' : ''}`)
     .join('\n') || '• tidak ada file';
   const q = queue
-    ? `\nAntrean PDF: ${Number(queue.totalQueuedPdf || 0)} · estimasi ${Number(queue.estimateDays || 0)} hari`
+    ? `\nAntrean pengerjaan PDF: ${Number(queue.totalQueuedPdf || 0)} · estimasi pengerjaan ${Number(queue.estimateDays || 0)} hari`
     : '';
   const who = sub.user?.name ? `Pengaju: ${escapeHtml(sub.user.name)}${sub.user.loginId ? ` (${escapeHtml(sub.user.loginId)})` : ''}\n` : '';
   return `<b>📥 ${escapeHtml(sub.code || sub.id)}</b>\n`
@@ -85,6 +85,7 @@ export function newSubmissionMessage(sub, queue) {
 }
 
 export const BOT_COMMANDS = [
+  {command:'retryfiles',description:'Ulangi PDF gagal setelah memeriksa chat'},
   { command: 'queue', description: 'Daftar pengajuan yang menunggu' },
   { command: 'show', description: 'Detail pengajuan: /show KODE' },
   { command: 'files', description: 'Kirim PDF pengajuan: /files KODE' },
