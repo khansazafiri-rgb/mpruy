@@ -174,6 +174,7 @@ rt|Colok dubur (rectal toucher)|Tonus sfingter normal, ampula tidak kolaps, nyer
 # Obstetri dan ginekologi
 obst|Obstetri: tinggi fundus, Leopold, denyut jantung janin|TFU sesuai usia kehamilan, letak kepala, DJJ 140x/menit reguler.|TFU sesuai UK, letak kepala, DJJ 140x/menit|obs|Pemeriksaan obstetri menilai pertumbuhan dan kesejahteraan janin.|only:spog
 vt|Pemeriksaan dalam (vaginal toucher)|Portio tertutup, pembukaan (-), ketuban utuh.|VT: pembukaan (-), ketuban utuh|obs|Pemeriksaan dalam menilai pembukaan serviks dan kemajuan persalinan.|only:spog
+inspekulo|Pemeriksaan inspekulo (vagina dan serviks)|Dinding vagina dan portio licin, tidak ada massa, duh bening, tidak ada perdarahan.|Inspekulo: portio licin, massa/perdarahan (-)|obs|Inspekulo menilai serviks, sumber perdarahan, dan duh vagina.|only:spog
 # Ekstremitas dan saraf
 edema|Ekstremitas: edema, akral, dan CRT|Tidak ada edema, akral hangat, CRT <2 detik.|Edema (-), akral hangat, CRT <2 detik|kardio,ren,obs|Edema dan perfusi perifer menilai kelebihan cairan dan syok.
 nadi_perifer|Ekstremitas: pulsasi nadi perifer|Nadi perifer teraba simetris.|Pulsasi nadi perifer teraba|kardio|Pulsasi menilai perfusi dan penyakit arteri.
@@ -185,6 +186,8 @@ sensorik|Sensibilitas|Sensibilitas raba dan nyeri normal.|Sensibilitas normal|ne
 nervus|Saraf kranial|Saraf kranial dalam batas normal.|Nervus kranialis normal|neuro|Saraf kranial dinilai pada keluhan neurologis dan sakit kepala.
 meningeal|Tanda rangsang meningeal (Brudzinski dan Kernig)|Brudzinski dan Kernig (-).|Rangsang meningeal (-)|neuro,infeksi|Tanda meningeal menyingkirkan meningitis.
 kgb_lain|KGB aksila dan inguinal|KGB aksila dan inguinal tidak teraba.|KGB aksila/inguinal tidak teraba|infeksi,onko|Pembesaran KGB generalisata menunjukkan penyakit sistemik.
+sendi|Sendi: inspeksi dan palpasi (bengkak, hangat, nyeri, rentang gerak)|Tidak ada bengkak, kemerahan, atau nyeri tekan; rentang gerak penuh.|Sendi: bengkak/nyeri (-), ROM penuh|metab,infeksi|Pemeriksaan sendi menilai tanda radang, efusi, dan keterbatasan gerak pada nyeri sendi.
+dix_hallpike|Manuver Dix-Hallpike|Tidak timbul vertigo maupun nistagmus pada kedua sisi.|Dix-Hallpike (-)|neuro,tht|Manuver Dix-Hallpike memicu vertigo posisi dan nistagmus pada BPPV kanal posterior.
 `;
 
 /* Pemeriksaan fisik yang dilaporkan suster lewat kartu.
@@ -235,6 +238,9 @@ tifoid|Tes tifoid (Tubex atau Widal)|Tifoid|Tubex=Negatif (skor 2)|infeksi,gi|Te
 malaria|Apusan darah tepi atau tes cepat malaria|Malaria|Plasmodium=Tidak ditemukan|infeksi,hema|Malaria perlu disingkirkan pada demam dengan riwayat bepergian ke daerah endemis.||Laboratorium|Hasilnya sudah ada, Dok.
 hiv|Tes HIV|HIV|Anti-HIV=Non-reaktif|infeksi|Tes HIV dilakukan dengan konseling dan indikasi, misalnya TB atau infeksi oportunistik.||Laboratorium|Hasilnya sudah ada, Dok.
 hbsag|HBsAg|HBsAg|HBsAg=Non-reaktif|gi,infeksi,obs|HBsAg menyaring hepatitis B, termasuk pada ibu hamil.||Laboratorium|Hasilnya sudah ada, Dok.
+lepto|Serologi leptospira (IgM)|Leptospira|Anti-Leptospira IgM=Negatif|infeksi|Serologi leptospira pada demam dengan pajanan air atau lumpur, nyeri betis, dan ikterus.||Laboratorium|Hasilnya sudah ada, Dok.
+asto|ASTO (antistreptolisin O)|ASTO|ASTO=Normal|infeksi|ASTO menunjukkan infeksi streptokokus sebelumnya, mendukung demam reumatik dan glomerulonefritis pascastreptokokus.||Laboratorium|Hasilnya sudah ada, Dok.
+lp|Pungsi lumbal dan analisis cairan serebrospinal|Cairan serebrospinal|Tampilan=Jernih;Sel=2 /uL;Protein=30 mg/dL;Glukosa=60 mg/dL|neuro,infeksi|Pungsi lumbal memastikan meningitis; dilakukan setelah tidak ada tanda herniasi atau massa intrakranial.|inv|Laboratorium|Hasil cairan serebrospinalnya sudah ada, Dok.
 # Urin dan tinja
 urin|Urin lengkap (dipstik dan sedimen)|Urin dipstik|Protein=Negatif;Glukosa=Negatif;Leukosit=Negatif;Darah=Negatif|ren,obs,infeksi,abd|Urin menilai proteinuria, infeksi saluran kemih, dan batu.||Laboratorium|Hasil dipstik sudah ada, Dok.
 kultur_urin|Kultur urin|Kultur urin|Hasil=Tidak ada pertumbuhan kuman|ren,infeksi|Kultur urin memastikan penyebab ISK.|inv|Laboratorium|Hasilnya sudah ada, Dok.
@@ -242,6 +248,7 @@ tes_hamil|Tes kehamilan (hCG)|Tes hCG|hCG urin=Negatif|obs,abd|Tes hamil menying
 feses|Pemeriksaan feses rutin|Feses rutin|Konsistensi=Lunak;Leukosit=0-1;Eritrosit=0-1;Parasit=Tidak ditemukan|gi,infeksi|Feses rutin pada diare dan nyeri perut bila ada kecurigaan infeksi usus.||Laboratorium|Hasilnya sudah ada, Dok.
 # Pencitraan dan fungsi
 ronsen|Foto toraks PA|Ronsen toraks PA|Jantung=Ukuran normal;Paru=Tidak ada infiltrat;Pleura=Normal|resp,kardio,infeksi|Foto toraks menilai parenkim paru, ukuran jantung, dan pleura.||Radiologi|Laporan radiologinya sudah masuk, Dok.
+ronsen_tulang|Foto polos tulang atau sendi (ekstremitas)|Foto polos ekstremitas|Kesan=Tidak tampak fraktur, dislokasi, atau destruksi tulang|trauma,infeksi,metab|Foto polos ekstremitas untuk fraktur, dislokasi, infeksi tulang, dan kelainan sendi.||Radiologi|Laporan radiologinya sudah masuk, Dok.
 ronsen_abd|Foto polos abdomen (BOF)|Foto polos abdomen|Kesan=Pola gas usus normal, tidak ada udara bebas|abd,gi,ren|Foto polos abdomen untuk obstruksi, perforasi, dan batu radiopak.||Radiologi|Laporan radiologinya sudah masuk, Dok.
 usg_abd|USG abdomen|USG abdomen|Kesan=Tidak tampak kelainan pada organ intraabdomen|abd,gi,ren|USG abdomen untuk nyeri perut, apendiks, empedu, ginjal, dan cairan bebas.||Radiologi|Hasil USG sudah ada, Dok.
 usg_obs|USG obstetri|USG obstetri|Janin=Tunggal, hidup, letak kepala;Taksiran berat=Sesuai usia kehamilan;Cairan ketuban=Cukup|obs|USG menilai pertumbuhan janin, plasenta, dan cairan ketuban.|only:spog|Poli kandungan|USG sudah selesai, Dok.
@@ -257,6 +264,7 @@ endoskopi|Endoskopi saluran cerna atas|Endoskopi|Kesan=Mukosa lambung dan duoden
 kolonoskopi|Kolonoskopi|Kolonoskopi|Kesan=Mukosa kolon normal|gi|Kolonoskopi untuk perdarahan bawah, perubahan kebiasaan BAB, dan skrining.|inv|Ruang endoskopi|Hasil kolonoskopinya sudah ada, Dok.
 angiografi|Angiografi koroner|Angiografi koroner|Kesan=Arteri koroner normal|kardio|Angiografi koroner untuk sindrom koroner akut dengan indikasi intervensi.|inv|Ruang kateterisasi|Hasil angiografinya sudah ada, Dok.
 biopsi|Biopsi jaringan|Biopsi|Hasil=Tidak ditemukan keganasan|onko|Biopsi untuk memastikan keganasan atau kelainan jaringan yang tidak jelas.|inv|Patologi anatomi|Hasil biopsinya sudah ada, Dok.
+iva_pap|IVA atau Pap smear serviks|Skrining serviks|IVA=Negatif (tidak ada plak putih)|obs,onko|IVA atau Pap menyaring lesi prakanker dan kanker serviks.|only:spog|Poli kandungan|Hasil pemeriksaannya sudah ada, Dok.
 `;
 
 /* TATALAKSANA. Format: id|nama tindakan|siapa menjawab (sus/pas)|ucapan|catatan P|tag|alasan klinis|flag|sub
@@ -303,6 +311,20 @@ antivirus|Beri antivirus (asiklovir)|sus|Baik, Dok. Asiklovir sudah diberikan.|A
 betablocker|Beri penyekat beta (propranolol)|sus|Baik, Dok. Propranolol sudah diberikan.|Propranolol diberikan|kardio,metab|Penyekat beta mengendalikan palpitasi dan tremor pada tirotoksikosis; hati-hati pada asma.|
 antitiroid|Beri obat antitiroid (tiamazol)|sus|Baik, Dok. Tiamazol sudah saya siapkan.|Tiamazol dimulai|metab|Obat antitiroid menurunkan produksi hormon tiroid pada penyakit Graves.|
 laksatif|Beri laksatif (laktulosa)|sus|Baik, Dok. Laktulosa sudah diberikan.|Laksatif diberikan|gi,abd|Laksatif melunakkan tinja dan mengurangi mengejan pada konstipasi dan hemoroid.|
+antimalaria|Beri obat antimalaria|sus|Baik, Dok. Obat antimalaria sudah saya siapkan dan jadwal minumnya saya jelaskan.|Antimalaria diberikan sesuai jenis plasmodium|infeksi|Antimalaria sesuai jenis plasmodium diberikan setelah malaria terkonfirmasi; tidak untuk demam tanpa bukti.|
+epinefrin|Beri epinefrin intramuskular|sus|Baik, Dok. Epinefrin intramuskular sudah diberikan di paha, tanda vital saya pantau.|Epinefrin IM diberikan di paha lateral, tanda vital dipantau|resp,kardio|Epinefrin intramuskular adalah terapi pertama anafilaksis dan tidak boleh ditunda; bukan untuk keluhan alergi ringan.|
+antihistamin|Beri antihistamin|sus|Baik, Dok. Antihistamin sudah diberikan.|Antihistamin diberikan|resp,tht|Antihistamin meredakan gejala alergi seperti bersin, gatal, dan urtikaria; bukan pengganti epinefrin pada anafilaksis.|
+obat_topikal|Beri obat oles (topikal) sesuai diagnosis kulit|sus|Baik, Dok. Obat oles sudah saya siapkan dan cara pakainya saya jelaskan.|Obat topikal diberikan, cara pakai dijelaskan|infeksi,anak|Obat oles tepat dipilih menurut penyakit kulit; salah pilih (mis. steroid kuat pada infeksi) dapat memperburuk.|
+antihelmintik|Beri obat cacing|sus|Baik, Dok. Obat cacing sudah saya siapkan.|Obat cacing diberikan|infeksi,gi,anak|Obat cacing diberikan pada infeksi cacing yang terbukti atau sangat mungkin.|
+profilaksis_tetanus|Beri profilaksis tetanus|sus|Baik, Dok. Vaksin tetanus saya siapkan sesuai riwayat imunisasinya.|Profilaksis tetanus diberikan sesuai riwayat imunisasi|infeksi,trauma|Luka kotor atau terbuka memerlukan profilaksis tetanus sesuai status imunisasi.|
+dekstrosa|Beri dekstrosa intravena|sus|Baik, Dok. Dekstrosa intravena sudah diberikan, gula darah saya ulang.|Dekstrosa IV diberikan, GDS diulang|metab,neuro|Dekstrosa intravena mengoreksi hipoglikemia berat; tanpa bukti hipoglikemia justru dapat berbahaya.|
+terapi_gizi|Mulai terapi gizi (formula khusus dan makanan terapi)|sus|Baik, Dok. Formula dan jadwal pemberian makan sudah saya atur bersama ahli gizi.|Terapi gizi bertahap dimulai|gi,anak,metab|Anak gizi buruk memerlukan pemberian makan bertahap dengan formula khusus, bukan sekadar vitamin atau penambah nafsu makan.|
+uterotonika|Beri uterotonika (oksitosin)|sus|Baik, Dok. Oksitosin sudah diberikan sesuai instruksi, perdarahan saya pantau.|Uterotonika diberikan, perdarahan dipantau|obs|Uterotonika menguatkan kontraksi rahim pada atonia uteri; tidak untuk kehamilan dengan janin masih di dalam rahim.|only:spog
+# Tindakan dan prosedur
+bidai|Pasang bidai dan imobilisasi|sus|Baik, Dok. Bidai sudah terpasang, perfusi dan sensasi ujung saya periksa ulang.|Bidai dipasang, neurovaskular distal diperiksa ulang|trauma|Bidai mengurangi nyeri dan mencegah cedera lanjutan sebelum rujukan.|
+dekompresi|Dekompresi rongga pleura (jarum atau selang dada)|sus|Baik, Dok. Alat dan tempat tusuknya saya siapkan, tindakan segera dilakukan.|Dekompresi pleura dilakukan|resp,trauma|Dekompresi segera menyelamatkan pasien pneumotoraks tension; tanpa indikasi berisiko melukai paru.|inv
+epley|Lakukan manuver reposisi kanalit (Epley)|sus|Baik, Dok. Manuver saya lakukan perlahan sesuai langkahnya, pasien saya dampingi.|Manuver Epley dilakukan|neuro,tht|Manuver reposisi adalah terapi utama BPPV kanal posterior.|
+kompresi_bimanual|Kompresi bimanual rahim|sus|Baik, Dok. Kompresi bimanual saya lakukan, perdarahan dan fundus saya pantau.|Kompresi bimanual rahim dilakukan|obs|Kompresi bimanual menghentikan perdarahan sementara pada atonia uteri.|only:spog
 # Rencana dan komunikasi
 konsul_bedah|Konsul dokter bedah|sus|Baik, Dok. Saya hubungi dokter bedah sekarang.|Konsul bedah|abd,gi|Konsul bedah untuk kasus yang mungkin memerlukan operasi.|g
 konsul_og|Konsul dokter kandungan|sus|Baik, Dok. Saya hubungi dokter kandungan sekarang.|Konsul sp.OG|obs|Konsul kandungan untuk komplikasi kehamilan.|g
