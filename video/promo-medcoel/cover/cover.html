@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Bingung belajar anatomi?</title>
+<link rel="stylesheet" href="../stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#c{width:1080px;height:1920px;position:relative;overflow:hidden;background:#062B25}#c svg{position:absolute;left:0;top:0;display:block}
+#ph{position:absolute;left:100px;top:560px;width:880px;height:920px;border-radius:48px;overflow:hidden;box-shadow:0 0 0 9px #fff,0 26px 50px rgba(0,0,0,.5);background:#0E3A31}
+#ph img{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none}</style></head>
+<body><div id="c"><svg id="bg" width="1080" height="1920" viewBox="0 0 1080 1920"></svg><div id="ph"><img id="im" src="../stage/media/clips/a/f0010.jpg"></div><svg id="fg" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script type="module">
+import { createMascot, poseMascot } from '../stage/mascot.js';
+await document.fonts.load('800 60px "Plus Jakarta Sans"'); await document.fonts.ready;
+const guide = new URLSearchParams(location.search).has('guide');
+const T = (x, y, txt, fill, size, extra = '') => `<text x="${x}" y="${y}" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="${size}" fill="${fill}" ${extra}>${txt}</text>`;
+const ST = 'stroke="#062B25" stroke-width="18" paint-order="stroke" stroke-linejoin="round"';
+const logo = await new Promise(async (r) => { const b = await (await fetch('../stage/logo-full.webp')).blob(); const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(b); });
+const K = createMascot(await (await fetch('../stage/kori.svg')).text(), 'kori'); poseMascot(K, { t: 1.2, mood: 'happy', env: 0, wave: 1, phase: 0.5 });
+// foto model 3D asli: bagian kepala + dada dari rekaman atlas (css 440 x 468 -> panel 880 x 920 = skala 2)
+const im = document.getElementById('im'); await im.decode();
+im.style.width = '2816px'; im.style.height = '1582px'; im.style.transform = `translate(${-484 * 2 * 1}px,${-60 * 2}px) scale(1)`;
+let bg = `<defs><radialGradient id="rg" cx="50%" cy="46%" r="75%"><stop offset="0" stop-color="#13705E"/><stop offset="1" stop-color="#062B25"/></radialGradient></defs><rect width="1080" height="1920" fill="url(#rg)"/>`;
+for (let i = 0; i < 14; i++) { const a = i * Math.PI / 7; bg += `<path d="M540 1020L${540 + Math.cos(a) * 1500} ${1020 + Math.sin(a) * 1500}L${540 + Math.cos(a + 0.12) * 1500} ${1020 + Math.sin(a + 0.12) * 1500}Z" fill="rgba(255,255,255,.04)"/>`; }
+document.getElementById('bg').innerHTML = bg;
+const logoW = 460, logoH = logoW * 0.31;
+let fg = `${T(540, 392, 'Bingung belajar', '#fff', 100, ST)}${T(540, 528, 'anatomi?', '#F8C038', 168, ST.replace('18', '24'))}`;
+fg += `<g transform="translate(765 1010) rotate(8)"><rect x="-190" y="-70" width="380" height="160" rx="36" fill="rgba(0,0,0,.4)"/><rect x="-190" y="-80" width="380" height="160" rx="36" fill="#E8665F"/><rect x="-174" y="-64" width="348" height="128" rx="26" fill="none" stroke="#fff" stroke-width="5" opacity=".75"/>${T(0, 34, 'GRATIS!', '#fff', 96)}</g>`;
+fg += `<g transform="translate(290 650)"><rect x="-170" y="-6" width="340" height="70" rx="35" fill="rgba(0,0,0,.4)"/><rect x="-170" y="-14" width="340" height="70" rx="35" fill="#007060"/>${T(0, 33, '3D ANATOMY', '#fff', 36)}</g>`;
+const ks = 1.05; fg += `<g transform="translate(${870 - 160 * ks} ${1520 - 290 * ks}) scale(${ks})">${K.root.outerHTML}</g>`;
+fg += `<g transform="translate(540 1585)"><rect x="${-logoW / 2}" y="${-logoH / 2 + 8}" width="${logoW}" height="${logoH}" rx="${logoH / 2}" fill="rgba(0,0,0,.35)"/><rect x="${-logoW / 2}" y="${-logoH / 2}" width="${logoW}" height="${logoH}" rx="${logoH / 2}" fill="#fff"/><image href="${logo}" x="${-logoW * 0.36}" y="${-logoW * 0.36 * 0.2015}" width="${logoW * 0.72}" height="${logoW * 0.72 * 0.2015}"/></g>`;
+if (guide) fg += `<rect x="0" y="0" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="1680" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="240" width="1080" height="1440" fill="none" stroke="#0f0" stroke-width="6"/>`;
+document.getElementById('fg').innerHTML = fg;
+window.__ready = true;
+</script></body></html>
