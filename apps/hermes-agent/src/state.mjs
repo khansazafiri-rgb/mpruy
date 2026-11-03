@@ -6,7 +6,8 @@ export class StateStore {
   constructor(dir) {
     this.dir = dir;
     this.file = path.join(dir, 'state.json');
-    this.data = { telegramOffset: 0, announced: {}, approvals: {}, importPlans: {}, lastNotified: '' };
+    this.data = { telegramOffset: 0, announced: {}, approvals: {}, importPlans: {}, pdfJobs: {}, lastNotified: '' };
+    this.pendingSave = Promise.resolve();
   }
 
   async load() {
@@ -19,6 +20,7 @@ export class StateStore {
         approvals: parsed.approvals && typeof parsed.approvals === 'object' ? parsed.approvals : {},
         importPlans: parsed.importPlans && typeof parsed.importPlans === 'object' ? parsed.importPlans : {},
         lastNotified: String(parsed.lastNotified || ''),
+        pdfJobs: parsed.pdfJobs && typeof parsed.pdfJobs === 'object' && !Array.isArray(parsed.pdfJobs) ? parsed.pdfJobs : {},
       };
     } catch (err) {
       if (err.code !== 'ENOENT') throw err;
@@ -27,10 +29,26 @@ export class StateStore {
     return this.data;
   }
 
-  async save() {
-    const tmp = `${this.file}.tmp`;
-    await fs.writeFile(tmp, JSON.stringify(this.data, null, 2), { mode: 0o600 });
-    await fs.rename(tmp, this.file);
+  save() {
+    // Polling, imports and document delivery share one state file. Serialize
+    // immutable snapshots so concurrent renames cannot lose acknowledgements.
+    const snapshot = JSON.stringify(this.data, null, 2);
+    const write = async () => {
+      const tmp = this.file + '.tmp';
+      const handle = await fs.open(tmp, 'w', 0o600);
+      try { await handle.writeFile(snapshot); await handle.sync(); } finally { await handle.close(); }
+      await fs.rename(tmp, this.file);
+      const directory = await fs.open(this.dir, 'r');
+      try { await directory.sync(); } finally { await directory.close(); }
+    };
+    const result = this.pendingSave.then(write, write);
+    this.pendingSave = result.catch(() => {});
+    return result;
+  }
+
+  async putPdfJob(key, job) {
+    this.data.pdfJobs[key] = structuredClone(job);
+    await this.save();
   }
 
   async setOffset(offset) {

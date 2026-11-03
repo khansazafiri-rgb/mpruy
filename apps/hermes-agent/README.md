@@ -150,8 +150,9 @@ Rencana kedaluwarsa dalam 2 jam. JSON hasil tempel disimpan sementara di `HERMES
 ## 5b. Mengirim PDF pengajuan
 
 ```text
-/files MC261029-SGV2        kirim semua PDF pengajuan itu
-/files MC261029-SGV2 3      kirim hanya PDF nomor 3
+/files MC261029-SGV2        antrekan PDF belum terkirim; ulangi kegagalan yang pasti
+/files MC261029-SGV2 3      ulangi kegagalan pasti pada PDF nomor 3
+/retryfiles MC261029-SGV2 3 ulangi PDF 3 setelah memeriksa chat (termasuk konfirmasi tidak pasti)
 ```
 
 Tiap PDF dikirim dengan **kode, nomor, dan jumlah di nama berkas**, misalnya
@@ -172,10 +173,51 @@ sudo journalctl -u medcoel-hermes -n 100 --no-pager
 
 Jangan mencetak token, password, atau isi PDF ke log.
 
-## Belum termasuk pada fondasi ini
+## Pengiriman PDF otomatis dan recovery
+
+Worker PDF berjalan terpisah dari pengumuman antrean. Pengajuan `antre`/`diproses`
+diambil tanpa bergantung pada `announced`, kapasitas pengerjaan harian, atau estimasi
+hari. `Drive tersedia` berarti tautannya ada; bukan bukti PDF sudah dikirim.
+
+Setiap pasangan pengajuan/admin menyimpan `pdfJobs` di `HERMES_STATE_DIR/state.json`.
+Satu file dianggap terkirim hanya setelah Telegram mengembalikan `message_id` dan
+konfirmasi tersimpan secara atomik. Satu proses memegang `agent.lock`; proses kedua
+ditolak. Semua penulisan state diserialkan dan disinkronkan ke disk.
+
+Retry otomatis memakai backoff 15 detik sampai satu jam (maksimum 8 percobaan),
+menghormati Telegram `retry_after`, memperbarui token Drive saat 401, serta memeriksa
+izin, tipe PDF dan ukuran maksimum 50 MiB. Pengaturan ada di `.env.example`.
+File yang sukses dilewati saat polling/restart/retry. Kegagalan satu PDF tidak
+menghapus sukses PDF lain. `/show KODE` menampilkan jumlah terkirim/retry/perlu diperiksa.
+
+Jika service mati saat mengunggah, atau Telegram menerima unggahan tetapi balasannya
+hilang, status menjadi `uncertain`. Telegram sendDocument tidak menyediakan kunci
+idempotensi: jangan menjanjikan exactly-once pada kondisi ini. Periksa chat, lalu
+gunakan `/retryfiles KODE nomor` hanya bila PDF belum ada. `/files` tidak mengulang
+status uncertain. Jangan menghapus ledger atau memulihkan snapshot lama setelah
+pengiriman baru: itu akan menghilangkan riwayat konfirmasi dan berisiko duplikat.
+
+Saat pertama memasang versi ini, ledger lama belum memiliki konfirmasi PDF. Semua
+pengajuan aktif dapat diproses, termasuk yang pernah dikirim manual oleh versi lama.
+Review backlog dan chat sebelum menyalakan worker. Jangan menandai delivered dari
+`announced` karena pengumuman bukan konfirmasi sendDocument.
+
+Simulasi tanpa jaringan/token/pesan sungguhan:
+
+```sh
+node scripts/pdf-queue-dry-run.mjs
+npm run check
+npm test
+```
+
+Mengirim PDF tidak mengubah status pengerjaan/import, `/confirm`, `/change`, atau
+alur DRILLING. Offset Telegram lama tetap ditulis sebelum handler; gangguan tepat
+di antara dua langkah itu dapat menghilangkan satu command, yang harus dikirim ulang.
+Perubahan ini tidak merombak transaksi import yang sudah ada.
+
+## Belum termasuk
 
 - menerima PDF langsung dari Telegram;
-- akses Google Drive oleh Hermes;
 - konversi PDF -> JSON oleh model AI;
 - shortcut Subject -> Chapter -> scope dari katalog aktual;
 - webhook HMAC (polling sudah menjadi jalur recovery utama).

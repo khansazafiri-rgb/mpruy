@@ -31,8 +31,37 @@ medcoel.com {
 		reverse_proxy 127.0.0.1:8090
 	}
 
+	# Persistent Anatomy mount; normal web builds cannot delete it.
+	handle /anatomy/viewer {
+	    redir * /anatomy/viewer/ 308
+	}
+	handle_path /anatomy/viewer/* {
+	    # This directory/symlink lives OUTSIDE Vite's apps/web/dist.
+	    root * /var/lib/medcoel/anatomy-viewer
+	    header X-Frame-Options SAMEORIGIN
+	    header Content-Security-Policy "frame-ancestors 'self'"
+	    header Cache-Control "no-cache, max-age=0, must-revalidate"
+	    @anatomy_hashed {
+	        path /assets/*
+	        file
+	    }
+	    header @anatomy_hashed >Cache-Control "public, max-age=31536000, immutable"
+	    @anatomy_binary {
+	        path /models/* /draco/* /thumbnails/*
+	        file
+	    }
+	    # These names are stable (thumbnail hashes identify structure IDs, not bytes).
+	    header @anatomy_binary >Cache-Control "public, max-age=3600, must-revalidate"
+	    @anatomy_glb path *.glb
+	    header @anatomy_glb Content-Type model/gltf-binary
+	    @anatomy_wasm path *.wasm
+	    header @anatomy_wasm Content-Type application/wasm
+	    # No SPA fallback here: missing model/JS/Draco is always 404.
+	    file_server
+	}
+	
 	handle {
-		root * /opt/medcoel/app/apps/web/dist
+		root * /opt/medcoel/apps/web/dist
 		@assets path /assets/*
 		header @assets Cache-Control "public, max-age=31536000, immutable"
 		try_files {path} /index.html

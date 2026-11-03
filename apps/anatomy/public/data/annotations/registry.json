@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "partId": "Humerus.r",
+      "system": "skeletal",
+      "url": "skeletal/humerus.r.json",
+      "status": "NOT_MAPPED"
+    }
+  ]
+}

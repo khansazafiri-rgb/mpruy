@@ -2,7 +2,7 @@ import {createServer} from 'node:http';import {readFile,stat} from 'node:fs/prom
 import {apiFixture} from '../preview/fixtures.mjs';
 const repo=fileURLToPath(new URL('../',import.meta.url));
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.glb':'model/gltf-binary','.wasm':'application/wasm','.woff2':'font/woff2','.webp':'image/webp','.svg':'image/svg+xml','.png':'image/png','.ico':'image/x-icon','.txt':'text/plain'};
-export function createPreviewServer({mainRoot=path.join(repo,'apps/web/dist-anatomy-preview'),atlasRoot=path.resolve(repo,'../anatomy/dist')}={}){
+export function createPreviewServer({mainRoot=path.join(repo,'apps/web/dist-anatomy-preview'),atlasRoot=path.resolve(repo,'apps/anatomy/dist')}={}){
  return createServer(async(req,res)=>{
   const send=(status,body,type='text/plain; charset=utf-8')=>{res.writeHead(status,{'Content-Type':type,'Cache-Control':'no-cache','X-Content-Type-Options':'nosniff'});res.end(req.method==='HEAD'?'':body);};
   try{

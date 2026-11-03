@@ -1,0 +1,8 @@
+{
+  "upstreamRepository": "khansazafiri-rgb/mpruy",
+  "upstreamBranch": "handoff/anatomy-visual-learning",
+  "upstreamCommit": "2e4fb05ac5953ae4d68ea01c1285edfe38571f86",
+  "includesPR100": true,
+  "portedReliabilityCommit": "7e40cee1d11c7b4a639cbd573e7b387b20d26926",
+  "modelsUnchanged": true
+}

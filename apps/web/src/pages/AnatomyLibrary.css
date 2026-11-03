@@ -88,3 +88,6 @@
 .library-system-card small{font-size:10px;padding:0 4px}
 .library-system-card > svg.library-system-icon{margin:6px 4px 14px}
 @media (prefers-reduced-motion:reduce){.library-system-card .system-thumbnail img{transition:none}}
+
+/* Non-blocking lifecycle feedback; preserve the latest library/quiz UI. */
+.library-viewer-state{inset:auto 12px 12px;max-width:480px;margin:auto;border:1px solid rgb(var(--line));border-radius:12px;background:rgb(var(--surface)/.95);padding:12px 16px;gap:9px;align-items:flex-start;text-align:left;z-index:20}.library-viewer-state strong{font-size:12px}

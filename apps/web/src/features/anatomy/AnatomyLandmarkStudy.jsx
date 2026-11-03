@@ -15,6 +15,7 @@ export default function AnatomyLandmarkStudy() {
   const listener=e=>{
    if(acceptsAtlasMessage(e,location.origin,iframe.current?.contentWindow)) {
     if(e.data.type==='medcoel:anatomy-error'){setError('Viewer belum dapat dibuka.');setStatus('error');return;}
+    if(e.data.type!=='medcoel:anatomy-ready')return;
     viewerReady=true;enter();return;
    }
    if(!acceptsAnnotationEvent(e,location.origin,iframe.current?.contentWindow,session.current))return;

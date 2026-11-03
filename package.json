@@ -8,9 +8,13 @@
     "build": "npm run build --prefix apps/web",
     "lint": "npm run lint --prefix apps/web",
     "test": "npm run test --prefix apps/web && npm run test --prefix apps/pocketbase",
-    "test:anatomy-integration": "node --test scripts/anatomy-preview-server.test.mjs",
+    "test:anatomy-integration": "node --test scripts/anatomy-*.test.mjs",
     "preview:anatomy": "node scripts/anatomy-preview-server.mjs",
-    "stage:anatomy": "node scripts/stage-anatomy.mjs"
+    "stage:anatomy": "node scripts/stage-anatomy.mjs",
+    "build:anatomy": "npm run build --prefix apps/anatomy -- --base=/anatomy/viewer/",
+    "test:anatomy": "npm test --prefix apps/anatomy",
+    "lint:anatomy": "npm run lint --prefix apps/anatomy",
+    "smoke:anatomy": "node scripts/anatomy-smoke.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

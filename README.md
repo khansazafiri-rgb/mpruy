@@ -4,6 +4,12 @@ Web belajar gratis berbasis komunitas untuk mahasiswa kedokteran (medcoel.com).
 Dibangun dari PRD MEDCOEL Draf 2 (21 Oktober 2026), dengan web lama
 PCV Classroom (repo `kons`) sebagai rujukan teknis.
 
+Source lengkap Human Anatomy berada di `apps/anatomy`, berdampingan dengan
+`apps/web` dan `apps/hermes-agent` dalam branch integrasi yang sama. Viewer tetap
+aplikasi Vite terpisah dan dipasang di luar web dist. Lihat
+[review integrasi/reliability](docs/RELIABILITY-LATEST.md) dan
+[panduan deployment setelah approval](docs/RELIABILITY-DEPLOYMENT.md).
+
 Stack sama dengan web lama supaya panduan VPS-nya tetap berlaku:
 **React (Vite) + Tailwind**, **PocketBase 0.40.5** (database, aturan akses, hook
 server), dan **Caddy** di satu VPS.
