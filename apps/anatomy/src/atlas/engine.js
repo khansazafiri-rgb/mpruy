@@ -73,7 +73,8 @@ function mask() {
     abdomen: [0.86, 1.28],
     pelvis: [0.7, 1.04],
   };
-  const band = selectedIsolation ? null : bands[settings.region];
+  const finding = globalThis.document?.body?.dataset?.studyMode === 'find';
+  const band = selectedIsolation || finding ? null : bands[settings.region];
   state.viewer.renderer.clippingPlanes = band
     ? [
         new THREE.Plane(new THREE.Vector3(0, 1, 0), -band[0]),
@@ -252,6 +253,17 @@ export const viewGroup = (id) => {
     quiet(() => restoreAllParts());
   }, { fit: true });
 };
+// Reset quiz visibility using the atlas engine; framing only depends on chosen scope.
+let studyScopeKey=null;
+export async function prepareStudy({region,system}) {
+  const key=region+'|'+system,fit=studyScopeKey!==key;
+  const applied=await commit(()=>{
+    settings.region=region;
+    GROUPS.forEach(g=>{settings.groups[g.id]={enabled:!system||g.source===system||g.id==='skeletal',removed:0};});
+    quiet(()=>restoreAllParts());
+  },{fit});
+  if(applied)studyScopeKey=key;
+}
 export async function reveal(id) {
   const meta = catalog[id];
   if (!meta)
@@ -423,6 +435,8 @@ export async function initAtlas(data) {
   } catch {
     /* use defaults */
   }
+  // A quiz starts from its participant scope, never the previous atlas selection.
+  if (globalThis.document?.body?.classList.contains('anatomy-study-active')) saved = null;
   if (validSaved(saved)) settings = saved.settings;
   await loadEnabled();
   if (validSaved(saved) && Array.isArray(saved.visibility))

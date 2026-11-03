@@ -236,3 +236,29 @@ describe("Atlas interactions against real three.js mesh visibility", () => {
     expect(env.meshes.get("Stomach")[0].visible).toBe(true);
   });
 });
+
+describe('study exploration reuses actual visibility and camera engine',()=>{
+ it('prepares the chosen region/system with all layers, without any selected target',async()=>{
+  await engine.prepareStudy({region:'headNeck',system:'muscular'});
+  expect(state.selectedPart).toBeNull();expect(state.isolatedPart).toBeNull();
+  for(const id of ['Fascia','Platysma','Deep neck'])expect(env.meshes.get(id)[0].visible).toBe(true);
+  expect(engine.settings.groups.muscular.removed).toBe(0);expect(env.meshes.get('Ulna.l')[0].visible).toBe(false);
+ });
+ it('next question resets multiple hides and fade while preserving the participant camera',async()=>{
+  await engine.prepareStudy({region:'headNeck',system:'muscular'});
+  visibility.hidePart('Fascia');visibility.hidePart('Platysma');visibility.setPartTransparency('Deep neck',.2);
+  state.viewer.camera.position.set(2,3,4);state.viewer.controls.target.set(.1,.2,.3);
+  await engine.prepareStudy({region:'headNeck',system:'muscular'});
+  expect(state.viewer.camera.position.toArray()).toEqual([2,3,4]);expect(state.viewer.controls.target.toArray()).toEqual([.1,.2,.3]);
+  for(const id of ['Fascia','Platysma','Deep neck'])expect(env.meshes.get(id)[0].visible).toBe(true);
+  expect(state.hiddenParts.size).toBe(0);expect(state.transparentParts.size).toBe(0);expect(state.selectedPart).toBeNull();
+ });
+ it('reset visibility recovers hidden structures without changing scope or creating a selection',async()=>{
+  await engine.prepareStudy({region:'headNeck',system:'muscular'});visibility.hidePart('Fascia');visibility.hidePart('Platysma');engine.restoreScene();
+  expect(env.meshes.get('Fascia')[0].visible).toBe(true);expect(env.meshes.get('Platysma')[0].visible).toBe(true);expect(env.meshes.get('Ulna.l')[0].visible).toBe(false);expect(state.selectedPart).toBeNull();
+ });
+ it('restart or changed scope removes previous hidden state and isolation',async()=>{
+  await engine.prepareStudy({region:'whole',system:''});visibility.hidePart('Ulna.l');visibility.isolatePart('Platysma');
+  await engine.prepareStudy({region:'whole',system:'skeletal'});expect(env.meshes.get('Ulna.l')[0].visible).toBe(true);expect(state.hiddenParts.size).toBe(0);expect(state.isolatedPart).toBeNull();
+ });
+});

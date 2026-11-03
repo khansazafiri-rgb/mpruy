@@ -1,3 +1,4 @@
+import {isSelectionTap} from './tap.js';
 import {structurePreview} from '../data/previews.js';
 import {createSelectionGlow} from './selectionGlow.js';
 // Selection - Raycasting, highlighting, and selection management
@@ -11,8 +12,6 @@ import { showCallout, hideCallout } from '../ui/callout.js';
 import { loadDefinitions } from '../data/anatomy.js';
 
 // Distinguishes a tap from the end of an orbit gesture.
-const TAP_MAX_MOVE_PX = 10;
-const TAP_MAX_DURATION_MS = 300;
 // The mouse gets a smaller threshold: a deliberate click barely moves, but an
 // orbit drag is unbounded, and there is no duration limit because rotating
 // slowly is still rotating.
@@ -127,6 +126,7 @@ function wasDrag(event, gesture) {
 }
 
 function onClick(event) {
+  if (studyActive() && document.body.dataset.studyMode === 'identify') return;
   const viewer = state.viewer;
   if (!viewer) return;
 
@@ -148,6 +148,7 @@ function onClick(event) {
 }
 
 function onDoubleClick(event) {
+  if (studyActive() && document.body.dataset.studyMode === 'identify') return;
   const viewer = state.viewer;
   if (!viewer) return;
 
@@ -160,6 +161,7 @@ function onDoubleClick(event) {
 // Pointer events fire far more often than frames; coalescing to one pick per
 // animation frame keeps a full-scene raycast off the critical path.
 function onPointerMove(event) {
+  if (studyActive() && document.body.dataset.studyMode === 'identify') return;
   // Touch drives selection through the tap handler; hovering with a finger is
   // not a gesture.
   if (event.pointerType && event.pointerType !== 'mouse') return;
@@ -218,17 +220,14 @@ function onTouchStart(event) {
 }
 
 function onTouchEnd(event) {
+  if (studyActive() && document.body.dataset.studyMode === 'identify') { touchStart = null; return; }
   const start = touchStart;
   touchStart = null;
 
   if (!start || event.changedTouches.length !== 1) return;
 
   const touch = event.changedTouches[0];
-  const moved = Math.hypot(touch.clientX - start.x, touch.clientY - start.y);
-  const elapsed = event.timeStamp - start.time;
-
-  // Only a short, stationary touch is a selection; anything else was an orbit.
-  if (moved > TAP_MAX_MOVE_PX || elapsed > TAP_MAX_DURATION_MS) return;
+  if (!isSelectionTap(start,{x:touch.clientX,y:touch.clientY,time:event.timeStamp},event.changedTouches.length)) return;
 
   const viewer = state.viewer;
   if (!viewer) return;
@@ -282,7 +281,7 @@ export function selectPart(partId, viewer) {
   // As in Complete Anatomy the rest of the body stays as it is and the light sweep shows which
   // structure is selected; "Pudarkan lainnya" fades the others on request. The quiz keeps its
   // contextual fade so the target reads even when it sits deep.
-  if (studyActive()) ghostAllExcept(partId);
+  if (studyActive() && document.body.dataset.studyMode !== 'find') ghostAllExcept(partId);
   else clearGhost();
   highlightMesh(partId, 0xffc21f, 0.1);
   glowViewer = viewer;

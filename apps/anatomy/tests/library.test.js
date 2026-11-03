@@ -4,19 +4,19 @@ import {LIBRARY_COMMAND,LIBRARY_RESULT,acceptsLibraryCommand,acceptsLibraryEvent
 import {readFileSync} from 'node:fs';
 const catalog=JSON.parse(readFileSync(new URL('../public/data/atlas-catalog.json',import.meta.url)));
 it('reuses the exact reviewed catalog for 3D deep links, contextual selection without automatic isolation',async()=>{
- const api={catalog:()=>catalog,reveal:vi.fn(),isolate:vi.fn(),viewGroup:vi.fn(),chooseRegion:vi.fn()};
+ const api={catalog:()=>catalog,reveal:vi.fn(),isolate:vi.fn(),viewGroup:vi.fn(),chooseRegion:vi.fn(),restoreScene:vi.fn(),prepareStudy:vi.fn()};
  expect(await executeLibrarySelection({structureId:'Ulna.r',mode:'explore'},api)).toBe('Ulna.r');expect(api.reveal).toHaveBeenCalledWith('Ulna.r');expect(api.isolate).not.toHaveBeenCalled();expect(api.viewGroup).not.toHaveBeenCalled();
 });
-it('find mode shows a group and a visible region without isolating the correct target',async()=>{
- const api={catalog:()=>catalog,reveal:vi.fn(),isolate:vi.fn(),viewGroup:vi.fn(),chooseRegion:vi.fn()};
- await executeLibrarySelection({structureId:'Humerus.r',mode:'find'},api);expect(api.viewGroup).toHaveBeenCalledWith('skeletal');expect(api.chooseRegion).toHaveBeenCalledWith('upperLimb');expect(api.reveal).not.toHaveBeenCalled();expect(api.isolate).not.toHaveBeenCalled();
+it('find mode prepares only participant scope without target highlight, isolation or reveal',async()=>{
+ const api={catalog:()=>catalog,reveal:vi.fn(),isolate:vi.fn(),viewGroup:vi.fn(),chooseRegion:vi.fn(),restoreScene:vi.fn(),prepareStudy:vi.fn()};
+ await executeLibrarySelection({structureId:'Humerus.r',mode:'find',region:'whole',system:''},api);expect(api.prepareStudy).toHaveBeenCalledWith({region:'whole',system:''});expect(api.viewGroup).not.toHaveBeenCalled();expect(api.chooseRegion).not.toHaveBeenCalled();expect(api.reveal).not.toHaveBeenCalled();expect(api.isolate).not.toHaveBeenCalled();
 });
 it('rejects unavailable targets before changing the scene',async()=>{
  const api={catalog:()=>catalog,reveal:vi.fn(),isolate:vi.fn()};await expect(executeLibrarySelection({structureId:'unknown',mode:'explore'},api)).rejects.toThrow('not available');await expect(executeLibrarySelection({structureId:'constructor',mode:'explore'},api)).rejects.toThrow('not available');expect(api.reveal).not.toHaveBeenCalled();
 });
-it('find mode does not crop a requested structure outside an axial clip band',async()=>{
- const api={catalog:()=>({test:{group:'arterial',regions:['thorax'],box:[0,.9,0,1,1.6,1]}}),viewGroup:vi.fn(),chooseRegion:vi.fn()};
- await executeLibrarySelection({structureId:'test',mode:'find'},api);expect(api.chooseRegion).toHaveBeenCalledWith('whole');
+it('find scope is identical for different targets and never inferred from their bounds',async()=>{
+ const api={catalog:()=>({test:{group:'arterial',regions:['thorax'],box:[0,.9,0,1,1.6,1]}}),viewGroup:vi.fn(),chooseRegion:vi.fn(),restoreScene:vi.fn(),prepareStudy:vi.fn()};
+ await executeLibrarySelection({structureId:'test',mode:'find',region:'abdomen',system:'cardiovascular'},api);expect(api.prepareStudy).toHaveBeenCalledWith({region:'abdomen',system:'cardiovascular'});expect(api.chooseRegion).not.toHaveBeenCalled();
 });
 it('library protocol rejects forged frames, stale responses and versions',()=>{
  const parent={},self={},origin='https://medcoel.example',requestId='test-request-123',data={type:LIBRARY_COMMAND,version:1,requestId,structureId:'Ulna.r',mode:'identify'},event={source:parent,origin,data};
@@ -26,4 +26,9 @@ it('library protocol rejects forged frames, stale responses and versions',()=>{
 it('the existing dataset has one selectable catalog entry per mesh and exported aliases reuse the atlas',()=>{
  const systems=JSON.parse(readFileSync(new URL('../public/data/systems.json',import.meta.url))),reference=JSON.parse(readFileSync(new URL('../public/data/library-reference.json',import.meta.url)));
  const ids=Object.values(systems).flat();expect(new Set(ids).size).toBe(2827);expect(ids.every(id=>catalog[id])).toBe(true);expect(reference.synonyms.id.ulna).toContain('tulang hasta');expect(reference.regions).toHaveLength(8);
+});
+it('identify restores hidden state before revealing the new target; explore preserves existing atlas visibility',async()=>{
+ const api={catalog:()=>catalog,reveal:vi.fn(),restoreScene:vi.fn()};
+ await executeLibrarySelection({structureId:'Ulna.r',mode:'identify'},api);expect(api.restoreScene).toHaveBeenCalledOnce();expect(api.reveal).toHaveBeenCalledWith('Ulna.r');
+ api.restoreScene.mockClear();await executeLibrarySelection({structureId:'Ulna.r',mode:'explore'},api);expect(api.restoreScene).not.toHaveBeenCalled();
 });
