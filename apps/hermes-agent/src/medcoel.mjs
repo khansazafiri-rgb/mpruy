@@ -59,6 +59,24 @@ export class MedcoelClient {
     });
   }
 
+  // Ubah jenis isi ("soal" | "materi") dan/atau mata kuliah (nama, slug, atau id) pengajuan yang belum diimpor.
+  // Yang tidak disebut tidak berubah. Balasan: kontrak pengajuan + { retarget: { changed, contentKind, subject } }.
+  retargetSubmission(id, { contentKind, subject } = {}) {
+    const body = {};
+    if (contentKind) body.contentKind = contentKind;
+    if (subject) body.subject = subject;
+    return this.request(`/api/medcoel/agent/submissions/${encodeURIComponent(id)}/retarget`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+    });
+  }
+
+  // Daftar mata kuliah yang tampil di web (tanpa yang disembunyikan): [{ id, name, slug }].
+  async listSubjects() {
+    const body = await this.request('/api/medcoel/public-subjects');
+    return Array.isArray(body?.items) ? body.items : [];
+  }
+
   importSubmission(id, payload) {
     return this.request(`/api/medcoel/agent/submissions/${encodeURIComponent(id)}/import`, {
       method: 'POST',
