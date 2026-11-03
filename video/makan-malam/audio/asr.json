@@ -1,0 +1,1189 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 1.94,
+   "text": "Makan malam bikin berat badan naik.",
+   "words": [
+    {
+     "w": "Makan",
+     "s": 0.0,
+     "e": 0.5
+    },
+    {
+     "w": "malam",
+     "s": 0.5,
+     "e": 0.9
+    },
+    {
+     "w": "bikin",
+     "s": 0.9,
+     "e": 1.18
+    },
+    {
+     "w": "berat",
+     "s": 1.18,
+     "e": 1.42
+    },
+    {
+     "w": "badan",
+     "s": 1.42,
+     "e": 1.64
+    },
+    {
+     "w": "naik.",
+     "s": 1.64,
+     "e": 1.94
+    }
+   ]
+  },
+  {
+   "start": 2.26,
+   "end": 3.06,
+   "text": "Eh emang benar.",
+   "words": [
+    {
+     "w": "Eh",
+     "s": 2.26,
+     "e": 2.46
+    },
+    {
+     "w": "emang",
+     "s": 2.46,
+     "e": 2.68
+    },
+    {
+     "w": "benar.",
+     "s": 2.68,
+     "e": 3.06
+    }
+   ]
+  },
+  {
+   "start": 3.96,
+   "end": 7.2,
+   "text": "Kamu baru selesai kuliah, perut lapar, lalu lihat jam.",
+   "words": [
+    {
+     "w": "Kamu",
+     "s": 3.96,
+     "e": 4.28
+    },
+    {
+     "w": "baru",
+     "s": 4.28,
+     "e": 4.4
+    },
+    {
+     "w": "selesai",
+     "s": 4.4,
+     "e": 4.74
+    },
+    {
+     "w": "kuliah,",
+     "s": 4.74,
+     "e": 5.12
+    },
+    {
+     "w": "perut",
+     "s": 5.54,
+     "e": 5.74
+    },
+    {
+     "w": "lapar,",
+     "s": 5.74,
+     "e": 6.22
+    },
+    {
+     "w": "lalu",
+     "s": 6.5,
+     "e": 6.78
+    },
+    {
+     "w": "lihat",
+     "s": 6.78,
+     "e": 6.96
+    },
+    {
+     "w": "jam.",
+     "s": 6.96,
+     "e": 7.2
+    }
+   ]
+  },
+  {
+   "start": 7.74,
+   "end": 11.06,
+   "text": "Sudah jam 9 malam, tiba-tiba muncul suara di kepalamu.",
+   "words": [
+    {
+     "w": "Sudah",
+     "s": 7.74,
+     "e": 7.98
+    },
+    {
+     "w": "jam",
+     "s": 7.98,
+     "e": 8.12
+    },
+    {
+     "w": "9",
+     "s": 8.12,
+     "e": 8.32
+    },
+    {
+     "w": "malam,",
+     "s": 8.32,
+     "e": 8.78
+    },
+    {
+     "w": "tiba",
+     "s": 9.46,
+     "e": 9.68
+    },
+    {
+     "w": "-tiba",
+     "s": 9.68,
+     "e": 9.86
+    },
+    {
+     "w": "muncul",
+     "s": 9.86,
+     "e": 10.12
+    },
+    {
+     "w": "suara",
+     "s": 10.12,
+     "e": 10.46
+    },
+    {
+     "w": "di",
+     "s": 10.46,
+     "e": 10.6
+    },
+    {
+     "w": "kepalamu.",
+     "s": 10.6,
+     "e": 11.06
+    }
+   ]
+  },
+  {
+   "start": 11.46,
+   "end": 13.14,
+   "text": "Jangan makan, nanti gendut.",
+   "words": [
+    {
+     "w": "Jangan",
+     "s": 11.46,
+     "e": 11.74
+    },
+    {
+     "w": "makan,",
+     "s": 11.74,
+     "e": 12.14
+    },
+    {
+     "w": "nanti",
+     "s": 12.58,
+     "e": 12.76
+    },
+    {
+     "w": "gendut.",
+     "s": 12.76,
+     "e": 13.14
+    }
+   ]
+  },
+  {
+   "start": 13.86,
+   "end": 17.98,
+   "text": "Tapi apakah makanan langsung berubah jadi lemak hanya karena dimakan pada malam hari?",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 13.86,
+     "e": 14.26
+    },
+    {
+     "w": "apakah",
+     "s": 14.26,
+     "e": 15.04
+    },
+    {
+     "w": "makanan",
+     "s": 15.04,
+     "e": 15.38
+    },
+    {
+     "w": "langsung",
+     "s": 15.38,
+     "e": 15.66
+    },
+    {
+     "w": "berubah",
+     "s": 15.66,
+     "e": 15.94
+    },
+    {
+     "w": "jadi",
+     "s": 15.94,
+     "e": 16.14
+    },
+    {
+     "w": "lemak",
+     "s": 16.14,
+     "e": 16.5
+    },
+    {
+     "w": "hanya",
+     "s": 16.5,
+     "e": 16.78
+    },
+    {
+     "w": "karena",
+     "s": 16.78,
+     "e": 17.02
+    },
+    {
+     "w": "dimakan",
+     "s": 17.02,
+     "e": 17.34
+    },
+    {
+     "w": "pada",
+     "s": 17.34,
+     "e": 17.54
+    },
+    {
+     "w": "malam",
+     "s": 17.54,
+     "e": 17.76
+    },
+    {
+     "w": "hari?",
+     "s": 17.76,
+     "e": 17.98
+    }
+   ]
+  },
+  {
+   "start": 19.2,
+   "end": 21.48,
+   "text": "Cewanya, nggak sesedahannya itu.",
+   "words": [
+    {
+     "w": "Cewanya,",
+     "s": 19.2,
+     "e": 19.84
+    },
+    {
+     "w": "nggak",
+     "s": 20.28,
+     "e": 20.62
+    },
+    {
+     "w": "sesedahannya",
+     "s": 20.62,
+     "e": 21.16
+    },
+    {
+     "w": "itu.",
+     "s": 21.16,
+     "e": 21.48
+    }
+   ]
+  },
+  {
+   "start": 22.38,
+   "end": 27.02,
+   "text": "Berat badan dipengaruhi oleh pola makan dan keseimbangan energi dalam jangka waktu tertentu.",
+   "words": [
+    {
+     "w": "Berat",
+     "s": 22.38,
+     "e": 22.84
+    },
+    {
+     "w": "badan",
+     "s": 22.84,
+     "e": 23.22
+    },
+    {
+     "w": "dipengaruhi",
+     "s": 23.22,
+     "e": 23.76
+    },
+    {
+     "w": "oleh",
+     "s": 23.76,
+     "e": 23.84
+    },
+    {
+     "w": "pola",
+     "s": 23.84,
+     "e": 24.12
+    },
+    {
+     "w": "makan",
+     "s": 24.12,
+     "e": 24.48
+    },
+    {
+     "w": "dan",
+     "s": 24.48,
+     "e": 24.74
+    },
+    {
+     "w": "keseimbangan",
+     "s": 24.74,
+     "e": 25.26
+    },
+    {
+     "w": "energi",
+     "s": 25.26,
+     "e": 25.74
+    },
+    {
+     "w": "dalam",
+     "s": 25.74,
+     "e": 26.0
+    },
+    {
+     "w": "jangka",
+     "s": 26.0,
+     "e": 26.28
+    },
+    {
+     "w": "waktu",
+     "s": 26.28,
+     "e": 26.46
+    },
+    {
+     "w": "tertentu.",
+     "s": 26.46,
+     "e": 27.02
+    }
+   ]
+  },
+  {
+   "start": 27.02,
+   "end": 31.5,
+   "text": "juga aktivitas, tidur, kondisi kesehatan, dan faktor lainnya.",
+   "words": [
+    {
+     "w": "juga",
+     "s": 27.02,
+     "e": 27.7
+    },
+    {
+     "w": "aktivitas,",
+     "s": 27.7,
+     "e": 28.48
+    },
+    {
+     "w": "tidur,",
+     "s": 28.88,
+     "e": 29.34
+    },
+    {
+     "w": "kondisi",
+     "s": 29.54,
+     "e": 29.78
+    },
+    {
+     "w": "kesehatan,",
+     "s": 29.78,
+     "e": 30.52
+    },
+    {
+     "w": "dan",
+     "s": 30.72,
+     "e": 30.78
+    },
+    {
+     "w": "faktor",
+     "s": 30.78,
+     "e": 31.1
+    },
+    {
+     "w": "lainnya.",
+     "s": 31.1,
+     "e": 31.5
+    }
+   ]
+  },
+  {
+   "start": 31.96,
+   "end": 35.7,
+   "text": "Jadi jam 9 bukan tombol ajaib yang langsung mengubah makananmu jadi lemak.",
+   "words": [
+    {
+     "w": "Jadi",
+     "s": 31.96,
+     "e": 32.3
+    },
+    {
+     "w": "jam",
+     "s": 32.3,
+     "e": 32.62
+    },
+    {
+     "w": "9",
+     "s": 32.62,
+     "e": 32.9
+    },
+    {
+     "w": "bukan",
+     "s": 32.9,
+     "e": 33.16
+    },
+    {
+     "w": "tombol",
+     "s": 33.16,
+     "e": 33.56
+    },
+    {
+     "w": "ajaib",
+     "s": 33.56,
+     "e": 34.04
+    },
+    {
+     "w": "yang",
+     "s": 34.04,
+     "e": 34.14
+    },
+    {
+     "w": "langsung",
+     "s": 34.14,
+     "e": 34.38
+    },
+    {
+     "w": "mengubah",
+     "s": 34.38,
+     "e": 34.74
+    },
+    {
+     "w": "makananmu",
+     "s": 34.74,
+     "e": 35.18
+    },
+    {
+     "w": "jadi",
+     "s": 35.18,
+     "e": 35.34
+    },
+    {
+     "w": "lemak.",
+     "s": 35.34,
+     "e": 35.7
+    }
+   ]
+  },
+  {
+   "start": 36.98,
+   "end": 40.16,
+   "text": "Tapi waktu makan tetap bisa berkaitan dengan kebiasaanmu.",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 36.98,
+     "e": 37.58
+    },
+    {
+     "w": "waktu",
+     "s": 37.58,
+     "e": 38.1
+    },
+    {
+     "w": "makan",
+     "s": 38.1,
+     "e": 38.4
+    },
+    {
+     "w": "tetap",
+     "s": 38.4,
+     "e": 38.76
+    },
+    {
+     "w": "bisa",
+     "s": 38.76,
+     "e": 38.9
+    },
+    {
+     "w": "berkaitan",
+     "s": 38.9,
+     "e": 39.34
+    },
+    {
+     "w": "dengan",
+     "s": 39.34,
+     "e": 39.46
+    },
+    {
+     "w": "kebiasaanmu.",
+     "s": 39.46,
+     "e": 40.16
+    }
+   ]
+  },
+  {
+   "start": 40.56,
+   "end": 42.98,
+   "text": "Misalnya kamu sering melewatkan makan sepanjang hari,",
+   "words": [
+    {
+     "w": "Misalnya",
+     "s": 40.56,
+     "e": 40.96
+    },
+    {
+     "w": "kamu",
+     "s": 40.96,
+     "e": 41.38
+    },
+    {
+     "w": "sering",
+     "s": 41.38,
+     "e": 41.64
+    },
+    {
+     "w": "melewatkan",
+     "s": 41.64,
+     "e": 42.1
+    },
+    {
+     "w": "makan",
+     "s": 42.1,
+     "e": 42.3
+    },
+    {
+     "w": "sepanjang",
+     "s": 42.3,
+     "e": 42.7
+    },
+    {
+     "w": "hari,",
+     "s": 42.7,
+     "e": 42.98
+    }
+   ]
+  },
+  {
+   "start": 43.42,
+   "end": 46.88,
+   "text": "lalu malamnya merasa sangat lapar dan makan lebih banyak dari yang kamu putukan.",
+   "words": [
+    {
+     "w": "lalu",
+     "s": 43.42,
+     "e": 43.68
+    },
+    {
+     "w": "malamnya",
+     "s": 43.68,
+     "e": 44.08
+    },
+    {
+     "w": "merasa",
+     "s": 44.08,
+     "e": 44.36
+    },
+    {
+     "w": "sangat",
+     "s": 44.36,
+     "e": 44.66
+    },
+    {
+     "w": "lapar",
+     "s": 44.66,
+     "e": 45.14
+    },
+    {
+     "w": "dan",
+     "s": 45.14,
+     "e": 45.3
+    },
+    {
+     "w": "makan",
+     "s": 45.3,
+     "e": 45.58
+    },
+    {
+     "w": "lebih",
+     "s": 45.58,
+     "e": 45.8
+    },
+    {
+     "w": "banyak",
+     "s": 45.8,
+     "e": 46.12
+    },
+    {
+     "w": "dari",
+     "s": 46.12,
+     "e": 46.28
+    },
+    {
+     "w": "yang",
+     "s": 46.28,
+     "e": 46.4
+    },
+    {
+     "w": "kamu",
+     "s": 46.4,
+     "e": 46.56
+    },
+    {
+     "w": "putukan.",
+     "s": 46.56,
+     "e": 46.88
+    }
+   ]
+  },
+  {
+   "start": 47.6,
+   "end": 50.26,
+   "text": "Begadang juga bisa membuatmu punya lebih banyak waktu untuk gemil.",
+   "words": [
+    {
+     "w": "Begadang",
+     "s": 47.6,
+     "e": 48.1
+    },
+    {
+     "w": "juga",
+     "s": 48.1,
+     "e": 48.28
+    },
+    {
+     "w": "bisa",
+     "s": 48.28,
+     "e": 48.46
+    },
+    {
+     "w": "membuatmu",
+     "s": 48.46,
+     "e": 48.9
+    },
+    {
+     "w": "punya",
+     "s": 48.9,
+     "e": 49.1
+    },
+    {
+     "w": "lebih",
+     "s": 49.1,
+     "e": 49.3
+    },
+    {
+     "w": "banyak",
+     "s": 49.3,
+     "e": 49.5
+    },
+    {
+     "w": "waktu",
+     "s": 49.5,
+     "e": 49.78
+    },
+    {
+     "w": "untuk",
+     "s": 49.78,
+     "e": 49.96
+    },
+    {
+     "w": "gemil.",
+     "s": 49.96,
+     "e": 50.26
+    }
+   ]
+  },
+  {
+   "start": 50.94,
+   "end": 54.06,
+   "text": "Lalu, kalau kamu ingin menurunkan berat badan, harus mulai dari mana?",
+   "words": [
+    {
+     "w": "Lalu,",
+     "s": 50.94,
+     "e": 51.3
+    },
+    {
+     "w": "kalau",
+     "s": 51.54,
+     "e": 51.74
+    },
+    {
+     "w": "kamu",
+     "s": 51.74,
+     "e": 51.98
+    },
+    {
+     "w": "ingin",
+     "s": 51.98,
+     "e": 52.18
+    },
+    {
+     "w": "menurunkan",
+     "s": 52.18,
+     "e": 52.56
+    },
+    {
+     "w": "berat",
+     "s": 52.56,
+     "e": 52.74
+    },
+    {
+     "w": "badan,",
+     "s": 52.74,
+     "e": 53.08
+    },
+    {
+     "w": "harus",
+     "s": 53.34,
+     "e": 53.5
+    },
+    {
+     "w": "mulai",
+     "s": 53.5,
+     "e": 53.72
+    },
+    {
+     "w": "dari",
+     "s": 53.72,
+     "e": 53.86
+    },
+    {
+     "w": "mana?",
+     "s": 53.86,
+     "e": 54.06
+    }
+   ]
+  },
+  {
+   "start": 54.06,
+   "end": 61.82,
+   "text": "Mula-mula dari pola makan yang cukup dan seimbang, perhatikan porsi, bergerak secara teratur dan usahakan tidur cukup.",
+   "words": [
+    {
+     "w": "Mula",
+     "s": 54.06,
+     "e": 55.3
+    },
+    {
+     "w": "-mula",
+     "s": 55.3,
+     "e": 55.42
+    },
+    {
+     "w": "dari",
+     "s": 55.42,
+     "e": 55.62
+    },
+    {
+     "w": "pola",
+     "s": 55.62,
+     "e": 55.86
+    },
+    {
+     "w": "makan",
+     "s": 55.86,
+     "e": 56.1
+    },
+    {
+     "w": "yang",
+     "s": 56.1,
+     "e": 56.26
+    },
+    {
+     "w": "cukup",
+     "s": 56.26,
+     "e": 56.68
+    },
+    {
+     "w": "dan",
+     "s": 56.68,
+     "e": 56.8
+    },
+    {
+     "w": "seimbang,",
+     "s": 56.8,
+     "e": 57.28
+    },
+    {
+     "w": "perhatikan",
+     "s": 57.62,
+     "e": 58.0
+    },
+    {
+     "w": "porsi,",
+     "s": 58.0,
+     "e": 58.64
+    },
+    {
+     "w": "bergerak",
+     "s": 58.94,
+     "e": 59.34
+    },
+    {
+     "w": "secara",
+     "s": 59.34,
+     "e": 59.64
+    },
+    {
+     "w": "teratur",
+     "s": 59.64,
+     "e": 60.02
+    },
+    {
+     "w": "dan",
+     "s": 60.02,
+     "e": 60.28
+    },
+    {
+     "w": "usahakan",
+     "s": 60.28,
+     "e": 60.9
+    },
+    {
+     "w": "tidur",
+     "s": 60.9,
+     "e": 61.2
+    },
+    {
+     "w": "cukup.",
+     "s": 61.2,
+     "e": 61.82
+    }
+   ]
+  },
+  {
+   "start": 62.18,
+   "end": 67.36,
+   "text": "Pilih perubahan yang bisa kamu jalani secara konsisten, bukan aturan ekstrim yang cuma bertahan beberapa hari.",
+   "words": [
+    {
+     "w": "Pilih",
+     "s": 62.18,
+     "e": 62.66
+    },
+    {
+     "w": "perubahan",
+     "s": 62.66,
+     "e": 63.0
+    },
+    {
+     "w": "yang",
+     "s": 63.0,
+     "e": 63.16
+    },
+    {
+     "w": "bisa",
+     "s": 63.16,
+     "e": 63.3
+    },
+    {
+     "w": "kamu",
+     "s": 63.3,
+     "e": 63.52
+    },
+    {
+     "w": "jalani",
+     "s": 63.52,
+     "e": 63.82
+    },
+    {
+     "w": "secara",
+     "s": 63.82,
+     "e": 64.1
+    },
+    {
+     "w": "konsisten,",
+     "s": 64.1,
+     "e": 64.56
+    },
+    {
+     "w": "bukan",
+     "s": 64.88,
+     "e": 65.26
+    },
+    {
+     "w": "aturan",
+     "s": 65.26,
+     "e": 65.6
+    },
+    {
+     "w": "ekstrim",
+     "s": 65.6,
+     "e": 66.08
+    },
+    {
+     "w": "yang",
+     "s": 66.08,
+     "e": 66.22
+    },
+    {
+     "w": "cuma",
+     "s": 66.22,
+     "e": 66.44
+    },
+    {
+     "w": "bertahan",
+     "s": 66.44,
+     "e": 66.78
+    },
+    {
+     "w": "beberapa",
+     "s": 66.78,
+     "e": 67.12
+    },
+    {
+     "w": "hari.",
+     "s": 67.12,
+     "e": 67.36
+    }
+   ]
+  },
+  {
+   "start": 68.0,
+   "end": 74.2,
+   "text": "Dan kalau kamu punya kondisi kesehatan tertentu atau bingung menentukan kebutuhanmu, kamu bisa berkonsultasi dengan tenaga kesehatan.",
+   "words": [
+    {
+     "w": "Dan",
+     "s": 68.0,
+     "e": 68.3
+    },
+    {
+     "w": "kalau",
+     "s": 68.3,
+     "e": 68.7
+    },
+    {
+     "w": "kamu",
+     "s": 68.7,
+     "e": 68.92
+    },
+    {
+     "w": "punya",
+     "s": 68.92,
+     "e": 69.14
+    },
+    {
+     "w": "kondisi",
+     "s": 69.14,
+     "e": 69.4
+    },
+    {
+     "w": "kesehatan",
+     "s": 69.4,
+     "e": 69.8
+    },
+    {
+     "w": "tertentu",
+     "s": 69.8,
+     "e": 70.24
+    },
+    {
+     "w": "atau",
+     "s": 70.24,
+     "e": 70.38
+    },
+    {
+     "w": "bingung",
+     "s": 70.38,
+     "e": 70.78
+    },
+    {
+     "w": "menentukan",
+     "s": 70.78,
+     "e": 71.12
+    },
+    {
+     "w": "kebutuhanmu,",
+     "s": 71.12,
+     "e": 71.84
+    },
+    {
+     "w": "kamu",
+     "s": 72.16,
+     "e": 72.4
+    },
+    {
+     "w": "bisa",
+     "s": 72.4,
+     "e": 72.6
+    },
+    {
+     "w": "berkonsultasi",
+     "s": 72.6,
+     "e": 73.2
+    },
+    {
+     "w": "dengan",
+     "s": 73.2,
+     "e": 73.38
+    },
+    {
+     "w": "tenaga",
+     "s": 73.38,
+     "e": 73.66
+    },
+    {
+     "w": "kesehatan.",
+     "s": 73.66,
+     "e": 74.2
+    }
+   ]
+  },
+  {
+   "start": 74.96,
+   "end": 79.28,
+   "text": "Jadi, kalau lapar setelah pulang kuliah, jangan langsung panik hanya karena melihat jam.",
+   "words": [
+    {
+     "w": "Jadi,",
+     "s": 74.96,
+     "e": 75.36
+    },
+    {
+     "w": "kalau",
+     "s": 75.66,
+     "e": 75.8
+    },
+    {
+     "w": "lapar",
+     "s": 75.8,
+     "e": 76.18
+    },
+    {
+     "w": "setelah",
+     "s": 76.18,
+     "e": 76.44
+    },
+    {
+     "w": "pulang",
+     "s": 76.44,
+     "e": 76.62
+    },
+    {
+     "w": "kuliah,",
+     "s": 76.62,
+     "e": 77.0
+    },
+    {
+     "w": "jangan",
+     "s": 77.4,
+     "e": 77.64
+    },
+    {
+     "w": "langsung",
+     "s": 77.64,
+     "e": 77.88
+    },
+    {
+     "w": "panik",
+     "s": 77.88,
+     "e": 78.34
+    },
+    {
+     "w": "hanya",
+     "s": 78.34,
+     "e": 78.54
+    },
+    {
+     "w": "karena",
+     "s": 78.54,
+     "e": 78.7
+    },
+    {
+     "w": "melihat",
+     "s": 78.7,
+     "e": 78.96
+    },
+    {
+     "w": "jam.",
+     "s": 78.96,
+     "e": 79.28
+    }
+   ]
+  },
+  {
+   "start": 80.38,
+   "end": 85.36,
+   "text": "Penasaran dengan cara kerja tubuh lain ya, belajar bareng Medcoil, gratis di Medcoil.com",
+   "words": [
+    {
+     "w": "Penasaran",
+     "s": 80.38,
+     "e": 80.96
+    },
+    {
+     "w": "dengan",
+     "s": 80.96,
+     "e": 81.12
+    },
+    {
+     "w": "cara",
+     "s": 81.12,
+     "e": 81.34
+    },
+    {
+     "w": "kerja",
+     "s": 81.34,
+     "e": 81.64
+    },
+    {
+     "w": "tubuh",
+     "s": 81.64,
+     "e": 81.82
+    },
+    {
+     "w": "lain",
+     "s": 81.82,
+     "e": 81.98
+    },
+    {
+     "w": "ya,",
+     "s": 81.98,
+     "e": 82.16
+    },
+    {
+     "w": "belajar",
+     "s": 82.62,
+     "e": 83.06
+    },
+    {
+     "w": "bareng",
+     "s": 83.06,
+     "e": 83.34
+    },
+    {
+     "w": "Medcoil,",
+     "s": 83.34,
+     "e": 83.8
+    },
+    {
+     "w": "gratis",
+     "s": 83.96,
+     "e": 84.44
+    },
+    {
+     "w": "di",
+     "s": 84.44,
+     "e": 84.54
+    },
+    {
+     "w": "Medcoil",
+     "s": 84.54,
+     "e": 85.02
+    },
+    {
+     "w": ".com",
+     "s": 85.02,
+     "e": 85.36
+    }
+   ]
+  }
+ ]
+}
