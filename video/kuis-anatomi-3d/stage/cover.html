@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Hafal anatomi… tapi langsung lupa?</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans',sans-serif}
+.title{position:absolute;left:40px;top:428px;width:1000px;text-align:center;font-weight:800;font-size:90px;line-height:1.04;color:#fff;letter-spacing:-.02em;text-shadow:0 8px 0 rgba(6,24,48,.45)}
+.title em{font-style:normal;color:#F8C038}
+.sub{position:absolute;left:0;top:1372px;width:1080px;text-align:center;font-weight:800;font-size:42px;line-height:1.14;color:#CFE9FF}
+.sub b{color:#9DE0BD}
+.logo{position:absolute;left:415px;top:1440px;width:250px;filter:brightness(0) invert(1);opacity:.97}
+.mon{position:absolute;left:712px;top:1030px;width:310px;height:310px;border-radius:30px;overflow:hidden;background:#0B3A32;box-shadow:0 14px 0 rgba(0,0,0,.28),0 0 0 8px #fff}
+.mon img{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;transform:translate(-139px,-166px) scale(.56)}
+.tag{position:absolute;left:712px;top:968px;background:#00A383;color:#fff;font-weight:800;font-size:29px;padding:8px 20px 10px;z-index:3;border-radius:30px;box-shadow:0 8px 0 rgba(0,70,55,.4)}
+</style></head><body><div id="root"><svg id="art" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0"></svg>
+<div class="title">Hafal anatomi…<br>tapi <em>langsung lupa?</em></div>
+<div class="tag">KUIS ANATOMI 3D</div>
+<div class="mon"><img id="shot" alt=""></div>
+<div class="sub">Uji ingatanmu di <b>MEDCOEL</b></div>
+<img class="logo" src="logo-full.webp" alt="MEDCOEL"></div>
+<script type="module">
+import { raka, rakaSvg, idle } from '../../../brand/characters/raka/raka.js';
+await document.fonts.ready;
+const g = (inner, o = {}) => `<g transform="translate(${o.x||0} ${o.y||0}) rotate(${o.r||0}) scale(${o.s||1})" opacity="${o.o??1}">${inner}</g>`;
+let s = `<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0F2440"/><stop offset=".6" stop-color="#1B4B6B"/><stop offset="1" stop-color="#2A7E8A"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#bg)"/>`;
+for (let i = 0; i < 12; i++) { const x = 70 + ((i * 197) % 940), y = 200 + ((i * 331) % 1500); s += g(`<circle r="${10 + (i % 3) * 6}" fill="#9DE0BD" opacity=".16"/>`, { x, y }); }
+// nama-nama anatomi yang "hilang" beterbangan
+[['N. vagus', 150, 800, -14, '#F8C038'], ['Os femur', 900, 840, 10, '#9DE0BD'], ['A. carotis', 140, 1060, 8, '#F29B8A']].forEach(([t, x, y, r, col]) => { const w = 40 + t.length * 17; s += g(`<rect x="${-w/2}" y="-26" width="${w}" height="52" rx="10" fill="${col}" opacity=".9"/><text x="0" y="11" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="30" fill="#0A3830">${t}</text>`, { x, y, r }); });
+// Raka (jas lab) membawa atlas, bingung
+const st = idle(raka('bingung', null, { dizzy: 0, sweat: 1, bags: 0.3, tilt: -4, browL: { y: -8, rot: 14 }, browR: { y: -4, rot: -8 }, mouth: { w: 12, up: 2, lo: 7 }, armL: { wx: 150, wy: 528, ex: 88, ey: 566, finger: 0, fa: -90, front: 1 }, armR: { wx: 250, wy: 528, ex: 312, ey: 566, finger: 0, fa: -90, front: 1 } }), 1.1);
+const sc = 0.9, X = 540, FY = 1335;
+let rk = rakaSvg(st, { bare: true, shadow: true, uid: 'cv', outfit: 'jas' });
+const book = `<g transform="rotate(-6 200 520)"><rect x="118" y="452" width="164" height="124" rx="10" fill="#8C3B3B"/><rect x="124" y="458" width="152" height="112" rx="6" fill="#A94A4A"/><text x="200" y="506" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="26" fill="#F8E7C0" letter-spacing="2">ATLAS</text><text x="200" y="538" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="20" fill="#F8E7C0" opacity=".8">ANATOMI</text><circle cx="122" cy="566" r="19" fill="#F7BC8E"/><circle cx="280" cy="566" r="19" fill="#F7BC8E"/></g>`;
+s += g(rk + book, { x: X - 200 * sc, y: FY - 778 * sc, s: sc });
+// tanda tanya
+[[345, 770, -12], [745, 770, 14], [270, 930, 16]].forEach(([x, y, r], i) => { s += g(`<text x="0" y="0" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="${96 - i * 12}" fill="#F2735E" stroke="#fff" stroke-width="9" paint-order="stroke">?</text>`, { x, y, r }); });
+document.getElementById('art').innerHTML = s;
+const marks = await (await fetch('media/quiz/marks.json')).json();
+document.getElementById('shot').src = 'media/quiz/f' + String((marks.klik_model || 600) - 20).padStart(4, '0') + '.jpg';
+await document.getElementById('shot').decode();
+window.__ready = true;
+</script></body></html>
