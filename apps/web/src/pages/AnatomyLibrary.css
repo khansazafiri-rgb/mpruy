@@ -91,3 +91,13 @@
 
 /* Non-blocking lifecycle feedback; preserve the latest library/quiz UI. */
 .library-viewer-state{inset:auto 12px 12px;max-width:480px;margin:auto;border:1px solid rgb(var(--line));border-radius:12px;background:rgb(var(--surface)/.95);padding:12px 16px;gap:9px;align-items:flex-start;text-align:left;z-index:20}.library-viewer-state strong{font-size:12px}
+
+/* Two quiz modes; exploration controls live inside the 3D viewport, available by tap. */
+.library-mode-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.library-session-bar button,.library-mode-card{min-height:44px}
+@media(max-width:1100px) and (min-width:768px){.library-quiz-layout{grid-template-columns:minmax(0,1.4fr) minmax(240px,1fr);gap:16px}.library-question{padding:18px}.library-question h2{font-size:19px}}
+@media(max-width:767px){.library-quiz-viewer>.library-viewer{height:70dvh;min-height:470px;max-height:700px}.library-question{position:static}.library-mode-cards{grid-template-columns:1fr 1fr}}
+.library-model-prompt{padding:12px 16px;border-bottom:1px solid rgb(var(--line));font-size:15px;line-height:1.5;background:rgb(var(--surface));display:flex;flex-direction:column;gap:5px}
+.library-model-prompt>span{font-size:12px;color:rgb(var(--brand-dark))}
+.library-feedback-actions button,.library-answer-options button{min-height:44px}
+@media(min-width:768px) and (max-width:1000px){.library-quiz-layout{grid-template-columns:1fr}.library-quiz-viewer>.library-viewer{height:65dvh;min-height:500px;max-height:720px}}

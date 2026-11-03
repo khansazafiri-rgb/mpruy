@@ -9,3 +9,24 @@ body.anatomy-study-active #resetBtn{display:none}
 /* The normal footer remains in the DOM while study hides it. Its selected-state
    offsets must not push camera buttons into the middle of the quiz model. */
 body.anatomy-study-active #app .viewer-controls{bottom:14px;left:14px}
+
+.study-context{position:fixed;z-index:100;left:12px;right:12px;bottom:max(10px,env(safe-area-inset-bottom));padding:10px 12px;border:1px solid #b8d8ce;border-radius:16px;background:#fffdf4;color:#163e36;box-shadow:0 8px 30px #0003;display:flex;gap:10px;align-items:center;flex-wrap:wrap;max-height:34dvh;overflow:auto}
+.study-context[hidden]{display:none}
+.study-selected{font-size:13px;line-height:1.4;flex:1;min-width:130px}
+.study-context-actions{display:flex;gap:8px;flex-wrap:wrap}
+.study-context button,.study-context select{min-height:44px;padding:10px 12px;border:1px solid #aac8bd;border-radius:10px;background:#f3f6ee;color:#153d34;font:inherit;font-size:13px;cursor:pointer}
+.study-context button:disabled{opacity:.45;cursor:default}
+.study-context .study-submit{background:#007767;color:white;border-color:#007767}
+.study-context button:focus-visible,.study-context select:focus-visible{outline:3px solid #007767;outline-offset:2px}
+.study-context select{max-width:100%}
+body[data-study-mode="find"] #app .viewer-controls{bottom:auto;top:14px;left:14px}
+@media(max-width:600px){.study-context{left:8px;right:8px;padding:8px;gap:6px}.study-selected{flex-basis:100%;font-size:12px}.study-context-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:6px}.study-context:not(.has-selection) .study-context-actions>button:not(:last-child){display:none}.study-context:not(.has-selection) .study-context-actions>button:last-child{grid-column:1/-1}.study-context button{font-size:12px;padding:8px}.study-context select{width:100%}}
+@media(max-width:600px){.study-context{max-height:45dvh}}
+body[data-study-mode="find"] #app{height:calc(100dvh - var(--study-controls-height,110px))}
+body[data-study-mode="find"] .main-layout{height:100%}
+body.anatomy-study-active .atlas-tools button{min-width:44px;min-height:44px}
+@media(max-width:600px){
+ body.anatomy-study-active .atlas-tools{inset:10px;transform:none;display:block;pointer-events:none}
+ body.anatomy-study-active .atlas-navigation{position:absolute;right:0;top:0;grid-auto-flow:column;pointer-events:auto}
+ body.anatomy-study-active #app .viewer-controls,body.anatomy-study-active[data-study-mode="find"] #app .viewer-controls{position:absolute;left:0;bottom:0;top:auto;grid-auto-flow:column;pointer-events:auto}
+}

@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Route, Routes, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import {
-  ArrowLeft, ArrowRight, BookOpen, Bone, Box, Brain, Check, ChevronRight, Eye, Heart, Keyboard, Layers, MapPin,
+  ArrowLeft, ArrowRight, BookOpen, Bone, Box, Brain, Check, ChevronRight, Eye, Heart, Keyboard, Layers,
   MousePointerClick, Search, Target,
 } from 'lucide-react';
 import Logo from '@/components/Logo';
@@ -13,7 +13,7 @@ import {
   REGIONS, SYSTEMS, browseStructures, filterStructures, normalise, relatedStructures, structureHref, exploreHref,
 } from '../features/anatomy/registry.mjs';
 import { PROGRESS_STATES, recordAnswer, setProgressStatus } from '../features/anatomy/libraryProgress.mjs';
-import { STUDY_MODES, makeQuestion, checkAnswer, studyScope } from '../features/anatomy/study.mjs';
+import { STUDY_MODES, makeQuestion, evaluateStudyAttempt, studyScope } from '../features/anatomy/study.mjs';
 import LibraryViewer from '../features/anatomy/LibraryViewer';
 import StructureThumbnail from '../features/anatomy/StructureThumbnail';
 import './AnatomyLibrary.css';
@@ -21,7 +21,7 @@ import './AnatomyLibrary.css';
 const SYSTEM_ICONS = {
   skeletal: Bone, muscular: Layers, joints: Layers, cardiovascular: Heart, nervous: Brain, lymphatic: Layers, visceral: Heart,
 };
-const MODE_ICONS = { identify: Eye, find: MousePointerClick, system: Layers, region: MapPin };
+const MODE_ICONS = { identify: Eye, find: MousePointerClick };
 const PROGRESS_LABELS = { NOT_STUDIED: 'Belum dipelajari', LEARNING: 'Sedang dipelajari', MASTERED: 'Dikuasai' };
 const SIDE_LABELS = { left: 'kiri', right: 'kanan' };
 const systemName = (id) => SYSTEMS.find((s) => s.id === id)?.name || '';
@@ -327,7 +327,7 @@ function LandingContent() {
         <div>
           <p className="library-eyebrow">BIAR NEMPEL DI KEPALA</p>
           <h2>Kuis anatomi 3D</h2>
-          <p>Kenali struktur yang bersinar, temukan di model, lalu hubungkan dengan sistem dan regionya.</p>
+          <p>Kenali struktur yang disorot atau cari sendiri struktur yang diminta pada model 3D.</p>
           <div className="library-study-tags">
             <span>{STUDY_MODES.length} mode kuis</span>
             <span>Pengecoh sejenis</span>
@@ -730,7 +730,8 @@ function StudyContent() {
   const { registry, progress, updateProgress } = useAnatomyLibrary();
   const mascots = useMascotsOn();
   const [params, setParams] = useSearchParams();
-  const mode = params.get('mode') || 'identify';
+  const requestedMode = params.get('mode');
+  const mode = STUDY_MODES.some((m) => m.id === requestedMode) ? requestedMode : 'identify';
   const system = params.get('system') || '';
   const region = params.get('region') || '';
   const [round, setRound] = useState(null);
@@ -763,8 +764,10 @@ function StudyContent() {
   }
   function answer(id) {
     if (!round?.ready || locked.current || questionKey !== configKey) return;
-    locked.current = true;
-    const correct = checkAnswer(round.question, id);
+    const result = evaluateStudyAttempt(round.question, id, { ready: round.ready, locked: locked.current });
+    if (!result) return;
+    const { correct } = result;
+    locked.current = result.locked;
     setRound((r) => ({ ...r, answer: { id, correct } }));
     setScore((s) => ({ total: s.total + 1, correct: s.correct + Number(correct) }));
     updateProgress(recordAnswer(progress, round.question.targetId, correct));
@@ -779,7 +782,7 @@ function StudyContent() {
       if (!r) return;
       const n = Number(e.key);
       if (!r.answer && n >= 1 && n <= r.question.options.length) { e.preventDefault(); pick(r.question.options[n - 1].id); }
-      else if (r.answer && e.key === 'Enter' && e.target?.tagName !== 'BUTTON' && e.target?.tagName !== 'A') { e.preventDefault(); next(); }
+      else if (r.answer && (r.question.mode !== 'find' || r.answer.correct) && e.key === 'Enter' && e.target?.tagName !== 'BUTTON' && e.target?.tagName !== 'A') { e.preventDefault(); next(); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -802,12 +805,12 @@ function StudyContent() {
 
   return (
     <>
-      <PageIntro title="Kuis anatomi" eyebrow="ACTIVE RECALL, LANGSUNG DI 3D" description="Latih nama, sistem, dan regio dengan tubuh di depan mata." />
+      <PageIntro title="Kuis anatomi" eyebrow="ACTIVE RECALL, LANGSUNG DI 3D" description="Kenali struktur yang disorot atau temukan sendiri pada model 3D." />
       {!round ? (
         <section className="library-quiz-setup">
           {mascots && (
             <MascotTip mascot="kori" mood="talk" size={64} className="library-setup-tip">
-              Pilih regio dulu, lalu sistemnya. Aku sorot strukturnya dengan garis cahaya di model 3D, dan pilihan jawabannya sejenis, jadi harus benar-benar kenal.
+              Pilih regio dan sistem, lalu cara bermain. Kenali struktur yang disorot atau cari sendiri di model dengan kontrol sembunyikan dan tampilkan kembali.
             </MascotTip>
           )}
           <div className="library-setup-step">
@@ -886,19 +889,22 @@ function StudyContent() {
         <div className="library-session-bar">
           <div>
             <strong>{regionName(region)} / {systemName(system) || 'Semua sistem'}</strong>
-            <span>{activeMode?.name} · Benar {score.correct} dari {score.total}{score.total ? ` (${accuracy}%)` : ''}</span>
+            <span>{activeMode?.name} · Benar {score.correct} dari {score.total} percobaan{score.total ? ` (${accuracy}%)` : ''}</span>
           </div>
           <div className="library-session-meter" aria-hidden><span style={{ width: accuracy + '%' }} /></div>
-          <button className="btn-secondary btn-sm" onClick={() => setRound(null)}>Ubah area belajar</button>
+          <button className="btn-secondary btn-sm" onClick={() => { setRound(null); serial.current = 0; setScore({ correct: 0, total: 0 }); }}>Mulai ulang / ubah area</button>
         </div>
       )}
       {error && <p role="alert" className="anatomy-warning">{error}</p>}
       {round && (
         <div className="library-quiz-layout" ref={quizTop}>
           <div className="library-quiz-viewer">
+            <div className="library-model-prompt"><strong>{round.question.prompt}</strong>{mode === 'find' && round.answer && <span role="status">{round.answer.correct ? 'Benar! Lanjutkan ke soal berikutnya.' : 'Belum tepat. Coba lagi tanpa membuka lokasi jawaban.'}</span>}</div>
             <LibraryViewer
               structureId={round.question.targetId}
-              mode={mode === 'find' && round.answer ? 'identify' : mode}
+              mode={mode}
+              region={region}
+              system={system}
               requestKey={round.key}
               onPick={answer}
               onReady={(ready) => setRound((r) => (r?.key === round.key ? { ...r, ready } : r))}
@@ -906,10 +912,10 @@ function StudyContent() {
             <p>Seret untuk memutar · Gulir/cubit untuk zoom · Shift + seret untuk menggeser</p>
           </div>
           <section className="library-question">
-            <p className="library-eyebrow">SOAL {score.total + (round.answer ? 0 : 1)} · {activeMode?.name}</p>
+            <p className="library-eyebrow">SOAL {round.key} · {activeMode?.name}</p>
             <h2>{round.question.prompt}</h2>
             {mode === 'find' ? (
-              <p className="meta">Klik satu struktur pada model untuk menjawab. Struktur lain di kelompok yang sama tetap terlihat.</p>
+              <p className="meta">Tap struktur untuk membuka kontrol. Sembunyikan penghalang, lalu tekan “Pilih sebagai jawaban” saat yakin. “Tampilkan semua” mengembalikan struktur tersembunyi.</p>
             ) : (
               <div className="library-answer-options">
                 {round.question.options.map((o, i) => (
@@ -937,13 +943,13 @@ function StudyContent() {
                   title={round.answer.correct ? 'Benar, mantap!' : 'Belum tepat, santai saja.'}
                 >
                   {chosenLabel && <p>Kamu memilih <b>{chosenLabel}</b>.</p>}
-                  <p>Jawabannya <b>{target.name}</b>{mode === 'find' ? ', kini ditampilkan di model.' : '.'}</p>
+                  {mode === 'find' && !round.answer.correct ? <p>Belum tepat. Cari lagi pada model; lokasi jawaban tetap dirahasiakan.</p> : <p>Jawabannya <b>{target.name}</b>{mode === 'find' ? ', kini ditampilkan di model.' : '.'}</p>}
                 </MascotTip>
-                <span>{systemName(target.system)} · {target.regions.map(regionName).join(', ')}</span>
-                <div className="library-feedback-actions">
+                {(mode !== 'find' || round.answer.correct) && <span>{systemName(target.system)} · {target.regions.map(regionName).join(', ')}</span>}
+                {(mode !== 'find' || round.answer.correct) && <div className="library-feedback-actions">
                   <button className="btn-primary" onClick={nextQuestion} autoFocus>Soal berikutnya <ArrowRight size={16} /></button>
                   <Link target="_blank" to={structureHref(target.id)} rel="noreferrer">Baca tentang struktur ini ↗</Link>
-                </div>
+                </div>}
               </div>
             )}
             <p className="library-question-note">

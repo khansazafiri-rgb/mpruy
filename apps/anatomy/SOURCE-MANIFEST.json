@@ -2918,7 +2918,7 @@
     "src/assets/javascript.svg": "5c16f64d7e77fb23372f24dc8c93688209aaab1b1cf7a3d0a278ed2500ebdd4e",
     "src/assets/vite.svg": "5be21acd42eb7b896e517f4e0f0f11eb5c5d9e54fbbcebe9453f033008fcca6f",
     "src/atlas/catalog.js": "2834c7ef851b6c4728c966a104e12fa7f3032a1271fd55421599e2ae70e75b86",
-    "src/atlas/engine.js": "e5093d87216f63e451e017640b2c32082c74a7ac82bc8da4c76c18e70cecc4bc",
+    "src/atlas/engine.js": "50ed8c4f07540c7bff89d92b505706f998c6b8973ee5b87c0539ee99fd74626e",
     "src/atlas/framing.js": "348fecea3504a96767a84b8e63377d2e30d8dc3ab50827c3a53bf9ae65e49c88",
     "src/atlas/ui.js": "c1956e5e89f630d465a56d2023b36b559f245f8f05991c471241879368916151",
     "src/data/anatomy.js": "42dd482a85a56e47c9faf26b25921161562758ae526cfa4e8adacc9d36429a27",
@@ -2927,10 +2927,10 @@
     "src/data/translations.js": "4d75d4287aa17d9dbe965f6c1f3e6426d1ac8172d288a62e4b8863c7675e166e",
     "src/integration/annotatorProtocol.js": "ea4595d054bdc825b871dc07b34bbe6db772fae73fd089e97d59909dfbde37b7",
     "src/integration/host.js": "8513b0a360728a98c565c45699060e4b68f3d4c8346937b7384c03046c4ca643",
-    "src/library/bridge.js": "396bf5b8aa3e520c914e3a40446acfc0679d2aeecd3b4f74ce116111582d88c7",
-    "src/library/protocol.js": "eb37b3eed9c89615de6a02fc30356ff66413296c611362d732f4ea5b0f119589",
-    "src/library/selection.js": "f296e5186be7f23e02a7261af4859e7d0a9dbf23ace5abf17d57ce6b6c3549af",
-    "src/library/study.css": "548de4ee07af3221902ca4062e3738a1a7de8e4d512f4d05caa0bfd90d67dd9d",
+    "src/library/bridge.js": "6ab1c7557adff77dc4fcba67275bec05162a930026e3ea057ed5e78224f1e719",
+    "src/library/protocol.js": "093a6d37f5341eee3fa406aa80f72315db739adeec3d6dd9644b1c4f2a21b7e5",
+    "src/library/selection.js": "a293f5b36e6d4a3061c4f2613335ba288dfc94b1872dbe6231a117bb26890c88",
+    "src/library/study.css": "3e28385acf917ee0d671855188973b472ec1c9fed38ac99bdc24d598b1c9ff27",
     "src/main.js": "b5df4a58acaffac0f0dddace3623b5d94d9e2547483be5595b91059669f01184",
     "src/state/store.js": "5fd8e70694de89d6b1d09e62cbb181c170afeaa2b8486935698b112093cd5c82",
     "src/state/urlState.js": "edcb418b92214700a66db2bacd78614d1e2631308467f8814a063d7abd5dfef2",
@@ -2948,16 +2948,16 @@
     "src/viewer/camera.js": "0a527aca97ffa2cbcf3c10e0f935a243ec74a3cc6a2d25457057f0d443388880",
     "src/viewer/createScene.js": "b4844e7cc1059d99b9c6212fde2e73f130c0bb34b120d63f2cdc222a42220acf",
     "src/viewer/loadModel.js": "bcdd5f3a1c0f73ee84e28e26f15b13e09525435cc4de6eba3b7e8fdf1df89b07",
-    "src/viewer/selection.js": "7c8572c43d87c60c92fd0b34de3cba8e9a855761b39d6a0988380cd5cb2af77a",
+    "src/viewer/selection.js": "cc4528f9be6f921a0ed342257ea6e8ab20e5f74fc21e127114969ea6778aa0b5",
     "src/viewer/selectionGlow.js": "30d1f34977fbc2352ee15aa3a0746b25792066c4cc45c9b5bd4a0d902d29ded1",
     "src/viewer/visibility.js": "eb783cc6af8a9beac015bb703cae895674d2e76e7d3d1ee38d73191dfb5fe9bc",
     "STATUS.md": "6d7e82b5beb14bea65bf806cfee10575c819298eb641d45ebd9bf9c1bd171875",
     "tests/anatomy.test.js": "3420fb7f1d892f3a7a6a9fe65732f213fd9ea7664ccc44fc0c970af9e46a898c",
     "tests/annotations.test.js": "f903eac052ea1c1bcd57de5cefb60ea59afe5d32a10d3a5080eb0451be3837b4",
-    "tests/atlas-engine.test.js": "a4a62fd48d146667440835da301d85da2ba0bfc0513fa922843f809faae37381",
+    "tests/atlas-engine.test.js": "b292196cdfb45b3889097aecc424702f3ad931c2774cd5233be69fa960f27f1f",
     "tests/atlas.test.js": "670eebee191fa83dfc9dbfc8045945919e8b764bedca3968cc5185713adb7cbb",
     "tests/host.test.js": "101ab05fe3afd87de061f038d69b254bd4a1dd632d6d82dd6fc11b123822d0c6",
-    "tests/library.test.js": "77e9ea8baa7511f719903a7adeda587960a70026a07179828f1db76de0bdec06",
+    "tests/library.test.js": "51877ed0566f20d50955c4634e4295d18bbf1eebf79703887056dbc56603491c",
     "tests/search.test.js": "1903efff5ec1a044906dd298614b0a02e99cfd9edb862feed0a220602623584c",
     "tests/startup.test.js": "d80763fbedcf9465bc96747fd0fa3b95a56ea6ade6df1049e4b1035dd58ba3be",
     "tests/visual-learning.test.js": "6f7bf9bfef4916fd5e1a58f8dae3297f4c27811751c9c022df0b195b7a27901e",
@@ -2972,6 +2972,18 @@
     "tools/thumbnail-export.js": "8c3c4c85129f8785324f513aec2387cbadc929468b4cdff39bc3ce16ebb97946",
     "tools/thumbnail-server.mjs": "9fd1171c0f555231b23ca766144c8b509555765ad058285275eda0d60f43515d",
     "vite.config.js": "5ea428fdfff54f6f4b0e77854ba28082cf1d765bd9513bf8af5762ef39640966",
-    "vite.thumbnails.config.js": "f80ac88a409c3f48ef28fe54e587b25fe2683e9fe8dae00b81922a597b30a154"
+    "vite.thumbnails.config.js": "f80ac88a409c3f48ef28fe54e587b25fe2683e9fe8dae00b81922a597b30a154",
+    "src/library/session.js": "3c55881f4b509bf9300444fadf1d650eb9ee7fc0e9d095444658edf1fa831af7",
+    "src/viewer/tap.js": "0bcc95ff1cc6c4fae2b988758639b5de923ebc45835db5445b91f997a820eec3",
+    "tests/study-session.test.js": "30e721a82f1f535d544036e4a9d5037e9ab3a04d9fbc103e4dd0b53f3ed63076",
+    "tests/tap.test.js": "4ace66d696b9de3a7fd1a9648bd983d85979e5da66767bdf350a1f5d9b7c6859"
+  },
+  "anatomyQuiz": {
+    "modes": [
+      "identify",
+      "find"
+    ],
+    "interaction": "explicit-answer",
+    "baseCommit": "2d9f2ee4633ab001d171ac228c0fb5b8393ca034"
   }
 }
