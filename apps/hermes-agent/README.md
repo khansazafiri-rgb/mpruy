@@ -7,6 +7,7 @@ Worker admin terpisah dari server web MEDCOEL. Tahap fondasi ini menangani:
 - setiap notifikasi memuat perintah pengumpulan hasil dengan kode pengajuan sudah terisi;
 - allowlist Telegram admin;
 - `/terima`, `/claim`, `/fix`, `/show`, `/queue`;
+- `/jenis`, `/matkul`, `/pindah` (ubah jenis isi soal/materi dan/atau mata kuliah pengajuan);
 - menerima JSON pengajuan dari admin lewat Telegram, sebagai file atau ditempel langsung sebagai teks;
 - dry-run wajib dengan `skipInvalid: false`;
 - persetujuan Telegram terikat SHA-256 dari ID pengajuan + chapter ID + isi JSON;
@@ -109,6 +110,31 @@ Soal baru bisa diimpor setelah status **Antre**. Dari Telegram:
 ```
 
 Untuk menandai sedang dikerjakan: `/claim MC261023-ABCD`.
+
+### Mengubah tujuan pengajuan (jenis isi / mata kuliah)
+
+Pengaju kadang salah memilih: PDF PPT materi tercatat sebagai soal (pengajuan lama dibuat sebelum ada pilihan isi PDF, jadi otomatis soal), atau mata kuliahnya keliru. Admin bisa membetulkannya langsung di Telegram. **Yang tidak disebut tidak berubah**; kampus, cakupan, bahasa, berkas PDF, dan status tetap.
+
+| Perintah | Yang berubah | Yang tetap |
+| --- | --- | --- |
+| `/jenis KODE materi` atau `/jenis KODE soal` | jenis isi PDF | mata kuliah |
+| `/matkul KODE NAMA MATA KULIAH` | mata kuliah | jenis isi |
+| `/pindah KODE materi NAMA MATA KULIAH` (atau `soal`) | jenis isi dan mata kuliah | - |
+| `/matkul` atau `/matkul kata` | tidak mengubah apa pun, hanya menampilkan daftar mata kuliah (disaring kata) | - |
+
+```text
+/jenis MC261023-ABCD materi
+/matkul MC261023-ABCD Ilmu Penyakit Dalam
+/pindah MC261023-ABCD soal Anatomi
+/jenis MC261023-ABCD MC261024-EFGH materi      (beberapa kode sekaligus)
+```
+
+- Nama mata kuliah tidak peka huruf besar-kecil, boleh slug, dan boleh sebagian asal cocok ke **satu** mata kuliah. Kalau cocok ke beberapa, server menolak dan menyebut kandidatnya; tidak ada yang diubah. Mata kuliah yang disembunyikan tidak bisa dipakai.
+- Hanya untuk pengajuan yang belum diimpor: Menunggu konfirmasi, Antre, Diproses, Perlu perbaikan. Yang Selesai atau dibatalkan ditolak.
+- Setelah diubah, rencana impor lama untuk pengajuan itu (dari `/put`) dibatalkan, dan `/confirm` juga menolak rencana yang jenis atau mata kuliahnya sudah berbeda dari kondisi server. Kirim JSON lagi dengan `/put KODE` sesuai jenis baru (JSON slide untuk materi, JSON soal untuk soal).
+- Salah ubah? Kirim perintah yang sama dengan nilai semula.
+- `/change` berbeda: hanya mengatur ke mana soal masuk (Drilling atau BAB) pada rencana impor yang sedang aktif.
+- Memanggil endpoint agen `POST /api/medcoel/agent/submissions/{id atau kode}/retarget` (lihat `docs/HERMES_AGENT.md`). **Server PocketBase harus dijalankan ulang** setelah pembaruan supaya endpoint ini aktif (`--hooksWatch=false`).
 
 ### Mengirim JSON lewat teks (tanpa file)
 

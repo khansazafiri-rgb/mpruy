@@ -287,5 +287,137 @@ await langkah('soal Drilling dikelompokkan per bagian bernama judul PDF; latihan
   assert.ok(hub2.sets.some((s) => s.title === 'Latihan Tambahan' && s.questionCount === 1));
 });
 
+
+console.log('Alihkan tujuan pengajuan (Hermes: /jenis, /matkul, /pindah)');
+const alt = subjects.filter((x) => x.id !== mk.id);
+const retarget = (id, body, token = agent.token, expect = 200) => call('POST', `/api/medcoel/agent/submissions/${id}/retarget`, body, token, expect);
+const agentGet = async (id) => (await call('GET', `/api/medcoel/agent/submissions/${id}`, undefined, agent.token, 200)).data;
+
+await langkah('hanya jenis isi: soal -> materi, mata kuliah tetap; jalur impor ikut berpindah', async () => {
+  const s = await kirim(userC, { kind: 'soal', names: ['Ini sebenarnya PPT.pdf'] });
+  assert.equal(s.contentKind, 'soal');
+  const r = (await retarget(s.code, { contentKind: 'materi' })).data;
+  assert.equal(r.contentKind, 'materi');
+  assert.equal(r.kindLabel, 'PPT materi');
+  assert.equal(r.subject.id, mk.id);
+  assert.deepEqual(r.retarget.contentKind, { from: 'soal', to: 'materi' });
+  assert.equal(r.retarget.subject.from.id, r.retarget.subject.to.id);
+  assert.equal(r.retarget.changed, true);
+  assert.equal(r.status, 'antre');
+  assert.equal(r.restriction, 'all');
+  assert.equal((await agentGet(s.id)).contentKind, 'materi');
+  const salah = await call('POST', `/api/medcoel/agent/submissions/${s.id}/import`, { questions: [] }, agent.token, 400);
+  assert.match(salah.data.message, /PPT materi/);
+  const dry = (await call('POST', `/api/medcoel/agent/submissions/${s.id}/materi-import`, { deck: deck('Setelah diubah'), dryRun: true }, agent.token, 200)).data;
+  assert.equal(dry.slideCount, 2);
+  const mine = (await call('GET', '/api/medcoel/submissions/mine', undefined, userC.token, 200)).data.items.find((x) => x.id === s.id);
+  assert.equal(mine.contentKind, 'materi');
+  assert.equal(mine.hasKey, false);
+});
+
+await langkah('hanya mata kuliah: nama lengkap, slug, dan huruf besar-kecil; jenis isi tetap', async () => {
+  const s = await kirim(userC, { kind: 'materi', names: ['Matkul keliru.pdf'] });
+  const a = (await retarget(s.id, { subject: alt[0].name.toUpperCase() })).data;
+  assert.equal(a.subject.id, alt[0].id);
+  assert.equal(a.contentKind, 'materi');
+  assert.deepEqual(a.retarget.contentKind, { from: 'materi', to: 'materi' });
+  assert.equal(a.retarget.subject.from.id, mk.id);
+  const b = (await retarget(s.code, { subject: alt[1].slug })).data;
+  assert.equal(b.subject.id, alt[1].id);
+  assert.equal(b.subject.name, alt[1].name);
+  assert.equal((await agentGet(s.id)).subject.id, alt[1].id);
+  const mine = (await call('GET', '/api/medcoel/submissions/mine', undefined, userC.token, 200)).data.items.find((x) => x.id === s.id);
+  assert.equal(mine.subject, alt[1].id);
+  assert.equal(mine.subjectName, alt[1].name);
+});
+
+await langkah('jenis isi dan mata kuliah sekaligus; kampus, cakupan, bahasa, berkas tidak berubah', async () => {
+  const s = await kirim(userA, { kind: 'materi', scope: 'campus', names: ['A.pdf', 'B.pdf'] });
+  const r = (await retarget(s.id, { contentKind: 'soal', subject: alt[2].name })).data;
+  assert.equal(r.contentKind, 'soal');
+  assert.equal(r.subject.id, alt[2].id);
+  assert.equal(r.restriction, 'campus');
+  assert.equal(r.campus.id, kampusA.id);
+  assert.equal(r.language, s.language);
+  assert.equal(r.pdfCount, 2);
+  assert.deepEqual(r.files.map((f) => f.title), ['A', 'B']);
+  assert.equal(r.status, 'antre');
+  assert.equal(r.retarget.changed, true);
+  // Dan kembali lagi (salah ubah).
+  const back = (await retarget(s.id, { contentKind: 'materi', subject: mk.id })).data;
+  assert.equal(back.contentKind, 'materi');
+  assert.equal(back.subject.id, mk.id);
+});
+
+await langkah('tanpa perubahan nyata: changed=false dan data tetap', async () => {
+  const s = await kirim(userC, { kind: 'soal', names: ['Sama.pdf'] });
+  const r = (await retarget(s.id, { contentKind: 'soal', subject: mk.slug })).data;
+  assert.equal(r.retarget.changed, false);
+  assert.equal(r.contentKind, 'soal');
+  assert.equal(r.subject.id, mk.id);
+});
+
+await langkah('masukan salah ditolak dengan pesan yang jelas', async () => {
+  const s = await kirim(userC, { kind: 'soal', names: ['Salah.pdf'] });
+  assert.match((await retarget(s.id, {}, agent.token, 400)).data.message, /jenis isi baru .* dan\/atau mata kuliah/);
+  assert.match((await retarget(s.id, { contentKind: 'drilling' }, agent.token, 400)).data.message, /'soal' atau 'materi'/);
+  assert.match((await retarget(s.id, { subject: 'Mata Kuliah Tidak Ada 12345' }, agent.token, 400)).data.message, /tidak ditemukan.*\/matkul/);
+  // Nama sebagian yang cocok ke beberapa mata kuliah ditolak dan menyebut kandidatnya.
+  const first = new Map();
+  for (const x of subjects) { const w = x.name.split(' ')[0].toLowerCase(); first.set(w, [...(first.get(w) || []), x.name]); }
+  const kata = [...first.entries()].find(([, names]) => names.length >= 2);
+  if (kata) {
+    const amb = (await retarget(s.id, { subject: kata[0] }, agent.token, 400)).data;
+    assert.match(amb.message, /cocok dengan beberapa mata kuliah/);
+    assert.ok(kata[1].slice(0, 2).every((n) => amb.message.includes(n)));
+  }
+  // Setelah semua penolakan, pengajuan tidak berubah.
+  const now = await agentGet(s.id);
+  assert.equal(now.contentKind, 'soal');
+  assert.equal(now.subject.id, mk.id);
+});
+
+await langkah('hanya agen/admin; pengajuan draf dan kode asing tidak ditemukan', async () => {
+  const s = await kirim(userC, { kind: 'soal', names: ['Izin.pdf'] });
+  await retarget(s.id, { contentKind: 'materi' }, userC.token, 403);
+  await retarget(s.id, { contentKind: 'materi' }, userB.token, 403);
+  assert.equal((await agentGet(s.id)).contentKind, 'soal');
+  await retarget('MC000000-ZZZZ', { contentKind: 'materi' }, agent.token, 404);
+  const draf = (await call('POST', '/api/medcoel/submissions', { subject: mk.id, hasKey: false, language: 'id', scope: 'all', pdfCount: 1 }, userB.token, 200)).data;
+  assert.equal(draf.status, 'draft');
+  await retarget(draf.id, { contentKind: 'materi' }, agent.token, 404);
+});
+
+await langkah('boleh saat Menunggu konfirmasi, Diproses, dan Perlu perbaikan; ditolak setelah dibatalkan', async () => {
+  const w = (await call('POST', '/api/medcoel/submissions', { subject: mk.id, hasKey: false, language: 'id', scope: 'all', pdfCount: 1 }, userB.token, 200)).data;
+  await upload(w.id, userB.token, 'Menunggu.pdf');
+  await call('POST', `/api/medcoel/submissions/${w.id}/send`, { agreement: true }, userB.token, 200);
+  const r1 = (await retarget(w.id, { contentKind: 'materi' })).data;
+  assert.equal(r1.status, 'menunggu_konfirmasi');
+  assert.equal(r1.contentKind, 'materi');
+  await call('POST', `/api/medcoel/admin/submissions/${w.id}/status`, { status: 'antre' }, admin.token, 200);
+  await call('POST', `/api/medcoel/agent/submissions/${w.id}/status`, { status: 'diproses' }, agent.token, 200);
+  const r2 = (await retarget(w.id, { contentKind: 'soal' })).data;
+  assert.equal(r2.status, 'diproses');
+  assert.equal(r2.contentKind, 'soal');
+  await call('POST', `/api/medcoel/agent/submissions/${w.id}/status`, { status: 'perlu_perbaikan', note: 'PDF kurang jelas' }, agent.token, 200);
+  const r3 = (await retarget(w.id, { subject: alt[0].slug })).data;
+  assert.equal(r3.status, 'perlu_perbaikan');
+  assert.equal(r3.subject.id, alt[0].id);
+  await call('POST', `/api/medcoel/admin/submissions/${w.id}/status`, { status: 'dibatalkan', note: 'Dibatalkan admin.' }, admin.token, 200);
+  const tolak = await retarget(w.id, { contentKind: 'materi' }, agent.token, 400);
+  assert.match(tolak.data.message, /Dibatalkan tidak bisa dialihkan/);
+  assert.equal((await agentGet(w.id)).contentKind, 'soal');
+});
+
+await langkah('pengajuan yang sudah Selesai (sudah diimpor) tidak bisa dialihkan', async () => {
+  const s = await kirim(userC, { kind: 'soal', names: ['Selesai.pdf'] });
+  await call('POST', `/api/medcoel/agent/submissions/${s.id}/drilling-import`, { questions: [{ type: 'A', text: 'Soal alih ' + RUN + '?', options: ['a', { text: 'b', correct: true }] }] }, agent.token, 200);
+  assert.equal((await agentGet(s.id)).status, 'selesai');
+  const tolak = await retarget(s.id, { contentKind: 'materi' }, agent.token, 400);
+  assert.match(tolak.data.message, /Selesai tidak bisa dialihkan/);
+  assert.equal((await agentGet(s.id)).contentKind, 'soal');
+});
+
 await drilling(false);
 console.log(`decks-api.test: ${lulus} langkah lulus${process.exitCode ? ', ADA YANG GAGAL' : ''}`);

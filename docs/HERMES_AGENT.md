@@ -70,6 +70,28 @@ Saat mengajukan, pengaju memilih **isi PDF**: Soal (bawaan) atau **PPT materi**.
 - **Judul di web diambil dari judul PDF** pengajuan (materi maupun bagian soal Drilling). Kontrak pengajuan memuat per berkas `n` (nomor PDF, sama dengan `/files KODE n`) dan `title` (judul dari nama berkas). Satu PDF: otomatis. Beberapa PDF: `/put KODE 2` (atau `#2`, `pdf 2`), atau nama file JSON `KODE_PDF-02-dari-3_nama.json`; Hermes mengirim `pdf` ke server dan kartu rencana menampilkan judulnya. Endpoint `/import`, `/drilling-import`, dan `/materi-import` menerima `pdf` dan `title` (eksplisit, mengalahkan judul PDF). Lihat `docs/MATERI_SLIDE.md`.
 - Materi tambahan dari admin tanpa pengajuan: `POST /api/medcoel/agent/materi-import` `{ subject, scope, campuses, ... }`.
 
+## Mengalihkan tujuan pengajuan (jenis isi / mata kuliah)
+
+`POST /api/medcoel/agent/submissions/{id atau kode}/retarget`
+
+```json
+{ "contentKind": "materi", "subject": "Ilmu Penyakit Dalam" }
+```
+
+Kedua field opsional, tetapi minimal satu harus ada. `contentKind` adalah `"soal"` atau `"materi"`. `subject` boleh id, slug, atau nama (tidak peka huruf besar-kecil; kecocokan sebagian diterima bila hanya satu mata kuliah yang cocok, kalau beberapa maka 400 dengan daftar kandidat; mata kuliah yang disembunyikan ditolak). Yang tidak disebut tidak berubah, begitu juga kampus, cakupan, bahasa, berkas, dan status. Saat jadi materi, penanda `hasKey` dibersihkan.
+
+Hanya untuk pengajuan berstatus `menunggu_konfirmasi`, `antre`, `diproses`, atau `perlu_perbaikan`. `selesai` (sudah diimpor), `dibatalkan`, `kedaluwarsa` memberi 400; draf atau kode tak dikenal memberi 404; pengguna biasa 403.
+
+Balasan: kontrak pengajuan (sama dengan `GET`) ditambah
+
+```json
+{ "retarget": { "changed": true,
+    "contentKind": { "from": "soal", "to": "materi" },
+    "subject": { "from": { "id": "...", "name": "Anatomi" }, "to": { "id": "...", "name": "Ilmu Penyakit Dalam" } } } }
+```
+
+`changed: false` bila tidak ada yang benar-benar berbeda (tidak ada penyimpanan). Jalur impor mengikuti jenis baru: pengajuan `materi` lewat `/materi-import`, pengajuan `soal` lewat `/import` atau `/drilling-import`. Di Telegram: `/jenis`, `/matkul`, `/pindah` (lihat `apps/hermes-agent/README.md`).
+
 ## Mengubah status
 
 `POST /api/medcoel/agent/submissions/{id atau kode}/status`

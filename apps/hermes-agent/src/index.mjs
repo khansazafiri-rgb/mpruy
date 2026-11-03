@@ -8,6 +8,8 @@ import { TelegramClient, escapeHtml } from './telegram.mjs';
 import { DriveClient } from './drive.mjs';
 import { pickFiles } from './files.mjs';
 import { ImportPlanFlow } from './import-plan.mjs';
+import { RetargetFlow } from './retarget.mjs';
+import { buildHelp } from './help.mjs';
 import { newSubmissionMessage, queueCard, compactSubmission, howToSubmit, BOT_COMMANDS, statusLabel, kindOf } from './notify.mjs';
 
 const config = loadConfig();
@@ -23,6 +25,7 @@ const pdfQueue = new PdfQueue({ state, drive, telegram, medcoel, config });
 await pdfQueue.recover();
 
 const importPlans = new ImportPlanFlow({ config, medcoel, telegram, state });
+const retarget = new RetargetFlow({ medcoel, telegram, importPlans });
 let stopping = false;
 
 process.on('SIGTERM', () => { stopping = true; });
@@ -33,6 +36,7 @@ await medcoel.login();
 console.log('[Hermes] MEDCOEL agent login OK');
 console.log(`[Hermes] Drive PDF relay ${drive.configured ? 'enabled' : 'disabled'}`);
 console.log('[Hermes] Import Plan flow enabled (file dan tempel teks)');
+console.log('[Hermes] Ubah tujuan pengajuan enabled (/jenis, /matkul, /pindah)');
 console.log(`[Hermes] Notifikasi pengajuan Menunggu konfirmasi ${config.notifyWaiting ? 'aktif' : 'nonaktif'}`);
 telegram.setMyCommands(BOT_COMMANDS).catch((err) => console.error('[Hermes] setMyCommands:', safeError(err, config)));
 
@@ -124,6 +128,7 @@ async function handleUpdate(update) {
   const text = String(msg.text || msg.caption || '').trim();
 
   if (await importPlans.handleMessage(msg, text)) return;
+  if (await retarget.handleMessage(msg, text)) return;
 
   if (msg.document) {
     return telegram.sendMessage(msg.chat.id,
@@ -157,19 +162,8 @@ async function handleUpdate(update) {
 }
 
 async function help(chatId) {
-  return telegram.sendMessage(chatId,
-    '<b>MEDCOEL Hermes Agent</b>\n\n'
-    + '/queue — lihat pengajuan berstatus Antre\n'
-    + '/show KODE — lihat detail pengajuan\n'
-    + '/files KODE — antrekan PDF yang belum terkonfirmasi terkirim\n'
-    + '/retryfiles KODE [nomor] — ulangi file gagal setelah memeriksa chat\n'
-    + '/files KODE 3 — ulangi PDF nomor 3 yang gagal pasti\n'
-    + '/terima KODE — terima pengajuan yang Menunggu konfirmasi (jadi Antre)\n'
-    + '/claim KODE — ubah menjadi Diproses\n'
-    + '/fix KODE alasan — tandai Perlu perbaikan\n\n'
-    + importPlans.helpText()
-    + '\n\n<b>Catatan:</b> scope/kampus selalu dikunci dari submission MEDCOEL; JSON tidak boleh mengubahnya.'
-  );
+  const parts = buildHelp({ retargetHelp: retarget.helpText(), importHelp: importPlans.helpText() });
+  for (const part of parts) await telegram.sendMessage(chatId, part);
 }
 
 async function showQueue(chatId) {

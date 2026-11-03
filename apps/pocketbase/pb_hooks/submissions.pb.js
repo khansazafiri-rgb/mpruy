@@ -17,6 +17,7 @@
 //   GET  /api/medcoel/agent/submissions?status=antre
 //   GET  /api/medcoel/agent/submissions/{id}
 //   POST /api/medcoel/agent/submissions/{id}/status
+//   POST /api/medcoel/agent/submissions/{id}/retarget   (ubah jenis isi soal/materi dan/atau mata kuliah)
 //   POST /api/medcoel/agent/submissions/{id}/import
 //   POST /api/medcoel/agent/import                 (drilling: true = masuk Drilling mata kuliah)
 //   POST /api/medcoel/agent/submissions/{id}/drilling-import   (impor pengajuan langsung ke Drilling)
@@ -260,6 +261,20 @@ routerAdd("POST", "/api/medcoel/agent/submissions/{id}/status", (e) => {
   }
   subs.setStatus(e.app, sub, status, b.note, "agent");
   return e.json(200, subs.contract(e.app, sub, agent));
+});
+
+// Alihkan tujuan pengajuan: { contentKind?: "soal" | "materi", subject?: id | slug | nama }. Yang tidak disebut tidak
+// berubah. Dipakai Hermes (/jenis, /matkul, /pindah). Hanya untuk pengajuan yang belum diimpor.
+routerAdd("POST", "/api/medcoel/agent/submissions/{id}/retarget", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const subs = require(`${__hooks}/lib/submissions.js`);
+  const agent = u.requireAgent(e);
+  const b = u.body(e);
+  let sub;
+  try { sub = e.app.findFirstRecordByFilter("submissions", "id = {:x} || code = {:x}", { x: e.request.pathValue("id") }); } catch (_) { sub = null; }
+  if (!sub || sub.getString("status") === "draft") throw new NotFoundError("Pengajuan tidak ditemukan.");
+  const result = subs.retarget(e.app, sub, { contentKind: b.contentKind, subject: b.subject });
+  return e.json(200, Object.assign(subs.contract(e.app, sub, agent), { retarget: result }));
 });
 
 routerAdd("POST", "/api/medcoel/agent/submissions/{id}/import", (e) => {

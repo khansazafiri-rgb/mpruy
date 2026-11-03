@@ -30,6 +30,7 @@ export class ImportPlanFlow {
       'Untuk pengajuan <b>PPT materi</b> isinya JSON materi (slide + penjelasan); tujuannya otomatis Drilling (materi).',
       '<code>/change drilling</code> — tujuan ke section Drilling',
       '<code>/change chapter ID_BAB</code> — tujuan ke bab pada mata kuliah submission',
+      '<i>/change hanya mengatur ke mana soal masuk (Drilling atau BAB) untuk rencana yang sedang aktif. Untuk mengubah jenis isi (soal/materi) atau mata kuliah pengajuan, pakai /jenis, /matkul, atau /pindah.</i>',
       '<code>/confirm</code> — dry-run final lalu impor',
       '<code>/cancelplan</code> — batalkan rencana atau tempelan tanpa menulis database',
     ].join('\n');
@@ -257,6 +258,18 @@ export class ImportPlanFlow {
     return this.telegram.sendMessage(chatId, `✏️ Tujuan diubah.\n\n${planCard(updated)}`);
   }
 
+  // Dipanggil setelah jenis isi / mata kuliah pengajuan diubah: rencana lama memuat jenis dan sumber lama.
+  async dropPlansForSubmission(submissionId, code = '') {
+    let dropped = 0;
+    for (const plan of Object.values(this.state.data.importPlans)) {
+      const same = (submissionId && plan.submissionId === submissionId) || (code && plan.submissionCode === code);
+      if (!same) continue;
+      await this.state.deleteImportPlan(plan.chatId, plan.actorId);
+      dropped += 1;
+    }
+    return dropped;
+  }
+
   async cancel(chatId, actorId) {
     const pasting = this.sessions.delete(this.sessionKey(chatId, actorId));
     const plan = this.state.getImportPlan(chatId, actorId);
@@ -290,6 +303,16 @@ export class ImportPlanFlow {
     }
 
     const current = await this.medcoel.getSubmission(plan.submissionId);
+    // Jenis isi atau mata kuliah berubah sejak rencana dibuat (lewat /jenis, /matkul, /pindah, atau web admin):
+    // rencana lama tidak boleh dipakai karena jalur impor dan kartunya mengacu ke data lama.
+    const kindChanged = kindOf(current) !== plan.contentKind;
+    const subjectChanged = Boolean(plan.source?.subjectId && current?.subject?.id && current.subject.id !== plan.source.subjectId);
+    if (kindChanged || subjectChanged) {
+      await this.state.deleteImportPlan(chatId, actorId);
+      return this.telegram.sendMessage(chatId,
+        `❌ Tujuan <b>${escapeHtml(plan.submissionCode)}</b> berubah sejak rencana dibuat (sekarang ${kindOf(current) === 'materi' ? '📚 PPT materi' : '📝 Soal'} · ${escapeHtml(current?.subject?.name || '—')}). Rencana lama dibuang; kirim JSON lagi dengan <code>/put ${escapeHtml(plan.submissionCode)}</code>.`
+      );
+    }
     if (current?.status === 'menunggu_konfirmasi') {
       return this.telegram.sendMessage(chatId,
         `⏳ <b>${escapeHtml(plan.submissionCode)}</b> masih Menunggu konfirmasi, jadi belum bisa diimpor. Kirim <code>/terima ${escapeHtml(plan.submissionCode)}</code> dulu, lalu <code>/confirm</code> lagi. Rencana impormu tetap tersimpan.`

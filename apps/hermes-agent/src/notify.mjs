@@ -17,8 +17,11 @@ export function statusLabel(status) {
 export function kindOf(sub) {
   return sub?.contentKind === 'materi' ? 'materi' : 'soal';
 }
+export function kindName(kind) {
+  return kind === 'materi' ? '📚 PPT materi' : '📝 Soal';
+}
 export function kindLabel(sub) {
-  return kindOf(sub) === 'materi' ? '📚 PPT materi' : '📝 Soal';
+  return kindName(kindOf(sub));
 }
 
 function scopeLabel(sub) {
@@ -86,6 +89,9 @@ export function newSubmissionMessage(sub, queue) {
 
 export const BOT_COMMANDS = [
   {command:'retryfiles',description:'Ulangi PDF gagal setelah memeriksa chat'},
+  { command: 'jenis', description: 'Ubah isi PDF jadi soal/materi: /jenis KODE materi' },
+  { command: 'matkul', description: 'Ganti mata kuliah: /matkul KODE NAMA (tanpa KODE = daftar)' },
+  { command: 'pindah', description: 'Ubah jenis + mata kuliah: /pindah KODE materi NAMA' },
   { command: 'queue', description: 'Daftar pengajuan yang menunggu' },
   { command: 'show', description: 'Detail pengajuan: /show KODE' },
   { command: 'files', description: 'Kirim PDF pengajuan: /files KODE' },

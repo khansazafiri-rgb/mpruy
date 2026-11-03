@@ -368,4 +368,78 @@ function agentImportDeck(e) {
   return e.json(200, result);
 }
 
-module.exports = { MAX_PDFS, LABEL, pdfTitle, titleFor, titleNeeded, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck };
+// Status yang masih boleh dialihkan tujuannya (jenis isi / mata kuliah): belum diimpor dan berkas masih ada.
+const RETARGET_STATUSES = ["menunggu_konfirmasi", "antre", "diproses", "perlu_perbaikan"];
+
+function plain(s) {
+  return String(s || "").toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+/**
+ * Cari mata kuliah dari id, slug, atau nama untuk pengalihan lewat Hermes. Besar-kecil huruf tidak berpengaruh.
+ * Cocok persis (id/slug/nama) didahulukan; kalau tidak ada, cocok sebagian pada nama/slug diterima hanya bila
+ * tunggal. Beberapa kecocokan ditolak dengan daftar kandidatnya supaya admin tidak salah memindahkan.
+ */
+function findSubjectLoose(app, ref) {
+  const raw = String(ref || "").trim();
+  const q = plain(raw);
+  if (!q) throw new BadRequestError("Sebutkan mata kuliah yang baru (nama lengkap atau slug).");
+  const rows = app.findRecordsByFilter("subjects", "id != ''", "name", 500, 0).map((r) => ({
+    rec: r,
+    id: r.id,
+    name: r.getString("name"),
+    nameKey: plain(r.getString("name")),
+    slugKey: plain(r.getString("slug")),
+    hidden: r.getBool("hidden"),
+  }));
+  let hit = rows.filter((r) => r.id === raw || r.slugKey === q || r.nameKey === q);
+  if (!hit.length) hit = rows.filter((r) => !r.hidden && (r.nameKey.indexOf(q) >= 0 || r.slugKey.indexOf(q) >= 0));
+  if (!hit.length) throw new BadRequestError("Mata kuliah '" + raw + "' tidak ditemukan. Kirim /matkul di Hermes untuk melihat daftar nama yang benar.");
+  if (hit.length > 1) {
+    throw new BadRequestError("'" + raw + "' cocok dengan beberapa mata kuliah: " + hit.slice(0, 8).map((r) => r.name).join("; ") + ". Tulis nama lengkapnya.");
+  }
+  if (hit[0].hidden) throw new BadRequestError("Mata kuliah " + hit[0].name + " sedang disembunyikan, jadi tidak bisa dipakai sebagai tujuan.");
+  return hit[0].rec;
+}
+
+/**
+ * Alihkan satu pengajuan: ganti jenis isi ("soal" | "materi") dan/atau mata kuliahnya. Yang tidak disebut tidak berubah.
+ * Kampus, cakupan, bahasa, berkas, dan status tidak disentuh. Pengajuan yang sudah diimpor (Selesai) atau ditutup
+ * tidak bisa dialihkan. Mengembalikan { changed, contentKind: {from,to}, subject: {from,to} }.
+ */
+function retarget(app, sub, change) {
+  const st = sub.getString("status");
+  if (RETARGET_STATUSES.indexOf(st) < 0) {
+    throw new BadRequestError("Pengajuan berstatus " + (LABEL[st] || st) + " tidak bisa dialihkan. Hanya pengajuan yang belum diimpor (Menunggu konfirmasi, Antre, Diproses, atau Perlu perbaikan) yang bisa diubah jenis isi atau mata kuliahnya.");
+  }
+  const askKind = change.contentKind === undefined || change.contentKind === null || String(change.contentKind).trim() === "" ? "" : String(change.contentKind).trim().toLowerCase();
+  const askSubject = change.subject === undefined || change.subject === null ? "" : String(change.subject).trim();
+  if (!askKind && !askSubject) throw new BadRequestError("Sebutkan jenis isi baru (soal atau materi) dan/atau mata kuliah yang baru.");
+  if (askKind && askKind !== "soal" && askKind !== "materi") throw new BadRequestError("Jenis isi harus 'soal' atau 'materi'.");
+
+  const oldKind = sub.getString("contentKind") === "materi" ? "materi" : "soal";
+  const oldSubjectId = sub.getString("subject");
+  let oldSubjectName = "";
+  try { oldSubjectName = app.findRecordById("subjects", oldSubjectId).getString("name"); } catch (_) {}
+
+  const newKind = askKind || oldKind;
+  const target = askSubject ? findSubjectLoose(app, askSubject) : null;
+  const newSubjectId = target ? target.id : oldSubjectId;
+  const newSubjectName = target ? target.getString("name") : oldSubjectName;
+
+  const changed = newKind !== oldKind || newSubjectId !== oldSubjectId;
+  if (changed) {
+    sub.set("contentKind", newKind);
+    // PPT materi tidak punya kunci jawaban; saat jadi materi, penanda "ada kunci" dibersihkan.
+    if (newKind === "materi") sub.set("hasKey", false);
+    sub.set("subject", newSubjectId);
+    app.save(sub);
+  }
+  return {
+    changed: changed,
+    contentKind: { from: oldKind, to: newKind },
+    subject: { from: { id: oldSubjectId, name: oldSubjectName }, to: { id: newSubjectId, name: newSubjectName } },
+  };
+}
+
+module.exports = { MAX_PDFS, LABEL, pdfTitle, titleFor, titleNeeded, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck, RETARGET_STATUSES, findSubjectLoose, retarget };
