@@ -84,6 +84,7 @@ Pakaian dipilih lewat opsi gambar `outfit`; bawaannya `harian` (tampilan kanonik
 |---|---|
 | `harian` | Sweater teal, celana navy, sepatu krem (kanonik). |
 | `demo` | Kaus lengan panjang **hitam**, celana abu tua, sepatu krem. Patch logo MEDCOEL kecil tetap di dada. Dibuat untuk video "gas air mata saat demo". |
+| `rumah` | **Pakaian rumah**: kaus oblong kuning mustard, celana training abu, sepatu krem. Patch logo tetap. Dibuat untuk video "kerokan dan masuk angin" (adegan di rumah). |
 | `jas` | **Jas dokter putih** (kerah, V-leher dengan sweater teal, lapel, kancing, saku, stetoskop) di atas badan. Panjang sampai lutut; pada duduk di balik meja, bagian bawahnya tersembunyi meja. |
 
 ```js
@@ -94,6 +95,27 @@ rakaSvg(raka('netral'), { outfit: 'demo', dark: true });  // warna diangkat sedi
 ```
 
 Menambah pakaian baru: tambahkan satu entri di `OUTFITS` (`palette` untuk warna yang diganti, `onDark` untuk latar gelap, `coat: true` bila memakai gambar jas). Wajah, rambut, proporsi, dan patch logo tidak ikut berubah. Jangan memilih warna badan yang sama dengan latar (README ini sudah mencatat teal pekat; baju demo hitam butuh latar yang lebih terang atau `dark: true` di latar gelap).
+
+
+## Tampak belakang dan bekas kerokan (opsi `back`)
+
+Untuk adegan yang memperlihatkan punggung (kerokan, cermin, pemeriksaan punggung). Badan, lengan, kaki, dan semua gerak (`lean`, `bob`, `breath`, `tilt`) sama dengan tampak depan; yang berubah: kepala hanya rambut belakang, tidak ada patch logo, kaus bisa digulung.
+
+```js
+rakaSvg(raka('netral', 'netral'), { outfit: 'rumah', back: true });                                   // punggung berkaus, kepala dari belakang
+rakaSvg(raka('kaget', 'netral'), { outfit: 'rumah', back: { lift: 1, marks: 0.9, turn: 1 } });        // kaus digulung, bekas kerokan, menoleh lewat bahu
+```
+
+| Opsi `back` | Arti |
+|---|---|
+| `lift` 0..1 | Seberapa tinggi kaus digulung (0 menutup penuh, 1 punggung terlihat dari bawah ketiak sampai pinggang). |
+| `marks` 0..1 | Intensitas garis merah bekas kerokan (lima pasang garis kiri dan kanan tulang belakang). |
+| `drawn` 0..1 | Berapa banyak garis yang sudah digambar, dari atas ke bawah (animasi kerokan). `drawnL` dan `drawnR` mengatur sisi kiri dan kanan layar sendiri-sendiri. |
+| `oil` 0..1 | Kilap minyak kerokan di punggung. |
+| `turn` 0..1 | Menoleh lewat bahu: 0 = hanya rambut belakang; 1 = garis rambut maju sehingga sebagian wajah (alis, mata, mulut mengikuti state ekspresi) terlihat di tepi kepala. Rambut selalu menempel pada kepala. |
+| `face` true | Kepala memandang lurus ke kamera (wajah seperti tampak depan) di atas badan tampak belakang. |
+
+SVG statis: `svg/raka-punggung-*.svg` (`polos`, `kerokan`, `menoleh-kaget`, `menoleh-lega`) dan `svg/raka-rumah-*.svg`. Tes: bagian akhir `raka.test.mjs`.
 
 ## Kaki, jalan, berhenti, jongkok
 

@@ -27,7 +27,7 @@ export const OUTFIT_SHEET = [
   ['jongkok', raka('khawatir', 'jongkok')],
 ];
 let nOutfit = 0;
-for (const outfit of ['demo', 'jas']) {
+for (const outfit of ['demo', 'jas', 'rumah']) {
   for (const [pose, state] of OUTFIT_SHEET) {
     const file = `raka-${outfit}-${pose}.svg`;
     fs.writeFileSync(path.join(out, file), `${rakaSvg(state, { uid: file.replace('.svg', ''), outfit })}\n`);
@@ -44,6 +44,13 @@ const extra = [
   ['raka-darurat.svg', rakaSvg(raka('bingung', null, { blood: 1 }), { uid: 'darurat' })],
   ['raka-pov-perut.svg', rakaSvg(raka('netral', 'pov_perut', { blood: 1 }), { uid: 'pov-perut', shadow: false }).replace('viewBox="0 0 400 800"', 'viewBox="30 366 340 250"')],
 ];
+// Tampak belakang (opsi back): kaus digulung, bekas kerokan, menoleh lewat bahu. Nama berkas: raka-punggung-<varian>.svg
+extra.push(
+  ['raka-punggung-polos.svg', rakaSvg(raka('netral', 'netral'), { uid: 'punggung-polos', outfit: 'rumah', back: true })],
+  ['raka-punggung-kerokan.svg', rakaSvg(raka('netral', 'netral'), { uid: 'punggung-kerokan', outfit: 'rumah', back: { lift: 1, marks: 0.9, oil: 0.6 } })],
+  ['raka-punggung-menoleh-kaget.svg', rakaSvg(raka('kaget', 'netral', { yaw: 0.35 }), { uid: 'punggung-kaget', outfit: 'rumah', back: { lift: 1, marks: 0.9, turn: 1 } })],
+  ['raka-punggung-menoleh-lega.svg', rakaSvg(raka('lega', 'netral'), { uid: 'punggung-lega', outfit: 'rumah', back: { lift: 1, marks: 0.9, turn: 1 } })],
+);
 for (const [file, svg] of extra) fs.writeFileSync(path.join(out, file), `${svg}\n`);
 
 // Kepala saja (avatar, bubble bicara, thumbnail): viewBox dipotong ke wajah.

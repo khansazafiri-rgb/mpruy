@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Kerokan sembuhkan masuk angin?</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans',sans-serif}
+.title{position:absolute;left:70px;top:412px;width:960px;font-weight:800;font-size:82px;line-height:1.06;color:#fff;letter-spacing:-.015em;text-shadow:0 7px 0 rgba(10,8,30,.4)}
+.title em{font-style:normal;color:#F8C038}
+.sub{position:absolute;left:70px;top:1346px;font-weight:800;font-size:40px;line-height:1.14;color:#CFE9FF}
+.sub b{color:#9DE0BD}
+.logo{position:absolute;left:70px;top:1408px;width:290px;filter:brightness(0) invert(1);opacity:.97}
+</style></head><body><div id="root"><svg id="art" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0"></svg>
+<div class="title">KEROKAN SEMBUHKAN<br><em>MASUK ANGIN?</em></div>
+<div class="sub">Kenapa bekasnya <b>merah</b>?</div>
+<img class="logo" src="logo-full.webp" alt="MEDCOEL"></div>
+<script type="module">
+import { raka, rakaSvg, idle } from '../../../brand/characters/raka/raka.js';
+import { cermin, bangku, koin, minyak } from './world.js';
+await document.fonts.ready;
+const g = (inner, o = {}) => `<g transform="translate(${o.x||0} ${o.y||0}) rotate(${o.r||0}) scale(${o.s||1})" opacity="${o.o??1}">${inner}</g>`;
+let s = `<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#241F45"/><stop offset=".55" stop-color="#4B3F6B"/><stop offset="1" stop-color="#6B4A63"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#bg)"/>`;
+for (let i = 0; i < 12; i++) { const x = 70 + ((i * 197) % 940), y = 200 + ((i * 331) % 1500); s += g(`<circle r="${10 + (i % 3) * 6}" fill="#F6C770" opacity=".13"/>`, { x, y }); }
+// cahaya hangat di belakang
+s += `<ellipse cx="420" cy="1050" rx="470" ry="520" fill="#F6C770" opacity=".10"/>`;
+// cermin di kanan, memantulkan punggung yang merah
+const refl = `<g transform="translate(0 0)">` + `<g transform="translate(${760 - 200 * 0.62} ${1160 - 580 * 0.62}) scale(.62)">${rakaSvg(idle(raka('kaget', 'netral', { yaw: 0.35, gazeX: 0.5 }), 0), { bare: true, shadow: false, uid: 'mr', outfit: 'rumah', back: { lift: 1, marks: 1, turn: 1, oil: 0.6 } })}</g></g>`;
+s += cermin(650, 680, 300, 580, refl, 0.4, 0.0);
+// Raka duduk di bangku, kaus digulung, menoleh ke cermin dengan wajah penasaran
+const st = idle(raka('berpikir', 'netral', { yaw: 0.5, gazeX: 0.8, gazeY: -0.2, tilt: 4, browL: { y: -9, rot: 14 }, browR: { y: -3, rot: -8 }, mouth: { w: 12, up: 3, lo: 8 } }), 0.6);
+const sc = 1.28, X = 380, BASE = 1290;
+s += bangku(X, BASE + 12, 360);
+s += `<clipPath id="cpc"><rect x="0" y="0" width="1080" height="${BASE + 14}"/></clipPath><g clip-path="url(#cpc)"><g transform="translate(${X - 200 * sc} ${BASE - 580 * sc}) scale(${sc})">${rakaSvg(st, { bare: true, shadow: false, uid: 'rkc', outfit: 'rumah', back: { lift: 1, marks: 0.95, turn: 0.95, oil: 0.8 } })}</g></g>`;
+// tanda tanya penasaran
+[[170, 760, -14, 120], [585, 715, 12, 92], [560, 560, 0, 0]].forEach(([x, y, r, sz]) => { if (sz) s += g(`<text x="0" y="0" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="${sz}" fill="#F2735E" stroke="#fff" stroke-width="10" paint-order="stroke">?</text>`, { x, y, r }); });
+s += minyak(180, BASE + 8, 0.95);
+document.getElementById('art').innerHTML = s;
+window.__ready = true;
+</script></body></html>

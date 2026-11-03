@@ -104,7 +104,7 @@ test('tanpa opsi baru, gambar lama tidak berubah: kaki kanonik tetap dipakai dan
   const svg = rakaSvg(raka('netral'));
   assert.ok(svg.includes('M130 566L194 566') && !svg.includes('raka-legs'));
   assert.equal(raka('netral').legs.on, 0);
-  assert.deepEqual(Object.keys(OUTFITS), ['harian', 'demo', 'jas']);
+  assert.deepEqual(Object.keys(OUTFITS), ['harian', 'demo', 'rumah', 'jas']);
   assert.equal(rakaSvg(raka('netral'), { uid: 'x' }), rakaSvg(raka('netral'), { uid: 'x', outfit: 'harian' }));
 });
 
@@ -214,4 +214,21 @@ test('lapar, ngantuk, dan pose pegang_perut tergambar tanpa mengubah desain kano
   const base = rakaSvg(raka('netral'));
   for (const [e, p] of [['lapar', 'pegang_perut'], ['ngantuk', 'jalan'], ['lapar', 'jalan']]) { const s = rakaSvg(raka(e, p, { bags: 0.4 })); assert.match(s, /^<svg /); assert.ok(!/NaN|undefined/.test(s)); assert.notEqual(s, base); }
   assert.equal(rakaSvg(raka('netral')), base);
+});
+
+test('pakaian rumah dan tampak belakang (opsi back): tidak mengubah gambar lama, kepala menempel, tidak ada NaN', () => {
+  const lama = rakaSvg(raka('netral'), { uid: 'z' });
+  assert.equal(lama, rakaSvg(raka('netral'), { uid: 'z', back: null }), 'tanpa back gambar lama tidak berubah');
+  const rumah = rakaSvg(raka('netral'), { uid: 'r', outfit: 'rumah' });
+  assert.ok(rumah.includes('#E9B949') && rumah.includes('#5A6477') && rumah.includes('class="raka-patch"'), 'kaus mustard, celana training, patch tetap');
+  for (const turn of [0, 0.3, 0.6, 1]) for (const lift of [0, 0.5, 1]) {
+    const svg = rakaSvg(raka('kaget', 'netral'), { uid: `b${turn}${lift}`, outfit: 'rumah', back: { lift, marks: 1, turn, drawnL: 1, drawnR: 0.5, oil: 1 } });
+    assert.doesNotMatch(svg, /NaN|undefined|Infinity/);
+    assert.equal(svg.split('<g').length - 1, svg.split('</g>').length - 1, 'grup seimbang');
+    assert.ok(!svg.includes('class="raka-patch"'), 'tampak belakang tanpa patch logo');
+    assert.ok(svg.includes('M200 92C270 92 308 138 308 204'), 'kulit kepala tetap ada');
+  }
+  const bk = rakaSvg(raka('netral', 'netral'), { uid: 'q', back: { lift: 1, marks: 1 } });
+  assert.ok(bk.includes('#E2635A') && bk.includes('stroke-dashoffset'), 'garis kerokan');
+  assert.ok(rakaSvg(raka('netral', 'netral'), { uid: 'q2', back: { lift: 1, marks: 0 } }).indexOf('#E2635A') < 0, 'tanpa marks tidak ada garis');
 });
