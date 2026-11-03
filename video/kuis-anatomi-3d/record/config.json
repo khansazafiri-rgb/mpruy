@@ -1,0 +1,23 @@
+{
+  "a0": 9.6,
+  "region": "Toraks",
+  "system": "Rangka",
+  "identify": { "correct": 1 },
+  "find": { "fx": 0.49, "fy": 0.40, "zoomX": 0.52, "zoomY": 0.27, "wheelDy": -300, "wheelN": 8, "panDy": 110 },
+  "system": "Rangka",
+  "sistemQ": { "wrong": 0 },
+  "times": {
+    "regionMove": 10.9, "regionClick": 12.0,
+    "systemScroll": 12.45, "systemClick": 13.9,
+    "modeScroll": 14.05, "modeClick": 15.5,
+    "startMove": 15.9, "startClick": 16.7,
+    "quizShown": 17.3, "answerMove": 19.8, "answerClick": 20.7,
+    "changeMove": 22.5, "changeClick": 23.25,
+    "findModeScroll": 23.5, "findModeClick": 24.8, "findStartClick": 25.4,
+    "findShown": 26.0, "pickMove": 26.1, "pickClick": 28.9, "pickFeedback": 29.2,
+    "change2Move": 29.5, "change2Click": 30.1,
+    "modes2Scroll": 30.3, "sysClick": 31.5, "regHover": 32.2, "sysStartClick": 33.0,
+    "sysShown": 33.6, "wrongMove": 33.8, "wrongClick": 34.6,
+    "nextMove": 38.6, "nextClick": 39.6, "end": 40.55
+  }
+}
