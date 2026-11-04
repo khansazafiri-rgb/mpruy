@@ -5,7 +5,7 @@ Aturan umum: **baca README tokoh, pakai kodenya, jangan menggambar ulang**. Vari
 
 | Tokoh | Peran | Folder | Fungsi utama |
 |---|---|---|---|
-| **Raka** | Mahasiswa FK, pemandu seri (pakaian: harian, demo, jas dokter, kuliah, santai, rumah; berbaring; kaki berjalan; ekspresi melongo/mengerti; pose pegang_buku; palet dosen) | [`raka/`](raka/README.md) | `rakaSvg(raka(ekspresi, pose, perubahan), { outfit })` |
+| **Raka** | Mahasiswa FK, pemandu seri (pakaian: harian, demo, jas dokter, kuliah, santai, rumah; berbaring; kaki berjalan; ekspresi melongo/mengerti; pose pegang_buku; palet dosen, kakak tingkat, adik tingkat) | [`raka/`](raka/README.md) | `rakaSvg(raka(ekspresi, pose, perubahan), { outfit })` |
 | **Grelin** | Hormon lapar (ghrelin) pembawa sinyal | [`grelin/`](grelin/README.md) | `grelinSvg(grelin(ekspresi, pose, perubahan))` |
 | **Jambi** | Jam biologis (jam beker bulat, cincin siang-malam) | [`jambi/`](jambi/README.md) | `jambiSvg(jambi(ekspresi, pose, { jam }))` |
 | **Tala** (teman Raka) | Teman ekstrovert yang hangat; berdiri/jalan; varian **peneliti** (jas lab + kacamata) | [`teman/`](teman/README.md) | `temanSvg(teman(ekspresi, pose), { outfit, glasses, palette })` |

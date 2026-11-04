@@ -50,6 +50,12 @@ export const PALETTE = {
  * Pakai: rakaSvg(state, { palette: PALETTE_DOSEN }). Bukan karakter baru: wajah dan proporsi sama dengan Raka, hanya warna berbeda.
  */
 export const PALETTE_DOSEN = { skin: '#B97D52', skinShade: '#A66C44', hair: '#9A9AA8', sweater: '#7C5A9E', sleeveFront: '#6B4B8C', pants: '#3B3446', shoes: '#2B2630' };
+/**
+ * Palet "kakak tingkat" dan "adik tingkat" (video "Soal kakak tingkat"): rig dan wajah sama dengan Raka, hanya warna rambut, kulit, dan baju berbeda
+ * supaya tiga angkatan mudah dibedakan di layar. Pakai: rakaSvg(state, { palette: PALETTE_KAKAK }) atau PALETTE_ADIK.
+ */
+export const PALETTE_KAKAK = { skin: '#D9A07A', skinShade: '#C58D68', hair: '#2A1F1A', sweater: '#4F9E6B', sleeveFront: '#438A5C', pants: '#2E3744', shoes: '#EDE4D3' };
+export const PALETTE_ADIK = { skin: '#F2B58C', skinShade: '#E0A079', hair: '#5A3A2B', sweater: '#E58FB0', sleeveFront: '#D17A9C', pants: '#3E4A6B', shoes: '#F5E8D6' };
 export const PALETTE_ON_DARK = { hair: '#3A4468', pants: '#38426A', sweater: '#23978F', sleeveFront: '#1F8780' };
 
 /**
