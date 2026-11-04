@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Soal kakak tingkat: kirim ke MEDCOEL</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root { --forest:#0A3830; --green:#007060; --mint:#9DE0BD; --cream:#F7F2E4; --gold:#F8C038; --coral:#E8665F; --ink:#172B38; }
+  html,body{margin:0;padding:0;background:#000;}
+  #root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans','Inter',sans-serif;color:var(--ink);background:#0A3830}
+  #root svg{position:absolute;left:0;top:0;display:block}
+  #panels{position:absolute;left:0;top:0;width:1080px;height:1920px}
+  .panel{position:absolute;overflow:hidden;background:#fff;will-change:transform}
+  .panel img{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none}
+  #flash{position:absolute;left:0;top:0;width:1080px;height:1920px;background:#fff;opacity:0;pointer-events:none}
+  #cap{position:absolute;left:110px;width:860px;top:1380px;height:170px;display:flex;align-items:center;justify-content:center}
+  #cap .box{background:rgba(10,56,48,.95);border-radius:34px;padding:16px 30px 18px;text-align:center;font-weight:800;font-size:50px;line-height:1.2;color:#fff;letter-spacing:-.01em;max-width:860px;box-sizing:border-box;text-wrap:balance;box-shadow:0 8px 0 rgba(0,0,0,.18)}
+  #cap .w{display:inline-block;margin:0 7px}
+  #cap .box .w.on{color:var(--gold)}
+  #cap .box .w.fut{color:rgba(255,255,255,.9)}
+</style></head>
+<body>
+<div id="root">
+  <svg id="world" width="1080" height="1920" viewBox="0 0 1080 1920"><defs><clipPath id="clipB"><circle id="clipBc" cx="540" cy="900" r="0"/></clipPath><clipPath id="clipW"><rect id="clipWr" x="1080" y="0" width="1200" height="1920"/></clipPath></defs><g id="gA"></g><g id="gB"></g><g id="gTr"></g></svg>
+  <div id="panels"></div>
+  <svg id="ov" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0"></svg>
+  <div id="flash"></div>
+  <div id="cap"><div class="box" id="capbox"></div></div>
+</div>
+<script type="module" src="stage.js"></script>
+</body></html>

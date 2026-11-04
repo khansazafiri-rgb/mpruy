@@ -259,3 +259,10 @@ rakaSvg(raka('mengerti', 'netral'), { outfit: 'santai' });                      
 ```js
 rakaSvg(raka('netral', 'menunjuk'), { palette: PALETTE_DOSEN });   // dosen menunjuk papan
 ```
+
+### Palet kakak tingkat dan adik tingkat (video "Soal kakak tingkat")
+`PALETTE_KAKAK` (rambut cokelat gelap, kulit sawo, sweater hijau) dan `PALETTE_ADIK` (rambut cokelat, sweater merah muda): rig dan wajah sama dengan Raka (bukan karakter baru), dipakai supaya angkatan yang berbeda mudah dibedakan di layar:
+```js
+rakaSvg(raka('senang', 'sapa'), { palette: PALETTE_KAKAK, outfit: 'kuliah' });   // kakak tingkat
+rakaSvg(raka('mengerti'), { palette: PALETTE_ADIK, outfit: 'kuliah' });           // adik tingkat tahun depan
+```

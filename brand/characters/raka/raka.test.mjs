@@ -254,3 +254,9 @@ test('melongo, mengerti, dan pose pegang_buku tergambar tanpa mengubah desain ka
   const base = rakaSvg(raka('netral'));
   for (const [e, p, o] of [['melongo', 'pegang_buku', { gazeY: 0.5 }], ['mengerti', 'netral', {}], ['melongo', 'netral', {}]]) { const s = rakaSvg(raka(e, p, o), { outfit: 'kuliah' }); assert.match(s, /^<svg /); assert.ok(!/NaN|undefined/.test(s)); assert.notEqual(s, base); }
 });
+
+test('palet kakak dan adik tingkat dapat dipakai dan membedakan tampilan', async () => {
+  const { raka, rakaSvg, PALETTE_KAKAK, PALETTE_ADIK } = await import('./raka.js');
+  const base = rakaSvg(raka('senang'));
+  for (const pal of [PALETTE_KAKAK, PALETTE_ADIK]) { const s = rakaSvg(raka('senang'), { palette: pal, outfit: 'kuliah' }); assert.match(s, /^<svg /); assert.ok(!/NaN|undefined/.test(s)); assert.notEqual(s, base); }
+});

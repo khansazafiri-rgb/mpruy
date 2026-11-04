@@ -1,0 +1,764 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 2.38,
+   "text": "Soal kaka tingkatmu cuma tersimpan di galeri.",
+   "words": [
+    {
+     "w": "Soal",
+     "s": 0.0,
+     "e": 0.48
+    },
+    {
+     "w": "kaka",
+     "s": 0.48,
+     "e": 0.7
+    },
+    {
+     "w": "tingkatmu",
+     "s": 0.7,
+     "e": 1.2
+    },
+    {
+     "w": "cuma",
+     "s": 1.2,
+     "e": 1.4
+    },
+    {
+     "w": "tersimpan",
+     "s": 1.4,
+     "e": 1.86
+    },
+    {
+     "w": "di",
+     "s": 1.86,
+     "e": 1.98
+    },
+    {
+     "w": "galeri.",
+     "s": 1.98,
+     "e": 2.38
+    }
+   ]
+  },
+  {
+   "start": 3.0,
+   "end": 5.64,
+   "text": "Padahal, adik tingkatmu nanti bisa membutuhkannya.",
+   "words": [
+    {
+     "w": "Padahal,",
+     "s": 3.0,
+     "e": 3.64
+    },
+    {
+     "w": "adik",
+     "s": 3.76,
+     "e": 3.96
+    },
+    {
+     "w": "tingkatmu",
+     "s": 3.96,
+     "e": 4.46
+    },
+    {
+     "w": "nanti",
+     "s": 4.46,
+     "e": 4.78
+    },
+    {
+     "w": "bisa",
+     "s": 4.78,
+     "e": 4.98
+    },
+    {
+     "w": "membutuhkannya.",
+     "s": 4.98,
+     "e": 5.64
+    }
+   ]
+  },
+  {
+   "start": 6.4,
+   "end": 8.26,
+   "text": "Yuk, kirim soal itu ke MadCol.",
+   "words": [
+    {
+     "w": "Yuk,",
+     "s": 6.4,
+     "e": 6.66
+    },
+    {
+     "w": "kirim",
+     "s": 6.9,
+     "e": 7.14
+    },
+    {
+     "w": "soal",
+     "s": 7.14,
+     "e": 7.4
+    },
+    {
+     "w": "itu",
+     "s": 7.4,
+     "e": 7.62
+    },
+    {
+     "w": "ke",
+     "s": 7.62,
+     "e": 7.84
+    },
+    {
+     "w": "MadCol.",
+     "s": 7.84,
+     "e": 8.26
+    }
+   ]
+  },
+  {
+   "start": 8.9,
+   "end": 11.32,
+   "text": "Bayangin, kamu dapet PDF soal tahun lalu.",
+   "words": [
+    {
+     "w": "Bayangin,",
+     "s": 8.9,
+     "e": 9.5
+    },
+    {
+     "w": "kamu",
+     "s": 9.84,
+     "e": 10.04
+    },
+    {
+     "w": "dapet",
+     "s": 10.04,
+     "e": 10.36
+    },
+    {
+     "w": "PDF",
+     "s": 10.36,
+     "e": 10.56
+    },
+    {
+     "w": "soal",
+     "s": 10.56,
+     "e": 10.88
+    },
+    {
+     "w": "tahun",
+     "s": 10.88,
+     "e": 11.02
+    },
+    {
+     "w": "lalu.",
+     "s": 11.02,
+     "e": 11.32
+    }
+   ]
+  },
+  {
+   "start": 11.7,
+   "end": 13.96,
+   "text": "Seneng banget, akhirnya ada bahan latihan.",
+   "words": [
+    {
+     "w": "Seneng",
+     "s": 11.7,
+     "e": 11.96
+    },
+    {
+     "w": "banget,",
+     "s": 11.96,
+     "e": 12.28
+    },
+    {
+     "w": "akhirnya",
+     "s": 12.7,
+     "e": 13.18
+    },
+    {
+     "w": "ada",
+     "s": 13.18,
+     "e": 13.3
+    },
+    {
+     "w": "bahan",
+     "s": 13.3,
+     "e": 13.54
+    },
+    {
+     "w": "latihan.",
+     "s": 13.54,
+     "e": 13.96
+    }
+   ]
+  },
+  {
+   "start": 14.62,
+   "end": 17.94,
+   "text": "Tapi pas dibuka, ah, jawabannya mana?",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 14.62,
+     "e": 14.96
+    },
+    {
+     "w": "pas",
+     "s": 14.96,
+     "e": 15.14
+    },
+    {
+     "w": "dibuka,",
+     "s": 15.14,
+     "e": 15.6
+    },
+    {
+     "w": "ah,",
+     "s": 16.46,
+     "e": 16.68
+    },
+    {
+     "w": "jawabannya",
+     "s": 17.24,
+     "e": 17.66
+    },
+    {
+     "w": "mana?",
+     "s": 17.66,
+     "e": 17.94
+    }
+   ]
+  },
+  {
+   "start": 18.72,
+   "end": 19.94,
+   "text": "Pembahasannya juga nggak ada.",
+   "words": [
+    {
+     "w": "Pembahasannya",
+     "s": 18.72,
+     "e": 19.28
+    },
+    {
+     "w": "juga",
+     "s": 19.28,
+     "e": 19.44
+    },
+    {
+     "w": "nggak",
+     "s": 19.44,
+     "e": 19.64
+    },
+    {
+     "w": "ada.",
+     "s": 19.64,
+     "e": 19.94
+    }
+   ]
+  },
+  {
+   "start": 20.74,
+   "end": 25.2,
+   "text": "Nah, daripada soal itu hilang saat ganti HP atau tenggelem di chat angkatan,",
+   "words": [
+    {
+     "w": "Nah,",
+     "s": 20.74,
+     "e": 21.04
+    },
+    {
+     "w": "daripada",
+     "s": 21.28,
+     "e": 21.6
+    },
+    {
+     "w": "soal",
+     "s": 21.6,
+     "e": 21.88
+    },
+    {
+     "w": "itu",
+     "s": 21.88,
+     "e": 22.02
+    },
+    {
+     "w": "hilang",
+     "s": 22.02,
+     "e": 22.48
+    },
+    {
+     "w": "saat",
+     "s": 22.48,
+     "e": 22.68
+    },
+    {
+     "w": "ganti",
+     "s": 22.68,
+     "e": 22.94
+    },
+    {
+     "w": "HP",
+     "s": 22.94,
+     "e": 23.34
+    },
+    {
+     "w": "atau",
+     "s": 23.34,
+     "e": 23.9
+    },
+    {
+     "w": "tenggelem",
+     "s": 23.9,
+     "e": 24.32
+    },
+    {
+     "w": "di",
+     "s": 24.32,
+     "e": 24.48
+    },
+    {
+     "w": "chat",
+     "s": 24.48,
+     "e": 24.6
+    },
+    {
+     "w": "angkatan,",
+     "s": 24.6,
+     "e": 25.2
+    }
+   ]
+  },
+  {
+   "start": 25.54,
+   "end": 27.88,
+   "text": "kamu bisa mengajukannya lewat chat admin MadCol.",
+   "words": [
+    {
+     "w": "kamu",
+     "s": 25.54,
+     "e": 25.84
+    },
+    {
+     "w": "bisa",
+     "s": 25.84,
+     "e": 26.06
+    },
+    {
+     "w": "mengajukannya",
+     "s": 26.06,
+     "e": 26.66
+    },
+    {
+     "w": "lewat",
+     "s": 26.66,
+     "e": 26.88
+    },
+    {
+     "w": "chat",
+     "s": 26.88,
+     "e": 27.14
+    },
+    {
+     "w": "admin",
+     "s": 27.14,
+     "e": 27.5
+    },
+    {
+     "w": "MadCol.",
+     "s": 27.5,
+     "e": 27.88
+    }
+   ]
+  },
+  {
+   "start": 27.88,
+   "end": 34.66,
+   "text": "Tim Metcoll akan memeriksa dan memproses soal yang kabuk kirim agar bisa dimasukkan ke website dan dilengkapi pembahasan.",
+   "words": [
+    {
+     "w": "Tim",
+     "s": 27.88,
+     "e": 28.9
+    },
+    {
+     "w": "Metcoll",
+     "s": 28.9,
+     "e": 29.32
+    },
+    {
+     "w": "akan",
+     "s": 29.32,
+     "e": 29.5
+    },
+    {
+     "w": "memeriksa",
+     "s": 29.5,
+     "e": 30.1
+    },
+    {
+     "w": "dan",
+     "s": 30.1,
+     "e": 30.5
+    },
+    {
+     "w": "memproses",
+     "s": 30.5,
+     "e": 30.88
+    },
+    {
+     "w": "soal",
+     "s": 30.88,
+     "e": 31.16
+    },
+    {
+     "w": "yang",
+     "s": 31.16,
+     "e": 31.24
+    },
+    {
+     "w": "kabuk",
+     "s": 31.24,
+     "e": 31.46
+    },
+    {
+     "w": "kirim",
+     "s": 31.46,
+     "e": 31.9
+    },
+    {
+     "w": "agar",
+     "s": 31.9,
+     "e": 32.22
+    },
+    {
+     "w": "bisa",
+     "s": 32.22,
+     "e": 32.42
+    },
+    {
+     "w": "dimasukkan",
+     "s": 32.42,
+     "e": 32.9
+    },
+    {
+     "w": "ke",
+     "s": 32.9,
+     "e": 32.98
+    },
+    {
+     "w": "website",
+     "s": 32.98,
+     "e": 33.28
+    },
+    {
+     "w": "dan",
+     "s": 33.28,
+     "e": 33.8
+    },
+    {
+     "w": "dilengkapi",
+     "s": 33.8,
+     "e": 34.26
+    },
+    {
+     "w": "pembahasan.",
+     "s": 34.26,
+     "e": 34.66
+    }
+   ]
+  },
+  {
+   "start": 35.18,
+   "end": 41.6,
+   "text": "Jadi, soal yang kamu bagikan hari ini bisa menjadi bahan belajar untuk teman-temanmu bahkan ada tingkat mu tahun depan.",
+   "words": [
+    {
+     "w": "Jadi,",
+     "s": 35.18,
+     "e": 35.86
+    },
+    {
+     "w": "soal",
+     "s": 36.26,
+     "e": 36.54
+    },
+    {
+     "w": "yang",
+     "s": 36.54,
+     "e": 36.62
+    },
+    {
+     "w": "kamu",
+     "s": 36.62,
+     "e": 36.78
+    },
+    {
+     "w": "bagikan",
+     "s": 36.78,
+     "e": 37.12
+    },
+    {
+     "w": "hari",
+     "s": 37.12,
+     "e": 37.38
+    },
+    {
+     "w": "ini",
+     "s": 37.38,
+     "e": 37.62
+    },
+    {
+     "w": "bisa",
+     "s": 37.62,
+     "e": 37.88
+    },
+    {
+     "w": "menjadi",
+     "s": 37.88,
+     "e": 38.18
+    },
+    {
+     "w": "bahan",
+     "s": 38.18,
+     "e": 38.5
+    },
+    {
+     "w": "belajar",
+     "s": 38.5,
+     "e": 38.92
+    },
+    {
+     "w": "untuk",
+     "s": 38.92,
+     "e": 39.18
+    },
+    {
+     "w": "teman",
+     "s": 39.18,
+     "e": 39.46
+    },
+    {
+     "w": "-temanmu",
+     "s": 39.46,
+     "e": 39.94
+    },
+    {
+     "w": "bahkan",
+     "s": 39.94,
+     "e": 40.52
+    },
+    {
+     "w": "ada",
+     "s": 40.52,
+     "e": 40.62
+    },
+    {
+     "w": "tingkat",
+     "s": 40.62,
+     "e": 40.94
+    },
+    {
+     "w": "mu",
+     "s": 40.94,
+     "e": 41.1
+    },
+    {
+     "w": "tahun",
+     "s": 41.1,
+     "e": 41.24
+    },
+    {
+     "w": "depan.",
+     "s": 41.24,
+     "e": 41.6
+    }
+   ]
+  },
+  {
+   "start": 42.12,
+   "end": 45.18,
+   "text": "Punya soal khusus kampus, sampai kan keadmin saat mengirim ya.",
+   "words": [
+    {
+     "w": "Punya",
+     "s": 42.12,
+     "e": 42.6
+    },
+    {
+     "w": "soal",
+     "s": 42.6,
+     "e": 42.8
+    },
+    {
+     "w": "khusus",
+     "s": 42.8,
+     "e": 43.0
+    },
+    {
+     "w": "kampus,",
+     "s": 43.0,
+     "e": 43.44
+    },
+    {
+     "w": "sampai",
+     "s": 43.82,
+     "e": 44.12
+    },
+    {
+     "w": "kan",
+     "s": 44.12,
+     "e": 44.28
+    },
+    {
+     "w": "keadmin",
+     "s": 44.28,
+     "e": 44.56
+    },
+    {
+     "w": "saat",
+     "s": 44.56,
+     "e": 44.7
+    },
+    {
+     "w": "mengirim",
+     "s": 44.7,
+     "e": 44.98
+    },
+    {
+     "w": "ya.",
+     "s": 44.98,
+     "e": 45.18
+    }
+   ]
+  },
+  {
+   "start": 45.94,
+   "end": 49.12,
+   "text": "Satu angkatan berbagi, angkatan berikutnya bisa ikut belajar.",
+   "words": [
+    {
+     "w": "Satu",
+     "s": 45.94,
+     "e": 46.28
+    },
+    {
+     "w": "angkatan",
+     "s": 46.28,
+     "e": 46.58
+    },
+    {
+     "w": "berbagi,",
+     "s": 46.58,
+     "e": 46.98
+    },
+    {
+     "w": "angkatan",
+     "s": 47.34,
+     "e": 47.7
+    },
+    {
+     "w": "berikutnya",
+     "s": 47.7,
+     "e": 48.16
+    },
+    {
+     "w": "bisa",
+     "s": 48.16,
+     "e": 48.56
+    },
+    {
+     "w": "ikut",
+     "s": 48.56,
+     "e": 48.78
+    },
+    {
+     "w": "belajar.",
+     "s": 48.78,
+     "e": 49.12
+    }
+   ]
+  },
+  {
+   "start": 49.74,
+   "end": 52.86,
+   "text": "Yuk, bantu bangun tempat belajar ke doktoran bersama Metcoll.",
+   "words": [
+    {
+     "w": "Yuk,",
+     "s": 49.74,
+     "e": 49.98
+    },
+    {
+     "w": "bantu",
+     "s": 50.36,
+     "e": 50.6
+    },
+    {
+     "w": "bangun",
+     "s": 50.6,
+     "e": 50.92
+    },
+    {
+     "w": "tempat",
+     "s": 50.92,
+     "e": 51.2
+    },
+    {
+     "w": "belajar",
+     "s": 51.2,
+     "e": 51.52
+    },
+    {
+     "w": "ke",
+     "s": 51.52,
+     "e": 51.62
+    },
+    {
+     "w": "doktoran",
+     "s": 51.62,
+     "e": 52.0
+    },
+    {
+     "w": "bersama",
+     "s": 52.0,
+     "e": 52.38
+    },
+    {
+     "w": "Metcoll.",
+     "s": 52.38,
+     "e": 52.86
+    }
+   ]
+  },
+  {
+   "start": 53.32,
+   "end": 55.22,
+   "text": "Gratis di Metcoll.com",
+   "words": [
+    {
+     "w": "Gratis",
+     "s": 53.32,
+     "e": 53.94
+    },
+    {
+     "w": "di",
+     "s": 53.94,
+     "e": 54.32
+    },
+    {
+     "w": "Metcoll",
+     "s": 54.32,
+     "e": 54.82
+    },
+    {
+     "w": ".com",
+     "s": 54.82,
+     "e": 55.22
+    }
+   ]
+  }
+ ]
+}
