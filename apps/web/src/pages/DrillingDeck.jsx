@@ -47,7 +47,7 @@ export default function DrillingDeck() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [total, id]);
   useEffect(() => { setImg(0); if (total) saveLast(id, index); }, [index, id, total]);
-  useEffect(() => { if (deck) document.title = `${deck.title} | Materi Drilling`; }, [deck]);
+  useEffect(() => { if (deck) document.title = `${deck.title} | Materi Kampusmu`; }, [deck]);
 
   const go = useCallback((d) => setIndex((i) => Math.min(total - 1, Math.max(0, i + d))), [total]);
   useEffect(() => {
@@ -71,7 +71,7 @@ export default function DrillingDeck() {
   const alt = useMemo(() => `${deck?.title || 'Materi'}, slide ${index + 1} dari ${total}${slide?.title ? `: ${slide.title}` : ''}`, [deck, index, total, slide]);
 
   if (loading) return <PageLoader />;
-  if (error) return <div className="space-y-4"><Alert>{error.status === 404 ? 'Materi ini tidak ditemukan atau belum dibuka untukmu.' : error.message}</Alert><Link to="/drilling" className="btn-secondary inline-flex"><ArrowLeft size={16} aria-hidden /> Kembali ke Drilling</Link></div>;
+  if (error) return <div className="space-y-4"><Alert>{error.status === 404 ? 'Materi ini tidak ditemukan atau bukan milik kampusmu.' : error.message}</Alert><Link to="/drilling" className="btn-secondary inline-flex"><ArrowLeft size={16} aria-hidden /> Kembali ke Kampusmu</Link></div>;
   if (!deck || !total) return <EmptyState icon={BookOpenText} title="Materi ini belum punya slide"><Link to={back} className="btn-secondary mt-4 inline-flex">Kembali</Link></EmptyState>;
 
   const last = index === total - 1;

@@ -20,19 +20,22 @@ routerAdd("GET", "/api/medcoel/drilling/subject/{subject}", (e) => {
   const user = u.requireUser(e);
   const admin = u.roleOf(user) === "admin";
   const st = learn.drillingStatus(e.app, user);
-  if (!st.available && !admin) throw new NotFoundError("Drilling belum dibuka.");
+  // "Kampusmu": pengguna hanya melihat milik kampusnya (tanpa General). Admin melihat semuanya.
+  const kampusOnly = !admin;
+  const open = admin ? st.enabled : st.kampusAvailable;
+  if (!open && !admin) throw new NotFoundError("Drilling belum dibuka.");
   const s = decks.subjectFor(e.app, e.request.pathValue("subject"), admin);
   // Admin melihat semua berkas tayang (pratinjau); pengguna hanya yang terbuka untuk kampusnya.
   const list = admin
     ? e.app.findRecordsByFilter("drilling_decks", "status = 'published' && subject = {:s}", "sortOrder,created", 0, 0, { s: s.id })
-    : decks.listFor(e.app, user, s.id);
+    : decks.listFor(e.app, user, s.id, { kampusOnly: kampusOnly });
   let questionCount = 0;
   let campusQuestionCount = 0;
   let answeredCount = 0;
   // Bagian soal = judul PDF tempat soal itu berasal ("" = soal lainnya, tanpa judul).
   const sets = [];
   const setIndex = {};
-  learn.pool(e.app, user, { subject: s.id, drilling: "only" }).forEach((it) => {
+  learn.pool(e.app, user, { subject: s.id, drilling: "only", campusOnly: kampusOnly }).forEach((it) => {
     questionCount++;
     if (it.seen) answeredCount++;
     if (it.scope === "campus") campusQuestionCount++;
@@ -45,7 +48,8 @@ routerAdd("GET", "/api/medcoel/drilling/subject/{subject}", (e) => {
   // Bagian bernama lebih dulu (A-Z), soal tanpa judul terakhir.
   sets.sort((a, b2) => (a.title === "" ? 1 : b2.title === "" ? -1 : a.title.localeCompare(b2.title)));
   return e.json(200, {
-    preview: !st.available,
+    preview: !open,
+    kampusOnly: kampusOnly,
     subject: {
       id: s.id,
       name: s.getString("name"),
@@ -73,7 +77,7 @@ routerAdd("GET", "/api/medcoel/drilling/deck/{id}", (e) => {
   try { rec = e.app.findRecordById("drilling_decks", e.request.pathValue("id")); } catch (_) { rec = null; }
   if (!rec) throw new NotFoundError("Materi tidak ditemukan.");
   if (!admin) {
-    if (rec.getString("status") !== "published" || !decks.visibleTo(rec, user) || !learn.drillingStatus(e.app, user).available) throw new NotFoundError("Materi tidak ditemukan.");
+    if (rec.getString("status") !== "published" || rec.getString("scope") !== "campus" || !decks.visibleTo(rec, user) || !learn.drillingStatus(e.app, user).kampusAvailable) throw new NotFoundError("Materi tidak ditemukan.");
     const sub = e.app.findRecordById("subjects", rec.getString("subject"));
     if (sub.getBool("hidden")) throw new NotFoundError("Materi tidak ditemukan.");
   }

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import {
-  FlaskConical, Bell, BookOpen, CalendarDays, ChevronDown, Crosshair, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, Stethoscope, Trophy, TrendingUp, User, X,
+  FlaskConical, Bell, BookOpen, CalendarDays, ChevronDown, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, School, Stethoscope, Trophy, TrendingUp, User, X,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
@@ -20,7 +20,7 @@ const ALL_NAV = [
   { to: '/simulasi-dokter', label: 'Simulasi dokter', desk: 'Simulasi', icon: Stethoscope, noBottom: true },
   { to: '/anatomy', label: 'Human Anatomy', icon: FlaskConical, noBottom: true },
   { to: '/lab', label: 'MEDCOEL Lab', desk: 'Lab', icon: FlaskConical, noBottom: true },
-  { to: '/drilling', label: 'Drilling', icon: Crosshair, noBottom: true, drilling: true },
+  { to: '/drilling', label: 'Kampusmu', icon: School, noBottom: true, drilling: true },
   { to: '/progres', label: 'Progres', short: 'Progres', icon: TrendingUp },
   { to: '/leaderboard', label: 'Leaderboard', short: 'Peringkat', icon: Trophy },
   { to: '/jadwal', label: 'Jadwal ujian', short: 'Jadwal', icon: CalendarDays },
@@ -29,7 +29,7 @@ const ALL_NAV = [
 
 export default function AppShell() {
   const { me, logout, isAdmin, refresh } = useAuth();
-  // Menu Drilling hanya tampil bila admin menyalakannya dan sudah ada soalnya.
+  // Menu Kampusmu hanya tampil bila admin menyalakannya dan kampus pengguna sudah punya materi atau soalnya.
   const NAV = ALL_NAV.filter((n) => !n.drilling || me?.drillingAvailable);
   const [menu, setMenu] = useState(false);
   const [drawer, setDrawer] = useState(false);
