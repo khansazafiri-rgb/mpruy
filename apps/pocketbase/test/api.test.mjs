@@ -690,17 +690,19 @@ await langkah('drilling: tersembunyi sampai ada soal dan sakelar admin menyala; 
   const awal = (await call('GET', '/api/medcoel/admin/drilling', undefined, admin.token, 200)).data;
   assert.ok(awal.subjects.length >= subjects.length);
   assert.ok(awal.subjects.every((x) => x.chapter && x.published === 0));
-  const imp = (await call('POST', '/api/medcoel/agent/import', { subject: dsub.slug, drilling: true, questions: soal }, agent.token, 200)).data;
+  // Kampusmu hanya menampilkan milik kampus pengguna, jadi soalnya khusus kampus B (userA dan userB).
+  const imp = (await call('POST', '/api/medcoel/agent/import', { subject: dsub.slug, drilling: true, scope: 'campus', campuses: [kampusB.id], questions: soal }, agent.token, 200)).data;
   assert.equal(imp.created, 3);
   assert.equal(imp.chaptersCreated, 0);
-  const again = (await call('POST', '/api/medcoel/agent/import', { subject: dsub.slug, drilling: true, questions: [{ type: 'A', text: 'Drilling 4?', options: ['a', { text: 'b', correct: true }] }] }, agent.token, 200)).data;
+  const again = (await call('POST', '/api/medcoel/agent/import', { subject: dsub.slug, drilling: true, scope: 'campus', campuses: [kampusB.id], questions: [{ type: 'A', text: 'Drilling 4?', options: ['a', { text: 'b', correct: true }] }] }, agent.token, 200)).data;
   assert.equal(again.created, 1);
 
   // Ada soal tetapi sakelar mati: tetap tersembunyi. Admin melihat hitungannya.
   const adm = (await call('GET', '/api/medcoel/admin/drilling', undefined, admin.token, 200)).data;
   assert.equal(adm.enabled, false);
   assert.equal(adm.available, false);
-  assert.equal(adm.total, 4);
+  assert.equal(adm.total, 0); // total = soal General; keempat soal khusus kampus B
+  assert.equal(adm.campusPublished, 4);
   assert.equal(adm.subjects.find((x) => x.id === dsub.id).published, 4);
   assert.equal(adm.published, 4);
   // Admin boleh mencoba Drilling walau belum dibuka untuk pengguna (pratinjau).
@@ -740,9 +742,11 @@ await langkah('drilling: tersembunyi sampai ada soal dan sakelar admin menyala; 
     assert.equal(small.questions.length, 2);
     assert.ok(!('answer' in small.questions[0]), 'kunci tidak dikirim sebelum dijawab');
     await call('POST', '/api/medcoel/attempts/drilling', { subject: mk.id }, userA.token, 400); // mata kuliah tanpa soal Drilling
-    // Akun tanpa kampus tetap bisa drilling (soalnya General).
+    // Akun tanpa kampus tidak punya Kampusmu: menu tersembunyi dan sesi ditolak.
     const sma = await daftar(`ujid${RUN}`, '', { campusOther: 'Tidak memiliki kampus', semester: undefined });
-    assert.equal((await call('POST', '/api/medcoel/attempts/drilling', { subject: dsub.id, count: 3 }, sma.token, 200)).data.questions.length, 3);
+    assert.equal((await call('GET', '/api/medcoel/drilling', undefined, sma.token, 200)).data.available, false);
+    assert.equal((await call('GET', '/api/medcoel/me', undefined, sma.token, 200)).data.drillingAvailable, false);
+    await call('POST', '/api/medcoel/attempts/drilling', { subject: dsub.id, count: 3 }, sma.token, 404);
 
     // BAB biasa, simulasi, dan paket tidak melihat soal Drilling.
     const det = (await call('GET', `/api/medcoel/subjects/${dsub.slug}`, undefined, userA.token, 200)).data;
@@ -769,7 +773,11 @@ await langkah('drilling: tersembunyi sampai ada soal dan sakelar admin menyala; 
     await call('POST', '/api/medcoel/admin/questions/bulk', { ids: [q.id], action: 'scope', scope: 'campus', campuses: [kampusB.id] }, admin.token, 200);
     assert.equal((await call('GET', '/api/medcoel/drilling', undefined, userB.token, 200)).data.subjects[0].questionCount, 4);
     assert.equal((await call('GET', `/api/collections/questions/records/${q.id}`, undefined, su, 200)).data.scope, 'campus');
+    // Dijadikan General: hilang dari Kampusmu (3 soal tersisa), tetap tayang untuk admin.
     await call('POST', '/api/medcoel/admin/questions/bulk', { ids: [q.id], action: 'scope', scope: 'all' }, admin.token, 200);
+    assert.equal((await call('GET', '/api/medcoel/drilling', undefined, userB.token, 200)).data.subjects[0].questionCount, 3);
+    assert.equal((await call('GET', '/api/medcoel/drilling', undefined, admin.token, 200)).data.subjects[0].questionCount, 4);
+    await call('POST', '/api/medcoel/admin/questions/bulk', { ids: [q.id], action: 'scope', scope: 'campus', campuses: [kampusB.id] }, admin.token, 200);
 
     // Aksi massal per mata kuliah dari halaman admin Drilling: draf -> tayang -> pindah -> hapus.
     const bulk = (body) => call('POST', '/api/medcoel/admin/drilling/bulk', { subject: dsub.id, ...body }, admin.token, 200);
@@ -855,12 +863,14 @@ await langkah('drilling khusus kampus: pengajuan "kampus saja" lewat /drilling-i
     assert.equal(adm.campusPublished, 2);
     assert.equal(adm.subjects.find((x) => x.id === dsub.id).campusOnly, 2);
 
-    // Setelah ada soal General, kampus lain ikut melihat menu, tetapi hanya soal General; kampus B melihat keduanya.
+    // Soal General tidak masuk Kampusmu: kampus lain tetap tanpa menu dan kampus B hanya melihat soal kampusnya; admin melihat semuanya.
     await call('POST', '/api/medcoel/agent/import', { subject: dsub.slug, drilling: true, questions: [{ type: 'A', text: 'Drilling umum 1?', options: [{ text: 'a', correct: true }, 'b'] }] }, agent.token, 200);
     const b2 = (await call('GET', '/api/medcoel/drilling', undefined, userC.token, 200)).data;
-    assert.deepEqual(b2.subjects.map((x) => [x.questionCount, x.campusQuestionCount]), [[1, 0]]);
+    assert.equal(b2.available, false);
+    assert.deepEqual(b2.subjects, []);
+    assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, admin.token, 200)).data.subjects.map((x) => [x.questionCount, x.campusQuestionCount]), [[3, 2]]);
     const a2 = (await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data;
-    assert.deepEqual(a2.subjects.map((x) => [x.questionCount, x.campusQuestionCount]), [[3, 2]]);
+    assert.deepEqual(a2.subjects.map((x) => [x.questionCount, x.campusQuestionCount]), [[2, 2]]);
     // Atur siapa yang melihat dari halaman admin Drilling: pilih kelompok (General atau kampus) lalu kampus barunya.
     const bulkScope = (body, expect = 200) => call('POST', '/api/medcoel/admin/drilling/bulk', { subject: dsub.id, action: 'scope', ...body }, admin.token, expect);
     await bulkScope({ scope: 'campus', campuses: [] }, 400);
@@ -871,8 +881,8 @@ await langkah('drilling khusus kampus: pengajuan "kampus saja" lewat /drilling-i
     assert.deepEqual(c2.subjects.map((x) => [x.questionCount, x.campusQuestionCount]), [[1, 1]]);
     assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data.subjects.map((x) => x.questionCount), [2]);
     assert.equal((await bulkScope({ only: kampusB.id, scope: 'all' })).data.count, 2); // soal kampus B -> General
-    assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userC.token, 200)).data.subjects.map((x) => x.questionCount), [3]);
-    assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data.subjects.map((x) => x.questionCount), [2]);
+    assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userC.token, 200)).data.subjects.map((x) => x.questionCount), [1]); // soal General tidak ikut
+    assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data.subjects, []);
     assert.equal((await bulkScope({ only: 'all', scope: 'campus', campuses: [kampusB.id] })).data.count, 2); // kembali ke kampus B
     assert.equal((await bulkScope({ only: kampusA.id, scope: 'campus', campuses: [kampusB.id] })).data.count, 1);
 

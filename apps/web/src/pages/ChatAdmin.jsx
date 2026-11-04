@@ -176,7 +176,7 @@ function UploadFlow({ sid, onStatus, onMenu }) {
 
       {at('kind') && <Bubble><b>PDF ini isinya apa?</b> Pilih sesuai isi file, ya.</Bubble>}
       {step === 'kind' && <Chips options={KINDS} onPick={(o) => answer('kind', o, o.value === 'materi' ? 'scope' : 'hasKey')} />}
-      {step === 'kind' && <p className="chat-aside">PPT materi: ekspor dulu PPT-nya ke PDF (Simpan sebagai PDF), satu PDF per PPT. Setelah dicek, slide-nya tayang di Drilling lengkap dengan penjelasan.</p>}
+      {step === 'kind' && <p className="chat-aside">PPT materi: ekspor dulu PPT-nya ke PDF (Simpan sebagai PDF), satu PDF per PPT. Setelah dicek, slide-nya tayang di Kampusmu lengkap dengan penjelasan.</p>}
       {at('hasKey') && <Answer text={a.kindLabel} onChange={() => goBack('kind')} disabled={step === 'kind' || busy || step === 'sent'} />}
 
       {!materi && at('hasKey') && <Bubble><b>Apakah PDF sudah memuat pembahasan dan kunci jawaban?</b></Bubble>}
@@ -243,7 +243,7 @@ function UploadFlow({ sid, onStatus, onMenu }) {
           <p className="font-semibold">Ringkasan pengajuan</p>
           <dl className="chat-summary">
             <dt>Mata kuliah</dt><dd>{draft.subjectName}</dd>
-            <dt>Isi PDF</dt><dd>{draft.contentKind === 'materi' ? 'PPT materi (tayang di Drilling)' : 'Soal'}</dd>
+            <dt>Isi PDF</dt><dd>{draft.contentKind === 'materi' ? 'PPT materi (tayang di Kampusmu)' : 'Soal'}</dd>
             {draft.contentKind !== 'materi' && <><dt>Kunci & pembahasan</dt><dd>{draft.hasKey ? 'Sudah ada di PDF' : 'Belum ada'}</dd><dt>Bahasa</dt><dd>{a.languageLabel}</dd></>}
             <dt>Dapat dilihat</dt><dd>{draft.scope === 'campus' ? `Hanya pengguna ${draft.campusName}` : 'General, semua pengguna'}</dd>
             <dt>File</dt><dd>{draft.files.map((f) => f.name).join(', ')}</dd>

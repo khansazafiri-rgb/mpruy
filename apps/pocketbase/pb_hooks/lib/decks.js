@@ -45,18 +45,24 @@ function visibleTo(rec, user) {
   return !!campus && rec.getStringSlice("campuses").indexOf(campus) >= 0;
 }
 
-/** Berkas materi tayang yang terlihat pengguna, tanpa isi slide. subjectId opsional. */
-function listFor(app, user, subjectId) {
+/**
+ * Berkas materi tayang yang terlihat pengguna, tanpa isi slide. subjectId opsional.
+ * opts.kampusOnly = true ("Kampusmu"): hanya berkas khusus kampus pengguna, tanpa General.
+ * Admin (tanpa kampus) melihat semua berkas tayang, termasuk yang khusus kampus lain (pratinjau).
+ */
+function listFor(app, user, subjectId, opts) {
   const filter = "status = 'published'" + (subjectId ? " && subject = {:s}" : "");
   const recs = app.findRecordsByFilter("drilling_decks", filter, "sortOrder,created", 0, 0, subjectId ? { s: subjectId } : {});
-  return recs.filter((r) => visibleTo(r, user));
+  if (user && u.roleOf(user) === "admin") return recs;
+  const kampusOnly = !!(opts && opts.kampusOnly === true);
+  return recs.filter((r) => visibleTo(r, user) && (!kampusOnly || r.getString("scope") === "campus"));
 }
 
 /** Per mata kuliah: jumlah berkas, jumlah slide, dan berapa yang khusus kampus pengguna. */
-function countsFor(app, user) {
+function countsFor(app, user, opts) {
   const out = {};
   const subjects = {};
-  listFor(app, user).forEach((r) => {
+  listFor(app, user, undefined, opts).forEach((r) => {
     const s = r.getString("subject");
     if (subjects[s] === undefined) {
       try { subjects[s] = !app.findRecordById("subjects", s).getBool("hidden"); } catch (_) { subjects[s] = false; }
@@ -70,7 +76,6 @@ function countsFor(app, user) {
   return out;
 }
 
-/** Jumlah berkas materi tayang: General (`total`) dan khusus kampus pengguna (`mine`). Untuk menu Drilling. */
 function status(app, user) {
   const base = "SELECT COUNT(*) AS n FROM drilling_decks d JOIN subjects s ON s.id = d.subject WHERE d.status = 'published' AND s.hidden = FALSE AND ";
   const count = (cond, params) => {

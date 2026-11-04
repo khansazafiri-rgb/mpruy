@@ -1,4 +1,4 @@
-// Drilling satu mata kuliah: materi (slide PPT dengan penjelasan) dan latihan soal, dari General dan kampusmu.
+// Kampusmu satu mata kuliah: materi (slide PPT dengan penjelasan) dan latihan soal, hanya milik kampus pengguna.
 import clsx from 'clsx';
 import { ArrowLeft, BookOpen, BookOpenText, Clock, Crosshair, Layers, School, Zap } from 'lucide-react';
 import { useState } from 'react';
@@ -29,7 +29,7 @@ function DeckCard({ deck }) {
       <span className="deck-card-body">
         <span className="font-display text-[17px] font-bold leading-snug text-ink">{deck.title}</span>
         {deck.description && <span className="deck-card-desc">{deck.description}</span>}
-        <span className="deck-card-meta">{deck.scope === 'campus' ? <><School size={13} aria-hidden /> Kampusmu</> : 'General'}</span>
+        <span className="deck-card-meta"><><School size={13} aria-hidden /> {deck.scope === 'campus' ? 'Kampusmu' : 'General'}</></span>
       </span>
     </Link>
   );
@@ -54,7 +54,7 @@ export default function DrillingSubject() {
   };
 
   if (loading) return <PageLoader />;
-  if (error) return <div className="space-y-4"><Alert>{error.status === 404 ? 'Mata kuliah ini belum punya file Drilling untukmu.' : error.message}</Alert><Link to="/drilling" className="btn-secondary inline-flex"><ArrowLeft size={16} aria-hidden /> Kembali ke Drilling</Link></div>;
+  if (error) return <div className="space-y-4"><Alert>{error.status === 404 ? 'Mata kuliah ini belum punya file dari kampusmu.' : error.message}</Alert><Link to="/drilling" className="btn-secondary inline-flex"><ArrowLeft size={16} aria-hidden /> Kembali ke Kampusmu</Link></div>;
 
   const { subject, decks, questionCount, campusQuestionCount, answeredCount } = data;
   const sets = data.sets || [];
@@ -66,12 +66,12 @@ export default function DrillingSubject() {
       <header className="page-head flex flex-wrap items-center gap-5">
         <span className={clsx('sticker-tone subject-tile-art !h-24 !w-24 shrink-0', toneClass(subject.illustrationKey || subject.slug))}><Illustration subject={subject} className="h-full w-full" /></span>
         <div className="min-w-0 flex-1">
-          <Link to="/drilling" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand"><ArrowLeft size={15} aria-hidden /> Drilling</Link>
+          <Link to="/drilling" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand"><ArrowLeft size={15} aria-hidden /> Kampusmu</Link>
           <h1 className="page-title mt-2 !text-[30px] sm:!text-[38px]">{subject.name}</h1>
           <p className="mt-2 text-[15px] text-ink-muted">{decks.length} materi · {slides} slide · {questionCount} soal</p>
         </div>
       </header>
-      {data.preview && <Alert kind="info">Pratinjau admin: Drilling belum tampil untuk pengguna.</Alert>}
+      {data.preview && <Alert kind="info">Pratinjau admin: Kampusmu belum tampil untuk pengguna.</Alert>}
       <Alert>{err}</Alert>
 
       <section aria-labelledby="deck-title" className="space-y-4">
@@ -83,7 +83,7 @@ export default function DrillingSubject() {
 
       <section aria-labelledby="soal-title" className="space-y-4">
         <h2 id="soal-title" className="font-display text-[22px] font-bold">Latihan soal</h2>
-        {!questionCount ? <EmptyState icon={Crosshair} title="Belum ada soal Drilling">Soal untuk mata kuliah ini belum tersedia. Materinya tetap bisa dipelajari di atas.</EmptyState> : (
+        {!questionCount ? <EmptyState icon={Crosshair} title="Belum ada soal dari kampusmu">Soal kampusmu untuk mata kuliah ini belum tersedia. Materinya tetap bisa dipelajari di atas.</EmptyState> : (
           <div className="card-chunky tone-surface space-y-4 p-5">
             <p className="text-[15px] text-ink-muted"><b className="text-ink">{answeredCount || 0}</b> dari {questionCount} soal sudah kamu kerjakan{campusQuestionCount ? ` · ${campusQuestionCount} soal khusus kampusmu` : ''}.</p>
             <ProgressBar value={answeredCount} max={questionCount || 1} className="tone-track !h-2" color="tone-fill" label={`Progres drilling ${subject.name}`} />

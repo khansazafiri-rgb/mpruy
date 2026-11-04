@@ -1,6 +1,6 @@
-// DRILLING: "file kampusmu" per mata kuliah: materi (slide PPT dengan penjelasan) dan soal tanpa BAB, General atau khusus
-// kampus pengguna. Memilih mata kuliah membuka halamannya (materi + latihan soal). Menu ini hanya muncul bila admin
-// menyalakannya dan sudah ada materi atau soalnya.
+// KAMPUSMU (dulu "Drilling"): file milik kampus pengguna per mata kuliah, yaitu materi (slide PPT dengan penjelasan) dan
+// soal tanpa BAB yang khusus kampusnya. Konten General tidak tampil di sini. Memilih mata kuliah membuka halamannya
+// (materi + latihan soal). Menu ini hanya muncul bila admin menyalakannya dan kampus pengguna sudah punya materi atau soal.
 import clsx from 'clsx';
 import { BookOpenText, Crosshair, Layers, School, Star, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -17,15 +17,15 @@ export default function Drilling() {
     <div className="space-y-8">
       <header className="page-head flex flex-wrap items-end justify-between gap-5">
         <div className="min-w-0">
-          <p className="eyebrow mb-3">File kampusmu</p>
-          <h1 className="page-title">Drilling</h1>
-          <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-ink-muted">Materi PPT dan soal per mata kuliah dari kampusmu dan General. Pilih mata kuliah untuk membaca materinya atau langsung berlatih.</p>
+          <p className="eyebrow mb-3">Milik kampusmu</p>
+          <h1 className="page-title">Kampusmu</h1>
+          <p className="mt-3 max-w-xl text-[17px] leading-relaxed text-ink-muted">Materi PPT dan soal per mata kuliah yang dikirim teman sekampusmu. Pilih mata kuliah untuk membaca materinya atau langsung berlatih.</p>
         </div>
       </header>
       <Alert>{error?.message}</Alert>
-      {data?.preview && <Alert kind="info">Pratinjau admin: menu Drilling belum tampil untuk pengguna. Nyalakan sakelarnya dan tayangkan materi atau soal di Admin &gt; Drilling.</Alert>}
+      {data?.preview && <Alert kind="info">Pratinjau admin: menu Kampusmu belum tampil untuk pengguna. Nyalakan sakelarnya dan tayangkan materi atau soal di Admin &gt; Drilling. Admin melihat semua kampus; pengguna hanya melihat milik kampusnya.</Alert>}
       {loading ? <PageLoader /> : !items.length ? (
-        <EmptyState icon={Crosshair} title="Drilling belum dibuka">Materi dan soal Drilling akan muncul di sini setelah tersedia.<Link to="/mata-kuliah" className="btn-secondary mt-4 inline-flex">Latihan per BAB</Link></EmptyState>
+        <EmptyState icon={Crosshair} title="Belum ada file untuk kampusmu">Materi dan soal dari kampusmu akan muncul di sini setelah dikirim dan ditayangkan. Pastikan kampusmu sudah terisi di Profil.<Link to="/mata-kuliah" className="btn-secondary mt-4 inline-flex">Latihan per BAB</Link></EmptyState>
       ) : (
         <>
           <MascotTip mascot="kori" mood="wave" title="Punya PPT kuliah?">Kirim lewat Chat Admin &gt; Upload soal, pilih “PPT materi”, dan teman sekampusmu bisa ikut belajar dari slide itu.</MascotTip>
@@ -41,7 +41,7 @@ export default function Drilling() {
                     <span className="subject-go" aria-hidden><Zap size={16} /></span>
                   </span>
                   <span className="mt-3 flex flex-wrap items-center gap-2 text-[13px] font-semibold text-[rgb(var(--tone-fg))]">
-                    <span className="subject-meta">{own ? <><School size={12} aria-hidden /> {own === s.questionCount + s.deckCount ? 'Kampusmu' : 'General + kampusmu'}</> : 'General'}</span>
+                    <span className="subject-meta"><School size={12} aria-hidden /> {own || data?.kampusOnly ? 'Kampusmu' : 'Semua kampus'}</span>
                   </span>
                   <span className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] font-semibold text-ink-muted">
                     {s.deckCount > 0 && <span className="inline-flex items-center gap-1"><BookOpenText size={14} aria-hidden /> <b className="text-ink">{s.deckCount}</b> materi · {s.slideCount} slide</span>}

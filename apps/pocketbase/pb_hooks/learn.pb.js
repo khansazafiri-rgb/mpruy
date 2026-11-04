@@ -163,22 +163,27 @@ routerAdd("GET", "/api/medcoel/drilling", (e) => {
   const learn = require(`${__hooks}/lib/learn.js`);
   const user = u.requireUser(e);
   const st = learn.drillingStatus(e.app, user);
+  const admin = u.roleOf(user) === "admin";
+  // "Kampusmu": pengguna hanya melihat milik kampusnya (tanpa General). Admin melihat semuanya.
+  const kampusOnly = !admin;
+  // Admin: pratinjau saat sakelar mati; saat menyala melihat semua kampus, juga yang belum punya apa pun.
+  const open = admin ? st.enabled : st.kampusAvailable;
   // Admin boleh melihat Drilling walau belum dibuka untuk pengguna (pratinjau).
-  const preview = !st.available && u.roleOf(user) === "admin";
-  if (!st.available && !preview) return e.json(200, { enabled: st.enabled, available: false, subjects: [] });
+  const preview = !open && admin;
+  if (!open && !preview) return e.json(200, { enabled: st.enabled, available: false, subjects: [] });
   const chapterSubject = {};
   e.app.findRecordsByFilter("chapters", "drilling = true && hidden = false", "", 0, 0).forEach((c) => { chapterSubject[c.id] = c.getString("subject"); });
   const count = {};
   const seen = {};
   const ownCampus = {};
-  learn.pool(e.app, user, { drilling: "only" }).forEach((it) => {
+  learn.pool(e.app, user, { drilling: "only", campusOnly: kampusOnly }).forEach((it) => {
     const s = chapterSubject[it.chapter];
     count[s] = (count[s] || 0) + 1;
     if (it.seen) seen[s] = (seen[s] || 0) + 1;
     if (it.scope === "campus") ownCampus[s] = (ownCampus[s] || 0) + 1;
   });
   // Berkas materi (slide) ikut dihitung: mata kuliah yang hanya punya materi juga tampil.
-  const deckCount = require(`${__hooks}/lib/decks.js`).countsFor(e.app, user);
+  const deckCount = require(`${__hooks}/lib/decks.js`).countsFor(e.app, user, { kampusOnly: kampusOnly });
   const out = e.app.findRecordsByFilter("subjects", "hidden = false", "order,name", 200, 0)
     .filter((s) => count[s.id] || deckCount[s.id])
     .map((s) => ({
@@ -199,7 +204,7 @@ routerAdd("GET", "/api/medcoel/drilling", (e) => {
       order: s.getInt("order"),
     }));
   out.sort(require(`${__hooks}/lib/catalogOrder.js`).byPreference);
-  return e.json(200, { enabled: st.enabled, available: st.available, preview: preview, subjects: out });
+  return e.json(200, { enabled: st.enabled, available: open, preview: preview, kampusOnly: kampusOnly, subjects: out });
 });
 
 // Mata kuliah baru langsung punya BAB Drilling-nya (admin bisa menambah soal Drilling tanpa menunggu impor pertama).
@@ -215,13 +220,15 @@ routerAdd("POST", "/api/medcoel/attempts/drilling", (e) => {
   const user = u.requireUser(e);
   const b = u.body(e);
   const st = learn.drillingStatus(e.app, user);
-  if (!st.available && u.roleOf(user) !== "admin") throw new NotFoundError("Drilling belum dibuka.");
+  // "Kampusmu": latihan hanya dari soal khusus kampus pengguna. Admin tidak dibatasi.
+  const kampusOnly = u.roleOf(user) !== "admin";
+  if (!st.kampusAvailable && u.roleOf(user) !== "admin") throw new NotFoundError("Drilling belum dibuka.");
   let subject;
   try { subject = e.app.findRecordById("subjects", String(b.subject || "")); } catch (_) { subject = null; }
   if (!subject || subject.getBool("hidden")) throw new NotFoundError("Mata kuliah tidak ditemukan.");
   // `set` (judul bagian, "" = soal lainnya) membatasi latihan ke satu bagian; tanpa `set` semua soal Drilling mata kuliah ini.
   const bySet = b.set !== undefined && b.set !== null;
-  const items = learn.pool(e.app, user, bySet ? { subject: subject.id, drilling: "only", setTitle: String(b.set) } : { subject: subject.id, drilling: "only" });
+  const items = learn.pool(e.app, user, bySet ? { subject: subject.id, drilling: "only", setTitle: String(b.set), campusOnly: kampusOnly } : { subject: subject.id, drilling: "only", campusOnly: kampusOnly });
   if (!items.length) throw new BadRequestError(bySet ? "Bagian ini belum punya soal." : "Mata kuliah ini belum punya soal Drilling.");
   // Langsung mulai: tanpa jumlah, 20 soal (atau semua bila kurang); jumlah berlebih dipotong ke yang tersedia.
   const want = b.count === "all" ? 100 : parseInt(b.count, 10) || 20;

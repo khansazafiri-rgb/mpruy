@@ -51,7 +51,8 @@ routerAdd("GET", "/api/medcoel/me", (e) => {
   out.nextCampusChangeAt = changed && days > 0 ? new Date(changed.getTime() + days * 86400000).toISOString() : "";
   const drill = require(`${__hooks}/lib/learn.js`).drillingStatus(e.app, user);
   // Admin selalu melihat menu Drilling (pratinjau) walau belum dibuka untuk pengguna.
-  out.drillingAvailable = drill.available || u.roleOf(user) === "admin";
+  // Menu "Kampusmu" (Drilling): hanya muncul bila kampus pengguna punya materi atau soal tayang. Admin selalu melihatnya.
+  out.drillingAvailable = drill.kampusAvailable || u.roleOf(user) === "admin";
   out.drillingPreview = !drill.available && u.roleOf(user) === "admin";
   out.unreadNotifications = e.app.countRecords("notifications", $dbx.exp("user = {:u} AND read = FALSE", { u: user.id }));
   return e.json(200, out);
