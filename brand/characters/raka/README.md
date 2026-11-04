@@ -66,7 +66,7 @@ rakaSvg(raka('senang'));      // mata "^ ^", mulut terbuka, dua tangan terkepal
 rakaSvg(raka('sedih'));       // alis turun, mulut cemberut
 ```
 
-`raka(ekspresi, pose, perubahan)` menggabungkan **ekspresi wajah** (`netral kaget berpikir senang menunjuk sedih perih batuk khawatir lega pingsan bingung lapar ngantuk`) dan **pose** (`netral kaget berpikir menunjuk senang sapa batuk usap_mata pegang_perut jalan berhenti jongkok`). Keduanya bisa dicampur dan setiap nilai bisa diganti:
+`raka(ekspresi, pose, perubahan)` menggabungkan **ekspresi wajah** (`netral kaget berpikir senang menunjuk sedih perih batuk khawatir lega pingsan bingung lapar ngantuk melongo mengerti`) dan **pose** (`netral kaget berpikir menunjuk senang sapa batuk usap_mata pegang_perut pegang_buku jalan berhenti jongkok`). Keduanya bisa dicampur dan setiap nilai bisa diganti:
 
 ```js
 raka('senang', 'sapa');                              // senang sambil melambai
@@ -238,3 +238,24 @@ rakaSvg(idle(raka('lapar', 'pegang_perut', { bags: 0.3 }), t), { outfit: 'harian
 rakaSvg(idle(raka('ngantuk', 'jalan', { bags: 0.6 }), t), { outfit: 'harian' });        // begadang
 ```
 Karakter tubuh yang menemani Raka di video ini ada di `brand/characters/grelin` dan `brand/characters/jambi` (lihat `brand/characters/README.md`).
+
+## Melongo, mengerti, dan pegang_buku (video "Kok dia sekali dengar langsung paham?")
+
+Tambahan tanpa mengubah desain kanonik (SVG lama tidak berubah; `build.mjs` membuat `svg/raka-melongo.svg` dan `svg/raka-mengerti.svg`, plus varian wajah):
+
+| Nama | Apa |
+|---|---|
+| ekspresi `melongo` | Mata terbuka agak lebar menatap kosong, alis datar, mulut sedikit menganga. Bengong, bukan takut. Cocok dengan `gazeY: 0.4` menatap catatan. |
+| ekspresi `mengerti` | Mata berbinar (`sparkle`), alis naik, senyum kecil yang melebar: "oh, begitu!". Tidak berlebihan seperti `senang`. |
+| pose `pegang_buku` | Dua tangan setinggi dada, siap memegang buku/catatan. Bukunya digambar terpisah oleh adegan di atas badan (lihat `video/kok-dia-paham/stage`). |
+
+```js
+rakaSvg(raka('melongo', 'pegang_buku', { gazeY: 0.5, bags: 0.2 }), { outfit: 'kuliah' });   // bengong menatap catatan
+rakaSvg(raka('mengerti', 'netral'), { outfit: 'santai' });                                   // mulai paham
+```
+
+### Palet dosen (video "Kok dia sekali dengar langsung paham?")
+`PALETTE_DOSEN` (di `raka.js`): rambut abu, kulit sawo, kemeja ungu tua, celana gelap. Rig dan wajah sama dengan Raka (bukan karakter baru); dipakai untuk dosen yang menjelaskan di papan tulis:
+```js
+rakaSvg(raka('netral', 'menunjuk'), { palette: PALETTE_DOSEN });   // dosen menunjuk papan
+```

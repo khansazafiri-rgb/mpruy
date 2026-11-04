@@ -45,6 +45,11 @@ export const PALETTE = {
  * Palet untuk latar gelap: rambut dan celana navy diangkat sedikit supaya tidak lebur ke latar,
  * warna lain sama. Pakai: rakaSvg(state, { palette: PALETTE_ON_DARK }).
  */
+/**
+ * Palet "dosen": rig yang sama dengan palet lain (rambut abu, kulit sawo, kemeja ungu tua), untuk figur dosen di kelas FK.
+ * Pakai: rakaSvg(state, { palette: PALETTE_DOSEN }). Bukan karakter baru: wajah dan proporsi sama dengan Raka, hanya warna berbeda.
+ */
+export const PALETTE_DOSEN = { skin: '#B97D52', skinShade: '#A66C44', hair: '#9A9AA8', sweater: '#7C5A9E', sleeveFront: '#6B4B8C', pants: '#3B3446', shoes: '#2B2630' };
 export const PALETTE_ON_DARK = { hair: '#3A4468', pants: '#38426A', sweater: '#23978F', sleeveFront: '#1F8780' };
 
 /**
@@ -124,6 +129,10 @@ export const EXPRESSIONS = {
   lapar:    { happyEyes: 0, wide: 0.7, browL: { y: -8, rot: 13 }, browR: { y: -8, rot: -13 }, mouth: { w: 11, up: 2, lo: 13 } },
   // ngantuk: kelopak setengah turun, alis turun sedikit, mulut menguap kecil
   ngantuk:  { happyEyes: 0, wide: 0, blink: 0.58, browL: { y: 3, rot: 6 }, browR: { y: 3, rot: -6 }, mouth: { w: 10, up: 2, lo: 14 } },
+  // melongo: mata terbuka agak lebar menatap kosong, alis datar, mulut sedikit menganga (bengong, bukan takut)
+  melongo:  { happyEyes: 0, wide: 0.3, browL: { y: -2, rot: 0 }, browR: { y: -2, rot: 0 }, mouth: { w: 10, up: 0, lo: 20 } },
+  // mengerti: mata berbinar, alis naik, senyum kecil yang melebar ("oh, begitu!")
+  mengerti: { happyEyes: 0, wide: 0.25, sparkle: 1, browL: { y: -9, rot: 3 }, browR: { y: -9, rot: -3 }, mouth: { w: 20, up: 5, lo: 22 } },
 };
 
 /** Pose badan dan lengan. Koordinat pergelangan (wx, wy) dan lekukan siku (bend, px). */
@@ -163,6 +172,12 @@ export const POSES = {
     lean: 1,
     armL: { wx: 178, wy: 520, ex: 84, ey: 500, finger: 0, front: 1 },
     armR: { wx: 224, wy: 530, ex: 318, ey: 504, finger: 0, front: 1 },
+  },
+  // dua tangan memegang buku/catatan setinggi dada (bukunya digambar terpisah di atas badan oleh adegan)
+  pegang_buku: {
+    lean: 1,
+    armL: { wx: 150, wy: 496, ex: 78, ey: 524, finger: 0, front: 1 },
+    armR: { wx: 250, wy: 496, ex: 322, ey: 524, finger: 0, front: 1 },
   },
   // tangan kanan mengusap mata kanan
   usap_mata: {

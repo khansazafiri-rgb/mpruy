@@ -246,3 +246,11 @@ test('pakaian kuliah (ransel) dan santai: warna baru, kepala/patch/kaki tetap, r
     assert.doesNotMatch(svg, /NaN|undefined/);
   }
 });
+
+test('melongo, mengerti, dan pose pegang_buku tergambar tanpa mengubah desain kanonik', async () => {
+  const { raka, rakaSvg, EXPRESSIONS, POSES } = await import('./raka.js');
+  for (const e of ['melongo', 'mengerti']) assert.ok(EXPRESSIONS[e], e);
+  assert.ok(POSES.pegang_buku);
+  const base = rakaSvg(raka('netral'));
+  for (const [e, p, o] of [['melongo', 'pegang_buku', { gazeY: 0.5 }], ['mengerti', 'netral', {}], ['melongo', 'netral', {}]]) { const s = rakaSvg(raka(e, p, o), { outfit: 'kuliah' }); assert.match(s, /^<svg /); assert.ok(!/NaN|undefined/.test(s)); assert.notEqual(s, base); }
+});
