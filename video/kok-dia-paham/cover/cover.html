@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Kok dia sekali dengar langsung paham?</title>
+<link rel="stylesheet" href="../stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#c{width:1080px;height:1920px;position:relative;overflow:hidden}svg{display:block}</style></head>
+<body><div id="c"></div>
+<script type="module">
+import { raka, rakaSvg } from '../../../brand/characters/raka/raka.js';
+import { teman, temanSvg } from '../../../brand/characters/teman/teman.js';
+import { createMascot, poseMascot } from '../stage/mascot.js';
+import * as A from '../stage/art.js';
+import * as K from '../stage/artK.js';
+await document.fonts.load('800 60px "Plus Jakarta Sans"'); await document.fonts.ready;
+const { R, C, E, P, L, T, f1 } = A;
+const guide = new URLSearchParams(location.search).has('guide');
+const logo = await new Promise(async (r) => { const b = await (await fetch('../stage/logo-full.webp')).blob(); const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(b); });
+const KO = createMascot(await (await fetch('../stage/kori.svg')).text(), 'kori'); poseMascot(KO, { t: 1.4, mood: 'happy', env: 0, wave: 1, phase: 0.5 });
+const STAND = { on: 1, dir: 1, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } };
+const FY = 1590, KK = 1.0, RX = 330, TX = 770, DY = 1378;
+// Raka: bingung menatap catatan; sweat; Tala: paham, bulb menyala
+const rs = raka('melongo', 'netral', { legs: STAND, gazeY: 0.55, gazeX: -0.2, tilt: -4, sweat: 0.9, bags: 0.15, mouth: { w: 10, up: -3, lo: 12 },
+  browL: { y: -10, rot: 14 }, browR: { y: -4, rot: -6 },
+  armL: { wx: 150, wy: 540, ex: 92, ey: 500, finger: 0, front: 1 }, armR: { wx: 250, wy: 540, ex: 308, ey: 500, finger: 0, front: 1 } });
+const ts = teman('semangat', 'catat', { armL: { wx: 150, wy: 540, ex: 92, ey: 500, finger: 0, front: 1 }, armR: { wx: 262, wy: 540, ex: 316, ey: 504, finger: 0, front: 1 } });
+const rk = `<g transform="translate(${f1(RX - 200 * KK)} ${f1(FY - 778 * KK)}) scale(${KK})">${rakaSvg(rs, { bare: true, uid: 'rc', outfit: 'kuliah' })}</g>`;
+const tk = `<g transform="translate(${f1(TX - 200 * KK)} ${f1(FY - 778 * KK)}) scale(${KK})">${temanSvg(ts, { bare: true, uid: 'tc' })}</g>`;
+const bg = `<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2D5E8E"/><stop offset="1" stop-color="#14405F"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#g)"/><circle cx="140" cy="560" r="280" fill="rgba(255,255,255,.05)"/><circle cx="960" cy="1100" r="340" fill="rgba(255,255,255,.05)"/>`;
+const board = `<g opacity=".95">${K.board(110, 760, 860, 330, 0)}</g>`;
+const desk = K.deskTop(DY) + K.deskFront(DY);
+const books = K.openBook(RX, DY + 60, 0.62, { cover: '#E8665F', ink: '#C9D4D9' }) + K.openBook(TX, DY + 60, 0.62, { cover: '#1D7B75' }) + K.pencil(TX + 85, DY + 70, 0.9, -20);
+const fx = K.qmarks(RX, 810, 0.4, 1.0, 3) + K.spiral(RX + 150, 905, 0.2, 0.6) + K.bulb(TX, 790, 1.15, 1, 0) + K.spark(TX - 150, 740, 0.8) + K.spark(TX + 150, 780, 0.7);
+const ST = 'stroke="#0A1A2E" stroke-width="18" paint-order="stroke" stroke-linejoin="round"';
+const title = `${T(540, 330, 'KOK DIA SEKALI', '#fff', 108, ST)}${T(540, 446, 'DENGAR LANGSUNG', '#fff', 90, ST)}${T(540, 640, 'PAHAM?', '#F8C038', 188, ST.replace('18', '24'))}`;
+const ks = 0.8; const kori = `<g transform="translate(${f1(960 - 160 * ks)} ${f1(1370 - 290 * ks)}) scale(${ks})">${KO.root.outerHTML}</g>`;
+const lw = 460, lh = lw * 0.31;
+const lg = `<g transform="translate(540 1592)"><rect x="${-lw / 2}" y="${-lh / 2 + 8}" width="${lw}" height="${lh}" rx="${lh / 2}" fill="rgba(0,0,0,.35)"/><rect x="${-lw / 2}" y="${-lh / 2}" width="${lw}" height="${lh}" rx="${lh / 2}" fill="#fff"/><image href="${logo}" x="${-lw * 0.36}" y="${-lw * 0.36 * 0.2015}" width="${lw * 0.72}" height="${lw * 0.72 * 0.2015}"/></g>`;
+const g = guide ? `<rect x="0" y="0" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="1680" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="240" width="1080" height="1440" fill="none" stroke="#0f0" stroke-width="6"/>` : '';
+document.getElementById('c').innerHTML = `<svg width="1080" height="1920" viewBox="0 0 1080 1920">${bg}${board}${rk}${tk}${desk}${books}${fx}${kori}${title}${lg}${g}</svg>`;
+window.__ready = true;
+</script></body></html>

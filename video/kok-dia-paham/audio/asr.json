@@ -1,0 +1,1071 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 2.2,
+   "text": "Emang orang genius itu beneran ada.",
+   "words": [
+    {
+     "w": "Emang",
+     "s": 0.0,
+     "e": 0.48
+    },
+    {
+     "w": "orang",
+     "s": 0.48,
+     "e": 0.7
+    },
+    {
+     "w": "genius",
+     "s": 0.7,
+     "e": 1.0
+    },
+    {
+     "w": "itu",
+     "s": 1.0,
+     "e": 1.34
+    },
+    {
+     "w": "beneran",
+     "s": 1.34,
+     "e": 2.0
+    },
+    {
+     "w": "ada.",
+     "s": 2.0,
+     "e": 2.2
+    }
+   ]
+  },
+  {
+   "start": 2.8,
+   "end": 5.04,
+   "text": "Kok ada yang sekali denger dosyen langsung paham,",
+   "words": [
+    {
+     "w": "Kok",
+     "s": 2.8,
+     "e": 2.98
+    },
+    {
+     "w": "ada",
+     "s": 2.98,
+     "e": 3.22
+    },
+    {
+     "w": "yang",
+     "s": 3.22,
+     "e": 3.44
+    },
+    {
+     "w": "sekali",
+     "s": 3.44,
+     "e": 3.74
+    },
+    {
+     "w": "denger",
+     "s": 3.74,
+     "e": 4.08
+    },
+    {
+     "w": "dosyen",
+     "s": 4.08,
+     "e": 4.38
+    },
+    {
+     "w": "langsung",
+     "s": 4.38,
+     "e": 4.58
+    },
+    {
+     "w": "paham,",
+     "s": 4.58,
+     "e": 5.04
+    }
+   ]
+  },
+  {
+   "start": 5.34,
+   "end": 8.08,
+   "text": "sementara kamu udah baca 3 kali, masih bengong?",
+   "words": [
+    {
+     "w": "sementara",
+     "s": 5.34,
+     "e": 5.74
+    },
+    {
+     "w": "kamu",
+     "s": 5.74,
+     "e": 6.02
+    },
+    {
+     "w": "udah",
+     "s": 6.02,
+     "e": 6.28
+    },
+    {
+     "w": "baca",
+     "s": 6.28,
+     "e": 6.5
+    },
+    {
+     "w": "3",
+     "s": 6.5,
+     "e": 6.72
+    },
+    {
+     "w": "kali,",
+     "s": 6.72,
+     "e": 7.02
+    },
+    {
+     "w": "masih",
+     "s": 7.46,
+     "e": 7.76
+    },
+    {
+     "w": "bengong?",
+     "s": 7.76,
+     "e": 8.08
+    }
+   ]
+  },
+  {
+   "start": 10.22,
+   "end": 11.38,
+   "text": "Haa, tenang.",
+   "words": [
+    {
+     "w": "Haa,",
+     "s": 10.22,
+     "e": 10.82
+    },
+    {
+     "w": "tenang.",
+     "s": 10.88,
+     "e": 11.38
+    }
+   ]
+  },
+  {
+   "start": 11.9,
+   "end": 14.48,
+   "text": "Belum tentu temenmu punya otak yang diam-diam diupkrit.",
+   "words": [
+    {
+     "w": "Belum",
+     "s": 11.9,
+     "e": 12.12
+    },
+    {
+     "w": "tentu",
+     "s": 12.12,
+     "e": 12.4
+    },
+    {
+     "w": "temenmu",
+     "s": 12.4,
+     "e": 12.74
+    },
+    {
+     "w": "punya",
+     "s": 12.74,
+     "e": 12.96
+    },
+    {
+     "w": "otak",
+     "s": 12.96,
+     "e": 13.22
+    },
+    {
+     "w": "yang",
+     "s": 13.22,
+     "e": 13.42
+    },
+    {
+     "w": "diam",
+     "s": 13.42,
+     "e": 13.7
+    },
+    {
+     "w": "-diam",
+     "s": 13.7,
+     "e": 14.0
+    },
+    {
+     "w": "diupkrit.",
+     "s": 14.0,
+     "e": 14.48
+    }
+   ]
+  },
+  {
+   "start": 15.02,
+   "end": 18.0,
+   "text": "Bisa jadi, dia sudah punya bekal dari materi sebelumnya.",
+   "words": [
+    {
+     "w": "Bisa",
+     "s": 15.02,
+     "e": 15.36
+    },
+    {
+     "w": "jadi,",
+     "s": 15.36,
+     "e": 15.68
+    },
+    {
+     "w": "dia",
+     "s": 16.02,
+     "e": 16.16
+    },
+    {
+     "w": "sudah",
+     "s": 16.16,
+     "e": 16.36
+    },
+    {
+     "w": "punya",
+     "s": 16.36,
+     "e": 16.58
+    },
+    {
+     "w": "bekal",
+     "s": 16.58,
+     "e": 16.96
+    },
+    {
+     "w": "dari",
+     "s": 16.96,
+     "e": 17.18
+    },
+    {
+     "w": "materi",
+     "s": 17.18,
+     "e": 17.52
+    },
+    {
+     "w": "sebelumnya.",
+     "s": 17.52,
+     "e": 18.0
+    }
+   ]
+  },
+  {
+   "start": 18.36,
+   "end": 19.94,
+   "text": "Jadi saat mendapat informasi baru,",
+   "words": [
+    {
+     "w": "Jadi",
+     "s": 18.36,
+     "e": 18.64
+    },
+    {
+     "w": "saat",
+     "s": 18.64,
+     "e": 18.86
+    },
+    {
+     "w": "mendapat",
+     "s": 18.86,
+     "e": 19.18
+    },
+    {
+     "w": "informasi",
+     "s": 19.18,
+     "e": 19.66
+    },
+    {
+     "w": "baru,",
+     "s": 19.66,
+     "e": 19.94
+    }
+   ]
+  },
+  {
+   "start": 20.34,
+   "end": 23.0,
+   "text": "otaknya punya sesuatu untuk menghubungkan informasi itu.",
+   "words": [
+    {
+     "w": "otaknya",
+     "s": 20.34,
+     "e": 20.76
+    },
+    {
+     "w": "punya",
+     "s": 20.76,
+     "e": 20.94
+    },
+    {
+     "w": "sesuatu",
+     "s": 20.94,
+     "e": 21.46
+    },
+    {
+     "w": "untuk",
+     "s": 21.46,
+     "e": 21.7
+    },
+    {
+     "w": "menghubungkan",
+     "s": 21.7,
+     "e": 22.28
+    },
+    {
+     "w": "informasi",
+     "s": 22.28,
+     "e": 22.78
+    },
+    {
+     "w": "itu.",
+     "s": 22.78,
+     "e": 23.0
+    }
+   ]
+  },
+  {
+   "start": 24.06,
+   "end": 26.58,
+   "text": "Sementara, kalau konsep dasarnya masih asing,",
+   "words": [
+    {
+     "w": "Sementara,",
+     "s": 24.06,
+     "e": 24.66
+    },
+    {
+     "w": "kalau",
+     "s": 25.02,
+     "e": 25.22
+    },
+    {
+     "w": "konsep",
+     "s": 25.22,
+     "e": 25.56
+    },
+    {
+     "w": "dasarnya",
+     "s": 25.56,
+     "e": 25.86
+    },
+    {
+     "w": "masih",
+     "s": 25.86,
+     "e": 26.08
+    },
+    {
+     "w": "asing,",
+     "s": 26.08,
+     "e": 26.58
+    }
+   ]
+  },
+  {
+   "start": 26.58,
+   "end": 30.02,
+   "text": "kamu mungkin perlu waktu lebih untuk menyusunya satu persatu.",
+   "words": [
+    {
+     "w": "kamu",
+     "s": 26.58,
+     "e": 27.22
+    },
+    {
+     "w": "mungkin",
+     "s": 27.22,
+     "e": 27.54
+    },
+    {
+     "w": "perlu",
+     "s": 27.54,
+     "e": 27.76
+    },
+    {
+     "w": "waktu",
+     "s": 27.76,
+     "e": 28.0
+    },
+    {
+     "w": "lebih",
+     "s": 28.0,
+     "e": 28.34
+    },
+    {
+     "w": "untuk",
+     "s": 28.34,
+     "e": 28.68
+    },
+    {
+     "w": "menyusunya",
+     "s": 28.68,
+     "e": 29.2
+    },
+    {
+     "w": "satu",
+     "s": 29.2,
+     "e": 29.56
+    },
+    {
+     "w": "persatu.",
+     "s": 29.56,
+     "e": 30.02
+    }
+   ]
+  },
+  {
+   "start": 31.1,
+   "end": 35.62,
+   "text": "Perhatian dan tidur juga bisa mengaruhi cara kita menerima dan mengingat informasi.",
+   "words": [
+    {
+     "w": "Perhatian",
+     "s": 31.1,
+     "e": 31.74
+    },
+    {
+     "w": "dan",
+     "s": 31.74,
+     "e": 31.96
+    },
+    {
+     "w": "tidur",
+     "s": 31.96,
+     "e": 32.42
+    },
+    {
+     "w": "juga",
+     "s": 32.42,
+     "e": 32.72
+    },
+    {
+     "w": "bisa",
+     "s": 32.72,
+     "e": 32.92
+    },
+    {
+     "w": "mengaruhi",
+     "s": 32.92,
+     "e": 33.5
+    },
+    {
+     "w": "cara",
+     "s": 33.5,
+     "e": 33.7
+    },
+    {
+     "w": "kita",
+     "s": 33.7,
+     "e": 33.96
+    },
+    {
+     "w": "menerima",
+     "s": 33.96,
+     "e": 34.5
+    },
+    {
+     "w": "dan",
+     "s": 34.5,
+     "e": 34.7
+    },
+    {
+     "w": "mengingat",
+     "s": 34.7,
+     "e": 35.08
+    },
+    {
+     "w": "informasi.",
+     "s": 35.08,
+     "e": 35.62
+    }
+   ]
+  },
+  {
+   "start": 36.3,
+   "end": 41.42,
+   "text": "Dan ingat, cepat paham saat kuliah, belum tentu berarti materinya bakal diingat terus.",
+   "words": [
+    {
+     "w": "Dan",
+     "s": 36.3,
+     "e": 36.72
+    },
+    {
+     "w": "ingat,",
+     "s": 36.72,
+     "e": 37.08
+    },
+    {
+     "w": "cepat",
+     "s": 37.52,
+     "e": 37.88
+    },
+    {
+     "w": "paham",
+     "s": 37.88,
+     "e": 38.26
+    },
+    {
+     "w": "saat",
+     "s": 38.26,
+     "e": 38.46
+    },
+    {
+     "w": "kuliah,",
+     "s": 38.46,
+     "e": 38.92
+    },
+    {
+     "w": "belum",
+     "s": 39.24,
+     "e": 39.42
+    },
+    {
+     "w": "tentu",
+     "s": 39.42,
+     "e": 39.88
+    },
+    {
+     "w": "berarti",
+     "s": 39.88,
+     "e": 40.18
+    },
+    {
+     "w": "materinya",
+     "s": 40.18,
+     "e": 40.62
+    },
+    {
+     "w": "bakal",
+     "s": 40.62,
+     "e": 40.9
+    },
+    {
+     "w": "diingat",
+     "s": 40.9,
+     "e": 41.22
+    },
+    {
+     "w": "terus.",
+     "s": 41.22,
+     "e": 41.42
+    }
+   ]
+  },
+  {
+   "start": 42.52,
+   "end": 46.02,
+   "text": "Nah, di sini lah latihan itu penting. Coba tutup catatanmu.",
+   "words": [
+    {
+     "w": "Nah,",
+     "s": 42.52,
+     "e": 42.7
+    },
+    {
+     "w": "di",
+     "s": 43.1,
+     "e": 43.3
+    },
+    {
+     "w": "sini",
+     "s": 43.3,
+     "e": 43.5
+    },
+    {
+     "w": "lah",
+     "s": 43.5,
+     "e": 43.68
+    },
+    {
+     "w": "latihan",
+     "s": 43.68,
+     "e": 44.0
+    },
+    {
+     "w": "itu",
+     "s": 44.0,
+     "e": 44.14
+    },
+    {
+     "w": "penting.",
+     "s": 44.14,
+     "e": 44.48
+    },
+    {
+     "w": "Coba",
+     "s": 44.96,
+     "e": 45.24
+    },
+    {
+     "w": "tutup",
+     "s": 45.24,
+     "e": 45.48
+    },
+    {
+     "w": "catatanmu.",
+     "s": 45.48,
+     "e": 46.02
+    }
+   ]
+  },
+  {
+   "start": 46.34,
+   "end": 49.46,
+   "text": "Lalu uji, apa kamu bisa mengingat dan menjelaskannya kembali?",
+   "words": [
+    {
+     "w": "Lalu",
+     "s": 46.34,
+     "e": 46.54
+    },
+    {
+     "w": "uji,",
+     "s": 46.54,
+     "e": 46.8
+    },
+    {
+     "w": "apa",
+     "s": 47.3,
+     "e": 47.48
+    },
+    {
+     "w": "kamu",
+     "s": 47.48,
+     "e": 47.8
+    },
+    {
+     "w": "bisa",
+     "s": 47.8,
+     "e": 48.02
+    },
+    {
+     "w": "mengingat",
+     "s": 48.02,
+     "e": 48.48
+    },
+    {
+     "w": "dan",
+     "s": 48.48,
+     "e": 48.62
+    },
+    {
+     "w": "menjelaskannya",
+     "s": 48.62,
+     "e": 49.16
+    },
+    {
+     "w": "kembali?",
+     "s": 49.16,
+     "e": 49.46
+    }
+   ]
+  },
+  {
+   "start": 50.26,
+   "end": 55.56,
+   "text": "Kalau masih salah, nggak apa-apa. Justru dari situ kamu tahu bagian mana yang perlu dipelajari lagi.",
+   "words": [
+    {
+     "w": "Kalau",
+     "s": 50.26,
+     "e": 50.68
+    },
+    {
+     "w": "masih",
+     "s": 50.68,
+     "e": 50.9
+    },
+    {
+     "w": "salah,",
+     "s": 50.9,
+     "e": 51.12
+    },
+    {
+     "w": "nggak",
+     "s": 51.66,
+     "e": 51.82
+    },
+    {
+     "w": "apa",
+     "s": 51.82,
+     "e": 51.98
+    },
+    {
+     "w": "-apa.",
+     "s": 51.98,
+     "e": 52.16
+    },
+    {
+     "w": "Justru",
+     "s": 52.6,
+     "e": 52.9
+    },
+    {
+     "w": "dari",
+     "s": 52.9,
+     "e": 53.04
+    },
+    {
+     "w": "situ",
+     "s": 53.04,
+     "e": 53.38
+    },
+    {
+     "w": "kamu",
+     "s": 53.38,
+     "e": 53.64
+    },
+    {
+     "w": "tahu",
+     "s": 53.64,
+     "e": 53.94
+    },
+    {
+     "w": "bagian",
+     "s": 53.94,
+     "e": 54.26
+    },
+    {
+     "w": "mana",
+     "s": 54.26,
+     "e": 54.48
+    },
+    {
+     "w": "yang",
+     "s": 54.48,
+     "e": 54.68
+    },
+    {
+     "w": "perlu",
+     "s": 54.68,
+     "e": 54.9
+    },
+    {
+     "w": "dipelajari",
+     "s": 54.9,
+     "e": 55.32
+    },
+    {
+     "w": "lagi.",
+     "s": 55.32,
+     "e": 55.56
+    }
+   ]
+  },
+  {
+   "start": 56.3,
+   "end": 60.78,
+   "text": "Buat kamu anak FK yang bingung mulai dari mana, coba belajar bareng medkool.",
+   "words": [
+    {
+     "w": "Buat",
+     "s": 56.3,
+     "e": 56.98
+    },
+    {
+     "w": "kamu",
+     "s": 56.98,
+     "e": 57.22
+    },
+    {
+     "w": "anak",
+     "s": 57.22,
+     "e": 57.44
+    },
+    {
+     "w": "FK",
+     "s": 57.44,
+     "e": 57.88
+    },
+    {
+     "w": "yang",
+     "s": 57.88,
+     "e": 58.06
+    },
+    {
+     "w": "bingung",
+     "s": 58.06,
+     "e": 58.42
+    },
+    {
+     "w": "mulai",
+     "s": 58.42,
+     "e": 58.7
+    },
+    {
+     "w": "dari",
+     "s": 58.7,
+     "e": 58.82
+    },
+    {
+     "w": "mana,",
+     "s": 58.82,
+     "e": 59.06
+    },
+    {
+     "w": "coba",
+     "s": 59.48,
+     "e": 59.94
+    },
+    {
+     "w": "belajar",
+     "s": 59.94,
+     "e": 60.26
+    },
+    {
+     "w": "bareng",
+     "s": 60.26,
+     "e": 60.48
+    },
+    {
+     "w": "medkool.",
+     "s": 60.48,
+     "e": 60.78
+    }
+   ]
+  },
+  {
+   "start": 61.14,
+   "end": 64.08,
+   "text": "Ada catatan materi dan flashcard buat memahami konsep,",
+   "words": [
+    {
+     "w": "Ada",
+     "s": 61.14,
+     "e": 61.54
+    },
+    {
+     "w": "catatan",
+     "s": 61.54,
+     "e": 61.92
+    },
+    {
+     "w": "materi",
+     "s": 61.92,
+     "e": 62.3
+    },
+    {
+     "w": "dan",
+     "s": 62.3,
+     "e": 62.4
+    },
+    {
+     "w": "flashcard",
+     "s": 62.4,
+     "e": 62.92
+    },
+    {
+     "w": "buat",
+     "s": 62.92,
+     "e": 63.22
+    },
+    {
+     "w": "memahami",
+     "s": 63.22,
+     "e": 63.6
+    },
+    {
+     "w": "konsep,",
+     "s": 63.6,
+     "e": 64.08
+    }
+   ]
+  },
+  {
+   "start": 64.38,
+   "end": 68.96,
+   "text": "latihan soal untuk menguji ingatan, sampai anatomi 3D dan simulasi jadi doktor.",
+   "words": [
+    {
+     "w": "latihan",
+     "s": 64.38,
+     "e": 64.78
+    },
+    {
+     "w": "soal",
+     "s": 64.78,
+     "e": 65.24
+    },
+    {
+     "w": "untuk",
+     "s": 65.24,
+     "e": 65.48
+    },
+    {
+     "w": "menguji",
+     "s": 65.48,
+     "e": 65.84
+    },
+    {
+     "w": "ingatan,",
+     "s": 65.84,
+     "e": 66.24
+    },
+    {
+     "w": "sampai",
+     "s": 66.58,
+     "e": 66.92
+    },
+    {
+     "w": "anatomi",
+     "s": 66.92,
+     "e": 67.32
+    },
+    {
+     "w": "3D",
+     "s": 67.32,
+     "e": 67.7
+    },
+    {
+     "w": "dan",
+     "s": 67.7,
+     "e": 67.96
+    },
+    {
+     "w": "simulasi",
+     "s": 67.96,
+     "e": 68.42
+    },
+    {
+     "w": "jadi",
+     "s": 68.42,
+     "e": 68.62
+    },
+    {
+     "w": "doktor.",
+     "s": 68.62,
+     "e": 68.96
+    }
+   ]
+  },
+  {
+   "start": 69.56,
+   "end": 72.5,
+   "text": "Jadi, kamu bisa pilih cara belajar sesuai kebutuhanmu,",
+   "words": [
+    {
+     "w": "Jadi,",
+     "s": 69.56,
+     "e": 69.9
+    },
+    {
+     "w": "kamu",
+     "s": 70.16,
+     "e": 70.38
+    },
+    {
+     "w": "bisa",
+     "s": 70.38,
+     "e": 70.54
+    },
+    {
+     "w": "pilih",
+     "s": 70.54,
+     "e": 70.96
+    },
+    {
+     "w": "cara",
+     "s": 70.96,
+     "e": 71.14
+    },
+    {
+     "w": "belajar",
+     "s": 71.14,
+     "e": 71.52
+    },
+    {
+     "w": "sesuai",
+     "s": 71.52,
+     "e": 71.92
+    },
+    {
+     "w": "kebutuhanmu,",
+     "s": 71.92,
+     "e": 72.5
+    }
+   ]
+  },
+  {
+   "start": 72.78,
+   "end": 74.06,
+   "text": "lalu kembali latihan saat perlu.",
+   "words": [
+    {
+     "w": "lalu",
+     "s": 72.78,
+     "e": 72.92
+    },
+    {
+     "w": "kembali",
+     "s": 72.92,
+     "e": 73.18
+    },
+    {
+     "w": "latihan",
+     "s": 73.18,
+     "e": 73.62
+    },
+    {
+     "w": "saat",
+     "s": 73.62,
+     "e": 73.78
+    },
+    {
+     "w": "perlu.",
+     "s": 73.78,
+     "e": 74.06
+    }
+   ]
+  },
+  {
+   "start": 74.88,
+   "end": 77.54,
+   "text": "Yuk, belajar ke doktoran gratis di medkool.com.",
+   "words": [
+    {
+     "w": "Yuk,",
+     "s": 74.88,
+     "e": 75.18
+    },
+    {
+     "w": "belajar",
+     "s": 75.62,
+     "e": 75.84
+    },
+    {
+     "w": "ke",
+     "s": 75.84,
+     "e": 75.92
+    },
+    {
+     "w": "doktoran",
+     "s": 75.92,
+     "e": 76.26
+    },
+    {
+     "w": "gratis",
+     "s": 76.26,
+     "e": 76.68
+    },
+    {
+     "w": "di",
+     "s": 76.68,
+     "e": 76.86
+    },
+    {
+     "w": "medkool",
+     "s": 76.86,
+     "e": 77.2
+    },
+    {
+     "w": ".com.",
+     "s": 77.2,
+     "e": 77.54
+    }
+   ]
+  }
+ ]
+}
