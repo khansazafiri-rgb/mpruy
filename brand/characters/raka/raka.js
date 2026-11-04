@@ -56,6 +56,7 @@ export const PALETTE_ON_DARK = { hair: '#3A4468', pants: '#38426A', sweater: '#2
 export const OUTFITS = {
   harian: { label: 'Pakaian sehari-hari: sweater teal', palette: {}, onDark: PALETTE_ON_DARK },
   demo: { label: 'Baju demo: kaus lengan panjang hitam, celana abu tua', palette: { sweater: '#1F2429', sleeveFront: '#191E22', pants: '#2E3744' }, onDark: { hair: '#3A4468', sweater: '#38414B', sleeveFront: '#2F3841', pants: '#4A5565' } },
+  rumah: { label: 'Pakaian rumah: kaus oblong kuning mustard dan celana training abu', palette: { sweater: '#E9B949', sleeveFront: '#DCA93C', pants: '#5A6477', shoes: '#F5E8D6' }, onDark: { hair: '#3A4468', pants: '#6B7690' } },
   jas: { label: 'Jas dokter putih di atas sweater teal', palette: { sweater: '#F6F9FA', sleeveFront: '#E9EFF1' }, coat: true, coatLong: true, onDark: { hair: '#3A4468', pants: '#38426A' } },
   kuliah: { label: 'Pulang kuliah: kemeja biru muda, celana navy, ransel di punggung', palette: { sweater: '#6C9BE0', sleeveFront: '#5A87CB' }, ransel: true, onDark: { hair: '#3A4468', pants: '#38426A', sweater: '#82ADEA', sleeveFront: '#6E9BDB' } },
   santai: { label: 'Santai di kos: kaus oblong coral, celana training abu', palette: { sweater: '#E8765F', sleeveFront: '#D4634D', pants: '#5A6477' }, onDark: { hair: '#3A4468', pants: '#6B7690', sweater: '#F08A72', sleeveFront: '#DC735C' } },
@@ -474,6 +475,68 @@ export function walkCycle(phase, o = {}) {
   };
 }
 
+
+/* ------------------------------------------------------------------ tampak belakang (opsi { back: ... }) */
+
+/**
+ * Raka dilihat dari belakang: kepala hanya rambut (tanpa wajah), tanpa patch logo, kaus bisa digulung ke atas sehingga punggung terlihat
+ * dan diberi garis-garis bekas kerokan. Opsi: rakaSvg(state, { back: true }) atau { back: { lift, marks, drawn, oil, face } }.
+ *   lift  0..1  seberapa tinggi kaus digulung (0 = kaus menutup penuh, 1 = punggung terlihat dari bawah ketiak sampai pinggang)
+ *   marks 0..1  intensitas warna merah bekas kerokan (0 = tidak ada garis)
+ *   drawn 0..1  berapa banyak garis yang sudah digambar (garis demi garis dari atas, untuk animasi kerokan); drawnL / drawnR (opsional) mengatur sisi kiri / kanan layar sendiri-sendiri
+ *   oil   0..1  kilap minyak kerokan di punggung
+ *   turn  0..1  menoleh lewat bahu: 0 = hanya rambut belakang, 1 = sebagian wajah (alis, mata, mulut ikut state ekspresi) terlihat di tepi kepala
+ *   face  true  kepala memandang lurus ke kamera: wajah digambar seperti tampak depan (ikut state ekspresi, yaw)
+ * Badan, lengan, kaki, dan semua gerak (lean, bob, breath, tilt) sama dengan tampak depan.
+ */
+export const BACK_DEFAULT = { lift: 0, marks: 0, drawn: 1, oil: 0, face: false, turn: 0 };
+const BACK_STROKES = [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0]]; // lima pasang garis di kiri dan kanan tulang belakang
+function backTorsoSvg(P, bk, uid) {
+  const sw = `M114 452C112 396 150 374 172 372C182 388 218 388 228 372C250 374 288 396 286 452L296 566C250 588 150 588 104 566Z`;
+  let out = `<path d="${sw}" fill="${P.sweater}"/><path d="M172 372C182 386 218 386 228 372" fill="none" stroke="${P.sleeveFront}" stroke-width="6" stroke-linecap="round"/>`;
+  const lift = clamp(bk.lift, 0, 1);
+  if (lift <= 0.01) return out;
+  const y0 = lerp(574, 440, ease(lift));              // tepi bawah gulungan kaus
+  const clip = `${uid}-bkc`;
+  out += `<clipPath id="${clip}"><path d="${sw}"/></clipPath><g clip-path="url(#${clip})"><rect x="90" y="${r1(y0)}" width="220" height="${r1(600 - y0)}" fill="${P.skin}"/>`
+    + `<path d="M200 ${r1(y0 + 6)}C198 ${r1(y0 + 50)} 202 ${r1(y0 + 100)} 200 586" fill="none" stroke="${P.skinShade}" stroke-width="5" stroke-linecap="round" opacity=".7"/>`
+    + `<ellipse cx="160" cy="${r1(y0 + 38)}" rx="28" ry="20" fill="${P.skinShade}" opacity=".32" transform="rotate(14 160 ${r1(y0 + 38)})"/><ellipse cx="240" cy="${r1(y0 + 38)}" rx="28" ry="20" fill="${P.skinShade}" opacity=".32" transform="rotate(-14 240 ${r1(y0 + 38)})"/>`;
+  const marks = clamp(bk.marks, 0, 1), drawn = clamp(bk.drawn, 0, 1);
+  if (marks > 0.01) {
+    const n = BACK_STROKES.length, span = Math.max(40, 566 - y0 - 40);
+    for (let i = 0; i < n; i += 1) {
+      const y = y0 + 22 + (span * i) / (n - 0.5);
+      for (const side of [-1, 1]) {
+        const k = clamp((side < 0 ? (bk.drawnL ?? drawn) : (bk.drawnR ?? drawn)) * n - i, 0, 1);
+        if (k <= 0) continue;
+        const d = `M${200 + side * 10} ${r1(y)}Q${200 + side * 50} ${r1(y + 2)} ${200 + side * 80} ${r1(y + 14)}`;
+        const dash = `pathLength="1" stroke-dasharray="1" stroke-dashoffset="${r1((1 - k) * 100) / 100}"`;
+        out += `<path d="${d}" fill="none" stroke="#E2635A" stroke-width="15" stroke-linecap="round" opacity="${r1(0.78 * marks * 100) / 100}" ${dash}/>`
+          + `<path d="${d}" fill="none" stroke="#C93F3B" stroke-width="6" stroke-linecap="round" opacity="${r1(0.62 * marks * marks * 100) / 100}" ${dash}/>`;
+      }
+    }
+  }
+  if (bk.oil > 0.01) out += `<ellipse cx="200" cy="${r1(y0 + 70)}" rx="86" ry="62" fill="#fff" opacity="${r1(0.12 * bk.oil * 100) / 100}"/>`;
+  out += `</g>`;
+  // gulungan kaus (tebal, bulat) di atas kulit
+  out += `<g><path d="M108 ${r1(y0 - 38)}C140 ${r1(y0 - 54)} 260 ${r1(y0 - 54)} 292 ${r1(y0 - 38)}L296 ${r1(y0 + 2)}C260 ${r1(y0 + 14)} 140 ${r1(y0 + 14)} 104 ${r1(y0 + 2)}Z" fill="${P.sweater}"/>`
+    + `<path d="M104 ${r1(y0 + 2)}C140 ${r1(y0 + 14)} 260 ${r1(y0 + 14)} 296 ${r1(y0 + 2)}" fill="none" stroke="${P.sleeveFront}" stroke-width="7" stroke-linecap="round"/></g>`;
+  return out;
+}
+function backHairSvg(P, yaw, turn = 0, uid = 'raka') {
+  // Rambut belakang selalu menempel pada kepala. Saat menoleh (turn > 0) hanya garis rambut di tepi kanan yang maju ke kiri (dipotong kurva),
+  // sehingga sebagian wajah terlihat tanpa rambut terlepas dari kepala.
+  const bx = lerp(340, 250, clamp(turn, 0, 1)) + yaw * 6;
+  const id = `${uid}-hl`;
+  const tk = clamp(turn, 0, 1), tx = bx - 78 * tk;   // garis rambut berawal di puncak kepala lalu melengkung turun ke tengkuk
+  const clip = turn > 0.01
+    ? `<clipPath id="${id}"><path d="M-20 -20H${r1(tx)}C${r1(bx - 40 * tk)} 40 ${r1(bx + 6)} 100 ${r1(bx + 6)} 170C${r1(bx + 4)} 215 ${r1(bx - 20)} 245 ${r1(bx - 34)} 292H-20Z"/></clipPath>` : '';
+  return clip + `<g ${turn > 0.01 ? `clip-path="url(#${id})"` : ''} fill="${P.hair}">`
+    + `<path d="M90 214C78 126 124 62 200 62C276 62 322 126 310 214C308 244 292 262 270 276C240 262 160 262 130 276C108 262 92 244 90 214Z"/></g>`
+    + `<path d="M214 66C206 34 244 18 266 38C250 32 234 42 238 68Z" fill="${P.hair}"/>`
+    + `<path d="M186 140C196 128 214 128 222 140C230 156 214 170 200 164" fill="none" stroke="#3A4468" stroke-width="5" stroke-linecap="round" opacity=".55"/>`;
+}
+
 function browSvg(cx, cy, b, side, P) {
   // lengkung kecil; rot positif = ujung dalam (dekat hidung) naik
   const rot = b.rot * (side === 'L' ? -1 : 1);
@@ -510,6 +573,7 @@ export function rakaSvg(state, opts = {}) {
   const uid = opts.uid || 'raka';
   const flip = s.flip > 0.5;
   const yaw = clamp(s.yaw, -1, 1);
+  const bk = opts.back ? { ...BACK_DEFAULT, ...(opts.back === true ? {} : opts.back) } : null;
 
   // ---- kepala (koordinat kepala: pusat x = 200, dagu y = 304)
   const faceDx = yaw * 30, faceSq = 1 - 0.14 * Math.abs(yaw);
@@ -528,25 +592,28 @@ export function rakaSvg(state, opts = {}) {
     + `<path d="M98 200C76 202 64 184 78 168C80 180 88 184 102 184Z"/>`
     + `<path d="M214 66C206 34 244 18 266 38C250 32 234 42 238 68Z"/>`
     + `</g>`;
-  const face = `<g transform="translate(${r1(200 + faceDx)} 0) scale(${r1(faceSq)} 1) translate(-200 0)">`
-    + browSvg(eyeLx, 184, s.browL, 'L', P) + browSvg(eyeRx, 184, s.browR, 'R', P)
+  const faceInner = browSvg(eyeLx, 184, s.browL, 'L', P) + browSvg(eyeRx, 184, s.browR, 'R', P)
     + eye(eyeLx) + eye(eyeRx) + bagsSvg(s, eyeLx, eyeRx, eyeY) + sparkleSvg(s, eyeLx, eyeRx, eyeY, gx, gy) + shadesSvg(s, eyeLx, eyeRx, eyeY) + dizzySvg(s, eyeLx, eyeRx, eyeY) + tearsSvg(s, eyeLx, eyeRx, eyeY)
-    + `<g transform="translate(200 ${r1(264 + s.gazeY * 1.5)})">${mouthSvg(s.mouth, P, uid)}</g>`
-    + `</g>`;
+    + `<g transform="translate(200 ${r1(264 + s.gazeY * 1.5)})">${mouthSvg(s.mouth, P, uid)}</g>`;
+  const face = `<g transform="translate(${r1(200 + faceDx)} 0) scale(${r1(faceSq)} 1) translate(-200 0)">${faceInner}</g>`;
+  // tampak belakang yang menoleh lewat bahu (bk.turn 0..1): wajah menyempit di tepi kanan kepala, rambut belakang bergeser ke kiri
+  const turn = bk ? clamp(bk.turn, 0, 1) : 0;
+  const faceTurn = turn > 0.3 ? `<g opacity="${r1(clamp((turn - 0.3) / 0.3, 0, 1) * 100) / 100}" transform="translate(${r1(lerp(200, 274, turn))} 0) scale(${r1(lerp(1, 0.55, turn))} 1) translate(-200 0)">${faceInner}</g>` : '';
   const burst = s.fxBurst > 0.02
     ? `<g opacity="${r1(s.fxBurst)}" stroke="${P.fxWarm}" stroke-width="6" stroke-linecap="round"><path d="M40 150L64 170M32 206H62M52 104L70 128"/><path d="M360 150L336 170M368 206H338M348 104L330 128"/></g>`
     : '';
   const headG = `<g class="raka-head" transform="translate(200 ${NECK_Y}) rotate(${r1(s.tilt)}) scale(${HEAD_SCALE}) translate(-200 -${HEAD_PIVOT_Y})">`
-    + earL + earR + `<path d="${headSkin}" fill="${P.skin}"/>` + face + hair + bloodHead(s) + burst + sweatSvg(s) + coughSvg(s) + `</g>`;
+    + (bk && !bk.face ? earL + (turn > 0.3 ? '' : earR) + `<path d="${headSkin}" fill="${P.skin}"/>` + faceTurn + backHairSvg(P, yaw, turn, uid) + sweatSvg(s) + `</g>`
+      : earL + earR + `<path d="${headSkin}" fill="${P.skin}"/>` + face + hair + bloodHead(s) + burst + sweatSvg(s) + coughSvg(s) + `</g>`);
 
   // ---- badan
   const breath = 1 + s.breath * 0.012;
-  const torso = `<g transform="translate(200 580) scale(1 ${r1(breath)}) translate(-200 -580)">`
+  const torso = bk ? `<g transform="translate(200 580) scale(1 ${r1(breath)}) translate(-200 -580)">${backTorsoSvg(P, bk, uid)}</g>` : `<g transform="translate(200 580) scale(1 ${r1(breath)}) translate(-200 -580)">`
     + `<path d="M114 452C112 396 150 374 172 372C182 388 218 388 228 372C250 374 288 396 286 452L296 566C250 588 150 588 104 566Z" fill="${P.sweater}"/>${coat ? coatSvg(P, { coatLong: coatLong && opts.coatLong !== false }) : ''}${bloodTorso(s)}</g>`;
   const slump = clamp(s.slump, 0, 40);
   const neck = `<rect x="170" y="336" width="60" height="${r1(62 + slump)}" rx="16" fill="${P.skinShade}"/>`;
   const sl = (x) => (slump ? `<g transform="translate(0 ${r1(slump)})">${x}</g>` : x);
-  const patch = opts.logo === false ? '' : patchSvg(P, s.breath, flip, opts.logo);
+  const patch = (opts.logo === false || bk) ? '' : patchSvg(P, s.breath, flip, opts.logo);
   const arms = (front) => ['L', 'R'].map((sd) => {
     const a = sd === 'L' ? s.armL : s.armR;
     return (a.front > 0.5) === front ? armSvg(sd, a, P, s.blood) : '';
