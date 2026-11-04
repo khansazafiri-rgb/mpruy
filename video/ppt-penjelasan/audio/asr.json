@@ -1,0 +1,584 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 3.38,
+   "text": "Dapet PPT kuliah, tapi pas dibuka, kamu malah bingung sendiri.",
+   "words": [
+    {
+     "w": "Dapet",
+     "s": 0.0,
+     "e": 0.5
+    },
+    {
+     "w": "PPT",
+     "s": 0.5,
+     "e": 0.84
+    },
+    {
+     "w": "kuliah,",
+     "s": 0.84,
+     "e": 1.24
+    },
+    {
+     "w": "tapi",
+     "s": 1.48,
+     "e": 1.74
+    },
+    {
+     "w": "pas",
+     "s": 1.74,
+     "e": 1.9
+    },
+    {
+     "w": "dibuka,",
+     "s": 1.9,
+     "e": 2.26
+    },
+    {
+     "w": "kamu",
+     "s": 2.46,
+     "e": 2.64
+    },
+    {
+     "w": "malah",
+     "s": 2.64,
+     "e": 2.84
+    },
+    {
+     "w": "bingung",
+     "s": 2.84,
+     "e": 3.02
+    },
+    {
+     "w": "sendiri.",
+     "s": 3.02,
+     "e": 3.38
+    }
+   ]
+  },
+  {
+   "start": 4.04,
+   "end": 6.22,
+   "text": "Coba ajukan PPT-mu ke Mad Cool.",
+   "words": [
+    {
+     "w": "Coba",
+     "s": 4.04,
+     "e": 4.48
+    },
+    {
+     "w": "ajukan",
+     "s": 4.48,
+     "e": 4.9
+    },
+    {
+     "w": "PPT",
+     "s": 4.9,
+     "e": 5.34
+    },
+    {
+     "w": "-mu",
+     "s": 5.34,
+     "e": 5.52
+    },
+    {
+     "w": "ke",
+     "s": 5.52,
+     "e": 5.68
+    },
+    {
+     "w": "Mad",
+     "s": 5.68,
+     "e": 5.96
+    },
+    {
+     "w": "Cool.",
+     "s": 5.96,
+     "e": 6.22
+    }
+   ]
+  },
+  {
+   "start": 7.2,
+   "end": 9.3,
+   "text": "Dosen menjelaskan satu slat cuma sebentar.",
+   "words": [
+    {
+     "w": "Dosen",
+     "s": 7.2,
+     "e": 7.8
+    },
+    {
+     "w": "menjelaskan",
+     "s": 7.8,
+     "e": 8.28
+    },
+    {
+     "w": "satu",
+     "s": 8.28,
+     "e": 8.5
+    },
+    {
+     "w": "slat",
+     "s": 8.5,
+     "e": 8.74
+    },
+    {
+     "w": "cuma",
+     "s": 8.74,
+     "e": 8.92
+    },
+    {
+     "w": "sebentar.",
+     "s": 8.92,
+     "e": 9.3
+    }
+   ]
+  },
+  {
+   "start": 9.82,
+   "end": 15.14,
+   "text": "Pas kamu bacai lagi di rumah, isinya gambar dan istilah yang membuat kamu mikir, ini maksudnya apa?",
+   "words": [
+    {
+     "w": "Pas",
+     "s": 9.82,
+     "e": 10.04
+    },
+    {
+     "w": "kamu",
+     "s": 10.04,
+     "e": 10.2
+    },
+    {
+     "w": "bacai",
+     "s": 10.2,
+     "e": 10.44
+    },
+    {
+     "w": "lagi",
+     "s": 10.44,
+     "e": 10.62
+    },
+    {
+     "w": "di",
+     "s": 10.62,
+     "e": 10.72
+    },
+    {
+     "w": "rumah,",
+     "s": 10.72,
+     "e": 10.94
+    },
+    {
+     "w": "isinya",
+     "s": 11.38,
+     "e": 11.68
+    },
+    {
+     "w": "gambar",
+     "s": 11.68,
+     "e": 12.28
+    },
+    {
+     "w": "dan",
+     "s": 12.28,
+     "e": 12.42
+    },
+    {
+     "w": "istilah",
+     "s": 12.42,
+     "e": 12.78
+    },
+    {
+     "w": "yang",
+     "s": 12.78,
+     "e": 13.08
+    },
+    {
+     "w": "membuat",
+     "s": 13.08,
+     "e": 13.3
+    },
+    {
+     "w": "kamu",
+     "s": 13.3,
+     "e": 13.52
+    },
+    {
+     "w": "mikir,",
+     "s": 13.52,
+     "e": 13.84
+    },
+    {
+     "w": "ini",
+     "s": 14.22,
+     "e": 14.38
+    },
+    {
+     "w": "maksudnya",
+     "s": 14.38,
+     "e": 14.78
+    },
+    {
+     "w": "apa?",
+     "s": 14.78,
+     "e": 15.14
+    }
+   ]
+  },
+  {
+   "start": 16.26,
+   "end": 19.8,
+   "text": "Haa, mau lanjut ke slat berikutnya, yang ini aja belum paham?",
+   "words": [
+    {
+     "w": "Haa,",
+     "s": 16.26,
+     "e": 16.8
+    },
+    {
+     "w": "mau",
+     "s": 16.88,
+     "e": 17.0
+    },
+    {
+     "w": "lanjut",
+     "s": 17.0,
+     "e": 17.22
+    },
+    {
+     "w": "ke",
+     "s": 17.22,
+     "e": 17.36
+    },
+    {
+     "w": "slat",
+     "s": 17.36,
+     "e": 17.56
+    },
+    {
+     "w": "berikutnya,",
+     "s": 17.56,
+     "e": 18.08
+    },
+    {
+     "w": "yang",
+     "s": 18.4,
+     "e": 18.54
+    },
+    {
+     "w": "ini",
+     "s": 18.54,
+     "e": 18.82
+    },
+    {
+     "w": "aja",
+     "s": 18.82,
+     "e": 18.98
+    },
+    {
+     "w": "belum",
+     "s": 18.98,
+     "e": 19.16
+    },
+    {
+     "w": "paham?",
+     "s": 19.16,
+     "e": 19.8
+    }
+   ]
+  },
+  {
+   "start": 20.5,
+   "end": 24.84,
+   "text": "Nah, kamu bisa mengajukan materi PPT ke Mad Cool untuk dibantu penjelasannya.",
+   "words": [
+    {
+     "w": "Nah,",
+     "s": 20.5,
+     "e": 20.82
+    },
+    {
+     "w": "kamu",
+     "s": 21.2,
+     "e": 21.22
+    },
+    {
+     "w": "bisa",
+     "s": 21.22,
+     "e": 21.46
+    },
+    {
+     "w": "mengajukan",
+     "s": 21.46,
+     "e": 21.88
+    },
+    {
+     "w": "materi",
+     "s": 21.88,
+     "e": 22.26
+    },
+    {
+     "w": "PPT",
+     "s": 22.26,
+     "e": 22.68
+    },
+    {
+     "w": "ke",
+     "s": 22.68,
+     "e": 22.82
+    },
+    {
+     "w": "Mad",
+     "s": 22.82,
+     "e": 23.02
+    },
+    {
+     "w": "Cool",
+     "s": 23.02,
+     "e": 23.32
+    },
+    {
+     "w": "untuk",
+     "s": 23.32,
+     "e": 23.66
+    },
+    {
+     "w": "dibantu",
+     "s": 23.66,
+     "e": 24.14
+    },
+    {
+     "w": "penjelasannya.",
+     "s": 24.14,
+     "e": 24.84
+    }
+   ]
+  },
+  {
+   "start": 25.36,
+   "end": 29.58,
+   "text": "Materinya bisa dibahas per slide, termasuk konsep dan gambar yang ada di dalamnya.",
+   "words": [
+    {
+     "w": "Materinya",
+     "s": 25.36,
+     "e": 25.96
+    },
+    {
+     "w": "bisa",
+     "s": 25.96,
+     "e": 26.18
+    },
+    {
+     "w": "dibahas",
+     "s": 26.18,
+     "e": 26.58
+    },
+    {
+     "w": "per",
+     "s": 26.58,
+     "e": 26.72
+    },
+    {
+     "w": "slide,",
+     "s": 26.72,
+     "e": 27.04
+    },
+    {
+     "w": "termasuk",
+     "s": 27.32,
+     "e": 27.66
+    },
+    {
+     "w": "konsep",
+     "s": 27.66,
+     "e": 28.18
+    },
+    {
+     "w": "dan",
+     "s": 28.18,
+     "e": 28.4
+    },
+    {
+     "w": "gambar",
+     "s": 28.4,
+     "e": 28.78
+    },
+    {
+     "w": "yang",
+     "s": 28.78,
+     "e": 28.9
+    },
+    {
+     "w": "ada",
+     "s": 28.9,
+     "e": 29.02
+    },
+    {
+     "w": "di",
+     "s": 29.02,
+     "e": 29.18
+    },
+    {
+     "w": "dalamnya.",
+     "s": 29.18,
+     "e": 29.58
+    }
+   ]
+  },
+  {
+   "start": 29.58,
+   "end": 32.24,
+   "text": "supaya kamu lebih mudah mengikuti isinya.",
+   "words": [
+    {
+     "w": "supaya",
+     "s": 29.58,
+     "e": 30.48
+    },
+    {
+     "w": "kamu",
+     "s": 30.48,
+     "e": 30.72
+    },
+    {
+     "w": "lebih",
+     "s": 30.72,
+     "e": 30.94
+    },
+    {
+     "w": "mudah",
+     "s": 30.94,
+     "e": 31.36
+    },
+    {
+     "w": "mengikuti",
+     "s": 31.36,
+     "e": 31.86
+    },
+    {
+     "w": "isinya.",
+     "s": 31.86,
+     "e": 32.24
+    }
+   ]
+  },
+  {
+   "start": 32.88,
+   "end": 37.7,
+   "text": "Jadi, saat belajar lagi, kamu punya penjelasan untuk mendampingi slide kuliahmu.",
+   "words": [
+    {
+     "w": "Jadi,",
+     "s": 32.88,
+     "e": 33.6
+    },
+    {
+     "w": "saat",
+     "s": 33.84,
+     "e": 34.02
+    },
+    {
+     "w": "belajar",
+     "s": 34.02,
+     "e": 34.36
+    },
+    {
+     "w": "lagi,",
+     "s": 34.36,
+     "e": 34.72
+    },
+    {
+     "w": "kamu",
+     "s": 35.0,
+     "e": 35.16
+    },
+    {
+     "w": "punya",
+     "s": 35.16,
+     "e": 35.4
+    },
+    {
+     "w": "penjelasan",
+     "s": 35.4,
+     "e": 36.16
+    },
+    {
+     "w": "untuk",
+     "s": 36.16,
+     "e": 36.34
+    },
+    {
+     "w": "mendampingi",
+     "s": 36.34,
+     "e": 36.96
+    },
+    {
+     "w": "slide",
+     "s": 36.96,
+     "e": 37.12
+    },
+    {
+     "w": "kuliahmu.",
+     "s": 37.12,
+     "e": 37.7
+    }
+   ]
+  },
+  {
+   "start": 38.42,
+   "end": 42.84,
+   "text": "Yuk, belajar kedokteran gratis bersama MedCool kunjungi MedCool.com",
+   "words": [
+    {
+     "w": "Yuk,",
+     "s": 38.42,
+     "e": 38.7
+    },
+    {
+     "w": "belajar",
+     "s": 39.0,
+     "e": 39.2
+    },
+    {
+     "w": "kedokteran",
+     "s": 39.2,
+     "e": 39.6
+    },
+    {
+     "w": "gratis",
+     "s": 39.6,
+     "e": 39.96
+    },
+    {
+     "w": "bersama",
+     "s": 39.96,
+     "e": 40.3
+    },
+    {
+     "w": "MedCool",
+     "s": 40.3,
+     "e": 40.86
+    },
+    {
+     "w": "kunjungi",
+     "s": 40.86,
+     "e": 41.88
+    },
+    {
+     "w": "MedCool",
+     "s": 41.88,
+     "e": 42.36
+    },
+    {
+     "w": ".com",
+     "s": 42.36,
+     "e": 42.84
+    }
+   ]
+  }
+ ]
+}
