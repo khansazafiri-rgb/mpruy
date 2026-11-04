@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Punya soal kakak tingkat?</title>
+<link rel="stylesheet" href="../stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#c{width:1080px;height:1920px;position:relative;overflow:hidden}svg{display:block}</style></head>
+<body><div id="c"></div>
+<script type="module">
+import { raka, rakaSvg } from '../../../brand/characters/raka/raka.js';
+import { createMascot, poseMascot } from '../stage/mascot.js';
+import * as A from '../stage/art.js';
+import * as S from '../stage/artS.js';
+await document.fonts.load('800 60px "Plus Jakarta Sans"'); await document.fonts.ready;
+const { R, C, E, P, L, T, f1 } = A;
+const guide = new URLSearchParams(location.search).has('guide');
+const logo = await new Promise(async (r) => { const b = await (await fetch('../stage/logo-full.webp')).blob(); const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(b); });
+const KO = createMascot(await (await fetch('../stage/kori.svg')).text(), 'kori'); poseMascot(KO, { t: 1.4, mood: 'happy', env: 0, wave: 1, phase: 0.5 });
+const STAND = { on: 1, dir: 1, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } };
+const FY = 1640, KK = 1.08, RX = 430;
+// Raka memegang PDF soal, bingung (alis tidak sama, mulut kecil), keringat
+const rs = raka('bingung', 'pegang_buku', { legs: STAND, gazeY: 0.35, tilt: -5, sweat: 0.8, bags: 0.1, wide: 0.15, blink: 0.1 });
+const rk = `<g transform="translate(${f1(RX - 200 * KK)} ${f1(FY - 778 * KK)}) scale(${KK})">${rakaSvg(rs, { bare: true, uid: 'rc', outfit: 'santai' })}</g>`;
+const bg = `<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2D5E8E"/><stop offset="1" stop-color="#14405F"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#g)"/><circle cx="140" cy="640" r="300" fill="rgba(255,255,255,.05)"/><circle cx="960" cy="1150" r="340" fill="rgba(255,255,255,.05)"/>`;
+const deco = S.pdfIcon(120, 880, 1.0, { rot: -14, a: 0.35 }) + S.pdfIcon(960, 860, 1.1, { rot: 12, a: 0.35 }) + S.pdfIcon(930, 1230, 0.8, { rot: -8, a: 0.28 });
+const held = `<g transform="translate(${RX} 1280) rotate(-4)">${S.pdfPage(0, -150, 380, 430, { title: 'SOAL TAHUN LALU', key: false, keyA: 0, s: 0.85 })}</g>`;
+const hands = `<circle cx="${RX - 168}" cy="1262" r="30" fill="#F7BC8E"/><circle cx="${RX + 172}" cy="1236" r="30" fill="#F7BC8E"/>`;
+const fx = S.qm(RX + 20, 800, 0.3, 1.1, 3);
+const ST = 'stroke="#0A1A2E" stroke-width="18" paint-order="stroke" stroke-linejoin="round"';
+const title = `${T(540, 340, 'PUNYA SOAL', '#fff', 132, ST)}${T(540, 470, 'KAKAK TINGKAT?', '#F8C038', 104, ST.replace('18', '22'))}`;
+const sub = `<g transform="translate(540 604) rotate(-2)">${R(-360, -62, 720, 124, 'rgba(0,0,0,.32)', 62, 'transform="translate(0 10)"')}${R(-360, -62, 720, 124, '#E8665F', 62)}${T(0, 26, 'Jangan cuma disimpan!', '#fff', 62)}</g>`;
+const ks = 0.95; const kori = `<g transform="translate(${f1(900 - 160 * ks)} ${f1(1500 - 290 * ks)}) scale(${ks})">${KO.root.outerHTML}</g>`;
+const lw = 460, lh = lw * 0.31;
+const lg = `<g transform="translate(540 1610)"><rect x="${-lw / 2}" y="${-lh / 2 + 8}" width="${lw}" height="${lh}" rx="${lh / 2}" fill="rgba(0,0,0,.35)"/><rect x="${-lw / 2}" y="${-lh / 2}" width="${lw}" height="${lh}" rx="${lh / 2}" fill="#fff"/><image href="${logo}" x="${-lw * 0.36}" y="${-lw * 0.36 * 0.2015}" width="${lw * 0.72}" height="${lw * 0.72 * 0.2015}"/></g>`;
+const g = guide ? `<rect x="0" y="0" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="1680" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="240" width="1080" height="1440" fill="none" stroke="#0f0" stroke-width="6"/>` : '';
+document.getElementById('c').innerHTML = `<svg width="1080" height="1920" viewBox="0 0 1080 1920">${bg}${deco}${rk}${held}${hands}${fx}${kori}${title}${sub}${lg}${g}</svg>`;
+window.__ready = true;
+</script></body></html>
