@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Makan malam bikin berat badan naik?</title>
+<link rel="stylesheet" href="../stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#c{width:1080px;height:1920px;position:relative;overflow:hidden}svg{display:block}</style></head>
+<body><div id="c"></div>
+<script type="module">
+import { raka, rakaSvg } from '../../../brand/characters/raka/raka.js';
+import { createMascot, poseMascot } from '../stage/mascot.js';
+import * as A from '../stage/art.js';
+import * as B from '../stage/art2.js';
+await document.fonts.load('800 60px "Plus Jakarta Sans"'); await document.fonts.ready;
+const { R, C, E, P, L, T, f1 } = A;
+const guide = new URLSearchParams(location.search).has('guide');
+const logo = await new Promise(async (r) => { const b = await (await fetch('../stage/logo-full.webp')).blob(); const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(b); });
+const K = createMascot(await (await fetch('../stage/kori.svg')).text(), 'kori'); poseMascot(K, { t: 1.4, mood: 'happy', env: 0, wave: 1, phase: 0.5 });
+const STAND = { on: 1, dir: 1, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } };
+const FY = 1520, KK = 1.04, RX = 400;
+// Raka: kaget, memegang sendok, menatap jam 21.00
+const st = raka('kaget', 'netral', { yaw: 0.4, gazeX: 0.9, gazeY: -0.3, wide: 0.9, sweat: 0.7, bags: 0.2, mouth: { w: 12, up: -2, lo: 18 }, legs: STAND,
+  armL: { wx: 166, wy: 660, ex: 112, ey: 610, finger: 0, fa: -90, front: 1 }, armR: { wx: 244, wy: 590, ex: 300, ey: 645, finger: 0, fa: -90, front: 1 } });
+const rk = `<g transform="translate(${f1(RX - 200 * KK)} ${f1(FY - 778 * KK)}) scale(${KK})">${rakaSvg(st, { bare: true, uid: 'rc', outfit: 'kuliah' })}</g>`;
+const [hx, hy] = B.wrist(st, 'R', RX, FY, KK);
+const bg = `<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#23406B"/><stop offset="1" stop-color="#162A4A"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#g)"/>` + [[120, 700], [330, 640], [560, 690], [980, 620]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4" fill="#fff" opacity=".55"/>`).join('') + `<circle cx="150" cy="820" r="170" fill="rgba(255,255,255,.04)"/>` + R(-100, 1500, 1300, 500, '#2E2A3E') + R(-100, 1496, 1300, 10, '#141F33');
+// meja, piring, sendok
+const table = R(-100, 1388, 1300, 26, '#B3744A', 8) + R(-100, 1414, 1300, 110, '#8A5A34');
+const plate = A.plate(RX - 10, 1392, 1.5, 'nasi');
+const spoon = B.spoon(hx, hy + 8, 0, 1.15, true);
+// jam dinding 21.00 + alarm kecil
+const clock = A.wallClock(840, 930, 150, 21.0, '') + B.digitalClock(840, 1160, '21.00', 1.15, '#FF7A6B');
+const alarm = B.alarmClock(930, 700, 0.62, 0.3, 0.7);
+const ST = 'stroke="#0A1A2E" stroke-width="18" paint-order="stroke" stroke-linejoin="round"';
+const title = `${T(540, 360, 'MAKAN MALAM', '#fff', 112, ST)}${T(540, 478, 'BIKIN BERAT BADAN', '#fff', 92, ST)}${T(540, 628, 'NAIK?', '#F8C038', 168, ST.replace('18', '24'))}`;
+const ks = 0.95; const kori = `<g transform="translate(${f1(930 - 160 * ks)} ${f1(1530 - 290 * ks)}) scale(${ks})">${K.root.outerHTML}</g>`;
+const lw = 440, lh = lw * 0.31;
+const lg = `<g transform="translate(540 1596)"><rect x="${-lw / 2}" y="${-lh / 2 + 8}" width="${lw}" height="${lh}" rx="${lh / 2}" fill="rgba(0,0,0,.35)"/><rect x="${-lw / 2}" y="${-lh / 2}" width="${lw}" height="${lh}" rx="${lh / 2}" fill="#fff"/><image href="${logo}" x="${-lw * 0.36}" y="${-lw * 0.36 * 0.2015}" width="${lw * 0.72}" height="${lw * 0.72 * 0.2015}"/></g>`;
+const g = guide ? `<rect x="0" y="0" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="1680" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="240" width="1080" height="1440" fill="none" stroke="#0f0" stroke-width="6"/>` : '';
+document.getElementById('c').innerHTML = `<svg width="1080" height="1920" viewBox="0 0 1080 1920">${bg}${clock}${alarm}${rk}${table}${plate}${spoon}${kori}${title}${lg}${g}</svg>`;
+window.__ready = true;
+</script></body></html>

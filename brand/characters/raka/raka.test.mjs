@@ -104,7 +104,7 @@ test('tanpa opsi baru, gambar lama tidak berubah: kaki kanonik tetap dipakai dan
   const svg = rakaSvg(raka('netral'));
   assert.ok(svg.includes('M130 566L194 566') && !svg.includes('raka-legs'));
   assert.equal(raka('netral').legs.on, 0);
-  assert.deepEqual(Object.keys(OUTFITS), ['harian', 'demo', 'jas']);
+  assert.deepEqual(Object.keys(OUTFITS), ['harian', 'demo', 'jas', 'kuliah', 'santai']);
   assert.equal(rakaSvg(raka('netral'), { uid: 'x' }), rakaSvg(raka('netral'), { uid: 'x', outfit: 'harian' }));
 });
 
@@ -214,4 +214,18 @@ test('lapar, ngantuk, dan pose pegang_perut tergambar tanpa mengubah desain kano
   const base = rakaSvg(raka('netral'));
   for (const [e, p] of [['lapar', 'pegang_perut'], ['ngantuk', 'jalan'], ['lapar', 'jalan']]) { const s = rakaSvg(raka(e, p, { bags: 0.4 })); assert.match(s, /^<svg /); assert.ok(!/NaN|undefined/.test(s)); assert.notEqual(s, base); }
   assert.equal(rakaSvg(raka('netral')), base);
+});
+
+test('pakaian kuliah (ransel) dan santai: warna baru, kepala/patch/kaki tetap, ransel hanya bila diminta', () => {
+  const kuliah = rakaSvg(raka('netral'), { outfit: 'kuliah' }), santai = rakaSvg(raka('netral'), { outfit: 'santai' }), harian = rakaSvg(raka('netral'));
+  assert.ok(kuliah.includes('#6C9BE0') && kuliah.includes('raka-ransel') && kuliah.includes('raka-ransel-tali'), 'kemeja biru muda + ransel');
+  assert.ok(santai.includes('#E8765F') && santai.includes('#5A6477') && !santai.includes('raka-ransel'), 'kaus coral + celana training, tanpa ransel');
+  assert.ok(!harian.includes('raka-ransel'), 'tampilan kanonik tidak berubah');
+  assert.ok(rakaSvg(raka('netral'), { outfit: 'santai', ransel: true }).includes('raka-ransel'), 'ransel bisa diminta pada pakaian lain');
+  assert.ok(!rakaSvg(raka('netral'), { outfit: 'kuliah', ransel: false }).includes('raka-ransel'), 'ransel bisa dimatikan');
+  for (const o of ['kuliah', 'santai']) for (const e of Object.keys(EXPRESSIONS)) {
+    const svg = rakaSvg(raka(e, 'jalan', walkCycle(0.3)), { outfit: o });
+    assert.ok(svg.includes('M200 92C270 92 308 138 308 204') && svg.includes('class="raka-patch"'), `${o}/${e} kepala dan patch`);
+    assert.doesNotMatch(svg, /NaN|undefined/);
+  }
 });

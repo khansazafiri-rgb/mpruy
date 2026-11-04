@@ -35,6 +35,10 @@ export const PALETTE = {
   patchEdge: '#E4D2B4',
   logoTeal: '#017162',
   logoGold: '#FBC23A',
+  // ransel (hanya digambar bila outfit/opsi ransel aktif)
+  pack: '#33506E',
+  packDark: '#25394F',
+  packTrim: '#F8C038',
 };
 
 /**
@@ -53,6 +57,8 @@ export const OUTFITS = {
   harian: { label: 'Pakaian sehari-hari: sweater teal', palette: {}, onDark: PALETTE_ON_DARK },
   demo: { label: 'Baju demo: kaus lengan panjang hitam, celana abu tua', palette: { sweater: '#1F2429', sleeveFront: '#191E22', pants: '#2E3744' }, onDark: { hair: '#3A4468', sweater: '#38414B', sleeveFront: '#2F3841', pants: '#4A5565' } },
   jas: { label: 'Jas dokter putih di atas sweater teal', palette: { sweater: '#F6F9FA', sleeveFront: '#E9EFF1' }, coat: true, coatLong: true, onDark: { hair: '#3A4468', pants: '#38426A' } },
+  kuliah: { label: 'Pulang kuliah: kemeja biru muda, celana navy, ransel di punggung', palette: { sweater: '#6C9BE0', sleeveFront: '#5A87CB' }, ransel: true, onDark: { hair: '#3A4468', pants: '#38426A', sweater: '#82ADEA', sleeveFront: '#6E9BDB' } },
+  santai: { label: 'Santai di kos: kaus oblong coral, celana training abu', palette: { sweater: '#E8765F', sleeveFront: '#D4634D', pants: '#5A6477' }, onDark: { hair: '#3A4468', pants: '#6B7690', sweater: '#F08A72', sleeveFront: '#DC735C' } },
 };
 
 const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
@@ -333,6 +339,17 @@ function patchSvg(P, breath, flip, side) {
     + `<g transform="translate(${r1(cx)} ${r1(cy)}) scale(${r1(k * 1000) / 1000}) translate(-128 -128)">${LOGO_MARK(P.logoTeal, P.logoGold)}</g></g>`;
 }
 
+// ---- ransel (opsi { ransel: true }, atau otomatis pada outfit 'kuliah'): badan ransel di belakang punggung (menyembul di sisi), tali di depan dada
+function packBackSvg(P) {
+  return `<g class="raka-ransel"><path d="M82 410Q82 390 104 390H296Q318 390 318 410V560Q318 592 288 592H112Q82 592 82 560Z" fill="${P.pack}"/>`
+    + `<path d="M82 470H110M290 470H318" stroke="${P.packDark}" stroke-width="8" stroke-linecap="round"/>`
+    + `<path d="M178 394Q200 366 222 394" fill="none" stroke="${P.packDark}" stroke-width="9" stroke-linecap="round"/></g>`;
+}
+function packStrapsSvg(P) {
+  const strap = (d, bx, by) => `<path d="${d}" fill="none" stroke="${P.packDark}" stroke-width="17" stroke-linecap="round"/><rect x="${bx - 9}" y="${by - 6}" width="18" height="12" rx="3" fill="${P.packTrim}"/>`;
+  return `<g class="raka-ransel-tali">${strap('M142 388C136 440 130 500 126 556', 132, 520)}${strap('M262 388C270 440 276 500 280 556', 273, 520)}</g>`;
+}
+
 // ---- efek dan aksesori tambahan (semua kembali '' bila nilainya 0, jadi gambar lama identik)
 function bagsSvg(s, lx, rx, ey) {
   const b = clamp(s.bags, 0, 1); if (b < 0.01) return '';
@@ -534,9 +551,11 @@ export function rakaSvg(state, opts = {}) {
     const a = sd === 'L' ? s.armL : s.armR;
     return (a.front > 0.5) === front ? armSvg(sd, a, P, s.blood) : '';
   }).join('');
-  const bodyParts = sl(arms(false)) + neck + sl(torso + patch) + sl(arms(true));
+  const ransel = !!(opts.ransel ?? outfit.ransel);
+  const packBack = ransel ? sl(packBackSvg(P)) : '', packFront = ransel ? packStrapsSvg(P) : '';
+  const bodyParts = packBack + sl(arms(false)) + neck + sl(torso + patch + packFront) + sl(arms(true));
   const body = `<g class="raka-body" transform="translate(0 ${r1(s.bob)}) rotate(${r1(s.lean)} 200 580)">`
-    + sl(arms(false)) + neck + sl(torso + patch) + headG + sl(arms(true)) + `</g>`;
+    + packBack + sl(arms(false)) + neck + sl(torso + patch + packFront) + headG + sl(arms(true)) + `</g>`;
 
   // ---- kaki (tetap diam)
   const legsDefault = `<path d="M130 566L194 566L190 736L134 736Z" fill="${P.pants}" stroke="${P.pants}" stroke-width="12" stroke-linejoin="round"/>`
