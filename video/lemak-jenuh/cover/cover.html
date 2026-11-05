@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Kenapa makanan berlemak bikin kolesterol naik?</title>
+<link rel="stylesheet" href="../stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#c{width:1080px;height:1920px;position:relative;overflow:hidden}svg{display:block}</style></head>
+<body><div id="c"></div>
+<script type="module">
+import { raka, rakaSvg } from '../../../brand/characters/raka/raka.js';
+import { createMascot, poseMascot } from '../stage/mascot.js';
+import * as A from '../stage/art.js';
+import * as MD from '../stage/artM.js';
+import * as W from '../stage/artW.js';
+await document.fonts.load('800 60px "Plus Jakarta Sans"'); await document.fonts.ready;
+const { R, C, E, P, L, T, f1 } = A;
+const guide = new URLSearchParams(location.search).has('guide');
+const logo = await new Promise(async (r) => { const b = await (await fetch('../stage/logo-full.webp')).blob(); const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(b); });
+const KO = createMascot(await (await fetch('../stage/kori.svg')).text(), 'kori'); poseMascot(KO, { t: 1.4, mood: 'happy', env: 0, wave: 1, phase: 0.5 });
+const STAND = { on: 1, dir: 1, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } };
+const FY = 1710, KK = 1.05, RX = 270;
+// Raka: penasaran (berpikir), memegang gorengan
+const rs = raka('berpikir', 'netral', { legs: STAND, yaw: 0.35, gazeX: 0.8, gazeY: -0.2, tilt: -4, bags: 0.05, sparkle: 0.8,
+  armL: { wx: 150, wy: 540, ex: 92, ey: 500, finger: 0, front: 1 }, armR: { wx: 334, wy: 392, ex: 346, ey: 470, finger: 0, front: 1 } });
+const rk = `<g transform="translate(${f1(RX - 200 * KK)} ${f1(FY - 778 * KK)}) scale(${KK})">${rakaSvg(rs, { bare: true, uid: 'rc', outfit: 'santai' })}</g>`;
+const hx = RX - 200 * KK + 334 * KK, hy = FY - 778 * KK + 392 * KK;
+const bg = `<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F6B63"/><stop offset="1" stop-color="#0E3B3F"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#g)"/><circle cx="140" cy="640" r="300" fill="rgba(255,255,255,.05)"/><circle cx="960" cy="1150" r="340" fill="rgba(255,255,255,.05)"/>`;
+const tempe = W.tempe(hx + 14, hy - 38, 1.1);
+const art = MD.artery(790, 930, 190, { growth: 0.75, angle: Math.PI * 0.5, rbc: 5 });
+const heart = MD.heart(805, 1290, 0.42, { occl: 1, isk: 0.8 });
+const ST = 'stroke="#0A1A2E" stroke-width="18" paint-order="stroke" stroke-linejoin="round"';
+const title = `${T(540, 330, 'KENAPA MAKANAN', '#fff', 100, ST)}${T(540, 436, 'BERLEMAK BIKIN', '#fff', 100, ST)}${T(540, 570, 'KOLESTEROL', '#F8C038', 132, ST.replace('18', '22'))}${T(540, 690, 'NAIK?', '#F8C038', 132, ST.replace('18', '22'))}`;
+const ks = 0.7; const kori = `<g transform="translate(${f1(640 - 160 * ks)} ${f1(1430 - 290 * ks)}) scale(${ks})">${KO.root.outerHTML}</g>`;
+const desk = A.R(-100, 1480, 1300, 40, '#C98F5E') + A.R(-100, 1520, 1300, 500, '#8A5A34');
+const lw = 460, lh = lw * 0.31;
+const lg = `<g transform="translate(540 1625)"><rect x="${-lw / 2}" y="${-lh / 2 + 8}" width="${lw}" height="${lh}" rx="${lh / 2}" fill="rgba(0,0,0,.35)"/><rect x="${-lw / 2}" y="${-lh / 2}" width="${lw}" height="${lh}" rx="${lh / 2}" fill="#fff"/><image href="${logo}" x="${-lw * 0.36}" y="${-lw * 0.36 * 0.2015}" width="${lw * 0.72}" height="${lw * 0.72 * 0.2015}"/></g>`;
+const cap = `${MD.label(790, 1010, 1010, 1090, 'Plak di arteri', { anchor: 'end', fs: 26, line: '#F8C038' })}${MD.label(870, 1330, 1010, 1420, 'Jantung', { anchor: 'end', fs: 26, line: '#fff' })}`;
+const g = guide ? `<rect x="0" y="0" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="1680" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="240" width="1080" height="1440" fill="none" stroke="#0f0" stroke-width="6"/>` : '';
+document.getElementById('c').innerHTML = `<svg width="1080" height="1920" viewBox="0 0 1080 1920">${bg}${art}${heart}${cap}${rk}${tempe}${desk}${kori}${title}${lg}${g}</svg>`;
+window.__ready = true;
+</script></body></html>
