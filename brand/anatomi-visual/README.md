@@ -84,3 +84,40 @@ Hanya abstrak lewat PubMed (halaman penuh Radiology Assistant, StatPearls/NCBI, 
 
 ### Yang belum terverifikasi
 Letak alur AV dan interventrikular, jalur RCA hingga tepi inferior, vena kardiak besar, sebaran lemak epikardium, dan proporsi/ukuran relatif semua struktur hanya berasal dari ringkasan pencarian sebelumnya dan gambar yang digambar tangan, bukan dari halaman yang dibuka. Pelengkap seperti vena pulmonalis tidak digambar. Anggap seluruhnya konsep visual sampai dicocokkan dengan atlas.
+
+## v6: jantung vektor buatan tangan (menggantikan arah SDF v5)
+v5 (SDF + rantai kapsul) ditolak sebagai arah akhir karena bentuk badan dan pangkal pembuluh jauh dari acuan. v6 dibangun ulang tanpa SDF dan tanpa rantai kapsul; kode v5 tetap ada di `sdf/` hanya sebagai pembanding.
+
+Kode di `v6/`: `heart6.mjs` (bentuk dan gaya), `geom.mjs` (kurva dan tabung), `render6.mjs` (render PNG/SVG), `evaluasi.py` (siluet/warna datar/akhir, overlay, selisih, ukuran HP).
+```
+node brand/anatomi-visual/v6/render6.mjs final|flat|sil keluaran.png [--scale=2]
+python3 brand/anatomi-visual/v6/evaluasi.py acuan.jpg out/heart.png sil.png flat.png final.png direktori [--tanpa-acuan]
+```
+Cara kerja:
+- Koordinat = piksel potongan kiri gambar acuan, jadi overlay tanpa pergeseran. Gambar acuan tidak ditempel: hanya dipakai mengukur posisi (puncak, titik terlebar, pangkal pembuluh, lebar batang pulmonalis, ujung cabang) lalu titik jangkar ditempatkan satu per satu.
+- Badan: satu kurva Bezier (dari titik jangkar) untuk siluet lebar yang asimetris, lalu tiga massa terpisah yang menyatu di alur: atrium kanan + aurikula kanan (gelap), ventrikel kanan (terang), ventrikel kiri (lebih gelap). Apeks membulat lebar.
+- Aorta: satu kontur untuk lengkung, aorta desenden, dan tiga cabang dengan lekuk bulat; ujung cabang dihitung dari sumbu supaya tepi potong sama dengan elips lumen. Batang pulmonalis: tabung yang melebar dari pangkal bundar lalu melengkung di depan aorta ke ujung LPA berlumen; RPA lewat di belakang aorta dan terlihat di lubang lengkung.
+- Volume: tumpukan bentuk yang digeser/disusutkan ke arah cahaya lalu dipotong siluetnya (clip), dengan blur lokal per bentuk, bukan satu blur untuk organ; pada tabung, pita pembayang mengikuti sumbu. Kilau tajam hanya beberapa titik. Serat otot halus diinterpolasi antara alur AV, alur interventrikular, dan tepi.
+- Koroner dan lemak: arteri meruncing mengikuti alur, vena kardiak besar menyertai LAD lalu sirkumfleks, lemak = gugus lobulus mengecil ke ujung. Tanpa cabang kecil.
+- Tiga mode: `sil` (siluet), `flat` (warna datar + garis tinta), `final`.
+
+Hasil: `out/v6-akhir.png`, `v6-warna-datar.png`, `v6-siluet.png` (beserta `.svg`), `v6-tiga-pemeriksaan-v4-v6.png`, `v6-ukuran-hp-v4-v6.png`, `v6-metrik.json`. Berkas yang memuat gambar acuan (`v6-tiga-pemeriksaan-acuan-v4-v6.png`, `v6-overlay-acuan-50.png`, `v6-selisih-siluet.png`, `v6-ukuran-hp-acuan-v4-v6.png`) hanya lokal dan tidak di-commit.
+
+### Evaluasi terhadap acuan (kanvas dan posisi sama)
+IoU siluet 0,945 total (badan 0,956; pembuluh 0,917). Angka ini tinggi sebagian karena kontur diukur dari acuan, jadi bukan bukti kualitas; yang dinilai adalah isi yang meleset:
+- Vena pulmonalis (dua tabung merah di kanan batang pulmonalis, x 440-545, y 500-620) sengaja tidak digambar karena belum didukung sumber yang saya buka; ini selisih siluet terbesar.
+- Ujung potong tabung (puncak SVC, tiga cabang, RPA kiri, IVC) di acuan kira-kira 6-10 px lebih panjang karena elips bukaannya lebih besar.
+- Permukaan: acuan punya serat otot jelas, kilau basah di banyak titik, dan percabangan halus yang sengaja tidak dibuat; v6 hanya bidang gradasi lebar dan tiga kilau, sehingga permukaan masih terasa seperti ilustrasi vektor, bukan render basah.
+- Lemak: di acuan lobulus lebih besar dan padat di pangkal batang pulmonalis dan sepanjang LAD; di v6 lobulus kecil, warna kuning seragam.
+- Aurikula: aurikula kanan menyatu dengan massa atrium kanan sehingga tidak terbaca sebagai lipatan sendiri; aurikula kiri hanya lobus bertakik, belum berbentuk jari.
+- Batang pulmonalis: lebar dan lengkung sudah sesuai, tetapi pangkalnya masih tampak seperti tabung tegak yang diberi dasar bulat.
+- SVC, IVC, RPA masih tabung lurus dengan gradasi yang sama (pipa).
+Bagian v4 yang tetap lebih bersih: siluet "hati" v4 lebih rapi untuk ukuran kecil; struktur pembuluh besar dan badan sebaiknya memakai v6.
+
+### Sumber (tambahan untuk v6)
+Hanya abstrak PubMed (halaman penuh tidak bisa dibuka dari sesi ini):
+- Arteri koroner kiri bercabang menjadi cabang interventrikular anterior dan sirkumfleks yang masing-masing berjalan di alurnya; segitiga arteriovena antara konus arteriosus dan aurikula kiri dengan dasar vena kardiak besar; vena kardiak besar umumnya di dalam (dalam) LAD (59%) dan di atas sirkumfleks (72%) ([Bansal dkk. 2023](https://doi.org/10.5115/acb.22.240); [Aarthi & Ramachandran 2026](https://doi.org/10.7759/cureus.112440)). Dipakai untuk vena yang menyertai LAD lalu sirkumfleks.
+- Vena kardiak besar bertemu vena interventrikular anterior di ujung distalnya ([Mi dkk. 2023](https://doi.org/10.1111/jce.16064)).
+- Sumber lain tetap sama seperti bagian v5 di atas (lengkung aorta tiga cabang, aurikula kiri, hubungan koroner dengan sinus pulmonal).
+
+Belum terverifikasi: jalur persis RCA hingga tepi inferior, letak dan lebar alur, sebaran/ukuran lemak, bentuk aurikula kanan, proporsi semua struktur, dan arah tampak (diambil dari gambar acuan yang dibuat AI). Anggap konsep visual sampai dicocokkan dengan atlas.
