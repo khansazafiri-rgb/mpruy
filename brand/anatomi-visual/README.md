@@ -23,14 +23,25 @@ Warna tidak dipaksa sama antarorgan. Setiap organ punya `base`, `light`, `dark` 
 - Alur lemak dan cabang koroner: muncul bertahap lewat `stroke-dasharray`.
 - Pulpa dan saluran akar: kedalaman mengikuti kamera zoom.
 
+## Riwayat revisi
+- v1: sistem gaya awal, jantung dan gigi dasar.
+- v2: latar ungu-magenta, kilau, gradien tabung, gigi dengan dua akar, koroner dan lemak diatur ulang.
+- v3 (saat ini): jantung dengan siluet membulat, lemak kuning di alur (dibuat terlihat di bawah koroner), koroner kiri (LM -> LAD + sirkumfleks) dan kanan (RCA) sesuai sumber di bawah, cabang acak dihapus; gigi molar bawah dua akar dengan dua saluran di akar mesial dan satu di distal, tulang berlubang tidak seragam, gusi dengan tepi bebas.
+
+## Sumber anatomi yang diperiksa
+Hanya ringkasan hasil pencarian web (bukan halaman lengkap yang saya buka):
+- Jalur arteri koroner: asal LM dari sinus aorta kiri, bercabang ke LAD dan sirkumfleks; RCA dari sinus aorta kanan. Ringkasan dari Frontiers in Cardiovascular Medicine (https://www.frontiersin.org/articles/10.3389/fcvm.2021.649855/full), Radiology Assistant (https://radiologyassistant.nl/cardiovascular/anatomy/coronary-anatomy-and-anomalies), dan StatPearls (https://ncbi.nlm.nih.gov/books/NBK482375).
+- Gigi molar bawah: dua akar (mesial dan distal), umumnya tiga saluran utama. Ringkasan dari beberapa tinjauan endodontik (mis. https://pmc.ncbi.nlm.nih.gov/articles/PMC3731107).
+- Wikipedia dan OpenStax tidak bisa diakses dari lingkungan ini (jaringan memblokir en.wikipedia.org; OpenStax tidak muncul di hasil pencarian).
+
 ## Status visual (dibandingkan dengan acuan)
 Acuan yang kamu lampirkan (jantung merah mengilap dengan lemak kuning dan pembuluh bercabang; gigi dengan enamel putih, dentin bergaris, pulpa merah dengan pembuluh, tulang berongga) sudah saya lihat. Hasil saat ini:
 - Mendekati: latar ungu-magenta dengan cahaya, warna merah dan biru, lemak kuning di alur, lubang trabekula di tulang.
-- **Masih jauh:** bentuk jantung masih kaku dan terlalu bersudut (aorta dan batang pulmonalis berbentuk pipa lurus). Kilau dan volume kurang dibanding acuan. Cabang koroner masih tipis dan jarang. Mahkota gigi masih kotak, pulpa masih berbentuk blob tanpa cabang yang jelas.
+- **Masih jauh dari acuan:** pembuluh besar masih tampak seperti tabung terpisah, lemak di alur masih berupa garis, bukan lobulus. Lengkung aorta dan cabangnya belum sehalus acuan. Permukaan jantung kurang berkilau. Gusi dan tulang gigi masih lebih datar daripada acuan. Kilau pada pembuluh masih kaku.
 - Belum ada perbandingan piksel-demi-piksel dengan acuan, karena pengukuran itu butuh gambar acuan dalam berkas.
 
 ## Verifikasi anatomi
-**Belum dilakukan.** Tidak ada sumber medis yang sudah saya buka dan cocokkan. Susunan jantung tampak depan dan potongan molar di sini adalah konsep visual. Jangan dipakai sebagai referensi anatomi sebelum diperiksa dengan atlas atau buku teks.
+**Sebagian.** Jalur koroner dan jumlah akar/saluran dicek terhadap ringkasan sumber di atas, belum terhadap atlas lengkap. Hubungan antarstruktur di jantung (aorta, batang pulmonalis, vena kava) dan detail kamar pulpa belum diverifikasi. Jangan dipakai sebagai referensi anatomi sebelum diperiksa dengan atlas atau buku teks.
 
 ## Keterbatasan
 - Ini penyederhanaan, bukan gambar berskala.

@@ -1,80 +1,83 @@
-// Potongan memanjang gigi molar (bidang sagital): mahkota dengan enamel, dentin bergaris, kamar pulpa dan saluran akar
-// yang bercabang dengan pembuluh dan saraf, gingiva di leher gigi, tulang alveolar berongga (trabekula), dan berkas
-// saraf-pembuluh di apeks. Koordinat lokal sekitar x 150..850, y 160..940. Konsep visual, bukan skala anatomi; lihat README.
-import { ORGAN, OUTLINE, gid, tube, solid, specular, sheen } from './style.mjs';
+// Potongan memanjang molar bawah (bidang sagital): mahkota dengan dua tonjol bukal, dua akar (mesial dan distal),
+// enamel, dentin bergaris, kamar pulpa dengan tanduk pulpa, saluran akar (dua di akar mesial, satu di distal, sesuai pola umum),
+// sementum, ligamen periodontal, gingiva dengan papila di antara akar, tulang alveolar berbatas korteks, dan berkas
+// saraf-pembuluh yang masuk dari apeks ke pulpa. Konsep visual, bukan skala.
+import { ORGAN, OUTLINE, gid, tube, solid, specular, sheen, branches } from './style.mjs';
 
-export const TOOTH_BOX = { x: 150, y: 160, w: 700, h: 780, cx: 500, cy: 550 };
+export const TOOTH_BOX = { x: 150, y: 150, w: 700, h: 800, cx: 500, cy: 540 };
 const lcg = (seed) => { let r = seed; return () => { r = (r * 1664525 + 1013904223) % 4294967296; return r / 4294967296; }; };
 
-const CROWN = 'M 252 480 C 222 392 218 296 236 236 C 252 184 300 160 352 170 C 392 180 418 166 470 166 C 522 166 560 180 600 170 C 660 160 722 186 746 236 C 764 296 760 392 736 480 Z';
-const DENTIN = 'M 290 446 C 268 380 264 306 278 262 C 294 222 332 208 362 214 C 398 220 422 208 470 208 C 520 208 556 218 592 212 C 632 206 682 224 702 262 C 716 306 712 380 690 446 Z';
-const PULP = 'M 338 428 C 326 370 332 298 358 266 Q 402 248 470 258 Q 540 248 582 266 C 608 298 614 370 602 428 Z';
-const ROOT_L = 'M 240 474 C 250 580 300 700 350 782 C 362 802 388 802 398 782 C 420 700 430 600 452 474 Z';
-const ROOT_R = 'M 548 474 C 562 600 590 700 610 782 C 620 802 646 802 656 782 C 690 700 722 580 742 474 Z';
-const CANAL_L = 'M 390 424 C 386 520 382 620 378 722 L 396 724 C 402 620 410 520 414 424 Z';
-const CANAL_R = 'M 586 424 C 590 520 604 620 618 722 L 636 718 C 626 620 612 520 606 424 Z';
-const GINGIVA = 'M 150 468 C 186 426 232 452 246 476 C 292 502 352 508 430 502 L 562 502 C 642 508 710 502 756 476 C 772 452 812 426 850 468 L 850 548 C 700 556 300 556 150 548 Z';
-// tulang alveolar: bentuk membulat di bawah gusi, lalu lubang trabekula di bagian dalam
-const BONE = 'M 150 540 L 850 540 L 850 800 C 830 890 720 936 500 936 C 280 936 170 890 150 800 Z';
+// mahkota dengan dua tonjol (kiri dan kanan) dan lekuk di tengah
+const CROWN = 'M 246 486 C 218 404 214 318 226 258 C 238 204 286 170 336 176 C 368 180 384 196 420 194 C 456 192 474 178 510 178 C 552 178 572 196 606 200 C 662 170 726 194 746 256 C 760 318 756 404 728 486 Z';
+// dentin mengikuti kontur mahkota, dengan tonjol yang sama
+const DENTIN = 'M 278 462 C 262 396 258 322 270 278 C 282 240 318 226 352 230 C 380 234 396 224 424 224 C 456 224 474 214 508 214 C 540 214 560 226 590 230 C 626 228 668 242 684 278 C 698 322 694 396 676 462 Z';
+// kamar pulpa dengan dua tanduk pulpa di bawah tonjol
+const PULP = 'M 330 442 C 318 378 324 306 346 278 Q 384 262 430 268 Q 470 262 508 266 Q 556 262 592 278 C 612 306 618 378 606 442 Z';
+// akar mesial (kiri, sedikit lebih lebar) dan distal (kanan, lebih ramping)
+const ROOT_M = 'M 242 478 C 246 590 282 702 326 790 C 338 812 370 812 380 790 C 402 712 422 610 440 478 Z';
+const ROOT_D = 'M 552 478 C 570 610 592 706 606 782 C 614 806 644 806 652 784 C 682 706 716 596 730 478 Z';
+// dua saluran di akar mesial, satu di distal (pola umum molar bawah)
+const CANAL_M1 = 'M 338 440 C 340 540 350 640 360 748 L 372 748 C 376 640 384 540 392 440 Z';
+const CANAL_M2 = 'M 396 440 C 404 540 414 640 420 730 L 432 728 C 430 640 422 540 418 440 Z';
+const CANAL_D = 'M 566 440 C 580 560 600 660 614 760 L 628 756 C 620 660 606 560 598 440 Z';
+const GINGIVA = 'M 150 470 C 188 428 232 452 248 480 C 296 506 356 512 432 506 C 470 500 492 500 514 506 L 560 506 C 640 512 708 506 752 480 C 768 454 812 428 850 470 L 850 556 C 700 566 300 566 150 556 Z';
+const BONE = 'M 150 548 L 850 548 L 850 810 C 828 898 716 944 500 944 C 284 944 172 898 150 810 Z';
 
-function inRoot(x, y) {   // area akar dan kanal: lubang tulang tidak digambar di sini
-  return (x > 236 && x < 456 && y > 470) || (x > 544 && x < 748 && y > 470);
+function inRoot(x, y) {
+  return (x > 236 && x < 448 && y > 470) || (x > 546 && x < 736 && y > 470);
 }
 
 export function toothSvg(uid) {
   let s = '';
   const rnd = lcg(7);
-  // 1. tulang alveolar: isi gradien, lalu lubang trabekula (oval gelap dengan tepi terang)
+  // 1. tulang alveolar: korteks padat di tepi (lebih gelap) dan trabekula berongga di dalam
   s += `<path d="${BONE}" fill="url(#${gid(uid, 'bone')})"/>`;
-  for (let y = 556; y < 930; y += 24) for (let x = 166; x < 840; x += 30) {
-    if (inRoot(x, y) || y > 880 && (x < 240 || x > 760)) continue;
-    const jx = x + (rnd() - 0.5) * 12, jy = y + (rnd() - 0.5) * 10, rx = 7 + rnd() * 9, ry = 4 + rnd() * 7;
-    s += `<ellipse cx="${jx.toFixed(1)}" cy="${jy.toFixed(1)}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}" fill="${ORGAN.bone.dark}" opacity="${(0.45 + rnd() * 0.3).toFixed(2)}"/>`;
-    s += `<ellipse cx="${(jx + 1.5).toFixed(1)}" cy="${(jy + 1.5).toFixed(1)}" rx="${(rx * 0.7).toFixed(1)}" ry="${(ry * 0.5).toFixed(1)}" fill="none" stroke="${ORGAN.bone.light}" stroke-width="2" opacity="0.5"/>`;
+  for (let y = 566; y < 930; y += 28) for (let x = 170; x < 840; x += 36) {
+    if (inRoot(x, y) || (y > 860 && (x < 260 || x > 740))) continue;
+    if (rnd() < 0.3) continue;                                  // pori tidak seragam
+    const jx = x + (rnd() - 0.5) * 16, jy = y + (rnd() - 0.5) * 12, rx = 4 + rnd() * 8, ry = 2.5 + rnd() * 5;
+    s += `<ellipse cx="${jx.toFixed(1)}" cy="${jy.toFixed(1)}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}" fill="${ORGAN.bone.dark}" opacity="${(0.25 + rnd() * 0.25).toFixed(2)}"/>`;
   }
-  s += `<path d="${BONE}" fill="none" stroke="${OUTLINE.color}" stroke-width="4" opacity="0.5"/>`;
-  // 2. ligamen periodontal: lapisan gelap tipis di sekeliling akar
-  s += `<path d="${ROOT_L}" fill="none" stroke="#8A3A3E" stroke-width="20" stroke-linejoin="round" opacity="0.5"/>`;
-  s += `<path d="${ROOT_R}" fill="none" stroke="#8A3A3E" stroke-width="20" stroke-linejoin="round" opacity="0.5"/>`;
-  // 3. berkas saraf dan pembuluh di apeks
-  const bundle = [['artery', 368, 9], ['vein', 380, 9], ['nerve', 392, 7]];
-  for (const [k, x, w] of bundle) {
-    const d = `M ${x} 800 C ${x - 4} 850 ${x + 6} 890 ${x - 2} 936`;
+  s += `<path d="${BONE}" fill="none" stroke="${ORGAN.bone.dark}" stroke-width="5" opacity="0.45"/>`;
+  // 2. ligamen periodontal: lapisan gelap tipis mengikuti akar
+  s += `<path d="${ROOT_M}" fill="none" stroke="#8A3A3E" stroke-width="18" stroke-linejoin="round" opacity="0.45"/>`;
+  s += `<path d="${ROOT_D}" fill="none" stroke="#8A3A3E" stroke-width="18" stroke-linejoin="round" opacity="0.45"/>`;
+  // 3. berkas saraf-pembuluh dari apeks masuk ke saluran (tiga jalur)
+  for (const [k, x0, x1, w] of [['artery', 356, 360, 8], ['vein', 372, 372, 8], ['nerve', 384, 382, 6]]) {
+    const d = `M ${x0} 800 C ${x0 - 6} 856 ${x1 + 6} 900 ${x1} 948`;
     s += `<path d="${d}" fill="none" stroke="${OUTLINE.color}" stroke-width="${w + 5}" stroke-linecap="round" opacity="0.5"/>`;
     s += `<path d="${d}" fill="none" stroke="${k === 'nerve' ? ORGAN.nerve.base : ORGAN[k].base}" stroke-width="${w}" stroke-linecap="round"/>`;
   }
-  // 4. akar: sementum (lapisan luar) dan dentin di dalam
-  s += solid(ROOT_L, 'cementum', uid);
-  s += solid(ROOT_R, 'cementum', uid);
-  s += `<path d="${ROOT_L}" fill="none" stroke="${ORGAN.dentin.base}" stroke-width="16" stroke-linejoin="round" opacity="0.55"/>`;
-  s += `<path d="${ROOT_R}" fill="none" stroke="${ORGAN.dentin.base}" stroke-width="16" stroke-linejoin="round" opacity="0.55"/>`;
-  // 5. saluran akar (pulpa) dan cabang halus berisi pembuluh dan saraf
-  s += solid(CANAL_L, 'pulp', uid, { outline: false });
-  s += solid(CANAL_R, 'pulp', uid, { outline: false });
-  const canalL = [['artery', 'M 400 430 C 398 520 392 620 388 716', 3.5], ['vein', 'M 404 430 C 404 520 400 620 396 716', 3.5], ['nerve', 'M 396 430 C 394 520 388 620 384 716', 2.5]];
-  for (const [k, d, w] of canalL) s += `<path d="${d}" fill="none" stroke="${k === 'nerve' ? ORGAN.nerve.light : ORGAN[k].light}" stroke-width="${w}" stroke-linecap="round" opacity="0.9"/>`;
-  const canalR = ['M 598 430 C 602 520 616 620 626 716', 'M 604 430 C 610 520 620 620 630 716', 'M 592 430 C 594 520 608 620 620 716'];
-  canalR.forEach((d, i) => { const k = ['artery', 'vein', 'nerve'][i]; s += `<path d="${d}" fill="none" stroke="${k === 'nerve' ? ORGAN.nerve.light : ORGAN[k].light}" stroke-width="${[3.5, 3.5, 2.5][i]}" stroke-linecap="round" opacity="0.9"/>`; });
-  // 6. mahkota: enamel (lapisan luar) dengan bayangan, lalu dentin bergaris
+  // 4. akar: sementum (lapisan luar), dentin di bawah
+  s += solid(ROOT_M, 'cementum', uid);
+  s += solid(ROOT_D, 'cementum', uid);
+  s += `<path d="${ROOT_M}" fill="none" stroke="${ORGAN.dentin.base}" stroke-width="14" stroke-linejoin="round" opacity="0.6"/>`;
+  s += `<path d="${ROOT_D}" fill="none" stroke="${ORGAN.dentin.base}" stroke-width="14" stroke-linejoin="round" opacity="0.6"/>`;
+  // 5. saluran akar (pulpa) berisi cabang pembuluh dan saraf (kuning, biru, merah)
+  for (const c of [CANAL_M1, CANAL_M2, CANAL_D]) s += solid(c, 'pulp', uid, { outline: false });
+  // 6. mahkota: enamel, lalu dentin dengan garis tubuli dari pulpa ke enamel
   s += `<g filter="url(#${uid}-shadow)">` + solid(CROWN, 'enamel', uid) + `</g>`;
-  s += sheen(CROWN, 30, uid, 0.5);
+  s += sheen(CROWN, 26, uid, 0.5);
   s += solid(DENTIN, 'dentin', uid, { outline: false });
-  for (let i = 0; i < 26; i++) {               // garis dentin (tubuli) dari pulpa ke batas enamel
-    const x = 296 + i * 16, yTop = 236 + (i % 4) * 4, yBot = 420 + (i % 3) * 6;
-    s += `<path d="M ${x} ${yBot} Q ${x + (i % 2 ? 6 : -6)} ${(yTop + yBot) / 2} ${x + (i < 13 ? -4 : 4)} ${yTop}" fill="none" stroke="${ORGAN.dentin.dark}" stroke-width="2" opacity="0.22"/>`;
+  for (let i = 0; i < 32; i++) {
+    const x = 292 + i * 12.5, yTop = 232 + (i % 5) * 3, yBot = 420 + (i % 4) * 8;
+    s += `<path d="M ${x.toFixed(1)} ${yBot} Q ${(x + (i % 2 ? 4 : -4)).toFixed(1)} ${((yTop + yBot) / 2).toFixed(1)} ${(x + (i < 16 ? -3 : 3)).toFixed(1)} ${yTop}" fill="none" stroke="${ORGAN.dentin.dark}" stroke-width="1.6" opacity="0.2"/>`;
   }
-  s += `<path d="${DENTIN}" fill="none" stroke="${ORGAN.dentin.dark}" stroke-width="3" opacity="0.6"/>`;
-  // 7. kamar pulpa dengan tanduk pulpa (tonjolan ke arah tonjol gigi)
+  s += `<path d="${DENTIN}" fill="none" stroke="${ORGAN.dentin.dark}" stroke-width="3" opacity="0.55"/>`;
+  // 7. kamar pulpa dengan tanduk pulpa di bawah tiap tonjol
   s += solid(PULP, 'pulp', uid, { outline: false });
-  s += `<circle cx="352" cy="262" r="20" fill="url(#${gid(uid, 'pulp')})"/>`;
-  s += `<circle cx="590" cy="264" r="22" fill="url(#${gid(uid, 'pulp')})"/>`;
-  s += `<path d="M 470 420 C 470 360 462 320 470 274" fill="none" stroke="${ORGAN.artery.light}" stroke-width="5" stroke-linecap="round" opacity="0.7"/>`;
-  s += `<path d="M 470 420 C 478 350 486 300 470 268" fill="none" stroke="${ORGAN.vein.light}" stroke-width="4" stroke-linecap="round" opacity="0.6"/>`;
-  // 8. gingiva di sekitar leher gigi (menutupi tepi bawah mahkota)
+  s += `<circle cx="368" cy="282" r="22" fill="url(#${gid(uid, 'pulp')})"/>`;
+  s += `<circle cx="578" cy="284" r="22" fill="url(#${gid(uid, 'pulp')})"/>`;
+  // cabang pembuluh dan saraf di pulpa (dari saluran ke tanduk)
+  s += branches([[388, 440, -1.65], [404, 440, -1.5], [592, 440, -1.6], [578, 440, -1.5]], (i) => [4, 3, 4, 3][i], 'artery', uid, rnd, { depth: 2, len: 42, spread: 0.45 });
+  for (const [x, y, c] of [[352, 442, 'nerve'], [366, 442, 'vein'], [606, 442, 'nerve'], [600, 442, 'vein']]) {
+    s += `<path d="M ${x} ${y} C ${x + (x < 480 ? 6 : -6)} ${y - 60} ${x + (x < 480 ? 10 : -10)} ${y - 110} ${x + (x < 480 ? 14 : -14)} ${y - 150}" fill="none" stroke="${c === 'nerve' ? ORGAN.nerve.light : ORGAN.vein.light}" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>`;
+  }
+  // 8. gingiva: tepi bebas mengelilingi leher gigi, papila di antara akar
   s += `<g filter="url(#${uid}-shadow)">` + solid(GINGIVA, 'gingiva', uid) + `</g>`;
-  s += sheen(GINGIVA, 22, uid, 0.4);
+  s += sheen(GINGIVA, 20, uid, 0.4);
   // kilau permukaan
-  s += specular(330, 300, 62, 18, -24, uid, 0.34);
-  s += specular(300, 390, 14, 50, 6, uid, 0.16);
+  s += specular(330, 300, 54, 16, -20, uid, 0.3);
+  s += specular(300, 380, 12, 46, 6, uid, 0.14);
   return s;
 }

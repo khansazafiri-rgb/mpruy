@@ -1,85 +1,73 @@
-// Jantung manusia, tampak depan (anterior). Koordinat lokal sekitar x 200..830, y 0..930.
-// - Ventrikel kanan (RV) dan atrium kanan (RA) di sisi kiri layar (sisi kanan tubuh pasien); ventrikel kiri (LV) dan apeks di kanan bawah.
-// - Aorta asendens naik dari basis, lengkung aorta dan arteri brakiosefalika ke kanan layar.
-// - Batang pulmonalis dari RV ke atas-kanan, bercabang ke arteri pulmonalis kiri dan kanan.
-// - Vena kava superior (dari atas) dan inferior (dari bawah) masuk atrium kanan; vena kardiak besar berjalan di samping LAD.
-// - Arteri koroner kiri (LM) ke LAD dan sirkumfleks; arteri koroner kanan (RCA) di alur AV kanan; cabang-cabang kecil dibuat prosedural.
-// Penyederhanaan visual, bukan gambar berskala. Status verifikasi anatomi ada di README.
-import { ORGAN, OUTLINE, gid, tube, solid, specular, sheen, cap, branches } from './style.mjs';
+// Jantung manusia, tampak depan. Koordinat lokal sekitar x 200..820, y 0..940.
+// Dasar anatomi (lihat README, bagian sumber):
+// - RA dan RV di sisi kiri layar (sisi kanan tubuh pasien); LV dan apeks ke kanan bawah.
+// - Aorta asendens keluar dari RV/atrium-basis, lengkungnya ke kanan layar dengan tiga cabang besar (brakiosefalika, karotis kiri, subklavia kiri).
+// - Batang pulmonalis keluar dari RV ke atas-kanan, bercabang ke kiri dan kanan.
+// - Vena kava superior dari atas, inferior dari bawah, keduanya masuk RA.
+// - Arteri koroner kiri (LM) dari sinus aorta kiri, bercabang ke LAD dan sirkumfleks; arteri koroner kanan dari sinus aorta kanan, di alur AV kanan.
+// Ini visual konseptual, bukan gambar berskala.
+import { ORGAN, OUTLINE, gid, tube, solid, specular, sheen, cap } from './style.mjs';
 
-export const HEART_BOX = { x: 200, y: 0, w: 630, h: 930, cx: 515, cy: 465 };
-
-// generator deterministik (LCG) agar hasil selalu sama tiap render
-const lcg = (seed) => { let r = seed; return () => { r = (r * 1664525 + 1013904223) % 4294967296; return r / 4294967296; }; };
+export const HEART_BOX = { x: 200, y: 0, w: 620, h: 940, cx: 510, cy: 470 };
 
 export function heartSvg(uid) {
   let s = '';
-  const rnd = lcg(42);
-  const body = 'M 300 240 C 236 250 206 350 214 460 C 222 570 292 660 372 738 C 446 806 534 880 612 930 C 706 890 796 806 804 690 C 812 580 792 480 738 410 C 702 360 652 334 622 330 C 562 300 470 300 420 318 C 372 300 332 262 300 240 Z';
-  // 1. auricula kanan (lobus gelap di kiri atas, di belakang SVC)
-  s += solid('M 250 330 C 220 292 256 240 300 252 C 332 262 344 306 322 344 C 300 370 270 360 250 330 Z', 'muscle', uid, { opacity: 0.95 });
-  // 2. badan jantung
+  // 1. vena kava, dibawah badan (di belakang jantung): dari atas dan bawah
+  s += tube('M 318 40 C 316 110 310 190 306 262', 'vein', 58, uid);
+  s += sheen('M 318 40 C 316 110 310 190 306 262', 58, uid, 0.32);
+  s += cap(318, 40, 58, 0, 'vein', uid);
+  s += tube('M 330 620 C 340 680 332 740 318 800', 'vein', 62, uid);
+  s += sheen('M 330 620 C 340 680 332 740 318 800', 62, uid, 0.3);
+  s += cap(318, 800, 62, 0, 'vein', uid);
+  // 2. aorta: asendens di belakang batang pulmonalis; lengkung ke kanan layar dengan tiga cabang
+  s += tube('M 452 350 C 450 260 444 170 442 100', 'artery', 100, uid);
+  s += tube('M 442 110 C 452 36 566 14 652 60', 'artery', 86, uid);
+  s += tube('M 462 62 C 420 30 384 14 344 14', 'artery', 46, uid);
+  s += tube('M 548 36 C 560 6 600 -4 624 -8', 'artery', 36, uid);
+  s += sheen('M 452 350 C 450 260 444 170 442 100', 100, uid, 0.42);
+  s += sheen('M 442 110 C 452 36 566 14 652 60', 86, uid, 0.42);
+  s += cap(344, 14, 46, -82, 'artery', uid);
+  // 3. arteri paru: dari RV ke atas-kanan, bercabang kiri dan kanan (di depan aorta)
+  s += tube('M 440 420 C 480 360 540 318 606 286', 'pulmArtery', 74, uid);
+  s += tube('M 606 286 C 652 262 704 268 760 304', 'pulmArtery', 56, uid);
+  s += tube('M 606 286 C 566 270 526 262 486 256', 'pulmArtery', 48, uid);
+  s += sheen('M 440 420 C 480 360 540 318 606 286', 74, uid, 0.4);
+  s += cap(760, 304, 56, 18, 'pulmArtery', uid);
+  // 4. badan jantung: siluet membulat, apeks ke bawah-kanan
+  const body = 'M 292 258 C 226 270 204 364 212 470 C 220 580 292 668 378 742 C 452 806 530 878 592 936 C 690 890 790 806 800 690 C 808 584 790 486 740 412 C 704 358 656 330 618 326 C 556 300 470 300 418 318 C 372 298 330 252 292 258 Z';
   s += `<g filter="url(#${uid}-shadow)">${solid(body, 'muscle', uid)}</g>`;
-  s += `<path d="M 560 430 C 650 420 748 486 748 616 C 748 764 660 884 626 920 C 566 786 540 600 560 430 Z" fill="${ORGAN.muscle.light}" opacity="0.22"/>`;
-  s += `<path d="M 300 430 C 330 380 470 360 540 420 C 590 470 580 640 520 700 C 450 760 330 700 300 610 C 280 540 280 470 300 430 Z" fill="${ORGAN.muscle.dark}" opacity="0.22"/>`;
-  // serat otot halus mengikuti dinding
-  for (const d of ['M 330 470 C 380 540 390 640 430 700', 'M 450 420 C 470 500 480 600 540 690', 'M 650 470 C 700 560 712 660 670 800', 'M 380 600 C 420 650 470 700 520 760', 'M 560 560 C 610 640 630 720 600 820']) {
-    s += `<path d="${d}" fill="none" stroke="${ORGAN.muscle.dark}" stroke-width="7" stroke-linecap="round" opacity="0.16"/>`;
-    s += `<path d="${d}" fill="none" stroke="${ORGAN.muscle.light}" stroke-width="2" stroke-linecap="round" opacity="0.12" transform="translate(4 0)"/>`;
-  }
-  // 3. lemak di alur: pita kuning dan lobulus kecil berderet
+  // gradasi volume: ventrikel kiri lebih terang (kanan bawah), ventrikel kanan sedikit lebih gelap (kiri)
+  s += `<path d="M 556 420 C 650 410 760 486 760 620 C 760 770 680 880 592 936 C 572 780 540 600 556 420 Z" fill="${ORGAN.muscle.light}" opacity="0.2"/>`;
+  s += `<path d="M 292 420 C 330 380 462 368 520 420 C 560 470 552 640 500 720 C 440 790 320 730 294 630 C 280 560 276 470 292 420 Z" fill="${ORGAN.muscle.dark}" opacity="0.18"/>`;
+  // rim light di tepi kanan dan kiri (pantulan, halus)
+  s += `<path d="M 780 470 C 796 560 790 660 760 740" fill="none" stroke="${ORGAN.muscle.light}" stroke-width="10" stroke-linecap="round" opacity="0.35"/>`;
+  s += `<path d="M 232 420 C 222 480 232 560 268 630" fill="none" stroke="${ORGAN.muscle.light}" stroke-width="8" stroke-linecap="round" opacity="0.22"/>`;
+  // 5. atrium kanan: lobus lembut di kiri atas (di atas RV), dan auricula kiri di kanan atas
+  s += solid('M 236 336 C 226 300 266 282 300 292 C 332 304 338 352 318 382 C 296 404 258 392 236 336 Z', 'muscle', uid, { opacity: 0.96 });
+  s += solid('M 618 352 C 662 300 738 296 766 336 C 786 368 768 418 734 426 C 698 434 648 410 618 352 Z', 'muscle', uid);
+  s += `<path d="M 662 350 C 690 340 720 350 740 372" fill="none" stroke="${OUTLINE.color}" stroke-width="4" opacity="0.45"/>`;
+  // 6. alur lemak dan koroner: lemak di bawah, arteri di atas
   const grooves = [
-    { d: 'M 500 340 C 505 490 540 680 625 895', pts: [[505, 350], [510, 430], [525, 520], [545, 610], [575, 700], [605, 800], [622, 880]] },
-    { d: 'M 250 468 C 300 520 380 560 440 604 C 490 640 520 680 560 712', pts: [[252, 470], [300, 500], [350, 530], [400, 570], [445, 606], [500, 660], [552, 706]] },
-    { d: 'M 505 345 C 580 380 690 450 752 600', pts: [[508, 350], [570, 378], [630, 418], [690, 480], [728, 540], [748, 596]] },
+    'M 502 344 C 504 490 538 680 590 912',                       // LAD (alur interventrikular anterior)
+    'M 506 350 C 580 382 690 452 748 596',                         // sirkumfleks (alur AV kiri)
+    'M 252 470 C 300 520 370 560 430 600 C 480 634 508 676 540 716', // RCA (alur AV kanan)
   ];
-  for (const g of grooves) s += `<path d="${g.d}" fill="none" stroke="${ORGAN.fat.dark}" stroke-width="34" stroke-linecap="round" opacity="0.6" filter="url(#${uid}-soft)"/>`;
-  for (const g of grooves) {
-    s += `<path d="${g.d}" fill="none" stroke="${ORGAN.fat.base}" stroke-width="20" stroke-linecap="round"/>`;
-    s += `<path d="${g.d}" fill="none" stroke="${ORGAN.fat.light}" stroke-width="6" stroke-linecap="round" opacity="0.7" transform="translate(-4 -2)"/>`;
-    for (let i = 0; i < g.pts.length; i++) {
-      const [x, y] = g.pts[i];
-      s += `<ellipse cx="${x + (rnd() - 0.5) * 8}" cy="${y + (rnd() - 0.5) * 6}" rx="${(12 + rnd() * 6).toFixed(1)}" ry="${(9 + rnd() * 4).toFixed(1)}" fill="${ORGAN.fat.base}" stroke="${ORGAN.fat.dark}" stroke-width="2.5" transform="rotate(${(rnd() * 60 - 30).toFixed(0)} ${x} ${y})"/>`;
-    }
-  }
-  // 4. auricula kiri (menutupi dasar batang pulmonalis di sisi kanan layar)
-  s += solid('M 620 360 C 662 298 742 288 772 330 C 792 362 772 412 736 422 C 700 430 650 406 620 360 Z', 'muscle', uid);
-  s += `<path d="M 662 352 C 692 340 722 350 742 372" fill="none" stroke="${OUTLINE.color}" stroke-width="4" opacity="0.5"/>`;
-  s += specular(700, 360, 30, 12, -20, uid, 0.3);
-  // 5. vena: SVC, IVC, vena kardiak besar dan cabangnya
-  s += tube('M 320 30 C 318 100 312 180 310 250', 'vein', 60, uid);
-  s += sheen('M 320 30 C 318 100 312 180 310 250', 60, uid, 0.35);
-  s += cap(320, 30, 60, 0, 'vein', uid);
-  s += tube('M 330 610 C 340 670 330 730 318 790', 'vein', 64, uid);
-  s += sheen('M 330 610 C 340 670 330 730 318 790', 64, uid, 0.3);
-  s += cap(318, 790, 64, 0, 'vein', uid);
-  s += tube('M 532 360 C 556 500 590 680 648 890', 'vein', 12, uid, { outline: false, opacity: 0.95 });
-  s += branches([[548, 430, 0.4], [566, 520, 0.5], [600, 640, 0.6]], () => 4, 'vein', uid, rnd, { depth: 2, len: 38, spread: 0.6 });
-  // 6. arteri paru
-  s += tube('M 490 400 C 520 340 560 300 600 270', 'pulmArtery', 76, uid);
-  s += tube('M 600 270 C 650 250 700 260 770 300', 'pulmArtery', 58, uid);
-  s += tube('M 600 270 C 560 260 520 255 480 250', 'pulmArtery', 52, uid);
-  s += sheen('M 490 400 C 520 340 560 300 600 270', 76, uid, 0.4);
-  s += sheen('M 600 270 C 650 250 700 260 770 300', 58, uid, 0.4);
-  s += cap(770, 300, 58, 20, 'pulmArtery', uid);
-  // 7. aorta: asendens, lengkung, arteri brakiosefalika
-  s += tube('M 450 340 C 448 260 442 170 440 110', 'artery', 100, uid);
-  s += tube('M 440 120 C 450 40 560 20 640 60', 'artery', 88, uid);
-  s += tube('M 455 70 C 410 40 370 20 330 12', 'artery', 52, uid);
-  s += sheen('M 450 340 C 448 260 442 170 440 110', 100, uid, 0.45);
-  s += sheen('M 440 120 C 450 40 560 20 640 60', 88, uid, 0.45);
-  s += cap(330, 12, 52, -80, 'artery', uid);
-  s += cap(640, 60, 88, 10, 'artery', uid);
-  // 8. arteri koroner: LM, LAD, sirkumfleks, RCA, dan cabang pohon
-  s += tube('M 455 330 L 500 340', 'artery', 26, uid);
-  s += tube('M 500 340 C 505 490 540 680 625 895', 'artery', 22, uid);
-  s += tube('M 505 345 C 580 380 690 450 752 600', 'artery', 18, uid);
-  s += tube('M 420 350 C 360 392 300 432 250 468 C 310 520 380 560 440 604 C 490 640 520 680 560 712', 'artery', 20, uid);
-  s += sheen('M 500 340 C 505 490 540 680 625 895', 22, uid, 0.45);
-  s += sheen('M 420 350 C 360 392 300 432 250 468 C 310 520 380 560 440 604 C 490 640 520 680 560 712', 20, uid, 0.4);
-  s += branches([[512, 470, 0.18], [528, 580, 0.25], [560, 690, 0.3], [330, 470, 0.9], [392, 560, 0.5]], (i) => [9, 9, 8, 7, 8][i], 'artery', uid, rnd, { depth: 2, len: 50, spread: 0.55 });
-  // 9. kilau permukaan
-  s += specular(650, 540, 26, 74, 12, uid, 0.26);
-  s += specular(380, 440, 24, 60, -20, uid, 0.18);
+  for (const d of grooves) s += `<path d="${d}" fill="none" stroke="${ORGAN.fat.dark}" stroke-width="44" stroke-linecap="round" opacity="0.28" filter="url(#${uid}-soft)"/>`;
+  for (const d of grooves) s += `<path d="${d}" fill="none" stroke="${ORGAN.fat.base}" stroke-width="36" stroke-linecap="round"/>`;
+  for (const d of grooves) s += `<path d="${d}" fill="none" stroke="${ORGAN.fat.light}" stroke-width="5" stroke-linecap="round" opacity="0.6" transform="translate(-3 -2)"/>`;
+  // 7. vena kardiak besar (biru tipis) di samping LAD, dan arteri koroner di atas lemak
+  s += tube('M 530 360 C 552 500 586 690 640 900', 'vein', 11, uid, { outline: false, opacity: 0.95 });
+  s += tube('M 502 344 C 504 490 538 680 590 912', 'artery', 13, uid);
+  s += tube('M 506 350 C 580 382 690 452 748 596', 'artery', 11, uid);
+  s += tube('M 252 470 C 300 520 370 560 430 600 C 480 634 508 676 540 716', 'artery', 12, uid);
+  s += tube('M 462 332 L 506 344', 'artery', 24, uid);
+  // cabang utama saja (satu diagonal dari LAD, satu marginal dari RCA), tanpa cabang acak
+  s += tube('M 548 500 C 600 520 640 548 668 592', 'artery', 9, uid, { outline: false });
+  s += tube('M 430 600 C 450 660 470 720 486 780', 'artery', 9, uid, { outline: false });
+  s += sheen('M 502 344 C 504 490 538 680 590 912', 13, uid, 0.42);
+  s += sheen('M 252 470 C 300 520 370 560 430 600 C 480 634 508 676 540 716', 12, uid, 0.4);
+  // 8. kilau permukaan: lebar, lembut, mengikuti volume (bukan titik-titik)
+  s += specular(650, 540, 46, 130, 16, uid, 0.22);
+  s += specular(360, 500, 34, 90, -10, uid, 0.12);
   return s;
 }
