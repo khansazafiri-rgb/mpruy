@@ -156,15 +156,15 @@ export const cubicD = (pts) => { let d = `M${pts[0]} ${pts[1]}`; for (let i = 2;
 let _vid = 0;
 export function vessel(pts, w0, w1, c, o = {}) {
   const p = o.p ?? 'a', dark = o.dark ?? darken(c, 0.5), light = o.light ?? lighten(c, 0.5), id = `${p}vs${_vid++}`;
-  const poly = ribbon(pts, w0, w1), sh = (dx, dy) => pts.map(([x, y]) => [x + dx, y + dy]);
+  const E = o.ease ?? ((t) => t), poly = ribbon(pts, w0, w1, E), sh = (dx, dy) => pts.map(([x, y]) => [x + dx, y + dy]);
   const wm = (w0 + w1) / 2;
   let s = '';
-  if (o.shadow !== false) s += `<g filter="url(#${p}shadowS)"><path d="${poly}" fill="${dark}"/></g>`;
+  if (o.shadow !== false) s += `<g filter="url(#${p}${o.shadowF ?? 'shadowS'})"><path d="${poly}" fill="${dark}"/></g>`;
   s += `<g filter="url(#${p}${o.filter ?? 'volV'})"><path d="${poly}" fill="${c}"/></g>`;
   s += `<clipPath id="${id}"><path d="${poly}"/></clipPath><g clip-path="url(#${id})">`;
-  s += `<path d="${ribbon(sh(wm * 0.3, wm * 0.3), w0 * 0.34, w1 * 0.34)}" fill="${dark}" opacity=".42" filter="url(#${p}blur4)"/>`;
-  s += `<path d="${ribbon(sh(-wm * 0.2, -wm * 0.2), w0 * 0.24, w1 * 0.24)}" fill="${light}" opacity=".62" filter="url(#${p}blur4)"/>`;
-  s += `<path d="${ribbon(sh(-wm * 0.26, -wm * 0.26), w0 * 0.08, w1 * 0.08)}" fill="#fff" opacity=".7" filter="url(#${p}blur2)"/>`;
+  s += `<path d="${ribbon(sh(wm * 0.3, wm * 0.3), w0 * 0.34, w1 * 0.34, E)}" fill="${dark}" opacity=".42" filter="url(#${p}blur4)"/>`;
+  s += `<path d="${ribbon(sh(-wm * 0.2, -wm * 0.2), w0 * 0.24, w1 * 0.24, E)}" fill="${light}" opacity=".62" filter="url(#${p}blur4)"/>`;
+  s += `<path d="${ribbon(sh(-wm * 0.26, -wm * 0.26), w0 * 0.08, w1 * 0.08, E)}" fill="#fff" opacity=".7" filter="url(#${p}blur2)"/>`;
   s += `</g>`;
   return s;
 }
@@ -174,3 +174,25 @@ export function endCap(x, y, ang, w, wall, lumen) {
   return `<g transform="translate(${f1(x)} ${f1(y)}) rotate(${f1(ang + 90)})"><ellipse rx="${f1(rx)}" ry="${f1(ry)}" fill="${darken(wall, 0.35)}"/><ellipse rx="${f1(rx * 0.88)}" ry="${f1(ry * 0.82)}" fill="${lighten(wall, 0.25)}"/><ellipse rx="${f1(rx * 0.7)}" ry="${f1(ry * 0.6)}" fill="${lumen}"/><ellipse cx="${f1(-rx * 0.22)}" cy="${f1(-ry * 0.2)}" rx="${f1(rx * 0.32)}" ry="${f1(ry * 0.2)}" fill="#fff" opacity=".28"/></g>`;
 }
 export const tangent = (pts, atEnd = true) => { const n = pts.length, a = atEnd ? pts[n - 3] : pts[2], b = atEnd ? pts[n - 1] : pts[0]; return Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI; };
+
+// ---------------------------------------------------------------- relief dari peta tinggi: alpha sebuah gambar SVG (koordinat kanvas) dianggap tinggi permukaan, lalu diterangi (diffuse x warna + specular).
+// Memungkinkan beberapa gundukan terpisah (mis. ventrikel kanan dan kiri dengan alur di antaranya) yang tidak bisa didapat dari relief siluet tunggal.
+// heightInner = isi SVG peta tinggi (bentuk putih dengan alpha = tinggi). Gunakan mound() untuk gundukan lembut. o: scale (skala tinggi), blur, elev (sudut cahaya), k (gain diffuse), spec, specExp.
+export const mound = (cx, cy, rx, ry, a = 1, rot = 0) => `<ellipse cx="${f1(cx)}" cy="${f1(cy)}" rx="${f1(rx)}" ry="${f1(ry)}" fill="url(#mnd)" opacity="${a}" transform="rotate(${rot} ${f1(cx)} ${f1(cy)})"/>`;
+export const MOUND_DEFS = '<defs><radialGradient id="mnd"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset=".55" stop-color="#fff" stop-opacity=".62"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>';
+export function reliefFilter(id, heightInner, o = {}) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${MOUND_DEFS}${heightInner}</svg>`;
+  const href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg), S = o.scale ?? 200, el = o.elev ?? 52, bl = o.blur ?? 6, k = o.k ?? 1.3, sp = o.spec ?? 0.55, se = o.specExp ?? 20;
+  return `<filter id="${id}" filterUnits="userSpaceOnUse" x="0" y="0" width="${W}" height="${H}" color-interpolation-filters="sRGB">
+ <feImage href="${href}" x="0" y="0" width="${W}" height="${H}" preserveAspectRatio="none" result="hm0"/>
+ <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="4" result="nz"/>
+ <feColorMatrix in="nz" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.02 0" result="nza"/>
+ <feComposite in="hm0" in2="nza" operator="arithmetic" k1="0" k2="1" k3="1" k4="-0.01" result="hm"/>
+ <feGaussianBlur in="hm" stdDeviation="${bl}" result="hb"/>
+ <feDiffuseLighting in="hb" surfaceScale="${S}" diffuseConstant="1.05" lighting-color="#ffffff" result="d"><feDistantLight azimuth="225" elevation="${el}"/></feDiffuseLighting>
+ <feSpecularLighting in="hb" surfaceScale="${S}" specularConstant="${sp}" specularExponent="${se}" lighting-color="#fff4ea" result="s"><feDistantLight azimuth="225" elevation="${el}"/></feSpecularLighting>
+ <feComposite in="d" in2="SourceAlpha" operator="in" result="d2"/><feComposite in="s" in2="SourceAlpha" operator="in" result="s2"/>
+ <feComposite in="SourceGraphic" in2="d2" operator="arithmetic" k1="${k}" k2="0" k3="0" k4="0" result="lit"/>
+ <feComposite in="lit" in2="s2" operator="arithmetic" k1="0" k2="1" k3="0.5" k4="0"/>
+</filter>`;
+}

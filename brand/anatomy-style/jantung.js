@@ -10,8 +10,8 @@ export const P = 'h';
 // ---- geometri (koordinat kanvas; area aman x 60-1020, y 250-1450)
 const BODY = [330, 770, 250, 800, 200, 900, 185, 1010, 172, 1090, 215, 1150, 270, 1205, 360, 1300, 480, 1385, 590, 1425, 640, 1440, 690, 1432, 728, 1398, 850, 1290, 932, 1130, 926, 960, 920, 840, 860, 740, 770, 692, 700, 660, 620, 650, 560, 656, 470, 662, 390, 720, 330, 770];
 const LAD = [575, 702, 584, 820, 600, 960, 614, 1090, 626, 1200, 638, 1310, 652, 1408];
-const RCA = [468, 735, 430, 760, 404, 820, 400, 890, 396, 960, 398, 1030, 372, 1096, 352, 1140, 338, 1170, 336, 1196];   // di sulkus koronarius kanan (batas atrium kanan dan ventrikel kanan)
-const RMA = [336, 1196, 346, 1232, 400, 1290, 470, 1336, 520, 1364, 556, 1380, 592, 1392];             // a. marginalis kanan di tepi akut (inferior)
+const RCA = [468, 735, 430, 760, 404, 820, 400, 890, 396, 960, 398, 1030, 372, 1096, 356, 1140, 348, 1180, 360, 1222];   // di sulkus koronarius kanan (batas atrium kanan dan ventrikel kanan), lalu membelok ke tepi akut
+const RMA = [360, 1222, 372, 1254, 414, 1292, 470, 1330, 520, 1360, 560, 1380, 596, 1392];   // a. marginalis kanan di tepi akut (inferior), lanjutan RCA
 const LCX = [600, 700, 680, 690, 760, 712, 820, 760, 868, 810, 892, 880, 896, 960];
 const D1 = [586, 790, 660, 800, 740, 850, 800, 940], D2 = [602, 950, 680, 975, 760, 1030, 815, 1110];
 const OM = [858, 800, 884, 860, 892, 930, 884, 1010];                              // a. marginalis kiri (di tepi kiri)
@@ -28,10 +28,13 @@ export function jantung(o = {}) {
   const S = (pts, n = 28) => sampleCubic(pts, n);
   let s = background(p, { seed: 5, glow: { x: 560, y: 900, r: 720 }, tint: '#FFD0E8', vesselColor: '#B23A5A', cells: 18, particles: 90 });
   s += `<defs>
-  <radialGradient id="hBody" gradientUnits="userSpaceOnUse" cx="470" cy="900" r="640"><stop offset="0" stop-color="#F2503E"/><stop offset=".35" stop-color="#DC2B30"/><stop offset=".72" stop-color="#B0152A"/><stop offset="1" stop-color="#5A0614"/></radialGradient>
+  <radialGradient id="hBody" gradientUnits="userSpaceOnUse" cx="470" cy="900" r="640"><stop offset="0" stop-color="#E23C32"/><stop offset=".35" stop-color="#C92430"/><stop offset=".72" stop-color="#97102A"/><stop offset="1" stop-color="#44040F"/></radialGradient>
   <radialGradient id="hLV" gradientUnits="userSpaceOnUse" cx="760" cy="900" r="420"><stop offset="0" stop-color="#F5463C"/><stop offset=".6" stop-color="#C81F2C"/><stop offset="1" stop-color="#6A0A18"/></radialGradient>
-  <radialGradient id="hAtr" gradientUnits="userSpaceOnUse" cx="300" cy="900" r="240"><stop offset="0" stop-color="#C23552"/><stop offset=".55" stop-color="#8E1830"/><stop offset="1" stop-color="#3E0618"/></radialGradient>
+  <radialGradient id="hAtr" gradientUnits="userSpaceOnUse" cx="300" cy="900" r="240"><stop offset="0" stop-color="#B02848"/><stop offset=".55" stop-color="#7C1630"/><stop offset="1" stop-color="#340614"/></radialGradient>
   <radialGradient id="hFat" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FFE48A"/><stop offset=".55" stop-color="${PAL.fat}"/><stop offset="1" stop-color="${PAL.fatDark}"/></radialGradient>
+  <radialGradient id="hShade" gradientUnits="userSpaceOnUse" cx="470" cy="860" r="820"><stop offset=".45" stop-color="#1A0008" stop-opacity="0"/><stop offset="1" stop-color="#1A0008" stop-opacity=".3"/></radialGradient>
+  <filter id="hWob" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="6" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G"/></filter>
+  <filter id="hGoo" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="3.2" result="b"/><feColorMatrix in="b" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter>
   <clipPath id="hClip"><path d="${cubicD(BODY)}Z"/></clipPath>
   <clipPath id="hClipLV"><path d="M${LAD[0]} ${LAD[1]}C${LAD.slice(2, 8).join(' ')} ${LAD.slice(8).join(' ')}L760 1500L1000 1500L1000 600L640 600Z"/></clipPath>
   </defs>`;
@@ -49,20 +52,35 @@ export function jantung(o = {}) {
   for (const [y0, y1] of [[690, 664], [770, 786]]) { const pv = S([800, y0, 850, y0 - 10, 910, y1 - 8, 990, y1], 16); s += vessel(pv, 52, 46, PAL.artery, { p, dark: PAL.arteryDark, light: PAL.arteryLight }) + endCap(pv[pv.length - 1][0], pv[pv.length - 1][1], tangent(pv), 46, PAL.artery, '#3A060C'); }
   s += `</g>`;
 
-  // ---- ventrikel: siluet bervolume, tint RV/LV, sorotan kaca, cahaya tepi
+  // ---- ventrikel: siluet bervolume (kubah), lalu lapisan cahaya bertingkat per gundukan (RV dan LV), bayangan inti, cahaya pantul, perubahan rona; semua lembut dan tanpa tekstur acak
   s += `<g id="h-ventrikel"><g filter="url(#${p}shadow)"><g filter="url(#${p}vol)"><path d="${cubicD(BODY)}Z" fill="url(#hBody)"/></g></g>`;
   s += `<g clip-path="url(#hClip)">`;
-  s += `<g clip-path="url(#hClipLV)"><rect x="560" y="600" width="480" height="900" fill="url(#hLV)" opacity=".75"/></g>`;
-  s += `<path d="${cubicD(BODY)}Z" fill="none" stroke="#FF7C66" stroke-width="34" opacity=".4" filter="url(#${p}blur20)"/>`;
-  s += `<rect x="160" y="600" width="800" height="900" fill="#fff" filter="url(#${p}texFine)" opacity=".05"/>`;
-  s += `<path d="M868 780C920 880 922 1010 880 1130" fill="none" stroke="#fff" stroke-width="44" opacity=".3" stroke-linecap="round" filter="url(#${p}blur20)"/>`;
-  s += `<path d="M880 830C908 900 908 990 880 1070" fill="none" stroke="#fff" stroke-width="12" opacity=".5" stroke-linecap="round" filter="url(#${p}blur4)"/>`;
-  s += `<path d="M300 1060C330 1180 410 1290 520 1360" fill="none" stroke="#fff" stroke-width="34" opacity=".22" stroke-linecap="round" filter="url(#${p}blur20)"/>`;
-  s += `<path d="M310 1100C340 1190 400 1262 470 1316" fill="none" stroke="#fff" stroke-width="9" opacity=".34" stroke-linecap="round" filter="url(#${p}blur4)"/>`;
-  s += `<ellipse cx="450" cy="900" rx="70" ry="150" transform="rotate(16 450 900)" fill="#fff" opacity=".2" filter="url(#${p}blur20)"/>`;
-  s += `<ellipse cx="725" cy="920" rx="60" ry="170" transform="rotate(12 725 920)" fill="#fff" opacity=".22" filter="url(#${p}blur20)"/>`;
+  // rona: RV lebih hangat dan LV lebih dalam, batas lembut di sepanjang LAD
+  s += `<g filter="url(#${p}blur20)"><g clip-path="url(#hClipLV)"><rect x="560" y="600" width="480" height="900" fill="url(#hLV)" opacity=".8"/></g></g>`;
+  s += `<ellipse cx="420" cy="1040" rx="170" ry="300" transform="rotate(14 420 1040)" fill="#FF5A3C" opacity=".22" filter="url(#${p}blur40)"/>`;
+  s += `<ellipse cx="820" cy="1150" rx="130" ry="270" transform="rotate(14 820 1150)" fill="#5A0620" opacity=".4" filter="url(#${p}blur40)"/>`;
+  // gundukan: konus keluaran RV di bawah batang pulmonal, RV, LV (sorotan lebar bercampur soft-light, lalu sorotan sempit mengilap)
+  s += `<g style="mix-blend-mode:soft-light">`;
+  s += `<ellipse cx="540" cy="800" rx="90" ry="70" fill="#fff" opacity=".25" filter="url(#${p}blur20)"/>`;
+  s += `<ellipse cx="440" cy="1000" rx="95" ry="210" transform="rotate(16 440 1000)" fill="#fff" opacity=".2" filter="url(#${p}blur40)"/>`;
+  s += `<ellipse cx="735" cy="930" rx="100" ry="250" transform="rotate(12 735 930)" fill="#fff" opacity=".28" filter="url(#${p}blur40)"/>`;
+  s += `</g>`;
+  s += `<path d="M868 780C920 880 922 1010 880 1130" fill="none" stroke="#fff" stroke-width="40" opacity=".24" stroke-linecap="round" filter="url(#${p}blur20)"/>`;
+  s += `<path d="M880 830C908 900 908 990 880 1070" fill="none" stroke="#fff" stroke-width="11" opacity=".46" stroke-linecap="round" filter="url(#${p}blur4)"/>`;
+  s += `<path d="M452 900C436 960 440 1030 470 1090" fill="none" stroke="#fff" stroke-width="24" opacity=".2" stroke-linecap="round" filter="url(#${p}blur8)"/>`;
+  s += `<path d="M300 1070C330 1180 410 1290 520 1360" fill="none" stroke="#fff" stroke-width="30" opacity=".2" stroke-linecap="round" filter="url(#${p}blur20)"/>`;
+  s += `<path d="M312 1110C342 1192 402 1262 472 1316" fill="none" stroke="#fff" stroke-width="8" opacity=".3" stroke-linecap="round" filter="url(#${p}blur4)"/>`;
+  // pantulan kilau permukaan epikardium mengikuti lengkung gundukan (bukan ornamen)
+  s += `<path d="M742 742C772 820 790 910 786 1010C782 1070 764 1120 738 1160" fill="none" stroke="#fff" stroke-width="15" opacity=".34" stroke-linecap="round" filter="url(#${p}blur4)"/><path d="M424 880C404 950 410 1030 440 1110C456 1150 478 1182 506 1210" fill="none" stroke="#fff" stroke-width="13" opacity=".26" stroke-linecap="round" filter="url(#${p}blur4)"/><path d="M296 1080C318 1170 376 1250 456 1318" fill="none" stroke="#1A0008" stroke-width="26" opacity=".3" stroke-linecap="round" filter="url(#${p}blur8)"/>`;
+  // bayangan inti (sisi menjauhi cahaya) dan alur
+  s += `<ellipse cx="560" cy="1210" rx="70" ry="190" transform="rotate(10 560 1210)" fill="#2A0210" opacity=".34" filter="url(#${p}blur40)"/>`;
+  s += `<path d="${cubicD(LAD)}" fill="none" stroke="#2A0210" stroke-width="46" opacity=".34" stroke-linecap="round" filter="url(#${p}blur20)"/>`;
+  s += `<rect x="150" y="600" width="860" height="900" fill="url(#hShade)"/>`;
+  // oklusi ambien di dasar pembuluh besar (membuat pangkal batang pulmonal dan aurikel terasa duduk di badan jantung)
+  s += `<ellipse cx="545" cy="805" rx="130" ry="62" fill="#2A0210" opacity=".42" filter="url(#${p}blur20)"/><ellipse cx="770" cy="780" rx="90" ry="46" fill="#2A0210" opacity=".35" filter="url(#${p}blur20)"/>`;
+  // cahaya pantul hangat di tepi kanan-bawah dan cahaya tepi dingin
+  s += `<path d="M926 960C920 1090 840 1250 728 1398C690 1432 640 1440 590 1425" fill="none" stroke="#FF8AA0" stroke-width="16" opacity=".3" filter="url(#${p}blur8)"/>`;
   s += `<path d="${cubicD(BODY)}Z" fill="none" stroke="${PAL.rim}" stroke-width="12" opacity=".4" filter="url(#${p}blur4)" transform="translate(-3 -3)"/>`;
-  s += `<path d="M200 1140C300 1330 480 1410 640 1440C700 1440 760 1380 800 1330" fill="none" stroke="#2A0210" stroke-width="40" opacity=".4" filter="url(#${p}blur20)"/>`;
   s += `</g>`;
   // alur (sulkus) sebagai bayangan dalam
   for (const [pts, w] of [[LAD, 34], [RCA, 28], [LCX, 28]]) s += `<path d="${cubicD(pts)}" fill="none" stroke="#3A0210" stroke-width="${w}" opacity=".5" stroke-linecap="round" filter="url(#${p}blur8)"/>`;
@@ -78,16 +96,23 @@ export function jantung(o = {}) {
   s += `</g>`;
 
   // ---- lemak epikardium (lobulus beruntun di sepanjang alur) + arteri koroner utama (bertaper) + cabang bernama + vena jantung
+  // lemak epikardium: gugusan lobulus (2-4 bulatan tumpang tindih) di kedua sisi alur, menipis ke apeks, dijaga jarak dari arteri utama supaya tidak menutupinya
   let fat = '';
-  const fatAt = (pts, n, rr, off, a0 = 0.04, a1 = 0.94) => { const Sm = sampleCubic(pts, 40), m = Sm.length; for (let i = 0; i < n; i++) { const u = a0 + (a1 - a0) * i / (n - 1), k = Math.min(m - 3, Math.floor(u * (m - 3))), a = Sm[k], b = Sm[k + 2], nx = -(b[1] - a[1]), ny = b[0] - a[0], nl = Math.hypot(nx, ny) || 1; for (const sd of off) fat += `<ellipse cx="${f1(a[0] + nx / nl * sd + (r() - 0.5) * 5)}" cy="${f1(a[1] + ny / nl * sd + (r() - 0.5) * 5)}" rx="${f1(rr * (0.85 + r() * 0.45))}" ry="${f1(rr * (0.7 + r() * 0.35))}" fill="url(#hFat)" transform="rotate(${f1(r() * 180)} ${f1(a[0])} ${f1(a[1])})"/>`; } };
-  fatAt(RCA, 40, 12, [-13, 13]); fatAt(LAD, 46, 11, [-13, 13], 0.0, 0.98); fatAt(LCX, 26, 12, [-12, 12]); fatAt(RMA, 18, 9, [-9, 9]);
-  s += `<g id="h-lemak"><g filter="url(#${p}shadowS)"><g filter="url(#${p}volS)">${fat}</g></g></g>`;
+  const fatClusters = (pts, spacing, rr, half, sides = [-1, 1], taper = [1, 0.62]) => {
+    const Sm = sampleCubic(pts, 60), m = Sm.length, acc = [0]; for (let i = 1; i < m; i++) acc.push(acc[i - 1] + Math.hypot(Sm[i][0] - Sm[i - 1][0], Sm[i][1] - Sm[i - 1][1]));
+    const total = acc[m - 1], n = Math.max(3, Math.floor(total / spacing));
+    for (let i = 0; i < n; i++) {
+      const u = (i + 0.5) / n, tg = u * total; let k = 1; while (k < m - 2 && acc[k] < tg) k++;
+      const a = Sm[k], b = Sm[Math.min(m - 1, k + 2)], nx = -(b[1] - a[1]), ny = b[0] - a[0], nl = Math.hypot(nx, ny) || 1, size = rr * (taper[0] + (taper[1] - taper[0]) * u);
+      for (const sd of sides) { if (r() < 0.08) continue; const bx = a[0] + nx / nl * sd * (half + size * 0.45), by = a[1] + ny / nl * sd * (half + size * 0.45), nb = 3 + Math.floor(r() * 3);
+        for (let q = 0; q < nb; q++) { const rad = size * (0.62 + 0.5 * r()), cx = bx + (r() - 0.5) * size * 0.9, cy = by + (r() - 0.5) * size * 0.9; fat += `<circle cx="${f1(cx)}" cy="${f1(cy)}" r="${f1(rad)}" fill="url(#hFat)"/>`; } }
+    }
+  };
+  fatClusters(RCA, 12.5, 13, 12, [-1, 1], [1, 0.7]); fatClusters(LAD, 12.5, 12.5, 13, [-1, 1], [1, 0.4]); fatClusters(LCX, 13.5, 12.5, 11, [-1, 1], [1, 0.65]); fatClusters(RMA, 13.5, 10, 9, [-1, 1], [1, 0.5]);
+  s += `<g id="h-lemak"><g filter="url(#${p}shadowS)"><g filter="url(#${p}volS)"><g filter="url(#hGoo)">${fat}</g></g></g></g>`;
   const art = (pts, w0, w1) => { const Sm = S(pts, 26); return vessel(Sm, w0, w1, PAL.coronary, { p, dark: PAL.coronaryDark, light: '#FF9A90', filter: 'volS' }); };
   s += `<g id="h-koroner" clip-path="url(#hClip)">`;
   s += art(RCA, 22, 12) + art(RMA, 14, 8) + art(LAD, 26, 10) + art(D1, 14, 7) + art(D2, 13, 7) + art(LCX, 21, 10) + art(OM, 13, 7);
-  // cabang distal pendek (terminal) pada diagonal, marginal, dan LAD apikal: hanya beberapa, terarah
-  const twig = (pts) => `<path d="${pts}" fill="none" stroke="#6A0810" stroke-width="8.5" stroke-linecap="round"/><path d="${pts}" fill="none" stroke="#F0282A" stroke-width="5.4" stroke-linecap="round"/>`;
-  s += twig('M740 850C770 860 800 880 822 910') + twig('M800 940C826 960 846 990 854 1030') + twig('M760 1030C790 1050 816 1080 832 1120') + twig('M884 1010C880 1040 870 1070 856 1096') + twig('M352 1140C372 1160 392 1190 404 1226');
   s += `</g>`;
   s += `<g id="h-vena-jantung" clip-path="url(#hClip)">`;
   const vein = (pts, w0, w1) => vessel(S(pts, 26), w0, w1, '#4A56E0', { p, dark: '#141860', light: '#9AA2FA', filter: 'volS', shadow: false });
@@ -100,7 +125,7 @@ export function jantung(o = {}) {
   s += `<g id="h-aorta">`;
   const ao = S(AO, 30), br = [[S([520, 452, 500, 400, 452, 350, 440, 300], 18), 54, 48], [S([616, 408, 618, 360, 622, 322, 626, 290], 18), 40, 38], [S([692, 410, 712, 364, 744, 326, 770, 294], 18), 44, 40]];
   for (const [b, w0, w1] of br) s += vessel(b, w0, w1, PAL.artery, { p, dark: PAL.arteryDark, light: PAL.arteryLight }) + endCap(b[b.length - 1][0], b[b.length - 1][1], tangent(b), w1, PAL.artery, '#3A060C');
-  s += vessel(ao, 100, 90, PAL.artery, { p, dark: PAL.arteryDark, light: PAL.arteryLight });
+  s += vessel(ao, 124, 88, PAL.artery, { p, dark: PAL.arteryDark, light: PAL.arteryLight, shadowF: 'shadow', ease: (t) => 1 - Math.pow(1 - t, 2.2) });
   // akar aorta: pembengkakan sinus Valsalva di pangkal
   s += `<g filter="url(#${p}shadowS)"><g filter="url(#${p}volV)"><path d="M404 780C396 730 420 690 470 684C520 690 546 730 538 780C520 800 424 800 404 780Z" fill="${PAL.artery}"/></g></g>`;
   s += `<path d="M426 722C446 704 474 702 494 712" fill="none" stroke="#fff" stroke-width="9" opacity=".4" stroke-linecap="round" filter="url(#${p}blur4)"/>`;
@@ -110,13 +135,13 @@ export function jantung(o = {}) {
   const lpa = S(LPA, 24), pt = S(PT, 30);
   s += `<g filter="url(#${p}shadowS)"><g filter="url(#${p}volV)"><ellipse cx="636" cy="548" rx="66" ry="56" fill="${PAL.pulm}"/></g></g>`;   // bifurkasi yang halus
   s += vessel(lpa, 76, 64, PAL.pulm, { p, dark: darken(PAL.pulm, 0.55), light: lighten(PAL.pulm, 0.6) }) + endCap(lpa[lpa.length - 1][0], lpa[lpa.length - 1][1], tangent(lpa), 64, PAL.pulm, '#161A66');
-  s += vessel(pt, 128, 92, PAL.pulm, { p, dark: darken(PAL.pulm, 0.55), light: lighten(PAL.pulm, 0.6) });
+  s += vessel(pt, 170, 92, PAL.pulm, { p, dark: darken(PAL.pulm, 0.55), light: lighten(PAL.pulm, 0.6), shadowF: 'shadow', ease: (t) => 1 - Math.pow(1 - t, 2.6) });
   s += `</g>`;
   // ---- aurikel kanan (di depan akar aorta) dan kiri (di sisi kiri batang pulmonal), tepi bergelombang
   const RAU = 'M296 800C320 722 420 668 506 688C552 700 566 746 534 778C492 818 408 846 342 868C308 874 286 842 296 800Z';
   const LAU = 'M690 704C730 650 822 646 858 716C882 764 850 806 800 796C756 788 726 764 700 748C684 736 682 720 690 704Z';
   s += `<g id="h-atrium-aurikel">`;
-  for (const d of [RAU, LAU]) s += `<g filter="url(#${p}shadowS)"><g filter="url(#${p}vol)"><path d="${d}" fill="url(#hAtr)"/></g></g>`;
+  for (const d of [RAU, LAU]) s += `<g filter="url(#${p}shadowS)"><g filter="url(#${p}vol)"><g filter="url(#hWob)"><path d="${d}" fill="url(#hAtr)"/></g></g></g>`;
   s += `<g fill="none" stroke="#3A0612" stroke-width="4.5" opacity=".42" stroke-linecap="round"><path d="M330 800C370 770 430 746 490 726"/><path d="M340 830C392 800 450 778 510 756"/><path d="M370 850C410 828 450 812 496 794"/><path d="M730 690C770 672 814 684 836 716"/><path d="M724 716C768 700 812 714 838 746"/><path d="M742 744C772 736 800 744 820 762"/></g>`;
   s += `<path d="M322 790C360 742 440 702 512 700" fill="none" stroke="#fff" stroke-width="12" opacity=".4" stroke-linecap="round" filter="url(#${p}blur2)"/><path d="M712 690C750 664 810 668 842 706" fill="none" stroke="#fff" stroke-width="11" opacity=".42" stroke-linecap="round" filter="url(#${p}blur2)"/>`;
   s += `</g>`;
