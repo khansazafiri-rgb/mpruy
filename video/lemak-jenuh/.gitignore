@@ -1,0 +1,5 @@
+audio/*.wav
+!audio/narator.wav
+dialog.wav
+frames/
+stage/media

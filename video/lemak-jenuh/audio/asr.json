@@ -1,0 +1,1353 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 4.58,
+   "text": "Apa yang terjadi di tubuhmu kalau kamu terlalu sering makan makanan berlemak?",
+   "words": [
+    {
+     "w": "Apa",
+     "s": 0.0,
+     "e": 0.54
+    },
+    {
+     "w": "yang",
+     "s": 0.54,
+     "e": 0.72
+    },
+    {
+     "w": "terjadi",
+     "s": 0.72,
+     "e": 1.16
+    },
+    {
+     "w": "di",
+     "s": 1.16,
+     "e": 1.34
+    },
+    {
+     "w": "tubuhmu",
+     "s": 1.34,
+     "e": 1.84
+    },
+    {
+     "w": "kalau",
+     "s": 1.84,
+     "e": 2.32
+    },
+    {
+     "w": "kamu",
+     "s": 2.32,
+     "e": 2.7
+    },
+    {
+     "w": "terlalu",
+     "s": 2.7,
+     "e": 3.1
+    },
+    {
+     "w": "sering",
+     "s": 3.1,
+     "e": 3.48
+    },
+    {
+     "w": "makan",
+     "s": 3.48,
+     "e": 3.76
+    },
+    {
+     "w": "makanan",
+     "s": 3.76,
+     "e": 4.1
+    },
+    {
+     "w": "berlemak?",
+     "s": 4.1,
+     "e": 4.58
+    }
+   ]
+  },
+  {
+   "start": 5.16,
+   "end": 8.04,
+   "text": "Kamu lagi menikmati gorengan, lalu seseorang bilang,",
+   "words": [
+    {
+     "w": "Kamu",
+     "s": 5.16,
+     "e": 5.58
+    },
+    {
+     "w": "lagi",
+     "s": 5.58,
+     "e": 5.74
+    },
+    {
+     "w": "menikmati",
+     "s": 5.74,
+     "e": 6.08
+    },
+    {
+     "w": "gorengan,",
+     "s": 6.08,
+     "e": 6.64
+    },
+    {
+     "w": "lalu",
+     "s": 6.94,
+     "e": 7.42
+    },
+    {
+     "w": "seseorang",
+     "s": 7.42,
+     "e": 7.78
+    },
+    {
+     "w": "bilang,",
+     "s": 7.78,
+     "e": 8.04
+    }
+   ]
+  },
+  {
+   "start": 8.52,
+   "end": 10.1,
+   "text": "Hati-hati, nanti kolesterol.",
+   "words": [
+    {
+     "w": "Hati",
+     "s": 8.52,
+     "e": 8.68
+    },
+    {
+     "w": "-hati,",
+     "s": 8.68,
+     "e": 8.96
+    },
+    {
+     "w": "nanti",
+     "s": 9.48,
+     "e": 9.76
+    },
+    {
+     "w": "kolesterol.",
+     "s": 9.76,
+     "e": 10.1
+    }
+   ]
+  },
+  {
+   "start": 10.94,
+   "end": 14.42,
+   "text": "Tapi sebenarnya apa hubungan makanan berlemak dengan pembunuh darahmu?",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 10.94,
+     "e": 11.26
+    },
+    {
+     "w": "sebenarnya",
+     "s": 11.26,
+     "e": 11.82
+    },
+    {
+     "w": "apa",
+     "s": 11.82,
+     "e": 12.48
+    },
+    {
+     "w": "hubungan",
+     "s": 12.48,
+     "e": 12.88
+    },
+    {
+     "w": "makanan",
+     "s": 12.88,
+     "e": 13.14
+    },
+    {
+     "w": "berlemak",
+     "s": 13.14,
+     "e": 13.58
+    },
+    {
+     "w": "dengan",
+     "s": 13.58,
+     "e": 13.74
+    },
+    {
+     "w": "pembunuh",
+     "s": 13.74,
+     "e": 14.02
+    },
+    {
+     "w": "darahmu?",
+     "s": 14.02,
+     "e": 14.42
+    }
+   ]
+  },
+  {
+   "start": 15.18,
+   "end": 18.34,
+   "text": "Pertama, tubuhmu memang membutuhkan lemak dan kolesterol.",
+   "words": [
+    {
+     "w": "Pertama,",
+     "s": 15.18,
+     "e": 15.74
+    },
+    {
+     "w": "tubuhmu",
+     "s": 16.44,
+     "e": 16.72
+    },
+    {
+     "w": "memang",
+     "s": 16.72,
+     "e": 16.88
+    },
+    {
+     "w": "membutuhkan",
+     "s": 16.88,
+     "e": 17.44
+    },
+    {
+     "w": "lemak",
+     "s": 17.44,
+     "e": 17.8
+    },
+    {
+     "w": "dan",
+     "s": 17.8,
+     "e": 17.92
+    },
+    {
+     "w": "kolesterol.",
+     "s": 17.92,
+     "e": 18.34
+    }
+   ]
+  },
+  {
+   "start": 18.86,
+   "end": 22.26,
+   "text": "Jadi lemak bukan sesuatu yang harus kamu hindari sepenuhnya.",
+   "words": [
+    {
+     "w": "Jadi",
+     "s": 18.86,
+     "e": 19.3
+    },
+    {
+     "w": "lemak",
+     "s": 19.3,
+     "e": 20.2
+    },
+    {
+     "w": "bukan",
+     "s": 20.2,
+     "e": 20.4
+    },
+    {
+     "w": "sesuatu",
+     "s": 20.4,
+     "e": 20.88
+    },
+    {
+     "w": "yang",
+     "s": 20.88,
+     "e": 21.08
+    },
+    {
+     "w": "harus",
+     "s": 21.08,
+     "e": 21.24
+    },
+    {
+     "w": "kamu",
+     "s": 21.24,
+     "e": 21.46
+    },
+    {
+     "w": "hindari",
+     "s": 21.46,
+     "e": 21.74
+    },
+    {
+     "w": "sepenuhnya.",
+     "s": 21.74,
+     "e": 22.26
+    }
+   ]
+  },
+  {
+   "start": 22.86,
+   "end": 26.72,
+   "text": "Tapi kalau kamu terlalu sering mengonsumsi makanan tinggi lemak jenuh,",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 22.86,
+     "e": 23.46
+    },
+    {
+     "w": "kalau",
+     "s": 23.46,
+     "e": 24.04
+    },
+    {
+     "w": "kamu",
+     "s": 24.04,
+     "e": 24.26
+    },
+    {
+     "w": "terlalu",
+     "s": 24.26,
+     "e": 24.68
+    },
+    {
+     "w": "sering",
+     "s": 24.68,
+     "e": 24.98
+    },
+    {
+     "w": "mengonsumsi",
+     "s": 24.98,
+     "e": 25.52
+    },
+    {
+     "w": "makanan",
+     "s": 25.52,
+     "e": 25.8
+    },
+    {
+     "w": "tinggi",
+     "s": 25.8,
+     "e": 26.06
+    },
+    {
+     "w": "lemak",
+     "s": 26.06,
+     "e": 26.32
+    },
+    {
+     "w": "jenuh,",
+     "s": 26.32,
+     "e": 26.72
+    }
+   ]
+  },
+  {
+   "start": 26.72,
+   "end": 29.7,
+   "text": "Kader kolesterol LDL dalam darah bisa meningkat.",
+   "words": [
+    {
+     "w": "Kader",
+     "s": 26.72,
+     "e": 27.4
+    },
+    {
+     "w": "kolesterol",
+     "s": 27.4,
+     "e": 27.72
+    },
+    {
+     "w": "LDL",
+     "s": 27.72,
+     "e": 28.34
+    },
+    {
+     "w": "dalam",
+     "s": 28.34,
+     "e": 28.58
+    },
+    {
+     "w": "darah",
+     "s": 28.58,
+     "e": 28.96
+    },
+    {
+     "w": "bisa",
+     "s": 28.96,
+     "e": 29.24
+    },
+    {
+     "w": "meningkat.",
+     "s": 29.24,
+     "e": 29.7
+    }
+   ]
+  },
+  {
+   "start": 30.44,
+   "end": 33.84,
+   "text": "Nah, LDL ini membawa kolesterol melalui aliran darah.",
+   "words": [
+    {
+     "w": "Nah,",
+     "s": 30.44,
+     "e": 30.62
+    },
+    {
+     "w": "LDL",
+     "s": 30.98,
+     "e": 31.26
+    },
+    {
+     "w": "ini",
+     "s": 31.26,
+     "e": 31.48
+    },
+    {
+     "w": "membawa",
+     "s": 31.48,
+     "e": 32.04
+    },
+    {
+     "w": "kolesterol",
+     "s": 32.04,
+     "e": 32.58
+    },
+    {
+     "w": "melalui",
+     "s": 32.58,
+     "e": 33.1
+    },
+    {
+     "w": "aliran",
+     "s": 33.1,
+     "e": 33.38
+    },
+    {
+     "w": "darah.",
+     "s": 33.38,
+     "e": 33.84
+    }
+   ]
+  },
+  {
+   "start": 34.24,
+   "end": 39.54,
+   "text": "Kalau kadarnya tinggi dalam wakrul lama, kolesterol bisa masuk dan terkumpul di dinding pembunuh darah.",
+   "words": [
+    {
+     "w": "Kalau",
+     "s": 34.24,
+     "e": 34.62
+    },
+    {
+     "w": "kadarnya",
+     "s": 34.62,
+     "e": 34.94
+    },
+    {
+     "w": "tinggi",
+     "s": 34.94,
+     "e": 35.4
+    },
+    {
+     "w": "dalam",
+     "s": 35.4,
+     "e": 35.64
+    },
+    {
+     "w": "wakrul",
+     "s": 35.64,
+     "e": 35.86
+    },
+    {
+     "w": "lama,",
+     "s": 35.86,
+     "e": 36.12
+    },
+    {
+     "w": "kolesterol",
+     "s": 36.6,
+     "e": 36.88
+    },
+    {
+     "w": "bisa",
+     "s": 36.88,
+     "e": 37.18
+    },
+    {
+     "w": "masuk",
+     "s": 37.18,
+     "e": 37.64
+    },
+    {
+     "w": "dan",
+     "s": 37.64,
+     "e": 37.84
+    },
+    {
+     "w": "terkumpul",
+     "s": 37.84,
+     "e": 38.42
+    },
+    {
+     "w": "di",
+     "s": 38.42,
+     "e": 38.56
+    },
+    {
+     "w": "dinding",
+     "s": 38.56,
+     "e": 38.88
+    },
+    {
+     "w": "pembunuh",
+     "s": 38.88,
+     "e": 39.2
+    },
+    {
+     "w": "darah.",
+     "s": 39.2,
+     "e": 39.54
+    }
+   ]
+  },
+  {
+   "start": 40.06,
+   "end": 42.42,
+   "text": "Di sana, tubuh memicu respons peradangan.",
+   "words": [
+    {
+     "w": "Di",
+     "s": 40.06,
+     "e": 40.28
+    },
+    {
+     "w": "sana,",
+     "s": 40.28,
+     "e": 40.52
+    },
+    {
+     "w": "tubuh",
+     "s": 41.06,
+     "e": 41.22
+    },
+    {
+     "w": "memicu",
+     "s": 41.22,
+     "e": 41.58
+    },
+    {
+     "w": "respons",
+     "s": 41.58,
+     "e": 41.88
+    },
+    {
+     "w": "peradangan.",
+     "s": 41.88,
+     "e": 42.42
+    }
+   ]
+  },
+  {
+   "start": 42.92,
+   "end": 47.02,
+   "text": "Sel-sel imun datang, dan perlahan terbentuklah timbunan yang disebut plak.",
+   "words": [
+    {
+     "w": "Sel",
+     "s": 42.92,
+     "e": 43.16
+    },
+    {
+     "w": "-sel",
+     "s": 43.16,
+     "e": 43.32
+    },
+    {
+     "w": "imun",
+     "s": 43.32,
+     "e": 43.58
+    },
+    {
+     "w": "datang,",
+     "s": 43.58,
+     "e": 44.02
+    },
+    {
+     "w": "dan",
+     "s": 44.34,
+     "e": 44.6
+    },
+    {
+     "w": "perlahan",
+     "s": 44.6,
+     "e": 45.1
+    },
+    {
+     "w": "terbentuklah",
+     "s": 45.1,
+     "e": 45.7
+    },
+    {
+     "w": "timbunan",
+     "s": 45.7,
+     "e": 46.14
+    },
+    {
+     "w": "yang",
+     "s": 46.14,
+     "e": 46.34
+    },
+    {
+     "w": "disebut",
+     "s": 46.34,
+     "e": 46.74
+    },
+    {
+     "w": "plak.",
+     "s": 46.74,
+     "e": 47.02
+    }
+   ]
+  },
+  {
+   "start": 47.74,
+   "end": 52.64,
+   "text": "Hmm, masalahnya, proses ini bisa berlangsung bertahun-tahun tanpa kamu sadari.",
+   "words": [
+    {
+     "w": "Hmm,",
+     "s": 47.74,
+     "e": 48.36
+    },
+    {
+     "w": "masalahnya,",
+     "s": 48.88,
+     "e": 49.36
+    },
+    {
+     "w": "proses",
+     "s": 49.68,
+     "e": 49.94
+    },
+    {
+     "w": "ini",
+     "s": 49.94,
+     "e": 50.16
+    },
+    {
+     "w": "bisa",
+     "s": 50.16,
+     "e": 50.38
+    },
+    {
+     "w": "berlangsung",
+     "s": 50.38,
+     "e": 50.84
+    },
+    {
+     "w": "bertahun",
+     "s": 50.84,
+     "e": 51.32
+    },
+    {
+     "w": "-tahun",
+     "s": 51.32,
+     "e": 51.74
+    },
+    {
+     "w": "tanpa",
+     "s": 51.74,
+     "e": 52.08
+    },
+    {
+     "w": "kamu",
+     "s": 52.08,
+     "e": 52.3
+    },
+    {
+     "w": "sadari.",
+     "s": 52.3,
+     "e": 52.64
+    }
+   ]
+  },
+  {
+   "start": 52.64,
+   "end": 56.34,
+   "text": "Sering waktu, plak dapat membuat pembulu darah semakin sempit.",
+   "words": [
+    {
+     "w": "Sering",
+     "s": 52.64,
+     "e": 53.6
+    },
+    {
+     "w": "waktu,",
+     "s": 53.6,
+     "e": 53.88
+    },
+    {
+     "w": "plak",
+     "s": 54.34,
+     "e": 54.52
+    },
+    {
+     "w": "dapat",
+     "s": 54.52,
+     "e": 54.84
+    },
+    {
+     "w": "membuat",
+     "s": 54.84,
+     "e": 55.1
+    },
+    {
+     "w": "pembulu",
+     "s": 55.1,
+     "e": 55.38
+    },
+    {
+     "w": "darah",
+     "s": 55.38,
+     "e": 55.62
+    },
+    {
+     "w": "semakin",
+     "s": 55.62,
+     "e": 55.9
+    },
+    {
+     "w": "sempit.",
+     "s": 55.9,
+     "e": 56.34
+    }
+   ]
+  },
+  {
+   "start": 56.76,
+   "end": 58.52,
+   "text": "Aliran darah pun bisa terganggu.",
+   "words": [
+    {
+     "w": "Aliran",
+     "s": 56.76,
+     "e": 57.12
+    },
+    {
+     "w": "darah",
+     "s": 57.12,
+     "e": 57.46
+    },
+    {
+     "w": "pun",
+     "s": 57.46,
+     "e": 57.64
+    },
+    {
+     "w": "bisa",
+     "s": 57.64,
+     "e": 57.98
+    },
+    {
+     "w": "terganggu.",
+     "s": 57.98,
+     "e": 58.52
+    }
+   ]
+  },
+  {
+   "start": 59.0,
+   "end": 62.88,
+   "text": "Dan kalau plak itu pecah, tubuh bisa membentuk bekuan darah di atasnya.",
+   "words": [
+    {
+     "w": "Dan",
+     "s": 59.0,
+     "e": 59.26
+    },
+    {
+     "w": "kalau",
+     "s": 59.26,
+     "e": 59.68
+    },
+    {
+     "w": "plak",
+     "s": 59.68,
+     "e": 59.92
+    },
+    {
+     "w": "itu",
+     "s": 59.92,
+     "e": 60.08
+    },
+    {
+     "w": "pecah,",
+     "s": 60.08,
+     "e": 60.6
+    },
+    {
+     "w": "tubuh",
+     "s": 60.86,
+     "e": 61.06
+    },
+    {
+     "w": "bisa",
+     "s": 61.06,
+     "e": 61.24
+    },
+    {
+     "w": "membentuk",
+     "s": 61.24,
+     "e": 61.64
+    },
+    {
+     "w": "bekuan",
+     "s": 61.64,
+     "e": 62.0
+    },
+    {
+     "w": "darah",
+     "s": 62.0,
+     "e": 62.34
+    },
+    {
+     "w": "di",
+     "s": 62.34,
+     "e": 62.46
+    },
+    {
+     "w": "atasnya.",
+     "s": 62.46,
+     "e": 62.88
+    }
+   ]
+  },
+  {
+   "start": 63.4,
+   "end": 67.12,
+   "text": "Kalau bekuan ini menyumbat pembulu darah jantung, terjadilah serangan jantung.",
+   "words": [
+    {
+     "w": "Kalau",
+     "s": 63.4,
+     "e": 63.7
+    },
+    {
+     "w": "bekuan",
+     "s": 63.7,
+     "e": 63.98
+    },
+    {
+     "w": "ini",
+     "s": 63.98,
+     "e": 64.22
+    },
+    {
+     "w": "menyumbat",
+     "s": 64.22,
+     "e": 64.62
+    },
+    {
+     "w": "pembulu",
+     "s": 64.62,
+     "e": 64.94
+    },
+    {
+     "w": "darah",
+     "s": 64.94,
+     "e": 65.12
+    },
+    {
+     "w": "jantung,",
+     "s": 65.12,
+     "e": 65.54
+    },
+    {
+     "w": "terjadilah",
+     "s": 65.88,
+     "e": 66.34
+    },
+    {
+     "w": "serangan",
+     "s": 66.34,
+     "e": 66.64
+    },
+    {
+     "w": "jantung.",
+     "s": 66.64,
+     "e": 67.12
+    }
+   ]
+  },
+  {
+   "start": 67.64,
+   "end": 70.5,
+   "text": "Tapi tunggu, bukan berarti sekalipakan gorengan,",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 67.64,
+     "e": 67.92
+    },
+    {
+     "w": "tunggu,",
+     "s": 67.92,
+     "e": 68.24
+    },
+    {
+     "w": "bukan",
+     "s": 68.68,
+     "e": 68.92
+    },
+    {
+     "w": "berarti",
+     "s": 68.92,
+     "e": 69.4
+    },
+    {
+     "w": "sekalipakan",
+     "s": 69.4,
+     "e": 69.94
+    },
+    {
+     "w": "gorengan,",
+     "s": 69.94,
+     "e": 70.5
+    }
+   ]
+  },
+  {
+   "start": 70.76,
+   "end": 72.24,
+   "text": "pembulu darahmu langsung tersumbat ya,",
+   "words": [
+    {
+     "w": "pembulu",
+     "s": 70.76,
+     "e": 71.06
+    },
+    {
+     "w": "darahmu",
+     "s": 71.06,
+     "e": 71.34
+    },
+    {
+     "w": "langsung",
+     "s": 71.34,
+     "e": 71.54
+    },
+    {
+     "w": "tersumbat",
+     "s": 71.54,
+     "e": 72.06
+    },
+    {
+     "w": "ya,",
+     "s": 72.06,
+     "e": 72.24
+    }
+   ]
+  },
+  {
+   "start": 72.64,
+   "end": 76.78,
+   "text": "resikonya dipengaruhi pola makan jangan panjang dan faktor lain, termasuk genetik.",
+   "words": [
+    {
+     "w": "resikonya",
+     "s": 72.64,
+     "e": 73.1
+    },
+    {
+     "w": "dipengaruhi",
+     "s": 73.1,
+     "e": 73.72
+    },
+    {
+     "w": "pola",
+     "s": 73.72,
+     "e": 73.9
+    },
+    {
+     "w": "makan",
+     "s": 73.9,
+     "e": 74.16
+    },
+    {
+     "w": "jangan",
+     "s": 74.16,
+     "e": 74.38
+    },
+    {
+     "w": "panjang",
+     "s": 74.38,
+     "e": 74.84
+    },
+    {
+     "w": "dan",
+     "s": 74.84,
+     "e": 75.04
+    },
+    {
+     "w": "faktor",
+     "s": 75.04,
+     "e": 75.4
+    },
+    {
+     "w": "lain,",
+     "s": 75.4,
+     "e": 75.7
+    },
+    {
+     "w": "termasuk",
+     "s": 75.98,
+     "e": 76.36
+    },
+    {
+     "w": "genetik.",
+     "s": 76.36,
+     "e": 76.78
+    }
+   ]
+  },
+  {
+   "start": 77.28,
+   "end": 78.86,
+   "text": "Jadi, apa yang bisa kamu lakukan?",
+   "words": [
+    {
+     "w": "Jadi,",
+     "s": 77.28,
+     "e": 77.58
+    },
+    {
+     "w": "apa",
+     "s": 77.92,
+     "e": 78.12
+    },
+    {
+     "w": "yang",
+     "s": 78.12,
+     "e": 78.22
+    },
+    {
+     "w": "bisa",
+     "s": 78.22,
+     "e": 78.38
+    },
+    {
+     "w": "kamu",
+     "s": 78.38,
+     "e": 78.54
+    },
+    {
+     "w": "lakukan?",
+     "s": 78.54,
+     "e": 78.86
+    }
+   ]
+  },
+  {
+   "start": 79.62,
+   "end": 81.84,
+   "text": "Kurangi makanan tinggi lemak jenuh dan lemak trans.",
+   "words": [
+    {
+     "w": "Kurangi",
+     "s": 79.62,
+     "e": 80.1
+    },
+    {
+     "w": "makanan",
+     "s": 80.1,
+     "e": 80.44
+    },
+    {
+     "w": "tinggi",
+     "s": 80.44,
+     "e": 80.7
+    },
+    {
+     "w": "lemak",
+     "s": 80.7,
+     "e": 80.88
+    },
+    {
+     "w": "jenuh",
+     "s": 80.88,
+     "e": 81.22
+    },
+    {
+     "w": "dan",
+     "s": 81.22,
+     "e": 81.36
+    },
+    {
+     "w": "lemak",
+     "s": 81.36,
+     "e": 81.58
+    },
+    {
+     "w": "trans.",
+     "s": 81.58,
+     "e": 81.84
+    }
+   ]
+  },
+  {
+   "start": 81.84,
+   "end": 87.98,
+   "text": "lalu pilih sumer lemak tak jenuh lebih sering, seperti ikan, kacang-kacangan, dan alpukat.",
+   "words": [
+    {
+     "w": "lalu",
+     "s": 81.84,
+     "e": 82.74
+    },
+    {
+     "w": "pilih",
+     "s": 82.74,
+     "e": 83.1
+    },
+    {
+     "w": "sumer",
+     "s": 83.1,
+     "e": 83.28
+    },
+    {
+     "w": "lemak",
+     "s": 83.28,
+     "e": 83.54
+    },
+    {
+     "w": "tak",
+     "s": 83.54,
+     "e": 83.66
+    },
+    {
+     "w": "jenuh",
+     "s": 83.66,
+     "e": 83.96
+    },
+    {
+     "w": "lebih",
+     "s": 83.96,
+     "e": 84.28
+    },
+    {
+     "w": "sering,",
+     "s": 84.28,
+     "e": 84.7
+    },
+    {
+     "w": "seperti",
+     "s": 84.88,
+     "e": 85.18
+    },
+    {
+     "w": "ikan,",
+     "s": 85.18,
+     "e": 85.88
+    },
+    {
+     "w": "kacang",
+     "s": 86.14,
+     "e": 86.38
+    },
+    {
+     "w": "-kacangan,",
+     "s": 86.38,
+     "e": 86.84
+    },
+    {
+     "w": "dan",
+     "s": 87.18,
+     "e": 87.22
+    },
+    {
+     "w": "alpukat.",
+     "s": 87.22,
+     "e": 87.98
+    }
+   ]
+  },
+  {
+   "start": 88.06,
+   "end": 93.7,
+   "text": "Karena yang penting bukan sekedar menghindari semua lemak, tapi memahami jenis dan jumlah yang kamu konsumsi.",
+   "words": [
+    {
+     "w": "Karena",
+     "s": 88.06,
+     "e": 88.42
+    },
+    {
+     "w": "yang",
+     "s": 88.42,
+     "e": 88.58
+    },
+    {
+     "w": "penting",
+     "s": 88.58,
+     "e": 88.96
+    },
+    {
+     "w": "bukan",
+     "s": 88.96,
+     "e": 89.16
+    },
+    {
+     "w": "sekedar",
+     "s": 89.16,
+     "e": 89.52
+    },
+    {
+     "w": "menghindari",
+     "s": 89.52,
+     "e": 89.96
+    },
+    {
+     "w": "semua",
+     "s": 89.96,
+     "e": 90.14
+    },
+    {
+     "w": "lemak,",
+     "s": 90.14,
+     "e": 90.56
+    },
+    {
+     "w": "tapi",
+     "s": 90.8,
+     "e": 91.14
+    },
+    {
+     "w": "memahami",
+     "s": 91.14,
+     "e": 91.66
+    },
+    {
+     "w": "jenis",
+     "s": 91.66,
+     "e": 92.12
+    },
+    {
+     "w": "dan",
+     "s": 92.12,
+     "e": 92.28
+    },
+    {
+     "w": "jumlah",
+     "s": 92.28,
+     "e": 92.7
+    },
+    {
+     "w": "yang",
+     "s": 92.7,
+     "e": 92.88
+    },
+    {
+     "w": "kamu",
+     "s": 92.88,
+     "e": 93.18
+    },
+    {
+     "w": "konsumsi.",
+     "s": 93.18,
+     "e": 93.7
+    }
+   ]
+  },
+  {
+   "start": 94.46,
+   "end": 96.22,
+   "text": "Penasaran dengan cara kerja tubuh lainnya?",
+   "words": [
+    {
+     "w": "Penasaran",
+     "s": 94.46,
+     "e": 94.94
+    },
+    {
+     "w": "dengan",
+     "s": 94.94,
+     "e": 95.14
+    },
+    {
+     "w": "cara",
+     "s": 95.14,
+     "e": 95.34
+    },
+    {
+     "w": "kerja",
+     "s": 95.34,
+     "e": 95.64
+    },
+    {
+     "w": "tubuh",
+     "s": 95.64,
+     "e": 95.82
+    },
+    {
+     "w": "lainnya?",
+     "s": 95.82,
+     "e": 96.22
+    }
+   ]
+  },
+  {
+   "start": 96.68,
+   "end": 97.9,
+   "text": "Yuk belajar bersama MedCool?",
+   "words": [
+    {
+     "w": "Yuk",
+     "s": 96.68,
+     "e": 96.84
+    },
+    {
+     "w": "belajar",
+     "s": 96.84,
+     "e": 97.22
+    },
+    {
+     "w": "bersama",
+     "s": 97.22,
+     "e": 97.54
+    },
+    {
+     "w": "MedCool?",
+     "s": 97.54,
+     "e": 97.9
+    }
+   ]
+  },
+  {
+   "start": 98.26,
+   "end": 99.92,
+   "text": "Gratis di MedCool.com",
+   "words": [
+    {
+     "w": "Gratis",
+     "s": 98.26,
+     "e": 98.8
+    },
+    {
+     "w": "di",
+     "s": 98.8,
+     "e": 99.02
+    },
+    {
+     "w": "MedCool",
+     "s": 99.02,
+     "e": 99.5
+    },
+    {
+     "w": ".com",
+     "s": 99.5,
+     "e": 99.92
+    }
+   ]
+  }
+ ]
+}
