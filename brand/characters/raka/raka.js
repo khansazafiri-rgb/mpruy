@@ -83,9 +83,10 @@ export const ease = (t) => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
 /* ------------------------------------------------------------------ keadaan */
 
 // Lengan: bahu tetap, pergelangan (wx, wy), siku (ex, ey) = titik yang dilewati lengan, jari (0..1 panjang
-// telunjuk, fa = arah jari dalam derajat SVG, -90 = lurus ke atas), front (1 = digambar di depan badan).
-const ARM_DOWN_L = { wx: 86, wy: 556, ex: 88, ey: 488, finger: 0, fa: -90, front: 0 };
-const ARM_DOWN_R = { wx: 314, wy: 556, ex: 312, ey: 488, finger: 0, fa: -90, front: 0 };
+// telunjuk, fa = arah jari dalam derajat SVG, -90 = lurus ke atas), front (1 = digambar di depan badan),
+// roll (0..1, gulungan lengan baju: 0 = lengan baju penuh, 1 = digulung sampai dekat bahu; bagian yang terbuka digambar sebagai kulit lengan).
+const ARM_DOWN_L = { wx: 86, wy: 556, ex: 88, ey: 488, finger: 0, fa: -90, front: 0, roll: 0 };
+const ARM_DOWN_R = { wx: 314, wy: 556, ex: 312, ey: 488, finger: 0, fa: -90, front: 0, roll: 0 };
 
 /** Keadaan netral. Semua nilai angka supaya bisa diinterpolasi. */
 export const NEUTRAL = {
@@ -108,7 +109,7 @@ export const NEUTRAL = {
   tears: 0, tearsT: 0, fxCough: 0, // air mata di pipi (0..1, tearsT = fase tetesan), efek batuk di dekat mulut
   bags: 0, sparkle: 0, shades: 0, shadesY: 0, sweat: 0, slump: 0, dizzy: 0, dizzyT: 0, // kantung mata, kilau mata, kacamata, keringat, bahu turun, mata berputar
   // ---- kaki: on 0 = kaki kanonik (lurus, sepatu di samping). on 1 = kaki berengsel halus untuk jalan, lari, dan jongkok
-  legs: { on: 0, dir: 0, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } },
+  legs: { on: 0, dir: 0, sit: 0, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } },
 };
 
 /** Ekspresi wajah (hanya bagian wajah; pose lengan terpisah). */
@@ -137,6 +138,10 @@ export const EXPRESSIONS = {
   ngantuk:  { happyEyes: 0, wide: 0, blink: 0.58, browL: { y: 3, rot: 6 }, browR: { y: 3, rot: -6 }, mouth: { w: 10, up: 2, lo: 14 } },
   // melongo: mata terbuka agak lebar menatap kosong, alis datar, mulut sedikit menganga (bengong, bukan takut)
   melongo:  { happyEyes: 0, wide: 0.3, browL: { y: -2, rot: 0 }, browR: { y: -2, rot: 0 }, mouth: { w: 10, up: 0, lo: 20 } },
+  // penasaran: mata agak lebar, alis naik tak sama, senyum kecil ("hmm, apa ini?"; dipakai menatap penonton atau layar alat)
+  penasaran: { happyEyes: 0, wide: 0.35, browL: { y: -11, rot: 4 }, browR: { y: -5, rot: -6 }, mouth: { w: 14, up: 4, lo: 12 } },
+  // waspada: mata lebar, alis lurus naik, mulut rapat datar (sadar ada yang perlu diperhatikan, belum panik)
+  waspada:  { happyEyes: 0, wide: 0.5, browL: { y: -8, rot: 8 }, browR: { y: -8, rot: -8 }, mouth: { w: 12, up: 0, lo: 2 } },
   // mengerti: mata berbinar, alis naik, senyum kecil yang melebar ("oh, begitu!")
   mengerti: { happyEyes: 0, wide: 0.25, sparkle: 1, browL: { y: -9, rot: 3 }, browR: { y: -9, rot: -3 }, mouth: { w: 20, up: 5, lo: 22 } },
 };
@@ -199,6 +204,51 @@ export const POSES = {
   pov_perut: {
     armL: { wx: 168, wy: 536, ex: 86, ey: 560, finger: 0, front: 1 },
     armR: { wx: 236, wy: 528, ex: 316, ey: 556, finger: 0, front: 1 },
+  },
+  // ---- video "Darah tinggi itu sebahaya apa?" (pose lengan terulur/menggulung memakai lengan kiri layar; pakai flip: 1 untuk sisi sebaliknya)
+  // duduk menghadap kamera: paha memendek ke arah kamera, betis tegak, tangan di pangkuan. Pakai bersama kursi yang digambar adegan (dudukan setinggi pinggul).
+  duduk: {
+    bob: 70, lean: 0,
+    legs: { on: 1, dir: 0, sit: 1, L: { dx: -8, lift: 0, kx: 0 }, R: { dx: 8, lift: 0, kx: 0 } },
+    armL: { wx: 128, wy: 592, ex: 92, ey: 506, finger: 0, front: 1, roll: 0 },
+    armR: { wx: 272, wy: 592, ex: 308, ey: 506, finger: 0, front: 1, roll: 0 },
+  },
+  // duduk, lengan kiri (sisi kiri layar) diulur lurus ke samping (diletakkan di meja, siap dipasangi manset tensimeter), tangan kanan di pangkuan
+  ulur_lengan: {
+    bob: 70, lean: 1,
+    legs: { on: 1, dir: 0, sit: 1, L: { dx: -8, lift: 0, kx: 0 }, R: { dx: 8, lift: 0, kx: 0 } },
+    armR: { wx: 272, wy: 592, ex: 308, ey: 506, finger: 0, front: 1, roll: 0 },
+    armL: { wx: -24, wy: 506, ex: 38, ey: 474, finger: 0, front: 1, roll: 0 },
+  },
+  // duduk, siku kiri di depan dada dengan lengan bawah tegak dan tangan kanan (digambar di atasnya) memegang lengan bajunya (menggulung): isi armL.roll 0..~0.65 dan taruh armR di titik gulungan
+  // (jangkauan lengan terbatas: gulungan yang lebih tinggi dari siku butuh bantuan orang lain)
+  gulung_lengan: {
+    bob: 70, lean: 1,
+    legs: { on: 1, dir: 0, sit: 1, L: { dx: -8, lift: 0, kx: 0 }, R: { dx: 8, lift: 0, kx: 0 } },
+    armL: { wx: 116, wy: 366, ex: 162, ey: 468, finger: 0, front: 1, roll: 0 },
+    armR: { wx: 168, wy: 452, ex: 248, ey: 504, finger: 0, front: 1, roll: 0 },
+  },
+  // angkat bahu: dua lengan terbuka ke samping, telapak di sisi badan ("entah, nggak terasa apa-apa")
+  angkat_bahu: {
+    bob: -4, lean: 0,
+    armL: { wx: 30, wy: 452, ex: 62, ey: 512, finger: 0, front: 1 },
+    armR: { wx: 370, wy: 452, ex: 338, ey: 512, finger: 0, front: 1 },
+  },
+  // tangan kanan di dada bagian bawah (menunjuk jantung / merasa baik-baik saja); letaknya di bawah patch supaya logo tetap terlihat
+  pegang_dada: {
+    lean: 1,
+    armR: { wx: 244, wy: 490, ex: 330, ey: 510, finger: 0, front: 1 },
+  },
+  // tangan kanan membawa sesuatu ke mulut (minum obat)
+  ke_mulut: {
+    lean: 2,
+    armR: { wx: 238, wy: 306, ex: 334, ey: 380, finger: 0, front: 1 },
+  },
+  // dua tangan di depan perut setinggi meja dapur (mengolah makanan); gerak tangan dibuat adegan
+  siapkan: {
+    lean: 2,
+    armL: { wx: 176, wy: 548, ex: 92, ey: 516, finger: 0, front: 1 },
+    armR: { wx: 226, wy: 548, ex: 316, ey: 516, finger: 0, front: 1 },
   },
   // jalan: kaki berengsel menyala; gerakannya dari walkCycle(fase) di bawah (berdiri tegak bila tanpa fase)
   jalan: { legs: { on: 1, dir: 1, L: { dx: 0, lift: 0, kx: 0 }, R: { dx: 0, lift: 0, kx: 0 } } },
@@ -328,6 +378,15 @@ function armSvg(side, a, P, blood = 0) {
     ? `<rect x="0" y="-9.5" width="${r1(12 + 52 * a.finger)}" height="19" rx="9.5" fill="${P.skin}" transform="translate(${r1(hx)} ${r1(hy)}) rotate(${r1(a.fa)})"/>`
     : '';
   const c = mix(P.sweater, P.sleeveFront, a.front);
+  const roll = clamp(a.roll || 0, 0, 1);
+  if (roll > 0.01) { // lengan baju digulung: dari pergelangan sampai titik gulungan terlihat kulit (lebih ramping), gulungan kain tebal di batasnya
+    const iR = Math.round((1 - roll) * (dots.length - 1)), rc = mix(c, P.ink, 0.16);
+    return `<g class="raka-arm-${side}" fill="${c}">`
+      + dots.slice(0, iR + 1).map((p) => `<circle cx="${r1(p[0])}" cy="${r1(p[1])}" r="${r1(p[2])}"/>`).join('')
+      + `<g fill="${P.skin}">` + dots.slice(iR + 1).map((p) => `<circle cx="${r1(p[0])}" cy="${r1(p[1])}" r="${r1(p[2] * 0.8)}"/>`).join('') + `</g>`
+      + `<circle cx="${r1(dots[iR][0])}" cy="${r1(dots[iR][1])}" r="${r1(dots[iR][2] + 3.5)}" fill="${rc}"/>`
+      + `<circle cx="${r1(hx)}" cy="${r1(hy)}" r="21" fill="${P.skin}"/>${finger}${bloodArm(blood, hx, hy, dx, dy, side)}</g>`;
+  }
   return `<g class="raka-arm-${side}" fill="${c}">`
     + dots.map((p) => `<circle cx="${r1(p[0])}" cy="${r1(p[1])}" r="${r1(p[2])}"/>`).join('')
     + `<circle cx="${r1(hx)}" cy="${r1(hy)}" r="22" fill="${P.skin}"/>${finger}${bloodArm(blood, hx, hy, dx, dy, side)}</g>`;
@@ -453,7 +512,10 @@ export function legShape(side, s) {
   const g = s.legs, leg = side === 'L' ? g.L : g.R;
   const hx = HIP[side][0], hy = HIP[side][1] + s.bob;
   const ax = (side === 'L' ? 162 : 238) + leg.dx, ay = ANKLE_Y - leg.lift;
-  const cx = (hx + ax) / 2 + leg.kx * 2, cy = (hy + ay) / 2;
+  let cx = (hx + ax) / 2 + leg.kx * 2, cy = (hy + ay) / 2;
+  // duduk (tampak depan): paha mengarah ke kamera sehingga memendek; lutut sedikit di bawah pinggul dan agak keluar, betis tegak ke lantai
+  const sit = clamp(g.sit || 0, 0, 1);
+  if (sit > 0) { const kx = hx + (side === 'L' ? -12 : 12), ky = hy + 34; cx = lerp(cx, 2 * kx - (hx + ax) / 2, sit); cy = lerp(cy, 2 * ky - (hy + ay) / 2, sit); }
   const N = 30, dots = [];
   for (let i = 0; i <= N; i += 1) {
     const t = i / N, u = 1 - t;

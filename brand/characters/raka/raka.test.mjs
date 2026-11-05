@@ -89,6 +89,7 @@ test('patch logo tidak tertutup tangan di pose mana pun', () => {
   const half = PATCH.size / 2;
   const hits = (x, y, r) => Math.hypot(Math.max(Math.abs(x - PATCH.x) - half, 0), Math.max(Math.abs(y - PATCH.y) - half, 0)) < r;
   for (const p of Object.keys(POSES)) {
+    if (p === 'gulung_lengan') continue; // pengecualian: tangan kanan memang menyilang dada untuk menggulung lengan baju kiri (patch tetap terlihat di pose lain)
     const s = raka(p === 'sapa' ? 'senang' : EXPRESSIONS[p] ? p : 'netral', p);
     for (const [side, arm] of [['L', s.armL], ['R', s.armR]]) {
       const g = armShape(side, arm);
@@ -259,4 +260,34 @@ test('palet kakak dan adik tingkat dapat dipakai dan membedakan tampilan', async
   const { raka, rakaSvg, PALETTE_KAKAK, PALETTE_ADIK } = await import('./raka.js');
   const base = rakaSvg(raka('senang'));
   for (const pal of [PALETTE_KAKAK, PALETTE_ADIK]) { const s = rakaSvg(raka('senang'), { palette: pal, outfit: 'kuliah' }); assert.match(s, /^<svg /); assert.ok(!/NaN|undefined/.test(s)); assert.notEqual(s, base); }
+});
+
+test('video "Darah tinggi": pose duduk/ulur/gulung, gulungan lengan baju (roll), duduk (legs.sit), ekspresi penasaran/waspada', async () => {
+  const { raka, rakaSvg, lerpState, armShape, legShape, EXPRESSIONS, POSES } = await import('./raka.js');
+  for (const p of ['duduk', 'ulur_lengan', 'gulung_lengan', 'angkat_bahu', 'pegang_dada', 'ke_mulut', 'siapkan']) assert.ok(POSES[p], p);
+  for (const e of ['penasaran', 'waspada']) assert.ok(EXPRESSIONS[e], e);
+  const base = rakaSvg(raka('netral'));
+  // semua pose dan ekspresi baru tergambar, tanpa NaN, dan bisa diinterpolasi dengan pose lain
+  for (const [e, p] of [['netral', 'duduk'], ['waspada', 'ulur_lengan'], ['penasaran', 'gulung_lengan'], ['lega', 'angkat_bahu'], ['waspada', 'pegang_dada'], ['senang', 'ke_mulut'], ['penasaran', 'siapkan']]) {
+    const s = rakaSvg(raka(e, p)); assert.match(s, /^<svg /); assert.doesNotMatch(s, /NaN|undefined/);
+    const m = rakaSvg(lerpState(raka('netral', 'jalan'), raka(e, p), 0.5)); assert.doesNotMatch(m, /NaN|undefined/);
+  }
+  // panjang lengan konsisten (kurva dari bahu ke pergelangan) pada semua pose baru: tidak memanjang mendadak
+  const len = (side, a) => { const d = armShape(side, a).dots; let t = 0; for (let i = 1; i < d.length; i++) t += Math.hypot(d[i][0] - d[i - 1][0], d[i][1] - d[i - 1][1]); return t; };
+  const ref = len('L', raka('netral').armL);
+  for (const p of ['duduk', 'ulur_lengan', 'gulung_lengan', 'angkat_bahu', 'pegang_dada', 'ke_mulut', 'siapkan']) {
+    const s = raka('netral', p);
+    for (const side of ['L', 'R']) { const l = len(side, side === 'L' ? s.armL : s.armR); assert.ok(l > ref * 0.8 && l < ref * 1.7, `${p}/${side}: panjang lengan ${l.toFixed(0)} vs ${ref.toFixed(0)}`); }
+  }
+  // gulungan lengan baju: tanpa roll gambar sama dengan sebelumnya; dengan roll, bagian bawah lengan berwarna kulit dan ada gulungan kain
+  const noRoll = rakaSvg(raka('netral', 'ulur_lengan')), rolled = rakaSvg(raka('netral', 'ulur_lengan', { armL: { roll: 0.7 } }));
+  assert.notEqual(noRoll, rolled); assert.doesNotMatch(rolled, /NaN|undefined/);
+  assert.equal(rakaSvg(raka('netral')), base, 'tampilan kanonik tidak berubah');
+  // duduk: kaki menempel ke pinggul, betis tegak sampai lantai; lutut lebih tinggi daripada pergelangan
+  const sit = raka('netral', 'duduk');
+  for (const side of ['L', 'R']) {
+    const sh = legShape(side, sit); assert.ok(sh.dots.every((d) => Number.isFinite(d[0]) && Number.isFinite(d[1])));
+    assert.ok(Math.abs(sh.dots[0][1] - (566 + sit.bob)) < 1, 'pangkal paha di pinggul');
+    assert.ok(sh.ankle[1] > sh.dots[15][1], 'pergelangan di bawah lutut');
+  }
 });
