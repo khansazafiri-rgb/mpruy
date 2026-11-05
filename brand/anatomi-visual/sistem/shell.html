@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Atlas MEDCOEL: pemutar bingkai</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>html,body{margin:0;background:#000;overflow:hidden}#st{position:absolute;left:0;top:0;transform-origin:0 0}svg{display:block}</style></head>
+<body><div id="st"></div>
+<script type="module">
+// Pemutar bingkai: memuat scenes/<organ>.mjs lalu menggambar frame(t) sebagai SVG satu halaman. Dipakai render.mjs.
+const q = new URLSearchParams(location.search), organ = q.get('organ'), scale = parseFloat(q.get('scale') || '1');
+const m = await import(`./scenes/${organ}.mjs`);
+document.getElementById('st').style.transform = `scale(${scale})`;
+await document.fonts.load("700 32px 'Plus Jakarta Sans'"); await document.fonts.load("800 32px 'Plus Jakarta Sans'"); await document.fonts.ready;
+window.__meta = m.meta;
+window.__frame = (t) => { document.getElementById('st').innerHTML = m.frame(t); };
+window.__frame(0);
+await new Promise((r) => setTimeout(r, 300));
+window.__siap = true;
+</script></body></html>

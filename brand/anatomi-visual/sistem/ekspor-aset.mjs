@@ -1,0 +1,46 @@
+// Mengekspor aset yang dapat dipakai ulang: (1) parameter animasi dan token sebagai JSON, (2) tiap layer organ sebagai SVG mandiri.
+// Pemakaian: node ekspor-aset.mjs   -> aset/parameter-animasi.json dan aset/layer/<organ>/<layer>.svg
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import * as T from './tokens.mjs';
+import { latar } from './latar.mjs';
+import * as jantung from './scenes/jantung.mjs';
+import * as gigi from './scenes/gigi.mjs';
+import * as kulit from './scenes/kulit.mjs';
+import { buildSvg } from '../v6/heart7.mjs';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const out = path.join(here, 'aset');
+const svg = (w, h, vb, inner) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" width="${w}" height="${h}">${inner}</svg>\n`;
+const write = (p, s) => { fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, s); };
+
+// 1) parameter
+const param = {
+  versi: 1,
+  keterangan: 'Token dan parameter animasi Atlas MEDCOEL. Satuan waktu detik; koordinat desain per organ (jantung: piksel acuan 572x900 mulai y=200; gigi 600x900; kulit 700x960).',
+  token: { kanvas: T.KANVAS, merek: T.MEREK, latar: T.LATAR, cahaya: T.CAHAYA, tempo: T.TEMPO, tata: T.TATA },
+  easing: { kamera: 'inOut: t<.5 ? 4t^3 : 1-(-2t+2)^3/2', reveal: 'out: 1-(1-t)^3' },
+  jantung: { meta: jantung.meta, ...jantung.PARAM },
+  gigi: { meta: gigi.meta, ...gigi.PARAM },
+  kulit: { meta: kulit.meta, ...kulit.PARAM },
+};
+write(path.join(out, 'parameter-animasi.json'), JSON.stringify(param, null, 1) + '\n');
+
+// 2) layer latar (sama bentuk untuk semua organ; warna dari LATAR[organ])
+for (const organ of Object.keys(T.LATAR)) {
+  const s = latar(organ, 0);
+  const defs = s.match(/<defs>[\s\S]*?<\/defs>/)[0];
+  for (const m of s.matchAll(/<g id="(L\d)"[\s\S]*?<\/g>/g)) write(path.join(out, 'layer', 'latar', `${organ}-${m[1]}.svg`), svg(1080, 1920, '0 0 1080 1920', defs + m[0]));
+}
+// 3) layer organ
+const h = buildSvg({ layers: true, bg: false, anim: { flow: 0.5 }, id: 'jt' });
+const vh = `${h.view.x} ${h.view.y} ${h.view.w} ${h.view.h}`;
+for (const k of ['back', 'body', 'trunk', 'hi']) write(path.join(out, 'layer', 'jantung', `${k}.svg`), svg(h.view.w * 2, h.view.h * 2, vh, `<defs>${h.defs}</defs>${h[k]}`));
+const g = gigi.bangunGigi({ id: 'gg' });
+for (const k of ['bone', 'pdl', 'dentin', 'pulp', 'enamel', 'gusiL', 'gusiR']) write(path.join(out, 'layer', 'gigi', `${k}.svg`), svg(600, 900, '0 0 600 900', `<defs>${g.defs}</defs>${g[k]}`));
+const k = kulit.bangunKulit({ id: 'kl' });
+for (const n of ['hipodermis', 'dermis', 'epidermis', 'folikel', 'batangSvg', 'sebasea', 'otot', 'keringat', 'tepi']) write(path.join(out, 'layer', 'kulit', `${n}.svg`), svg(700, 960, '0 0 700 960', `<defs>${k.defs}</defs>${k[n]}`));
+write(path.join(out, 'layer', 'kulit', 'pembuluh.svg'), svg(700, 960, '0 0 700 960', `<defs>${k.defs}</defs>${k.pembuluh(1)}`));
+write(path.join(out, 'layer', 'kulit', 'saraf.svg'), svg(700, 960, '0 0 700 960', `<defs>${k.defs}</defs>${k.sarafSvg(1)}`));
+console.log('ok aset ->', out);

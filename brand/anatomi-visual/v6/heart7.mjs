@@ -75,7 +75,7 @@ function tubeOutline(s) {
   return 'M' + p.map((q) => `${f(q[0])} ${f(q[1])}`).join('L') + 'Z';
 }
 
-export function buildSvg({ mode = 'final', id = 'h6' } = {}) {
+export function buildSvg({ mode = 'final', id = 'h6', bg = true, layers = false, anim = null } = {}) {
   const fin = mode === 'final', flat = mode === 'flat', sil = mode === 'sil';
   const S = {};
   for (const k of Object.keys(AX)) S[k] = sample(AX[k], k === 'arch' ? 120 : 70);
@@ -90,8 +90,8 @@ export function buildSvg({ mode = 'final', id = 'h6' } = {}) {
   const rmask = (name, cx, cy, r) => defs.push(`<radialGradient id="${id}-${name}g" gradientUnits="userSpaceOnUse" cx="${cx}" cy="${cy}" r="${r}"><stop offset="0.25" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient><mask id="${id}-${name}" maskUnits="userSpaceOnUse" x="0" y="400" width="600" height="750"><rect x="0" y="400" width="600" height="750" fill="url(#${id}-${name}g)"/></mask>`);
   rmask('fibrv', 250, 830, 250); rmask('fiblv', 470, 860, 200);
   defs.push(`<linearGradient id="${id}-pamg" gradientUnits="userSpaceOnUse" x1="0" y1="628" x2="0" y2="680"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></linearGradient><mask id="${id}-pamask" maskUnits="userSpaceOnUse" x="200" y="440" width="360" height="260"><rect x="200" y="440" width="360" height="260" fill="#fff"/><rect x="200" y="628" width="360" height="60" fill="url(#${id}-pamg)"/></mask>`);
-  for (const b of [0.8, 1.2, 2.5, 4, 7, 11, 16, 24]) defs.push(`<filter id="${id}-b${String(b).replace('.', '_')}" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="${b}"/></filter>`);
-  const B = (b) => `url(#${id}-b${String(b).replace('.', '_')})`;
+  const usedB = new Set(); // semua nilai blur yang dipakai didaftarkan otomatis (sebelumnya sebagian tidak punya filter sehingga tidak terblur)
+  const B = (b) => { usedB.add(b); return `url(#${id}-b${String(b).replace('.', '_')})`; };
   defs.push(`<radialGradient id="${id}-fat" cx="36%" cy="30%" r="75%"><stop offset="0" stop-color="${C.fat.lt}"/><stop offset=".5" stop-color="${C.fat.base}"/><stop offset="1" stop-color="${C.fat.dk}"/></radialGradient>`);
   defs.push(`<linearGradient id="${id}-pab" gradientUnits="userSpaceOnUse" x1="0" y1="585" x2="0" y2="678"><stop offset="0" stop-color="${C.blue.dk}" stop-opacity="0"/><stop offset=".6" stop-color="#1a1070" stop-opacity=".7"/><stop offset="1" stop-color="#2a0a40" stop-opacity=".95"/></linearGradient>`);
   defs.push(`<radialGradient id="${id}-lum" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#3a0a3c"/><stop offset="1" stop-color="#0c0212"/></radialGradient>`);
@@ -136,7 +136,8 @@ export function buildSvg({ mode = 'final', id = 'h6' } = {}) {
   const paShape = `<path d="${O.pa}"/><ellipse cx="${paBase.cx}" cy="${paBase.cy}" rx="${paBase.rx}" ry="${paBase.ry}"/>`;
 
   // ---------------- latar (hanya final)
-  if (fin) {
+  if (fin && !bg) { /* tanpa latar: dipasang oleh sistem visual */ }
+  else if (fin) {
     out += `<rect x="${VIEW.x}" y="${VIEW.y}" width="${VIEW.w}" height="${VIEW.h}" fill="url(#${id}-bg)"/><ellipse cx="290" cy="690" rx="330" ry="400" fill="url(#${id}-glow)"/>`;
   } else if (flat) out += `<rect x="${VIEW.x}" y="${VIEW.y}" width="${VIEW.w}" height="${VIEW.h}" fill="#f0f0eb"/>`;
   else out += `<rect x="${VIEW.x}" y="${VIEW.y}" width="${VIEW.w}" height="${VIEW.h}" fill="#fff"/>`;
@@ -167,6 +168,7 @@ export function buildSvg({ mode = 'final', id = 'h6' } = {}) {
   });
   out += opening(S.bct[S.bct.length - 1], '#ffb8a0', 0.34) + opening(S.lcc[S.lcc.length - 1], '#ffb8a0', 0.34) + opening(S.lsa[S.lsa.length - 1], '#ffb8a0', 0.34);
 
+  out += '<!--B0-->';
   // ---------------- 5. badan: dasar, massa ventrikel kanan/kiri, atrium kanan
   out += part('body', G.body, C.flat.body, () => {
     let s = stack('body', G.body, 290, 800, [
@@ -283,6 +285,17 @@ export function buildSvg({ mode = 'final', id = 'h6' } = {}) {
     lobules.filter((_, i) => i % 9 === 4).forEach((L) => { out += drawLobule({ ...L, r: L.r * 0.5 }); });
     out += '</g>';
   }
+  // penanda aliran cahaya koroner (penanda infografis, bukan rekaman aliran darah): segmen terang yang bergerak dari pangkal ke ujung
+  if (anim && anim.flow != null && fin) {
+    out += `<g clip-path="url(#${id}-body)">`;
+    for (const k of ['lad', 'rca', 'lcx']) {
+      const u1 = anim.flow, u0 = Math.max(0, u1 - 0.16), n = grooveS[k].length;
+      if (u1 <= 0.01) continue;
+      out += `<path d="${ribbon(grooveS[k], { scale: 0.5, shift: 0.18, from: u0, to: Math.min(1, u1) })}" fill="#fff2b8" opacity="${Math.min(0.9, anim.flowO ?? 0.9)}" filter="${B(1.2)}"/>`;
+    }
+    out += '</g>';
+  }
+  out += '<!--B1-->';
   // ---------------- 8. batang pulmonalis (paling depan): melebar dari pangkal lalu melengkung di depan aorta
   if (sil) out += `<path d="${O.pa}" fill="${C.sil}"/><ellipse cx="${paBase.cx}" cy="${paBase.cy}" rx="${paBase.rx}" ry="${paBase.ry}" fill="${C.sil}"/>`;
   else if (flat) out += `<g stroke="${C.ink}" stroke-width="4.4" stroke-linejoin="round" fill="${C.ink}">${paShape}</g><g fill="${C.flat.blue}">${paShape}</g>`;
@@ -296,6 +309,7 @@ export function buildSvg({ mode = 'final', id = 'h6' } = {}) {
     out += '</g>';
   }
   out += opening(S.pa[S.pa.length - 1], '#8f98ff', 0.3);
+  out += '<!--B2-->';
   // ---------------- 9. kilau dan cahaya permukaan badan (hanya final): lebar mengikuti lengkung, tajam hanya di beberapa titik
   if (fin) {
     out += `<g clip-path="url(#${id}-body)">`;
@@ -308,6 +322,12 @@ export function buildSvg({ mode = 'final', id = 'h6' } = {}) {
     out += `<ellipse cx="476" cy="760" rx="5" ry="16" transform="rotate(8 476 760)" fill="#ffd6d6" opacity=".6" filter="${B(1.2)}"/>`;
     out += '</g>';
     out += `<g clip-path="url(#${id}-laa)"><ellipse cx="438" cy="600" rx="22" ry="8" transform="rotate(14 438 600)" fill="#fff" opacity=".5" filter="${B(2.5)}"/></g>`;
+  }
+  for (const b of usedB) defs.push(`<filter id="${id}-b${String(b).replace('.', '_')}" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="${b}"/></filter>`);
+  out += '<!--B3-->';
+  if (layers) {
+    const parts = out.split(/<!--B\d-->/);
+    return { defs: defs.join(''), back: parts[0], body: parts[1], trunk: parts[2], hi: parts[3], view: VIEW };
   }
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${VIEW.x} ${VIEW.y} ${VIEW.w} ${VIEW.h}" width="${VIEW.w * 2}" height="${VIEW.h * 2}"><defs>${defs.join('')}</defs>${out}</svg>`;
   return svg;

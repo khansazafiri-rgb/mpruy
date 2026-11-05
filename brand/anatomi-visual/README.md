@@ -133,3 +133,6 @@ Perubahan dan hasil jujur dari perbandingan crop:
 - **Detail ventrikel:** serat halus yang diinterpolasi antar alur (berpudar di tepi), pantulan lebar lembut, dan beberapa kilau kecil. Serat hampir tidak terbaca; permukaan tetap jauh dari kekayaan acuan (kilau basah, serat jelas, cabang halus).
 
 Anatomi tetap belum tervalidasi menyeluruh: sumber hanya abstrak PubMed dan ringkasan pencarian; kecocokan siluet dengan acuan bukan validasi anatomi.
+
+## Atlas MEDCOEL (sistem visual bersama, klip jantung/gigi/kulit)
+Folder `sistem/` berisi sistem visual bersama (latar berlapis dari logo, label, kamera, tempo) dan tiga klip 5 detik: jantung (v7, gerak lokal), gigi (pembukaan lapisan), kulit (penyingkapan bertahap). Lihat `sistem/README.md` untuk aturan visual, cara render, aset kode, bagian yang disederhanakan, sumber yang dibuka, dan yang belum tervalidasi.

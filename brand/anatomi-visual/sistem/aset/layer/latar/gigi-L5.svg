@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920"><defs>
+<linearGradient id="lt-gigi-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0D1F33"/><stop offset=".52" stop-color="#16385A"/><stop offset="1" stop-color="#0A1826"/></linearGradient>
+<radialGradient id="lt-gigi-c" gradientUnits="userSpaceOnUse" cx="390" cy="660" r="640"><stop offset="0" stop-color="#7DBBE6" stop-opacity=".34"/><stop offset=".55" stop-color="#7DBBE6" stop-opacity=".1"/><stop offset="1" stop-color="#7DBBE6" stop-opacity="0"/></radialGradient>
+<radialGradient id="lt-gigi-l" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+<radialGradient id="lt-gigi-v" cx="50%" cy="46%" r="78%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+</defs><g id="L5"><rect x="-140" y="-140" width="1360" height="2200" fill="url(#lt-gigi-v)"/></g></svg>
