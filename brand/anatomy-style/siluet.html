@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>html,body{margin:0;background:#fff}</style></head>
+<body><div id="c"></div>
+<script type="module">
+// Perbandingan siluet: ?m=ref|v5|baru ; lebar mahkota (640 px) dan posisi puncak mahkota (y=235) SAMA di semua panel.
+import * as G from './gigi.js';
+import * as V5 from './gigi-v5.js';
+import { siluetAcuan } from './siluet-acuan.js';
+const q = new URLSearchParams(location.search), m = q.get('m') || 'baru';
+const TOP = 235, CW = 640, REF = siluetAcuan(), sR = CW / REF.LM.crownWpx;
+const yRef = (y) => TOP + (y - REF.LM.crownTop) * sR;
+let s = '';
+if (m === 'ref') {
+  const L = { ...REF.LM, k: sR, labelX: REF.LM.cx - 528 / sR };
+  s = `<g transform="translate(540 ${TOP}) scale(${sR}) translate(${-REF.LM.cx} ${-REF.LM.crownTop})">${REF.svg}${G.guides(L, '')}</g>`;
+} else if (m === 'v5') {
+  const v = V5.siluetV5(), s5 = CW / v.LM.crownWpx, L = { ...v.LM, k: s5, labelX: 540 - 528 / s5 };
+  s = `<g transform="translate(540 ${TOP}) scale(${s5}) translate(-540 ${-v.LM.crownTop})">${v.svg}${G.guides(L, '')}</g>`;
+} else s = G.siluet({ guides: true });
+// garis acuan (oranye) sebagai pembanding pada panel selain acuan
+if (m !== 'ref') {
+  const ln = (y, t) => `<line x1="0" y1="${yRef(y).toFixed(1)}" x2="1080" y2="${yRef(y).toFixed(1)}" stroke="#F08000" stroke-width="3" stroke-dasharray="3 9"/><text x="1070" y="${(yRef(y) - 6).toFixed(1)}" text-anchor="end" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="#F08000">${t} acuan</text>`;
+  s += ln(REF.LM.cej, 'leher') + ln(REF.LM.dome, 'furkasi') + ln(REF.LM.apexM, 'ujung akar');
+}
+document.getElementById('c').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920"><rect width="1080" height="1920" fill="#fff"/>${s}</svg>`;
+window.__ready = true;
+</script></body></html>

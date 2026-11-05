@@ -8,6 +8,10 @@ import { svgDoc, plainify, plainDoc, W, H } from './anatomi.js';
 const q = new URLSearchParams(location.search), obj = q.get('obj') || 'jantung';
 const mod = await import(`./${obj}.js`);
 const t = +(q.get('t') || 0);
+if (q.has('siluet')) {   // hanya siluet (gigi, gusi, massa tulang), tanpa latar/tekstur
+  document.getElementById('c').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${mod.siluet({ guides: q.has('guides') })}</svg>`;
+  await document.fonts.ready; window.__ready = true; throw 0;
+}
 let inner = mod[obj]({ labels: q.has('labels'), t });
 if (q.has('plain')) {   // versi polos: tanpa efek, warna datar, kontur tipis (hanya geometri)
   inner = plainDoc(plainify(inner, mod.FLAT || {}));

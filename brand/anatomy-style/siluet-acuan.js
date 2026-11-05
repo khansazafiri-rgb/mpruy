@@ -1,0 +1,12 @@
+// Siluet GIGI ACUAN yang DITELUSURI TANGAN dari gambar acuan (dibuat AI; ±10 px) pada koordinat piksel gambar acuan (separuh kanan: gigi). Bukan hasil segmentasi otomatis; dipakai hanya untuk membandingkan proporsi.
+const smooth = (pts, close) => { let d = `M${pts[0][0]} ${pts[0][1]}`; const n = pts.length; for (let i = 0; i < (close ? n : n - 1); i++) { const p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n]; d += `C${(p1[0] + (p2[0] - p0[0]) / 6).toFixed(1)} ${(p1[1] + (p2[1] - p0[1]) / 6).toFixed(1)} ${(p2[0] - (p3[0] - p1[0]) / 6).toFixed(1)} ${(p2[1] - (p3[1] - p1[1]) / 6).toFixed(1)} ${p2[0]} ${p2[1]}`; } return d + (close ? 'Z' : ''); };
+const poly = (pts) => 'M' + pts.map((p) => p.join(' ')).join('L') + 'Z';
+const TOOTH = [[125, 600], [112, 560], [92, 500], [83, 450], [84, 400], [92, 360], [112, 332], [140, 314], [172, 306], [215, 318], [255, 336], [290, 345], [330, 336], [370, 314], [405, 306], [440, 322], [470, 350], [488, 390], [493, 440], [490, 500], [475, 550], [455, 585], [440, 605], [442, 640], [445, 700], [445, 780], [440, 860], [425, 940], [395, 1005], [358, 1045], [340, 1030], [322, 985], [310, 930], [300, 860], [292, 780], [287, 720], [275, 780], [262, 860], [250, 930], [238, 985], [222, 1030], [192, 1045], [150, 1005], [122, 940], [108, 860], [104, 780], [110, 700], [122, 640]];
+const GUM_L = [[110, 562], [92, 558], [70, 560], [45, 572], [22, 598], [0, 640], [0, 735], [30, 712], [62, 700], [95, 698], [125, 700], [125, 600]];
+const GUM_R = [[470, 562], [490, 558], [515, 560], [540, 575], [560, 605], [570, 640], [570, 735], [540, 712], [505, 700], [470, 698], [445, 700], [445, 600]];
+const BONE = [[0, 735], [30, 712], [62, 700], [110, 698], [470, 698], [505, 700], [540, 712], [570, 735], [570, 940], [556, 1000], [525, 1050], [470, 1090], [400, 1115], [285, 1128], [170, 1115], [100, 1085], [45, 1040], [10, 985], [0, 940]];
+export function siluetAcuan() {
+  const tone = { tooth: '#F4EEDF', gum: '#E58A9A', bone: '#D8B07C', line: '#2A1A12' };
+  const svg = `<g stroke="${tone.line}" stroke-width="${(2.4 / 1.561).toFixed(2)}" stroke-linejoin="round"><path d="${smooth(BONE, true)}" fill="${tone.bone}"/><path d="${poly(GUM_L)}" fill="${tone.gum}"/><path d="${poly(GUM_R)}" fill="${tone.gum}"/><path d="${smooth(TOOTH, true)}" fill="${tone.tooth}"/></g>`;
+  return { svg, LM: { crownTop: 306, cej: 600, dome: 720, apexM: 1045, crownL: 83, crownR: 493, cx: 288, crownWpx: 410 } };
+}

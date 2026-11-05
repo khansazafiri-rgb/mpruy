@@ -1,214 +1,227 @@
-// Potongan mesiodistal (sagital) gigi MOLAR PERTAMA RAHANG BAWAH permanen (gigi 36/46) dengan jaringan penyangga dan kanal mandibula. Kode murni (SVG + filter), 1080 x 1920. Revisi 5 (siluet dulu, volume belakangan).
+// Potongan mesiodistal (sagital) gigi MOLAR PERTAMA RAHANG BAWAH permanen (gigi 36/46) dengan jaringan penyangga. Kode murni (SVG + filter), 1080 x 1920. Revisi 6 (komposisi dan proporsi dulu).
 // JENIS GIGI : molar pertama mandibula (dua akar: mesial dan distal).
-// BIDANG POTONG: mesiodistal (sagital) melalui sumbu panjang gigi, di tengah antara sisi bukal dan lingual; MESIAL di KIRI layar, DISTAL di KANAN, oklusal di atas. Gigi tetangga tidak digambar
-//   (gusi di sisi mesial/distal adalah papila interdental yang menempel pada titik kontak, lalu menurun ke arah celah).
-// Struktur DI BIDANG: email, dentin, ruang pulpa dengan dua tanduk, kanal mesiobukal (MB) di akar mesial, kanal distal di akar distal, sementum, ligamen periodontal, lamina dura, tulang alveolar, gusi.
-// Struktur DI LUAR BIDANG yang digambar SAMAR: kanal mesiolingual (ML; lingual terhadap MB, di bidang ini hanya bayangan yang menyatu dengan MB di sepertiga apikal, tipe II Vertucci); kanal mandibula + berkas
-//   n.-a.-v. alveolaris inferior + cabang dental (letaknya lingual/inferior; diproyeksikan hanya sebagai KONTEKS agar berkas yang keluar foramen apikal berujung pada struktur nyata).
-// SKALA: nominal ±44 px/mm. Ukuran mahkota, panjang akar, dan lebar leher TIDAK terverifikasi pada sumber yang dapat dibuka (lihat README); gambar ini memuat PROPORSI PERKIRAAN, bukan ukuran pasti.
-//   Yang memiliki sumber terbuka: email ≤ 2,5 mm di puncak tonjol; lebar lig. periodontal 0,15-0,38 mm; puncak alveolar 1-2 mm dari CEJ; lempeng kortikal 1,5-3 mm; sulkus ±0,7 mm dan lebar biologis ±2 mm (Gargiulo,
-//   tanpa nilai universal); pintu furkasi molar 1 bawah ±1,9 mm (bukal) dan ±2,9 mm (lingual) dari CEJ; kanal mandibula ±6,3 mm di bawah apeks.
+// BIDANG POTONG: mesiodistal (sagital) di tengah antara sisi bukal dan lingual; MESIAL di KIRI layar, DISTAL di KANAN, oklusal di atas. Gigi tetangga tidak digambar.
+// Struktur DI BIDANG: email, dentin, ruang pulpa + dua tanduk, kanal MB di akar mesial, kanal distal, sementum, lig. periodontal, lamina dura, tulang alveolar, gusi.
+// Struktur DI LUAR BIDANG yang digambar SAMAR: kanal ML (lingual terhadap MB); kanal mandibula + berkas n.-a.-v. alveolaris inferior + cabang dental (konteks; letaknya lingual/inferior).
+// KOMPOSISI (v6): lebar mahkota 640 px (59% lebar kanvas), tinggi mahkota 0,72 x lebar, panjang akar ~1,10 x lebar, kubah furkasi ~0,27 x lebar di bawah leher; ukuran diturunkan dari PENGUKURAN gambar acuan
+//   (proporsi saja) dan TIDAK dari sumber anatomi; angka milimeter mahkota/akar belum terverifikasi. Skala nominal ±58 px/mm (mahkota dianggap 11 mm; belum terverifikasi).
+//   Sumber terbuka yang dipakai: email <= 2,5 mm di tonjol; PDL 0,15-0,38 mm; puncak alveolar 1-2 mm dari CEJ; sulkus ±0,7 mm dan lebar biologis ±2 mm (tidak universal); pintu furkasi 1,9 mm (bukal) - 2,9 mm (lingual);
+//   kanal mandibula ±6,3 mm di bawah apeks.
+// Mode: gigi({labels,t}) = render final; siluet({guides}) = hanya siluet gigi, gusi, massa tulang (tanpa latar/tekstur); render polos (warna datar) = plainify(gigi()) lewat render.html?plain.
 // Layer animasi (id grup): #g-tulang, #g-kanal-mandibula, #g-lig-periodontal, #g-dentin, #g-sementum, #g-pulpa, #g-saraf-pembuluh, #g-email, #g-gusi, #g-pulpa-aliran, #g-label.
 import { PAL, W, H, f1, rng, mix, lighten, darken, background, vignette, label, ribbon, sampleCubic, cubicD, fx } from './anatomi.js';
 export const P = 'g';
-export const FLAT = { gEn: '#E6E8F8', gDen: '#EFB473', gPulp: '#D8344E', gBone: '#F0BC7C', gGum: '#E8506C' };
+export const FLAT = { gEn: '#E6E8F8', gDen: '#EFB473', gPulp: '#D8344E', gBone: '#EBBB84', gGum: '#E8506C' };
 
 const chain = (p0, ...segs) => [...p0, ...segs.flat()];
-// ---- kontur luar mahkota (dari CEJ mesial ke CEJ distal): bahu mesial membulat, dua tonjol bundar, fossa berbentuk U (bukan V), bahu distal lebih rendah
-const CROWN = chain([342, 850],
-  [322, 810, 300, 756, 300, 694],
-  [298, 656, 308, 624, 332, 606],
-  [352, 590, 392, 532, 448, 528],
-  [486, 524, 506, 590, 540, 590],
-  [574, 594, 598, 540, 642, 534],
-  [684, 528, 716, 570, 742, 598],
-  [768, 616, 786, 656, 786, 716],
-  [786, 776, 764, 818, 738, 850]);
-// ---- batas email-dentin (DEJ): tanduk dentin membulat; email ±2 mm di puncak tonjol dan menipis ke leher
-const CROWN_IN = chain([347, 850],
-  [328, 812, 318, 760, 338, 700],
-  [340, 668, 350, 646, 372, 636],
-  [396, 628, 418, 616, 450, 616],
-  [484, 618, 506, 650, 540, 650],
-  [574, 650, 598, 620, 640, 620],
-  [676, 622, 702, 632, 722, 648],
-  [742, 660, 748, 688, 746, 722],
-  [746, 772, 740, 816, 733, 850]);
-// ---- kontur akar dari CEJ mesial: sisi mesial akar mesial -> apeks tumpul -> furkasi -> akar distal (lebih ramping) -> CEJ distal; kedua akar condong ke distal
-const ROOT = chain([342, 850],
-  [332, 925, 332, 1030, 336, 1130],
-  [342, 1230, 358, 1330, 396, 1410],
-  [414, 1452, 440, 1476, 462, 1470],
-  [486, 1452, 500, 1380, 516, 1290],
-  [526, 1210, 532, 1120, 536, 1050],
-  [538, 1020, 538, 1000, 540, 988],
-  [542, 1008, 548, 1040, 558, 1090],
-  [572, 1170, 596, 1260, 640, 1350],
-  [668, 1400, 690, 1432, 706, 1452],
-  [718, 1468, 746, 1468, 756, 1440],
-  [772, 1392, 768, 1300, 760, 1210],
-  [754, 1110, 752, 1010, 746, 930],
-  [742, 890, 740, 870, 738, 850]);
-// ---- kanal (garis tengah): MB, ML (samar), distal; foramen apikal 0,5-1 mm di atas apeks anatomis. Bentuk dan jumlah kanal TIDAK diubah dari v4.
+// ---- bentuk lokal (sama dengan v5: mahkota membulat, DEJ, akar, kanal); dipetakan ke komposisi baru oleh MX/MY di bawah
+const CROWN = chain([342, 850], [322, 810, 300, 756, 300, 694], [298, 656, 308, 624, 332, 606], [356, 588, 392, 532, 448, 528], [486, 524, 506, 590, 540, 590], [574, 594, 598, 540, 642, 534], [684, 528, 716, 570, 742, 598], [766, 624, 786, 656, 786, 716], [786, 776, 764, 818, 738, 850]);
+const CROWN_IN = chain([347, 850], [328, 812, 318, 760, 338, 700], [340, 668, 350, 646, 372, 636], [396, 628, 418, 616, 450, 616], [484, 618, 506, 650, 540, 650], [574, 650, 598, 620, 640, 620], [676, 622, 702, 632, 722, 648], [742, 660, 748, 688, 746, 722], [746, 772, 740, 816, 733, 850]);
+const ROOT = chain([342, 850], [332, 925, 332, 1030, 336, 1130], [342, 1230, 358, 1330, 396, 1410], [414, 1452, 440, 1476, 462, 1470], [486, 1452, 500, 1380, 516, 1290], [522, 1210, 516, 1120, 512, 1060], [506, 1030, 510, 994, 540, 988], [570, 994, 574, 1030, 580, 1070], [588, 1140, 604, 1260, 646, 1350], [668, 1400, 690, 1432, 706, 1452], [718, 1468, 746, 1468, 756, 1440], [764, 1392, 758, 1300, 750, 1210], [746, 1110, 744, 1010, 742, 930], [742, 890, 740, 870, 738, 850]);
 const CAN_MB = [466, 930, 458, 975, 440, 1040, 436, 1130, 432, 1220, 436, 1300, 444, 1370, 450, 1410, 452, 1430, 452, 1446];
 const CAN_ML = [480, 900, 478, 960, 460, 1040, 452, 1130, 446, 1220, 446, 1300, 446, 1352, 448, 1380, 450, 1396, 452, 1410];
 const CAN_D = [616, 930, 632, 985, 650, 1050, 660, 1130, 672, 1220, 690, 1300, 704, 1360, 712, 1395, 718, 1420, 722, 1438];
-const CHAMBER = 'M430 900C424 830 424 750 436 690C441 664 454 646 460 662C476 704 504 748 540 748C576 748 604 704 620 662C626 646 639 664 644 690C656 750 656 830 650 900C640 925 628 938 612 942C586 934 566 924 540 924C514 924 494 934 468 942C452 938 440 925 430 900Z';
+const CHAMBER_L = 'M430 900C424 830 424 750 436 690C441 664 454 646 460 662C476 704 504 748 540 748C576 748 604 704 620 662C626 646 639 664 644 690C656 750 656 830 650 900C640 925 628 938 612 942C586 934 566 924 540 924C514 924 494 934 468 942C452 938 440 925 430 900Z';
+
+// ---- komposisi: lebar mahkota 640 px; tinggi mahkota 460 px (0,72 x lebar, mengikuti acuan); leher -> kubah furkasi 175 px; leher -> apeks 704 px (1,10 x lebar)
+const S = 640 / 484, T0 = 235, CROWN_H = 460, SY = CROWN_H / 322, CEJ = T0 + CROWN_H, SM = 175 / 138, SR = (704 - 150 * SM) / 472;
+const MX = (x) => 540 + (x - 540) * S;
+const MY = (y) => (y <= 850 ? T0 + (y - 528) * SY : y <= 1000 ? CEJ + (y - 850) * SM : CEJ + 150 * SM + (y - 1000) * SR);
+const mapFlat = (a) => a.map((v, i) => f1(i % 2 ? MY(v) : MX(v)));
+const mapD = (d) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (m, x, y) => `${f1(MX(+x))} ${f1(MY(+y))}`);
+const crownAffine = `translate(540 ${T0}) scale(${f1(S * 1000) / 1000} ${f1(SY * 1000) / 1000}) translate(-540 -528)`;   // hanya untuk dekorasi di mahkota (y lokal <= 850)
+const CROWNm = mapFlat(CROWN), CROWN_INm = mapFlat(CROWN_IN), ROOTm = mapFlat(ROOT), CAN_MBm = mapFlat(CAN_MB), CAN_MLm = mapFlat(CAN_ML), CAN_Dm = mapFlat(CAN_D), CHAMBER = mapD(CHAMBER_L);
 const rev = (a) => { const pts = []; for (let i = 0; i < a.length; i += 2) pts.push([a[i], a[i + 1]]); return pts.reverse().flat(); };
-const ROOT_OPEN = cubicD(ROOT), CROWN_OPEN = cubicD(CROWN);
-const INREV = `L${CROWN_IN[CROWN_IN.length - 2]} ${CROWN_IN[CROWN_IN.length - 1]}${cubicD(rev(CROWN_IN)).replace(/^M[^C]*/, '')}Z`;
-const DENTIN_D = `${ROOT_OPEN}${INREV}`;   // satu bentuk dentin (mahkota + akar), tanpa garis sambung
-const ENAMEL_D = `${CROWN_OPEN}${INREV}`;   // cincin email
-const CX = 540, CY = 1100, K = 1.1, DY = -60;
-const tf = (x, y) => [CX + (x - CX) * K, CY + DY + (y - CY) * K];
+const cubicTail = (arr) => cubicD(arr).replace(/^M[^C]*/, '');
+const ROOT_OPEN = cubicD(ROOTm), CROWN_OPEN = cubicD(CROWNm);
+const INREV = `L${CROWN_INm[CROWN_INm.length - 2]} ${CROWN_INm[CROWN_INm.length - 1]}${cubicTail(rev(CROWN_INm))}Z`;
+const DENTIN_D = `${ROOT_OPEN}${INREV}`, ENAMEL_D = `${CROWN_OPEN}${INREV}`;
+const TOOTH_D = `${CROWN_OPEN}${cubicTail(rev(ROOTm))}Z`;   // siluet luar gigi (mahkota + dua akar) sebagai satu bentuk
 const offs = (Sm, d) => Sm.map((p, i) => { const a = Sm[Math.max(0, i - 1)], b = Sm[Math.min(Sm.length - 1, i + 1)], dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1; return [p[0] - dy / l * d, p[1] + dx / l * d]; });
 const pl = (Sm) => 'M' + Sm.map((p) => `${f1(p[0])} ${f1(p[1])}`).join('L');
-
-// ---- jaringan lunak dan tulang: seluruhnya diturunkan dari kontur gigi (menempel persis pada permukaan mahkota/akar)
-const TIP_Y = 776, SULC_Y = 806, CREST_Y = 898;   // tepi gusi bebas, dasar sulkus (sulkus ±0,7 mm), puncak alveolar (±1,1 mm di bawah CEJ; kisaran sumber 1-2 mm)
-const cs = sampleCubic(CROWN, 30), rs = sampleCubic(ROOT, 30);
-const toothLeft = [...cs.filter(([x, y]) => x < 540 && y >= TIP_Y && y <= 850).reverse(), ...rs.filter(([x, y]) => x < 540 && y > 850 && y <= CREST_Y)];   // tepi gusi -> puncak, sisi mesial
-const rightFromTip = [...cs.filter(([x, y]) => x > 540 && y >= TIP_Y + 6 && y <= 850), ...rs.filter(([x, y]) => x > 540 && y > 850 && y <= CREST_Y + 5).reverse()];   // tepi gusi -> puncak, sisi distal
-const GUMTOP_L = (tip) => [tip[0], tip[1], tip[0] - 8, tip[1] + 18, tip[0] - 34, tip[1] + 30, tip[0] - 70, tip[1] + 34, tip[0] - 110, tip[1] + 38, tip[0] - 150, tip[1] + 34, tip[0] - 196, tip[1] + 44, tip[0] - 250, tip[1] + 56, tip[0] - 290, tip[1] + 96, tip[0] - 340, tip[1] + 140, tip[0] - 390, tip[1] + 184, tip[0] - 430, tip[1] + 224, tip[0] - 470, tip[1] + 262];
-const GUMTOP_R = (tip) => [tip[0], tip[1], tip[0] + 8, tip[1] + 20, tip[0] + 30, tip[1] + 36, tip[0] + 66, tip[1] + 42, tip[0] + 116, tip[1] + 50, tip[0] + 170, tip[1] + 44, tip[0] + 226, tip[1] + 58, tip[0] + 290, tip[1] + 74, tip[0] + 340, tip[1] + 118, tip[0] + 396, tip[1] + 164, tip[0] + 460, tip[1] + 214, tip[0] + 500, tip[1] + 238, tip[0] + 540, tip[1] + 262];
-const CRESTCURVE_L = (c) => [c[0], c[1], c[0] - 16, c[1] + 22, c[0] - 56, c[1] + 50, c[0] - 108, c[1] + 64, c[0] - 190, c[1] + 86, c[0] - 280, c[1] + 108, c[0] - 360, c[1] + 142, c[0] - 420, c[1] + 180, c[0] - 454, c[1] + 204, c[0] - 480, c[1] + 214];
-const CRESTCURVE_R = (c) => [c[0], c[1], c[0] + 18, c[1] + 24, c[0] + 60, c[1] + 52, c[0] + 116, c[1] + 66, c[0] + 200, c[1] + 90, c[0] + 300, c[1] + 116, c[0] + 390, c[1] + 152, c[0] + 456, c[1] + 188, c[0] + 506, c[1] + 208, c[0] + 540, c[1] + 214];
 const polyD = (pts) => pts.map(([x, y], i) => `${i ? 'L' : 'M'}${f1(x)} ${f1(y)}`).join('');
-const crestL = toothLeft[toothLeft.length - 1], crestR = rightFromTip[rightFromTip.length - 1];
-const tipL = toothLeft[0], tipR = rightFromTip[0];
-const cubicTail = (arr) => cubicD(arr).replace(/^M[^C]*/, '');
-// gusi = tepi gusi -> kurva permukaan keluar -> tepi kanvas -> kurva puncak tulang kembali ke gigi -> sepanjang permukaan gigi naik ke tepi gusi
-const gumL = `M${f1(tipL[0])} ${f1(tipL[1])}${cubicTail(GUMTOP_L(tipL))}L${f1(crestL[0] - 480)} ${f1(crestL[1] + 214 + 6)}${cubicTail(rev(CRESTCURVE_L(crestL)))}${polyD(rev2(toothLeft)).replace(/^M/, 'L')}Z`;
-function rev2(a) { return a.slice().reverse(); }
-const gumR = `M${f1(tipR[0])} ${f1(tipR[1])}${cubicTail(GUMTOP_R(tipR))}L${f1(crestR[0] + 540)} ${f1(crestR[1] + 214 + 6)}${cubicTail(rev(CRESTCURVE_R(crestR)))}${polyD(rev2(rightFromTip)).replace(/^M/, 'L')}Z`;
-// tulang: permukaan puncak mengikuti akar (tertinggi di gigi, menurun ke arah celah), isi ke bawah kanvas
-const boneD = `M${f1(crestL[0] - 480)} ${f1(crestL[1] + 214)}${cubicTail(rev(CRESTCURVE_L(crestL)))}L${f1(crestL[0])} ${f1(crestL[1])}L${f1(crestR[0])} ${f1(crestR[1])}${cubicTail(CRESTCURVE_R(crestR))}L${f1(crestR[0] + 540)} 2000L${f1(crestL[0] - 480)} 2000Z`;
-const crestLineL = cubicD(CRESTCURVE_L(crestL)), crestLineR = cubicD(CRESTCURVE_R(crestR));
+const smoothTail = (pts) => { let d = ''; for (let i = 0; i < pts.length - 1; i++) { const p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)]; d += `C${f1(p1[0] + (p2[0] - p0[0]) / 6)} ${f1(p1[1] + (p2[1] - p0[1]) / 6)} ${f1(p2[0] - (p3[0] - p1[0]) / 6)} ${f1(p2[1] - (p3[1] - p1[1]) / 6)} ${f1(p2[0])} ${f1(p2[1])}`; } return d; };
+
+// ---- landmark (koordinat kanvas) untuk garis bantu dan perbandingan
+const cs = sampleCubic(CROWNm, 30), rs = sampleCubic(ROOTm, 30);
+const apexM = Math.max(...rs.filter(([x]) => x < 540).map(([, y]) => y)), apexD = Math.max(...rs.filter(([x]) => x > 540).map(([, y]) => y));
+const domeY = Math.min(...rs.filter(([x, y]) => Math.abs(x - 540) < 14 && y > CEJ + 50).map(([, y]) => y));
+export const LM = { crownTop: T0, cej: CEJ, apexM: f1(apexM), apexD: f1(apexD), dome: f1(domeY), crownL: 540 - 320, crownR: 540 + 320, cx: 540 };
+
+// ---- jaringan lunak dan tulang yang diturunkan dari kontur gigi
+const TIP_Y = CEJ - 71, CREST_Y = CEJ + 87;   // tepi gusi bebas ±1,2 mm di atas CEJ (sulkus ±0,7 mm); puncak alveolar ±1,5 mm di bawah CEJ (sumber: 1-2 mm)
+const toothLeft = [...cs.filter(([x, y]) => x < 540 && y >= TIP_Y && y <= CEJ).reverse(), ...rs.filter(([x, y]) => x < 540 && y > CEJ && y <= CREST_Y)];   // tepi gusi -> puncak
+const rightFromTip = [...cs.filter(([x, y]) => x > 540 && y >= TIP_Y + 6 && y <= CEJ), ...rs.filter(([x, y]) => x > 540 && y > CEJ && y <= CREST_Y + 5).reverse()];
+const tipL = toothLeft[0], crestL = toothLeft[toothLeft.length - 1], tipR = rightFromTip[0], crestR = rightFromTip[rightFromTip.length - 1];
+const rel = (o, sd, a) => { const r2 = []; for (let i = 0; i < a.length; i += 2) r2.push(f1(o[0] + sd * a[i]), f1(o[1] + a[i + 1])); return r2; };
+// gundukan gusi: kerah di leher, tonjolan papila, lalu lereng curam yang bertemu permukaan tulang (tidak berupa pita sampai tepi gambar)
+const GUM_ARCL = rel(tipL, -1, [0, 0, 8, 16, 22, 28, 46, 32, 80, 36, 104, 32, 126, 48, 152, 70, 170, 112, 178, CREST_Y + 36 - tipL[1]]);
+const GUM_ARCR = rel(tipR, 1, [0, 0, 8, 18, 24, 30, 50, 36, 86, 40, 112, 34, 134, 52, 160, 76, 178, 120, 186, CREST_Y + 42 - tipR[1]]);
+const endL = [GUM_ARCL[GUM_ARCL.length - 2], GUM_ARCL[GUM_ARCL.length - 1]], endR = [GUM_ARCR[GUM_ARCR.length - 2], GUM_ARCR[GUM_ARCR.length - 1]];
+const CRESTL = [crestL[0], crestL[1], crestL[0] - 24, crestL[1] + 3, crestL[0] - 60, crestL[1] + 8, crestL[0] - 100, crestL[1] + 12, crestL[0] - 140, crestL[1] + 18, crestL[0] - 190, crestL[1] + 22, endL[0], endL[1]];
+const CRESTR = [crestR[0], crestR[1], crestR[0] + 24, crestR[1] + 3, crestR[0] + 60, crestR[1] + 9, crestR[0] + 100, crestR[1] + 14, crestR[0] + 140, crestR[1] + 20, crestR[0] + 190, crestR[1] + 24, endR[0], endR[1]];
+// CRESTL/R: 2 + 6*2 = 14 angka -> dua segmen; fix panjang di bawah bila perlu
+const gumL = `M${f1(tipL[0])} ${f1(tipL[1])}${cubicTail(GUM_ARCL)}${cubicTail(rev(CRESTL))}${polyD(toothLeft.slice().reverse()).replace(/^M/, 'L')}Z`;
+const gumR = `M${f1(tipR[0])} ${f1(tipR[1])}${cubicTail(GUM_ARCR)}${cubicTail(rev(CRESTR))}${polyD(rightFromTip.slice().reverse()).replace(/^M/, 'L')}Z`;
+// massa tulang: puncak mengikuti akar, tepi samping dan bawah organik (menyempit ke bawah seperti mangkuk), isi di antara dan di bawah kedua akar
+const wob = (i) => Math.sin(i * 1.7) * 7 + Math.cos(i * 2.9) * 5;
+const bY = (y) => (y > 1380 ? 1380 + (y - 1380) * 0.78 : y);
+const BONE_OUT = [[endL[0], endL[1]], [58 + wob(1), 900], [50 + wob(2), bY(1010)], [54 + wob(3), bY(1140)], [66 + wob(4), bY(1270)], [92 + wob(5), bY(1390)], [142 + wob(6), bY(1500)], [222 + wob(7), bY(1590)], [340 + wob(8), bY(1662)], [460 + wob(9), bY(1708)], [540, bY(1722)], [640 + wob(10), bY(1712)], [760 + wob(11), bY(1672)], [860 + wob(12), bY(1600)], [940 + wob(13), bY(1510)], [992 + wob(14), bY(1400)], [1014 + wob(15), bY(1270)], [1022 + wob(16), bY(1140)], [1020 + wob(17), bY(1010)], [1008 + wob(18), 900], [endR[0], endR[1]]];
+const boneD = `${cubicD(CRESTL)}${smoothTail(BONE_OUT)}${cubicTail(rev(CRESTR))}Z`;
+const crestLineL = cubicD(CRESTL), crestLineR = cubicD(CRESTR);
+
+// ---- struktur trabekula (terarah): lengkung konsentris mengikuti kontur akar + penopang radial yang tegak lurus permukaan akar; ukuran membesar menjauhi akar
+function trabekula(r) {
+  const rsd = sampleCubic(ROOTm, 22), near = (p) => { let m = 1e9; for (const q of rsd) { const dd = Math.hypot(p[0] - q[0], p[1] - q[1]); if (dd < m) m = dd; } return m; };
+  const rib = (pts, w0, w1, op) => (pts.length > 2 ? `<path d="${ribbon(pts, w0, w1)}" opacity="${f1(op)}"/>` : '');
+  let o = '';
+  // lengkung konsentris (mengikuti kontur akar), terputus-putus, menipis di ujungnya; jarak makin jauh -> makin jarang dan tebal
+  for (const d of [58, 148, 258, 392]) {
+    const pts = offs(rsd, d).filter((p) => p[1] > CREST_Y + 18 && near(p) >= d * 0.9);
+    let i = 0;
+    while (i < pts.length - 4) {
+      const len = 5 + Math.floor(r() * (4 + d / 60)), seg = []; let j = i;
+      while (j < pts.length && seg.length < len && (j === i || Math.hypot(pts[j][0] - pts[j - 1][0], pts[j][1] - pts[j - 1][1]) < 40)) { seg.push(pts[j]); j += 1; }
+      if (seg.length > 4 && r() > 0.35) { const w = (8 + r() * 5) * (1 + d / 700), flip = r() > 0.5; o += rib(seg.filter((_, k) => k % 2 === 0), flip ? w * 0.4 : w, flip ? w : w * 0.4, 0.85 - d / 1500); }
+      i = j + 3 + Math.floor(r() * (3 + d / 50));
+    }
+  }
+  // penopang radial: tegak lurus permukaan akar, berkelok, menirus, bercabang Y; panjang dan jarak bervariasi
+  let acc = 0;
+  for (let i = 1; i < rsd.length - 1; i++) {
+    acc += Math.hypot(rsd[i][0] - rsd[i - 1][0], rsd[i][1] - rsd[i - 1][1]);
+    if (acc < 38 + r() * 46) continue; acc = 0;
+    const a = rsd[i - 1], b = rsd[i + 1], dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l, p0 = rsd[i];
+    if (p0[1] < CREST_Y + 26) continue;
+    const L = 110 + r() * 300, amp = 16 + r() * 30, ph = r() * 6, path = (len, ang, from) => { const c = Math.cos(ang), s2 = Math.sin(ang), ax = nx * c - ny * s2, ay = nx * s2 + ny * c, pts = []; for (let k = 0; k <= 10; k++) { const u = k / 10, off = amp * Math.sin(u * 4 + ph) * u; pts.push([from[0] + ax * (u * len) - ay * off, from[1] + ay * (u * len) + ax * off]); } return pts; };
+    const main = path(L, 0, [p0[0] + nx * 16, p0[1] + ny * 16]);
+    o += rib(main, 11 + r() * 3, 3.4, 0.85);
+    if (r() > 0.25) { const br = path(L * 0.5, (r() > 0.5 ? 1 : -1) * (0.5 + r() * 0.35), main[5]); o += rib(br, 6.5, 2.4, 0.8); }
+  }
+  return `<g fill="#F4D9A6">${o}</g>`;
+}
+
+const gumGrad = 'url(#gGum)';
+export function siluet(o = {}) {
+  const tone = { tooth: '#F4EEDF', gum: '#E58A9A', bone: '#D8B07C', line: '#2A1A12' };
+  let s = `<rect x="0" y="0" width="${W}" height="${H}" fill="#fff"/>`;
+  s += `<g stroke="${tone.line}" stroke-width="2.4" stroke-linejoin="round"><path d="${boneD}" fill="${tone.bone}"/><path d="${gumL}" fill="${tone.gum}"/><path d="${gumR}" fill="${tone.gum}"/><path d="${TOOTH_D}" fill="${tone.tooth}"/></g>`;
+  if (o.guides) s += guides(LM, '');
+  return s;
+}
+export function guides(L, tag, color = ['#D01030', '#1060D0', '#10A050', '#777']) {
+  const [cE, cA, cD, cG] = color, k = L.k || 1, lx = L.labelX ?? 10, line = (y, c, t) => `<line x1="-4000" y1="${f1(y)}" x2="4000" y2="${f1(y)}" stroke="${c}" stroke-width="${f1(2.4 / k)}" stroke-dasharray="${f1(14 / k)} ${f1(8 / k)}"/><text x="${f1(lx)}" y="${f1(y - 6 / k)}" font-family="DejaVu Sans, sans-serif" font-size="${f1(22 / k)}" font-weight="700" fill="${c}">${t}${tag}</text>`;
+  return `<g>${line(L.crownTop, cG, 'puncak mahkota')}${line(L.cej, cE, 'garis leher (CEJ)')}${line(L.dome, cD, 'kubah furkasi')}${line(L.apexM, cA, 'ujung akar')}<line x1="${f1(L.crownL)}" y1="${f1(L.crownTop - 30)}" x2="${f1(L.crownL)}" y2="${f1(L.cej)}" stroke="${cG}" stroke-width="${f1(2.4 / k)}" stroke-dasharray="6 6"/><line x1="${f1(L.crownR)}" y1="${f1(L.crownTop - 30)}" x2="${f1(L.crownR)}" y2="${f1(L.cej)}" stroke="${cG}" stroke-width="2.4" stroke-dasharray="6 6"/><line x1="${f1(L.crownL)}" y1="${f1(L.crownTop - 22)}" x2="${f1(L.crownR)}" y2="${f1(L.crownTop - 22)}" stroke="${cG}" stroke-width="2.4"/><text x="${f1(L.cx - 90)}" y="${f1(L.crownTop - 32)}" font-family="DejaVu Sans, sans-serif" font-size="${f1(22 / k)}" font-weight="700" fill="${cG}">lebar mahkota ${L.crownWpx ?? f1(L.crownR - L.crownL)} px</text></g>`;
+}
 
 export function gigi(o = {}) {
   const p = 'g', labels = !!o.labels, t = o.t ?? 0, r = rng(9);
-  let s = background(p, { seed: 8, glow: { x: 540, y: 1040, r: 780 }, tint: '#FFD6C0', vesselColor: '#B23A5A', cells: 16, particles: 90 });
+  let s = background(p, { seed: 8, glow: { x: 540, y: 1000, r: 820 }, tint: '#E8B0D8', vesselColor: '#B23A5A', cells: 16, particles: 90 });
   s += `<defs>
-  <linearGradient id="gEn" gradientUnits="userSpaceOnUse" x1="320" y1="520" x2="770" y2="860"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#E9EBFA"/><stop offset="1" stop-color="#B4BCE8"/></linearGradient>
-  <radialGradient id="gDen" gradientUnits="userSpaceOnUse" cx="500" cy="760" r="760"><stop offset="0" stop-color="#FFE3B6"/><stop offset=".5" stop-color="#F6B878"/><stop offset="1" stop-color="#C9783A"/></radialGradient>
-  <radialGradient id="gPulp" gradientUnits="userSpaceOnUse" cx="520" cy="780" r="420"><stop offset="0" stop-color="#FF6B78"/><stop offset=".5" stop-color="#E03850"/><stop offset="1" stop-color="#8A1030"/></radialGradient>
-  <linearGradient id="gBone" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="1900"><stop offset="0" stop-color="#FFE9BA"/><stop offset=".45" stop-color="#F5C07A"/><stop offset="1" stop-color="#C47A38"/></linearGradient>
-  <linearGradient id="gGum" gradientUnits="userSpaceOnUse" x1="0" y1="760" x2="0" y2="1010"><stop offset="0" stop-color="#FF9AAC"/><stop offset=".5" stop-color="#EC4A68"/><stop offset="1" stop-color="#B01C44"/></linearGradient>
-  <linearGradient id="gDens" gradientUnits="userSpaceOnUse" x1="0" y1="900" x2="0" y2="1500"><stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
-  <linearGradient id="gLow" gradientUnits="userSpaceOnUse" x1="0" y1="1180" x2="0" y2="1700"><stop offset="0" stop-color="#000" stop-opacity="1"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
-  <filter id="gTrabD" filterUnits="userSpaceOnUse" x="-200" y="860" width="1500" height="1200" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.05 0.034" numOctaves="3" seed="14"/><feColorMatrix type="matrix" values="0 0 0 0 .60  0 0 0 0 .34  0 0 0 0 .15  22 0 0 0 -12.4"/><feGaussianBlur stdDeviation="1"/></filter>
-  <filter id="gTrabL" filterUnits="userSpaceOnUse" x="-200" y="860" width="1500" height="1200" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.05 0.034" numOctaves="3" seed="14"/><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 .93  0 0 0 0 .76  22 0 0 0 -12.4"/><feGaussianBlur stdDeviation="1"/></filter>
-  <filter id="gBigD" filterUnits="userSpaceOnUse" x="-200" y="860" width="1500" height="1200" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.016 0.011" numOctaves="2" seed="5"/><feColorMatrix type="matrix" values="0 0 0 0 .58  0 0 0 0 .32  0 0 0 0 .13  14 0 0 0 -8.6"/><feGaussianBlur stdDeviation="1.6"/></filter>
-  <mask id="gTrabMask" maskUnits="userSpaceOnUse" x="-200" y="860" width="1500" height="1200"><rect x="-200" y="860" width="1500" height="1200" fill="#fff"/><rect x="-200" y="860" width="1500" height="1200" fill="url(#gDens)"/><path d="${ROOT_OPEN}" fill="none" stroke="#000" stroke-width="76" filter="url(#${p}blur20)"/><path d="${crestLineL}" fill="none" stroke="#000" stroke-width="58" filter="url(#${p}blur20)"/><path d="${crestLineR}" fill="none" stroke="#000" stroke-width="58" filter="url(#${p}blur20)"/></mask>
-  <mask id="gBigMask" maskUnits="userSpaceOnUse" x="-200" y="860" width="1500" height="1200"><rect x="-200" y="860" width="1500" height="1200" fill="#000"/><ellipse cx="540" cy="1650" rx="640" ry="380" fill="#fff" filter="url(#${p}blur40)"/><path d="${ROOT_OPEN}" fill="none" stroke="#000" stroke-width="110" filter="url(#${p}blur20)"/></mask>
+  <linearGradient id="gEn" gradientUnits="userSpaceOnUse" x1="260" y1="${T0}" x2="820" y2="${CEJ}"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#E9EBFA"/><stop offset="1" stop-color="#B4BCE8"/></linearGradient>
+  <radialGradient id="gDen" gradientUnits="userSpaceOnUse" cx="500" cy="540" r="900"><stop offset="0" stop-color="#FFE3B6"/><stop offset=".5" stop-color="#F6B878"/><stop offset="1" stop-color="#C9783A"/></radialGradient>
+  <radialGradient id="gPulp" gradientUnits="userSpaceOnUse" cx="520" cy="620" r="520"><stop offset="0" stop-color="#FF6B78"/><stop offset=".5" stop-color="#E03850"/><stop offset="1" stop-color="#8A1030"/></radialGradient>
+  <linearGradient id="gBone" gradientUnits="userSpaceOnUse" x1="0" y1="780" x2="0" y2="1900"><stop offset="0" stop-color="#E2AA6A"/><stop offset=".6" stop-color="#CC8D50"/><stop offset="1" stop-color="#A9652F"/></linearGradient>
+  <linearGradient id="gGum" gradientUnits="userSpaceOnUse" x1="0" y1="${f1(TIP_Y - 20)}" x2="0" y2="${f1(CREST_Y + 20)}"><stop offset="0" stop-color="#FF9AAC"/><stop offset=".5" stop-color="#EC4A68"/><stop offset="1" stop-color="#B01C44"/></linearGradient>
   <clipPath id="gClipDen"><path d="${DENTIN_D}"/></clipPath>
   <clipPath id="gClipEn"><path d="${ENAMEL_D}"/></clipPath>
-  <mask id="gCanMask" maskUnits="userSpaceOnUse" x="-400" y="1500" width="1900" height="600"><rect x="-400" y="1500" width="1900" height="600" fill="#000"/><ellipse cx="540" cy="1806" rx="400" ry="150" fill="#fff" filter="url(#${p}blur40)"/></mask>
-  <mask id="gMask" maskUnits="userSpaceOnUse" x="-400" y="860" width="1900" height="1300"><rect x="-400" y="860" width="1900" height="1300" fill="#000"/><ellipse cx="540" cy="1380" rx="800" ry="640" fill="#fff" filter="url(#${p}blur40)"/></mask>
+  <clipPath id="gClipBone"><path d="${boneD}"/></clipPath>
+  <mask id="gBoneFade" maskUnits="userSpaceOnUse" x="-100" y="700" width="1300" height="1300"><g filter="url(#${p}blur20)"><path d="${boneD}" fill="#fff" stroke="#000" stroke-width="100"/><rect x="-100" y="700" width="1300" height="${CREST_Y + 130 - 700}" fill="#fff"/></g></mask>
+  <mask id="gCanMask" maskUnits="userSpaceOnUse" x="-100" y="1400" width="1300" height="400"><ellipse cx="545" cy="1552" rx="240" ry="62" fill="#fff" filter="url(#${p}blur20)"/></mask>
   </defs>`;
-  s += `<g transform="translate(${CX} ${CY + DY}) scale(${K}) translate(${-CX} ${-CY})">`;
 
-  // ---- tulang alveolar: puncak mengikuti akar dan menurun ke celah; trabekula acak (kerapatan tinggi dekat lamina dura dan puncak, rongga sumsum membesar ke bawah); memudar ke tepi
-  s += `<g id="g-tulang"><g mask="url(#gMask)"><g filter="url(#${p}shadow)"><path d="${boneD}" fill="url(#gBone)"/></g>`;
-  s += fx(`<g clip-path="url(#gClipBone)"><g mask="url(#gTrabMask)"><rect x="-200" y="860" width="1500" height="1200" fill="#fff" filter="url(#gTrabL)" transform="translate(-2.6 -2.6)"/><rect x="-200" y="860" width="1500" height="1200" fill="#fff" filter="url(#gTrabD)"/></g><g mask="url(#gBigMask)" opacity=".3"><rect x="-200" y="860" width="1500" height="1200" fill="#fff" filter="url(#gBigD)"/></g><path d="${ROOT_OPEN}" fill="none" stroke="#7A3A10" stroke-width="64" opacity=".22" filter="url(#${p}blur20)"/></g><clipPath id="gClipBone"><path d="${boneD}"/></clipPath>`);
+  // ---- tulang alveolar: massa yang mengikuti sisi dan ruang antar-akar; struktur trabekula terarah; tepi luar memudar ke latar
+  s += `<g id="g-tulang"><g mask="url(#gBoneFade)"><g filter="url(#${p}shadow)"><path d="${boneD}" fill="url(#gBone)"/></g>`;
+  s += fx(`<g clip-path="url(#gClipBone)">${trabekula(r)}<path d="${ROOT_OPEN}" fill="none" stroke="#7A3A10" stroke-width="70" opacity=".2" filter="url(#${p}blur20)"/></g>`);
   s += `</g>`;
-  s += `<path d="${crestLineL}" fill="none" stroke="#FFF1CC" stroke-width="9" stroke-linecap="round" opacity=".95"/><path d="${crestLineR}" fill="none" stroke="#FFF1CC" stroke-width="9" stroke-linecap="round" opacity=".95"/>`;   // korteks tipis di puncak
+  s += `<path d="${crestLineL}" fill="none" stroke="#FFF1CC" stroke-width="8" stroke-linecap="round" opacity=".95"/><path d="${crestLineR}" fill="none" stroke="#FFF1CC" stroke-width="8" stroke-linecap="round" opacity=".95"/>`;
   s += `</g>`;
 
-  // ---- kanal mandibula (konteks): tabung halus berkontras rendah, berkas saraf-pembuluh tipis di dalamnya; memudar di tepi bersama tulang
-  const CAN_AXIS = sampleCubic([-140, 1806, 100, 1798, 400, 1790, 640, 1798, 880, 1806, 1060, 1812, 1220, 1808], 26);
-  const at = (dy, w) => ribbon(CAN_AXIS.map(([x, y]) => [x, y + dy]), w, w);
-  s += `<g id="g-kanal-mandibula" mask="url(#gCanMask)" opacity=".85"><g class="nos">`;
-  s += `<path d="${at(0, 92)}" fill="#F3DDBF"/><path d="${at(0, 82)}" fill="#E9B79E"/>`;
-  s += fx(`<path d="${at(0, 82)}" fill="none" stroke="#7A3A20" stroke-width="12" opacity=".3" filter="url(#${p}blur8)" transform="translate(3 7)"/>`);
-  s += `<path d="${at(4, 36)}" fill="#C9A24A"/><path d="${at(4, 31)}" fill="#E2C268"/>`;
-  s += `<path d="${at(-24, 11)}" fill="#B4403E"/><path d="${at(-24, 7)}" fill="#E0605A"/>`;
-  s += `<path d="${at(28, 14)}" fill="#4650A8"/><path d="${at(28, 9)}" fill="#6A76D2"/>`;
-  s += fx(`<path d="${pl(CAN_AXIS.map(([x, y]) => [x, y - 14]))}" fill="none" stroke="#FFF3C0" stroke-width="6" opacity=".5" stroke-linecap="round" filter="url(#${p}blur2)"/>`);
-  s += `</g></g>`;
+  // ---- kanal mandibula (konteks): segmen pendek yang memudar di kedua ujung, bukan pita sepanjang bingkai
+  const CAN_AXIS = sampleCubic([330, 1556, 420, 1548, 500, 1544, 570, 1548, 640, 1554, 710, 1556, 760, 1552], 20);
+  const sk = (dy, w, c, extra = '') => `<path d="${pl(CAN_AXIS.map(([x, y]) => [x, y + dy]))}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" ${extra}/>`;
+  s += `<g id="g-kanal-mandibula" mask="url(#gCanMask)" opacity=".85">`;
+  s += sk(0, 84, '#F3DDBF') + sk(0, 74, '#E4B196') + sk(3, 32, '#D2B25C') + sk(-22, 9, '#D2605A') + sk(24, 12, '#6A76C4');
+  s += `</g>`;
 
-  // ---- ligamen periodontal (0,15-0,38 mm; di sini ±9 px) + lamina dura, mengikuti seluruh kontur akar termasuk furkasi
-  s += `<g id="g-lig-periodontal"><path d="${ROOT_OPEN}" fill="none" stroke="#FFF1CC" stroke-width="32" stroke-linejoin="round" stroke-linecap="round"/><path d="${ROOT_OPEN}" fill="none" stroke="#E8967C" stroke-width="19" stroke-linejoin="round" stroke-linecap="round"/>`;
+  // ---- ligamen periodontal (0,15-0,38 mm; di sini ±11 px) + lamina dura (±6 px), mengikuti seluruh kontur akar termasuk furkasi
+  s += `<g id="g-lig-periodontal"><path d="${ROOT_OPEN}" fill="none" stroke="#FFF1CC" stroke-width="34" stroke-linejoin="round" stroke-linecap="round"/><path d="${ROOT_OPEN}" fill="none" stroke="#E8967C" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>`;
   let fib = '';
-  sampleCubic(ROOT, 16).forEach(([x, y], i) => { if (i % 2 || y < CREST_Y + 6) return; const sx = x < 540 ? -1 : 1; fib += `<path d="M${f1(x)} ${f1(y)}l${f1(sx * 11)} ${f1(y < 1040 ? -8 : 7)}" stroke="#B5532E" stroke-width="2" opacity=".6" stroke-linecap="round"/>`; });
+  sampleCubic(ROOTm, 16).forEach(([x, y], i) => { if (i % 2 || y < CREST_Y + 6) return; const sx = x < 540 ? -1 : 1; fib += `<path d="M${f1(x)} ${f1(y)}l${f1(sx * 13)} ${f1(y < CEJ + 190 ? -9 : 8)}" stroke="#B5532E" stroke-width="2" opacity=".6" stroke-linecap="round"/>`; });
   s += fx(fib) + `</g>`;
 
-  // ---- dentin (mahkota + akar sebagai SATU bentuk) dengan tubulus radial dan bayangan yang mengikuti bentuk
+  // ---- dentin (mahkota + akar sebagai SATU bentuk)
   s += `<g id="g-dentin"><g filter="url(#${p}shadow)"><g filter="url(#${p}volS)"><path d="${DENTIN_D}" fill="url(#gDen)"/></g></g>`;
   let tub = '';
-  for (let i = 0; i < 150; i++) { const a = (i / 150) * Math.PI * 2, cx = 540, cy = 790, rr0 = 120, rr1 = 360 + Math.sin(a * 2) * 40; tub += `<path d="M${f1(cx + Math.cos(a) * rr0)} ${f1(cy + Math.sin(a) * rr0 * 1.1)}L${f1(cx + Math.cos(a) * rr1)} ${f1(cy + Math.sin(a) * rr1 * 0.95)}" stroke="#B5702E" stroke-width="1.6" opacity=".18"/>`; }
-  s += fx(`<g clip-path="url(#gClipDen)">${tub}<path d="${CHAMBER}" fill="none" stroke="#B5602A" stroke-width="54" opacity=".32" filter="url(#${p}blur20)"/><path d="${cubicD(CAN_MB)}" fill="none" stroke="#B5602A" stroke-width="44" opacity=".26" filter="url(#${p}blur20)"/><path d="${cubicD(CAN_D)}" fill="none" stroke="#B5602A" stroke-width="48" opacity=".26" filter="url(#${p}blur20)"/><path d="${ROOT_OPEN}" fill="none" stroke="#fff" stroke-width="26" opacity=".24" filter="url(#${p}blur8)" transform="translate(11 4)"/><path d="${ROOT_OPEN}" fill="none" stroke="#6A2A0A" stroke-width="34" opacity=".3" filter="url(#${p}blur8)" transform="translate(-12 -5)"/><path d="${cubicD(CROWN_IN)}" fill="none" stroke="#6A2A0A" stroke-width="36" opacity=".16" filter="url(#${p}blur8)" transform="translate(-6 -6)"/><path d="${cubicD(CROWN_IN)}" fill="none" stroke="#FFF0CC" stroke-width="20" opacity=".3" filter="url(#${p}blur8)" transform="translate(7 7)"/></g>`);
+  for (let i = 0; i < 150; i++) { const a = (i / 150) * Math.PI * 2, cx = 540, cy = 790, rr0 = 120, rr1 = 360 + Math.sin(a * 2) * 40; tub += `<path d="M${f1(cx + Math.cos(a) * rr0)} ${f1(cy + Math.sin(a) * rr0 * 1.1)}L${f1(cx + Math.cos(a) * rr1)} ${f1(cy + Math.sin(a) * rr1 * 0.95)}" stroke="#B5702E" stroke-width="1.4" opacity=".18"/>`; }
+  s += fx(`<g clip-path="url(#gClipDen)"><g transform="${crownAffine}">${tub}</g><path d="${CHAMBER}" fill="none" stroke="#B5602A" stroke-width="64" opacity=".32" filter="url(#${p}blur20)"/><path d="${cubicD(CAN_MBm)}" fill="none" stroke="#B5602A" stroke-width="52" opacity=".26" filter="url(#${p}blur20)"/><path d="${cubicD(CAN_Dm)}" fill="none" stroke="#B5602A" stroke-width="56" opacity=".26" filter="url(#${p}blur20)"/><path d="${ROOT_OPEN}" fill="none" stroke="#fff" stroke-width="30" opacity=".24" filter="url(#${p}blur8)" transform="translate(13 5)"/><path d="${ROOT_OPEN}" fill="none" stroke="#6A2A0A" stroke-width="40" opacity=".3" filter="url(#${p}blur8)" transform="translate(-14 -6)"/><path d="${cubicD(CROWN_INm)}" fill="none" stroke="#6A2A0A" stroke-width="40" opacity=".16" filter="url(#${p}blur8)" transform="translate(-7 -7)"/><path d="${cubicD(CROWN_INm)}" fill="none" stroke="#FFF0CC" stroke-width="24" opacity=".3" filter="url(#${p}blur8)" transform="translate(8 8)"/></g>`);
   s += `</g>`;
-  // ---- sementum: lapisan tipis (lebih tebal di sepertiga apikal)
+  // ---- sementum: lapisan tipis
   s += `<g id="g-sementum"><path d="${ROOT_OPEN}" fill="none" stroke="${PAL.cementum}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>`;
   s += fx(`<path d="${ROOT_OPEN}" fill="none" stroke="#F0CE90" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" opacity=".8" transform="translate(-1 -1)"/>`);
-  for (const [ax, ay] of [[452, 1464], [730, 1458]]) s += `<ellipse cx="${ax}" cy="${ay}" rx="28" ry="12" fill="${PAL.cementum}" opacity=".7" class="nos"/>`;
   s += `</g>`;
 
-  // ---- pulpa: ruang pulpa dengan dua tanduk, kanal MB (dan ML samar di luar bidang), kanal tunggal di akar distal (tidak diubah dari v4)
-  const cm = sampleCubic(CAN_MB, 14), cml = sampleCubic(CAN_ML, 14), cd = sampleCubic(CAN_D, 14);
-  const eMB = (u) => 1 - Math.pow(1 - u, 2.2), RB = ribbon(cm, 44, 10, eMB), RD = ribbon(cd, 50, 12, eMB);
-  s += `<g id="g-pulpa" class="nos"><path d="${ribbon(cml, 36, 8, eMB)}" fill="#B02040" opacity=".5"/>`;
+  // ---- pulpa: ruang pulpa dengan dua tanduk, kanal MB (dan ML samar), kanal distal (jumlah dan bentuk dasar tetap seperti v4/v5)
+  const cm = sampleCubic(CAN_MBm, 14), cml = sampleCubic(CAN_MLm, 14), cd = sampleCubic(CAN_Dm, 14);
+  const eMB = (u) => 1 - Math.pow(1 - u, 2.2), RB = ribbon(cm, 54, 12, eMB), RD = ribbon(cd, 60, 14, eMB);
+  s += `<g id="g-pulpa" class="nos"><path d="${ribbon(cml, 44, 10, eMB)}" fill="#B02040" opacity=".5"/>`;
   s += `<g filter="url(#${p}shadowS)"><g filter="url(#${p}volS)"><path d="${CHAMBER}" fill="url(#gPulp)"/><path d="${RB}" fill="url(#gPulp)"/><path d="${RD}" fill="url(#gPulp)"/></g></g>`;
-  s += fx(`<clipPath id="gClipP"><path d="${CHAMBER}"/><path d="${RB}"/><path d="${RD}"/></clipPath><g clip-path="url(#gClipP)"><path d="${CHAMBER}" fill="none" stroke="#5A0A22" stroke-width="30" opacity=".5" filter="url(#${p}blur8)" transform="translate(7 9)"/><path d="${RB}" fill="none" stroke="#5A0A22" stroke-width="14" opacity=".35" filter="url(#${p}blur4)" transform="translate(5 0)"/><path d="M440 700C434 760 436 830 444 884" fill="none" stroke="#fff" stroke-width="9" opacity=".3" stroke-linecap="round" filter="url(#${p}blur4)"/></g>`);
+  s += fx(`<clipPath id="gClipP"><path d="${CHAMBER}"/><path d="${RB}"/><path d="${RD}"/></clipPath><g clip-path="url(#gClipP)"><path d="${CHAMBER}" fill="none" stroke="#5A0A22" stroke-width="36" opacity=".5" filter="url(#${p}blur8)" transform="translate(8 11)"/><path d="${RB}" fill="none" stroke="#5A0A22" stroke-width="16" opacity=".35" filter="url(#${p}blur4)" transform="translate(6 0)"/><path d="${pl([[MX(440), MY(700)], [MX(434), MY(760)], [MX(436), MY(830)], [MX(444), MY(884)]])}" fill="none" stroke="#fff" stroke-width="11" opacity=".3" stroke-linecap="round" filter="url(#${p}blur4)"/></g>`);
   s += `</g>`;
 
-  // ---- saraf (kuning), arteriol (merah), venula (biru): masuk lewat foramen apikal, naik lewat kanal, bercabang ke tanduk pulpa; di luar apeks turun lewat saluran tulang menuju berkas alveolar inferior (konteks)
+  // ---- saraf (kuning), arteriol (merah), venula (biru): masuk lewat foramen apikal, naik lewat kanal; cabang dental ke kanal mandibula (konteks)
   const COLS = [[PAL.nerve, '#7A5A08'], ['#F0282A', '#5A0610'], ['#4A56E0', '#141860']];
   const strand = (d, w, c, dk) => `<path d="${d}" fill="none" stroke="${dk}" stroke-width="${f1(w + 1.6)}" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="${c}" stroke-width="${f1(w)}" stroke-linecap="round" stroke-linejoin="round"/>`;
   s += `<g id="g-saraf-pembuluh">`;
-  const FM = [452, 1446], FD = [722, 1438], JM = [474, 1772], JD = [694, 1774];
-  const branch = (F, J) => sampleCubic([F[0], F[1], F[0] - 4, F[1] + 100, J[0] + 8, J[1] - 110, J[0], J[1]], 28);
+  const FM = [CAN_MBm[CAN_MBm.length - 2], CAN_MBm[CAN_MBm.length - 1]], FD = [CAN_Dm[CAN_Dm.length - 2], CAN_Dm[CAN_Dm.length - 1]], JM = [480, 1520], JD = [640, 1522];
+  const branch = (F, J) => sampleCubic([F[0], F[1], F[0] - 4, F[1] + 120, J[0] + 8, J[1] - 130, J[0], J[1]], 28);
   for (const [F, J, c0] of [[FM, JM, cm], [FD, JD, cd]]) {
     const br = branch(F, J);
-    s += `<path d="${pl(br)}" fill="none" stroke="#FFE9C8" stroke-width="24" stroke-linecap="round" opacity=".55"/><path d="${pl(br)}" fill="none" stroke="#E7A98C" stroke-width="16" opacity=".8" stroke-linecap="round"/>`;   // saluran tulang + selubung berkas
-    COLS.forEach(([c, dk], i) => { s += strand(pl(offs(br, (i - 1) * 5.5)), 3.4, c, dk) + strand(pl(offs(c0, (i - 1) * 3.2)), 2.4, c, dk); });
+    s += `<g opacity=".8"><path d="${pl(br)}" fill="none" stroke="#FFE9C8" stroke-width="24" stroke-linecap="round" opacity=".55"/><path d="${pl(br)}" fill="none" stroke="#E7A98C" stroke-width="15" stroke-linecap="round" opacity=".8"/>`;
+    COLS.forEach(([c, dk], i) => { s += strand(pl(offs(br, (i - 1) * 5)), 3.2, c, dk); });
+    s += `</g>`;
+    COLS.forEach(([c, dk], i) => { s += strand(pl(offs(c0, (i - 1) * 3.2)), 2.6, c, dk); });
   }
-  const fan = (x0, y0, targets) => targets.map(([tx, ty], i) => { const [c, dk] = COLS[i % 3]; return strand(`M${x0} ${y0}C${x0 + (tx - x0) * 0.15} ${y0 - 60} ${tx + (x0 - tx) * 0.05} ${ty + 80} ${tx} ${ty}`, 2.4, c, dk); }).join('');
+  const fan = (x0, y0, targets) => targets.map(([tx, ty], i) => { const [c, dk] = COLS[i % 3]; const a = [MX(x0), MY(y0)], b = [MX(tx), MY(ty)]; return strand(`M${f1(a[0])} ${f1(a[1])}C${f1(a[0] + (b[0] - a[0]) * 0.15)} ${f1(a[1] - 70)} ${f1(b[0] + (a[0] - b[0]) * 0.05)} ${f1(b[1] + 90)} ${f1(b[0])} ${f1(b[1])}`, 2.6, c, dk); }).join('');
   s += fx(fan(470, 930, [[446, 690], [452, 700], [430, 750], [478, 780]]) + fan(612, 930, [[634, 690], [628, 702], [650, 750], [602, 784]]));
   s += `</g>`;
 
-  // ---- email: cincin tembus cahaya; tepi dalam hangat (dentin menembus), tepi luar kebiruan, tebal di puncak tonjol dan menipis ke leher
+  // ---- email: cincin tembus cahaya; tepi dalam hangat, tepi luar kebiruan, tebal di tonjol dan menipis ke leher
   s += `<g id="g-email"><g filter="url(#${p}shadow)"><g filter="url(#${p}vol)"><path d="${ENAMEL_D}" fill="url(#gEn)"/></g></g>`;
-  s += fx(`<g clip-path="url(#gClipEn)"><path d="${cubicD(CROWN_IN)}" fill="none" stroke="#FFD9A8" stroke-width="46" opacity=".55" filter="url(#${p}blur8)"/><path d="${CROWN_OPEN}" fill="none" stroke="#A8B4F0" stroke-width="22" opacity=".5" filter="url(#${p}blur8)"/><path d="M770 700C778 650 750 606 716 590" fill="none" stroke="#4A3A9A" stroke-width="26" opacity=".2" stroke-linecap="round" filter="url(#${p}blur8)"/><path d="M312 690C316 636 346 600 392 570" fill="none" stroke="#fff" stroke-width="24" opacity=".42" stroke-linecap="round" filter="url(#${p}blur8)"/><path d="M372 552C396 536 424 530 446 534" fill="none" stroke="#fff" stroke-width="7" opacity=".7" stroke-linecap="round" filter="url(#${p}blur2)"/><path d="M606 548C622 540 640 538 656 542" fill="none" stroke="#fff" stroke-width="5" opacity=".4" stroke-linecap="round" filter="url(#${p}blur2)"/><path d="${CROWN_OPEN}" fill="none" stroke="${PAL.rim}" stroke-width="7" opacity=".4" filter="url(#${p}blur2)" transform="translate(2 2)"/></g>`);
-  s += fx(`<path d="${cubicD(CROWN_IN)}" fill="none" stroke="#A9A2E4" stroke-width="2.6" opacity=".55" stroke-dasharray="26 4 12 4"/>`);
+  s += fx(`<g clip-path="url(#gClipEn)"><path d="${cubicD(CROWN_INm)}" fill="none" stroke="#FFD9A8" stroke-width="54" opacity=".55" filter="url(#${p}blur8)"/><path d="${CROWN_OPEN}" fill="none" stroke="#A8B4F0" stroke-width="26" opacity=".5" filter="url(#${p}blur8)"/><g transform="${crownAffine}"><path d="M770 700C778 650 750 606 716 590" fill="none" stroke="#4A3A9A" stroke-width="22" opacity=".2" stroke-linecap="round" filter="url(#${p}blur8)"/><path d="M312 690C316 636 346 600 392 570" fill="none" stroke="#fff" stroke-width="20" opacity=".42" stroke-linecap="round" filter="url(#${p}blur8)"/><path d="M372 552C396 536 424 530 446 534" fill="none" stroke="#fff" stroke-width="6" opacity=".7" stroke-linecap="round" filter="url(#${p}blur2)"/><path d="M606 548C622 540 640 538 656 542" fill="none" stroke="#fff" stroke-width="5" opacity=".4" stroke-linecap="round" filter="url(#${p}blur2)"/></g><path d="${CROWN_OPEN}" fill="none" stroke="${PAL.rim}" stroke-width="8" opacity=".4" filter="url(#${p}blur2)" transform="translate(2 2)"/></g>`);
+  s += fx(`<path d="${cubicD(CROWN_INm)}" fill="none" stroke="#A9A2E4" stroke-width="2.6" opacity=".55" stroke-dasharray="26 4 12 4"/>`);
   s += `</g>`;
 
-  // ---- gusi: membungkus leher; tepi bebas setajam pisau, permukaan membulat menurun ke celah, tebal bervariasi (papila tebal di dekat gigi, menipis ke tepi); sulkus, epitel penyatu, serat jaringan ikat sampai puncak tulang
-  const gumG = (d, side) => {
-    let g = `<g filter="url(#${p}shadow)"><g filter="url(#${p}vol)"><path d="${d}" fill="url(#gGum)"/></g></g>`;
-    return g;
-  };
-  s += `<g id="g-gusi">${gumG(gumL, 0)}${gumG(gumR, 1)}`;
-  for (const [tooth, topc, sd] of [[toothLeft, GUMTOP_L(tipL), -1], [rightFromTip, GUMTOP_R(tipR), 1]]) {
-    const sulc = tooth.filter(([, y]) => y <= SULC_Y + 1), je = tooth.filter(([, y]) => y >= SULC_Y && y <= 850), ct = tooth.filter(([, y]) => y >= 850);
-    s += fx(`<path d="${cubicD(topc)}" fill="none" stroke="#FFD6DC" stroke-width="12" opacity=".55" stroke-linecap="round" filter="url(#${p}blur4)" transform="translate(${-sd * 0} 7)"/><path d="${cubicD(topc)}" fill="none" stroke="#fff" stroke-width="4" opacity=".4" stroke-linecap="round" filter="url(#${p}blur2)" transform="translate(0 2)"/><path d="${cubicD(sd < 0 ? CRESTCURVE_L(crestL) : CRESTCURVE_R(crestR))}" fill="none" stroke="#5A0A22" stroke-width="30" opacity=".3" filter="url(#${p}blur8)" transform="translate(0 -14)"/>`);
-    s += `<path d="${pl(sulc)}" fill="none" stroke="#4A0818" stroke-width="3.2" opacity=".6" stroke-linecap="round"/>`;
-    s += `<path d="${pl(je)}" fill="none" stroke="#FFC4CC" stroke-width="5" opacity=".8" stroke-linecap="round"/>`;
+  // ---- gusi: gundukan yang naik membungkus leher (kerah + papila) lalu menurun curam ke permukaan tulang
+  s += `<g id="g-gusi">`;
+  for (const d of [gumL, gumR]) s += `<g filter="url(#${p}shadow)"><g filter="url(#${p}vol)"><path d="${d}" fill="${gumGrad}"/></g></g>`;
+  for (const [tooth, arc, sd] of [[toothLeft, GUM_ARCL, -1], [rightFromTip, GUM_ARCR, 1]]) {
+    const sulc = tooth.filter(([, y]) => y <= CEJ - 30), je = tooth.filter(([, y]) => y >= CEJ - 32 && y <= CEJ + 2), ct = tooth.filter(([, y]) => y >= CEJ);
+    s += fx(`<path d="${cubicD(arc)}" fill="none" stroke="#FFD6DC" stroke-width="13" opacity=".55" stroke-linecap="round" filter="url(#${p}blur4)" transform="translate(0 8)"/><path d="${cubicD(arc)}" fill="none" stroke="#fff" stroke-width="4" opacity=".4" stroke-linecap="round" filter="url(#${p}blur2)" transform="translate(0 2)"/><path d="${cubicD(sd < 0 ? CRESTL : CRESTR)}" fill="none" stroke="#5A0A22" stroke-width="34" opacity=".3" filter="url(#${p}blur8)" transform="translate(0 -16)"/>`);
+    s += `<path d="${pl(sulc)}" fill="none" stroke="#4A0818" stroke-width="3.2" opacity=".6" stroke-linecap="round"/><path d="${pl(je)}" fill="none" stroke="#FFC4CC" stroke-width="5" opacity=".8" stroke-linecap="round"/>`;
     s += fx(`<path d="${pl(ct)}" fill="none" stroke="#FFC4CC" stroke-width="5" opacity=".5" stroke-linecap="round"/>`);
   }
   s += `</g>`;
   let fl = '';
-  for (const c of [cm, cd]) for (let i = 0; i < 4; i++) { const u = (((t * 0.4 + i / 4) % 1) + 1) % 1, [x, y] = c[Math.floor((1 - u) * (c.length - 1))]; fl += `<circle cx="${f1(x)}" cy="${f1(y)}" r="4.6" fill="#FFE6E0" opacity="${f1(0.7 * Math.sin(u * Math.PI))}"/>`; }
+  for (const c of [cm, cd]) for (let i = 0; i < 4; i++) { const u = (((t * 0.4 + i / 4) % 1) + 1) % 1, [x, y] = c[Math.floor((1 - u) * (c.length - 1))]; fl += `<circle cx="${f1(x)}" cy="${f1(y)}" r="5" fill="#FFE6E0" opacity="${f1(0.7 * Math.sin(u * Math.PI))}"/>`; }
   s += fx(`<g id="g-pulpa-aliran" filter="url(#${p}blur2)">${fl}</g>`);
-  s += `</g>`;
   s += vignette(p);
-  if (labels) s += `<g id="g-label">${lblLayout().map(([X, Y, left, ty, txt]) => label(X, Y, left ? 28 : 1052, ty, txt, { fs: 23, anchor: left ? 'start' : 'end' })).join('')}${label(60, 170, 28, 170, 'MESIAL (kiri layar)', { fs: 23, anchor: 'start' })}${label(1020, 170, 1052, 170, 'DISTAL (kanan layar)', { fs: 23, anchor: 'end' })}${label(60, 215, 28, 215, 'Molar 1 rahang bawah, potongan mesiodistal', { fs: 21, anchor: 'start' })}</g>`;
+  if (labels) s += `<g id="g-label">${lblLayout().map(([X, Y, left, ty, txt]) => label(X, Y, left ? 28 : 1052, ty, txt, { fs: 23, anchor: left ? 'start' : 'end' })).join('')}${label(60, 110, 28, 110, 'MESIAL (kiri layar)', { fs: 23, anchor: 'start' })}${label(1020, 110, 1052, 110, 'DISTAL (kanan layar)', { fs: 23, anchor: 'end' })}${label(60, 155, 28, 155, 'Molar 1 rahang bawah, potongan mesiodistal', { fs: 21, anchor: 'start' })}</g>`;
   return s;
 }
-// label pemeriksaan: [x, y pada struktur (koordinat dasar), sisi (-1 kiri / 1 kanan), teks]; posisi y teks dihitung otomatis (sejajar titik, jarak minimal agar tidak bertumpuk)
+// label: [x, y, sisi, teks, lokal?]; lokal = true -> koordinat lokal (dipetakan); false -> koordinat kanvas
 const LBL = [
-  [372, 598, -1, 'Email (enamel)'], [372, 750, -1, 'Dentin mahkota'], [312, 784, -1, 'Tepi gusi + sulkus'], [204, 879, -1, 'Gusi'],
-  [338, 880, -1, 'Epitel penyatu'], [300, 934, -1, 'Puncak alveolar'], [334, 1060, -1, 'Sementum + PDL'], [240, 1300, -1, 'Tulang trabekular'],
-  [436, 1130, -1, 'Kanal MB'], [345, 1300, -1, 'Akar mesial'], [452, 1446, -1, 'Foramen apikal'], [462, 1600, -1, 'Cabang dental IAN'], [250, 1800, -1, 'Kanal mandibula'],
-  [642, 676, 1, 'Ruang pulpa + tanduk'], [572, 924, 1, 'Lantai ruang pulpa'], [540, 1010, 1, 'Furkasi'], [468, 1070, 1, 'Kanal ML (samar)'],
-  [668, 1130, 1, 'Kanal akar distal'], [756, 1300, 1, 'Akar distal'], [884, 892, 1, 'Gusi + papila'], [850, 1800, 1, 'Berkas n.-a.-v. IAN'],
+  [372, 598, -1, 'Email (enamel)', 1], [380, 740, -1, 'Dentin mahkota', 1], [tipL[0] + 4, tipL[1] + 24, -1, 'Tepi gusi + sulkus', 0], [160, 790, -1, 'Gusi (papila)', 0],
+  [crestL[0] - 40, crestL[1] + 8, -1, 'Puncak alveolar', 0], [334, 1060, -1, 'Sementum + PDL', 1], [240, 1180, -1, 'Tulang trabekular', 0],
+  [436, 1130, -1, 'Kanal MB', 1], [345, 1300, -1, 'Akar mesial', 1], [452, 1446, -1, 'Foramen apikal', 1], [470, 1470, -1, 'Cabang dental IAN', 0], [350, 1556, -1, 'Kanal mandibula', 0],
+  [642, 676, 1, 'Ruang pulpa + tanduk', 1], [572, 924, 1, 'Lantai ruang pulpa', 1], [540, 1010, 1, 'Furkasi', 1], [468, 1070, 1, 'Kanal ML (samar)', 1],
+  [668, 1130, 1, 'Kanal akar distal', 1], [756, 1300, 1, 'Akar distal', 1], [tipR[0] + 120, tipR[1] + 50, 1, 'Gusi + papila', 0], [740, 1556, 1, 'Berkas n.-a.-v. IAN', 0],
 ];
 function lblLayout() {
   const out = [];
   for (const side of [-1, 1]) {
-    let prev = 250;
-    for (const [x, y, sd, txt] of LBL.filter((l) => l[2] === side).map(([x, y, sd, txt]) => { const [X, Y] = tf(x, y); return [X, Y, sd, txt]; }).sort((a, b) => a[1] - b[1])) {
+    let prev = 200;
+    for (const [x, y, txt] of LBL.filter((l) => l[2] === side).map(([x, y, sd, txt, loc]) => [loc ? MX(x) : x, loc ? MY(y) : y, txt]).sort((a, b) => a[1] - b[1])) {
       const ty = Math.max(y, prev + 64); prev = ty; out.push([x, y, side < 0, ty, txt]);
     }
   }
