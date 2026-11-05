@@ -35,19 +35,22 @@ export const PAL = {
 };
 
 // ---------------------------------------------------------------- defs bersama (gradasi dan filter); id dengan awalan p supaya bisa dipakai beberapa gambar
-export function defs(p = 'a') {
+export const TEMA_LAMA = { top: PAL.bg.top, mid: PAL.bg.mid, bot: PAL.bg.bot, glow: PAL.bg.glow, shadow: '#000', shadowOp: 0.5, vigOp: 0.62 };
+// tema MEDCOEL: hijau hutan identitas (forest #0A3830), kolam cahaya teal dari kiri-atas, bayangan navy-hijau tinta (bukan hitam)
+export const TEMA_MEDCOEL = { top: '#0F4D42', mid: '#0A3830', bot: '#051F1B', glow: '#00A58A', shadow: '#031815', shadowOp: 0.55, vigOp: 0.5 };
+export function defs(p = 'a', th = TEMA_LAMA) {
   const light = '<feDistantLight azimuth="225" elevation="50"/>';
   return `<defs>
-<linearGradient id="${p}bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${PAL.bg.top}"/><stop offset=".5" stop-color="${PAL.bg.mid}"/><stop offset="1" stop-color="${PAL.bg.bot}"/></linearGradient>
-<radialGradient id="${p}glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${PAL.bg.glow}" stop-opacity=".6"/><stop offset=".55" stop-color="${PAL.bg.glow}" stop-opacity=".16"/><stop offset="1" stop-color="${PAL.bg.glow}" stop-opacity="0"/></radialGradient>
-<radialGradient id="${p}vig" cx=".5" cy=".46" r=".78"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".62"/></radialGradient>
+<linearGradient id="${p}bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${th.top}"/><stop offset=".5" stop-color="${th.mid}"/><stop offset="1" stop-color="${th.bot}"/></linearGradient>
+<radialGradient id="${p}glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${th.glow}" stop-opacity=".6"/><stop offset=".55" stop-color="${th.glow}" stop-opacity=".16"/><stop offset="1" stop-color="${th.glow}" stop-opacity="0"/></radialGradient>
+<radialGradient id="${p}vig" cx=".5" cy=".46" r=".78"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="${th.shadow}" stop-opacity="${th.vigOp}"/></radialGradient>
 <filter id="${p}blur8" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="8"/></filter>
 <filter id="${p}blur20" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="20"/></filter>
 <filter id="${p}blur40" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="40"/></filter>
 <filter id="${p}blur2" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2"/></filter>
 <filter id="${p}blur4" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4"/></filter>
-<filter id="${p}shadow" x="-30%" y="-30%" width="170%" height="170%"><feDropShadow dx="14" dy="22" stdDeviation="16" flood-color="#000" flood-opacity=".5"/></filter>
-<filter id="${p}shadowS" x="-30%" y="-30%" width="170%" height="170%"><feDropShadow dx="6" dy="10" stdDeviation="7" flood-color="#000" flood-opacity=".5"/></filter>
+<filter id="${p}shadow" x="-30%" y="-30%" width="170%" height="170%"><feDropShadow dx="14" dy="22" stdDeviation="16" flood-color="${th.shadow}" flood-opacity="${th.shadowOp}"/></filter>
+<filter id="${p}shadowS" x="-30%" y="-30%" width="170%" height="170%"><feDropShadow dx="6" dy="10" stdDeviation="7" flood-color="${th.shadow}" flood-opacity="${th.shadowOp}"/></filter>
 <!-- volume besar: tinggi dari alpha yang diburamkan, diffuse (kali) + specular (tambah); organ terlihat membulat -->
 <filter id="${p}vol" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
  <feGaussianBlur in="SourceAlpha" stdDeviation="16" result="b"/>
@@ -140,7 +143,7 @@ export function label(x, y, tx, ty, txt, o = {}) {
   const fs = o.fs ?? 26, anchor = o.anchor ?? (tx >= x ? 'start' : 'end'), w = txt.length * fs * 0.54 + 28, bx = anchor === 'start' ? tx - 10 : tx - w + 10;
   return `<g><line x1="${f1(x)}" y1="${f1(y)}" x2="${f1(tx)}" y2="${f1(ty)}" stroke="#fff" stroke-width="3" opacity=".9"/><circle cx="${f1(x)}" cy="${f1(y)}" r="6" fill="#fff" stroke="#0A2630" stroke-width="2"/><rect x="${f1(bx)}" y="${f1(ty - fs * 0.8)}" width="${f1(w)}" height="${f1(fs * 1.6)}" rx="${f1(fs * 0.5)}" fill="rgba(5,18,25,.88)"/><text x="${f1(anchor === 'start' ? tx + 4 : tx - 4)}" y="${f1(ty + fs * 0.34)}" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="${fs}" fill="#fff" text-anchor="${anchor}">${txt}</text></g>`;
 }
-export const svgDoc = (inner, p = 'a') => `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${defs(p)}${inner}</svg>`;
+export const svgDoc = (inner, p = 'a', th = TEMA_LAMA) => `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${defs(p, th)}${inner}</svg>`;
 
 // ---------------------------------------------------------------- pita meruncing: poligon di sekitar garis tengah (titik [x,y]) dengan lebar berubah dari w0 ke w1 (untuk kanal akar, saraf, pembuluh yang menyempit)
 export function ribbon(pts, w0, w1, ease = (t) => t) {

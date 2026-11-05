@@ -5,7 +5,10 @@
 // RCA di sulkus koronarius kanan, LAD di sulkus interventrikular anterior sampai takik apeks, sirkumfleksa di sulkus AV kiri, vena jantung magna naik di samping LAD.
 // Mode polos: render.html?plain membuang semua bagian efek (dibungkus fx()) sehingga yang tersisa hanya geometri dengan warna datar.
 // Layer animasi (id grup): #h-denyut (semua), #h-ventrikel, #h-atrium, #h-aorta, #h-pulmonal, #h-vena-besar, #h-koroner, #h-vena-jantung, #h-lemak, #h-aliran, #h-label.
-import { PAL, W, H, f1, rng, mix, lighten, darken, defs, background, vignette, label, ribbon, sampleCubic, cubicD, vessel, endCap, tangent, fx } from './anatomi.js';
+import { PAL, W, H, f1, rng, mix, lighten, darken, defs, background, vignette, label, ribbon, sampleCubic, cubicD, vessel, endCap, tangent, fx, TEMA_MEDCOEL } from './anatomi.js';
+import { MC, latar, merek, labels as chipLabels, E, seg, KLIP, kam, clamp01 } from './medcoel.js';
+export const TEMA = TEMA_MEDCOEL;   // ?tema=lama merender gaya lama (ungu-magenta) untuk pembanding
+export const LAYERS = [['h-vena-besar', 'V. kava superior + a. pulmonalis kanan'], ['h-vena-pulmonalis', 'Vv. pulmonalis kiri'], ['h-ventrikel', 'Ventrikel'], ['h-atrium', 'Atrium kanan + V. kava inferior'], ['h-lemak', 'Lemak epikardium'], ['h-koroner', 'Arteri koroner'], ['h-vena-jantung', 'Vena jantung'], ['h-aorta', 'Aorta + arkus + cabang'], ['h-atrium-aurikel', 'Aurikel'], ['h-pulmonal', 'Batang pulmonal + a. pulmonalis kiri']];
 export const P = 'h';
 // warna datar untuk versi polos (pengganti gradien)
 export const FLAT = { hBody: '#D2372E', hLV: '#C22A34', hAtr: '#8C1E36', hFat: '#F2B03C' };
@@ -29,9 +32,12 @@ const RAU = 'M330 792C340 716 420 676 506 690C536 696 548 724 530 752C500 780 43
 const LAU = 'M696 704C730 664 810 662 846 712C872 750 846 790 806 786C766 780 730 762 704 744C688 732 684 716 696 704Z';
 
 export function jantung(o = {}) {
-  const p = 'h', labels = !!o.labels, t = o.t ?? 0, r = rng(21);
+  const p = 'h', labels = !!o.labels, t = o.t ?? 0, r = rng(21), lama = o.tema === 'lama', anim = !!o.anim, SH = lama ? 0 : 60, K = kam(anim ? t : 0, { cx: 540, cy: 900, dy: -10 });
+  // kontraksi lokal (60 dpm): ventrikel menipis dari apeks dan menyempit ke arah pangkal (titik tumpu dekat pangkal pembuluh, sehingga pembuluh tetap tersambung); atrium mengembang berlawanan fase; pembuluh besar tidak ikut diskalakan
+  const ramp = anim ? seg(t, 0, 0.9, E.soft) : 0, ph = (((t % 1) + 1) % 1), cV = anim ? ramp * (ph < 0.3 ? E.out(ph / 0.3) : ph < 0.62 ? 1 - E.soft((ph - 0.3) / 0.32) : 0) : 0, cA = anim ? ramp * (ph < 0.3 ? 0 : ph < 0.62 ? E.soft((ph - 0.3) / 0.32) : 1 - E.soft((ph - 0.62) / 0.38)) : 0;
+  const OV = [585, 780], dV = `translate(${OV[0]} ${OV[1]}) rotate(${f1(-0.9 * cV)}) scale(${(1 - 0.03 * cV).toFixed(4)} ${(1 - 0.052 * cV).toFixed(4)}) translate(${-OV[0]} ${-OV[1]})`, OA = [330, 920], dA = `translate(${OA[0]} ${OA[1]}) scale(${(1 + 0.02 * cA).toFixed(4)}) translate(${-OA[0]} ${-OA[1]})`;
   const S = (pts, n = 28) => sampleCubic(pts, n);
-  let s = background(p, { seed: 5, glow: { x: 560, y: 900, r: 720 }, tint: '#FFD0E8', vesselColor: '#B23A5A', cells: 18, particles: 90 });
+  let s = lama ? background(p, { seed: 5, glow: { x: 560, y: 900, r: 720 }, tint: '#FFD0E8', vesselColor: '#B23A5A', cells: 18, particles: 90 }) : latar(p, { seed: 7, fokus: { x: 560, y: 960 }, t: anim ? t : 0, kilau: [[110, 330, 28], [980, 300, 20], [1010, 1620, 32], [80, 1700, 20], [820, 1840, 18], [260, 1790, 24]] });
   s += `<defs>
   <radialGradient id="hBody" gradientUnits="userSpaceOnUse" cx="470" cy="900" r="640"><stop offset="0" stop-color="#E23C32"/><stop offset=".35" stop-color="#C92430"/><stop offset=".72" stop-color="#97102A"/><stop offset="1" stop-color="#44040F"/></radialGradient>
   <radialGradient id="hLV" gradientUnits="userSpaceOnUse" cx="760" cy="900" r="420"><stop offset="0" stop-color="#F5463C"/><stop offset=".6" stop-color="#C81F2C"/><stop offset="1" stop-color="#6A0A18"/></radialGradient>
@@ -44,8 +50,8 @@ export function jantung(o = {}) {
   <clipPath id="hClipLV"><path d="M${LAD[0]} ${LAD[1]}C${LAD.slice(2, 8).join(' ')} ${LAD.slice(8).join(' ')}L760 1500L1000 1500L1000 600L640 600Z"/></clipPath>
   </defs>`;
   const beat = 1 + 0.012 * Math.sin(t * 8);
-  s += `<g id="h-denyut" transform="translate(540 960) scale(${f1(beat)}) translate(-540 -960)">`;
-  s += fx(`<ellipse cx="560" cy="1000" rx="470" ry="520" fill="#FF3A5E" opacity=".38" filter="url(#${p}blur40)"/>`);
+  s += lama ? `<g id="h-denyut" transform="translate(540 960) scale(${f1(beat)}) translate(-540 -960)">` : `<g id="h-denyut" transform="translate(0 ${SH}) ${K.tf}">`;
+  s += fx(`<ellipse cx="560" cy="1000" rx="470" ry="520" fill="${lama ? '#FF3A5E' : MC.mint3}" opacity="${lama ? 0.38 : 0.16}" filter="url(#${p}blur40)"/>`);
 
   // ---- belakang: v. kava superior, a. pulmonalis kanan (lewat di belakang aorta), v. pulmonalis kiri
   s += `<g id="h-vena-besar">`;
@@ -57,6 +63,7 @@ export function jantung(o = {}) {
   for (const [y0, y1] of [[690, 664], [770, 786]]) { const pv = S([780, y0, 840, y0 - 10, 910, y1 - 8, 984, y1], 16); s += vessel(pv, 50, 44, PAL.artery, { p, dark: PAL.arteryDark, light: PAL.arteryLight }) + endCap(pv[pv.length - 1][0], pv[pv.length - 1][1], tangent(pv), 44, PAL.artery, '#3A060C'); }
   s += `</g>`;
 
+  if (!lama) s += `<g id="h-deform" transform="${dV}">`;
   // ---- ventrikel: siluet bervolume (kubah) lalu lapisan cahaya bertingkat (semua efek dibungkus fx)
   s += `<g id="h-ventrikel"><g filter="url(#${p}shadow)"><g filter="url(#${p}vol)"><path d="${cubicD(BODY)}Z" fill="url(#hBody)"/></g></g>`;
   s += `<g clip-path="url(#hClip)"><path d="M${LAD[0]} ${LAD[1]}C${LAD.slice(2, 8).join(' ')} ${LAD.slice(8).join(' ')}L760 1500L1000 1500L1000 600L640 600Z" fill="#C22A34" opacity=".55" class="nos"/></g>`;
@@ -72,7 +79,7 @@ export function jantung(o = {}) {
   sh += `<rect x="150" y="600" width="860" height="900" fill="url(#hShade)"/>`;
   sh += `<ellipse cx="545" cy="805" rx="130" ry="62" fill="#2A0210" opacity=".42" filter="url(#${p}blur20)"/><ellipse cx="770" cy="780" rx="90" ry="46" fill="#2A0210" opacity=".35" filter="url(#${p}blur20)"/>`;
   sh += `<path d="M904 980C900 1100 860 1220 776 1330C740 1380 712 1412 684 1428" fill="none" stroke="#FF8AA0" stroke-width="16" opacity=".3" filter="url(#${p}blur8)"/>`;
-  sh += `<path d="${cubicD(BODY)}Z" fill="none" stroke="${PAL.rim}" stroke-width="12" opacity=".4" filter="url(#${p}blur4)" transform="translate(-3 -3)"/>`;
+  sh += `<path d="${cubicD(BODY)}Z" fill="none" stroke="${lama ? PAL.rim : MC.mint2}" stroke-width="12" opacity=".4" filter="url(#${p}blur4)" transform="translate(-3 -3)"/>`;
   sh += `</g>`;
   s += fx(sh);
   for (const [pts, w] of [[LAD, 34], [RCA, 28], [LCX, 28]]) s += fx(`<path d="${cubicD(pts)}" fill="none" stroke="#3A0210" stroke-width="${w}" opacity=".5" stroke-linecap="round" filter="url(#${p}blur8)"/>`);
@@ -80,7 +87,7 @@ export function jantung(o = {}) {
 
   // ---- v. kava inferior + atrium kanan
   const ivc = S([290, 1075, 280, 1120, 262, 1170, 246, 1215], 12);
-  s += `<g id="h-atrium">`;
+  s += `<g id="h-atrium"${lama ? '' : ` transform="${dA}"`}>`;
   s += vessel(ivc, 90, 84, PAL.vein, { p, dark: PAL.veinDark, light: PAL.veinLight }) + endCap(ivc[ivc.length - 1][0], ivc[ivc.length - 1][1], tangent(ivc), 84, PAL.vein, '#10165A');
   s += `<g filter="url(#${p}shadowS)"><g filter="url(#${p}vol)"><path d="${RA}" fill="url(#hAtr)"/></g></g>`;
   s += fx(`<path d="M330 800C275 850 252 930 262 1010" fill="none" stroke="#fff" stroke-width="30" opacity=".22" stroke-linecap="round" filter="url(#${p}blur8)"/>`);
@@ -110,6 +117,7 @@ export function jantung(o = {}) {
   for (const v of ['M430 940C418 900 410 860 408 820', 'M470 1060C440 1030 420 1000 408 970']) s += `<path d="${v}" fill="none" stroke="#141860" stroke-width="7.4" stroke-linecap="round"/><path d="${v}" fill="none" stroke="#5A66F0" stroke-width="4.6" stroke-linecap="round"/>`;
   s += `</g>`;
 
+  if (!lama) s += `</g>`;   // h-deform
   // ---- aorta asenden + arkus + tiga cabang (di belakang batang pulmonal), akar aorta dengan sinus
   s += `<g id="h-aorta">`;
   const ao = S(AO, 30), br = [[S([540, 438, 520, 404, 482, 356, 462, 316], 18), 50, 44], [S([628, 404, 630, 372, 630, 340, 630, 312], 18), 36, 34], [S([704, 398, 720, 370, 744, 342, 766, 314], 18), 40, 36]];
@@ -119,7 +127,7 @@ export function jantung(o = {}) {
   s += fx(`<path d="M436 732C456 714 484 712 504 722" fill="none" stroke="#fff" stroke-width="9" opacity=".4" stroke-linecap="round" filter="url(#${p}blur4)"/>`);
   s += `</g>`;
   // ---- aurikel kanan (di depan akar aorta) dan kiri (di sisi batang pulmonal), tepi bergelombang
-  s += `<g id="h-atrium-aurikel">`;
+  s += `<g id="h-atrium-aurikel"${lama ? '' : ` transform="${dA}"`}>`;
   for (const d of [RAU, LAU]) s += `<g filter="url(#${p}shadowS)"><g filter="url(#${p}vol)"><g filter="url(#hWob)"><path d="${d}" fill="url(#hAtr)"/></g></g></g>`;
   s += fx(`<g fill="none" stroke="#3A0612" stroke-width="4.5" opacity=".42" stroke-linecap="round"><path d="M340 800C378 772 436 748 492 728"/><path d="M348 828C396 800 452 780 510 758"/><path d="M730 692C770 674 814 686 836 718"/><path d="M724 718C768 702 812 716 838 748"/></g><path d="M326 790C362 744 440 706 512 702" fill="none" stroke="#fff" stroke-width="10" opacity=".34" stroke-linecap="round" filter="url(#${p}blur2)"/><path d="M712 692C750 666 806 670 838 708" fill="none" stroke="#fff" stroke-width="10" opacity=".36" stroke-linecap="round" filter="url(#${p}blur2)"/>`);
   s += `</g>`;
@@ -133,16 +141,28 @@ export function jantung(o = {}) {
   s += fx(`<g id="h-aliran" filter="url(#${p}blur2)">${fl}</g>`);
   s += `</g>`; // h-denyut
   s += vignette(p);
-  if (labels) s += `<g id="h-label">${LBL.map(([x, y, tx, ty, txt]) => { const left = tx < 540; return label(x, y, left ? 28 : 1052, ty, txt, { fs: 24, anchor: left ? 'start' : 'end' }); }).join('')}</g>`;
+  if (!lama) s += merek({ judul: 'Jantung', sub: 'Tampak depan · pembuluh besar + koroner' });
+  if (labels && lama) s += `<g id="h-label">${LBL.map(([x, y, tx, ty, txt]) => { const left = tx < 540; return label(x, y, left ? 28 : 1052, ty, txt, { fs: 24, anchor: left ? 'start' : 'end' }); }).join('')}</g>`;
+  else if (labels) {
+    const la = (t0) => (anim ? seg(t, t0, t0 + KLIP.labelMasuk, E.out) : 1), A = (v) => ({ a: v }), P2 = (x, y) => { const q = K.pt(x, y); return [q[0], q[1] + SH]; };
+    const it = [
+      [...P2(600, 408), 1, 'Arkus aorta', A(la(3.9))], [...P2(580, 640), 1, 'Batang pulmonal', A(la(4.0))], [...P2(346, 540), -1, 'V. kava sup.', A(la(4.1))], [...P2(330, 1040), -1, 'Atrium kanan', A(la(4.2))],
+      [...P2(470, 1200), -1, 'Ventrikel kanan', A(la(4.3))], [...P2(730, 1250), 1, 'Ventrikel kiri', A(la(4.4))], [...P2(606, 1000), 1, 'LAD', A(la(4.5))], [...P2(398, 960), -1, 'Koroner kanan', A(la(4.6))], [...P2(654, 1426), 1, 'Apeks', A(la(4.7))],
+    ];
+    s += chipLabels(it, { atas: 330 });
+  }
   return s;
 }
 // label pemeriksaan: [x titik pada struktur, y, tx, ty, teks]
 const LBL = [
   [458, 318, 28, 236, 'a. brakiosefalika'], [624, 314, 1052, 236, 'a. karotis komunis kiri'], [764, 316, 1052, 292, 'a. subklavia kiri'],
-  [352, 340, 28, 330, 'V. kava superior'], [330, 524, 28, 410, 'A. pulmonalis kanan'], [470, 600, 28, 490, 'Aorta asenden'],
+  [352, 340, 28, 330, 'V. kava sup.'], [330, 524, 28, 410, 'A. pulmonalis kanan'], [470, 600, 28, 490, 'Aorta asenden'],
   [690, 396, 1052, 380, 'Arkus aorta'], [580, 640, 1052, 470, 'Batang pulmonal'], [850, 534, 1052, 556, 'A. pulmonalis kiri'], [900, 676, 1052, 640, 'V. pulmonalis kiri'],
   [420, 740, 28, 640, 'Aurikel kanan'], [780, 690, 1052, 724, 'Aurikel kiri'], [402, 850, 28, 770, 'Lemak epikardium (alur)'], [270, 960, 28, 900, 'Atrium kanan'],
   [398, 960, 28, 1010, 'A. koronaria kanan (RCA)'], [480, 1100, 28, 1110, 'Ventrikel kanan'], [250, 1190, 28, 1210, 'V. kava inferior'], [380, 1280, 28, 1310, 'A. marginalis kanan'],
   [790, 740, 1052, 810, 'A. sirkumfleksa'], [790, 936, 1052, 900, 'Cabang diagonal'], [872, 930, 1052, 985, 'A. marginalis kiri'], [606, 980, 1052, 1070, 'LAD (desendens anterior)'],
   [632, 1100, 1052, 1150, 'V. jantung magna'], [790, 1040, 1052, 1230, 'Ventrikel kiri'], [650, 1410, 1052, 1330, 'Apeks'],
 ];
+
+// geometri untuk pemeriksaan sambungan (periksa-jantung.mjs)
+export const GEOM = { BODY, AO, PT, SVC, RA, LAD, RCA, RAU, LAU };

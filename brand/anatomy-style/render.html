@@ -12,11 +12,12 @@ if (q.has('siluet')) {   // hanya siluet (gigi, gusi, massa tulang), tanpa latar
   document.getElementById('c').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${mod.siluet({ guides: q.has('guides') })}</svg>`;
   await document.fonts.ready; window.__ready = true; throw 0;
 }
-let inner = mod[obj]({ labels: q.has('labels'), t, konteks: q.has('konteks') });
+const tema = q.get('tema') === 'lama' ? undefined : mod.TEMA;
+let inner = mod[obj]({ labels: q.has('labels'), t, konteks: q.has('konteks'), anim: q.has('anim'), tema: q.get('tema') });
 if (q.has('plain')) {   // versi polos: tanpa efek, warna datar, kontur tipis (hanya geometri)
   inner = plainDoc(plainify(inner, mod.FLAT || {}));
   document.getElementById('c').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${inner}</svg>`;
-} else document.getElementById('c').innerHTML = svgDoc(inner, mod.P);
+} else document.getElementById('c').innerHTML = svgDoc(inner, mod.P, tema);
 await document.fonts.ready;
 window.__ready = true;
 </script></body></html>
