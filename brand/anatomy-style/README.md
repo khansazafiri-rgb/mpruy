@@ -7,9 +7,9 @@ Sistem gaya, jantung, dan potongan gigi yang digambar **murni dari kode** (tanpa
 |---|---|
 | `anatomi.js` | **Sistem gaya**: palet (`PAL`), filter pencahayaan (`vol`, `volS`, `volV`, `tex`, `shadow`), latar gelap berlapis + partikel + sel darah kabur (`background`), pembuluh bertaper bervolume (`vessel`, `endCap`), tabung (`tube`), pita meruncing (`ribbon`), kurva kubik (`sampleCubic`, `cubicD`), label pemeriksaan (`label`). |
 | `jantung.js` | Jantung tampak depan + pembuluh besar + koroner utama. `jantung({labels, t})` mengembalikan isi SVG. |
-| `gigi.js` | Potongan mesiodistal **molar pertama rahang bawah** + jaringan penyangga. `gigi({labels, t})`. |
+| `gigi.js` | Potongan mesiodistal **molar pertama rahang bawah** + jaringan penyangga (revisi 5). `gigi({labels, t})`. `gigi-v4.js` = versi 4 sebagai pembanding. |
 | `render.html`, `render.cjs` | Merender `?obj=jantung|gigi` (`&labels` = dengan label pemeriksaan, `&plain` = **versi polos** untuk cek geometri, `&t=detik` = fase animasi) ke PNG 1080 x 1920: `<n>.png`, `<n>-label.png`, `<n>-polos.png`. |
-| `bandingkan.py` | Preview perbandingan (acuan, hasil sebelumnya, hasil revisi) dari berkas acuan Anda. |
+| `bandingkan.py` | Preview perbandingan jantung (acuan, v3, v4) dari berkas acuan Anda. `bandingkan-gigi.py` = perbandingan gigi acuan, v4, v5 pada skala gigi yang sama + polos + 360 px. |
 | `render/` | `jantung.png`, `gigi.png` (final v4), `*-label.png` (berlabel), `*-polos.png` (warna rata, tanpa efek), `polos-vs-final.png`, `v1/`, `v2/`, `v3/` (hasil sebelumnya sebagai pembanding). `perbandingan*.png` dan `ukuran-hp.png` memuat gambar acuan sehingga **tidak di-commit** (dibuat ulang oleh `bandingkan.py`). |
 | `prompt-gaya-anatomi.md` | Prompt cadangan untuk pembuat gambar. |
 
@@ -112,3 +112,36 @@ Urutan kerja sesuai permintaan: (1) render **versi polos** (warna rata, garis te
 **Acuan AI:** dipakai hanya untuk karakter visual (organ dominan, kontur organik, transisi cahaya, warna kaya, latar ungu-magenta). Perbedaan dengan sumber medis: ruang pulpa acuan sempit dan kanal acuan simetris dua cabang; molar bawah sebenarnya punya ruang pulpa lebar dengan akar mesial lebih lebar, jadi saya mengikuti sumber. Acuan tidak punya kanal mandibula; saya menambahkannya sebagai konteks.
 
 **Penilaian jujur: apa penghalang utama?** Perubahan v3 ke v4 pada jantung **kecil** secara visual; yang berubah nyata adalah kebenaran hubungan struktur (satu pembuluh pulmonal, ventrikel yang terbedakan, aorta lebih ramping). Penghalang utama bukan pencahayaan lagi, melainkan **geometri organik yang dibuat dengan kurva kubik tangan**: tanpa model 3D atau data bentuk nyata, kontur pembuluh besar, atrium, dan tonjolan ventrikel kanan sulit dibuat se-organik acuan. Pada gigi, perbaikan geometri jauh lebih terlihat (proporsi, satu bentuk dentin, periodonsium menerus, konteks kanal mandibula), tetapi hambatannya di sini adalah **kurangnya acuan ukuran terverifikasi** (angka mm di atas) dan tekstur tulang. Menambah efek lagi tidak akan menutup jurang ini; langkah berikutnya yang masuk akal: (a) acuan anatomi terverifikasi (foto/atlas berlisensi) untuk membentuk kontur jantung, (b) bentuk tonjolan RV dan pangkal pembuluh dikerjakan sebagai bentuk tersendiri, (c) tulang sebagai jaringan trabekula tak beraturan.
+
+## Revisi 5 (v5, hanya gigi): siluet dulu, volume belakangan
+`gigi.js` kini versi 5; versi 4 disimpan sebagai pembanding di `gigi-v4.js` (`?obj=gigi-v4`) dan `render/v4/` (`gigi.png`, `gigi-polos.png`, `gigi-label.png`). Jantung tidak diubah.
+
+**Urutan kerja:** (1) bentuk ulang siluet dan lihat versi polos (`render/gigi-polos.png`, warna rata + garis tepi); (2) setelah terbaca, volume: gradasi enamel tembus cahaya, bayangan dentin mengikuti bentuk, gusi membulat, tulang bertrabekula acak. Layer animasi tetap terpisah: `#g-tulang`, `#g-kanal-mandibula`, `#g-lig-periodontal`, `#g-dentin`, `#g-sementum`, `#g-pulpa`, `#g-saraf-pembuluh`, `#g-email`, `#g-gusi`, `#g-pulpa-aliran`, `#g-label`.
+
+**Perubahan bentuk yang terlihat:**
+- **Mahkota:** dua tonjol kini bundar dengan fossa berbentuk U (v4: dua puncak runcing berbentuk V); bahu mesial membulat lebih tinggi daripada bahu distal; tonjolan kontak menggulung ke leher. Batas email-dentin (DEJ) mengikuti, dengan tanduk dentin membulat. Ruang pulpa dan kanal **tidak diubah** (bentuk `CHAMBER`, jumlah kanal MB/ML-samar/distal sama seperti v4; hanya kanal distal digeser ±15 px di separuh apikal supaya tetap berada di tengah akar distal yang kini lebih ramping).
+- **Akar:** kontur akar lebih organik (tidak lagi sisi sejajar): akar mesial lebih lebar dengan apeks tumpul, akar distal lebih ramping dan menirus, keduanya condong ke distal; furkasi berbentuk kubah.
+- **Gusi:** dibentuk dari kontur gigi (menempel persis pada permukaan mahkota dan akar), tepi bebas setajam pisau, lalu permukaan menggulung (collar), menggembung di dekat gigi dan menipis ke tepi; ketebalan bervariasi dan sisi mesial-distal tidak simetris; bukan lagi pita horizontal.
+- **Tulang:** puncak alveolar mengikuti akar (tertinggi menempel gigi, lalu menurun melengkung ke arah celah), bukan garis datar/persegi; rongga sumsum berupa pola acak (derau fraktal diambang), rapat di dekat lamina dura dan puncak, membesar ke bawah; memudar di tepi.
+- **Kanal mandibula:** lebih kecil, kontras rendah, saraf/arteri/vena tipis, memudar di tepi; cabang dental lebih tipis. Hanya konteks, tidak berebut perhatian dengan gigi.
+
+**Verifikasi proporsi terhadap sumber yang dibuka sesi ini** (Wikipedia = teks halaman penuh via MediaWiki raw; PubMed = **hanya abstrak**, tidak ada teks lengkap):
+| Angka | Status | Sumber |
+|---|---|---|
+| Email setebal sampai 2,5 mm di tonjol, paling tipis di CEJ | **Terverifikasi** (di v5 ±2 mm di tonjol) | Wikipedia *Tooth enamel* (mengutip Ten Cate) |
+| Lebar lig. periodontal 0,15-0,38 mm, tertipis di sepertiga tengah akar | **Terverifikasi** (di v5 ±9 px) | Wikipedia *Periodontal fiber* |
+| Puncak alveolar 1-2 mm dari CEJ; lempeng kortikal 1,5-3 mm | **Terverifikasi** (puncak ±1,1 mm) | Wikipedia *Alveolar process* |
+| Kedalaman sulkus 0,69 mm dan lebar biologis 2,04 mm (Gargiulo, kadaver); klinis: sulkus 1,96 mm, lebar biologis 1,13 mm; meta-analisis 2,15-2,30 mm, rentang individu 0,2-6,73 mm, **tidak ada nilai universal** | **Terverifikasi hanya jumlahnya**; pembagian epitel penyatu vs jaringan ikat (±1 mm + ±1 mm) di gambar adalah perkiraan saya | abstrak PMID 29026699 dan 23461747 |
+| Pintu furkasi molar 1 bawah dari CEJ ±1,9 mm (bukal), ±2,9 mm (lingual) | **Terverifikasi sebagian**: abstrak berbahasa campur dan penulisan angka rancu; kubah furkasi di bidang tengah digambar ±3 mm, itu **perkiraan** | abstrak PMID 9436343 |
+| Kanal mandibula ±6,3 mm di bawah apeks | Terverifikasi (rata-rata), tetapi konversi ke piksel bergantung pada skala nominal di bawah | abstrak PMID 41430227 |
+| Tinggi mahkota, lebar mesiodistal mahkota, lebar leher, panjang akar | **TIDAK terverifikasi** | dicari di Wikipedia *Mandibular first molar*, *Dental anatomy* dan beberapa kueri PubMed; tidak ada angka milimeter yang relevan. Atlas/Wheeler/Ten Cate tidak dapat dibuka |
+| Dua akar, 2 kanal mesial/1 kanal distal | Terverifikasi (insidensi CBCT) | PMID 32161889, 32342032, 41028125, 36287490 |
+
+Karena angka mahkota/akar tidak terverifikasi, **gambar ini tidak boleh dibaca sebagai ukuran pasti**. Skala "±44 px/mm" hanyalah skala nominal untuk menata proporsi relatif (mahkota : akar ≈ 1 : 1,9; lebar mahkota : leher ≈ 1,2 : 1). Bila ukuran nyata mahkota berbeda dari asumsi itu, rasio jarak (mis. apeks ke kanal mandibula) ikut berubah. Pemeriksaan ke buku teks (Wheeler's Dental Anatomy, Ten Cate) tetap diperlukan sebelum dipakai untuk materi ajar.
+
+**Volume (langkah 2):** enamel: gradasi putih ke kebiruan, tepi dalam dihangatkan (dentin menembus), tepi luar kebiruan, sorotan dibatasi `clip-path` ke cincin enamel; dentin: bayangan dan cahaya pantul mengikuti kontur akar dan DEJ, tubulus radial tipis; gusi: volume (diffuse lighting), sorotan lembut sepanjang permukaan, bayangan di bawah gulungan; tulang: gradasi vertikal, bayangan di sekitar akar, rongga sumsum dengan tepi terang-gelap (kesan kedalaman). Arah cahaya sama dengan jantung (kiri-atas).
+
+**Perbandingan:** `python3 brand/anatomy-style/bandingkan-gigi.py <acuan.jpg>` membuat `render/gigi-skala-sama.png` (acuan | v4 | v5, lebar mahkota disamakan; acuan diukur dari gambar, v4 dan v5 memakai skala yang sama), `render/gigi-polos-v4-v5.png`, dan `render/gigi-360.png` (lebar 360 px). `gigi-skala-sama.png` dan `gigi-360.png` memuat gambar acuan sehingga tidak di-commit; `gigi-polos-v4-v5.png` di-commit.
+
+**Yang sungguh membaik (v4 ke v5):** siluet mahkota (lebih mirip satu molar yang membulat), kontur akar, gusi yang membungkus dengan ketebalan bervariasi, puncak tulang mengikuti akar, dan tulang tanpa pola pori seragam; hubungan email-dentin-pulpa-kanal tetap terbaca; kanal mandibula tidak lagi mengganggu.
+**Yang belum:** (1) tulang kini terlalu ramai dan berkontras tinggi pada ukuran penuh, dan masih berupa derau fraktal, bukan trabekula yang terarah mengikuti garis tekanan seperti pada tulang nyata; (2) gusi masih terbaca sebagai selubung tebal yang menurun ke tepi (tanpa gigi tetangga sulit digambarkan papila interdental yang benar); (3) kedua akar masih relatif lurus, tanpa kelengkungan dan lekukan permukaan seperti pada akar mesial sebenarnya; (4) enamel masih agak "plastik" dan sedikit kurang tembus cahaya dibanding acuan; (5) kontras antar-jaringan dan kekayaan warna acuan belum tercapai; (6) angka milimeter mahkota/akar belum terverifikasi (tabel di atas).
