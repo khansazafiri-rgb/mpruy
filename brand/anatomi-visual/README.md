@@ -49,3 +49,24 @@ Acuan yang kamu lampirkan (jantung merah mengilap dengan lemak kuning dan pembul
 - Ini penyederhanaan, bukan gambar berskala.
 - Lengkung aorta dan percabangannya belum diperiksa terhadap atlas.
 - Gigi yang digambar adalah molar bawah; belum ada varian lain.
+
+## Eksperimen SDF jantung (konsep visual, bukan atlas)
+Kode di `sdf/` (`paths.mjs` jalur anatomi, `heart-sdf.mjs` pembangun shader GLSL, `render-sdf.mjs` perender). Hasil: `out/heart-sdf.png`, lembar denyut dan layer `out/sdf-animasi-layer.png`.
+
+Teknik:
+- Badan jantung = gabungan halus (smooth-min) elipsoid: ventrikel kiri meruncing ke apeks, ventrikel kanan, basis, atrium kanan, auricula kiri. Sambungan antarbagian menyatu otomatis.
+- Pembuluh besar (aorta, brakiosefalika, batang pulmonalis dan cabangnya, SVC, IVC) = rantai kapsul 3D meruncing yang disatukan ke badan dengan smooth-min.
+- Arteri koroner (LM, LAD, sirkumfleks, RCA), vena kardiak besar, dan lemak di alur = decal 2D bidang tinggi yang mengubah normal permukaan, jadi cahaya dan kilau mengikuti permukaan. Tidak ada cabang acak.
+- Cahaya: kunci kiri atas, rim magenta, AO dan bayangan lembut dari SDF yang sama.
+
+Render ulang (butuh Chromium + Playwright; WebGL2 lewat SwiftShader):
+```
+node brand/anatomi-visual/sdf/render-sdf.mjs [keluaran.png] [--scale=0.5] [--mode=0|1|2] [--beat=0..1] [--flow=0..1] [--zoom=1.34]
+```
+`--mode` 0 penuh, 1 badan+decal (transparan), 2 pembuluh besar saja. `--beat` mengembang-mengempiskan badan; `--flow` menggerakkan denyut cahaya di sepanjang koroner. Satu frame 1080x1920 sekitar 8 detik di CPU.
+
+Bagian yang bisa dianimasikan: denyut badan, aliran di koroner, dan layer terpisah (badan, pembuluh besar) untuk digerakkan sendiri-sendiri di video.
+
+Masih jauh dari acuan: tampilan masih seperti plastik/tanah liat (belum ada serat otot, kilau basah dan percabangan halus); lemak masih pita lobulasi, belum gumpalan lemak sungguhan; batang pulmonalis terlihat seperti pipa yang menempel di badan; belum ada detail auricula kanan, katup, atau lumen di ujung potong pembuluh; siluet bawah kiri masih agak bergelombang.
+
+Status anatomi: konsep visual. Strukturnya hanya dicek terhadap ringkasan hasil pencarian (sumber di atas), bukan atlas penuh. Acuan gambar hanya dipakai untuk gaya.
