@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Udah hafal soal kakak tingkat…</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:'Plus Jakarta Sans',sans-serif}
+.title{position:absolute;left:70px;top:408px;width:960px;font-weight:800;font-size:86px;line-height:1.05;color:#fff;letter-spacing:-.015em;text-shadow:0 7px 0 rgba(6,24,48,.45)}
+.title em{font-style:normal;color:#F8C038}
+.chip{position:absolute;left:90px;top:1328px;background:#D9382F;color:#fff;font-weight:800;font-size:52px;padding:14px 38px 16px;border-radius:40px;box-shadow:0 9px 0 rgba(90,10,10,.45)}
+.logo{position:absolute;left:90px;top:1442px;width:290px;filter:brightness(0) invert(1);opacity:.97}
+</style></head><body><div id="root"><svg id="art" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0"></svg>
+<div class="title">Udah hafal soal<br><em>kakak tingkat…</em></div>
+<div class="chip">KOK YANG KELUAR BEDA?!</div>
+<img class="logo" src="logo-full.webp" alt="MEDCOEL"></div>
+<script type="module">
+import { raka, rakaSvg, idle } from '../../../brand/characters/raka/raka.js';
+await document.fonts.ready;
+const g = (inner, o = {}) => `<g transform="translate(${o.x||0} ${o.y||0}) rotate(${o.r||0}) scale(${o.s||1})" opacity="${o.o??1}">${inner}</g>`;
+const KORI = await (await fetch('kori.svg')).text();
+let s = `<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0F2B44"/><stop offset=".55" stop-color="#1D5C73"/><stop offset="1" stop-color="#2A7E7A"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#bg)"/>`;
+for (let i = 0; i < 12; i++) { const x = 70 + ((i * 197) % 940), y = 200 + ((i * 331) % 1500); s += g(`<circle r="${10 + (i % 3) * 6}" fill="#9DE0BD" opacity=".14"/>`, { x, y }); }
+// ruang ujian: papan UJIAN, dua peserta lain tenang di belakang
+s += `<rect x="40" y="1210" width="1000" height="16" rx="8" fill="rgba(255,255,255,.07)"/>`;
+// Raka duduk di meja, menatap lembar ujian dengan wajah kaget
+const st = idle(raka('kaget', 'netral', { wide: 1, sweat: 1, yaw: 0.1, gazeY: 0.6, browL: { y: -14, rot: 10 }, browR: { y: -14, rot: -10 } }), 0.5);
+const sc = 1.2, X = 540, WAIST = 1300;
+s += `<clipPath id="cpk"><rect x="0" y="0" width="1080" height="${WAIST + 20}"/></clipPath><g clip-path="url(#cpk)"><g transform="translate(${X - 200 * sc} ${WAIST - 580 * sc}) scale(${sc})">${rakaSvg(st, { bare: true, shadow: false, uid: 'cv', outfit: 'kuliah', ransel: false })}</g></g>`;
+s += `<rect x="70" y="${WAIST}" width="940" height="50" rx="12" fill="#C9A472"/><rect x="70" y="${WAIST + 44}" width="940" height="108" fill="#A98655"/><rect x="70" y="${WAIST + 40}" width="940" height="12" fill="rgba(0,0,0,.15)"/>`;
+// lembar ujian di atas meja
+let p = `<rect x="-200" y="-140" width="400" height="280" rx="10" fill="#FFFDF6" stroke="#D6CFB8" stroke-width="4"/><rect x="-170" y="-112" width="190" height="26" rx="6" fill="#2F6B5E"/>`;
+for (let i = 0; i < 3; i++) p += `<rect x="-170" y="${-62 + i * 26}" width="${300 - i * 30}" height="12" rx="6" fill="#C9C3AE"/>`;
+['A', 'B', 'C', 'D'].forEach((l, i) => { p += `<circle cx="-150" cy="${34 + i * 30}" r="11" fill="none" stroke="#2F6B5E" stroke-width="4"/><rect x="-122" y="${28 + i * 30}" width="${180 + (i % 2) * 60}" height="12" rx="6" fill="#C9C3AE"/>`; });
+s += g(p, { x: 520, y: 1228, s: 0.8, r: -4 });
+// tanda tanya dan huruf hafalan yang terbang
+[[170, 790, -14, 130], [880, 760, 14, 110], [830, 980, 10, 86]].forEach(([x, y, r, sz]) => { s += g(`<text x="0" y="0" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="${sz}" fill="#F2735E" stroke="#fff" stroke-width="10" paint-order="stroke">?</text>`, { x, y, r }); });
+[['A', '#F8C038', 230, 1010], ['C', '#9DE0BD', 810, 1170]].forEach(([l, col, x, y]) => { s += g(`<circle r="46" fill="${col}" stroke="#fff" stroke-width="6"/><text y="17" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="54" fill="#0A3830">${l}</text>`, { x, y, r: x < 540 ? -14 : 12 }); });
+document.getElementById('art').innerHTML = s;
+// Kori di sudut kanan bawah
+const dom = new DOMParser().parseFromString(KORI, 'image/svg+xml').documentElement;
+const gk = document.createElementNS('http://www.w3.org/2000/svg', 'g'); gk.setAttribute('transform', 'translate(900 1470) scale(1.2) translate(-160 -290)'); gk.innerHTML = dom.innerHTML;
+document.getElementById('art').appendChild(gk);
+window.__ready = true;
+</script></body></html>
