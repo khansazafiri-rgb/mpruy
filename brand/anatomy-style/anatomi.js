@@ -3,6 +3,14 @@
 // (3) tabung berlapis untuk pembuluh, (4) tekstur turbulensi halus, (5) bayangan jatuh dan rim light. Cahaya utama selalu dari kiri atas (azimuth 225), rim light dingin dari kanan bawah.
 // Warna per organ ada di PAL; sistem tidak memaksa semua organ berwarna sama.
 export const W = 1080, H = 1920;
+// penanda efek: bagian yang hanya efek visual (latar, partikel, bayangan, sorotan, cahaya tepi) dibungkus fx() supaya versi polos (geometri saja) dapat membuangnya
+export const fx = (s) => `<!--fx-->${s}<!--/fx-->`;
+export function plainify(svg, flat = {}) {
+  let s = svg.replace(/<!--fx-->[\s\S]*?<!--\/fx-->/g, '').replace(/ filter="url\(#[^"]*\)"/g, '').replace(/ style="mix-blend-mode:[^"]*"/g, '').replace(/ mask="url\(#[^"]*\)"/g, '');
+  s = s.replace(/(fill|stroke)="url\(#([A-Za-z0-9_-]+)\)"/g, (m, k, id) => `${k}="${flat[id] ?? '#8A8A8A'}"`);
+  return s;
+}
+export const plainDoc = (inner) => `<rect width="${W}" height="${H}" fill="#150B24"/><style>path[fill]:not([fill="none"]),ellipse[fill],circle[fill],rect[fill]{stroke:#0A0412;stroke-width:2.4;stroke-linejoin:round} .nos circle[fill],.nos path[fill],.nos ellipse[fill],ellipse.nos{stroke:none}</style>${inner}`;
 export const f1 = (n) => Math.round(n * 10) / 10;
 export const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
 export const lerp = (a, b, t) => a + (b - a) * t;
@@ -104,9 +112,9 @@ export function background(p = 'a', o = {}) {
   let pt = '';
   for (let i = 0; i < (o.particles ?? 70); i++) { const x = r() * W, y = r() * H, rr = 1.2 + r() * 3.4, a = 0.25 + r() * 0.6; pt += `<circle cx="${f1(x)}" cy="${f1(y)}" r="${f1(rr)}" fill="${tint}" opacity="${f1(a * 0.75)}"/>`; if (rr > 2.8) pt += `<circle cx="${f1(x)}" cy="${f1(y)}" r="${f1(rr * 3)}" fill="${tint}" opacity="${f1(a * 0.14)}"/>`; }
   s += `<g>${pt}</g>`;
-  return s;
+  return fx(s);
 }
-export const vignette = (p = 'a') => `<rect width="${W}" height="${H}" fill="url(#${p}vig)"/>`;
+export const vignette = (p = 'a') => fx(`<rect width="${W}" height="${H}" fill="url(#${p}vig)"/>`);
 
 // ---------------------------------------------------------------- tabung (pembuluh): lapisan goresan dengan gradasi silinder, sorotan digeser ke arah cahaya (kiri atas)
 // base/dark/light: warna dasar, sisi gelap, sorotan. w = lebar. cap: 'round' | 'butt'. o.shadow: bayangan jatuh. o.hl: kekuatan sorotan
@@ -159,13 +167,13 @@ export function vessel(pts, w0, w1, c, o = {}) {
   const E = o.ease ?? ((t) => t), poly = ribbon(pts, w0, w1, E), sh = (dx, dy) => pts.map(([x, y]) => [x + dx, y + dy]);
   const wm = (w0 + w1) / 2;
   let s = '';
-  if (o.shadow !== false) s += `<g filter="url(#${p}${o.shadowF ?? 'shadowS'})"><path d="${poly}" fill="${dark}"/></g>`;
+  if (o.shadow !== false) s += fx(`<g filter="url(#${p}${o.shadowF ?? 'shadowS'})"><path d="${poly}" fill="${dark}"/></g>`);
   s += `<g filter="url(#${p}${o.filter ?? 'volV'})"><path d="${poly}" fill="${c}"/></g>`;
-  s += `<clipPath id="${id}"><path d="${poly}"/></clipPath><g clip-path="url(#${id})">`;
-  s += `<path d="${ribbon(sh(wm * 0.3, wm * 0.3), w0 * 0.34, w1 * 0.34, E)}" fill="${dark}" opacity=".42" filter="url(#${p}blur4)"/>`;
-  s += `<path d="${ribbon(sh(-wm * 0.2, -wm * 0.2), w0 * 0.24, w1 * 0.24, E)}" fill="${light}" opacity=".62" filter="url(#${p}blur4)"/>`;
-  s += `<path d="${ribbon(sh(-wm * 0.26, -wm * 0.26), w0 * 0.08, w1 * 0.08, E)}" fill="#fff" opacity=".7" filter="url(#${p}blur2)"/>`;
-  s += `</g>`;
+  let hl = `<clipPath id="${id}"><path d="${poly}"/></clipPath><g clip-path="url(#${id})">`;
+  hl += `<path d="${ribbon(sh(wm * 0.3, wm * 0.3), w0 * 0.34, w1 * 0.34, E)}" fill="${dark}" opacity=".42" filter="url(#${p}blur4)"/>`;
+  hl += `<path d="${ribbon(sh(-wm * 0.2, -wm * 0.2), w0 * 0.24, w1 * 0.24, E)}" fill="${light}" opacity=".62" filter="url(#${p}blur4)"/>`;
+  hl += `<path d="${ribbon(sh(-wm * 0.26, -wm * 0.26), w0 * 0.08, w1 * 0.08, E)}" fill="#fff" opacity=".7" filter="url(#${p}blur2)"/>`;
+  hl += `</g>`; s += fx(hl);
   return s;
 }
 // ujung potong pembuluh: elips lumen tegak lurus arah pembuluh. (x,y) ujung, ang = arah garis tengah di ujung (derajat), w = lebar pembuluh

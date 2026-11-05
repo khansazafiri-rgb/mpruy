@@ -1,4 +1,4 @@
-# Gaya visual anatomi MEDCOEL (kode: SVG + filter pencahayaan), revisi 2
+# Gaya visual anatomi MEDCOEL (kode: SVG + filter pencahayaan), revisi 4 (geometri dulu)
 
 Sistem gaya, jantung, dan potongan gigi yang digambar **murni dari kode** (tanpa gambar acuan yang ditempel). Gambar acuan dari pemesan (dibuat AI, belum divalidasi) hanya dipakai untuk **gaya**: latar, warna, kilau, volume. **Bentuk dan hubungan struktur mengikuti sumber anatomi** (lihat "Sumber yang diperiksa"), bukan acuan. Hasil tetap **konsep visual yang perlu pemeriksaan oleh orang yang berwenang**.
 
@@ -8,9 +8,9 @@ Sistem gaya, jantung, dan potongan gigi yang digambar **murni dari kode** (tanpa
 | `anatomi.js` | **Sistem gaya**: palet (`PAL`), filter pencahayaan (`vol`, `volS`, `volV`, `tex`, `shadow`), latar gelap berlapis + partikel + sel darah kabur (`background`), pembuluh bertaper bervolume (`vessel`, `endCap`), tabung (`tube`), pita meruncing (`ribbon`), kurva kubik (`sampleCubic`, `cubicD`), label pemeriksaan (`label`). |
 | `jantung.js` | Jantung tampak depan + pembuluh besar + koroner utama. `jantung({labels, t})` mengembalikan isi SVG. |
 | `gigi.js` | Potongan mesiodistal **molar pertama rahang bawah** + jaringan penyangga. `gigi({labels, t})`. |
-| `render.html`, `render.cjs` | Merender `?obj=jantung|gigi` (`&labels` = dengan label pemeriksaan, `&t=detik` = fase animasi) ke PNG 1080 x 1920. |
+| `render.html`, `render.cjs` | Merender `?obj=jantung|gigi` (`&labels` = dengan label pemeriksaan, `&plain` = **versi polos** untuk cek geometri, `&t=detik` = fase animasi) ke PNG 1080 x 1920: `<n>.png`, `<n>-label.png`, `<n>-polos.png`. |
 | `bandingkan.py` | Preview perbandingan (acuan, hasil sebelumnya, hasil revisi) dari berkas acuan Anda. |
-| `render/` | `jantung.png`, `gigi.png` (bersih), `*-label.png` (berlabel, untuk memeriksa anatomi), `v1/` (hasil revisi pertama untuk pembanding). |
+| `render/` | `jantung.png`, `gigi.png` (final v4), `*-label.png` (berlabel), `*-polos.png` (warna rata, tanpa efek), `polos-vs-final.png`, `v1/`, `v2/`, `v3/` (hasil sebelumnya sebagai pembanding). `perbandingan*.png` dan `ukuran-hp.png` memuat gambar acuan sehingga **tidak di-commit** (dibuat ulang oleh `bandingkan.py`). |
 | `prompt-gaya-anatomi.md` | Prompt cadangan untuk pembuat gambar. |
 
 ## Merender ulang
@@ -18,7 +18,7 @@ Sistem gaya, jantung, dan potongan gigi yang digambar **murni dari kode** (tanpa
 cd <akar repo>
 python3 -m http.server 8128 --bind 127.0.0.1 &          # server statis
 node brand/anatomy-style/render.cjs jantung gigi         # butuh Playwright (Chromium); hasil di brand/anatomy-style/render/
-python3 brand/anatomy-style/bandingkan.py <acuan.jpg> [render/v1/jantung.png render/v1/gigi.png]
+python3 brand/anatomy-style/bandingkan.py <acuan.jpg>     # perbandingan acuan | v3 | v4, versi ukuran organ disamakan, polos-vs-final, ukuran HP
 ```
 Dalam video: `import { jantung, P } from '.../brand/anatomy-style/jantung.js'` lalu `svgDoc(jantung({ t }), P)` (lihat `render.html`).
 
@@ -84,3 +84,31 @@ Perubahan gigi: ruang pulpa dan kanal akar kini menyatu lewat corong halus (tanp
 **Yang dicoba lalu dibuang:** relief dari peta tinggi (`reliefFilter`/`mound` di `anatomi.js`) menghasilkan garis kontur berundak (kuantisasi 8-bit) pada permukaan besar walau diberi dithering, sehingga tidak dipakai untuk jantung; fungsinya dibiarkan di `anatomi.js` untuk objek kecil bila perlu.
 Yang masih di bawah acuan: kilau "plastik basah" dan kedalaman warna acuan masih lebih kaya; pembuluh besar masih terasa agak seperti tabung; percabangan koroner halus acuan lebih natural (sengaja tidak ditiru karena tidak punya dasar sumber); pulpa acuan lebih sempit dengan arborisasi lebih rapat; gusi acuan membungkus leher gigi lebih tebal.
 Pemeriksaan ukuran HP (lebar 360 px): struktur utama (lapisan gigi, pembuluh besar, alur koroner dan lemaknya) masih terbaca; label tidak dipakai di versi bersih.
+
+
+## Revisi 4 (v4): geometri dulu, efek belakangan
+Urutan kerja sesuai permintaan: (1) render **versi polos** (warna rata, garis tepi tipis, tanpa cahaya/kilau/partikel/blur) untuk menilai siluet, hubungan depan-belakang, sambungan, dan komposisi; (2) perbaiki geometri; (3) baru efek dipasang kembali dengan arah cahaya yang sama (kiri-atas) untuk kedua organ. Mekanisme polos: semua markup efek dibungkus `fx(...)` di kode; `plainify()` membuangnya, menghapus filter/mask/blend, dan mengganti gradien dengan warna rata dari `FLAT` tiap modul.
+
+**Jantung, perubahan geometri yang terlihat (bandingkan `render/jantung-polos.png` dengan v3 di `render/v3/`):**
+- Batang pulmonal dan a. pulmonalis kiri kini **satu pembuluh bertaper** yang melengkung mulus (sebelumnya dua bagian dengan sudut keras di sambungannya).
+- Aorta: lengkung arkus dan aorta asenden lebih ramping dan tidak lagi "seperti pipa tebal"; cabang arkus mengikuti lengkung; VKS sedikit melengkung dan masuk ke atrium kanan.
+- Tubuh ventrikel lebih kerucut (apeks ke kiri-bawah pasien), RV dan LV dibedakan oleh rona (batas di sepanjang LAD) bahkan pada versi polos; atrium kanan lebih besar dan membungkus pangkal VKS/VKI; aurikel mengapit pangkal batang pulmonal.
+- Organ diperbesar (menempati ±75% lebar kanvas) tanpa memotong struktur penting; lemak epikardium hanya mengikuti alur (LAD, RCA, sirkumfleksa) sebagai gugusan, tidak ada cabang hias.
+- Hanya koroner bernama yang digambar (RCA + marginal kanan, LAD + 2 diagonal, sirkumfleksa + marginal kiri) dan vena jantung magna, satu vena kecil pendamping, serta dua vena kardiaka anterior (sumber hanya menyebut kelompoknya, bukan jumlah dan posisi persisnya).
+**Belum beres (jujur):** pembuluh besar masih terlalu panjang dan "menggantung" dibanding acuan (acuan lebih pendek dan tebal dengan pangkal melebar); vena pulmonalis kiri masih gagang ke samping; ventrikel kanan belum membentuk tonjolan sendiri seperti pada acuan; proporsi atrium dan aurikel belum dicek ke atlas.
+
+**Gigi, jenis dan bidang potong (eksplisit):** molar pertama rahang bawah (36/46), potongan **mesiodistal** lewat sumbu panjang di antara sisi bukal dan lingual; mesial kiri layar, distal kanan, oklusal di atas; gigi tetangga tidak digambar. Struktur **di bidang**: email, dentin, ruang pulpa + dua tanduk, kanal MB dan kanal distal, sementum, lig. periodontal, lamina dura, tulang alveolar, gusi. Struktur **di luar bidang yang ditampilkan samar/tembus**: kanal ML (lingual terhadap MB; bayangan samar yang menyatu dengan MB di sepertiga apikal) dan kanal mandibula + berkas n.-a.-v. alveolaris inferior beserta cabang dental (letaknya di sisi lingual/inferior; diproyeksikan hanya sebagai **konteks** supaya berkas yang keluar dari foramen apikal berujung pada struktur nyata, tidak berupa garis menggantung).
+**Perubahan geometri yang terlihat (bandingkan `render/gigi-polos.png` dengan v3):**
+- Skala ±44 px/mm: tinggi mahkota 330 px (±7,5 mm), lebar mesiodistal 484 px (±11 mm), leher 396 px (±9 mm), panjang akar ±620 px (±14 mm, sekitar 1,9 x tinggi mahkota), furkasi ±3 mm di bawah CEJ. **Catatan jujur:** angka-angka milimeter ini berasal dari kisaran buku teks yang saya ingat, **bukan dari sumber yang dibuka pada sesi ini**; hanya jumlah akar/kanal (7) dan jarak apeks-kanal mandibula (11) yang punya sumber terbuka. Perlu dicek ke Wheeler/Ten Cate/atlas.
+- Ruang pulpa **tidak dipersempit** untuk meniru acuan: lebar ±5 mm, dua tanduk, lantai sedikit cekung di atas furkasi; kanal sempit (orifisium ±1 mm menirus ke ±0,25 mm), foramen apikal 0,5-1 mm di atas apeks anatomis; kanal MB, ML (samar), dan distal berada di tengah akar masing-masing.
+- Mahkota, DEJ, dan akar kini **satu bentuk dentin** (sebelumnya mahkota + akar + persegi penambal, tampak bergaris di leher); email berupa cincin yang tebal di tonjol dan menipis ke leher; kedua akar sedikit melengkung ke distal; akar mesial lebih lebar dengan apeks tumpul.
+- Hubungan gusi-leher-jaringan penyangga **menerus**, bukan dua baji terpisah: tepi gusi bebas 1 mm di atas CEJ, sulkus, epitel penyatu sampai CEJ, serat jaringan ikat ke sementum sampai puncak alveolar (1,5 mm di bawah CEJ, korteks tipis di puncak), lalu lig. periodontal + lamina dura mengelilingi seluruh akar termasuk furkasi, di dalam tulang trabekular.
+- Berkas saraf-pembuluh dari foramen apikal turun lewat saluran tulang dan bergabung ke berkas alveolar inferior di kanal mandibula ±6,3 mm di bawah apeks (PMID 41430227, abstrak).
+**Belum beres (jujur):** tulang masih berupa blok datar dengan pori elips (bukan trabekula tak beraturan); puncak alveolar dan papila skematik tanpa gigi tetangga; email terlalu putih/"plastik" pada versi final; kontras antar-jaringan di versi final masih lebih lemah daripada acuan; jarak kanal mandibula-apeks mengikuti angka rata-rata, bentuk kanal dibuat lurus.
+
+**Pencahayaan (langkah 2):** bayangan lebar membentuk volume (bayangan jatuh + diffuse lighting dari filter `vol*`), sorotan lembut mengikuti kontur (ventrikel, email), kilau tajam hanya di beberapa titik (ujung tonjol, aorta), tanpa garis putih panjang yang ditempel; batas jaringan dijaga dengan garis gelap tipis. Arah cahaya azimut 225 (kiri-atas) di kedua organ. Highlight email dibatasi `clip-path` ke cincin email agar tidak berpendar keluar.
+
+**Sumber yang benar-benar dibuka (revisi ini tidak menambah sumber baru):** daftar nomor 1-11 di atas, dibuka lewat HTTP pada sesi sebelumnya: **Wikipedia = halaman penuh** (Heart, Aorta, Pulmonary artery, Coronary arteries, Right coronary artery, Left anterior descending artery, Circumflex branch, Great cardiac vein, Mandibular first molar, Pulp (tooth), Gums, Alveolar process, Periodontal ligament); **PubMed = hanya abstrak** (E-utilities efetch XML; PMID 32161889, 32342032, 41028125, 36287490, 41430227), tidak ada teks lengkap. Tidak ada atlas (Netter/Gray's/Moore/Ten Cate) yang dibuka. **Struktur yang benar-benar dicocokkan ke sumber** hanyalah yang tercantum di bagian "cocok dengan sumber"; selebihnya (proporsi, sudut, ukuran relatif atrium/aurikel, tebal email, lebar lig. periodontal) adalah perkiraan saya dan diberi tanda "belum yakin".
+**Acuan AI:** dipakai hanya untuk karakter visual (organ dominan, kontur organik, transisi cahaya, warna kaya, latar ungu-magenta). Perbedaan dengan sumber medis: ruang pulpa acuan sempit dan kanal acuan simetris dua cabang; molar bawah sebenarnya punya ruang pulpa lebar dengan akar mesial lebih lebar, jadi saya mengikuti sumber. Acuan tidak punya kanal mandibula; saya menambahkannya sebagai konteks.
+
+**Penilaian jujur: apa penghalang utama?** Perubahan v3 ke v4 pada jantung **kecil** secara visual; yang berubah nyata adalah kebenaran hubungan struktur (satu pembuluh pulmonal, ventrikel yang terbedakan, aorta lebih ramping). Penghalang utama bukan pencahayaan lagi, melainkan **geometri organik yang dibuat dengan kurva kubik tangan**: tanpa model 3D atau data bentuk nyata, kontur pembuluh besar, atrium, dan tonjolan ventrikel kanan sulit dibuat se-organik acuan. Pada gigi, perbaikan geometri jauh lebih terlihat (proporsi, satu bentuk dentin, periodonsium menerus, konteks kanal mandibula), tetapi hambatannya di sini adalah **kurangnya acuan ukuran terverifikasi** (angka mm di atas) dan tekstur tulang. Menambah efek lagi tidak akan menutup jurang ini; langkah berikutnya yang masuk akal: (a) acuan anatomi terverifikasi (foto/atlas berlisensi) untuk membentuk kontur jantung, (b) bentuk tonjolan RV dan pangkal pembuluh dikerjakan sebagai bentuk tersendiri, (c) tulang sebagai jaringan trabekula tak beraturan.

@@ -4,11 +4,15 @@
 <style>html,body{margin:0;background:#000}</style></head>
 <body><div id="c"></div>
 <script type="module">
-import { svgDoc } from './anatomi.js';
+import { svgDoc, plainify, plainDoc, W, H } from './anatomi.js';
 const q = new URLSearchParams(location.search), obj = q.get('obj') || 'jantung';
 const mod = await import(`./${obj}.js`);
 const t = +(q.get('t') || 0);
-document.getElementById('c').innerHTML = svgDoc(mod[obj]({ labels: q.has('labels'), t }), mod.P);
+let inner = mod[obj]({ labels: q.has('labels'), t });
+if (q.has('plain')) {   // versi polos: tanpa efek, warna datar, kontur tipis (hanya geometri)
+  inner = plainDoc(plainify(inner, mod.FLAT || {}));
+  document.getElementById('c').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${inner}</svg>`;
+} else document.getElementById('c').innerHTML = svgDoc(inner, mod.P);
 await document.fonts.ready;
 window.__ready = true;
 </script></body></html>
