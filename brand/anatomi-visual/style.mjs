@@ -124,3 +124,86 @@ export function branches(pts, widthAt, key, uid, rnd, { depth = 2, spread = 0.7,
   }
   return s;
 }
+
+// ---------------------------------------------------------------- pita meruncing (pembuluh berbentuk, bukan stroke)
+// Kurva Catmull-Rom melalui titik kontrol, lalu tiap sampel diberi lebar (w0 -> w1). Volume silinder dibentuk dari
+// tiga lapis: bayangan di sisi berlawanan cahaya, warna dasar, dan kilau di sisi cahaya. Cahaya datang dari kiri atas.
+const LIGHT = (() => { const x = -0.55, y = -0.84, l = Math.hypot(x, y); return { x: x / l, y: y / l }; })();
+
+export function catmull(pts, per = 18) {
+  const out = [];
+  const P = (i) => pts[Math.max(0, Math.min(pts.length - 1, i))];
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = P(i - 1), p1 = P(i), p2 = P(i + 1), p3 = P(i + 2);
+    for (let k = 0; k < per; k++) {
+      const t = k / per, t2 = t * t, t3 = t2 * t;
+      out.push([
+        0.5 * ((2 * p1[0]) + (-p0[0] + p2[0]) * t + (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * t2 + (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * t3),
+        0.5 * ((2 * p1[1]) + (-p0[1] + p2[1]) * t + (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * t2 + (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * t3),
+      ]);
+    }
+  }
+  out.push(pts[pts.length - 1]);
+  return out;
+}
+
+// sampel -> (titik, normal, lebar) dengan lebar linear sepanjang indeks
+function frames(pts, w0, w1, per) {
+  const c = catmull(pts, per);
+  const n = c.length, res = [];
+  for (let i = 0; i < n; i++) {
+    const a = c[Math.max(0, i - 1)], b = c[Math.min(n - 1, i + 1)];
+    let tx = b[0] - a[0], ty = b[1] - a[1]; const l = Math.hypot(tx, ty) || 1; tx /= l; ty /= l;
+    const nx = -ty, ny = tx;
+    res.push({ x: c[i][0], y: c[i][1], nx, ny, w: w0 + (w1 - w0) * (i / (n - 1)) });
+  }
+  return res;
+}
+
+// garis tepi dari pusat + offset (fraksi lebar) dan skala lebar; sisi cahaya dipilih per sampel
+function edgePath(fr, off, wscale, side = 1) {
+  const L = [], R = [];
+  for (const f of fr) {
+    // normal yang menghadap cahaya
+    const dot = f.nx * LIGHT.x + f.ny * LIGHT.y;
+    const s = (dot >= 0 ? 1 : -1) * side;
+    const cx = f.x + f.nx * s * f.w * off, cy = f.y + f.ny * s * f.w * off;
+    const hw = f.w * wscale / 2;
+    L.push([cx + f.nx * hw, cy + f.ny * hw]);
+    R.push([cx - f.nx * hw, cy - f.ny * hw]);
+  }
+  const pts = L.concat(R.reverse());
+  return 'M ' + pts.map((p) => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L ') + ' Z';
+}
+
+/** Pembuluh meruncing: kontur gelap, dasar, bayangan, dan kilau. pts = titik kontrol kurva, w0/w1 = lebar pangkal/ujung. */
+export function ribbon(pts, w0, w1, key, uid, { outline = true, per = 16, opacity = 1, round = true } = {}) {
+  const fr = frames(pts, w0, w1, per);
+  const c = ORGAN[key];
+  let s = '';
+  // ujung membulat: lingkaran di kedua ujung dengan warna dan kilau yang sama (tanpa potongan datar)
+  if (round) {
+    for (const f of [fr[0], fr[fr.length - 1]]) {
+      const r = f.w / 2;
+      if (outline) s += `<circle cx="${f.x.toFixed(1)}" cy="${f.y.toFixed(1)}" r="${(r + 2.5).toFixed(1)}" fill="${OUTLINE.color}" opacity="${opacity}"/>`;
+      s += `<circle cx="${f.x.toFixed(1)}" cy="${f.y.toFixed(1)}" r="${r.toFixed(1)}" fill="${c.base}" opacity="${opacity}"/>`;
+      s += `<circle cx="${(f.x - r * 0.25).toFixed(1)}" cy="${(f.y - r * 0.25).toFixed(1)}" r="${(r * 0.45).toFixed(1)}" fill="${c.light}" opacity="${0.6 * opacity}" filter="url(#${uid}-sheen)"/>`;
+    }
+  }
+  const full = edgePath(fr, 0, 1);
+  if (outline) s += `<path d="${full}" fill="${OUTLINE.color}" stroke="${OUTLINE.color}" stroke-width="5" stroke-linejoin="round" opacity="${opacity}"/>`;
+  s += `<path d="${full}" fill="${c.base}" opacity="${opacity}"/>`;
+  s += `<path d="${edgePath(fr, 0.28, 0.42, -1)}" fill="${c.dark}" opacity="${0.55 * opacity}" filter="url(#${uid}-sheen)"/>`;   // bayangan di sisi gelap
+  s += `<path d="${edgePath(fr, 0.2, 0.3, 1)}" fill="${c.light}" opacity="${0.72 * opacity}" filter="url(#${uid}-sheen)"/>`;     // dataran terang di sisi cahaya
+  s += `<path d="${edgePath(fr, 0.26, 0.1, 1)}" fill="#FFFFFF" opacity="${0.5 * opacity}" filter="url(#${uid}-sheen)"/>`;         // kilau tipis
+  return s;
+}
+
+/** Permukaan padat berbentuk bebas (lobus, auricula) dengan bayangan dan kilau lembut di sisi cahaya. */
+export function lobe(d, key, uid, { outline = true } = {}) {
+  const c = ORGAN[key];
+  let s = '';
+  if (outline) s += `<path d="${d}" fill="${OUTLINE.color}" stroke="${OUTLINE.color}" stroke-width="5" stroke-linejoin="round"/>`;
+  s += `<path d="${d}" fill="url(#${gid(uid, key)})"/>`;
+  return s;
+}

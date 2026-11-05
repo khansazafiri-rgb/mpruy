@@ -27,7 +27,7 @@ function page(uid, inner, title, sub) {
     + `</svg>`;
 }
 
-const heart = page('h', `<g transform="${place(HEART_BOX, 1.22)}">${heartSvg('h')}</g>`, 'JANTUNG · tampak depan', 'Konsep visual dari kode · belum diverifikasi terhadap atlas');
+const heart = page('h', `<g transform="${place(HEART_BOX, 1.34)}">${heartSvg('h')}</g>`, 'JANTUNG · tampak depan', 'Konsep visual dari kode · belum diverifikasi terhadap atlas');
 const tooth = page('t', `<g transform="${place(TOOTH_BOX, 1.18)}">${toothSvg('t')}</g>`, 'GIGI · potongan memanjang', 'Konsep visual dari kode · belum diverifikasi terhadap atlas');
 fs.writeFileSync(path.join(OUT, 'heart.svg'), heart);
 fs.writeFileSync(path.join(OUT, 'tooth.svg'), tooth);

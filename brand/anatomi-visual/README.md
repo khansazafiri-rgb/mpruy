@@ -28,6 +28,8 @@ Warna tidak dipaksa sama antarorgan. Setiap organ punya `base`, `light`, `dark` 
 - v2: latar ungu-magenta, kilau, gradien tabung, gigi dengan dua akar, koroner dan lemak diatur ulang.
 - v3 (saat ini): jantung dengan siluet membulat, lemak kuning di alur (dibuat terlihat di bawah koroner), koroner kiri (LM -> LAD + sirkumfleks) dan kanan (RCA) sesuai sumber di bawah, cabang acak dihapus; gigi molar bawah dua akar dengan dua saluran di akar mesial dan satu di distal, tulang berlubang tidak seragam, gusi dengan tepi bebas.
 
+- v4 (jantung saja, saat ini): pembuluh dibuat sebagai pita meruncing (`ribbon` di `style.mjs`) dengan tiga lapis volume dan ujung membulat; aorta, arteri paru, vena kava disatukan dengan pangkal di badan; jantung diperbesar di frame; lemak sebagai pita dengan lobulus; koroner tetap hanya jalur utama. Evaluasi: pembuluh sudah lebih berdimensi, tetapi siluet badan masih terlalu kaku dan lobus atrium kanan belum seperti acuan. Keterbatasan utama ada di pendekatan path tulis tangan: sulit mencapai bentuk organik seperti acuan.
+
 ## Sumber anatomi yang diperiksa
 Hanya ringkasan hasil pencarian web (bukan halaman lengkap yang saya buka):
 - Jalur arteri koroner: asal LM dari sinus aorta kiri, bercabang ke LAD dan sirkumfleks; RCA dari sinus aorta kanan. Ringkasan dari Frontiers in Cardiovascular Medicine (https://www.frontiersin.org/articles/10.3389/fcvm.2021.649855/full), Radiology Assistant (https://radiologyassistant.nl/cardiovascular/anatomy/coronary-anatomy-and-anomalies), dan StatPearls (https://ncbi.nlm.nih.gov/books/NBK482375).
