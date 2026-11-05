@@ -121,3 +121,15 @@ Hanya abstrak PubMed (halaman penuh tidak bisa dibuka dari sesi ini):
 - Sumber lain tetap sama seperti bagian v5 di atas (lengkung aorta tiga cabang, aurikula kiri, hubungan koroner dengan sinus pulmonal).
 
 Belum terverifikasi: jalur persis RCA hingga tepi inferior, letak dan lebar alur, sebaran/ukuran lemak, bentuk aurikula kanan, proporsi semua struktur, dan arah tampak (diambil dari gambar acuan yang dibuat AI). Anggap konsep visual sampai dicocokkan dengan atlas.
+
+## v7: revisi permukaan dan sambungan dari v6 (v6 dipertahankan)
+Siluet dan posisi pembuluh besar tidak diubah. Kode: `v6/heart7.mjs`, `v6/render7.mjs`, `v6/bandingkan7.py`; hasil `out/v7-akhir.png/.svg`. Perbandingan v6 | v7 | acuan dan crop (ukuran penuh dan lebar HP) hanya lokal karena memuat gambar acuan.
+
+Perubahan dan hasil jujur dari perbandingan crop:
+- **Batas massa badan:** tiga massa kini bertepi berbulu (dipotong hanya oleh badan) dan saling menimpa di alur, jadi bidang tegak di alur interventrikular hilang; alur tetap terbaca lewat bayangan alur, arteri, dan lemak. Berkurang jelas. Tersisa kerudung gelap tembus pandang di kiri bawah dan pita terang di tepi kanan ventrikel kiri.
+- **Aurikula kiri:** bentuk tepi bertakik dengan lipatan, warna diturunkan dari ventrikel, bayangan kontak di bawah tepi bawah dan bayangan batang pulmonalis. Gumpalan burgundi berkurang, tetapi hasilnya masih lobus halus tanpa struktur lipatan yang jelas; perbaikan kecil.
+- **Pangkal batang pulmonalis:** bayangan kontak di badan dan gradasi gelap di dasar; sambungan lebih lembut, tetapi tepi bawah dan tepi kiri masih lurus seperti pipa terpotong dan lebar tidak berubah bertahap. Berkurang sebagian.
+- **Koroner dan lemak:** arteri punya sisi terang, sisi gelap, dan bayangan jatuh; lobulus bervariasi ukuran dan lebih padat dekat pangkal. Berkurang jelas, meski pita lemak kiri kini agak terlalu tebal dan bergelombang.
+- **Detail ventrikel:** serat halus yang diinterpolasi antar alur (berpudar di tepi), pantulan lebar lembut, dan beberapa kilau kecil. Serat hampir tidak terbaca; permukaan tetap jauh dari kekayaan acuan (kilau basah, serat jelas, cabang halus).
+
+Anatomi tetap belum tervalidasi menyeluruh: sumber hanya abstrak PubMed dan ringkasan pencarian; kecocokan siluet dengan acuan bukan validasi anatomi.
