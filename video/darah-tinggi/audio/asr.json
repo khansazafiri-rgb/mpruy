@@ -1,0 +1,1486 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 4.9,
+   "text": "Derah tinggi itu sebetulnya kenapa bisa berbahaya. Bukannya cuma angka di ala tensi.",
+   "words": [
+    {
+     "w": "Derah",
+     "s": 0.0,
+     "e": 0.36
+    },
+    {
+     "w": "tinggi",
+     "s": 0.36,
+     "e": 0.56
+    },
+    {
+     "w": "itu",
+     "s": 0.56,
+     "e": 0.72
+    },
+    {
+     "w": "sebetulnya",
+     "s": 0.72,
+     "e": 1.08
+    },
+    {
+     "w": "kenapa",
+     "s": 1.08,
+     "e": 1.3
+    },
+    {
+     "w": "bisa",
+     "s": 1.3,
+     "e": 1.48
+    },
+    {
+     "w": "berbahaya.",
+     "s": 1.48,
+     "e": 1.88
+    },
+    {
+     "w": "Bukannya",
+     "s": 2.44,
+     "e": 3.1
+    },
+    {
+     "w": "cuma",
+     "s": 3.1,
+     "e": 3.44
+    },
+    {
+     "w": "angka",
+     "s": 3.44,
+     "e": 4.02
+    },
+    {
+     "w": "di",
+     "s": 4.02,
+     "e": 4.36
+    },
+    {
+     "w": "ala",
+     "s": 4.36,
+     "e": 4.52
+    },
+    {
+     "w": "tensi.",
+     "s": 4.52,
+     "e": 4.9
+    }
+   ]
+  },
+  {
+   "start": 5.66,
+   "end": 8.92,
+   "text": "Bayangin, kamu periksa tekanan darah. Angkanya tinggi.",
+   "words": [
+    {
+     "w": "Bayangin,",
+     "s": 5.66,
+     "e": 6.18
+    },
+    {
+     "w": "kamu",
+     "s": 6.56,
+     "e": 6.84
+    },
+    {
+     "w": "periksa",
+     "s": 6.84,
+     "e": 7.3
+    },
+    {
+     "w": "tekanan",
+     "s": 7.3,
+     "e": 7.62
+    },
+    {
+     "w": "darah.",
+     "s": 7.62,
+     "e": 7.9
+    },
+    {
+     "w": "Angkanya",
+     "s": 8.36,
+     "e": 8.64
+    },
+    {
+     "w": "tinggi.",
+     "s": 8.64,
+     "e": 8.92
+    }
+   ]
+  },
+  {
+   "start": 9.44,
+   "end": 14.0,
+   "text": "Tapi badanmu terasa baik-baik saja. Jadi, apakah kamu perlu khawatir?",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 9.44,
+     "e": 9.98
+    },
+    {
+     "w": "badanmu",
+     "s": 9.98,
+     "e": 10.46
+    },
+    {
+     "w": "terasa",
+     "s": 10.46,
+     "e": 10.74
+    },
+    {
+     "w": "baik",
+     "s": 10.74,
+     "e": 10.92
+    },
+    {
+     "w": "-baik",
+     "s": 10.92,
+     "e": 11.08
+    },
+    {
+     "w": "saja.",
+     "s": 11.08,
+     "e": 11.24
+    },
+    {
+     "w": "Jadi,",
+     "s": 12.0,
+     "e": 12.5
+    },
+    {
+     "w": "apakah",
+     "s": 13.04,
+     "e": 13.2
+    },
+    {
+     "w": "kamu",
+     "s": 13.2,
+     "e": 13.4
+    },
+    {
+     "w": "perlu",
+     "s": 13.4,
+     "e": 13.6
+    },
+    {
+     "w": "khawatir?",
+     "s": 13.6,
+     "e": 14.0
+    }
+   ]
+  },
+  {
+   "start": 14.88,
+   "end": 17.88,
+   "text": "Sebelum itu, kenalan dulu dengan angka di ala tensimu.",
+   "words": [
+    {
+     "w": "Sebelum",
+     "s": 14.88,
+     "e": 15.22
+    },
+    {
+     "w": "itu,",
+     "s": 15.22,
+     "e": 15.52
+    },
+    {
+     "w": "kenalan",
+     "s": 15.96,
+     "e": 16.3
+    },
+    {
+     "w": "dulu",
+     "s": 16.3,
+     "e": 16.5
+    },
+    {
+     "w": "dengan",
+     "s": 16.5,
+     "e": 16.7
+    },
+    {
+     "w": "angka",
+     "s": 16.7,
+     "e": 17.1
+    },
+    {
+     "w": "di",
+     "s": 17.1,
+     "e": 17.26
+    },
+    {
+     "w": "ala",
+     "s": 17.26,
+     "e": 17.42
+    },
+    {
+     "w": "tensimu.",
+     "s": 17.42,
+     "e": 17.88
+    }
+   ]
+  },
+  {
+   "start": 18.44,
+   "end": 23.7,
+   "text": "Tekanan darah orang dewasa yang sering dijadikan acuan adalah sekitar 120x80.",
+   "words": [
+    {
+     "w": "Tekanan",
+     "s": 18.44,
+     "e": 18.84
+    },
+    {
+     "w": "darah",
+     "s": 18.84,
+     "e": 18.96
+    },
+    {
+     "w": "orang",
+     "s": 18.96,
+     "e": 19.08
+    },
+    {
+     "w": "dewasa",
+     "s": 19.08,
+     "e": 19.5
+    },
+    {
+     "w": "yang",
+     "s": 19.5,
+     "e": 19.66
+    },
+    {
+     "w": "sering",
+     "s": 19.66,
+     "e": 20.04
+    },
+    {
+     "w": "dijadikan",
+     "s": 20.04,
+     "e": 20.36
+    },
+    {
+     "w": "acuan",
+     "s": 20.36,
+     "e": 20.76
+    },
+    {
+     "w": "adalah",
+     "s": 20.76,
+     "e": 21.38
+    },
+    {
+     "w": "sekitar",
+     "s": 21.38,
+     "e": 21.8
+    },
+    {
+     "w": "120x80.",
+     "s": 21.8,
+     "e": 23.7
+    }
+   ]
+  },
+  {
+   "start": 24.4,
+   "end": 25.84,
+   "text": "Angka pertama disebut systolic.",
+   "words": [
+    {
+     "w": "Angka",
+     "s": 24.4,
+     "e": 24.7
+    },
+    {
+     "w": "pertama",
+     "s": 24.7,
+     "e": 25.02
+    },
+    {
+     "w": "disebut",
+     "s": 25.02,
+     "e": 25.48
+    },
+    {
+     "w": "systolic.",
+     "s": 25.48,
+     "e": 25.84
+    }
+   ]
+  },
+  {
+   "start": 26.44,
+   "end": 29.34,
+   "text": "Tekanan di pembulu darah saat jantung memompah darah.",
+   "words": [
+    {
+     "w": "Tekanan",
+     "s": 26.44,
+     "e": 27.0
+    },
+    {
+     "w": "di",
+     "s": 27.0,
+     "e": 27.22
+    },
+    {
+     "w": "pembulu",
+     "s": 27.22,
+     "e": 27.48
+    },
+    {
+     "w": "darah",
+     "s": 27.48,
+     "e": 27.82
+    },
+    {
+     "w": "saat",
+     "s": 27.82,
+     "e": 28.06
+    },
+    {
+     "w": "jantung",
+     "s": 28.06,
+     "e": 28.6
+    },
+    {
+     "w": "memompah",
+     "s": 28.6,
+     "e": 29.04
+    },
+    {
+     "w": "darah.",
+     "s": 29.04,
+     "e": 29.34
+    }
+   ]
+  },
+  {
+   "start": 29.34,
+   "end": 34.68,
+   "text": "Angka kedua disebut diastollik, tekanan saat jantung berrelaksasi di antara detakannya.",
+   "words": [
+    {
+     "w": "Angka",
+     "s": 29.34,
+     "e": 30.2
+    },
+    {
+     "w": "kedua",
+     "s": 30.2,
+     "e": 30.44
+    },
+    {
+     "w": "disebut",
+     "s": 30.44,
+     "e": 30.82
+    },
+    {
+     "w": "diastollik,",
+     "s": 30.82,
+     "e": 31.42
+    },
+    {
+     "w": "tekanan",
+     "s": 31.88,
+     "e": 32.28
+    },
+    {
+     "w": "saat",
+     "s": 32.28,
+     "e": 32.44
+    },
+    {
+     "w": "jantung",
+     "s": 32.44,
+     "e": 32.82
+    },
+    {
+     "w": "berrelaksasi",
+     "s": 32.82,
+     "e": 33.52
+    },
+    {
+     "w": "di",
+     "s": 33.52,
+     "e": 33.8
+    },
+    {
+     "w": "antara",
+     "s": 33.8,
+     "e": 34.18
+    },
+    {
+     "w": "detakannya.",
+     "s": 34.18,
+     "e": 34.68
+    }
+   ]
+  },
+  {
+   "start": 35.12,
+   "end": 37.16,
+   "text": "Lalu kapan disebut darat tinggi?",
+   "words": [
+    {
+     "w": "Lalu",
+     "s": 35.12,
+     "e": 35.78
+    },
+    {
+     "w": "kapan",
+     "s": 35.78,
+     "e": 36.36
+    },
+    {
+     "w": "disebut",
+     "s": 36.36,
+     "e": 36.66
+    },
+    {
+     "w": "darat",
+     "s": 36.66,
+     "e": 36.88
+    },
+    {
+     "w": "tinggi?",
+     "s": 36.88,
+     "e": 37.16
+    }
+   ]
+  },
+  {
+   "start": 38.02,
+   "end": 40.86,
+   "text": "Menurut kriteria yang digunakan kementerian kesehatan dan WHO,",
+   "words": [
+    {
+     "w": "Menurut",
+     "s": 38.02,
+     "e": 38.44
+    },
+    {
+     "w": "kriteria",
+     "s": 38.44,
+     "e": 38.86
+    },
+    {
+     "w": "yang",
+     "s": 38.86,
+     "e": 39.0
+    },
+    {
+     "w": "digunakan",
+     "s": 39.0,
+     "e": 39.36
+    },
+    {
+     "w": "kementerian",
+     "s": 39.36,
+     "e": 39.84
+    },
+    {
+     "w": "kesehatan",
+     "s": 39.84,
+     "e": 40.3
+    },
+    {
+     "w": "dan",
+     "s": 40.3,
+     "e": 40.4
+    },
+    {
+     "w": "WHO,",
+     "s": 40.4,
+     "e": 40.86
+    }
+   ]
+  },
+  {
+   "start": 41.48,
+   "end": 47.78,
+   "text": "tekanan si stolik 140 atau lebih dan atau tekanan diastollik 90 atau lebih perlu diperhatikan.",
+   "words": [
+    {
+     "w": "tekanan",
+     "s": 41.48,
+     "e": 41.86
+    },
+    {
+     "w": "si",
+     "s": 41.86,
+     "e": 41.96
+    },
+    {
+     "w": "stolik",
+     "s": 41.96,
+     "e": 42.22
+    },
+    {
+     "w": "140",
+     "s": 42.22,
+     "e": 42.5
+    },
+    {
+     "w": "atau",
+     "s": 42.5,
+     "e": 43.12
+    },
+    {
+     "w": "lebih",
+     "s": 43.12,
+     "e": 43.42
+    },
+    {
+     "w": "dan",
+     "s": 43.42,
+     "e": 43.86
+    },
+    {
+     "w": "atau",
+     "s": 43.86,
+     "e": 44.3
+    },
+    {
+     "w": "tekanan",
+     "s": 44.3,
+     "e": 44.96
+    },
+    {
+     "w": "diastollik",
+     "s": 44.96,
+     "e": 45.36
+    },
+    {
+     "w": "90",
+     "s": 45.36,
+     "e": 45.62
+    },
+    {
+     "w": "atau",
+     "s": 45.62,
+     "e": 46.24
+    },
+    {
+     "w": "lebih",
+     "s": 46.24,
+     "e": 46.56
+    },
+    {
+     "w": "perlu",
+     "s": 46.56,
+     "e": 47.16
+    },
+    {
+     "w": "diperhatikan.",
+     "s": 47.16,
+     "e": 47.78
+    }
+   ]
+  },
+  {
+   "start": 48.5,
+   "end": 52.56,
+   "text": "Tapi satu kali hasil tinggi belum tentu langsung berarti kamu mengalami hipertensi.",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 48.5,
+     "e": 48.96
+    },
+    {
+     "w": "satu",
+     "s": 48.96,
+     "e": 49.58
+    },
+    {
+     "w": "kali",
+     "s": 49.58,
+     "e": 49.76
+    },
+    {
+     "w": "hasil",
+     "s": 49.76,
+     "e": 49.96
+    },
+    {
+     "w": "tinggi",
+     "s": 49.96,
+     "e": 50.24
+    },
+    {
+     "w": "belum",
+     "s": 50.24,
+     "e": 50.48
+    },
+    {
+     "w": "tentu",
+     "s": 50.48,
+     "e": 50.8
+    },
+    {
+     "w": "langsung",
+     "s": 50.8,
+     "e": 51.1
+    },
+    {
+     "w": "berarti",
+     "s": 51.1,
+     "e": 51.42
+    },
+    {
+     "w": "kamu",
+     "s": 51.42,
+     "e": 51.6
+    },
+    {
+     "w": "mengalami",
+     "s": 51.6,
+     "e": 52.0
+    },
+    {
+     "w": "hipertensi.",
+     "s": 52.0,
+     "e": 52.56
+    }
+   ]
+  },
+  {
+   "start": 53.0,
+   "end": 56.18,
+   "text": "Tekanan darah perlu diperisa kembali oleh tenaga kesehatan.",
+   "words": [
+    {
+     "w": "Tekanan",
+     "s": 53.0,
+     "e": 53.44
+    },
+    {
+     "w": "darah",
+     "s": 53.44,
+     "e": 53.86
+    },
+    {
+     "w": "perlu",
+     "s": 53.86,
+     "e": 54.16
+    },
+    {
+     "w": "diperisa",
+     "s": 54.16,
+     "e": 54.54
+    },
+    {
+     "w": "kembali",
+     "s": 54.54,
+     "e": 54.92
+    },
+    {
+     "w": "oleh",
+     "s": 54.92,
+     "e": 55.14
+    },
+    {
+     "w": "tenaga",
+     "s": 55.14,
+     "e": 55.54
+    },
+    {
+     "w": "kesehatan.",
+     "s": 55.54,
+     "e": 56.18
+    }
+   ]
+  },
+  {
+   "start": 56.18,
+   "end": 61.92,
+   "text": "Nah, sekarang bayangkan, tekanan di dalam pemburu darahmu terus menerus tinggi.",
+   "words": [
+    {
+     "w": "Nah,",
+     "s": 56.18,
+     "e": 57.08
+    },
+    {
+     "w": "sekarang",
+     "s": 57.52,
+     "e": 57.86
+    },
+    {
+     "w": "bayangkan,",
+     "s": 57.86,
+     "e": 58.74
+    },
+    {
+     "w": "tekanan",
+     "s": 59.2,
+     "e": 59.7
+    },
+    {
+     "w": "di",
+     "s": 59.7,
+     "e": 59.82
+    },
+    {
+     "w": "dalam",
+     "s": 59.82,
+     "e": 59.98
+    },
+    {
+     "w": "pemburu",
+     "s": 59.98,
+     "e": 60.3
+    },
+    {
+     "w": "darahmu",
+     "s": 60.3,
+     "e": 60.74
+    },
+    {
+     "w": "terus",
+     "s": 60.74,
+     "e": 61.06
+    },
+    {
+     "w": "menerus",
+     "s": 61.06,
+     "e": 61.46
+    },
+    {
+     "w": "tinggi.",
+     "s": 61.46,
+     "e": 61.92
+    }
+   ]
+  },
+  {
+   "start": 62.64,
+   "end": 68.04,
+   "text": "Seiring waktu, tekanan ini bisa merusak dinding pemburu darah dan membuat jantung bekerja lebih keras.",
+   "words": [
+    {
+     "w": "Seiring",
+     "s": 62.64,
+     "e": 63.04
+    },
+    {
+     "w": "waktu,",
+     "s": 63.04,
+     "e": 63.42
+    },
+    {
+     "w": "tekanan",
+     "s": 63.96,
+     "e": 64.34
+    },
+    {
+     "w": "ini",
+     "s": 64.34,
+     "e": 64.46
+    },
+    {
+     "w": "bisa",
+     "s": 64.46,
+     "e": 64.66
+    },
+    {
+     "w": "merusak",
+     "s": 64.66,
+     "e": 65.0
+    },
+    {
+     "w": "dinding",
+     "s": 65.0,
+     "e": 65.34
+    },
+    {
+     "w": "pemburu",
+     "s": 65.34,
+     "e": 65.7
+    },
+    {
+     "w": "darah",
+     "s": 65.7,
+     "e": 66.18
+    },
+    {
+     "w": "dan",
+     "s": 66.18,
+     "e": 66.38
+    },
+    {
+     "w": "membuat",
+     "s": 66.38,
+     "e": 66.74
+    },
+    {
+     "w": "jantung",
+     "s": 66.74,
+     "e": 67.22
+    },
+    {
+     "w": "bekerja",
+     "s": 67.22,
+     "e": 67.62
+    },
+    {
+     "w": "lebih",
+     "s": 67.62,
+     "e": 67.8
+    },
+    {
+     "w": "keras.",
+     "s": 67.8,
+     "e": 68.04
+    }
+   ]
+  },
+  {
+   "start": 68.9,
+   "end": 70.48,
+   "text": "Dambaknya bisa sampai ke beberapa organ.",
+   "words": [
+    {
+     "w": "Dambaknya",
+     "s": 68.9,
+     "e": 69.48
+    },
+    {
+     "w": "bisa",
+     "s": 69.48,
+     "e": 69.6
+    },
+    {
+     "w": "sampai",
+     "s": 69.6,
+     "e": 69.84
+    },
+    {
+     "w": "ke",
+     "s": 69.84,
+     "e": 69.98
+    },
+    {
+     "w": "beberapa",
+     "s": 69.98,
+     "e": 70.24
+    },
+    {
+     "w": "organ.",
+     "s": 70.24,
+     "e": 70.48
+    }
+   ]
+  },
+  {
+   "start": 71.18,
+   "end": 76.16,
+   "text": "Di jantung, kerja yang terus meningkat dapat menyebabkan gangguan jantung termasuk gagal jantung.",
+   "words": [
+    {
+     "w": "Di",
+     "s": 71.18,
+     "e": 71.34
+    },
+    {
+     "w": "jantung,",
+     "s": 71.34,
+     "e": 71.8
+    },
+    {
+     "w": "kerja",
+     "s": 72.24,
+     "e": 72.58
+    },
+    {
+     "w": "yang",
+     "s": 72.58,
+     "e": 72.68
+    },
+    {
+     "w": "terus",
+     "s": 72.68,
+     "e": 72.8
+    },
+    {
+     "w": "meningkat",
+     "s": 72.8,
+     "e": 73.2
+    },
+    {
+     "w": "dapat",
+     "s": 73.2,
+     "e": 73.44
+    },
+    {
+     "w": "menyebabkan",
+     "s": 73.44,
+     "e": 73.92
+    },
+    {
+     "w": "gangguan",
+     "s": 73.92,
+     "e": 74.26
+    },
+    {
+     "w": "jantung",
+     "s": 74.26,
+     "e": 74.7
+    },
+    {
+     "w": "termasuk",
+     "s": 74.7,
+     "e": 75.46
+    },
+    {
+     "w": "gagal",
+     "s": 75.46,
+     "e": 75.76
+    },
+    {
+     "w": "jantung.",
+     "s": 75.76,
+     "e": 76.16
+    }
+   ]
+  },
+  {
+   "start": 76.7,
+   "end": 80.24,
+   "text": "Di otak, pemburu darah bisa tersumbat atau pecah dan menyebabkan struk.",
+   "words": [
+    {
+     "w": "Di",
+     "s": 76.7,
+     "e": 76.92
+    },
+    {
+     "w": "otak,",
+     "s": 76.92,
+     "e": 77.2
+    },
+    {
+     "w": "pemburu",
+     "s": 77.54,
+     "e": 77.86
+    },
+    {
+     "w": "darah",
+     "s": 77.86,
+     "e": 78.06
+    },
+    {
+     "w": "bisa",
+     "s": 78.06,
+     "e": 78.2
+    },
+    {
+     "w": "tersumbat",
+     "s": 78.2,
+     "e": 78.68
+    },
+    {
+     "w": "atau",
+     "s": 78.68,
+     "e": 78.82
+    },
+    {
+     "w": "pecah",
+     "s": 78.82,
+     "e": 79.3
+    },
+    {
+     "w": "dan",
+     "s": 79.3,
+     "e": 79.42
+    },
+    {
+     "w": "menyebabkan",
+     "s": 79.42,
+     "e": 79.92
+    },
+    {
+     "w": "struk.",
+     "s": 79.92,
+     "e": 80.24
+    }
+   ]
+  },
+  {
+   "start": 80.92,
+   "end": 85.0,
+   "text": "Di ginjal, pemburu darah kecil yang membantu menyaring darah juga bisa mengalami kerusakan.",
+   "words": [
+    {
+     "w": "Di",
+     "s": 80.92,
+     "e": 81.1
+    },
+    {
+     "w": "ginjal,",
+     "s": 81.1,
+     "e": 81.52
+    },
+    {
+     "w": "pemburu",
+     "s": 81.82,
+     "e": 82.08
+    },
+    {
+     "w": "darah",
+     "s": 82.08,
+     "e": 82.28
+    },
+    {
+     "w": "kecil",
+     "s": 82.28,
+     "e": 82.6
+    },
+    {
+     "w": "yang",
+     "s": 82.6,
+     "e": 82.74
+    },
+    {
+     "w": "membantu",
+     "s": 82.74,
+     "e": 83.04
+    },
+    {
+     "w": "menyaring",
+     "s": 83.04,
+     "e": 83.3
+    },
+    {
+     "w": "darah",
+     "s": 83.3,
+     "e": 83.62
+    },
+    {
+     "w": "juga",
+     "s": 83.62,
+     "e": 83.8
+    },
+    {
+     "w": "bisa",
+     "s": 83.8,
+     "e": 84.12
+    },
+    {
+     "w": "mengalami",
+     "s": 84.12,
+     "e": 84.56
+    },
+    {
+     "w": "kerusakan.",
+     "s": 84.56,
+     "e": 85.0
+    }
+   ]
+  },
+  {
+   "start": 85.0,
+   "end": 89.18,
+   "text": "Dan ya, komplikasi darat tinggi bisa menyebabkan kematian.",
+   "words": [
+    {
+     "w": "Dan",
+     "s": 85.0,
+     "e": 86.02
+    },
+    {
+     "w": "ya,",
+     "s": 86.02,
+     "e": 86.42
+    },
+    {
+     "w": "komplikasi",
+     "s": 86.96,
+     "e": 87.4
+    },
+    {
+     "w": "darat",
+     "s": 87.4,
+     "e": 87.62
+    },
+    {
+     "w": "tinggi",
+     "s": 87.62,
+     "e": 87.9
+    },
+    {
+     "w": "bisa",
+     "s": 87.9,
+     "e": 88.24
+    },
+    {
+     "w": "menyebabkan",
+     "s": 88.24,
+     "e": 88.7
+    },
+    {
+     "w": "kematian.",
+     "s": 88.7,
+     "e": 89.18
+    }
+   ]
+  },
+  {
+   "start": 89.74,
+   "end": 94.3,
+   "text": "Yang membuatnya sering terlemat diketahui, darat tinggi sering kali tidak menimbulkan kejala.",
+   "words": [
+    {
+     "w": "Yang",
+     "s": 89.74,
+     "e": 90.36
+    },
+    {
+     "w": "membuatnya",
+     "s": 90.36,
+     "e": 90.74
+    },
+    {
+     "w": "sering",
+     "s": 90.74,
+     "e": 90.92
+    },
+    {
+     "w": "terlemat",
+     "s": 90.92,
+     "e": 91.2
+    },
+    {
+     "w": "diketahui,",
+     "s": 91.2,
+     "e": 91.74
+    },
+    {
+     "w": "darat",
+     "s": 92.14,
+     "e": 92.46
+    },
+    {
+     "w": "tinggi",
+     "s": 92.46,
+     "e": 92.72
+    },
+    {
+     "w": "sering",
+     "s": 92.72,
+     "e": 92.96
+    },
+    {
+     "w": "kali",
+     "s": 92.96,
+     "e": 93.12
+    },
+    {
+     "w": "tidak",
+     "s": 93.12,
+     "e": 93.42
+    },
+    {
+     "w": "menimbulkan",
+     "s": 93.42,
+     "e": 93.94
+    },
+    {
+     "w": "kejala.",
+     "s": 93.94,
+     "e": 94.3
+    }
+   ]
+  },
+  {
+   "start": 94.86,
+   "end": 97.96,
+   "text": "Jadi jangan tunggu pusing untuk memerisa tekanan darahmu.",
+   "words": [
+    {
+     "w": "Jadi",
+     "s": 94.86,
+     "e": 95.54
+    },
+    {
+     "w": "jangan",
+     "s": 95.54,
+     "e": 96.04
+    },
+    {
+     "w": "tunggu",
+     "s": 96.04,
+     "e": 96.3
+    },
+    {
+     "w": "pusing",
+     "s": 96.3,
+     "e": 96.62
+    },
+    {
+     "w": "untuk",
+     "s": 96.62,
+     "e": 96.84
+    },
+    {
+     "w": "memerisa",
+     "s": 96.84,
+     "e": 97.2
+    },
+    {
+     "w": "tekanan",
+     "s": 97.2,
+     "e": 97.58
+    },
+    {
+     "w": "darahmu.",
+     "s": 97.58,
+     "e": 97.96
+    }
+   ]
+  },
+  {
+   "start": 98.46,
+   "end": 103.38,
+   "text": "Cek tekanan darah secara berkala, kurangi konsumsi garam berlebihan, dan tetap aktif bergerak.",
+   "words": [
+    {
+     "w": "Cek",
+     "s": 98.46,
+     "e": 98.76
+    },
+    {
+     "w": "tekanan",
+     "s": 98.76,
+     "e": 99.08
+    },
+    {
+     "w": "darah",
+     "s": 99.08,
+     "e": 99.26
+    },
+    {
+     "w": "secara",
+     "s": 99.26,
+     "e": 99.48
+    },
+    {
+     "w": "berkala,",
+     "s": 99.48,
+     "e": 99.92
+    },
+    {
+     "w": "kurangi",
+     "s": 100.32,
+     "e": 100.62
+    },
+    {
+     "w": "konsumsi",
+     "s": 100.62,
+     "e": 101.06
+    },
+    {
+     "w": "garam",
+     "s": 101.06,
+     "e": 101.28
+    },
+    {
+     "w": "berlebihan,",
+     "s": 101.28,
+     "e": 101.84
+    },
+    {
+     "w": "dan",
+     "s": 102.0,
+     "e": 102.24
+    },
+    {
+     "w": "tetap",
+     "s": 102.24,
+     "e": 102.66
+    },
+    {
+     "w": "aktif",
+     "s": 102.66,
+     "e": 102.96
+    },
+    {
+     "w": "bergerak.",
+     "s": 102.96,
+     "e": 103.38
+    }
+   ]
+  },
+  {
+   "start": 103.94,
+   "end": 108.3,
+   "text": "Kalau kamu sudah mendapat obat dari doktor, minum sesuai anjuran dan jangan menghentikannya sendiri.",
+   "words": [
+    {
+     "w": "Kalau",
+     "s": 103.94,
+     "e": 104.14
+    },
+    {
+     "w": "kamu",
+     "s": 104.14,
+     "e": 104.32
+    },
+    {
+     "w": "sudah",
+     "s": 104.32,
+     "e": 104.48
+    },
+    {
+     "w": "mendapat",
+     "s": 104.48,
+     "e": 104.72
+    },
+    {
+     "w": "obat",
+     "s": 104.72,
+     "e": 105.0
+    },
+    {
+     "w": "dari",
+     "s": 105.0,
+     "e": 105.14
+    },
+    {
+     "w": "doktor,",
+     "s": 105.14,
+     "e": 105.48
+    },
+    {
+     "w": "minum",
+     "s": 105.88,
+     "e": 106.08
+    },
+    {
+     "w": "sesuai",
+     "s": 106.08,
+     "e": 106.34
+    },
+    {
+     "w": "anjuran",
+     "s": 106.34,
+     "e": 106.7
+    },
+    {
+     "w": "dan",
+     "s": 106.7,
+     "e": 107.06
+    },
+    {
+     "w": "jangan",
+     "s": 107.06,
+     "e": 107.44
+    },
+    {
+     "w": "menghentikannya",
+     "s": 107.44,
+     "e": 108.02
+    },
+    {
+     "w": "sendiri.",
+     "s": 108.02,
+     "e": 108.3
+    }
+   ]
+  },
+  {
+   "start": 109.32,
+   "end": 111.02,
+   "text": "Penafaran dengan cara kerja tubuh lainnya?",
+   "words": [
+    {
+     "w": "Penafaran",
+     "s": 109.32,
+     "e": 110.0
+    },
+    {
+     "w": "dengan",
+     "s": 110.0,
+     "e": 110.1
+    },
+    {
+     "w": "cara",
+     "s": 110.1,
+     "e": 110.28
+    },
+    {
+     "w": "kerja",
+     "s": 110.28,
+     "e": 110.52
+    },
+    {
+     "w": "tubuh",
+     "s": 110.52,
+     "e": 110.7
+    },
+    {
+     "w": "lainnya?",
+     "s": 110.7,
+     "e": 111.02
+    }
+   ]
+  },
+  {
+   "start": 111.02,
+   "end": 114.88,
+   "text": "Yuk, belajar bersama Metcoy. Gratis di metcoy.com",
+   "words": [
+    {
+     "w": "Yuk,",
+     "s": 111.02,
+     "e": 111.6
+    },
+    {
+     "w": "belajar",
+     "s": 111.8,
+     "e": 112.18
+    },
+    {
+     "w": "bersama",
+     "s": 112.18,
+     "e": 112.56
+    },
+    {
+     "w": "Metcoy.",
+     "s": 112.56,
+     "e": 112.9
+    },
+    {
+     "w": "Gratis",
+     "s": 113.22,
+     "e": 113.8
+    },
+    {
+     "w": "di",
+     "s": 113.8,
+     "e": 114.16
+    },
+    {
+     "w": "metcoy",
+     "s": 114.16,
+     "e": 114.54
+    },
+    {
+     "w": ".com",
+     "s": 114.54,
+     "e": 114.88
+    }
+   ]
+  }
+ ]
+}

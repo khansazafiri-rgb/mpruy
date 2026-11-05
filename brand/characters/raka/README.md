@@ -266,3 +266,25 @@ rakaSvg(raka('netral', 'menunjuk'), { palette: PALETTE_DOSEN });   // dosen menu
 rakaSvg(raka('senang', 'sapa'), { palette: PALETTE_KAKAK, outfit: 'kuliah' });   // kakak tingkat
 rakaSvg(raka('mengerti'), { palette: PALETTE_ADIK, outfit: 'kuliah' });           // adik tingkat tahun depan
 ```
+
+## Duduk, gulung lengan baju, tensimeter (video "Darah tinggi itu sebahaya apa?")
+
+Tambahan **tanpa mengubah desain kanonik** (semua opsi baru default 0; tampilan lama sama persis, dijaga tes):
+
+| Tambahan | Cara pakai |
+|---|---|
+| **Duduk menghadap kamera** | `legs.sit` (0..1) pada kaki berengsel: paha memendek ke arah kamera, lutut sedikit di bawah pinggul, betis tegak sampai lantai. Pose `duduk` = `bob: 70` + `sit: 1`. Kursi digambar adegan (dudukan setinggi pinggul, sandaran di belakang punggung). Transisi berdiri → duduk cukup `lerpState(berdiri, duduk, k)`. |
+| **Gulungan lengan baju** | `armL.roll` / `armR.roll` (0..1). 0 = lengan baju penuh (default). Makin besar, lengan dari pergelangan sampai titik gulungan digambar sebagai **kulit** (lebih ramping) dan ada gulungan kain di batasnya. Tangan lain memegang batas gulungan: ambil titiknya dari `armShape(side, arm).dots[Math.round((1 - roll) * 40)]` dan taruh pergelangan tangan lain di situ (lihat `withRoll` di `video/darah-tinggi/stage/scenesD1.js`). Jangkauan lengan terbatas (~satu panjang lengan), jadi gulungan di atas siku butuh bantuan orang lain atau dilakukan bertahap. |
+| Pose `duduk` | duduk tegak, tangan di paha. |
+| Pose `ulur_lengan` | duduk, **lengan kiri layar diulur lurus ke samping** (lengan di atas meja, siap diberi manset tensimeter). Pakai `flip: 1` untuk sisi sebaliknya. Pergelangan di `(-24, 506)`, siku `(38, 474)`. |
+| Pose `gulung_lengan` | duduk, siku kiri layar di depan dada dan lengan bawah tegak; tangan kanan (digambar di atasnya) memegang lengan baju. Dipakai bersama `armL.roll` yang naik. **Pengecualian tes patch logo**: tangan kanan memang menyilang dada. |
+| Pose `angkat_bahu` | dua lengan terbuka ke samping ("entah"), `bob: -4`. |
+| Pose `pegang_dada` | tangan kanan di dada bagian bawah (di bawah patch, logo tetap terlihat). |
+| Pose `ke_mulut` | tangan kanan ke mulut (minum obat, minum air). |
+| Pose `siapkan` | dua tangan di depan perut setinggi meja dapur (mengolah makanan); gerak tangan dibuat adegan. |
+| Ekspresi `penasaran` | mata agak lebar, alis naik tak sama, senyum kecil. |
+| Ekspresi `waspada` | mata lebar, alis lurus naik, mulut rapat datar (sadar, belum panik). |
+
+Prop yang menempel di tubuh (manset tensimeter, botol garam, gelas, papan klip) digambar oleh adegan, bukan oleh Raka: posisi lengan di kanvas dihitung dari `armShape` + `bob` + `lean` (`toCv` / `armPts` / `cuffAt` di `video/darah-tinggi/stage/common.js`), sehingga manset ikut lengan saat bergerak. Panjang kurva lengan pada semua pose baru dijaga tes agar lengan **tidak memanjang mendadak**.
+
+Prinsip aksi di video itu (berlaku untuk video berikutnya): karakter harus **melakukan** hal yang disebut narasi (berjalan, duduk, menggulung lengan baju, menekan tombol, mengangkat bahu, memegang dada, menaburkan garam, minum obat), tiap aksi punya awal-proses-akhir, bukan sekadar bergoyang saat latar bergerak. Ayunan napas dan kedip (`idle`) hanya pelengkap.
