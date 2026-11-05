@@ -58,6 +58,14 @@ export function defs(p = 'a') {
  <feComposite in="SourceGraphic" in2="d2" operator="arithmetic" k1="1.35" k2="0" k3="0" k4="0" result="lit"/>
  <feComposite in="lit" in2="s2" operator="arithmetic" k1="0" k2="1" k3=".45" k4="0"/>
 </filter>
+<filter id="${p}volV" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+ <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b"/>
+ <feDiffuseLighting in="b" surfaceScale="10" diffuseConstant="1.05" lighting-color="#ffffff" result="d">${light}</feDiffuseLighting>
+ <feSpecularLighting in="b" surfaceScale="10" specularConstant=".8" specularExponent="24" lighting-color="#fff6ea" result="s">${light}</feSpecularLighting>
+ <feComposite in="d" in2="SourceAlpha" operator="in" result="d2"/><feComposite in="s" in2="SourceAlpha" operator="in" result="s2"/>
+ <feComposite in="SourceGraphic" in2="d2" operator="arithmetic" k1="1.3" k2="0" k3="0" k4="0" result="lit"/>
+ <feComposite in="lit" in2="s2" operator="arithmetic" k1="0" k2="1" k3=".55" k4="0"/>
+</filter>
 <!-- tekstur jaringan: bintik halus + serat -->
 <filter id="${p}tex" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
  <feTurbulence type="fractalNoise" baseFrequency=".018 .03" numOctaves="4" seed="7" result="n"/>
@@ -142,3 +150,27 @@ export function sampleCubic(pts, n = 24) {
   out.push([pts[pts.length - 2], pts[pts.length - 1]]); return out;
 }
 export const cubicD = (pts) => { let d = `M${pts[0]} ${pts[1]}`; for (let i = 2; i < pts.length; i += 6) d += `C${pts.slice(i, i + 6).join(' ')}`; return d; };
+
+// ---------------------------------------------------------------- pembuluh bertaper (poligon dari pita) dengan volume filter, sorotan dan sisi gelap searah cahaya
+// pts = titik garis tengah (hasil sampleCubic); w0 -> w1 = lebar awal dan akhir. Mengembalikan svg. o: dark, light, p, shadow
+let _vid = 0;
+export function vessel(pts, w0, w1, c, o = {}) {
+  const p = o.p ?? 'a', dark = o.dark ?? darken(c, 0.5), light = o.light ?? lighten(c, 0.5), id = `${p}vs${_vid++}`;
+  const poly = ribbon(pts, w0, w1), sh = (dx, dy) => pts.map(([x, y]) => [x + dx, y + dy]);
+  const wm = (w0 + w1) / 2;
+  let s = '';
+  if (o.shadow !== false) s += `<g filter="url(#${p}shadowS)"><path d="${poly}" fill="${dark}"/></g>`;
+  s += `<g filter="url(#${p}${o.filter ?? 'volV'})"><path d="${poly}" fill="${c}"/></g>`;
+  s += `<clipPath id="${id}"><path d="${poly}"/></clipPath><g clip-path="url(#${id})">`;
+  s += `<path d="${ribbon(sh(wm * 0.3, wm * 0.3), w0 * 0.34, w1 * 0.34)}" fill="${dark}" opacity=".42" filter="url(#${p}blur4)"/>`;
+  s += `<path d="${ribbon(sh(-wm * 0.2, -wm * 0.2), w0 * 0.24, w1 * 0.24)}" fill="${light}" opacity=".62" filter="url(#${p}blur4)"/>`;
+  s += `<path d="${ribbon(sh(-wm * 0.26, -wm * 0.26), w0 * 0.08, w1 * 0.08)}" fill="#fff" opacity=".7" filter="url(#${p}blur2)"/>`;
+  s += `</g>`;
+  return s;
+}
+// ujung potong pembuluh: elips lumen tegak lurus arah pembuluh. (x,y) ujung, ang = arah garis tengah di ujung (derajat), w = lebar pembuluh
+export function endCap(x, y, ang, w, wall, lumen) {
+  const rx = w / 2, ry = w / 2 * 0.36;
+  return `<g transform="translate(${f1(x)} ${f1(y)}) rotate(${f1(ang + 90)})"><ellipse rx="${f1(rx)}" ry="${f1(ry)}" fill="${darken(wall, 0.35)}"/><ellipse rx="${f1(rx * 0.88)}" ry="${f1(ry * 0.82)}" fill="${lighten(wall, 0.25)}"/><ellipse rx="${f1(rx * 0.7)}" ry="${f1(ry * 0.6)}" fill="${lumen}"/><ellipse cx="${f1(-rx * 0.22)}" cy="${f1(-ry * 0.2)}" rx="${f1(rx * 0.32)}" ry="${f1(ry * 0.2)}" fill="#fff" opacity=".28"/></g>`;
+}
+export const tangent = (pts, atEnd = true) => { const n = pts.length, a = atEnd ? pts[n - 3] : pts[2], b = atEnd ? pts[n - 1] : pts[0]; return Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI; };

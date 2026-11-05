@@ -1,25 +1,25 @@
-"""Preview perbandingan: acuan (potongan kiri = jantung, kanan = gigi) di samping hasil render kode, lalu jantung dan gigi berdampingan.
+"""Preview perbandingan: acuan | hasil sebelumnya (v1) | hasil revisi (v2), untuk jantung (baris 1) dan gigi (baris 2).
 Pemakaian: python3 brand/anatomy-style/bandingkan.py <gambar-acuan.jpg>   -> render/perbandingan.png
-Gambar acuan hanya dipakai untuk perbandingan visual, tidak disertakan sebagai bagian hasil."""
+Acuan = satu gambar berisi jantung (kiri) dan gigi (kanan); hanya dipakai untuk perbandingan visual, tidak menjadi bagian hasil."""
 import sys, os
 from PIL import Image, ImageDraw, ImageFont
 here = os.path.dirname(os.path.abspath(__file__)); out = os.path.join(here, 'render')
 ref = Image.open(sys.argv[1]).convert('RGB'); w, h = ref.size
 refH, refT = ref.crop((0, 0, w // 2 - 2, h)), ref.crop((w // 2 + 2, 0, w, h))
-heart, tooth = Image.open(f'{out}/jantung.png').convert('RGB'), Image.open(f'{out}/gigi.png').convert('RGB')
-H = 1000
+L = lambda n: Image.open(n).convert('RGB')
+H = 900
 def fit(im): return im.resize((round(im.width * H / im.height), H), Image.LANCZOS)
-tiles = [[('ACUAN: jantung', fit(refH)), ('HASIL KODE: jantung', fit(heart))], [('ACUAN: gigi', fit(refT)), ('HASIL KODE: gigi', fit(tooth))], [('HASIL KODE: jantung', fit(heart)), ('HASIL KODE: gigi', fit(tooth))]]
+rows = [[('ACUAN (jantung)', fit(refH)), ('HASIL SEBELUMNYA (v1)', fit(L(f'{out}/v1/jantung.png'))), ('HASIL REVISI (v2)', fit(L(f'{out}/jantung.png')))],
+        [('ACUAN (gigi)', fit(refT)), ('HASIL SEBELUMNYA (v1)', fit(L(f'{out}/v1/gigi.png'))), ('HASIL REVISI (v2)', fit(L(f'{out}/gigi.png')))]]
 pad, cap = 14, 44
-rowW = [sum(t[1].width for t in r) + pad * (len(r) + 1) for r in tiles]
-W = max(rowW); Hh = len(tiles) * (H + cap + pad) + pad
+W = max(sum(t[1].width for t in r) + pad * (len(r) + 1) for r in rows); Hh = len(rows) * (H + cap + pad) + pad
 canvas = Image.new('RGB', (W, Hh), (14, 8, 24)); d = ImageDraw.Draw(canvas)
-try: font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 28)
+try: font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 26)
 except Exception: font = ImageFont.load_default()
 y = pad
-for r in tiles:
+for r in rows:
     x = pad
     for name, im in r:
-        d.text((x, y + 6), name, fill=(255, 255, 255), font=font); canvas.paste(im, (x, y + cap)); x += im.width + pad
+        d.text((x, y + 8), name, fill=(255, 255, 255), font=font); canvas.paste(im, (x, y + cap)); x += im.width + pad
     y += H + cap + pad
 canvas.save(f'{out}/perbandingan.png'); print('ok', canvas.size)

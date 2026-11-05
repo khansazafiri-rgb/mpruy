@@ -1,58 +1,79 @@
-# Gaya visual anatomi MEDCOEL (kode: SVG + filter pencahayaan)
+# Gaya visual anatomi MEDCOEL (kode: SVG + filter pencahayaan), revisi 2
 
-Sistem gaya, jantung, dan potongan gigi yang digambar **murni dari kode** (tanpa gambar acuan yang ditempel). Dikalibrasi terhadap gambar acuan jantung dan gigi dari pemesan (kualitas, warna, volume, pencahayaan). Ini **konsep visual yang masih perlu pemeriksaan anatomi** oleh orang yang berwenang (lihat "Validasi anatomi" di bawah).
+Sistem gaya, jantung, dan potongan gigi yang digambar **murni dari kode** (tanpa gambar acuan yang ditempel). Gambar acuan dari pemesan (dibuat AI, belum divalidasi) hanya dipakai untuk **gaya**: latar, warna, kilau, volume. **Bentuk dan hubungan struktur mengikuti sumber anatomi** (lihat "Sumber yang diperiksa"), bukan acuan. Hasil tetap **konsep visual yang perlu pemeriksaan oleh orang yang berwenang**.
 
 ## Isi folder
 | Berkas | Fungsi |
 |---|---|
-| `anatomi.js` | **Sistem gaya**: palet (`PAL`), filter pencahayaan (`vol`, `volS`, `tex`, `shadow`), latar gelap berlapis + partikel + sel darah kabur (`background`), pembuluh bervolume (`tube`), pita meruncing (`ribbon`), kurva kubik (`sampleCubic`, `cubicD`), label pemeriksaan (`label`). |
-| `jantung.js` | Jantung tampak depan + pembuluh besar + koroner. `jantung({labels, t})` mengembalikan isi SVG. |
-| `gigi.js` | Potongan mesiodistal gigi molar bawah + jaringan penyangga. `gigi({labels, t})`. |
+| `anatomi.js` | **Sistem gaya**: palet (`PAL`), filter pencahayaan (`vol`, `volS`, `volV`, `tex`, `shadow`), latar gelap berlapis + partikel + sel darah kabur (`background`), pembuluh bertaper bervolume (`vessel`, `endCap`), tabung (`tube`), pita meruncing (`ribbon`), kurva kubik (`sampleCubic`, `cubicD`), label pemeriksaan (`label`). |
+| `jantung.js` | Jantung tampak depan + pembuluh besar + koroner utama. `jantung({labels, t})` mengembalikan isi SVG. |
+| `gigi.js` | Potongan mesiodistal **molar pertama rahang bawah** + jaringan penyangga. `gigi({labels, t})`. |
 | `render.html`, `render.cjs` | Merender `?obj=jantung|gigi` (`&labels` = dengan label pemeriksaan, `&t=detik` = fase animasi) ke PNG 1080 x 1920. |
-| `bandingkan.py` | Preview perbandingan acuan vs hasil (butuh berkas gambar acuan dari Anda). |
-| `render/` | `jantung.png`, `gigi.png` (bersih), `*-label.png` (dengan label untuk memeriksa anatomi). |
-| `prompt-gaya-anatomi.md` | Prompt cadangan untuk pembuat gambar (GPT) bila diperlukan, berisi sumber dan daftar periksa. |
+| `bandingkan.py` | Preview perbandingan (acuan, hasil sebelumnya, hasil revisi) dari berkas acuan Anda. |
+| `render/` | `jantung.png`, `gigi.png` (bersih), `*-label.png` (berlabel, untuk memeriksa anatomi), `v1/` (hasil revisi pertama untuk pembanding). |
+| `prompt-gaya-anatomi.md` | Prompt cadangan untuk pembuat gambar. |
 
 ## Merender ulang
 ```bash
 cd <akar repo>
 python3 -m http.server 8128 --bind 127.0.0.1 &          # server statis
 node brand/anatomy-style/render.cjs jantung gigi         # butuh Playwright (Chromium); hasil di brand/anatomy-style/render/
-python3 brand/anatomy-style/bandingkan.py <acuan.jpg>    # preview perbandingan -> render/perbandingan.png
+python3 brand/anatomy-style/bandingkan.py <acuan.jpg> [render/v1/jantung.png render/v1/gigi.png]
 ```
-Dalam video: `import { jantung } from '.../brand/anatomy-style/jantung.js'` lalu `svgDoc(jantung({ t }), 'h')` (lihat `render.html`); `t` (detik) menggerakkan denyut dan partikel aliran.
+Dalam video: `import { jantung, P } from '.../brand/anatomy-style/jantung.js'` lalu `svgDoc(jantung({ t }), P)` (lihat `render.html`).
+
+## Keputusan anatomi (jenis gigi, arah potongan)
+- **Gigi: molar pertama permanen rahang bawah**, potongan **mesiodistal** (sagital) melalui celah sentral. **Mesial di kiri layar, distal di kanan.**
+- **Jumlah akar dan kanal** mengikuti studi CBCT: ±95-97% punya dua akar; akar mesial hampir selalu dua kanal (MB dan ML; tipe Vertucci II paling sering, lalu IV); akar distal paling sering satu kanal (tipe I). Pada bidang ini kanal MB dan ML saling bertumpuk, jadi **MB digambar jelas dan ML samar di belakang bidang potong, menyatu dengan MB di sepertiga apikal (tipe II)**. Akar distal satu kanal lebih lebar.
+- Akar mesial lebih lebar dan apeksnya lebih tumpul; kedua akar sedikit melengkung ke distal; empat tanduk pulpa (dua terlihat di bidang ini).
+
+## Layer animasi (id grup SVG)
+- **Jantung:** `#h-denyut` (seluruh jantung, skala berdenyut mengikuti `t`), `#h-ventrikel`, `#h-atrium` (+ `#h-atrium-aurikel`), `#h-aorta`, `#h-pulmonal`, `#h-vena-besar`, `#h-vena-pulmonalis`, `#h-koroner`, `#h-vena-jantung`, `#h-lemak`, `#h-aliran`, `#h-label`.
+- **Gigi:** `#g-tulang`, `#g-lig-periodontal`, `#g-dentin`, `#g-sementum`, `#g-email`, `#g-pulpa`, `#g-saraf-pembuluh`, `#g-pulpa-aliran` (partikel di kanal, mengikuti `t`), `#g-gusi`, `#g-label`.
+Cara pakai: render per frame dengan `t`, atau ambil grup sebagai elemen terpisah dan beri transformasi/opacity.
 
 ## Prinsip gaya (agar organ lain terasa satu seri)
-- **Kanvas** 1080 x 1920. Subjek besar, di dalam area aman; sisakan ruang atas dan bawah untuk judul/label.
+- **Kanvas** 1080 x 1920; subjek besar di area aman (x 60-1020, y 250-1450).
 - **Latar**: gradien aubergine (`PAL.bg`), cahaya magenta di belakang subjek, bentuk besar sangat kabur, siluet pembuluh kabur, sel darah merah/biru kabur, partikel halus bercahaya (`background()`).
-- **Cahaya**: satu sumber dari **kiri atas** (azimuth 225) di semua filter; rim light dingin merah muda di tepi kanan-bawah; bayangan jatuh ke kanan-bawah.
-- **Volume**: (1) gradien radial per organ; (2) filter `vol`/`volS` mengubah alpha yang diburamkan menjadi relief (diffuse x specular); (3) goresan sorotan lebar berburam; (4) tekstur turbulensi halus; (5) `tube()` berlapis untuk pembuluh (sorotan digeser ke arah cahaya); (6) ujung potong pembuluh digambar sebagai cincin lumen.
-- **Warna** boleh berbeda per organ (palet di `PAL`: merah otot jantung, biru vena, jingga lemak, krem dentin, lavender enamel, jingga trabekula, merah muda gusi), tetapi semua lewat filter, gradien, dan latar yang sama.
-- **Gradien yang dipakai lintas bentuk** harus `gradientUnits="userSpaceOnUse"` (kalau tidak, warna antar-bentuk yang bersambung berbeda dan muncul garis sambungan; pelajaran dari dentin).
-- **Jalur terbuka untuk goresan tepi**: jangan menggoreskan path tertutup yang sisi penutupnya melintasi gambar (muncul garis di dalam objek).
-
-## Bagian yang dapat dianimasikan (id grup di SVG)
-- Jantung: `#h-denyut` (skala berdenyut kecil mengikuti `t`), `#h-aliran` (partikel di aorta), `#h-koroner`, `#h-koroner-halus`, `#h-lemak`, `#h-label`.
-- Gigi: `#g-pulpa-aliran` (partikel di kanal), `#g-gusi`, `#g-tulang`, `#g-label`.
-Untuk animasi video: render per frame dengan `t`, atau ambil grup sebagai elemen terpisah dan beri transformasi/opacity.
+- **Cahaya**: satu sumber dari **kiri atas** (azimuth 225) di semua filter; rim light merah muda di tepi kanan-bawah; bayangan jatuh ke kanan-bawah.
+- **Volume**: gradien per organ (`userSpaceOnUse`); filter `vol`/`volS`/`volV` mengubah alpha yang diburamkan menjadi relief (diffuse x specular); sorotan lebar berburam; `vessel()` membuat pembuluh bertaper dengan sisi gelap dan sorotan searah cahaya; ujung potong pembuluh dengan `endCap()`.
+- **Warna** boleh berbeda per organ (`PAL`), tetapi semua lewat filter, gradien, dan latar yang sama.
+- **Gradien lintas bentuk** harus `gradientUnits="userSpaceOnUse"`; **jangan** menggoreskan path tertutup yang sisi penutupnya melintasi gambar (muncul garis di dalam objek).
 
 ## Membuat organ lain dengan gaya yang sama
-1. Salin `jantung.js` sebagai kerangka: `import` dari `anatomi.js`, `export const P = '<awalan id>'`, fungsi `organ({labels, t})`.
-2. Mulai dengan `background(P, {seed, glow, tint, vesselColor})`; gambar siluet organ dengan `<g filter="url(#${P}vol)">` + gradien radial organ; tambah sorotan dan rim light; pembuluh dengan `tube()`; tutup dengan `vignette(P)`.
-3. Tambah entri `PAL` untuk warna organ; jangan mengubah arah cahaya atau latar.
-4. Tambahkan label pemeriksaan (`label()`) dan render dengan `&labels` untuk memeriksa struktur sebelum dipakai di video.
-Rencana berikutnya (setelah gaya jantung dan gigi disetujui): pembuluh darah (penampang arteri), sel darah, dan kulit dengan sistem yang sama.
+1. Salin `jantung.js` sebagai kerangka (`import` dari `anatomi.js`, `export const P`, fungsi `organ({labels, t})`).
+2. Mulai dari `background(P, {...})`; siluet organ dengan `<g filter="url(#${P}vol)">` + gradien; sorotan dan rim light; pembuluh dengan `vessel()`; tutup dengan `vignette(P)`.
+3. Tambah warna organ di `PAL`; jangan ubah arah cahaya atau latar.
+4. Tambah `label()` dan render `&labels` untuk memeriksa struktur sebelum dipakai.
 
-## Validasi anatomi
-**Sumber yang benar-benar diperiksa: tidak ada.** Sesi pembuatan tidak punya akses web, dan atlas yang saya acu (Netter *Atlas of Human Anatomy*; Gray's *Anatomy for Students*; Moore *Clinically Oriented Anatomy*; Ten Cate *Oral Histology*; Ross & Pawlina *Histology*) **tidak dibuka**: pemeriksaan di bawah adalah penilaian dari pengetahuan penulis dan harus diverifikasi terhadap atlas tersebut oleh orang yang berwenang.
+## Sumber yang diperiksa (benar-benar dibuka di sesi ini)
+Diambil lewat HTTP pada sesi pembuatan (Wikipedia en dan PubMed E-utilities). Ini sumber sekunder/abstrak, **bukan atlas anatomi**; atlas (Netter, Gray's, Moore, Ten Cate) tidak dapat dibuka. Pemeriksaan akhir terhadap atlas tetap diperlukan.
 
-Jantung (tampak depan), menurut penilaian penulis:
-- Cocok dengan deskripsi atlas: apeks mengarah ke kiri-bawah pasien; aorta asenden keluar dari ventrikel kiri dan melengkung ke kiri pasien dengan tiga cabang arkus (brakiosefalika, karotis komunis kiri, subklavia kiri); batang pulmonal di depan aorta, keluar dari ventrikel kanan, bercabang (arteri pulmonalis kiri terlihat, kanan lewat di belakang aorta dan vena kava superior); VKS masuk ke atrium kanan dan VKI di bawahnya; aurikel kanan menutupi pangkal aorta, aurikel kiri di sisi batang pulmonal; RCA di alur AV kanan, LAD di alur interventrikular anterior, sirkumfleks di alur AV kiri; vena jantung magna di samping LAD; lemak epikardium di alur; dua vena pulmonalis kiri terlihat di sisi lateral kiri.
-- Disederhanakan atau belum yakin: pola cabang koroner halus dibuat acak berpola (dekoratif, **bukan** pola cabang diagonal/marginal yang sebenarnya); asal RCA dan LCA di sinus aorta tidak digambar; proporsi dan sudut aorta-batang pulmonal-aurikel perlu dicek ke atlas; bentuk atrium kanan dan aurikel kanan disederhanakan; ukuran relatif ventrikel kanan vs kiri; pembuluh berupa tabung seragam (tanpa lengkungan alami dan kalsifikasi); vena jantung kecil dan vena anterior hanya skematik.
+Jantung:
+1. Wikipedia, *Heart*: apeks ke kiri; permukaan sternokostal; aurikel kanan dan kiri; sulkus koronarius dan sulkus interventrikular anterior; vena jantung (magna, media, parva, anterior); sinus koronarius; vena kardiaka anterior mengalir langsung ke atrium kanan; batang pulmonal keluar dari ventrikel kanan.
+2. Wikipedia, *Aorta*: aorta asenden mulai posterior terhadap batang pulmonal lalu berputar ke kanan-depannya; arkus melengkung di atas arteri pulmonalis kiri dan bifurkasi batang pulmonal; urutan cabang arkus: trunkus brakiosefalika, karotis komunis kiri, subklavia kiri.
+3. Wikipedia, *Pulmonary artery*: batang pulmonal naik ke atas dan ke kiri dari ventrikel kanan, bercabang **di bawah** arkus aorta; panjang sekitar 5 cm, diameter 2-3 cm; arteri pulmonalis kiri lebih pendek; kanan melintasi garis tengah.
+4. Wikipedia, *Coronary arteries* dan *Right coronary artery*: RCA dari sinus aorta kanan, turun di sulkus koronarius kanan menuju krux; cabang marginal kanan, arteri konus, arteri nodus SA; LCA dari sinus kiri bercabang LAD dan sirkumfleksa.
+5. Wikipedia, *Left anterior descending artery*: turun di sulkus interventrikular anterior sampai takik apeks (varian wraparound); menyuplai dinding anterolateral ventrikel kiri dan septum. *Circumflex branch*: melingkar di sulkus AV kiri (sulkus koronarius), cabang marginal kiri. *Great cardiac vein*: mulai di apeks, naik di sulkus interventrikular anterior lalu bergabung membentuk sinus koronarius di permukaan posterior.
 
-Gigi (molar bawah, potongan mesiodistal), menurut penilaian penulis:
-- Cocok: enamel hanya di mahkota (tebal di puncak tonjol, tipis di leher); dentin di mahkota dan akar dengan tubulus radial; ruang pulpa dengan tanduk pulpa dan dua kanal akar yang meruncing ke foramen apikal; sementum tipis di akar; ligamen periodontal; tulang alveolar (trabekular) di sekitar akar dengan puncak sedikit di bawah batas sementum-enamel; gusi dengan margin, sulkus, dan epitel penyatu; furkasi di antara dua akar; berkas saraf-pembuluh alveolaris inferior (saraf, arteri, vena) di bawah akar dengan cabang dental ke apeks.
-- Disederhanakan atau belum yakin: gigi tetangga dan septum interdental tidak digambar (gusi di sisi kiri-kanan hanya sebagai papila skematik); tulang trabekular digambar sebagai pori bulat seperti sarang (sebenarnya batang-batang trabekula tak beraturan), lamina dura/kortikal tidak dibedakan; kanal mandibula digambar tanpa dinding kortikal; molar bawah umumnya punya dua kanal di akar mesial (di sini satu per akar); sementum dan email diberi ketebalan estetis; pola pembuluh dan saraf di pulpa dekoratif.
+Gigi dan jaringan penyangga:
+6. Wikipedia, *Mandibular first molar*: dua akar (mesial dan distal), akar distal lebih lurus, keduanya sedikit melengkung ke distal; akar mesial lebih lebar dengan apeks tumpul dan lebih beralur; lima tonjol; empat tanduk pulpa.
+7. PubMed: Greek population CBCT (PMID 32161889, 2019): 96,4% molar pertama bawah dua akar, 3,3% tiga akar; pola kanal tipe II terbanyak di akar mesial (69,8%) dan tipe I di distal (81,7%). Yemeni population CBCT (PMID 32342032, 2020): 96,8% dua akar; kanal mesial dua di 95,8%, distal satu di 96,4%; mesial tipe II 57%, tipe IV 35,6%. Jordanian CBCT (PMID 41028125, 2025): dua akar 96,2%; mesial dua kanal 100%; distal satu kanal 77,9%; mesial tipe II 68%. Brazilian CT (PMID 36287490, 2022): 94,9% dua akar; mesial tipe IV paling sering di molar pertama pada studi itu, distal tipe I. (Varian antar-populasi: tipe II dan IV sama-sama umum di akar mesial.)
+8. Wikipedia, *Pulp (tooth)*: berkas saraf-pembuluh masuk lewat foramen apikal; ruang pulpa, tanduk pulpa, kanal radikular; pleksus Raschkow; serabut A-delta di perifer dekat odontoblas.
+9. Wikipedia, *Gums*: gusi marginal mengikuti kontur bergerigi CEJ, setajam pisau pada margin bebas; sulkus gingiva; gusi cekat dengan stippling dan batas mukogingiva; papila interdental piramid atau col.
+10. Wikipedia, *Alveolar process*: puncak alveolar sekitar 1-2 mm dari leher gigi; lamina dura (tulang alveolar propria/bundle bone, tempat serat Sharpey masuk); lempeng kortikal 1,5-3 mm di gigi posterior; tulang trabekular di antaranya. *Periodontal ligament*: serat utama kolagen, serat Sharpey, melekat dari sementum ke tulang.
+11. PubMed, BMC Oral Health 2025 (PMID 41430227): jarak apeks ke kanal alveolaris inferior rata-rata 6,32 mm pada molar pertama bawah, sehingga berkas saraf-pembuluh alveolaris inferior **jauh di bawah apeks** dan tidak digambar penuh (hanya berkas apikal yang keluar dari foramen dan memudar ke tulang).
 
-## Evaluasi terhadap acuan (ringkas; rincian di bagian bawah laporan sesi)
-Kemiripan gaya (latar ungu-magenta, warna jenuh, volume, partikel) sudah ada, tetapi **kilau dan kehalusan permukaan acuan lebih tinggi**, bentuk jantung acuan lebih bulat-gemuk dengan pencahayaan lebih lembut, dan cabang koroner acuan lebih halus dan natural; gigi acuan memakai gusi bergelombang yang membungkus leher gigi dan tulang berbentuk awan yang memudar (di sini masih blok persegi dengan tepi kiri-kanan lurus). Revisi lanjutan yang disarankan: tekstur kulit organ lebih halus + sorotan kaca (specular map), kurva koroner dibuat tangan per cabang, gusi bergelombang, bentuk tulang awan.
+## Struktur yang cocok dengan sumber vs yang disederhanakan
+Jantung, **cocok dengan sumber di atas:** apeks ke kiri-bawah pasien; aorta asenden keluar di belakang batang pulmonal lalu di kanan-depannya; arkus di atas bifurkasi pulmonal dengan tiga cabang berurutan; batang pulmonal naik ke kiri dan bercabang di bawah arkus (cabang kanan lewat di belakang aorta); VKS masuk ke atrium kanan, VKI di bawahnya; aurikel kanan di depan akar aorta, aurikel kiri di sisi batang pulmonal; RCA di sulkus koronarius kanan menuju tepi akut dengan cabang marginal kanan; LAD di sulkus interventrikular anterior sampai takik apeks dengan cabang diagonal; sirkumfleksa di sulkus AV kiri dengan cabang marginal kiri; vena jantung magna naik di samping LAD; vena kardiaka anterior ke atrium kanan; lemak epikardium di alur.
+**Disederhanakan atau belum yakin:** asal RCA/LCA di sinus aorta dan batang utama LCA tersembunyi di belakang pembuluh besar (tidak digambar); jumlah, sudut, dan panjang cabang diagonal/marginal adalah contoh representatif (bervariasi antar-individu); cabang distal pendek hanya penanda; proporsi atrium kanan, aurikel, dan ukuran relatif ventrikel kanan-kiri perlu dicek ke atlas; vena jantung kecil dan media tidak lengkap; vena pulmonalis kiri (dua) digambar sebagai gagang ke samping (sebenarnya muncul dari belakang atrium kiri); pembuluh digambar halus tanpa kalsifikasi dan lengkung alami; warna merah/biru adalah konvensi (batang pulmonal biru karena darah rendah oksigen).
+
+Gigi, **cocok dengan sumber di atas:** molar pertama bawah dua akar (mesial lebih lebar dan apeks tumpul, distal lebih lurus, keduanya melengkung ke distal); akar mesial dua kanal yang menyatu apikal (tipe II) dan distal satu kanal; email tebal di tonjol dan menipis ke leher; dentin dengan tubulus; ruang pulpa dengan dua tanduk terlihat; sementum tipis; ligamen periodontal tipis dengan serat Sharpey; lamina dura dan tulang trabekular; puncak alveolar sekitar 1-2 mm di bawah CEJ; margin gusi bergerigi setajam pisau dengan sulkus dan epitel penyatu; furkasi; berkas saraf-pembuluh masuk lewat foramen apikal.
+**Disederhanakan atau belum yakin:** gigi tetangga dan septum interdental tidak digambar (papila digambar sebagai gundukan skematik); tulang trabekular memakai pori elips bergerombol (sebenarnya batang trabekula tak beraturan); lamina dura dan sementum dilebihkan tipis/tebalnya agar terlihat; batas email-dentin diberi gelombang halus tetapi bukan pola nyata; ketebalan email dan rasio mahkota-akar adalah perkiraan; kanal ML hanya penanda samar; pola pembuluh dan saraf di pulpa dekoratif (jumlah cabang tidak mengikuti data); kanal alveolaris inferior tidak digambar.
+
+## Keterbatasan
+Hasil ini belum divalidasi terhadap atlas atau oleh ahli anatomi; kilau dan kehalusan permukaan masih di bawah acuan; belum ada versi animasi video (hanya struktur layer dan parameter `t`).
+
+## Evaluasi revisi 2 (terhadap acuan dan hasil sebelumnya)
+Yang membaik dibanding v1: jantung jauh lebih besar dan menjadi fokus (±70% lebar bingkai), siluet lebih bulat dan organik, permukaan jauh lebih halus (tekstur berbintik dan serat dibuang) dengan sorotan kaca yang mengikuti lengkung; pembuluh besar bertaper dengan akar aorta, bifurkasi, dan ujung potong yang menyambung; koroner hanya jalur utama dan cabang bernama (bukan pohon acak); gigi berjenis jelas (molar pertama bawah, dua akar, kanal MB+ML samar dan distal tunggal), gusi bergerigi dengan sulkus, tulang berbentuk awan memudar dengan pori tak seragam, enamel lebih tebal dan tembus cahaya.
+Yang masih jauh dari acuan: kilau dan kedalaman "kulit organ" acuan lebih kaya; jantung acuan lebih padat dengan percabangan koroner halus yang natural, sedangkan di sini permukaan ventrikel kanan masih agak polos; pembuluh besar masih terlihat seperti tabung walau sudah bertaper; gusi acuan membungkus leher gigi lebih tebal dan bergelombang; ruang pulpa acuan lebih sempit dengan arborisasi lebih rapat; label pemeriksaan masih saling silang (hanya untuk pemeriksaan, bukan untuk video).
