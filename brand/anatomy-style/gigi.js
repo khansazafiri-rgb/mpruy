@@ -10,7 +10,7 @@
 // Mode: gigi({labels,t}) = render final; siluet({guides}) = hanya siluet gigi, gusi, massa tulang (tanpa latar/tekstur); render polos (warna datar) = plainify(gigi()) lewat render.html?plain.
 // Layer animasi (id grup): #g-tulang, #g-kanal-mandibula, #g-lig-periodontal, #g-dentin, #g-sementum, #g-pulpa, #g-saraf-pembuluh, #g-email, #g-gusi, #g-pulpa-aliran, #g-label.
 import { PAL, W, H, f1, rng, mix, lighten, darken, vignette, ribbon, sampleCubic, cubicD, fx, TEMA_MEDCOEL } from './anatomi.js';
-import { MC, latar, merek, labels, labelsT, peralihan, maksLabel, KONTUR, E, seg, KLIP, kam, selVoronoi, halus } from './medcoel.js';
+import { MC, latar, merek, labels, labelsT, peralihan, selam, maksLabel, KONTUR, E, seg, KLIP, kam, selVoronoi, halus } from './medcoel.js';
 export const P = 'g';
 export const FLAT = { gEn: '#A9C8C4', gDen: '#F0BC72', gPulp: '#E04A5C', gBone: '#EAD6A4', gMarrow: '#B98440', gGum: '#E4707F', gMuc: '#B0505E' };
 
@@ -125,11 +125,11 @@ export function guides(L, tag, color = ['#D01030', '#1060D0', '#10A050', '#777']
 
 
 export const TEMA = TEMA_MEDCOEL;
-export const LAYERS = [['g-tulang', 'Tulang alveolar (kortikal + trabekula + sumsum)'], ['g-lig-periodontal', 'Ligamen periodontal + lamina dura'], ['g-dentin', 'Dentin'], ['g-sementum', 'Sementum'], ['g-pulpa', 'Ruang pulpa + kanal akar'], ['g-saraf-pembuluh', 'Saraf dan pembuluh'], ['g-email', 'Email'], ['g-gusi', 'Gusi + mukosa'], ['g-kontur', 'Kontur tinta'], ['g-konteks-ian', 'OPSIONAL (mati): kanal mandibula + cabang dental']];
+export const LAYERS = [['g-siluet', 'Siluet gigi utuh (pembuka klip)'], ['g-tulang', 'Tulang alveolar (kortikal + trabekula + sumsum)'], ['g-lig-periodontal', 'Ligamen periodontal + lamina dura'], ['g-dentin', 'Dentin'], ['g-sementum', 'Sementum'], ['g-pulpa', 'Ruang pulpa + kanal akar'], ['g-saraf-pembuluh', 'Saraf dan pembuluh'], ['g-email', 'Email'], ['g-gusi', 'Gusi + mukosa'], ['g-kontur', 'Kontur tinta'], ['g-konteks-ian', 'OPSIONAL (mati): kanal mandibula + cabang dental']];
 // jadwal reveal (detik) untuk klip 5 dtk: [mulai, selesai, arah]
-export const JADWAL = { 'g-tulang': [0.1, 1.0, 'naik'], 'g-lig-periodontal': [0.7, 1.3, 'pudar'], 'g-dentin': [1.0, 1.8, 'naik'], 'g-sementum': [1.4, 1.8, 'pudar'], 'g-pulpa': [1.6, 2.3, 'naik'], 'g-saraf-pembuluh': [2.1, 2.5, 'pudar'], 'g-email': [2.0, 2.8, 'turun'], 'g-gusi': [2.5, 3.3, 'naik'], 'g-kontur': [2.8, 3.2, 'pudar'] };
+export const JADWAL = { 'g-email': [1.0, 1.5, 'pudar'], 'g-dentin': [1.3, 1.9, 'pudar'], 'g-pulpa': [1.8, 2.5, 'naik'], 'g-saraf-pembuluh': [2.3, 2.8, 'pudar'], 'g-sementum': [2.4, 2.9, 'pudar'], 'g-lig-periodontal': [2.9, 3.5, 'pudar'], 'g-tulang': [2.8, 3.5, 'naik'], 'g-gusi': [3.5, 4.1, 'naik'], 'g-kontur': [3.4, 3.9, 'pudar'] };   // siluet gigi utuh (g-siluet) tampil sejak awal
 // jadwal label (detik) [kunci, sisi, teks, t0, t1]; maksimum 3 label sekaligus (diperiksa oleh maksLabel)
-export const LABEL_T = [['tulang', -1, 'Tulang', 1.1, 2.6], ['dentin', -1, 'Dentin', 1.9, 3.4], ['pulpa', 1, 'Pulpa', 2.5, 4.0], ['email', -1, 'Email', 3.0, 4.5], ['gusi', -1, 'Gusi', 3.5, 5.0], ['kanal', 1, 'Kanal akar', 4.05, 5.0]];
+export const LABEL_T = [['email', -1, 'Email', 1.2, 2.8], ['dentin', -1, 'Dentin', 1.6, 3.15], ['pulpa', 1, 'Pulpa', 2.1, 3.7], ['kanal', 1, 'Akar', 2.9, 4.4], ['tulang', -1, 'Tulang', 3.2, 4.55]];
 
 export function gigi(o = {}) {
   const p = 'g', labels = !!o.labels, t = o.t ?? 0, anim = !!o.anim, r = rng(9), konteks = !!o.konteks, bone = konteks ? BONE_DEEP : BONE, bd = bone.d, cav = marrowSpaces(rng(21), bone.poly);
@@ -143,6 +143,7 @@ export function gigi(o = {}) {
   let s = latar(p, { seed: 5, fokus: { x: 540, y: 1000 }, t: anim ? t : 0 });
   s += `<defs>
   <linearGradient id="gEn" gradientUnits="userSpaceOnUse" x1="260" y1="${T0}" x2="820" y2="${CEJ}"><stop offset="0" stop-color="#C6DCD8"/><stop offset=".5" stop-color="#9FBFBC"/><stop offset="1" stop-color="#6E9694"/></linearGradient>
+  <linearGradient id="gSil" gradientUnits="userSpaceOnUse" x1="0" y1="${T0}" x2="0" y2="${CEJ + 60}"><stop offset="0" stop-color="#F4F8F4"/><stop offset=".55" stop-color="#DCEAE4"/><stop offset=".93" stop-color="#C6DCD4"/><stop offset="1" stop-color="#EBDDB8"/></linearGradient>
   <radialGradient id="gDen" gradientUnits="userSpaceOnUse" cx="500" cy="540" r="900"><stop offset="0" stop-color="#FFE7B0"/><stop offset=".5" stop-color="#F3BE76"/><stop offset="1" stop-color="#CC8C46"/></radialGradient>
   <radialGradient id="gPulp" gradientUnits="userSpaceOnUse" cx="520" cy="620" r="520"><stop offset="0" stop-color="#FF8088"/><stop offset=".5" stop-color="#E24A5E"/><stop offset="1" stop-color="#982242"/></radialGradient>
   <linearGradient id="gBone" gradientUnits="userSpaceOnUse" x1="0" y1="780" x2="0" y2="1600"><stop offset="0" stop-color="#F6EBCB"/><stop offset=".55" stop-color="#E6CF9C"/><stop offset="1" stop-color="#CDA96E"/></linearGradient>
@@ -185,6 +186,8 @@ export function gigi(o = {}) {
   sampleCubic(ROOTm, 16).forEach(([x, y], i) => { if (i % 2 || y < CREST_Y + 6) return; const sx = x < 540 ? -1 : 1; fib += `<path d="M${f1(x)} ${f1(y)}l${f1(sx * 13)} ${f1(y < CEJ + 190 ? -9 : 8)}" stroke="#A9482C" stroke-width="2" opacity=".6" stroke-linecap="round"/>`; });
   sc += rv('g-lig-periodontal', `<g id="g-lig-periodontal">${pdl}${fx(fib)}</g>`);
 
+  // ---- siluet gigi utuh (alur video: dikenali dulu sebagai gigi dengan mahkota, lalu email/dentin/pulpa/akar/tulang dibuka); memakai TOOTH_D yang sudah ada, tertutup oleh dentin+email setelah dibuka
+  if (anim && t < 2.4) sc += `<g id="g-siluet" opacity="${f1(1 - seg(t, 2.0, 2.4))}"><g filter="url(#${p}shadow)"><g filter="url(#${p}vol)"><path d="${TOOTH_D}" fill="url(#gSil)"/></g></g>${fx(`<path d="${cubicD(CROWN_INm)}" fill="none" stroke="#FFFFFF" stroke-width="22" opacity=".28" filter="url(#${p}blur8)" transform="translate(-6 -6)"/>`)}<path d="${TOOTH_D}" fill="none" stroke="${KONTUR.warna}" stroke-width="${KONTUR.lebar}" stroke-linejoin="round" opacity="${KONTUR.opasitas}"/></g>`;
   // ---- dentin (mahkota + akar sebagai SATU bentuk): hangat-emas, tubulus radial
   let den = `<g filter="url(#${p}shadow)"><g filter="url(#${p}volS)"><path d="${DENTIN_D}" fill="url(#gDen)"/></g></g>`;
   let tub = '';
@@ -232,15 +235,19 @@ export function gigi(o = {}) {
   for (const c of [cm, cd]) for (let i = 0; i < 4; i++) { const u = (((t * 0.4 + i / 4) % 1) + 1) % 1, [x, y] = c[Math.floor((1 - u) * (c.length - 1))]; fl += `<circle cx="${f1(x)}" cy="${f1(y)}" r="5" fill="#FFF3D0" opacity="${f1(0.7 * Math.sin(u * Math.PI))}"/>`; }
   sc += fx(`<g id="g-pulpa-aliran" filter="url(#${p}blur2)">${fl}</g>`);
 
-  s += `<g id="mc-adegan" transform="translate(0 ${SH}) ${K.tf}">${sc}</g>`;
+  // transisi antarorgan (selam): masuk lewat foramen apikal akar distal, keluar lewat ruang pulpa (zoom ke lumen merah)
+  const SL = anim ? selam(t, { masuk: { ...fk(KP(MX(722), MY(1438))), r: 26 }, keluar: { ...fk(KP(MX(540), MY(700))), r: 70 } }, 'gsl') : { zoom: '', ov: '', aJudul: 1 };
+  s += `<g transform="${SL.zoom}"><g id="mc-adegan" transform="translate(0 ${SH}) ${K.tf}">${sc}</g></g>`;
+  s += SL.ov;
   s += vignette(p);
-  s += merek({ judul: 'Gigi', sub: 'Molar 1 bawah · potongan mesiodistal' });
+  s += merek({ judul: 'Gigi', sub: 'Molar 1 bawah · potongan mesiodistal', aJudul: SL.aJudul });
   if (labels) {
     const P2 = KP, tl = anim ? t : 4.2;
-    const anc = { tulang: P2(cav.big.x, cav.big.y), dentin: P2(MX(380), MY(740)), pulpa: P2(MX(642), MY(676)), email: P2(MX(372), MY(598)), gusi: P2(tipL[0] + 6, tipL[1] + 40), kanal: P2(MX(668), MY(1130)) };
-    s += labelsT(LABEL_T.map(([k, sd, tx, t0, t1]) => [...anc[k], sd, tx, t0, t1]), tl, { atas: 330 });
+    const anc = { tulang: P2(cav.big.x, cav.big.y), dentin: P2(MX(380), MY(740)), pulpa: P2(MX(642), MY(676)), email: P2(MX(372), MY(598)), kanal: P2(MX(718), MY(1300)) };
+    const pos = { email: ['L', 470], dentin: ['L', 560], pulpa: ['R', 470], kanal: ['R', 1690], tulang: ['L', 1650] };   // chip hanya di jalur bebas (samping mahkota, di bawah organ), tidak menutupi tepi gigi/gusi/tulang
+    s += labelsT(LABEL_T.map(([k, sd, tx, t0, t1]) => [...anc[k], sd, tx, t0, t1, pos[k][1], pos[k][0]]), tl, { atas: 330 });
   }
-  if (anim) s += peralihan(t);
   return s;
 }
 const labels2 = labels;
+function fk([x, y]) { return { x, y }; }

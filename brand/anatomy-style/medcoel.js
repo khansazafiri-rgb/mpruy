@@ -45,7 +45,7 @@ export function latar(p, o = {}) {
 // merek: logo asli (pil krem seperti panggung video) + judul; pada render bersih saja
 export function merek(o = {}) {
   const s = `<g id="mc-merek"><rect x="52" y="48" width="${o.lebar ?? 312}" height="76" rx="38" fill="${MC.ivory}" opacity=".96"/><image href="${LOGO_FULL}" x="74" y="61" height="50" preserveAspectRatio="xMinYMid meet"/></g>`;
-  const judul = o.judul ? `<g id="mc-judul"><text x="60" y="206" font-family="${FONT}" font-weight="800" font-size="58" fill="${MC.ivory}">${o.judul}</text>${o.sub ? `<text x="60" y="252" font-family="${FONT}" font-weight="600" font-size="32" fill="${MC.mint}">${o.sub}</text>` : ''}<rect x="60" y="274" width="86" height="8" rx="4" fill="${MC.gold}"/></g>` : '';
+  const judul = o.judul ? `<g id="mc-judul" opacity="${f1(o.aJudul ?? 1)}"><text x="60" y="206" font-family="${FONT}" font-weight="800" font-size="58" fill="${MC.ivory}">${o.judul}</text>${o.sub ? `<text x="60" y="252" font-family="${FONT}" font-weight="600" font-size="32" fill="${MC.mint}">${o.sub}</text>` : ''}<rect x="60" y="274" width="86" height="8" rx="4" fill="${MC.gold}"/></g>` : '';
   return fx(s + judul);
 }
 export const maskot = (nama, x, y, ukuran = 260) => fx(`<image id="mc-maskot" href="../mascots/${nama}.svg" x="${x}" y="${y}" width="${ukuran}" height="${ukuran}"/>`);
@@ -54,13 +54,22 @@ export const maskot = (nama, x, y, ukuran = 260) => fx(`<image id="mc-maskot" hr
 // items: [x, y, sisi (-1 kiri / 1 kanan), teks, {a: 0..1}]; (x,y) = titik pada struktur (koordinat kanvas). Disusun otomatis agar tidak bertumpuk.
 export function labels(items, o = {}) {
   const fs = o.fs ?? 32, h = fs * 1.78, gap = h + 14, out = [];
+  const chip = (x, y, cx, ty, w, ex, ey, txt, a) => `<g opacity="${f1(a)}"><path d="M${f1(x)} ${f1(y)}L${f1(ex)} ${f1(ey)}" stroke="${MC.ink}" stroke-width="7" opacity=".5" stroke-linecap="round"/><path d="M${f1(x)} ${f1(y)}L${f1(ex)} ${f1(ey)}" stroke="${MC.gold}" stroke-width="3.6" stroke-linecap="round"/><circle cx="${f1(x)}" cy="${f1(y)}" r="9" fill="${MC.gold}" stroke="${MC.ink}" stroke-width="3"/><circle cx="${f1(x)}" cy="${f1(y)}" r="3" fill="${MC.ivory}"/><rect x="${f1(cx)}" y="${f1(ty - h / 2)}" width="${f1(w)}" height="${f1(h)}" rx="${f1(h / 2)}" fill="${MC.ivory}" stroke="${MC.ink}" stroke-width="2.5"/><text x="${f1(cx + w / 2)}" y="${f1(ty + fs * 0.35)}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="${fs}" fill="${MC.ink}">${txt}</text></g>`;
+  const lebar = (txt) => txt.length * fs * 0.6 + 44;
+  // penempatan eksplisit: op.cx = pusat chip (x), op.ty = pusat chip (y); garis penuntun menuju titik terdekat pada chip
+  for (const [x, y, , txt, op] of items.filter((it) => it[4]?.cx != null)) {
+    const a = op.a ?? 1; if (a <= 0.001) continue;
+    const w = lebar(txt), cx = op.cx === 'L' ? 24 : op.cx === 'R' ? W - 24 - w : op.cx - w / 2, ty = op.ty; let exx, ey;
+    if (y >= ty - h / 2 && y <= ty + h / 2) { exx = x < cx ? cx : cx + w; ey = ty; } else { exx = Math.max(cx + h / 2, Math.min(cx + w - h / 2, x)); ey = y < ty ? ty - h / 2 : ty + h / 2; }
+    out.push(chip(x, y, cx, ty, w, exx, ey, txt, a));
+  }
   for (const side of [-1, 1]) {
     let prev = (o.atas ?? 330) - gap;
-    for (const [x, y, , txt, op] of items.filter((it) => it[2] === side).sort((a, b) => a[1] - b[1])) {
+    for (const [x, y, , txt, op] of items.filter((it) => it[2] === side && it[4]?.cx == null).sort((a, b) => a[1] - b[1])) {
       const ty = Math.max(op?.ty ?? y, prev + gap); prev = ty;
-      const w = txt.length * fs * 0.6 + 44, cx = side < 0 ? 24 : W - 24 - w, ex = side < 0 ? cx + w : cx, a = op?.a ?? 1;
+      const w = lebar(txt), cx = side < 0 ? 24 : W - 24 - w, ex = side < 0 ? cx + w : cx, a = op?.a ?? 1;
       if (a <= 0.001) continue;
-      out.push(`<g opacity="${f1(a)}"><path d="M${f1(x)} ${f1(y)}L${f1(ex)} ${f1(ty)}" stroke="${MC.ink}" stroke-width="7" opacity=".5" stroke-linecap="round"/><path d="M${f1(x)} ${f1(y)}L${f1(ex)} ${f1(ty)}" stroke="${MC.gold}" stroke-width="3.6" stroke-linecap="round"/><circle cx="${f1(x)}" cy="${f1(y)}" r="9" fill="${MC.gold}" stroke="${MC.ink}" stroke-width="3"/><circle cx="${f1(x)}" cy="${f1(y)}" r="3" fill="${MC.ivory}"/><rect x="${f1(cx)}" y="${f1(ty - h / 2)}" width="${f1(w)}" height="${f1(h)}" rx="${f1(h / 2)}" fill="${MC.ivory}" stroke="${MC.ink}" stroke-width="2.5"/><text x="${f1(cx + w / 2)}" y="${f1(ty + fs * 0.35)}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="${fs}" fill="${MC.ink}">${txt}</text></g>`);
+      out.push(chip(x, y, cx, ty, w, ex, ty, txt, a));
     }
   }
   return `<g id="mc-label">${out.join('')}</g>`;
@@ -74,7 +83,7 @@ export const E = {
 };
 export const seg = (t, a, b, ease = E.soft) => ease(clamp01((t - a) / (b - a)));
 // tempo bersama: klip 5,0 dtk, 30 fps; fade masuk/keluar 0,3 dtk (peralihan antar-organ = menyatu ke hijau hutan); label masuk/keluar 0,3 dtk dengan MAKSIMUM 3 label sekaligus
-export const KLIP = { fps: 30, durasi: 5, tahan: 0, push: 0.045, labelMasuk: 0.3, peralihan: 0.3, labelMaks: 3 };
+export const KLIP = { fps: 30, durasi: 5, tahan: 0, push: 0.045, labelMasuk: 0.3, peralihan: 0.3, labelMaks: 3, trans: 0.36 };
 // kamera bersama: dorong pelan (push-in) 4,5% dengan easing lembut; gerak organ berbeda-beda, kamera sama
 export function kamera(t, o = {}) {
   const u = E.soft(clamp01(t / KLIP.durasi)), sc = 1 + KLIP.push * u, cx = o.cx ?? 540, cy = o.cy ?? 960;
@@ -113,12 +122,42 @@ export function halus(poly, iter = 3) {   // Chaikin tertutup -> sudut membulat
 
 // kamera dengan konversi titik (agar label mengikuti organ saat kamera bergerak)
 export function kam(t, o = {}) {
-  const u = E.soft(clamp01(t / KLIP.durasi)), sc = 1 + KLIP.push * u, cx = o.cx ?? 540, cy = o.cy ?? 960, dx = (o.dx ?? 0) * u, dy = (o.dy ?? 0) * u;
+  const u = E.soft(clamp01(t / KLIP.durasi)), sc = (o.s0 ?? 1) * (1 + KLIP.push * u), cx = o.cx ?? 540, cy = o.cy ?? 960, dx = (o.dx ?? 0) * u, dy = (o.dy ?? 0) * u;
   return { tf: `translate(${f1(cx + dx)} ${f1(cy + dy)}) scale(${sc.toFixed(4)}) translate(${-cx} ${-cy})`, pt: (x, y) => [cx + dx + (x - cx) * sc, cy + dy + (y - cy) * sc], sc };
 }
 
-// peralihan: lapisan hijau-hutan yang memudar di awal dan akhir klip (sama untuk semua organ, sehingga video gabungan berganti organ lewat jeda hijau 0,6 dtk)
-export const peralihan = (t, d = KLIP.durasi, f = KLIP.peralihan) => { const o = Math.max(1 - seg(t, 0, f, E.soft), seg(t, d - f, d, E.soft)); return o > 0.003 ? fx(`<rect id="mc-peralihan" width="${W}" height="${H}" fill="#06231F" opacity="${o.toFixed(3)}"/>`) : ''; };
+// peralihan: lapisan hijau-hutan yang memudar di awal dan/atau akhir klip. Dipakai hanya di tepi video gabungan (awal jantung, akhir kulit) dan klip tunggal; antarorgan memakai selam() di bawah.
+export const peralihan = (t, o = {}) => { const d = KLIP.durasi, f = KLIP.peralihan, aw = o.awal ?? true, ak = o.akhir ?? true, op = Math.max(aw ? 1 - seg(t, 0, f, E.soft) : 0, ak ? seg(t, d - f, d, E.soft) : 0); return op > 0.003 ? fx(`<rect id="mc-peralihan" width="${W}" height="${H}" fill="#06231F" opacity="${op.toFixed(3)}"/>`) : ''; };
+
+// SELAM (peralihan antarorgan, 0,36 dtk keluar + 0,36 dtk masuk = 0,72 dtk, di dalam klip 5 dtk): kamera menyelam ke lumen pembuluh organ pertama (zoom eksponensial ke titik fokus), terowongan darah menutup layar
+// (garis kecepatan terus bergerak melewati titik sambung), lalu kamera keluar dari lumen pembuluh organ berikutnya (zoom-out ke fokus masuk). Organ tidak digambar ulang; hanya zoom adegan + lapisan terowongan.
+// Pada titik sambung (u = 0,5) terowongan menutup seluruh layar dengan pusat gradien dan garis kecepatan yang sama dari kedua sisi, jadi tidak ada lompatan. Judul memudar sebelum selam dan baru muncul setelah organ berikutnya terlihat, jadi tidak pernah ada dua judul/organ sekaligus.
+// cfg = { masuk: {x, y, r} | null, keluar: {x, y, r} | null }  (x, y = titik fokus pada kanvas setelah kamera; r = jari-jari lumen pada skala 1)
+const SZ = 7, RMAX = 2600, MID = [540, 960];
+export function selam(t, cfg = {}, id = 'sl') {
+  const d = KLIP.trans, D = KLIP.durasi, R = { zoom: '', ov: '', aJudul: 1, aktif: false };
+  let ph = null, w = 0, F = null;
+  if (cfg.masuk && t < d) { ph = 'in'; w = clamp01(t / d); F = cfg.masuk; }
+  else if (cfg.keluar && t > D - d) { ph = 'out'; w = clamp01((t - (D - d)) / (d - 1 / KLIP.fps)); F = cfg.keluar; }   // bingkai terakhir klip (t = D - 1/fps) tepat = terowongan penuh
+  if (cfg.masuk) R.aJudul = Math.min(R.aJudul, t < d ? seg(t, d * 0.55, d, E.soft) : 1);
+  if (cfg.keluar) R.aJudul = Math.min(R.aJudul, 1 - seg(t, D - d, D - d + d * 0.4, E.soft));
+  if (!ph) return R;
+  R.aktif = true;
+  const wv = ph === 'out' ? w : 1 - w;                 // 0 = organ normal, 1 = terowongan penuh (sama untuk kedua sisi)
+  const s = Math.pow(SZ, E.in(wv)), u = ph === 'out' ? w / 2 : 0.5 + w / 2;
+  R.zoom = `translate(${f1(F.x)} ${f1(F.y)}) scale(${s.toFixed(4)}) translate(${-f1(F.x)} ${-f1(F.y)})`;
+  const e = E.soft(wv), cx = ph === 'out' ? F.x + (MID[0] - F.x) * e : F.x + (MID[0] - F.x) * e, cy = F.y + (MID[1] - F.y) * e;
+  const rad = Math.max(F.r * s, RMAX * Math.pow(E.in(wv), 3)), fade = ph === 'in' ? 1 - seg(w, 0.82, 1, E.soft) : 1;
+  const q = E.soft(clamp01((wv - 0.5) / 0.5)), rg = Math.max(rad * (1 - q) + 900 * q, 50);   // gradien: dari lumen gelap (tepi = dinding) ke terowongan seragam saat menutup layar
+  let streak = '';
+  const N = 64, ph0 = u * 5.2;
+  for (let i = 0; i < N; i++) {
+    const a = (i / N) * Math.PI * 2 + Math.sin(i * 12.9898) * 0.05, k = (((i * 0.61803) % 1) + ph0 * (0.7 + (i % 5) * 0.12)) % 1, r0 = 40 + k * rg * 0.9, r1 = r0 + 90 + 260 * (i % 3) * 0.5;
+    streak += `<path d="M${f1(cx + Math.cos(a) * r0)} ${f1(cy + Math.sin(a) * r0)}L${f1(cx + Math.cos(a) * r1)} ${f1(cy + Math.sin(a) * r1)}" stroke="${i % 4 === 0 ? MC.gold : MC.ivory}" stroke-width="${5 + (i % 4) * 4}" stroke-linecap="round" opacity="${(0.26 + 0.2 * ((i % 3) / 2)).toFixed(2)}"/>`;
+  }
+  R.ov = `<g id="mc-selam" opacity="${f1(fade)}"><defs><clipPath id="${id}Clip"><circle cx="${f1(F.x)}" cy="${f1(F.y)}" r="${f1(rad)}"/></clipPath><radialGradient id="${id}G" gradientUnits="userSpaceOnUse" cx="${f1(cx)}" cy="${f1(cy)}" r="${f1(rg)}"><stop offset="0" stop-color="#3A0614"/><stop offset=".38" stop-color="#8A1C30"/><stop offset=".8" stop-color="#C23A4E"/><stop offset="1" stop-color="#D9576A"/></radialGradient></defs><g clip-path="url(#${id}Clip)"><rect width="${W}" height="${H}" fill="url(#${id}G)"/>${streak}</g><circle cx="${f1(F.x)}" cy="${f1(F.y)}" r="${f1(rad)}" fill="none" stroke="#F29AA6" stroke-width="${f1(Math.min(8, 3 + rad * 0.02))}" opacity=".38"/></g>`;
+  return R;
+}
 // label berjadwal: items = [x, y, sisi, teks, t0, t1]; tiap label hidup di [t0, t1] dengan masuk/keluar KLIP.labelMasuk; (x,y) sudah dalam koordinat kanvas setelah kamera
-export function labelsT(items, t, o = {}) { const f = KLIP.labelMasuk; return labels(items.map(([x, y, sd, tx, t0, t1, ty]) => [x, y, sd, tx, { a: seg(t, t0, t0 + f, E.out) * (1 - seg(t, t1 - f, t1, E.soft)), ty }]), o); }
+export function labelsT(items, t, o = {}) { const f = KLIP.labelMasuk; return labels(items.map(([x, y, sd, tx, t0, t1, ty, cx]) => [x, y, sd, tx, { a: seg(t, t0, t0 + f, E.out) * (1 - seg(t, t1 - f, t1, E.soft)), ty, cx }]), o); }
 export const maksLabel = (items, d = KLIP.durasi, dt = 0.04) => { let mx = 0, at = 0; for (let t = 0; t <= d; t += dt) { const n = items.filter(([, , , , t0, t1]) => t >= t0 + 0.05 && t <= t1 - 0.05).length; if (n > mx) { mx = n; at = t; } } return { maks: mx, pada: at }; };

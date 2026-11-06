@@ -5,7 +5,7 @@
 // Bahan berbeda: epidermis = sel berlapis dengan dinding tipis; dermis = berkas kolagen bergelombang + serat elastin tipis; hipodermis = adiposit besar bening berlobulus; otot = serat polos memanjang.
 // Layer: #k-hipodermis, #k-dermis, #k-epidermis, #k-pembuluh, #k-saraf, #k-keringat, #k-folikel, #k-sebasea, #k-otot, #k-kontur. Mode klip: penelusuran kedalaman (pita pemindai menurun, lapisan di bawahnya diredupkan).
 import { PAL, W, H, f1, rng, mix, lighten, darken, vignette, ribbon, sampleCubic, cubicD, fx, TEMA_MEDCOEL } from './anatomi.js';
-import { MC, latar, merek, labels, labelsT, peralihan, maksLabel, KONTUR, E, seg, KLIP, kam, selVoronoi, halus, clamp01 } from './medcoel.js';
+import { MC, latar, merek, labels, labelsT, peralihan, selam, maksLabel, KONTUR, E, seg, KLIP, kam, selVoronoi, halus, clamp01 } from './medcoel.js';
 export const P = 'k';
 export const TEMA = TEMA_MEDCOEL;
 export const FLAT = { kDerm: '#F1CDBF', kEpiG: '#E6B0A6', kFat: '#F8DF98', kAdip: '#F8DF98', kScanG: '#FFF3C4' };
@@ -23,13 +23,14 @@ const pl = (pts) => 'M' + pts.map((p) => `${f1(p[0])} ${f1(p[1])}`).join('L');
 const tube = (pts, w, c, dk, op = 1) => `<path d="${pl(pts)}" fill="none" stroke="${dk}" stroke-width="${f1(w + 3)}" stroke-linecap="round" stroke-linejoin="round" opacity="${op}"/><path d="${pl(pts)}" fill="none" stroke="${c}" stroke-width="${f1(w)}" stroke-linecap="round" stroke-linejoin="round" opacity="${op}"/>`;
 
 // jadwal klip (detik): pemindai kedalaman
-export const JADWAL = { scan: [0.4, 3.7] };
+export const JADWAL = { scan: [0.45, 3.0], chip: [1.0, 3.1] };   // pemindai menyorot lapisan aktif TANPA meredupkan jaringan lain; chip lapisan baru masuk setelah struktur terlihat (1,0 dtk)
 // jadwal label [kunci, sisi, teks, t0, t1]; chip pemindai (lapisan yang sedang dilewati) dihitung sebagai 1 label, jadi maksimum 3 sekaligus
-export const LABEL_T = [['korneum', -1, 'Korneum', 0.7, 2.0], ['epidermis', -1, 'Epidermis', 1.0, 2.3], ['folikel', 1, 'Folikel', 2.0, 3.4], ['sebasea', -1, 'Sebasea', 2.4, 3.7], ['lemak', -1, 'Lemak', 3.45, 4.7], ['keringat', 1, 'Keringat', 3.85, 5.0], ['saraf', 1, 'Saraf', 4.1, 5.0]];
+export const LABEL_T = [['folikel', 1, 'Folikel', 1.1, 2.7], ['sebasea', -1, 'Sebasea', 1.7, 3.2], ['keringat', 1, 'Keringat', 2.7, 4.3], ['lemak', -1, 'Lemak', 3.1, 4.55], ['epidermis', -1, 'Epidermis', 3.25, 4.6]];
+const CHIP_Y = 470;   // chip nama lapisan (pemindai) tetap di pita atas irisan; penanda emas bergerak di margin kiri-kanan setinggi pemindai
 export const LAPISAN = [[SURF - 40, 'Stratum korneum'], [SURF + 30, 'Epidermis hidup'], [JUNC + 28, 'Dermis papilar'], [PAP_BOT, 'Dermis retikular'], [DERM_BOT, 'Hipodermis (lemak)']];
 
 export function kulit(o = {}) {
-  const p = 'k', anim = !!o.anim, t = o.t ?? 0, r = rng(33), K = kam(anim ? t : 0, { cx: 540, cy: 1040, dy: -10 }), SH = 0;
+  const p = 'k', anim = !!o.anim, t = o.t ?? 0, r = rng(33), K = kam(anim ? t : 0, { cx: 540, cy: 1040, dy: -10, s0: 0.8 }), SH = 0;   // s0: irisan diperkecil 0,8x (bentuk sama) agar chip label muat DI LUAR tepi irisan (margin ±240 px)
   const KP = (x, y) => { const q = K.pt(x, y); return [q[0], q[1] + SH]; };
   let s = latar(p, { seed: 9, fokus: { x: 560, y: 1020 }, t: anim ? t : 0, kilau: [[70, 360, 26], [1010, 330, 18], [60, 1760, 20], [1000, 1700, 30], [250, 1830, 16], [840, 1840, 22]] });
   s += `<defs>
@@ -176,21 +177,27 @@ export function kulit(o = {}) {
   // ================= penelusuran kedalaman (klip): pita pemindai menurun, bagian yang belum dilewati diredupkan
   let scan = '', cur = '';
   if (anim) {
-    const u = E.inout(clamp01((t - JADWAL.scan[0]) / (JADWAL.scan[1] - JADWAL.scan[0]))), by = (SURF - 30) + (HYP_BOT - 40 - (SURF - 30)) * u, act = t >= JADWAL.scan[0] && t <= JADWAL.scan[1] + 0.35;
-    if (t < JADWAL.scan[1] + 0.05) scan += `<g id="k-pemindai" clip-path="url(#kSlab)"><rect x="${X0}" y="${f1(by)}" width="${X1 - X0}" height="${H}" fill="${MC.forest}" opacity=".62"/><rect x="${X0}" y="${f1(by - 46)}" width="${X1 - X0}" height="46" fill="url(#kScanG)"/><rect x="${X0}" y="${f1(by - 2)}" width="${X1 - X0}" height="5" fill="${MC.gold}"/></g><defs><linearGradient id="kScanG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#FFF3C4" stop-opacity=".42"/></linearGradient></defs>`;
+    const u = E.inout(clamp01((t - JADWAL.scan[0]) / (JADWAL.scan[1] - JADWAL.scan[0]))), by = (SURF - 30) + (HYP_BOT - 40 - (SURF - 30)) * u, act = t >= JADWAL.chip[0] && t <= JADWAL.chip[1];
+    if (t < JADWAL.scan[1] + 0.25) { const fa = 1 - seg(t, JADWAL.scan[1], JADWAL.scan[1] + 0.25); scan += `<g id="k-pemindai" clip-path="url(#kSlab)" opacity="${f1(fa)}"><rect x="${X0}" y="${f1(by - 70)}" width="${X1 - X0}" height="70" fill="url(#kScanG)"/><rect x="${X0}" y="${f1(by - 2)}" width="${X1 - X0}" height="5" fill="${MC.gold}"/><rect x="${X0}" y="${f1(by + 3)}" width="${X1 - X0}" height="26" fill="url(#kScanG2)"/></g><defs><linearGradient id="kScanG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF3C4" stop-opacity="0"/><stop offset="1" stop-color="#FFF3C4" stop-opacity=".34"/></linearGradient><linearGradient id="kScanG2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#17202A" stop-opacity=".16"/><stop offset="1" stop-color="#17202A" stop-opacity="0"/></linearGradient></defs></g>`; }
     let nama = LAPISAN[0][1]; for (const [yy, nm] of LAPISAN) if (by >= yy) nama = nm;
-    if (act) { const a = seg(t, JADWAL.scan[0], JADWAL.scan[0] + 0.3) * (1 - seg(t, JADWAL.scan[1] + 0.05, JADWAL.scan[1] + 0.35)); cur = `<g opacity="${f1(a)}"><path d="M${X1 + 8} ${f1(by)}H${X1 - 40}" stroke="${MC.gold}" stroke-width="5" stroke-linecap="round"/><rect x="${W - 24 - nama.length * 21 - 44}" y="${f1(by - 29)}" width="${f1(nama.length * 21 + 44)}" height="58" rx="29" fill="${MC.gold}" stroke="${MC.ink}" stroke-width="2.5" transform="translate(${-(W - 24 - X1)} 0)"/><text x="${f1(X1 + 6 - 24 - (nama.length * 21 + 44) / 2)}" y="${f1(by + 10)}" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="36" fill="${MC.ink}">${nama}</text></g>`; }
+    if (act) {
+      const a = seg(t, JADWAL.chip[0], JADWAL.chip[0] + 0.3) * (1 - seg(t, JADWAL.chip[1] - 0.3, JADWAL.chip[1])), byy = KP(0, by)[1], xl = KP(X0, 0)[0], xr = KP(X1, 0)[0], cw = nama.length * 21 + 44, tag = (x0, x1) => `<rect x="${f1(x0)}" y="${f1(byy - 5)}" width="${f1(x1 - x0)}" height="10" rx="5" fill="${MC.gold}" stroke="${MC.ink}" stroke-width="2.5"/>`;
+      cur = `<g opacity="${f1(a)}">${tag(xl - 52, xl - 8)}${tag(xr + 8, xr + 52)}<rect x="24" y="${CHIP_Y - 29}" width="${f1(cw)}" height="58" rx="29" fill="${MC.gold}" stroke="${MC.ink}" stroke-width="2.5"/><text x="${f1(24 + cw / 2)}" y="${CHIP_Y + 10}" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="36" fill="${MC.ink}">${nama}</text></g>`;
+    }
   }
-  s += `<g id="mc-adegan" transform="${K.tf}"><g>${sc}</g>${scan}</g>`;
+  // transisi antarorgan (selam): masuk dari kapiler papila dermal pada bulbus folikel; akhir klip = fade ke hijau hutan
+  const SL = anim ? selam(t, { masuk: { x: KP(BX, BY + 24)[0], y: KP(BX, BY + 24)[1], r: 16 } }, 'ksl') : { zoom: '', ov: '', aJudul: 1 };
+  s += `<g transform="${SL.zoom}"><g id="mc-adegan" transform="${K.tf}"><g>${sc}</g>${scan}</g></g>`;
+  s += SL.ov;
   s += vignette(p);
-  s += merek({ judul: 'Kulit', sub: 'Potongan kulit berambut · skema' });
+  s += merek({ judul: 'Kulit', sub: 'Potongan kulit berambut · skema', aJudul: SL.aJudul });
   s += cur;
   if (labels2true(o)) {
     const tl = anim ? t : 4.5, P2 = KP;
-    const anc = { korneum: P2(X0 + 60, SURF + 10), epidermis: P2(X0 + 110, SURF + 70), folikel: P2(folX(900), 900), sebasea: P2(SGX - 20, SGY + 20), lemak: P2(X0 + 90, DERM_BOT + 190), keringat: P2(PORE_X + 22, 1215), saraf: P2(X1 - 20, HYP_BOT - 226) };
-    s += labelsT(LABEL_T.map(([kk, sd, tx, t0, t1]) => [...anc[kk], sd, tx, t0, t1]), tl, { atas: 330 });
+    const anc = { epidermis: P2(X0 + 110, SURF + 70), folikel: P2(folX(SURF + 6), SURF + 20), sebasea: P2(SGX - 20, SGY + 20), lemak: P2(X0 + 90, DERM_BOT + 190), keringat: P2(PORE_X + 22, 1215) };
+    s += labelsT(LABEL_T.map(([kk, sd, tx, t0, t1]) => [...anc[kk], sd, tx, t0, t1, kk === 'epidermis' ? 490 : anc[kk][1], sd < 0 ? 'L' : 'R']), tl, { atas: 330 });
   }
-  if (anim) s += peralihan(t);
+  if (anim) s += peralihan(t, { awal: false, akhir: true });
   return s;
 }
 const labels2true = (o) => !!o.labels;
