@@ -45,3 +45,17 @@ ffmpeg -framerate 30 -i <dir>/f%05d.png -i <campur.wav> -af loudnorm=I=-14:TP=-1
 - Pemisahan "tekanan rendah" dan "anemia" adalah ilustrasi konsep; tidak semua yang haid digambarkan bertekanan rendah (hanya haid sangat banyak, dan kartu anemia menegaskan tekanan bisa normal).
 - Tidak ada sumber literatur yang dibuka untuk video ini; isi mengikuti naskah yang diberikan. Naskah belum ditinjau tenaga medis.
 - Penyelarasan narasi dengan visual memakai deteksi jeda senyap dan jumlah suku kata (pengenalan suara tidak tersedia di lingkungan ini); batas kalimat cukup tepat, batas frasa di dalam kalimat sekitar +-0,2 dtk.
+
+## Hasil pemeriksaan (video `../out/tensi-rendah.mp4`, 80,6 dtk, H.264 + AAC, 30 fps)
+- Bingkai pertama sudah bergerak (Tala setengah berdiri, mendorong dari kursi; selisih bingkai 0 ke 10 = 8,4 dari 255 pada skala abu-abu).
+- Tensimeter tampak 64,25-68,5 dtk (4,25 dtk); angka kecil di layar alat dan disertai catatan konteks.
+- Label: maksimum 3 serempak, tidak ada yang keluar layar atau saling menimpa (`node tensi/periksa-label.mjs`). Pada lebar 360 px (`../out/tensi-kontak-360px.png`) label dan takarir terbaca; teks indikator kecil (sekitar 10 px).
+- Lompatan antar-bingkai: setelah perbaikan, selisih tertinggi 18 dari 255 (pembukaan pandangan setelah gelap dan gerak kamera 1 dtk), tanpa lonjakan tunggal.
+- Audio: narasi dominan (sekitar -26 dBFS RMS), musik dan SFX sekitar -41 dBFS; keluaran dinormalkan ke -14 LUFS (puncak sampel sekitar -1,3 dB).
+- Still: `../out/tensi-still-1..7-*.png` (pembuka, darah berkumpul, kompensasi, kehamilan, haid sangat banyak, anemia vs tensi rendah, penutup).
+
+## Kekurangan yang diketahui
+- Bingkai pertama tidak memperlihatkan gerak bangkit sejelas awal sesudahnya karena rig duduk tampak depan hanya memakai perpindahan pinggul dan kaki (tanpa condong ke depan).
+- Dalam tampak tembus, wajah, otak, dan pembuluh leher saling menumpuk di kepala besar Tala; label menjaga keterbacaan tetapi anatomi kepala sangat disederhanakan.
+- Bagian atas anatomi bergoyang bersama badan Tala, sedangkan pembuluh tungkai tetap; sambungan di panggul tampak menyatu hanya karena titik putar sama.
+- Indikator "Tekanan" dan "Aliran ke otak" adalah batang skematis tanpa angka, bukan pengukuran.
