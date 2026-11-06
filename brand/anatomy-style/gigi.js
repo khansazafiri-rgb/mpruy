@@ -10,7 +10,7 @@
 // Mode: gigi({labels,t}) = render final; siluet({guides}) = hanya siluet gigi, gusi, massa tulang (tanpa latar/tekstur); render polos (warna datar) = plainify(gigi()) lewat render.html?plain.
 // Layer animasi (id grup): #g-tulang, #g-kanal-mandibula, #g-lig-periodontal, #g-dentin, #g-sementum, #g-pulpa, #g-saraf-pembuluh, #g-email, #g-gusi, #g-pulpa-aliran, #g-label.
 import { PAL, W, H, f1, rng, mix, lighten, darken, vignette, ribbon, sampleCubic, cubicD, fx, TEMA_MEDCOEL } from './anatomi.js';
-import { MC, latar, merek, labels, KONTUR, E, seg, KLIP, kam, selVoronoi, halus } from './medcoel.js';
+import { MC, latar, merek, labels, labelsT, peralihan, maksLabel, KONTUR, E, seg, KLIP, kam, selVoronoi, halus } from './medcoel.js';
 export const P = 'g';
 export const FLAT = { gEn: '#A9C8C4', gDen: '#F0BC72', gPulp: '#E04A5C', gBone: '#EAD6A4', gMarrow: '#B98440', gGum: '#E4707F', gMuc: '#B0505E' };
 
@@ -127,7 +127,9 @@ export function guides(L, tag, color = ['#D01030', '#1060D0', '#10A050', '#777']
 export const TEMA = TEMA_MEDCOEL;
 export const LAYERS = [['g-tulang', 'Tulang alveolar (kortikal + trabekula + sumsum)'], ['g-lig-periodontal', 'Ligamen periodontal + lamina dura'], ['g-dentin', 'Dentin'], ['g-sementum', 'Sementum'], ['g-pulpa', 'Ruang pulpa + kanal akar'], ['g-saraf-pembuluh', 'Saraf dan pembuluh'], ['g-email', 'Email'], ['g-gusi', 'Gusi + mukosa'], ['g-kontur', 'Kontur tinta'], ['g-konteks-ian', 'OPSIONAL (mati): kanal mandibula + cabang dental']];
 // jadwal reveal (detik) untuk klip 5 dtk: [mulai, selesai, arah]
-export const JADWAL = { 'g-tulang': [0.15, 1.45, 'naik'], 'g-lig-periodontal': [0.95, 1.8, 'pudar'], 'g-dentin': [1.35, 2.5, 'naik'], 'g-sementum': [1.9, 2.5, 'pudar'], 'g-pulpa': [2.1, 3.0, 'naik'], 'g-saraf-pembuluh': [2.7, 3.3, 'pudar'], 'g-email': [2.6, 3.7, 'turun'], 'g-gusi': [3.15, 4.05, 'naik'], 'g-kontur': [3.4, 3.9, 'pudar'] };
+export const JADWAL = { 'g-tulang': [0.1, 1.0, 'naik'], 'g-lig-periodontal': [0.7, 1.3, 'pudar'], 'g-dentin': [1.0, 1.8, 'naik'], 'g-sementum': [1.4, 1.8, 'pudar'], 'g-pulpa': [1.6, 2.3, 'naik'], 'g-saraf-pembuluh': [2.1, 2.5, 'pudar'], 'g-email': [2.0, 2.8, 'turun'], 'g-gusi': [2.5, 3.3, 'naik'], 'g-kontur': [2.8, 3.2, 'pudar'] };
+// jadwal label (detik) [kunci, sisi, teks, t0, t1]; maksimum 3 label sekaligus (diperiksa oleh maksLabel)
+export const LABEL_T = [['tulang', -1, 'Tulang', 1.1, 2.6], ['dentin', -1, 'Dentin', 1.9, 3.4], ['pulpa', 1, 'Pulpa', 2.5, 4.0], ['email', -1, 'Email', 3.0, 4.5], ['gusi', -1, 'Gusi', 3.5, 5.0], ['kanal', 1, 'Kanal akar', 4.05, 5.0]];
 
 export function gigi(o = {}) {
   const p = 'g', labels = !!o.labels, t = o.t ?? 0, anim = !!o.anim, r = rng(9), konteks = !!o.konteks, bone = konteks ? BONE_DEEP : BONE, bd = bone.d, cav = marrowSpaces(rng(21), bone.poly);
@@ -234,15 +236,11 @@ export function gigi(o = {}) {
   s += vignette(p);
   s += merek({ judul: 'Gigi', sub: 'Molar 1 bawah · potongan mesiodistal' });
   if (labels) {
-    const P2 = KP, L = (a) => ({ a }), la = (t0) => (anim ? seg(t, t0, t0 + KLIP.labelMasuk, E.out) : 1);
-    const it = [
-      [...P2(MX(372), MY(598)), -1, 'Email', L(la(3.9))], [...P2(MX(380), MY(740)), -1, 'Dentin', L(la(4.0))], [...P2(tipL[0] + 6, tipL[1] + 40), -1, 'Gusi', L(la(4.1))], [...P2(MX(334), MY(1060)), -1, 'PDL', L(la(4.2))],
-      [...P2(cav.big.x, cav.big.y), -1, 'Tulang', L(la(4.3))],
-      [...P2(MX(642), MY(676)), 1, 'Pulpa', L(la(4.0))], [...P2(MX(668), MY(1130)), 1, 'Kanal akar', L(la(4.1))], [...P2(540, domeY + 20), 1, 'Furkasi', L(la(4.2))], [...P2(cav.mid[0], cav.mid[1]), 1, 'Trabekula', L(la(4.3))],
-    ];
-    s += labels2(it, { atas: 330 });
-    s += fx(`<text x="28" y="1790" font-family="Plus Jakarta Sans, sans-serif" font-weight="600" font-size="28" fill="${MC.mint}" opacity=".9">PDL = ligamen periodontal</text>`);
+    const P2 = KP, tl = anim ? t : 4.2;
+    const anc = { tulang: P2(cav.big.x, cav.big.y), dentin: P2(MX(380), MY(740)), pulpa: P2(MX(642), MY(676)), email: P2(MX(372), MY(598)), gusi: P2(tipL[0] + 6, tipL[1] + 40), kanal: P2(MX(668), MY(1130)) };
+    s += labelsT(LABEL_T.map(([k, sd, tx, t0, t1]) => [...anc[k], sd, tx, t0, t1]), tl, { atas: 330 });
   }
+  if (anim) s += peralihan(t);
   return s;
 }
 const labels2 = labels;

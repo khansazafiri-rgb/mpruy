@@ -5,7 +5,7 @@
 // Bahan berbeda: epidermis = sel berlapis dengan dinding tipis; dermis = berkas kolagen bergelombang + serat elastin tipis; hipodermis = adiposit besar bening berlobulus; otot = serat polos memanjang.
 // Layer: #k-hipodermis, #k-dermis, #k-epidermis, #k-pembuluh, #k-saraf, #k-keringat, #k-folikel, #k-sebasea, #k-otot, #k-kontur. Mode klip: penelusuran kedalaman (pita pemindai menurun, lapisan di bawahnya diredupkan).
 import { PAL, W, H, f1, rng, mix, lighten, darken, vignette, ribbon, sampleCubic, cubicD, fx, TEMA_MEDCOEL } from './anatomi.js';
-import { MC, latar, merek, labels, KONTUR, E, seg, KLIP, kam, selVoronoi, halus, clamp01 } from './medcoel.js';
+import { MC, latar, merek, labels, labelsT, peralihan, maksLabel, KONTUR, E, seg, KLIP, kam, selVoronoi, halus, clamp01 } from './medcoel.js';
 export const P = 'k';
 export const TEMA = TEMA_MEDCOEL;
 export const FLAT = { kDerm: '#F1CDBF', kEpiG: '#E6B0A6', kFat: '#F8DF98', kAdip: '#F8DF98', kScanG: '#FFF3C4' };
@@ -23,7 +23,9 @@ const pl = (pts) => 'M' + pts.map((p) => `${f1(p[0])} ${f1(p[1])}`).join('L');
 const tube = (pts, w, c, dk, op = 1) => `<path d="${pl(pts)}" fill="none" stroke="${dk}" stroke-width="${f1(w + 3)}" stroke-linecap="round" stroke-linejoin="round" opacity="${op}"/><path d="${pl(pts)}" fill="none" stroke="${c}" stroke-width="${f1(w)}" stroke-linecap="round" stroke-linejoin="round" opacity="${op}"/>`;
 
 // jadwal klip (detik): pemindai kedalaman
-export const JADWAL = { scan: [0.55, 4.15] };
+export const JADWAL = { scan: [0.4, 3.7] };
+// jadwal label [kunci, sisi, teks, t0, t1]; chip pemindai (lapisan yang sedang dilewati) dihitung sebagai 1 label, jadi maksimum 3 sekaligus
+export const LABEL_T = [['korneum', -1, 'Korneum', 0.7, 2.0], ['epidermis', -1, 'Epidermis', 1.0, 2.3], ['folikel', 1, 'Folikel', 2.0, 3.4], ['sebasea', -1, 'Sebasea', 2.4, 3.7], ['lemak', -1, 'Lemak', 3.45, 4.7], ['keringat', 1, 'Keringat', 3.85, 5.0], ['saraf', 1, 'Saraf', 4.1, 5.0]];
 export const LAPISAN = [[SURF - 40, 'Stratum korneum'], [SURF + 30, 'Epidermis hidup'], [JUNC + 28, 'Dermis papilar'], [PAP_BOT, 'Dermis retikular'], [DERM_BOT, 'Hipodermis (lemak)']];
 
 export function kulit(o = {}) {
@@ -184,14 +186,11 @@ export function kulit(o = {}) {
   s += merek({ judul: 'Kulit', sub: 'Potongan kulit berambut · skema' });
   s += cur;
   if (labels2true(o)) {
-    const la = (t0) => (anim ? seg(t, t0, t0 + KLIP.labelMasuk, E.out) : 1), A = (v) => ({ a: v }), P2 = KP;
-    const it = [
-      [...P2(X0 + 60, SURF + 10), -1, 'Korneum', A(la(4.2))], [...P2(X0 + 110, SURF + 70), -1, 'Epidermis', A(la(4.3))], [...P2(X0 + 70, PAP_BOT + 60), -1, 'Dermis', A(la(4.4))],
-      [...P2(SGX - 20, SGY + 20), -1, 'Sebasea', A(la(4.45))], [...P2(PX - 40, PY), -1, 'Pacini', A(la(4.5))], [...P2(X0 + 90, DERM_BOT + 190), -1, 'Lemak', A(la(4.6))],
-      [...P2(hx + 70, SURF - 130), 1, 'Rambut', A(la(4.3))], [...P2(folX(900), 900), 1, 'Folikel', A(la(4.4))], [...P2(AP1[0] - 10, JUNC + 150), 1, 'Arrector pili', A(la(4.5))], [...P2(PORE_X + 22, 1215), 1, 'Keringat', A(la(4.6))], [...P2(660, DERM_BOT + 14), 1, 'Pembuluh', A(la(4.7))], [...P2(X1 - 20, HYP_BOT - 226), 1, 'Saraf', A(la(4.8))],
-    ];
-    s += labels(it, { atas: 330 });
+    const tl = anim ? t : 4.5, P2 = KP;
+    const anc = { korneum: P2(X0 + 60, SURF + 10), epidermis: P2(X0 + 110, SURF + 70), folikel: P2(folX(900), 900), sebasea: P2(SGX - 20, SGY + 20), lemak: P2(X0 + 90, DERM_BOT + 190), keringat: P2(PORE_X + 22, 1215), saraf: P2(X1 - 20, HYP_BOT - 226) };
+    s += labelsT(LABEL_T.map(([kk, sd, tx, t0, t1]) => [...anc[kk], sd, tx, t0, t1]), tl, { atas: 330 });
   }
+  if (anim) s += peralihan(t);
   return s;
 }
 const labels2true = (o) => !!o.labels;

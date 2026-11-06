@@ -15,17 +15,21 @@ node brand/anatomy-style/render.cjs gigi kulit jantung   # render/<organ>.png, <
 ```
 Parameter URL `render.html?obj=<organ>`: `&labels` (chip label), `&plain` (warna datar, tanpa efek), `&konteks` (gigi: layer opsional kanal mandibula), `&tema=lama` (gaya lama ungu-magenta, hanya untuk pembanding), `&anim&t=<detik>` (bingkai animasi).
 
-## Klip gerak 5,0 dtk + tahan 0,8 dtk (30 fps, 174 bingkai)
+## Klip gerak 5,0 dtk (30 fps, 150 bingkai) dan video gabungan 15 dtk
 ```bash
 node brand/anatomy-style/frames.cjs gigi --klip          # render/frames/gigi/f0001.png ...
 ffmpeg -y -framerate 30 -i render/frames/gigi/f%04d.png -c:v libx264 -pix_fmt yuv420p -crf 18 -movflags +faststart render/klip/gigi-reveal-layer.mp4
 ```
 Hal yang sama untuk `kulit` (`kulit-penelusuran-kedalaman.mp4`) dan `jantung` (`jantung-deformasi-lokal.mp4`). Satu bingkai saja: `node brand/anatomy-style/frames.cjs gigi 1.5 3.3 --label`.
+Video gabungan 15 dtk (jantung → gigi → kulit; tiap klip memudar ke hijau hutan 0,3 dtk di awal dan akhir, jadi pergantian organ = jeda hijau 0,6 dtk):
+```bash
+ffmpeg -y -framerate 30 -i 'concat:...' ...   # praktis: ffmpeg -f concat -safe 0 -i daftar.txt -c:v libx264 -pix_fmt yuv420p -crf 18 -movflags +faststart render/klip/medcoel-anatomi-15dtk.mp4  (daftar.txt = tiga mp4 klip)
+```
 
 ## Panel dan pemeriksaan
 ```bash
 python3 brand/anatomy-style/panel.py                     # panel jantung-gigi-kulit, cek 360/390 px, lembar kontak frame
-node brand/anatomy-style/periksa-jantung.mjs             # sambungan pembuluh-badan saat kontraksi maksimum (harus OK)
+# pemeriksaan sambungan pembuluh-badan jantung: lihat README (bagian jantung v7); periksa-jantung.mjs lama tidak berlaku untuk v7
 ```
 
 ## Aturan bersama (agar organ terasa satu seri)
@@ -35,18 +39,18 @@ node brand/anatomy-style/periksa-jantung.mjs             # sambungan pembuluh-ba
 | Cahaya | kunci dari kiri-atas (azimut 225, elevasi 50) di semua filter volume; bayangan jatuh ke kanan-bawah berwarna navy-hijau tinta (bukan hitam); pantul mint di tepi kanan-bawah; kilau tajam hanya di beberapa titik | `anatomi.js: TEMA_MEDCOEL, vol/volS/volV`, `medcoel.js: rim()` |
 | Kontras dan kontur | tepi jaringan diberi kontur tinta 2,5 px (opasitas .55); warna jaringan hangat menonjol di atas latar hijau gelap | `medcoel.js: KONTUR` |
 | Tipografi | Plus Jakarta Sans 800 (judul), 700 (label), 600 (subjudul); Caveat tersedia untuk catatan tangan | `medcoel.js: FONT`, `video/darah-tinggi/stage/fonts` |
-| Label | chip krem + titik dan garis penuntun emas; huruf 28-30 px (terbaca di 360 px); maksimum 9-12 chip; tersusun otomatis | `medcoel.js: labels()` |
+| Label | chip krem + titik dan garis penuntun emas; huruf 32 px (terbaca di 360 px); klip: maksimum 3 chip sekaligus (jadwal masuk/keluar); still berlabel boleh lebih; tersusun otomatis | `medcoel.js: labels()` |
 | Merek | pil krem berlogo asli (`apps/web/src/assets/logo-full.webp`), judul organ + garis emas | `medcoel.js: merek()` |
 | Kamera | dorong pelan (push-in) 4,5% dengan easing `soft`, sama di semua organ | `medcoel.js: kam()` |
 | Easing | `E.out` untuk masuk, `E.soft` untuk gerak kamera/pemindai, `E.inout` untuk pemindai kedalaman | `medcoel.js: E, seg()` |
-| Tempo | klip 5,0 dtk, 30 fps; tahan 0,8 dtk; label masuk 0,35 dtk, dimulai ≥ 3,9 dtk | `medcoel.js: KLIP` |
-| Gerak | **berbeda per organ**: gigi = reveal lapisan bertahap; kulit = pita pemindai kedalaman dengan lapisan di bawahnya diredupkan; jantung = deformasi lokal 60 dpm | `gigi.js: JADWAL`, `kulit.js: JADWAL`, `jantung.js: cV/cA` |
+| Tempo | klip 5,0 dtk, 30 fps; fade masuk/keluar 0,3 dtk; label masuk/keluar 0,3 dtk dengan jadwal per label (`LABEL_T`), maksimum 3 sekaligus | `medcoel.js: KLIP, labelsT()` |
+| Gerak | **berbeda per organ**: gigi = reveal lapisan bertahap; kulit = pita pemindai kedalaman dengan lapisan di bawahnya diredupkan; jantung = kontraksi lokal (periode 1,25 dtk) dengan pembuluh besar tetap diam | `gigi.js: JADWAL`, `kulit.js: JADWAL`, `jantung.js: PARAM, amplop()` |
 
 ## Layer yang dapat dipakai ulang
 Tiap organ mengekspor `LAYERS` (id grup + deskripsi) dan menaruh tiap jaringan di grup berid sendiri:
 - **Gigi**: `g-tulang`, `g-lig-periodontal`, `g-dentin`, `g-sementum`, `g-pulpa`, `g-saraf-pembuluh`, `g-email`, `g-gusi`, `g-kontur`; **opsional (mati)**: `g-konteks-ian`.
 - **Kulit**: `k-hipodermis`, `k-dermis`, `k-epidermis`, `k-pembuluh`, `k-saraf`, `k-keringat`, `k-otot`, `k-sebasea`, `k-folikel`, `k-kontur`.
-- **Jantung**: `h-vena-besar`, `h-vena-pulmonalis`, `h-ventrikel`, `h-atrium`, `h-lemak`, `h-koroner`, `h-vena-jantung`, `h-aorta`, `h-atrium-aurikel`, `h-pulmonal`; deformasi: `h-deform` (ventrikel + koroner + lemak), `h-atrium` dan `h-atrium-aurikel` (atrium).
+- **Jantung** (aset v7 dari `claude/anatomi-visual-kalibrasi@9c7ff84`): `h-pembuluh-belakang` (vena kava, a. pulmonalis kanan, aorta + arkus), `h-massa` (badan, aurikula, lemak, koroner; berkontraksi), `h-batang-pulmonal`, `h-sorotan`, `h-kontur`.
 - **Latar dan label**: `bg-*`, `mc-merek`, `mc-judul`, `mc-label`, `mc-adegan` (isi organ yang terkena kamera).
 Fungsi bersama yang bisa dipakai organ baru: `latar()`, `merek()`, `labels()`, `kam()`, `E`, `seg()`, `selVoronoi()` + `halus()` (sel Voronoi bertepi bundar: rongga sumsum tulang, lobulus lemak, sel epidermis).
 

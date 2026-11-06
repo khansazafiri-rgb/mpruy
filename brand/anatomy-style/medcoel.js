@@ -57,7 +57,7 @@ export function labels(items, o = {}) {
   for (const side of [-1, 1]) {
     let prev = (o.atas ?? 330) - gap;
     for (const [x, y, , txt, op] of items.filter((it) => it[2] === side).sort((a, b) => a[1] - b[1])) {
-      const ty = Math.max(y, prev + gap); prev = ty;
+      const ty = Math.max(op?.ty ?? y, prev + gap); prev = ty;
       const w = txt.length * fs * 0.6 + 44, cx = side < 0 ? 24 : W - 24 - w, ex = side < 0 ? cx + w : cx, a = op?.a ?? 1;
       if (a <= 0.001) continue;
       out.push(`<g opacity="${f1(a)}"><path d="M${f1(x)} ${f1(y)}L${f1(ex)} ${f1(ty)}" stroke="${MC.ink}" stroke-width="7" opacity=".5" stroke-linecap="round"/><path d="M${f1(x)} ${f1(y)}L${f1(ex)} ${f1(ty)}" stroke="${MC.gold}" stroke-width="3.6" stroke-linecap="round"/><circle cx="${f1(x)}" cy="${f1(y)}" r="9" fill="${MC.gold}" stroke="${MC.ink}" stroke-width="3"/><circle cx="${f1(x)}" cy="${f1(y)}" r="3" fill="${MC.ivory}"/><rect x="${f1(cx)}" y="${f1(ty - h / 2)}" width="${f1(w)}" height="${f1(h)}" rx="${f1(h / 2)}" fill="${MC.ivory}" stroke="${MC.ink}" stroke-width="2.5"/><text x="${f1(cx + w / 2)}" y="${f1(ty + fs * 0.35)}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="${fs}" fill="${MC.ink}">${txt}</text></g>`);
@@ -73,8 +73,8 @@ export const E = {
   inout: (t) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2), back: (t) => { const c1 = 1.2, c3 = c1 + 1; return 1 + c3 * (t - 1) ** 3 + c1 * (t - 1) ** 2; },
 };
 export const seg = (t, a, b, ease = E.soft) => ease(clamp01((t - a) / (b - a)));
-// tempo bersama: klip 5,0 dtk, 30 fps; 0,0-0,5 dtk menetap, tahan 0,8 dtk di akhir; label masuk 0,35 dtk
-export const KLIP = { fps: 30, durasi: 5, tahan: 0.8, push: 0.045, labelMasuk: 0.35 };
+// tempo bersama: klip 5,0 dtk, 30 fps; fade masuk/keluar 0,3 dtk (peralihan antar-organ = menyatu ke hijau hutan); label masuk/keluar 0,3 dtk dengan MAKSIMUM 3 label sekaligus
+export const KLIP = { fps: 30, durasi: 5, tahan: 0, push: 0.045, labelMasuk: 0.3, peralihan: 0.3, labelMaks: 3 };
 // kamera bersama: dorong pelan (push-in) 4,5% dengan easing lembut; gerak organ berbeda-beda, kamera sama
 export function kamera(t, o = {}) {
   const u = E.soft(clamp01(t / KLIP.durasi)), sc = 1 + KLIP.push * u, cx = o.cx ?? 540, cy = o.cy ?? 960;
@@ -116,3 +116,9 @@ export function kam(t, o = {}) {
   const u = E.soft(clamp01(t / KLIP.durasi)), sc = 1 + KLIP.push * u, cx = o.cx ?? 540, cy = o.cy ?? 960, dx = (o.dx ?? 0) * u, dy = (o.dy ?? 0) * u;
   return { tf: `translate(${f1(cx + dx)} ${f1(cy + dy)}) scale(${sc.toFixed(4)}) translate(${-cx} ${-cy})`, pt: (x, y) => [cx + dx + (x - cx) * sc, cy + dy + (y - cy) * sc], sc };
 }
+
+// peralihan: lapisan hijau-hutan yang memudar di awal dan akhir klip (sama untuk semua organ, sehingga video gabungan berganti organ lewat jeda hijau 0,6 dtk)
+export const peralihan = (t, d = KLIP.durasi, f = KLIP.peralihan) => { const o = Math.max(1 - seg(t, 0, f, E.soft), seg(t, d - f, d, E.soft)); return o > 0.003 ? fx(`<rect id="mc-peralihan" width="${W}" height="${H}" fill="#06231F" opacity="${o.toFixed(3)}"/>`) : ''; };
+// label berjadwal: items = [x, y, sisi, teks, t0, t1]; tiap label hidup di [t0, t1] dengan masuk/keluar KLIP.labelMasuk; (x,y) sudah dalam koordinat kanvas setelah kamera
+export function labelsT(items, t, o = {}) { const f = KLIP.labelMasuk; return labels(items.map(([x, y, sd, tx, t0, t1, ty]) => [x, y, sd, tx, { a: seg(t, t0, t0 + f, E.out) * (1 - seg(t, t1 - f, t1, E.soft)), ty }]), o); }
+export const maksLabel = (items, d = KLIP.durasi, dt = 0.04) => { let mx = 0, at = 0; for (let t = 0; t <= d; t += dt) { const n = items.filter(([, , , , t0, t1]) => t >= t0 + 0.05 && t <= t1 - 0.05).length; if (n > mx) { mx = n; at = t; } } return { maks: mx, pada: at }; };

@@ -19,7 +19,7 @@ strip([f'{out}/{o}.png' for o, _ in ORG], 560, f'{out}/panel-3-organ.png', [c fo
 strip([f'{out}/{o}-label.png' for o, _ in ORG], 560, f'{out}/panel-3-organ-label.png', [c + ' + label' for _, c in ORG])
 for w in (360, 390): strip([f'{out}/{o}-label.png' for o, _ in ORG], w, f'{out}/cek-ponsel-{w}.png', None, gap=10)
 # lembar kontak frame klip + panel frame sama
-T = [0.3, 1.0, 1.7, 2.4, 3.1, 3.8, 4.5, 5.6]; fr = lambda o, t: f'{out}/frames/{o}/f{int(round(t * 30)) + 1:04d}.png'
+T = [0.4, 1.0, 1.7, 2.4, 3.1, 3.8, 4.4, 4.9]; fr = lambda o, t: f'{out}/frames/{o}/f{int(round(t * 30)) + 1:04d}.png'
 for o, c in ORG:
     if not os.path.exists(fr(o, 1.0)): print('lewati', o); continue
     ims = [Image.open(fr(o, t)).convert('RGB').resize((270, 480), Image.LANCZOS) for t in T]
@@ -27,7 +27,7 @@ for o, c in ORG:
     for i, (im, t) in enumerate(zip(ims, T)): x, y = 10 + (i % 4) * 280, 10 + (i // 4) * 530; sh.paste(im, (x, y + 28)); d.text((x, y), f'{c} t={t:.1f} dtk', fill=(20, 20, 20), font=fs)
     sh.save(f'{out}/lembar-frame-{o}.png'); print('ok lembar', o)
 rows = []
-for t in (1.0, 2.4, 3.8, 5.6):
+for t in (0.5, 1.5, 2.5, 3.5, 4.5):
     if all(os.path.exists(fr(o, t)) for o, _ in ORG): rows.append((t, [Image.open(fr(o, t)).convert('RGB').resize((270, 480), Image.LANCZOS) for o, _ in ORG]))
 if rows:
     sh = Image.new('RGB', (3 * 280 + 80, len(rows) * 510 + 20), (255, 255, 255)); d = ImageDraw.Draw(sh)
@@ -35,3 +35,15 @@ if rows:
         d.text((10, 10 + r * 510 + 200), f't={t:.1f}', fill=(20, 20, 20), font=font)
         for c, im in enumerate(ims): sh.paste(im, (80 + c * 280, 10 + r * 510))
     sh.save(f'{out}/panel-3-organ-gerak.png'); print('ok panel gerak')
+
+# awal-tengah-akhir lebar 360 px: bingkai pertama, tengah, terakhir (apa adanya, termasuk fade) + versi "isi" (t=0,5 / 2,5 / 4,5)
+def tiga(name, files, w=360):
+    ims = [Image.open(f).convert('RGB') for f in files]; ims = [im.resize((w, round(im.height * w / im.width)), Image.LANCZOS) for im in ims]
+    cv = Image.new('RGB', (w * len(ims) + 10 * (len(ims) + 1), ims[0].height + 20), (255, 255, 255))
+    for i, im in enumerate(ims): cv.paste(im, (10 + i * (w + 10), 10))
+    cv.save(f'{out}/{name}.png'); print('ok', name, cv.size)
+fn = lambda o, i: f'{out}/frames/{o}/f{i:04d}.png'
+for o, _ in ORG:
+    if not os.path.exists(fn(o, 150)): continue
+    tiga(f'awal-tengah-akhir-{o}-360', [fn(o, 1), fn(o, 76), fn(o, 150)])
+    tiga(f'awal-tengah-akhir-isi-{o}-360', [fn(o, 16), fn(o, 76), fn(o, 136)])
