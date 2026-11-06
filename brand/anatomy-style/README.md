@@ -1,4 +1,4 @@
-# Anatomi MEDCOEL (kode: SVG + filter), sistem visual bersama untuk gigi, kulit, dan jantung (revisi 8)
+# Anatomi MEDCOEL (kode: SVG + filter), sistem visual bersama untuk gigi, kulit, dan jantung (revisi 9)
 
 Sistem gaya, jantung, dan potongan gigi yang digambar **murni dari kode** (tanpa gambar acuan yang ditempel). Gambar acuan dari pemesan (dibuat AI, belum divalidasi) hanya dipakai untuk **gaya**: latar, warna, kilau, volume. **Bentuk dan hubungan struktur mengikuti sumber anatomi** (lihat "Sumber yang diperiksa"), bukan acuan. Hasil tetap **konsep visual yang perlu pemeriksaan oleh orang yang berwenang**.
 
@@ -210,7 +210,7 @@ Bentuk molar dan dua akar dari v6/v7 dipertahankan; bagian yang masih keliru dig
 Potongan kulit berambut dengan lapisan dan kedalaman berurutan. **Bahan berbeda tiap jaringan:** epidermis = sel berlapis (korneum: lembaran pipih bertumpuk yang mengelupas di tepi; granulosum: sel pipih berbutir; spinosum: sel poligonal Voronoi berdinding tipis berinti; basal: sel kolumnar berbutir melanin di sepanjang batas bergelombang dengan rete ridge dan papila dermis), dermis = berkas kolagen bergelombang (tebal di retikular, halus tegak di papilar), serat elastin tipis, inti fibroblas, hipodermis = adiposit besar bening (Voronoi) dalam lobulus yang dipisahkan septa jaringan ikat berisi pembuluh dan saraf, otot arrector pili = serat polos memanjang, kelenjar sebasea = asinus berlobus berbutir, kelenjar keringat = tabung berkoil. Struktur: folikel miring dengan rambut, selubung akar luar-dalam, bulbus + papila dermal berkapiler, kelenjar sebasea yang bermuara ke folikel, otot arrector pili dari tonjolan folikel ke dermis papilar, kelenjar keringat ekrin (koil di dermis dalam/hipodermis, duktus lurus naik, spiral di epidermis, pori), pleksus pembuluh subpapilar dan dalam + kapiler masuk papila (tidak ada pembuluh di epidermis), pembuluh naik di dermis, pembuluh di septa, batang saraf di hipodermis, cabang naik, ujung saraf bebas masuk epidermis, korpuskel Pacini di dermis dalam.
 **Klip:** pita pemindai emas menurun dari permukaan ke hipodermis (0,55-4,15 dtk, easing `inout`); bagian yang belum dilewati diredupkan; chip kuning menyebut lapisan yang sedang dilewati (stratum korneum → epidermis hidup → dermis papilar → dermis retikular → hipodermis); sesudahnya semua label masuk.
 
-### Jantung (aset jantung v4 di cabang ini, tanpa mengejar siluet acuan)
+### Jantung (REVISI 8, diganti di revisi 9: lihat bagian Revisi 9; v4 hanya pembanding)
 `jantung.js` dipakai apa adanya (geometri v4), hanya dipindah ke sistem MEDCOEL (latar, tema, label, kontur, kamera). **Deformasi lokal 60 dpm:** ventrikel + koroner + lemak + vena jantung diskalakan (x 0,97, y 0,948) dan diputar 0,9° terhadap titik tumpu dekat pangkal pembuluh (585, 780) sehingga apeks bergerak ±22 px sementara pangkal tetap; atrium dan aurikel mengembang 2% berlawanan fase; **pembuluh besar tidak ikut diskalakan** sehingga tersambung. `periksa-jantung.mjs` memeriksa secara geometris bahwa titik pangkal aorta, batang pulmonal, dan v. kava superior tetap di dalam siluet badan/atrium pada kontraksi maksimum (jarak ke tepi ≥ 20 px).
 
 ### Gerak: apa yang sama dan apa yang beda
@@ -238,3 +238,49 @@ Sama: arah cahaya, latar, label (chip, ukuran, waktu masuk 3,9-4,8 dtk), kamera 
 5. **Jantung:** lebih kecil di bingkai daripada gigi dan kulit; kilap volume (filter `vol`) lebih mengilap dan jenuh daripada gigi/kulit sehingga aturan cahaya terbaca konsisten tetapi tingkat detail belum sama; geometri v4 tidak diubah (pembuluh besar masih terlalu panjang/menggantung, tonjolan ventrikel kanan belum ada); deformasi hanya pada ventrikel dan atrium, pembuluh besar kaku (tidak ada gelombang denyut); sambungan hanya diperiksa secara geometris dan lewat bingkai, tidak secara piksel per piksel.
 6. **Sistem:** karakter/maskot merek tidak dipakai pada ketiga adegan (hanya disiapkan `maskot()`); pustaka gerak berupa fungsi, belum ada penyunting visual; render klip lambat (±5 menit/organ saat paralel); tidak ada audio.
 
+
+## Revisi 9: gigi dan kulit sebagai patokan, jantung = aset v7 dari Claude lain, tiga klip 5 dtk + gabungan 15 dtk
+
+**Instruksi:** gigi dan kulit cabang ini = patokan visual; jantung v4 milik cabang ini TIDAK dipakai sebagai patokan akhir; jantung diambil dari cabang `claude/anatomi-visual-kalibrasi` commit `9c7ff84` (`brand/anatomi-visual/v6/heart7.mjs` dan `sistem/scenes/jantung.mjs`), tanpa menggambar ulang siluet dan tanpa membawa riwayat cabangnya.
+
+### Apa yang diambil dari cabang lain (dan apa yang diubah)
+- Hanya dua berkas kode diambil lewat GitHub (bukan merge): `jantung7-aset.mjs` (= `heart7.mjs`) dan `jantung7-geom.mjs` (= `v6/geom.mjs`, dibutuhkan heart7). Kepala berkas memuat kredit dan alamat commit. **Siluet, pembuluh, volume, lemak, koroner tidak digambar ulang.**
+- Perubahan pada `jantung7-aset.mjs` hanya: import geom diarahkan ke salinan lokal, dan `buildSvg(...).layers` menambah `outline` (daftar path tepi) yang akhirnya tidak dipakai (kontur memakai filter, lihat bawah).
+- Dari `scenes/jantung.mjs` diambil **gerak lokal**: massa jantung (badan, aurikula, alur, lemak, koroner, sorotan) diskalakan sy 0,955 / sx 0,98 dan diputar 0,8° terhadap titik tambat (350, 600) dengan amplop denyut (periode 1,25 dtk); pembuluh besar tidak bergerak sehingga sambungan utuh. Penanda aliran koroner = infografis, bukan rekaman aliran darah.
+- `jantung.js` kini pembungkus: latar, merek, kamera, kontur, bayangan, label, peralihan dari sistem MEDCOEL. Kontur tinta 2,5 px dibuat dengan filter tepi-alfa (feMorphology) pada seluruh gambar jantung agar tebalnya sama dengan gigi/kulit (versi awal memakai path kontur dan menghasilkan garis persegi, dibuang). Jantung v4 asli: `jantung-v4.js`; v4 versi MEDCOEL: `jantung-v4m.js` (pembanding).
+
+### Yang disamakan lintas organ
+| Aspek | Aturan bersama |
+|---|---|
+| Arah cahaya | kunci kiri-atas (azimut 225, elevasi 50); bayangan navy-hijau ke kanan-bawah; pantul mint di tepi; jantung memakai filter volume bawaan v7 tetapi dibungkus bayangan dan kontur MEDCOEL yang sama |
+| Kedalaman permukaan | bayangan jatuh (`shadow`) + kontur tinta di sekeliling siluet; vignette sama |
+| Kontur | 2,5 px, opasitas .55, warna tinta (`KONTUR`) di ketiga organ |
+| Tipografi, label | Plus Jakarta Sans; chip 32 px; titik dan garis emas; **maksimum 3 chip serentak** (jadwal `LABEL_T` per organ; kulit menghitung chip pemindai) |
+| Kamera | push-in 4,5%, easing `soft`, `kam()` sama |
+| Easing, tempo | `E.out/soft/inout`; klip 5,0 dtk, 30 fps; fade masuk dan keluar 0,3 dtk ke hijau hutan (`peralihan`) sehingga pergantian organ = jeda hijau 0,6 dtk; label masuk/keluar 0,3 dtk |
+| Latar | tetap hijau hutan berlapis; fokus cahaya dan kilau berbeda per organ |
+| Gerak (sengaja berbeda) | jantung = kontraksi lokal, pembuluh utuh; gigi = reveal lapisan; kulit = penelusuran kedalaman |
+
+### Keluaran (`render/`)
+- Klip (`render/klip/`, 1080 x 1920, 30 fps, 150 bingkai, 5,0 dtk, H.264): `jantung-deformasi-lokal.mp4`, `gigi-reveal-layer.mp4`, `kulit-penelusuran-kedalaman.mp4`, gabungan `medcoel-anatomi-15dtk.mp4` (jantung, gigi, kulit; 15,0 dtk).
+- Still 1080 x 1920: `<organ>.png`, `<organ>-label.png`, `<organ>-polos.png`.
+- Awal-tengah-akhir lebar 360 px: `awal-tengah-akhir-<organ>-360.png` (bingkai 1, 76, 150 apa adanya; bingkai 1 dan 150 hampir hijau polos karena fade) dan `awal-tengah-akhir-isi-<organ>-360.png` (bingkai 16, 76, 136 saat isi terlihat).
+- Pemeriksaan: `lembar-frame-<organ>.png` (8 bingkai/klip), `panel-3-organ-gerak.png`, `peralihan-gabungan.png` (t = 4,5-5,5 dan 9,5-10,5 dari MP4 gabungan), `cek-sambungan-jantung.png` (istirahat vs kontraksi maksimum pada bingkai 58 dan 84), `cek-ponsel-360/390.png`.
+
+### Pemeriksaan yang dijalankan (revisi 9) dan hasilnya
+1. **Label serentak:** dihitung dari jadwal (aktif a <= t < b): maksimum 3 pada jantung (t=1,9), gigi (t=2,5), kulit (t=1,0; sudah termasuk chip pemindai). Pada lembar bingkai terlihat 2-3 chip.
+2. **Selisih antar-bingkai (150 bingkai):** maksimum terjadi di bingkai 147 pada ketiga klip (fade ke hijau, memang diharapkan; jantung 8,0, gigi 14,1, kulit 14,7); selain itu rata-rata 1,0-1,6 tanpa lonjakan lain yang diperiksa satu per satu.
+3. **Video gabungan:** bingkai di sekitar t=5 dan t=10 dilihat (`peralihan-gabungan.png`): setiap pergantian melalui hijau hutan polos, tanpa potongan keras; tidak ada lapisan organ yang bertahan ke klip berikutnya. Penurunan kualitas yang terlihat: lihat daftar kegagalan.
+4. **Sambungan jantung:** perbandingan potongan pada kontraksi maksimum (bingkai 84) dan istirahat (bingkai 58): pangkal aorta, batang pulmonal, dan v. kava tetap menempel pada badan; badan bergeser sedikit di bawahnya. Ini pemeriksaan visual pada satu pasang bingkai, bukan pemeriksaan geometris per piksel; `periksa-jantung.mjs` lama tidak berlaku untuk v7 (mengimpor geometri v4) dan **tidak dijalankan** di revisi ini.
+5. **Tabrakan label-struktur:** label jantung diberi posisi vertikal sendiri (`ty`) sehingga chip Pulmonalis tidak lagi menutupi ujung arteri; Pulmonalis dan Arkus aorta berada di tepi kanan kanvas.
+
+### Yang masih gagal atau lemah (spesifik, revisi 9)
+1. **Kulit menurunkan kesan di awal klip:** sampai pemindai lewat, lapisan di bawahnya diredupkan abu-abu sehingga bingkai awal klip kulit tampak pucat dibanding jantung dan gigi pada waktu yang sama; ini disengaja untuk gerak "penelusuran" tetapi terbaca sebagai penurunan kualitas saat berpindah dari gigi ke kulit (t=10 dtk).
+2. **Kulit, chip menutup irisan:** chip Sebasea dan Lemak (sisi kiri) berada di atas tepi irisan jaringan; menutupi sebagian struktur luar (bukan inti struktur yang diberi label), tetapi tetap tumpang tindih.
+3. **Jantung, ukuran dan tingkat detail:** jantung v7 mengisi bingkai lebih besar dan lebih jenuh (warna merah/biru) daripada gigi dan kulit yang berwarna krem-pastel; arah cahaya sama, tetapi palet jantung tetap terasa lebih tajam. Pembuluh besar (kava, aorta, pulmonalis) berbentuk tabung polos tanpa tekstur dinding.
+4. **Jantung, kontur:** kontur tinta dari filter tepi-alfa tipis dan hampir tidak terbaca di tepi gelap (badan jantung maroon di latar hijau gelap); halo hijau di sekitar badan berasal dari rim mint, bukan bagian anatomi.
+5. **Jantung, label di tepi kanvas:** chip Pulmonalis dan Arkus aorta mepet ke tepi kanan (margin ±25 px) pada 1080 px.
+6. **Anatomi jantung v7 belum diverifikasi oleh saya:** geometri berasal dari cabang lain; saya tidak mencocokkannya ke atlas atau sumber anatomi baru (aorta/pulmonalis/kava, posisi aurikula kiri, jalur koroner). Penanda aliran koroner infografis. Gerak kontraksi (±4,5% tinggi) ilustratif.
+7. **Anatomi gigi dan kulit:** sama seperti revisi 8: skematik, angka mm belum terverifikasi, epidermis tidak berskala.
+8. **Render:** 450 bingkai butuh ±15 menit; MP4 gabungan dibuat dengan `ffmpeg -f concat` dari tiga MP4 klip (re-encode, tanpa audio).
+9. **Tidak dilakukan:** tidak membuka atlas/anatomi baru; tidak menjalankan `periksa-jantung.mjs`; tidak menguji klip di perangkat ponsel nyata (hanya perkecilan 360/390 px).
