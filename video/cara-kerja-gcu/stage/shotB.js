@@ -112,7 +112,7 @@ export function sceneB(t) {
   const rewind = win(t, 12.3, 13.4, 0.25);
   if (rewind > 0.01) lab += A.tag(540, 400, '◀◀ diputar ulang pelan', { a: rewind, fs: 30 });
   const foot = seg(t, 12.6, 13.2) * (1 - seg(t, 31.0, 31.5));
-  if (foot > 0.01) lab += `<g opacity="${f1(0.92 * foot)}"><rect x="90" y="1838" width="900" height="52" rx="26" fill="${MC.ink}" opacity=".78"/><text x="540" y="1873" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="25" fill="${MC.ivory}">Skema penjelasan · bukan skala · warna dan cahaya = kode visual</text></g>`;
+  if (foot > 0.01) lab += `<g opacity="${f1(0.92 * foot)}"><rect x="90" y="1838" width="900" height="52" rx="26" fill="${MC.ink}" opacity=".78"/><text x="540" y="1873" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="28" fill="${MC.ivory}">Skema penjelasan · bukan skala · warna dan cahaya = kode visual</text></g>`;
   return g + lab;
 }
 // tanda "darah tidak masuk ke mesin": panah putus-putus dari ruang reaksi ke meter, dicoret (26,9 - 28,5)

@@ -27,7 +27,7 @@ function rakaBlock(t, o) {
   const strip = o.strip ? o.strip(t) : { cover: 1, fill: 1, tint: ANA[0].warna, tintDark: ANA[0].gelap };
   const asm = A.assemblySvg({ id: o.uid + 'a', meter: { screen: o.screen ? o.screen(t) : { text: '92', tag: 'GLUKOSA' } }, strip: strip.dy ? { ...strip } : strip });
   const dev = `<g transform="translate(${f1(G[0])} ${f1(G[1])}) rotate(${f1(th)}) scale(${A.U}) translate(0 ${-GRIP_SU})">${asm}</g>`;
-  const hand = `<g transform="translate(${f1(G[0])} ${f1(G[1])}) rotate(${f1(th)})"><circle r="22" fill="#F7BC8E"/><rect x="-6" y="-34" width="16" height="46" rx="8" fill="#F7BC8E" transform="rotate(-14 0 0)"/></g>`;
+  const hand = `<g transform="translate(${f1(G[0])} ${f1(G[1])}) rotate(${f1(th)})"><circle r="22" fill="#F7BC8E"/><rect x="-6" y="-24" width="16" height="36" rx="8" fill="#F7BC8E" transform="rotate(-14 0 0)"/></g>`;
   return { st, G, th, svg: `<g>${body}${dev}${hand}</g>` };
 }
 const camTf = (cx, cy, s) => `translate(540 960) scale(${s.toFixed(4)}) translate(${f1(-cx)} ${f1(-cy)})`;
@@ -67,20 +67,20 @@ function rakaBlockSwap(t, o) {
   st.armL = solveArm(st, 'L', G_HOLD, { finger: 0, front: 1, len: 150 });
   const asm = asmSwap(o.uid + 'a', o.sw, { text: '92', tag: ANA[o.sw.idx].nama.slice(0, 9), tagA: 1 });
   const dev = `<g transform="translate(${f1(G_HOLD[0])} ${f1(G_HOLD[1])}) rotate(${TH_HOLD}) scale(${A.U}) translate(0 ${-GRIP_SU})">${asm}</g>`;
-  const hand = `<g transform="translate(${f1(G_HOLD[0])} ${f1(G_HOLD[1])}) rotate(${TH_HOLD})"><circle r="22" fill="#F7BC8E"/><rect x="-6" y="-34" width="16" height="46" rx="8" fill="#F7BC8E" transform="rotate(-14 0 0)"/></g>`;
+  const hand = `<g transform="translate(${f1(G_HOLD[0])} ${f1(G_HOLD[1])}) rotate(${TH_HOLD})"><circle r="22" fill="#F7BC8E"/><rect x="-6" y="-24" width="16" height="36" rx="8" fill="#F7BC8E" transform="rotate(-14 0 0)"/></g>`;
   return { st, svg: `<g>${rakaBody(st, o.uid)}${dev}${hand}</g>` };
 }
 // kartu "karusel" tiga strip di bagian atas adegan C (latar hutan), strip aktif disorot
 export function cardC(t, expand = 0) {
   const a = seg(t, 32.5, 33.1, eob), act = t < 33.55 ? 0 : t < 34.68 ? 1 : 2;
-  const x0 = lerp(60, 0, expand), y0 = lerp(120, 0, expand), w = lerp(960, 1080, expand), h = lerp(540, 1920, expand), rx = lerp(60, 0, expand);
+  const x0 = lerp(60, 0, expand), y0 = lerp(100, 0, expand), w = lerp(960, 1080, expand), h = lerp(600, 1920, expand), rx = lerp(60, 0, expand);
   if (a <= 0.01) return '';
   let g = `<g opacity="${f1(Math.min(1, a))}" transform="translate(540 ${f1(y0 + h / 2)}) scale(${f1(0.9 + 0.1 * Math.min(1, a))}) translate(-540 ${f1(-(y0 + h / 2))})"><rect x="${f1(x0)}" y="${f1(y0)}" width="${f1(w)}" height="${f1(h)}" rx="${f1(rx)}" fill="${MC.forest}" stroke="${MC.ink}" stroke-width="${f1(6 * (1 - expand))}"/>`;
   g += `<rect x="${f1(x0)}" y="${f1(y0)}" width="${f1(w)}" height="${f1(h)}" rx="${f1(rx)}" fill="url(#cardGl)"/>`;
   [0, 1, 2].forEach((i) => {
-    const sc = lerp(1.38, 2.7, expand) * (1 + 0.1 * (i === act ? 1 : 0) * (1 - expand)), cx = lerp(240, 220, expand) + i * lerp(300, 320, expand), top = lerp(150, 470, expand);
+    const sc = lerp(1.2, 2.7, expand) * (1 + 0.1 * (i === act ? 1 : 0) * (1 - expand)), cx = lerp(240, 220, expand) + i * lerp(300, 320, expand), top = lerp(135, 470, expand);
     const dim = i === act || expand > 0 ? 1 : 0.5;
-    g += `<g opacity="${f1(dim)}" transform="translate(${f1(cx)} ${f1(top)}) scale(${f1(sc)})">${i === act && expand < 1 ? `<rect x="-38" y="-10" width="76" height="340" rx="14" fill="none" stroke="${MC.gold}" stroke-width="${f1(5 / sc)}" opacity=".95"/>` : ''}${A.stripSvg({ id: 'cc' + i, cover: 0.55, fill: 1, tint: ANA[i].warna, tintDark: ANA[i].gelap, shadow: false })}</g>`;
+    g += `<g opacity="${f1(dim)}" transform="translate(${f1(cx)} ${f1(top)}) scale(${f1(sc)})">${i === act && expand < 1 ? `<rect x="-38" y="-10" width="76" height="340" rx="14" fill="none" stroke="${MC.gold}" stroke-width="${f1(5 / sc)}" opacity=".95"/>` : ''}${A.stripSvg({ id: 'cc' + i, cover: 0.55, fill: 0, tint: ANA[i].warna, tintDark: ANA[i].gelap, shadow: false })}</g>`;
   });
   return g + '</g>';
 }
@@ -93,7 +93,7 @@ export function sceneC(t) {
   const act = t < 33.55 ? 0 : t < 34.68 ? 1 : 2;
   const names = [['GLUKOSA', 33.0, 33.62], ['KOLESTEROL\nTOTAL', 33.62, 34.74], ['ASAM URAT', 34.74, 35.4]];
   const out = [];
-  names.forEach(([n, a0, a1], i) => { const al = seg(t, a0, a0 + 0.2) * (1 - seg(t, a1 - 0.2, a1)); if (al > 0.01) out.push(A.chipSvg(240 + i * 300, 640, n, { cx: 240 + i * 300, cy: 738, a: al, fs: 32 })); });
+  names.forEach(([n, a0, a1], i) => { const al = seg(t, a0, a0 + 0.2) * (1 - seg(t, a1 - 0.2, a1)); if (al > 0.01) out.push(A.chipSvg(240 + i * 300, 520, n, { cx: 240 + i * 300, cy: 605, a: al, fs: 32 })); });
   return { svg: g, labels: out.join(''), card: (e) => cardC(t, e) };
 }
 
@@ -163,7 +163,7 @@ export function cardsE(t) {
   const fade = seg(t, 42.45, 42.85) * (1 - seg(t, 48.0, 48.35));
   if (fade <= 0.01) return '';
   let g = `<g opacity="${f1(fade)}">`;
-  const cw = 880, ch = 150, x0 = 100, y0 = 170, gap = 50;
+  const cw = 880, ch = 146, x0 = 100, y0 = 150, gap = 46;
   CARDS.forEach((c, i) => {
     const y = y0 + i * (ch + gap), on = clamp(win(t, c.t0, c.t1, 0.18) * 1.4), done = t >= c.t0 ? 1 : 0, pop = 1 + 0.045 * on;
     const fill = on > 0.05 ? '#FFF2C4' : done ? '#FFFFFF' : '#F2EFE4';
@@ -175,7 +175,7 @@ export function cardsE(t) {
 }
 export function sceneEF(t) {
   const z = seg(t, 47.85, 48.55, eio);
-  const s = lerp(1.9, 2.5, z), cx = lerp(200, 205, z), cy = lerp(94.5, 330, z);
+  const s = lerp(1.75, 2.5, z), cx = lerp(200, 205, z), cy = lerp(71, 330, z);
   const R = rakaE(t);
   let g = `<g transform="${camTf(cx, cy, s)}">${R.svg}</g>`;
   return { svg: g };
