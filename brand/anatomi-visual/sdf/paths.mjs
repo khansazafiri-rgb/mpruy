@@ -7,7 +7,7 @@ import { catmull } from '../style.mjs';
 export const ARTERIES = {
   LM:  { pts: [[458, 334], [506, 344]], r0: 12, r1: 8 },
   LAD: { pts: [[504, 344], [506, 490], [538, 680], [592, 912]], r0: 8, r1: 3.5 },
-  LCX: { pts: [[508, 352], [580, 384], [690, 454], [750, 598]], r0: 6.5, r1: 3.5 },
+  LCX: { pts: [[508, 352], [580, 384], [660, 424], [722, 480], [754, 560], [758, 630]], r0: 6.5, r1: 3.5 },
   RCA: { pts: [[428, 352], [368, 372], [314, 408], [280, 460], [274, 520], [302, 574], [366, 610], [436, 636], [490, 664], [530, 706]], r0: 8, r1: 4 },
 };
 export const VEIN_GCV = { pts: [[528, 360], [550, 500], [584, 690], [640, 902]], r0: 5.5, r1: 3 };
@@ -15,20 +15,27 @@ export const VEIN_GCV = { pts: [[528, 360], [550, 500], [584, 690], [640, 902]],
 // alur lemak (di bawah arteri): LAD, sirkumfleks, RCA bagian alur AV kanan
 export const FAT_GROOVES = [
   [[504, 344], [506, 490], [538, 680], [592, 912]],
-  [[508, 352], [580, 384], [690, 454], [750, 598]],
+  [[508, 352], [580, 384], [660, 424], [722, 480], [754, 560], [758, 630]],
   [[274, 520], [302, 574], [366, 610], [436, 636], [490, 664], [530, 706]],
 ];
 
-// pembuluh besar sebagai rantai kapsul 3D: titik kontrol (x, y, z), radius pangkal dan ujung
-// z positif ke arah penonton. Batang pulmonalis di depan aorta; lengkung aorta menuju belakang.
+// Pembuluh besar sebagai rantai kapsul 3D: titik kontrol (x, y, z); z positif ke arah penonton.
+// cutStart/cutEnd: ujung terpotong dengan lumen; tilt ditambahkan ke arah singgung agar bidang potong miring ke penonton
+// (supaya lumen terbaca dari depan). Radius pangkal r0 dan ujung r1.
+// Susunan (tampak depan): aorta asenden naik dari akar, lengkung ke kiri pasien (kanan gambar) dan ke belakang, turun sebagai
+// aorta desenden terpotong; tiga cabang keluar dari puncak lengkung (brakiosefalika, karotis komunis kiri, subklavia kiri).
+// Batang pulmonalis keluar dari jalur keluar ventrikel kanan, di depan aorta, naik ke kiri pasien dan bercabang di bawah lengkung
+// aorta: LPA ke kanan gambar, RPA ke belakang aorta menuju kiri gambar (di atas atrium kanan).
 export const VESSELS = {
-  AORTA: { pts: [[452, 380, -30], [450, 270, -40], [444, 170, -45], [442, 108, -50], [456, 40, -65], [560, 16, -85], [652, 66, -115]], r0: 52, r1: 42 },
-  BRACH: { pts: [[462, 66, -55], [420, 36, -60], [384, 18, -62], [344, 14, -64]], r0: 24, r1: 21 },
-  PA:    { pts: [[420, 500, 60], [470, 420, 110], [530, 342, 118], [606, 290, 80]], r0: 44, r1: 34 },
-  PAL:   { pts: [[606, 288, 30], [652, 262, 0], [704, 268, -30], [760, 306, -50]], r0: 29, r1: 25 },
-  PAR:   { pts: [[606, 288, 30], [566, 272, -10], [526, 262, -45], [488, 256, -60]], r0: 25, r1: 22 },
-  SVC:   { pts: [[318, 30, -20], [316, 110, -18], [312, 190, -14], [308, 262, -6]], r0: 29, r1: 27 },
-  IVC:   { pts: [[332, 620, -40], [340, 690, -38], [330, 750, -34], [318, 800, -30]], r0: 31, r1: 28 },
+  AORTA: { pts: [[452, 410, -20], [450, 300, -34], [448, 200, -44], [456, 128, -56], [488, 78, -74], [540, 62, -96], [596, 80, -118], [640, 130, -132], [660, 190, -138], [662, 236, -140]], r0: 50, r1: 38, cutEnd: { tilt: [0, 0, 1.1] } },
+  BCT:   { pts: [[480, 74, -66], [470, 20, -70], [452, -36, -72], [436, -82, -72]], r0: 23, r1: 20, cutEnd: { tilt: [0, 0, 1.0] } },
+  LCC:   { pts: [[526, 66, -90], [528, 10, -92], [530, -40, -92], [532, -78, -92]], r0: 18, r1: 16, cutEnd: { tilt: [0, 0, 1.0] } },
+  LSA:   { pts: [[578, 78, -108], [590, 24, -110], [604, -24, -110], [620, -62, -110]], r0: 21, r1: 18, cutEnd: { tilt: [0, 0, 1.0] } },
+  PA:    { pts: [[456, 570, 30], [470, 470, 96], [520, 366, 128], [568, 322, 116], [612, 292, 92]], r0: 50, r1: 42 },
+  PAL:   { pts: [[612, 292, 92], [660, 278, 52], [720, 288, 4], [776, 312, -24]], r0: 38, r1: 31, cutEnd: { tilt: [0.5, 0, 0.9] } },
+  PAR:   { pts: [[612, 292, 92], [574, 282, 34], [524, 262, -42], [470, 244, -104], [396, 238, -122], [320, 236, -118], [250, 238, -108]], r0: 32, r1: 26, cutEnd: { tilt: [-0.5, 0, 0.9] } },
+  SVC:   { pts: [[318, 14, -22], [316, 100, -18], [312, 190, -12], [306, 262, -4], [300, 330, 6]], r0: 29, r1: 28, cutStart: { tilt: [0, 0, 1.0] } },
+  IVC:   { pts: [[318, 640, -44], [334, 700, -42], [334, 760, -38], [322, 820, -34]], r0: 31, r1: 28, cutEnd: { tilt: [0, 0, 1.0] } },
 };
 
 export function densify(pts, per = 6) { return catmull(pts, per); }

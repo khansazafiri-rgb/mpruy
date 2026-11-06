@@ -19,19 +19,37 @@ function polyFn(name, poly) {
   return `${arr2(name + 'P', poly)}\n${arrF(name + 'C', cum)}\nvec2 ${name}(vec2 p){ float best=1e9, par=0.; for(int i=0;i<${poly.length - 1};i++){ vec2 a=${name}P[i], b=${name}P[i+1]; vec2 pa=p-a, ba=b-a; float h=clamp(dot(pa,ba)/dot(ba,ba),0.,1.); float d=length(pa-ba*h); if(d<best){best=d; par=${name}C[i]+h*length(ba);} } return vec2(best,par); }`;
 }
 
-// rantai kapsul 3D (radius meruncing) dengan kotak pembatas agar cepat dilewati bila jauh
-function vesselFn(name, pts, r0, r1) {
-  const poly = densify(pts.map((p) => [p[0], p[1]]), 9);
-  // z diinterpolasi dari titik kontrol (linear terhadap indeks)
-  const n = poly.length, m = pts.length - 1;
-  const full = poly.map((p, i) => { const t = (i / (n - 1)) * m, k = Math.min(m - 1, Math.floor(t)), u = t - k; return [p[0], p[1], pts[k][2] * (1 - u) + pts[k + 1][2] * u]; });
+// rantai kapsul 3D (radius meruncing) dengan kotak pembatas. Ujung terpotong (cutStart/cutEnd): rantai diperpanjang lalu dipotong
+// bidang miring, dan lumen (lubang) dilubangi dengan silinder. Data ujung potong dikumpulkan di CUTS untuk pewarnaan lumen.
+const CUTS = [];
+function vesselFn(name, v) {
+  const { pts, r0, r1 } = v;
+  let poly = densify(pts.map((p) => [p[0], p[1]]), 7);
+  const n0 = poly.length, m = pts.length - 1;
+  let full = poly.map((p, i) => { const t = (i / (n0 - 1)) * m, k = Math.min(m - 1, Math.floor(t)), u = t - k; return [p[0], p[1], pts[k][2] * (1 - u) + pts[k + 1][2] * u]; });
+  const norm = (a) => { const l = Math.hypot(...a) || 1; return a.map((x) => x / l); };
+  const sub = (a, b) => a.map((x, i) => x - b[i]);
+  const add = (a, b, s = 1) => a.map((x, i) => x + b[i] * s);
+  const cuts = [];
+  const mk = (cut, e, dirOut, r, label) => {
+    const t = norm(add(dirOut, cut.tilt));
+    cuts.push({ e, t, r, rin: r * 0.66 });
+    CUTS.push({ e, t, r, rin: r * 0.66 });
+  };
+  const ext = (r) => r * 2.0;
+  if (v.cutEnd) { const e = full[full.length - 1], d = norm(sub(e, full[full.length - 2])); mk(v.cutEnd, e, d, r1); full = [...full, add(e, d, ext(r1))]; }
+  if (v.cutStart) { const e = full[0], d = norm(sub(e, full[1])); mk(v.cutStart, e, d, r0); full = [add(e, d, ext(r0)), ...full]; }
+  const n = full.length;
   const xs = full.map((p) => p[0]), ys = full.map((p) => p[1]), zs = full.map((p) => p[2]);
   const pad = Math.max(r0, r1) + 4;
   const c = [(Math.min(...xs) + Math.max(...xs)) / 2, (Math.min(...ys) + Math.max(...ys)) / 2, (Math.min(...zs) + Math.max(...zs)) / 2];
   const h = [(Math.max(...xs) - Math.min(...xs)) / 2 + pad, (Math.max(...ys) - Math.min(...ys)) / 2 + pad, (Math.max(...zs) - Math.min(...zs)) / 2 + pad];
+  let cutCode = '';
+  for (const k of cuts) cutCode += `if(length(p-${v3(k.e)})<${f(k.r * 4.2)}){ float s=dot(p-${v3(k.e)},${v3(k.t)}); best=max(best,s); vec3 rv=p-${v3(k.e)}-${v3(k.t)}*s; float cyl=max(length(rv)-${f(k.rin)}, max(s-4.,-s-12.)); best=max(best,-cyl); }\n  `;
   return `const vec3 ${name}P[${n}] = vec3[${n}](${full.map(v3).join(',')});
 float ${name}(vec3 p){ vec3 q=abs(p-${v3(c)})-${v3(h)}; float db=length(max(q,0.))+min(max(q.x,max(q.y,q.z)),0.); if(db>30.) return db;
-  float best=1e9; for(int i=0;i<${n - 1};i++){ vec3 a=${name}P[i], b=${name}P[i+1]; vec3 pa=p-a, ba=b-a; float hh=clamp(dot(pa,ba)/dot(ba,ba),0.,1.); float r=mix(${f(r0)},${f(r1)},(float(i)+hh)/${f(n - 1)}); best=min(best,length(pa-ba*hh)-r);} return best; }`;
+  float best=1e9; for(int i=0;i<${n - 1};i++){ vec3 a=${name}P[i], b=${name}P[i+1]; vec3 pa=p-a, ba=b-a; float hh=clamp(dot(pa,ba)/dot(ba,ba),0.,1.); float r=mix(${f(r0)},${f(r1)},(float(i)+hh)/${f(n - 1)}); best=min(best,length(pa-ba*hh)-r);}
+  ${cutCode}return best; }`;
 }
 
 export function buildFragment() {
@@ -43,7 +61,8 @@ export function buildFragment() {
   for (const k of arteryNames) g += polyFn('art' + k, polys[k]) + '\n';
   g += polyFn('veinGCV', gcv) + '\n';
   g += `const vec3 FAT[${circles.length}] = vec3[${circles.length}](${circles.map(v3).join(',')});\n`;
-  for (const [k, v] of Object.entries(VESSELS)) g += vesselFn('ves' + k, v.pts, v.r0, v.r1) + '\n';
+  for (const [k, v] of Object.entries(VESSELS)) g += vesselFn('ves' + k, v) + '\n';
+  g += `const vec3 CUTE[${CUTS.length}] = vec3[${CUTS.length}](${CUTS.map((c) => v3(c.e)).join(',')});\nconst vec3 CUTT[${CUTS.length}] = vec3[${CUTS.length}](${CUTS.map((c) => v3(c.t)).join(',')});\nconst vec2 CUTR[${CUTS.length}] = vec2[${CUTS.length}](${CUTS.map((c) => v2([c.r, c.rin])).join(',')});\n`;
   const artDecal = arteryNames.map((k) => {
     const a = ARTERIES[k], total = cumulative(polys[k]).slice(-1)[0];
     const band = (k === 'LM') ? '' : `{ float u=q.y/${f(total)}; float lob=0.5+0.5*sin(q.y*0.11+${f(k.length)}*1.7)*0.6+0.22*sin(q.y*0.19+${f(k.length)}*2.3); float Rf=(${k === 'LAD' ? '15.' : '20.'}+${k === 'LAD' ? '6.' : '9.'}*lob)*(1.-0.55*smoothstep(0.55,1.,u)); float edge=Rf-q.x; hF=max(hF, sqrt(max(Rf*Rf-q.x*q.x,0.))*(0.26+0.12*lob)); mF=max(mF, smoothstep(-1.5,5.5,edge)); }`;
@@ -56,7 +75,7 @@ precision highp float;
 out vec4 outColor;
 uniform vec2 uRes; uniform vec2 uTileOrigin;
 uniform float uBeat; uniform float uFlow; uniform int uMode; // 0 penuh, 1 badan+decal, 2 pembuluh besar
-uniform float uScale;
+uniform float uScale; uniform int uView; // 0 akhir, 1 siluet, 2 warna datar, 3 kedalaman
 const float PI=3.14159265;
 ${g}
 // ---------- utilitas SDF
@@ -65,22 +84,30 @@ vec3 rotZ(vec3 p,float a){ float c=cos(a), s=sin(a); return vec3(c*p.x-s*p.y, s*
 float ell(vec3 p,vec3 c,vec3 r,float a){ vec3 q=rotZ(p-c,a); float k0=length(q/r); float k1=length(q/(r*r)); return k0*(k0-1.)/k1; }
 // elipsoid yang meruncing ke bawah (apeks): taper = pengurangan lebar di ujung bawah
 float ellT(vec3 p,vec3 c,vec3 r,float a,float taper){ vec3 q=rotZ(p-c,a); float ty=clamp(q.y/r.y*0.5+0.5,0.,1.); float sx=1.-taper*smoothstep(0.35,1.,ty); q.x/=sx; float k0=length(q/r); float k1=length(q/(r*r)); return (k0*(k0-1.)/k1)*sx; }
-// ---------- badan jantung: ventrikel, basis, atrium kanan, auricula kiri
+// ---------- aurikula: kanan (melengkung di depan akar aorta) dan kiri (jari melengkung di sisi batang pulmonalis)
+float aur(vec3 q){
+  float r1=ell(q,vec3(378.,392.,150.),vec3(84.,46.,40.),0.5);
+  float r2=ell(q,vec3(428.,360.,148.),vec3(42.,26.,30.),0.9);
+  float l1=ell(q,vec3(690.,414.,134.),vec3(68.,40.,38.),-0.5);
+  float l2=ell(q,vec3(636.,372.,140.),vec3(50.,24.,28.),-0.8);
+  return smin(smin(r1,r2,26.),smin(l1,l2,30.),10.);
+}
+// ---------- badan jantung: ventrikel, basis, atrium kanan, aurikula
 float body(vec3 p){
   float sc=1.+0.03*uBeat;
   vec3 c0=vec3(510.,560.,0.);
   vec3 q=c0+(p-c0)/sc;
-  float lv=ellT(q,vec3(552.,652.,-10.),vec3(246.,292.,190.),-0.24,0.62);
-  float rv=ell(q,vec3(384.,508.,50.),vec3(166.,176.,166.),0.28);
+  float lv=ellT(q,vec3(552.,652.,-10.),vec3(240.,300.,190.),-0.20,0.68);
+  float rv=ell(q,vec3(386.,548.,40.),vec3(158.,192.,140.),0.32);
   float bs=ell(q,vec3(500.,388.,0.),vec3(255.,108.,150.),0.03);
-  float d=smin(lv,rv,130.); d=smin(d,bs,70.);
-  float ra=ell(q,vec3(292.,350.,26.),vec3(88.,94.,96.),0.);
-  float la=ell(q,vec3(708.,372.,78.),vec3(88.,54.,44.),0.35);
-  d=smin(d,ra,34.); d=smin(d,la,30.);
+  float d=smin(lv,rv,104.); d=smin(d,bs,70.);
+  float ra=ell(q,vec3(298.,372.,26.),vec3(90.,118.,96.),0.);
+  d=smin(d,ra,34.);
+  d=smin(d,aur(q),30.);
   return d*sc;
 }
 vec4 vessels(vec3 p){ // x aorta, y arteri paru, z vena, w campuran
-  float aorta=min(vesAORTA(p),vesBRACH(p));
+  float aorta=smin(vesAORTA(p),min(vesBCT(p),min(vesLCC(p),vesLSA(p))),10.);
   float pa=smin(vesPA(p),smin(vesPAL(p),vesPAR(p),14.),14.);
   float vn=min(vesSVC(p),vesIVC(p));
   return vec4(aorta,pa,vn,0.);
@@ -93,7 +120,7 @@ float mapAll(vec3 p){
   float vd=smin(v.x,smin(v.y,v.z,14.),14.);
   if(uMode==1) return b;
   if(uMode==2) return vd;
-  return smin(b,vd,30.);
+  return smin(b,vd,22.);
 }
 vec3 calcN(vec3 p){ vec2 e=vec2(1.2,0.); return normalize(vec3(mapAll(p+e.xyy)-mapAll(p-e.xyy), mapAll(p+e.yxy)-mapAll(p-e.yxy), mapAll(p+e.yyx)-mapAll(p-e.yyx))); }
 // ---------- decal permukaan: lemak, arteri koroner, vena kardiak
@@ -139,6 +166,10 @@ void main(){
   for(int i=0;i<150;i++){ p=ro+rd*t; float d=mapAll(p); dmin=min(dmin,d); if(d<0.35){hit=true;break;} t+=d*0.85; if(t>1400.) break; }
   vec3 bg=background(px);
   if(uMode!=0) bg=vec3(0.);
+  if(uView==1){ outColor=hit?vec4(0.08,0.07,0.10,1.):vec4(1.); return; }
+  if(uView==3){ float vd=hit?t/1500.:1.; float a=floor(vd*255.)/255.; outColor=vec4(a,fract(vd*255.),0.,1.); return; }
+  if(uView==2) bg=vec3(0.94,0.94,0.92);
+  if(!hit && uView==2){ outColor=vec4(bg,1.); return; }
   if(!hit){
     float glow=exp(-dmin*0.05)*0.16*(uMode==0?1.:0.);
     outColor=vec4(bg+vec3(0.95,0.25,0.45)*glow, uMode==0?1.:0.); return;
@@ -154,15 +185,23 @@ void main(){
   vec3 alb=cMus*wB+cArt*wA+cPul*wP+cVen*wV;
   // variasi halus (sangat lebar, bukan bintik): ventrikel kanan sedikit lebih gelap
   alb*=1.-0.16*smoothstep(430.,260.,p.x)*wB;
+  // aurikula sedikit lebih gelap/ungu daripada ventrikel
+  float aw=1.-smoothstep(0.,10.,aur(p)); alb=mix(alb,vec3(0.50,0.05,0.14),aw*0.85*wB);
+  // ujung pembuluh terpotong: dinding terpotong (krem-merah muda) dan lumen gelap
+  float lumen=0.; float cutFace=0.;
+  for(int i=0;i<CUTE.length();i++){ float s=dot(p-CUTE[i],CUTT[i]); float rad=length(p-CUTE[i]-CUTT[i]*s);
+    if(s>-13. && s<2. && rad<CUTR[i].x+2.){ if(rad<CUTR[i].y+0.8 && s<-1.5) lumen=max(lumen,1.); else if(s>-2.5 && rad>=CUTR[i].y) cutFace=1.; } }
+  alb=mix(alb,vec3(0.90,0.58,0.52),cutFace);
+  alb=mix(alb,vec3(0.20,0.02,0.07),lumen);
   // decal di permukaan badan
-  float decalW=wB;
+  float decalW=wB*smoothstep(2.,10.,aur(p));
   vec3 nD=n; float contact=1.; float pulseAdd=0.;
   if(decalW>0.25 && uMode!=2){
     Decal D=decal(p.xy);
     Decal Dx=decal(p.xy+vec2(1.,0.)), Dy=decal(p.xy+vec2(0.,1.));
     vec2 gH=vec2(Dx.h-D.h, Dy.h-D.h);
     nD=normalize(n-vec3(gH*0.9,0.));
-    vec3 cFat=vec3(0.95,0.76,0.30), cFatLo=vec3(0.68,0.40,0.12), cA=vec3(0.58,0.04,0.07), cV=vec3(0.18,0.22,0.78);
+    vec3 cFat=vec3(1.0,0.66,0.06), cFatLo=vec3(0.72,0.34,0.04), cA=vec3(0.45,0.02,0.05), cV=vec3(0.18,0.22,0.78);
     vec3 fat=mix(cFatLo,cFat,smoothstep(0.,7.,D.h));
     alb=mix(alb,fat,D.fMask*decalW);
     alb=mix(alb,cA,D.aMask*decalW);
@@ -171,6 +210,7 @@ void main(){
     pulseAdd=D.pulse*D.aMask*0.18*decalW;
     n=nD;
   }
+  if(uView==2){ outColor=vec4(pow(alb,vec3(1./1.0)),1.); return; }
   vec3 l=LIGHTDIR();
   float sh=softShadow(p+n*3.,l);
   float occ=ao(p,n);
@@ -186,7 +226,7 @@ void main(){
   col+=vec3(1.0,0.30,0.50)*fres*0.55*occ;                               // rim magenta
   vec3 l2=normalize(vec3(0.9,-0.1,-0.3)); col+=alb*pow(max(dot(n,l2),0.),2.)*0.18;  // pantulan dari kanan
   col+=pulseAdd*vec3(1.,0.55,0.45);
-  col=ACES(col*0.80);
+  col=mix(col,col*0.35,lumen*0.7); col=ACES(col*0.80);
   col=pow(col,vec3(1./2.2));
   outColor=vec4(col, 1.);
 }
