@@ -33,7 +33,8 @@ function pool(app, user, opts) {
   if (opts.campusOnly) {
     const campus = user.getString("campus");
     if (!campus) return [];
-    where.push("q.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(q.campuses) WHERE value = {:campus})");
+    // Milik kampus pengguna: khusus kampusnya, atau dikirim lewat pengajuan dari kampusnya (apa pun cakupannya).
+    where.push("((q.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(q.campuses) WHERE value = {:campus})) OR (q.scope = 'all' AND COALESCE(q.submission, '') != '' AND q.submission IN (SELECT id FROM submissions WHERE campus = {:campus})))");
     params.campus = campus;
   } else if (u.roleOf(user) !== "admin") {
     const campus = user.getString("campus");
@@ -286,7 +287,7 @@ function ensureDrillingChapter(app, subjectId) {
 }
 
 /**
- * Menu Drilling tampil bila sakelar admin menyala dan ada soal Drilling yang bisa dikerjakan PENGGUNA INI:
+ * Menu Drilling/Kampusmu tampil bila sakelar admin menyala dan ada soal Drilling yang bisa dikerjakan PENGGUNA INI:
  * soal General (scope = all) atau soal khusus kampus yang cocok dengan kampusnya. Tanpa `user`, hanya
  * soal General yang dihitung (dipakai ringkasan admin). `total` = soal General, `mine` = soal khusus kampus pengguna.
  */
@@ -303,8 +304,9 @@ function drillingStatus(app, user) {
   };
   const total = count("q.scope = 'all'");
   const campus = user ? user.getString("campus") : "";
+  // `mine` = milik kampus pengguna: khusus kampusnya, atau dikirim lewat pengajuan dari kampusnya (apa pun cakupannya).
   const mine = campus
-    ? count("q.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(q.campuses) WHERE value = {:campus})", { campus: campus })
+    ? count("((q.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(q.campuses) WHERE value = {:campus})) OR (q.scope = 'all' AND COALESCE(q.submission, '') != '' AND q.submission IN (SELECT id FROM submissions WHERE campus = {:campus})))", { campus: campus })
     : 0;
   // Berkas materi (drilling_decks) juga membuka menu Drilling; `total`/`mine` tetap menghitung soal saja.
   let decks = { total: 0, mine: 0 };

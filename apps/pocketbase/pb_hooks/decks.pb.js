@@ -77,7 +77,7 @@ routerAdd("GET", "/api/medcoel/drilling/deck/{id}", (e) => {
   try { rec = e.app.findRecordById("drilling_decks", e.request.pathValue("id")); } catch (_) { rec = null; }
   if (!rec) throw new NotFoundError("Materi tidak ditemukan.");
   if (!admin) {
-    if (rec.getString("status") !== "published" || rec.getString("scope") !== "campus" || !decks.visibleTo(rec, user) || !learn.drillingStatus(e.app, user).kampusAvailable) throw new NotFoundError("Materi tidak ditemukan.");
+    if (rec.getString("status") !== "published" || !decks.ownedBy(e.app, rec, user) || !learn.drillingStatus(e.app, user).kampusAvailable) throw new NotFoundError("Materi tidak ditemukan.");
     const sub = e.app.findRecordById("subjects", rec.getString("subject"));
     if (sub.getBool("hidden")) throw new NotFoundError("Materi tidak ditemukan.");
   }

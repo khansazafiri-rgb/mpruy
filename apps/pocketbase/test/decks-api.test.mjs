@@ -303,6 +303,28 @@ await langkah('soal Drilling dikelompokkan per bagian bernama judul PDF; latihan
 });
 
 
+await langkah('Kampusmu memuat kiriman teman sekampus walau pengaju memilih General; kampus lain dan akun tanpa kampus tidak melihatnya', async () => {
+  const m = await kirim(userB, { kind: 'materi', scope: 'all', names: ['Materi Umum Kiriman B.pdf'] });
+  const rm = (await call('POST', `/api/medcoel/agent/submissions/${m.id}/materi-import`, { deck: deck('Isi Umum B') }, agent.token, 200)).data;
+  assert.equal(rm.scope, 'all'); // cakupan tetap General
+  const soal = (await call('POST', `/api/medcoel/agent/submissions/${(await kirim(userB, { kind: 'soal', scope: 'all', names: ['Soal Umum Kiriman B.pdf'] })).id}/drilling-import`, { questions: [{ type: 'A', difficulty: 'easy', text: `Soal umum B ${RUN}?`, options: [{ text: 'Benar', correct: true }, 'Salah'] }] }, agent.token, 200)).data;
+  assert.equal(soal.created, 1);
+  const lihat = async (u, status = 200) => (await call('GET', `/api/medcoel/drilling/subject/${mk.slug}`, undefined, u.token, status)).data;
+  const b = await lihat(userB);
+  assert.ok(b.decks.some((d) => d.title === 'Materi Umum Kiriman B'), 'pengaju melihat materinya sendiri');
+  assert.ok(b.sets.some((x) => x.title === 'Soal Umum Kiriman B'), 'dan soalnya');
+  const deckId = b.decks.find((d) => d.title === 'Materi Umum Kiriman B').id;
+  assert.equal((await call('GET', `/api/medcoel/drilling/deck/${deckId}`, undefined, userB.token, 200)).data.title, 'Materi Umum Kiriman B');
+  assert.equal((await call('GET', '/api/medcoel/me', undefined, userB.token, 200)).data.drillingAvailable, true);
+  // Kampus lain (A) dan akun tanpa kampus tidak melihatnya.
+  const a = await lihat(userA);
+  assert.ok(!a.decks.some((d) => d.title === 'Materi Umum Kiriman B'));
+  assert.ok(!a.sets.some((x) => x.title === 'Soal Umum Kiriman B'));
+  await call('GET', `/api/medcoel/drilling/deck/${deckId}`, undefined, userA.token, 404);
+  await call('GET', `/api/medcoel/drilling/deck/${deckId}`, undefined, userC.token, 404);
+  await lihat(userC, 404);
+});
+
 console.log('Alihkan tujuan pengajuan (Hermes: /jenis, /matkul, /pindah)');
 const alt = subjects.filter((x) => x.id !== mk.id);
 const retarget = (id, body, token = agent.token, expect = 200) => call('POST', `/api/medcoel/agent/submissions/${id}/retarget`, body, token, expect);

@@ -16,7 +16,7 @@ const MODES = [['learning', 'Mode Learning', BookOpen], ['exam', 'Mode ujian', C
 const PREFS = 'medcoel-drilling-prefs';
 const read = () => { try { return { count: 20, mode: 'learning', ...JSON.parse(localStorage.getItem(PREFS)) }; } catch { return { count: 20, mode: 'learning' }; } };
 
-function DeckCard({ deck }) {
+function DeckCard({ deck, kampusOnly }) {
   const [broken, setBroken] = useState(false);
   return (
     <Link to={`/drilling/materi/${deck.id}`} className="deck-card card-chunky group">
@@ -29,7 +29,7 @@ function DeckCard({ deck }) {
       <span className="deck-card-body">
         <span className="font-display text-[17px] font-bold leading-snug text-ink">{deck.title}</span>
         {deck.description && <span className="deck-card-desc">{deck.description}</span>}
-        <span className="deck-card-meta"><><School size={13} aria-hidden /> {deck.scope === 'campus' ? 'Kampusmu' : 'General'}</></span>
+        <span className="deck-card-meta"><><School size={13} aria-hidden /> {kampusOnly || deck.scope === 'campus' ? 'Kampusmu' : 'General'}</></span>
       </span>
     </Link>
   );
@@ -76,7 +76,7 @@ export default function DrillingSubject() {
 
       <section aria-labelledby="deck-title" className="space-y-4">
         <h2 id="deck-title" className="font-display text-[22px] font-bold">Materi</h2>
-        {decks.length ? <div className="deck-grid">{decks.map((d) => <DeckCard key={d.id} deck={d} />)}</div> : (
+        {decks.length ? <div className="deck-grid">{decks.map((d) => <DeckCard key={d.id} deck={d} kampusOnly={!!data.kampusOnly} />)}</div> : (
           <MascotTip mascot="kori" mood="think" title="Belum ada materi">Materi PPT untuk mata kuliah ini belum tersedia. Kamu bisa mengirim PPT-mu lewat Chat Admin &gt; Upload soal, lalu pilih “PPT materi”.</MascotTip>
         )}
       </section>
