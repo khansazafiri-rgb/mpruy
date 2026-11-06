@@ -1,4 +1,4 @@
-# Anatomi MEDCOEL (kode: SVG + filter), sistem visual bersama untuk gigi, kulit, dan jantung (revisi 9)
+# Anatomi MEDCOEL (kode: SVG + filter), sistem visual bersama untuk gigi, kulit, dan jantung (revisi 10)
 
 Sistem gaya, jantung, dan potongan gigi yang digambar **murni dari kode** (tanpa gambar acuan yang ditempel). Gambar acuan dari pemesan (dibuat AI, belum divalidasi) hanya dipakai untuk **gaya**: latar, warna, kilau, volume. **Bentuk dan hubungan struktur mengikuti sumber anatomi** (lihat "Sumber yang diperiksa"), bukan acuan. Hasil tetap **konsep visual yang perlu pemeriksaan oleh orang yang berwenang**.
 
@@ -284,3 +284,27 @@ Sama: arah cahaya, latar, label (chip, ukuran, waktu masuk 3,9-4,8 dtk), kamera 
 7. **Anatomi gigi dan kulit:** sama seperti revisi 8: skematik, angka mm belum terverifikasi, epidermis tidak berskala.
 8. **Render:** 450 bingkai butuh ±15 menit; MP4 gabungan dibuat dengan `ffmpeg -f concat` dari tiga MP4 klip (re-encode, tanpa audio).
 9. **Tidak dilakukan:** tidak membuka atlas/anatomi baru; tidak menjalankan `periksa-jantung.mjs`; tidak menguji klip di perangkat ponsel nyata (hanya perkecilan 360/390 px).
+
+## Revisi 10: hanya alur visual video gabungan (organ, sistem merek, dan anatomi tidak diubah)
+
+Instruksi: jantung, gigi, dan kulit sudah sesuai; pertahankan bentuk organ dan maksimum 3 label; revisi (1) pembuka gigi, (2) pembuka kulit, (3) transisi antarorgan, (4) durasi dan posisi label.
+
+### Yang diubah
+1. **Gigi (detik 0-1: siluet utuh).** Layer baru `g-siluet` memakai `TOOTH_D` (siluet luar gigi yang sudah ada) dengan gradasi mutiara di mahkota dan krem di akar, jadi mahkota dengan dua tonjol langsung terbaca. Pembukaan bertahap: email (1,0-1,5 dtk), dentin (1,3-1,9), pulpa naik dari apeks (1,8-2,5), saraf-pembuluh + sementum (2,3-2,9), tulang naik dari bawah (2,8-3,5), ligamen periodontal (2,9-3,5), gusi (3,5-4,1). `g-siluet` hilang saat dentin dan email menutupinya (2,0-2,4 dtk) dan tidak dipakai di still. Tidak ada geometri anatomi baru.
+2. **Kulit (warna normal).** Lapisan `forest` berbuka 62% yang meredupkan jaringan di bawah pemindai DIBUANG. Pemindai kini hanya pita terang tipis + garis emas (menyorot lapisan aktif); semua jaringan berwarna normal sejak bingkai pertama. Chip nama lapisan baru muncul pada 1,0 dtk (struktur sudah terlihat sejak ±0,3 dtk), label pertama (Folikel) pada 1,1 dtk.
+3. **Transisi "selam pembuluh"** (`medcoel.js: selam()`), 0,36 dtk keluar + 0,36 dtk masuk di dalam klip 5 dtk (total video tetap 15 dtk): kamera menyelam (zoom eksponensial 7x) ke lumen pembuluh organ pertama, terowongan darah dengan garis kecepatan menutup layar, lalu kamera keluar dari lumen pembuluh organ berikutnya. Titik fokus: jantung keluar lewat lumen cabang tengah arkus aorta; gigi masuk dari foramen apikal akar distal dan keluar lewat ruang pulpa; kulit masuk dari kapiler papila dermal pada bulbus folikel. Bingkai terakhir sebuah klip dan bingkai pertama klip berikutnya identik (selisih 0,0), jadi tidak ada lompatan. Judul memudar sebelum selam dan baru muncul setelah organ berikutnya terlihat; logo tetap. Tidak pernah ada dua organ atau dua judul sekaligus (diperiksa pada bingkai tiap 0,1 dtk). Awal jantung = fade dari hijau hutan; akhir kulit = fade ke hijau hutan (tepi video). Jeda hijau polos 0,6 dtk antarorgan DIHAPUS.
+4. **Label.** Maksimum 3 sekaligus (dihitung dari jadwal, termasuk chip lapisan kulit). Tiap label hidup 1,25-1,6 dtk (termasuk fade 0,3 dtk). Semua label berhenti sebelum transisi keluar (<= 4,6 dtk). Chip diletakkan di jalur bebas di luar tepi organ (`labels()` kini menerima posisi eksplisit `cx` 'L'/'R' atau angka dan `ty`): jantung = kanan-atas (Arkus aorta, Pulmonalis), kanan-bawah (A. koroner, Ventrikel kiri), kiri-bawah (Atrium kanan); gigi = samping mahkota (Email, Dentin, Pulpa) dan di bawah organ (Akar, Tulang); kulit = margin kiri/kanan di luar irisan (Folikel, Sebasea, Keringat, Lemak) dan di atas irisan (Epidermis, chip lapisan). Label "Aurikula" (jantung) diganti "Atrium kanan", "Kanal akar" (gigi) menjadi "Akar", dan label "Gusi" dihapus karena jalur bebas tidak cukup untuk tampil dan terbaca bersamaan.
+   **Konsekuensi:** irisan kulit diperkecil 0,8x (bentuk sama, `kam(..., {s0: 0.8})`) supaya ada margin ±230 px untuk chip di luar tepinya; kulit kini tampil sedikit lebih kecil daripada gigi dan jantung.
+
+### Pemeriksaan revisi 10
+- Chip vs organ: bingkai label klip (jantung t=2,0/3,1/4,0; gigi t=2,1/3,4/4,0; kulit t=1,9/3,3/4,0/4,4) dideteksi (chip krem) lalu dibandingkan dengan topeng organ dari bingkai tanpa label: 0 piksel organ di dalam chip, kecuali 425 piksel (jantung) dan 18 piksel (gigi) yang berasal dari bintang emas latar. Topeng dibuat dengan ambang warna dan satu waktu per organ, bukan pengukuran per bingkai.
+- Label serentak: maksimum 3 (jantung t=2,0; gigi t=2,1; kulit t=1,7).
+- Cuplikan detik 0-2 tiap segmen dan dua transisi: `render/cuplikan/` (MP4 540 x 960 + lembar bingkai).
+
+### Yang masih lemah (revisi 10)
+1. Garis penuntun beberapa label lebih panjang (A. koroner, Ventrikel kiri, Akar, Tulang: 300-600 px) dan melewati badan organ; chip tidak menutupi organ tetapi garis emas tipis melewatinya.
+2. Terowongan darah berupa lingkaran/gradasi merah dengan garis kecepatan (ilustrasi), bukan rekaman aliran; lingkaran awal selam lebih besar daripada lumen sebenarnya pada skala zoom menengah sehingga terbaca seperti cakram rata.
+3. Selam berlangsung ±2 bingkai terowongan penuh di tiap sambungan (bingkai terakhir klip dan bingkai pertama berikutnya identik), jadi ada jeda gerak organ 0,07 dtk; garis kecepatan tetap bergerak sebelum dan sesudahnya.
+4. Siluet gigi pada detik pertama datar (putih/krem) tanpa tekstur; email, dentin, dan pulpa baru terlihat setelah 1,0 dtk.
+5. Jantung memulai video dari hijau hutan polos pada bingkai pertama (fade-in 0,3 dtk), dan kulit memudar ke hijau di akhir: ini tepi video, bukan antarorgan.
+6. Belum diuji di ponsel nyata dan belum diputar sebagai video penuh berkecepatan 1x oleh saya; yang diperiksa adalah bingkai (tiap 0,1-0,25 dtk).

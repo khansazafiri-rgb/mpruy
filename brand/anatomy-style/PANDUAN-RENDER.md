@@ -21,7 +21,7 @@ node brand/anatomy-style/frames.cjs gigi --klip          # render/frames/gigi/f0
 ffmpeg -y -framerate 30 -i render/frames/gigi/f%04d.png -c:v libx264 -pix_fmt yuv420p -crf 18 -movflags +faststart render/klip/gigi-reveal-layer.mp4
 ```
 Hal yang sama untuk `kulit` (`kulit-penelusuran-kedalaman.mp4`) dan `jantung` (`jantung-deformasi-lokal.mp4`). Satu bingkai saja: `node brand/anatomy-style/frames.cjs gigi 1.5 3.3 --label`.
-Video gabungan 15 dtk (jantung → gigi → kulit; tiap klip memudar ke hijau hutan 0,3 dtk di awal dan akhir, jadi pergantian organ = jeda hijau 0,6 dtk):
+Video gabungan 15 dtk (jantung → gigi → kulit; antarorgan = transisi "selam pembuluh" 0,36 + 0,36 dtk di dalam klip; awal jantung dan akhir kulit = fade hijau 0,3 dtk):
 ```bash
 ffmpeg -y -framerate 30 -i 'concat:...' ...   # praktis: ffmpeg -f concat -safe 0 -i daftar.txt -c:v libx264 -pix_fmt yuv420p -crf 18 -movflags +faststart render/klip/medcoel-anatomi-15dtk.mp4  (daftar.txt = tiga mp4 klip)
 ```
@@ -43,7 +43,7 @@ python3 brand/anatomy-style/panel.py                     # panel jantung-gigi-ku
 | Merek | pil krem berlogo asli (`apps/web/src/assets/logo-full.webp`), judul organ + garis emas | `medcoel.js: merek()` |
 | Kamera | dorong pelan (push-in) 4,5% dengan easing `soft`, sama di semua organ | `medcoel.js: kam()` |
 | Easing | `E.out` untuk masuk, `E.soft` untuk gerak kamera/pemindai, `E.inout` untuk pemindai kedalaman | `medcoel.js: E, seg()` |
-| Tempo | klip 5,0 dtk, 30 fps; fade masuk/keluar 0,3 dtk; label masuk/keluar 0,3 dtk dengan jadwal per label (`LABEL_T`), maksimum 3 sekaligus | `medcoel.js: KLIP, labelsT()` |
+| Tempo | klip 5,0 dtk, 30 fps; selam antarorgan 0,36 dtk keluar + 0,36 dtk masuk (`selam()`); label masuk/keluar 0,3 dtk dengan jadwal per label (`LABEL_T`, 1,25-1,6 dtk, selesai <= 4,6 dtk), maksimum 3 sekaligus | `medcoel.js: KLIP, labelsT()` |
 | Gerak | **berbeda per organ**: gigi = reveal lapisan bertahap; kulit = pita pemindai kedalaman dengan lapisan di bawahnya diredupkan; jantung = kontraksi lokal (periode 1,25 dtk) dengan pembuluh besar tetap diam | `gigi.js: JADWAL`, `kulit.js: JADWAL`, `jantung.js: PARAM, amplop()` |
 
 ## Layer yang dapat dipakai ulang
@@ -59,3 +59,7 @@ Fungsi bersama yang bisa dipakai organ baru: `latar()`, `merek()`, `labels()`, `
 2. Panggil `latar(p, { fokus })` di awal, bungkus isi organ dengan `<g id="mc-adegan" transform="${kam(t).tf}">`, tutup dengan `vignette(p)`, `merek({judul, sub})`, lalu `labels(items, { fs: 28 })`.
 3. Bungkus efek-saja dengan `fx(...)` supaya versi `-polos` bekerja; pakai `class="nos"` untuk bentuk yang tidak perlu garis tepi di versi polos.
 4. Pilih gerak yang menjelaskan organ itu (jangan menyalin gerak organ lain), dengan tempo dan easing dari `KLIP` dan `E`.
+
+## Transisi dan penempatan label (revisi 10)
+- `medcoel.js: selam(t, {masuk:{x,y,r}, keluar:{x,y,r}}, id)` mengembalikan `{zoom, ov, aJudul}`: bungkus adegan dengan `<g transform="${zoom}">`, taruh `ov` di atasnya (di bawah vignette/merek), dan teruskan `aJudul` ke `merek()`. Titik fokus = lumen pembuluh (kanvas setelah kamera).
+- `labels()`/`labelsT()`: item `[x, y, sisi, teks, t0, t1, ty, cx]`; `cx` = 'L' | 'R' | angka (pusat chip), `ty` = tinggi chip. Letakkan chip hanya di jalur bebas di luar tepi organ.
