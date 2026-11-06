@@ -8,6 +8,9 @@ import { latar } from './latar.mjs';
 import * as jantung from './scenes/jantung.mjs';
 import * as gigi from './scenes/gigi.mjs';
 import * as kulit from './scenes/kulit.mjs';
+import { gigi as gigiAset } from './darwin/gigi.mjs';
+import { kulit as kulitAset } from './darwin/kulit.mjs';
+import { defs as dfs, TEMA_MEDCOEL } from './darwin/anatomi.mjs';
 import { buildSvg } from '../v6/heart7.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -25,7 +28,7 @@ const param = {
   gigi: { meta: gigi.meta, ...gigi.PARAM },
   kulit: { meta: kulit.meta, ...kulit.PARAM },
 };
-write(path.join(out, 'parameter-animasi.json'), JSON.stringify(param, null, 1) + '\n');
+delete param.gigi.meta.__x; write(path.join(out, 'parameter-animasi.json'), JSON.stringify(param, null, 1) + '\n');
 
 // 2) layer latar (sama bentuk untuk semua organ; warna dari LATAR[organ])
 for (const organ of Object.keys(T.LATAR)) {
@@ -37,10 +40,9 @@ for (const organ of Object.keys(T.LATAR)) {
 const h = buildSvg({ layers: true, bg: false, anim: { flow: 0.5 }, id: 'jt' });
 const vh = `${h.view.x} ${h.view.y} ${h.view.w} ${h.view.h}`;
 for (const k of ['back', 'body', 'trunk', 'hi']) write(path.join(out, 'layer', 'jantung', `${k}.svg`), svg(h.view.w * 2, h.view.h * 2, vh, `<defs>${h.defs}</defs>${h[k]}`));
-const g = gigi.bangunGigi({ id: 'gg' });
-for (const k of ['bone', 'pdl', 'dentin', 'pulp', 'enamel', 'gusiL', 'gusiR']) write(path.join(out, 'layer', 'gigi', `${k}.svg`), svg(600, 900, '0 0 600 900', `<defs>${g.defs}</defs>${g[k]}`));
-const k = kulit.bangunKulit({ id: 'kl' });
-for (const n of ['hipodermis', 'dermis', 'epidermis', 'folikel', 'batangSvg', 'sebasea', 'otot', 'keringat', 'tepi']) write(path.join(out, 'layer', 'kulit', `${n}.svg`), svg(700, 960, '0 0 700 960', `<defs>${k.defs}</defs>${k[n]}`));
-write(path.join(out, 'layer', 'kulit', 'pembuluh.svg'), svg(700, 960, '0 0 700 960', `<defs>${k.defs}</defs>${k.pembuluh(1)}`));
-write(path.join(out, 'layer', 'kulit', 'saraf.svg'), svg(700, 960, '0 0 700 960', `<defs>${k.defs}</defs>${k.sarafSvg(1)}`));
+// gigi dan kulit: aset adaptasi dari cabang claude/eloquent-darwin-ewtwtu (darwin/*.mjs), mode bare
+const G = gigiAset({ bare: true });
+for (const [id, inner] of Object.entries(G.LAY)) write(path.join(out, 'layer', 'gigi', `${id}.svg`), svg(1080, 1920, '0 0 1080 1920', `${dfs('g', TEMA_MEDCOEL)}${G.defs}<rect width="1080" height="1920" fill="none"/>${inner}`));
+const K = kulitAset({ bare: true });
+write(path.join(out, 'layer', 'kulit', 'k-adegan.svg'), svg(1080, 1920, '0 0 1080 1920', `${dfs('k', TEMA_MEDCOEL)}${K.defs}${K.sc}`));
 console.log('ok aset ->', out);

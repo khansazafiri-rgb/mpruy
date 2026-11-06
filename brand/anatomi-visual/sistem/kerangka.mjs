@@ -37,45 +37,43 @@ export function susunLabel(ys, { min = 420, max = 1640, jarak = 128 } = {}) {
 export function label({ a, l, teks, warna, p, sisi = 'kanan' }) {
   if (p <= 0.001) return '';
   const lines = String(teks).split('\n'), n = Math.max(...lines.map((s) => s.length));
-  const w = 50 + n * 20, h = lines.length > 1 ? 100 : 66;
+  const w = 52 + n * 21.5, h = lines.length > 1 ? 108 : 70;   // huruf 32 px: di lebar 360 px menjadi sekitar 10,7 px
   const x0 = sisi === 'kanan' ? l[0] : l[0] - w, y0 = l[1] - h / 2;
   const pa = EASE.out(clamp(p * 1.35)), pb = EASE.out(clamp((p - 0.25) / 0.75));
   const lx = lerp(a[0], l[0], pa), ly = lerp(a[1], l[1], pa);
   const slide = (1 - pb) * (sisi === 'kanan' ? 22 : -22);
-  const txt = lines.map((s, i) => `<text x="${f(x0 + 56)}" y="${f(y0 + (lines.length > 1 ? 40 + i * 34 : 43))}" font-family="${FONT}" font-weight="700" font-size="29" fill="${MEREK.tinta}">${esc(s)}</text>`).join('');
+  const txt = lines.map((s, i) => `<text x="${f(x0 + 58)}" y="${f(y0 + (lines.length > 1 ? 44 + i * 37 : 46))}" font-family="${FONT}" font-weight="700" font-size="32" fill="${MEREK.tinta}">${esc(s)}</text>`).join('');
   return `<g opacity="${f(pb)}">
 <path d="M${f(a[0])} ${f(a[1])}L${f(lx)} ${f(ly)}" stroke="#172B38" stroke-width="9" stroke-linecap="round" opacity=".5"/>
 <path d="M${f(a[0])} ${f(a[1])}L${f(lx)} ${f(ly)}" stroke="${MEREK.emas}" stroke-width="4.5" stroke-linecap="round"/>
 <circle cx="${f(a[0])}" cy="${f(a[1])}" r="9" fill="${MEREK.emas}" stroke="#172B38" stroke-width="3"/>
 <g transform="translate(${f(slide)} 0)">
-<rect x="${f(x0)}" y="${f(y0 + 5)}" width="${f(w)}" height="${h}" rx="${h > 70 ? 30 : h / 2}" fill="#000" opacity=".28"/>
-<rect x="${f(x0)}" y="${f(y0)}" width="${f(w)}" height="${h}" rx="${h > 70 ? 30 : h / 2}" fill="${MEREK.gading}"/>
-<circle cx="${f(x0 + 30)}" cy="${f(l[1])}" r="11" fill="${warna}" stroke="#172B38" stroke-opacity=".35" stroke-width="2"/>
+<rect x="${f(x0)}" y="${f(y0 + 5)}" width="${f(w)}" height="${h}" rx="${h > 80 ? 32 : h / 2}" fill="#000" opacity=".28"/>
+<rect x="${f(x0)}" y="${f(y0)}" width="${f(w)}" height="${h}" rx="${h > 80 ? 32 : h / 2}" fill="${MEREK.gading}"/>
+<circle cx="${f(x0 + 32)}" cy="${f(l[1])}" r="12" fill="${warna}" stroke="#172B38" stroke-opacity=".35" stroke-width="2"/>
 ${txt}
 </g></g>`;
 }
 
-/** Bingkai lengkap satu klip. isi = SVG organ (di dalam grup kamera). */
-export function bingkai({ organ, t, judul, sub, isi, kam, overlay = '', catatan }) {
+/** Bingkai lengkap satu klip. isi = SVG organ (di dalam grup kamera). bagian:true mengembalikan potongan (untuk transisi antarorgan). */
+export function bingkai({ organ, t, judul, sub, isi, kam, overlay = '', catatan, bagian = false }) {
   const W = KANVAS.w, H = KANVAS.h;
   const par = (k) => `translate(${f(-kam.x * k)} ${f(-kam.y * k)})`;
+  const h = header(judul, sub);
+  const p = { bg: `<g transform="${par(0.35)}">${latar(organ, t)}</g>`, isi: `<g transform="${kam.tf}">${isi}</g>`, overlay: `<g>${overlay}</g>`, tetap: h.tetap, judul: h.judul, footer: footer(catatan) };
+  if (bagian) return p;
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" font-family="${FONT}">
 <defs><clipPath id="vp"><rect width="${W}" height="${H}"/></clipPath></defs>
 <g clip-path="url(#vp)">
-<g transform="${par(0.35)}">${latar(organ, t)}</g>
-<g transform="${kam.tf}">${isi}</g>
-<g>${overlay}</g>
-${header(judul, sub)}
-${footer(catatan)}
+${p.bg}${p.isi}${p.overlay}${p.tetap}${p.judul}${p.footer}
 </g></svg>`;
 }
 
 function header(judul, sub) {
-  return `<g id="header">
-<image href="logo-mark.webp" x="64" y="82" width="84" height="84"/>
-<text x="168" y="118" font-family="${FONT}" font-weight="800" font-size="26" letter-spacing="5" fill="${MEREK.emas}">ATLAS ANATOMI</text>
-<text x="166" y="184" font-family="${FONT}" font-weight="800" font-size="62" fill="${MEREK.gading}">${esc(judul)}</text>
-<text x="168" y="236" font-family="${FONT}" font-weight="500" font-size="34" fill="${MEREK.gading}" opacity=".78">${esc(sub)}</text></g>`;
+  return {
+    tetap: `<g id="header-tetap"><image href="logo-mark.webp" x="64" y="82" width="84" height="84"/><text x="168" y="118" font-family="${FONT}" font-weight="800" font-size="26" letter-spacing="5" fill="${MEREK.emas}">ATLAS ANATOMI</text></g>`,
+    judul: `<g id="header-judul"><text x="166" y="184" font-family="${FONT}" font-weight="800" font-size="62" fill="${MEREK.gading}">${esc(judul)}</text><text x="168" y="236" font-family="${FONT}" font-weight="500" font-size="34" fill="${MEREK.gading}" opacity=".78">${esc(sub)}</text></g>`,
+  };
 }
 function footer(catatan) {
   return `<g id="footer"><rect x="64" y="1772" width="952" height="2" fill="${MEREK.gading}" opacity=".22"/>

@@ -49,12 +49,14 @@
    ]
   },
   "tempo": {
-   "durasi": 5,
+   "durasi": 5.4,
+   "gerak": 5,
+   "tahan": 0.4,
    "fps": 30,
    "reveal": 0.7,
    "labelMasuk": 0.5,
    "jedaLabel": 0.28,
-   "kamera": 5
+   "transisi": 0.6
   },
   "tata": {
    "header": {
@@ -85,7 +87,7 @@
    "judul": "Jantung",
    "sub": "tampak depan · ruang dan pembuluh",
    "organ": "jantung",
-   "durasi": 5,
+   "durasi": 5.4,
    "fps": 30
   },
   "periode": 1.25,
@@ -112,132 +114,110 @@
   "meta": {
    "id": "gigi",
    "judul": "Gigi molar",
-   "sub": "potongan memanjang · lapisan penyusun",
+   "sub": "molar 1 bawah · potongan mesiodistal",
    "organ": "gigi",
-   "durasi": 5,
+   "durasi": 5.4,
    "fps": 30
   },
-  "skala": 1.36,
-  "tempat": [
-   2,
-   184
-  ],
-  "buka": {
-   "gusi": 40,
-   "tulang": 30,
-   "email": 30
+  "panggung": {
+   "cx": 510,
+   "cy": 920,
+   "ke": [
+    415,
+    925
+   ],
+   "skala": 0.74
   },
-  "waktu": {
-   "bukaMulai": 0.7,
-   "bukaSelesai": 2,
-   "tutupMulai": 3,
-   "tutupSelesai": 4
+  "waktuAset": {
+   "offset": 0.5,
+   "laju": 1
   },
-  "kamera": [
-   {
-    "t": 0,
-    "x": 40,
-    "y": 150,
-    "s": 1.22
-   },
-   {
-    "t": 2.2,
-    "x": 0,
-    "y": 40,
-    "s": 1.04
-   },
-   {
-    "t": 3.4,
-    "x": -10,
-    "y": -70,
-    "s": 1.04
-   },
-   {
-    "t": 5,
-    "x": -10,
-    "y": -76,
-    "s": 1.05
-   }
+  "label": [
+   [
+    "Tulang\nalveolar",
+    1.5
+   ],
+   [
+    "Ligamen\nperiodontal",
+    1.9
+   ],
+   [
+    "Dentin",
+    2.4
+   ],
+   [
+    "Kanal\nakar",
+    2.9
+   ],
+   [
+    "Pulpa",
+    3
+   ],
+   [
+    "Email",
+    3.5
+   ],
+   [
+    "Gusi",
+    3.8
+   ]
   ]
  },
  "kulit": {
   "meta": {
    "id": "kulit",
    "judul": "Kulit",
-   "sub": "potongan melintang · lapisan dan isinya",
+   "sub": "kulit berambut · potongan melintang",
    "organ": "kulit",
-   "durasi": 5,
+   "durasi": 5.4,
    "fps": 30
   },
-  "skala": 1.12,
-  "tempat": [
-   28,
-   333
-  ],
-  "tahap": {
-   "epidermis": [
-    0,
-    0.5
+  "panggung": {
+   "cx": 540,
+   "cy": 965,
+   "ke": [
+    400,
+    925
    ],
-   "dermis": [
-    0.2,
-    1.4
+   "skala": 0.85
+  },
+  "pemindai": {
+   "mulai": 0.3,
+   "selesai": 3.5
+  },
+  "label": [
+   [
+    "Epidermis",
+    3.6
    ],
-   "hipodermis": [
-    1.4,
-    2.4
+   [
+    "Dermis",
+    3.8
    ],
-   "folikel": [
-    2.4,
-    3.2
+   [
+    "Hipodermis\n(lemak)",
+    4
    ],
-   "kelenjar": [
-    2.7,
-    3.5
+   [
+    "Folikel\nrambut",
+    4.1
    ],
-   "pembuluh": [
-    3.2,
+   [
+    "Kelenjar\nsebasea",
     4.2
    ],
-   "saraf": [
-    3.9,
-    4.7
+   [
+    "Kelenjar\nkeringat",
+    4.3
+   ],
+   [
+    "Pembuluh\ndarah",
+    4.4
+   ],
+   [
+    "Saraf",
+    4.5
    ]
-  },
-  "awal": {
-   "dermis": 0.2
-  },
-  "kamera": [
-   {
-    "t": 0,
-    "x": 60,
-    "y": 285,
-    "s": 1.3
-   },
-   {
-    "t": 1.8,
-    "x": 20,
-    "y": 130,
-    "s": 1.18
-   },
-   {
-    "t": 3.2,
-    "x": 0,
-    "y": -20,
-    "s": 1.06
-   },
-   {
-    "t": 4.4,
-    "x": 0,
-    "y": 0,
-    "s": 1
-   },
-   {
-    "t": 5,
-    "x": 0,
-    "y": 0,
-    "s": 1
-   }
   ]
  }
 }

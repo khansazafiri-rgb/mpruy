@@ -32,7 +32,10 @@ export const seg = (t, a, b, e = EASE.out) => e(clamp((t - a) / (b - a)));
 export const lerp = (a, b, u) => a + (b - a) * u;
 
 // Tempo yang sama untuk semua klip (detik)
-export const TEMPO = { durasi: 5, fps: 30, reveal: 0.7, labelMasuk: 0.5, jedaLabel: 0.28, kamera: 5 };
+// durasi klip 5,4 dtk = 5,0 dtk gerak + 0,4 dtk tahan; tiga klip digabung dengan transisi 0,6 dtk menjadi tepat 15 dtk
+export const TEMPO = { durasi: 5.4, gerak: 5.0, tahan: 0.4, fps: 30, reveal: 0.7, labelMasuk: 0.5, jedaLabel: 0.28, transisi: 0.6 };
+// kamera bersama semua organ: satu dolly masuk 4,5% dengan easing inOut + geser kecil ke atas; gerak organ berbeda-beda, kamera sama
+export const KAMERA = [{ t: 0, x: 0, y: 0, s: 1.0 }, { t: 5.0, x: -6, y: -10, s: 1.045 }, { t: 5.4, x: -6, y: -10, s: 1.045 }];
 
 // Tata letak kanvas 1080x1920 (piksel), sama untuk semua organ
 export const TATA = {

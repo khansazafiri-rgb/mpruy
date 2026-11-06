@@ -2,7 +2,7 @@
 // terhadap titik tambat di dasar jantung (dekat pangkal pembuluh), sedangkan pembuluh besar tidak bergerak, jadi sambungan tetap utuh.
 // Penanda aliran cahaya koroner = infografis (bukan rekaman aliran darah). Kamera: satu dolly pelan masuk.
 import { buildSvg } from '../../v6/heart7.mjs';
-import { TEMPO, EASE, seg, clamp, MEREK, TATA } from '../tokens.mjs';
+import { TEMPO, EASE, seg, clamp, MEREK, TATA, KAMERA } from '../tokens.mjs';
 import { bingkai, kamera, label, proyeksi } from '../kerangka.mjs';
 
 export const meta = { id: 'jantung', judul: 'Jantung', sub: 'tampak depan · ruang dan pembuluh', organ: 'jantung', durasi: TEMPO.durasi, fps: TEMPO.fps };
@@ -25,7 +25,7 @@ export function amplop(t) {
   return { s: kontraksi, a: isi };
 }
 
-export function frame(t) {
+export function frame(t, opt = {}) {
   const P = PARAM, e = amplop(t), tw = P.tambat;
   const flow = clamp(((t - P.aliran.awal) % P.aliran.periode) / (P.aliran.periode * 0.62));
   const flowO = Math.min(1, flow * 6, (1 - flow) * 5 + 0.3);
@@ -35,17 +35,17 @@ export function frame(t) {
   const k = P.skala, [ox, oy] = P.tempat;
   const gambar = (x, y) => [ox + x * k, oy + (y - 200) * k];       // koordinat gambar -> kanvas (sebelum kamera)
   // label: jangkar di organ (diam kecuali massa jantung; jangkar massa diikutkan denyut ringan lewat transform yang sama)
-  const kam = kamera(t, [{ t: 0, x: 0, y: 0, s: 1.0 }, { t: TEMPO.durasi, x: -8, y: -14, s: 1.055 }]);
+  const kam = kamera(t, KAMERA);
   const L = (i, a, l, teks, warna) => label({ a: proyeksi(kam, gambar(a[0], a[1])), l, teks, warna, sisi: 'kanan', p: seg(t, 0.9 + i * TEMPO.jedaLabel, 0.9 + i * TEMPO.jedaLabel + TEMPO.labelMasuk) });
   // semua label di kolom kanan (aturan seri): urut dari atas ke bawah mengikuti letak struktur
   const labels = [
-    L(0, [466, 408], [800, 470], 'Lengkung\naorta', '#E0503C'),
-    L(1, [505, 484], [800, 650], 'Batang\npulmonalis', '#4A56E0'),
-    L(2, [470, 650], [800, 840], 'Aurikula\nkiri', '#B02A44'),
-    L(3, [398, 850], [800, 1040], 'Arteri\nkoroner', '#F0B42A'),
-    L(4, [480, 880], [800, 1240], 'Ventrikel\nkiri', '#C8222E'),
+    L(0, [466, 408], [776, 470], 'Lengkung\naorta', '#E0503C'),
+    L(1, [505, 484], [776, 650], 'Batang\npulmonalis', '#4A56E0'),
+    L(2, [470, 650], [776, 840], 'Aurikula\nkiri', '#B02A44'),
+    L(3, [398, 850], [776, 1040], 'Arteri\nkoroner', '#F0B42A'),
+    L(4, [480, 880], [776, 1240], 'Ventrikel\nkiri', '#C8222E'),
   ].join('');
   const isi = `<defs>${h.defs}</defs><g transform="translate(${ox} ${oy}) scale(${k}) translate(0 -200)">
 <g>${h.back}</g><g transform="${tfBody}">${h.body}</g><g>${h.trunk}</g><g transform="${tfBody}">${h.hi}</g></g>`;
-  return bingkai({ organ: 'jantung', t, judul: meta.judul, sub: meta.sub, isi, kam, overlay: labels });
+  return bingkai({ organ: 'jantung', t, judul: meta.judul, sub: meta.sub, isi, kam, overlay: labels, bagian: !!opt.bagian });
 }
