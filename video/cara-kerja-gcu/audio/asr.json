@@ -1,0 +1,683 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 6.38,
+   "text": "Jari raka baru ditusuk, setetes darah menyentuh strip, lalu beberapa detik kemudian angka muncul di layar.",
+   "words": [
+    {
+     "w": "Jari",
+     "s": 0.0,
+     "e": 0.48
+    },
+    {
+     "w": "raka",
+     "s": 0.48,
+     "e": 0.82
+    },
+    {
+     "w": "baru",
+     "s": 0.82,
+     "e": 1.06
+    },
+    {
+     "w": "ditusuk,",
+     "s": 1.06,
+     "e": 1.54
+    },
+    {
+     "w": "setetes",
+     "s": 1.94,
+     "e": 2.44
+    },
+    {
+     "w": "darah",
+     "s": 2.44,
+     "e": 2.74
+    },
+    {
+     "w": "menyentuh",
+     "s": 2.74,
+     "e": 3.04
+    },
+    {
+     "w": "strip,",
+     "s": 3.04,
+     "e": 3.22
+    },
+    {
+     "w": "lalu",
+     "s": 3.76,
+     "e": 4.16
+    },
+    {
+     "w": "beberapa",
+     "s": 4.16,
+     "e": 4.48
+    },
+    {
+     "w": "detik",
+     "s": 4.48,
+     "e": 4.68
+    },
+    {
+     "w": "kemudian",
+     "s": 4.68,
+     "e": 5.12
+    },
+    {
+     "w": "angka",
+     "s": 5.12,
+     "e": 5.66
+    },
+    {
+     "w": "muncul",
+     "s": 5.66,
+     "e": 5.94
+    },
+    {
+     "w": "di",
+     "s": 5.94,
+     "e": 6.06
+    },
+    {
+     "w": "layar.",
+     "s": 6.06,
+     "e": 6.38
+    }
+   ]
+  },
+  {
+   "start": 6.84,
+   "end": 9.42,
+   "text": "Kok alat sekecil ini bisa tau karar gula darahnya?",
+   "words": [
+    {
+     "w": "Kok",
+     "s": 6.84,
+     "e": 7.28
+    },
+    {
+     "w": "alat",
+     "s": 7.28,
+     "e": 7.6
+    },
+    {
+     "w": "sekecil",
+     "s": 7.6,
+     "e": 7.94
+    },
+    {
+     "w": "ini",
+     "s": 7.94,
+     "e": 8.06
+    },
+    {
+     "w": "bisa",
+     "s": 8.06,
+     "e": 8.24
+    },
+    {
+     "w": "tau",
+     "s": 8.24,
+     "e": 8.42
+    },
+    {
+     "w": "karar",
+     "s": 8.42,
+     "e": 8.64
+    },
+    {
+     "w": "gula",
+     "s": 8.64,
+     "e": 8.84
+    },
+    {
+     "w": "darahnya?",
+     "s": 8.84,
+     "e": 9.42
+    }
+   ]
+  },
+  {
+   "start": 10.08,
+   "end": 11.86,
+   "text": "Nah, lihat ke dalam stripnya.",
+   "words": [
+    {
+     "w": "Nah,",
+     "s": 10.08,
+     "e": 10.36
+    },
+    {
+     "w": "lihat",
+     "s": 10.82,
+     "e": 11.12
+    },
+    {
+     "w": "ke",
+     "s": 11.12,
+     "e": 11.24
+    },
+    {
+     "w": "dalam",
+     "s": 11.24,
+     "e": 11.42
+    },
+    {
+     "w": "stripnya.",
+     "s": 11.42,
+     "e": 11.86
+    }
+   ]
+  },
+  {
+   "start": 12.44,
+   "end": 14.88,
+   "text": "Darah tertarik masuk ke ruang reaksi yang kecil.",
+   "words": [
+    {
+     "w": "Darah",
+     "s": 12.44,
+     "e": 13.0
+    },
+    {
+     "w": "tertarik",
+     "s": 13.0,
+     "e": 13.4
+    },
+    {
+     "w": "masuk",
+     "s": 13.4,
+     "e": 13.74
+    },
+    {
+     "w": "ke",
+     "s": 13.74,
+     "e": 13.92
+    },
+    {
+     "w": "ruang",
+     "s": 13.92,
+     "e": 14.12
+    },
+    {
+     "w": "reaksi",
+     "s": 14.12,
+     "e": 14.4
+    },
+    {
+     "w": "yang",
+     "s": 14.4,
+     "e": 14.52
+    },
+    {
+     "w": "kecil.",
+     "s": 14.52,
+     "e": 14.88
+    }
+   ]
+  },
+  {
+   "start": 15.38,
+   "end": 18.16,
+   "text": "Di sana, darah bertemu reagen yang mereaksi dengan glu kosa.",
+   "words": [
+    {
+     "w": "Di",
+     "s": 15.38,
+     "e": 15.58
+    },
+    {
+     "w": "sana,",
+     "s": 15.58,
+     "e": 15.78
+    },
+    {
+     "w": "darah",
+     "s": 16.16,
+     "e": 16.34
+    },
+    {
+     "w": "bertemu",
+     "s": 16.34,
+     "e": 16.6
+    },
+    {
+     "w": "reagen",
+     "s": 16.6,
+     "e": 17.0
+    },
+    {
+     "w": "yang",
+     "s": 17.0,
+     "e": 17.14
+    },
+    {
+     "w": "mereaksi",
+     "s": 17.14,
+     "e": 17.48
+    },
+    {
+     "w": "dengan",
+     "s": 17.48,
+     "e": 17.68
+    },
+    {
+     "w": "glu",
+     "s": 17.68,
+     "e": 17.86
+    },
+    {
+     "w": "kosa.",
+     "s": 17.86,
+     "e": 18.16
+    }
+   ]
+  },
+  {
+   "start": 18.78,
+   "end": 20.64,
+   "text": "Reaksi itu menghasilkan senyali strip.",
+   "words": [
+    {
+     "w": "Reaksi",
+     "s": 18.78,
+     "e": 19.2
+    },
+    {
+     "w": "itu",
+     "s": 19.2,
+     "e": 19.56
+    },
+    {
+     "w": "menghasilkan",
+     "s": 19.56,
+     "e": 20.14
+    },
+    {
+     "w": "senyali",
+     "s": 20.14,
+     "e": 20.4
+    },
+    {
+     "w": "strip.",
+     "s": 20.4,
+     "e": 20.64
+    }
+   ]
+  },
+  {
+   "start": 21.14,
+   "end": 25.66,
+   "text": "Elektroda pada strip menangkap senyal tersebut, lalu alat mengolahnya menjadi angka di layar.",
+   "words": [
+    {
+     "w": "Elektroda",
+     "s": 21.14,
+     "e": 21.7
+    },
+    {
+     "w": "pada",
+     "s": 21.7,
+     "e": 21.84
+    },
+    {
+     "w": "strip",
+     "s": 21.84,
+     "e": 22.16
+    },
+    {
+     "w": "menangkap",
+     "s": 22.16,
+     "e": 22.48
+    },
+    {
+     "w": "senyal",
+     "s": 22.48,
+     "e": 22.72
+    },
+    {
+     "w": "tersebut,",
+     "s": 22.72,
+     "e": 23.14
+    },
+    {
+     "w": "lalu",
+     "s": 23.5,
+     "e": 23.82
+    },
+    {
+     "w": "alat",
+     "s": 23.82,
+     "e": 24.08
+    },
+    {
+     "w": "mengolahnya",
+     "s": 24.08,
+     "e": 24.62
+    },
+    {
+     "w": "menjadi",
+     "s": 24.62,
+     "e": 24.8
+    },
+    {
+     "w": "angka",
+     "s": 24.8,
+     "e": 25.24
+    },
+    {
+     "w": "di",
+     "s": 25.24,
+     "e": 25.34
+    },
+    {
+     "w": "layar.",
+     "s": 25.34,
+     "e": 25.66
+    }
+   ]
+  },
+  {
+   "start": 25.66,
+   "end": 31.46,
+   "text": "Jadi, darahnya tidak mengalir ke dalam mesin. Reaksinya terjadi di strip. Mesin membaca sinyalnya.",
+   "words": [
+    {
+     "w": "Jadi,",
+     "s": 25.66,
+     "e": 26.62
+    },
+    {
+     "w": "darahnya",
+     "s": 26.9,
+     "e": 27.16
+    },
+    {
+     "w": "tidak",
+     "s": 27.16,
+     "e": 27.34
+    },
+    {
+     "w": "mengalir",
+     "s": 27.34,
+     "e": 27.72
+    },
+    {
+     "w": "ke",
+     "s": 27.72,
+     "e": 27.8
+    },
+    {
+     "w": "dalam",
+     "s": 27.8,
+     "e": 27.96
+    },
+    {
+     "w": "mesin.",
+     "s": 27.96,
+     "e": 28.36
+    },
+    {
+     "w": "Reaksinya",
+     "s": 28.78,
+     "e": 29.18
+    },
+    {
+     "w": "terjadi",
+     "s": 29.18,
+     "e": 29.56
+    },
+    {
+     "w": "di",
+     "s": 29.56,
+     "e": 29.68
+    },
+    {
+     "w": "strip.",
+     "s": 29.68,
+     "e": 29.9
+    },
+    {
+     "w": "Mesin",
+     "s": 30.3,
+     "e": 30.68
+    },
+    {
+     "w": "membaca",
+     "s": 30.68,
+     "e": 30.94
+    },
+    {
+     "w": "sinyalnya.",
+     "s": 30.94,
+     "e": 31.46
+    }
+   ]
+  },
+  {
+   "start": 32.14,
+   "end": 35.24,
+   "text": "Terus, bagaimana kalau mau cek kolesterol total atau asam urat?",
+   "words": [
+    {
+     "w": "Terus,",
+     "s": 32.14,
+     "e": 32.64
+    },
+    {
+     "w": "bagaimana",
+     "s": 32.78,
+     "e": 33.12
+    },
+    {
+     "w": "kalau",
+     "s": 33.12,
+     "e": 33.32
+    },
+    {
+     "w": "mau",
+     "s": 33.32,
+     "e": 33.48
+    },
+    {
+     "w": "cek",
+     "s": 33.48,
+     "e": 33.66
+    },
+    {
+     "w": "kolesterol",
+     "s": 33.66,
+     "e": 33.92
+    },
+    {
+     "w": "total",
+     "s": 33.92,
+     "e": 34.42
+    },
+    {
+     "w": "atau",
+     "s": 34.42,
+     "e": 34.72
+    },
+    {
+     "w": "asam",
+     "s": 34.72,
+     "e": 34.98
+    },
+    {
+     "w": "urat?",
+     "s": 34.98,
+     "e": 35.24
+    }
+   ]
+  },
+  {
+   "start": 35.7,
+   "end": 42.4,
+   "text": "Stripnya harus diganti sesuai pemerisaannya. Reaginya berbeda. Jadi, satu strip tidak membaca ketiganya sekaligus.",
+   "words": [
+    {
+     "w": "Stripnya",
+     "s": 35.7,
+     "e": 36.34
+    },
+    {
+     "w": "harus",
+     "s": 36.34,
+     "e": 36.66
+    },
+    {
+     "w": "diganti",
+     "s": 36.66,
+     "e": 37.16
+    },
+    {
+     "w": "sesuai",
+     "s": 37.16,
+     "e": 37.46
+    },
+    {
+     "w": "pemerisaannya.",
+     "s": 37.46,
+     "e": 38.04
+    },
+    {
+     "w": "Reaginya",
+     "s": 38.7,
+     "e": 39.08
+    },
+    {
+     "w": "berbeda.",
+     "s": 39.08,
+     "e": 39.68
+    },
+    {
+     "w": "Jadi,",
+     "s": 39.9,
+     "e": 40.24
+    },
+    {
+     "w": "satu",
+     "s": 40.34,
+     "e": 40.52
+    },
+    {
+     "w": "strip",
+     "s": 40.52,
+     "e": 40.82
+    },
+    {
+     "w": "tidak",
+     "s": 40.82,
+     "e": 41.04
+    },
+    {
+     "w": "membaca",
+     "s": 41.04,
+     "e": 41.36
+    },
+    {
+     "w": "ketiganya",
+     "s": 41.36,
+     "e": 41.78
+    },
+    {
+     "w": "sekaligus.",
+     "s": 41.78,
+     "e": 42.4
+    }
+   ]
+  },
+  {
+   "start": 42.94,
+   "end": 47.4,
+   "text": "Tetes darah masuk, reaksi terjadi, sinyal terbaca, angka muncul.",
+   "words": [
+    {
+     "w": "Tetes",
+     "s": 42.94,
+     "e": 43.32
+    },
+    {
+     "w": "darah",
+     "s": 43.32,
+     "e": 43.54
+    },
+    {
+     "w": "masuk,",
+     "s": 43.54,
+     "e": 43.84
+    },
+    {
+     "w": "reaksi",
+     "s": 44.28,
+     "e": 44.6
+    },
+    {
+     "w": "terjadi,",
+     "s": 44.6,
+     "e": 45.12
+    },
+    {
+     "w": "sinyal",
+     "s": 45.54,
+     "e": 45.84
+    },
+    {
+     "w": "terbaca,",
+     "s": 45.84,
+     "e": 46.3
+    },
+    {
+     "w": "angka",
+     "s": 46.78,
+     "e": 47.04
+    },
+    {
+     "w": "muncul.",
+     "s": 47.04,
+     "e": 47.4
+    }
+   ]
+  },
+  {
+   "start": 48.04,
+   "end": 50.1,
+   "text": "Sekarang, kamu tahu cara kerja GCU.",
+   "words": [
+    {
+     "w": "Sekarang,",
+     "s": 48.04,
+     "e": 48.6
+    },
+    {
+     "w": "kamu",
+     "s": 48.76,
+     "e": 48.94
+    },
+    {
+     "w": "tahu",
+     "s": 48.94,
+     "e": 49.14
+    },
+    {
+     "w": "cara",
+     "s": 49.14,
+     "e": 49.34
+    },
+    {
+     "w": "kerja",
+     "s": 49.34,
+     "e": 49.68
+    },
+    {
+     "w": "GCU.",
+     "s": 49.68,
+     "e": 50.1
+    }
+   ]
+  }
+ ]
+}
