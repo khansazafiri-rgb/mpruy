@@ -30,11 +30,16 @@ function pool(app, user, opts) {
     where.push("q.qtype IN (" + keys.join(",") + ")");
   }
   // Aturan kampus, sama dengan util.visibleFilter.
-  if (opts.campusOnly) {
+  if (opts.owned) {
+    // Milik pengguna ("Kampusmu"): lihat util.ownedSql.
+    const own = u.ownedSql("q", user, params);
+    if (!own) return [];
+    where.push(own);
+  } else if (opts.campusOnly) {
+    // Hanya soal khusus kampus pengguna ("Materi kampus").
     const campus = user.getString("campus");
     if (!campus) return [];
-    // Milik kampus pengguna: khusus kampusnya, atau dikirim lewat pengajuan dari kampusnya (apa pun cakupannya).
-    where.push("((q.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(q.campuses) WHERE value = {:campus})) OR (q.scope = 'all' AND COALESCE(q.submission, '') != '' AND q.submission IN (SELECT id FROM submissions WHERE campus = {:campus})))");
+    where.push("q.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(q.campuses) WHERE value = {:campus})");
     params.campus = campus;
   } else if (u.roleOf(user) !== "admin") {
     const campus = user.getString("campus");
@@ -303,11 +308,11 @@ function drillingStatus(app, user) {
     return rows.length ? rows[0].n : 0;
   };
   const total = count("q.scope = 'all'");
-  const campus = user ? user.getString("campus") : "";
-  // `mine` = milik kampus pengguna: khusus kampusnya, atau dikirim lewat pengajuan dari kampusnya (apa pun cakupannya).
-  const mine = campus
-    ? count("((q.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(q.campuses) WHERE value = {:campus})) OR (q.scope = 'all' AND COALESCE(q.submission, '') != '' AND q.submission IN (SELECT id FROM submissions WHERE campus = {:campus})))", { campus: campus })
-    : 0;
+  // `mine` = milik kampus pengguna: khusus kampusnya, dikirim lewat pengajuan dari kampusnya (apa pun cakupannya),
+  // atau dikirim lewat pengajuannya sendiri.
+  const ownParams = {};
+  const own = user ? u.ownedSql("q", user, ownParams) : "";
+  const mine = own ? count(own, ownParams) : 0;
   // Berkas materi (drilling_decks) juga membuka menu Drilling; `total`/`mine` tetap menghitung soal saja.
   let decks = { total: 0, mine: 0 };
   try { decks = require(HOOKS + "/lib/decks.js").status(app, user); } catch (err) { console.log("[drilling] hitungan materi gagal:", err); }

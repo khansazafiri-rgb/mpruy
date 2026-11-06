@@ -176,7 +176,7 @@ routerAdd("GET", "/api/medcoel/drilling", (e) => {
   const count = {};
   const seen = {};
   const ownCampus = {};
-  learn.pool(e.app, user, { drilling: "only", campusOnly: kampusOnly }).forEach((it) => {
+  learn.pool(e.app, user, { drilling: "only", owned: kampusOnly }).forEach((it) => {
     const s = chapterSubject[it.chapter];
     count[s] = (count[s] || 0) + 1;
     if (it.seen) seen[s] = (seen[s] || 0) + 1;
@@ -228,7 +228,7 @@ routerAdd("POST", "/api/medcoel/attempts/drilling", (e) => {
   if (!subject || subject.getBool("hidden")) throw new NotFoundError("Mata kuliah tidak ditemukan.");
   // `set` (judul bagian, "" = soal lainnya) membatasi latihan ke satu bagian; tanpa `set` semua soal Drilling mata kuliah ini.
   const bySet = b.set !== undefined && b.set !== null;
-  const items = learn.pool(e.app, user, bySet ? { subject: subject.id, drilling: "only", setTitle: String(b.set), campusOnly: kampusOnly } : { subject: subject.id, drilling: "only", campusOnly: kampusOnly });
+  const items = learn.pool(e.app, user, bySet ? { subject: subject.id, drilling: "only", setTitle: String(b.set), owned: kampusOnly } : { subject: subject.id, drilling: "only", owned: kampusOnly });
   if (!items.length) throw new BadRequestError(bySet ? "Bagian ini belum punya soal." : "Mata kuliah ini belum punya soal Drilling.");
   // Langsung mulai: tanpa jumlah, 20 soal (atau semua bila kurang); jumlah berlebih dipotong ke yang tersedia.
   const want = b.count === "all" ? 100 : parseInt(b.count, 10) || 20;

@@ -46,22 +46,27 @@ function visibleTo(rec, user) {
 }
 
 /**
- * Milik kampus pengguna ("Kampusmu"): materi yang khusus kampusnya, atau yang dikirim lewat pengajuan dari
- * kampusnya, apa pun cakupan yang dipilih pengaju (General pun tetap milik kampus pengajunya).
- * Materi khusus kampus lain tidak pernah ikut walau pengajunya sekampus (admin sudah mengaturnya ke kampus lain).
- * `cache` = peta id pengajuan -> kampus agar tidak mencari berulang dalam satu permintaan.
+ * Milik pengguna ("Kampusmu"): materi yang khusus kampusnya, yang dikirim lewat pengajuan dari kampusnya (apa pun
+ * cakupan yang dipilih pengaju), atau yang dikirim lewat pengajuan pengguna itu sendiri.
+ * Materi yang admin atur khusus kampus lain tidak ikut walau pengajunya sekampus.
+ * `cache` = peta id pengajuan -> { campus, user } agar tidak mencari berulang dalam satu permintaan.
  */
 function ownedBy(app, rec, user, cache) {
-  const campus = user ? user.getString("campus") : "";
+  if (!user) return false;
+  const sid = rec.getString("submission");
+  let info = null;
+  if (sid) {
+    const c = cache || {};
+    if (c[sid] === undefined) {
+      try { const s = app.findRecordById("submissions", sid); c[sid] = { campus: s.getString("campus"), user: s.getString("user") }; } catch (_) { c[sid] = null; }
+    }
+    info = c[sid];
+  }
+  if (info && info.user === user.id) return true;
+  const campus = user.getString("campus");
   if (!campus) return false;
   if (rec.getString("scope") === "campus") return rec.getStringSlice("campuses").indexOf(campus) >= 0;
-  const sid = rec.getString("submission");
-  if (!sid) return false;
-  const c = cache || {};
-  if (c[sid] === undefined) {
-    try { c[sid] = app.findRecordById("submissions", sid).getString("campus"); } catch (_) { c[sid] = ""; }
-  }
-  return c[sid] === campus;
+  return !!info && info.campus === campus;
 }
 
 /**
@@ -107,11 +112,10 @@ function status(app, user) {
     return rows.length ? rows[0].n : 0;
   };
   const total = count("d.scope = 'all'");
-  const campus = user ? user.getString("campus") : "";
-  // `mine` = milik kampus pengguna: khusus kampusnya, atau dikirim lewat pengajuan dari kampusnya (apa pun cakupannya).
-  const mine = campus
-    ? count("((d.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(d.campuses) WHERE value = {:campus})) OR (d.scope = 'all' AND COALESCE(d.submission, '') != '' AND d.submission IN (SELECT id FROM submissions WHERE campus = {:campus})))", { campus: campus })
-    : 0;
+  // `mine` = milik pengguna: khusus kampusnya, dikirim lewat pengajuan dari kampusnya (apa pun cakupannya), atau pengajuannya sendiri.
+  const ownParams = {};
+  const own = user ? u.ownedSql("d", user, ownParams) : "";
+  const mine = own ? count(own, ownParams) : 0;
   return { total: total, mine: mine };
 }
 

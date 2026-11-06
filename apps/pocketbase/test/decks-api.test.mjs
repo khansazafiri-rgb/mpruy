@@ -325,6 +325,45 @@ await langkah('Kampusmu memuat kiriman teman sekampus walau pengaju memilih Gene
   await lihat(userC, 404);
 });
 
+await langkah('pengajuan sendiri selalu terlihat walau kampus profil berbeda; cek akun admin menjelaskan alasannya', async () => {
+  // Kampus profil pengaju (userA, kampus A) berbeda dari kampus yang tercatat di pengajuan: tetap terlihat olehnya sendiri.
+  const sa = await kirim(userA, { kind: 'materi', scope: 'campus', names: ['Milik Sendiri A.pdf'] });
+  await call('POST', `/api/medcoel/agent/submissions/${sa.id}/materi-import`, { deck: deck('Isi Milik Sendiri') }, agent.token, 200);
+  const rec = (await call('GET', `/api/collections/submissions/records/${sa.id}`, undefined, su, 200)).data;
+  await call('PATCH', `/api/collections/submissions/records/${sa.id}`, { campus: kampusB.id }, su, 200);
+  const decksRec = (await call('GET', `/api/collections/drilling_decks/records?filter=${encodeURIComponent(`submission='${sa.id}'`)}`, undefined, su, 200)).data.items;
+  assert.equal(decksRec.length, 1);
+  await call('PATCH', `/api/collections/drilling_decks/records/${decksRec[0].id}`, { campuses: [kampusB.id] }, su, 200);
+  assert.equal(rec.campus, kampusA.id);
+  const lihat = (await call('GET', `/api/medcoel/drilling/subject/${mk.slug}`, undefined, userA.token, 200)).data;
+  assert.ok(lihat.decks.some((d) => d.title === 'Milik Sendiri A'), 'pengaju melihat materi pengajuannya sendiri');
+  // Pengguna lain dari kampus A tidak melihatnya (materi sudah diatur khusus kampus B).
+  const lain = await akun('user', kampusA.id);
+  assert.ok(!(await call('GET', `/api/medcoel/drilling/subject/${mk.slug}`, undefined, lain.token, 200)).data.decks.some((d) => d.title === 'Milik Sendiri A'));
+
+  // Cek akun (admin): menjelaskan status akun dan tiap pengajuannya.
+  const login = async (id) => (await call('GET', `/api/collections/users/records/${id}`, undefined, su, 200)).data.loginId;
+  const cek = async (id, token = admin.token, status = 200) => (await call('GET', `/api/medcoel/admin/drilling/check?user=${encodeURIComponent(await login(id))}`, undefined, token, status)).data;
+  const hasil = await cek(userA.id);
+  assert.equal(hasil.visible, true);
+  assert.ok(hasil.deckCount >= 1);
+  const itemA = hasil.submissions.find((x) => x.code === sa.code);
+  assert.equal(itemA.decks.length, 1);
+  assert.equal(itemA.decks[0].visible, true);
+  assert.equal(itemA.status, 'selesai');
+  await cek(userA.id, userA.token, 403);
+  await call('GET', '/api/medcoel/admin/drilling/check?user=tidak-ada-orang-ini', undefined, admin.token, 404);
+  await call('GET', '/api/medcoel/admin/drilling/check', undefined, admin.token, 400);
+  // Akun tanpa kampus dan tanpa pengajuan: menunya tersembunyi dan alasannya disebut.
+  const kosong = await cek(userC.id);
+  assert.equal(kosong.visible, false);
+  assert.ok(kosong.reasons.some((r) => /belum mengisi kampus/.test(r)));
+  // Sakelar mati: alasan pertama menyebutnya.
+  await drilling(false);
+  assert.ok((await cek(userA.id)).reasons.some((r) => /Sakelar Drilling/.test(r)));
+  await drilling(true);
+});
+
 console.log('Alihkan tujuan pengajuan (Hermes: /jenis, /matkul, /pindah)');
 const alt = subjects.filter((x) => x.id !== mk.id);
 const retarget = (id, body, token = agent.token, expect = 200) => call('POST', `/api/medcoel/agent/submissions/${id}/retarget`, body, token, expect);

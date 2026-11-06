@@ -35,7 +35,7 @@ routerAdd("GET", "/api/medcoel/drilling/subject/{subject}", (e) => {
   // Bagian soal = judul PDF tempat soal itu berasal ("" = soal lainnya, tanpa judul).
   const sets = [];
   const setIndex = {};
-  learn.pool(e.app, user, { subject: s.id, drilling: "only", campusOnly: kampusOnly }).forEach((it) => {
+  learn.pool(e.app, user, { subject: s.id, drilling: "only", owned: kampusOnly }).forEach((it) => {
     questionCount++;
     if (it.seen) answeredCount++;
     if (it.scope === "campus") campusQuestionCount++;
