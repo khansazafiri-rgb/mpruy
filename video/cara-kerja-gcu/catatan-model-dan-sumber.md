@@ -1,0 +1,20 @@
+# Catatan model GCU dan sumber mekanisme (video "Cara kerja GCU")
+
+## Model yang dipakai
+**Tidak ada model produk tertentu yang digambar.** Alat dan strip adalah ilustrasi generik "GCU" (glukosa, kolesterol total, asam urat) buatan kode: strip tipis dengan lubang masuk, saluran sempit, ruang reaksi, lapisan reagen, dua jalur elektroda ke dua kontak; meter dengan pin kontak, chip pembaca, layar. Rujukan kategori alat: meter multi-parameter **Bioptik EasyTouch GCU** (hasil pencarian web: [HealthManagement.org](https://healthmanagement.org/products/view/strip-reader-multiparametric-easytouch-r-gcu-bioptik-technology), [MedicalExpo](https://www.medicalexpo.com/prod/bioptik-technology/product-67838-448282.html), manual di [ManualsLib](https://www.manualslib.com/manual/1438566/Bioptik-Easytouch-Gcu.html)). Video tidak meniru bentuk, merek, atau spesifikasinya, dan **tidak menyebut volume sampel, waktu tunggu, atau angka spesifikasi apa pun**.
+
+## Dasar mekanisme
+Strip elektrokimia (amperometrik): sampel masuk lewat kapiler ke ruang reaksi; reagen berisi enzim (dan mediator) bereaksi dengan analit; reaksi menghasilkan arus listrik yang ditangkap elektroda kerja dan elektroda pembanding pada strip, dibawa lewat jalur ke kontak strip; meter mengukur arus itu dan menghitung angka. Darah tidak masuk ke meter. Strip berbeda untuk tiap pemeriksaan karena reagennya berbeda.
+
+## Apa yang BENAR-BENAR diperiksa dan apa yang tidak (jujur)
+- **Tidak berhasil dibuka:** manual produsen (manualmachine.com, manualshive.com) dan halaman paten (image-ppubs.uspto.gov) **tidak dapat diakses dari sesi ini** (nama host tidak dapat di-resolve karena di luar daftar domain yang diizinkan). Jadi **dokumen produsen EasyTouch GCU tidak saya baca**. Untuk membukanya, domain itu perlu diizinkan di pengaturan jaringan sesi.
+- **Yang saya terima hanya ringkasan hasil pencarian web** (bukan isi halaman penuh): (1) deskripsi umum strip glukosa elektrokimia dari rujukan paten (mis. US 6716577 dan sejenisnya): elektroda kerja dan pembanding di ruang kapiler, reagen enzim + mediator di dekat elektroda, glukosa oksidase + feri sianida: feri sianida tereduksi menjadi ferosianida lalu dioksidasi di elektroda sehingga terbaca arus yang berhubungan dengan konsentrasi glukosa; (2) pelapak/distributor menyebut strip asam urat EasyTouch GCU menarik sampel dengan kapiler dari sisi strip, strip khusus untuk meter GCU, dan satu strip per vial; satu daftar pengadaan pemerintah menyebut teknologi "electrochemical" tetapi datanya tidak konsisten.
+- **Belum terverifikasi:** (a) apakah strip kolesterol total dan asam urat pada model yang Anda pilih memang elektrokimia. Ringkasan pencarian juga menunjukkan ada alat lain (mis. Accutrend Plus) yang memakai pembacaan warna (reflektansi), bukan listrik. Naskah menyebut "sinyal listrik" untuk ketiganya, jadi video mengikuti naskah sebagai **skema umum**; **cek ke dokumen produsen model yang dipilih sebelum dipublikasikan**; (b) bahan reagen/enzim tiap strip (yang digambar adalah ikon generik: enzim = bentuk biru-hijau, glukosa = segi enam emas); (c) bentuk strip, tata letak elektroda, dan layar meter.
+- Daftar waktu uji yang saya temukan saling bertentangan (mis. 6 dtk vs 20 dtk untuk asam urat), jadi **tidak dipakai**.
+
+## Hal yang disederhanakan dengan sengaja
+- Molekul, enzim, elektron, dan sinyal adalah skema penjelasan; warna dan cahaya reaksi (kilatan, strip menyala) hanyalah kode infografis, bukan klaim bahwa reaksi benar-benar bercahaya. Footnote di layar menyebutnya.
+- Angka di layar (92, 180, 5,2 mg/dL) adalah **contoh ilustrasi**, ditandai "Contoh hasil (ilustrasi)" dan "Angka contoh · ilustrasi".
+- Tiga pemeriksaan (glukosa, kolesterol total, asam urat) digambar **terpisah**: tiga strip, tiga tetes, tiga hasil sendiri-sendiri; tidak ada satu strip yang menghasilkan tiga angka.
+- Alat tidak digambarkan melihat sel atau molekul; yang dibaca meter hanyalah sinyal listrik pada kontak strip.
+- Skala bukan nyata (strip, tetes, dan ruang reaksi dibesarkan).

@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Render anatomi MEDCOEL</title>
+<link rel="stylesheet" href="../../video/darah-tinggi/stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}</style></head>
+<body><div id="c"></div>
+<script type="module">
+import { svgDoc, plainify, plainDoc, W, H } from './anatomi.js';
+const q = new URLSearchParams(location.search), obj = q.get('obj') || 'jantung';
+const mod = await import(`./${obj}.js`);
+const t = +(q.get('t') || 0);
+if (q.has('siluet')) {   // hanya siluet (gigi, gusi, massa tulang), tanpa latar/tekstur
+  document.getElementById('c').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${mod.siluet({ guides: q.has('guides') })}</svg>`;
+  await document.fonts.ready; window.__ready = true; throw 0;
+}
+const tema = q.get('tema') === 'lama' ? undefined : mod.TEMA;
+let inner = mod[obj]({ labels: q.has('labels'), t, konteks: q.has('konteks'), anim: q.has('anim'), tema: q.get('tema') });
+if (q.has('plain')) {   // versi polos: tanpa efek, warna datar, kontur tipis (hanya geometri)
+  inner = plainDoc(plainify(inner, mod.FLAT || {}));
+  document.getElementById('c').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${inner}</svg>`;
+} else document.getElementById('c').innerHTML = svgDoc(inner, mod.P, tema);
+await document.fonts.ready;
+window.__ready = true;
+</script></body></html>
