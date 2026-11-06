@@ -11,11 +11,11 @@ export const meta = { id: 'gabungan', judul: 'Atlas', sub: '', organ: 'jantung',
 const URUT = [jantung, gigi, kulit];
 const D = TEMPO.durasi, X = TEMPO.transisi, MULAI = URUT.map((_, i) => i * (D - X));
 
-export function frame(T) {
+export function frame(T, opt = {}) {
   const W = KANVAS.w, H = KANVAS.h;
   // organ aktif (satu atau dua pada jendela transisi)
   const aktif = URUT.map((m, i) => ({ m, i, t: T - MULAI[i] })).filter((o) => o.t >= -1e-6 && o.t <= D + 1e-6);
-  const parts = aktif.map((o) => ({ ...o, p: o.m.frame(Math.min(Math.max(o.t, 0), D), { bagian: true }) }));
+  const parts = aktif.map((o) => ({ ...o, p: o.m.frame(Math.min(Math.max(o.t, 0), D), { bagian: true, tanpaLabel: !!opt.tanpaLabel }) }));
   const ada = parts.length === 2;
   const u = ada ? EASE.inOut((T - MULAI[parts[1].i]) / X) : 0;          // 0 -> 1 di jendela transisi
   const kel = ada ? 1 - seg(T, MULAI[parts[1].i], MULAI[parts[1].i] + X / 2, EASE.lin) : 1;   // organ lama: pudar keluar pada paruh pertama

@@ -3,7 +3,7 @@
 // Penanda aliran cahaya koroner = infografis (bukan rekaman aliran darah). Kamera: satu dolly pelan masuk.
 import { buildSvg } from '../../v6/heart7.mjs';
 import { TEMPO, EASE, seg, clamp, MEREK, TATA, KAMERA } from '../tokens.mjs';
-import { bingkai, kamera, label, proyeksi } from '../kerangka.mjs';
+import { bingkai, kamera, label, proyeksi, labelFase } from '../kerangka.mjs';
 
 export const meta = { id: 'jantung', judul: 'Jantung', sub: 'tampak depan · ruang dan pembuluh', organ: 'jantung', durasi: TEMPO.durasi, fps: TEMPO.fps };
 
@@ -34,17 +34,15 @@ export function frame(t, opt = {}) {
   const tfBody = `translate(${tw[0]} ${tw[1]}) rotate(${(P.amplitudo.putar * e.s).toFixed(3)}) scale(${sx.toFixed(4)} ${sy.toFixed(4)}) translate(${-tw[0]} ${-tw[1]})`;
   const k = P.skala, [ox, oy] = P.tempat;
   const gambar = (x, y) => [ox + x * k, oy + (y - 200) * k];       // koordinat gambar -> kanvas (sebelum kamera)
-  // label: jangkar di organ (diam kecuali massa jantung; jangkar massa diikutkan denyut ringan lewat transform yang sama)
+  // label per fase (maks. 2 sekaligus; label lama keluar sebelum yang baru masuk; semua keluar sebelum transisi pada detik 4,8)
   const kam = kamera(t, KAMERA);
-  const L = (i, a, l, teks, warna) => label({ a: proyeksi(kam, gambar(a[0], a[1])), l, teks, warna, sisi: 'kanan', p: seg(t, 0.9 + i * TEMPO.jedaLabel, 0.9 + i * TEMPO.jedaLabel + TEMPO.labelMasuk) });
-  // semua label di kolom kanan (aturan seri): urut dari atas ke bawah mengikuti letak struktur
-  const labels = [
-    L(0, [466, 408], [776, 470], 'Lengkung\naorta', '#E0503C'),
-    L(1, [505, 484], [776, 650], 'Batang\npulmonalis', '#4A56E0'),
-    L(2, [470, 650], [776, 840], 'Aurikula\nkiri', '#B02A44'),
-    L(3, [398, 850], [776, 1040], 'Arteri\nkoroner', '#F0B42A'),
-    L(4, [480, 880], [776, 1240], 'Ventrikel\nkiri', '#C8222E'),
-  ].join('');
+  const A = (x, y) => proyeksi(kam, gambar(x, y));
+  const fase = [
+    { t0: 0.9, t1: 2.3, item: [{ teks: 'Lengkung\naorta', a: A(476, 430), warna: '#E0503C' }, { teks: 'Batang\npulmonalis', a: A(516, 490), warna: '#4A56E0' }] },
+    { t0: 2.5, t1: 3.7, item: [{ teks: 'Aurikula\nkiri', a: A(503, 640), warna: '#B02A44' }, { teks: 'Arteri\nkoroner', a: A(519, 766), warna: '#F0B42A' }] },
+    { t0: 3.9, t1: 4.75, item: [{ teks: 'Ventrikel\nkiri', a: A(526, 930), warna: '#C8222E' }] },
+  ];
+  const labels = opt.tanpaLabel ? '' : labelFase(t, fase);
   const isi = `<defs>${h.defs}</defs><g transform="translate(${ox} ${oy}) scale(${k}) translate(0 -200)">
 <g>${h.back}</g><g transform="${tfBody}">${h.body}</g><g>${h.trunk}</g><g transform="${tfBody}">${h.hi}</g></g>`;
   return bingkai({ organ: 'jantung', t, judul: meta.judul, sub: meta.sub, isi, kam, overlay: labels, bagian: !!opt.bagian });

@@ -89,14 +89,16 @@ function marrowSpaces(r, poly) {
   const dPoly = (x, y) => { let m = 1e9; for (let i = 0; i < poly.length; i++) { const a = poly[i], b = poly[(i + 1) % poly.length]; m = Math.min(m, seg(x, y, a[0], a[1], b[0], b[1])); } return m; };
   const near = (x, y) => { let m = 1e9; for (let i = 0; i < N; i++) { const dd = Math.hypot(x - rsd[i][0], y - rsd[i][1]); if (dd < m) m = dd; } return m; };
   const seeds = [];
-  for (let d = 66; d < 640;) {
-    const ring = offs(rsd, d).filter((q) => q[1] > CREST_Y + 36 && near(q[0], q[1]) >= d * 0.9 && inside(q[0], q[1]) && dPoly(q[0], q[1]) > 34);
-    const sAlong = 26 + 0.1 * d, gapR = 42 + 0.16 * d; let acc = r() * sAlong;
-    for (let i = 1; i < ring.length; i++) {
-      acc -= Math.hypot(ring[i][0] - ring[i - 1][0], ring[i][1] - ring[i - 1][1]);
-      if (acc <= 0) { acc += sAlong * (0.75 + 0.5 * r()); const jx = (r() - 0.5) * sAlong * 0.95, jy = (r() - 0.5) * gapR * 0.8, x = ring[i][0] + jx, y = ring[i][1] + jy; if (inside(x, y) && dPoly(x, y) > 38 && !seeds.some((s2) => Math.hypot(s2[0] - x, s2[1] - y) < 0.62 * sAlong)) seeds.push([x, y]); }
-    }
-    d += gapR * (0.85 + 0.3 * r());
+  // ATLAS: benih disebar acak (lempar dadu dengan jarak minimum yang membesar menjauhi akar) menggantikan cincin sejajar soket, supaya rongga tidak tersusun seperti pola cincin.
+  let bx0 = 1e9, bx1 = -1e9, by0 = 1e9, by1 = -1e9;
+  for (const [px, py] of poly) { bx0 = Math.min(bx0, px); bx1 = Math.max(bx1, px); by0 = Math.min(by0, py); by1 = Math.max(by1, py); }
+  for (let n = 0; n < 14000; n++) {
+    const x = bx0 + r() * (bx1 - bx0), y = by0 + r() * (by1 - by0);
+    if (y < CREST_Y + 36 || !inside(x, y)) continue;
+    const nd = near(x, y); if (nd < 66 || dPoly(x, y) < 38) continue;
+    const rmin = 44 + 0.13 * nd + 12 * r();
+    if (seeds.some((s2) => Math.hypot(s2[0] - x, s2[1] - y) < rmin)) continue;
+    seeds.push([x, y]);
   }
   const real = seeds.filter(() => r() > 0.16), nReal = real.length, keep = real.slice();
   // benih HANTU (tidak digambar) menutup sel di tepi: sepanjang permukaan akar (membentuk korteks soket ±37 px) dan di luar batas tulang

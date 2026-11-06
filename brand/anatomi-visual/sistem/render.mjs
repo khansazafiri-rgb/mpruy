@@ -31,7 +31,7 @@ const W = Math.round(1080 * scale), H = Math.round(1920 * scale);
 const p = await b.newPage({ viewport: { width: W, height: H } });
 p.on('pageerror', (e) => console.log('pageerror', e.message));
 p.on('console', (m) => { if (m.type() === 'error') console.log('console', m.text().slice(0, 300)); });
-await p.goto(`http://127.0.0.1:${port}/brand/anatomi-visual/sistem/shell.html?organ=${organ}&scale=${scale}`);
+await p.goto(`http://127.0.0.1:${port}/brand/anatomi-visual/sistem/shell.html?organ=${organ}&scale=${scale}${args.includes('--tanpa-label') ? '&tanpa=1' : ''}`);
 await p.waitForFunction(() => window.__siap === true, null, { timeout: 30000 });
 const meta = await p.evaluate(() => window.__meta);
 async function bingkai(t) { await p.evaluate((t) => window.__frame(t), t); return p.screenshot({ type: 'png' }); }
@@ -39,13 +39,15 @@ if (mode === 'still') {
   const t = parseFloat(pos[0] ?? '0'); const out = pos[1] || path.join(here, 'out', `${organ}-still.png`);
   fs.writeFileSync(out, await bingkai(t)); console.log('ok', out, W + 'x' + H);
 } else {
-  const out = pos[0] || path.join(here, 'out', `${organ}-klip.mp4`);
+  const out = pos[0] || path.join(here, 'out', `${organ}-klip.mp4`), dua = args.includes('--dua'), out2 = out.replace(/\.mp4$/, '-tanpa-label.mp4');
   const dir = opt('frames', fs.mkdtempSync('/tmp/frm-'));
   fs.mkdirSync(dir, { recursive: true });
+  const dir2 = dir + '-tanpa'; if (dua) fs.mkdirSync(dir2, { recursive: true });
   const n = Math.round(meta.durasi * fps);
   const t0 = Date.now();
-  for (let i = 0; i < n; i++) { fs.writeFileSync(path.join(dir, `f${String(i).padStart(4, '0')}.png`), await bingkai(i / fps)); if (i % 30 === 0) console.log('bingkai', i, '/', n, ((Date.now() - t0) / 1000).toFixed(0) + 's'); }
+  for (let i = 0; i < n; i++) { fs.writeFileSync(path.join(dir, `f${String(i).padStart(4, '0')}.png`), await bingkai(i / fps)); if (dua) { await p.evaluate(() => window.__sembunyiLabel()); fs.writeFileSync(path.join(dir2, `f${String(i).padStart(4, '0')}.png`), await p.screenshot({ type: 'png' })); } if (i % 30 === 0) console.log('bingkai', i, '/', n, ((Date.now() - t0) / 1000).toFixed(0) + 's'); }
   const r = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(fps), '-i', path.join(dir, 'f%04d.png'), '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', '-movflags', '+faststart', out], { stdio: 'inherit' });
   console.log(r.status === 0 ? 'ok ' + out : 'ffmpeg gagal', n + ' bingkai', ((Date.now() - t0) / 1000).toFixed(0) + 's', dir);
+  if (dua) { const r2 = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(fps), '-i', path.join(dir2, 'f%04d.png'), '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '18', '-movflags', '+faststart', out2], { stdio: 'inherit' }); console.log(r2.status === 0 ? 'ok ' + out2 : 'ffmpeg gagal (tanpa label)'); }
 }
 await b.close(); srv.close();

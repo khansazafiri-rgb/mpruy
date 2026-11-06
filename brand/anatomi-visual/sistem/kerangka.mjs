@@ -34,16 +34,16 @@ export function susunLabel(ys, { min = 420, max = 1640, jarak = 128 } = {}) {
  * Label berpenunjuk. a = titik jangkar di organ [x,y]; l = posisi pil [x,y] (pusat kiri teks); p = kemajuan 0..1.
  * warna = warna jaringan (penanda kecil); sisi 'kiri'|'kanan' menentukan arah pil.
  */
-export function label({ a, l, teks, warna, p, sisi = 'kanan' }) {
-  if (p <= 0.001) return '';
+export function label({ a, l, teks, warna, p, sisi = 'kanan', q = 1 }) {
+  if (p <= 0.001 || q <= 0.001) return '';
   const lines = String(teks).split('\n'), n = Math.max(...lines.map((s) => s.length));
   const w = 52 + n * 21.5, h = lines.length > 1 ? 108 : 70;   // huruf 32 px: di lebar 360 px menjadi sekitar 10,7 px
   const x0 = sisi === 'kanan' ? l[0] : l[0] - w, y0 = l[1] - h / 2;
   const pa = EASE.out(clamp(p * 1.35)), pb = EASE.out(clamp((p - 0.25) / 0.75));
   const lx = lerp(a[0], l[0], pa), ly = lerp(a[1], l[1], pa);
-  const slide = (1 - pb) * (sisi === 'kanan' ? 22 : -22);
+  const slide = (1 - pb) * (sisi === 'kanan' ? 22 : -22) + (1 - q) * 12;
   const txt = lines.map((s, i) => `<text x="${f(x0 + 58)}" y="${f(y0 + (lines.length > 1 ? 44 + i * 37 : 46))}" font-family="${FONT}" font-weight="700" font-size="32" fill="${MEREK.tinta}">${esc(s)}</text>`).join('');
-  return `<g opacity="${f(pb)}">
+  return `<g class="lbl" opacity="${f(pb * q)}">
 <path d="M${f(a[0])} ${f(a[1])}L${f(lx)} ${f(ly)}" stroke="#172B38" stroke-width="9" stroke-linecap="round" opacity=".5"/>
 <path d="M${f(a[0])} ${f(a[1])}L${f(lx)} ${f(ly)}" stroke="${MEREK.emas}" stroke-width="4.5" stroke-linecap="round"/>
 <circle cx="${f(a[0])}" cy="${f(a[1])}" r="9" fill="${MEREK.emas}" stroke="#172B38" stroke-width="3"/>
@@ -60,7 +60,7 @@ export function bingkai({ organ, t, judul, sub, isi, kam, overlay = '', catatan,
   const W = KANVAS.w, H = KANVAS.h;
   const par = (k) => `translate(${f(-kam.x * k)} ${f(-kam.y * k)})`;
   const h = header(judul, sub);
-  const p = { bg: `<g transform="${par(0.35)}">${latar(organ, t)}</g>`, isi: `<g transform="${kam.tf}">${isi}</g>`, overlay: `<g>${overlay}</g>`, tetap: h.tetap, judul: h.judul, footer: footer(catatan) };
+  const p = { bg: `<g transform="${par(0.35)}">${latar(organ, t)}</g>`, isi: `<g transform="${kam.tf}">${isi}</g>`, overlay: `<g class="lbl-wadah">${overlay}</g>`, tetap: h.tetap, judul: h.judul, footer: footer(catatan) };
   if (bagian) return p;
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" font-family="${FONT}">
 <defs><clipPath id="vp"><rect width="${W}" height="${H}"/></clipPath></defs>
@@ -79,4 +79,28 @@ function footer(catatan) {
   return `<g id="footer"><rect x="64" y="1772" width="952" height="2" fill="${MEREK.gading}" opacity=".22"/>
 <text x="64" y="1822" font-family="${FONT}" font-weight="500" font-size="28" fill="${MEREK.gading}" opacity=".72">${esc(catatan || 'Gambar skematis dari kode · belum diverifikasi atlas')}</text>
 <text x="1016" y="1872" text-anchor="end" font-family="${FONT}" font-weight="800" font-size="30" letter-spacing="3" fill="${MEREK.gading}" opacity=".9">MEDCOEL</text></g>`;
+}
+
+/**
+ * Label per FASE: pada satu waktu hanya label fase aktif yang tampak (maksimal 2-3); label lama keluar (0,3 dtk) sebelum fase berikut masuk.
+ * fase: [{ t0, t1, item: [{ teks, a: [x,y] titik jangkar di layar, warna }] }]. Posisi pil di kolom kanan disusun dekat y jangkar dengan jarak minimum
+ * (garis penunjuk hampir mendatar, urut sehingga tidak saling menyilang). kolom = x kiri pil.
+ */
+export function labelFase(t, fase, { kolom = 776, jarak = 125, min = 400, max = 1640, masuk = 0.35, keluar = 0.3, jeda = 0.12 } = {}) {
+  let s = '';
+  for (const F of fase) {
+    if (t < F.t0 || t > F.t1 + 0.01) continue;
+    const ys = susunLabel(F.item.map((o) => o.a[1]), { min, max, jarak });
+    F.item.forEach((o, i) => {
+      const t0 = F.t0 + i * jeda, p = seg(t, t0, t0 + masuk), q = 1 - seg(t, F.t1 - keluar, F.t1);
+      s += label({ a: o.a, l: [kolom, ys[i]], teks: o.teks, warna: o.warna, p, q });
+    });
+  }
+  return s;
+}
+
+/** Garis penunjuk (a -> pil) dan pil sebagai kotak, untuk uji geometri: apakah ada garis yang memotong pil atau garis lain. */
+export function gpPil(a, y, teks, kolom = 776) {
+  const lines = String(teks).split('\n'), n = Math.max(...lines.map((s) => s.length)), w = 52 + n * 21.5, h = lines.length > 1 ? 108 : 70;
+  return { seg: [a, [kolom, y]], kotak: [kolom, y - h / 2, kolom + w, y + h / 2] };
 }
