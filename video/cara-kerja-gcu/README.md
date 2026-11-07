@@ -3,7 +3,7 @@
 Video edukasi MEDCOEL tentang cara kerja alat GCU (glukosa, kolesterol total, asam urat) dengan animasi dari kode (SVG di Chromium + ffmpeg). Narasi memakai **audio asli** `audio/narator.wav` (50,52 dtk; tidak dipercepat, dipotong, atau diubah). Raka dirender dari `rakaSvg()` (`brand/characters/raka/raka.js`) tanpa mengubah desain, pakaian, atau proporsi tangannya; lengan dipasang ulang tiap bingkai lewat pemecah lengan (`stage/raka.js`) agar tangan tepat berada di titik tujuan dengan panjang lengan konstan.
 
 ## Hasil
-- `medcoel-cara-kerja-gcu.mp4` (H.264 + AAC, -14 LUFS), `still/` (17 still 1080 x 1920 + `lima-adegan-penting-360px.png` dan `lembar-360px.png` pada lebar 360 px), `catatan-model-dan-sumber.md`.
+- `medcoel-cara-kerja-gcu.mp4` (H.264 + AAC, -14 LUFS), `cover.jpg` / `cover/cover.png` ("Alat sekecil ini bisa tahu gula darah?"; juga `cover/cover-profil-3x4.png`, `cover/cover-pratinjau-grid-profil.png`, `cover/cover-panduan-area-aman.png`; judul, wajah Raka, dan logo di dalam area aman profil, crop tengah 3:4, y 240-1680; dirender dengan `node video/cara-kerja-gcu/cover/render-cover.cjs`), `still/` (17 still 1080 x 1920 + `lima-adegan-penting-360px.png` dan `lembar-360px.png` pada lebar 360 px), `catatan-model-dan-sumber.md`.
 
 ## Linimasa (disinkronkan ke ASR kata, `audio/asr.json`)
 | Waktu | Narasi | Visual |

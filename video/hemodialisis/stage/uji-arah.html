@@ -1,0 +1,8 @@
+<!doctype html><html><body style="margin:0;background:#000"><div id="c"></div><script type="module">
+import * as A from './art.js'; import { fiber } from './scene3.js'; import { worldCircuit } from './scene1.js';
+const q = new URLSearchParams(location.search), t = +q.get('t'), mode = q.get('m');
+let inner = '';
+if (mode === 'fiber') inner = fiber(t);
+else inner = `<g transform="translate(540 960)">${A.dialyzer({ cut: 1, phB: t * 150 * 0.9, phD: t * 150 * 0.9, id: 'u1' })}</g>`;
+document.getElementById('c').innerHTML = `<svg width="1080" height="1920" viewBox="0 0 1080 1920">${A.defs()}<rect width="1080" height="1920" fill="#0B2F38"/>${inner}</svg>`; window.__ready = true;
+</script></body></html>

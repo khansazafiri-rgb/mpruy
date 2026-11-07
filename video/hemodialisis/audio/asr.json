@@ -1,0 +1,971 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 5.46,
+   "text": "Darah mengalir keluar dari lengan, masuk ke mesin, lalu kembali ketubuh.",
+   "words": [
+    {
+     "w": "Darah",
+     "s": 0.0,
+     "e": 1.12
+    },
+    {
+     "w": "mengalir",
+     "s": 1.12,
+     "e": 1.74
+    },
+    {
+     "w": "keluar",
+     "s": 1.74,
+     "e": 2.02
+    },
+    {
+     "w": "dari",
+     "s": 2.02,
+     "e": 2.4
+    },
+    {
+     "w": "lengan,",
+     "s": 2.4,
+     "e": 2.92
+    },
+    {
+     "w": "masuk",
+     "s": 3.2,
+     "e": 3.46
+    },
+    {
+     "w": "ke",
+     "s": 3.46,
+     "e": 3.66
+    },
+    {
+     "w": "mesin,",
+     "s": 3.66,
+     "e": 4.04
+    },
+    {
+     "w": "lalu",
+     "s": 4.38,
+     "e": 4.6
+    },
+    {
+     "w": "kembali",
+     "s": 4.6,
+     "e": 4.96
+    },
+    {
+     "w": "ketubuh.",
+     "s": 4.96,
+     "e": 5.46
+    }
+   ]
+  },
+  {
+   "start": 6.06,
+   "end": 7.82,
+   "text": "Apa yang kebenarnya dilakukan mesin itu?",
+   "words": [
+    {
+     "w": "Apa",
+     "s": 6.06,
+     "e": 6.34
+    },
+    {
+     "w": "yang",
+     "s": 6.34,
+     "e": 6.5
+    },
+    {
+     "w": "kebenarnya",
+     "s": 6.5,
+     "e": 6.92
+    },
+    {
+     "w": "dilakukan",
+     "s": 6.92,
+     "e": 7.26
+    },
+    {
+     "w": "mesin",
+     "s": 7.26,
+     "e": 7.64
+    },
+    {
+     "w": "itu?",
+     "s": 7.64,
+     "e": 7.82
+    }
+   ]
+  },
+  {
+   "start": 9.120000000000001,
+   "end": 11.94,
+   "text": "Normalnya, ginjal menyaring zat sisa dari darah,",
+   "words": [
+    {
+     "w": "Normalnya,",
+     "s": 9.120000000000001,
+     "e": 9.84
+    },
+    {
+     "w": "ginjal",
+     "s": 10.18,
+     "e": 10.42
+    },
+    {
+     "w": "menyaring",
+     "s": 10.42,
+     "e": 10.76
+    },
+    {
+     "w": "zat",
+     "s": 10.76,
+     "e": 10.98
+    },
+    {
+     "w": "sisa",
+     "s": 10.98,
+     "e": 11.22
+    },
+    {
+     "w": "dari",
+     "s": 11.22,
+     "e": 11.46
+    },
+    {
+     "w": "darah,",
+     "s": 11.46,
+     "e": 11.94
+    }
+   ]
+  },
+  {
+   "start": 12.22,
+   "end": 16.28,
+   "text": "menjaga keseimbangan mineral dan membuang kelebihan cairan melalui urin.",
+   "words": [
+    {
+     "w": "menjaga",
+     "s": 12.22,
+     "e": 12.62
+    },
+    {
+     "w": "keseimbangan",
+     "s": 12.62,
+     "e": 13.2
+    },
+    {
+     "w": "mineral",
+     "s": 13.2,
+     "e": 13.62
+    },
+    {
+     "w": "dan",
+     "s": 13.62,
+     "e": 14.26
+    },
+    {
+     "w": "membuang",
+     "s": 14.26,
+     "e": 14.74
+    },
+    {
+     "w": "kelebihan",
+     "s": 14.74,
+     "e": 15.16
+    },
+    {
+     "w": "cairan",
+     "s": 15.16,
+     "e": 15.6
+    },
+    {
+     "w": "melalui",
+     "s": 15.6,
+     "e": 15.94
+    },
+    {
+     "w": "urin.",
+     "s": 15.94,
+     "e": 16.28
+    }
+   ]
+  },
+  {
+   "start": 16.86,
+   "end": 21.12,
+   "text": "Tapi ketika fungsi ginjal sangat menurun, zat sisa dan cairan bisa menumpuk.",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 16.86,
+     "e": 17.26
+    },
+    {
+     "w": "ketika",
+     "s": 17.26,
+     "e": 17.56
+    },
+    {
+     "w": "fungsi",
+     "s": 17.56,
+     "e": 17.88
+    },
+    {
+     "w": "ginjal",
+     "s": 17.88,
+     "e": 18.24
+    },
+    {
+     "w": "sangat",
+     "s": 18.24,
+     "e": 18.54
+    },
+    {
+     "w": "menurun,",
+     "s": 18.54,
+     "e": 18.98
+    },
+    {
+     "w": "zat",
+     "s": 19.46,
+     "e": 19.68
+    },
+    {
+     "w": "sisa",
+     "s": 19.68,
+     "e": 19.98
+    },
+    {
+     "w": "dan",
+     "s": 19.98,
+     "e": 20.1
+    },
+    {
+     "w": "cairan",
+     "s": 20.1,
+     "e": 20.5
+    },
+    {
+     "w": "bisa",
+     "s": 20.5,
+     "e": 20.66
+    },
+    {
+     "w": "menumpuk.",
+     "s": 20.66,
+     "e": 21.12
+    }
+   ]
+  },
+  {
+   "start": 21.6,
+   "end": 24.4,
+   "text": "Ini dapat terjadi akibat penyakit ginjal yang berkembang lama,",
+   "words": [
+    {
+     "w": "Ini",
+     "s": 21.6,
+     "e": 21.92
+    },
+    {
+     "w": "dapat",
+     "s": 21.92,
+     "e": 22.14
+    },
+    {
+     "w": "terjadi",
+     "s": 22.14,
+     "e": 22.62
+    },
+    {
+     "w": "akibat",
+     "s": 22.62,
+     "e": 23.02
+    },
+    {
+     "w": "penyakit",
+     "s": 23.02,
+     "e": 23.32
+    },
+    {
+     "w": "ginjal",
+     "s": 23.32,
+     "e": 23.68
+    },
+    {
+     "w": "yang",
+     "s": 23.68,
+     "e": 23.78
+    },
+    {
+     "w": "berkembang",
+     "s": 23.78,
+     "e": 24.1
+    },
+    {
+     "w": "lama,",
+     "s": 24.1,
+     "e": 24.4
+    }
+   ]
+  },
+  {
+   "start": 24.74,
+   "end": 27.52,
+   "text": "misalnya karena diabetes atau tekanan darah tinggi.",
+   "words": [
+    {
+     "w": "misalnya",
+     "s": 24.74,
+     "e": 25.16
+    },
+    {
+     "w": "karena",
+     "s": 25.16,
+     "e": 25.6
+    },
+    {
+     "w": "diabetes",
+     "s": 25.6,
+     "e": 25.96
+    },
+    {
+     "w": "atau",
+     "s": 25.96,
+     "e": 26.64
+    },
+    {
+     "w": "tekanan",
+     "s": 26.64,
+     "e": 27.04
+    },
+    {
+     "w": "darah",
+     "s": 27.04,
+     "e": 27.2
+    },
+    {
+     "w": "tinggi.",
+     "s": 27.2,
+     "e": 27.52
+    }
+   ]
+  },
+  {
+   "start": 27.52,
+   "end": 32.98,
+   "text": "Pada kondisi tertentu, gangguan ginjal yang terjadi mendadak juga bisa membutuhkan dialysis.",
+   "words": [
+    {
+     "w": "Pada",
+     "s": 27.52,
+     "e": 28.42
+    },
+    {
+     "w": "kondisi",
+     "s": 28.42,
+     "e": 28.72
+    },
+    {
+     "w": "tertentu,",
+     "s": 28.72,
+     "e": 29.28
+    },
+    {
+     "w": "gangguan",
+     "s": 29.56,
+     "e": 29.88
+    },
+    {
+     "w": "ginjal",
+     "s": 29.88,
+     "e": 30.22
+    },
+    {
+     "w": "yang",
+     "s": 30.22,
+     "e": 30.34
+    },
+    {
+     "w": "terjadi",
+     "s": 30.34,
+     "e": 30.72
+    },
+    {
+     "w": "mendadak",
+     "s": 30.72,
+     "e": 31.4
+    },
+    {
+     "w": "juga",
+     "s": 31.4,
+     "e": 31.76
+    },
+    {
+     "w": "bisa",
+     "s": 31.76,
+     "e": 32.04
+    },
+    {
+     "w": "membutuhkan",
+     "s": 32.04,
+     "e": 32.56
+    },
+    {
+     "w": "dialysis.",
+     "s": 32.56,
+     "e": 32.98
+    }
+   ]
+  },
+  {
+   "start": 33.72,
+   "end": 37.84,
+   "text": "Disinilah hemo dialysis yang sering disebut cuci darah membantu.",
+   "words": [
+    {
+     "w": "Disinilah",
+     "s": 33.72,
+     "e": 34.46
+    },
+    {
+     "w": "hemo",
+     "s": 34.46,
+     "e": 34.9
+    },
+    {
+     "w": "dialysis",
+     "s": 34.9,
+     "e": 35.42
+    },
+    {
+     "w": "yang",
+     "s": 35.42,
+     "e": 35.9
+    },
+    {
+     "w": "sering",
+     "s": 35.9,
+     "e": 36.26
+    },
+    {
+     "w": "disebut",
+     "s": 36.26,
+     "e": 36.62
+    },
+    {
+     "w": "cuci",
+     "s": 36.62,
+     "e": 36.9
+    },
+    {
+     "w": "darah",
+     "s": 36.9,
+     "e": 37.28
+    },
+    {
+     "w": "membantu.",
+     "s": 37.28,
+     "e": 37.84
+    }
+   ]
+  },
+  {
+   "start": 38.7,
+   "end": 41.46,
+   "text": "Darah dialirkan kepenyaring bernama dialisar.",
+   "words": [
+    {
+     "w": "Darah",
+     "s": 38.7,
+     "e": 39.18
+    },
+    {
+     "w": "dialirkan",
+     "s": 39.18,
+     "e": 39.76
+    },
+    {
+     "w": "kepenyaring",
+     "s": 39.76,
+     "e": 40.32
+    },
+    {
+     "w": "bernama",
+     "s": 40.32,
+     "e": 40.76
+    },
+    {
+     "w": "dialisar.",
+     "s": 40.76,
+     "e": 41.46
+    }
+   ]
+  },
+  {
+   "start": 42.02,
+   "end": 46.0,
+   "text": "Didalamnya ada serat-serat halus. Darah mengalir didalam serat.",
+   "words": [
+    {
+     "w": "Didalamnya",
+     "s": 42.02,
+     "e": 42.74
+    },
+    {
+     "w": "ada",
+     "s": 42.74,
+     "e": 43.12
+    },
+    {
+     "w": "serat",
+     "s": 43.12,
+     "e": 43.4
+    },
+    {
+     "w": "-serat",
+     "s": 43.4,
+     "e": 43.6
+    },
+    {
+     "w": "halus.",
+     "s": 43.6,
+     "e": 43.98
+    },
+    {
+     "w": "Darah",
+     "s": 44.56,
+     "e": 44.88
+    },
+    {
+     "w": "mengalir",
+     "s": 44.88,
+     "e": 45.32
+    },
+    {
+     "w": "didalam",
+     "s": 45.32,
+     "e": 45.62
+    },
+    {
+     "w": "serat.",
+     "s": 45.62,
+     "e": 46.0
+    }
+   ]
+  },
+  {
+   "start": 46.34,
+   "end": 50.5,
+   "text": "Sementara, cairan dialysis mengalir di luarnya berlawanan arah.",
+   "words": [
+    {
+     "w": "Sementara,",
+     "s": 46.34,
+     "e": 46.88
+    },
+    {
+     "w": "cairan",
+     "s": 47.08,
+     "e": 47.34
+    },
+    {
+     "w": "dialysis",
+     "s": 47.34,
+     "e": 47.84
+    },
+    {
+     "w": "mengalir",
+     "s": 47.84,
+     "e": 48.48
+    },
+    {
+     "w": "di",
+     "s": 48.48,
+     "e": 48.58
+    },
+    {
+     "w": "luarnya",
+     "s": 48.58,
+     "e": 48.9
+    },
+    {
+     "w": "berlawanan",
+     "s": 48.9,
+     "e": 49.54
+    },
+    {
+     "w": "arah.",
+     "s": 49.54,
+     "e": 50.5
+    }
+   ]
+  },
+  {
+   "start": 50.66,
+   "end": 55.3,
+   "text": "Zatsisa seperti urea berpindah melintasi membran menuju cairan dialysis.",
+   "words": [
+    {
+     "w": "Zatsisa",
+     "s": 50.66,
+     "e": 51.16
+    },
+    {
+     "w": "seperti",
+     "s": 51.16,
+     "e": 51.46
+    },
+    {
+     "w": "urea",
+     "s": 51.46,
+     "e": 51.96
+    },
+    {
+     "w": "berpindah",
+     "s": 51.96,
+     "e": 52.78
+    },
+    {
+     "w": "melintasi",
+     "s": 52.78,
+     "e": 53.22
+    },
+    {
+     "w": "membran",
+     "s": 53.22,
+     "e": 53.78
+    },
+    {
+     "w": "menuju",
+     "s": 53.78,
+     "e": 54.32
+    },
+    {
+     "w": "cairan",
+     "s": 54.32,
+     "e": 54.82
+    },
+    {
+     "w": "dialysis.",
+     "s": 54.82,
+     "e": 55.3
+    }
+   ]
+  },
+  {
+   "start": 55.3,
+   "end": 58.18,
+   "text": "kelebihan cairan dikeluarkan secara trokontrol.",
+   "words": [
+    {
+     "w": "kelebihan",
+     "s": 55.3,
+     "e": 56.42
+    },
+    {
+     "w": "cairan",
+     "s": 56.42,
+     "e": 56.74
+    },
+    {
+     "w": "dikeluarkan",
+     "s": 56.74,
+     "e": 57.22
+    },
+    {
+     "w": "secara",
+     "s": 57.22,
+     "e": 57.62
+    },
+    {
+     "w": "trokontrol.",
+     "s": 57.62,
+     "e": 58.18
+    }
+   ]
+  },
+  {
+   "start": 58.7,
+   "end": 60.7,
+   "text": "Sel darah tetap berada di jalur darah.",
+   "words": [
+    {
+     "w": "Sel",
+     "s": 58.7,
+     "e": 59.0
+    },
+    {
+     "w": "darah",
+     "s": 59.0,
+     "e": 59.38
+    },
+    {
+     "w": "tetap",
+     "s": 59.38,
+     "e": 59.64
+    },
+    {
+     "w": "berada",
+     "s": 59.64,
+     "e": 59.92
+    },
+    {
+     "w": "di",
+     "s": 59.92,
+     "e": 60.12
+    },
+    {
+     "w": "jalur",
+     "s": 60.12,
+     "e": 60.34
+    },
+    {
+     "w": "darah.",
+     "s": 60.34,
+     "e": 60.7
+    }
+   ]
+  },
+  {
+   "start": 61.04,
+   "end": 63.64,
+   "text": "Lalu, darah yang sudah disaring kembali ke tubuh.",
+   "words": [
+    {
+     "w": "Lalu,",
+     "s": 61.04,
+     "e": 61.54
+    },
+    {
+     "w": "darah",
+     "s": 61.76,
+     "e": 62.06
+    },
+    {
+     "w": "yang",
+     "s": 62.06,
+     "e": 62.14
+    },
+    {
+     "w": "sudah",
+     "s": 62.14,
+     "e": 62.3
+    },
+    {
+     "w": "disaring",
+     "s": 62.3,
+     "e": 62.74
+    },
+    {
+     "w": "kembali",
+     "s": 62.74,
+     "e": 63.22
+    },
+    {
+     "w": "ke",
+     "s": 63.22,
+     "e": 63.32
+    },
+    {
+     "w": "tubuh.",
+     "s": 63.32,
+     "e": 63.64
+    }
+   ]
+  },
+  {
+   "start": 64.48,
+   "end": 68.14,
+   "text": "Tapi dialysis tidak menggantikan seluruh pekerjaan ginjal",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 64.48,
+     "e": 65.2
+    },
+    {
+     "w": "dialysis",
+     "s": 65.2,
+     "e": 65.86
+    },
+    {
+     "w": "tidak",
+     "s": 65.86,
+     "e": 66.08
+    },
+    {
+     "w": "menggantikan",
+     "s": 66.08,
+     "e": 66.58
+    },
+    {
+     "w": "seluruh",
+     "s": 66.58,
+     "e": 67.12
+    },
+    {
+     "w": "pekerjaan",
+     "s": 67.12,
+     "e": 67.64
+    },
+    {
+     "w": "ginjal",
+     "s": 67.64,
+     "e": 68.14
+    }
+   ]
+  },
+  {
+   "start": 68.14,
+   "end": 69.68,
+   "text": "atau menyembuhkan penyebabnya.",
+   "words": [
+    {
+     "w": "atau",
+     "s": 68.14,
+     "e": 68.6
+    },
+    {
+     "w": "menyembuhkan",
+     "s": 68.6,
+     "e": 69.14
+    },
+    {
+     "w": "penyebabnya.",
+     "s": 69.14,
+     "e": 69.68
+    }
+   ]
+  },
+  {
+   "start": 70.16,
+   "end": 72.64,
+   "text": "Untuk mengurangi resiko penyakit ginjal memburuk,",
+   "words": [
+    {
+     "w": "Untuk",
+     "s": 70.16,
+     "e": 70.76
+    },
+    {
+     "w": "mengurangi",
+     "s": 70.76,
+     "e": 71.14
+    },
+    {
+     "w": "resiko",
+     "s": 71.14,
+     "e": 71.52
+    },
+    {
+     "w": "penyakit",
+     "s": 71.52,
+     "e": 71.84
+    },
+    {
+     "w": "ginjal",
+     "s": 71.84,
+     "e": 72.14
+    },
+    {
+     "w": "memburuk,",
+     "s": 72.14,
+     "e": 72.64
+    }
+   ]
+  },
+  {
+   "start": 72.98,
+   "end": 74.92,
+   "text": "kendalikan gula darah dan tekanan darah,",
+   "words": [
+    {
+     "w": "kendalikan",
+     "s": 72.98,
+     "e": 73.32
+    },
+    {
+     "w": "gula",
+     "s": 73.32,
+     "e": 73.58
+    },
+    {
+     "w": "darah",
+     "s": 73.58,
+     "e": 73.98
+    },
+    {
+     "w": "dan",
+     "s": 73.98,
+     "e": 74.12
+    },
+    {
+     "w": "tekanan",
+     "s": 74.12,
+     "e": 74.46
+    },
+    {
+     "w": "darah,",
+     "s": 74.46,
+     "e": 74.92
+    }
+   ]
+  },
+  {
+   "start": 75.1,
+   "end": 78.5,
+   "text": "serta periksa fungsi ginjal jika kamu punya faktor resiko.",
+   "words": [
+    {
+     "w": "serta",
+     "s": 75.1,
+     "e": 75.68
+    },
+    {
+     "w": "periksa",
+     "s": 75.68,
+     "e": 76.28
+    },
+    {
+     "w": "fungsi",
+     "s": 76.28,
+     "e": 76.56
+    },
+    {
+     "w": "ginjal",
+     "s": 76.56,
+     "e": 77.02
+    },
+    {
+     "w": "jika",
+     "s": 77.02,
+     "e": 77.32
+    },
+    {
+     "w": "kamu",
+     "s": 77.32,
+     "e": 77.56
+    },
+    {
+     "w": "punya",
+     "s": 77.56,
+     "e": 77.88
+    },
+    {
+     "w": "faktor",
+     "s": 77.88,
+     "e": 78.16
+    },
+    {
+     "w": "resiko.",
+     "s": 78.16,
+     "e": 78.5
+    }
+   ]
+  }
+ ]
+}
