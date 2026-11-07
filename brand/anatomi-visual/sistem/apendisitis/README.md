@@ -55,3 +55,16 @@ Satu video sekitar 12 menit dirender di 4 inti CPU. `render.mjs still <dir> <t..
 - Isi pengetahuan anatomi/patofisiologi di atas (taenia, mesoapendiks, jalur nyeri viseral lalu parietal) berasal dari pengetahuan buku ajar umum, bukan dari sumber yang saya buka pada sesi ini; sebaiknya ditinjau tenaga medis/anatomi.
 - Peta perut, pandangan laparoskopi, dan potongan apendiks diberi penanda "skematis" dan "pembesaran skematik"; tidak ada tindakan pengangkatan yang digambarkan.
 - Penyelarasan frasa di dalam kalimat diperkirakan (jeda senyap dan suku kata, +-0,2 dtk); pengenalan suara tidak tersedia di lingkungan ini.
+
+## Hasil pemeriksaan (`../out/apendisitis.mp4`, H.264 + AAC, 75,2 dtk)
+- Bingkai pertama sudah bergerak (laparoskop mendekat, instrumen masuk); selisih bingkai 0 ke 10 = 5,2 dari 255 (skala abu-abu).
+- Label: maksimum 3 serempak, tidak keluar layar, tidak saling menimpa (`node tensi/periksa-label.mjs` versi `apendisitis/periksa-label.mjs`). Pada lebar 360 px label dan takarir terbaca (`../out/apendisitis-preview-360px.png`); teks kecil di dalam kartu dinding perut sekitar 8 px.
+- Lompatan antar-bingkai tertinggi sekitar 13 dari 255, hanya pada gerak kamera dan lensa; tanpa lonjakan tunggal.
+- Audio: narasi dominan (RMS sekitar -26 dBFS), musik dan SFX sekitar -41 dBFS; keluaran -14 LUFS (puncak sampel sekitar -1 dB).
+- Still: `../out/apendisitis-still-1-awal.png`, `-2-tengah.png`, `-3-akhir.png`; cover: `cover/cover.png` (salinan `../out/apendisitis-cover.png`).
+
+## Kekurangan yang diketahui
+- Tidak diperiksa dengan pemutaran penuh bersuara oleh manusia; yang diperiksa: bingkai contoh tiap 2,5 dtk, selisih antar-bingkai, level audio.
+- Kartu dinding perut (peritoneum) memakai teks kecil; lapisan kulit, lemak, otot hanya diberi label singkat.
+- Instrumen laparoskopi dan jepitannya sederhana; tidak ada gerak menjepit (sengaja, agar tidak tampak pengangkatan).
+- Gerak Raka/Tala hanya idle dan perubahan ekspresi; tidak ada gerak aksi (mis. benar-benar menekan perut); penekanan perut ditandai ikon tangan.

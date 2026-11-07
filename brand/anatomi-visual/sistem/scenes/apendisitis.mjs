@@ -202,7 +202,7 @@ function kartuPeritoneum(T) {
   const cy = lerp(520, 372, mv), L = (y) => y0 + y;
   let s = `<g opacity="${f1(a)}">` + U.kartu(x0, y0, w, h, 'Potongan dinding perut (skematis)', 1);
   s += `<clipPath id="kpC"><rect x="${x0 + 18}" y="${y0 + 80}" width="${w - 36}" height="${h - 98}" rx="26"/></clipPath><g clip-path="url(#kpC)">`;
-  s += `<rect x="${x0}" y="${L(80)}" width="${w}" height="26" fill="#D9A57B"/><rect x="${x0}" y="${L(106)}" width="${w}" height="66" fill="#F2C65A" opacity=".9"/><rect x="${x0}" y="${L(172)}" width="${w}" height="86" fill="#C9606A"/>`;
+  s += `<rect x="${x0}" y="${L(80)}" width="${w}" height="26" fill="#E2B58E"/><rect x="${x0}" y="${L(106)}" width="${w}" height="66" fill="#F2C65A" opacity=".9"/><rect x="${x0}" y="${L(172)}" width="${w}" height="86" fill="#C9606A"/>`;
   for (let i = 0; i < 9; i++) s += `<path d="M${x0 + i * 120} ${L(176)}q60 40 120 0" stroke="#E9A0A6" stroke-width="5" fill="none" opacity=".5"/>`;
   s += `<rect x="${x0}" y="${L(258)}" width="${w}" height="12" fill="${mix('#F4D9D2', '#E5483F', iri)}"/><rect x="${x0}" y="${L(270)}" width="${w}" height="${h}" fill="#1B1218"/>`;
   s += `<rect x="${x0}" y="${L(256)}" width="${w}" height="16" fill="#E5483F" opacity="${f1(0.5 * iri)}" filter="${B(6)}"/>`;
@@ -214,7 +214,7 @@ function kartuPeritoneum(T) {
   if (sp > 0.01) for (let i = 0; i < 6; i++) { const u = ((T * 0.8 + i / 6) % 1), yy = L(262) - u * 170; s += `<circle cx="${ax - 40 + Math.sin(u * 9 + i) * 10}" cy="${f1(yy)}" r="7" fill="${EMAS}" opacity="${f1(sp * Math.min(1, u * 6, (1 - u) * 5))}"/>`; }
   s += `</g>`;
   const tx = (y, t2) => `<text x="${x0 + 34}" y="${L(y)}" font-family="${FONT}" font-weight="700" font-size="27" fill="${GADING}">${t2}</text>`;
-  s += `<g><text x="${x0 + 34}" y="${L(100)}" font-family="${FONT}" font-weight="800" font-size="28" fill="#2A1A10">Kulit</text><text x="${x0 + 34}" y="${L(146)}" font-family="${FONT}" font-weight="800" font-size="28" fill="#2A1A10">Lemak</text><text x="${x0 + 34}" y="${L(222)}" font-family="${FONT}" font-weight="800" font-size="28" fill="#fff">Otot dinding perut</text></g>`;
+  s += `<g><text x="${x0 + 34}" y="${L(99)}" font-family="${FONT}" font-weight="800" font-size="21" fill="#2A1A10">Kulit</text><text x="${x0 + 34}" y="${L(146)}" font-family="${FONT}" font-weight="800" font-size="28" fill="#2A1A10">Lemak</text><text x="${x0 + 34}" y="${L(222)}" font-family="${FONT}" font-weight="800" font-size="28" fill="#fff">Otot dinding perut</text></g>`;
   s += `<text x="${x0 + 34}" y="${L(300)}" font-family="${FONT}" font-weight="800" font-size="27" fill="#FFD1CB" opacity="${f1(0.85)}">Peritoneum</text><text x="${x0 + 34}" y="${L(334)}" font-family="${FONT}" font-weight="600" font-size="23" fill="${GADING}" opacity=".8">lapisan dinding perut</text>`;
   s += `<text x="${x0 + 34}" y="${L(572)}" font-family="${FONT}" font-weight="800" font-size="28" fill="${GADING}">Apendiks meradang</text>`;
   s += `<g opacity="${f1(iri)}"><text x="${x0 + 34}" y="${L(420)}" font-family="${FONT}" font-weight="800" font-size="29" fill="${EMAS}">Peradangan mengiritasi</text><text x="${x0 + 34}" y="${L(456)}" font-family="${FONT}" font-weight="800" font-size="29" fill="${EMAS}">lapisan dinding perut</text></g>`;
