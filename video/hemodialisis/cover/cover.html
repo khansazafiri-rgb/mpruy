@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Darah masuk mesin. Lalu apa?</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#c{width:1080px;height:1920px;position:relative;overflow:hidden}svg{display:block}</style></head>
+<body><div id="c"></div>
+<script type="module">
+// Cover khusus video hemodialisis (bukan bingkai pertama video): aliran darah dari lengan ke dialiser yang diperbesar (potongan bening, serat berongga), ginjal sebagai konteks. Judul dan visual di area aman (y 240-1680, margin 60 px).
+import * as A from '../stage/art.js';
+import { bg } from '../stage/bg.js';
+import { f1, MC, FONT } from '../stage/core.js';
+await document.fonts.load('800 60px "Plus Jakarta Sans"'); await document.fonts.load('700 30px "Plus Jakarta Sans"'); await document.fonts.ready;
+const guide = new URLSearchParams(location.search).has('guide');
+const T = 1.2, ph = T * 160;
+const skin = '#F7BC8E', skinSh = '#EAA676', sleeve = '#23978F';
+// lengan (kiri-bawah) dengan akses: lengan baju + lengan bawah + tangan; jarum arteri (merah) dan vena (biru) di lengan bawah
+const arm = `<g filter="url(#fShS)"><rect x="-60" y="1420" width="260" height="150" rx="70" fill="${sleeve}"/><rect x="160" y="1440" width="330" height="108" rx="54" fill="${skin}"/><rect x="160" y="1500" width="330" height="48" rx="24" fill="${skinSh}" opacity=".55"/><circle cx="500" cy="1494" r="62" fill="${skin}"/><rect x="520" y="1440" width="120" height="46" rx="23" fill="${skin}" transform="rotate(-18 520 1463)"/></g><rect x="150" y="1420" width="44" height="150" rx="22" fill="#1B7F77"/>`;
+const nA = [270, 1442], nV = [352, 1442];
+const needle = (p, col) => `<g transform="translate(${f1(p[0])} ${f1(p[1])}) scale(1.7)"><rect x="-4" y="-16" width="8" height="26" rx="3" fill="#E9F2F2" stroke="${MC.ink}" stroke-width="2" transform="rotate(8)"/><circle cy="-6" r="7" fill="${col}" stroke="${MC.ink}" stroke-width="2"/><rect x="-14" y="2" width="28" height="9" rx="4" fill="#F7F2E4" stroke="#C8BFA0" stroke-width="1.5"/></g>`;
+const DZ = [600, 1080], S = 0.98;
+const dzs = `<g transform="translate(${DZ[0]} ${DZ[1]}) rotate(90) scale(${S})">${A.dialyzer({ cut: 1, phB: ph, phD: ph, id: 'dzv' })}</g>`;
+const inlet = [DZ[0] - 385 * S, DZ[1]], outlet = [DZ[0] + 385 * S, DZ[1]];
+const tubeA = `M${nA[0]} ${nA[1]}C${nA[0]} 1320 118 1280 118 1180C118 1110 150 ${DZ[1]} ${f1(inlet[0] + 4)} ${DZ[1]}`;
+const tubeV = `M${f1(outlet[0] - 4)} ${DZ[1]}C1044 ${DZ[1]} 1058 1250 1012 1330C960 1420 600 1370 ${nV[0]} ${nV[1] - 6}`;
+const tubeV2 = `M${nV[0]} ${nV[1]}C${nV[0]} 1390 560 1500 700 1500`;
+const kid = `<g opacity=".72" transform="translate(600 1100) scale(1.75)">${A.kidney({ fn: 1, cut: 1, id: 'kc', shadow: false })}</g>`;
+const dots = A.along(tubeA, 7, T, 0.12, (x, y, i) => A.ureaP(x, y, 8, 1, i * 40), { seed: 2, spread: 6 });
+const ST = 'stroke="#0A1A2E" stroke-width="18" paint-order="stroke" stroke-linejoin="round"';
+const tx = (x, y, s, c, fs, ex = '') => `<text x="${x}" y="${y}" text-anchor="middle" font-family="${FONT}" font-weight="800" font-size="${fs}" fill="${c}" letter-spacing="-3" ${ex}>${s}</text>`;
+const title = tx(540, 372, 'DARAH MASUK', '#fff', 124, ST) + tx(540, 492, 'MESIN.', '#fff', 124, ST) + tx(540, 650, 'LALU APA?', '#F8C038', 150, ST.replace('18', '22'));
+const logo = await new Promise(async (r) => { const b = await (await fetch('../../../apps/web/src/assets/logo-full.webp')).blob(); const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(b); });
+const lw = 360, lh = lw * 0.31;
+const lg = `<g transform="translate(770 1612)"><rect x="${-lw / 2}" y="${-lh / 2 + 7}" width="${lw}" height="${lh}" rx="${lh / 2}" fill="rgba(0,0,0,.35)"/><rect x="${-lw / 2}" y="${-lh / 2}" width="${lw}" height="${lh}" rx="${lh / 2}" fill="#fff"/><image href="${logo}" x="${-lw * 0.36}" y="${-lw * 0.36 * 0.2015}" width="${lw * 0.72}" height="${lw * 0.72 * 0.2015}"/></g>`;
+const g = guide ? `<rect x="0" y="0" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="1680" width="1080" height="240" fill="rgba(255,0,0,.35)"/><rect x="0" y="240" width="1080" height="1440" fill="none" stroke="#0f0" stroke-width="6"/><rect x="60" y="240" width="960" height="1440" fill="none" stroke="#ff0" stroke-width="3" stroke-dasharray="14 10"/>` : '';
+document.getElementById('c').innerHTML = `<svg width="1080" height="1920" viewBox="0 0 1080 1920">${A.defs()}${bg(0)}${kid}${dzs}${A.tube(tubeV, 30, { ph })}${A.tube(tubeA, 34, { ph })}${dots}${arm}${needle(nA, '#E8665F')}${needle(nV, '#4F7FE0')}${title}${lg}${g}</svg>`;
+window.__ready = true;
+</script></body></html>

@@ -1,0 +1,18 @@
+// node video/hemodialisis/render.mjs <keluaran> <f0> <f1> [pekerja=4]  -> bingkai JPEG 1080x1920 (30 fps) f0..f1 (nomor bingkai, 0-based). Butuh server statis: python3 -m http.server 8128 dari akar repo.
+import { createRequire } from 'node:module'; import fs from 'node:fs';
+const require = createRequire(import.meta.url); const { chromium } = require('playwright');
+const [,, out, f0s, f1s, nws] = process.argv; const f0 = +f0s, f1 = +f1s, NW = +nws || 4;
+fs.mkdirSync(out, { recursive: true });
+const browser = await chromium.launch();
+async function worker(id) {
+  const p = await (await browser.newContext({ viewport: { width: 1080, height: 1920 } })).newPage();
+  p.on('pageerror', (e) => console.log('pageerror', e.message));
+  await p.goto('http://127.0.0.1:8128/video/hemodialisis/stage/index.html'); await p.waitForFunction(() => window.__ready, null, { timeout: 30000 });
+  for (let f = f0 + id; f <= f1; f += NW) {
+    await p.evaluate((t) => window.renderFrame(t), f / 30);
+    await p.screenshot({ path: `${out}/f${String(f).padStart(5, '0')}.jpg`, type: 'jpeg', quality: 94 });
+    if (f % 150 === id) console.log('bingkai', f);
+  }
+}
+const t0 = Date.now(); await Promise.all(Array.from({ length: NW }, (_, i) => worker(i)));
+console.log('selesai', ((Date.now() - t0) / 1000).toFixed(1), 's'); await browser.close();
