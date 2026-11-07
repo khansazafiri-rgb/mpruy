@@ -121,7 +121,7 @@ def build(spacing=2.5):
 
     # chest/back/buttock relief
     for sx in (-1, 1):
-        union(lambda x, y, z: d_ellipsoid(x, y, z, (sx * 72, -96, 100), (78, 26, 56)), (sx * 72 - 90, -130, 30), (sx * 72 + 90, -60, 170), 22)
+        union(lambda x, y, z: d_ellipsoid(x, y, z, (sx * 74, -100, 104), (74, 11, 52)), (sx * 74 - 90, -130, 30), (sx * 74 + 90, -60, 170), 18)
         union(lambda x, y, z: d_ellipsoid(x, y, z, (sx * 94, -116, 70), (6, 5, 6)), (sx * 94 - 12, -128, 60), (sx * 94 + 12, -104, 82), 3)  # nipple
         union(lambda x, y, z: d_ellipsoid(x, y, z, (sx * 88, 98, 118), (62, 24, 78)), (sx * 88 - 80, 60, 30), (sx * 88 + 80, 135, 210), 20)  # scapular
         union(lambda x, y, z: d_ellipsoid(x, y, z, (sx * 78, 108, -318), (84, 48, 78)), (sx * 78 - 100, 50, -410), (sx * 78 + 100, 160, -230), 26)  # gluteal
@@ -168,7 +168,7 @@ def build(spacing=2.5):
 
     # subcutaneous fat thickness: thicker on anterior abdomen and buttocks, thin on head/limbs
     ant = np.clip(-Y / 110.0, 0, 1)
-    fat_t = 11 + 15 * np.exp(-((Z + 170) / 95) ** 2) * ant + 10 * np.exp(-((Z + 310) / 60) ** 2) * np.clip(Y / 100, 0, 1)
+    fat_t = 11 - 4 * ant * np.clip(Z / 60, 0, 1) + 15 * np.exp(-((Z + 170) / 95) ** 2) * ant + 10 * np.exp(-((Z + 310) / 60) ** 2) * np.clip(Y / 100, 0, 1)
     fat_t = np.where(Z > 255, 4.0, fat_t)
     fat_t = np.where(np.abs(X) > 185, 7.0, fat_t)
     L[inside] = 3
@@ -179,7 +179,7 @@ def build(spacing=2.5):
     ysp = G.spine_y(Z)
     axs = np.abs(X)
     post_lim = ysp + 42 * np.clip((axs - 22) / 30, 0, 1) - 18 * (1 - np.clip((axs - 22) / 30, 0, 1))
-    wall = 2.5 + fat_t + np.where(Z > 0, 20.0, 13.0)
+    wall = 2.5 + fat_t + np.where(Z > 0, 12.0 + 8.0 * np.clip(Y / 80, 0, 1), 13.0)
     cavity = trunk_in & (trunk_depth > wall) & (Y < post_lim) & (Z > -330) & (Z < 205)
     zd = G.diaphragm_z(X, Y).astype(np.float32)
     thorax = cavity & (Z > zd)
@@ -265,6 +265,8 @@ def build(spacing=2.5):
     rs, rp, rq = heart_coords(x - ro[0], y - ro[1], z - ro[2])
     big_heart |= (rs / (H['rv_cavity']['a'] + 10)) ** 2 + (rp / (H['rv_cavity']['c'] + 9)) ** 2 + (rq / (H['rv_cavity']['b'] + 9)) ** 2 < 1
     medi[sl2] |= big_heart
+    # cardiac notch / anterior mediastinum: the RV abuts the anterior chest wall (parasternal window)
+    medi |= (X > -18) & (X < 70 - 0.25 * np.maximum(Z - 60, 0)) & (Z > 18) & (Z < 112) & (Y < -10)
     lung_space = thorax & ~medi & (L == 2)
     L[lung_space & (X < 0)] = 7
     L[lung_space & (X >= 0)] = 8
