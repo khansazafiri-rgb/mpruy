@@ -1,0 +1,198 @@
+{
+ "durasi": 73.0,
+ "kalimat": [
+  {
+   "id": 1,
+   "t0": 0.35,
+   "t1": 5.36,
+   "teks": "Dokter memasukkan kamera lewat sayatan kecil, lalu mengangkat satu kantong di ujung usus.",
+   "sukuKata": 30,
+   "jedaDalam": [
+    [
+     2.64,
+     2.83
+    ]
+   ]
+  },
+  {
+   "id": 2,
+   "t0": 5.86,
+   "t1": 7.27,
+   "teks": "Kenapa bagian itu harus diangkat?",
+   "sukuKata": 11,
+   "jedaDalam": []
+  },
+  {
+   "id": 3,
+   "t0": 7.81,
+   "t1": 10.01,
+   "teks": "Kantong kecil itu bernama apendiks.",
+   "sukuKata": 12,
+   "jedaDalam": []
+  },
+  {
+   "id": 4,
+   "t0": 10.35,
+   "t1": 12.29,
+   "teks": "Ia menempel pada bagian awal usus besar.",
+   "sukuKata": 14,
+   "jedaDalam": []
+  },
+  {
+   "id": 5,
+   "t0": 12.7,
+   "t1": 16.72,
+   "teks": "Ketika meradang, kondisinya disebut apendisitis, atau radang usus buntu.",
+   "sukuKata": 26,
+   "jedaDalam": []
+  },
+  {
+   "id": 6,
+   "t0": 17.59,
+   "t1": 20.28,
+   "teks": "Pada sebagian kasus, pintu saluran apendiks tersumbat.",
+   "sukuKata": 18,
+   "jedaDalam": []
+  },
+  {
+   "id": 7,
+   "t0": 20.79,
+   "t1": 24.9,
+   "teks": "Penyumbatnya bisa berupa tinja yang mengeras, atau jaringan di dinding apendiks yang membengkak.",
+   "sukuKata": 30,
+   "jedaDalam": []
+  },
+  {
+   "id": 8,
+   "t0": 25.55,
+   "t1": 27.89,
+   "teks": "Nah, dinding apendiks tetap menghasilkan lendir.",
+   "sukuKata": 14,
+   "jedaDalam": [
+    [
+     25.77,
+     26.1
+    ]
+   ]
+  },
+  {
+   "id": 9,
+   "t0": 28.28,
+   "t1": 30.97,
+   "teks": "Karena jalan keluarnya tertutup, lendir tertahan di dalam.",
+   "sukuKata": 19,
+   "jedaDalam": [
+    [
+     29.57,
+     29.78
+    ]
+   ]
+  },
+  {
+   "id": 10,
+   "t0": 31.39,
+   "t1": 36.55,
+   "teks": "Tekanannya meningkat, apendiks meregang, aliran darah di dindingnya terganggu, dan bakteri dapat berkembang.",
+   "sukuKata": 34,
+   "jedaDalam": [
+    [
+     32.27,
+     32.55
+    ],
+    [
+     33.55,
+     33.75
+    ]
+   ]
+  },
+  {
+   "id": 11,
+   "t0": 37.53,
+   "t1": 39.91,
+   "teks": "Awalnya nyeri bisa terasa samar di sekitar pusar.",
+   "sukuKata": 18,
+   "jedaDalam": []
+  },
+  {
+   "id": 12,
+   "t0": 40.36,
+   "t1": 45.36,
+   "teks": "Ketika peradangan menjalar dan mengiritasi lapisan dinding perut, nyerinya dapat terasa lebih jelas di kanan bawah.",
+   "sukuKata": 40,
+   "jedaDalam": [
+    [
+     43.23,
+     43.52
+    ]
+   ]
+  },
+  {
+   "id": 13,
+   "t0": 45.95,
+   "t1": 51.6,
+   "teks": "Mual, hilang nafsu makan, atau demam bisa menyertai, tetapi gejalanya tidak selalu sama pada setiap orang.",
+   "sukuKata": 36,
+   "jedaDalam": [
+    [
+     48.88,
+     49.3
+    ]
+   ]
+  },
+  {
+   "id": 14,
+   "t0": 52.52,
+   "t1": 57.32,
+   "teks": "Dokter menilai gejala, memeriksa perut, dan bila perlu menggunakan tes darah atau pencitraan.",
+   "sukuKata": 31,
+   "jedaDalam": [
+    [
+     54.66,
+     54.9
+    ]
+   ]
+  },
+  {
+   "id": 15,
+   "t0": 58.07,
+   "t1": 63.48,
+   "teks": "Pengangkatan apendiks sering menjadi penanganan; pada kasus tertentu, dokter dapat mempertimbangkan antibiotik.",
+   "sukuKata": 36,
+   "jedaDalam": [
+    [
+     60.1,
+     60.59
+    ],
+    [
+     61.59,
+     61.79
+    ]
+   ]
+  },
+  {
+   "id": 16,
+   "t0": 64.29,
+   "t1": 67.12,
+   "teks": "Belum ada cara yang terbukti pasti mencegah apendisitis.",
+   "sukuKata": 20,
+   "jedaDalam": []
+  },
+  {
+   "id": 17,
+   "t0": 67.52,
+   "t1": 72.69,
+   "teks": "Yang penting, jangan menunda pemeriksaan saat nyeri perut makin berat, terutama bila menetap di kanan bawah.",
+   "sukuKata": 35,
+   "jedaDalam": [
+    [
+     68.15,
+     68.34
+    ],
+    [
+     70.77,
+     70.97
+    ]
+   ]
+  }
+ ]
+}

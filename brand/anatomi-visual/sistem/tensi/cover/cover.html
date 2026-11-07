@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover: Tensi rendah pada perempuan</title>
+<link rel="stylesheet" href="../../fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#c{width:1080px;height:1920px;position:relative;overflow:hidden}svg{display:block}</style></head>
+<body><div id="c"></div>
+<script type="module">
+import { svgCover } from './cover.mjs';
+await document.fonts.load('800 60px "Plus Jakarta Sans"'); await document.fonts.ready;
+window.__gambar = (guide) => { document.getElementById('c').innerHTML = svgCover({ guide }); };
+window.__gambar(false); await new Promise((r) => setTimeout(r, 400)); window.__siap = true;
+</script></body></html>

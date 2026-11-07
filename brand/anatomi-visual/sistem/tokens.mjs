@@ -14,6 +14,7 @@ export const MEREK = {
 export const LATAR = {
   jantung: { atas: '#0D1F2D', tengah: '#13303C', bawah: '#0A1822', cahaya: '#D9707A', rangka: '#1F9C86', aksen: '#F8C038' },
   gigi: { atas: '#0D1F33', tengah: '#16385A', bawah: '#0A1826', cahaya: '#7DBBE6', rangka: '#2B7FB0', aksen: '#F8C038' },
+  usus: { atas: '#0F2230', tengah: '#183A3E', bawah: '#0A1A1E', cahaya: '#E9A27A', rangka: '#1F9C86', aksen: '#F8C038' },
   kulit: { atas: '#0E2523', tengah: '#154238', bawah: '#0A1A19', cahaya: '#F2C46B', rangka: '#1F9C86', aksen: '#F8C038' },
 };
 

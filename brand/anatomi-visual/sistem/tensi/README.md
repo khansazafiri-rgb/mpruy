@@ -59,3 +59,6 @@ ffmpeg -framerate 30 -i <dir>/f%05d.png -i <campur.wav> -af loudnorm=I=-14:TP=-1
 - Dalam tampak tembus, wajah, otak, dan pembuluh leher saling menumpuk di kepala besar Tala; label menjaga keterbacaan tetapi anatomi kepala sangat disederhanakan.
 - Bagian atas anatomi bergoyang bersama badan Tala, sedangkan pembuluh tungkai tetap; sambungan di panggul tampak menyatu hanya karena titik putar sama.
 - Indikator "Tekanan" dan "Aliran ke otak" adalah batang skematis tanpa angka, bukan pengukuran.
+
+## Cover
+`cover/cover.png` (1080 x 1920) dan `cover/cover.jpg`; `cover/cover-profil-3x4.png` (crop tengah y 240-1680) dan `cover/cover-panduan-area-aman.png`. Gaya sama dengan cover seri (latar hijau tua, judul tebal berkontur, medali, pil logo MEDCOEL); tokoh Tala dan jantung v7 dipakai tanpa diubah; judul dan logo di dalam area aman profil. Buat ulang: `node brand/anatomi-visual/sistem/tensi/cover/render-cover.mjs` (jpg dan crop 3:4 dibuat dari png).
