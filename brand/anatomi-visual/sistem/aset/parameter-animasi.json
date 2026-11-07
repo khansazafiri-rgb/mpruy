@@ -1,0 +1,223 @@
+{
+ "versi": 1,
+ "keterangan": "Token dan parameter animasi Atlas MEDCOEL. Satuan waktu detik; koordinat desain per organ (jantung: piksel acuan 572x900 mulai y=200; gigi 600x900; kulit 700x960).",
+ "token": {
+  "kanvas": {
+   "w": 1080,
+   "h": 1920
+  },
+  "merek": {
+   "hijau": "#007060",
+   "hijauGelap": "#00584E",
+   "emas": "#F8C038",
+   "tinta": "#172B38",
+   "gading": "#F8F7F3",
+   "biru": "#255F85",
+   "ungu": "#63579B",
+   "koral": "#B0444F"
+  },
+  "latar": {
+   "jantung": {
+    "atas": "#0D1F2D",
+    "tengah": "#13303C",
+    "bawah": "#0A1822",
+    "cahaya": "#D9707A",
+    "rangka": "#1F9C86",
+    "aksen": "#F8C038"
+   },
+   "gigi": {
+    "atas": "#0D1F33",
+    "tengah": "#16385A",
+    "bawah": "#0A1826",
+    "cahaya": "#7DBBE6",
+    "rangka": "#2B7FB0",
+    "aksen": "#F8C038"
+   },
+   "kulit": {
+    "atas": "#0E2523",
+    "tengah": "#154238",
+    "bawah": "#0A1A19",
+    "cahaya": "#F2C46B",
+    "rangka": "#1F9C86",
+    "aksen": "#F8C038"
+   }
+  },
+  "cahaya": {
+   "arah": [
+    -0.55,
+    -0.83
+   ]
+  },
+  "tempo": {
+   "durasi": 5.4,
+   "gerak": 5,
+   "tahan": 0.4,
+   "fps": 30,
+   "reveal": 0.7,
+   "labelMasuk": 0.5,
+   "jedaLabel": 0.28,
+   "transisi": 0.6
+  },
+  "tata": {
+   "header": {
+    "y": 150
+   },
+   "panggung": {
+    "x": 90,
+    "y": 330,
+    "w": 900,
+    "h": 1180
+   },
+   "pusat": {
+    "x": 540,
+    "y": 920
+   },
+   "footer": {
+    "y": 1790
+   }
+  }
+ },
+ "easing": {
+  "kamera": "inOut: t<.5 ? 4t^3 : 1-(-2t+2)^3/2",
+  "reveal": "out: 1-(1-t)^3"
+ },
+ "jantung": {
+  "meta": {
+   "id": "jantung",
+   "judul": "Jantung",
+   "sub": "tampak depan · ruang dan pembuluh",
+   "organ": "jantung",
+   "durasi": 5.4,
+   "fps": 30
+  },
+  "periode": 1.25,
+  "tambat": [
+   350,
+   600
+  ],
+  "amplitudo": {
+   "sy": 0.045,
+   "sx": 0.02,
+   "putar": 0.8
+  },
+  "aliran": {
+   "periode": 2.5,
+   "awal": 0.3
+  },
+  "skala": 1.36,
+  "tempat": [
+   40,
+   360
+  ]
+ },
+ "gigi": {
+  "meta": {
+   "id": "gigi",
+   "judul": "Gigi molar",
+   "sub": "molar 1 bawah · potongan mesiodistal",
+   "organ": "gigi",
+   "durasi": 5.4,
+   "fps": 30
+  },
+  "panggung": {
+   "cx": 510,
+   "cy": 920,
+   "ke": [
+    415,
+    925
+   ],
+   "skala": 0.74
+  },
+  "waktuAset": {
+   "offset": 0.5,
+   "laju": 1
+  },
+  "label": [
+   [
+    "Tulang\nalveolar",
+    1.5
+   ],
+   [
+    "Ligamen\nperiodontal",
+    1.9
+   ],
+   [
+    "Dentin",
+    2.4
+   ],
+   [
+    "Kanal\nakar",
+    2.9
+   ],
+   [
+    "Pulpa",
+    3
+   ],
+   [
+    "Email",
+    3.5
+   ],
+   [
+    "Gusi",
+    3.8
+   ]
+  ]
+ },
+ "kulit": {
+  "meta": {
+   "id": "kulit",
+   "judul": "Kulit",
+   "sub": "kulit berambut · potongan melintang",
+   "organ": "kulit",
+   "durasi": 5.4,
+   "fps": 30
+  },
+  "panggung": {
+   "cx": 540,
+   "cy": 965,
+   "ke": [
+    400,
+    925
+   ],
+   "skala": 0.85
+  },
+  "pemindai": {
+   "mulai": 0.3,
+   "selesai": 3.5
+  },
+  "label": [
+   [
+    "Epidermis",
+    3.6
+   ],
+   [
+    "Dermis",
+    3.8
+   ],
+   [
+    "Hipodermis\n(lemak)",
+    4
+   ],
+   [
+    "Folikel\nrambut",
+    4.1
+   ],
+   [
+    "Kelenjar\nsebasea",
+    4.2
+   ],
+   [
+    "Kelenjar\nkeringat",
+    4.3
+   ],
+   [
+    "Pembuluh\ndarah",
+    4.4
+   ],
+   [
+    "Saraf",
+    4.5
+   ]
+  ]
+ }
+}

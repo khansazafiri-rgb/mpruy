@@ -1,0 +1,243 @@
+{
+ "durasi": 78.4,
+ "kalimat": [
+  {
+   "i": 0,
+   "teks": "Baru berdiri dari kursi, pandangannya mendadak gelap.",
+   "t0": 0.25,
+   "t1": 3.72
+  },
+  {
+   "i": 1,
+   "teks": "Kenapa tubuhnya seperti mau jatuh?",
+   "t0": 4.5,
+   "t1": 6.09
+  },
+  {
+   "i": 2,
+   "teks": "Saat kita berdiri, gravitasi membuat sebagian darah berkumpul di kaki dan perut.",
+   "t0": 7.08,
+   "t1": 11.44
+  },
+  {
+   "i": 3,
+   "teks": "Darah yang kembali ke jantung berkurang.",
+   "t0": 11.99,
+   "t1": 13.8
+  },
+  {
+   "i": 4,
+   "teks": "Tekanan bisa turun sesaat, dan aliran darah ke otak ikut berkurang.",
+   "t0": 14.36,
+   "t1": 18.43
+  },
+  {
+   "i": 5,
+   "teks": "Tapi tubuh biasanya cepat mengimbangi.",
+   "t0": 19.49,
+   "t1": 21.83
+  },
+  {
+   "i": 6,
+   "teks": "Sensor tekanan di pembuluh darah memberi sinyal.",
+   "t0": 22.48,
+   "t1": 24.5
+  },
+  {
+   "i": 7,
+   "teks": "Jantung berdetak lebih cepat, pembuluh menyempit, dan tekanan kembali terjaga.",
+   "t0": 24.95,
+   "t1": 29.41
+  },
+  {
+   "i": 8,
+   "teks": "Kalau respons itu terlambat, kita bisa merasa pusing atau bahkan pingsan.",
+   "t0": 30.31,
+   "t1": 33.96
+  },
+  {
+   "i": 9,
+   "teks": "Kurang cairan, obat tertentu, dan kehilangan darah juga bisa membuat tekanan turun.",
+   "t0": 34.86,
+   "t1": 38.97
+  },
+  {
+   "i": 10,
+   "teks": "Lalu, apakah ada hal khusus pada perempuan?",
+   "t0": 39.76,
+   "t1": 42.6
+  },
+  {
+   "i": 11,
+   "teks": "Saat hamil, pembuluh darah cenderung lebih rileks sehingga tekanan bisa lebih rendah.",
+   "t0": 43.46,
+   "t1": 48.07
+  },
+  {
+   "i": 12,
+   "teks": "Perdarahan haid yang sangat banyak juga perlu diperhatikan: kehilangan darah yang berat bisa menurunkan tekanan.",
+   "t0": 48.87,
+   "t1": 54.23
+  },
+  {
+   "i": 13,
+   "teks": "Tapi jangan samakan anemia dengan tensi rendah.",
+   "t0": 55.19,
+   "t1": 58.47
+  },
+  {
+   "i": 14,
+   "teks": "Haid banyak bisa menyebabkan anemia dan pusing, meskipun tekanan darahnya tidak rendah.",
+   "t0": 59.11,
+   "t1": 63.47
+  },
+  {
+   "i": 15,
+   "teks": "Angka di bawah sembilan puluh per enam puluh sering disebut tensi rendah.",
+   "t0": 64.29,
+   "t1": 68.42
+  },
+  {
+   "i": 16,
+   "teks": "Namun, yang penting juga adalah gejalanya dan penyebabnya.",
+   "t0": 68.95,
+   "t1": 71.71
+  },
+  {
+   "i": 17,
+   "teks": "Kalau sampai pingsan, perdarahannya banyak, atau pusingnya berat dan menetap, segera cari pertolongan medis.",
+   "t0": 72.4,
+   "t1": 78.3
+  }
+ ],
+ "jeda": [
+  [
+   0.0,
+   0.253458
+  ],
+  [
+   0.500667,
+   1.08433
+  ],
+  [
+   3.71542,
+   4.49862
+  ],
+  [
+   6.09262,
+   7.08212
+  ],
+  [
+   11.4371,
+   11.9874
+  ],
+  [
+   13.7999,
+   14.3555
+  ],
+  [
+   15.7778,
+   16.1134
+  ],
+  [
+   18.4304,
+   19.4872
+  ],
+  [
+   20.1097,
+   20.3097
+  ],
+  [
+   21.8279,
+   22.4772
+  ],
+  [
+   24.4982,
+   24.955
+  ],
+  [
+   26.2552,
+   26.7548
+  ],
+  [
+   27.5835,
+   27.912
+  ],
+  [
+   29.406,
+   30.3124
+  ],
+  [
+   33.9619,
+   34.8583
+  ],
+  [
+   38.9701,
+   39.7578
+  ],
+  [
+   39.9156,
+   40.2683
+  ],
+  [
+   40.5625,
+   40.9755
+  ],
+  [
+   42.6015,
+   43.4584
+  ],
+  [
+   43.6098,
+   43.9163
+  ],
+  [
+   48.0726,
+   48.8708
+  ],
+  [
+   51.5613,
+   51.8316
+  ],
+  [
+   54.229,
+   55.1916
+  ],
+  [
+   55.3887,
+   55.5901
+  ],
+  [
+   55.909,
+   56.2138
+  ],
+  [
+   58.4697,
+   59.1142
+  ],
+  [
+   63.4674,
+   64.2937
+  ],
+  [
+   64.6113,
+   64.8537
+  ],
+  [
+   68.4198,
+   68.9515
+  ],
+  [
+   71.7092,
+   72.3998
+  ],
+  [
+   76.6198,
+   76.8295
+  ],
+  [
+   78.1109,
+   78.4
+  ]
+ ]
+}
