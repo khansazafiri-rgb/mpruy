@@ -1,0 +1,13 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> medcoel-4d-scanner-poc@0.9.0 test
+> node test-nrrd.mjs && node test-nrrd-extra.mjs && node test-kinematics.mjs && node test-skin.mjs && node test-mpr.mjs && node test-units.mjs && node test-mesh.mjs && node test-ui.mjs
+
+PASS: NRRD gzip read, dimensions, voxel access, out-of-bounds.
+PASS: raw, patient-axis spacing, trilinear, big endian, invalid coordinate, truncated, unsupported encoding, sheared grid.
+PASS: NRRD world↔voxel, 360° seam, fixed contact during pitch/yaw/roll, changed reslice voxels, posterior drag, zoom scale.
+PASS: voxel-derived skin, finite seam, fixed contact, rejection of clipped CT, free volume pivot.
+PASS: MPR three translations, three rotations 0/45/90/135/180/custom, fixed pivot, plane normals, outside bounds and sheared physical width.
+PASS: NRRD centimetre directions and origin converted to millimetres.
+PASS: GLB registration/hash/source guard, synthetic chest/back/lateral skin-to-CT tissue/air, collision, normals, fixed contact and CT plane geometry.
+PASS: loaded matching CT+GLB, mesh pointer drag, anterior/posterior/lateral contacts, fixed angulation and changed raster, camera/opacity separation, six-axis MPR pointer handlers, outside feedback, NRRD+mesh reloading. DOM/canvas harness only.

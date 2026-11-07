@@ -1,0 +1,25 @@
+{
+  "reviewRequired": true,
+  "validatedAnatomy": false,
+  "thresholdHU": -350,
+  "stride": 2,
+  "correctedMask": false,
+  "initialComponents": 1,
+  "touchesAcquisitionFaces": {
+    "I\u2212": false,
+    "I+": false,
+    "J\u2212": false,
+    "J+": false,
+    "K\u2212": true,
+    "K+": false
+  },
+  "artificialCapsAtTouchedFaces": true,
+  "boundaryOrNonmanifoldEdges": 0,
+  "triangles": 14000,
+  "vertices": 7002,
+  "elapsedSeconds": 0.306
+}
+
+wallSeconds=3.698
+peakChildRSSKiB=439772
+exit=0

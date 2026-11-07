@@ -1,0 +1,9 @@
+{
+  "status": "failed_before_script_execution",
+  "platform": "Linux",
+  "installedVersion": "5.10.0",
+  "commandMode": "QT_QPA_PLATFORM=offscreen; --no-splash --no-main-window --python-script",
+  "exitCode": 1,
+  "error": "Could not find the Qt platform plugin offscreen. Available platform plugins are: xcb.",
+  "implication": "Slicer console wrapper not executed. Core numpy/scipy/VTK reconstruction tested separately. macOS not tested."
+}

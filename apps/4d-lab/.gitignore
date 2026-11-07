@@ -1,0 +1,6 @@
+node_modules/
+dist/
+test-results/
+# Local restricted data (CTACardio, TotalSegmentator outputs, weights) never committed
+local-data/
+*.local.nrrd
