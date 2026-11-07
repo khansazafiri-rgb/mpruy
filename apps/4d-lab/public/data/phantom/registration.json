@@ -131,7 +131,7 @@
     37,
     196
    ],
-   "value": -850.0
+   "value": -100.0
   },
   {
    "ijk": [
@@ -272,7 +272,7 @@
   },
   {
    "file": "organs.glb",
-   "sha256": "939ef10a688c761c2aed76217fabcf8b0517d0f7a34925c3818af856a73fc214",
+   "sha256": "3feb4b3dbf23d7e0525f56f1fe56016b025e979494a3520ab8766dd8d3d05857",
    "meshes": [
     "skeleton",
     "heart",
@@ -631,7 +631,7 @@
    "aorta": 3500,
    "vena_cava": 3000,
    "pulmonary_artery": 1500,
-   "lung_r": 6998,
+   "lung_r": 7000,
    "lung_l": 7000,
    "airway": 1500,
    "diaphragm": 3000,
@@ -647,7 +647,7 @@
    "bladder": 1200,
    "brain": 2500
   },
-  "elapsedSeconds": 15.58
+  "elapsedSeconds": 14.17
  },
  "limitations": [
   "Automatic thresholds can include table/bedding: inspect and correct the segmentation.",

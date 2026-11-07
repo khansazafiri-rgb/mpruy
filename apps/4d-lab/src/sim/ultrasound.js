@@ -226,7 +226,7 @@ export function scanConvert(us, cols, rows, rgba = new Uint8ClampedArray(cols * 
         li = (th / fov + 0.5) * nLines - 0.5; ki = r / dz - 0.5;
       }
       const o = (py * cols + px) * 4;
-      if (li < -0.5 || li > nLines - 0.5 || ki < -0.5 || ki > nS - 0.5) { rgba[o] = rgba[o + 1] = rgba[o + 2] = 0; rgba[o + 3] = 255; continue; }
+      if (li < -0.5 || li > nLines - 0.5 || ki < -0.5 || ki > nS - 0.5) { rgba[o] = rgba[o + 1] = rgba[o + 2] = 0; rgba[o + 3] = 0; continue; } // outside the fan: transparent
       const l0 = clamp(Math.floor(li), 0, nLines - 1), l1 = Math.min(l0 + 1, nLines - 1), k0 = clamp(Math.floor(ki), 0, nS - 1), k1 = Math.min(k0 + 1, nS - 1);
       const tl = clamp(li - l0, 0, 1), tk = clamp(ki - k0, 0, 1);
       const g = (grey[l0 * nS + k0] * (1 - tk) + grey[l0 * nS + k1] * tk) * (1 - tl) + (grey[l1 * nS + k0] * (1 - tk) + grey[l1 * nS + k1] * tk) * tl;

@@ -134,7 +134,7 @@ test('linear / convex / sector geometries and free-mode virtual transducer', () 
   assert.ok(rgba.some((v, i) => i % 4 === 0 && v > 30), 'linear image has signal');
   const sec = run(setup('subxiphoid'));
   const img = scanConvert(sec, 100, 100);
-  assert.equal(img[(99 * 100 + 0) * 4], 0, 'outside the sector fan is black');
+  assert.equal(img[(99 * 100 + 0) * 4 + 3], 0, 'outside the sector fan is transparent (drawn on black)');
   const free = freePose({ position: [0, 0, -60], ...FREE_PRESETS.coronal });
   const fp = imagingPlane(free, PROBES.convex, 0, { width: 200, height: 200 });
   const fu = simulateUltrasound(sampler, fp, { probe: PROBES.convex, freq: 3.5, depth: 200, quality: 0.5 });

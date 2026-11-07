@@ -140,6 +140,17 @@ export function inFieldOfView(plane, s, d) {
   return r <= depth && Math.abs(th) <= p.fov * DEG / 2;
 }
 
+/** Field-of-view outline in image-plane coordinates [[s, d], ...] (rectangle, trapezoid-arc or sector). */
+export function fovOutline(plane, n = 24) {
+  if (plane.mode === 'free') return [[-plane.width / 2, 0], [plane.width / 2, 0], [plane.width / 2, plane.height], [-plane.width / 2, plane.height]];
+  const p = plane.probe, D = plane.depth;
+  if (p.geometry === 'linear') return [[-p.aperture / 2, 0], [p.aperture / 2, 0], [p.aperture / 2, D], [-p.aperture / 2, D]];
+  const a = p.fov * DEG / 2, R = p.geometry === 'convex' ? p.radius : 0, out = [];
+  for (let i = 0; i <= n; i++) { const t = -a + (2 * a * i) / n; out.push([R * Math.sin(t), R * Math.cos(t) - R]); }
+  for (let i = n; i >= 0; i--) { const t = -a + (2 * a * i) / n; out.push([(R + D) * Math.sin(t), (R + D) * Math.cos(t) - R]); }
+  return out;
+}
+
 /** Distance (mm) between two contact points: used by tests to prove angulation keeps the contact. */
 export const contactDrift = (a, b) => Math.hypot(a.origin[0] - b.origin[0], a.origin[1] - b.origin[1], a.origin[2] - b.origin[2]);
 export { dot };

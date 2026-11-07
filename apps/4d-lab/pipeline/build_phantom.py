@@ -266,7 +266,7 @@ def build(spacing=2.5):
     big_heart |= (rs / (H['rv_cavity']['a'] + 10)) ** 2 + (rp / (H['rv_cavity']['c'] + 9)) ** 2 + (rq / (H['rv_cavity']['b'] + 9)) ** 2 < 1
     medi[sl2] |= big_heart
     # cardiac notch / anterior mediastinum: the RV abuts the anterior chest wall (parasternal window)
-    medi |= (X > -18) & (X < 70 - 0.25 * np.maximum(Z - 60, 0)) & (Z > 18) & (Z < 112) & (Y < -10)
+    medi |= (X > -18) & (X < 70 - 0.25 * np.maximum(Z - 60, 0)) & (Z > -45) & (Z < 112) & (Y < -10)
     lung_space = thorax & ~medi & (L == 2)
     L[lung_space & (X < 0)] = 7
     L[lung_space & (X >= 0)] = 8
