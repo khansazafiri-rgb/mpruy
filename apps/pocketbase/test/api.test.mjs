@@ -882,7 +882,8 @@ await langkah('drilling khusus kampus: pengajuan "kampus saja" lewat /drilling-i
     assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data.subjects.map((x) => x.questionCount), [2]);
     assert.equal((await bulkScope({ only: kampusB.id, scope: 'all' })).data.count, 2); // soal kampus B -> General
     assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userC.token, 200)).data.subjects.map((x) => x.questionCount), [1]); // soal General tidak ikut
-    assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data.subjects, []);
+    // Soal kiriman kampus B yang dijadikan General tetap milik kampus B (dikirim lewat pengajuan dari kampus B).
+    assert.deepEqual((await call('GET', '/api/medcoel/drilling', undefined, userA.token, 200)).data.subjects.map((x) => x.questionCount), [2]);
     assert.equal((await bulkScope({ only: 'all', scope: 'campus', campuses: [kampusB.id] })).data.count, 2); // kembali ke kampus B
     assert.equal((await bulkScope({ only: kampusA.id, scope: 'campus', campuses: [kampusB.id] })).data.count, 1);
 

@@ -5,6 +5,7 @@ import { BookOpenText, Eye, EyeOff, FilePlus2, ListChecks, Plus, Send, Trash2, U
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DrillingAudience from '@/components/admin/DrillingAudience';
+import DrillingCheck from '@/components/admin/DrillingCheck';
 import DrillingDecks from '@/components/admin/DrillingDecks';
 import ImportPanel from '@/components/admin/ImportPanel';
 import QuestionEditor from '@/components/admin/QuestionEditor';
@@ -63,7 +64,7 @@ export default function DrillingAdmin() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="page-title">Drilling</h1>
-          <p className="mt-1 text-sm text-ink-muted">"File kampusmu" per mata kuliah: materi (slide PPT dengan penjelasan) dan soal tanpa BAB, General (semua pengguna) atau khusus kampus tertentu. Menu Drilling di sebelah Simulasi tampil untuk pengguna bila sakelar menyala dan ada materi atau soal tayang yang bisa mereka lihat (General, atau milik kampusnya). Kamu, sebagai admin, selalu bisa membukanya untuk mencoba.</p>
+          <p className="mt-1 text-sm text-ink-muted">Menu Kampusmu (dulu Drilling) berisi materi (slide PPT dengan penjelasan) dan soal tanpa BAB per mata kuliah. Pengguna hanya melihat yang milik kampusnya: khusus kampusnya, atau dikirim lewat pengajuan dari kampusnya (juga yang dipilih General), atau pengajuannya sendiri. Menu tampil di sebelah Simulasi bila sakelar menyala dan ada isinya untuk kampus itu. Kamu, sebagai admin, selalu bisa membukanya dan melihat semua kampus.</p>
         </div>
         <div className="flex flex-wrap gap-2">
           <button type="button" className="btn-primary" onClick={() => setAdding({ kind: 'import', subject: '' })}><FilePlus2 size={18} /> Impor soal Drilling</button>
@@ -75,7 +76,7 @@ export default function DrillingAdmin() {
       <section className="card space-y-3 p-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="font-semibold">Menu Drilling untuk pengguna</p>
+            <p className="font-semibold">Menu Kampusmu untuk pengguna</p>
             <Badge className={status.cls}>{status.label}</Badge>
           </div>
           <button type="button" className={data.enabled ? 'btn-secondary' : 'btn-primary'} onClick={toggle} disabled={busy}>
@@ -89,6 +90,7 @@ export default function DrillingAdmin() {
           <div className="rounded-xl bg-page p-3"><dt className="text-xs text-ink-muted">Mata kuliah berisi</dt><dd className="font-display text-2xl font-bold">{withQuestions}<span className="text-sm font-normal text-ink-muted"> / {data.subjects.length}</span></dd></div>
         </dl>
       </section>
+      <DrillingCheck />
       <section className="card p-5">
         <div className="flex flex-wrap items-center gap-3">
           <h2 className="font-display text-lg font-semibold">Per mata kuliah</h2>

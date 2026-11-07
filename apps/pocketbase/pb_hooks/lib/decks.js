@@ -46,16 +46,43 @@ function visibleTo(rec, user) {
 }
 
 /**
+ * Milik pengguna ("Kampusmu"): materi yang khusus kampusnya, yang dikirim lewat pengajuan dari kampusnya (apa pun
+ * cakupan yang dipilih pengaju), atau yang dikirim lewat pengajuan pengguna itu sendiri.
+ * Materi yang admin atur khusus kampus lain tidak ikut walau pengajunya sekampus.
+ * `cache` = peta id pengajuan -> { campus, user } agar tidak mencari berulang dalam satu permintaan.
+ */
+function ownedBy(app, rec, user, cache) {
+  if (!user) return false;
+  const sid = rec.getString("submission");
+  let info = null;
+  if (sid) {
+    const c = cache || {};
+    if (c[sid] === undefined) {
+      try { const s = app.findRecordById("submissions", sid); c[sid] = { campus: s.getString("campus"), user: s.getString("user") }; } catch (_) { c[sid] = null; }
+    }
+    info = c[sid];
+  }
+  if (info && info.user === user.id) return true;
+  const campus = user.getString("campus");
+  if (!campus) return false;
+  if (rec.getString("scope") === "campus") return rec.getStringSlice("campuses").indexOf(campus) >= 0;
+  return !!info && info.campus === campus;
+}
+
+/**
  * Berkas materi tayang yang terlihat pengguna, tanpa isi slide. subjectId opsional.
- * opts.kampusOnly = true ("Kampusmu"): hanya berkas khusus kampus pengguna, tanpa General.
+ * opts.kampusOnly = true ("Kampusmu"): hanya berkas milik kampus pengguna (lihat ownedBy), tanpa General kiriman kampus lain.
  * Admin (tanpa kampus) melihat semua berkas tayang, termasuk yang khusus kampus lain (pratinjau).
  */
 function listFor(app, user, subjectId, opts) {
   const filter = "status = 'published'" + (subjectId ? " && subject = {:s}" : "");
   const recs = app.findRecordsByFilter("drilling_decks", filter, "sortOrder,created", 0, 0, subjectId ? { s: subjectId } : {});
   if (user && u.roleOf(user) === "admin") return recs;
-  const kampusOnly = !!(opts && opts.kampusOnly === true);
-  return recs.filter((r) => visibleTo(r, user) && (!kampusOnly || r.getString("scope") === "campus"));
+  if (opts && opts.kampusOnly === true) {
+    const cache = {};
+    return recs.filter((r) => ownedBy(app, r, user, cache));
+  }
+  return recs.filter((r) => visibleTo(r, user));
 }
 
 /** Per mata kuliah: jumlah berkas, jumlah slide, dan berapa yang khusus kampus pengguna. */
@@ -85,8 +112,10 @@ function status(app, user) {
     return rows.length ? rows[0].n : 0;
   };
   const total = count("d.scope = 'all'");
-  const campus = user ? user.getString("campus") : "";
-  const mine = campus ? count("d.scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(d.campuses) WHERE value = {:campus})", { campus: campus }) : 0;
+  // `mine` = milik pengguna: khusus kampusnya, dikirim lewat pengajuan dari kampusnya (apa pun cakupannya), atau pengajuannya sendiri.
+  const ownParams = {};
+  const own = user ? u.ownedSql("d", user, ownParams) : "";
+  const mine = own ? count(own, ownParams) : 0;
   return { total: total, mine: mine };
 }
 
@@ -185,4 +214,4 @@ function importDeck(app, opts) {
   return result;
 }
 
-module.exports = { blockedMessage, subjectFor, inputOf, metaOf, campusNames, visibleTo, listFor, countsFor, status, full, importDeck };
+module.exports = { ownedBy, blockedMessage, subjectFor, inputOf, metaOf, campusNames, visibleTo, listFor, countsFor, status, full, importDeck };

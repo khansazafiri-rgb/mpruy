@@ -35,7 +35,7 @@ routerAdd("GET", "/api/medcoel/drilling/subject/{subject}", (e) => {
   // Bagian soal = judul PDF tempat soal itu berasal ("" = soal lainnya, tanpa judul).
   const sets = [];
   const setIndex = {};
-  learn.pool(e.app, user, { subject: s.id, drilling: "only", campusOnly: kampusOnly }).forEach((it) => {
+  learn.pool(e.app, user, { subject: s.id, drilling: "only", owned: kampusOnly }).forEach((it) => {
     questionCount++;
     if (it.seen) answeredCount++;
     if (it.scope === "campus") campusQuestionCount++;
@@ -77,7 +77,7 @@ routerAdd("GET", "/api/medcoel/drilling/deck/{id}", (e) => {
   try { rec = e.app.findRecordById("drilling_decks", e.request.pathValue("id")); } catch (_) { rec = null; }
   if (!rec) throw new NotFoundError("Materi tidak ditemukan.");
   if (!admin) {
-    if (rec.getString("status") !== "published" || rec.getString("scope") !== "campus" || !decks.visibleTo(rec, user) || !learn.drillingStatus(e.app, user).kampusAvailable) throw new NotFoundError("Materi tidak ditemukan.");
+    if (rec.getString("status") !== "published" || !decks.ownedBy(e.app, rec, user) || !learn.drillingStatus(e.app, user).kampusAvailable) throw new NotFoundError("Materi tidak ditemukan.");
     const sub = e.app.findRecordById("subjects", rec.getString("subject"));
     if (sub.getBool("hidden")) throw new NotFoundError("Materi tidak ditemukan.");
   }

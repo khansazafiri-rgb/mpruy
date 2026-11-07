@@ -330,6 +330,28 @@ function visibleFilter(user) {
   };
 }
 
+/**
+ * Kondisi SQL "milik pengguna" untuk Kampusmu pada tabel `questions` (alias q) atau `drilling_decks` (alias d):
+ * (1) khusus kampus pengguna, (2) dikirim lewat pengajuan dari kampus pengguna (apa pun cakupannya), atau
+ * (3) dikirim lewat pengajuan pengguna itu sendiri. Mengisi `params` (campus, owner). "" bila tak ada yang cocok.
+ */
+function ownedSql(alias, user, params) {
+  const a = alias;
+  const sub = "COALESCE(" + a + ".submission, '') != '' AND " + a + ".submission IN (SELECT id FROM submissions WHERE ";
+  const parts = [];
+  const campus = user ? user.getString("campus") : "";
+  if (campus) {
+    parts.push("(" + a + ".scope = 'campus' AND EXISTS (SELECT 1 FROM json_each(" + a + ".campuses) WHERE value = {:campus}))");
+    parts.push("(" + a + ".scope = 'all' AND " + sub + "campus = {:campus}))");
+    params.campus = campus;
+  }
+  if (user) {
+    parts.push("(" + sub + "user = {:owner}))");
+    params.owner = user.id;
+  }
+  return parts.length ? "(" + parts.join(" OR ") + ")" : "";
+}
+
 function canSeeQuestion(user, q) {
   if (q.getString("status") !== "published") return roleOf(user) === "admin";
   if (q.getString("scope") === "all") return true;
@@ -455,6 +477,7 @@ function userSummary(app, u, withPrivate) {
 
 module.exports = {
   NO_CAMPUS,
+  ownedSql,
   tutorialsOf,
   lib,
   env,

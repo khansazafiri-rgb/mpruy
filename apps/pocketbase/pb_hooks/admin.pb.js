@@ -73,6 +73,80 @@ routerAdd("GET", "/api/medcoel/admin/drilling", (e) => {
   return e.json(200, { enabled: st.enabled, available: st.enabled && st.total + campusPublished + st.deckTotal + (deckCampus.length ? deckCampus[0].n : 0) > 0, total: st.total, campusPublished: campusPublished, published: total, drafts: drafts, deckPublished: deckPublished, deckDrafts: deckDrafts, subjects: subjects });
 });
 
+// Cek kenapa menu Kampusmu (Drilling) tidak tampil untuk seorang pengguna: sakelar, kampus akun, dan untuk tiap pengajuannya
+// apakah materi/soal benar-benar tersimpan, tayang, dan terlihat olehnya. Cari lewat ID masuk, email, id, atau nama.
+routerAdd("GET", "/api/medcoel/admin/drilling/check", (e) => {
+  const u = require(`${__hooks}/lib/util.js`);
+  const learn = require(`${__hooks}/lib/learn.js`);
+  const decks = require(`${__hooks}/lib/decks.js`);
+  u.requireAdmin(e);
+  const q = u.query(e, "user").trim();
+  if (!q) throw new BadRequestError("Isi ID masuk, email, atau nama pengguna.");
+  let found = [];
+  try { found = e.app.findRecordsByFilter("users", "loginId = {:q} || email = {:q} || id = {:q}", "", 5, 0, { q: q }); } catch (_) { found = []; }
+  if (!found.length) {
+    try { found = e.app.findRecordsByFilter("users", "name ~ {:q} || loginId ~ {:q}", "name", 8, 0, { q: q }); } catch (_) { found = []; }
+  }
+  if (!found.length) throw new NotFoundError("Pengguna tidak ditemukan.");
+  const campusName = (id) => { if (!id) return ""; try { return e.app.findRecordById("campuses", id).getString("name"); } catch (_) { return ""; } };
+  if (found.length > 1) {
+    return e.json(200, { candidates: found.map((r) => ({ id: r.id, name: r.getString("name"), loginId: r.getString("loginId"), campus: campusName(r.getString("campus")) })) });
+  }
+  const user = found[0];
+  const st = learn.drillingStatus(e.app, user);
+  const reasons = [];
+  if (!st.enabled) reasons.push("Sakelar Drilling di halaman ini masih MATI, jadi tidak ada pengguna yang melihat menu Kampusmu. Nyalakan lewat tombol Tampilkan Drilling.");
+  if (!user.getString("campus")) reasons.push("Akun ini belum mengisi kampus di Profil. Tanpa kampus, hanya yang dikirim lewat pengajuannya sendiri yang bisa tampil.");
+  const cache = {};
+  const subs = e.app.findRecordsByFilter("submissions", "user = {:u}", "-created", 30, 0, { u: user.id });
+  const items = subs.map((s) => {
+    const sid = s.id;
+    const ds = e.app.findRecordsByFilter("drilling_decks", "submission = {:s}", "created", 0, 0, { s: sid });
+    const names = decks.campusNames(e.app, ds);
+    const soal = e.app.countRecords("questions", $dbx.exp("submission = {:s} AND status = 'published'", { s: sid }));
+    let subjectName = ""; let subjectHidden = false;
+    try { const sj = e.app.findRecordById("subjects", s.getString("subject")); subjectName = sj.getString("name"); subjectHidden = sj.getBool("hidden"); } catch (_) { subjectName = ""; }
+    const deckRows = ds.map((r) => ({
+      title: r.getString("title"),
+      status: r.getString("status"),
+      scope: r.getString("scope"),
+      campuses: r.getStringSlice("campuses").map((id) => names[id] || campusName(id)),
+      visible: r.getString("status") === "published" && !subjectHidden && decks.ownedBy(e.app, r, user, cache),
+    }));
+    const note = [];
+    const done = s.getString("status") === "selesai";
+    if (done && !ds.length && !soal) note.push("Berstatus Selesai tetapi tidak ada materi atau soal tayang yang tersimpan dari pengajuan ini (mungkin sudah dihapus). Impor ulang lewat Hermes.");
+    deckRows.forEach((d) => {
+      if (d.status !== "published") note.push("Materi '" + d.title + "' masih DRAF, jadi belum tayang.");
+      else if (subjectHidden) note.push("Mata kuliah " + subjectName + " sedang disembunyikan.");
+      else if (!d.visible) note.push("Materi '" + d.title + "' khusus " + (d.campuses.join(", ") || "kampus lain") + ", bukan kampus akun ini (" + (campusName(user.getString("campus")) || "kosong") + ").");
+    });
+    return {
+      code: s.getString("code"),
+      status: s.getString("status"),
+      kind: s.getString("contentKind") === "materi" ? "materi" : "soal",
+      subject: subjectName,
+      scope: s.getString("scope") === "campus" ? "campus" : "all",
+      campus: campusName(s.getString("campus")),
+      decks: deckRows,
+      questions: soal,
+      notes: note,
+    };
+  });
+  const shownDecks = decks.listFor(e.app, user, undefined, { kampusOnly: true }).length;
+  const shownQuestions = learn.pool(e.app, user, { drilling: "only", owned: true }).length;
+  if (st.enabled && !st.kampusAvailable && !reasons.length) reasons.push("Belum ada materi atau soal tayang yang termasuk milik akun ini (khusus kampusnya, dikirim dari kampusnya, atau pengajuannya sendiri). Lihat catatan per pengajuan di bawah.");
+  return e.json(200, {
+    enabled: st.enabled,
+    visible: st.kampusAvailable,
+    user: { id: user.id, name: user.getString("name"), loginId: user.getString("loginId"), campus: campusName(user.getString("campus")), role: u.roleOf(user) },
+    deckCount: shownDecks,
+    questionCount: shownQuestions,
+    reasons: reasons,
+    submissions: items,
+  });
+});
+
 // Siapa yang bisa melihat soal Drilling satu mata kuliah: jumlah soal General dan, per kampus, jumlah soal serta
 // pengguna aktif kampus itu (daftar nama untuk dropdown). Pengguna kampus lain tidak melihat soal khusus kampus.
 routerAdd("GET", "/api/medcoel/admin/drilling/audience", (e) => {
