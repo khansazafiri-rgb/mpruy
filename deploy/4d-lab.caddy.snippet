@@ -1,0 +1,29 @@
+# MEDCOEL Anatomy Live 4D Lab — insert inside the medcoel.com site block, BEFORE the general SPA handle,
+# next to the /anatomy/viewer routes. Review candidate only: do not reload Caddy without approval.
+# The React page /anatomy/live (SPA) frames this static build.
+handle /anatomy/4d-lab {
+    redir * /anatomy/4d-lab/ 308
+}
+handle_path /anatomy/4d-lab/* {
+    # Release symlink OUTSIDE apps/web/dist (scripts/stage-4d-lab.mjs).
+    root * /var/lib/medcoel/4d-lab
+    header X-Frame-Options SAMEORIGIN
+    header Content-Security-Policy "frame-ancestors 'self'"
+    header Cache-Control "no-cache, max-age=0, must-revalidate"
+    @lab_hashed {
+        path /assets/*
+        file
+    }
+    header @lab_hashed >Cache-Control "public, max-age=31536000, immutable"
+    @lab_data {
+        path /data/*
+        file
+    }
+    header @lab_data >Cache-Control "public, max-age=3600, must-revalidate"
+    @lab_glb path *.glb
+    header @lab_glb Content-Type model/gltf-binary
+    @lab_json path *.json
+    header @lab_json Content-Type application/json
+    # No SPA fallback: a missing asset is a 404, never the main index.html.
+    file_server
+}

@@ -8,6 +8,7 @@ import Logo from '@/components/Logo';
 import Mascot from '@/components/Mascot';
 import MascotTip, { useMascotsOn } from '@/components/MascotTip';
 import HumanAnatomy from './HumanAnatomy';
+import LiveLab from './LiveLab';
 import { AnatomyDataProvider, useAnatomyLibrary } from '../features/anatomy/LibraryData';
 import {
   REGIONS, SYSTEMS, browseStructures, filterStructures, normalise, relatedStructures, structureHref, exploreHref,
@@ -44,6 +45,7 @@ export default function AnatomyProduct() {
   const legacy = new URLSearchParams(location.hash.slice(1)).has('atlas') || new URLSearchParams(location.search).has('landmarks');
   if (path === '/anatomy' && legacy) return <HumanAnatomy back={{ path: '/anatomy', label: 'Anatomi' }} />;
   if (path === '/anatomy/explore') return <AnatomyDataProvider><Explore /></AnatomyDataProvider>;
+  if (path === '/anatomy/live') return <LiveLab />;
   return (
     <AnatomyDataProvider>
       <LibraryShell>
@@ -78,6 +80,7 @@ function LibraryShell({ children }) {
           <NavLink to="/anatomy/library">Pustaka</NavLink>
           <NavLink to="/anatomy/study">Kuis</NavLink>
           <Link to="/anatomy/explore" className="anatomy-nav-3d">Atlas 3D <Box size={14} /></Link>
+          <Link to="/anatomy/live" className="anatomy-nav-3d">Live 4D Lab</Link>
         </nav>
         <Link className="anatomy-back" to="/beranda">← Beranda</Link>
       </header>
@@ -237,6 +240,7 @@ function LandingContent() {
           <div className="anatomy-hero-actions">
             <Link className="btn-primary" to="/anatomy/explore"><Box size={17} /> Buka Atlas 3D <ArrowRight size={16} /></Link>
             <Link className="btn-secondary" to="/anatomy/study"><Target size={17} /> Mulai kuis interaktif</Link>
+            <Link className="btn-secondary" to="/anatomy/live">Live 4D Lab · USG &amp; CT</Link>
           </div>
           <div className="anatomy-hero-stats">
             <span><strong>{count(registry.rows.length)}</strong>struktur</span>

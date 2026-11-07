@@ -25,6 +25,7 @@ apps/pocketbase/
   test/            tes format impor dan tes API per peran
   scripts/         unduh PocketBase, data contoh pengembangan
 deploy/            Caddyfile, systemd, skrip pasang/update/backup
+apps/4d-lab/       Anatomy Live 4D Lab (simulator CT/USG edukatif, /anatomy/live) — lihat apps/4d-lab/README.md
 tools/             alat bantu: lab-ingest (dataset Lab), materi-import (dokumen catatan -> catatan materi per BAB)
 docs/              panduan dan kontrak (lihat daftar di bawah)
 ```

@@ -259,6 +259,34 @@ def reconstruct_all(ct, labels, affine, out, meta, skin_faces=70000, source_name
     return meta
 
 
+def reconstruct_ct(ct, affine, out, labels=None, mask=None, threshold=-350, skin_faces=60000, source_name='local CT'):
+    """Real-CT route (e.g. CTACardio): automatic or corrected body mask -> skin.glb (+ organs.glb from a label map)."""
+    out = Path(out); out.mkdir(parents=True, exist_ok=True)
+    comps = None
+    if mask is not None:
+        if mask.shape != ct.shape:
+            raise ValueError('mask shape differs from CT')
+        body = mask > 0
+    else:
+        body, comps = body_mask_from_ct(ct, threshold)
+    pts, tris, bad = surface_from_mask(body, affine, skin_faces)
+    info = [{'file': 'skin.glb', 'sha256': write_glb(out / 'skin.glb', [('skin', pts, tris, {'labels': 'body', 'system': 'integument'})]), 'meshes': ['skin']}]
+    if labels is not None:
+        if labels.shape != ct.shape:
+            raise ValueError('label map shape differs from CT')
+        organs = []
+        for lab in [int(v) for v in np.unique(labels) if v]:
+            p, f, _ = surface_from_mask(labels == lab, affine, 4000)
+            organs.append((f'label_{lab}', p, f, {'labels': [lab]}))
+        info.append({'file': 'organs.glb', 'sha256': write_glb(out / 'organs.glb', organs), 'meshes': [o[0] for o in organs]})
+    qc = {'reviewRequired': True, 'validatedAnatomy': False, 'synthetic': False, 'thresholdHU': threshold,
+          'correctedMask': mask is not None, 'initialComponents': comps, 'skinTriangles': int(len(tris)),
+          'skinBoundaryOrNonManifoldEdges': bad, 'touchesAcquisitionFaces': touched_faces(body)}
+    reg = registration(ct, affine, out, info, pts, qc, source_name, False)
+    (out / 'qc.json').write_text(json.dumps(qc, indent=1))
+    return reg, body
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('ct'); ap.add_argument('outdir')
@@ -268,30 +296,16 @@ def main():
     ap.add_argument('--skin-faces', type=int, default=60000)
     args = ap.parse_args()
     ct, affine = read_nrrd(args.ct)
-    out = Path(args.outdir); out.mkdir(parents=True, exist_ok=True)
+    mask = labels = None
     if args.mask:
         mask, ma = read_nrrd(args.mask)
         if not np.allclose(ma, affine, atol=1e-3):
             raise SystemExit('mask affine differs from CT')
-        body = mask > 0; comps = None
-    else:
-        body, comps = body_mask_from_ct(ct, args.threshold)
-    pts, tris, bad = surface_from_mask(body, affine, args.skin_faces)
-    skin_sha = write_glb(out / 'skin.glb', [('skin', pts, tris, {'labels': 'body', 'system': 'integument'})])
-    info = [{'file': 'skin.glb', 'sha256': skin_sha, 'meshes': ['skin']}]
     if args.labels:
         labels, la = read_nrrd(args.labels)
-        if not np.allclose(la, affine, atol=1e-3) or labels.shape != ct.shape:
+        if not np.allclose(la, affine, atol=1e-3):
             raise SystemExit('label map geometry differs from CT')
-        organs = []
-        for lab in [int(v) for v in np.unique(labels) if v]:
-            p, f, _ = surface_from_mask(labels == lab, affine, 4000)
-            organs.append((f'label_{lab}', p, f, {'labels': [lab]}))
-        info.append({'file': 'organs.glb', 'sha256': write_glb(out / 'organs.glb', organs), 'meshes': [o[0] for o in organs]})
-    qc = {'reviewRequired': True, 'validatedAnatomy': False, 'synthetic': False, 'thresholdHU': args.threshold,
-          'correctedMask': bool(args.mask), 'initialComponents': comps, 'skinTriangles': int(len(tris)),
-          'skinBoundaryOrNonManifoldEdges': bad, 'touchesAcquisitionFaces': touched_faces(body)}
-    reg = registration(ct, affine, out, info, pts, qc, Path(args.ct).name, False)
+    reg, _ = reconstruct_ct(ct, affine, args.outdir, labels, mask, args.threshold, args.skin_faces, Path(args.ct).name)
     print(json.dumps(reg['qc'], indent=1))
 
 

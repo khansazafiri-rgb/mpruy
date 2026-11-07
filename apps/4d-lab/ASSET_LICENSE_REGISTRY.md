@@ -9,6 +9,7 @@ Every non-code asset shipped from `apps/4d-lab` must be listed here before merge
 | Heart, breath and bowel sounds | runtime only (`src/sim/auscultation.js`) | Synthesised in code (damped oscillators, filtered noise) | MEDCOEL original work | Allowed; no recordings are used |
 | three.js | npm dependency | mrdoob/three.js | MIT | Allowed |
 | three-mesh-bvh | npm dependency | gkjohnson/three-mesh-bvh | MIT | Allowed |
+| Evidence screenshots and offline renders | `evidence/*.jpg`, `evidence/*.png` | Captured from this app / rendered from the synthetic phantom | MEDCOEL original work | Allowed |
 | v0.9 prototype + its phantom | `legacy/v0.9/` | Earlier MEDCOEL prototype supplied by the project owner | MEDCOEL original work | Allowed (synthetic only) |
 
 ## Explicitly NOT included (and must not be added without written permission)

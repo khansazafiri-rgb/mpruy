@@ -18,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import phantom_geometry as G  # noqa: E402
 from nrrd_io import write_nrrd  # noqa: E402
 
-EXTENT = {'x': (-320.0, 320.0), 'y': (-150.0, 160.0), 'z': (-480.0, 500.0)}
+EXTENT = {'x': (-320.0, 320.0), 'y': (-150.0, 160.0), 'z': (-480.0, 522.5)}
 
 
 def smin(a, b, k):

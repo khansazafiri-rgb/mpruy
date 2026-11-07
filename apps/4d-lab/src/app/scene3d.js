@@ -77,6 +77,7 @@ export class PatientScene {
     this.scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8f86, 1.1));
     const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(300, 1600, -700); this.scene.add(key);
     const fill = new THREE.DirectionalLight(0xdfe8ff, 0.6); fill.position.set(-800, 500, 900); this.scene.add(fill);
+    const under = new THREE.DirectionalLight(0xfff4ea, 0.9); under.position.set(200, -1600, -300); this.scene.add(under); // posterior views
   }
 
   _table() {
@@ -85,13 +86,15 @@ export class PatientScene {
     top.position.set(-230, -175, 0); g.add(top);
     const pad = new THREE.Mesh(new THREE.BoxGeometry(1700, 30, 600), new THREE.MeshStandardMaterial({ color: 0xcdd9d3, roughness: 0.95 }));
     pad.position.set(-230, -143, 0); g.add(pad);
+    this.tableLegs = [];
     for (const x of [-950, 500]) {
       const leg = new THREE.Mesh(new THREE.BoxGeometry(80, 560, 420), new THREE.MeshStandardMaterial({ color: 0x47524f }));
-      leg.position.set(x, -470, 0); g.add(leg);
+      leg.position.set(x, -470, 0); g.add(leg); this.tableLegs.push(leg);
     }
     const floor = new THREE.Mesh(new THREE.PlaneGeometry(5000, 5000), new THREE.MeshStandardMaterial({ color: 0xd6dbd2, roughness: 1 }));
     floor.rotation.x = -Math.PI / 2; floor.position.y = -750; g.add(floor);
     const grid = new THREE.GridHelper(5000, 50, 0xb9c2b8, 0xc8cfc6); grid.position.y = -749; g.add(grid);
+    this.floorParts = [floor, grid];
     this.table = g; this.scene.add(g);
     this.tableMaterials = [top.material, pad.material];
   }
@@ -358,9 +361,9 @@ export class PatientScene {
   setView(name, animate = true) {
     const b = this.bounds || { lo: [-200, -150, -400], hi: [200, 150, 400] };
     const T = new THREE.Vector3(...[0, 1, 2].map((i) => (b.lo[i] + b.hi[i]) / 2)).applyMatrix4(LPS_TO_SCENE);
-    T.set(T.x - 40, 0, T.z);
+    T.set(T.x + 60, 0, T.z);
     const views = {
-      examiner: [-420, 1150, -1480], anterior: [0, 2300, -80], posterior: [0, -2100, -100], right: [0, 160, -2250],
+      examiner: [-380, 1250, -1650], anterior: [0, 2300, -80], posterior: [0, -2100, -100], right: [0, 160, -2250],
       left: [0, 160, 2250], head: [2200, 380, 0], feet: [-2400, 380, 0],
     };
     const off = views[name] || views.examiner;
@@ -386,7 +389,12 @@ export class PatientScene {
     if (this._anim) this._anim(now);
     this.controls.update();
     const below = this.camera.position.y < -150;
-    for (const m of this.tableMaterials) { m.transparent = below; m.opacity = below ? 0.15 : 1; }
+    if (below !== this._below) { // posterior view looks up through a see-through table
+      this._below = below;
+      for (const m of this.tableMaterials) { m.transparent = below; m.opacity = below ? 0.12 : 1; m.depthWrite = !below; m.needsUpdate = true; }
+      for (const f of this.floorParts) f.visible = !below;
+      for (const l of this.tableLegs) l.visible = !below;
+    }
     this._updateLabels();
     this.renderer.render(this.scene, this.camera);
   }

@@ -546,7 +546,7 @@ function rebuildFreeSteps() {
   box.innerHTML = '';
   const mm = S.precision.mm, deg = S.precision.deg;
   const names = [['L', 'Kiri(+) / Kanan(−)'], ['P', 'Posterior(+) / Anterior(−)'], ['S', 'Superior(+) / Inferior(−)']];
-  names.forEach(([ax, t], i) => box.append(numberControl({ id: 'free' + ax, testid: 'free-pos-' + ax, label: `${ax}: ${t}`, min: -600, max: 600, step: mm, unit: 'mm', steps: [-10 * mm, -mm, mm, 10 * mm], get: () => S.free.position[i], set: (v) => { S.free.position[i] = v; } })));
+  names.forEach(([ax, t], i) => box.append(numberControl({ id: 'free' + ax, testid: 'free-pos-' + ax, label: `${ax}: ${t}`, min: -1500, max: 1500, step: mm, unit: 'mm', steps: [-10 * mm, -mm, mm, 10 * mm], get: () => S.free.position[i], set: (v) => { S.free.position[i] = v; } })));
   const ang = (k) => freeAngles(S.free.q)[k];
   const setAng = (k, v) => { const a = freeAngles(S.free.q); a[k] = v; S.free.q = freeQuat(a); };
   [['pitch', 'Pitch (sumbu L–R)'], ['yaw', 'Yaw (sumbu S–I)'], ['roll', 'Roll (sumbu A–P)']].forEach(([k, t]) => box.append(numberControl({ id: 'free' + k, testid: 'free-ang-' + k, label: t, min: -180, max: 180, step: deg, unit: '°', steps: [-5 * deg, -deg, deg, 5 * deg], get: () => ang(k), set: (v) => setAng(k, v) })));
