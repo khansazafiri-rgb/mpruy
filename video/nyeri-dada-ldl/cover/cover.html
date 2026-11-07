@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover Nyeri dada dan LDL</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#root{width:1080px;height:1920px;position:relative;overflow:hidden}#root svg{position:absolute;left:0;top:0}</style></head>
+<body><div id="root"><svg id="sc" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script type="module">
+// Cover khusus (bukan bingkai pertama video): judul + Raka menekan dada + penampang arteri (plak, LDL) dalam lensa. Judul di area aman TikTok/Reels
+// (atas >= 250 px, bawah <= 1440 px, kanan <= 930 px). ?guide menggambar garis area aman; ?crop=3x4 menandai potongan profil.
+import { f1, MC, FONT, lerp } from '../stage/core.js';
+import * as A from '../stage/art.js';
+import { bg } from '../stage/bg.js';
+import { raka, rakaBody, solveArm, rIdle } from '../stage/raka.js';
+import { vesselWorld, ldl } from '../stage/vessel.js';
+const q = new URLSearchParams(location.search);
+await document.fonts.load('800 80px "Plus Jakarta Sans"'); await document.fonts.ready;
+let s = A.defs() + bg(2.0, { cy: 940 });
+// lensa arteri (kanan-bawah judul)
+const cx = 660, cy = 1138, R = 292, S = 0.7, cam = { cx: 40, cy: -10, S };
+s += `<circle cx="${cx + 10}" cy="${cy + 16}" r="${R + 16}" fill="#021014" opacity=".35"/><circle cx="${cx}" cy="${cy}" r="${R + 16}" fill="${MC.ivory}" stroke="${MC.ink}" stroke-width="6"/><clipPath id="clipL"><circle cx="${cx}" cy="${cy}" r="${R}"/></clipPath>`;
+s += `<g clip-path="url(#clipL)"><g transform="translate(${f1(cx - cam.cx * S)} ${f1(cy - cam.cy * S)}) scale(${S})">${vesselWorld(14.2, { ...cam, S: 1.2 })}</g></g>`;
+s += `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${MC.gold}" stroke-width="5" opacity=".9"/>`;
+// Raka (kiri-bawah) menekan dada, berkeringat
+let st = raka('khawatir', 'netral', { yaw: 0.3, gazeX: 0.4, lean: 7, sweat: 1, slump: 14 });
+st.armR = solveArm(st, 'R', [222, 442], { finger: 0, front: 1, len: 168 }); st = rIdle(st, 2.0);
+const k = 0.7, rx = 240, ry = 1450;
+s += `<ellipse cx="${rx}" cy="${ry + 6}" rx="170" ry="16" fill="#021014" opacity=".3"/><g transform="translate(${f1(rx - 200 * k)} ${f1(ry - 778 * k)}) scale(${k})">${rakaBody(st, 'rkc', { dark: true })}</g>`;
+// tanda nyeri di sekitar dada
+const chx = rx + 22 * k, chy = ry - 336 * k;
+s += `<g stroke="#FF6A5A" stroke-width="9" stroke-linecap="round"><path d="M${chx - 70} ${chy - 36}l-30 -22M${chx - 84} ${chy + 4}l-36 -2M${chx - 70} ${chy + 44}l-30 22"/></g>`;
+// judul (area aman)
+const T = (y, txt, fill = MC.ivory, fs = 112) => `<text x="72" y="${y}" font-family="${FONT}" font-weight="800" font-size="${fs}" fill="${fill}" stroke="#061C24" stroke-width="14" paint-order="stroke" stroke-linejoin="round">${txt}</text>`;
+s += T(472, 'NYERI DADA') + T(582, 'MENDADAK.', MC.gold) + T(698, 'ADA HUBUNGANNYA', MC.ivory, 80) + T(806, 'DENGAN LDL?', MC.gold, 112);
+s += `<rect x="72" y="832" width="150" height="10" rx="5" fill="${MC.gold}"/>`;
+// pil logo
+s += `<rect x="72" y="276" width="312" height="76" rx="38" fill="${MC.ivory}" stroke="${MC.ink}" stroke-width="3"/><image href="../stage/logo-full.webp" x="94" y="289" height="50" preserveAspectRatio="xMinYMid meet"/>`;
+if (q.has('guide')) {
+  s += `<g fill="#FF0066" opacity=".16"><rect x="0" y="0" width="1080" height="250"/><rect x="0" y="1440" width="1080" height="480"/><rect x="940" y="250" width="140" height="1190"/></g><g stroke="#FF0066" stroke-width="4" stroke-dasharray="14 10" fill="none"><rect x="0" y="250" width="940" height="1190"/></g>`;
+  s += `<text x="20" y="1500" font-family="${FONT}" font-weight="800" font-size="34" fill="#FF0066">area UI TikTok/Reels (bawah)</text><text x="20" y="60" font-family="${FONT}" font-weight="800" font-size="34" fill="#FF0066">atas</text>`;
+}
+if (q.get('crop') === '3x4') { s += `<g fill="#000" opacity=".55"><rect x="0" y="0" width="1080" height="${(1920 - 1440) / 2}"/><rect x="0" y="${1920 - (1920 - 1440) / 2}" width="1080" height="${(1920 - 1440) / 2}"/></g>`; }
+document.getElementById('sc').innerHTML = s; window.__ready = true;
+</script></body></html>
