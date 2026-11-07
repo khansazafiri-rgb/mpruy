@@ -51,7 +51,7 @@ export function chipsVessel(t, c) {
     [31.8, 33.4, 'Plak mulai terbentuk', P(H0 + 40, 0)[0], P(H0 + 40, 0)[1], 540, 1560],
     [33.3, 35.5, 'Bertahun-tahun', 0, 0, 540, 392, { noLine: true, fs: 44, bg: MC.gold }],
     [37.0, 38.9, 'Lumen menyempit', P(0, 0)[0], P(0, 0)[1], 330, 520],
-    [38.1, 40.0, 'Aliran ke otot jantung\nberkurang', 540, 1480, 540, 1280],
+    [38.1, 40.0, 'Aliran ke otot jantung\nberkurang', 540, 1470, 540, 1215],
     [35.4, 36.8, 'Tanpa gejala', 245, 1320, 700, 1230],
     [40.3, 42.2, 'Kejadian akut: menit sampai jam', 0, 0, 540, 392, { noLine: true, fs: 40, bg: '#FFB3A8' }],
     [40.6, 42.2, 'Tudung plak pecah', P(H0 - 200, -60)[0], P(H0 - 200, -60)[1], 780, 1500],

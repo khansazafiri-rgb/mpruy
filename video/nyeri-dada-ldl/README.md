@@ -7,7 +7,7 @@ Narasi: `audio/narator.wav` (rekaman Gemini TTS dari pemesan, 72,24 dtk; **tidak
 ## Hasil
 | Berkas | Isi |
 |---|---|
-| `medcoel-nyeri-dada-ldl.mp4` | Video jadi (H.264 + AAC, sekitar -14 LUFS) |
+| `medcoel-nyeri-dada-ldl.mp4` | Video jadi (H.264 + AAC; terukur sekitar -16,7 LUFS terintegrasi, puncak -1,3 dBFS) |
 | `cover/cover.png` | Cover 1080 x 1920 khusus (bukan bingkai pertama): judul "NYERI DADA MENDADAK. ADA HUBUNGANNYA DENGAN LDL?", Raka menekan dada, penampang arteri dengan plak dan bekuan |
 | `cover/cover-panduan-area-aman.png` | Cover dengan garis area aman TikTok/Reels (atas 250 px, bawah 480 px, kanan 140 px) |
 | `cover/cover-profil-3x4.png` | Cover dengan potongan 3:4 (kisi profil) ditandai |
