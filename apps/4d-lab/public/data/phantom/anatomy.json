@@ -47,7 +47,7 @@
     214,
     120
    ],
-   "volumeMl": 14956.1
+   "volumeMl": 14954.7
   },
   {
    "id": 3,
@@ -122,7 +122,7 @@
     150,
     170
    ],
-   "volumeMl": 2647.1
+   "volumeMl": 2679.0
   },
   {
    "id": 8,
@@ -137,7 +137,7 @@
     160,
     180
    ],
-   "volumeMl": 2501.3
+   "volumeMl": 2531.4
   },
   {
    "id": 9,
@@ -272,7 +272,7 @@
     60,
     45
    ],
-   "volumeMl": 1775.2
+   "volumeMl": 1742.0
   },
   {
    "id": 18,
@@ -302,7 +302,7 @@
     50,
     90
    ],
-   "volumeMl": 106.0
+   "volumeMl": 102.9
   },
   {
    "id": 20,
@@ -347,7 +347,7 @@
     130,
     120
    ],
-   "volumeMl": 174.3
+   "volumeMl": 172.2
   },
   {
    "id": 23,
@@ -362,7 +362,7 @@
     170,
     200
    ],
-   "volumeMl": 590.8
+   "volumeMl": 570.5
   },
   {
    "id": 24,
@@ -482,7 +482,7 @@
     90,
     80
    ],
-   "volumeMl": 152.1
+   "volumeMl": 150.3
   },
   {
    "id": 32,
@@ -1225,7 +1225,7 @@
    "name": "Right lateral base (mid-axillary line)",
    "nameId": "Basal paru kanan lateral (LMA)",
    "x": -1,
-   "z": -10,
+   "z": 22,
    "approach": "right",
    "focus": "lung"
   },
@@ -1234,7 +1234,7 @@
    "name": "Left lateral base (mid-axillary line)",
    "nameId": "Basal paru kiri lateral (LMA)",
    "x": 1,
-   "z": -25,
+   "z": 12,
    "approach": "left",
    "focus": "lung"
   },
@@ -1243,7 +1243,7 @@
    "name": "Right posterior base",
    "nameId": "Basal paru kanan belakang",
    "x": -70,
-   "z": -20,
+   "z": 0,
    "approach": "posterior",
    "focus": "lung"
   },
@@ -1252,7 +1252,7 @@
    "name": "Left posterior base",
    "nameId": "Basal paru kiri belakang",
    "x": 70,
-   "z": -35,
+   "z": -10,
    "approach": "posterior",
    "focus": "lung"
   },
@@ -1427,14 +1427,14 @@
    "focus": "lung",
    "approach": "right",
    "point": [
-    -155.0,
+    -160.0,
     0.0,
-    -10.0
+    22.0
    ],
    "normal": [
-    -0.9997,
-    0.0009,
-    -0.0241
+    -0.9663,
+    0.0147,
+    -0.257
    ],
    "intercostalShiftMM": 0.0
   },
@@ -1445,16 +1445,16 @@
    "focus": "lung",
    "approach": "left",
    "point": [
-    152.5,
+    157.5,
     0.0,
-    -25.0
+    16.0
    ],
    "normal": [
-    0.9979,
-    0.0007,
-    -0.065
+    0.998,
+    0.0017,
+    -0.0629
    ],
-   "intercostalShiftMM": 0.0
+   "intercostalShiftMM": 4.0
   },
   {
    "key": "lung_post_r",
@@ -1465,14 +1465,14 @@
    "point": [
     -70.0,
     92.5,
-    -16.0
+    -2.0
    ],
    "normal": [
-    -0.2318,
-    0.9614,
-    -0.1483
+    -0.1532,
+    0.9844,
+    -0.0869
    ],
-   "intercostalShiftMM": 4.0
+   "intercostalShiftMM": -2.0
   },
   {
    "key": "lung_post_l",
@@ -1482,13 +1482,13 @@
    "approach": "posterior",
    "point": [
     70.0,
-    90.0,
-    -35.0
+    92.5,
+    -10.0
    ],
    "normal": [
-    0.2317,
-    0.9661,
-    -0.114
+    0.1955,
+    0.9749,
+    -0.1067
    ],
    "intercostalShiftMM": 0.0
   },

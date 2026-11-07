@@ -101,7 +101,7 @@ export function diaphragmZ(x, y) {
   const zr = 22 - 62 * ((x + 62) / 100) ** 2 - 40 * ((y - 5) / 105) ** 2;
   const zl = 2 - 62 * ((x - 62) / 100) ** 2 - 40 * ((y - 5) / 105) ** 2;
   const zc = -2 - 30 * (x / 70) ** 2 - 30 * ((y + 10) / 90) ** 2;
-  return Math.max(Math.max(zr, zl, zc), -95) - 18 * clamp(y / 110, 0, 1);
+  return Math.max(Math.max(zr, zl, zc), -95) - 38 * clamp(y / 110, 0, 1);
 }
 
 // ------------------------------------------------------------------ the field

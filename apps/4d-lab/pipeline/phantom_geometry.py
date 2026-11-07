@@ -104,7 +104,7 @@ def diaphragm_z(x, y):
     zc = -2 - 30 * (x / 70) ** 2 - 30 * ((y + 10) / 90) ** 2
     z = np.maximum(np.maximum(zr, zl), zc)
     # posterior costophrenic recesses lie lower than anterior ones
-    return np.maximum(z, -95 + 0 * x) - 18 * np.clip(y / 110, 0, 1)
+    return np.maximum(z, -95 + 0 * x) - 38 * np.clip(y / 110, 0, 1)
 
 
 # ---------------------------------------------------------------- heart model
@@ -163,10 +163,10 @@ AUSCULTATION = [
     ('mitral', 'Mitral area / apex (5th left ICS, MCL)', 'Area mitral / apeks (SIC V kiri, LMC)', 86, 40, 'anterior', 'heart'),
     ('lung_ant_r', 'Right anterior upper lung field', 'Lapang paru kanan atas depan', -62, 150, 'anterior', 'lung'),
     ('lung_ant_l', 'Left anterior upper lung field', 'Lapang paru kiri atas depan', 62, 150, 'anterior', 'lung'),
-    ('lung_lat_r', 'Right lateral base (mid-axillary line)', 'Basal paru kanan lateral (LMA)', -1, -10, 'right', 'lung'),
-    ('lung_lat_l', 'Left lateral base (mid-axillary line)', 'Basal paru kiri lateral (LMA)', 1, -25, 'left', 'lung'),
-    ('lung_post_r', 'Right posterior base', 'Basal paru kanan belakang', -70, -20, 'posterior', 'lung'),
-    ('lung_post_l', 'Left posterior base', 'Basal paru kiri belakang', 70, -35, 'posterior', 'lung'),
+    ('lung_lat_r', 'Right lateral base (mid-axillary line)', 'Basal paru kanan lateral (LMA)', -1, 22, 'right', 'lung'),
+    ('lung_lat_l', 'Left lateral base (mid-axillary line)', 'Basal paru kiri lateral (LMA)', 1, 12, 'left', 'lung'),
+    ('lung_post_r', 'Right posterior base', 'Basal paru kanan belakang', -70, 0, 'posterior', 'lung'),
+    ('lung_post_l', 'Left posterior base', 'Basal paru kiri belakang', 70, -10, 'posterior', 'lung'),
     ('abd_ruq', 'Right upper quadrant', 'Kuadran kanan atas', -70, -75, 'anterior', 'bowel'),
     ('abd_luq', 'Left upper quadrant', 'Kuadran kiri atas', 70, -75, 'anterior', 'bowel'),
     ('abd_rlq', 'Right lower quadrant', 'Kuadran kanan bawah', -70, -225, 'anterior', 'bowel'),
