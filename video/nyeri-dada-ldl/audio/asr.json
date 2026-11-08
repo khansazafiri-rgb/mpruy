@@ -1,0 +1,932 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 4.42,
+   "text": "Raka sedang naik tangga, dadanya tiba-tiba terasa seperti tertindih.",
+   "words": [
+    {
+     "w": "Raka",
+     "s": 0.0,
+     "e": 0.52
+    },
+    {
+     "w": "sedang",
+     "s": 0.52,
+     "e": 0.78
+    },
+    {
+     "w": "naik",
+     "s": 0.78,
+     "e": 0.94
+    },
+    {
+     "w": "tangga,",
+     "s": 0.94,
+     "e": 1.36
+    },
+    {
+     "w": "dadanya",
+     "s": 1.9,
+     "e": 2.34
+    },
+    {
+     "w": "tiba",
+     "s": 2.34,
+     "e": 2.7
+    },
+    {
+     "w": "-tiba",
+     "s": 2.7,
+     "e": 3.0
+    },
+    {
+     "w": "terasa",
+     "s": 3.0,
+     "e": 3.4
+    },
+    {
+     "w": "seperti",
+     "s": 3.4,
+     "e": 3.64
+    },
+    {
+     "w": "tertindih.",
+     "s": 3.64,
+     "e": 4.42
+    }
+   ]
+  },
+  {
+   "start": 4.9,
+   "end": 7.58,
+   "text": "Keringat tinggin muncul, lalu ia jatuh terduduk.",
+   "words": [
+    {
+     "w": "Keringat",
+     "s": 4.9,
+     "e": 5.32
+    },
+    {
+     "w": "tinggin",
+     "s": 5.32,
+     "e": 5.56
+    },
+    {
+     "w": "muncul,",
+     "s": 5.56,
+     "e": 5.86
+    },
+    {
+     "w": "lalu",
+     "s": 6.3,
+     "e": 6.7
+    },
+    {
+     "w": "ia",
+     "s": 6.7,
+     "e": 6.8
+    },
+    {
+     "w": "jatuh",
+     "s": 6.8,
+     "e": 7.06
+    },
+    {
+     "w": "terduduk.",
+     "s": 7.06,
+     "e": 7.58
+    }
+   ]
+  },
+  {
+   "start": 8.12,
+   "end": 10.62,
+   "text": "Ini bisa menjadi tanda serangan jantung.",
+   "words": [
+    {
+     "w": "Ini",
+     "s": 8.12,
+     "e": 8.74
+    },
+    {
+     "w": "bisa",
+     "s": 8.74,
+     "e": 9.06
+    },
+    {
+     "w": "menjadi",
+     "s": 9.06,
+     "e": 9.38
+    },
+    {
+     "w": "tanda",
+     "s": 9.38,
+     "e": 9.72
+    },
+    {
+     "w": "serangan",
+     "s": 9.72,
+     "e": 10.12
+    },
+    {
+     "w": "jantung.",
+     "s": 10.12,
+     "e": 10.62
+    }
+   ]
+  },
+  {
+   "start": 10.98,
+   "end": 16.06,
+   "text": "Dan kolesterol LDL yang terlalu tinggi adalah salah satu faktor yang dapat membangun plak penyebabnya.",
+   "words": [
+    {
+     "w": "Dan",
+     "s": 10.98,
+     "e": 11.22
+    },
+    {
+     "w": "kolesterol",
+     "s": 11.22,
+     "e": 11.58
+    },
+    {
+     "w": "LDL",
+     "s": 11.58,
+     "e": 12.24
+    },
+    {
+     "w": "yang",
+     "s": 12.24,
+     "e": 12.38
+    },
+    {
+     "w": "terlalu",
+     "s": 12.38,
+     "e": 12.68
+    },
+    {
+     "w": "tinggi",
+     "s": 12.68,
+     "e": 13.06
+    },
+    {
+     "w": "adalah",
+     "s": 13.06,
+     "e": 13.4
+    },
+    {
+     "w": "salah",
+     "s": 13.4,
+     "e": 13.62
+    },
+    {
+     "w": "satu",
+     "s": 13.62,
+     "e": 13.92
+    },
+    {
+     "w": "faktor",
+     "s": 13.92,
+     "e": 14.32
+    },
+    {
+     "w": "yang",
+     "s": 14.32,
+     "e": 14.5
+    },
+    {
+     "w": "dapat",
+     "s": 14.5,
+     "e": 14.74
+    },
+    {
+     "w": "membangun",
+     "s": 14.74,
+     "e": 15.18
+    },
+    {
+     "w": "plak",
+     "s": 15.18,
+     "e": 15.5
+    },
+    {
+     "w": "penyebabnya.",
+     "s": 15.5,
+     "e": 16.06
+    }
+   ]
+  },
+  {
+   "start": 17.080000000000002,
+   "end": 20.28,
+   "text": "Tapi bagaimana angka kolesterol dihasil lab bisa berakhir seperti ini?",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 17.080000000000002,
+     "e": 17.8
+    },
+    {
+     "w": "bagaimana",
+     "s": 17.8,
+     "e": 18.18
+    },
+    {
+     "w": "angka",
+     "s": 18.18,
+     "e": 18.38
+    },
+    {
+     "w": "kolesterol",
+     "s": 18.38,
+     "e": 18.76
+    },
+    {
+     "w": "dihasil",
+     "s": 18.76,
+     "e": 19.2
+    },
+    {
+     "w": "lab",
+     "s": 19.2,
+     "e": 19.34
+    },
+    {
+     "w": "bisa",
+     "s": 19.34,
+     "e": 19.52
+    },
+    {
+     "w": "berakhir",
+     "s": 19.52,
+     "e": 19.82
+    },
+    {
+     "w": "seperti",
+     "s": 19.82,
+     "e": 19.98
+    },
+    {
+     "w": "ini?",
+     "s": 19.98,
+     "e": 20.28
+    }
+   ]
+  },
+  {
+   "start": 21.18,
+   "end": 23.18,
+   "text": "Kolesterol sebenarnya dibutuhkan tubuh.",
+   "words": [
+    {
+     "w": "Kolesterol",
+     "s": 21.18,
+     "e": 21.9
+    },
+    {
+     "w": "sebenarnya",
+     "s": 21.9,
+     "e": 22.4
+    },
+    {
+     "w": "dibutuhkan",
+     "s": 22.4,
+     "e": 22.84
+    },
+    {
+     "w": "tubuh.",
+     "s": 22.84,
+     "e": 23.18
+    }
+   ]
+  },
+  {
+   "start": 23.84,
+   "end": 27.6,
+   "text": "Masalah muncul ketika partikel LDL masuk dan tertahan di dining artery.",
+   "words": [
+    {
+     "w": "Masalah",
+     "s": 23.84,
+     "e": 24.2
+    },
+    {
+     "w": "muncul",
+     "s": 24.2,
+     "e": 24.56
+    },
+    {
+     "w": "ketika",
+     "s": 24.56,
+     "e": 24.9
+    },
+    {
+     "w": "partikel",
+     "s": 24.9,
+     "e": 25.32
+    },
+    {
+     "w": "LDL",
+     "s": 25.32,
+     "e": 25.88
+    },
+    {
+     "w": "masuk",
+     "s": 25.88,
+     "e": 26.24
+    },
+    {
+     "w": "dan",
+     "s": 26.24,
+     "e": 26.5
+    },
+    {
+     "w": "tertahan",
+     "s": 26.5,
+     "e": 26.98
+    },
+    {
+     "w": "di",
+     "s": 26.98,
+     "e": 27.12
+    },
+    {
+     "w": "dining",
+     "s": 27.12,
+     "e": 27.34
+    },
+    {
+     "w": "artery.",
+     "s": 27.34,
+     "e": 27.6
+    }
+   ]
+  },
+  {
+   "start": 27.6,
+   "end": 32.3,
+   "text": "Sel imun merespons, peradangan berlangsung, lalu terbentuk pelak.",
+   "words": [
+    {
+     "w": "Sel",
+     "s": 27.6,
+     "e": 28.84
+    },
+    {
+     "w": "imun",
+     "s": 28.84,
+     "e": 29.14
+    },
+    {
+     "w": "merespons,",
+     "s": 29.14,
+     "e": 29.66
+    },
+    {
+     "w": "peradangan",
+     "s": 30.1,
+     "e": 30.48
+    },
+    {
+     "w": "berlangsung,",
+     "s": 30.48,
+     "e": 31.04
+    },
+    {
+     "w": "lalu",
+     "s": 31.4,
+     "e": 31.66
+    },
+    {
+     "w": "terbentuk",
+     "s": 31.66,
+     "e": 32.04
+    },
+    {
+     "w": "pelak.",
+     "s": 32.04,
+     "e": 32.3
+    }
+   ]
+  },
+  {
+   "start": 33.08,
+   "end": 36.18,
+   "text": "Proses ini bisa berjalan bertahun-tahun tanpa gejala.",
+   "words": [
+    {
+     "w": "Proses",
+     "s": 33.08,
+     "e": 33.76
+    },
+    {
+     "w": "ini",
+     "s": 33.76,
+     "e": 34.06
+    },
+    {
+     "w": "bisa",
+     "s": 34.06,
+     "e": 34.3
+    },
+    {
+     "w": "berjalan",
+     "s": 34.3,
+     "e": 34.64
+    },
+    {
+     "w": "bertahun",
+     "s": 34.64,
+     "e": 35.14
+    },
+    {
+     "w": "-tahun",
+     "s": 35.14,
+     "e": 35.52
+    },
+    {
+     "w": "tanpa",
+     "s": 35.52,
+     "e": 35.8
+    },
+    {
+     "w": "gejala.",
+     "s": 35.8,
+     "e": 36.18
+    }
+   ]
+  },
+  {
+   "start": 36.9,
+   "end": 39.54,
+   "text": "Pelak dapat mempersemkit aliran darah kotot jantung.",
+   "words": [
+    {
+     "w": "Pelak",
+     "s": 36.9,
+     "e": 37.38
+    },
+    {
+     "w": "dapat",
+     "s": 37.38,
+     "e": 37.56
+    },
+    {
+     "w": "mempersemkit",
+     "s": 37.56,
+     "e": 38.08
+    },
+    {
+     "w": "aliran",
+     "s": 38.08,
+     "e": 38.4
+    },
+    {
+     "w": "darah",
+     "s": 38.4,
+     "e": 38.8
+    },
+    {
+     "w": "kotot",
+     "s": 38.8,
+     "e": 39.14
+    },
+    {
+     "w": "jantung.",
+     "s": 39.14,
+     "e": 39.54
+    }
+   ]
+  },
+  {
+   "start": 40.16,
+   "end": 43.82,
+   "text": "Jika permukanya pecah, bekuan darah bisa terbentuk dan menutup pembuluh.",
+   "words": [
+    {
+     "w": "Jika",
+     "s": 40.16,
+     "e": 40.48
+    },
+    {
+     "w": "permukanya",
+     "s": 40.48,
+     "e": 40.88
+    },
+    {
+     "w": "pecah,",
+     "s": 40.88,
+     "e": 41.44
+    },
+    {
+     "w": "bekuan",
+     "s": 41.64,
+     "e": 41.92
+    },
+    {
+     "w": "darah",
+     "s": 41.92,
+     "e": 42.16
+    },
+    {
+     "w": "bisa",
+     "s": 42.16,
+     "e": 42.3
+    },
+    {
+     "w": "terbentuk",
+     "s": 42.3,
+     "e": 42.78
+    },
+    {
+     "w": "dan",
+     "s": 42.78,
+     "e": 42.94
+    },
+    {
+     "w": "menutup",
+     "s": 42.94,
+     "e": 43.38
+    },
+    {
+     "w": "pembuluh.",
+     "s": 43.38,
+     "e": 43.82
+    }
+   ]
+  },
+  {
+   "start": 44.46,
+   "end": 47.0,
+   "text": "Itulah mengapa nyari dada yang terasa menekan,",
+   "words": [
+    {
+     "w": "Itulah",
+     "s": 44.46,
+     "e": 45.18
+    },
+    {
+     "w": "mengapa",
+     "s": 45.18,
+     "e": 45.52
+    },
+    {
+     "w": "nyari",
+     "s": 45.52,
+     "e": 45.7
+    },
+    {
+     "w": "dada",
+     "s": 45.7,
+     "e": 46.02
+    },
+    {
+     "w": "yang",
+     "s": 46.02,
+     "e": 46.22
+    },
+    {
+     "w": "terasa",
+     "s": 46.22,
+     "e": 46.46
+    },
+    {
+     "w": "menekan,",
+     "s": 46.46,
+     "e": 47.0
+    }
+   ]
+  },
+  {
+   "start": 47.22,
+   "end": 49.14,
+   "text": "apalagi disertai keringat dingin atau sesak,",
+   "words": [
+    {
+     "w": "apalagi",
+     "s": 47.22,
+     "e": 47.52
+    },
+    {
+     "w": "disertai",
+     "s": 47.52,
+     "e": 47.92
+    },
+    {
+     "w": "keringat",
+     "s": 47.92,
+     "e": 48.24
+    },
+    {
+     "w": "dingin",
+     "s": 48.24,
+     "e": 48.56
+    },
+    {
+     "w": "atau",
+     "s": 48.56,
+     "e": 48.74
+    },
+    {
+     "w": "sesak,",
+     "s": 48.74,
+     "e": 49.14
+    }
+   ]
+  },
+  {
+   "start": 49.52,
+   "end": 51.04,
+   "text": "perlu segera diperiksa di IGD.",
+   "words": [
+    {
+     "w": "perlu",
+     "s": 49.52,
+     "e": 49.76
+    },
+    {
+     "w": "segera",
+     "s": 49.76,
+     "e": 50.1
+    },
+    {
+     "w": "diperiksa",
+     "s": 50.1,
+     "e": 50.52
+    },
+    {
+     "w": "di",
+     "s": 50.52,
+     "e": 50.66
+    },
+    {
+     "w": "IGD.",
+     "s": 50.66,
+     "e": 51.04
+    }
+   ]
+  },
+  {
+   "start": 51.66,
+   "end": 54.52,
+   "text": "Jangan menunggu hasil tes kolesterol untuk mencari pertolongan.",
+   "words": [
+    {
+     "w": "Jangan",
+     "s": 51.66,
+     "e": 52.12
+    },
+    {
+     "w": "menunggu",
+     "s": 52.12,
+     "e": 52.52
+    },
+    {
+     "w": "hasil",
+     "s": 52.52,
+     "e": 52.8
+    },
+    {
+     "w": "tes",
+     "s": 52.8,
+     "e": 52.94
+    },
+    {
+     "w": "kolesterol",
+     "s": 52.94,
+     "e": 53.52
+    },
+    {
+     "w": "untuk",
+     "s": 53.52,
+     "e": 53.68
+    },
+    {
+     "w": "mencari",
+     "s": 53.68,
+     "e": 53.96
+    },
+    {
+     "w": "pertolongan.",
+     "s": 53.96,
+     "e": 54.52
+    }
+   ]
+  },
+  {
+   "start": 55.24,
+   "end": 62.02,
+   "text": "Untuk menurunkan risiko ke depannya, periksa profilipid, batasi lemak jenuh, aktif bergerak, dan hindari roko.",
+   "words": [
+    {
+     "w": "Untuk",
+     "s": 55.24,
+     "e": 55.92
+    },
+    {
+     "w": "menurunkan",
+     "s": 55.92,
+     "e": 56.36
+    },
+    {
+     "w": "risiko",
+     "s": 56.36,
+     "e": 56.72
+    },
+    {
+     "w": "ke",
+     "s": 56.72,
+     "e": 56.84
+    },
+    {
+     "w": "depannya,",
+     "s": 56.84,
+     "e": 57.2
+    },
+    {
+     "w": "periksa",
+     "s": 57.54,
+     "e": 57.86
+    },
+    {
+     "w": "profilipid,",
+     "s": 57.86,
+     "e": 58.54
+    },
+    {
+     "w": "batasi",
+     "s": 58.82,
+     "e": 59.16
+    },
+    {
+     "w": "lemak",
+     "s": 59.16,
+     "e": 59.42
+    },
+    {
+     "w": "jenuh,",
+     "s": 59.42,
+     "e": 59.8
+    },
+    {
+     "w": "aktif",
+     "s": 60.06,
+     "e": 60.44
+    },
+    {
+     "w": "bergerak,",
+     "s": 60.44,
+     "e": 60.92
+    },
+    {
+     "w": "dan",
+     "s": 61.2,
+     "e": 61.28
+    },
+    {
+     "w": "hindari",
+     "s": 61.28,
+     "e": 61.68
+    },
+    {
+     "w": "roko.",
+     "s": 61.68,
+     "e": 62.02
+    }
+   ]
+  },
+  {
+   "start": 62.76,
+   "end": 65.18,
+   "text": "Dokter dapat menilai apakah kamu juga membutuhkan obat.",
+   "words": [
+    {
+     "w": "Dokter",
+     "s": 62.76,
+     "e": 63.24
+    },
+    {
+     "w": "dapat",
+     "s": 63.24,
+     "e": 63.4
+    },
+    {
+     "w": "menilai",
+     "s": 63.4,
+     "e": 63.82
+    },
+    {
+     "w": "apakah",
+     "s": 63.82,
+     "e": 64.06
+    },
+    {
+     "w": "kamu",
+     "s": 64.06,
+     "e": 64.28
+    },
+    {
+     "w": "juga",
+     "s": 64.28,
+     "e": 64.44
+    },
+    {
+     "w": "membutuhkan",
+     "s": 64.44,
+     "e": 64.9
+    },
+    {
+     "w": "obat.",
+     "s": 64.9,
+     "e": 65.18
+    }
+   ]
+  },
+  {
+   "start": 66.14,
+   "end": 68.14,
+   "text": "Kolesterol tinggi sering tidak terasa.",
+   "words": [
+    {
+     "w": "Kolesterol",
+     "s": 66.14,
+     "e": 66.68
+    },
+    {
+     "w": "tinggi",
+     "s": 66.68,
+     "e": 67.2
+    },
+    {
+     "w": "sering",
+     "s": 67.2,
+     "e": 67.54
+    },
+    {
+     "w": "tidak",
+     "s": 67.54,
+     "e": 67.72
+    },
+    {
+     "w": "terasa.",
+     "s": 67.72,
+     "e": 68.14
+    }
+   ]
+  },
+  {
+   "start": 68.78,
+   "end": 71.8,
+   "text": "Justru karena itu, kenali risikonya sebelum muncul keadaan darurat.",
+   "words": [
+    {
+     "w": "Justru",
+     "s": 68.78,
+     "e": 69.1
+    },
+    {
+     "w": "karena",
+     "s": 69.1,
+     "e": 69.3
+    },
+    {
+     "w": "itu,",
+     "s": 69.3,
+     "e": 69.54
+    },
+    {
+     "w": "kenali",
+     "s": 69.66,
+     "e": 69.94
+    },
+    {
+     "w": "risikonya",
+     "s": 69.94,
+     "e": 70.46
+    },
+    {
+     "w": "sebelum",
+     "s": 70.46,
+     "e": 70.82
+    },
+    {
+     "w": "muncul",
+     "s": 70.82,
+     "e": 71.08
+    },
+    {
+     "w": "keadaan",
+     "s": 71.08,
+     "e": 71.52
+    },
+    {
+     "w": "darurat.",
+     "s": 71.52,
+     "e": 71.8
+    }
+   ]
+  }
+ ]
+}
