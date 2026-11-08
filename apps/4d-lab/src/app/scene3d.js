@@ -371,13 +371,18 @@ export class PatientScene {
   }
 
   // ------------------------------------------------------------------ camera
+  /** Whole-body bounds (LPS) for the 'whole' preset; datasets whose body extends beyond the CT box set this. */
+  setBodyBounds(lo, hi) { this.body = { lo, hi }; }
+
   setView(name, animate = true) {
-    const b = this.bounds || { lo: [-200, -150, -400], hi: [200, 150, 400] };
+    const b = name === 'whole' && this.body ? this.body : this.bounds || { lo: [-200, -150, -400], hi: [200, 150, 400] };
     const T = new THREE.Vector3(...[0, 1, 2].map((i) => (b.lo[i] + b.hi[i]) / 2)).applyMatrix4(LPS_TO_SCENE);
-    T.set(T.x + 60, 0, T.z);
+    T.set(T.x + (name === 'whole' ? 0 : 60), 0, T.z);
+    const k = this.body ? 1.15 : 1; // a whole-body shell needs a little more room than the phantom's CT box
     const views = {
-      examiner: [-380, 1250, -1650], anterior: [0, 2300, -80], posterior: [0, -2100, -100], right: [0, 160, -2250],
-      left: [0, 160, 2250], head: [2200, 380, 0], feet: [-2400, 380, 0],
+      examiner: [-380 * k, 1250 * k, -1650 * k], anterior: [0, 2300 * k, -80], posterior: [0, -2100 * k, -100], right: [0, 160, -2250 * k],
+      left: [0, 160, 2250 * k], head: [2200 * k, 380, 0], feet: [-2400 * k, 380, 0],
+      whole: this.body ? [-300, 1.55 * (this.body.hi[2] - this.body.lo[2]) + 400, -1.2 * (this.body.hi[2] - this.body.lo[2])] : [-380, 1250, -1650],
     };
     const off = views[name] || views.examiner;
     const to = T.clone().add(new THREE.Vector3(...off));

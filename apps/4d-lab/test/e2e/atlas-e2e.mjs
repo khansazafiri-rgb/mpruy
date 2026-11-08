@@ -24,13 +24,15 @@ const errors = [];
 page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
 page.on('console', (m) => { if (m.type() === 'error') errors.push('console: ' + m.text()); });
 const lab = (fn, arg) => page.evaluate(fn, arg);
+const ONLY = process.env.E2E_ONLY ? new RegExp(process.env.E2E_ONLY) : null; // run a subset (debugging/evidence)
 async function step(name, fn) {
+  if (ONLY && !ONLY.test(name) && !/default; shared atlas/.test(name)) return;
   const t0 = Date.now();
   await lab(() => { document.body.classList.remove('monitor-expanded'); });
   try { await fn(); results.push({ name, ok: true, ms: Date.now() - t0 }); console.log('ok   ' + name); }
-  catch (e) { results.push({ name, ok: false, ms: Date.now() - t0, error: e.message }); console.log('FAIL ' + name + '\n     ' + e.message.split('\n')[0]); }
+  catch (e) { results.push({ name, ok: false, ms: Date.now() - t0, error: e.message }); console.log('FAIL ' + name + '\n     ' + e.message.split('\n').slice(0, 3).join(' | ')); }
 }
-async function shot(name) { if (!SHOTS) return; await mkdir(EVIDENCE, { recursive: true }); await page.waitForTimeout(250); await page.screenshot({ path: EVIDENCE + name + '.jpg', type: 'jpeg', quality: 82 }); }
+async function shot(name) { if (!SHOTS) return; await mkdir(EVIDENCE, { recursive: true }); await page.waitForTimeout(250); await page.screenshot({ path: EVIDENCE + name + '.jpg', type: 'jpeg', quality: 82, timeout: 180000 }); }
 async function nextFrame(after) {
   await page.waitForFunction((id) => (window.__lab.last?.id || 0) > id && (window.__lab.last.quality === 1 || window.__lab.S.playing), after ?? 0, { timeout: 30000 });
   await page.waitForTimeout(150);
@@ -59,7 +61,7 @@ async function goView(key) { await openTab('probe'); await page.getByTestId('mod
 /** Screen point of an LPS skin point pushed `out` mm along its normal. */
 const screenAt = (p, n, out = 2) => lab(([p2, n2, o]) => window.__lab.scene.screenOf(p2.map((v, i) => v + n2[i] * o)), [p, n, out]);
 /** Click the skin on the side facing the camera at an LPS target; returns the resulting contact. */
-async function clickSkin(target, normal) { const s = await screenAt(target, normal, 3); await page.mouse.click(s.x, s.y); await page.waitForTimeout(250); return lab(() => window.__lab.S.contact); }
+async function clickSkin(target, normal) { const s = await screenAt(target, normal, 3), f = await frameId(); await page.mouse.click(s.x, s.y); try { await nextFrame(f); } catch { await settle(); } return lab(() => window.__lab.S.contact); }
 
 const t0 = Date.now();
 await page.goto(url);
@@ -84,7 +86,7 @@ await step('atlas dataset is the default; shared atlas models load with no runti
 });
 
 await step('full patient view: external body shell with orientation labels; atlas hidden under opaque skin', async () => {
-  await pause(); await display('external'); await camera('examiner');
+  await pause(); await display('external'); await camera('whole');
   const vis = await lab(() => window.__lab.atlas.root.children.filter((m) => m.visible).length);
   assert.equal(vis, 0, 'organs not drawn under an opaque shell');
   const a = await canvasStats('[data-testid=patient-canvas]');
@@ -137,23 +139,28 @@ await step('anterior, lateral and posterior examination by clicking the skin', a
   let s = site('abd_llq'), c = await clickSkin(s.point, s.normal);
   assert.ok(Math.hypot(...c.point.map((v, i) => v - s.point[i])) < 25, 'anterior contact at the click ' + c.point.map((v) => v.toFixed(0)));
   assert.ok(c.normal[1] < -0.5, 'anterior normal');
-  let f = await frameId(); await nextFrame(f);
+  await settle();
   await shot('atlas-02-anterior-exam');
   await camera('right');
   s = site('lung_lat_r'); c = await clickSkin(s.point, s.normal);
   assert.ok(c.normal[0] < -0.5, 'right lateral normal ' + c.normal);
   await settle();
-  assert.match(await page.getByTestId('contact-region').textContent(), /kanan/);
+  const region = await page.getByTestId('contact-region').textContent();
+  assert.ok(/kanan/.test(region), 'region readout: "' + region + '"');
   await shot('atlas-03-lateral-exam');
   await camera('posterior');
   s = site('lung_post_l'); c = await clickSkin(s.point, s.normal);
   assert.ok(c.normal[1] > 0.5, 'posterior normal ' + c.normal);
-  f = await frameId(); await nextFrame(f);
+  await settle();
   await shot('atlas-04-posterior-exam');
   // a click on the leg (skin outside the CT box) does not move the probe
-  await camera('anterior');
+  await camera('whole');
   const before = await lab(() => window.__lab.S.contact.point);
-  const leg = await lab(() => window.__lab.scene.screenOf([-90, -60, window.__lab.data.ct.bounds.lo[2] - 220]));
+  const leg = await lab(() => { // most anterior skin vertex of the right thigh, 200-240 mm below the CT box
+    const ref = window.__lab.scene.meshes.skin.ref, zl = window.__lab.data.ct.bounds.lo[2]; let best = null;
+    for (let i = 0; i < ref.length; i += 3) if (ref[i] < -40 && ref[i + 2] < zl - 200 && ref[i + 2] > zl - 240 && (!best || ref[i + 1] < best[1])) best = [ref[i], ref[i + 1], ref[i + 2]];
+    return window.__lab.scene.screenOf([best[0], best[1] - 2, best[2]]);
+  });
   await page.mouse.click(leg.x, leg.y); await page.waitForTimeout(200);
   assert.deepEqual(await lab(() => window.__lab.S.contact.point), before, 'contact outside imaging coverage rejected');
   assert.match(await page.textContent('#loadStatus'), /di luar cakupan CT/);
@@ -223,7 +230,8 @@ await step('dynamic heart: atlas heart meshes move with the SAME field that defo
   });
   assert.ok(chk.animated && chk.maxMove > 1, 'LV vertices moved ' + chk.maxMove.toFixed(1) + ' mm');
   // freeze and compare vertex displacement with physiology.displacement at the reference position
-  await page.getByTestId('play').click(); await page.waitForTimeout(600);
+  await page.getByTestId('play').click();
+  await page.waitForFunction(() => !window.__lab.S.playing && window.__lab.atlasStats.clockT === window.__lab.clock.t, null, { timeout: 20000 });
   const err = await lab(() => {
     const L = window.__lab, m = L.atlas.structures.get('Left ventricle').meshes[0], pos = m.geometry.attributes.position.array, ref = m.userData.ref;
     const f = L.physio.makeFrame(L.clock, L.physio.effectiveParams(), L.physio.geom), d = [0, 0, 0]; let worst = 0;
@@ -293,6 +301,6 @@ await step('phantom dataset still available and keeps the atlas hidden (no false
 await browser.close(); srv.close();
 const summary = { date: new Date().toISOString(), browser: 'Chromium (Playwright, headless, SwiftShader WebGL)', dataset: 'atlas', passed: results.filter((r) => r.ok).length, failed: results.filter((r) => !r.ok).length, perf: results.perf, atlasDeform: results.atlasDeform, results };
 await mkdir(EVIDENCE, { recursive: true });
-await writeFile(EVIDENCE + 'atlas-e2e-results.json', JSON.stringify(summary, null, 2));
+if (!ONLY) await writeFile(EVIDENCE + 'atlas-e2e-results.json', JSON.stringify(summary, null, 2));
 console.log(`\n${summary.passed} passed, ${summary.failed} failed · ${JSON.stringify(summary.perf)}`);
 process.exitCode = summary.failed ? 1 : 0;

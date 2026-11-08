@@ -62,12 +62,12 @@ const clock = createClock();
 const audio = new AudioEngine();
 let D = null; // loaded data
 let scene = null, monitor = null, worker = null, geom = null, atlas = null, atlasState = 'none', inEnvelope = null;
-let lastAtlasDeform = 0, atlasDeformMs = 0, atlasMoving = 0, selected = null;
+let lastAtlasDeform = 0, atlasDeformMs = 0, atlasMoving = 0, atlasDeformClockT = -1, selected = null;
 let effusion = null;
 let dirty = true, interacting = false, lastInteraction = 0, workerBusy = false, pending = false, lastFrameInfo = null, frameCount = 0;
 let lastDeform = 0, motionShown = null;
 const stats = { usMs: 0, deformMs: 0, fps: 0 };
-window.__lab = { S, clock, stats, DATASET, physio: { displacement, makeFrame, effectiveParams: () => effectiveParams(), get geom() { return geom; } }, get atlas() { return atlas; }, get atlasState() { return atlasState; }, get atlasStats() { return { deformMs: atlasDeformMs, moving: atlasMoving }; }, audio, get scene() { return scene; }, get monitor() { return monitor; }, get data() { return D; }, get last() { return lastFrameInfo; }, get effusion() { return effusion; } };
+window.__lab = { S, clock, stats, DATASET, physio: { displacement, makeFrame, effectiveParams: () => effectiveParams(), get geom() { return geom; } }, get atlas() { return atlas; }, get atlasState() { return atlasState; }, get atlasStats() { return { deformMs: atlasDeformMs, moving: atlasMoving, clockT: atlasDeformClockT }; }, audio, get scene() { return scene; }, get monitor() { return monitor; }, get data() { return D; }, get last() { return lastFrameInfo; }, get effusion() { return effusion; } };
 
 function markDirty() { dirty = true; }
 function touch() { interacting = true; lastInteraction = performance.now(); markDirty(); }
@@ -124,7 +124,7 @@ async function useDataset({ ctBuf, labBuf, anatomy, reg, files, source, name }) 
     const keep = Object.fromEntries(Object.entries(meshes).map(([k, m]) => [k, { lps: m.lps, indices: m.indices }]));
     // the atlas shell is a whole body (no artificial acquisition caps); the phantom's skin is capped at the CT ends
     scene.setMeshes(keep, { coverage: ct.bounds, capZ: isAtlas ? -Infinity : ct.bounds.lo[2] + 6 });
-    if (isAtlas) { const b = boundsOf(meshes.skin.lps); scene.setTableFor(b.lo, b.hi); }
+    if (isAtlas) { const b = boundsOf(meshes.skin.lps); scene.setTableFor(b.lo, b.hi); scene.setBodyBounds(b.lo, b.hi); scene.setView("examiner", false); }
     prepareMotionMasks();
   } else {
     scene.setMeshes({}, { coverage: ct.bounds, capZ: -1e9 });
@@ -197,7 +197,7 @@ function deformAtlas(f) {
   if (!atlas || !inEnvelope || organsHidden()) return;
   const t0 = performance.now();
   atlasMoving = atlas.deform(displacement, f, inEnvelope);
-  atlasDeformMs = performance.now() - t0;
+  atlasDeformMs = performance.now() - t0; atlasDeformClockT = f.t;
 }
 
 // ------------------------------------------------------------------ poses
@@ -646,7 +646,7 @@ function renderAtlasPanel() {
       select: (name) => { S.atlasQuery = name; if (atlas?.structures.has(name)) { selected = name; atlas.highlight(name); } renderAtlasPanel(); },
       highlight: (name) => { atlas.highlight(atlas.highlighted === name ? null : name); renderAtlasPanel(); },
       isolate: (name) => { atlas.isolate(name); if (name && organsHidden()) setDisplayMode('internal'); renderAtlasPanel(); },
-      hide: (name) => { atlas.setStructureHidden(name, true); renderAtlasPanel(); },
+      hide: (name, hidden = true) => { atlas.setStructureHidden(name, hidden); renderAtlasPanel(); },
       showAll: () => { atlas.showAll(); atlas.highlight(null); selected = null; renderAtlasPanel(); },
       markAnimated: (v) => { atlas.markAnimated = v; atlas.apply(); },
       framesOpen: (v) => { framesOpen = v; },
@@ -794,8 +794,8 @@ async function boot() {
     const probe = document.createElement('canvas');
     if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) throw new Error('WebGL tidak tersedia: tampilan 3D tidak dapat dibuat. Aktifkan akselerasi grafis di browser.');
     scene = new PatientScene($('#viewport'), {
-      onContact: (c) => { if (!contactInCoverage(c)) return; S.contact = c; S.mode = 'clinical'; touch(); },
-      onSkinClick: (c) => { if (S.tool === 'stethoscope') placeSteth(c.point, c.normal, null); else if (S.mode === 'clinical' && contactInCoverage(c)) { S.contact = c; touch(); } },
+      onContact: (c) => { if (!contactInCoverage(c)) return; S.contact = c; S.mode = 'clinical'; touch(); updateReadouts(); },
+      onSkinClick: (c) => { if (S.tool === 'stethoscope') placeSteth(c.point, c.normal, null); else if (S.mode === 'clinical' && contactInCoverage(c)) { S.contact = c; touch(); updateReadouts(); } },
       onPick: (e) => {
         if (S.tool !== 'inspect' || !atlas) return false;
         const hit = scene.pickAtlas(e, atlas); selected = hit?.name || null;

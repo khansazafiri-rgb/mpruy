@@ -109,7 +109,7 @@ so atlas ↔ real-CT registration cannot be validated and is not attempted.
    image, and is labelled as such everywhere ("CT SINTETIS dari Atlas MEDCOEL").
 2. **Illustrative skin shell** (option 3 of the brief, but derived rather than landmark-aligned): the closed atlas
    musculoskeletal envelope + 8 mm (trunk/head/legs) or 5 mm (arms) of assumed fat and skin. Closed surface
-   (0 boundary edges), 206,580 triangles, 99.6 % of tested vertices sit on the CT body boundary (air outside, tissue
+   (0 boundary edges; 30 non-manifold edges from surface-net ambiguities, harmless for picking), 206,580 triangles, 99.6 % of tested vertices sit on the CT body boundary (air outside, tissue
    inside at ±5 mm). No licensed skin mesh compatible with the atlas exists in the repository (option 1) and no
    authorised imaging of this body exists (option 2).
 3. **Shared atlas layer at runtime** (`src/app/atlasLayer.js`): the lab loads `/anatomy/viewer/models/*.glb`,

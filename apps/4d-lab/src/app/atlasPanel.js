@@ -75,8 +75,8 @@ export function buildAtlasPanel(box, ctx) {
           el('button', { type: 'button', class: 'btn', 'data-testid': 'tool-inspect', 'aria-pressed': String(S.tool === 'inspect'), onclick: () => actions.setTool(S.tool === 'inspect' ? 'probe' : 'inspect') }, S.tool === 'inspect' ? '✓ Pilih di 3D (aktif)' : 'Pilih di 3D'),
           el('button', { type: 'button', class: 'btn', 'data-testid': 'btn-highlight', disabled: !selected || undefined, onclick: () => actions.highlight(selected) }, 'Sorot'),
           el('button', { type: 'button', class: 'btn', 'data-testid': 'btn-isolate', disabled: !selected || undefined, onclick: () => actions.isolate(atlas.isolated === selected ? null : selected) }, atlas.isolated && atlas.isolated === selected ? 'Kembali ke konteks' : 'Isolasi'),
-          el('button', { type: 'button', class: 'btn', 'data-testid': 'btn-hide', disabled: !selected || undefined, onclick: () => actions.hide(selected) }, 'Sembunyikan'),
-          el('button', { type: 'button', class: 'btn', 'data-testid': 'btn-showall', onclick: () => actions.showAll() }, 'Tampilkan semua')));
+          el('button', { type: 'button', class: 'btn', 'data-testid': 'btn-hide', disabled: !selected || undefined, onclick: () => actions.hide(selected, !atlas.structures.get(selected)?.hiddenByUser) }, atlas.structures.get(selected)?.hiddenByUser ? 'Tampilkan' : 'Sembunyikan'),
+          el('button', { type: 'button', class: 'btn', 'data-testid': 'btn-showall', onclick: () => actions.showAll(), title: 'Kembalikan tampilan bawaan (selubung seperti omentum dan pleura tetap tersembunyi; centang sistem untuk menampilkannya)' }, 'Pulihkan tampilan')));
       const sel = selected && atlas.structures.get(selected);
       box.append(el('div', { class: 'readout', 'data-testid': 'structure-info', 'aria-live': 'polite' }, sel
         ? [el('div', { class: 'ro-strong' }, sel.name), el('div', {}, `Sistem: ${ATLAS_GROUPS[sel.group]?.label || sel.group} · file ${sel.system}.glb`), el('div', {}, sel.animated ? 'Bergerak secara prosedural (bukan gerak terukur pasien)' : 'Statis (geometri atlas)'), el('div', {}, sel.hiddenByUser ? 'Disembunyikan' : 'Terlihat')]

@@ -1,5 +1,37 @@
 # Test results — MEDCOEL Anatomy Live 4D Lab
 
+## Atlas integration run — 2026-11-08
+Same container class (Linux x86-64, Node 22.23, Chromium via Playwright with SwiftShader software WebGL).
+**Safari and Apple hardware were not tested.**
+
+```bash
+cd apps/4d-lab
+npm ci
+npm run atlas:dataset          # rebuild public/data/atlas from apps/anatomy/public/models (~70 s, deterministic)
+npm test                       # 45 node:test tests (33 phase tests + 12 atlas tests)
+npm run build
+npm run test:e2e               # 14 browser tests, procedural phantom (?dataset=phantom) — Phases 1-5 regression
+npm run test:e2e:atlas         # 14 browser tests, atlas dataset (default); add -- --shots for evidence/atlas-*.jpg
+node test/e2e/integration.mjs  # /anatomy/live inside the MEDCOEL web app, now also waits for the shared atlas layer
+```
+
+| Suite | Result |
+|---|---|
+| Unit/integration (`npm test`) | 45/45 pass (33 existing unchanged + 12 atlas: frame/axes, left-right, registration + tamper, closed skin on the CT boundary, atlas mesh ↔ label agreement, documented non-registration to the phantom, standard windows aim at their organ, auscultation sites on ICS, warp exactness + EF on the atlas LV, diaphragm map, effusion, US blood vs myocardium) |
+| Browser, phantom (`run-e2e.mjs`) | 14/14 pass |
+| Browser, atlas (`atlas-e2e.mjs`) | 14/14 pass (`evidence/atlas-e2e-results.json`); evidence `evidence/atlas-01…12-*.jpg` |
+| MEDCOEL web integration (`integration.mjs`) | pass: `/anatomy/live` frames the lab and the shared atlas layer reaches "ready" |
+| Staging script test | 1/1 pass; `validateLab(dist)` reports datasets phantom + atlas |
+
+### Atlas measurements
+- Atlas default set: 484 structures, 1.79 M triangles, 0.93 M vertices kept (of 2,827 / 10.4 M). Decode + bake: visceral 2.3–2.9 s, cardiovascular 0.9–1.2 s, skeletal 0.2–0.6 s, lymphatic < 0.3 s; atlas ready 4.6–6.1 s after navigation (software WebGL).
+- Atlas mesh motion: ≈ 100 k animated vertices, 46–60 ms per update under SwiftShader (scheduled adaptively); vertex displacement equals the imaging field to < 0.01 mm.
+- JS heap after the full atlas session: 73 MiB.
+- Skin shell: 206,580 triangles, closed, 99.6 % of tested vertices with air outside / tissue inside at ±5 mm.
+- Atlas vs procedural phantom (not registered): rigid-fit residual RMS 37.5 mm, max 61 mm.
+- Heart blood pools from the atlas chambers: LV 77, RV 92, LA 67, RA 93 mL.
+
+## Phase 1–5 run — 2026-11-07
 Executed 2026-11-07 in the cloud development container (Linux x86-64, Node 22.23, Python 3.13 with numpy/scipy/VTK 9.7,
 Chromium via Playwright with SwiftShader software WebGL). **Safari and Apple hardware were not tested.**
 
@@ -39,6 +71,10 @@ CI (`.github/workflows/ci.yml`) runs the unit tests, the staging test and the bu
 - Chromium JS heap after the full e2e session: **73 MiB**. The phantom download is about 6 MB (CT 2.1 MB, labels 0.26 MB, meshes 3.7 MB).
 
 ## Manual checklist (owner, Safari on the target Mac): not yet done
+Atlas additions: (a) Anatomi tab: the organs are the Atlas MEDCOEL models (compare with `/anatomy/viewer/`);
+(b) switch the five display modes; (c) isolate "Left ventricle" and return; (d) pick an organ with "Pilih di 3D";
+(e) open "Sistem koordinat & registrasi" and check it states the atlas is not registered to the phantom;
+(f) watch memory with all on-demand systems (muscles, nerves, joints) loaded.
 1. Open `/anatomy/live`. The patient is recognisable and the head, chest, abdomen and arms are visible.
 2. Click the skin at front, side and back. The probe lands where clicked and the region readout matches the location.
 3. Change rotate / heel-toe / rock. The probe pivots on the same point and the image changes.

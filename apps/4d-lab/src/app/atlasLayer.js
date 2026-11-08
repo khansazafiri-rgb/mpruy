@@ -160,7 +160,8 @@ export class AtlasLayer {
 
   setGroup(group, { visible, opacity } = {}) { const g = this.groups[group]; if (visible !== undefined) g.visible = visible; if (opacity !== undefined) g.opacity = opacity; this.apply(); }
   setStructureHidden(name, hidden) { const s = this.structures.get(name); if (s) { s.hiddenByUser = hidden; this.apply(); } }
-  showAll() { for (const s of this.structures.values()) s.hiddenByUser = false; this.isolated = null; this.apply(); }
+  /** Restore the default view: user hides cleared, start-hidden envelopes (omenta, pleura, ducts, coronaries) hidden again. */
+  showAll() { for (const s of this.structures.values()) s.hiddenByUser = startHidden(s.name); this.isolated = null; this.apply(); }
   isolate(name) { this.isolated = name && this.structures.has(name) ? name : null; this.apply(); }
   highlight(name) { this.highlighted = name && this.structures.has(name) ? name : null; this.apply(); }
   setVisible(v) { this.visible = v; this.apply(); }

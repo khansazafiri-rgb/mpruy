@@ -1,6 +1,6 @@
 # Phase status — MEDCOEL Anatomy Live 4D Lab
 
-_Last updated: 2026-11-07 (branch `claude/confident-faraday-e9id72`, mirrored to `feature/medcoel-4d-lab`)._
+_Last updated: 2026-11-08 (branch `claude/vigilant-cerf-jjc6fj`, based on the PR #133 merge `6c4f696`): Anatomy Atlas integration added._
 Evidence files are in `evidence/`; test commands are listed in `TEST_RESULTS.md`.
 
 | Phase | Status | Gate | Evidence |
@@ -10,6 +10,26 @@ Evidence files are in `evidence/`; test commands are listed in `TEST_RESULTS.md`
 | 3 Ultrasound engine | **Complete** | US output responds to probe orientation and tissue parameters via executable simulation — **passed** | unit tests 11–19; e2e "ultrasound responds to tissue parameters…"; `evidence/us-*.png` |
 | 4 Organ motion | **Complete** | Each system has a working, controllable motion demo — **passed** (cardiac, respiratory, gastric antral peristalsis) | unit tests 20–26; e2e "physiology…"; `evidence/07-cutaway-motion.jpg` |
 | 5 Pathology + auscultation | **Complete (educational scope)** | At least one integrated normal-vs-pathological scenario and a functional auscultation workflow — **passed** (3 scenarios; stethoscope, synthesised S1/S2/S3, breath and bowel sounds, PCG strip) | unit tests 27–33; e2e "pathology…", "auscultation…"; `evidence/08, 09, 10` |
+
+## Atlas integration (2026-11-08) — status by element
+| Element | Status | Evidence / note |
+|---|---|---|
+| Atlas audit (inventory, units, axes, licences, gaps, memory) | **Done** | `ATLAS_INTEGRATION_AUDIT.md` |
+| Shared atlas models at runtime from `/anatomy/viewer/` (no copies, decoder not bundled) | **Implemented, tested** | atlas e2e "shared atlas models load"; `dist/assets` has no Draco files |
+| Selective loading (4 systems by default, 3 on demand, subset kept per system, unload API) | **Implemented, tested** | 484 structures / 1.79 M triangles kept of 10.4 M |
+| Atlas-derived synthetic CT + labels in an exact atlas→LPS frame | **Implemented, tested** | `test/atlas-integration.test.mjs` (frame, L/R, mesh↔label agreement ≥ 90 %); `evidence/atlas-label-slices.png` |
+| Skin surface | **Approximate (illustrative)** | atlas envelope + assumed fat/skin; closed; 99.6 % on the CT body boundary; labelled "kulit ilustratif" |
+| Atlas ↔ procedural phantom | **Explicitly not registered** | rigid-fit residual RMS 37.5 mm, max 61 mm; atlas never shown on the phantom |
+| Atlas ↔ real CT | **Not possible with available data** | no authorised acquired CT; atlas hidden for local CT |
+| Display modes, systems/transparency, search/highlight/isolate/hide, pick in 3D, legend, frames panel | **Implemented, tested (Chromium)** | atlas e2e; `evidence/atlas-*.jpg` |
+| Independent probe (clinical + free 3D) on the atlas body; camera never changes the scan | **Preserved, tested** | atlas e2e steps "fixed contact point", "camera rotation", "free 3D" |
+| Phases 3–5 on the atlas dataset (US, CT, motion, pathology, auscultation) | **Working, tested** | atlas unit tests 9–12; atlas e2e "dynamic heart", "pathology + auscultation" |
+| Procedural motion of atlas meshes | **Approximate (procedural)** | same displacement field as imaging (checked < 0.01 mm); heart, lungs, diaphragm, liver, stomach, spleen, kidneys, great vessels; coronaries static/hidden |
+| Phantom dataset (Phases 1–5 regression) | **Preserved** | phantom e2e 14/14; unit tests 33/33 unchanged |
+| Apical 4-chamber window on the atlas body | **Limited** | lingula/anterior lung margins cover the apex in this atlas body; HFrEF uses the clearest cardiac window (subxiphoid) |
+| Lateral chest wall | **Limited** | atlas arms are adducted against the chest; mid-axillary sites sit just below the arm |
+| Safari / 8 GB Apple Silicon | **Not tested** | not available to this session |
+| Human anatomical/clinical review of the atlas-derived dataset | **Open** | owner / clinician |
 
 ## What exists now
 - `apps/4d-lab`: integrated workstation with a 3D patient on an exam table (CT-derived skin and 20 organ meshes with verified registration), clinical and free 3D probe modes, rotation/translation gizmos, exact numeric controls, CT/US/split monitor with zoom, pan, fit, 1:1, expand and fullscreen, CT window/level, physiology playback, pathology scenarios and auscultation.
@@ -22,6 +42,11 @@ Evidence files are in `evidence/`; test commands are listed in `TEST_RESULTS.md`
 4. **Language**: UI labels are Indonesian. Scenario explanations and findings are English for accuracy; translate them through MEDCOEL's normal i18n review.
 5. **Physiology is procedural** (no licensed time-resolved data). It is labelled as an educational approximation everywhere.
 6. Phantom limitations: 2.5 mm voxels, simplified organ shapes, no vessels inside lung or liver, no small anatomy. The body touches the CT table at the buttocks, so automatic thresholding keeps ~0.2% of table voxels; use the corrected-mask route for real CT.
+
+## Resume here (atlas)
+- Owner review on the Mac (Safari): the atlas dataset is the default at `/anatomy/live`; the procedural phantom is `?dataset=phantom`.
+- If the shell or labels need changes: edit `pipeline/atlas/build_atlas_dataset.mjs`, run `npm run atlas:dataset`, `npm run atlas:evidence`, `npm test`, then both browser suites.
+- Commercial use: replace the NC kidney, rebuild (see `ASSET_LICENSE_REGISTRY.md`).
 
 ## Resume here
 - Deploy to staging only after approval: see `INTEGRATION.md`.
