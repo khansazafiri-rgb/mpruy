@@ -21,6 +21,7 @@
   <aside class="sidebar" aria-label="Kontrol">
     <div class="tabs" role="tablist">
       <button role="tab" aria-selected="true" aria-controls="tab-probe" data-testid="tab-probe">Probe</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-anatomy" data-testid="tab-anatomy">Anatomi</button>
       <button role="tab" aria-selected="false" aria-controls="tab-imaging" data-testid="tab-imaging">Citra</button>
       <button role="tab" aria-selected="false" aria-controls="tab-physiology" data-testid="tab-physiology">Fisiologi</button>
       <button role="tab" aria-selected="false" aria-controls="tab-pathology" data-testid="tab-pathology">Patologi</button>
@@ -28,6 +29,7 @@
       <button role="tab" aria-selected="false" aria-controls="tab-data" data-testid="tab-data">Data</button>
     </div>
     <section id="tab-probe" role="tabpanel" class="panel"></section>
+    <section id="tab-anatomy" role="tabpanel" class="panel" hidden></section>
     <section id="tab-imaging" role="tabpanel" class="panel" hidden></section>
     <section id="tab-physiology" role="tabpanel" class="panel" hidden></section>
     <section id="tab-pathology" role="tabpanel" class="panel" hidden></section>
@@ -53,7 +55,7 @@
         </select>
       </label>
       <label class="inline cut-depth">Tinggi potong <input id="cutDepth" type="range" min="-60" max="140" value="40"></label>
-      <details class="systems"><summary>Organ</summary>
+      <details class="systems phantom-only"><summary>Organ</summary>
         <label><input type="checkbox" data-system="skeleton" checked> Rangka</label>
         <label><input type="checkbox" data-system="cardiovascular" checked> Jantung &amp; pembuluh</label>
         <label><input type="checkbox" data-system="respiratory" checked> Paru &amp; diafragma</label>
@@ -63,6 +65,7 @@
         <label><input type="checkbox" id="coverageToggle" checked> Kotak cakupan CT</label>
       </details>
     </div>
+    <div class="viewport-badge atlas-only" data-testid="viewport-badge">Anatomi: Atlas MEDCOEL · kulit ilustratif · CT sintetis dari atlas</div>
     <div class="view-hint">Seret area kosong: putar kamera · Shift/klik kanan: geser · scroll: zoom · seret probe/cincin: pindah &amp; angulasi. Kamera tidak mengubah citra.</div>
   </section>
   <div id="divider" class="divider" role="separator" tabindex="0" aria-label="Ubah lebar monitor (panah kiri/kanan)"></div>

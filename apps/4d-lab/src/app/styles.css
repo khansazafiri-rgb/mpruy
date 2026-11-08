@@ -106,3 +106,26 @@ body.monitor-expanded .viewport-panel, body.monitor-expanded .divider { display:
   .sidebar { order: 3; max-height: none; } .viewport-panel { height: 62vh; } .divider { display: none; } .monitor-panel { height: 80vh; }
   .badge { display: none; }
 }
+
+/* ---------------- atlas integration */
+body[data-dataset=atlas] .phantom-only { display: none; }
+body:not([data-dataset=atlas]) .atlas-only { display: none; }
+.tabs { grid-template-columns: repeat(4, 1fr); }
+.seg.wrap { display: flex; flex-wrap: wrap; }
+.seg.wrap button { flex: 1 1 auto; }
+.viewport-badge { position: absolute; top: 92px; left: 10px; font-size: 11.5px; font-weight: 600; color: rgb(var(--forest)); background: rgb(255 255 255 / .86); border: 1px solid rgb(var(--line)); border-radius: 8px; padding: 4px 8px; pointer-events: none; max-width: calc(100% - 20px); }
+.legend { display: grid; gap: 4px; font-size: 12px; margin: 6px 0; }
+.legend .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -2px; border: 1px solid rgb(0 0 0 / .15); }
+.sw.atlas { background: #c98f7c; } .sw.anim { background: #2c9c8a; } .sw.skin { background: #d8a587; opacity: .6; } .sw.img { background: linear-gradient(90deg, #111 0 50%, #888 50%); }
+.group-list { display: grid; gap: 4px; }
+.group-row { display: grid; grid-template-columns: 1fr 96px; align-items: center; gap: 6px; font-size: 12.5px; }
+.group-row.unloaded { opacity: .75; }
+.group-row .count { color: rgb(var(--muted)); font-size: 11px; }
+.group-row input[type=range] { width: 96px; }
+input[type=search] { width: 100%; padding: 7px 9px; border: 1px solid rgb(var(--line)); border-radius: 9px; font: inherit; font-size: 13px; }
+.frames-list { padding-left: 18px; font-size: 12px; display: grid; gap: 3px; }
+.compare.reg td { vertical-align: top; font-size: 12px; }
+.reg-badge { display: inline-block; font-size: 10.5px; font-weight: 700; border-radius: 6px; padding: 1px 6px; text-transform: uppercase; letter-spacing: .02em; }
+.reg-badge.exact { background: #d7f0e6; color: #12573f; } .reg-badge.approx { background: #fff1c9; color: #7a5600; } .reg-badge.none { background: #fde0dc; color: #8f2216; }
+pre.matrix { font-size: 11px; background: #0c181d; color: #cfe7e2; padding: 8px; border-radius: 8px; overflow-x: auto; }
+body[data-tool=inspect] #viewport canvas { cursor: crosshair; }

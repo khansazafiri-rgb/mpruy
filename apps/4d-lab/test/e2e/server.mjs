@@ -4,11 +4,19 @@ import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const ROOT = fileURLToPath(new URL('../../dist/', import.meta.url));
-const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.glb': 'model/gltf-binary', '.nrrd': 'application/octet-stream', '.png': 'image/png', '.svg': 'image/svg+xml' };
+// The shared Anatomy Atlas assets, mounted where production serves them (/anatomy/viewer/).
+const ATLAS = fileURLToPath(new URL('../../../anatomy/public/', import.meta.url));
+const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.glb': 'model/gltf-binary', '.nrrd': 'application/octet-stream', '.png': 'image/png', '.svg': 'image/svg+xml', '.wasm': 'application/wasm' };
 export function startServer(port = 0, prefix = '/anatomy/4d-lab/') {
   const srv = createServer(async (req, res) => {
     const url = decodeURIComponent(new URL(req.url, 'http://x').pathname);
     if (url === prefix.slice(0, -1)) { res.writeHead(308, { location: prefix }); return res.end(); }
+    if (url.startsWith('/anatomy/viewer/')) {
+      const file = path.join(ATLAS, url.slice('/anatomy/viewer/'.length));
+      if (!file.startsWith(ATLAS)) { res.writeHead(403); return res.end(); }
+      try { const body = await readFile(file); res.writeHead(200, { 'content-type': TYPES[path.extname(file)] || 'application/octet-stream' }); return res.end(body); }
+      catch { res.writeHead(404); return res.end('not found'); }
+    }
     if (!url.startsWith(prefix)) { res.writeHead(404); return res.end('not found'); }
     let rel = url.slice(prefix.length) || 'index.html';
     const file = path.join(ROOT, rel);

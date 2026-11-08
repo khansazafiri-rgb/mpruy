@@ -95,7 +95,7 @@ export class Monitor {
     }
     // footer disclaimer
     ctx.font = `${11 * dpr}px system-ui`; ctx.fillStyle = 'rgba(255,214,140,.92)';
-    ctx.fillText(p.key === 'us' ? 'SIMULASI USG EDUKATIF · bukan citra pasien · tidak untuk diagnosis' : 'Reformat CT phantom sintetis · bukan data pasien', p.x + 10 * dpr, p.y + p.h - 10 * dpr);
+    ctx.fillText(p.key === 'us' ? 'SIMULASI USG EDUKATIF · bukan citra pasien · tidak untuk diagnosis' : (this.ctCaption || 'Reformat CT phantom sintetis · bukan data pasien'), p.x + 10 * dpr, p.y + p.h - 10 * dpr);
     ctx.restore();
   }
   _interaction() {

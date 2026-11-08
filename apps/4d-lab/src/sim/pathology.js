@@ -61,11 +61,11 @@ export const motilityIndex = (p) => +(p.antralFrequency * p.antralAmplitude).toF
  * score (posterior + basal in the supine patient) and taking the target volume.
  * Returns a classifier on REFERENCE coordinates: 0 none, 39 pleural fluid, 41 compressed lung.
  */
-export function buildEffusion(labels, volumeMl, { lungLabel = 7, band = 7 } = {}) {
+export function buildEffusion(labels, volumeMl, { lungLabel = 7, band = 7, diaphragm = diaphragmZ } = {}) {
   if (!(volumeMl > 0)) return null;
   const [nx, ny, nz] = labels.sizes, data = labels.data, m = labels.affine;
   const voxelMl = Math.abs(m[0] * (m[5] * m[10] - m[6] * m[9]) - m[1] * (m[4] * m[10] - m[6] * m[8]) + m[2] * (m[4] * m[9] - m[5] * m[8])) / 1000;
-  const score = (x, y, z) => y + 0.55 * (diaphragmZ(x, y) - z);
+  const score = (x, y, z) => y + 0.55 * (diaphragm(x, y) - z);
   const scores = [];
   for (let k = 0; k < nz; k++) for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
     if (data[(k * ny + j) * nx + i] !== lungLabel) continue;

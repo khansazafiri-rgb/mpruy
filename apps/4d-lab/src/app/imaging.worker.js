@@ -30,7 +30,7 @@ function render(req) {
   if (geom && params) sampler.setFrame(makeFrame(clock, params, geom)); else sampler.setFrame(null);
   let eff = null;
   if (labels && effusionMl > 0) {
-    if (!effusionCache.has(effusionMl)) effusionCache.set(effusionMl, buildEffusion(labels, effusionMl));
+    if (!effusionCache.has(effusionMl)) effusionCache.set(effusionMl, buildEffusion(labels, effusionMl, { diaphragm: geom?.diaphragm }));
     eff = effusionCache.get(effusionMl);
   }
   sampler.setEffusion(eff);

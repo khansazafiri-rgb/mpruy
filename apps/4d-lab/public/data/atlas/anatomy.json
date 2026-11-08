@@ -1,0 +1,2833 @@
+{
+ "schema": "medcoel.anatomy.v1",
+ "synthetic": true,
+ "dataset": "atlas",
+ "source": "MEDCOEL atlas-derived synthetic dataset (pipeline/atlas/build_atlas_dataset.mjs) from the MEDCOEL Anatomy Atlas meshes (BodyParts3D, Z-Anatomy; see ASSET_LICENSE_REGISTRY.md). Not patient data. Not a validated anatomical model.",
+ "coordinateSystem": "LPS millimetres (x=patient left, y=posterior, z=superior); z = 0 at the atlas xiphoid tip",
+ "attribution": [
+  "BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan",
+  "Z-Anatomy - The open source atlas of anatomy - CC-BY-SA 4.0",
+  "Kidney - by lissiecowley - CC-BY-NC 4.0"
+ ],
+ "licence": "CC BY-NC-SA 4.0 (derivative of the MEDCOEL Anatomy Atlas models)",
+ "atlasFrame": {
+  "atlasToLPS": [
+   1000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   -1000,
+   0,
+   0,
+   1000,
+   0,
+   -1220.9,
+   0,
+   0,
+   0,
+   1
+  ],
+  "y0Metres": 1.2209,
+  "units": {
+   "atlas": "metres",
+   "lps": "millimetres"
+  },
+  "axes": {
+   "atlas": "+X patient left, +Y superior, +Z anterior (verified: Kidney.l at +X, testes/glans at +Z, vertex at +Y)",
+   "lps": "+x left, +y posterior, +z superior"
+  },
+  "origin": "LPS z = 0 at the xiphoid process tip of the atlas; x = 0 atlas mid-sagittal plane; y = 0 atlas coronal plane Z = 0",
+  "relation": "exact (rigid + unit change). The CT/labels were generated from the atlas meshes in this frame; no fitting."
+ },
+ "labels": [
+  {
+   "id": 0,
+   "key": "air",
+   "name": "Air (outside body)",
+   "nameId": "Udara",
+   "hu": -1000,
+   "acoustic": "air",
+   "system": "none",
+   "color": [
+    0,
+    0,
+    0
+   ],
+   "volumeMl": 88158.5
+  },
+  {
+   "id": 1,
+   "key": "skin",
+   "name": "Skin (illustrative shell)",
+   "nameId": "Kulit (cangkang ilustratif)",
+   "hu": 40,
+   "acoustic": "skin",
+   "system": "integument",
+   "color": [
+    214,
+    160,
+    130
+   ],
+   "volumeMl": 2202.8
+  },
+  {
+   "id": 2,
+   "key": "fat",
+   "name": "Fat / unlabelled soft tissue",
+   "nameId": "Lemak / jaringan lunak tanpa label",
+   "hu": -100,
+   "acoustic": "fat",
+   "system": "integument",
+   "color": [
+    240,
+    214,
+    120
+   ],
+   "volumeMl": 13605.7
+  },
+  {
+   "id": 3,
+   "key": "muscle",
+   "name": "Skeletal muscle (atlas)",
+   "nameId": "Otot rangka (atlas)",
+   "hu": 50,
+   "acoustic": "muscle",
+   "system": "musculoskeletal",
+   "color": [
+    178,
+    70,
+    60
+   ],
+   "volumeMl": 17485.1
+  },
+  {
+   "id": 4,
+   "key": "bone",
+   "name": "Cortical bone (atlas)",
+   "nameId": "Tulang kortikal (atlas)",
+   "hu": 900,
+   "acoustic": "bone",
+   "system": "musculoskeletal",
+   "color": [
+    236,
+    230,
+    210
+   ],
+   "volumeMl": 2445.7
+  },
+  {
+   "id": 5,
+   "key": "marrow",
+   "name": "Cancellous bone / marrow",
+   "nameId": "Tulang spons / sumsum",
+   "hu": 260,
+   "acoustic": "bone",
+   "system": "musculoskeletal",
+   "color": [
+    220,
+    200,
+    170
+   ],
+   "volumeMl": 2160.5
+  },
+  {
+   "id": 6,
+   "key": "cartilage",
+   "name": "Costal cartilage / symphysis",
+   "nameId": "Kartilago kosta / simfisis",
+   "hu": 120,
+   "acoustic": "cartilage",
+   "system": "musculoskeletal",
+   "color": [
+    190,
+    220,
+    230
+   ],
+   "volumeMl": 290.9
+  },
+  {
+   "id": 7,
+   "key": "lung_r",
+   "name": "Right lung (aerated)",
+   "nameId": "Paru kanan",
+   "hu": -850,
+   "acoustic": "lung",
+   "system": "respiratory",
+   "color": [
+    240,
+    150,
+    170
+   ],
+   "volumeMl": 1934.2
+  },
+  {
+   "id": 8,
+   "key": "lung_l",
+   "name": "Left lung (aerated)",
+   "nameId": "Paru kiri",
+   "hu": -850,
+   "acoustic": "lung",
+   "system": "respiratory",
+   "color": [
+    240,
+    160,
+    180
+   ],
+   "volumeMl": 1574.5
+  },
+  {
+   "id": 9,
+   "key": "myocardium",
+   "name": "Myocardium / valve leaflets",
+   "nameId": "Miokardium / daun katup",
+   "hu": 110,
+   "acoustic": "myocardium",
+   "system": "cardiovascular",
+   "color": [
+    190,
+    40,
+    50
+   ],
+   "volumeMl": 406.5
+  },
+  {
+   "id": 10,
+   "key": "lv",
+   "name": "Left ventricular cavity (blood)",
+   "nameId": "Rongga ventrikel kiri",
+   "hu": 200,
+   "acoustic": "blood",
+   "system": "cardiovascular",
+   "color": [
+    230,
+    60,
+    60
+   ],
+   "volumeMl": 76.7
+  },
+  {
+   "id": 11,
+   "key": "rv",
+   "name": "Right ventricular cavity (blood)",
+   "nameId": "Rongga ventrikel kanan",
+   "hu": 190,
+   "acoustic": "blood",
+   "system": "cardiovascular",
+   "color": [
+    90,
+    90,
+    220
+   ],
+   "volumeMl": 91.8
+  },
+  {
+   "id": 12,
+   "key": "la",
+   "name": "Left atrial cavity (blood)",
+   "nameId": "Rongga atrium kiri",
+   "hu": 200,
+   "acoustic": "blood",
+   "system": "cardiovascular",
+   "color": [
+    240,
+    90,
+    90
+   ],
+   "volumeMl": 66.8
+  },
+  {
+   "id": 13,
+   "key": "ra",
+   "name": "Right atrial cavity (blood)",
+   "nameId": "Rongga atrium kanan",
+   "hu": 185,
+   "acoustic": "blood",
+   "system": "cardiovascular",
+   "color": [
+    110,
+    110,
+    230
+   ],
+   "volumeMl": 93.1
+  },
+  {
+   "id": 14,
+   "key": "aorta",
+   "name": "Aorta / common iliac arteries (lumen)",
+   "nameId": "Aorta / a. iliaka komunis",
+   "hu": 220,
+   "acoustic": "blood",
+   "system": "cardiovascular",
+   "color": [
+    220,
+    40,
+    40
+   ],
+   "volumeMl": 211.8
+  },
+  {
+   "id": 15,
+   "key": "vena_cava",
+   "name": "Great veins: venae cavae, brachiocephalic, iliac, pulmonary veins",
+   "nameId": "Vena besar: kava, brakiosefalika, iliaka, pulmonalis",
+   "hu": 170,
+   "acoustic": "blood",
+   "system": "cardiovascular",
+   "color": [
+    60,
+    80,
+    200
+   ],
+   "volumeMl": 141.2
+  },
+  {
+   "id": 16,
+   "key": "pulmonary_artery",
+   "name": "Pulmonary trunk / arteries (lumen)",
+   "nameId": "Trunkus / a. pulmonalis",
+   "hu": 200,
+   "acoustic": "blood",
+   "system": "cardiovascular",
+   "color": [
+    110,
+    80,
+    210
+   ],
+   "volumeMl": 88.9
+  },
+  {
+   "id": 17,
+   "key": "liver",
+   "name": "Liver",
+   "nameId": "Hati",
+   "hu": 105,
+   "acoustic": "liver",
+   "system": "digestive",
+   "color": [
+    150,
+    60,
+    45
+   ],
+   "volumeMl": 1624.7
+  },
+  {
+   "id": 18,
+   "key": "gallbladder",
+   "name": "Gallbladder (bile)",
+   "nameId": "Kandung empedu",
+   "hu": 10,
+   "acoustic": "fluid",
+   "system": "digestive",
+   "color": [
+    80,
+    160,
+    70
+   ],
+   "volumeMl": 24.3
+  },
+  {
+   "id": 19,
+   "key": "spleen",
+   "name": "Spleen",
+   "nameId": "Limpa",
+   "hu": 115,
+   "acoustic": "spleen",
+   "system": "lymphatic",
+   "color": [
+    130,
+    50,
+    90
+   ],
+   "volumeMl": 126.5
+  },
+  {
+   "id": 20,
+   "key": "kidney",
+   "name": "Kidney (parenchyma)",
+   "nameId": "Ginjal",
+   "hu": 160,
+   "acoustic": "kidney",
+   "system": "urinary",
+   "color": [
+    170,
+    80,
+    70
+   ],
+   "volumeMl": 212.3
+  },
+  {
+   "id": 21,
+   "key": "renal_sinus",
+   "name": "Renal pelvis / sinus",
+   "nameId": "Pelvis / sinus renal",
+   "hu": -80,
+   "acoustic": "sinus_fat",
+   "system": "urinary",
+   "color": [
+    250,
+    230,
+    150
+   ],
+   "volumeMl": 37
+  },
+  {
+   "id": 22,
+   "key": "stomach_wall",
+   "name": "Stomach wall",
+   "nameId": "Dinding lambung",
+   "hu": 70,
+   "acoustic": "gi_wall",
+   "system": "digestive",
+   "color": [
+    220,
+    130,
+    120
+   ],
+   "volumeMl": 130.1
+  },
+  {
+   "id": 23,
+   "key": "stomach_content",
+   "name": "Gastric fluid content (assumed)",
+   "nameId": "Isi cairan lambung (asumsi)",
+   "hu": 12,
+   "acoustic": "gi_fluid",
+   "system": "digestive",
+   "color": [
+    120,
+    170,
+    200
+   ],
+   "volumeMl": 448.7
+  },
+  {
+   "id": 24,
+   "key": "gas",
+   "name": "Intraluminal gas (assumed)",
+   "nameId": "Gas lumen (asumsi)",
+   "hu": -980,
+   "acoustic": "gas",
+   "system": "digestive",
+   "color": [
+    30,
+    30,
+    30
+   ],
+   "volumeMl": 40.5
+  },
+  {
+   "id": 25,
+   "key": "bowel_wall",
+   "name": "Duodenal / jejunal wall",
+   "nameId": "Dinding duodenum / jejunum",
+   "hu": 70,
+   "acoustic": "gi_wall",
+   "system": "digestive",
+   "color": [
+    230,
+    160,
+    140
+   ],
+   "volumeMl": 212.3
+  },
+  {
+   "id": 26,
+   "key": "bowel_content",
+   "name": "Small bowel content (assumed)",
+   "nameId": "Isi usus halus (asumsi)",
+   "hu": 20,
+   "acoustic": "gi_fluid",
+   "system": "digestive",
+   "color": [
+    150,
+    190,
+    200
+   ],
+   "volumeMl": 409.7
+  },
+  {
+   "id": 27,
+   "key": "colon_wall",
+   "name": "Colon wall",
+   "nameId": "Dinding kolon",
+   "hu": 60,
+   "acoustic": "gi_wall",
+   "system": "digestive",
+   "color": [
+    200,
+    140,
+    110
+   ],
+   "volumeMl": 434.3
+  },
+  {
+   "id": 28,
+   "key": "colon_content",
+   "name": "Colonic content (assumed)",
+   "nameId": "Isi kolon (asumsi)",
+   "hu": -20,
+   "acoustic": "stool",
+   "system": "digestive",
+   "color": [
+    140,
+    110,
+    80
+   ],
+   "volumeMl": 62.4
+  },
+  {
+   "id": 29,
+   "key": "pancreas",
+   "name": "Pancreas",
+   "nameId": "Pankreas",
+   "hu": 90,
+   "acoustic": "pancreas",
+   "system": "digestive",
+   "color": [
+    230,
+    190,
+    120
+   ],
+   "volumeMl": 64.4
+  },
+  {
+   "id": 30,
+   "key": "bladder",
+   "name": "Urinary bladder (urine)",
+   "nameId": "Kandung kemih",
+   "hu": 8,
+   "acoustic": "fluid",
+   "system": "urinary",
+   "color": [
+    230,
+    220,
+    90
+   ],
+   "volumeMl": 32.4
+  },
+  {
+   "id": 31,
+   "key": "diaphragm",
+   "name": "Diaphragm",
+   "nameId": "Diafragma",
+   "hu": 55,
+   "acoustic": "muscle",
+   "system": "respiratory",
+   "color": [
+    200,
+    90,
+    80
+   ],
+   "volumeMl": 607
+  },
+  {
+   "id": 35,
+   "key": "cord",
+   "name": "Spinal cord / cauda equina",
+   "nameId": "Medula spinalis",
+   "hu": 35,
+   "acoustic": "brain",
+   "system": "nervous",
+   "color": [
+    240,
+    230,
+    200
+   ],
+   "volumeMl": 87.5
+  },
+  {
+   "id": 36,
+   "key": "disc",
+   "name": "Intervertebral disc",
+   "nameId": "Diskus intervertebralis",
+   "hu": 85,
+   "acoustic": "cartilage",
+   "system": "musculoskeletal",
+   "color": [
+    160,
+    200,
+    220
+   ],
+   "volumeMl": 234.1
+  },
+  {
+   "id": 37,
+   "key": "esophagus",
+   "name": "Oesophagus",
+   "nameId": "Esofagus",
+   "hu": 55,
+   "acoustic": "gi_wall",
+   "system": "digestive",
+   "color": [
+    220,
+    140,
+    130
+   ],
+   "volumeMl": 37.3
+  },
+  {
+   "id": 39,
+   "key": "pleural_fluid",
+   "name": "Pleural fluid (pathology layer)",
+   "nameId": "Cairan pleura",
+   "hu": 12,
+   "acoustic": "fluid",
+   "system": "respiratory",
+   "color": [
+    90,
+    170,
+    255
+   ],
+   "volumeMl": 0
+  },
+  {
+   "id": 40,
+   "key": "airway",
+   "name": "Trachea / bronchi (air)",
+   "nameId": "Trakea / bronkus",
+   "hu": -990,
+   "acoustic": "gas",
+   "system": "respiratory",
+   "color": [
+    60,
+    60,
+    60
+   ],
+   "volumeMl": 265.4
+  },
+  {
+   "id": 41,
+   "key": "atelectasis",
+   "name": "Compressed (atelectatic) lung (pathology layer)",
+   "nameId": "Paru kolaps",
+   "hu": 40,
+   "acoustic": "atelectasis",
+   "system": "respiratory",
+   "color": [
+    200,
+    100,
+    120
+   ],
+   "volumeMl": 0
+  },
+  {
+   "id": 42,
+   "key": "gland",
+   "name": "Glandular soft tissue (thyroid, adrenal, prostate)",
+   "nameId": "Jaringan kelenjar (tiroid, adrenal, prostat)",
+   "hu": 60,
+   "acoustic": "pancreas",
+   "system": "endocrine",
+   "color": [
+    200,
+    170,
+    120
+   ],
+   "volumeMl": 60.8
+  },
+  {
+   "id": 43,
+   "key": "bladder_wall",
+   "name": "Urinary bladder wall",
+   "nameId": "Dinding kandung kemih",
+   "hu": 45,
+   "acoustic": "gi_wall",
+   "system": "urinary",
+   "color": [
+    210,
+    190,
+    80
+   ],
+   "volumeMl": 119.8
+  }
+ ],
+ "heart": {
+  "base": [
+   22.49,
+   1.34,
+   58.11
+  ],
+  "apex": [
+   72.59,
+   -59.31,
+   48.86
+  ],
+  "lvCentre": [
+   47.54,
+   -28.99,
+   53.48
+  ],
+  "axis": [
+   0.63246,
+   -0.76573,
+   -0.1169
+  ],
+  "u": [
+   -0.77101,
+   -0.63682,
+   0
+  ],
+  "v": [
+   -0.07444,
+   0.09013,
+   -0.99314
+  ],
+  "lvCavity": {
+   "a": 39.6,
+   "b": 30.1
+  },
+  "lvWall": 10.6,
+  "rvCentre": [
+   22.21,
+   -54.85,
+   60.12
+  ],
+  "rvCavity": {
+   "a": 39.6,
+   "b": 36.2,
+   "c": 36.2
+  },
+  "la": {
+   "c": [
+    17.6,
+    7.4,
+    88.5
+   ],
+   "r": [
+    34.5,
+    28.7,
+    43.5
+   ]
+  },
+  "ra": {
+   "c": [
+    -15.4,
+    -20.4,
+    79.1
+   ],
+   "r": [
+    21.9,
+    31.8,
+    45.6
+   ]
+  },
+  "lvEdvMl": 76.7,
+  "fittedFrom": "atlas Left/Right ventricle and atrium meshes (moments of the voxelised blood pools)"
+ },
+ "respiration": {
+  "domeRight": [
+   -50,
+   -40,
+   40
+  ],
+  "domeLeft": [
+   70,
+   0,
+   22.5
+  ],
+  "lungApexZ": 210,
+  "thoraxZ": [
+   -97.5,
+   180
+  ],
+  "abdomenFloorZ": -356.8,
+  "diaphragmMap": {
+   "x0": -200,
+   "y0": -140,
+   "dx": 10,
+   "dy": 10,
+   "nx": 41,
+   "ny": 29,
+   "z": [
+    -21.9,
+    -21.7,
+    -21.5,
+    -21.2,
+    -20.9,
+    -20.7,
+    -20.4,
+    -20.2,
+    -20.1,
+    -20,
+    -20,
+    -12.3,
+    -12.5,
+    5,
+    -14.1,
+    -15,
+    -5,
+    -4.2,
+    20,
+    22.5,
+    22.5,
+    10.1,
+    -2.5,
+    -2.5,
+    -2.5,
+    -7.5,
+    -7.2,
+    -5,
+    -17.5,
+    -17.3,
+    -35,
+    -35,
+    -35.2,
+    -35.6,
+    -36.3,
+    -37,
+    -37.9,
+    -38.7,
+    -39.5,
+    -40.2,
+    -40.8,
+    -22.1,
+    -21.9,
+    -21.7,
+    -21.5,
+    -21.2,
+    -20.9,
+    -20.6,
+    -20.3,
+    -20.1,
+    -20,
+    -20,
+    -12.1,
+    -12.5,
+    5,
+    -13.2,
+    -15,
+    -5,
+    -3.4,
+    20,
+    22.5,
+    22.5,
+    10.2,
+    -2.5,
+    -2.5,
+    -2.5,
+    -7.5,
+    -6.8,
+    -5,
+    -17.5,
+    -17.1,
+    -35,
+    -35.1,
+    -35.4,
+    -36.1,
+    -36.9,
+    -37.8,
+    -38.7,
+    -39.6,
+    -40.3,
+    -40.9,
+    -41.3,
+    -22.2,
+    -22.1,
+    -22,
+    -21.8,
+    -21.5,
+    -21.2,
+    -20.9,
+    -20.5,
+    -20.2,
+    -20,
+    -20,
+    -11.7,
+    -12.5,
+    5,
+    -11.5,
+    -15,
+    -5,
+    -1.8,
+    20,
+    22.5,
+    22.5,
+    10.5,
+    -2.5,
+    -2.5,
+    -2.5,
+    -7.5,
+    -6.2,
+    -5,
+    -17.5,
+    -16.7,
+    -35,
+    -35.2,
+    -35.8,
+    -36.7,
+    -37.7,
+    -38.7,
+    -39.6,
+    -40.4,
+    -41,
+    -41.5,
+    -41.8,
+    -22.4,
+    -22.3,
+    -22.2,
+    -22,
+    -21.8,
+    -21.6,
+    -21.2,
+    -20.8,
+    -20.4,
+    -20.1,
+    -20,
+    -10.9,
+    -12.5,
+    5,
+    -8.1,
+    -15,
+    -5,
+    1.3,
+    20,
+    22.5,
+    22.5,
+    11.4,
+    -2.5,
+    -2.5,
+    -2.5,
+    -7.5,
+    -5,
+    -5,
+    -17.5,
+    -15.9,
+    -35,
+    -35.4,
+    -36.4,
+    -37.5,
+    -38.7,
+    -39.7,
+    -40.6,
+    -41.2,
+    -41.6,
+    -41.9,
+    -42.1,
+    -22.4,
+    -22.4,
+    -22.3,
+    -22.2,
+    -22.1,
+    -21.9,
+    -21.6,
+    -21.2,
+    -20.7,
+    -20.3,
+    -20,
+    -9.3,
+    -12.5,
+    5,
+    -1.2,
+    -15,
+    -5,
+    7.5,
+    20,
+    22.5,
+    22.5,
+    14.2,
+    -2.5,
+    -2.5,
+    -2.5,
+    -7.5,
+    -2.5,
+    -5,
+    -17.5,
+    -14.3,
+    -35,
+    -35.9,
+    -37.3,
+    -38.7,
+    -39.9,
+    -40.8,
+    -41.4,
+    -41.8,
+    -42.1,
+    -42.2,
+    -42.3,
+    -22.5,
+    -22.4,
+    -22.4,
+    -22.4,
+    -22.3,
+    -22.2,
+    -22,
+    -21.7,
+    -21.2,
+    -20.6,
+    -20,
+    -6.2,
+    -12.5,
+    5,
+    12.5,
+    17.5,
+    17.5,
+    20,
+    20,
+    22.5,
+    22.5,
+    22.5,
+    10,
+    10,
+    10,
+    2.5,
+    2.5,
+    -5,
+    -17.5,
+    -11.2,
+    -35,
+    -36.8,
+    -38.7,
+    -40.1,
+    -41.1,
+    -41.6,
+    -42,
+    -42.2,
+    -42.3,
+    -42.4,
+    -42.4,
+    -22.5,
+    -22.5,
+    -22.5,
+    -22.4,
+    -22.4,
+    -22.4,
+    -22.3,
+    -22.2,
+    -21.8,
+    -21.2,
+    -20,
+    0,
+    17.5,
+    22.5,
+    25,
+    27.5,
+    27.5,
+    27.5,
+    27.5,
+    27.5,
+    27.5,
+    27.5,
+    20,
+    20,
+    20,
+    15,
+    10,
+    7.5,
+    2.5,
+    -5,
+    -35,
+    -38.7,
+    -40.6,
+    -41.5,
+    -42,
+    -42.2,
+    -42.3,
+    -42.4,
+    -42.4,
+    -42.5,
+    -42.5,
+    -22.5,
+    -22.5,
+    -22.5,
+    -22.5,
+    -22.5,
+    -22.5,
+    -22.5,
+    -22.5,
+    -22.5,
+    -22.5,
+    5,
+    20,
+    27.5,
+    22.5,
+    30,
+    32.5,
+    32.5,
+    32.5,
+    30,
+    30,
+    30,
+    30,
+    23.4,
+    20,
+    20,
+    20,
+    15,
+    12.5,
+    10,
+    5,
+    -5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -32.4,
+    -32.4,
+    -32.3,
+    -32.2,
+    -31.9,
+    -31.4,
+    -30.3,
+    -28.1,
+    -23.7,
+    -15,
+    17.5,
+    27.5,
+    32.5,
+    32.5,
+    35,
+    35,
+    35,
+    35,
+    32.5,
+    30,
+    30,
+    30,
+    30,
+    20,
+    20,
+    20,
+    20,
+    15,
+    12.5,
+    10,
+    2.5,
+    -12.5,
+    -32.5,
+    -42.5,
+    -47.5,
+    -50,
+    -51.2,
+    -51.8,
+    -52.2,
+    -52.3,
+    -52.4,
+    -32.5,
+    -32.5,
+    -32.5,
+    -32.5,
+    -32.5,
+    -32.5,
+    -32.5,
+    -32.5,
+    -32.5,
+    5,
+    22.5,
+    30,
+    32.5,
+    35,
+    37.5,
+    37.5,
+    37.5,
+    35,
+    32.5,
+    30,
+    30,
+    30,
+    30,
+    23.4,
+    20,
+    20,
+    20,
+    13.8,
+    12.5,
+    10,
+    5,
+    -20,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -20,
+    -20,
+    -20,
+    -20,
+    -20,
+    -20,
+    -20,
+    -20,
+    -20,
+    15,
+    27.5,
+    32.5,
+    35,
+    37.5,
+    37.5,
+    40,
+    37.5,
+    35,
+    33.8,
+    30,
+    30,
+    30,
+    30,
+    17.5,
+    18.6,
+    18.2,
+    16.3,
+    12.5,
+    12.5,
+    12.5,
+    7.5,
+    -21.2,
+    -50,
+    -50,
+    -50,
+    -50,
+    -50,
+    -50,
+    -50,
+    -50,
+    -50,
+    -20,
+    -20,
+    -20,
+    -20,
+    -20,
+    -20,
+    -20,
+    -20,
+    -20,
+    25,
+    25,
+    32.5,
+    35,
+    37.5,
+    40,
+    40,
+    37.5,
+    35,
+    35,
+    32.5,
+    31.3,
+    30.7,
+    17.5,
+    17.5,
+    17.5,
+    17.2,
+    16.9,
+    16.3,
+    15,
+    12.5,
+    -2.5,
+    -25,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    12.5,
+    20,
+    30,
+    35,
+    37.5,
+    40,
+    40,
+    37.5,
+    36.3,
+    32.1,
+    22.5,
+    22.5,
+    20,
+    17.5,
+    17.5,
+    17.5,
+    17.5,
+    17.5,
+    17.5,
+    15,
+    10,
+    5,
+    -20,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    7.5,
+    7.5,
+    7.5,
+    7.5,
+    7.5,
+    7.5,
+    7.5,
+    7.5,
+    7.5,
+    15,
+    22.5,
+    30,
+    35,
+    37.5,
+    37.5,
+    37.5,
+    37.5,
+    33.8,
+    25,
+    22.5,
+    22.5,
+    20,
+    17.5,
+    17.5,
+    17.5,
+    17.5,
+    17.5,
+    17.5,
+    12.5,
+    9.2,
+    5,
+    -9.1,
+    -35,
+    -35,
+    -35,
+    -35,
+    -35,
+    -35,
+    -35,
+    -35,
+    -35,
+    -7.5,
+    -7.5,
+    -7.5,
+    -7.5,
+    -7.5,
+    -7.5,
+    -7.5,
+    -7.5,
+    -7.5,
+    12.5,
+    20,
+    35,
+    32.5,
+    40,
+    37.5,
+    37.5,
+    35,
+    30,
+    25,
+    22.5,
+    22.5,
+    20,
+    17.5,
+    17.5,
+    17.5,
+    17.5,
+    17.5,
+    22.5,
+    20,
+    13.8,
+    3.8,
+    2.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -42.5,
+    -50,
+    -50,
+    -50,
+    -50,
+    -50,
+    -50,
+    -50,
+    -50,
+    -50,
+    10,
+    27.5,
+    32.5,
+    32.5,
+    37.5,
+    35,
+    35,
+    32.5,
+    25,
+    17.5,
+    7.5,
+    7.5,
+    -5.4,
+    -3.7,
+    12.5,
+    15,
+    22.5,
+    22.5,
+    12.5,
+    20,
+    7.5,
+    2.5,
+    -7.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    2.5,
+    22.5,
+    22.5,
+    32.5,
+    32.5,
+    32.5,
+    30,
+    27.5,
+    17.5,
+    -5,
+    1.3,
+    -3.7,
+    -20,
+    -20,
+    7.5,
+    10,
+    12.5,
+    15,
+    12.5,
+    17.5,
+    7.5,
+    7.5,
+    -15,
+    -55,
+    -55,
+    -55,
+    -55,
+    -55,
+    -55,
+    -55,
+    -55,
+    -55,
+    -52.4,
+    -52.3,
+    -52.1,
+    -51.8,
+    -51.1,
+    -49.7,
+    -46.8,
+    -41.2,
+    -30,
+    -7.5,
+    17.5,
+    22.5,
+    22.5,
+    25,
+    27.5,
+    25,
+    17.5,
+    15,
+    5,
+    3.2,
+    -5.4,
+    -15.6,
+    -11.2,
+    -2.5,
+    5,
+    7.5,
+    10,
+    10,
+    7.5,
+    10,
+    2.5,
+    -27.5,
+    -41.2,
+    -48.1,
+    -51.5,
+    -53.2,
+    -54.1,
+    -54.5,
+    -54.8,
+    -54.9,
+    -54.9,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -11.8,
+    7.5,
+    10,
+    15,
+    20,
+    17.5,
+    0,
+    7.5,
+    6.3,
+    4.7,
+    -30,
+    -30,
+    -30,
+    -30,
+    -5,
+    0,
+    2.5,
+    2.5,
+    0,
+    2.5,
+    -7.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -52.5,
+    -44.9,
+    -44.9,
+    -44.9,
+    -44.8,
+    -44.7,
+    -44.4,
+    -43.9,
+    -42.8,
+    -40.6,
+    -36.2,
+    -27.5,
+    -10,
+    5,
+    5,
+    -5,
+    -17.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -47.5,
+    -35.5,
+    -29,
+    -28.1,
+    -26.2,
+    -22.5,
+    -10,
+    -7.5,
+    -7.5,
+    -10,
+    -20,
+    -47.5,
+    -50,
+    -51.2,
+    -51.8,
+    -52.2,
+    -52.3,
+    -52.4,
+    -52.4,
+    -52.4,
+    -52.5,
+    -52.5,
+    -44.9,
+    -44.8,
+    -44.7,
+    -44.4,
+    -44,
+    -43.3,
+    -42.2,
+    -40.4,
+    -38.1,
+    -35.6,
+    -35,
+    -42.5,
+    -30,
+    -30,
+    -40,
+    -50,
+    -48.7,
+    -48.1,
+    -47.8,
+    -47.6,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -32.5,
+    -25,
+    -25,
+    -32.5,
+    -52.5,
+    -50,
+    -50,
+    -50.6,
+    -51.2,
+    -51.7,
+    -52,
+    -52.2,
+    -52.3,
+    -52.4,
+    -52.4,
+    -52.4,
+    -44.7,
+    -44.5,
+    -44.2,
+    -43.7,
+    -43,
+    -41.9,
+    -40.6,
+    -39,
+    -37.6,
+    -37.2,
+    -38.7,
+    -42.5,
+    -30,
+    -30,
+    -40,
+    -50,
+    -49.3,
+    -48.7,
+    -48.2,
+    -47.9,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -32.5,
+    -25,
+    -25,
+    -32.5,
+    -52.5,
+    -51.2,
+    -50.6,
+    -50.6,
+    -50.9,
+    -51.3,
+    -51.6,
+    -51.9,
+    -52.1,
+    -52.2,
+    -52.3,
+    -52.4,
+    -44.3,
+    -44,
+    -43.5,
+    -42.8,
+    -41.9,
+    -40.8,
+    -39.6,
+    -38.6,
+    -38.2,
+    -38.9,
+    -40.6,
+    -42.5,
+    -30,
+    -30,
+    -40,
+    -50,
+    -49.7,
+    -49.2,
+    -48.7,
+    -48.3,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -32.5,
+    -25,
+    -25,
+    -32.5,
+    -52.5,
+    -51.8,
+    -51.2,
+    -50.9,
+    -50.9,
+    -51.1,
+    -51.4,
+    -51.6,
+    -51.9,
+    -52.1,
+    -52.2,
+    -52.3,
+    -43.8,
+    -43.3,
+    -42.7,
+    -41.9,
+    -40.9,
+    -40,
+    -39.3,
+    -38.9,
+    -39.2,
+    -40.2,
+    -41.5,
+    -42.5,
+    -30,
+    -30,
+    -40,
+    -50,
+    -49.8,
+    -49.5,
+    -49.1,
+    -48.7,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -32.5,
+    -25,
+    -25,
+    -32.5,
+    -52.5,
+    -52.2,
+    -51.7,
+    -51.3,
+    -51.1,
+    -51.1,
+    -51.2,
+    -51.4,
+    -51.7,
+    -51.9,
+    -52,
+    -52.2,
+    -43.2,
+    -42.6,
+    -41.9,
+    -41.1,
+    -40.3,
+    -39.7,
+    -39.4,
+    -39.5,
+    -40.2,
+    -41.1,
+    -42,
+    -42.5,
+    -30,
+    -30,
+    -40,
+    -50,
+    -49.9,
+    -49.7,
+    -49.4,
+    -49.1,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -32.5,
+    -25,
+    -25,
+    -32.5,
+    -52.5,
+    -52.3,
+    -52,
+    -51.6,
+    -51.4,
+    -51.2,
+    -51.2,
+    -51.3,
+    -51.5,
+    -51.7,
+    -51.9,
+    -52,
+    -42.6,
+    -41.9,
+    -41.2,
+    -40.6,
+    -40.1,
+    -39.8,
+    -39.8,
+    -40.2,
+    -40.9,
+    -41.7,
+    -42.2,
+    -42.5,
+    -30,
+    -30,
+    -40,
+    -50,
+    -49.9,
+    -49.8,
+    -49.6,
+    -49.3,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -32.5,
+    -25,
+    -25,
+    -32.5,
+    -52.5,
+    -52.4,
+    -52.2,
+    -51.9,
+    -51.6,
+    -51.4,
+    -51.3,
+    -51.3,
+    -51.4,
+    -51.5,
+    -51.7,
+    -51.9,
+    -42,
+    -41.3,
+    -40.8,
+    -40.3,
+    -40.1,
+    -40.1,
+    -40.3,
+    -40.8,
+    -41.5,
+    -42,
+    -42.3,
+    -42.5,
+    -30,
+    -30,
+    -40,
+    -50,
+    -49.9,
+    -49.9,
+    -49.7,
+    -49.5,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -32.5,
+    -25,
+    -25,
+    -32.5,
+    -52.5,
+    -52.4,
+    -52.3,
+    -52.1,
+    -51.9,
+    -51.7,
+    -51.5,
+    -51.4,
+    -51.4,
+    -51.5,
+    -51.6,
+    -51.7,
+    -41.4,
+    -40.9,
+    -40.5,
+    -40.3,
+    -40.2,
+    -40.4,
+    -40.8,
+    -41.3,
+    -41.8,
+    -42.2,
+    -42.4,
+    -42.5,
+    -30,
+    -30,
+    -40,
+    -50,
+    -50,
+    -49.9,
+    -49.8,
+    -49.7,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -32.5,
+    -25,
+    -25,
+    -32.5,
+    -52.5,
+    -52.4,
+    -52.4,
+    -52.2,
+    -52.1,
+    -51.9,
+    -51.7,
+    -51.5,
+    -51.5,
+    -51.5,
+    -51.5,
+    -51.6,
+    -41.1,
+    -40.7,
+    -40.5,
+    -40.4,
+    -40.6,
+    -40.9,
+    -41.3,
+    -41.7,
+    -42.1,
+    -42.3,
+    -42.4,
+    -42.5,
+    -30,
+    -30,
+    -40,
+    -50,
+    -50,
+    -49.9,
+    -49.9,
+    -49.8,
+    -45,
+    -45,
+    -45,
+    -45,
+    -45,
+    -32.5,
+    -25,
+    -25,
+    -32.5,
+    -52.5,
+    -52.5,
+    -52.4,
+    -52.3,
+    -52.2,
+    -52,
+    -51.9,
+    -51.7,
+    -51.6,
+    -51.5,
+    -51.5,
+    -51.6
+   ],
+   "source": "lung base (or the atlas Diaphragm top within 15 mm below it) per 10 mm column; columns without lung filled by neighbour averaging"
+  },
+  "model": {
+   "halfWidth": 187,
+   "zRange": [
+    -367,
+    230
+   ],
+   "cavity": {
+    "cy": -10,
+    "rx": 131.7,
+    "ry": 100.5
+   },
+   "floorZ": -346.8,
+   "chest": [
+    -94,
+    -34,
+    185.0337371826172,
+    225.0337371826172
+   ],
+   "abdomen": [
+    -306.80633544921875,
+    -226.80633544921875,
+    -64,
+    6
+   ],
+   "wallY": [
+    -125,
+    118
+   ],
+   "ribHalf": 141.6,
+   "trunk": [
+    162,
+    182
+   ],
+   "slide": [
+    -204,
+    -24
+   ]
+  }
+ },
+ "gi": {
+  "stomach": {
+   "centerline": [
+    [
+     70,
+     -27.5,
+     7.5
+    ],
+    [
+     64,
+     -25.4,
+     -22.5
+    ],
+    [
+     61.9,
+     -43.6,
+     -47.4
+    ],
+    [
+     51.2,
+     -55.4,
+     -73.5
+    ],
+    [
+     28,
+     -66.5,
+     -90.9
+    ],
+    [
+     -2.5,
+     -68,
+     -91.5
+    ],
+    [
+     -17.5,
+     -45,
+     -100
+    ]
+   ],
+   "radii": [
+    8,
+    36.4,
+    38.9,
+    30.9,
+    21.2,
+    17.9,
+    8
+   ],
+   "source": "geodesic centre-line of the voxelised atlas Stomach, fundus -> pylorus"
+  }
+ },
+ "pleura": {
+  "right": {
+   "labels": [
+    7
+   ]
+  },
+  "left": {
+   "labels": [
+    8
+   ]
+  }
+ },
+ "landmarks": {
+  "sternal_notch": {
+   "point": [
+    0,
+    -68.55,
+    180.03
+   ],
+   "normal": [
+    0,
+    -0.8133,
+    0.5818
+   ],
+   "how": "highest midline point of the atlas manubrium"
+  },
+  "sternal_angle": {
+   "point": [
+    0,
+    -97.23,
+    130.11
+   ],
+   "normal": [
+    0,
+    -0.9742,
+    0.2257
+   ],
+   "how": "manubriosternal junction (lowest midline manubrium point)"
+  },
+  "xiphoid": {
+   "point": [
+    0,
+    -125.38,
+    0
+   ],
+   "normal": [
+    0,
+    -0.9599,
+    0.2803
+   ],
+   "how": "xiphoid process tip (defines z = 0)"
+  },
+  "umbilicus": {
+   "point": [
+    0,
+    -112.03,
+    -189.7
+   ],
+   "normal": [
+    0,
+    -0.9953,
+    -0.0965
+   ],
+   "how": "APPROXIMATE: L3-L4 disc level (surface-anatomy rule); the atlas has no umbilicus",
+   "approximate": true
+  },
+  "pubic_symphysis": {
+   "point": [
+    0,
+    -71.75,
+    -366.81
+   ],
+   "normal": [
+    0,
+    -0.8936,
+    -0.4489
+   ],
+   "how": "upper border of the atlas pubic symphysis"
+  }
+ },
+ "auscultation": [
+  {
+   "key": "aortic",
+   "name": "Aortic area (2nd right ICS, parasternal)",
+   "nameId": "Area aorta (SIC II kanan parasternal)",
+   "focus": "heart",
+   "approach": "anterior",
+   "point": [
+    -36.68,
+    -109.62,
+    116.1
+   ],
+   "normal": [
+    0.0001,
+    -0.8939,
+    0.4482
+   ],
+   "intercostalShiftMM": 0,
+   "rule": "ICS 2 at the r parasternal line from the atlas ribs/costal cartilages"
+  },
+  {
+   "key": "pulmonic",
+   "name": "Pulmonic area (2nd left ICS, parasternal)",
+   "nameId": "Area pulmonal (SIC II kiri parasternal)",
+   "focus": "heart",
+   "approach": "anterior",
+   "point": [
+    36.68,
+    -109.62,
+    116.1
+   ],
+   "normal": [
+    -0.0001,
+    -0.8939,
+    0.4482
+   ],
+   "intercostalShiftMM": 0,
+   "rule": "ICS 2 at the l parasternal line from the atlas ribs/costal cartilages"
+  },
+  {
+   "key": "erb",
+   "name": "Erb's point (3rd left ICS)",
+   "nameId": "Titik Erb (SIC III kiri)",
+   "focus": "heart",
+   "approach": "anterior",
+   "point": [
+    36.68,
+    -127.43,
+    81.3
+   ],
+   "normal": [
+    -0.1588,
+    -0.8873,
+    0.433
+   ],
+   "intercostalShiftMM": 0,
+   "rule": "ICS 3 at the l parasternal line from the atlas ribs/costal cartilages"
+  },
+  {
+   "key": "tricuspid",
+   "name": "Tricuspid area (4th-5th left ICS, LLSB)",
+   "nameId": "Area trikuspid (SIC IV-V kiri parasternal)",
+   "focus": "heart",
+   "approach": "anterior",
+   "point": [
+    36.68,
+    -136.2,
+    48.6
+   ],
+   "normal": [
+    -0.1503,
+    -0.9775,
+    0.1481
+   ],
+   "intercostalShiftMM": 0,
+   "rule": "ICS 4 at the l parasternal line from the atlas ribs/costal cartilages"
+  },
+  {
+   "key": "mitral",
+   "name": "Mitral area / apex (5th left ICS, MCL)",
+   "nameId": "Area mitral / apeks (SIC V kiri, LMC)",
+   "focus": "heart",
+   "approach": "anterior",
+   "point": [
+    82.77,
+    -130.8,
+    13.8
+   ],
+   "normal": [
+    0.2039,
+    -0.9472,
+    -0.2473
+   ],
+   "intercostalShiftMM": 0,
+   "rule": "ICS 5 at the l mcl line from the atlas ribs/costal cartilages"
+  },
+  {
+   "key": "lung_ant_r",
+   "name": "Right anterior upper lung field",
+   "nameId": "Lapang paru kanan atas depan",
+   "focus": "lung",
+   "approach": "anterior",
+   "point": [
+    -82.77,
+    -84.17,
+    143.3
+   ],
+   "normal": [
+    -0.178,
+    -0.7324,
+    0.6572
+   ],
+   "intercostalShiftMM": 0,
+   "rule": "ICS 2 at the r mcl line from the atlas ribs/costal cartilages"
+  },
+  {
+   "key": "lung_ant_l",
+   "name": "Left anterior upper lung field",
+   "nameId": "Lapang paru kiri atas depan",
+   "focus": "lung",
+   "approach": "anterior",
+   "point": [
+    82.77,
+    -84.17,
+    143.3
+   ],
+   "normal": [
+    0.178,
+    -0.7324,
+    0.6572
+   ],
+   "intercostalShiftMM": 0,
+   "rule": "ICS 2 at the l mcl line from the atlas ribs/costal cartilages"
+  },
+  {
+   "key": "lung_lat_r",
+   "name": "Right lateral base (mid-axillary line)",
+   "nameId": "Basal paru kanan lateral (LMA)",
+   "focus": "lung",
+   "approach": "right",
+   "point": [
+    -163.64,
+    10,
+    -1
+   ],
+   "normal": [
+    -0.1988,
+    -0.62,
+    -0.759
+   ],
+   "intercostalShiftMM": -16,
+   "rule": "mid-axillary line, lower chest; nearest intercostal space"
+  },
+  {
+   "key": "lung_lat_l",
+   "name": "Left lateral base (mid-axillary line)",
+   "nameId": "Basal paru kiri lateral (LMA)",
+   "focus": "lung",
+   "approach": "left",
+   "point": [
+    162.19,
+    10,
+    -3
+   ],
+   "normal": [
+    0.872,
+    -0.4286,
+    -0.2366
+   ],
+   "intercostalShiftMM": -8,
+   "rule": "mid-axillary line, lower chest; nearest intercostal space"
+  },
+  {
+   "key": "lung_post_r",
+   "name": "Right posterior base",
+   "nameId": "Basal paru kanan belakang",
+   "focus": "lung",
+   "approach": "posterior",
+   "point": [
+    -70,
+    122.75,
+    3
+   ],
+   "normal": [
+    -0.2203,
+    0.9275,
+    -0.3019
+   ],
+   "intercostalShiftMM": 8,
+   "rule": "posterior chest base, nearest intercostal space"
+  },
+  {
+   "key": "lung_post_l",
+   "name": "Left posterior base",
+   "nameId": "Basal paru kiri belakang",
+   "focus": "lung",
+   "approach": "posterior",
+   "point": [
+    70,
+    115.88,
+    -23
+   ],
+   "normal": [
+    0.1461,
+    0.9608,
+    -0.2357
+   ],
+   "intercostalShiftMM": -8,
+   "rule": "posterior chest base, nearest intercostal space"
+  },
+  {
+   "key": "abd_ruq",
+   "name": "Right upper quadrant",
+   "nameId": "Kuadran kanan atas",
+   "focus": "bowel",
+   "approach": "anterior",
+   "point": [
+    -70,
+    -121.99,
+    -114.7
+   ],
+   "normal": [
+    -0.4763,
+    -0.8298,
+    -0.2909
+   ],
+   "intercostalShiftMM": 0,
+   "rule": "abdominal quadrant relative to the approximate umbilical level"
+  },
+  {
+   "key": "abd_luq",
+   "name": "Left upper quadrant",
+   "nameId": "Kuadran kiri atas",
+   "focus": "bowel",
+   "approach": "anterior",
+   "point": [
+    70,
+    -121.99,
+    -114.7
+   ],
+   "normal": [
+    0.4763,
+    -0.8298,
+    -0.2909
+   ],
+   "intercostalShiftMM": 0,
+   "rule": "abdominal quadrant relative to the approximate umbilical level"
+  },
+  {
+   "key": "abd_rlq",
+   "name": "Right lower quadrant",
+   "nameId": "Kuadran kanan bawah",
+   "focus": "bowel",
+   "approach": "anterior",
+   "point": [
+    -70,
+    -96.63,
+    -264.7
+   ],
+   "normal": [
+    -0.2971,
+    -0.9382,
+    -0.1775
+   ],
+   "intercostalShiftMM": 0,
+   "rule": "abdominal quadrant relative to the approximate umbilical level"
+  },
+  {
+   "key": "abd_llq",
+   "name": "Left lower quadrant",
+   "nameId": "Kuadran kiri bawah",
+   "focus": "bowel",
+   "approach": "anterior",
+   "point": [
+    70,
+    -96.63,
+    -264.7
+   ],
+   "normal": [
+    0.2971,
+    -0.9382,
+    -0.1775
+   ],
+   "intercostalShiftMM": 0,
+   "rule": "abdominal quadrant relative to the approximate umbilical level"
+  }
+ ],
+ "views": [
+  {
+   "key": "subxiphoid",
+   "contact": {
+    "point": [
+     20,
+     -129.11,
+     -5
+    ],
+    "normal": [
+     -0.0543,
+     -0.9926,
+     0.1089
+    ]
+   },
+   "angles": {
+    "rotate": -45,
+    "heelToe": -35.8,
+    "rock": 24
+   },
+   "aim": [
+    33.7,
+    -43.1,
+    57.1
+   ],
+   "aimErrorDeg": 0.09,
+   "windowObstructionSamples": 0
+  },
+  {
+   "key": "parasternal",
+   "contact": {
+    "point": [
+     26.68,
+     -134.38,
+     44.6
+    ],
+    "normal": [
+     -0.1716,
+     -0.9851,
+     0.0071
+    ]
+   },
+   "angles": {
+    "rotate": -15,
+    "heelToe": -2.5,
+    "rock": 4.5
+   },
+   "aim": [
+    47.5,
+    -29,
+    53.5
+   ],
+   "aimErrorDeg": 0.16,
+   "windowObstructionSamples": 0
+  },
+  {
+   "key": "apical",
+   "contact": {
+    "point": [
+     80.46,
+     -134.16,
+     48.86
+    ],
+    "normal": [
+     0.063,
+     -0.9976,
+     0.0305
+    ]
+   },
+   "angles": {
+    "rotate": -45,
+    "heelToe": 10.5,
+    "rock": 17.5
+   },
+   "aim": [
+    22.5,
+    1.3,
+    58.1
+   ],
+   "aimErrorDeg": 0.1,
+   "windowObstructionSamples": 49
+  },
+  {
+   "key": "ruq",
+   "contact": {
+    "point": [
+     -125.8,
+     20,
+     -162.9
+    ],
+    "normal": [
+     -0.8761,
+     0.4312,
+     -0.2158
+    ]
+   },
+   "angles": {
+    "rotate": 90,
+    "heelToe": -14.5,
+    "rock": 17.8
+   },
+   "aim": [
+    -58.7,
+    10.8,
+    -127.9
+   ],
+   "aimErrorDeg": 0.01,
+   "windowObstructionSamples": 0
+  },
+  {
+   "key": "right_flank",
+   "contact": {
+    "point": [
+     -125.38,
+     96.11,
+     -20
+    ],
+    "normal": [
+     -0.522,
+     0.8461,
+     -0.1076
+    ]
+   },
+   "angles": {
+    "rotate": 95,
+    "heelToe": 35.5,
+    "rock": 32.3
+   },
+   "aim": [
+    -72.5,
+    75,
+    -45
+   ],
+   "aimErrorDeg": 0.12
+  },
+  {
+   "key": "epigastric",
+   "contact": {
+    "point": [
+     -2.5,
+     -127.69,
+     -101.5
+    ],
+    "normal": [
+     0.175,
+     -0.9715,
+     -0.1599
+    ]
+   },
+   "angles": {
+    "rotate": 90,
+    "heelToe": 0.3,
+    "rock": 10
+   },
+   "aim": [
+    -2.5,
+    -68,
+    -91.5
+   ],
+   "aimErrorDeg": 0.11,
+   "windowObstructionSamples": 0
+  },
+  {
+   "key": "lung_anterior",
+   "contact": {
+    "point": [
+     -82.77,
+     -84.17,
+     143.3
+    ],
+    "normal": [
+     -0.178,
+     -0.7324,
+     0.6572
+    ]
+   },
+   "angles": {
+    "rotate": 90,
+    "heelToe": 0,
+    "rock": 0
+   },
+   "aim": null,
+   "aimErrorDeg": null
+  },
+  {
+   "key": "bladder",
+   "contact": {
+    "point": [
+     0,
+     -77.99,
+     -351.81
+    ],
+    "normal": [
+     0,
+     -0.9209,
+     -0.3898
+    ]
+   },
+   "angles": {
+    "rotate": 0,
+    "heelToe": -0.3,
+    "rock": -32
+   },
+   "aim": [
+    0.4,
+    11.9,
+    -366
+   ],
+   "aimErrorDeg": 0.13,
+   "windowObstructionSamples": 0
+  }
+ ],
+ "suggestedViews": {
+  "hfref": "subxiphoid",
+  "effusion": "right_flank",
+  "gastroparesis": "epigastric",
+  "normal": "subxiphoid"
+ },
+ "ics": {
+  "lines": {
+   "parasternal": 36.67546081542969,
+   "mcl": 82.7725625038147
+  },
+  "z": {
+   "r_parasternal": [
+    153,
+    116.1,
+    81.3,
+    48.6,
+    22.7,
+    6.3,
+    -15.5,
+    null
+   ],
+   "r_mcl": [
+    null,
+    143.3,
+    93.2,
+    50,
+    13.8,
+    -21.8,
+    -62,
+    -91
+   ],
+   "l_parasternal": [
+    153,
+    116.1,
+    81.3,
+    48.6,
+    22.7,
+    6.3,
+    -15.5,
+    null
+   ],
+   "l_mcl": [
+    null,
+    143.3,
+    93.2,
+    50,
+    13.8,
+    -21.8,
+    -62,
+    -91
+   ]
+  }
+ },
+ "windowNote": "Windows are searched on the atlas body: the skin contact whose sector toward the target crosses the least bone/aerated lung/gas. In this atlas body the anterior lung margins and lingula cover much of the heart, so the apical window is partly obstructed (as in many real patients in the supine position).",
+ "regions": {
+  "headZ": 300,
+  "neckZ": 175,
+  "armX": 197,
+  "thighZ": -397,
+  "thoraxZ": -5,
+  "pelvisZ": -297,
+  "epigastricZ": -165,
+  "umbilicalZ": -230,
+  "quadrantSplitZ": -190,
+  "icsParasternal": [
+   153,
+   116.1,
+   81.3,
+   48.6,
+   22.7,
+   6.3,
+   -15.5,
+   null
+  ]
+ },
+ "meshes": {
+  "skin": "skin.glb",
+  "registration": "registration.json",
+  "atlasLayer": {
+   "systems": [
+    "visceral",
+    "skeletal",
+    "cardiovascular",
+    "lymphatic",
+    "muscular",
+    "nervous",
+    "joints"
+   ],
+   "url": "shared MEDCOEL Anatomy Atlas models (/anatomy/viewer/models/)"
+  }
+ },
+ "comparisonWithProceduralPhantom": {
+  "method": "centroids of matching labels; best rigid (rotation + translation) least-squares fit",
+  "rmsMM": 37.5,
+  "maxMM": 61.1,
+  "residual": [
+   {
+    "structure": "LV cavity",
+    "atlasLPS": [
+     47.5,
+     -29,
+     53.5
+    ],
+    "phantomLPS": [
+     34.8,
+     -8.9,
+     60.3
+    ],
+    "identityDistanceMM": 24.8,
+    "rigidFitResidualMM": 14
+   },
+   {
+    "structure": "right lung",
+    "atlasLPS": [
+     -66.7,
+     5.9,
+     78.5
+    ],
+    "phantomLPS": [
+     -78.2,
+     -3.3,
+     96.7
+    ],
+    "identityDistanceMM": 23.4,
+    "rigidFitResidualMM": 25.4
+   },
+   {
+    "structure": "left lung",
+    "atlasLPS": [
+     74.3,
+     11.9,
+     75.3
+    ],
+    "phantomLPS": [
+     84.9,
+     4,
+     93.3
+    ],
+    "identityDistanceMM": 22.4,
+    "rigidFitResidualMM": 37
+   },
+   {
+    "structure": "liver",
+    "atlasLPS": [
+     -46.5,
+     -32.6,
+     -27
+    ],
+    "phantomLPS": [
+     -49.6,
+     -14.6,
+     -49.9
+    ],
+    "identityDistanceMM": 29.3,
+    "rigidFitResidualMM": 33.1
+   },
+   {
+    "structure": "spleen",
+    "atlasLPS": [
+     91,
+     12.9,
+     -60.7
+    ],
+    "phantomLPS": [
+     108.2,
+     52.7,
+     -57.6
+    ],
+    "identityDistanceMM": 43.4,
+    "rigidFitResidualMM": 29.2
+   },
+   {
+    "structure": "kidneys",
+    "atlasLPS": [
+     3.1,
+     15.1,
+     -119
+    ],
+    "phantomLPS": [
+     -2.7,
+     68.4,
+     -122.9
+    ],
+    "identityDistanceMM": 53.7,
+    "rigidFitResidualMM": 48.4
+   },
+   {
+    "structure": "stomach",
+    "atlasLPS": [
+     53.4,
+     -41.1,
+     -51.3
+    ],
+    "phantomLPS": [
+     58.7,
+     -16.9,
+     -73.2
+    ],
+    "identityDistanceMM": 33.1,
+    "rigidFitResidualMM": 31.8
+   },
+   {
+    "structure": "bladder",
+    "atlasLPS": [
+     0.4,
+     11.9,
+     -366
+    ],
+    "phantomLPS": [
+     0,
+     -34,
+     -312
+    ],
+    "identityDistanceMM": 70.8,
+    "rigidFitResidualMM": 61.1
+   }
+  ],
+  "conclusion": "The procedural phantom and the atlas describe different bodies. A rigid fit leaves residuals far larger than a CT voxel, so the atlas is NOT overlaid on the phantom CT."
+ },
+ "build": {
+  "voxelMM": 2.5,
+  "fatAndSkinMM": 8,
+  "armFatAndSkinMM": 5,
+  "closingMM": 6,
+  "skinNetMM": 5,
+  "seconds": 83
+ }
+}

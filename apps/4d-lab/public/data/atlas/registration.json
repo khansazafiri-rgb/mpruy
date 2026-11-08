@@ -1,0 +1,637 @@
+{
+ "schema": "medcoel.patient.v2",
+ "source": "MEDCOEL atlas-derived synthetic dataset",
+ "synthetic": true,
+ "units": "glTF metres (atlas frame)",
+ "glbToLPS": [
+  1000,
+  0,
+  0,
+  0,
+  0,
+  0,
+  -1000,
+  0,
+  0,
+  1000,
+  0,
+  -1220.9,
+  0,
+  0,
+  0,
+  1
+ ],
+ "ijkToLPS": [
+  2.5,
+  0,
+  0,
+  -262.5,
+  0,
+  2.5,
+  0,
+  -162.5,
+  0,
+  0,
+  2.5,
+  -507.5,
+  0,
+  0,
+  0,
+  1
+ ],
+ "sizes": [
+  211,
+  128,
+  323
+ ],
+ "samples": [
+  {
+   "ijk": [
+    42,
+    38,
+    80
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    42,
+    38,
+    161
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    42,
+    38,
+    241
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    42,
+    63,
+    80
+   ],
+   "value": -84
+  },
+  {
+   "ijk": [
+    42,
+    63,
+    161
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    42,
+    63,
+    241
+   ],
+   "value": 16
+  },
+  {
+   "ijk": [
+    42,
+    88,
+    80
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    42,
+    88,
+    161
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    42,
+    88,
+    241
+   ],
+   "value": 50
+  },
+  {
+   "ijk": [
+    105,
+    38,
+    80
+   ],
+   "value": 50
+  },
+  {
+   "ijk": [
+    105,
+    38,
+    161
+   ],
+   "value": 12
+  },
+  {
+   "ijk": [
+    105,
+    38,
+    241
+   ],
+   "value": -96
+  },
+  {
+   "ijk": [
+    105,
+    63,
+    80
+   ],
+   "value": -100
+  },
+  {
+   "ijk": [
+    105,
+    63,
+    161
+   ],
+   "value": 337
+  },
+  {
+   "ijk": [
+    105,
+    63,
+    241
+   ],
+   "value": 113
+  },
+  {
+   "ijk": [
+    105,
+    88,
+    80
+   ],
+   "value": 17
+  },
+  {
+   "ijk": [
+    105,
+    88,
+    161
+   ],
+   "value": -93
+  },
+  {
+   "ijk": [
+    105,
+    88,
+    241
+   ],
+   "value": 258
+  },
+  {
+   "ijk": [
+    168,
+    38,
+    80
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    168,
+    38,
+    161
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    168,
+    38,
+    241
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    168,
+    63,
+    80
+   ],
+   "value": -84
+  },
+  {
+   "ijk": [
+    168,
+    63,
+    161
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    168,
+    63,
+    241
+   ],
+   "value": 16
+  },
+  {
+   "ijk": [
+    168,
+    88,
+    80
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    168,
+    88,
+    161
+   ],
+   "value": -1000
+  },
+  {
+   "ijk": [
+    168,
+    88,
+    241
+   ],
+   "value": 50
+  }
+ ],
+ "meshes": [
+  {
+   "file": "skin.glb",
+   "sha256": "c7e14b7dc800eb925c175b8c0fd25d93c8a0f84d83dd5622b16a54709f25c317",
+   "meshes": [
+    "skin"
+   ]
+  }
+ ],
+ "skinAnchors": [
+  {
+   "vertex": 0,
+   "ijk": [
+    60.8784,
+    9.883,
+    -285.1161
+   ],
+   "lpsMM": [
+    -110.3039,
+    -137.7925,
+    -1220.2903
+   ]
+  },
+  {
+   "vertex": 4490,
+   "ijk": [
+    150.7737,
+    38.6348,
+    -267.123
+   ],
+   "lpsMM": [
+    114.4343,
+    -65.9131,
+    -1175.3076
+   ]
+  },
+  {
+   "vertex": 8980,
+   "ijk": [
+    58.7919,
+    93.6128,
+    -220.8938
+   ],
+   "lpsMM": [
+    -115.5202,
+    71.5321,
+    -1059.7346
+   ]
+  },
+  {
+   "vertex": 13470,
+   "ijk": [
+    48.6162,
+    97.1926,
+    -170.0997
+   ],
+   "lpsMM": [
+    -140.9596,
+    80.4816,
+    -932.7492
+   ]
+  },
+  {
+   "vertex": 17961,
+   "ijk": [
+    145.7454,
+    59.1875,
+    -126.1476
+   ],
+   "lpsMM": [
+    101.8634,
+    -14.5312,
+    -822.8689
+   ]
+  },
+  {
+   "vertex": 22451,
+   "ijk": [
+    51.7822,
+    56.8656,
+    -86.1352
+   ],
+   "lpsMM": [
+    -133.0446,
+    -20.3361,
+    -722.8381
+   ]
+  },
+  {
+   "vertex": 26941,
+   "ijk": [
+    51.3075,
+    83.6931,
+    -50.0028
+   ],
+   "lpsMM": [
+    -134.2314,
+    46.7326,
+    -632.507
+   ]
+  },
+  {
+   "vertex": 31432,
+   "ijk": [
+    160.2345,
+    83.3061,
+    -15.9993
+   ],
+   "lpsMM": [
+    138.0861,
+    45.7652,
+    -547.4984
+   ]
+  },
+  {
+   "vertex": 35922,
+   "ijk": [
+    -23.6303,
+    38.9001,
+    8.325
+   ],
+   "lpsMM": [
+    -321.5758,
+    -65.2498,
+    -486.6875
+   ]
+  },
+  {
+   "vertex": 40412,
+   "ijk": [
+    145.7391,
+    96.3317,
+    23.9663
+   ],
+   "lpsMM": [
+    101.8477,
+    78.3294,
+    -447.5843
+   ]
+  },
+  {
+   "vertex": 44903,
+   "ijk": [
+    7.0845,
+    62.1657,
+    44.2708
+   ],
+   "lpsMM": [
+    -244.7888,
+    -7.0857,
+    -396.823
+   ]
+  },
+  {
+   "vertex": 49393,
+   "ijk": [
+    153.8497,
+    41.3928,
+    67.9985
+   ],
+   "lpsMM": [
+    122.1243,
+    -59.0181,
+    -337.5039
+   ]
+  },
+  {
+   "vertex": 53883,
+   "ijk": [
+    67.0903,
+    32.0593,
+    89.0771
+   ],
+   "lpsMM": [
+    -94.7741,
+    -82.3518,
+    -284.8073
+   ]
+  },
+  {
+   "vertex": 58373,
+   "ijk": [
+    158.7635,
+    71.8063,
+    112.8669
+   ],
+   "lpsMM": [
+    134.4087,
+    17.0158,
+    -225.3329
+   ]
+  },
+  {
+   "vertex": 62864,
+   "ijk": [
+    28.9657,
+    63.816,
+    135.8296
+   ],
+   "lpsMM": [
+    -190.0858,
+    -2.9599,
+    -167.9259
+   ]
+  },
+  {
+   "vertex": 67354,
+   "ijk": [
+    197.2634,
+    66.1135,
+    157.6376
+   ],
+   "lpsMM": [
+    230.6585,
+    2.7836,
+    -113.4061
+   ]
+  },
+  {
+   "vertex": 71844,
+   "ijk": [
+    8.2671,
+    69.2907,
+    180.4795
+   ],
+   "lpsMM": [
+    -241.8322,
+    10.7266,
+    -56.3013
+   ]
+  },
+  {
+   "vertex": 76335,
+   "ijk": [
+    42.1453,
+    60.9969,
+    202.0121
+   ],
+   "lpsMM": [
+    -157.1368,
+    -10.0077,
+    -2.4699
+   ]
+  },
+  {
+   "vertex": 80825,
+   "ijk": [
+    45.4059,
+    103.5799,
+    225.9988
+   ],
+   "lpsMM": [
+    -148.9852,
+    96.4497,
+    57.497
+   ]
+  },
+  {
+   "vertex": 85315,
+   "ijk": [
+    159.3377,
+    34.9576,
+    249.7952
+   ],
+   "lpsMM": [
+    135.8442,
+    -75.1059,
+    116.988
+   ]
+  },
+  {
+   "vertex": 89806,
+   "ijk": [
+    67.7023,
+    110.5276,
+    272.0108
+   ],
+   "lpsMM": [
+    -93.2443,
+    113.8189,
+    172.5269
+   ]
+  },
+  {
+   "vertex": 94296,
+   "ijk": [
+    88.4376,
+    97.6378,
+    300.7029
+   ],
+   "lpsMM": [
+    -41.406,
+    81.5945,
+    244.2573
+   ]
+  },
+  {
+   "vertex": 98786,
+   "ijk": [
+    86.6946,
+    104.7365,
+    354.8134
+   ],
+   "lpsMM": [
+    -45.7634,
+    99.3413,
+    379.5335
+   ]
+  },
+  {
+   "vertex": 103277,
+   "ijk": [
+    108.9855,
+    73.9713,
+    401.0497
+   ],
+   "lpsMM": [
+    9.9639,
+    22.4284,
+    495.1243
+   ]
+  }
+ ],
+ "atlasFrame": {
+  "atlasToLPS": [
+   1000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   -1000,
+   0,
+   0,
+   1000,
+   0,
+   -1220.9,
+   0,
+   0,
+   0,
+   1
+  ],
+  "y0Metres": 1.2209,
+  "units": {
+   "atlas": "metres",
+   "lps": "millimetres"
+  },
+  "axes": {
+   "atlas": "+X patient left, +Y superior, +Z anterior (verified: Kidney.l at +X, testes/glans at +Z, vertex at +Y)",
+   "lps": "+x left, +y posterior, +z superior"
+  },
+  "origin": "LPS z = 0 at the xiphoid process tip of the atlas; x = 0 atlas mid-sagittal plane; y = 0 atlas coronal plane Z = 0",
+  "relation": "exact (rigid + unit change). The CT/labels were generated from the atlas meshes in this frame; no fitting."
+ },
+ "qc": {
+  "reviewRequired": true,
+  "validatedAnatomy": false,
+  "synthetic": true,
+  "skinTriangles": 206580,
+  "skinBoundaryOrNonManifoldEdges": 30,
+  "skinLabelAgreement": 0.996,
+  "skinVerticesTested": 7772,
+  "voxelisationMethods": {
+   "parity": 1019,
+   "fill": 46
+  }
+ },
+ "limitations": [
+  "The skin is an ILLUSTRATIVE shell: the atlas muscle/bone envelope closed by 6 mm and offset by an assumed 8 mm (trunk, head, legs) / 5 mm (arms) of fat and skin; arms and trunk are enveloped separately. It is not a scanned or validated body surface.",
+  "The CT is SYNTHETIC: atlas meshes voxelised at 2.5 mm with textbook HU values. Gastric/colonic gas and content distributions are assumptions.",
+  "CT coverage is chest-abdomen-pelvis; the shell outside the CT box is display-only and cannot be imaged."
+ ]
+}

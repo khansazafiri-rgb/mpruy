@@ -97,6 +97,18 @@ export class PatientScene {
     this.floorParts = [floor, grid];
     this.table = g; this.scene.add(g);
     this.tableMaterials = [top.material, pad.material];
+    this.tableParts = { top, pad };
+  }
+
+  /**
+   * Fit the exam table under a body (LPS bounds of the skin): pad top touches the most posterior skin,
+   * length covers head to feet. Used for datasets whose body is longer than the phantom's CT box.
+   */
+  setTableFor(lo, hi) {
+    const { top, pad } = this.tableParts, len = hi[2] - lo[2] + 160, cx = (hi[2] + lo[2]) / 2;
+    pad.scale.x = len / 1700; top.scale.x = (len + 50) / 1750; pad.position.x = cx; top.position.x = cx;
+    pad.position.y = -hi[1] - 15.5; top.position.y = pad.position.y - 32;
+    this.tableLegs[0].position.x = lo[2] + 160; this.tableLegs[1].position.x = hi[2] - 160;
   }
 
   /** Build skin + organ meshes from LPS position arrays. */
@@ -159,6 +171,7 @@ export class PatientScene {
     const skin = this.meshes.skin?.mesh;
     if (skin) {
       skin.material.opacity = skinOpacity; skin.material.transparent = skinOpacity < 0.999; skin.material.depthWrite = skinOpacity >= 0.999;
+      skin.visible = skinOpacity > 0.01; // 'internal anatomy' mode hides the shell (it stays pickable for the probe)
       skin.material.needsUpdate = true;
       const planes = [];
       if (cutaway === 'anterior') { this.clip.anterior.constant = cutDepth; planes.push(this.clip.anterior); }
@@ -475,6 +488,7 @@ export class PatientScene {
     const up = (e) => {
       if (drag) { drag = null; if (this.controls) this.controls.enabled = true; this.h.onDragEnd?.(); down = null; return; }
       if (down && Math.hypot(e.clientX - down.x, e.clientY - down.y) < 5 && e.button === 0) {
+        if (this.h.onPick?.(e)) { down = null; return; } // inspect tool consumed the click
         const c = this.pickSkin(e); if (c) this.h.onSkinClick?.(c);
       }
       down = null;
@@ -498,6 +512,12 @@ export class PatientScene {
   _screen(lps) {
     const v = v3(lps).applyMatrix4(LPS_TO_SCENE).project(this.camera), r = this.renderer.domElement.getBoundingClientRect();
     return { x: r.left + (v.x * 0.5 + 0.5) * r.width, y: r.top + (-v.y * 0.5 + 0.5) * r.height };
+  }
+
+  /** Raycast the atlas layer at a pointer event (inspect tool). */
+  pickAtlas(e, atlas) {
+    this._pointerNDC(e);
+    return atlas.pick(this.raycaster, new THREE.Matrix4().copy(LPS_TO_SCENE).invert());
   }
 
   /** Screen position of an LPS point (for tests and overlays). */
