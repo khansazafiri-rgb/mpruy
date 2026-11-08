@@ -47,7 +47,7 @@ function windowAndClock(t) {
 }
 // ---- tumpukan PPT (kartu slide jatuh satu per satu) dan catatan tempel
 const SLIDES = [[170, 1196, -5], [240, 1170, 4], [150, 1110, 7], [255, 1078, -7], [182, 1030, 3], [262, 996, -3], [160, 950, 6], [236, 912, -6]];
-function slideCard(x, y, rot, i) {
+export function slideCard(x, y, rot, i) {
   const hue = ['#1D7B75', '#4F7FE0', '#8E7CE8', '#E59A3A'][i % 4];
   return `<g transform="translate(${f1(x)} ${f1(y)}) rotate(${rot})"><rect x="-112" y="-72" width="224" height="144" rx="12" fill="#021014" opacity=".3" transform="translate(5 8)"/><rect x="-112" y="-72" width="224" height="144" rx="12" fill="#FFFFFF" stroke="${MC.ink}" stroke-width="3"/><rect x="-112" y="-72" width="224" height="34" rx="12" fill="${hue}"/><rect x="-112" y="-52" width="224" height="14" fill="${hue}"/><text x="-96" y="-47" font-family="${FONT}" font-weight="800" font-size="22" fill="#fff">PPT</text><rect x="-92" y="-18" width="150" height="10" rx="5" fill="#C9D4D9"/><rect x="-92" y="6" width="120" height="10" rx="5" fill="#C9D4D9"/><rect x="-92" y="30" width="170" height="10" rx="5" fill="#C9D4D9"/><rect x="62" y="-14" width="36" height="36" rx="8" fill="${hue}" opacity=".35"/></g>`;
 }

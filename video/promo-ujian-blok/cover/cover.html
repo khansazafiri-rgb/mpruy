@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover Besok ujian blok</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#root{width:1080px;height:1920px;position:relative;overflow:hidden}#root svg{position:absolute;left:0;top:0}</style></head>
+<body><div id="root"><svg id="sc" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script type="module">
+// Cover khusus (bukan bingkai pertama): judul + Raka bingung + tumpukan PPT + cuplikan UI MEDCOEL ASLI (dialog "Siapkan sesi belajarmu": Mode Learning / Mode ujian, tangkapan layar cover/ambil-ui.cjs).
+// Area aman TikTok/Reels: atas >= 250 px, bawah <= 1440 px, kanan <= 940 px. ?guide menggambar garis area aman.
+import { f1, MC, FONT } from '../stage/core.js';
+import * as A from '../stage/art.js';
+import { bg } from '../stage/bg.js';
+import { raka, rakaBody, rIdle } from '../stage/raka.js';
+import { slideCard } from '../stage/room.js';
+const q = new URLSearchParams(location.search);
+await document.fonts.load('800 80px "Plus Jakarta Sans"'); await document.fonts.ready;
+let s = A.defs() + bg(2.0, { cy: 940 });
+// tumpukan PPT (kiri-bawah)
+[[150, 1370, -6, 0], [215, 1330, 5, 1], [130, 1262, 7, 2], [225, 1215, -5, 3], [160, 1160, 4, 1]].forEach(([x, y, r, i]) => { s += slideCard(x, y, r, i); });
+// Raka bingung (tengah-kiri), tanda tanya
+let st = raka('bingung', 'berpikir', { yaw: 0.25, gazeX: 0.6, gazeY: -0.3, tilt: 6, sweat: 1 }); st = rIdle(st, 2.2);
+const k = 0.74, rx = 300, ry = 1440;
+s += `<ellipse cx="${rx}" cy="${ry + 6}" rx="170" ry="16" fill="#021014" opacity=".3"/><g transform="translate(${f1(rx - 200 * k)} ${f1(ry - 778 * k)}) scale(${k})">${rakaBody(st, 'rkc', { dark: true })}</g>`;
+s += `<g font-family="${FONT}" font-weight="800" fill="${MC.gold}" stroke="#061C24" stroke-width="10" paint-order="stroke"><text x="395" y="1090" font-size="110" transform="rotate(10 395 1090)">?</text><text x="180" y="1005" font-size="80" transform="rotate(-12 180 1005)">?</text></g>`;
+// ponsel dengan UI MEDCOEL asli
+const px = 480, py = 880, pw = 460, ph = 540, sc = pw / 1080, sy = 470;
+s += `<rect x="${px - 8}" y="${py - 8}" width="${pw + 16}" height="${ph + 16}" rx="56" fill="#021014" opacity=".4" transform="translate(10 14)"/><rect x="${px - 12}" y="${py - 12}" width="${pw + 24}" height="${ph + 24}" rx="58" fill="#141D26" stroke="#3B4D5B" stroke-width="3"/><clipPath id="clipP"><rect x="${px}" y="${py}" width="${pw}" height="${ph}" rx="46"/></clipPath><g clip-path="url(#clipP)"><image href="/video/promo-ujian-blok/cover/ui-dialog.jpg" x="${px}" y="${f1(py - sy * sc)}" width="${f1(1080 * sc)}" height="${f1(1800 * sc)}" preserveAspectRatio="none"/></g>`;
+// judul
+const T = (y, txt, fill = MC.ivory, fs = 108) => `<text x="72" y="${y}" font-family="${FONT}" font-weight="800" font-size="${fs}" fill="${fill}" stroke="#061C24" stroke-width="14" paint-order="stroke" stroke-linejoin="round">${txt}</text>`;
+s += T(470, 'BESOK UJIAN') + T(580, 'BLOK.', MC.gold) + T(700, 'BELAJAR DARI', MC.ivory, 92) + T(814, 'MANA?', MC.gold, 118);
+s += `<rect x="72" y="838" width="150" height="10" rx="5" fill="${MC.gold}"/>`;
+s += `<rect x="72" y="276" width="312" height="76" rx="38" fill="${MC.ivory}" stroke="${MC.ink}" stroke-width="3"/><image href="../stage/logo-full.webp" x="94" y="289" height="50" preserveAspectRatio="xMinYMid meet"/>`;
+if (q.has('guide')) {
+  s += `<g fill="#FF0066" opacity=".16"><rect x="0" y="0" width="1080" height="250"/><rect x="0" y="1440" width="1080" height="480"/><rect x="940" y="250" width="140" height="1190"/></g><g stroke="#FF0066" stroke-width="4" stroke-dasharray="14 10" fill="none"><rect x="0" y="250" width="940" height="1190"/></g>`;
+  s += `<text x="20" y="1500" font-family="${FONT}" font-weight="800" font-size="34" fill="#FF0066">area UI TikTok/Reels (bawah)</text><text x="20" y="60" font-family="${FONT}" font-weight="800" font-size="34" fill="#FF0066">atas</text>`;
+}
+document.getElementById('sc').innerHTML = s;
+await Promise.all([...document.images].map((i) => i.decode().catch(() => {})));
+await new Promise((r) => setTimeout(r, 300)); window.__ready = true;
+</script></body></html>

@@ -163,7 +163,22 @@ def tick(t0, gv=0.04, f=1800):
 def siren(t0, dur, gv=0.03):
     n = int(dur*sr); tt = np.arange(n)/sr; f = np.where((tt*2.2) % 1 < 0.5, 660, 880)
     add(sfx, t0, np.sin(2*np.pi*np.cumsum(f)/sr) * np.minimum(1, tt/0.1) * np.clip((dur-tt)/0.2, 0, 1), gv)
-@@SFX@@
+# efek tipis, waktu = detik video; mengikuti ketukan nyata di rekaman web dan kejadian di cerita
+for tx in (0.15, 0.45, 0.75, 1.05, 1.35): tick(tx, 0.035, 1500)                       # kalender bergeser menuju Senin
+chime(0.8, [1319, 1568], 0.05, 0.08, 0.7); pop(0.85, 0.05, 520)                       # notifikasi ujian blok
+for i in range(8): thup(1.85 + 0.16 * i + 0.42, 0.06, 110)                             # slide PPT jatuh dan menumpuk
+for i in range(5): pop(2.35 + 0.18 * i, 0.035, 700 + 40 * i)                           # catatan tempel
+chime(3.1, [330], 0.04, 0.0, 0.6)                                                      # buku soal masih utuh
+for tx in (4.6, 5.0, 5.4): pop(tx, 0.05, 420)                                           # bingung: ? ? ?
+chime(5.9, [1568], 0.05, 0.0, 0.8); whoosh(6.3, 1.0, 0.05, True)                       # ponsel menyala, layar membesar
+for tx in (9.09, 10.46, 11.08, 12.55, 13.2, 15.0, 16.78, 17.3): pop(tx, 0.05, 640)     # ketukan: mata kuliah, BAB, materi, latihan, mulai, jawab, cek
+for tx in (21.67, 22.2, 22.55, 22.65, 22.75, 23.0, 23.3): pop(tx, 0.05, 600)           # Mode ujian: pilih, mulai, jawab cepat, selesai
+chime(23.6, [784, 988, 1175], 0.05, 0.09, 1.0); pop(24.5, 0.04, 560)                  # skor dan review pembahasan
+pop(28.3, 0.05, 620); chime(29.5, [880, 1175], 0.045, 0.1, 0.9)                        # Latih ulang; bagian yang perlu diulang
+whoosh(32.3, 0.7, 0.04, False); thup(33.9, 0.12, 60); chime(36.2, [659, 784], 0.05, 0.1, 1.0)   # bukan pengganti; satu BAB yang jelas
+whoosh(38.0, 0.8, 0.05, True)
+for tx in (39.75, 40.65, 41.55): pop(tx, 0.05, 640)                                    # pilih BAB, latihan soal, mulai
+chime(41.6, [784, 988, 1175], 0.05, 0.08, 0.9)
 def rms(x): return np.sqrt(np.mean(x[np.abs(x) > 1e-4]**2) + 1e-12)
 dd = dlg / (np.abs(dlg).max() + 1e-6) * 0.85; dr = rms(dd)
 mu = mus / (rms(mus) + 1e-9) * dr * 10**(-17/20)

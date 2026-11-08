@@ -8,25 +8,38 @@ import { raka, rakaBody, lerpState, rIdle, solveArm } from './raka.js';
 const q = new URLSearchParams(location.search), $ = (id) => document.getElementById(id);
 await document.fonts.load('800 40px "Plus Jakarta Sans"'); await document.fonts.load('700 30px "Plus Jakarta Sans"'); await document.fonts.ready;
 export const DUR = 42.04;
-const P1 = { x: 60, y: 330, w: 960, h: 1100 };                 // panel ponsel (aman dari tombol TikTok/Reels: y 330 - 1430)
+const P1 = { x: 20, y: 330, w: 1040, h: 1100 };                 // panel ponsel (aman dari tombol TikTok/Reels: y 330 - 1430)
 const WEB = '/video/promo-ujian-blok/rekam/web';
 const lerpR = (a, b, k) => ({ x: lerp(a.x, b.x, k), y: lerp(a.y, b.y, k), w: lerp(a.w, b.w, k), h: lerp(a.h, b.h, k) });
 
 // ------------------------------------------------------------------ jadwal rekaman web: [t0, t1, klip, bingkai0, bingkai1, tampilan0, tampilan1]; tampilan = [cx, cy, z] dalam piksel sumber 1080 x 1800
 // Bingkai dipetakan linear antar (t0, t1); kecepatan berbeda per potongan. cx, cy = titik sumber di pusat panel; z = perbesaran (1 = lebar penuh).
 export const SEG = [
-  [7.2, 8.3, 'mk', 0, 20, [540, 620, 1], [540, 620, 1]],
-  [8.3, 10.0, 'mk', 20, 74, [540, 620, 1], [540, 700, 1]],
-  [10.0, 10.9, 'bab', 40, 75, [540, 760, 1], [540, 640, 1]],
-  [10.9, 12.0, 'materi', 36, 108, [540, 640, 1], [540, 660, 1]],
-  [12.0, 13.7, 'latihan', 0, 86, [540, 900, 1], [540, 1050, 1]],
-  [13.7, 15.4, 'learning', 50, 95, [540, 1050, 1], [540, 1050, 1.12]],
-  [15.4, 16.6, 'learning', 95, 140, [540, 700, 1], [540, 700, 1]],
-  [16.6, 19.3, 'learning', 140, 216, [540, 760, 1], [540, 1100, 1]],
-  [38.7, 42.04, 'akhir', 0, 111, [540, 900, 1], [540, 700, 1]],
+  [7.2, 8.3, 'mk', 0, 20, [530, 560, 1.08], [530, 700, 1.08]],
+  [8.3, 10.0, 'mk', 20, 74, [530, 700, 1.08], [530, 760, 1.08]],
+  [10.0, 10.9, 'bab', 40, 75, [530, 760, 1.08], [530, 700, 1.08]],
+  [10.9, 12.0, 'materi', 36, 108, [530, 700, 1.08], [530, 760, 1.08]],
+  [12.0, 13.7, 'latihan', 0, 86, [530, 900, 1.08], [530, 1250, 1.08]],
+  [13.7, 15.4, 'learning', 50, 95, [530, 1200, 1.08], [530, 1250, 1.08]],
+  [15.4, 16.6, 'learning', 95, 140, [530, 720, 1.08], [530, 720, 1.08]],
+  [16.6, 19.3, 'learning', 140, 216, [530, 780, 1.08], [530, 1150, 1.08]],
+  // Mode ujian (19,78 - 25,3): pilih Mode ujian, mulai, jawab cepat (percepatan), Selesai, skor, review pembahasan setelah sesi
+  [19.78, 21.4, 'ujian', 40, 58, [530, 1100, 1.08], [530, 1250, 1.08]],
+  [21.4, 22.5, 'ujian', 58, 116, [530, 1250, 1.08], [530, 800, 1.08]],
+  [22.5, 22.85, 'ujian', 116, 200, [530, 800, 1.08], [530, 800, 1.08]],
+  [22.85, 23.15, 'ujian', 360, 405, [530, 800, 1.08], [530, 1000, 1.08]],
+  [23.15, 23.6, 'ujian', 405, 452, [530, 1150, 1.08], [530, 700, 1.08]],
+  [23.6, 24.5, 'ujian', 452, 492, [530, 650, 1.08], [530, 650, 1.08]],
+  [24.5, 25.3, 'ujian', 556, 572, [530, 1100, 1.08], [530, 1150, 1.08]],
+  // Soal salah (25,8 - 32,3): Riwayat > Soal salah, Latih ulang, lalu BAB yang menandai "pernah salah"
+  [25.8, 27.0, 'salah', 0, 30, [530, 640, 1.08], [530, 640, 1.08]],
+  [27.0, 27.9, 'salah', 30, 60, [530, 900, 1.08], [530, 900, 1.08]],
+  [27.9, 28.78, 'salah', 60, 110, [530, 700, 1.08], [530, 760, 1.08]],
+  [28.78, 32.3, 'bab2', 0, 27, [540, 800, 1.0], [530, 764, 1.08]],
+  [38.7, 42.04, 'akhir', 0, 111, [530, 900, 1.08], [530, 760, 1.08]],
 ];
-export const UJIAN_SEG = [];   // diisi di bawah setelah rekaman ujian ditinjau
-SEG.push(...UJIAN_SEG);
+// sorotan emas pada bagian UI asli: [t0, t1, klip, [x, y, w, h] dalam piksel sumber]
+const HL = [[29.5, 32.2, 'bab2', [498, 736, 392, 58]]];
 
 const urlOf = (clip, i) => `${WEB}/${clip}/f${String(i).padStart(4, '0')}.jpg`;
 const segAt = (t) => { for (const s of SEG) if (t >= s[0] && t < s[1]) return s; return null; };
@@ -56,7 +69,9 @@ function panel(t) {
   const rad = lerp(26, 56, clamp(r.w / P1.w)), bez = lerp(4, 14, clamp(r.w / P1.w));
   const grow = t < 7.4 ? seg(t, 6.7, 7.2) : t > 38 && t < 38.8 ? seg(t, 38.3, 38.8) : 1;
   const img = grow > 0.001 ? `<g opacity="${f1(grow)}"><image href="${urlOf(f.clip, f.fr)}" x="${f1(x)}" y="${f1(y)}" width="${f1(1080 * sc)}" height="${f1(1800 * sc)}" preserveAspectRatio="none"/></g>` : '';
-  return `<g opacity="${f1(a)}"><rect x="${f1(r.x - bez)}" y="${f1(r.y - bez + 8)}" width="${f1(r.w + 2 * bez)}" height="${f1(r.h + 2 * bez)}" rx="${f1(rad + bez)}" fill="#021014" opacity=".35"/><rect x="${f1(r.x - bez)}" y="${f1(r.y - bez)}" width="${f1(r.w + 2 * bez)}" height="${f1(r.h + 2 * bez)}" rx="${f1(rad + bez)}" fill="#141D26" stroke="#3B4D5B" stroke-width="3"/><clipPath id="clipPanel"><rect x="${f1(r.x)}" y="${f1(r.y)}" width="${f1(r.w)}" height="${f1(r.h)}" rx="${f1(rad)}"/></clipPath><rect x="${f1(r.x)}" y="${f1(r.y)}" width="${f1(r.w)}" height="${f1(r.h)}" rx="${f1(rad)}" fill="${MC.ivory}"/><g clip-path="url(#clipPanel)">${img}</g></g>`;
+  let hl = '';
+  for (const [h0, h1, hc, [hx, hy, hw, hh]] of HL) { const ha = clamp((t - h0) / 0.3) * clamp((h1 - t) / 0.3); if (ha > 0.01 && f.clip === hc) hl += `<rect x="${f1(x + hx * sc - 8)}" y="${f1(y + hy * sc - 8)}" width="${f1(hw * sc + 16)}" height="${f1(hh * sc + 16)}" rx="${f1(18 * sc + 6)}" fill="rgba(248,192,56,.18)" stroke="${MC.gold}" stroke-width="${f1(7 + 2.5 * Math.sin(t * 7))}" opacity="${f1(ha)}"/>`; }
+  return `<g opacity="${f1(a)}"><rect x="${f1(r.x - bez)}" y="${f1(r.y - bez + 8)}" width="${f1(r.w + 2 * bez)}" height="${f1(r.h + 2 * bez)}" rx="${f1(rad + bez)}" fill="#021014" opacity=".35"/><rect x="${f1(r.x - bez)}" y="${f1(r.y - bez)}" width="${f1(r.w + 2 * bez)}" height="${f1(r.h + 2 * bez)}" rx="${f1(rad + bez)}" fill="#141D26" stroke="#3B4D5B" stroke-width="3"/><clipPath id="clipPanel"><rect x="${f1(r.x)}" y="${f1(r.y)}" width="${f1(r.w)}" height="${f1(r.h)}" rx="${f1(rad)}"/></clipPath><rect x="${f1(r.x)}" y="${f1(r.y)}" width="${f1(r.w)}" height="${f1(r.h)}" rx="${f1(rad)}" fill="${MC.ivory}"/><g clip-path="url(#clipPanel)">${img}${hl}</g></g>`;
 }
 // ------------------------------------------------------------------ Raka kecil (reaksi) di sudut panel
 const REACT = [[7.2, 'penasaran'], [8.6, 'mengerti'], [12.0, 'senang'], [13.7, 'berpikir'], [17.0, 'mengerti'], [19.8, 'waspada'], [23.2, 'lega'], [25.8, 'berpikir'], [29.5, 'mengerti'], [38.7, 'senang']];
@@ -64,7 +79,7 @@ function reaction(t) {
   const a = seg(t, 7.4, 7.9, eo) * (t > 32.3 && t < 38.7 ? 0 : 1) * (t >= 38.7 ? seg(t, 38.8, 39.2, eo) : 1);
   if (a <= 0.01 || (t > 32.3 && t < 38.7)) return '';
   let ex = 'penasaran'; for (const [t0, e] of REACT) if (t >= t0) ex = e;
-  const st = rIdle(raka(ex, 'netral', { yaw: 0.2, gazeX: 0.3, gazeY: -0.1 }), t * 1.1), k = 0.6, cx = 920, cy = 395, R = 100;
+  const st = rIdle(raka(ex, 'netral', { yaw: 0.2, gazeX: 0.3, gazeY: -0.1 }), t * 1.1), k = 0.6, cx = 948, cy = 395, R = 100;
   const sb = Math.sin(t * 9) * 0.0;
   return `<g opacity="${f1(a)}"><circle cx="${cx + 5}" cy="${cy + 8}" r="${R + 8}" fill="#021014" opacity=".35"/><circle cx="${cx}" cy="${cy}" r="${R + 8}" fill="${MC.ivory}" stroke="${MC.ink}" stroke-width="4"/><clipPath id="clipRx"><circle cx="${cx}" cy="${cy}" r="${R}"/></clipPath><circle cx="${cx}" cy="${cy}" r="${R}" fill="#12474F"/><g clip-path="url(#clipRx)"><g transform="translate(${f1(cx - 200 * k)} ${f1(cy - 225 * k)}) scale(${k})">${rakaBody(st, 'rkx', { dark: true })}</g></g></g>`;
 }
@@ -123,6 +138,7 @@ export function master(t) {
   let g = bg(t);
   if (t < 7.7) g += `<g opacity="${f1(room)}">${roomScene(t)}</g>`;
   g += midRoom(t) + stepScene(t) + panel(t) + reaction(t) + steps(t) + endCard(t);
+  g += A.chips(t, [[29.7, 32.1, 'Bagian yang masih\nperlu diulang', 540, 880, 540, 1375, { noLine: true }]]);
   if (t < 7.2) g += A.chips(t, [[1.9, 3.7, 'PPT numpuk', 230, 1030, 230, 800], [3.2, 5.0, 'Soal belum\ndisentuh', 975, 1150, 880, 800]]);
   return g;
 }
