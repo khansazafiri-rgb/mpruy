@@ -1,0 +1,651 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 6.16,
+   "text": "Besok sinin ujian blob, PPT numpuk, soal belum disentuh, dan kamu bingung mulai belajar dari mana?",
+   "words": [
+    {
+     "w": "Besok",
+     "s": 0.0,
+     "e": 0.64
+    },
+    {
+     "w": "sinin",
+     "s": 0.64,
+     "e": 0.82
+    },
+    {
+     "w": "ujian",
+     "s": 0.82,
+     "e": 1.16
+    },
+    {
+     "w": "blob,",
+     "s": 1.16,
+     "e": 1.56
+    },
+    {
+     "w": "PPT",
+     "s": 1.82,
+     "e": 2.28
+    },
+    {
+     "w": "numpuk,",
+     "s": 2.28,
+     "e": 2.68
+    },
+    {
+     "w": "soal",
+     "s": 3.08,
+     "e": 3.4
+    },
+    {
+     "w": "belum",
+     "s": 3.4,
+     "e": 3.54
+    },
+    {
+     "w": "disentuh,",
+     "s": 3.54,
+     "e": 4.16
+    },
+    {
+     "w": "dan",
+     "s": 4.46,
+     "e": 4.68
+    },
+    {
+     "w": "kamu",
+     "s": 4.68,
+     "e": 4.94
+    },
+    {
+     "w": "bingung",
+     "s": 4.94,
+     "e": 5.24
+    },
+    {
+     "w": "mulai",
+     "s": 5.24,
+     "e": 5.48
+    },
+    {
+     "w": "belajar",
+     "s": 5.48,
+     "e": 5.78
+    },
+    {
+     "w": "dari",
+     "s": 5.78,
+     "e": 5.94
+    },
+    {
+     "w": "mana?",
+     "s": 5.94,
+     "e": 6.16
+    }
+   ]
+  },
+  {
+   "start": 7.18,
+   "end": 11.44,
+   "text": "Buka matcoil, pilih mata kuliahnya, baca materi perbap yang tersedia,",
+   "words": [
+    {
+     "w": "Buka",
+     "s": 7.18,
+     "e": 7.64
+    },
+    {
+     "w": "matcoil,",
+     "s": 7.64,
+     "e": 8.2
+    },
+    {
+     "w": "pilih",
+     "s": 8.62,
+     "e": 9.06
+    },
+    {
+     "w": "mata",
+     "s": 9.06,
+     "e": 9.22
+    },
+    {
+     "w": "kuliahnya,",
+     "s": 9.22,
+     "e": 9.7
+    },
+    {
+     "w": "baca",
+     "s": 10.06,
+     "e": 10.32
+    },
+    {
+     "w": "materi",
+     "s": 10.32,
+     "e": 10.64
+    },
+    {
+     "w": "perbap",
+     "s": 10.64,
+     "e": 10.92
+    },
+    {
+     "w": "yang",
+     "s": 10.92,
+     "e": 11.06
+    },
+    {
+     "w": "tersedia,",
+     "s": 11.06,
+     "e": 11.44
+    }
+   ]
+  },
+  {
+   "start": 11.96,
+   "end": 13.64,
+   "text": "lalu coba latihan soal dari bap yang sama.",
+   "words": [
+    {
+     "w": "lalu",
+     "s": 11.96,
+     "e": 12.08
+    },
+    {
+     "w": "coba",
+     "s": 12.08,
+     "e": 12.3
+    },
+    {
+     "w": "latihan",
+     "s": 12.3,
+     "e": 12.62
+    },
+    {
+     "w": "soal",
+     "s": 12.62,
+     "e": 12.92
+    },
+    {
+     "w": "dari",
+     "s": 12.92,
+     "e": 13.08
+    },
+    {
+     "w": "bap",
+     "s": 13.08,
+     "e": 13.28
+    },
+    {
+     "w": "yang",
+     "s": 13.28,
+     "e": 13.42
+    },
+    {
+     "w": "sama.",
+     "s": 13.42,
+     "e": 13.64
+    }
+   ]
+  },
+  {
+   "start": 14.08,
+   "end": 19.28,
+   "text": "Kalau masih belajar konsep, pilih model learning, kamu bisa cek jawaban dan membaca pembahasannya persoal.",
+   "words": [
+    {
+     "w": "Kalau",
+     "s": 14.08,
+     "e": 14.28
+    },
+    {
+     "w": "masih",
+     "s": 14.28,
+     "e": 14.5
+    },
+    {
+     "w": "belajar",
+     "s": 14.5,
+     "e": 14.78
+    },
+    {
+     "w": "konsep,",
+     "s": 14.78,
+     "e": 15.16
+    },
+    {
+     "w": "pilih",
+     "s": 15.48,
+     "e": 15.62
+    },
+    {
+     "w": "model",
+     "s": 15.62,
+     "e": 15.74
+    },
+    {
+     "w": "learning,",
+     "s": 15.74,
+     "e": 16.02
+    },
+    {
+     "w": "kamu",
+     "s": 16.44,
+     "e": 16.62
+    },
+    {
+     "w": "bisa",
+     "s": 16.62,
+     "e": 16.8
+    },
+    {
+     "w": "cek",
+     "s": 16.8,
+     "e": 17.02
+    },
+    {
+     "w": "jawaban",
+     "s": 17.02,
+     "e": 17.46
+    },
+    {
+     "w": "dan",
+     "s": 17.46,
+     "e": 17.62
+    },
+    {
+     "w": "membaca",
+     "s": 17.62,
+     "e": 17.94
+    },
+    {
+     "w": "pembahasannya",
+     "s": 17.94,
+     "e": 18.48
+    },
+    {
+     "w": "persoal.",
+     "s": 18.48,
+     "e": 19.28
+    }
+   ]
+  },
+  {
+   "start": 19.78,
+   "end": 25.2,
+   "text": "Mau mengukur pemahaman seperti saat ujian, pakai mode ujian, lalu lihat pembahasannya setelah sesi selesai.",
+   "words": [
+    {
+     "w": "Mau",
+     "s": 19.78,
+     "e": 19.94
+    },
+    {
+     "w": "mengukur",
+     "s": 19.94,
+     "e": 20.38
+    },
+    {
+     "w": "pemahaman",
+     "s": 20.38,
+     "e": 20.76
+    },
+    {
+     "w": "seperti",
+     "s": 20.76,
+     "e": 21.02
+    },
+    {
+     "w": "saat",
+     "s": 21.02,
+     "e": 21.28
+    },
+    {
+     "w": "ujian,",
+     "s": 21.28,
+     "e": 21.64
+    },
+    {
+     "w": "pakai",
+     "s": 22.08,
+     "e": 22.28
+    },
+    {
+     "w": "mode",
+     "s": 22.28,
+     "e": 22.5
+    },
+    {
+     "w": "ujian,",
+     "s": 22.5,
+     "e": 22.88
+    },
+    {
+     "w": "lalu",
+     "s": 23.26,
+     "e": 23.48
+    },
+    {
+     "w": "lihat",
+     "s": 23.48,
+     "e": 23.64
+    },
+    {
+     "w": "pembahasannya",
+     "s": 23.64,
+     "e": 24.22
+    },
+    {
+     "w": "setelah",
+     "s": 24.22,
+     "e": 24.64
+    },
+    {
+     "w": "sesi",
+     "s": 24.64,
+     "e": 24.8
+    },
+    {
+     "w": "selesai.",
+     "s": 24.8,
+     "e": 25.2
+    }
+   ]
+  },
+  {
+   "start": 25.76,
+   "end": 28.78,
+   "text": "Kalau sudah pernah latihan, kembali ke soal yang sebelumnya kamu jawab salah.",
+   "words": [
+    {
+     "w": "Kalau",
+     "s": 25.76,
+     "e": 26.0
+    },
+    {
+     "w": "sudah",
+     "s": 26.0,
+     "e": 26.14
+    },
+    {
+     "w": "pernah",
+     "s": 26.14,
+     "e": 26.32
+    },
+    {
+     "w": "latihan,",
+     "s": 26.32,
+     "e": 26.72
+    },
+    {
+     "w": "kembali",
+     "s": 26.98,
+     "e": 27.28
+    },
+    {
+     "w": "ke",
+     "s": 27.28,
+     "e": 27.38
+    },
+    {
+     "w": "soal",
+     "s": 27.38,
+     "e": 27.64
+    },
+    {
+     "w": "yang",
+     "s": 27.64,
+     "e": 27.74
+    },
+    {
+     "w": "sebelumnya",
+     "s": 27.74,
+     "e": 28.18
+    },
+    {
+     "w": "kamu",
+     "s": 28.18,
+     "e": 28.34
+    },
+    {
+     "w": "jawab",
+     "s": 28.34,
+     "e": 28.56
+    },
+    {
+     "w": "salah.",
+     "s": 28.56,
+     "e": 28.78
+    }
+   ]
+  },
+  {
+   "start": 28.78,
+   "end": 32.3,
+   "text": "Dari situ kamu bisa melihat bagian mana yang masih perlu diulang.",
+   "words": [
+    {
+     "w": "Dari",
+     "s": 28.78,
+     "e": 29.44
+    },
+    {
+     "w": "situ",
+     "s": 29.44,
+     "e": 29.62
+    },
+    {
+     "w": "kamu",
+     "s": 29.62,
+     "e": 29.82
+    },
+    {
+     "w": "bisa",
+     "s": 29.82,
+     "e": 30.0
+    },
+    {
+     "w": "melihat",
+     "s": 30.0,
+     "e": 30.44
+    },
+    {
+     "w": "bagian",
+     "s": 30.44,
+     "e": 30.78
+    },
+    {
+     "w": "mana",
+     "s": 30.78,
+     "e": 31.02
+    },
+    {
+     "w": "yang",
+     "s": 31.02,
+     "e": 31.2
+    },
+    {
+     "w": "masih",
+     "s": 31.2,
+     "e": 31.52
+    },
+    {
+     "w": "perlu",
+     "s": 31.52,
+     "e": 31.72
+    },
+    {
+     "w": "diulang.",
+     "s": 31.72,
+     "e": 32.3
+    }
+   ]
+  },
+  {
+   "start": 32.78,
+   "end": 35.66,
+   "text": "Semalam memang gak bisa menggantikan belajar satu blok penuh,",
+   "words": [
+    {
+     "w": "Semalam",
+     "s": 32.78,
+     "e": 33.34
+    },
+    {
+     "w": "memang",
+     "s": 33.34,
+     "e": 33.5
+    },
+    {
+     "w": "gak",
+     "s": 33.5,
+     "e": 33.76
+    },
+    {
+     "w": "bisa",
+     "s": 33.76,
+     "e": 33.92
+    },
+    {
+     "w": "menggantikan",
+     "s": 33.92,
+     "e": 34.4
+    },
+    {
+     "w": "belajar",
+     "s": 34.4,
+     "e": 34.8
+    },
+    {
+     "w": "satu",
+     "s": 34.8,
+     "e": 35.0
+    },
+    {
+     "w": "blok",
+     "s": 35.0,
+     "e": 35.22
+    },
+    {
+     "w": "penuh,",
+     "s": 35.22,
+     "e": 35.66
+    }
+   ]
+  },
+  {
+   "start": 36.04,
+   "end": 38.18,
+   "text": "tapi kamu bisa mulai dengan satu langkah yang jelas.",
+   "words": [
+    {
+     "w": "tapi",
+     "s": 36.04,
+     "e": 36.32
+    },
+    {
+     "w": "kamu",
+     "s": 36.32,
+     "e": 36.5
+    },
+    {
+     "w": "bisa",
+     "s": 36.5,
+     "e": 36.7
+    },
+    {
+     "w": "mulai",
+     "s": 36.7,
+     "e": 37.04
+    },
+    {
+     "w": "dengan",
+     "s": 37.04,
+     "e": 37.18
+    },
+    {
+     "w": "satu",
+     "s": 37.18,
+     "e": 37.5
+    },
+    {
+     "w": "langkah",
+     "s": 37.5,
+     "e": 37.78
+    },
+    {
+     "w": "yang",
+     "s": 37.78,
+     "e": 37.88
+    },
+    {
+     "w": "jelas.",
+     "s": 37.88,
+     "e": 38.18
+    }
+   ]
+  },
+  {
+   "start": 38.64,
+   "end": 39.68,
+   "text": "Buka Medcoil.com.",
+   "words": [
+    {
+     "w": "Buka",
+     "s": 38.64,
+     "e": 38.9
+    },
+    {
+     "w": "Medcoil",
+     "s": 38.9,
+     "e": 39.3
+    },
+    {
+     "w": ".com.",
+     "s": 39.3,
+     "e": 39.68
+    }
+   ]
+  },
+  {
+   "start": 39.98,
+   "end": 41.68,
+   "text": "Pilih satu bab, lalu mulai belajar.",
+   "words": [
+    {
+     "w": "Pilih",
+     "s": 39.98,
+     "e": 40.26
+    },
+    {
+     "w": "satu",
+     "s": 40.26,
+     "e": 40.38
+    },
+    {
+     "w": "bab,",
+     "s": 40.38,
+     "e": 40.56
+    },
+    {
+     "w": "lalu",
+     "s": 40.9,
+     "e": 41.04
+    },
+    {
+     "w": "mulai",
+     "s": 41.04,
+     "e": 41.34
+    },
+    {
+     "w": "belajar.",
+     "s": 41.34,
+     "e": 41.68
+    }
+   ]
+  }
+ ]
+}
