@@ -1,0 +1,1 @@
+PASS: source NRRD affine, table/air removal, cavity filling, closed mesh budget and corrected-segmentation route.

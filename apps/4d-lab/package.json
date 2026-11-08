@@ -1,0 +1,26 @@
+{
+  "name": "medcoel-4d-lab",
+  "private": true,
+  "version": "1.0.0-rc.1",
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "MEDCOEL Anatomy Live 4D Lab - educational freehand CT/ultrasound simulator (not a medical device).",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4180",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4181",
+    "test": "node --test test/*.test.mjs",
+    "test:e2e": "node test/e2e/run-e2e.mjs",
+    "test:legacy": "cd legacy/v0.9 && npm test",
+    "phantom": "python3 pipeline/build_phantom.py",
+    "pipeline:test": "python3 pipeline/test_pipeline.py"
+  },
+  "dependencies": {
+    "three": "^0.185.1",
+    "three-mesh-bvh": "^0.9.13"
+  },
+  "devDependencies": {
+    "vite": "^8.1.1"
+  }
+}

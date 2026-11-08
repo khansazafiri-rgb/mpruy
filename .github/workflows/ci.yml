@@ -16,6 +16,7 @@ jobs:
           cache-dependency-path: |
             package-lock.json
             apps/anatomy/package-lock.json
+            apps/4d-lab/package-lock.json
       - run: npm ci
       - name: Install Anatomy viewer
         run: npm ci --prefix apps/anatomy
@@ -35,6 +36,11 @@ jobs:
         env:
           ANATOMY_BASE: /anatomy/viewer/
         run: npm run build --prefix apps/anatomy
+      - name: 4D Lab tests and build (Anatomy Live)
+        run: |
+          npm ci --prefix apps/4d-lab
+          npm run test:4d-lab
+          npm run build:4d-lab
       - name: Tes API per peran
         working-directory: apps/pocketbase
         run: |

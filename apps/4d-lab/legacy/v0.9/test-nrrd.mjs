@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { readNrrdFile } from './nrrd.js';
+const bytes=fs.readFileSync(new URL('./demo-phantom.nrrd',import.meta.url));
+const file=new File([bytes], 'demo-phantom.nrrd');
+const parsed=await readNrrdFile(file);
+assert.deepEqual(parsed.sizes,[84,96,100]);
+assert.equal(parsed.spacing[0],3.5);
+assert.equal(parsed.spacing[1],3.2);
+assert.equal(parsed.voxel(0,0,0),-1000);
+assert.equal(parsed.voxel(-1,0,0),-1024);
+assert.notEqual(parsed.voxel(42,48,50),-1000);
+console.log('PASS: NRRD gzip read, dimensions, voxel access, out-of-bounds.');

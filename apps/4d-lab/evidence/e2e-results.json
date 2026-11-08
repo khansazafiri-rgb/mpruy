@@ -1,0 +1,84 @@
+{
+  "date": "2026-11-07T19:14:01.510Z",
+  "browser": "Chromium (Playwright, headless, SwiftShader WebGL)",
+  "passed": 14,
+  "failed": 0,
+  "memoryMiB": 73.05145263671875,
+  "timing": {
+    "usMs": 75,
+    "deformMs": 10.799999999813735,
+    "fps": 10.154158589495172
+  },
+  "results": [
+    {
+      "name": "loads the phantom package with verified registration and no runtime errors",
+      "ok": true,
+      "ms": 1775
+    },
+    {
+      "name": "no black-screen: 3D view and imaging monitor contain structured content",
+      "ok": true,
+      "ms": 4017
+    },
+    {
+      "name": "clinical probe: rotate / heel-toe / rock keep the contact point fixed and change the image",
+      "ok": true,
+      "ms": 14524
+    },
+    {
+      "name": "camera orbit / presets never change the imaging (paused, same pose)",
+      "ok": true,
+      "ms": 13556
+    },
+    {
+      "name": "anterior and posterior skin placement by clicking the registered surface",
+      "ok": true,
+      "ms": 15244
+    },
+    {
+      "name": "dragging the probe slides the contact over the skin (surface-aware)",
+      "ok": true,
+      "ms": 3755
+    },
+    {
+      "name": "free 3D mode: presets, numeric translation, out-of-volume indication, gizmo drag",
+      "ok": true,
+      "ms": 14096
+    },
+    {
+      "name": "monitor: zoom / pan / fit, expand and fullscreen",
+      "ok": true,
+      "ms": 10075
+    },
+    {
+      "name": "separate CT and ultrasound modes; CT window/level changes CT only",
+      "ok": true,
+      "ms": 12746
+    },
+    {
+      "name": "ultrasound responds to tissue parameters and machine settings (executable simulation)",
+      "ok": true,
+      "ms": 23405
+    },
+    {
+      "name": "physiology: playing animates meshes and images; heart-rate and phase controls work",
+      "ok": true,
+      "ms": 51680
+    },
+    {
+      "name": "pathology: HFrEF vs normal comparison, effusion layer, reduced antral motility",
+      "ok": true,
+      "ms": 28256
+    },
+    {
+      "name": "auscultation: stethoscope sites, synchronised audio scheduling and site-dependent mix",
+      "ok": true,
+      "ms": 15284
+    },
+    {
+      "name": "memory footprint after a full session (Chromium heap)",
+      "ok": true,
+      "ms": 4
+    }
+  ]
+}

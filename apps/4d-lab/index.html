@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Anatomy Live 4D Lab · MEDCOEL</title>
+<link rel="stylesheet" href="/src/app/styles.css">
+</head>
+<body data-mode="clinical" data-tool="probe">
+<header class="topbar">
+  <a class="brand" href="/anatomy" target="_top" aria-label="Kembali ke Anatomi MEDCOEL">MEDCOEL</a>
+  <span class="title">Anatomy Live <strong>4D Lab</strong></span>
+  <label class="scenario-pick">Skenario
+    <select id="scenarioSelect" data-testid="scenario-select" aria-label="Skenario patologi"></select>
+  </label>
+  <span class="badge" title="Simulasi pendidikan. Tidak untuk diagnosis. Bukan perangkat medis.">Simulasi edukatif · bukan alat diagnosis</span>
+</header>
+<div id="runtimeError" class="error" role="alert" hidden></div>
+<main id="workspace" class="workspace">
+  <aside class="sidebar" aria-label="Kontrol">
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" aria-controls="tab-probe" data-testid="tab-probe">Probe</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-imaging" data-testid="tab-imaging">Citra</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-physiology" data-testid="tab-physiology">Fisiologi</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-pathology" data-testid="tab-pathology">Patologi</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-ausc" data-testid="tab-ausc">Auskultasi</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-data" data-testid="tab-data">Data</button>
+    </div>
+    <section id="tab-probe" role="tabpanel" class="panel"></section>
+    <section id="tab-imaging" role="tabpanel" class="panel" hidden></section>
+    <section id="tab-physiology" role="tabpanel" class="panel" hidden></section>
+    <section id="tab-pathology" role="tabpanel" class="panel" hidden></section>
+    <section id="tab-ausc" role="tabpanel" class="panel" hidden></section>
+    <section id="tab-data" role="tabpanel" class="panel" hidden></section>
+    <div id="loadStatus" class="load-status" role="status" data-testid="load-status">Memulai…</div>
+  </aside>
+  <section class="viewport-panel" aria-label="Pasien virtual">
+    <div id="viewport" class="viewport"></div>
+    <div class="view-toolbar" role="toolbar" aria-label="Kamera dan tampilan">
+      <div class="seg small" role="group" aria-label="Arah pandang">
+        <button data-view="examiner" data-testid="cam-examiner">Pemeriksa</button>
+        <button data-view="anterior" data-testid="cam-anterior">Anterior</button>
+        <button data-view="posterior" data-testid="cam-posterior">Posterior</button>
+        <button data-view="right" data-testid="cam-right">Kanan</button>
+        <button data-view="left" data-testid="cam-left">Kiri</button>
+        <button data-view="head" data-testid="cam-head">Kepala</button>
+      </div>
+      <label class="inline">Kulit <input id="skinOpacity" data-testid="skin-opacity" type="range" min="5" max="100" value="100"></label>
+      <label class="inline">Cutaway
+        <select id="cutaway" data-testid="cutaway">
+          <option value="none">Tidak ada</option><option value="anterior">Dinding anterior</option><option value="plane">Sesuai bidang citra</option>
+        </select>
+      </label>
+      <label class="inline cut-depth">Tinggi potong <input id="cutDepth" type="range" min="-60" max="140" value="40"></label>
+      <details class="systems"><summary>Organ</summary>
+        <label><input type="checkbox" data-system="skeleton" checked> Rangka</label>
+        <label><input type="checkbox" data-system="cardiovascular" checked> Jantung &amp; pembuluh</label>
+        <label><input type="checkbox" data-system="respiratory" checked> Paru &amp; diafragma</label>
+        <label><input type="checkbox" data-system="abdominal" checked> Organ abdomen &amp; cerna</label>
+        <label><input type="checkbox" data-system="urinary" checked> Ginjal &amp; kandung kemih</label>
+        <label><input type="checkbox" data-system="nervous"> Otak</label>
+        <label><input type="checkbox" id="coverageToggle" checked> Kotak cakupan CT</label>
+      </details>
+    </div>
+    <div class="view-hint">Seret area kosong: putar kamera · Shift/klik kanan: geser · scroll: zoom · seret probe/cincin: pindah &amp; angulasi. Kamera tidak mengubah citra.</div>
+  </section>
+  <div id="divider" class="divider" role="separator" tabindex="0" aria-label="Ubah lebar monitor (panah kiri/kanan)"></div>
+  <section id="monitorPanel" class="monitor-panel" aria-label="Monitor pencitraan">
+    <div class="monitor-toolbar" role="toolbar">
+      <div class="seg small" role="group" aria-label="Tampilan">
+        <button data-seg="display:us" data-testid="mon-us">USG</button>
+        <button data-seg="display:ct" data-testid="mon-ct">CT</button>
+        <button data-seg="display:split" data-testid="mon-split">USG + CT</button>
+      </div>
+      <button id="zoomOut" aria-label="Perkecil">−</button><button id="zoomIn" aria-label="Perbesar">+</button>
+      <button id="fitBtn" data-testid="fit">Fit</button><button id="oneBtn">1:1</button>
+      <button id="expandBtn" data-testid="expand" aria-pressed="false">Perbesar monitor</button>
+      <button id="fullBtn" data-testid="fullscreen">Layar penuh</button>
+    </div>
+    <div class="monitor-wrap"><canvas id="monitor" data-testid="monitor-canvas" aria-label="Monitor citra: seret untuk geser, scroll untuk zoom, klik ganda untuk fit"></canvas></div>
+    <div class="strip-wrap"><canvas id="strip" data-testid="strip-canvas" aria-label="Jejak fisiologis: EKG skematik, fonokardiogram, respirasi, antrum"></canvas></div>
+    <div class="playbar">
+      <button id="playBtn" data-testid="play">❚❚ Jeda</button>
+      <label class="inline">Kecepatan <select id="speedSelect"><option value="0.25">0,25×</option><option value="0.5">0,5×</option><option value="1" selected>1×</option></select></label>
+      <span id="liveReadout" class="live" data-testid="live-readout"></span>
+    </div>
+  </section>
+</main>
+<script type="module" src="/src/app/main.js"></script>
+</body>
+</html>

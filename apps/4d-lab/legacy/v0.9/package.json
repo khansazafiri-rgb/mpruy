@@ -1,0 +1,1 @@
+{"name":"medcoel-4d-scanner-poc","private":true,"type":"module","version":"0.9.0","license":"UNLICENSED","scripts":{"test":"node test-nrrd.mjs && node test-nrrd-extra.mjs && node test-kinematics.mjs && node test-skin.mjs && node test-mpr.mjs && node test-units.mjs && node test-mesh.mjs && node test-ui.mjs"}}
