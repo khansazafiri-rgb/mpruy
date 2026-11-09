@@ -13,6 +13,7 @@ import { REFERENCES } from '../sim/references.js';
 import { PatientScene } from './scene3d.js';
 import { Monitor, drawStrip } from './monitor.js';
 import { AudioEngine } from './audio.js';
+import { moveFree, findSkinContact } from './navigation.js';
 import { voxelSurface } from './blobMesh.js';
 import { AtlasLayer, ATLAS_GROUPS } from './atlasLayer.js';
 import { buildAtlasPanel, frameSummary } from './atlasPanel.js';
@@ -44,7 +45,7 @@ const suggestedView = (key) => D?.anatomy?.suggestedViews?.[key] || SUGGESTED_VI
 
 // ------------------------------------------------------------------ state
 const S = {
-  mode: 'clinical', tool: 'probe', probeKey: 'phased',
+  mode: 'clinical', tool: 'probe', probeKey: 'phased', navStep: 10,
   contact: null, angles: { rotate: 0, heelToe: 0, rock: 0 },
   free: { position: [20, 0, 40], q: freeQuat(FREE_PRESETS.coronal), size: { width: 260, height: 260 } },
   precision: { mm: 1, deg: 1 },
@@ -455,6 +456,52 @@ function contactInCoverage(c) {
   return ok;
 }
 
+// Patient-space navigation uses anatomical LPS axes, never screen/camera axes.
+function navigatePatient(direction) {
+  if (S.mode === 'free') {
+    const moved = moveFree(S.free.position, direction, S.navStep);
+    if (moved) S.free.position = moved;
+  } else {
+    const skin = scene?.meshes?.skin;
+    const c = skin && S.contact && findSkinContact({
+      contact: S.contact, positions: skin.ref, normals: skin.refNormals,
+      direction, millimetres: S.navStep, coverage: D?.ct?.bounds, capZ: scene.capZ,
+    });
+    if (!c) {
+      status('Tidak ada titik kulit yang terjangkau pada arah ini dalam cakupan CT. Putar kamera atau pilih lokasi kulit lain.', 'warn');
+      return;
+    }
+    S.contact = c;
+  }
+  refreshAll(); touch();
+}
+
+const TEACHING = {
+  subxiphoid: ['Jendela subxifoid', 'Cari hubungan jantung dengan diafragma dan hati. Ubah heel–toe sedikit untuk melihat perubahan ruang jantung.'],
+  parasternal: ['Jendela parasternal', 'Amati orientasi ruang jantung dan bagaimana tulang rusuk serta paru memengaruhi jendela akustik.'],
+  apical: ['Jendela apikal', 'Model atlas memiliki hambatan paru pada apeks. Gunakan subxifoid jika pandangan jantung terhalang; jangan menganggap ini citra ekokardiografi klinis.'],
+  right_flank: ['Toraks posterolateral kanan', 'Bandingkan paru berisi udara dengan cairan pleura pada skenario efusi kanan. Perhatikan batas cakupan dan bayangan akustik.'],
+  ruq: ['Kuadran kanan atas', 'Amati hati dan ginjal kanan. Geser probe superior–inferior untuk melihat pergeseran bidang Morison.'],
+  epigastric: ['Antrum epigastrik', 'Amati antrum dan perubahan bentuknya selama gerak peristaltik prosedural.'],
+  suprapubic: ['Suprapubik', 'Perhatikan cairan kandung kemih yang tampak relatif anekoik pada simulasi USG.'],
+  anterior_lung: ['Paru anterior', 'Perhatikan garis pleura dan reverberasi sederhana pada model. Ini bukan simulasi lengkap artefak paru.'],
+};
+function renderTeaching() {
+  const e = $('#teachingText'); if (!e) return;
+  const v = TEACHING[S.view] || ['Eksplorasi bebas', 'Pilih jendela standar atau pindahkan bidang pemindaian, lalu jelaskan perubahan anatomi yang kamu lihat.'];
+  const s = SCENARIOS[S.scenario];
+  e.replaceChildren(
+    el('strong', {}, S.mode === 'free' ? 'Navigasi bidang 3D' : v[0]),
+    el('p', {}, S.mode === 'free'
+      ? 'LPS: kiri (+L), posterior (+P), superior (+S). Tombol arah memindahkan bidang CT sungguhan, bukan kamera atau gambar 2D.'
+      : v[1]),
+    el('p', { class: 'meta' }, s?.key && s.key !== 'normal'
+      ? `Skenario aktif: ${s.titleId}. Bandingkan dengan normal dan baca tab Patologi sebelum menarik kesimpulan.`
+      : 'Cobalah ubah satu arah/sudut pada satu waktu, lalu perhatikan label jaringan dan citra yang berubah.'),
+    el('p', { class: 'meta' }, 'Semua citra dan bunyi berasal dari simulasi edukatif, bukan pemeriksaan pasien atau alat diagnostik.'),
+  );
+}
+
 // ------------------------------------------------------------------ UI building
 function field(label, input, extra) { return el('label', { class: 'field' }, el('span', { class: 'field-label' }, label), input, extra); }
 /** Range + number + step buttons, bound to get/set. */
@@ -481,6 +528,7 @@ function refreshAll() {
   const cmp = $('#compareBtn'); if (cmp) { cmp.setAttribute('aria-pressed', String(S.compareNormal)); cmp.textContent = S.compareNormal ? 'Tampilkan patologis' : 'Bandingkan dengan normal'; cmp.disabled = S.scenario === 'normal'; }
   $('#playBtn') && ($('#playBtn').textContent = S.playing ? '❚❚ Jeda' : '▶ Putar');
   updateReadouts();
+  renderTeaching();
 }
 
 function seg(group, items, testid) {
@@ -500,6 +548,21 @@ function buildPanels() {
     el('h3', {}, 'Mode pemindaian'), seg('mode', [['clinical', 'Probe klinis'], ['free', 'Free 3D']], 'mode'),
     el('p', { class: 'hint clinical-only' }, 'Probe menempel di kulit. Rotasi, heel–toe dan rock berputar di titik kontak yang tetap. Seret probe untuk berpindah; klik kulit untuk menempatkan.'),
     el('p', { class: 'hint free-only' }, 'Bidang bebas 6-DOF tanpa batasan kulit. Seret panah (translasi) dan cincin (rotasi) di 3D, atau ketik angka presisi.'),
+    el('section', { class: 'nav-card', 'aria-label': 'Navigasi anatomis' },
+      el('div', { class: 'nav-head' },
+        el('h4', {}, 'Geser menurut arah tubuh'),
+        field('Langkah', el('select', { id: 'navigationStep', 'aria-label': 'Langkah navigasi', onchange: (e) => { S.navStep = Number(e.target.value); } },
+          ...[[5, '5 mm'], [10, '10 mm'], [25, '25 mm']].map(([v, label]) => el('option', { value: v, selected: v === S.navStep || undefined }, label))))),
+      el('div', { class: 'nav-grid' },
+        ...[['superior', '↑ Superior'], ['inferior', '↓ Inferior'], ['right', '← Kanan pasien'],
+          ['left', '→ Kiri pasien'], ['anterior', 'Anterior (depan)'], ['posterior', 'Posterior (belakang)']].map(([direction, label]) =>
+          el('button', { type: 'button', class: 'chipbtn nav-btn', 'data-testid': 'nav-' + direction,
+            onclick: () => navigatePatient(direction), title: 'Geser menurut anatomi pasien: ' + label }, label))),
+      el('p', { class: 'hint clinical-only' }, 'Di kulit: empat arah menggeser kontak sepanjang permukaan; Anterior/Posterior memilih sisi tubuh. Tidak memindahkan kamera.'),
+      el('p', { class: 'hint free-only' }, 'Free 3D: keenam tombol memindahkan bidang langsung pada sumbu LPS tanpa batasan kulit.')),
+    el('section', { class: 'learn-card', 'aria-label': 'Panduan belajar' },
+      el('h4', {}, 'Apa yang sedang dipelajari?'),
+      el('div', { id: 'teachingText', 'aria-live': 'polite' })),
     el('div', { class: 'clinical-only' },
       field('Jenis probe', el('select', { id: 'probeSelect', 'data-testid': 'probe-select', onchange: (e) => { setProbe(e.target.value, false); refreshAll(); touch(); } }, ...Object.values(PROBES).map((p) => el('option', { value: p.key }, p.label)))),
       el('h4', {}, 'Jendela standar'),
@@ -698,14 +761,23 @@ function placeSteth(point, normal, key) {
   S.steth.ref = [...point]; S.steth.normal = [...normal]; S.steth.point = [...point]; S.steth.key = key;
   mixCache = null; refreshAll(); scene.siteMarkers.visible = true;
 }
+function syncAudioButtons() {
+  const b = $('#audioBtn'), quick = $('#soundQuickBtn');
+  if (b) { b.textContent = audio.on ? '🔊 Matikan suara' : '🔈 Nyalakan suara'; b.setAttribute('aria-pressed', String(audio.on)); }
+  if (quick) { quick.textContent = audio.on ? '🔊 Suara aktif' : '🔈 Dengar jantung'; quick.setAttribute('aria-pressed', String(audio.on)); }
+}
 async function toggleAudio() {
-  const b = $('#audioBtn');
-  if (!audio.supported) { b.textContent = 'Web Audio tidak tersedia'; return; }
-  if (audio.on) { audio.stop(); b.textContent = '🔈 Nyalakan suara'; b.setAttribute('aria-pressed', 'false'); return; }
-  lastAudio = await audio.start(); audio.setVolume(S.steth.volume); audio.setFilter(S.steth.filter);
-  S.playing = true; S.speed = 1;
-  if (!S.steth.ref) { const m = D.anatomy.auscultation.find((s) => s.key === 'mitral'); if (m) placeSteth(m.point, m.normal, 'mitral'); }
-  b.textContent = '🔊 Matikan suara'; b.setAttribute('aria-pressed', 'true'); refreshAll();
+  if (!audio.supported) { status('Web Audio tidak tersedia di browser ini.', 'warn'); return; }
+  if (audio.on) { audio.stop(); syncAudioButtons(); return; }
+  try {
+    lastAudio = await audio.start(); audio.setVolume(S.steth.volume); audio.setFilter(S.steth.filter);
+    S.playing = true; S.speed = 1;
+    $('#speedSelect').value = '1';
+    // The real stethoscope model is already synchronized to the cardiac motion/PCG.
+    if (!S.steth.ref) { const m = D?.anatomy?.auscultation?.find((s) => s.key === 'mitral'); if (m) placeSteth(m.point, m.normal, 'mitral'); }
+    syncAudioButtons(); refreshAll();
+    status('Suara stetoskop sintetis aktif. EKG di layar adalah sinyal listrik skematik, bukan sumber bunyi.', 'ok');
+  } catch (e) { status('Gagal mengaktifkan suara: ' + (e?.message || e), 'warn'); syncAudioButtons(); }
 }
 
 async function loadLocal() {
@@ -744,7 +816,8 @@ function installLayout() {
   };
   $('#playBtn').onclick = () => { S.playing = !S.playing; refreshAll(); touch(); };
   for (const b of document.querySelectorAll('.monitor-toolbar [data-seg]')) b.onclick = () => { const [k, v] = b.dataset.seg.split(':'); onSeg(k, v); };
-  $('#speedSelect').onchange = (e) => { S.speed = Number(e.target.value); if (audio.on && S.speed !== 1) { audio.stop(); $('#audioBtn').textContent = '🔈 Nyalakan suara'; } };
+  $('#speedSelect').onchange = (e) => { S.speed = Number(e.target.value); if (audio.on && S.speed !== 1) { audio.stop(); syncAudioButtons(); } };
+  $('#soundQuickBtn').onclick = toggleAudio;
   $('#scenarioSelect').onchange = (e) => setScenario(e.target.value);
   for (const b of document.querySelectorAll('[data-view]')) b.onclick = () => scene.setView(b.dataset.view);
   $('#skinOpacity').oninput = (e) => { S.appearance.skinOpacity = Number(e.target.value) / 100; S.appearance.mode = 'custom'; applyAppearance(); renderAtlasPanel(); };
