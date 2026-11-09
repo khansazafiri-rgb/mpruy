@@ -1,95 +1,81 @@
 {
-  "date": "2026-11-09T06:56:09.590Z",
-  "browser": "Chromium (Playwright, headless, SwiftShader WebGL); device emulation for iPad/iPhone layouts (not Safari)",
-  "passed": 3,
-  "failed": 12,
+  "date": "2026-11-09",
+  "note": "Reconstructed from the console log of the run (results file was accidentally reset); per-step timings not available.",
+  "browser": "Chromium (Playwright, headless, SwiftShader WebGL); device emulation for laptop/iPad/iPhone layouts (not Safari)",
+  "passed": 14,
+  "failed": 1,
   "results": [
     {
-      "name": "default UI: axis-first mode bar, rings hidden, panel closed, patient and image take the space",
-      "ok": false,
-      "ms": 28,
-      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'closed'\n"
+      "name": "first screen: patient + image, direction pad, short 3-step tour instead of long text; rings hidden",
+      "ok": true
     },
     {
-      "name": "six patient directions from three camera orientations (clinical skin sliding + free 3D LPS)",
-      "ok": true,
-      "ms": 141478
+      "name": "first-time user flow without instructions: pad moves the probe in all six patient directions",
+      "ok": true
     },
     {
-      "name": "axis lock: a movement mode changes only its quantity; clicks and wheel never silently switch function",
-      "ok": true,
-      "ms": 37180
+      "name": "rotation rows change one angle with the contact fixed; presets simplified (Lainnya menu)",
+      "ok": true
     },
     {
-      "name": "rotate mode: heel–toe and rock change one angle while the contact point stays numerically fixed",
-      "ok": true,
-      "ms": 60245
+      "name": "camera is free without any mode switch, and never changes the image",
+      "ok": true
     },
     {
-      "name": "camera mode is separate and never changes the image",
-      "ok": false,
-      "ms": 53370,
-      "error": "monitor pixels identical\n+ actual - expected\n\n+ 2671542535\n- 1487435566\n"
+      "name": "Free 3D: pad translates the CT plane exactly in LPS; rotation rows; plane presets",
+      "ok": true
     },
     {
-      "name": "anatomy contours + hover identification are exact after zoom, pan, resize and in split US/CT",
-      "ok": false,
-      "ms": 30001,
-      "error": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('ctx-window')\u001b[22m\n"
+      "name": "anatomy contours + hover are exact after zoom, pan, resize and in split US/CT; unlabelled stays unidentified",
+      "ok": true
     },
     {
-      "name": "click-to-explain, 3D link, isolate and restore (atlas registration is exact)",
-      "ok": false,
-      "ms": 10821,
-      "error": "locator.isVisible: Target page, context or browser has been closed\nBrowser logs:\n\n<launching> /opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader --autoplay-policy=no-user-gesture-required --user-data-dir=/tmp/playwright_chromiumdev_profile-k3uX7z --remote-debugging-pipe --no-startup-window\n<launched> pid=3971\n[pid=3971][err] [1109/065032.091294:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[pid=3971][err] [1109/065032.091358:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[pid=3971][err] [1109/065032.094258:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[pid=3971][err] [1109/065032.094319:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[pid=3971][err] [1109/065032.103324:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[pid=3971][err] [1109/065032.103529:WARNING:device/bluetooth/dbus/bluez_dbus_manager.cc:209] Floss manager service not available, cannot set Floss enable/disable.\n[pid=3971][err] [1109/065032.103689:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[pid=3971][err] [1109/065032.103549:WARNING:media/gpu/vaapi/vaapi_wrapper.cc:1660] drmGetDevices2() has not found any devices\n[pid=3971][err] [1109/065032.107862:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[pid=3971][err] [1109/065032.107677:WARNING:sandbox/policy/linux/sandbox_linux.cc:405] InitializeSandbox() called with multiple threads in process gpu-process.\n[pid=3971][err] [1109/065507.008870:INFO:CONSOLE:1] \"Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently\", source:  (1)\n[pid=3971] <gracefully close start>\n[pid=3971] <forcefully close>\n[pid=3971] <kill>\n[pid=3971] <will force kill>\nCall log:\n\u001b[2m    - checking visibility of getByTestId('struct-card')\u001b[22m\n"
+      "name": "structure list is stable during motion; row hover highlights the structure in the image",
+      "ok": true
     },
     {
-      "name": "overlays follow the moving anatomy (play) and pathology layers (effusion)",
-      "ok": false,
-      "ms": 1,
-      "error": "locator.click: Target page, context or browser has been closed"
+      "name": "tri-planar CT moves with the pad, the sliders, scroll and click",
+      "ok": true
     },
     {
-      "name": "tri-planar CT: three linked planes, slice scroll, click moves the crosshair",
-      "ok": false,
-      "ms": 0,
-      "error": "locator.click: Target page, context or browser has been closed"
+      "name": "pathology: new model cases are visible in their windows, with structured case text",
+      "ok": true
     },
     {
       "name": "auscultation workspace: sites, play/stop, bell/diaphragm, volume, guidance, no autoplay",
-      "ok": false,
-      "ms": 1,
-      "error": "page.evaluate: Target page, context or browser has been closed"
+      "ok": true
     },
     {
-      "name": "pathology workspace: structured case with fidelity labels and review status",
+      "name": "directed learning: continue -> prepared step -> answer -> feedback -> next; readable contrast",
       "ok": false,
-      "ms": 0,
-      "error": "locator.click: Target page, context or browser has been closed"
+      "error": "locator.click: Timeout 30000ms exceeded. | Call log: | \u001b[2m  - waiting for getByTestId('ws-learn')\u001b[22m"
     },
     {
-      "name": "guided learning: set up a task with real controls, check it, get feedback; credits page",
-      "ok": false,
-      "ms": 0,
-      "error": "locator.click: Target page, context or browser has been closed"
+      "name": "keyboard: arrows = patient directions, PageDown = posterior, Q/E rotate",
+      "ok": true
     },
     {
-      "name": "keyboard: mode keys, arrows step the selected quantity, Esc returns to placement",
-      "ok": false,
-      "ms": 1,
-      "error": "page.evaluate: Target page, context or browser has been closed"
+      "name": "layout laptop: nothing clipped, pad usable",
+      "ok": true
     },
     {
-      "name": "responsive layout: ipad",
-      "ok": false,
-      "ms": 0,
-      "error": "browser.newContext: Target page, context or browser has been closed"
+      "name": "layout ipad: nothing clipped, pad usable",
+      "ok": true
     },
     {
-      "name": "responsive layout: phone",
-      "ok": false,
-      "ms": 0,
-      "error": "browser.newContext: Target page, context or browser has been closed"
+      "name": "layout phone: nothing clipped, pad usable",
+      "ok": true
+    }
+  ],
+  "rerun": [
+    {
+      "name": "directed learning (isolated re-run, animation paused): continue -> prepared step -> check -> \"\u2713 Tepat\"; next -> click liver -> \"\u2713 Benar \u2014 Hati\"",
+      "ok": true,
+      "contrast": {
+        "feedback": 10.56,
+        "moduleText": 7.17
+      },
+      "note": "The full-suite step timed out clicking the workspace tab while software WebGL was busy; the same click works in isolation. Timeout raised in ux-e2e.mjs."
     }
   ]
 }

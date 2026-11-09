@@ -222,8 +222,8 @@ await step('auscultation workspace: sites, play/stop, bell/diaphragm, volume, gu
 });
 
 await step('directed learning: continue -> prepared step -> answer -> feedback -> next; readable contrast', async () => {
-  await page.getByTestId('ws-learn').click();
-  assert.ok(await page.getByTestId('learn-home').isVisible());
+  await page.getByTestId('ws-learn').click({ timeout: 120000 }); // software WebGL can stall the page for a while
+  await page.getByTestId('learn-home').waitFor({ timeout: 60000 });
   await shot('ux-11-learning-home');
   await page.getByTestId('learn-continue').click(); await settle(); await settle();
   await page.getByTestId('task-check').click();
