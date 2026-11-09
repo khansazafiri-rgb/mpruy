@@ -1,0 +1,452 @@
+{
+  "schemaVersion": 1,
+  "lastInvestigated": "2026-11-09",
+  "scope": "Audit evidence inventory; NOT a licence, legal opinion, or commercial-release approval",
+  "sourceAttribution": "BodyParts3D previous BY-SA 2.1 Japan as bundled in Z-Anatomy; current official BodyParts3D license page lists CC BY 4.0 as of 2025-02-27; version mapping unresolved.",
+  "records": [
+    {
+      "id": "atlas-code",
+      "products": [
+        "atlas-viewer",
+        "4d-lab"
+      ],
+      "scope": [
+        "apps/anatomy/src/**",
+        "apps/anatomy/tools/**",
+        "apps/anatomy/index.html",
+        "apps/anatomy/package.json"
+      ],
+      "source": "nqwrc/3d-anatomy (MEDCOEL modified fork)",
+      "sourceRevision": "8ca3b7421bcfbe88b85859eb1983d5cf79f21749",
+      "sourceLicense": "CC-BY-NC-SA-4.0",
+      "sourceCommercialUse": false,
+      "provenance": "source-confirmed",
+      "status": "blocked",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-license",
+          "url": "https://github.com/nqwrc/3d-anatomy/blob/8ca3b7421bcfbe88b85859eb1983d5cf79f21749/LICENSE"
+        },
+        {
+          "kind": "local-package",
+          "url": "apps/anatomy/package.json"
+        },
+        {
+          "kind": "local-license",
+          "url": "apps/anatomy/LICENSE"
+        }
+      ],
+      "blockingReason": "Original code is explicitly under NC-SA; removing NC meshes does not relicense application code. Obtain a verifiable commercial grant from all relevant code rights holders or replace with independently authored code."
+    },
+    {
+      "id": "model-skeletal",
+      "products": [
+        "atlas-viewer",
+        "4d-lab"
+      ],
+      "scope": [
+        "apps/anatomy/public/models/skeletal.glb"
+      ],
+      "source": "BodyParts3D adapted by Z-Anatomy; retained meshes in MEDCOEL quarantine-pruned Atlas",
+      "sourceRevision": "Z-Anatomy exported Blender model (input version not yet independently pinned)",
+      "sourceLicense": "CC-BY-SA-4.0 (upstream notice); underlying older BodyParts3D CC-BY-SA-2.1-JP",
+      "sourceCommercialUse": true,
+      "provenance": "per-structure-inferred",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-shared-notice",
+          "url": "apps/anatomy/public/models/License.txt"
+        },
+        {
+          "kind": "z-anatomy-project",
+          "url": "https://www.z-anatomy.com/"
+        },
+        {
+          "kind": "bodyparts3d-current-license-not-version-proof",
+          "url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html"
+        },
+        {
+          "kind": "local-audit",
+          "url": "licensing/PROVENANCE_REPORT.md"
+        }
+      ],
+      "blockingReason": "Skull source and possible Dundee foramina overlap require mesh-level verification."
+    },
+    {
+      "id": "model-muscular",
+      "products": [
+        "atlas-viewer",
+        "4d-lab"
+      ],
+      "scope": [
+        "apps/anatomy/public/models/muscular.glb"
+      ],
+      "source": "BodyParts3D adapted by Z-Anatomy; retained meshes in MEDCOEL quarantine-pruned Atlas",
+      "sourceRevision": "Z-Anatomy exported Blender model (input version not yet independently pinned)",
+      "sourceLicense": "CC-BY-SA-4.0 (upstream notice); underlying older BodyParts3D CC-BY-SA-2.1-JP",
+      "sourceCommercialUse": true,
+      "provenance": "per-structure-inferred",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-shared-notice",
+          "url": "apps/anatomy/public/models/License.txt"
+        },
+        {
+          "kind": "z-anatomy-project",
+          "url": "https://www.z-anatomy.com/"
+        },
+        {
+          "kind": "bodyparts3d-current-license-not-version-proof",
+          "url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html"
+        },
+        {
+          "kind": "local-audit",
+          "url": "licensing/PROVENANCE_REPORT.md"
+        }
+      ],
+      "blockingReason": "Individual upstream contributor provenance is attributed by a shared notice, not a per-mesh proof."
+    },
+    {
+      "id": "model-joints",
+      "products": [
+        "atlas-viewer",
+        "4d-lab"
+      ],
+      "scope": [
+        "apps/anatomy/public/models/joints.glb"
+      ],
+      "source": "BodyParts3D adapted by Z-Anatomy; retained meshes in MEDCOEL quarantine-pruned Atlas",
+      "sourceRevision": "Z-Anatomy exported Blender model (input version not yet independently pinned)",
+      "sourceLicense": "CC-BY-SA-4.0 (upstream notice); underlying older BodyParts3D CC-BY-SA-2.1-JP",
+      "sourceCommercialUse": true,
+      "provenance": "per-structure-inferred",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-shared-notice",
+          "url": "apps/anatomy/public/models/License.txt"
+        },
+        {
+          "kind": "z-anatomy-project",
+          "url": "https://www.z-anatomy.com/"
+        },
+        {
+          "kind": "bodyparts3d-current-license-not-version-proof",
+          "url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html"
+        },
+        {
+          "kind": "local-audit",
+          "url": "licensing/PROVENANCE_REPORT.md"
+        }
+      ],
+      "blockingReason": "Individual ligament/joint meshes have no independently confirmed source mapping."
+    },
+    {
+      "id": "model-cardiovascular",
+      "products": [
+        "atlas-viewer",
+        "4d-lab"
+      ],
+      "scope": [
+        "apps/anatomy/public/models/cardiovascular.glb"
+      ],
+      "source": "BodyParts3D adapted by Z-Anatomy; retained meshes in MEDCOEL quarantine-pruned Atlas",
+      "sourceRevision": "Z-Anatomy exported Blender model (input version not yet independently pinned)",
+      "sourceLicense": "CC-BY-SA-4.0 (upstream notice); underlying older BodyParts3D CC-BY-SA-2.1-JP",
+      "sourceCommercialUse": true,
+      "provenance": "per-structure-inferred",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-shared-notice",
+          "url": "apps/anatomy/public/models/License.txt"
+        },
+        {
+          "kind": "z-anatomy-project",
+          "url": "https://www.z-anatomy.com/"
+        },
+        {
+          "kind": "bodyparts3d-current-license-not-version-proof",
+          "url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html"
+        },
+        {
+          "kind": "local-audit",
+          "url": "licensing/PROVENANCE_REPORT.md"
+        }
+      ],
+      "blockingReason": "Some cerebral and renal vessel tubes need contributor confirmation and derivation review."
+    },
+    {
+      "id": "model-lymphatic",
+      "products": [
+        "atlas-viewer",
+        "4d-lab"
+      ],
+      "scope": [
+        "apps/anatomy/public/models/lymphatic.glb"
+      ],
+      "source": "BodyParts3D adapted by Z-Anatomy; retained meshes in MEDCOEL quarantine-pruned Atlas",
+      "sourceRevision": "Z-Anatomy exported Blender model (input version not yet independently pinned)",
+      "sourceLicense": "CC-BY-SA-4.0 (upstream notice); underlying older BodyParts3D CC-BY-SA-2.1-JP",
+      "sourceCommercialUse": true,
+      "provenance": "per-structure-inferred",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-shared-notice",
+          "url": "apps/anatomy/public/models/License.txt"
+        },
+        {
+          "kind": "z-anatomy-project",
+          "url": "https://www.z-anatomy.com/"
+        },
+        {
+          "kind": "bodyparts3d-current-license-not-version-proof",
+          "url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html"
+        },
+        {
+          "kind": "local-audit",
+          "url": "licensing/PROVENANCE_REPORT.md"
+        }
+      ],
+      "blockingReason": "Individual lymphatic source mapping is inferred from the common atlas notice."
+    },
+    {
+      "id": "model-visceral",
+      "products": [
+        "atlas-viewer",
+        "4d-lab"
+      ],
+      "scope": [
+        "apps/anatomy/public/models/visceral.glb"
+      ],
+      "source": "BodyParts3D adapted by Z-Anatomy; retained meshes in MEDCOEL quarantine-pruned Atlas",
+      "sourceRevision": "Z-Anatomy exported Blender model (input version not yet independently pinned)",
+      "sourceLicense": "CC-BY-SA-4.0 (upstream notice); underlying older BodyParts3D CC-BY-SA-2.1-JP",
+      "sourceCommercialUse": true,
+      "provenance": "per-structure-inferred",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-shared-notice",
+          "url": "apps/anatomy/public/models/License.txt"
+        },
+        {
+          "kind": "z-anatomy-project",
+          "url": "https://www.z-anatomy.com/"
+        },
+        {
+          "kind": "bodyparts3d-current-license-not-version-proof",
+          "url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html"
+        },
+        {
+          "kind": "local-audit",
+          "url": "licensing/PROVENANCE_REPORT.md"
+        }
+      ],
+      "blockingReason": "Pruned kidney remains excluded; other retained organs require per-mesh attribution confirmation."
+    },
+    {
+      "id": "atlas-previews",
+      "products": [
+        "atlas-viewer"
+      ],
+      "scope": [
+        "apps/anatomy/public/thumbnails/**"
+      ],
+      "source": "Rendered derivatives of Atlas models",
+      "sourceRevision": "Generated from cleared subset; not independently re-licensed",
+      "sourceLicense": "CC-BY-SA-4.0 (conditional on upstream provenance)",
+      "sourceCommercialUse": true,
+      "provenance": "derived-source-inferred",
+      "status": "needs-review",
+      "dependencies": [
+        "model-skeletal",
+        "model-muscular",
+        "model-joints",
+        "model-cardiovascular",
+        "model-lymphatic",
+        "model-visceral"
+      ],
+      "evidence": [
+        {
+          "kind": "local-derivative-record",
+          "url": "licensing/PROVENANCE_REPORT.md"
+        }
+      ],
+      "blockingReason": "Confirm that every displayed pixel is generated solely from documented commercially usable source meshes, including head and region previews."
+    },
+    {
+      "id": "atlas-definitions",
+      "products": [
+        "atlas-viewer"
+      ],
+      "scope": [
+        "apps/anatomy/public/data/definitions.json"
+      ],
+      "source": "Wikipedia contributors via Z-Anatomy",
+      "sourceRevision": "Page revisions and individual entry provenance not fully enumerated",
+      "sourceLicense": "CC-BY-SA-3.0 and GFDL (upstream declared)",
+      "sourceCommercialUse": true,
+      "provenance": "text-source-inferred",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-notice",
+          "url": "apps/anatomy/public/models/License.txt"
+        },
+        {
+          "kind": "wikipedia-terms",
+          "url": "https://en.wikipedia.org/wiki/Wikipedia:Copyrights"
+        }
+      ],
+      "blockingReason": "Document source revision/attribution and whether GFDL obligations apply to the exact bundled definitions."
+    },
+    {
+      "id": "atlas-other-data",
+      "products": [
+        "atlas-viewer"
+      ],
+      "scope": [
+        "apps/anatomy/public/data/**"
+      ],
+      "source": "Mixed atlas catalog, translations, MEDCOEL annotations and upstream lexicon",
+      "sourceRevision": "Mixed; versioned upstream source evidence missing",
+      "sourceLicense": "Mixed / needs file-level classification",
+      "sourceCommercialUse": null,
+      "provenance": "mixed-not-file-reviewed",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "local-source-manifest",
+          "url": "apps/anatomy/SOURCE-MANIFEST.json"
+        }
+      ],
+      "blockingReason": "Review each text/translation/annotation source and evidence of authority; definitions.json separately reviewed above."
+    },
+    {
+      "id": "atlas-synthetic-ct",
+      "products": [
+        "4d-lab"
+      ],
+      "scope": [
+        "apps/4d-lab/public/data/atlas/**"
+      ],
+      "source": "MEDCOEL synthesized CT/labels/skin from retained Atlas meshes",
+      "sourceRevision": "Build pins input model SHA-256 in anatomy.json",
+      "sourceLicense": "CC-BY-SA-4.0 conditional on all underlying meshes",
+      "sourceCommercialUse": true,
+      "provenance": "derived-source-inferred",
+      "status": "needs-review",
+      "dependencies": [
+        "model-skeletal",
+        "model-muscular",
+        "model-joints",
+        "model-cardiovascular",
+        "model-lymphatic",
+        "model-visceral"
+      ],
+      "evidence": [
+        {
+          "kind": "attribution-and-modification-notice",
+          "url": "apps/4d-lab/public/data/atlas/NOTICE.txt"
+        },
+        {
+          "kind": "source-hashes",
+          "url": "apps/4d-lab/public/data/atlas/anatomy.json"
+        }
+      ],
+      "blockingReason": "Reconcile each actual voxel-producing mesh with upstream version, contributor rights and licence obligations; SHA of input file is integrity evidence, not ownership evidence."
+    },
+    {
+      "id": "lab-application-code",
+      "products": [
+        "4d-lab"
+      ],
+      "scope": [
+        "apps/4d-lab/src/**",
+        "apps/4d-lab/pipeline/**"
+      ],
+      "source": "MEDCOEL application development",
+      "sourceRevision": "Repository history",
+      "sourceLicense": "MEDCOEL-owned claimed; confirm contributor assignments and dependencies",
+      "sourceCommercialUse": null,
+      "provenance": "ownership-not-documented",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "local-code-history",
+          "url": "apps/4d-lab/README.md"
+        }
+      ],
+      "blockingReason": "Record ownership or contributions and commercial distribution permission for all authored/borrowed code; do not presume GitHub access grants copyright."
+    },
+    {
+      "id": "software-dependencies",
+      "products": [
+        "atlas-viewer",
+        "4d-lab"
+      ],
+      "scope": [
+        "apps/anatomy/package-lock.json",
+        "apps/4d-lab/package-lock.json",
+        "apps/anatomy/public/draco/**"
+      ],
+      "source": "npm packages and Draco runtime",
+      "sourceRevision": "Package lockfiles; runtime asset versions",
+      "sourceLicense": "Mixed open source (version-specific audit pending)",
+      "sourceCommercialUse": null,
+      "provenance": "version-pinned-not-license-verified",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "lockfile",
+          "url": "apps/anatomy/package-lock.json"
+        },
+        {
+          "kind": "lockfile",
+          "url": "apps/4d-lab/package-lock.json"
+        }
+      ],
+      "blockingReason": "Produce an SBOM and verify license obligations for exact package versions and bundled decoder binaries."
+    },
+    {
+      "id": "medcoel-promotional-media",
+      "products": [
+        "medcoel-platform"
+      ],
+      "scope": [
+        "video/**",
+        "brand/video/**",
+        "docs/panduan/**"
+      ],
+      "source": "MEDCOEL promotional recordings and narration, including past capture of unreviewed Atlas scenes",
+      "sourceRevision": "Versioned repository media; no frame-by-frame clearance",
+      "sourceLicense": "Mixed and pending separate review",
+      "sourceCommercialUse": null,
+      "provenance": "media-source-not-audited",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "local-audit",
+          "url": "licensing/LEGAL_REVIEW_REQUIRED.md"
+        }
+      ],
+      "blockingReason": "Inspect frames/voices, verify recorded content and commercial TTS permissions, and document attribution for any atlas footage; do not assume Anatomy/4D gate covers the entire platform."
+    }
+  ]
+}
