@@ -453,3 +453,33 @@ body[data-learning="1"] .view-menu, body[data-learning="1"] .monitor-toolbar .in
 .tour-root .tour .tour-progress i { flex: 1; height: 4px; background: rgb(var(--line)); border-radius: 999px; }
 .tour-root .tour .tour-progress i.active { background: rgb(var(--brand)); }
 @media (prefers-reduced-motion: reduce) { .tour-focus { transition: none; } }
+
+/* Right-hand imaging work area: keep top display toolbar visible while the monitor content
+   scrolls independently when tri-planar controls need additional vertical room.
+   The CT canvas keeps a readable height rather than shrinking behind the physiology strips. */
+.monitor-panel { overflow: hidden; }
+.monitor-panel > .monitor-toolbar { flex: none; }
+.monitor-scroll {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
+}
+.monitor-scroll:focus-visible { outline-offset: -3px; }
+.monitor-panel[data-display="tri"] .monitor-body {
+  flex: 0 0 auto;
+  height: clamp(440px, 56dvh, 660px);
+  min-height: 440px;
+}
+.monitor-panel[data-display="tri"] .strip-wrap { flex: 0 0 auto; }
+.monitor-panel[data-display="tri"] .playbar { flex-shrink: 0; }
+.tri-scroll-hint { color: rgb(var(--muted)); font-size: 11.5px; }
+.tri-show-images { margin-left: 5px; }
+@media (max-width: 760px) {
+  .monitor-panel[data-display="tri"] .monitor-body { height: max(450px, 65dvh); }
+}
