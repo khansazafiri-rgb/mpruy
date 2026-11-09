@@ -146,6 +146,33 @@ await step('transparent skin shows the atlas organs; groups toggle, transparency
   assert.ok(Math.abs(before.mean - after.mean) < 25, 'state restored');
 });
 
+await step('clinical transducer remains on the skin with a visible contact reference when skin is hidden', async () => {
+  await pause();
+  await display('transparent');
+  await page.waitForFunction(() => window.__lab.scene.contactIndicator?.visible, null, { timeout: 15000 });
+  const a = await lab(() => {
+    const scene = window.__lab.scene, p = scene.probe.matrix.elements;
+    return {
+      probeVisible: scene.probe.visible,
+      contactVisible: scene.contactIndicator.visible,
+      contactPoint: [p[12], p[13], p[14]],
+      ringPoint: scene.contactIndicator.position.toArray(),
+      neck: scene.probe.children.some(child =>
+        child.isMesh && child.geometry?.type === 'CylinderGeometry' && child.geometry.parameters?.height === 42),
+    };
+  });
+  assert.equal(a.probeVisible, true, 'clinical probe remains visible');
+  assert.equal(a.contactVisible, true, 'reference contact appears with transparent skin');
+  assert.equal(a.neck, true, 'housing joins the transducer head and handle');
+  const gap = Math.hypot(...a.contactPoint.map((v, i) => v - a.ringPoint[i]));
+  assert.ok(gap <= 1.6, 'reference contact is within 1.6 mm of the real transducer origin, gap=' + gap);
+  await shot('atlas-probe-skin-contact');
+  await display('external');
+  await page.waitForFunction(() => !window.__lab.scene.contactIndicator.visible);
+  assert.equal(await lab(() => window.__lab.scene.probe.visible), true, 'probe stays on skin in external view');
+  await display('transparent');
+});
+
 await step('cleared respiratory detail: show existing pleura/bronchi and restore initial view', async () => {
   await display('transparent');
   await page.getByTestId('btn-showall').click();
