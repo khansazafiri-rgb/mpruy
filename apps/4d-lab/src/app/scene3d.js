@@ -455,8 +455,8 @@ export class PatientScene {
   /** One interaction at a time: only 'camera' lets the pointer orbit/pan/zoom the camera. */
   setInteraction(mode) {
     this.interaction = mode;
-    const cam = mode === 'camera';
-    if (this.controls) { this.controls.enableRotate = cam; this.controls.enablePan = cam; this.controls.enableZoom = cam; }
+    // the camera is always free (drag empty space / wheel); the probe and handles take priority when grabbed
+    if (this.controls) { this.controls.enableRotate = true; this.controls.enablePan = true; this.controls.enableZoom = true; }
     this.renderer.domElement.dataset.interaction = mode;
   }
 
@@ -546,7 +546,7 @@ export class PatientScene {
     const el = this.renderer.domElement;
     let drag = null, down = null;
     el.addEventListener('wheel', (e) => {
-      if (this.interaction === 'camera') return; // OrbitControls zooms
+      if (this.interaction === 'camera' || this.interaction === 'place') return; // OrbitControls zooms
       e.preventDefault(); e.stopImmediatePropagation();
       if (this.interaction !== 'place') this.h.onAxisWheel?.(e.deltaY < 0 ? 1 : -1, e.shiftKey);
     }, { passive: false, capture: true });

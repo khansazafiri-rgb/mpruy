@@ -16,7 +16,7 @@ export function translate(S, mode, mm, { closestSkin, coverage }) {
     S.free.position = S.free.position.map((v, i) => v + axis[i] * mm);
     return { ok: true, moved: mm };
   }
-  if (mode === 'depth') return { ok: false, error: 'Probe klinis tidak menembus tubuh: pilih sisi tubuh (depan/belakang/kanan/kiri).' };
+  if (mode === 'depth') return aroundBody(S, mm, { closestSkin, coverage });
   if (!S.contact) return { ok: false, error: 'Tempatkan probe dulu (klik kulit).' };
   // slide in small sub-steps so the contact follows the skin curvature instead of jumping
   const n = Math.max(1, Math.ceil(Math.abs(mm) / SUB_STEP_MM)), step = mm / n;
@@ -56,4 +56,35 @@ export function rotate(S, deg) {
     if (c !== v) return { ok: false, error: `Batas ${k === 'heelToe' ? 'heel–toe' : 'rock'} ±${lim}° tercapai.` };
   }
   return { ok: true };
+}
+
+/**
+ * Clinical anterior (+) / posterior (−): walk the contact AROUND the body surface toward the front or back at
+ * (about) the same height — the probe never goes through the body. Each sub-step slides along the skin tangent
+ * that points toward the wanted side; it stops when the probe already faces that side.
+ */
+export function aroundBody(S, mm, { closestSkin, coverage }) {
+  if (!S.contact) return { ok: false, error: 'Tempatkan probe dulu (klik kulit).' };
+  const want = [0, mm > 0 ? -1 : 1, 0]; // anterior = −y (LPS)
+  const n = Math.max(1, Math.ceil(Math.abs(mm) / SUB_STEP_MM));
+  let contact = S.contact, moved = 0, error = null;
+  for (let k = 0; k < n; k++) {
+    const nr = contact.normal, along = want[0] * nr[0] + want[1] * nr[1] + want[2] * nr[2];
+    if (along > 0.97) { error = mm > 0 ? 'Probe sudah di permukaan depan (anterior).' : 'Probe sudah di permukaan belakang (posterior).'; break; }
+    // walk along the body's horizontal cross-section (tangent perpendicular to the skin normal). The rotational
+    // sense around the body is chosen ONCE (toward the wanted side; on the exact opposite side: the nearer flank)
+    // and kept while the same direction is repeated, so the probe never oscillates around the midline.
+    const h = [-nr[1], nr[0]], L = Math.hypot(h[0], h[1]) || 1;
+    if (!S._walk || S._walk.want !== want[1] || S._walk.from !== S.contact) {
+      const toward = (h[0] * want[0] + h[1] * want[1]) / L;
+      S._walk = { want: want[1], sense: Math.abs(toward) >= 0.1 ? Math.sign(toward) : (contact.point[0] >= 0 ? 1 : -1) * Math.sign(h[0] || 1) };
+    }
+    const t = [S._walk.sense * h[0] / L, S._walk.sense * h[1] / L, 0];
+    const r = slideOnSkin({ contact, axis: t, mm: SUB_STEP_MM, closest: closestSkin, coverage });
+    if (r.error) { error = r.error; break; }
+    contact = r.contact; moved += SUB_STEP_MM;
+  }
+  if (moved) S.contact = contact;
+  if (S._walk) S._walk.from = S.contact; // a probe placed any other way resets the walking direction
+  return { ok: !error || moved > 0, moved: Math.sign(mm) * moved, error: moved ? null : error, note: moved && error ? error : null };
 }

@@ -5,7 +5,7 @@ import { validateRegistration } from '../core/mesh.js';
 import { clinicalPose, freePose, freeQuat, freeAngles, FREE_PRESETS, imagingPlane, PROBES, rotateFree, CLINICAL_LIMITS, fovOutline } from '../core/probe.js';
 import { CT_PRESETS } from '../core/reslice.js';
 import { DEFAULT_PHYSIOLOGY, createClock, advanceClock, makeFrame, prepareGeometry, displacement, deformPositions, modelEjectionFraction, cardiacState, respState, antralContraction, systoleSeconds } from '../sim/physiology.js';
-import { SCENARIOS, applyScenario, buildEffusion, motilityIndex } from '../sim/pathology.js';
+import { SCENARIOS, applyScenario, buildEffusion, buildLayer, motilityIndex } from '../sim/pathology.js';
 import { cloneTissues, TISSUES, impedance } from '../sim/tissues.js';
 import { siteMix, heartCycle } from '../sim/auscultation.js';
 import { VIEWS, snapToSkin } from '../sim/views.js';
@@ -16,9 +16,10 @@ import { AudioEngine } from './audio.js';
 import { voxelSurface } from './blobMesh.js';
 import { AtlasLayer, ATLAS_GROUPS } from './atlasLayer.js';
 import { buildAtlasPanel, frameSummary } from './atlasPanel.js';
-import { buildModeBar, renderContext, axisColor } from './controlBar.js';
-import { CONTROL_MODES, ORIENTATION_PRESETS, ANGLES, dragToAmount, dragToDegrees } from './axisControl.js';
-import { translate as axisTranslate, selectSide as axisSelectSide, rotate as axisRotate } from './axisMove.js';
+import { axisColor } from './controlBar.js';
+import { buildPad, PAD_DIRS } from './probePad.js';
+import { CONTROL_MODES, ORIENTATION_PRESETS } from './axisControl.js';
+import { translate as axisTranslate, rotate as axisRotate, selectSide as axisSelectSide } from './axisMove.js';
 import { Assist } from './assist.js';
 import { Learn } from './learn.js';
 import { triPlanes, stepSlice, sliceLabel, clampToBounds, MPR } from '../core/mpr.js';
@@ -52,7 +53,7 @@ const ATLAS_BASE = QUERY.get('atlasBase') || import.meta.env.VITE_ATLAS_BASE || 
 const labelUnavailable = (id) => D?.anatomy?.labels?.some((l) => l.id === id && l.available === false);
 const viewLabel = (v) => (v.key === 'ruq' && labelUnavailable(20) ? 'RUQ / hepatorenal (ginjal tidak tersedia)' : v.labelId);
 const DEFAULT_ATLAS_SYSTEMS = ['visceral', 'cardiovascular', 'skeletal', 'lymphatic'];
-const SUGGESTED_VIEW = { hfref: 'apical', effusion: 'right_flank', gastroparesis: 'epigastric', normal: 'subxiphoid' };
+const SUGGESTED_VIEW = { hfref: 'apical', effusion: 'right_flank', gastroparesis: 'epigastric', normal: 'subxiphoid', pericardial: 'subxiphoid', ascites: 'ruq', retention: 'bladder' };
 /** Datasets may name their own teaching window per scenario (e.g. the clearest cardiac window of the atlas body). */
 const suggestedView = (key) => D?.anatomy?.suggestedViews?.[key] || SUGGESTED_VIEW[key];
 
@@ -90,6 +91,7 @@ function markDirty() { dirty = true; }
 function touch() { interacting = true; lastInteraction = performance.now(); markDirty(); }
 function effectiveParams() { return S.compareNormal ? { ...applyScenario(DEFAULT_PHYSIOLOGY, 'normal'), ...pick(S.params, ['heartRate', 'respRate', 'breathDepth', 'breathHold', 'cardiacEnabled', 'respirationEnabled', 'peristalsisEnabled']) } : S.params; }
 function effusionMl() { return S.compareNormal ? 0 : SCENARIOS[S.scenario].effusionMl; }
+function layerSpec() { return S.compareNormal ? null : SCENARIOS[S.scenario].layer || null; }
 const pick = (o, keys) => Object.fromEntries(keys.map((k) => [k, o[k]]));
 
 // ------------------------------------------------------------------ data loading
@@ -263,7 +265,7 @@ function requestImaging(f, plane) {
   const common = {
     settings: { ...S.us, probeKey: S.probeKey, window: S.ct.window, level: S.ct.level, ctClip: S.ct.clip },
     clock: { t: clock.t, beatPhase: clock.beatPhase, breathPhase: clock.breathPhase, giPhase: clock.giPhase, heldR: clock.heldR },
-    params: geom ? effectiveParams() : null, effusionMl: effusionMl(), wantLabels: !!D?.labels,
+    params: geom ? effectiveParams() : null, effusionMl: effusionMl(), layer: layerSpec(), wantLabels: !!D?.labels,
   };
   if (S.display === 'tri') { // three linked CT reformats through one patient-space point (CT only, never US geometry)
     if (!S.tri.point) S.tri.point = triStart();
@@ -375,7 +377,7 @@ function currentMix() {
   if (!point) return null;
   const key = point.map((v) => v.toFixed(1)).join() + effusionMl() + s3On();
   if (mixCache?.key === key) return mixCache.mix;
-  const labelAt = (x, y, z) => { const l = D.labels.nearest(x, y, z); return effusion && l === 7 && !S.compareNormal ? effusion.classify(x, y, z, l) || l : l; };
+  const labelAt = (x, y, z) => { const l = D.labels.nearest(x, y, z); return effusion && effusion.from.has(l) && !S.compareNormal ? effusion.classify(x, y, z, l) || l : l; };
   const mix = siteMix({ point: S.steth.ref || point, normal, sites: D.anatomy.auscultation, labelAt, s3: s3On() });
   mixCache = { key, mix }; return mix;
 }
@@ -480,10 +482,11 @@ function setScenario(key, moveView = true) {
   S.scenario = key; S.compareNormal = false;
   const sc = SCENARIOS[key];
   S.params = { ...applyScenario(DEFAULT_PHYSIOLOGY, key), cardiacEnabled: !!geom, respirationEnabled: !!geom, peristalsisEnabled: !!geom };
-  effusion = sc.effusionMl > 0 && D?.labels ? buildEffusion(D.labels, sc.effusionMl, { diaphragm: geom?.diaphragm }) : null;
+  effusion = sc.effusionMl > 0 && D?.labels ? buildEffusion(D.labels, sc.effusionMl, { diaphragm: geom?.diaphragm }) : sc.layer && D?.labels ? buildLayer(D.labels, sc.layer) : null;
   if (effusion) {
-    const b = D.rightLungBox || (D.rightLungBox = labelBox(D.labels, 7));
-    const m = voxelSurface((x, y, z) => { const l = D.labels.nearest(x, y, z); return l === 7 && effusion.classify(x, y, z, l) === 39; }, b.lo, b.hi, 4, 5);
+    const b = effusion.box || D.rightLungBox || (D.rightLungBox = labelBox(D.labels, 7));
+    const want = effusion.meshLabel;
+    const m = voxelSurface((x, y, z) => { const l = D.labels.nearest(x, y, z); return effusion.from.has(l) && effusion.classify(x, y, z, l) === want && l !== want; }, b.lo, b.hi, 4, 5);
     scene.setEffusionMesh(m);
   } else scene.setEffusionMesh(null);
   mixCache = null; pcgCache = null;
@@ -510,15 +513,10 @@ function contactInCoverage(c) {
   return ok;
 }
 
-// ------------------------------------------------------------------ axis-first control
-// The learner chooses WHAT to change (mode bar), then one gesture changes only that quantity.
-// Directions are patient-anatomical (LPS), never camera-relative; the camera is its own mode.
-const isAxisMode = (m) => m === 'vertical' || m === 'horizontal' || m === 'depth';
-function setCtlMode(mode) {
-  if (!CONTROL_MODES[mode]) return;
-  S.ctl.mode = mode; scene.setInteraction(mode);
-  document.body.dataset.ctl = mode; renderCtx(); touch();
-}
+// ------------------------------------------------------------------ direction pad (direct control)
+// No mode to choose first: labelled patient-direction buttons (hold to repeat), arrow keys, and direct dragging of the
+// probe on the skin. The camera is always free (drag empty space / wheel). Directions are anatomical (LPS), never
+// camera-relative; hovering a direction shows its patient axis in 3D.
 function ctlEnv() {
   const b = scene.bodyBounds || D?.ct?.bounds;
   return {
@@ -526,81 +524,83 @@ function ctlEnv() {
     bodyCentre: b ? [(b.lo[0] + b.hi[0]) / 2, (b.lo[1] + b.hi[1]) / 2, (b.lo[2] + b.hi[2]) / 2] : [0, 0, 0],
   };
 }
-function report(r) { if (r && !r.ok && r.error) status(r.error, 'warn'); }
-/** +/- buttons, wheel and arrow keys: one step of the selected quantity (fine = 1/5 step). */
-function nudge(sign, fine = false) {
-  const m = S.ctl.mode, k = fine ? 0.2 : 1;
-  if (isAxisMode(m)) report(axisTranslate(S, m, sign * S.ctl.stepMM * k, ctlEnv()));
-  else if (m === 'rotate') report(axisRotate(S, sign * S.ctl.stepDeg * k));
-  else return;
+function report(r) { if (r && !r.ok && r.error) status(r.error, 'warn'); else if (r?.note) status(r.note, 'info'); }
+const padKind = () => (S.display === 'tri' ? 'tri' : S.mode === 'free' ? 'plane' : 'probe');
+/** Move the current target one step in a patient direction (pad button, arrow key). */
+function padMove(dir, fine = false) {
+  const d = PAD_DIRS[dir]; if (!d) return;
+  // clinical anterior/posterior walks around the body: use a larger step so the back is reachable in a few clicks
+  const base = d.axis === 'depth' && padKind() === 'probe' ? Math.max(20, S.ctl.stepMM) : S.ctl.stepMM;
+  const mm = d.sign * base * (fine ? 0.2 : 1);
+  if (padKind() === 'tri') {
+    if (!S.tri.point) S.tri.point = triStart();
+    const axis = CONTROL_MODES[d.axis].axis;
+    S.tri.point = clampToBounds(S.tri.point.map((v, i) => v + axis[i] * mm), D.ct.bounds);
+  } else report(axisTranslate(S, d.axis, mm, ctlEnv()));
   afterMove();
 }
-/** Drag anywhere on the 3D view in an axis mode: the drag is projected on the ON-SCREEN direction of the patient axis. */
-let dragAcc = 0;
-function axisDrag(dx, dy, fine) {
-  const m = S.ctl.mode;
-  if (m === 'rotate') { report(axisRotate(S, dragToDegrees(dx, fine))); afterMove(); return; }
-  if (!isAxisMode(m) || (m === 'depth' && S.mode !== 'free')) return;
-  const pivot = axisPivot(); if (!pivot) return;
-  const { amount } = dragToAmount(dx, dy, scene.screenAxis(pivot, CONTROL_MODES[m].axis));
-  dragAcc += amount * (fine ? 0.25 : 1);
-  if (Math.abs(dragAcc) < (S.mode === 'free' ? 0.2 : 1)) return; // clinical: slide in >= 1 mm increments
-  const r = axisTranslate(S, m, dragAcc, ctlEnv()); dragAcc = 0; report(r); afterMove();
+function padRotate(key, sign, fine = false) {
+  const deg = sign * S.ctl.stepDeg * (fine ? 0.2 : 1);
+  if (S.mode === 'free') S.ctl.angleFree = key; else S.ctl.angleClinical = key;
+  report(axisRotate(S, deg)); afterMove();
 }
-function afterMove() { mixCache = null; refreshAll(); renderCtx(); touch(); }
-function axisPivot() {
+function afterMove() { mixCache = null; refreshAll(); touch(); }
+function padPivot() {
+  if (padKind() === 'tri') return S.tri.point;
   if (S.mode === 'clinical') return S.contact?.point || null;
   const f = geom ? makeFrame(clock, effectiveParams(), geom) : null, pl = currentPlane(currentPose(f));
   return pl ? pl.top.map((v, i) => v + pl.v[i] * pl.height * 0.5) : S.free.position;
 }
-let guideKey = '';
+let guideDir = null, guideKey = '';
 function updateAxisGuide() {
-  const m = S.ctl.mode, show = isAxisMode(m) && !(m === 'depth' && S.mode !== 'free') && (S.mode === 'free' || S.contact);
-  const pivot = show ? axisPivot() : null;
-  const key = show && pivot ? m + pivot.map((v) => v.toFixed(0)).join() : '';
+  const pivot = guideDir ? padPivot() : null, d = guideDir && PAD_DIRS[guideDir];
+  const key = d && pivot ? guideDir + pivot.map((v) => v.toFixed(0)).join() : '';
   if (key === guideKey) return; guideKey = key;
   if (!key) { scene.setAxisGuide(null); return; }
-  const def = CONTROL_MODES[m];
-  scene.setAxisGuide({ pivot, axis: def.axis, color: axisColor(m), plus: '+ ' + def.plus, minus: '− ' + def.minus });
+  const def = CONTROL_MODES[d.axis];
+  scene.setAxisGuide({ pivot, axis: def.axis, color: axisColor(d.axis), plus: '+ ' + def.plus, minus: '− ' + def.minus });
 }
-function ctlReadout() {
-  const m = S.ctl.mode, f1 = (v) => v.toFixed(1);
-  if (m === 'rotate') {
-    if (S.mode === 'free') { const a = freeAngles(S.free.q); return `${ANGLES.free[S.ctl.angleFree].split(' (')[0]} ${a[S.ctl.angleFree]}°`; }
-    return `${ANGLES.clinical[S.ctl.angleClinical].split(' (')[0]} ${f1(S.angles[S.ctl.angleClinical])}°`;
-  }
-  if (isAxisMode(m)) {
-    const i = { vertical: 2, horizontal: 0, depth: 1 }[m], p = S.mode === 'free' ? S.free.position : S.contact?.point;
-    if (!p) return '—';
-    const name = { vertical: 'S', horizontal: 'L', depth: 'A' }[m], v = m === 'depth' ? -p[i] : p[i];
-    return `${name} ${f1(v)} mm`;
-  }
-  return '';
+function padReadout() {
+  const f1 = (v) => v.toFixed(1);
+  const p = padKind() === 'tri' ? S.tri.point : S.mode === 'free' ? S.free.position : S.contact?.point;
+  if (!p) return 'Klik kulit pasien untuk menempatkan probe';
+  const where = padKind() === 'probe' ? REGION(S.contact.point, S.contact.normal) + ' · ' : '';
+  return `${where}S ${f1(p[2])} · L ${f1(p[0])} · P ${f1(p[1])} mm`;
 }
-function renderCtx() {
-  const root = $('#ctxBar'); if (!root || !scene) return;
-  renderContext(root, {
-    S, el, readout: ctlReadout,
-    placeExtras: () => S.mode === 'clinical' && D?.labels ? [
-      el('select', { class: 'step-sel', 'data-testid': 'ctx-window', 'aria-label': 'Jendela standar', onchange: (e) => { if (e.target.value) applyView(e.target.value); } },
-        el('option', { value: '' }, 'Jendela standar…'), ...VIEWS.map((v) => el('option', { value: v.key, selected: v.key === S.view || undefined }, viewLabel(v)))),
-      el('select', { class: 'step-sel', 'data-testid': 'ctx-probe', 'aria-label': 'Jenis probe', onchange: (e) => { setProbe(e.target.value, false); refreshAll(); touch(); } },
-        ...Object.values(PROBES).map((p) => el('option', { value: p.key, selected: p.key === S.probeKey || undefined }, p.label))),
-    ] : [],
-    actions: {
-      setStep: (deg, v) => { if (deg) S.ctl.stepDeg = v; else S.ctl.stepMM = v; },
-      nudge: (sign) => nudge(sign),
-      selectSide: (side) => { const r = axisSelectSide(S, side, ctlEnv()); report(r); if (r.ok) { scene.setView(side === 'right' || side === 'left' ? side : side); afterMove(); } },
-      preset: (k) => applyOrientationPreset(k),
-      setAngle: (k) => { if (S.mode === 'free') S.ctl.angleFree = k; else S.ctl.angleClinical = k; renderCtx(); },
-    },
-  });
+function padAngle(key) {
+  if (S.mode === 'free') return `${freeAngles(S.free.q)[key]}°`;
+  return `${S.angles[key].toFixed(1)}°`;
+}
+let pad = null;
+function renderPad() {
+  const root = $('#probePad'); if (!root || !scene || !D) return;
+  const kind = padKind();
+  if (!pad || pad.kind !== kind) {
+    pad = buildPad(root, {
+      el, kind, steps: { mm: S.ctl.stepMM, deg: S.ctl.stepDeg },
+      extras: kind === 'probe' && D?.labels ? () => [
+        el('select', { class: 'pad-sel', 'data-testid': 'pad-window', 'aria-label': 'Jendela standar', title: 'Lompat ke jendela pemeriksaan standar', onchange: (e) => { if (e.target.value) applyView(e.target.value); } },
+          el('option', { value: '' }, 'Jendela standar…'), ...VIEWS.map((v) => el('option', { value: v.key }, viewLabel(v)))),
+        el('select', { class: 'pad-sel', 'data-testid': 'pad-probe', 'aria-label': 'Jenis probe', onchange: (e) => { setProbe(e.target.value, false); refreshAll(); touch(); } },
+          ...Object.values(PROBES).map((p) => el('option', { value: p.key, selected: p.key === S.probeKey || undefined }, p.label))),
+      ] : null,
+      actions: {
+        move: (dir) => padMove(dir), rotate: (k, sign) => padRotate(k, sign), preset: (k) => applyOrientationPreset(k),
+        side: (k) => { const r = axisSelectSide(S, k, ctlEnv()); report(r); if (r.ok) { scene.setView(k); afterMove(); } },
+        setStep: (what, v) => { if (what === 'deg') S.ctl.stepDeg = v; else S.ctl.stepMM = v; },
+        hover: (dir) => { guideDir = dir; },
+        readout: padReadout, angle: padAngle,
+        slice: (k, mm) => { if (!S.tri.point) S.tri.point = triStart(); const i = { ax: 2, co: 1, sa: 0 }[k]; S.tri.point = S.tri.point.map((v, j) => (j === i ? mm : v)); touch(); pad.update(); },
+        sliceRange: (k) => { const i = { ax: 2, co: 1, sa: 0 }[k], b = D.ct.bounds, p = S.tri.point || triStart(); return { min: b.lo[i], max: b.hi[i], value: p[i] }; },
+      },
+    });
+  } else pad.update();
 }
 /** One-click orientation presets: clinical = relative to the local patient frame at the contact; free = patient planes. */
 function applyOrientationPreset(k) {
-  if (k === 'custom') { status('Kustom: pilih sudut yang ingin diubah, lalu seret mendatar atau scroll. Titik kontak tidak berubah.', 'info'); return; }
-  if (S.mode === 'free') { if (FREE_PRESETS[k]) S.free.q = freeQuat(FREE_PRESETS[k]); }
-  else { const p = ORIENTATION_PRESETS.clinical[k]; if (p) S.angles = { rotate: p.angles.rotate, heelToe: 0, rock: 0 }; }
+  if (k === 'perpendicular') S.angles = { ...S.angles, heelToe: 0, rock: 0 };
+  else if (S.mode === 'free') { if (FREE_PRESETS[k]) S.free.q = freeQuat(FREE_PRESETS[k]); }
+  else { const p = ORIENTATION_PRESETS.clinical[k]; if (p?.angles) S.angles = { rotate: p.angles.rotate, heelToe: 0, rock: 0 }; }
   afterMove();
 }
 
@@ -657,7 +657,7 @@ function refreshAll() {
   $('#playBtn') && ($('#playBtn').textContent = S.playing ? '❚❚ Jeda' : '▶ Putar');
   updateReadouts();
   renderTeaching();
-  renderCtx();
+  renderPad();
 }
 
 function seg(group, items, testid) {
@@ -883,6 +883,7 @@ function renderPathology() {
       el('tr', {}, el('td', {}, 'EF model'), el('td', {}, `${(modelEjectionFraction(n) * 100).toFixed(0)}%`), el('td', { 'data-testid': 'ef-scenario' }, `${(modelEjectionFraction(p) * 100).toFixed(0)}%`)),
       el('tr', {}, el('td', {}, 'Dilatasi LV'), el('td', {}, '1,00×'), el('td', {}, `${p.lvDilation.toFixed(2)}×`)),
       el('tr', {}, el('td', {}, 'Efusi pleura'), el('td', {}, '0 mL'), el('td', {}, `${sc.effusionMl} mL`)),
+      sc.layer && effusion ? el('tr', {}, el('td', {}, 'Lapisan cairan model'), el('td', {}, '0 mL'), el('td', { 'data-testid': 'layer-volume' }, `≈${effusion.volumeMl} mL`)) : null,
       el('tr', {}, el('td', {}, 'Indeks motilitas antrum'), el('td', {}, String(motilityIndex(n))), el('td', {}, String(motilityIndex(p))))),
     ...caseSections(S.scenario),
     !CASES[S.scenario] && sc.findings.length ? el('h4', {}, 'Yang perlu dicari') : null,
@@ -1026,7 +1027,7 @@ function learnSetup(spec) {
   }
   if (spec.display) S.display = spec.display;
   if (spec.tool) setTool(spec.tool);
-  refreshAll(); renderCtx(); touch();
+  refreshAll(); touch();
 }
 /** What the learner currently sees, from the same label rasters as the overlay. */
 function learnSnapshot() {
@@ -1072,8 +1073,10 @@ function installLayout() {
   $('#panelToggle').onclick = () => setSidebar(document.body.dataset.sidebar !== 'open');
   document.querySelector('.drawer-close').onclick = () => setSidebar(false);
   $('#helpBtn').onclick = () => { const h = $('#helpPop'); h.hidden = !h.hidden; $('#helpBtn').setAttribute('aria-expanded', String(!h.hidden)); };
+  $('#replayTourBtn').onclick = () => { $('#helpPop').hidden = true; $('#helpBtn').setAttribute('aria-expanded', 'false'); startTour(true); };
   for (const b of document.querySelectorAll('.pane-switch [data-pane]')) b.onclick = () => setPane(b.dataset.pane);
   setPane('patient');
+  setSidebar(false); document.body.dataset.ws = 'imaging';
   // workspaces: one task-focused workspace at a time, sharing the same patient, scene and monitor
   for (const b of document.querySelectorAll('.ws-nav [data-ws]')) b.onclick = () => setWorkspace(b.dataset.ws);
   $('#assistLevel').onchange = (e) => setAssistLevel(e.target.value);
@@ -1083,14 +1086,86 @@ function installLayout() {
     if (e.target.matches('input, select, textarea') || e.metaKey || e.ctrlKey || e.altKey) return;
     if (e.key === ' ') { e.preventDefault(); S.playing = !S.playing; refreshAll(); return; }
     if (e.key === 'f') { $('#fullBtn').click(); return; }
-    const k = e.key.toLowerCase(), byKey = Object.entries(CONTROL_MODES).find(([, m]) => m.key.toLowerCase() === k);
-    if (byKey) { setCtlMode(byKey[0]); return; }
-    if (e.key === 'Escape') { setCtlMode('place'); return; }
-    if (S.ctl.mode !== 'place' && S.ctl.mode !== 'camera') {
-      if (e.key === 'ArrowUp' || e.key === 'ArrowRight' || e.key === '+' || e.key === '=') { e.preventDefault(); nudge(1, e.shiftKey); }
-      if (e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === '-') { e.preventDefault(); nudge(-1, e.shiftKey); }
-    }
+    // arrows = patient directions on the pad (← Kanan pasien, → Kiri pasien), PageUp/PageDown = anterior/posterior,
+    // Q/E = rotate the probe (or yaw the plane); Shift = fine
+    const key = { ArrowUp: 'superior', ArrowDown: 'inferior', ArrowLeft: 'right', ArrowRight: 'left', PageUp: 'anterior', PageDown: 'posterior' }[e.key];
+    if (key) { e.preventDefault(); padMove(key, e.shiftKey); return; }
+    if ((e.key === 'q' || e.key === 'e') && padKind() !== 'tri') padRotate(S.mode === 'free' ? 'yaw' : 'rotate', e.key === 'e' ? 1 : -1, e.shiftKey);
   });
+}
+// Five-step guided tour. Show once per browser, but let students replay it from the ? help menu.
+const TOUR_KEY = 'medcoel-4dlab-tour-v2';
+const TOUR = [
+  { target: '.brand', title: 'Selamat datang di MEDCOEL 4D Lab', text: 'Di sini kamu bisa mempelajari anatomi 3D sekaligus citra CT dan USG simulasi. Kita kenali kontrol utamanya dulu.' },
+  { target: '#probePad', title: 'Gerakkan probe atau bidang CT', text: 'Gunakan tombol Superior, Inferior, Kanan, Kiri, Anterior, dan Posterior. Arah selalu mengikuti tubuh pasien, bukan arah layar.' },
+  { target: '#viewport', title: 'Atur sudut pandang 3D', text: 'Seret area kosong untuk memutar kamera dan scroll untuk zoom. Kamera hanya mengubah tampilan pasien, bukan bidang CT atau USG.' },
+  { target: '.monitor-toolbar', title: 'Pelajari citra dan struktur', text: 'Pilih USG, CT, atau Tri-planar CT. Nyalakan Bantuan anatomi untuk melihat kontur dan nama struktur pada citra simulasi.', pane: 'image' },
+  { target: '.ws-nav', title: 'Mulai belajar sesuai kebutuhan', text: 'Gunakan ruang kerja Anatomi & Citra, Auskultasi, Fisiologi, Patologi, dan Belajar. Klik Belajar untuk latihan terpandu dengan progres.' },
+];
+function startTour(force = false) {
+  let seen = false; try { seen = localStorage.getItem(TOUR_KEY) === 'done'; } catch { /* private mode */ }
+  if (seen && !force) return;
+  document.querySelector('.tour-root')?.remove();
+  const previousFocus = document.activeElement;
+  let i = 0;
+  const root = el('div', { class: 'tour-root' });
+  const spotlight = el('div', { class: 'tour-focus', 'aria-hidden': 'true' });
+  const card = el('div', { class: 'tour', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Tutorial MEDCOEL 4D Lab', 'data-testid': 'tour' });
+  root.append(spotlight, card);
+  document.body.append(root);
+  const position = () => {
+    const target = document.querySelector(TOUR[i].target);
+    if (!target) { spotlight.hidden = true; return; }
+    spotlight.hidden = false;
+    const rect = target.getBoundingClientRect(), pad = 6;
+    spotlight.style.left = `${Math.max(0, rect.left - pad)}px`;
+    spotlight.style.top = `${Math.max(0, rect.top - pad)}px`;
+    spotlight.style.width = `${Math.min(innerWidth, rect.right + pad) - Math.max(0, rect.left - pad)}px`;
+    spotlight.style.height = `${Math.min(innerHeight, rect.bottom + pad) - Math.max(0, rect.top - pad)}px`;
+    const size = card.getBoundingClientRect();
+    const left = Math.max(12, Math.min(innerWidth - size.width - 12, rect.left));
+    let top = rect.bottom + 16;
+    if (top + size.height > innerHeight - 12) top = rect.top - size.height - 16;
+    if (top < 12) top = Math.max(12, (innerHeight - size.height) / 2);
+    card.style.left = `${left}px`; card.style.top = `${top}px`;
+  };
+  const done = () => {
+    window.removeEventListener('resize', position);
+    window.removeEventListener('scroll', position, true);
+    window.removeEventListener('keydown', handleKey, true);
+    root.remove();
+    try { localStorage.setItem(TOUR_KEY, 'done'); } catch { /* private mode */ }
+    if (previousFocus?.isConnected && previousFocus?.focus) previousFocus.focus();
+  };
+  const show = () => {
+    const step = TOUR[i];
+    if (matchMedia('(max-width: 740px)').matches) setPane(step.pane || 'patient');
+    card.replaceChildren(
+      el('small', {}, `PANDUAN SINGKAT · ${i + 1} DARI ${TOUR.length}`),
+      el('div', { class: 'tour-progress', 'aria-hidden': 'true' }, ...TOUR.map((_, n) => el('i', { class: n <= i ? 'active' : '' }))),
+      el('h2', {}, step.title),
+      el('p', {}, step.text),
+      el('div', { class: 'row' },
+        el('button', { type: 'button', class: 'btn', 'data-testid': 'tour-skip', onclick: done }, 'Lewati'),
+        ...(i ? [el('button', { type: 'button', class: 'btn', 'data-testid': 'tour-back', onclick: () => { i--; show(); } }, 'Kembali')] : []),
+        el('button', { type: 'button', class: 'btn primary', 'data-testid': 'tour-next', onclick: () => { if (++i === TOUR.length) done(); else show(); } }, i === TOUR.length - 1 ? 'Mulai simulasi' : 'Lanjut')
+      )
+    );
+    card.querySelector('[data-testid=tour-next]')?.focus();
+    requestAnimationFrame(position);
+  };
+  const handleKey = (e) => {
+    if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); done(); }
+    if (e.key !== 'Tab') return;
+    const buttons = [...card.querySelectorAll('button')];
+    if (!buttons.length) return;
+    if (e.shiftKey && document.activeElement === buttons[0]) { e.preventDefault(); buttons.at(-1).focus(); }
+    else if (!e.shiftKey && document.activeElement === buttons.at(-1)) { e.preventDefault(); buttons[0].focus(); }
+  };
+  window.addEventListener('resize', position);
+  window.addEventListener('scroll', position, true);
+  window.addEventListener('keydown', handleKey, true);
+  show();
 }
 function setSidebar(open) {
   document.body.dataset.sidebar = open ? 'open' : 'closed';
@@ -1111,7 +1186,7 @@ function setWorkspace(ws) {
   for (const t of document.querySelectorAll('.tabs [role=tab]')) t.hidden = t.dataset.ws !== ws;
   const first = document.querySelector(`.tabs [aria-controls=${WS_DEFAULT_TAB[ws]}]`); first?.click();
   // the imaging workspace is driven from the mode bar (panel closed); the others live in the panel
-  setSidebar(ws !== 'imaging' || window.innerWidth >= 1700);
+  setSidebar(ws !== 'imaging');
   if (ws === 'ausc') { // the stethoscope is the tool of this workspace; start at the mitral area
     setTool('stethoscope');
     if (!S.steth.ref) { const m = D?.anatomy?.auscultation?.find((x) => x.key === 'mitral'); if (m) placeSteth(m.point, m.normal, 'mitral'); }
@@ -1119,7 +1194,7 @@ function setWorkspace(ws) {
   } else if (prev === 'ausc' && S.tool === 'stethoscope') setTool('probe');
   if (ws === 'patho') renderPathology();
   if (ws === 'learn') learn?.render();
-  renderCtx();
+  document.body.dataset.learning = ws === 'learn' ? '1' : '';
 }
 function organsHidden() { return S.appearance.skinOpacity >= 0.999 && S.appearance.cutaway === 'none'; }
 /** Workstation display modes (atlas dataset): what is drawn, never what is imaged. */
@@ -1157,12 +1232,9 @@ async function boot() {
       onContact: (c) => { if (!contactInCoverage(c)) return; S.contact = c; S.mode = 'clinical'; touch(); updateReadouts(); },
       onSkinClick: (c, interaction) => {
         if (S.tool === 'stethoscope') { placeSteth(c.point, c.normal, null); return; }
-        // axis lock: in a movement mode a click must not silently relocate the probe
-        if (interaction && interaction !== 'place') { status(`Mode "${CONTROL_MODES[interaction].label}" aktif: klik kulit tidak memindahkan probe. Pilih ⌖ Tempatkan untuk memindah probe.`, 'info'); return; }
-        if (S.mode === 'clinical' && contactInCoverage(c)) { S.contact = c; touch(); updateReadouts(); renderCtx(); }
+        if (S.mode === 'clinical' && contactInCoverage(c)) { S.contact = c; touch(); updateReadouts(); renderPad(); }
       },
-      onAxisDrag: (dx, dy, fine) => axisDrag(dx, dy, fine),
-      onAxisWheel: (sign, fine) => nudge(sign, fine),
+
       onPick: (e) => {
         if (S.tool !== 'inspect' || !atlas) return false;
         const hit = scene.pickAtlas(e, atlas); selected = hit?.name || null;
@@ -1196,12 +1268,11 @@ async function boot() {
     };
     monitor.onSlice = (key, sign, fine) => { if (!S.tri.point) return; S.tri.point = stepSlice(S.tri.point, key, sign * (fine ? 0.5 : 1) * Math.min(...D.ct.spacing), D.ct.bounds); touch(); };
     installLayout();
-    buildModeBar($('#modeBar'), { el, onMode: setCtlMode });
     await loadPhantom();
     learn = new Learn({ el, root: $('#tab-learn'), snapshot: learnSnapshot, setup: learnSetup, setAssist: (lv) => setAssistLevel(lv), status });
     buildPanels();
     learn.render();
-    setCtlMode('place');
+    scene.setInteraction('place'); renderPad(); startTour();
     if (DATASET === 'atlas') setDisplayMode('transparent'); else S.appearance.mode = 'custom';
     applyAppearance(); refreshAll(); renderAtlasPanel(); loadComparison();
     document.body.dataset.ready = '1';

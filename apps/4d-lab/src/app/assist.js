@@ -2,7 +2,7 @@
 // 2D <-> 3D linking. Identification ALWAYS comes from the dataset's label map sampled on the image grid
 // (core/labels.js) — never from pointer guesses or hand-drawn shapes.
 import { groupRaster, contourSegments, groupAreas, OUTSIDE_FOV, OUTSIDE_VOLUME } from '../core/labels.js';
-import { STRUCTURES, SYSTEMS, UNIDENTIFIED, buildGroups, provenance } from '../edu/structures.js';
+import { STRUCTURES, SYSTEMS, UNIDENTIFIED, SYSTEM_ORDER, buildGroups, provenance } from '../edu/structures.js';
 import { EDU_REFERENCES } from '../edu/references.js';
 import { REFERENCES } from '../sim/references.js';
 
@@ -11,10 +11,10 @@ const REF = { ...REFERENCES, ...EDU_REFERENCES };
 
 export class Assist {
   /** ctx: {el, monitor, tip, panel, dataset(), labelsAvailable(), link3d(keys|null), isolate3d(key), onSelect(key)} */
-  constructor(ctx) { this.ctx = ctx; this.level = 'off'; this.rasters = {}; this.selected = null; this.hover = 0; this.G = buildGroups([]); this.answered = new Set(); }
+  constructor(ctx) { this.ctx = ctx; this.level = 'off'; this.rasters = {}; this.selected = null; this.hover = 0; this.G = buildGroups([]); this.answered = new Set(); this.seen = new Map(); this.listSig = ''; }
   setLabels(anatomyLabels) { this.G = buildGroups(anatomyLabels); }
   get enabled() { return this.level !== 'off' && this.ctx.labelsAvailable(); }
-  setLevel(level) { this.level = level; this.ctx.panel.hidden = !(level === 'contours' || level === 'guided' || level === 'challenge') || !this.ctx.labelsAvailable(); this.push(); this.renderPanel(); }
+  setLevel(level) { this.level = level; this._force = true; this.ctx.panel.hidden = !(level === 'contours' || level === 'guided' || level === 'challenge') || !this.ctx.labelsAvailable(); this.push(); this.renderPanel(); }
 
   /** New label raster for a monitor panel key ('main' for US/CT, or 'ax'/'co'/'sa'). */
   ingest(key, labels, w, h) {
@@ -25,7 +25,7 @@ export class Assist {
     const mask = (g) => {
       if (cache.has(g)) return cache.get(g);
       const c = document.createElement('canvas'); c.width = w; c.height = h; const id = c.getContext('2d').createImageData(w, h);
-      const col = hex(this.G.byIndex(g)?.color || '#ffffff');
+      const col = hex(this.G.colorOf(g));
       for (let i = 0; i < groups.length; i++) if (groups[i] === g) { id.data[4 * i] = col[0]; id.data[4 * i + 1] = col[1]; id.data[4 * i + 2] = col[2]; id.data[4 * i + 3] = 255; }
       c.getContext('2d').putImageData(id, 0, 0); cache.set(g, c); return c;
     };
@@ -44,6 +44,19 @@ export class Assist {
     const out = []; for (let g = 1; g < R.areas.length; g++) if (R.areas[g] >= minArea) out.push({ key: this.G.keyOf(g), g, area: R.areas[g] });
     return out.sort((a, b) => b.area - a.area);
   }
+  /**
+   * Structures for the side list: STABLE while the anatomy moves — a structure stays listed for 1.5 s after it was
+   * last seen, and the order is fixed (system, then name), never by changing pixel area.
+   */
+  listed(key) {
+    const now = performance.now();
+    for (const v of this.visible(key, 30)) this.seen.set(v.key, now);
+    for (const [k, t] of this.seen) if (now - t > 1500 || !this.G.indexOf(k)) this.seen.delete(k);
+    const sys = (k) => { const i = SYSTEM_ORDER.indexOf(STRUCTURES[k].system); return i < 0 ? 99 : i; };
+    return [...this.seen.keys()].sort((a, b) => sys(a) - sys(b) || STRUCTURES[a].nameId.localeCompare(STRUCTURES[b].nameId, 'id'));
+  }
+  /** Image hover -> highlight the matching row (no re-render). */
+  _markRow(g) { for (const r of this.ctx.panel.querySelectorAll('[data-g]')) r.classList.toggle('hover', Number(r.dataset.g) === g); }
   /** Identify a monitor hit {key, px, py}: {kind: 'structure'|'unidentified'|'outside', ...} */
   identify(hit) {
     if (!hit || hit.outside || hit.key === 'info') return null;
@@ -70,7 +83,7 @@ export class Assist {
     const box = tip.parentElement.getBoundingClientRect();
     tip.style.left = Math.min(box.width - 240, ev.clientX - box.left + 14) + 'px'; tip.style.top = Math.max(4, ev.clientY - box.top + 12) + 'px';
     tip.hidden = false;
-    const g = id.kind === 'structure' ? id.g : 0; if (g !== this.hover) { this.hover = g; this.push(); }
+    const g = id.kind === 'structure' ? id.g : 0; if (g !== this.hover) { this.hover = g; this.push(); this._markRow(g); }
   }
   onPick(hit) {
     if (!this.enabled) return false;
@@ -84,7 +97,7 @@ export class Assist {
     if (this.level === 'challenge' && key) this.answered.add(key);
     this.ctx.link3d(this.selected ? STRUCTURES[this.selected] : null);
     this.ctx.onSelect?.(this.selected);
-    this.push(); this.renderPanel();
+    this.push(); this._force = true; this.renderPanel();
   }
   /** 3D -> image: select the structure whose atlas names include `atlasName`, if it is in the current image. */
   selectByAtlasName(atlasName) {
@@ -98,18 +111,25 @@ export class Assist {
     const G = this.G, sel = this.selected ? G.indexOf(this.selected) : 0;
     this.ctx.monitor.setOverlay({
       level: this.ctx.labelsAvailable() ? this.level : 'off', rasters: this.rasters, selected: sel, hover: this.hover,
-      color: (g) => G.byIndex(g)?.color || '#fff', label: (g) => G.byIndex(g)?.nameId || '',
+      color: (g) => G.colorOf(g), label: (g) => G.byIndex(g)?.nameId || '',
     });
   }
   renderPanel() {
     const { el, panel } = this.ctx; if (panel.hidden) return;
     if (!this.ctx.labelsAvailable()) { panel.replaceChildren(el('p', { class: 'meta' }, 'Identifikasi dinonaktifkan: data ini tidak memiliki label map yang tervalidasi.')); return; }
-    const vis = this.visible(Object.keys(this.rasters).includes('main') ? 'main' : 'ax'), challenge = this.level === 'challenge';
+    const keys = this.listed(Object.keys(this.rasters).includes('main') ? 'main' : 'ax'), challenge = this.level === 'challenge';
+    const sig = [keys.join(), this.selected, this.level, [...this.answered].join()].join('|');
+    if (sig === this.listSig && !this._force) return; // nothing changed: keep the DOM (no flicker, no jumping rows)
+    this.listSig = sig; this._force = false;
+    const vis = keys.map((k) => ({ key: k, g: this.G.indexOf(k) }));
     const kids = [el('h4', {}, challenge ? 'Struktur pada bidang (tersembunyi)' : 'Struktur pada bidang ini'),
       el('ul', { class: 'struct-list', 'data-testid': 'struct-list' }, ...vis.map((v) => {
         const s = STRUCTURES[v.key], shown = !challenge || this.answered.has(v.key);
-        return el('li', {}, el('button', { type: 'button', class: 'struct-btn' + (v.key === this.selected ? ' on' : ''), 'data-testid': 'struct-' + v.key, onclick: () => this.select(v.key) },
-          el('i', { class: 'swatch', style: `background:${s.color}` }), shown ? s.nameId : '???'));
+        const b = el('button', { type: 'button', class: 'struct-btn' + (v.key === this.selected ? ' on' : ''), 'data-testid': 'struct-' + v.key, 'data-g': String(v.g), onclick: () => this.select(v.key) },
+          el('i', { class: 'swatch', style: `background:${this.G.colorOf(v.g)}` }), shown ? s.nameId : '???');
+        b.addEventListener('pointerenter', () => { this.hover = v.g; this.push(); this._markRow(v.g); });
+        b.addEventListener('pointerleave', () => { this.hover = 0; this.push(); this._markRow(0); });
+        return el('li', {}, b);
       }))];
     if (!vis.length) kids.push(el('p', { class: 'meta' }, 'Tidak ada struktur berlabel pada bidang ini.'));
     const off = this.ctx.unavailable?.() || [];
