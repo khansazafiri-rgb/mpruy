@@ -163,9 +163,9 @@ await step('skeletal landmark pilot displays source honesty instead of unverifie
   await display('transparent');
   const before = await lab(() => window.__lab.atlas.root.children.length);
   await page.getByTestId('skeletal-landmark-open').click();
-  await page.waitForFunction(() => /Humerus\\.r/.test(document.querySelector('[data-testid=structure-info]')?.textContent || ''), null, { timeout: 15000 });
+  await page.waitForFunction(() => new RegExp('Humerus[.]r').test(document.querySelector('[data-testid=structure-info]')?.textContent || ''), null, { timeout: 15000 });
   await page.getByTestId('skeletal-landmark-results').waitFor({ timeout: 15000 });
-  assert.match(await page.getByTestId('skeletal-landmark-status').textContent(), /0\\/6.*0 pin 3D tervalidasi/);
+  assert.match(await page.getByTestId('skeletal-landmark-status').textContent(), new RegExp('0/6.*0 pin 3D tervalidasi'));
   assert.match(await page.getByTestId('skeletal-landmark-results').textContent(), /Greater tubercle/);
   assert.match(await page.getByTestId('skeletal-landmark-results').textContent(), /Tuberositas deltoidea/);
   assert.match(await page.getByTestId('skeletal-landmark-results').textContent(), /model skeletal lama/i);
