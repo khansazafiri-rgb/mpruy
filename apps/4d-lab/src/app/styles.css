@@ -417,3 +417,13 @@ body[data-learning="1"] .view-menu, body[data-learning="1"] .monitor-toolbar .in
 .side-btn { border: 1px solid rgb(var(--line)); background: #fff; border-radius: 7px; padding: 2px 6px; font-size: 11px; font-weight: 600; }
 .view-menu { right: auto; left: 52px; }
 .view-menu > summary { margin-left: 0; }
+/* pad docked beside the patient (never covers the body); floating only on phones */
+.viewport-wrap { flex-direction: row; }
+.viewport-wrap > #viewport { flex: 1; min-width: 0; }
+.viewport-wrap > .probe-pad { position: relative; right: auto; bottom: auto; left: auto; order: 2; flex: none; width: 236px; border-radius: 0; border: 0; border-left: 1px solid rgb(var(--line)); box-shadow: none; overflow-y: auto; backdrop-filter: none; background: #fbfaf6; }
+.viewport-wrap > .probe-pad.collapsed { width: 44px; padding: 8px 6px; }
+.viewport-wrap > .probe-pad.collapsed .pad-title { display: none; }
+@media (max-width: 760px) {
+  .viewport-wrap > .probe-pad { position: absolute; left: 8px; right: 8px; bottom: 64px; width: auto; border-radius: 14px; border: 1px solid rgb(var(--line)); box-shadow: 0 8px 24px rgb(0 0 0 / .14); max-height: 46vh; }
+  .viewport-wrap > .probe-pad.collapsed { width: auto; }
+}
