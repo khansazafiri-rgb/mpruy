@@ -4,7 +4,7 @@ import { MODES, MODULES, loadProgress, saveProgress } from '../edu/modules.js';
 import { STRUCTURES } from '../edu/structures.js';
 import { EDU_REFERENCES } from '../edu/references.js';
 import { REFERENCES } from '../sim/references.js';
-import { CREDITS } from '../edu/credits.js';
+import { CREDITS, CREDIT_STATUS } from '../edu/credits.js';
 
 const REF = { ...REFERENCES, ...EDU_REFERENCES };
 
@@ -35,7 +35,7 @@ export class Learn {
     this.render();
   }
   setMode(m) { this.mode = m; this.ctx.setAssist(MODES[m].assist); this.render(); }
-  start(moduleId, idx = 0) { this.moduleId = moduleId; this.taskIdx = idx; this.feedback = null; this.active = true; this.render(); }
+  start(moduleId, idx = 0) { this.moduleId = moduleId; this.taskIdx = idx; this.feedback = null; this.active = true; this.ctx.setAssist(MODES[this.mode].assist); this.render(); }
   next(d = 1) { const n = this.module.tasks.length; this.taskIdx = (this.taskIdx + d + n) % n; this.feedback = null; this.render(); }
   reset() { this.progress = {}; saveProgress(this.progress); this.render(); }
 
@@ -53,7 +53,10 @@ export class Learn {
       })));
       if (this.active) kids.push(this._task());
     }
-    kids.push(el('details', { class: 'limits', 'data-testid': 'credits' }, el('summary', {}, 'Kredit, lisensi & sumber'), ...CREDITS.map((c) => el('div', { class: 'credit' }, el('b', {}, c.what), el('span', {}, c.source), el('span', { class: 'meta' }, c.licence)))),
+    kids.push(el('details', { class: 'limits credits', 'data-testid': 'credits' }, el('summary', {}, 'Kredit, lisensi & sumber'),
+      ...CREDITS.map((c) => el('div', { class: 'credit' }, el('b', {}, c.what, ' ', el('span', { class: 'cstatus ' + c.status }, CREDIT_STATUS[c.status])), el('span', {}, c.source),
+        el('span', { class: 'meta' }, c.licence, c.url ? ' · ' : '', c.url ? el('a', { href: c.url, target: '_blank', rel: 'noopener' }, 'teks lisensi') : '', c.notice ? ' · ' : '', c.notice ? el('a', { href: c.notice, target: '_blank', rel: 'noopener' }, 'NOTICE') : ''))),
+      el('p', { class: 'meta' }, 'Materi berlisensi Creative Commons tetap tunduk pada lisensinya masing-masing; login MEDCOEL tidak menambah pembatasan atas materi tersebut.')),
       el('p', { class: 'meta' }, 'Kemajuan disimpan hanya di browser ini (tanpa akun/server). Latihan di simulator tidak menggantikan pelatihan klinis terawasi atau penilaian kompetensi.'));
     root.replaceChildren(...kids);
   }

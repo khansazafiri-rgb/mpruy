@@ -19,8 +19,8 @@ export class Assist {
   /** New label raster for a monitor panel key ('main' for US/CT, or 'ax'/'co'/'sa'). */
   ingest(key, labels, w, h) {
     const groups = groupRaster(labels, this.G.lut);
-    const contours = contourSegments(groups, w, h, { minArea: 6 });
     const areas = groupAreas(groups, this.G.keys.length);
+    let contours = null; // computed on first use (only when an overlay level draws them)
     const cache = new Map(), cents = new Map();
     const mask = (g) => {
       if (cache.has(g)) return cache.get(g);
@@ -34,7 +34,7 @@ export class Assist {
       let sx = 0, sy = 0, n = 0; for (let i = 0; i < groups.length; i++) if (groups[i] === g) { sx += i % w; sy += (i / w) | 0; n++; }
       const c = n ? [sx / n + 0.5, sy / n + 0.5] : null; cents.set(g, c); return c;
     };
-    this.rasters[key] = { labels, groups, w, h, contours, areas, mask, centroid };
+    this.rasters[key] = { labels, groups, w, h, areas, mask, centroid, get contours() { return (contours ||= contourSegments(groups, w, h, { minArea: 6 })); } };
   }
   clear(keys) { for (const k of keys) delete this.rasters[k]; }
 
@@ -112,6 +112,8 @@ export class Assist {
           el('i', { class: 'swatch', style: `background:${s.color}` }), shown ? s.nameId : '???'));
       }))];
     if (!vis.length) kids.push(el('p', { class: 'meta' }, 'Tidak ada struktur berlabel pada bidang ini.'));
+    const off = this.ctx.unavailable?.() || [];
+    if (off.length) kids.push(el('p', { class: 'meta unavailable-note', 'data-testid': 'assist-unavailable' }, 'Tidak tersedia di dataset ini (tinjauan lisensi, tidak diganti model lain): ' + off.map((u) => u.nameId).join(', ') + '.'));
     const s = this.selected && STRUCTURES[this.selected];
     if (s) {
       const c = s.card, prov = provenance(this.ctx.dataset());
@@ -122,6 +124,7 @@ export class Assist {
         row('lokasi', 'Lokasi'), row('hubungan', 'Hubungan'), row('ct', 'Pada CT'), row('usg', 'Pada USG'), row('fisiologi', 'Fisiologi/gerak'), row('klinis', 'Klinis'), row('jebakan', 'Jebakan'),
         el('div', { class: 'row' },
           this.ctx.dataset() === 'atlas' && s.atlas.length ? el('button', { type: 'button', class: 'btn', 'data-testid': 'isolate-3d', onclick: () => this.ctx.isolate3d(this.selected) }, 'Isolasi di 3D') : null,
+          this.ctx.dataset() === 'atlas' && s.atlas.length ? el('button', { type: 'button', class: 'btn', 'data-testid': 'restore-3d', onclick: () => this.ctx.restore3d?.() }, 'Kembali ke tampilan semula') : null,
           el('button', { type: 'button', class: 'btn', onclick: () => this.select(null) }, 'Tutup')),
         el('details', { class: 'limits' }, el('summary', {}, 'Sumber & status'), el('ol', { class: 'refs' }, ...(c.refs || []).map((r) => el('li', {}, `[${r}] ${REF[r] || r}`))),
           el('p', { class: 'meta' }, 'Status: draf — perlu tinjauan pendidik klinis. ' + prov.long))));

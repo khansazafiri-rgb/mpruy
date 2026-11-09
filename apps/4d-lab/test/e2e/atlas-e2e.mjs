@@ -18,7 +18,7 @@ const EVIDENCE = fileURLToPath(new URL('../../evidence/', import.meta.url));
 const results = [];
 const { srv, url } = await startServer();
 const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] });
-const ctx = await browser.newContext({ viewport: { width: 1600, height: 950 }, deviceScaleFactor: 1 });
+const ctx = await browser.newContext({ viewport: { width: 1760, height: 950 }, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
 const errors = [];
 page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
@@ -55,10 +55,21 @@ async function canvasStats(selector) {
     const n = d.length / 4, mean = s / n; return { mean, std: Math.sqrt(s2 / n - mean * mean), hash: h.toString(16) };
   }, selector);
 }
-async function setNumber(testid, value) { const input = page.getByTestId(testid); await input.fill(String(value)); await input.press('Enter'); }
+async function setNumber(testid, value) {
+  await lab(() => document.querySelectorAll('details.adv').forEach((d) => { d.open = true; })); // precise controls are under 'lanjutan'
+  const input = page.getByTestId(testid); await input.fill(String(value)); await input.press('Enter');
+}
 async function pause() { if (await lab(() => window.__lab.S.playing)) await page.getByTestId('play').click(); }
-async function camera(view) { await page.getByTestId('cam-' + view).click(); await page.waitForFunction(() => !window.__lab.scene._anim, null, { timeout: 15000 }); await page.waitForTimeout(200); }
-async function openTab(id) { await page.getByTestId('tab-' + id).click(); }
+async function camera(view) { await lab(() => { document.querySelector('[data-testid=view-menu]').open = true; }); await page.getByTestId('cam-' + view).click(); await page.waitForFunction(() => !window.__lab.scene._anim, null, { timeout: 15000 }); await page.waitForTimeout(200); }
+// Tabs live in workspaces (UX upgrade): switch to the owning workspace, keep the panel open beside the patient.
+const TAB_WS = { probe: 'imaging', anatomy: 'imaging', imaging: 'imaging', data: 'imaging', ausc: 'ausc', physiology: 'physio', pathology: 'patho', learn: 'learn' };
+async function openTab(id) {
+  const ws = TAB_WS[id] || 'imaging';
+  if (await lab(() => window.__lab.S.ws) !== ws) await page.getByTestId('ws-' + ws).click();
+  if (await lab(() => document.body.dataset.sidebar) !== 'open') await page.getByTestId('panel-toggle').click();
+  await page.waitForTimeout(250);
+  await page.getByTestId('tab-' + id).click();
+}
 async function display(mode) { await openTab('anatomy'); await page.getByTestId('display-' + mode).click(); await page.waitForTimeout(300); }
 async function goView(key) { await openTab('probe'); await page.getByTestId('mode-clinical').click(); await page.getByTestId('view-' + key).click(); }
 /** Screen point of an LPS skin point pushed `out` mm along its normal. */
@@ -70,6 +81,8 @@ const t0 = Date.now();
 await page.goto(url);
 await page.waitForFunction(() => document.body.dataset.ready, null, { timeout: 120000 });
 await page.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.atlasState), null, { timeout: 240000 });
+// UX upgrade: the 3D view options sit in a collapsible menu; keep it open for the camera/skin/cutaway steps.
+await page.evaluate(() => { const m = document.querySelector('[data-testid=view-menu]'); if (m) m.open = true; });
 const loadMs = Date.now() - t0;
 
 await step('atlas dataset is the default; shared atlas models load with no runtime errors', async () => {
@@ -272,7 +285,7 @@ await step('pathology + auscultation on the atlas body (effusion window, HFrEF S
   assert.equal(st.state, 'running'); assert.ok(st.beat >= 0, 'heart beats scheduled');
   assert.match(await page.getByTestId('ausc-readout').textContent(), /S3 aktif/);
   await camera('anterior'); await shot('atlas-10b-hfref-auscultation');
-  await page.getByTestId('audio-toggle').click(); await page.getByTestId('tool-probe').click();
+  await page.getByTestId('audio-toggle').click(); await page.getByTestId('ws-imaging').click(); assert.equal(await lab(() => window.__lab.S.tool), 'probe');
   await openTab('pathology'); await page.getByTestId('scenario-normal').click();
 });
 

@@ -194,14 +194,25 @@ export class Monitor {
       if (this.meta.display === 'tri' && !(e.ctrlKey || e.metaKey)) { const h = this.hitTest(e.clientX, e.clientY); if (h && h.key !== 'info') this.onSlice?.(h.key, e.deltaY < 0 ? 1 : -1); return; }
       this.zoomBy(e.deltaY < 0 ? 1.12 : 1 / 1.12);
     }, { passive: false });
-    c.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY, px: this.view.panX, py: this.view.panY, moved: false }; c.setPointerCapture(e.pointerId); });
+    // touch: two fingers = pinch zoom (iPad/phone); one finger = pan / tap to identify
+    const touches = new Map(); let pinch = null;
+    const spread = () => { const p = [...touches.values()]; return Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y); };
+    c.addEventListener('pointerdown', (e) => {
+      touches.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (touches.size === 2) { pinch = { d: spread(), zoom: this.view.zoom }; drag = null; return; }
+      drag = { x: e.clientX, y: e.clientY, px: this.view.panX, py: this.view.panY, moved: false }; c.setPointerCapture(e.pointerId);
+    });
+    const lift = (e) => { touches.delete(e.pointerId); if (touches.size < 2) pinch = null; };
+    c.addEventListener('pointercancel', lift);
     c.addEventListener('pointermove', (e) => {
+      if (touches.has(e.pointerId)) touches.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (pinch && touches.size === 2) { this.view.zoom = Math.min(12, Math.max(0.25, pinch.zoom * spread() / Math.max(1, pinch.d))); this.draw(); return; }
       if (!drag) { this.onHover?.(this.hitTest(e.clientX, e.clientY), e); return; }
       if (Math.hypot(e.clientX - drag.x, e.clientY - drag.y) > 4) drag.moved = true;
       if (!drag.moved) return;
       c.style.cursor = 'grabbing'; this.view.panX = drag.px + e.clientX - drag.x; this.view.panY = drag.py + e.clientY - drag.y; this.draw();
     });
-    c.addEventListener('pointerup', (e) => { const d = drag; drag = null; c.style.cursor = ''; if (d && !d.moved) this.onPick?.(this.hitTest(e.clientX, e.clientY), e); });
+    c.addEventListener('pointerup', (e) => { const wasPinch = !!pinch; lift(e); const d = drag; drag = null; c.style.cursor = ''; if (d && !d.moved && !wasPinch) this.onPick?.(this.hitTest(e.clientX, e.clientY), e); });
     c.addEventListener('pointerleave', () => { if (!drag) this.onHover?.(null); });
     c.addEventListener('dblclick', () => this.fit());
   }

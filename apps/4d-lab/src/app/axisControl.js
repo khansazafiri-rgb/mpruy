@@ -3,12 +3,12 @@
 
 /** Movement modes shown in the mode bar. Each changes exactly one quantity. */
 export const CONTROL_MODES = {
-  place: { label: 'Tempatkan', hint: 'Klik kulit untuk meletakkan probe; seret probe untuk menggesernya di permukaan.', key: 'P' },
-  vertical: { label: 'Superior–Inferior', axis: [0, 0, 1], plus: 'Superior', minus: 'Inferior', hint: 'Seret searah panah biru (atau scroll) untuk menggeser ke kepala/kaki pasien.', key: '1' },
-  horizontal: { label: 'Kanan–Kiri pasien', axis: [1, 0, 0], plus: 'Kiri pasien', minus: 'Kanan pasien', hint: 'Seret searah panah merah untuk menggeser ke kiri/kanan PASIEN (bukan layar).', key: '2' },
-  depth: { label: 'Anterior–Posterior', axis: [0, -1, 0], plus: 'Anterior', minus: 'Posterior', hint: 'Free 3D: menggeser bidang depan/belakang. Probe klinis: pilih sisi tubuh (tidak menembus tubuh).', key: '3' },
-  rotate: { label: 'Putar bidang', hint: 'Pilih sudut yang ingin diubah, lalu seret mendatar (atau scroll). Titik kontak tidak berubah.', key: '4' },
-  camera: { label: 'Kamera', hint: 'Seret: putar kamera · Shift/klik kanan: geser · scroll: zoom. Kamera tidak pernah mengubah citra.', key: 'C' },
+  place: { short: 'Tempatkan', label: 'Tempatkan', hint: 'Klik kulit untuk meletakkan probe; seret probe untuk menggesernya di permukaan.', key: 'P' },
+  vertical: { short: 'Sup–Inf', label: 'Superior–Inferior', axis: [0, 0, 1], plus: 'Superior', minus: 'Inferior', hint: 'Seret searah panah biru (atau scroll) untuk menggeser ke kepala/kaki pasien.', key: '1' },
+  horizontal: { short: 'Kanan–Kiri', label: 'Kanan–Kiri pasien', axis: [1, 0, 0], plus: 'Kiri pasien', minus: 'Kanan pasien', hint: 'Seret searah panah merah untuk menggeser ke kiri/kanan PASIEN (bukan layar).', key: '2' },
+  depth: { short: 'Ant–Post', label: 'Anterior–Posterior', axis: [0, -1, 0], plus: 'Anterior', minus: 'Posterior', hint: 'Free 3D: menggeser bidang depan/belakang. Probe klinis: pilih sisi tubuh (tidak menembus tubuh).', key: '3' },
+  rotate: { short: 'Putar', label: 'Putar bidang', hint: 'Pilih sudut yang ingin diubah, lalu seret mendatar (atau scroll). Titik kontak tidak berubah.', key: '4' },
+  camera: { short: 'Kamera', label: 'Kamera', hint: 'Seret: putar kamera · Shift/klik kanan: geser · scroll: zoom. Kamera tidak pernah mengubah citra.', key: 'C' },
 };
 
 /** Angles editable in rotate mode. Clinical angles pivot on the skin contact; free angles rotate the plane. */
@@ -24,8 +24,9 @@ export const ORIENTATION_PRESETS = {
     longitudinal: { label: 'Longitudinal (sagital)', angles: { rotate: 90 } },
     obliqueR: { label: 'Oblik 45°', angles: { rotate: 45 } },
     obliqueL: { label: 'Oblik −45°', angles: { rotate: -45 } },
+    custom: { label: 'Kustom' },
   },
-  free: { axial: { label: 'Aksial / transversal' }, coronal: { label: 'Koronal / frontal' }, sagittal: { label: 'Sagital' }, oblique: { label: 'Oblik' } },
+  free: { axial: { label: 'Aksial / transversal' }, coronal: { label: 'Koronal / frontal' }, sagittal: { label: 'Sagital' }, oblique: { label: 'Oblik' }, custom: { label: 'Kustom' } },
 };
 
 /**

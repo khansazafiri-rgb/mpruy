@@ -136,7 +136,7 @@ export function wheezeTone({ period, sampleRate = 8000, amplitude = 1 }) {
   for (let i = 0; i < n; i++) {
     const ph = i / n, t = i / sampleRate;
     if (ph < 0.45 || ph > 0.92) continue;
-    const env = Math.sin(Math.PI * (ph - 0.45) / 0.47) ** 0.7, f = 400 * (1 + 0.015 * Math.sin(2 * Math.PI * 5 * t));
+    const env = Math.max(0, Math.sin(Math.PI * (ph - 0.45) / 0.47)) ** 0.7, f = 400 * (1 + 0.015 * Math.sin(2 * Math.PI * 5 * t));
     out[i] = amplitude * env * (0.75 * Math.sin(2 * Math.PI * f * t) + 0.25 * Math.sin(4 * Math.PI * f * t));
   }
   return out;

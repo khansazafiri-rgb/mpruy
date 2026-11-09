@@ -64,38 +64,51 @@ export function groupAreas(groups, nGroups) {
  * boundary segments in IMAGE PIXEL coordinates with sub-pixel vertices at edge midpoints between
  * pixel centres (x0,y0,x1,y1, ...). Adjacent groups each get their own boundary (shared edges are
  * emitted for both), so selecting one structure never depends on its neighbours.
+ * Single pass over the cells: each cell only visits the (at most 4) groups at its corners, so the
+ * cost does not grow with the number of structures (fast enough for every frame).
  * @returns Map<group, Float32Array>
  */
 export function contourSegments(groups, cols, rows, { minArea = 6, only = null } = {}) {
   let maxG = 0; for (let i = 0; i < groups.length; i++) if (groups[i] > maxG) maxG = groups[i];
-  const area = groupAreas(groups, maxG), out = new Map();
-  for (let g = 1; g <= maxG; g++) {
-    if (area[g] < minArea || (only && !only.has(g))) continue;
-    const seg = [];
-    // cells between pixel centres (c..c+1, r..r+1); corner order: a=TL b=TR c=BR d=BL
-    for (let r = -1; r < rows; r++) for (let c = -1; c < cols; c++) {
-      const at = (x, y) => (x >= 0 && y >= 0 && x < cols && y < rows && groups[y * cols + x] === g ? 1 : 0);
-      const a = at(c, r), b = at(c + 1, r), cc = at(c + 1, r + 1), d = at(c, r + 1);
-      const idx = (a << 3) | (b << 2) | (cc << 1) | d;
-      if (idx === 0 || idx === 15) continue;
-      // edge midpoints in pixel-centre coordinates (+0.5 to put them in image pixel space)
-      const X = c + 0.5, Y = r + 0.5;
-      const T = [X + 0.5, Y], R = [X + 1, Y + 0.5], B = [X + 0.5, Y + 1], L = [X, Y + 0.5];
-      const add = (p, q) => seg.push(p[0], p[1], q[0], q[1]);
+  const area = groupAreas(groups, maxG), want = new Uint8Array(maxG + 1);
+  for (let g = 1; g <= maxG; g++) want[g] = area[g] >= minArea && (!only || only.has(g)) ? 1 : 0;
+  const segs = new Map();
+  const get = (x, y) => (x >= 0 && y >= 0 && x < cols && y < rows ? groups[y * cols + x] : 0);
+  for (let r = -1; r < rows; r++) for (let c = -1; c < cols; c++) {
+    // corners: a=TL b=TR c=BR d=BL
+    const ga = get(c, r), gb = get(c + 1, r), gc = get(c + 1, r + 1), gd = get(c, r + 1);
+    if (ga === gb && gb === gc && gc === gd) continue; // uniform cell: no boundary for anyone
+    const X = c + 0.5, Y = r + 0.5;
+    for (const g of [ga, gb, gc, gd]) {
+      if (!g || !want[g]) continue;
+      // visit each distinct group once per cell
+      const idx = ((ga === g) << 3) | ((gb === g) << 2) | ((gc === g) << 1) | (gd === g);
+      const key = g * 16 + idx; if (seenCell(c, r, key)) continue;
+      let arr = segs.get(g); if (!arr) segs.set(g, (arr = []));
+      const T0 = X + 0.5, T1 = Y, R0 = X + 1, R1 = Y + 0.5, B0 = X + 0.5, B1 = Y + 1, L0 = X, L1 = Y + 0.5;
       switch (idx) {
-        case 1: case 14: add(L, B); break;
-        case 2: case 13: add(B, R); break;
-        case 3: case 12: add(L, R); break;
-        case 4: case 11: add(T, R); break;
-        case 5: add(L, B); add(T, R); break; // saddles (TR+BL, TL+BR): keep diagonal corners separate
-        case 6: case 9: add(T, B); break;
-        case 7: case 8: add(L, T); break;
-        case 10: add(L, T); add(B, R); break;
+        case 1: case 14: arr.push(L0, L1, B0, B1); break;
+        case 2: case 13: arr.push(B0, B1, R0, R1); break;
+        case 3: case 12: arr.push(L0, L1, R0, R1); break;
+        case 4: case 11: arr.push(T0, T1, R0, R1); break;
+        case 5: arr.push(L0, L1, B0, B1, T0, T1, R0, R1); break; // saddles: keep diagonal corners separate
+        case 6: case 9: arr.push(T0, T1, B0, B1); break;
+        case 7: case 8: arr.push(L0, L1, T0, T1); break;
+        case 10: arr.push(L0, L1, T0, T1, B0, B1, R0, R1); break;
       }
     }
-    out.set(g, Float32Array.from(seg));
   }
+  const out = new Map();
+  for (const [g, arr] of segs) out.set(g, Float32Array.from(arr));
   return out;
+}
+// per-cell de-duplication of groups (a group may sit at several corners of the same cell)
+let _cellKey = -1, _cellSeen = [];
+function seenCell(c, r, key) {
+  const k = (r + 2) * 100003 + (c + 2);
+  if (k !== _cellKey) { _cellKey = k; _cellSeen.length = 0; }
+  if (_cellSeen.includes(key)) return true;
+  _cellSeen.push(key); return false;
 }
 
 /** Group under an image pixel coordinate (-1 outside the image). */

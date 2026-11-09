@@ -67,6 +67,8 @@ test('structure registry: every dataset label is either a named structure or exp
   const G = buildGroups(A.anatomy.labels);
   for (const l of A.anatomy.labels) {
     const named = G.lut[l.id] > 0, unknown = l.id in UNIDENTIFIED;
+    // withheld labels (licence quarantine) are neither: they have no voxels and are reported as unavailable
+    if (l.available === false) { assert.equal(named, false, `withheld label ${l.id} must not be identifiable`); assert.equal(l.volumeMl, 0); continue; }
     assert.ok(named !== unknown || l.id === 0, `label ${l.id} ${l.key}: named ${named}, unidentified ${unknown}`);
   }
   for (const [k, s] of Object.entries(STRUCTURES)) {

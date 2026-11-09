@@ -177,7 +177,9 @@ export const UNIDENTIFIED = {
 
 /** Group lookup for a dataset: label id -> group index (1-based), plus the ordered group keys. */
 export function buildGroups(anatomyLabels) {
-  const present = new Set((anatomyLabels || []).map((l) => l.id));
+  // Labels flagged `available: false` (licence quarantine: kidney, renal pelvis, spinal cord in the atlas dataset)
+  // have no voxels and are never offered as identifiable structures.
+  const present = new Set((anatomyLabels || []).filter((l) => l.available !== false).map((l) => l.id));
   const keys = Object.keys(STRUCTURES).filter((k) => STRUCTURES[k].labels.some((id) => present.has(id)));
   const lut = new Uint8Array(256);
   keys.forEach((k, i) => { for (const id of STRUCTURES[k].labels) if (present.has(id)) lut[id] = i + 1; });
@@ -189,4 +191,15 @@ export function provenance(dataset) {
   if (dataset === 'atlas') return { short: 'Segmentasi sintetis atlas', long: 'Label diturunkan dari mesh Atlas MEDCOEL (BodyParts3D/Z-Anatomy) yang divokselisasi pada 2,5 mm — sintetis, bukan segmentasi citra pasien.', level: 'synthetic-atlas' };
   if (dataset === 'phantom') return { short: 'Label phantom prosedural', long: 'Label berasal dari geometri prosedural phantom MEDCOEL — sintetis.', level: 'synthetic-phantom' };
   return { short: 'Label map lokal (belum diverifikasi)', long: 'Label map yang dimuat pengguna; ketepatan dan registrasinya tidak diverifikasi oleh MEDCOEL.', level: 'local-unverified' };
+}
+
+/**
+ * Structures the dataset declares unavailable (e.g. withheld by the licence quarantine). Returned so the UI can
+ * say so explicitly instead of silently omitting them or substituting other anatomy.
+ * @returns [{key, nameId, reason}]
+ */
+export function unavailableStructures(anatomy) {
+  const off = new Map((anatomy?.labels || []).filter((l) => l.available === false).map((l) => [l.id, l.unavailableReason || 'Tidak tersedia di dataset ini.']));
+  return Object.entries(STRUCTURES).filter(([, st]) => st.labels.length && st.labels.every((id) => off.has(id)))
+    .map(([key, st]) => ({ key, nameId: st.nameId, reason: off.get(st.labels[0]) }));
 }

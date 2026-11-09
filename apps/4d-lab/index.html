@@ -11,6 +11,7 @@
 <header class="topbar">
   <a class="brand" href="/anatomy" target="_top" aria-label="Kembali ke Anatomi MEDCOEL"><span class="brand-mark" aria-hidden="true">C</span>MEDCOEL</a>
   <span class="title">Anatomy Live <strong>4D Lab</strong></span>
+  <button id="panelToggle" class="panel-toggle" data-testid="panel-toggle" aria-controls="sidebar" aria-expanded="false" title="Buka/tutup panel kontrol">☰ <span>Panel</span></button>
   <nav class="ws-nav" role="tablist" aria-label="Ruang kerja">
     <button role="tab" data-ws="imaging" data-testid="ws-imaging" aria-selected="true">Anatomi &amp; Citra</button>
     <button role="tab" data-ws="ausc" data-testid="ws-ausc" aria-selected="false">Auskultasi</button>
@@ -25,7 +26,8 @@
 </header>
 <div id="runtimeError" class="error" role="alert" hidden></div>
 <main id="workspace" class="workspace">
-  <aside class="sidebar" aria-label="Kontrol">
+  <aside id="sidebar" class="sidebar" aria-label="Kontrol">
+    <button type="button" class="drawer-close" data-testid="panel-close" aria-label="Tutup panel">×</button>
     <div class="tabs" role="tablist">
       <button role="tab" aria-selected="true" aria-controls="tab-probe" data-testid="tab-probe" data-ws="imaging">Probe</button>
       <button role="tab" aria-selected="false" aria-controls="tab-anatomy" data-testid="tab-anatomy" data-ws="imaging">Anatomi 3D</button>
@@ -47,11 +49,19 @@
     <div id="loadStatus" class="load-status" role="status" data-testid="load-status">Memulai…</div>
   </aside>
   <section class="viewport-panel" aria-label="Pasien virtual">
-    <div id="modeBar" class="modebar" role="toolbar" aria-label="Pilih yang ingin digerakkan" data-testid="mode-bar"></div>
+    <div class="modebar-row"><div id="modeBar" class="modebar" role="toolbar" aria-label="Pilih yang ingin digerakkan" data-testid="mode-bar"></div>
+      <button type="button" id="helpBtn" class="help-btn" data-testid="help-btn" aria-expanded="false" aria-controls="helpPop" title="Cara menggerakkan">?</button></div>
+    <div id="helpPop" class="help-pop" data-testid="help-pop" hidden>
+      <b>Cara menggerakkan</b>
+      <ol><li>Pilih APA yang ingin diubah: ↕ Superior–Inferior, ↔ Kanan–Kiri, ⇅ Anterior–Posterior, ⟳ Putar, atau 🎥 Kamera.</li>
+      <li>Lakukan satu gerakan: seret di area 3D, scroll, tombol − / +, atau panah keyboard. Hanya besaran itu yang berubah.</li>
+      <li>Arah selalu arah tubuh pasien (panah berwarna di 3D), bukan arah layar.</li></ol>
+      <small>Pintasan: P · 1 · 2 · 3 · 4 · C · ←/→ atau −/+ · Shift = halus · Esc = Tempatkan</small>
+    </div>
     <div id="ctxBar" class="ctxbar" data-testid="ctx-bar" aria-live="polite"></div>
     <div class="viewport-wrap">
       <div id="viewport" class="viewport"></div>
-      <div class="view-toolbar" role="toolbar" aria-label="Kamera dan tampilan">
+      <details class="view-menu" data-testid="view-menu"><summary>Tampilan 3D ▾</summary><div class="view-toolbar" role="toolbar" aria-label="Kamera dan tampilan">
         <div class="seg small" role="group" aria-label="Arah pandang kamera">
           <button data-view="whole" data-testid="cam-whole" class="atlas-only">Seluruh tubuh</button>
           <button data-view="examiner" data-testid="cam-examiner">Pemeriksa</button>
@@ -74,12 +84,12 @@
           <label><input type="checkbox" data-system="respiratory" checked> Paru &amp; diafragma</label>
           <label><input type="checkbox" data-system="abdominal" checked> Organ abdomen &amp; cerna</label>
           <label><input type="checkbox" data-system="urinary" checked> Ginjal &amp; kandung kemih</label>
-          <label><input type="checkbox" data-system="nervous"> Otak</label>
+          <label><input type="checkbox" data-system="nervous"> Otak (phantom)</label>
           <label><input type="checkbox" id="coverageToggle" checked> Kotak cakupan CT</label>
         </details>
-      </div>
+      </div></details>
       <div class="viewport-badge atlas-only" data-testid="viewport-badge">Anatomi: Atlas MEDCOEL · kulit ilustratif · CT sintetis dari atlas</div>
-      <div class="view-hint" id="viewHint">Pilih mode di atas, lalu lakukan satu gerakan. Kamera tidak pernah mengubah citra.</div>
+      <div class="view-hint" id="viewHint">Kamera tidak pernah mengubah citra.</div>
     </div>
   </section>
   <div id="divider" class="divider" role="separator" tabindex="0" aria-label="Ubah lebar monitor (panah kiri/kanan)"></div>
@@ -96,6 +106,7 @@
           <option value="off">Mati (bersih)</option><option value="hover">Hanya hover</option><option value="contours">Kontur</option><option value="guided">Terpandu</option><option value="challenge">Tantangan</option>
         </select>
       </label>
+      <label class="inline mon ct-only">W/L <select id="wlPreset" data-testid="wl-preset" aria-label="Preset window/level CT"><option value="">Preset</option></select></label>
       <button id="zoomOut" aria-label="Perkecil">−</button><button id="zoomIn" aria-label="Perbesar">+</button>
       <button id="fitBtn" data-testid="fit">Fit</button><button id="oneBtn">1:1</button>
       <button id="expandBtn" data-testid="expand" aria-pressed="false">Perbesar</button>
@@ -117,6 +128,10 @@
     </div>
   </section>
 </main>
+<nav class="pane-switch" role="tablist" aria-label="Tampilan layar kecil" data-testid="pane-switch">
+  <button role="tab" data-pane="patient" aria-selected="true" data-testid="pane-patient">Pasien 3D</button>
+  <button role="tab" data-pane="image" aria-selected="false" data-testid="pane-image">Citra</button>
+</nav>
 <script type="module" src="/src/app/main.js"></script>
 </body>
 </html>

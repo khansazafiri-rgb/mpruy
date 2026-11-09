@@ -20,7 +20,7 @@ const results = [];
 const { srv, url } = await startServer();
 const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] });
 // Assertions run at 1x: SwiftShader (software WebGL) is very slow at 2x and makes timing flaky.
-const ctx = await browser.newContext({ viewport: { width: 1600, height: 950 }, deviceScaleFactor: 1 });
+const ctx = await browser.newContext({ viewport: { width: 1760, height: 950 }, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
 const errors = [];
 page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
@@ -55,18 +55,29 @@ async function canvasStats(selector) {
   }, selector);
 }
 async function setNumber(testid, value) {
+  await lab(() => document.querySelectorAll('details.adv').forEach((d) => { d.open = true; })); // precise controls are under 'lanjutan'
   const input = page.getByTestId(testid);
   await input.fill(String(value)); await input.press('Enter');
 }
 async function pause() { if (await lab(() => window.__lab.S.playing)) await page.getByTestId('play').click(); }
-async function camera(view) { await page.getByTestId('cam-' + view).click(); await page.waitForFunction(() => !window.__lab.scene._anim, null, { timeout: 15000 }); await page.waitForTimeout(150); }
-async function openTab(id) { await page.getByTestId('tab-' + id).click(); }
+async function camera(view) { await lab(() => { document.querySelector('[data-testid=view-menu]').open = true; }); await page.getByTestId('cam-' + view).click(); await page.waitForFunction(() => !window.__lab.scene._anim, null, { timeout: 15000 }); await page.waitForTimeout(150); }
+// Tabs live in workspaces (UX upgrade): switch to the owning workspace, keep the panel open beside the patient.
+const TAB_WS = { probe: 'imaging', anatomy: 'imaging', imaging: 'imaging', data: 'imaging', ausc: 'ausc', physiology: 'physio', pathology: 'patho', learn: 'learn' };
+async function openTab(id) {
+  const ws = TAB_WS[id] || 'imaging';
+  if (await lab(() => window.__lab.S.ws) !== ws) await page.getByTestId('ws-' + ws).click();
+  if (await lab(() => document.body.dataset.sidebar) !== 'open') await page.getByTestId('panel-toggle').click();
+  await page.waitForTimeout(250);
+  await page.getByTestId('tab-' + id).click();
+}
 async function goView(key) { await openTab('probe'); await page.getByTestId('mode-clinical').click(); await page.getByTestId('view-' + key).click(); }
 async function resetLayout() { await lab(() => { document.body.classList.remove('monitor-expanded'); if (document.fullscreenElement) document.exitFullscreen(); }); }
 
 // This suite covers the procedural phantom (Phases 1-5 regression); test/e2e/atlas-e2e.mjs covers the atlas dataset.
 await page.goto(url + '?dataset=' + (process.env.E2E_DATASET || 'phantom'));
 await page.waitForFunction(() => document.body.dataset.ready, null, { timeout: 90000 });
+// UX upgrade: the 3D view options sit in a collapsible menu; keep it open for the camera/skin/cutaway steps.
+await page.evaluate(() => { const m = document.querySelector('[data-testid=view-menu]'); if (m) m.open = true; });
 
 await step('loads the phantom package with verified registration and no runtime errors', async () => {
   assert.equal(await lab(() => document.body.dataset.ready), '1');
@@ -138,7 +149,7 @@ await step('dragging the probe slides the contact over the skin (surface-aware)'
   assert.ok(probe[0] > 0 && probe[1] <= 0, 'new contact lies on the body surface: ' + probe);
 });
 
-await step('free 3D mode: presets, numeric translation, out-of-volume indication, gizmo drag', async () => {
+await step('free 3D mode: presets, numeric translation, out-of-volume indication, axis-locked drag', async () => {
   await page.getByTestId('mode-free').click();
   for (const k of ['axial', 'coronal', 'sagittal', 'oblique']) { const f = await lab(() => window.__lab.last.id); await page.getByTestId('free-' + k).click(); await nextFrame(f); }
   await shot('04-free-oblique');
@@ -151,12 +162,16 @@ await step('free 3D mode: presets, numeric translation, out-of-volume indication
   await setNumber('free-ang-pitch', -33.5);
   const a = await lab(() => window.__lab.S.free.q);
   assert.ok(a.every(Number.isFinite));
-  // drag the superior translation arrow
+  // axis-first: choose Superior–Inferior, then drag anywhere toward the on-screen superior arrow -> only S changes
+  await page.getByTestId('ctl-vertical').click();
   const pos0 = await lab(() => [...window.__lab.S.free.position]);
-  const pts = await lab(() => { const s = window.__lab.S, sc = window.__lab.scene, c = s.free.position; return [sc.screenOf(c.map((v, i) => v + (i === 2 ? 78 : 0))), sc.screenOf(c.map((v, i) => v + (i === 2 ? 108 : 0)))]; });
-  await page.mouse.move(pts[0].x, pts[0].y); await page.mouse.down(); await page.mouse.move(pts[1].x, pts[1].y, { steps: 6 }); await page.mouse.up();
+  const pts = await lab(() => { const s = window.__lab.S, sc = window.__lab.scene, c = s.free.position; return [sc.screenOf(c), sc.screenOf(c.map((v, i) => v + (i === 2 ? 60 : 0)))]; });
+  const box = await page.getByTestId('patient-canvas').boundingBox(), sx = box.x + box.width * 0.5, sy = box.y + box.height * 0.6;
+  await page.mouse.move(sx, sy); await page.mouse.down(); await page.mouse.move(sx + (pts[1].x - pts[0].x) * 0.5, sy + (pts[1].y - pts[0].y) * 0.5, { steps: 8 }); await page.mouse.up();
   const pos1 = await lab(() => window.__lab.S.free.position);
-  assert.ok(Math.abs(pos1[2] - pos0[2]) > 5 && Math.abs(pos1[0] - pos0[0]) < 1e-6, 'arrow drag translates along S only: ' + pos0 + ' -> ' + pos1);
+  assert.ok(pos1[2] - pos0[2] > 5 && Math.abs(pos1[0] - pos0[0]) < 1e-6 && Math.abs(pos1[1] - pos0[1]) < 1e-6, 'axis drag translates along S only: ' + pos0 + ' -> ' + pos1);
+  assert.equal(await lab(() => window.__lab.scene.gizmo.visible), false, 'three-ring gizmo hidden by default');
+  await page.getByTestId('ctl-place').click();
   await page.getByTestId('mode-clinical').click();
 });
 
@@ -264,7 +279,8 @@ await step('auscultation: stethoscope sites, synchronised audio scheduling and s
   await page.getByTestId('site-lung_post_r').click(); await page.waitForTimeout(300);
   assert.match(await page.getByTestId('ausc-readout').textContent(), /napas \d+%/);
   await page.getByTestId('audio-toggle').click();
-  await page.getByTestId('tool-probe').click();
+  // leaving the Auskultasi workspace returns the tool to the probe (UX upgrade)
+  await page.getByTestId('ws-imaging').click(); assert.equal(await lab(() => window.__lab.S.tool), 'probe');
   await openTab('pathology'); await page.getByTestId('scenario-normal').click();
 });
 
