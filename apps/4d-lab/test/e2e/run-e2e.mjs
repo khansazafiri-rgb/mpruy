@@ -61,7 +61,8 @@ async function setNumber(testid, value) {
   await input.fill(String(value)); await input.press('Enter');
 }
 async function pause() { if (await lab(() => window.__lab.S.playing)) await page.getByTestId('play').click(); }
-async function camera(view) { await lab(() => { document.querySelector('[data-testid=view-menu]').open = true; }); await page.getByTestId('cam-' + view).click(); await page.waitForFunction(() => !window.__lab.scene._anim, null, { timeout: 15000 }); await page.waitForTimeout(150); }
+async function viewMenu(open) { await lab((o) => { const m = document.querySelector('[data-testid=view-menu]'); if (m) m.open = o; }, open); if (open) await page.getByTestId('cam-examiner').waitFor({ state: 'visible', timeout: 10000 }); }
+async function camera(view) { await viewMenu(true); await page.getByTestId('cam-' + view).click(); await page.waitForFunction(() => !window.__lab.scene._anim, null, { timeout: 15000 }); await page.waitForTimeout(150); await viewMenu(false); }
 // Tabs live in workspaces (UX upgrade): switch to the owning workspace, keep the panel open beside the patient.
 const TAB_WS = { probe: 'imaging', anatomy: 'imaging', imaging: 'imaging', data: 'imaging', ausc: 'ausc', physiology: 'physio', pathology: 'patho', learn: 'learn' };
 async function openTab(id) {
@@ -77,8 +78,6 @@ async function resetLayout() { await lab(() => { document.body.classList.remove(
 // This suite covers the procedural phantom (Phases 1-5 regression); test/e2e/atlas-e2e.mjs covers the atlas dataset.
 await page.goto(url + '?dataset=' + (process.env.E2E_DATASET || 'phantom'));
 await page.waitForFunction(() => document.body.dataset.ready, null, { timeout: 90000 });
-// UX upgrade: the 3D view options sit in a collapsible menu; keep it open for the camera/skin/cutaway steps.
-await page.evaluate(() => { const m = document.querySelector('[data-testid=view-menu]'); if (m) m.open = true; });
 
 await step('loads the phantom package with verified registration and no runtime errors', async () => {
   assert.equal(await lab(() => document.body.dataset.ready), '1');
@@ -107,7 +106,7 @@ await step('clinical probe: rotate / heel-toe / rock keep the contact point fixe
 await step('camera orbit / presets never change the imaging (paused, same pose)', async () => {
   await nextFrame(0);
   const before = await canvasStats('#monitor'), frames = await lab(() => window.__lab.last.id);
-  for (const v of ['posterior', 'left', 'head', 'examiner']) { await page.getByTestId('cam-' + v).click(); await page.waitForTimeout(500); }
+  for (const v of ['posterior', 'left', 'head', 'examiner']) { await viewMenu(true); await page.getByTestId('cam-' + v).click(); await page.waitForTimeout(500); await viewMenu(false); }
   const box = await page.getByTestId('patient-canvas').boundingBox();
   await page.mouse.move(box.x + 30, box.y + box.height - 60); await page.mouse.down(); await page.mouse.move(box.x + 200, box.y + box.height - 120, { steps: 8 }); await page.mouse.up();
   await page.waitForTimeout(400);
@@ -221,7 +220,7 @@ await step('ultrasound responds to tissue parameters and machine settings (execu
 });
 
 await step('physiology: playing animates meshes and images; heart-rate and phase controls work', async () => {
-  await page.getByTestId('cutaway').selectOption('anterior');
+  await viewMenu(true); await page.getByTestId('cutaway').selectOption('anterior'); await viewMenu(false);
   await goView('subxiphoid');
   await openTab('physiology');
   const vtx = () => lab(() => { const m = window.__lab.scene.meshes.heart; return Array.from(m.mesh.geometry.attributes.position.array.slice(0, 30)); });
@@ -238,7 +237,7 @@ await step('physiology: playing animates meshes and images; heart-rate and phase
   assert.notEqual(h1.hash, h2.hash, 'images update while playing');
   await shot('07-cutaway-motion');
   await setNumber('heart-rate', 72);
-  await page.getByTestId('cutaway').selectOption('none');
+  await viewMenu(true); await page.getByTestId('cutaway').selectOption('none'); await viewMenu(false);
 });
 
 await step('pathology: HFrEF vs normal comparison, effusion layer, reduced antral motility', async () => {
@@ -253,10 +252,10 @@ await step('pathology: HFrEF vs normal comparison, effusion layer, reduced antra
   await page.getByTestId('scenario-effusion').click(); await page.waitForTimeout(500);
   assert.ok(await lab(() => window.__lab.effusion && Math.abs(window.__lab.effusion.volumeMl - 650) < 10));
   assert.ok(await lab(() => !!window.__lab.scene.effusionMesh));
-  await page.getByTestId('skin-opacity').fill('30'); await page.waitForTimeout(400);
+  await viewMenu(true); await page.getByTestId('skin-opacity').fill('30'); await page.waitForTimeout(400); await viewMenu(false);
   await pause(); let f = await lab(() => window.__lab.last.id); await nextFrame(f);
   await shot('09-effusion-transparent');
-  await page.getByTestId('skin-opacity').fill('100');
+  await viewMenu(true); await page.getByTestId('skin-opacity').fill('100'); await viewMenu(false);
   await page.getByTestId('scenario-gastroparesis').click(); await page.waitForTimeout(300);
   assert.equal(await lab(() => window.__lab.S.params.antralFrequency), 1.2);
   assert.equal(await lab(() => window.__lab.S.view), 'epigastric');

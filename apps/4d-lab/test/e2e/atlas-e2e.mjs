@@ -61,7 +61,8 @@ async function setNumber(testid, value) {
   const input = page.getByTestId(testid); await input.fill(String(value)); await input.press('Enter');
 }
 async function pause() { if (await lab(() => window.__lab.S.playing)) await page.getByTestId('play').click(); }
-async function camera(view) { await lab(() => { document.querySelector('[data-testid=view-menu]').open = true; }); await page.getByTestId('cam-' + view).click(); await page.waitForFunction(() => !window.__lab.scene._anim, null, { timeout: 15000 }); await page.waitForTimeout(200); }
+async function viewMenu(open) { await lab((o) => { const m = document.querySelector('[data-testid=view-menu]'); if (m) m.open = o; }, open); if (open) await page.getByTestId('cam-examiner').waitFor({ state: 'visible', timeout: 10000 }); }
+async function camera(view) { await viewMenu(true); await page.getByTestId('cam-' + view).click(); await page.waitForFunction(() => !window.__lab.scene._anim, null, { timeout: 15000 }); await page.waitForTimeout(200); await viewMenu(false); }
 // Tabs live in workspaces (UX upgrade): switch to the owning workspace, keep the panel open beside the patient.
 const TAB_WS = { probe: 'imaging', anatomy: 'imaging', imaging: 'imaging', data: 'imaging', ausc: 'ausc', physiology: 'physio', pathology: 'patho', learn: 'learn' };
 async function openTab(id) {
@@ -82,8 +83,6 @@ const t0 = Date.now();
 await page.goto(url);
 await page.waitForFunction(() => document.body.dataset.ready, null, { timeout: 120000 });
 await page.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.atlasState), null, { timeout: 240000 });
-// UX upgrade: the 3D view options sit in a collapsible menu; keep it open for the camera/skin/cutaway steps.
-await page.evaluate(() => { const m = document.querySelector('[data-testid=view-menu]'); if (m) m.open = true; });
 const loadMs = Date.now() - t0;
 
 await step('atlas dataset is the default; shared atlas models load with no runtime errors', async () => {
