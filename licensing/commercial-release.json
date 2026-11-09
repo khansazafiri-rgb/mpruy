@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Public distribution requires commercial-use rights for every bundled asset and application component. Local builds and previews are not release approvals.",
+  "products": {
+    "atlas-viewer": {
+      "status": "blocked",
+      "blockers": [
+        "Atlas application source is described as CC BY-NC-SA 4.0 in apps/anatomy/public/LICENSE section 3; ownership or written commercial permission has not been documented.",
+        "Remaining Atlas structures and derived previews have inferred, rather than individually verified, upstream provenance (licensing/PROVENANCE_REPORT.md section 5)."
+      ],
+      "approvedBuilds": []
+    },
+    "4d-lab": {
+      "status": "blocked",
+      "blockers": [
+        "The Lab's atlas-derived dataset relies on Atlas models whose individual provenance remains partly inferred; its source and adaptation chain needs commercial clearance.",
+        "The Lab links to the Atlas viewer, whose application-code commercial rights are unresolved."
+      ],
+      "approvedBuilds": []
+    }
+  }
+}

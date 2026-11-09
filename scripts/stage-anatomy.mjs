@@ -3,6 +3,7 @@ import {cp,mkdir,readFile,writeFile,rename,symlink,lstat,readlink,rm,open,readdi
 import path from 'node:path';import {fileURLToPath} from 'node:url';import {randomUUID,createHash} from 'node:crypto';
 const repo=fileURLToPath(new URL('../',import.meta.url));
 import {assertDistributionClean,loadPolicy} from '../licensing/tools/check-distribution.mjs';
+import {assertCommercialReleaseReady} from '../licensing/tools/check-commercial-release.mjs';
 // Systems withheld by the licence quarantine are neither required nor allowed in a release.
 const QUARANTINED=new Set(Object.keys(loadPolicy().policy.quarantinedSystems));
 const systems=['skeletal','muscular','joints','cardiovascular','nervous','lymphatic','visceral'].filter(s=>!QUARANTINED.has(s));
@@ -30,7 +31,7 @@ export async function validateViewer(root){
 }
 async function previousTarget(dest){try{const stat=await lstat(dest);if(!stat.isSymbolicLink())throw Error('Viewer destination is a real directory; back it up and migrate to a release symlink first.');return path.resolve(path.dirname(dest),await readlink(dest));}catch(error){if(error.code==='ENOENT')return null;throw error;}}
 async function activate(dest,target){const tmp=dest+'.next-'+randomUUID();await symlink(target,tmp,'dir');try{await rename(tmp,dest);}catch(error){await rm(tmp,{force:true});throw error;}}
-export async function stageAnatomy({source=path.resolve(repo,process.env.ANATOMY_DIST||'apps/anatomy/dist'),dest=process.env.ANATOMY_VIEWER_DIR||'/var/lib/medcoel/anatomy-viewer',releaseId=process.env.ANATOMY_RELEASE_ID||new Date().toISOString().replace(/[^0-9]/g,''),rollback=false}={}){
+export async function stageAnatomy({source=path.resolve(repo,process.env.ANATOMY_DIST||'apps/anatomy/dist'),dest=process.env.ANATOMY_VIEWER_DIR||'/var/lib/medcoel/anatomy-viewer',releaseId=process.env.ANATOMY_RELEASE_ID||new Date().toISOString().replace(/[^0-9]/g,''),rollback=false,commercialManifest}={}){
  dest=path.resolve(dest);const webDist=path.resolve(repo,process.env.MAIN_DIST||'apps/web/dist');
  if(dest===webDist||dest.startsWith(webDist+path.sep))throw Error('Persistent Anatomy destination must be outside the main web dist');
  if(!/^[a-zA-Z0-9._-]{1,80}$/.test(releaseId))throw Error('Invalid release ID');
@@ -50,6 +51,7 @@ export async function stageAnatomy({source=path.resolve(repo,process.env.ANATOMY
   // contents, not the symlink over the new release directory.
   source=await realpath(source);
   const validation=await validateViewer(source),release=path.join(releases,releaseId),content=await fingerprint(source);
+  validation.commercialRights=assertCommercialReleaseReady('atlas-viewer',source,commercialManifest);
   let exists=false;try{exists=(await lstat(release)).isDirectory();}catch(error){if(error.code!=='ENOENT')throw error;}
   if(exists){
    const installed=JSON.parse(await readFile(path.join(release,'.release-source.json'),'utf8'));
