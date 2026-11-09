@@ -6,8 +6,7 @@ An educational freehand CT / simulated-ultrasound workstation for MEDCOEL (`/ana
 ![Workstation](evidence/01-workstation-subxiphoid.jpg)
 
 ## Anatomy: the MEDCOEL Anatomy Atlas (default)
-- The patient's organs, bones and vessels are the **same models as the MEDCOEL Anatomy Atlas** (`/anatomy/viewer/`),
-  loaded from the atlas's own files (no copies) and placed with one explicit, exact frame (metres → LPS mm).
+- The patient's organs, bones and vessels are imported from the **same six curated model assets** used by the MEDCOEL Atlas, but the 4D Lab bundles them as a standalone, integrity-checked asset package at `/anatomy/4d-lab/atlas-assets/`. It does **not load the CC BY-NC-SA Atlas Viewer application code at runtime**. Source-model version hashes are checked against the synthetic CT and its patient LPS registration. Commercial provenance of the meshes and independence of Lab code are not yet certified.
 - The CT and tissue labels the simulator images are **synthetic, generated from those atlas meshes**
   (`pipeline/atlas/build_atlas_dataset.mjs`), so the heart you see in 3D is the heart in the CT/US image.
   It is not an acquired image of any person.
@@ -49,8 +48,7 @@ npm test             # unit tests
 npm run build && npm run test:e2e   # browser tests (Playwright Chromium)
 ```
 Bundled data: `public/data/atlas` (default, atlas-derived; regenerate with `npm run atlas:dataset`, ~70 s, needs
-`apps/anatomy/public/models`) and `public/data/phantom` (procedural; `npm run phantom`). In dev, Vite serves
-`apps/anatomy/public` at `/anatomy/viewer/`. Browser tests: `npm run build && npm run test:e2e` (phantom regression)
+`apps/anatomy/public/models`) and `public/data/phantom` (procedural; `npm run phantom`). In dev, Vite serves **only allowlisted model/catalog/Draco assets** at `/atlas-assets/`. In production build, `tools/atlas-pack.mjs` copies those assets under `dist/atlas-assets/` and verifies their hashes against the CT source model manifest. This build contains no Atlas Viewer HTML/JS and can be previewed without a running Anatomy Viewer app. Browser tests: `npm run build && npm run test:e2e` (phantom regression)
 and `npm run test:e2e:atlas` (atlas dataset; add `--shots` for evidence screenshots).
 For CTACardio, see `pipeline/README.md` (local processing only).
 
