@@ -1,7 +1,7 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs/promises';import path from 'node:path';import os from 'node:os';
 import {stageAnatomy} from './stage-anatomy.mjs';import {prepareAnatomyCaddy} from './prepare-anatomy-caddy.mjs';
 import {approveSyntheticFixture} from './commercial-release-fixture.mjs';
-async function stageFixture(options){if(options.rollback)return stageAnatomy(options);const source=options.source,commercialManifest=path.join(options.root,'synthetic-commercial-approval.json');await approveSyntheticFixture(source,'atlas-viewer',commercialManifest);return stageAnatomy({...options,commercialManifest});}
+async function stageFixture(options){const commercialManifest=path.join(options.root||path.dirname(options.dest),'synthetic-commercial-approval.json');if(options.rollback)return stageAnatomy({...options,commercialManifest});await approveSyntheticFixture(options.source,'atlas-viewer',commercialManifest);return stageAnatomy({...options,commercialManifest});}
 const ids=['skeletal','muscular','joints','cardiovascular','lymphatic','visceral']; // nervous.glb is withheld by the licence quarantine
 async function fixture(t){const root=await fs.mkdtemp(path.join(os.tmpdir(),'anatomy-release-')),source=path.join(root,'source'),web=path.join(root,'web'),dest=path.join(root,'persistent-viewer');t.after(()=>fs.rm(root,{recursive:true,force:true}));for(const dir of ['assets','models','draco','data','thumbnails/structures'])await fs.mkdir(path.join(source,dir),{recursive:true});await fs.mkdir(web);await fs.writeFile(path.join(web,'index.html'),'WEB');await fs.writeFile(path.join(source,'index.html'),'<script src="/anatomy/viewer/assets/app-old.js"></script>');await fs.writeFile(path.join(source,'assets/app-old.js'),'OLD');const glb=Buffer.alloc(12);glb.write('glTF');glb.writeUInt32LE(2,4);glb.writeUInt32LE(12,8);for(const id of ids)await fs.writeFile(path.join(source,'models',id+'.glb'),glb);await fs.writeFile(path.join(source,'draco/draco_decoder.wasm'),Buffer.from([0,97,115,109]));for(const id of ['draco_wasm_wrapper.js','draco_decoder.js'])await fs.writeFile(path.join(source,'draco',id),'decoder');const image='thumbnails/structures/123456789012345678901234.webp';await fs.writeFile(path.join(source,image),Buffer.from('RIFF0000WEBPtest'));const data={systems:Object.fromEntries(ids.map(id=>[id,id==='skeletal'?['bone']:[]])),'atlas-catalog':{bone:{}},lexicon:{},definitions:{},'structure-thumbnails':{structures:{bone:{url:image}}}};for(const [id,json] of Object.entries(data))await fs.writeFile(path.join(source,'data',id+'.json'),JSON.stringify(json));return {root,source,web,dest};}
 test('viewer releases survive web dist recreation and support an atomic rollback',async t=>{const a=await fixture(t);await stageFixture({...a,releaseId:'first'});const first=await fs.readlink(a.dest);await fs.rm(a.web,{recursive:true});await fs.mkdir(a.web);await fs.writeFile(path.join(a.web,'index.html'),'REBUILT WEB');assert.match(await fs.readFile(path.join(a.dest,'index.html'),'utf8'),/app-old/);await fs.writeFile(path.join(a.source,'index.html'),'<script src="/anatomy/viewer/assets/app-new.js"></script>');await fs.writeFile(path.join(a.source,'assets/app-new.js'),'NEW');await stageFixture({...a,releaseId:'second'});assert.notEqual(await fs.readlink(a.dest),first);assert.equal(await fs.readFile(path.join(a.dest,'assets/app-old.js'),'utf8'),'OLD');await stageFixture({dest:a.dest,rollback:true});assert.equal(await fs.readlink(a.dest),first);});
@@ -10,4 +10,32 @@ test('repeating the same verified release is idempotent and keeps the rollback t
 test('a release cannot be installed in the Vite web dist or overwrite a real destination directory',async t=>{const a=await fixture(t);await assert.rejects(stageFixture({...a,dest:path.resolve('apps/web/dist/anatomy/viewer')}),/outside/);await fs.mkdir(a.dest);await assert.rejects(stageFixture({...a}),/real directory/);});
 test('a valid local viewer fixture is blocked from public staging without commercial clearance',async t=>{const a=await fixture(t);await assert.rejects(stageAnatomy({...a,releaseId:'unapproved'}),/Commercial release blocked/);await assert.rejects(fs.readFile(path.join(a.root,'persistent-viewer-releases/unapproved/index.html')));});
 test('promoting a staged preview release remains idempotent without hashing its own install journal',async t=>{const a=await fixture(t),candidate=path.join(a.root,'candidate');await stageFixture({...a,dest:candidate,releaseId:'approved'});await stageFixture({...a,source:candidate,releaseId:'approved'});const result=await stageFixture({...a,source:candidate,releaseId:'approved'});assert.equal(result.unchanged,true);assert.equal(await fs.readFile(path.join(a.dest,'assets/app-old.js'),'utf8'),'OLD');});
+test('unreviewed legacy JS from the previous release cannot be published with a newly approved source',async t=>{
+ const a=await fixture(t);await stageFixture({...a,releaseId:'first'});
+ const before=await fs.readlink(a.dest);
+ // The owner approves only this new source, which does not include app-old.js.
+ // StageAnatomy would otherwise copy that code from the previous public release.
+ await fs.writeFile(path.join(a.source,'index.html'),'<script src="/anatomy/viewer/assets/app-new.js"></script>');
+ await fs.writeFile(path.join(a.source,'assets/app-new.js'),'NEW');
+ await fs.rm(path.join(a.source,'assets/app-old.js'));
+ await assert.rejects(stageFixture({...a,releaseId:'second'}),/no complete rights approval/);
+ assert.equal(await fs.readlink(a.dest),before,'blocked staging keeps the previous release active');
+ await assert.rejects(fs.readFile(path.join(a.root,'persistent-viewer-releases/second/assets/app-new.js')));
+ // Preserve the old chunk only by including it in the reviewed SOURCE digest.
+ await fs.writeFile(path.join(a.source,'assets/app-old.js'),'OLD');
+ await stageFixture({...a,releaseId:'second'});
+ assert.equal(await fs.readFile(path.join(a.dest,'assets/app-old.js'),'utf8'),'OLD');
+});
+test('rollback refuses a previously approved Anatomy release whose bytes have changed',async t=>{
+ const a=await fixture(t);await stageFixture({...a,releaseId:'first'});
+ const first=await fs.readlink(a.dest);
+ await fs.writeFile(path.join(a.source,'index.html'),'<script src="/anatomy/viewer/assets/app-new.js"></script>');
+ await fs.writeFile(path.join(a.source,'assets/app-new.js'),'NEW');
+ await stageFixture({...a,releaseId:'second'});
+ const second=await fs.readlink(a.dest);
+ await fs.writeFile(path.join(first,'assets/app-old.js'),'UNREVIEWED MUTATION');
+ await assert.rejects(stageFixture({dest:a.dest,rollback:true}),/no complete rights approval/);
+ assert.equal(await fs.readlink(a.dest),second,'rollback must not activate mutated code');
+});
+
 test('Caddy candidate replaces only old Anatomy handlers and keeps API, SPA and other sites',()=>{const live='other.example {\n respond "other"\n}\nmedcoel.com {\n header X-Frame-Options DENY\n handle /api/* {\n reverse_proxy 127.0.0.1:8090\n }\n handle_path /anatomy/viewer/* {\n root * /old/dist\n file_server\n }\n handle {\n root * /web\n try_files {path} /index.html\n file_server\n }\n}\n';const snippet='handle_path /anatomy/viewer/* {\n root * /persistent\n file_server\n}';const candidate=prepareAnatomyCaddy(live,snippet);assert.equal((candidate.match(/handle_path \/anatomy\/viewer/g)||[]).length,1);assert.ok(candidate.includes('reverse_proxy 127.0.0.1:8090'));assert.ok(candidate.includes('try_files {path} /index.html'));assert.ok(candidate.includes('other.example {\n respond "other"'));assert.ok(!candidate.includes('/old/dist'));assert.throws(()=>prepareAnatomyCaddy('import custom/*.caddy',snippet),/exactly one/);});
