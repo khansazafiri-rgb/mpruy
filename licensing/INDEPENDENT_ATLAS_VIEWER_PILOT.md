@@ -51,7 +51,8 @@ For a commercial-release decision, a qualified reviewer still needs to compare r
 
 - `npm run test:4d-lab` (new catalog/source boundary/unit tests)
 - `npm run test:licensing` (code-block overlap screen, provenance, quarantined asset guard)
-- `npm run build:4d-lab` (new independent HTML entrypoint plus existing 4D Lab)
+- `npm run build:4d-lab` (ordinary Lab build only, **without** the experimental HTML)
+- `npm run build:independent-atlas-pilot --prefix apps/4d-lab` (opt-in local pilot entrypoint plus Lab)
 - `npm run preview:4d-lab` (local review only)
 - `npm run test:e2e:independent-atlas --prefix apps/4d-lab` (optional Playwright Chromium E2E, not automatically run in GitHub CI)
 - Manual Safari: model framing, searching sternum and femur, isolating/restoring, switching systems and watching memory, smooth orbit/zoom and local responsive layout.
