@@ -361,7 +361,10 @@ function loop(now) {
   if (pose) {
     // The three rotation rings are an opt-in ADVANCED tool; the default is axis-first control (mode bar).
     if (S.mode === 'clinical') {
-      scene.setProbe(pose, S.probeKey, S.tool === 'probe');
+      // A contact reference is helpful when the illustrative skin is transparent
+      // or clipped away, otherwise the correctly anchored probe looks airborne.
+      const showContact = S.appearance.skinOpacity < 0.7 || S.appearance.cutaway !== 'none';
+      scene.setProbe(pose, S.probeKey, S.tool === 'probe', showContact);
       scene.gizmoAxes = { u: pose.u, b: pose.b, e: pose.e };
       scene.setGizmo('clinical', pose.origin, scene.gizmoAxes, S.tool === 'probe' && S.ctl.rings);
     } else {
@@ -701,7 +704,13 @@ function refreshAll() {
   for (const c of controls) c.sync?.();
   document.body.dataset.mode = S.mode; document.body.dataset.tool = S.tool;
   const tri = S.display === 'tri', clinical = S.mode === 'clinical' && !tri;
-  const modeStatus = $('#modeStatus'); if (modeStatus) modeStatus.textContent = tri ? 'Tri-planar CT' : clinical ? 'Probe klinis' : 'Free 3D / Bidang CT';
+  const modeStatus = $('#modeStatus'); if (modeStatus) {
+    const skinHidden = S.appearance.skinOpacity < 0.7 || S.appearance.cutaway !== 'none';
+    modeStatus.textContent = tri ? 'Tri-planar CT' : clinical ? skinHidden ? 'Probe klinis · kontak kulit ilustratif' : 'Probe klinis' : 'Free 3D / Bidang CT';
+    modeStatus.title = clinical && skinHidden
+      ? 'Kulit ilustratif sedang transparan/terpotong. Lingkaran hijau menunjukkan kontak probe pada permukaan kulit yang tidak terlihat; bukan struktur anatomi baru.'
+      : '';
+  }
   const returnProbe = $('#returnProbe'); if (returnProbe) returnProbe.hidden = clinical || !D?.meshes?.skin;
   const freeMode = $('#freeMode'); if (freeMode) freeMode.hidden = !clinical;
   const triControls = $('#triControls'); if (triControls) triControls.hidden = !tri;
