@@ -20,7 +20,7 @@ const PROVENANCE_VERIFIED = new Set(['per-asset-confirmed', 'ownership-documente
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SHA256 = /^[0-9a-f]{64}$/;
 const text = v => typeof v === 'string' && !!v.trim();
-const localEvidence = v => text(v) && !v.startsWith('/') &&
+const localEvidence = v => text(v) && !/^https?:\/\//i.test(v) && !v.startsWith('/') &&
   !v.includes('\\') && !v.split('/').includes('..') && !v.startsWith('./');
 const validEvidenceURL = url => /^https:\/\/[a-z0-9.-]+\/[^\s]+$/i.test(url) || localEvidence(url);
 
