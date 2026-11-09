@@ -1,6 +1,6 @@
 // Browser tests for the ATLAS dataset (default): shared MEDCOEL Anatomy Atlas layer + atlas-derived CT.
 //   npm run build && node test/e2e/atlas-e2e.mjs [--shots]   (screenshots -> evidence/atlas-*.jpg)
-// The atlas GLBs are served from apps/anatomy/public at /anatomy/viewer/, exactly like production.
+// Atlas GLBs are bundled into the Lab's own atlas-assets/ static pack (no Atlas Viewer runtime).
 import { createRequire } from 'node:module';
 import { mkdir, writeFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
