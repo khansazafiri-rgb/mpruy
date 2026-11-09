@@ -1,7 +1,7 @@
 // Web Audio playback of the synthesised auscultation mix with a look-ahead scheduler.
 // While audio is on, the simulation clock is driven by AudioContext.currentTime (speed 1x),
 // so heart sounds stay locked to the cardiac phase that moves the heart and the images.
-import { heartCycle, breathCycle, bowelGurgle } from '../sim/auscultation.js';
+import { heartCycle, breathCycle, bowelGurgle, crackleTrain, wheezeTone } from '../sim/auscultation.js';
 
 export class AudioEngine {
   constructor() { this.ctx = null; this.on = false; this.lastBeat = -1; this.lastBreath = -1; this.nextBowel = 0; this.seed = 1; }
@@ -64,6 +64,9 @@ export class AudioEngine {
         const startSim = s.simTime + (idx - s.breathPhase) * P;
         if (startSim > s.simTime + look) break;
         this._play(breathCycle({ period: P, amplitude: 1, sampleRate: sr, seed: idx + 7 }), sr, startSim + s.audioOffset, 0.16 * s.mix.breath);
+        // optional adventitious DEMO, locked to the same breath (labelled synthetic and unreviewed in the UI)
+        if (s.adventitious === 'crackles') this._play(crackleTrain({ period: P, sampleRate: sr, seed: idx + 11 }), sr, startSim + s.audioOffset, 0.22 * s.mix.breath);
+        if (s.adventitious === 'wheeze') this._play(wheezeTone({ period: P, sampleRate: sr }), sr, startSim + s.audioOffset, 0.05 * s.mix.breath);
         this.lastBreath = idx;
       }
     }

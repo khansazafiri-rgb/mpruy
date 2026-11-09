@@ -92,3 +92,15 @@ bone/aerated lung/gas toward the target. Rendered images: `evidence/atlas-us-sta
 |---|---|---|---|---|
 | | MEDCOEL owner | | | |
 | | Clinician | | | |
+
+## H. UX upgrade content (2026-11-09) — all DRAFT, needs clinical-educator sign-off
+| # | Item | Where | Facts for the reviewer | Decision |
+|---|---|---|---|---|
+| H1 | Structure cards (lokasi, hubungan, CT, USG, fisiologi, klinis, jebakan) | Monitor → Bantuan anatomi → Terpandu → click a structure | `src/edu/structures.js`; ≈30 structures, references G1/G2/T*/R*; label-group cards state that they cover a tissue class, not a named structure | |
+| H2 | Hover identification wording and provenance | Hover on CT/US | "Hati — Liver · Hepar · Sistem pencernaan · Segmentasi sintetis atlas"; unlabelled → "tidak teridentifikasi" | |
+| H3 | Withheld anatomy wording | Assist panel, RUQ view | Kidney, renal pelvis and spinal cord are *tidak tersedia (tinjauan lisensi)*; the RUQ window aims at the hepatorenal liver surface and says "ginjal tidak tersedia" | |
+| H4 | Auscultation guide per site (listen for / why) | Auskultasi workspace | `src/edu/auscultationGuide.js`; A1/A2/R4/R5 | |
+| H5 | Adventitious sound demos (crackles, wheeze) | Auskultasi → Bunyi tambahan paru | Synthetic, labelled demo/unreviewed; crackles late inspiration, wheeze ≈400 Hz expiration. Decide: keep, revise or remove before public release | |
+| H6 | Pathology cases (HFrEF, effusion, gastroparesis) | Patologi workspace | `src/edu/pathologyCases.js`: context, mechanism, findings by fidelity (model / illustrative / absent), differentials, limitations | |
+| H7 | Learning modules 1–5 and quiz answers/explanations | Belajar workspace | `src/edu/modules.js`; task checks run against the simulator state; Module 1 axial task now uses liver + spleen (kidney withheld) | |
+| H8 | Clinical framing | everywhere | "Latihan di simulator tidak menggantikan pelatihan klinis terawasi atau penilaian kompetensi" | |

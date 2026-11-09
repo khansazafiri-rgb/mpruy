@@ -22,6 +22,16 @@ Last reviewed 2026-11-09 for the licence quarantine (see `../../licensing/`).
 | @gltf-transform/core, @gltf-transform/extensions | npm devDependencies (pipeline/tests only) | donmccurdy/glTF-Transform | MIT | Allowed; not shipped |
 | draco3dgltf | npm devDependency (pipeline/tests only) | Google Draco | Apache-2.0 | Allowed; not shipped |
 
+### UX upgrade assets (2026-11-09) — audit fields
+| File / asset | Source & author | Licence & evidence | Attribution | Adaptation | Commercial restriction | Browser delivery | Derivative imaging | Classification |
+|---|---|---|---|---|---|---|---|---|
+| `src/edu/*.js` (structure cards, modules, cases, auscultation guide, credits) | Written for MEDCOEL from the cited references (facts paraphrased, no copied text or figures) | MEDCOEL original | References listed in-app | — | none | yes | n/a | verified (content: **draft**, clinical review pending) |
+| Crackle / wheeze demo sounds (`src/sim/auscultation.js`) | Synthesised by MEDCOEL code (no recordings) | MEDCOEL original | — | — | none | yes | n/a | verified (clinical review pending) |
+| UI icons | Unicode characters rendered with system fonts (no icon set shipped) | n/a | — | — | none | yes | n/a | verified |
+| Fonts | Not bundled: CSS names Plus Jakarta Sans / Inter and falls back to system fonts | n/a | — | — | none | yes | n/a | verified |
+| Screenshots `evidence/ux-*.jpg` | Captured from this app on the cleared atlas build | CC BY-SA 4.0 (atlas content) | BodyParts3D / Z-Anatomy | screenshots | none | n/a | n/a | verified |
+| Reference video (Radio Vyra) | Watched for functional inspiration only | — | — | **nothing copied** (no code, models, images, audio, branding or artwork) | — | — | — | not an asset |
+
 ### Required attribution for the atlas route (shown in the app's Anatomi tab and in `anatomy.json`)
 - "BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan"
 - "Z-Anatomy - The open source atlas of anatomy - CC-BY-SA 4.0"

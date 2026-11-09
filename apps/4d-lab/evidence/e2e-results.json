@@ -1,84 +1,86 @@
 {
-  "date": "2026-11-09T05:48:22.268Z",
+  "date": "2026-11-09T06:35:37.588Z",
   "browser": "Chromium (Playwright, headless, SwiftShader WebGL)",
-  "passed": 14,
-  "failed": 0,
-  "memoryMiB": 73.05145263671875,
+  "passed": 12,
+  "failed": 2,
+  "memoryMiB": 87.45193481445312,
   "timing": {
-    "usMs": 99.29999999981374,
-    "deformMs": 11.199999999953434,
-    "fps": 11.077263915812914
+    "usMs": 115.69999999995343,
+    "deformMs": 22.600000000093132,
+    "fps": 10.155096011816731
   },
   "results": [
     {
       "name": "loads the phantom package with verified registration and no runtime errors",
       "ok": true,
-      "ms": 443
+      "ms": 1390
     },
     {
       "name": "no black-screen: 3D view and imaging monitor contain structured content",
       "ok": true,
-      "ms": 2115
+      "ms": 3991
     },
     {
       "name": "clinical probe: rotate / heel-toe / rock keep the contact point fixed and change the image",
       "ok": true,
-      "ms": 14384
+      "ms": 18265
     },
     {
       "name": "camera orbit / presets never change the imaging (paused, same pose)",
       "ok": true,
-      "ms": 12336
+      "ms": 14072
     },
     {
       "name": "anterior and posterior skin placement by clicking the registered surface",
       "ok": true,
-      "ms": 4722
+      "ms": 4942
     },
     {
       "name": "dragging the probe slides the contact over the skin (surface-aware)",
       "ok": true,
-      "ms": 5829
+      "ms": 4647
     },
     {
-      "name": "free 3D mode: presets, numeric translation, out-of-volume indication, gizmo drag",
+      "name": "free 3D mode: presets, numeric translation, out-of-volume indication, axis-locked drag",
       "ok": true,
-      "ms": 6597
+      "ms": 13016
     },
     {
       "name": "monitor: zoom / pan / fit, expand and fullscreen",
-      "ok": true,
-      "ms": 6907
+      "ok": false,
+      "ms": 1707,
+      "error": "expanded 774.390625 -> 637.609375"
     },
     {
       "name": "separate CT and ultrasound modes; CT window/level changes CT only",
       "ok": true,
-      "ms": 12332
+      "ms": 13402
     },
     {
       "name": "ultrasound responds to tissue parameters and machine settings (executable simulation)",
       "ok": true,
-      "ms": 20702
+      "ms": 22094
     },
     {
       "name": "physiology: playing animates meshes and images; heart-rate and phase controls work",
       "ok": true,
-      "ms": 49471
+      "ms": 52901
     },
     {
       "name": "pathology: HFrEF vs normal comparison, effusion layer, reduced antral motility",
       "ok": true,
-      "ms": 7559
+      "ms": 9582
     },
     {
       "name": "auscultation: stethoscope sites, synchronised audio scheduling and site-dependent mix",
-      "ok": true,
-      "ms": 9277
+      "ok": false,
+      "ms": 38289,
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('tool-probe')\u001b[22m\n"
     },
     {
       "name": "memory footprint after a full session (Chromium heap)",
       "ok": true,
-      "ms": 2
+      "ms": 3
     }
   ]
 }
