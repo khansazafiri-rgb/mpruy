@@ -472,6 +472,8 @@ function navigatePatient(direction) {
       return;
     }
     S.contact = c;
+    // Changing anatomical SIDE is an explicit user action: reveal that side of the patient.
+    if (direction === 'posterior' || direction === 'anterior') scene.setView(direction);
   }
   refreshAll(); touch();
 }
@@ -483,8 +485,8 @@ const TEACHING = {
   right_flank: ['Toraks posterolateral kanan', 'Bandingkan paru berisi udara dengan cairan pleura pada skenario efusi kanan. Perhatikan batas cakupan dan bayangan akustik.'],
   ruq: ['Kuadran kanan atas', 'Amati hati dan ginjal kanan. Geser probe superior–inferior untuk melihat pergeseran bidang Morison.'],
   epigastric: ['Antrum epigastrik', 'Amati antrum dan perubahan bentuknya selama gerak peristaltik prosedural.'],
-  suprapubic: ['Suprapubik', 'Perhatikan cairan kandung kemih yang tampak relatif anekoik pada simulasi USG.'],
-  anterior_lung: ['Paru anterior', 'Perhatikan garis pleura dan reverberasi sederhana pada model. Ini bukan simulasi lengkap artefak paru.'],
+  bladder: ['Suprapubik', 'Perhatikan cairan kandung kemih yang tampak relatif anekoik pada simulasi USG.'],
+  lung_anterior: ['Paru anterior', 'Perhatikan garis pleura dan reverberasi sederhana pada model. Ini bukan simulasi lengkap artefak paru.'],
 };
 function renderTeaching() {
   const e = $('#teachingText'); if (!e) return;
