@@ -7,7 +7,8 @@ viewer candidate while leaving both public staging products blocked.
 ## Implemented in this branch
 
 - Independent viewer pilot: multi-system rendering, on-demand GLB loading and GPU disposal,
-  per-structure hide/isolate/undo, opacity and fade, regional filtering, four camera presets.
+  per-structure hide/isolate/undo, opacity and fade, regional filtering, four camera presets,
+  validated share links, keyboard zoom/undo and model retry.
 - Renderer-independent state tests and expanded Playwright interaction assertions.
 - Machine-readable [`atlas-feature-parity.json`](atlas-feature-parity.json) with explicit gaps.
 - Exact-byte [`4d-lab-pilot-local-inventory.json`](4d-lab-pilot-local-inventory.json): 34 files,

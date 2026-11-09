@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "product": "4d-lab",
   "purpose": "Local technical inventory; not a rights approval",
-  "buildDigest": "e9a2f63b5bd6b17d89ef6e5a6beb869a0d6b21fe68a26a7a7d6f8ab67bd7e0ca",
+  "buildDigest": "f190f121d9df629f03ece728cf07ecb8e2e892656c630d00ab51565827608e44",
   "lockfileSha256": "4ee0521001ac5f1509b9e8ac766541cbd7e1f8b9600ba4c371b7bf81d66bc11f",
   "files": [
     {
@@ -36,9 +36,9 @@
       "rightsStatus": "unresolved"
     },
     {
-      "path": "assets/independentAtlasPilot-DL6_syuZ.js",
-      "sha256": "1de7bc61c07c28ba46b27ebfe37938584f7bbb078cc5b705c8e4c25b7e75c220",
-      "bytes": 10985,
+      "path": "assets/independentAtlasPilot-DqT1OOe2.js",
+      "sha256": "f591f1c4be259cde2f050fbf8cced2c7924f901f6dad8362e79cd77199258448",
+      "bytes": 13892,
       "evidenceRecords": [
         "lab-application-code",
         "software-dependencies"
@@ -197,8 +197,8 @@
     },
     {
       "path": "atlas-preview/index.html",
-      "sha256": "dea8967455c9fd0aa13509d346982eec9ae92158cec8c6bf22a5d8965539298f",
-      "bytes": 4409,
+      "sha256": "2a4d487534595c549edb53cd3f18911831a87357a84d1b2c2598c0ac909f1a53",
+      "bytes": 4851,
       "evidenceRecords": [
         "lab-application-code",
         "software-dependencies"

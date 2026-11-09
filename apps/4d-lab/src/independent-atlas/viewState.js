@@ -1,6 +1,7 @@
 // Original, renderer-agnostic interaction state for the local Atlas pilot.
 // Keys include the system so coincident names in different model groups never collide.
 export const structureKey = (system, name) => `${system}::${name}`;
+export const REGIONS = Object.freeze(['whole', 'headNeck', 'thorax', 'abdomen', 'pelvis', 'upperLimb', 'lowerLimb', 'back']);
 
 export function createViewState() {
   return {
@@ -58,4 +59,35 @@ export function visibleStructure(state, system, name, regions = []) {
   return state.enabled.includes(system) && !state.hidden.includes(key) &&
     (!state.isolated || state.isolated === key) &&
     (state.region === 'whole' || regions.includes(state.region) || state.isolated === key);
+}
+
+// The URL is user-controlled. Restore only known catalog keys and bounded finite camera values.
+export function readSharedView(raw, validSystems, validKeys) {
+  if (!raw || raw.length > 8000) return null;
+  try {
+    const data = JSON.parse(raw);
+    if (data.version !== 1 || !Array.isArray(data.enabled) || data.enabled.length > 6 ||
+      !Array.isArray(data.hidden) || data.hidden.length > 80) return null;
+    const systems = [...new Set(data.enabled.filter(s => validSystems.includes(s)))];
+    const enabled = systems.length ? systems : ['skeletal'];
+    const key = value => typeof value === 'string' && validKeys.has(value) && enabled.some(s => value.startsWith(s + '::')) ? value : null;
+    const hidden = [...new Set(data.hidden.map(key).filter(Boolean))];
+    const state = { ...createViewState(), enabled, hidden,
+      selected: key(data.selected), isolated: key(data.isolated), faded: key(data.faded),
+      region: REGIONS.includes(data.region) ? data.region : 'whole',
+      opacity: Number.isFinite(data.opacity) ? Math.max(0.15, Math.min(1, data.opacity)) : 1,
+    };
+    if (state.isolated) state.hidden = state.hidden.filter(k => k !== state.isolated);
+    if (state.selected && state.hidden.includes(state.selected)) state.selected = null;
+    const camera = Array.isArray(data.camera) && data.camera.length === 6 &&
+      data.camera.every(n => Number.isFinite(n) && Math.abs(n) <= 100) &&
+      Math.hypot(data.camera[0] - data.camera[3], data.camera[1] - data.camera[4], data.camera[2] - data.camera[5]) > 0.02
+      ? data.camera : null;
+    return { state, camera };
+  } catch { return null; }
+}
+
+export function sharedViewPayload(state, camera) {
+  const { history, ...snapshot } = state;
+  return JSON.stringify({ version: 1, ...snapshot, camera });
 }

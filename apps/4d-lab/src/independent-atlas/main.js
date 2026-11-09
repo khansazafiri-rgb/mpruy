@@ -4,14 +4,14 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { SYSTEMS, availableSystem, catalogueItems, findStructures, cleanStructureLabel } from './catalog.js';
-import { createViewState, updateView, structureKey, visibleStructure } from './viewState.js';
+import { createViewState, updateView, structureKey, visibleStructure, readSharedView, sharedViewPayload } from './viewState.js';
 
 const el = id => document.getElementById(id);
 const host = el('canvasHost');
 const ui = Object.fromEntries([
   'system', 'systemToggles', 'region', 'search', 'results', 'details', 'status',
   'isolate', 'clear', 'hide', 'fade', 'undo', 'restore', 'front', 'back', 'side',
-  'top', 'fit', 'opacity', 'opacityValue',
+  'top', 'fit', 'zoomIn', 'zoomOut', 'share', 'shareUrl', 'retry', 'opacity', 'opacityValue',
 ].map(id => [id, el(id)]));
 const assetRoot = import.meta.env.BASE_URL + 'atlas-assets/';
 const scene = new THREE.Scene();
@@ -144,6 +144,12 @@ function frameBounds(box, direction = new THREE.Vector3(0.36, 0.12, 1)) {
   orbit.update();
 }
 function frameVisible(direction) { frameBounds(visibleBounds(), direction); }
+function zoom(factor) {
+  const offset = camera.position.clone().sub(orbit.target);
+  const distance = Math.max(orbit.minDistance, Math.min(orbit.maxDistance, offset.length() * factor));
+  camera.position.copy(orbit.target).add(offset.setLength(distance));
+  orbit.update();
+}
 
 async function ensureSystem(system) {
   if (!view.enabled.includes(system)) return;
@@ -169,10 +175,12 @@ async function ensureSystem(system) {
     }
     scene.add(group);
     models.set(system, { group, parts });
+    ui.retry.hidden = true;
     appearance();
     status(SYSTEMS[system] + ' siap · ' + parts.size + ' struktur.');
   }).catch(error => {
     status('Gagal memuat ' + SYSTEMS[system] + ': ' + error.message);
+    ui.retry.hidden = false;
   }).finally(() => pending.delete(system));
   pending.set(system, promise);
   return promise;
@@ -256,6 +264,33 @@ ui.back.addEventListener('click', () => frameVisible(new THREE.Vector3(0, 0, -1)
 ui.side.addEventListener('click', () => frameVisible(new THREE.Vector3(1, 0, 0)));
 ui.top.addEventListener('click', () => frameVisible(new THREE.Vector3(0, 1, 0)));
 ui.fit.addEventListener('click', () => frameVisible());
+ui.zoomIn.addEventListener('click', () => zoom(0.8));
+ui.zoomOut.addEventListener('click', () => zoom(1.25));
+ui.retry.addEventListener('click', async () => {
+  ui.retry.hidden = true;
+  for (const system of view.enabled) await ensureSystem(system);
+  frameVisible();
+});
+ui.share.addEventListener('click', async () => {
+  const snapshot = [...camera.position.toArray(), ...orbit.target.toArray()];
+  const url = new URL(window.location.href);
+  url.searchParams.set('view', sharedViewPayload(view, snapshot));
+  ui.shareUrl.value = url.href;
+  ui.shareUrl.hidden = false;
+  try { await navigator.clipboard.writeText(url.href); status('Tautan tampilan disalin.'); }
+  catch { ui.shareUrl.focus(); ui.shareUrl.select(); status('Tautan siap disalin dari kolom di bawah.'); }
+});
+document.addEventListener('keydown', event => {
+  if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') {
+    if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
+    event.preventDefault(); ui.undo.click(); return;
+  }
+  if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement || event.target instanceof HTMLSelectElement) return;
+  if (event.key === '+' || event.key === '=') { event.preventDefault(); zoom(0.8); }
+  else if (event.key === '-' || event.key === '_') { event.preventDefault(); zoom(1.25); }
+  else if (event.key === 'Home') { event.preventDefault(); frameVisible(); }
+  else if (event.key === 'Escape') { event.preventDefault(); change({ type: 'clearSelection' }); }
+});
 
 let pointerDown = null;
 renderer.domElement.addEventListener('pointerdown', event => {
@@ -300,8 +335,17 @@ async function start() {
     entries = catalogueItems(await response.json());
     if (!entries.length) throw new Error('Katalog tidak berisi struktur yang diizinkan.');
     entryByKey = new Map(entries.map(entry => [structureKey(entry.system, entry.name), entry]));
-    await ensureSystem('skeletal');
-    frameVisible();
+    const restored = readSharedView(new URL(window.location.href).searchParams.get('view'), Object.keys(SYSTEMS), new Set(entryByKey.keys()));
+    if (restored) view = restored.state;
+    ui.system.value = view.enabled[0];
+    await Promise.all(view.enabled.map(ensureSystem));
+    if (restored?.camera) {
+      camera.position.fromArray(restored.camera);
+      orbit.target.fromArray(restored.camera, 3);
+      const axis = camera.position.clone().sub(orbit.target).normalize();
+      camera.up.set(0, Math.abs(axis.y) > 0.9 ? 0 : 1, Math.abs(axis.y) > 0.9 ? -1 : 0);
+      orbit.update();
+    } else frameVisible();
     window.__independentAtlasPilot = {
       get system() { return ui.system.value; },
       get catalogueCount() { return entries.length; },

@@ -46,6 +46,14 @@ try {
   await page.getByTestId('pilot-back').click();
   await page.getByTestId('pilot-side').click();
   await page.getByTestId('pilot-top').click();
+  await page.getByTestId('pilot-zoom-in').click();
+  await page.getByTestId('pilot-zoom-out').click();
+  await page.getByTestId('pilot-share').click();
+  const sharedUrl = await page.locator('#shareUrl').inputValue();
+  assert.match(sharedUrl, /view=/);
+  await page.goto(sharedUrl);
+  await page.waitForFunction(() => window.__independentAtlasPilot?.loadedModels === 2, null, { timeout: 90000 });
+  assert.equal(await page.evaluate(() => window.__independentAtlasPilot.region), 'thorax');
   await page.getByTestId('pilot-system').selectOption('visceral');
   await page.waitForFunction(() => window.__independentAtlasPilot?.system === 'visceral' && window.__independentAtlasPilot?.loadedModels === 1 && window.__independentAtlasPilot?.structureCount > 0, null, { timeout: 90000 });
   await page.getByTestId('pilot-front').click();

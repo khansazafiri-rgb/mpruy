@@ -37,6 +37,8 @@ For a commercial-release decision, a qualified reviewer still needs to compare r
 
 The pilot now supports simultaneous system visibility, selective hide/isolate, undo/restore,
 global transparency, fade others, region filtering and front/back/side/top camera presets.
+An explicit share link restores validated viewer/camera state; keyboard zoom/undo and a model
+load retry control add basic recovery.
 Disabled systems unload their geometry and materials to limit GPU memory on 8 GB machines.
 The original select menu still offers a single-system focus for the existing beginner flow.
 See the machine-readable [`atlas-feature-parity.json`](atlas-feature-parity.json) for
@@ -58,7 +60,7 @@ unresolved rights, including copied model data; it is not a distribution approva
 | Isolate/restore | Isolate, hide, restore, undo, opacity and fade others | Layer stepping, per-structure opacity, Safari interaction review |
 | Body region handling | Catalog-based filter | Anatomically validated region framing and educational context |
 | Teaching integration | Separate local review entrypoint | Curriculum links, learning states, study mode |
-| Offline/recovery | Loading error text | Robust cache strategy, downloads, retries |
+| Offline/recovery | Loading error text and model retry | Catalog retry, progress feedback, cache strategy |
 | Commercial source rights | **Not verified** | Code audit, model-level provenance, copyright review |
 | Deployment | **Blocked** | Legal approval, product QA, release authorization |
 

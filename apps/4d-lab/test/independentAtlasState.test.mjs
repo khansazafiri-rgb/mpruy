@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createViewState, updateView, structureKey, visibleStructure } from '../src/independent-atlas/viewState.js';
+import { createViewState, updateView, structureKey, visibleStructure, readSharedView, sharedViewPayload } from '../src/independent-atlas/viewState.js';
 
 test('multiple systems, structure visibility and per-structure hide are independent', () => {
   const sternum = structureKey('skeletal', 'Sternum'), heart = structureKey('visceral', 'Heart');
@@ -20,6 +20,26 @@ test('multiple systems, structure visibility and per-structure hide are independ
   state = updateView(state, { type: 'restore' });
   assert.equal(state.hidden.length, 0);
   assert.deepEqual(state.enabled, ['skeletal', 'visceral']);
+});
+
+test('shared view restores only known structures, bounded camera and valid systems', () => {
+  const key = structureKey('skeletal', 'Sternum');
+  const base = updateView(createViewState(), { type: 'select', key });
+  const parsed = readSharedView(sharedViewPayload(base, [1, 2, 3, 0, 1, 0]), ['skeletal'], new Set([key]));
+  assert.equal(parsed.state.selected, key);
+  assert.deepEqual(parsed.camera, [1, 2, 3, 0, 1, 0]);
+  assert.deepEqual(parsed.state.history, []);
+  const malicious = JSON.stringify({ version: 1, enabled: ['nervous', 'skeletal'],
+    hidden: ['skeletal::not-in-catalog', key], selected: key,
+    region: 'unknown', opacity: Infinity, camera: [0, 0, 0, 0, 0, 0] });
+  const restored = readSharedView(malicious, ['skeletal'], new Set([key]));
+  assert.deepEqual(restored.state.enabled, ['skeletal']);
+  assert.deepEqual(restored.state.hidden, [key]);
+  assert.equal(restored.state.selected, null);
+  assert.equal(restored.state.region, 'whole');
+  assert.equal(restored.camera, null);
+  assert.equal(readSharedView('{invalid', ['skeletal'], new Set([key])), null);
+  assert.equal(readSharedView('x'.repeat(9000), ['skeletal'], new Set([key])), null);
 });
 
 test('regional visibility, opacity bounds and invalid system actions are stable', () => {
