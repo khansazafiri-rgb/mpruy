@@ -703,6 +703,7 @@ function refreshAll() {
   const returnProbe = $('#returnProbe'); if (returnProbe) returnProbe.hidden = clinical || !D?.meshes?.skin;
   const freeMode = $('#freeMode'); if (freeMode) freeMode.hidden = !clinical;
   const triControls = $('#triControls'); if (triControls) triControls.hidden = !tri;
+  const monitorPanel = $('#monitorPanel'); if (monitorPanel) monitorPanel.dataset.display = S.display;
   const triReturn = $('#triReturnProbe'); if (triReturn) triReturn.hidden = !D?.meshes?.skin;
   for (const b of document.querySelectorAll('[data-seg]')) { const [k, v] = b.dataset.seg.split(':'); b.setAttribute('aria-pressed', String(S[k] === v || (k === 'display' && S.display === v))); }
   const sel = $('#probeSelect'); if (sel) sel.value = S.probeKey;
@@ -1128,6 +1129,12 @@ function installLayout() {
   $('#returnProbe').onclick = () => setScanMode('clinical');
   $('#freeMode').onclick = () => setScanMode('free');
   buildTriControls();
+  $('#triShowImages').onclick = () => {
+    const scroller = $('#monitorScroll'), image = $('.monitor-body');
+    if (!scroller || !image) return;
+    const next = scroller.scrollTop + image.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
+    scroller.scrollTo({ top: Math.max(0, next), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  };
   let drag = null;
   div.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, w: $('#monitorPanel').getBoundingClientRect().width }; div.setPointerCapture(e.pointerId); });
   div.addEventListener('pointermove', (e) => { if (!drag) return; const w = Math.min(window.innerWidth * 0.75, Math.max(280, drag.w - (e.clientX - drag.x))); ws.style.setProperty('--monitor-w', w + 'px'); });
