@@ -54,7 +54,13 @@ processing runs in the student's browser and no data is uploaded.
   restricted outputs under `apps/4d-lab/public`.
 - Keep the "educational simulation, not for diagnosis" labels; they are part of the product.
 
-## Staging preview for this branch (not executed; needs approval)
+## Local staging preview (no server needed)
+`npm run preview:4d-lab` (repository root) builds the Atlas, the lab and the web app and serves them read-only with the
+production URL layout and headers on `http://127.0.0.1:4190` (`/anatomy/live`, `/anatomy/4d-lab/`, `/anatomy/viewer/`).
+It refuses to start if the lab's atlas dataset does not match the atlas models served. Instructions for Safari on
+macOS, the owner checklist and the release gates: `RELEASE_READINESS.md`.
+
+## Server staging for this branch (not executed; needs approval)
 1. Stage the atlas build first if the staging host does not already serve `/anatomy/viewer/`:
    `npm run build:anatomy && node scripts/stage-anatomy.mjs` (existing procedure).
 2. `npm ci --prefix apps/4d-lab && npm run test:4d-lab && npm run build:4d-lab`.

@@ -63,6 +63,8 @@ For CTACardio, see `pipeline/README.md` (local processing only).
 | `INTEGRATION.md` | Safe deployment plan for medcoel.com (`/anatomy/live`, `/anatomy/4d-lab/`) |
 | `MEDICAL_REFERENCES.md` | Sources for scenario text and tissue constants |
 | `ASSET_LICENSE_REGISTRY.md` | Every shipped asset and the datasets that must not be included |
+| `RELEASE_READINESS.md` | Local staging preview (Safari on macOS), test report, owner checklist, licence status, rollback, deployment plan |
+| `MEDICAL_REVIEW_CHECKLIST.md` | Every item that needs clinical/anatomical review before release |
 | `ATLAS_INTEGRATION_AUDIT.md` | Atlas inventory, frames, licences, mesh findings, registration decision, performance |
 | `pipeline/README.md` | Phantom generator and the local CT → mesh route (VTK / 3D Slicer) |
 | `CLAUDE.md` | Engineering rules for future sessions |

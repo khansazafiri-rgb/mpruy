@@ -1,6 +1,6 @@
 # Phase status — MEDCOEL Anatomy Live 4D Lab
 
-_Last updated: 2026-11-08 (branch `claude/vigilant-cerf-jjc6fj`, based on the PR #133 merge `6c4f696`): Anatomy Atlas integration added._
+_Last updated: 2026-11-09 (branch `claude/vigilant-cerf-jjc6fj`, based on the PR #136 merge `58f8769`): release-readiness and local staging preview added._
 Evidence files are in `evidence/`; test commands are listed in `TEST_RESULTS.md`.
 
 | Phase | Status | Gate | Evidence |
@@ -10,6 +10,17 @@ Evidence files are in `evidence/`; test commands are listed in `TEST_RESULTS.md`
 | 3 Ultrasound engine | **Complete** | US output responds to probe orientation and tissue parameters via executable simulation — **passed** | unit tests 11–19; e2e "ultrasound responds to tissue parameters…"; `evidence/us-*.png` |
 | 4 Organ motion | **Complete** | Each system has a working, controllable motion demo — **passed** (cardiac, respiratory, gastric antral peristalsis) | unit tests 20–26; e2e "physiology…"; `evidence/07-cutaway-motion.jpg` |
 | 5 Pathology + auscultation | **Complete (educational scope)** | At least one integrated normal-vs-pathological scenario and a functional auscultation workflow — **passed** (3 scenarios; stethoscope, synthesised S1/S2/S3, breath and bowel sounds, PCG strip) | unit tests 27–33; e2e "pathology…", "auscultation…"; `evidence/08, 09, 10` |
+
+## Release readiness (2026-11-09) — after the PR #136 merge `58f8769`
+| Item | Status |
+|---|---|
+| Merged code verified, CI-equivalent suites and builds | **Pass** (details: `RELEASE_READINESS.md` §2, `TEST_RESULTS.md`) |
+| Reviewable preview | **Local staging preview** `npm run preview:4d-lab` (production URL layout, self-checks). No isolated staging server exists; nothing deployed |
+| Safari / 8 GB Apple Silicon | **Not tested** (unavailable to the session). Static compatibility review done: needs Safari ≥ 16.4; SHA-256 fallback added for plain-http LAN previews |
+| Owner acceptance (12-item Safari checklist) | **Open** — `RELEASE_READINESS.md` §3 |
+| Clinical/anatomical review | **Open** — `MEDICAL_REVIEW_CHECKLIST.md` (flags: HFrEF text vs subxiphoid window, displayed vs measured EF, mirror-artefact text, S3 timing 180 vs 140 ms, small atlas LV EDV) |
+| Licence compliance (non-commercial) | **Verified**; `data/atlas/NOTICE.txt` added and enforced by the staging script |
+| Production deployment | **Not started** — plan in `RELEASE_READINESS.md` §7, needs approval |
 
 ## Atlas integration (2026-11-08) — status by element
 | Element | Status | Evidence / note |

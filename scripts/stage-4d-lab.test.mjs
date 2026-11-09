@@ -34,3 +34,17 @@ test('stages releases atomically, validates hashes and rolls back', async () => 
     await assert.rejects(stageLab({ source: a, dest: path.join(process.cwd(), 'apps/web/dist/x'), releaseId: 'r4' }), /outside the main web dist/);
   } finally { await rm(tmp, { recursive: true, force: true }); }
 });
+
+test('atlas model check: matching hashes pass, a changed model is refused', async () => {
+  const { checkAtlasModels } = await import('./stage-4d-lab.mjs');
+  const { mkdtemp, mkdir, writeFile } = await import('node:fs/promises');
+  const { tmpdir } = await import('node:os');
+  const { createHash } = await import('node:crypto');
+  const d = await mkdtemp(path.join(tmpdir(), 'atlas-check-'));
+  await mkdir(path.join(d, 'lab/data/atlas'), { recursive: true }); await mkdir(path.join(d, 'atlas/models'), { recursive: true });
+  await writeFile(path.join(d, 'atlas/models/visceral.glb'), 'model-v1');
+  await writeFile(path.join(d, 'lab/data/atlas/anatomy.json'), JSON.stringify({ build: { sourceModels: { 'visceral.glb': createHash('sha256').update('model-v1').digest('hex') } } }));
+  assert.equal((await checkAtlasModels(path.join(d, 'lab'), path.join(d, 'atlas'))).checked, 1);
+  await writeFile(path.join(d, 'atlas/models/visceral.glb'), 'model-v2');
+  await assert.rejects(checkAtlasModels(path.join(d, 'lab'), path.join(d, 'atlas')), /differ/);
+});

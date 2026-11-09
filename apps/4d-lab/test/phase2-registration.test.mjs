@@ -63,3 +63,12 @@ test('anatomical placement of organs in patient LPS space', async () => {
   assert.ok(site.lung_post_r.point[1] > 50 && site.lung_lat_l.point[0] > 100, 'posterior and lateral sites reach the right surfaces');
   assert.ok(anatomy.labels.find((l) => l.key === 'skin').volumeMl > 500);
 });
+
+test('SHA-256 fallback (no WebCrypto, e.g. plain-http LAN preview) matches node:crypto', async () => {
+  const { createHash } = await import('node:crypto');
+  const { sha256Fallback } = await import('../src/core/mesh.js');
+  const { files } = await loadPhantom();
+  for (const buf of [new Uint8Array(0), new TextEncoder().encode('abc'), new Uint8Array(55), new Uint8Array(56), new Uint8Array(64), new Uint8Array(files['skin.glb'])]) {
+    assert.equal(sha256Fallback(buf), createHash('sha256').update(buf).digest('hex'));
+  }
+});

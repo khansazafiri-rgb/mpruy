@@ -1,5 +1,22 @@
 # Test results — MEDCOEL Anatomy Live 4D Lab
 
+## Release-readiness run — 2026-11-09 (merged head `58f8769` + preview/QA branch)
+Cloud container (Linux x86-64, Node 22.23, Chromium headless with SwiftShader). **Safari was not available.**
+
+| Suite | Merged head | Final branch |
+|---|---|---|
+| Web lint / web + PocketBase format tests / web build | pass / 140 + 58 / pass | unchanged code |
+| Hermes check + tests | 67 pass | unchanged code |
+| Anatomy integration / Atlas tests + lint / Atlas build | 7 / 77 + lint / pass | unchanged code |
+| 4D Lab unit (`npm test --prefix apps/4d-lab`) | 45/45 | **46/46** (+ SHA-256 fallback vs node:crypto) |
+| Staging + preview scripts | 1/1 | **3/3** (+ atlas model hash check, + preview routing/headers) |
+| Browser, phantom | 14/14 | 14/14 |
+| Browser, atlas | 14/14 | 14/14 (atlas ready 4.0–4.4 s, heap 73 MiB, deformation 33–41 ms/update) |
+| MEDCOEL web integration (`/anatomy/live`) | pass | pass |
+| Local staging preview smoke (`/anatomy/live` → lab → atlas ready) | — | pass on 127.0.0.1 (secure context) and on a LAN IP (non-secure, SHA-256 fallback) |
+| Measured EF on the atlas LV (for review) | normal 55.9 % (model 58 %), HFrEF 19.3 % (model 26 %) | |
+| PocketBase live API suite | not run here (binary download); GitHub CI | |
+
 ## Atlas integration run — 2026-11-08
 Same container class (Linux x86-64, Node 22.23, Chromium via Playwright with SwiftShader software WebGL).
 **Safari and Apple hardware were not tested.**
