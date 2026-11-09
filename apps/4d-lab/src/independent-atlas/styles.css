@@ -16,6 +16,8 @@ label{font-size:12px;font-weight:700}input,select{height:42px;border:1px solid #
 .results small{display:block;color:#5a7774;margin-top:2px}
 .details{background:#eff7f6;border:1px solid #d2e7e3;padding:13px;border-radius:10px;font-size:13px;line-height:1.5;min-height:68px}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}.actions button{font-size:12px;font-weight:650}
+.system-list{border:1px solid #d2e7e3;border-radius:10px;padding:8px 10px;margin:0}.system-list legend{font-size:12px;font-weight:700;padding:0 4px}.system-list>div{display:grid;grid-template-columns:1fr 1fr;gap:6px}.system-list label{display:flex;align-items:center;gap:5px;font-weight:500;min-width:0}.system-list input{width:16px;height:16px;margin:0;flex:none}.system-list span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.controls input[type="range"]{padding:0;height:26px;accent-color:#217d72}.controls output{font-weight:500;margin-left:5px}
 .stage{position:relative;min-height:400px;min-width:0;background:radial-gradient(ellipse at center,#1e414b,#071b28);border-radius:15px;overflow:hidden}
 .canvas-host,.canvas-host canvas{height:100%;width:100%;display:block;touch-action:none}
 .status{position:absolute;top:15px;left:15px;max-width:min(420px,calc(100% - 30px));background:#102f36e8;color:#e0f5f4;padding:10px 14px;font-size:12px;border-radius:10px;pointer-events:none}

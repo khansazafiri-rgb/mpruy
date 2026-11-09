@@ -1,0 +1,753 @@
+{
+  "schemaVersion": 1,
+  "product": "4d-lab",
+  "purpose": "Local technical inventory; not a rights approval",
+  "buildDigest": "e9a2f63b5bd6b17d89ef6e5a6beb869a0d6b21fe68a26a7a7d6f8ab67bd7e0ca",
+  "lockfileSha256": "4ee0521001ac5f1509b9e8ac766541cbd7e1f8b9600ba4c371b7bf81d66bc11f",
+  "files": [
+    {
+      "path": "assets/DRACOLoader-Dl-gAMzh.js",
+      "sha256": "6bc0fb8fa0f159a53d74b9b660d0cf434fe70c83465d68ce9e3e31593df2f69d",
+      "bytes": 667420,
+      "evidenceRecords": [
+        "lab-application-code",
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "assets/imaging.worker-DcFjkm8i.js",
+      "sha256": "14059db4fd9e9194ccba4c5b636512f9e661d7e7846668af34b054ba9d364a0a",
+      "bytes": 29539,
+      "evidenceRecords": [
+        "lab-application-code",
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "assets/independentAtlasPilot-DEvt-mhw.css",
+      "sha256": "7a1348dfda69566b31ac042224b7babb2230abb9e915af0ce44fd5233dd81bda",
+      "bytes": 3810,
+      "evidenceRecords": [
+        "lab-application-code",
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "assets/independentAtlasPilot-DL6_syuZ.js",
+      "sha256": "1de7bc61c07c28ba46b27ebfe37938584f7bbb078cc5b705c8e4c25b7e75c220",
+      "bytes": 10985,
+      "evidenceRecords": [
+        "lab-application-code",
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "assets/lab-CtAVpQol.css",
+      "sha256": "6bd24c50d252dec18f78482ef4e4a674c74165f6f49f057dd8896f07e6a23674",
+      "bytes": 38400,
+      "evidenceRecords": [
+        "lab-application-code",
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "assets/lab-xZwz5vbx.js",
+      "sha256": "b42d52e8fb8f382879d41a1acf01b6d7601e84e28ca46fda43c9eed9cf0c4a8b",
+      "bytes": 292214,
+      "evidenceRecords": [
+        "lab-application-code",
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "assets/logo-mark-Bg0khdsN.webp",
+      "sha256": "6b6a137640513c6562cbd59bd8c746ecc2423af04010b6cebf7313c7e2c1a14c",
+      "bytes": 13554,
+      "evidenceRecords": [
+        "lab-application-code",
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/NOTICE.txt",
+      "sha256": "a8b2a74c0fc8d5e95f1e5f13773a0d9816ee4d9d0c5f733d2c1f31bbb3556cbe",
+      "bytes": 2480,
+      "evidenceRecords": [
+        "software-dependencies",
+        "atlas-synthetic-ct"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/data/atlas-catalog.json",
+      "sha256": "e7e714c6563a1f0b10a378548d7a5d3124eb04c6dff5fcee0c620a54313c1ae8",
+      "bytes": 533452,
+      "evidenceRecords": [
+        "atlas-other-data"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/draco/draco_decoder.js",
+      "sha256": "8625489da79a805f4f2a7d511c3e52d8b4085608a9d2a4d5f4f9de5db0aea04f",
+      "bytes": 512465,
+      "evidenceRecords": [
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/draco/draco_decoder.wasm",
+      "sha256": "a680d927bed9cb864ddbd63521868891af2bfbe755092761b4837487618df8ac",
+      "bytes": 192420,
+      "evidenceRecords": [
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/draco/draco_wasm_wrapper.js",
+      "sha256": "8bb2952d2ba7d67e1414f8df819410cb0434a666be53f671fff75f68843d76f6",
+      "bytes": 58456,
+      "evidenceRecords": [
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/manifest.json",
+      "sha256": "1e983f31a9aa270008516eb241278016f1153c002798f9344e0f2b1e94250517",
+      "bytes": 1893,
+      "evidenceRecords": [
+        "software-dependencies",
+        "atlas-synthetic-ct"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/models/License.txt",
+      "sha256": "47c73bd1a7557f49fa5a2c02561ce6ca4ac0169066ab76fc6a6351835f5d185f",
+      "bytes": 1746,
+      "evidenceRecords": [
+        "software-dependencies",
+        "atlas-synthetic-ct"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/models/cardiovascular.glb",
+      "sha256": "bc94c7b8eb1712f18ee461e064140e54aa817f3614e0f56a45b00e2a829cfb59",
+      "bytes": 5614112,
+      "evidenceRecords": [
+        "model-cardiovascular"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/models/joints.glb",
+      "sha256": "9fdab1a257652597cf8f0b2ac93d12abc817e8f9a9099b9628e764018490afa2",
+      "bytes": 921960,
+      "evidenceRecords": [
+        "model-joints"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/models/lymphatic.glb",
+      "sha256": "718cac2b26ad752224cc8a11b2d5bf733fb523b75d9614822a24af7d19202756",
+      "bytes": 419488,
+      "evidenceRecords": [
+        "model-lymphatic"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/models/muscular.glb",
+      "sha256": "f69ed1287f802a2d603d23293e01512bb57ae77ee7cca1d5527ba00496e51de2",
+      "bytes": 4503232,
+      "evidenceRecords": [
+        "model-muscular"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/models/skeletal.glb",
+      "sha256": "2de765c25b2860708a4ff984908e19853eb443875cd4256e3104aef45a1291be",
+      "bytes": 1826044,
+      "evidenceRecords": [
+        "model-skeletal"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-assets/models/visceral.glb",
+      "sha256": "5392afc3fd9a54f653e6b976e82e6fd7a51ea4b5661297b41f259a5d46c72bb8",
+      "bytes": 1815064,
+      "evidenceRecords": [
+        "model-visceral"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "atlas-preview/index.html",
+      "sha256": "dea8967455c9fd0aa13509d346982eec9ae92158cec8c6bf22a5d8965539298f",
+      "bytes": 4409,
+      "evidenceRecords": [
+        "lab-application-code",
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/atlas/NOTICE.txt",
+      "sha256": "a8b2a74c0fc8d5e95f1e5f13773a0d9816ee4d9d0c5f733d2c1f31bbb3556cbe",
+      "bytes": 2480,
+      "evidenceRecords": [
+        "atlas-synthetic-ct"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/atlas/anatomy.json",
+      "sha256": "646a3db74c50b01182c02211ef8ebdb30cafae00a94f1714bbe85b56378e09d2",
+      "bytes": 40616,
+      "evidenceRecords": [
+        "atlas-synthetic-ct"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/atlas/ct.nrrd",
+      "sha256": "29da82cbf01f33946b1f053ded1b0c2f8f6eee5f589e50221410d08e63c1b95b",
+      "bytes": 2884044,
+      "evidenceRecords": [
+        "atlas-synthetic-ct"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/atlas/labels.nrrd",
+      "sha256": "e9cee3cd1d5252da2d179d1be524032c7f526f4ce4f271d7557b13a4449de3cc",
+      "bytes": 387883,
+      "evidenceRecords": [
+        "atlas-synthetic-ct"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/atlas/registration.json",
+      "sha256": "be6536b3bbf52927e97b5e3f3af913288a4926f2e9ae2ec0d9ec73e46cbdc5ab",
+      "bytes": 7472,
+      "evidenceRecords": [
+        "atlas-synthetic-ct"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/atlas/skin.glb",
+      "sha256": "c7e14b7dc800eb925c175b8c0fd25d93c8a0f84d83dd5622b16a54709f25c317",
+      "bytes": 3719176,
+      "evidenceRecords": [
+        "atlas-synthetic-ct"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/phantom/anatomy.json",
+      "sha256": "a0b8cf36c8f0e701d4c868119ecaf698fdf15520e6ff73a3733f20885b090058",
+      "bytes": 24873,
+      "evidenceRecords": [
+        "lab-application-code"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/phantom/ct.nrrd",
+      "sha256": "aa0c27b3b786b436e82fe9d3b2967e7940e90fe6d225cd5b11636d1fdb2176c1",
+      "bytes": 2113469,
+      "evidenceRecords": [
+        "lab-application-code"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/phantom/labels.nrrd",
+      "sha256": "d7453b6b291a4783f6418acf34d1bf6b86334714639abeb5247bf6f311d0173d",
+      "bytes": 269265,
+      "evidenceRecords": [
+        "lab-application-code"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/phantom/organs.glb",
+      "sha256": "3feb4b3dbf23d7e0525f56f1fe56016b025e979494a3520ab8766dd8d3d05857",
+      "bytes": 2438228,
+      "evidenceRecords": [
+        "lab-application-code"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/phantom/registration.json",
+      "sha256": "ffb562ed7bd30c9dec272d54f48b2c0351809c09246bf73faed7ef2139851bc0",
+      "bytes": 7489,
+      "evidenceRecords": [
+        "lab-application-code"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "data/phantom/skin.glb",
+      "sha256": "2d5eb10e7242522770363625875f0bb227787a403269c98cb5421a5bd6939984",
+      "bytes": 1260800,
+      "evidenceRecords": [
+        "lab-application-code"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "index.html",
+      "sha256": "e985718fea4cb201d96df0982cec8c05f47bb82b95e2d2df5da8c342365b312c",
+      "bytes": 14240,
+      "evidenceRecords": [
+        "lab-application-code",
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    }
+  ],
+  "packages": [
+    {
+      "location": "node_modules/@gltf-transform/core",
+      "name": "@gltf-transform/core",
+      "version": "4.5.1",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-OWgBYssKHKoXMIrMb2N20jXqWRnMP9HdtcTFQBEAJtz4P+OOxx5fozl5eAeK7nktIs5uDE/lu4NbkE5VCZaR9g==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@gltf-transform/extensions",
+      "name": "@gltf-transform/extensions",
+      "version": "4.5.1",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-3jTe+GWRy4fj1TU790LPsO+rpO/4byUWPTpNkjy6M6h8RvrUivRf12Mptc0770K4ZczibpJDNHXZFkFsFMRDLA==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@oxc-project/types",
+      "name": "@oxc-project/types",
+      "version": "0.156.0",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-1Duyg48TdJNdyhEB8Xn1L36bT9Pv6GUtlKjHxOys8xkaF/rQq3XJE+bAurSK/AgIz5mGFsb77cn9Pb20+WCScw==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-android-arm-eabi",
+      "name": "@rolldown/binding-android-arm-eabi",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-ia3DwAs0OsMGS7+IConptSiyk9pEXkOx/AbJ2n/lAGxH3QkWQus1t8d7gnAT38FCU2sQu8lUbeR6AiZFv4JxaA==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-android-arm64",
+      "name": "@rolldown/binding-android-arm64",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-kx5wBiMB6E7TEvpl2B9gjLU004BkvEm2Dr941BFjx/SontPwSzNuQUIoVKxHHoSjpFIfHMmcguyLOtyn0hObRg==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-darwin-arm64",
+      "name": "@rolldown/binding-darwin-arm64",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-qslZrXnKJU4cUpjoAmtAo/KQM9e2IRMlmpig6Zpwj+8KWxW8v+nkAf9216Bsek9lOC1jvg2yCjygCFo2f83msQ==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-darwin-x64",
+      "name": "@rolldown/binding-darwin-x64",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-FdF+y48ND13eAyM2mQn+85kvAqNlvRWROy2rhgA463X/0Gv4vGtazZtfaF1mRBLscYvtOlh4QnLjOWiFzX69OQ==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-freebsd-x64",
+      "name": "@rolldown/binding-freebsd-x64",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-ddjqFM5e95AgLbUPtKIS7V1KTVlA0RUgCVr5mn+/IEhsdy3pr+Vuj/HZ7nlMN2FyxIwUktOH1LEPIQXO1v9y1Q==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-linux-arm-gnueabihf",
+      "name": "@rolldown/binding-linux-arm-gnueabihf",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-tHdKWbFkFBI687iim3LIyIvyL7j66VvQYkDPss5Stn/qyE2tWkR1YD0dXmXPFKKqT/o5ZEJVsaRsWS2meQwGOA==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-linux-arm64-gnu",
+      "name": "@rolldown/binding-linux-arm64-gnu",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-FJiLGAblPBMlBEdbOqw6kW6QcXDWAf/oJu7gYs9ZJZwmg+K+/zjFLxPTIY9izJUzxzc24FHvmseyA0IvJSl17w==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-linux-arm64-musl",
+      "name": "@rolldown/binding-linux-arm64-musl",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-hrJpblMsrQ58U9veWpbXzkhV5zStunds6HWLprqq1qauvgBr1E6P+24kLj6lSLI9vjRn/RYpjprhkHQPKGWpNg==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-linux-ppc64-gnu",
+      "name": "@rolldown/binding-linux-ppc64-gnu",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-qJd/dC6j6CwLG9/s/RP2nb1RZ0GIgj7Ioj7x/SYa3RzjVrlzrmH0fhIOpfvqQDeIsdP0loi+kHaMhJzY1PBIaA==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-linux-s390x-gnu",
+      "name": "@rolldown/binding-linux-s390x-gnu",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-Vx7Xg5uUJuNcujJjI70OICaH0EYj80BtOLZTSN7uOYg8QOLlyKnaG0IW7Fn/J0IpJsaKzmDKMhOQv1JBM9m9vg==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-linux-x64-gnu",
+      "name": "@rolldown/binding-linux-x64-gnu",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-TNKhgE3uJTsTzatUSSYt0Kgo+Oa2uSlSjz4r1aEIea7HX6ULBym4fAlYUhG1i6pjNf2njfCUAfKwr6C3E9Xg1w==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-linux-x64-musl",
+      "name": "@rolldown/binding-linux-x64-musl",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-7chXdpjXZ8qG0+mIxECN3cT9kvhZ3/oZhMX6Pp876P7CDrIy8nJswva6Mq357JR7eYXfuskwZxMeV1SzoZdHrA==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-openharmony-arm64",
+      "name": "@rolldown/binding-openharmony-arm64",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-Kwjt+7uNTJK5/MDkGWGVO2KQPnj8yAV75dMpfwyHZrJSXWHrniOB0aUEWlVYf3H1hOqFLIStLdM5QXq6bnKmOQ==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-win32-arm64-msvc",
+      "name": "@rolldown/binding-win32-arm64-msvc",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-/LH6WfjDRXXJz/p5xl4TmU+jpcnwcxbKEQBW/GZE0JHfN0lGIyTtsUEGaQ/q/GikkGJ2yLKe6pwm7AnEWO8pdw==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/binding-win32-x64-msvc",
+      "name": "@rolldown/binding-win32-x64-msvc",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-1lv1KvX0Z871zfk7vw+dnXMMnHNyDwMzWG8Kv3HxDXMOhzCX4SHc7HK319fInP0i+0p9D8brkfzL7pJOaGl+tw==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/@rolldown/pluginutils",
+      "name": "@rolldown/pluginutils",
+      "version": "1.0.1",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/detect-libc",
+      "name": "detect-libc",
+      "version": "2.1.2",
+      "licenseFromLockfile": "Apache-2.0",
+      "integrity": "sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/draco3dgltf",
+      "name": "draco3dgltf",
+      "version": "1.5.9",
+      "licenseFromLockfile": "Apache-2.0",
+      "integrity": "sha512-nIRZumqUwjqVYAdtt8q0F3FZc5qo2rCPTBH2hHhfSvHSPVJazzaepEHFdAZv4wrQKk5CkaclWGHhpyJ4eUdcJQ==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/fdir",
+      "name": "fdir",
+      "version": "6.5.0",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/fsevents",
+      "name": "fsevents",
+      "version": "2.3.3",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/ktx-parse",
+      "name": "ktx-parse",
+      "version": "1.1.0",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-mKp3y+FaYgR7mXWAbyyzpa/r1zDWeaunH+INJO4fou3hb45XuNSwar+7llrRyvpMWafxSIi99RNFJ05MHedaJQ==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss",
+      "name": "lightningcss",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss-android-arm64",
+      "name": "lightningcss-android-arm64",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-gEpRTalKdosp4Bb8qWtc2iOgE5SeIHlpS1up9bFq2wAyYhl1UdTObYiHe98zEM9SQvSoqQZ1IQD0JNpg3Ml5pg==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss-darwin-arm64",
+      "name": "lightningcss-darwin-arm64",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-Sciaz8eenNTKn9b3t7+xr0ipTp9YxKQY4npwQ3mrRuL0BAVHBLyZxofhaKBAVtzmtRZ/zTyo0/to4B1uWG/Djg==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss-darwin-x64",
+      "name": "lightningcss-darwin-x64",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-Z5UPAxzrjlWNNyGy6i65cJzzvgJ5D3T6wMvs+gWpY9d7qRhANrxqAp6LhxIgZhWEw18RfJTGcRxjuLIBr+m8XQ==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss-freebsd-x64",
+      "name": "lightningcss-freebsd-x64",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-QQM/Ti/hQajJwCY+RiWuCZ9sdtI/XQk7nDK5vC8kkdwixezOlDgvDx7+RT+QjK6FcFT4MpsuoBnHIo/O3StRRg==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss-linux-arm-gnueabihf",
+      "name": "lightningcss-linux-arm-gnueabihf",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-N7FVBe6iS24MlM6R/4RBTxGhQheZGs7tiQ9U32UtF75NzP5Q7xWPRqLBCKxlRQRk3rY1jCIPLzx7WzOhuUIRLQ==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss-linux-arm64-gnu",
+      "name": "lightningcss-linux-arm64-gnu",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-j2v/itmy4HlNxlc6voKXYgBqNi0Ng2LShg4z7GufpEgs05P+2suBVyi9I6YHq5uoVFx9ETin3eCEhLVyXGQnKg==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss-linux-arm64-musl",
+      "name": "lightningcss-linux-arm64-musl",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-yiO5ROMuYQgXbC60yjZU5CYSFZGKXL0HFATXt9mHJn1+zW55oCtMI9NfcVhYLMFDL7gV7oBPon/EmMMGg2OvtQ==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss-linux-x64-gnu",
+      "name": "lightningcss-linux-x64-gnu",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-ar+Ju7LmcN0Jo4FpL4hpFybwNG9/3A/Br5KW2n2jyODg3MEZXaDYADdemoNS+BDNfMgKvylJLj4S5tyRActuAg==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss-linux-x64-musl",
+      "name": "lightningcss-linux-x64-musl",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-RYiYbkokw0trfKqqzfF55lginwEPrD3OJDfTuJzFs1MK6iFnDenaz1fqLLtX4ITG3OktJQXOeTaw1awrBAlZPw==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss-win32-arm64-msvc",
+      "name": "lightningcss-win32-arm64-msvc",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-1K+MPfLSFVpphzpdbfkhlWk6wBrTObBzS2T6db10PNOZgR9GoVsAWzwNyuhUYYbTp23j+4RrncfujZ4uAzXvwA==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/lightningcss-win32-x64-msvc",
+      "name": "lightningcss-win32-x64-msvc",
+      "version": "1.33.0",
+      "licenseFromLockfile": "MPL-2.0",
+      "integrity": "sha512-OlEICDx/Xl0FqSp4bry8zFnCvGpig3Gl4gCquvYwHuqJKEC1+n9NgDniFvqHGmMv1ZkqDJrDqKKSykTDX+ehuA==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/nanoid",
+      "name": "nanoid",
+      "version": "3.3.20",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/picocolors",
+      "name": "picocolors",
+      "version": "1.1.1",
+      "licenseFromLockfile": "ISC",
+      "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/picomatch",
+      "name": "picomatch",
+      "version": "4.0.7",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/postcss",
+      "name": "postcss",
+      "version": "8.5.32",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-LJlKCCAUFKOuZxipUdYw1NzIITEsPcgyOG9LkvRJvuKj/bRzbuRY0ARXvL0pWGpsZvn8jku+LMep2eU0seHp8g==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/property-graph",
+      "name": "property-graph",
+      "version": "4.1.0",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-AvPcP7XECNWy4LGmFQ77k7un4lSKM4eS29PTvW4ck95uYeLxXPWJM7hLuBqK91FaHqCcgJvIUCuNJjjxKE7VKQ==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/rolldown",
+      "name": "rolldown",
+      "version": "1.2.16",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-bWvlMpFKiTfDKfnK7FC2MPgPeWCf/Kpwsq49ApdW+FQaBZb6O6dZ4MAPbPUjp7hYQrw/RobqCzn64BRrQecGHw==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/source-map-js",
+      "name": "source-map-js",
+      "version": "1.2.2",
+      "licenseFromLockfile": "BSD-3-Clause",
+      "integrity": "sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/three",
+      "name": "three",
+      "version": "0.185.1",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-5aojFCXKwnjBRZvUnt3WFfEcvUJgkN5LlijRFN95hMy8WVkG4I0QNcJE+OuWvuJ0bOdStrbfXn0pkd6/QyiAlg==",
+      "dev": false,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/three-mesh-bvh",
+      "name": "three-mesh-bvh",
+      "version": "0.9.18",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-S76hOBnsSG4jsuEyCu98K63klONG4NwJANabPY1LUD5l7oUgu2xtKC0IwnX/XyPzo4YZ1D7ZU+gHVA479UdQmA==",
+      "dev": false,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/tinyglobby",
+      "name": "tinyglobby",
+      "version": "0.2.17",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    },
+    {
+      "location": "node_modules/vite",
+      "name": "vite",
+      "version": "8.3.6",
+      "licenseFromLockfile": "MIT",
+      "integrity": "sha512-UI7dK29NnS54Fk+mmo7o+jI6U8Fp7hDl+X5Q1k45WH+d4dSlbLVUETGQ+hfkNgvLQGyoElPj837nZyv4MBc0VA==",
+      "dev": true,
+      "rightsStatus": "metadata-only-review-required"
+    }
+  ],
+  "commercialRelease": "blocked-pending-evidence"
+}

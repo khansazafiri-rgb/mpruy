@@ -38,6 +38,7 @@ test('pilot source has no imports or runtime fetches from noncommercial Atlas Vi
     '../src/independent-atlas/main.js',
     '../src/independent-atlas/catalog.js',
     '../src/independent-atlas/styles.css',
+    '../src/independent-atlas/viewState.js',
     '../atlas-preview/index.html',
   ];
   for (const file of files) {

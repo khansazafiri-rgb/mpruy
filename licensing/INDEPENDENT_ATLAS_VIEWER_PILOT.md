@@ -33,15 +33,30 @@ This is an automated screen for **large literal copied blocks only**, not a lega
 
 For a commercial-release decision, a qualified reviewer still needs to compare relevant code expression, commit histories and contributor rights with the pinned upstream repository and any other original sources.
 
+## Development update on the local pilot
+
+The pilot now supports simultaneous system visibility, selective hide/isolate, undo/restore,
+global transparency, fade others, region filtering and front/back/side/top camera presets.
+Disabled systems unload their geometry and materials to limit GPU memory on 8 GB machines.
+The original select menu still offers a single-system focus for the existing beginner flow.
+See the machine-readable [`atlas-feature-parity.json`](atlas-feature-parity.json) for
+feature-by-feature gaps. The candidate is **still not a replacement for the mature viewer**:
+educational descriptions, system layer stepping, URL sharing, study integration and Safari
+visual QA remain incomplete.
+
+The opt-in local candidate has an exact-byte and npm lockfile inventory in
+[`4d-lab-pilot-local-inventory.json`](4d-lab-pilot-local-inventory.json). The inventory records
+unresolved rights, including copied model data; it is not a distribution approval.
+
 ## Gap analysis: pilot vs full Anatomy Viewer
 
 | Requirement | This PR | Further work |
 | --- | --- | --- |
 | 3D scene, orbit and zoom | Basic working implementation | Accessibility and Safari review |
-| Six atlas model groups | On-demand, one loaded at a time | Memory profiling, region presets |
+| Six atlas model groups | On-demand, multiple groups; unload disabled groups | Memory profiling on Safari |
 | Structure search/pick | Basic catalog search, click and highlight | Translation, deep context and clinical review |
-| Isolate/restore | Basic | Hide/unhide, depth/layer controls and undo |
-| Body region handling | Not yet implemented | Head/neck/limbs camera/region presets |
+| Isolate/restore | Isolate, hide, restore, undo, opacity and fade others | Layer stepping, per-structure opacity, Safari interaction review |
+| Body region handling | Catalog-based filter | Anatomically validated region framing and educational context |
 | Teaching integration | Separate local review entrypoint | Curriculum links, learning states, study mode |
 | Offline/recovery | Loading error text | Robust cache strategy, downloads, retries |
 | Commercial source rights | **Not verified** | Code audit, model-level provenance, copyright review |
