@@ -35,7 +35,7 @@ export function frameSummary({ D, comparison }) {
 }
 
 export function buildAtlasPanel(box, ctx) {
-  const { el, atlas, atlasState, S, D, DISPLAY_MODES, selected, actions, landmarkPilot, landmarkPilotState = 'idle' } = ctx;
+  const { el, atlas, atlasState, S, D, DISPLAY_MODES, selected, actions } = ctx;
   const isAtlas = D?.anatomy?.dataset === 'atlas';
   const query = S.atlasQuery || '';
   box.innerHTML = '';
@@ -93,35 +93,6 @@ export function buildAtlasPanel(box, ctx) {
       box.append(el('div', { class: 'readout', 'data-testid': 'structure-info', 'aria-live': 'polite' }, sel
         ? [el('div', { class: 'ro-strong' }, sel.name), el('div', {}, `Sistem: ${ATLAS_GROUPS[sel.group]?.label || sel.group} · file ${sel.system}.glb`), el('div', {}, sel.animated ? 'Bergerak secara prosedural (bukan gerak terukur pasien)' : 'Statis (geometri atlas)'), el('div', {}, sel.hiddenByUser ? 'Disembunyikan' : 'Terlihat')]
         : 'Pilih struktur dari daftar atau aktifkan "Pilih di 3D" lalu klik organ.'));
-      if (atlas.loaded.has('skeletal')) {
-        const isHumerus = selected === 'Humerus.r';
-        box.append(el('section', { class: 'learn-card', 'data-testid': 'skeletal-landmark-audit' },
-          el('h4', {}, 'Landmark tulang · pilot humerus kanan'),
-          el('p', { class: 'hint' },
-            'Atlas memiliki model Humerus.r, tetapi nama tuberkulum, tuberositas, dan sulkus bukan objek terpisah. Lokasinya harus dipetakan dan diverifikasi pada permukaan mesh sebelum boleh muncul sebagai pin 3D.'),
-          selected && sel?.system === 'skeletal' && !isHumerus
-            ? el('p', { class: 'meta', 'data-testid': 'skeletal-other-bone' },
-              `Untuk ${selected}, belum ada paket landmark yang dapat ditinjau. Pilot yang ada: Humerus.r.`)
-            : null,
-          el('button', { type: 'button', class: 'btn', 'data-testid': 'skeletal-landmark-open',
-            onclick: actions.inspectSkeletalPilot }, isHumerus ? 'Lihat audit enam landmark' : 'Pilih humerus kanan & audit landmark'),
-          isHumerus && landmarkPilotState === 'loading'
-            ? el('p', { class: 'meta', 'data-testid': 'skeletal-landmark-loading' }, 'Memuat registri anotasi…') : null,
-          isHumerus && landmarkPilotState === 'error'
-            ? el('p', { class: 'hint warn', 'data-testid': 'skeletal-landmark-error' }, 'Audit anotasi tidak dapat dimuat. Coba lagi; koordinat tidak akan ditebak.') : null,
-          isHumerus && landmarkPilotState === 'ready' && landmarkPilot
-            ? el('div', { class: 'landmark-audit-results', 'data-testid': 'skeletal-landmark-results' },
-              el('p', { class: 'review-status', 'data-testid': 'skeletal-landmark-status' },
-                `${landmarkPilot.mapped}/${landmarkPilot.total} landmark memiliki status pemetaan · 0 pin 3D tervalidasi`),
-              el('p', { class: 'hint warn' }, `${landmarkPilot.sourceStatus}. Anotasi belum diverifikasi untuk mesh yang sekarang; posisi landmark tidak ditampilkan.`),
-              el('ol', { class: 'skeletal-landmark-list' },
-                ...landmarkPilot.landmarks.map((l) => el('li', {},
-                  el('strong', {}, l.name),
-                  el('span', { class: 'meta' }, `${l.latin} · ${l.status === 'NOT_MAPPED' ? 'belum dipetakan' : 'perlu validasi ulang'}`)))),
-              el('p', { class: 'meta' }, 'Gunakan tombol Isolasi di atas untuk memeriksa model humerus. Penandaan permukaan baru dapat dipublikasikan setelah remapping, peninjauan anatomi, dan validasi terhadap mesh cleared.'))
-            : null
-        ));
-      }
       box.append(el('details', { class: 'limits' }, el('summary', {}, 'Kinerja lapisan atlas'), el('div', { class: 'meta', 'data-testid': 'atlas-perf' },
         `Dimuat: ${[...atlas.loaded].map((s) => `${s} ${atlas.stats.loadMs[s] ?? '?'} ms`).join(' · ')} · ${atlas.stats.vertices.toLocaleString('id-ID')} verteks · ${atlas.stats.dropped} mesh di luar fokus dibuang setelah dekode · verteks bergerak ${atlas.animatedVertexCount().toLocaleString('id-ID')}`)));
     }
