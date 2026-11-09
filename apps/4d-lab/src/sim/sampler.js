@@ -2,11 +2,14 @@
 // Inputs are CURRENT-space LPS points; lookups happen in REFERENCE anatomy space.
 import { makeWarp } from './physiology.js';
 import { labelToTissueMap, classifyHU, TISSUE_INDEX } from './tissues.js';
+import { LAYER_LABELS } from './pathology.js';
 
 export function createSampler({ ct, labels = null, anatomy = null }) {
   const tissueMap = labels && anatomy ? labelToTissueMap(anatomy) : null;
   const huOf = new Float32Array(256).fill(NaN);
   if (anatomy) for (const l of anatomy.labels) huOf[l.id] = l.hu;
+  // model pathology layers (pericardial / free fluid) behave as simple fluid
+  for (const [id, l] of Object.entries(LAYER_LABELS)) { if (huOf[id] !== huOf[id]) huOf[id] = l.hu; if (tissueMap) tissueMap[id] = TISSUE_INDEX.fluid; }
   let warp = null, effusion = null;
   const q = [0, 0, 0];
 
@@ -17,7 +20,7 @@ export function createSampler({ ct, labels = null, anatomy = null }) {
   function labelRef(x, y, z) {
     if (!labels) return -1;
     let lab = labels.nearest(x, y, z);
-    if (effusion && lab === 7) { const o = effusion.classify(x, y, z, lab); if (o) lab = o; }
+    if (effusion && effusion.from.has(lab)) { const o = effusion.classify(x, y, z, lab); if (o) lab = o; }
     return lab;
   }
   return {
@@ -32,7 +35,7 @@ export function createSampler({ ct, labels = null, anatomy = null }) {
       const v = ct.sample(q[0], q[1], q[2]);
       if (effusion && v === v) {
         const lab = labels.nearest(q[0], q[1], q[2]);
-        if (lab === 7) { const o = effusion.classify(q[0], q[1], q[2], lab); if (o) return huOf[o]; }
+        if (effusion.from.has(lab)) { const o = effusion.classify(q[0], q[1], q[2], lab); if (o) return huOf[o]; }
       }
       return v;
     },
@@ -48,7 +51,7 @@ export function createSampler({ ct, labels = null, anatomy = null }) {
       toRef(x, y, z, q);
       const lab = labelRef(q[0], q[1], q[2]);
       let v = ct.sample(q[0], q[1], q[2]);
-      if (v === v && (lab === 39 || lab === 41)) v = huOf[lab]; // same pathology override as ct()
+      if (v === v && effusion && lab !== labels.nearest(q[0], q[1], q[2])) v = huOf[lab]; // same pathology override as ct()
       out[0] = v; out[1] = lab; return out;
     },
     /** Label at a CURRENT-space point. */

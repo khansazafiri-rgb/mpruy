@@ -19,7 +19,7 @@ import { CREDITS } from '../src/edu/credits.js';
 import { SITE_GUIDE } from '../src/edu/auscultationGuide.js';
 import { CASES } from '../src/edu/pathologyCases.js';
 import { createSampler } from '../src/sim/sampler.js';
-import { buildEffusion } from '../src/sim/pathology.js';
+import { buildEffusion, buildLayer, SCENARIOS } from '../src/sim/pathology.js';
 import { crackleTrain, wheezeTone } from '../src/sim/auscultation.js';
 
 const A = await loadAtlasDataset();
@@ -67,10 +67,32 @@ test('clinical probe: superior/inferior/left/right slide on the skin in the righ
     assert.ok(A.labels.nearest(...S.contact.point.map((v, k) => v - S.contact.normal[k] * 3)) > 0, 'contact stays on the body surface');
     assert.deepEqual(S.angles, a0);
   }
-  // depth in clinical mode never pushes the probe through the body
-  const S = state(), c0 = structuredClone(S.contact);
-  const r = translate(S, 'depth', 30, env);
-  assert.equal(r.ok, false); assert.deepEqual(S.contact, c0);
+  // anterior/posterior in clinical mode WALKS AROUND the body surface (never through it), at the same height
+  const S = state(), z0 = S.contact.point[2];
+  for (let i = 0; i < 20; i++) translate(S, 'depth', -25, env); // posterior
+  assert.ok(S.contact.normal[1] > 0.9, 'reached the back: normal ' + S.contact.normal.map((v) => v.toFixed(2)));
+  assert.ok(Math.abs(S.contact.point[2] - z0) < 15, 'height kept within 15 mm: ' + (S.contact.point[2] - z0).toFixed(1));
+  assert.ok(A.labels.nearest(...S.contact.point.map((v, k) => v - S.contact.normal[k] * 3)) > 0, 'still on the body surface');
+  const r = translate(S, 'depth', -25, env); assert.match(r.error || '', /belakang/, 'already posterior: explained, not silent');
+  for (let i = 0; i < 20; i++) translate(S, 'depth', 25, env); // back to the front
+  assert.ok(S.contact.normal[1] < -0.9, 'back on the anterior surface');
+});
+
+test('pathology layers: pericardial, perihepatic and bladder fluid are visible in their suggested windows and change nothing else', async () => {
+  const { buildLayer, SCENARIOS } = await import('../src/sim/pathology.js');
+  for (const [k, view, probe, label] of [['pericardial', 'subxiphoid', 'phased', 44], ['ascites', 'ruq', 'convex', 45], ['retention', 'bladder', 'convex', 30]]) {
+    const L = buildLayer(A.labels, SCENARIOS[k].layer), s = createSampler({ ct: A.ct, labels: A.labels, anatomy: A.anatomy }); s.setEffusion(L);
+    assert.ok(L.volumeMl > 50, `${k}: volume ${L.volumeMl} mL`);
+    const v = A.anatomy.views.find((x) => x.key === view), pl = imagingPlane(clinicalPose(v.contact, v.angles), PROBES[probe], PROBES[probe].defaultDepth);
+    const r = labelRaster((x, y, z) => s.label(x, y, z), pl, 200, 200), n = r.filter((l) => l === label).length;
+    const r0 = labelRaster((x, y, z) => createSampler({ ct: A.ct, labels: A.labels, anatomy: A.anatomy }).label(x, y, z), pl, 200, 200), n0 = r0.filter((l) => l === label).length;
+    assert.ok(n > n0 + 300, `${k}: label ${label} pixels ${n0} -> ${n}`);
+    // only allowed tissue is replaced (bone, heart chambers, liver never become fluid)
+    for (let i = 0; i < r.length; i++) if (r[i] !== r0[i]) assert.ok(L.from.has(r0[i]), `${k}: replaced label ${r0[i]}`);
+    // CT pixel follows the label: fluid HU
+    const p = pixelToLPS(pl, 200, 200, r.findIndex((l, i) => l === label && r0[i] !== label) % 200 + 0.5, Math.floor(r.findIndex((l, i) => l === label && r0[i] !== label) / 200) + 0.5);
+    assert.ok(Math.abs(s.ct(...p) - (label === 30 ? A.anatomy.labels.find((l) => l.id === 30).hu : 8 + (label === 45 ? 2 : 0))) < 1e-6, `${k}: fluid HU`);
+  }
 });
 
 test('clinical anterior/posterior/left/right is an explicit body-side selection on the skin at the same height', () => {
@@ -177,6 +199,7 @@ test('procedural phantom keeps its own (original) kidney: availability is per da
 function snapshotFor(setup, ds = A) {
   const sampler = createSampler({ ct: ds.ct, labels: ds.labels, anatomy: ds.anatomy });
   if (setup.scenario === 'effusion') sampler.setEffusion(buildEffusion(ds.labels, 650, {}));
+  else if (SCENARIOS[setup.scenario]?.layer) sampler.setEffusion(buildLayer(ds.labels, SCENARIOS[setup.scenario].layer));
   const G = buildGroups(ds.anatomy.labels);
   let plane, probe = null;
   if (setup.view) {

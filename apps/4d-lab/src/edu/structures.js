@@ -144,6 +144,8 @@ export const STRUCTURES = {
   gland: { labels: [42], nameId: 'Jaringan kelenjar (tiroid, adrenal, prostat)', nameEn: 'Glandular tissue', ta: '—', system: 'endocrine', color: '#c7aa79', kind: 'group', atlas: [], card: { jebakan: 'Satu label mencakup beberapa kelenjar berbeda.', refs: ['G1'] } },
   pleural_fluid: { labels: [39], nameId: 'Cairan pleura (lapisan patologi)', nameEn: 'Pleural fluid', ta: 'Liquor pleurae (patologis)', system: 'pathology', color: '#4aa3ff', kind: 'pathology', atlas: [], card: { lokasi: 'Bagian dependen rongga pleura kanan (posterior-basal pada pasien terlentang) — dimodelkan.', ct: 'Densitas cairan.', usg: 'Ruang anekoik di atas diafragma dengan paru kolaps — DIMODELKAN; artefak cermin tidak dimodelkan.', refs: ['R5', 'R6'] } },
   atelectasis: { labels: [41], nameId: 'Paru kolaps (lapisan patologi)', nameEn: 'Compressive atelectasis', ta: 'Atelectasis', system: 'pathology', color: '#c86478', kind: 'pathology', atlas: [], card: { usg: 'Paru tanpa udara tampak seperti jaringan padat yang mengapung dalam efusi.', refs: ['R6'] } },
+  pericardial_fluid: { labels: [44], nameId: 'Cairan perikardial (lapisan patologi)', nameEn: 'Pericardial effusion', ta: 'Liquor pericardii (patologis)', system: 'pathology', color: '#38bdf8', kind: 'pathology', atlas: [], card: { lokasi: 'Ruang perikardial di sekeliling jantung — lapisan model setebal ±9 mm.', usg: 'Pita anekoik di antara perikardium dan miokardium, paling jelas dari subxifoid — DIMODELKAN. Kolaps ruang jantung (tamponade) TIDAK dimodelkan.', ct: 'Cincin berdensitas cairan di sekitar jantung.', refs: ['R11'] } },
+  free_fluid: { labels: [45], nameId: 'Cairan bebas peritoneal (lapisan patologi)', nameEn: 'Free intraperitoneal fluid', ta: 'Ascites', system: 'pathology', color: '#22d3ee', kind: 'pathology', atlas: [], card: { lokasi: 'Di sepanjang permukaan inferior-posterior hati (abdomen atas dependen) — lapisan model ±10 mm.', usg: 'Garis anekoik yang membingkai tepi hati — DIMODELKAN. Septa/debris tidak dimodelkan.', ct: 'Cairan berdensitas air di sekitar hati.', jebakan: 'Ginjal tidak tersedia di dataset atlas, sehingga resesus hepatorenal (Morison) sendiri tidak dapat ditampilkan.', refs: ['R12'] } },
 };
 
 function LUNG_CARD(side, lobes) {
@@ -175,15 +177,21 @@ export const UNIDENTIFIED = {
   32: 'Otak', 33: 'Cairan serebrospinal', 34: 'Bola mata',
 };
 
+export const PALETTE = ['#ff6b6b', '#ffd43b', '#51cf66', '#4dabf7', '#da77f2', '#ff922b', '#20c997', '#f783ac', '#a9e34b', '#91a7ff', '#e599f7', '#ffa94d', '#66d9e8', '#fcc419'];
+/** Fixed order of systems in the structure list (stable while anatomy moves). */
+export const SYSTEM_ORDER = ['cardiovascular', 'respiratory', 'digestive', 'urinary', 'lymphatic', 'endocrine', 'musculoskeletal', 'nervous', 'integument', 'pathology'];
 /** Group lookup for a dataset: label id -> group index (1-based), plus the ordered group keys. */
 export function buildGroups(anatomyLabels) {
   // Labels flagged `available: false` (licence quarantine: kidney, renal pelvis, spinal cord in the atlas dataset)
   // have no voxels and are never offered as identifiable structures.
   const present = new Set((anatomyLabels || []).filter((l) => l.available !== false).map((l) => l.id));
+  if (present.size) for (const id of [44, 45]) present.add(id); // MEDCOEL model pathology layers (sim/pathology.js LAYER_LABELS)
   const keys = Object.keys(STRUCTURES).filter((k) => STRUCTURES[k].labels.some((id) => present.has(id)));
   const lut = new Uint8Array(256);
   keys.forEach((k, i) => { for (const id of STRUCTURES[k].labels) if (present.has(id)) lut[id] = i + 1; });
-  return { keys, lut, byIndex: (g) => (g > 0 ? STRUCTURES[keys[g - 1]] : null), keyOf: (g) => (g > 0 ? keys[g - 1] : null), indexOf: (k) => keys.indexOf(k) + 1 };
+  // display colours: a curated high-contrast palette (distinct on the dark monitor), pathology layers keep their own
+  const colour = keys.map((k, i) => (STRUCTURES[k].kind === 'pathology' ? STRUCTURES[k].color : PALETTE[i % PALETTE.length]));
+  return { keys, lut, colorOf: (g) => (g > 0 ? colour[g - 1] : '#ffffff'), byIndex: (g) => (g > 0 ? STRUCTURES[keys[g - 1]] : null), keyOf: (g) => (g > 0 ? keys[g - 1] : null), indexOf: (k) => keys.indexOf(k) + 1 };
 }
 
 /** Where a label came from, for the hover tooltip ("provenance"). */

@@ -7,7 +7,7 @@ import { PROBES } from '../core/probe.js';
 import { createSampler } from '../sim/sampler.js';
 import { simulateUltrasound, scanConvert } from '../sim/ultrasound.js';
 import { prepareGeometry, makeFrame } from '../sim/physiology.js';
-import { buildEffusion } from '../sim/pathology.js';
+import { buildEffusion, buildLayer } from '../sim/pathology.js';
 import { TISSUES } from '../sim/tissues.js';
 import { labelRaster } from '../core/labels.js';
 
@@ -27,12 +27,16 @@ async function load({ ctBuffer, labelBuffer, anatomy: an }) {
 
 function render(req) {
   const t0 = performance.now();
-  const { plane, settings, clock, params, effusionMl, display, sizes, quality, wantLabels, tri } = req;
+  const { plane, settings, clock, params, effusionMl, layer, display, sizes, quality, wantLabels, tri } = req;
   if (geom && params) sampler.setFrame(makeFrame(clock, params, geom)); else sampler.setFrame(null);
   let eff = null;
   if (labels && effusionMl > 0) {
     if (!effusionCache.has(effusionMl)) effusionCache.set(effusionMl, buildEffusion(labels, effusionMl, { diaphragm: geom?.diaphragm }));
     eff = effusionCache.get(effusionMl);
+  } else if (labels && layer) { // model fluid layers of the structured cases (pericardial, perihepatic, bladder)
+    const key = layer.kind + ':' + layer.mm;
+    if (!effusionCache.has(key)) effusionCache.set(key, buildLayer(labels, layer));
+    eff = effusionCache.get(key);
   }
   sampler.setEffusion(eff);
   const out = { type: 'frame', id: req.id };

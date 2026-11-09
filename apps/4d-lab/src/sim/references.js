@@ -1,6 +1,9 @@
 // Bibliographic references used in the in-app explanations (also in MEDICAL_REFERENCES.md).
 // PMIDs were checked against PubMed on 2026-11-07 where listed.
 export const REFERENCES = {
+  R11: 'Adler Y, Charron P, Imazio M, et al. 2015 ESC Guidelines for the diagnosis and management of pericardial diseases. Eur Heart J. 2015;36(42):2921-2964. doi:10.1093/eurheartj/ehv318. PMID 26320112',
+  R12: 'Biggins SW, Angeli P, Garcia-Tsao G, et al. Diagnosis, Evaluation, and Management of Ascites, Spontaneous Bacterial Peritonitis and Hepatorenal Syndrome: 2021 Practice Guidance by the AASLD. Hepatology. 2021;74(2):1014-1048. doi:10.1002/hep.31884. PMID 33942342',
+  R13: 'Selius BA, Subedi R. Urinary retention in adults: diagnosis and initial management. Am Fam Physician. 2008;77(5):643-650. PMID 18350762',
   R1: 'McDonagh TA, Metra M, Adamo M, et al. 2021 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure. Eur Heart J. 2021;42(36):3599-3726. doi:10.1093/eurheartj/ehab368',
   R2: 'Heidenreich PA, Bozkurt B, Aguilar D, et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure. Circulation. 2022;145(18):e895-e1032. doi:10.1161/CIR.0000000000001063',
   R3: 'Lang RM, Badano LP, Mor-Avi V, et al. Recommendations for cardiac chamber quantification by echocardiography in adults: an update from the ASE and EACVI. J Am Soc Echocardiogr. 2015;28(1):1-39.e14. PMID 25559473',

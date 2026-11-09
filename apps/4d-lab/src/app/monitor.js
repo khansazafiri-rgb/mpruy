@@ -107,7 +107,7 @@ export class Monitor {
     const { x0, y0, s, dw, dh } = L;
     ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
     ctx.drawImage(this.layers[p.key], x0, y0, dw, dh);
-    this._drawOverlay(p.key, L);
+    this._drawOverlay(p.key, this.layouts[p.key]);
     if (m.tri && TRI[p.key]) this._drawCrosshair(p.key, L, plane);
     const mmPerPx = plane.height / im.h;
     ctx.strokeStyle = 'rgba(160,220,210,.85)'; ctx.fillStyle = 'rgba(160,220,210,.95)'; ctx.lineWidth = 1 * dpr;
@@ -167,10 +167,13 @@ export class Monitor {
     // one label at most (guided): the selected structure, at its centroid, with a backing pill
     if (o.level === 'guided' && o.selected > 0 && R.centroid) {
       const c = R.centroid(o.selected); if (!c) return;
+      // subtle label: translucent dark pill placed ABOVE the structure with a short leader line (never covers it)
       const p = imageToCanvas(L, c[0], c[1]), txt = o.label(o.selected);
-      ctx.save(); ctx.font = `600 ${11.5 * dpr}px system-ui`; const tw = ctx.measureText(txt).width;
-      ctx.fillStyle = 'rgba(8,18,23,.82)'; ctx.fillRect(p.x - tw / 2 - 6 * dpr, p.y - 10 * dpr, tw + 12 * dpr, 18 * dpr);
-      ctx.fillStyle = '#fff'; ctx.fillText(txt, p.x - tw / 2, p.y + 3 * dpr); ctx.restore();
+      ctx.save(); ctx.font = `600 ${11 * dpr}px system-ui`; const tw = ctx.measureText(txt).width;
+      const lx = p.x, ly = Math.max(L.panel.y + 14 * dpr, p.y - 34 * dpr);
+      ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.lineWidth = 1 * dpr; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(lx, ly + 8 * dpr); ctx.stroke();
+      ctx.fillStyle = 'rgba(10,22,28,.55)'; roundRect(ctx, lx - tw / 2 - 6 * dpr, ly - 8 * dpr, tw + 12 * dpr, 16 * dpr, 8 * dpr); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,.95)'; ctx.fillText(txt, lx - tw / 2, ly + 4 * dpr); ctx.restore();
     }
   }
   _drawCrosshair(key, L, plane) {
@@ -210,13 +213,14 @@ export class Monitor {
       if (!drag) { this.onHover?.(this.hitTest(e.clientX, e.clientY), e); return; }
       if (Math.hypot(e.clientX - drag.x, e.clientY - drag.y) > 4) drag.moved = true;
       if (!drag.moved) return;
-      c.style.cursor = 'grabbing'; this.view.panX = drag.px + e.clientX - drag.x; this.view.panY = drag.py + e.clientY - drag.y; this.draw();
+      c.style.cursor = 'move'; this.view.panX = drag.px + e.clientX - drag.x; this.view.panY = drag.py + e.clientY - drag.y; this.draw();
     });
     c.addEventListener('pointerup', (e) => { const wasPinch = !!pinch; lift(e); const d = drag; drag = null; c.style.cursor = ''; if (d && !d.moved && !wasPinch) this.onPick?.(this.hitTest(e.clientX, e.clientY), e); });
     c.addEventListener('pointerleave', () => { if (!drag) this.onHover?.(null); });
     c.addEventListener('dblclick', () => this.fit());
   }
 }
+function roundRect(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
 const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 
 /** Physiology strip: schematic ECG timing, PCG, respiration and antral activity over the last `span` seconds. */

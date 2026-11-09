@@ -49,16 +49,13 @@
     <div id="loadStatus" class="load-status" role="status" data-testid="load-status">Memulai…</div>
   </aside>
   <section class="viewport-panel" aria-label="Pasien virtual">
-    <div class="modebar-row"><div id="modeBar" class="modebar" role="toolbar" aria-label="Pilih yang ingin digerakkan" data-testid="mode-bar"></div>
-      <button type="button" id="helpBtn" class="help-btn" data-testid="help-btn" aria-expanded="false" aria-controls="helpPop" title="Cara menggerakkan">?</button></div>
     <div id="helpPop" class="help-pop" data-testid="help-pop" hidden>
       <b>Cara menggerakkan</b>
-      <ol><li>Pilih APA yang ingin diubah: ↕ Superior–Inferior, ↔ Kanan–Kiri, ⇅ Anterior–Posterior, ⟳ Putar, atau 🎥 Kamera.</li>
-      <li>Lakukan satu gerakan: seret di area 3D, scroll, tombol − / +, atau panah keyboard. Hanya besaran itu yang berubah.</li>
-      <li>Arah selalu arah tubuh pasien (panah berwarna di 3D), bukan arah layar.</li></ol>
-      <small>Pintasan: P · 1 · 2 · 3 · 4 · C · ←/→ atau −/+ · Shift = halus · Esc = Tempatkan</small>
+      <ol><li><b>Probe:</b> klik kulit untuk menempatkan, seret probe untuk menggeser, atau pakai tombol arah (tahan untuk terus bergerak).</li>
+      <li><b>Kamera:</b> seret area kosong untuk memutar, Shift/klik kanan untuk menggeser, scroll untuk zoom. Kamera tidak pernah mengubah citra.</li>
+      <li><b>Arah</b> selalu arah tubuh pasien (Kanan/Kiri PASIEN), bukan arah layar. Arahkan kursor ke tombol arah untuk melihat panahnya di 3D.</li></ol>
+      <small>Keyboard: ↑ ↓ superior/inferior · ← → kanan/kiri pasien · PgUp/PgDn anterior/posterior · Q/E putar · Shift = halus</small>
     </div>
-    <div id="ctxBar" class="ctxbar" data-testid="ctx-bar" aria-live="polite"></div>
     <div class="viewport-wrap">
       <div id="viewport" class="viewport"></div>
       <details class="view-menu" data-testid="view-menu"><summary>Tampilan 3D ▾</summary><div class="view-toolbar" role="toolbar" aria-label="Kamera dan tampilan">
@@ -89,7 +86,8 @@
         </details>
       </div></details>
       <div class="viewport-badge atlas-only" data-testid="viewport-badge">Anatomi: Atlas MEDCOEL · kulit ilustratif · CT sintetis dari atlas</div>
-      <div class="view-hint" id="viewHint">Kamera tidak pernah mengubah citra.</div>
+      <div id="probePad" class="probe-pad" data-testid="probe-pad" role="group" aria-label="Kontrol arah"></div>
+      <button type="button" id="helpBtn" class="help-btn" data-testid="help-btn" aria-expanded="false" aria-controls="helpPop" title="Cara menggerakkan">?</button>
     </div>
   </section>
   <div id="divider" class="divider" role="separator" tabindex="0" aria-label="Ubah lebar monitor (panah kiri/kanan)"></div>
