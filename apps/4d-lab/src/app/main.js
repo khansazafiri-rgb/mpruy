@@ -15,6 +15,7 @@ import { Monitor, drawStrip } from './monitor.js';
 import { AudioEngine } from './audio.js';
 import { voxelSurface } from './blobMesh.js';
 import { AtlasLayer, ATLAS_GROUPS } from './atlasLayer.js';
+import { loadSkeletalPilot } from './skeletalLandmarks.js';
 import { buildAtlasPanel, frameSummary } from './atlasPanel.js';
 import { axisColor } from './controlBar.js';
 import { buildPad, PAD_DIRS } from './probePad.js';
@@ -82,6 +83,7 @@ let D = null; // loaded data
 let scene = null, monitor = null, worker = null, geom = null, atlas = null, atlasState = 'none', inEnvelope = null;
 let lastAtlasDeform = 0, atlasDeformMs = 0, atlasMoving = 0, atlasDeformClockT = -1, selected = null;
 let effusion = null, assist = null, learn = null;
+let landmarkPilot = null, landmarkPilotState = 'idle';
 let dirty = true, interacting = false, lastInteraction = 0, workerBusy = false, pending = false, lastFrameInfo = null, frameCount = 0;
 let lastDeform = 0, motionShown = null;
 const stats = { usMs: 0, deformMs: 0, fps: 0 };
@@ -918,12 +920,33 @@ async function loadComparison() { // atlas-vs-phantom residuals are measured by 
   renderAtlasPanel(); return comparison;
 }
 function setTool(val) { S.tool = val; scene.siteMarkers.visible = val === 'stethoscope' && (S.ws === 'ausc' || S.ws === 'learn'); if (val !== 'inspect') { selected = selected || null; } refreshAll(); renderAtlasPanel(); touch(); }
+/** Select the real humerus mesh, then load the read-only landmark status from the Atlas.
+ * No surface marker is created: the existing six annotations are not mapped to the
+ * currently cleared skeletal mesh. The CT/probe and camera remain untouched.
+ */
+async function inspectSkeletalPilot() {
+  if (!atlas?.structures.has('Humerus.r') || D?.anatomy?.dataset !== 'atlas') return;
+  selected = 'Humerus.r'; S.atlasQuery = selected; atlas.highlight(selected);
+  if (organsHidden()) setDisplayMode('internal');
+  renderAtlasPanel();
+  if (landmarkPilotState === 'ready' || landmarkPilotState === 'loading') return;
+  landmarkPilotState = 'loading'; renderAtlasPanel();
+  try {
+    landmarkPilot = await loadSkeletalPilot(ATLAS_BASE);
+    landmarkPilotState = 'ready';
+  } catch (error) {
+    landmarkPilot = null; landmarkPilotState = 'error';
+    status('Audit landmark belum dapat dimuat: ' + (error?.message || 'unknown'), 'warn');
+  }
+  renderAtlasPanel();
+}
+
 function renderAtlasPanel() {
   const box = $('#tab-anatomy'); if (!box || !scene) return;
   buildAtlasPanel(box, {
-    el, atlas, atlasState, S, D, DISPLAY_MODES, selected, comparison, framesOpen,
+    el, atlas, atlasState, S, D, DISPLAY_MODES, selected, comparison, framesOpen, landmarkPilot, landmarkPilotState,
     actions: {
-      setDisplayMode, setTool,
+      setDisplayMode, setTool, inspectSkeletalPilot,
       loadSystem: (sys) => loadAtlasSystem(sys),
       setGroup: (g, o) => { atlas.setGroup(g, o); renderAtlasPanel(); motionShown = null; },
       setRespiratoryDetail: (enabled) => { atlas.setRespiratoryDetail(enabled); renderAtlasPanel(); motionShown = null; },

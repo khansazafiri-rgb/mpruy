@@ -563,3 +563,17 @@ body[data-learning="1"] .view-menu, body[data-learning="1"] .monitor-toolbar .in
   .monitor-scroll-rail { flex-basis: 33px; width: 33px; }
   .monitor-scroll-arrow { flex-basis: 32px; height: 32px; }
 }
+
+/* Read-only anatomical-landmark audit: concise, responsive and clearly not a 3D marker tool. */
+.skeletal-landmark-list {
+  display: grid;
+  gap: 5px;
+  margin: 8px 0;
+  padding-left: 22px;
+  font-size: 12px;
+}
+.skeletal-landmark-list li { padding: 4px 0; border-bottom: 1px solid rgb(var(--line)); }
+.skeletal-landmark-list strong { display: block; font-size: 12.5px; }
+.skeletal-landmark-list .meta { display: block; }
+.landmark-audit-results { margin-top: 7px; }
+.landmark-audit-results .review-status { margin-top: 7px; }
