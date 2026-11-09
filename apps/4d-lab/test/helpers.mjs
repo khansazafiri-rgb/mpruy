@@ -29,3 +29,17 @@ export function rng(seed = 1) {
 }
 
 export const close = (a, b, tol) => Math.abs(a - b) <= tol;
+
+export const ATLAS_DATA = path.join(ROOT, 'public/data/atlas');
+let atlasCache = null;
+/** The atlas-derived dataset (pipeline/atlas/build_atlas_dataset.mjs). */
+export async function loadAtlasDataset() {
+  if (atlasCache) return atlasCache;
+  const [ctBuf, labBuf, anatomy, reg, skin] = await Promise.all([
+    readFile(path.join(ATLAS_DATA, 'ct.nrrd')), readFile(path.join(ATLAS_DATA, 'labels.nrrd')),
+    readFile(path.join(ATLAS_DATA, 'anatomy.json'), 'utf8'), readFile(path.join(ATLAS_DATA, 'registration.json'), 'utf8'), readFile(path.join(ATLAS_DATA, 'skin.glb')),
+  ]);
+  const ab = (b) => b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength);
+  atlasCache = { ct: makeVolume(await parseNrrd(ctBuf, 'ct.nrrd')), labels: makeVolume(await parseNrrd(labBuf, 'labels.nrrd')), anatomy: JSON.parse(anatomy), reg: JSON.parse(reg), files: { 'skin.glb': ab(skin) } };
+  return atlasCache;
+}

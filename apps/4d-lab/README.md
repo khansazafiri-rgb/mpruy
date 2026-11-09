@@ -5,6 +5,21 @@ An educational freehand CT / simulated-ultrasound workstation for MEDCOEL (`/ana
 
 ![Workstation](evidence/01-workstation-subxiphoid.jpg)
 
+## Anatomy: the MEDCOEL Anatomy Atlas (default)
+- The patient's organs, bones and vessels are the **same models as the MEDCOEL Anatomy Atlas** (`/anatomy/viewer/`),
+  loaded from the atlas's own files (no copies) and placed with one explicit, exact frame (metres → LPS mm).
+- The CT and tissue labels the simulator images are **synthetic, generated from those atlas meshes**
+  (`pipeline/atlas/build_atlas_dataset.mjs`), so the heart you see in 3D is the heart in the CT/US image.
+  It is not an acquired image of any person.
+- The atlas has no skin. The body surface is an **illustrative shell** derived from the atlas muscle/bone envelope
+  plus an assumed fat/skin thickness; it is labelled as such and used for probe contact.
+- **Anatomi** tab: display modes (external body, transparent skin, anatomical cutaway, internal anatomy, imaging
+  coverage), atlas systems with transparency, search / highlight / isolate / hide, "pick in 3D", a legend separating
+  atlas anatomy, procedurally animated anatomy and imaging-derived content, and the coordinate-frame/registration panel.
+- The earlier procedural phantom is still available (`?dataset=phantom`, or the Data tab). It is a different body
+  and is **not** registered to the atlas (measured residual RMS ≈ 37 mm), so the atlas is never overlaid on it.
+- Details and evidence: `ATLAS_INTEGRATION_AUDIT.md`.
+
 ## What you can do
 - **Recognisable virtual patient** on an exam table. The skin and 20 organ groups are reconstructed from the CT with verified
   registration (affine, CT probes, SHA-256, anchors). It has anterior/posterior/lateral/head views, orientation labels, a CT
@@ -33,7 +48,10 @@ npm run dev          # http://127.0.0.1:4180/
 npm test             # unit tests
 npm run build && npm run test:e2e   # browser tests (Playwright Chromium)
 ```
-The bundled data is an original synthetic phantom (`public/data/phantom`). Regenerate it with `npm run phantom`.
+Bundled data: `public/data/atlas` (default, atlas-derived; regenerate with `npm run atlas:dataset`, ~70 s, needs
+`apps/anatomy/public/models`) and `public/data/phantom` (procedural; `npm run phantom`). In dev, Vite serves
+`apps/anatomy/public` at `/anatomy/viewer/`. Browser tests: `npm run build && npm run test:e2e` (phantom regression)
+and `npm run test:e2e:atlas` (atlas dataset; add `--shots` for evidence screenshots).
 For CTACardio, see `pipeline/README.md` (local processing only).
 
 ## Documentation
@@ -45,6 +63,7 @@ For CTACardio, see `pipeline/README.md` (local processing only).
 | `INTEGRATION.md` | Safe deployment plan for medcoel.com (`/anatomy/live`, `/anatomy/4d-lab/`) |
 | `MEDICAL_REFERENCES.md` | Sources for scenario text and tissue constants |
 | `ASSET_LICENSE_REGISTRY.md` | Every shipped asset and the datasets that must not be included |
+| `ATLAS_INTEGRATION_AUDIT.md` | Atlas inventory, frames, licences, mesh findings, registration decision, performance |
 | `pipeline/README.md` | Phantom generator and the local CT → mesh route (VTK / 3D Slicer) |
 | `CLAUDE.md` | Engineering rules for future sessions |
 | `legacy/v0.9/` | The previous prototype, preserved with its tests |
@@ -52,4 +71,4 @@ For CTACardio, see `pipeline/README.md` (local processing only).
 ## Code map
 `src/core` geometry (NRRD, affine sampling, probe kinematics, reslice, GLB registration) ·
 `src/sim` tissues, ultrasound, physiology, pathology, auscultation, views, references ·
-`src/app` three.js scene, monitor, audio, imaging worker, controller · `pipeline` Python tools · `test` unit and e2e tests.
+`src/app` three.js scene, shared atlas layer + Anatomi panel, monitor, audio, imaging worker, controller · `pipeline/atlas` atlas-derived dataset builder · `pipeline` Python tools · `test` unit and e2e tests.

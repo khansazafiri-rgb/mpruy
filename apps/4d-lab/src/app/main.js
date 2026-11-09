@@ -14,6 +14,8 @@ import { PatientScene } from './scene3d.js';
 import { Monitor, drawStrip } from './monitor.js';
 import { AudioEngine } from './audio.js';
 import { voxelSurface } from './blobMesh.js';
+import { AtlasLayer, ATLAS_GROUPS } from './atlasLayer.js';
+import { buildAtlasPanel, frameSummary } from './atlasPanel.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 const el = (tag, attrs = {}, ...kids) => {
@@ -25,8 +27,20 @@ const el = (tag, attrs = {}, ...kids) => {
   return e;
 };
 const BASE = import.meta.env.BASE_URL;
-const DATA = BASE + 'data/phantom/';
+const QUERY = new URLSearchParams(location.search);
+/** Bundled datasets. 'atlas' (default) is generated from the MEDCOEL Anatomy Atlas meshes; 'phantom' is the earlier procedural phantom. */
+export const DATASETS = {
+  atlas: { dir: BASE + 'data/atlas/', label: 'Atlas MEDCOEL · CT sintetis berbasis atlas' },
+  phantom: { dir: BASE + 'data/phantom/', label: 'Phantom prosedural v1 (tanpa atlas)' },
+};
+const DATASET = DATASETS[QUERY.get('dataset')] ? QUERY.get('dataset') : 'atlas';
+let DATA = DATASETS[DATASET].dir;
+// The atlas models are SHARED with the Anatomy Atlas viewer (same origin, same files): no copies are shipped.
+const ATLAS_BASE = QUERY.get('atlasBase') || import.meta.env.VITE_ATLAS_BASE || '/anatomy/viewer/';
+const DEFAULT_ATLAS_SYSTEMS = ['visceral', 'cardiovascular', 'skeletal', 'lymphatic'];
 const SUGGESTED_VIEW = { hfref: 'apical', effusion: 'right_flank', gastroparesis: 'epigastric', normal: 'subxiphoid' };
+/** Datasets may name their own teaching window per scenario (e.g. the clearest cardiac window of the atlas body). */
+const suggestedView = (key) => D?.anatomy?.suggestedViews?.[key] || SUGGESTED_VIEW[key];
 
 // ------------------------------------------------------------------ state
 const S = {
@@ -40,19 +54,20 @@ const S = {
   params: { ...DEFAULT_PHYSIOLOGY }, playing: true, speed: 1,
   scenario: 'normal', compareNormal: false,
   tissues: cloneTissues(),
-  appearance: { skinOpacity: 1, cutaway: 'none', cutDepth: 40, showCoverage: true, systems: { skeleton: true, cardiovascular: true, respiratory: true, abdominal: true, urinary: true, nervous: false, pathology: true } },
+  appearance: { mode: 'external', atlasOpacity: 1, skinOpacity: 1, cutaway: 'none', cutDepth: 40, showCoverage: true, systems: { skeleton: true, cardiovascular: true, respiratory: true, abdominal: true, urinary: true, nervous: false, pathology: true } },
   steth: { point: null, normal: null, ref: null, normal0: null, filter: 'diaphragm', volume: 0.7 },
   view: 'subxiphoid',
 };
 const clock = createClock();
 const audio = new AudioEngine();
 let D = null; // loaded data
-let scene = null, monitor = null, worker = null, geom = null;
+let scene = null, monitor = null, worker = null, geom = null, atlas = null, atlasState = 'none', inEnvelope = null;
+let lastAtlasDeform = 0, atlasDeformMs = 0, atlasMoving = 0, atlasDeformClockT = -1, selected = null;
 let effusion = null;
 let dirty = true, interacting = false, lastInteraction = 0, workerBusy = false, pending = false, lastFrameInfo = null, frameCount = 0;
 let lastDeform = 0, motionShown = null;
 const stats = { usMs: 0, deformMs: 0, fps: 0 };
-window.__lab = { S, clock, stats, audio, get scene() { return scene; }, get monitor() { return monitor; }, get data() { return D; }, get last() { return lastFrameInfo; }, get effusion() { return effusion; } };
+window.__lab = { S, clock, stats, DATASET, physio: { displacement, makeFrame, effectiveParams: () => effectiveParams(), get geom() { return geom; } }, get atlas() { return atlas; }, get atlasState() { return atlasState; }, get atlasStats() { return { deformMs: atlasDeformMs, moving: atlasMoving, clockT: atlasDeformClockT }; }, audio, get scene() { return scene; }, get monitor() { return monitor; }, get data() { return D; }, get last() { return lastFrameInfo; }, get effusion() { return effusion; } };
 
 function markDirty() { dirty = true; }
 function touch() { interacting = true; lastInteraction = performance.now(); markDirty(); }
@@ -68,12 +83,13 @@ async function fetchBuf(name) {
 }
 function status(text, kind = 'info') { const s = $('#loadStatus'); if (s) { s.textContent = text; s.dataset.kind = kind; } }
 
-async function loadPhantom() {
-  status('Memuat phantom sintetis (CT, label, mesh)…');
-  const [ctBuf, labBuf, anatomy, reg, skin, organs] = await Promise.all([
-    fetchBuf('ct.nrrd'), fetchBuf('labels.nrrd'), fetch(DATA + 'anatomy.json').then((r) => r.json()), fetch(DATA + 'registration.json').then((r) => r.json()), fetchBuf('skin.glb'), fetchBuf('organs.glb'),
-  ]);
-  await useDataset({ ctBuf, labBuf, anatomy, reg, files: { 'skin.glb': skin, 'organs.glb': organs }, source: 'phantom', name: 'MEDCOEL synthetic phantom' });
+async function loadPhantom() { // bundled dataset (atlas-derived by default; ?dataset=phantom for the procedural phantom)
+  status(`Memuat ${DATASETS[DATASET].label} (CT, label, mesh)…`);
+  const reg = await fetch(DATA + 'registration.json').then((r) => r.json());
+  const meshFiles = (reg.meshes || []).map((m) => m.file);
+  const [ctBuf, labBuf, anatomy, ...bufs] = await Promise.all([fetchBuf('ct.nrrd'), fetchBuf('labels.nrrd'), fetch(DATA + 'anatomy.json').then((r) => r.json()), ...meshFiles.map(fetchBuf)]);
+  const files = Object.fromEntries(meshFiles.map((f, i) => [f, bufs[i]]));
+  await useDataset({ ctBuf, labBuf, anatomy, reg, files, source: DATASET, name: DATASET === 'atlas' ? 'MEDCOEL atlas-derived synthetic CT' : 'MEDCOEL synthetic phantom' });
 }
 
 async function useDataset({ ctBuf, labBuf, anatomy, reg, files, source, name }) {
@@ -101,9 +117,14 @@ async function useDataset({ ctBuf, labBuf, anatomy, reg, files, source, name }) 
   });
   worker.postMessage({ type: 'tissues', tissues: S.tissues });
   // 3D scene
+  const isAtlas = anatomy?.dataset === 'atlas';
+  monitor.ctCaption = isAtlas ? 'CT SINTETIS dari Atlas MEDCOEL · bukan citra pasien' : source === 'local' ? 'CT lokal · tidak diregistrasi ke atlas' : 'Reformat CT phantom sintetis · bukan data pasien';
+  document.body.dataset.dataset = isAtlas ? 'atlas' : 'phantom';
   if (meshes) {
     const keep = Object.fromEntries(Object.entries(meshes).map(([k, m]) => [k, { lps: m.lps, indices: m.indices }]));
-    scene.setMeshes(keep, { coverage: ct.bounds, capZ: ct.bounds.lo[2] + 6 });
+    // the atlas shell is a whole body (no artificial acquisition caps); the phantom's skin is capped at the CT ends
+    scene.setMeshes(keep, { coverage: ct.bounds, capZ: isAtlas ? -Infinity : ct.bounds.lo[2] + 6 });
+    if (isAtlas) { const b = boundsOf(meshes.skin.lps); scene.setTableFor(b.lo, b.hi); scene.setBodyBounds(b.lo, b.hi); scene.setView("examiner", false); }
     prepareMotionMasks();
   } else {
     scene.setMeshes({}, { coverage: ct.bounds, capZ: -1e9 });
@@ -116,22 +137,45 @@ async function useDataset({ ctBuf, labBuf, anatomy, reg, files, source, name }) 
   refreshAll();
   setScenario(S.scenario, false);
   markDirty();
+  if (isAtlas) loadAtlasLayer(anatomy); else { atlas?.setVisible(false); atlasState = 'not-registered'; }
 }
+
+function boundsOf(lps) {
+  const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];
+  for (let i = 0; i < lps.length; i += 3) for (let d = 0; d < 3; d++) { lo[d] = Math.min(lo[d], lps[i + d]); hi[d] = Math.max(hi[d], lps[i + d]); }
+  return { lo, hi };
+}
+
+/** Shared atlas meshes, baked into this dataset's LPS frame (exact: the CT was generated from them). */
+async function loadAtlasLayer(anatomy) {
+  atlas ||= new AtlasLayer(scene.patient, ATLAS_BASE);
+  atlas.setFrame(anatomy.atlasFrame.atlasToLPS);
+  atlasState = 'loading'; document.body.dataset.atlas = 'loading'; renderAtlasPanel();
+  try {
+    for (const sys of DEFAULT_ATLAS_SYSTEMS) { await atlas.load(sys, (f) => { const e = $('#atlasStatus'); if (e) e.textContent = `Memuat atlas: ${sys} ${(f * 100).toFixed(0)}%`; }); renderAtlasPanel(); applyAppearance(); }
+    atlasState = 'ready'; document.body.dataset.atlas = 'ready';
+  } catch (e) {
+    atlasState = 'unavailable'; document.body.dataset.atlas = 'unavailable';
+    status('Model Atlas MEDCOEL tidak dapat dimuat dari ' + ATLAS_BASE + ' (' + e.message + '). Pencitraan tetap berjalan dengan CT sintetis; lapisan anatomi atlas tidak ditampilkan.', 'warn');
+  }
+  renderAtlasPanel(); applyAppearance(); motionShown = null;
+}
+export async function loadAtlasSystem(sys) { if (!atlas) return; await atlas.load(sys); renderAtlasPanel(); applyAppearance(); motionShown = null; }
 
 // candidate vertices that can move (saves work every frame)
 function prepareMotionMasks() {
   if (!geom) return;
-  const f = makeFrame({ t: 0, beatPhase: 0.3, breathPhase: 0.4, giPhase: 0.5 }, { ...DEFAULT_PHYSIOLOGY, breathDepth: 60, antralAmplitude: 0.9, lvDilation: 1.25 }, geom);
-  const d = [0, 0, 0];
+  const rm = geom.rm;
+  // vertices outside this envelope can never be moved by the field (heart support, respiratory box, stomach box)
+  inEnvelope = (x, y, z) => {
+    const nearHeart = Math.hypot(x - geom.C[0], y - geom.C[1], z - geom.C[2]) < 165;
+    const inResp = Math.abs(x) < rm.halfWidth + 5 && z > rm.zRange[0] - 5 && z < rm.zRange[1] + 5;
+    const b = geom.stomachBox, inGi = x > b.lo[0] && x < b.hi[0] && y > b.lo[1] && y < b.hi[1] && z > b.lo[2] && z < b.hi[2];
+    return nearHeart || inResp || inGi;
+  };
   for (const m of Object.values(scene.meshes)) {
     const ref = m.ref, idx = [];
-    for (let i = 0; i < ref.length; i += 3) {
-      const x = ref[i], y = ref[i + 1], z = ref[i + 2];
-      const nearHeart = Math.hypot(x - geom.C[0], y - geom.C[1], z - geom.C[2]) < 165;
-      const inResp = Math.abs(x) < 215 && z > -345 && z < 245;
-      const b = geom.stomachBox, inGi = x > b.lo[0] && x < b.hi[0] && y > b.lo[1] && y < b.hi[1] && z > b.lo[2] && z < b.hi[2];
-      if (nearHeart || inResp || inGi) { displacement(f, x, y, z, d); idx.push(i / 3); }
-    }
+    for (let i = 0; i < ref.length; i += 3) if (inEnvelope(ref[i], ref[i + 1], ref[i + 2])) idx.push(i / 3);
     m.moving = Uint32Array.from(idx); m.cur = new Float32Array(ref);
   }
 }
@@ -147,6 +191,13 @@ function deformMeshes(f) {
   }
   if (scene.effusionMesh) { scene.effusionMesh.geometry.attributes.position.array.set(deformPositions(f, scene.effusionRef)); scene.effusionMesh.geometry.attributes.position.needsUpdate = true; }
   stats.deformMs = performance.now() - t0;
+}
+/** Atlas structures marked as animated follow the same field (throttled separately: more vertices). */
+function deformAtlas(f) {
+  if (!atlas || !inEnvelope || organsHidden()) return;
+  const t0 = performance.now();
+  atlasMoving = atlas.deform(displacement, f, inEnvelope);
+  atlasDeformMs = performance.now() - t0; atlasDeformClockT = f.t;
 }
 
 // ------------------------------------------------------------------ poses
@@ -169,9 +220,11 @@ function currentPlane(pose) {
 
 function applyView(key, animate = true) {
   const v = VIEWS.find((x) => x.key === key); if (!v || !D?.labels) return;
-  const c = snapToSkin((x, y, z) => D.labels.nearest(x, y, z), v.target, v.dir);
+  // datasets may carry their own windows (contact on their skin + angles solved to aim at the target organ)
+  const dv = D.anatomy?.views?.find((x) => x.key === key);
+  const c = dv ? { point: [...dv.contact.point], normal: [...dv.contact.normal] } : snapToSkin((x, y, z) => D.labels.nearest(x, y, z), v.target, v.dir);
   if (!c) return;
-  S.view = key; S.mode = 'clinical'; S.contact = c; S.angles = { ...v.angles };
+  S.view = key; S.mode = 'clinical'; S.contact = c; S.angles = { ...(dv?.angles || v.angles) };
   setProbe(v.probe, false); S.us.depth = v.depth;
   refreshAll(); touch();
   if (animate) scene.setView('examiner');
@@ -230,7 +283,12 @@ function loop(now) {
   const f = geom ? makeFrame(clock, params, geom) : null;
   // meshes (throttled)
   const motionKey = S.playing ? null : `${clock.beatPhase}|${clock.breathPhase}|${clock.giPhase}|${S.scenario}|${S.compareNormal}`;
-  if (f && scene.meshes.skin && (S.playing ? now - lastDeform > 45 : motionShown !== motionKey)) { deformMeshes(f); lastDeform = now; motionShown = motionKey; }
+  if (f && scene.meshes.skin && (S.playing ? now - lastDeform > 45 : motionShown !== motionKey)) {
+    deformMeshes(f); lastDeform = now;
+    // atlas: adaptive rate (about 3x its own cost, at least 60 ms) so the main thread stays responsive
+    if (!S.playing || now - lastAtlasDeform > Math.max(60, 3 * atlasDeformMs)) { deformAtlas(f); lastAtlasDeform = now; }
+    motionShown = motionKey;
+  }
   const pose = currentPose(f), plane = currentPlane(pose);
   if (pose) {
     if (S.mode === 'clinical') {
@@ -301,22 +359,27 @@ function stripTraces(f, p, mix) {
 function siteLabel(key) { const s = D?.anatomy?.auscultation?.find((x) => x.key === key); return s ? s.nameId : '—'; }
 
 // ------------------------------------------------------------------ readouts
+// Region readout thresholds (LPS mm). Defaults are the procedural phantom's; datasets override via anatomy.regions.
+const PHANTOM_REGIONS = { headZ: 255, neckZ: 185, armX: 205, thighZ: -360, thoraxZ: -5, pelvisZ: -270, epigastricZ: -125, umbilicalZ: -190, quadrantSplitZ: -150, icsParasternal: null };
 const REGION = (p, n) => {
+  const R = { ...PHANTOM_REGIONS, ...(D?.anatomy?.regions || {}) };
   const [x, , z] = p, side = Math.abs(x) < 18 ? 'garis tengah' : x < 0 ? 'kanan' : 'kiri';
   const face = n[1] < -0.55 ? 'anterior' : n[1] > 0.55 ? 'posterior' : 'lateral';
-  if (z > 255) return 'Kepala (di luar fokus pemeriksaan)';
-  if (z > 185) return `Leher / pangkal leher ${side}`;
-  if (Math.abs(x) > 205) return `Lengan ${x < 0 ? 'kanan' : 'kiri'}`;
-  if (z < -360) return `Paha ${side}`;
-  if (z > -5) {
-    const ics = Math.max(1, Math.round((185 - z) / 26));
+  if (z > R.headZ) return 'Kepala (di luar fokus pemeriksaan)';
+  if (z > R.neckZ) return `Leher / pangkal leher ${side}`;
+  if (Math.abs(x) > R.armX) return `Lengan ${x < 0 ? 'kanan' : 'kiri'}`;
+  if (z < R.thighZ) return `Paha ${side}`;
+  if (z > R.thoraxZ) {
+    // intercostal space: measured from the atlas ribs when available (nearest ICS level), else the phantom's spacing rule
+    const lv = R.icsParasternal?.filter((v) => v != null);
+    const ics = lv?.length ? 1 + lv.reduce((bi, v, i) => (Math.abs(v - z) < Math.abs(lv[bi] - z) ? i : bi), 0) : Math.max(1, Math.round((185 - z) / 26));
     const line = Math.abs(x) < 18 ? 'sternum' : Math.abs(x) < 45 ? 'parasternal' : Math.abs(x) < 105 ? 'linea midklavikula' : face === 'lateral' ? 'linea aksilaris media' : 'linea aksilaris anterior';
     return `Toraks ${face} ${side} · ≈SIC ${ics} · ${line}`;
   }
-  if (z < -270) return `Suprapubik / pelvis ${side}`;
-  if (Math.abs(x) < 40 && z > -125) return 'Epigastrium';
-  if (Math.abs(x) < 40 && z > -190) return 'Umbilikal';
-  const q = (z > -150 ? 'atas' : 'bawah');
+  if (z < R.pelvisZ) return `Suprapubik / pelvis ${side}`;
+  if (Math.abs(x) < 40 && z > R.epigastricZ) return 'Epigastrium';
+  if (Math.abs(x) < 40 && z > R.umbilicalZ) return 'Umbilikal';
+  const q = (z > R.quadrantSplitZ ? 'atas' : 'bawah');
   return face === 'posterior' ? `Punggung bawah / flank ${side}` : face === 'lateral' ? `Flank ${side}` : `Kuadran ${side} ${q}`;
 };
 function labelName(id) { const l = D?.anatomy?.labels?.find((x) => x.id === id); return l ? `${l.nameId} (${l.name})` : id === 39 ? 'Cairan pleura' : id === 41 ? 'Paru kolaps' : '—'; }
@@ -362,14 +425,34 @@ function setScenario(key, moveView = true) {
   S.scenario = key; S.compareNormal = false;
   const sc = SCENARIOS[key];
   S.params = { ...applyScenario(DEFAULT_PHYSIOLOGY, key), cardiacEnabled: !!geom, respirationEnabled: !!geom, peristalsisEnabled: !!geom };
-  effusion = sc.effusionMl > 0 && D?.labels ? buildEffusion(D.labels, sc.effusionMl) : null;
+  effusion = sc.effusionMl > 0 && D?.labels ? buildEffusion(D.labels, sc.effusionMl, { diaphragm: geom?.diaphragm }) : null;
   if (effusion) {
-    const m = voxelSurface((x, y, z) => { const l = D.labels.nearest(x, y, z); return l === 7 && effusion.classify(x, y, z, l) === 39; }, [-175, -110, -130], [5, 140, 140], 4, 5);
+    const b = D.rightLungBox || (D.rightLungBox = labelBox(D.labels, 7));
+    const m = voxelSurface((x, y, z) => { const l = D.labels.nearest(x, y, z); return l === 7 && effusion.classify(x, y, z, l) === 39; }, b.lo, b.hi, 4, 5);
     scene.setEffusionMesh(m);
   } else scene.setEffusionMesh(null);
   mixCache = null; pcgCache = null;
-  if (moveView && SUGGESTED_VIEW[key]) applyView(SUGGESTED_VIEW[key]);
+  if (moveView && suggestedView(key)) applyView(suggestedView(key));
   renderPathology(); refreshAll(); markDirty();
+}
+
+/** LPS bounding box of one label (padded). */
+function labelBox(vol, label) {
+  const [nx, ny, nz] = vol.sizes, a = vol.affine, lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];
+  for (let k = 0; k < nz; k++) for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+    if (vol.data[(k * ny + j) * nx + i] !== label) continue;
+    const p = [a[0] * i + a[1] * j + a[2] * k + a[3], a[4] * i + a[5] * j + a[6] * k + a[7], a[8] * i + a[9] * j + a[10] * k + a[11]];
+    for (let d = 0; d < 3; d++) { lo[d] = Math.min(lo[d], p[d]); hi[d] = Math.max(hi[d], p[d]); }
+  }
+  return { lo: lo.map((v) => v - 6), hi: hi.map((v) => v + 6) };
+}
+
+/** Probe contact must lie where imaging exists: inside the CT acquisition box (the atlas shell extends beyond it). */
+function contactInCoverage(c) {
+  const b = D?.ct?.bounds; if (!b || !c) return true;
+  const ok = [0, 1, 2].every((i) => c.point[i] >= b.lo[i] + 2 && c.point[i] <= b.hi[i] - 2);
+  if (!ok) status('Titik itu di luar cakupan CT (kotak hijau): tidak ada data pencitraan di sana. Pilih titik di dada, abdomen atau pelvis.', 'warn');
+  return ok;
 }
 
 // ------------------------------------------------------------------ UI building
@@ -405,7 +488,7 @@ function seg(group, items, testid) {
 }
 function onSeg(group, val) {
   if (group === 'mode') { S.mode = val; if (val === 'clinical' && !S.contact) applyView(S.view, false); }
-  else if (group === 'tool') { S.tool = val; scene.siteMarkers.visible = val === 'stethoscope'; }
+  else if (group === 'tool') { setTool(val); return; }
   else if (group === 'display') { S.display = val; }
   refreshAll(); touch();
 }
@@ -531,6 +614,10 @@ function buildPanels() {
   // ---------------- Data tab
   const dt = $('#tab-data');
   dt.append(
+    el('h3', {}, 'Dataset bawaan'),
+    field('Dataset', el('select', { 'data-testid': 'dataset-select', onchange: (e) => { const q = new URLSearchParams(location.search); q.set('dataset', e.target.value); location.search = q.toString(); } }, ...Object.entries(DATASETS).map(([k, d]) => el('option', { value: k, selected: k === DATASET || undefined }, d.label)))),
+    el('p', { class: 'hint' }, DATASET === 'atlas' ? 'Atlas MEDCOEL: CT dan label sintetis dibangun dari mesh Atlas Anatomi MEDCOEL (bukan citra pasien). Mesh atlas, CT, kulit dan probe berada dalam satu kerangka LPS yang eksak.' : 'Phantom prosedural v1: tubuh sintetis lama tanpa atlas; tidak diregistrasi ke Atlas MEDCOEL.'),
+    el('h3', {}, 'Data lokal'),
     el('p', { class: 'hint' }, 'Data lokal diproses di perangkat ini dan tidak diunggah. Untuk CTACardio: jalankan pipeline lokal (pipeline/README.md) lalu muat CT + label + paket mesh dari folder yang sama.'),
     field('CT (.nrrd, tunggal)', el('input', { type: 'file', id: 'ctFile', accept: '.nrrd', 'data-testid': 'ct-file' })),
     field('Label map (.nrrd, opsional)', el('input', { type: 'file', id: 'labFile', accept: '.nrrd' })),
@@ -539,6 +626,32 @@ function buildPanels() {
     el('div', { id: 'dataInfo', class: 'readout' }),
     el('div', { id: 'memReadout', class: 'meta' }),
   );
+}
+
+let framesOpen = false, comparison = null;
+async function loadComparison() { // atlas-vs-phantom residuals are measured by the atlas build; show them in both datasets
+  if (comparison) return comparison;
+  comparison = D?.anatomy?.comparisonWithProceduralPhantom || await fetch(DATASETS.atlas.dir + 'anatomy.json').then((r) => r.json()).then((a) => a.comparisonWithProceduralPhantom).catch(() => null);
+  renderAtlasPanel(); return comparison;
+}
+function setTool(val) { S.tool = val; scene.siteMarkers.visible = val === 'stethoscope'; if (val !== 'inspect') { selected = selected || null; } refreshAll(); renderAtlasPanel(); touch(); }
+function renderAtlasPanel() {
+  const box = $('#tab-anatomy'); if (!box || !scene) return;
+  buildAtlasPanel(box, {
+    el, atlas, atlasState, S, D, DISPLAY_MODES, selected, comparison, framesOpen,
+    actions: {
+      setDisplayMode, setTool,
+      loadSystem: (sys) => loadAtlasSystem(sys),
+      setGroup: (g, o) => { atlas.setGroup(g, o); renderAtlasPanel(); motionShown = null; },
+      select: (name) => { S.atlasQuery = name; if (atlas?.structures.has(name)) { selected = name; atlas.highlight(name); } renderAtlasPanel(); },
+      highlight: (name) => { atlas.highlight(atlas.highlighted === name ? null : name); renderAtlasPanel(); },
+      isolate: (name) => { atlas.isolate(name); if (name && organsHidden()) setDisplayMode('internal'); renderAtlasPanel(); },
+      hide: (name, hidden = true) => { atlas.setStructureHidden(name, hidden); renderAtlasPanel(); },
+      showAll: () => { atlas.showAll(); atlas.highlight(null); selected = null; renderAtlasPanel(); },
+      markAnimated: (v) => { atlas.markAnimated = v; atlas.apply(); },
+      framesOpen: (v) => { framesOpen = v; },
+    },
+  });
 }
 
 function rebuildFreeSteps() {
@@ -563,7 +676,7 @@ function renderPathology() {
     el('h3', {}, sc.title), el('p', {}, sc.summary),
     S.scenario !== 'normal' ? el('div', { class: 'row' },
       el('button', { type: 'button', class: 'btn primary', id: 'compareBtn', 'data-testid': 'compare-toggle', onclick: () => { S.compareNormal = !S.compareNormal; mixCache = null; pcgCache = null; scene.setEffusionMesh(null); if (!S.compareNormal && effusion) setScenario(S.scenario, false); refreshAll(); touch(); } }, 'Bandingkan dengan normal'),
-      el('button', { type: 'button', class: 'btn', onclick: () => applyView(SUGGESTED_VIEW[S.scenario]) }, 'Ke jendela yang disarankan')) : null,
+      el('button', { type: 'button', class: 'btn', onclick: () => applyView(suggestedView(S.scenario)) }, 'Ke jendela yang disarankan')) : null,
     el('table', { class: 'compare' },
       el('tr', {}, el('th', {}, ''), el('th', {}, 'Normal'), el('th', {}, 'Skenario')),
       el('tr', {}, el('td', {}, 'EF model'), el('td', {}, `${(modelEjectionFraction(n) * 100).toFixed(0)}%`), el('td', { 'data-testid': 'ef-scenario' }, `${(modelEjectionFraction(p) * 100).toFixed(0)}%`)),
@@ -606,6 +719,7 @@ async function loadLocal() {
       else if (f.name === 'anatomy.json') anatomy = JSON.parse(await f.text());
     }
     await useDataset({ ctBuf: await ct.arrayBuffer(), labBuf: lab ? await lab.arrayBuffer() : null, anatomy, reg, files: reg ? files : null, source: 'local', name: ct.name });
+    renderAtlasPanel();
     $('#dataInfo').textContent = `${ct.name} dimuat lokal. ${D.labels ? 'Label tersedia.' : 'Tanpa label: USG memakai klasifikasi HU (kasar).'} ${D.meshes ? 'Mesh terverifikasi.' : 'Tanpa mesh: hanya Free 3D.'} ${geom ? '' : 'Gerak fisiologis butuh anatomy.json.'}`;
   } catch (e) { fail(e.message); }
 }
@@ -633,8 +747,8 @@ function installLayout() {
   $('#speedSelect').onchange = (e) => { S.speed = Number(e.target.value); if (audio.on && S.speed !== 1) { audio.stop(); $('#audioBtn').textContent = '🔈 Nyalakan suara'; } };
   $('#scenarioSelect').onchange = (e) => setScenario(e.target.value);
   for (const b of document.querySelectorAll('[data-view]')) b.onclick = () => scene.setView(b.dataset.view);
-  $('#skinOpacity').oninput = (e) => { S.appearance.skinOpacity = Number(e.target.value) / 100; applyAppearance(); };
-  $('#cutaway').onchange = (e) => { S.appearance.cutaway = e.target.value; if (e.target.value !== 'none' && S.appearance.skinOpacity > 0.95) { S.appearance.skinOpacity = 1; } applyAppearance(); };
+  $('#skinOpacity').oninput = (e) => { S.appearance.skinOpacity = Number(e.target.value) / 100; S.appearance.mode = 'custom'; applyAppearance(); renderAtlasPanel(); };
+  $('#cutaway').onchange = (e) => { S.appearance.cutaway = e.target.value; S.appearance.mode = 'custom'; if (e.target.value !== 'none' && S.appearance.skinOpacity > 0.95) { S.appearance.skinOpacity = 1; } applyAppearance(); renderAtlasPanel(); };
   $('#cutDepth').oninput = (e) => { S.appearance.cutDepth = Number(e.target.value); applyAppearance(); };
   for (const c of document.querySelectorAll('[data-system]')) c.onchange = () => { S.appearance.systems[c.dataset.system] = c.checked; applyAppearance(); };
   $('#coverageToggle').onchange = (e) => { S.appearance.showCoverage = e.target.checked; applyAppearance(); };
@@ -650,9 +764,27 @@ function installLayout() {
   });
 }
 function organsHidden() { return S.appearance.skinOpacity >= 0.999 && S.appearance.cutaway === 'none'; }
+/** Workstation display modes (atlas dataset): what is drawn, never what is imaged. */
+export const DISPLAY_MODES = {
+  external: { label: 'Tubuh luar', skinOpacity: 1, cutaway: 'none', atlasOpacity: 1, showCoverage: false },
+  transparent: { label: 'Kulit transparan', skinOpacity: 0.22, cutaway: 'none', atlasOpacity: 1, showCoverage: false },
+  cutaway: { label: 'Cutaway anatomis', skinOpacity: 1, cutaway: 'anterior', atlasOpacity: 1, showCoverage: false },
+  internal: { label: 'Anatomi dalam', skinOpacity: 0, cutaway: 'none', atlasOpacity: 1, showCoverage: false },
+  coverage: { label: 'Cakupan pencitraan', skinOpacity: 0.16, cutaway: 'none', atlasOpacity: 0.35, showCoverage: true },
+};
+function setDisplayMode(key) {
+  const m = DISPLAY_MODES[key]; if (!m) return;
+  Object.assign(S.appearance, { mode: key, skinOpacity: m.skinOpacity, cutaway: m.cutaway, atlasOpacity: m.atlasOpacity, showCoverage: m.showCoverage });
+  const so = $('#skinOpacity'); if (so) so.value = String(Math.max(5, Math.round(m.skinOpacity * 100)));
+  const cu = $('#cutaway'); if (cu) cu.value = m.cutaway;
+  const ct = $('#coverageToggle'); if (ct) ct.checked = m.showCoverage;
+  applyAppearance(); renderAtlasPanel();
+}
 function applyAppearance() {
   scene.setAppearance(S.appearance);
   if (organsHidden()) for (const [n, m] of Object.entries(scene.meshes)) if (n !== 'skin') m.mesh.visible = false;
+  if (atlas) { atlas.globalOpacity = S.appearance.atlasOpacity ?? 1; atlas.setVisible(D?.anatomy?.dataset === 'atlas' && atlasState !== 'unavailable' && !organsHidden()); }
+  document.body.dataset.display = S.appearance.mode || 'custom';
   motionShown = null;
 }
 
@@ -662,8 +794,13 @@ async function boot() {
     const probe = document.createElement('canvas');
     if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) throw new Error('WebGL tidak tersedia: tampilan 3D tidak dapat dibuat. Aktifkan akselerasi grafis di browser.');
     scene = new PatientScene($('#viewport'), {
-      onContact: (c) => { S.contact = c; S.mode = 'clinical'; touch(); },
-      onSkinClick: (c) => { if (S.tool === 'stethoscope') placeSteth(c.point, c.normal, null); else if (S.mode === 'clinical') { S.contact = c; touch(); } },
+      onContact: (c) => { if (!contactInCoverage(c)) return; S.contact = c; S.mode = 'clinical'; touch(); updateReadouts(); },
+      onSkinClick: (c) => { if (S.tool === 'stethoscope') placeSteth(c.point, c.normal, null); else if (S.mode === 'clinical' && contactInCoverage(c)) { S.contact = c; touch(); updateReadouts(); } },
+      onPick: (e) => {
+        if (S.tool !== 'inspect' || !atlas) return false;
+        const hit = scene.pickAtlas(e, atlas); selected = hit?.name || null;
+        atlas.highlight(selected); renderAtlasPanel(); return true;
+      },
       onRotate: (axis, deg) => {
         if (S.mode === 'clinical') { const lim = CLINICAL_LIMITS[axis] || 1e9; S.angles[axis] = axis === 'rotate' ? ((S.angles[axis] + deg + 540) % 360) - 180 : Math.max(-lim, Math.min(lim, S.angles[axis] + deg)); }
         else S.free.q = rotateFree(S.free.q, { L: [1, 0, 0], P: [0, 1, 0], S: [0, 0, 1] }[axis], deg);
@@ -677,7 +814,8 @@ async function boot() {
     installLayout();
     await loadPhantom();
     buildPanels();
-    applyAppearance(); refreshAll();
+    if (DATASET === 'atlas') setDisplayMode('transparent'); else S.appearance.mode = 'custom';
+    applyAppearance(); refreshAll(); renderAtlasPanel(); loadComparison();
     document.body.dataset.ready = '1';
     requestAnimationFrame(loop);
   } catch (e) { fail(e.message || String(e)); document.body.dataset.ready = 'error'; }

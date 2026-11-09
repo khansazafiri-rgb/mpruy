@@ -5,7 +5,9 @@
   "license": "UNLICENSED",
   "type": "module",
   "description": "MEDCOEL Anatomy Live 4D Lab - educational freehand CT/ultrasound simulator (not a medical device).",
-  "engines": { "node": ">=22.12.0" },
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 4180",
     "build": "vite build",
@@ -14,13 +16,19 @@
     "test:e2e": "node test/e2e/run-e2e.mjs",
     "test:legacy": "cd legacy/v0.9 && npm test",
     "phantom": "python3 pipeline/build_phantom.py",
-    "pipeline:test": "python3 pipeline/test_pipeline.py"
+    "pipeline:test": "python3 pipeline/test_pipeline.py",
+    "atlas:dataset": "node --max-old-space-size=8000 pipeline/atlas/build_atlas_dataset.mjs",
+    "atlas:evidence": "node tools/atlas-slices.mjs public/data/atlas evidence/atlas-label-slices.png axial:110,60,0,-90,-170,-330 coronal:-30,20 sagittal:-60,0,45 && node tools/atlas-us-views.mjs",
+    "test:e2e:atlas": "node test/e2e/atlas-e2e.mjs"
   },
   "dependencies": {
     "three": "^0.185.1",
     "three-mesh-bvh": "^0.9.13"
   },
   "devDependencies": {
+    "@gltf-transform/core": "^4.5.1",
+    "@gltf-transform/extensions": "^4.5.1",
+    "draco3dgltf": "^1.5.9",
     "vite": "^8.1.1"
   }
 }

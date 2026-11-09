@@ -97,6 +97,18 @@ export class PatientScene {
     this.floorParts = [floor, grid];
     this.table = g; this.scene.add(g);
     this.tableMaterials = [top.material, pad.material];
+    this.tableParts = { top, pad };
+  }
+
+  /**
+   * Fit the exam table under a body (LPS bounds of the skin): pad top touches the most posterior skin,
+   * length covers head to feet. Used for datasets whose body is longer than the phantom's CT box.
+   */
+  setTableFor(lo, hi) {
+    const { top, pad } = this.tableParts, len = hi[2] - lo[2] + 160, cx = (hi[2] + lo[2]) / 2;
+    pad.scale.x = len / 1700; top.scale.x = (len + 50) / 1750; pad.position.x = cx; top.position.x = cx;
+    pad.position.y = -hi[1] - 15.5; top.position.y = pad.position.y - 32;
+    this.tableLegs[0].position.x = lo[2] + 160; this.tableLegs[1].position.x = hi[2] - 160;
   }
 
   /** Build skin + organ meshes from LPS position arrays. */
@@ -159,6 +171,7 @@ export class PatientScene {
     const skin = this.meshes.skin?.mesh;
     if (skin) {
       skin.material.opacity = skinOpacity; skin.material.transparent = skinOpacity < 0.999; skin.material.depthWrite = skinOpacity >= 0.999;
+      skin.visible = skinOpacity > 0.01; // 'internal anatomy' mode hides the shell (it stays pickable for the probe)
       skin.material.needsUpdate = true;
       const planes = [];
       if (cutaway === 'anterior') { this.clip.anterior.constant = cutDepth; planes.push(this.clip.anterior); }
@@ -358,13 +371,18 @@ export class PatientScene {
   }
 
   // ------------------------------------------------------------------ camera
+  /** Whole-body bounds (LPS) for the 'whole' preset; datasets whose body extends beyond the CT box set this. */
+  setBodyBounds(lo, hi) { this.body = { lo, hi }; }
+
   setView(name, animate = true) {
-    const b = this.bounds || { lo: [-200, -150, -400], hi: [200, 150, 400] };
+    const b = name === 'whole' && this.body ? this.body : this.bounds || { lo: [-200, -150, -400], hi: [200, 150, 400] };
     const T = new THREE.Vector3(...[0, 1, 2].map((i) => (b.lo[i] + b.hi[i]) / 2)).applyMatrix4(LPS_TO_SCENE);
-    T.set(T.x + 60, 0, T.z);
+    T.set(T.x + (name === 'whole' ? 0 : 60), 0, T.z);
+    const k = this.body ? 1.15 : 1; // a whole-body shell needs a little more room than the phantom's CT box
     const views = {
-      examiner: [-380, 1250, -1650], anterior: [0, 2300, -80], posterior: [0, -2100, -100], right: [0, 160, -2250],
-      left: [0, 160, 2250], head: [2200, 380, 0], feet: [-2400, 380, 0],
+      examiner: [-380 * k, 1250 * k, -1650 * k], anterior: [0, 2300 * k, -80], posterior: [0, -2100 * k, -100], right: [0, 160, -2250 * k],
+      left: [0, 160, 2250 * k], head: [2200 * k, 380, 0], feet: [-2400 * k, 380, 0],
+      whole: this.body ? [-300, 1.55 * (this.body.hi[2] - this.body.lo[2]) + 400, -1.2 * (this.body.hi[2] - this.body.lo[2])] : [-380, 1250, -1650],
     };
     const off = views[name] || views.examiner;
     const to = T.clone().add(new THREE.Vector3(...off));
@@ -475,6 +493,7 @@ export class PatientScene {
     const up = (e) => {
       if (drag) { drag = null; if (this.controls) this.controls.enabled = true; this.h.onDragEnd?.(); down = null; return; }
       if (down && Math.hypot(e.clientX - down.x, e.clientY - down.y) < 5 && e.button === 0) {
+        if (this.h.onPick?.(e)) { down = null; return; } // inspect tool consumed the click
         const c = this.pickSkin(e); if (c) this.h.onSkinClick?.(c);
       }
       down = null;
@@ -498,6 +517,12 @@ export class PatientScene {
   _screen(lps) {
     const v = v3(lps).applyMatrix4(LPS_TO_SCENE).project(this.camera), r = this.renderer.domElement.getBoundingClientRect();
     return { x: r.left + (v.x * 0.5 + 0.5) * r.width, y: r.top + (-v.y * 0.5 + 0.5) * r.height };
+  }
+
+  /** Raycast the atlas layer at a pointer event (inspect tool). */
+  pickAtlas(e, atlas) {
+    this._pointerNDC(e);
+    return atlas.pick(this.raycaster, new THREE.Matrix4().copy(LPS_TO_SCENE).invert());
   }
 
   /** Screen position of an LPS point (for tests and overlays). */

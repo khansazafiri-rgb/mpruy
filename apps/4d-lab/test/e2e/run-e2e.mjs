@@ -64,7 +64,8 @@ async function openTab(id) { await page.getByTestId('tab-' + id).click(); }
 async function goView(key) { await openTab('probe'); await page.getByTestId('mode-clinical').click(); await page.getByTestId('view-' + key).click(); }
 async function resetLayout() { await lab(() => { document.body.classList.remove('monitor-expanded'); if (document.fullscreenElement) document.exitFullscreen(); }); }
 
-await page.goto(url);
+// This suite covers the procedural phantom (Phases 1-5 regression); test/e2e/atlas-e2e.mjs covers the atlas dataset.
+await page.goto(url + '?dataset=' + (process.env.E2E_DATASET || 'phantom'));
 await page.waitForFunction(() => document.body.dataset.ready, null, { timeout: 90000 });
 
 await step('loads the phantom package with verified registration and no runtime errors', async () => {

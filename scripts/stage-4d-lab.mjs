@@ -17,14 +17,20 @@ export async function validateLab(root) {
   if (!assets.some((a) => a.endsWith('.js'))) throw Error('Build apps/4d-lab with base /anatomy/4d-lab/ first');
   for (const a of assets) { if (a.split('/').includes('..')) throw Error('Invalid asset path'); await readFile(path.join(root, a)); }
   for (const f of DATA) await readFile(path.join(root, 'data/phantom', f));
-  const anatomy = JSON.parse(await readFile(path.join(root, 'data/phantom/anatomy.json'), 'utf8'));
-  if (anatomy.schema !== 'medcoel.anatomy.v1') throw Error('Unknown anatomy manifest');
-  const reg = JSON.parse(await readFile(path.join(root, 'data/phantom/registration.json'), 'utf8'));
-  for (const m of reg.meshes) {
-    const sha = createHash('sha256').update(await readFile(path.join(root, 'data/phantom', m.file))).digest('hex');
-    if (sha !== m.sha256) throw Error('Mesh hash mismatch: ' + m.file);
+  // bundled datasets: the procedural phantom (always) and the atlas-derived dataset (default view, when built)
+  const sets = ['phantom'];
+  try { await readFile(path.join(root, 'data/atlas/registration.json')); sets.push('atlas'); } catch { /* optional in older builds */ }
+  for (const set of sets) {
+    const anatomy = JSON.parse(await readFile(path.join(root, 'data', set, 'anatomy.json'), 'utf8'));
+    if (anatomy.schema !== 'medcoel.anatomy.v1') throw Error('Unknown anatomy manifest');
+    for (const f of ['ct.nrrd', 'labels.nrrd']) await readFile(path.join(root, 'data', set, f));
+    const reg = JSON.parse(await readFile(path.join(root, 'data', set, 'registration.json'), 'utf8'));
+    for (const m of reg.meshes) {
+      const sha = createHash('sha256').update(await readFile(path.join(root, 'data', set, m.file))).digest('hex');
+      if (sha !== m.sha256) throw Error('Mesh hash mismatch: ' + set + '/' + m.file);
+    }
   }
-  return { assets: assets.length, indexSha256: createHash('sha256').update(html).digest('hex') };
+  return { assets: assets.length, datasets: sets, indexSha256: createHash('sha256').update(html).digest('hex') };
 }
 
 async function current(dest) {

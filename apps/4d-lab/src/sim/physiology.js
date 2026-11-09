@@ -88,11 +88,37 @@ export function prepareGeometry(anatomy) {
   };
   const lo = [0, 1, 2].map((d) => Math.min(...st.centerline.map((p) => p[d])) - 60);
   const hi = [0, 1, 2].map((d) => Math.max(...st.centerline.map((p) => p[d])) + 60);
+  const rm = { ...PHANTOM_RESP_MODEL, ...(anatomy.respiration.model || {}) };
   return {
+    rm, diaphragm: diaphragmFor(anatomy),
     C: h.lvCentre, e: h.axis, a: h.lvCavity.a, b: h.lvCavity.b, wall: h.lvWall,
     Crv: h.rvCentre, brv: h.rvCavity.c, la: h.la, ra: h.ra,
     domeR: anatomy.respiration.domeRight, domeL: anatomy.respiration.domeLeft, apexZ: anatomy.respiration.lungApexZ,
     stomach: pl, stomachRadius: radiiAt, stomachBox: { lo, hi }, waveStart: pl.total * 0.38,
+  };
+}
+
+/**
+ * Envelope of the procedural respiratory field. These defaults ARE the procedural phantom's values;
+ * datasets with other geometry (the atlas-derived dataset) supply anatomy.respiration.model.
+ */
+export const PHANTOM_RESP_MODEL = {
+  halfWidth: 210, zRange: [-340, 240], cavity: { cy: 5, rx: 140, ry: 98 }, floorZ: -320,
+  chest: [-90, -30, 195, 235], abdomen: [-280, -200, -60, 10], wallY: [-112, 112], ribHalf: 165, trunk: [185, 205], slide: [-200, -20],
+};
+
+/**
+ * Diaphragm dome height z(x, y) for a dataset: a measured height map (anatomy.respiration.diaphragmMap,
+ * bilinear, clamped at the edges) when present, otherwise the phantom's analytic dome.
+ */
+export function diaphragmFor(anatomy) {
+  const m = anatomy?.respiration?.diaphragmMap;
+  if (!m) return diaphragmZ;
+  const z = Float32Array.from(m.z);
+  return (x, y) => {
+    const fx = clamp((x - m.x0) / m.dx, 0, m.nx - 1.0001), fy = clamp((y - m.y0) / m.dy, 0, m.ny - 1.0001);
+    const i = Math.floor(fx), j = Math.floor(fy), tx = fx - i, ty = fy - j, p = j * m.nx + i;
+    return (z[p] * (1 - tx) + z[p + 1] * tx) * (1 - ty) + (z[p + m.nx] * (1 - tx) + z[p + m.nx + 1] * tx) * ty;
   };
 }
 
@@ -211,21 +237,21 @@ export function respDisplacement(f, x, y, z, out) {
   const p = f.params, g = f.geom;
   // ---------------- respiration ----------------
   if (p.respirationEnabled) {
-    const r = f.r, D = p.breathDepth;
-    if (r > 0 && Math.abs(x) < 210 && z > -340 && z < 240) {
-      const zd = diaphragmZ(x, y);
+    const r = f.r, D = p.breathDepth, m = g.rm || PHANTOM_RESP_MODEL;
+    if (r > 0 && Math.abs(x) < m.halfWidth && z > m.zRange[0] && z < m.zRange[1]) {
+      const zd = (g.diaphragm || diaphragmZ)(x, y);
       // inside the thoraco-abdominal cavity (ellipse in the axial plane) the viscera move cranio-caudally
-      const cav = 1 - smoothstep(0.82, 1.08, Math.hypot(x / 140, (y - 5) / 98));
+      const cav = 1 - smoothstep(0.82, 1.08, Math.hypot(x / m.cavity.rx, (y - m.cavity.cy) / m.cavity.ry));
       let vz = 0;
       if (z >= zd) vz = -D * r * clamp((g.apexZ - z) / (g.apexZ - zd), 0, 1); // lungs/heart stretch toward the base
-      else vz = -D * r * clamp((z + 320) / (zd + 320 - 70), 0, 1); // abdominal viscera displaced caudally
+      else vz = -D * r * clamp((z - m.floorZ) / (zd - m.floorZ - 70), 0, 1); // abdominal viscera displaced caudally
       dz += vz * cav;
-      dy += 0.22 * vz * cav * smoothstep(-200, -20, z) * (0.3 + 0.7 * (1 - smoothstep(zd - 12, zd + 12, z))); // liver/spleen slide slightly anterior (continuous across the dome)
+      dy += 0.22 * vz * cav * smoothstep(m.slide[0], m.slide[1], z) * (0.3 + 0.7 * (1 - smoothstep(zd - 12, zd + 12, z))); // liver/spleen slide slightly anterior (continuous across the dome)
       // chest wall: anterior (pump handle) and lateral (bucket handle) expansion; back rests on the table
-      const fy = clamp((112 - y) / 224, 0, 1), fx = clamp(x / 165, -1, 1);
-      const chest = smoothstep(-90, -30, z) * (1 - smoothstep(195, 235, z));
-      const abdo = smoothstep(-280, -200, z) * (1 - smoothstep(-60, 10, z));
-      const trunk = 1 - smoothstep(185, 205, Math.abs(x));
+      const fy = clamp((m.wallY[1] - y) / (m.wallY[1] - m.wallY[0]), 0, 1), fx = clamp(x / m.ribHalf, -1, 1);
+      const chest = smoothstep(m.chest[0], m.chest[1], z) * (1 - smoothstep(m.chest[2], m.chest[3], z));
+      const abdo = smoothstep(m.abdomen[0], m.abdomen[1], z) * (1 - smoothstep(m.abdomen[2], m.abdomen[3], z));
+      const trunk = 1 - smoothstep(m.trunk[0], m.trunk[1], Math.abs(x));
       dy += -(0.30 * D * chest + 0.42 * D * abdo) * r * fy * trunk;
       dx += 0.16 * D * r * fx * chest * trunk;
     }
