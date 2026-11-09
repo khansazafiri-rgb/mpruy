@@ -776,7 +776,14 @@ async function toggleAudio() {
     S.playing = true; S.speed = 1;
     $('#speedSelect').value = '1';
     // The real stethoscope model is already synchronized to the cardiac motion/PCG.
-    if (!S.steth.ref) { const m = D?.anatomy?.auscultation?.find((s) => s.key === 'mitral'); if (m) placeSteth(m.point, m.normal, 'mitral'); }
+    if (!S.steth.ref) {
+      const m = D?.anatomy?.auscultation?.find((s) => s.key === 'mitral');
+      if (m) {
+        // Quick playback must not silently switch the user from Probe to Stethoscope.
+        S.steth.ref = [...m.point]; S.steth.point = [...m.point];
+        S.steth.normal = [...m.normal]; S.steth.key = 'mitral'; mixCache = null;
+      }
+    }
     syncAudioButtons(); refreshAll();
     status('Suara stetoskop sintetis aktif. EKG di layar adalah sinyal listrik skematik, bukan sumber bunyi.', 'ok');
   } catch (e) { status('Gagal mengaktifkan suara: ' + (e?.message || e), 'warn'); syncAudioButtons(); }
