@@ -14,7 +14,6 @@ export function moveFree(position, direction, millimetres = 10) {
 }
 
 const sq = (x) => x * x;
-const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 
 /**
  * Move on a reconstructed skin surface while preserving the local normal.
@@ -29,24 +28,28 @@ export function findSkinContact({ contact, positions, normals, direction, millim
   const point = contact.point, originalNormal = contact.normal;
   const target = point.map((v, i) => v + d[i] * millimetres);
   let winner = -1, minCost = Infinity;
+  const x0 = point[0], y0 = point[1], z0 = point[2], m = millimetres;
+  const maxStep2 = (m * 3 + 5) ** 2;
   for (let j = 0; j < positions.length; j += 3) {
-    const p = [positions[j], positions[j + 1], positions[j + 2]];
-    if (p[2] < capZ) continue;
-    if (coverage && p.some((v, i) => v < coverage.lo[i] + 2 || v > coverage.hi[i] - 2)) continue;
-    const n = [normals[j], normals[j + 1], normals[j + 2]];
-    const length = Math.hypot(...n) || 1;
-    const nn = n.map((v) => v / length);
+    const x = positions[j], y = positions[j + 1], z = positions[j + 2];
+    if (z < capZ) continue;
+    if (coverage && (x < coverage.lo[0] + 2 || x > coverage.hi[0] - 2 ||
+      y < coverage.lo[1] + 2 || y > coverage.hi[1] - 2 ||
+      z < coverage.lo[2] + 2 || z > coverage.hi[2] - 2)) continue;
+    const a = normals[j], b = normals[j + 1], c = normals[j + 2];
+    const il = 1 / (Math.hypot(a, b, c) || 1);
+    const nx = a * il, ny = b * il, nz = c * il;
     let cost;
     if (switchingSide) {
-      // Match horizontal and cranio-caudal position, prefer an accessible anterior/posterior face.
-      const facing = nn[1] * d[1];
+      const facing = ny * d[1];
       if (facing < 0.35) continue;
-      cost = 5 * (sq(p[0] - point[0]) + sq(p[2] - point[2])) + 1200 * sq(1 - facing);
+      cost = 5 * (sq(x - x0) + sq(z - z0)) + 1200 * sq(1 - facing);
     } else {
-      const match = dot(nn, originalNormal);
-      if (match < 0.25) continue; // Avoid abruptly jumping to the opposite body surface.
-      cost = sq(p[0] - target[0]) + sq(p[1] - target[1]) + sq(p[2] - target[2]) + 40 * sq(1 - match);
-      if (Math.hypot(p[0] - point[0], p[1] - point[1], p[2] - point[2]) > millimetres * 3 + 5) continue;
+      const match = nx * originalNormal[0] + ny * originalNormal[1] + nz * originalNormal[2];
+      if (match < 0.25) continue;
+      const movement2 = sq(x - x0) + sq(y - y0) + sq(z - z0);
+      if (movement2 > maxStep2) continue;
+      cost = sq(x - target[0]) + sq(y - target[1]) + sq(z - target[2]) + 40 * sq(1 - match);
     }
     if (cost < minCost) { minCost = cost; winner = j; }
   }
