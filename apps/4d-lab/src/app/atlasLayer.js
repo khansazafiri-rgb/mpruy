@@ -1,9 +1,9 @@
 // Shared MEDCOEL Anatomy Atlas layer for the 4D Lab.
 //
-// Loads the SAME files the Anatomy Atlas viewer serves (/anatomy/viewer/models/*.glb, its Draco decoder
-// and data/atlas-catalog.json) instead of shipping copies. Structure identity follows the atlas loader
-// (apps/anatomy/src/viewer/loadModel.js): a structure is a node with extras.za_name and owns the meshes
-// whose closest za_name ancestor it is. Geometry is baked ONCE into patient LPS millimetres with the
+// Loads only the asset-only atlas pack bundled under the Lab's own /atlas-assets/ route.
+// The pack includes GLBs, catalog and decoder but NOT the CC BY-NC-SA Atlas Viewer app code.
+// A structure is identified by its embedded glTF extras.za_name and owns the meshes
+// whose closest za_name ancestor it is. Implementation-code provenance still needs review. Geometry is baked ONCE into patient LPS millimetres with the
 // dataset's explicit atlasToLPS matrix (anatomy.json -> atlasFrame), so the layer lives in the same frame
 // as the probe, the CT grid and the physiology field. No visual offsets are applied anywhere.
 import * as THREE from 'three';

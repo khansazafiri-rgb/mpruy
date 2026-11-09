@@ -1,6 +1,6 @@
 // Browser tests for the ATLAS dataset (default): shared MEDCOEL Anatomy Atlas layer + atlas-derived CT.
 //   npm run build && node test/e2e/atlas-e2e.mjs [--shots]   (screenshots -> evidence/atlas-*.jpg)
-// The atlas GLBs are served from apps/anatomy/public at /anatomy/viewer/, exactly like production.
+// Atlas GLBs are bundled into the Lab's own atlas-assets/ static pack (no Atlas Viewer runtime).
 import { createRequire } from 'node:module';
 import { mkdir, writeFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
@@ -96,10 +96,11 @@ await step('atlas dataset is the default; shared atlas models load with no runti
   for (const name of ['Left ventricle', 'Right atrium', 'Liver', 'Stomach', 'Spleen', 'Inferior lobe of right lung', 'Body of sternum', 'Fifth rib.l']) assert.ok(await lab((n) => window.__lab.atlas.structures.has(n), name), 'has ' + name);
   // licence quarantine: withheld anatomy is absent (not substituted) and listed as unavailable
   for (const name of ['Kidney.l', 'Kidney.r', 'Renal pelvis.r', 'Incus.l']) assert.equal(await lab((n) => window.__lab.atlas.structures.has(n), name), false, 'withheld ' + name);
-  // the models came from the shared atlas URL, not from a 4D Lab copy
-  const urls = await lab(() => performance.getEntriesByType('resource').map((e) => e.name).filter((u) => u.includes('.glb')));
-  assert.ok(urls.some((u) => u.includes('/anatomy/viewer/models/visceral.glb')), 'visceral.glb from /anatomy/viewer/');
-  assert.ok(!urls.some((u) => u.includes('/anatomy/4d-lab/') && /models\//.test(u)), 'no duplicated atlas models under /anatomy/4d-lab/');
+  // all 3D model requests must resolve to the Lab's independent data-only pack
+  const urls = await lab(() => performance.getEntriesByType('resource').map((e) => e.name));
+  assert.ok(urls.some((u) => u.includes('/anatomy/4d-lab/atlas-assets/models/visceral.glb')), 'visceral.glb from Lab-owned asset pack');
+  assert.ok(urls.some((u) => u.includes('/anatomy/4d-lab/atlas-assets/data/atlas-catalog.json')), 'catalog from Lab-owned asset pack');
+  assert.ok(!urls.some((u) => u.includes('/anatomy/viewer/')), '4D Lab makes no requests to NC Atlas Viewer route');
   await nextFrame(0);
   assert.deepEqual(errors, []);
 });

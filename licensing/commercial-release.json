@@ -14,7 +14,7 @@
       "status": "blocked",
       "blockers": [
         "The Lab's atlas-derived dataset relies on Atlas models whose individual provenance remains partly inferred; its source and adaptation chain needs commercial clearance.",
-        "The Lab links to the Atlas viewer, whose application-code commercial rights are unresolved."
+        "The 4D Lab now packages Atlas-derived model/data resources under its own asset-only route, but provenance and independent commercial rights of the 4D Lab application code (including any adaptations of the NC Atlas frontend) have not been reviewed. The separate Atlas Viewer remains blocked."
       ],
       "approvedBuilds": []
     }
