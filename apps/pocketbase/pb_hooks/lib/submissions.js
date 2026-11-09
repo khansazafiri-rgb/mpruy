@@ -322,31 +322,70 @@ function titleNeeded(sub, count) {
   return "Pengajuan " + sub.getString("code") + " punya " + count + " PDF, jadi judulnya belum bisa dipilih otomatis. Sebutkan nomor PDF-nya (di Hermes: /put " + sub.getString("code") + " 2, nomornya sama dengan /files " + sub.getString("code") + " 2).";
 }
 
+/** Cari pengajuan dari id atau kode. */
+function findSubmission(app, ref) {
+  const x = String(ref || "").trim();
+  if (!x) return null;
+  try { return app.findFirstRecordByFilter("submissions", "id = {:x} || code = {:x}", { x: x }); } catch (_) { return null; }
+}
+
 /**
- * Impor materi (slide + penjelasan) untuk satu pengajuan PPT materi. Kampus dan cakupan selalu dari pengajuan.
- * Berhasil: berkas tayang di Drilling mata kuliah itu, pengajuan menjadi selesai, pengaju diberi tahu.
+ * Pemeriksaan sebelum materi dihubungkan ke pengajuan. opts.allowDone = true (admin) juga menerima pengajuan
+ * Selesai, mis. yang sudah ditandai Selesai manual padahal materinya ditempel lewat Admin tanpa tautan.
+ * opts.allowSoal = true (admin): pengajuan berjenis soal yang belum punya soal tersimpan dianggap PPT materi
+ * (pengaju salah memilih jenis isi). Mengembalikan status pengajuan saat ini.
  */
-function agentImportDeck(e) {
-  const decks = require(HOOKS + "/lib/decks.js");
-  u.requireAgent(e);
-  const b = u.body(e);
-  let sub;
-  try { sub = e.app.findFirstRecordByFilter("submissions", "id = {:x} || code = {:x}", { x: e.request.pathValue("id") }); } catch (_) { sub = null; }
-  if (!sub) throw new NotFoundError("Pengajuan tidak ditemukan.");
+function checkDeckSubmission(app, sub, opts) {
+  const o = opts || {};
   const st = sub.getString("status");
-  if (["antre", "diproses", "perlu_perbaikan"].indexOf(st) < 0) {
-    throw new BadRequestError("Pengajuan berstatus " + (LABEL[st] || st) + " tidak bisa diimpor. Konfirmasi dulu pengajuannya.");
+  const open = ["antre", "diproses", "perlu_perbaikan"].concat(o.allowDone ? ["selesai"] : []);
+  if (open.indexOf(st) < 0) {
+    const hint = st === "menunggu_konfirmasi" ? " Ubah statusnya ke Antre dulu di Admin > Pengajuan." : "";
+    throw new BadRequestError("Pengajuan " + sub.getString("code") + " berstatus " + (LABEL[st] || st) + ", jadi belum bisa dihubungkan ke materi." + hint);
   }
   if (sub.getString("contentKind") !== "materi") {
-    throw new BadRequestError("Pengajuan " + sub.getString("code") + " berisi soal, bukan PPT materi. Kirim lewat /import.");
+    const soal = app.countRecords("questions", $dbx.exp("submission = {:s}", { s: sub.id }));
+    if (!o.allowSoal || soal > 0) {
+      throw new BadRequestError("Pengajuan " + sub.getString("code") + " berisi soal, bukan PPT materi." + (o.allowSoal ? " Soal dari pengajuan itu sudah tersimpan." : " Kirim lewat /import."));
+    }
   }
+  return st;
+}
+
+/**
+ * Menandai pengajuan materi selesai setelah materinya tersimpan atau ditautkan: jenis isi menjadi materi,
+ * importedCount = jumlah slide, status Selesai, dan pengaju diberi tahu (pesan materi, tautan ke Kampusmu).
+ * Pengajuan yang sudah Selesai hanya diperbarui jumlah slidenya, tanpa notifikasi ulang.
+ */
+function finishDeckSubmission(app, sub, slideCount, actor) {
+  if (sub.getString("contentKind") !== "materi") sub.set("contentKind", "materi");
+  sub.set("importedCount", slideCount);
+  app.save(sub);
+  const st = sub.getString("status");
+  if (st === "selesai") return sub;
+  if (st !== "diproses") setStatus(app, sub, "diproses", sub.getString("statusNote"), actor);
+  return setStatus(app, sub, "selesai", sub.getString("statusNote"), actor);
+}
+
+/**
+ * Impor materi (slide + penjelasan) untuk satu pengajuan PPT materi. Kampus dan cakupan selalu dari pengajuan.
+ * Berhasil: berkas tayang di Kampusmu pengaju dan teman sekampusnya, pengajuan menjadi selesai, pengaju diberi tahu.
+ * opts: { actor: "agent" | "admin", subject?: id mata kuliah tujuan (bawaan: mata kuliah pengajuan), allowDone, allowSoal }.
+ */
+function importDeckFor(app, sub, b, opts) {
+  const decks = require(HOOKS + "/lib/decks.js");
+  const o = opts || {};
+  checkDeckSubmission(app, sub, o);
   const campus = sub.getString("scope") === "campus";
+  if (campus && !sub.getString("campus")) {
+    throw new BadRequestError("Pengajuan " + sub.getString("code") + " khusus kampus pengaju, tetapi kampusnya tidak tercatat. Isi kampus pengaju dulu atau jadikan General.");
+  }
   // Judul materi di web: permintaan eksplisit (title) > judul PDF (satu PDF, atau nomor PDF dipilih lewat `pdf`) > judul di JSON.
-  const t = titleFor(e.app, sub, b.pdf);
+  const t = titleFor(app, sub, b.pdf);
   const asked = u.cleanStr(b.title, 200);
-  const result = decks.importDeck(e.app, {
+  const result = decks.importDeck(app, {
     input: decks.inputOf(b),
-    subject: sub.getString("subject"),
+    subject: o.subject || sub.getString("subject"),
     scope: campus ? "campus" : "all",
     campuses: campus ? [sub.getString("campus")] : [],
     forceTitle: asked || t.title,
@@ -358,13 +397,19 @@ function agentImportDeck(e) {
     submission: sub.id,
     dryRun: b.dryRun === true,
   });
+  result.submission = { id: sub.id, code: sub.getString("code") };
+  if (!result.blocked && !b.dryRun) finishDeckSubmission(app, sub, result.slideCount, o.actor || "agent");
+  return result;
+}
+
+function agentImportDeck(e) {
+  const decks = require(HOOKS + "/lib/decks.js");
+  u.requireAgent(e);
+  const b = u.body(e);
+  const sub = findSubmission(e.app, e.request.pathValue("id"));
+  if (!sub) throw new NotFoundError("Pengajuan tidak ditemukan.");
+  const result = importDeckFor(e.app, sub, b, { actor: "agent" });
   if (result.blocked) return e.json(400, Object.assign({ status: 400, message: decks.blockedMessage(result) }, result));
-  if (!b.dryRun) {
-    if (st !== "diproses") setStatus(e.app, sub, "diproses", sub.getString("statusNote"), "agent");
-    sub.set("importedCount", result.slideCount);
-    e.app.save(sub);
-    setStatus(e.app, sub, "selesai", sub.getString("statusNote"), "agent");
-  }
   return e.json(200, result);
 }
 
@@ -442,4 +487,4 @@ function retarget(app, sub, change) {
   };
 }
 
-module.exports = { MAX_PDFS, LABEL, pdfTitle, titleFor, titleNeeded, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck, RETARGET_STATUSES, findSubjectLoose, retarget };
+module.exports = { MAX_PDFS, LABEL, pdfTitle, titleFor, titleNeeded, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck, findSubmission, checkDeckSubmission, finishDeckSubmission, importDeckFor, RETARGET_STATUSES, findSubjectLoose, retarget };
