@@ -15,6 +15,7 @@
 // The CT is generated in LPS from the atlas meshes, so atlas <-> CT correspondence is exact by
 // construction. It is NOT an acquired image and NOT registered to any real subject.
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readAtlasSystem, ATLAS_ROOT } from '../../tools/atlas-node.mjs';
@@ -674,7 +675,7 @@ const anatomy = {
   regions: { headZ: +(N + 120).toFixed(0), neckZ: +(N - 5).toFixed(0), armX: +(ribHalf + 55).toFixed(0), thighZ: +(P0 - 30).toFixed(0), thoraxZ: -5, pelvisZ: +(P0 + 70).toFixed(0), epigastricZ: +(U0 + 25).toFixed(0), umbilicalZ: +(U0 - 40).toFixed(0), quadrantSplitZ: +U0.toFixed(0), icsParasternal: ICS.l_parasternal },
   meshes: { skin: 'skin.glb', registration: 'registration.json', atlasLayer: { systems: ['visceral', 'skeletal', 'cardiovascular', 'lymphatic', 'muscular', 'nervous', 'joints'], url: 'shared MEDCOEL Anatomy Atlas models (/anatomy/viewer/models/)' } },
   comparisonWithProceduralPhantom: comparison,
-  build: { voxelMM: S, fatAndSkinMM: FAT_MM, armFatAndSkinMM: ARM_FAT_MM, closingMM: CLOSE_MM, skinNetMM: SKIN_H, seconds: Math.round((Date.now() - t0) / 1000) },
+  build: { sourceModels: Object.fromEntries(['skeletal', 'muscular', 'visceral', 'joints', 'lymphatic', 'cardiovascular', 'nervous'].map((sys) => [sys + '.glb', crypto.createHash('sha256').update(fs.readFileSync(path.join(ATLAS_ROOT, 'models', sys + '.glb'))).digest('hex')])), voxelMM: S, fatAndSkinMM: FAT_MM, armFatAndSkinMM: ARM_FAT_MM, closingMM: CLOSE_MM, skinNetMM: SKIN_H, seconds: Math.round((Date.now() - t0) / 1000) },
 };
 fs.writeFileSync(path.join(OUT, 'anatomy.json'), JSON.stringify(anatomy, null, 1));
 log(`wrote ${OUT}: skin/label agreement ${(100 * agree / tested).toFixed(1)}% of ${tested} vertices`);

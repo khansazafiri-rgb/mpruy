@@ -2823,11 +2823,20 @@
   "conclusion": "The procedural phantom and the atlas describe different bodies. A rigid fit leaves residuals far larger than a CT voxel, so the atlas is NOT overlaid on the phantom CT."
  },
  "build": {
+  "sourceModels": {
+   "skeletal.glb": "c2b70b31ddec4062cbc5ba969fc24ecfed61d00397a0bca795e2701d997200f8",
+   "muscular.glb": "f69ed1287f802a2d603d23293e01512bb57ae77ee7cca1d5527ba00496e51de2",
+   "visceral.glb": "b21a0f34b3da1bb0b6a9a6ae71d16ffbc036beb504944af2422d4b91a9317fe5",
+   "joints.glb": "9fdab1a257652597cf8f0b2ac93d12abc817e8f9a9099b9628e764018490afa2",
+   "lymphatic.glb": "718cac2b26ad752224cc8a11b2d5bf733fb523b75d9614822a24af7d19202756",
+   "cardiovascular.glb": "bc94c7b8eb1712f18ee461e064140e54aa817f3614e0f56a45b00e2a829cfb59",
+   "nervous.glb": "c7cde35497f887b319c0a84f1b5b605fa3ce66e23084b5e09d6e3825fa5030d9"
+  },
   "voxelMM": 2.5,
   "fatAndSkinMM": 8,
   "armFatAndSkinMM": 5,
   "closingMM": 6,
   "skinNetMM": 5,
-  "seconds": 83
+  "seconds": 61
  }
 }

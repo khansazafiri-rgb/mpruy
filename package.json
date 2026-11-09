@@ -16,9 +16,10 @@
     "lint:anatomy": "npm run lint --prefix apps/anatomy",
     "smoke:anatomy": "node scripts/anatomy-smoke.mjs",
     "build:4d-lab": "npm run build --prefix apps/4d-lab",
-    "test:4d-lab": "npm test --prefix apps/4d-lab && node --test scripts/stage-4d-lab.test.mjs",
+    "test:4d-lab": "npm test --prefix apps/4d-lab && node --test scripts/stage-4d-lab.test.mjs scripts/preview-4d-lab.test.mjs",
     "e2e:4d-lab": "npm run build --prefix apps/4d-lab && npm run test:e2e --prefix apps/4d-lab",
-    "stage:4d-lab": "node scripts/stage-4d-lab.mjs"
+    "stage:4d-lab": "node scripts/stage-4d-lab.mjs",
+    "preview:4d-lab": "node scripts/preview-4d-lab.mjs --build"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

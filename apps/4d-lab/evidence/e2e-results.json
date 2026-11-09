@@ -1,79 +1,79 @@
 {
-  "date": "2026-11-08T18:01:22.836Z",
+  "date": "2026-11-09T01:07:16.996Z",
   "browser": "Chromium (Playwright, headless, SwiftShader WebGL)",
   "passed": 14,
   "failed": 0,
   "memoryMiB": 73.05145263671875,
   "timing": {
-    "usMs": 109.5,
-    "deformMs": 16.800000000745058,
-    "fps": 11.077263915812615
+    "usMs": 89.5999999998603,
+    "deformMs": 20.899999999906868,
+    "fps": 10.312177744445655
   },
   "results": [
     {
       "name": "loads the phantom package with verified registration and no runtime errors",
       "ok": true,
-      "ms": 2098
+      "ms": 453
     },
     {
       "name": "no black-screen: 3D view and imaging monitor contain structured content",
       "ok": true,
-      "ms": 2966
+      "ms": 1909
     },
     {
       "name": "clinical probe: rotate / heel-toe / rock keep the contact point fixed and change the image",
       "ok": true,
-      "ms": 15641
+      "ms": 12019
     },
     {
       "name": "camera orbit / presets never change the imaging (paused, same pose)",
       "ok": true,
-      "ms": 13252
+      "ms": 10826
     },
     {
       "name": "anterior and posterior skin placement by clicking the registered surface",
       "ok": true,
-      "ms": 4041
+      "ms": 3305
     },
     {
       "name": "dragging the probe slides the contact over the skin (surface-aware)",
       "ok": true,
-      "ms": 6941
+      "ms": 5087
     },
     {
       "name": "free 3D mode: presets, numeric translation, out-of-volume indication, gizmo drag",
       "ok": true,
-      "ms": 7176
+      "ms": 5855
     },
     {
       "name": "monitor: zoom / pan / fit, expand and fullscreen",
       "ok": true,
-      "ms": 7221
+      "ms": 6389
     },
     {
       "name": "separate CT and ultrasound modes; CT window/level changes CT only",
       "ok": true,
-      "ms": 13366
+      "ms": 10760
     },
     {
       "name": "ultrasound responds to tissue parameters and machine settings (executable simulation)",
       "ok": true,
-      "ms": 22970
+      "ms": 18317
     },
     {
       "name": "physiology: playing animates meshes and images; heart-rate and phase controls work",
       "ok": true,
-      "ms": 48206
+      "ms": 45261
     },
     {
       "name": "pathology: HFrEF vs normal comparison, effusion layer, reduced antral motility",
       "ok": true,
-      "ms": 8814
+      "ms": 5956
     },
     {
       "name": "auscultation: stethoscope sites, synchronised audio scheduling and site-dependent mix",
       "ok": true,
-      "ms": 10441
+      "ms": 7940
     },
     {
       "name": "memory footprint after a full session (Chromium heap)",

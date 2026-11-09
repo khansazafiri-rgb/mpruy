@@ -561,7 +561,7 @@ function buildPanels() {
     el('p', { class: 'hint' }, 'Ubah sifat akustik jaringan dan lihat efeknya pada simulasi (mis. atenuasi hati ↑ → bayangan dalam lebih gelap).'),
     field('Jaringan', tissueSel), tissueBox,
     el('details', { class: 'limits' }, el('summary', {}, 'Asumsi & keterbatasan simulasi USG'),
-      el('ul', {}, ...['Model sinar lurus, hamburan tunggal, irisan 2D (tanpa ketebalan elevasi).', 'Tanpa refraksi, aberasi kecepatan suara, side-lobe, harmonik, Doppler.', 'Nilai c, ρ, α dari literatur (T1–T4); hamburan balik adalah skala ekogenisitas relatif untuk pengajaran.', 'Reverberasi hanya dimodelkan antara transduser dan reflektor gas/udara pertama.', 'Phantom sintetis: bukan anatomi pasien, tidak tervalidasi klinis.'].map((t) => el('li', {}, t)))),
+      el('ul', {}, ...['Model sinar lurus, hamburan tunggal, irisan 2D (tanpa ketebalan elevasi).', 'Tanpa refraksi, aberasi kecepatan suara, side-lobe, harmonik, Doppler.', 'Nilai c, ρ, α dari literatur (T1–T4); hamburan balik adalah skala ekogenisitas relatif untuk pengajaran.', 'Reverberasi hanya dimodelkan antara transduser dan reflektor gas/udara pertama.', 'Data sintetis (CT dari Atlas MEDCOEL atau phantom prosedural): bukan anatomi pasien, tidak tervalidasi klinis.'].map((t) => el('li', {}, t)))),
   );
   tissueSel.value = String(S.tissues.findIndex((t) => t.key === 'liver')); buildTissue();
 
@@ -793,6 +793,8 @@ async function boot() {
   try {
     const probe = document.createElement('canvas');
     if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) throw new Error('WebGL tidak tersedia: tampilan 3D tidak dapat dibuat. Aktifkan akselerasi grafis di browser.');
+    // Bundled CT/labels are gzip NRRD: DecompressionStream needs Safari 16.4+ / Chrome 80+ / Firefox 113+.
+    if (typeof DecompressionStream === 'undefined') throw new Error('Browser ini terlalu lama untuk 4D Lab (tidak ada DecompressionStream). Perbarui ke Safari 16.4 atau lebih baru (macOS: Pengaturan Sistem → Pembaruan Perangkat Lunak), atau gunakan Chrome/Firefox terbaru.');
     scene = new PatientScene($('#viewport'), {
       onContact: (c) => { if (!contactInCoverage(c)) return; S.contact = c; S.mode = 'clinical'; touch(); updateReadouts(); },
       onSkinClick: (c) => { if (S.tool === 'stethoscope') placeSteth(c.point, c.normal, null); else if (S.mode === 'clinical' && contactInCoverage(c)) { S.contact = c; touch(); updateReadouts(); } },
