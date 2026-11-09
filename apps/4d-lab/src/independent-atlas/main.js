@@ -188,11 +188,11 @@ async function ensureSystem(system) {
 
 async function showSystem(system, enabled, exclusive = false) {
   if (!availableSystem(system)) return;
-  if (exclusive) for (const id of [...view.enabled]) if (id !== system) {
-    change({ type: 'system', system: id, enabled: false, valid: true });
-    unload(id);
-  }
-  change({ type: 'system', system, enabled, valid: true });
+  if (exclusive) {
+    // One undoable state transition; leave no isolate/fade from removed models.
+    change({ type: 'onlySystem', system, valid: true });
+    for (const id of [...models.keys()]) if (id !== system) unload(id);
+  } else change({ type: 'system', system, enabled, valid: true });
   if (!enabled) unload(system);
   else await ensureSystem(system);
   appearance();
@@ -206,7 +206,9 @@ function choose(system, name, autoFrame = true) {
   if (!list?.length) { status('Struktur tidak tersedia dalam model yang aktif.'); return; }
   if (view.region !== 'whole' && !entryByKey.get(key).regions.includes(view.region))
     change({ type: 'region', region: 'whole' });
-  change({ type: 'select', key });
+  // Search/picking also restores hidden selections and clears isolation of
+  // other structures, so a valid result never frames an invisible mesh.
+  change({ type: 'reveal', key });
   if (autoFrame) {
     const box = new THREE.Box3();
     for (const mesh of list) box.expandByObject(mesh);
