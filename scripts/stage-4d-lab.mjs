@@ -70,7 +70,16 @@ export async function stageLab({ source = path.join(repo, 'apps/4d-lab/dist'), d
   if (rollback) {
     const r = JSON.parse(await readFile(record, 'utf8'));
     if (previous !== r.currentTarget || !r.previousTarget) throw Error('No matching previous release to roll back to');
-    await validateLab(r.previousTarget); await activate(dest, r.previousTarget);
+    await validateLab(r.previousTarget);
+    // Returning to an older release is still a public distribution decision:
+    // do not bypass rights approval simply because the old build was deployed.
+    assertCommercialReleaseReady('4d-lab', r.previousTarget, commercialManifest);
+    const rollbackAtlas = atlasRoot || process.env.ANATOMY_VIEWER_DIR || '/var/lib/medcoel/anatomy-viewer';
+    let hasAtlas = false;
+    try { hasAtlas = !!(await lstat(rollbackAtlas)); } catch { /* absent on this host */ }
+    if (hasAtlas || atlasRoot || process.env.ANATOMY_VIEWER_DIR)
+      await checkAtlasModels(r.previousTarget, rollbackAtlas);
+    await activate(dest, r.previousTarget);
     const out = { currentTarget: r.previousTarget, previousTarget: previous, rolledBackAt: new Date().toISOString() };
     await writeFile(record, JSON.stringify(out, null, 2)); return out;
   }
@@ -86,6 +95,9 @@ export async function stageLab({ source = path.join(repo, 'apps/4d-lab/dist'), d
   await cp(source, release, { recursive: true });
   try {
     await validateLab(release);
+    // Verify exactly the bytes that will become publicly reachable, not only
+    // the source folder that was inspected before copying.
+    validation.commercialRights = assertCommercialReleaseReady('4d-lab', release, commercialManifest);
     const out = { dest, currentTarget: release, previousTarget: previous, createdAt: new Date().toISOString(), ...validation };
     await writeFile(record, JSON.stringify(out, null, 2));
     await activate(dest, release);

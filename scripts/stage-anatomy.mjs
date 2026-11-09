@@ -43,7 +43,11 @@ export async function stageAnatomy({source=path.resolve(repo,process.env.ANATOMY
   if(rollback){
    const record=JSON.parse(await readFile(recordFile,'utf8'));
    if(previous!==record.currentTarget||!record.previousTarget)throw Error('No matching previous release to roll back to');
-   await validateViewer(record.previousTarget);await activate(dest,record.previousTarget);
+   await validateViewer(record.previousTarget);
+   // Rollback is also a PUBLIC RELEASE. A pre-policy or later-modified release
+   // cannot bypass the exact-build commercial-rights approval by being 'previous'.
+   assertCommercialReleaseReady('atlas-viewer',record.previousTarget,commercialManifest);
+   await activate(dest,record.previousTarget);
    await writeFile(recordFile,JSON.stringify({currentTarget:record.previousTarget,previousTarget:previous,rolledBackAt:new Date().toISOString()},null,2)+'\n');
    return {dest,currentTarget:record.previousTarget,previousTarget:previous};
   }
@@ -58,6 +62,8 @@ export async function stageAnatomy({source=path.resolve(repo,process.env.ANATOMY
    if(installed.digest!==content.digest)throw Error('Release ID already exists with different content; choose a new release ID');
    for(const [file,hash]of Object.entries(content.files))if(createHash('sha256').update(await readFile(path.join(release,file))).digest('hex')!==hash)throw Error('Existing release content mismatch: '+file);
    await validateViewer(release);
+   // Verify the exact bytes served by this existing release, not just its source.
+   validation.commercialRights=assertCommercialReleaseReady('atlas-viewer',release,commercialManifest);
    if(previous===release)return {dest,currentTarget:release,unchanged:true,...validation};
    const record={dest,currentTarget:release,previousTarget:previous,createdAt:new Date().toISOString(),...validation};
    await writeFile(recordFile,JSON.stringify(record,null,2)+'\n');await activate(dest,release);return record;
@@ -66,9 +72,14 @@ export async function stageAnatomy({source=path.resolve(repo,process.env.ANATOMY
   try{
    await cp(source,release,{recursive:true});
    await writeFile(path.join(release,'.release-source.json'),JSON.stringify(content));
-   // Keep old hashed chunks reachable for tabs opened before this release.
+   // Retain old hashed chunks for tabs opened before this release ONLY if the
+   // entire resulting directory has been explicitly reviewed. The prior assets
+   // must be included in the signed-off build digest; otherwise fail closed.
    if(previous){try{await cp(path.join(previous,'assets'),path.join(release,'assets'),{recursive:true,force:false,errorOnExist:false});}catch(error){if(error.code!=='ENOENT')throw error;}}
    await validateViewer(release);
+   // Source approval does not automatically cover files copied from the previous
+   // release (nor any mutation during staging). Never activate unapproved bytes.
+   validation.commercialRights=assertCommercialReleaseReady('atlas-viewer',release,commercialManifest);
    const record={dest,currentTarget:release,previousTarget:previous,createdAt:new Date().toISOString(),...validation};
    // Keep rollback coordinates before switching; an interrupted process cannot
    // delete the formerly active release or copy a half-built tree into it.
