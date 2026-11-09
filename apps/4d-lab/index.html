@@ -116,12 +116,15 @@
       <button id="expandBtn" data-testid="expand" aria-pressed="false">Perbesar</button>
       <button id="fullBtn" data-testid="fullscreen">Layar penuh</button>
     </div>
+    <div id="monitorScroll" class="monitor-scroll" data-testid="monitor-scroll" tabindex="0" role="region" aria-label="Area pencitraan dan grafik fisiologis, dapat digulir secara vertikal">
     <section id="triControls" class="tri-controls" data-testid="tri-controls" aria-label="Navigasi irisan CT" hidden>
       <div class="tri-controls-head"><strong>Tri-planar CT · titik silang terhubung</strong><button type="button" id="triHelp" data-testid="tri-help" aria-label="Ulangi panduan Tri-planar CT">? Panduan</button><button type="button" id="triReturnProbe" data-testid="tri-return-probe">Kembali ke Probe USG</button></div>
       <p>Aksial: atas–bawah (S/I) · Koronal: depan–belakang (A/P) · Sagital: kanan–kiri pasien (R/L).</p>
       <p>Klik citra untuk memindahkan titik silang. Scroll pada citra menggeser irisan; seret menggeser tampilan, ⌘/Ctrl + scroll memperbesar. Kontrol di bawah juga menggeser irisan tanpa menyentuh citra.</p>
       <div id="triSliceRows" class="tri-slice-rows"></div>
       <button type="button" id="triCenter" data-testid="tri-center">Pusatkan titik silang</button>
+      <button type="button" id="triShowImages" data-testid="tri-show-images" class="tri-show-images">Lihat seluruh citra CT ↓</button>
+      <p class="tri-scroll-hint">Panel kanan bisa digulir ke bawah untuk melihat ketiga citra CT, grafik, dan kontrol pemutaran. Scroll tepat di atas citra tetap menggeser irisan CT.</p>
     </section>
     <div class="monitor-body">
       <div class="monitor-wrap">
@@ -137,6 +140,7 @@
       <label class="inline">Kecepatan <select id="speedSelect"><option value="0.25">0,25×</option><option value="0.5">0,5×</option><option value="1" selected>1×</option></select></label>
       <span id="liveReadout" class="live" data-testid="live-readout"></span>
     </div>
+    </div><!-- monitorScroll -->
   </section>
 </main>
 <nav class="pane-switch" role="tablist" aria-label="Tampilan layar kecil" data-testid="pane-switch">
