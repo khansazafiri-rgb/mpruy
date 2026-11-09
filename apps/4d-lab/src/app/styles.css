@@ -563,3 +563,20 @@ body[data-learning="1"] .view-menu, body[data-learning="1"] .monitor-toolbar .in
   .monitor-scroll-rail { flex-basis: 33px; width: 33px; }
   .monitor-scroll-arrow { flex-basis: 32px; height: 32px; }
 }
+
+/* Head-to-toe region awareness: a missing scan is NOT a diagnostic-looking image.
+   The overlay covers stale CT/USG frames and cannot intercept the imaging widgets
+   unless the selected skin contact lies outside the available acquisition. */
+.scan-mode .region-status { font-size: 11px; font-weight: 700; white-space: nowrap; color: #1d6c60; border-left: 1px solid #c4dcd5; padding-left: 8px; }
+.scan-mode .region-status[data-available="false"] { color: #a35016; }
+.scan-mode .region-status[hidden] { display: none; }
+.monitor-wrap .coverage-notice {
+  position: absolute; inset: 0; z-index: 12;
+  background: #061016; color: #eaf5f4;
+  padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 10px;
+  pointer-events: none; line-height: 1.45;
+}
+.monitor-wrap .coverage-notice[hidden] { display: none; }
+.coverage-notice strong { font-size: 18px; color: #ffd38a; }
+.coverage-notice p { max-width: 480px; font-size: 14px; margin: 0; }
+.coverage-notice small { color: #b6d0cc; max-width: 460px; font-size: 12px; }

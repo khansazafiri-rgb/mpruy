@@ -11,6 +11,7 @@ import { siteMix, heartCycle } from '../sim/auscultation.js';
 import { VIEWS, snapToSkin } from '../sim/views.js';
 import { REFERENCES } from '../sim/references.js';
 import { PatientScene } from './scene3d.js';
+import { imagingAvailability } from './regionCoverage.js';
 import { shouldShowImagingPlane } from './sceneVisibility.js';
 import { Monitor, drawStrip } from './monitor.js';
 import { AudioEngine } from './audio.js';
@@ -267,6 +268,12 @@ function setProbe(key, keepDepth = true) {
 
 // ------------------------------------------------------------------ worker bridge
 function requestImaging(f, plane) {
+  // A skin-only region has NO CT/USG dataset. Never ask the worker to invent a
+  // slice or show an old texture from the previously selected trunk location.
+  const coverage = currentProbeCoverage();
+  if (coverage && !coverage.available) {
+    dirty = false; pending = false; scene.hideImagePlane(); refreshRegionCoverage(); return;
+  }
   if (!worker || (!plane && S.display !== 'tri')) return;
   if (workerBusy) { pending = true; return; }
   workerBusy = true; pending = false; dirty = false;
@@ -297,6 +304,10 @@ function onWorker(e) {
     workerBusy = false; stats.usMs = m.ms;
     // Drop a result produced for the previous mode before it can redraw its plane.
     if (requestImaging.job?.generation !== (requestImaging.generation || 0) || requestImaging.job?.display !== S.display) { markDirty(); return; }
+    // Late async frame from a previously covered region must not replace the
+    // explicit missing-data notice after moving the probe to head or limbs.
+    const coverage = currentProbeCoverage();
+    if (coverage && !coverage.available) { scene.hideImagePlane(); refreshRegionCoverage(); return; }
     if (m.tri) { onTriFrame(m); if (pending) markDirty(); return; }
     lastFrameInfo = { id: m.id, centreLabel: m.centreLabel, ms: m.ms, ctOutside: m.ct?.outsideFraction, quality: requestImaging.quality, hasUS: !!m.us, hasCT: !!m.ct };
     const plane = requestImaging.plane;
@@ -347,6 +358,7 @@ function loop(now) {
   let dt = Math.min(0.1, (now - lastT) / 1000); lastT = now;
   fpsAcc += dt; fpsN++; if (fpsAcc > 1) { stats.fps = fpsN / fpsAcc; fpsAcc = 0; fpsN = 0; }
   if (!D) return;
+  refreshRegionCoverage();
   if (audio.on) { const a = audio.now(); dt = Math.max(0, Math.min(0.1, a - lastAudio)); lastAudio = a; audioOffset = a - clock.t - dt; }
   const params = effectiveParams();
   if (S.playing && geom) { advanceClock(clock, dt * (audio.on ? 1 : S.speed), params); markDirty(); }
@@ -526,12 +538,43 @@ function labelBox(vol, label) {
   return { lo: lo.map((v) => v - 6), hi: hi.map((v) => v + 6) };
 }
 
-/** Probe contact must lie where imaging exists: inside the CT acquisition box (the atlas shell extends beyond it). */
+/** Atlas has a full-body illustrative skin but only trunk CT. Allow the student
+ * to place the probe on any real skin surface; do not fabricate images there. */
 function contactInCoverage(c) {
-  const b = D?.ct?.bounds; if (!b || !c) return true;
+  if (!c) return false;
+  if (D?.anatomy?.dataset === 'atlas') return true; // covered by explicit unavailable-data UI
+  const b = D?.ct?.bounds; if (!b) return true;
   const ok = [0, 1, 2].every((i) => c.point[i] >= b.lo[i] + 2 && c.point[i] <= b.hi[i] - 2);
-  if (!ok) status('Titik itu di luar cakupan CT (kotak hijau): tidak ada data pencitraan di sana. Pilih titik di dada, abdomen atau pelvis.', 'warn');
+  if (!ok) status('Titik itu di luar cakupan CT: tidak ada data pencitraan di sana.', 'warn');
   return ok;
+}
+
+/** Read-only region classification from source atlas landmarks and CT bounds.
+ * No extra voxels are loaded or synthesised when the probe is moved. */
+function currentProbeCoverage() {
+  if (!D?.ct || D.anatomy?.dataset !== 'atlas' || S.mode !== 'clinical' ||
+      S.tool !== 'probe' || !S.contact || S.display === 'tri') return null;
+  return imagingAvailability({
+    point: S.contact.point, bounds: D.ct.bounds,
+    landmarks: D.anatomy.regions, dataset: 'atlas',
+  });
+}
+let lastCoverageKey = '';
+function refreshRegionCoverage() {
+  const c = currentProbeCoverage(), unavailable = !!c && !c.available;
+  const key = c ? `${c.region}/${c.available}/${S.mode}/${S.tool}` : 'none';
+  if (lastCoverageKey !== key) {
+    const badge = $('#regionStatus'), notice = $('#coverageNotice'), text = $('#coverageNoticeText');
+    if (badge) {
+      badge.hidden = !c;
+      if (c) { badge.textContent = c.available ? `${c.regionLabel} · CT tersedia` : `${c.regionLabel} · belum ada citra`; badge.dataset.available = String(c.available); }
+    }
+    if (notice) notice.hidden = !unavailable;
+    if (text && unavailable) text.textContent = c.message;
+    lastCoverageKey = key;
+  }
+  if (unavailable) scene?.hideImagePlane();
+  return c;
 }
 
 // ------------------------------------------------------------------ direction pad (direct control)
@@ -541,7 +584,7 @@ function contactInCoverage(c) {
 function ctlEnv() {
   const b = scene.bodyBounds || D?.ct?.bounds;
   return {
-    closestSkin: (p) => scene.closestSkin(p), raySkin: (o, d) => scene.raySkin(o, d), coverage: D?.ct?.bounds,
+    closestSkin: (p) => scene.closestSkin(p), raySkin: (o, d) => scene.raySkin(o, d), coverage: D?.anatomy?.dataset === 'atlas' ? null : D?.ct?.bounds,
     bodyCentre: b ? [(b.lo[0] + b.hi[0]) / 2, (b.lo[1] + b.hi[1]) / 2, (b.lo[2] + b.hi[2]) / 2] : [0, 0, 0],
   };
 }
@@ -704,6 +747,7 @@ function numberControl({ id, label, min, max, step, get, set, unit = '', steps =
 }
 const controls = [];
 function refreshAll() {
+  refreshRegionCoverage();
   for (const c of controls) c.sync?.();
   document.body.dataset.mode = S.mode; document.body.dataset.tool = S.tool;
   const tri = S.display === 'tri', clinical = S.mode === 'clinical' && !tri;
