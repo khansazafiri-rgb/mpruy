@@ -49,8 +49,10 @@ export const DATASETS = {
 };
 const DATASET = DATASETS[QUERY.get('dataset')] ? QUERY.get('dataset') : 'atlas';
 let DATA = DATASETS[DATASET].dir;
-// The atlas models are SHARED with the Anatomy Atlas viewer (same origin, same files): no copies are shipped.
-const ATLAS_BASE = QUERY.get('atlasBase') || import.meta.env.VITE_ATLAS_BASE || '/anatomy/viewer/';
+// The Lab owns a dedicated static asset-only pack of the documented atlas-derived models.
+// It never loads nqwrc/3d-anatomy application code or depends on the NC Atlas Viewer route.
+// Commercial publication still requires source-asset provenance and code-rights clearance.
+const ATLAS_BASE = BASE + 'atlas-assets/';
 // A view whose target organ is withheld (licence quarantine) says so instead of implying it is imaged.
 const labelUnavailable = (id) => D?.anatomy?.labels?.some((l) => l.id === id && l.available === false);
 const viewLabel = (v) => (v.key === 'ruq' && labelUnavailable(20) ? 'RUQ / hepatorenal (ginjal tidak tersedia)' : v.labelId);
