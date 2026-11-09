@@ -58,6 +58,28 @@ try {
   await page.waitForFunction(() => window.__independentAtlasPilot?.system === 'visceral' && window.__independentAtlasPilot?.loadedModels === 1 && window.__independentAtlasPilot?.structureCount > 0, null, { timeout: 90000 });
   await page.getByTestId('pilot-front').click();
   await page.getByTestId('pilot-fit').click();
+  // Regression: switching away from an isolated system must leave the newly
+  // selected system visible. This previously retained a stale isolated key.
+  await page.getByTestId('pilot-search').fill('Sternum');
+  await page.getByTestId('pilot-results').getByRole('button', { name: /Sternum/i }).first().click();
+  await page.getByTestId('pilot-isolate').click();
+  await page.getByTestId('pilot-system').selectOption('visceral');
+  await page.waitForFunction(() => window.__independentAtlasPilot?.system === 'visceral' &&
+    window.__independentAtlasPilot?.loadedModels === 1 &&
+    window.__independentAtlasPilot?.structureCount > 0, null, { timeout: 90000 });
+  assert.ok(!/Tidak ada struktur terlihat/.test(await page.getByTestId('pilot-status').textContent()),
+    'exclusive system switch must show visible models after prior isolation');
+  // Regression: search for a hidden object should bring it back into view.
+  await page.getByTestId('pilot-system').selectOption('skeletal');
+  await page.waitForFunction(() => window.__independentAtlasPilot?.system === 'skeletal' &&
+    window.__independentAtlasPilot?.loadedModels === 1, null, { timeout: 90000 });
+  await page.getByTestId('pilot-search').fill('Sternum');
+  await page.getByTestId('pilot-results').getByRole('button', { name: /Sternum/i }).first().click();
+  await page.getByTestId('pilot-hide').click();
+  assert.equal(await page.evaluate(() => window.__independentAtlasPilot.hiddenCount), 1);
+  await page.getByTestId('pilot-results').getByRole('button', { name: /Sternum/i }).first().click();
+  assert.equal(await page.evaluate(() => window.__independentAtlasPilot.hiddenCount), 0,
+    'search should reveal previously hidden structure');
   assert.equal(await page.locator('meta[name=robots]').getAttribute('content'), 'noindex,nofollow');
   assert.equal(requests.some(x => x.includes('/anatomy/viewer/')), false, 'No requests to legacy NC Atlas Viewer');
   assert.equal(requests.some(x => /models\/nervous\.glb/i.test(x)), false, 'No quarantined nervous mesh');
