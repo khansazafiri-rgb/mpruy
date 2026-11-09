@@ -437,7 +437,11 @@ export async function initAtlas(data) {
   }
   // A quiz starts from its participant scope, never the previous atlas selection.
   if (globalThis.document?.body?.classList.contains('anatomy-study-active')) saved = null;
-  if (validSaved(saved)) settings = saved.settings;
+  if (validSaved(saved)) {
+    settings = saved.settings;
+    // Links saved before the licence quarantine may still mention withheld groups.
+    for (const id of Object.keys(settings.groups)) if (!GROUPS.some((g) => g.id === id)) delete settings.groups[id];
+  }
   await loadEnabled();
   if (validSaved(saved) && Array.isArray(saved.visibility))
     quiet(() =>

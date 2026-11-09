@@ -30,7 +30,7 @@ it('sweep travels along the long axis and starts at the upper end',()=>{
 });
 it('all selectable structures and regions have actual WebP previews tied to unchanged GLB sources',()=>{
  const manifest=JSON.parse(readFileSync(new URL('data/structure-thumbnails.json',publicUrl))),systems=JSON.parse(readFileSync(new URL('data/systems.json',publicUrl)));
- expect(Object.keys(manifest.structures)).toHaveLength(2827);expect(Object.keys(manifest.regions)).toHaveLength(8);
+ expect(Object.keys(manifest.structures)).toHaveLength(2237);/* 2827 minus 590 licence-quarantined */expect(Object.keys(manifest.regions)).toHaveLength(8);
  const items=[...Object.values(manifest.structures),...Object.values(manifest.regions),manifest.hero];
  for(const item of items){const bytes=readFileSync(new URL(item.url,publicUrl));expect(bytes.subarray(0,4).toString()).toBe('RIFF');expect(bytes.subarray(8,12).toString()).toBe('WEBP');expect(statSync(new URL(item.url,publicUrl)).size).toBeGreaterThan(100);}
  for(const [system,hash] of Object.entries(manifest.models)){expect(systems[system]).toBeTruthy();expect(createHash('sha256').update(readFileSync(new URL('models/'+system+'.glb',publicUrl))).digest('hex')).toBe(hash);}

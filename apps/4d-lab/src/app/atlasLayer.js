@@ -24,8 +24,15 @@ export const ATLAS_GROUPS = {
   endocrine: { label: 'Endokrin', system: 'visceral', defaultOn: true },
   lymphatic: { label: 'Limpa & timus', system: 'lymphatic', defaultOn: true },
   muscular: { label: 'Otot batang tubuh', system: 'muscular', defaultOn: false, onDemand: true, opacity: 0.85 },
-  nervous: { label: 'Saraf batang tubuh', system: 'nervous', defaultOn: false, onDemand: true },
 };
+// Licence quarantine (licensing/quarantine-policy.json): these atlas files/structures are withheld from
+// public builds. The lab never requests them and shows them as unavailable instead of substituting
+// other geometry. test/quarantine.test.mjs keeps this list in sync with the policy.
+export const QUARANTINED_SYSTEMS = Object.freeze(['nervous']);
+export const UNAVAILABLE_ANATOMY = Object.freeze([
+  { key: 'nervous', label: 'Saraf batang tubuh & medula spinalis', reason: 'File atlas sistem saraf ditahan sementara (tinjauan lisensi).' },
+  { key: 'kidney', label: 'Ginjal & pelvis renalis', reason: 'Model ginjal (CC BY-NC 4.0) ditahan sementara; tidak diganti model lain.' },
+]);
 const TRUNK = new Set(['thorax', 'abdomen', 'pelvis', 'back']);
 const GREAT_VESSELS = /aorta|vena cava|pulmonary (trunk|artery|vein)|Bifurcation of pulmonary trunk|brachiocephalic|subclavian (artery|vein)|common carotid|internal jugular|common iliac|external iliac|internal iliac|renal (artery|vein)|hepatic portal|splenic (artery|vein)|superior mesenteric|coeliac|celiac|azygos|coronary|Coronary sinus/i;
 // Structures hidden at start (large envelopes that cover the organs a student is looking for).
@@ -83,6 +90,7 @@ export class AtlasLayer {
   }
 
   async _load(system, onProgress) {
+    if (QUARANTINED_SYSTEMS.includes(system)) throw new Error(`${system} tidak tersedia: ditahan karena tinjauan lisensi`);
     const t0 = performance.now();
     await this.loadCatalog();
     const loader = new GLTFLoader(); loader.setDRACOLoader(this.draco);

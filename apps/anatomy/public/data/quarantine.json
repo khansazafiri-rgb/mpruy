@@ -1,0 +1,2374 @@
+{
+ "schemaVersion": 1,
+ "policy": "licensing/quarantine-policy.json",
+ "decided": "2026-11-09",
+ "message": {
+  "id": "Tidak tersedia sementara: sedang ditinjau lisensinya. MEDCOEL tidak menggantinya dengan model buatan.",
+  "en": "Temporarily unavailable pending licence review. MEDCOEL does not substitute fabricated models."
+ },
+ "systems": [
+  "nervous"
+ ],
+ "structures": [
+  {
+   "id": " Posterior transverse collateral sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": " Posterior transverse collateral sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "(Communicating branch of median nerve with ulnar nerve).l",
+   "system": "nervous"
+  },
+  {
+   "id": "(Communicating branch of median nerve with ulnar nerve).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Abducens nerve (VI).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Abducens nerve (VI).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Accessory nerve (XI).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Accessory nerve (XI).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Accessory nucleus of oculomotor nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Accessory nucleus of oculomotor nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Ampulla of lacrimal canaliculus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Ampulla of lacrimal canaliculus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Amygdaloid body.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Amygdaloid body.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Angular gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Angular gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior branch of medial antebrachial cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior branch of medial antebrachial cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior branch of obturator nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior branch of obturator nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior chamber of eyeball.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior chamber of eyeball.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior cochlear nucleus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior cochlear nucleus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior commissure",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior corticospinal tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior cutaneous branches of femoral nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior cutaneous branches of femoral nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior division of inferior trunk of brachial plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior division of inferior trunk of brachial plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior division of mandibular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior division of mandibular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior division of middle trunk of brachial plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior division of middle trunk of brachial plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior division of superior trunk of brachial plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior division of superior trunk of brachial plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior fasciculus proprius",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior horn of spinal cord",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior interosseous nerve of forearm.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior interosseous nerve of forearm.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior occipital sulcus*.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior occipital sulcus*.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior quadrangular lobule.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior quadrangular lobule.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior root of posterior femoral cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior root of posterior femoral cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior root of spinal nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior root of spinal nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior segment of eyeball.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior segment of eyeball.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior spinocerebellar tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Anterior spinothalamic tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Aqueduct of midbrain",
+   "system": "nervous"
+  },
+  {
+   "id": "Auditory tube.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Auditory tube.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Axillary nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Axillary nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Base of peduncle.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Base of peduncle.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Biventral lobule.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Biventral lobule.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Buccal nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Buccal nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Calcarine sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Calcarine sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Cauda equina",
+   "system": "nervous"
+  },
+  {
+   "id": "Caudate nucleus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Caudate nucleus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Central canal",
+   "system": "nervous"
+  },
+  {
+   "id": "Central canal'",
+   "system": "nervous"
+  },
+  {
+   "id": "Central lobule",
+   "system": "nervous"
+  },
+  {
+   "id": "Central sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Central sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Chorda tympani.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Chorda tympani.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Choroid plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Choroid plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Cingulate gyrus (Posteroventral part*).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Cingulate gyrus (Posteroventral part*).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Cingulate gyrus and sulcus (Middle anterior part).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Cingulate gyrus and sulcus (Middle anterior part).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Cingulate gyrus and sulcus (Middle posterior part).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Cingulate gyrus and sulcus (Middle posterior part).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Cingulate gyrus and sulcus (Posterior dorsal part).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Cingulate gyrus and sulcus (Posterior dorsal part).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Cingulate sulcus (Marginal part*).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Cingulate sulcus (Marginal part*).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Circular sulcus of insula.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Circular sulcus of insula.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Cochlea.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Cochlea.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Cochlear nerve",
+   "system": "nervous"
+  },
+  {
+   "id": "Cochlear nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Collateral sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Collateral sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Common fibular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Common fibular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Common palmar digital branches of median nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Common palmar digital branches of median nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Common palmar digital branches of ulnar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Common palmar digital branches of ulnar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Common plantar digital branches of lateral plantar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Common plantar digital branches of lateral plantar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Common plantar digital branches of medial plantar nerve",
+   "system": "nervous"
+  },
+  {
+   "id": "Common plantar digital branches of medial plantar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Cornea.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Cornea.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Corpus callosum",
+   "system": "nervous"
+  },
+  {
+   "id": "Culmen",
+   "system": "nervous"
+  },
+  {
+   "id": "Cuneate fasciculus",
+   "system": "nervous"
+  },
+  {
+   "id": "Cuneus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Cuneus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Declive",
+   "system": "nervous"
+  },
+  {
+   "id": "Deep branch of radial nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Deep branch of radial nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Deep branch of ulnar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Deep branch of ulnar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Deep fibular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Deep fibular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal branch of ulnar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal branch of ulnar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal digital branches of deep fibular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal digital branches of deep fibular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal digital branches of radial nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal digital branches of radial nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal digital branches of superficial fibular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal digital branches of superficial fibular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal digital branches of ulnar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal digital branches of ulnar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal scapular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Dorsal scapular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Facial nerve (VII).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Facial nerve (VII).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Falx cerebri",
+   "system": "nervous"
+  },
+  {
+   "id": "Femoral branch of genitofemoral nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Femoral branch of genitofemoral nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Femoral nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Femoral nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Flocculus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Flocculus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Folium of vermis",
+   "system": "nervous"
+  },
+  {
+   "id": "Fornix.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Fornix.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Fourth ventricle",
+   "system": "nervous"
+  },
+  {
+   "id": "Ganglia of sympathetic trunk.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Ganglia of sympathetic trunk.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Genital branch of genitofemoral nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Genital branch of genitofemoral nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Genitofemoral nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Genitofemoral nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Globus pallidus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Globus pallidus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Glossopharyngeal nerve (IX).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Glossopharyngeal nerve (IX).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Gracile fasciculus",
+   "system": "nervous"
+  },
+  {
+   "id": "Gracile lobule.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Gracile lobule.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Habenula",
+   "system": "nervous"
+  },
+  {
+   "id": "Hippocampal commissure",
+   "system": "nervous"
+  },
+  {
+   "id": "Hippocampus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Hippocampus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Hypoglossal nerve (XII).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Hypoglossal nerve (XII).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Hypothalamus",
+   "system": "nervous"
+  },
+  {
+   "id": "Ilio-inguinal nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Ilio-inguinal nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Iliohypogastric nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Iliohypogastric nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Incus.l",
+   "system": "skeletal"
+  },
+  {
+   "id": "Incus.r",
+   "system": "skeletal"
+  },
+  {
+   "id": "Inferior alveolar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior alveolar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior colliculus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior colliculus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior frontal sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior frontal sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior lateral brachial cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior lateral brachial cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior occipital gyrus and sulcus*.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior occipital gyrus and sulcus*.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior salivatory nucleus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior salivatory nucleus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior semilunar lobule.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior semilunar lobule.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior subscapular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior subscapular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior temporal gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior temporal gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior temporal sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior temporal sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior trunk of brachial plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Inferior trunk of brachial plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Infrapatellar branch of saphenous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Infrapatellar branch of saphenous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Insula (Subcentral gyrus and ant. and post. sulci*).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Insula (Subcentral gyrus and ant. and post. sulci*).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Intercostal nerves.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Intercostal nerves.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Intermediate dorsal cutaneous nerve of foot.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Intermediate dorsal cutaneous nerve of foot.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Intermediolateral nucleus",
+   "system": "nervous"
+  },
+  {
+   "id": "Intermediomedial nucleus",
+   "system": "nervous"
+  },
+  {
+   "id": "Interpeduncular fossa.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Interpeduncular fossa.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Intraparietal sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Intraparietal sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Iris.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Iris.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Kidney.l",
+   "system": "visceral"
+  },
+  {
+   "id": "Kidney.r",
+   "system": "visceral"
+  },
+  {
+   "id": "Lacrimal canaliculus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lacrimal canaliculus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lacrimal gland.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lacrimal gland.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lacrimal sac.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lacrimal sac.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lat_Fis-ant-Horizont.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lat_Fis-ant-Horizont.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lat_Fis-ant-Vertical.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lat_Fis-ant-Vertical.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lat_Fis-post.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lat_Fis-post.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral antebrachial cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral antebrachial cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral corticospinal tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral fasciculus proprius",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral femoral cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral femoral cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral geniculate body.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral geniculate body.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral intermediate substance",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral occipital gyrus (Middle occipital gyrus*).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral occipital gyrus (Middle occipital gyrus*).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral occipitotemporal gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral occipitotemporal gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral pectoral nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral pectoral nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral plantar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral plantar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral reticulospinal tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral spinothalamic tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral ventricle.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral ventricle.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lateral vestibulospinal tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Lens.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lens.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lentiform nucleus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lentiform nucleus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lingual gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lingual gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lingual nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lingual nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lingula of cerebellum",
+   "system": "nervous"
+  },
+  {
+   "id": "Long thoracic nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Long thoracic nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Lunate sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Lunate sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Malleus.l",
+   "system": "skeletal"
+  },
+  {
+   "id": "Malleus.r",
+   "system": "skeletal"
+  },
+  {
+   "id": "Mamillary body.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Mamillary body.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Maxillary nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Maxillary nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial antebrachial cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial antebrachial cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial brachial cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial brachial cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial crural cutaneous branches of saphenous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial crural cutaneous branches of saphenous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial dorsal cutaneous nerve of foot.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial dorsal cutaneous nerve of foot.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial geniculate body.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial geniculate body.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial occipitotemporal gyrus (Parahippocampal*).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial occipitotemporal gyrus (Parahippocampal*).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial pectoral nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial pectoral nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial plantar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial plantar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial reticulospinal tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial sural cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial sural cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Medial vestibulospinal tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Median nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Median nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Medulla oblongata.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Medulla oblongata.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Meningeal branch of maxillary nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Meningeal branch of maxillary nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Mental nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Mental nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Midbrain.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Midbrain.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Middle frontal gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Middle frontal gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Middle temporal gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Middle temporal gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Middle trunk of brachial plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Middle trunk of brachial plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Motor nucleus of facial nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Motor nucleus of facial nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Motor root of trigeminal nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Motor root of trigeminal nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Muscular branches of axillary nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Muscular branches of axillary nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Muscular branches of deep fibular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Muscular branches of deep fibular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Muscular branches of median nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Muscular branches of median nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Muscular branches of radial nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Muscular branches of radial nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Muscular branches of ulnar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Muscular branches of ulnar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Musculocutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Musculocutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Nasolacrimal duct.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Nasolacrimal duct.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Nerve to mylohyoid muscle.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Nerve to mylohyoid muscle.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Nerve to piriformis muscle.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Nerve to piriformis muscle.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Nerve to quadratus femoris muscle.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Nerve to quadratus femoris muscle.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Nodule of vermis",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus ambiguus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus ambiguus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus of abducens nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus of abducens nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus of accessory nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus of accessory nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus of hypoglossal nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus of hypoglossal nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus of oculomotor nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus of oculomotor nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus of trochlear nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus of trochlear nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Nucleus proprius",
+   "system": "nervous"
+  },
+  {
+   "id": "Obturator nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Obturator nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Occipital pole.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Occipital pole.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Occipitotemporal sulcus (Lateral part*).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Occipitotemporal sulcus (Lateral part*).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Oculomotor nerve (III).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Oculomotor nerve (III).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Olfactory nerve (I).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Olfactory nerve (I).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Olfactory sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Olfactory sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Olive.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Olive.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Opercular part of inferior frontal gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Opercular part of inferior frontal gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Ophthalmic nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Ophthalmic nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Optic chiasm.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Optic chiasm.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Optic nerve (II).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Optic nerve (II).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Optic tract.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Optic tract.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Orbital gyri (Frontomarginal gyrus and sulcus*).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Orbital gyri (Frontomarginal gyrus and sulcus*).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Orbital gyri.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Orbital gyri.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Orbital part of  inferior frontal gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Orbital part of  inferior frontal gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Orbital sulci (H-shaped orbital sulci*).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Orbital sulci (H-shaped orbital sulci*).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Orbital sulci (Lateral Orbital sulcus*).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Orbital sulci (Lateral Orbital sulcus*).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Palmar branch of median nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Palmar branch of median nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Palmar branch of ulnar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Palmar branch of ulnar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Paracentral gyrus and sulcus*.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Paracentral gyrus and sulcus*.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Paracentral sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Paracentral sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Parieto-occipital sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Parieto-occipital sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Peduncle of flocculus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Peduncle of flocculus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Pons.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Pons.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Postcentral gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Postcentral gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Postcentral sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Postcentral sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior antebrachial cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior antebrachial cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior branch of medial antebrachial cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior branch of medial antebrachial cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior branch of obturator nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior branch of obturator nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior cochlear nucleus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior cochlear nucleus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior commissure",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior cord of brachial plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior cord of brachial plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior division of inferior trunk of brachial plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior division of inferior trunk of brachial plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior division of mandibular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior division of mandibular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior division of middle trunk of brachial plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior division of middle trunk of brachial plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior division of superior trunk of brachial plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior division of superior trunk of brachial plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior fasciculus proprius",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior femoral cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior femoral cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior horn of spinal cord",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior interosseous nerve of forearm.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior interosseous nerve of forearm.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior nucleus of vagus nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior nucleus of vagus nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior quadrangular lobule.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior quadrangular lobule.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior root of posterior femoral cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior root of posterior femoral cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior root of spinal nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior root of spinal nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior segment of eyeball.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior segment of eyeball.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterior spinocerebellar tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Posterolateral tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Precentral gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Precentral gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Precentral sulcus (Superior part)*.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Precentral sulcus (Superior part)*.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Precentral sulcus (inferior part)*.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Precentral sulcus (inferior part)*.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Precuneus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Precuneus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Proper palmar digital branches of median nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Proper palmar digital branches of median nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Proper palmar digital branches of ulnar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Proper palmar digital branches of ulnar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Proper plantar digital branches of lateral plantar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Proper plantar digital branches of lateral plantar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Proper plantar digital branches of medial plantar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Proper plantar digital branches of medial plantar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Pudendal nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Pudendal nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Putamen.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Putamen.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Pyramid of medulla oblongata.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Pyramid of medulla oblongata.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Pyramis of vermis",
+   "system": "nervous"
+  },
+  {
+   "id": "Radial nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Radial nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Red nucleus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Red nucleus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Renal pelvis.l",
+   "system": "visceral"
+  },
+  {
+   "id": "Renal pelvis.r",
+   "system": "visceral"
+  },
+  {
+   "id": "Retina.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Retina.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Roots of brachial plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Roots of brachial plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Rubrospinal tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Saphenous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Saphenous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Sciatic nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Sciatic nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Sclera.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Sclera.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Sensory root of trigeminal nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Sensory root of trigeminal nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Septal nuclei",
+   "system": "nervous"
+  },
+  {
+   "id": "Septum pellucidum",
+   "system": "nervous"
+  },
+  {
+   "id": "Spinal dura",
+   "system": "nervous"
+  },
+  {
+   "id": "Spinal ganglion.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Spinal ganglion.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Spinal reticular process",
+   "system": "nervous"
+  },
+  {
+   "id": "Spinotectal tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Stapes.l",
+   "system": "skeletal"
+  },
+  {
+   "id": "Stapes.r",
+   "system": "skeletal"
+  },
+  {
+   "id": "Straight gyrus (Gyrus rectus).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Straight gyrus (Gyrus rectus).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Stria medullaris thalami.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Stria medullaris thalami.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Stria terminalis.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Stria terminalis.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Subclavian nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Subclavian nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Subparietal sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Subparietal sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Sulcus interm_prim-Jensen.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Sulcus interm_prim-Jensen.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superficial branch of radial nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superficial branch of radial nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superficial branch of ulnar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superficial branch of ulnar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superficial fibular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superficial fibular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior cerebellar peduncle.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior cerebellar peduncle.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior colliculus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior colliculus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior frontal gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior frontal gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior frontal sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior frontal sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior gluteal nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior gluteal nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior lateral brachial cutaneous nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior lateral brachial cutaneous nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior occipital gyri.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior occipital gyri.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior parietal lobule.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior parietal lobule.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior salivatory nucleus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior salivatory nucleus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior semilunar lobule.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior semilunar lobule.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior subscapular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior subscapular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior temporal gyrus (Lateral part).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior temporal gyrus (Lateral part).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior temporal sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior temporal sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior trunk of brachial plexus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Superior trunk of brachial plexus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Supramarginal gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Supramarginal gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Suprascapular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Suprascapular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Sural communicating branch of common fibular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Sural communicating branch of common fibular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Sural nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Sural nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Suspensory ligament of eyeball.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Suspensory ligament of eyeball.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Sympathetic nerves.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Sympathetic nerves.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Sympathetic trunk.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Sympathetic trunk.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Tectospinal tract",
+   "system": "nervous"
+  },
+  {
+   "id": "Temporal plane.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Temporal plane.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Temporal pole.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Temporal pole.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Tentorium cerebelli.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Tentorium cerebelli.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Thalamus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Thalamus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Third ventricle",
+   "system": "nervous"
+  },
+  {
+   "id": "Thoracodorsal nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Thoracodorsal nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Tibial nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Tibial nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Tonsil of cerebellum.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Tonsil of cerebellum.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Transverse frontopolar gyrus and sulcus*.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Transverse frontopolar gyrus and sulcus*.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Transverse occipital sulcus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Transverse occipital sulcus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Transverse temporal gyri.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Transverse temporal gyri.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Triangular part of inferior frontal gyrus.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Triangular part of inferior frontal gyrus.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Trigeminal nerve (V).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Trigeminal nerve (V).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Trochlear nerve (IV).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Trochlear nerve (IV).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Tuber of vermis",
+   "system": "nervous"
+  },
+  {
+   "id": "Tympanic membrane.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Tympanic membrane.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Ulnar nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Ulnar nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Uvula of vermis",
+   "system": "nervous"
+  },
+  {
+   "id": "Vagus nerve (X).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Vagus nerve (X).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Vestibular nerve.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Vestibular nerve.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Vestibular nuclei.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Vestibular nuclei.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Vestibule.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Vestibule.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Vestibulocochlear nerve (VIII).l",
+   "system": "nervous"
+  },
+  {
+   "id": "Vestibulocochlear nerve (VIII).r",
+   "system": "nervous"
+  },
+  {
+   "id": "Vitreous body.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Vitreous body.r",
+   "system": "nervous"
+  },
+  {
+   "id": "White matter of spinal cord",
+   "system": "nervous"
+  },
+  {
+   "id": "White matter of telencephalon.l",
+   "system": "nervous"
+  },
+  {
+   "id": "White matter of telencephalon.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Wing of central lobule.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Wing of central lobule.r",
+   "system": "nervous"
+  },
+  {
+   "id": "Zonular fibres.l",
+   "system": "nervous"
+  },
+  {
+   "id": "Zonular fibres.r",
+   "system": "nervous"
+  }
+ ]
+}

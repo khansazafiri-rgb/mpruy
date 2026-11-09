@@ -56,7 +56,7 @@ processing runs in the student's browser and no data is uploaded.
 
 ## Local staging preview (no server needed)
 `npm run preview:4d-lab` (repository root) builds the Atlas, the lab and the web app and serves them read-only with the
-production URL layout and headers on `http://127.0.0.1:4190` (`/anatomy/live`, `/anatomy/4d-lab/`, `/anatomy/viewer/`).
+production URL layout and headers on `http://127.0.0.1:4173` (`/anatomy/live`, `/anatomy/4d-lab/`, `/anatomy/viewer/`).
 It refuses to start if the lab's atlas dataset does not match the atlas models served. Instructions for Safari on
 macOS, the owner checklist and the release gates: `RELEASE_READINESS.md`.
 

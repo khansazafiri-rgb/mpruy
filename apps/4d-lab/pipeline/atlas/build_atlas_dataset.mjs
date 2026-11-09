@@ -23,6 +23,18 @@ import { Grid, voxelizeStructure, voxelizeSigned, edt, fillHoles, gaussian, tril
 import { writeNrrd, readNrrd, encodeGlb } from './io.mjs';
 import { clinicalPose } from '../../src/core/probe.js';
 
+// ------------------------------------------------------------------ licence quarantine (fail closed)
+// licensing/quarantine-policy.json lists atlas systems and structures that are withheld from public
+// builds. They must never contribute to this adaptation (CT, labels, skin, landmarks, views).
+const POLICY = JSON.parse(fs.readFileSync(fileURLToPath(new URL('../../../../licensing/quarantine-policy.json', import.meta.url)), 'utf8'));
+const QUARANTINED_SYSTEMS = new Set(Object.keys(POLICY.quarantinedSystems));
+const QUARANTINED_STRUCTURES = new Set(Object.values(POLICY.quarantinedStructures).flat());
+const QUARANTINED_HASHES = new Set(POLICY.quarantinedFiles.map((f) => f.sha256));
+const INPUT_SYSTEMS = ['skeletal', 'muscular', 'visceral', 'joints', 'lymphatic', 'cardiovascular'].filter((s) => !QUARANTINED_SYSTEMS.has(s));
+// Label ids whose only source is withheld anatomy: kept in the table (ids are shared with the phantom)
+// but marked unavailable, so the UI can say so instead of showing a substitute.
+const UNAVAILABLE_LABELS = { 20: 'Ginjal (Kidney.l/.r) ditahan karena lisensi (CC BY-NC 4.0, lissiecowley).', 21: 'Pelvis renalis ditahan bersama ginjal.', 35: 'Medula spinalis berasal dari nervous.glb yang ditahan karena lisensi.' };
+
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const APP = path.resolve(HERE, '../..');
 const args = process.argv.slice(2);
@@ -91,8 +103,6 @@ const RULES = [
   { label: 17, sys: 'visceral', test: (n) => /^Liver$|segment of liver/.test(n), mode: 'solid' },
   { label: 18, sys: 'visceral', test: (n) => n === 'Gallbladder', mode: 'solid' },
   { label: 19, sys: 'lymphatic', test: (n) => n === 'Spleen', mode: 'solid' },
-  { label: 20, sys: 'visceral', test: (n) => /^Kidney\.[lr]$/.test(n), mode: 'solid' },
-  { label: 21, sys: 'visceral', test: (n) => /^Renal pelvis\.[lr]$/.test(n), mode: 'solid' },
   { label: 42, sys: 'visceral', test: (n) => /^(Suprarenal gland|Thyroid gland|Prostate|Seminal gland)/.test(n), mode: 'solid' },
   { label: 29, sys: 'visceral', test: (n) => n === 'Pancreas', mode: 'solid' },
   { label: 'bladder', sys: 'visceral', test: (n) => n === 'Urinary bladder', mode: 'solid' },
@@ -100,7 +110,6 @@ const RULES = [
   { label: 37, sys: 'visceral', test: (n) => n === 'Oesophagus', mode: 'solid' },
   { label: 'bowel', sys: 'visceral', test: (n) => /^(Duodenum|Jejunum)$/.test(n), mode: 'solid' },
   { label: 'colon', sys: 'visceral', test: (n) => /colon$|^Vermiform appendix$/.test(n), mode: 'solid' },
-  { label: 35, sys: 'nervous', test: (n) => /spinal cord|^Cauda equina$/i.test(n), mode: 'solid' },
   { label: 14, sys: 'cardiovascular', test: (n) => /^(Ascending aorta|Aortic arch|Thoracic aorta|Abdominal aorta|Common iliac artery\.[lr])$/.test(n), mode: 'solid' },
   { label: 15, sys: 'cardiovascular', test: (n) => /^(Superior vena cava|Inferior vena cava.*|Left brachiocephalic vein|Right brachiocephalic vein|Common iliac vein\.[lr]|(Left|Right) (superior|inferior) pulmonary vein|Coronary sinus)$/.test(n), mode: 'solid' },
   { label: 16, sys: 'cardiovascular', test: (n) => /^(Pulmonary trunk|Bifurcation of pulmonary trunk|Left pulmonary artery|Right pulmonary artery)$/.test(n), mode: 'solid' },
@@ -125,9 +134,15 @@ const ENVELOPE_SYSTEMS = ['skeletal', 'muscular', 'visceral', 'joints'];
 // ------------------------------------------------------------------ load atlas
 log('reading atlas GLBs from', ATLAS_ROOT);
 const atlas = {};
-for (const sys of ['skeletal', 'muscular', 'visceral', 'joints', 'lymphatic', 'cardiovascular', 'nervous']) {
-  const need = sys === 'cardiovascular' || sys === 'nervous' || sys === 'lymphatic' ? (n) => RULES.some((r) => r.sys === sys && r.test(n)) : null;
+const SOURCE_HASHES = {};
+for (const sys of INPUT_SYSTEMS) {
+  const file = path.join(ATLAS_ROOT, 'models', sys + '.glb');
+  SOURCE_HASHES[sys + '.glb'] = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+  if (QUARANTINED_HASHES.has(SOURCE_HASHES[sys + '.glb'])) throw new Error(`${sys}.glb is a quarantined original (licensing/quarantine-policy.json); use the cleared public file`);
+  const need = sys === 'cardiovascular' || sys === 'lymphatic' ? (n) => RULES.some((r) => r.sys === sys && r.test(n)) : null;
   atlas[sys] = await readAtlasSystem(sys, { geometry: true, filter: need });
+  const leaked = [...atlas[sys].structures.keys()].filter((n) => QUARANTINED_STRUCTURES.has(n));
+  if (leaked.length) throw new Error(`quarantined structures present in ${sys}.glb: ${leaked.join(', ')}`);
   log(` ${sys}: ${atlas[sys].structures.size} structures`);
 }
 const S_ = (sys, name) => atlas[sys].structures.get(name);
@@ -555,7 +570,13 @@ function aimAngles(contact, aim, rotate) {
 }
 const heartC = mean([...lvPts, ...rvPts]);
 const labelCentroid = (labs) => mean(voxelsOf(labs));
-const kidR = mean(voxelsOf([20, 21]).filter((p) => p[0] < 0)), bladder = labelCentroid([30]);
+// RUQ / hepatorenal window. The kidney is withheld (licence quarantine), so the aim point is the
+// posterior-inferior surface region of the right liver lobe where the hepatorenal recess lies; the
+// view is labelled accordingly and the kidney is reported as unavailable, never substituted.
+const liverR = voxelsOf([17]).filter((p) => p[0] < 0);
+const hepatorenalScore = (p) => p[1] - p[2]; // posterior (+y) and inferior (-z)
+const liverCut = liverR.map(hepatorenalScore).sort((a, b) => b - a)[Math.floor(liverR.length * 0.12)];
+const kidR = mean(liverR.filter((p) => hepatorenalScore(p) >= liverCut)), bladder = labelCentroid([30]);
 const antrum = stomach.centerline[5];
 const rLungPts = voxelsOf([7]); const rBase = rLungPts.reduce((b, p) => (p[1] - 0.6 * p[2] > b[1] - 0.6 * b[2] ? p : b));
 // Acoustic window search: among candidate skin contacts, take the one whose straight path to the target
@@ -637,7 +658,8 @@ for (let i = 0; i < net.positions.length; i += 3) { const a = lpsToAtlas([net.po
 const skinGlb = encodeGlb([{ name: 'skin', positions: skinAtlas, indices: net.indices, extras: { labels: 'body', system: 'integument', illustrative: true, frame: 'atlas (glTF metres, +X left, +Y superior, +Z anterior)' } }], 'MEDCOEL 4D Lab build_atlas_dataset.mjs');
 fs.writeFileSync(path.join(OUT, 'skin.glb'), skinGlb.buffer);
 const counts = new Float64Array(256); for (let p = 0; p < L.length; p++) counts[L[p]]++;
-const labels = Object.entries(LABELS).map(([k, [key, name, nameId, h, acoustic, system, color]]) => ({ id: +k, key, name, nameId, hu: h, acoustic, system, color, volumeMl: +(counts[k] * vox).toFixed(1) }));
+const labels = Object.entries(LABELS).map(([k, [key, name, nameId, h, acoustic, system, color]]) => ({ id: +k, key, name, nameId, hu: h, acoustic, system, color, volumeMl: +(counts[k] * vox).toFixed(1), ...(UNAVAILABLE_LABELS[k] ? { available: false, unavailableReason: UNAVAILABLE_LABELS[k] } : {}) }));
+for (const id of Object.keys(UNAVAILABLE_LABELS)) if (counts[id]) throw new Error('withheld label ' + id + ' has voxels');
 // registration in the existing schema (skin <-> CT grid), with the atlas frame made explicit
 const samples = []; for (const fi of [0.2, 0.5, 0.8]) for (const fj of [0.3, 0.5, 0.7]) for (const fk of [0.25, 0.5, 0.75]) { const ijk = [Math.floor((G2.n[0] - 1) * fi), Math.floor((G2.n[1] - 1) * fj), Math.floor((G2.n[2] - 1) * fk)]; samples.push({ ijk, value: CT[G2.idx(...ijk)] }); }
 const nv = net.positions.length / 3, anchors = [];
@@ -647,7 +669,7 @@ let agree = 0, tested = 0;
 for (let v = 0; v < nv; v += 7) { const p = [net.positions[3 * v], net.positions[3 * v + 1], net.positions[3 * v + 2]]; if (p[2] < G2.lo[2] + 10 || p[2] > zHi - 10 || Math.abs(p[0]) > 255) continue; const n = skinNormal(p); tested++; if (labelAt(p[0] + 5 * n[0], p[1] + 5 * n[1], p[2] + 5 * n[2]) === 0 && labelAt(p[0] - 5 * n[0], p[1] - 5 * n[1], p[2] - 5 * n[2]) > 0) agree++; }
 const atlasFrame = {
   atlasToLPS: ATLAS_TO_LPS, y0Metres: Y0, units: { atlas: 'metres', lps: 'millimetres' },
-  axes: { atlas: '+X patient left, +Y superior, +Z anterior (verified: Kidney.l at +X, testes/glans at +Z, vertex at +Y)', lps: '+x left, +y posterior, +z superior' },
+  axes: { atlas: '+X patient left, +Y superior, +Z anterior (verified on the atlas: left lung/spleen at +X, testes/glans at +Z, vertex at +Y)', lps: '+x left, +y posterior, +z superior' },
   origin: 'LPS z = 0 at the xiphoid process tip of the atlas; x = 0 atlas mid-sagittal plane; y = 0 atlas coronal plane Z = 0',
   relation: 'exact (rigid + unit change). The CT/labels were generated from the atlas meshes in this frame; no fitting.',
 };
@@ -665,17 +687,20 @@ const anatomy = {
   schema: 'medcoel.anatomy.v1', synthetic: true, dataset: 'atlas',
   source: 'MEDCOEL atlas-derived synthetic dataset (pipeline/atlas/build_atlas_dataset.mjs) from the MEDCOEL Anatomy Atlas meshes (BodyParts3D, Z-Anatomy; see ASSET_LICENSE_REGISTRY.md). Not patient data. Not a validated anatomical model.',
   coordinateSystem: 'LPS millimetres (x=patient left, y=posterior, z=superior); z = 0 at the atlas xiphoid tip',
-  attribution: ['BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan', 'Z-Anatomy - The open source atlas of anatomy - CC-BY-SA 4.0', 'Kidney - by lissiecowley - CC-BY-NC 4.0'],
-  licence: 'CC BY-NC-SA 4.0 (derivative of the MEDCOEL Anatomy Atlas models)',
+  attribution: ['BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan', 'Z-Anatomy - The open source atlas of anatomy - CC-BY-SA 4.0'],
+  licence: 'CC BY-SA 4.0 (adaptation of BodyParts3D/Z-Anatomy geometry by MEDCOEL: voxelised to a synthetic CT, label map and illustrative skin shell)',
+  licenceUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+  adaptationNotice: 'Changes: meshes voxelised at 2.5 mm, assigned textbook HU values, closed and offset into an illustrative skin shell; landmarks and probe windows fitted. Built only from inputs cleared by licensing/quarantine-policy.json.',
+  unavailableAnatomy: Object.entries(UNAVAILABLE_LABELS).map(([id, reason]) => ({ label: +id, reason })),
   atlasFrame, labels, heart, respiration,
   gi: { stomach: { centerline: stomach.centerline, radii: stomach.radii, source: stomach.source } },
   pleura: { right: { labels: [7] }, left: { labels: [8] } },
   landmarks, auscultation, views, suggestedViews, ics: { lines: LINES, z: ICS },
   windowNote: 'Windows are searched on the atlas body: the skin contact whose sector toward the target crosses the least bone/aerated lung/gas. In this atlas body the anterior lung margins and lingula cover much of the heart, so the apical window is partly obstructed (as in many real patients in the supine position).',
   regions: { headZ: +(N + 120).toFixed(0), neckZ: +(N - 5).toFixed(0), armX: +(ribHalf + 55).toFixed(0), thighZ: +(P0 - 30).toFixed(0), thoraxZ: -5, pelvisZ: +(P0 + 70).toFixed(0), epigastricZ: +(U0 + 25).toFixed(0), umbilicalZ: +(U0 - 40).toFixed(0), quadrantSplitZ: +U0.toFixed(0), icsParasternal: ICS.l_parasternal },
-  meshes: { skin: 'skin.glb', registration: 'registration.json', atlasLayer: { systems: ['visceral', 'skeletal', 'cardiovascular', 'lymphatic', 'muscular', 'nervous', 'joints'], url: 'shared MEDCOEL Anatomy Atlas models (/anatomy/viewer/models/)' } },
+  meshes: { skin: 'skin.glb', registration: 'registration.json', atlasLayer: { systems: ['visceral', 'skeletal', 'cardiovascular', 'lymphatic', 'muscular', 'joints'], unavailableSystems: [...QUARANTINED_SYSTEMS], url: 'shared MEDCOEL Anatomy Atlas models (/anatomy/viewer/models/)' } },
   comparisonWithProceduralPhantom: comparison,
-  build: { sourceModels: Object.fromEntries(['skeletal', 'muscular', 'visceral', 'joints', 'lymphatic', 'cardiovascular', 'nervous'].map((sys) => [sys + '.glb', crypto.createHash('sha256').update(fs.readFileSync(path.join(ATLAS_ROOT, 'models', sys + '.glb'))).digest('hex')])), voxelMM: S, fatAndSkinMM: FAT_MM, armFatAndSkinMM: ARM_FAT_MM, closingMM: CLOSE_MM, skinNetMM: SKIN_H, seconds: Math.round((Date.now() - t0) / 1000) },
+  build: { sourceModels: SOURCE_HASHES, quarantinePolicy: { decided: POLICY.decided, excludedSystems: [...QUARANTINED_SYSTEMS], excludedStructures: [...QUARANTINED_STRUCTURES].sort() }, voxelMM: S, fatAndSkinMM: FAT_MM, armFatAndSkinMM: ARM_FAT_MM, closingMM: CLOSE_MM, skinNetMM: SKIN_H, seconds: Math.round((Date.now() - t0) / 1000) },
 };
 fs.writeFileSync(path.join(OUT, 'anatomy.json'), JSON.stringify(anatomy, null, 1));
 log(`wrote ${OUT}: skin/label agreement ${(100 * agree / tested).toFixed(1)}% of ${tested} vertices`);

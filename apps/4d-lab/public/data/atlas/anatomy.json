@@ -6,10 +6,25 @@
  "coordinateSystem": "LPS millimetres (x=patient left, y=posterior, z=superior); z = 0 at the atlas xiphoid tip",
  "attribution": [
   "BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan",
-  "Z-Anatomy - The open source atlas of anatomy - CC-BY-SA 4.0",
-  "Kidney - by lissiecowley - CC-BY-NC 4.0"
+  "Z-Anatomy - The open source atlas of anatomy - CC-BY-SA 4.0"
  ],
- "licence": "CC BY-NC-SA 4.0 (derivative of the MEDCOEL Anatomy Atlas models)",
+ "licence": "CC BY-SA 4.0 (adaptation of BodyParts3D/Z-Anatomy geometry by MEDCOEL: voxelised to a synthetic CT, label map and illustrative skin shell)",
+ "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+ "adaptationNotice": "Changes: meshes voxelised at 2.5 mm, assigned textbook HU values, closed and offset into an illustrative skin shell; landmarks and probe windows fitted. Built only from inputs cleared by licensing/quarantine-policy.json.",
+ "unavailableAnatomy": [
+  {
+   "label": 20,
+   "reason": "Ginjal (Kidney.l/.r) ditahan karena lisensi (CC BY-NC 4.0, lissiecowley)."
+  },
+  {
+   "label": 21,
+   "reason": "Pelvis renalis ditahan bersama ginjal."
+  },
+  {
+   "label": 35,
+   "reason": "Medula spinalis berasal dari nervous.glb yang ditahan karena lisensi."
+  }
+ ],
  "atlasFrame": {
   "atlasToLPS": [
    1000,
@@ -35,7 +50,7 @@
    "lps": "millimetres"
   },
   "axes": {
-   "atlas": "+X patient left, +Y superior, +Z anterior (verified: Kidney.l at +X, testes/glans at +Z, vertex at +Y)",
+   "atlas": "+X patient left, +Y superior, +Z anterior (verified on the atlas: left lung/spleen at +X, testes/glans at +Z, vertex at +Y)",
    "lps": "+x left, +y posterior, +z superior"
   },
   "origin": "LPS z = 0 at the xiphoid process tip of the atlas; x = 0 atlas mid-sagittal plane; y = 0 atlas coronal plane Z = 0",
@@ -85,7 +100,7 @@
     214,
     120
    ],
-   "volumeMl": 13605.7
+   "volumeMl": 13917.7
   },
   {
    "id": 3,
@@ -100,7 +115,7 @@
     70,
     60
    ],
-   "volumeMl": 17485.1
+   "volumeMl": 17500.4
   },
   {
    "id": 4,
@@ -115,7 +130,7 @@
     230,
     210
    ],
-   "volumeMl": 2445.7
+   "volumeMl": 2451.4
   },
   {
    "id": 5,
@@ -130,7 +145,7 @@
     200,
     170
    ],
-   "volumeMl": 2160.5
+   "volumeMl": 2160.6
   },
   {
    "id": 6,
@@ -310,7 +325,7 @@
     60,
     45
    ],
-   "volumeMl": 1624.7
+   "volumeMl": 1627.5
   },
   {
    "id": 18,
@@ -340,7 +355,7 @@
     50,
     90
    ],
-   "volumeMl": 126.5
+   "volumeMl": 127.2
   },
   {
    "id": 20,
@@ -355,7 +370,9 @@
     80,
     70
    ],
-   "volumeMl": 212.3
+   "volumeMl": 0,
+   "available": false,
+   "unavailableReason": "Ginjal (Kidney.l/.r) ditahan karena lisensi (CC BY-NC 4.0, lissiecowley)."
   },
   {
    "id": 21,
@@ -370,7 +387,9 @@
     230,
     150
    ],
-   "volumeMl": 37
+   "volumeMl": 0,
+   "available": false,
+   "unavailableReason": "Pelvis renalis ditahan bersama ginjal."
   },
   {
    "id": 22,
@@ -535,7 +554,9 @@
     230,
     200
    ],
-   "volumeMl": 87.5
+   "volumeMl": 0,
+   "available": false,
+   "unavailableReason": "Medula spinalis berasal dari nervous.glb yang ditahan karena lisensi."
   },
   {
    "id": 36,
@@ -550,7 +571,7 @@
     200,
     220
    ],
-   "volumeMl": 234.1
+   "volumeMl": 234.3
   },
   {
    "id": 37,
@@ -2476,27 +2497,27 @@
    "key": "ruq",
    "contact": {
     "point": [
-     -125.8,
+     -143.99,
      20,
-     -162.9
+     -88.59
     ],
     "normal": [
-     -0.8761,
-     0.4312,
-     -0.2158
+     -0.9884,
+     0.0809,
+     -0.1288
     ]
    },
    "angles": {
     "rotate": 90,
-    "heelToe": -14.5,
-    "rock": 17.8
+    "heelToe": -5.8,
+    "rock": 2.8
    },
    "aim": [
-    -58.7,
-    10.8,
-    -127.9
+    -80.1,
+    17.9,
+    -73.6
    ],
-   "aimErrorDeg": 0.01,
+   "aimErrorDeg": 0.04,
    "windowObstructionSamples": 0
   },
   {
@@ -2688,16 +2709,18 @@
     "cardiovascular",
     "lymphatic",
     "muscular",
-    "nervous",
     "joints"
+   ],
+   "unavailableSystems": [
+    "nervous"
    ],
    "url": "shared MEDCOEL Anatomy Atlas models (/anatomy/viewer/models/)"
   }
  },
  "comparisonWithProceduralPhantom": {
   "method": "centroids of matching labels; best rigid (rotation + translation) least-squares fit",
-  "rmsMM": 37.5,
-  "maxMM": 61.1,
+  "rmsMM": 34.7,
+  "maxMM": 51.5,
   "residual": [
    {
     "structure": "LV cavity",
@@ -2712,7 +2735,7 @@
      60.3
     ],
     "identityDistanceMM": 24.8,
-    "rigidFitResidualMM": 14
+    "rigidFitResidualMM": 15.4
    },
    {
     "structure": "right lung",
@@ -2727,7 +2750,7 @@
      96.7
     ],
     "identityDistanceMM": 23.4,
-    "rigidFitResidualMM": 25.4
+    "rigidFitResidualMM": 20.3
    },
    {
     "structure": "left lung",
@@ -2742,27 +2765,27 @@
      93.3
     ],
     "identityDistanceMM": 22.4,
-    "rigidFitResidualMM": 37
+    "rigidFitResidualMM": 35.1
    },
    {
     "structure": "liver",
     "atlasLPS": [
      -46.5,
-     -32.6,
-     -27
+     -32.5,
+     -27.1
     ],
     "phantomLPS": [
      -49.6,
      -14.6,
      -49.9
     ],
-    "identityDistanceMM": 29.3,
-    "rigidFitResidualMM": 33.1
+    "identityDistanceMM": 29.2,
+    "rigidFitResidualMM": 38.8
    },
    {
     "structure": "spleen",
     "atlasLPS": [
-     91,
+     90.9,
      12.9,
      -60.7
     ],
@@ -2772,22 +2795,7 @@
      -57.6
     ],
     "identityDistanceMM": 43.4,
-    "rigidFitResidualMM": 29.2
-   },
-   {
-    "structure": "kidneys",
-    "atlasLPS": [
-     3.1,
-     15.1,
-     -119
-    ],
-    "phantomLPS": [
-     -2.7,
-     68.4,
-     -122.9
-    ],
-    "identityDistanceMM": 53.7,
-    "rigidFitResidualMM": 48.4
+    "rigidFitResidualMM": 33.5
    },
    {
     "structure": "stomach",
@@ -2802,7 +2810,7 @@
      -73.2
     ],
     "identityDistanceMM": 33.1,
-    "rigidFitResidualMM": 31.8
+    "rigidFitResidualMM": 35.8
    },
    {
     "structure": "bladder",
@@ -2817,26 +2825,43 @@
      -312
     ],
     "identityDistanceMM": 70.8,
-    "rigidFitResidualMM": 61.1
+    "rigidFitResidualMM": 51.5
    }
   ],
   "conclusion": "The procedural phantom and the atlas describe different bodies. A rigid fit leaves residuals far larger than a CT voxel, so the atlas is NOT overlaid on the phantom CT."
  },
  "build": {
   "sourceModels": {
-   "skeletal.glb": "c2b70b31ddec4062cbc5ba969fc24ecfed61d00397a0bca795e2701d997200f8",
+   "skeletal.glb": "2de765c25b2860708a4ff984908e19853eb443875cd4256e3104aef45a1291be",
    "muscular.glb": "f69ed1287f802a2d603d23293e01512bb57ae77ee7cca1d5527ba00496e51de2",
-   "visceral.glb": "b21a0f34b3da1bb0b6a9a6ae71d16ffbc036beb504944af2422d4b91a9317fe5",
+   "visceral.glb": "5392afc3fd9a54f653e6b976e82e6fd7a51ea4b5661297b41f259a5d46c72bb8",
    "joints.glb": "9fdab1a257652597cf8f0b2ac93d12abc817e8f9a9099b9628e764018490afa2",
    "lymphatic.glb": "718cac2b26ad752224cc8a11b2d5bf733fb523b75d9614822a24af7d19202756",
-   "cardiovascular.glb": "bc94c7b8eb1712f18ee461e064140e54aa817f3614e0f56a45b00e2a829cfb59",
-   "nervous.glb": "c7cde35497f887b319c0a84f1b5b605fa3ce66e23084b5e09d6e3825fa5030d9"
+   "cardiovascular.glb": "bc94c7b8eb1712f18ee461e064140e54aa817f3614e0f56a45b00e2a829cfb59"
+  },
+  "quarantinePolicy": {
+   "decided": "2026-11-09",
+   "excludedSystems": [
+    "nervous"
+   ],
+   "excludedStructures": [
+    "Incus.l",
+    "Incus.r",
+    "Kidney.l",
+    "Kidney.r",
+    "Malleus.l",
+    "Malleus.r",
+    "Renal pelvis.l",
+    "Renal pelvis.r",
+    "Stapes.l",
+    "Stapes.r"
+   ]
   },
   "voxelMM": 2.5,
   "fatAndSkinMM": 8,
   "armFatAndSkinMM": 5,
   "closingMM": 6,
   "skinNetMM": 5,
-  "seconds": 61
+  "seconds": 76
  }
 }

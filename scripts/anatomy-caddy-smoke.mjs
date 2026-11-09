@@ -18,7 +18,7 @@ try{
  const request=async(file,options)=>fetch(`http://127.0.0.1:${port}${file}`,options);await start();
  const base='/anatomy/viewer/';const html=await request(base);assert.equal(html.status,200);assert.equal(html.headers.get('x-frame-options'),'SAMEORIGIN');assert.match(html.headers.get('cache-control'),/no-cache/);const text=await html.text();
  const js=text.match(/src="(\/anatomy\/viewer\/assets\/[^" ]+\.js)"/)[1];
- for(const file of ['data/systems.json','data/atlas-catalog.json','data/lexicon.json','data/definitions.json','draco/draco_wasm_wrapper.js','draco/draco_decoder.wasm',...['skeletal','muscular','joints','cardiovascular','nervous','lymphatic','visceral'].map(s=>'models/'+s+'.glb')]){
+ for(const file of ['data/systems.json','data/atlas-catalog.json','data/lexicon.json','data/definitions.json','draco/draco_wasm_wrapper.js','draco/draco_decoder.wasm',...['skeletal','muscular','joints','cardiovascular','lymphatic','visceral'].map(s=>'models/'+s+'.glb')]){
   const res=await request(base+file,{method:'HEAD'});assert.equal(res.status,200,file);assert.ok(Number(res.headers.get('content-length'))>0,file);
   if(file.endsWith('.glb'))assert.equal(res.headers.get('content-type'),'model/gltf-binary');if(file.endsWith('.wasm'))assert.equal(res.headers.get('content-type'),'application/wasm');
  }

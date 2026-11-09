@@ -24,3 +24,6 @@ __pycache__/
 
 # Local Anatomy integration QA build
 apps/web/dist-anatomy-preview/
+
+# Licensing quarantine: originals kept only in non-public local development storage
+local-data/

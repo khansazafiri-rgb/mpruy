@@ -2,12 +2,16 @@
 import {cp,mkdir,readFile,writeFile,rename,symlink,lstat,readlink,rm,open,readdir,realpath} from 'node:fs/promises';
 import path from 'node:path';import {fileURLToPath} from 'node:url';import {randomUUID,createHash} from 'node:crypto';
 const repo=fileURLToPath(new URL('../',import.meta.url));
-const systems=['skeletal','muscular','joints','cardiovascular','nervous','lymphatic','visceral'];
+import {assertDistributionClean,loadPolicy} from '../licensing/tools/check-distribution.mjs';
+// Systems withheld by the licence quarantine are neither required nor allowed in a release.
+const QUARANTINED=new Set(Object.keys(loadPolicy().policy.quarantinedSystems));
+const systems=['skeletal','muscular','joints','cardiovascular','nervous','lymphatic','visceral'].filter(s=>!QUARANTINED.has(s));
 async function fingerprint(root){
  const files={};async function walk(relative=''){for(const entry of (await readdir(path.join(root,relative),{withFileTypes:true})).sort((a,b)=>a.name.localeCompare(b.name))){if(!relative&&entry.name==='.release-source.json')continue;const file=path.posix.join(relative,entry.name);if(entry.isDirectory())await walk(file);else if(entry.isFile())files[file]=createHash('sha256').update(await readFile(path.join(root,file))).digest('hex');else throw Error('Viewer source must contain regular files only');}}
  await walk();return {files,digest:createHash('sha256').update(JSON.stringify(files)).digest('hex')};
 }
 export async function validateViewer(root){
+ assertDistributionClean([root],'Anatomy viewer release');
  const read=file=>readFile(path.join(root,file));
  const html=(await read('index.html')).toString();
  const assets=[...html.matchAll(/(?:src|href)="(\/anatomy\/viewer\/assets\/[^"#]+)"/g)].map(m=>m[1].slice('/anatomy/viewer/'.length));

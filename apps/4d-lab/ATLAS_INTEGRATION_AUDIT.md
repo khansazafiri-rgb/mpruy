@@ -58,7 +58,9 @@ forward). The phantom is a different, procedural body.
 
 ## 3. Licences and redistribution
 
-Read from `apps/anatomy/LICENSE`, `NOTICE` and `public/models/License.txt`:
+> **Licence quarantine (2026-11-09).** Superseded licence statements below are kept for history but no longer describe the build. Current status: `../../licensing/PROVENANCE_REPORT.md` and `../../licensing/quarantine-policy.json`. The atlas-derived dataset is rebuilt from cleared inputs only and is **CC BY-SA 4.0**; `nervous.glb`, the CC BY-NC kidney (+ renal pelvis) and the ossicles are withheld and shown as unavailable.
+
+Read (2026-11-08) from `apps/anatomy/LICENSE`, `NOTICE` and `public/models/License.txt`:
 
 | Component | Licence | Commercial use |
 |---|---|---|

@@ -1,6 +1,9 @@
 export const SPATIAL_SOURCE='a874a3dcb111d5b4de543c5be6253f5013416f4d';
 export const SYSTEMS=[['skeletal','Rangka','Tulang dan kartilago'],['muscular','Otot','Otot dan fasia'],['joints','Sendi','Sendi dan ligamen'],['cardiovascular','Kardiovaskular','Jantung, arteri, dan vena'],['nervous','Saraf','Saraf dan indra'],['lymphatic','Limfatik','Struktur limfoid'],['visceral','Viseral','Organ dalam']].map(([id,name,description])=>({id,name,description}));
 export const REGIONS=[['headNeck','Kepala & Leher','Tengkorak, wajah, dan leher'],['thorax','Toraks','Dada dan mediastinum'],['abdomen','Abdomen','Dinding perut dan organnya'],['pelvis','Pelvis','Panggul dan perineum'],['upperLimb','Ekstremitas Atas','Bahu sampai ujung jari'],['lowerLimb','Ekstremitas Bawah','Pinggul dan paha sampai jari kaki'],['back','Punggung','Kolumna vertebralis dan otot punggung'],['whole','Seluruh Tubuh','Semua struktur yang tersedia']].map(([id,name,description])=>({id,name,description}));
+// Systems withheld from the public Atlas by the licence quarantine (licensing/quarantine-policy.json).
+// The library says so explicitly instead of showing an empty or substituted system.
+export const UNAVAILABLE_SYSTEMS=Object.freeze({nervous:'Tidak tersedia sementara: sedang ditinjau lisensinya.'});
 export const normalise=text=>String(text??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
 export const baseName=id=>id.replace(/\.[lr]$/,'');
 export function structureHref(id){return '/anatomy/structure/'+encodeURIComponent(id);}

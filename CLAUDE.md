@@ -4,6 +4,6 @@
 - Apps: `apps/web` (React/Vite site), `apps/pocketbase`, `apps/hermes-agent`, `apps/anatomy` (Atlas viewer at `/anatomy/viewer/`), `apps/4d-lab` (Anatomy Live 4D Lab at `/anatomy/4d-lab/`, framed by `/anatomy/live`).
 - Working on the 4D Lab: read `apps/4d-lab/CLAUDE.md` and `apps/4d-lab/PHASE_STATUS.md` first.
 - The 4D Lab loads the Atlas models at runtime from `/anatomy/viewer/models/`, `/anatomy/viewer/draco/` and `/anatomy/viewer/data/atlas-catalog.json`. Keep those paths stable (or update `apps/4d-lab/src/app/atlasLayer.js`); after changing atlas GLBs, rebuild the lab's atlas-derived dataset (`npm run atlas:dataset --prefix apps/4d-lab`).
-- Local staging preview of `/anatomy/live` + `/anatomy/4d-lab/` + `/anatomy/viewer/` (production URL layout, read-only, no backend): `npm run preview:4d-lab` → http://127.0.0.1:4190/anatomy/live. Release gates: `apps/4d-lab/RELEASE_READINESS.md`.
+- Local staging preview of `/anatomy/live` + `/anatomy/4d-lab/` + `/anatomy/viewer/` (production URL layout, read-only, no backend): `npm run preview:4d-lab` → http://127.0.0.1:4173/anatomy/live. Release gates: `apps/4d-lab/RELEASE_READINESS.md`.
 - Tests: `npm test` (web + pocketbase format), `npm run test:anatomy-integration`, `npm run test:4d-lab`. UI language is Indonesian.
 - Never commit secrets, restricted medical datasets (e.g. CTACardio), licence keys or model weights.

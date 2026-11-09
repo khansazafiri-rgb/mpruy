@@ -25,7 +25,7 @@ it('library protocol rejects forged frames, stale responses and versions',()=>{
 });
 it('the existing dataset has one selectable catalog entry per mesh and exported aliases reuse the atlas',()=>{
  const systems=JSON.parse(readFileSync(new URL('../public/data/systems.json',import.meta.url))),reference=JSON.parse(readFileSync(new URL('../public/data/library-reference.json',import.meta.url)));
- const ids=Object.values(systems).flat();expect(new Set(ids).size).toBe(2827);expect(ids.every(id=>catalog[id])).toBe(true);expect(reference.synonyms.id.ulna).toContain('tulang hasta');expect(reference.regions).toHaveLength(8);
+ const ids=Object.values(systems).flat();expect(new Set(ids).size).toBe(2237);/* 2827 minus 590 licence-quarantined */expect(ids.every(id=>catalog[id])).toBe(true);expect(reference.synonyms.id.ulna).toContain('tulang hasta');expect(reference.regions).toHaveLength(8);
 });
 it('identify restores hidden state before revealing the new target; explore preserves existing atlas visibility',async()=>{
  const api={catalog:()=>catalog,reveal:vi.fn(),restoreScene:vi.fn()};

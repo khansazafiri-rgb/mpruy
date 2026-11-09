@@ -30,6 +30,8 @@ jobs:
         run: npm run check --prefix apps/hermes-agent && npm test --prefix apps/hermes-agent
       - name: Anatomy release and host integration
         run: npm run test:anatomy-integration
+      - name: Licence quarantine (withheld anatomy is absent and cannot be served)
+        run: npm run test:licensing
       - name: Anatomy viewer tests and lint
         run: npm run test:anatomy && npm run lint:anatomy
       - name: Build Anatomy viewer
@@ -41,6 +43,8 @@ jobs:
           npm ci --prefix apps/4d-lab
           npm run test:4d-lab
           npm run build:4d-lab
+      - name: Licence quarantine scan of the built artifacts
+        run: npm run check:licensing-dist -- apps/anatomy/dist apps/4d-lab/dist
       - name: Tes API per peran
         working-directory: apps/pocketbase
         run: |

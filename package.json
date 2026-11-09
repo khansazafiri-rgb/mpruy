@@ -19,7 +19,9 @@
     "test:4d-lab": "npm test --prefix apps/4d-lab && node --test scripts/stage-4d-lab.test.mjs scripts/preview-4d-lab.test.mjs",
     "e2e:4d-lab": "npm run build --prefix apps/4d-lab && npm run test:e2e --prefix apps/4d-lab",
     "stage:4d-lab": "node scripts/stage-4d-lab.mjs",
-    "preview:4d-lab": "node scripts/preview-4d-lab.mjs --build"
+    "preview:4d-lab": "node scripts/preview-4d-lab.mjs --build",
+    "test:licensing": "node --test scripts/licensing-quarantine.test.mjs && node licensing/tools/apply-quarantine.mjs --check && node licensing/tools/check-distribution.mjs apps/anatomy/public apps/4d-lab/public apps/web/public",
+    "check:licensing-dist": "node licensing/tools/check-distribution.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

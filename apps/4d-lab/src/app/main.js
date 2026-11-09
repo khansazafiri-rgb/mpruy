@@ -38,6 +38,9 @@ const DATASET = DATASETS[QUERY.get('dataset')] ? QUERY.get('dataset') : 'atlas';
 let DATA = DATASETS[DATASET].dir;
 // The atlas models are SHARED with the Anatomy Atlas viewer (same origin, same files): no copies are shipped.
 const ATLAS_BASE = QUERY.get('atlasBase') || import.meta.env.VITE_ATLAS_BASE || '/anatomy/viewer/';
+// A view whose target organ is withheld (licence quarantine) says so instead of implying it is imaged.
+const labelUnavailable = (id) => D?.anatomy?.labels?.some((l) => l.id === id && l.available === false);
+const viewLabel = (v) => (v.key === 'ruq' && labelUnavailable(20) ? 'RUQ / hepatorenal (ginjal tidak tersedia)' : v.labelId);
 const DEFAULT_ATLAS_SYSTEMS = ['visceral', 'cardiovascular', 'skeletal', 'lymphatic'];
 const SUGGESTED_VIEW = { hfref: 'apical', effusion: 'right_flank', gastroparesis: 'epigastric', normal: 'subxiphoid' };
 /** Datasets may name their own teaching window per scenario (e.g. the clearest cardiac window of the atlas body). */
@@ -568,7 +571,7 @@ function buildPanels() {
     el('div', { class: 'clinical-only' },
       field('Jenis probe', el('select', { id: 'probeSelect', 'data-testid': 'probe-select', onchange: (e) => { setProbe(e.target.value, false); refreshAll(); touch(); } }, ...Object.values(PROBES).map((p) => el('option', { value: p.key }, p.label)))),
       el('h4', {}, 'Jendela standar'),
-      el('div', { class: 'view-grid' }, ...VIEWS.map((v) => el('button', { type: 'button', class: 'chipbtn', 'data-testid': 'view-' + v.key, onclick: () => applyView(v.key) }, v.labelId))),
+      el('div', { class: 'view-grid' }, ...VIEWS.map((v) => el('button', { type: 'button', class: 'chipbtn', 'data-testid': 'view-' + v.key, onclick: () => applyView(v.key) }, viewLabel(v)))),
       el('h4', {}, 'Angulasi (titik kontak tetap)'),
       numberControl({ id: 'angRotate', testid: 'angle-rotate', label: 'Rotasi (sumbu berkas)', min: -180, max: 180, step: 0.5, unit: '°', steps: [-5, -1, 1, 5], get: () => S.angles.rotate, set: (v) => { S.angles.rotate = v; } }),
       numberControl({ id: 'angHeel', testid: 'angle-heeltoe', label: 'Heel–toe (dalam bidang)', min: -CLINICAL_LIMITS.heelToe, max: CLINICAL_LIMITS.heelToe, step: 0.5, unit: '°', steps: [-5, -1, 1, 5], get: () => S.angles.heelToe, set: (v) => { S.angles.heelToe = v; } }),
