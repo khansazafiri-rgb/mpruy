@@ -10,7 +10,7 @@ import { validateRegistration } from '../src/core/mesh.js';
 import { clinicalPose, freePose, freeQuat, FREE_PRESETS, imagingPlane, PROBES } from '../src/core/probe.js';
 import { translate, rotate, selectSide } from '../src/app/axisMove.js';
 import { dragToAmount } from '../src/app/axisControl.js';
-import { triPlanes, mprPlane, stepSlice, MPR } from '../src/core/mpr.js';
+import { triPlanes, mprPlane, mprRasterSize, stepSlice, MPR } from '../src/core/mpr.js';
 import { reslice } from '../src/core/reslice.js';
 import { labelRaster, pixelToLPS, lpsToPixel, contourSegments, groupRaster } from '../src/core/labels.js';
 import { buildGroups, unavailableStructures, STRUCTURES, UNIDENTIFIED } from '../src/edu/structures.js';
@@ -150,6 +150,30 @@ test('tri-planar MPR: orthonormal patient planes through one crosshair point, ra
   const q = stepSlice(p, 'ax', 2.5, A.ct.bounds); assert.deepEqual(sub(q, p), [0, 0, 2.5]);
   const far = stepSlice(p, 'co', 1e5, A.ct.bounds); assert.equal(far[1], A.ct.bounds.hi[1], 'clamped to CT');
   assert.equal(mprPlane('sa', p, A.ct.bounds).mode, 'mpr');
+});
+
+test('MPR uses true CT extent, not oversized square padding, with near-isotropic pixels', () => {
+  const b = { lo: [-130, -50, -190], hi: [130, 50, 190] }, p = [0, 0, 0];
+  const P = triPlanes(p, b);
+  for (const [key, pl] of Object.entries(P)) {
+    const [i, j] = MPR[key].dims, w = b.hi[i] - b.lo[i], h = b.hi[j] - b.lo[j];
+    assert.equal(pl.width, w, key + ' width follows actual CT FOV');
+    assert.equal(pl.height, h, key + ' height follows actual CT FOV');
+    const { cols, rows } = mprRasterSize(pl, 320);
+    assert.ok(cols <= 320 && rows <= 320 && cols >= 16 && rows >= 16);
+    assert.ok(Math.abs(w / cols - h / rows) < 0.05, key + ' physical pixels are approximately square');
+    const volume = { sample: (x, y, z) => [x, y, z].every((v, a) => v >= b.lo[a] - 1e-7 && v <= b.hi[a] + 1e-7) ? 42 : NaN };
+    const result = reslice(volume, pl, cols, rows, { clipToFov: false });
+    assert.equal(result.outsideFraction, 0, key + ' does not intentionally render outside CT coverage');
+    const crosshair = lpsToPixel(pl, cols, rows, p);
+    const roundTrip = pixelToLPS(pl, cols, rows, crosshair.px, crosshair.py);
+    assert.ok(Math.hypot(...sub(roundTrip, p)) < 1e-6, key + ' linked crosshair stays registered');
+  }
+  // When a margin is requested, missing pixels remain explicitly marked, never fabricated.
+  const padded = mprPlane('ax', p, b, 10);
+  const raster = mprRasterSize(padded, 320);
+  const vol = { sample: (x, y, z) => [x, y, z].every((v, i) => v >= b.lo[i] && v <= b.hi[i]) ? 100 : NaN };
+  assert.ok(reslice(vol, padded, raster.cols, raster.rows, { clipToFov: false }).outsideFraction > 0);
 });
 
 test('contours align with the CT label map in axial, coronal and sagittal MPR planes', () => {
