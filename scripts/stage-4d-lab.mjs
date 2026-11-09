@@ -22,6 +22,7 @@ export async function validateLab(root) {
   for (const a of assets) { if (a.split('/').includes('..')) throw Error('Invalid asset path'); await readFile(path.join(root, a)); }
   for (const f of DATA) await readFile(path.join(root, 'data/phantom', f));
   // bundled datasets: the procedural phantom (always) and the atlas-derived dataset (default view, when built)
+  let atlasPack = null;
   const sets = ['phantom'];
   try { await readFile(path.join(root, 'data/atlas/registration.json')); sets.push('atlas'); } catch { /* optional in older builds */ }
   for (const set of sets) {
@@ -35,9 +36,9 @@ export async function validateLab(root) {
     }
     // The Atlas GLBs, decoder and catalog are shipped with the Lab, not loaded
     // from the NC Atlas Viewer application. Verify all shipped bytes and CT hashes.
-    if (set === 'atlas') verifyAtlasPack(path.join(root, 'atlas-assets'), anatomy);
+    if (set === 'atlas') atlasPack = verifyAtlasPack(path.join(root, 'atlas-assets'), anatomy);
   }
-  return { assets: assets.length, datasets: sets, indexSha256: createHash('sha256').update(html).digest('hex') };
+  return { assets: assets.length, datasets: sets, atlasPack, indexSha256: createHash('sha256').update(html).digest('hex') };
 }
 
 /**
