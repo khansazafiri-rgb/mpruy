@@ -1,9 +1,9 @@
-# Assets cleared for distribution (non-commercial education and CC BY-SA 4.0)
+# Candidate assets with commercially usable source licences (subject to release review)
 
-"Cleared" means: the only upstream sources identified are BodyParts3D (CC BY-SA 2.1 JP) and Z-Anatomy
-(CC BY-SA 4.0), Wikipedia (CC BY-SA 3.0 / GFDL), permissive software licences, or MEDCOEL's own
-work. These licences allow commercial use too, but this list is written for MEDCOEL's
-**non-commercial educational** use. The residual risks in `PROVENANCE_REPORT.md` §5 still apply.
+The sources identified here have licences that permit commercial use, or are described as MEDCOEL's own
+work. **This is not approval for a public release.** Individual provenance remains partly inferred
+(`PROVENANCE_REPORT.md` §5), and the Atlas application code is described as CC BY-NC-SA 4.0.
+The release gate in `commercial-release.json` therefore blocks both products pending documented rights review.
 Attribution is required wherever these are shown: `apps/anatomy/NOTICE` and
 `apps/4d-lab/public/data/atlas/NOTICE.txt`.
 

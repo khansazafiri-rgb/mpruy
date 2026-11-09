@@ -7,6 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash, randomUUID } from 'node:crypto';
 import { assertDistributionClean } from '../licensing/tools/check-distribution.mjs';
+import { assertCommercialReleaseReady } from '../licensing/tools/check-commercial-release.mjs';
 
 const repo = fileURLToPath(new URL('../', import.meta.url));
 const BASE = '/anatomy/4d-lab/';
@@ -58,7 +59,7 @@ async function current(dest) {
 }
 async function activate(dest, target) { const tmp = dest + '.next-' + randomUUID(); await symlink(target, tmp, 'dir'); try { await rename(tmp, dest); } catch (e) { await rm(tmp, { force: true }); throw e; } }
 
-export async function stageLab({ source = path.join(repo, 'apps/4d-lab/dist'), dest = process.env.LAB4D_DIR || '/var/lib/medcoel/4d-lab', releaseId = process.env.LAB4D_RELEASE_ID || new Date().toISOString().replace(/[^0-9]/g, ''), rollback = false, atlasRoot = null } = {}) {
+export async function stageLab({ source = path.join(repo, 'apps/4d-lab/dist'), dest = process.env.LAB4D_DIR || '/var/lib/medcoel/4d-lab', releaseId = process.env.LAB4D_RELEASE_ID || new Date().toISOString().replace(/[^0-9]/g, ''), rollback = false, atlasRoot = null, commercialManifest } = {}) {
   dest = path.resolve(dest);
   const webDist = path.join(repo, 'apps/web/dist');
   if (dest === webDist || dest.startsWith(webDist + path.sep)) throw Error('Destination must be outside the main web dist');
@@ -75,6 +76,7 @@ export async function stageLab({ source = path.join(repo, 'apps/4d-lab/dist'), d
   }
   source = await realpath(source);
   const validation = await validateLab(source);
+  validation.commercialRights = assertCommercialReleaseReady('4d-lab', source, commercialManifest);
   // compare with the live atlas deployment when it is reachable from here (set ANATOMY_VIEWER_DIR to force)
   const atlasDir = atlasRoot || process.env.ANATOMY_VIEWER_DIR || '/var/lib/medcoel/anatomy-viewer';
   let atlasExists = false; try { atlasExists = (await lstat(atlasDir)) && true; } catch { /* not on this host */ }
