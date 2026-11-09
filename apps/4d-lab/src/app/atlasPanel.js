@@ -8,7 +8,7 @@ const fmtM = (m) => [0, 1, 2].map((r) => '[' + [0, 1, 2, 3].map((c) => String(+m
 export function frameSummary({ D, comparison }) {
   const an = D?.anatomy, isAtlas = an?.dataset === 'atlas', ct = D?.ct;
   const frames = [
-    { key: 'atlas', name: 'Koordinat atlas', text: 'glTF meter · +X kiri pasien · +Y superior · +Z anterior · asal di lantai, bidang mid-sagital (sama dengan Atlas MEDCOEL /anatomy/viewer/)' },
+    { key: 'atlas', name: 'Koordinat atlas', text: 'glTF meter · +X kiri pasien · +Y superior · +Z anterior · asal di lantai, bidang mid-sagital (berasal dari data atlas yang diregistrasikan dengan CT sintetis)' },
     { key: 'patient', name: 'Koordinat pasien (LPS)', text: `milimeter · +x kiri · +y posterior · +z superior${isAtlas ? ' · z = 0 di ujung prosesus xiphoideus atlas' : ' · z ≈ 0 setinggi xiphisternum phantom'}` },
     { key: 'ct', name: 'Koordinat fisik CT', text: ct ? `indeks voxel (i,j,k) → LPS lewat affine NRRD · ${ct.sizes.join('×')} voxel · ${ct.spacing.map((v) => v.toFixed(2)).join('/')} mm` : '—' },
     { key: 'probe', name: 'Koordinat probe', text: 'titik kontak + sumbu u (lebar citra), b (arah berkas), e (elevasi), semuanya dalam LPS; tidak bergantung pada kamera' },
