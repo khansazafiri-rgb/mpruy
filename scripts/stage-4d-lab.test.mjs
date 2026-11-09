@@ -7,7 +7,7 @@ import path from 'node:path';
 import { stageLab, validateLab } from './stage-4d-lab.mjs';
 
 import { approveSyntheticFixture } from './commercial-release-fixture.mjs';
-async function stageFixture(options) { if (options.rollback || options.dest.includes('/apps/web/dist/')) return stageLab(options); const commercialManifest = path.join(path.dirname(options.dest), 'synthetic-commercial-approval.json'); await approveSyntheticFixture(options.source, '4d-lab', commercialManifest); return stageLab({ ...options, commercialManifest }); }
+async function stageFixture(options) { const commercialManifest = path.join(path.dirname(options.dest), 'synthetic-commercial-approval.json'); if (options.rollback || options.dest.includes('/apps/web/dist/')) return stageLab({ ...options, commercialManifest }); await approveSyntheticFixture(options.source, '4d-lab', commercialManifest); return stageLab({ ...options, commercialManifest }); }
 
 async function fakeBuild(dir, tag) {
   await mkdir(path.join(dir, 'assets'), { recursive: true }); await mkdir(path.join(dir, 'data/phantom'), { recursive: true });
@@ -36,6 +36,19 @@ test('stages releases atomically, validates hashes and rolls back', async () => 
     await assert.rejects(stageFixture({ source: b, dest, releaseId: 'r3' }), /hash mismatch/);
     await assert.rejects(stageFixture({ source: a, dest: path.join(process.cwd(), 'apps/web/dist/x'), releaseId: 'r4' }), /outside the main web dist/);
   } finally { await rm(tmp, { recursive: true, force: true }); }
+});
+
+test('4D Lab rollback refuses a release whose published files were modified after approval', async () => {
+  const tmp = await mkdtemp(path.join(os.tmpdir(), 'lab4d-rollback-rights-'));
+  try {
+    const a = path.join(tmp, 'a'), b = path.join(tmp, 'b'), dest = path.join(tmp, 'live', '4d-lab');
+    await fakeBuild(a, 'A'); await fakeBuild(b, 'B'); await mkdir(path.dirname(dest), { recursive: true });
+    const first = await stageFixture({source: a, dest, releaseId: 'first'});
+    const second = await stageFixture({source: b, dest, releaseId: 'second'});
+    await writeFile(path.join(first.currentTarget, 'assets', 'unreviewed-code.js'), 'not part of approval');
+    await assert.rejects(stageFixture({dest, rollback: true}), /no complete rights approval/);
+    assert.equal(await readlink(dest), second.currentTarget, 'rejected rollback cannot replace active release');
+  } finally { await rm(tmp, {recursive: true, force: true}); }
 });
 
 test('atlas model check: matching hashes pass, a changed model is refused', async () => {
