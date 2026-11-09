@@ -21,7 +21,9 @@ page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
 page.on('console', (m) => { if (m.type() === 'error') errors.push('console: ' + m.text()); });
 const lab = (fn, arg) => page.evaluate(fn, arg);
 const results = [];
+const ONLY = process.env.E2E_ONLY ? new RegExp(process.env.E2E_ONLY) : null; // run a subset (debugging/re-runs)
 async function step(name, fn) {
+  if (ONLY && !ONLY.test(name)) return;
   const t0 = Date.now();
   try { await fn(); results.push({ name, ok: true, ms: Date.now() - t0 }); console.log('ok   ' + name); }
   catch (e) { results.push({ name, ok: false, ms: Date.now() - t0, error: e.message }); console.log('FAIL ' + name + '\n     ' + e.message.split('\n').slice(0, 3).join(' | ')); }
@@ -242,6 +244,8 @@ await step('directed learning: continue -> prepared step -> answer -> feedback -
 
 await step('keyboard: arrows = patient directions, PageDown = posterior, Q/E rotate', async () => {
   await lab(() => document.activeElement?.blur());
+  if (await lab(() => window.__lab.S.mode) !== 'clinical') { await lab(() => { document.body.dataset.sidebar = 'open'; }); await page.getByTestId('tab-probe').click(); await page.getByTestId('mode-clinical').click(); await lab(() => { document.body.dataset.sidebar = 'closed'; document.activeElement?.blur(); }); }
+  if (await lab(() => window.__lab.S.display) === 'tri') await page.getByTestId('mon-split').click();
   let c0 = await contact(); await page.keyboard.press('ArrowUp'); assert.ok((await contact())[2] > c0[2], 'ArrowUp superior');
   c0 = await contact(); await page.keyboard.press('ArrowRight'); assert.ok((await contact())[0] > c0[0], 'ArrowRight = patient left');
   const n0 = await normal(); await page.keyboard.press('PageDown'); const n1 = await normal(); assert.ok(n1[1] > n0[1] || n1[0] !== n0[0], 'PageDown walks posterior');
@@ -254,7 +258,7 @@ for (const [name, dev] of [['laptop', { viewport: { width: 1280, height: 800 } }
     const c = await browser.newContext({ ...dev }), p = await c.newPage(), errs = [];
     await p.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v1', 'done'); } catch { /* ignore */ } });
     p.on('pageerror', (e) => errs.push(e.message));
-    await p.goto(url); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
+    await p.goto(url, { timeout: 180000 }); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
     await p.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.atlasState), null, { timeout: 240000 });
     assert.ok(await p.getByTestId('pad-superior').isVisible());
     assert.deepEqual(await truncated(p, '.probe-pad button, .probe-pad select, .monitor-toolbar > button, .ws-nav button'), [], 'no clipped controls');

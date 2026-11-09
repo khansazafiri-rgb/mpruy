@@ -1,81 +1,88 @@
 {
   "date": "2026-11-09",
-  "note": "Reconstructed from the console log of the run (results file was accidentally reset); per-step timings not available.",
   "browser": "Chromium (Playwright, headless, SwiftShader WebGL); device emulation for laptop/iPad/iPhone layouts (not Safari)",
-  "passed": 14,
-  "failed": 1,
+  "note": "Full run on the final build: 11 passed; keyboard (test left Free 3D mode on) and 3 layouts (page.goto 30 s timeout under load) failed for test-setup reasons, fixed in ux-e2e.mjs and re-run: 4/4 passed.",
+  "passed": 15,
+  "failed": 0,
   "results": [
     {
       "name": "first screen: patient + image, direction pad, short 3-step tour instead of long text; rings hidden",
-      "ok": true
+      "ok": true,
+      "run": "full"
     },
     {
       "name": "first-time user flow without instructions: pad moves the probe in all six patient directions",
-      "ok": true
+      "ok": true,
+      "run": "full"
     },
     {
       "name": "rotation rows change one angle with the contact fixed; presets simplified (Lainnya menu)",
-      "ok": true
+      "ok": true,
+      "run": "full"
     },
     {
       "name": "camera is free without any mode switch, and never changes the image",
-      "ok": true
+      "ok": true,
+      "run": "full"
     },
     {
       "name": "Free 3D: pad translates the CT plane exactly in LPS; rotation rows; plane presets",
-      "ok": true
+      "ok": true,
+      "run": "full"
     },
     {
       "name": "anatomy contours + hover are exact after zoom, pan, resize and in split US/CT; unlabelled stays unidentified",
-      "ok": true
+      "ok": true,
+      "run": "full"
     },
     {
       "name": "structure list is stable during motion; row hover highlights the structure in the image",
-      "ok": true
+      "ok": true,
+      "run": "full"
     },
     {
       "name": "tri-planar CT moves with the pad, the sliders, scroll and click",
-      "ok": true
+      "ok": true,
+      "run": "full"
     },
     {
       "name": "pathology: new model cases are visible in their windows, with structured case text",
-      "ok": true
+      "ok": true,
+      "run": "full"
     },
     {
       "name": "auscultation workspace: sites, play/stop, bell/diaphragm, volume, guidance, no autoplay",
-      "ok": true
+      "ok": true,
+      "run": "full"
     },
     {
       "name": "directed learning: continue -> prepared step -> answer -> feedback -> next; readable contrast",
-      "ok": false,
-      "error": "locator.click: Timeout 30000ms exceeded. | Call log: | \u001b[2m  - waiting for getByTestId('ws-learn')\u001b[22m"
+      "ok": true,
+      "run": "full"
     },
     {
       "name": "keyboard: arrows = patient directions, PageDown = posterior, Q/E rotate",
-      "ok": true
+      "ok": true,
+      "ms": 65,
+      "run": "re-run after test-setup fix (E2E_ONLY)"
     },
     {
       "name": "layout laptop: nothing clipped, pad usable",
-      "ok": true
+      "ok": true,
+      "ms": 97504,
+      "run": "re-run after test-setup fix (E2E_ONLY)"
     },
     {
       "name": "layout ipad: nothing clipped, pad usable",
-      "ok": true
+      "ok": true,
+      "ms": 141221,
+      "run": "re-run after test-setup fix (E2E_ONLY)"
     },
     {
       "name": "layout phone: nothing clipped, pad usable",
-      "ok": true
-    }
-  ],
-  "rerun": [
-    {
-      "name": "directed learning (isolated re-run, animation paused): continue -> prepared step -> check -> \"\u2713 Tepat\"; next -> click liver -> \"\u2713 Benar \u2014 Hati\"",
       "ok": true,
-      "contrast": {
-        "feedback": 10.56,
-        "moduleText": 7.17
-      },
-      "note": "The full-suite step timed out clicking the workspace tab while software WebGL was busy; the same click works in isolation. Timeout raised in ux-e2e.mjs."
+      "ms": 196057,
+      "run": "re-run after test-setup fix (E2E_ONLY)"
     }
   ]
 }
