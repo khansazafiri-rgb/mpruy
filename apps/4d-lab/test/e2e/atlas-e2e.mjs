@@ -104,6 +104,14 @@ await step('atlas dataset is the default; shared atlas models load with no runti
   assert.deepEqual(errors, []);
 });
 
+await step('participant UI does not show the removed humerus landmark pilot', async () => {
+  await openTab('anatomy');
+  assert.equal(await page.getByTestId('skeletal-landmark-audit').count(), 0, 'no skeletal landmark pilot section');
+  assert.equal(await page.getByTestId('skeletal-landmark-open').count(), 0, 'no humerus pilot button');
+  assert.equal(await page.getByTestId('skeletal-landmark-results').count(), 0, 'no pilot landmark list');
+  assert.equal(await page.getByText('Tuberculum majus', { exact: true }).count(), 0, 'no unverified landmark shown');
+});
+
 await step('full patient view: external body shell with orientation labels; atlas hidden under opaque skin', async () => {
   await pause(); await display('external'); await camera('whole');
   const vis = await lab(() => window.__lab.atlas.root.children.filter((m) => m.visible).length);
