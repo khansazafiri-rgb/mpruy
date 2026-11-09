@@ -104,6 +104,14 @@ await step('atlas dataset is the default; shared atlas models load with no runti
   assert.deepEqual(errors, []);
 });
 
+await step('participant UI does not show the removed humerus landmark pilot', async () => {
+  await openTab('anatomy');
+  assert.equal(await page.getByTestId('skeletal-landmark-audit').count(), 0, 'no skeletal landmark pilot section');
+  assert.equal(await page.getByTestId('skeletal-landmark-open').count(), 0, 'no humerus pilot button');
+  assert.equal(await page.getByTestId('skeletal-landmark-results').count(), 0, 'no pilot landmark list');
+  assert.equal(await page.getByText('Tuberculum majus', { exact: true }).count(), 0, 'no unverified landmark shown');
+});
+
 await step('full patient view: external body shell with orientation labels; atlas hidden under opaque skin', async () => {
   await pause(); await display('external'); await camera('whole');
   const vis = await lab(() => window.__lab.atlas.root.children.filter((m) => m.visible).length);
@@ -157,22 +165,6 @@ await step('cleared respiratory detail: show existing pleura/bronchi and restore
   assert.equal(await lab(() => window.__lab.atlas.respiratoryDetailsShown), false);
   assert.equal(await lab(() => ['Pleura', 'Right main bronchus', 'Left main bronchus'].every(k => window.__lab.atlas.structures.get(k).hiddenByUser)), true);
   await page.getByTestId('btn-showall').click();
-});
-
-await step('skeletal landmark pilot displays source honesty instead of unverified 3D pins', async () => {
-  await display('transparent');
-  const before = await lab(() => window.__lab.atlas.root.children.length);
-  await page.getByTestId('skeletal-landmark-open').click();
-  await page.waitForFunction(() => new RegExp('Humerus[.]r').test(document.querySelector('[data-testid=structure-info]')?.textContent || ''), null, { timeout: 15000 });
-  await page.getByTestId('skeletal-landmark-results').waitFor({ timeout: 15000 });
-  assert.match(await page.getByTestId('skeletal-landmark-status').textContent(), new RegExp('0/6.*0 pin 3D tervalidasi'));
-  assert.match(await page.getByTestId('skeletal-landmark-results').textContent(), /Greater tubercle/);
-  assert.match(await page.getByTestId('skeletal-landmark-results').textContent(), /Tuberositas deltoidea/);
-  assert.match(await page.getByTestId('skeletal-landmark-results').textContent(), /model skeletal lama/i);
-  assert.equal(await lab(() => window.__lab.atlas.root.children.length), before, 'no synthetic landmark meshes were created');
-  assert.equal(await lab(() => window.__lab.atlas.highlighted), 'Humerus.r');
-  await shot('atlas-landmark-humerus-unmapped');
-  await page.getByTestId('btn-showall').click(); await display('transparent');
 });
 
 await step('inspect tool: clicking an organ selects that atlas structure (not the probe)', async () => {
