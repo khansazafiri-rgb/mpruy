@@ -38,6 +38,42 @@ export const SCENARIOS = {
     teaching: 'Lung ultrasound is more sensitive than a supine chest radiograph for effusion. Volume estimates from US are approximate. Thoracentesis decisions need clinical context (BTS 2023 guideline).',
     references: ['R5', 'R6', 'R7'],
   },
+  pericardial: {
+    key: 'pericardial', system: 'cardiovascular', title: 'Pericardial effusion (moderate, circumferential)', titleId: 'Efusi perikardial (sedang)',
+    physiology: { heartRate: 104 }, auscultation: {}, effusionMl: 0, layer: { kind: 'pericardial', mm: 9 },
+    summary: 'A circumferential layer of fluid (about 9 mm) surrounds the heart in the pericardial space. Heart rate is set to 104/min. Haemodynamic effects (tamponade physiology) are NOT modelled.',
+    findings: [
+      'Subxiphoid view: an anechoic band between the bright pericardium/liver interface and the myocardium, all around the heart.',
+      'CT: a water-density rim around the heart.',
+      'Muffled heart sounds and pulsus paradoxus are described in the text only; the synthesised heart sounds are unchanged.',
+    ],
+    teaching: 'Echocardiography is the first-line test for pericardial effusion; size is graded by the end-diastolic echo-free space (ESC 2015). Tamponade is a clinical diagnosis supported by echo signs (chamber collapse, IVC plethora) that this simulator does not reproduce.',
+    references: ['R11', 'R3'],
+  },
+  ascites: {
+    key: 'ascites', system: 'digestive', title: 'Free intraperitoneal fluid around the liver', titleId: 'Cairan bebas perihepatik (asites)',
+    physiology: {}, auscultation: {}, effusionMl: 0, layer: { kind: 'perihepatic', mm: 10 },
+    summary: 'Free fluid (about 10 mm) lies against the lower, posterior and lateral surfaces of the liver, in the dependent upper abdomen of a supine patient. The kidney is withheld in the atlas dataset, so the hepatorenal (Morison) recess itself cannot be shown.',
+    findings: [
+      'RUQ window: an anechoic stripe between the liver and the surrounding tissue, outlining the liver edge.',
+      'CT: water-density fluid around the inferior liver.',
+      'Pelvic and left-upper-quadrant fluid, septations and debris are NOT simulated.',
+    ],
+    teaching: 'In trauma, free fluid is first looked for in the hepatorenal recess (FAST). In liver disease, ascites is confirmed by imaging and characterised by diagnostic paracentesis (AASLD 2021).',
+    references: ['R12', 'T4'],
+  },
+  retention: {
+    key: 'retention', system: 'urinary', title: 'Distended bladder (urinary retention)', titleId: 'Kandung kemih penuh (retensi urin)',
+    physiology: {}, auscultation: {}, effusionMl: 0, layer: { kind: 'bladder', mm: 30 },
+    summary: 'The urinary bladder lumen is enlarged by about 30 mm in every direction (displacing surrounding soft tissue), representing a full or retained bladder. The atlas bladder is otherwise nearly empty.',
+    findings: [
+      'Suprapubic transverse and sagittal windows: a large anechoic bladder with posterior acoustic enhancement.',
+      'CT: a large water-density bladder.',
+      'Bladder volume can be estimated from three diameters (ellipsoid formula); wall thickness and trabeculation are NOT simulated.',
+    ],
+    teaching: 'Retention is suspected clinically and confirmed by a bladder scan or catheter volume; post-void residual and causes (obstruction, drugs, neurogenic) need assessment (Selius & Subedi 2008).',
+    references: ['R13', 'T4'],
+  },
   gastroparesis: {
     key: 'gastroparesis', system: 'digestive', title: 'Reduced gastric antral motility (gastroparesis pattern)', titleId: 'Motilitas antrum menurun (pola gastroparesis)',
     physiology: { antralFrequency: 1.2, antralAmplitude: 0.22, antralSpeed: 1.8 },
@@ -80,10 +116,70 @@ export function buildEffusion(labels, volumeMl, { lungLabel = 7, band = 7, diaph
     const s = score(x, y, z);
     return s > threshold ? 39 : s > threshold - band ? 41 : 0;
   };
-  return { threshold, volumeMl: n * voxelMl, classify, lungMl: scores.length * voxelMl };
+  return { kind: 'pleural', from: new Set([lungLabel]), threshold, volumeMl: n * voxelMl, classify, lungMl: scores.length * voxelMl, meshLabel: 39 };
 }
 
 export function applyScenario(base, key) {
   const sc = SCENARIOS[key] || SCENARIOS.normal;
   return { ...base, ...sc.physiology };
+}
+
+/** Pathology layer labels that are not part of a dataset's own label table (MEDCOEL model layers). */
+export const LAYER_LABELS = { 44: { key: 'pericardial_fluid', hu: 8 }, 45: { key: 'free_fluid', hu: 10 } };
+
+/**
+ * Model fluid layers for the structured cases. Each grows a fluid region by breadth-first search (6-neighbour)
+ * from seed labels through allowed tissue labels, up to `mm`, and writes an override label per voxel.
+ * Returns {from: Set(labels that may be overridden), classify(x, y, z, label) -> override or 0, volumeMl, box}.
+ *   pericardial : seed myocardium (9); through fat/lungs -> 44 (pericardial fluid)
+ *   perihepatic : seed liver (17); through fat only, inferior half of the liver -> 45 (free fluid)
+ *   bladder     : seed bladder lumen (30); through fat/bowel/bladder wall -> 30 (urine), new wall 43 at the rim
+ */
+export function buildLayer(labels, { kind, mm }) {
+  const SPEC = {
+    pericardial: { seed: [9], through: [2, 7, 8], out: 44 },
+    perihepatic: { seed: [17], through: [2], out: 45 },
+    bladder: { seed: [30], through: [2, 25, 26, 27, 28, 43], out: 30, rim: 43 },
+  }[kind];
+  if (!SPEC || !labels) return null;
+  const [nx, ny, nz] = labels.sizes, data = labels.data, m = labels.affine, inv = labels.inverse;
+  const vox = Math.min(...labels.spacing), steps = Math.max(1, Math.round(mm / vox));
+  const seed = new Set(SPEC.seed), through = new Set(SPEC.through);
+  const out = new Uint8Array(data.length), dist = new Uint8Array(data.length).fill(255);
+  let queue = [];
+  let zCut = Infinity;
+  if (kind === 'perihepatic') { // only the inferior half of the liver (dependent upper abdomen)
+    let zs = []; for (let k = 0; k < nz; k++) for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) if (data[(k * ny + j) * nx + i] === 17) zs.push(k);
+    zs.sort((a, b) => a - b); zCut = zs[Math.floor(zs.length * 0.55)] ?? Infinity;
+  }
+  for (let idx = 0; idx < data.length; idx++) if (seed.has(data[idx])) { dist[idx] = 0; queue.push(idx); }
+  const lo = [nx, ny, nz], hi = [0, 0, 0];
+  for (let d = 1; d <= steps + (SPEC.rim ? 1 : 0); d++) {
+    const next = [];
+    for (const idx of queue) {
+      const i = idx % nx, j = ((idx / nx) | 0) % ny, k = (idx / (nx * ny)) | 0;
+      for (const [di, dj, dk] of [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]]) {
+        const a = i + di, b = j + dj, c = k + dk;
+        if (a < 0 || b < 0 || c < 0 || a >= nx || b >= ny || c >= nz) continue;
+        const n = (c * ny + b) * nx + a;
+        if (dist[n] !== 255 || !through.has(data[n]) || c > zCut) continue;
+        dist[n] = d;
+        out[n] = d > steps ? SPEC.rim : SPEC.out;
+        if (d <= steps) next.push(n);
+        if (a < lo[0]) lo[0] = a; if (b < lo[1]) lo[1] = b; if (c < lo[2]) lo[2] = c; if (a > hi[0]) hi[0] = a; if (b > hi[1]) hi[1] = b; if (c > hi[2]) hi[2] = c;
+      }
+    }
+    queue = next;
+  }
+  let n = 0; for (let x = 0; x < out.length; x++) if (out[x] === SPEC.out && data[x] !== SPEC.out) n++;
+  const voxelMl = Math.abs(m[0] * (m[5] * m[10] - m[6] * m[9]) - m[1] * (m[4] * m[10] - m[6] * m[8]) + m[2] * (m[4] * m[9] - m[5] * m[8])) / 1000;
+  const toLPS = (i, j, k) => [m[0] * i + m[1] * j + m[2] * k + m[3], m[4] * i + m[5] * j + m[6] * k + m[7], m[8] * i + m[9] * j + m[10] * k + m[11]];
+  const a0 = toLPS(...lo), a1 = toLPS(...hi);
+  const box = { lo: a0.map((v, i) => Math.min(v, a1[i]) - 6), hi: a0.map((v, i) => Math.max(v, a1[i]) + 6) };
+  const classify = (x, y, z) => {
+    const i = Math.round(inv[0] * x + inv[1] * y + inv[2] * z + inv[3]), j = Math.round(inv[4] * x + inv[5] * y + inv[6] * z + inv[7]), k = Math.round(inv[8] * x + inv[9] * y + inv[10] * z + inv[11]);
+    if (i < 0 || j < 0 || k < 0 || i >= nx || j >= ny || k >= nz) return 0;
+    return out[(k * ny + j) * nx + i];
+  };
+  return { kind, from: through, classify, volumeMl: +(n * voxelMl).toFixed(0), box, meshLabel: SPEC.out };
 }

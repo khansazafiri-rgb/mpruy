@@ -2,6 +2,18 @@
 
 _Last updated: 2026-11-09 (branch `claude/vigilant-cerf-jjc6fj`, based on `b931e1b`): **licence quarantine** — withheld atlas anatomy removed, atlas dataset rebuilt from cleared inputs (CC BY-SA 4.0), build/stage/preview guards. See `../../licensing/`._
 
+## UX, anatomy intelligence & clinical education upgrade (2026-11-09)
+Details: `UX_DESIGN.md`. Stacked on the licence quarantine; not deployed.
+| Stage | Status | Evidence |
+|---|---|---|
+| B Axis-first movement (rings opt-in, mode bar, six patient directions, side selection, presets, keyboard) | **Done** | `test/ux.test.mjs`, `test/e2e/ux-e2e.mjs`, `evidence/ux-02…04` |
+| C Smart identification (5 levels, contours, hover, click-to-explain, 2D↔3D link, unavailable anatomy) | **Done** | `test/assist.test.mjs`, `evidence/ux-05…07` |
+| D Tri-planar CT with linked crosshairs, W/L presets | **Done** | `evidence/ux-08-triplanar.jpg` |
+| E Workspaces, drawer layout, MEDCOEL tokens, iPad/phone layouts | **Done** (Chromium emulation only) | `evidence/ux-12…14` |
+| F Learning modes/modules, structured pathology cases, credits page | **Done (content draft)** | `evidence/ux-10, ux-11`; `MEDICAL_REVIEW_CHECKLIST.md` §H |
+| G Auscultation workspace (sites, guide, bell/diaphragm, normal/patho, demos) | **Done (audio review pending)** | `evidence/ux-09-auscultation.jpg` |
+| H Tests, evidence, docs, PR | **Done**; Safari **not tested** | `UX_DESIGN.md` §6–7 |
+
 ## Licence quarantine (2026-11-09) — highest priority
 | Item | Status |
 |---|---|
@@ -9,7 +21,7 @@ _Last updated: 2026-11-09 (branch `claude/vigilant-cerf-jjc6fj`, based on `b931e
 | Kidney + renal pelvis (CC BY-NC) and ossicles | **Removed** losslessly from the atlas GLBs; kidney labels 20/21 and spinal cord 35 flagged unavailable with zero voxels; RUQ view retargeted to the hepatorenal liver surface and labelled 'ginjal tidak tersedia' |
 | Atlas dataset | **Rebuilt** from cleared inputs; pipeline fails closed on quarantined inputs |
 | Evidence | atlas-*.jpg regenerated (`evidence/CLEARED_EVIDENCE.json`); label-slice/standard-view PNGs and staging screenshots withdrawn, not yet regenerated |
-| Paused feature work (axis-first controls, anatomy assist, learning modules) | Kept on local branch `wip/4d-ux-intelligence` (not pushed); resume after the quarantine PR |
+| Paused feature work | Resumed and completed (UX upgrade section above) |
 
 Evidence files are in `evidence/`; test commands are listed in `TEST_RESULTS.md`.
 

@@ -2,7 +2,7 @@
 // maps LPS -> scene (supine on the exam table). Nothing in here feeds the imaging calculation.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { computeBoundsTree, acceleratedRaycast } from 'three-mesh-bvh';
+import { computeBoundsTree, acceleratedRaycast, MeshBVH } from 'three-mesh-bvh';
 
 THREE.BufferGeometry.prototype.computeBoundsTree = computeBoundsTree;
 THREE.Mesh.prototype.raycast = acceleratedRaycast;
@@ -69,6 +69,8 @@ export class PatientScene {
     this._gizmo();
     this._stethoscope();
     this.labels = [];
+    this._axisGuide();
+    this.setInteraction('place');
     this.resize();
     new ResizeObserver(() => this.resize()).observe(container);
   }
@@ -130,7 +132,15 @@ export class PatientScene {
       });
       const mesh = new THREE.Mesh(geo, mat);
       mesh.name = name; mesh.renderOrder = isSkin ? 10 : style.opacity < 1 ? 5 : 1;
-      if (isSkin) geo.computeBoundsTree();
+      if (isSkin) {
+        geo.computeBoundsTree();
+        // static REFERENCE skin (never deformed) for continuous sliding and side selection
+        const rg = new THREE.BufferGeometry();
+        rg.setAttribute('position', new THREE.BufferAttribute(new Float32Array(m.lps), 3));
+        rg.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(geo.attributes.normal.array), 3));
+        rg.setIndex(new THREE.BufferAttribute(new Uint32Array(m.indices), 1));
+        this.skinRef = { geo: rg, bvh: new MeshBVH(rg) };
+      }
       this.patient.add(mesh);
       this.meshes[name] = { mesh, ref: new Float32Array(m.lps), refNormals: new Float32Array(geo.attributes.normal.array), system: isSkin ? 'skin' : style.system, baseOpacity: style.opacity };
     }
@@ -378,6 +388,13 @@ export class PatientScene {
       l.el.style.display = visible ? 'block' : 'none';
       if (visible) l.el.style.transform = `translate(-50%,-50%) translate(${x}px, ${y}px)`;
     }
+    for (const l of this.guideLabels || []) {
+      if (!this.guideSpec) { l.el.style.display = 'none'; continue; }
+      v.set(...l.p).applyMatrix4(LPS_TO_SCENE).project(this.camera);
+      const x = (v.x * 0.5 + 0.5) * w, y = (-v.y * 0.5 + 0.5) * h, ok = v.z < 1 && x > 4 && y > 4 && x < w - 4 && y < h - 4;
+      l.el.style.display = ok ? 'block' : 'none';
+      if (ok) l.el.style.transform = `translate(-50%,-50%) translate(${x}px, ${y}px)`;
+    }
   }
 
   // ------------------------------------------------------------------ camera
@@ -434,6 +451,64 @@ export class PatientScene {
     this.raycaster.setFromCamera(this.ndc, this.camera);
   }
 
+  // ------------------------------------------------------------------ axis-first interaction
+  /** One interaction at a time: only 'camera' lets the pointer orbit/pan/zoom the camera. */
+  setInteraction(mode) {
+    this.interaction = mode;
+    // the camera is always free (drag empty space / wheel); the probe and handles take priority when grabbed
+    if (this.controls) { this.controls.enableRotate = true; this.controls.enablePan = true; this.controls.enableZoom = true; }
+    this.renderer.domElement.dataset.interaction = mode;
+  }
+
+  _axisGuide() {
+    const g = new THREE.Group(); g.visible = false;
+    const mk = (color) => new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), new THREE.Vector3(), 110, color, 22, 13);
+    this.guidePlus = mk(0x2563eb); this.guideMinus = mk(0x2563eb);
+    for (const a of [this.guidePlus, this.guideMinus]) a.traverse((o) => { if (o.material) { o.material.depthTest = false; o.material.transparent = true; o.material.opacity = 0.95; } o.renderOrder = 45; });
+    g.add(this.guidePlus, this.guideMinus); this.guide = g; this.patient.add(g);
+    this.guideLabels = ['plus', 'minus'].map((k) => { const e = document.createElement('div'); e.className = 'axis-label ' + k; e.style.display = 'none'; this.container.appendChild(e); return { el: e, p: [0, 0, 0] }; });
+  }
+
+  /** Show a two-headed patient-axis arrow at `pivot` (LPS) with anatomical labels, or hide it (null). */
+  setAxisGuide(spec) {
+    if (!spec) { this.guide.visible = false; for (const l of this.guideLabels) l.el.style.display = 'none'; this.guideSpec = null; return; }
+    const ax = v3(spec.axis).normalize(), color = new THREE.Color(spec.color);
+    this.guidePlus.position.set(...spec.pivot); this.guidePlus.setDirection(ax); this.guidePlus.setColor(color);
+    this.guideMinus.position.set(...spec.pivot); this.guideMinus.setDirection(ax.clone().negate()); this.guideMinus.setColor(color);
+    this.guide.visible = true; this.guideSpec = spec;
+    const end = (sg) => spec.pivot.map((v, i) => v + sg * 140 * spec.axis[i]);
+    this.guideLabels[0].p = end(1); this.guideLabels[0].el.textContent = spec.plus;
+    this.guideLabels[1].p = end(-1); this.guideLabels[1].el.textContent = spec.minus;
+    for (const l of this.guideLabels) l.el.style.color = spec.color;
+  }
+
+  /** Screen-space vector (CSS px) of +1 mm along an LPS axis at an LPS pivot. */
+  screenAxis(pivot, axis) {
+    const a = this._screen(pivot), b = this._screen(pivot.map((v, i) => v + axis[i] * 50));
+    return [(b.x - a.x) / 50, (b.y - a.y) / 50];
+  }
+
+  /** Closest point on the static reference skin + interpolated outward normal (LPS). */
+  closestSkin(p) {
+    if (!this.skinRef) return null;
+    const hit = this.skinRef.bvh.closestPointToPoint(v3(p)); if (!hit) return null;
+    return this._surfaceAt(hit.point, hit.faceIndex);
+  }
+  /** First reference-skin hit of a ray from `origin` along `dir` (LPS). */
+  raySkin(origin, dir) {
+    if (!this.skinRef) return null;
+    const hit = this.skinRef.bvh.raycastFirst(new THREE.Ray(v3(origin), v3(dir).normalize()), THREE.DoubleSide);
+    return hit ? this._surfaceAt(hit.point, hit.faceIndex) : null;
+  }
+  _surfaceAt(point, f) {
+    const g = this.skinRef.geo, pos = g.attributes.position, nrm = g.attributes.normal, idx = g.index;
+    const a = idx.getX(3 * f), b = idx.getX(3 * f + 1), c = idx.getX(3 * f + 2);
+    const tri = new THREE.Triangle(new THREE.Vector3().fromBufferAttribute(pos, a), new THREE.Vector3().fromBufferAttribute(pos, b), new THREE.Vector3().fromBufferAttribute(pos, c));
+    const bc = new THREE.Vector3(); tri.getBarycoord(point, bc);
+    const n = new THREE.Vector3().fromBufferAttribute(nrm, a).multiplyScalar(bc.x).add(new THREE.Vector3().fromBufferAttribute(nrm, b).multiplyScalar(bc.y)).add(new THREE.Vector3().fromBufferAttribute(nrm, c).multiplyScalar(bc.z)).normalize();
+    return { point: point.toArray(), normal: n.toArray() };
+  }
+
   /** Skin pick -> reference LPS contact (barycentric on the deformed mesh, mapped to reference vertices). */
   pickSkin(e) {
     const skin = this.meshes.skin?.mesh; if (!skin) return null;
@@ -458,7 +533,7 @@ export class PatientScene {
     this._pointerNDC(e);
     const targets = [];
     if (this.gizmo.visible) this.gizmo.traverse((o) => { if (o.isMesh && o.userData.handle) targets.push(o); });
-    if (this.probe.visible) this.probe.traverse((o) => { if (o.isMesh) targets.push(o); });
+    if (this.probe.visible && this.interaction === 'place') this.probe.traverse((o) => { if (o.isMesh) targets.push(o); }); // probe drags only in Place mode
     if (this.siteMarkers.visible) this.siteMarkers.traverse((o) => { if (o.isMesh) targets.push(o); });
     // invisible pick sleeves are children of visible handles: test them explicitly
     const hits = this.raycaster.intersectObjects(targets, false).filter((h) => {
@@ -470,10 +545,21 @@ export class PatientScene {
   _installPointer() {
     const el = this.renderer.domElement;
     let drag = null, down = null;
+    el.addEventListener('wheel', (e) => {
+      if (this.interaction === 'camera' || this.interaction === 'place') return; // OrbitControls zooms
+      e.preventDefault(); e.stopImmediatePropagation();
+      if (this.interaction !== 'place') this.h.onAxisWheel?.(e.deltaY < 0 ? 1 : -1, e.shiftKey);
+    }, { passive: false, capture: true });
     el.addEventListener('pointerdown', (e) => {
       if (e.button !== 0) return;
       down = { x: e.clientX, y: e.clientY };
       const hd = e.shiftKey ? null : this._hitHandle(e);
+      if (!hd && this.interaction !== 'camera' && this.interaction !== 'place') {
+        // axis-first: dragging anywhere changes ONLY the selected quantity
+        e.stopImmediatePropagation(); e.preventDefault(); el.setPointerCapture(e.pointerId);
+        drag = { axis: true, last: { x: e.clientX, y: e.clientY }, x: e.clientX, y: e.clientY };
+        this.h.onDragStart?.({ kind: 'axis' }); return;
+      }
       if (!hd) return;
       e.stopImmediatePropagation(); e.preventDefault();
       el.setPointerCapture(e.pointerId);
@@ -484,6 +570,7 @@ export class PatientScene {
     }, { capture: true });
     el.addEventListener('pointermove', (e) => {
       if (!drag) { this.h.onHover?.(this._hoverKind(e)); return; }
+      if (drag.axis) { this.h.onAxisDrag?.(e.clientX - drag.last.x, e.clientY - drag.last.y, e.shiftKey); drag.last = { x: e.clientX, y: e.clientY }; return; }
       const hd = drag.handle;
       if (hd.kind === 'probe') { const c = this.pickSkin(e); if (c) this.h.onContact?.(c, true); }
       else if (hd.kind === 'ring') {
@@ -501,10 +588,11 @@ export class PatientScene {
       drag.last = { x: e.clientX, y: e.clientY };
     });
     const up = (e) => {
-      if (drag) { drag = null; if (this.controls) this.controls.enabled = true; this.h.onDragEnd?.(); down = null; return; }
+      const wasAxis = drag?.axis;
+      if (drag) { drag = null; if (this.controls) this.controls.enabled = true; this.h.onDragEnd?.(); if (!wasAxis || Math.hypot(e.clientX - down.x, e.clientY - down.y) >= 5) { down = null; return; } }
       if (down && Math.hypot(e.clientX - down.x, e.clientY - down.y) < 5 && e.button === 0) {
         if (this.h.onPick?.(e)) { down = null; return; } // inspect tool consumed the click
-        const c = this.pickSkin(e); if (c) this.h.onSkinClick?.(c);
+        const c = this.pickSkin(e); if (c) this.h.onSkinClick?.(c, this.interaction);
       }
       down = null;
     };
@@ -514,7 +602,7 @@ export class PatientScene {
 
   _hoverKind(e) {
     const hd = this._hitHandle(e);
-    this.renderer.domElement.style.cursor = hd ? (hd.kind === 'probe' ? 'grab' : 'pointer') : 'default';
+    this.renderer.domElement.style.cursor = hd ? (hd.kind === 'probe' ? 'grab' : 'pointer') : ''; // '' lets the per-mode CSS cursor apply
     return hd;
   }
 

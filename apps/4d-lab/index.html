@@ -7,10 +7,18 @@
 <title>Anatomy Live 4D Lab · MEDCOEL</title>
 <link rel="stylesheet" href="/src/app/styles.css">
 </head>
-<body data-mode="clinical" data-tool="probe">
+<body data-mode="clinical" data-tool="probe" data-ws="imaging">
 <header class="topbar">
-  <a class="brand" href="/anatomy" target="_top" aria-label="Kembali ke Anatomi MEDCOEL">MEDCOEL</a>
+  <a class="brand" href="/anatomy" target="_top" aria-label="Kembali ke Anatomi MEDCOEL"><span class="brand-mark" aria-hidden="true">C</span>MEDCOEL</a>
   <span class="title">Anatomy Live <strong>4D Lab</strong></span>
+  <button id="panelToggle" class="panel-toggle" data-testid="panel-toggle" aria-controls="sidebar" aria-expanded="false" title="Buka/tutup panel kontrol">☰ <span>Panel</span></button>
+  <nav class="ws-nav" role="tablist" aria-label="Ruang kerja">
+    <button role="tab" data-ws="imaging" data-testid="ws-imaging" aria-selected="true">Anatomi &amp; Citra</button>
+    <button role="tab" data-ws="ausc" data-testid="ws-ausc" aria-selected="false">Auskultasi</button>
+    <button role="tab" data-ws="physio" data-testid="ws-physio" aria-selected="false">Fisiologi</button>
+    <button role="tab" data-ws="patho" data-testid="ws-patho" aria-selected="false">Patologi</button>
+    <button role="tab" data-ws="learn" data-testid="ws-learn" aria-selected="false">Belajar</button>
+  </nav>
   <label class="scenario-pick">Skenario
     <select id="scenarioSelect" data-testid="scenario-select" aria-label="Skenario patologi"></select>
   </label>
@@ -18,56 +26,69 @@
 </header>
 <div id="runtimeError" class="error" role="alert" hidden></div>
 <main id="workspace" class="workspace">
-  <aside class="sidebar" aria-label="Kontrol">
+  <aside id="sidebar" class="sidebar" aria-label="Kontrol">
+    <button type="button" class="drawer-close" data-testid="panel-close" aria-label="Tutup panel">×</button>
     <div class="tabs" role="tablist">
-      <button role="tab" aria-selected="true" aria-controls="tab-probe" data-testid="tab-probe">Probe</button>
-      <button role="tab" aria-selected="false" aria-controls="tab-anatomy" data-testid="tab-anatomy">Anatomi</button>
-      <button role="tab" aria-selected="false" aria-controls="tab-imaging" data-testid="tab-imaging">Citra</button>
-      <button role="tab" aria-selected="false" aria-controls="tab-physiology" data-testid="tab-physiology">Fisiologi</button>
-      <button role="tab" aria-selected="false" aria-controls="tab-pathology" data-testid="tab-pathology">Patologi</button>
-      <button role="tab" aria-selected="false" aria-controls="tab-ausc" data-testid="tab-ausc">Auskultasi</button>
-      <button role="tab" aria-selected="false" aria-controls="tab-data" data-testid="tab-data">Data</button>
+      <button role="tab" aria-selected="true" aria-controls="tab-probe" data-testid="tab-probe" data-ws="imaging">Probe</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-anatomy" data-testid="tab-anatomy" data-ws="imaging">Anatomi 3D</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-imaging" data-testid="tab-imaging" data-ws="imaging">Citra lanjut</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-data" data-testid="tab-data" data-ws="imaging">Data</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-ausc" data-testid="tab-ausc" data-ws="ausc">Auskultasi</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-physiology" data-testid="tab-physiology" data-ws="physio">Fisiologi</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-pathology" data-testid="tab-pathology" data-ws="patho">Patologi</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-learn" data-testid="tab-learn" data-ws="learn">Belajar</button>
     </div>
     <section id="tab-probe" role="tabpanel" class="panel"></section>
     <section id="tab-anatomy" role="tabpanel" class="panel" hidden></section>
     <section id="tab-imaging" role="tabpanel" class="panel" hidden></section>
+    <section id="tab-data" role="tabpanel" class="panel" hidden></section>
+    <section id="tab-ausc" role="tabpanel" class="panel" hidden></section>
     <section id="tab-physiology" role="tabpanel" class="panel" hidden></section>
     <section id="tab-pathology" role="tabpanel" class="panel" hidden></section>
-    <section id="tab-ausc" role="tabpanel" class="panel" hidden></section>
-    <section id="tab-data" role="tabpanel" class="panel" hidden></section>
+    <section id="tab-learn" role="tabpanel" class="panel" hidden></section>
     <div id="loadStatus" class="load-status" role="status" data-testid="load-status">Memulai…</div>
   </aside>
   <section class="viewport-panel" aria-label="Pasien virtual">
-    <div id="viewport" class="viewport"></div>
-    <div class="view-toolbar" role="toolbar" aria-label="Kamera dan tampilan">
-      <div class="seg small" role="group" aria-label="Arah pandang">
-        <button data-view="whole" data-testid="cam-whole" class="atlas-only">Seluruh tubuh</button>
-        <button data-view="examiner" data-testid="cam-examiner">Pemeriksa</button>
-        <button data-view="anterior" data-testid="cam-anterior">Anterior</button>
-        <button data-view="posterior" data-testid="cam-posterior">Posterior</button>
-        <button data-view="right" data-testid="cam-right">Kanan</button>
-        <button data-view="left" data-testid="cam-left">Kiri</button>
-        <button data-view="head" data-testid="cam-head">Kepala</button>
-      </div>
-      <label class="inline">Kulit <input id="skinOpacity" data-testid="skin-opacity" type="range" min="5" max="100" value="100"></label>
-      <label class="inline">Cutaway
-        <select id="cutaway" data-testid="cutaway">
-          <option value="none">Tidak ada</option><option value="anterior">Dinding anterior</option><option value="plane">Sesuai bidang citra</option>
-        </select>
-      </label>
-      <label class="inline cut-depth">Tinggi potong <input id="cutDepth" type="range" min="-60" max="140" value="40"></label>
-      <details class="systems phantom-only"><summary>Organ</summary>
-        <label><input type="checkbox" data-system="skeleton" checked> Rangka</label>
-        <label><input type="checkbox" data-system="cardiovascular" checked> Jantung &amp; pembuluh</label>
-        <label><input type="checkbox" data-system="respiratory" checked> Paru &amp; diafragma</label>
-        <label><input type="checkbox" data-system="abdominal" checked> Organ abdomen &amp; cerna</label>
-        <label><input type="checkbox" data-system="urinary" checked> Ginjal &amp; kandung kemih</label>
-        <label><input type="checkbox" data-system="nervous"> Otak</label>
-        <label><input type="checkbox" id="coverageToggle" checked> Kotak cakupan CT</label>
-      </details>
+    <div id="helpPop" class="help-pop" data-testid="help-pop" hidden>
+      <b>Cara menggerakkan</b>
+      <ol><li><b>Probe:</b> klik kulit untuk menempatkan, seret probe untuk menggeser, atau pakai tombol arah (tahan untuk terus bergerak).</li>
+      <li><b>Kamera:</b> seret area kosong untuk memutar, Shift/klik kanan untuk menggeser, scroll untuk zoom. Kamera tidak pernah mengubah citra.</li>
+      <li><b>Arah</b> selalu arah tubuh pasien (Kanan/Kiri PASIEN), bukan arah layar. Arahkan kursor ke tombol arah untuk melihat panahnya di 3D.</li></ol>
+      <small>Keyboard: ↑ ↓ superior/inferior · ← → kanan/kiri pasien · PgUp/PgDn anterior/posterior · Q/E putar · Shift = halus</small>
     </div>
-    <div class="viewport-badge atlas-only" data-testid="viewport-badge">Anatomi: Atlas MEDCOEL · kulit ilustratif · CT sintetis dari atlas</div>
-    <div class="view-hint">Seret area kosong: putar kamera · Shift/klik kanan: geser · scroll: zoom · seret probe/cincin: pindah &amp; angulasi. Kamera tidak mengubah citra.</div>
+    <div class="viewport-wrap">
+      <div id="viewport" class="viewport"></div>
+      <details class="view-menu" data-testid="view-menu"><summary>Tampilan 3D ▾</summary><div class="view-toolbar" role="toolbar" aria-label="Kamera dan tampilan">
+        <div class="seg small" role="group" aria-label="Arah pandang kamera">
+          <button data-view="whole" data-testid="cam-whole" class="atlas-only">Seluruh tubuh</button>
+          <button data-view="examiner" data-testid="cam-examiner">Pemeriksa</button>
+          <button data-view="anterior" data-testid="cam-anterior">Anterior</button>
+          <button data-view="posterior" data-testid="cam-posterior">Posterior</button>
+          <button data-view="right" data-testid="cam-right">Kanan</button>
+          <button data-view="left" data-testid="cam-left">Kiri</button>
+          <button data-view="head" data-testid="cam-head">Kepala</button>
+        </div>
+        <label class="inline">Kulit <input id="skinOpacity" data-testid="skin-opacity" type="range" min="5" max="100" value="100"></label>
+        <label class="inline">Cutaway
+          <select id="cutaway" data-testid="cutaway">
+            <option value="none">Tidak ada</option><option value="anterior">Dinding anterior</option><option value="plane">Sesuai bidang citra</option>
+          </select>
+        </label>
+        <label class="inline cut-depth">Tinggi potong <input id="cutDepth" type="range" min="-60" max="140" value="40"></label>
+        <details class="systems phantom-only"><summary>Organ</summary>
+          <label><input type="checkbox" data-system="skeleton" checked> Rangka</label>
+          <label><input type="checkbox" data-system="cardiovascular" checked> Jantung &amp; pembuluh</label>
+          <label><input type="checkbox" data-system="respiratory" checked> Paru &amp; diafragma</label>
+          <label><input type="checkbox" data-system="abdominal" checked> Organ abdomen &amp; cerna</label>
+          <label><input type="checkbox" data-system="urinary" checked> Ginjal &amp; kandung kemih</label>
+          <label><input type="checkbox" data-system="nervous"> Otak (phantom)</label>
+          <label><input type="checkbox" id="coverageToggle" checked> Kotak cakupan CT</label>
+        </details>
+      </div></details>
+      <div class="viewport-badge atlas-only" data-testid="viewport-badge">Anatomi: Atlas MEDCOEL · kulit ilustratif · CT sintetis dari atlas</div>
+      <div id="probePad" class="probe-pad" data-testid="probe-pad" role="group" aria-label="Kontrol arah"></div>
+      <button type="button" id="helpBtn" class="help-btn" data-testid="help-btn" aria-expanded="false" aria-controls="helpPop" title="Cara menggerakkan">?</button>
+    </div>
   </section>
   <div id="divider" class="divider" role="separator" tabindex="0" aria-label="Ubah lebar monitor (panah kiri/kanan)"></div>
   <section id="monitorPanel" class="monitor-panel" aria-label="Monitor pencitraan">
@@ -76,13 +97,26 @@
         <button data-seg="display:us" data-testid="mon-us">USG</button>
         <button data-seg="display:ct" data-testid="mon-ct">CT</button>
         <button data-seg="display:split" data-testid="mon-split">USG + CT</button>
+        <button data-seg="display:tri" data-testid="mon-tri" title="Tiga bidang CT ortogonal yang saling terhubung (bukan geometri USG)">Tri-planar CT</button>
       </div>
+      <label class="inline mon">Bantuan anatomi
+        <select id="assistLevel" data-testid="assist-level" aria-label="Tingkat bantuan anatomi">
+          <option value="off">Mati (bersih)</option><option value="hover">Hanya hover</option><option value="contours">Kontur</option><option value="guided">Terpandu</option><option value="challenge">Tantangan</option>
+        </select>
+      </label>
+      <label class="inline mon ct-only">W/L <select id="wlPreset" data-testid="wl-preset" aria-label="Preset window/level CT"><option value="">Preset</option></select></label>
       <button id="zoomOut" aria-label="Perkecil">−</button><button id="zoomIn" aria-label="Perbesar">+</button>
       <button id="fitBtn" data-testid="fit">Fit</button><button id="oneBtn">1:1</button>
-      <button id="expandBtn" data-testid="expand" aria-pressed="false">Perbesar monitor</button>
+      <button id="expandBtn" data-testid="expand" aria-pressed="false">Perbesar</button>
       <button id="fullBtn" data-testid="fullscreen">Layar penuh</button>
     </div>
-    <div class="monitor-wrap"><canvas id="monitor" data-testid="monitor-canvas" aria-label="Monitor citra: seret untuk geser, scroll untuk zoom, klik ganda untuk fit"></canvas></div>
+    <div class="monitor-body">
+      <div class="monitor-wrap">
+        <canvas id="monitor" data-testid="monitor-canvas" aria-label="Monitor citra: seret untuk geser, scroll untuk zoom (Tri-planar: scroll = irisan), klik untuk memilih struktur"></canvas>
+        <div id="hoverTip" class="hover-tip" data-testid="hover-tip" role="tooltip" hidden></div>
+      </div>
+      <aside id="assistPanel" class="assist-panel" data-testid="assist-panel" aria-label="Struktur pada citra" hidden></aside>
+    </div>
     <div class="strip-wrap"><canvas id="strip" data-testid="strip-canvas" aria-label="Jejak fisiologis: EKG skematik, fonokardiogram, respirasi, antrum"></canvas></div>
     <div class="playbar">
       <button id="playBtn" data-testid="play">❚❚ Jeda</button>
@@ -92,6 +126,10 @@
     </div>
   </section>
 </main>
+<nav class="pane-switch" role="tablist" aria-label="Tampilan layar kecil" data-testid="pane-switch">
+  <button role="tab" data-pane="patient" aria-selected="true" data-testid="pane-patient">Pasien 3D</button>
+  <button role="tab" data-pane="image" aria-selected="false" data-testid="pane-image">Citra</button>
+</nav>
 <script type="module" src="/src/app/main.js"></script>
 </body>
 </html>

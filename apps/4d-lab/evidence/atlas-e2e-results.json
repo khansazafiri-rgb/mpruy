@@ -1,93 +1,95 @@
 {
-  "date": "2026-11-09T05:39:38.537Z",
+  "date": "2026-11-09T06:50:17.642Z",
   "browser": "Chromium (Playwright, headless, SwiftShader WebGL)",
   "dataset": "atlas",
-  "passed": 15,
-  "failed": 0,
+  "passed": 12,
+  "failed": 3,
   "perf": {
-    "heap": 73.05145263671875,
-    "fps": 10.000000000000002,
+    "heap": 82.3974609375,
+    "fps": 12.582268679831639,
     "tri": 1763646,
     "verts": 911724,
     "loadMs": {
-      "visceral": 2221,
-      "cardiovascular": 931,
-      "skeletal": 296,
-      "lymphatic": 48
+      "visceral": 2010,
+      "cardiovascular": 695,
+      "skeletal": 515,
+      "lymphatic": 214
     },
     "deform": {
-      "deformMs": 46.60000000009313,
+      "deformMs": 36.799999999813735,
       "moving": 97897,
-      "clockT": 15.519731972789115
+      "clockT": 9.732242403627966
     },
-    "pageLoadToAtlasReadyMs": 4658
+    "pageLoadToAtlasReadyMs": 4384
   },
   "atlasDeform": {
-    "maxMove": 14.348238893974075,
+    "maxMove": 14.013724561118837,
     "moving": 97897,
-    "deformMs": 61.199999999953434,
+    "deformMs": 41.89999999990687,
     "animated": true
   },
   "results": [
     {
       "name": "atlas dataset is the default; shared atlas models load with no runtime errors",
       "ok": true,
-      "ms": 222
+      "ms": 529
     },
     {
       "name": "full patient view: external body shell with orientation labels; atlas hidden under opaque skin",
       "ok": true,
-      "ms": 29576
+      "ms": 43427
     },
     {
       "name": "transparent skin shows the atlas organs; groups toggle, transparency and isolate work",
       "ok": true,
-      "ms": 58304
+      "ms": 44555
     },
     {
       "name": "inspect tool: clicking an organ selects that atlas structure (not the probe)",
       "ok": true,
-      "ms": 12208
+      "ms": 13148
     },
     {
       "name": "anterior, lateral and posterior examination by clicking the skin",
       "ok": true,
-      "ms": 85572
+      "ms": 58983
     },
     {
       "name": "fixed contact point: rotate / heel-toe / rock change the image, never the contact",
       "ok": true,
-      "ms": 72530
+      "ms": 87311
     },
     {
       "name": "camera rotation and presets never change the scan",
       "ok": true,
-      "ms": 65700
+      "ms": 76063
     },
     {
       "name": "free 3D: arbitrary oblique plane through the atlas CT, independent of the skin",
       "ok": true,
-      "ms": 62533
+      "ms": 76068
     },
     {
       "name": "expanded monitor with zoom and pan",
-      "ok": true,
-      "ms": 30886
+      "ok": false,
+      "ms": 4080,
+      "error": "expanded 774.390625 -> 637.609375"
     },
     {
       "name": "dynamic heart: atlas heart meshes move with the SAME field that deforms the image",
       "ok": true,
-      "ms": 98353
+      "ms": 128446
     },
     {
       "name": "pathology + auscultation on the atlas body (effusion window, HFrEF S3 at the mitral area)",
-      "ok": true,
-      "ms": 78822
+      "ok": false,
+      "ms": 189199,
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('tool-probe')\u001b[22m\n"
     },
     {
       "name": "frames panel: atlas->LPS exact, atlas vs phantom explicitly NOT registered",
       "ok": true,
-      "ms": 40122
+      "ms": 76358
     },
     {
       "name": "performance and memory on the atlas dataset (Chromium, software WebGL)",
@@ -96,8 +98,9 @@
     },
     {
       "name": "phantom dataset still available and keeps the atlas hidden (no false overlay)",
-      "ok": true,
-      "ms": 21171
+      "ok": false,
+      "ms": 71797,
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('tab-anatomy')\u001b[22m\n\u001b[2m    - locator resolved to <button role=\"tab\" data-ws=\"imaging\" aria-selected=\"false\" data-testid=\"tab-anatomy\" aria-controls=\"tab-anatomy\">Anatomi 3D</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    28 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - element is outside of the viewport\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n"
     },
     {
       "name": "licence quarantine: no request for a withheld model",
