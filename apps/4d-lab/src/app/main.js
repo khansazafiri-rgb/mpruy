@@ -704,6 +704,7 @@ function refreshAll() {
   const freeMode = $('#freeMode'); if (freeMode) freeMode.hidden = !clinical;
   const triControls = $('#triControls'); if (triControls) triControls.hidden = !tri;
   const monitorPanel = $('#monitorPanel'); if (monitorPanel) monitorPanel.dataset.display = S.display;
+  requestAnimationFrame(syncMonitorScrollbar);
   const triReturn = $('#triReturnProbe'); if (triReturn) triReturn.hidden = !D?.meshes?.skin;
   for (const b of document.querySelectorAll('[data-seg]')) { const [k, v] = b.dataset.seg.split(':'); b.setAttribute('aria-pressed', String(S[k] === v || (k === 'display' && S.display === v))); }
   const sel = $('#probeSelect'); if (sel) sel.value = S.probeKey;
@@ -1123,12 +1124,94 @@ function learnSnapshot() {
   return { plane, visible, centreKey: assist.G.keyOf(g), site: S.steth.key || null, filter: S.steth.filter, scenario: S.scenario, display: S.display, mode: S.mode };
 }
 
+// Always-visible monitor scrollbar for Safari (which often hides native scrollbars).
+// The rail is outside the CT canvas so pointer movement here never changes a CT slice.
+let syncMonitorScrollbar = () => {};
+function setupMonitorScrollbar() {
+  const scroller = $('#monitorScroll'), track = $('#monitorScrollTrack'),
+    thumb = $('#monitorScrollThumb'), up = $('#monitorScrollUp'), down = $('#monitorScrollDown');
+  if (!scroller || !track || !thumb || !up || !down) return;
+  const measure = () => {
+    const max = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+    const trackHeight = track.getBoundingClientRect().height;
+    const thumbHeight = trackHeight > 0
+      ? Math.min(trackHeight, Math.max(36, trackHeight * scroller.clientHeight / Math.max(scroller.scrollHeight, 1)))
+      : 0;
+    return { max, thumbHeight, travel: Math.max(0, trackHeight - thumbHeight) };
+  };
+  const sync = () => {
+    const { max, thumbHeight, travel } = measure();
+    const fraction = max > 1 ? Math.max(0, Math.min(1, scroller.scrollTop / max)) : 0;
+    thumb.style.height = `${Math.round(thumbHeight)}px`;
+    thumb.style.transform = `translateY(${Math.round(fraction * travel)}px)`;
+    track.classList.toggle('can-scroll', max > 1);
+    track.setAttribute('aria-valuenow', String(Math.round(fraction * 100)));
+    track.setAttribute('aria-valuetext', `${Math.round(fraction * 100)}% posisi gulir monitor`);
+    up.disabled = max <= 1 || scroller.scrollTop <= 1;
+    down.disabled = max <= 1 || scroller.scrollTop >= max - 1;
+  };
+  const jump = (delta) => scroller.scrollBy({ top: delta, behavior: 'smooth' });
+  up.addEventListener('click', () => jump(-Math.max(130, scroller.clientHeight * 0.65)));
+  down.addEventListener('click', () => jump(Math.max(130, scroller.clientHeight * 0.65)));
+  let drag = null;
+  track.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    const m = measure();
+    if (m.max <= 1 || m.travel <= 0) return;
+    if (event.target !== thumb) {
+      const rect = track.getBoundingClientRect();
+      scroller.scrollTop = Math.max(0, Math.min(m.max, (event.clientY - rect.top - m.thumbHeight / 2) / m.travel * m.max));
+    }
+    drag = { pointerId: event.pointerId, y: event.clientY, scrollTop: scroller.scrollTop };
+    track.setPointerCapture(event.pointerId);
+    track.classList.add('is-dragging');
+    event.preventDefault();
+    sync();
+  });
+  track.addEventListener('pointermove', (event) => {
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    const { max, travel } = measure();
+    if (travel > 0) scroller.scrollTop = Math.max(0, Math.min(max, drag.scrollTop + (event.clientY - drag.y) * max / travel));
+  });
+  const endDrag = (event) => {
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    drag = null;
+    track.classList.remove('is-dragging');
+    if (track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
+  };
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+  track.addEventListener('keydown', (event) => {
+    const m = measure();
+    const step = Math.max(50, Math.round(scroller.clientHeight * 0.2));
+    const next = {
+      ArrowUp: scroller.scrollTop - step,
+      ArrowDown: scroller.scrollTop + step,
+      PageUp: scroller.scrollTop - scroller.clientHeight * 0.8,
+      PageDown: scroller.scrollTop + scroller.clientHeight * 0.8,
+      Home: 0,
+      End: m.max,
+    }[event.key];
+    if (next === undefined) return;
+    event.preventDefault();
+    scroller.scrollTop = Math.max(0, Math.min(m.max, next));
+  });
+  scroller.addEventListener('scroll', sync, { passive: true });
+  const observer = new ResizeObserver(() => requestAnimationFrame(sync));
+  for (const node of [scroller, track, $('#triControls'), $('.monitor-body'), $('.strip-wrap'), $('.playbar')]) {
+    if (node) observer.observe(node);
+  }
+  syncMonitorScrollbar = sync;
+  requestAnimationFrame(sync);
+}
+
 // ------------------------------------------------------------------ layout controls
 function installLayout() {
   const ws = $('#workspace'), div = $('#divider');
   $('#returnProbe').onclick = () => setScanMode('clinical');
   $('#freeMode').onclick = () => setScanMode('free');
   buildTriControls();
+  setupMonitorScrollbar();
   $('#triShowImages').onclick = () => {
     const scroller = $('#monitorScroll'), image = $('.monitor-body');
     if (!scroller || !image) return;

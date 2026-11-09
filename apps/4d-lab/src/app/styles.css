@@ -483,3 +483,83 @@ body[data-learning="1"] .view-menu, body[data-learning="1"] .monitor-toolbar .in
 @media (max-width: 760px) {
   .monitor-panel[data-display="tri"] .monitor-body { height: max(450px, 65dvh); }
 }
+
+/* Safari may auto-hide native scrollbars. This dedicated scrollbar rail stays
+   visible in Tri-planar CT, outside the canvas, so it can always be dragged. */
+.monitor-scroll-shell {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+.monitor-scroll-shell > .monitor-scroll {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+.monitor-panel[data-display="tri"] .monitor-scroll {
+  scrollbar-width: none;
+}
+.monitor-panel[data-display="tri"] .monitor-scroll::-webkit-scrollbar {
+  display: none;
+}
+.monitor-scroll-rail {
+  flex: 0 0 29px;
+  width: 29px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  padding: 5px 3px;
+  background: #132a30;
+  border-left: 1px solid #45676c;
+  color: #d7f8ed;
+  user-select: none;
+}
+.monitor-panel:not([data-display="tri"]) .monitor-scroll-rail { display: none; }
+.monitor-scroll-arrow {
+  flex: 0 0 27px;
+  height: 27px;
+  padding: 0;
+  border: 1px solid #598f87;
+  border-radius: 7px;
+  background: #1b554e;
+  color: #f0fffb;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.monitor-scroll-arrow:hover:not(:disabled),
+.monitor-scroll-arrow:focus-visible { background: #28776a; }
+.monitor-scroll-arrow:disabled { opacity: .4; cursor: default; }
+.monitor-scroll-track {
+  flex: 1 1 auto;
+  position: relative;
+  min-height: 38px;
+  border-radius: 10px;
+  background: #324c53;
+  border: 1px solid #52747b;
+  cursor: pointer;
+  touch-action: none;
+}
+.monitor-scroll-thumb {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 0;
+  height: 42px;
+  border-radius: 7px;
+  background: #58d1b3;
+  border: 1px solid #b9ffea;
+  box-shadow: 0 1px 3px rgb(0 0 0 / .35);
+  cursor: grab;
+  will-change: transform;
+}
+.monitor-scroll-track.is-dragging .monitor-scroll-thumb { cursor: grabbing; background: #91f0cf; }
+.monitor-scroll-track:not(.can-scroll) .monitor-scroll-thumb { opacity: .45; }
+@media (max-width: 760px) {
+  .monitor-scroll-rail { flex-basis: 33px; width: 33px; }
+  .monitor-scroll-arrow { flex-basis: 32px; height: 32px; }
+}

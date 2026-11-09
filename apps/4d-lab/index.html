@@ -116,6 +116,7 @@
       <button id="expandBtn" data-testid="expand" aria-pressed="false">Perbesar</button>
       <button id="fullBtn" data-testid="fullscreen">Layar penuh</button>
     </div>
+    <div class="monitor-scroll-shell">
     <div id="monitorScroll" class="monitor-scroll" data-testid="monitor-scroll" tabindex="0" role="region" aria-label="Area pencitraan dan grafik fisiologis, dapat digulir secara vertikal">
     <section id="triControls" class="tri-controls" data-testid="tri-controls" aria-label="Navigasi irisan CT" hidden>
       <div class="tri-controls-head"><strong>Tri-planar CT · titik silang terhubung</strong><button type="button" id="triHelp" data-testid="tri-help" aria-label="Ulangi panduan Tri-planar CT">? Panduan</button><button type="button" id="triReturnProbe" data-testid="tri-return-probe">Kembali ke Probe USG</button></div>
@@ -141,6 +142,14 @@
       <span id="liveReadout" class="live" data-testid="live-readout"></span>
     </div>
     </div><!-- monitorScroll -->
+    <aside class="monitor-scroll-rail" id="monitorScrollRail" data-testid="monitor-scroll-rail" aria-label="Scrollbar monitor kanan">
+      <button type="button" class="monitor-scroll-arrow" id="monitorScrollUp" data-testid="monitor-scroll-up" aria-label="Gulir monitor ke atas" title="Gulir ke atas">▲</button>
+      <div id="monitorScrollTrack" class="monitor-scroll-track" data-testid="monitor-scroll-track" role="scrollbar" aria-controls="monitorScroll" aria-label="Gulir panel pencitraan ke bawah atau ke atas" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+        <div class="monitor-scroll-thumb" id="monitorScrollThumb" aria-hidden="true"></div>
+      </div>
+      <button type="button" class="monitor-scroll-arrow" id="monitorScrollDown" data-testid="monitor-scroll-down" aria-label="Gulir monitor ke bawah" title="Gulir ke bawah">▼</button>
+    </aside>
+    </div><!-- monitor-scroll-shell -->
   </section>
 </main>
 <nav class="pane-switch" role="tablist" aria-label="Tampilan layar kecil" data-testid="pane-switch">
