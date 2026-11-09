@@ -1,85 +1,84 @@
 {
-  "date": "2026-11-09T11:19:06.861Z",
+  "date": "2026-11-09T12:02:52.216Z",
   "browser": "Chromium (Playwright, headless, SwiftShader WebGL)",
-  "passed": 13,
-  "failed": 1,
+  "passed": 14,
+  "failed": 0,
   "memoryMiB": 87.45193481445312,
   "timing": {
-    "usMs": 109.19999999995343,
-    "deformMs": 17.5,
-    "fps": 10.15415858949517
+    "usMs": 134.30000000074506,
+    "deformMs": 13,
+    "fps": 10.476190476190478
   },
   "results": [
     {
       "name": "loads the phantom package with verified registration and no runtime errors",
       "ok": true,
-      "ms": 2292
+      "ms": 2076
     },
     {
       "name": "no black-screen: 3D view and imaging monitor contain structured content",
       "ok": true,
-      "ms": 6581
+      "ms": 4857
     },
     {
       "name": "clinical probe: rotate / heel-toe / rock keep the contact point fixed and change the image",
       "ok": true,
-      "ms": 24095
+      "ms": 22943
     },
     {
       "name": "camera orbit / presets never change the imaging (paused, same pose)",
       "ok": true,
-      "ms": 19152
+      "ms": 23056
     },
     {
       "name": "anterior and posterior skin placement by clicking the registered surface",
-      "ok": false,
-      "ms": 2830,
-      "error": "contact placed at the clicked left lower quadrant 10,-111,-28"
+      "ok": true,
+      "ms": 6968
     },
     {
       "name": "dragging the probe slides the contact over the skin (surface-aware)",
       "ok": true,
-      "ms": 6174
+      "ms": 7567
     },
     {
       "name": "free 3D mode: presets, numeric translation, out-of-volume indication, direction pad",
       "ok": true,
-      "ms": 8156
+      "ms": 6852
     },
     {
       "name": "monitor: zoom / pan / fit, expand and fullscreen",
       "ok": true,
-      "ms": 7116
+      "ms": 10164
     },
     {
       "name": "separate CT and ultrasound modes; CT window/level changes CT only",
       "ok": true,
-      "ms": 12326
+      "ms": 15274
     },
     {
       "name": "ultrasound responds to tissue parameters and machine settings (executable simulation)",
       "ok": true,
-      "ms": 21146
+      "ms": 23092
     },
     {
       "name": "physiology: playing animates meshes and images; heart-rate and phase controls work",
       "ok": true,
-      "ms": 50346
+      "ms": 52179
     },
     {
       "name": "pathology: HFrEF vs normal comparison, effusion layer, reduced antral motility",
       "ok": true,
-      "ms": 8605
+      "ms": 7929
     },
     {
       "name": "auscultation: stethoscope sites, synchronised audio scheduling and site-dependent mix",
       "ok": true,
-      "ms": 11800
+      "ms": 11330
     },
     {
       "name": "memory footprint after a full session (Chromium heap)",
       "ok": true,
-      "ms": 3
+      "ms": 4
     }
   ]
 }

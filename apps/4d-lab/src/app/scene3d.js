@@ -453,7 +453,9 @@ export class PatientScene {
       left: [0, 160, 2250 * k], head: [2200 * k, 380, 0], feet: [-2400 * k, 380, 0],
       whole: this.body ? [-300, 1.55 * (this.body.hi[2] - this.body.lo[2]) + 400, -1.2 * (this.body.hi[2] - this.body.lo[2])] : [-380, 1250, -1650],
     };
-    const off = views[name] || views.examiner;
+    // presets were framed for a ~0.62 (w/h) view; a narrower view (panel open, docked pad) moves the camera back
+    const fitK = Math.max(1, 0.62 / Math.max(0.2, this.camera.aspect || 0.62));
+    const off = (views[name] || views.examiner).map((v) => v * fitK);
     const to = T.clone().add(new THREE.Vector3(...off));
     this.viewName = name;
     if (!animate) { this.camera.position.copy(to); this.controls.target.copy(T); this.controls.update(); this.cameraVersion++; return; }
