@@ -14,7 +14,8 @@ const catalog = JSON.parse(
 );
 describe("Model-backed atlas catalogue", () => {
   it("maps every supplied structure to a valid study group and finite geometry", () => {
-    expect(Object.keys(catalog)).toHaveLength(2827);
+    // 2827 meshes upstream minus 590 withheld by the licence quarantine (data/quarantine.json).
+    expect(Object.keys(catalog)).toHaveLength(2237);
     for (const p of Object.values(catalog)) {
       const group = GROUPS.find((g) => g.id === p.group);
       expect(group).toBeDefined();

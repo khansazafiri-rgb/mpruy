@@ -1,4 +1,5 @@
 // Study groups describe the meshes supplied by Z-Anatomy, not additional assets.
+export { UNAVAILABLE_GROUPS } from "./availability.js";
 export const REGIONS = [
   ["whole", "Seluruh tubuh", "Semua regio"],
   ["headNeck", "Kepala & leher", "Tengkorak, wajah, dan leher"],
@@ -57,17 +58,7 @@ export const GROUPS = [
     color: "#e88d9d",
     layers: ["Struktur jantung"],
   },
-  {
-    id: "nervous",
-    label: "Saraf & indra",
-    source: "nervous",
-    color: "#e4c875",
-    layers: [
-      "Cabang perifer",
-      "Saraf utama & pleksus",
-      "Saraf pusat & indra",
-    ],
-  },
+  // "nervous" (Saraf & indra) is withheld pending licence review: see ./availability.js.
   {
     id: "lymphatic",
     label: "Sistem limfatik",

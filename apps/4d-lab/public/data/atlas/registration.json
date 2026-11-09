@@ -610,7 +610,7 @@
    "lps": "millimetres"
   },
   "axes": {
-   "atlas": "+X patient left, +Y superior, +Z anterior (verified: Kidney.l at +X, testes/glans at +Z, vertex at +Y)",
+   "atlas": "+X patient left, +Y superior, +Z anterior (verified on the atlas: left lung/spleen at +X, testes/glans at +Z, vertex at +Y)",
    "lps": "+x left, +y posterior, +z superior"
   },
   "origin": "LPS z = 0 at the xiphoid process tip of the atlas; x = 0 atlas mid-sagittal plane; y = 0 atlas coronal plane Z = 0",
@@ -625,8 +625,8 @@
   "skinLabelAgreement": 0.996,
   "skinVerticesTested": 7772,
   "voxelisationMethods": {
-   "parity": 1019,
-   "fill": 46
+   "parity": 1011,
+   "fill": 44
   }
  },
  "limitations": [

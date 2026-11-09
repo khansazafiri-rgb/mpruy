@@ -1,6 +1,16 @@
 # Phase status — MEDCOEL Anatomy Live 4D Lab
 
-_Last updated: 2026-11-09 (branch `claude/vigilant-cerf-jjc6fj`, based on the PR #136 merge `58f8769`): release-readiness and local staging preview added._
+_Last updated: 2026-11-09 (branch `claude/vigilant-cerf-jjc6fj`, based on `b931e1b`): **licence quarantine** — withheld atlas anatomy removed, atlas dataset rebuilt from cleared inputs (CC BY-SA 4.0), build/stage/preview guards. See `../../licensing/`._
+
+## Licence quarantine (2026-11-09) — highest priority
+| Item | Status |
+|---|---|
+| `nervous.glb` (Brainder, UW White matter, Dundee inner ear/cranial nerves) | **Withheld**; lab layer 'Saraf batang tubuh' removed, shown as unavailable; never requested (atlas e2e) |
+| Kidney + renal pelvis (CC BY-NC) and ossicles | **Removed** losslessly from the atlas GLBs; kidney labels 20/21 and spinal cord 35 flagged unavailable with zero voxels; RUQ view retargeted to the hepatorenal liver surface and labelled 'ginjal tidak tersedia' |
+| Atlas dataset | **Rebuilt** from cleared inputs; pipeline fails closed on quarantined inputs |
+| Evidence | atlas-*.jpg regenerated (`evidence/CLEARED_EVIDENCE.json`); label-slice/standard-view PNGs and staging screenshots withdrawn, not yet regenerated |
+| Paused feature work (axis-first controls, anatomy assist, learning modules) | Kept on local branch `wip/4d-ux-intelligence` (not pushed); resume after the quarantine PR |
+
 Evidence files are in `evidence/`; test commands are listed in `TEST_RESULTS.md`.
 
 | Phase | Status | Gate | Evidence |
@@ -19,7 +29,7 @@ Evidence files are in `evidence/`; test commands are listed in `TEST_RESULTS.md`
 | Safari / 8 GB Apple Silicon | **Not tested** (unavailable to the session). Static compatibility review done: needs Safari ≥ 16.4; SHA-256 fallback added for plain-http LAN previews |
 | Owner acceptance (12-item Safari checklist) | **Open** — `RELEASE_READINESS.md` §3 |
 | Clinical/anatomical review | **Open** — `MEDICAL_REVIEW_CHECKLIST.md` (flags: HFrEF text vs subxiphoid window, displayed vs measured EF, mirror-artefact text, S3 timing 180 vs 140 ms, small atlas LV EDV) |
-| Licence compliance (non-commercial) | **Verified**; `data/atlas/NOTICE.txt` added and enforced by the staging script |
+| Licence compliance | **Superseded by the licence quarantine** (above) |
 | Production deployment | **Not started** — plan in `RELEASE_READINESS.md` §7, needs approval |
 
 ## Atlas integration (2026-11-08) — status by element

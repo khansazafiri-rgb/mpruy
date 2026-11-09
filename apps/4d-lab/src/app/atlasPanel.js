@@ -1,6 +1,6 @@
 // "Anatomi" tab: shared Atlas layer controls + explicit coordinate frames / registration status.
 // Built from plain state passed in by main.js (no circular imports).
-import { ATLAS_GROUPS } from './atlasLayer.js';
+import { ATLAS_GROUPS, UNAVAILABLE_ANATOMY } from './atlasLayer.js';
 
 const fmtM = (m) => [0, 1, 2].map((r) => '[' + [0, 1, 2, 3].map((c) => String(+m[r * 4 + c].toFixed(3)).padStart(7)).join(' ') + ' ]').join('\n');
 
@@ -50,7 +50,7 @@ export function buildAtlasPanel(box, ctx) {
     // legend: atlas vs animated vs imaging-derived
     box.append(el('div', { class: 'legend', 'data-testid': 'atlas-legend' },
       el('div', {}, el('i', { class: 'sw atlas' }), 'Anatomi Atlas MEDCOEL (geometri umum, BodyParts3D/Z-Anatomy)'),
-      el('div', {}, el('i', { class: 'sw anim' }), 'Atlas + gerak prosedural (jantung, paru, diafragma, hati, lambung, limpa, ginjal, pembuluh besar)'),
+      el('div', {}, el('i', { class: 'sw anim' }), 'Atlas + gerak prosedural (jantung, paru, diafragma, hati, lambung, limpa, pembuluh besar)'),
       el('div', {}, el('i', { class: 'sw skin' }), 'Cangkang kulit ilustratif (diturunkan dari amplop atlas)'),
       el('div', {}, el('i', { class: 'sw img' }), 'Bidang citra: CT sintetis dari atlas / USG simulasi')),
     el('label', { class: 'check' }, el('input', { type: 'checkbox', 'data-testid': 'mark-animated', checked: atlas?.markAnimated || undefined, onchange: (e) => actions.markAnimated(e.target.checked) }), 'Tandai struktur yang digerakkan secara prosedural'));
@@ -65,6 +65,8 @@ export function buildAtlasPanel(box, ctx) {
           loaded ? el('input', { type: 'range', min: 5, max: 100, value: Math.round(st.opacity * 100), 'aria-label': 'Transparansi ' + def.label, 'data-testid': 'opacity-' + g, oninput: (e) => actions.setGroup(g, { opacity: Number(e.target.value) / 100 }) }) : null);
         list.append(row);
       }
+      for (const u of UNAVAILABLE_ANATOMY) list.append(el('div', { class: 'group-row unavailable', 'data-testid': 'unavailable-' + u.key, title: u.reason },
+        el('span', { class: 'check' }, el('input', { type: 'checkbox', disabled: true, 'aria-label': u.label + ' tidak tersedia' }), u.label), el('span', { class: 'count' }, ' · tidak tersedia'), el('small', { class: 'muted' }, u.reason)));
       box.append(list);
       // structures
       const names = atlas.list().map((x) => x.name).sort();

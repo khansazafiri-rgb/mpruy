@@ -24,6 +24,9 @@ const errors = [];
 page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
 page.on('console', (m) => { if (m.type() === 'error') errors.push('console: ' + m.text()); });
 const lab = (fn, arg) => page.evaluate(fn, arg);
+// licence quarantine: the lab must never request a withheld model
+const withheldRequests = [];
+page.on('request', (r) => { if (/\/models\/nervous\.glb|thumbnails\/systems\/(nervous|visceral)\.webp/i.test(r.url())) withheldRequests.push(r.url()); });
 const ONLY = process.env.E2E_ONLY ? new RegExp(process.env.E2E_ONLY) : null; // run a subset (debugging/evidence)
 async function step(name, fn) {
   if (ONLY && !ONLY.test(name) && !/default; shared atlas/.test(name)) return;
@@ -76,7 +79,9 @@ await step('atlas dataset is the default; shared atlas models load with no runti
   const info = await lab(() => ({ n: window.__lab.atlas.structures.size, loaded: [...window.__lab.atlas.loaded], tri: window.__lab.atlas.stats.triangles }));
   assert.deepEqual(info.loaded.sort(), ['cardiovascular', 'lymphatic', 'skeletal', 'visceral']);
   assert.ok(info.n > 300, 'structures ' + info.n);
-  for (const name of ['Left ventricle', 'Right atrium', 'Liver', 'Stomach', 'Spleen', 'Kidney.l', 'Inferior lobe of right lung', 'Sternum', 'Body of sternum', 'Fifth rib.l'].filter((n) => n !== 'Sternum')) assert.ok(await lab((n) => window.__lab.atlas.structures.has(n), name), 'has ' + name);
+  for (const name of ['Left ventricle', 'Right atrium', 'Liver', 'Stomach', 'Spleen', 'Inferior lobe of right lung', 'Body of sternum', 'Fifth rib.l']) assert.ok(await lab((n) => window.__lab.atlas.structures.has(n), name), 'has ' + name);
+  // licence quarantine: withheld anatomy is absent (not substituted) and listed as unavailable
+  for (const name of ['Kidney.l', 'Kidney.r', 'Renal pelvis.r', 'Incus.l']) assert.equal(await lab((n) => window.__lab.atlas.structures.has(n), name), false, 'withheld ' + name);
   // the models came from the shared atlas URL, not from a 4D Lab copy
   const urls = await lab(() => performance.getEntriesByType('resource').map((e) => e.name).filter((u) => u.includes('.glb')));
   assert.ok(urls.some((u) => u.includes('/anatomy/viewer/models/visceral.glb')), 'visceral.glb from /anatomy/viewer/');
@@ -299,6 +304,8 @@ await step('phantom dataset still available and keeps the atlas hidden (no false
 });
 
 await browser.close(); srv.close();
+results.push({ name: 'licence quarantine: no request for a withheld model', ok: withheldRequests.length === 0, error: withheldRequests.join(', ') || undefined });
+console.log((withheldRequests.length ? 'FAIL ' : 'ok   ') + 'licence quarantine: no request for a withheld model');
 const summary = { date: new Date().toISOString(), browser: 'Chromium (Playwright, headless, SwiftShader WebGL)', dataset: 'atlas', passed: results.filter((r) => r.ok).length, failed: results.filter((r) => !r.ok).length, perf: results.perf, atlasDeform: results.atlasDeform, results };
 await mkdir(EVIDENCE, { recursive: true });
 if (!ONLY) await writeFile(EVIDENCE + 'atlas-e2e-results.json', JSON.stringify(summary, null, 2));

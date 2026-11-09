@@ -7,6 +7,8 @@ import { state, subscribe } from "../state/store.js";
 import { setInert, focusFirst, trapFocus } from "../ui/focus.js";
 import { loadAllData, normalise } from "../utils/dataLoader.js";
 import { REGIONS, GROUPS, ALIASES } from "./catalog.js";
+import { UNAVAILABLE_GROUPS, UNAVAILABLE_MESSAGE, loadUnavailable, unavailableMatches } from "./availability.js";
+import { fetchJson } from "../utils/fetchJson.js";
 import {
   settings,
   getStatus,
@@ -80,7 +82,9 @@ function renderGroups() {
    <button type="button" class="sys-toggle" data-toggle="${g.id}" aria-pressed="${value.enabled}" ${pending ? "disabled" : ""} title="${escape(g.label)} · ${escape(layerName)} · ${count} struktur${loaded ? "" : " · belum dimuat"}"><span class="sys-dot"></span><span class="sys-name">${SHORT[g.id] || escape(g.label)}</span>${dots}</button>
    <button type="button" class="sys-more" data-browse="${g.id}" aria-label="Daftar struktur ${escape(g.label)}" aria-expanded="${detailGroup === g.id}" title="Daftar struktur">⋯</button>
   </div>`;
-  }).join("");
+  }).join("") + UNAVAILABLE_GROUPS.map((g) => `<div class="sys-tile is-unavailable" style="--group-color:${g.color}" data-unavailable-group="${g.id}">
+   <button type="button" class="sys-toggle" disabled aria-disabled="true" title="${escape(g.label)} · ${escape(UNAVAILABLE_MESSAGE)}" aria-label="${escape(g.label)}: ${escape(UNAVAILABLE_MESSAGE)}"><span class="sys-dot"></span><span class="sys-name">${escape(g.short)}</span><span class="sys-unavailable">tidak tersedia</span></button>
+  </div>`).join("");
   renderPartList();
 }
 function renderPartList() {
@@ -185,6 +189,7 @@ function closeSearch() {
 }
 function showSearch() {
   searchRows = search($("searchInput").value);
+  const withheld = unavailableMatches($("searchInput").value, normalise);
   active = -1;
   const panel = $("searchResults");
   panel.classList.add("show");
@@ -193,7 +198,7 @@ function showSearch() {
     const group = GROUPS.find((g) => g.id === r.group), image = !r.system && structurePreview(r.id);
     const where = r.system ? "Tampilkan seluruh sistem" : `${group.label} · ${REGIONS.find((g) => g[0] === metadata(r.id).regions[0])?.[1] || "Seluruh tubuh"}`;
     return `<button type="button" role="option" aria-selected="false" id="atlas-result-${i}" class="atlas-result${r.system ? " is-system" : ""}" data-result="${i}" style="--group-color:${group.color}"><span class="atlas-result-thumb">${image ? `<img class="atlas-result-preview" src="${escape(image)}" alt="" decoding="async"/>` : `<i aria-hidden="true"></i>`}</span><span class="atlas-result-text"><span>${escape(r.label)}</span><small><i class="group-dot" aria-hidden="true"></i>${escape(where)}</small></span></button>`;
-  }).join("") || '<p class="search-empty">Tidak ada struktur yang cocok. Coba nama Latin, Inggris, atau Indonesia.</p>'}`;
+  }).join("") || (withheld.length ? "" : '<p class="search-empty">Tidak ada struktur yang cocok. Coba nama Latin, Inggris, atau Indonesia.</p>')}${withheld.length ? `<div class="search-unavailable" role="note" data-testid="atlas-unavailable-results"><strong>Tidak tersedia sementara</strong><ul>${withheld.map((w) => `<li>${escape(w.label)}</li>`).join("")}</ul><small>${escape(UNAVAILABLE_MESSAGE)}</small></div>` : ""}`;
 }
 async function chooseSearch(index) {
   const row = searchRows[index];
@@ -337,6 +342,7 @@ function initBackLink() {
   if (label) $("atlasBackLabel").textContent = label;
 }
 export async function initUI() {
+  loadUnavailable(fetchJson).then(()=>{if($("searchInput").value)showSearch();});
   loadAllData({translations:false}).then(()=>update());
   loadStructurePreviews().then(()=>{renderRegions();update();if($("searchInput").value)showSearch();});
   $("systemsList").innerHTML = `<div class="atlas-presets" role="group" aria-label="Tampilan cepat"><span>Cepat</span>${PRESETS.map(([id, label]) => `<button type="button" data-preset="${id}">${label}</button>`).join("")}</div>

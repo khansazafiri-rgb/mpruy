@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "title": "MEDCOEL licensing quarantine policy (interim containment, pending legal review)",
+  "decided": "2026-11-09",
+  "status": "interim-containment",
+  "principle": "Repository inclusion and upstream documentation are not treated as proof of redistribution rights. Anything whose licence could not be verified, or that carries terms incompatible with the combined ShareAlike adaptation, is withheld from every public build until cleared in writing.",
+  "privateStorage": {
+    "path": "local-data/licensing-quarantine/",
+    "gitignored": true,
+    "howToPopulate": "node licensing/tools/restore-originals.mjs (copies the pre-quarantine files out of Git history into the ignored folder; never into public/ or dist/)"
+  },
+  "quarantinedFiles": [
+    {
+      "path": "apps/anatomy/public/models/nervous.glb",
+      "sha256": "c7cde35497f887b319c0a84f1b5b605fa3ce66e23084b5e09d6e3825fa5030d9",
+      "action": "withheld-entirely",
+      "reason": "Contains cortical parcellation meshes attributed upstream to \"Brainder\" and \"White matter\" (University of Washington) with no licence stated, plus inner-ear components from \"Anatomy of the Inner Ear\" (University of Dundee, CC BY-NC-SA 4.0, itself derived from McGill \"3D Ear\" CC BY-NC-SA 1.0). The origin of the remaining brain, brainstem, cerebellar and ventricular meshes cannot be separated with confidence, so the whole file is withheld."
+    },
+    {
+      "path": "apps/anatomy/public/models/visceral.glb",
+      "sha256": "b21a0f34b3da1bb0b6a9a6ae71d16ffbc036beb504944af2422d4b91a9317fe5",
+      "action": "replaced-by-pruned-derivative",
+      "reason": "Original contains \"Kidney - by lissiecowley - CC-BY-NC 4.0\". The kidney and renal pelvis nodes are removed losslessly; the remaining nodes are published as a CC BY-SA 4.0 adaptation."
+    },
+    {
+      "path": "apps/anatomy/public/models/skeletal.glb",
+      "sha256": "c2b70b31ddec4062cbc5ba969fc24ecfed61d00397a0bca795e2701d997200f8",
+      "action": "replaced-by-pruned-derivative",
+      "reason": "The upstream \"Anatomy of the Inner Ear\" model (CC BY-NC-SA 4.0) describes itself as including the ossicles; the malleus, incus and stapes nodes are removed losslessly as a precaution."
+    },
+    {
+      "path": "apps/anatomy/public/thumbnails/systems/nervous.webp",
+      "sha256": "de72a7210de5428c3f3ff49b90f483f8fbbc7bb645e758a6052c5af13c1667aa",
+      "action": "withheld-entirely",
+      "reason": "Rendering of nervous.glb."
+    },
+    {
+      "path": "apps/anatomy/public/thumbnails/systems/visceral.webp",
+      "sha256": "d09a89bd766c8133ea14e92976df83fee6c35ea18941a840b2ab41964ad12d44",
+      "action": "withheld-entirely",
+      "reason": "Rendering of the original visceral.glb including the kidney."
+    },
+    {
+      "path": "apps/4d-lab/public/data/atlas/ct.nrrd",
+      "sha256": "f1acad942aeca6aed2d34c5f53fca5e98c5b905f409d7e10aafc9435a8c8a166",
+      "action": "rebuilt-from-cleared-inputs",
+      "reason": "Voxelised adaptation that fused the CC BY-NC kidney with CC BY-SA geometry (ShareAlike conflict) and used nervous.glb (spinal cord)."
+    },
+    {
+      "path": "apps/4d-lab/public/data/atlas/labels.nrrd",
+      "sha256": "dd051375a30587e02fc335b36fe1a6482ab02a32352eed7bb0a369d7a2d54769",
+      "action": "rebuilt-from-cleared-inputs",
+      "reason": "Same as ct.nrrd."
+    },
+    {
+      "path": "apps/4d-lab/public/data/atlas/skin.glb",
+      "sha256": "c7e14b7dc800eb925c175b8c0fd25d93c8a0f84d83dd5622b16a54709f25c317",
+      "action": "rebuilt-from-cleared-inputs",
+      "reason": "Envelope derived in part from visceral.glb including the kidney. Rebuilt on 2026-11-09 from cleared inputs only (no kidney, no nervous.glb, no ossicles): the output is byte-identical to the previous file, which demonstrates that the withheld meshes (internal organs) did not contribute to the outer envelope. The identical file is therefore published as part of the cleared build.",
+      "blockHash": false
+    },
+    {
+      "path": "apps/4d-lab/public/data/atlas/anatomy.json",
+      "sha256": "4a4f8d9a95b4f197c62bafa57af5bbb00bd9a7b15aab6b6c25e3c3bd9f0bb039",
+      "action": "rebuilt-from-cleared-inputs",
+      "reason": "Describes the quarantined dataset build."
+    },
+    {
+      "path": "apps/4d-lab/public/data/atlas/registration.json",
+      "sha256": "3ba46968018e9ce564ad1ef78f2fb4a1189f7141d2cb1a2755e42a82c1ed9fc6",
+      "action": "rebuilt-from-cleared-inputs",
+      "reason": "Describes the quarantined dataset build."
+    }
+  ],
+  "quarantinedSystems": {
+    "nervous": "Saraf & indra: withheld pending licence verification (see quarantinedFiles)."
+  },
+  "quarantinedStructures": {
+    "visceral": [
+      "Kidney.l",
+      "Kidney.r",
+      "Renal pelvis.l",
+      "Renal pelvis.r"
+    ],
+    "skeletal": [
+      "Incus.l",
+      "Incus.r",
+      "Malleus.l",
+      "Malleus.r",
+      "Stapes.l",
+      "Stapes.r"
+    ]
+  },
+  "quarantinedDerivedFiles": [
+    "apps/4d-lab/evidence/atlas-*.jpg",
+    "apps/4d-lab/evidence/atlas-label-slices.png",
+    "apps/4d-lab/evidence/atlas-us-standard-views.png",
+    "apps/4d-lab/evidence/11-medcoel-anatomy-live.jpg",
+    "apps/4d-lab/evidence/staging-preview-anatomy-live.jpg",
+    "apps/anatomy/public/thumbnails/structures/<thumbnail of every quarantined structure>"
+  ],
+  "unavailableMessage": {
+    "id": "Tidak tersedia sementara: sedang ditinjau lisensinya. MEDCOEL tidak menggantinya dengan model buatan.",
+    "en": "Temporarily unavailable pending licence review. MEDCOEL does not substitute fabricated models."
+  }
+}

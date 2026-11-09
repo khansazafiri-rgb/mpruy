@@ -113,7 +113,7 @@ Jalankan `npm run catalog` jika file GLB atau aturan pemetaan berubah.
 ## Atribusi dan lisensi
 
 Pertahankan `LICENSE`, `NOTICE`, dan `public/models/License.txt` dalam distribusi.
-Lisensi gabungan dataset upstream adalah CC BY-NC-SA 4.0 (nonkomersial).
+Sejak karantina lisensi 2026-11-09, komponen nonkomersial/tidak terverifikasi (seluruh `nervous.glb`, ginjal & pelvis renalis, tulang pendengaran) ditahan; model yang didistribusikan berlisensi CC BY-SA 4.0. Lihat `licensing/` di monorepo MEDCOEL.
 Paket ini tidak mengubah izin penggunaan aset upstream.
 
 - BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan

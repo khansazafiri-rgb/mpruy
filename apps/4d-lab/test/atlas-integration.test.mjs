@@ -3,6 +3,7 @@
 // atlas meshes and the imaging labels agree, and that Phases 3-5 run on the atlas dataset.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { loadAtlasDataset, loadPhantom } from './helpers.mjs';
 import { validateRegistration } from '../src/core/mesh.js';
 import { mat4Apply } from '../src/core/vec.js';
@@ -21,7 +22,7 @@ const toLPS = (p) => mat4Apply(M, p);
 const HEART = [9, 10, 11, 12, 13];
 const centroid = (P) => { const c = [0, 0, 0]; for (let i = 0; i < P.length; i += 3) for (let d = 0; d < 3; d++) c[d] += P[i + d]; return c.map((v) => v / (P.length / 3)); };
 const atlas = {};
-for (const sys of ['visceral', 'cardiovascular', 'lymphatic']) atlas[sys] = await readAtlasSystem(sys, { geometry: true, filter: (n) => /^(Liver|Stomach|Spleen|Kidney\.[lr]|Left ventricle|Right atrium|Urinary bladder|Gallbladder|(Superior|Inferior) lobe of (left|right) lung)$/.test(n) });
+for (const sys of ['visceral', 'cardiovascular', 'lymphatic']) atlas[sys] = await readAtlasSystem(sys, { geometry: true, filter: (n) => /^(Liver|Stomach|Spleen|Suprarenal gland\.[lr]|Left ventricle|Right atrium|Urinary bladder|Gallbladder|(Superior|Inferior) lobe of (left|right) lung)$/.test(n) });
 const S = (name) => { for (const a of Object.values(atlas)) if (a.structures.get(name)?.positions) return a.structures.get(name); return null; };
 
 test('atlas frame: metres -> LPS mm is a rigid, unit-scaled map with the documented axes', () => {
@@ -40,10 +41,11 @@ test('left/right and cranio-caudal anatomy are correct in LPS (atlas meshes)', (
   assert.ok(c('Spleen')[0] > 40, 'spleen on the patient left');
   assert.ok(c('Stomach')[0] > 0, 'stomach left of midline');
   assert.ok(c('Left ventricle')[0] > c('Right atrium')[0], 'LV left of RA');
-  assert.ok(c('Kidney.l')[0] > 30 && c('Kidney.r')[0] < -30, 'kidneys paired L/R');
-  assert.ok(c('Kidney.r')[2] < c('Kidney.l')[2], 'right kidney lower than left (liver above it)');
+  assert.ok(c('Suprarenal gland.l')[0] > 20 && c('Suprarenal gland.r')[0] < -20, 'suprarenal glands paired L/R');
+  // The kidney (CC BY-NC 4.0) is withheld by the licence quarantine: it must be absent, not substituted.
+  assert.equal(S('Kidney.l'), null); assert.equal(S('Kidney.r'), null);
   assert.ok(c('Urinary bladder')[2] < c('Stomach')[2] && c('Stomach')[2] < c('Left ventricle')[2], 'bladder < stomach < heart (superior)');
-  assert.ok(c('Gallbladder')[1] < c('Kidney.r')[1], 'gallbladder anterior to the right kidney');
+  assert.ok(c('Gallbladder')[1] < c('Suprarenal gland.r')[1], 'gallbladder anterior to the right suprarenal gland');
 });
 
 test('registration package validates (affine, CT probes, SHA-256, skin anchors) and tampering is rejected', async () => {
@@ -67,7 +69,7 @@ test('illustrative skin shell is closed and sits on the CT body boundary (>= 97%
 });
 
 test('atlas meshes and imaging labels agree by construction (vertex -> label within 3 mm)', () => {
-  const expect = { Liver: [17], Spleen: [19], 'Kidney.l': [20, 21], 'Kidney.r': [20, 21], Stomach: [22, 23, 24], 'Urinary bladder': [30, 43], 'Left ventricle': HEART, 'Superior lobe of left lung': [8, 40], 'Inferior lobe of right lung': [7, 40] };
+  const expect = { Liver: [17], Spleen: [19], Stomach: [22, 23, 24], 'Urinary bladder': [30, 43], 'Left ventricle': HEART, 'Superior lobe of left lung': [8, 40], 'Inferior lobe of right lung': [7, 40] };
   for (const [name, labs] of Object.entries(expect)) {
     const P = S(name).positions; let ok = 0, n = 0;
     for (let i = 0; i < P.length; i += 3 * 7) {
@@ -162,4 +164,17 @@ test('ultrasound on the atlas HFrEF teaching window shows blood pools darker tha
   const blood = mean(TISSUE_INDEX.blood), myo = mean(TISSUE_INDEX.myocardium);
   assert.ok(blood.n > 200 && myo.n > 200, 'both tissues in the view');
   assert.ok(blood.m < myo.m, `blood ${blood.m.toFixed(1)} < myocardium ${myo.m.toFixed(1)}`);
+});
+
+test('licence quarantine: withheld anatomy has no voxels, is flagged unavailable and is not an input', () => {
+  const policy = JSON.parse(fs.readFileSync(new URL('../../../licensing/quarantine-policy.json', import.meta.url)));
+  const byId = Object.fromEntries(A.anatomy.labels.map((l) => [l.id, l]));
+  for (const id of [20, 21, 35]) { assert.equal(byId[id].available, false, 'label ' + id + ' flagged'); assert.equal(byId[id].volumeMl, 0, 'label ' + id + ' has no voxels'); }
+  const src = A.anatomy.build.sourceModels;
+  assert.ok(!('nervous.glb' in src), 'nervous.glb is not an input');
+  const quarantinedHashes = new Set(policy.quarantinedFiles.map((f) => f.sha256));
+  for (const [file, hash] of Object.entries(src)) assert.ok(!quarantinedHashes.has(hash), file + ' is a quarantined original');
+  assert.ok(!A.anatomy.attribution.some((a) => /lissiecowley/i.test(a)), 'no kidney attribution needed: kidney not used');
+  assert.match(A.anatomy.licence, /^CC BY-SA 4\.0/);
+  assert.ok(!A.anatomy.meshes.atlasLayer.systems.includes('nervous'));
 });

@@ -1,3 +1,4 @@
+import { isQuarantinedSource } from '../atlas/availability.js';
 import {queueBoundsTree} from './backgroundGeometry.js';
 import {beginPhase} from '../utils/perf.js';
 // Model Loading - GLB loading, mesh registry, material handling
@@ -98,6 +99,11 @@ export function loadModel(systemId, viewer, options = {}) {
 
 async function loadModelOnce(systemId, viewer, options = {}) {
   const { scene } = viewer;
+  // Licence quarantine: never request a withheld model, even if a stale link or caller asks for it.
+  if (isQuarantinedSource(systemId)) {
+    setLoadingSystem(systemId, true, 100, { failed: true });
+    throw new Error(`${systemId} is unavailable pending licence review`);
+  }
 
   console.log(`[loadModel] Starting load of ${systemId}.glb`);
 

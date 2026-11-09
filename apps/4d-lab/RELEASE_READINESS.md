@@ -23,10 +23,10 @@ So the preview is a **local, read-only server on your Mac** that reproduces the 
 
 | URL | What it is | Production equivalent |
 |---|---|---|
-| `http://127.0.0.1:4190/anatomy/live` | MEDCOEL web page that frames the lab (what students see) | `https://medcoel.com/anatomy/live` |
-| `http://127.0.0.1:4190/anatomy/4d-lab/` | the lab on its own (full window) | `/anatomy/4d-lab/` (Caddy `handle_path`) |
-| `http://127.0.0.1:4190/anatomy/4d-lab/?dataset=phantom` | the earlier procedural phantom | — |
-| `http://127.0.0.1:4190/anatomy/viewer/` | the Anatomy Atlas whose models the lab reuses | `/anatomy/viewer/` (existing) |
+| `http://127.0.0.1:4173/anatomy/live` | MEDCOEL web page that frames the lab (what students see) | `https://medcoel.com/anatomy/live` |
+| `http://127.0.0.1:4173/anatomy/4d-lab/` | the lab on its own (full window) | `/anatomy/4d-lab/` (Caddy `handle_path`) |
+| `http://127.0.0.1:4173/anatomy/4d-lab/?dataset=phantom` | the earlier procedural phantom | — |
+| `http://127.0.0.1:4173/anatomy/viewer/` | the Anatomy Atlas whose models the lab reuses | `/anatomy/viewer/` (existing) |
 
 The preview has **no backend**. A fixture student is signed in ("Preview lokal · akun contoh"), and `/api/*`
 answers from `preview/fixtures.mjs`. Nothing is uploaded anywhere.
@@ -69,19 +69,19 @@ which takes about 1–3 minutes. It then **refuses to start** unless these self-
 - the 7 atlas GLBs, the Draco decoder, the catalog and `LICENSE`/`NOTICE`/`License.txt` are present
 - the atlas models are **byte-identical** to the ones the lab's CT was generated from
 
-When it prints the URLs, open **Safari → `http://127.0.0.1:4190/anatomy/live`**. Stop it with Ctrl+C.
+When it prints the URLs, open **Safari → `http://127.0.0.1:4173/anatomy/live`**. Stop it with Ctrl+C.
 To restart without rebuilding, run `node scripts/preview-4d-lab.mjs`.
 
 Optional:
 - To see console errors and memory: Safari → Settings → Advanced → "Show features for web developers", then
   Develop → Show Web Inspector (Console; Timelines → Memory).
 - Activity Monitor → Memory shows the "Safari Web Content" process for this tab.
-- **Another device (iPad, a second Mac) on the same Wi-Fi:** run `PORT=4190 node scripts/preview-4d-lab.mjs --lan`
-  and open `http://<your-Mac-IP>:4190/anatomy/live`. This is plain http, so not a "secure context"; the lab
+- **Another device (iPad, a second Mac) on the same Wi-Fi:** run `PORT=4173 node scripts/preview-4d-lab.mjs --lan`
+  and open `http://<your-Mac-IP>:4173/anatomy/live`. This is plain http, so not a "secure context"; the lab
   verifies meshes with a built-in SHA-256 in that case (tested). Stop the server afterwards.
 
 ### Preview inside this cloud session (convenience only)
-During the development session the same preview ran in the cloud container on port 4190 and was announced to the
+During the development session the same preview ran in the cloud container on port 4173 and was announced to the
 Claude app. It disappears when the session ends, uses software rendering, and is **not** a Safari test.
 
 ---
@@ -125,7 +125,7 @@ mesh deformation 31–83 ms per update (scheduled adaptively). **These are not S
 
 ## 3. Safari manual acceptance checklist (owner, 8 GB Apple Silicon Mac)
 
-Open `http://127.0.0.1:4190/anatomy/live`. Record pass/fail and notes in a copy of this table.
+Open `http://127.0.0.1:4173/anatomy/live`. Record pass/fail and notes in a copy of this table.
 **Most important (item 2–3): the probe must never feel attached to rings, circles or an orbit around the body.**
 
 | # | Test | How | Expected | Pass / notes |
@@ -172,13 +172,16 @@ and anything that looks anatomically wrong (feed into `MEDICAL_REVIEW_CHECKLIST.
 ---
 
 ## 5. Asset licence compliance (status for non-commercial educational distribution)
+
+> **Licence quarantine (2026-11-09).** Superseded licence statements below are kept for history but no longer describe the build. Current status: `../../licensing/PROVENANCE_REPORT.md` and `../../licensing/quarantine-policy.json`. The atlas-derived dataset is rebuilt from cleared inputs only and is **CC BY-SA 4.0**; `nervous.glb`, the CC BY-NC kidney (+ renal pelvis) and the ossicles are withheld and shown as unavailable.
+
 | Item | Finding | Status |
 |---|---|---|
 | Anatomy Atlas models | Loaded from `/anatomy/viewer/` at runtime; **not copied** into the lab build (verified: `apps/4d-lab/dist` contains no GLB or Draco files from the atlas) | ✅ |
 | Atlas licence files | `LICENSE`, `NOTICE`, `models/License.txt` present in the atlas build (checked by the preview and by CI) | ✅ |
-| Atlas-derived dataset (`/anatomy/4d-lab/data/atlas/`) | CC BY-NC-SA 4.0 derivative. **`NOTICE.txt` now ships next to the files** (attributions, licence, "synthetic" statement); attributions also shown in the Anatomi tab; `stage-4d-lab.mjs` refuses a build without it | ✅ |
-| Share-alike | Derived files are offered under the same licence (CC BY-NC-SA 4.0) | ✅ |
-| Non-commercial clause | NC kidney (lissiecowley) and NC inner ear in the atlas: MEDCOEL's educational deployment must stay non-commercial | ✅ for the preview; ⚠ before any commercial use, replace the kidney and rebuild (`ASSET_LICENSE_REGISTRY.md`) |
+| Atlas-derived dataset (`/anatomy/4d-lab/data/atlas/`) | Rebuilt 2026-11-09 from cleared inputs only; CC BY-SA 4.0 adaptation; `NOTICE.txt` (attributions, licence URLs, adaptation notice, exclusions) ships next to the files | ✅ |
+| Share-alike | Derived files are offered under CC BY-SA 4.0 | ✅ |
+| Licence quarantine | NC kidney, NC-SA inner ear/ossicles and unlicensed Brainder/White matter withheld; build, stage and preview fail closed (`npm run test:licensing`) | ✅ in repo; ⚠ production still serves the old atlas files until the owner acts (`../../licensing/EXPOSURE_AND_ROLLBACK_PLAN.md`) |
 | IT'IS Virtual Population | Not present (repository scan: no ViP files, names or derivatives) | ✅ |
 | CTACardio / EchoNet / TotalSegmentator weights | Not present; nothing uploaded; local processing only | ✅ |
 | Third-party code | three.js, three-mesh-bvh (MIT); build-only tools glTF-Transform (MIT), draco3dgltf (Apache-2.0) | ✅ |

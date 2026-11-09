@@ -1,0 +1,43 @@
+{
+ "schemaVersion": 1,
+ "description": "Atlas evidence regenerated after the licence quarantine (node test/e2e/atlas-e2e.mjs --shots) from the cleared atlas build and the rebuilt dataset. licensing/tools/apply-quarantine.mjs keeps only files listed here.",
+ "generated": "2026-11-09",
+ "sourceModels": {
+  "skeletal.glb": "2de765c25b2860708a4ff984908e19853eb443875cd4256e3104aef45a1291be",
+  "muscular.glb": "f69ed1287f802a2d603d23293e01512bb57ae77ee7cca1d5527ba00496e51de2",
+  "visceral.glb": "5392afc3fd9a54f653e6b976e82e6fd7a51ea4b5661297b41f259a5d46c72bb8",
+  "joints.glb": "9fdab1a257652597cf8f0b2ac93d12abc817e8f9a9099b9628e764018490afa2",
+  "lymphatic.glb": "718cac2b26ad752224cc8a11b2d5bf733fb523b75d9614822a24af7d19202756",
+  "cardiovascular.glb": "bc94c7b8eb1712f18ee461e064140e54aa817f3614e0f56a45b00e2a829cfb59"
+ },
+ "files": [
+  "atlas-01-full-patient.jpg",
+  "atlas-02-anterior-exam.jpg",
+  "atlas-03-lateral-exam.jpg",
+  "atlas-04-posterior-exam.jpg",
+  "atlas-05-transparent-skin.jpg",
+  "atlas-06-angulation-fixed-contact.jpg",
+  "atlas-07-free-oblique.jpg",
+  "atlas-08-expanded-monitor.jpg",
+  "atlas-09-dynamic-heart.jpg",
+  "atlas-10a-effusion.jpg",
+  "atlas-10b-hfref-auscultation.jpg",
+  "atlas-11-isolate-left-ventricle.jpg",
+  "atlas-12-imaging-coverage-frames.jpg"
+ ],
+ "sha256": {
+  "atlas-01-full-patient.jpg": "281c5856eeca7dd456ebf0598546cb7fe94ca8635fc5a91d70ebab43fdd658de",
+  "atlas-02-anterior-exam.jpg": "d17e8d398b644f99c2aec01da7ec6a4b4bb16b9496096df2a263dbd7e93713da",
+  "atlas-03-lateral-exam.jpg": "9d54f0ed4aa85bf2a967466ce9828516493069556781461b24d73a03f09edd14",
+  "atlas-04-posterior-exam.jpg": "b22cbfbadc5b607c52a9f38858546d81a9aa96eb9a72bff48ca2bcbf655b7e7d",
+  "atlas-05-transparent-skin.jpg": "bdb3835b764049cdb61f0f09de62ef0d56673f44a3f30b6fc1df8156f0156a2b",
+  "atlas-06-angulation-fixed-contact.jpg": "593aad41448e61d61e54f48f84240dd126cb795374f94fccdf3a131f8b3c739c",
+  "atlas-07-free-oblique.jpg": "33cbe7495053771aeafbf28e9137fd66b1853bf21fed4ba2930e9be4d9cfc456",
+  "atlas-08-expanded-monitor.jpg": "5cefe58c036749f3e9708083616196b2c3443319dd8f1beaffe997a667e3ecea",
+  "atlas-09-dynamic-heart.jpg": "a1ead970878db7a3dcd16511269a0cc91ac91615839021e5d601f5c056743ba1",
+  "atlas-10a-effusion.jpg": "9484bc6dd1f5eaca88cde0855d73d59b36fa35c8c7c191a2912fc4f4eff83d06",
+  "atlas-10b-hfref-auscultation.jpg": "64dbd942b17c224738eb2546d06c721dfdebe71e0c9418bc67920964bf9b84d2",
+  "atlas-11-isolate-left-ventricle.jpg": "5ab7675f8ed7a5b7bf93fe68d6f88db72861030d719ab7d4da5bcbed6f83b8bb",
+  "atlas-12-imaging-coverage-frames.jpg": "c27f72723063adb8bd319076e1aa6223217fdcbed4b014882166ae63c1dfc31b"
+ }
+}

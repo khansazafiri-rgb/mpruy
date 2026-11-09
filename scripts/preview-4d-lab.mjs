@@ -9,7 +9,7 @@
 //
 //   node scripts/preview-4d-lab.mjs --build      # build all three apps, check them, then serve
 //   node scripts/preview-4d-lab.mjs              # serve existing builds (after checking them)
-//   PORT=4190 node scripts/preview-4d-lab.mjs --lan   # also reachable from other devices on your network
+//   PORT=4173 node scripts/preview-4d-lab.mjs --lan   # also reachable from other devices on your network
 import { createServer } from 'node:http';
 import { readFile, stat, readdir } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
@@ -19,6 +19,8 @@ import { apiFixture } from '../preview/fixtures.mjs';
 import { validateLab, checkAtlasModels } from './stage-4d-lab.mjs';
 
 const repo = fileURLToPath(new URL('../', import.meta.url));
+import { assertDistributionClean, loadPolicy } from '../licensing/tools/check-distribution.mjs';
+export const WITHHELD = [...Object.keys(loadPolicy().policy.quarantinedSystems).map((sys) => new RegExp(`^/anatomy/viewer/models/${sys}\\.glb$`, 'i')), /^\/anatomy\/viewer\/thumbnails\/systems\/(nervous|visceral)\.webp$/i];
 export const ROOTS = {
   main: path.join(repo, 'apps/web/dist-anatomy-preview'),
   lab: path.join(repo, 'apps/4d-lab/dist'),
@@ -44,6 +46,8 @@ export function createLabPreviewServer(roots = ROOTS) {
       res.setHeader('X-Content-Type-Options', 'nosniff');
       res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
       const lab = p.startsWith('/anatomy/4d-lab/'), atlas = p.startsWith('/anatomy/viewer/');
+      // Licence quarantine: withheld paths are never served, even from a stale local build.
+      if (WITHHELD.some((re) => re.test(p))) return send(404, 'Not found');
       if (lab || atlas) { res.setHeader('X-Frame-Options', 'SAMEORIGIN'); res.setHeader('Content-Security-Policy', "frame-ancestors 'self'"); }
       else res.setHeader('X-Frame-Options', 'DENY');
       if (p === '/anatomy/4d-lab' || p === '/anatomy/viewer') { res.writeHead(308, { Location: p + '/' }); return res.end(); }
@@ -75,7 +79,9 @@ export async function checkBuilds(roots = ROOTS) {
     const models = (await readdir(path.join(roots.atlas, 'models'))).filter((f) => f.endsWith('.glb'));
     for (const f of ['draco/draco_decoder.wasm', 'draco/draco_wasm_wrapper.js', 'data/atlas-catalog.json', 'LICENSE', 'NOTICE', 'models/License.txt']) await stat(path.join(roots.atlas, f));
     facts.atlasModels = models.length;
-    if (models.length < 7) problems.push(`Atlas build has ${models.length} GLBs (expected 7).`);
+    // 6 cleared systems; nervous.glb is withheld by the licence quarantine (licensing/quarantine-policy.json)
+    if (models.length < 6) problems.push(`Atlas build has ${models.length} GLBs (expected 6 cleared systems).`);
+    try { assertDistributionClean([roots.atlas, roots.lab], 'preview builds'); } catch (e) { problems.push(e.message); }
     const html = await readFile(path.join(roots.atlas, 'index.html'), 'utf8');
     if (!html.includes('/anatomy/viewer/')) problems.push('Atlas build was not made with base /anatomy/viewer/ (run with --build).');
     // the lab's atlas-derived CT was generated from specific model files: they must be the ones served
@@ -101,7 +107,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   if (process.argv.includes('--build')) build();
   const check = await checkBuilds();
   if (!check.ok) { console.error('\nPreview NOT started:\n - ' + check.problems.join('\n - ')); process.exit(1); }
-  const port = Number(process.env.PORT || 4190), host = process.argv.includes('--lan') ? '0.0.0.0' : '127.0.0.1';
+  const port = Number(process.env.PORT || 4173), host = process.argv.includes('--lan') ? '0.0.0.0' : '127.0.0.1';
   createLabPreviewServer().listen(port, host, () => {
     const b = `http://127.0.0.1:${port}`;
     console.log(`\nMEDCOEL 4D Lab local staging preview (read-only, no backend, nothing deployed)

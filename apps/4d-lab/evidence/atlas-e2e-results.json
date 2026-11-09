@@ -1,103 +1,107 @@
 {
-  "date": "2026-11-09T01:14:56.230Z",
+  "date": "2026-11-09T05:39:38.537Z",
   "browser": "Chromium (Playwright, headless, SwiftShader WebGL)",
   "dataset": "atlas",
-  "passed": 14,
+  "passed": 15,
   "failed": 0,
   "perf": {
     "heap": 73.05145263671875,
-    "fps": 10.153221340225544,
-    "tri": 1793374,
-    "verts": 926924,
+    "fps": 10.000000000000002,
+    "tri": 1763646,
+    "verts": 911724,
     "loadMs": {
-      "visceral": 2269,
-      "cardiovascular": 735,
-      "skeletal": 300,
-      "lymphatic": 152
+      "visceral": 2221,
+      "cardiovascular": 931,
+      "skeletal": 296,
+      "lymphatic": 48
     },
     "deform": {
-      "deformMs": 32.60000000009313,
-      "moving": 100553,
-      "clockT": 9.410294784580424
+      "deformMs": 46.60000000009313,
+      "moving": 97897,
+      "clockT": 15.519731972789115
     },
-    "pageLoadToAtlasReadyMs": 4040
+    "pageLoadToAtlasReadyMs": 4658
   },
   "atlasDeform": {
-    "maxMove": 13.670098185814995,
-    "moving": 100553,
-    "deformMs": 31.600000000093132,
+    "maxMove": 14.348238893974075,
+    "moving": 97897,
+    "deformMs": 61.199999999953434,
     "animated": true
   },
   "results": [
     {
       "name": "atlas dataset is the default; shared atlas models load with no runtime errors",
       "ok": true,
-      "ms": 264
+      "ms": 222
     },
     {
       "name": "full patient view: external body shell with orientation labels; atlas hidden under opaque skin",
       "ok": true,
-      "ms": 35126
+      "ms": 29576
     },
     {
       "name": "transparent skin shows the atlas organs; groups toggle, transparency and isolate work",
       "ok": true,
-      "ms": 49303
+      "ms": 58304
     },
     {
       "name": "inspect tool: clicking an organ selects that atlas structure (not the probe)",
       "ok": true,
-      "ms": 10607
+      "ms": 12208
     },
     {
       "name": "anterior, lateral and posterior examination by clicking the skin",
       "ok": true,
-      "ms": 31439
+      "ms": 85572
     },
     {
       "name": "fixed contact point: rotate / heel-toe / rock change the image, never the contact",
       "ok": true,
-      "ms": 52079
+      "ms": 72530
     },
     {
       "name": "camera rotation and presets never change the scan",
       "ok": true,
-      "ms": 65359
+      "ms": 65700
     },
     {
       "name": "free 3D: arbitrary oblique plane through the atlas CT, independent of the skin",
       "ok": true,
-      "ms": 43536
+      "ms": 62533
     },
     {
       "name": "expanded monitor with zoom and pan",
       "ok": true,
-      "ms": 9847
+      "ms": 30886
     },
     {
       "name": "dynamic heart: atlas heart meshes move with the SAME field that deforms the image",
       "ok": true,
-      "ms": 69475
+      "ms": 98353
     },
     {
       "name": "pathology + auscultation on the atlas body (effusion window, HFrEF S3 at the mitral area)",
       "ok": true,
-      "ms": 45156
+      "ms": 78822
     },
     {
       "name": "frames panel: atlas->LPS exact, atlas vs phantom explicitly NOT registered",
       "ok": true,
-      "ms": 17731
+      "ms": 40122
     },
     {
       "name": "performance and memory on the atlas dataset (Chromium, software WebGL)",
       "ok": true,
-      "ms": 3
+      "ms": 4
     },
     {
       "name": "phantom dataset still available and keeps the atlas hidden (no false overlay)",
       "ok": true,
-      "ms": 22919
+      "ms": 21171
+    },
+    {
+      "name": "licence quarantine: no request for a withheld model",
+      "ok": true
     }
   ]
 }

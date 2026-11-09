@@ -15,7 +15,7 @@ base `/anatomy/4d-lab/` and embedded by the main web app at `/anatomy/live`
 - `pipeline/`  Python (numpy/scipy/VTK) phantom generator + CT->mesh reconstruction (also for local CTACardio)
 - `public/data/phantom/` generated synthetic data (original, committed). Regenerate: `npm run phantom`
 - `public/data/atlas/` DEFAULT dataset generated from the MEDCOEL Anatomy Atlas meshes (`npm run atlas:dataset`,
-  `pipeline/atlas/`). CC BY-NC-SA 4.0 derivative: keep the attributions. See `ATLAS_INTEGRATION_AUDIT.md`.
+  `pipeline/atlas/`). CC BY-SA 4.0 adaptation built from CLEARED atlas files only (licence quarantine: `../../licensing/`; nervous.glb, kidney, ossicles withheld). Keep the attributions; never re-add withheld anatomy or substitute it.
 - `src/app/atlasLayer.js` loads the atlas GLBs from `/anatomy/viewer/` at runtime. Never copy atlas models into this app.
 - `test/*.test.mjs` node:test unit/integration; `test/e2e/` Playwright browser tests
 - `legacy/v0.9/` the previous prototype, kept for provenance (its own tests: `npm run test:legacy`)

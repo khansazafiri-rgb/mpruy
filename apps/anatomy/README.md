@@ -104,8 +104,7 @@ to the loaders.
 
 The anatomical models are derived from BodyParts3D (CC BY-SA 2.1 Japan) and
 Z-Anatomy (CC BY-SA 4.0), and definitions come from Wikipedia (CC BY-SA 3.0 /
-GFDL). Two components are non-commercial — the inner ear (CC BY-NC-SA 4.0) and
-the kidney (CC BY-NC 4.0) — so the work as distributed is **CC BY-NC-SA 4.0**:
-attribution and share-alike are required and commercial use is not permitted.
-Removing those two structures would allow the remainder to be redistributed
-under CC BY-SA 4.0. See `LICENSE` and `NOTICE`.
+GFDL). Since the licence quarantine of 2026-11-09 the non-commercial and
+unverified components (the whole `nervous.glb`, the kidney/renal pelvis and the
+auditory ossicles) are withheld, so the models are distributed under
+**CC BY-SA 4.0**. See `LICENSE`, `NOTICE` and `licensing/` in the MEDCOEL monorepo.

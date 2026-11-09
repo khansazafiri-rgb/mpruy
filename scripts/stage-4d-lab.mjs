@@ -6,12 +6,14 @@ import { cp, mkdir, readFile, writeFile, rename, symlink, lstat, readlink, rm, r
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash, randomUUID } from 'node:crypto';
+import { assertDistributionClean } from '../licensing/tools/check-distribution.mjs';
 
 const repo = fileURLToPath(new URL('../', import.meta.url));
 const BASE = '/anatomy/4d-lab/';
 const DATA = ['ct.nrrd', 'labels.nrrd', 'anatomy.json', 'registration.json', 'skin.glb', 'organs.glb'];
 
 export async function validateLab(root) {
+  assertDistributionClean([root], '4D Lab release'); // licence quarantine: fail closed
   const html = await readFile(path.join(root, 'index.html'), 'utf8');
   const assets = [...html.matchAll(/(?:src|href)="(\/anatomy\/4d-lab\/assets\/[^"#]+)"/g)].map((m) => m[1].slice(BASE.length));
   if (!assets.some((a) => a.endsWith('.js'))) throw Error('Build apps/4d-lab with base /anatomy/4d-lab/ first');
@@ -23,7 +25,7 @@ export async function validateLab(root) {
   for (const set of sets) {
     const anatomy = JSON.parse(await readFile(path.join(root, 'data', set, 'anatomy.json'), 'utf8'));
     if (anatomy.schema !== 'medcoel.anatomy.v1') throw Error('Unknown anatomy manifest');
-    for (const f of ['ct.nrrd', 'labels.nrrd', ...(set === 'atlas' ? ['NOTICE.txt'] : [])]) await readFile(path.join(root, 'data', set, f)); // atlas derivative ships its CC BY-NC-SA notice
+    for (const f of ['ct.nrrd', 'labels.nrrd', ...(set === 'atlas' ? ['NOTICE.txt'] : [])]) await readFile(path.join(root, 'data', set, f)); // atlas derivative ships its licence/adaptation notice
     const reg = JSON.parse(await readFile(path.join(root, 'data', set, 'registration.json'), 'utf8'));
     for (const m of reg.meshes) {
       const sha = createHash('sha256').update(await readFile(path.join(root, 'data', set, m.file))).digest('hex');

@@ -1,5 +1,6 @@
 import {createServer} from 'node:http';import {readFile,stat} from 'node:fs/promises';import path from 'node:path';import {fileURLToPath} from 'node:url';
 import {apiFixture} from '../preview/fixtures.mjs';
+import {WITHHELD} from './preview-4d-lab.mjs';
 const repo=fileURLToPath(new URL('../',import.meta.url));
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.glb':'model/gltf-binary','.wasm':'application/wasm','.woff2':'font/woff2','.webp':'image/webp','.svg':'image/svg+xml','.png':'image/png','.ico':'image/x-icon','.txt':'text/plain'};
 export function createPreviewServer({mainRoot=path.join(repo,'apps/web/dist-anatomy-preview'),atlasRoot=path.resolve(repo,'apps/anatomy/dist')}={}){
@@ -13,6 +14,7 @@ export function createPreviewServer({mainRoot=path.join(repo,'apps/web/dist-anat
    if(pathname.startsWith('/anatomy/viewer/'))res.setHeader('Content-Security-Policy',"frame-ancestors 'self'");
    if(pathname.startsWith('/api/')){const fixture=apiFixture(pathname);return fixture?send(200,JSON.stringify(fixture),'application/json'):send(404,JSON.stringify({message:'This preview has no backend endpoint.'}),'application/json');}
    if(pathname==='/anatomy/viewer'){res.writeHead(308,{Location:'/anatomy/viewer/'});return res.end();}
+   if(WITHHELD.some(re=>re.test(pathname))){res.writeHead(404,{'Content-Type':'text/plain; charset=utf-8'});return res.end('Not found');} // licence quarantine
    const atlas=pathname.startsWith('/anatomy/viewer/');
    const root=path.resolve(atlas?atlasRoot:mainRoot);
    const relative=atlas?pathname.slice('/anatomy/viewer/'.length):pathname.slice(1);

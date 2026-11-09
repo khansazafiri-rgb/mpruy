@@ -12,6 +12,7 @@ import LiveLab from './LiveLab';
 import { AnatomyDataProvider, useAnatomyLibrary } from '../features/anatomy/LibraryData';
 import {
   REGIONS, SYSTEMS, browseStructures, filterStructures, normalise, relatedStructures, structureHref, exploreHref,
+  UNAVAILABLE_SYSTEMS,
 } from '../features/anatomy/registry.mjs';
 import { PROGRESS_STATES, recordAnswer, setProgressStatus } from '../features/anatomy/libraryProgress.mjs';
 import { STUDY_MODES, makeQuestion, evaluateStudyAttempt, studyScope } from '../features/anatomy/study.mjs';
@@ -549,7 +550,7 @@ function SystemChoices({ registry, region, onChoose, selected }) {
             <SystemPicture registry={registry} system={s} Icon={Icon} />
             <h3>{s.name}</h3>
             <p>{s.description}</p>
-            <small>{count(n)} struktur</small>
+            <small>{!n && UNAVAILABLE_SYSTEMS[s.id] ? UNAVAILABLE_SYSTEMS[s.id] : count(n) + ' struktur'}</small>
           </button>
         );
       })}
