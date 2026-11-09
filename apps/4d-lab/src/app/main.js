@@ -926,6 +926,7 @@ function renderAtlasPanel() {
       setDisplayMode, setTool,
       loadSystem: (sys) => loadAtlasSystem(sys),
       setGroup: (g, o) => { atlas.setGroup(g, o); renderAtlasPanel(); motionShown = null; },
+      setRespiratoryDetail: (enabled) => { atlas.setRespiratoryDetail(enabled); renderAtlasPanel(); motionShown = null; },
       select: (name) => { S.atlasQuery = name; if (atlas?.structures.has(name)) { selected = name; atlas.highlight(name); } renderAtlasPanel(); },
       highlight: (name) => { atlas.highlight(atlas.highlighted === name ? null : name); renderAtlasPanel(); },
       isolate: (name) => { atlas.isolate(name); if (name && organsHidden()) setDisplayMode('internal'); renderAtlasPanel(); },
