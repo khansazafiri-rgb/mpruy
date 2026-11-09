@@ -52,6 +52,16 @@ try {
   await page.getByTestId('tour-skip').click();
   assert.ok(await page.getByTestId('tri-controls').isVisible());
   assert.match(await page.getByTestId('tri-controls').textContent(), /Aksial.*Koronal.*Sagital/s);
+  const triLayout = await get(() => {
+    const scroller = document.querySelector('#monitorScroll'), image = document.querySelector('.monitor-body');
+    return { scrollHeight: scroller.scrollHeight, clientHeight: scroller.clientHeight, imageHeight: image.getBoundingClientRect().height, panelMode: document.querySelector('#monitorPanel').dataset.display };
+  });
+  assert.equal(triLayout.panelMode, 'tri');
+  assert.ok(triLayout.imageHeight >= 440, 'Tri-planar canvas retains a readable minimum height');
+  assert.ok(triLayout.scrollHeight > triLayout.clientHeight, 'right monitor content can scroll independently');
+  await page.getByTestId('tri-show-images').click();
+  await page.waitForFunction(() => document.querySelector('#monitorScroll').scrollTop > 15);
+  await shot('mode-triplanar-scrolled');
   await shot('mode-after-triplanar');
   await page.getByTestId('tri-center').click();
   const before = await get(() => [...window.__lab.S.tri.point]);
