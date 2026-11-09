@@ -362,11 +362,21 @@ export class PatientScene {
 
   _updateLabels() {
     const w = this.container.clientWidth, h = this.container.clientHeight, v = new THREE.Vector3();
+    const occupied = [];
     for (const l of this.labels) {
       v.set(...l.p).applyMatrix4(LPS_TO_SCENE).project(this.camera);
-      const vis = v.z < 1 && Math.abs(v.x) < 1.05 && Math.abs(v.y) < 1.05;
-      l.el.style.display = vis ? 'block' : 'none';
-      l.el.style.transform = `translate(-50%,-50%) translate(${(v.x * 0.5 + 0.5) * w}px, ${(-v.y * 0.5 + 0.5) * h}px)`;
+      const x = (v.x * 0.5 + 0.5) * w, y = (-v.y * 0.5 + 0.5) * h;
+      // Drop labels behind the camera, outside the viewport, under the top toolbar,
+      // or overlapping a higher-priority anatomical direction label.
+      let visible = v.z < 1 && Math.abs(v.x) < 0.94 && Math.abs(v.y) < 0.94 && y > 64 && y < h - 60;
+      const halfWidth = Math.max(35, l.el.textContent.length * 3.6 + 10);
+      if (visible) {
+        const r = { l: x - halfWidth, r: x + halfWidth, t: y - 13, b: y + 13 };
+        if (occupied.some((o) => r.l < o.r + 5 && r.r > o.l - 5 && r.t < o.b + 4 && r.b > o.t - 4)) visible = false;
+        else occupied.push(r);
+      }
+      l.el.style.display = visible ? 'block' : 'none';
+      if (visible) l.el.style.transform = `translate(-50%,-50%) translate(${x}px, ${y}px)`;
     }
   }
 
