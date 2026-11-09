@@ -28,15 +28,29 @@ export function updateView(state, action) {
   const next = snapshot(state);
   const key = action.key;
   switch (action.type) {
-    case 'system': {
+    case 'system':
+    case 'onlySystem': {
       if (!action.system || !action.valid) return state;
-      next.enabled = action.enabled
+      next.enabled = action.type === 'onlySystem' ? [action.system] : action.enabled
         ? [...new Set([...next.enabled, action.system])]
         : next.enabled.filter(s => s !== action.system);
-      if (next.selected?.startsWith(action.system + '::') && !action.enabled) next.selected = null;
+      // Isolating or fading an unloaded system would make every remaining
+      // structure invisible. Clear only context tied to disabled systems.
+      const stillEnabled = value => !value || next.enabled.some(s => value.startsWith(s + '::'));
+      if (!stillEnabled(next.selected)) next.selected = null;
+      if (!stillEnabled(next.isolated)) next.isolated = null;
+      if (!stillEnabled(next.faded)) next.faded = null;
       break;
     }
     case 'select': next.selected = key || null; break;
+    case 'reveal':
+      if (!key) return state;
+      // Search/picking must work after Hide/Isolate, not select an invisible mesh.
+      next.hidden = next.hidden.filter(k => k !== key);
+      if (next.isolated !== key) next.isolated = null;
+      if (next.faded !== key) next.faded = null;
+      next.selected = key;
+      break;
     case 'hide':
       if (!key) return state;
       next.hidden = [...new Set([...next.hidden, key])];
@@ -46,7 +60,7 @@ export function updateView(state, action) {
     case 'isolate': if (!key) return state; next.isolated = key; next.hidden = next.hidden.filter(k => k !== key); break;
     case 'fade': next.faded = next.faded === key ? null : key; break;
     case 'region': next.region = action.region || 'whole'; break;
-    case 'opacity': next.opacity = Math.max(0.15, Math.min(1, Number(action.value) || 1)); break;
+    case 'opacity': next.opacity = Math.max(0.15, Math.min(1, Number.isFinite(Number(action.value)) ? Number(action.value) : 1)); break;
     case 'clearSelection': next.selected = null; next.isolated = null; next.faded = null; break;
     default: return state;
   }
