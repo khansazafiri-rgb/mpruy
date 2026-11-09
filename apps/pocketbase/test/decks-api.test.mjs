@@ -364,6 +364,84 @@ await langkah('pengajuan sendiri selalu terlihat walau kampus profil berbeda; ce
   await drilling(true);
 });
 
+console.log('Materi pengajuan yang diimpor lewat Admin > Drilling > Materi');
+const kampusmu = async (u) => (await call('GET', `/api/medcoel/drilling/subject/${mk.slug}`, undefined, u.token)).data;
+const dilihat = async (u, judul) => { const d = await kampusmu(u); return !!(d && d.decks && d.decks.some((x) => x.title === judul)); };
+
+await langkah('BUG: JSON ditempel di Admin tanpa pengajuan + pengajuan ditandai Selesai manual -> tidak masuk Kampusmu pengaju; cek akun menjelaskan', async () => {
+  const pengaju = await akun('user', kampusB.id);
+  const m = await kirim(pengaju, { kind: 'materi', scope: 'all', names: ['Fisiologi Ginjal Pengaju.pdf'] });
+  const r = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, deck: deck('Fisiologi Ginjal Admin') }, admin.token, 200)).data;
+  assert.equal(r.scope, 'all');
+  await call('POST', `/api/medcoel/admin/submissions/${m.id}/status`, { status: 'selesai' }, admin.token, 200);
+  assert.equal(await dilihat(pengaju, r.title), false, 'materi General admin tanpa tautan memang tidak tampil');
+  const list = (await call('GET', `/api/medcoel/admin/drilling/decks?subject=${mk.id}`, undefined, admin.token, 200)).data.items;
+  const row = list.find((x) => x.id === r.id);
+  assert.equal(row.kampusHidden, true, 'daftar admin menandai materi yang tidak tampil di Kampusmu siapa pun');
+  assert.equal(row.submission, null);
+  const login = (await call('GET', `/api/collections/users/records/${pengaju.id}`, undefined, su, 200)).data.loginId;
+  const cek = (await call('GET', `/api/medcoel/admin/drilling/check?user=${login}`, undefined, admin.token, 200)).data;
+  assert.ok(cek.submissions.find((x) => x.code === m.code).notes.some((n) => /Tautkan ke pengajuan/.test(n)), 'cek akun menyarankan tautkan');
+  // Kandidat tautan memuat pengajuan Selesai yang belum punya materi.
+  const kand = (await call('GET', `/api/medcoel/admin/drilling/deck-submissions?subject=${mk.id}`, undefined, admin.token, 200)).data.items;
+  assert.ok(kand.some((x) => x.code === m.code && x.sameSubject && x.pdfs[0] === 'Fisiologi Ginjal Pengaju'));
+  await call('GET', `/api/medcoel/admin/drilling/deck-submissions?subject=${mk.id}`, undefined, pengaju.token, 403);
+
+  // Perbaikan 1: tautkan materi yang sudah ada ke pengajuannya -> langsung tampil untuk pengaju dan teman sekampusnya.
+  await call('POST', `/api/medcoel/admin/drilling/decks/${r.id}/link`, { submission: m.code }, pengaju.token, 403);
+  const l = (await call('POST', `/api/medcoel/admin/drilling/decks/${r.id}/link`, { submission: m.code }, admin.token, 200)).data;
+  assert.equal(l.submission.code, m.code);
+  assert.equal(await dilihat(pengaju, r.title), true, 'pengaju melihat materinya');
+  assert.equal(await dilihat(userB, r.title), true, 'teman sekampus melihatnya');
+  assert.equal(await dilihat(userA, r.title), false, 'kampus lain tidak');
+  assert.equal((await call('GET', '/api/medcoel/me', undefined, pengaju.token, 200)).data.drillingAvailable, true, 'menu Kampusmu muncul');
+  const sesudah = (await call('GET', `/api/medcoel/admin/drilling/decks?subject=${mk.id}`, undefined, admin.token, 200)).data.items.find((x) => x.id === r.id);
+  assert.equal(sesudah.kampusHidden, false);
+  assert.equal(sesudah.submission.code, m.code);
+  assert.ok(!(await call('GET', `/api/medcoel/admin/drilling/deck-submissions?subject=${mk.id}`, undefined, admin.token, 200)).data.items.some((x) => x.code === m.code), 'pengajuan yang sudah punya materi tidak ditawarkan lagi');
+  // Lepas tautan mengembalikannya menjadi materi admin.
+  await call('POST', `/api/medcoel/admin/drilling/decks/${r.id}/link`, { submission: '' }, admin.token, 200);
+  assert.equal(await dilihat(pengaju, r.title), false);
+});
+
+await langkah('impor di Admin dengan memilih pengajuan: judul dari PDF, cakupan dari pengajuan, pengajuan Selesai dan pengaju diberi tahu', async () => {
+  const pengaju = await akun('user', kampusA.id);
+  const m = await kirim(pengaju, { kind: 'materi', scope: 'campus', names: ['Anatomi Jantung Kuliah2.pdf'] });
+  const dry = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, deck: deck('Abaikan judul ini'), submission: m.code, scope: 'all', dryRun: true }, admin.token, 200)).data;
+  assert.equal(dry.title, 'Anatomi Jantung Kuliah2');
+  assert.equal(dry.scope, 'campus', 'cakupan mengikuti pengajuan, bukan pilihan form');
+  assert.equal((await call('GET', `/api/medcoel/agent/submissions/${m.id}`, undefined, agent.token, 200)).data.status, 'antre', 'dry-run tidak mengubah pengajuan');
+  const r = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, deck: deck('Abaikan judul ini'), submission: m.code }, admin.token, 200)).data;
+  assert.equal(r.submission.code, m.code);
+  assert.equal(await dilihat(pengaju, 'Anatomi Jantung Kuliah2'), true);
+  assert.equal(await dilihat(userA, 'Anatomi Jantung Kuliah2'), true, 'teman sekampus A');
+  assert.equal(await dilihat(userB, 'Anatomi Jantung Kuliah2'), false);
+  const sub = (await call('GET', '/api/medcoel/submissions/mine', undefined, pengaju.token, 200)).data.items.find((x) => x.id === m.id);
+  assert.equal(sub.status, 'selesai');
+  const notif = (await call('GET', `/api/collections/notifications/records?filter=${encodeURIComponent(`user='${pengaju.id}'`)}&sort=-created`, undefined, su, 200)).data.items;
+  assert.ok(notif.some((n) => /Materi dari pengajuan/.test(n.title) && /\/drilling\//.test(n.link)), 'notifikasi materi dengan tautan ke Kampusmu');
+  // Pengajuan yang belum dikonfirmasi ditolak dengan arahan.
+  const draf = (await call('POST', '/api/medcoel/submissions', { subject: mk.id, contentKind: 'materi', hasKey: false, language: 'id', scope: 'all', pdfCount: 1 }, pengaju.token, 200)).data;
+  await upload(draf.id, pengaju.token, 'x.pdf');
+  await call('POST', `/api/medcoel/submissions/${draf.id}/send`, { agreement: true }, pengaju.token, 200);
+  const tolak = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, deck: deck('Y'), submission: draf.code }, admin.token, 400)).data;
+  assert.match(tolak.message, /Antre dulu/);
+});
+
+await langkah('pengaju salah pilih "soal" untuk PPT: admin tetap bisa menautkan materi; pengajuan berisi soal tersimpan ditolak', async () => {
+  const pengaju = await akun('user', kampusB.id);
+  const s = await kirim(pengaju, { kind: 'soal', scope: 'all', names: ['PPT Salah Jenis.pdf'] });
+  const r = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, deck: deck('Q'), submission: s.code }, admin.token, 200)).data;
+  assert.equal(r.title, 'PPT Salah Jenis');
+  assert.equal((await call('GET', `/api/medcoel/agent/submissions/${s.id}`, undefined, agent.token, 200)).data.contentKind, 'materi');
+  assert.equal(await dilihat(pengaju, 'PPT Salah Jenis'), true);
+  const s2 = await kirim(pengaju, { kind: 'soal', scope: 'all', names: ['Soal Beneran.pdf'] });
+  await call('POST', `/api/medcoel/agent/submissions/${s2.id}/drilling-import`, { questions: [{ type: 'A', difficulty: 'easy', text: `Soal beneran ${RUN}?`, options: [{ text: 'Benar', correct: true }, 'Salah'] }] }, agent.token, 200);
+  const d = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, deck: deck('Lain') }, admin.token, 200)).data;
+  const tolak = (await call('POST', `/api/medcoel/admin/drilling/decks/${d.id}/link`, { submission: s2.code }, admin.token, 400)).data;
+  assert.match(tolak.message, /berisi soal/);
+});
+
 console.log('Alihkan tujuan pengajuan (Hermes: /jenis, /matkul, /pindah)');
 const alt = subjects.filter((x) => x.id !== mk.id);
 const retarget = (id, body, token = agent.token, expect = 200) => call('POST', `/api/medcoel/agent/submissions/${id}/retarget`, body, token, expect);

@@ -115,7 +115,10 @@ routerAdd("GET", "/api/medcoel/admin/drilling/check", (e) => {
     }));
     const note = [];
     const done = s.getString("status") === "selesai";
-    if (done && !ds.length && !soal) note.push("Berstatus Selesai tetapi tidak ada materi atau soal tayang yang tersimpan dari pengajuan ini (mungkin sudah dihapus). Impor ulang lewat Hermes.");
+    const materi = s.getString("contentKind") === "materi";
+    const tautkan = " Bila JSON-nya sudah ditempel lewat Admin > Drilling > Materi, buka Materi mata kuliah " + (subjectName || "itu") + " lalu klik Tautkan ke pengajuan pada materinya (pilih " + s.getString("code") + "). Materi General yang tidak tertaut ke pengajuan tidak tampil di Kampusmu siapa pun.";
+    if (done && !ds.length && !soal) note.push("Berstatus Selesai tetapi tidak ada materi atau soal yang tertaut ke pengajuan ini." + (materi ? tautkan : " Impor ulang lewat Hermes."));
+    else if (!done && materi && !ds.length && ["antre", "diproses", "perlu_perbaikan"].indexOf(s.getString("status")) >= 0) note.push("Materi dari pengajuan ini belum diimpor lewat Hermes (/put " + s.getString("code") + ") atau belum ditautkan." + tautkan);
     deckRows.forEach((d) => {
       if (d.status !== "published") note.push("Materi '" + d.title + "' masih DRAF, jadi belum tayang.");
       else if (subjectHidden) note.push("Mata kuliah " + subjectName + " sedang disembunyikan.");
