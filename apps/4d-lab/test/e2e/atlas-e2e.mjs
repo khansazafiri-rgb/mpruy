@@ -138,6 +138,27 @@ await step('transparent skin shows the atlas organs; groups toggle, transparency
   assert.ok(Math.abs(before.mean - after.mean) < 25, 'state restored');
 });
 
+await step('cleared respiratory detail: show existing pleura/bronchi and restore initial view', async () => {
+  await display('transparent');
+  await page.getByTestId('btn-showall').click();
+  const before = await lab(() => {
+    const a = window.__lab.atlas, keys = ['Pleura', 'Right main bronchus', 'Left main bronchus'];
+    return keys.map(k => ({ name: k, exists: a.structures.has(k), hidden: a.structures.get(k)?.hiddenByUser }));
+  });
+  assert.ok(before.every(x => x.exists && x.hidden), 'licensed airway structures present, initially hidden: ' + JSON.stringify(before));
+  const btn = page.getByTestId('respiratory-detail-toggle');
+  assert.ok(await btn.isVisible(), 'detail control is discoverable');
+  await btn.click();
+  assert.equal(await lab(() => window.__lab.atlas.respiratoryDetailsShown), true);
+  assert.equal(await lab(() => ['Pleura', 'Right main bronchus', 'Left main bronchus'].every(k => !window.__lab.atlas.structures.get(k).hiddenByUser)), true);
+  assert.equal(await lab(() => window.__lab.atlas.groups.respiratory.visible), true);
+  await shot('atlas-respiratory-detail-enabled');
+  await page.getByTestId('respiratory-detail-toggle').click();
+  assert.equal(await lab(() => window.__lab.atlas.respiratoryDetailsShown), false);
+  assert.equal(await lab(() => ['Pleura', 'Right main bronchus', 'Left main bronchus'].every(k => window.__lab.atlas.structures.get(k).hiddenByUser)), true);
+  await page.getByTestId('btn-showall').click();
+});
+
 await step('inspect tool: clicking an organ selects that atlas structure (not the probe)', async () => {
   await display('internal'); await camera('anterior');
   const c0 = await lab(() => window.__lab.S.contact.point);
