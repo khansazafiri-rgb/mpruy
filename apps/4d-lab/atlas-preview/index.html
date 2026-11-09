@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>MEDCOEL · Independent Anatomy Preview</title>
+<link rel="stylesheet" href="/src/independent-atlas/styles.css">
+</head>
+<body>
+<header class="mast">
+  <div class="identity"><b class="mark">M</b><div><strong>MEDCOEL</strong><span>Independent Anatomy Preview</span></div></div>
+  <div class="policy">Prototipe lokal · hak komersial aset belum disetujui</div>
+</header>
+<main class="layout">
+  <aside class="controls" aria-label="Kontrol atlas">
+    <h1>Eksplorasi anatomi 3D</h1>
+    <p class="intro">Penampil eksperimental dengan kode baru. Data model berasal dari paket aset MEDCOEL yang masih menunggu verifikasi provenance.</p>
+    <label for="system">Sistem anatomi</label>
+    <select id="system" data-testid="pilot-system">
+      <option value="skeletal">Rangka</option>
+      <option value="muscular">Otot</option>
+      <option value="joints">Sendi</option>
+      <option value="cardiovascular">Jantung &amp; pembuluh</option>
+      <option value="lymphatic">Limfatik</option>
+      <option value="visceral">Organ dalam</option>
+    </select>
+    <label for="search">Cari struktur</label>
+    <input id="search" type="search" data-testid="pilot-search" autocomplete="off" placeholder="Misalnya: sternum, femur, heart">
+    <div class="subnote">Hasil pencarian sesuai katalog model yang tersedia. Struktur karantina tidak akan dimuat.</div>
+    <div id="results" class="results" data-testid="pilot-results" aria-label="Hasil pencarian"></div>
+    <h2 id="selectedHeading">Struktur terpilih</h2>
+    <div id="details" class="details" role="status" aria-live="polite" data-testid="pilot-details">Klik struktur pada model atau pilih hasil pencarian.</div>
+    <div class="actions">
+      <button id="isolate" disabled data-testid="pilot-isolate">Isolasi struktur</button>
+      <button id="clear" disabled data-testid="pilot-clear">Tampilkan semua</button>
+      <button id="front" data-testid="pilot-front">Tampak depan</button>
+      <button id="fit" data-testid="pilot-fit">Pusatkan model</button>
+    </div>
+  </aside>
+  <section class="stage" aria-label="Model anatomi interaktif">
+    <div id="canvasHost" class="canvas-host" data-testid="pilot-viewport"></div>
+    <div id="status" class="status" role="status" aria-live="polite" data-testid="pilot-status">Memuat katalog…</div>
+    <p class="instructions">Putar: seret · Geser: klik kanan · Zoom: scroll · Pilih: klik struktur</p>
+  </section>
+</main>
+<footer>Simulasi dan ilustrasi pendidikan, bukan data pasien atau alat diagnosis. Hak distribusi publik belum disetujui.</footer>
+<script type="module" src="/src/independent-atlas/main.js"></script>
+</body>
+</html>
