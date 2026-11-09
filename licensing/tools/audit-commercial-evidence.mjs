@@ -22,7 +22,7 @@ const SHA256 = /^[0-9a-f]{64}$/;
 const text = v => typeof v === 'string' && !!v.trim();
 const localEvidence = v => text(v) && !/^https?:\/\//i.test(v) && !v.startsWith('/') &&
   !v.includes('\\') && !v.split('/').includes('..') && !v.startsWith('./');
-const validEvidenceURL = url => /^https:\/\/[a-z0-9.-]+\/[^\s]+$/i.test(url) || localEvidence(url);
+const validEvidenceURL = url => /^https:\/\/[a-z0-9.-]+(?:\/[^\s]*)?$/i.test(url) || localEvidence(url);
 
 /** Throws if evidence is missing/misrepresented; 'pending' inventory is valid.
  * Verification requires written/version-specific rights evidence and independent
