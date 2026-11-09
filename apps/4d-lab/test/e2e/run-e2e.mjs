@@ -21,6 +21,7 @@ const { srv, url } = await startServer();
 const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] });
 // Assertions run at 1x: SwiftShader (software WebGL) is very slow at 2x and makes timing flaky.
 const ctx = await browser.newContext({ viewport: { width: 1760, height: 950 }, deviceScaleFactor: 1 });
+await ctx.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v1', 'done'); } catch { /* ignore */ } });
 const page = await ctx.newPage();
 const errors = [];
 page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
@@ -149,7 +150,7 @@ await step('dragging the probe slides the contact over the skin (surface-aware)'
   assert.ok(probe[0] > 0 && probe[1] <= 0, 'new contact lies on the body surface: ' + probe);
 });
 
-await step('free 3D mode: presets, numeric translation, out-of-volume indication, axis-locked drag', async () => {
+await step('free 3D mode: presets, numeric translation, out-of-volume indication, direction pad', async () => {
   await page.getByTestId('mode-free').click();
   for (const k of ['axial', 'coronal', 'sagittal', 'oblique']) { const f = await lab(() => window.__lab.last.id); await page.getByTestId('free-' + k).click(); await nextFrame(f); }
   await shot('04-free-oblique');
@@ -162,16 +163,12 @@ await step('free 3D mode: presets, numeric translation, out-of-volume indication
   await setNumber('free-ang-pitch', -33.5);
   const a = await lab(() => window.__lab.S.free.q);
   assert.ok(a.every(Number.isFinite));
-  // axis-first: choose Superior–Inferior, then drag anywhere toward the on-screen superior arrow -> only S changes
-  await page.getByTestId('ctl-vertical').click();
+  // direction pad: ↑ Superior moves the Free 3D plane along S only (no mode to choose first)
   const pos0 = await lab(() => [...window.__lab.S.free.position]);
-  const pts = await lab(() => { const s = window.__lab.S, sc = window.__lab.scene, c = s.free.position; return [sc.screenOf(c), sc.screenOf(c.map((v, i) => v + (i === 2 ? 60 : 0)))]; });
-  const box = await page.getByTestId('patient-canvas').boundingBox(), sx = box.x + box.width * 0.5, sy = box.y + box.height * 0.6;
-  await page.mouse.move(sx, sy); await page.mouse.down(); await page.mouse.move(sx + (pts[1].x - pts[0].x) * 0.5, sy + (pts[1].y - pts[0].y) * 0.5, { steps: 8 }); await page.mouse.up();
+  await page.getByTestId('pad-superior').click();
   const pos1 = await lab(() => window.__lab.S.free.position);
-  assert.ok(pos1[2] - pos0[2] > 5 && Math.abs(pos1[0] - pos0[0]) < 1e-6 && Math.abs(pos1[1] - pos0[1]) < 1e-6, 'axis drag translates along S only: ' + pos0 + ' -> ' + pos1);
+  assert.ok(pos1[2] - pos0[2] > 0.9 && Math.abs(pos1[0] - pos0[0]) < 1e-6 && Math.abs(pos1[1] - pos0[1]) < 1e-6, 'pad translates along S only: ' + pos0 + ' -> ' + pos1);
   assert.equal(await lab(() => window.__lab.scene.gizmo.visible), false, 'three-ring gizmo hidden by default');
-  await page.getByTestId('ctl-place').click();
   await page.getByTestId('mode-clinical').click();
 });
 

@@ -1,31 +1,33 @@
 # MEDCOEL 4D Lab — UX, anatomy intelligence and clinical education upgrade
 
-Status: implemented on branch `claude/vigilant-cerf-jjc6fj-ux` (stacked on the licence-quarantine PR).
+Status: implemented on branch `claude/vigilant-cerf-jjc6fj-ux` (stacked on the licence-quarantine PR), including the owner's usability round.
 Not deployed. Educational simulator only — not a medical device.
 
-## 1. Interaction philosophy: choose WHAT, then do ONE thing
+## 1. Interaction: direct control in patient directions (usability round)
 
-The three simultaneously visible rotation rings are gone from the default interface. They remain an
-opt-in advanced tool under **"Sudut presisi & cincin 3D (lanjutan)"**.
+The first version made learners choose a mode before every movement. The owner found that harder, so it was
+replaced. Now:
 
-Above the 3D view, a **mode bar** selects exactly one quantity:
+- **The three rotation rings** remain an opt-in advanced tool under "Sudut presisi & cincin 3D (lanjutan)".
+- **Direction pad** (bottom-right of the 3D view). Buttons repeat while held, and hovering a button shows that
+  patient axis as a coloured arrow in 3D.
+  - Buttons: ↑ Superior, ↓ Inferior, ← Kanan pasien, → Kiri pasien, ⤒ Anterior, ⤓ Posterior.
+  - Step size (1–25 mm), current position, standard-window and probe selectors.
+- **The same pad drives whatever is active:**
 
-| Mode | Key | What one gesture changes | Clinical probe | Free 3D |
+| Target | Pad title | Superior / Inferior / Left / Right | Anterior / Posterior | Rotation rows |
 |---|---|---|---|---|
-| ⌖ Tempatkan | P | click places the probe on the skin; drag the probe to slide it | on the skin | — |
-| ↕ Superior–Inferior | 1 | patient S axis | slides along the skin, sub-steps ≤ 2.5 mm, refuses jumps and points outside CT coverage | exact LPS translation |
-| ↔ Kanan–Kiri pasien | 2 | patient L axis (+ = patient LEFT, not screen left) | same | same |
-| ⇅ Anterior–Posterior | 3 | patient P axis | **explicit body-side selection** (front, back, right, left at the same height) — never through the body | exact LPS translation |
-| ⟳ Putar | 4 | one angle at a time: rotation / heel–toe / rock (clinical) or pitch / yaw / roll (free) | pivots on the fixed skin contact | rotates the plane about its centre |
-| 🎥 Kamera | C | orbit / pan / zoom | camera only | camera only |
+| Clinical probe | Gerakkan probe | slides along the skin (≤ 2.5 mm sub-steps; refuses jumps and points outside CT coverage) | **walks around the body surface** at the same height (one rotational sense, so it never oscillates; step ≥ 20 mm) + one-click "Lompat ke sisi: Depan · Kanan · Kiri · Belakang" | Putar probe · Miring depan–belakang (heel–toe) · Miring ke samping (rock), each with a tooltip; the contact stays fixed |
+| Free 3D plane | Gerakkan bidang CT | exact LPS translation | exact LPS translation | Angguk (pitch) · Geleng (yaw) · Guling (roll) |
+| Tri-planar CT | Pindahkan titik silang CT | moves the crosshair | moves the crosshair | replaced by one slider per plane (mm) |
 
-- **Gestures.** In the selected mode, a drag anywhere on the 3D view, the mouse wheel, the − / + buttons and the arrow keys (Shift = fine) change only that quantity. The context strip shows the current value (e.g. `S 12.5 mm`, `Heel–toe 8.0°`) and the step size (1–25 mm, 1–15°).
-- **Axis guide.** A coloured two-headed arrow at the probe or plane shows the patient axis, labelled "+ Superior / − Inferior" etc.
-- **Camera-independent mapping.** A drag is projected onto the arrow's on-screen direction (`dragToAmount`), so dragging toward "+ Superior" always means superior, whatever the camera orientation. This is tested over 200 random cameras.
-- **No silent mode changes.** In a movement mode, a click on the skin does not relocate the probe; the status bar explains how to do that. The wheel never zooms the camera outside camera mode.
-- **Orientation presets** (one click):
-  - **Clinical:** Transversal, Longitudinal, Oblique ±45°, Custom. They are defined in the local patient frame at the skin contact, and reset tilt/rock to 0.
-  - **Free 3D:** Axial, Coronal, Sagittal, Oblique, Custom. These are true patient planes; the 2D image is never just rotated.
+- **Probe on the skin:** click the skin to place it, drag the probe to slide it.
+- **Camera is always free:** drag empty space to orbit, Shift/right-drag to pan, wheel to zoom. No camera mode is needed, and the camera never changes the image.
+- **Keyboard:** ↑ ↓ superior / inferior, ← → patient right / left, PgUp / PgDn anterior / posterior, Q / E rotate, Shift for fine steps.
+- **Presets:**
+  - Clinical: Transversal and Longitudinal; oblique ±45° and "Tegak lurus kulit" under **Lainnya**.
+  - Free 3D: Aksial, Koronal and Sagital; oblique under **Lainnya**.
+- **Text up front:** a 3-step first-run tour (remembered locally) and a **?** popover replace the long hints.
 
 ## 2. Anatomy assistance on CT and simulated US
 
@@ -43,6 +45,8 @@ How identification works:
 - **Ultrasound.** The label raster is clipped to the probe field of view.
 - **Contours.** Single-pass marching squares produce sub-pixel vertices at pixel-edge midpoints. They are computed lazily per frame, only when shown (≈11–17 ms for a 300×210 image in headless Chromium).
 - **Display transform.** Hover and click use the same `panelLayout` transform as drawing: zoom, pan, fit, 1:1, resize, fullscreen, device pixel ratio, split US/CT and tri-planar panels.
+- **Labels.** They are translucent (no loud white pills). The guided label sits above the structure with a leader line. The cursor is a crosshair while identifying and a grab hand only over the draggable probe.
+- **Structure list.** It is stable while the anatomy moves: fixed order by system then name, and a structure stays listed for 1.5 s after it was last seen. Hovering a row highlights the structure in the image, and hovering the image highlights the row. Colours come from a curated high-contrast palette.
 - **Tooltip.** It shows the Indonesian name with the English name, the Terminologia Anatomica term, the system, and the provenance ("Segmentasi sintetis atlas" / "Label phantom prosedural" / "Label map lokal (belum diverifikasi)").
 - **Never inventing truth:**
   - Unlabelled soft tissue, skin, air and the table read **"tidak teridentifikasi"**.
@@ -83,8 +87,11 @@ They share one patient state, 3D scene and monitor. The control panel is a **dra
   - Crackles and wheeze are **demos only** (synthetic, unreviewed).
   - The phonocardiogram is synchronised with the cardiac phase. The ECG is labelled as electrical activity: sounds are never derived from it.
 - **Fisiologi.** Explanations of the cardiac cycle, respiration and antral motility, plus phase controls (ED/ES, breath hold, rates).
-- **Patologi.** Structured cases: context, related anatomy (click to highlight), normal baseline, mechanism, findings tagged *Keluaran model / Ilustratif / Tidak disimulasikan*, differentials, limitations, references, and review status **DRAF**.
-- **Belajar.**
+- **Patologi.** Seven scenarios. The new model fluid layers are **pericardial effusion**, **perihepatic free fluid** and **urinary retention**. They are grown from the label map by a bounded breadth-first search through allowed tissue only, rendered in CT, US and 3D, and identifiable. Structured cases: context, related anatomy (click to highlight), normal baseline, mechanism, findings tagged *Keluaran model / Ilustratif / Tidak disimulasikan*, differentials, limitations, references, and review status **DRAF**.
+- **Belajar** (directed):
+  - The home screen has **Lanjutkan** (the next unfinished step) and the module path with progress.
+  - Each step is one screen: goal, view prepared automatically, one action, ✓/✗ feedback (contrast ≥ 4.5:1), **Lanjut**.
+  - Each module ends with a summary of mistakes and their explanations.
   - **Modes:** Explore / Guided / Practice / Review.
   - **Modules:** 1 cross-sectional anatomy, 2 basic POCUS, 3 auscultation, 4 normal vs pathological, 5 guided case. Tasks are checked against the real simulator state (plane orientation, structures in the image, structure under the beam, stethoscope site/filter, scenario).
   - **Progress** is local-only (no server writes).

@@ -104,3 +104,5 @@ bone/aerated lung/gas toward the target. Rendered images: `evidence/atlas-us-sta
 | H6 | Pathology cases (HFrEF, effusion, gastroparesis) | Patologi workspace | `src/edu/pathologyCases.js`: context, mechanism, findings by fidelity (model / illustrative / absent), differentials, limitations | |
 | H7 | Learning modules 1–5 and quiz answers/explanations | Belajar workspace | `src/edu/modules.js`; task checks run against the simulator state; Module 1 axial task now uses liver + spleen (kidney withheld) | |
 | H8 | Clinical framing | everywhere | "Latihan di simulator tidak menggantikan pelatihan klinis terawasi atau penilaian kompetensi" | |
+| H9 | New model cases: pericardial effusion (±9 mm layer, HR 104), perihepatic free fluid (±10 mm, inferior liver), urinary retention (lumen +30 mm) | Patologi workspace; Modul 4 | Fluid layers grown from the label map; tamponade physiology, septations, wall changes and hydronephrosis NOT simulated; refs R11–R13 (verified on Europe PMC 2026-11-09) | |
+| H10 | Clinical anterior/posterior walking around the body | Pad ⤒ / ⤓ | Contact walks along the horizontal cross-section of the illustrative skin shell | |
