@@ -47,6 +47,7 @@ try {
   assert.equal(await get(() => window.__lab.scene.probe.visible), true);
 
   await page.getByTestId('mon-tri').click();
+  assert.deepEqual(await get(() => window.__lab.S.tri.point), await get(() => window.__lab.data.ct.centre), 'first Tri-planar view starts at the centre of acquired CT, not near the prior probe');
   assert.ok(await page.getByTestId('tour').isVisible(), 'first Tri-planar visit starts contextual tutorial');
   await page.getByTestId('tour-next').click(); await page.getByTestId('tour-back').click();
   await page.getByTestId('tour-skip').click();
@@ -81,6 +82,10 @@ try {
   await page.mouse.up();
   assert.ok((await get(() => document.querySelector('#monitorScroll').scrollTop)) > start, 'dragging visible thumb scrolls monitor');
   await shot('mode-triplanar-visible-scrollbar');
+  await frame();
+  const outside = await get(() => ['ax', 'co', 'sa'].map(k => window.__lab.monitor.images[k]?.outsideFraction ?? 1));
+  assert.ok(outside.every(x => x < 0.08), 'atlas tri-planar no longer wastes large parts of each view outside CT coverage: ' + outside);
+
   await shot('mode-after-triplanar');
   await page.getByTestId('tri-center').click();
   const before = await get(() => [...window.__lab.S.tri.point]);
