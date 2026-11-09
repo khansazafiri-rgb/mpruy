@@ -23,6 +23,17 @@ page.on('request', request => requests.push(request.url()));
 try {
   await page.goto(url + 'atlas-preview/', { timeout: 90000 });
   await page.waitForFunction(() => window.__independentAtlasPilot?.structureCount > 0, null, { timeout: 90000 });
+  await page.waitForTimeout(450);
+  const bodyFill = await page.evaluate(() => window.__independentAtlasPilot.visibleHeightFraction);
+  assert.ok(bodyFill >= 0.65 && bodyFill <= 0.85, `model occupies ${bodyFill} of viewport height`);
+  assert.equal(await page.locator('.controls').evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(14, 42, 56)');
+  assert.equal(await page.locator('.camera-tools').isVisible(), true);
+  assert.equal(await page.locator('.structure-disclosure').isVisible(), true);
+  if (process.env.ATLAS_SCREENSHOT_DIR) {
+    const { mkdir } = await import('node:fs/promises');
+    await mkdir(process.env.ATLAS_SCREENSHOT_DIR, { recursive: true });
+    await page.screenshot({ path: process.env.ATLAS_SCREENSHOT_DIR + '/atlas-after-desktop.png', fullPage: true });
+  }
   assert.equal(await page.getByTestId('pilot-system').inputValue(), 'skeletal');
   assert.ok(await page.evaluate(() => window.__independentAtlasPilot.structureCount) > 0);
   await page.getByTestId('pilot-search').fill('Sternum');

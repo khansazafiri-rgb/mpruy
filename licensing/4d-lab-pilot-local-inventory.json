@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "product": "4d-lab",
   "purpose": "Local technical inventory; not a rights approval",
-  "buildDigest": "f190f121d9df629f03ece728cf07ecb8e2e892656c630d00ab51565827608e44",
+  "buildDigest": "bf5e4140caba920c475bdee803445134c47cb00a89b07917c364f463fcd9ad18",
   "lockfileSha256": "4ee0521001ac5f1509b9e8ac766541cbd7e1f8b9600ba4c371b7bf81d66bc11f",
   "files": [
     {
-      "path": "assets/DRACOLoader-Dl-gAMzh.js",
-      "sha256": "6bc0fb8fa0f159a53d74b9b660d0cf434fe70c83465d68ce9e3e31593df2f69d",
-      "bytes": 667420,
+      "path": "assets/DRACOLoader-BFkbD30h.js",
+      "sha256": "ba6439e5f0a1a1240070cc2dfff96fc8aec77f119b5248dabf4734303d7fd53a",
+      "bytes": 667412,
       "evidenceRecords": [
         "lab-application-code",
         "software-dependencies"
@@ -26,9 +26,9 @@
       "rightsStatus": "unresolved"
     },
     {
-      "path": "assets/independentAtlasPilot-DEvt-mhw.css",
-      "sha256": "7a1348dfda69566b31ac042224b7babb2230abb9e915af0ce44fd5233dd81bda",
-      "bytes": 3810,
+      "path": "assets/independentAtlasPilot-D9Fx8KcO.js",
+      "sha256": "ea4ba326e3e2989606c9fa2792b65d5f4a267821ba6cd0858b97b19004169dcb",
+      "bytes": 16665,
       "evidenceRecords": [
         "lab-application-code",
         "software-dependencies"
@@ -36,9 +36,19 @@
       "rightsStatus": "unresolved"
     },
     {
-      "path": "assets/independentAtlasPilot-DqT1OOe2.js",
-      "sha256": "f591f1c4be259cde2f050fbf8cced2c7924f901f6dad8362e79cd77199258448",
-      "bytes": 13892,
+      "path": "assets/independentAtlasPilot-rkFOKdc8.css",
+      "sha256": "8e05af3f66a50c253140ff7e2aa6621c3f50c6007726ca3ae67dcee32b9047e2",
+      "bytes": 6315,
+      "evidenceRecords": [
+        "lab-application-code",
+        "software-dependencies"
+      ],
+      "rightsStatus": "unresolved"
+    },
+    {
+      "path": "assets/lab-Cosx1Sk8.js",
+      "sha256": "99f06a2ac04db2960e3ab5ea44a89fce7e2c9c324bc732552fe7276ce1e8fb8c",
+      "bytes": 292206,
       "evidenceRecords": [
         "lab-application-code",
         "software-dependencies"
@@ -49,16 +59,6 @@
       "path": "assets/lab-CtAVpQol.css",
       "sha256": "6bd24c50d252dec18f78482ef4e4a674c74165f6f49f057dd8896f07e6a23674",
       "bytes": 38400,
-      "evidenceRecords": [
-        "lab-application-code",
-        "software-dependencies"
-      ],
-      "rightsStatus": "unresolved"
-    },
-    {
-      "path": "assets/lab-xZwz5vbx.js",
-      "sha256": "b42d52e8fb8f382879d41a1acf01b6d7601e84e28ca46fda43c9eed9cf0c4a8b",
-      "bytes": 292214,
       "evidenceRecords": [
         "lab-application-code",
         "software-dependencies"
@@ -197,8 +197,8 @@
     },
     {
       "path": "atlas-preview/index.html",
-      "sha256": "2a4d487534595c549edb53cd3f18911831a87357a84d1b2c2598c0ac909f1a53",
-      "bytes": 4851,
+      "sha256": "a2f6ee331437097dd10daa66edf4e169bf565fd8acec36cf7da7ca149363d1bc",
+      "bytes": 5515,
       "evidenceRecords": [
         "lab-application-code",
         "software-dependencies"
@@ -315,7 +315,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "e985718fea4cb201d96df0982cec8c05f47bb82b95e2d2df5da8c342365b312c",
+      "sha256": "531b6042c764c7d01470567f528ff1859f738f023338724daa663c0588f20c57",
       "bytes": 14240,
       "evidenceRecords": [
         "lab-application-code",

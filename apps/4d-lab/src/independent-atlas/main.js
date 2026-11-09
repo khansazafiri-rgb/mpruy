@@ -5,6 +5,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { SYSTEMS, availableSystem, catalogueItems, findStructures, cleanStructureLabel } from './catalog.js';
 import { createViewState, updateView, structureKey, visibleStructure, readSharedView, sharedViewPayload } from './viewState.js';
+import { fitDistance } from './framing.js';
 
 const el = id => document.getElementById(id);
 const host = el('canvasHost');
@@ -12,6 +13,7 @@ const ui = Object.fromEntries([
   'system', 'systemToggles', 'region', 'search', 'results', 'details', 'status',
   'isolate', 'clear', 'hide', 'fade', 'undo', 'restore', 'front', 'back', 'side',
   'top', 'fit', 'zoomIn', 'zoomOut', 'share', 'shareUrl', 'retry', 'opacity', 'opacityValue',
+  'structureList', 'structureCount', 'selectionActions',
 ].map(id => [id, el(id)]));
 const assetRoot = import.meta.env.BASE_URL + 'atlas-assets/';
 const scene = new THREE.Scene();
@@ -50,6 +52,7 @@ let view = createViewState();
 let entries = [], entryByKey = new Map();
 const models = new Map(), pending = new Map();
 const status = message => { ui.status.textContent = message; };
+let listSignature = '';
 
 function resize() {
   const width = Math.max(1, host.clientWidth), height = Math.max(1, host.clientHeight);
@@ -59,8 +62,21 @@ function resize() {
 }
 new ResizeObserver(resize).observe(host);
 resize();
-function draw() { orbit.update(); renderer.render(scene, camera); requestAnimationFrame(draw); }
+let cameraTransition = null;
+function draw(now) {
+  if (cameraTransition) {
+    const t = Math.min(1, (now - cameraTransition.start) / 340);
+    const eased = t * t * (3 - 2 * t);
+    camera.position.copy(cameraTransition.fromPosition).lerp(cameraTransition.toPosition, eased);
+    orbit.target.copy(cameraTransition.fromTarget).lerp(cameraTransition.toTarget, eased);
+    camera.up.copy(cameraTransition.fromUp).lerp(cameraTransition.toUp, eased).normalize();
+    if (t === 1) cameraTransition = null;
+  }
+  orbit.update(); renderer.render(scene, camera); requestAnimationFrame(draw);
+}
 requestAnimationFrame(draw);
+renderer.domElement.addEventListener('pointerdown', () => { cameraTransition = null; });
+renderer.domElement.addEventListener('wheel', () => { cameraTransition = null; }, { passive: true });
 
 function nameFor(mesh) {
   for (let node = mesh; node; node = node.parent) if (typeof node.userData?.za_name === 'string') return node.userData.za_name;
@@ -114,6 +130,8 @@ function appearance() {
   ui.opacity.value = String(Math.round(view.opacity * 100));
   ui.opacityValue.value = Math.round(view.opacity * 100) + '%';
   ui.region.value = view.region;
+  ui.selectionActions.hidden = !view.selected;
+  ui.structureCount.textContent = entries.length.toLocaleString('id') + ' struktur dalam katalog';
   if (view.selected) {
     const entry = entryByKey.get(view.selected);
     ui.details.textContent = cleanStructureLabel(entry.name) + ' · ' + SYSTEMS[entry.system] +
@@ -121,6 +139,7 @@ function appearance() {
       ' · Ilustrasi anatomi, bukan citra medis.';
   } else ui.details.textContent = 'Klik struktur pada model atau pilih hasil pencarian.';
   for (const input of ui.systemToggles.querySelectorAll('input')) input.checked = view.enabled.includes(input.value);
+  renderStructureList();
 }
 function change(action) { view = updateView(view, action); appearance(); }
 
@@ -130,25 +149,63 @@ function visibleBounds() {
     for (const mesh of list) if (mesh.visible) box.expandByObject(mesh);
   return box;
 }
+function visibleHeightFraction() {
+  const box = visibleBounds();
+  if (box.isEmpty()) return 0;
+  camera.updateMatrixWorld();
+  const min = box.min, max = box.max;
+  let low = Infinity, high = -Infinity;
+  for (const x of [min.x, max.x]) for (const y of [min.y, max.y]) for (const z of [min.z, max.z]) {
+    const projected = new THREE.Vector3(x, y, z).project(camera);
+    low = Math.min(low, projected.y); high = Math.max(high, projected.y);
+  }
+  return (high - low) / 2;
+}
 function frameBounds(box, direction = new THREE.Vector3(0.36, 0.12, 1)) {
   if (box.isEmpty()) { status('Tidak ada struktur terlihat. Pulihkan tampilan untuk melihat model.'); return; }
   const center = box.getCenter(new THREE.Vector3()), size = box.getSize(new THREE.Vector3());
-  const radius = Math.max(size.length() * 0.7, 0.10);
-  const distance = Math.max(0.4, radius / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * 1.1);
-  camera.up.set(0, Math.abs(direction.y) > 0.9 ? 0 : 1, Math.abs(direction.y) > 0.9 ? -1 : 0);
-  orbit.target.copy(center);
-  camera.position.copy(center).add(direction.normalize().multiplyScalar(distance));
+  const distance = fitDistance(size.toArray(), direction.toArray(), camera.fov, camera.aspect);
+  const toUp = new THREE.Vector3(0, Math.abs(direction.y) > 0.9 ? 0 : 1, Math.abs(direction.y) > 0.9 ? -1 : 0);
+  cameraTransition = {
+    start: performance.now(), fromPosition: camera.position.clone(), fromTarget: orbit.target.clone(),
+    fromUp: camera.up.clone(), toUp,
+    toPosition: center.clone().add(direction.normalize().multiplyScalar(distance)), toTarget: center,
+  };
   camera.near = Math.max(0.005, distance / 200);
   camera.far = Math.max(80, distance * 30);
   camera.updateProjectionMatrix();
-  orbit.update();
 }
 function frameVisible(direction) { frameBounds(visibleBounds(), direction); }
 function zoom(factor) {
+  cameraTransition = null;
   const offset = camera.position.clone().sub(orbit.target);
   const distance = Math.max(orbit.minDistance, Math.min(orbit.maxDistance, offset.length() * factor));
   camera.position.copy(orbit.target).add(offset.setLength(distance));
   orbit.update();
+}
+function renderStructureList() {
+  if (!entries.length) return;
+  const signature = [view.enabled.join(','), view.region, view.selected].join('|');
+  if (signature === listSignature) return;
+  listSignature = signature;
+  ui.structureList.replaceChildren();
+  const candidates = entries.filter(entry => view.enabled.includes(entry.system) &&
+    (view.region === 'whole' || entry.regions.includes(view.region)));
+  for (const entry of candidates.slice(0, 80)) {
+    const key = structureKey(entry.system, entry.name);
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'structure-row' + (view.selected === key ? ' active' : '');
+    button.setAttribute('aria-pressed', String(view.selected === key));
+    button.textContent = cleanStructureLabel(entry.name);
+    button.addEventListener('click', async () => { await ensureSystem(entry.system); choose(entry.system, entry.name); });
+    ui.structureList.append(button);
+  }
+  if (candidates.length > 80) {
+    const note = document.createElement('p'); note.className = 'subnote';
+    note.textContent = 'Menampilkan 80 struktur pertama. Gunakan pencarian untuk struktur lainnya.';
+    ui.structureList.append(note);
+  }
 }
 
 async function ensureSystem(system) {
@@ -181,6 +238,7 @@ async function ensureSystem(system) {
   }).catch(error => {
     status('Gagal memuat ' + SYSTEMS[system] + ': ' + error.message);
     ui.retry.hidden = false;
+    ui.retry.closest('details').open = true;
   }).finally(() => pending.delete(system));
   pending.set(system, promise);
   return promise;
@@ -212,13 +270,14 @@ function choose(system, name, autoFrame = true) {
   if (autoFrame) {
     const box = new THREE.Box3();
     for (const mesh of list) box.expandByObject(mesh);
-    frameBounds(box, new THREE.Vector3(0, 0, 1));
+    frameBounds(box, camera.position.clone().sub(orbit.target));
   }
   status('Struktur: ' + cleanStructureLabel(name));
 }
 function renderResults() {
   ui.results.replaceChildren();
   const found = findStructures(entries, ui.search.value, 'all');
+  ui.results.hidden = !ui.search.value.trim();
   for (const entry of found) {
     const button = document.createElement('button');
     button.type = 'button';
@@ -336,6 +395,7 @@ async function start() {
     if (!response.ok) throw new Error('Katalog tidak tersedia: HTTP ' + response.status);
     entries = catalogueItems(await response.json());
     if (!entries.length) throw new Error('Katalog tidak berisi struktur yang diizinkan.');
+    listSignature = '';
     entryByKey = new Map(entries.map(entry => [structureKey(entry.system, entry.name), entry]));
     const restored = readSharedView(new URL(window.location.href).searchParams.get('view'), Object.keys(SYSTEMS), new Set(entryByKey.keys()));
     if (restored) view = restored.state;
@@ -357,6 +417,7 @@ async function start() {
       get enabled() { return [...view.enabled]; },
       get hiddenCount() { return view.hidden.length; },
       get region() { return view.region; },
+      get visibleHeightFraction() { return visibleHeightFraction(); },
     };
     appearance();
   } catch (error) { status('Penampil tidak dapat dimulai: ' + error.message); }
