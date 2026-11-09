@@ -13,7 +13,7 @@ const { chromium, devices } = require('playwright');
 const SHOTS = process.argv.includes('--shots');
 const EVIDENCE = fileURLToPath(new URL('../../evidence/', import.meta.url));
 const { srv, url } = await startServer();
-const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] });
+const browser = await chromium.launch({ executablePath: process.env.PLAYWRIGHT_CHROMIUM || undefined, args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] });
 const ctx = await browser.newContext({ viewport: { width: 1600, height: 950 }, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
 const errors = [];
@@ -188,6 +188,7 @@ await step('structure list is stable during motion; row hover highlights the str
 
 await step('tri-planar CT moves with the pad, the sliders, scroll and click', async () => {
   await page.getByTestId('mon-tri').click(); await settle();
+  if (await page.getByTestId('tour').count()) await page.getByTestId('tour-skip').click();
   assert.match(await page.getByTestId('pad-title').textContent(), /titik silang/);
   const P = () => lab(() => [...window.__lab.S.tri.point]);
   let p0 = await P(); await page.getByTestId('pad-superior').click(); let p1 = await P(); assert.ok(p1[2] > p0[2] && p1[0] === p0[0] && p1[1] === p0[1], 'pad ↑ = axial slice up');

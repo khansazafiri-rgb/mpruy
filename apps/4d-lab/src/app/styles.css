@@ -282,6 +282,23 @@ body[data-sidebar=open] .sidebar { transform: none; }
 .help-pop { position: absolute; z-index: 25; right: 10px; top: 52px; width: min(380px, calc(100% - 20px)); background: #fff; border: 1px solid rgb(var(--line)); border-radius: var(--radius); box-shadow: 0 10px 30px rgb(0 0 0 / .18); padding: 10px 12px; font-size: 12.5px; }
 .help-pop ol { padding-left: 18px; margin: 6px 0; display: grid; gap: 4px; } .help-pop small { color: rgb(var(--muted)); }
 .viewport-panel { position: relative; }
+.scan-mode { position: absolute; z-index: 8; top: 8px; left: 12px; display: flex; align-items: center; gap: 6px; max-width: calc(100% - 130px); flex-wrap: wrap; background: rgb(255 255 255 / .94); border: 1px solid rgb(var(--line)); border-radius: 10px; padding: 5px 7px; font-size: 12px; box-shadow: 0 3px 12px rgb(0 0 0 / .08); }
+.scan-mode span { font-weight: 750; color: rgb(var(--brand-dark)); }
+.scan-mode button, .tri-controls button { border: 1px solid rgb(var(--line)); border-radius: 7px; background: #fff; color: rgb(var(--brand-dark)); font: inherit; font-weight: 650; cursor: pointer; padding: 4px 7px; }
+.scan-mode #returnProbe, .tri-controls #triReturnProbe { background: rgb(var(--brand-dark)); color: #fff; }
+.scan-mode [hidden], .tri-controls[hidden] { display: none; }
+.tri-controls { flex: none; background: #f5faf8; border-bottom: 1px solid rgb(var(--line)); padding: 7px 12px; font-size: 12px; color: rgb(var(--ink)); }
+.tri-controls-head { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.tri-controls-head strong { color: rgb(var(--brand-dark)); margin-right: auto; }
+.tri-controls p { margin: 3px 0; line-height: 1.35; }
+.tri-slice-rows { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 6px 0; }
+.tri-slice-row { display: flex; align-items: center; gap: 5px; min-width: 0; }
+.tri-slice-row label { display: flex; flex: 1; flex-direction: column; min-width: 0; font-size: 11px; }
+.tri-slice-row input { width: 100%; accent-color: rgb(var(--brand-dark)); }
+.tri-slice-row output { white-space: nowrap; min-width: 54px; text-align: right; font-variant-numeric: tabular-nums; }
+.tri-slice-row button { min-width: 25px; }
+.learn-navigation { display: grid; gap: 6px; background: #e8f4ef; border: 1px solid rgb(var(--line)); border-radius: 9px; padding: 10px; margin: 8px 0; }
+.learn-navigation button { justify-self: start; }
 .view-menu { position: absolute; z-index: 6; top: 8px; right: 10px; max-width: calc(100% - 20px); }
 .view-menu > summary { list-style: none; cursor: pointer; background: rgb(255 255 255 / .94); border: 1px solid rgb(var(--line)); border-radius: 9px; padding: 5px 10px; font-size: 12.5px; font-weight: 650; width: max-content; margin-left: auto; }
 .view-menu > summary::-webkit-details-marker { display: none; }
@@ -292,6 +309,7 @@ body[data-sidebar=open] .sidebar { transform: none; }
 
 /* iPad (portrait) and small laptops: patient above, image below */
 @media (max-width: 1100px) {
+  .tri-slice-rows { grid-template-columns: 1fr; }
   body { overflow: auto; }
   .workspace { display: flex; flex-direction: column; height: auto; }
   .viewport-panel { height: 52vh; min-height: 360px; }
@@ -305,6 +323,8 @@ body[data-sidebar=open] .sidebar { transform: none; }
 }
 /* phones: one pane at a time + bottom switcher; compact header; icon-first mode bar */
 @media (max-width: 760px) {
+  .scan-mode { max-width: calc(100% - 100px); }
+  .tri-controls { font-size: 11px; }
   .topbar { height: auto; flex-wrap: wrap; gap: 6px; padding: 6px 10px; }
   .title { display: none; }
   .ws-nav { order: 9; max-width: none; width: 100%; }
