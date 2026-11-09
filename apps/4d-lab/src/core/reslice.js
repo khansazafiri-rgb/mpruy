@@ -9,9 +9,11 @@ import { inFieldOfView } from './probe.js';
  * @param warp     optional (x,y,z,out) => writes reference-anatomy coordinates (physiological motion)
  * @returns {values Float32Array (NaN = outside CT), fov Uint8Array, outsideFraction, mmPerPixel}
  */
-export function reslice(volume, plane, cols, rows, { warp = null, clipToFov = true } = {}) {
+export function reslice(volume, plane, cols, rows, { warp = null, clipToFov = true, both = null } = {}) {
   const n = cols * rows;
   const values = new Float32Array(n), fov = new Uint8Array(n);
+  // optional: `both(x,y,z,out)` returns [value, label] from ONE lookup (same warp) -> labels on the same grid
+  const labels = both ? new Uint8Array(n).fill(255) : null, tmp = [0, 0];
   const { top, u, v, width, height } = plane;
   const ds = width / cols, dd = height / rows;
   const q = [0, 0, 0];
@@ -26,12 +28,13 @@ export function reslice(volume, plane, cols, rows, { warp = null, clipToFov = tr
       fov[idx] = 1; inFov++;
       let x = bx + u[0] * s, y = by + u[1] * s, z = bz + u[2] * s;
       if (warp) { warp(x, y, z, q); x = q[0]; y = q[1]; z = q[2]; }
-      const val = volume.sample(x, y, z);
+      let val;
+      if (both) { both(x, y, z, tmp); val = tmp[0]; labels[idx] = tmp[1] < 0 ? 254 : tmp[1]; } else val = volume.sample(x, y, z);
       values[idx] = val;
       if (val !== val) outside++;
     }
   }
-  return { values, fov, cols, rows, outsideFraction: inFov ? outside / inFov : 1, mmPerPixel: [ds, dd] };
+  return { values, fov, labels, cols, rows, outsideFraction: inFov ? outside / inFov : 1, mmPerPixel: [ds, dd] };
 }
 
 /** Window/level mapping into an RGBA buffer. Outside-CT pixels get a diagonal hatch. */

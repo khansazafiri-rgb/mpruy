@@ -43,6 +43,14 @@ export function createSampler({ ct, labels = null, anatomy = null }) {
       if (tissueMap) { const lab = labelRef(x, y, z); return lab < 0 ? TISSUE_INDEX.air : tissueMap[lab]; }
       return classifyHU(ct.sample(x, y, z));
     },
+    /** HU and label at a CURRENT-space point from ONE warp (consistent CT pixel and overlay label). */
+    both(x, y, z, out) {
+      toRef(x, y, z, q);
+      const lab = labelRef(q[0], q[1], q[2]);
+      let v = ct.sample(q[0], q[1], q[2]);
+      if (v === v && (lab === 39 || lab === 41)) v = huOf[lab]; // same pathology override as ct()
+      out[0] = v; out[1] = lab; return out;
+    },
     /** Label at a CURRENT-space point. */
     label(x, y, z) { toRef(x, y, z, q); return labelRef(q[0], q[1], q[2]); },
   };

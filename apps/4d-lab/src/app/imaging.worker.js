@@ -9,6 +9,7 @@ import { simulateUltrasound, scanConvert } from '../sim/ultrasound.js';
 import { prepareGeometry, makeFrame } from '../sim/physiology.js';
 import { buildEffusion } from '../sim/pathology.js';
 import { TISSUES } from '../sim/tissues.js';
+import { labelRaster } from '../core/labels.js';
 
 let ct = null, labels = null, anatomy = null, sampler = null, geom = null, tissues = TISSUES;
 const effusionCache = new Map();
@@ -26,7 +27,7 @@ async function load({ ctBuffer, labelBuffer, anatomy: an }) {
 
 function render(req) {
   const t0 = performance.now();
-  const { plane, settings, clock, params, effusionMl, display, sizes, quality } = req;
+  const { plane, settings, clock, params, effusionMl, display, sizes, quality, wantLabels, tri } = req;
   if (geom && params) sampler.setFrame(makeFrame(clock, params, geom)); else sampler.setFrame(null);
   let eff = null;
   if (labels && effusionMl > 0) {
@@ -34,9 +35,20 @@ function render(req) {
     eff = effusionCache.get(effusionMl);
   }
   sampler.setEffusion(eff);
-  plane.probe = PROBES[settings.probeKey];
   const out = { type: 'frame', id: req.id };
   const transfer = [];
+  const both = labels && wantLabels ? (x, y, z, o) => sampler.both(x, y, z, o) : null;
+  if (tri) { // three orthogonal CT reformats through one patient-space point (no ultrasound geometry here)
+    out.tri = [];
+    for (const [key, pl] of Object.entries(tri.planes)) {
+      const n = tri.size, res = reslice({ sample: sampler.ct }, pl, n, n, { clipToFov: false, both });
+      const rgba = windowLevel(res, settings.window, settings.level);
+      out.tri.push({ key, rgba: rgba.buffer, w: n, h: n, outsideFraction: res.outsideFraction, labels: res.labels?.buffer || null });
+      transfer.push(rgba.buffer); if (res.labels) transfer.push(res.labels.buffer);
+    }
+    out.ms = performance.now() - t0; postMessage(out, transfer); return;
+  }
+  plane.probe = PROBES[settings.probeKey];
   const W = sizes.width, H = Math.max(16, Math.round(W * plane.height / plane.width));
   if (display !== 'ct') {
     const us = simulateUltrasound(sampler, plane, { ...settings, probe: plane.probe, tissues, quality });
@@ -45,11 +57,16 @@ function render(req) {
     transfer.push(rgba.buffer);
   }
   if (display !== 'us') {
-    const res = reslice({ sample: sampler.ct }, plane, W, H, { clipToFov: plane.mode === 'clinical' && settings.ctClip });
+    const res = reslice({ sample: sampler.ct }, plane, W, H, { clipToFov: plane.mode === 'clinical' && settings.ctClip, both });
+    if (res.labels) { out.labels = { buf: res.labels.buffer, w: W, h: H, clipped: plane.mode === 'clinical' && settings.ctClip }; transfer.push(res.labels.buffer); }
     const rgba = windowLevel(res, settings.window, settings.level);
     if (plane.mode === 'clinical' && settings.ctClip) for (let i = 0; i < res.fov.length; i++) if (!res.fov[i]) rgba[i * 4 + 3] = 0;
     out.ct = { rgba: rgba.buffer, w: W, h: H, outsideFraction: res.outsideFraction };
     transfer.push(rgba.buffer);
+  }
+  if (both && !out.labels) { // US only: label raster on the same grid, clipped to the probe field of view
+    const lab = labelRaster((x, y, z) => sampler.label(x, y, z), plane, W, H, { clipToFov: true });
+    out.labels = { buf: lab.buffer, w: W, h: H, clipped: true }; transfer.push(lab.buffer);
   }
   // tissue under the beam centre (for the readout)
   const mid = [0, 1, 2].map((i) => plane.top[i] + plane.v[i] * plane.height * 0.5);
