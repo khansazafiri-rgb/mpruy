@@ -21,7 +21,10 @@ An educational freehand CT / simulated-ultrasound workstation for MEDCOEL (`/ana
 
 ## Independent Anatomy Viewer pilot (local, no commercial clearance)
 A new, separately authored experimental anatomy viewer is available at
-`/anatomy/4d-lab/atlas-preview/` in the integrated local preview (or
+`/anatomy/4d-lab/atlas-preview/` in the **opt-in** integrated local preview
+(`npm run preview:4d-lab`). The ordinary production candidate build deliberately
+excludes this page. Alternatively, `npm run build:independent-atlas-pilot --prefix apps/4d-lab`
+creates a local pilot build (or
 `/atlas-preview/` when using the 4D Lab Vite development server). It renders
 the allowlisted model assets from the Lab's own `atlas-assets/` pack without
 importing source modules or fetching any resources from the third-party
