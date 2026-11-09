@@ -17,7 +17,7 @@ PR #159 decoupled the **4D Lab** from the Atlas Viewer's runtime URL. This PR cr
 - Uses **only** 4D Lab's SHA-256-checked `atlas-assets` package for six quarantine-pruned models, catalog and Draco decoder. It never imports `apps/anatomy/src` modules or fetches `/anatomy/viewer/`.
 - No added patient, organ, anatomical model or fabricated CT/USG information.
 
-Local URL after the existing 4D Lab build:
+Local URL after **explicit opt-in** `npm run preview:4d-lab` (ordinary 4D Lab builds exclude this experiment):
 
 `http://127.0.0.1:4173/anatomy/4d-lab/atlas-preview/`
 
