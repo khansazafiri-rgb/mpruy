@@ -123,6 +123,28 @@ try {
   assert.equal(await get(() => window.__lab.S.mode), 'clinical');
   assert.equal(await page.getByTestId('learn-ct-navigation').isVisible(), false);
   await page.getByTestId('ws-imaging').click();
+  // First Full-Body phase: head-to-toe skin contact is permitted, but unsupported
+  // regions must NEVER show previous CT/USG pixels, even after worker completion.
+  const torsoContact = await get(() => structuredClone(window.__lab.S.contact));
+  const headContact = await get(() => {
+    const sc = window.__lab.scene;
+    return sc.closestSkin([0, -50, sc.bodyBounds.hi[2]]);
+  });
+  assert.ok(headContact, 'full-body atlas has a skin contact for the head');
+  assert.ok(headContact.point[2] > await get(() => window.__lab.data.anatomy.regions.headZ), 'head skin is outside trunk CT');
+  await page.evaluate(contact => { window.__lab.S.contact = contact; }, headContact);
+  await page.waitForFunction(() => document.querySelector('#coverageNotice')?.hidden === false, null, { timeout: 15000 });
+  assert.match(await page.getByTestId('coverage-notice').textContent(), /Citra belum tersedia/);
+  assert.match(await page.getByTestId('region-status').textContent(), /Kepala.*belum ada citra/);
+  await page.waitForTimeout(100);
+  assert.equal(await get(() => window.__lab.scene.planeMesh.visible), false, 'old 3D scan plane hidden outside CT');
+  await shot('mode-full-body-head-unavailable');
+  await page.evaluate(contact => { window.__lab.S.contact = contact; }, torsoContact);
+  await page.getByTestId('mon-split').click();
+  await page.waitForFunction(() => document.querySelector('#coverageNotice')?.hidden === true, null, { timeout: 15000 });
+  await frame();
+  assert.equal(await get(() => window.__lab.scene.planeMesh.visible), true, 'supported scan restored in trunk region');
+
   assert.deepEqual(errors, [], 'no browser runtime errors');
   console.log('PASS mode navigation, audio visibility, linked MPR controls, tutorial, Belajar return');
 } finally { await browser.close(); srv.close(); }
