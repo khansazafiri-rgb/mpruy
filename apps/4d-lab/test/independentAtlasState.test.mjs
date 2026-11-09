@@ -57,3 +57,49 @@ test('regional visibility, opacity bounds and invalid system actions are stable'
   state = updateView(state, { type: 'undo' });
   assert.equal(state.opacity, 0.15);
 });
+
+test('removing an isolated system must not blank the newly selected system', () => {
+  const sternum = structureKey('skeletal', 'Sternum');
+  let state = createViewState();
+  state = updateView(state, { type: 'select', key: sternum });
+  state = updateView(state, { type: 'isolate', key: sternum });
+  state = updateView(state, { type: 'fade', key: sternum });
+  state = updateView(state, { type: 'onlySystem', system: 'visceral', valid: true });
+  assert.deepEqual(state.enabled, ['visceral']);
+  assert.equal(state.selected, null);
+  assert.equal(state.isolated, null, 'no stale isolation from removed skeleton');
+  assert.equal(state.faded, null, 'no stale fade from removed skeleton');
+  assert.equal(visibleStructure(state, 'visceral', 'Liver', ['abdomen']), true);
+  state = updateView(state, { type: 'undo' });
+  assert.deepEqual(state.enabled, ['skeletal']);
+  assert.equal(state.isolated, sternum, 'single undo restores previous isolated view');
+});
+
+test('disabling one model group preserves other visible models even after isolation', () => {
+  const sternum = structureKey('skeletal', 'Sternum');
+  let state = updateView(createViewState(), { type: 'system', system: 'visceral', enabled: true, valid: true });
+  state = updateView(state, { type: 'isolate', key: sternum });
+  state = updateView(state, { type: 'system', system: 'skeletal', enabled: false, valid: true });
+  assert.deepEqual(state.enabled, ['visceral']);
+  assert.equal(state.isolated, null);
+  assert.equal(visibleStructure(state, 'visceral', 'Liver', ['abdomen']), true);
+});
+
+test('search/picking reveals hidden structure and changes isolation without losing undo history', () => {
+  const sternum = structureKey('skeletal', 'Sternum');
+  const femur = structureKey('skeletal', 'Femur.r');
+  let state = createViewState();
+  state = updateView(state, { type: 'hide', key: femur });
+  state = updateView(state, { type: 'isolate', key: sternum });
+  assert.equal(visibleStructure(state, 'skeletal', 'Femur.r', ['lowerLimb']), false);
+  state = updateView(state, { type: 'reveal', key: femur });
+  assert.equal(state.selected, femur);
+  assert.equal(state.isolated, null);
+  assert.equal(state.hidden.includes(femur), false);
+  assert.equal(visibleStructure(state, 'skeletal', 'Femur.r', ['lowerLimb']), true);
+  state = updateView(state, { type: 'undo' });
+  assert.equal(state.isolated, sternum);
+  assert.equal(state.hidden.includes(femur), true);
+  state = updateView(state, { type: 'opacity', value: 0 });
+  assert.equal(state.opacity, 0.15, 'opacity must clamp to minimum rather than reset to fully opaque');
+});
