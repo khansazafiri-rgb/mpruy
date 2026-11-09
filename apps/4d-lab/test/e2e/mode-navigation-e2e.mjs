@@ -70,6 +70,8 @@ try {
   await page.waitForFunction(previous => document.querySelector('#monitorScroll').scrollTop < previous - 10, scrolled);
   await page.getByTestId('monitor-scroll-down').click();
   await page.waitForFunction(() => document.querySelector('#monitorScroll').scrollTop > 15);
+  await page.getByTestId('monitor-scroll-track').press('Home');
+  await page.waitForFunction(() => document.querySelector('#monitorScroll').scrollTop === 0);
   const start = await get(() => document.querySelector('#monitorScroll').scrollTop);
   const thumb = await page.locator('#monitorScrollThumb').boundingBox();
   assert.ok(thumb && thumb.height > 30, 'scroll thumb has a usable hit area');
