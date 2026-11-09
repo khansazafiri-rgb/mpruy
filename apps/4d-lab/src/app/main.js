@@ -11,6 +11,7 @@ import { siteMix, heartCycle } from '../sim/auscultation.js';
 import { VIEWS, snapToSkin } from '../sim/views.js';
 import { REFERENCES } from '../sim/references.js';
 import { PatientScene } from './scene3d.js';
+import { shouldShowImagingPlane } from './sceneVisibility.js';
 import { Monitor, drawStrip } from './monitor.js';
 import { AudioEngine } from './audio.js';
 import { voxelSurface } from './blobMesh.js';
@@ -303,7 +304,8 @@ function onWorker(e) {
     assist.clear(['ax', 'co', 'sa']);
     monitor.setFrame(m, { plane, display: S.display, usHeader: usHeader(), ctHeader: ctHeader() });
     const tex = S.display === 'ct' ? m.ct : m.us || m.ct;
-    scene.setImagePlane(plane, tex ? { rgba: S.display === 'split' && m.us ? m.us.rgba : tex.rgba, w: tex.w, h: tex.h } : null);
+    if (shouldShowImagingPlane(S)) scene.setImagePlane(plane, tex ? { rgba: S.display === 'split' && m.us ? m.us.rgba : tex.rgba, w: tex.w, h: tex.h } : null);
+    else scene.hideImagePlane();
     assist.push(); assistPanelSoon();
     updateReadouts();
     if (pending) markDirty();
@@ -318,7 +320,8 @@ function onTriFrame(m) {
   const headers = Object.fromEntries(Object.keys(MPR).map((k) => [k, [`${MPR[k].name.toUpperCase()} · CT MPR`, sliceLabel(k, t.point)]]));
   monitor.setFrame(m, { display: 'tri', tri: { point: t.point, planes: t.planes, headers } });
   const ax = m.tri.find((x) => x.key === 'ax'); // the axial plane is drawn in 3D as the "3D + plane" reference
-  scene.setImagePlane(t.planes.ax, ax ? { rgba: ax.rgba, w: ax.w, h: ax.h } : null);
+  if (shouldShowImagingPlane(S)) scene.setImagePlane(t.planes.ax, ax ? { rgba: ax.rgba, w: ax.w, h: ax.h } : null);
+  else scene.hideImagePlane();
   assist.push(); assistPanelSoon(); updateReadouts();
 }
 /** Start from the centre of the acquired CT volume, not the prior probe beam.
@@ -926,7 +929,15 @@ async function loadComparison() { // atlas-vs-phantom residuals are measured by 
   comparison = D?.anatomy?.comparisonWithProceduralPhantom || await fetch(DATASETS.atlas.dir + 'anatomy.json').then((r) => r.json()).then((a) => a.comparisonWithProceduralPhantom).catch(() => null);
   renderAtlasPanel(); return comparison;
 }
-function setTool(val) { S.tool = val; scene.siteMarkers.visible = val === 'stethoscope' && (S.ws === 'ausc' || S.ws === 'learn'); if (val !== 'inspect') { selected = selected || null; } refreshAll(); renderAtlasPanel(); touch(); }
+function setTool(val) {
+  S.tool = val;
+  scene.siteMarkers.visible = val === 'stethoscope' && (S.ws === 'ausc' || S.ws === 'learn');
+  // Hide the stale image plane immediately when the auscultation instrument is selected.
+  // The async imaging worker also checks this visibility policy before rendering its reply.
+  if (!shouldShowImagingPlane(S)) scene.hideImagePlane();
+  if (val !== 'inspect') { selected = selected || null; }
+  refreshAll(); renderAtlasPanel(); touch();
+}
 function renderAtlasPanel() {
   const box = $('#tab-anatomy'); if (!box || !scene) return;
   buildAtlasPanel(box, {
@@ -1031,6 +1042,7 @@ function caseSections(key) {
 }
 function placeSteth(point, normal, key) {
   S.tool = 'stethoscope';
+  scene.hideImagePlane();
   // site points are reference anatomy coordinates
   S.steth.ref = [...point]; S.steth.normal = [...normal]; S.steth.point = [...point]; S.steth.key = key;
   mixCache = null; refreshAll(); scene.siteMarkers.visible = true;

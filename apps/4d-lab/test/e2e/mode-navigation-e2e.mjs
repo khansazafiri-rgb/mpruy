@@ -33,7 +33,11 @@ try {
   await page.getByTestId('ws-ausc').click(); await page.waitForTimeout(100);
   assert.equal(await get(() => window.__lab.scene.steth.visible), true, 'active auscultation shows instrument');
   assert.equal(await get(() => window.__lab.scene.probe.visible), false, 'probe hidden during auscultation');
-  await page.getByTestId('ws-imaging').click(); await page.waitForTimeout(100);
+  assert.deepEqual(await get(() => [window.__lab.scene.planeMesh.visible, window.__lab.scene.planeOutline.visible]), [false, false], 'existing scan overlay hidden on switching to auscultation');
+  await frame(); // late imaging worker results must not restore the 3D USG/CT plane
+  assert.deepEqual(await get(() => [window.__lab.scene.planeMesh.visible, window.__lab.scene.planeOutline.visible]), [false, false], 'late imaging frame cannot redraw 3D scan during auscultation');
+  await page.getByTestId('ws-imaging').click(); await frame();
+  assert.equal(await get(() => window.__lab.scene.planeMesh.visible), true, 'scan plane returns only when clinical probe workspace is active');
   assert.equal(await get(() => window.__lab.scene.steth.visible), false, 'workspace switch hides stethoscope even if audio plays');
   await page.getByTestId('audio-quick').click();
 
