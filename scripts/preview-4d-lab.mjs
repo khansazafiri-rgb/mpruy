@@ -93,7 +93,7 @@ export async function checkBuilds(roots = ROOTS) {
 
 function build() {
   const steps = [
-    ['4D Lab (base /anatomy/4d-lab/)', 'npm', ['run', 'build:4d-lab'], {}],
+    ['4D Lab local pilot (base /anatomy/4d-lab/)', 'npm', ['run', 'build:4d-lab'], { LAB4D_ATLAS_PILOT: '1' }],
     ['MEDCOEL web app (preview build)', 'npx', ['vite', 'build', '--config', 'vite.anatomy-preview.config.js'], {}, path.join(repo, 'apps/web')],
   ];
   for (const [label, cmd, args, env, cwd = repo] of steps) {

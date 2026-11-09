@@ -62,7 +62,19 @@ function licenceQuarantine() {
 export default defineConfig(({ command }) => ({
   base: command === 'build' ? process.env.LAB4D_BASE || '/anatomy/4d-lab/' : '/',
   plugins: [localAtlasPack(), noBundledDraco(), licenceQuarantine()],
-  build: { target: ['es2022', 'safari16'], assetsInlineLimit: 0, chunkSizeWarningLimit: 900 },
+  // Local review only: separate entrypoint, original implementation, same
+  // integrity-checked asset pack. Public staging remains commercial-rights blocked.
+  build: {
+    target: ['es2022', 'safari16'], assetsInlineLimit: 0, chunkSizeWarningLimit: 900,
+    // Never expose the experimental viewer in a normal 4D Lab distribution.
+    // It is built only by an explicit local review command.
+    rollupOptions: { input: {
+      lab: fileURLToPath(new URL('./index.html', import.meta.url)),
+      ...(process.env.LAB4D_ATLAS_PILOT === '1'
+        ? { independentAtlasPilot: fileURLToPath(new URL('./atlas-preview/index.html', import.meta.url)) }
+        : {}),
+    } },
+  },
   worker: { format: 'es' },
   server: { port: 4180 },
 }));
