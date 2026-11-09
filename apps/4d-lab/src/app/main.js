@@ -1074,6 +1074,7 @@ function installLayout() {
   $('#helpBtn').onclick = () => { const h = $('#helpPop'); h.hidden = !h.hidden; $('#helpBtn').setAttribute('aria-expanded', String(!h.hidden)); };
   for (const b of document.querySelectorAll('.pane-switch [data-pane]')) b.onclick = () => setPane(b.dataset.pane);
   setPane('patient');
+  setSidebar(false); document.body.dataset.ws = 'imaging';
   // workspaces: one task-focused workspace at a time, sharing the same patient, scene and monitor
   for (const b of document.querySelectorAll('.ws-nav [data-ws]')) b.onclick = () => setWorkspace(b.dataset.ws);
   $('#assistLevel').onchange = (e) => setAssistLevel(e.target.value);
@@ -1111,7 +1112,7 @@ function setWorkspace(ws) {
   for (const t of document.querySelectorAll('.tabs [role=tab]')) t.hidden = t.dataset.ws !== ws;
   const first = document.querySelector(`.tabs [aria-controls=${WS_DEFAULT_TAB[ws]}]`); first?.click();
   // the imaging workspace is driven from the mode bar (panel closed); the others live in the panel
-  setSidebar(ws !== 'imaging' || window.innerWidth >= 1700);
+  setSidebar(ws !== 'imaging');
   if (ws === 'ausc') { // the stethoscope is the tool of this workspace; start at the mitral area
     setTool('stethoscope');
     if (!S.steth.ref) { const m = D?.anatomy?.auscultation?.find((x) => x.key === 'mitral'); if (m) placeSteth(m.point, m.normal, 'mitral'); }
