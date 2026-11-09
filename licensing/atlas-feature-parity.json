@@ -3,7 +3,7 @@
   "baseline": "apps/anatomy/index.html and apps/anatomy/src (legacy NC application, local functional reference only)",
   "candidate": "apps/4d-lab/atlas-preview (independent local experiment, excluded from ordinary public build)",
   "statusMeaning": {
-    "implemented-unverified": "Implemented in local candidate with automated coverage but no Safari visual review",
+    "implemented-unverified": "Implemented in local candidate with automated coverage but no browser visual review of this revision",
     "partial": "Some behavior exists, important baseline behavior remains absent",
     "missing": "Not implemented in independent candidate"
   },
@@ -12,7 +12,7 @@
       "id": "scene",
       "critical": true,
       "baseline": "WebGL full-body scene",
-      "candidate": "Three.js GLB scene with own renderer",
+      "candidate": "Three.js GLB scene with own renderer; bounding-box camera fit targets 78% viewport extent and is covered by geometry tests. Browser screenshot still pending",
       "status": "implemented-unverified",
       "test": "independent-atlas-e2e (blocked in container)",
       "rights": "model-level provenance unresolved"
@@ -30,7 +30,7 @@
       "id": "camera-presets",
       "critical": true,
       "baseline": "Front, side, back, top and reset",
-      "candidate": "Front, side, back, top and visible fit",
+      "candidate": "Front, side, back, top and visible fit with 340 ms camera preset interpolation; pointer input cancels animation",
       "status": "implemented-unverified",
       "test": "independent-atlas-e2e (blocked in container)",
       "rights": "original candidate code; ownership review pending"
@@ -57,7 +57,7 @@
       "id": "search",
       "critical": true,
       "baseline": "Structure search and suggestions across systems",
-      "candidate": "Search and selectable results from allowed catalog",
+      "candidate": "Search, selectable results and a bounded structure browser from the allowed catalog; no rich descriptions",
       "status": "partial",
       "test": "independentAtlasPilot.test.mjs; e2e pending",
       "rights": "catalog source provenance pending"
@@ -138,7 +138,7 @@
       "id": "mobile",
       "critical": true,
       "baseline": "Responsive drawers and touch controls",
-      "candidate": "Responsive layout and OrbitControls, no device QA",
+      "candidate": "Dark MEDCOEL-themed navigation, viewport camera toolbar, responsive layout and OrbitControls; no device QA of revised layout",
       "status": "partial",
       "test": "Safari/iPad manual QA pending",
       "rights": "original candidate code"

@@ -43,8 +43,12 @@ Disabled systems unload their geometry and materials to limit GPU memory on 8 GB
 The original select menu still offers a single-system focus for the existing beginner flow.
 See the machine-readable [`atlas-feature-parity.json`](atlas-feature-parity.json) for
 feature-by-feature gaps. The candidate is **still not a replacement for the mature viewer**:
-educational descriptions, system layer stepping, URL sharing, study integration and Safari
-visual QA remain incomplete.
+educational descriptions, system layer stepping, study integration and Safari
+visual QA remain incomplete. URL sharing is implemented with bounded state validation.
+
+The next local revision improves viewport framing, camera transitions and the navigation
+hierarchy. Its exact visual and device limitations are recorded in
+[`ATLAS_VISUAL_QA_2026-11-09.md`](ATLAS_VISUAL_QA_2026-11-09.md).
 
 The opt-in local candidate has an exact-byte and npm lockfile inventory in
 [`4d-lab-pilot-local-inventory.json`](4d-lab-pilot-local-inventory.json). The inventory records
