@@ -14,15 +14,36 @@ export const MPR = {
   sa: { name: 'Sagital', u: [0, 1, 0], v: [0, 0, -1], n: [1, 0, 0], dims: [1, 2] },
 };
 
-/** Square MPR plane through `point`, sized to cover the CT bounds in that plane (plus a margin). */
-export function mprPlane(key, point, bounds, margin = 10) {
-  const d = MPR[key], ext = d.dims.map((i) => bounds.hi[i] - bounds.lo[i]);
-  const size = Math.max(...ext) + 2 * margin;
-  // centre of the image = the point projected onto the CT centre along the in-plane axes (whole slice visible)
+/** Axis-aligned CT MPR, framed to the actual in-plane extent of the acquisition.
+ * The previous square frame used the LONGEST dimension for BOTH axes, producing a large
+ * hatched "outside CT" area when the acquired volume was rectangular. A margin can still
+ * be requested explicitly, but the default shows exactly the acquired field.
+ *
+ * Note: bounds is an AABB in patient LPS. For oblique native acquisitions, its corners
+ * can extend beyond the actual sampled volume; those voxels MUST still be marked missing.
+ */
+export function mprPlane(key, point, bounds, margin = 0) {
+  const d = MPR[key];
+  const ext = d.dims.map((i) => Math.max(1e-6, bounds.hi[i] - bounds.lo[i] + 2 * Math.max(0, margin)));
+  const width = ext[0], height = ext[1];
+  // The in-plane centre is the CT centre, while the normal axis follows the linked crosshair.
   const centre = [...point];
   for (const i of d.dims) centre[i] = (bounds.lo[i] + bounds.hi[i]) / 2;
-  const top = centre.map((c, i) => c - d.v[i] * size / 2);
-  return { mode: 'mpr', key, top, u: [...d.u], v: [...d.v], n: [...d.n], width: size, height: size, depth: size, centre };
+  const top = centre.map((c, i) => c - d.v[i] * height / 2);
+  return { mode: 'mpr', key, top, u: [...d.u], v: [...d.v], n: [...d.n], width, height, depth: Math.max(width, height), centre };
+}
+
+/** Match CT raster aspect ratio to physical dimensions (square millimetres per pixel).
+ * All overlays/hit-testing use these SAME pixel dimensions; never stretch a square raster
+ * to represent a rectangular acquisition.
+ */
+export function mprRasterSize(plane, longestSide = 320) {
+  const longest = Math.max(32, Math.round(longestSide));
+  const maxMM = Math.max(plane.width, plane.height);
+  return {
+    cols: Math.max(16, Math.round(longest * plane.width / maxMM)),
+    rows: Math.max(16, Math.round(longest * plane.height / maxMM)),
+  };
 }
 
 /** The three linked planes through one patient-space point. */
