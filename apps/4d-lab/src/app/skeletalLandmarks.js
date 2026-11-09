@@ -36,9 +36,11 @@ export function summarizeSkeletalPilot(registry, document) {
   });
   const staleSource = src.modelSha256 === LEGACY_WITHHELD_SKELETAL_SHA;
   const unmapped = landmarks.filter(l => l.status === 'NOT_MAPPED').length;
+  // A draft status alone does not imply a mapped anatomical surface.
+  const mapped = landmarks.filter(l => l.status !== 'NOT_MAPPED' && l.hasGeometry).length;
   return Object.freeze({
     partId: PILOT_PART, total: landmarks.length, unmapped,
-    mapped: landmarks.length - unmapped, staleSource,
+    mapped, staleSource,
     sourceStatus: staleSource ? 'Model skeletal lama (sebelum karantina lisensi)' : 'Belum diverifikasi terhadap SHA model aktif',
     renderableMarkers: 0, // explicitly no pin renderer until source+surface validation
     landmarks: Object.freeze(landmarks),
