@@ -65,6 +65,7 @@ export class PatientScene {
     this.clip = { anterior: new THREE.Plane(new THREE.Vector3(0, -1, 0), 0), plane: new THREE.Plane() };
     this._table();
     this._probeModel('convex');
+    this._probeContactMarker();
     this._imagePlane();
     this._gizmo();
     this._stethoscope();
@@ -196,6 +197,25 @@ export class PatientScene {
   }
 
   // ------------------------------------------------------------------ probe, plane, gizmo
+  /** Small contact footprint for internal/transparent anatomy views.
+   * The transducer remains at the exact skin contact (pose.origin); the marker
+   * is a visual reference only, not a new/alternate contact or imaging input.
+   */
+  _probeContactMarker() {
+    const marker = new THREE.Mesh(
+      new THREE.TorusGeometry(11, 1.5, 8, 40),
+      new THREE.MeshBasicMaterial({
+        color: 0x36bea7, transparent: true, opacity: 0.9,
+        side: THREE.DoubleSide, depthWrite: false, depthTest: true,
+      }),
+    );
+    marker.name = 'probe-skin-contact-indicator';
+    marker.renderOrder = 26;
+    marker.visible = false;
+    this.contactIndicator = marker;
+    this.patient.add(marker);
+  }
+
   _probeModel(kind) {
     if (this.probe) this.patient.remove(this.probe);
     const g = new THREE.Group();
@@ -214,6 +234,11 @@ export class PatientScene {
     const lens = new THREE.Mesh(new THREE.BoxGeometry(ap - 4, 1.5, 9), new THREE.MeshStandardMaterial({ color: 0x9fb2b8, roughness: 0.3 }));
     lens.position.y = kind === 'convex' ? 1.5 : 0.8; g.add(lens);
     const handle = new THREE.Mesh(new THREE.CylinderGeometry(13, 17, 105, 24), body); handle.position.y = 85; g.add(handle);
+    // The visual housing used to have a gap between the short transducer head
+    // and the handle (especially the phased/linear heads). Join them with a
+    // tapered neck. Local Y=0 remains the real contact face for all three probes.
+    const neck = new THREE.Mesh(new THREE.CylinderGeometry(15, 11, 42, 24), body);
+    neck.position.y = 27; g.add(neck);
     const band = new THREE.Mesh(new THREE.CylinderGeometry(17.4, 17.4, 6, 24), accent); band.position.y = 40; g.add(band);
     const marker = new THREE.Mesh(new THREE.SphereGeometry(4, 16, 12), new THREE.MeshStandardMaterial({ color: 0xff8a2a, emissive: 0x552200 }));
     marker.position.set(-ap / 2 - 1, 20, 0); g.add(marker);
@@ -272,13 +297,22 @@ export class PatientScene {
     this.clip.plane.setFromNormalAndCoplanarPoint(n.multiplyScalar(-1), c); this.clipPlaneReady = true;
   }
 
-  setProbe(pose, kind, visible) {
+  setProbe(pose, kind, visible, showReferenceContact = false) {
     if (kind !== this.probeKind) this._probeModel(kind);
     this.probe.visible = visible;
+    this.contactIndicator.visible = visible && showReferenceContact;
     if (!visible) return;
     const m = new THREE.Matrix4().makeBasis(v3(pose.u), v3(pose.b).multiplyScalar(-1), v3(pose.e));
     m.setPosition(v3(pose.origin));
     this.probe.matrix.copy(m); this.probe.matrixWorldNeedsUpdate = true;
+    if (this.contactIndicator.visible) {
+      // This mark lies 1.5 mm above the current contact point so that it is
+      // readable on a transparent/hidden skin shell. Probe, USG and CT positions
+      // are unchanged and continue to use pose.origin.
+      const n = v3(pose.contactNormal).normalize();
+      this.contactIndicator.position.copy(v3(pose.origin)).addScaledVector(n, 1.5);
+      this.contactIndicator.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), n);
+    }
   }
 
   _gizmo() {
