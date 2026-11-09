@@ -11,6 +11,7 @@ import { clinicalPose, freePose, freeQuat, FREE_PRESETS, imagingPlane, PROBES } 
 import { translate, rotate, selectSide } from '../src/app/axisMove.js';
 import { dragToAmount } from '../src/app/axisControl.js';
 import { triPlanes, mprPlane, mprRasterSize, stepSlice, MPR } from '../src/core/mpr.js';
+import { AtlasLayer, isRespiratoryDetail } from '../src/app/atlasLayer.js';
 import { reslice } from '../src/core/reslice.js';
 import { labelRaster, pixelToLPS, lpsToPixel, contourSegments, groupRaster } from '../src/core/labels.js';
 import { buildGroups, unavailableStructures, STRUCTURES, UNIDENTIFIED } from '../src/edu/structures.js';
@@ -266,4 +267,42 @@ test('credits, pathology cases and auscultation guide are complete and honest', 
   assert.deepEqual(cr, crackleTrain({ period: 4, sampleRate: 8000, seed: 3 }), 'deterministic');
   assert.ok(Math.max(...cr.map(Math.abs)) <= 3 && Math.max(...wz.map(Math.abs)) <= 1.01, 'bounded');
   assert.equal(wz.slice(0, Math.floor(0.44 * wz.length)).some((v) => v !== 0), false, 'wheeze only in expiration');
+});
+
+test('respiratory detail uses existing cleared bronchi/pleura only, restores default visibility', () => {
+  assert.equal(isRespiratoryDetail('Pleura', 'respiratory'), true);
+  assert.equal(isRespiratoryDetail('Right main bronchus', 'respiratory'), true);
+  assert.equal(isRespiratoryDetail('Anterior segmental bronchus of right lung (BIII)', 'respiratory'), true);
+  assert.equal(isRespiratoryDetail('Superior lobe of right lung', 'respiratory'), false);
+  assert.equal(isRespiratoryDetail('Pleura', 'skeletal'), false);
+  assert.equal(isRespiratoryDetail('Kidney.r', 'urinary'), false);
+  const state = {
+    respiratoryDetailsShown: false,
+    structures: new Map([
+      ['Pleura', { name: 'Pleura', group: 'respiratory', hiddenByUser: true }],
+      ['Right main bronchus', { name: 'Right main bronchus', group: 'respiratory', hiddenByUser: true }],
+      ['Superior lobe of right lung', { name: 'Superior lobe of right lung', group: 'respiratory', hiddenByUser: false }],
+      ['Liver', { name: 'Liver', group: 'digestive', hiddenByUser: false }],
+    ]),
+    groups: { respiratory: { visible: false } },
+    isolated: 'Pleura',
+    calls: 0,
+    apply() { this.calls++; },
+  };
+  assert.equal(AtlasLayer.prototype.setRespiratoryDetail.call(state, true), 2);
+  assert.equal(state.respiratoryDetailsShown, true);
+  assert.equal(state.groups.respiratory.visible, true);
+  assert.equal(state.structures.get('Pleura').hiddenByUser, false);
+  assert.equal(state.structures.get('Right main bronchus').hiddenByUser, false);
+  assert.equal(state.structures.get('Superior lobe of right lung').hiddenByUser, false);
+  assert.equal(state.structures.get('Liver').hiddenByUser, false);
+  assert.equal(AtlasLayer.prototype.setRespiratoryDetail.call(state, false), 2);
+  assert.equal(state.structures.get('Pleura').hiddenByUser, true);
+  assert.equal(state.structures.get('Right main bronchus').hiddenByUser, true);
+  AtlasLayer.prototype.setRespiratoryDetail.call(state, true);
+  AtlasLayer.prototype.showAll.call(state);
+  assert.equal(state.respiratoryDetailsShown, false);
+  assert.equal(state.isolated, null);
+  assert.equal(state.structures.get('Pleura').hiddenByUser, true);
+  assert.equal(state.structures.get('Right main bronchus').hiddenByUser, true);
 });
