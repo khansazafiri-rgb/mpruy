@@ -1,6 +1,6 @@
 // "Anatomi" tab: shared Atlas layer controls + explicit coordinate frames / registration status.
 // Built from plain state passed in by main.js (no circular imports).
-import { ATLAS_GROUPS, UNAVAILABLE_ANATOMY } from './atlasLayer.js';
+import { ATLAS_GROUPS, UNAVAILABLE_ANATOMY, isRespiratoryDetail } from './atlasLayer.js';
 
 const fmtM = (m) => [0, 1, 2].map((r) => '[' + [0, 1, 2, 3].map((c) => String(+m[r * 4 + c].toFixed(3)).padStart(7)).join(' ') + ' ]').join('\n');
 
@@ -68,6 +68,16 @@ export function buildAtlasPanel(box, ctx) {
       for (const u of UNAVAILABLE_ANATOMY) list.append(el('div', { class: 'group-row unavailable', 'data-testid': 'unavailable-' + u.key, title: u.reason },
         el('span', { class: 'check' }, el('input', { type: 'checkbox', disabled: true, 'aria-label': u.label + ' tidak tersedia' }), u.label), el('span', { class: 'count' }, ' · tidak tersedia'), el('small', { class: 'muted' }, u.reason)));
       box.append(list);
+      // Progressive disclosure: bronchi and pleura are present in the cleared visceral atlas
+      // but initially hidden to avoid obscuring the major organs. No new mesh is generated.
+      const airwayDetails = [...atlas.structures.values()].filter((st) => isRespiratoryDetail(st.name, st.group));
+      if (atlas.loaded.has('visceral') && airwayDetails.length) {
+        box.append(el('section', { class: 'learn-card', 'data-testid': 'respiratory-detail-card' },
+          el('h4', {}, 'Detail saluran napas'),
+          el('p', { class: 'hint' }, `${airwayDetails.length} struktur pleura/bronkus tersedia dalam Atlas MEDCOEL. Secara bawaan disembunyikan agar tidak menutupi paru. Mengaktifkan detail hanya mengubah visibilitas 3D, bukan citra CT/USG.`),
+          el('button', { type: 'button', class: 'btn', 'data-testid': 'respiratory-detail-toggle', 'aria-pressed': String(atlas.respiratoryDetailsShown), onclick: () => actions.setRespiratoryDetail(!atlas.respiratoryDetailsShown) }, atlas.respiratoryDetailsShown ? 'Sembunyikan detail saluran napas' : 'Tampilkan pleura & cabang bronkus'),
+          el('p', { class: 'meta' }, 'Jika pleura menutupi organ, gunakan slider transparansi Paru & saluran napas di atas. "Pulihkan tampilan" mengembalikan detail ke keadaan awal.')));
+      }
       // structures
       const names = atlas.list().map((x) => x.name).sort();
       const dl = el('datalist', { id: 'atlasNames' }, ...names.map((n) => el('option', { value: n })));
