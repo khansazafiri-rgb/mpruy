@@ -36,8 +36,11 @@ viewer candidate while leaving both public staging products blocked.
   `process_singleton_posix.cc: socket() failed: Operation not permitted` in this container.
   The separate desktop browser could not connect to the container's loopback server.
   **Visual/interaction QA is unrun**, including actual Safari on Apple Silicon and 8 GB memory.
-- Public MEDCOEL endpoints could not be inspected through the available web retrieval tool;
-  active production release, stale assets and approved rollback targets remain **unverified**.
+- The live `https://medcoel.com/anatomy/viewer/` route returned the mature viewer UI
+  in a cloud browser. That browser reported `THREE.WebGLRenderer: Error creating WebGL context`,
+  so the 3D scene could not be visually checked there. The accessible page does not establish
+  which release symlink, model files, stale assets or rollback targets are active; those remain
+  **unverified**. Other public URLs could not be inspected through the web retrieval tool.
   No Caddy, PocketBase, production file or public route was changed.
 
 ## Independent readiness assessment
