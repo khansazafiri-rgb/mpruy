@@ -310,7 +310,7 @@ await step('phantom dataset still available and keeps the atlas hidden (no false
   const p2 = await ctx.newPage(); const e2 = []; p2.on('pageerror', (e) => e2.push(e.message));
   await page.close();
   await p2.goto(url + '?dataset=phantom', { timeout: 120000 }); await p2.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 120000 });
-  await p2.getByTestId('tab-anatomy').click();
+  await p2.getByTestId('panel-toggle').click(); await p2.waitForTimeout(300); await p2.getByTestId('tab-anatomy').click(); // panel is a drawer (UX upgrade)
   assert.ok(await p2.getByTestId('atlas-not-registered').isVisible());
   assert.equal(await p2.evaluate(() => window.__lab.atlas), null, 'no atlas layer created for the phantom');
   assert.deepEqual(e2, []); await p2.close();
