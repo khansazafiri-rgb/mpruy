@@ -9,7 +9,7 @@
 </head>
 <body data-mode="clinical" data-tool="probe" data-ws="imaging">
 <header class="topbar">
-  <a class="brand" href="/anatomy" target="_top" aria-label="Kembali ke Anatomi MEDCOEL"><span class="brand-mark" aria-hidden="true">C</span>MEDCOEL</a>
+  <a class="brand" href="/anatomy" target="_top" aria-label="Kembali ke Anatomi MEDCOEL"><span class="brand-mark" aria-hidden="true"></span>MEDCOEL</a>
   <span class="title">Anatomy Live <strong>4D Lab</strong></span>
   <button id="panelToggle" class="panel-toggle" data-testid="panel-toggle" aria-controls="sidebar" aria-expanded="false" title="Buka/tutup panel kontrol">☰ <span>Panel</span></button>
   <nav class="ws-nav" role="tablist" aria-label="Ruang kerja">
@@ -55,6 +55,7 @@
       <li><b>Kamera:</b> seret area kosong untuk memutar, Shift/klik kanan untuk menggeser, scroll untuk zoom. Kamera tidak pernah mengubah citra.</li>
       <li><b>Arah</b> selalu arah tubuh pasien (Kanan/Kiri PASIEN), bukan arah layar. Arahkan kursor ke tombol arah untuk melihat panahnya di 3D.</li></ol>
       <small>Keyboard: ↑ ↓ superior/inferior · ← → kanan/kiri pasien · PgUp/PgDn anterior/posterior · Q/E putar · Shift = halus</small>
+      <button type="button" class="btn replay-tour" id="replayTourBtn" data-testid="tour-replay">Ulangi tutorial interaktif</button>
     </div>
     <div class="viewport-wrap">
       <div id="viewport" class="viewport"></div>
