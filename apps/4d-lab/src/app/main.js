@@ -321,11 +321,13 @@ function onTriFrame(m) {
   scene.setImagePlane(t.planes.ax, ax ? { rgba: ax.rgba, w: ax.w, h: ax.h } : null);
   assist.push(); assistPanelSoon(); updateReadouts();
 }
-/** Crosshair start: the current imaging position (beam centre / free plane centre), clamped into the CT. */
+/** Start from the centre of the acquired CT volume, not the prior probe beam.
+ * The beam is often near the body surface / edge of coverage. That made the first
+ * tri-planar view appear empty even though the CT dataset itself was available.
+ * After first use, keep the learner's last linked crosshair until the dataset changes.
+ */
 function triStart() {
-  const f = geom ? makeFrame(clock, effectiveParams(), geom) : null, pl = currentPlane(currentPose(f));
-  const c = pl ? pl.top.map((v, i) => v + pl.v[i] * pl.height * 0.5) : D.ct.centre;
-  return clampToBounds(c, D.ct.bounds);
+  return [...D.ct.centre];
 }
 let panelTimer = 0;
 function assistPanelSoon() { if (panelTimer) return; panelTimer = setTimeout(() => { panelTimer = 0; assist.renderPanel(); }, 350); }
@@ -744,7 +746,7 @@ function setScanMode(mode) {
 }
 function setImagingDisplay(display) {
   if (display === 'tri') {
-    if (S.display !== 'tri') S.tri.point = triStart();
+    if (!S.tri.point) S.tri.point = triStart();
     S.mode = 'free'; S.tool = 'probe';
     scene.siteMarkers.visible = false;
     S.display = 'tri';
