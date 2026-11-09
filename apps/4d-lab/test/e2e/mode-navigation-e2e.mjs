@@ -82,8 +82,8 @@ try {
   await page.mouse.up();
   assert.ok((await get(() => document.querySelector('#monitorScroll').scrollTop)) > start, 'dragging visible thumb scrolls monitor');
   await shot('mode-triplanar-visible-scrollbar');
-  await frame();
-  const outside = await get(() => ['ax', 'co', 'sa'].map(k => window.__lab.monitor.images[k]?.outsideFraction ?? 1));
+  await page.waitForFunction(() => ['ax', 'co', 'sa'].every(k => window.__lab.monitor.images[k]?.outsideFraction !== undefined), null, { timeout: 60000 });
+  const outside = await get(() => ['ax', 'co', 'sa'].map(k => window.__lab.monitor.images[k].outsideFraction));
   assert.ok(outside.every(x => x < 0.08), 'atlas tri-planar no longer wastes large parts of each view outside CT coverage: ' + outside);
 
   await shot('mode-after-triplanar');
