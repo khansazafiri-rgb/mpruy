@@ -590,3 +590,5 @@ body[data-learning="1"] .view-menu, body[data-learning="1"] .monitor-toolbar .in
   .viewport-wrap > .probe-pad { position: absolute; left: 8px; right: 8px; bottom: 64px; width: auto; border-radius: 14px; border: 1px solid rgb(var(--line)); box-shadow: 0 8px 24px rgb(0 0 0 / .14); max-height: 46vh; }
   .viewport-wrap > .probe-pad.collapsed { width: auto; }
 }
+.view-menu { z-index: 8; max-width: calc(100% - 236px - 64px); }
+@media (max-width: 760px) { .view-menu { max-width: calc(100% - 64px); } }
