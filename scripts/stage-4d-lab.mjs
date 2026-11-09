@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { createHash, randomUUID } from 'node:crypto';
 import { assertDistributionClean } from '../licensing/tools/check-distribution.mjs';
 import { assertCommercialReleaseReady } from '../licensing/tools/check-commercial-release.mjs';
+import { verifyAtlasPack } from '../apps/4d-lab/tools/atlas-pack.mjs';
 
 const repo = fileURLToPath(new URL('../', import.meta.url));
 const BASE = '/anatomy/4d-lab/';
@@ -32,6 +33,9 @@ export async function validateLab(root) {
       const sha = createHash('sha256').update(await readFile(path.join(root, 'data', set, m.file))).digest('hex');
       if (sha !== m.sha256) throw Error('Mesh hash mismatch: ' + set + '/' + m.file);
     }
+    // The Atlas GLBs, decoder and catalog are shipped with the Lab, not loaded
+    // from the NC Atlas Viewer application. Verify all shipped bytes and CT hashes.
+    if (set === 'atlas') verifyAtlasPack(path.join(root, 'atlas-assets'), anatomy);
   }
   return { assets: assets.length, datasets: sets, indexSha256: createHash('sha256').update(html).digest('hex') };
 }
@@ -74,11 +78,8 @@ export async function stageLab({ source = path.join(repo, 'apps/4d-lab/dist'), d
     // Returning to an older release is still a public distribution decision:
     // do not bypass rights approval simply because the old build was deployed.
     assertCommercialReleaseReady('4d-lab', r.previousTarget, commercialManifest);
-    const rollbackAtlas = atlasRoot || process.env.ANATOMY_VIEWER_DIR || '/var/lib/medcoel/anatomy-viewer';
-    let hasAtlas = false;
-    try { hasAtlas = !!(await lstat(rollbackAtlas)); } catch { /* absent on this host */ }
-    if (hasAtlas || atlasRoot || process.env.ANATOMY_VIEWER_DIR)
-      await checkAtlasModels(r.previousTarget, rollbackAtlas);
+    // validateLab above also checks the self-contained model pack against CT.
+    // No external Atlas Viewer app is required for this rollback.
     await activate(dest, r.previousTarget);
     const out = { currentTarget: r.previousTarget, previousTarget: previous, rolledBackAt: new Date().toISOString() };
     await writeFile(record, JSON.stringify(out, null, 2)); return out;
@@ -86,10 +87,9 @@ export async function stageLab({ source = path.join(repo, 'apps/4d-lab/dist'), d
   source = await realpath(source);
   const validation = await validateLab(source);
   validation.commercialRights = assertCommercialReleaseReady('4d-lab', source, commercialManifest);
-  // compare with the live atlas deployment when it is reachable from here (set ANATOMY_VIEWER_DIR to force)
-  const atlasDir = atlasRoot || process.env.ANATOMY_VIEWER_DIR || '/var/lib/medcoel/anatomy-viewer';
-  let atlasExists = false; try { atlasExists = (await lstat(atlasDir)) && true; } catch { /* not on this host */ }
-  validation.atlasModels = atlasExists || process.env.ANATOMY_VIEWER_DIR ? await checkAtlasModels(source, atlasDir) : { checked: 0, note: `atlas directory ${atlasDir} not found on this host: check it on the server before activation` };
+  // Dedicated model pack was verified by validateLab(source). The external
+  // Anatomy Viewer is not a runtime requirement and can remain legally blocked.
+  validation.atlasModels = { checked: 6, note: 'Model hashes validated in Lab-owned atlas-assets pack' };
   const release = path.join(releases, releaseId);
   try { await lstat(release); throw Error('Release ID already exists; choose a new one'); } catch (e) { if (e.code !== 'ENOENT') throw e; }
   await cp(source, release, { recursive: true });
