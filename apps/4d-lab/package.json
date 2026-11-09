@@ -20,7 +20,8 @@
     "atlas:dataset": "node --max-old-space-size=8000 pipeline/atlas/build_atlas_dataset.mjs",
     "atlas:evidence": "node tools/atlas-slices.mjs public/data/atlas evidence/atlas-label-slices.png axial:110,60,0,-90,-170,-330 coronal:-30,20 sagittal:-60,0,45 && node tools/atlas-us-views.mjs",
     "test:e2e:atlas": "node test/e2e/atlas-e2e.mjs",
-    "test:e2e:independent-atlas": "node test/e2e/independent-atlas-e2e.mjs"
+    "test:e2e:independent-atlas": "npm run build:independent-atlas-pilot && node test/e2e/independent-atlas-e2e.mjs",
+    "build:independent-atlas-pilot": "LAB4D_ATLAS_PILOT=1 vite build"
   },
   "dependencies": {
     "three": "^0.185.1",
