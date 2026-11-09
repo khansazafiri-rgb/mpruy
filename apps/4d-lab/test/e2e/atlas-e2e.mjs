@@ -159,6 +159,22 @@ await step('cleared respiratory detail: show existing pleura/bronchi and restore
   await page.getByTestId('btn-showall').click();
 });
 
+await step('skeletal landmark pilot displays source honesty instead of unverified 3D pins', async () => {
+  await display('transparent');
+  const before = await lab(() => window.__lab.atlas.root.children.length);
+  await page.getByTestId('skeletal-landmark-open').click();
+  await page.waitForFunction(() => /Humerus\\.r/.test(document.querySelector('[data-testid=structure-info]')?.textContent || ''), null, { timeout: 15000 });
+  await page.getByTestId('skeletal-landmark-results').waitFor({ timeout: 15000 });
+  assert.match(await page.getByTestId('skeletal-landmark-status').textContent(), /0\\/6.*0 pin 3D tervalidasi/);
+  assert.match(await page.getByTestId('skeletal-landmark-results').textContent(), /Greater tubercle/);
+  assert.match(await page.getByTestId('skeletal-landmark-results').textContent(), /Tuberositas deltoidea/);
+  assert.match(await page.getByTestId('skeletal-landmark-results').textContent(), /model skeletal lama/i);
+  assert.equal(await lab(() => window.__lab.atlas.root.children.length), before, 'no synthetic landmark meshes were created');
+  assert.equal(await lab(() => window.__lab.atlas.highlighted), 'Humerus.r');
+  await shot('atlas-landmark-humerus-unmapped');
+  await page.getByTestId('btn-showall').click(); await display('transparent');
+});
+
 await step('inspect tool: clicking an organ selects that atlas structure (not the probe)', async () => {
   await display('internal'); await camera('anterior');
   const c0 = await lab(() => window.__lab.S.contact.point);
