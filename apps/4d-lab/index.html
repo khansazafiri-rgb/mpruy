@@ -61,6 +61,7 @@
       <div id="viewport" class="viewport"></div>
       <div class="scan-mode" data-testid="scan-mode" role="group" aria-label="Mode interaksi">
         <span id="modeStatus" data-testid="mode-status" role="status">Probe klinis</span>
+        <span id="regionStatus" class="region-status" data-testid="region-status" hidden></span>
         <button type="button" id="returnProbe" data-testid="return-probe" hidden>Kembali ke Probe USG</button>
         <button type="button" id="freeMode" data-testid="free-mode">Free 3D / Bidang CT</button>
       </div>
@@ -130,6 +131,7 @@
     <div class="monitor-body">
       <div class="monitor-wrap">
         <canvas id="monitor" data-testid="monitor-canvas" aria-label="Monitor citra: seret untuk geser, scroll untuk zoom (Tri-planar: scroll = irisan), klik untuk memilih struktur"></canvas>
+        <div id="coverageNotice" class="coverage-notice" data-testid="coverage-notice" role="status" aria-live="polite" hidden><strong>Citra belum tersedia</strong><p id="coverageNoticeText"></p><small>Model tubuh tetap dapat dijelajahi. Untuk citra sintetis saat ini, pilih toraks, abdomen, atau pelvis.</small></div>
         <div id="hoverTip" class="hover-tip" data-testid="hover-tip" role="tooltip" hidden></div>
       </div>
       <aside id="assistPanel" class="assist-panel" data-testid="assist-panel" aria-label="Struktur pada citra" hidden></aside>
