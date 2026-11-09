@@ -25,6 +25,17 @@
       <option value="lymphatic">Limfatik</option>
       <option value="visceral">Organ dalam</option>
     </select>
+    <fieldset class="system-list" aria-label="Sistem yang terlihat">
+      <legend>Tampilkan bersamaan</legend>
+      <div id="systemToggles" data-testid="pilot-toggles"></div>
+    </fieldset>
+    <label for="region">Regio yang dilihat</label>
+    <select id="region" data-testid="pilot-region">
+      <option value="whole">Seluruh tubuh</option><option value="headNeck">Kepala &amp; leher</option>
+      <option value="thorax">Toraks</option><option value="abdomen">Abdomen</option>
+      <option value="pelvis">Pelvis</option><option value="upperLimb">Ekstremitas atas</option>
+      <option value="lowerLimb">Ekstremitas bawah</option><option value="back">Punggung</option>
+    </select>
     <label for="search">Cari struktur</label>
     <input id="search" type="search" data-testid="pilot-search" autocomplete="off" placeholder="Misalnya: sternum, femur, heart">
     <div class="subnote">Hasil pencarian sesuai katalog model yang tersedia. Struktur karantina tidak akan dimuat.</div>
@@ -34,14 +45,28 @@
     <div class="actions">
       <button id="isolate" disabled data-testid="pilot-isolate">Isolasi struktur</button>
       <button id="clear" disabled data-testid="pilot-clear">Tampilkan semua</button>
+      <button id="hide" disabled data-testid="pilot-hide">Sembunyikan</button>
+      <button id="fade" disabled data-testid="pilot-fade">Pudarkan lainnya</button>
+      <button id="undo" disabled data-testid="pilot-undo">Urungkan</button>
+      <button id="restore" data-testid="pilot-restore">Pulihkan tampilan</button>
       <button id="front" data-testid="pilot-front">Tampak depan</button>
+      <button id="back" data-testid="pilot-back">Tampak belakang</button>
+      <button id="side" data-testid="pilot-side">Tampak samping</button>
+      <button id="top" data-testid="pilot-top">Tampak atas</button>
       <button id="fit" data-testid="pilot-fit">Pusatkan model</button>
+      <button id="zoomIn" data-testid="pilot-zoom-in">Perbesar</button>
+      <button id="zoomOut" data-testid="pilot-zoom-out">Perkecil</button>
+      <button id="share" data-testid="pilot-share">Salin tautan tampilan</button>
+      <button id="retry" hidden data-testid="pilot-retry">Coba muat lagi</button>
     </div>
+    <input id="shareUrl" type="text" readonly hidden aria-label="Tautan tampilan untuk disalin">
+    <label for="opacity">Transparansi model <output id="opacityValue">100%</output></label>
+    <input id="opacity" data-testid="pilot-opacity" type="range" min="15" max="100" value="100">
   </aside>
   <section class="stage" aria-label="Model anatomi interaktif">
     <div id="canvasHost" class="canvas-host" data-testid="pilot-viewport"></div>
     <div id="status" class="status" role="status" aria-live="polite" data-testid="pilot-status">Memuat katalog…</div>
-    <p class="instructions">Putar: seret · Geser: klik kanan · Zoom: scroll · Pilih: klik struktur</p>
+    <p class="instructions">Putar: seret · Geser: klik kanan · Zoom: scroll atau +/− · Pilih: klik struktur · Urungkan: Ctrl/⌘+Z</p>
   </section>
 </main>
 <footer>Simulasi dan ilustrasi pendidikan, bukan data pasien atau alat diagnosis. Hak distribusi publik belum disetujui.</footer>

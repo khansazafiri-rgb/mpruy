@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "baseline": "apps/anatomy/index.html and apps/anatomy/src (legacy NC application, local functional reference only)",
+  "candidate": "apps/4d-lab/atlas-preview (independent local experiment, excluded from ordinary public build)",
+  "statusMeaning": {
+    "implemented-unverified": "Implemented in local candidate with automated coverage but no Safari visual review",
+    "partial": "Some behavior exists, important baseline behavior remains absent",
+    "missing": "Not implemented in independent candidate"
+  },
+  "features": [
+    { "id": "scene", "critical": true, "baseline": "WebGL full-body scene", "candidate": "Three.js GLB scene with own renderer", "status": "implemented-unverified", "test": "independent-atlas-e2e (blocked in container)", "rights": "model-level provenance unresolved" },
+    { "id": "orbit-pan-zoom", "critical": true, "baseline": "Orbit, pan, zoom, on-screen zoom buttons", "candidate": "OrbitControls drag/pan/wheel; no zoom buttons", "status": "partial", "test": "manual browser QA pending", "rights": "three.js version audit pending" },
+    { "id": "camera-presets", "critical": true, "baseline": "Front, side, back, top and reset", "candidate": "Front, side, back, top and visible fit", "status": "implemented-unverified", "test": "independent-atlas-e2e (blocked in container)", "rights": "original candidate code; ownership review pending" },
+    { "id": "multi-system", "critical": true, "baseline": "Multiple systems with independent toggles", "candidate": "Six independently enabled groups, unload on disable", "status": "implemented-unverified", "test": "independentAtlasState.test.mjs; independent-atlas-e2e pending", "rights": "six GLB bundles pending per-mesh review" },
+    { "id": "layers", "critical": true, "baseline": "System layer stepping and presets", "candidate": "System visibility only", "status": "partial", "test": "manual review pending", "rights": "layer metadata provenance pending" },
+    { "id": "search", "critical": true, "baseline": "Structure search and suggestions across systems", "candidate": "Search and selectable results from allowed catalog", "status": "partial", "test": "independentAtlasPilot.test.mjs; e2e pending", "rights": "catalog source provenance pending" },
+    { "id": "structure-pick", "critical": true, "baseline": "Click structure and show info", "candidate": "Raycast selection and name/system/region context", "status": "partial", "test": "e2e pending", "rights": "descriptions/metadata still pending source review" },
+    { "id": "visibility", "critical": true, "baseline": "Hide, show, isolate, restore", "candidate": "Hide, isolate, undo, restore", "status": "implemented-unverified", "test": "independentAtlasState.test.mjs; e2e pending", "rights": "original candidate code" },
+    { "id": "transparency", "critical": true, "baseline": "Selected transparency and fade others", "candidate": "Global opacity and fade others; no per-structure opacity slider", "status": "partial", "test": "state unit test; e2e pending", "rights": "original candidate code" },
+    { "id": "undo", "critical": true, "baseline": "Undo viewer state", "candidate": "Thirty-step interaction history, excluding camera", "status": "partial", "test": "independentAtlasState.test.mjs", "rights": "original candidate code" },
+    { "id": "regions", "critical": true, "baseline": "Region-specific scenes and previews", "candidate": "Region filter from catalog, no region-specific framing or preview", "status": "partial", "test": "independentAtlasState.test.mjs; e2e pending", "rights": "catalog and thumbnails under review" },
+    { "id": "descriptions", "critical": true, "baseline": "Structure definitions and educational context", "candidate": "Structure name, system and region only", "status": "missing", "test": "none", "rights": "Wikipedia revision/GFDL and source text review needed" },
+    { "id": "learning", "critical": true, "baseline": "Study preparation and MEDCOEL curriculum links", "candidate": "Standalone local page", "status": "missing", "test": "none", "rights": "integration content must be reviewed" },
+    { "id": "shareable-state", "critical": false, "baseline": "URL state for camera/selection/visibility", "candidate": "Explicit share link restores validated camera, selection, systems, opacity and region", "status": "implemented-unverified", "test": "independentAtlasState.test.mjs; e2e pending", "rights": "original candidate code" },
+    { "id": "mobile", "critical": true, "baseline": "Responsive drawers and touch controls", "candidate": "Responsive layout and OrbitControls, no device QA", "status": "partial", "test": "Safari/iPad manual QA pending", "rights": "original candidate code" },
+    { "id": "keyboard", "critical": true, "baseline": "Keyboard camera, undo and help", "candidate": "Plus/minus zoom, Home fit, Escape clear, Ctrl/Command+Z undo; no help flow", "status": "partial", "test": "accessibility QA pending", "rights": "original candidate code" },
+    { "id": "loading-recovery", "critical": true, "baseline": "Progress, failure and recovery states", "candidate": "Loading/error status and model retry; no catalog retry or progress bar", "status": "partial", "test": "manual failure QA pending", "rights": "original candidate code" },
+    { "id": "licensing", "critical": true, "baseline": "Quarantine of withheld structures", "candidate": "Catalog and asset pack exclude known withheld systems", "status": "partial", "test": "test:licensing; commercial gate remains blocked", "rights": "upstream model attribution still inferred" },
+    { "id": "full-clinical-integration", "critical": true, "baseline": "Anatomy, library and 4D Lab navigation", "candidate": "Local opt-in page only", "status": "missing", "test": "none", "rights": "no public migration until all release gates pass" }
+  ]
+}

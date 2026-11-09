@@ -11,6 +11,7 @@ const PILOT_ROOT = path.join(ROOT, 'apps/4d-lab');
 const PILOT_FILES = [
   'src/independent-atlas/main.js',
   'src/independent-atlas/catalog.js',
+  'src/independent-atlas/viewState.js',
   'src/independent-atlas/styles.css',
   'atlas-preview/index.html',
 ];
