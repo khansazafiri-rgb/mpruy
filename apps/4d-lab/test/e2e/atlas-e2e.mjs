@@ -19,7 +19,7 @@ const results = [];
 const { srv, url } = await startServer();
 const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] });
 const ctx = await browser.newContext({ viewport: { width: 1760, height: 950 }, deviceScaleFactor: 1 });
-await ctx.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v1', 'done'); } catch { /* ignore */ } });
+await ctx.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v2', 'done'); } catch { /* ignore */ } });
 const page = await ctx.newPage();
 const errors = [];
 page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));

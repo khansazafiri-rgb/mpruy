@@ -178,7 +178,7 @@ body[data-tool=inspect] #viewport canvas { cursor: crosshair; }
 /* ---------------- UX upgrade: workspaces, axis-first control, anatomy assistance, learning (MEDCOEL style) */
 .topbar { gap: 12px; }
 .brand { display: inline-flex; align-items: center; gap: 8px; color: #fff; }
-.brand-mark { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: rgb(var(--gold)); color: rgb(var(--ink)); font-weight: 800; font-size: 14px; }
+.brand-mark { display: inline-block; flex: 0 0 30px; width: 30px; height: 30px; border-radius: 8px; background: url('../../../web/src/assets/logo-mark.webp') center / contain no-repeat; }
 .ws-nav { display: flex; gap: 2px; background: rgb(0 0 0 / .18); border-radius: 11px; padding: 3px; }
 .ws-nav button { border: 0; background: none; color: rgb(255 255 255 / .82); font-weight: 650; font-size: 13px; padding: 6px 12px; border-radius: 8px; white-space: nowrap; }
 .ws-nav button[aria-selected=true] { background: #fff; color: rgb(var(--brand-dark)); }
@@ -417,3 +417,19 @@ body[data-learning="1"] .view-menu, body[data-learning="1"] .monitor-toolbar .in
 .side-btn { border: 1px solid rgb(var(--line)); background: #fff; border-radius: 7px; padding: 2px 6px; font-size: 11px; font-weight: 600; }
 .view-menu { right: auto; left: 52px; }
 .view-menu > summary { margin-left: 0; }
+
+/* MEDCOEL official mark and first-use, step-by-step spotlight tour. The logo is imported from
+   the existing web app branding asset so Vite fingerprints it together with the lab build. */
+.replay-tour { margin-top: 10px; width: 100%; }
+.tour-root { position: fixed; inset: 0; z-index: 80; pointer-events: none; }
+.tour-focus { position: fixed; z-index: 1; border: 2px solid rgb(var(--gold)); border-radius: 12px; box-shadow: 0 0 0 100vmax rgb(9 22 28 / .57); transition: left .15s ease, top .15s ease, width .15s ease, height .15s ease; pointer-events: none; }
+.tour-root .tour { position: fixed; z-index: 2; transform: none; left: 12px; top: 12px; width: min(360px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow-y: auto; border: 1px solid rgb(var(--line)); border-top: 4px solid rgb(var(--gold)); box-shadow: 0 18px 44px rgb(0 0 0 / .3); pointer-events: auto; }
+.tour-root .tour h2 { font-size: 17px; margin: 4px 0 8px; line-height: 1.25; }
+.tour-root .tour p { font-size: 13px; margin: 0 0 12px; line-height: 1.5; }
+.tour-root .tour small { display: block; font-size: 12px; font-weight: 650; color: rgb(var(--brand-dark)); }
+.tour-root .tour .row { justify-content: space-between; align-items: center; margin: 12px 0 0; }
+.tour-root .tour .row .btn { min-width: 76px; }
+.tour-root .tour .tour-progress { display: flex; gap: 5px; margin: 9px 0 0; }
+.tour-root .tour .tour-progress i { flex: 1; height: 4px; background: rgb(var(--line)); border-radius: 999px; }
+.tour-root .tour .tour-progress i.active { background: rgb(var(--brand)); }
+@media (prefers-reduced-motion: reduce) { .tour-focus { transition: none; } }
