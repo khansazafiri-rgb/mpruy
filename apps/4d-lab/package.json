@@ -19,7 +19,8 @@
     "pipeline:test": "python3 pipeline/test_pipeline.py",
     "atlas:dataset": "node --max-old-space-size=8000 pipeline/atlas/build_atlas_dataset.mjs",
     "atlas:evidence": "node tools/atlas-slices.mjs public/data/atlas evidence/atlas-label-slices.png axial:110,60,0,-90,-170,-330 coronal:-30,20 sagittal:-60,0,45 && node tools/atlas-us-views.mjs",
-    "test:e2e:atlas": "node test/e2e/atlas-e2e.mjs"
+    "test:e2e:atlas": "node test/e2e/atlas-e2e.mjs",
+    "test:e2e:independent-atlas": "node test/e2e/independent-atlas-e2e.mjs"
   },
   "dependencies": {
     "three": "^0.185.1",
