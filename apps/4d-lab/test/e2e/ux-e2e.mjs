@@ -63,10 +63,16 @@ await page.goto(url);
 await page.waitForFunction(() => document.body.dataset.ready, null, { timeout: 120000 });
 await page.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.atlasState), null, { timeout: 240000 });
 
-await step('first screen: patient + image, direction pad, short 3-step tour instead of long text; rings hidden', async () => {
+await step('first screen: patient + image, direction pad, five-step guided first-use tour instead of long text; rings hidden', async () => {
   assert.ok(await page.getByTestId('tour').isVisible(), 'first-run tour shown');
   await shot('ux-01-first-run-tour');
-  await page.getByTestId('tour-next').click(); await page.getByTestId('tour-next').click(); await page.getByTestId('tour-next').click();
+  for (let step = 0; step < 5; step++) await page.getByTestId('tour-next').click();
+  const logoBackground = await page.locator('.brand-mark').evaluate((node) => getComputedStyle(node).backgroundImage);
+  assert.match(logoBackground, /logo-mark.*webp/, 'official MEDCOEL logo asset is used');
+  await page.getByTestId('help-btn').click();
+  await page.getByTestId('tour-replay').click();
+  assert.ok(await page.getByTestId('tour').isVisible(), 'tour can be replayed from help');
+  await page.getByTestId('tour-skip').click();
   assert.equal(await page.getByTestId('tour').count(), 0, 'tour closed');
   assert.ok(await page.getByTestId('probe-pad').isVisible());
   assert.equal(await lab(() => document.body.dataset.sidebar), 'closed');
@@ -252,7 +258,7 @@ await step('keyboard: arrows = patient directions, PageDown = posterior, Q/E rot
 for (const [name, dev] of [['laptop', { viewport: { width: 1280, height: 800 } }], ['ipad', devices['iPad Pro 11']], ['phone', devices['iPhone 13']]]) {
   await step(`layout ${name}: nothing clipped, pad usable`, async () => {
     const c = await browser.newContext({ ...dev }), p = await c.newPage(), errs = [];
-    await p.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v1', 'done'); } catch { /* ignore */ } });
+    await p.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v2', 'done'); } catch { /* ignore */ } });
     p.on('pageerror', (e) => errs.push(e.message));
     await p.goto(url); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
     await p.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.atlasState), null, { timeout: 240000 });
