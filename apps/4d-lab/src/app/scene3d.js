@@ -237,10 +237,18 @@ export class PatientScene {
     const outline = new THREE.LineLoop(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(3 * 80), 3)), new THREE.LineBasicMaterial({ color: 0x5fd0b5 }));
     this.planeOutline = outline;
     this.patient.add(this.planeMesh, outline);
+    this.hideImagePlane();
+  }
+
+  hideImagePlane() {
+    this.planeMesh.visible = false;
+    this.planeOutline.visible = false;
   }
 
   /** plane: {top,u,v,width,height} in LPS. image: {rgba,w,h} */
   setImagePlane(plane, image) {
+    if (!plane) { this.hideImagePlane(); return; }
+    this.planeMesh.visible = this.planeOutline.visible = true;
     const W = plane.width, H = plane.height, t = plane.top, u = plane.u, vv = plane.v;
     const p = (s, d) => [t[0] + u[0] * s + vv[0] * d, t[1] + u[1] * s + vv[1] * d, t[2] + u[2] * s + vv[2] * d];
     const pts = [p(-W / 2, 0), p(W / 2, 0), p(-W / 2, H), p(W / 2, H)];

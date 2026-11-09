@@ -59,6 +59,11 @@
     </div>
     <div class="viewport-wrap">
       <div id="viewport" class="viewport"></div>
+      <div class="scan-mode" data-testid="scan-mode" role="group" aria-label="Mode interaksi">
+        <span id="modeStatus" data-testid="mode-status" role="status">Probe klinis</span>
+        <button type="button" id="returnProbe" data-testid="return-probe" hidden>Kembali ke Probe USG</button>
+        <button type="button" id="freeMode" data-testid="free-mode">Free 3D / Bidang CT</button>
+      </div>
       <details class="view-menu" data-testid="view-menu"><summary>Tampilan 3D ▾</summary><div class="view-toolbar" role="toolbar" aria-label="Kamera dan tampilan">
         <div class="seg small" role="group" aria-label="Arah pandang kamera">
           <button data-view="whole" data-testid="cam-whole" class="atlas-only">Seluruh tubuh</button>
@@ -111,6 +116,13 @@
       <button id="expandBtn" data-testid="expand" aria-pressed="false">Perbesar</button>
       <button id="fullBtn" data-testid="fullscreen">Layar penuh</button>
     </div>
+    <section id="triControls" class="tri-controls" data-testid="tri-controls" aria-label="Navigasi irisan CT" hidden>
+      <div class="tri-controls-head"><strong>Tri-planar CT · titik silang terhubung</strong><button type="button" id="triHelp" data-testid="tri-help" aria-label="Ulangi panduan Tri-planar CT">? Panduan</button><button type="button" id="triReturnProbe" data-testid="tri-return-probe">Kembali ke Probe USG</button></div>
+      <p>Aksial: atas–bawah (S/I) · Koronal: depan–belakang (A/P) · Sagital: kanan–kiri pasien (R/L).</p>
+      <p>Klik citra untuk memindahkan titik silang. Scroll pada citra menggeser irisan; seret menggeser tampilan, ⌘/Ctrl + scroll memperbesar. Kontrol di bawah juga menggeser irisan tanpa menyentuh citra.</p>
+      <div id="triSliceRows" class="tri-slice-rows"></div>
+      <button type="button" id="triCenter" data-testid="tri-center">Pusatkan titik silang</button>
+    </section>
     <div class="monitor-body">
       <div class="monitor-wrap">
         <canvas id="monitor" data-testid="monitor-canvas" aria-label="Monitor citra: seret untuk geser, scroll untuk zoom (Tri-planar: scroll = irisan), klik untuk memilih struktur"></canvas>
