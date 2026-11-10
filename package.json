@@ -27,7 +27,8 @@
     "audit:commercial-evidence": "node licensing/tools/audit-commercial-evidence.mjs",
     "audit:bodyparts3d": "node licensing/tools/prepare-bodyparts3d-source.mjs",
     "audit:existing-controls": "node licensing/tools/reconcile-implemented-rights.mjs",
-    "audit:live-anatomy": "node scripts/audit-live-anatomy-exposure.mjs"
+    "audit:live-anatomy": "node scripts/audit-live-anatomy-exposure.mjs",
+    "build:bodyparts3d-candidate": "node apps/4d-lab/tools/build-bp3d-candidate.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

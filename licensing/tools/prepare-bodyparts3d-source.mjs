@@ -22,6 +22,7 @@ export const BP3D_OFFICIAL = Object.freeze({
   licensePage: 'https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html',
   downloadPage: 'https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html',
   namesUrl: 'https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_parts_list_e.txt',
+  elementsUrl: 'https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_element_parts.txt',
   archiveUrl: 'https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip',
   attribution: 'BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International',
 });
@@ -52,6 +53,47 @@ export function parseOfficialNames(tsv) {
   }
   if (!out.length) throw new Error('Empty official BodyParts3D name table.');
   return out;
+}
+// ISA data tables distinguish representation BP IDs from actual OBJ ELEMENT FJ IDs.
+// A row can map one FMA concept to several files, which must all be preserved.
+export function parseOfficialElements(tsv) {
+  if (typeof tsv !== 'string') throw new Error('Official elements table must be UTF-8.');
+  const lines = tsv.replace(/^\uFEFF/, '').trim().split(/\r?\n/);
+  if (lines.shift()?.trim() !== 'concept id\tname\telement file id')
+    throw new Error('Unexpected official element table header.');
+  const table = new Map();
+  for (const [i, line] of lines.entries()) {
+    if (!line.trim()) continue;
+    const cols = line.split('\t');
+    if (cols.length !== 3 || !/^FMA\d+$/.test(cols[0]) ||
+        !cols[1].trim() || !/^FJ\d+[A-Za-z]?$/.test(cols[2])) {
+      throw new Error('Unexpected official element row '+(i+2));
+    }
+    if (!table.has(cols[0])) table.set(cols[0],new Set());
+    table.get(cols[0]).add(cols[2]);
+  }
+  if (!table.size) throw new Error('Empty official elements table.');
+  return table;
+}
+export function mapActualMeshFiles(crosswalk, table, entries = null) {
+  const byFile = entries ? new Map(entries.filter(x=>/\.obj$/i.test(x))
+      .map(x=>[path.basename(x, path.extname(x)).toUpperCase(),x])) : null;
+  const candidates = crosswalk.candidates.map(item=>{
+    const matches=item.matches.map(match=>{
+      const elementFileIds=[...(table.get(match.fmaId)||[])].sort();
+      return {...match,elementFileIds,
+        sourceObjs:elementFileIds.map(id=>({fileId:id,archivePath:byFile?.get(id.toUpperCase())||null}))};
+    });
+    return {...item,matches,geometryIdentityVerified:false,redistributionApproved:false};
+  });
+  const allIds=[...new Set(candidates.flatMap(x=>x.matches.flatMap(m=>m.elementFileIds)))];
+  return {candidates,elementSummary:{
+    catalogNames:candidates.length,
+    matchedNamesWithElementIds:candidates.filter(x=>x.matches.some(m=>m.elementFileIds.length>0)).length,
+    distinctElementFileIds:allIds.length,
+    foundObjFiles:byFile ? allIds.filter(id=>byFile.has(id.toUpperCase())).length : null,
+    geometryIdentityVerified:0
+  }};
 }
 export function checkArchiveEntryNames(names) {
   if (!Array.isArray(names) || !names.length) throw new Error('Empty BodyParts3D archive listing.');
@@ -137,13 +179,13 @@ function parseArgs(argv) {
   for (let i = 0; i < argv.length;) {
     const key = argv[i++];
     if (key === '--download' && !vals[key]) { vals[key] = true; continue; }
-    if (!['--names', '--archive', '--out'].includes(key) || !argv[i] ||
+    if (!['--names', '--elements', '--archive', '--out'].includes(key) || !argv[i] ||
       argv[i].startsWith('--') || vals[key]) throw new Error('Invalid argument ' + key);
     vals[key] = argv[i++];
   }
   if (!vals['--names'] && !vals['--download'])
     throw new Error('Required: --download or --names official BodyParts3D isa_parts_list_e.txt');
-  if (vals['--download'] && (vals['--names'] || vals['--archive']))
+  if (vals['--download'] && (vals['--names'] || vals['--elements'] || vals['--archive']))
     throw new Error('Use either --download or explicit --names and --archive paths.');
   return vals;
 }
@@ -155,6 +197,16 @@ export async function makeLocalSourceReview(args) {
   const officialNames = parseOfficialNames(sourceNames.toString('utf8'));
   const catalog = JSON.parse(readFileSync(path.join(ROOT, 'apps/anatomy/public/data/atlas-catalog.json'), 'utf8'));
   const crosswalk = candidateCrosswalk(catalog, officialNames);
+  let elements = null, elementIndex = null;
+  if (args['--elements']) {
+    const file = path.resolve(args['--elements']);
+    if (path.basename(file) !== 'isa_element_parts.txt') throw new Error('Expected official element table filename.');
+    const data = readFileSync(file);
+    elementIndex = parseOfficialElements(data.toString('utf8'));
+    elements = {name:'isa_element_parts.txt',url:BP3D_OFFICIAL.elementsUrl,bytes:data.length,
+      sha256:createHash('sha256').update(data).digest('hex'),sourceConcepts:elementIndex.size};
+  }
+  let archiveEntries = null;
   let archive = null;
   if (args['--archive']) {
     const input = path.resolve(args['--archive']);
@@ -162,11 +214,11 @@ export async function makeLocalSourceReview(args) {
       throw new Error('Expected the official ISA 4.0 OBJ archive filename.');
     const bytes = statSync(input).size;
     if (bytes < 1000) throw new Error('Suspiciously small BodyParts3D source archive.');
-    const names = execFileSync('unzip', ['-Z', '-1', input],
+    archiveEntries = execFileSync('unzip', ['-Z', '-1', input],
       { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 })
       .trim().split(/\r?\n/);
     archive = { name: path.basename(input), url: BP3D_OFFICIAL.archiveUrl, bytes,
-      sha256: await sha256File(input), ...checkArchiveEntryNames(names) };
+      sha256: await sha256File(input), ...checkArchiveEntryNames(archiveEntries) };
   }
   const report = {
     schemaVersion: 1,
@@ -176,7 +228,8 @@ export async function makeLocalSourceReview(args) {
     namesTable: { name: 'isa_parts_list_e.txt', url: BP3D_OFFICIAL.namesUrl,
       bytes: sourceNames.length, sha256: createHash('sha256').update(sourceNames).digest('hex'),
       rows: officialNames.length },
-    archive, ...crosswalk,
+    archive, elements, ...crosswalk,
+    ...(elementIndex ? mapActualMeshFiles(crosswalk, elementIndex, archiveEntries) : {}),
   };
   if (args['--out']) {
     const file = path.resolve(ROOT, args['--out']);
@@ -195,15 +248,17 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       const dir = path.resolve(ROOT, 'local-data/licensing-quarantine/bp3d-4.0');
       args['--names'] = path.join(dir, 'isa_parts_list_e.txt');
       args['--archive'] = path.join(dir, 'isa_BP3D_4.0_obj_99.zip');
+      args['--elements'] = path.join(dir, 'isa_element_parts.txt');
       args['--out'] ||= 'local-data/licensing-quarantine/bp3d-4.0/review.json';
       await fetchOfficialFile(BP3D_OFFICIAL.namesUrl, args['--names'], 3 * 1024 * 1024);
+      await fetchOfficialFile(BP3D_OFFICIAL.elementsUrl, args['--elements'], 4 * 1024 * 1024);
       await fetchOfficialFile(BP3D_OFFICIAL.archiveUrl, args['--archive'], 300 * 1024 * 1024);
     }
     const result = await makeLocalSourceReview(args);
     console.log(JSON.stringify({
       note: result.warning, archive: result.archive,
       table: result.namesTable,
-      comparison: result.summary,
+      comparison: result.summary, sourceElements: result.elementSummary || null,
       report: 'Full mapping can be written under local-data using --out',
     }, null, 2));
   } catch (error) { console.error(error.message); process.exitCode = 1; }

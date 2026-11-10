@@ -47,6 +47,22 @@ The manifest includes:
 
 The code rejects unrecognized official tabular schemas and suspicious archive entry names. It does not extract ZIP entries or write files anywhere under the public web roots.
 
+## Actual source OBJ → separate GLB candidate (no UI changes)
+
+BodyParts3D's official `isa_parts_list_e.txt` identifies FMA concepts and BP representation IDs, but **the source archive contains ELEMENT meshes identified by FJ file IDs**. Official `isa_element_parts.txt` is the required FMA → FJ relationship. Matching names alone must not be treated as obtaining the correct source geometry. The updated `audit:bodyparts3d` command now downloads all **three** official resources and records `elementSummary` plus per-candidate `sourceObjs` with exact archive paths.
+
+To produce a local, *non-distributable* model candidate with original source mesh identity:
+
+```sh
+npm ci --prefix apps/4d-lab
+npm run audit:bodyparts3d -- --download
+npm run build:bodyparts3d-candidate -- --structure "Femur.l"
+```
+
+The converter reads FJ OBJ meshes directly from the verified official ZIP, writes a GLB and SHA-256 lineage manifest under `local-data/licensing-quarantine/bp3d-candidates/Femur.l/`. It does **not** write the publicly served `skeletal.glb` or any atlas/4D Lab dataset.
+
+The conversion **preserves native DBCLS coordinates without guessing patient registration or anatomical unit scale**. The resulting candidate requires visual/anatomical validation, frame alignment against the MEDCOEL patient, per-mesh attribution and geometry QA before it may replace any public anatomy, CT label, or ultrasound simulation input. The source is only a candidate. All release gates remain blocked, and the original 3D/4D UI is unchanged.
+
 ## What must happen next before any replacement is approved
 
 1. Download and hash the exact official archive, review archive structure, and pin publisher release evidence.
