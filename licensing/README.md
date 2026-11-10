@@ -42,6 +42,18 @@ The upstream `nqwrc/3d-anatomy` application code explicitly carries **CC BY-NC-S
 
 Run `npm run audit:commercial-evidence` to validate the machine-readable worklist and print unresolved records. This command passes when the **evidence register is well formed**, not when distribution is approved. To require every record verified, run `node licensing/tools/audit-commercial-evidence.mjs --require-clearance` (currently deliberately fails). Public staging remains blocked by the separate exact-build `commercial-release.json` gate.
 
+## Independent model-source remediation for the approved 3D/4D experience
+
+New [official BodyParts3D 4.0 onboarding notes](BP3D_OFFICIAL_SOURCE_REPLACEMENT.md) and
+`npm run audit:bodyparts3d -- --download` provide a reproducible, opt-in
+download/hash/inventory of the DBCLS **original geometry source**, plus a
+**name-only, unverified** FMA/BP candidate mapping for the 2,237 available
+Atlas structures. This does **not** alter any model or the owner's accepted
+3D Anatomy / 4D Lab UI; does **not** clear the 14 unresolved rights records;
+and must not be used as approval for the existing mixed Z-Anatomy GLBs or
+CT/USG derivatives. Genuine geometry-level verification and separate NC
+application code remediation are still mandatory.
+
 ## Commercial release procedure
 
 Do not classify MEDCOEL as noncommercial merely because access is free. Core assets must permit
