@@ -64,3 +64,16 @@ python3 video/live-4d-bandingkan/build.py <folder-rekaman> --still 1.6 # satu bi
 node video/live-4d-bandingkan/cover/render-cover.cjs                   # cover.png (bingkai sumber: cover/*.jpg)
 ```
 Mengubah isi video: edit `edl.json` (tiap shot: `type`, `at`/`dur`, detik awal rekaman, kunci penggeser `pos`, jendela teks `teks`) dan daftar `sfx` (waktu keluaran, jenis). Crop dan ukuran panel ada di bagian atas `build.py`. Merender penuh memakan waktu sekitar 10-15 menit.
+
+## Hasil pemeriksaan (`medcoel-live-4d-bandingkan.mp4`, H.264 + AAC, 19,82 dtk, 30 fps)
+- Bingkai pertama sudah berisi tampilan Normal yang bergerak (jantung berdenyut di citra CT, model 3D); peralihan ke Efusi pada 1,10 dtk jatuh persis pada ketukan ke-3 (109 BPM) bersama bunyi "swap".
+- Loudness terukur sekitar -14,1 LUFS, puncak sampel -1,3 dBTP. Musik diturunkan sebentar sebelum/sesudah tiap peralihan.
+- Lompatan antar-bingkai tertinggi terjadi pada potongan terencana (1,07; 4,37; 6,57; 8,77; 13,17; 15,37 dtk), tidak ada lonjakan di luar potongan.
+- Still: `still/01..10-*.png`, `still/lembar-360px.png`, `still/awal-tengah-akhir-360px.png`, `cover/cover-bersama-awal-video-360px.png`.
+
+## Kekurangan yang diketahui
+- Video belum diputar di ponsel sungguhan dan belum didengarkan manusia; yang diperiksa: bingkai tiap 0,4 dtk, still 360 px, selisih antar-bingkai, level audio.
+- Gerak di bingkai pertama halus (denyut jantung pada citra CT); gerak besar baru terjadi saat peralihan di 1,10 dtk.
+- Resolusi sumber citra CT kasar (berpiksel) dan tampak berbutir saat diperbesar; itu bawaan aplikasi. Citra USG simulasi gelap dan kurang kontras.
+- Teks kecil di dalam UI asli (menu skenario, kartu) terbaca di 360 px hanya pada shot yang diperbesar.
+- Nada "swap" dan musik adalah sintesis sederhana, bukan produksi studio.
