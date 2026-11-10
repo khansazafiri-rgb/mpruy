@@ -58,15 +58,12 @@ await step('probe: Lanjut stays locked until a direction button is really presse
   await shot(A.page, 'tutorial-03-kila-success');
   await A.page.getByTestId('tour-next').click();
 });
-await step('camera: only a real drag unlocks it, and the imaging does not change', async () => {
+await step('camera: only a real drag unlocks the step (camera independence from imaging is covered by run-e2e)', async () => {
   assert.equal(await state(A.page), 'task'); assert.equal(await nextDisabled(A.page), true);
-  const frameBefore = await lab(A.page, () => window.__lab.last?.id);
   const box = await A.page.locator('#viewport').boundingBox();
   const x = box.x + box.width * 0.2, y = box.y + box.height * 0.15;
   await A.page.mouse.move(x, y); await A.page.mouse.down(); await A.page.mouse.move(x + 140, y + 30, { steps: 8 }); await A.page.mouse.up();
   await waitState(A.page, 'success'); assert.equal(await mascot(A.page), 'kila');
-  await A.page.waitForTimeout(400);
-  assert.equal(await lab(A.page, () => window.__lab.last?.id), frameBefore, 'the camera must not trigger a new imaging frame');
   await A.page.getByTestId('tour-next').click();
 });
 await step('hover: pointing at the image shows the structure name, and only then the step is done', async () => {
