@@ -24,7 +24,6 @@ jobs:
           node-version: '22'
       - name: Run public endpoint audit (no server changes)
         id: audit
-        continue-on-error: true
         run: |
           mkdir -p local-data/live-audit
           node scripts/audit-live-anatomy-exposure.mjs --out local-data/live-audit/report.json
