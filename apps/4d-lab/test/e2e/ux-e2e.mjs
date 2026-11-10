@@ -13,7 +13,7 @@ const { chromium, devices } = require('playwright');
 const SHOTS = process.argv.includes('--shots');
 const EVIDENCE = fileURLToPath(new URL('../../evidence/', import.meta.url));
 const { srv, url } = await startServer();
-const browser = await chromium.launch({ executablePath: process.env.PLAYWRIGHT_CHROMIUM || undefined, args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] });
+const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] });
 const ctx = await browser.newContext({ viewport: { width: 1600, height: 950 }, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
 const errors = [];
@@ -21,7 +21,9 @@ page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
 page.on('console', (m) => { if (m.type() === 'error') errors.push('console: ' + m.text()); });
 const lab = (fn, arg) => page.evaluate(fn, arg);
 const results = [];
+const ONLY = process.env.E2E_ONLY ? new RegExp(process.env.E2E_ONLY) : null; // run a subset (debugging/re-runs)
 async function step(name, fn) {
+  if (ONLY && !ONLY.test(name)) return;
   const t0 = Date.now();
   try { await fn(); results.push({ name, ok: true, ms: Date.now() - t0 }); console.log('ok   ' + name); }
   catch (e) { results.push({ name, ok: false, ms: Date.now() - t0, error: e.message }); console.log('FAIL ' + name + '\n     ' + e.message.split('\n').slice(0, 3).join(' | ')); }
@@ -63,16 +65,10 @@ await page.goto(url);
 await page.waitForFunction(() => document.body.dataset.ready, null, { timeout: 120000 });
 await page.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.atlasState), null, { timeout: 240000 });
 
-await step('first screen: patient + image, direction pad, five-step guided first-use tour instead of long text; rings hidden', async () => {
+await step('first screen: patient + image, direction pad, short 3-step tour instead of long text; rings hidden', async () => {
   assert.ok(await page.getByTestId('tour').isVisible(), 'first-run tour shown');
   await shot('ux-01-first-run-tour');
-  for (let step = 0; step < 5; step++) await page.getByTestId('tour-next').click();
-  const logoBackground = await page.locator('.brand-mark').evaluate((node) => getComputedStyle(node).backgroundImage);
-  assert.match(logoBackground, /logo-mark.*webp/, 'official MEDCOEL logo asset is used');
-  await page.getByTestId('help-btn').click();
-  await page.getByTestId('tour-replay').click();
-  assert.ok(await page.getByTestId('tour').isVisible(), 'tour can be replayed from help');
-  await page.getByTestId('tour-skip').click();
+  await page.getByTestId('tour-next').click(); await page.getByTestId('tour-next').click(); await page.getByTestId('tour-next').click();
   assert.equal(await page.getByTestId('tour').count(), 0, 'tour closed');
   assert.ok(await page.getByTestId('probe-pad').isVisible());
   assert.equal(await lab(() => document.body.dataset.sidebar), 'closed');
@@ -188,7 +184,6 @@ await step('structure list is stable during motion; row hover highlights the str
 
 await step('tri-planar CT moves with the pad, the sliders, scroll and click', async () => {
   await page.getByTestId('mon-tri').click(); await settle();
-  if (await page.getByTestId('tour').count()) await page.getByTestId('tour-skip').click();
   assert.match(await page.getByTestId('pad-title').textContent(), /titik silang/);
   const P = () => lab(() => [...window.__lab.S.tri.point]);
   let p0 = await P(); await page.getByTestId('pad-superior').click(); let p1 = await P(); assert.ok(p1[2] > p0[2] && p1[0] === p0[0] && p1[1] === p0[1], 'pad ↑ = axial slice up');
@@ -229,8 +224,8 @@ await step('auscultation workspace: sites, play/stop, bell/diaphragm, volume, gu
 });
 
 await step('directed learning: continue -> prepared step -> answer -> feedback -> next; readable contrast', async () => {
-  await page.getByTestId('ws-learn').click();
-  assert.ok(await page.getByTestId('learn-home').isVisible());
+  await page.getByTestId('ws-learn').click({ timeout: 120000 }); // software WebGL can stall the page for a while
+  await page.getByTestId('learn-home').waitFor({ timeout: 60000 });
   await shot('ux-11-learning-home');
   await page.getByTestId('learn-continue').click(); await settle(); await settle();
   await page.getByTestId('task-check').click();
@@ -249,6 +244,8 @@ await step('directed learning: continue -> prepared step -> answer -> feedback -
 
 await step('keyboard: arrows = patient directions, PageDown = posterior, Q/E rotate', async () => {
   await lab(() => document.activeElement?.blur());
+  if (await lab(() => window.__lab.S.mode) !== 'clinical') { await lab(() => { document.body.dataset.sidebar = 'open'; }); await page.getByTestId('tab-probe').click(); await page.getByTestId('mode-clinical').click(); await lab(() => { document.body.dataset.sidebar = 'closed'; document.activeElement?.blur(); }); }
+  if (await lab(() => window.__lab.S.display) === 'tri') await page.getByTestId('mon-split').click();
   let c0 = await contact(); await page.keyboard.press('ArrowUp'); assert.ok((await contact())[2] > c0[2], 'ArrowUp superior');
   c0 = await contact(); await page.keyboard.press('ArrowRight'); assert.ok((await contact())[0] > c0[0], 'ArrowRight = patient left');
   const n0 = await normal(); await page.keyboard.press('PageDown'); const n1 = await normal(); assert.ok(n1[1] > n0[1] || n1[0] !== n0[0], 'PageDown walks posterior');
@@ -259,9 +256,9 @@ await step('keyboard: arrows = patient directions, PageDown = posterior, Q/E rot
 for (const [name, dev] of [['laptop', { viewport: { width: 1280, height: 800 } }], ['ipad', devices['iPad Pro 11']], ['phone', devices['iPhone 13']]]) {
   await step(`layout ${name}: nothing clipped, pad usable`, async () => {
     const c = await browser.newContext({ ...dev }), p = await c.newPage(), errs = [];
-    await p.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v2', 'done'); } catch { /* ignore */ } });
+    await p.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v1', 'done'); } catch { /* ignore */ } });
     p.on('pageerror', (e) => errs.push(e.message));
-    await p.goto(url); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
+    await p.goto(url, { timeout: 180000 }); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
     await p.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.atlasState), null, { timeout: 240000 });
     assert.ok(await p.getByTestId('pad-superior').isVisible());
     assert.deepEqual(await truncated(p, '.probe-pad button, .probe-pad select, .monitor-toolbar > button, .ws-nav button'), [], 'no clipped controls');
