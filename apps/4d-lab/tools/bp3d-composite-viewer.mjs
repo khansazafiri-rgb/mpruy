@@ -1,7 +1,7 @@
 // Independent OFF-PRODUCTION review page. Uses only official converted BodyParts3D
 // candidates and existing MIT Three.js; never imports the legacy Atlas viewer.
 export function buildCompositeHTML() {
-  return String.raw\`<!doctype html>
+  return String.raw`<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -171,5 +171,5 @@ makeSystems();queueActive();
 function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,cam)}animate();
 </script>
 </body>
-</html>\`;
+</html>`;
 }
