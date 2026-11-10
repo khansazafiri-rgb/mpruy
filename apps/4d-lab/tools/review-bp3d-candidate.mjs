@@ -39,6 +39,42 @@ export function summarizeGeometry(doc) {
   return {sourceMeshes:meshes.length,triangles,vertices,primitives,meshes,
     boundsNative:{min,max,span,center}};
 }
+// Read-only quality indicators. Native units are unknown and thin anatomy can
+// be legitimate, so these flags request review rather than reject a mesh.
+export function diagnoseGeometry(doc, summary = summarizeGeometry(doc)) {
+  const longest = Math.max(...summary.boundsNative.span);
+  const meshes = [], flags = new Set();
+  for (const mesh of doc.getRoot().listMeshes()) {
+    const lo=[Infinity,Infinity,Infinity],hi=[-Infinity,-Infinity,-Infinity], problems=new Set();
+    let triangles=0, invalidNormals=0, missingNormals=0;
+    for (const prim of mesh.listPrimitives()) {
+      const position=prim.getAttribute('POSITION'),normal=prim.getAttribute('NORMAL');
+      const count=position?.getCount()||0;
+      if (!count) problems.add('missing-positions');
+      if (!normal || normal.getCount()!==count) {missingNormals+=count;problems.add('missing-or-mismatched-normals');}
+      const xyz=[0,0,0], n=[0,0,0];
+      for(let i=0;i<count;i++){
+        position.getElement(i,xyz);
+        for(let axis=0;axis<3;axis++){lo[axis]=Math.min(lo[axis],xyz[axis]);hi[axis]=Math.max(hi[axis],xyz[axis]);}
+        if(normal&&i<normal.getCount()){
+          normal.getElement(i,n);
+          const length=Math.hypot(...n);
+          if(!n.every(Number.isFinite)||length<0.5||length>1.5) invalidNormals++;
+        }
+      }
+      triangles+=(prim.getIndices()?.getCount()||count)/3;
+    }
+    const span=hi.map((value,i)=>value-lo[i]);
+    if(triangles<4)problems.add('very-few-triangles');
+    if(longest>0&&Math.max(...span)<longest*0.005)problems.add('small-element-relative-to-structure');
+    if(Math.max(...span)>0&&Math.min(...span)<Math.max(...span)*0.0001)problems.add('thin-or-planar-element');
+    if(invalidNormals)problems.add('invalid-normals');
+    for(const problem of problems)flags.add(problem);
+    meshes.push({elementId:mesh.getName(),triangles,spanNative:span,
+      missingNormals,invalidNormals,flags:[...problems].sort()});
+  }
+  return {meshCount:meshes.length,flags:[...flags].sort(),meshes};
+}
 export function verifyLineage({bytes,lineage,summary}){
   if(!lineage||lineage.approvedForDistribution!==false||
      lineage.geometryAnatomyValidated!==false||lineage.registrationValidated!==false)

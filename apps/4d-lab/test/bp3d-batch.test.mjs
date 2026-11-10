@@ -6,6 +6,11 @@ import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {planBatch,safeStructureId,suggestForUnmatched,buildBulkHTML,REVIEW_SYSTEM_PALETTE,runBatch} from '../tools/batch-bp3d-candidates.mjs';
+import {TISSUE_MATERIALS,tissueClass,materialFor} from '../tools/bp3d-review-materials.mjs';
+import {reconcileMapping,reviewTokens} from '../tools/bp3d-mapping-review.mjs';
+import {Document} from '@gltf-transform/core';
+import {diagnoseGeometry,summarizeGeometry} from '../tools/review-bp3d-candidate.mjs';
+import {auditGeneratedBatch} from '../tools/bp3d-batch-audit.mjs';
 
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 test('single batch plans eligible matches and retains unmapped/ambiguous source names',()=>{
@@ -87,7 +92,22 @@ test('one invocation processes fake official ZIP and writes a structured report,
     assert.match(fs.readFileSync(path.join(out,'index.html'),'utf8'),/GLTFLoader/);
     assert.ok(fs.existsSync(path.join(out,'structures',result.converted[0].id,'lineage.json')));
     assert.ok(fs.existsSync(path.join(out,'mapping-gaps.json')));
+    const mapping=JSON.parse(fs.readFileSync(path.join(out,'mapping-review.json'),'utf8'));
+    assert.equal(mapping.summary.catalogGaps,2236);
+    assert.equal(mapping.summary.automaticallyApproved,0);
+    assert.equal(mapping.catalogCount,2237);
+    assert.equal(mapping.directConvertedCount,1);
+    assert.match(mapping.sourceHashes.archiveSha256,/^[a-f0-9]{64}$/);
+    assert.equal(mapping.queue.length,2236);
+    assert.equal(fs.readFileSync(path.join(out,'mapping-review.csv'),'utf8').trim().split('\n').length,2237);
+    assert.ok(fs.existsSync(path.join(out,'review-materials.js')));
     assert.ok(!result.converted[0].modelPath.startsWith('/'));
+    const audit=await auditGeneratedBatch(out);
+    assert.equal(audit.independentModels,1);
+    assert.deepEqual(audit.errors,[]);
+    const model=path.join(out,result.converted[0].modelPath);
+    const bytes=fs.readFileSync(model);fs.writeFileSync(model,Buffer.concat([bytes,Buffer.from('tampered')]));
+    assert.match((await auditGeneratedBatch(out)).errors[0],/hash mismatch/);
   }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
 
@@ -96,14 +116,88 @@ test('all 6 systems receive distinct illustrative review colors and user can tur
     ['cardiovascular','joints','lymphatic','muscular','skeletal','visceral']);
   assert.equal(new Set(Object.values(REVIEW_SYSTEM_PALETTE)).size,6);
   const html=buildBulkHTML();
-  assert.match(html,/id="palette" type="checkbox" checked/);
+  assert.match(html,/id="palette" type="checkbox"/);
+  assert.match(html,/id="tissue" type="checkbox" checked/);
   assert.match(html,/Illustrative system colors, not verified tissue colors/);
-  assert.match(html,/System colors are illustrative, not verified anatomy colors/);
+  assert.match(html,/Tissue\/system colors are illustrative, not verified anatomy colors/);
   assert.match(html,/function recolor\(\)/);
   assert.match(html,/recolor\(\);/);
-  assert.match(html,/mat\.color\.setHex\(color\)/);
+  assert.match(html,/mat\.color\.setHex\(style\.color\)/);
   assert.match(html,/const neutralColor=0xc8cbd0/);
   assert.match(html,/id="legend"/);
   assert.match(html,/ren\.setSize\(w,h,true\)/);
   assert.match(html,/NOT FOR PUBLIC RELEASE/);
+  assert.match(html,/BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4\.0 International/);
+  assert.match(html,/id="source-credit"/);
+});
+
+test('every skeletal bone and every skeletal muscle has one consistent tissue material',()=>{
+  for(const name of ['Femur.l','Rib 1.r','Left temporal bone'])
+    assert.equal(materialFor({name,system:'skeletal'}).color,TISSUE_MATERIALS.bone.color);
+  for(const name of ['Biceps brachii.l','Trapezius.r','Intercostales'])
+    assert.equal(materialFor({name,system:'muscular'}).color,TISSUE_MATERIALS.muscle.color);
+  assert.equal(tissueClass({name:'Great saphenous vein',system:'cardiovascular'}),'vein');
+  assert.equal(tissueClass({name:'Femoral artery',system:'cardiovascular'}),'artery');
+  assert.equal(tissueClass({name:'Unspecified vessel',system:'cardiovascular'}),'vessel');
+  assert.equal(materialFor({name:'Femur.l',system:'skeletal'},'neutral').color,0xc8cbd0);
+  assert.equal(materialFor({name:'Femur.l',system:'skeletal'},'system').color,REVIEW_SYSTEM_PALETTE.skeletal);
+});
+
+test('one converted structure retains independent FJ elements with read-only normal and thickness diagnostics',()=>{
+  const doc=new Document(),buffer=doc.createBuffer();
+  const make=(name,points,normals)=>{
+    const p=doc.createAccessor().setType('VEC3').setArray(new Float32Array(points)).setBuffer(buffer);
+    const prim=doc.createPrimitive().setAttribute('POSITION',p);
+    if(normals)prim.setAttribute('NORMAL',doc.createAccessor().setType('VEC3')
+      .setArray(new Float32Array(normals)).setBuffer(buffer));
+    doc.createMesh(name).addPrimitive(prim);
+  };
+  make('FJ1000',[0,0,0,1,0,0,0,1,0],[0,0,1,0,0,1,0,0,1]);
+  make('FJ1001',[0,0,0,.00001,0,0,0,.00001,0],null);
+  const before=doc.getRoot().listMeshes().map(x=>x.getName());
+  const diagnostics=diagnoseGeometry(doc,summarizeGeometry(doc));
+  assert.deepEqual(doc.getRoot().listMeshes().map(x=>x.getName()),before);
+  assert.equal(diagnostics.meshCount,2);
+  assert.ok(diagnostics.flags.includes('missing-or-mismatched-normals'));
+  assert.ok(diagnostics.flags.includes('small-element-relative-to-structure'));
+  assert.ok(diagnostics.flags.includes('thin-or-planar-element'));
+});
+
+test('all unmatched names form a review-only CSV with Latin synonyms, source and side conflict checks',()=>{
+  assert.deepEqual(reviewTokens('Arteria femoralis.l'),['left','artery','femoralis']);
+  assert.deepEqual(reviewTokens('A. femoralis.l'),['left','artery','femoralis']);
+  const gaps=[{name:'Arteria femoralis.l',system:'cardiovascular',reason:'unmatched'},
+    {name:'Another artery.r',system:'cardiovascular',reason:'unmatched'},
+    {name:'Unknown muscle',system:'muscular',reason:'unmatched'},
+    {name:'A. femoralis.l',system:'cardiovascular',reason:'unmatched'}];
+  const officialRows=[
+    {name:'left femoralis artery',fmaId:'FMA1',bpId:'BP1'},
+    {name:'right femoralis artery',fmaId:'FMA2',bpId:'BP2'},
+    {name:'right another vein',fmaId:'FMA3',bpId:'BP3'},
+  ];
+  const {report,csv}=reconcileMapping({gaps,officialRows,converted:[
+    {name:'A',fmaId:'FMA9',bpId:'BP9'},{name:'B',fmaId:'FMA9',bpId:'BP9'}],
+    elementIndex:new Map([['FMA1',new Set(['FJ1'])]]),archiveFiles:['dir/FJ1.obj']});
+  assert.equal(report.queue.length,4);
+  assert.equal(report.queue[0].suggestions[0].fmaId,'FMA1');
+  assert.equal(report.queue[0].suggestions[0].approved,false);
+  assert.equal(report.queue[0].rejections.oppositeSide,1);
+  assert.ok(report.queue[1].rejections.tissueType>0);
+  assert.ok(report.queue[3].suggestions[0].warnings.includes('abbreviation-expanded-check-meaning'));
+  assert.notEqual(report.queue[3].suggestions[0].confidence,'high-review');
+  assert.equal(report.summary.duplicateDirectIdentities,1);
+  assert.equal(report.summary.automaticallyApproved,0);
+  assert.equal(report.systems.cardiovascular.unmatched,3);
+  assert.equal(csv.trim().split('\n').length,5);
+});
+
+test('a branch must not score as high confidence for its parent artery',()=>{
+  const {report}=reconcileMapping({
+    gaps:[{name:'Anterior branch of renal artery.l',system:'cardiovascular',reason:'unmatched'}],
+    officialRows:[{name:'left renal artery',fmaId:'FMA1',bpId:'BP1'}],
+    elementIndex:new Map([['FMA1',new Set(['FJ1'])]]),archiveFiles:['FJ1.obj']});
+  assert.equal(report.queue[0].suggestions[0].officialName,'left renal artery');
+  assert.equal(report.queue[0].suggestions[0].confidence,'medium-review');
+  assert.ok(report.queue[0].suggestions[0].similarity<0.85);
+  assert.equal(report.summary.automaticallyApproved,0);
 });

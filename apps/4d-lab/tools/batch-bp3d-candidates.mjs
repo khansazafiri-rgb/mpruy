@@ -12,7 +12,9 @@ import {NodeIO} from '@gltf-transform/core';
 import {parseOfficialNames,parseOfficialElements,candidateCrosswalk,mapActualMeshFiles,
   checkArchiveEntryNames,BP3D_OFFICIAL,normalizeAnatomyName} from '../../../licensing/tools/prepare-bodyparts3d-source.mjs';
 import {makeGlb,readObjTriangles} from './build-bp3d-candidate.mjs';
-import {summarizeGeometry,verifyLineage} from './review-bp3d-candidate.mjs';
+import {summarizeGeometry,diagnoseGeometry,verifyLineage} from './review-bp3d-candidate.mjs';
+import {SYSTEM_MATERIALS,tissueClass} from './bp3d-review-materials.mjs';
+import {reconcileMapping} from './bp3d-mapping-review.mjs';
 
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 const PRIVATE=path.join(ROOT,'local-data','licensing-quarantine');
@@ -90,17 +92,14 @@ export function suggestForUnmatched(gaps, officialRows, {maxResults=3}={}){
 }
 // Presentation-only colors for the independent source-review app; these are
 // not tissue-color annotations from the publisher and do not alter source GLBs.
-export const REVIEW_SYSTEM_PALETTE=Object.freeze({
-  skeletal:0xe8d8b6, muscular:0xbd626d, joints:0x75b6c4,
-  cardiovascular:0xcc6671, lymphatic:0x77bd8e, visceral:0xd2a36b
-});
+export const REVIEW_SYSTEM_PALETTE=SYSTEM_MATERIALS;
 export function buildBulkHTML(){
   return [
     '<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>',
     '<title>BodyParts3D bulk geometry review — local only</title>',
     '<style>*{box-sizing:border-box}body{margin:0;background:#10191f;color:#e8f3f1;font:14px system-ui;overflow:hidden}',
     'header{height:66px;background:#1a333b;display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap}',
-    'label{cursor:pointer}#palette-note{color:#c5e1da;font-size:12px}#legend{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px}#legend span{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#d4e3e5}#legend i{width:9px;height:9px;display:inline-block;border-radius:50%}',
+    'label{cursor:pointer}#palette-note{color:#c5e1da;font-size:12px}#legend{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px}#legend span{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#d4e3e5}#legend i{width:9px;height:9px;display:inline-block;border-radius:50%}#source-credit{font-size:11px;line-height:1.4;color:#b8d4d5}#source-credit a{color:#a9edc9}',
     'strong{color:#a9edc9}#layout{display:flex;height:calc(100dvh - 110px)}',
     'aside{width:290px;flex:none;background:#15262d;padding:12px;overflow:auto}aside input,aside select{width:100%;margin-bottom:10px;padding:9px;border-radius:5px;background:#213840;color:white;border:1px solid #4d737f}',
     'aside button{display:block;width:100%;border:0;background:none;color:#b7d8df;text-align:left;padding:8px;border-bottom:1px solid #2c3d46;cursor:pointer}',
@@ -110,31 +109,39 @@ export function buildBulkHTML(){
     '@media(max-width:700px){header{height:auto;min-height:66px}#layout{height:calc(100dvh - 160px)}aside{width:150px;padding:6px}aside button{font-size:11px}footer{height:auto}}',
     '</style><script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/examples/jsm/"}}</script>',
     '</head><body><header><strong>Official BodyParts3D 4.0 • Batch review</strong>',
-    '<span id="summary">Loading inventory…</span><label><input id="palette" type="checkbox" checked/> Color by system</label><label><input id="wire" type="checkbox"/> Wireframe</label>',
+    '<span id="summary">Loading inventory…</span><label><input id="palette" type="checkbox"/> Color by system</label><label><input id="tissue" type="checkbox" checked/> Tissue classes</label><label><input id="contrast" type="checkbox"/> High contrast</label><label><input id="wire" type="checkbox"/> Wireframe</label>',
     '<button id="reset">Reset camera</button><span id="status"></span></header>',
-    '<div id="layout"><aside><input id="search" type="search" placeholder="Find structure…"/><select id="system"><option value="">All systems</option></select><div id="palette-note">Illustrative system colors, not verified tissue colors</div><div id="legend"></div><div id="items"></div></aside>',
+    '<div id="layout"><aside><input id="search" type="search" placeholder="Find structure…"/><select id="system"><option value="">All systems</option></select><div id="palette-note">Illustrative system colors, not verified tissue colors</div><div id="legend"></div><p id="source-credit">BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International. <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html">Source and license</a>.</p><div id="items"></div></aside>',
     '<main><div id="canvas"></div><div id="metrics">Select a candidate</div></main></div>',
-    '<footer>NOT FOR PUBLIC RELEASE • System colors are illustrative, not verified anatomy colors • Not registered to MEDCOEL CT/USG • No current assets replaced.</footer>',
+    '<footer>NOT FOR PUBLIC RELEASE • Tissue/system colors are illustrative, not verified anatomy colors • Not registered to MEDCOEL CT/USG • No current assets replaced.</footer>',
     '<script type="module">',
     "import * as THREE from 'three';",
     "import {OrbitControls} from 'three/addons/controls/OrbitControls.js';",
     "import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';",
+    "import {TISSUE_MATERIALS,SYSTEM_MATERIALS,materialFor,tissueClass} from './review-materials.js';",
     "const root=document.getElementById('canvas'),scene=new THREE.Scene();scene.background=new THREE.Color(0x10191f);",
     "const cam=new THREE.PerspectiveCamera(45,1,.001,1e6),ren=new THREE.WebGLRenderer({antialias:true,powerPreference:'low-power'});",
     "ren.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));root.appendChild(ren.domElement);",
-    "scene.add(new THREE.HemisphereLight(0xffffff,0x405967,2.2));",
-    "const sun=new THREE.DirectionalLight(0xffffff,1.8);sun.position.set(1,2,3);scene.add(sun);",
+    "ren.toneMapping=THREE.ACESFilmicToneMapping;ren.toneMappingExposure=1.24;",
+    "const ambient=new THREE.HemisphereLight(0xecf5ef,0x344653,1.25);scene.add(ambient);",
+    "const sun=new THREE.DirectionalLight(0xfff4e3,2.35);sun.position.set(1,2,3);scene.add(sun);",
+    "const rim=new THREE.DirectionalLight(0xaacbd8,1.05);rim.position.set(-2,1,-2);scene.add(rim);",
     "const control=new OrbitControls(cam,ren.domElement);control.enableDamping=true;",
-    "const systemPalette="+JSON.stringify(REVIEW_SYSTEM_PALETTE)+"; const neutralColor=0xc8cbd0;",
-    "function recolor(){const enable=document.getElementById('palette').checked;",
-    "const color=enable?(systemPalette[currentEntry?.system]||neutralColor):neutralColor;",
+    "const systemPalette=SYSTEM_MATERIALS; const neutralColor=0xc8cbd0;",
+    "function mode(){return document.getElementById('tissue').checked?'tissue':document.getElementById('palette').checked?'system':'neutral'}",
+    "function recolor(){const style=materialFor(currentEntry||{},mode());",
     "for(const mesh of models){const mats=Array.isArray(mesh.material)?mesh.material:[mesh.material];",
-    "for(const mat of mats){if(mat?.color)mat.color.setHex(color);if('roughness' in mat)mat.roughness=.82;",
-    "if('metalness' in mat)mat.metalness=0;mat.needsUpdate=true;}}}",
-    "document.getElementById('palette').addEventListener('change',recolor);",
-    "for(const [system,color] of Object.entries(systemPalette)){const row=document.createElement('span');",
+    "for(const mat of mats){if(mat?.color)mat.color.setHex(style.color);if('roughness' in mat)mat.roughness=style.roughness;",
+    "if('metalness' in mat)mat.metalness=0;mat.transparent=false;mat.opacity=1;mat.depthWrite=true;mat.side=THREE.DoubleSide;mat.needsUpdate=true;}}}",
+    "document.getElementById('palette').addEventListener('change',e=>{if(e.target.checked)document.getElementById('tissue').checked=false;recolor();legend()});",
+    "document.getElementById('tissue').addEventListener('change',e=>{if(e.target.checked)document.getElementById('palette').checked=false;recolor();legend()});",
+    "document.getElementById('contrast').addEventListener('change',e=>{const on=e.target.checked;ambient.intensity=on?0.75:1.25;sun.intensity=on?3.15:2.35;rim.intensity=on?1.45:1.05;scene.background.setHex(on?0x070d12:0x10191f)});",
+    "function legend(){const tissue=document.getElementById('tissue').checked,palette=document.getElementById('palette').checked;",
+    "const colors=tissue?Object.fromEntries(Object.entries(TISSUE_MATERIALS).map(([key,value])=>[key,value.color])):palette?systemPalette:{Neutral:neutralColor};",
+    "document.getElementById('palette-note').textContent=tissue?'Illustrative tissue-class palette • identity may be uncertain':palette?'Illustrative system colors, not verified tissue colors':'Neutral geometry inspection';",
+    "document.getElementById('legend').replaceChildren();for(const [system,color] of Object.entries(colors)){const row=document.createElement('span');",
     "const dot=document.createElement('i');dot.style.backgroundColor='#'+color.toString(16).padStart(6,'0');",
-    "row.append(dot,document.createTextNode(system));document.getElementById('legend').appendChild(row);}",
+    "row.append(dot,document.createTextNode(system));document.getElementById('legend').appendChild(row);}}legend();",
     "let current=null,currentEntry=null,models=[],generation=0,reset=()=>{},entries=[];",
     "function resize(){let w=Math.max(100,root.clientWidth),h=Math.max(100,root.clientHeight);ren.setSize(w,h,true);cam.aspect=w/h;cam.updateProjectionMatrix();}",
     "new ResizeObserver(resize).observe(root);resize();",
@@ -144,9 +151,9 @@ export function buildBulkHTML(){
     "new GLTFLoader().load(entry.modelPath,g=>{if(attempt!==generation)return;",
     "if(current){scene.remove(current);current.traverse(x=>{if(x.isMesh){x.geometry.dispose();if(Array.isArray(x.material))x.material.forEach(m=>m.dispose());else x.material.dispose();}})}",
     "current=g.scene;currentEntry=entry;models=[];scene.add(current);current.traverse(x=>{if(x.isMesh){x.material=Array.isArray(x.material)?x.material.map(m=>m.clone()):x.material.clone();models.push(x);}});recolor();",
-    "const box=new THREE.Box3().setFromObject(current),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3()),r=Math.max(.01,size.length()/2);",
-    "reset=()=>{control.target.copy(center);cam.near=Math.max(.00001,r/1000);cam.far=Math.max(100,r*100);cam.position.copy(center).add(new THREE.Vector3(r*1.4,r*1.2,r*2.6));cam.updateProjectionMatrix();control.update();};reset();",
-    "document.getElementById('metrics').textContent=entry.name+' • '+entry.system+' • '+entry.triangles+' triangles • '+entry.sourceMeshes+' FJ elements • FMA '+entry.fmaId+(entry.omittedZeroAreaTriangles?' • '+entry.omittedZeroAreaTriangles+' zero-area source triangles omitted':'')+' • Unvalidated coordinate frame';",
+    "const box=new THREE.Box3().setFromObject(current),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3()),r=Math.max(1e-9,size.length()/2);",
+    "reset=()=>{control.target.copy(center);cam.near=Math.max(1e-12,r/1000);cam.far=Math.max(1e-6,r*100);cam.position.copy(center).add(new THREE.Vector3(r*1.4,r*1.2,r*2.6));cam.updateProjectionMatrix();control.update();};reset();",
+    "document.getElementById('metrics').textContent=entry.name+' • '+entry.system+' • '+tissueClass(entry)+' (illustrative) • '+entry.triangles+' triangles • '+entry.sourceMeshes+' FJ elements • FMA '+entry.fmaId+(entry.diagnostics?.flags?.length?' • Check: '+entry.diagnostics.flags.join(', '):'')+(entry.omittedZeroAreaTriangles?' • '+entry.omittedZeroAreaTriangles+' zero-area source triangles omitted':'')+' • Unvalidated coordinate frame';",
     "document.getElementById('status').textContent='Ready';},undefined,e=>{if(attempt===generation)document.getElementById('status').textContent='Load failed: '+e.message;});}",
     "const search=document.getElementById('search'),system=document.getElementById('system'),items=document.getElementById('items');",
     "function list(){const q=search.value.toLowerCase(),sys=system.value;items.replaceChildren();",
@@ -238,14 +245,18 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}
       lineage.generatedGLBSHA256=sha(bytes);
       const doc=await new NodeIO().readBinary(bytes);
       const geometry=summarizeGeometry(doc);
+      const diagnostics=diagnoseGeometry(doc,geometry);
       verifyLineage({bytes,lineage,summary:geometry});
       const dir=path.join(output,'structures',item.id);fs.mkdirSync(dir,{recursive:true});
       fs.writeFileSync(path.join(dir,'model.glb'),bytes);
       fs.writeFileSync(path.join(dir,'lineage.json'),JSON.stringify(lineage,null,2)+'\n');
-      converted.push({id:item.id,name:item.name,system:item.system,
+      const catalogEntry=catalog[item.name];
+      converted.push({id:item.id,name:item.name,system:item.system,group:catalogEntry?.group||null,
+        tissueClass:tissueClass({name:item.name,system:item.system,group:catalogEntry?.group}),
         fmaId:item.source.fmaId,bpId:item.source.bpId,
         triangles:geometry.triangles,vertices:geometry.vertices,
         sourceMeshes:geometry.sourceMeshes,boundsNative:geometry.boundsNative,
+        diagnostics,
         glbSha256:lineage.generatedGLBSHA256,
         omittedZeroAreaTriangles:lineage.sourceGeometryWarnings?.omittedZeroAreaTriangles||0,
         modelPath:'./structures/'+item.id+'/model.glb',
@@ -261,16 +272,26 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}
   const summary={...plan.summary,converted:converted.length,failed:failed.length,
     candidatesWithOmittedZeroAreaTriangles:converted.filter(x=>x.omittedZeroAreaTriangles>0).length,
     totalOmittedZeroAreaTriangles:converted.reduce((n,x)=>n+x.omittedZeroAreaTriangles,0),
+    candidatesWithGeometryFlags:converted.filter(x=>x.diagnostics.flags.length>0).length,
     unprocessedDueToLimit:plan.allEligible-plan.eligible.length};
   const manifest={schemaVersion:1,kind:'official-bp3d-bulk-source-review',source:BP3D_OFFICIAL,
     sourceHashes:{namesSha256:sha(namesBytes),elementsSha256:sha(elementBytes),
       archiveSha256:archiveSha},summary,systems:plan.systems,
     converted,failures:failed,legalStatus:'NOT-CLEARED',
     geometryRegisteredToMEDCOEL:false,approvedForCommercialDistribution:false};
+  const mapping=reconcileMapping({gaps:plan.gaps,officialRows:official,converted,
+    elementIndex:elements,archiveFiles:zipFiles});
+  mapping.report.sourceHashes=manifest.sourceHashes;
+  mapping.report.catalogCount=plan.summary.catalogCount;
+  mapping.report.directConvertedCount=converted.length;
   fs.writeFileSync(path.join(output,'inventory.json'),JSON.stringify(manifest,null,2)+'\n');
   fs.writeFileSync(path.join(output,'mapping-gaps.json'),
     JSON.stringify({schemaVersion:1,unmatchedCount:gaps.length,gaps},null,2)+'\n');
+  fs.writeFileSync(path.join(output,'mapping-review.json'),JSON.stringify(mapping.report,null,2)+'\n');
+  fs.writeFileSync(path.join(output,'mapping-review.csv'),mapping.csv);
   fs.writeFileSync(path.join(output,'index.html'),buildBulkHTML());
+  fs.copyFileSync(fileURLToPath(new URL('./bp3d-review-materials.mjs',import.meta.url)),
+    path.join(output,'review-materials.js'));
   const threeRoot=path.join(root,'apps/4d-lab/node_modules/three');
   const target=path.join(output,'vendor/three');
   for(const name of ['build/three.module.js','build/three.core.js','LICENSE']){
