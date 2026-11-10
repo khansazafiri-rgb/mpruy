@@ -78,7 +78,7 @@ const rim=new THREE.DirectionalLight(0xa6d9de,1.15);rim.position.set(-2,1,-2);sc
 const controls=new OrbitControls(cam,renderer.domElement);controls.enableDamping=true;
 controls.minDistance=0.000001;
 const loader=new GLTFLoader();
-const models=new Map(),queued=new Set(),pending=[],failures=new Map();
+const models=new Map(),queued=new Set(),loading=new Set(),pending=[],failures=new Map();
 let entries=[],active=new Set(['skeletal']),busy=0,requestedFocus=null,fitWhenReady=true;
 const MAX_PARALLEL=3;
 function resize(){const w=Math.max(100,$('canvas').clientWidth),h=Math.max(100,$('canvas').clientHeight);
@@ -106,14 +106,14 @@ function syncVisibility(){for(const item of models.values()){
 item.root.visible=active.has(item.entry.system);styleModel(item)}
 $('alphaLabel').textContent=$('alpha').value+'%';
 const visible=[...models.values()].filter(item=>item.root.visible).length;
-const required=entries.filter(e=>active.has(e.system)).length;
+const required=entries.filter(e=>active.has(e.system)&&!failures.has(e.id)).length;
 $('progress').textContent=visible+'/'+required+' models loaded · '+failures.size+' errors · 470 is not a complete body';
 if(fitWhenReady&&visible===required&&required){fitWhenReady=false;fitVisible()}}
 function pump(){while(busy<MAX_PARALLEL&&pending.length){
 const entry=pending.shift();queued.delete(entry.id);
-if(!active.has(entry.system)||models.has(entry.id)||failures.has(entry.id))continue;
-busy++;loader.load(entry.modelPath,asset=>{
-busy--;const root=asset.scene,meshes=[];
+if(!active.has(entry.system)||models.has(entry.id)||loading.has(entry.id)||failures.has(entry.id))continue;
+busy++;loading.add(entry.id);loader.load(entry.modelPath,asset=>{
+busy--;loading.delete(entry.id);const root=asset.scene,meshes=[];
 root.traverse(node=>{if(node.isMesh){node.material=Array.isArray(node.material)?
 node.material.map(m=>m.clone()):node.material.clone();meshes.push(node)}});
 if(!meshes.length){failures.set(entry.id,'No mesh found');root.traverse(()=>{});}
@@ -121,9 +121,9 @@ else{scene.add(root);models.set(entry.id,{root,meshes,entry});
 if(requestedFocus===entry.id){requestedFocus=null;
 const b=new THREE.Box3().setFromObject(root);fitBox(b)}}
 syncVisibility();pump();
-},undefined,error=>{busy--;failures.set(entry.id,String(error));$('status').textContent='Some source GLBs could not load. See counts.';
+},undefined,error=>{busy--;loading.delete(entry.id);failures.set(entry.id,String(error));$('status').textContent='Some source GLBs could not load. See counts.';
 syncVisibility();pump()})}}
-function queueActive(){for(const entry of entries){if(active.has(entry.system)&&!models.has(entry.id)&&!queued.has(entry.id)&&!failures.has(entry.id)){
+function queueActive(){for(const entry of entries){if(active.has(entry.system)&&!models.has(entry.id)&&!queued.has(entry.id)&&!loading.has(entry.id)&&!failures.has(entry.id)){
 queued.add(entry.id);pending.push(entry)}}syncVisibility();pump()}
 function setActive(next){active=next;fitWhenReady=true;syncVisibility();queueActive()}
 $('color').addEventListener('change',syncVisibility);
