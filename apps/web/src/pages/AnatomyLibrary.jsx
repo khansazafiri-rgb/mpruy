@@ -9,6 +9,7 @@ import Mascot from '@/components/Mascot';
 import MascotTip, { useMascotsOn } from '@/components/MascotTip';
 import HumanAnatomy from './HumanAnatomy';
 import LiveLab from './LiveLab';
+import AnatomySplit from './AnatomySplit';
 import { AnatomyDataProvider, useAnatomyLibrary } from '../features/anatomy/LibraryData';
 import {
   REGIONS, SYSTEMS, browseStructures, filterStructures, normalise, relatedStructures, structureHref, exploreHref,
@@ -239,9 +240,8 @@ function LandingContent() {
             Jelajahi struktur, hubungkan regio dan sistem, lalu uji pemahamanmu langsung pada atlas 3D.
           </p>
           <div className="anatomy-hero-actions">
-            <Link className="btn-primary" to="/anatomy/explore"><Box size={17} /> Buka Atlas 3D <ArrowRight size={16} /></Link>
-            <Link className="btn-secondary" to="/anatomy/study"><Target size={17} /> Mulai kuis interaktif</Link>
-            <Link className="btn-secondary" to="/anatomy/live">Live 4D Lab · USG &amp; CT</Link>
+            <Link className="btn-primary" to="/anatomy/explore"><Box size={17} /> 3D · Atlas anatomi <ArrowRight size={16} /></Link>
+            <Link className="btn-secondary" to="/anatomy/live">4D · Live Lab USG &amp; CT</Link>
           </div>
           <div className="anatomy-hero-stats">
             <span><strong>{count(registry.rows.length)}</strong>struktur</span>
@@ -255,6 +255,8 @@ function LandingContent() {
           <span className="library-art-caption">Jelajahi. Hubungkan. Ingat.</span>
         </div>
       </section>
+
+      <AnatomySplit structureCount={count(registry.rows.length)} />
 
       <section className="library-search-section" aria-labelledby="anatomy-search-title">
         <div>
