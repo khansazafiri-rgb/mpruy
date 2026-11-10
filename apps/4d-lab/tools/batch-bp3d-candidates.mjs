@@ -88,12 +88,19 @@ export function suggestForUnmatched(gaps, officialRows, {maxResults=3}={}){
     return {...gap,suggestions:scored.slice(0,maxResults)};
   });
 }
+// Presentation-only colors for the independent source-review app; these are
+// not tissue-color annotations from the publisher and do not alter source GLBs.
+export const REVIEW_SYSTEM_PALETTE=Object.freeze({
+  skeletal:0xe8d8b6, muscular:0xbd626d, joints:0x75b6c4,
+  cardiovascular:0xcc6671, lymphatic:0x77bd8e, visceral:0xd2a36b
+});
 export function buildBulkHTML(){
   return [
     '<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>',
     '<title>BodyParts3D bulk geometry review — local only</title>',
     '<style>*{box-sizing:border-box}body{margin:0;background:#10191f;color:#e8f3f1;font:14px system-ui;overflow:hidden}',
     'header{height:66px;background:#1a333b;display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap}',
+    'label{cursor:pointer}#palette-note{color:#c5e1da;font-size:12px}#legend{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px}#legend span{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#d4e3e5}#legend i{width:9px;height:9px;display:inline-block;border-radius:50%}',
     'strong{color:#a9edc9}#layout{display:flex;height:calc(100dvh - 110px)}',
     'aside{width:290px;flex:none;background:#15262d;padding:12px;overflow:auto}aside input,aside select{width:100%;margin-bottom:10px;padding:9px;border-radius:5px;background:#213840;color:white;border:1px solid #4d737f}',
     'aside button{display:block;width:100%;border:0;background:none;color:#b7d8df;text-align:left;padding:8px;border-bottom:1px solid #2c3d46;cursor:pointer}',
@@ -103,11 +110,11 @@ export function buildBulkHTML(){
     '@media(max-width:700px){header{height:auto;min-height:66px}#layout{height:calc(100dvh - 160px)}aside{width:150px;padding:6px}aside button{font-size:11px}footer{height:auto}}',
     '</style><script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/examples/jsm/"}}</script>',
     '</head><body><header><strong>Official BodyParts3D 4.0 • Batch review</strong>',
-    '<span id="summary">Loading inventory…</span><label><input id="wire" type="checkbox"/> Wireframe</label>',
+    '<span id="summary">Loading inventory…</span><label><input id="palette" type="checkbox" checked/> Color by system</label><label><input id="wire" type="checkbox"/> Wireframe</label>',
     '<button id="reset">Reset camera</button><span id="status"></span></header>',
-    '<div id="layout"><aside><input id="search" type="search" placeholder="Find structure…"/><select id="system"><option value="">All systems</option></select><div id="items"></div></aside>',
+    '<div id="layout"><aside><input id="search" type="search" placeholder="Find structure…"/><select id="system"><option value="">All systems</option></select><div id="palette-note">Illustrative system colors, not verified tissue colors</div><div id="legend"></div><div id="items"></div></aside>',
     '<main><div id="canvas"></div><div id="metrics">Select a candidate</div></main></div>',
-    '<footer>NOT FOR PUBLIC RELEASE • Source model coordinates not registered to MEDCOEL CT/USG • No current assets are replaced.</footer>',
+    '<footer>NOT FOR PUBLIC RELEASE • System colors are illustrative, not verified anatomy colors • Not registered to MEDCOEL CT/USG • No current assets replaced.</footer>',
     '<script type="module">',
     "import * as THREE from 'three';",
     "import {OrbitControls} from 'three/addons/controls/OrbitControls.js';",
@@ -118,7 +125,17 @@ export function buildBulkHTML(){
     "scene.add(new THREE.HemisphereLight(0xffffff,0x405967,2.2));",
     "const sun=new THREE.DirectionalLight(0xffffff,1.8);sun.position.set(1,2,3);scene.add(sun);",
     "const control=new OrbitControls(cam,ren.domElement);control.enableDamping=true;",
-    "let current=null,models=[],generation=0,reset=()=>{},entries=[];",
+    "const systemPalette="+JSON.stringify(REVIEW_SYSTEM_PALETTE)+"; const neutralColor=0xc8cbd0;",
+    "function recolor(){const enable=document.getElementById('palette').checked;",
+    "const color=enable?(systemPalette[currentEntry?.system]||neutralColor):neutralColor;",
+    "for(const mesh of models){const mats=Array.isArray(mesh.material)?mesh.material:[mesh.material];",
+    "for(const mat of mats){if(mat?.color)mat.color.setHex(color);if('roughness' in mat)mat.roughness=.82;",
+    "if('metalness' in mat)mat.metalness=0;mat.needsUpdate=true;}}}",
+    "document.getElementById('palette').addEventListener('change',recolor);",
+    "for(const [system,color] of Object.entries(systemPalette)){const row=document.createElement('span');",
+    "const dot=document.createElement('i');dot.style.backgroundColor='#'+color.toString(16).padStart(6,'0');",
+    "row.append(dot,document.createTextNode(system));document.getElementById('legend').appendChild(row);}",
+    "let current=null,currentEntry=null,models=[],generation=0,reset=()=>{},entries=[];",
     "function resize(){let w=Math.max(100,root.clientWidth),h=Math.max(100,root.clientHeight);ren.setSize(w,h,true);cam.aspect=w/h;cam.updateProjectionMatrix();}",
     "new ResizeObserver(resize).observe(root);resize();",
     "document.getElementById('wire').addEventListener('change',e=>models.forEach(m=>{const mat=m.material;if(Array.isArray(mat))mat.forEach(x=>x.wireframe=e.target.checked);else mat.wireframe=e.target.checked;}));",
@@ -126,7 +143,7 @@ export function buildBulkHTML(){
     "function select(entry){const attempt=++generation;document.getElementById('status').textContent='Loading '+entry.name+'…';",
     "new GLTFLoader().load(entry.modelPath,g=>{if(attempt!==generation)return;",
     "if(current){scene.remove(current);current.traverse(x=>{if(x.isMesh){x.geometry.dispose();if(Array.isArray(x.material))x.material.forEach(m=>m.dispose());else x.material.dispose();}})}",
-    "current=g.scene;models=[];scene.add(current);current.traverse(x=>{if(x.isMesh){x.material=x.material.clone();models.push(x);}});",
+    "current=g.scene;currentEntry=entry;models=[];scene.add(current);current.traverse(x=>{if(x.isMesh){x.material=Array.isArray(x.material)?x.material.map(m=>m.clone()):x.material.clone();models.push(x);}});recolor();",
     "const box=new THREE.Box3().setFromObject(current),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3()),r=Math.max(.01,size.length()/2);",
     "reset=()=>{control.target.copy(center);cam.near=Math.max(.00001,r/1000);cam.far=Math.max(100,r*100);cam.position.copy(center).add(new THREE.Vector3(r*1.4,r*1.2,r*2.6));cam.updateProjectionMatrix();control.update();};reset();",
     "document.getElementById('metrics').textContent=entry.name+' • '+entry.system+' • '+entry.triangles+' triangles • '+entry.sourceMeshes+' FJ elements • FMA '+entry.fmaId+(entry.omittedZeroAreaTriangles?' • '+entry.omittedZeroAreaTriangles+' zero-area source triangles omitted':'')+' • Unvalidated coordinate frame';",
