@@ -24,6 +24,8 @@ import { CONTROL_MODES, ORIENTATION_PRESETS } from './axisControl.js';
 import { translate as axisTranslate, rotate as axisRotate, selectSide as axisSelectSide } from './axisMove.js';
 import { Assist } from './assist.js';
 import { Learn } from './learn.js';
+import { startTutorial } from './tutorial.js';
+import { generalSteps, triSteps } from './tutorialSteps.js';
 import { triPlanes, stepSlice, sliceLabel, clampToBounds, MPR } from '../core/mpr.js';
 import { pixelToLPS } from '../core/labels.js';
 import { STRUCTURES, unavailableStructures } from '../edu/structures.js';
@@ -1357,86 +1359,17 @@ function installLayout() {
     if ((e.key === 'q' || e.key === 'e') && padKind() !== 'tri') padRotate(S.mode === 'free' ? 'yaw' : 'rotate', e.key === 'e' ? 1 : -1, e.shiftKey);
   });
 }
-// Five-step guided tour. Show once per browser, but let students replay it from the ? help menu.
-const TOUR_KEY = 'medcoel-4dlab-tour-v2';
-const TOUR = [
-  { target: '.brand', title: 'Selamat datang di MEDCOEL 4D Lab', text: 'Di sini kamu bisa mempelajari anatomi 3D sekaligus citra CT dan USG simulasi. Kita kenali kontrol utamanya dulu.' },
-  { target: '#probePad', title: 'Gerakkan probe atau bidang CT', text: 'Gunakan tombol Superior, Inferior, Kanan, Kiri, Anterior, dan Posterior. Arah selalu mengikuti tubuh pasien, bukan arah layar.' },
-  { target: '#viewport', title: 'Atur sudut pandang 3D', text: 'Seret area kosong untuk memutar kamera dan scroll untuk zoom. Kamera hanya mengubah tampilan pasien, bukan bidang CT atau USG.' },
-  { target: '.monitor-toolbar', title: 'Pelajari citra dan struktur', text: 'Pilih USG, CT, atau Tri-planar CT. Nyalakan Bantuan anatomi untuk melihat kontur dan nama struktur pada citra simulasi.', pane: 'image' },
-  { target: '.ws-nav', title: 'Mulai belajar sesuai kebutuhan', text: 'Gunakan ruang kerja Anatomi & Citra, Auskultasi, Fisiologi, Patologi, dan Belajar. Klik Belajar untuk latihan terpandu dengan progres.' },
-];
-const TRI_TOUR_KEY = 'medcoel-4dlab-tri-tour-v1';
-const TRI_TOUR = [
-  { target: '#triControls', title: 'Tiga arah CT', text: 'Aksial bergerak superior–inferior, koronal anterior–posterior, dan sagital kanan–kiri pasien. Semua memakai satu titik silang.', pane: 'image' },
-  { target: '#tri-ax', title: 'Geser irisan tanpa menyentuh citra', text: 'Geser slider atau gunakan tombol −/+ pada tiap baris. Angka menunjukkan posisi fisik dalam milimeter pasien.', pane: 'image' },
-  { target: '#monitor', title: 'Titik silang selalu terhubung', text: 'Klik citra untuk memindahkan titik silang; scroll menggeser irisan, seret menggeser tampilan, ⌘/Ctrl + scroll memperbesar. Gunakan “Kembali ke Probe USG” kapan saja.', pane: 'image' },
-];
+// Interactive tutorial (mascot-led, learn-by-doing): engine in tutorial.js, content in tutorialSteps.js. Shown once per browser
+// (key bumped to v3 when it became interactive); students replay it from the ? help menu.
+const TOUR_KEY = 'medcoel-4dlab-tour-v3';
+const TRI_TOUR_KEY = 'medcoel-4dlab-tri-tour-v2';
 function startTour(force = false, kind = 'general') {
-  const steps = kind === 'tri' ? TRI_TOUR : TOUR, key = kind === 'tri' ? TRI_TOUR_KEY : TOUR_KEY;
-  let seen = false; try { seen = localStorage.getItem(key) === 'done'; } catch { /* private mode */ }
-  if (seen && !force) return;
-  document.querySelector('.tour-root')?.remove();
-  const previousFocus = document.activeElement;
-  let i = 0;
-  const root = el('div', { class: 'tour-root' });
-  const spotlight = el('div', { class: 'tour-focus', 'aria-hidden': 'true' });
-  const card = el('div', { class: 'tour', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Tutorial MEDCOEL 4D Lab', 'data-testid': 'tour' });
-  root.append(spotlight, card);
-  document.body.append(root);
-  const position = () => {
-    const target = document.querySelector(steps[i].target);
-    if (!target) { spotlight.hidden = true; return; }
-    spotlight.hidden = false;
-    const rect = target.getBoundingClientRect(), pad = 6;
-    spotlight.style.left = `${Math.max(0, rect.left - pad)}px`;
-    spotlight.style.top = `${Math.max(0, rect.top - pad)}px`;
-    spotlight.style.width = `${Math.min(innerWidth, rect.right + pad) - Math.max(0, rect.left - pad)}px`;
-    spotlight.style.height = `${Math.min(innerHeight, rect.bottom + pad) - Math.max(0, rect.top - pad)}px`;
-    const size = card.getBoundingClientRect();
-    const left = Math.max(12, Math.min(innerWidth - size.width - 12, rect.left));
-    let top = rect.bottom + 16;
-    if (top + size.height > innerHeight - 12) top = rect.top - size.height - 16;
-    if (top < 12) top = Math.max(12, (innerHeight - size.height) / 2);
-    card.style.left = `${left}px`; card.style.top = `${top}px`;
-  };
-  const done = () => {
-    window.removeEventListener('resize', position);
-    window.removeEventListener('scroll', position, true);
-    window.removeEventListener('keydown', handleKey, true);
-    root.remove();
-    try { localStorage.setItem(key, 'done'); } catch { /* private mode */ }
-    if (previousFocus?.isConnected && previousFocus?.focus) previousFocus.focus();
-  };
-  const show = () => {
-    const step = steps[i];
-    if (matchMedia('(max-width: 740px)').matches) setPane(step.pane || 'patient');
-    card.replaceChildren(
-      el('small', {}, `${kind === 'tri' ? 'PANDUAN TRI-PLANAR' : 'PANDUAN SINGKAT'} · ${i + 1} DARI ${steps.length}`),
-      el('div', { class: 'tour-progress', 'aria-hidden': 'true' }, ...steps.map((_, n) => el('i', { class: n <= i ? 'active' : '' }))),
-      el('h2', {}, step.title),
-      el('p', {}, step.text),
-      el('div', { class: 'row' },
-        el('button', { type: 'button', class: 'btn', 'data-testid': 'tour-skip', onclick: done }, 'Lewati'),
-        ...(i ? [el('button', { type: 'button', class: 'btn', 'data-testid': 'tour-back', onclick: () => { i--; show(); } }, 'Kembali')] : []),
-        el('button', { type: 'button', class: 'btn primary', 'data-testid': 'tour-next', onclick: () => { if (++i === steps.length) done(); else show(); } }, i === steps.length - 1 ? (kind === 'tri' ? 'Mulai navigasi' : 'Mulai simulasi') : 'Lanjut')
-      )
-    );
-    card.querySelector('[data-testid=tour-next]')?.focus();
-    requestAnimationFrame(position);
-  };
-  const handleKey = (e) => {
-    if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); done(); }
-    if (e.key !== 'Tab') return;
-    const buttons = [...card.querySelectorAll('button')];
-    if (!buttons.length) return;
-    if (e.shiftKey && document.activeElement === buttons[0]) { e.preventDefault(); buttons.at(-1).focus(); }
-    else if (!e.shiftKey && document.activeElement === buttons.at(-1)) { e.preventDefault(); buttons[0].focus(); }
-  };
-  window.addEventListener('resize', position);
-  window.addEventListener('scroll', position, true);
-  window.addEventListener('keydown', handleKey, true);
-  show();
+  const tri = kind === 'tri';
+  const ctx = { S, scene, padKind, setAssistLevel, assistSelect: $('#assistLevel'), hoverTip: $('#hoverTip') };
+  startTutorial({
+    steps: tri ? triSteps(ctx) : generalSteps(ctx), storageKey: tri ? TRI_TOUR_KEY : TOUR_KEY,
+    label: tri ? 'PANDUAN TRI-PLANAR' : 'TUTORIAL INTERAKTIF', el, setPane, force,
+  });
 }
 function setSidebar(open) {
   document.body.dataset.sidebar = open ? 'open' : 'closed';

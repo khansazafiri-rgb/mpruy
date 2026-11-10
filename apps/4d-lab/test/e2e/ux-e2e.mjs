@@ -66,7 +66,11 @@ await page.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.
 await step('first screen: patient + image, direction pad, five-step guided first-use tour instead of long text; rings hidden', async () => {
   assert.ok(await page.getByTestId('tour').isVisible(), 'first-run tour shown');
   await shot('ux-01-first-run-tour');
-  for (let step = 0; step < 5; step++) await page.getByTestId('tour-next').click();
+  // the tutorial is interactive: a step with a task keeps "Lanjut" locked, so walk through with "Lewati langkah" where needed
+  for (let guard = 0; guard < 12 && await page.getByTestId('tour').count(); guard++) {
+    const nextBtn = page.getByTestId('tour-next');
+    if (await nextBtn.isDisabled()) await page.getByTestId('tour-skip-step').click(); else await nextBtn.click();
+  }
   const logoBackground = await page.locator('.brand-mark').evaluate((node) => getComputedStyle(node).backgroundImage);
   assert.match(logoBackground, /logo-mark.*webp/, 'official MEDCOEL logo asset is used');
   await page.getByTestId('help-btn').click();
@@ -259,7 +263,7 @@ await step('keyboard: arrows = patient directions, PageDown = posterior, Q/E rot
 for (const [name, dev] of [['laptop', { viewport: { width: 1280, height: 800 } }], ['ipad', devices['iPad Pro 11']], ['phone', devices['iPhone 13']]]) {
   await step(`layout ${name}: nothing clipped, pad usable`, async () => {
     const c = await browser.newContext({ ...dev }), p = await c.newPage(), errs = [];
-    await p.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v2', 'done'); } catch { /* ignore */ } });
+    await p.addInitScript(() => { try { for (const k of ['medcoel-4dlab-tour-v2', 'medcoel-4dlab-tour-v3']) localStorage.setItem(k, 'done'); } catch { /* ignore */ } });
     p.on('pageerror', (e) => errs.push(e.message));
     await p.goto(url); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
     await p.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.atlasState), null, { timeout: 240000 });
