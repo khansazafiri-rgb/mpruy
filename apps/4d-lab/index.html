@@ -58,14 +58,14 @@
       <button type="button" class="btn replay-tour" id="replayTourBtn" data-testid="tour-replay">Ulangi tutorial interaktif</button>
     </div>
     <div class="viewport-wrap">
-      <div id="viewport" class="viewport"></div>
-      <div class="scan-mode" data-testid="scan-mode" role="group" aria-label="Mode interaksi">
-        <span id="modeStatus" data-testid="mode-status" role="status">Probe klinis</span>
-        <span id="regionStatus" class="region-status" data-testid="region-status" hidden></span>
-        <button type="button" id="returnProbe" data-testid="return-probe" hidden>Kembali ke Probe USG</button>
-        <button type="button" id="freeMode" data-testid="free-mode">Free 3D / Bidang CT</button>
-      </div>
-      <details class="view-menu" data-testid="view-menu"><summary>Tampilan 3D ▾</summary><div class="view-toolbar" role="toolbar" aria-label="Kamera dan tampilan">
+      <div class="view-bar" data-testid="scan-mode" role="group" aria-label="Mode interaksi">
+        <div class="mode-tabs" role="group" aria-label="Pilih alat pemindaian">
+          <button type="button" id="returnProbe" data-testid="return-probe" data-mode-tab="clinical" aria-pressed="true" title="Probe USG menempel di kulit pasien"><b>Probe klinis</b><small>USG di kulit</small></button>
+          <button type="button" id="freeMode" data-testid="free-mode" data-mode-tab="free" aria-pressed="false" title="Bidang CT bebas di ruang pasien, tidak menempel di kulit"><b>Bidang CT bebas</b><small>Free 3D</small></button>
+          <button type="button" id="triMode" data-testid="mon-tri" data-mode-tab="tri" aria-pressed="false" title="Tiga bidang CT ortogonal yang saling terhubung (bukan geometri USG)"><b>Tri-planar CT</b><small>3 bidang</small></button>
+        </div>
+        <div class="view-bar-tools">
+        <details class="view-menu" data-testid="view-menu"><summary>Tampilan 3D ▾</summary><div class="view-toolbar" role="toolbar" aria-label="Kamera dan tampilan">
         <div class="seg small" role="group" aria-label="Arah pandang kamera">
           <button data-view="whole" data-testid="cam-whole" class="atlas-only">Seluruh tubuh</button>
           <button data-view="examiner" data-testid="cam-examiner">Pemeriksa</button>
@@ -92,20 +92,30 @@
           <label><input type="checkbox" id="coverageToggle" checked> Kotak cakupan CT</label>
         </details>
       </div></details>
+        <button type="button" id="helpBtn" class="help-btn" data-testid="help-btn" aria-expanded="false" aria-controls="helpPop" title="Cara menggerakkan">?</button>
+        </div>
+        <div class="mode-info">
+          <span id="modeStatus" data-testid="mode-status" role="status">Probe klinis</span>
+          <span id="regionStatus" class="region-status" data-testid="region-status" hidden></span>
+          <span id="modeElements" class="mode-elements" data-testid="mode-elements" aria-label="Elemen mode ini"></span>
+        </div>
+      </div>
+      <div class="view-stage">
+        <div id="viewport" class="viewport"></div>
       <div class="viewport-badge atlas-only" data-testid="viewport-badge">Anatomi: Atlas MEDCOEL · kulit ilustratif · CT sintetis dari atlas</div>
       <div id="probePad" class="probe-pad" data-testid="probe-pad" role="group" aria-label="Kontrol arah"></div>
-      <button type="button" id="helpBtn" class="help-btn" data-testid="help-btn" aria-expanded="false" aria-controls="helpPop" title="Cara menggerakkan">?</button>
+      </div>
     </div>
   </section>
   <div id="divider" class="divider" role="separator" tabindex="0" aria-label="Ubah lebar monitor (panah kiri/kanan)"></div>
   <section id="monitorPanel" class="monitor-panel" aria-label="Monitor pencitraan">
     <div class="monitor-toolbar" role="toolbar">
-      <div class="seg small" role="group" aria-label="Tampilan">
+      <div class="seg small display-seg" role="group" aria-label="Tampilan citra">
         <button data-seg="display:us" data-testid="mon-us">USG</button>
         <button data-seg="display:ct" data-testid="mon-ct">CT</button>
         <button data-seg="display:split" data-testid="mon-split">USG + CT</button>
-        <button data-seg="display:tri" data-testid="mon-tri" title="Tiga bidang CT ortogonal yang saling terhubung (bukan geometri USG)">Tri-planar CT</button>
       </div>
+      <span class="tri-badge" aria-hidden="true">3 bidang CT · aksial · koronal · sagital</span>
       <label class="inline mon">Bantuan anatomi
         <select id="assistLevel" data-testid="assist-level" aria-label="Tingkat bantuan anatomi">
           <option value="off">Mati (bersih)</option><option value="hover">Hanya hover</option><option value="contours">Kontur</option><option value="guided">Terpandu</option><option value="challenge">Tantangan</option>
@@ -122,11 +132,13 @@
     <section id="triControls" class="tri-controls" data-testid="tri-controls" aria-label="Navigasi irisan CT" hidden>
       <div class="tri-controls-head"><strong>Tri-planar CT · titik silang terhubung</strong><button type="button" id="triHelp" data-testid="tri-help" aria-label="Ulangi panduan Tri-planar CT">? Panduan</button><button type="button" id="triReturnProbe" data-testid="tri-return-probe">Kembali ke Probe USG</button></div>
       <p>Aksial: atas–bawah (S/I) · Koronal: depan–belakang (A/P) · Sagital: kanan–kiri pasien (R/L).</p>
-      <p>Klik citra untuk memindahkan titik silang. Scroll pada citra menggeser irisan; seret menggeser tampilan, ⌘/Ctrl + scroll memperbesar. Kontrol di bawah juga menggeser irisan tanpa menyentuh citra.</p>
+      <details class="tri-howto"><summary>Cara memakai</summary>
+        <p>Klik citra untuk memindahkan titik silang. Scroll pada citra menggeser irisan; seret menggeser tampilan, ⌘/Ctrl + scroll memperbesar. Kontrol di bawah juga menggeser irisan tanpa menyentuh citra.</p>
+        <p class="tri-scroll-hint">Panel kanan bisa digulir ke bawah untuk melihat ketiga citra CT, grafik, dan kontrol pemutaran.</p>
+      </details>
       <div id="triSliceRows" class="tri-slice-rows"></div>
       <button type="button" id="triCenter" data-testid="tri-center">Pusatkan titik silang</button>
       <button type="button" id="triShowImages" data-testid="tri-show-images" class="tri-show-images">Lihat seluruh citra CT ↓</button>
-      <p class="tri-scroll-hint">Panel kanan bisa digulir ke bawah untuk melihat ketiga citra CT, grafik, dan kontrol pemutaran. Scroll tepat di atas citra tetap menggeser irisan CT.</p>
     </section>
     <div class="monitor-body">
       <div class="monitor-wrap">
