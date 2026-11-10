@@ -108,6 +108,25 @@ What the repository can and cannot show:
   controls). It is **not** pixel-identical to production, and the owner must confirm it. Known deliberate differences from
   the production screenshot: 2.237 structures instead of 2.827 and the disabled "Saraf" tile (licence quarantine).
 
+## 6a. 4D Lab regression (not modified by this PR)
+
+Run in Chromium + SwiftShader against the 4D Lab exactly as it is on the integration branch. Unit tests: `npm run test:4d-lab`
+100/100 (+4 staging/preview), `test:anatomy-integration` 10/10, `test:licensing` all pass (0 of 14 rights records verified),
+`apps/anatomy` Vitest 80/80, lint 0 errors.
+
+| Browser suite | On the integration branch (this PR) | With the 3 missing PR #142 fixes (`claude/4d-lab-ux-followup-fixes`) |
+|---|---|---|
+| `mode-navigation-e2e` (stethoscope/scan-plane visibility, Free 3D return, tri-planar, Belajar) | pass, after making two timing waits and one missing property in the **test** robust | same |
+| `run-e2e` (phantom) | 13/14. Fails: skin click in the lower-left abdomen lands on the floating direction pad | **14/14** |
+| `atlas-e2e` | 17/18. Same pad failure | 16/18: pad failure fixed; 2 test-drift failures remain (head contact is now allowed by PR #155; auscultation tab is reached through the workspace nav) |
+| `ux-e2e` | 7/15 (older test file; timeouts and tour state) | 10/15 with that file; with the final PR #142 test file 3 of the 5 re-run steps pass. Still failing: "first screen" (test expects the old 3-step tour, the branch has the 5-step tour) and "camera is free … monitor pixels identical" (not investigated) |
+
+**Finding:** PR #142 was merged about 40 seconds after it was opened, so only its first commit reached the integration branch.
+The later fixes I made were never merged: docked direction pad (it covered the patient and skin clicks), view menu z-index,
+aspect-aware camera presets. They are on `claude/4d-lab-ux-followup-fixes` (3 small commits, +12 CSS lines, 4 lines in
+`scene3d.js`). **No PR was opened for it and nothing in this PR depends on it**; it changes the accepted 4D Lab layout, so it
+is the owner's call.
+
 ## 7. Run it
 
 ```bash
