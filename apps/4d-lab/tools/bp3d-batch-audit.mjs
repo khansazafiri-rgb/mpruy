@@ -32,6 +32,16 @@ export async function auditGeneratedBatch(folder) {
     errors.push('converted total does not match inventory');
   if(manifest.referenceSurface){
     const ref=manifest.referenceSurface;
+    const skin=ref.boundsNative;
+    if(!skin?.min||!skin?.max||skin.min.length!==3||skin.max.length!==3)
+      errors.push('skin source bounds missing');
+    else for(const item of manifest.converted){
+      const bounds=item.boundsNative;
+      if(!bounds?.min||!bounds?.max||[...bounds.min,...bounds.max].some(n=>!Number.isFinite(n))||
+        bounds.min.some((n,i)=>n<skin.min[i]-5)||
+        bounds.max.some((n,i)=>n>skin.max[i]+5))
+        errors.push(item.name+': outside reference skin source bounds');
+    }
     const refPath=path.resolve(root,ref.modelPath);
     if(ref.fmaId!=='FMA7163'||ref.bpId!=='BP9115'||ref.fjId!=='FJ2810'||
       !refPath.startsWith(root+path.sep)||path.basename(refPath)!=='skin.glb')
