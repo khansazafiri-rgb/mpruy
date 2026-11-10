@@ -6,13 +6,14 @@ import os from 'node:os';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {planBatch,safeStructureId,suggestForUnmatched,buildBulkHTML,REVIEW_SYSTEM_PALETTE,runBatch} from '../tools/batch-bp3d-candidates.mjs';
+import {planBatch,safeStructureId,suggestForUnmatched,buildBulkHTML,REVIEW_SYSTEM_PALETTE,runBatch,buildReferenceSkin} from '../tools/batch-bp3d-candidates.mjs';
 import {buildCompositeHTML} from '../tools/bp3d-composite-viewer.mjs';
 import {TISSUE_MATERIALS,tissueClass,materialFor} from '../tools/bp3d-review-materials.mjs';
 import {reconcileMapping,reviewTokens} from '../tools/bp3d-mapping-review.mjs';
 import {Document} from '@gltf-transform/core';
 import {diagnoseGeometry,summarizeGeometry} from '../tools/review-bp3d-candidate.mjs';
 import {auditGeneratedBatch} from '../tools/bp3d-batch-audit.mjs';
+import {SOURCE_TO_WORLD,nativeToWorld,worldToNative} from '../tools/bp3d-coordinate-frame.mjs';
 
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 test('single batch plans eligible matches and retains unmapped/ambiguous source names',()=>{
@@ -43,6 +44,35 @@ test('stable output paths cannot collide for similarly punctuated structure name
   assert.match(a,/^[a-z0-9-]+$/);
   assert.equal(safeStructureId('Anterior tibial artery.l'),a);
   assert.ok(a.length<90);
+});
+test('one native source frame places left, anterior and superior correctly without modifying models',()=>{
+  assert.equal(SOURCE_TO_WORLD.scale,0.001);
+  assert.equal(SOURCE_TO_WORLD.rotationX,-Math.PI/2);
+  assert.deepEqual(nativeToWorld([100,-200,1200]),[0.1,1.2,0.2]);
+  assert.deepEqual(worldToNative(nativeToWorld([-125,33,1500])),[-125,33,1500]);
+  assert.throws(()=>nativeToWorld([0,NaN,1]),/Nonfinite/);
+  const html=buildCompositeHTML();
+  assert.match(html,/anatomy\.rotation\.x=SOURCE_TO_WORLD\.rotationX/);
+  assert.match(html,/anatomy\.add\(root\)/);
+  assert.match(html,/data-view="front"/);
+  assert.match(html,/data-view="side"/);
+  assert.match(html,/data-view="back"/);
+  assert.match(html,/referenceSurface/);
+});
+test('official source skin is a separate rights-blocked reference, never a catalog approval',async(t)=>{
+  try{execFileSync('zip',['-v'],{stdio:'ignore'});}catch{t.skip('zip missing');return;}
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'medcoel-skin-'));
+  try{
+    const header='# The license for this database is specified in the Creative Commons Attribution-Share Alike 2.1 Japan.\n# Concept ID : FMA7163\n# Representation ID : BP9115\n';
+    fs.writeFileSync(path.join(dir,'FJ2810.obj'),header+'v 0 0 0\nv 1 0 0\nv 0 1 0\nf 1 2 3\n');
+    execFileSync('zip',['-q','source.zip','FJ2810.obj'],{cwd:dir});
+    const ref=await buildReferenceSkin({official:[{fmaId:'FMA7163',bpId:'BP9115',name:'skin'}],
+      elements:new Map([['FMA7163',new Set(['FJ2810'])]]),zipFiles:['FJ2810.obj'],
+      archive:path.join(dir,'source.zip'),archiveSha:'a'.repeat(64),output:dir});
+    assert.equal(ref.fjId,'FJ2810');assert.equal(ref.triangles,1);
+    assert.match(ref.rightsReview,/BLOCKED/);
+    assert.equal(JSON.parse(fs.readFileSync(path.join(dir,'reference-surface','lineage.json'),'utf8')).approvedForDistribution,false);
+  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
 test('unmatched-name suggestions never auto-promote and do not recommend wrong side',()=>{
   const gaps=[{name:'Femoral arterial branch.l',system:'cardiovascular',reason:'unmatched'},
@@ -88,6 +118,7 @@ test('one invocation processes fake official ZIP and writes a structured report,
     assert.equal(result.summary.candidatesWithOmittedZeroAreaTriangles,1);
     assert.equal(result.summary.totalOmittedZeroAreaTriangles,1);
     assert.equal(result.summary.catalogCount,2237);
+    assert.equal(result.referenceSurface,null);
     assert.equal(result.approvedForCommercialDistribution,false);
     assert.equal(result.converted[0].name,'Femur.l');
     assert.equal(result.converted[0].triangles,2);
@@ -95,6 +126,7 @@ test('one invocation processes fake official ZIP and writes a structured report,
     assert.ok(fs.existsSync(path.join(out,'structures',result.converted[0].id,'lineage.json')));
     assert.ok(fs.existsSync(path.join(out,'mapping-gaps.json')));
     assert.ok(fs.existsSync(path.join(out,'body.html')));
+    assert.ok(fs.existsSync(path.join(out,'coordinate-frame.js')));
     const body=fs.readFileSync(path.join(out,'body.html'),'utf8');
     assert.match(body,/3D Body Assembly/);
     assert.match(body,/inventory\.json/);
@@ -219,7 +251,7 @@ test('assembled body review uses native shared coordinates, on-demand systems an
   assert.match(html,/const models=new Map\(\)/);
   assert.match(html,/let entries=\[\],active=new Set\(\['skeletal'\]\)/);
   assert.match(html,/MAX_PARALLEL=3/);
-  assert.match(html,/scene\.add\(root\)/);
+  assert.match(html,/anatomy\.add\(root\)/);
   assert.match(html,/tissue classes \(consistent\)/i);
   assert.match(html,/materialFor\(item\.entry,mode\)/);
   assert.match(html,/BodyParts3D, © The Database Center for Life Science/);

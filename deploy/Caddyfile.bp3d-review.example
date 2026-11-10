@@ -1,0 +1,23 @@
+# Isolated site block for a FUTURE private review after exact-build rights clearance.
+# Add to a validated server Caddy configuration only after backup and auth verification.
+# Set BP3D_REVIEW_PASSWORD_HASH to a Caddy bcrypt hash in Caddy's service environment.
+# This is not included from deploy/Caddyfile and does not change current production routing.
+review.medcoel.com {
+  encode gzip
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options nosniff
+    Referrer-Policy no-referrer
+    X-Frame-Options DENY
+    Cache-Control "private, no-store"
+  }
+  route {
+    basic_auth {
+      reviewer {$BP3D_REVIEW_PASSWORD_HASH}
+    }
+    root * /var/lib/medcoel/bp3d-review/current
+    @glb path *.glb
+    header @glb Content-Type model/gltf-binary
+    file_server
+  }
+}

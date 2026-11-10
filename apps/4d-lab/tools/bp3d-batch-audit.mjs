@@ -30,6 +30,17 @@ export async function auditGeneratedBatch(folder) {
   }
   if(manifest.summary.converted!==manifest.converted.length)
     errors.push('converted total does not match inventory');
+  if(manifest.referenceSurface){
+    const ref=manifest.referenceSurface;
+    const refPath=path.resolve(root,ref.modelPath);
+    if(ref.fmaId!=='FMA7163'||ref.bpId!=='BP9115'||ref.fjId!=='FJ2810'||
+      !refPath.startsWith(root+path.sep)||path.basename(refPath)!=='skin.glb')
+      errors.push('unsafe or mismatched skin reference identity');
+    else if(!fs.existsSync(refPath))errors.push('missing skin reference GLB');
+    else if(createHash('sha256').update(fs.readFileSync(refPath)).digest('hex')!==ref.glbSha256)
+      errors.push('skin reference hash mismatch');
+    if(!ref.rightsReview?.startsWith('BLOCKED:'))errors.push('skin rights warning missing');
+  }
   return {catalogCount:manifest.summary.catalogCount,converted:manifest.converted.length,
     mappingGaps:manifest.summary.gaps,independentModels:ids.size,errors,
     approvedForCommercialDistribution:false};
