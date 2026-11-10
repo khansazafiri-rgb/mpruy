@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Overlay Live 4D Lab</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<style>
+html,body{margin:0;background:transparent}#root{width:1080px;height:1920px;position:relative;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+.pill{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;font-weight:800;letter-spacing:.5px;color:#172B38;background:#F8C038;border:4px solid #172B38;border-radius:60px;box-shadow:0 8px 0 rgba(2,16,20,.55);padding:16px 40px}
+.chip{position:absolute;left:34px;top:1030px;font-weight:700;font-size:30px;color:#F8F7F3;background:rgba(10,56,48,.88);border:2.5px solid #F8C038;border-radius:30px;padding:8px 22px}
+.logo{position:absolute;left:50%;transform:translateX(-50%);top:520px;background:#F8F7F3;border:4px solid #172B38;border-radius:60px;width:560px;height:130px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 0 rgba(2,16,20,.5)}
+.logo img{height:86px}
+.big{position:absolute;left:0;right:0;text-align:center;font-weight:800;color:#F8F7F3;text-shadow:0 5px 0 #061C24,0 0 18px rgba(6,28,36,.8);line-height:1.05}
+.gold{color:#F8C038}
+.url{position:absolute;left:50%;transform:translateX(-50%);top:1130px;font-weight:800;font-size:56px;color:#172B38;background:#F8C038;border:4px solid #172B38;border-radius:60px;padding:14px 50px;box-shadow:0 8px 0 rgba(2,16,20,.55)}
+</style></head>
+<body><div id="root"></div>
+<script>
+const q = new URLSearchParams(location.search), k = q.get('k'), r = document.getElementById('root');
+const H = {
+  t1: '<div class="pill" style="top:262px;font-size:54px">LIHAT JANTUNGNYA BERGERAK</div>',
+  t2: '<div class="pill" style="top:262px;font-size:60px">GERAKKAN PROBENYA</div>',
+  t3: '<div class="pill" style="top:262px;font-size:68px">LIVE 4D LAB</div>',
+  klinis: '<div class="chip">Simulasi edukatif</div>',
+  outro: '<div class="logo"><img src="logo-full.webp"></div><div class="big" style="top:700px;font-size:116px">COBA GRATIS</div><div class="big gold" style="top:830px;font-size:84px">DI MEDCOEL.COM</div><div class="url">medcoel.com</div>',
+};
+r.innerHTML = H[k];
+document.fonts.ready.then(() => Promise.all([...document.images].map((i) => i.decode().catch(() => {})))).then(() => { window.__ready = true; });
+</script></body></html>
