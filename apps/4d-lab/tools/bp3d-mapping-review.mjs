@@ -11,7 +11,11 @@ const synonym = Object.freeze({
   sinister:'left', sinistra:'left', sinistrum:'left',
   dexter:'right', dextra:'right', dextrum:'right',
 });
-const stop = new Set(['of','the','and','part','branch','anterior','posterior','superior','inferior']);
+const indexStop = new Set(['of','the','and','part','branch','left','right',
+  'anterior','posterior','superior','inferior']);
+// Branch, directional and part terms carry anatomical hierarchy information.
+// They may be broad retrieval tokens but must count against confidence.
+const scoringStop = new Set(['of','the','and']);
 export function reviewTokens(name) {
   // Expand punctuated Latin initials only as a suggestion aid. The same
   // initials can have other meanings; confidence is capped below.
@@ -36,7 +40,7 @@ export function reconcileMapping({gaps,officialRows,converted=[],elementIndex=ne
   const inverted=new Map();
   const identityCount=new Map();
   for(let index=0;index<entries.length;index++)for(const token of new Set(entries[index].tokens)){
-    if(stop.has(token)||token.length<3)continue;
+    if(indexStop.has(token)||token.length<3)continue;
     if(!inverted.has(token))inverted.set(token,new Set());
     inverted.get(token).add(index);
   }
@@ -57,7 +61,8 @@ export function reconcileMapping({gaps,officialRows,converted=[],elementIndex=ne
       if(a&&b&&a!==b){rejections.oppositeSide++;continue;}
       const mismatch=conflict(tokens,row.tokens);
       if(mismatch){rejections.tissueType++;continue;}
-      const A=new Set(tokens.filter(x=>!stop.has(x))),B=new Set(row.tokens.filter(x=>!stop.has(x)));
+      const A=new Set(tokens.filter(x=>!scoringStop.has(x))),
+        B=new Set(row.tokens.filter(x=>!scoringStop.has(x)));
       const overlap=[...A].filter(x=>B.has(x)).length, union=new Set([...A,...B]).size;
       const score=union?overlap/union:0;
       if(score<0.4)continue;

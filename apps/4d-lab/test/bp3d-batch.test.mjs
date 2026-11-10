@@ -188,3 +188,14 @@ test('all unmatched names form a review-only CSV with Latin synonyms, source and
   assert.equal(report.systems.cardiovascular.unmatched,3);
   assert.equal(csv.trim().split('\n').length,5);
 });
+
+test('a branch must not score as high confidence for its parent artery',()=>{
+  const {report}=reconcileMapping({
+    gaps:[{name:'Anterior branch of renal artery.l',system:'cardiovascular',reason:'unmatched'}],
+    officialRows:[{name:'left renal artery',fmaId:'FMA1',bpId:'BP1'}],
+    elementIndex:new Map([['FMA1',new Set(['FJ1'])]]),archiveFiles:['FJ1.obj']});
+  assert.equal(report.queue[0].suggestions[0].officialName,'left renal artery');
+  assert.equal(report.queue[0].suggestions[0].confidence,'medium-review');
+  assert.ok(report.queue[0].suggestions[0].similarity<0.85);
+  assert.equal(report.summary.automaticallyApproved,0);
+});
