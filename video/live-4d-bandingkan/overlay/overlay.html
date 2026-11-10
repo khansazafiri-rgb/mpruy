@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Overlay Live 4D Lab: bandingkan</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<style>
+html,body{margin:0;background:transparent}#root{width:1080px;height:1920px;position:relative;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+.pill{position:absolute;white-space:nowrap;font-weight:800;letter-spacing:.5px;color:#172B38;background:#F8F7F3;border:4px solid #172B38;border-radius:60px;box-shadow:0 8px 0 rgba(2,16,20,.55);padding:14px 38px;display:flex;align-items:center;gap:18px}
+.pill i{display:inline-block;width:26px;height:26px;border-radius:50%;border:3px solid #172B38}
+.c{left:50%;transform:translateX(-50%)}
+.gold{background:#F8C038}
+.chip{position:absolute;left:34px;top:1576px;font-weight:700;font-size:27px;color:#F8F7F3;background:rgba(10,56,48,.9);border:2.5px solid #F8C038;border-radius:30px;padding:8px 22px}
+.logo{position:absolute;left:50%;transform:translateX(-50%);top:470px;background:#F8F7F3;border:4px solid #172B38;border-radius:60px;width:560px;height:130px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 0 rgba(2,16,20,.5)}
+.logo img{height:86px}
+.big{position:absolute;left:0;right:0;text-align:center;font-weight:800;color:#F8F7F3;text-shadow:0 5px 0 #061C24,0 0 18px rgba(6,28,36,.8);line-height:1.05}
+.g{color:#F8C038}
+.url{position:absolute;left:50%;transform:translateX(-50%);top:1090px;font-weight:800;font-size:56px;color:#172B38;background:#F8C038;border:4px solid #172B38;border-radius:60px;padding:14px 50px;box-shadow:0 8px 0 rgba(2,16,20,.55)}
+</style></head>
+<body><div id="root"></div>
+<script>
+const k = new URLSearchParams(location.search).get('k'), r = document.getElementById('root');
+const H = {
+  lblN: '<div class="pill c" style="top:190px;font-size:64px"><i style="background:#2DB59C"></i>NORMAL</div>',
+  lblE: '<div class="pill c gold" style="top:190px;font-size:56px"><i style="background:#E5483F"></i>EFUSI PERIKARDIAL</div>',
+  duoN: '<div class="pill" style="left:34px;top:196px;font-size:42px;padding:10px 28px"><i style="background:#2DB59C"></i>NORMAL</div>',
+  duoE: '<div class="pill gold" style="right:34px;top:196px;font-size:42px;padding:10px 28px"><i style="background:#E5483F"></i>EFUSI PERIKARDIAL</div>',
+  lihat: '<div class="pill c" style="top:1118px;font-size:50px;padding:12px 42px;border-radius:60px">LIHAT PERBEDAANNYA</div>',
+  cta: '<div class="pill c gold" style="top:1118px;font-size:50px;padding:12px 42px">BANDINGKAN SENDIRI, GRATIS</div>',
+  klinis: '<div class="chip">Simulasi edukatif, bukan alat diagnosis</div>',
+  outro: '<div class="logo"><img src="logo-full.webp"></div><div class="big" style="top:650px;font-size:104px">BANDINGKAN</div><div class="big" style="top:770px;font-size:104px">SENDIRI,</div><div class="big g" style="top:890px;font-size:104px">GRATIS</div><div class="big" style="top:1030px;font-size:56px">DI MEDCOEL.COM</div><div class="chip" style="top:1560px">Simulasi edukatif, bukan alat diagnosis</div>',
+};
+r.innerHTML = H[k];
+document.fonts.ready.then(() => Promise.all([...document.images].map((i) => i.decode().catch(() => {})))).then(() => { window.__ready = true; });
+</script></body></html>
