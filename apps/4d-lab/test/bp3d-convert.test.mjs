@@ -46,3 +46,15 @@ test('convert actual OBJ mesh into valid GLB with original FJ file ID and no rel
 test('does not write approved candidate or emit data into public folder', async()=>{
   await assert.rejects(buildLocalCandidate('Femur.l',{outputDir:'/tmp/unsafe-output'}),/local-data/);
 });
+
+test('strict mode refuses malformed source; explicit normalization records discarded zero-area faces', async()=>{
+  const raw=OBJ+'\nf 1 1 2';
+  assert.throws(()=>readObjTriangles(raw),/Degenerate OBJ triangle/);
+  const normal=readObjTriangles(raw,{skipDegenerate:true});
+  assert.equal(normal.stats.triangles,2);
+  assert.equal(normal.stats.omittedDegenerateTriangles,1);
+  const glb=await makeGlb([{id:'FJ1000',text:raw}],'Femur.l',
+    {approvedForDistribution:false},{skipDegenerate:true});
+  const doc=await new NodeIO().readBinary(glb);
+  assert.equal(doc.getRoot().listNodes()[0].getExtras().omittedDegenerateTriangles,1);
+});
