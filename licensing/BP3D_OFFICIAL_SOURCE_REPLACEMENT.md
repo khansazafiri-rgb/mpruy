@@ -110,6 +110,12 @@ The GitHub Actions `Build official BodyParts3D bulk geometry candidates` workflo
 
 **Not every catalog name has a matching official geometry identity:** 1,767 out of 2,237 were unmatched in the original exact-name pass. A successfully converted GLB is not clinical/mesh-registration approval and has **zero authority to replace live Atlas assets or to regenerate CT/USG**. The current approved green 3D Anatomy UI, 4D Lab, six original anatomy model bundles and production server are intentionally untouched. Do not treat repository source publication as a waiver of CC BY-NC-SA noncommercial restrictions on upstream viewer code.
 
+### First full-batch empirical result and zero-area-source QC
+
+The first real one-run batch on 10 November 2026 converted **469 of 470** direct FMA/FJ candidates from **2,237** Atlas names; `mapping-gaps.json` listed **1,767** unmatched names. The **sole conversion failure** was `Median cricothyroid ligament`, caused by a degenerate zero-area OBJ triangle (evidence: [Actions run #42785821598](https://github.com/khansazafiri-rgb/mpruy/actions/runs/42785821598), `inventory.json` in the artifact).
+
+The converter's default behavior remains strict. The batch pipeline now retries **only if the error is exactly a zero-area OBJ triangle**, omitting geometrically empty triangles while retaining valid faces. It records `sourceGeometryWarnings`, each affected FJ source element and `omittedZeroAreaTriangles` in the per-structure lineage, and `totalOmittedZeroAreaTriangles` in the inventory. **This is a disclosed geometry-source normalization, not anatomical acceptance**; any affected structure still requires special manual QA. Other conversion errors continue to fail the batch workflow after evidence is uploaded.
+
 ## What must happen next before any replacement is approved
 
 1. Download and hash the exact official archive, review archive structure, and pin publisher release evidence.
