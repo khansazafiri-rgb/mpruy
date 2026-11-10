@@ -54,6 +54,19 @@ and must not be used as approval for the existing mixed Z-Anatomy GLBs or
 CT/USG derivatives. Genuine geometry-level verification and separate NC
 application code remediation are still mandatory.
 
+## Rekonsiliasi pekerjaan yang SUDAH selesai (10 November 2026)
+
+Baca [RIGHTS_GAP_RECONCILIATION_2026-11-10.md](RIGHTS_GAP_RECONCILIATION_2026-11-10.md)
+sebelum memulai audit ulang. **Source Anatomy sudah dipublikasikan di repository public,
+aplikasi sudah dipisah dari frontend utama, atribusi terpasang, karantina
+dijalankan, dan CT Atlas sudah diregenerasi dari enam input pruned.** Ini adalah
+pekerjaan yang terverifikasi dari sumber repository, **bukan** 14 izin komersial
+yang sudah diterima. Laporan ulang otomatis: `npm run audit:existing-controls`.
+
+Pemisahan aplikasi/route tidak otomatis membuktikan adanya VM kedua yang aktif;
+publikasi source tidak otomatis menghapus lisensi kode upstream CC BY-NC-SA;
+dan hash CT tidak membuktikan hak sumber model. Kedua release gate tetap tertutup.
+
 ## Commercial release procedure
 
 Do not classify MEDCOEL as noncommercial merely because access is free. Core assets must permit

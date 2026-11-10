@@ -1,6 +1,16 @@
 # Asset licence registry — MEDCOEL 4D Lab
 
 Every non-code asset shipped from (or loaded by) `apps/4d-lab` must be listed here before merge.
+
+> **Important distinction (2026-11-10):** Table cells saying **"Allowed"** below
+> describe a candidate licence classification or a MEDCOEL authorship claim,
+> **not** approval of the final publicly distributed 4D Lab bundle. The
+> exact-source commercial-rights register still has pending items, including
+> atlas-derived CT and ownership/contributions to application code. The actual
+> `licensing/commercial-release.json` gate for 4D Lab remains `blocked`.
+> Source publication, separation of Vite apps and quarantine are **already
+> completed technical controls** and should not be erased from audit history.
+> See [rights-gap reconciliation](../../licensing/RIGHTS_GAP_RECONCILIATION_2026-11-10.md).
 Last reviewed 2026-11-09 for the licence quarantine (see `../../licensing/`).
 
 > **Licence quarantine (2026-11-09).** Superseded licence statements below are kept for history but no longer describe the build. Current status: `../../licensing/PROVENANCE_REPORT.md` and `../../licensing/quarantine-policy.json`. The atlas-derived dataset is rebuilt from cleared inputs only and is **CC BY-SA 4.0**; `nervous.glb`, the CC BY-NC kidney (+ renal pelvis) and the ossicles are withheld and shown as unavailable.
