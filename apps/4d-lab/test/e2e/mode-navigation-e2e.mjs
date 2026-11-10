@@ -35,6 +35,18 @@ try {
   assert.ok(layout.viewport.width > 100 && layout.pad.width > 40, 'patient and pad have usable width');
   assert.ok(layout.pad.left >= layout.viewport.right - 1,
     'probe pad must not intercept a click within the 3D patient canvas');
+  const cameraFit = await get(() => {
+    const scene = window.__lab.scene, prevAspect = scene.camera.aspect, prevView = scene.viewName;
+    scene.camera.aspect = 0.95; scene.camera.updateProjectionMatrix(); scene.setView('examiner', false);
+    const wide = scene.camera.position.distanceTo(scene.controls.target);
+    scene.camera.aspect = 0.30; scene.camera.updateProjectionMatrix(); scene.setView('examiner', false);
+    const narrow = scene.camera.position.distanceTo(scene.controls.target);
+    scene.camera.aspect = prevAspect; scene.camera.updateProjectionMatrix();
+    scene.setView(prevView || 'examiner', false);
+    return { wide, narrow };
+  });
+  assert.ok(cameraFit.narrow > cameraFit.wide * 1.5,
+    'narrow scanner viewport requires increased camera distance to avoid body clipping');
   assert.equal(await get(() => window.__lab.scene.steth.visible), false);
   await shot('mode-after-default');
 
