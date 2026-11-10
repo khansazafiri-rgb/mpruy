@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover Live 4D Lab</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<style>
+html,body{margin:0;background:#000}#root{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:radial-gradient(900px 700px at 25% 22%,#14515a 0,#0B2F38 55%,#061C24 100%)}
+.logo{position:absolute;left:60px;top:262px;width:312px;height:76px;border-radius:38px;background:#F8F7F3;border:3px solid #172B38;display:flex;align-items:center;justify-content:center}.logo img{height:50px}
+h1{position:absolute;left:60px;top:362px;margin:0;font-weight:800;font-size:92px;line-height:1.02;color:#F8F7F3;text-shadow:0 6px 0 #061C24}
+h1 b{color:#F8C038}
+.card{position:absolute;left:60px;width:860px;border-radius:36px;overflow:hidden;border:5px solid #F8C038;box-shadow:0 14px 0 rgba(2,16,20,.55);background:#000}
+.card img{display:block;width:100%}
+.c1{top:770px;height:410px}.c1 img{width:100%;height:100%;object-fit:cover;object-position:40% 38%;transform:scale(1.3);transform-origin:42% 36%}
+.c2{top:1296px;height:130px}.c2 img{object-fit:cover;object-position:50% 40%;height:100%}
+.tag{position:absolute;left:84px;top:1120px;font-weight:700;font-size:28px;color:#F8F7F3;background:rgba(10,56,48,.9);border:2.5px solid #F8C038;border-radius:30px;padding:6px 20px}
+.cta{position:absolute;left:60px;top:1330px;display:none}
+.pill{position:absolute;left:60px;top:672px;font-weight:800;font-size:44px;color:#172B38;background:#F8C038;border:4px solid #172B38;border-radius:50px;padding:10px 34px;box-shadow:0 7px 0 rgba(2,16,20,.55);}
+.guide{position:absolute;inset:0;pointer-events:none}
+</style></head><body><div id="root">
+<div class="logo"><img src="../stage/../overlay/logo-full.webp"></div>
+<h1>ANATOMI YANG<br>BISA KAMU LIHAT<br><b>BERGERAK</b></h1>
+<div class="pill">LIVE 4D LAB</div>
+<div class="card c1"><img src="heart.jpg"></div><div class="tag">Simulasi edukatif</div>
+<div class="card c2"><img src="probe.jpg"></div>
+<div class="pill" style="top:1196px;left:60px;font-size:40px;padding:10px 34px;white-space:nowrap;background:#F8F7F3">COBA GRATIS DI MEDCOEL.COM</div>
+<div id="g"></div></div>
+<script>
+const q=new URLSearchParams(location.search);
+if(q.has('guide'))document.getElementById('g').innerHTML='<svg class="guide" width="1080" height="1920"><g fill="#FF0066" opacity=".16"><rect x="0" y="0" width="1080" height="250"/><rect x="0" y="1440" width="1080" height="480"/><rect x="940" y="250" width="140" height="1190"/></g><rect x="0" y="250" width="940" height="1190" fill="none" stroke="#FF0066" stroke-width="4" stroke-dasharray="14 10"/></svg>';
+document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.decode().catch(()=>{})))).then(()=>{window.__ready=true});
+</script></body></html>
