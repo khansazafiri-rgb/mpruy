@@ -591,6 +591,12 @@ function ctlEnv() {
   };
 }
 function report(r) { if (r && !r.ok && r.error) status(r.error, 'warn'); else if (r?.note) status(r.note, 'info'); }
+/** What each of the three tools is made of (shown as chips under the selector; one place, so text and behaviour stay in step). */
+const MODE_ELEMENTS = {
+  clinical: ['Probe di kulit', 'Jendela standar', 'Putar · miring', 'Kontak tetap'],
+  free: ['Bidang CT bebas', 'Geser 6 arah', 'Angguk · geleng · guling', 'Tanpa kulit'],
+  tri: ['Aksial', 'Koronal', 'Sagital', 'Satu titik silang'],
+};
 const padKind = () => (S.display === 'tri' ? 'tri' : S.mode === 'free' ? 'plane' : 'probe');
 const TRI_AXES = { ax: { i: 2, name: 'Aksial', direction: 'Superior (+) / Inferior (−)' }, co: { i: 1, name: 'Koronal', direction: 'Posterior (+) / Anterior (−)' }, sa: { i: 0, name: 'Sagital', direction: 'Kiri pasien (+) / Kanan pasien (−)' } };
 function setTriCoordinate(key, mm) {
@@ -760,8 +766,17 @@ function refreshAll() {
       ? 'Kulit ilustratif sedang transparan/terpotong. Lingkaran hijau menunjukkan kontak probe pada permukaan kulit yang tidak terlihat; bukan struktur anatomi baru.'
       : '';
   }
-  const returnProbe = $('#returnProbe'); if (returnProbe) returnProbe.hidden = clinical || !D?.meshes?.skin;
-  const freeMode = $('#freeMode'); if (freeMode) freeMode.hidden = !clinical;
+  // three-way tool selector: Probe klinis / Bidang CT bebas / Tri-planar CT (always visible, one click each)
+  const current = tri ? 'tri' : clinical ? 'clinical' : 'free';
+  for (const b of document.querySelectorAll('[data-mode-tab]')) b.setAttribute('aria-pressed', String(b.dataset.modeTab === current));
+  const returnProbe = $('#returnProbe'); if (returnProbe) { returnProbe.disabled = !D?.meshes?.skin; returnProbe.title = returnProbe.disabled ? 'Probe klinis memerlukan mesh kulit terregistrasi (tidak ada pada CT ini).' : 'Probe USG menempel di kulit pasien'; }
+  const elements = $('#modeElements');
+  if (elements) {
+    const chips = MODE_ELEMENTS[current];
+    const key = chips.join('|');
+    if (elements.dataset.key !== key) { elements.dataset.key = key; elements.replaceChildren(...chips.map((t) => el('span', { class: 'chip' }, t))); }
+  }
+  document.body.dataset.tool3 = current;
   const triControls = $('#triControls'); if (triControls) triControls.hidden = !tri;
   const monitorPanel = $('#monitorPanel'); if (monitorPanel) monitorPanel.dataset.display = S.display;
   requestAnimationFrame(syncMonitorScrollbar);
@@ -1280,6 +1295,7 @@ function installLayout() {
   const ws = $('#workspace'), div = $('#divider');
   $('#returnProbe').onclick = () => setScanMode('clinical');
   $('#freeMode').onclick = () => setScanMode('free');
+  $('#triMode').onclick = () => { if (S.display !== 'tri') setImagingDisplay('tri'); };
   buildTriControls();
   setupMonitorScrollbar();
   $('#triShowImages').onclick = () => {
