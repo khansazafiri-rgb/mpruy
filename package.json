@@ -21,7 +21,7 @@
     "stage:4d-lab": "node scripts/stage-4d-lab.mjs",
     "preview:4d-lab": "node scripts/preview-4d-lab.mjs --build",
     "preview:review": "node scripts/preview-4d-lab.mjs --build",
-    "test:licensing": "node --test scripts/licensing-quarantine.test.mjs scripts/commercial-release.test.mjs scripts/commercial-rights-evidence.test.mjs scripts/release-inventory.test.mjs scripts/bodyparts3d-source.test.mjs scripts/reconcile-implemented-rights.test.mjs scripts/audit-live-anatomy-exposure.test.mjs && node licensing/tools/apply-quarantine.mjs --check && node licensing/tools/check-distribution.mjs apps/anatomy/public apps/4d-lab/public apps/web/public && node licensing/tools/audit-commercial-evidence.mjs && node licensing/tools/scan-atlas-code-origin.mjs",
+    "test:licensing": "node --test scripts/licensing-quarantine.test.mjs scripts/commercial-release.test.mjs scripts/commercial-rights-evidence.test.mjs scripts/release-inventory.test.mjs scripts/bp3d-review-server.test.mjs scripts/bodyparts3d-source.test.mjs scripts/reconcile-implemented-rights.test.mjs scripts/audit-live-anatomy-exposure.test.mjs && node licensing/tools/apply-quarantine.mjs --check && node licensing/tools/check-distribution.mjs apps/anatomy/public apps/4d-lab/public apps/web/public && node licensing/tools/audit-commercial-evidence.mjs && node licensing/tools/scan-atlas-code-origin.mjs",
     "inventory:release": "node licensing/tools/build-release-inventory.mjs",
     "check:licensing-dist": "node licensing/tools/check-distribution.mjs",
     "audit:commercial-evidence": "node licensing/tools/audit-commercial-evidence.mjs",
@@ -30,7 +30,8 @@
     "audit:live-anatomy": "node scripts/audit-live-anatomy-exposure.mjs",
     "build:bodyparts3d-candidate": "node apps/4d-lab/tools/build-bp3d-candidate.mjs",
     "review:bodyparts3d-candidate": "node apps/4d-lab/tools/review-bp3d-candidate.mjs",
-    "batch:bodyparts3d": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs"
+    "batch:bodyparts3d": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs",
+    "review:bodyparts3d": "node scripts/bp3d-review-server.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
