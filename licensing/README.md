@@ -67,6 +67,16 @@ Pemisahan aplikasi/route tidak otomatis membuktikan adanya VM kedua yang aktif;
 publikasi source tidak otomatis menghapus lisensi kode upstream CC BY-NC-SA;
 dan hash CT tidak membuktikan hak sumber model. Kedua release gate tetap tertutup.
 
+## Live deployment exposure verification (read-only)
+
+[Public URL/withdrawn-model audit](LIVE_PUBLIC_EXPOSURE_AUDIT.md): `npm run audit:live-anatomy`.
+This reads public MEDCOEL endpoints and compares binary SHA-256 values with
+the quarantined originals and local repository candidates; GitHub Actions can
+capture an advisory report. A live byte match **does not** grant commercial
+rights, and this check does **not** verify the second physical VM or modify
+production. Historic 9 November exposure findings remain **unverified today**
+until the live test actually returns usable responses.
+
 ## Commercial release procedure
 
 Do not classify MEDCOEL as noncommercial merely because access is free. Core assets must permit
