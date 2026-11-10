@@ -1,5 +1,11 @@
 # MEDCOEL Independent Anatomy Viewer — local proof of concept
 
+> **Status 2026-11-10: rejected as the Anatomy product direction.** The owner rejected this viewer's experience. It is
+> **not** the Anatomy review candidate and is no longer built by `npm run preview:4d-lab`. The original MEDCOEL Atlas Viewer
+> (`apps/anatomy`) is the product-experience baseline: see [`ANATOMY_ORIGINAL_RESTORATION.md`](ANATOMY_ORIGINAL_RESTORATION.md).
+> The code stays as an opt-in engineering experiment only (a possible starting point for a future independently written
+> viewer); it must not be linked from MEDCOEL pages or described as parity with the original.
+
 Date: 2026-11-09. **NOT approved for public staging or commercial distribution.** This is an engineering review candidate separate from the upstream third-party Atlas application.
 
 ## Context

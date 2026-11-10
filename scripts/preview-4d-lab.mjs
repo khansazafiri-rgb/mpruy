@@ -2,12 +2,13 @@
 // Local, read-only STAGING PREVIEW of the MEDCOEL Anatomy Live 4D Lab with the production URL layout:
 //   /anatomy/live        MEDCOEL web app page (SPA) that frames the lab   (apps/web, preview build)
 //   /anatomy/4d-lab/     the lab's static build                           (apps/4d-lab/dist)
-//   /anatomy/viewer/     OPTIONAL separately built Atlas Viewer (NOT required by 4D Lab)
+//   /anatomy/viewer/     the ORIGINAL MEDCOEL Atlas Viewer (apps/anatomy, quarantine-enforced build). The review
+//                        preview builds it; the 4D Lab itself never needs it (own verified asset pack).
 // Headers mirror deploy/Caddyfile + deploy/anatomy.caddy.snippet + deploy/4d-lab.caddy.snippet.
 // There is no backend: /api/* answers from preview/fixtures.mjs and the preview build signs in a
 // fixture student (apps/web/vite.anatomy-preview.config.js). Nothing is uploaded, deployed or reloaded.
 //
-//   node scripts/preview-4d-lab.mjs --build      # build Lab + MEDCOEL preview (NO NC Atlas Viewer build)
+//   node scripts/preview-4d-lab.mjs --build      # build Lab + original Atlas Viewer + MEDCOEL preview pages
 //   node scripts/preview-4d-lab.mjs              # serve existing builds (after checking them)
 //   PORT=4173 node scripts/preview-4d-lab.mjs --lan   # also reachable from other devices on your network
 import { createServer } from 'node:http';
@@ -84,16 +85,23 @@ export async function checkBuilds(roots = ROOTS) {
     assertDistributionClean([roots.lab], '4D Lab preview');
     facts.sourceModelsChecked = facts.lab.atlasPack?.models || 0;
   } catch (e) { problems.push('4D Lab build: ' + e.message + ' (use --build).'); }
-  // The separate NC-licensed Atlas Viewer is never built merely to preview
-  // the Lab. An optional existing local atlas build can still be browsed.
-  try { await stat(path.join(roots.atlas, 'index.html')); facts.atlasViewer = 'optional local build present'; }
-  catch { facts.atlasViewer = 'not required'; }
+  // The original Atlas Viewer is part of the review preview. It is built by the same quarantine-guarded Vite config
+  // as for staging; the 4D Lab does not depend on it. A missing build is reported, never silently skipped.
+  try {
+    await stat(path.join(roots.atlas, 'index.html'));
+    assertDistributionClean([roots.atlas], 'Atlas Viewer preview');
+    facts.atlasViewer = 'built';
+  } catch (e) {
+    if (e?.code === 'ENOENT') facts.atlasViewer = 'not built (run with --build to preview the original Atlas Viewer)';
+    else problems.push('Atlas Viewer build: ' + e.message + ' (use --build).');
+  }
   return { ok: problems.length === 0, problems, facts };
 }
 
 function build() {
   const steps = [
-    ['4D Lab local pilot (base /anatomy/4d-lab/)', 'npm', ['run', 'build:4d-lab'], { LAB4D_ATLAS_PILOT: '1' }],
+    ['4D Lab (base /anatomy/4d-lab/)', 'npm', ['run', 'build:4d-lab'], {}],
+    ['Original MEDCOEL Atlas Viewer (base /anatomy/viewer/, licence quarantine enforced)', 'npm', ['run', 'build:anatomy'], {}],
     ['MEDCOEL web app (preview build)', 'npx', ['vite', 'build', '--config', 'vite.anatomy-preview.config.js'], {}, path.join(repo, 'apps/web')],
   ];
   for (const [label, cmd, args, env, cwd = repo] of steps) {
@@ -110,12 +118,15 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const port = Number(process.env.PORT || 4173), host = process.argv.includes('--lan') ? '0.0.0.0' : '127.0.0.1';
   createLabPreviewServer().listen(port, host, () => {
     const b = `http://127.0.0.1:${port}`;
-    console.log(`\nMEDCOEL 4D Lab local staging preview (read-only, no backend, nothing deployed)
-  Host page (as students see it):  ${b}/anatomy/live
-  Lab directly (full window):       ${b}/anatomy/4d-lab/
-  Procedural phantom dataset:       ${b}/anatomy/4d-lab/?dataset=phantom
-  Optional Atlas Viewer (separate): ${check.facts.atlasViewer === 'not required' ? 'not built' : b + '/anatomy/viewer/'}
-Checks: lab datasets ${check.facts.lab.datasets.join(' + ')}, ${check.facts.sourceModelsChecked} self-bundled atlas GLBs match source CT hashes.
+    const atlasOn = check.facts.atlasViewer === 'built';
+    console.log(`\nMEDCOEL local review preview (read-only, no backend, nothing deployed)
+  Anatomi Manusia (library + quiz): ${b}/anatomy
+  Atlas 3D, original MEDCOEL viewer: ${atlasOn ? b + '/anatomy/explore   (full window: ' + b + '/anatomy/viewer/)' : check.facts.atlasViewer}
+  Kuis anatomi 3D:                   ${b}/anatomy/study
+  Live 4D Lab (as students see it):  ${b}/anatomy/live
+  Lab directly (full window):        ${b}/anatomy/4d-lab/
+  Procedural phantom dataset:        ${b}/anatomy/4d-lab/?dataset=phantom
+Checks: lab datasets ${check.facts.lab.datasets.join(' + ')}, ${check.facts.sourceModelsChecked} self-bundled atlas GLBs match source CT hashes; Atlas Viewer build ${atlasOn ? 'passed the licence-quarantine scan' : 'absent'}.
 ${host === '0.0.0.0' ? 'LAN mode: reachable from other devices on this network via this machine\'s IP. Stop with Ctrl+C when done.\n' : ''}Stop with Ctrl+C.`);
   });
 }
