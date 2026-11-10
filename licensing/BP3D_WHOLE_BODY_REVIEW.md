@@ -1,41 +1,37 @@
-# MEDCOEL BodyParts3D assembled-body review (isolated)
+# MEDCOEL BodyParts3D assembled-body review
 
-**Status:** Development-only / private review. Not production-deployable, not complete clinical anatomy, not CT/USG registered. No changes to existing `apps/anatomy`, `apps/web` or `apps/4d-lab/src` runtime.
+**Status:** local development only. No BodyParts3D assets have been placed on the MEDCOEL host by this change. Production Anatomy and 4D Lab are untouched.
 
-## What this does
+## Source assembly and anatomical frame
 
-The bulk official DBCLS source workflow already emits 470 individual GLBs and `inventory.json`. Instead of centering each structure independently, the new `body.html` loads **multiple source meshes in their unmodified global coordinates** in the same Three.js scene. It opens with skeletal candidates for lower memory usage; each other available system can be enabled, with original geometry (no invented missing mesh), tissue-class color, source-neutral mode, alpha, high-contrast, search/focus, and fit visible anatomy.
+The 470 individually mapped official-source candidates share millimetre-scale OBJ coordinates. Their positions are not centered independently. The separate official skin reference is identified in the publisher's tables as **FMA7163 / BP9115 / FJ2810**, and is not counted as a 471st Atlas mapping. In the checked source inventory, all 470 model bounds lie within the skin bounds, within a 5 mm margin. Femur.l and Femur.r centers have the expected opposite X signs, and the sternum lies anterior at negative native Y. This is spatial coherence in one source frame, not validation of every structure's identity or completeness.
 
-This is a **partial composite**, not a fully verified complete body surface. The 1,767 other Atlas names still require reconciliation, and BodyParts3D's own coverage and hierarchy may not map one-to-one onto that catalog. Even a coherent outline does not establish correct units, bone landmarks, native-coordinate origin, clinical identity, or patient alignment. The viewer must retain all provenance warnings. Safari/iPad visual and GPU memory tests are required before any release.
+Display transformation applied once to the shared parent group (GLB files remain unchanged): native `[X,Y,Z]` mm to Three.js `[X,Z,-Y] / 1000` m. Hence patient left is +X, superior +Y, anterior +Z in the viewer. Anterior, patient-left and posterior camera presets use those axes. Skin can be hidden or shown translucently; the underlying skeletal and other systems load progressively. Start with 107 skeletal candidates and enable the other systems for combined anatomy. Tissue-class, system-color, neutral, opacity and contrast modes remain illustrative.
 
-## Rebuild and inspect locally
+The **1,767** other Atlas catalog names still require reconciliation; some structures may not exist in BodyParts3D at all. The official skin model does not fill missing organs, vessels, muscles or detailed landmarks. There is no CT/USG registration or clinical validation. No existing model is replaced or promoted.
+
+## Rebuild locally
 
 ```sh
 npm ci --prefix apps/4d-lab
 npm run audit:bodyparts3d -- --download
 npm run batch:bodyparts3d -- --all
+node --test apps/4d-lab/test/bp3d-batch.test.mjs apps/4d-lab/test/bp3d-convert.test.mjs apps/4d-lab/test/bp3d-review.test.mjs scripts/bodyparts3d-source.test.mjs
 python3 -m http.server 4783 --bind 127.0.0.1 --directory local-data/licensing-quarantine/bp3d-batch
-# http://127.0.0.1:4783/body.html
+# Browse http://127.0.0.1:4783/body.html
 ```
 
-Or download the CI artifact `bp3d-bulk-review-unapproved`, extract it, serve its root with an HTTP server, and visit `body.html`. GitHub artifact ZIP files expire and are **not** deployment storage.
+`inventory.json` records 470 converted mappings, a separate `referenceSurface`, source hashes and a rights warning. `reference-surface/lineage.json` records the original skin OBJ's element hash and header notice. `coordinate-frame.js` is copied into the generated viewer. Generated geometry remains gitignored. The CI workflow now uploads metadata only, not geometry, while rights notices conflict.
 
-Both `index.html` (single structure) and `body.html` (multi-system assembly) are static local output in gitignored `local-data`. Neither is linked from the MEDCOEL production host. They use the existing official 470 review models and MIT Three.js library from the build.
+## Rights block and review hosting
 
-## How to get it onto the MEDCOEL website safely
+The current [DBCLS license page](https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html) (updated 2025-02-27) states CC BY 4.0, but the downloaded official 4.0 OBJ header states CC BY-SA 2.1 Japan. Preserve both notices and attribution. The exact archive's terms and any ShareAlike obligations need documented reconciliation before uploading a private review build or distributing GLBs. Do not infer that a login makes unclear rights acceptable. The third-party Atlas frontend has a separate NC license and is not imported into this viewer. Existing commercial-release gates remain active.
 
-A real web launch needs a **persistent, access-controlled review build**, not a temporary GitHub Actions artifact or an unreviewed upload into `apps/web/public`. Keep this new app independent of the third-party CC BY-NC-SA Atlas frontend and CT/USG derivatives. Verify allowed official DBCLS BodyParts3D model use and reproduce its CC BY 4.0 attribution; independently verify every other bundled dependency. Review exact build hashes, data provenance, site licensing obligations, page access restrictions, performance and rollback plan. Do not turn off `licensing/commercial-release.json` gates or assume that a free student login makes NC upstream code commercially licensed.
+The prepared `deploy/Caddyfile.bp3d-review.example` is a **separate, uninstalled** host block. Before any future installation: confirm DNS and server access; inspect the live Caddyfile and Caddy version; back up the current Caddyfile and `/var/lib/medcoel/bp3d-review`; keep immutable timestamped release directories and the previous `current` symlink; generate a unique password hash outside Git; verify `caddy validate`; test HTTP 401 unauthenticated and 200 authenticated, including nested GLB URLs; verify all pages/assets remain inaccessible without credentials; and roll back by restoring the previous symlink and Caddyfile followed by validation/reload. Make direct URL checks only after these steps. Do not alter `/anatomy/viewer/`, the 4D routes, PocketBase, or other production roots.
 
-After reviewer approval, the host can serve a dedicated **restricted** review location using the build output and HTTP access controls without altering `/anatomy/viewer/` or `/anatomy/4d-lab/`. Public deployment or inclusion in the normal student site requires its own documented legal and product clearance. No server access or production deployment is performed by this branch.
+## Remaining verification
 
-## Minimum acceptance
-
-- [ ] All converted candidates load without missing asset requests.
-- [ ] Multiple named body systems share original source coordinates without ad-hoc transformations; inspect both left and right sides.
-- [ ] The geometry looks spatially coherent under full-body orbit, zoom, and side views; photograph Safari before/after.
-- [ ] All muscles/bones preserve consistent tissue colors; switch to neutral and high contrast.
-- [ ] Search/focus and fitting work while systems toggle on/off.
-- [ ] Memory remains usable on target Safari Mac/iPad (start skeleton-only, progressive load max 3).
-- [ ] No removed, hidden, duplicated, or fabricated anatomy.
-- [ ] Existing public Anatomy and 4D Lab data, code and release gates unchanged.
-- [ ] Rights and exact-hash release gates cleared **before public rollout**.
+- Actual browser anterior, lateral, posterior screenshots, WebGL loading/errors, frame time and memory on Safari Mac/iPad.
+- Inspect small structures, internal overlaps, missing anatomy and individual left/right identity.
+- Clear exact-source license conflict and review build hashes before any server upload.
+- Verify host credentials, DNS, backup, routing and rollback on the real server before claiming a working private URL.

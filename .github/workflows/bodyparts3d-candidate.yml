@@ -8,6 +8,7 @@ on:
       - licensing/tools/prepare-bodyparts3d-source.mjs
       - apps/4d-lab/tools/batch-bp3d-candidates.mjs
       - apps/4d-lab/tools/bp3d-composite-viewer.mjs
+      - apps/4d-lab/tools/bp3d-coordinate-frame.mjs
       - apps/4d-lab/tools/bp3d-review-materials.mjs
       - apps/4d-lab/tools/bp3d-mapping-review.mjs
       - apps/4d-lab/tools/bp3d-batch-audit.mjs
@@ -47,11 +48,17 @@ jobs:
           console.log(JSON.stringify(audit));
           if(audit.errors.length||audit.independentModels!==audit.converted)process.exitCode=1;
           JS
-      - name: Upload all converted GLBs, viewer, mapping gaps and source manifest
+      # The official page and embedded OBJ header contain conflicting CC terms.
+      # Keep generated geometry on the ephemeral runner until rights are reconciled.
+      - name: Upload metadata only while source license notices conflict
         uses: actions/upload-artifact@v4
         with:
-          name: bp3d-bulk-review-unapproved
-          path: local-data/licensing-quarantine/bp3d-batch/**
+          name: bp3d-bulk-metadata-rights-blocked
+          path: |
+            local-data/licensing-quarantine/bp3d-batch/inventory.json
+            local-data/licensing-quarantine/bp3d-batch/mapping-gaps.json
+            local-data/licensing-quarantine/bp3d-batch/mapping-review.json
+            local-data/licensing-quarantine/bp3d-batch/mapping-review.csv
           retention-days: 7
           if-no-files-found: error
           compression-level: 6
@@ -73,7 +80,8 @@ jobs:
             '| Unmapped/ambiguous/missing file | '+s.gaps+' |',
             '| Candidates with read-only geometry diagnostics | '+s.candidatesWithGeometryFlags+' |',
             'All outputs are independent **review-only** files. This workflow does not change the approved 3D Anatomy UI, current GLBs, 4D Lab CT/USG, production routes or commercial release gates.',
-            'Download the review artifact: index.html inspects single models; body.html assembles multiple candidate systems in native source coordinates (still unvalidated and not released).',
+            'This run uploads **metadata only**: the downloaded OBJ header says CC BY-SA 2.1 Japan while the current publisher license page says CC BY 4.0. Geometry remains on the ephemeral runner until terms are reconciled.',
+            'The local-only body.html assembles candidates and official skin reference in a single native frame, then applies the explicit millimetre-to-metre anatomical display transform.',
             'mapping-review.json contains the complete unmatched inventory, confidence, source availability, conflicts, and per-system totals. mapping-review.csv is its human review queue. Neither promotes models or clears rights.'];
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,lines.join('\n')+'\n');
           if(s.failed){console.error('Some candidates failed conversion; see artifact/inventory.json');process.exitCode=1;}

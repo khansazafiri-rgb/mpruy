@@ -26,6 +26,49 @@ const sha=data=>createHash('sha256').update(data).digest('hex');
 const tokenise=name=>normalizeAnatomyName(name).split(' ').filter(Boolean);
 const general=new Set(['of','the','and','part','branch','left','right','anterior','posterior','inferior','superior']);
 
+// This is a source reference surface, not another Atlas catalog match. Keep its
+// identity and the conflicting license notices visible for a separate rights review.
+export async function buildReferenceSkin({official,elements,zipFiles,archive,archiveSha,output}){
+  const identity=official.find(row=>row.fmaId==='FMA7163'&&row.bpId==='BP9115'&&row.name.toLowerCase()==='skin');
+  const ids=[...(elements.get('FMA7163')||[])];
+  if(!identity||ids.length!==1||ids[0]!=='FJ2810')return null;
+  const zipEntry=zipFiles.find(entry=>path.basename(entry)==='FJ2810.obj');
+  if(!zipEntry)return null;
+  const bytes=execFileSync('unzip',['-p',archive,zipEntry],{maxBuffer:MAX_OBJ});
+  const sourceText=bytes.toString('utf8');
+  if(!sourceText.includes('Concept ID : FMA7163')||!sourceText.includes('Representation ID : BP9115'))
+    throw new Error('Official skin OBJ header does not match FMA/BP table');
+  const sourceLicenseNotice=sourceText.split(/\r?\n/).slice(0,12)
+    .find(line=>line.includes('Creative Commons'))?.replace(/^#\s*/, '')||null;
+  const lineage={schemaVersion:1,source:BP3D_OFFICIAL,officialName:'skin',officialFMAId:'FMA7163',
+    officialRepresentationId:'BP9115',sourceArchive:path.basename(archive),archiveSHA256:archiveSha,
+    elements:[{id:'FJ2810',sha256:sha(bytes),zipEntry}],coordinateFrame:'native-official-OBJ',
+    registrationValidated:false,geometryAnatomyValidated:false,approvedForDistribution:false,
+    sourceLicenseNotice,licensePage:'https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html',
+    rightsReview:'BLOCKED: source OBJ notice says CC BY-SA 2.1 Japan; current license page says CC BY 4.0. Reconcile terms before upload.',
+    warning:'Official source skin reference, not a converted Atlas candidate and not validated with CT/USG'};
+  const part={id:'FJ2810',text:sourceText};
+  let glb;
+  try{glb=await makeGlb([part],'skin reference',lineage)}
+  catch(error){
+    if(error.message!=='Degenerate OBJ triangle')throw error;
+    const stats=readObjTriangles(sourceText,{skipDegenerate:true}).stats;
+    lineage.sourceGeometryWarnings={omittedZeroAreaTriangles:stats.omittedDegenerateTriangles,
+      requiresManualReview:true};
+    glb=await makeGlb([part],'skin reference',lineage,{skipDegenerate:true});
+  }
+  lineage.generatedGLBSHA256=sha(glb);
+  const doc=await new NodeIO().readBinary(glb),geometry=summarizeGeometry(doc);
+  verifyLineage({bytes:glb,lineage,summary:geometry});
+  const dir=path.join(output,'reference-surface');fs.mkdirSync(dir,{recursive:true});
+  fs.writeFileSync(path.join(dir,'skin.glb'),glb);
+  fs.writeFileSync(path.join(dir,'lineage.json'),JSON.stringify(lineage,null,2)+'\n');
+  return {name:'Official source skin reference',fmaId:'FMA7163',bpId:'BP9115',fjId:'FJ2810',
+    modelPath:'./reference-surface/skin.glb',glbSha256:lineage.generatedGLBSHA256,
+    boundsNative:geometry.boundsNative,triangles:geometry.triangles,
+    state:'reference-unverified',sourceLicenseNotice,rightsReview:lineage.rightsReview};
+}
+
 export function safeStructureId(name){
   const id=normalizeAnatomyName(name).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,52);
   return (id||'structure')+'-'+sha(name).slice(0,12);
@@ -275,10 +318,12 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}
     totalOmittedZeroAreaTriangles:converted.reduce((n,x)=>n+x.omittedZeroAreaTriangles,0),
     candidatesWithGeometryFlags:converted.filter(x=>x.diagnostics.flags.length>0).length,
     unprocessedDueToLimit:plan.allEligible-plan.eligible.length};
+  const referenceSurface=await buildReferenceSkin({official,elements,zipFiles,archive,archiveSha,output});
   const manifest={schemaVersion:1,kind:'official-bp3d-bulk-source-review',source:BP3D_OFFICIAL,
     sourceHashes:{namesSha256:sha(namesBytes),elementsSha256:sha(elementBytes),
       archiveSha256:archiveSha},summary,systems:plan.systems,
-    converted,failures:failed,legalStatus:'NOT-CLEARED',
+    converted,referenceSurface,failures:failed,legalStatus:'NOT-CLEARED',
+    sourceRightsReview:'BLOCKED: downloaded OBJ headers say CC BY-SA 2.1 Japan; current DBCLS license page says CC BY 4.0. Reconcile terms for exact archive before uploading any GLB.',
     geometryRegisteredToMEDCOEL:false,approvedForCommercialDistribution:false};
   const mapping=reconcileMapping({gaps:plan.gaps,officialRows:official,converted,
     elementIndex:elements,archiveFiles:zipFiles});
@@ -292,6 +337,8 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}
   fs.writeFileSync(path.join(output,'mapping-review.csv'),mapping.csv);
   fs.writeFileSync(path.join(output,'index.html'),buildBulkHTML());
   fs.writeFileSync(path.join(output,'body.html'),buildCompositeHTML());
+  fs.copyFileSync(fileURLToPath(new URL('./bp3d-coordinate-frame.mjs',import.meta.url)),
+    path.join(output,'coordinate-frame.js'));
   fs.copyFileSync(fileURLToPath(new URL('./bp3d-review-materials.mjs',import.meta.url)),
     path.join(output,'review-materials.js'));
   const threeRoot=path.join(root,'apps/4d-lab/node_modules/three');

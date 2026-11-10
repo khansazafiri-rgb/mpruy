@@ -44,6 +44,8 @@ footer{padding:7px 14px;background:#1b302b;color:#d9c598;font-size:11px}
 <h2>Anatomical systems</h2><p>Models retain their original shared source coordinates. Turn on systems to assemble them in one scene. The catalog is incomplete and not CT/USG registered.</p>
 <div id="systems"></div>
 <div style="display:flex;gap:8px;margin:12px 0"><button id="fit">Fit visible anatomy</button><button id="clear">Bones only</button></div>
+<div style="display:flex;gap:5px;flex-wrap:wrap" aria-label="Anatomical camera presets"><button data-view="front">Anterior</button><button data-view="side">Patient left</button><button data-view="back">Posterior</button></div>
+<label style="display:flex;gap:8px;align-items:center;margin:12px 0"><input type="checkbox" id="skin" checked> Official skin reference (translucent)</label>
 <label for="color">Color scheme</label><select id="color"><option value="tissue">Tissue classes (consistent)</option><option value="system">Anatomical systems</option><option value="neutral">Neutral source review</option></select>
 <label for="alpha">Opacity of visible systems: <span id="alphaLabel">100%</span></label><input id="alpha" type="range" min="20" max="100" step="5" value="100">
 <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="contrast"> High contrast</label>
@@ -52,7 +54,7 @@ footer{padding:7px 14px;background:#1b302b;color:#d9c598;font-size:11px}
 <input id="search" type="search" placeholder="Search among converted structures" autocomplete="off">
 <div id="searchResults"></div>
 <p id="status">Loading official inventory…</p>
-<p><strong>BodyParts3D, © The Database Center for Life Science</strong>, under <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html" style="color:#a8ead7">CC BY 4.0</a>. Color is illustrative and is not medical verification.</p>
+<p><strong>BodyParts3D, © The Database Center for Life Science</strong>. <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html" style="color:#a8ead7">Current license page</a> says CC BY 4.0; downloaded OBJ header says CC BY-SA 2.1 Japan. Rights review required before any upload. Color is illustrative.</p>
 </aside>
 <main id="viewport"><div id="canvas"></div>
 <div id="hud"><strong id="progress">Waiting for inventory</strong>
@@ -65,8 +67,11 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {materialFor} from './review-materials.js';
+import {SOURCE_TO_WORLD} from './coordinate-frame.js';
 const $=id=>document.getElementById(id);
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x0d171a);
+const anatomy=new THREE.Group();anatomy.name='BodyParts3D source to display';
+anatomy.rotation.x=SOURCE_TO_WORLD.rotationX;anatomy.scale.setScalar(SOURCE_TO_WORLD.scale);scene.add(anatomy);
 const cam=new THREE.PerspectiveCamera(45,1,0.001,1e7);
 const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'low-power'});
 renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));
@@ -79,13 +84,14 @@ const controls=new OrbitControls(cam,renderer.domElement);controls.enableDamping
 controls.minDistance=0.000001;
 const loader=new GLTFLoader();
 const models=new Map(),queued=new Set(),loading=new Set(),pending=[],failures=new Map();
-let entries=[],active=new Set(['skeletal']),busy=0,requestedFocus=null,fitWhenReady=true;
+let entries=[],active=new Set(['skeletal']),busy=0,requestedFocus=null,fitWhenReady=true,skinReference=null,skinRoot=null;
 const MAX_PARALLEL=3;
 function resize(){const w=Math.max(100,$('canvas').clientWidth),h=Math.max(100,$('canvas').clientHeight);
 renderer.setSize(w,h,true);cam.aspect=w/h;cam.updateProjectionMatrix()}
 new ResizeObserver(resize).observe($('canvas'));resize();
 function visibleBounds(){const b=new THREE.Box3();
 for(const [id,item] of models){if(item.root.visible)b.expandByObject(item.root)}
+if(skinRoot?.visible)b.expandByObject(skinRoot);
 return b}
 function fitBox(b){if(b.isEmpty())return;const s=b.getSize(new THREE.Vector3());
 const c=b.getCenter(new THREE.Vector3());const radius=Math.max(1e-8,s.length()/2);
@@ -94,6 +100,24 @@ cam.position.copy(c).add(new THREE.Vector3(radius*1.15,radius*0.9,radius*2.35));
 controls.target.copy(c);cam.updateProjectionMatrix();controls.update()}
 function fitVisible(){fitBox(visibleBounds())}
 $('fit').addEventListener('click',fitVisible);
+for(const button of document.querySelectorAll('[data-view]'))button.addEventListener('click',()=>{
+const b=visibleBounds();if(b.isEmpty())return;
+const c=b.getCenter(new THREE.Vector3()),r=Math.max(.1,b.getSize(new THREE.Vector3()).length()/2);
+const dir=button.dataset.view==='front'?new THREE.Vector3(0,0,1):
+button.dataset.view==='back'?new THREE.Vector3(0,0,-1):new THREE.Vector3(1,0,0);
+controls.target.copy(c);cam.position.copy(c).addScaledVector(dir,r*2.5);
+cam.near=r/1000;cam.far=r*200;cam.up.set(0,1,0);cam.updateProjectionMatrix();controls.update()});
+function loadSkin(){if(!skinReference||!$('skin').checked||skinRoot)return;
+loader.load(skinReference.modelPath,asset=>{
+skinRoot=asset.scene;skinRoot.name='Official skin reference, unvalidated';
+skinRoot.traverse(node=>{if(node.isMesh){node.material=new THREE.MeshStandardMaterial({
+color:0xcaa69b,roughness:0.88,metalness:0,side:THREE.DoubleSide,
+transparent:true,opacity:0.22,depthWrite:false})}});
+anatomy.add(skinRoot);skinRoot.visible=$('skin').checked;
+fitWhenReady=true;syncVisibility();fitVisible();
+},undefined,error=>{$('status').textContent='Skin reference unavailable: '+String(error)})}
+$('skin').addEventListener('change',()=>{if($('skin').checked)loadSkin();
+if(skinRoot)skinRoot.visible=$('skin').checked;syncVisibility()});
 function styleModel(item){const mode=$('color').value,opacity=Number($('alpha').value)/100;
 const appearance=materialFor(item.entry,mode);
 for(const mesh of item.meshes){const mats=Array.isArray(mesh.material)?mesh.material:[mesh.material];
@@ -107,7 +131,8 @@ item.root.visible=active.has(item.entry.system);styleModel(item)}
 $('alphaLabel').textContent=$('alpha').value+'%';
 const visible=[...models.values()].filter(item=>item.root.visible).length;
 const required=entries.filter(e=>active.has(e.system)&&!failures.has(e.id)).length;
-$('progress').textContent=visible+'/'+required+' models loaded · '+failures.size+' errors · 470 is not a complete body';
+$('progress').textContent=visible+'/'+required+' source structures loaded · '+failures.size+' errors · '+
+(skinRoot?.visible?'skin reference shown · ':'')+'partial catalog';
 if(fitWhenReady&&visible===required&&required){fitWhenReady=false;fitVisible()}}
 function pump(){while(busy<MAX_PARALLEL&&pending.length){
 const entry=pending.shift();queued.delete(entry.id);
@@ -117,7 +142,7 @@ busy--;loading.delete(entry.id);const root=asset.scene,meshes=[];
 root.traverse(node=>{if(node.isMesh){node.material=Array.isArray(node.material)?
 node.material.map(m=>m.clone()):node.material.clone();meshes.push(node)}});
 if(!meshes.length){failures.set(entry.id,'No mesh found');root.traverse(()=>{});}
-else{scene.add(root);models.set(entry.id,{root,meshes,entry});
+else{anatomy.add(root);models.set(entry.id,{root,meshes,entry});
 if(requestedFocus===entry.id){requestedFocus=null;
 const b=new THREE.Box3().setFromObject(root);fitBox(b)}}
 syncVisibility();pump();
@@ -162,10 +187,12 @@ $('search').addEventListener('input',search);
 fetch('./inventory.json').then(r=>{if(!r.ok)throw Error('Inventory unavailable');return r.json()}).then(data=>{
 entries=Array.isArray(data.converted)?data.converted:[];
 if(!entries.length)throw Error('No converted GLBs');
+skinReference=data.referenceSurface||null;
+if(!skinReference)$('skin').closest('label').hidden=true;
 $('status').textContent='Assembly: official raw coordinates. Start with bones; enable other systems for combined anatomy.';
 $('details').textContent=entries.length+' distinct converted candidates, source geometry unchanged; '+
-(data.summary?.gaps??'unknown')+' catalog names still unconfirmed. Raw coordinates require clinical alignment review.';
-makeSystems();queueActive();
+(data.summary?.gaps??'unknown')+' catalog names still unconfirmed. Shared source frame: millimetres to display metres, superior up. No CT registration.';
+makeSystems();queueActive();loadSkin();
 }).catch(e=>{$('status').textContent='ERROR: '+e.message;$('progress').textContent='Unable to assemble body'});
 function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,cam)}animate();
 </script>
