@@ -12,7 +12,7 @@ import { VIEWS, snapToSkin } from '../sim/views.js';
 import { REFERENCES } from '../sim/references.js';
 import { PatientScene } from './scene3d.js';
 import { imagingAvailability } from './regionCoverage.js';
-import { shouldShowImagingPlane } from './sceneVisibility.js';
+import { shouldShowImagingPlane, shouldShowStethoscope } from './sceneVisibility.js';
 import { Monitor, drawStrip } from './monitor.js';
 import { AudioEngine } from './audio.js';
 import { voxelSurface } from './blobMesh.js';
@@ -158,7 +158,7 @@ async function useDataset({ ctBuf, labBuf, anatomy, reg, files, source, name }) 
     scene.setMeshes({}, { coverage: ct.bounds, capZ: -1e9 });
     S.mode = 'free';
   }
-  scene.setSites(anatomy?.auscultation || [], S.tool === 'stethoscope' && (S.ws === 'ausc' || S.ws === 'learn'));
+  scene.setSites(anatomy?.auscultation || [], shouldShowStethoscope(S));
   if (meshes && labels) applyView(S.view, false);
   else {
     S.free.position = [...ct.centre];
@@ -394,7 +394,7 @@ function loop(now) {
   if (S.steth.ref && f) { const d = [0, 0, 0]; displacement(f, ...S.steth.ref, d); S.steth.point = S.steth.ref.map((v, i) => v + d[i]); }
   // Sound playback does not select the instrument. A posterior listening point must
   // never leave a dangling chestpiece under the table in other workspaces.
-  scene.setStethoscope(S.steth.point, S.steth.normal, S.tool === 'stethoscope' && (S.ws === 'ausc' || S.ws === 'learn'));
+  scene.setStethoscope(S.steth.point, S.steth.normal, shouldShowStethoscope(S));
   if (dirty) requestImaging(f, plane);
   // audio + strip
   const mix = currentMix();
@@ -977,7 +977,7 @@ async function loadComparison() { // atlas-vs-phantom residuals are measured by 
 }
 function setTool(val) {
   S.tool = val;
-  scene.siteMarkers.visible = val === 'stethoscope' && (S.ws === 'ausc' || S.ws === 'learn');
+  scene.siteMarkers.visible = shouldShowStethoscope(S);
   // Hide the stale image plane immediately when the auscultation instrument is selected.
   // The async imaging worker also checks this visibility policy before rendering its reply.
   if (!shouldShowImagingPlane(S)) scene.hideImagePlane();

@@ -26,9 +26,18 @@ try {
   await page.waitForTimeout(450);
   const bodyFill = await page.evaluate(() => window.__independentAtlasPilot.visibleHeightFraction);
   assert.ok(bodyFill >= 0.65 && bodyFill <= 0.85, `model occupies ${bodyFill} of viewport height`);
-  assert.equal(await page.locator('.controls').evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(14, 42, 56)');
+  assert.equal(await page.locator('.controls').count(), 0, 'no permanent sidebar');
+  assert.equal(await page.locator('.system-dock').isVisible(), true);
+  assert.equal(await page.locator('.region-toggle').isVisible(), true);
+  await page.locator('#regionToggle').click();
+  assert.equal(await page.getByTestId('pilot-region-thorax').isVisible(), true);
+  await page.getByTestId('pilot-region-thorax').locator('img').waitFor({ timeout: 30000 });
+  await page.getByTestId('pilot-region-thorax').click();
+  assert.equal(await page.evaluate(() => window.__independentAtlasPilot.region), 'thorax');
+  await page.locator('#regionToggle').click();
+  await page.getByTestId('pilot-region-whole').click();
   assert.equal(await page.locator('.camera-tools').isVisible(), true);
-  assert.equal(await page.locator('.structure-disclosure').isVisible(), true);
+  assert.equal(await page.locator('.search-wrap').isVisible(), true);
   if (process.env.ATLAS_SCREENSHOT_DIR) {
     const { mkdir } = await import('node:fs/promises');
     await mkdir(process.env.ATLAS_SCREENSHOT_DIR, { recursive: true });
@@ -39,6 +48,8 @@ try {
   await page.getByTestId('pilot-search').fill('Sternum');
   await page.getByTestId('pilot-results').getByRole('button', { name: /Sternum/i }).first().click();
   assert.match(await page.getByTestId('pilot-details').textContent(), /Sternum/);
+  await page.getByTestId('pilot-structure-opacity').fill('55');
+  assert.equal(await page.locator('#structureOpacityValue').textContent(), '55%');
   await page.getByTestId('pilot-isolate').click();
   assert.equal(await page.getByTestId('pilot-isolate').isDisabled(), true);
   await page.getByTestId('pilot-clear').click();
@@ -51,8 +62,13 @@ try {
   assert.equal(await page.evaluate(() => window.__independentAtlasPilot.hiddenCount), 1);
   await page.getByTestId('pilot-undo').click();
   assert.equal(await page.evaluate(() => window.__independentAtlasPilot.hiddenCount), 0);
+  await page.getByTestId('pilot-redo').click();
+  assert.equal(await page.evaluate(() => window.__independentAtlasPilot.hiddenCount), 1);
+  await page.getByTestId('pilot-undo').click();
+  assert.equal(await page.evaluate(() => window.__independentAtlasPilot.hiddenCount), 0);
   await page.getByTestId('pilot-opacity').fill('50');
-  await page.getByTestId('pilot-region').selectOption('thorax');
+  await page.locator('#regionToggle').click();
+  await page.getByTestId('pilot-region-thorax').click();
   assert.equal(await page.evaluate(() => window.__independentAtlasPilot.region), 'thorax');
   await page.getByTestId('pilot-back').click();
   await page.getByTestId('pilot-side').click();

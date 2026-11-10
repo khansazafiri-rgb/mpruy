@@ -57,7 +57,7 @@
       "id": "search",
       "critical": true,
       "baseline": "Structure search and suggestions across systems",
-      "candidate": "Search, selectable results and a bounded structure browser from the allowed catalog; no rich descriptions",
+      "candidate": "Centered top search, selectable results and a bounded structure browser from the allowed catalog; no rich descriptions",
       "status": "partial",
       "test": "independentAtlasPilot.test.mjs; e2e pending",
       "rights": "catalog source provenance pending"
@@ -84,8 +84,8 @@
       "id": "transparency",
       "critical": true,
       "baseline": "Selected transparency and fade others",
-      "candidate": "Global opacity and fade others; no per-structure opacity slider",
-      "status": "partial",
+      "candidate": "Global and selected-structure opacity, plus fade others; selected material and transparent clones are disposed when removed. Browser visual review pending",
+      "status": "implemented-unverified",
       "test": "state unit test; e2e pending",
       "rights": "original candidate code"
     },
@@ -93,8 +93,8 @@
       "id": "undo",
       "critical": true,
       "baseline": "Undo viewer state",
-      "candidate": "Thirty-step interaction history, excluding camera",
-      "status": "partial",
+      "candidate": "Thirty-step undo/redo interaction history, excluding camera; a new action invalidates the redo branch",
+      "status": "implemented-unverified",
       "test": "independentAtlasState.test.mjs",
       "rights": "original candidate code"
     },
@@ -102,7 +102,7 @@
       "id": "regions",
       "critical": true,
       "baseline": "Region-specific scenes and previews",
-      "candidate": "Region filter from catalog, no region-specific framing or preview",
+      "candidate": "Floating region picker and cards with local previews rendered from the loaded model; region filtering and refit; anatomy thumbnail quality requires browser review",
       "status": "partial",
       "test": "independentAtlasState.test.mjs; e2e pending",
       "rights": "catalog and thumbnails under review"
@@ -138,7 +138,7 @@
       "id": "mobile",
       "critical": true,
       "baseline": "Responsive drawers and touch controls",
-      "candidate": "Dark MEDCOEL-themed navigation, viewport camera toolbar, responsive layout and OrbitControls; no device QA of revised layout",
+      "candidate": "Anatomy-focused workspace, top search, floating region cards, right camera toolbar, bottom system dock and responsive layout; no device QA of this revision",
       "status": "partial",
       "test": "Safari/iPad manual QA pending",
       "rights": "original candidate code"

@@ -5,3 +5,9 @@
 export function shouldShowImagingPlane({ tool, ws }) {
   return ws !== 'ausc' && tool !== 'stethoscope';
 }
+
+// A listening point may remain in state for audio/reference, but the physical
+// instrument belongs only to an active auscultation interaction.
+export function shouldShowStethoscope({ tool, ws }) {
+  return tool === 'stethoscope' && (ws === 'ausc' || ws === 'learn');
+}
