@@ -127,6 +127,8 @@ test('all 6 systems receive distinct illustrative review colors and user can tur
   assert.match(html,/id="legend"/);
   assert.match(html,/ren\.setSize\(w,h,true\)/);
   assert.match(html,/NOT FOR PUBLIC RELEASE/);
+  assert.match(html,/BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4\.0 International/);
+  assert.match(html,/id="source-credit"/);
 });
 
 test('every skeletal bone and every skeletal muscle has one consistent tissue material',()=>{
