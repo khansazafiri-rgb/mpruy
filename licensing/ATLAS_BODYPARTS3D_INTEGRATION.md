@@ -109,7 +109,18 @@ npm run preview:4d-lab                 # builds everything and serves 127.0.0.1:
 Open `http://127.0.0.1:4173/anatomy/viewer/?models=bp3d` (or `/anatomy/explore` for the framed page; add `?models=bp3d` to the
 viewer URL). The standalone review viewer is still `npm run review:bodyparts3d` (`/body.html`).
 
-## 7. Not verified
+## 7. Test results and the one regression found
+
+- `apps/anatomy` Vitest 92/92 (new `tests/bp3d.test.js`: flag, inventory validation, coordinate frame, palette parity, sweep side); lint 0 errors.
+- `tests/e2e/original-viewer-e2e.mjs` (default Atlas models): **16/16**. `tests/e2e/bp3d-atlas-e2e.mjs` (`?models=bp3d`): **10/10**, 0 skipped.
+- `test:licensing` 33/33, `test:anatomy-integration` 10/10, `test:4d-lab` 123/123 (+4): all unchanged and passing. **No 4D Lab runtime file was
+  changed** (the diff against the integration branch is one dev tool, `bp3d-composite-viewer.mjs`, which only moved the search box).
+- **Found and fixed:** the yellow selection sweep animated on Atlas models but not on BodyParts3D structures (measured as changing pixels
+  between frames: 0 versus about 1,000). Its overlay was `FrontSide`, and the source's triangle winding is inconsistent, so it was culled.
+  `selectionGlow.js` now follows a double-sided base material; Atlas meshes keep `FrontSide`, so default behaviour is identical. The
+  e2e now fails if the sweep stops animating.
+
+## 8. Not verified
 
 - **Safari / real devices:** not tested (Chromium with software WebGL only). Frame rate under software GL is meaningless for a real
   GPU, but **470 separate meshes plus a transparent skin is heavy**: memory and speed on an 8 GB MacBook are unmeasured.
