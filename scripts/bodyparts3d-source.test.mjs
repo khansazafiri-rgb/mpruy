@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { BP3D_OFFICIAL, parseOfficialNames, normalizeAnatomyName, candidateCrosswalk, checkArchiveEntryNames } from '../licensing/tools/prepare-bodyparts3d-source.mjs';
+import { BP3D_OFFICIAL, parseOfficialNames, normalizeAnatomyName, candidateCrosswalk, checkArchiveEntryNames, parseOfficialElements, mapActualMeshFiles } from '../licensing/tools/prepare-bodyparts3d-source.mjs';
 
 const TSV = [
   'concept id\trepresentation id\ten',
@@ -52,4 +52,31 @@ test('do not trust archive paths or allow a file list with no actual OBJ', () =>
   for (const invalid of [['../out.obj'], ['/etc/foo.obj'], ['a\\b.obj'], ['a.obj', 'a.obj'], ['readme.txt'], []]) {
     assert.throws(() => checkArchiveEntryNames(invalid));
   }
+});
+
+test('official FMA concepts map to actual FJ OBJ mesh IDs, not BP representation IDs', () => {
+  const elements = [
+    'concept id\tname\telement file id',
+    'FMA24485\tleft femur\tFJ1000',
+    'FMA24485\tleft femur\tFJ1001',
+    'FMA24486\tright femur\tFJ1002',
+    'FMA7204\tright kidney\tFJ1234M',
+  ].join('\n');
+  const parsed = parseOfficialElements(elements);
+  assert.deepEqual([...parsed.get('FMA24485')], ['FJ1000','FJ1001']);
+  const catalog={'Femur.l':{source:'skeletal'},'Femur.r':{source:'skeletal'},
+    'Kidney.r':{source:'visceral'},'Missing bone':{source:'skeletal'}};
+  const raw=candidateCrosswalk(catalog,parseOfficialNames(TSV));
+  const resolved=mapActualMeshFiles(raw,parsed,
+    ['isa_model/FJ1000.obj','isa_model/FJ1001.obj','isa_model/FJ1002.obj']);
+  assert.equal(resolved.elementSummary.distinctElementFileIds,4);
+  assert.equal(resolved.elementSummary.foundObjFiles,3);
+  assert.equal(resolved.elementSummary.matchedNamesWithElementIds,3);
+  assert.deepEqual(resolved.candidates.find(c=>c.atlasName==='Femur.l').matches[0].elementFileIds,
+    ['FJ1000','FJ1001']);
+  assert.equal(resolved.candidates.find(c=>c.atlasName==='Kidney.r').matches[0].sourceObjs[0].archivePath,null);
+  assert.ok(resolved.candidates.every(c=>c.geometryIdentityVerified===false &&
+    c.redistributionApproved===false));
+  assert.throws(()=>parseOfficialElements('bad header\nFMA24485\tx\tFJ1'),/Unexpected official element table/);
+  assert.throws(()=>parseOfficialElements('concept id\tname\telement file id\nFMA24485\tx\tBP1'),/Unexpected official element row/);
 });
