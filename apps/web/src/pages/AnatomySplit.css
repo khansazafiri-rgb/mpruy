@@ -34,3 +34,4 @@
 @keyframes splitSweep{from{transform:translateX(0)}to{transform:translateX(292px)}}
 @media(prefers-reduced-motion:reduce){.split-art-svg .heart,.split-art-svg .ecg-dot{animation:none}}
 @media(max-width:860px){.anatomy-split-cards{grid-template-columns:1fr}}
+.split-soon{cursor:default;opacity:.8;border-style:dashed}

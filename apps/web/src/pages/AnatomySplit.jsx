@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Box, Activity, Target } from 'lucide-react';
 import StructureThumbnail from '../features/anatomy/StructureThumbnail';
+import { useLiveLabAvailable } from '../features/anatomy/useLiveLabAvailable';
 import './AnatomySplit.css';
 
 // 3D: the real rendered muscular body from the atlas meshes. 4D: a real capture of the Live 4D Lab (patient, probe and
 // the simulated USG / CT images), composed into one picture. Both are screenshots of MEDCOEL's own product.
 export default function AnatomySplit({ structureCount, heroUrl }) {
+  const liveLab = useLiveLabAvailable();
   return (
     <section className="anatomy-split" aria-labelledby="anatomy-split-title">
       <div className="anatomy-split-head">
@@ -42,9 +44,11 @@ export default function AnatomySplit({ structureCount, heroUrl }) {
             <li>Untuk latihan klinis; kuisnya tetap anatomi di Atlas 3D.</li>
           </ul>
           <div className="split-actions">
-            <Link className="btn-primary" to="/anatomy/live"><Activity size={16} /> Buka Live 4D Lab <ArrowRight size={15} /></Link>
+            {liveLab === 'missing'
+              ? <span className="btn-secondary split-soon" role="status" data-testid="live-lab-soon">Segera hadir</span>
+              : <Link className="btn-primary" to="/anatomy/live"><Activity size={16} /> Buka Live 4D Lab <ArrowRight size={15} /></Link>}
           </div>
-          <small className="split-note">Simulasi edukatif, bukan alat diagnosis.</small>
+          <small className="split-note">{liveLab === 'missing' ? 'Live 4D Lab belum dibuka untuk umum. ' : ''}Simulasi edukatif, bukan alat diagnosis.</small>
         </article>
       </div>
     </section>
