@@ -11,7 +11,7 @@ import {fileURLToPath} from 'node:url';
 import {NodeIO} from '@gltf-transform/core';
 import {parseOfficialNames,parseOfficialElements,candidateCrosswalk,mapActualMeshFiles,
   checkArchiveEntryNames,BP3D_OFFICIAL,normalizeAnatomyName} from '../../../licensing/tools/prepare-bodyparts3d-source.mjs';
-import {makeGlb} from './build-bp3d-candidate.mjs';
+import {makeGlb,readObjTriangles} from './build-bp3d-candidate.mjs';
 import {summarizeGeometry,verifyLineage} from './review-bp3d-candidate.mjs';
 
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
@@ -129,7 +129,7 @@ export function buildBulkHTML(){
     "current=g.scene;models=[];scene.add(current);current.traverse(x=>{if(x.isMesh){x.material=x.material.clone();models.push(x);}});",
     "const box=new THREE.Box3().setFromObject(current),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3()),r=Math.max(.01,size.length()/2);",
     "reset=()=>{control.target.copy(center);cam.near=Math.max(.00001,r/1000);cam.far=Math.max(100,r*100);cam.position.copy(center).add(new THREE.Vector3(r*1.4,r*1.2,r*2.6));cam.updateProjectionMatrix();control.update();};reset();",
-    "document.getElementById('metrics').textContent=entry.name+' • '+entry.system+' • '+entry.triangles+' triangles • '+entry.sourceMeshes+' FJ elements • FMA '+entry.fmaId+' • Unvalidated coordinate frame';",
+    "document.getElementById('metrics').textContent=entry.name+' • '+entry.system+' • '+entry.triangles+' triangles • '+entry.sourceMeshes+' FJ elements • FMA '+entry.fmaId+(entry.omittedZeroAreaTriangles?' • '+entry.omittedZeroAreaTriangles+' zero-area source triangles omitted':'')+' • Unvalidated coordinate frame';",
     "document.getElementById('status').textContent='Ready';},undefined,e=>{if(attempt===generation)document.getElementById('status').textContent='Load failed: '+e.message;});}",
     "const search=document.getElementById('search'),system=document.getElementById('system'),items=document.getElementById('items');",
     "function list(){const q=search.value.toLowerCase(),sys=system.value;items.replaceChildren();",
@@ -194,7 +194,30 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}
         coordinateFrame:'native-official-OBJ',registrationValidated:false,
         geometryAnatomyValidated:false,approvedForDistribution:false,
         warning:'Bulk candidate only: native frame, not CT/USG registered or cleared for release'};
-      const bytes=await makeGlb(parts,item.name,lineage);
+      let bytes;
+      try{
+        // Preserve strict source-geometry behavior for every healthy mesh.
+        bytes=await makeGlb(parts,item.name,lineage);
+      }catch(error){
+        if(error.message!=='Degenerate OBJ triangle')throw error;
+        // A zero-area OBJ face cannot contribute a visible surface. Keep all
+        // valid triangles, but disclose exactly which source FJ elements needed
+        // this non-destructive normalization for subsequent anatomical review.
+        const repairs=parts.map(part=>{
+          const stats=readObjTriangles(part.text,{skipDegenerate:true}).stats;
+          return {sourceElementId:part.id,omittedZeroAreaTriangles:stats.omittedDegenerateTriangles,
+            validTriangles:stats.triangles};
+        }).filter(x=>x.omittedZeroAreaTriangles);
+        const omitted=repairs.reduce((n,x)=>n+x.omittedZeroAreaTriangles,0);
+        if(!omitted)throw error;
+        lineage.sourceGeometryWarnings={
+          normalization:'zero-area OBJ triangles omitted, valid triangle positions retained',
+          omittedZeroAreaTriangles:omitted,
+          affectedSourceElements:repairs,
+          requiresManualReview:true
+        };
+        bytes=await makeGlb(parts,item.name,lineage,{skipDegenerate:true});
+      }
       lineage.generatedGLBSHA256=sha(bytes);
       const doc=await new NodeIO().readBinary(bytes);
       const geometry=summarizeGeometry(doc);
@@ -206,7 +229,9 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}
         fmaId:item.source.fmaId,bpId:item.source.bpId,
         triangles:geometry.triangles,vertices:geometry.vertices,
         sourceMeshes:geometry.sourceMeshes,boundsNative:geometry.boundsNative,
-        glbSha256:lineage.generatedGLBSHA256,modelPath:'./structures/'+item.id+'/model.glb',
+        glbSha256:lineage.generatedGLBSHA256,
+        omittedZeroAreaTriangles:lineage.sourceGeometryWarnings?.omittedZeroAreaTriangles||0,
+        modelPath:'./structures/'+item.id+'/model.glb',
         state:'converted-unverified'});
     }catch(e){
       failed.push({name:item.name,system:item.system,id:item.id,error:String(e.message).slice(0,350),
@@ -217,6 +242,8 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}
         ' eligible; generated '+converted.length+', failed '+failed.length);
   }
   const summary={...plan.summary,converted:converted.length,failed:failed.length,
+    candidatesWithOmittedZeroAreaTriangles:converted.filter(x=>x.omittedZeroAreaTriangles>0).length,
+    totalOmittedZeroAreaTriangles:converted.reduce((n,x)=>n+x.omittedZeroAreaTriangles,0),
     unprocessedDueToLimit:plan.allEligible-plan.eligible.length};
   const manifest={schemaVersion:1,kind:'official-bp3d-bulk-source-review',source:BP3D_OFFICIAL,
     sourceHashes:{namesSha256:sha(namesBytes),elementsSha256:sha(elementBytes),
