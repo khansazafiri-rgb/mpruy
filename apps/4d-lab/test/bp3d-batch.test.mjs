@@ -1,4 +1,5 @@
 import test from 'node:test';
+import vm from 'node:vm';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -210,6 +211,9 @@ test('a branch must not score as high confidence for its parent artery',()=>{
 
 test('assembled body review uses native shared coordinates, on-demand systems and isolated material presentation',()=>{
   const html=buildCompositeHTML();
+  const moduleText=html.match(/<script type="module">([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(moduleText,'generated HTML needs inline ES module');
+  assert.doesNotThrow(()=>new vm.Script(moduleText.replace(/^import .*;$/gm,'')));
   assert.match(html,/3D Body Assembly/);
   assert.match(html,/raw coordinates/i);
   assert.match(html,/const models=new Map\(\)/);
