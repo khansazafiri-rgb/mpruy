@@ -27,7 +27,13 @@ replaced. Now:
 - **Presets:**
   - Clinical: Transversal and Longitudinal; oblique ±45° and "Tegak lurus kulit" under **Lainnya**.
   - Free 3D: Aksial, Koronal and Sagital; oblique under **Lainnya**.
-- **Text up front:** a 3-step first-run tour (remembered locally) and a **?** popover replace the long hints.
+- **Text up front:** an interactive first-run tutorial (remembered locally, key `medcoel-4dlab-tour-v3`) and a **?** popover replace the long hints.
+  - **Learn by doing:** each step with a task keeps "Lanjut" locked until the learner has really used the real control. The overlay never
+    blocks the page. The tasks, checked against live state: press a direction button, drag the camera, **hover a named structure in the
+    image** (the tutorial turns the anatomy help on if it was off), and choose the anatomy-help level. "Lewati langkah" and "Lewati" are always available.
+  - **Mascots** (apps/web/src/mascots, roles as written there): **Kori** guides every step, **Kila** celebrates a completed task and says what
+    just happened, **Nilo** appears with a hint after 12 s without progress. Motion stops under "reduce motion".
+  - The Tri-planar tool has its own short tutorial (slider and a click on a CT image). Code: `src/app/tutorial.js` (engine), `tutorialSteps.js` (content).
 
 ## 2. Anatomy assistance on CT and simulated US
 

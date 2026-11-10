@@ -86,3 +86,7 @@ Evidence files are in `evidence/`; test commands are listed in `TEST_RESULTS.md`
 - Owner QC session on a Mac with Safari: run through `TEST_RESULTS.md` § "Manual checklist" and record the results here.
 - CTACardio locally: `pipeline/README.md` → load `ct.nrrd` + `skin.glb` + `registration.json` (+ optional labels and anatomy) in the Data tab.
 - Candidate next work: per-region speckle textures (muscle fibres, portal triads), Doppler, M-mode, assessment mode with PocketBase quizzes after clinical review.
+
+
+## 2026-11-10 — interactive, mascot-led tutorial
+- New `tutorial.js` / `tutorialSteps.js`: Kori guides, Kila celebrates, Nilo hints; steps wait for the real action (probe, camera, hover on a named structure, anatomy-help level; Tri-planar: slider, CT click). First-run key v3. Test: `npm run test:e2e:tutorial` (11 steps). Not verified: Safari / real touch devices.

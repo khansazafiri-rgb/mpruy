@@ -47,16 +47,21 @@ export function generalSteps(ctx) {
       text: 'Arahkan kursor ke bagian citra: nama struktur muncul tepat di sana. Aku menyalakan Bantuan anatomi → Hanya hover untukmu bila tadinya mati.',
       task: {
         text: 'gerakkan kursor di atas citra USG atau CT. (Layar sentuh: ketuk citra.)',
-        hint: 'arahkan kursor ke bagian yang terang atau abu-abu di dalam kipas citra, bukan area hitam di luarnya.',
+        hint: 'arahkan kursor ke organ di dalam kipas citra (bagian abu-abu atau putih yang tegas), bukan ke jaringan polos atau area hitam di luarnya.',
         prepare: () => {
           hovered = null;
           if (assistSelect.value === 'off') setAssistLevel('hover');
-          const watch = () => { if (!hoverTip.hidden && !hovered) hovered = hoverTip.querySelector('b')?.textContent?.trim() || 'sebuah struktur'; };
+          // only a NAMED structure counts: plain soft tissue reads "tidak teridentifikasi", which is honest but not what we want to show
+          const watch = () => {
+            if (hoverTip.hidden || hovered) return;
+            const name = hoverTip.querySelector('b')?.textContent?.trim() || '';
+            if (name && !/tidak teridentifikasi|tanpa label|tersembunyi/i.test(name)) hovered = name;
+          };
           const mo = new MutationObserver(watch); mo.observe(hoverTip, { attributes: true, attributeFilter: ['hidden'], childList: true });
           return () => mo.disconnect();
         },
         done: () => !!hovered,
-        success: () => ({ title: 'Itu dia!', text: `Kamu menunjuk: ${hovered}. Nama dan asal label muncul di dekat kursor. Struktur tanpa label tertulis "tidak teridentifikasi", bukan ditebak.` }),
+        success: () => ({ title: 'Itu dia!', text: `Kamu menunjuk: ${hovered}. Nama dan asal label muncul di dekat kursor. Bagian tanpa label akan tertulis "tidak teridentifikasi", bukan ditebak.` }),
       },
     },
     {
