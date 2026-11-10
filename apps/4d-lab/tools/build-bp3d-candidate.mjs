@@ -18,9 +18,9 @@ const OUTPUT=path.join(ROOT,'local-data/licensing-quarantine/bp3d-candidates');
 const MAX_OBJ_BYTES=96*1024*1024, MAX_TRIANGLES=1500000;
 const sha = b=>createHash('sha256').update(b).digest('hex');
 
-export function readObjTriangles(text) {
+export function readObjTriangles(text, { skipDegenerate = false } = {}) {
   const vertices=[], positions=[], normals=[];
-  let faces=0, fanTriangulated=0;
+  let faces=0, fanTriangulated=0, omittedDegenerateTriangles=0;
   for (const line of String(text).split(/\r?\n/)) {
     const trim=line.trim();
     if (trim.startsWith('v ')) {
@@ -48,7 +48,11 @@ export function readObjTriangles(text) {
           v=[v2[0]-v0[0],v2[1]-v0[1],v2[2]-v0[2]];
         let n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
         const mag=Math.hypot(...n);
-        if(mag<1e-15)throw new Error('Degenerate OBJ triangle');
+        if(mag<1e-15){
+          if(!skipDegenerate)throw new Error('Degenerate OBJ triangle');
+          omittedDegenerateTriangles++;
+          continue; // A zero-area source triangle contributes no visible surface.
+        }
         n=n.map(x=>x/mag);
         for(const point of [v0,v1,v2]){positions.push(...point);normals.push(...n);}
       }
@@ -57,22 +61,23 @@ export function readObjTriangles(text) {
   if(!faces||!positions.length)throw new Error('OBJ has no usable faces');
   return {positions:new Float32Array(positions),normals:new Float32Array(normals),
     stats:{vertices:vertices.length,sourceFaces:faces,triangles:positions.length/9,
-      fanTriangulatedFaces:fanTriangulated}};
+      fanTriangulatedFaces:fanTriangulated,omittedDegenerateTriangles}};
 }
 
-export async function makeGlb(meshParts, structureName, modelProvenance) {
+export async function makeGlb(meshParts, structureName, modelProvenance, { skipDegenerate = false } = {}) {
   if(!meshParts.length)throw new Error('No official geometry supplied');
   const doc=new Document(), buffer=doc.createBuffer(), scene=doc.createScene('Official BodyParts3D candidate');
   const color=doc.createMaterial('unreviewed-anatomy').setDoubleSided(true).setBaseColorFactor([0.8,0.82,0.84,1]);
   let totalTriangles=0;
   for(const part of meshParts){
-    const parsed=readObjTriangles(part.text);
+    const parsed=readObjTriangles(part.text,{skipDegenerate});
     const pos=doc.createAccessor().setType('VEC3').setArray(parsed.positions).setBuffer(buffer);
     const norm=doc.createAccessor().setType('VEC3').setArray(parsed.normals).setBuffer(buffer);
     const prim=doc.createPrimitive().setAttribute('POSITION',pos).setAttribute('NORMAL',norm).setMaterial(color);
     const mesh=doc.createMesh(part.id).addPrimitive(prim);
     const node=doc.createNode(part.id).setMesh(mesh).setExtras({
-      officialElementFileId:part.id,officialSource:'BodyParts3D 4.0',userFacingAtlasCandidate:structureName
+      officialElementFileId:part.id,officialSource:'BodyParts3D 4.0',userFacingAtlasCandidate:structureName,
+      omittedDegenerateTriangles:parsed.stats.omittedDegenerateTriangles
     });
     scene.addChild(node);totalTriangles+=parsed.stats.triangles;
   }

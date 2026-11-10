@@ -1,4 +1,4 @@
-name: Build official BodyParts3D geometry candidate
+name: Build official BodyParts3D bulk geometry candidates (review only)
 
 on:
   pull_request:
@@ -6,8 +6,10 @@ on:
       - feature/4d-lab-official-logo-guided-tour
     paths:
       - licensing/tools/prepare-bodyparts3d-source.mjs
+      - apps/4d-lab/tools/batch-bp3d-candidates.mjs
       - apps/4d-lab/tools/build-bp3d-candidate.mjs
       - apps/4d-lab/tools/review-bp3d-candidate.mjs
+      - apps/4d-lab/test/bp3d-batch.test.mjs
       - apps/4d-lab/test/bp3d-review.test.mjs
       - apps/4d-lab/test/bp3d-convert.test.mjs
       - .github/workflows/bodyparts3d-candidate.yml
@@ -17,36 +19,49 @@ permissions:
   contents: read
 
 jobs:
-  official-source-candidate:
+  official-source-bulk:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install 4D Lab conversion dependencies
+      - name: Install 4D Lab geometry-conversion dependencies
         run: npm ci --prefix apps/4d-lab
-      - name: Run OBJ to GLB conversion unit tests
-        run: node --test apps/4d-lab/test/bp3d-convert.test.mjs apps/4d-lab/test/bp3d-review.test.mjs scripts/bodyparts3d-source.test.mjs
-      - name: Download actual publisher dataset and identify original OBJ source meshes
+      - name: Test official-source mapping, OBJ conversion and full batch
+        run: node --test apps/4d-lab/test/bp3d-batch.test.mjs apps/4d-lab/test/bp3d-convert.test.mjs apps/4d-lab/test/bp3d-review.test.mjs scripts/bodyparts3d-source.test.mjs
+      - name: Download source once and fingerprint exact official ZIP and mapping tables
         run: npm run audit:bodyparts3d -- --download
-      - name: Convert official left femur to review-only GLB
-        run: npm run build:bodyparts3d-candidate -- --structure Femur.l
-      - name: Produce local interactive raw-geometry preview and source QA metrics
-        run: npm run review:bodyparts3d-candidate -- --structure Femur.l
-      - name: Upload geometry candidate for anatomical review
+      - name: Process all direct FMA/FJ matches in one run (no public release)
+        run: npm run batch:bodyparts3d -- --all
+      - name: Upload all converted GLBs, viewer, mapping gaps and source manifest
         uses: actions/upload-artifact@v4
         with:
-          name: official-bp3d-femur-candidate-not-approved
-          path: |
-            local-data/licensing-quarantine/bp3d-candidates/Femur.l/**
+          name: bp3d-bulk-review-unapproved
+          path: local-data/licensing-quarantine/bp3d-batch/**
           retention-days: 7
           if-no-files-found: error
-      - name: Explain release status
-        if: always()
+          compression-level: 6
+      - name: Summarize bulk coverage without claiming rights clearance
         run: |
-          echo '## Official BodyParts3D candidate (NOT approved for public release)' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Publisher GLB conversion is independent of Z-Anatomy mixed derivatives.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Native coordinates have NOT been aligned to MEDCOEL patient; no public model, CT, USG or release gate was changed.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Download review artifact, serve its directory locally over HTTP, and open review.html to inspect the original source mesh with orbit/zoom/wireframe.' >> "$GITHUB_STEP_SUMMARY"
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const file='local-data/licensing-quarantine/bp3d-batch/inventory.json';
+          const report=JSON.parse(fs.readFileSync(file,'utf8'));
+          const s=report.summary;
+          const lines=['## MEDCOEL official BodyParts3D — bulk source review only',
+            '| Metric | Count |','| --- | ---: |',
+            '| Retained Atlas catalog | '+s.catalogCount+' |',
+            '| Direct FMA + FJ candidate names | '+s.directlyMappable+' |',
+            '| GLBs actually converted | '+s.converted+' |',
+            '| Conversion failures | '+s.failed+' |',
+            '| Candidates needing geometry review for zero-area source triangles | '+s.candidatesWithOmittedZeroAreaTriangles+' |',
+            '| Zero-area source triangles omitted (count is explicitly documented) | '+s.totalOmittedZeroAreaTriangles+' |',
+            '| Unmapped/ambiguous/missing file | '+s.gaps+' |',
+            'All outputs are independent **review-only** files. This workflow does not change the approved 3D Anatomy UI, current GLBs, 4D Lab CT/USG, production routes or commercial release gates.',
+            'Download the review artifact and open index.html through a localhost static server to inspect candidates in one interface.',
+            'The separate mapping-gaps.json contains suggestions (NOT verified anatomy identities).'];
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,lines.join('\n')+'\n');
+          if(s.failed){console.error('Some candidates failed conversion; see artifact/inventory.json');process.exitCode=1;}
+          JS

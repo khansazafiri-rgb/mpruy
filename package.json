@@ -29,7 +29,8 @@
     "audit:existing-controls": "node licensing/tools/reconcile-implemented-rights.mjs",
     "audit:live-anatomy": "node scripts/audit-live-anatomy-exposure.mjs",
     "build:bodyparts3d-candidate": "node apps/4d-lab/tools/build-bp3d-candidate.mjs",
-    "review:bodyparts3d-candidate": "node apps/4d-lab/tools/review-bp3d-candidate.mjs"
+    "review:bodyparts3d-candidate": "node apps/4d-lab/tools/review-bp3d-candidate.mjs",
+    "batch:bodyparts3d": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
