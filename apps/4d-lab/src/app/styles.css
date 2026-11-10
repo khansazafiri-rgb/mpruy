@@ -640,3 +640,22 @@ body[data-learning="1"] .view-menu, body[data-learning="1"] .monitor-toolbar .in
 .mode-tabs { justify-self: start; }
 .tri-howto { margin: 2px 0 6px; font-size: 12px; }
 .tri-howto > summary { cursor: pointer; font-weight: 650; color: rgb(var(--brand-dark)); }
+
+/* ---- Interactive, mascot-led tutorial (tutorial.js). The overlay never blocks the page: the learner touches the real controls. ---- */
+.tour-root .tour { width: min(390px, calc(100vw - 24px)); padding-top: 12px; }
+.tour-head { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.tour-mascot { flex: none; display: grid; place-items: center; width: 84px; height: 84px; border-radius: 18px; background: rgb(var(--brand-soft)); border: 1px solid rgb(var(--line)); }
+.tour-headtext { flex: 1; min-width: 0; }
+.tour-root .tour .tour-progress i.done { background: rgb(var(--brand)); opacity: .55; }
+.tour-root .tour .tour-text { margin: 0; padding: 9px 12px; border-radius: 12px; background: rgb(var(--paper)); border: 1px solid rgb(var(--line)); }
+.tour-task { display: flex; gap: 8px; align-items: flex-start; margin: 9px 0 0; padding: 9px 12px; border-radius: 12px; background: #fff6dc; border: 1px dashed #dcb85a; font-size: 13px; font-weight: 650; line-height: 1.45; color: #5a4310; }
+.tour-task.is-done { background: #e4f4ec; border: 1px solid #9bd2b9; color: #0b5a45; }
+.tour-check { flex: none; font-size: 16px; line-height: 1.2; }
+.tour-root .tour .btn.ghost { background: none; border-color: transparent; text-decoration: underline; color: rgb(var(--brand-dark)); min-width: 0; padding-inline: 6px; }
+.tour-root .tour .btn[disabled] { opacity: .45; cursor: not-allowed; }
+.tour-root .tour .row { flex-wrap: wrap; gap: 6px; }
+.tour-focus.is-task { box-shadow: 0 0 0 100vmax rgb(9 22 28 / .26); animation: tourPulse 1.6s ease-in-out infinite; }
+.tour-focus.is-ok { border-color: #35b583; box-shadow: 0 0 0 100vmax rgb(9 22 28 / .18); }
+@keyframes tourPulse { 0%, 100% { outline: 0 solid rgb(240 190 60 / .55); outline-offset: 0; } 50% { outline: 10px solid rgb(240 190 60 / 0); outline-offset: 4px; } }
+@media (max-width: 740px) { .tour-mascot { width: 66px; height: 66px; } }
+@media (prefers-reduced-motion: reduce) { .tour-focus.is-task { animation: none; outline: 3px solid rgb(240 190 60 / .6); } }
