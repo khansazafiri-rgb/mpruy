@@ -62,6 +62,10 @@ try {
   assert.equal(await page.evaluate(() => window.__independentAtlasPilot.hiddenCount), 1);
   await page.getByTestId('pilot-undo').click();
   assert.equal(await page.evaluate(() => window.__independentAtlasPilot.hiddenCount), 0);
+  await page.getByTestId('pilot-redo').click();
+  assert.equal(await page.evaluate(() => window.__independentAtlasPilot.hiddenCount), 1);
+  await page.getByTestId('pilot-undo').click();
+  assert.equal(await page.evaluate(() => window.__independentAtlasPilot.hiddenCount), 0);
   await page.getByTestId('pilot-opacity').fill('50');
   await page.locator('#regionToggle').click();
   await page.getByTestId('pilot-region-thorax').click();

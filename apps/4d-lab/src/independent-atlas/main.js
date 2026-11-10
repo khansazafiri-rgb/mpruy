@@ -11,7 +11,7 @@ const el = id => document.getElementById(id);
 const host = el('canvasHost');
 const ui = Object.fromEntries([
   'system', 'systemToggles', 'region', 'search', 'results', 'details', 'status',
-  'isolate', 'clear', 'hide', 'fade', 'undo', 'restore', 'front', 'back', 'side',
+  'isolate', 'clear', 'hide', 'fade', 'undo', 'redo', 'restore', 'front', 'back', 'side',
   'top', 'fit', 'zoomIn', 'zoomOut', 'share', 'shareUrl', 'retry', 'opacity', 'opacityValue',
   'structureList', 'structureCount', 'selectionActions', 'selectionPanel', 'closeSelection',
   'regionToggle', 'regionPanel', 'regionCards', 'regionName', 'helpToggle', 'helpPanel',
@@ -159,6 +159,7 @@ function appearance() {
   ui.fade.disabled = !view.selected;
   ui.clear.disabled = !view.selected && !view.isolated && !view.hidden.length && !view.faded;
   ui.undo.disabled = !view.history.length;
+  ui.redo.disabled = !view.future.length;
   ui.opacity.value = String(Math.round(view.opacity * 100));
   ui.opacityValue.value = Math.round(view.opacity * 100) + '%';
   const selectedOpacity = view.opacityByKey[view.selected] || 1;
@@ -369,13 +370,15 @@ ui.restore.addEventListener('click', async () => {
   if (!view.enabled.length) await showSystem('skeletal', true);
   frameVisible();
 });
-ui.undo.addEventListener('click', async () => {
-  change({ type: 'undo' });
+async function traverseHistory(type) {
+  change({ type });
   for (const system of [...models.keys()]) if (!view.enabled.includes(system)) unload(system);
   await Promise.all(view.enabled.map(ensureSystem));
   appearance();
   frameVisible();
-});
+}
+ui.undo.addEventListener('click', () => traverseHistory('undo'));
+ui.redo.addEventListener('click', () => traverseHistory('redo'));
 ui.front.addEventListener('click', () => frameVisible(new THREE.Vector3(0, 0, 1)));
 ui.back.addEventListener('click', () => frameVisible(new THREE.Vector3(0, 0, -1)));
 ui.side.addEventListener('click', () => frameVisible(new THREE.Vector3(1, 0, 0)));
@@ -400,7 +403,7 @@ ui.share.addEventListener('click', async () => {
 document.addEventListener('keydown', event => {
   if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') {
     if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
-    event.preventDefault(); ui.undo.click(); return;
+    event.preventDefault(); (event.shiftKey ? ui.redo : ui.undo).click(); return;
   }
   if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement || event.target instanceof HTMLSelectElement) return;
   if (event.key === '+' || event.key === '=') { event.preventDefault(); zoom(0.8); }

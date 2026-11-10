@@ -120,3 +120,19 @@ test('structure-specific opacity survives selection and undo, but rejects unknow
   assert.equal(restored.state.opacityByKey[sternum], 0.42);
   assert.equal(restored.state.opacityByKey['nervous::Withheld'], undefined);
 });
+
+test('redo restores hidden structures and new changes invalidate the redo branch', () => {
+  const sternum = structureKey('skeletal', 'Sternum');
+  let state = updateView(createViewState(), { type: 'hide', key: sternum });
+  state = updateView(state, { type: 'undo' });
+  assert.equal(state.hidden.length, 0);
+  assert.equal(state.future.length, 1);
+  state = updateView(state, { type: 'redo' });
+  assert.deepEqual(state.hidden, [sternum]);
+  state = updateView(state, { type: 'undo' });
+  state = updateView(state, { type: 'region', region: 'thorax' });
+  assert.equal(state.future.length, 0);
+  assert.equal(updateView(state, { type: 'redo' }), state);
+  const shared = JSON.parse(sharedViewPayload(state, [1, 2, 3, 0, 1, 0]));
+  assert.equal('history' in shared || 'future' in shared, false, 'private action stacks stay out of share links');
+});

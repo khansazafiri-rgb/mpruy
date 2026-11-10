@@ -93,8 +93,8 @@
       "id": "undo",
       "critical": true,
       "baseline": "Undo viewer state",
-      "candidate": "Thirty-step interaction history, excluding camera",
-      "status": "partial",
+      "candidate": "Thirty-step undo/redo interaction history, excluding camera; a new action invalidates the redo branch",
+      "status": "implemented-unverified",
       "test": "independentAtlasState.test.mjs",
       "rights": "original candidate code"
     },

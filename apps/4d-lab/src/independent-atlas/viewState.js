@@ -6,12 +6,12 @@ export const REGIONS = Object.freeze(['whole', 'headNeck', 'thorax', 'abdomen', 
 export function createViewState() {
   return {
     enabled: ['skeletal'], selected: null, isolated: null, hidden: [],
-    faded: null, region: 'whole', opacity: 1, opacityByKey: {}, history: [],
+    faded: null, region: 'whole', opacity: 1, opacityByKey: {}, history: [], future: [],
   };
 }
 
 function snapshot(state) {
-  const { history, ...rest } = state;
+  const { history, future, ...rest } = state;
   return structuredClone(rest);
 }
 
@@ -19,7 +19,12 @@ export function updateView(state, action) {
   if (action.type === 'undo') {
     if (!state.history.length) return state;
     const history = state.history.slice(0, -1);
-    return { ...state.history.at(-1), history };
+    return { ...state.history.at(-1), history, future: [...state.future, snapshot(state)].slice(-30) };
+  }
+  if (action.type === 'redo') {
+    if (!state.future.length) return state;
+    return { ...state.future.at(-1), history: [...state.history, snapshot(state)].slice(-30),
+      future: state.future.slice(0, -1) };
   }
   if (action.type === 'restore') {
     const next = createViewState();
@@ -73,7 +78,7 @@ export function updateView(state, action) {
     default: return state;
   }
   if (JSON.stringify(snapshot(state)) === JSON.stringify(next)) return state;
-  return { ...next, history: [...state.history, snapshot(state)].slice(-30) };
+  return { ...next, history: [...state.history, snapshot(state)].slice(-30), future: [] };
 }
 
 export function visibleStructure(state, system, name, regions = []) {
@@ -116,6 +121,6 @@ export function readSharedView(raw, validSystems, validKeys) {
 }
 
 export function sharedViewPayload(state, camera) {
-  const { history, ...snapshot } = state;
-  return JSON.stringify({ version: 1, ...snapshot, camera });
+  const { history, future, ...shared } = state;
+  return JSON.stringify({ version: 1, ...shared, camera });
 }
