@@ -158,7 +158,6 @@ if(models.has(entry.id)){fitBox(new THREE.Box3().setFromObject(models.get(entry.
 else{requestedFocus=entry.id;queueActive()}
 $('status').textContent='Focus: '+entry.name});
 target.append(b)}}
-}
 $('search').addEventListener('input',search);
 fetch('./inventory.json').then(r=>{if(!r.ok)throw Error('Inventory unavailable');return r.json()}).then(data=>{
 entries=Array.isArray(data.converted)?data.converted:[];
