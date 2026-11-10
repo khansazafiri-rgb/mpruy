@@ -1020,5 +1020,467 @@
     "chapter": "Kelainan Kongenital Saraf (Spina Bifida, Hidrosefalus)",
     "file": "sistem-saraf/bab-16-kelainan-kongenital-saraf-spina-bifida.md",
     "docBab": 16
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Infeksi Saluran Napas Atas (ISPA, Faringitis, Laringitis)",
+    "file": "sistem-respirasi/bab-01-infeksi-saluran-napas-atas-ispa-faringitis.md",
+    "docBab": 1
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Influenza & Infeksi Virus Respirasi",
+    "file": "sistem-respirasi/bab-02-influenza-infeksi-virus-respirasi.md",
+    "docBab": 2
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Pertusis",
+    "file": "sistem-respirasi/bab-03-pertusis.md",
+    "docBab": 3
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Pneumonia (Komunitas & Nosokomial)",
+    "file": "sistem-respirasi/bab-04-pneumonia-komunitas-nosokomial.md",
+    "docBab": 4
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Tuberkulosis Paru",
+    "file": "sistem-respirasi/bab-05-tuberkulosis-paru.md",
+    "docBab": 5
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Bronkitis Akut & Kronik",
+    "file": "sistem-respirasi/bab-06-bronkitis-akut-kronik.md",
+    "docBab": 6
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Asma Bronkial",
+    "file": "sistem-respirasi/bab-07-asma-bronkial.md",
+    "docBab": 7
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "PPOK (Penyakit Paru Obstruktif Kronik)",
+    "file": "sistem-respirasi/bab-08-ppok-penyakit-paru-obstruktif-kronik.md",
+    "docBab": 8
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Efusi Pleura",
+    "file": "sistem-respirasi/bab-09-efusi-pleura.md",
+    "docBab": 9
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Pneumotoraks",
+    "file": "sistem-respirasi/bab-10-pneumotoraks.md",
+    "docBab": 10
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "ARDS (Acute Respiratory Distress Syndrome)",
+    "file": "sistem-respirasi/bab-11-ards-acute-respiratory-distress-syndrome.md",
+    "docBab": 11
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Emfisema",
+    "file": "sistem-respirasi/bab-12-emfisema.md",
+    "docBab": 12
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Edema Paru",
+    "file": "sistem-respirasi/bab-13-edema-paru.md",
+    "docBab": 13
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Tumor Paru Dasar",
+    "file": "sistem-respirasi/bab-14-tumor-paru-dasar.md",
+    "docBab": 14
+  },
+  {
+    "subject": "sistem-respirasi",
+    "subjectName": "Sistem Respirasi",
+    "chapter": "Kegawatdaruratan Respirasi (Gagal Napas)",
+    "file": "sistem-respirasi/bab-15-kegawatdaruratan-respirasi-gagal-napas.md",
+    "docBab": 15
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Hipertensi (Primer & Sekunder)",
+    "file": "sistem-kardiovaskular/bab-01-hipertensi-primer-sekunder.md",
+    "docBab": 1
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Penyakit Jantung Koroner: Angina Pektoris",
+    "file": "sistem-kardiovaskular/bab-02-penyakit-jantung-koroner-angina-pektoris.md",
+    "docBab": 2
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Sindrom Koroner Akut (STEMI, NSTEMI)",
+    "file": "sistem-kardiovaskular/bab-03-sindrom-koroner-akut-stemi-nstemi.md",
+    "docBab": 3
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Gagal Jantung Akut & Kronik",
+    "file": "sistem-kardiovaskular/bab-04-gagal-jantung-akut-kronik.md",
+    "docBab": 4
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Aritmia: Fibrilasi Atrial",
+    "file": "sistem-kardiovaskular/bab-05-aritmia-fibrilasi-atrial.md",
+    "docBab": 5
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Aritmia: Takikardi & Bradikardi Lain",
+    "file": "sistem-kardiovaskular/bab-06-aritmia-takikardi-bradikardi-lain.md",
+    "docBab": 6
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Penyakit Jantung Reumatik",
+    "file": "sistem-kardiovaskular/bab-07-penyakit-jantung-reumatik.md",
+    "docBab": 7
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Penyakit Jantung Katup",
+    "file": "sistem-kardiovaskular/bab-08-penyakit-jantung-katup.md",
+    "docBab": 8
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Endokarditis, Miokarditis, Perikarditis",
+    "file": "sistem-kardiovaskular/bab-09-endokarditis-miokarditis-perikarditis.md",
+    "docBab": 9
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Penyakit Jantung Kongenital (Dasar)",
+    "file": "sistem-kardiovaskular/bab-10-penyakit-jantung-kongenital-dasar.md",
+    "docBab": 10
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Syok (Hipovolemik, Kardiogenik, Septik, Anafilaktik)",
+    "file": "sistem-kardiovaskular/bab-11-syok-hipovolemik-kardiogenik-septik-anafilaktik.md",
+    "docBab": 11
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Trombosis Vena Dalam",
+    "file": "sistem-kardiovaskular/bab-12-trombosis-vena-dalam.md",
+    "docBab": 12
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Varises Vena",
+    "file": "sistem-kardiovaskular/bab-13-varises-vena.md",
+    "docBab": 13
+  },
+  {
+    "subject": "sistem-kardiovaskular",
+    "subjectName": "Sistem Kardiovaskular",
+    "chapter": "Penyakit Arteri Perifer",
+    "file": "sistem-kardiovaskular/bab-14-penyakit-arteri-perifer.md",
+    "docBab": 14
+  },
+  {
+    "subject": "sistem-indra-mata",
+    "subjectName": "Sistem Indra: Mata",
+    "chapter": "Kelainan Refraksi (Miopia, Hipermetropia, Astigmatisma)",
+    "file": "sistem-indra-mata/bab-01-kelainan-refraksi-miopia-hipermetropia.md",
+    "docBab": 1
+  },
+  {
+    "subject": "sistem-indra-mata",
+    "subjectName": "Sistem Indra: Mata",
+    "chapter": "Konjungtivitis & Infeksi Permukaan Mata",
+    "file": "sistem-indra-mata/bab-02-konjungtivitis-infeksi-permukaan-mata.md",
+    "docBab": 2
+  },
+  {
+    "subject": "sistem-indra-mata",
+    "subjectName": "Sistem Indra: Mata",
+    "chapter": "Blefaritis & Hordeolum/Kalazion",
+    "file": "sistem-indra-mata/bab-03-blefaritis-hordeolum-kalazion.md",
+    "docBab": 3
+  },
+  {
+    "subject": "sistem-indra-mata",
+    "subjectName": "Sistem Indra: Mata",
+    "chapter": "Keratitis & Ulkus Kornea",
+    "file": "sistem-indra-mata/bab-04-keratitis-ulkus-kornea.md",
+    "docBab": 4
+  },
+  {
+    "subject": "sistem-indra-mata",
+    "subjectName": "Sistem Indra: Mata",
+    "chapter": "Katarak",
+    "file": "sistem-indra-mata/bab-05-katarak.md",
+    "docBab": 5
+  },
+  {
+    "subject": "sistem-indra-mata",
+    "subjectName": "Sistem Indra: Mata",
+    "chapter": "Retinopati (Diabetik, Hipertensi)",
+    "file": "sistem-indra-mata/bab-07-retinopati-diabetik-hipertensi.md",
+    "docBab": 7
+  },
+  {
+    "subject": "sistem-indra-mata",
+    "subjectName": "Sistem Indra: Mata",
+    "chapter": "Glaukoma Akut & Kronik",
+    "file": "sistem-indra-mata/bab-06-glaukoma-akut-kronik.md",
+    "docBab": 6
+  },
+  {
+    "subject": "sistem-indra-mata",
+    "subjectName": "Sistem Indra: Mata",
+    "chapter": "Pterigium & Kelainan Konjungtiva Lain",
+    "file": "sistem-indra-mata/bab-08-pterigium-kelainan-konjungtiva-lain.md",
+    "docBab": 8
+  },
+  {
+    "subject": "sistem-indra-mata",
+    "subjectName": "Sistem Indra: Mata",
+    "chapter": "Trauma Mata",
+    "file": "sistem-indra-mata/bab-09-trauma-mata.md",
+    "docBab": 9
+  },
+  {
+    "subject": "sistem-indra-mata",
+    "subjectName": "Sistem Indra: Mata",
+    "chapter": "Kelainan Segmen Anterior & Posterior Lain",
+    "file": "sistem-indra-mata/bab-10-kelainan-segmen-anterior-posterior-lain.md",
+    "docBab": 10
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Otitis Eksterna",
+    "file": "sistem-indra-tht/bab-01-otitis-eksterna.md",
+    "docBab": 1
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Otitis Media Akut & Kronik",
+    "file": "sistem-indra-tht/bab-02-otitis-media-akut-kronik.md",
+    "docBab": 2
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Mastoiditis",
+    "file": "sistem-indra-tht/bab-03-mastoiditis.md",
+    "docBab": 3
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Gangguan Pendengaran & Tuli",
+    "file": "sistem-indra-tht/bab-04-gangguan-pendengaran-tuli.md",
+    "docBab": 4
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Vertigo Perifer (Terkait Telinga Dalam)",
+    "file": "sistem-indra-tht/bab-05-vertigo-perifer-terkait-telinga-dalam.md",
+    "docBab": 5
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Rhinitis Alergi & Non-Alergi",
+    "file": "sistem-indra-tht/bab-06-rhinitis-alergi-non-alergi.md",
+    "docBab": 6
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Sinusitis",
+    "file": "sistem-indra-tht/bab-07-sinusitis.md",
+    "docBab": 7
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Epistaksis",
+    "file": "sistem-indra-tht/bab-08-epistaksis.md",
+    "docBab": 8
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Polip Nasi",
+    "file": "sistem-indra-tht/bab-09-polip-nasi.md",
+    "docBab": 9
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Faringitis & Tonsilitis",
+    "file": "sistem-indra-tht/bab-10-faringitis-tonsilitis.md",
+    "docBab": 10
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Laringitis",
+    "file": "sistem-indra-tht/bab-11-laringitis.md",
+    "docBab": 11
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Corpus Alienum THT",
+    "file": "sistem-indra-tht/bab-12-corpus-alienum-tht.md",
+    "docBab": 12
+  },
+  {
+    "subject": "sistem-indra-tht",
+    "subjectName": "Sistem Indra: THT",
+    "chapter": "Tumor Kepala-Leher Dasar",
+    "file": "sistem-indra-tht/bab-13-tumor-kepala-leher-dasar.md",
+    "docBab": 13
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Delirium & Gangguan Kognitif",
+    "file": "psikiatri-kesehatan-jiwa/bab-01-delirium-gangguan-kognitif.md",
+    "docBab": 1
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Gangguan Penggunaan Zat Psikoaktif (NAPZA, Alkohol)",
+    "file": "psikiatri-kesehatan-jiwa/bab-02-gangguan-penggunaan-zat-psikoaktif-napza-alkohol.md",
+    "docBab": 2
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Skizofrenia & Gangguan Psikotik Lain",
+    "file": "psikiatri-kesehatan-jiwa/bab-03-skizofrenia-gangguan-psikotik-lain.md",
+    "docBab": 3
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Gangguan Waham",
+    "file": "psikiatri-kesehatan-jiwa/bab-04-gangguan-waham.md",
+    "docBab": 4
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Gangguan Mood: Depresi",
+    "file": "psikiatri-kesehatan-jiwa/bab-05-gangguan-mood-depresi.md",
+    "docBab": 5
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Gangguan Mood: Bipolar",
+    "file": "psikiatri-kesehatan-jiwa/bab-06-gangguan-mood-bipolar.md",
+    "docBab": 6
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Gangguan Cemas: Fobia, Panik, GAD",
+    "file": "psikiatri-kesehatan-jiwa/bab-07-gangguan-cemas-fobia-panik-gad.md",
+    "docBab": 7
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Gangguan Obsesif-Kompulsif",
+    "file": "psikiatri-kesehatan-jiwa/bab-08-gangguan-obsesif-kompulsif.md",
+    "docBab": 8
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Gangguan Somatoform & Psikosomatik",
+    "file": "psikiatri-kesehatan-jiwa/bab-09-gangguan-somatoform-psikosomatik.md",
+    "docBab": 9
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Gangguan Kepribadian",
+    "file": "psikiatri-kesehatan-jiwa/bab-10-gangguan-kepribadian.md",
+    "docBab": 10
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Gangguan Makan (Anoreksia, Bulimia)",
+    "file": "psikiatri-kesehatan-jiwa/bab-11-gangguan-makan-anoreksia-bulimia.md",
+    "docBab": 11
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Gangguan Tidur (Insomnia, Parasomnia)",
+    "file": "psikiatri-kesehatan-jiwa/bab-12-gangguan-tidur-insomnia-parasomnia.md",
+    "docBab": 12
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Gangguan Perkembangan Anak (ADHD, Autisme)",
+    "file": "psikiatri-kesehatan-jiwa/bab-13-gangguan-perkembangan-anak-adhd-autisme.md",
+    "docBab": 13
+  },
+  {
+    "subject": "psikiatri-kesehatan-jiwa",
+    "subjectName": "Psikiatri & Kesehatan Jiwa",
+    "chapter": "Kedaruratan Psikiatri (Risiko Bunuh Diri, Agitasi)",
+    "file": "psikiatri-kesehatan-jiwa/bab-14-kedaruratan-psikiatri-risiko-bunuh-diri-agitasi.md",
+    "docBab": 14
   }
 ]

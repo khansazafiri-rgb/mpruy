@@ -97,6 +97,10 @@ test('setiap catatan di index.json menunjuk BAB yang ada di katalog', () => {
   const farmako = cat.find((s) => s.slug === 'farmakologi').chapters;
   assert.deepEqual(index.filter((e) => e.subject === 'farmakologi').map((e) => e.chapter).sort(), [...farmako].sort(), 'ke-14 BAB Farmakologi lengkap');
   const pk = cat.find((s) => s.slug === 'patologi-klinik').chapters;
+  for (const [slug, n] of [['sistem-respirasi', 15], ['sistem-kardiovaskular', 14], ['sistem-indra-mata', 10], ['sistem-indra-tht', 13], ['psikiatri-kesehatan-jiwa', 14]]) {
+    const ch = cat.find((s) => s.slug === slug).chapters;
+    assert.deepEqual(index.filter((e) => e.subject === slug).map((e) => e.chapter).sort(), [...ch].sort(), `ke-${n} BAB ${slug} lengkap`);
+  }
   const saraf = cat.find((s) => s.slug === 'sistem-saraf').chapters;
   assert.deepEqual(index.filter((e) => e.subject === 'sistem-saraf').map((e) => e.chapter).sort(), [...saraf].sort(), 'ke-16 BAB Sistem Saraf lengkap');
   assert.deepEqual(index.filter((e) => e.subject === 'patologi-klinik').map((e) => e.chapter).sort(), [...pk].sort(), 'ke-8 BAB Patologi Klinik lengkap');

@@ -109,6 +109,19 @@ Mata kuliah yang sudah diproses dengan cara ini (`--subject` = slug folder, `--s
 | Farmakologi | `--subject farmakologi --subject-name Farmakologi --skip-unmatched --allow-missing` (+ `corrections/farmakologi.json`) |
 | Patologi Klinik | `--subject patologi-klinik --subject-name "Patologi Klinik" --skip-unmatched --allow-missing` (+ `corrections/patologi-klinik.json`) |
 | Sistem Saraf | `--subject sistem-saraf --subject-name "Sistem Saraf" --skip-unmatched --allow-missing` (+ `corrections/sistem-saraf.json`) |
+| Sistem Respirasi | `--subject sistem-respirasi --subject-name "Sistem Respirasi" --pipe-tables --subheads --skip-unmatched --allow-missing` (+ `corrections/sistem-respirasi.json`) |
+| Sistem Kardiovaskular | `--subject sistem-kardiovaskular --subject-name "Sistem Kardiovaskular" --subheads --skip-unmatched --allow-missing` (+ `corrections/sistem-kardiovaskular.json`) |
+| Sistem Indra: Mata | `--subject sistem-indra-mata --subject-name "Sistem Indra: Mata" --subheads --skip-unmatched --allow-missing` |
+| Sistem Indra: THT | `--subject sistem-indra-tht --subject-name "Sistem Indra: THT" --subheads --skip-unmatched --allow-missing` (+ `corrections/sistem-indra-tht.json`) |
+| Psikiatri & Kesehatan Jiwa | `--subject psikiatri-kesehatan-jiwa --subject-name "Psikiatri & Kesehatan Jiwa" --subheads --skip-unmatched --allow-missing` (+ `corrections/psikiatri-kesehatan-jiwa.json`) |
+
+Opsi tambahan untuk dokumen baru (tidak dipakai mata kuliah lama, supaya hasilnya tidak berubah): `--pipe-tables` mengubah tabel berbentuk baris teks
+`KOLOM A | KOLOM B | KOLOM C` menjadi butir daftar ("Isi sel pertama: Kolom B — ...; Kolom C — ..."), karena markup catatan belum punya tabel;
+`--subheads` menjadikan baris huruf besar bergaya biasa (dan butir berhuruf "A. GAD") tepat di bawah Heading 2 dokumen sebagai subjudul, bukan bagian baru.
+Dokumen Respirasi/Kardiovaskular/THT memuat banyak catatan penyusun (baris "SISTEM RESPIRASI — MEDCOEL | BAB 2 DARI 15 | PROGRES ...", blok
+"STATUS BAB N", daftar referensi, disclaimer, daftar "REKAP ROADMAP", label "Rujukan utama:"/"Sumber dasar:", label sitasi `[CDC 2025]` yang berdiri sendiri);
+semuanya dibuang lewat `corrections/<mata-kuliah>.json` dan perluasan `SOURCE_H2` (judul "Referensi...", "Status bab...", "References"). Judul bagian
+"BAGIAN II — ..." menjadi pembatas bagian. Judul BAB di web yang termuat utuh dalam judul dokumen yang lebih panjang ("Epistaksis" di "Epistaksis (Mimisan): ...") dianggap cocok.
 
 Dua gaya dokumen dikenali. Gaya biasa: `Bab N — Judul` (Heading 1) dan bagian `N. Judul` (Heading 2). Gaya huruf besar (Genetika dan
 lampiran Biokimia): `BAB N — JUDUL`, bagian `A. JUDUL` / `4.1 JUDUL`, label `PENTING:` / `HIGH-YIELD:` / `JEBAKAN SOAL:` (jadi kotak sorot),
