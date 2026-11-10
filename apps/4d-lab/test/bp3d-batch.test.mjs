@@ -72,12 +72,14 @@ test('one invocation processes fake official ZIP and writes a structured report,
     fs.writeFileSync(path.join(source,'isa_element_parts.txt'),
       'concept id\tname\telement file id\nFMA24485\tleft femur\tFJ1000\n');
     fs.writeFileSync(path.join(source,'FJ1000.obj'),
-      ['v 0 0 0','v 1 0 0','v 1 1 0','v 0 1 0','f 1 2 3','f 1 3 4'].join('\n'));
+      ['v 0 0 0','v 1 0 0','v 1 1 0','v 0 1 0','f 1 2 3','f 1 3 4','f 1 1 2'].join('\n'));
     execFileSync('zip',['-q','isa_BP3D_4.0_obj_99.zip','FJ1000.obj'],{cwd:source});
     const result=await runBatch({root:ROOT,sourceDir:source,outputDir:out,limit:1});
     assert.equal(result.summary.selected,1);
     assert.equal(result.summary.converted,1);
     assert.equal(result.summary.failed,0);
+    assert.equal(result.summary.candidatesWithOmittedZeroAreaTriangles,1);
+    assert.equal(result.summary.totalOmittedZeroAreaTriangles,1);
     assert.equal(result.summary.catalogCount,2237);
     assert.equal(result.approvedForCommercialDistribution,false);
     assert.equal(result.converted[0].name,'Femur.l');
