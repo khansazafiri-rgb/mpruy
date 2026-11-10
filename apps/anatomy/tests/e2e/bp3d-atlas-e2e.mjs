@@ -130,6 +130,9 @@ await step('B4 search → select → info panel, yellow selection highlight, iso
   await page.waitForTimeout(2500);
   ok(/femur/i.test(await page.locator('#structureInfo').innerText()), 'info panel is not about the femur');
   await shot(page, 'bp3d-atlas-04-selected');
+  // the yellow selection sweep animates on BodyParts3D structures (frames differ while selected)
+  const frames = new Set(); for (let i = 0; i < 6; i++) { frames.add(await hash(page)); await page.waitForTimeout(450); }
+  ok(frames.size >= 3, 'selection sweep is not animating (' + frames.size + ' distinct frames of 6)');
   const h0 = await hash(page);
   await page.locator('#footerIsolateBtn').click(); await page.waitForTimeout(1200);
   ok(await hash(page) !== h0, 'isolate changed nothing'); ok(await page.locator('#returnContext').isVisible(), 'no return-to-context');

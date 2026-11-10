@@ -7,55 +7,55 @@
    "name": "A1 without ?models the Atlas models load and nothing from BodyParts3D is requested",
    "ok": true,
    "note": "",
-   "ms": 1573
+   "ms": 6773
   },
   {
    "name": "B1 approved layout intact + banner states the coverage honestly",
    "ok": true,
    "note": "107 skeletal structures",
-   "ms": 10714
+   "ms": 11602
   },
   {
    "name": "B2 muscles + bones together; camera presets give four distinct views",
    "ok": true,
    "note": "",
-   "ms": 205362
+   "ms": 205367
   },
   {
    "name": "B3 regions: Toraks reframes and the regional clip keeps anatomy in view",
    "ok": true,
    "note": "",
-   "ms": 22943
+   "ms": 23887
   },
   {
    "name": "B4 search → select → info panel, yellow selection highlight, isolate and restore",
    "ok": true,
    "note": "",
-   "ms": 37218
+   "ms": 38576
   },
   {
    "name": "B5 structures missing from BodyParts3D are reported, not faked",
    "ok": true,
    "note": "\"Obturator artery\" is in the Atlas catalogue but not in BodyParts3D: reported, not offered",
-   "ms": 6406
+   "ms": 6539
   },
   {
    "name": "B6 translucent skin reference toggles and does not block picking",
    "ok": true,
    "note": "",
-   "ms": 10536
+   "ms": 11425
   },
   {
    "name": "B7 \"Kembali ke model Atlas\" is a one-click way back to the Atlas models",
    "ok": true,
    "note": "",
-   "ms": 10
+   "ms": 3
   },
   {
    "name": "C1 ?models=bp3d without local data says so and keeps the Atlas models",
    "ok": true,
    "note": "",
-   "ms": 14837
+   "ms": 14576
   },
   {
    "name": "D1 no runtime errors and no 4xx for BodyParts3D files",

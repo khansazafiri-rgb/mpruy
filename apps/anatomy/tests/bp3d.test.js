@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import * as THREE from 'three';
 import { parseBp3dFlag, validateInventory, BP3D_FRAME, bp3dHas, _bp3dReset, bp3dUsesSystem } from '../src/viewer/bp3dSource.js';
 import { tissueClass } from '../src/viewer/bp3dMaterials.js';
+import { createSelectionGlow } from '../src/viewer/selectionGlow.js';
 
 const entry = (name, system = 'skeletal', id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-')) => ({ name, system, modelPath: `./structures/${id}/model.glb`, fmaId: 'FMA1' });
 
@@ -63,5 +64,21 @@ describe('materials', () => {
   it('classify bones and muscles consistently', () => {
     expect(tissueClass({ name: 'Femur.l', system: 'skeletal' })).toBe('bone');
     expect(tissueClass({ name: 'Biceps brachii.r', system: 'muscular' })).toBe('muscle');
+  });
+});
+
+describe('selection sweep on double-sided sources', () => {
+  const meshWith = (side) => {
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute([0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1], 3));
+    return new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ side }));
+  };
+  it('follows a double-sided base material (BodyParts3D) so the beam is not culled', () => {
+    const m = meshWith(THREE.DoubleSide); const release = createSelectionGlow([m]);
+    expect(m.children[0].material.side).toBe(THREE.DoubleSide); release();
+  });
+  it('keeps front-face-only for Atlas meshes (default behaviour unchanged)', () => {
+    const m = meshWith(THREE.FrontSide); const release = createSelectionGlow([m]);
+    expect(m.children[0].material.side).toBe(THREE.FrontSide); release();
   });
 });
