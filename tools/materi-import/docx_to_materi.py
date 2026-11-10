@@ -1149,7 +1149,7 @@ def split_caption_credit(cap):
     cap = re.sub(r'\s*Visual open-license[^.]*\.?', '', cap).strip()
     cap = re.sub(r'\s*Visual internet[^.]*\.?', '', cap).strip()
     cap = re.sub(r'\s*Sumber visual internet\s*:\s*rincian atribusi dan lisensi terdapat pada bagian Sumber visual\.?', '', cap).strip()
-    m = re.search(r'\s*Sumber(?: visual)?\s*:\s*(.+)$', cap, re.S)
+    m = re.search(r'\s*(?:Sumber(?: visual)?|Kredit)\s*:\s*(.+)$', cap, re.S)
     if not m:
         return cap.strip(), ''
     credit = m.group(1).strip()
@@ -1168,6 +1168,7 @@ def clean_credit(c):
     c = re.sub(r'\(?\s*https?://[^\s)]+\s*\)?', '', c)
     c = re.sub(r'\(\s*\)', '', c)
     c = re.sub(r'[;,]?\s*lisensi dan persyaratan atribusi tertera pada halaman berkas', '', c)
+    c = re.sub(r'[.;,]?\s*Halaman sumber dan lisensi\s*:?', '', c)
     c = re.sub(r'\s+([;,.])', r'\1', c)
     return re.sub(r'\s{2,}', ' ', c).strip(' ;,')
 
