@@ -83,6 +83,33 @@ python3 -m http.server 4783
 
 The preview includes orbit/zoom, wireframe, original mesh counts, source-coordinate bounding boxes, SHA-256 lineage checks and bundled MIT-licensed Three.js source. This is **independent test output**, not a new MEDCOEL Anatomy UI or a website deployment. Geometry units and patient alignment are explicitly unverified, and the converter does not change `apps/anatomy/public/models` or `apps/4d-lab/public/data`. The GitHub candidate workflow uploads the preview and `geometry-review.json` as a temporary downloadable artifact.
 
+## One-run batch processing (new — no repeated manual femur workflow)
+
+The verified official-source step generated 470 direct FMA/BP/FJ candidates from a retained MEDCOEL catalog of 2,237 structures. To avoid repeating the 136 MB publisher download and manually converting single organs, the batch command now processes **all direct matches in one invocation**:
+
+```bash
+npm ci --prefix apps/4d-lab
+npm run audit:bodyparts3d -- --download
+npm run batch:bodyparts3d -- --all
+cd local-data/licensing-quarantine/bp3d-batch
+python3 -m http.server 4783 --bind 127.0.0.1
+# Open http://127.0.0.1:4783/index.html
+```
+
+The first `audit:bodyparts3d` command downloads **once** (subsequent local runs reuse cached source inputs and report their SHA-256). The actual batch command parses the source tables and ZIP listing once, streams the archive hash once, and converts all unambiguously matched structures sequentially with a small OBJ cache; conversion errors are recorded per structure without discarding successful outputs.
+
+Files, **only under gitignored `local-data/licensing-quarantine/bp3d-batch/`**:
+
+- `index.html`: single searchable, system-filtered interactive Three.js 3D review for all converted candidates with wireframe, orbit, camera reset and geometry statistics.
+- `inventory.json`: real conversion counts, source hashes, per-model FMA/BP identity, triangles, bounds, model SHA-256, errors and six-system coverage.
+- `mapping-gaps.json`: all unmatched/ambiguous/missing-file Atlas structures. Unmatched entries include up to three **token-similarity suggestions for human review only**; these are not silently promoted.
+- `structures/<stable-id>/model.glb` + `lineage.json`: isolated official-source models with FJ element-level provenance.
+- `vendor/three/`: locally bundled Three.js library and MIT license.
+
+The GitHub Actions `Build official BodyParts3D bulk geometry candidates` workflow runs the **same complete batch** and uploads one temporary `bp3d-bulk-review-unapproved` artifact. Unit tests also run a synthetic one-file ZIP end-to-end before the actual publisher download.
+
+**Not every catalog name has a matching official geometry identity:** 1,767 out of 2,237 were unmatched in the original exact-name pass. A successfully converted GLB is not clinical/mesh-registration approval and has **zero authority to replace live Atlas assets or to regenerate CT/USG**. The current approved green 3D Anatomy UI, 4D Lab, six original anatomy model bundles and production server are intentionally untouched. Do not treat repository source publication as a waiver of CC BY-NC-SA noncommercial restrictions on upstream viewer code.
+
 ## What must happen next before any replacement is approved
 
 1. Download and hash the exact official archive, review archive structure, and pin publisher release evidence.
