@@ -19,11 +19,11 @@ An educational freehand CT / simulated-ultrasound workstation for MEDCOEL (`/ana
   and is **not** registered to the atlas (measured residual RMS ≈ 37 mm), so the atlas is never overlaid on it.
 - Details and evidence: `ATLAS_INTEGRATION_AUDIT.md`.
 
-## Independent Anatomy Viewer pilot (local, no commercial clearance)
-A new, separately authored experimental anatomy viewer is available at
-`/anatomy/4d-lab/atlas-preview/` in the **opt-in** integrated local preview
-(`npm run preview:4d-lab`). The ordinary production candidate build deliberately
-excludes this page. Alternatively, `npm run build:independent-atlas-pilot --prefix apps/4d-lab`
+## Independent Anatomy Viewer pilot (rejected as product direction; opt-in experiment only)
+The owner's Anatomy experience is the original MEDCOEL Atlas Viewer (`apps/anatomy`); see
+`licensing/ANATOMY_ORIGINAL_RESTORATION.md`. This separately authored experimental viewer is **not** part of
+`npm run preview:4d-lab` any more and is excluded from the ordinary build.
+`npm run build:independent-atlas-pilot --prefix apps/4d-lab`
 creates a local pilot build (or
 `/atlas-preview/` when using the 4D Lab Vite development server). It renders
 the allowlisted model assets from the Lab's own `atlas-assets/` pack without

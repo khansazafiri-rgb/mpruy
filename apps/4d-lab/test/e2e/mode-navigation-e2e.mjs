@@ -30,7 +30,9 @@ try {
   await page.waitForFunction(() => window.__lab.audio.on, null, { timeout: 10000 });
   assert.equal(await get(() => window.__lab.audio.on), true);
   await page.waitForTimeout(100); assert.equal(await get(() => window.__lab.scene.steth.visible), false);
-  await page.getByTestId('ws-ausc').click(); await page.waitForTimeout(100);
+  await page.getByTestId('ws-ausc').click();
+  // the scene applies the visibility on its next frame; software WebGL can need well over 100 ms
+  await page.waitForFunction(() => window.__lab.scene.steth.visible === true, null, { timeout: 10000 }).catch(() => {});
   assert.equal(await get(() => window.__lab.scene.steth.visible), true, 'active auscultation shows instrument');
   assert.equal(await get(() => window.__lab.scene.probe.visible), false, 'probe hidden during auscultation');
   assert.deepEqual(await get(() => [window.__lab.scene.planeMesh.visible, window.__lab.scene.planeOutline.visible]), [false, false], 'existing scan overlay hidden on switching to auscultation');
@@ -44,10 +46,12 @@ try {
   const contact = await get(() => [...window.__lab.S.contact.point]);
   await page.getByTestId('free-mode').click();
   assert.equal(await page.getByTestId('mode-status').textContent(), 'Free 3D / Bidang CT');
+  await page.waitForFunction(() => window.__lab.scene.probe.visible === false, null, { timeout: 10000 }).catch(() => {}); // applied on the next frame
   assert.equal(await get(() => window.__lab.scene.probe.visible), false);
   await page.getByTestId('return-probe').click(); await frame();
   assert.deepEqual(await get(() => window.__lab.S.contact.point), contact, 'valid clinical contact restored');
   assert.equal(await get(() => window.__lab.S.mode), 'clinical');
+  await page.waitForFunction(() => window.__lab.scene.probe.visible === true, null, { timeout: 10000 }).catch(() => {});
   assert.equal(await get(() => window.__lab.scene.probe.visible), true);
 
   await page.getByTestId('mon-tri').click();
@@ -103,6 +107,8 @@ try {
   assert.ok((await get(() => window.__lab.S.tri.point))[0] > before[0]);
   assert.deepEqual(await get(() => window.__lab.scene.camera.position.toArray()), cam, 'slice controls leave camera unchanged');
   await frame();
+  // the worker answers asynchronously: wait until the displayed frame has caught up with the last slice move
+  await page.waitForFunction(() => JSON.stringify(window.__lab.monitor.meta?.tri?.point) === JSON.stringify(window.__lab.S.tri.point), null, { timeout: 60000 }).catch(() => {});
   const axes = await get(() => window.__lab.monitor.meta.tri.point);
   assert.deepEqual(axes, await get(() => window.__lab.S.tri.point), 'the three views share the selected LPS crosshair');
   await page.getByTestId('tri-center').click();
@@ -128,7 +134,9 @@ try {
   const torsoContact = await get(() => structuredClone(window.__lab.S.contact));
   const headContact = await get(() => {
     const sc = window.__lab.scene;
-    return sc.closestSkin([0, -50, sc.bodyBounds.hi[2]]);
+    const g = (sc.bodyBounds ? null : sc.meshes.skin.mesh.geometry); if (g) g.computeBoundingBox();
+    const top = sc.bodyBounds ? sc.bodyBounds.hi[2] : g.boundingBox.max.z;
+    return sc.closestSkin([0, -50, top]);
   });
   assert.ok(headContact, 'full-body atlas has a skin contact for the head');
   assert.ok(headContact.point[2] > await get(() => window.__lab.data.anatomy.regions.headZ), 'head skin is outside trunk CT');
