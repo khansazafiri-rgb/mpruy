@@ -41,6 +41,9 @@ footer{padding:7px 14px;background:#1b302b;color:#d9c598;font-size:11px}
 </header>
 <div id="workspace">
 <aside>
+<h2>Find and focus a structure</h2>
+<input id="search" type="search" placeholder="Search among converted structures" autocomplete="off">
+<div id="searchResults"></div>
 <h2>Anatomical systems</h2><p>Models retain their original shared source coordinates. Turn on systems to assemble them in one scene. The catalog is incomplete and not CT/USG registered.</p>
 <div id="systems"></div>
 <div style="display:flex;gap:8px;margin:12px 0"><button id="fit">Fit visible anatomy</button><button id="clear">Bones only</button></div>
@@ -50,9 +53,6 @@ footer{padding:7px 14px;background:#1b302b;color:#d9c598;font-size:11px}
 <label for="alpha">Opacity of visible systems: <span id="alphaLabel">100%</span></label><input id="alpha" type="range" min="20" max="100" step="5" value="100">
 <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="contrast"> High contrast</label>
 <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="wire"> Wireframe</label>
-<h2>Find and focus a structure</h2>
-<input id="search" type="search" placeholder="Search among converted structures" autocomplete="off">
-<div id="searchResults"></div>
 <p id="status">Loading official inventory…</p>
 <p><strong>BodyParts3D, © The Database Center for Life Science</strong>. <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html" style="color:#a8ead7">Current license page</a> says CC BY 4.0; downloaded OBJ header says CC BY-SA 2.1 Japan. Rights review required before any upload. Color is illustrative.</p>
 </aside>

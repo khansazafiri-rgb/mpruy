@@ -9,6 +9,8 @@ import { loadAllData, normalise } from "../utils/dataLoader.js";
 import { REGIONS, GROUPS, ALIASES } from "./catalog.js";
 import { UNAVAILABLE_GROUPS, UNAVAILABLE_MESSAGE, loadUnavailable, unavailableMatches } from "./availability.js";
 import { fetchJson } from "../utils/fetchJson.js";
+import { initBp3dBanner, bp3dNoteForSearch } from "./bp3dPanel.js";
+import { bp3dHas } from "../viewer/bp3dSource.js";
 import {
   settings,
   getStatus,
@@ -129,6 +131,7 @@ function update() {
   $("atlasSelection").textContent = state.selectedPart?.displayName || "Pilih struktur untuk dipelajari";
   $("footerBar").style.display = state.selectedPart ? "flex" : "none";
 }
+let bp3dMissed = 0;
 function search(query) {
   const q = normalise(query);
   if (q.length < 2) return [];
@@ -140,6 +143,7 @@ function search(query) {
     if (terms.some(term => term === q || (q.length >= 3 && term.startsWith(q))))
       out.push({id:group.id,label:`${group.label} · Whole system`,group:group.id,system:true,score:200});
   }
+  bp3dMissed = 0;
   for (const [id, info] of Object.entries(state.partsData)) {
     if (!metadata(id)) continue;
     const n = normalise(info.baseName),
@@ -164,6 +168,7 @@ function search(query) {
     };
     terms.push(...(groupAliases[metadata(id).group] || []));
     if (!tokens.every((t) => terms.some((term) => term.includes(t)))) continue;
+    if (!bp3dHas(id)) { bp3dMissed++; continue; } // BodyParts3D preview only: not in the 470 converted structures
     const best = terms.some((t) => t === q)
       ? 100
       : terms.some((t) => t.startsWith(q))
@@ -198,7 +203,7 @@ function showSearch() {
     const group = GROUPS.find((g) => g.id === r.group), image = !r.system && structurePreview(r.id);
     const where = r.system ? "Tampilkan seluruh sistem" : `${group.label} · ${REGIONS.find((g) => g[0] === metadata(r.id).regions[0])?.[1] || "Seluruh tubuh"}`;
     return `<button type="button" role="option" aria-selected="false" id="atlas-result-${i}" class="atlas-result${r.system ? " is-system" : ""}" data-result="${i}" style="--group-color:${group.color}"><span class="atlas-result-thumb">${image ? `<img class="atlas-result-preview" src="${escape(image)}" alt="" decoding="async"/>` : `<i aria-hidden="true"></i>`}</span><span class="atlas-result-text"><span>${escape(r.label)}</span><small><i class="group-dot" aria-hidden="true"></i>${escape(where)}</small></span></button>`;
-  }).join("") || (withheld.length ? "" : '<p class="search-empty">Tidak ada struktur yang cocok. Coba nama Latin, Inggris, atau Indonesia.</p>')}${withheld.length ? `<div class="search-unavailable" role="note" data-testid="atlas-unavailable-results"><strong>Tidak tersedia sementara</strong><ul>${withheld.map((w) => `<li>${escape(w.label)}</li>`).join("")}</ul><small>${escape(UNAVAILABLE_MESSAGE)}</small></div>` : ""}`;
+  }).join("") || (withheld.length ? "" : '<p class="search-empty">Tidak ada struktur yang cocok. Coba nama Latin, Inggris, atau Indonesia.</p>')}${withheld.length ? `<div class="search-unavailable" role="note" data-testid="atlas-unavailable-results"><strong>Tidak tersedia sementara</strong><ul>${withheld.map((w) => `<li>${escape(w.label)}</li>`).join("")}</ul><small>${escape(UNAVAILABLE_MESSAGE)}</small></div>` : ""}${bp3dNoteForSearch(bp3dMissed)}`;
 }
 async function chooseSearch(index) {
   const row = searchRows[index];
@@ -342,6 +347,7 @@ function initBackLink() {
   if (label) $("atlasBackLabel").textContent = label;
 }
 export async function initUI() {
+  initBp3dBanner();
   loadUnavailable(fetchJson).then(()=>{if($("searchInput").value)showSearch();});
   loadAllData({translations:false}).then(()=>update());
   loadStructurePreviews().then(()=>{renderRegions();update();if($("searchInput").value)showSearch();});

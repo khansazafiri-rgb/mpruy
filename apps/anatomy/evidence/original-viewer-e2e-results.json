@@ -7,91 +7,91 @@
    "name": "1 load full body: immersive workspace, no permanent sidebar",
    "ok": true,
    "note": "canvas 1440x737, dock y=793",
-   "ms": 11356
+   "ms": 15001
   },
   {
    "name": "2 bottom dock lists all 13 systems (+ withheld ones disabled with a reason)",
    "ok": true,
    "note": "Otot, Tulang, Sendi, Arteri, Vena, Jantung, Limfatik, Napas, Cerna, Kemih, Reproduksi, Endokrin, Saraf + Saraf(unavailable)",
-   "ms": 12
+   "ms": 15
   },
   {
    "name": "3 region picker: floating card grid, select Toraks, closes again",
    "ok": true,
    "note": "title=Toraks",
-   "ms": 13628
+   "ms": 25372
   },
   {
    "name": "4 camera: front / side / back / top / reset and zoom change the view",
    "ok": true,
    "note": "5 distinct views",
-   "ms": 50895
+   "ms": 62534
   },
   {
    "name": "5 orbit by mouse drag, wheel zoom",
    "ok": true,
    "note": "",
-   "ms": 25853
+   "ms": 30636
   },
   {
    "name": "6 search: suggestions, choose result, structure info panel appears",
    "ok": true,
    "note": "4 suggestions; \"Femur (left)\"",
-   "ms": 18912
+   "ms": 23982
   },
   {
    "name": "7 isolate → return to context, focus, restore",
    "ok": true,
    "note": "",
-   "ms": 12993
+   "ms": 15801
   },
   {
    "name": "8 hide / transparency (fade) / fade others",
    "ok": true,
    "note": "",
-   "ms": 9120
+   "ms": 10583
   },
   {
    "name": "9 undo / redo (buttons + keyboard) and restore-everything",
    "ok": true,
    "note": "",
-   "ms": 21070
+   "ms": 26888
   },
   {
    "name": "10 toggle several systems at once and step layers with +/−",
    "ok": true,
    "note": "5 systems active",
-   "ms": 48804
+   "ms": 60041
   },
   {
    "name": "11 system structure list (⋯) opens and lists structures",
    "ok": true,
    "note": "",
-   "ms": 28099
+   "ms": 36843
   },
   {
    "name": "12 quarantine: Saraf stays unavailable, search explains, no withheld request",
    "ok": true,
    "note": "models requested: cardiovascular.glb, joints.glb, muscular.glb, skeletal.glb",
-   "ms": 38240
+   "ms": 41540
   },
   {
    "name": "13 help, share link (view state) and reload restores the view",
    "ok": true,
    "note": "",
-   "ms": 2546
+   "ms": 2422
   },
   {
    "name": "14 iPad portrait (834×1112) layout",
    "ok": true,
    "note": "",
-   "ms": 21152
+   "ms": 27260
   },
   {
    "name": "15 phone (390×844) layout",
    "ok": true,
    "note": "",
-   "ms": 13120
+   "ms": 20438
   },
   {
    "name": "16 no runtime errors during the whole run",

@@ -116,7 +116,10 @@ export function createSelectionGlow(meshes, requestFrame = () => {}) {
       vertexShader, fragmentShader,
       transparent: true, depthWrite: false, depthTest: true, depthFunc: THREE.LessEqualDepth,
       polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1,
-      blending: THREE.NormalBlending, toneMapped: false, side: THREE.FrontSide,
+      blending: THREE.NormalBlending, toneMapped: false,
+      // Atlas meshes are front-face only. Sources whose triangle winding is not consistent (the BodyParts3D preview)
+      // render their base material double-sided, and the sweep must follow or it would be culled entirely.
+      side: mesh.material?.side === THREE.DoubleSide ? THREE.DoubleSide : THREE.FrontSide,
     });
     const overlay = new THREE.Mesh(mesh.geometry, material);
     overlay.name = 'MEDCOEL selection sweep';

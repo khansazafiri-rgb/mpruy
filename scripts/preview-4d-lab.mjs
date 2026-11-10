@@ -13,6 +13,7 @@
 //   PORT=4173 node scripts/preview-4d-lab.mjs --lan   # also reachable from other devices on your network
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -30,6 +31,8 @@ export const ROOTS = {
   main: path.join(repo, 'apps/web/dist-anatomy-preview'),
   lab: path.join(repo, 'apps/4d-lab/dist'),
   atlas: path.join(repo, 'apps/anatomy/dist'),
+  // Optional, LOCAL ONLY: official BodyParts3D review output for the Atlas preview (?models=bp3d). Gitignored, never in a dist.
+  bp3d: path.join(repo, 'local-data/licensing-quarantine/bp3d-batch'),
 };
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
@@ -57,6 +60,14 @@ export function createLabPreviewServer(roots = ROOTS) {
       else res.setHeader('X-Frame-Options', 'DENY');
       if (p === '/anatomy/4d-lab' || p === '/anatomy/viewer') { res.writeHead(308, { Location: p + '/' }); return res.end(); }
       if (p.startsWith('/api/')) { const f = apiFixture(p); return f ? send(200, JSON.stringify(f), TYPES['.json']) : send(404, JSON.stringify({ message: 'This preview has no backend endpoint.' }), TYPES['.json']); }
+      // BodyParts3D review data: served read-only, only for the Atlas preview and only if the local folder exists.
+      if (p.startsWith('/anatomy/viewer/bp3d/')) {
+        const rel = p.slice('/anatomy/viewer/bp3d/'.length);
+        const base = roots.bp3d && path.resolve(roots.bp3d);
+        const file = base && path.resolve(base, rel);
+        if (!file || (file !== base && !file.startsWith(base + path.sep)) || !/^(inventory\.json|structures\/[a-z0-9-]+\/model\.glb|reference-surface\/skin\.glb)$/.test(rel)) return send(404, 'Not found');
+        try { return send(200, await readFile(file), TYPES[path.extname(file)] || 'application/octet-stream', { 'Cache-Control': 'no-cache' }); } catch { return send(404, 'Not found'); }
+      }
       const root = lab ? roots.lab : atlas ? roots.atlas : roots.main;
       const rel = lab ? p.slice('/anatomy/4d-lab/'.length) : atlas ? p.slice('/anatomy/viewer/'.length) : p.slice(1);
       let file = path.resolve(root, rel || 'index.html');
@@ -126,6 +137,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   Live 4D Lab (as students see it):  ${b}/anatomy/live
   Lab directly (full window):        ${b}/anatomy/4d-lab/
   Procedural phantom dataset:        ${b}/anatomy/4d-lab/?dataset=phantom
+  Atlas 3D + official BodyParts3D:   ${existsSync(path.join(ROOTS.bp3d, 'inventory.json')) ? b + '/anatomy/viewer/?models=bp3d   (local review data found)' : 'not built: npm run batch:bodyparts3d -- --all'}
 Checks: lab datasets ${check.facts.lab.datasets.join(' + ')}, ${check.facts.sourceModelsChecked} self-bundled atlas GLBs match source CT hashes; Atlas Viewer build ${atlasOn ? 'passed the licence-quarantine scan' : 'absent'}.
 ${host === '0.0.0.0' ? 'LAN mode: reachable from other devices on this network via this machine\'s IP. Stop with Ctrl+C when done.\n' : ''}Stop with Ctrl+C.`);
   });
