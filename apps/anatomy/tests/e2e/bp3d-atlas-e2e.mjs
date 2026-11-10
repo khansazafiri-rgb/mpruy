@@ -107,6 +107,12 @@ await step('B2 muscles + bones together; camera presets give four distinct views
   for (const [id, n] of [['#frontViewBtn', 'front'], ['#sideViewBtn', 'side'], ['#backViewBtn', 'back'], ['#topViewBtn', 'top']]) { await page.locator(id).click(); await page.waitForTimeout(1200); seen.add(await hash(page)); await shot(page, 'bp3d-atlas-02-muscles-' + n); }
   ok(seen.size === 4, 'only ' + seen.size + ' distinct views');
   await page.locator('#frontViewBtn').click(); await page.waitForTimeout(900);
+  // layer stepping (− peels the outer muscle layer) works on BodyParts3D structures through the catalogue metadata
+  const otot = page.locator('.sys-tile', { hasText: 'Otot' }).first();
+  const h = await hash(page);
+  await otot.locator('[data-step][data-delta="-1"]').click(); await page.waitForTimeout(1500);
+  ok(await hash(page) !== h, 'layer − on Otot changed nothing');
+  await otot.locator('[data-step][data-delta="1"]').click(); await page.waitForTimeout(1200);
 }, { needsData: true });
 await step('B3 regions: Toraks reframes and the regional clip keeps anatomy in view', async () => {
   const before = await hash(page);
@@ -131,13 +137,19 @@ await step('B4 search → select → info panel, yellow selection highlight, iso
   await page.locator('#returnContext').click(); await page.waitForTimeout(900); await page.locator('#restoreAtlas').click(); await page.waitForTimeout(900);
 }, { needsData: true });
 await step('B5 structures missing from BodyParts3D are reported, not faked', async () => {
-  const input = page.locator('#searchInput'); await input.fill(''); await input.click(); await input.fill('platysma');
-  await page.waitForTimeout(900);
+  // pick a catalogue structure that the local inventory really does not contain (checked from the files, not assumed)
+  const inv = JSON.parse(await readFile(path.join(BP3D, 'inventory.json'), 'utf8'));
+  const have = new Set(inv.converted.map((e) => e.name));
+  const term = ['Obturator artery', 'Iliolumbar artery', 'Facial artery'].find((t) => !have.has(t + '.l') && !have.has(t + '.r') && !have.has(t));
+  ok(term, 'no known-missing structure found to test with');
+  const input = page.locator('#searchInput'); await input.fill(''); await input.click(); await input.fill(term.toLowerCase());
+  await page.waitForSelector('#searchResults.show', { timeout: 10000 }); await page.waitForTimeout(600);
   const note = await page.locator('[data-testid="bp3d-search-note"]').count();
-  const rows = await page.locator('.atlas-result').count();
-  ok(note === 1 || rows === 0 || true, 'n/a');
-  const text = await page.locator('#searchResults').innerText();
-  return 'rows=' + rows + ' note=' + note + ' text="' + text.replace(/\n/g, ' ').slice(0, 90) + '"';
+  const rows = await page.locator('.atlas-result').allInnerTexts();
+  ok(note === 1, 'expected the "Belum ada di BodyParts3D" note for "' + term + '"');
+  ok(!rows.some((r) => r.toLowerCase().includes(term.toLowerCase())), 'a structure missing from BodyParts3D must not be offered: ' + rows.join(' | '));
+  await shot(page, 'bp3d-atlas-08-missing-structure');
+  return '"' + term + '" is in the Atlas catalogue but not in BodyParts3D: reported, not offered';
 }, { needsData: true });
 await step('B6 translucent skin reference toggles and does not block picking', async () => {
   await page.locator('#searchInput').fill(''); await page.keyboard.press('Escape');
