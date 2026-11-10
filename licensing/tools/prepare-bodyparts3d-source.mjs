@@ -6,7 +6,9 @@
 //   [--archive /download/isa_BP3D_4.0_obj_99.zip]
 //   [--out local-data/licensing-quarantine/bp3d-4.0-review.json]
 // Never writes to shipped Atlas GLBs, CT/USG, release gates, or licensing ledger.
-import { createReadStream, readFileSync, statSync, writeFileSync, mkdirSync } from 'node:fs';
+import { createReadStream, createWriteStream, readFileSync, statSync, writeFileSync, mkdirSync, renameSync, rmSync, existsSync } from 'node:fs';
+import { Readable, Transform } from 'node:stream';
+import { pipeline } from 'node:stream/promises';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
@@ -101,15 +103,48 @@ async function sha256File(file) {
   for await (const piece of createReadStream(file)) h.update(piece);
   return h.digest('hex');
 }
+/** Optional explicit download of pinned official DBCLS resources to gitignored local-data. */
+export async function fetchOfficialFile(url, destination, maxBytes) {
+  const expected = new URL(url), folder = path.resolve(ROOT, 'local-data') + path.sep;
+  if (expected.protocol !== 'https:' || expected.hostname !== 'dbarchive.biosciencedbc.jp' ||
+      !path.resolve(destination).startsWith(folder)) throw new Error('Only official DBCLS URLs and local-data destinations are allowed.');
+  if (existsSync(destination) && statSync(destination).size > 1000) return 'cached';
+  mkdirSync(path.dirname(destination), { recursive: true });
+  const response = await fetch(url);
+  if (!response.ok || !response.body || new URL(response.url).hostname !== expected.hostname)
+    throw new Error('Official download unavailable or redirected to a different host: ' + response.status);
+  if (Number(response.headers.get('content-length') || 0) > maxBytes)
+    throw new Error('Official source exceeds size limit');
+  const temp = destination + '.partial';
+  rmSync(temp, { force: true });
+  let received = 0;
+  const meter = new Transform({
+    transform(chunk, encoding, callback) {
+      received += chunk.length;
+      if (received > maxBytes) callback(new Error('Source exceeds download byte limit'));
+      else callback(null, chunk);
+    },
+  });
+  try {
+    await pipeline(Readable.fromWeb(response.body), meter, createWriteStream(temp, { flags: 'wx' }));
+    if (received < 1000) throw new Error('Downloaded official source is suspiciously small.');
+    renameSync(temp, destination);
+  } catch (e) { rmSync(temp, { force: true }); throw e; }
+  return 'downloaded';
+}
 function parseArgs(argv) {
   const vals = {};
-  for (let i = 0; i < argv.length; i += 2) {
-    const key = argv[i];
-    if (!['--names', '--archive', '--out'].includes(key) || !argv[i + 1] ||
-      argv[i + 1].startsWith('--') || vals[key]) throw new Error('Invalid argument ' + key);
-    vals[key] = argv[i + 1];
+  for (let i = 0; i < argv.length;) {
+    const key = argv[i++];
+    if (key === '--download' && !vals[key]) { vals[key] = true; continue; }
+    if (!['--names', '--archive', '--out'].includes(key) || !argv[i] ||
+      argv[i].startsWith('--') || vals[key]) throw new Error('Invalid argument ' + key);
+    vals[key] = argv[i++];
   }
-  if (!vals['--names']) throw new Error('Required: --names official BodyParts3D isa_parts_list_e.txt');
+  if (!vals['--names'] && !vals['--download'])
+    throw new Error('Required: --download or --names official BodyParts3D isa_parts_list_e.txt');
+  if (vals['--download'] && (vals['--names'] || vals['--archive']))
+    throw new Error('Use either --download or explicit --names and --archive paths.');
   return vals;
 }
 export async function makeLocalSourceReview(args) {
@@ -155,7 +190,16 @@ export async function makeLocalSourceReview(args) {
 }
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   try {
-    const result = await makeLocalSourceReview(parseArgs(process.argv.slice(2)));
+    const args = parseArgs(process.argv.slice(2));
+    if (args['--download']) {
+      const dir = path.resolve(ROOT, 'local-data/licensing-quarantine/bp3d-4.0');
+      args['--names'] = path.join(dir, 'isa_parts_list_e.txt');
+      args['--archive'] = path.join(dir, 'isa_BP3D_4.0_obj_99.zip');
+      args['--out'] ||= 'local-data/licensing-quarantine/bp3d-4.0/review.json';
+      await fetchOfficialFile(BP3D_OFFICIAL.namesUrl, args['--names'], 3 * 1024 * 1024);
+      await fetchOfficialFile(BP3D_OFFICIAL.archiveUrl, args['--archive'], 300 * 1024 * 1024);
+    }
+    const result = await makeLocalSourceReview(args);
     console.log(JSON.stringify({
       note: result.warning, archive: result.archive,
       table: result.namesTable,
