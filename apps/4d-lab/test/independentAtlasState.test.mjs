@@ -103,3 +103,20 @@ test('search/picking reveals hidden structure and changes isolation without losi
   state = updateView(state, { type: 'opacity', value: 0 });
   assert.equal(state.opacity, 0.15, 'opacity must clamp to minimum rather than reset to fully opaque');
 });
+
+test('structure-specific opacity survives selection and undo, but rejects unknown URL keys', () => {
+  const sternum = structureKey('skeletal', 'Sternum');
+  const femur = structureKey('skeletal', 'Femur.r');
+  let state = updateView(createViewState(), { type: 'structureOpacity', key: sternum, value: 0.42 });
+  state = updateView(state, { type: 'select', key: femur });
+  assert.equal(state.opacityByKey[sternum], 0.42);
+  state = updateView(state, { type: 'structureOpacity', key: femur, value: -3 });
+  assert.equal(state.opacityByKey[femur], 0.15);
+  state = updateView(state, { type: 'undo' });
+  assert.equal(state.opacityByKey[femur], undefined);
+  const payload = JSON.parse(sharedViewPayload(state, [1, 2, 3, 0, 1, 0]));
+  payload.opacityByKey['nervous::Withheld'] = 0.2;
+  const restored = readSharedView(JSON.stringify(payload), ['skeletal'], new Set([sternum, femur]));
+  assert.equal(restored.state.opacityByKey[sternum], 0.42);
+  assert.equal(restored.state.opacityByKey['nervous::Withheld'], undefined);
+});

@@ -1,85 +1,61 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>MEDCOEL · Anatomi 3D</title>
 <link rel="stylesheet" href="/src/independent-atlas/styles.css">
 </head>
 <body>
 <header class="mast">
-  <div class="identity"><b class="mark">M</b><div><strong>MEDCOEL</strong><span>ANATOMY LIVE · 3D</span></div></div>
-  <div class="policy">Pratinjau lokal · lisensi aset dalam peninjauan</div>
-</header>
-<main class="layout">
-  <aside class="controls" aria-label="Kontrol atlas">
-    <div class="panel-heading"><span class="eyebrow">RUANG BELAJAR</span><h1>Jelajahi anatomi</h1><p class="intro">Pilih sistem, cari struktur, lalu amati dari berbagai arah.</p></div>
-    <h2 class="section-heading">01 · Sistem tubuh</h2>
-    <label for="system">Sistem anatomi</label>
-    <select id="system" data-testid="pilot-system">
-      <option value="skeletal">Rangka</option>
-      <option value="muscular">Otot</option>
-      <option value="joints">Sendi</option>
-      <option value="cardiovascular">Jantung &amp; pembuluh</option>
-      <option value="lymphatic">Limfatik</option>
-      <option value="visceral">Organ dalam</option>
-    </select>
-    <fieldset class="system-list" aria-label="Sistem yang terlihat">
-      <legend>Tampilkan bersamaan</legend>
-      <div id="systemToggles" data-testid="pilot-toggles"></div>
-    </fieldset>
-    <h2 class="section-heading">02 · Wilayah &amp; struktur</h2>
-    <label for="region">Wilayah tubuh</label>
-    <select id="region" data-testid="pilot-region">
-      <option value="whole">Seluruh tubuh</option><option value="headNeck">Kepala &amp; leher</option>
-      <option value="thorax">Toraks</option><option value="abdomen">Abdomen</option>
-      <option value="pelvis">Pelvis</option><option value="upperLimb">Ekstremitas atas</option>
-      <option value="lowerLimb">Ekstremitas bawah</option><option value="back">Punggung</option>
-    </select>
-    <label for="search">Cari struktur</label>
-    <input id="search" type="search" data-testid="pilot-search" autocomplete="off" placeholder="Misalnya: sternum, femur, heart">
+  <a class="identity" href="/anatomy/live" aria-label="Kembali ke MEDCOEL"><span class="mark" aria-hidden="true"></span><strong>MEDCOEL <span>· Anatomi 3D</span></strong></a>
+  <div class="search-wrap">
+    <label class="sr-only" for="search">Cari struktur anatomi</label>
+    <input id="search" type="search" data-testid="pilot-search" autocomplete="off" placeholder="Cari struktur · sternum, femur, jantung…" aria-controls="results">
     <div id="results" class="results" data-testid="pilot-results" aria-label="Hasil pencarian" hidden></div>
-    <p id="structureCount" class="subnote" aria-live="polite"></p>
-    <details class="structure-disclosure"><summary>Telusuri daftar struktur</summary><div id="structureList" class="structure-list"></div></details>
-    <h2 id="selectedHeading" class="section-heading">03 · Struktur terpilih</h2>
-    <div id="details" class="details" role="status" aria-live="polite" data-testid="pilot-details">Klik struktur pada model atau pilih hasil pencarian.</div>
-    <div id="selectionActions" class="actions" hidden>
-      <button id="isolate" disabled data-testid="pilot-isolate">Isolasi struktur</button>
-      <button id="hide" disabled data-testid="pilot-hide">Sembunyikan</button>
-      <button id="fade" disabled data-testid="pilot-fade">Pudarkan lainnya</button>
-    </div>
-    <div class="actions secondary-actions">
-      <button id="clear" disabled data-testid="pilot-clear">Tampilkan semua</button>
-      <button id="undo" disabled data-testid="pilot-undo">Urungkan</button>
-      <button id="restore" data-testid="pilot-restore">Pulihkan tampilan</button>
-    </div>
-    <label for="opacity">Opasitas model <output id="opacityValue">100%</output></label>
-    <input id="opacity" data-testid="pilot-opacity" type="range" min="15" max="100" value="100">
-    <details class="more-tools"><summary>Bagikan &amp; pemulihan</summary><div class="actions">
-      <button id="share" data-testid="pilot-share">Salin tautan tampilan</button>
-      <button id="retry" hidden data-testid="pilot-retry">Coba muat lagi</button>
-    </div><input id="shareUrl" type="text" readonly hidden aria-label="Tautan tampilan untuk disalin"></details>
-  </aside>
+  </div>
+  <nav class="header-actions" aria-label="Tindakan penampil">
+    <button id="undo" disabled data-testid="pilot-undo" title="Urungkan (⌘Z)" aria-label="Urungkan">↶</button>
+    <button id="share" data-testid="pilot-share" title="Bagikan tampilan" aria-label="Bagikan tampilan">↗</button>
+    <button id="helpToggle" aria-expanded="false" aria-controls="helpPanel" title="Bantuan" aria-label="Bantuan">?</button>
+  </nav>
+</header>
+<main class="workspace">
   <section class="stage" aria-label="Model anatomi interaktif">
-    <div class="stage-title"><span class="eyebrow">ATLAS INTERAKTIF</span><strong>Pasien virtual</strong><small>Putar dan pilih struktur untuk mempelajari letaknya.</small></div>
-    <div class="camera-tools" aria-label="Sudut pandang kamera">
-      <button id="front" data-testid="pilot-front">Tampak depan</button>
-      <button id="back" data-testid="pilot-back">Tampak belakang</button>
-      <button id="side" data-testid="pilot-side">Tampak samping</button>
-      <button id="top" data-testid="pilot-top">Tampak atas</button>
-      <button id="fit" data-testid="pilot-fit">Pusatkan model</button>
-    </div>
-    <div class="zoom-tools">
-      <button id="zoomIn" data-testid="pilot-zoom-in">Perbesar</button>
-      <button id="zoomOut" data-testid="pilot-zoom-out">Perkecil</button>
-    </div>
     <div id="canvasHost" class="canvas-host" data-testid="pilot-viewport"></div>
-    <div id="status" class="status" role="status" aria-live="polite" data-testid="pilot-status">Memuat katalog…</div>
-    <p class="instructions">Seret: putar · Klik kanan/dua jari: geser · Scroll: zoom · Klik struktur: pilih</p>
+    <div class="region-anchor">
+      <button id="regionToggle" class="region-toggle" aria-expanded="false" aria-controls="regionPanel"><span class="region-symbol" aria-hidden="true">◉</span><span><small>REGIO</small><strong id="regionName">Seluruh tubuh</strong></span><span aria-hidden="true">⌄</span></button>
+      <section id="regionPanel" class="region-panel" aria-label="Pilih regio tubuh" hidden>
+        <h1>Pilih regio tubuh</h1><p>Pratinjau diambil dari model yang tersedia di penampil ini.</p>
+        <div id="regionCards" class="region-cards"></div>
+      </section>
+    </div>
+    <div class="camera-tools" aria-label="Kontrol kamera">
+      <div class="camera-group"><button id="zoomIn" data-testid="pilot-zoom-in" aria-label="Perbesar model" title="Perbesar">+</button><button id="zoomOut" data-testid="pilot-zoom-out" aria-label="Perkecil model" title="Perkecil">−</button></div>
+      <div class="camera-group"><button id="front" data-testid="pilot-front" title="Tampak depan">Dpn</button><button id="back" data-testid="pilot-back" title="Tampak belakang">Blk</button><button id="side" data-testid="pilot-side" title="Tampak samping">Smp</button><button id="top" data-testid="pilot-top" title="Tampak atas">Ats</button><button id="fit" data-testid="pilot-fit" title="Pusatkan tampilan">⟲</button></div>
+    </div>
+    <div class="scene-bottom"><div id="status" class="status" role="status" aria-live="polite" data-testid="pilot-status">Memuat katalog…</div><p class="instructions">Seret: putar · Dua jari/klik kanan: geser · Gulir: zoom</p></div>
+    <aside id="selectionPanel" class="selection-panel" aria-labelledby="selectedHeading" hidden>
+      <div class="selection-title"><h2 id="selectedHeading">Struktur terpilih</h2><button id="closeSelection" aria-label="Tutup detail struktur">×</button></div>
+      <div id="details" class="details" role="status" aria-live="polite" data-testid="pilot-details">Klik struktur pada model atau pilih hasil pencarian.</div>
+      <div id="selectionActions" class="selection-actions" hidden><button id="isolate" disabled data-testid="pilot-isolate">Isolasi</button><button id="hide" disabled data-testid="pilot-hide">Sembunyikan</button><button id="fade" disabled data-testid="pilot-fade">Pudarkan lainnya</button></div>
+      <label for="opacity">Opasitas sistem <output id="opacityValue">100%</output></label>
+      <input id="opacity" data-testid="pilot-opacity" type="range" min="15" max="100" value="100">
+      <label for="structureOpacity">Opasitas struktur terpilih <output id="structureOpacityValue">100%</output></label>
+      <input id="structureOpacity" data-testid="pilot-structure-opacity" type="range" min="15" max="100" value="100">
+      <button id="clear" disabled data-testid="pilot-clear">Tampilkan semua struktur</button>
+      <p id="structureCount" class="subnote"></p>
+      <details class="structure-disclosure"><summary>Telusuri struktur yang tersedia</summary><div id="structureList" class="structure-list"></div></details>
+    </aside>
+    <aside id="helpPanel" class="help-panel" hidden><h2>Bantuan navigasi</h2><p>Pilih sistem di dock bawah. Klik struktur untuk melihat detail, atau cari namanya di bagian atas. Gunakan pemilih regio untuk mengatur wilayah tubuh.</p><p>Geser untuk memutar · dua jari/klik kanan untuk memindah kamera · gulir untuk zoom · Home untuk memusatkan · ⌘Z untuk mengurungkan.</p><p>Ini ilustrasi pendidikan. Hak distribusi aset masih dalam peninjauan.</p><button id="retry" hidden data-testid="pilot-retry">Coba muat model lagi</button><input id="shareUrl" type="text" readonly hidden aria-label="Tautan tampilan untuk disalin"></aside>
+    <label class="sr-only" for="region">Regio yang dilihat</label><select id="region" data-testid="pilot-region" class="sr-only"><option value="whole">Seluruh tubuh</option><option value="headNeck">Kepala &amp; leher</option><option value="thorax">Toraks</option><option value="abdomen">Abdomen</option><option value="pelvis">Pelvis</option><option value="upperLimb">Ekstremitas atas</option><option value="lowerLimb">Ekstremitas bawah</option><option value="back">Punggung</option></select>
   </section>
+  <nav class="system-dock" aria-label="Sistem anatomi">
+    <div class="dock-start"><span>SISTEM ANATOMI</span><label for="system">Fokus</label><select id="system" data-testid="pilot-system"><option value="skeletal">Rangka</option><option value="muscular">Otot</option><option value="joints">Sendi</option><option value="cardiovascular">Jantung &amp; pembuluh</option><option value="lymphatic">Limfatik</option><option value="visceral">Organ dalam</option></select><button id="restore" data-testid="pilot-restore">Pulihkan</button></div>
+    <fieldset class="system-list" aria-label="Tampilkan sistem bersama"><legend class="sr-only">Tampilkan sistem bersama</legend><div id="systemToggles" data-testid="pilot-toggles"></div></fieldset>
+  </nav>
 </main>
-<footer>Ilustrasi pendidikan · Bukan data pasien atau alat diagnosis · Distribusi publik belum disetujui.</footer>
+<footer>Pratinjau lokal · Model dan turunan citra belum disetujui untuk distribusi publik · Bukan alat diagnosis.</footer>
 <script type="module" src="/src/independent-atlas/main.js"></script>
 </body>
 </html>

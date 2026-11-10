@@ -6,7 +6,7 @@ export const REGIONS = Object.freeze(['whole', 'headNeck', 'thorax', 'abdomen', 
 export function createViewState() {
   return {
     enabled: ['skeletal'], selected: null, isolated: null, hidden: [],
-    faded: null, region: 'whole', opacity: 1, history: [],
+    faded: null, region: 'whole', opacity: 1, opacityByKey: {}, history: [],
   };
 }
 
@@ -61,6 +61,14 @@ export function updateView(state, action) {
     case 'fade': next.faded = next.faded === key ? null : key; break;
     case 'region': next.region = action.region || 'whole'; break;
     case 'opacity': next.opacity = Math.max(0.15, Math.min(1, Number.isFinite(Number(action.value)) ? Number(action.value) : 1)); break;
+    case 'structureOpacity': {
+      if (!key) return state;
+      const value = Number(action.value);
+      if (!Number.isFinite(value)) return state;
+      next.opacityByKey[key] = Math.max(0.15, Math.min(1, value));
+      if (next.opacityByKey[key] === 1) delete next.opacityByKey[key];
+      break;
+    }
     case 'clearSelection': next.selected = null; next.isolated = null; next.faded = null; break;
     default: return state;
   }
@@ -86,10 +94,16 @@ export function readSharedView(raw, validSystems, validKeys) {
     const enabled = systems.length ? systems : ['skeletal'];
     const key = value => typeof value === 'string' && validKeys.has(value) && enabled.some(s => value.startsWith(s + '::')) ? value : null;
     const hidden = [...new Set(data.hidden.map(key).filter(Boolean))];
+    const opacityByKey = {};
+    if (data.opacityByKey && typeof data.opacityByKey === 'object' && !Array.isArray(data.opacityByKey))
+      for (const [candidate, value] of Object.entries(data.opacityByKey).slice(0, 80)) {
+        if (key(candidate) && Number.isFinite(value)) opacityByKey[candidate] = Math.max(0.15, Math.min(1, value));
+      }
     const state = { ...createViewState(), enabled, hidden,
       selected: key(data.selected), isolated: key(data.isolated), faded: key(data.faded),
       region: REGIONS.includes(data.region) ? data.region : 'whole',
       opacity: Number.isFinite(data.opacity) ? Math.max(0.15, Math.min(1, data.opacity)) : 1,
+      opacityByKey,
     };
     if (state.isolated) state.hidden = state.hidden.filter(k => k !== state.isolated);
     if (state.selected && state.hidden.includes(state.selected)) state.selected = null;
