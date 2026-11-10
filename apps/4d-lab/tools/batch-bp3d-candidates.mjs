@@ -109,7 +109,7 @@ export function buildBulkHTML(){
     '@media(max-width:700px){header{height:auto;min-height:66px}#layout{height:calc(100dvh - 160px)}aside{width:150px;padding:6px}aside button{font-size:11px}footer{height:auto}}',
     '</style><script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/examples/jsm/"}}</script>',
     '</head><body><header><strong>Official BodyParts3D 4.0 • Batch review</strong>',
-    '<span id="summary">Loading inventory…</span><label><input id="palette" type="checkbox" checked/> Color by system</label><label><input id="tissue" type="checkbox"/> Tissue classes</label><label><input id="contrast" type="checkbox"/> High contrast</label><label><input id="wire" type="checkbox"/> Wireframe</label>',
+    '<span id="summary">Loading inventory…</span><label><input id="palette" type="checkbox"/> Color by system</label><label><input id="tissue" type="checkbox" checked/> Tissue classes</label><label><input id="contrast" type="checkbox"/> High contrast</label><label><input id="wire" type="checkbox"/> Wireframe</label>',
     '<button id="reset">Reset camera</button><span id="status"></span></header>',
     '<div id="layout"><aside><input id="search" type="search" placeholder="Find structure…"/><select id="system"><option value="">All systems</option></select><div id="palette-note">Illustrative system colors, not verified tissue colors</div><div id="legend"></div><div id="items"></div></aside>',
     '<main><div id="canvas"></div><div id="metrics">Select a candidate</div></main></div>',
@@ -133,9 +133,8 @@ export function buildBulkHTML(){
     "for(const mesh of models){const mats=Array.isArray(mesh.material)?mesh.material:[mesh.material];",
     "for(const mat of mats){if(mat?.color)mat.color.setHex(style.color);if('roughness' in mat)mat.roughness=style.roughness;",
     "if('metalness' in mat)mat.metalness=0;mat.transparent=false;mat.opacity=1;mat.depthWrite=true;mat.side=THREE.DoubleSide;mat.needsUpdate=true;}}}",
-    "document.getElementById('palette').addEventListener('change',recolor);",
-    "document.getElementById('tissue').addEventListener('change',()=>{recolor();legend()});",
-    "document.getElementById('palette').addEventListener('change',legend);",
+    "document.getElementById('palette').addEventListener('change',e=>{if(e.target.checked)document.getElementById('tissue').checked=false;recolor();legend()});",
+    "document.getElementById('tissue').addEventListener('change',e=>{if(e.target.checked)document.getElementById('palette').checked=false;recolor();legend()});",
     "document.getElementById('contrast').addEventListener('change',e=>{const on=e.target.checked;ambient.intensity=on?0.75:1.25;sun.intensity=on?3.15:2.35;rim.intensity=on?1.45:1.05;scene.background.setHex(on?0x070d12:0x10191f)});",
     "function legend(){const tissue=document.getElementById('tissue').checked,palette=document.getElementById('palette').checked;",
     "const colors=tissue?Object.fromEntries(Object.entries(TISSUE_MATERIALS).map(([key,value])=>[key,value.color])):palette?systemPalette:{Neutral:neutralColor};",
@@ -282,6 +281,9 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}
     geometryRegisteredToMEDCOEL:false,approvedForCommercialDistribution:false};
   const mapping=reconcileMapping({gaps:plan.gaps,officialRows:official,converted,
     elementIndex:elements,archiveFiles:zipFiles});
+  mapping.report.sourceHashes=manifest.sourceHashes;
+  mapping.report.catalogCount=plan.summary.catalogCount;
+  mapping.report.directConvertedCount=converted.length;
   fs.writeFileSync(path.join(output,'inventory.json'),JSON.stringify(manifest,null,2)+'\n');
   fs.writeFileSync(path.join(output,'mapping-gaps.json'),
     JSON.stringify({schemaVersion:1,unmatchedCount:gaps.length,gaps},null,2)+'\n');

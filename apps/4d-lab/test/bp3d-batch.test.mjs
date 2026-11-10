@@ -95,6 +95,9 @@ test('one invocation processes fake official ZIP and writes a structured report,
     const mapping=JSON.parse(fs.readFileSync(path.join(out,'mapping-review.json'),'utf8'));
     assert.equal(mapping.summary.catalogGaps,2236);
     assert.equal(mapping.summary.automaticallyApproved,0);
+    assert.equal(mapping.catalogCount,2237);
+    assert.equal(mapping.directConvertedCount,1);
+    assert.match(mapping.sourceHashes.archiveSha256,/^[a-f0-9]{64}$/);
     assert.equal(mapping.queue.length,2236);
     assert.equal(fs.readFileSync(path.join(out,'mapping-review.csv'),'utf8').trim().split('\n').length,2237);
     assert.ok(fs.existsSync(path.join(out,'review-materials.js')));
@@ -113,7 +116,8 @@ test('all 6 systems receive distinct illustrative review colors and user can tur
     ['cardiovascular','joints','lymphatic','muscular','skeletal','visceral']);
   assert.equal(new Set(Object.values(REVIEW_SYSTEM_PALETTE)).size,6);
   const html=buildBulkHTML();
-  assert.match(html,/id="palette" type="checkbox" checked/);
+  assert.match(html,/id="palette" type="checkbox"/);
+  assert.match(html,/id="tissue" type="checkbox" checked/);
   assert.match(html,/Illustrative system colors, not verified tissue colors/);
   assert.match(html,/Tissue\/system colors are illustrative, not verified anatomy colors/);
   assert.match(html,/function recolor\(\)/);
