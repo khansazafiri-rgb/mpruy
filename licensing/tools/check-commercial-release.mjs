@@ -1,5 +1,9 @@
 // Separate from the withdrawn-asset guard: a clean build is not proof of commercial rights.
 // The manifest must be reviewed for every exact release build. No environment-variable bypass.
+//
+// Owner override (explicit, recorded, time-limited): the owner of the platform may decide, in this committed file and nowhere
+// else, to release a blocked product anyway. That is an acceptance of risk, NOT a rights clearance: the result always says
+// `rightsVerified: false`, the blockers stay listed, the evidence register is not touched, and the decision expires.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -22,11 +26,36 @@ export function releaseDigest(root) {
   return crypto.createHash('sha256').update(JSON.stringify(files)).digest('hex');
 }
 
-export function assertCommercialReleaseReady(product, root, manifestFile = DEFAULT_MANIFEST) {
+export const OWNER_OVERRIDE_ACKNOWLEDGEMENT = 'Hak komersial belum terverifikasi. Pemilik MEDCOEL menerima risiko pelanggaran lisensi dan permintaan penghapusan.';
+export const OWNER_OVERRIDE_MAX_DAYS = 120;
+const DAY = 86400000;
+
+/** Returns why an override is not acceptable, or null when it is. */
+export function ownerOverrideProblem(o, now = new Date()) {
+  if (!o || o.enabled !== true) return 'no owner override';
+  if (!o.decidedBy || typeof o.decidedBy !== 'string') return 'owner override has no decidedBy';
+  if (o.rightsVerified !== false) return 'owner override must state rightsVerified: false (it cannot claim clearance)';
+  if (o.acknowledgement !== OWNER_OVERRIDE_ACKNOWLEDGEMENT) return 'owner override acknowledgement text does not match';
+  const decided = Date.parse(o.decidedOn), expires = Date.parse(o.expiresOn);
+  if (!Number.isFinite(decided) || !Number.isFinite(expires)) return 'owner override needs decidedOn and expiresOn dates';
+  if (decided > now.getTime() + DAY) return 'owner override is dated in the future';
+  if (expires <= now.getTime()) return `owner override expired on ${o.expiresOn}`;
+  if (expires - decided > OWNER_OVERRIDE_MAX_DAYS * DAY) return `owner override may last at most ${OWNER_OVERRIDE_MAX_DAYS} days`;
+  return null;
+}
+
+export function assertCommercialReleaseReady(product, root, manifestFile = DEFAULT_MANIFEST, { now = new Date() } = {}) {
   const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
   if (manifest.schemaVersion !== 1 || !manifest.products?.[product]) throw Error(`Commercial release: missing policy for ${product}`);
   const policy = manifest.products[product];
   if (policy.status !== 'cleared' || policy.blockers?.length) {
+    const problem = policy.ownerOverride ? ownerOverrideProblem(policy.ownerOverride, now) : 'no owner override';
+    if (!problem) {
+      const o = policy.ownerOverride;
+      const warning = `OWNER OVERRIDE for ${product}: released on the owner's decision (${o.decidedBy}, ${o.decidedOn}, expires ${o.expiresOn}). Rights are NOT verified: ${(policy.blockers || []).length} blocker(s) remain.`;
+      console.warn('\n!! ' + warning + '\n');
+      return { product, digest: releaseDigest(root), ownerOverride: true, rightsVerified: false, decidedBy: o.decidedBy, decidedOn: o.decidedOn, expiresOn: o.expiresOn, scope: o.scope || null, blockers: policy.blockers || [], warning };
+    }
     throw Error(`Commercial release blocked for ${product}: ${(policy.blockers || ['rights review incomplete']).join('; ')}`);
   }
   const digest = releaseDigest(root);

@@ -8,7 +8,16 @@
         "Atlas application source is described as CC BY-NC-SA 4.0 in apps/anatomy/public/LICENSE section 3; ownership or written commercial permission has not been documented.",
         "Remaining Atlas structures and derived previews have inferred, rather than individually verified, upstream provenance (licensing/PROVENANCE_REPORT.md section 5)."
       ],
-      "approvedBuilds": []
+      "approvedBuilds": [],
+      "ownerOverride": {
+        "enabled": true,
+        "decidedBy": "Pemilik MEDCOEL (khansazafiri-rgb)",
+        "decidedOn": "2026-11-10",
+        "expiresOn": "2027-02-08",
+        "rightsVerified": false,
+        "acknowledgement": "Hak komersial belum terverifikasi. Pemilik MEDCOEL menerima risiko pelanggaran lisensi dan permintaan penghapusan.",
+        "scope": "Pemasangan publik Atlas Viewer (/anatomy/viewer/). Data yang ditahan karantina (saraf, ginjal, osikel) tetap tidak disertakan."
+      }
     },
     "4d-lab": {
       "status": "blocked",
@@ -16,7 +25,16 @@
         "The Lab's atlas-derived dataset relies on Atlas models whose individual provenance remains partly inferred; its source and adaptation chain needs commercial clearance.",
         "The 4D Lab now packages Atlas-derived model/data resources under its own asset-only route, but provenance and independent commercial rights of the 4D Lab application code (including any adaptations of the NC Atlas frontend) have not been reviewed. The separate Atlas Viewer remains blocked."
       ],
-      "approvedBuilds": []
+      "approvedBuilds": [],
+      "ownerOverride": {
+        "enabled": true,
+        "decidedBy": "Pemilik MEDCOEL (khansazafiri-rgb)",
+        "decidedOn": "2026-11-10",
+        "expiresOn": "2027-02-08",
+        "rightsVerified": false,
+        "acknowledgement": "Hak komersial belum terverifikasi. Pemilik MEDCOEL menerima risiko pelanggaran lisensi dan permintaan penghapusan.",
+        "scope": "Pemasangan publik Anatomy Live 4D Lab (build statis /anatomy/4d-lab/). Data yang ditahan karantina tetap tidak disertakan."
+      }
     }
   }
 }
