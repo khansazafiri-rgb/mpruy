@@ -12,6 +12,7 @@ import {NodeIO} from '@gltf-transform/core';
 import {parseOfficialNames,parseOfficialElements,candidateCrosswalk,mapActualMeshFiles,
   checkArchiveEntryNames,BP3D_OFFICIAL,normalizeAnatomyName} from '../../../licensing/tools/prepare-bodyparts3d-source.mjs';
 import {makeGlb,readObjTriangles} from './build-bp3d-candidate.mjs';
+import {buildCompositeHTML} from './bp3d-composite-viewer.mjs';
 import {summarizeGeometry,diagnoseGeometry,verifyLineage} from './review-bp3d-candidate.mjs';
 import {SYSTEM_MATERIALS,tissueClass} from './bp3d-review-materials.mjs';
 import {reconcileMapping} from './bp3d-mapping-review.mjs';
@@ -110,7 +111,7 @@ export function buildBulkHTML(){
     '</style><script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/examples/jsm/"}}</script>',
     '</head><body><header><strong>Official BodyParts3D 4.0 • Batch review</strong>',
     '<span id="summary">Loading inventory…</span><label><input id="palette" type="checkbox"/> Color by system</label><label><input id="tissue" type="checkbox" checked/> Tissue classes</label><label><input id="contrast" type="checkbox"/> High contrast</label><label><input id="wire" type="checkbox"/> Wireframe</label>',
-    '<button id="reset">Reset camera</button><span id="status"></span></header>',
+    '<button id="reset">Reset camera</button><a href="./body.html" style="color:#b8f3d2">Assemble body (multi-system)</a><span id="status"></span></header>',
     '<div id="layout"><aside><input id="search" type="search" placeholder="Find structure…"/><select id="system"><option value="">All systems</option></select><div id="palette-note">Illustrative system colors, not verified tissue colors</div><div id="legend"></div><p id="source-credit">BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International. <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html">Source and license</a>.</p><div id="items"></div></aside>',
     '<main><div id="canvas"></div><div id="metrics">Select a candidate</div></main></div>',
     '<footer>NOT FOR PUBLIC RELEASE • Tissue/system colors are illustrative, not verified anatomy colors • Not registered to MEDCOEL CT/USG • No current assets replaced.</footer>',
@@ -290,6 +291,7 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}
   fs.writeFileSync(path.join(output,'mapping-review.json'),JSON.stringify(mapping.report,null,2)+'\n');
   fs.writeFileSync(path.join(output,'mapping-review.csv'),mapping.csv);
   fs.writeFileSync(path.join(output,'index.html'),buildBulkHTML());
+  fs.writeFileSync(path.join(output,'body.html'),buildCompositeHTML());
   fs.copyFileSync(fileURLToPath(new URL('./bp3d-review-materials.mjs',import.meta.url)),
     path.join(output,'review-materials.js'));
   const threeRoot=path.join(root,'apps/4d-lab/node_modules/three');

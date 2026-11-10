@@ -1,4 +1,5 @@
 import test from 'node:test';
+import vm from 'node:vm';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -6,6 +7,7 @@ import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {planBatch,safeStructureId,suggestForUnmatched,buildBulkHTML,REVIEW_SYSTEM_PALETTE,runBatch} from '../tools/batch-bp3d-candidates.mjs';
+import {buildCompositeHTML} from '../tools/bp3d-composite-viewer.mjs';
 import {TISSUE_MATERIALS,tissueClass,materialFor} from '../tools/bp3d-review-materials.mjs';
 import {reconcileMapping,reviewTokens} from '../tools/bp3d-mapping-review.mjs';
 import {Document} from '@gltf-transform/core';
@@ -92,6 +94,10 @@ test('one invocation processes fake official ZIP and writes a structured report,
     assert.match(fs.readFileSync(path.join(out,'index.html'),'utf8'),/GLTFLoader/);
     assert.ok(fs.existsSync(path.join(out,'structures',result.converted[0].id,'lineage.json')));
     assert.ok(fs.existsSync(path.join(out,'mapping-gaps.json')));
+    assert.ok(fs.existsSync(path.join(out,'body.html')));
+    const body=fs.readFileSync(path.join(out,'body.html'),'utf8');
+    assert.match(body,/3D Body Assembly/);
+    assert.match(body,/inventory\.json/);
     const mapping=JSON.parse(fs.readFileSync(path.join(out,'mapping-review.json'),'utf8'));
     assert.equal(mapping.summary.catalogGaps,2236);
     assert.equal(mapping.summary.automaticallyApproved,0);
@@ -200,4 +206,23 @@ test('a branch must not score as high confidence for its parent artery',()=>{
   assert.equal(report.queue[0].suggestions[0].confidence,'medium-review');
   assert.ok(report.queue[0].suggestions[0].similarity<0.85);
   assert.equal(report.summary.automaticallyApproved,0);
+});
+
+
+test('assembled body review uses native shared coordinates, on-demand systems and isolated material presentation',()=>{
+  const html=buildCompositeHTML();
+  const moduleText=html.match(/<script type="module">([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(moduleText,'generated HTML needs inline ES module');
+  assert.doesNotThrow(()=>new vm.Script(moduleText.replace(/^import .*;$/gm,'')));
+  assert.match(html,/3D Body Assembly/);
+  assert.match(html,/raw coordinates/i);
+  assert.match(html,/const models=new Map\(\)/);
+  assert.match(html,/let entries=\[\],active=new Set\(\['skeletal'\]\)/);
+  assert.match(html,/MAX_PARALLEL=3/);
+  assert.match(html,/scene\.add\(root\)/);
+  assert.match(html,/tissue classes \(consistent\)/i);
+  assert.match(html,/materialFor\(item\.entry,mode\)/);
+  assert.match(html,/BodyParts3D, © The Database Center for Life Science/);
+  assert.match(html,/NOT FOR PUBLIC RELEASE/);
+  assert.doesNotMatch(html,/anatomy\/viewer\/models/);
 });
