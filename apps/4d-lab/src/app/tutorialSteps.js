@@ -2,13 +2,14 @@
 // really pressed, dragged or hovered the real control. The camera is read here only to notice that the learner moved it;
 // nothing in this file writes camera or imaging state (the lab's rule: camera never feeds imaging).
 //
-// ctx: { S, scene, padKind, setAssistLevel, assistSelect, hoverTip }
+// ctx: { S, scene, padKind, setAssistLevel, assistSelect(), hoverTip() }  (the two elements are looked up on every use: the toolbar can be rebuilt)
 
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 const LEVEL_NAMES = { off: 'Mati', hover: 'Hanya hover', contours: 'Kontur', guided: 'Terpandu', challenge: 'Tantangan' };
 
 export function generalSteps(ctx) {
-  const { S, scene, padKind, setAssistLevel, assistSelect, hoverTip } = ctx;
+  const { S, scene, padKind, setAssistLevel } = ctx;
+  const level = () => ctx.assistSelect()?.value;
   const probeKey = () => (padKind() === 'tri' ? S.tri.point : S.mode === 'free' ? S.free.position : S.contact?.point) || null;
   let hovered = null; // what the learner pointed at in the image, for the success message
   return [
@@ -50,7 +51,8 @@ export function generalSteps(ctx) {
         hint: 'arahkan kursor ke organ di dalam kipas citra (bagian abu-abu atau putih yang tegas), bukan ke jaringan polos atau area hitam di luarnya.',
         prepare: () => {
           hovered = null;
-          if (assistSelect.value === 'off') setAssistLevel('hover');
+          const hoverTip = ctx.hoverTip();
+          if (level() === 'off') setAssistLevel('hover');
           // only a NAMED structure counts: plain soft tissue reads "tidak teridentifikasi", which is honest but not what we want to show
           const watch = () => {
             if (hoverTip.hidden || hovered) return;
@@ -71,9 +73,9 @@ export function generalSteps(ctx) {
       task: {
         text: 'buka "Bantuan anatomi" lalu pilih Kontur.',
         hint: 'klik kotak pilihan "Bantuan anatomi" di atas citra, lalu pilih "Kontur".',
-        baseline: () => assistSelect.value,
-        done: (b) => assistSelect.value !== b && assistSelect.value !== 'off',
-        success: () => ({ title: 'Mantap!', text: `Bantuan sekarang: ${LEVEL_NAMES[assistSelect.value] || assistSelect.value}. Lihat citranya: garis tiap struktur muncul di atas gambar abu-abu, dan hover masih bekerja.` }),
+        baseline: level,
+        done: (b) => level() !== b && level() !== 'off',
+        success: () => ({ title: 'Mantap!', text: `Bantuan sekarang: ${LEVEL_NAMES[level()] || level()}. Lihat citranya: garis tiap struktur muncul di atas gambar abu-abu, dan hover masih bekerja.` }),
       },
     },
     {

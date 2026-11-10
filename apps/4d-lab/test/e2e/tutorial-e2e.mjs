@@ -20,6 +20,8 @@ async function fresh() { // a first visit: nothing remembered
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto(url, { timeout: 180000 });
   await page.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
+  // software WebGL is slow: pause the simulation so timers and the tutorial's checks are not starved (the overlay never blocks clicks)
+  if (await page.evaluate(() => window.__lab.S.playing)) await page.getByTestId('play').click();
   return { ctx, page };
 }
 const shot = async (page, name) => { if (SHOTS) { await mkdir(EVIDENCE, { recursive: true }); await page.screenshot({ path: EVIDENCE + name + '.jpg', type: 'jpeg', quality: 72, timeout: 240000 }).catch(() => {}); } };
@@ -32,7 +34,7 @@ const tour = (p) => p.getByTestId('tour');
 const state = (p) => tour(p).getAttribute('data-state');
 const mascot = (p) => p.getByTestId('tour-mascot').locator('[data-mascot]').getAttribute('data-mascot');
 const nextDisabled = (p) => p.getByTestId('tour-next').isDisabled();
-const waitState = (p, s, ms = 20000) => p.waitForFunction((st) => document.querySelector('[data-testid=tour]')?.dataset.state === st, s, { timeout: ms });
+const waitState = (p, s, ms = 60000) => p.waitForFunction((st) => document.querySelector('[data-testid=tour]')?.dataset.state === st, s, { timeout: ms });
 const lab = (p, fn, arg) => p.evaluate(fn, arg);
 
 let A = await fresh();

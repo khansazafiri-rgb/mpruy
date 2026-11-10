@@ -147,7 +147,7 @@ export function startTutorial({ steps, storageKey, label, el, setPane, force = f
     cleanup = task.prepare?.() || null;
     baseline = task.baseline ? task.baseline() : null;
     paint('task');
-    poll = setInterval(() => { try { if (task.done(baseline)) complete(); } catch { /* keep waiting */ } }, POLL_MS);
+    poll = setInterval(() => { try { if (task.done(baseline)) complete(); } catch (e) { console.warn('[tutorial] step', step.id, e); } }, POLL_MS);
     hintTimer = setTimeout(() => { if (!done.has(i)) paint('hint'); }, task.hintAfterMs || HINT_AFTER_MS);
   }
   const handleKey = (e) => {

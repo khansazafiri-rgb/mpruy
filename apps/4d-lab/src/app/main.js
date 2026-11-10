@@ -1365,7 +1365,7 @@ const TOUR_KEY = 'medcoel-4dlab-tour-v3';
 const TRI_TOUR_KEY = 'medcoel-4dlab-tri-tour-v2';
 function startTour(force = false, kind = 'general') {
   const tri = kind === 'tri';
-  const ctx = { S, scene, padKind, setAssistLevel, assistSelect: $('#assistLevel'), hoverTip: $('#hoverTip') };
+  const ctx = { S, scene, padKind, setAssistLevel, assistSelect: () => $('#assistLevel'), hoverTip: () => $('#hoverTip') };
   startTutorial({
     steps: tri ? triSteps(ctx) : generalSteps(ctx), storageKey: tri ? TRI_TOUR_KEY : TOUR_KEY,
     label: tri ? 'PANDUAN TRI-PLANAR' : 'TUTORIAL INTERAKTIF', el, setPane, force,
