@@ -25,14 +25,10 @@ export const BP3D_OFFICIAL = Object.freeze({
 });
 const validSystems = new Set(['skeletal', 'muscular', 'joints', 'cardiovascular', 'lymphatic', 'visceral']);
 export function normalizeAnatomyName(name) {
-  return String(name || '')
-    .normalize('NFKD')
-    .replace(/[‐‑–—]/g, '-')
-    .replace(/\.([lr])$/i, (_, side) => side.toLowerCase() === 'l' ? ' left' : ' right')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim()
-    .replace(/\s+/g, ' ');
+  let input = String(name || '').normalize('NFKD').replace(/[‐‑–—]/g, '-');
+  const side = input.match(/\.([lr])$/i);
+  if (side) input = (side[1].toLowerCase() === 'l' ? 'left ' : 'right ') + input.slice(0, -2);
+  return input.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
 }
 export function parseOfficialNames(tsv) {
   if (typeof tsv !== 'string') throw new Error('Official BodyParts3D names table must be UTF-8 text.');
