@@ -7,6 +7,9 @@ on:
     paths:
       - licensing/tools/prepare-bodyparts3d-source.mjs
       - apps/4d-lab/tools/batch-bp3d-candidates.mjs
+      - apps/4d-lab/tools/bp3d-review-materials.mjs
+      - apps/4d-lab/tools/bp3d-mapping-review.mjs
+      - apps/4d-lab/tools/bp3d-batch-audit.mjs
       - apps/4d-lab/tools/build-bp3d-candidate.mjs
       - apps/4d-lab/tools/review-bp3d-candidate.mjs
       - apps/4d-lab/test/bp3d-batch.test.mjs
@@ -35,6 +38,14 @@ jobs:
         run: npm run audit:bodyparts3d -- --download
       - name: Process all direct FMA/FJ matches in one run (no public release)
         run: npm run batch:bodyparts3d -- --all
+      - name: Verify every generated candidate remains independently loadable
+        run: |
+          node --input-type=module <<'JS'
+          import {auditGeneratedBatch} from './apps/4d-lab/tools/bp3d-batch-audit.mjs';
+          const audit=await auditGeneratedBatch('local-data/licensing-quarantine/bp3d-batch');
+          console.log(JSON.stringify(audit));
+          if(audit.errors.length||audit.independentModels!==audit.converted)process.exitCode=1;
+          JS
       - name: Upload all converted GLBs, viewer, mapping gaps and source manifest
         uses: actions/upload-artifact@v4
         with:
@@ -59,9 +70,10 @@ jobs:
             '| Candidates needing geometry review for zero-area source triangles | '+s.candidatesWithOmittedZeroAreaTriangles+' |',
             '| Zero-area source triangles omitted (count is explicitly documented) | '+s.totalOmittedZeroAreaTriangles+' |',
             '| Unmapped/ambiguous/missing file | '+s.gaps+' |',
+            '| Candidates with read-only geometry diagnostics | '+s.candidatesWithGeometryFlags+' |',
             'All outputs are independent **review-only** files. This workflow does not change the approved 3D Anatomy UI, current GLBs, 4D Lab CT/USG, production routes or commercial release gates.',
             'Download the review artifact and open index.html through a localhost static server to inspect candidates in one interface.',
-            'The separate mapping-gaps.json contains suggestions (NOT verified anatomy identities).'];
+            'mapping-review.json contains the complete unmatched inventory, confidence, source availability, conflicts, and per-system totals. mapping-review.csv is its human review queue. Neither promotes models or clears rights.'];
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,lines.join('\n')+'\n');
           if(s.failed){console.error('Some candidates failed conversion; see artifact/inventory.json');process.exitCode=1;}
           JS
