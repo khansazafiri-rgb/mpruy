@@ -37,3 +37,17 @@ test('review generator only allows a structure in local-data quarantine',async()
   await assert.rejects(buildReview('../etc/passwd'),/Invalid structure name/);
   await assert.rejects(buildReview('Femur.l',{privateRoot:'/tmp/outside-data'}),/quarantined local-data/);
 });
+
+test('local Retina/Safari viewer keeps canvas logical size inside model viewport', async () => {
+  const bytes = await makeGlb([{id:'FJ1000',text:OBJ}],'Femur.l',{approvedForDistribution:false});
+  const shape = summarizeGeometry(await new NodeIO().readBinary(bytes));
+  const html = reviewHTML('Femur.l', shape);
+  // false would preserve the high-DPI drawing buffer as CSS layout size,
+  // creating horizontal scrolling and off-center rendering on Retina Macs.
+  assert.match(html, /renderer\.setSize\(w,h,true\)/);
+  assert.doesNotMatch(html, /renderer\.setSize\(w,h,false\)/);
+  assert.match(html, /#viewer\{[^}]*overflow:hidden/);
+  assert.match(html, /#viewer canvas\{display:block\}/);
+  assert.match(html, /body\{[^}]*overflow-x:hidden/);
+  assert.match(html, /box\.getCenter\(new THREE\.Vector3\(\)\)/);
+});
