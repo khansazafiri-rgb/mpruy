@@ -13,7 +13,11 @@ const synonym = Object.freeze({
 });
 const stop = new Set(['of','the','and','part','branch','anterior','posterior','superior','inferior']);
 export function reviewTokens(name) {
-  return normalizeAnatomyName(name).split(' ').filter(Boolean).map(token=>synonym[token]||token);
+  // Expand punctuated Latin initials only as a suggestion aid. The same
+  // initials can have other meanings; confidence is capped below.
+  const expanded=String(name).replace(/\b([amvn])\.(?=\s)/gi,(_,letter)=>
+    ({a:'arteria',m:'musculus',v:'vena',n:'nervus'})[letter.toLowerCase()]+' ');
+  return normalizeAnatomyName(expanded).split(' ').filter(Boolean).map(token=>synonym[token]||token);
 }
 const side = tokens => tokens.includes('left')?'left':tokens.includes('right')?'right':null;
 const category = tokens => {
@@ -63,6 +67,8 @@ export function reconcileMapping({gaps,officialRows,converted=[],elementIndex=ne
       if(!sourceIds.length||missingElements.length)warnings.push('missing-source-geometry');
       if(a&&!b)warnings.push('source-side-unspecified');
       if(!a&&b)warnings.push('atlas-side-unspecified');
+      if(/\b[amvn]\.\s/i.test(gap.name)||/\b[amvn]\.\s/i.test(row.name))
+        warnings.push('abbreviation-expanded-check-meaning');
       const sameIdentity=identityCount.get(row.fmaId+'|'+row.bpId);
       if(sameIdentity>1)warnings.push('multiple-official-names-for-identity');
       suggestions.push({fmaId:row.fmaId,bpId:row.bpId,officialName:row.name,

@@ -163,9 +163,11 @@ test('one converted structure retains independent FJ elements with read-only nor
 
 test('all unmatched names form a review-only CSV with Latin synonyms, source and side conflict checks',()=>{
   assert.deepEqual(reviewTokens('Arteria femoralis.l'),['left','artery','femoralis']);
+  assert.deepEqual(reviewTokens('A. femoralis.l'),['left','artery','femoralis']);
   const gaps=[{name:'Arteria femoralis.l',system:'cardiovascular',reason:'unmatched'},
     {name:'Another artery.r',system:'cardiovascular',reason:'unmatched'},
-    {name:'Unknown muscle',system:'muscular',reason:'unmatched'}];
+    {name:'Unknown muscle',system:'muscular',reason:'unmatched'},
+    {name:'A. femoralis.l',system:'cardiovascular',reason:'unmatched'}];
   const officialRows=[
     {name:'left femoralis artery',fmaId:'FMA1',bpId:'BP1'},
     {name:'right femoralis artery',fmaId:'FMA2',bpId:'BP2'},
@@ -174,13 +176,15 @@ test('all unmatched names form a review-only CSV with Latin synonyms, source and
   const {report,csv}=reconcileMapping({gaps,officialRows,converted:[
     {name:'A',fmaId:'FMA9',bpId:'BP9'},{name:'B',fmaId:'FMA9',bpId:'BP9'}],
     elementIndex:new Map([['FMA1',new Set(['FJ1'])]]),archiveFiles:['dir/FJ1.obj']});
-  assert.equal(report.queue.length,3);
+  assert.equal(report.queue.length,4);
   assert.equal(report.queue[0].suggestions[0].fmaId,'FMA1');
   assert.equal(report.queue[0].suggestions[0].approved,false);
   assert.equal(report.queue[0].rejections.oppositeSide,1);
   assert.ok(report.queue[1].rejections.tissueType>0);
+  assert.ok(report.queue[3].suggestions[0].warnings.includes('abbreviation-expanded-check-meaning'));
+  assert.notEqual(report.queue[3].suggestions[0].confidence,'high-review');
   assert.equal(report.summary.duplicateDirectIdentities,1);
   assert.equal(report.summary.automaticallyApproved,0);
-  assert.equal(report.systems.cardiovascular.unmatched,2);
-  assert.equal(csv.trim().split('\n').length,4);
+  assert.equal(report.systems.cardiovascular.unmatched,3);
+  assert.equal(csv.trim().split('\n').length,5);
 });
