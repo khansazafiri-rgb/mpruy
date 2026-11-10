@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {planBatch,safeStructureId,suggestForUnmatched,buildBulkHTML,runBatch} from '../tools/batch-bp3d-candidates.mjs';
+import {planBatch,safeStructureId,suggestForUnmatched,buildBulkHTML,REVIEW_SYSTEM_PALETTE,runBatch} from '../tools/batch-bp3d-candidates.mjs';
 
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 test('single batch plans eligible matches and retains unmapped/ambiguous source names',()=>{
@@ -89,4 +89,21 @@ test('one invocation processes fake official ZIP and writes a structured report,
     assert.ok(fs.existsSync(path.join(out,'mapping-gaps.json')));
     assert.ok(!result.converted[0].modelPath.startsWith('/'));
   }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+
+test('all 6 systems receive distinct illustrative review colors and user can turn them off',()=>{
+  assert.deepEqual(Object.keys(REVIEW_SYSTEM_PALETTE).sort(),
+    ['cardiovascular','joints','lymphatic','muscular','skeletal','visceral']);
+  assert.equal(new Set(Object.values(REVIEW_SYSTEM_PALETTE)).size,6);
+  const html=buildBulkHTML();
+  assert.match(html,/id="palette" type="checkbox" checked/);
+  assert.match(html,/Illustrative system colors, not verified tissue colors/);
+  assert.match(html,/System colors are illustrative, not verified anatomy colors/);
+  assert.match(html,/function recolor\(\)/);
+  assert.match(html,/recolor\(\);/);
+  assert.match(html,/mat\.color\.setHex\(color\)/);
+  assert.match(html,/const neutralColor=0xc8cbd0/);
+  assert.match(html,/id="legend"/);
+  assert.match(html,/ren\.setSize\(w,h,true\)/);
+  assert.match(html,/NOT FOR PUBLIC RELEASE/);
 });
