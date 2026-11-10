@@ -22,6 +22,19 @@ const shot = async name => { if (process.argv.includes('--shots')) { await mkdir
 try {
   await page.goto(url); await page.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 120000 });
   await page.getByTestId('tour-skip').click(); await pause();
+  // The desktop direction pad must have its own space next to the 3D canvas.
+  // The previously floating pad intercepted skin clicks on the lower abdomen.
+  const layout = await get(() => {
+    const viewport = document.getElementById('viewport').getBoundingClientRect();
+    const pad = document.getElementById('probePad').getBoundingClientRect();
+    return { viewport: { left: viewport.left, right: viewport.right, width: viewport.width },
+      pad: { left: pad.left, right: pad.right, width: pad.width },
+      padPosition: getComputedStyle(document.getElementById('probePad')).position };
+  });
+  assert.equal(layout.padPosition, 'relative', 'desktop probe pad is docked, not floating over skin');
+  assert.ok(layout.viewport.width > 100 && layout.pad.width > 40, 'patient and pad have usable width');
+  assert.ok(layout.pad.left >= layout.viewport.right - 1,
+    'probe pad must not intercept a click within the 3D patient canvas');
   assert.equal(await get(() => window.__lab.scene.steth.visible), false);
   await shot('mode-after-default');
 
