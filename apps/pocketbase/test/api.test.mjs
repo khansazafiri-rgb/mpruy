@@ -1229,16 +1229,16 @@ await langkah('urutan BAB semua mata kuliah mengikuti Google Doc (bukan A-Z), ju
   assert.equal(anat[0], 'Anatomi Umum & Terminologi Anatomis');
 });
 
-await langkah('catatan materi bawaan: Anatomi (20 BAB), Histologi (12), Fisiologi (20), Biokimia (18), Genetika Kedokteran (6), Patologi Anatomi (13), Parasitologi (8), Mikrobiologi (11), Farmakologi (14), Patologi Klinik (8), dan Sistem Saraf (16) terbaca siswa, berurutan, dengan flashcard', async () => {
-  for (const [slug, jumlah] of [['anatomi', 20], ['histologi', 12], ['fisiologi', 20], ['biokimia', 18], ['genetika-kedokteran', 6], ['patologi-anatomi', 13], ['parasitologi', 8], ['mikrobiologi', 11], ['farmakologi', 14], ['patologi-klinik', 8], ['sistem-saraf', 16]]) {
+await langkah('catatan materi bawaan: Anatomi (20 BAB), Histologi (12), Fisiologi (20), Biokimia (18), Genetika Kedokteran (6), Patologi Anatomi (13), Parasitologi (8), Mikrobiologi (11), Farmakologi (14), Patologi Klinik (8), Sistem Saraf (16), Sistem Respirasi (15), Sistem Kardiovaskular (14), Sistem Indra: Mata (10), Sistem Indra: THT (13), dan Psikiatri (14) terbaca siswa, berurutan, dengan flashcard', async () => {
+  for (const [slug, jumlah] of [['anatomi', 20], ['histologi', 12], ['fisiologi', 20], ['biokimia', 18], ['genetika-kedokteran', 6], ['patologi-anatomi', 13], ['parasitologi', 8], ['mikrobiologi', 11], ['farmakologi', 14], ['patologi-klinik', 8], ['sistem-saraf', 16], ['sistem-respirasi', 15], ['sistem-kardiovaskular', 14], ['sistem-indra-mata', 10], ['sistem-indra-tht', 13], ['psikiatri-kesehatan-jiwa', 14]]) {
     const sub = subjects.find((s) => s.slug === slug);
     assert.ok(sub, `mata kuliah ${slug} dari katalog`);
     const noted = (await call('GET', `/api/medcoel/subjects/${slug}`, undefined, userA.token, 200)).data.chapters.filter((c) => c.hasNotes);
     assert.equal(noted.length, jumlah, slug);
     assert.ok(noted.every((c) => c.hasCards === true), `${slug}: setiap BAB bercatatan punya flashcard`);
-    // Isi catatan diperiksa pada BAB pertama, tengah, dan terakhir saja: seluruh isi sudah dijaga tes konten, dan membaca
+    // Isi catatan diperiksa pada BAB pertama dan terakhir saja: seluruh isi sudah dijaga tes konten, dan membaca
     // ±110 catatan berturut-turut menghabiskan batas 600 permintaan/menit sehingga tes API berikutnya kena 429.
-    const sample = new Set([0, Math.floor((noted.length - 1) / 2), noted.length - 1]);
+    const sample = new Set([0, noted.length - 1]);
     for (const [i, c] of noted.entries()) {
       if (!sample.has(i)) continue;
       const n = (await call('GET', `/api/medcoel/chapters/${c.id}/notes`, undefined, userA.token, 200)).data;

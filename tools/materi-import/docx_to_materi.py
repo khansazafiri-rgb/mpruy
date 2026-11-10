@@ -53,6 +53,8 @@ def title_score(doc_title, site_title):
     for keep in (False, True):
         dw, sw = set(norm_words(doc_title, keep)), set(norm_words(site_title, keep))
         best = max(best, len(dw & sw) / max(1, len(dw | sw)))
+        if sw and sw <= dw:                                   # judul di web ("Epistaksis") termuat utuh dalam judul dokumen yang lebih panjang
+            best = max(best, 0.5 + 0.5 * len(sw) / len(dw))
     return best
 
 
@@ -165,7 +167,7 @@ CALLOUT_RULES = [
     (re.compile(r'^(Mnemonic(?: praktis| visual| relasional| konseptual)?(?: [^:]{0,30})?)\s*:\s*', re.I), 'tip', None),
 ]
 
-SOURCE_H2 = re.compile(r'^(sumber dan provenance|rujukan dan atribusi gambar|visual sources(?: ?/ ?attribution)?|sumber(?: dan atribusi)?|(?:\d{1,2}\.\d{1,2} )?sumber(?: guideline| rujukan)? utama(?: bab (?:[\d–-]+|ini))?(?: & guideline update)?|catatan basis sumber|keterangan sumber|referensi|daftar pustaka)$', re.I)
+SOURCE_H2 = re.compile(r'^(sumber dan provenance|rujukan dan atribusi gambar|visual sources(?: ?/ ?attribution)?|sumber(?: dan atribusi)?|(?:\d{1,2}\.\d{1,2} )?sumber(?: guideline| rujukan)? utama(?: bab (?:[\d–-]+|ini))?(?: & guideline update)?|catatan basis sumber|keterangan sumber|referensi|daftar pustaka|(?:\d{1,3}(?:\.\d{1,3})?\.?\s+)?(?:referensi|references|status bab|status roadmap|daftar referensi|rangkuman akhir sistem respirasi)\b.*)$', re.I)
 DROP_H2 = re.compile(r'retrieval', re.I)
 
 
@@ -246,6 +248,32 @@ def apply_corrections(paras, subject):
     return [q for q in paras if q.text.strip()], notes
 
 
+def pipe_tables(paras):
+    """Tabel yang ditulis sebagai baris teks "KOLOM A | KOLOM B | KOLOM C" (baris pertama judul kolom) diubah menjadi butir daftar:
+    "• Isi sel pertama: Kolom B — ...; Kolom C — ..." (markup catatan belum punya tabel). Hanya dengan --pipe-tables."""
+    def cells(t):
+        return [c.strip() for c in t.split(' | ')]
+    out, k = [], 0
+    while k < len(paras):
+        head = cells(paras[k].text)
+        n = len(head)
+        if n >= 2 and all(c for c in head) and not paras[k].has_img:
+            j = k + 1
+            while j < len(paras) and len(cells(paras[j].text)) == n and all(cells(paras[j].text)) and paras[j].lvl == 0:
+                j += 1
+            if j - k >= 2:
+                hdr = [h if (h.isupper() and len(h) <= 5) else h.capitalize() for h in head]
+                for q in paras[k + 1:j]:
+                    c = cells(q.text)
+                    rest = '; '.join(f'{hdr[x]} — {c[x]}' for x in range(1, n))
+                    out.append(Para(q.i, 0, f'• {c[0]}: {rest}', q.blank_before, False, q.trail))
+                k = j
+                continue
+        out.append(paras[k])
+        k += 1
+    return out
+
+
 def read_paragraphs(path):
     d = docx.Document(path)
     rels = d.part.rels
@@ -269,6 +297,7 @@ def read_paragraphs(path):
 # 1b. Dokumen bergaya HURUF BESAR (Genetika, lampiran Biokimia): disamakan dengan gaya "Bab N — Judul" + Heading
 # ----------------------------------------------------------------------------
 # "BAB 3 — JUDUL", "PARASITOLOGI — BAB 3: JUDUL", "PATOLOGI ANATOMI — BAB 6: JUDUL"
+SUBHEADS = False        # --subheads: baris huruf besar bergaya biasa tepat di bawah Heading 2 dokumen = subjudul (H3), bukan bagian baru
 UP_CHAPTER = re.compile(r'^(?:[A-Z][A-Z &]*?\s+[—–-]\s+)?BAB\s+(\d+)\s*[—–:-]\s*(\S.*)$')
 RULE_LINE = re.compile(r'^[═━─=_*~\-]{5,}$')
 END_MARK = re.compile(r'^SELESAI\s*[—–-]')
@@ -357,6 +386,7 @@ def normalize_upper(paras):
     last_letter = None
     skip = set()             # indeks baris yang sudah diproses sebagai butir kotak
     in_numbered = False      # sedang di bawah judul bergaya "N.M JUDUL"
+    sub_mode = False         # --subheads: sedang dalam daftar subjudul di bawah Heading 2 dokumen
     box_text = None          # None: tidak sedang di isi kotak; False: label kotak baru muncul; Para: paragraf isi yang sedang disambung
     out = list(paras[:start])
     body = paras[start:]
@@ -366,6 +396,15 @@ def normalize_upper(paras):
     chapter_no = 0
     for k, p in enumerate(body):
         t = EMOJI_PREFIX.sub('', p.text)                            # "⚡ HIGH-YIELD RSV" -> "HIGH-YIELD RSV"
+        if p.lvl in (1, 2):
+            sub_mode = False
+        ml = re.match(r'^([A-I])\.\s+(\S.{0,85})$', t)
+        if SUBHEADS and p.lvl == 0 and ml and not re.search(r'[.;:,?!]$', t):
+            nx = next((q for q in body[k + 1:k + 3] if q.text), None)
+            if nx is not None and not re.match(r'^[A-I]\.\s', nx.text):
+                out.append(Para(p.i, 3, ml.group(2) if upper_ratio(ml.group(2)) < 0.9 else smart_title(ml.group(2), acr), p.blank_before, False, p.trail))   # "A. GAD" di bawah bagian bernomor = subjudul
+                box_text = None
+                continue
         m = UP_CHAPTER.match(t)
         if m and upper_ratio(m.group(2)) > 0.8:
             out.append(Para(p.i, 1, f'Bab {m.group(1)} — {smart_title(m.group(2), acr)}', p.blank_before, False, p.trail))
@@ -461,7 +500,7 @@ def normalize_upper(paras):
             box_text = False if callout_for(text) else None
             continue
         m = re.match(r'^(\d{1,2})\.\s+(\S.*)$', t)
-        if m and len(t) <= 70 and not re.search(r'[.;?!,]$', t):
+        if m and len(t) <= 70 and not re.search(r'[.;?!,]$', t) and p.lvl != 2:
             nxt = next((q for q in body[k + 1:k + 4] if q.text), None)
             if nxt is not None and (nxt.text.startswith('•') or (not nxt.blank_before and not re.match(r'^\d{1,2}\.\s', nxt.text) and not t.endswith(':'))):
                 title = m.group(2).rstrip(':')
@@ -481,6 +520,11 @@ def normalize_upper(paras):
         after_label = bool(out) and out[-1].text.endswith(':')
         if (len(t) < 80 and upper_ratio(t) > 0.9 and not t.startswith(('•', 'http')) and not re.search(r'[.:;,]$', t) and not re.search(r'→|⊣| = | \+ ', t)
                 and (len(t.split()) >= 2 or len(t) >= 6) and not acronyms_only and not after_label and len(re.sub(r'[^A-Za-z]', '', t)) >= 6):
+            if SUBHEADS and p.lvl == 0 and (sub_mode or (out and out[-1].lvl == 2 and not out[-1].force_h)):
+                sub_mode = True
+                out.append(Para(p.i, 3, smart_title(t, acr), p.blank_before, False, p.trail))
+                box_text = None
+                continue
             if re.match(r'^(?:POLA|PATTERN|VIGNETTE|KASUS) \d+\b', t) or (out and out[-1].lvl == 2 and out[-1].force_h and out[-1].i + 1 >= p.i - 1 and not SOURCE_H2.match(t)) or (in_numbered and nxt_ is not None and nxt_.text.startswith('•') and not nxt_.blank_before and not SOURCE_H2.match(t)
                                                                                and not re.match(r'^(RINGKASAN|POLA KASUS|EXAM TRAPS?)\b', t)):
                 out.append(Para(p.i, 3, smart_title(t, acr), p.blank_before, False, p.trail))      # "INFLUENZA" + butir di bawah "9.5 PERBANDINGAN ..." = subjudul
@@ -721,6 +765,11 @@ def group_sections(chapter):
             cur = sections[-1]
         elif tk['k'] == 'h2':
             title = clean_h2(tk['text'], tk.get('force'))
+            mb = re.match(r'^Bagian ([IVX]+)\s*[—–:-]\s*(\S.*)$', title)
+            if mb:                                                # "BAGIAN II — MIOKARDITIS": pembatas bagian, bukan bagian berisi
+                cur = {'title': mb.group(2), 'letter': mb.group(1), 'raw': tk['text'], 'kind': 'part', 'toks': [], 'src': tk['src']}
+                sections.append(cur)
+                continue
             cur = {'title': title, 'raw': tk['text'], 'kind': section_kind(title), 'toks': [], 'src': tk['src'], 'opening': (not sections) or sections[-1]['kind'] == 'tujuan'}
             sections.append(cur)
         elif cur is None:
@@ -1113,9 +1162,19 @@ def split_caption_credit(cap):
 # ----------------------------------------------------------------------------
 # 6. Satu BAB -> Markdown
 # ----------------------------------------------------------------------------
+def clean_credit(c):
+    """Kredit gambar tanpa tautan Markdown/URL mentah (tautannya merusak penulisan "kredit" pada gambar)."""
+    c = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', c)
+    c = re.sub(r'\(?\s*https?://[^\s)]+\s*\)?', '', c)
+    c = re.sub(r'\(\s*\)', '', c)
+    c = re.sub(r'[;,]?\s*lisensi dan persyaratan atribusi tertera pada halaman berkas', '', c)
+    c = re.sub(r'\s+([;,.])', r'\1', c)
+    return re.sub(r'\s{2,}', ' ', c).strip(' ;,')
+
+
 def fig_md(f):
     cap = f['caption'].replace('[', '(').replace(']', ')')
-    title = f' "{esc_title(f["credit"])}"' if f.get('credit') else ''
+    title = f' "{esc_title(clean_credit(f["credit"]))}"' if clean_credit(f.get('credit', '')) else ''
     lines = [f'![]({u})' for u in f['urls'][:-1]]      # galeri: gambar tanpa keterangan, yang terakhir membawa keterangan
     lines.append(f'![{cap}]({f["urls"][-1]}{title})')
     return '\n'.join(lines)
@@ -1247,9 +1306,15 @@ def main():
     ap.add_argument('--out', default=os.path.join('apps', 'pocketbase', 'content', 'materi'))
     ap.add_argument('--skip-unmatched', action='store_true', help='lewati BAB di dokumen yang bukan milik mata kuliah ini (mis. BAB Genetika di dokumen Biokimia)')
     ap.add_argument('--allow-missing', action='store_true', help='BAB di web yang kosong/tidak ada di dokumen hanya dilaporkan (tidak menghentikan konversi)')
+    ap.add_argument('--subheads', action='store_true', help='baris huruf besar bergaya biasa di bawah Heading 2 dokumen dijadikan subjudul (H3)')
+    ap.add_argument('--pipe-tables', action='store_true', help='ubah tabel berbentuk baris "A | B | C" menjadi butir daftar (dokumen Respirasi)')
     ap.add_argument('--report', action='store_true', help='cetak laporan: yang dibuang, subjudul otomatis, gambar tanpa atribusi')
     a = ap.parse_args()
+    global SUBHEADS
+    SUBHEADS = a.subheads
     paras, correction_notes = apply_corrections(read_paragraphs(a.docx), a.subject)
+    if a.pipe_tables:
+        paras = pipe_tables(paras)
     paras = merge_image_credits(normalize_upper(paras))
     toks = auto_headings(merge_fragments(classify(paras)))
     chapters = split_chapters(toks)

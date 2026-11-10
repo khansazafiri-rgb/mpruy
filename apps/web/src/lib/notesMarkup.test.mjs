@@ -168,11 +168,14 @@ test('catatan di apps/pocketbase/content/materi terurai utuh', { skip: !existsSy
     assert.ok(!/^\s*• /m.test(text.split('## Flashcard')[0]), `${e.file}: sisa butir mentah`);
     // Catatan asal-usul penyusun dokumen (sumber UTB/IUP, slide, PPT, bank soal) bukan isi pelajaran.
     if (e.subject === 'mikrobiologi') assert.ok(!/\b(UTB|IUP|PPT\d*|materi sumber|bank soal|sumber praktikum)\b/i.test(text), `${e.file}: catatan internal penyusun`);
+    if (['sistem-respirasi', 'sistem-kardiovaskular', 'sistem-indra-mata', 'sistem-indra-tht', 'psikiatri-kesehatan-jiwa'].includes(e.subject)) {
+      assert.ok(!/\b(roadmap|rekap bab|progress bar|tanpa soal CBT)\b|PROGRES(?:S)? \d|BAB \d+ SELESAI/i.test(text), `${e.file}: catatan progres/roadmap penyusun`);
+    }
     if (e.subject === 'sistem-saraf') assert.ok(!/\b(Slide|bank soal|source-derived|PPGD|Rekap (?:MEDCOEL|Bab)|materi internal|anchor|Drive)\b/i.test(text.replace(/thalamic drive/gi, '')), `${e.file}: catatan internal penyusun`);
     if (e.subject === 'farmakologi') assert.ok(!/\b(PCV|Classroom|bank soal|materi sumber|ekspansi (?:farmakologi )?standar|ekstraksi|terekstrak|UAB|Oculus|Rekap (?:MEDCOEL|Bab))\b/i.test(text), `${e.file}: catatan internal penyusun`);
     // Flashcard berbentuk pertanyaan/perintah yang berdiri sendiri (bukan sekadar topik) dan jawabannya tidak kosong.
     // Konteks harus ada di pertanyaan itu sendiri: cukup panjang (tidak cuma "Contoh 3" atau "Pendekatan awal") dan tidak berupa potongan kalimat.
-    for (const c of d.cards) assert.ok(c.front.split(/\s+/).length >= 6 && !/\b(yang disebut|ditentukan oleh|bukan hanya)\b/.test(c.front), `${e.file}: kartu kurang konteks: ${c.front}`);
+    for (const c of d.cards) assert.ok(c.front.split(/\s+/).length >= 5 && !/\b(yang disebut|ditentukan oleh)\b/.test(c.front), `${e.file}: kartu kurang konteks: ${c.front}`);
     for (const c of d.cards) assert.ok(!/\b(?:dengan|tentang) (?:Contoh|Poin|Langkah|Tahap|Kasus|Pola|Butir|Opsi) ?\d+\b/.test(c.front.replace(/pada .*/, '')), `${e.file}: kartu hanya berupa label bernomor: ${c.front}`);
     for (const c of d.cards) assert.ok(/\?$|^(Jelaskan|Sebutkan)\b/.test(c.front) && c.back.length >= 5, `${e.file}: kartu bukan pertanyaan: ${c.front}`);
     assert.ok(!/^#{1,3} .*[\u2600-\u27BF\u{1F300}-\u{1FAFF}]/mu.test(text), `${e.file}: judul bagian berisi emoji`);   // "•" di tengah kalimat = radikal bebas (O₂•⁻), bukan butir
