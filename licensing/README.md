@@ -1,5 +1,7 @@
 # licensing/ — MEDCOEL copyright risk containment
 
+> **2026-11-10 owner override:** the owner has allowed the 4D Lab and Atlas Viewer release gates to run (rights still NOT verified, expires 2027-02-08). See [`OWNER_RELEASE_OVERRIDE.md`](OWNER_RELEASE_OVERRIDE.md). The quarantine and the evidence register are unchanged.
+
 Started 2026-11-09. **This is interim containment pending legal review, not a claim of full compliance.**
 
 | Deliverable | Where |
