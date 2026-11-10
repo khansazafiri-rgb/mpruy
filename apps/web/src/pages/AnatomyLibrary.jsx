@@ -10,6 +10,7 @@ import MascotTip, { useMascotsOn } from '@/components/MascotTip';
 import HumanAnatomy from './HumanAnatomy';
 import LiveLab from './LiveLab';
 import AnatomySplit from './AnatomySplit';
+import { useLiveLabAvailable } from '../features/anatomy/useLiveLabAvailable';
 import { AnatomyDataProvider, useAnatomyLibrary } from '../features/anatomy/LibraryData';
 import {
   REGIONS, SYSTEMS, browseStructures, filterStructures, normalise, relatedStructures, structureHref, exploreHref,
@@ -66,6 +67,7 @@ export default function AnatomyProduct() {
 }
 
 function LibraryShell({ children }) {
+  const liveLab = useLiveLabAvailable();
   const { storageError } = useAnatomyLibrary();
   const { pathname } = useLocation();
   useEffect(() => {
@@ -82,7 +84,7 @@ function LibraryShell({ children }) {
           <NavLink to="/anatomy/library">Pustaka</NavLink>
           <NavLink to="/anatomy/study">Kuis</NavLink>
           <Link to="/anatomy/explore" className="anatomy-nav-3d">Atlas 3D <Box size={14} /></Link>
-          <Link to="/anatomy/live" className="anatomy-nav-3d">Live 4D Lab</Link>
+          {liveLab !== 'missing' && <Link to="/anatomy/live" className="anatomy-nav-3d">Live 4D Lab</Link>}
         </nav>
         <Link className="anatomy-back" to="/beranda">← Beranda</Link>
       </header>
