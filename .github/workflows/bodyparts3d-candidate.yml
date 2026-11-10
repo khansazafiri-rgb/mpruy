@@ -56,6 +56,8 @@ jobs:
             '| Direct FMA + FJ candidate names | '+s.directlyMappable+' |',
             '| GLBs actually converted | '+s.converted+' |',
             '| Conversion failures | '+s.failed+' |',
+            '| Candidates needing geometry review for zero-area source triangles | '+s.candidatesWithOmittedZeroAreaTriangles+' |',
+            '| Zero-area source triangles omitted (count is explicitly documented) | '+s.totalOmittedZeroAreaTriangles+' |',
             '| Unmapped/ambiguous/missing file | '+s.gaps+' |',
             'All outputs are independent **review-only** files. This workflow does not change the approved 3D Anatomy UI, current GLBs, 4D Lab CT/USG, production routes or commercial release gates.',
             'Download the review artifact and open index.html through a localhost static server to inspect candidates in one interface.',
