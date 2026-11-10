@@ -63,6 +63,26 @@ The converter reads FJ OBJ meshes directly from the verified official ZIP, write
 
 The conversion **preserves native DBCLS coordinates without guessing patient registration or anatomical unit scale**. The resulting candidate requires visual/anatomical validation, frame alignment against the MEDCOEL patient, per-mesh attribution and geometry QA before it may replace any public anatomy, CT label, or ultrasound simulation input. The source is only a candidate. All release gates remain blocked, and the original 3D/4D UI is unchanged.
 
+## Verified real-source conversion and isolated visual QC (10 November 2026)
+
+[GitHub Actions BodyParts3D source conversion](https://github.com/khansazafiri-rgb/mpruy/actions/runs/42771848318) actually downloaded the official DBCLS archive and produced a review-only `Femur.l` GLB (3,204 triangles, 233,088 bytes, 1 official FJ element). The official ID crosswalk reported **470 exact name candidates among 2,237 currently retained MEDCOEL structures**, with **1,767 names not mapped**. The 470 name matches point to 554 distinct FJ files, all found in the archive. **None of those 470 have passed independent clinical shape/registration validation.**
+
+**Do not replace the 2,237 current structures with just 470 exact-name candidates.** That would be a functional regression; several structures also have different names, hierarchy and granularity in the official dataset. The existing UI must not be simplified to accommodate incomplete replacement data.
+
+The next non-destructive QC tool produces a three-dimensional raw-source preview and geometric measurements for a selected official candidate:
+
+```sh
+npm ci --prefix apps/4d-lab
+npm run audit:bodyparts3d -- --download
+npm run build:bodyparts3d-candidate -- --structure Femur.l
+npm run review:bodyparts3d-candidate -- --structure Femur.l
+cd local-data/licensing-quarantine/bp3d-candidates/Femur.l
+python3 -m http.server 4783
+# Open http://127.0.0.1:4783/review.html
+```
+
+The preview includes orbit/zoom, wireframe, original mesh counts, source-coordinate bounding boxes, SHA-256 lineage checks and bundled MIT-licensed Three.js source. This is **independent test output**, not a new MEDCOEL Anatomy UI or a website deployment. Geometry units and patient alignment are explicitly unverified, and the converter does not change `apps/anatomy/public/models` or `apps/4d-lab/public/data`. The GitHub candidate workflow uploads the preview and `geometry-review.json` as a temporary downloadable artifact.
+
 ## What must happen next before any replacement is approved
 
 1. Download and hash the exact official archive, review archive structure, and pin publisher release evidence.

@@ -7,6 +7,8 @@ on:
     paths:
       - licensing/tools/prepare-bodyparts3d-source.mjs
       - apps/4d-lab/tools/build-bp3d-candidate.mjs
+      - apps/4d-lab/tools/review-bp3d-candidate.mjs
+      - apps/4d-lab/test/bp3d-review.test.mjs
       - apps/4d-lab/test/bp3d-convert.test.mjs
       - .github/workflows/bodyparts3d-candidate.yml
   workflow_dispatch:
@@ -26,18 +28,19 @@ jobs:
       - name: Install 4D Lab conversion dependencies
         run: npm ci --prefix apps/4d-lab
       - name: Run OBJ to GLB conversion unit tests
-        run: node --test apps/4d-lab/test/bp3d-convert.test.mjs scripts/bodyparts3d-source.test.mjs
+        run: node --test apps/4d-lab/test/bp3d-convert.test.mjs apps/4d-lab/test/bp3d-review.test.mjs scripts/bodyparts3d-source.test.mjs
       - name: Download actual publisher dataset and identify original OBJ source meshes
         run: npm run audit:bodyparts3d -- --download
       - name: Convert official left femur to review-only GLB
         run: npm run build:bodyparts3d-candidate -- --structure Femur.l
+      - name: Produce local interactive raw-geometry preview and source QA metrics
+        run: npm run review:bodyparts3d-candidate -- --structure Femur.l
       - name: Upload geometry candidate for anatomical review
         uses: actions/upload-artifact@v4
         with:
           name: official-bp3d-femur-candidate-not-approved
           path: |
-            local-data/licensing-quarantine/bp3d-candidates/Femur.l/model.glb
-            local-data/licensing-quarantine/bp3d-candidates/Femur.l/lineage.json
+            local-data/licensing-quarantine/bp3d-candidates/Femur.l/**
           retention-days: 7
           if-no-files-found: error
       - name: Explain release status
@@ -46,3 +49,4 @@ jobs:
           echo '## Official BodyParts3D candidate (NOT approved for public release)' >> "$GITHUB_STEP_SUMMARY"
           echo 'Publisher GLB conversion is independent of Z-Anatomy mixed derivatives.' >> "$GITHUB_STEP_SUMMARY"
           echo 'Native coordinates have NOT been aligned to MEDCOEL patient; no public model, CT, USG or release gate was changed.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Download review artifact, serve its directory locally over HTTP, and open review.html to inspect the original source mesh with orbit/zoom/wireframe.' >> "$GITHUB_STEP_SUMMARY"
