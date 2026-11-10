@@ -231,32 +231,7 @@ function LandingContent() {
   const featured = ['Humerus.r', 'Ulna.r', 'Femur.r', 'Scapula.r'].map((id) => registry.byId.get(id)).filter(Boolean);
   return (
     <>
-      <section className="anatomy-hero">
-        <div className="anatomy-hero-copy">
-          <p className="library-eyebrow">PUSTAKA BELAJAR MEDCOEL</p>
-          <h1>Anatomi<br /><em>Manusia.</em></h1>
-          <p className="anatomy-hero-lead">Pahami tubuh,<br />satu struktur demi satu struktur.</p>
-          <p className="anatomy-hero-description">
-            Jelajahi struktur, hubungkan regio dan sistem, lalu uji pemahamanmu langsung pada atlas 3D.
-          </p>
-          <div className="anatomy-hero-actions">
-            <Link className="btn-primary" to="/anatomy/explore"><Box size={17} /> 3D · Atlas anatomi <ArrowRight size={16} /></Link>
-            <Link className="btn-secondary" to="/anatomy/live">4D · Live Lab USG &amp; CT</Link>
-          </div>
-          <div className="anatomy-hero-stats">
-            <span><strong>{count(registry.rows.length)}</strong>struktur</span>
-            <span><strong>{SYSTEMS.length}</strong>sistem</span>
-            <span><strong>{REGIONS.length}</strong>regio belajar</span>
-          </div>
-        </div>
-        <div className="anatomy-hero-art">
-          <span className="library-art-label">TUBUH MANUSIA / RUANG BELAJARMU</span>
-          <StructureThumbnail path={registry.previews.hero?.url} name="Anatomi otot dan rangka manusia" className="anatomy-hero-model" eager />
-          <span className="library-art-caption">Jelajahi. Hubungkan. Ingat.</span>
-        </div>
-      </section>
-
-      <AnatomySplit structureCount={count(registry.rows.length)} />
+      <AnatomySplit structureCount={count(registry.rows.length)} heroUrl={registry.previews.hero?.url} />
 
       <section className="library-search-section" aria-labelledby="anatomy-search-title">
         <div>
