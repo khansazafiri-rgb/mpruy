@@ -2,23 +2,85 @@
  "fps": 30,
  "bpm": 112,
  "total": 13.929,
- "_catatan": "Waktu keluaran dalam detik; 1 ketukan = 0,5357 dtk (112 BPM), setiap potongan jatuh pada ketukan. Rekaman: live = Perekaman Layar 23.55.23 (USG|CT + probe), aus = 23.58.43 (CT Efusi perikardial), mode = 23.59.44 (antarmuka Live 4D Lab penuh, CT Fungsi sistolik). t = detik awal pada rekaman; t3 = detik awal untuk pita pasien 3D (dari rekaman live). kind: usgct (panel USG dan CT berdampingan + pita 3D), sector (sektor CT + pita 3D), ui (judul aplikasi + antarmuka Live 4D Lab, tanpa pita 3D).",
- "sumber": {"live": "rec_23.55.23.mov", "aus": "rec_23.58.43.mov", "mode": "rec_23.59.44.mov"},
+ "_catatan": "Waktu keluaran dalam detik; 1 ketukan = 0,5357 dtk (112 BPM); potongan ke laptop jatuh pada awal bar ke-4 (6,4286 dtk). src = berkas rekaman ponsel (Drive); t = detik awal pada rekaman; crop = jendela 9:16 pada bingkai 2160x3840 (setelah rotasi otomatis) -> 1080x1920.",
+ "sumber": {
+  "meja": "20261111_231238.mp4",
+  "laptop": "20261111_231920.mp4"
+ },
+ "filter": "deflicker=s=5:m=am,hqdn3d=1.5:1.5:4:4,eq=gamma=1.15:brightness=0.012:contrast=1.04:saturation=1.0",
  "shots": [
-  {"at": 0.0,    "dur": 2.1429, "kind": "usgct",  "src": "live", "t": 6.1},
-  {"at": 2.1429, "dur": 1.0714, "kind": "usgct",  "src": "live", "t": 12.0},
-  {"at": 3.2143, "dur": 1.0714, "kind": "usgct",  "src": "live", "t": 14.0},
-  {"at": 4.2857, "dur": 1.0714, "kind": "sector", "sec": "F", "t": 5.0, "t3": 12.3},
-  {"at": 5.3571, "dur": 1.0714, "kind": "sector", "sec": "E", "t": 4.0, "t3": 14.3},
-  {"at": 6.4286, "dur": 7.5004, "kind": "ui", "src": "mode", "t": 5.0}
+  {
+   "at": 0.0,
+   "dur": 6.4286,
+   "src": "meja",
+   "t": 30.0,
+   "crop": [
+    0,
+    0,
+    2160,
+    3840
+   ]
+  },
+  {
+   "at": 6.4286,
+   "dur": 7.5004,
+   "src": "laptop",
+   "t": 10.0,
+   "crop": [
+    400,
+    823,
+    1500,
+    2667
+   ]
+  }
  ],
  "teks": [
-  {"id": "q",  "at": 0.25},
-  {"id": "a",  "at": 2.30},
-  {"id": "p1", "at": 6.50},
-  {"id": "p2", "at": 6.95},
-  {"id": "p3", "at": 7.60}
+  {
+   "id": "q",
+   "at": 0.25,
+   "until": 2.35
+  },
+  {
+   "id": "a",
+   "at": 2.45,
+   "until": 6.3
+  },
+  {
+   "id": "p1",
+   "at": 6.45
+  },
+  {
+   "id": "p2",
+   "at": 6.45
+  },
+  {
+   "id": "p3",
+   "at": 6.45
+  }
  ],
- "sfx": [[0.25, "pop"], [2.30, "pop"], [3.2143, "blip"], [4.2857, "blip"], [5.3571, "blip"], [6.50, "ting"], [6.95, "tick"], [7.60, "tick"]],
- "jeda": [5.80, 6.43]
+ "sfx": [
+  [
+   0.25,
+   "pop"
+  ],
+  [
+   2.45,
+   "pop"
+  ],
+  [
+   6.45,
+   "ting"
+  ]
+ ],
+ "jeda": [
+  5.8,
+  6.43
+ ],
+ "cover": {
+  "t": 3.0,
+  "teks": [
+   "q",
+   "a"
+  ]
+ }
 }

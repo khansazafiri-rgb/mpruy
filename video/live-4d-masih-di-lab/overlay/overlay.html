@@ -12,11 +12,11 @@ html,body{margin:0;background:transparent}#root{width:1080px;height:1920px;posit
 <script>
 const P = new URLSearchParams(location.search), k = P.get('k'), dy = +(P.get('dy') || 0), r = document.getElementById('root');
 const H = {
-  q:  ['top:225px;font-size:60px', 'Temen SMA: ‘Gas nongkrong?’'],
-  a:  ['top:1218px;font-size:66px', 'Aku: ‘Bentar, masih di lab.’'],
-  p1: ['top:1330px;font-size:62px', 'Lab-nya di laptop:'],
-  p2: ['top:1412px;font-size:52px', 'lagi ngulik simulasi USG &amp; CT gratis'],
-  p3: ['top:1498px;font-size:64px', 'di medcoel.com 🫠'],
+  q:  ['top:225px;font-size:62px', 'Temen SMA: ‘Gas nongkrong?’'],
+  a:  ['top:1250px;font-size:68px', 'Aku: ‘Bentar, masih di lab.’'],
+  p1: ['top:1320px;font-size:64px', 'Lab-nya di laptop:'],
+  p2: ['top:1405px;font-size:54px', 'lagi ngulik simulasi USG &amp; CT gratis'],
+  p3: ['top:1495px;font-size:66px', 'di medcoel.com 🫠'],
 };
 const [st, tx] = H[k]; const d = document.createElement('div'); d.className = 't';
 d.setAttribute('style', st.replace(/top:(\d+)px/, (m, v) => 'top:' + (+v + dy) + 'px')); d.innerHTML = tx; r.appendChild(d);
