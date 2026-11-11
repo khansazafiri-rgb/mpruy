@@ -92,6 +92,7 @@ class Clip:
             s.l = {'strip': lay(src, t, STRIP, STRIP_SZ), 'sec': lay(src, t, crop, SEC_SZ), 'd3': lay('live', c['t3'], D3, D3_SZ)}
         elif kd == 'ui':
             x, y, w, h = c['crop']; s.l = {'ui': lay(c['src'], c['t'], tuple(c['crop']), (1080, int(1080 * h / w)))}
+            if 'd3' in c: s.l['d3'] = lay('live', c['d3'], D3, D3_SZ)
         elif kd == 'uifull':
             s.l = {'ui': lay(c['src'], c['t'], (0, 0, 2816, 1582), (1620, 911))}
         s.klinis = kd not in ('uifull',)
@@ -109,6 +110,7 @@ class Clip:
             put(img, sec, 0, Y0 + 100); line(img, 1106, 4); put(img, l['d3'].get(k), 0, 1212); line(img, 1208, 4)
         elif kd == 'ui':
             a = l['ui'].get(k); hh = a.shape[0]; yy = Y0 + 40; put(img, a, 0, yy); line(img, yy - 4, 4); line(img, yy + hh, 4)
+            if 'd3' in l: put(img, l['d3'].get(k), 0, 1212); line(img, 1208, 4)
         elif kd == 'uifull':
             u = ease(k / (dur * FPS)); z = 1.0 + 0.30 * u; fr = l['ui'].get(k)
             im = Image.fromarray(fr); cw = int(1620 / z); ch = int(911 / z); ox = int((1620 - cw) * (0.30 + 0.45 * u)); oy = int((911 - ch) * 0.2)
