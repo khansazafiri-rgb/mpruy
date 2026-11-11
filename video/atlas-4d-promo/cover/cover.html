@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover Atlas 3D + Live 4D Lab</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<style>
+html,body{margin:0;background:#000}#root{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:radial-gradient(900px 700px at 25% 22%,#14515a 0,#0B2F38 55%,#061C24 100%)}
+.logo{position:absolute;left:60px;top:262px;width:312px;height:76px;border-radius:38px;background:#F8F7F3;border:3px solid #172B38;display:flex;align-items:center;justify-content:center}.logo img{height:50px}
+h1{position:absolute;left:60px;top:356px;margin:0;font-weight:800;font-size:74px;line-height:1.05;color:#F8F7F3;text-shadow:0 6px 0 #061C24}h1 b{color:#F8C038}
+.card{position:absolute;border-radius:34px;overflow:hidden;border:5px solid #F8C038;box-shadow:0 12px 0 rgba(2,16,20,.55);background:#000}.card img{display:block;width:100%;height:100%;object-fit:cover}
+.a{left:60px;top:690px;width:420px;height:560px}.b{left:500px;top:690px;width:420px;height:560px}.b img{object-position:35% 50%}
+.pill{position:absolute;font-weight:800;font-size:34px;color:#172B38;background:#F8C038;border:4px solid #172B38;border-radius:44px;padding:8px 26px;box-shadow:0 6px 0 rgba(2,16,20,.55);white-space:nowrap}
+.tag{position:absolute;left:84px;top:1196px;font-weight:700;font-size:24px;color:#F8F7F3;background:rgba(10,56,48,.92);border:2.5px solid #F8C038;border-radius:26px;padding:5px 16px;left:520px}
+.cta{position:absolute;left:60px;top:1290px;font-weight:800;font-size:42px;color:#172B38;background:#F8F7F3;border:4px solid #172B38;border-radius:50px;padding:12px 36px;box-shadow:0 7px 0 rgba(2,16,20,.55);white-space:nowrap}
+</style></head><body><div id="root">
+<div class="logo"><img src="../overlay/logo-full.webp"></div>
+<h1>LIHAT BENTUKNYA.<br><b>SAKSIKAN GERAKNYA.</b></h1>
+<div class="card a"><img src="atlas.jpg"></div><div class="pill" style="left:84px;top:1160px">ATLAS 3D</div>
+<div class="card b"><img src="heart.jpg"></div><div class="pill" style="left:524px;top:1160px">LIVE 4D LAB</div><div class="tag" style="top:716px;left:524px">Simulasi edukatif</div>
+<div class="cta">COBA GRATIS DI MEDCOEL.COM</div><div id="g"></div></div>
+<script>
+const q=new URLSearchParams(location.search);
+if(q.has('guide'))document.getElementById('g').innerHTML='<svg width="1080" height="1920" style="position:absolute;inset:0"><g fill="#FF0066" opacity=".16"><rect width="1080" height="250"/><rect y="1440" width="1080" height="480"/><rect x="940" y="250" width="140" height="1190"/></g><rect y="250" width="940" height="1190" fill="none" stroke="#FF0066" stroke-width="4" stroke-dasharray="14 10"/></svg>';
+document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.decode().catch(()=>{})))).then(()=>{window.__ready=true});
+</script></body></html>

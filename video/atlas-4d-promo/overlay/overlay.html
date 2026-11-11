@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Overlay Atlas + 4D</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<style>
+html,body{margin:0;background:transparent}#root{width:1080px;height:1920px;position:relative;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+.pill{position:absolute;left:50%;transform:translateX(-50%);top:262px;white-space:nowrap;font-weight:800;font-size:60px;color:#172B38;background:#F8C038;border:4px solid #172B38;border-radius:60px;box-shadow:0 8px 0 rgba(2,16,20,.55);padding:14px 40px}
+.chip{position:absolute;left:34px;top:1030px;font-weight:700;font-size:28px;color:#F8F7F3;background:rgba(10,56,48,.9);border:2.5px solid #F8C038;border-radius:30px;padding:8px 20px}
+.logo{position:absolute;left:50%;transform:translateX(-50%);top:560px;background:#F8F7F3;border:4px solid #172B38;border-radius:60px;width:560px;height:130px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 0 rgba(2,16,20,.5)}.logo img{height:86px}
+.big{position:absolute;left:0;right:0;text-align:center;font-weight:800;color:#F8F7F3;text-shadow:0 5px 0 #061C24,0 0 18px rgba(6,28,36,.8);line-height:1.05}.gold{color:#F8C038}
+.url{position:absolute;left:50%;transform:translateX(-50%);top:1060px;font-weight:800;font-size:62px;color:#172B38;background:#F8C038;border:4px solid #172B38;border-radius:60px;padding:14px 50px;box-shadow:0 8px 0 rgba(2,16,20,.55)}
+</style></head><body><div id="root"></div>
+<script>
+const q=new URLSearchParams(location.search),k=q.get('k'),r=document.getElementById('root');
+const P=(t)=>`<div class="pill">${t}</div>`;
+const H={atlas:P('ATLAS 3D'),live:P('LIVE 4D LAB'),materi:P('MATERI PER BAB'),latihan:P('LATIHAN SOAL'),sim:P('SIMULASI DOKTER'),
+ klinis:'<div class="chip">Simulasi edukatif, bukan alat diagnosis</div>',
+ outro:'<div class="logo"><img src="logo-full.webp"></div><div class="big" style="top:740px;font-size:90px">EKSPLORASI GRATIS</div><div class="big gold" style="top:860px;font-size:80px">DI MEDCOEL.COM</div><div class="url">medcoel.com</div>'};
+r.innerHTML=H[k];
+document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.decode().catch(()=>{})))).then(()=>{window.__ready=true});
+</script></body></html>

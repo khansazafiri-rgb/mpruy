@@ -1,0 +1,288 @@
+{
+ "fps": 30,
+ "total": 34.3,
+ "bpm": 104,
+ "_catatan": "src: r5324 (Atlas 3D), r5523 / r5944 (Live 4D Lab), web (klip web asli, urutan frame). layout: model | card | stack | full | phone. Crop dalam piksel sumber 2816x1582 (web: 1080x1800).",
+ "narasi": [
+  [
+   0.0,
+   "narator"
+  ]
+ ],
+ "shots": [
+  {
+   "at": 0.0,
+   "dur": 5.2,
+   "src": "r5324",
+   "t": 10.5,
+   "layout": "model",
+   "crop": [
+    850,
+    0,
+    1250,
+    1582
+   ]
+  },
+  {
+   "at": 5.2,
+   "dur": 3.2,
+   "src": "r5324",
+   "t": 28.0,
+   "layout": "model",
+   "crop": [
+    850,
+    0,
+    1250,
+    1582
+   ]
+  },
+  {
+   "at": 8.4,
+   "dur": 1.7,
+   "src": "r5324",
+   "t": 44.0,
+   "layout": "model",
+   "crop": [
+    850,
+    0,
+    1250,
+    1582
+   ]
+  },
+  {
+   "at": 10.1,
+   "dur": 1.9,
+   "src": "r5324",
+   "t": 48.6,
+   "layout": "full",
+   "crop": [
+    20,
+    180,
+    640,
+    880
+   ],
+   "y0": 380
+  },
+  {
+   "at": 12.0,
+   "dur": 1.5,
+   "src": "r5523",
+   "t": 0.3,
+   "layout": "full",
+   "crop": [
+    1380,
+    330,
+    1100,
+    1100
+   ]
+  },
+  {
+   "at": 13.5,
+   "dur": 1.4,
+   "src": "r5523",
+   "t": 2.7,
+   "layout": "stack",
+   "top": [
+    1690,
+    330,
+    1000,
+    833
+   ],
+   "bot": [
+    40,
+    690,
+    1100,
+    407
+   ],
+   "klinis": true
+  },
+  {
+   "at": 14.9,
+   "dur": 2.5,
+   "src": "r5523",
+   "t": 6.5,
+   "layout": "stack",
+   "top": [
+    1690,
+    330,
+    1000,
+    833
+   ],
+   "bot": [
+    40,
+    690,
+    1100,
+    407
+   ],
+   "klinis": true
+  },
+  {
+   "at": 17.4,
+   "dur": 1.6,
+   "src": "r5523",
+   "t": 146.0,
+   "layout": "stack",
+   "top": [
+    1816,
+    520,
+    768,
+    640
+   ],
+   "bot": [
+    40,
+    690,
+    1100,
+    407
+   ],
+   "klinis": true
+  },
+  {
+   "at": 19.0,
+   "dur": 2.6,
+   "src": "r5523",
+   "t": 135.0,
+   "layout": "stack",
+   "top": [
+    1580,
+    0,
+    1236,
+    1100
+   ],
+   "bot": [
+    40,
+    690,
+    1100,
+    407
+   ],
+   "klinis": true,
+   "speed": 1.5,
+   "crop": [
+    850,
+    0,
+    1250,
+    1582
+   ]
+  },
+  {
+   "at": 21.6,
+   "dur": 1.9,
+   "src": "r5324",
+   "t": 36.0,
+   "layout": "model",
+   "crop": [
+    1000,
+    0,
+    1100,
+    1582
+   ]
+  },
+  {
+   "at": 23.5,
+   "dur": 2.18,
+   "src": "r5523",
+   "t": 147.8,
+   "layout": "full",
+   "crop": [
+    1870,
+    300,
+    720,
+    853
+   ],
+   "klinis": true
+  },
+  {
+   "at": 25.68,
+   "dur": 2.72,
+   "web": "materi",
+   "f0": 50,
+   "layout": "phone",
+   "teks": "MATERI PER BAB"
+  },
+  {
+   "at": 28.4,
+   "dur": 1.5,
+   "web": "latihan",
+   "f0": 20,
+   "layout": "phone",
+   "teks": "LATIHAN SOAL"
+  },
+  {
+   "at": 29.9,
+   "dur": 1.6,
+   "web": "sim",
+   "f0": 70,
+   "layout": "phone",
+   "teks": "SIMULASI DOKTER"
+  }
+ ],
+ "outro": {
+  "at": 31.5,
+  "dur": 2.8
+ },
+ "sfx": [
+  [
+   2.0,
+   "ting"
+  ],
+  [
+   5.4,
+   "ting"
+  ],
+  [
+   7.6,
+   "blip"
+  ],
+  [
+   8.8,
+   "ting"
+  ],
+  [
+   10.2,
+   "ting"
+  ],
+  [
+   12.1,
+   "sparkle"
+  ],
+  [
+   14.9,
+   "blip"
+  ],
+  [
+   15.9,
+   "ting"
+  ],
+  [
+   17.5,
+   "blip"
+  ],
+  [
+   19.4,
+   "blip"
+  ],
+  [
+   20.3,
+   "ting"
+  ],
+  [
+   23.5,
+   "sparkle"
+  ],
+  [
+   25.7,
+   "blip"
+  ],
+  [
+   28.4,
+   "blip"
+  ],
+  [
+   29.9,
+   "blip"
+  ],
+  [
+   31.55,
+   "chime"
+  ]
+ ]
+}
