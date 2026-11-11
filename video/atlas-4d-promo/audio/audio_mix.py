@@ -1,4 +1,4 @@
-"""Mix video "Atlas 3D + Live 4D Lab": narasi Piper TTS (kalimat/*.wav) + musik + efek bunyi. Musik dan efek disintesis 100% dari kode (numpy); tidak ada sampel/musik pihak ketiga.
+"""Mix video "Atlas 3D + Live 4D Lab": narasi dari pengguna (narator.wav, Gemini TTS; tidak diubah kecepatan/isinya) + musik + efek bunyi. Musik dan efek disintesis 100% dari kode (numpy); tidak ada sampel/musik pihak ketiga.
 Judul: "MEDCOEL Atlas Pulse" (musik) dan "MEDCOEL UI Pings" (efek). Penulis: dibuat untuk MEDCOEL dalam sesi ini. Lisensi: CC0 1.0 (domain publik), bebas dipakai komersial/Instagram tanpa atribusi.
 Pemakaian:  python3 video/atlas-4d-promo/audio/audio_mix.py   -> mix.wav (44,1 kHz mono), music.wav, sfx.wav. Waktu efek dibaca dari ../edl.json."""
 import os, json, wave
@@ -87,7 +87,7 @@ def load(p):
     return np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768
 voice = np.zeros(N)
 for tx, k in edl['narasi']:
-    v = load(os.path.join(HERE, 'kalimat', k + '.wav')); v = v * np.minimum(1, np.arange(len(v)) / (0.01 * sr)) * np.minimum(1, (len(v) - np.arange(len(v))) / (0.03 * sr)); add(voice, tx, v)
+    v = load(os.path.join(HERE, k + '.wav')); v = v * np.minimum(1, np.arange(len(v)) / (0.01 * sr)) * np.minimum(1, (len(v) - np.arange(len(v))) / (0.03 * sr)); add(voice, tx, v)
 # ducking musik di bawah suara
 venv = lp(np.abs(voice), int(0.08 * sr)); venv = venv / (np.percentile(venv, 98) + 1e-6)
 mus *= 1 - 0.7 * np.clip(lp((venv > 0.1).astype(np.float32), int(0.25 * sr)), 0, 1)

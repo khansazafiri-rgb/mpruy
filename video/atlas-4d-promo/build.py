@@ -32,7 +32,7 @@ def main():
     lst = os.path.join(OUT, 'list.txt'); open(lst, 'w').write(''.join(f"file '{p}'\n" for p in outs))
     run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', lst, '-c', 'copy', os.path.join(OUT, 'tanpa-overlay.mp4')])
 def final():
-    ov = os.path.join(HERE, 'overlay'); items = [('atlas', 6.4, 14.2), ('live', 14.5, 23.9), ('atlas', 23.9, 25.7), ('live', 25.7, 28.0), ('materi', 28.1, 30.1), ('latihan', 30.1, 32.2), ('sim', 32.2, 34.4), ('outro', edl['outro']['at'] + 0.15, T)]
+    ov = os.path.join(HERE, 'overlay'); items = [('atlas', 5.2, 11.9), ('live', 12.3, 21.6), ('atlas', 21.6, 23.5), ('live', 23.5, 25.6), ('materi', 25.7, 28.4), ('latihan', 28.4, 29.9), ('sim', 29.9, 31.5), ('outro', edl['outro']['at'] + 0.15, T)]
     for s in edl['shots']:
         if s.get('klinis'): items.append(('klinis', s['at'] + 0.1, s['at'] + s['dur']))
     cmd = ['ffmpeg', '-v', 'error', '-y', '-i', os.path.join(OUT, 'tanpa-overlay.mp4')]

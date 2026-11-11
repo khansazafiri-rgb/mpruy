@@ -1,4 +1,4 @@
 shots/
 rekam/web/
 audio/*.wav
-audio/kalimat/
+!audio/narator.wav

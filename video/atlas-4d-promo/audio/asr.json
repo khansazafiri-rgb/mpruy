@@ -1,0 +1,405 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 4.5,
+   "text": "Pernah lihat anatomi digambar, tapi masih susah membayangkan posisi strukturnya.",
+   "words": [
+    {
+     "w": "Pernah",
+     "s": 0.0,
+     "e": 0.48
+    },
+    {
+     "w": "lihat",
+     "s": 0.48,
+     "e": 0.7
+    },
+    {
+     "w": "anatomi",
+     "s": 0.7,
+     "e": 1.18
+    },
+    {
+     "w": "digambar,",
+     "s": 1.18,
+     "e": 1.94
+    },
+    {
+     "w": "tapi",
+     "s": 2.08,
+     "e": 2.3
+    },
+    {
+     "w": "masih",
+     "s": 2.3,
+     "e": 2.52
+    },
+    {
+     "w": "susah",
+     "s": 2.52,
+     "e": 2.96
+    },
+    {
+     "w": "membayangkan",
+     "s": 2.96,
+     "e": 3.54
+    },
+    {
+     "w": "posisi",
+     "s": 3.54,
+     "e": 3.88
+    },
+    {
+     "w": "strukturnya.",
+     "s": 3.88,
+     "e": 4.5
+    }
+   ]
+  },
+  {
+   "start": 5.2,
+   "end": 9.52,
+   "text": "Di Atlas 3D Mad Coal, kamu bisa memutar tubuh, membuka lapisan,",
+   "words": [
+    {
+     "w": "Di",
+     "s": 5.2,
+     "e": 5.54
+    },
+    {
+     "w": "Atlas",
+     "s": 5.54,
+     "e": 5.78
+    },
+    {
+     "w": "3D",
+     "s": 5.78,
+     "e": 6.2
+    },
+    {
+     "w": "Mad",
+     "s": 6.2,
+     "e": 6.4
+    },
+    {
+     "w": "Coal,",
+     "s": 6.4,
+     "e": 6.82
+    },
+    {
+     "w": "kamu",
+     "s": 6.96,
+     "e": 7.12
+    },
+    {
+     "w": "bisa",
+     "s": 7.12,
+     "e": 7.38
+    },
+    {
+     "w": "memutar",
+     "s": 7.38,
+     "e": 7.74
+    },
+    {
+     "w": "tubuh,",
+     "s": 7.74,
+     "e": 8.34
+    },
+    {
+     "w": "membuka",
+     "s": 8.74,
+     "e": 9.0
+    },
+    {
+     "w": "lapisan,",
+     "s": 9.0,
+     "e": 9.52
+    }
+   ]
+  },
+  {
+   "start": 10.06,
+   "end": 11.86,
+   "text": "mencari struktur dan melihat keterangannya.",
+   "words": [
+    {
+     "w": "mencari",
+     "s": 10.06,
+     "e": 10.32
+    },
+    {
+     "w": "struktur",
+     "s": 10.32,
+     "e": 10.8
+    },
+    {
+     "w": "dan",
+     "s": 10.8,
+     "e": 11.12
+    },
+    {
+     "w": "melihat",
+     "s": 11.12,
+     "e": 11.38
+    },
+    {
+     "w": "keterangannya.",
+     "s": 11.38,
+     "e": 11.86
+    }
+   ]
+  },
+  {
+   "start": 12.46,
+   "end": 14.84,
+   "text": "Lalu masuk ke Live 4D Lab.",
+   "words": [
+    {
+     "w": "Lalu",
+     "s": 12.46,
+     "e": 13.16
+    },
+    {
+     "w": "masuk",
+     "s": 13.16,
+     "e": 13.52
+    },
+    {
+     "w": "ke",
+     "s": 13.52,
+     "e": 13.74
+    },
+    {
+     "w": "Live",
+     "s": 13.74,
+     "e": 14.0
+    },
+    {
+     "w": "4D",
+     "s": 14.0,
+     "e": 14.56
+    },
+    {
+     "w": "Lab.",
+     "s": 14.56,
+     "e": 14.84
+    }
+   ]
+  },
+  {
+   "start": 15.36,
+   "end": 20.68,
+   "text": "Gerakan probe, amati simulasi USG dan CT serta bandingkan skenario yang tersedia.",
+   "words": [
+    {
+     "w": "Gerakan",
+     "s": 15.36,
+     "e": 15.72
+    },
+    {
+     "w": "probe,",
+     "s": 15.72,
+     "e": 16.08
+    },
+    {
+     "w": "amati",
+     "s": 16.54,
+     "e": 16.84
+    },
+    {
+     "w": "simulasi",
+     "s": 16.84,
+     "e": 17.32
+    },
+    {
+     "w": "USG",
+     "s": 17.32,
+     "e": 17.94
+    },
+    {
+     "w": "dan",
+     "s": 17.94,
+     "e": 18.18
+    },
+    {
+     "w": "CT",
+     "s": 18.18,
+     "e": 18.48
+    },
+    {
+     "w": "serta",
+     "s": 18.48,
+     "e": 19.22
+    },
+    {
+     "w": "bandingkan",
+     "s": 19.22,
+     "e": 19.72
+    },
+    {
+     "w": "skenario",
+     "s": 19.72,
+     "e": 20.12
+    },
+    {
+     "w": "yang",
+     "s": 20.12,
+     "e": 20.34
+    },
+    {
+     "w": "tersedia.",
+     "s": 20.34,
+     "e": 20.68
+    }
+   ]
+  },
+  {
+   "start": 21.6,
+   "end": 24.82,
+   "text": "Jadi, kamu bisa melihat bentuknya, lalu menyaksikan geraknya.",
+   "words": [
+    {
+     "w": "Jadi,",
+     "s": 21.6,
+     "e": 21.98
+    },
+    {
+     "w": "kamu",
+     "s": 22.16,
+     "e": 22.34
+    },
+    {
+     "w": "bisa",
+     "s": 22.34,
+     "e": 22.56
+    },
+    {
+     "w": "melihat",
+     "s": 22.56,
+     "e": 22.84
+    },
+    {
+     "w": "bentuknya,",
+     "s": 22.84,
+     "e": 23.38
+    },
+    {
+     "w": "lalu",
+     "s": 23.74,
+     "e": 23.94
+    },
+    {
+     "w": "menyaksikan",
+     "s": 23.94,
+     "e": 24.38
+    },
+    {
+     "w": "geraknya.",
+     "s": 24.38,
+     "e": 24.82
+    }
+   ]
+  },
+  {
+   "start": 25.68,
+   "end": 30.98,
+   "text": "Belajarnya juga bisa lanjut lewat materi perbab, latihan soal, dan simulasi dokter.",
+   "words": [
+    {
+     "w": "Belajarnya",
+     "s": 25.68,
+     "e": 26.44
+    },
+    {
+     "w": "juga",
+     "s": 26.44,
+     "e": 26.78
+    },
+    {
+     "w": "bisa",
+     "s": 26.78,
+     "e": 27.0
+    },
+    {
+     "w": "lanjut",
+     "s": 27.0,
+     "e": 27.38
+    },
+    {
+     "w": "lewat",
+     "s": 27.38,
+     "e": 27.7
+    },
+    {
+     "w": "materi",
+     "s": 27.7,
+     "e": 28.14
+    },
+    {
+     "w": "perbab,",
+     "s": 28.14,
+     "e": 28.6
+    },
+    {
+     "w": "latihan",
+     "s": 28.92,
+     "e": 29.3
+    },
+    {
+     "w": "soal,",
+     "s": 29.3,
+     "e": 29.7
+    },
+    {
+     "w": "dan",
+     "s": 30.0,
+     "e": 30.06
+    },
+    {
+     "w": "simulasi",
+     "s": 30.06,
+     "e": 30.6
+    },
+    {
+     "w": "dokter.",
+     "s": 30.6,
+     "e": 30.98
+    }
+   ]
+  },
+  {
+   "start": 31.58,
+   "end": 33.7,
+   "text": "Explorasi gratis di MedColl.com",
+   "words": [
+    {
+     "w": "Explorasi",
+     "s": 31.58,
+     "e": 32.34
+    },
+    {
+     "w": "gratis",
+     "s": 32.34,
+     "e": 32.7
+    },
+    {
+     "w": "di",
+     "s": 32.7,
+     "e": 32.86
+    },
+    {
+     "w": "MedColl",
+     "s": 32.86,
+     "e": 33.32
+    },
+    {
+     "w": ".com",
+     "s": 33.32,
+     "e": 33.7
+    }
+   ]
+  }
+ ]
+}
