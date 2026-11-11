@@ -52,3 +52,17 @@ python3 video/live-4d-fitur-baru/build.py <folder-rekaman> --still 0.4 # satu bi
 node video/live-4d-fitur-baru/cover/render-cover.cjs                   # cover.png dan panduan area aman (bingkai sumber: cover/*.jpg)
 ```
 Mengubah isi video: edit `edl.json` (shot, klip dengan `kind`/`t`/`crop`, jendela teks `teks`, dan daftar `sfx`). Crop dan ukuran panel ada di bagian atas `build.py`; teks layar di `overlay/overlay.html`.
+
+## Hasil pemeriksaan (MP4 akhir)
+- ffprobe: H.264 1080 x 1920, 30 fps, 17,42 dtk, AAC; sekitar -16 LUFS terintegrasi, puncak sampel -0,7 dBTP (alimiter + loudnorm).
+- Bingkai pertama sudah bergerak: probe dan citra USG/CT tampil sejak bingkai 0; teks "FITUR BARU TERBUKA" sudah penuh di bingkai 0; bunyi "unlock" jatuh di 0,05 dtk bersama kick dan sapuan emas gembok.
+- Seluruh rekaman diperiksa dengan lembar kontak 3 bingkai per detik dan lembar 360 px (`still/lembar-360px.png`, `still/awal-tengah-akhir-360px.png`, `still/cover-vs-bingkai-awal-360px.png`). Klip yang mulanya menampilkan "Citra belum tersedia" (probe di luar jangkauan data) sudah diganti klip yang berisi citra USG dan CT.
+- Lompatan antarbingkai terbesar jatuh tepat pada potongan ketukan (1,9; 3,87; 5,8; 6,77; 7,74; 8,7; 9,68; 10,64; 11,6; 12,57; 13,5; 15,4 dtk), sesuai rencana.
+- Hanya fitur 4D yang tampil; tidak ada Atlas 3D. "SUDAH BISA DICOBA GRATIS" dan "MEDCOEL.COM" terbaca pada ukuran 360 px.
+
+## Kekurangan yang diketahui
+- Video belum ditonton dengan suara menyala di ponsel; pemeriksaan visual lewat bingkai dan lembar kontak, pemeriksaan bunyi lewat pengukuran level.
+- Gambar USG pada rekaman asli gelap dan kasar, dan di beberapa klip probe citra CT hanya sebagian (probe berada di tepi data). Itu perilaku asli simulator, tidak dipercantik.
+- Adegan antarmuka utuh (13,5-15,4 dtk) tetap kecil di layar ponsel karena memang menampilkan halaman penuh; teksnya tidak dimaksudkan untuk dibaca, hanya menunjukkan bahwa semuanya ada dalam satu halaman.
+- Potongan berasal dari beberapa pengambilan rekaman terpisah (Normal, Efusi perikardial, Fungsi sistolik); tidak ada klik langsung Normal ke Efusi yang terekam, jadi perpindahan skenario disusun sebagai potongan, bukan satu rekaman utuh.
+- Musik dan efek disintesis sederhana (lihat bagian lisensi); trek berlisensi dari studio dapat menggantikannya.
