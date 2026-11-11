@@ -1,0 +1,86 @@
+{
+ "fps": 30,
+ "bpm": 112,
+ "total": 13.929,
+ "_catatan": "Waktu keluaran dalam detik; 1 ketukan = 0,5357 dtk (112 BPM); potongan ke laptop jatuh pada awal bar ke-4 (6,4286 dtk). src = berkas rekaman ponsel (Drive); t = detik awal pada rekaman; crop = jendela 9:16 pada bingkai 2160x3840 (setelah rotasi otomatis) -> 1080x1920.",
+ "sumber": {
+  "meja": "20261111_231238.mp4",
+  "laptop": "20261111_231920.mp4"
+ },
+ "filter": "deflicker=s=5:m=am,hqdn3d=1.5:1.5:4:4,eq=gamma=1.15:brightness=0.012:contrast=1.04:saturation=1.0",
+ "shots": [
+  {
+   "at": 0.0,
+   "dur": 6.4286,
+   "src": "meja",
+   "t": 30.0,
+   "crop": [
+    0,
+    0,
+    2160,
+    3840
+   ]
+  },
+  {
+   "at": 6.4286,
+   "dur": 7.5004,
+   "src": "laptop",
+   "t": 10.0,
+   "crop": [
+    400,
+    823,
+    1500,
+    2667
+   ]
+  }
+ ],
+ "teks": [
+  {
+   "id": "q",
+   "at": 0.25,
+   "until": 2.35
+  },
+  {
+   "id": "a",
+   "at": 2.45,
+   "until": 6.3
+  },
+  {
+   "id": "p1",
+   "at": 6.45
+  },
+  {
+   "id": "p2",
+   "at": 6.45
+  },
+  {
+   "id": "p3",
+   "at": 6.45
+  }
+ ],
+ "sfx": [
+  [
+   0.25,
+   "pop"
+  ],
+  [
+   2.45,
+   "pop"
+  ],
+  [
+   6.45,
+   "ting"
+  ]
+ ],
+ "jeda": [
+  5.8,
+  6.43
+ ],
+ "cover": {
+  "t": 3.0,
+  "teks": [
+   "q",
+   "a"
+  ]
+ }
+}
