@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover POV Live 4D Lab</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<style>
+html,body{margin:0;background:#000}#root{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:'Plus Jakarta Sans','Noto Color Emoji',system-ui,sans-serif;background:#050b0f}
+.full{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.t{position:absolute;left:60px;width:860px;text-align:center;font-weight:800;color:#fff;-webkit-text-stroke:11px #000;paint-order:stroke fill;stroke-linejoin:round;line-height:1.05;white-space:nowrap;text-shadow:0 4px 0 #000}
+.logo{position:absolute;left:60px;top:1470px;display:none}
+</style></head><body><div id="root">
+<img class="full" src="bg.jpg">
+<div class="t" style="top:248px;font-size:58px">INDONESIAN MED STUDENTS,</div><div class="t" style="top:324px;font-size:58px">STOP SCROLLING‼️</div>
+<div class="t" style="top:1290px;font-size:44px">Baru nemu web belajar FK GRATIS…</div>
+<div class="t" style="top:1346px;font-size:44px">alat USG-nya bisa digerakin,</div>
+<div class="t" style="top:1402px;font-size:44px">simulasi CT-nya bisa dieksplor sendiri 😭</div>
+<div id="g"></div></div>
+<script>
+const q=new URLSearchParams(location.search);
+if(q.has('guide'))document.getElementById('g').innerHTML='<svg width="1080" height="1920" style="position:absolute;inset:0"><g fill="#FF0066" opacity=".18"><rect width="1080" height="250"/><rect y="1440" width="1080" height="480"/><rect x="940" y="250" width="140" height="1190"/></g><rect y="250" width="940" height="1190" fill="none" stroke="#FF0066" stroke-width="4" stroke-dasharray="14 10"/></svg>';
+document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.decode().catch(()=>{})))).then(()=>{window.__ready=true});
+</script></body></html>
