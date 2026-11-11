@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Teks POV</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<style>
+html,body{margin:0;background:transparent}#root{width:1080px;height:1920px;position:relative;font-family:'Plus Jakarta Sans','Noto Color Emoji',system-ui,sans-serif}
+/* teks gaya Reel POV: putih tebal, garis tepi hitam, tanpa kotak/latar */
+.t{position:absolute;left:60px;width:860px;text-align:center;font-weight:800;color:#fff;-webkit-text-stroke:11px #000;paint-order:stroke fill;stroke-linejoin:round;letter-spacing:.2px;line-height:1.05;white-space:nowrap;text-shadow:0 4px 0 #000}
+.o{font-size:58px}.e{font-size:44px}.c{font-size:44px}.u{font-size:84px;color:#fff}
+</style></head><body><div id="root"></div>
+<script>
+const q=new URLSearchParams(location.search),k=q.get('k'),r=document.getElementById('root');
+const L={
+ o1:'<div class="t o" style="top:248px">INDONESIAN MED STUDENTS,</div>',
+ o2:'<div class="t o" style="top:324px">STOP SCROLLING‼️</div>',
+ e1:'<div class="t e" style="top:1290px">Baru nemu web belajar FK GRATIS…</div>',
+ e2:'<div class="t e" style="top:1346px">alat USG-nya bisa digerakin,</div>',
+ e3:'<div class="t e" style="top:1402px">simulasi CT-nya bisa dieksplor sendiri 😭</div>',
+ c1:'<div class="t c" style="top:1290px">Plus 38.000+ soal &amp; catatan materi.</div>',
+ c2:'<div class="t u" style="top:1352px">medcoel.com</div>'};
+r.innerHTML=L[k];
+document.fonts.ready.then(()=>{window.__ready=true});
+</script></body></html>
