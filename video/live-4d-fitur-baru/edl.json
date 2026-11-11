@@ -1,0 +1,227 @@
+{
+ "fps": 30,
+ "bpm": 124,
+ "bar": 1.93548,
+ "total": 17.42,
+ "_catatan": "Waktu keluaran dalam detik; 1 bar = 4 ketukan = 1,935 dtk pada 124 BPM, setiap potongan jatuh pada ketukan. Rekaman: live = Perekaman Layar 23.55.23 (Live 4D Lab, 185,7 dtk), aus = 23.58.43 (CT skenario Efusi perikardial), mode = 23.59.44 (panel skenario/Patologi). t = detik awal pada rekaman. kind: usgct (bilah skenario + USG|CT + model 3D), zoom (zoom jantung CT + model 3D), sector (bilah skenario + sektor CT + model 3D; sec: N Normal, E Efusi, F Fungsi sistolik), ui (potongan antarmuka asli), uifull (antarmuka utuh, zoom pelan), outro. Sorotan emas dan ikon gembok = grafis tambahan, bukan bagian rekaman.",
+ "sumber": {
+  "live": "rec_23.55.23.mov",
+  "aus": "rec_23.58.43.mov",
+  "mode": "rec_23.59.44.mov"
+ },
+ "shots": [
+  {
+   "at": 0.0,
+   "dur": 1.93548,
+   "label": "unlock",
+   "clips": [
+    {
+     "dur": 1.93548,
+     "kind": "usgct",
+     "src": "live",
+     "t": 6.2
+    }
+   ]
+  },
+  {
+   "at": 1.93548,
+   "dur": 1.93548,
+   "label": "live4d",
+   "clips": [
+    {
+     "dur": 1.93548,
+     "kind": "zoom",
+     "t": 4.2,
+     "t3": 4.2
+    }
+   ]
+  },
+  {
+   "at": 3.87096,
+   "dur": 1.93548,
+   "label": "live4d",
+   "clips": [
+    {
+     "dur": 1.93548,
+     "kind": "usgct",
+     "src": "live",
+     "t": 4.4
+    }
+   ]
+  },
+  {
+   "at": 5.80644,
+   "dur": 3.87096,
+   "label": "probe",
+   "clips": [
+    {
+     "dur": 0.96774,
+     "kind": "usgct",
+     "src": "live",
+     "t": 6.9
+    },
+    {
+     "dur": 0.96774,
+     "kind": "usgct",
+     "src": "live",
+     "t": 12.0
+    },
+    {
+     "dur": 0.96774,
+     "kind": "usgct",
+     "src": "live",
+     "t": 13.2
+    },
+    {
+     "dur": 0.96774,
+     "kind": "usgct",
+     "src": "live",
+     "t": 14.4
+    }
+   ]
+  },
+  {
+   "at": 9.6774,
+   "dur": 3.87096,
+   "label": "skenario",
+   "clips": [
+    {
+     "dur": 0.96774,
+     "kind": "ui",
+     "src": "live",
+     "t": 133.6,
+     "crop": [
+      1740,
+      0,
+      640,
+      360
+     ],
+     "d3": 133.6
+    },
+    {
+     "dur": 0.96774,
+     "kind": "sector",
+     "sec": "E",
+     "aus": 4.0,
+     "t3": 142.0
+    },
+    {
+     "dur": 0.96774,
+     "kind": "ui",
+     "src": "mode",
+     "t": 2.15,
+     "crop": [
+      0,
+      165,
+      700,
+      470
+     ]
+    },
+    {
+     "dur": 0.96774,
+     "kind": "sector",
+     "sec": "F",
+     "mode": 3.1,
+     "t3": 136.2
+    }
+   ]
+  },
+  {
+   "at": 13.54836,
+   "dur": 1.93548,
+   "label": "uifull",
+   "clips": [
+    {
+     "dur": 1.93548,
+     "kind": "uifull",
+     "src": "live",
+     "t": 146.0
+    }
+   ]
+  }
+ ],
+ "teks": [
+  [
+   "unlock",
+   0.0,
+   1.93548
+  ],
+  [
+   "live4d",
+   1.93548,
+   5.80644
+  ],
+  [
+   "probe",
+   5.80644,
+   9.6774
+  ],
+  [
+   "skenario",
+   9.6774,
+   13.54836
+  ]
+ ],
+ "outro": {
+  "at": 15.48384,
+  "dur": 1.93616
+ },
+ "sfx": [
+  [
+   0.05,
+   "unlock"
+  ],
+  [
+   1.93548,
+   "blip"
+  ],
+  [
+   3.87096,
+   "blip"
+  ],
+  [
+   5.80644,
+   "blip"
+  ],
+  [
+   6.77418,
+   "blip"
+  ],
+  [
+   7.74192,
+   "blip"
+  ],
+  [
+   8.70966,
+   "blip"
+  ],
+  [
+   9.6774,
+   "blip"
+  ],
+  [
+   10.64514,
+   "blip"
+  ],
+  [
+   11.61288,
+   "blip"
+  ],
+  [
+   12.58062,
+   "blip"
+  ],
+  [
+   13.54836,
+   "blip"
+  ],
+  [
+   15.48384,
+   "sparkle"
+  ],
+  [
+   15.9,
+   "chime"
+  ]
+ ]
+}
