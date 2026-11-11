@@ -36,6 +36,8 @@ const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
   const cen = async (loc) => { const bb = await loc.first().boundingBox(); if (!bb) throw new Error('elemen tidak ketemu'); return [bb.x + bb.width / 2, bb.y + bb.height / 2]; };
   const tap = async (loc, k = 12, wait = 8) => { const [x, y] = await cen(loc); await moveTo(x, y, k); await clickAt(x, y, wait); };
   const scrollBy = async (dy, k) => { await p.mouse.move(cx, cy); for (let i = 0; i < k; i++) { await p.mouse.wheel(0, dy / k); await frame(); } };
+  const scrollEase = async (dy, k) => { await p.mouse.move(cx, cy); let prev = 0; for (let i = 1; i <= k; i++) { const e = ease(i / k) * dy; await p.mouse.wheel(0, e - prev); prev = e; await frame(); } };
+  const imgReady = () => p.waitForFunction(() => { const im = [...document.images].filter((i) => i.src.includes('googleusercontent') && i.getBoundingClientRect().top < 900 && i.getBoundingClientRect().bottom > 0); return im.every((i) => i.complete && i.naturalWidth > 0); }, null, { timeout: 8000 }).catch(() => console.log('gambar belum siap'));
   const start = async (name) => { dir = path.join(OUT, name); fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir, { recursive: true }); n = 0; };
   const goto = async (url) => { await p.goto('http://127.0.0.1:3000' + url, { waitUntil: 'networkidle' }); await p.waitForTimeout(900); };
   const want = (k) => !ONLY.length || ONLY.includes(k);
@@ -70,21 +72,24 @@ const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
     await tap(row(), 14, 10); await p.waitForSelector('.choice-card'); await hold(18);
     console.log('bab', n);
   }
-  // ---- 3. materi per BAB
+  // ---- 3. materi per BAB: dialog langkah -> Belajar materi -> judul + Tujuan Belajar -> gulir pelan sampai GAMBAR bertajuk "Gambar 1" -> bagian berikutnya
   if (want('materi')) {
     await start('materi'); await goto('/mata-kuliah/anatomi'); await toRow(); cx = 420; cy = 760;
-    await hold(4); await tap(row(), 12, 8); await p.waitForSelector('.choice-card'); await hold(6);
-    await tap(p.locator('.choice-card').nth(0), 12, 10); await p.waitForTimeout(1100); await hold(12);
-    await scrollBy(420, 36); await hold(8); await scrollBy(420, 36); await hold(6);
+    await hold(4); await tap(row(), 12, 8); await p.waitForSelector('.choice-card'); await hold(6); console.log('materi dialog @', n);
+    await tap(p.locator('.choice-card').nth(0), 12, 10); await p.waitForTimeout(1300); await hold(22); console.log('materi halaman @', n);
+    await scrollEase(1500, 66); await p.waitForTimeout(500); await imgReady(); await hold(8); await scrollEase(240, 24); await imgReady(); console.log('materi gambar @', n); await hold(44);
+    await scrollEase(600, 36); await hold(16);
     console.log('materi', n);
   }
-  // ---- flashcard: BAB -> Flashcard -> balik kartu -> Hafal
+  // ---- flashcard: BAB -> Flashcard -> tiga kartu (balik kartu -> Hafal)
   if (want('flash')) {
     await start('flash'); await goto('/mata-kuliah/anatomi'); await toRow(); cx = 420; cy = 760;
-    await hold(3); await tap(row(), 12, 8); await p.waitForSelector('.choice-card'); await hold(4);
-    await tap(p.locator('.choice-card').nth(1), 12, 10); await p.waitForTimeout(1100); await hold(10);
-    const flip = p.locator('text=Ketuk untuk melihat jawaban'); if (await flip.count()) { await tap(flip, 12, 16); await hold(10); }
-    const hafal = p.getByRole('button', { name: 'Hafal', exact: true }); if (await hafal.count()) { await tap(hafal, 10, 10); await hold(12); }
+    await hold(3); await tap(row(), 12, 8); await p.waitForSelector('.choice-card'); await hold(6); console.log('flash dialog @', n);
+    await tap(p.locator('.choice-card').nth(1), 12, 10); await p.waitForTimeout(1300); await hold(24); console.log('flash halaman @', n);
+    for (let c = 0; c < 3; c++) {
+      const flip = p.locator('text=Ketuk untuk melihat jawaban'); await flip.first().waitFor({ timeout: 6000 }); await tap(flip, 12, 14); await hold(c === 0 ? 34 : 26); console.log('flash kartu', c, 'terbalik @', n);
+      const hafal = p.getByRole('button', { name: 'Hafal', exact: true }); await tap(hafal, 10, 10); await p.waitForTimeout(500); await hold(c < 2 ? 18 : 12);
+    }
     console.log('flash', n);
   }
   // ---- 4. latihan soal dari BAB yang sama: dialog "Siapkan sesi belajarmu" (Mode Learning terpilih)

@@ -1,4 +1,4 @@
-# Level Up — video promosi MEDCOEL bergaya pixel (40 dtk, 1080×1920, 30 fps)
+# Level Up — video promosi MEDCOEL bergaya pixel (47,8 dtk, 1080×1920, 30 fps)
 
 Video vertikal tanpa narator/dialog/TTS. Kori (maskot MEDCOEL asli) berada di dunia pixel: 13 blok BAB jatuh membentuk tembok, tiga lompatan gagal, lalu menemukan MEDCOEL, memilih satu BAB di web asli, dan "LEVEL UP". Di akhir tembok berubah menjadi tangga dan Kori mulai dari BAB 1.
 
@@ -11,18 +11,23 @@ Hasil: `medcoel-level-up.mp4` (H.264 + AAC, loudnorm ≈ −14 LUFS). Cover: `co
 | 3–9 | Tiga lompatan gagal (BONK!); ENERGI turun; musik tersendat | 13 BAB. LOMPAT SEKALIGUS? / NYANGKUT. / ULANG LAGI... |
 | 9–14 | Layar meredup, Kori lemas; sebuah "save point" berisi laptop MEDCOEL muncul lewat disolve pixel | MULAI DARI MANA? |
 | 14–18 | Kori bangkit; kamera zoom ke layar, transisi blok pixel ke web | (tombol) COBA MEDCOEL |
-| 18–29 | Rekaman web ASLI: pilih satu BAB → materi → flashcard → latihan soal → pembahasan saat belum tepat (Nilo "Coba lagi, yuk!", lalu Kila "Mulai nyambung!"); bilah PAHAM terisi | PILIH SATU BAB. / MATERI → FLASHCARD → LATIHAN / SALAH? LIHAT PEMBAHASANNYA. |
-| 28,8 | LEVEL UP: LV 1 → LV 2, BAB 1/13, ENERGI penuh | LEVEL UP! |
-| 29–33 | Bonus stage: Atlas 3D dan Live 4D Lab (label "Simulasi edukatif") | ANATOMI? JELAJAHI 3D & LIVE 4D LAB. |
-| 33–40 | Kembali ke dunia pixel: tembok menjadi tangga, BAB 1 emas, Kori melompat ke anak tangga pertama | SATU BAB DULU. / MEDCOEL GRATIS DI medcoel.com |
+| 18–21 | Web ASLI: daftar mata kuliah → pilih satu BAB | PILIH SATU BAB. |
+| 21–26,4 | Materi: halaman terbuka, gulir pelan sampai gambar "Gambar 1" terlihat jelas (±1,8 dtk), lalu bagian berikutnya | MATERI LENGKAP, ADA GAMBAR. |
+| 26,4–31,8 | Flashcard: tiga kartu (depan → balik → Hafal) | FLASHCARD: BALIK KARTU, TANDAI HAFAL. |
+| 31,8–36,8 | Latihan soal: mulai, jawab (salah), Cek jawaban, pembahasan (Nilo "Coba lagi, yuk!", lalu Kila "Mulai nyambung!") | LATIHAN. SALAH? LIHAT PEMBAHASANNYA. |
+| 36,6 | LEVEL UP: LV 1 → LV 2, BAB 1/13, ENERGI penuh | LEVEL UP! |
+| 36,8–40,8 | Bonus stage: Atlas 3D dan Live 4D Lab (label "Simulasi edukatif") | ANATOMI? JELAJAHI 3D & LIVE 4D LAB. |
+| 40,8–47,8 | Kembali ke dunia pixel: tembok menjadi tangga, BAB 1 emas, Kori melompat ke anak tangga pertama | SATU BAB DULU. / MEDCOEL GRATIS DI medcoel.com |
+
+Panel web (18–36,8 dtk) berukuran 830×1060 px sehingga menampilkan ±77% tinggi halaman ponsel (540×900 CSS, 2×) tanpa zoom; panel montage anatomi tetap 1040×980.
 
 ## Penting: HUD adalah perangkat cerita
-LV, PAHAM, ENERGI, "BAB x/13", blok BAB, dan LEVEL UP **bukan fitur produk MEDCOEL**; itu hanya metafora game di dalam video. Hanya isi panel laptop (18–33 dtk) yang menunjukkan produk. Tidak ada skor sempurna atau klaim lulus ujian.
+LV, PAHAM, ENERGI, "BAB x/13", blok BAB, dan LEVEL UP **bukan fitur produk MEDCOEL**; itu hanya metafora game di dalam video. Hanya isi panel laptop (18–40,8 dtk) yang menunjukkan produk. Tidak ada skor sempurna atau klaim lulus ujian.
 
 ## Sumber
 - **Maskot:** `apps/web/src/mascots/{kori,kila,nilo}.svg` dimuat apa adanya; hanya lapisan resminya (`mc-float`, `mc-arm-right`, `mc-eyes-*`, `mc-mouth-*`) yang digerakkan. Keringat, tanda tanya, dan kelopak lelah adalah overlay di atas maskot.
-- **Web (18–29 dtk):** direkam dari web MEDCOEL asli di repo (`apps/web`) yang berjalan lokal + PocketBase lokal dengan **data uji** (`rekam/siapkan.sh`, `rekam/web.cjs`, akun demo). BAB "Anatomi Ekstremitas Atas" punya materi, flashcard, dan 20 soal. Kursor dan ring ketukan digambar; UI tidak digambar ulang.
-- **Atlas 3D dan Live 4D Lab (29–33 dtk):** potongan dari dua rekaman layar produk di Drive (bukan data produksi), diberi label "Simulasi edukatif". Bingkai hasil ekstraksinya (`rekam/web/atlas|probe|ct`) tidak ikut di repo dan perintah ekstraksinya tidak tersimpan sebagai skrip.
+- **Web (18–36,8 dtk):** direkam dari web MEDCOEL asli di repo (`apps/web`) yang berjalan lokal + PocketBase lokal dengan **data uji** (`rekam/siapkan.sh`, `rekam/web.cjs`, akun demo). BAB "Anatomi Ekstremitas Atas" punya materi (dengan gambar), flashcard (24 kartu), dan 20 soal; materi direkam digulir sampai gambar pertama, flashcard tiga kartu. Kursor dan ring ketukan digambar; UI tidak digambar ulang.
+- **Atlas 3D dan Live 4D Lab (36,8–40,8 dtk):** potongan dari dua rekaman layar produk di Drive (bukan data produksi), diberi label "Simulasi edukatif". Bingkai hasil ekstraksinya (`rekam/web/atlas|probe|ct`) tidak ikut di repo dan perintah ekstraksinya tidak tersimpan sebagai skrip.
 - **Animasi:** SVG dari kode (`stage/`), deterministik per bingkai (`window.renderFrame(t)`).
 - **Font pixel:** Press Start 2P (c) The Press Start 2P Project Authors, SIL Open Font License 1.1, disertakan di `stage/fonts/`.
 

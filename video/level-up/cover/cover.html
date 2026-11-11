@@ -23,7 +23,7 @@ s += `<ellipse cx="292" cy="1198" rx="110" ry="12" fill="#021014" opacity=".3"/>
 s += pxSpark(120, 760, 1.6) + pxSpark(470, 700, 1.1) + confetti(292, 840, 0.5, 22, 12, 520);
 // laptop MEDCOEL (kanan) dengan tangkapan web asli
 const lx = 560, ly = 700, lw = 350, lh = 480;
-s += `<rect x="${lx - 10}" y="${ly - 10}" width="${lw + 20}" height="${lh + 20}" rx="26" fill="#021014" opacity=".35" transform="translate(10 12)"/><rect x="${lx - 14}" y="${ly - 14}" width="${lw + 28}" height="${lh + 28}" rx="28" fill="#1A252E" stroke="${MC.gold}" stroke-width="5"/><clipPath id="clipL"><rect x="${lx}" y="${ly}" width="${lw}" height="${lh}" rx="16"/></clipPath><g clip-path="url(#clipL)"><image href="../rekam/web/materi/f0036.jpg" x="${lx}" y="${ly}" width="${lw}" height="${f1(1800 * lw / 1080)}" preserveAspectRatio="none"/></g>`;
+s += `<rect x="${lx - 10}" y="${ly - 10}" width="${lw + 20}" height="${lh + 20}" rx="26" fill="#021014" opacity=".35" transform="translate(10 12)"/><rect x="${lx - 14}" y="${ly - 14}" width="${lw + 28}" height="${lh + 28}" rx="28" fill="#1A252E" stroke="${MC.gold}" stroke-width="5"/><clipPath id="clipL"><rect x="${lx}" y="${ly}" width="${lw}" height="${lh}" rx="16"/></clipPath><g clip-path="url(#clipL)"><image href="../rekam/web/materi/f0200.jpg" x="${lx}" y="${ly}" width="${lw}" height="${f1(1800 * lw / 1080)}" preserveAspectRatio="none"/></g>`;
 s += R(lx + lw / 2 - 30, ly + lh + 14, 60, 60, '#1A252E') + R(lx - 70, 1228, lw + 140, 30, '#2A3A46', 12);
 s += mascot('kila', { x: 800, y: 640, s: 0.55, eyes: 'happy', mouth: 'happy', spark: 1 });
 s += `<g>${R(310, 1330, 440, 64, MC.gold, 0, `stroke="${MC.ink}" stroke-width="6" shape-rendering="crispEdges"`)}${pxt(530, 1374, 'SATU BAB DULU.', MC.ink, 24, { stroke: false })}</g>`;

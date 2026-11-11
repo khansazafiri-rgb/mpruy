@@ -7,23 +7,33 @@ import { world, blocks, hud, typer, block, pxt, pxSpark, confetti, bonk, flash, 
 import { LAPTOP, laptop, runPose } from './world.js';
 const q = new URLSearchParams(location.search), $ = (id) => document.getElementById(id);
 await document.fonts.load('800 40px "Plus Jakarta Sans"'); await document.fonts.load('700 30px "Plus Jakarta Sans"'); await document.fonts.load('400 40px "Press Start 2P"'); await document.fonts.ready; await loadMascots();
-export const DUR = 40.0;
+export const DUR = 47.8;
 const WEB = '/video/level-up/rekam/web';
 const G = 1260;                                    // garis tanah dunia pixel
-const P1 = { x: 20, y: 470, w: 1040, h: 980 };
+const T_CL = 41.5;                                 // mulai adegan penutup (pixel keluar dari panel)
+const P1 = { x: 20, y: 470, w: 1040, h: 980 };      // panel montage anatomi (rekaman landscape/ponsel crop)
+const W1 = { x: 125, y: 500, w: 830, h: 1060 };     // panel web asli: lebih tinggi supaya halaman tidak ter-crop (menampilkan ~77% tinggi halaman)
 const ZS = 1080 / LAPTOP.w, ZOOM_RECT = { x: 0, y: 960 - LAPTOP.h * ZS / 2, w: 1080, h: LAPTOP.h * ZS };
-// ---- jadwal rekaman web ASLI: [t0, t1, klip, bingkai0, bingkai1, tampilan0 [cx, cy, zoom], tampilan1]; sumber 1080 x 1800
+// ---- jadwal rekaman web ASLI: [t0, t1, klip, bingkai0, bingkai1, tampilan0 [cx, cy, zoom], tampilan1]; sumber 1080 x 1800 (ponsel 540 x 900 @2x)
+const VW = [540, 790, 1], VW2 = [540, 930, 1];
 const SEG = [
-  [18.0, 19.5, 'mk', 0, 74, [540, 700, 1.04], [540, 760, 1.04]],
-  [19.5, 21.0, 'bab', 40, 90, [540, 760, 1.04], [540, 700, 1.04]],
-  [21.0, 22.4, 'materi', 36, 108, [540, 700, 1.04], [540, 780, 1.04]],
-  [22.4, 24.4, 'flash', 46, 128, [540, 900, 1.04], [540, 900, 1.04]],
-  [24.4, 25.7, 'learning', 39, 98, [540, 1000, 1.04], [540, 1000, 1.04]],
-  [25.7, 26.9, 'learning', 98, 140, [540, 760, 1.04], [540, 760, 1.04]],
-  [26.9, 29.0, 'learning', 140, 216, [540, 760, 1.04], [540, 1060, 1.04]],
-  [29.0, 30.5, 'atlas', 1, 46, null, null],
-  [30.5, 31.8, 'probe', 1, 43, null, null],
-  [31.8, 33.0, 'ct', 1, 42, null, null],
+  [18.0, 19.5, 'mk', 0, 74, VW, VW],
+  [19.5, 21.0, 'bab', 40, 90, VW, VW],
+  [21.0, 22.1, 'materi', 40, 88, VW, VW],            // ketuk "Belajar materi" -> halaman materi
+  [22.1, 24.0, 'materi', 88, 168, VW, VW],           // gulir sampai gambar
+  [24.0, 25.8, 'materi', 168, 232, VW, VW],          // gambar "Gambar 1" terlihat jelas
+  [25.8, 26.4, 'materi', 232, 256, VW, VW],          // lanjut ke bagian berikutnya
+  [26.4, 27.5, 'flash', 48, 96, VW, VW],             // kartu 1: depan -> balik
+  [27.5, 28.8, 'flash', 96, 144, VW, VW],            // jawaban -> Hafal
+  [28.8, 29.7, 'flash', 144, 192, VW, VW],           // kartu 2
+  [29.7, 30.8, 'flash', 192, 240, VW, VW],
+  [30.8, 31.8, 'flash', 240, 296, VW, VW],           // kartu 3
+  [31.8, 33.4, 'learning', 50, 98, VW, VW],          // latihan: mulai, soal
+  [33.4, 34.8, 'learning', 98, 140, VW, VW],         // jawab -> Cek jawaban
+  [34.8, 36.8, 'learning', 140, 200, VW, VW2],       // pembahasan
+  [36.8, 38.3, 'atlas', 1, 46, null, null],
+  [38.3, 39.6, 'probe', 1, 43, null, null],
+  [39.6, 40.8, 'ct', 1, 42, null, null],
 ];
 const MONT = new Set(['atlas', 'probe', 'ct']);
 const urlOf = (clip, i) => `${WEB}/${clip}/f${String(Math.round(i)).padStart(4, '0')}.jpg`;
@@ -37,8 +47,8 @@ function webFrame(t) {
 // ---- HUD per waktu
 const stepv = (t, a) => { let v = a[0][1]; for (const [ti, vi] of a) if (t >= ti) v = vi; return v; };
 const IMPACT = [3.9, 5.6, 7.3];                    // detik benturan Kori ke tembok BAB (lompatan gagal)
-const LVUP = 28.8;                                 // detik LEVEL UP
-const pahamF = pchip([[0, 0], [17.9, 0], [18.6, 0.05], [19.5, 0.12], [21.0, 0.15], [22.4, 0.33], [24.4, 0.56], [26.9, 0.62], [27.4, 0.64], [LVUP, 1], [40, 1]]);
+const LVUP = 36.6;                                 // detik LEVEL UP
+const pahamF = pchip([[0, 0], [17.9, 0], [18.6, 0.05], [19.5, 0.12], [21.0, 0.15], [26.4, 0.33], [31.8, 0.56], [34.8, 0.62], [35.4, 0.64], [LVUP, 1], [48, 1]]);
 function hudAt(t) {
   const energy = stepv(t, [[0, 5], [IMPACT[0], 4], [IMPACT[1], 3], [IMPACT[2], 2], [18.4, 3], [21.0, 4], [LVUP, 5]]);
   const sh = IMPACT.reduce((a, ti) => a + (t >= ti && t < ti + 0.3 ? 1 : 0), 0);
@@ -66,12 +76,12 @@ function koriPose(t) {
   return { ...base, flip: 1, eyes: 'happy', mouth: 'happy', arm: lerp(0, -62, eob(seg(t, 15.4, 15.9))) + (t > 15.9 ? Math.sin(t * 14) * 8 : 0), bob: Math.sin(t * 8) * 4, spark: 1 };
 }
 function koriClosing(t) {
-  const hop = seg(t, 36.3, 36.95, (x) => x), u = clamp((t - 36.3) / 0.65);
-  const x = lerp(400, 272, sm(u)), dy = -BS * eo(u) - Math.sin(Math.PI * u) * 140, landed = t >= 36.95;
-  return { x, dy, flip: -1, rot: 0, sx: 1, sy: landed ? 1 + Math.exp(-(t - 36.95) * 10) * -0.1 : 1, arm: -28 + Math.sin(t * 9) * 12, eyes: t < 35.6 ? 'normal' : 'happy', mouth: 'happy', bob: landed || u > 0 ? 0 : Math.sin(t * 3) * 3, over: '', spark: 1 };
+  const u = clamp((t - 44.1) / 0.65);
+  const x = lerp(400, 272, sm(u)), dy = -BS * eo(u) - Math.sin(Math.PI * u) * 140, landed = t >= 44.75;
+  return { x, dy, flip: -1, rot: 0, sx: 1, sy: landed ? 1 + Math.exp(-(t - 44.75) * 10) * -0.1 : 1, arm: -28 + Math.sin(t * 9) * 12, eyes: t < 43.4 ? 'normal' : 'happy', mouth: 'happy', bob: landed || u > 0 ? 0 : Math.sin(t * 3) * 3, over: '', spark: 1 };
 }
 function koriSvg(t) {
-  const k = t >= 33.7 ? koriClosing(t) : koriPose(t), hh = Math.abs(k.dy);
+  const k = t >= T_CL ? koriClosing(t) : koriPose(t), hh = Math.abs(k.dy);
   return `<ellipse cx="${f1(k.x)}" cy="${G + 6}" rx="${f1(Math.max(40, 112 - hh * 0.25))}" ry="14" fill="#021014" opacity="${f1(Math.max(0.1, 0.35 - hh * 0.0008))}"/>` + mascot('kori', { x: k.x, y: G + k.dy, s: 1.0, flip: k.flip, rot: k.rot, bob: k.bob, sx: k.sx, sy: k.sy, arm: k.arm, eyes: k.eyes, mouth: k.mouth, over: k.over, spark: k.spark });
 }
 const scrollAt = (t) => { const v = clamp((t - 2.2) / 0.8); const s = t < 2.2 ? 620 * t : 620 * 2.2 + 620 * 0.8 * (v - v * v / 2); return -s; };
@@ -79,18 +89,18 @@ function shk(t) { let a = 0; for (const ti of IMPACT) if (t >= ti && t < ti + 0.
 // ---- adegan dunia pixel (sebelum 18,0 dan sesudah 33,7)
 function scene(t) {
   let g = world(t, { scroll: scrollAt(t), G });
-  g += blocks(t, { drop: 0.7, morph: 34.5, gold1: t >= 33.7 });
+  g += blocks(t, { drop: 0.7, morph: 42.3, gold1: t >= T_CL });
   const dim = 0.4 * seg(t, 9.0, 9.8) * (1 - seg(t, 13.8, 14.8));
   if (dim > 0.01) g += R(0, 0, 1080, 1920, '#020A10', 0, `opacity="${f1(dim)}"`);
   if (t >= 12.4) {
-    const st = t < 14.4 ? 'on' : t < 33.7 ? 'prompt' : 'after';
+    const st = t < 14.4 ? 'on' : t < T_CL ? 'prompt' : 'after';
     if (t < 13.6) { const p = seg(t, 12.4, 13.6), px = pixelClip('clipLap', p, { x: LAPTOP.cx - 340, y: LAPTOP.cy - 190, w: 680, h: 480 }, 7, 24); g += px.clip + `<g clip-path="url(#clipLap)">${laptop(t, st, 1)}</g>${px.edge}`; }
     else g += laptop(t, st, 1);
   }
   g += koriSvg(t);
   for (const ti of IMPACT) g += bonk(230, 880, t - ti);
-  if (t >= 36.95 && t < 38.2) { const u = t - 36.95; g += pxSpark(272, 1110 - u * 40, 1 + 0.4 * Math.sin(u * 20), MC.gold) + confetti(272, 1150, u, 14, 9, 260); }
-  if (t >= 36.0) { const ka = seg(t, 36.0, 36.5, eob), na = seg(t, 36.4, 36.9, eob);
+  if (t >= 44.75 && t < 46.0) { const u = t - 44.75; g += pxSpark(272, 1110 - u * 40, 1 + 0.4 * Math.sin(u * 20), MC.gold) + confetti(272, 1150, u, 14, 9, 260); }
+  if (t >= 43.8) { const ka = seg(t, 43.8, 44.3, eob), na = seg(t, 44.2, 44.7, eob);
     g += `<g opacity="${f1(ka)}">${mascot('kila', { x: 650, y: 800 + (1 - ka) * 60, s: 0.62, bob: Math.sin(t * 4) * 8, arm: Math.sin(t * 9) * 20, eyes: 'happy', mouth: 'happy', spark: 0.6 + 0.4 * Math.sin(t * 9) })}</g>`;
     g += `<g opacity="${f1(na)}">${mascot('nilo', { x: 985, y: 1330, s: 0.58, bob: Math.sin(t * 3 + 1) * 3, arm: -20 + Math.sin(t * 6) * 14, eyes: 'normal', mouth: 'happy', spark: 0.8 })}</g>`; }
   return g + scan();
@@ -99,13 +109,15 @@ function scene(t) {
 const lerpR = (a, b, k) => ({ x: lerp(a.x, b.x, k), y: lerp(a.y, b.y, k), w: lerp(a.w, b.w, k), h: lerp(a.h, b.h, k) });
 function panelRect(t) {
   if (t < 18.0) return ZOOM_RECT;
-  if (t < 18.7) return lerpR(ZOOM_RECT, P1, eio((t - 18.0) / 0.7));
-  if (t < 33.0) return P1;
-  if (t < 33.7) return lerpR(P1, ZOOM_RECT, eio((t - 33.0) / 0.7));
+  if (t < 18.7) return lerpR(ZOOM_RECT, W1, eio((t - 18.0) / 0.7));
+  if (t < 36.8) return W1;
+  if (t < 37.2) return lerpR(W1, P1, eio((t - 36.8) / 0.4));
+  if (t < 40.8) return P1;
+  if (t < 41.5) return lerpR(P1, ZOOM_RECT, eio((t - 40.8) / 0.7));
   return ZOOM_RECT;
 }
 function panelSvg(t, r) {
-  const f = webFrame(Math.min(Math.max(t, 18.0), 33.0)), mont = MONT.has(f.clip);
+  const f = webFrame(Math.min(Math.max(t, 18.0), 40.79)), mont = MONT.has(f.clip);
   let img;
   if (mont) { img = `<image href="${urlOf(f.clip, f.i)}" x="${f1(r.x)}" y="${f1(r.y)}" width="${f1(r.w)}" height="${f1(r.h)}" preserveAspectRatio="xMidYMid slice"/>`; }
   else { const z = f.v[2], sc = (r.w / 1080) * z, x = r.x + r.w / 2 - f.v[0] * sc, y = r.y + r.h / 2 - f.v[1] * sc; img = `<image href="${urlOf(f.clip, f.i)}" x="${f1(x)}" y="${f1(y)}" width="${f1(1080 * sc)}" height="${f1(1800 * sc)}" preserveAspectRatio="none"/>`; }
@@ -121,25 +133,26 @@ function captions(t) {
   g += typer('ULANG LAGI...', t, 7.0, 9.0, { fs: 52, cps: 14, px: true, red: true });
   g += typer('MULAI DARI MANA?', t, 9.4, 14.0, { fs: 52, cps: 14, px: true });
   g += typer('PILIH SATU BAB.', t, 18.4, 20.8, { fs: 52, cps: 16, px: true });
-  g += typer('MATERI → FLASHCARD → LATIHAN', t, 20.9, 25.0, { fs: 44, w: 1000, cps: 30 });
-  g += typer('SALAH? LIHAT PEMBAHASANNYA.', t, 25.1, 29.0, { fs: 46, w: 1000, cps: 30 });
-  g += typer('ANATOMI? JELAJAHI 3D & LIVE 4D LAB.', t, 29.0, 33.0, { fs: 42, w: 1010, cps: 34 });
-  g += typer('SATU BAB DULU.', t, 35.4, 37.6, { fs: 56, cps: 14, px: true });
-  const fin = clamp((t - 37.6) / 0.25) * clamp((40.2 - t) / 0.1);
+  g += typer('MATERI LENGKAP, ADA GAMBAR.', t, 21.0, 26.2, { fs: 46, w: 1000, cps: 30 });
+  g += typer('FLASHCARD: BALIK KARTU, TANDAI HAFAL.', t, 26.5, 31.6, { fs: 40, w: 1010, cps: 34 });
+  g += typer('LATIHAN. SALAH? LIHAT PEMBAHASANNYA.', t, 31.9, 36.6, { fs: 40, w: 1010, cps: 34 });
+  g += typer('ANATOMI? JELAJAHI 3D & LIVE 4D LAB.', t, 36.9, 40.8, { fs: 42, w: 1010, cps: 34 });
+  g += typer('SATU BAB DULU.', t, 43.2, 45.4, { fs: 56, cps: 14, px: true });
+  const fin = clamp((t - 45.4) / 0.25) * clamp((48.0 - t) / 0.1);
   if (fin > 0) g += `<g opacity="${f1(fin)}">${R(60, 372, 960, 110, 'rgba(10,28,36,.95)', 18, `stroke="${MC.gold}" stroke-width="4"`)}<text x="540" y="425" text-anchor="middle" font-family="${FONT}" font-weight="800" font-size="40" fill="${MC.ivory}">MEDCOEL GRATIS DI</text><text x="540" y="468" text-anchor="middle" font-family="${FONT}" font-weight="800" font-size="46" fill="${MC.gold}">medcoel.com</text></g>`;
-  if (t >= 30.2 && t < 33.0) { const a = clamp((t - 30.2) / 0.2) * clamp((33.0 - t) / 0.1);
+  if (t >= 38.0 && t < 40.8) { const a = clamp((t - 38.0) / 0.2) * clamp((40.8 - t) / 0.1);
     g += `<g opacity="${f1(a)}">${R(48, 486, 330, 54, MC.gold, 0, `stroke="${MC.ink}" stroke-width="4" shape-rendering="crispEdges"`)}${pxt(213, 522, 'BONUS STAGE', MC.ink, 18, { stroke: false })}</g>`; }
-  if (t >= 29.0 && t < 33.0) { const a = clamp((t - 30.3) / 0.2) * clamp((33.0 - t) / 0.1);
-    if (t >= 30.5) g += `<g opacity="${f1(a)}">${R(40, 1378, 330, 56, 'rgba(10,56,48,.95)', 28, `stroke="${MC.gold}" stroke-width="3"`)}${T(205, 1417, 'Simulasi edukatif', MC.ivory, 28, '', 'middle', 700)}</g>`;
-    g += `<g opacity="${f1(clamp((t - 29.3) / 0.2) * clamp((33.0 - t) / 0.1))}">${R(780, 1378, 240, 56, MC.gold, 28, `stroke="${MC.ink}" stroke-width="3"`)}${T(900, 1417, t < 30.5 ? 'Atlas 3D' : 'Live 4D Lab', MC.ink, 28)}</g>`; }
+  if (t >= 36.8 && t < 40.8) { const a = clamp((t - 38.1) / 0.2) * clamp((40.8 - t) / 0.1);
+    if (t >= 38.3) g += `<g opacity="${f1(a)}">${R(40, 1378, 330, 56, 'rgba(10,56,48,.95)', 28, `stroke="${MC.gold}" stroke-width="3"`)}${T(205, 1417, 'Simulasi edukatif', MC.ivory, 28, '', 'middle', 700)}</g>`;
+    g += `<g opacity="${f1(clamp((t - 37.1) / 0.2) * clamp((40.8 - t) / 0.1))}">${R(780, 1378, 240, 56, MC.gold, 28, `stroke="${MC.ink}" stroke-width="3"`)}${T(900, 1417, t < 38.3 ? 'Atlas 3D' : 'Live 4D Lab', MC.ink, 28)}</g>`; }
   return g;
 }
 // ---- maskot pendamping di bagian web + LEVEL UP
 function webMascots(t) {
   let g = '';
-  const na = win(t, 27.2, 28.6, 0.25), ka = win(t, 28.4, 29.6, 0.25), FY = 1735;
-  if (na > 0.01) g += `<g opacity="${f1(na)}">${mascot('nilo', { x: 940, y: FY - (1 - na) * 40, s: 0.62, bob: Math.sin(t * 6) * 5, arm: -18 + Math.sin(t * 8) * 14, eyes: 'normal', mouth: 'think' })}${R(520, 1580, 330, 78, MC.ivory, 34, `stroke="${MC.ink}" stroke-width="3"`)}${T(685, 1630, 'Coba lagi, yuk!', MC.ink, 32)}</g>`;
-  if (ka > 0.01) g += `<g opacity="${f1(ka)}">${mascot('kila', { x: 940, y: FY - (1 - ka) * 40, s: 0.62, bob: Math.sin(t * 7) * 7, arm: Math.sin(t * 9) * 18, eyes: 'happy', mouth: 'happy', spark: 0.6 + 0.4 * Math.sin(t * 10) })}${R(520, 1580, 330, 78, MC.ivory, 34, `stroke="${MC.ink}" stroke-width="3"`)}${T(685, 1630, 'Mulai nyambung!', MC.ink, 30)}</g>`;
+  const na = win(t, 35.0, 36.4, 0.25), ka = win(t, 36.2, 37.4, 0.25), FY = 1795;
+  if (na > 0.01) g += `<g opacity="${f1(na)}">${mascot('nilo', { x: 940, y: FY - (1 - na) * 40, s: 0.62, bob: Math.sin(t * 6) * 5, arm: -18 + Math.sin(t * 8) * 14, eyes: 'normal', mouth: 'think' })}${R(520, 1640, 330, 78, MC.ivory, 34, `stroke="${MC.ink}" stroke-width="3"`)}${T(685, 1690, 'Coba lagi, yuk!', MC.ink, 32)}</g>`;
+  if (ka > 0.01) g += `<g opacity="${f1(ka)}">${mascot('kila', { x: 940, y: FY - (1 - ka) * 40, s: 0.62, bob: Math.sin(t * 7) * 7, arm: Math.sin(t * 9) * 18, eyes: 'happy', mouth: 'happy', spark: 0.6 + 0.4 * Math.sin(t * 10) })}${R(520, 1640, 330, 78, MC.ivory, 34, `stroke="${MC.ink}" stroke-width="3"`)}${T(685, 1690, 'Mulai nyambung!', MC.ink, 30)}</g>`;
   return g;
 }
 function levelUp(t) {
@@ -149,27 +162,28 @@ function levelUp(t) {
 }
 export function master(t) {
   let g = '';
-  const web = t >= 18.0 && t < 33.7;
-  let S = 1; if (t >= 16.0 && t < 17.2) S = lerp(1, ZS, eio((t - 16.0) / 1.2)); else if (t >= 17.2 && t < 34.4) S = ZS; else if (t >= 34.4 && t < 35.4) S = lerp(ZS, 1, eio((t - 34.4) / 1.0));
+  const web = t >= 18.0 && t < T_CL;
+  let S = 1; if (t >= 16.0 && t < 17.2) S = lerp(1, ZS, eio((t - 16.0) / 1.2)); else if (t >= 17.2 && t < 42.2) S = ZS; else if (t >= 42.2 && t < 43.2) S = lerp(ZS, 1, eio((t - 42.2) / 1.0));
   const [sx, sy] = S === 1 ? shk(t) : [0, 0];
   const camTf = S === 1 ? (sx || sy ? `translate(${f1(sx)} ${f1(sy)})` : '') : `translate(${f1(540 - LAPTOP.cx * S)} ${f1(960 - LAPTOP.cy * S)}) scale(${f1(S * 1000) / 1000})`;
-  if (!web) g += `<g transform="${camTf}">${scene(Math.min(t, 40))}</g>`;
-  else g += world(t, { scroll: scrollAt(30), G: 1700 }) + scan();
+  if (!web) g += `<g transform="${camTf}">${scene(Math.min(t, DUR))}</g>`;
+  else g += world(t, { scroll: scrollAt(30), G: 1760 }) + scan();
   // transisi pixel dan panel web
-  const pIn = seg(t, 17.2, 18.0, sm), pOut = 1 - seg(t, 33.7, 34.4, sm);
-  if (t >= 17.2 && t < 34.4) {
-    const r = panelRect(t), p = t < 18.0 ? pIn : t >= 33.7 ? pOut : 1;
+  const pIn = seg(t, 17.2, 18.0, sm), pOut = 1 - seg(t, T_CL, T_CL + 0.7, sm);
+  if (t >= 17.2 && t < 42.2) {
+    const r = panelRect(t), p = t < 18.0 ? pIn : t >= T_CL ? pOut : 1;
     const px = pixelClip('clipPix', p, ZOOM_RECT, 3, 40), pn = panelSvg(t, r);
-    if (t < 18.0 || t >= 33.7) g += px.clip + `<g clip-path="url(#clipPix)">${pn.svg}</g>${px.edge}`;
+    if (t < 18.0 || t >= T_CL) g += px.clip + `<g clip-path="url(#clipPix)">${pn.svg}</g>${px.edge}`;
     else g += `<rect x="${f1(r.x - 6)}" y="${f1(r.y - 6)}" width="${f1(r.w + 12)}" height="${f1(r.h + 12)}" rx="${f1(pn.rad + 6)}" fill="#141D26" stroke="${MC.gold}" stroke-width="4"/>` + pn.svg;
   }
-  if (t >= 18.7 && t < 33.0) g += webMascots(t);
+  if (t >= 18.7 && t < 40.8) g += webMascots(t);
+  for (const tc of [26.4, 31.8]) if (t >= tc && t < tc + 0.12) g += flash(0.4 * (1 - (t - tc) / 0.12));   // kilatan tipis penanda pindah rekaman (materi -> flashcard -> latihan)
   if (t >= LVUP - 0.02 && t < LVUP + 0.15) g += flash(clamp(1 - (t - LVUP) / 0.15) * 0.6);
   g += levelUp(t) + hud(hudAt(t)) + captions(t);
   return g;
 }
 async function renderFrame(t) {
-  if (t >= 17.2 && t < 34.4) { const f = webFrame(Math.min(Math.max(t, 18.0), 33.0)); await load(urlOf(f.clip, f.i)); }
+  if (t >= 17.2 && t < 42.2) { const f = webFrame(Math.min(Math.max(t, 18.0), 40.79)); await load(urlOf(f.clip, f.i)); }
   $('scene').innerHTML = defs() + master(t); await new Promise((r) => requestAnimationFrame(() => r()));
 }
 window.renderFrame = renderFrame; await renderFrame(+(q.get('t') ?? 0)); window.__ready = true;

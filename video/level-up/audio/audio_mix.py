@@ -1,11 +1,11 @@
-"""Musik chiptune + efek bunyi "Level Up" (40 dtk), disintesis 100% dari kode (numpy); tidak memakai sampel/musik pihak ketiga. Tidak ada suara narator.
-Judul: "MEDCOEL 8-Bit Climb" (musik; A minor 150 BPM tegang dan tersendat tiap Kori membentur tembok -> hening -> C mayor 120 BPM cerah setelah MEDCOEL ditemukan, fanfare LEVEL UP di 28,8 dtk)
+"""Musik chiptune + efek bunyi "Level Up" (48 dtk), disintesis 100% dari kode (numpy); tidak memakai sampel/musik pihak ketiga. Tidak ada suara narator.
+Judul: "MEDCOEL 8-Bit Climb" (musik; A minor 150 BPM tegang dan tersendat tiap Kori membentur tembok -> hening -> C mayor 120 BPM cerah setelah MEDCOEL ditemukan, fanfare LEVEL UP di 36,6 dtk)
 dan "MEDCOEL Pixel Pings" (efek).
 Pembuat: dibuat untuk MEDCOEL pada sesi ini. Lisensi: CC0 1.0 (domain publik), boleh untuk promosi tanpa atribusi.
 Pemakaian: python3 video/level-up/audio/audio_mix.py -> mix.wav, music.wav, sfx.wav (mono 44,1 kHz)"""
 import os, wave
 import numpy as np
-HERE = os.path.dirname(os.path.abspath(__file__)); sr = 44100; T = 40.0; N = int(T * sr); t = np.arange(N) / sr; rng = np.random.default_rng(8)
+HERE = os.path.dirname(os.path.abspath(__file__)); sr = 44100; T = 47.8; N = int(T * sr); t = np.arange(N) / sr; rng = np.random.default_rng(8)
 mus = np.zeros(N); sfx = np.zeros(N)
 def add(buf, t0, sig, g=1.0):
     i = int(t0 * sr)
@@ -53,7 +53,7 @@ for i, f in enumerate([nf('E', 0), nf('G', 0), nf('C', 1), nf('E', 1)]): add(mus
 B2 = 0.5; BAR = 2.0; CH = [('C', 'E', 'G'), ('G', 'B', 'D'), ('A', 'C', 'E'), ('F', 'A', 'C')]; RT = ['C', 'G', 'A', 'F']; LEAD = [[0, 2, 1, 2, 0, 2, 1, 2], [2, 1, 0, 1, 2, 1, 0, 1], [0, 1, 2, 1, 2, 1, 0, 2], [1, 0, 2, 0, 1, 2, 0, 1]]
 b = 0
 while 14.0 + b * BAR < T - 0.1:
-    x0 = 14.0 + b * BAR; ch = CH[b % 4]; hi = x0 >= 28.8
+    x0 = 14.0 + b * BAR; ch = CH[b % 4]; hi = x0 >= 36.6
     for j in range(8):
         x = x0 + j * B2 / 2
         if x > T - 0.5: break
@@ -102,14 +102,18 @@ E_ = [(0.0 + 0.2 * i, 'step', {'g': 0.5}) for i in range(1, 14)]
 E_ += [(1.05 + 0.1 * i, 'tok', {'f': PENTA[i]}) for i in range(13)] + [(2.35, 'thud', {'g': 0.9})]
 E_ += [(JT, 'jump', {}) for JT in (3.4, 5.1, 6.8)] + [(ti, 'bonk', {'g': 0.9}) for ti in IM] + [(8.0, 'fall', {'g': 0.8}), (9.2, 'sigh', {'g': 0.9})]
 E_ += [(12.4, 'glitch', {'dur': 0.9, 'g': 0.6}), (13.7, 'ting', {}), (14.0, 'blip', {'f0': 523, 'f1': 784}), (14.6, 'ting', {}), (15.9, 'blip', {'f0': 1175, 'f1': 1568}), (16.0, 'whoosh', {'dur': 1.2, 'up': True, 'g': 0.7}), (17.25, 'glitch', {'dur': 0.8, 'g': 0.8})]
-E_ += [(18.9, 'blip', {}), (20.05, 'blip', {}), (21.3, 'blip', {}), (22.95, 'blip', {}), (23.7, 'ting', {}), (24.7, 'blip', {}), (26.3, 'blip', {}), (26.95, 'blip', {}), (27.45, 'sigh', {'g': 0.5}), (28.5, 'sparkle', {}), (28.8, 'fanfare', {}),
-       (29.0, 'whoosh', {'dur': 0.5, 'up': True, 'g': 0.4}), (30.5, 'blip', {'f0': 784, 'f1': 1047}), (31.8, 'blip', {'f0': 784, 'f1': 1047}), (33.0, 'whoosh', {'dur': 0.7, 'up': False, 'g': 0.6}), (33.7, 'glitch', {'dur': 0.7, 'g': 0.7})]
-E_ += [(34.6 + 0.05 * i, 'tok', {'f': PENTA[i], 'g': 0.7}) for i in range(13)] + [(35.4, 'ting', {}), (36.3, 'jump', {'g': 0.8}), (36.95, 'ting', {}), (37.0, 'sparkle', {}), (37.7, 'chime', {})]
+E_ += [(18.9, 'blip', {}), (20.05, 'blip', {}),                                                             # mata kuliah, BAB
+       (21.1, 'blip', {}), (22.6, 'whoosh', {'dur': 1.1, 'up': True, 'g': 0.25}), (24.3, 'ting', {}), (25.9, 'whoosh', {'dur': 0.5, 'up': True, 'g': 0.2}),   # materi: buka, gulir, gambar
+       (26.45, 'blip', {'f0': 784, 'f1': 1047}), (27.1, 'blip', {}), (28.7, 'ting', {}), (29.6, 'blip', {}), (30.7, 'ting', {}), (31.3, 'blip', {}),  # flashcard: balik, hafal x2, balik
+       (31.85, 'blip', {'f0': 784, 'f1': 1047}), (32.0, 'blip', {}), (33.2, 'blip', {}), (34.3, 'blip', {}), (35.1, 'sigh', {'g': 0.5}),               # latihan: mulai, jawab, cek, salah
+       (36.4, 'sparkle', {}), (36.6, 'fanfare', {}),
+       (36.8, 'whoosh', {'dur': 0.5, 'up': True, 'g': 0.4}), (38.3, 'blip', {'f0': 784, 'f1': 1047}), (39.6, 'blip', {'f0': 784, 'f1': 1047}), (40.8, 'whoosh', {'dur': 0.7, 'up': False, 'g': 0.6}), (41.5, 'glitch', {'dur': 0.7, 'g': 0.7})]
+E_ += [(42.4 + 0.05 * i, 'tok', {'f': PENTA[i], 'g': 0.7}) for i in range(13)] + [(43.2, 'ting', {}), (44.1, 'jump', {'g': 0.8}), (44.75, 'ting', {}), (44.8, 'sparkle', {}), (45.5, 'chime', {})]
 FN = {'ting': ting, 'blip': blip, 'jump': jump, 'bonk': bonk_, 'thud': thud, 'tok': tok, 'step': step_, 'fall': fall, 'sigh': sigh, 'whoosh': whoosh, 'glitch': glitch, 'sparkle': sparkle, 'fanfare': fanfare, 'chime': chime}
 duck = np.ones(N)
 for tx, kind, kw in E_:
     add(sfx, tx, FN[kind](**kw)); i = int(tx * sr); duck[i:min(N, i + int(0.25 * sr))] = np.minimum(duck[i:min(N, i + int(0.25 * sr))], 0.8)
-i = int(28.8 * sr); duck[i:i + int(1.2 * sr)] = 0.55
+i = int(36.6 * sr); duck[i:i + int(1.2 * sr)] = 0.55
 mus *= lp(duck, int(0.04 * sr))
 def rms(x): return np.sqrt(np.mean(x[np.abs(x) > 1e-4] ** 2) + 1e-12)
 mu = mus / (rms(mus) + 1e-9) * 0.14; fx = sfx / (np.abs(sfx).max() + 1e-9) * 0.34
