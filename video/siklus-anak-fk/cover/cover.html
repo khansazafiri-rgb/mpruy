@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover Siklus anak FK</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#root{width:1080px;height:1920px;position:relative;overflow:hidden}#root svg{position:absolute;left:0;top:0}</style></head>
+<body><div id="root"><svg id="sc" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script type="module">
+// Cover khusus: Kori tertindih tumpukan materi (kiri) dan laptop MEDCOEL dengan tampilan web asli (kanan). Area aman Reels/TikTok: atas >= 250, bawah <= 1440, kanan <= 940. ?guide = garis area aman.
+import { f1, MC, FONT } from '../stage/core.js';
+import { bg } from '../stage/bg.js';
+import { defs } from '../stage/art.js';
+import { loadMascots, mascot, sweat, qmarks } from '../stage/mascot.js';
+import { card, R, T } from '../stage/world.js';
+const q = new URLSearchParams(location.search);
+await document.fonts.load('800 80px "Plus Jakarta Sans"'); await document.fonts.ready; await loadMascots();
+let s = defs() + bg(2.0, { cy: 940 });
+// judul
+const TT = (y, txt, fill = MC.ivory, fs = 84) => `<text x="540" y="${y}" text-anchor="middle" font-family="${FONT}" font-weight="800" font-size="${fs}" fill="${fill}" stroke="#061C24" stroke-width="14" paint-order="stroke" stroke-linejoin="round">${txt}</text>`;
+s += TT(380, 'POV:', MC.gold, 70) + TT(470, 'SIKLUS ANAK FK', MC.ivory, 92);
+// sisi kiri: tumpukan materi + Kori tertindih
+const cards = [[130, 1110, -10, 0], [250, 1060, 8, 1], [150, 995, 9, 2], [270, 930, -7, 3], [180, 865, 6, 4], [290, 800, -9, 0], [140, 745, 7, 1]];
+s += `<ellipse cx="230" cy="1352" rx="220" ry="26" fill="#021014" opacity=".35"/>` + mascot('kori', { x: 230, y: 1350, s: 1.45, sy: 0.74, sx: 1.08, eyes: 'tired', mouth: 'think', over: sweat(0.9) });
+s += cards.map(([x, y, r, i]) => card(x, y, r, i, 0.95)).join('');
+s += `<g transform="translate(60 640)">${qmarks(1.0)}</g>`;
+// sisi kanan: laptop MEDCOEL dengan web asli
+const lx = 530, ly = 780, lw = 350, lh = 480;
+s += `<rect x="${lx - 10}" y="${ly - 10}" width="${lw + 20}" height="${lh + 20}" rx="26" fill="#021014" opacity=".35" transform="translate(10 12)"/><rect x="${lx - 14}" y="${ly - 14}" width="${lw + 28}" height="${lh + 28}" rx="28" fill="#1A252E" stroke="${MC.gold}" stroke-width="5"/><clipPath id="clipL"><rect x="${lx}" y="${ly}" width="${lw}" height="${lh}" rx="16"/></clipPath><g clip-path="url(#clipL)"><image href="../rekam/web/materi/f0036.jpg" x="${lx}" y="${ly}" width="${lw}" height="${f1(1800 * lw / 1080)}" preserveAspectRatio="none"/></g>`;
+s += `<rect x="${lx - 60}" y="${ly + lh + 18}" width="${lw + 120}" height="26" rx="12" fill="#2A3A46"/>`;
+s += mascot('kila', { x: 800, y: 1380, s: 0.62, eyes: 'happy', mouth: 'happy', spark: 1 });
+s += `<g>${R(300, 1395, 420, 60, MC.gold, 30, `stroke="${MC.ink}" stroke-width="4"`)}${T(510, 1437, 'SATU BAB DULU.', MC.ink, 36)}</g>`;
+if (q.has('guide')) s += `<g fill="#FF0066" opacity=".16"><rect width="1080" height="250"/><rect y="1440" width="1080" height="480"/><rect x="940" y="250" width="140" height="1190"/></g><rect y="250" width="940" height="1190" fill="none" stroke="#FF0066" stroke-width="4" stroke-dasharray="14 10"/>`;
+document.getElementById('sc').innerHTML = s;
+await Promise.all([...document.images].map((i) => i.decode().catch(() => {}))); await new Promise((r) => setTimeout(r, 400)); window.__ready = true;
+</script></body></html>
