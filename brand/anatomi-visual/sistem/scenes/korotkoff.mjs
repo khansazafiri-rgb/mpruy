@@ -20,7 +20,7 @@ const G = `translate(${W0[0]} ${W0[1]}) scale(${f1(1 / ZOOM * 10000) / 10000}) t
 
 // ------------------------------------------------------------------ kamera: layar = z * (dunia - f) + g
 const KAM = [
-  [0, 1.0, 540, 960, 540, 830], [2.9, 1.0, 540, 960, 540, 830], [4.6, 1.22, 600, 1060, 540, 887], [6.8, 1.24, 600, 1062, 540, 890],
+  [0, 1.09, 600, 1000, 540, 840], [1.3, 1.0, 540, 960, 540, 830], [2.9, 1.0, 540, 960, 540, 830], [4.6, 1.22, 600, 1060, 540, 887], [6.8, 1.24, 600, 1062, 540, 890],
   [8.2, 1.3, 585, 1062, 540, 880], [9.3, ZOOM, W0[0], W0[1], S0[0], S0[1]], [39.72, ZOOM, W0[0], W0[1], S0[0], S0[1]],
   [40.5, 1.0, 540, 960, 540, 830], [NARASI_DTK, 1.05, 540, 980, 540, 845],
 ];
@@ -46,7 +46,9 @@ const hookNew = (T) => hookAmp(T);
 const RK = { k: 1.5, x: 860, y0: 498 };
 const kunci = (T, ks) => kf(T, ks, ease.sm);
 const HS = (() => { const w = [W0[0] + (L.STET.x - S0[0]) / ZOOM, W0[1] + (L.YT - 34 - S0[1]) / ZOOM]; return [200 + (w[0] - RK.x) / RK.k, (w[1] - RK.y0) / RK.k]; })();
+const pasangT = (T) => 1 - ease.out(seg(T, 0, 0.9, ease.lin));
 function rakaState(T) {
+  const pasang = pasangT(T);
   const kn = hookAmp(T), kn2 = T > 39.9 ? 0 : 0;
   const tanya = seg(T, K.k2.a - 0.1, K.k2.a + 0.5) * (1 - seg(T, 6.7, 7.2)), paham = seg(T, EV.raka[1] - 0.2, EV.raka[1] + 0.5);
   const pump = EV.pompa.reduce((m, t0) => Math.max(m, Math.sin(Math.PI * clamp((T - t0) / 0.3))), 0) * (T > 7.2 && T < 8.5 ? 1 : 0);
@@ -56,7 +58,7 @@ function rakaState(T) {
     tilt: -3 - 5 * kn - 7 * tanya + 3 * paham, lean: -2 + 1.5 * kn,
     wide: 0.55 * kn, browL: { y: -8 * kn - 5 * tanya - 4 * paham, rot: 8 * tanya }, browR: { y: -8 * kn + 2 * tanya - 4 * paham, rot: -6 * tanya },
     happyEyes: 0.9 * paham, mouth: { w: lerp(lerp(14, 9, tanya), 20, paham), up: lerp(lerp(9, 6, tanya), 12, paham), lo: lerp(lerp(9, 5, tanya), 12, paham) },
-    armL: { wx: HS[0] + 12, wy: HS[1] - 26 + 2 * kn, ex: (104 + HS[0]) / 2 + 10, ey: Math.min(410, HS[1]) - 62, finger: 0, fa: -90, front: 1, roll: 0 },
+    armL: { wx: HS[0] + 12 + 14 * pasang, wy: HS[1] - 26 + 2 * kn - 17.6 * pasang, ex: (104 + HS[0]) / 2 + 10, ey: Math.min(410, HS[1]) - 62, finger: 0, fa: -90, front: 1, roll: 0 },
     armR: { wx: 262, wy: 470 + 15 * pump, ex: 334, ey: 505, finger: 0, fa: -90, front: 1, roll: 0 },
     bob: 2 * Math.sin(T * 2.2) * 0.3 + 4 * paham * Math.max(0, Math.sin((T - EV.raka[1]) * 5)) * seg(T, EV.raka[1], EV.raka[1] + 1.2) * (1 - seg(T, 42.6, 43.1)),
   });
@@ -125,7 +127,7 @@ function dunia(T, sweep) {
   if (dalamVisible) g += `<g id="SEC" clip-path="url(#cD)">${pen.svg}${L.mansetPenampang(S)}${tabungStet()}${kepalaStet(infoSt, infoSt.diafragma)}</g>`;
   // tepi sapuan emas
   if (reveal > 0.001 && reveal < 0.999) g += `<rect x="${f1(sweepX - 4)}" y="${L.YT - 40}" width="8" height="${L.H + 80}" rx="4" fill="${EMAS}"/><rect x="${f1(sweepX - 30)}" y="${L.YT - 40}" width="60" height="${L.H + 80}" fill="url(#sw)" opacity=".55"/>`;
-  if (!dalamVisible) g += tabungStet() + kepalaStet(infoSt, infoSt.diafragma); else if (luarVisible) g += `<g clip-path="url(#cE)">${tabungStet()}${kepalaStet(infoSt, infoSt.diafragma)}</g>`;
+  if (!dalamVisible) g += `<g transform="translate(0 ${f1(-46 * pasangT(T))})">${tabungStet()}${kepalaStet(infoSt, infoSt.diafragma)}</g>`; else if (luarVisible) g += `<g clip-path="url(#cE)">${tabungStet()}${kepalaStet(infoSt, infoSt.diafragma)}</g>`;
   return { g, pen, S: Sx };
 }
 
