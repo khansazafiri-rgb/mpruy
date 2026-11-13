@@ -39,7 +39,7 @@ function tekananLuar(T) {
 }
 const pHook = (T) => (T < 3.4 ? lerp(168, 128, T / 3.4) : T < 6.9 ? lerp(128, 0, ease.sm(seg(T, 3.4, 6.7))) : 0);
 const tekan = (T) => (T < EV.pompa[0] - 0.05 ? pHook(T) : tekananManset(tAnim(T)));
-function hookAmp(T) { let a = 0; for (const e of [EV.duk1, EV.duk2]) { const d = T - e; if (d >= 0 && d < 0.26) a = Math.max(a, 1 - d / 0.26); } return a; }
+function hookAmp(T) { let a = 0; for (const e of [EV.duk1, EV.duk2]) { const d = T - e + 0.034; if (d >= 0 && d < 0.26) a = Math.max(a, 1 - d / 0.26); } return a; }
 const hookNew = (T) => hookAmp(T);
 
 // ------------------------------------------------------------------ Raka
@@ -122,10 +122,10 @@ function dunia(T, sweep) {
     g += `<g clip-path="url(#cE)">${L.luar(Sx)}${selangDanBola(P, Pn)}${bola(T)}`;
     g += `${L.mansetLuar(Sx)}</g>`;
   }
-  if (dalamVisible) g += `<g clip-path="url(#cD)">${pen.svg}${L.mansetPenampang(S)}</g>`;
+  if (dalamVisible) g += `<g id="SEC" clip-path="url(#cD)">${pen.svg}${L.mansetPenampang(S)}${tabungStet()}${kepalaStet(infoSt, infoSt.diafragma)}</g>`;
   // tepi sapuan emas
   if (reveal > 0.001 && reveal < 0.999) g += `<rect x="${f1(sweepX - 4)}" y="${L.YT - 40}" width="8" height="${L.H + 80}" rx="4" fill="${EMAS}"/><rect x="${f1(sweepX - 30)}" y="${L.YT - 40}" width="60" height="${L.H + 80}" fill="url(#sw)" opacity=".55"/>`;
-  g += tabungStet() + kepalaStet(infoSt, infoSt.diafragma);
+  if (!dalamVisible) g += tabungStet() + kepalaStet(infoSt, infoSt.diafragma); else if (luarVisible) g += `<g clip-path="url(#cE)">${tabungStet()}${kepalaStet(infoSt, infoSt.diafragma)}</g>`;
   return { g, pen, S: Sx };
 }
 
@@ -166,6 +166,9 @@ export function frame(T, opt = {}) {
   if (pr > 0.01) {
     svg += jantungDanJalur(T, pr);
     svg += A.jejak(T, 40, 1036, 1000, 76, pr);
+    { const lp = seg(T, K.k6.a, K.k6.a + 0.5) * (1 - seg(T, EV.dua - 0.3, EV.dua + 0.1)) * pr; // lupa pada tepi distal manset (dinding arteri dan getaran ke diafragma)
+      if (lp > 0.01) { const cx = 790, cy = 410, r = 158, sx = 650, sy = 664, k = 1.5;
+        svg += `<g opacity="${f1(lp)}"><defs><clipPath id="lupa"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath></defs><circle cx="${cx}" cy="${cy + 6}" r="${r + 8}" fill="#000" opacity=".35"/><circle cx="${cx}" cy="${cy}" r="${r + 8}" fill="#0D1F2D"/><g clip-path="url(#lupa)"><rect x="${cx - r}" y="${cy - r}" width="${2 * r}" height="${2 * r}" fill="#0D1F2D"/><use href="#SEC" transform="translate(${cx} ${cy}) scale(${k}) translate(${-sx} ${-sy})"/></g><circle cx="${cx}" cy="${cy}" r="${r + 5}" fill="none" stroke="${GADING}" stroke-width="9"/><circle cx="${cx}" cy="${cy}" r="${r + 5}" fill="none" stroke="${EMAS}" stroke-width="3.5" opacity=".9"/><circle cx="${sx}" cy="${sy}" r="${f1(r / k)}" fill="none" stroke="${GADING}" stroke-width="3" stroke-dasharray="9 8" opacity=".8"/></g>`; } }
     const td = tanda(T), Pg = D.S.P, jarum = Pg;
     // peredupan saat momen pertama dibekukan, kecuali pengukur dan label
     const beku = seg(T, EV.beku[0], EV.beku[0] + 0.2) * (1 - seg(T, EV.beku[1] - 0.15, EV.beku[1]));
@@ -178,12 +181,12 @@ export function frame(T, opt = {}) {
     svg += '';
     const lS = seg(T, EV.labelS, EV.labelS + 0.4, ease.out) * (1 - seg(T, EV.labelD - 0.3, EV.labelD));
     const lD = seg(T, EV.labelD, EV.labelD + 0.4, ease.out) * (1 - seg(T, EV.dua - 0.1, EV.dua + 0.3));
-    svg += A.labelBesar('BUNYI PERTAMA → SISTOLIK', EMAS, lS * pr, 1126);
-    svg += A.labelBesar('BUNYI HILANG → DIASTOLIK', MINT, lD * pr, 1126);
+    svg += A.labelBesar('BUNYI PERTAMA → SISTOLIK', EMAS, lS * pr, 1118);
+    svg += A.labelBesar('BUNYI HILANG → DIASTOLIK', MINT, lD * pr, 1118);
   }
   // ---- pengukur tekanan besar: tampil sejak bingkai pertama (jarum turun pada hook) sampai penutup
   { const td = tanda(T), hook = T < 5 ? hookAmp(T) : 0, rk = T >= EV.raka[0];
-    const sPul = rk ? seg(T, 40.13, 40.3) * (1 - seg(T, 41.3, 41.5)) : 0, dPul = rk ? seg(T, 41.53, 41.7) * (1 - seg(T, 42.8, 43.0)) : 0;
+    const sPul = rk ? seg(T, 40.13, 40.3) * (1 - seg(T, 41.3, 41.5)) : seg(T, K.k11b.a, K.k11b.a + 0.15) * (1 - seg(T, K.k11b.a + 0.35, K.k11b.a + 0.5)), dPul = rk ? seg(T, 41.53, 41.7) * (1 - seg(T, 42.8, 43.0)) : seg(T, K.k11b.a + 0.45, K.k11b.a + 0.6) * (1 - seg(T, K.k11b.a + 0.8, K.k11b.a + 0.95));
     svg += `<g>${A.pengukur(540, 1486, 190, D.S.P, { s: Math.max(td.s, 0), d: Math.max(td.d, 0), getar: getarJarum(T) + 3 * hook * Math.sin(T * 50), uid: 'pg', denyutS: sPul, denyutD: dPul })}</g>`; }
   { const pr2 = seg(T, 8.9, 9.6) * (1 - seg(T, EV.raka[0] - 0.1, EV.raka[0] + 0.5)); const jarum = D.S.P, beku = seg(T, EV.beku[0], EV.beku[0] + 0.2) * (1 - seg(T, EV.beku[1] - 0.15, EV.beku[1]));
     if (beku > 0.01 && pr2 > 0.01) { const a = A.sudut(jarum), x = 540 + Math.cos(a) * 152, y = 1486 + Math.sin(a) * 152; svg += `<circle cx="${f1(x)}" cy="${f1(y)}" r="${f1(42 + 5 * Math.sin(T * 14))}" fill="none" stroke="${EMAS}" stroke-width="8" opacity="${f1(beku)}"/>`; } }
