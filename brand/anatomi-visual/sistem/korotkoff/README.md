@@ -64,3 +64,23 @@ ffmpeg -framerate 30 -i <dir>/f%05d.png -i <campur.wav> -af "alimiter=limit=0.95
 node brand/anatomi-visual/sistem/korotkoff/render.mjs still <dir> 24.05 --organ=korotkoff     # satu bingkai uji
 ```
 Untuk sinkron memakai narasi lain: ganti waktu di `waktu.mjs` (KALIMAT, EV) lalu ulangi langkah di atas.
+
+## Hasil pemeriksaan (`../out/korotkoff-bunyi-tensi.mp4`)
+- ffprobe: H.264 1080 x 1920, 30 fps, 45,97 dtk, AAC stereo 48 kHz; -14,9 LUFS terintegrasi, puncak sampel -1,3 dBFS.
+- Bergerak sejak bingkai pertama: kamera menarik mundur, stetoskop dipasang oleh Raka, jarum turun (selisih bingkai 0 ke 10 = 2,2 dari 255 pada skala abu-abu; 0,4 sebelum perbaikan).
+- Sinkron diperiksa per bingkai: kepala stetoskop mulai memantul pada bingkai 43 (1,43 dtk; "duk" pertama narator 1,403 dtk) dan pada bingkai 720 (24,00 dtk; ketukan pertama terdengar 24,00 dtk); label sistolik muncul pada 25,63 dtk ("Ketukan pertama"), label diastolik pada 32,70 dtk ("Di titik itulah angka bawah"); bunyi pertama dan terakhir pada jejak bunyi sama dengan daftar ketukan audio (satu sumber `ketukan.json`).
+- Hasil gambar diperiksa lewat lembar kontak 2 bingkai per dtk dan tampilan 360 px (`../out/korotkoff-kontak-360px.png`, `../out/korotkoff-still-*.png`, `../out/korotkoff-cover-vs-awal-360px.png`). Lompatan antarbingkai terbesar: 12,8 dari 255 pada sapuan kembali ke Raka (40,0 dtk), 11,2 pada kartu penutup, 9,9 saat momen beku dilepas (25,83 dtk); tanpa lonjakan lain.
+- Teks layar: hanya tiga (pertanyaan, label sistolik, label diastolik) + kartu penutup; label kecil "SISTOLIK" dan "DIASTOLIK" pada pengukur adalah penanda dari dua momen itu.
+
+## Kekurangan yang diketahui
+- **Bunyi belum didengarkan oleh saya**; ketepatan waktu bunyi diperiksa dari daftar ketukan, bentuk gelombang, dan bingkai, bukan dengan telinga. Dentum "duk" bersifat sintetis; pada bunyi "duk" pembuka, dentum efek jatuh bersamaan dengan "duk" yang diucapkan narator sehingga terdengar menebal.
+- **Penyelarasan narasi**: batas kalimat dari jeda senyap (kira-kira 0,05 dtk); kata di dalam kalimat dari pengenalan suara (faster-whisper small) yang salah mengeja beberapa kata ("artery", "dengut", "statuskop", "moment"), sehingga posisi kata di dalam kalimat kira-kira +-0,3 dtk. Ketukan pertama ditempatkan pada kata "ketukan" di akhir kalimat ke-7 (24,00 dtk).
+- **Momen beku 1,9 dtk** memperpanjang adegan di atas narasi yang terus berjalan; selama itu hanya sorotan, redup, dan riak pada diafragma yang tampak diam.
+- **Anatomi skematis dan belum divalidasi atlas**: lapisan jaringan (kulit, lemak, otot, tulang lengan atas), ketebalan, jalur arteri yang naik ke dekat kulit di lipatan siku, ukuran arteri (digambar sekitar 2-3 kali lebih besar agar terbaca), dan vena kecil hanya digambar menyerupai; letak persis kepala stetoskop dan tepi manset sesuai prinsip pemasangan, bukan ukuran. Tidak ada sumber literatur yang dibuka untuk video ini; isi mengikuti narasi dan deskripsi pemesan. Belum ditinjau tenaga medis.
+- **Model fisika disederhanakan**: satu gelombang denyut, tekanan manset dianggap menurun linear, ketukan lemah-keras-lemah mengikuti satu fungsi; fase bunyi Korotkoff I-V tidak dipisahkan. Getaran dinding sebelum ketukan pertama (16,8-23,9 dtk) adalah penyederhanaan visual: dinding yang terjepit bergetar halus dan riaknya mereda sebelum mencapai diafragma, belum terdengar.
+- Posisi jarum pada ketukan pertama dan bunyi hilang adalah posisi skematis, bukan hasil pengukuran; skala jarum tanpa angka.
+- Tangan Raka: lengan kiri meregang melengkung ke stetoskop dan selang telinga digambar sederhana; tangan kanan hanya diletakkan di dekat bola pompa.
+- Lupa (kaca pembesar) menyalin lapisan penampang yang sama; garis tepinya kadang tampak bergerigi di bidang kecil.
+- Bagian atas layar pada adegan penampang lebih kosong (zona antarmuka aplikasi); jantung mini dan lupa mengisinya.
+- Kartu penutup hanya logo dan teks (tidak ada cuplikan web).
+- Model pengenalan suara diunduh dari Hugging Face sehingga jaringan sesi harus membuka beberapa host (`huggingface.co`, `us.aws.cdn.hf.co`, dll.); model tidak ikut di-commit.
