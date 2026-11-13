@@ -1,0 +1,4 @@
+frames/
+audio/*.wav
+!audio/narasi.wav
+rekam/web/

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover Satu Kasus, Banyak yang Harus Nyambung</title>
+<link rel="stylesheet" href="../../darah-tinggi/stage/fonts/fonts.css">
+<link rel="stylesheet" href="../stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#root{width:1080px;height:1920px;position:relative;overflow:hidden}#root svg{position:absolute;left:0;top:0}</style></head>
+<body><div id="root"><svg id="sc" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script type="module">
+// Cover vertikal: judul besar, Raka (kanonik) bingung di meja diskusi, lembar kasus "PASIEN SESAK", kartu berantakan dengan garis putus-putus, laptop MEDCOEL, Nilo.
+// Area aman Reels/TikTok: atas >= 250, bawah <= 1440, kanan <= 940. ?guide = garis area aman.
+import { f1, MC, FONT } from '../stage/core.js';
+import { raka, rakaSvg, idle } from '/brand/characters/raka/raka.js';
+import { loadMascots, mascot } from '../stage/mascot.js';
+import { R, T, pxt, pxBox, pxSpark } from '../stage/fx.js';
+import { DESK_Y, RAKA_POS, LAPTOP, SLOT, MESSY, CH, roomBack, deskTop, laptop, card, sheet, note, tab, link, notebook } from '../stage/scenes.js';
+const q = new URLSearchParams(location.search);
+await document.fonts.load('800 80px "Plus Jakarta Sans"'); await document.fonts.load('400 40px "Press Start 2P"'); await document.fonts.ready; await loadMascots();
+const t = 14.9, K = 0.86, TY = 1236;
+let s = '';
+// ---- latar ruang diskusi dipakai penuh (hanya digeser ke bawah); benda-bendanya diskalakan agar judul muat di area aman
+const DY = TY - DESK_Y;
+s += `<rect width="1080" height="1920" fill="#FBEFD6"/><g transform="translate(0 ${DY})">${roomBack(t)}</g>`;
+const rs = RAKA_POS.s, tx = RAKA_POS.x - 200 * rs, ty = DESK_Y - 640 * rs;
+const st = idle(raka('bingung', 'pegang_buku', { sweat: 0.7, yaw: 0.3, gazeX: 0.5, gazeY: 0.3 }), t);
+let w = `<g transform="translate(${tx} ${ty}) scale(${rs})">${rakaSvg(st, { bare: true, shadow: false, uid: 'rk' })}</g>` + notebook(RAKA_POS.x, ty + 506 * rs, 1, 0, 1.15);
+s += `<g transform="translate(0 ${DY})">${deskTop()}</g>`;
+const TABS = [[665, 612, -3, 0], [885, 692, 4, 1], [700, 776, -2, 2], [915, 816, 6, 3]];
+let o = laptop(t, 'on') + TABS.map(([x, y, r, i]) => tab(x, y, r, i, 1, 1)).join('');
+o += mascot('nilo', { x: 985, y: DESK_Y + 30, s: 0.72, flip: -1, arm: -62, eyes: 'normal', mouth: 'happy', spark: 0.9 });
+const sp = { x: SLOT.S[0], y: SLOT.S[1], rot: -4 };
+const P = { A: MESSY.A, F: MESSY.F, P: MESSY.P };
+const top = (p) => [p[0], p[1] - CH / 2 * 0.98];
+o += link([sp.x, sp.y - 120], top(P.A), { k: 0, lift: 70, t }) + link(top(P.A), top(P.F), { k: 0, lift: 84, t }) + link(top(P.F), top(P.P), { k: 0, lift: 70, t });
+o += [[240, 1395, 12], [520, 1226, -14], [770, 1404, 9]].map(([x, y, r], i) => note(x, y, r, i)).join('');
+o += sheet(sp.x, sp.y, { rot: sp.rot, k: 1, t });
+for (const kd of ['A', 'F', 'P']) o += card(kd, P[kd][0], P[kd][1], { rot: P[kd][2], t });
+o += pxSpark(120, 760, 1.2) + pxSpark(470, 700, 1);
+s += `<g transform="translate(540 ${TY}) scale(${K}) translate(-540 ${-DESK_Y})">${w}${o}</g>`;
+// ---- judul
+const L = (y, txt, fs, fill = MC.ink, extra = '') => `<text x="540" y="${y}" text-anchor="middle" font-family="${FONT}" font-weight="800" font-size="${fs}" fill="${fill}" stroke="#FFF6E0" stroke-width="16" paint-order="stroke" stroke-linejoin="round" ${extra}>${txt}</text>`;
+s += L(334, 'SATU KASUS,', 108) + L(432, 'BANYAK YANG', 108) + L(540, 'HARUS NYAMBUNG', 86, MC.brand);
+if (q.has('guide')) s += `<g fill="#FF0066" opacity=".16"><rect width="1080" height="250"/><rect y="1440" width="1080" height="480"/><rect x="940" y="250" width="140" height="1190"/></g><rect y="250" width="940" height="1190" fill="none" stroke="#FF0066" stroke-width="4" stroke-dasharray="14 10"/>`;
+document.getElementById('sc').innerHTML = s;
+await Promise.all([...document.images].map((i) => i.decode().catch(() => {}))); await new Promise((r) => setTimeout(r, 400)); window.__ready = true;
+</script></body></html>
