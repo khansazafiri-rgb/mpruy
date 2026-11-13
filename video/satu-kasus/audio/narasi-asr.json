@@ -1,0 +1,531 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.7,
+  "text": "Di diskusi kasus, keluhannya cuma satu. Pasien sesak.",
+  "words": [
+   {
+    "w": "Di",
+    "s": 0.0,
+    "e": 0.46
+   },
+   {
+    "w": "diskusi",
+    "s": 0.46,
+    "e": 0.74
+   },
+   {
+    "w": "kasus,",
+    "s": 0.74,
+    "e": 1.18
+   },
+   {
+    "w": "keluhannya",
+    "s": 1.52,
+    "e": 1.84
+   },
+   {
+    "w": "cuma",
+    "s": 1.84,
+    "e": 2.02
+   },
+   {
+    "w": "satu.",
+    "s": 2.02,
+    "e": 2.34
+   },
+   {
+    "w": "Pasien",
+    "s": 2.84,
+    "e": 3.26
+   },
+   {
+    "w": "sesak.",
+    "s": 3.26,
+    "e": 3.7
+   }
+  ]
+ },
+ {
+  "start": 4.32,
+  "end": 5.58,
+  "text": "Tapi begitu mulai dibahas.",
+  "words": [
+   {
+    "w": "Tapi",
+    "s": 4.32,
+    "e": 4.66
+   },
+   {
+    "w": "begitu",
+    "s": 4.66,
+    "e": 4.92
+   },
+   {
+    "w": "mulai",
+    "s": 4.92,
+    "e": 5.1
+   },
+   {
+    "w": "dibahas.",
+    "s": 5.1,
+    "e": 5.58
+   }
+  ]
+ },
+ {
+  "start": 6.42,
+  "end": 9.98,
+  "text": "Tunggu, ini masuk anatomi paru. Terus fisiologi napas.",
+  "words": [
+   {
+    "w": "Tunggu,",
+    "s": 6.42,
+    "e": 6.7
+   },
+   {
+    "w": "ini",
+    "s": 7.26,
+    "e": 7.44
+   },
+   {
+    "w": "masuk",
+    "s": 7.44,
+    "e": 7.66
+   },
+   {
+    "w": "anatomi",
+    "s": 7.66,
+    "e": 8.04
+   },
+   {
+    "w": "paru.",
+    "s": 8.04,
+    "e": 8.38
+   },
+   {
+    "w": "Terus",
+    "s": 8.86,
+    "e": 9.18
+   },
+   {
+    "w": "fisiologi",
+    "s": 9.18,
+    "e": 9.62
+   },
+   {
+    "w": "napas.",
+    "s": 9.62,
+    "e": 9.98
+   }
+  ]
+ },
+ {
+  "start": 10.66,
+  "end": 12.26,
+  "text": "Terus aku harus mikirin penyebabnya juga.",
+  "words": [
+   {
+    "w": "Terus",
+    "s": 10.66,
+    "e": 10.82
+   },
+   {
+    "w": "aku",
+    "s": 10.82,
+    "e": 10.96
+   },
+   {
+    "w": "harus",
+    "s": 10.96,
+    "e": 11.1
+   },
+   {
+    "w": "mikirin",
+    "s": 11.1,
+    "e": 11.48
+   },
+   {
+    "w": "penyebabnya",
+    "s": 11.48,
+    "e": 12.0
+   },
+   {
+    "w": "juga.",
+    "s": 12.0,
+    "e": 12.26
+   }
+  ]
+ },
+ {
+  "start": 13.04,
+  "end": 16.26,
+  "text": "Satu kasus, kok rasanya harus buka semua mata kuliah sekaligus?",
+  "words": [
+   {
+    "w": "Satu",
+    "s": 13.04,
+    "e": 13.38
+   },
+   {
+    "w": "kasus,",
+    "s": 13.38,
+    "e": 13.78
+   },
+   {
+    "w": "kok",
+    "s": 14.22,
+    "e": 14.44
+   },
+   {
+    "w": "rasanya",
+    "s": 14.44,
+    "e": 14.74
+   },
+   {
+    "w": "harus",
+    "s": 14.74,
+    "e": 14.86
+   },
+   {
+    "w": "buka",
+    "s": 14.86,
+    "e": 15.1
+   },
+   {
+    "w": "semua",
+    "s": 15.1,
+    "e": 15.26
+   },
+   {
+    "w": "mata",
+    "s": 15.26,
+    "e": 15.5
+   },
+   {
+    "w": "kuliah",
+    "s": 15.5,
+    "e": 15.76
+   },
+   {
+    "w": "sekaligus?",
+    "s": 15.76,
+    "e": 16.26
+   }
+  ]
+ },
+ {
+  "start": 17.14,
+  "end": 19.48,
+  "text": "Akhirnya aku mulai dari satu bab dulu di medkul.",
+  "words": [
+   {
+    "w": "Akhirnya",
+    "s": 17.14,
+    "e": 17.7
+   },
+   {
+    "w": "aku",
+    "s": 17.7,
+    "e": 17.84
+   },
+   {
+    "w": "mulai",
+    "s": 17.84,
+    "e": 18.1
+   },
+   {
+    "w": "dari",
+    "s": 18.1,
+    "e": 18.28
+   },
+   {
+    "w": "satu",
+    "s": 18.28,
+    "e": 18.64
+   },
+   {
+    "w": "bab",
+    "s": 18.64,
+    "e": 18.78
+   },
+   {
+    "w": "dulu",
+    "s": 18.78,
+    "e": 19.0
+   },
+   {
+    "w": "di",
+    "s": 19.0,
+    "e": 19.14
+   },
+   {
+    "w": "medkul.",
+    "s": 19.14,
+    "e": 19.48
+   }
+  ]
+ },
+ {
+  "start": 20.08,
+  "end": 22.9,
+  "text": "Baca materinya, coba inget lagi lewat flashcard,",
+  "words": [
+   {
+    "w": "Baca",
+    "s": 20.08,
+    "e": 20.4
+   },
+   {
+    "w": "materinya,",
+    "s": 20.4,
+    "e": 20.9
+   },
+   {
+    "w": "coba",
+    "s": 21.58,
+    "e": 21.8
+   },
+   {
+    "w": "inget",
+    "s": 21.8,
+    "e": 22.0
+   },
+   {
+    "w": "lagi",
+    "s": 22.0,
+    "e": 22.2
+   },
+   {
+    "w": "lewat",
+    "s": 22.2,
+    "e": 22.34
+   },
+   {
+    "w": "flashcard,",
+    "s": 22.34,
+    "e": 22.9
+   }
+  ]
+ },
+ {
+  "start": 23.38,
+  "end": 25.48,
+  "text": "lalu kerjakan soal, dan liat membahasannya.",
+  "words": [
+   {
+    "w": "lalu",
+    "s": 23.38,
+    "e": 23.62
+   },
+   {
+    "w": "kerjakan",
+    "s": 23.62,
+    "e": 23.92
+   },
+   {
+    "w": "soal,",
+    "s": 23.92,
+    "e": 24.42
+   },
+   {
+    "w": "dan",
+    "s": 24.78,
+    "e": 24.8
+   },
+   {
+    "w": "liat",
+    "s": 24.8,
+    "e": 24.98
+   },
+   {
+    "w": "membahasannya.",
+    "s": 24.98,
+    "e": 25.48
+   }
+  ]
+ },
+ {
+  "start": 26.16,
+  "end": 28.82,
+  "text": "Pelan-pelan bagian yang tadi berantakan mulai nyambung.",
+  "words": [
+   {
+    "w": "Pelan",
+    "s": 26.16,
+    "e": 26.56
+   },
+   {
+    "w": "-pelan",
+    "s": 26.56,
+    "e": 26.94
+   },
+   {
+    "w": "bagian",
+    "s": 26.94,
+    "e": 27.44
+   },
+   {
+    "w": "yang",
+    "s": 27.44,
+    "e": 27.56
+   },
+   {
+    "w": "tadi",
+    "s": 27.56,
+    "e": 27.74
+   },
+   {
+    "w": "berantakan",
+    "s": 27.74,
+    "e": 28.14
+   },
+   {
+    "w": "mulai",
+    "s": 28.14,
+    "e": 28.44
+   },
+   {
+    "w": "nyambung.",
+    "s": 28.44,
+    "e": 28.82
+   }
+  ]
+ },
+ {
+  "start": 29.68,
+  "end": 32.88,
+  "text": "Ternyata aku gak harus memahami semuanya dalam satu malam.",
+  "words": [
+   {
+    "w": "Ternyata",
+    "s": 29.68,
+    "e": 30.24
+   },
+   {
+    "w": "aku",
+    "s": 30.24,
+    "e": 30.44
+   },
+   {
+    "w": "gak",
+    "s": 30.44,
+    "e": 30.58
+   },
+   {
+    "w": "harus",
+    "s": 30.58,
+    "e": 30.78
+   },
+   {
+    "w": "memahami",
+    "s": 30.78,
+    "e": 31.24
+   },
+   {
+    "w": "semuanya",
+    "s": 31.24,
+    "e": 31.68
+   },
+   {
+    "w": "dalam",
+    "s": 31.68,
+    "e": 31.88
+   },
+   {
+    "w": "satu",
+    "s": 31.88,
+    "e": 32.1
+   },
+   {
+    "w": "malam.",
+    "s": 32.1,
+    "e": 32.88
+   }
+  ]
+ },
+ {
+  "start": 32.88,
+  "end": 34.6,
+  "text": "Aku cuma perlu tahu mulai dari mana.",
+  "words": [
+   {
+    "w": "Aku",
+    "s": 32.88,
+    "e": 33.3
+   },
+   {
+    "w": "cuma",
+    "s": 33.3,
+    "e": 33.5
+   },
+   {
+    "w": "perlu",
+    "s": 33.5,
+    "e": 33.72
+   },
+   {
+    "w": "tahu",
+    "s": 33.72,
+    "e": 33.9
+   },
+   {
+    "w": "mulai",
+    "s": 33.9,
+    "e": 34.18
+   },
+   {
+    "w": "dari",
+    "s": 34.18,
+    "e": 34.3
+   },
+   {
+    "w": "mana.",
+    "s": 34.3,
+    "e": 34.6
+   }
+  ]
+ },
+ {
+  "start": 35.7,
+  "end": 38.68,
+  "text": "Medkul, belajar FK gratis di medkul.com",
+  "words": [
+   {
+    "w": "Medkul,",
+    "s": 35.7,
+    "e": 36.26
+   },
+   {
+    "w": "belajar",
+    "s": 36.74,
+    "e": 37.1
+   },
+   {
+    "w": "FK",
+    "s": 37.1,
+    "e": 37.36
+   },
+   {
+    "w": "gratis",
+    "s": 37.36,
+    "e": 37.84
+   },
+   {
+    "w": "di",
+    "s": 37.84,
+    "e": 38.06
+   },
+   {
+    "w": "medkul",
+    "s": 38.06,
+    "e": 38.4
+   },
+   {
+    "w": ".com",
+    "s": 38.4,
+    "e": 38.68
+   }
+  ]
+ }
+]

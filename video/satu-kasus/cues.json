@@ -1,0 +1,117 @@
+{
+  "_catatan": "Jadwal bersama animasi (stage/stage.js) dan audio (audio/audio_mix.py). Waktu kata dari ASR narasi (audio/narasi-asr.json). Satuan detik.",
+  "dur": 39.0,
+  "sheetLand": 2.8,
+  "highlight": [
+    2.9,
+    4.4
+  ],
+  "bingung": 3.9,
+  "sheetToDesk": [
+    4.5,
+    5.4
+  ],
+  "tunggu": 6.42,
+  "cards": {
+    "A": 7.55,
+    "F": 9.1,
+    "P": 11.15
+  },
+  "notes": [
+    12.45,
+    12.8,
+    13.15
+  ],
+  "tabs": [
+    13.35,
+    13.95,
+    14.55,
+    15.15
+  ],
+  "mulaiDariMana": [
+    14.3,
+    16.6
+  ],
+  "slump": 15.6,
+  "recede": [
+    16.4,
+    17.1
+  ],
+  "nilo": 16.5,
+  "cardToLaptop": [
+    17.0,
+    17.55
+  ],
+  "zoomIn": [
+    17.0,
+    17.75
+  ],
+  "pixelIn": [
+    17.55,
+    17.9
+  ],
+  "panelGrow": [
+    17.9,
+    18.4
+  ],
+  "web": {
+    "mk": [
+      17.9,
+      18.75
+    ],
+    "bab": [
+      18.75,
+      19.65
+    ],
+    "materi": [
+      19.65,
+      21.75
+    ],
+    "flash": [
+      21.75,
+      23.15
+    ],
+    "soal": [
+      23.15,
+      26.9
+    ]
+  },
+  "clicks": [
+    18.15,
+    19.05,
+    19.8,
+    21.0,
+    22.0,
+    22.45,
+    23.4,
+    24.0,
+    24.55,
+    25.05
+  ],
+  "pixelOut": [
+    26.7,
+    27.2
+  ],
+  "zoomOut": [
+    27.0,
+    27.8
+  ],
+  "tidy": [
+    27.85,
+    28.35
+  ],
+  "connect": 28.4,
+  "kila": [
+    28.4,
+    30.2
+  ],
+  "relax": 29.7,
+  "endCard": 35.7,
+  "endLogo": 35.8,
+  "endTitle": 36.5,
+  "endUrl": 37.3,
+  "ret": [
+    27.45,
+    27.95
+  ]
+}
