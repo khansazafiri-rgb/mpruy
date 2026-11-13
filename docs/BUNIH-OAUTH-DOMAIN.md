@@ -2,7 +2,7 @@
 
 ## Tujuan dan batas keamanan
 
-- Halaman **publik**: `https://medcoel.com/bunih/index.html`, `/bunih/index.htmlprivacy/index.html`, `/bunih/index.htmlterms/index.html`.
+- Halaman **publik**: `https://medcoel.com/bunih/index.html`, `/bunih/privacy/index.html`, `/bunih/terms/index.html`.
 - Halaman publik disajikan dari **website MEDCOEL** yang menggunakan Caddy + Vite static build.
 - Aplikasi keuangan BUnih dan Gmail OAuth tetap di **server Tencent + Tailscale**, bukan di website publik MEDCOEL.
 - **Jangan** mengganti A record `medcoel.com` ke server Tencent, jangan memasukkan token BUnih ke repo MEDCOEL, dan jangan meneruskan `/api/*` MEDCOEL ke BUnih.
@@ -11,10 +11,10 @@
 
 Semua ini adalah HTML statis, tanpa Javascript dan tanpa API:
 
-- `apps/web/public/bunih/index.htmlindex.html`
-- `apps/web/public/bunih/index.htmlprivacy/index.htmlindex.html`
-- `apps/web/public/bunih/index.htmlterms/index.htmlindex.html`
-- `apps/web/public/bunih/index.htmlstyles.css`
+- `apps/web/public/bunih/index.html`
+- `apps/web/public/bunih/privacy/index.html`
+- `apps/web/public/bunih/terms/index.html`
+- `apps/web/public/bunih/styles.css`
 
 Vite menyalin semua isi `public/` ke `dist/` saat `npm run build --prefix apps/web`.
 Caddy MEDCOEL punya `root /opt/medcoel/app/apps/web/dist` dan `file_server`. 
@@ -39,12 +39,12 @@ dijalankan di server MEDCOEL di mana `/opt/medcoel/app` merupakan git checkout:
 ```bash
 cd /opt/medcoel/app
 git fetch origin feature/bunih-oauth-public-pages
-sudo install -d -m 0755 /opt/medcoel/app/apps/web/dist/bunih/index.htmlprivacy
-sudo install -d -m 0755 /opt/medcoel/app/apps/web/dist/bunih/index.htmlterms
+sudo install -d -m 0755 /opt/medcoel/app/apps/web/dist/bunih/privacy
+sudo install -d -m 0755 /opt/medcoel/app/apps/web/dist/bunih/terms
 
 for path in index.html privacy/index.html terms/index.html styles.css; do
-  git show "origin/feature/bunih-oauth-public-pages:apps/web/public/bunih/index.html${path}" \
-    | sudo tee "/opt/medcoel/app/apps/web/dist/bunih/index.html${path}" >/dev/null
+  git show "origin/feature/bunih-oauth-public-pages:apps/web/public/bunih/${path}" \
+    | sudo tee "/opt/medcoel/app/apps/web/dist/bunih/${path}" >/dev/null
 done
 sudo find /opt/medcoel/app/apps/web/dist/bunih -type f -exec chmod 0644 {} +
 ```
@@ -56,7 +56,7 @@ tidak menimpa route lain dan tidak me-restart Hermes/PocketBase/Caddy.
 3. Verifikasi dari browser jaringan publik dan shell server:
 
 ```bash
-for uri in /bunih/index.html /bunih/index.htmlprivacy/index.html /bunih/index.htmlterms/index.html /bunih/index.htmlstyles.css; do
+for uri in /bunih/index.html /bunih/privacy/index.html /bunih/terms/index.html /bunih/styles.css; do
   curl -IL --max-time 15 "https://medcoel.com${uri}" | grep -Ei '^HTTP/|^location:|^content-type:'
 done
 ```
@@ -83,8 +83,8 @@ benar dan pastikan file masuk ke alur build reguler sebelum menganggapnya perman
 
 Setelah tiga URL di atas benar-benar bisa dibuka publik, isi:
 - Application home page: `https://medcoel.com/bunih/index.html`
-- Application privacy policy link: `https://medcoel.com/bunih/index.htmlprivacy/index.html`
-- Application terms of service link: `https://medcoel.com/bunih/index.htmlterms/index.html`
+- Application privacy policy link: `https://medcoel.com/bunih/privacy/index.html`
+- Application terms of service link: `https://medcoel.com/bunih/terms/index.html`
 - Authorized domain: `medcoel.com`
 
 Gunakan email dukungan yang benar-benar aktif dan pastikan isi kebijakan privasi
