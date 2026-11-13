@@ -1,0 +1,704 @@
+[
+ {
+  "start": 0.0,
+  "end": 4.24,
+  "text": "Lihat area gelap di atas diafragma ini. Menurutmu itu apa?",
+  "words": [
+   {
+    "w": "Lihat",
+    "s": 0.0,
+    "e": 0.64
+   },
+   {
+    "w": "area",
+    "s": 0.64,
+    "e": 0.9
+   },
+   {
+    "w": "gelap",
+    "s": 0.9,
+    "e": 1.24
+   },
+   {
+    "w": "di",
+    "s": 1.24,
+    "e": 1.38
+   },
+   {
+    "w": "atas",
+    "s": 1.38,
+    "e": 1.56
+   },
+   {
+    "w": "diafragma",
+    "s": 1.56,
+    "e": 2.04
+   },
+   {
+    "w": "ini.",
+    "s": 2.04,
+    "e": 2.24
+   },
+   {
+    "w": "Menurutmu",
+    "s": 2.72,
+    "e": 3.48
+   },
+   {
+    "w": "itu",
+    "s": 3.48,
+    "e": 3.92
+   },
+   {
+    "w": "apa?",
+    "s": 3.92,
+    "e": 4.24
+   }
+  ]
+ },
+ {
+  "start": 5.18,
+  "end": 12.08,
+  "text": "Di Live 4D Lab Metco L kita bisa menggerakan probe dan membandingkan tampilan normal dengan skenario effusi pelourakanan.",
+  "words": [
+   {
+    "w": "Di",
+    "s": 5.18,
+    "e": 5.38
+   },
+   {
+    "w": "Live",
+    "s": 5.38,
+    "e": 5.6
+   },
+   {
+    "w": "4D",
+    "s": 5.6,
+    "e": 6.06
+   },
+   {
+    "w": "Lab",
+    "s": 6.06,
+    "e": 6.32
+   },
+   {
+    "w": "Metco",
+    "s": 6.32,
+    "e": 6.7
+   },
+   {
+    "w": "L",
+    "s": 6.7,
+    "e": 6.96
+   },
+   {
+    "w": "kita",
+    "s": 6.96,
+    "e": 7.32
+   },
+   {
+    "w": "bisa",
+    "s": 7.32,
+    "e": 7.54
+   },
+   {
+    "w": "menggerakan",
+    "s": 7.54,
+    "e": 7.94
+   },
+   {
+    "w": "probe",
+    "s": 7.94,
+    "e": 8.32
+   },
+   {
+    "w": "dan",
+    "s": 8.32,
+    "e": 8.52
+   },
+   {
+    "w": "membandingkan",
+    "s": 8.52,
+    "e": 9.22
+   },
+   {
+    "w": "tampilan",
+    "s": 9.22,
+    "e": 9.6
+   },
+   {
+    "w": "normal",
+    "s": 9.6,
+    "e": 9.96
+   },
+   {
+    "w": "dengan",
+    "s": 9.96,
+    "e": 10.38
+   },
+   {
+    "w": "skenario",
+    "s": 10.38,
+    "e": 10.94
+   },
+   {
+    "w": "effusi",
+    "s": 10.94,
+    "e": 11.42
+   },
+   {
+    "w": "pelourakanan.",
+    "s": 11.42,
+    "e": 12.08
+   }
+  ]
+ },
+ {
+  "start": 12.48,
+  "end": 17.28,
+  "text": "Effusi peloura terjadi ketika cairan terkumpul di ruang tipis antara paru dan dinding dada.",
+  "words": [
+   {
+    "w": "Effusi",
+    "s": 12.48,
+    "e": 13.14
+   },
+   {
+    "w": "peloura",
+    "s": 13.14,
+    "e": 13.56
+   },
+   {
+    "w": "terjadi",
+    "s": 13.56,
+    "e": 13.88
+   },
+   {
+    "w": "ketika",
+    "s": 13.88,
+    "e": 14.24
+   },
+   {
+    "w": "cairan",
+    "s": 14.24,
+    "e": 14.68
+   },
+   {
+    "w": "terkumpul",
+    "s": 14.68,
+    "e": 15.24
+   },
+   {
+    "w": "di",
+    "s": 15.24,
+    "e": 15.38
+   },
+   {
+    "w": "ruang",
+    "s": 15.38,
+    "e": 15.54
+   },
+   {
+    "w": "tipis",
+    "s": 15.54,
+    "e": 15.92
+   },
+   {
+    "w": "antara",
+    "s": 15.92,
+    "e": 16.24
+   },
+   {
+    "w": "paru",
+    "s": 16.24,
+    "e": 16.56
+   },
+   {
+    "w": "dan",
+    "s": 16.56,
+    "e": 16.74
+   },
+   {
+    "w": "dinding",
+    "s": 16.74,
+    "e": 17.02
+   },
+   {
+    "w": "dada.",
+    "s": 17.02,
+    "e": 17.28
+   }
+  ]
+ },
+ {
+  "start": 17.68,
+  "end": 22.42,
+  "text": "Pada simulasi USG ini, cairannya tampak sebagai area gelap di atas diafragma.",
+  "words": [
+   {
+    "w": "Pada",
+    "s": 17.68,
+    "e": 18.08
+   },
+   {
+    "w": "simulasi",
+    "s": 18.08,
+    "e": 18.5
+   },
+   {
+    "w": "USG",
+    "s": 18.5,
+    "e": 18.94
+   },
+   {
+    "w": "ini,",
+    "s": 18.94,
+    "e": 19.16
+   },
+   {
+    "w": "cairannya",
+    "s": 19.56,
+    "e": 19.96
+   },
+   {
+    "w": "tampak",
+    "s": 19.96,
+    "e": 20.46
+   },
+   {
+    "w": "sebagai",
+    "s": 20.46,
+    "e": 20.68
+   },
+   {
+    "w": "area",
+    "s": 20.68,
+    "e": 21.16
+   },
+   {
+    "w": "gelap",
+    "s": 21.16,
+    "e": 21.58
+   },
+   {
+    "w": "di",
+    "s": 21.58,
+    "e": 21.72
+   },
+   {
+    "w": "atas",
+    "s": 21.72,
+    "e": 21.9
+   },
+   {
+    "w": "diafragma.",
+    "s": 21.9,
+    "e": 22.42
+   }
+  ]
+ },
+ {
+  "start": 22.96,
+  "end": 25.7,
+  "text": "Di tepinya, paru yang tertekan juga bisa terlihat.",
+  "words": [
+   {
+    "w": "Di",
+    "s": 22.96,
+    "e": 23.2
+   },
+   {
+    "w": "tepinya,",
+    "s": 23.2,
+    "e": 23.48
+   },
+   {
+    "w": "paru",
+    "s": 23.96,
+    "e": 24.14
+   },
+   {
+    "w": "yang",
+    "s": 24.14,
+    "e": 24.28
+   },
+   {
+    "w": "tertekan",
+    "s": 24.28,
+    "e": 24.72
+   },
+   {
+    "w": "juga",
+    "s": 24.72,
+    "e": 24.96
+   },
+   {
+    "w": "bisa",
+    "s": 24.96,
+    "e": 25.28
+   },
+   {
+    "w": "terlihat.",
+    "s": 25.28,
+    "e": 25.7
+   }
+  ]
+ },
+ {
+  "start": 26.3,
+  "end": 32.24,
+  "text": "Sekarang pindah ke tampilan city. Cairan tampak berkumpul di bagian belakang dan bawah rungga dada kanan.",
+  "words": [
+   {
+    "w": "Sekarang",
+    "s": 26.3,
+    "e": 26.82
+   },
+   {
+    "w": "pindah",
+    "s": 26.82,
+    "e": 27.18
+   },
+   {
+    "w": "ke",
+    "s": 27.18,
+    "e": 27.28
+   },
+   {
+    "w": "tampilan",
+    "s": 27.28,
+    "e": 27.6
+   },
+   {
+    "w": "city.",
+    "s": 27.6,
+    "e": 27.9
+   },
+   {
+    "w": "Cairan",
+    "s": 28.48,
+    "e": 28.92
+   },
+   {
+    "w": "tampak",
+    "s": 28.92,
+    "e": 29.42
+   },
+   {
+    "w": "berkumpul",
+    "s": 29.42,
+    "e": 29.98
+   },
+   {
+    "w": "di",
+    "s": 29.98,
+    "e": 30.12
+   },
+   {
+    "w": "bagian",
+    "s": 30.12,
+    "e": 30.42
+   },
+   {
+    "w": "belakang",
+    "s": 30.42,
+    "e": 30.88
+   },
+   {
+    "w": "dan",
+    "s": 30.88,
+    "e": 31.1
+   },
+   {
+    "w": "bawah",
+    "s": 31.1,
+    "e": 31.46
+   },
+   {
+    "w": "rungga",
+    "s": 31.46,
+    "e": 31.7
+   },
+   {
+    "w": "dada",
+    "s": 31.7,
+    "e": 31.86
+   },
+   {
+    "w": "kanan.",
+    "s": 31.86,
+    "e": 32.24
+   }
+  ]
+ },
+ {
+  "start": 32.82,
+  "end": 38.16,
+  "text": "Kalau cairannya cukup banyak, paru di sekitarnya bisa tertekan dan seseorang dapat merasa sesak.",
+  "words": [
+   {
+    "w": "Kalau",
+    "s": 32.82,
+    "e": 33.16
+   },
+   {
+    "w": "cairannya",
+    "s": 33.16,
+    "e": 33.6
+   },
+   {
+    "w": "cukup",
+    "s": 33.6,
+    "e": 33.9
+   },
+   {
+    "w": "banyak,",
+    "s": 33.9,
+    "e": 34.22
+   },
+   {
+    "w": "paru",
+    "s": 34.62,
+    "e": 34.84
+   },
+   {
+    "w": "di",
+    "s": 34.84,
+    "e": 34.94
+   },
+   {
+    "w": "sekitarnya",
+    "s": 34.94,
+    "e": 35.34
+   },
+   {
+    "w": "bisa",
+    "s": 35.34,
+    "e": 35.54
+   },
+   {
+    "w": "tertekan",
+    "s": 35.54,
+    "e": 36.16
+   },
+   {
+    "w": "dan",
+    "s": 36.16,
+    "e": 36.54
+   },
+   {
+    "w": "seseorang",
+    "s": 36.54,
+    "e": 37.1
+   },
+   {
+    "w": "dapat",
+    "s": 37.1,
+    "e": 37.42
+   },
+   {
+    "w": "merasa",
+    "s": 37.42,
+    "e": 37.76
+   },
+   {
+    "w": "sesak.",
+    "s": 37.76,
+    "e": 38.16
+   }
+  ]
+ },
+ {
+  "start": 38.74,
+  "end": 41.92,
+  "text": "Tapi gambar saja belum menjawab apa penyebab cairannya.",
+  "words": [
+   {
+    "w": "Tapi",
+    "s": 38.74,
+    "e": 39.12
+   },
+   {
+    "w": "gambar",
+    "s": 39.12,
+    "e": 39.66
+   },
+   {
+    "w": "saja",
+    "s": 39.66,
+    "e": 39.94
+   },
+   {
+    "w": "belum",
+    "s": 39.94,
+    "e": 40.2
+   },
+   {
+    "w": "menjawab",
+    "s": 40.2,
+    "e": 40.74
+   },
+   {
+    "w": "apa",
+    "s": 40.74,
+    "e": 41.1
+   },
+   {
+    "w": "penyebab",
+    "s": 41.1,
+    "e": 41.44
+   },
+   {
+    "w": "cairannya.",
+    "s": 41.44,
+    "e": 41.92
+   }
+  ]
+ },
+ {
+  "start": 42.7,
+  "end": 46.18,
+  "text": "Di sini, kita belajar mengenali pola dan memahami letaknya.",
+  "words": [
+   {
+    "w": "Di",
+    "s": 42.7,
+    "e": 42.94
+   },
+   {
+    "w": "sini,",
+    "s": 42.94,
+    "e": 43.2
+   },
+   {
+    "w": "kita",
+    "s": 43.52,
+    "e": 43.82
+   },
+   {
+    "w": "belajar",
+    "s": 43.82,
+    "e": 44.2
+   },
+   {
+    "w": "mengenali",
+    "s": 44.2,
+    "e": 44.58
+   },
+   {
+    "w": "pola",
+    "s": 44.58,
+    "e": 45.04
+   },
+   {
+    "w": "dan",
+    "s": 45.04,
+    "e": 45.24
+   },
+   {
+    "w": "memahami",
+    "s": 45.24,
+    "e": 45.72
+   },
+   {
+    "w": "letaknya.",
+    "s": 45.72,
+    "e": 46.18
+   }
+  ]
+ },
+ {
+  "start": 46.52,
+  "end": 48.78,
+  "text": "Ini simulasi edukatif, bukan alat diagnosis.",
+  "words": [
+   {
+    "w": "Ini",
+    "s": 46.52,
+    "e": 46.7
+   },
+   {
+    "w": "simulasi",
+    "s": 46.7,
+    "e": 47.12
+   },
+   {
+    "w": "edukatif,",
+    "s": 47.12,
+    "e": 47.64
+   },
+   {
+    "w": "bukan",
+    "s": 47.98,
+    "e": 48.14
+   },
+   {
+    "w": "alat",
+    "s": 48.14,
+    "e": 48.4
+   },
+   {
+    "w": "diagnosis.",
+    "s": 48.4,
+    "e": 48.78
+   }
+  ]
+ },
+ {
+  "start": 49.48,
+  "end": 52.52,
+  "text": "Coba jelajahi Live 4D Lab gratis di Metco L.com.",
+  "words": [
+   {
+    "w": "Coba",
+    "s": 49.48,
+    "e": 49.7
+   },
+   {
+    "w": "jelajahi",
+    "s": 49.7,
+    "e": 50.24
+   },
+   {
+    "w": "Live",
+    "s": 50.24,
+    "e": 50.5
+   },
+   {
+    "w": "4D",
+    "s": 50.5,
+    "e": 50.9
+   },
+   {
+    "w": "Lab",
+    "s": 50.9,
+    "e": 51.06
+   },
+   {
+    "w": "gratis",
+    "s": 51.06,
+    "e": 51.52
+   },
+   {
+    "w": "di",
+    "s": 51.52,
+    "e": 51.76
+   },
+   {
+    "w": "Metco",
+    "s": 51.76,
+    "e": 52.04
+   },
+   {
+    "w": "L",
+    "s": 52.04,
+    "e": 52.2
+   },
+   {
+    "w": ".com.",
+    "s": 52.2,
+    "e": 52.52
+   }
+  ]
+ }
+]

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover Efusi pleura kanan</title>
+<link rel="stylesheet" href="../stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#root{width:1080px;height:1920px;position:relative;overflow:hidden}#root svg{position:absolute;left:0;top:0}</style></head>
+<body><div id="root"><svg id="sc" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script type="module">
+// Cover: citra USG asli Live 4D Lab (rekaman, 22,0 dtk) dengan penanda halus dari raster aplikasi. Area aman Reels/TikTok: atas >= 250, bawah <= 1440, kanan <= 940. ?guide = garis area aman.
+const q = new URLSearchParams(location.search);
+await document.fonts.load('800 80px "Plus Jakarta Sans"'); await document.fonts.ready;
+const AN = await (await fetch('../data/anchors.json')).json();
+const K = 330, FR = `../rekam/frames/EF/f${String(K).padStart(4, '0')}`, a = AN.EF[K];
+const f1 = (n) => Math.round(n * 10) / 10, F = "'Plus Jakarta Sans', sans-serif";
+const FAN = { x: 400, y: 100, w: 780, h: 690 }, dst = { x: 70, y: 650, w: 800, h: 708 }, sc = dst.w / FAN.w;
+const mk = (n, c) => `<filter id="mk-${n}" x="-4%" y="-4%" width="108%" height="108%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="3" result="b"/><feComponentTransfer in="b" result="s"><feFuncA type="linear" slope="16" intercept="-7"/></feComponentTransfer><feMorphology in="s" operator="erode" radius="2.4" result="e"/><feComposite in="s" in2="e" operator="out" result="edge"/><feFlood flood-color="${c}" flood-opacity=".95" result="fc"/><feComposite in="fc" in2="edge" operator="in" result="ring"/><feFlood flood-color="${c}" flood-opacity=".08" result="ff"/><feComposite in="ff" in2="s" operator="in" result="fill"/><feMerge><feMergeNode in="fill"/><feMergeNode in="ring"/></feMerge></filter>`;
+const lay = a.lay.us || Object.values(a.lay)[0], [cx, cy] = a.cv, x0 = cx + lay.x0 / 2, y0 = cy + lay.y0 / 2;
+const X = (x) => dst.x + (x - FAN.x) * sc, Y = (y) => dst.y + (y - FAN.y) * sc;
+const mimg = (n, c) => `<image href="${FR}_${n}.png" x="${f1(X(x0))}" y="${f1(Y(y0))}" width="${f1(lay.dw / 2 * sc)}" height="${f1(lay.dh / 2 * sc)}" preserveAspectRatio="none" filter="url(#mk-${c})"/>`;
+const pt = (n) => { const m = a.m[n]; return [X(x0 + m.c[0] / 420 * lay.dw / 2), Y(y0 + m.c[1] / 298 * lay.dh / 2)]; };
+const pill = (x, y, txt, c, fs = 30, anchor = 'middle') => { const w = txt.length * fs * 0.6 + 40, xx = anchor === 'middle' ? x - w / 2 : x; return `<rect x="${f1(xx)}" y="${f1(y - fs - 6)}" width="${f1(w)}" height="${fs + 22}" rx="${(fs + 22) / 2}" fill="rgba(6,21,25,.88)" stroke="${c}" stroke-width="3"/><text x="${f1(xx + w / 2)}" y="${f1(y + 4)}" text-anchor="middle" font-family="${F}" font-weight="800" font-size="${fs}" fill="#EAF7F4">${txt}</text>`; };
+const [fx, fy] = pt('pleural_fluid'), [dx, dy] = pt('diaphragm');
+let s = `<defs>${mk('cyan', '#5CE1E6')}${mk('gold', '#F8C038')}${mk('coral', '#FF7A9C')}<linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#061519"/><stop offset="1" stop-color="#0B2C31"/></linearGradient><radialGradient id="gl" cx=".5" cy=".5" r=".6"><stop offset="0" stop-color="#0E5A57" stop-opacity=".6"/><stop offset="1" stop-color="#0E5A57" stop-opacity="0"/></radialGradient><clipPath id="cc"><rect x="${dst.x}" y="${dst.y}" width="${dst.w}" height="${dst.h}" rx="34"/></clipPath></defs><rect width="1080" height="1920" fill="url(#g)"/><ellipse cx="470" cy="1000" rx="620" ry="760" fill="url(#gl)"/>`;
+s += `<rect x="70" y="262" width="360" height="104" rx="30" fill="rgba(248,247,243,.97)"/><image href="logo-full.webp" x="92" y="272" width="316" height="84" preserveAspectRatio="xMidYMid meet"/>`;
+s += `<rect x="462" y="294" width="406" height="56" rx="28" fill="rgba(6,21,25,.88)" stroke="#5CE1E6" stroke-width="3"/><text x="665" y="332" text-anchor="middle" font-family="${F}" font-weight="800" font-size="28" fill="#EAF7F4">LIVE 4D LAB · SIMULASI</text>`;
+s += `<text x="70" y="500" font-family="${F}" font-weight="800" font-size="118" fill="#F8F7F3">Efusi pleura</text><text x="70" y="620" font-family="${F}" font-weight="800" font-size="118" fill="#F8C038">kanan</text>`;
+s += `<g clip-path="url(#cc)"><image href="${FR}.jpg" x="${f1(dst.x - FAN.x * sc)}" y="${f1(dst.y - FAN.y * sc)}" width="${f1(1600 * sc)}" height="${f1(950 * sc)}" preserveAspectRatio="none"/>${mimg('pleural_fluid', 'cyan')}${mimg('diaphragm', 'gold')}${mimg('atelectasis', 'coral')}</g><rect x="${dst.x}" y="${dst.y}" width="${dst.w}" height="${dst.h}" rx="34" fill="none" stroke="rgba(124,224,184,.55)" stroke-width="4"/>`;
+s += pill(fx - 30, fy + 10, 'AREA GELAP', '#5CE1E6', 32) + pill(dx - 10, dy + 56, 'DIAFRAGMA', '#F8C038', 28);
+s += pill(470, 1412, 'Simulasi edukatif, bukan alat diagnosis', 'rgba(124,224,184,.6)', 26);
+if (q.has('guide')) s += `<g fill="#FF0066" opacity=".16"><rect width="1080" height="250"/><rect y="1440" width="1080" height="480"/><rect x="940" y="250" width="140" height="1190"/></g><rect y="250" width="940" height="1190" fill="none" stroke="#FF0066" stroke-width="4" stroke-dasharray="14 10"/>`;
+document.getElementById('sc').innerHTML = s;
+await Promise.all([...document.images].map((i) => i.decode().catch(() => {}))); await new Promise((r) => setTimeout(r, 500)); window.__ready = true;
+</script></body></html>

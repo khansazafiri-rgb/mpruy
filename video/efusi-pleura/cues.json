@@ -1,0 +1,123 @@
+{
+  "_catatan": "Jadwal bersama panggung (stage/stage.js) dan audio (audio/audio_mix.py). Waktu kata dari ASR narasi (audio/narasi-asr.json). Detik. Rekaman web: 15 fps pada waktu video (rekam/rekam.cjs).",
+  "dur": 52.88,
+  "rec": {
+    "A": [
+      0,
+      75
+    ],
+    "BC": [
+      75,
+      186
+    ],
+    "EF": [
+      261,
+      486
+    ],
+    "H": [
+      579,
+      741
+    ]
+  },
+  "sc": {
+    "A": [
+      0,
+      5.0
+    ],
+    "BC": [
+      5.0,
+      12.4
+    ],
+    "D": [
+      12.4,
+      17.4
+    ],
+    "EF": [
+      17.4,
+      32.4
+    ],
+    "G": [
+      32.4,
+      38.6
+    ],
+    "H": [
+      38.6,
+      49.4
+    ],
+    "I": [
+      49.4,
+      52.88
+    ]
+  },
+  "A": {
+    "zoom": [
+      0.25,
+      1.6
+    ],
+    "gelap": 0.9,
+    "diafragma": 1.56,
+    "tanya": 3.92
+  },
+  "BC": {
+    "padRight": 5.6,
+    "padInferior": 6.3,
+    "drawer1": 6.9,
+    "pilihJendela": 7.52,
+    "drawerTutup1": 8.2,
+    "tautan": [
+      8.3,
+      9.3
+    ],
+    "drawer2": 9.25,
+    "tabPatologi": 9.7,
+    "bandingNormal": 10.25,
+    "kembaliEfusi": 11.2,
+    "drawerTutup2": 11.95
+  },
+  "D": {
+    "ruangTipis": [
+      13.1,
+      15.0
+    ],
+    "cairan": [
+      14.24,
+      16.3
+    ],
+    "paru": 16.24,
+    "dinding": 16.74
+  },
+  "EF": {
+    "cairan": 19.56,
+    "diafragma": 21.9,
+    "paruTertekan": 23.96,
+    "modeCT": 26.75,
+    "ctLabel": 28.1
+  },
+  "G": {
+    "naik": [
+      33.0,
+      35.8
+    ],
+    "tertekan": [
+      34.62,
+      36.2
+    ],
+    "sesak": 37.76
+  },
+  "H": {
+    "penyebab": 39.94,
+    "pola": 43.52,
+    "letak": 45.24,
+    "edukatif": 46.52
+  },
+  "I": {
+    "logo": 49.5,
+    "cta": 50.6
+  },
+  "klik": [
+    7.52,
+    10.25,
+    11.2,
+    26.75
+  ]
+}
