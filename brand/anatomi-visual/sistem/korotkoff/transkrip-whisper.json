@@ -1,0 +1,536 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.98,
+  "text": "Pernah dengar bunyi duk-duk saat mengukur tensi manual?",
+  "words": [
+   {
+    "w": " Pernah",
+    "s": 0.0,
+    "e": 0.44
+   },
+   {
+    "w": " dengar",
+    "s": 0.44,
+    "e": 0.78
+   },
+   {
+    "w": " bunyi",
+    "s": 0.78,
+    "e": 1.16
+   },
+   {
+    "w": " duk",
+    "s": 1.16,
+    "e": 1.7
+   },
+   {
+    "w": "-duk",
+    "s": 1.7,
+    "e": 2.64
+   },
+   {
+    "w": " saat",
+    "s": 2.64,
+    "e": 3.1
+   },
+   {
+    "w": " mengukur",
+    "s": 3.1,
+    "e": 3.48
+   },
+   {
+    "w": " tensi",
+    "s": 3.48,
+    "e": 3.74
+   },
+   {
+    "w": " manual?",
+    "s": 3.74,
+    "e": 3.98
+   }
+  ]
+ },
+ {
+  "start": 4.68,
+  "end": 5.74,
+  "text": "Sebenarnya itu bunyi apa?",
+  "words": [
+   {
+    "w": " Sebenarnya",
+    "s": 4.68,
+    "e": 5.18
+   },
+   {
+    "w": " itu",
+    "s": 5.18,
+    "e": 5.36
+   },
+   {
+    "w": " bunyi",
+    "s": 5.36,
+    "e": 5.54
+   },
+   {
+    "w": " apa?",
+    "s": 5.54,
+    "e": 5.74
+   }
+  ]
+ },
+ {
+  "start": 6.72,
+  "end": 9.66,
+  "text": "Saat manset di pompa, artery dilenggan tertekan.",
+  "words": [
+   {
+    "w": " Saat",
+    "s": 6.72,
+    "e": 7.26
+   },
+   {
+    "w": " manset",
+    "s": 7.26,
+    "e": 7.58
+   },
+   {
+    "w": " di",
+    "s": 7.58,
+    "e": 7.7
+   },
+   {
+    "w": " pompa,",
+    "s": 7.7,
+    "e": 8.14
+   },
+   {
+    "w": " artery",
+    "s": 8.5,
+    "e": 8.68
+   },
+   {
+    "w": " dilenggan",
+    "s": 8.68,
+    "e": 9.12
+   },
+   {
+    "w": " tertekan.",
+    "s": 9.12,
+    "e": 9.66
+   }
+  ]
+ },
+ {
+  "start": 10.1,
+  "end": 13.1,
+  "text": "Ketika tekanan yang masih tinggi, belum ada ketukan yang terdengar.",
+  "words": [
+   {
+    "w": " Ketika",
+    "s": 10.1,
+    "e": 10.54
+   },
+   {
+    "w": " tekanan",
+    "s": 10.54,
+    "e": 10.92
+   },
+   {
+    "w": " yang",
+    "s": 10.92,
+    "e": 11.0
+   },
+   {
+    "w": " masih",
+    "s": 11.0,
+    "e": 11.14
+   },
+   {
+    "w": " tinggi,",
+    "s": 11.14,
+    "e": 11.58
+   },
+   {
+    "w": " belum",
+    "s": 11.9,
+    "e": 12.04
+   },
+   {
+    "w": " ada",
+    "s": 12.04,
+    "e": 12.22
+   },
+   {
+    "w": " ketukan",
+    "s": 12.22,
+    "e": 12.48
+   },
+   {
+    "w": " yang",
+    "s": 12.48,
+    "e": 12.62
+   },
+   {
+    "w": " terdengar.",
+    "s": 12.62,
+    "e": 13.1
+   }
+  ]
+ },
+ {
+  "start": 13.62,
+  "end": 15.72,
+  "text": "Lalu, manset dikempiskan perlahan.",
+  "words": [
+   {
+    "w": " Lalu,",
+    "s": 13.62,
+    "e": 14.32
+   },
+   {
+    "w": " manset",
+    "s": 14.54,
+    "e": 14.76
+   },
+   {
+    "w": " dikempiskan",
+    "s": 14.76,
+    "e": 15.24
+   },
+   {
+    "w": " perlahan.",
+    "s": 15.24,
+    "e": 15.72
+   }
+  ]
+ },
+ {
+  "start": 16.36,
+  "end": 19.68,
+  "text": "Setiap dengut jantung mulai menggerakan bagian artery yang masih tertekan.",
+  "words": [
+   {
+    "w": " Setiap",
+    "s": 16.36,
+    "e": 16.74
+   },
+   {
+    "w": " dengut",
+    "s": 16.74,
+    "e": 16.96
+   },
+   {
+    "w": " jantung",
+    "s": 16.96,
+    "e": 17.4
+   },
+   {
+    "w": " mulai",
+    "s": 17.4,
+    "e": 17.82
+   },
+   {
+    "w": " menggerakan",
+    "s": 17.82,
+    "e": 18.22
+   },
+   {
+    "w": " bagian",
+    "s": 18.22,
+    "e": 18.56
+   },
+   {
+    "w": " artery",
+    "s": 18.56,
+    "e": 18.82
+   },
+   {
+    "w": " yang",
+    "s": 18.82,
+    "e": 19.02
+   },
+   {
+    "w": " masih",
+    "s": 19.02,
+    "e": 19.16
+   },
+   {
+    "w": " tertekan.",
+    "s": 19.16,
+    "e": 19.68
+   }
+  ]
+ },
+ {
+  "start": 20.3,
+  "end": 24.3,
+  "text": "Getarannya merambat melalui jaringan, lalu terdengar lewat statuskop sebagai ketukan.",
+  "words": [
+   {
+    "w": " Getarannya",
+    "s": 20.3,
+    "e": 20.9
+   },
+   {
+    "w": " merambat",
+    "s": 20.9,
+    "e": 21.26
+   },
+   {
+    "w": " melalui",
+    "s": 21.26,
+    "e": 21.56
+   },
+   {
+    "w": " jaringan,",
+    "s": 21.56,
+    "e": 22.1
+   },
+   {
+    "w": " lalu",
+    "s": 22.34,
+    "e": 22.62
+   },
+   {
+    "w": " terdengar",
+    "s": 22.62,
+    "e": 23.0
+   },
+   {
+    "w": " lewat",
+    "s": 23.0,
+    "e": 23.16
+   },
+   {
+    "w": " statuskop",
+    "s": 23.16,
+    "e": 23.64
+   },
+   {
+    "w": " sebagai",
+    "s": 23.64,
+    "e": 23.88
+   },
+   {
+    "w": " ketukan.",
+    "s": 23.88,
+    "e": 24.3
+   }
+  ]
+ },
+ {
+  "start": 25.1,
+  "end": 28.64,
+  "text": "Ketukan pertama menjadi patokan angka atas, tekanan systolic.",
+  "words": [
+   {
+    "w": " Ketukan",
+    "s": 25.1,
+    "e": 25.84
+   },
+   {
+    "w": " pertama",
+    "s": 25.84,
+    "e": 26.2
+   },
+   {
+    "w": " menjadi",
+    "s": 26.2,
+    "e": 26.42
+   },
+   {
+    "w": " patokan",
+    "s": 26.42,
+    "e": 26.92
+   },
+   {
+    "w": " angka",
+    "s": 26.92,
+    "e": 27.1
+   },
+   {
+    "w": " atas,",
+    "s": 27.1,
+    "e": 27.46
+   },
+   {
+    "w": " tekanan",
+    "s": 27.86,
+    "e": 28.28
+   },
+   {
+    "w": " systolic.",
+    "s": 28.28,
+    "e": 28.64
+   }
+  ]
+ },
+ {
+  "start": 29.32,
+  "end": 32.06,
+  "text": "Saat manset makin longgar, ketukannya menghilang.",
+  "words": [
+   {
+    "w": " Saat",
+    "s": 29.32,
+    "e": 29.96
+   },
+   {
+    "w": " manset",
+    "s": 29.96,
+    "e": 30.22
+   },
+   {
+    "w": " makin",
+    "s": 30.22,
+    "e": 30.48
+   },
+   {
+    "w": " longgar,",
+    "s": 30.48,
+    "e": 31.0
+   },
+   {
+    "w": " ketukannya",
+    "s": 31.3,
+    "e": 31.62
+   },
+   {
+    "w": " menghilang.",
+    "s": 31.62,
+    "e": 32.06
+   }
+  ]
+ },
+ {
+  "start": 32.64,
+  "end": 35.58,
+  "text": "Di titik itulah angka bawah, tekanan diastolic dibaca.",
+  "words": [
+   {
+    "w": " Di",
+    "s": 32.64,
+    "e": 32.82
+   },
+   {
+    "w": " titik",
+    "s": 32.82,
+    "e": 33.08
+   },
+   {
+    "w": " itulah",
+    "s": 33.08,
+    "e": 33.44
+   },
+   {
+    "w": " angka",
+    "s": 33.44,
+    "e": 33.68
+   },
+   {
+    "w": " bawah,",
+    "s": 33.68,
+    "e": 34.14
+   },
+   {
+    "w": " tekanan",
+    "s": 34.38,
+    "e": 34.72
+   },
+   {
+    "w": " diastolic",
+    "s": 34.72,
+    "e": 35.14
+   },
+   {
+    "w": " dibaca.",
+    "s": 35.14,
+    "e": 35.58
+   }
+  ]
+ },
+ {
+  "start": 36.52,
+  "end": 39.56,
+  "text": "Jadi, saat mengukur tensi manual, perhatikan dua moment.",
+  "words": [
+   {
+    "w": " Jadi,",
+    "s": 36.52,
+    "e": 37.0
+   },
+   {
+    "w": " saat",
+    "s": 37.26,
+    "e": 37.44
+   },
+   {
+    "w": " mengukur",
+    "s": 37.44,
+    "e": 37.76
+   },
+   {
+    "w": " tensi",
+    "s": 37.76,
+    "e": 38.0
+   },
+   {
+    "w": " manual,",
+    "s": 38.0,
+    "e": 38.32
+   },
+   {
+    "w": " perhatikan",
+    "s": 38.8,
+    "e": 39.16
+   },
+   {
+    "w": " dua",
+    "s": 39.16,
+    "e": 39.32
+   },
+   {
+    "w": " moment.",
+    "s": 39.32,
+    "e": 39.56
+   }
+  ]
+ },
+ {
+  "start": 40.06,
+  "end": 42.9,
+  "text": "Bunyi pertama muncul, lalu bunyinya hilang.",
+  "words": [
+   {
+    "w": " Bunyi",
+    "s": 40.06,
+    "e": 40.38
+   },
+   {
+    "w": " pertama",
+    "s": 40.38,
+    "e": 40.6
+   },
+   {
+    "w": " muncul,",
+    "s": 40.6,
+    "e": 41.14
+   },
+   {
+    "w": " lalu",
+    "s": 41.46,
+    "e": 42.02
+   },
+   {
+    "w": " bunyinya",
+    "s": 42.02,
+    "e": 42.6
+   },
+   {
+    "w": " hilang.",
+    "s": 42.6,
+    "e": 42.9
+   }
+  ]
+ }
+]
