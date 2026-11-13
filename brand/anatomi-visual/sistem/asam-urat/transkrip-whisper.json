@@ -1,0 +1,760 @@
+[
+ {
+  "start": 0.0,
+  "end": 2.74,
+  "text": "Kenapa asam urat bisa bikin sendi sakit banget?",
+  "words": [
+   {
+    "w": " Kenapa",
+    "s": 0.0,
+    "e": 0.68
+   },
+   {
+    "w": " asam",
+    "s": 0.68,
+    "e": 1.08
+   },
+   {
+    "w": " urat",
+    "s": 1.08,
+    "e": 1.38
+   },
+   {
+    "w": " bisa",
+    "s": 1.38,
+    "e": 1.58
+   },
+   {
+    "w": " bikin",
+    "s": 1.58,
+    "e": 1.9
+   },
+   {
+    "w": " sendi",
+    "s": 1.9,
+    "e": 2.16
+   },
+   {
+    "w": " sakit",
+    "s": 2.16,
+    "e": 2.52
+   },
+   {
+    "w": " banget?",
+    "s": 2.52,
+    "e": 2.74
+   }
+  ]
+ },
+ {
+  "start": 3.52,
+  "end": 7.02,
+  "text": "Saat tubuh mengurai purin yang berasal dari sel tubuh dan makanan,",
+  "words": [
+   {
+    "w": " Saat",
+    "s": 3.52,
+    "e": 3.98
+   },
+   {
+    "w": " tubuh",
+    "s": 3.98,
+    "e": 4.18
+   },
+   {
+    "w": " mengurai",
+    "s": 4.18,
+    "e": 4.54
+   },
+   {
+    "w": " purin",
+    "s": 4.54,
+    "e": 5.0
+   },
+   {
+    "w": " yang",
+    "s": 5.0,
+    "e": 5.36
+   },
+   {
+    "w": " berasal",
+    "s": 5.36,
+    "e": 5.74
+   },
+   {
+    "w": " dari",
+    "s": 5.74,
+    "e": 5.94
+   },
+   {
+    "w": " sel",
+    "s": 5.94,
+    "e": 6.12
+   },
+   {
+    "w": " tubuh",
+    "s": 6.12,
+    "e": 6.46
+   },
+   {
+    "w": " dan",
+    "s": 6.46,
+    "e": 6.6
+   },
+   {
+    "w": " makanan,",
+    "s": 6.6,
+    "e": 7.02
+   }
+  ]
+ },
+ {
+  "start": 7.44,
+  "end": 9.12,
+  "text": "terbentuk zat bernama urat.",
+  "words": [
+   {
+    "w": " terbentuk",
+    "s": 7.44,
+    "e": 7.9
+   },
+   {
+    "w": " zat",
+    "s": 7.9,
+    "e": 8.16
+   },
+   {
+    "w": " bernama",
+    "s": 8.16,
+    "e": 8.6
+   },
+   {
+    "w": " urat.",
+    "s": 8.6,
+    "e": 9.12
+   }
+  ]
+ },
+ {
+  "start": 9.48,
+  "end": 11.7,
+  "text": "Biasanya, gincal membuangnya lewat urin.",
+  "words": [
+   {
+    "w": " Biasanya,",
+    "s": 9.48,
+    "e": 10.1
+   },
+   {
+    "w": " gincal",
+    "s": 10.5,
+    "e": 10.76
+   },
+   {
+    "w": " membuangnya",
+    "s": 10.76,
+    "e": 11.2
+   },
+   {
+    "w": " lewat",
+    "s": 11.2,
+    "e": 11.4
+   },
+   {
+    "w": " urin.",
+    "s": 11.4,
+    "e": 11.7
+   }
+  ]
+ },
+ {
+  "start": 12.32,
+  "end": 14.44,
+  "text": "Kalau kadar urat dalam darah terlalu tinggi,",
+  "words": [
+   {
+    "w": " Kalau",
+    "s": 12.32,
+    "e": 12.62
+   },
+   {
+    "w": " kadar",
+    "s": 12.62,
+    "e": 12.82
+   },
+   {
+    "w": " urat",
+    "s": 12.82,
+    "e": 13.14
+   },
+   {
+    "w": " dalam",
+    "s": 13.14,
+    "e": 13.34
+   },
+   {
+    "w": " darah",
+    "s": 13.34,
+    "e": 13.66
+   },
+   {
+    "w": " terlalu",
+    "s": 13.66,
+    "e": 13.98
+   },
+   {
+    "w": " tinggi,",
+    "s": 13.98,
+    "e": 14.44
+   }
+  ]
+ },
+ {
+  "start": 14.98,
+  "end": 16.82,
+  "text": "kristal urat bisa terbentuk di sendi.",
+  "words": [
+   {
+    "w": " kristal",
+    "s": 14.98,
+    "e": 15.3
+   },
+   {
+    "w": " urat",
+    "s": 15.3,
+    "e": 15.6
+   },
+   {
+    "w": " bisa",
+    "s": 15.6,
+    "e": 15.78
+   },
+   {
+    "w": " terbentuk",
+    "s": 15.78,
+    "e": 16.3
+   },
+   {
+    "w": " di",
+    "s": 16.3,
+    "e": 16.44
+   },
+   {
+    "w": " sendi.",
+    "s": 16.44,
+    "e": 16.82
+   }
+  ]
+ },
+ {
+  "start": 17.34,
+  "end": 19.1,
+  "text": "Tubuh berreaksi terhadap kristal itu.",
+  "words": [
+   {
+    "w": " Tubuh",
+    "s": 17.34,
+    "e": 17.74
+   },
+   {
+    "w": " berreaksi",
+    "s": 17.74,
+    "e": 18.18
+   },
+   {
+    "w": " terhadap",
+    "s": 18.18,
+    "e": 18.54
+   },
+   {
+    "w": " kristal",
+    "s": 18.54,
+    "e": 18.86
+   },
+   {
+    "w": " itu.",
+    "s": 18.86,
+    "e": 19.1
+   }
+  ]
+ },
+ {
+  "start": 19.56,
+  "end": 21.6,
+  "text": "Akibatnya, sendi bisa tiba-tiba nyeri,",
+  "words": [
+   {
+    "w": " Akibatnya,",
+    "s": 19.56,
+    "e": 20.08
+   },
+   {
+    "w": " sendi",
+    "s": 20.3,
+    "e": 20.52
+   },
+   {
+    "w": " bisa",
+    "s": 20.52,
+    "e": 20.7
+   },
+   {
+    "w": " tiba",
+    "s": 20.7,
+    "e": 20.88
+   },
+   {
+    "w": "-tiba",
+    "s": 20.88,
+    "e": 21.08
+   },
+   {
+    "w": " nyeri,",
+    "s": 21.08,
+    "e": 21.6
+   }
+  ]
+ },
+ {
+  "start": 21.94,
+  "end": 24.36,
+  "text": "bengkak, merah, dan terasa hangat.",
+  "words": [
+   {
+    "w": " bengkak,",
+    "s": 21.94,
+    "e": 22.46
+   },
+   {
+    "w": " merah,",
+    "s": 22.76,
+    "e": 23.22
+   },
+   {
+    "w": " dan",
+    "s": 23.56,
+    "e": 23.6
+   },
+   {
+    "w": " terasa",
+    "s": 23.6,
+    "e": 23.94
+   },
+   {
+    "w": " hangat.",
+    "s": 23.94,
+    "e": 24.36
+   }
+  ]
+ },
+ {
+  "start": 24.98,
+  "end": 26.74,
+  "text": "Serangan peradangan ini disebut goat,",
+  "words": [
+   {
+    "w": " Serangan",
+    "s": 24.98,
+    "e": 25.34
+   },
+   {
+    "w": " peradangan",
+    "s": 25.34,
+    "e": 25.76
+   },
+   {
+    "w": " ini",
+    "s": 25.76,
+    "e": 26.02
+   },
+   {
+    "w": " disebut",
+    "s": 26.02,
+    "e": 26.4
+   },
+   {
+    "w": " goat,",
+    "s": 26.4,
+    "e": 26.74
+   }
+  ]
+ },
+ {
+  "start": 27.06,
+  "end": 29.2,
+  "text": "atau yang sering kita sebut penyakit asam urat.",
+  "words": [
+   {
+    "w": " atau",
+    "s": 27.06,
+    "e": 27.3
+   },
+   {
+    "w": " yang",
+    "s": 27.3,
+    "e": 27.54
+   },
+   {
+    "w": " sering",
+    "s": 27.54,
+    "e": 27.76
+   },
+   {
+    "w": " kita",
+    "s": 27.76,
+    "e": 27.94
+   },
+   {
+    "w": " sebut",
+    "s": 27.94,
+    "e": 28.2
+   },
+   {
+    "w": " penyakit",
+    "s": 28.2,
+    "e": 28.6
+   },
+   {
+    "w": " asam",
+    "s": 28.6,
+    "e": 28.88
+   },
+   {
+    "w": " urat.",
+    "s": 28.88,
+    "e": 29.2
+   }
+  ]
+ },
+ {
+  "start": 29.84,
+  "end": 31.7,
+  "text": "Pangkal ibu jari kaki sering terkena,",
+  "words": [
+   {
+    "w": " Pangkal",
+    "s": 29.84,
+    "e": 30.36
+   },
+   {
+    "w": " ibu",
+    "s": 30.36,
+    "e": 30.54
+   },
+   {
+    "w": " jari",
+    "s": 30.54,
+    "e": 30.74
+   },
+   {
+    "w": " kaki",
+    "s": 30.74,
+    "e": 31.04
+   },
+   {
+    "w": " sering",
+    "s": 31.04,
+    "e": 31.28
+   },
+   {
+    "w": " terkena,",
+    "s": 31.28,
+    "e": 31.7
+   }
+  ]
+ },
+ {
+  "start": 31.88,
+  "end": 33.18,
+  "text": "tapi sendi lain juga bisa.",
+  "words": [
+   {
+    "w": " tapi",
+    "s": 31.88,
+    "e": 32.22
+   },
+   {
+    "w": " sendi",
+    "s": 32.22,
+    "e": 32.52
+   },
+   {
+    "w": " lain",
+    "s": 32.52,
+    "e": 32.7
+   },
+   {
+    "w": " juga",
+    "s": 32.7,
+    "e": 32.88
+   },
+   {
+    "w": " bisa.",
+    "s": 32.88,
+    "e": 33.18
+   }
+  ]
+ },
+ {
+  "start": 33.98,
+  "end": 36.5,
+  "text": "Tapi ingat, hasil tes asam urat yang tinggi",
+  "words": [
+   {
+    "w": " Tapi",
+    "s": 33.98,
+    "e": 34.2
+   },
+   {
+    "w": " ingat,",
+    "s": 34.2,
+    "e": 34.6
+   },
+   {
+    "w": " hasil",
+    "s": 34.92,
+    "e": 35.24
+   },
+   {
+    "w": " tes",
+    "s": 35.24,
+    "e": 35.4
+   },
+   {
+    "w": " asam",
+    "s": 35.4,
+    "e": 35.72
+   },
+   {
+    "w": " urat",
+    "s": 35.72,
+    "e": 35.96
+   },
+   {
+    "w": " yang",
+    "s": 35.96,
+    "e": 36.08
+   },
+   {
+    "w": " tinggi",
+    "s": 36.08,
+    "e": 36.5
+   }
+  ]
+ },
+ {
+  "start": 36.5,
+  "end": 38.92,
+  "text": "tidak otomatis berarti seseorang mengalami goat.",
+  "words": [
+   {
+    "w": " tidak",
+    "s": 36.5,
+    "e": 36.8
+   },
+   {
+    "w": " otomatis",
+    "s": 36.8,
+    "e": 37.36
+   },
+   {
+    "w": " berarti",
+    "s": 37.36,
+    "e": 37.66
+   },
+   {
+    "w": " seseorang",
+    "s": 37.66,
+    "e": 38.18
+   },
+   {
+    "w": " mengalami",
+    "s": 38.18,
+    "e": 38.62
+   },
+   {
+    "w": " goat.",
+    "s": 38.62,
+    "e": 38.92
+   }
+  ]
+ },
+ {
+  "start": 39.44,
+  "end": 42.92,
+  "text": "Jadi, yang membuat sendi meradang bukan sekedar angka di hasil lab,",
+  "words": [
+   {
+    "w": " Jadi,",
+    "s": 39.44,
+    "e": 39.9
+   },
+   {
+    "w": " yang",
+    "s": 40.18,
+    "e": 40.3
+   },
+   {
+    "w": " membuat",
+    "s": 40.3,
+    "e": 40.58
+   },
+   {
+    "w": " sendi",
+    "s": 40.58,
+    "e": 40.84
+   },
+   {
+    "w": " meradang",
+    "s": 40.84,
+    "e": 41.3
+   },
+   {
+    "w": " bukan",
+    "s": 41.3,
+    "e": 41.5
+   },
+   {
+    "w": " sekedar",
+    "s": 41.5,
+    "e": 41.94
+   },
+   {
+    "w": " angka",
+    "s": 41.94,
+    "e": 42.3
+   },
+   {
+    "w": " di",
+    "s": 42.3,
+    "e": 42.42
+   },
+   {
+    "w": " hasil",
+    "s": 42.42,
+    "e": 42.74
+   },
+   {
+    "w": " lab,",
+    "s": 42.74,
+    "e": 42.92
+   }
+  ]
+ },
+ {
+  "start": 43.32,
+  "end": 45.98,
+  "text": "melayangkan reaksi tubuh terhadap kristal yang terbentuk.",
+  "words": [
+   {
+    "w": " melayangkan",
+    "s": 43.32,
+    "e": 43.76
+   },
+   {
+    "w": " reaksi",
+    "s": 43.76,
+    "e": 44.1
+   },
+   {
+    "w": " tubuh",
+    "s": 44.1,
+    "e": 44.52
+   },
+   {
+    "w": " terhadap",
+    "s": 44.52,
+    "e": 44.92
+   },
+   {
+    "w": " kristal",
+    "s": 44.92,
+    "e": 45.38
+   },
+   {
+    "w": " yang",
+    "s": 45.38,
+    "e": 45.48
+   },
+   {
+    "w": " terbentuk.",
+    "s": 45.48,
+    "e": 45.98
+   }
+  ]
+ },
+ {
+  "start": 46.56,
+  "end": 48.86,
+  "text": "Belajar cara kerja tubuh lebih seru di MedCall.",
+  "words": [
+   {
+    "w": " Belajar",
+    "s": 46.56,
+    "e": 47.06
+   },
+   {
+    "w": " cara",
+    "s": 47.06,
+    "e": 47.24
+   },
+   {
+    "w": " kerja",
+    "s": 47.24,
+    "e": 47.54
+   },
+   {
+    "w": " tubuh",
+    "s": 47.54,
+    "e": 47.86
+   },
+   {
+    "w": " lebih",
+    "s": 47.86,
+    "e": 48.08
+   },
+   {
+    "w": " seru",
+    "s": 48.08,
+    "e": 48.36
+   },
+   {
+    "w": " di",
+    "s": 48.36,
+    "e": 48.48
+   },
+   {
+    "w": " MedCall.",
+    "s": 48.48,
+    "e": 48.86
+   }
+  ]
+ },
+ {
+  "start": 49.16,
+  "end": 50.72,
+  "text": "Gratis di MedCall.com",
+  "words": [
+   {
+    "w": " Gratis",
+    "s": 49.16,
+    "e": 49.7
+   },
+   {
+    "w": " di",
+    "s": 49.7,
+    "e": 49.86
+   },
+   {
+    "w": " MedCall",
+    "s": 49.86,
+    "e": 50.28
+   },
+   {
+    "w": ".com",
+    "s": 50.28,
+    "e": 50.72
+   }
+  ]
+ }
+]
