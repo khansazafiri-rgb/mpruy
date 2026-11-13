@@ -73,7 +73,7 @@ export function frame(T, opt = {}) {
     const zIn = lerp(1.15, 1, ease.out(seg(T, 14.65, 15.4))) * lerp(1, 0.55, ease.in(seg(T, 24.5, 25.1)));
     svg += `<g opacity="${f1(vS)}"><g transform="translate(540 960) scale(${f1(zIn * 1000) / 1000}) translate(-540 -960)"><g transform="translate(540 960) scale(${ZS}) translate(-580 -960)">${sendi(keadaanSendi(T))}</g></g>`;
     if (lbl) {
-      const pL = seg(T, 14.85, 15.35, ease.out) * (1 - seg(T, 17.3, 17.7)), pK = seg(T, W.kristal1, W.kristal1 + 0.5, ease.out), pS = seg(T, W.bereaksi, W.bereaksi + 0.5, ease.out) * (1 - seg(T, 19.5, 19.9));
+      const pL = seg(T, 14.85, 15.35, ease.out) * (1 - seg(T, 17.3, 17.7)), pK = seg(T, W.kristal1, W.kristal1 + 0.5, ease.out) * (1 - seg(T, 19.5, 19.9)), pS = seg(T, W.bereaksi, W.bereaksi + 0.5, ease.out) * (1 - seg(T, 19.5, 19.9));
       svg += pil('URAT LARUT', 60, 290, pL, { warna: C.urat, size: 34 }) + garis([196, 380], Z([596, 940]), pL);
       svg += pil('KRISTAL URAT', 400, 290, pK, { warna: '#CFE8F2', size: 34 }) + garis([520, 380], Z([552, 930]), pK);
       svg += pil('SEL PERTAHANAN', 540, 1500, pS, { warna: C.sel, size: 34, anchor: 'middle' }) + garis([540, 1500], Z([592, 1000]), pS);

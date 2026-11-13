@@ -33,9 +33,9 @@ export function bagi(T, lbl = true) {
     s += `<rect x="${px}" y="${y + 10}" width="${pw}" height="${ph}" rx="48" fill="#000" opacity=".3"/><rect x="${px}" y="${y}" width="${pw}" height="${ph}" rx="48" fill="#12303A"/>`;
     // sendi mini
     const S = i === 0 ? { T, larut: 1, kristal: 0, sel: 0, infl: 0, bengkak: 0, merah: 0, hangat: 0, nyeri: 0 } : { T, larut: 1, kristal: 1, sel: seg(T, 37.2, 38.6), infl, bengkak: infl, merah: infl, hangat: infl * 0.8, nyeri: infl * 0.7 };
-    s += `<g clip-path="url(#bg${i})"><g transform="translate(${px + 590} ${y + ph / 2}) scale(0.92) translate(-590 -960)">${sendi(S, { id: 'bg' + i })}</g></g>`;
+    s += `<g clip-path="url(#bg${i})"><g transform="translate(${px + 610} ${y + ph / 2}) scale(1.12) translate(-590 -960)">${sendi(S, { id: 'bg' + i })}</g></g>`;
     // sorotan pada B saat "reaksi tubuh terhadap kristal"
-    if (i === 1 && fokus > 0.01) s += `<circle cx="${px + 590 + (592 - 590) * 0.92}" cy="${y + ph / 2}" r="${f1(150 + 8 * Math.sin(T * 6))}" fill="none" stroke="${EMAS}" stroke-width="8" stroke-dasharray="26 16" opacity="${f1(fokus)}"/>`;
+    if (i === 1 && fokus > 0.01) s += `<circle cx="${px + 610 + (592 - 590) * 1.12}" cy="${y + ph / 2}" r="${f1(170 + 8 * Math.sin(T * 6))}" fill="none" stroke="${EMAS}" stroke-width="8" stroke-dasharray="26 16" opacity="${f1(fokus)}"/>`;
     s += kartuLab(px + 26, y + 60, bar, redup);
     s += `<rect x="${px}" y="${y}" width="${pw}" height="${ph}" rx="48" fill="none" stroke="${GADING}" stroke-opacity=".22" stroke-width="3"/>`;
     return s + `</g>`;
