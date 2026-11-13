@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <title>Kebijakan Privasi BUnih Finance | MEDCOEL</title>
+  <meta name="description" content="Kebijakan privasi BUnih Finance terkait akses Gmail API baca-saja, penyimpanan catatan keuangan, bot Telegram, keamanan, pencabutan izin, dan penghapusan data.">
+  <link rel="canonical" href="https://medcoel.com/bunih/privacy/">
+  <link rel="stylesheet" href="/bunih/styles.css">
+</head>
+<body>
+  <header class="wrap nav">
+    <a class="brand" href="/bunih/" aria-label="Beranda BUnih"><em>BU</em>nih <span style="font-weight:500">Finance</span></a>
+    <nav class="nav-links" aria-label="Navigasi"><a href="/bunih/">Beranda</a><a href="/bunih/privacy/" aria-current="page">Privasi</a><a href="/bunih/terms/">Ketentuan</a><a href="https://medcoel.com/">MEDCOEL</a></nav>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Perlindungan data</span>
+      <h1>Kebijakan privasi<br>BUnih Finance</h1>
+      <p class="lead">Kebijakan ini menjelaskan bagaimana BUnih mengakses dan mengolah data Gmail serta catatan keuangan untuk penggunaan pribadi.</p>
+      <p class="muted">Diperbarui: 13 November 2026 · Pengelola: BUnih Finance / MEDCOEL</p>
+    </section>
+    <article class="detail">
+      <section>
+        <h2>1. Lingkup layanan dan pengelola</h2>
+        <p>BUnih adalah aplikasi pencatatan keuangan pribadi dengan dashboard privat dan bot Telegram. Halaman informasi ini diterbitkan melalui website MEDCOEL, tetapi aplikasi dan database keuangannya terpisah dari platform belajar MEDCOEL. Hubungi pengelola melalui <a href="mailto:admin@medcoel.com">admin@medcoel.com</a>.</p>
+      </section>
+      <section>
+        <h2>2. Data yang diproses</h2>
+        <ul>
+          <li>Informasi rekening yang dikonfirmasi pengguna, seperti nama bank dan empat digit terakhir nomor rekening, saldo terkonfirmasi, serta catatan transaksi dan anggaran.</li>
+          <li>Informasi email keuangan yang relevan: alamat pengirim, waktu, subjek, isi pesan yang diproses untuk menemukan nominal, tanggal, pihak terkait, invoice, atau kuitansi, dan metadata bukti.</li>
+          <li>Data penghubung Google OAuth seperti alamat akun, cakupan izin, access token, dan refresh token.</li>
+          <li>Telegram Chat ID yang telah disetujui, pesan/perintah yang dikirim ke bot, serta notifikasi atau ringkasan yang diminta.</li>
+        </ul>
+        <p>Pesan Gmail diseleksi menggunakan kueri yang diarahkan pada pengirim atau subjek keuangan. Hasil seleksi dapat mencakup pesan yang ternyata bukan transaksi; pengguna perlu meninjau hasil yang belum pasti.</p>
+      </section>
+      <section>
+        <h2>3. Izin Google dan tujuan penggunaan</h2>
+        <p>BUnih meminta izin <strong>https://www.googleapis.com/auth/gmail.readonly</strong> agar dapat membaca email terkait transaksi bank dan tagihan. Data tersebut digunakan untuk membuat atau melengkapi catatan keuangan, menautkan bukti, memeriksa duplikasi, dan menampilkan ringkasan yang diminta pengguna.</p>
+        <p>Izin ini tidak memungkinkan BUnih mengirim, menghapus, atau memodifikasi email. BUnih tidak menggunakan data Gmail untuk periklanan, penargetan iklan, penjualan data, atau pelatihan model AI umum.</p>
+        <div class="note"><p>Penggunaan dan transfer informasi yang diterima dari Google APIs oleh BUnih akan mematuhi <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener noreferrer">Google API Services User Data Policy</a>, termasuk persyaratan Limited Use.</p></div>
+      </section>
+      <section>
+        <h2>4. Penyimpanan, keamanan, dan pihak pemroses</h2>
+        <p>Catatan BUnih disimpan di database SQLite privat pada infrastruktur server Tencent Cloud. Token OAuth disimpan dalam bentuk terenkripsi; konfigurasi layanan dibatasi aksesnya. Akses web privat menggunakan HTTPS melalui Tailscale, dengan autentikasi pengguna. Backup database dibuat untuk pemulihan layanan.</p>
+        <p>Google memproses izin dan menyediakan Gmail API; Telegram memproses pesan yang dikirim lewat bot; penyedia infrastruktur memproses data yang diperlukan untuk hosting. Informasi keuangan tidak dipublikasikan di website MEDCOEL. Pengiriman ringkasan ke Telegram berarti isi ringkasan juga melewati infrastruktur Telegram.</p>
+        <p>Tidak ada sistem yang menjamin keamanan absolut. Pengguna sebaiknya menjaga akses Gmail, Telegram, Tailscale, dan kata sandi BUnih.</p>
+      </section>
+      <section>
+        <h2>5. Masa simpan dan penghapusan</h2>
+        <p>Catatan dan bukti yang diimpor disimpan selama dibutuhkan untuk riwayat keuangan pribadi atau sampai diminta untuk dihapus. Pencabutan koneksi Gmail menghapus token yang disimpan oleh BUnih, tetapi <strong>tidak otomatis menghapus catatan transaksi dan bukti yang sudah diimpor</strong>. Cadangan database dapat menyimpan salinan data hingga masa retensi backup selesai atau cadangan dihapus secara aman.</p>
+        <p>Untuk meminta penghapusan data yang sudah disimpan, hubungi <a href="mailto:admin@medcoel.com">admin@medcoel.com</a> dengan menyebutkan permintaan penghapusan BUnih. Pengelola akan memeriksa permintaan dan menangani data utama serta cadangannya sesuai prosedur operasional.</p>
+      </section>
+      <section>
+        <h2>6. Kontrol pengguna</h2>
+        <ul>
+          <li>Mencabut akses Gmail dari Pengaturan BUnih atau dari <a href="https://myaccount.google.com/connections" rel="noopener noreferrer">pengaturan koneksi akun Google</a>.</li>
+          <li>Menonaktifkan Telegram bot dan meminta penghapusan catatan melalui pengelola.</li>
+          <li>Meninjau dan mengoreksi transaksi yang salah terbaca, serta memperbarui saldo terkonfirmasi.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>7. Perubahan kebijakan</h2>
+        <p>Dokumen ini dapat diperbarui bila fitur atau pemrosesan data berubah. Versi terbaru akan tersedia pada alamat halaman ini. Perubahan material pada penggunaan data Google harus dijelaskan sebelum praktik baru dijalankan.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="wrap"><strong>BUnih Finance</strong> · Bagian dari ekosistem MEDCOEL.<div class="footerlinks"><a href="/bunih/">Beranda</a><a href="/bunih/terms/">Ketentuan penggunaan</a><a href="mailto:admin@medcoel.com">Kontak pengelola</a></div></footer>
+</body>
+</html>
