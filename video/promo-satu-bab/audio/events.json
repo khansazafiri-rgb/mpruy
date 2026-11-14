@@ -1,0 +1,306 @@
+{
+ "narator_mulai": 20.0,
+ "narator_durasi": 9.28,
+ "sfx": [
+  {
+   "t": 0.0,
+   "sfx": "pena-menulis"
+  },
+  {
+   "t": 2.78,
+   "sfx": "pena-titik"
+  },
+  {
+   "t": 3.0,
+   "sfx": "blip-agenda"
+  },
+  {
+   "t": 3.0,
+   "sfx": "mosaik"
+  },
+  {
+   "t": 3.1,
+   "sfx": "pena-cepat"
+  },
+  {
+   "t": 3.5,
+   "sfx": "slide-klik"
+  },
+  {
+   "t": 4.0,
+   "sfx": "slide-klik"
+  },
+  {
+   "t": 4.5,
+   "sfx": "slide-klik"
+  },
+  {
+   "t": 5.0,
+   "sfx": "blip-agenda"
+  },
+  {
+   "t": 5.0,
+   "sfx": "mosaik"
+  },
+  {
+   "t": 5.0,
+   "sfx": "slide-klik"
+  },
+  {
+   "t": 5.02,
+   "sfx": "pompa"
+  },
+  {
+   "t": 5.12,
+   "sfx": "jarum"
+  },
+  {
+   "t": 5.37,
+   "sfx": "pompa"
+  },
+  {
+   "t": 5.47,
+   "sfx": "jarum"
+  },
+  {
+   "t": 5.72,
+   "sfx": "pompa"
+  },
+  {
+   "t": 5.82,
+   "sfx": "jarum"
+  },
+  {
+   "t": 6.07,
+   "sfx": "pompa"
+  },
+  {
+   "t": 6.17,
+   "sfx": "jarum"
+  },
+  {
+   "t": 6.42,
+   "sfx": "pompa"
+  },
+  {
+   "t": 6.52,
+   "sfx": "jarum"
+  },
+  {
+   "t": 7.0,
+   "sfx": "blip-agenda"
+  },
+  {
+   "t": 7.0,
+   "sfx": "mosaik"
+  },
+  {
+   "t": 7.35,
+   "sfx": "kartu-tempel"
+  },
+  {
+   "t": 7.85,
+   "sfx": "kartu-tempel"
+  },
+  {
+   "t": 8.35,
+   "sfx": "kartu-tempel"
+  },
+  {
+   "t": 9.0,
+   "sfx": "blip-agenda"
+  },
+  {
+   "t": 9.0,
+   "sfx": "mosaik"
+  },
+  {
+   "t": 9.35,
+   "sfx": "ponsel-getar"
+  },
+  {
+   "t": 9.4,
+   "sfx": "notif-ping"
+  },
+  {
+   "t": 9.85,
+   "sfx": "ponsel-getar"
+  },
+  {
+   "t": 9.9,
+   "sfx": "notif-ping"
+  },
+  {
+   "t": 10.35,
+   "sfx": "ponsel-getar"
+  },
+  {
+   "t": 10.4,
+   "sfx": "notif-ping"
+  },
+  {
+   "t": 11.0,
+   "sfx": "blip-agenda"
+  },
+  {
+   "t": 11.0,
+   "sfx": "mosaik"
+  },
+  {
+   "t": 11.05,
+   "sfx": "pintu"
+  },
+  {
+   "t": 11.15,
+   "sfx": "langkah"
+  },
+  {
+   "t": 11.444,
+   "sfx": "langkah"
+  },
+  {
+   "t": 11.738,
+   "sfx": "langkah"
+  },
+  {
+   "t": 12.032,
+   "sfx": "langkah"
+  },
+  {
+   "t": 12.326,
+   "sfx": "langkah"
+  },
+  {
+   "t": 12.5,
+   "sfx": "laptop-buka"
+  },
+  {
+   "t": 13.05,
+   "sfx": "laptop-nyala"
+  },
+  {
+   "t": 13.3,
+   "sfx": "pengingat"
+  },
+  {
+   "t": 13.65,
+   "sfx": "catatan-muncul"
+  },
+  {
+   "t": 13.9,
+   "sfx": "catatan-muncul"
+  },
+  {
+   "t": 14.15,
+   "sfx": "catatan-muncul"
+  },
+  {
+   "t": 14.4,
+   "sfx": "catatan-muncul"
+  },
+  {
+   "t": 14.65,
+   "sfx": "catatan-muncul"
+  },
+  {
+   "t": 14.9,
+   "sfx": "catatan-muncul"
+  },
+  {
+   "t": 14.95,
+   "sfx": "teks-pop"
+  },
+  {
+   "t": 15.15,
+   "sfx": "catatan-muncul"
+  },
+  {
+   "t": 15.4,
+   "sfx": "catatan-muncul"
+  },
+  {
+   "t": 16.15,
+   "sfx": "nilo-masuk"
+  },
+  {
+   "t": 16.9,
+   "sfx": "satu-bab-pop"
+  },
+  {
+   "t": 17.0,
+   "sfx": "satu-bab-chime"
+  },
+  {
+   "t": 17.5,
+   "sfx": "catatan-menyingkir"
+  },
+  {
+   "t": 18.25,
+   "sfx": "satu-bab-nyala"
+  },
+  {
+   "t": 19.25,
+   "sfx": "masuk-layar"
+  },
+  {
+   "t": 19.95,
+   "sfx": "piksel-jadi-nyata"
+  },
+  {
+   "t": 20.777,
+   "sfx": "ketuk-ui"
+  },
+  {
+   "t": 22.641,
+   "sfx": "ketuk-ui"
+  },
+  {
+   "t": 23.568,
+   "sfx": "ketuk-ui"
+  },
+  {
+   "t": 25.121,
+   "sfx": "ketuk-ui"
+  },
+  {
+   "t": 25.636,
+   "sfx": "ketuk-ui"
+  },
+  {
+   "t": 26.304,
+   "sfx": "ketuk-ui"
+  },
+  {
+   "t": 27.114,
+   "sfx": "ketuk-ui"
+  },
+  {
+   "t": 27.87,
+   "sfx": "ketuk-ui"
+  },
+  {
+   "t": 28.312,
+   "sfx": "ketuk-ui"
+  },
+  {
+   "t": 29.1,
+   "sfx": "kila-muncul"
+  },
+  {
+   "t": 32.0,
+   "sfx": "mosaik-penutup"
+  },
+  {
+   "t": 32.45,
+   "sfx": "teks-penutup-1"
+  },
+  {
+   "t": 35.9,
+   "sfx": "teks-penutup-2"
+  },
+  {
+   "t": 36.0,
+   "sfx": "kilau-akhir"
+  }
+ ]
+}
