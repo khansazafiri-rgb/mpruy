@@ -1,0 +1,559 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.86,
+  "text": "Abis berenang agak lama, pernah liat ujung jari mau jadi keriput.",
+  "words": [
+   {
+    "w": "Abis",
+    "s": 0.0,
+    "e": 0.34
+   },
+   {
+    "w": "berenang",
+    "s": 0.34,
+    "e": 0.86
+   },
+   {
+    "w": "agak",
+    "s": 0.86,
+    "e": 1.12
+   },
+   {
+    "w": "lama,",
+    "s": 1.12,
+    "e": 1.54
+   },
+   {
+    "w": "pernah",
+    "s": 2.04,
+    "e": 2.32
+   },
+   {
+    "w": "liat",
+    "s": 2.32,
+    "e": 2.62
+   },
+   {
+    "w": "ujung",
+    "s": 2.62,
+    "e": 2.84
+   },
+   {
+    "w": "jari",
+    "s": 2.84,
+    "e": 3.06
+   },
+   {
+    "w": "mau",
+    "s": 3.06,
+    "e": 3.2
+   },
+   {
+    "w": "jadi",
+    "s": 3.2,
+    "e": 3.42
+   },
+   {
+    "w": "keriput.",
+    "s": 3.42,
+    "e": 3.86
+   }
+  ]
+ },
+ {
+  "start": 4.68,
+  "end": 7.3,
+  "text": "Kita sering mengira itu cuma karena kulit menyerap air.",
+  "words": [
+   {
+    "w": "Kita",
+    "s": 4.68,
+    "e": 5.1
+   },
+   {
+    "w": "sering",
+    "s": 5.1,
+    "e": 5.36
+   },
+   {
+    "w": "mengira",
+    "s": 5.36,
+    "e": 5.72
+   },
+   {
+    "w": "itu",
+    "s": 5.72,
+    "e": 5.92
+   },
+   {
+    "w": "cuma",
+    "s": 5.92,
+    "e": 6.12
+   },
+   {
+    "w": "karena",
+    "s": 6.12,
+    "e": 6.4
+   },
+   {
+    "w": "kulit",
+    "s": 6.4,
+    "e": 6.68
+   },
+   {
+    "w": "menyerap",
+    "s": 6.68,
+    "e": 7.02
+   },
+   {
+    "w": "air.",
+    "s": 7.02,
+    "e": 7.3
+   }
+  ]
+ },
+ {
+  "start": 7.96,
+  "end": 10.54,
+  "text": "Padahal, tubuh juga ikut memberi respons.",
+  "words": [
+   {
+    "w": "Padahal,",
+    "s": 7.96,
+    "e": 8.56
+   },
+   {
+    "w": "tubuh",
+    "s": 8.94,
+    "e": 9.28
+   },
+   {
+    "w": "juga",
+    "s": 9.28,
+    "e": 9.52
+   },
+   {
+    "w": "ikut",
+    "s": 9.52,
+    "e": 9.86
+   },
+   {
+    "w": "memberi",
+    "s": 9.86,
+    "e": 10.16
+   },
+   {
+    "w": "respons.",
+    "s": 10.16,
+    "e": 10.54
+   }
+  ]
+ },
+ {
+  "start": 11.84,
+  "end": 17.42,
+  "text": "Saat ujung jari lama terendam, sarap simpatik memicu pembulu darah kecil di bawah kulit untuk menyempit.",
+  "words": [
+   {
+    "w": "Saat",
+    "s": 11.84,
+    "e": 12.2
+   },
+   {
+    "w": "ujung",
+    "s": 12.2,
+    "e": 12.44
+   },
+   {
+    "w": "jari",
+    "s": 12.44,
+    "e": 12.68
+   },
+   {
+    "w": "lama",
+    "s": 12.68,
+    "e": 12.9
+   },
+   {
+    "w": "terendam,",
+    "s": 12.9,
+    "e": 13.56
+   },
+   {
+    "w": "sarap",
+    "s": 14.0,
+    "e": 14.22
+   },
+   {
+    "w": "simpatik",
+    "s": 14.22,
+    "e": 14.76
+   },
+   {
+    "w": "memicu",
+    "s": 14.76,
+    "e": 15.16
+   },
+   {
+    "w": "pembulu",
+    "s": 15.16,
+    "e": 15.44
+   },
+   {
+    "w": "darah",
+    "s": 15.44,
+    "e": 15.7
+   },
+   {
+    "w": "kecil",
+    "s": 15.7,
+    "e": 16.1
+   },
+   {
+    "w": "di",
+    "s": 16.1,
+    "e": 16.24
+   },
+   {
+    "w": "bawah",
+    "s": 16.24,
+    "e": 16.4
+   },
+   {
+    "w": "kulit",
+    "s": 16.4,
+    "e": 16.76
+   },
+   {
+    "w": "untuk",
+    "s": 16.76,
+    "e": 16.96
+   },
+   {
+    "w": "menyempit.",
+    "s": 16.96,
+    "e": 17.42
+   }
+  ]
+ },
+ {
+  "start": 18.28,
+  "end": 22.92,
+  "text": "Volumen jaringan di bawah permukaan berkurang, sehingga kulit membentuk lipatan-lipatan kecil.",
+  "words": [
+   {
+    "w": "Volumen",
+    "s": 18.28,
+    "e": 18.82
+   },
+   {
+    "w": "jaringan",
+    "s": 18.82,
+    "e": 19.2
+   },
+   {
+    "w": "di",
+    "s": 19.2,
+    "e": 19.32
+   },
+   {
+    "w": "bawah",
+    "s": 19.32,
+    "e": 19.5
+   },
+   {
+    "w": "permukaan",
+    "s": 19.5,
+    "e": 19.94
+   },
+   {
+    "w": "berkurang,",
+    "s": 19.94,
+    "e": 20.42
+   },
+   {
+    "w": "sehingga",
+    "s": 20.78,
+    "e": 21.36
+   },
+   {
+    "w": "kulit",
+    "s": 21.36,
+    "e": 21.64
+   },
+   {
+    "w": "membentuk",
+    "s": 21.64,
+    "e": 21.96
+   },
+   {
+    "w": "lipatan",
+    "s": 21.96,
+    "e": 22.22
+   },
+   {
+    "w": "-lipatan",
+    "s": 22.22,
+    "e": 22.5
+   },
+   {
+    "w": "kecil.",
+    "s": 22.5,
+    "e": 22.92
+   }
+  ]
+ },
+ {
+  "start": 23.66,
+  "end": 24.9,
+  "text": "Itulah kerutan yang kamu lihat.",
+  "words": [
+   {
+    "w": "Itulah",
+    "s": 23.66,
+    "e": 24.18
+   },
+   {
+    "w": "kerutan",
+    "s": 24.18,
+    "e": 24.38
+   },
+   {
+    "w": "yang",
+    "s": 24.38,
+    "e": 24.54
+   },
+   {
+    "w": "kamu",
+    "s": 24.54,
+    "e": 24.68
+   },
+   {
+    "w": "lihat.",
+    "s": 24.68,
+    "e": 24.9
+   }
+  ]
+ },
+ {
+  "start": 25.5,
+  "end": 27.72,
+  "text": "Biasanya paling jelas di ujung jari tangan dan kaki.",
+  "words": [
+   {
+    "w": "Biasanya",
+    "s": 25.5,
+    "e": 25.94
+   },
+   {
+    "w": "paling",
+    "s": 25.94,
+    "e": 26.14
+   },
+   {
+    "w": "jelas",
+    "s": 26.14,
+    "e": 26.38
+   },
+   {
+    "w": "di",
+    "s": 26.38,
+    "e": 26.54
+   },
+   {
+    "w": "ujung",
+    "s": 26.54,
+    "e": 26.74
+   },
+   {
+    "w": "jari",
+    "s": 26.74,
+    "e": 26.94
+   },
+   {
+    "w": "tangan",
+    "s": 26.94,
+    "e": 27.32
+   },
+   {
+    "w": "dan",
+    "s": 27.32,
+    "e": 27.42
+   },
+   {
+    "w": "kaki.",
+    "s": 27.42,
+    "e": 27.72
+   }
+  ]
+ },
+ {
+  "start": 29.04,
+  "end": 32.6,
+  "text": "Jadi, jari keriput setelah berenang bukan sekedar kulit yang basah.",
+  "words": [
+   {
+    "w": "Jadi,",
+    "s": 29.04,
+    "e": 29.62
+   },
+   {
+    "w": "jari",
+    "s": 29.94,
+    "e": 30.12
+   },
+   {
+    "w": "keriput",
+    "s": 30.12,
+    "e": 30.46
+   },
+   {
+    "w": "setelah",
+    "s": 30.46,
+    "e": 30.76
+   },
+   {
+    "w": "berenang",
+    "s": 30.76,
+    "e": 31.1
+   },
+   {
+    "w": "bukan",
+    "s": 31.1,
+    "e": 31.3
+   },
+   {
+    "w": "sekedar",
+    "s": 31.3,
+    "e": 31.64
+   },
+   {
+    "w": "kulit",
+    "s": 31.64,
+    "e": 31.9
+   },
+   {
+    "w": "yang",
+    "s": 31.9,
+    "e": 32.0
+   },
+   {
+    "w": "basah.",
+    "s": 32.0,
+    "e": 32.6
+   }
+  ]
+ },
+ {
+  "start": 32.9,
+  "end": 35.04,
+  "text": "Saraf dan pembulu darahmu ikut bekerja.",
+  "words": [
+   {
+    "w": "Saraf",
+    "s": 32.9,
+    "e": 33.48
+   },
+   {
+    "w": "dan",
+    "s": 33.48,
+    "e": 33.64
+   },
+   {
+    "w": "pembulu",
+    "s": 33.64,
+    "e": 33.9
+   },
+   {
+    "w": "darahmu",
+    "s": 33.9,
+    "e": 34.34
+   },
+   {
+    "w": "ikut",
+    "s": 34.34,
+    "e": 34.6
+   },
+   {
+    "w": "bekerja.",
+    "s": 34.6,
+    "e": 35.04
+   }
+  ]
+ },
+ {
+  "start": 35.94,
+  "end": 37.74,
+  "text": "Penasaran dengan cara kerja tubuh yang lain?",
+  "words": [
+   {
+    "w": "Penasaran",
+    "s": 35.94,
+    "e": 36.48
+   },
+   {
+    "w": "dengan",
+    "s": 36.48,
+    "e": 36.68
+   },
+   {
+    "w": "cara",
+    "s": 36.68,
+    "e": 36.88
+   },
+   {
+    "w": "kerja",
+    "s": 36.88,
+    "e": 37.16
+   },
+   {
+    "w": "tubuh",
+    "s": 37.16,
+    "e": 37.38
+   },
+   {
+    "w": "yang",
+    "s": 37.38,
+    "e": 37.48
+   },
+   {
+    "w": "lain?",
+    "s": 37.48,
+    "e": 37.74
+   }
+  ]
+ },
+ {
+  "start": 38.28,
+  "end": 40.04,
+  "text": "Jelajahi MedColGratis di MedCol.com",
+  "words": [
+   {
+    "w": "Jelajahi",
+    "s": 38.28,
+    "e": 38.66
+   },
+   {
+    "w": "MedColGratis",
+    "s": 38.66,
+    "e": 39.34
+   },
+   {
+    "w": "di",
+    "s": 39.34,
+    "e": 39.5
+   },
+   {
+    "w": "MedCol",
+    "s": 39.5,
+    "e": 39.72
+   },
+   {
+    "w": ".com",
+    "s": 39.72,
+    "e": 40.04
+   }
+  ]
+ }
+]

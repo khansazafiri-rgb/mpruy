@@ -1,0 +1,14 @@
+{
+  "_catatan": "Jadwal bersama panggung (stage/stage.js, stage/section.js) dan audio (audio/audio_mix.py). Waktu kata dari ASR narasi (audio/narasi-asr.json). Detik. Narasi 40,36 dtk; video diperpanjang sampai 46,4 dtk supaya overview web dan kartu penutup 2,7 dtk muat setelah kalimat terakhir.",
+  "dur": 46.4,
+  "narasi": 40.36,
+  "sc": { "air": [0, 4.9], "penampang": [4.4, 24.2], "luar": [23.3, 36.7], "transisi": [35.95, 37.5], "web": [36.4, 43.7], "akhir": [43.7, 46.4] },
+  "kerut": { "mulai": 0.8, "penuh": 2.9 },
+  "zoom": { "masuk": [1.9, 3.8], "keluar": [23.5, 25.2] },
+  "tanya": [3.3, 4.8],
+  "mekanisme": { "air": [4.68, 7.3], "respons": [7.96, 10.54], "terendam": [11.84, 14.0], "saraf": 14.0, "memicu": 14.76, "pembuluh": 15.16, "menyempit": 16.96, "volume": [18.28, 20.5], "lipatan": [21.36, 23.0], "itulah": 23.66 },
+  "luar": { "tangan": [25.5, 27.3], "kaki": [27.3, 29.1], "jadi": 29.04, "saraf": 32.9, "recap": [32.9, 35.9] },
+  "web": { "masuk": [36.4, 37.5], "materi": [37.5, 39.7], "flash": [39.7, 40.9], "soal": [40.9, 42.4], "anatomi": [42.4, 43.7] },
+  "akhir": [43.7, 46.4],
+  "klik": [37.9, 38.5, 40.0, 41.3, 42.5]
+}
