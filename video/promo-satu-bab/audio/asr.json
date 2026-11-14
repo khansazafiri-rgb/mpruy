@@ -1,0 +1,145 @@
+{
+ "narator": [
+  {
+   "start": 0.0,
+   "end": 3.22,
+   "text": "Kalau belajar FK terasa menumpuk, mulai dari satu bab dulu.",
+   "words": [
+    {
+     "w": "Kalau",
+     "s": 0.0,
+     "e": 0.38
+    },
+    {
+     "w": "belajar",
+     "s": 0.38,
+     "e": 0.74
+    },
+    {
+     "w": "FK",
+     "s": 0.74,
+     "e": 1.0
+    },
+    {
+     "w": "terasa",
+     "s": 1.0,
+     "e": 1.26
+    },
+    {
+     "w": "menumpuk,",
+     "s": 1.26,
+     "e": 1.92
+    },
+    {
+     "w": "mulai",
+     "s": 2.12,
+     "e": 2.5
+    },
+    {
+     "w": "dari",
+     "s": 2.5,
+     "e": 2.62
+    },
+    {
+     "w": "satu",
+     "s": 2.62,
+     "e": 2.84
+    },
+    {
+     "w": "bab",
+     "s": 2.84,
+     "e": 2.98
+    },
+    {
+     "w": "dulu.",
+     "s": 2.98,
+     "e": 3.22
+    }
+   ]
+  },
+  {
+   "start": 3.66,
+   "end": 7.3,
+   "text": "Baca materi, coba flashcard, lalu latihan soal di met call.",
+   "words": [
+    {
+     "w": "Baca",
+     "s": 3.66,
+     "e": 4.02
+    },
+    {
+     "w": "materi,",
+     "s": 4.02,
+     "e": 4.56
+    },
+    {
+     "w": "coba",
+     "s": 4.86,
+     "e": 5.16
+    },
+    {
+     "w": "flashcard,",
+     "s": 5.16,
+     "e": 5.72
+    },
+    {
+     "w": "lalu",
+     "s": 5.96,
+     "e": 6.3
+    },
+    {
+     "w": "latihan",
+     "s": 6.3,
+     "e": 6.58
+    },
+    {
+     "w": "soal",
+     "s": 6.58,
+     "e": 6.84
+    },
+    {
+     "w": "di",
+     "s": 6.84,
+     "e": 6.94
+    },
+    {
+     "w": "met",
+     "s": 6.94,
+     "e": 7.08
+    },
+    {
+     "w": "call.",
+     "s": 7.08,
+     "e": 7.3
+    }
+   ]
+  },
+  {
+   "start": 7.7,
+   "end": 8.98,
+   "text": "Gratis di metcall.com.",
+   "words": [
+    {
+     "w": "Gratis",
+     "s": 7.7,
+     "e": 8.14
+    },
+    {
+     "w": "di",
+     "s": 8.14,
+     "e": 8.3
+    },
+    {
+     "w": "metcall",
+     "s": 8.3,
+     "e": 8.6
+    },
+    {
+     "w": ".com.",
+     "s": 8.6,
+     "e": 8.98
+    }
+   ]
+  }
+ ]
+}
