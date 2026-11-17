@@ -1,0 +1,549 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.64,
+  "text": "Lihat kantong gelap besar di panggul pada scan Medcoil ini.",
+  "words": [
+   {
+    "w": "Lihat",
+    "s": 0.0,
+    "e": 0.5
+   },
+   {
+    "w": "kantong",
+    "s": 0.5,
+    "e": 0.92
+   },
+   {
+    "w": "gelap",
+    "s": 0.92,
+    "e": 1.32
+   },
+   {
+    "w": "besar",
+    "s": 1.32,
+    "e": 1.72
+   },
+   {
+    "w": "di",
+    "s": 1.72,
+    "e": 2.04
+   },
+   {
+    "w": "panggul",
+    "s": 2.04,
+    "e": 2.52
+   },
+   {
+    "w": "pada",
+    "s": 2.52,
+    "e": 2.74
+   },
+   {
+    "w": "scan",
+    "s": 2.74,
+    "e": 2.94
+   },
+   {
+    "w": "Medcoil",
+    "s": 2.94,
+    "e": 3.46
+   },
+   {
+    "w": "ini.",
+    "s": 3.46,
+    "e": 3.64
+   }
+  ]
+ },
+ {
+  "start": 3.98,
+  "end": 7.46,
+  "text": "Itu kandung kemih yang terisi pada skenario retensi urin.",
+  "words": [
+   {
+    "w": "Itu",
+    "s": 3.98,
+    "e": 4.5
+   },
+   {
+    "w": "kandung",
+    "s": 4.5,
+    "e": 5.02
+   },
+   {
+    "w": "kemih",
+    "s": 5.02,
+    "e": 5.38
+   },
+   {
+    "w": "yang",
+    "s": 5.38,
+    "e": 5.48
+   },
+   {
+    "w": "terisi",
+    "s": 5.48,
+    "e": 5.82
+   },
+   {
+    "w": "pada",
+    "s": 5.82,
+    "e": 6.1
+   },
+   {
+    "w": "skenario",
+    "s": 6.1,
+    "e": 6.52
+   },
+   {
+    "w": "retensi",
+    "s": 6.52,
+    "e": 7.12
+   },
+   {
+    "w": "urin.",
+    "s": 7.12,
+    "e": 7.46
+   }
+  ]
+ },
+ {
+  "start": 8.0,
+  "end": 11.92,
+  "text": "Tapi kandung kemih yang penuh saja belum tentu berarti retensi.",
+  "words": [
+   {
+    "w": "Tapi",
+    "s": 8.0,
+    "e": 8.32
+   },
+   {
+    "w": "kandung",
+    "s": 8.32,
+    "e": 9.06
+   },
+   {
+    "w": "kemih",
+    "s": 9.06,
+    "e": 9.46
+   },
+   {
+    "w": "yang",
+    "s": 9.46,
+    "e": 9.6
+   },
+   {
+    "w": "penuh",
+    "s": 9.6,
+    "e": 9.9
+   },
+   {
+    "w": "saja",
+    "s": 9.9,
+    "e": 10.22
+   },
+   {
+    "w": "belum",
+    "s": 10.22,
+    "e": 10.58
+   },
+   {
+    "w": "tentu",
+    "s": 10.58,
+    "e": 10.96
+   },
+   {
+    "w": "berarti",
+    "s": 10.96,
+    "e": 11.3
+   },
+   {
+    "w": "retensi.",
+    "s": 11.3,
+    "e": 11.92
+   }
+  ]
+ },
+ {
+  "start": 12.5,
+  "end": 15.62,
+  "text": "Sebelum buang air kecil, kandung kemih memang menyimpan urin.",
+  "words": [
+   {
+    "w": "Sebelum",
+    "s": 12.5,
+    "e": 12.92
+   },
+   {
+    "w": "buang",
+    "s": 12.92,
+    "e": 13.1
+   },
+   {
+    "w": "air",
+    "s": 13.1,
+    "e": 13.28
+   },
+   {
+    "w": "kecil,",
+    "s": 13.28,
+    "e": 13.72
+   },
+   {
+    "w": "kandung",
+    "s": 14.02,
+    "e": 14.24
+   },
+   {
+    "w": "kemih",
+    "s": 14.24,
+    "e": 14.6
+   },
+   {
+    "w": "memang",
+    "s": 14.6,
+    "e": 14.82
+   },
+   {
+    "w": "menyimpan",
+    "s": 14.82,
+    "e": 15.24
+   },
+   {
+    "w": "urin.",
+    "s": 15.24,
+    "e": 15.62
+   }
+  ]
+ },
+ {
+  "start": 16.3,
+  "end": 20.6,
+  "text": "Normalnya otot kandung kemih berkontraksi dan jalan keluarnya membuka.",
+  "words": [
+   {
+    "w": "Normalnya",
+    "s": 16.3,
+    "e": 17.02
+   },
+   {
+    "w": "otot",
+    "s": 17.02,
+    "e": 17.56
+   },
+   {
+    "w": "kandung",
+    "s": 17.56,
+    "e": 17.88
+   },
+   {
+    "w": "kemih",
+    "s": 17.88,
+    "e": 18.24
+   },
+   {
+    "w": "berkontraksi",
+    "s": 18.24,
+    "e": 19.02
+   },
+   {
+    "w": "dan",
+    "s": 19.02,
+    "e": 19.42
+   },
+   {
+    "w": "jalan",
+    "s": 19.42,
+    "e": 19.68
+   },
+   {
+    "w": "keluarnya",
+    "s": 19.68,
+    "e": 20.16
+   },
+   {
+    "w": "membuka.",
+    "s": 20.16,
+    "e": 20.6
+   }
+  ]
+ },
+ {
+  "start": 21.24,
+  "end": 24.62,
+  "text": "Kalau aliran keluar terhambat atau kontraksinya tidak cukup kuat,",
+  "words": [
+   {
+    "w": "Kalau",
+    "s": 21.24,
+    "e": 21.58
+   },
+   {
+    "w": "aliran",
+    "s": 21.58,
+    "e": 21.88
+   },
+   {
+    "w": "keluar",
+    "s": 21.88,
+    "e": 22.18
+   },
+   {
+    "w": "terhambat",
+    "s": 22.18,
+    "e": 22.8
+   },
+   {
+    "w": "atau",
+    "s": 22.8,
+    "e": 23.12
+   },
+   {
+    "w": "kontraksinya",
+    "s": 23.12,
+    "e": 23.78
+   },
+   {
+    "w": "tidak",
+    "s": 23.78,
+    "e": 23.94
+   },
+   {
+    "w": "cukup",
+    "s": 23.94,
+    "e": 24.28
+   },
+   {
+    "w": "kuat,",
+    "s": 24.28,
+    "e": 24.62
+   }
+  ]
+ },
+ {
+  "start": 24.96,
+  "end": 27.74,
+  "text": "urin bisa tetap tertahan dan kandung kemih meregang.",
+  "words": [
+   {
+    "w": "urin",
+    "s": 24.96,
+    "e": 25.32
+   },
+   {
+    "w": "bisa",
+    "s": 25.32,
+    "e": 25.5
+   },
+   {
+    "w": "tetap",
+    "s": 25.5,
+    "e": 25.8
+   },
+   {
+    "w": "tertahan",
+    "s": 25.8,
+    "e": 26.26
+   },
+   {
+    "w": "dan",
+    "s": 26.26,
+    "e": 26.68
+   },
+   {
+    "w": "kandung",
+    "s": 26.68,
+    "e": 27.02
+   },
+   {
+    "w": "kemih",
+    "s": 27.02,
+    "e": 27.36
+   },
+   {
+    "w": "meregang.",
+    "s": 27.36,
+    "e": 27.74
+   }
+  ]
+ },
+ {
+  "start": 27.74,
+  "end": 33.06,
+  "text": "Sekarang, bandingkan model normal dengan skenario patologinya di Live4DLab.",
+  "words": [
+   {
+    "w": "Sekarang,",
+    "s": 27.74,
+    "e": 28.94
+   },
+   {
+    "w": "bandingkan",
+    "s": 29.16,
+    "e": 29.72
+   },
+   {
+    "w": "model",
+    "s": 29.72,
+    "e": 29.9
+   },
+   {
+    "w": "normal",
+    "s": 29.9,
+    "e": 30.3
+   },
+   {
+    "w": "dengan",
+    "s": 30.3,
+    "e": 30.54
+   },
+   {
+    "w": "skenario",
+    "s": 30.54,
+    "e": 30.96
+   },
+   {
+    "w": "patologinya",
+    "s": 30.96,
+    "e": 31.7
+   },
+   {
+    "w": "di",
+    "s": 31.7,
+    "e": 31.9
+   },
+   {
+    "w": "Live4DLab.",
+    "s": 31.9,
+    "e": 33.06
+   }
+  ]
+ },
+ {
+  "start": 33.54,
+  "end": 37.28,
+  "text": "Pada pasian sungguhan, retensi tidak ditentukan dari satu gambar saja.",
+  "words": [
+   {
+    "w": "Pada",
+    "s": 33.54,
+    "e": 33.96
+   },
+   {
+    "w": "pasian",
+    "s": 33.96,
+    "e": 34.24
+   },
+   {
+    "w": "sungguhan,",
+    "s": 34.24,
+    "e": 34.74
+   },
+   {
+    "w": "retensi",
+    "s": 35.08,
+    "e": 35.5
+   },
+   {
+    "w": "tidak",
+    "s": 35.5,
+    "e": 35.68
+   },
+   {
+    "w": "ditentukan",
+    "s": 35.68,
+    "e": 36.22
+   },
+   {
+    "w": "dari",
+    "s": 36.22,
+    "e": 36.44
+   },
+   {
+    "w": "satu",
+    "s": 36.44,
+    "e": 36.68
+   },
+   {
+    "w": "gambar",
+    "s": 36.68,
+    "e": 37.02
+   },
+   {
+    "w": "saja.",
+    "s": 37.02,
+    "e": 37.28
+   }
+  ]
+ },
+ {
+  "start": 37.96,
+  "end": 40.6,
+  "text": "Ini simulasi edukatif, bukan alat diagnosis.",
+  "words": [
+   {
+    "w": "Ini",
+    "s": 37.96,
+    "e": 38.22
+   },
+   {
+    "w": "simulasi",
+    "s": 38.22,
+    "e": 38.9
+   },
+   {
+    "w": "edukatif,",
+    "s": 38.9,
+    "e": 39.48
+   },
+   {
+    "w": "bukan",
+    "s": 39.8,
+    "e": 39.9
+   },
+   {
+    "w": "alat",
+    "s": 39.9,
+    "e": 40.2
+   },
+   {
+    "w": "diagnosis.",
+    "s": 40.2,
+    "e": 40.6
+   }
+  ]
+ },
+ {
+  "start": 41.24,
+  "end": 43.4,
+  "text": "Explorasi gratis di Medcoil.com",
+  "words": [
+   {
+    "w": "Explorasi",
+    "s": 41.24,
+    "e": 41.8
+   },
+   {
+    "w": "gratis",
+    "s": 41.8,
+    "e": 42.28
+   },
+   {
+    "w": "di",
+    "s": 42.28,
+    "e": 42.46
+   },
+   {
+    "w": "Medcoil",
+    "s": 42.46,
+    "e": 43.02
+   },
+   {
+    "w": ".com",
+    "s": 43.02,
+    "e": 43.4
+   }
+  ]
+ }
+]
