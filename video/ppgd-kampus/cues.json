@@ -1,0 +1,85 @@
+{
+  "_catatan": "Jadwal bersama panggung (stage/stage.js, stage/outro.js) dan audio (audio/audio_mix.py). Detik. Cerita 0-31 dtk tanpa narator (teks layar sesuai naskah pemesan). Narasi outro (Google AI Studio) menempati 34,9-44,5 dtk; audio/narasi-outro.wav belum disertakan, linimasa outro di bawah adalah ESTIMASI dan diperbarui dengan audio/retime.py bila WAV sudah ada.",
+  "dur": 47.1,
+  "sc": {
+    "story": [
+      0,
+      34.5
+    ],
+    "outro": [
+      34.5,
+      47.1
+    ]
+  },
+  "napas": {
+    "megap": [
+      14.7,
+      15.95,
+      17.2
+    ]
+  },
+  "teman": {
+    "masuk": 9.9,
+    "telepon": 10.9,
+    "lari": 12.9,
+    "pergi": 14.0,
+    "kembali": 26.0,
+    "pasang": 27.3
+  },
+  "aed": {
+    "nyala": 27.8,
+    "bantalan": [
+      29.0,
+      30.2
+    ]
+  },
+  "klik": [
+    3.0,
+    6.0,
+    10.0,
+    14.0,
+    18.0,
+    27.0
+  ],
+  "outro": {
+    "bab": [
+      34.5,
+      37.2
+    ],
+    "soal": [
+      37.2,
+      40.2
+    ],
+    "sim": [
+      40.2,
+      47.1
+    ],
+    "akhir": 43.5,
+    "narasi": 34.9,
+    "sub": [
+      [
+        34.9,
+        36.5,
+        "Mau lanjut belajar?"
+      ],
+      [
+        36.5,
+        39.5,
+        "Di MEDCOEL, kamu bisa buka materi per bab,"
+      ],
+      [
+        39.5,
+        42.7,
+        "latihan soal, dan Simulasi Dokter."
+      ],
+      [
+        42.9,
+        47.1,
+        "Gratis di medcoel.com."
+      ]
+    ]
+  },
+  "wake": {
+    "t0": 31.0
+  }
+}
