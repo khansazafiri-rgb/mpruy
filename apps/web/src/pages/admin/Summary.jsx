@@ -1,4 +1,4 @@
-import { ArrowRight, BookMarked, FileQuestion, FlaskConical, Megaphone, Users } from 'lucide-react';
+import { Activity, ArrowRight, BookMarked, FileQuestion, FlaskConical, Megaphone, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AdminHeader from '@/components/admin/AdminHeader';
 import { Alert, ErrorState, PageLoader, SectionHeader, Stat } from '@/components/ui';
@@ -9,6 +9,7 @@ const DOORS = [
   { to: '/admin/lab', icon: FlaskConical, title: 'MEDCOEL Lab', text: 'Tambah modul lewat JSON, periksa, lalu terbitkan ke siswa.' },
   { to: '/admin/soal', icon: FileQuestion, title: 'Edit Soal', text: 'Tulis, ubah, atau impor soal per mata kuliah dan BAB.' },
   { to: '/admin/mata-kuliah', icon: BookMarked, title: 'Mata kuliah & BAB', text: 'Atur daftar mata kuliah dan BAB yang dilihat siswa.' },
+  { to: '/admin/aktivitas', icon: Activity, title: 'Aktivitas siswa', text: 'Lihat bagian web yang paling sering dibuka siswa dan berapa lama.' },
   { to: '/admin/pengumuman', icon: Megaphone, title: 'Pengumuman', text: 'Tulis pengumuman yang muncul saat siswa membuka web.' },
   { to: '/admin/pengguna', icon: Users, title: 'Pengguna', text: 'Cari akun, ubah peran, atau nonaktifkan akun.' },
 ];

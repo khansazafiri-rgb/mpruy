@@ -6,6 +6,7 @@ const storage = require(HOOKS + "/lib/storage.js");
 const subs = require(HOOKS + "/lib/submissions.js");
 
 function cleanup(app) {
+  try { require(HOOKS + "/lib/activity.js").purge(app); } catch (err) { console.log("cleanup activity", err); } // aktivitas siswa > 180 hari
   const now = u.pbDate(new Date());
   const dayAgo = u.pbDate(new Date(Date.now() - 24 * 3600 * 1000));
   const out = { drafts: 0, pendingFiles: 0, draftSubmissions: 0, expiredSubmissions: 0, codes: 0 };

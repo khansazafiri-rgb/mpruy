@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { FlaskConical, ArrowLeft, BookMarked, Crosshair, FileQuestion, Flag, Inbox, LayoutDashboard, Megaphone, MessageCircle, Package, Settings, Stethoscope, Users } from 'lucide-react';
+import { Activity, FlaskConical, ArrowLeft, BookMarked, Crosshair, FileQuestion, Flag, Inbox, LayoutDashboard, Megaphone, MessageCircle, Package, Settings, Stethoscope, Users } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import Logo from '@/components/Logo';
@@ -27,6 +27,7 @@ export const ADMIN_GROUPS = [
   ] },
   { label: 'Komunitas & sistem', items: [
     { to: '/admin/pengumuman', label: 'Pengumuman', icon: Megaphone },
+    { to: '/admin/aktivitas', label: 'Aktivitas siswa', icon: Activity },
     { to: '/admin/pengguna', label: 'Pengguna', icon: Users },
     { to: '/admin/pengaturan', label: 'Pengaturan', icon: Settings },
   ] },
