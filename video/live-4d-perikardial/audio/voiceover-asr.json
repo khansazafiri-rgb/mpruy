@@ -1,0 +1,393 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.02,
+  "text": "Jantung punya selaput pembungkus bernama perikardium.",
+  "words": [
+   {
+    "w": "Jantung",
+    "s": 0.0,
+    "e": 0.6
+   },
+   {
+    "w": "punya",
+    "s": 0.6,
+    "e": 0.92
+   },
+   {
+    "w": "selaput",
+    "s": 0.92,
+    "e": 1.34
+   },
+   {
+    "w": "pembungkus",
+    "s": 1.34,
+    "e": 1.84
+   },
+   {
+    "w": "bernama",
+    "s": 1.84,
+    "e": 2.28
+   },
+   {
+    "w": "perikardium.",
+    "s": 2.28,
+    "e": 3.02
+   }
+  ]
+ },
+ {
+  "start": 3.48,
+  "end": 5.9,
+  "text": "Apa yang terjadi kalau cairan terkumpul di ruang ini?",
+  "words": [
+   {
+    "w": "Apa",
+    "s": 3.48,
+    "e": 3.76
+   },
+   {
+    "w": "yang",
+    "s": 3.76,
+    "e": 3.88
+   },
+   {
+    "w": "terjadi",
+    "s": 3.88,
+    "e": 4.24
+   },
+   {
+    "w": "kalau",
+    "s": 4.24,
+    "e": 4.54
+   },
+   {
+    "w": "cairan",
+    "s": 4.54,
+    "e": 4.88
+   },
+   {
+    "w": "terkumpul",
+    "s": 4.88,
+    "e": 5.4
+   },
+   {
+    "w": "di",
+    "s": 5.4,
+    "e": 5.54
+   },
+   {
+    "w": "ruang",
+    "s": 5.54,
+    "e": 5.74
+   },
+   {
+    "w": "ini?",
+    "s": 5.74,
+    "e": 5.9
+   }
+  ]
+ },
+ {
+  "start": 6.68,
+  "end": 10.52,
+  "text": "Di live 4D lab Metcoil, pilih skenario effusi perikardial.",
+  "words": [
+   {
+    "w": "Di",
+    "s": 6.68,
+    "e": 6.94
+   },
+   {
+    "w": "live",
+    "s": 6.94,
+    "e": 7.14
+   },
+   {
+    "w": "4D",
+    "s": 7.14,
+    "e": 7.66
+   },
+   {
+    "w": "lab",
+    "s": 7.66,
+    "e": 7.82
+   },
+   {
+    "w": "Metcoil,",
+    "s": 7.82,
+    "e": 8.42
+   },
+   {
+    "w": "pilih",
+    "s": 8.78,
+    "e": 9.02
+   },
+   {
+    "w": "skenario",
+    "s": 9.02,
+    "e": 9.36
+   },
+   {
+    "w": "effusi",
+    "s": 9.36,
+    "e": 9.82
+   },
+   {
+    "w": "perikardial.",
+    "s": 9.82,
+    "e": 10.52
+   }
+  ]
+ },
+ {
+  "start": 11.08,
+  "end": 16.24,
+  "text": "Lihat posisi jantung pada model tubuh, lalu amati ruang di sekitarnya pada tampilan sitis sintetis.",
+  "words": [
+   {
+    "w": "Lihat",
+    "s": 11.08,
+    "e": 11.38
+   },
+   {
+    "w": "posisi",
+    "s": 11.38,
+    "e": 11.7
+   },
+   {
+    "w": "jantung",
+    "s": 11.7,
+    "e": 12.14
+   },
+   {
+    "w": "pada",
+    "s": 12.14,
+    "e": 12.34
+   },
+   {
+    "w": "model",
+    "s": 12.34,
+    "e": 12.56
+   },
+   {
+    "w": "tubuh,",
+    "s": 12.56,
+    "e": 13.0
+   },
+   {
+    "w": "lalu",
+    "s": 13.3,
+    "e": 13.54
+   },
+   {
+    "w": "amati",
+    "s": 13.54,
+    "e": 13.82
+   },
+   {
+    "w": "ruang",
+    "s": 13.82,
+    "e": 14.12
+   },
+   {
+    "w": "di",
+    "s": 14.12,
+    "e": 14.24
+   },
+   {
+    "w": "sekitarnya",
+    "s": 14.24,
+    "e": 14.76
+   },
+   {
+    "w": "pada",
+    "s": 14.76,
+    "e": 15.02
+   },
+   {
+    "w": "tampilan",
+    "s": 15.02,
+    "e": 15.4
+   },
+   {
+    "w": "sitis",
+    "s": 15.4,
+    "e": 15.7
+   },
+   {
+    "w": "sintetis.",
+    "s": 15.7,
+    "e": 16.24
+   }
+  ]
+ },
+ {
+  "start": 16.96,
+  "end": 20.5,
+  "text": "Cairan yang banyak atau terbentuk cepat bisa mengganggu pengisian jantung.",
+  "words": [
+   {
+    "w": "Cairan",
+    "s": 16.96,
+    "e": 17.52
+   },
+   {
+    "w": "yang",
+    "s": 17.52,
+    "e": 17.66
+   },
+   {
+    "w": "banyak",
+    "s": 17.66,
+    "e": 18.0
+   },
+   {
+    "w": "atau",
+    "s": 18.0,
+    "e": 18.36
+   },
+   {
+    "w": "terbentuk",
+    "s": 18.36,
+    "e": 18.72
+   },
+   {
+    "w": "cepat",
+    "s": 18.72,
+    "e": 19.06
+   },
+   {
+    "w": "bisa",
+    "s": 19.06,
+    "e": 19.26
+   },
+   {
+    "w": "mengganggu",
+    "s": 19.26,
+    "e": 19.68
+   },
+   {
+    "w": "pengisian",
+    "s": 19.68,
+    "e": 20.04
+   },
+   {
+    "w": "jantung.",
+    "s": 20.04,
+    "e": 20.5
+   }
+  ]
+ },
+ {
+  "start": 21.04,
+  "end": 23.26,
+  "text": "Tapi simulasi ini tidak menilai tampon ada.",
+  "words": [
+   {
+    "w": "Tapi",
+    "s": 21.04,
+    "e": 21.46
+   },
+   {
+    "w": "simulasi",
+    "s": 21.46,
+    "e": 21.98
+   },
+   {
+    "w": "ini",
+    "s": 21.98,
+    "e": 22.12
+   },
+   {
+    "w": "tidak",
+    "s": 22.12,
+    "e": 22.46
+   },
+   {
+    "w": "menilai",
+    "s": 22.46,
+    "e": 22.8
+   },
+   {
+    "w": "tampon",
+    "s": 22.8,
+    "e": 23.06
+   },
+   {
+    "w": "ada.",
+    "s": 23.06,
+    "e": 23.26
+   }
+  ]
+ },
+ {
+  "start": 23.88,
+  "end": 25.6,
+  "text": "Ini ban belajar, bukan alat diagnosis.",
+  "words": [
+   {
+    "w": "Ini",
+    "s": 23.88,
+    "e": 24.06
+   },
+   {
+    "w": "ban",
+    "s": 24.06,
+    "e": 24.22
+   },
+   {
+    "w": "belajar,",
+    "s": 24.22,
+    "e": 24.56
+   },
+   {
+    "w": "bukan",
+    "s": 24.86,
+    "e": 25.06
+   },
+   {
+    "w": "alat",
+    "s": 25.06,
+    "e": 25.28
+   },
+   {
+    "w": "diagnosis.",
+    "s": 25.28,
+    "e": 25.6
+   }
+  ]
+ },
+ {
+  "start": 26.3,
+  "end": 28.76,
+  "text": "Explorasi gratis di metcoil.com",
+  "words": [
+   {
+    "w": "Explorasi",
+    "s": 26.3,
+    "e": 26.98
+   },
+   {
+    "w": "gratis",
+    "s": 26.98,
+    "e": 27.44
+   },
+   {
+    "w": "di",
+    "s": 27.44,
+    "e": 27.74
+   },
+   {
+    "w": "metcoil",
+    "s": 27.74,
+    "e": 28.26
+   },
+   {
+    "w": ".com",
+    "s": 28.26,
+    "e": 28.76
+   }
+  ]
+ }
+]

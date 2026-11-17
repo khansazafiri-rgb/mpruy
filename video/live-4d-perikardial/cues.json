@@ -1,0 +1,31 @@
+{
+  "_catatan": "Jadwal bersama panggung (stage/stage.js) dan audio (audio/audio_mix.py). Detik video. Dari ASR voice-over Google AI Studio (audio/voiceover.wav 29,08 dtk; audio/voiceover-asr.json). Visual berasal dari lima klip asli di src/ (bingkai 30 fps).",
+  "dur": 29.6,
+  "clip": { "00": 510, "01": 45, "02": 243, "03": 240, "04": 360 },
+  "shots": {
+    "hook":   { "out": [0.0, 6.6],   "clip": "04", "src": [0.0, 5.28] },
+    "patologi": { "out": [6.6, 10.9], "clip": "01", "src": [0.0, 1.46], "playUntil": 9.1 },
+    "probe":  { "out": [10.9, 13.4], "clip": "00", "src": [0.03, 1.5] },
+    "ct":     { "out": [13.4, 17.0], "clip": "04", "src": [5.28, 8.16] },
+    "isi":    { "out": [17.0, 20.9], "clip": "04", "src": [8.16, 11.2] },
+    "model":  { "out": [20.9, 23.8], "clip": "01", "src": [1.46, 1.46] },
+    "disc":   { "out": [23.8, 26.2], "clip": "04", "src": [1.0, 2.9] },
+    "tutup":  { "out": [26.2, 29.6], "clip": "00", "src": [0.03, 0.03] }
+  },
+  "teks": {
+    "hook": [0.0, 6.6], "perikardium": [0.9, 3.3], "efusi": [6.6, 10.9], "cairan": [10.9, 17.0],
+    "ring": [13.55, 20.8], "ringProbe": [11.3, 13.4],
+    "isi": [17.0, 20.9], "tamponade": [20.9, 23.8], "discBesar": [23.9, 26.1], "coba": 26.3, "url": 27.0
+  },
+  "vo": [
+    { "id": "vo1", "t": [0.0, 3.02],   "teks": "Jantung punya selaput pembungkus bernama perikardium." },
+    { "id": "vo2", "t": [3.48, 5.9],   "teks": "Apa yang terjadi kalau cairan terkumpul di ruang ini?" },
+    { "id": "vo3", "t": [6.68, 10.52], "teks": "Di Live 4D Lab MEDCOEL, pilih skenario efusi perikardial." },
+    { "id": "vo4", "t": [11.08, 16.24],"teks": "Lihat posisi jantung pada model tubuh, lalu amati ruang di sekitarnya pada tampilan CT sintetis." },
+    { "id": "vo5", "t": [16.96, 20.5], "teks": "Cairan yang banyak atau terbentuk cepat bisa mengganggu pengisian jantung." },
+    { "id": "vo6", "t": [21.04, 23.26],"teks": "Tapi simulasi ini tidak menilai tamponade." },
+    { "id": "vo7", "t": [23.88, 25.6], "teks": "Ini bahan belajar, bukan alat diagnosis. (ASR: 'Ini ban belajar')" },
+    { "id": "vo8", "t": [26.3, 28.76], "teks": "Eksplorasi gratis di MEDCOEL.com (diucapkan: Metcoil.com)" }
+  ],
+  "klik": [7.6]
+}
