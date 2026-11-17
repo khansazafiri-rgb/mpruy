@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover PPGD kampus</title>
+<link rel="stylesheet" href="../stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#root{width:1080px;height:1920px;position:relative;overflow:hidden}#root svg{position:absolute;left:0;top:0}</style></head>
+<body><div id="root"><svg id="sc" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script type="module">
+// Cover: bingkai nyata dari video (RJP di koridor pixel) + judul. Area aman Reels/TikTok: atas >= 250, bawah <= 1440, kanan <= 940. ?guide = garis area aman.
+const q = new URLSearchParams(location.search);
+await document.fonts.load('400 40px "Press Start 2P"'); await document.fonts.load('800 40px "Plus Jakarta Sans"'); await document.fonts.ready;
+const P = "'Press Start 2P', monospace", F = "'Plus Jakarta Sans', sans-serif";
+let s = `<image href="frame-rjp.jpg" x="0" y="0" width="1080" height="1920"/><rect width="1080" height="560" fill="rgba(8,24,34,.78)"/><rect y="560" width="1080" height="10" fill="#F8C038"/>`;
+s += `<rect x="70" y="262" width="330" height="96" rx="28" fill="rgba(248,247,243,.97)"/><image href="logo-full.webp" x="90" y="271" width="290" height="78" preserveAspectRatio="xMidYMid meet"/>`;
+s += `<text x="70" y="448" font-family="${P}" font-size="50" fill="#F5F1E6">SESEORANG</text><text x="70" y="524" font-family="${P}" font-size="50" fill="#F8C038">KOLAPS?</text>`;
+s += `<rect x="70" y="1330" width="760" height="76" fill="rgba(8,24,34,.9)"/><text x="450" y="1382" text-anchor="middle" font-family="${F}" font-weight="800" font-size="36" fill="#F5F1E6">Langkah awal · bukan pengganti pelatihan</text>`;
+if (q.has('guide')) s += `<g fill="#FF0066" opacity=".16"><rect width="1080" height="250"/><rect y="1440" width="1080" height="480"/><rect x="940" y="250" width="140" height="1190"/></g><rect y="250" width="940" height="1190" fill="none" stroke="#FF0066" stroke-width="4" stroke-dasharray="14 10"/>`;
+document.getElementById('sc').innerHTML = s;
+await Promise.all([...document.images].map((i) => i.decode().catch(() => {}))); await new Promise((r) => setTimeout(r, 400)); window.__ready = true;
+</script></body></html>
