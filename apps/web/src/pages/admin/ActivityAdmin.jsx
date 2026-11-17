@@ -68,11 +68,11 @@ export default function ActivityAdmin() {
           <section className="space-y-3" aria-label="Halaman terpopuler">
             <SectionHeader title="Halaman terpopuler">20 halaman teratas. "Siswa" adalah jumlah siswa berbeda yang membukanya.</SectionHeader>
             <div className="card overflow-x-auto p-0">
-              <table className="w-full min-w-[520px] text-left text-sm">
-                <thead className="meta border-b border-line"><tr><th className="px-4 py-2 font-semibold">Halaman</th><th className="px-4 py-2 font-semibold">Bagian</th><th className="px-4 py-2 text-right font-semibold">Dibuka</th><th className="px-4 py-2 text-right font-semibold">Siswa</th><th className="px-4 py-2 text-right font-semibold">Waktu aktif</th></tr></thead>
+              <table className="w-full min-w-[340px] text-left text-sm">
+                <thead className="meta border-b border-line"><tr><th className="px-4 py-2 font-semibold">Halaman</th><th className="hidden px-4 py-2 font-semibold sm:table-cell">Bagian</th><th className="px-4 py-2 text-right font-semibold">Dibuka</th><th className="px-4 py-2 text-right font-semibold">Siswa</th><th className="px-4 py-2 text-right font-semibold">Waktu aktif</th></tr></thead>
                 <tbody className="divide-y divide-line tabular-nums">
                   {data.pages.map((p) => (
-                    <tr key={p.key}><td className="px-4 py-2 font-medium text-ink">{p.label}</td><td className="px-4 py-2 text-ink-muted">{p.sectionLabel}</td><td className="px-4 py-2 text-right">{nf.format(p.views)}</td><td className="px-4 py-2 text-right">{nf.format(p.students)}</td><td className="px-4 py-2 text-right">{fmtMinutes(p.minutes)}</td></tr>
+                    <tr key={p.key}><td className="px-4 py-2 font-medium text-ink">{p.label}</td><td className="hidden px-4 py-2 text-ink-muted sm:table-cell">{p.sectionLabel}</td><td className="px-4 py-2 text-right">{nf.format(p.views)}</td><td className="px-4 py-2 text-right">{nf.format(p.students)}</td><td className="px-4 py-2 text-right">{fmtMinutes(p.minutes)}</td></tr>
                   ))}
                 </tbody>
               </table>
