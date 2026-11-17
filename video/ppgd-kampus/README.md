@@ -1,11 +1,11 @@
-# Seseorang kolaps di kampus: langkah awal PPGD — video edukasi promosi MEDCOEL (43,6 dtk, 1080×1920, 30 fps)
+# Seseorang kolaps di kampus: langkah awal PPGD — video edukasi promosi MEDCOEL (47,1 dtk, 1080×1920, 30 fps)
 
 Gaya game pixel modern (koridor kampus, teks, transisi blok piksel). Raka dirender dari aset kanonik `brand/characters/raka/raka.js`; korban dewasa dan teman memakai konstruksi dan palet Raka (`PALETTE_DOSEN`, `PALETTE_KAKAK`, pose `rebah`/`jongkok`/`jalan` bawaan). Ringkasan langkah awal, **bukan pengganti pelatihan praktik** (kalimat ini tampil kecil di layar sepanjang cerita).
 
 Hasil: `seseorang-kolaps-di-kampus.mp4` (H.264 + AAC), cover `cover/cover.png` (+ `cover-panduan-area-aman.png`, `cover-360px.png`), bingkai kunci 360 px di `still/`.
 
 ## STATUS NARASI OUTRO (PENTING)
-Narasi outro **belum ada di video**. Saya tidak punya akses ke Google AI Studio dan tidak diberi berkas WAV-nya, dan saya tidak membuat suara pengganti. Yang ada sekarang: takarir layar untuk kalimat narasi persis seperti naskah, musik, dan efek. Cara memasangnya: taruh WAV hasil Google AI Studio di `audio/narasi-outro.wav` (kalimat: "Mau lanjut belajar? Di MEDCOEL, kamu bisa buka materi per bab, latihan soal, dan Simulasi Dokter. Gratis di medcoel.com."), jalankan `python3 video/ppgd-kampus/audio/audio_mix.py` (otomatis dicampur mulai 31,4 dtk dengan musik turun di bawahnya), lalu sesuaikan `outro.sub`, `outro.bab/soal/sim`, dan `dur` di `cues.json` dengan durasi audio dan render ulang (perintah di bawah). Waktu takarir dan potongan outro saat ini adalah ESTIMASI.
+Narasi outro **belum ada di video**. Saya tidak punya akses ke Google AI Studio dan tidak diberi berkas WAV-nya, dan saya tidak membuat suara pengganti. Yang ada sekarang: takarir layar untuk kalimat narasi persis seperti naskah, musik, dan efek. Cara memasangnya: taruh WAV hasil Google AI Studio di `audio/narasi-outro.wav` (kalimat: "Mau lanjut belajar? Di MEDCOEL, kamu bisa buka materi per bab, latihan soal, dan Simulasi Dokter. Gratis di medcoel.com."), jalankan `python3 video/ppgd-kampus/audio/audio_mix.py` (otomatis dicampur mulai 34,9 dtk dengan musik turun di bawahnya), lalu sesuaikan `outro.sub`, `outro.bab/soal/sim`, dan `dur` di `cues.json` dengan durasi audio dan render ulang (perintah di bawah). Waktu takarir dan potongan outro saat ini adalah ESTIMASI (dasar: outro mulai 34,5 dtk).
 
 ## Alur (teks layar sesuai naskah)
 | Detik | Adegan | Teks |
@@ -17,9 +17,10 @@ Narasi outro **belum ada di video**. Saya tidak punya akses ke Google AI Studio 
 | 14–18 | Raka menunduk memeriksa dada/napas; panel membandingkan gelombang napas NORMAL dengan MEGAP-MEGAP (korban megap-megap tampak di wajah) bertanda silang: "MEGAP-MEGAP = BUKAN NAPAS NORMAL" | "4. Napas normal?" |
 | 18–27 | "TIDAK RESPONS + TIDAK BERNAPAS NORMAL" → RJP: tangan bertumpuk di tengah dada, lengan lurus, tubuh naik-turun dengan dada korban menekan, metronom 110/menit, "TEKAN TENGAH DADA · KUAT · CEPAT", "100–120 TEKANAN / MENIT" | "Mulai RJP" |
 | 27–31 | Teman kembali membawa AED; AED menyala (lampu hijau berkedip), bantalan ditempel di dada dengan kabel, RJP dihentikan untuk mengikuti instruksi | "AED: ikuti instruksinya" |
-| 31–43,6 | Transisi blok piksel ke rekaman web asli: ① pilih bab, ② latihan soal + pembahasan (jawaban salah dan penjelasan), ③ Simulasi Dokter; 40,0 dtk: logo + "BELAJAR FK GRATIS · MEDCOEL.COM" di atas rekaman web yang masih bergerak (3,6 dtk) | takarir narasi outro |
+| 31–34,5 | **Korban sadar** (tambahan atas permintaan): Raka berhenti menekan, korban membuka mata dan bertanya "Saya... kenapa?"; bantalan AED masih menempel | "Korban sadar" · "TETAP TUNGGU TENAGA MEDIS" |
+| 34,5–47,1 | Transisi blok piksel ke rekaman web asli: ① pilih bab, ② latihan soal + pembahasan (jawaban salah dan penjelasan), ③ Simulasi Dokter; 43,5 dtk: logo + "BELAJAR FK GRATIS · MEDCOEL.COM" di atas rekaman web yang masih bergerak (3,6 dtk) | takarir narasi outro |
 
-Tidak ada adegan "menang level": tidak ada skor, bintang, atau musik kemenangan; musik serius dan tenang.
+Kepala korban kini diputar sejajar sumbu badan (tidak miring). Adegan sadar dibuat dipilih: korban tidak berdiri (setelah henti jantung tidak realistis), hanya sadar dan menunggu tenaga medis. Tidak ada adegan "menang level": tidak ada skor, bintang, atau musik kemenangan; musik serius dan tenang.
 
 ## Batasan akurasi (jujur)
 - **RJP disederhanakan:** tampak samping, Raka berlutut di sisi korban dengan lengan lurus dan tangan bertumpuk di tengah dada; gerak naik-turun hanya dari badan atas. Kedalaman, rekoil, dan hitungan 30:2 **tidak** ditampilkan; tidak ada close-up teknik dan tidak ada napas buatan. Laju 110/menit hanya untuk irama visual dan metronom; angka "100–120/menit" ditulis di layar. Pelatihan praktik tetap diperlukan.
@@ -39,7 +40,7 @@ Musik ("MEDCOEL Hall Pulse": pad tenang + pluck persegi tipis) dan efek (klik te
 ```bash
 python3 -m http.server 8132 --bind 127.0.0.1 &           # dari akar repo
 python3 video/ppgd-kampus/audio/audio_mix.py              # musik + efek (+ narasi bila audio/narasi-outro.wav ada) -> audio/mix.wav
-NODE_PATH=/opt/node-tools/node_modules node video/ppgd-kampus/render.mjs /tmp/ppgd-out 0 1307 4
-ffmpeg -framerate 30 -i /tmp/ppgd-out/f%05d.jpg -i video/ppgd-kampus/audio/mix.wav -c:v libx264 -crf 17 -preset slow -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart -t 43.6 video/ppgd-kampus/seseorang-kolaps-di-kampus.mp4
+NODE_PATH=/opt/node-tools/node_modules node video/ppgd-kampus/render.mjs /tmp/ppgd-out 0 1412 4
+ffmpeg -framerate 30 -i /tmp/ppgd-out/f%05d.jpg -i video/ppgd-kampus/audio/mix.wav -c:v libx264 -crf 17 -preset slow -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart -t 47.1 video/ppgd-kampus/seseorang-kolaps-di-kampus.mp4
 ```
 Bingkai outro dibuat ulang dengan: `ffmpeg -ss 0 -t 5.2 -i video/masih-dua-minggu/rekam/rekaman-web.mp4 -vf fps=15,scale=900:-2 -start_number 0 rekam/web/bab/f%04d.jpg` (soal: `-ss 5.6 -t 8.4`; sim dari dok-saya-kenapa: `-ss 2.0 -t 14.5`).

@@ -85,7 +85,7 @@ x = 18.5
 while x < 28.9: metronome(x, accent=False, g=0.9); x += 60 / 110
 aed_on(C['aed']['nyala']); aed_prompt(C['aed']['nyala'] + 0.8); aed_prompt(C['aed']['nyala'] + 2.4); sticky(C['aed']['bantalan'][0] + 0.6); sticky(C['aed']['bantalan'][0] + 0.9)
 for tt_ in (C['outro']['soal'][0], C['outro']['sim'][0]): tick(tt_, 1700, 0.9)
-blip(C['outro']['akhir'], 880, 1760, 0.7)
+blip(C['outro']['akhir'], 880, 1760, 0.7); blip(C['wake']['t0'], 600, 900, 0.7)
 # ---- narasi outro (opsional, dari pemesan) + penurunan level di bawahnya
 nar_path = os.path.join(HERE, 'narasi-outro.wav'); nar = np.zeros(N)
 if os.path.exists(nar_path):

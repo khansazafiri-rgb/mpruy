@@ -30,12 +30,16 @@ const faceWorry = { wide: 0.25, browL: { y: -6, rot: 14 }, browR: { y: -6, rot: 
 const ARM_STRAIGHT = (wx, wy, side) => { const sx = side === 'L' ? 104 : 296, sy = 410; return { wx, wy, ex: (sx + wx) / 2, ey: (sy + wy) / 2, finger: 0, front: 1 }; };
 // korban berbaring: badan (bisa 'ditekan') dan kepala dipisah supaya dada bisa turun tanpa menggeser kepala
 function lying(t, o = {}) {
-  const gasp = o.gasp || 0, comp = o.comp || 0, breath = o.breath || 0;
-  const st = raka('pingsan', 'netral', { breath: breath, mouth: gasp > 0.05 ? { w: 15, up: 2, lo: 8 + 18 * gasp } : { w: 11, up: 5, lo: 11 } });
+  const gasp = o.gasp || 0, comp = o.comp || 0, wake = o.wake || 0;
+  const breath = o.breath || (wake > 0 ? Math.sin(t * 2 * Math.PI * 0.33) : 0);
+  const st = wake > 0.01
+    ? raka('netral', 'netral', { breath, wide: 0.15 * wake, blink: Math.floor(t * 0.9) % 3 === 0 && (t * 0.9) % 1 < 0.12 ? 0.9 : 0, browL: { y: -5, rot: 8 }, browR: { y: -5, rot: -8 }, mouth: { w: 10, up: 1, lo: 5 }, gazeX: 0.5, gazeY: -0.3 })
+    : raka('pingsan', 'netral', { breath: breath, mouth: gasp > 0.05 ? { w: 15, up: 2, lo: 8 + 18 * gasp } : { w: 11, up: 5, lo: 11 } });
   const svg = rakaSvg(st, { ...VICTIM, rebah: true, flip: false, rebahTilt: 0, bare: true });
   const k = svg.indexOf('<g class="raka-head-rebah"'), body = svg.slice(0, k), head = svg.slice(k);
   const sq = 1 - 0.075 * comp + 0.03 * gasp + 0.012 * breath;
-  const inner = `<g transform="translate(0 415) scale(1 ${f1(sq * 1000) / 1000}) translate(0 -415)">${body}</g>${head}`;
+  const HX = 170, HY = 255, HR = -90, HDX = 28, HDY = 0;   // kepala diputar sejajar sumbu badan (dahi menjauh dari badan) dan dirapatkan ke bahu
+  const inner = `<g transform="translate(0 415) scale(1 ${f1(sq * 1000) / 1000}) translate(0 -415)">${body}</g><g transform="translate(${HDX} ${HDY}) rotate(${HR} ${HX} ${HY})">${head}</g>`;
   return `<g transform="translate(${LY.tx} ${LY.ty}) scale(${LY.s})"><g transform="translate(800 0) scale(-1 1)">${inner}</g></g>`;
 }
 // kompresi dada 110 per menit: turun 45% siklus, naik penuh (recoil) 30%, jeda 25%
@@ -102,6 +106,10 @@ function applyActions(st, t) {
     const k = sm((t - 14.0) / 0.5);
     o.lean = -2 * k; o.tilt = 0; o.gazeY = 0.8; o.yaw = 0.0; o.armL = ARM_STRAIGHT(150, 500, 'L'); o.armR = ARM_STRAIGHT(250, 500, 'R');
     o.bob = 142 + 18 * k; o.mouth = faceSerious.mouth;
+  } else if (t >= C.wake.t0) {                       // korban sadar: Raka berhenti menekan, menenangkan, tangan di bahu korban
+    const k = sm((t - C.wake.t0) / 0.5);
+    o.armL = ARM_STRAIGHT(150, 500, 'L'); o.armR = ARM_STRAIGHT(250, 505 + 6 * Math.sin(t * 2), 'R'); o.bob = 142; o.yaw = 0.1; o.gazeX = 0.2; o.gazeY = 0.6;
+    o.browL = { y: -4, rot: 10 }; o.browR = { y: -4, rot: -10 }; o.mouth = { w: 14, up: 4, lo: 6 }; void k;
   } else if (t >= 18.3) {                           // RJP: tangan bertumpuk di tengah dada, lengan lurus, bahu di atas tangan
     const enter = sm((t - 18.0) / 0.5), c = compPhase(t, 18.5) * (t >= 18.5 && t < 28.9 ? 1 : 0);
     const arrive = t >= 28.9 ? sm((t - 28.9) / 0.4) : 0;
@@ -127,7 +135,7 @@ function victimWorld(t) {
   for (const g0 of g.megap) { const u = (t - g0) / 0.7; if (u > 0 && u < 1) gasp = Math.max(gasp, Math.sin(Math.PI * u) ** 1.5); }
   const comp = t >= 18.5 && t < 28.9 ? compPhase(t, 18.5) : 0, still = t < 14 ? 0.0 : 0;
   void still;
-  return { svg: lying(t, { gasp, comp, breath: 0 }), dustU: clamp((t - 1.95) / 0.7, 0, 1) };
+  return { svg: lying(t, { gasp, comp, breath: 0, wake: t >= C.wake.t0 ? sm((t - C.wake.t0) / 0.6) : 0 }), dustU: clamp((t - 1.95) / 0.7, 0, 1) };
 }
 // teman (palet berbeda): datang dari kanan, menelepon 119, lari mengambil AED, kembali membawa AED
 function friendWorld(t) {
@@ -158,7 +166,7 @@ function aedWorld(t) {
   let svg = pxShadow(ax, ay + 4, 220) + aed(ax, ay, 0.9, on, t);
   // bantalan menempel di dada (kabel ke AED)
   const k = sm((t - A.bantalan[0]) / (A.bantalan[1] - A.bantalan[0]));
-  if (k > 0.01) { const px = (u) => lerp(ax, u, k); svg += `<path d="M${f1(ax - 40)} ${f1(ay - 110)}C${f1(ax - 120)} ${f1(ay - 160)} ${f1(LY.chestX + 120)} ${f1(LY.topY - 30)} ${f1(lerp(ax - 40, LY.chestX + 60, k))} ${f1(lerp(ay - 110, LY.topY + 30, k))}" stroke="#2A3A44" stroke-width="8" fill="none"/>` + padIcon(lerp(ax - 40, LY.chestX + 60, k), lerp(ay - 110, LY.topY + 34, k), 78, 54) + `<path d="M${f1(ax - 40)} ${f1(ay - 110)}C${f1(ax - 150)} ${f1(ay - 190)} ${f1(LY.chestX - 40)} ${f1(LY.topY - 50)} ${f1(lerp(ax - 40, LY.chestX - 80, k))} ${f1(lerp(ay - 110, LY.topY + 70, k))}" stroke="#2A3A44" stroke-width="8" fill="none"/>` + padIcon(lerp(ax - 40, LY.chestX - 80, k), lerp(ay - 110, LY.topY + 74, k), 78, 54); }
+  if (k > 0.01) { const px = (u) => lerp(ax, u, k); svg += `<path d="M${f1(ax - 40)} ${f1(ay - 110)}C${f1(ax - 120)} ${f1(ay - 160)} ${f1(LY.chestX + 120)} ${f1(LY.topY - 30)} ${f1(lerp(ax - 40, LY.chestX - 30, k))} ${f1(lerp(ay - 110, LY.topY + 48, k))}" stroke="#2A3A44" stroke-width="8" fill="none"/>` + padIcon(lerp(ax - 40, LY.chestX - 30, k), lerp(ay - 110, LY.topY + 34, k), 78, 54) + `<path d="M${f1(ax - 40)} ${f1(ay - 110)}C${f1(ax - 150)} ${f1(ay - 190)} ${f1(LY.chestX - 40)} ${f1(LY.topY - 50)} ${f1(lerp(ax - 40, LY.chestX - 62, k))} ${f1(lerp(ay - 110, LY.topY + 146, k))}" stroke="#2A3A44" stroke-width="8" fill="none"/>` + padIcon(lerp(ax - 40, LY.chestX - 62, k), lerp(ay - 110, LY.topY + 74, k), 78, 54); }
   return { svg, ui: '', ax, ay };
 }
 // ------------------------------------------------------------------ panel perbandingan napas (adegan 14-18 dtk)
@@ -177,14 +185,14 @@ const TXT = [
   [0.2, 3.0, ['Kalau seseorang', 'tiba-tiba kolaps?'], false, 0],
   [3.0, 6.0, ['1. Pastikan aman'], true, 1], [6.0, 10.0, ['2. Cek respons'], true, 2],
   [10.0, 14.0, ['3. Panggil bantuan', '· minta AED'], true, 3], [14.0, 18.0, ['4. Napas normal?'], true, 4],
-  [18.0, 27.0, ['Mulai RJP'], false, 5], [27.0, 31.0, ['AED: ikuti', 'instruksinya'], false, 6],
+  [18.0, 27.0, ['Mulai RJP'], false, 5], [27.0, 31.0, ['AED: ikuti', 'instruksinya'], false, 6], [31.0, 34.4, ['Korban sadar'], false, 7],
 ];
 function storyUI(t) {
   let s = '';
   for (const [a, b, lines, num, step] of TXT) {
     const al = win(t, a, b, 0.3); if (al <= 0.01) continue;
     const L = a === 0.2 ? lines.map((l, i) => (i === 0 ? typed(l, t, a, 30) : typed(l, t, a + 0.6, 30))) : lines;
-    s += banner(a === 0.2 ? lines.map((l, i) => l) : L, al, { num, fs: lines.some((l) => l.length > 17) ? 32 : 36, edge: step === 5 ? '#FF8A7A' : step === 6 ? '#42E58C' : '#F8C038' });
+    s += banner(a === 0.2 ? lines.map((l, i) => l) : L, al, { num, fs: lines.some((l) => l.length > 17) ? 32 : 36, edge: step === 5 ? '#FF8A7A' : step >= 6 ? '#42E58C' : '#F8C038' });
     if (step >= 1 && step <= 4) s += stepDots(step, al);
   }
   // keterangan kecil tiap langkah
@@ -200,6 +208,8 @@ function storyUI(t) {
   // penghitung irama (metronom) selama RJP
   if (t >= 18.5 && t < 29.0) { const a = win(t, 18.5, 28.9, 0.3), p = compPhase(t, 18.5); s += `<g opacity="${f1(a)}">${R(60, 1180, 40, 160, '#0B1F26')}${R(66, 1186, 28, 148, '#22414A')}${R(66, 1334 - 148 * p, 28, 148 * p, '#F8C038')}${pxt(80, 1368, '110', '#F5F1E6', 14)}</g>`; }
   { const [bx, by] = Wp(790, 1010); s += bubble(bx, by, ['TEMPELKAN', 'BANTALAN'], win(t, C.aed.nyala + 0.6, C.aed.nyala + 2.2, 0.2), { tx: bx }); s += bubble(bx, by, ['IKUTI SUARA', 'AED'], win(t, C.aed.nyala + 2.2, 31.0, 0.2), { tx: bx, edge: '#1F8F5F' }); }
+  { const [bx, by] = Wp(560, 880); s += bubble(bx, by, ['SAYA...', 'KENAPA?'], win(t, C.wake.t0 + 1.0, 34.3, 0.2), { tx: bx + 60 }); }
+  s += chip(540, 1330, 'TETAP TUNGGU TENAGA MEDIS', '#42E58C', win(t, C.wake.t0 + 1.2, 34.4, 0.3), 24);
   s += DISC();
   return s;
 }
