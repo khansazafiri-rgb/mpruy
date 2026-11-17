@@ -1,0 +1,25 @@
+{
+ "scen": {
+  "luas_px": 16659,
+  "lebar_px": 151,
+  "tinggi_px": 174,
+  "bbox": [
+   1633,
+   422,
+   1784,
+   596
+  ]
+ },
+ "norm": {
+  "luas_px": 3443,
+  "lebar_px": 72,
+  "tinggi_px": 63,
+  "bbox": [
+   1673,
+   477,
+   1745,
+   540
+  ]
+ },
+ "rasio_luas": 4.84
+}
