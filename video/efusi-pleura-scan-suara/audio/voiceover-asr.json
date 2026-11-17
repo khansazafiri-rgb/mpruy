@@ -1,0 +1,573 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.1,
+  "text": "Ini hasil scan dari Live4D Lab MedCall.",
+  "words": [
+   {
+    "w": "Ini",
+    "s": 0.0,
+    "e": 0.44
+   },
+   {
+    "w": "hasil",
+    "s": 0.44,
+    "e": 0.88
+   },
+   {
+    "w": "scan",
+    "s": 0.88,
+    "e": 1.16
+   },
+   {
+    "w": "dari",
+    "s": 1.16,
+    "e": 1.44
+   },
+   {
+    "w": "Live4D",
+    "s": 1.44,
+    "e": 2.28
+   },
+   {
+    "w": "Lab",
+    "s": 2.28,
+    "e": 2.54
+   },
+   {
+    "w": "MedCall.",
+    "s": 2.54,
+    "e": 3.1
+   }
+  ]
+ },
+ {
+  "start": 3.36,
+  "end": 5.8,
+  "text": "Lihat ruang gelap di atas diafrak makanan,",
+  "words": [
+   {
+    "w": "Lihat",
+    "s": 3.36,
+    "e": 3.86
+   },
+   {
+    "w": "ruang",
+    "s": 3.86,
+    "e": 4.16
+   },
+   {
+    "w": "gelap",
+    "s": 4.16,
+    "e": 4.56
+   },
+   {
+    "w": "di",
+    "s": 4.56,
+    "e": 4.74
+   },
+   {
+    "w": "atas",
+    "s": 4.74,
+    "e": 4.98
+   },
+   {
+    "w": "diafrak",
+    "s": 4.98,
+    "e": 5.36
+   },
+   {
+    "w": "makanan,",
+    "s": 5.36,
+    "e": 5.8
+   }
+  ]
+ },
+ {
+  "start": 6.36,
+  "end": 9.38,
+  "text": "pada skenario ini, itu cairan di rongga pleura.",
+  "words": [
+   {
+    "w": "pada",
+    "s": 6.36,
+    "e": 6.78
+   },
+   {
+    "w": "skenario",
+    "s": 6.78,
+    "e": 7.14
+   },
+   {
+    "w": "ini,",
+    "s": 7.14,
+    "e": 7.46
+   },
+   {
+    "w": "itu",
+    "s": 7.8,
+    "e": 8.02
+   },
+   {
+    "w": "cairan",
+    "s": 8.02,
+    "e": 8.54
+   },
+   {
+    "w": "di",
+    "s": 8.54,
+    "e": 8.68
+   },
+   {
+    "w": "rongga",
+    "s": 8.68,
+    "e": 9.0
+   },
+   {
+    "w": "pleura.",
+    "s": 9.0,
+    "e": 9.38
+   }
+  ]
+ },
+ {
+  "start": 9.98,
+  "end": 13.8,
+  "text": "Normalnya hanya ada sedikit cairan di antara paru dan dinding dada.",
+  "words": [
+   {
+    "w": "Normalnya",
+    "s": 9.98,
+    "e": 10.66
+   },
+   {
+    "w": "hanya",
+    "s": 10.66,
+    "e": 10.92
+   },
+   {
+    "w": "ada",
+    "s": 10.92,
+    "e": 11.14
+   },
+   {
+    "w": "sedikit",
+    "s": 11.14,
+    "e": 11.46
+   },
+   {
+    "w": "cairan",
+    "s": 11.46,
+    "e": 12.02
+   },
+   {
+    "w": "di",
+    "s": 12.02,
+    "e": 12.22
+   },
+   {
+    "w": "antara",
+    "s": 12.22,
+    "e": 12.52
+   },
+   {
+    "w": "paru",
+    "s": 12.52,
+    "e": 12.98
+   },
+   {
+    "w": "dan",
+    "s": 12.98,
+    "e": 13.18
+   },
+   {
+    "w": "dinding",
+    "s": 13.18,
+    "e": 13.5
+   },
+   {
+    "w": "dada.",
+    "s": 13.5,
+    "e": 13.8
+   }
+  ]
+ },
+ {
+  "start": 14.3,
+  "end": 16.02,
+  "text": "Cairan itu terus terbentuk dan diserap.",
+  "words": [
+   {
+    "w": "Cairan",
+    "s": 14.3,
+    "e": 14.66
+   },
+   {
+    "w": "itu",
+    "s": 14.66,
+    "e": 14.84
+   },
+   {
+    "w": "terus",
+    "s": 14.84,
+    "e": 15.02
+   },
+   {
+    "w": "terbentuk",
+    "s": 15.02,
+    "e": 15.52
+   },
+   {
+    "w": "dan",
+    "s": 15.52,
+    "e": 15.66
+   },
+   {
+    "w": "diserap.",
+    "s": 15.66,
+    "e": 16.02
+   }
+  ]
+ },
+ {
+  "start": 16.42,
+  "end": 20.76,
+  "text": "Kalau yang masuk terlalu banyak atau penyerapannya berkurang, cairan mulai menumpuk.",
+  "words": [
+   {
+    "w": "Kalau",
+    "s": 16.42,
+    "e": 16.7
+   },
+   {
+    "w": "yang",
+    "s": 16.7,
+    "e": 16.86
+   },
+   {
+    "w": "masuk",
+    "s": 16.86,
+    "e": 17.14
+   },
+   {
+    "w": "terlalu",
+    "s": 17.14,
+    "e": 17.46
+   },
+   {
+    "w": "banyak",
+    "s": 17.46,
+    "e": 17.84
+   },
+   {
+    "w": "atau",
+    "s": 17.84,
+    "e": 18.26
+   },
+   {
+    "w": "penyerapannya",
+    "s": 18.26,
+    "e": 18.8
+   },
+   {
+    "w": "berkurang,",
+    "s": 18.8,
+    "e": 19.36
+   },
+   {
+    "w": "cairan",
+    "s": 19.8,
+    "e": 20.12
+   },
+   {
+    "w": "mulai",
+    "s": 20.12,
+    "e": 20.36
+   },
+   {
+    "w": "menumpuk.",
+    "s": 20.36,
+    "e": 20.76
+   }
+  ]
+ },
+ {
+  "start": 21.32,
+  "end": 25.7,
+  "text": "Saat pasien terlentang, cairan bebas bergerak ke bagian belakang dan bawah.",
+  "words": [
+   {
+    "w": "Saat",
+    "s": 21.32,
+    "e": 21.66
+   },
+   {
+    "w": "pasien",
+    "s": 21.66,
+    "e": 21.94
+   },
+   {
+    "w": "terlentang,",
+    "s": 21.94,
+    "e": 22.52
+   },
+   {
+    "w": "cairan",
+    "s": 22.98,
+    "e": 23.32
+   },
+   {
+    "w": "bebas",
+    "s": 23.32,
+    "e": 23.66
+   },
+   {
+    "w": "bergerak",
+    "s": 23.66,
+    "e": 24.12
+   },
+   {
+    "w": "ke",
+    "s": 24.12,
+    "e": 24.28
+   },
+   {
+    "w": "bagian",
+    "s": 24.28,
+    "e": 24.58
+   },
+   {
+    "w": "belakang",
+    "s": 24.58,
+    "e": 25.04
+   },
+   {
+    "w": "dan",
+    "s": 25.04,
+    "e": 25.24
+   },
+   {
+    "w": "bawah.",
+    "s": 25.24,
+    "e": 25.7
+   }
+  ]
+ },
+ {
+  "start": 26.04,
+  "end": 27.7,
+  "text": "Paru di dekatnya bisa tertekan.",
+  "words": [
+   {
+    "w": "Paru",
+    "s": 26.04,
+    "e": 26.44
+   },
+   {
+    "w": "di",
+    "s": 26.44,
+    "e": 26.54
+   },
+   {
+    "w": "dekatnya",
+    "s": 26.54,
+    "e": 26.94
+   },
+   {
+    "w": "bisa",
+    "s": 26.94,
+    "e": 27.14
+   },
+   {
+    "w": "tertekan.",
+    "s": 27.14,
+    "e": 27.7
+   }
+  ]
+ },
+ {
+  "start": 28.3,
+  "end": 31.6,
+  "text": "Di simulasi ini, bunyi napas basal kanan juga lebih lemah.",
+  "words": [
+   {
+    "w": "Di",
+    "s": 28.12,
+    "e": 28.5
+   },
+   {
+    "w": "simulasi",
+    "s": 28.5,
+    "e": 28.9
+   },
+   {
+    "w": "ini,",
+    "s": 28.9,
+    "e": 29.12
+   },
+   {
+    "w": "bunyi",
+    "s": 29.62,
+    "e": 29.84
+   },
+   {
+    "w": "napas",
+    "s": 29.84,
+    "e": 30.16
+   },
+   {
+    "w": "basal",
+    "s": 30.16,
+    "e": 30.5
+   },
+   {
+    "w": "kanan",
+    "s": 30.5,
+    "e": 30.84
+   },
+   {
+    "w": "juga",
+    "s": 30.84,
+    "e": 31.04
+   },
+   {
+    "w": "lebih",
+    "s": 31.04,
+    "e": 31.28
+   },
+   {
+    "w": "lemah.",
+    "s": 31.28,
+    "e": 31.6
+   }
+  ]
+ },
+ {
+  "start": 32.24,
+  "end": 33.04,
+  "text": "Dengar bedanya.",
+  "words": [
+   {
+    "w": "Dengar",
+    "s": 32.24,
+    "e": 32.66
+   },
+   {
+    "w": "bedanya.",
+    "s": 32.66,
+    "e": 33.04
+   }
+  ]
+ },
+ {
+  "start": 33.84,
+  "end": 37.12,
+  "text": "Sekarang, bandingkan lagi, scan patologi dan normalnya.",
+  "words": [
+   {
+    "w": "Sekarang,",
+    "s": 33.84,
+    "e": 34.4
+   },
+   {
+    "w": "bandingkan",
+    "s": 34.56,
+    "e": 34.98
+   },
+   {
+    "w": "lagi,",
+    "s": 34.98,
+    "e": 35.2
+   },
+   {
+    "w": "scan",
+    "s": 35.54,
+    "e": 35.74
+   },
+   {
+    "w": "patologi",
+    "s": 35.74,
+    "e": 36.42
+   },
+   {
+    "w": "dan",
+    "s": 36.42,
+    "e": 36.56
+   },
+   {
+    "w": "normalnya.",
+    "s": 36.56,
+    "e": 37.12
+   }
+  ]
+ },
+ {
+  "start": 37.78,
+  "end": 40.26,
+  "text": "Ini simulasi edukatif, bukan alat diagnosis.",
+  "words": [
+   {
+    "w": "Ini",
+    "s": 37.78,
+    "e": 38.08
+   },
+   {
+    "w": "simulasi",
+    "s": 38.08,
+    "e": 38.58
+   },
+   {
+    "w": "edukatif,",
+    "s": 38.58,
+    "e": 39.1
+   },
+   {
+    "w": "bukan",
+    "s": 39.34,
+    "e": 39.48
+   },
+   {
+    "w": "alat",
+    "s": 39.48,
+    "e": 39.84
+   },
+   {
+    "w": "diagnosis.",
+    "s": 39.84,
+    "e": 40.26
+   }
+  ]
+ },
+ {
+  "start": 40.84,
+  "end": 43.04,
+  "text": "Explorasi gratis di MedCall.com.",
+  "words": [
+   {
+    "w": "Explorasi",
+    "s": 40.84,
+    "e": 41.46
+   },
+   {
+    "w": "gratis",
+    "s": 41.46,
+    "e": 41.92
+   },
+   {
+    "w": "di",
+    "s": 41.92,
+    "e": 42.14
+   },
+   {
+    "w": "MedCall",
+    "s": 42.14,
+    "e": 42.56
+   },
+   {
+    "w": ".com.",
+    "s": 42.56,
+    "e": 43.04
+   }
+  ]
+ }
+]
