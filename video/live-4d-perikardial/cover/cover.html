@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Cover Ada cairan di sekitar jantung?</title>
+<link rel="stylesheet" href="../stage/fonts/fonts.css">
+<style>html,body{margin:0;background:#000}#root{width:1080px;height:1920px;position:relative;overflow:hidden}#root svg{position:absolute;left:0;top:0}</style></head>
+<body><div id="root"><svg id="sc" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script type="module">
+// Cover: bingkai nyata dari rekaman Live 4D Lab (citra CT sintetis, bukan pasien) dengan penanda tipis pada lapisan cairan model. Area aman Reels/TikTok: atas >= 250, bawah <= 1440, kanan <= 940. ?guide = garis area aman.
+const q = new URLSearchParams(location.search); await document.fonts.load('800 80px "Plus Jakarta Sans"'); await document.fonts.ready;
+const F = "'Plus Jakarta Sans', sans-serif";
+const tx = (y, t, f) => `<text x="70" y="${y}" font-family="${F}" font-weight="800" font-size="100" fill="${f}" stroke="rgba(3,29,24,.6)" stroke-width="10" paint-order="stroke" stroke-linejoin="round">${t}</text>`;
+let s = `<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#031D18"/><stop offset="1" stop-color="#0A4A3E"/></linearGradient><radialGradient id="gl" cx=".5" cy=".5" r=".6"><stop offset="0" stop-color="#0F7A66" stop-opacity=".5"/><stop offset="1" stop-color="#0F7A66" stop-opacity="0"/></radialGradient><clipPath id="c"><rect x="40" y="800" width="1000" height="590" rx="30"/></clipPath>
+<filter id="mk" x="-3%" y="-3%" width="106%" height="106%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="2.4" result="b"/><feComponentTransfer in="b" result="s"><feFuncA type="linear" slope="18" intercept="-8"/></feComponentTransfer><feMorphology in="s" operator="erode" radius="1.8" result="e"/><feComposite in="s" in2="e" operator="out" result="edge"/><feFlood flood-color="#F8C038" flood-opacity=".95" result="fc"/><feComposite in="fc" in2="edge" operator="in" result="ring"/><feMerge><feMergeNode in="ring"/></feMerge></filter></defs><rect width="1080" height="1920" fill="url(#g)"/><ellipse cx="540" cy="1100" rx="760" ry="640" fill="url(#gl)"/>`;
+s += `<rect x="70" y="262" width="330" height="96" rx="28" fill="rgba(248,247,243,.97)"/><image href="logo-full.webp" x="90" y="271" width="290" height="78" preserveAspectRatio="xMidYMid meet"/>`;
+s += tx(470, 'ADA CAIRAN', '#fff') + tx(580, 'DI SEKITAR', '#fff') + tx(690, 'JANTUNG?', '#7CE0B8');
+// jendela CT 710x610 -> 960 lebar (skala 1.352) lalu dipotong ke 1000 x 590
+const k = 1000 / 710, w = 710 * k, h = 610 * k, x0 = 40, y0 = 800 - (h - 590) + 8;
+s += `<g clip-path="url(#c)"><image href="ct.jpg" x="${x0}" y="${y0}" width="${w}" height="${h}" preserveAspectRatio="none"/><image href="mask.png" x="${x0}" y="${y0}" width="${w}" height="${h}" preserveAspectRatio="none" filter="url(#mk)"/></g><rect x="40" y="800" width="1000" height="590" rx="30" fill="none" stroke="rgba(124,224,184,.6)" stroke-width="4"/>`;
+s += `<rect x="150" y="1394" width="780" height="44" rx="22" fill="rgba(3,29,24,.92)" stroke="rgba(124,224,184,.7)" stroke-width="2"/><text x="540" y="1426" text-anchor="middle" font-family="${F}" font-weight="700" font-size="24" fill="#fff">Simulasi edukatif • CT sintetis • bukan alat diagnosis</text>`;
+if (q.has('guide')) s += `<g fill="#FF0066" opacity=".16"><rect width="1080" height="250"/><rect y="1440" width="1080" height="480"/><rect x="940" y="250" width="140" height="1190"/></g><rect y="250" width="940" height="1190" fill="none" stroke="#FF0066" stroke-width="4" stroke-dasharray="14 10"/>`;
+document.getElementById('sc').innerHTML = s;
+await Promise.all([...document.images].map((i) => i.decode().catch(() => {}))); await new Promise((r) => setTimeout(r, 400)); window.__ready = true;
+</script></body></html>

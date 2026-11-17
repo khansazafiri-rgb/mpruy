@@ -1,0 +1,470 @@
+[
+ {
+  "start": 0.0,
+  "end": 2.02,
+  "text": "Kenapa ada cairan di sekitar jantung ini?",
+  "words": [
+   {
+    "w": "Kenapa",
+    "s": 0.0,
+    "e": 0.56
+   },
+   {
+    "w": "ada",
+    "s": 0.56,
+    "e": 0.74
+   },
+   {
+    "w": "cairan",
+    "s": 0.74,
+    "e": 1.18
+   },
+   {
+    "w": "di",
+    "s": 1.18,
+    "e": 1.3
+   },
+   {
+    "w": "sekitar",
+    "s": 1.3,
+    "e": 1.5
+   },
+   {
+    "w": "jantung",
+    "s": 1.5,
+    "e": 1.84
+   },
+   {
+    "w": "ini?",
+    "s": 1.84,
+    "e": 2.02
+   }
+  ]
+ },
+ {
+  "start": 2.84,
+  "end": 7.9,
+  "text": "Di live 4D lab metcoil, kita sedang melihat skenario effusi perikardial.",
+  "words": [
+   {
+    "w": "Di",
+    "s": 2.84,
+    "e": 3.14
+   },
+   {
+    "w": "live",
+    "s": 3.14,
+    "e": 3.46
+   },
+   {
+    "w": "4D",
+    "s": 3.46,
+    "e": 4.02
+   },
+   {
+    "w": "lab",
+    "s": 4.02,
+    "e": 4.2
+   },
+   {
+    "w": "metcoil,",
+    "s": 4.2,
+    "e": 4.92
+   },
+   {
+    "w": "kita",
+    "s": 5.28,
+    "e": 5.54
+   },
+   {
+    "w": "sedang",
+    "s": 5.54,
+    "e": 5.82
+   },
+   {
+    "w": "melihat",
+    "s": 5.82,
+    "e": 6.14
+   },
+   {
+    "w": "skenario",
+    "s": 6.14,
+    "e": 6.58
+   },
+   {
+    "w": "effusi",
+    "s": 6.58,
+    "e": 7.2
+   },
+   {
+    "w": "perikardial.",
+    "s": 7.2,
+    "e": 7.9
+   }
+  ]
+ },
+ {
+  "start": 8.94,
+  "end": 13.86,
+  "text": "Jantung dibungkus dua lapis perikardium, di antaranya memang ada sedikit cairan.",
+  "words": [
+   {
+    "w": "Jantung",
+    "s": 8.94,
+    "e": 9.7
+   },
+   {
+    "w": "dibungkus",
+    "s": 9.7,
+    "e": 10.28
+   },
+   {
+    "w": "dua",
+    "s": 10.28,
+    "e": 10.5
+   },
+   {
+    "w": "lapis",
+    "s": 10.5,
+    "e": 10.82
+   },
+   {
+    "w": "perikardium,",
+    "s": 10.82,
+    "e": 11.48
+   },
+   {
+    "w": "di",
+    "s": 11.94,
+    "e": 12.1
+   },
+   {
+    "w": "antaranya",
+    "s": 12.1,
+    "e": 12.58
+   },
+   {
+    "w": "memang",
+    "s": 12.58,
+    "e": 12.86
+   },
+   {
+    "w": "ada",
+    "s": 12.86,
+    "e": 13.12
+   },
+   {
+    "w": "sedikit",
+    "s": 13.12,
+    "e": 13.34
+   },
+   {
+    "w": "cairan.",
+    "s": 13.34,
+    "e": 13.86
+   }
+  ]
+ },
+ {
+  "start": 14.4,
+  "end": 19.36,
+  "text": "Salah satu alasan cairan bisa bertambah adalah peradangan, misalnya akibat infeksi.",
+  "words": [
+   {
+    "w": "Salah",
+    "s": 14.4,
+    "e": 14.76
+   },
+   {
+    "w": "satu",
+    "s": 14.76,
+    "e": 14.96
+   },
+   {
+    "w": "alasan",
+    "s": 14.96,
+    "e": 15.24
+   },
+   {
+    "w": "cairan",
+    "s": 15.24,
+    "e": 15.7
+   },
+   {
+    "w": "bisa",
+    "s": 15.7,
+    "e": 15.88
+   },
+   {
+    "w": "bertambah",
+    "s": 15.88,
+    "e": 16.58
+   },
+   {
+    "w": "adalah",
+    "s": 16.58,
+    "e": 16.92
+   },
+   {
+    "w": "peradangan,",
+    "s": 16.92,
+    "e": 17.54
+   },
+   {
+    "w": "misalnya",
+    "s": 18.02,
+    "e": 18.48
+   },
+   {
+    "w": "akibat",
+    "s": 18.48,
+    "e": 18.92
+   },
+   {
+    "w": "infeksi.",
+    "s": 18.92,
+    "e": 19.36
+   }
+  ]
+ },
+ {
+  "start": 20.12,
+  "end": 25.06,
+  "text": "Jika cairan terkumpul lebih cepat daripada diserap, ruang di sekitar jantung semakin melebar.",
+  "words": [
+   {
+    "w": "Jika",
+    "s": 20.12,
+    "e": 20.56
+   },
+   {
+    "w": "cairan",
+    "s": 20.56,
+    "e": 20.92
+   },
+   {
+    "w": "terkumpul",
+    "s": 20.92,
+    "e": 21.26
+   },
+   {
+    "w": "lebih",
+    "s": 21.26,
+    "e": 21.44
+   },
+   {
+    "w": "cepat",
+    "s": 21.44,
+    "e": 21.9
+   },
+   {
+    "w": "daripada",
+    "s": 21.9,
+    "e": 22.28
+   },
+   {
+    "w": "diserap,",
+    "s": 22.28,
+    "e": 22.76
+   },
+   {
+    "w": "ruang",
+    "s": 23.16,
+    "e": 23.4
+   },
+   {
+    "w": "di",
+    "s": 23.4,
+    "e": 23.54
+   },
+   {
+    "w": "sekitar",
+    "s": 23.54,
+    "e": 23.78
+   },
+   {
+    "w": "jantung",
+    "s": 23.78,
+    "e": 24.32
+   },
+   {
+    "w": "semakin",
+    "s": 24.32,
+    "e": 24.7
+   },
+   {
+    "w": "melebar.",
+    "s": 24.7,
+    "e": 25.06
+   }
+  ]
+ },
+ {
+  "start": 25.66,
+  "end": 28.58,
+  "text": "Kalau tekanannya meningkat, jantung bisa lebih sulit risih.",
+  "words": [
+   {
+    "w": "Kalau",
+    "s": 25.66,
+    "e": 26.04
+   },
+   {
+    "w": "tekanannya",
+    "s": 26.04,
+    "e": 26.46
+   },
+   {
+    "w": "meningkat,",
+    "s": 26.46,
+    "e": 26.88
+   },
+   {
+    "w": "jantung",
+    "s": 27.24,
+    "e": 27.54
+   },
+   {
+    "w": "bisa",
+    "s": 27.54,
+    "e": 27.74
+   },
+   {
+    "w": "lebih",
+    "s": 27.74,
+    "e": 27.94
+   },
+   {
+    "w": "sulit",
+    "s": 27.94,
+    "e": 28.2
+   },
+   {
+    "w": "risih.",
+    "s": 28.2,
+    "e": 28.58
+   }
+  ]
+ },
+ {
+  "start": 29.08,
+  "end": 32.9,
+  "text": "Sekarang lihat lagi posisi cairannya pada tampilan city sintetis.",
+  "words": [
+   {
+    "w": "Sekarang",
+    "s": 29.08,
+    "e": 29.7
+   },
+   {
+    "w": "lihat",
+    "s": 29.7,
+    "e": 29.92
+   },
+   {
+    "w": "lagi",
+    "s": 29.92,
+    "e": 30.2
+   },
+   {
+    "w": "posisi",
+    "s": 30.2,
+    "e": 30.58
+   },
+   {
+    "w": "cairannya",
+    "s": 30.58,
+    "e": 31.1
+   },
+   {
+    "w": "pada",
+    "s": 31.1,
+    "e": 31.42
+   },
+   {
+    "w": "tampilan",
+    "s": 31.42,
+    "e": 31.9
+   },
+   {
+    "w": "city",
+    "s": 31.9,
+    "e": 32.28
+   },
+   {
+    "w": "sintetis.",
+    "s": 32.28,
+    "e": 32.9
+   }
+  ]
+ },
+ {
+  "start": 33.32,
+  "end": 35.64,
+  "text": "Ini simulasi edukatif, bukan alar diagnosis.",
+  "words": [
+   {
+    "w": "Ini",
+    "s": 33.32,
+    "e": 33.7
+   },
+   {
+    "w": "simulasi",
+    "s": 33.7,
+    "e": 34.1
+   },
+   {
+    "w": "edukatif,",
+    "s": 34.1,
+    "e": 34.6
+   },
+   {
+    "w": "bukan",
+    "s": 34.82,
+    "e": 35.04
+   },
+   {
+    "w": "alar",
+    "s": 35.04,
+    "e": 35.28
+   },
+   {
+    "w": "diagnosis.",
+    "s": 35.28,
+    "e": 35.64
+   }
+  ]
+ },
+ {
+  "start": 36.18,
+  "end": 38.16,
+  "text": "Explorasi gratis di metcoil.com.",
+  "words": [
+   {
+    "w": "Explorasi",
+    "s": 36.18,
+    "e": 36.8
+   },
+   {
+    "w": "gratis",
+    "s": 36.8,
+    "e": 37.2
+   },
+   {
+    "w": "di",
+    "s": 37.2,
+    "e": 37.32
+   },
+   {
+    "w": "metcoil",
+    "s": 37.32,
+    "e": 37.84
+   },
+   {
+    "w": ".com.",
+    "s": 37.84,
+    "e": 38.16
+   }
+  ]
+ }
+]
