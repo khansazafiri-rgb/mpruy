@@ -1,4 +1,4 @@
-function serialize(r) { return { id: r.id, text: r.getString("text"), senderRole: r.getString("senderRole"), category: r.getString("category"), created: r.getString("created") }; }
+function serialize(r) { return { id: r.id, text: r.getString("text"), senderRole: r.getString("senderRole"), category: r.getString("category"), created: r.getString("created"), auto: r.getString("clientKey").indexOf("auto-") === 0 }; }
 function messages(app, userId, before) {
   let filter = "user = {:user}";
   const params = { user: userId };
