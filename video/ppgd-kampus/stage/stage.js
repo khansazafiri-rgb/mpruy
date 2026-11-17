@@ -32,7 +32,7 @@ const ARM_STRAIGHT = (wx, wy, side) => { const sx = side === 'L' ? 104 : 296, sy
 function lying(t, o = {}) {
   const gasp = o.gasp || 0, comp = o.comp || 0, breath = o.breath || 0;
   const st = raka('pingsan', 'netral', { breath: breath, mouth: gasp > 0.05 ? { w: 15, up: 2, lo: 8 + 18 * gasp } : { w: 11, up: 5, lo: 11 } });
-  const svg = rakaSvg(st, { ...VICTIM, rebah: true, flip: false, rebahTilt: -9 - 12 * gasp, bare: true });
+  const svg = rakaSvg(st, { ...VICTIM, rebah: true, flip: false, rebahTilt: 0, bare: true });
   const k = svg.indexOf('<g class="raka-head-rebah"'), body = svg.slice(0, k), head = svg.slice(k);
   const sq = 1 - 0.075 * comp + 0.03 * gasp + 0.012 * breath;
   const inner = `<g transform="translate(0 415) scale(1 ${f1(sq * 1000) / 1000}) translate(0 -415)">${body}</g>${head}`;
@@ -100,7 +100,7 @@ function applyActions(st, t) {
     o.mouth = Math.floor(t * 5) % 2 === 0 && (t < 13.4) ? { w: 13, up: 3, lo: 14 } : faceSerious.mouth;
   } else if (t >= 14.0 && t < 18.3) {              // membungkuk, melihat dada dan mendengarkan napas (dekatkan telinga ke wajah korban)
     const k = sm((t - 14.0) / 0.5);
-    o.lean = -2 * k; o.tilt = 10 * k; o.gazeY = 0.8; o.yaw = 0.0; o.armL = ARM_STRAIGHT(150, 500, 'L'); o.armR = ARM_STRAIGHT(250, 500, 'R');
+    o.lean = -2 * k; o.tilt = 0; o.gazeY = 0.8; o.yaw = 0.0; o.armL = ARM_STRAIGHT(150, 500, 'L'); o.armR = ARM_STRAIGHT(250, 500, 'R');
     o.bob = 142 + 18 * k; o.mouth = faceSerious.mouth;
   } else if (t >= 18.3) {                           // RJP: tangan bertumpuk di tengah dada, lengan lurus, bahu di atas tangan
     const enter = sm((t - 18.0) / 0.5), c = compPhase(t, 18.5) * (t >= 18.5 && t < 28.9 ? 1 : 0);
