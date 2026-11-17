@@ -195,6 +195,7 @@ function setStatus(app, sub, status, note, actor) {
   if (status === "perlu_perbaikan" && !String(note || "").trim()) {
     throw new BadRequestError("Tulis alasan perbaikan untuk pengguna (mis. PDF tidak terbaca, bukan soal, atau duplikat).");
   }
+  const wasLive = !!sub.getString("completedAt"); // sudah pernah tayang: tayang lagi = diperbarui
   sub.set("status", status);
   if (note !== undefined) sub.set("statusNote", String(note || "").slice(0, 1000));
   if (status === "antre" && !sub.getString("confirmedAt")) sub.set("confirmedAt", u.pbDate(new Date()));
@@ -225,11 +226,125 @@ function setStatus(app, sub, status, note, actor) {
     u.notify(app, sub.getString("user"), status === "selesai" ? "question_live" : "submission", fill(msg[0]), fill(msg[1]), link);
   }
 
+  // Kabar ke Chat Admin dan email pengaju (selain lonceng di atas). Tidak pernah menggagalkan perubahan status.
+  if (NOTICE_STATUSES.indexOf(status) >= 0 && !(status === "dibatalkan" && actor === "user")) {
+    tellUser(app, sub, status, { wasLive: wasLive, days: queueInfo(app, sub).estimateDays });
+  }
+
   // Admin diberi tahu begitu pengguna mengirim pengajuan, tidak menunggu konfirmasi.
   if (from === "draft" && status === "menunggu_konfirmasi") notifyAdmins(app, sub);
 
   if (status === "antre") webhook(app, "submission.queued", contract(app, sub, null));
   return sub;
+}
+
+// ---------------------------------------------------------------------------
+// Kabar otomatis ke pengaju: pesan di Chat Admin (utas yang sama dengan percakapan dengan admin) + email.
+// Hanya untuk status yang berarti buat pengaju; "diproses" cukup lewat lonceng.
+// ---------------------------------------------------------------------------
+const NOTICE_STATUSES = ["antre", "selesai", "perlu_perbaikan", "dibatalkan", "kedaluwarsa"];
+
+/**
+ * Teks pesan (murni, tanpa database). ctx: { code, kind: "soal"|"materi", subjectName, count, days, note, wasLive }.
+ * Mengembalikan { title, chat, mailLines } atau null untuk status yang tidak dikabari.
+ */
+function buildNotice(status, ctx) {
+  const c = ctx || {};
+  const code = c.code || "";
+  const isDeck = c.kind === "materi";
+  const where = c.subjectName ? " di " + c.subjectName : "";
+  const note = String(c.note || "").trim();
+  switch (status) {
+    case "antre":
+      return {
+        title: "Pengajuan " + code + " sudah dikonfirmasi",
+        chat: "Halo! Pengajuan " + code + " sudah dikonfirmasi admin dan masuk antrean. Perkiraan selesai sekitar " + (c.days || 1) + " hari. Kami kabari lagi di sini begitu " + (isDeck ? "materinya" : "soalnya") + " sudah terupload.",
+        mailLines: ["Pengajuan " + code + " sudah dikonfirmasi admin dan masuk antrean.", "Perkiraan selesai sekitar " + (c.days || 1) + " hari. Kami kabari lagi begitu sudah terupload."],
+      };
+    case "selesai": {
+      const n = Number(c.count) || 0;
+      const what = isDeck ? (n ? n + " slide materi" : "materi") : (n ? n + " soal" : "soal");
+      const verb = c.wasLive ? "sudah diperbarui" : "sudah terupload dan tayang";
+      return {
+        title: (isDeck ? "Materi" : "Soal") + " dari pengajuan " + code + " " + (c.wasLive ? "diperbarui" : "sudah tayang"),
+        chat: "Kabar baik! " + (isDeck ? "PPT materi" : "Soal") + " dari pengajuan " + code + " " + verb + ": " + what + where + ". " + (c.wasLive ? "Perubahan dari admin sudah berlaku." : "Terima kasih sudah berbagi!"),
+        mailLines: [(isDeck ? "PPT materi" : "Soal") + " dari pengajuan " + code + " " + verb + ": " + what + where + ".", c.wasLive ? "Perubahan dari admin sudah berlaku." : "Terima kasih sudah berbagi dengan teman-temanmu!"],
+      };
+    }
+    case "perlu_perbaikan":
+      return {
+        title: "Pengajuan " + code + " perlu perbaikan",
+        chat: "Pengajuan " + code + " perlu diperbaiki dulu." + (note ? " Catatan admin: " + note : "") + " Setelah diperbaiki, kirim ulang atau balas pesan ini ya.",
+        mailLines: ["Pengajuan " + code + " perlu diperbaiki dulu." + (note ? " Catatan admin: " + note : ""), "Setelah diperbaiki, kirim ulang lewat Chat Admin."],
+      };
+    case "dibatalkan":
+      return {
+        title: "Pengajuan " + code + " dibatalkan",
+        chat: "Pengajuan " + code + " dibatalkan admin." + (note ? " Alasan: " + note : "") + " Kamu bisa mengajukan lagi kapan saja.",
+        mailLines: ["Pengajuan " + code + " dibatalkan admin." + (note ? " Alasan: " + note : ""), "Kamu bisa mengajukan lagi kapan saja."],
+      };
+    case "kedaluwarsa":
+      return {
+        title: "Pengajuan " + code + " kedaluwarsa",
+        chat: "Pengajuan " + code + " kedaluwarsa karena belum dikonfirmasi lewat WhatsApp tepat waktu, jadi filenya dihapus. Silakan ajukan ulang.",
+        mailLines: ["Pengajuan " + code + " kedaluwarsa karena belum dikonfirmasi lewat WhatsApp tepat waktu, jadi filenya dihapus.", "Silakan ajukan ulang lewat Chat Admin."],
+      };
+    default:
+      return null;
+  }
+}
+
+function noticeMailHtml(app, notice) {
+  const base = (app.settings().meta.appURL || "https://medcoel.com").replace(/\/+$/, "");
+  return u.mailLayout(
+    notice.title,
+    notice.mailLines.map((l) => "<p>" + u.escapeHtml(l) + "</p>").join("") +
+      '<p><a href="' + base + '/chat-admin" style="color:#007060;font-weight:600">Buka Chat Admin</a></p>',
+  );
+}
+
+// Pesan otomatis ditulis atas nama admin pertama (kolom author wajib akun admin) dan diberi kunci "auto-…",
+// supaya web menandainya "Otomatis" dan tidak terlihat seperti balasan manusia.
+function tellUser(app, sub, status, extra) {
+  try {
+    const userId = sub.getString("user");
+    let usr;
+    try { usr = app.findRecordById("users", userId); } catch (_) { return; }
+    if (usr.getString("deletedAt")) return;
+    let subjectName = "";
+    try { subjectName = app.findRecordById("subjects", sub.getString("subject")).getString("name"); } catch (_) {}
+    const notice = buildNotice(status, {
+      code: sub.getString("code"),
+      kind: sub.getString("contentKind") === "materi" ? "materi" : "soal",
+      subjectName: subjectName,
+      count: sub.getInt("importedCount"),
+      days: (extra && extra.days) || 1,
+      note: sub.getString("statusNote"),
+      wasLive: !!(extra && extra.wasLive),
+    });
+    if (!notice) return;
+
+    try {
+      const authors = app.findRecordsByFilter("users", "role = 'admin' && deletedAt = ''", "created", 1, 0);
+      if (authors.length) {
+        const r = new Record(app.findCollectionByNameOrId("support_messages"));
+        r.set("user", userId);
+        r.set("author", authors[0].id);
+        r.set("senderRole", "admin");
+        r.set("text", notice.chat);
+        r.set("category", "question");
+        r.set("clientKey", "auto-" + sub.id + "-" + status + "-" + Date.now().toString(36));
+        app.save(r);
+      }
+    } catch (err) {
+      console.log("kabar chat gagal:", err);
+    }
+
+    const to = usr.email();
+    if (to) u.sendMail(app, to, notice.title + " | MEDCOEL", noticeMailHtml(app, notice));
+  } catch (err) {
+    console.log("tellUser gagal:", err);
+  }
 }
 
 function notifyAdmins(app, sub) {
@@ -487,4 +602,4 @@ function retarget(app, sub, change) {
   };
 }
 
-module.exports = { MAX_PDFS, LABEL, pdfTitle, titleFor, titleNeeded, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck, findSubmission, checkDeckSubmission, finishDeckSubmission, importDeckFor, RETARGET_STATUSES, findSubjectLoose, retarget };
+module.exports = { buildNotice, NOTICE_STATUSES, MAX_PDFS, LABEL, pdfTitle, titleFor, titleNeeded, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck, findSubmission, checkDeckSubmission, finishDeckSubmission, importDeckFor, RETARGET_STATUSES, findSubjectLoose, retarget };

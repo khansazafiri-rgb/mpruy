@@ -139,7 +139,7 @@ export function fmtTime(created) {
 // Satu pesan percakapan admin. mine = pesan dari sisi yang sedang membaca.
 export function SupportMessage({ m, mine, admin = false }) {
   const fromAdmin = m.senderRole === 'admin';
-  const who = fromAdmin ? 'Admin MEDCOEL' : admin ? 'Pengguna' : 'Kamu';
+  const who = fromAdmin ? (m.auto ? 'Admin MEDCOEL · Otomatis' : 'Admin MEDCOEL') : admin ? 'Pengguna' : 'Kamu';
   const cat = m.category && m.category !== 'question' ? CATEGORIES[m.category] : '';
   return (
     <div className={`chat-row has-time ${mine ? 'is-mine' : 'is-bot'}`}>
