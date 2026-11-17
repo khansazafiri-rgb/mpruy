@@ -1,0 +1,215 @@
+{
+  "_catatan": "Jadwal bersama panggung (stage/stage.js, stage/anim.js) dan audio (audio/audio_mix.py). Detik video. Dari ASR voice-over Google AI Studio (audio/voiceover.wav 38,4 dtk; audio/voiceover-asr.json). Visual produk = klip asli di src/ (bingkai 30 fps); animasi = ilustrasi SVG berlabel.",
+  "dur": 38.8,
+  "clip": {
+    "00": 510,
+    "01": 45,
+    "04": 360
+  },
+  "shots": {
+    "hook": {
+      "out": [
+        0.0,
+        2.84
+      ],
+      "clip": "04",
+      "src": [
+        0.0,
+        2.27
+      ]
+    },
+    "patologi": {
+      "out": [
+        2.84,
+        8.94
+      ],
+      "clip": "01",
+      "src": [
+        0.0,
+        1.46
+      ],
+      "playUntil": 5.3
+    },
+    "anim": {
+      "out": [
+        8.94,
+        29.08
+      ]
+    },
+    "morf": {
+      "out": [
+        29.08,
+        30.5
+      ],
+      "clip": "04",
+      "src": [
+        3.0,
+        4.1
+      ]
+    },
+    "probe": {
+      "out": [
+        30.5,
+        31.9
+      ],
+      "clip": "00",
+      "src": [
+        0.03,
+        0.75
+      ]
+    },
+    "ct": {
+      "out": [
+        31.9,
+        33.3
+      ],
+      "clip": "04",
+      "src": [
+        4.1,
+        5.2
+      ]
+    },
+    "disc": {
+      "out": [
+        33.3,
+        36.1
+      ],
+      "clip": "04",
+      "src": [
+        5.2,
+        7.2
+      ]
+    },
+    "tutup": {
+      "out": [
+        36.1,
+        38.8
+      ],
+      "clip": "00"
+    }
+  },
+  "anim": {
+    "normal": [
+      8.94,
+      14.4
+    ],
+    "radang": [
+      14.4,
+      20.1
+    ],
+    "terkumpul": [
+      20.1,
+      25.6
+    ],
+    "tekanan": [
+      25.6,
+      29.08
+    ]
+  },
+  "teks": {
+    "hook": [
+      0.0,
+      2.84
+    ],
+    "efusi": [
+      2.84,
+      8.94
+    ],
+    "ring": [
+      31.5,
+      33.5
+    ],
+    "ringMorf": [
+      29.5,
+      30.5
+    ],
+    "disc": [
+      33.4,
+      36.0
+    ],
+    "url": 36.5
+  },
+  "morf": {
+    "cx": 492,
+    "cy": 400,
+    "rx": 160,
+    "ry": 150
+  },
+  "vo": [
+    {
+      "id": "vo1",
+      "t": [
+        0.0,
+        2.02
+      ],
+      "teks": "Kenapa ada cairan di sekitar jantung ini?"
+    },
+    {
+      "id": "vo2",
+      "t": [
+        2.84,
+        7.9
+      ],
+      "teks": "Di Live 4D Lab MEDCOEL, kita sedang melihat skenario efusi perikardial."
+    },
+    {
+      "id": "vo3",
+      "t": [
+        8.94,
+        13.86
+      ],
+      "teks": "Jantung dibungkus dua lapis perikardium, di antaranya memang ada sedikit cairan."
+    },
+    {
+      "id": "vo4",
+      "t": [
+        14.4,
+        19.36
+      ],
+      "teks": "Salah satu alasan cairan bisa bertambah adalah peradangan, misalnya akibat infeksi."
+    },
+    {
+      "id": "vo5",
+      "t": [
+        20.12,
+        25.06
+      ],
+      "teks": "Jika cairan terkumpul lebih cepat daripada diserap, ruang di sekitar jantung semakin melebar."
+    },
+    {
+      "id": "vo6",
+      "t": [
+        25.66,
+        28.58
+      ],
+      "teks": "Kalau tekanannya meningkat, jantung bisa lebih sulit terisi."
+    },
+    {
+      "id": "vo7",
+      "t": [
+        29.08,
+        32.9
+      ],
+      "teks": "Sekarang lihat lagi posisi cairannya pada tampilan CT sintetis."
+    },
+    {
+      "id": "vo8",
+      "t": [
+        33.32,
+        35.64
+      ],
+      "teks": "Ini simulasi edukatif, bukan alat diagnosis."
+    },
+    {
+      "id": "vo9",
+      "t": [
+        36.18,
+        38.16
+      ],
+      "teks": "Eksplorasi gratis di MEDCOEL.com (diucapkan: metcoil.com)"
+    }
+  ],
+  "klik": [
+    3.9
+  ]
+}
