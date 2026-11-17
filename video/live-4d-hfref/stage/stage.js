@@ -70,7 +70,7 @@ function shotLV(t) {
   const ring = (m) => (rg > 0.01 ? `<g opacity="${f1(rg)}"><circle cx="${f1(m.X(1462))}" cy="${f1(m.Y(517))}" r="${f1((78 + 8 * pul))}" fill="none" stroke="${K.gold}" stroke-width="7"/><circle cx="${f1(m.X(1462))}" cy="${f1(m.Y(517))}" r="${f1(104 + 12 * pul)}" fill="none" stroke="rgba(248,192,56,.35)" stroke-width="4"/></g>` : '');
   let s = `<g opacity="${f1(a)}">` + headline(['Kontraksi ventrikel kiri', 'menurun'], 1, 330, 66, K.white, [false, true]);
   s += crop('cLV', need(frameUrl(S.clip, ts)), HEART, dst, { inner: ring });
-  s += pill(540, 1232, 'VENTRIKEL KIRI', { fs: 34, c: K.gold, a: rg }) + `</g>` + CTX(a) + DISC(a);
+  s += pill(540, 1232, t < C.teks.perhatikan ? 'VENTRIKEL KIRI' : 'PERHATIKAN GERAKNYA', { fs: 34, c: K.gold, a: t < C.teks.perhatikan ? rg : clamp((t - C.teks.perhatikan) / 0.2) }) + `</g>` + CTX(a) + DISC(a);
   return s;
 }
 function shotTombol(t) {
@@ -89,25 +89,33 @@ function shotBanding(t) {
   const tn = lerp(S.normal.src[0], S.normal.src[1], u), ts = lerp(S.skenario.src[0], S.skenario.src[1], u), cr = { x: 1180, y: 310, w: 640, h: 350 };
   const W = 700, d1 = aspectDst(540, 345, W, cr.w, cr.h), d2 = aspectDst(540, 345 + d1.h + 54, W, cr.w, cr.h);
   const lab = (y, txt, c, a2) => pill(540 - W / 2 + 18, y, txt, { fs: 30, c, anchor: 'l', a: a2, bg: 'rgba(3,29,24,.92)' });
-  const ef = win(t, C.teks.ef[0], C.teks.ef[1], 0.3);
+  const ef = win(t, C.teks.catatanEF, S.out[1], 0.3);
   let s = `<g opacity="${f1(a)}">` + headline(['Normal vs skenario HFrEF'], 1, 300, 54);
-  s += crop('cN', need(frameUrl(S.normal.clip, tn)), cr, d1, { border: 'rgba(124,224,184,.7)' }) + lab(d1.y + 54, 'NORMAL', K.mint, 1);
-  s += crop('cS', need(frameUrl(S.skenario.clip, ts)), cr, d2, { border: 'rgba(248,192,56,.85)' }) + lab(d2.y + 54, 'SKENARIO HFrEF', K.gold, 1);
+  s += crop('cN', need(frameUrl(S.normal.clip, tn)), cr, d1, { border: 'rgba(124,224,184,.7)' }) + lab(d1.y + 54, t >= C.teks.ef58 ? 'NORMAL · EF ≈58%' : 'NORMAL', K.mint, 1);
+  s += crop('cS', need(frameUrl(S.skenario.clip, ts)), cr, d2, { border: 'rgba(248,192,56,.85)' }) + lab(d2.y + 54, t >= C.teks.ef26 ? 'SKENARIO HFrEF · EF ≈26%' : 'SKENARIO HFrEF', K.gold, 1);
   const yb = d2.y + d2.h + 68;
-  s += `<g opacity="${f1(ef)}">${pill(540, yb, 'EF model: normal ≈58% | skenario ≈26%', { fs: 38, c: K.gold, px: 50 })}${T(540, yb + 52, 'parameter simulasi, bukan angka pasien', K.mute, 27, 600)}</g></g>`;
+  s += `<g opacity="${f1(ef)}">${pill(540, yb, 'EF model: normal ≈58% | skenario ≈26%', { fs: 38, c: K.gold, px: 50, a: sm((t - C.teks.ef26) / 0.4) })}${T(540, yb + 52, 'parameter simulasi, bukan angka pasien', K.mute, 27, 600)}</g></g>`;
   s += DISC(a);
+  return s;
+}
+function shotDenyut(t) {
+  const S = C.shots.denyut, a = win(t, S.out[0], S.out[1], 0.3), u = (t - S.out[0]) / (S.out[1] - S.out[0]), z = 1 + 0.06 * sm(u);
+  const src = { x: HEART.x + HEART.w * (1 - 1 / z) / 2, y: HEART.y + HEART.h * (1 - 1 / z) / 2, w: HEART.w / z, h: HEART.h / z };
+  const dst = aspectDst(540, 560, 1000, HEART.w, HEART.h);
+  let s = `<g opacity="${f1(a)}">` + headline(['Lebih sedikit darah', 'terdorong keluar', 'tiap denyut'], 1, 310, 60, K.white, [false, false, true]);
+  s += crop('cD', need(frameUrl(S.clip, srcT(S, t))), src, dst) + `</g>` + CTX(a) + DISC(a);
   return s;
 }
 function shotGejala(t) {
   const S = C.shots.gejala, a = win(t, S.out[0], S.out[1], 0.3);
   const dst = aspectDst(540, 560, 1000, HEART.w, HEART.h);
   const p1 = clamp((t - C.teks.cepatLelah) / 0.35), p2 = clamp((t - C.teks.sesak) / 0.35);
-  let s = `<g opacity="${f1(a)}">` + headline(['Gejala yang dapat muncul', 'pada gagal jantung'], 1, 330, 56);
+  let s = `<g opacity="${f1(a)}">` + headline(['Kondisi seperti ini dapat', 'berkaitan dengan'], 1, 330, 58);
   s += crop('cG', need(frameUrl(S.clip, srcT(S, t))), HEART, dst);
   s += `<rect x="${dst.x}" y="${dst.y}" width="${dst.w}" height="${dst.h}" rx="26" fill="rgba(3,29,24,.58)"/>`;
   const big = (y, txt, p, c) => `<g opacity="${f1(sm(p))}" transform="translate(0 ${f1((1 - sm(p)) * 24)})">${R(130, y - 78, 820, 124, 'rgba(3,29,24,.9)', 62, `stroke="${c}" stroke-width="5"`)}${T(540, y + 4, txt, K.white, 76, 800)}</g>`;
   s += big(760, 'Cepat lelah', p1, K.mint) + big(930, 'Sesak', p2, K.gold) + `</g>`;
-  s += `<g opacity="${f1(a)}">${T(540, 1288, 'Rujukan: American Heart Association (tanda dan gejala gagal jantung)', K.mute, 24, 600)}</g>` + DISC(a);
+  s += `<g opacity="${f1(a)}">${T(540, 1288, 'Rujukan gejala gagal jantung: American Heart Association', K.mute, 24, 600)}</g>` + DISC(a);
   return s;
 }
 function shotTutup(t) {
@@ -117,10 +125,10 @@ function shotTutup(t) {
   let s = `<g opacity="${f1(a)}">` + R(190, 262, 700, 120, 'rgba(248,247,243,.97)', 36) + `<image href="${need('../stage/logo-full.webp')}" x="290" y="272" width="500" height="100" preserveAspectRatio="xMidYMid meet"/>`;
   s += `<clipPath id="cT"><rect x="${f1(dst2.x)}" y="${f1(dst2.y)}" width="${f1(dst2.w)}" height="${f1(dst2.h)}" rx="26"/></clipPath><g clip-path="url(#cT)"><image href="${need(frameUrl(S.clip, srcT(S, t)))}" x="${f1(540 - w / 2)}" y="${f1(540 - (w - 1020) * 0.1)}" width="${f1(w)}" height="${f1(dst.h)}" preserveAspectRatio="none"/></g><rect x="30" y="540" width="1020" height="${f1(dst2.h)}" rx="26" fill="none" stroke="rgba(124,224,184,.6)" stroke-width="3"/>`;
   s += `</g>`;
-  const h1 = clamp((t - S.out[0] - 0.2) / 0.4), h2 = clamp((t - S.out[0] - 0.8) / 0.4);
+  const h1 = clamp((t - C.teks.judulTutup) / 0.4), h2 = clamp((t - C.teks.url) / 0.4), bd = win(t, C.teks.disclaimerBesar[0], C.teks.disclaimerBesar[1], 0.25);
   s += `<g opacity="${f1(sm(h1))}">${T(540, 466, 'Eksplorasi patologi gratis', K.white, 60, 800, 'middle', 'stroke="rgba(3,29,24,.55)" stroke-width="8" paint-order="stroke"')}</g>`;
   s += `<g opacity="${f1(sm(h2))}" transform="translate(0 ${f1((1 - sm(h2)) * 22)})">${R(240, 1190, 600, 120, K.gold, 60)}${T(540, 1267, 'medcoel.com', K.ink, 66, 800)}</g>`;
-  s += DISC(a);
+  s += `<g opacity="${f1(bd)}">${pill(540, 1230, 'Simulasi edukatif, bukan alat diagnosis', { fs: 40, c: K.gold, sw: 4, px: 56 })}</g>` + DISC(a);
   return s;
 }
 // ------------------------------------------------------------------ penanda posisi voice-over (rough cut, ?vo=1)
@@ -140,6 +148,7 @@ function compose(t) {
   if (inRange(sh.lv)) body += shotLV(t);
   if (inRange(sh.tombol)) body += shotTombol(t);
   if (inRange(sh.banding)) body += shotBanding(t);
+  if (inRange(sh.denyut)) body += shotDenyut(t);
   if (inRange(sh.gejala)) body += shotGejala(t);
   if (inRange(sh.tutup)) body += shotTutup(t);
   s += `<g transform="translate(0 70)">${body}</g>`;

@@ -1,4 +1,4 @@
-"""Musik instrumental medical-tech lembut + klik/ting pembanding "Jantung berdetak, tapi pompanya melemah?" (28,0 dtk), disintesis 100% dari kode (numpy).
+"""Musik instrumental medical-tech lembut + klik/ting pembanding "Jantung berdetak, tapi pompanya melemah?" (32,0 dtk), disintesis 100% dari kode (numpy).
 Judul: "MEDCOEL Soft Pulse". Tidak ada sampel/musik pihak ketiga. Lisensi musik dan efek: CC0 1.0 (domain publik), dibuat untuk MEDCOEL pada sesi ini, boleh untuk promosi Instagram/TikTok tanpa atribusi.
 Struktur: pad hangat + bel/pluck lembut 84 BPM, denyut sub pelan seperti detak; klik+ting kecil HANYA saat tombol "Bandingkan dengan normal" ditekan (cues.json["klik"]).
 Voice-over: BELUM ada. Jika audio/voiceover.wav (Google AI Studio, dari pemesan) disimpan, ia dicampur apa adanya dan musik/efek turun di bawahnya; jika tidak ada, mix.wav = rough cut tanpa narator.
@@ -31,7 +31,7 @@ def thump(t0, g=1.0):                                   # denyut sub pelan seper
     n = int(0.28 * sr); tt = np.arange(n) / sr; add(mus, t0, np.sin(2 * np.pi * (62 - 22 * tt / 0.25) * tt) * np.exp(-tt / 0.07) * 0.5, g)
 BPM = 84; B1 = 60 / BPM; BAR = 4 * B1
 CH = [('D', 'F', 'A', 'C'), ('Bb', 'D', 'F', 'A'), ('G', 'Bb', 'D', 'F'), ('A', 'C#', 'E', 'G')]; RT = ['D', 'Bb', 'G', 'A']
-def dens(x): return 0.45 if x < 3.6 else 0.6 if x < 19.6 else 0.5 if x < 23.6 else 0.85
+def dens(x): return 0.45 if x < 4.0 else 0.55 if x < 26.0 else 0.85
 bi = 0
 while bi * BAR < T:
     xs = bi * BAR; ch = CH[bi % 4]; d = dens(xs)

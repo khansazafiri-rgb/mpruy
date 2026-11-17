@@ -1,30 +1,211 @@
 {
-  "_catatan": "Jadwal bersama panggung (stage/stage.js) dan audio (audio/audio_mix.py). Detik video. Voice-over BELUM ada: 'vo' adalah POSISI/jendela usulan untuk narasi Google AI Studio (teks usulan di vo-posisi.md). Setelah WAV ada, sesuaikan 'shots' (out0/out1) dan 'vo' lalu render ulang.",
-  "dur": 28.0,
+  "_catatan": "Jadwal bersama panggung (stage/stage.js) dan audio (audio/audio_mix.py). Detik video. Dihitung dari ASR voice-over Google AI Studio (audio/voiceover.wav, 31,56 dtk; audio/voiceover-asr.json): tiap shot dimulai sedikit sebelum kalimat yang sesuai.",
+  "dur": 32.0,
   "fps": 30,
-  "clip": { "00": 435, "01": 126, "02": 126, "03": 180 },
+  "clip": {
+    "00": 435,
+    "01": 126,
+    "02": 126,
+    "03": 180
+  },
   "shots": {
-    "hook":   { "out": [0.0, 3.6],   "clip": "00", "src": [0.8, 4.4] },
-    "pilih":  { "out": [3.6, 7.4],   "clip": "01", "src": [0.1, 2.5] },
-    "lv":     { "out": [7.4, 11.4],  "clip": "03", "src": [0.3, 2.0], "src2": [2.0, 3.4], "split": 9.9 },
-    "tombol": { "out": [11.4, 14.8], "clip": "01", "src": [1.8, 4.15], "pressSrc": 3.05 },
-    "banding":{ "out": [14.8, 19.6], "normal": { "clip": "02", "src": [0.2, 3.0] }, "skenario": { "clip": "00", "src": [0.9, 3.1] } },
-    "gejala": { "out": [19.6, 23.6], "clip": "03", "src": [2.4, 5.5] },
-    "tutup":  { "out": [23.6, 28.0], "clip": "00", "src": [1.0, 4.5] }
+    "hook": {
+      "out": [
+        0.0,
+        4.0
+      ],
+      "clip": "00",
+      "src": [
+        0.8,
+        4.8
+      ]
+    },
+    "pilih": {
+      "out": [
+        4.0,
+        6.6
+      ],
+      "clip": "01",
+      "src": [
+        0.1,
+        2.5
+      ]
+    },
+    "lv": {
+      "out": [
+        6.6,
+        10.1
+      ],
+      "clip": "03",
+      "src": [
+        0.3,
+        2.0
+      ],
+      "src2": [
+        2.0,
+        3.0
+      ],
+      "split": 9.1
+    },
+    "tombol": {
+      "out": [
+        10.1,
+        13.0
+      ],
+      "clip": "01",
+      "src": [
+        1.8,
+        4.15
+      ],
+      "pressSrc": 3.05
+    },
+    "banding": {
+      "out": [
+        13.0,
+        18.0
+      ],
+      "normal": {
+        "clip": "02",
+        "src": [
+          0.2,
+          3.0
+        ]
+      },
+      "skenario": {
+        "clip": "00",
+        "src": [
+          0.9,
+          3.1
+        ]
+      }
+    },
+    "denyut": {
+      "out": [
+        18.0,
+        21.6
+      ],
+      "clip": "03",
+      "src": [
+        3.0,
+        5.2
+      ]
+    },
+    "gejala": {
+      "out": [
+        21.6,
+        26.0
+      ],
+      "clip": "03",
+      "src": [
+        3.0,
+        5.9
+      ]
+    },
+    "tutup": {
+      "out": [
+        26.0,
+        32.0
+      ],
+      "clip": "00",
+      "src": [
+        1.0,
+        5.6
+      ]
+    }
   },
   "teks": {
-    "judul": [0.0, 3.6],
-    "lvRing": [7.7, 10.2],
-    "cepatLelah": 19.95, "sesak": 21.2,
-    "ef": [15.2, 19.4]
+    "lvRing": [
+      6.8,
+      9.1
+    ],
+    "perhatikan": 8.65,
+    "ef58": 15.1,
+    "ef26": 16.5,
+    "catatanEF": 15.0,
+    "cepatLelah": 24.0,
+    "sesak": 25.25,
+    "disclaimerBesar": [
+      26.2,
+      28.4
+    ],
+    "judulTutup": 28.3,
+    "url": 28.8
   },
   "vo": [
-    { "id": "vo1", "t": [0.4, 3.3],   "usul": "Jantung masih berdetak, tapi pompanya melemah?" },
-    { "id": "vo2", "t": [3.8, 7.2],   "usul": "Di Live 4D Lab MEDCOEL, pilih skenario fungsi sistolik ventrikel kiri menurun, pola HFrEF." },
-    { "id": "vo3", "t": [7.6, 11.2],  "usul": "Perhatikan ventrikel kiri. Di skenario ini, kontraksinya menurun." },
-    { "id": "vo4", "t": [11.6, 19.4], "usul": "Tekan bandingkan dengan normal. EF model sekitar 58 persen, sedangkan skenario sekitar 26 persen. Ini parameter simulasi, bukan angka pasien." },
-    { "id": "vo5", "t": [19.8, 23.4], "usul": "Pada gagal jantung, rasa cepat lelah dan sesak dapat muncul." },
-    { "id": "vo6", "t": [23.9, 27.8], "usul": "Eksplorasi patologi gratis di medcoel dot com." }
+    {
+      "id": "vo1",
+      "t": [
+        0.0,
+        3.56
+      ],
+      "teks": "Jantungnya berdetak, tapi kenapa pompanya melemah?"
+    },
+    {
+      "id": "vo2",
+      "t": [
+        4.28,
+        8.08
+      ],
+      "teks": "Di simulasi Live 4D Lab ini, kontraksi ventrikel kiri menurun."
+    },
+    {
+      "id": "vo3",
+      "t": [
+        8.7,
+        9.54
+      ],
+      "teks": "Perhatikan geraknya."
+    },
+    {
+      "id": "vo4",
+      "t": [
+        10.06,
+        11.86
+      ],
+      "teks": "Lalu bandingkan dengan kondisi normal."
+    },
+    {
+      "id": "vo5",
+      "t": [
+        12.74,
+        17.56
+      ],
+      "teks": "Fraksi ejeksi pada model berubah dari sekitar 58 menjadi 26 persen."
+    },
+    {
+      "id": "vo6",
+      "t": [
+        18.0,
+        21.3
+      ],
+      "teks": "Artinya lebih sedikit darah terdorong keluar tiap denyut."
+    },
+    {
+      "id": "vo7",
+      "t": [
+        21.82,
+        25.66
+      ],
+      "teks": "Kondisi seperti ini dapat berkaitan dengan cepat lelah atau sesak."
+    },
+    {
+      "id": "vo8",
+      "t": [
+        26.24,
+        28.42
+      ],
+      "teks": "Ini simulasi edukatif, bukan alat diagnosis."
+    },
+    {
+      "id": "vo9",
+      "t": [
+        28.42,
+        31.26
+      ],
+      "teks": "Eksplorasi gratis di medcoel.com (diucapkan: MedExpel.com)"
+    }
   ],
-  "klik": [13.2]
+  "klik": [
+    11.64
+  ]
 }
