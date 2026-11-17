@@ -1,0 +1,375 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.56,
+  "text": "Jantungnya berdetak, tapi kenapa pompanya malemah?",
+  "words": [
+   {
+    "w": "Jantungnya",
+    "s": 0.0,
+    "e": 0.72
+   },
+   {
+    "w": "berdetak,",
+    "s": 0.72,
+    "e": 1.28
+   },
+   {
+    "w": "tapi",
+    "s": 1.58,
+    "e": 2.0
+   },
+   {
+    "w": "kenapa",
+    "s": 2.0,
+    "e": 2.74
+   },
+   {
+    "w": "pompanya",
+    "s": 2.74,
+    "e": 3.08
+   },
+   {
+    "w": "malemah?",
+    "s": 3.08,
+    "e": 3.56
+   }
+  ]
+ },
+ {
+  "start": 4.28,
+  "end": 8.08,
+  "text": "Disimulasi live 4D lab ini, kontraksi ventricle kiri menurun.",
+  "words": [
+   {
+    "w": "Disimulasi",
+    "s": 4.28,
+    "e": 4.96
+   },
+   {
+    "w": "live",
+    "s": 4.96,
+    "e": 5.22
+   },
+   {
+    "w": "4D",
+    "s": 5.22,
+    "e": 5.7
+   },
+   {
+    "w": "lab",
+    "s": 5.7,
+    "e": 5.86
+   },
+   {
+    "w": "ini,",
+    "s": 5.86,
+    "e": 6.16
+   },
+   {
+    "w": "kontraksi",
+    "s": 6.5,
+    "e": 7.04
+   },
+   {
+    "w": "ventricle",
+    "s": 7.04,
+    "e": 7.48
+   },
+   {
+    "w": "kiri",
+    "s": 7.48,
+    "e": 7.7
+   },
+   {
+    "w": "menurun.",
+    "s": 7.7,
+    "e": 8.08
+   }
+  ]
+ },
+ {
+  "start": 8.7,
+  "end": 9.54,
+  "text": "Perhatikan geraknya.",
+  "words": [
+   {
+    "w": "Perhatikan",
+    "s": 8.7,
+    "e": 9.12
+   },
+   {
+    "w": "geraknya.",
+    "s": 9.12,
+    "e": 9.54
+   }
+  ]
+ },
+ {
+  "start": 10.06,
+  "end": 11.86,
+  "text": "Lalu bandingkan dengan kondisi normal.",
+  "words": [
+   {
+    "w": "Lalu",
+    "s": 10.06,
+    "e": 10.48
+   },
+   {
+    "w": "bandingkan",
+    "s": 10.48,
+    "e": 11.06
+   },
+   {
+    "w": "dengan",
+    "s": 11.06,
+    "e": 11.24
+   },
+   {
+    "w": "kondisi",
+    "s": 11.24,
+    "e": 11.56
+   },
+   {
+    "w": "normal.",
+    "s": 11.56,
+    "e": 11.86
+   }
+  ]
+ },
+ {
+  "start": 12.74,
+  "end": 17.56,
+  "text": "Fraksi ejecti pada model berubah dari sekitar 58 menjadi 26 persen.",
+  "words": [
+   {
+    "w": "Fraksi",
+    "s": 12.74,
+    "e": 13.12
+   },
+   {
+    "w": "ejecti",
+    "s": 13.12,
+    "e": 13.54
+   },
+   {
+    "w": "pada",
+    "s": 13.54,
+    "e": 13.7
+   },
+   {
+    "w": "model",
+    "s": 13.7,
+    "e": 14.06
+   },
+   {
+    "w": "berubah",
+    "s": 14.06,
+    "e": 14.54
+   },
+   {
+    "w": "dari",
+    "s": 14.54,
+    "e": 14.72
+   },
+   {
+    "w": "sekitar",
+    "s": 14.72,
+    "e": 15.16
+   },
+   {
+    "w": "58",
+    "s": 15.16,
+    "e": 15.74
+   },
+   {
+    "w": "menjadi",
+    "s": 15.74,
+    "e": 16.56
+   },
+   {
+    "w": "26",
+    "s": 16.56,
+    "e": 17.08
+   },
+   {
+    "w": "persen.",
+    "s": 17.08,
+    "e": 17.56
+   }
+  ]
+ },
+ {
+  "start": 18.0,
+  "end": 21.3,
+  "text": "Artinya lebih sedikit darah terdorong keluar tiap dengut.",
+  "words": [
+   {
+    "w": "Artinya",
+    "s": 18.0,
+    "e": 18.54
+   },
+   {
+    "w": "lebih",
+    "s": 18.54,
+    "e": 19.08
+   },
+   {
+    "w": "sedikit",
+    "s": 19.08,
+    "e": 19.5
+   },
+   {
+    "w": "darah",
+    "s": 19.5,
+    "e": 19.98
+   },
+   {
+    "w": "terdorong",
+    "s": 19.98,
+    "e": 20.4
+   },
+   {
+    "w": "keluar",
+    "s": 20.4,
+    "e": 20.68
+   },
+   {
+    "w": "tiap",
+    "s": 20.68,
+    "e": 21.02
+   },
+   {
+    "w": "dengut.",
+    "s": 21.02,
+    "e": 21.3
+   }
+  ]
+ },
+ {
+  "start": 21.82,
+  "end": 25.66,
+  "text": "Kondisi seperti ini dapat berkaitan dengan cepat lelah atau sesak.",
+  "words": [
+   {
+    "w": "Kondisi",
+    "s": 21.82,
+    "e": 22.44
+   },
+   {
+    "w": "seperti",
+    "s": 22.44,
+    "e": 22.68
+   },
+   {
+    "w": "ini",
+    "s": 22.68,
+    "e": 23.1
+   },
+   {
+    "w": "dapat",
+    "s": 23.1,
+    "e": 23.38
+   },
+   {
+    "w": "berkaitan",
+    "s": 23.38,
+    "e": 23.9
+   },
+   {
+    "w": "dengan",
+    "s": 23.9,
+    "e": 24.08
+   },
+   {
+    "w": "cepat",
+    "s": 24.08,
+    "e": 24.5
+   },
+   {
+    "w": "lelah",
+    "s": 24.5,
+    "e": 25.04
+   },
+   {
+    "w": "atau",
+    "s": 25.04,
+    "e": 25.3
+   },
+   {
+    "w": "sesak.",
+    "s": 25.3,
+    "e": 25.66
+   }
+  ]
+ },
+ {
+  "start": 26.24,
+  "end": 28.42,
+  "text": "Ini simulasi edukatif, bukan alat diagnosis.",
+  "words": [
+   {
+    "w": "Ini",
+    "s": 26.24,
+    "e": 26.44
+   },
+   {
+    "w": "simulasi",
+    "s": 26.44,
+    "e": 26.8
+   },
+   {
+    "w": "edukatif,",
+    "s": 26.8,
+    "e": 27.26
+   },
+   {
+    "w": "bukan",
+    "s": 27.54,
+    "e": 27.78
+   },
+   {
+    "w": "alat",
+    "s": 27.78,
+    "e": 28.06
+   },
+   {
+    "w": "diagnosis.",
+    "s": 28.06,
+    "e": 28.42
+   }
+  ]
+ },
+ {
+  "start": 28.42,
+  "end": 31.26,
+  "text": "Explorasi gratis di MedExpel.com",
+  "words": [
+   {
+    "w": "Explorasi",
+    "s": 28.42,
+    "e": 29.64
+   },
+   {
+    "w": "gratis",
+    "s": 29.64,
+    "e": 30.14
+   },
+   {
+    "w": "di",
+    "s": 30.14,
+    "e": 30.3
+   },
+   {
+    "w": "MedExpel",
+    "s": 30.3,
+    "e": 30.9
+   },
+   {
+    "w": ".com",
+    "s": 30.9,
+    "e": 31.26
+   }
+  ]
+ }
+]
