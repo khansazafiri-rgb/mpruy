@@ -1,0 +1,7 @@
+{
+  "name": "medcoel-parasetamol-nyeri-kepala",
+  "private": true,
+  "type": "module",
+  "scripts": {"render:outro": "node render-outro.mjs", "cover": "node render-outro.mjs --cover"},
+  "dependencies": {"@napi-rs/canvas": "0.1.100"}
+}
