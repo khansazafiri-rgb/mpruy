@@ -1,0 +1,31 @@
+{
+  "repo": "khansazafiri-rgb/mpruy",
+  "commit": "36f2d0a78d8497515e567c1b8be12ce5db4273ae",
+  "files": [
+    {
+      "path": "brand/characters/raka/README.md",
+      "gitBlobSHA": "ed9e5dac01c773e5615afb01115464e2d849a793",
+      "size": 18111
+    },
+    {
+      "path": "brand/characters/raka/raka.js",
+      "gitBlobSHA": "763f07a9c2ddad3a23f982124c4a12c95f3075ac",
+      "size": 40717
+    },
+    {
+      "path": "video/kopi-kafein-adenosin/stage/fonts/PlusJakartaSans-600.woff2",
+      "gitBlobSHA": "a180dc40f205fc48979a75ccbe8a10221a71a4ba",
+      "size": 27348
+    },
+    {
+      "path": "video/kopi-kafein-adenosin/stage/fonts/PlusJakartaSans-800.woff2",
+      "gitBlobSHA": "a180dc40f205fc48979a75ccbe8a10221a71a4ba",
+      "size": 27348
+    },
+    {
+      "path": "video/kopi-kafein-adenosin/stage/lib.js",
+      "gitBlobSHA": "c7dc9246fd748e08fbf760f7840cc1cbfbd91350",
+      "size": 8697
+    }
+  ]
+}
