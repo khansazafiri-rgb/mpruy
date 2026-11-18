@@ -1,0 +1,111 @@
+{
+  "status": "FINAL_REVIEWED",
+  "duration": 76.3,
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "outroStart": 55.1666666667,
+  "outroDuration": 21.1333333333,
+  "ctaStart": 73,
+  "shots": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 7.96
+    },
+    {
+      "id": "ct-scanner",
+      "start": 7.96,
+      "end": 13.56
+    },
+    {
+      "id": "ct-image",
+      "start": 13.56,
+      "end": 20.02
+    },
+    {
+      "id": "mri-scanner",
+      "start": 20.02,
+      "end": 28.3
+    },
+    {
+      "id": "sekuens",
+      "start": 28.3,
+      "end": 32.74
+    },
+    {
+      "id": "mri-image",
+      "start": 32.74,
+      "end": 38.34
+    },
+    {
+      "id": "banding-tulang",
+      "start": 38.34,
+      "end": 42.84
+    },
+    {
+      "id": "banding-cairan",
+      "start": 42.84,
+      "end": 47.3666666667
+    },
+    {
+      "id": "mekanisme",
+      "start": 47.3666666667,
+      "end": 51.6666666667
+    },
+    {
+      "id": "klinis",
+      "start": 51.6666666667,
+      "end": 55.1666666667
+    },
+    {
+      "id": "materi",
+      "start": 55.1666666667,
+      "end": 60.9666666667
+    },
+    {
+      "id": "soal",
+      "start": 60.9666666667,
+      "end": 66.9666666667
+    },
+    {
+      "id": "lab",
+      "start": 66.9666666667,
+      "end": 76.3
+    }
+  ],
+  "markers": {
+    "tulang tengkorak": 17.7,
+    "medan magnet": 23.26,
+    "gelombang radio": 24,
+    "hidrogen": 27.3,
+    "cairan": 34.72,
+    "tulang MRI gelap": 36.26
+  },
+  "web": [
+    {
+      "id": "materi",
+      "start": 55.1666666667,
+      "end": 60.9666666667,
+      "source": "assets/materi-soal.mp4",
+      "sourceStart": 0,
+      "speed": 1
+    },
+    {
+      "id": "soal",
+      "start": 60.9666666667,
+      "end": 66.9666666667,
+      "source": "assets/materi-soal.mp4",
+      "sourceStart": 7.5,
+      "speed": 1
+    },
+    {
+      "id": "lab",
+      "start": 66.9666666667,
+      "end": 76.3,
+      "source": "assets/live-4d-lab.mp4",
+      "sourceStart": 0,
+      "speed": 1
+    }
+  ]
+}

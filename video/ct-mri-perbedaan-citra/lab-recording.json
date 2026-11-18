@@ -1,0 +1,26 @@
+{
+  "sourceCommit": "36f2d0a78d8497515e567c1b8be12ce5db4273ae",
+  "url": "http://127.0.0.1:4182/anatomy/4d-lab/",
+  "file": "assets/live-4d-lab.mp4",
+  "viewportCSS": {
+    "width": 480,
+    "height": 590
+  },
+  "deviceScaleFactor": 2,
+  "capture": "Native Playwright browser video; crop removes recorder padding; Lanczos resample to 960x1180. Original wall-clock timing and 1x speed retained. 25fps capture converted to 30fps, no interpolation of medical image content.",
+  "duration": 10.5,
+  "speed": 1,
+  "actions": [
+    {
+      "id": "mon-us",
+      "sourceSessionClickTime": 2.511,
+      "note": "CT to USG transition is visible in the retained clip; software rendering introduces response latency."
+    }
+  ],
+  "errors": [],
+  "features": [
+    "CT",
+    "USG"
+  ],
+  "MRI": false
+}
