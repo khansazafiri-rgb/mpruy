@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Sumber asli untuk outro video edukasi MEDCOEL; klip belum dipotong.",
+  "website": "https://medcoel.com",
+  "footage": [
+    {
+      "id": "belajar_dan_soal",
+      "path": "video/masih-dua-minggu/rekam/rekaman-web.mp4",
+      "verifiedContent": [
+        "pilih mata kuliah",
+        "pilih bab",
+        "latihan soal",
+        "jawaban salah",
+        "pembahasan"
+      ],
+      "data": "fixture lokal",
+      "audioReuse": false
+    },
+    {
+      "id": "simulasi_dokter",
+      "path": "video/dok-saya-kenapa/rekam/rekaman-web.mp4",
+      "verifiedContent": [
+        "pilih poli dan pasien",
+        "anamnesis",
+        "pemeriksaan",
+        "laporan konsultasi",
+        "ulangi kasus"
+      ],
+      "data": "fixture lokal",
+      "audioReuse": false
+    }
+  ],
+  "brand": {
+    "logoFull": "apps/web/src/assets/logo-full.webp",
+    "logoMark": "apps/web/src/assets/logo-mark.webp",
+    "mascots": [
+      "brand/mascots/kori.svg",
+      "brand/mascots/kila.svg",
+      "brand/mascots/nilo.svg"
+    ],
+    "raka": "brand/characters/raka/raka.js"
+  },
+  "outro": {
+    "durationSeconds": [
+      8,
+      12
+    ],
+    "onScreenText": [
+      "Belajar FK gratis di MEDCOEL",
+      "medcoel.com"
+    ],
+    "optionalNarration": "Mau lanjut belajar? Di MEDCOEL, kamu bisa buka materi per bab, latihan soal, dan Simulasi Dokter. Gratis di medcoel.com."
+  },
+  "rules": [
+    "Gunakan footage web asli; jangan membuat UI palsu.",
+    "Pilih shot yang cocok dengan fitur yang disebut.",
+    "Rekam ulang jika UI web terbaru berbeda.",
+    "Buat audio narasi final secara terpisah; jangan memakai ulang audio campuran tanpa memeriksa hak pakai."
+  ]
+}

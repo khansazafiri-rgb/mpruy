@@ -1,0 +1,25 @@
+{
+  "source": "narasi-google-ai-studio.wav",
+  "sourceDuration": 72.68,
+  "output": "narasi-timeline.wav",
+  "duration": 79.06666666666666,
+  "speed": 1,
+  "operations": [
+    {
+      "type": "insert_silence",
+      "sourceTime": 67.9,
+      "duration": 4.833333333333333
+    },
+    {
+      "type": "insert_silence",
+      "sourceTime": 70,
+      "duration": 0.6
+    },
+    {
+      "type": "tail_silence",
+      "duration": 0.9533333333333331
+    }
+  ],
+  "verification": "All source PCM samples preserved, in order; only digital silence added. No EQ, pitch change, time stretch, fades, or replacement voice.",
+  "sourceSHA256": "6b7d4dbc956bb4dba4906a0159784b21734a44fa138f6e89741a3cf8b7efbebe"
+}
