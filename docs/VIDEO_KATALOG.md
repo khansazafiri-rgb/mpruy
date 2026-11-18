@@ -2,7 +2,7 @@
 
 Daftar ini mencatat **proyek dengan MP4 di repo**, bukan status publikasi di Instagram/TikTok. Judul diambil dari README proyek; jika belum ada, dipakai nama folder. Jalankan `python3 scripts/video/update_catalog.py` setelah menambah video. CI menolak perubahan yang membuat katalog tertinggal.
 
-Total: **20 video**.
+Total: **23 video**.
 
 | Jenis | Judul | Folder sumber |
 | --- | --- | --- |
@@ -13,12 +13,15 @@ Total: **20 video**.
 | Cerita anak FK | [Tab Dua Puluh](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/tab-dua-puluh) | `video/tab-dua-puluh` |
 | Edukasi | [Apa bedanya introvert & ekstrovert?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/introvert-ekstrovert) | `video/introvert-ekstrovert` |
 | Edukasi | [Bangun, tapi tak bisa bergerak](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/bangun-tapi-tak-bisa-bergerak) | `video/bangun-tapi-tak-bisa-bergerak` |
+| Edukasi | [Belum makan, kok perut malah perih?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/belum-makan-perut-perih) | `video/belum-makan-perut-perih` |
 | Edukasi | [Dunia tanpa cuci tangan di layanan kesehatan](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dunia-tanpa-cuci-tangan) | `video/dunia-tanpa-cuci-tangan` |
 | Edukasi | [Dunia tanpa oralit](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dunia-tanpa-oralit) | `video/dunia-tanpa-oralit` |
 | Edukasi | [Kena gas air mata saat demo?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/gas-air-mata) | `video/gas-air-mata` |
 | Edukasi | [Kenapa Kalau Dingin Jadi Lebih Sering Ingin Pipis?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dingin-pengen-pipis) | `video/dingin-pengen-pipis` |
 | Edukasi | [Kenapa Kopi Bikin Kita Nggak Ngantuk?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/kopi-kafein-adenosin) | `video/kopi-kafein-adenosin` |
 | Edukasi | [Kenapa malam-malam lapar?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/malam-lapar) | `video/malam-lapar` |
+| Edukasi | [MEDCOEL — Farmakodinamik parasetamol untuk nyeri kepala](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/parasetamol-nyeri-kepala) | `video/parasetamol-nyeri-kepala` |
+| Edukasi | [MEDCOEL — Mengapa gambar CT dan MRI berbeda?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/ct-mri-perbedaan-citra) | `video/ct-mri-perbedaan-citra` |
 | Edukasi | [Pasien Tidak Sadar di IGD: Dokter Harus Menunggu Keluarga?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/pasien-tidak-sadar-di-igd) | `video/pasien-tidak-sadar-di-igd` |
 | Promo fitur | [Besok Praktikum Anatomi, Tapi Masih Bingung?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/besok-praktikum-anatomi) | `video/besok-praktikum-anatomi` |
 | Promo fitur | [FEATURE UNLOCKED: 3D ANATOMY](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/human-anatomy-3d) | `video/human-anatomy-3d` |

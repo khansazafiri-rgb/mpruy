@@ -1,0 +1,37 @@
+{
+  "sourceDuration": 70.28,
+  "duration": 87.5,
+  "speed": 1,
+  "edits": [
+    {
+      "sourceTime": 2.8,
+      "silenceAdded": 0.8
+    },
+    {
+      "sourceTime": 28.85,
+      "silenceAdded": 1.6
+    },
+    {
+      "sourceTime": 40.4,
+      "silenceAdded": 1.2
+    },
+    {
+      "sourceTime": 44.1,
+      "silenceAdded": 1.4
+    },
+    {
+      "sourceTime": 65.08,
+      "silenceAdded": 4
+    },
+    {
+      "sourceTime": 66.2,
+      "silenceAdded": 4.6
+    },
+    {
+      "sourceTime": 67.8,
+      "silenceAdded": 3
+    }
+  ],
+  "tailSilence": 0.62,
+  "verification": "Every original PCM sample preserved bit for bit and in order in narration stem; silence inserted only in quiet gaps. No voice speed, pitch or word changes."
+}

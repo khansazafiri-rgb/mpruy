@@ -1,0 +1,15 @@
+{
+  "name": "medcoel-belum-makan-perut-perih",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "python3 prepare.py && python3 audio.py",
+    "render": "python3 prepare.py && python3 audio.py && node render.mjs",
+    "stills": "node render.mjs --stills",
+    "cover": "node render.mjs --cover",
+    "preview": "python3 serve.py 8785"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "0.1.100"
+  }
+}

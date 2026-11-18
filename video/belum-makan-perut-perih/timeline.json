@@ -1,0 +1,143 @@
+{
+  "status": "FINAL_REVIEWED",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 87.5,
+  "outroStart": 65.48,
+  "webStart": 67.7,
+  "ctaStart": 84.4,
+  "shots": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 3.94
+    },
+    {
+      "id": "asam",
+      "start": 3.94,
+      "end": 7.8
+    },
+    {
+      "id": "pelindung",
+      "start": 7.8,
+      "end": 12.32
+    },
+    {
+      "id": "sinyal",
+      "start": 12.32,
+      "end": 17.06
+    },
+    {
+      "id": "bukan-luka",
+      "start": 17.06,
+      "end": 20.64
+    },
+    {
+      "id": "percabangan",
+      "start": 20.64,
+      "end": 23.84
+    },
+    {
+      "id": "penyebab",
+      "start": 23.84,
+      "end": 31.6
+    },
+    {
+      "id": "tukak",
+      "start": 31.6,
+      "end": 37.86
+    },
+    {
+      "id": "obat-beda",
+      "start": 37.86,
+      "end": 40.42
+    },
+    {
+      "id": "antasida",
+      "start": 40.42,
+      "end": 44.3
+    },
+    {
+      "id": "ppi",
+      "start": 44.3,
+      "end": 49.5
+    },
+    {
+      "id": "terapi-penyebab",
+      "start": 49.5,
+      "end": 54.48
+    },
+    {
+      "id": "maag",
+      "start": 54.48,
+      "end": 59.64
+    },
+    {
+      "id": "bantuan",
+      "start": 59.64,
+      "end": 65.48
+    },
+    {
+      "id": "belajar",
+      "start": 65.48,
+      "end": 67.7
+    },
+    {
+      "id": "materi",
+      "start": 67.7,
+      "end": 74.2
+    },
+    {
+      "id": "soal",
+      "start": 74.2,
+      "end": 79.96
+    },
+    {
+      "id": "simulasi",
+      "start": 79.96,
+      "end": 87.5
+    }
+  ],
+  "web": [
+    {
+      "id": "materi",
+      "start": 67.7,
+      "end": 74.2,
+      "source": "assets/materi-soal.mp4",
+      "sourceStart": 0,
+      "speed": 1
+    },
+    {
+      "id": "soal",
+      "start": 74.2,
+      "end": 79.96,
+      "source": "assets/materi-soal.mp4",
+      "sourceStart": 7.5,
+      "speed": 1
+    },
+    {
+      "id": "simulasi",
+      "start": 79.96,
+      "end": 87.5,
+      "source": "assets/simulasi-dokter.mp4",
+      "sourceStart": 0,
+      "speed": 1
+    }
+  ],
+  "markers": {
+    "asam": 6.98,
+    "lendir": 10.28,
+    "bikarbonat": 10.88,
+    "H. pylori": 24.56,
+    "NSAID": 26.22,
+    "luka": 32.3,
+    "antasida": 40.42,
+    "netralisasi": 41.02,
+    "pompa proton": 45.04,
+    "penghambatan": 45.74,
+    "muntah darah": 62.36,
+    "tinja hitam": 63.14
+  },
+  "targetedRepairRounds": 2
+}

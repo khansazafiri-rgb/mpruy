@@ -1,0 +1,31 @@
+{
+  "duration": 87.5,
+  "sampleRate": 48000,
+  "musicLicense": "CC0 1.0; original procedural score authored for this video",
+  "sfxLicense": "CC0 1.0; original synthesis, no external samples",
+  "ducking": true,
+  "narrationVsBackgroundDB": 33.78982176263922,
+  "peak": 0.8859410952693035,
+  "events": [
+    {
+      "time": 1.55,
+      "name": "jam"
+    },
+    {
+      "time": 7.8,
+      "name": "penampang"
+    },
+    {
+      "time": 14.25,
+      "name": "sinyal"
+    },
+    {
+      "time": 41.02,
+      "name": "netralisasi"
+    },
+    {
+      "time": 45.74,
+      "name": "pompa"
+    }
+  ]
+}

@@ -18,6 +18,8 @@ EDUCATION = {
     "dunia-tanpa-cuci-tangan", "dunia-tanpa-oralit", "gas-air-mata",
     "introvert-ekstrovert", "kopi-kafein-adenosin", "malam-lapar",
     "pasien-tidak-sadar-di-igd",
+    "ct-mri-perbedaan-citra", "parasetamol-nyeri-kepala",
+    "belum-makan-perut-perih",
 }
 STUDENT_STORIES = {
     "ada-satu-yang-kamu-lupa", "bayangin-jadi-anak-fk",

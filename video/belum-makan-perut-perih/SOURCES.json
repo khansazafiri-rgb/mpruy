@@ -1,0 +1,165 @@
+{
+  "repository": "khansazafiri-rgb/mpruy",
+  "ref": "claude/focused-wozniak-1ayrxa",
+  "commit": "11368ec2368cd7c60a966fae0c53b7d0bf7f26f1",
+  "verifiedGitSources": [
+    {
+      "path": "video/malam-lapar/medcoel-malam-lapar.mp4",
+      "sha": "ad92f390f72ad5651507f5c0ee3dcd7d5d795a0b"
+    },
+    {
+      "path": "video/malam-lapar/stage/scenes.js",
+      "sha": "deb85c5f58e22d292d2bcb1ed6274ba46f054909"
+    },
+    {
+      "path": "video/malam-lapar/stage/scenes2.js",
+      "sha": "9d7bb437464104cc74301c8a07edef3db1ab6aa4"
+    },
+    {
+      "path": "video/malam-lapar/stage/art.js",
+      "sha": "2708bf5e2f5bd7bd1707f2c714cdc1c00e32c2ad"
+    },
+    {
+      "path": "video/malam-lapar/README.md",
+      "sha": "d16b877ba6b8d022ea05feb6a06b41eb47a90c01"
+    },
+    {
+      "path": "video/kopi-kafein-adenosin/kopi-kafein-adenosin_final.mp4",
+      "sha": "2be81b50e1ed53102022dc6a8b3cdf472502d44a"
+    },
+    {
+      "path": "video/kopi-kafein-adenosin/stage/world.js",
+      "sha": "e183e81fc561c6e2acd0ae085a582cba76dca1fd"
+    },
+    {
+      "path": "video/kopi-kafein-adenosin/stage/bio.js",
+      "sha": "5e10bea80a93c3f7c1699ba1e00649b90e728d6e"
+    },
+    {
+      "path": "video/kopi-kafein-adenosin/stage/lib.js",
+      "sha": "c7dc9246fd748e08fbf760f7840cc1cbfbd91350"
+    },
+    {
+      "path": "video/kopi-kafein-adenosin/stage/stage.js",
+      "sha": "65bd2ae595e8dbae47afd966adb2d9488e4f665c"
+    },
+    {
+      "path": "brand/video/ad/out/medcoel-iklan-75s-v2-FINAL.mp4",
+      "sha": "b1f416ab2c11b9027fa6e0c089433a8c35808aea"
+    },
+    {
+      "path": "brand/video/ad/stage-ad.css",
+      "sha": "32e198ecbf8d3095b5a69b0ac693a4b46323c828"
+    },
+    {
+      "path": "brand/characters/raka/raka.js",
+      "sha": "763f07a9c2ddad3a23f982124c4a12c95f3075ac"
+    },
+    {
+      "path": "brand/characters/raka/README.md",
+      "sha": "ed9e5dac01c773e5615afb01115464e2d849a793"
+    },
+    {
+      "path": "brand/video/outro/README.md",
+      "sha": "e8d37c06c921e98d6c38f5d8f24811e2c702bfcd"
+    },
+    {
+      "path": "brand/video/outro/assets.json",
+      "sha": "8b60c943d795ea3cb5c41b16d6cd63637eddb351"
+    },
+    {
+      "path": "apps/web/src/assets/logo-full.webp",
+      "sha": "75622c7e565039cadd3a1390df60c1b5e5d8a0d1"
+    },
+    {
+      "path": "video/masih-dua-minggu/rekam/rekaman-web.mp4",
+      "sha": "89f21635b2b9a26e7cde9c51494b418ff7a7850a"
+    },
+    {
+      "path": "video/dok-saya-kenapa/rekam/rekaman-web.mp4",
+      "sha": "6621c1687796fb2f2ec7fdb380061357b000b1bf"
+    },
+    {
+      "path": "docs/VIDEO_KATALOG.md",
+      "sha": "6f444086833d4d681a8843273d272e739f141865"
+    }
+  ],
+  "narration": {
+    "source": "Generated Audio November 18, 2026 - 9_14PM.wav",
+    "creator": "Google AI Studio narration supplied by user",
+    "duration": 70.28,
+    "usage": "Owner-requested production",
+    "timeline": "audio-edits.json"
+  },
+  "fonts": {
+    "family": "Plus Jakarta Sans",
+    "source": "MEDCOEL repo",
+    "license": "SIL OFL1.1",
+    "licenseFile": "fonts/OFL.txt"
+  },
+  "scoreAndSFX": {
+    "creator": "Original procedural synthesis in audio.py",
+    "license": "CC0 1.0",
+    "externalSamples": false,
+    "metadata": "audio-mix.json"
+  },
+  "footage": [
+    {
+      "file": "assets/materi-soal.mp4",
+      "source": "video/masih-dua-minggu/rekam/rekaman-web.mp4",
+      "clips": [
+        [
+          0,
+          6.5
+        ],
+        [
+          7.5,
+          13.26
+        ]
+      ],
+      "speed": 1,
+      "audioUsed": false
+    },
+    {
+      "file": "assets/simulasi-dokter.mp4",
+      "source": "video/dok-saya-kenapa/rekam/rekaman-web.mp4",
+      "clips": [
+        [
+          0,
+          7.54
+        ]
+      ],
+      "speed": 1,
+      "audioUsed": false
+    }
+  ],
+  "illustrations": "Original editable 2D diagrams; canonical Raka and unchanged MEDCOEL helpers reused; no clinical images.",
+  "scientificReferences": [
+    "https://www.niddk.nih.gov/health-information/digestive-diseases/indigestion-dyspepsia/",
+    "https://www.niddk.nih.gov/health-information/digestive-diseases/indigestion-dyspepsia/symptoms-causes",
+    "https://www.niddk.nih.gov/health-information/digestive-diseases/peptic-ulcers-stomach-ulcers/symptoms-causes",
+    "https://www.niddk.nih.gov/health-information/digestive-diseases/peptic-ulcers-stomach-ulcers/treatment",
+    "https://www.msdmanuals.com/professional/gastrointestinal-disorders/gastritis-and-peptic-ulcer-disease/overview-of-acid-secretion",
+    "https://www.msdmanuals.com/professional/gastrointestinal-disorders/gastritis-and-peptic-ulcer-disease/medications-for-the-treatment-of-gastric-acidity"
+  ],
+  "sha256": {
+    "assets/logo-full.webp": "7614ccc4ca21b9fb3b83412d9c19a4ec22f6da7ef6d5577044452030eaa40f4c",
+    "assets/materi-soal.mp4": "54f9e8d82fc993cc540959f0b976468e4fd5ca2cb2fb94d664481a526829ca44",
+    "assets/simulasi-dokter.mp4": "087525a158e2910758e3beaf9ff0f2a6292c612c5e68f8bd5e4cda77ae3247d7",
+    "audio/musik-orisinal.wav": "2a001324677fb60ae0ef0df78dc546edb784007a3301af1558cc98877120c64b",
+    "audio/sfx-orisinal.wav": "f881ce189da65dfd72f799a1c3370366ec499bcefbc08421ddbca86e0d600ae2",
+    "audio/narasi-timeline.wav": "ffe4d4902a6083f0ac1ea89a1ee760db5d51d93321b072c2c375068ab75aa990",
+    "audio/narasi-google-ai-studio.wav": "2222a89b01cf00f77e005e478bee20b0c03fa93ec85b34fe9f69fa27a4431a83",
+    "audio/transkrip-asr.json": "bc81f6b774e533278d05f8435da0d41742a66c5375aa541d74e1c9ed43e7ec00",
+    "audio/master-video.wav": "1bf4c47e175463ce502e6f15e6feb7ae961f79011757c9c4caf4f75d25c0bafe",
+    "brand/characters/raka/README.md": "4dcf7ce453546564d0a914c29c8b2a80dad21b8794508f5fa52e443bb18de2af",
+    "brand/characters/raka/raka.js": "3149a9a8f2b1bba5df41407947ad4ccfe6c3670ebfefc27de2b67398836e8b45",
+    "fonts/PlusJakartaSans-600.woff2": "153fc85b70298beeb1d61a5f723331649e7f23bb77302a66e61cb3e2fbdb5e79",
+    "fonts/PlusJakartaSans-latin.woff2": "153fc85b70298beeb1d61a5f723331649e7f23bb77302a66e61cb3e2fbdb5e79",
+    "fonts/PlusJakartaSans-800.woff2": "153fc85b70298beeb1d61a5f723331649e7f23bb77302a66e61cb3e2fbdb5e79",
+    "fonts/OFL.txt": "995c7199cab65954f545996326755daee7b63cc6b42b06c13da1f9502ab08a99",
+    "reference/medcoel-lib.js": "0af4f2e28ca3280604bf55a28883357d1cca756dceb049df2df5b8a1b4c501fc",
+    "reference/malam-art.js": "dc73da4e0bb27febb3bca5c415bb624c910956cfd4c8df0d29cc8ec69235b169",
+    "reference/world-source.js": "86e2d2e7c87723ca16cbf7e837899b1544264b3292a7203cc62b8220739a8967"
+  }
+}

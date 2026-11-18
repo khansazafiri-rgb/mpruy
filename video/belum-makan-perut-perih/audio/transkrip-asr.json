@@ -1,0 +1,933 @@
+[
+  {
+    "start": 0.0,
+    "end": 2.48,
+    "text": " Belum makan, tapi kok perut malah perih?",
+    "words": [
+      {
+        "word": " Belum",
+        "start": 0.0,
+        "end": 0.38
+      },
+      {
+        "word": " makan,",
+        "start": 0.38,
+        "end": 0.78
+      },
+      {
+        "word": " tapi",
+        "start": 1.2,
+        "end": 1.4
+      },
+      {
+        "word": " kok",
+        "start": 1.4,
+        "end": 1.58
+      },
+      {
+        "word": " perut",
+        "start": 1.58,
+        "end": 1.92
+      },
+      {
+        "word": " malah",
+        "start": 1.92,
+        "end": 2.12
+      },
+      {
+        "word": " perih?",
+        "start": 2.12,
+        "end": 2.48
+      }
+    ]
+  },
+  {
+    "start": 3.14,
+    "end": 6.64,
+    "text": " Saat lambung osong, ia tidak mendadak berhenti menghasilkan asam.",
+    "words": [
+      {
+        "word": " Saat",
+        "start": 3.14,
+        "end": 3.52
+      },
+      {
+        "word": " lambung",
+        "start": 3.52,
+        "end": 3.76
+      },
+      {
+        "word": " osong,",
+        "start": 3.76,
+        "end": 4.28
+      },
+      {
+        "word": " ia",
+        "start": 4.5,
+        "end": 4.72
+      },
+      {
+        "word": " tidak",
+        "start": 4.72,
+        "end": 4.96
+      },
+      {
+        "word": " mendadak",
+        "start": 4.96,
+        "end": 5.4
+      },
+      {
+        "word": " berhenti",
+        "start": 5.4,
+        "end": 5.66
+      },
+      {
+        "word": " menghasilkan",
+        "start": 5.66,
+        "end": 6.18
+      },
+      {
+        "word": " asam.",
+        "start": 6.18,
+        "end": 6.64
+      }
+    ]
+  },
+  {
+    "start": 7.0,
+    "end": 10.76,
+    "text": " Namun, dinding lambung punya pelindung, lapisan lendir, dan bicarbonat.",
+    "words": [
+      {
+        "word": " Namun,",
+        "start": 7.0,
+        "end": 7.72
+      },
+      {
+        "word": " dinding",
+        "start": 7.84,
+        "end": 7.92
+      },
+      {
+        "word": " lambung",
+        "start": 7.92,
+        "end": 8.22
+      },
+      {
+        "word": " punya",
+        "start": 8.22,
+        "end": 8.4
+      },
+      {
+        "word": " pelindung,",
+        "start": 8.4,
+        "end": 8.76
+      },
+      {
+        "word": " lapisan",
+        "start": 9.18,
+        "end": 9.48
+      },
+      {
+        "word": " lendir,",
+        "start": 9.48,
+        "end": 9.88
+      },
+      {
+        "word": " dan",
+        "start": 10.04,
+        "end": 10.08
+      },
+      {
+        "word": " bicarbonat.",
+        "start": 10.08,
+        "end": 10.76
+      }
+    ]
+  },
+  {
+    "start": 11.52,
+    "end": 15.66,
+    "text": " Pada sebagian orang, sensasi dari lambung bisa terasa lebih mengganggu ketika perut kosong.",
+    "words": [
+      {
+        "word": " Pada",
+        "start": 11.52,
+        "end": 11.74
+      },
+      {
+        "word": " sebagian",
+        "start": 11.74,
+        "end": 12.06
+      },
+      {
+        "word": " orang,",
+        "start": 12.06,
+        "end": 12.28
+      },
+      {
+        "word": " sensasi",
+        "start": 12.82,
+        "end": 13.16
+      },
+      {
+        "word": " dari",
+        "start": 13.16,
+        "end": 13.34
+      },
+      {
+        "word": " lambung",
+        "start": 13.34,
+        "end": 13.7
+      },
+      {
+        "word": " bisa",
+        "start": 13.7,
+        "end": 13.88
+      },
+      {
+        "word": " terasa",
+        "start": 13.88,
+        "end": 14.2
+      },
+      {
+        "word": " lebih",
+        "start": 14.2,
+        "end": 14.38
+      },
+      {
+        "word": " mengganggu",
+        "start": 14.38,
+        "end": 14.8
+      },
+      {
+        "word": " ketika",
+        "start": 14.8,
+        "end": 15.04
+      },
+      {
+        "word": " perut",
+        "start": 15.04,
+        "end": 15.26
+      },
+      {
+        "word": " kosong.",
+        "start": 15.26,
+        "end": 15.66
+      }
+    ]
+  },
+  {
+    "start": 16.26,
+    "end": 18.82,
+    "text": " Rasa peri ini belum berarti dinding lambungnya luka.",
+    "words": [
+      {
+        "word": " Rasa",
+        "start": 16.26,
+        "end": 16.62
+      },
+      {
+        "word": " peri",
+        "start": 16.62,
+        "end": 16.86
+      },
+      {
+        "word": " ini",
+        "start": 16.86,
+        "end": 17.14
+      },
+      {
+        "word": " belum",
+        "start": 17.14,
+        "end": 17.54
+      },
+      {
+        "word": " berarti",
+        "start": 17.54,
+        "end": 17.9
+      },
+      {
+        "word": " dinding",
+        "start": 17.9,
+        "end": 18.14
+      },
+      {
+        "word": " lambungnya",
+        "start": 18.14,
+        "end": 18.54
+      },
+      {
+        "word": " luka.",
+        "start": 18.54,
+        "end": 18.82
+      }
+    ]
+  },
+  {
+    "start": 19.84,
+    "end": 21.9,
+    "text": " Lalu, kapan bisa jadi masalah yang berbeda?",
+    "words": [
+      {
+        "word": " Lalu,",
+        "start": 19.84,
+        "end": 20.26
+      },
+      {
+        "word": " kapan",
+        "start": 20.46,
+        "end": 20.7
+      },
+      {
+        "word": " bisa",
+        "start": 20.7,
+        "end": 20.9
+      },
+      {
+        "word": " jadi",
+        "start": 20.9,
+        "end": 21.16
+      },
+      {
+        "word": " masalah",
+        "start": 21.16,
+        "end": 21.44
+      },
+      {
+        "word": " yang",
+        "start": 21.44,
+        "end": 21.52
+      },
+      {
+        "word": " berbeda?",
+        "start": 21.52,
+        "end": 21.9
+      }
+    ]
+  },
+  {
+    "start": 23.040000000000003,
+    "end": 28.56,
+    "text": " Infeksi haplory atau penggunaan obat antiinflamasi tertentu dapat mengganggu pertahanan dinding lambung.",
+    "words": [
+      {
+        "word": " Infeksi",
+        "start": 23.040000000000003,
+        "end": 23.76
+      },
+      {
+        "word": " haplory",
+        "start": 23.76,
+        "end": 24.34
+      },
+      {
+        "word": " atau",
+        "start": 24.34,
+        "end": 24.74
+      },
+      {
+        "word": " penggunaan",
+        "start": 24.74,
+        "end": 25.22
+      },
+      {
+        "word": " obat",
+        "start": 25.22,
+        "end": 25.42
+      },
+      {
+        "word": " antiinflamasi",
+        "start": 25.42,
+        "end": 26.08
+      },
+      {
+        "word": " tertentu",
+        "start": 26.08,
+        "end": 26.64
+      },
+      {
+        "word": " dapat",
+        "start": 26.64,
+        "end": 27.02
+      },
+      {
+        "word": " mengganggu",
+        "start": 27.02,
+        "end": 27.58
+      },
+      {
+        "word": " pertahanan",
+        "start": 27.58,
+        "end": 28.04
+      },
+      {
+        "word": " dinding",
+        "start": 28.04,
+        "end": 28.18
+      },
+      {
+        "word": " lambung.",
+        "start": 28.18,
+        "end": 28.56
+      }
+    ]
+  },
+  {
+    "start": 28.56,
+    "end": 31.26,
+    "text": " Jika terbentuk luka, itulah tukak.",
+    "words": [
+      {
+        "word": " Jika",
+        "start": 28.56,
+        "end": 29.56
+      },
+      {
+        "word": " terbentuk",
+        "start": 29.56,
+        "end": 29.9
+      },
+      {
+        "word": " luka,",
+        "start": 29.9,
+        "end": 30.2
+      },
+      {
+        "word": " itulah",
+        "start": 30.6,
+        "end": 30.92
+      },
+      {
+        "word": " tukak.",
+        "start": 30.92,
+        "end": 31.26
+      }
+    ]
+  },
+  {
+    "start": 31.62,
+    "end": 34.28,
+    "text": " Pada sebagian orang, nyirinya terasa saat lambung kosong.",
+    "words": [
+      {
+        "word": " Pada",
+        "start": 31.62,
+        "end": 31.88
+      },
+      {
+        "word": " sebagian",
+        "start": 31.88,
+        "end": 32.24
+      },
+      {
+        "word": " orang,",
+        "start": 32.24,
+        "end": 32.44
+      },
+      {
+        "word": " nyirinya",
+        "start": 32.82,
+        "end": 33.14
+      },
+      {
+        "word": " terasa",
+        "start": 33.14,
+        "end": 33.46
+      },
+      {
+        "word": " saat",
+        "start": 33.46,
+        "end": 33.64
+      },
+      {
+        "word": " lambung",
+        "start": 33.64,
+        "end": 33.9
+      },
+      {
+        "word": " kosong.",
+        "start": 33.9,
+        "end": 34.28
+      }
+    ]
+  },
+  {
+    "start": 35.46,
+    "end": 37.44,
+    "text": " Obatnya pun bekerja dengan cara berbeda.",
+    "words": [
+      {
+        "word": " Obatnya",
+        "start": 35.46,
+        "end": 36.1
+      },
+      {
+        "word": " pun",
+        "start": 36.1,
+        "end": 36.26
+      },
+      {
+        "word": " bekerja",
+        "start": 36.26,
+        "end": 36.6
+      },
+      {
+        "word": " dengan",
+        "start": 36.6,
+        "end": 36.76
+      },
+      {
+        "word": " cara",
+        "start": 36.76,
+        "end": 36.94
+      },
+      {
+        "word": " berbeda.",
+        "start": 36.94,
+        "end": 37.44
+      }
+    ]
+  },
+  {
+    "start": 38.02,
+    "end": 40.12,
+    "text": " Antasida menetralkan asam yang sudah ada.",
+    "words": [
+      {
+        "word": " Antasida",
+        "start": 38.02,
+        "end": 38.62
+      },
+      {
+        "word": " menetralkan",
+        "start": 38.62,
+        "end": 39.34
+      },
+      {
+        "word": " asam",
+        "start": 39.34,
+        "end": 39.56
+      },
+      {
+        "word": " yang",
+        "start": 39.56,
+        "end": 39.66
+      },
+      {
+        "word": " sudah",
+        "start": 39.66,
+        "end": 39.82
+      },
+      {
+        "word": " ada.",
+        "start": 39.82,
+        "end": 40.12
+      }
+    ]
+  },
+  {
+    "start": 40.7,
+    "end": 43.76,
+    "text": " Obat penghambat pompa proton mengurangi asam yang diproduksi.",
+    "words": [
+      {
+        "word": " Obat",
+        "start": 40.7,
+        "end": 41.0
+      },
+      {
+        "word": " penghambat",
+        "start": 41.0,
+        "end": 41.44
+      },
+      {
+        "word": " pompa",
+        "start": 41.44,
+        "end": 41.76
+      },
+      {
+        "word": " proton",
+        "start": 41.76,
+        "end": 42.14
+      },
+      {
+        "word": " mengurangi",
+        "start": 42.14,
+        "end": 42.84
+      },
+      {
+        "word": " asam",
+        "start": 42.84,
+        "end": 43.22
+      },
+      {
+        "word": " yang",
+        "start": 43.22,
+        "end": 43.32
+      },
+      {
+        "word": " diproduksi.",
+        "start": 43.32,
+        "end": 43.76
+      }
+    ]
+  },
+  {
+    "start": 44.5,
+    "end": 48.4,
+    "text": " Kalau penyebabnya HP lori, pengobatannya perlu menangani bakterinya juga.",
+    "words": [
+      {
+        "word": " Kalau",
+        "start": 44.5,
+        "end": 44.76
+      },
+      {
+        "word": " penyebabnya",
+        "start": 44.76,
+        "end": 45.28
+      },
+      {
+        "word": " HP",
+        "start": 45.28,
+        "end": 45.46
+      },
+      {
+        "word": " lori,",
+        "start": 45.46,
+        "end": 45.76
+      },
+      {
+        "word": " pengobatannya",
+        "start": 46.3,
+        "end": 46.88
+      },
+      {
+        "word": " perlu",
+        "start": 46.88,
+        "end": 47.22
+      },
+      {
+        "word": " menangani",
+        "start": 47.22,
+        "end": 47.7
+      },
+      {
+        "word": " bakterinya",
+        "start": 47.7,
+        "end": 48.12
+      },
+      {
+        "word": " juga.",
+        "start": 48.12,
+        "end": 48.4
+      }
+    ]
+  },
+  {
+    "start": 49.48,
+    "end": 54.06,
+    "text": " Jadi, keluhan yang sering kita sebut mah, tidak selalu punya penyebab atau obat yang sama.",
+    "words": [
+      {
+        "word": " Jadi,",
+        "start": 49.48,
+        "end": 50.12
+      },
+      {
+        "word": " keluhan",
+        "start": 50.56,
+        "end": 50.84
+      },
+      {
+        "word": " yang",
+        "start": 50.84,
+        "end": 50.96
+      },
+      {
+        "word": " sering",
+        "start": 50.96,
+        "end": 51.16
+      },
+      {
+        "word": " kita",
+        "start": 51.16,
+        "end": 51.32
+      },
+      {
+        "word": " sebut",
+        "start": 51.32,
+        "end": 51.56
+      },
+      {
+        "word": " mah,",
+        "start": 51.56,
+        "end": 51.86
+      },
+      {
+        "word": " tidak",
+        "start": 52.12,
+        "end": 52.28
+      },
+      {
+        "word": " selalu",
+        "start": 52.28,
+        "end": 52.62
+      },
+      {
+        "word": " punya",
+        "start": 52.62,
+        "end": 52.84
+      },
+      {
+        "word": " penyebab",
+        "start": 52.84,
+        "end": 53.22
+      },
+      {
+        "word": " atau",
+        "start": 53.22,
+        "end": 53.48
+      },
+      {
+        "word": " obat",
+        "start": 53.48,
+        "end": 53.72
+      },
+      {
+        "word": " yang",
+        "start": 53.72,
+        "end": 53.82
+      },
+      {
+        "word": " sama.",
+        "start": 53.82,
+        "end": 54.06
+      }
+    ]
+  },
+  {
+    "start": 54.06,
+    "end": 60.46,
+    "text": " Kalau perinya berulang, makin berat atau disertai muntah darah maupun tinjah hitam, periksakan diri.",
+    "words": [
+      {
+        "word": " Kalau",
+        "start": 54.06,
+        "end": 55.0
+      },
+      {
+        "word": " perinya",
+        "start": 55.0,
+        "end": 55.28
+      },
+      {
+        "word": " berulang,",
+        "start": 55.28,
+        "end": 55.88
+      },
+      {
+        "word": " makin",
+        "start": 56.2,
+        "end": 56.44
+      },
+      {
+        "word": " berat",
+        "start": 56.44,
+        "end": 56.8
+      },
+      {
+        "word": " atau",
+        "start": 56.8,
+        "end": 57.0
+      },
+      {
+        "word": " disertai",
+        "start": 57.0,
+        "end": 57.36
+      },
+      {
+        "word": " muntah",
+        "start": 57.36,
+        "end": 57.66
+      },
+      {
+        "word": " darah",
+        "start": 57.66,
+        "end": 57.94
+      },
+      {
+        "word": " maupun",
+        "start": 57.94,
+        "end": 58.14
+      },
+      {
+        "word": " tinjah",
+        "start": 58.14,
+        "end": 58.44
+      },
+      {
+        "word": " hitam,",
+        "start": 58.44,
+        "end": 58.76
+      },
+      {
+        "word": " periksakan",
+        "start": 59.06,
+        "end": 59.42
+      },
+      {
+        "word": " diri.",
+        "start": 59.42,
+        "end": 60.46
+      }
+    ]
+  },
+  {
+    "start": 60.48,
+    "end": 62.06,
+    "text": " Mau memahami mekanisme tubuh lebih jauh?",
+    "words": [
+      {
+        "word": " Mau",
+        "start": 60.48,
+        "end": 60.8
+      },
+      {
+        "word": " memahami",
+        "start": 60.8,
+        "end": 61.14
+      },
+      {
+        "word": " mekanisme",
+        "start": 61.14,
+        "end": 61.54
+      },
+      {
+        "word": " tubuh",
+        "start": 61.54,
+        "end": 61.8
+      },
+      {
+        "word": " lebih",
+        "start": 61.8,
+        "end": 61.92
+      },
+      {
+        "word": " jauh?",
+        "start": 61.92,
+        "end": 62.25
+      }
+    ]
+  },
+  {
+    "start": 62.7,
+    "end": 67.6,
+    "text": " Di MedCool, kamu bisa belajar materi perbap, latihan soal, dan mencoba simulasi dokter.",
+    "words": [
+      {
+        "word": " Di",
+        "start": 62.7,
+        "end": 62.88
+      },
+      {
+        "word": " MedCool,",
+        "start": 62.88,
+        "end": 63.26
+      },
+      {
+        "word": " kamu",
+        "start": 63.56,
+        "end": 63.64
+      },
+      {
+        "word": " bisa",
+        "start": 63.64,
+        "end": 63.84
+      },
+      {
+        "word": " belajar",
+        "start": 63.84,
+        "end": 64.18
+      },
+      {
+        "word": " materi",
+        "start": 64.18,
+        "end": 64.56
+      },
+      {
+        "word": " perbap,",
+        "start": 64.56,
+        "end": 64.96
+      },
+      {
+        "word": " latihan",
+        "start": 65.2,
+        "end": 65.54
+      },
+      {
+        "word": " soal,",
+        "start": 65.54,
+        "end": 66.04
+      },
+      {
+        "word": " dan",
+        "start": 66.36,
+        "end": 66.38
+      },
+      {
+        "word": " mencoba",
+        "start": 66.38,
+        "end": 66.78
+      },
+      {
+        "word": " simulasi",
+        "start": 66.78,
+        "end": 67.18
+      },
+      {
+        "word": " dokter.",
+        "start": 67.18,
+        "end": 67.6
+      }
+    ]
+  },
+  {
+    "start": 68.0,
+    "end": 69.96,
+    "text": " Belajar FK gratis di medcool.com",
+    "words": [
+      {
+        "word": " Belajar",
+        "start": 68.0,
+        "end": 68.38
+      },
+      {
+        "word": " FK",
+        "start": 68.38,
+        "end": 68.64
+      },
+      {
+        "word": " gratis",
+        "start": 68.64,
+        "end": 69.08
+      },
+      {
+        "word": " di",
+        "start": 69.08,
+        "end": 69.24
+      },
+      {
+        "word": " medcool",
+        "start": 69.24,
+        "end": 69.58
+      },
+      {
+        "word": ".com",
+        "start": 69.58,
+        "end": 69.96
+      }
+    ]
+  }
+]
