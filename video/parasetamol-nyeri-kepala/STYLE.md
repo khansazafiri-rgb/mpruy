@@ -10,4 +10,4 @@
 - Hati: kuadran kanan atas tubuh (kiri layar pada tampak depan), di bawah iga, proporsional terhadap torso. Tidak ada perubahan menjadi rusak setelah dosis biasa.
 - Outro 20 detik: 6,5 detik materi, 6,5 detik soal/pembahasan, 7 detik simulasi. Kecepatan sumber 1×. CTA menumpang 3,5 detik terakhir. Web 1000 px / 92,6% lebar video. Jangan menampilkan angka akun sebagai klaim; beri keterangan data uji lokal.
 
-Animasi edukasi belum dibuat karena audio yang diterima membahas retensi urin. Waktu per kalimat dan shot wajib diisi dari narasi parasetamol yang benar sebelum render edukasi.
+Narasi patokan: Generated Audio November 18, 2026 - 1_50PM.wav (72,68 detik). Lihat sentence-timing.json untuk waktu setiap kalimat. Total 79,067 detik; outro mulai 59,067 detik dan berlangsung 20 detik. Tiga bagian web: 7,067 s, 6,5 s, 6,433 s. CTA 3,5 detik terakhir. Jeda hening ditambahkan di antara frasa promosi; laju ucapan selalu 1×.

@@ -31,12 +31,21 @@
       "gitBlobSha": "89f21635b2b9a26e7cde9c51494b418ff7a7850a"
     }
   ],
-  "audioUsed": [],
-  "audioReceived": {
-    "filename": "Generated Audio November 18, 2026 - 1_29PM.wav",
-    "duration": 42.64,
-    "topic": "Retensi urin; tidak dipakai untuk video parasetamol"
-  },
+  "audioUsed": [
+    {
+      "path": "audio/narasi-google-ai-studio.wav",
+      "source": "Generated Audio November 18, 2026 - 1_50PM.wav, diberikan langsung oleh pengguna",
+      "origin": "Google AI Studio",
+      "durationSeconds": 72.68,
+      "sha256": "9abde07e595dd5d23f327aec8cf5d6aaa74575d2bcad261bc439bae1e429f448"
+    },
+    {
+      "path": "audio/narasi-timeline.wav",
+      "derivedFrom": "audio/narasi-google-ai-studio.wav",
+      "durationSeconds": 79.06666666666666,
+      "operations": "Hanya tambahan hening; seluruh PCM asli dipertahankan 1×. Lihat audio-edits.json."
+    }
+  ],
   "referenceOnly": [
     "brand/video/ad/out/medcoel-iklan-75s-v2-FINAL.mp4"
   ],
@@ -45,5 +54,14 @@
     "https://www.nhs.uk/medicines/paracetamol-for-adults/",
     "https://www.nice.org.uk/guidance/cg150/evidence/full-guideline-pdf-188258224"
   ],
-  "rights": "Aset MEDCOEL milik repo pengguna, dipakai atas permintaan pengguna. Tidak ada aset pihak ketiga atau musik tambahan."
+  "rights": "Aset MEDCOEL milik repo pengguna, dipakai atas permintaan pengguna. Tidak ada aset pihak ketiga atau musik tambahan.",
+  "generatedAssets": [
+    "render.mjs: panggung vektor, diagram, teks dan animasi",
+    "room-map.svg: peta ruang",
+    "out/medcoel-parasetamol-cover.png: Raka kanonik dan lapisan teks"
+  ],
+  "fonts": {
+    "family": "Arial / Arial Bold",
+    "source": "Font sistem yang sudah tersedia; tidak dibundel ulang"
+  }
 }

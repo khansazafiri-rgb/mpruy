@@ -1,20 +1,29 @@
-# Pemeriksaan draf
+# Pemeriksaan akhir — 18 November 2026
 
-Status belum final, 18 November 2026.
+**Hasil: render final 79,067 detik, 1080 × 1920, 30 fps, 2.372 frame.** H.264 progressive dan AAC mono 48 kHz. File didekode sampai akhir tanpa error. Cover 1080 × 1920; SRT/VTT 32 cue, maksimal dua baris, huruf besar dan kontras.
 
-## Pemeriksaan yang sudah dilakukan
+## LOOP
 
-- Kedua rekaman dan logo dibandingkan lewat Git blob SHA dengan cabang default repo pada commit `eac0862c4021b8bda25505b448c4151845ffff8d`; semuanya cocok.
-- Panduan outro, manifest aset, README Raka, struktur video terdahulu, serta referensi visual iklan telah diperiksa. Tidak mengambil audio iklan.
-- Audio lampiran diperiksa durasinya (42,64 s, mono, PCM 24 kHz) dan ditranskripsi lokal. Isi membahas kandung kemih/retensi urin. Hasil ASR memiliki kesalahan ejaan nama merek, sehingga bukan naskah final untuk ditayangkan.
-- Render outro terdekode penuh tanpa error: H.264, 1080×1920, progressive, 30 fps, 20,00 s, tanpa stream audio.
-- Awal, tengah, dan akhir masing-masing shot diekspor sebagai `out/qa-*.png` dan diperiksa bersama lembar 360×640. Satu masalah cover (SVG terpotong) diperbaiki dengan dimensi viewport SVG eksplisit; cover diperiksa ulang.
-- Outro diputar dari awal hingga indikator selesai pada pratinjau video 360×640. Pilihan bab, jawaban salah dan pembahasan, serta pertanyaan anamnesis terlihat. URL/CTA berada di bawah rekaman web; teks utama tidak menutup tindakan.
-- Tidak ada percepatan sumber, audio sumber, flash transition, klaim jumlah soal/kemajuan akun, dosis angka, atau visual anatomi dalam draf outro.
+1. Periksa sumber: README/manifest outro, Raka kanonik, kedua rekaman web dan logo, referensi identitas visual iklan. Hash Git blob rekaman/logo cocok dengan repo sumber. Audio yang benar adalah `Generated Audio November 18, 2026 - 1_50PM.wav`, 72,68 detik, mencakup edukasi dan promosi. Waktu kalimat/frasa ada di `sentence-timing.json` sebelum animasi dibuat.
+2. Pemeriksaan frame sebelum render penuh: awal/tengah/akhir seluruh 14 shot. Perbaikan: kalender tidak menutupi wajah; bagian tubuh di bawah meja dicrop untuk medium shot; viewport SVG Raka eksplisit agar kepala tidak terpotong; perpindahan ke web dibetulkan pada frame batas shot. Palet, pakaian, sisi benda, dan anatomi memakai desain yang sama.
+3. Putaran 1: render penuh dengan narasi, didekode dan diputar dari awal sampai indikator selesai pada browser. Pemeriksaan ulang memilih batas jeda promosi yang lebih tenang (67,90 s pada sumber) agar jeda berada di antara frasa.
+4. Putaran 2: mux ulang dengan batas jeda tersebut, tanpa mengubah picture maupun kata. Video diputar penuh dengan audio tidak dimute sampai indikator selesai. Outro diputar terpisah dari 59,067 s hingga akhir pada video 360 × 640. Tidak ada revisi picture sesudah pemeriksaan ini.
 
-## Belum dapat dinilai
+## Waktu dan keterbacaan
 
-- Sinkronisasi dengan narasi parasetamol, waktu istilah SSP/prostaglandin/hati, takarir final, dan keseluruhan video edukasi dengan audio: **menunggu audio dan naskah yang benar**.
-- Narasi promosi yang tepat belum ditemukan sebagai berkas terpisah pada paket `brand/video/outro`. Paket tersebut menunjuk footage dan contoh naskah, bukan menyediakan audio final.
-- Durasi total belum dikunci. Tidak menahan gambar kosong atau memperlambat suara untuk mengejar target 75–90 detik.
-- Draf ini tidak boleh dianggap memenuhi pemeriksaan video edukasi final yang ditonton penuh dengan audio. PR tetap draft.
+- Edukasi 59,067 s. Outro tepat 20 s: materi 7,067 s, soal/pembahasan 6,5 s, simulasi 6,433 s; CTA menumpang 3,5 s terakhir.
+- Rekaman web asli memenuhi 1.000 px / 92,6% lebar video. Satu tindakan membuka bab terlihat. Jawaban salah dan pembahasan ditampilkan; pembahasan terlihat sekitar empat detik. Simulasi memperlihatkan pilihan keluhan utama dan tindakan memilih pertanyaan anamnesis. Semua pada 1×.
+- Tidak ada UI buatan, halaman desktop kecil dalam gambar laptop, flash transition, atau angka kemajuan/jumlah soal yang dipromosikan. Keterangan data uji lokal tampil pada rekaman.
+- Teks diagram dan takarir terpisah. Label SSP 11,40 s, mekanisme kompleks 12,90 s, prostaglandin 17,88 s, kalender mulai bertambah pada “sering” 34,76 s, label hati 46,54 s.
+- Sinyal bergerak kiri ke kanan; titik awal ada di area kepala, bukan klaim jaringan otak terasa sakit. Parasetamol berupa simbol diagram. Tidak ada visual penyembuhan penyebab nyeri. Hati normal, proporsional, pada kanan anatomis/kiri layar; tidak rusak mendadak setelah dosis biasa.
+- Pemakaian sesekali ditampilkan sebagai satu hari; frekuensi berulang bertambah perlahan. Risiko penggunaan sering dan dosis berlebihan memakai shot terpisah. Tidak ada angka dosis.
+
+## Audit audio
+
+Semua sampel PCM ucapan sumber dipertahankan berurutan dan identik. Tidak ada time stretch, penggantian suara, EQ, pitch shift, fade pada ucapan, musik, SFX, atau audio dari rekaman web/iklan. Hanya tambahan hening pada 67,90 s (4,833 s), 70,00 s (0,600 s), dan ekor 0,953 s. RMS sekitar batas jeda: −60,4 dan −66,9 dBFS; puncak narasi sumber sekitar −0,6 dBFS. AAC adalah kompresi distribusi pada MP4; WAV sumber dan master timeline disertakan.
+
+Takarir mengikuti ucapan. Kesalahan pengenal suara pada nama obat, “saraf”, “nyeri”, “per bab”, dan MEDCOEL dinormalkan ejaannya; transkrip ASR mentah tidak dipakai sebagai teks layar.
+
+## Cakupan
+
+Pemeriksaan ini mencakup produksi dan kecocokan isi dengan brief. Sumber farmakologi yang diperiksa dicatat pada `SOURCES.json` dan `SUMBER-ASET-DAN-AUDIO.md`. Tidak menambahkan diagnosis spesifik, dosis produk, atau klaim baru di luar naskah.

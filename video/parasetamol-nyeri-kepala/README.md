@@ -1,30 +1,42 @@
-# Parasetamol untuk nyeri kepala — proyek MEDCOEL
+# MEDCOEL — Farmakodinamik parasetamol untuk nyeri kepala
 
-**Status: draf visual; video edukasi final belum dibuat.** Audio lampiran berdurasi 42,64 detik, tetapi membahas kandung kemih dan retensi urin. Audio ini tidak cocok dengan brief parasetamol dan tidak dipasang ke render. Naskah final parasetamol juga belum tersedia dalam bentuk teks.
+Video vertikal 1080 × 1920, 30 fps, 79,067 detik. Proyek animasi 2D berbasis kode, dapat diedit dan dirender ulang. Karakter Raka dirender langsung dari `brand/characters/raka/raka.js`; seluruh tulisan edukasi dan takarir dibuat sebagai teks pada panggung render, bukan digambar ke aset karakter.
 
-## Yang tersedia
+## Hasil
 
-- `out/outro-20s-DRAF-tanpa-narasi.mp4`: 1080×1920, 30 fps, 20 detik, sengaja tanpa audio. Tiga rekaman web asli, tanpa percepatan: materi 6,5 s, soal/pembahasan 6,5 s, simulasi 7 s. Logo/URL menumpang 3,5 s terakhir.
-- `out/cover-DRAF.png`: cover vertikal, karakter Raka dirender dari kode kanonik.
-- `render-outro.mjs`, `timeline.json`, `STYLE.md`: proyek animasi parametrik yang dapat diedit dan dirender ulang.
-- `out/qa-*.png`: awal, tengah, akhir masing-masing shot. `QA.md` mencatat batas pemeriksaan.
-- `SOURCES.json`: asal aset dan checksum blob GitHub.
+- `out/MEDCOEL-parasetamol-FINAL.mp4`: H.264 + AAC, takarir tertanam.
+- `out/medcoel-parasetamol-cover.png`: cover vertikal 1080 × 1920.
+- `out/medcoel-parasetamol.srt` dan `.vtt`: takarir terpisah, bahasa Indonesia, maksimal dua baris.
+- `audio/narasi-google-ai-studio.wav`: audio final asli yang diberikan pengguna, 72,68 detik.
+- `audio/narasi-timeline.wav`: narasi yang digunakan pada MP4, dengan tambahan jeda hening di outro.
+- `out/lembar-shot-1.jpg` sampai `lembar-shot-4.jpg`: awal, tengah, akhir semua 14 shot.
+- `QA.md`, `SOURCES.json`, `audio-edits.json`: catatan pemeriksaan, sumber aset, dan edit audio.
 
 ## Render ulang
 
-Node 22+, FFmpeg dengan encoder libx264, dan `npm install`. Jalankan `npm run render:outro`. Bila FFmpeg di luar PATH: `FFMPEG=/path/to/ffmpeg npm run render:outro`. `npm run cover` membuat cover saja. Cache JPEG di `.cache/` boleh dihapus setelah encode.
+Kebutuhan: Node 22+, Python 3, FFmpeg dengan libx264, dan dependensi Node dari `package.json`. Tidak memerlukan layanan AI atau API berbayar untuk merender ulang.
 
-Untuk menonton pada ukuran ponsel: `python3 -m http.server 8765`, lalu buka `http://localhost:8765/preview.html`. Skrip ini tidak merekam web ulang dan tidak mengubah aset video lama.
+```sh
+npm install
+npm run render
+```
 
-## Masukan yang masih diperlukan
+Jika FFmpeg di luar PATH: `FFMPEG=/path/to/ffmpeg npm run render`. `npm run stills` merender frame pemeriksaan; `npm run cover` merender cover saja. Untuk lembar kontak: pasang Pillow pada Python, lalu jalankan `python3 make-contact-sheets.py` setelah stills dibuat.
 
-1. Audio final Google AI Studio **tentang parasetamol untuk nyeri kepala**, termasuk narasi outro bila harus bersuara.
-2. Naskah final yang sama persis dengan ucapan. Panduan shot pada brief bukan naskah narasi utuh.
+`npm run preview` membuka server lokal. Buka `http://localhost:8765/preview.html`, lalu putar penuh atau putar outro pada ukuran 360 × 640.
 
-Setelah masukan benar tersedia: ukur setiap kalimat dan istilah, isi `education.shots`, buat animasi dan takarir, gabungkan outro pada awal narasi promosi, render penuh, lalu lakukan LOOP hingga maksimal tiga putaran. Jangan menandai PR siap ditinjau atau hasil final sebelum pemeriksaan video lengkap dengan audio selesai.
+## Mengedit
 
-Rekomendasi outro 8–12 detik di panduan repo diganti oleh instruksi pengguna yang meminta 18–22 detik. Proyek ini memakai 20 detik dengan CTA tumpang tindih, sehingga total outro tidak menjadi 24 detik.
+- `render.mjs`: visual tiap shot, lapisan teks, diagram anatomi, kamera, pose Raka, crop dan komposisi web. Karakter memakai satu sweater dan proporsi kanonik; tidak digambar ulang.
+- `prepare.py`: sumber linimasa, teks naskah/takarir, dan keputusan jeda audio. Edit berkas ini untuk perubahan permanen, kemudian jalankan `npm run render`. Berkas JSON keluaran dibuat ulang oleh langkah prepare.
+- `timeline.json`: waktu 14 shot dan penanda istilah. `sentence-timing.json`: waktu asli dan waktu pada video untuk setiap kalimat/frasa. `captions.json`: lapisan teks takarir; `naskah-final.txt`: transkripsi narasi dengan ejaan istilah dan merek dinormalkan.
+- `STYLE.md` dan `room-map.svg`: palet, font, ruang, karakter, anatomi, dan area aman yang dikunci sebelum shot dibuat.
+- `assets/`: rekaman web asli dan logo, tanpa filter pixel. Rekaman tidak dipercepat dan suaranya tidak dipakai.
 
-## Audio yang dipakai
+## Penyesuaian durasi
 
-Tidak ada audio dalam draf outro ini. Tidak memakai suara rekaman web, iklan lama, narasi lain, musik, atau TTS pengganti.
+Edukasi 0–59,067 detik; outro 59,067–79,067 detik. Materi 7,067 detik, soal/pembahasan 6,5 detik, Simulasi Dokter 6,433 detik. CTA menumpang 3,5 detik terakhir. Halaman pembahasan terlihat sekitar empat detik.
+
+Audio asli tidak diubah laju, nada, atau volumenya. Ditambahkan jeda 4,833 detik pada waktu sumber 67,90 detik dan 0,60 detik pada 70,00 detik, serta hening akhir 0,953 detik. Semua sampel PCM sumber dipertahankan berurutan dan identik. Jeda berada di antara frasa; tidak ada kata diulang atau diganti. Audio sumber yang keliru pada draf awal tidak digunakan dan tidak disertakan.
+
+Tidak ada musik, SFX, audio rekaman web, atau audio iklan lama. Sumber audio tunggal: file Google AI Studio yang diberikan pengguna pada 18 November 2026, pukul 13.50.

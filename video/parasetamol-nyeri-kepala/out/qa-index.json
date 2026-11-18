@@ -1,0 +1,254 @@
+[
+  {
+    "id": "pembuka",
+    "tag": "awal",
+    "f": 0,
+    "time": 0
+  },
+  {
+    "id": "pembuka",
+    "tag": "tengah",
+    "f": 100,
+    "time": 3.3333333333333335
+  },
+  {
+    "id": "pembuka",
+    "tag": "akhir",
+    "f": 199,
+    "time": 6.633333333333334
+  },
+  {
+    "id": "sinyal",
+    "tag": "awal",
+    "f": 200,
+    "time": 6.666666666666667
+  },
+  {
+    "id": "sinyal",
+    "tag": "tengah",
+    "f": 255,
+    "time": 8.5
+  },
+  {
+    "id": "sinyal",
+    "tag": "akhir",
+    "f": 310,
+    "time": 10.333333333333334
+  },
+  {
+    "id": "ssp",
+    "tag": "awal",
+    "f": 311,
+    "time": 10.366666666666667
+  },
+  {
+    "id": "ssp",
+    "tag": "tengah",
+    "f": 377,
+    "time": 12.566666666666666
+  },
+  {
+    "id": "ssp",
+    "tag": "akhir",
+    "f": 443,
+    "time": 14.766666666666667
+  },
+  {
+    "id": "prostaglandin",
+    "tag": "awal",
+    "f": 444,
+    "time": 14.8
+  },
+  {
+    "id": "prostaglandin",
+    "tag": "tengah",
+    "f": 547,
+    "time": 18.233333333333334
+  },
+  {
+    "id": "prostaglandin",
+    "tag": "akhir",
+    "f": 650,
+    "time": 21.666666666666668
+  },
+  {
+    "id": "gejala",
+    "tag": "awal",
+    "f": 651,
+    "time": 21.7
+  },
+  {
+    "id": "gejala",
+    "tag": "tengah",
+    "f": 742,
+    "time": 24.733333333333334
+  },
+  {
+    "id": "gejala",
+    "tag": "akhir",
+    "f": 833,
+    "time": 27.766666666666666
+  },
+  {
+    "id": "sesekali",
+    "tag": "awal",
+    "f": 834,
+    "time": 27.8
+  },
+  {
+    "id": "sesekali",
+    "tag": "tengah",
+    "f": 916,
+    "time": 30.533333333333335
+  },
+  {
+    "id": "sesekali",
+    "tag": "akhir",
+    "f": 997,
+    "time": 33.233333333333334
+  },
+  {
+    "id": "sering",
+    "tag": "awal",
+    "f": 998,
+    "time": 33.266666666666666
+  },
+  {
+    "id": "sering",
+    "tag": "tengah",
+    "f": 1070,
+    "time": 35.666666666666664
+  },
+  {
+    "id": "sering",
+    "tag": "akhir",
+    "f": 1141,
+    "time": 38.03333333333333
+  },
+  {
+    "id": "berlebihan",
+    "tag": "awal",
+    "f": 1142,
+    "time": 38.06666666666667
+  },
+  {
+    "id": "berlebihan",
+    "tag": "tengah",
+    "f": 1236,
+    "time": 41.2
+  },
+  {
+    "id": "berlebihan",
+    "tag": "akhir",
+    "f": 1330,
+    "time": 44.333333333333336
+  },
+  {
+    "id": "hati",
+    "tag": "awal",
+    "f": 1331,
+    "time": 44.36666666666667
+  },
+  {
+    "id": "hati",
+    "tag": "tengah",
+    "f": 1379,
+    "time": 45.96666666666667
+  },
+  {
+    "id": "hati",
+    "tag": "akhir",
+    "f": 1426,
+    "time": 47.53333333333333
+  },
+  {
+    "id": "kandungan",
+    "tag": "awal",
+    "f": 1427,
+    "time": 47.56666666666667
+  },
+  {
+    "id": "kandungan",
+    "tag": "tengah",
+    "f": 1497,
+    "time": 49.9
+  },
+  {
+    "id": "kandungan",
+    "tag": "akhir",
+    "f": 1567,
+    "time": 52.233333333333334
+  },
+  {
+    "id": "bantuan",
+    "tag": "awal",
+    "f": 1568,
+    "time": 52.266666666666666
+  },
+  {
+    "id": "bantuan",
+    "tag": "tengah",
+    "f": 1670,
+    "time": 55.666666666666664
+  },
+  {
+    "id": "bantuan",
+    "tag": "akhir",
+    "f": 1771,
+    "time": 59.03333333333333
+  },
+  {
+    "id": "materi",
+    "tag": "awal",
+    "f": 1772,
+    "time": 59.06666666666667
+  },
+  {
+    "id": "materi",
+    "tag": "tengah",
+    "f": 1878,
+    "time": 62.6
+  },
+  {
+    "id": "materi",
+    "tag": "akhir",
+    "f": 1983,
+    "time": 66.1
+  },
+  {
+    "id": "soal",
+    "tag": "awal",
+    "f": 1984,
+    "time": 66.13333333333334
+  },
+  {
+    "id": "soal",
+    "tag": "tengah",
+    "f": 2081,
+    "time": 69.36666666666666
+  },
+  {
+    "id": "soal",
+    "tag": "akhir",
+    "f": 2178,
+    "time": 72.6
+  },
+  {
+    "id": "simulasi",
+    "tag": "awal",
+    "f": 2179,
+    "time": 72.63333333333334
+  },
+  {
+    "id": "simulasi",
+    "tag": "tengah",
+    "f": 2275,
+    "time": 75.83333333333333
+  },
+  {
+    "id": "simulasi",
+    "tag": "akhir",
+    "f": 2371,
+    "time": 79.03333333333333
+  }
+]
