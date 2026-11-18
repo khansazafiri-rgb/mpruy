@@ -6,10 +6,8 @@ import { raka, rakaSvg, lerpState, PALETTE_ON_DARK } from '/brand/characters/rak
 import * as A from './art.js';
 const $ = (id) => document.getElementById(id);
 await document.fonts.load('800 40px "Plus Jakarta Sans"'); await document.fonts.load('700 30px "Plus Jakarta Sans"'); await document.fonts.load('400 24px "Press Start 2P"'); await document.fonts.ready;
-export const CUE = {
-  dur: 44.8,
-  s1: [0, 5.0], s2: [5.0, 9.0], s3: [9.0, 17.0], s4: [17.0, 24.0], s5: [24.0, 32.0], s6: [32.0, 35.4], web: [35.4, 41.2], end: [41.2, 44.8],
-};
+const C = await (await fetch('../cues.json')).json();
+export const CUE = { dur: C.dur, ...C.cue };
 export const DUR = CUE.dur;
 const FONT = "'Plus Jakarta Sans', system-ui, sans-serif";
 const K = { navy: '#0B1F3A', navy2: '#102A4C', cream: '#FFF3DC', cyan: '#5CE1E6', red: '#E63946', gold: '#F8C038', white: '#FFFFFF', ink: '#07142B' };
@@ -49,28 +47,32 @@ async function drawWorld(svgInner, res, bgHex = K.navy) {
 // ------------------------------------------------------------------ Raka (kanonik) di dunia piksel
 const dark = (svg) => svg.replaceAll('#9A5F78', '#5B2F63');
 // lingkaran gelap di bawah mata (dibuat besar agar terbaca): elips di bawah kelopak, koordinat kepala -> koordinat badan (NECK_Y 362, skala 1,2, pivot 306)
-const circles = (k = 1) => [160, 240].map((x) => `<ellipse cx="${x}" cy="${212 + 28}" rx="29" ry="${f1(15.5 * k)}" fill="#5B2F63"/>`).join('');
+const circles = (k = 1, kx = 1) => [160, 240].map((x) => `<ellipse cx="${x}" cy="${212 + 26 + 2 * k}" rx="${f1(29 * kx)}" ry="${f1(15.5 * k)}" fill="#5B2F63"/>`).join('');
 function rk(state, o = {}) { const k = o.k ?? 2.7, tx = o.tx ?? 540 - 200 * k, ty = o.ty ?? 18;
   const svg = dark(rakaSvg(state, { bare: true, uid: o.uid ?? 'rk', palette: PALETTE_ON_DARK, shadow: false, ...(o.opts || {}) }));
   const m = svg.indexOf('<g class="raka-head"'), cut = svg.indexOf('<ellipse', m);   // elips pertama di kepala = telinga/mata; sisipkan lingkaran gelap sebelum wajah digambar penuh
-  const withC = o.circles === false ? svg : svg.replace(/(<path d="M200 92C270 92[^>]*\/>)/, `$1${circles(o.cs ?? 1)}`);
+  const withC = o.circles === false ? svg : svg.replace(/(<path d="M200 92C270 92[^>]*\/>)/, `$1${circles(o.cs ?? 1, o.csx ?? o.cs ?? 1)}`);
   void cut;
   return `<g transform="translate(${f1(tx)} ${f1(ty)}) scale(${k})">${withC}</g>`; }
 const blinkAtT = (t, times) => { for (const b of times) if (t > b && t < b + 0.2) return Math.sin(((t - b) / 0.2) * Math.PI); return 0; };
 // ------------------------------------------------------------------ S1 dan S5: wajah dari depan (ukuran sama)
 function faceState(t, o = {}) {
-  const p = clamp((t - (o.pt ?? 1.8)) / 0.7), tap = o.tap ? 0.5 + 0.5 * Math.sin((t - (o.pt ?? 1.8) - 0.7) * 7) : 0;
+  const p = clamp((t - (o.pt ?? 1.8)) / 0.7), tap = (o.taps || []).reduce((m, tt) => Math.max(m, Math.exp(-(((t - tt) / 0.09) ** 2))), 0);
   const base = raka(o.expr ?? 'netral', 'netral', { bags: 1, blink: blinkAtT(t, o.blinks ?? [1.0, 3.6]), gazeY: 0.15, breath: Math.sin(t * 2.2) * 0.5 + 0.5, ...(o.over || {}) });
   const down = { wx: 314, wy: 556, ex: 312, ey: 488, finger: 0, fa: -90, front: 0, roll: 0 };
-  const point = { wx: 276 + 1 * tap, wy: 336 - 3 * tap, ex: 352, ey: 452, finger: 0.7, fa: -112, front: 1, roll: 0 };
+  const point = { wx: 276 + 2 * tap, wy: 336 - 10 * tap, ex: 352, ey: 452, finger: 0.7, fa: -112, front: 1, roll: 0 };
   const st = { ...base }; const e = sm(p);
+  if (o.burst != null) st.fxBurst = win(t, o.burst, o.burst + 0.7, 0.08);
   st.armR = Object.fromEntries(Object.keys(down).map((k2) => [k2, typeof down[k2] === 'number' ? lerp(down[k2], point[k2], e) : down[k2]]));
   return st;
 }
 function shotFace(t, o = {}) {
-  const z = 1 + 0.06 * clamp((t - (o.t0 ?? 0)) / 5), cx = o.cx ?? 540, cy = 690;
-  const st = faceState(t, o);
-  return `<g transform="translate(${cx} ${cy}) scale(${z}) translate(${-cx} ${-cy})">${rk(st, { tx: cx - 200 * 2.7 })}</g>`;
+  const hook = o.hook, cx = o.cx ?? 540, cy = 690;
+  const z = 1 + 0.06 * clamp(t / 5) + (hook ? 0.2 * (1 - sm(t / 0.5)) : 0);
+  const shk = hook ? (1 - clamp(t / 0.4)) * Math.round(Math.sin(t * 90) * 12) : 0;
+  const pop = hook ? 1 + 0.22 * Math.sin(clamp((t - 0.1) / 0.45) * Math.PI) : 1;
+  const st = faceState(t, { ...o, taps: hook ? C.ev.taps : [], burst: hook ? C.ev.burst : null });
+  return `<g transform="translate(${shk} 0)"><g transform="translate(${cx} ${cy}) scale(${f1(z)}) translate(${-cx} ${-cy})">${rk(st, { tx: cx - 200 * 2.7, cs: pop, csx: Math.min(1.2, pop) })}</g></g>`;
 }
 
 // ------------------------------------------------------------------ label UI tajam (kotak gelap + teks krem)
@@ -79,29 +81,35 @@ function tag(x, y, txt, o = {}) {
   return `<g opacity="${f1(a)}">${R(x - w / 2, y - h / 2, w, h, 'rgba(7,20,43,.92)', 0, `stroke="${o.c ?? K.cyan}" stroke-width="4"`)}${T(x, y + fs * 0.36, txt, o.fg ?? K.cream, fs, 800)}</g>`;
 }
 const pillTop = (txt, a) => (a > 0.01 ? `<g opacity="${f1(a)}">${R(540 - (txt.length * 12.6 + 60) / 2, 270, txt.length * 12.6 + 60, 52, K.gold, 0)}${T(540, 306, txt, K.ink, 24, 800)}</g>` : '');
-// ------------------------------------------------------------------ S2: over-the-shoulder, Raka melihat ponsel
-const PH = { cx: 745, cy: 850, w: 340, h: 600 };
-function shotPhone(t) {
-  const lt = t - CUE.s2[0], bob = Math.sin(lt * 2.4) * 4;
-  const st = raka('berpikir', null, { bags: 1, blink: blinkAtT(t, [6.2, 7.6]), tilt: -3, breath: Math.sin(t * 2.2) * 0.5 + 0.5 });
-  st.armR = { wx: 352, wy: 356, ex: 400, ey: 480, finger: 0, fa: -90, front: 1, roll: 0 };
-  st.armL = { wx: 86, wy: 556, ex: 88, ey: 488, finger: 0, fa: -90, front: 0, roll: 0 };
-  const k = 1.95, tx = 290 - 200 * k, ty = 900 - 249 * k;
-  let w = `<g transform="translate(0 ${f1(bob * 0.5)})">${rk({ ...st }, { k, tx, ty, circles: false, opts: { back: { turn: 0.72, lift: 0 }, logo: false } })}</g>`;
-  w += A.phone(PH.cx, PH.cy + bob, PH.w, PH.h);
-  w += A.hand(PH.cx - PH.w / 2 + 10, PH.cy + PH.h / 2 - 90 + bob);
-  const qa = win(lt, 0.4, 3.9, 0.3), qb = Math.sin(lt * 5) * 6;
-  w += A.qmark(340, 440 + qb, 88, qa);
-  // zoom lurus ke kartu layar ponsel (match cut ke diagram): fokus bergeser dari titik kartu ke tengah layar sambil memperbesar
-  const u = sm((lt - 2.9) / 1.05), z = lerp(1, 4.3, u), fx = PH.cx, fy = PH.cy - PH.h * 0.04 + bob;
-  return `<g transform="translate(${f1(fx + (540 - fx) * u)} ${f1(fy + (960 - fy) * u)}) scale(${f1(z)}) translate(${-fx} ${f1(-fy)})">${w}</g>`;
+// ------------------------------------------------------------------ S2: Raka (dari depan, wajah utuh) memegang ponsel; lalu POV layar ponsel
+const PHC = { cx: 540, cy: 860 };
+function shotPhoneFront(t) {
+  const lt = t - CUE.s2[0], buzz = win(t, C.ev.buzz, C.ev.ping + 0.3, 0.05) * Math.sin(t * 90) * 7;
+  const st = raka('berpikir', null, { bags: 1, blink: blinkAtT(t, [5.8, 6.5]), breath: Math.sin(t * 2.2) * 0.5 + 0.5, lean: 1.2, gazeY: 1, gazeX: 0, browL: { y: -10, rot: 12 }, browR: { y: -3, rot: -6 }, mouth: { w: 9, up: 3, lo: 8 } });
+  st.armL = { wx: 168, wy: 478, ex: 84, ey: 522, finger: 0, fa: -90, front: 1, roll: 0 };
+  st.armR = { wx: 232, wy: 478, ex: 316, ey: 522, finger: 0, fa: -90, front: 1, roll: 0 };
+  const k = 2.3, tx = 540 - 200 * k, ty = 590 - 249 * k, bob = Math.sin(lt * 2.4) * 3;
+  let w = `<g transform="translate(0 ${f1(bob)})">${rk(st, { k, tx, ty })}`;
+  w += A.phoneBack(540, ty + 452 * k, 215, 360, buzz);
+  w += `<circle cx="${f1(540 - 128 + buzz)}" cy="${f1(ty + 470 * k)}" r="30" fill="#F7BC8E"/><circle cx="${f1(540 + 128 + buzz)}" cy="${f1(ty + 470 * k)}" r="30" fill="#F7BC8E"/></g>`;
+  const qa = win(lt, 0.4, 1.8, 0.25), qb = Math.sin(lt * 5) * 6;
+  w += A.qmark(880, 360 + qb, 110, qa);
+  if (t > C.ev.ping && t < C.ev.ping + 0.5) { const e = (t - C.ev.ping) / 0.5; w += `<g opacity="${f1(1 - e)}" stroke="#F8C038" stroke-width="12">${[[-1, -1], [1, -1], [-1, 1], [1, 1]].map(([sx, sy]) => `<path d="M${f1(540 + sx * (150 + 80 * e))} ${f1(ty + 452 * k + sy * (170 + 60 * e))}l${sx * 30} ${sy * 30}"/>`).join('')}</g>`; }
+  return w;
+}
+function shotPhonePOV(t) {
+  const lt = t - C.split.s2b, press = win(t, C.ev.thumb, C.ev.thumb + 0.35, 0.1), pop = 1 + 0.12 * Math.max(0, 1 - Math.abs(t - C.ev.card - 0.15) / 0.25) * (t > C.ev.card ? 1 : 0);
+  let w = A.phoneScreen(540, 800, 600, 1000, press, pop);
+  w += A.thumb(700, lerp(1500, 1040, sm((t - (C.ev.thumb - 0.35)) / 0.3)) + 0 * lt, win(t, C.ev.thumb - 0.4, C.ev.thumb + 0.45, 0.12));
+  const u = sm((t - C.ev.zoom[0]) / (C.ev.zoom[1] - C.ev.zoom[0])), z = lerp(1, 2.32, u), fx = 540, fy = 780;
+  return `<g transform="translate(${f1(fx + (540 - fx) * u)} ${f1(fy + (960 - fy) * u)}) scale(${f1(z)}) translate(${-fx} ${-fy})">${w}</g>`;
 }
 // ------------------------------------------------------------------ S3: papan top-down, ferritin menyimpan cadangan zat besi, lalu bahan untuk Hb
 const P3 = { src: [120, 800], box: [400, 740], rbc: [828, 740] };
 const arrowD = (x0, y0, x1, y1, col, a = 1) => `<g opacity="${f1(a)}"><path d="M${x0} ${y0}H${x1 - 26}" stroke="${col}" stroke-width="12" stroke-dasharray="26 18" fill="none"/><path d="M${x1 - 34} ${y1 - 22}L${x1} ${y1}L${x1 - 34} ${y1 + 22}Z" fill="${col}"/></g>`;
 function slots9(rad, n) { const out = []; for (let i = 0; i < 8; i++) { const a = (i / 8) * Math.PI * 2 - Math.PI / 2; out.push({ x: Math.cos(a) * rad, y: Math.sin(a) * rad }); } out.push({ x: 0, y: 0 }); return out.slice(0, n); }
-const S3A = Array.from({ length: 12 }, (_, i) => 9.95 + i * 0.27);          // butir meninggalkan tumpukan menuju kotak
-const S3B = Array.from({ length: 7 }, (_, i) => 13.7 + i * 0.42);           // butir meninggalkan kotak menuju pembentukan Hb
+const S3A = C.s3a;          // butir meninggalkan tumpukan menuju kotak
+const S3B = C.s3b;           // butir meninggalkan kotak menuju pembentukan Hb
 function shot3(t) {
   const [bx, by] = P3.box, [rx, ry] = P3.rbc, [sx, sy] = P3.src;
   let w = A.board();
@@ -121,7 +129,7 @@ function shot3(t) {
   return w;
 }
 // ------------------------------------------------------------------ S4: close-up sel darah merah; cadangan menipis, aliran ke pembentukan Hb berkurang
-const S4G = [17.3, 17.85, 18.5, 19.3, 20.4, 21.8, 23.2];                   // jarak butir makin jarang
+const S4G = C.s4g;                   // jarak butir makin jarang
 function shot4(t) {
   const bx = 175, by = 700, rx = 715, ry = 700;
   const gone = S4G.filter((tt) => t >= tt).length, level = clamp(0.92 - sm((t - 18.2) / 4.2) * 0.8 + 0.02 - gone * 0.0);
@@ -148,21 +156,24 @@ function shot5(t) {
   w += `<g opacity="${f1(ba)}">${R(660, 830, 380, 330, 'rgba(7,20,43,.92)', 0, `stroke="${K.gold}" stroke-width="6"`)}</g>` + A.bloodTest(850, 1000, 1.0, ba);
   return w;
 }
-// ------------------------------------------------------------------ S6: laptop dibuka, dolly-in lurus ke layar
-const LP = { cx: 705, base: 1110, w: 520, h: 340 };
-function shotLaptop(t) {
-  const lt = t - CUE.s6[0], open = sm((lt - 0.35) / 0.9), glow = sm((lt - 1.1) / 0.5);
-  const st = raka('netral', null, { bags: 1, blink: blinkAtT(t, [32.9]), tilt: -2, breath: Math.sin(t * 2.2) * 0.5 + 0.5, gazeX: 0.6 });
-  const lift = Math.sin(clamp((lt - 0.2) / 1.1) * Math.PI);
-  st.armR = { wx: 352, wy: 380 - 40 * lift, ex: 400, ey: 480, finger: 0, fa: -90, front: 1, roll: 0 };
-  st.armL = { wx: 86, wy: 556, ex: 88, ey: 488, finger: 0, fa: -90, front: 0, roll: 0 };
-  const k = 1.95, tx = 290 - 200 * k, ty = 900 - 249 * k;
-  let w = r0(0, 1096, 1080, 900, '#173963') + r0(0, 1086, 1080, 14, '#1F4B7D');
-  w += rk(st, { k, tx, ty, circles: false, opts: { back: { turn: 0.72, lift: 0 }, logo: false } });
-  w += A.laptop(LP.cx, LP.base, LP.w, LP.h, open, glow);
-  w += A.hand(LP.cx - LP.w / 2 + 40, LP.base - 20 - 70 * lift);
-  const fx = LP.cx, fy = LP.base - LP.h * 0.5, u = sm((lt - 1.3) / 1.8), z = lerp(1, 3.4, u);
-  return `<g transform="translate(${f1(fx + (540 - fx) * u)} ${f1(fy + (960 - fy) * u)}) scale(${f1(z)}) translate(${-fx} ${f1(-fy)})">${w}</g>`;
+// ------------------------------------------------------------------ S6: Raka (dari depan) membuka laptop; lalu POV layar dengan dolly-in lurus
+function shotLaptopFront(t) {
+  const lt = t - CUE.s6[0], open = sm((t - C.ev.lid[0]) / (C.ev.lid[1] - C.ev.lid[0])), lift = Math.sin(clamp((t - C.ev.lid[0]) / (C.ev.lid[1] - C.ev.lid[0])) * Math.PI);
+  const st = raka('netral', null, { bags: 1, blink: blinkAtT(t, [32.9]), breath: Math.sin(t * 2.2) * 0.5 + 0.5, lean: 1, gazeY: 0.9, browL: { y: -6, rot: 4 }, browR: { y: -6, rot: -4 }, mouth: { w: 16, up: 6, lo: 12 } });
+  st.armL = { wx: 150, wy: 520, ex: 84, ey: 540, finger: 0, fa: -90, front: 1, roll: 0 };
+  st.armR = { wx: 250, wy: 520, ex: 316, ey: 540, finger: 0, fa: -90, front: 1, roll: 0 };
+  const k = 2.0, tx = 540 - 200 * k, ty = 600 - 249 * k, deskY = 1110, base = 1100, LW = 520, LH = 230;
+  let w = rk(st, { k, tx, ty });
+  w += A.laptopBack(540, base, LW, LH, open);
+  const hy = base - LH * open - 14 - 20 * (1 - open);
+  w += `<circle cx="${f1(540 - LW / 2 - 4)}" cy="${f1(hy + 20)}" r="36" fill="#F7BC8E"/><circle cx="${f1(540 + LW / 2 + 4)}" cy="${f1(hy + 20)}" r="36" fill="#F7BC8E"/>`;
+  w += r0(0, deskY + 40, 1080, 900, '#173963') + r0(0, deskY + 30, 1080, 14, '#1F4B7D');
+  return w;
+}
+function shotLaptopPOV(t) {
+  const u = sm((t - C.ev.dolly[0]) / (C.ev.dolly[1] - C.ev.dolly[0])), z = lerp(1, 3.3, u), fx = 540, fy = 760;
+  const w = A.laptopFront(540, 760, 720, 450, 1);
+  return `<g transform="translate(${f1(fx + (540 - fx) * u)} ${f1(fy + (960 - fy) * u)}) scale(${f1(z)}) translate(${-fx} ${-fy})">${w}</g>`;
 }
 const r0 = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
 // ------------------------------------------------------------------ rekaman web asli (UI tajam)
@@ -194,24 +205,24 @@ const stars = (t) => { let s = ''; for (let i = 0; i < 26; i++) { const x = (i *
 async function compose(t) {
   NEED = []; let ui = '', world = null;
   const sh = ['s1', 's2', 's3', 's4', 's5', 's6', 'web', 'end'].find((k) => t >= CUE[k][0] && t < CUE[k][1]);
-  if (sh === 's1') world = { res: [216, 384], w: shotFace(t) };
-  if (sh === 's2') world = { res: [270, 480], w: shotPhone(t) };
+  if (sh === 's1') world = { res: [216, 384], w: shotFace(t, { hook: true }) };
+  if (sh === 's2') world = { res: [270, 480], w: t < C.split.s2b ? shotPhoneFront(t) : shotPhonePOV(t) };
   if (sh === 's3') world = { res: [360, 640], w: shot3(t) };
   if (sh === 's4') world = { res: [270, 480], w: shot4(t) };
   if (sh === 's5') world = { res: [216, 384], w: shot5(t) };
-  if (sh === 's6') world = { res: [270, 480], w: shotLaptop(t) };
+  if (sh === 's6') world = { res: [270, 480], w: t < C.split.s6b ? shotLaptopFront(t) : shotLaptopPOV(t) };
   if (sh === 'end') world = { res: [270, 480], w: stars(t) };
   if (sh === 'web') world = { res: [270, 480], w: '' };
   if (world) { await drawWorld(world.w, world.res); $('pix').style.visibility = 'visible'; }
   // ---- transisi match cut S2 -> S3: kartu krem mengecil menjadi kotak FERRITIN
   if (t >= CUE.s3[0] && t < CUE.s3[0] + 0.7) {
-    const u = sm((t - CUE.s3[0]) / 0.6), w2 = lerp(1100, 330, u), h2 = lerp(780, 300, u), cx = lerp(540, P3.box[0], u), cy = lerp(960, P3.box[1], u);
+    const u = sm((t - CUE.s3[0]) / 0.6), w2 = lerp(1110, 330, u), h2 = lerp(700, 300, u), cx = lerp(540, P3.box[0], u), cy = lerp(960, P3.box[1], u);
     ui += `<g opacity="${f1(1 - sm((t - CUE.s3[0] - 0.45) / 0.25))}">${R(cx - w2 / 2, cy - h2 / 2, w2, h2, K.cream, 0, `stroke="${K.ink}" stroke-width="10"`)}${T(cx, cy - h2 * 0.04, 'FERRITIN', K.ink, lerp(150, 46, u), 800)}${T(cx, cy + h2 * 0.3, 'FACE', '#B3202F', lerp(150, 46, u), 800)}</g>`;
   }
   // ---- teks layar (satu per satu, maksimal dua baris)
   const NOCAP = new URLSearchParams(location.search).has('nocap');
   const cap = (lines, a0, b0, o) => (NOCAP ? '' : caption(lines, win(t, a0, b0, 0.3), o));
-  ui += cap(['MATA PANDA =', 'KURANG ZAT BESI?'], 0.2, 5.0, { fs: 64 });
+  if (!NOCAP) { const sl = 1 - Math.min(1, t / 0.25), dy = -sl * sl * 90 + (t < 0.25 ? 0 : 0), a1 = clamp(1 - (t - 4.7) / 0.3); if (a1 > 0.01) ui += `<g transform="translate(0 ${f1(dy)})">${caption(['MATA PANDA =', 'KURANG ZAT BESI?'], a1, { fs: 64 })}</g>`; }
   ui += cap(['Lagi ramai disebut', '‘ferritin face’.'], 5.4, 8.8, { fs: 62, hi: 1 });
   ui += cap(['Ferritin menyimpan', 'cadangan zat besi.'], 9.6, 13.3, { fs: 62 });
   ui += cap(['Zat besi dibutuhkan', 'untuk membuat hemoglobin.'], 13.5, 17.0, { fs: 58 });
@@ -221,6 +232,7 @@ async function compose(t) {
   ui += cap(['Penasaran cara', 'kerja tubuh?'], 32.3, 35.2, { fs: 64 });
   ui += cap(['Belajar FK di MEDCOEL'], 35.6, 38.1, { fs: 56, hi: 0 });
   ui += cap(['Materi • latihan soal', '• fitur interaktif'], 38.2, 41.1, { fs: 52 });
+  for (const c0 of C.ev.cuts) if (t >= c0 && t < c0 + 0.1) ui += R(0, 0, 1080, 1920, '#FFFFFF', 0, `opacity="${f1(0.3 * (1 - (t - c0) / 0.1))}"`);
   // ---- label diagram
   if (sh === 's3') {
     ui += tag(P3.src[0], 925, 'ZAT BESI', { fs: 32 }) + tag(P3.box[0], 545, 'FERRITIN', { fs: 44, c: K.gold });

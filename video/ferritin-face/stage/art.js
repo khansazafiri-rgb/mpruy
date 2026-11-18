@@ -94,3 +94,39 @@ export function laptop(cx, baseY, w, h, open, glow = 0) {
 export function hand(x, y) {
   return `<circle cx="${f1(x)}" cy="${f1(y)}" r="34" fill="#F7BC8E"/><rect x="${f1(x - 8)}" y="${f1(y - 54)}" width="26" height="52" rx="13" fill="#F7BC8E"/><rect x="${f1(x + 6)}" y="${f1(y - 6)}" width="40" height="22" rx="11" fill="#EAA676"/>`;
 }
+
+/** punggung ponsel (kamera menghadap penonton), dipegang di depan dada */
+export function phoneBack(cx, cy, w, h, shake = 0) {
+  const x = cx - w / 2 + shake, y = cy - h / 2;
+  return r(x - 8, y - 8, w + 16, h + 16, C.ink) + r(x, y, w, h, C.steel2) + r(x, y, w, h * 0.12, C.steel) + r(x + w * 0.12, y + h * 0.05, w * 0.26, h * 0.1, C.ink) + r(x + w * 0.2, y + h * 0.09, w * 0.1, h * 0.04, C.gold) + r(x + w * 0.35, y + h * 0.7, w * 0.3, h * 0.07, C.cyan);
+}
+/** ponsel tampak depan besar (POV): bezel, layar navy, satu kartu krem "FERRITIN FACE" (press 0..1 menekan kartu) */
+export function phoneScreen(cx, cy, w, h, press = 0, pop = 1) {
+  const x = cx - w / 2, y = cy - h / 2;
+  let s = r(x - 22, y - 22, w + 44, h + 44, C.ink) + r(x - 12, y - 12, w + 24, h + 24, C.steel2) + r(x, y, w, h, C.navy);
+  s += r(cx - 70, y + 20, 140, 18, C.ink) + r(x + 36, y + 70, w - 72, 22, C.navy2) + r(x + 36, y + 110, (w - 72) * 0.6, 22, C.navy2);
+  const k = pop * (1 - 0.05 * press), cw = w * 0.84 * k, ch = 300 * k, cyy = cy - 20;
+  s += r(cx - cw / 2 - 10, cyy - ch / 2 - 10, cw + 20, ch + 20, C.ink) + r(cx - cw / 2, cyy - ch / 2, cw, ch, C.cream) + r(cx - cw / 2, cyy - ch / 2, cw, 20 * k, C.cyan);
+  s += pxt(cx, cyy - ch * 0.03, 'FERRITIN', C.ink, 46 * k) + pxt(cx, cyy + ch * 0.32, 'FACE', C.red2, 46 * k);
+  s += r(x + 36, y + h - 130, w - 72, 22, C.navy2) + r(x + 36, y + h - 90, (w - 72) * 0.45, 22, C.navy2);
+  return s;
+}
+/** ibu jari menekan layar dari bawah (POV) */
+export function thumb(x, y, a = 1) {
+  return `<g opacity="${f1(a)}"><rect x="${f1(x - 44)}" y="${f1(y)}" width="88" height="260" rx="44" fill="#F7BC8E"/><rect x="${f1(x - 30)}" y="${f1(y + 8)}" width="30" height="20" rx="10" fill="#FFD9B8"/></g>`;
+}
+/** laptop tampak dari belakang (punggung layar menghadap penonton), open 0..1 mengangkat penutup */
+export function laptopBack(cx, baseY, w, h, open) {
+  const x = cx - w / 2, lh = h * clamp(open);
+  let s = r(x - 14, baseY - 2, w + 28, 34, C.steel2) + r(x - 4, baseY + 30, w + 8, 10, C.steel);
+  if (lh > 6) s += r(x - 10, baseY - lh - 10, w + 20, lh + 12, C.ink) + r(x, baseY - lh, w, lh, C.steel2) + r(x, baseY - lh, w, 12, C.steel) + r(cx - 30, baseY - lh / 2 - 14, 60, 28, C.steel);
+  return s;
+}
+/** laptop tampak depan (POV): layar menyala krem, bezel, papan ketik */
+export function laptopFront(cx, cy, w, h, glow = 1) {
+  const x = cx - w / 2, y = cy - h / 2;
+  let s = r(x - 20, y - 20, w + 40, h + 40, C.ink) + r(x - 10, y - 10, w + 20, h + 20, C.steel2) + r(x, y, w, h, glow > 0.01 ? C.cream : C.navy3);
+  s += r(x - 90, y + h + 20, w + 180, 40, C.steel) + r(x - 60, y + h + 60, w + 120, 130, C.steel2) + r(cx - 90, y + h + 90, 180, 22, C.steel);
+  for (let i = 0; i < 6; i++) s += r(x - 30 + i * ((w + 60) / 6), y + h + 120, (w + 60) / 6 - 12, 20, C.ink);
+  return s;
+}
