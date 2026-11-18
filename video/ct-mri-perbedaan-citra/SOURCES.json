@@ -1,0 +1,112 @@
+{
+  "repo": "https://github.com/khansazafiri-rgb/mpruy",
+  "referenceCommit": "36f2d0a78d8497515e567c1b8be12ce5db4273ae",
+  "images": [
+    {
+      "file": "assets/ct-source.png",
+      "display": "assets/ct.png",
+      "title": "CT of a normal brain, axial 18.png",
+      "creator": "Mikael Häggström, M.D.",
+      "source": "https://commons.wikimedia.org/wiki/File:CT_of_a_normal_brain,_axial_18.png",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/9/93/CT_of_a_normal_brain%2C_axial_18.png",
+      "license": "CC0 1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commercialUse": true,
+      "modality": "Head CT without intravenous contrast; axial; 4 mm slice",
+      "changes": "Crop [20,40,342,456] selects the axial panel and removes the sagittal inset; metadata removed; no window/level, anatomy, rotation, or contrast change.",
+      "privacy": "No patient name, ID or identifying text in the retained panel. Source documents consent for online publication."
+    },
+    {
+      "file": "assets/mri-t2-source.png",
+      "display": "assets/mri-t2.png",
+      "title": "Brain-T2-axial.png",
+      "creator": "Sean Novak",
+      "source": "https://commons.wikimedia.org/wiki/File:Brain-T2-axial.png",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/d/de/Brain-T2-axial.png",
+      "license": "CC BY-SA 4.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "commercialUse": true,
+      "modality": "Normal axial T2-weighted brain MRI",
+      "changes": "Crop [20,15,700,830] removes outer black margins; metadata removed; separate text and annotation overlays; image remains grayscale, no modality conversion.",
+      "privacy": "No patient name or ID visible; distribution copy contains no source metadata."
+    }
+  ],
+  "comparison": "Different people, approximately comparable axial level of lateral ventricles. Not registered, not pixel-aligned as one patient, not morphed into one another.",
+  "footage": [
+    {
+      "file": "assets/materi-soal.mp4",
+      "source": "video/masih-dua-minggu/rekam/rekaman-web.mp4",
+      "creator": "MEDCOEL",
+      "license": "Owner-supplied MEDCOEL recording; used for the owner's requested promotion",
+      "data": "Local test fixture, not public account claims",
+      "speed": 1,
+      "audioUsed": false
+    },
+    {
+      "file": "assets/live-4d-lab.mp4",
+      "source": "apps/4d-lab/ at referenceCommit",
+      "creator": "MEDCOEL; captured for this video",
+      "license": "CC BY-SA 4.0 for atlas-derived visual content",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "features": [
+        "CT",
+        "USG"
+      ],
+      "MRI": false,
+      "data": "Synthetic educational atlas data, not patient data and not for diagnosis",
+      "speed": 1,
+      "audioUsed": false,
+      "attribution": [
+        "BodyParts3D - The Database Center for Life Science - CC-BY-SA 2.1 Japan",
+        "Z-Anatomy - The open source atlas of anatomy - CC-BY-SA 4.0"
+      ],
+      "upstream": [
+        "https://lifesciencedb.jp/bp3d/",
+        "https://www.z-anatomy.com/"
+      ],
+      "capture": "Native real-time browser video, crop recorder padding, Lanczos resample; 25fps capture converted to 30fps; speed 1x."
+    }
+  ],
+  "audio": [
+    {
+      "file": "audio/narasi-google-ai-studio.wav",
+      "source": "Generated Audio November 18, 2026 - 2_17PM.wav",
+      "creator": "Google AI Studio narration supplied by the user",
+      "duration": 66.76,
+      "usage": "Requested by the audio owner for this video"
+    },
+    {
+      "file": "audio/narasi-timeline.wav",
+      "source": "Original narration with silence inserted between phrases only",
+      "duration": 76.3,
+      "speed": 1
+    }
+  ],
+  "music": [],
+  "soundEffects": [],
+  "logo": {
+    "file": "assets/logo-full.webp",
+    "source": "apps/web/src/assets/logo-full.webp",
+    "creator": "MEDCOEL",
+    "usage": "Owner-requested brand use; no trademark rights granted to third parties"
+  },
+  "scientificReferences": [
+    "https://www.radiologyinfo.org/en/info/xray",
+    "https://www.radiologyinfo.org/en/info/mr",
+    "https://cs.acr.org/-/media/ACR/Files/Member-Resources/Med-Students/MESO_High-Yield-Guides_Design_v3.pdf",
+    "https://www.radiologyinfo.org/en/info/headct"
+  ],
+  "fonts": "Arial / Arial Bold, preinstalled system fonts, not bundled",
+  "newVisuals": "Original editable 2D scanner/patient geometry, conceptual proton diagram, arrows, labels and caption layers in render.mjs; no generated medical images.",
+  "sha256": {
+    "assets/logo-full.webp": "7614ccc4ca21b9fb3b83412d9c19a4ec22f6da7ef6d5577044452030eaa40f4c",
+    "assets/mri-t2-source.png": "d5c5b0ebc69b6d2f692fbcee762a2ddd0f0437bf3707b6d62a525cf31185b291",
+    "assets/materi-soal.mp4": "54f9e8d82fc993cc540959f0b976468e4fd5ca2cb2fb94d664481a526829ca44",
+    "assets/mri-t2.png": "7a5222d831cea6be08637f7c8dce301e203764d3178839c3072d7212a2162c07",
+    "assets/live-4d-lab.mp4": "d151865defc91f9e95f39b47bf6a65ecb2f6f09a43e299b033602a5eae10e7f5",
+    "assets/ct-source.png": "244064a96f40a22c1a3788ae8add21e33e399d89919b42d818c2590788167e46",
+    "assets/ct.png": "5a9e4b2d1f1a2804debbae4975f53ec3cb9470600b8b49ea77a52f547b4a2121",
+    "audio/narasi-timeline.wav": "4b29b0db8756576792e9ae394ab8c4128a239c579526fce1307ae9181f40caf1",
+    "audio/narasi-google-ai-studio.wav": "731bc99459fc03ebf021a9c2bed23ff8ea373fc8e9d7847f59000f00b41ac04e"
+  }
+}
