@@ -1,10 +1,10 @@
 {
- "draf_tanpa_narasi": true,
+ "draf_tanpa_narasi": false,
  "offset_narasi": 0.3,
- "narasi_dipotong_di": 80.183,
- "outro_mulai": 80.933,
- "master_mulai": 82.133,
- "durasi": 96.1,
+ "narasi_dipotong_di": 72.45,
+ "outro_mulai": 73.2,
+ "master_mulai": 74.4,
+ "durasi": 88.367,
  "sfx": [
   {
    "t": 0.3,
@@ -15,59 +15,111 @@
    "sfx": "judul-hook"
   },
   {
-   "t": 8.164,
+   "t": 7.1,
    "sfx": "putar"
   },
   {
-   "t": 10.796,
+   "t": 9.38,
    "sfx": "merkuri"
   },
   {
-   "t": 15.043,
+   "t": 13.3,
    "sfx": "wadah"
   },
   {
-   "t": 17.528,
+   "t": 15.62,
    "sfx": "saluran"
   },
   {
-   "t": 20.827,
+   "t": 18.18,
    "sfx": "kontak-panas"
   },
   {
-   "t": 21.461,
+   "t": 18.812,
    "sfx": "kolom-naik"
   },
   {
-   "t": 22.275,
+   "t": 19.57,
    "sfx": "kolom-naik"
   },
   {
-   "t": 22.648,
+   "t": 19.918,
    "sfx": "kolom-naik"
   },
   {
-   "t": 22.953,
+   "t": 20.202,
    "sfx": "kolom-naik"
   },
   {
-   "t": 23.224,
+   "t": 20.455,
    "sfx": "kolom-naik"
   },
   {
-   "t": 23.462,
+   "t": 20.676,
    "sfx": "kolom-naik"
   },
   {
-   "t": 23.699,
+   "t": 20.897,
    "sfx": "kolom-naik"
   },
   {
-   "t": 23.903,
+   "t": 21.087,
    "sfx": "kolom-naik"
   },
   {
-   "t": 24.106,
+   "t": 21.276,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 21.466,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 21.656,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 21.845,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 22.035,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 22.224,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 22.414,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 22.604,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 22.793,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 22.983,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 23.204,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 23.425,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 23.678,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 23.962,
    "sfx": "kolom-naik"
   },
   {
@@ -75,147 +127,95 @@
    "sfx": "kolom-naik"
   },
   {
-   "t": 24.513,
+   "t": 24.942,
    "sfx": "kolom-naik"
   },
   {
-   "t": 24.717,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 24.92,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 25.124,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 25.327,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 25.531,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 25.734,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 25.938,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 26.175,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 26.413,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 26.684,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 26.989,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 27.362,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 28.04,
-   "sfx": "kolom-naik"
-  },
-  {
-   "t": 30.013,
+   "t": 26.8,
    "sfx": "garis-jauh"
   },
   {
-   "t": 39.69,
+   "t": 35.48,
    "sfx": "penyempitan"
   },
   {
-   "t": 43.795,
+   "t": 39.18,
    "sfx": "dilepas"
   },
   {
-   "t": 45.295,
+   "t": 40.68,
    "sfx": "kolom-putus"
   },
   {
-   "t": 50.347,
+   "t": 45.36,
    "sfx": "suhu-tertinggi-terbaca"
   },
   {
-   "t": 55.24,
+   "t": 49.68,
    "sfx": "atur-ulang"
   },
   {
-   "t": 61.005,
+   "t": 54.48,
    "sfx": "digital"
   },
   {
-   "t": 63.829,
+   "t": 57.28,
    "sfx": "pecah"
   },
   {
-   "t": 64.329,
+   "t": 57.78,
    "sfx": "tetes"
   },
   {
-   "t": 64.499,
+   "t": 57.95,
    "sfx": "tetes"
   },
   {
-   "t": 64.669,
+   "t": 58.12,
    "sfx": "tetes"
   },
   {
-   "t": 64.839,
+   "t": 58.29,
    "sfx": "tetes"
   },
   {
-   "t": 65.009,
+   "t": 58.46,
    "sfx": "tetes"
   },
   {
-   "t": 65.179,
+   "t": 58.63,
    "sfx": "tetes"
   },
   {
-   "t": 66.432,
+   "t": 59.74,
    "sfx": "uap"
   },
   {
-   "t": 70.106,
+   "t": 63.28,
    "sfx": "beralih"
   },
   {
-   "t": 75.932,
+   "t": 68.89,
    "sfx": "ringkasan-pemuaian"
   },
   {
-   "t": 76.624,
+   "t": 69.4,
    "sfx": "ringkasan-saluranSempit"
   },
   {
-   "t": 77.868,
+   "t": 70.64,
    "sfx": "ringkasan-penyempitanKecil"
   },
   {
-   "t": 78.768,
+   "t": 71.54,
    "sfx": "ringkasan-akhir"
   },
   {
-   "t": 80.633,
+   "t": 72.9,
    "sfx": "masuk-outro"
   },
   {
-   "t": 90.333,
+   "t": 82.6,
    "sfx": "logo-medcoel"
   }
  ]

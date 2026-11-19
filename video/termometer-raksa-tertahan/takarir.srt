@@ -1,80 +1,80 @@
 1
-00:00:00,300 --> 00:00:02,211
+00:00:00,300 --> 00:00:02,720
 Pernah lihat termometer air raksa?
 
 2
-00:00:02,711 --> 00:00:06,871
+00:00:02,880 --> 00:00:06,120
 Setelah dilepas dari tubuh, garis peraknya tetap berhenti di angka tadi.
 
 3
-00:00:07,371 --> 00:00:07,864
+00:00:06,420 --> 00:00:06,720
 Kok bisa?
 
 4
-00:00:08,764 --> 00:00:13,203
+00:00:07,700 --> 00:00:11,540
 Pertama, 'air raksa' itu sebenarnya merkuri: logam yang cair pada suhu ruang.
 
 5
-00:00:13,703 --> 00:00:19,321
+00:00:12,140 --> 00:00:16,960
 Di ujung termometer ada wadah kecil berisi merkuri, tersambung ke saluran kaca yang sangat sempit.
 
 6
-00:00:20,221 --> 00:00:23,612
+00:00:17,560 --> 00:00:20,700
 Ketika ujungnya menerima panas dari tubuh, merkuri memuai.
 
 7
-00:00:24,112 --> 00:00:28,210
+00:00:21,200 --> 00:00:25,140
 Volumenya bertambah dan mendorong garis perak naik di saluran sempit itu.
 
 8
-00:00:28,710 --> 00:00:31,766
+00:00:25,600 --> 00:00:28,000
 Semakin tinggi suhu, semakin jauh garisnya bergerak.
 
 9
-00:00:32,266 --> 00:00:36,383
+00:00:28,000 --> 00:00:32,260
 Angka pada kaca menunjukkan suhu berdasarkan posisi ujung garis tersebut.
 
 10
-00:00:37,283 --> 00:00:42,389
+00:00:33,160 --> 00:00:37,940
 Tapi ada satu bagian kecil yang penting: penyempitan saluran tepat di atas wadah merkuri.
 
 11
-00:00:42,889 --> 00:00:48,684
+00:00:38,540 --> 00:00:43,780
 Saat termometer dilepas dan mulai dingin, bagian ini menahan kolom merkuri agar tidak langsung turun.
 
 12
-00:00:49,184 --> 00:00:52,435
+00:00:44,280 --> 00:00:47,000
 Jadi kita masih bisa membaca suhu tertinggi yang tercapai.
 
 13
-00:00:52,935 --> 00:00:57,682
+00:00:47,500 --> 00:00:51,800
 Itulah alasan termometer jenis ini perlu diatur ulang sebelum pengukuran berikutnya.
 
 14
-00:00:58,582 --> 00:01:02,088
+00:00:52,700 --> 00:00:55,320
 Lalu kenapa sekarang lebih sering terlihat termometer digital?
 
 15
-00:01:02,588 --> 00:01:07,397
+00:00:55,990 --> 00:01:00,560
 Kalau kaca termometer merkuri pecah, merkurinya bisa tersebar dan uapnya berbahaya.
 
 16
-00:01:07,897 --> 00:01:11,781
+00:01:00,820 --> 00:01:04,860
 Karena itu, banyak layanan kesehatan beralih ke alat tanpa merkuri.
 
 17
-00:01:12,681 --> 00:01:20,133
+00:01:05,480 --> 00:01:12,400
 Jadi garis perak yang tampak sederhana itu bekerja karena pemuaian, saluran sempit, dan penyempitan kecil yang menahan hasilnya.
 
 18
-00:01:22,133 --> 00:01:25,493
+00:01:14,400 --> 00:01:17,760
 Masih penasaran? Lanjutkan belajarnya di MEDCOEL.
 
 19
-00:01:25,993 --> 00:01:29,913
+00:01:18,260 --> 00:01:22,180
 Jelajahi materi per bab, latihan soal, dan simulasi dokter.
 
 20
-00:01:30,473 --> 00:01:32,593
+00:01:22,740 --> 00:01:24,860
 Semuanya gratis di medcoel.com.
 

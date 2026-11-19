@@ -111,11 +111,12 @@ fx('ringkasan-akhir', chime([84, 88, 91], 1.2), tv(AN['penyempitanKecil'] + 0.9)
 fx('masuk-outro', whoosh(0.8, True, 200, 3000), O0 - 0.3, 0.14)
 fx('logo-medcoel', chime([84, 88, 91, 96], 1.4), O0 + 9.4, 0.08)
 # ------------------------------------------------------------------ campur: musik diturunkan di bawah suara (ducking dari selubung suara), efek lebih pelan saat suara
-v_env = np.convolve(np.abs(VOICE), np.ones(T(0.3)) / T(0.3), 'same'); gate = np.clip(v_env / 0.03, 0, 1); gate = np.convolve(gate, np.ones(T(0.25)) / T(0.25), 'same')
+v_env = np.convolve(np.abs(VOICE), np.ones(T(0.3)) / T(0.3), 'same'); gate = np.clip(v_env / 0.03, 0, 1); from scipy.ndimage import maximum_filter1d
+gate = maximum_filter1d(gate, size=T(0.7)); gate = np.convolve(gate, np.ones(T(0.3)) / T(0.3), 'same')
 tt = np.arange(N) / SR
 fade = np.minimum(1, tt / 1.5) * np.minimum(1, (DUR - tt) / 1.5)
 for c in range(2): MUS[c] = lp(MUS[c], 6000)
-mg = (0.55 if HAVE_NAR else 0.40) * (1 - 0.8 * gate) * fade; fg = 0.5 * (1 - 0.75 * gate)
+mg = (0.55 if HAVE_NAR else 0.40) * (1 - 0.88 * gate) * fade; fg = 0.5 * (1 - 0.85 * gate)
 mix = np.vstack([VOICE, VOICE]) + MUS * mg[None, :] + FX * fg[None, :]
 pk = float(np.max(np.abs(mix))); print('puncak mentah', round(pk, 3), 'durasi', round(DUR, 2))
 mix = mix / max(1.0, pk) * 0.98
