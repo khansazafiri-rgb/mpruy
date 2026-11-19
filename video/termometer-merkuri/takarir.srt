@@ -1,0 +1,216 @@
+1
+00:00:00,000 --> 00:00:00,790
+Pernah lihat
+
+2
+00:00:00,790 --> 00:00:02,280
+termometer air raksa?
+
+3
+00:00:02,580 --> 00:00:03,830
+Setelah dilepas dari tubuh,
+
+4
+00:00:03,830 --> 00:00:04,760
+garis peraknya tetap
+
+5
+00:00:04,760 --> 00:00:05,920
+berhenti di angka tadi.
+
+6
+00:00:06,120 --> 00:00:07,000
+Kok bisa?
+
+7
+00:00:07,400 --> 00:00:08,300
+Pertama, air raksa
+
+8
+00:00:08,300 --> 00:00:09,560
+itu sebenarnya merkuri.
+
+9
+00:00:09,800 --> 00:00:10,500
+Logam yang cair
+
+10
+00:00:10,500 --> 00:00:11,340
+pada suhu ruang.
+
+11
+00:00:11,840 --> 00:00:12,780
+Di ujung termometer,
+
+12
+00:00:12,780 --> 00:00:14,340
+ada wadah kecil berisi merkuri.
+
+13
+00:00:14,580 --> 00:00:15,550
+Tersambung ke saluran
+
+14
+00:00:15,550 --> 00:00:16,760
+kaca yang sangat sempit.
+
+15
+00:00:17,260 --> 00:00:18,610
+Ketika ujungnya menerima
+
+16
+00:00:18,610 --> 00:00:19,560
+panas dari tubuh,
+
+17
+00:00:19,560 --> 00:00:20,500
+merkuri memuai.
+
+18
+00:00:20,900 --> 00:00:22,210
+Volumennya bertambah dan
+
+19
+00:00:22,210 --> 00:00:23,640
+mendorong garis perak naik
+
+20
+00:00:23,640 --> 00:00:24,940
+di saluran sempit itu.
+
+21
+00:00:25,300 --> 00:00:26,240
+Semakin tinggi suhu,
+
+22
+00:00:26,240 --> 00:00:27,800
+semakin jauh garisnya bergerak.
+
+23
+00:00:28,420 --> 00:00:30,020
+Angka pada kaca menunjukkan suhu
+
+24
+00:00:30,020 --> 00:00:30,910
+berdasarkan posisi
+
+25
+00:00:30,910 --> 00:00:32,060
+ujung garis tersebut.
+
+26
+00:00:32,860 --> 00:00:33,810
+Tapi ada satu bagian
+
+27
+00:00:33,810 --> 00:00:34,820
+kecil yang penting.
+
+28
+00:00:35,180 --> 00:00:36,170
+Penyempitan saluran
+
+29
+00:00:36,170 --> 00:00:37,740
+tepat di atas wadah merkuri.
+
+30
+00:00:38,200 --> 00:00:39,440
+Saat termometer dilepas
+
+31
+00:00:39,440 --> 00:00:40,360
+dan mulai dingin,
+
+32
+00:00:40,360 --> 00:00:42,080
+bagian ini menahan kolom merkuri
+
+33
+00:00:42,080 --> 00:00:43,580
+agar tidak langsung turun.
+
+34
+00:00:43,980 --> 00:00:45,310
+Jadi kita masih bisa membaca
+
+35
+00:00:45,310 --> 00:00:46,780
+suhu tertinggi yang tercapai.
+
+36
+00:00:47,200 --> 00:00:48,980
+Itulah alasan termometer jenis ini
+
+37
+00:00:48,980 --> 00:00:49,930
+perlu diatur ulang
+
+38
+00:00:49,930 --> 00:00:51,600
+sebelum pengukuran berikutnya.
+
+39
+00:00:52,400 --> 00:00:53,820
+Lalu kenapa sekarang lebih sering
+
+40
+00:00:53,820 --> 00:00:55,120
+terlihat termometer digital?
+
+41
+00:00:55,920 --> 00:00:57,850
+Kalau kaca termometer merkuri pecah,
+
+42
+00:00:57,850 --> 00:00:59,130
+merkurinya bisa tersebar
+
+43
+00:00:59,130 --> 00:01:00,360
+dan uapnya berbahaya.
+
+44
+00:01:00,720 --> 00:01:02,800
+Karena itu, banyak layanan kesehatan
+
+45
+00:01:02,800 --> 00:01:04,640
+beralih ke alat tanpa merkuri.
+
+46
+00:01:05,200 --> 00:01:07,520
+Jadi garis perak yang tampak sederhana itu
+
+47
+00:01:07,520 --> 00:01:08,840
+bekerja karena pemuayan,
+
+48
+00:01:08,840 --> 00:01:09,670
+saluran sempit,
+
+49
+00:01:09,670 --> 00:01:12,200
+dan penyempitan kecil yang menahan hasilnya.
+
+50
+00:01:13,930 --> 00:01:15,050
+Masih penasaran?
+
+51
+00:01:15,050 --> 00:01:17,390
+Lanjutkan belajarnya di MEDCOEL.
+
+52
+00:01:17,790 --> 00:01:19,410
+Jelajahi materi per bab,
+
+53
+00:01:19,410 --> 00:01:21,810
+latihan soal, dan simulasi dokter.
+
+54
+00:01:22,270 --> 00:01:24,530
+Semuanya gratis di medcoel.com.
+

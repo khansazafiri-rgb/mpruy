@@ -1,0 +1,456 @@
+{
+ "dur": 87.87,
+ "edu_end": 72.28,
+ "t_web": 72.73,
+ "t_outro": 73.93,
+ "outro_len": 10.84,
+ "sent": {
+  "s1": [
+   0.0,
+   2.18
+  ],
+  "s2": [
+   2.58,
+   5.82
+  ],
+  "s3": [
+   6.12,
+   6.9
+  ],
+  "s4": [
+   7.4,
+   9.46
+  ],
+  "s5": [
+   9.8,
+   11.24
+  ],
+  "s6": [
+   11.84,
+   14.24
+  ],
+  "s7": [
+   14.58,
+   16.66
+  ],
+  "s8": [
+   17.26,
+   20.4
+  ],
+  "s9": [
+   20.9,
+   24.84
+  ],
+  "s10": [
+   25.3,
+   27.7
+  ],
+  "s11": [
+   28.42,
+   31.96
+  ],
+  "s12": [
+   32.86,
+   34.72
+  ],
+  "s13": [
+   35.18,
+   37.64
+  ],
+  "s14": [
+   38.2,
+   43.48
+  ],
+  "s15": [
+   43.98,
+   46.68
+  ],
+  "s16": [
+   47.2,
+   51.5
+  ],
+  "s17": [
+   52.4,
+   55.02
+  ],
+  "s18": [
+   55.92,
+   60.26
+  ],
+  "s19": [
+   60.72,
+   64.54
+  ],
+  "s20": [
+   65.2,
+   72.1
+  ]
+ },
+ "sent_text": {
+  "s1": "Pernah lihat termometer air raksa?",
+  "s2": "Setelah dilepas dari tubuh, garis peraknya tetap berhenti di angka tadi.",
+  "s3": "Kok bisa?",
+  "s4": "Pertama, air raksa itu sebenarnya merkuri.",
+  "s5": "Logam yang cair pada suhu ruang.",
+  "s6": "Di ujung termometer, ada wadah kecil berisi merkuri.",
+  "s7": "Tersambung ke saluran kaca yang sangat sempit.",
+  "s8": "Ketika ujungnya menerima panas dari tubuh, merkuri memuai.",
+  "s9": "Volumennya bertambah dan mendorong garis perak naik di saluran sempit itu.",
+  "s10": "Semakin tinggi suhu, semakin jauh garisnya bergerak.",
+  "s11": "Angka pada kaca menunjukkan suhu berdasarkan posisi ujung garis tersebut.",
+  "s12": "Tapi ada satu bagian kecil yang penting.",
+  "s13": "Penyempitan saluran tepat di atas wadah merkuri.",
+  "s14": "Saat termometer dilepas dan mulai dingin, bagian ini menahan kolom merkuri agar tidak langsung turun.",
+  "s15": "Jadi kita masih bisa membaca suhu tertinggi yang tercapai.",
+  "s16": "Itulah alasan termometer jenis ini perlu diatur ulang sebelum pengukuran berikutnya.",
+  "s17": "Lalu kenapa sekarang lebih sering terlihat termometer digital?",
+  "s18": "Kalau kaca termometer merkuri pecah, merkurinya bisa tersebar dan uapnya berbahaya.",
+  "s19": "Karena itu, banyak layanan kesehatan beralih ke alat tanpa merkuri.",
+  "s20": "Jadi garis perak yang tampak sederhana itu bekerja karena pemuayan, saluran sempit, dan penyempitan kecil yang menahan hasilnya."
+ },
+ "w": {
+  "airRaksa": 8.18,
+  "merkuri": 9.08,
+  "logam": 9.8,
+  "cair": 10.28,
+  "ruang": 10.96,
+  "wadah": 13.0,
+  "merkuri2": 13.76,
+  "saluran": 15.32,
+  "sempit": 16.34,
+  "panas": 18.48,
+  "tubuh": 18.94,
+  "memuai": 19.92,
+  "bertambah": 21.4,
+  "mendorong": 22.32,
+  "garis": 22.94,
+  "naik": 23.52,
+  "semakin": 25.3,
+  "jauh": 26.78,
+  "angka": 28.42,
+  "ujung": 31.04,
+  "penting": 34.3,
+  "penyempitan": 35.18,
+  "saluran2": 35.7,
+  "wadah2": 37.04,
+  "dilepas": 38.88,
+  "dingin": 39.94,
+  "menahan": 41.18,
+  "kolom": 41.58,
+  "tidak": 42.7,
+  "turun": 43.14,
+  "tertinggi": 45.64,
+  "diatur": 49.38,
+  "ulang": 49.8,
+  "digital": 54.62,
+  "pecah": 57.4,
+  "tersebar": 58.66,
+  "uapnya": 59.44,
+  "tanpa": 63.94,
+  "merkuri3": 64.12,
+  "pemuayan": 68.06,
+  "saluran3": 69.1,
+  "penyempitan2": 70.34,
+  "menahan2": 71.32,
+  "hasilnya": 71.64
+ },
+ "colKeys": [
+  [
+   17.26,
+   34.5
+  ],
+  [
+   18.5,
+   34.5
+  ],
+  [
+   19.6,
+   34.7
+  ],
+  [
+   21.4,
+   35.7
+  ],
+  [
+   23.4,
+   37.0
+  ],
+  [
+   24.8,
+   37.5
+  ]
+ ],
+ "t_sep": 40.35,
+ "cap": [
+  [
+   0.0,
+   0.79,
+   "Pernah lihat"
+  ],
+  [
+   0.79,
+   2.28,
+   "termometer air raksa?"
+  ],
+  [
+   2.58,
+   3.83,
+   "Setelah dilepas dari tubuh,"
+  ],
+  [
+   3.83,
+   4.76,
+   "garis peraknya tetap"
+  ],
+  [
+   4.76,
+   5.92,
+   "berhenti di angka tadi."
+  ],
+  [
+   6.12,
+   7.0,
+   "Kok bisa?"
+  ],
+  [
+   7.4,
+   8.3,
+   "Pertama, air raksa"
+  ],
+  [
+   8.3,
+   9.56,
+   "itu sebenarnya merkuri."
+  ],
+  [
+   9.8,
+   10.5,
+   "Logam yang cair"
+  ],
+  [
+   10.5,
+   11.34,
+   "pada suhu ruang."
+  ],
+  [
+   11.84,
+   12.78,
+   "Di ujung termometer,"
+  ],
+  [
+   12.78,
+   14.34,
+   "ada wadah kecil berisi merkuri."
+  ],
+  [
+   14.58,
+   15.55,
+   "Tersambung ke saluran"
+  ],
+  [
+   15.55,
+   16.76,
+   "kaca yang sangat sempit."
+  ],
+  [
+   17.26,
+   18.61,
+   "Ketika ujungnya menerima"
+  ],
+  [
+   18.61,
+   19.56,
+   "panas dari tubuh,"
+  ],
+  [
+   19.56,
+   20.5,
+   "merkuri memuai."
+  ],
+  [
+   20.9,
+   22.21,
+   "Volumennya bertambah dan"
+  ],
+  [
+   22.21,
+   23.64,
+   "mendorong garis perak naik"
+  ],
+  [
+   23.64,
+   24.94,
+   "di saluran sempit itu."
+  ],
+  [
+   25.3,
+   26.24,
+   "Semakin tinggi suhu,"
+  ],
+  [
+   26.24,
+   27.8,
+   "semakin jauh garisnya bergerak."
+  ],
+  [
+   28.42,
+   30.02,
+   "Angka pada kaca menunjukkan suhu"
+  ],
+  [
+   30.02,
+   30.91,
+   "berdasarkan posisi"
+  ],
+  [
+   30.91,
+   32.06,
+   "ujung garis tersebut."
+  ],
+  [
+   32.86,
+   33.81,
+   "Tapi ada satu bagian"
+  ],
+  [
+   33.81,
+   34.82,
+   "kecil yang penting."
+  ],
+  [
+   35.18,
+   36.17,
+   "Penyempitan saluran"
+  ],
+  [
+   36.17,
+   37.74,
+   "tepat di atas wadah merkuri."
+  ],
+  [
+   38.2,
+   39.44,
+   "Saat termometer dilepas"
+  ],
+  [
+   39.44,
+   40.36,
+   "dan mulai dingin,"
+  ],
+  [
+   40.36,
+   42.08,
+   "bagian ini menahan kolom merkuri"
+  ],
+  [
+   42.08,
+   43.58,
+   "agar tidak langsung turun."
+  ],
+  [
+   43.98,
+   45.31,
+   "Jadi kita masih bisa membaca"
+  ],
+  [
+   45.31,
+   46.78,
+   "suhu tertinggi yang tercapai."
+  ],
+  [
+   47.2,
+   48.98,
+   "Itulah alasan termometer jenis ini"
+  ],
+  [
+   48.98,
+   49.93,
+   "perlu diatur ulang"
+  ],
+  [
+   49.93,
+   51.6,
+   "sebelum pengukuran berikutnya."
+  ],
+  [
+   52.4,
+   53.82,
+   "Lalu kenapa sekarang lebih sering"
+  ],
+  [
+   53.82,
+   55.12,
+   "terlihat termometer digital?"
+  ],
+  [
+   55.92,
+   57.85,
+   "Kalau kaca termometer merkuri pecah,"
+  ],
+  [
+   57.85,
+   59.13,
+   "merkurinya bisa tersebar"
+  ],
+  [
+   59.13,
+   60.36,
+   "dan uapnya berbahaya."
+  ],
+  [
+   60.72,
+   62.8,
+   "Karena itu, banyak layanan kesehatan"
+  ],
+  [
+   62.8,
+   64.64,
+   "beralih ke alat tanpa merkuri."
+  ],
+  [
+   65.2,
+   67.52,
+   "Jadi garis perak yang tampak sederhana itu"
+  ],
+  [
+   67.52,
+   68.84,
+   "bekerja karena pemuayan,"
+  ],
+  [
+   68.84,
+   69.67,
+   "saluran sempit,"
+  ],
+  [
+   69.67,
+   72.2,
+   "dan penyempitan kecil yang menahan hasilnya."
+  ],
+  [
+   73.93,
+   75.05,
+   "Masih penasaran?"
+  ],
+  [
+   75.05,
+   77.39,
+   "Lanjutkan belajarnya di MEDCOEL."
+  ],
+  [
+   77.79,
+   79.41,
+   "Jelajahi materi per bab,"
+  ],
+  [
+   79.41,
+   81.81,
+   "latihan soal, dan simulasi dokter."
+  ],
+  [
+   82.27,
+   84.53,
+   "Semuanya gratis di medcoel.com."
+  ]
+ ]
+}

@@ -1,0 +1,272 @@
+{
+ "narasi_dipotong_di": 72.28,
+ "master_mulai": 73.93,
+ "durasi": 87.87,
+ "skalar_puncak": 0.8776,
+ "sfx": [
+  {
+   "t": 0.55,
+   "sfx": "tarik-termometer"
+  },
+  {
+   "t": 4.15,
+   "sfx": "chip-hook"
+  },
+  {
+   "t": 6.4,
+   "sfx": "masuk-penampang"
+  },
+  {
+   "t": 8.18,
+   "sfx": "label-airraksa"
+  },
+  {
+   "t": 9.8,
+   "sfx": "logam-cair"
+  },
+  {
+   "t": 13.0,
+   "sfx": "label-wadah"
+  },
+  {
+   "t": 15.32,
+   "sfx": "label-saluran"
+  },
+  {
+   "t": 17.26,
+   "sfx": "kontak-hangat"
+  },
+  {
+   "t": 18.982,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 19.412,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 19.762,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 20.004,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 20.202,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 20.378,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 20.542,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 20.698,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 20.852,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 21.006,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 21.16,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 21.318,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 21.482,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 21.638,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 21.788,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 21.932,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 22.072,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 22.21,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 22.35,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 22.49,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 22.634,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 22.784,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 22.94,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 23.108,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 23.296,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 23.516,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 23.768,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 24.05,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 24.354,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 24.658,
+   "sfx": "tik-kolom"
+  },
+  {
+   "t": 25.3,
+   "sfx": "ghost"
+  },
+  {
+   "t": 31.04,
+   "sfx": "baca-angka"
+  },
+  {
+   "t": 34.3,
+   "sfx": "bagian-penting"
+  },
+  {
+   "t": 35.18,
+   "sfx": "label-penyempitan"
+  },
+  {
+   "t": 37.04,
+   "sfx": "label-wadah2"
+  },
+  {
+   "t": 38.88,
+   "sfx": "dilepas"
+  },
+  {
+   "t": 39.94,
+   "sfx": "mulai-dingin"
+  },
+  {
+   "t": 40.35,
+   "sfx": "kolom-terputus"
+  },
+  {
+   "t": 41.18,
+   "sfx": "menahan-klik"
+  },
+  {
+   "t": 45.64,
+   "sfx": "baca-tertinggi"
+  },
+  {
+   "t": 49.38,
+   "sfx": "diatur-ulang"
+  },
+  {
+   "t": 50.9,
+   "sfx": "reset-geser"
+  },
+  {
+   "t": 54.87,
+   "sfx": "digital"
+  },
+  {
+   "t": 57.4,
+   "sfx": "kaca-retak"
+  },
+  {
+   "t": 58.66,
+   "sfx": "butir-merkuri"
+  },
+  {
+   "t": 58.77,
+   "sfx": "butir-merkuri"
+  },
+  {
+   "t": 58.86,
+   "sfx": "butir-merkuri"
+  },
+  {
+   "t": 59.0,
+   "sfx": "butir-merkuri"
+  },
+  {
+   "t": 59.11,
+   "sfx": "butir-merkuri"
+  },
+  {
+   "t": 59.44,
+   "sfx": "uap"
+  },
+  {
+   "t": 62.2,
+   "sfx": "beep-digital-raka"
+  },
+  {
+   "t": 63.94,
+   "sfx": "bebas-merkuri"
+  },
+  {
+   "t": 68.06,
+   "sfx": "memuai"
+  },
+  {
+   "t": 69.1,
+   "sfx": "naik"
+  },
+  {
+   "t": 70.34,
+   "sfx": "tertahan"
+  },
+  {
+   "t": 71.64,
+   "sfx": "hasil"
+  },
+  {
+   "t": 72.43,
+   "sfx": "masuk-outro"
+  },
+  {
+   "t": 82.13,
+   "sfx": "logo-medcoel"
+  }
+ ]
+}
