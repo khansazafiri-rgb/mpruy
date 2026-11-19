@@ -1400,6 +1400,13 @@ function setWorkspace(ws) {
   if (ws === 'learn') learn?.render();
   document.body.dataset.learning = ws === 'learn' ? '1' : '';
 }
+/** Optional deep link used by MEDCOEL Lab tracks: ?scenario=<key>&ws=<imaging|ausc|physio|patho|learn>. Unknown values are ignored. */
+function applyDeepLink() {
+  const sc = QUERY.get('scenario'), ws = QUERY.get('ws');
+  if (sc && SCENARIOS[sc] && sc !== S.scenario) setScenario(sc, ws !== 'ausc');
+  if (ws && WS_DEFAULT_TAB[ws] && ws !== S.ws) setWorkspace(ws);
+  if (sc || ws) refreshAll();
+}
 function organsHidden() { return S.appearance.skinOpacity >= 0.999 && S.appearance.cutaway === 'none'; }
 /** Workstation display modes (atlas dataset): what is drawn, never what is imaged. */
 export const DISPLAY_MODES = {
@@ -1481,6 +1488,7 @@ async function boot() {
     scene.setInteraction('place'); renderPad(); startTour();
     if (DATASET === 'atlas') setDisplayMode('transparent'); else S.appearance.mode = 'custom';
     applyAppearance(); refreshAll(); renderAtlasPanel(); loadComparison();
+    applyDeepLink();
     document.body.dataset.ready = '1';
     requestAnimationFrame(loop);
   } catch (e) { fail(e.message || String(e)); document.body.dataset.ready = 'error'; }

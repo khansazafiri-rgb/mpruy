@@ -1,0 +1,114 @@
+[
+ {
+  "find": "^(?:SISTEM (?:RESPIRASI|KARDIOVASKULAR) — MEDCOEL|MEDCOEL\\s*[|•—]\\s*SISTEM KARDIOVASKULAR|SISTEM INDRA: THT — (?:CATATAN )?MEDCOEL|Sistem Indra: THT — MEDCOEL|CATATAN SISTEM INDRA: THT — MEDCOEL|Catatan komprehensif Sistem Kardiovaskular — MEDCOEL)\\b.*$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^(?:DISCLAIMER|Catatan MEDCOEL)\\s*:",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^Materi (?:ini )?untuk pembelajaran",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^(?i:bab (?:selanjutnya|berikutnya)(?: menurut| sesuai)? roadmap)",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^(?i:bab \\d+ mengikuti roadmap)",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^MATA KULIAH: SISTEM RESPIRASI",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^Target: mahasiswa kedokteran",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^Progres: ",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^Materi ini mengikuti urutan roadmap",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^\\d+\\.\\d+ GAMBAR \\d+\\.\\d+ — ",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^Rujukan utama diperiksa",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "\\s*Bab selanjutnya adalah BAB \\d+ — [^.]*? sesuai roadmap\\.",
+  "replace": "",
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^(?:Referensi utama pembahasan|Sumber dasar|Rujukan inti|PEDOMAN UTAMA|PEDOMAN TERKONFIRMASI|REFERENSI TERBARU|Acuan utama|Pembaruan acuan|RUJUKAN PALING BARU|RUJUKAN UTAMA|Referensi primer diperiksa|REFERENSI UTAMA YANG DIVERIFIKASI)\\b",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^(?:KESELAMATAN|CATATAN KEAMANAN|KETENTUAN KEAMANAN|DISCLAIMER REFERENSI|Disclaimer klinis|PERINGATAN: Catatan untuk mahasiswa)\\\\s*:",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^[█░▓▒ ]{5,}",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ },
+ {
+  "find": "^\\[[^\\]]{3,90}\\]$",
+  "drop": true,
+  "regex": true,
+  "all": true,
+  "why": "catatan internal penyusun (progres/roadmap/rekap/disclaimer) dibuang dari catatan belajar"
+ }
+]

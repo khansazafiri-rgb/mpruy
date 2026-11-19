@@ -1,0 +1,35 @@
+Ini sama-sama gambar irisan otak, tapi kenapa bagian yang terang dan gelap terlihat berbeda?
+
+Gambar pertama adalah CT scan.
+
+Alat ini mengambil data menggunakan sinar-X dari berbagai arah.
+
+Jaringan tubuh menahan sinar-X dalam jumlah yang berbeda.
+
+Pada contoh ini, tulang tengkorak tampak terang.
+
+Gambar kedua adalah MRI.
+
+Alat ini menggunakan medan magnet dan gelombang radio untuk menangkap sinyal dari jaringan tubuh, terutama yang mengandung hidrogen.
+
+MRI juga punya beberapa jenis pengaturan gambar yang disebut sekuens.
+
+Pada contoh MRI T2 ini, cairan tampak terang, sementara tulang tampak gelap.
+
+Jadi, perbedaan warna pada CT dan MRI bukan berarti anatominya berubah.
+
+Yang berbeda adalah cara alat menangkap sinyal dan cara gambar itu ditampilkan.
+
+Keduanya digunakan untuk menjawab pertanyaan klinis yang berbeda.
+
+Mau belajar mengenali anatomi dengan lebih jelas?
+
+Di MEDCOEL, kamu bisa membuka materi FK per bab,
+
+mengerjakan soal beserta pembahasannya,
+
+lalu mengeksplorasi simulasi CT dan USG di Live 4D Lab.
+
+Simulasi ini untuk belajar, bukan untuk diagnosis.
+
+Belajar gratis di medcoel.com.

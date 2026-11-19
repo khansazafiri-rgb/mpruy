@@ -1,0 +1,236 @@
+[
+  {
+    "id": "hook",
+    "tag": "awal",
+    "f": 0,
+    "time": 0
+  },
+  {
+    "id": "hook",
+    "tag": "tengah",
+    "f": 119,
+    "time": 3.966666666666667
+  },
+  {
+    "id": "hook",
+    "tag": "akhir",
+    "f": 238,
+    "time": 7.933333333333334
+  },
+  {
+    "id": "ct-scanner",
+    "tag": "awal",
+    "f": 239,
+    "time": 7.966666666666667
+  },
+  {
+    "id": "ct-scanner",
+    "tag": "tengah",
+    "f": 323,
+    "time": 10.766666666666667
+  },
+  {
+    "id": "ct-scanner",
+    "tag": "akhir",
+    "f": 406,
+    "time": 13.533333333333333
+  },
+  {
+    "id": "ct-image",
+    "tag": "awal",
+    "f": 407,
+    "time": 13.566666666666666
+  },
+  {
+    "id": "ct-image",
+    "tag": "tengah",
+    "f": 504,
+    "time": 16.8
+  },
+  {
+    "id": "ct-image",
+    "tag": "akhir",
+    "f": 600,
+    "time": 20
+  },
+  {
+    "id": "mri-scanner",
+    "tag": "awal",
+    "f": 601,
+    "time": 20.033333333333335
+  },
+  {
+    "id": "mri-scanner",
+    "tag": "tengah",
+    "f": 725,
+    "time": 24.166666666666668
+  },
+  {
+    "id": "mri-scanner",
+    "tag": "akhir",
+    "f": 848,
+    "time": 28.266666666666666
+  },
+  {
+    "id": "sekuens",
+    "tag": "awal",
+    "f": 849,
+    "time": 28.3
+  },
+  {
+    "id": "sekuens",
+    "tag": "tengah",
+    "f": 916,
+    "time": 30.533333333333335
+  },
+  {
+    "id": "sekuens",
+    "tag": "akhir",
+    "f": 982,
+    "time": 32.733333333333334
+  },
+  {
+    "id": "mri-image",
+    "tag": "awal",
+    "f": 983,
+    "time": 32.766666666666666
+  },
+  {
+    "id": "mri-image",
+    "tag": "tengah",
+    "f": 1067,
+    "time": 35.56666666666667
+  },
+  {
+    "id": "mri-image",
+    "tag": "akhir",
+    "f": 1150,
+    "time": 38.333333333333336
+  },
+  {
+    "id": "banding-tulang",
+    "tag": "awal",
+    "f": 1151,
+    "time": 38.36666666666667
+  },
+  {
+    "id": "banding-tulang",
+    "tag": "tengah",
+    "f": 1218,
+    "time": 40.6
+  },
+  {
+    "id": "banding-tulang",
+    "tag": "akhir",
+    "f": 1285,
+    "time": 42.833333333333336
+  },
+  {
+    "id": "banding-cairan",
+    "tag": "awal",
+    "f": 1286,
+    "time": 42.86666666666667
+  },
+  {
+    "id": "banding-cairan",
+    "tag": "tengah",
+    "f": 1353,
+    "time": 45.1
+  },
+  {
+    "id": "banding-cairan",
+    "tag": "akhir",
+    "f": 1420,
+    "time": 47.333333333333336
+  },
+  {
+    "id": "mekanisme",
+    "tag": "awal",
+    "f": 1421,
+    "time": 47.36666666666667
+  },
+  {
+    "id": "mekanisme",
+    "tag": "tengah",
+    "f": 1485,
+    "time": 49.5
+  },
+  {
+    "id": "mekanisme",
+    "tag": "akhir",
+    "f": 1549,
+    "time": 51.63333333333333
+  },
+  {
+    "id": "klinis",
+    "tag": "awal",
+    "f": 1550,
+    "time": 51.666666666666664
+  },
+  {
+    "id": "klinis",
+    "tag": "tengah",
+    "f": 1602,
+    "time": 53.4
+  },
+  {
+    "id": "klinis",
+    "tag": "akhir",
+    "f": 1654,
+    "time": 55.13333333333333
+  },
+  {
+    "id": "materi",
+    "tag": "awal",
+    "f": 1655,
+    "time": 55.166666666666664
+  },
+  {
+    "id": "materi",
+    "tag": "tengah",
+    "f": 1742,
+    "time": 58.06666666666667
+  },
+  {
+    "id": "materi",
+    "tag": "akhir",
+    "f": 1828,
+    "time": 60.93333333333333
+  },
+  {
+    "id": "soal",
+    "tag": "awal",
+    "f": 1829,
+    "time": 60.96666666666667
+  },
+  {
+    "id": "soal",
+    "tag": "tengah",
+    "f": 1919,
+    "time": 63.96666666666667
+  },
+  {
+    "id": "soal",
+    "tag": "akhir",
+    "f": 2008,
+    "time": 66.93333333333334
+  },
+  {
+    "id": "lab",
+    "tag": "awal",
+    "f": 2009,
+    "time": 66.96666666666667
+  },
+  {
+    "id": "lab",
+    "tag": "tengah",
+    "f": 2149,
+    "time": 71.63333333333334
+  },
+  {
+    "id": "lab",
+    "tag": "akhir",
+    "f": 2288,
+    "time": 76.26666666666667
+  }
+]

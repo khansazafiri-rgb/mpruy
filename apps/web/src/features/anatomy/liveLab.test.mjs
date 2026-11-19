@@ -26,3 +26,11 @@ test('liveLabAvailability: ready when installed, missing when absent or answered
   assert.equal(await liveLabAvailability(gone, { fresh: true }), 'missing');
   assert.equal(await liveLabAvailability(async () => { throw new Error('offline'); }, { fresh: true }), 'missing');
 });
+
+test('liveLabSrc passes only the scenario/workspace deep link to the frame', async () => {
+  const { liveLabSrc } = await import('./liveLab.mjs');
+  assert.equal(liveLabSrc(''), '/anatomy/4d-lab/');
+  assert.equal(liveLabSrc('?scenario=effusion&ws=ausc'), '/anatomy/4d-lab/?scenario=effusion&ws=ausc');
+  assert.equal(liveLabSrc('?scenario=hfref&dataset=phantom&atlasBase=//evil.example/'), '/anatomy/4d-lab/?scenario=hfref');
+  assert.equal(liveLabSrc('?scenario=<script>&ws=AUSC'), '/anatomy/4d-lab/');
+});

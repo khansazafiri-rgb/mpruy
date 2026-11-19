@@ -1,0 +1,384 @@
+{
+ "narasi_dipotong_di": 85.52,
+ "master_mulai": 87.17,
+ "durasi": 101.11,
+ "skalar_puncak": 0.8559,
+ "sfx": [
+  {
+   "t": 0.209,
+   "sfx": "bip-denyut"
+  },
+  {
+   "t": 1.047,
+   "sfx": "bip-denyut"
+  },
+  {
+   "t": 1.885,
+   "sfx": "bip-denyut"
+  },
+  {
+   "t": 2.24,
+   "sfx": "kartu-hb"
+  },
+  {
+   "t": 2.723,
+   "sfx": "bip-denyut"
+  },
+  {
+   "t": 2.8,
+   "sfx": "rendah"
+  },
+  {
+   "t": 3.72,
+   "sfx": "kok-bisa"
+  },
+  {
+   "t": 6.5,
+   "sfx": "masuk-pembuluh"
+  },
+  {
+   "t": 8.92,
+   "sfx": "persentase"
+  },
+  {
+   "t": 10.78,
+   "sfx": "membawa-O2"
+  },
+  {
+   "t": 12.28,
+   "sfx": "tes-hb"
+  },
+  {
+   "t": 13.6,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 13.69,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 13.78,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 13.87,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 13.96,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 14.05,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 14.14,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 14.23,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 14.32,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 14.41,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 14.5,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 14.59,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 14.68,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 14.77,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 14.86,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 14.95,
+   "sfx": "hitung-hb"
+  },
+  {
+   "t": 16.74,
+   "sfx": "protein"
+  },
+  {
+   "t": 17.42,
+   "sfx": "sel-darah"
+  },
+  {
+   "t": 18.5,
+   "sfx": "o2-ke-jaringan"
+  },
+  {
+   "t": 18.85,
+   "sfx": "o2-ke-jaringan"
+  },
+  {
+   "t": 19.2,
+   "sfx": "o2-ke-jaringan"
+  },
+  {
+   "t": 19.55,
+   "sfx": "o2-ke-jaringan"
+  },
+  {
+   "t": 21.05,
+   "sfx": "lanset-klik"
+  },
+  {
+   "t": 23.0,
+   "sfx": "tetes-terbentuk"
+  },
+  {
+   "t": 25.3,
+   "sfx": "kuvet-sentuh"
+  },
+  {
+   "t": 26.4,
+   "sfx": "kapiler-tarik"
+  },
+  {
+   "t": 27.7,
+   "sfx": "saluran-sempit"
+  },
+  {
+   "t": 30.06,
+   "sfx": "gaya-kapiler"
+  },
+  {
+   "t": 33.54,
+   "sfx": "reagen"
+  },
+  {
+   "t": 35.4,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 35.6,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 35.8,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 36.0,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 36.2,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 36.4,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 36.6,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 36.8,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 36.84,
+   "sfx": "hb-terlepas"
+  },
+  {
+   "t": 37.0,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 37.2,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 37.4,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 37.6,
+   "sfx": "sel-terbuka"
+  },
+  {
+   "t": 38.8,
+   "sfx": "reagen-2"
+  },
+  {
+   "t": 40.84,
+   "sfx": "bentuk-terukur"
+  },
+  {
+   "t": 43.6,
+   "sfx": "laci-geser"
+  },
+  {
+   "t": 45.45,
+   "sfx": "laci-tutup"
+  },
+  {
+   "t": 45.9,
+   "sfx": "cahaya-nyala"
+  },
+  {
+   "t": 47.52,
+   "sfx": "sensor-baca"
+  },
+  {
+   "t": 49.38,
+   "sfx": "cahaya-diserap"
+  },
+  {
+   "t": 50.56,
+   "sfx": "dua-panjang-gelombang"
+  },
+  {
+   "t": 52.54,
+   "sfx": "koreksi"
+  },
+  {
+   "t": 56.9,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 57.0,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 57.1,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 57.2,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 57.3,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 57.4,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 57.5,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 57.6,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 57.7,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 57.8,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 57.9,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 58.0,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 58.1,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 58.2,
+   "sfx": "hitung-hasil"
+  },
+  {
+   "t": 58.4,
+   "sfx": "hasil-hb"
+  },
+  {
+   "t": 61.4,
+   "sfx": "kartu-pantau"
+  },
+  {
+   "t": 62.1,
+   "sfx": "kartu-pantau"
+  },
+  {
+   "t": 62.8,
+   "sfx": "kartu-pantau"
+  },
+  {
+   "t": 65.9,
+   "sfx": "tanda-tanya"
+  },
+  {
+   "t": 66.15,
+   "sfx": "tanda-tanya"
+  },
+  {
+   "t": 66.4,
+   "sfx": "tanda-tanya"
+  },
+  {
+   "t": 66.65,
+   "sfx": "tanda-tanya"
+  },
+  {
+   "t": 69.4,
+   "sfx": "gelembung"
+  },
+  {
+   "t": 71.16,
+   "sfx": "kurang-tepat"
+  },
+  {
+   "t": 76.38,
+   "sfx": "periksa-lanjut"
+  },
+  {
+   "t": 78.3,
+   "sfx": "kartu-spo2"
+  },
+  {
+   "t": 79.94,
+   "sfx": "proporsi"
+  },
+  {
+   "t": 80.0,
+   "sfx": "kartu-hb-2"
+  },
+  {
+   "t": 83.74,
+   "sfx": "kadar"
+  },
+  {
+   "t": 84.94,
+   "sfx": "akhir"
+  },
+  {
+   "t": 85.67,
+   "sfx": "masuk-outro"
+  },
+  {
+   "t": 95.37,
+   "sfx": "logo-medcoel"
+  }
+ ]
+}

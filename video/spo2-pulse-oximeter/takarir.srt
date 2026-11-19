@@ -1,0 +1,104 @@
+1
+00:00:00,300 --> 00:00:04,900
+Alat kecil yang dijepit di jari ini bisa menampilkan angka oksigen dalam beberapa detik.
+
+2
+00:00:05,340 --> 00:00:06,600
+Tapi bagaimana ia tahu?
+
+3
+00:00:07,140 --> 00:00:09,800
+Di satu sisi penjepit ada lampu merah dan inframerah.
+
+4
+00:00:09,940 --> 00:00:11,000
+Di sisi lain ada sensor.
+
+5
+00:00:11,660 --> 00:00:13,350
+Cahaya melewati ujung jari,
+
+6
+00:00:13,420 --> 00:00:16,300
+lalu sensor membaca berapa banyak yang berhasil menembusnya.
+
+7
+00:00:17,160 --> 00:00:20,250
+Hemoglobin yang membawa oksigen dan hemoglobin yang tidak membawanya
+
+8
+00:00:20,320 --> 00:00:22,750
+menyerap kedua cahaya itu dengan pola berbeda.
+
+9
+00:00:23,660 --> 00:00:26,800
+Alat juga mencari perubahan cahaya yang mengikuti denyut darah arteri.
+
+10
+00:00:26,780 --> 00:00:30,900
+Dari perbandingan sinyal inilah, ia memperkirakan SpO₂,
+
+11
+00:00:31,640 --> 00:00:34,450
+persentase hemoglobin dalam darah arteri yang membawa oksigen.
+
+12
+00:00:35,220 --> 00:00:39,400
+Angka lain yang biasanya muncul adalah PR atau jumlah denyut nadi per menit.
+
+13
+00:00:39,880 --> 00:00:42,800
+Pulse oximeter berguna untuk memantau pasien saat operasi,
+
+14
+00:00:43,140 --> 00:00:44,800
+menilai orang dengan keluhan pernapasan,
+
+15
+00:00:45,020 --> 00:00:49,200
+serta mengikuti kondisi tertentu, seperti penyakit paru atau penggunaan terapi oksigen.
+
+16
+00:00:49,940 --> 00:00:52,000
+Tetapi angka di layar bukan diagnosis.
+
+17
+00:00:51,940 --> 00:00:59,200
+Jari yang dingin, gerakan, aliran darah yang lemah, cat kuku dan warna kulit dapat memengaruhi akurasinya.
+
+18
+00:00:59,620 --> 00:01:01,800
+Alat ini juga tidak mengukur karbon dioksida.
+
+19
+00:01:02,260 --> 00:01:08,700
+Bahkan pada keracunan karbon monoksida, pulse oximeter biasa bisa memberi angka yang tampak meyakinkan padahal kondisinya berbahaya.
+
+20
+00:01:09,500 --> 00:01:14,000
+Saat memakainya, hangatkan tangan, lepaskan cat kuku pada jari yang diperiksa,
+
+21
+00:01:14,340 --> 00:01:16,700
+diam sejenak, dan tunggu angkanya stabil.
+
+22
+00:01:17,340 --> 00:01:19,420
+Selalu lihat juga gejala dan perubahan angkanya.
+
+23
+00:01:19,400 --> 00:01:23,950
+Kalau sesak atau kondisi memburuk, jangan menunggu satu angka untuk mencari pertolongan.
+
+24
+00:01:25,850 --> 00:01:29,210
+Masih penasaran? Lanjutkan belajarnya di MEDCOEL.
+
+25
+00:01:29,710 --> 00:01:33,630
+Jelajahi materi per bab, latihan soal, dan simulasi dokter.
+
+26
+00:01:34,190 --> 00:01:36,310
+Semuanya gratis di medcoel.com.
+

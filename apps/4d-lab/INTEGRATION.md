@@ -13,7 +13,8 @@ The production/default branch (`claude/focused-wozniak-1ayrxa`) and `main` were 
 
 ### Atlas integration (this branch)
 - The lab's default dataset is `data/atlas/` (CT/labels/skin generated from the atlas meshes). The procedural
-  phantom stays available as `?dataset=phantom`.
+  phantom stays available as `?dataset=phantom`. Lab tracks may open `/anatomy/live?scenario=…&ws=…`; the host forwards only
+  those two keys to the frame (see `PHASE_STATUS.md`, "Deep link").
 - The 3D anatomy is loaded at runtime from the **atlas's own URL** (`/anatomy/viewer/`, same origin): no GLB or Draco
   decoder is copied into `apps/4d-lab/dist` (the Vite config strips three's bundled decoder defaults). The browser
   cache is shared with the Atlas viewer. Override for staging with `?atlasBase=/some/path/` or `VITE_ATLAS_BASE`.

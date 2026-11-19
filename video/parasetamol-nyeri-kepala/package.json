@@ -1,0 +1,15 @@
+{
+  "name": "medcoel-parasetamol-nyeri-kepala",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "python3 prepare.py",
+    "render": "python3 prepare.py && node render.mjs",
+    "stills": "node render.mjs --stills",
+    "cover": "node render.mjs --cover",
+    "preview": "python3 serve.py"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "0.1.100"
+  }
+}

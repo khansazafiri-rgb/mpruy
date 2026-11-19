@@ -39,7 +39,7 @@ BOX_TITLE = {
 }
 GENERIC_BOX = re.compile(r'^(clinical pearl|clinical anchor|exam pearl|exam trap|poin penting|poin ujian|catatan(?: penting)?|korelasi klinis|'
                          r'jebakan(?: ujian| soal)?|mnemonic|high-yield|konsep high-yield|clue praktikum|penting|praktikum|contoh klinis|klinis)s?$', re.I)
-JUNK_TERM = re.compile(r'^(sumber (?:visual|gambar|ilustrasi)|credit|kredit|penting|catatan|tambahan|practical|ingat|tips?|trap|jebakan|high-yield|clue|shortcut|mnemonic|korelasi|aturan|cara pikir|cara hafal|cara membaca|poin ujian|fokus|bedakan)\b', re.I)
+JUNK_TERM = re.compile(r'^(rujukan|referensi|sumber dasar|acuan|sumber (?:visual|gambar|ilustrasi)|credit|kredit|penting|catatan|tambahan|practical|ingat|tips?|trap|jebakan|high-yield|clue|shortcut|mnemonic|korelasi|aturan|cara pikir|cara hafal|cara membaca|poin ujian|fokus|bedakan)\b', re.I)
 FRAG_END = re.compile(r'\b(sebagai|dengan|oleh|dari|pada|untuk|yang|dan|atau|ke|di|dalam|melalui|menjadi)$', re.I)
 FRAG_START = re.compile(r'^(di|pada|dalam|untuk|secara|jika|bila|saat|karena|dengan|dari|ke|oleh|tanpa|setelah|sebelum|selama|ketika|akibat|hasilnya|bila|maka|jadi|artinya|sehingga|namun|tetapi|oleh karena|selain|kemudian|lalu|juga)\b', re.I)
 LIST_NOUN = re.compile(r'\b(jenis|tipe|macam|ciri|faktor|penyebab|langkah|urutan|tahap|komponen|contoh|kriteria|indikasi|kontraindikasi|efek|gejala|tanda|'

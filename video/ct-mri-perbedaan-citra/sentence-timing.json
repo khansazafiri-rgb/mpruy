@@ -1,0 +1,128 @@
+[
+  {
+    "sourceStart": 0,
+    "sourceEnd": 7.2,
+    "start": 0,
+    "end": 7.2,
+    "text": "Ini sama-sama gambar irisan otak, tapi kenapa bagian yang terang dan gelap terlihat berbeda?"
+  },
+  {
+    "sourceStart": 7.96,
+    "sourceEnd": 9.38,
+    "start": 7.96,
+    "end": 9.38,
+    "text": "Gambar pertama adalah CT scan."
+  },
+  {
+    "sourceStart": 9.94,
+    "sourceEnd": 13.38,
+    "start": 9.94,
+    "end": 13.38,
+    "text": "Alat ini mengambil data menggunakan sinar-X dari berbagai arah."
+  },
+  {
+    "sourceStart": 13.56,
+    "sourceEnd": 16.16,
+    "start": 13.56,
+    "end": 16.16,
+    "text": "Jaringan tubuh menahan sinar-X dalam jumlah yang berbeda."
+  },
+  {
+    "sourceStart": 16.54,
+    "sourceEnd": 19.2,
+    "start": 16.54,
+    "end": 19.2,
+    "text": "Pada contoh ini, tulang tengkorak tampak terang."
+  },
+  {
+    "sourceStart": 20.02,
+    "sourceEnd": 21.46,
+    "start": 20.02,
+    "end": 21.46,
+    "text": "Gambar kedua adalah MRI."
+  },
+  {
+    "sourceStart": 22.2,
+    "sourceEnd": 27.68,
+    "start": 22.2,
+    "end": 27.68,
+    "text": "Alat ini menggunakan medan magnet dan gelombang radio untuk menangkap sinyal dari jaringan tubuh, terutama yang mengandung hidrogen."
+  },
+  {
+    "sourceStart": 28.3,
+    "sourceEnd": 31.98,
+    "start": 28.3,
+    "end": 31.98,
+    "text": "MRI juga punya beberapa jenis pengaturan gambar yang disebut sekuens."
+  },
+  {
+    "sourceStart": 32.74,
+    "sourceEnd": 37.3,
+    "start": 32.74,
+    "end": 37.3,
+    "text": "Pada contoh MRI T2 ini, cairan tampak terang, sementara tulang tampak gelap."
+  },
+  {
+    "sourceStart": 38.34,
+    "sourceEnd": 42.66,
+    "start": 38.34,
+    "end": 42.66,
+    "text": "Jadi, perbedaan warna pada CT dan MRI bukan berarti anatominya berubah."
+  },
+  {
+    "sourceStart": 43.06,
+    "sourceEnd": 46.82,
+    "start": 47.36666666666667,
+    "end": 51.126666666666665,
+    "text": "Yang berbeda adalah cara alat menangkap sinyal dan cara gambar itu ditampilkan."
+  },
+  {
+    "sourceStart": 47.36,
+    "sourceEnd": 50.08,
+    "start": 51.666666666666664,
+    "end": 54.38666666666666,
+    "text": "Keduanya digunakan untuk menjawab pertanyaan klinis yang berbeda."
+  },
+  {
+    "sourceStart": 50.86,
+    "sourceEnd": 52.84,
+    "start": 55.166666666666664,
+    "end": 57.14666666666667,
+    "text": "Mau belajar mengenali anatomi dengan lebih jelas?"
+  },
+  {
+    "sourceStart": 53.18,
+    "sourceEnd": 56.04,
+    "start": 57.486666666666665,
+    "end": 60.346666666666664,
+    "text": "Di MEDCOEL, kamu bisa membuka materi FK per bab,"
+  },
+  {
+    "sourceStart": 56.26,
+    "sourceEnd": 58.12,
+    "start": 60.96666666666667,
+    "end": 62.82666666666667,
+    "text": "mengerjakan soal beserta pembahasannya,"
+  },
+  {
+    "sourceStart": 58.18,
+    "sourceEnd": 61.64,
+    "start": 66.96666666666667,
+    "end": 70.42666666666666,
+    "text": "lalu mengeksplorasi simulasi CT dan USG di Live 4D Lab."
+  },
+  {
+    "sourceStart": 62.02,
+    "sourceEnd": 64.18,
+    "start": 70.80666666666667,
+    "end": 72.96666666666667,
+    "text": "Simulasi ini untuk belajar, bukan untuk diagnosis."
+  },
+  {
+    "sourceStart": 64.82,
+    "sourceEnd": 66.44,
+    "start": 73.60666666666665,
+    "end": 75.22666666666666,
+    "text": "Belajar gratis di medcoel.com."
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "repository": "https://github.com/khansazafiri-rgb/mpruy",
+  "referenceCommit": "eac0862c4021b8bda25505b448c4151845ffff8d",
+  "assets": [
+    {
+      "path": "apps/web/src/assets/logo-full.webp",
+      "gitBlobSha": "75622c7e565039cadd3a1390df60c1b5e5d8a0d1"
+    },
+    {
+      "path": "brand/characters/raka/README.md",
+      "gitBlobSha": "ed9e5dac01c773e5615afb01115464e2d849a793"
+    },
+    {
+      "path": "brand/characters/raka/raka.js",
+      "gitBlobSha": "763f07a9c2ddad3a23f982124c4a12c95f3075ac"
+    },
+    {
+      "path": "brand/video/outro/README.md",
+      "gitBlobSha": "e8d37c06c921e98d6c38f5d8f24811e2c702bfcd"
+    },
+    {
+      "path": "brand/video/outro/assets.json",
+      "gitBlobSha": "8b60c943d795ea3cb5c41b16d6cd63637eddb351"
+    },
+    {
+      "path": "video/dok-saya-kenapa/rekam/rekaman-web.mp4",
+      "gitBlobSha": "6621c1687796fb2f2ec7fdb380061357b000b1bf"
+    },
+    {
+      "path": "video/masih-dua-minggu/rekam/rekaman-web.mp4",
+      "gitBlobSha": "89f21635b2b9a26e7cde9c51494b418ff7a7850a"
+    }
+  ],
+  "audioUsed": [
+    {
+      "path": "audio/narasi-google-ai-studio.wav",
+      "source": "Generated Audio November 18, 2026 - 1_50PM.wav, diberikan langsung oleh pengguna",
+      "origin": "Google AI Studio",
+      "durationSeconds": 72.68,
+      "sha256": "9abde07e595dd5d23f327aec8cf5d6aaa74575d2bcad261bc439bae1e429f448"
+    },
+    {
+      "path": "audio/narasi-timeline.wav",
+      "derivedFrom": "audio/narasi-google-ai-studio.wav",
+      "durationSeconds": 79.06666666666666,
+      "operations": "Hanya tambahan hening; seluruh PCM asli dipertahankan 1×. Lihat audio-edits.json."
+    }
+  ],
+  "referenceOnly": [
+    "brand/video/ad/out/medcoel-iklan-75s-v2-FINAL.mp4"
+  ],
+  "medicalReferences": [
+    "https://www.medsafe.govt.nz/profs/Datasheet/s/SixPlusParapaedSusp.pdf",
+    "https://www.nhs.uk/medicines/paracetamol-for-adults/",
+    "https://www.nice.org.uk/guidance/cg150/evidence/full-guideline-pdf-188258224"
+  ],
+  "rights": "Aset MEDCOEL milik repo pengguna, dipakai atas permintaan pengguna. Tidak ada aset pihak ketiga atau musik tambahan.",
+  "generatedAssets": [
+    "render.mjs: panggung vektor, diagram, teks dan animasi",
+    "room-map.svg: peta ruang",
+    "out/medcoel-parasetamol-cover.png: Raka kanonik dan lapisan teks"
+  ],
+  "fonts": {
+    "family": "Arial / Arial Bold",
+    "source": "Font sistem yang sudah tersedia; tidak dibundel ulang"
+  }
+}
