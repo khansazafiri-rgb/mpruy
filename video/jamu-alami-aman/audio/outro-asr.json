@@ -1,0 +1,118 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.36,
+  "text": "Masih penasaran? Lanjutkan belajarnya di Medcoil.",
+  "words": [
+   {
+    "w": "Masih",
+    "s": 0.0,
+    "e": 0.38
+   },
+   {
+    "w": "penasaran?",
+    "s": 0.38,
+    "e": 0.82
+   },
+   {
+    "w": "Lanjutkan",
+    "s": 1.5,
+    "e": 2.06
+   },
+   {
+    "w": "belajarnya",
+    "s": 2.06,
+    "e": 2.6
+   },
+   {
+    "w": "di",
+    "s": 2.6,
+    "e": 2.74
+   },
+   {
+    "w": "Medcoil.",
+    "s": 2.74,
+    "e": 3.36
+   }
+  ]
+ },
+ {
+  "start": 3.86,
+  "end": 7.78,
+  "text": "Jelajahi materi perbap, latihan soal, dan simulasi doktor.",
+  "words": [
+   {
+    "w": "Jelajahi",
+    "s": 3.86,
+    "e": 4.42
+   },
+   {
+    "w": "materi",
+    "s": 4.42,
+    "e": 4.82
+   },
+   {
+    "w": "perbap,",
+    "s": 4.82,
+    "e": 5.24
+   },
+   {
+    "w": "latihan",
+    "s": 5.58,
+    "e": 5.94
+   },
+   {
+    "w": "soal,",
+    "s": 5.94,
+    "e": 6.4
+   },
+   {
+    "w": "dan",
+    "s": 6.56,
+    "e": 6.9
+   },
+   {
+    "w": "simulasi",
+    "s": 6.9,
+    "e": 7.38
+   },
+   {
+    "w": "doktor.",
+    "s": 7.38,
+    "e": 7.78
+   }
+  ]
+ },
+ {
+  "start": 8.34,
+  "end": 10.46,
+  "text": "Semuanya gratis di medcoil.com.",
+  "words": [
+   {
+    "w": "Semuanya",
+    "s": 8.34,
+    "e": 8.68
+   },
+   {
+    "w": "gratis",
+    "s": 8.68,
+    "e": 9.42
+   },
+   {
+    "w": "di",
+    "s": 9.42,
+    "e": 9.64
+   },
+   {
+    "w": "medcoil",
+    "s": 9.64,
+    "e": 10.1
+   },
+   {
+    "w": ".com.",
+    "s": 10.1,
+    "e": 10.46
+   }
+  ]
+ }
+]
