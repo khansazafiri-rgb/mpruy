@@ -116,6 +116,7 @@ function summary(app, sub, opts) {
     }).map((s, i) => Object.assign(s, { n: i + 1 })),
   };
   if (st === "antre" || st === "diproses" || st === "menunggu_konfirmasi" || st === "draft") out.queue = queueInfo(app, sub);
+  if (st === "selesai") out.open = openTarget(app, sub);
   if (o.withUser) {
     try {
       const usr = app.findRecordById("users", sub.getString("user"));
@@ -221,7 +222,9 @@ function setStatus(app, sub, status, note, actor) {
         .replace("{note}", sub.getString("statusNote") || (status === "dibatalkan" ? "Pengajuan dibatalkan admin." : ""));
     let link = "/chat-admin";
     if (status === "selesai") {
-      try { link = (isDeck ? "/drilling/" : "/mata-kuliah/") + app.findRecordById("subjects", sub.getString("subject")).getString("slug"); } catch (_) {}
+      // Tautan ke tempat isi itu benar-benar ada (Kampusmu atau Latihan soal; materi tunggal langsung dibuka).
+      const target = openTarget(app, sub);
+      if (target) link = target.link;
     }
     u.notify(app, sub.getString("user"), status === "selesai" ? "question_live" : "submission", fill(msg[0]), fill(msg[1]), link);
   }
@@ -236,6 +239,39 @@ function setStatus(app, sub, status, note, actor) {
 
   if (status === "antre") webhook(app, "submission.queued", contract(app, sub, null));
   return sub;
+}
+
+/**
+ * Di mana isi pengajuan ini benar-benar bisa dibuka pengaju, dihitung dari yang TERTAUT dan TAYANG (bukan dari status):
+ * { link, label, kind: "materi"|"soal", where: "kampusmu"|"matkul", subjectName } atau null bila belum ada apa-apa.
+ */
+function openTarget(app, sub) {
+  try {
+    const ds = app.findRecordsByFilter("drilling_decks", "submission = {:s} && status = 'published'", "sortOrder,created", 0, 0, { s: sub.id });
+    if (ds.length) {
+      const sj = app.findRecordById("subjects", ds[0].getString("subject"));
+      return {
+        link: ds.length === 1 ? "/drilling/materi/" + ds[0].id : "/drilling/" + sj.getString("slug"),
+        label: "Buka materi", kind: "materi", where: "kampusmu", subjectName: sj.getString("name"),
+      };
+    }
+    const rows = arrayOf(new DynamicModel({ slug: "", name: "", drilling: 0, n: 0 }));
+    app.db().newQuery(
+      "SELECT s.slug AS slug, s.name AS name, CAST(c.drilling AS INTEGER) AS drilling, COUNT(*) AS n FROM questions q " +
+        "JOIN chapters c ON c.id = q.chapter JOIN subjects s ON s.id = q.subject " +
+        "WHERE q.submission = {:s} AND q.status = 'published' GROUP BY s.slug, s.name, c.drilling ORDER BY n DESC LIMIT 1",
+    ).bind({ s: sub.id }).all(rows);
+    if (rows.length) {
+      const inDrilling = !!rows[0].drilling;
+      return {
+        link: (inDrilling ? "/drilling/" : "/mata-kuliah/") + rows[0].slug,
+        label: "Kerjakan soal", kind: "soal", where: inDrilling ? "kampusmu" : "matkul", subjectName: rows[0].name,
+      };
+    }
+  } catch (err) {
+    console.log("openTarget gagal:", err);
+  }
+  return null;
 }
 
 // ---------------------------------------------------------------------------
@@ -265,9 +301,11 @@ function buildNotice(status, ctx) {
       const n = Number(c.count) || 0;
       const what = isDeck ? (n ? n + " slide materi" : "materi") : (n ? n + " soal" : "soal");
       const verb = c.wasLive ? "sudah diperbarui" : "sudah terupload dan tayang";
+      const hint = c.where === "kampusmu" ? " Bukanya lewat menu Kampusmu" + (c.subjectName ? " → " + c.subjectName : "") + ", atau tombol \"" + (isDeck ? "Buka materi" : "Kerjakan soal") + "\" di kartu pengajuan ini."
+        : c.where === "matkul" ? " Bukanya lewat Latihan soal" + (c.subjectName ? " → " + c.subjectName : "") + ", atau tombol \"Kerjakan soal\" di kartu pengajuan ini." : "";
       return {
         title: (isDeck ? "Materi" : "Soal") + " dari pengajuan " + code + " " + (c.wasLive ? "diperbarui" : "sudah tayang"),
-        chat: "Kabar baik! " + (isDeck ? "PPT materi" : "Soal") + " dari pengajuan " + code + " " + verb + ": " + what + where + ". " + (c.wasLive ? "Perubahan dari admin sudah berlaku." : "Terima kasih sudah berbagi!"),
+        chat: "Kabar baik! " + (isDeck ? "PPT materi" : "Soal") + " dari pengajuan " + code + " " + verb + ": " + what + where + ". " + (c.wasLive ? "Perubahan dari admin sudah berlaku." : "Terima kasih sudah berbagi!") + hint,
         mailLines: [(isDeck ? "PPT materi" : "Soal") + " dari pengajuan " + code + " " + verb + ": " + what + where + ".", c.wasLive ? "Perubahan dari admin sudah berlaku." : "Terima kasih sudah berbagi dengan teman-temanmu!"],
       };
     }
@@ -294,12 +332,13 @@ function buildNotice(status, ctx) {
   }
 }
 
-function noticeMailHtml(app, notice) {
+function noticeMailHtml(app, notice, target) {
   const base = (app.settings().meta.appURL || "https://medcoel.com").replace(/\/+$/, "");
+  const href = base + (target ? target.link : "/chat-admin");
   return u.mailLayout(
     notice.title,
     notice.mailLines.map((l) => "<p>" + u.escapeHtml(l) + "</p>").join("") +
-      '<p><a href="' + base + '/chat-admin" style="color:#007060;font-weight:600">Buka Chat Admin</a></p>',
+      '<p><a href="' + u.escapeHtml(href) + '" style="color:#007060;font-weight:600">' + (target ? target.label : "Buka Chat Admin") + "</a></p>",
   );
 }
 
@@ -313,10 +352,12 @@ function tellUser(app, sub, status, extra) {
     if (usr.getString("deletedAt")) return;
     let subjectName = "";
     try { subjectName = app.findRecordById("subjects", sub.getString("subject")).getString("name"); } catch (_) {}
+    const target = status === "selesai" ? openTarget(app, sub) : null;
     const notice = buildNotice(status, {
       code: sub.getString("code"),
       kind: sub.getString("contentKind") === "materi" ? "materi" : "soal",
-      subjectName: subjectName,
+      subjectName: (target && target.subjectName) || subjectName,
+      where: target ? target.where : "",
       count: sub.getInt("importedCount"),
       days: (extra && extra.days) || 1,
       note: sub.getString("statusNote"),
@@ -341,7 +382,7 @@ function tellUser(app, sub, status, extra) {
     }
 
     const to = usr.email();
-    if (to) u.sendMail(app, to, notice.title + " | MEDCOEL", noticeMailHtml(app, notice));
+    if (to) u.sendMail(app, to, notice.title + " | MEDCOEL", noticeMailHtml(app, notice, target));
   } catch (err) {
     console.log("tellUser gagal:", err);
   }
@@ -602,4 +643,4 @@ function retarget(app, sub, change) {
   };
 }
 
-module.exports = { buildNotice, NOTICE_STATUSES, MAX_PDFS, LABEL, pdfTitle, titleFor, titleNeeded, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck, findSubmission, checkDeckSubmission, finishDeckSubmission, importDeckFor, RETARGET_STATUSES, findSubjectLoose, retarget };
+module.exports = { buildNotice, NOTICE_STATUSES, openTarget, MAX_PDFS, LABEL, pdfTitle, titleFor, titleNeeded, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck, findSubmission, checkDeckSubmission, finishDeckSubmission, importDeckFor, RETARGET_STATUSES, findSubjectLoose, retarget };

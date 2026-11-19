@@ -43,3 +43,9 @@ test('perlu_perbaikan carries the admin note', () => {
 test('antre mentions the estimate', () => {
   assert.match(buildNotice('antre', base).chat, /sekitar 3 hari/);
 });
+
+test('selesai tells the student where to open it (Kampusmu or Latihan soal), never a guess', () => {
+  assert.match(buildNotice('selesai', { ...base, kind: 'materi', where: 'kampusmu' }).chat, /menu Kampusmu → Anatomi.*Buka materi/);
+  assert.match(buildNotice('selesai', { ...base, where: 'matkul' }).chat, /Latihan soal → Anatomi.*Kerjakan soal/);
+  assert.doesNotMatch(buildNotice('selesai', base).chat, /Bukanya lewat/);
+});

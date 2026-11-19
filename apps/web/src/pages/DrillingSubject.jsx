@@ -54,7 +54,11 @@ export default function DrillingSubject() {
   };
 
   if (loading) return <PageLoader />;
-  if (error) return <div className="space-y-4"><Alert>{error.status === 404 ? 'Mata kuliah ini belum punya file dari kampusmu.' : error.message}</Alert><Link to="/drilling" className="btn-secondary inline-flex"><ArrowLeft size={16} aria-hidden /> Kembali ke Kampusmu</Link></div>;
+  if (error) return <div className="space-y-4"><Alert>{error.status === 404
+    ? (/belum dibuka/i.test(error.message || '')
+      ? 'Kampusmu sedang belum dibuka admin, jadi file di sini belum bisa dilihat. Kalau admin bilang materimu sudah tayang, kabari lewat Chat Admin.'
+      : 'Mata kuliah ini belum punya file dari kampusmu. Kalau kamu mengirim materi yang katanya sudah tayang, buka Chat Admin: kartu pengajuanmu punya tombol untuk membukanya.')
+    : error.message}</Alert><Link to="/drilling" className="btn-secondary inline-flex"><ArrowLeft size={16} aria-hidden /> Kembali ke Kampusmu</Link></div>;
 
   const { subject, decks, questionCount, campusQuestionCount, answeredCount } = data;
   const sets = data.sets || [];
