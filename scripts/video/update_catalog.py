@@ -17,7 +17,7 @@ EDUCATION = {
     "bangun-tapi-tak-bisa-bergerak", "dingin-pengen-pipis",
     "dunia-tanpa-cuci-tangan", "dunia-tanpa-oralit", "gas-air-mata",
     "introvert-ekstrovert", "kopi-kafein-adenosin", "malam-lapar",
-    "pasien-tidak-sadar-di-igd",
+    "pasien-tidak-sadar-di-igd", "spo2-pulse-oximeter",
 }
 STUDENT_STORIES = {
     "ada-satu-yang-kamu-lupa", "bayangin-jadi-anak-fk",

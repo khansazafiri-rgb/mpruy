@@ -1,0 +1,229 @@
+{
+ "offset_narasi": 0.3,
+ "narasi_dipotong_di": 83.9,
+ "outro_mulai": 84.65,
+ "master_mulai": 85.85,
+ "durasi": 99.79,
+ "sfx": [
+  {
+   "t": 0.3,
+   "sfx": "klik-penjepit"
+  },
+  {
+   "t": 8.6,
+   "sfx": "lampu-merah"
+  },
+  {
+   "t": 9.02,
+   "sfx": "lampu-inframerah"
+  },
+  {
+   "t": 10.72,
+   "sfx": "sensor"
+  },
+  {
+   "t": 11.66,
+   "sfx": "cahaya-melewati"
+  },
+  {
+   "t": 17.45,
+   "sfx": "label-Hb-O2"
+  },
+  {
+   "t": 19.25,
+   "sfx": "label-Hb-tanpa-O2"
+  },
+  {
+   "t": 20.6,
+   "sfx": "label-serapan"
+  },
+  {
+   "t": 24.102,
+   "sfx": "denyut"
+  },
+  {
+   "t": 25.92,
+   "sfx": "denyut"
+  },
+  {
+   "t": 27.23,
+   "sfx": "denyut"
+  },
+  {
+   "t": 27.7,
+   "sfx": "label-tinggi-denyut"
+  },
+  {
+   "t": 28.063,
+   "sfx": "denyut"
+  },
+  {
+   "t": 28.897,
+   "sfx": "denyut"
+  },
+  {
+   "t": 29.4,
+   "sfx": "label-kurva"
+  },
+  {
+   "t": 29.73,
+   "sfx": "denyut"
+  },
+  {
+   "t": 30.0,
+   "sfx": "spo2-hasil"
+  },
+  {
+   "t": 30.563,
+   "sfx": "denyut"
+  },
+  {
+   "t": 31.397,
+   "sfx": "denyut"
+  },
+  {
+   "t": 31.9,
+   "sfx": "hb-bar"
+  },
+  {
+   "t": 32.23,
+   "sfx": "denyut"
+  },
+  {
+   "t": 33.063,
+   "sfx": "denyut"
+  },
+  {
+   "t": 33.897,
+   "sfx": "denyut"
+  },
+  {
+   "t": 34.7,
+   "sfx": "masuk-layar-hasil"
+  },
+  {
+   "t": 34.73,
+   "sfx": "denyut"
+  },
+  {
+   "t": 35.22,
+   "sfx": "ring-spo2"
+  },
+  {
+   "t": 35.563,
+   "sfx": "denyut"
+  },
+  {
+   "t": 36.397,
+   "sfx": "denyut"
+  },
+  {
+   "t": 36.82,
+   "sfx": "ring-pr"
+  },
+  {
+   "t": 37.23,
+   "sfx": "denyut"
+  },
+  {
+   "t": 38.063,
+   "sfx": "denyut"
+  },
+  {
+   "t": 38.897,
+   "sfx": "denyut"
+  },
+  {
+   "t": 39.88,
+   "sfx": "potong-kegunaan"
+  },
+  {
+   "t": 43.14,
+   "sfx": "potong-kegunaan"
+  },
+  {
+   "t": 45.02,
+   "sfx": "potong-kegunaan"
+  },
+  {
+   "t": 51.06,
+   "sfx": "bukan-diagnosis"
+  },
+  {
+   "t": 53.42,
+   "sfx": "gangguan"
+  },
+  {
+   "t": 54.16,
+   "sfx": "gangguan"
+  },
+  {
+   "t": 55.1,
+   "sfx": "gangguan"
+  },
+  {
+   "t": 56.48,
+   "sfx": "gangguan"
+  },
+  {
+   "t": 57.1,
+   "sfx": "gangguan"
+  },
+  {
+   "t": 60.62,
+   "sfx": "co2-silang"
+  },
+  {
+   "t": 62.3,
+   "sfx": "co-masuk"
+  },
+  {
+   "t": 63.52,
+   "sfx": "co-hb"
+  },
+  {
+   "t": 66.4,
+   "sfx": "tampak-meyakinkan"
+  },
+  {
+   "t": 67.32,
+   "sfx": "berbahaya"
+  },
+  {
+   "t": 70.94,
+   "sfx": "hangatkan"
+  },
+  {
+   "t": 72.4,
+   "sfx": "cat-kuku"
+  },
+  {
+   "t": 76.5,
+   "sfx": "stabil"
+  },
+  {
+   "t": 77.34,
+   "sfx": "gejala"
+  },
+  {
+   "t": 79.6,
+   "sfx": "pertolongan-1"
+  },
+  {
+   "t": 81.75,
+   "sfx": "menunggu-dicoret"
+  },
+  {
+   "t": 82.95,
+   "sfx": "pertolongan-3"
+  },
+  {
+   "t": 84.35,
+   "sfx": "masuk-outro"
+  },
+  {
+   "t": 94.05,
+   "sfx": "logo-medcoel"
+  }
+ ]
+}

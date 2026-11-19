@@ -2,7 +2,7 @@
 
 Daftar ini mencatat **proyek dengan MP4 di repo**, bukan status publikasi di Instagram/TikTok. Judul diambil dari README proyek; jika belum ada, dipakai nama folder. Jalankan `python3 scripts/video/update_catalog.py` setelah menambah video. CI menolak perubahan yang membuat katalog tertinggal.
 
-Total: **20 video**.
+Total: **23 video**.
 
 | Jenis | Judul | Folder sumber |
 | --- | --- | --- |
@@ -12,6 +12,7 @@ Total: **20 video**.
 | Cerita anak FK | [Masih Dua Minggu](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/masih-dua-minggu) | `video/masih-dua-minggu` |
 | Cerita anak FK | [Tab Dua Puluh](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/tab-dua-puluh) | `video/tab-dua-puluh` |
 | Edukasi | [Apa bedanya introvert & ekstrovert?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/introvert-ekstrovert) | `video/introvert-ekstrovert` |
+| Edukasi | [Bagaimana penjepit jari bisa membaca SpO₂?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/spo2-pulse-oximeter) | `video/spo2-pulse-oximeter` |
 | Edukasi | [Bangun, tapi tak bisa bergerak](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/bangun-tapi-tak-bisa-bergerak) | `video/bangun-tapi-tak-bisa-bergerak` |
 | Edukasi | [Dunia tanpa cuci tangan di layanan kesehatan](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dunia-tanpa-cuci-tangan) | `video/dunia-tanpa-cuci-tangan` |
 | Edukasi | [Dunia tanpa oralit](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dunia-tanpa-oralit) | `video/dunia-tanpa-oralit` |
@@ -25,6 +26,8 @@ Total: **20 video**.
 | Promo fitur | [Kirim PDF Soalmu](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/brand/video/ad) | `brand/video/ad` |
 | Promo fitur | [Kuis Anatomi 3D MEDCOEL](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/kuis-anatomi-3d) | `video/kuis-anatomi-3d` |
 | Promo fitur | [Latihan Soal MEDCOEL](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/brand/video/ad3) | `brand/video/ad3` |
+| Promo fitur | [MEDCOEL — Farmakodinamik parasetamol untuk nyeri kepala](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/parasetamol-nyeri-kepala) | `video/parasetamol-nyeri-kepala` |
+| Promo fitur | [MEDCOEL — Mengapa gambar CT dan MRI berbeda?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/ct-mri-perbedaan-citra) | `video/ct-mri-perbedaan-citra` |
 | Promo fitur | [Simulasi Jadi Dokter](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/brand/video/ad2) | `brand/video/ad2` |
 
 ## Arah konten berikutnya
