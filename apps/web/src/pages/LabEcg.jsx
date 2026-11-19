@@ -2,23 +2,40 @@
 // Pola dibuat dari model matematis sederhana (features/lab/ecg/ecgModel.js) untuk belajar konsep. Bukan rekaman pasien,
 // bukan simulasi elektrofisiologi tervalidasi, dan tidak untuk diagnosis. Latihan di sini mandiri: tanpa poin/peringkat.
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { api } from '@/lib/api';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Box, Pause, Play, RotateCcw, Target } from 'lucide-react';
 import PageHead from '@/components/PageHead';
-import { Segmented } from '@/components/ui';
+import { PageLoader, Segmented } from '@/components/ui';
 import { NORMAL, PAPER, PHASES, RHYTHMS, beats, measure, phaseAt, practiceRound, rhythmByKey, stripPath } from '@/features/lab/ecg/ecgModel';
 
 const PAGE = 'min-w-0 space-y-5 pb-[calc(6.5rem+env(safe-area-inset-bottom))] lg:pb-8';
 const DURATION = 6000;
 const GLOW = '#f8c038';
 
+// Released per user by the server (lab/tracks -> features.ecg): admins always (to review it), students only after the
+// operator sets MEDCOEL_LAB_ECG_PUBLIC=1 once the clinical review is recorded.
 export default function LabEcg() {
   const [params, setParams] = useSearchParams();
   const practice = params.get('latihan') === '1';
+  const [gate, setGate] = useState(null);
+  useEffect(() => { let on = true; api('lab/tracks').then((x) => on && setGate({ open: !!x.features?.ecg, admin: !!x.features?.ecg && x.features?.ecgPublic === false })).catch(() => on && setGate({ open: false })); return () => { on = false; }; }, []);
+  if (!gate) return <PageLoader />;
+  if (!gate.open) return (
+    <div className={PAGE}>
+      <Link to="/lab" className="inline-flex min-h-9 items-center gap-1 text-sm font-semibold text-brand"><ArrowLeft size={16} aria-hidden /> MEDCOEL Lab</Link>
+      <PageHead eyebrow="MEDCOEL Lab · Modul interaktif" title="Konduksi jantung & EKG skematik">Modul ini sedang ditinjau pendidik klinis dan akan dibuka setelah review selesai.</PageHead>
+      <div className="flex flex-wrap gap-2">
+        <Link className="btn btn-secondary btn-sm" to="/anatomy/system/cardiovascular"><Box size={15} aria-hidden /> Jantung di Atlas 3D</Link>
+        <Link className="btn btn-secondary btn-sm" to="/lab/keterampilan/ekg">Jalur EKG Dasar</Link>
+      </div>
+    </div>
+  );
   return (
     <div className={PAGE}>
       <Link to="/lab/keterampilan/ekg" className="inline-flex min-h-9 items-center gap-1 text-sm font-semibold text-brand"><ArrowLeft size={16} aria-hidden /> Jalur EKG Dasar</Link>
       <PageHead eyebrow="MEDCOEL Lab · Modul interaktif" title="Konduksi jantung & EKG skematik">Ikuti impuls listrik dari nodus SA sampai ventrikel, lalu lihat jejaknya di kertas EKG.</PageHead>
+      {gate.admin && <p className="card-quiet border-gold px-4 py-3 text-sm" role="note"><b>Pratinjau admin.</b> Modul ini belum dibuka untuk siswa (menunggu review klinis; aktifkan dengan MEDCOEL_LAB_ECG_PUBLIC=1 setelah review).</p>}
       <p className="card-quiet px-4 py-3 text-sm text-ink-muted" role="note"><b className="text-ink">Pola skematik.</b> Gelombang dibuat dari model sederhana untuk memahami konsep. Bukan rekaman pasien dan tidak untuk menegakkan diagnosis.</p>
       <Segmented className="sm:max-w-xs" label="Mode modul EKG" value={practice ? 'latihan' : 'belajar'} onChange={(v) => setParams(v === 'latihan' ? { latihan: '1' } : {})} items={[{ value: 'belajar', label: 'Belajar' }, { value: 'latihan', label: 'Latihan' }]} />
       {practice ? <Practice /> : <Learn />}

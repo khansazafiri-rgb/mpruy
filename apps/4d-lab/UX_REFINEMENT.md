@@ -34,3 +34,15 @@ This is an additive usability change on top of the merged Atlas-based simulator.
 
 ## Non-goals and clinical review
 This change does **not** clinically validate ultrasound textures, ejection fraction calculations, pathology interpretation, ECG timing, or heart-sound synthesis. Previously identified discrepancies in `MEDICAL_REVIEW_CHECKLIST.md` still require a clinician's review before public launch. It does not add copyrighted audio recordings or restricted imaging datasets.
+
+## Follow-up: instrument and CT navigation (November 2026)
+- Quick audio previously made the chestpiece visible whenever `audio.on` was true, even while `S.tool` remained `probe`. A saved posterior listening site could therefore place it under the examination table. Visibility now follows the active auscultation tool in Auscultation/Belajar; audio playback remains independent. Switching workspaces clears the stale tool and site markers.
+- The Probe tab offered Clinical/Free 3D, but it was behind the sidebar. A persistent viewport mode badge now names the active interaction and offers **Kembali ke Probe USG** from Free 3D and Tri-planar CT. Returning preserves a valid prior skin contact or chooses a skin point in the CT acquisition bounds; it restores probe controls and a clinical image display. CT volumes without registered skin keep Free 3D and explain why.
+- The rectangular CT plane is legitimate Free 3D/Tri-planar geometry. Mode transitions hide its old texture while a new frame is prepared; worker frames from a previous mode are discarded. Camera controls remain independent from image geometry.
+- Tri-planar CT now exposes separate axial, coronal and sagittal sliders, ± one physical step, millimetre readouts, a linked-crosshair reset, and Indonesian gesture/direction guidance above the image. The contextual three-step spotlight reuses the first-run tutorial engine and persists a separate completion key; help replays it.
+- Belajar labels automatically prepared CT tasks and supplies a direct return-to-probe action without resetting learning progress.
+
+### Verification and Safari gate
+Run `npm run test:licensing`, `npm run test:4d-lab`, `npm run build:4d-lab`, then `node apps/4d-lab/test/e2e/mode-navigation-e2e.mjs --shots` and `node apps/4d-lab/test/e2e/ux-e2e.mjs --shots`. On environments with system Chromium, set `PLAYWRIGHT_CHROMIUM=/usr/bin/chromium` if the Playwright-managed browser is absent. Browser tests require permission to launch Chromium and create local sockets; a source-only pass is not a browser QA pass.
+
+In Safari on macOS, check: audio quick toggle with probe active (no chestpiece below patient), Auscultation anterior/posterior sites, transitions through all five workspaces, Free 3D → Probe, Tri-planar → Probe, a Belajar Free 3D task → Probe, linked controls and crosshair click/scroll, first-use tri tutorial skip/back/replay, viewport camera orbit with unchanged image pose, smaller iPad layout, and browser console/WebGL. The Safari result must be recorded separately before merge.

@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import ActivityTracker from './components/ActivityTracker';
 import AppShell from './components/AppShell';
 import { PageLoader } from './components/ui';
 import { useAuth } from './context/AuthContext';
@@ -54,6 +55,7 @@ const AdminSupport = lazy(() => import('./pages/admin/SupportInbox'));
 const AdminSettings = lazy(() => import('./pages/admin/SettingsAdmin'));
 const AdminSim = lazy(() => import('./pages/admin/SimCases'));
 const AdminDrilling = lazy(() => import('./pages/admin/DrillingAdmin'));
+const AdminActivity = lazy(() => import('./pages/admin/ActivityAdmin'));
 
 function ScrollTop() {
   const { pathname } = useLocation();
@@ -81,6 +83,7 @@ export default function App() {
   return (
     <>
       <ScrollTop />
+      <ActivityTracker />
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -131,6 +134,7 @@ export default function App() {
             <Route path="paket" element={<AdminPackages />} />
             <Route path="simulasi" element={<AdminSim />} />
             <Route path="drilling" element={<AdminDrilling />} />
+            <Route path="aktivitas" element={<AdminActivity />} />
             <Route path="pengguna" element={<AdminUsers />} />
             <Route path="pengaturan" element={<AdminSettings />} />
           </Route>

@@ -13,7 +13,7 @@ const { chromium, devices } = require('playwright');
 const SHOTS = process.argv.includes('--shots');
 const EVIDENCE = fileURLToPath(new URL('../../evidence/', import.meta.url));
 const { srv, url } = await startServer();
-const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] });
+const browser = await chromium.launch({ executablePath: process.env.PLAYWRIGHT_CHROMIUM || undefined, args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] });
 const ctx = await browser.newContext({ viewport: { width: 1600, height: 950 }, deviceScaleFactor: 1 });
 const page = await ctx.newPage();
 const errors = [];
@@ -66,7 +66,11 @@ await page.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.
 await step('first screen: patient + image, direction pad, five-step guided first-use tour instead of long text; rings hidden', async () => {
   assert.ok(await page.getByTestId('tour').isVisible(), 'first-run tour shown');
   await shot('ux-01-first-run-tour');
-  for (let step = 0; step < 5; step++) await page.getByTestId('tour-next').click();
+  // the tutorial is interactive: a step with a task keeps "Lanjut" locked, so walk through with "Lewati langkah" where needed
+  for (let guard = 0; guard < 12 && await page.getByTestId('tour').count(); guard++) {
+    const nextBtn = page.getByTestId('tour-next');
+    if (await nextBtn.isDisabled()) await page.getByTestId('tour-skip-step').click(); else await nextBtn.click();
+  }
   const logoBackground = await page.locator('.brand-mark').evaluate((node) => getComputedStyle(node).backgroundImage);
   assert.match(logoBackground, /logo-mark.*webp/, 'official MEDCOEL logo asset is used');
   await page.getByTestId('help-btn').click();
@@ -188,6 +192,7 @@ await step('structure list is stable during motion; row hover highlights the str
 
 await step('tri-planar CT moves with the pad, the sliders, scroll and click', async () => {
   await page.getByTestId('mon-tri').click(); await settle();
+  if (await page.getByTestId('tour').count()) await page.getByTestId('tour-skip').click();
   assert.match(await page.getByTestId('pad-title').textContent(), /titik silang/);
   const P = () => lab(() => [...window.__lab.S.tri.point]);
   let p0 = await P(); await page.getByTestId('pad-superior').click(); let p1 = await P(); assert.ok(p1[2] > p0[2] && p1[0] === p0[0] && p1[1] === p0[1], 'pad ↑ = axial slice up');
@@ -273,7 +278,7 @@ await step('deep link from MEDCOEL Lab tracks: ?scenario & ?ws open the right ca
 for (const [name, dev] of [['laptop', { viewport: { width: 1280, height: 800 } }], ['ipad', devices['iPad Pro 11']], ['phone', devices['iPhone 13']]]) {
   await step(`layout ${name}: nothing clipped, pad usable`, async () => {
     const c = await browser.newContext({ ...dev }), p = await c.newPage(), errs = [];
-    await p.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v2', 'done'); } catch { /* ignore */ } });
+    await p.addInitScript(() => { try { for (const k of ['medcoel-4dlab-tour-v2', 'medcoel-4dlab-tour-v3']) localStorage.setItem(k, 'done'); } catch { /* ignore */ } });
     p.on('pageerror', (e) => errs.push(e.message));
     await p.goto(url); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
     await p.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.atlasState), null, { timeout: 240000 });

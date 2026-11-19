@@ -21,6 +21,18 @@ const TRACKS = {
   'identifikasi-anatomi': { 'kenali': false, 'temukan': false, 'tulang': false },
   'interpretasi-citra': { 'cxr': false, 'oct': false, 'histo': false, 'darah': false },
 };
+// track -> { step: feature } for steps that stay closed to students until the feature is released after clinical review.
+const REVIEW = {
+  'jantung-kardiovaskular': { 'ekg': 'ecg' },
+  'ekg': { 'konduksi': 'ecg', 'latihan-ritme': 'ecg' },
+};
+// Content that still needs clinical review is visible to admins (for review) and to everyone only once the operator
+// sets the release flag (MEDCOEL_LAB_ECG_PUBLIC=1) after the review is recorded.
+function features(user) {
+  const admin = !!user && u.roleOf(user) === 'admin';
+  const ecgPublic = u.env('MEDCOEL_LAB_ECG_PUBLIC') === '1';
+  return { ecg: admin || ecgPublic, ecgPublic };
+}
 function fail(message) { throw new BadRequestError(message); }
 function row(app, user, track) {
   try { return app.findFirstRecordByFilter('lab_track_progress', 'user = {:u} && track = {:t}', { u: user.id, t: track }); } catch (_) { return null; }
@@ -31,7 +43,7 @@ function view(track, r) {
   return { track, completed, lastStep: r ? r.getString('lastStep') : '', updatedAt: r ? r.getString('updated') : '' };
 }
 function list(app, user) {
-  return { items: app.findRecordsByFilter('lab_track_progress', 'user = {:u}', '-updated', 100, 0, { u: user.id })
+  return { features: features(user), items: app.findRecordsByFilter('lab_track_progress', 'user = {:u}', '-updated', 100, 0, { u: user.id })
     .filter((r) => TRACKS[r.getString('track')]).map((r) => view(r.getString('track'), r)) };
 }
 // body: { step, done?: boolean }. done omitted = only remember the last opened step.
@@ -42,6 +54,8 @@ function mark(app, user, track, body) {
   if (!(step in steps)) fail('Langkah ini bukan bagian dari jalur tersebut.');
   if (body.done !== undefined && typeof body.done !== 'boolean') fail('Nilai done tidak valid.');
   if (steps[step] && body.done !== undefined) fail('Langkah ini belum tersedia.');
+  const gate = REVIEW[track] && REVIEW[track][step];
+  if (gate && !features(user)[gate]) fail('Langkah ini masih ditinjau pendidik klinis.');
   app.runInTransaction((tx) => {
     let r = row(tx, user, track);
     if (!r) { r = new Record(tx.findCollectionByNameOrId('lab_track_progress')); r.set('user', user.id); r.set('track', track); r.set('completed', []); }
@@ -52,4 +66,4 @@ function mark(app, user, track, body) {
   });
   return view(track, row(app, user, track));
 }
-module.exports = { TRACKS, list, mark };
+module.exports = { TRACKS, REVIEW, features, list, mark };

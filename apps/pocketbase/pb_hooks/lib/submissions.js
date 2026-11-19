@@ -116,6 +116,7 @@ function summary(app, sub, opts) {
     }).map((s, i) => Object.assign(s, { n: i + 1 })),
   };
   if (st === "antre" || st === "diproses" || st === "menunggu_konfirmasi" || st === "draft") out.queue = queueInfo(app, sub);
+  if (st === "selesai") out.open = openTarget(app, sub);
   if (o.withUser) {
     try {
       const usr = app.findRecordById("users", sub.getString("user"));
@@ -195,6 +196,7 @@ function setStatus(app, sub, status, note, actor) {
   if (status === "perlu_perbaikan" && !String(note || "").trim()) {
     throw new BadRequestError("Tulis alasan perbaikan untuk pengguna (mis. PDF tidak terbaca, bukan soal, atau duplikat).");
   }
+  const wasLive = !!sub.getString("completedAt"); // sudah pernah tayang: tayang lagi = diperbarui
   sub.set("status", status);
   if (note !== undefined) sub.set("statusNote", String(note || "").slice(0, 1000));
   if (status === "antre" && !sub.getString("confirmedAt")) sub.set("confirmedAt", u.pbDate(new Date()));
@@ -220,9 +222,16 @@ function setStatus(app, sub, status, note, actor) {
         .replace("{note}", sub.getString("statusNote") || (status === "dibatalkan" ? "Pengajuan dibatalkan admin." : ""));
     let link = "/chat-admin";
     if (status === "selesai") {
-      try { link = (isDeck ? "/drilling/" : "/mata-kuliah/") + app.findRecordById("subjects", sub.getString("subject")).getString("slug"); } catch (_) {}
+      // Tautan ke tempat isi itu benar-benar ada (Kampusmu atau Latihan soal; materi tunggal langsung dibuka).
+      const target = openTarget(app, sub);
+      if (target) link = target.link;
     }
     u.notify(app, sub.getString("user"), status === "selesai" ? "question_live" : "submission", fill(msg[0]), fill(msg[1]), link);
+  }
+
+  // Kabar ke Chat Admin dan email pengaju (selain lonceng di atas). Tidak pernah menggagalkan perubahan status.
+  if (NOTICE_STATUSES.indexOf(status) >= 0 && !(status === "dibatalkan" && actor === "user")) {
+    tellUser(app, sub, status, { wasLive: wasLive, days: queueInfo(app, sub).estimateDays });
   }
 
   // Admin diberi tahu begitu pengguna mengirim pengajuan, tidak menunggu konfirmasi.
@@ -230,6 +239,153 @@ function setStatus(app, sub, status, note, actor) {
 
   if (status === "antre") webhook(app, "submission.queued", contract(app, sub, null));
   return sub;
+}
+
+/**
+ * Di mana isi pengajuan ini benar-benar bisa dibuka pengaju, dihitung dari yang TERTAUT dan TAYANG (bukan dari status):
+ * { link, label, kind: "materi"|"soal", where: "kampusmu"|"matkul", subjectName } atau null bila belum ada apa-apa.
+ */
+function openTarget(app, sub) {
+  try {
+    const ds = app.findRecordsByFilter("drilling_decks", "submission = {:s} && status = 'published'", "sortOrder,created", 0, 0, { s: sub.id });
+    if (ds.length) {
+      const sj = app.findRecordById("subjects", ds[0].getString("subject"));
+      return {
+        link: ds.length === 1 ? "/drilling/materi/" + ds[0].id : "/drilling/" + sj.getString("slug"),
+        label: "Buka materi", kind: "materi", where: "kampusmu", subjectName: sj.getString("name"),
+      };
+    }
+    const rows = arrayOf(new DynamicModel({ slug: "", name: "", drilling: 0, n: 0 }));
+    app.db().newQuery(
+      "SELECT s.slug AS slug, s.name AS name, CAST(c.drilling AS INTEGER) AS drilling, COUNT(*) AS n FROM questions q " +
+        "JOIN chapters c ON c.id = q.chapter JOIN subjects s ON s.id = q.subject " +
+        "WHERE q.submission = {:s} AND q.status = 'published' GROUP BY s.slug, s.name, c.drilling ORDER BY n DESC LIMIT 1",
+    ).bind({ s: sub.id }).all(rows);
+    if (rows.length) {
+      const inDrilling = !!rows[0].drilling;
+      return {
+        link: (inDrilling ? "/drilling/" : "/mata-kuliah/") + rows[0].slug,
+        label: "Kerjakan soal", kind: "soal", where: inDrilling ? "kampusmu" : "matkul", subjectName: rows[0].name,
+      };
+    }
+  } catch (err) {
+    console.log("openTarget gagal:", err);
+  }
+  return null;
+}
+
+// ---------------------------------------------------------------------------
+// Kabar otomatis ke pengaju: pesan di Chat Admin (utas yang sama dengan percakapan dengan admin) + email.
+// Hanya untuk status yang berarti buat pengaju; "diproses" cukup lewat lonceng.
+// ---------------------------------------------------------------------------
+const NOTICE_STATUSES = ["antre", "selesai", "perlu_perbaikan", "dibatalkan", "kedaluwarsa"];
+
+/**
+ * Teks pesan (murni, tanpa database). ctx: { code, kind: "soal"|"materi", subjectName, count, days, note, wasLive }.
+ * Mengembalikan { title, chat, mailLines } atau null untuk status yang tidak dikabari.
+ */
+function buildNotice(status, ctx) {
+  const c = ctx || {};
+  const code = c.code || "";
+  const isDeck = c.kind === "materi";
+  const where = c.subjectName ? " di " + c.subjectName : "";
+  const note = String(c.note || "").trim();
+  switch (status) {
+    case "antre":
+      return {
+        title: "Pengajuan " + code + " sudah dikonfirmasi",
+        chat: "Halo! Pengajuan " + code + " sudah dikonfirmasi admin dan masuk antrean. Perkiraan selesai sekitar " + (c.days || 1) + " hari. Kami kabari lagi di sini begitu " + (isDeck ? "materinya" : "soalnya") + " sudah terupload.",
+        mailLines: ["Pengajuan " + code + " sudah dikonfirmasi admin dan masuk antrean.", "Perkiraan selesai sekitar " + (c.days || 1) + " hari. Kami kabari lagi begitu sudah terupload."],
+      };
+    case "selesai": {
+      const n = Number(c.count) || 0;
+      const what = isDeck ? (n ? n + " slide materi" : "materi") : (n ? n + " soal" : "soal");
+      const verb = c.wasLive ? "sudah diperbarui" : "sudah terupload dan tayang";
+      const hint = c.where === "kampusmu" ? " Bukanya lewat menu Kampusmu" + (c.subjectName ? " → " + c.subjectName : "") + ", atau tombol \"" + (isDeck ? "Buka materi" : "Kerjakan soal") + "\" di kartu pengajuan ini."
+        : c.where === "matkul" ? " Bukanya lewat Latihan soal" + (c.subjectName ? " → " + c.subjectName : "") + ", atau tombol \"Kerjakan soal\" di kartu pengajuan ini." : "";
+      return {
+        title: (isDeck ? "Materi" : "Soal") + " dari pengajuan " + code + " " + (c.wasLive ? "diperbarui" : "sudah tayang"),
+        chat: "Kabar baik! " + (isDeck ? "PPT materi" : "Soal") + " dari pengajuan " + code + " " + verb + ": " + what + where + ". " + (c.wasLive ? "Perubahan dari admin sudah berlaku." : "Terima kasih sudah berbagi!") + hint,
+        mailLines: [(isDeck ? "PPT materi" : "Soal") + " dari pengajuan " + code + " " + verb + ": " + what + where + ".", c.wasLive ? "Perubahan dari admin sudah berlaku." : "Terima kasih sudah berbagi dengan teman-temanmu!"],
+      };
+    }
+    case "perlu_perbaikan":
+      return {
+        title: "Pengajuan " + code + " perlu perbaikan",
+        chat: "Pengajuan " + code + " perlu diperbaiki dulu." + (note ? " Catatan admin: " + note : "") + " Setelah diperbaiki, kirim ulang atau balas pesan ini ya.",
+        mailLines: ["Pengajuan " + code + " perlu diperbaiki dulu." + (note ? " Catatan admin: " + note : ""), "Setelah diperbaiki, kirim ulang lewat Chat Admin."],
+      };
+    case "dibatalkan":
+      return {
+        title: "Pengajuan " + code + " dibatalkan",
+        chat: "Pengajuan " + code + " dibatalkan admin." + (note ? " Alasan: " + note : "") + " Kamu bisa mengajukan lagi kapan saja.",
+        mailLines: ["Pengajuan " + code + " dibatalkan admin." + (note ? " Alasan: " + note : ""), "Kamu bisa mengajukan lagi kapan saja."],
+      };
+    case "kedaluwarsa":
+      return {
+        title: "Pengajuan " + code + " kedaluwarsa",
+        chat: "Pengajuan " + code + " kedaluwarsa karena belum dikonfirmasi lewat WhatsApp tepat waktu, jadi filenya dihapus. Silakan ajukan ulang.",
+        mailLines: ["Pengajuan " + code + " kedaluwarsa karena belum dikonfirmasi lewat WhatsApp tepat waktu, jadi filenya dihapus.", "Silakan ajukan ulang lewat Chat Admin."],
+      };
+    default:
+      return null;
+  }
+}
+
+function noticeMailHtml(app, notice, target) {
+  const base = (app.settings().meta.appURL || "https://medcoel.com").replace(/\/+$/, "");
+  const href = base + (target ? target.link : "/chat-admin");
+  return u.mailLayout(
+    notice.title,
+    notice.mailLines.map((l) => "<p>" + u.escapeHtml(l) + "</p>").join("") +
+      '<p><a href="' + u.escapeHtml(href) + '" style="color:#007060;font-weight:600">' + (target ? target.label : "Buka Chat Admin") + "</a></p>",
+  );
+}
+
+// Pesan otomatis ditulis atas nama admin pertama (kolom author wajib akun admin) dan diberi kunci "auto-…",
+// supaya web menandainya "Otomatis" dan tidak terlihat seperti balasan manusia.
+function tellUser(app, sub, status, extra) {
+  try {
+    const userId = sub.getString("user");
+    let usr;
+    try { usr = app.findRecordById("users", userId); } catch (_) { return; }
+    if (usr.getString("deletedAt")) return;
+    let subjectName = "";
+    try { subjectName = app.findRecordById("subjects", sub.getString("subject")).getString("name"); } catch (_) {}
+    const target = status === "selesai" ? openTarget(app, sub) : null;
+    const notice = buildNotice(status, {
+      code: sub.getString("code"),
+      kind: sub.getString("contentKind") === "materi" ? "materi" : "soal",
+      subjectName: (target && target.subjectName) || subjectName,
+      where: target ? target.where : "",
+      count: sub.getInt("importedCount"),
+      days: (extra && extra.days) || 1,
+      note: sub.getString("statusNote"),
+      wasLive: !!(extra && extra.wasLive),
+    });
+    if (!notice) return;
+
+    try {
+      const authors = app.findRecordsByFilter("users", "role = 'admin' && deletedAt = ''", "created", 1, 0);
+      if (authors.length) {
+        const r = new Record(app.findCollectionByNameOrId("support_messages"));
+        r.set("user", userId);
+        r.set("author", authors[0].id);
+        r.set("senderRole", "admin");
+        r.set("text", notice.chat);
+        r.set("category", "question");
+        r.set("clientKey", "auto-" + sub.id + "-" + status + "-" + Date.now().toString(36));
+        app.save(r);
+      }
+    } catch (err) {
+      console.log("kabar chat gagal:", err);
+    }
+
+    const to = usr.email();
+    if (to) u.sendMail(app, to, notice.title + " | MEDCOEL", noticeMailHtml(app, notice, target));
+  } catch (err) {
+    console.log("tellUser gagal:", err);
+  }
 }
 
 function notifyAdmins(app, sub) {
@@ -487,4 +643,4 @@ function retarget(app, sub, change) {
   };
 }
 
-module.exports = { MAX_PDFS, LABEL, pdfTitle, titleFor, titleNeeded, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck, findSubmission, checkDeckSubmission, finishDeckSubmission, importDeckFor, RETARGET_STATUSES, findSubjectLoose, retarget };
+module.exports = { buildNotice, NOTICE_STATUSES, openTarget, MAX_PDFS, LABEL, pdfTitle, titleFor, titleNeeded, NEXT, makeCode, files, queueInfo, summary, contract, webhook, setStatus, agentImport, agentImportDeck, findSubmission, checkDeckSubmission, finishDeckSubmission, importDeckFor, RETARGET_STATUSES, findSubjectLoose, retarget };

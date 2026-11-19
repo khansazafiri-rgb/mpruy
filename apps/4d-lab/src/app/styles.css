@@ -282,6 +282,23 @@ body[data-sidebar=open] .sidebar { transform: none; }
 .help-pop { position: absolute; z-index: 25; right: 10px; top: 52px; width: min(380px, calc(100% - 20px)); background: #fff; border: 1px solid rgb(var(--line)); border-radius: var(--radius); box-shadow: 0 10px 30px rgb(0 0 0 / .18); padding: 10px 12px; font-size: 12.5px; }
 .help-pop ol { padding-left: 18px; margin: 6px 0; display: grid; gap: 4px; } .help-pop small { color: rgb(var(--muted)); }
 .viewport-panel { position: relative; }
+.scan-mode { position: absolute; z-index: 8; top: 8px; left: 12px; display: flex; align-items: center; gap: 6px; max-width: calc(100% - 130px); flex-wrap: wrap; background: rgb(255 255 255 / .94); border: 1px solid rgb(var(--line)); border-radius: 10px; padding: 5px 7px; font-size: 12px; box-shadow: 0 3px 12px rgb(0 0 0 / .08); }
+.scan-mode span { font-weight: 750; color: rgb(var(--brand-dark)); }
+.scan-mode button, .tri-controls button { border: 1px solid rgb(var(--line)); border-radius: 7px; background: #fff; color: rgb(var(--brand-dark)); font: inherit; font-weight: 650; cursor: pointer; padding: 4px 7px; }
+.scan-mode #returnProbe, .tri-controls #triReturnProbe { background: rgb(var(--brand-dark)); color: #fff; }
+.scan-mode [hidden], .tri-controls[hidden] { display: none; }
+.tri-controls { flex: none; background: #f5faf8; border-bottom: 1px solid rgb(var(--line)); padding: 7px 12px; font-size: 12px; color: rgb(var(--ink)); }
+.tri-controls-head { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.tri-controls-head strong { color: rgb(var(--brand-dark)); margin-right: auto; }
+.tri-controls p { margin: 3px 0; line-height: 1.35; }
+.tri-slice-rows { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 6px 0; }
+.tri-slice-row { display: flex; align-items: center; gap: 5px; min-width: 0; }
+.tri-slice-row label { display: flex; flex: 1; flex-direction: column; min-width: 0; font-size: 11px; }
+.tri-slice-row input { width: 100%; accent-color: rgb(var(--brand-dark)); }
+.tri-slice-row output { white-space: nowrap; min-width: 54px; text-align: right; font-variant-numeric: tabular-nums; }
+.tri-slice-row button { min-width: 25px; }
+.learn-navigation { display: grid; gap: 6px; background: #e8f4ef; border: 1px solid rgb(var(--line)); border-radius: 9px; padding: 10px; margin: 8px 0; }
+.learn-navigation button { justify-self: start; }
 .view-menu { position: absolute; z-index: 6; top: 8px; right: 10px; max-width: calc(100% - 20px); }
 .view-menu > summary { list-style: none; cursor: pointer; background: rgb(255 255 255 / .94); border: 1px solid rgb(var(--line)); border-radius: 9px; padding: 5px 10px; font-size: 12.5px; font-weight: 650; width: max-content; margin-left: auto; }
 .view-menu > summary::-webkit-details-marker { display: none; }
@@ -292,6 +309,7 @@ body[data-sidebar=open] .sidebar { transform: none; }
 
 /* iPad (portrait) and small laptops: patient above, image below */
 @media (max-width: 1100px) {
+  .tri-slice-rows { grid-template-columns: 1fr; }
   body { overflow: auto; }
   .workspace { display: flex; flex-direction: column; height: auto; }
   .viewport-panel { height: 52vh; min-height: 360px; }
@@ -305,6 +323,8 @@ body[data-sidebar=open] .sidebar { transform: none; }
 }
 /* phones: one pane at a time + bottom switcher; compact header; icon-first mode bar */
 @media (max-width: 760px) {
+  .scan-mode { max-width: calc(100% - 100px); }
+  .tri-controls { font-size: 11px; }
   .topbar { height: auto; flex-wrap: wrap; gap: 6px; padding: 6px 10px; }
   .title { display: none; }
   .ws-nav { order: 9; max-width: none; width: 100%; }
@@ -433,3 +453,209 @@ body[data-learning="1"] .view-menu, body[data-learning="1"] .monitor-toolbar .in
 .tour-root .tour .tour-progress i { flex: 1; height: 4px; background: rgb(var(--line)); border-radius: 999px; }
 .tour-root .tour .tour-progress i.active { background: rgb(var(--brand)); }
 @media (prefers-reduced-motion: reduce) { .tour-focus { transition: none; } }
+
+/* Right-hand imaging work area: keep top display toolbar visible while the monitor content
+   scrolls independently when tri-planar controls need additional vertical room.
+   The CT canvas keeps a readable height rather than shrinking behind the physiology strips. */
+.monitor-panel { overflow: hidden; }
+.monitor-panel > .monitor-toolbar { flex: none; }
+.monitor-scroll {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
+}
+.monitor-scroll:focus-visible { outline-offset: -3px; }
+.monitor-panel[data-display="tri"] .monitor-body {
+  flex: 0 0 auto;
+  height: clamp(440px, 56dvh, 660px);
+  min-height: 440px;
+}
+.monitor-panel[data-display="tri"] .strip-wrap { flex: 0 0 auto; }
+.monitor-panel[data-display="tri"] .playbar { flex-shrink: 0; }
+.tri-scroll-hint { color: rgb(var(--muted)); font-size: 11.5px; }
+.tri-show-images { margin-left: 5px; }
+@media (max-width: 760px) {
+  .monitor-panel[data-display="tri"] .monitor-body { height: max(450px, 65dvh); }
+}
+
+/* Safari may auto-hide native scrollbars. This dedicated scrollbar rail stays
+   visible in Tri-planar CT, outside the canvas, so it can always be dragged. */
+.monitor-scroll-shell {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+.monitor-scroll-shell > .monitor-scroll {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+.monitor-panel[data-display="tri"] .monitor-scroll {
+  scrollbar-width: none;
+}
+.monitor-panel[data-display="tri"] .monitor-scroll::-webkit-scrollbar {
+  display: none;
+}
+.monitor-scroll-rail {
+  flex: 0 0 29px;
+  width: 29px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  padding: 5px 3px;
+  background: #132a30;
+  border-left: 1px solid #45676c;
+  color: #d7f8ed;
+  user-select: none;
+}
+.monitor-panel:not([data-display="tri"]) .monitor-scroll-rail { display: none; }
+.monitor-scroll-arrow {
+  flex: 0 0 27px;
+  height: 27px;
+  padding: 0;
+  border: 1px solid #598f87;
+  border-radius: 7px;
+  background: #1b554e;
+  color: #f0fffb;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.monitor-scroll-arrow:hover:not(:disabled),
+.monitor-scroll-arrow:focus-visible { background: #28776a; }
+.monitor-scroll-arrow:disabled { opacity: .4; cursor: default; }
+.monitor-scroll-track {
+  flex: 1 1 auto;
+  position: relative;
+  min-height: 38px;
+  border-radius: 10px;
+  background: #324c53;
+  border: 1px solid #52747b;
+  cursor: pointer;
+  touch-action: none;
+}
+.monitor-scroll-thumb {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 0;
+  height: 42px;
+  border-radius: 7px;
+  background: #58d1b3;
+  border: 1px solid #b9ffea;
+  box-shadow: 0 1px 3px rgb(0 0 0 / .35);
+  cursor: grab;
+  will-change: transform;
+}
+.monitor-scroll-track.is-dragging .monitor-scroll-thumb { cursor: grabbing; background: #91f0cf; }
+.monitor-scroll-track:not(.can-scroll) .monitor-scroll-thumb { opacity: .45; }
+@media (max-width: 760px) {
+  .monitor-scroll-rail { flex-basis: 33px; width: 33px; }
+  .monitor-scroll-arrow { flex-basis: 32px; height: 32px; }
+}
+
+/* Head-to-toe region awareness: a missing scan is NOT a diagnostic-looking image.
+   The overlay covers stale CT/USG frames and cannot intercept the imaging widgets
+   unless the selected skin contact lies outside the available acquisition. */
+.scan-mode .region-status { font-size: 11px; font-weight: 700; white-space: nowrap; color: #1d6c60; border-left: 1px solid #c4dcd5; padding-left: 8px; }
+.scan-mode .region-status[data-available="false"] { color: #a35016; }
+.scan-mode .region-status[hidden] { display: none; }
+.monitor-wrap .coverage-notice {
+  position: absolute; inset: 0; z-index: 12;
+  background: #061016; color: #eaf5f4;
+  padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 10px;
+  pointer-events: none; line-height: 1.45;
+}
+.monitor-wrap .coverage-notice[hidden] { display: none; }
+.coverage-notice strong { font-size: 18px; color: #ffd38a; }
+.coverage-notice p { max-width: 480px; font-size: 14px; margin: 0; }
+.coverage-notice small { color: #b6d0cc; max-width: 460px; font-size: 12px; }
+/* pad docked beside the patient (never covers the body); floating only on phones */
+.view-stage { display: flex; flex-direction: row; position: relative; flex: 1; min-height: 0; }
+.view-stage > #viewport { flex: 1; min-width: 0; }
+.view-stage > .probe-pad { position: relative; right: auto; bottom: auto; left: auto; order: 2; flex: none; width: 236px; border-radius: 0; border: 0; border-left: 1px solid rgb(var(--line)); box-shadow: none; overflow-y: auto; backdrop-filter: none; background: #fbfaf6; }
+.view-stage > .probe-pad.collapsed { width: 44px; padding: 8px 6px; }
+.view-stage > .probe-pad.collapsed .pad-title { display: none; }
+@media (max-width: 760px) {
+  .view-stage > .probe-pad { position: absolute; left: 8px; right: 8px; bottom: 64px; width: auto; border-radius: 14px; border: 1px solid rgb(var(--line)); box-shadow: 0 8px 24px rgb(0 0 0 / .14); max-height: 46vh; }
+  .view-stage > .probe-pad.collapsed { width: auto; }
+}
+.view-menu { z-index: 8; max-width: calc(100% - 236px - 64px); }
+@media (max-width: 760px) { .view-menu { max-width: calc(100% - 64px); } }
+
+
+/* ---- Three-tool selector + clear top bar (owner feedback: the old floating pill and menu covered the 3D scene) ----
+   The bar is IN FLOW above the 3D view, so nothing sits on top of the patient or the room. */
+.viewport-wrap { flex-direction: column; }
+.view-bar { position: relative; z-index: 12; flex: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "tabs tools" "info info"; gap: 6px 10px; align-items: center; padding: 7px 10px 6px; background: rgb(var(--paper)); border-bottom: 1px solid rgb(var(--line)); }
+.mode-tabs { grid-area: tabs; display: inline-flex; min-width: 0; border: 1px solid rgb(var(--line)); border-radius: 12px; overflow: hidden; background: #fff; }
+.mode-tabs button { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; border: 0; background: none; padding: 6px 13px; cursor: pointer; text-align: left; color: rgb(var(--brand-dark)); min-width: 0; }
+.mode-tabs button + button { border-left: 1px solid rgb(var(--line)); }
+.mode-tabs button b { font-size: 13px; font-weight: 750; white-space: nowrap; }
+.mode-tabs button small { font-size: 10.5px; font-weight: 600; opacity: .72; white-space: nowrap; }
+.mode-tabs button[aria-pressed=true] { background: rgb(var(--forest)); color: rgb(var(--paper)); }
+.mode-tabs button[aria-pressed=true] small { opacity: .85; }
+.mode-tabs button:disabled { opacity: .45; cursor: not-allowed; }
+.mode-tabs button:focus-visible { outline: 2px solid rgb(var(--gold)); outline-offset: -3px; }
+.view-bar-tools { grid-area: tools; display: flex; align-items: center; gap: 8px; }
+.view-bar .help-btn { position: static; width: 32px; height: 32px; flex: none; margin: 0; }
+.mode-info { grid-area: info; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; min-width: 0; font-size: 12px; }
+.mode-info #modeStatus { font-weight: 750; color: rgb(var(--brand-dark)); }
+.mode-info .region-status { font-size: 11px; font-weight: 700; white-space: nowrap; color: #1d6c60; border-left: 1px solid #c4dcd5; padding-left: 8px; }
+.mode-info .region-status[data-available="false"] { color: #a35016; }
+.mode-info .region-status[hidden] { display: none; }
+.mode-elements { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+.mode-elements .chip { font-size: 10.5px; font-weight: 650; color: rgb(var(--brand-dark)); background: #e7f1ee; border: 1px solid #cfe2dc; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+.view-bar .view-menu { position: relative; left: auto; right: auto; top: auto; max-width: none; z-index: 20; }
+.view-bar .view-menu > summary { margin: 0; white-space: nowrap; background: #fff; }
+.view-bar .view-menu .view-toolbar { position: absolute; top: calc(100% + 6px); right: 0; z-index: 20; margin: 0; width: min(520px, calc(100vw - 24px)); padding: 10px; background: rgb(255 255 255 / .98); border: 1px solid rgb(var(--line)); border-radius: 12px; box-shadow: 0 10px 28px rgb(0 0 0 / .16); display: flex; flex-wrap: wrap; gap: 8px; }
+.view-stage > .viewport-badge { z-index: 5; }
+/* monitor toolbar: wraps instead of clipping; display group is replaced by a label in Tri-planar mode */
+.monitor-toolbar { flex-wrap: wrap; overflow: visible; row-gap: 6px; align-items: center; }
+.monitor-toolbar #zoomOut { margin-left: auto; }
+.tri-badge { display: none; font-size: 12px; font-weight: 700; color: #bfe3da; border: 1px solid #2c4650; border-radius: 8px; padding: 5px 9px; background: #0c181d; }
+.monitor-panel[data-display="tri"] .display-seg { display: none; }
+.monitor-panel[data-display="tri"] .tri-badge { display: inline-block; }
+.monitor-panel[data-display="tri"] .ct-only { display: inline-flex; }
+@media (max-width: 760px) {
+  .mode-tabs button { padding: 6px 9px; }
+  .mode-tabs button small { display: none; }
+  .mode-elements { display: none; }
+  .view-bar { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "tabs tabs" "info tools"; }
+  .mode-tabs { width: 100%; justify-self: stretch; }
+  .mode-tabs button { flex: 1 1 0; align-items: center; }
+  .mode-tabs button b { font-size: 12.5px; }
+}
+@media (max-width: 1100px) { .mode-tabs button small { display: none; } .mode-tabs button { padding: 7px 12px; } }
+.mode-tabs { justify-self: start; }
+.tri-howto { margin: 2px 0 6px; font-size: 12px; }
+.tri-howto > summary { cursor: pointer; font-weight: 650; color: rgb(var(--brand-dark)); }
+
+/* ---- Interactive, mascot-led tutorial (tutorial.js). The overlay never blocks the page: the learner touches the real controls. ---- */
+.tour-root .tour { width: min(390px, calc(100vw - 24px)); padding-top: 12px; }
+.tour-head { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.tour-mascot { flex: none; display: grid; place-items: center; width: 84px; height: 84px; border-radius: 18px; background: rgb(var(--brand-soft)); border: 1px solid rgb(var(--line)); }
+.tour-headtext { flex: 1; min-width: 0; }
+.tour-root .tour .tour-progress i.done { background: rgb(var(--brand)); opacity: .55; }
+.tour-root .tour .tour-text { margin: 0; padding: 9px 12px; border-radius: 12px; background: rgb(var(--paper)); border: 1px solid rgb(var(--line)); }
+.tour-task { display: flex; gap: 8px; align-items: flex-start; margin: 9px 0 0; padding: 9px 12px; border-radius: 12px; background: #fff6dc; border: 1px dashed #dcb85a; font-size: 13px; font-weight: 650; line-height: 1.45; color: #5a4310; }
+.tour-task.is-done { background: #e4f4ec; border: 1px solid #9bd2b9; color: #0b5a45; }
+.tour-check { flex: none; font-size: 16px; line-height: 1.2; }
+.tour-root .tour .btn.ghost { background: none; border-color: transparent; text-decoration: underline; color: rgb(var(--brand-dark)); min-width: 0; padding-inline: 6px; }
+.tour-root .tour .btn[disabled] { opacity: .45; cursor: not-allowed; }
+.tour-root .tour .row { flex-wrap: wrap; gap: 6px; }
+.tour-focus.is-task { box-shadow: 0 0 0 100vmax rgb(9 22 28 / .26); animation: tourPulse 1.6s ease-in-out infinite; }
+.tour-focus.is-ok { border-color: #35b583; box-shadow: 0 0 0 100vmax rgb(9 22 28 / .18); }
+@keyframes tourPulse { 0%, 100% { outline: 0 solid rgb(240 190 60 / .55); outline-offset: 0; } 50% { outline: 10px solid rgb(240 190 60 / 0); outline-offset: 4px; } }
+@media (max-width: 740px) { .tour-mascot { width: 66px; height: 66px; } }
+@media (prefers-reduced-motion: reduce) { .tour-focus.is-task { animation: none; outline: 3px solid rgb(240 190 60 / .6); } }

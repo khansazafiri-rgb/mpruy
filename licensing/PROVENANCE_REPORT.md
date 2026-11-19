@@ -103,7 +103,7 @@ Policy: [`quarantine-policy.json`](quarantine-policy.json) · Per-structure mani
 | `apps/web/public/*` (illustrations, simulasi, icons) | MEDCOEL original artwork. | Owner-authorised; kept. |
 | `apps/web/src/...` | The Anatomy Library reads the atlas data, so quarantined structures show "tidak tersedia". | Updated. |
 
-## 5. Residual risks (published, judged low)
+## 5. Residual risks (public staging blocked pending review)
 
 - **Upstream attribution is presumed, not proven.** The remaining 2,237 structures are attributed to
   BodyParts3D/Z-Anatomy because the upstream notice lists no other model for them. If any were
@@ -115,8 +115,9 @@ Policy: [`quarantine-policy.json`](quarantine-policy.json) · Per-structure mani
   If Z-Anatomy adapted skull meshes from it, those would still be BodyParts3D-based, but carry
   Dundee's terms.
 - **Region and system previews of the head** may contain a handful of ossicle pixels.
-- **The atlas application code** is under CC BY-NC-SA 4.0 by the original author's choice (see
-  LICENSE §3). This is an owner decision, not a model obligation any more.
+- **The atlas application code** is described as CC BY-NC-SA 4.0 (see LICENSE §3).
+  Commercial distribution is blocked until ownership and authority to relicense or written
+  commercial permission are documented. This code issue is independent of the model terms.
 
 ## 6. Verification
 

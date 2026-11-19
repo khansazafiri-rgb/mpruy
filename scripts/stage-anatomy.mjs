@@ -3,6 +3,7 @@ import {cp,mkdir,readFile,writeFile,rename,symlink,lstat,readlink,rm,open,readdi
 import path from 'node:path';import {fileURLToPath} from 'node:url';import {randomUUID,createHash} from 'node:crypto';
 const repo=fileURLToPath(new URL('../',import.meta.url));
 import {assertDistributionClean,loadPolicy} from '../licensing/tools/check-distribution.mjs';
+import {assertCommercialReleaseReady} from '../licensing/tools/check-commercial-release.mjs';
 // Systems withheld by the licence quarantine are neither required nor allowed in a release.
 const QUARANTINED=new Set(Object.keys(loadPolicy().policy.quarantinedSystems));
 const systems=['skeletal','muscular','joints','cardiovascular','nervous','lymphatic','visceral'].filter(s=>!QUARANTINED.has(s));
@@ -30,7 +31,7 @@ export async function validateViewer(root){
 }
 async function previousTarget(dest){try{const stat=await lstat(dest);if(!stat.isSymbolicLink())throw Error('Viewer destination is a real directory; back it up and migrate to a release symlink first.');return path.resolve(path.dirname(dest),await readlink(dest));}catch(error){if(error.code==='ENOENT')return null;throw error;}}
 async function activate(dest,target){const tmp=dest+'.next-'+randomUUID();await symlink(target,tmp,'dir');try{await rename(tmp,dest);}catch(error){await rm(tmp,{force:true});throw error;}}
-export async function stageAnatomy({source=path.resolve(repo,process.env.ANATOMY_DIST||'apps/anatomy/dist'),dest=process.env.ANATOMY_VIEWER_DIR||'/var/lib/medcoel/anatomy-viewer',releaseId=process.env.ANATOMY_RELEASE_ID||new Date().toISOString().replace(/[^0-9]/g,''),rollback=false}={}){
+export async function stageAnatomy({source=path.resolve(repo,process.env.ANATOMY_DIST||'apps/anatomy/dist'),dest=process.env.ANATOMY_VIEWER_DIR||'/var/lib/medcoel/anatomy-viewer',releaseId=process.env.ANATOMY_RELEASE_ID||new Date().toISOString().replace(/[^0-9]/g,''),rollback=false,commercialManifest}={}){
  dest=path.resolve(dest);const webDist=path.resolve(repo,process.env.MAIN_DIST||'apps/web/dist');
  if(dest===webDist||dest.startsWith(webDist+path.sep))throw Error('Persistent Anatomy destination must be outside the main web dist');
  if(!/^[a-zA-Z0-9._-]{1,80}$/.test(releaseId))throw Error('Invalid release ID');
@@ -42,7 +43,11 @@ export async function stageAnatomy({source=path.resolve(repo,process.env.ANATOMY
   if(rollback){
    const record=JSON.parse(await readFile(recordFile,'utf8'));
    if(previous!==record.currentTarget||!record.previousTarget)throw Error('No matching previous release to roll back to');
-   await validateViewer(record.previousTarget);await activate(dest,record.previousTarget);
+   await validateViewer(record.previousTarget);
+   // Rollback is also a PUBLIC RELEASE. A pre-policy or later-modified release
+   // cannot bypass the exact-build commercial-rights approval by being 'previous'.
+   assertCommercialReleaseReady('atlas-viewer',record.previousTarget,commercialManifest);
+   await activate(dest,record.previousTarget);
    await writeFile(recordFile,JSON.stringify({currentTarget:record.previousTarget,previousTarget:previous,rolledBackAt:new Date().toISOString()},null,2)+'\n');
    return {dest,currentTarget:record.previousTarget,previousTarget:previous};
   }
@@ -50,12 +55,15 @@ export async function stageAnatomy({source=path.resolve(repo,process.env.ANATOMY
   // contents, not the symlink over the new release directory.
   source=await realpath(source);
   const validation=await validateViewer(source),release=path.join(releases,releaseId),content=await fingerprint(source);
+  validation.commercialRights=assertCommercialReleaseReady('atlas-viewer',source,commercialManifest);
   let exists=false;try{exists=(await lstat(release)).isDirectory();}catch(error){if(error.code!=='ENOENT')throw error;}
   if(exists){
    const installed=JSON.parse(await readFile(path.join(release,'.release-source.json'),'utf8'));
    if(installed.digest!==content.digest)throw Error('Release ID already exists with different content; choose a new release ID');
    for(const [file,hash]of Object.entries(content.files))if(createHash('sha256').update(await readFile(path.join(release,file))).digest('hex')!==hash)throw Error('Existing release content mismatch: '+file);
    await validateViewer(release);
+   // Verify the exact bytes served by this existing release, not just its source.
+   validation.commercialRights=assertCommercialReleaseReady('atlas-viewer',release,commercialManifest);
    if(previous===release)return {dest,currentTarget:release,unchanged:true,...validation};
    const record={dest,currentTarget:release,previousTarget:previous,createdAt:new Date().toISOString(),...validation};
    await writeFile(recordFile,JSON.stringify(record,null,2)+'\n');await activate(dest,release);return record;
@@ -64,9 +72,14 @@ export async function stageAnatomy({source=path.resolve(repo,process.env.ANATOMY
   try{
    await cp(source,release,{recursive:true});
    await writeFile(path.join(release,'.release-source.json'),JSON.stringify(content));
-   // Keep old hashed chunks reachable for tabs opened before this release.
+   // Retain old hashed chunks for tabs opened before this release ONLY if the
+   // entire resulting directory has been explicitly reviewed. The prior assets
+   // must be included in the signed-off build digest; otherwise fail closed.
    if(previous){try{await cp(path.join(previous,'assets'),path.join(release,'assets'),{recursive:true,force:false,errorOnExist:false});}catch(error){if(error.code!=='ENOENT')throw error;}}
    await validateViewer(release);
+   // Source approval does not automatically cover files copied from the previous
+   // release (nor any mutation during staging). Never activate unapproved bytes.
+   validation.commercialRights=assertCommercialReleaseReady('atlas-viewer',release,commercialManifest);
    const record={dest,currentTarget:release,previousTarget:previous,createdAt:new Date().toISOString(),...validation};
    // Keep rollback coordinates before switching; an interrupted process cannot
    // delete the formerly active release or copy a half-built tree into it.

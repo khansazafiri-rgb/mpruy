@@ -15,10 +15,14 @@ export const trackHref = (t) => `${groupOf(t.group).path}${t.key}`;
 export function findTrack(group, key) { return TRACKS.find((t) => t.key === key && t.group === group) || null; }
 
 /** Steps with `available`, `href` and, when unavailable, a readable `reason`. */
-export function resolveSteps(track, { catalog = null, pathways = [], unavailableSystems = UNAVAILABLE_SYSTEMS } = {}) {
+// features: what the server released for this user (e.g. { ecg: false } until clinical review); live: Live 4D Lab
+// availability on this server ('ready' | 'missing'; the 4D build is a separate static release that can be absent).
+export function resolveSteps(track, { catalog = null, pathways = [], unavailableSystems = UNAVAILABLE_SYSTEMS, features = {}, live = 'ready' } = {}) {
   const modules = new Map(authoredExplore(catalog).map((m) => [m.moduleKey, m]));
   return track.steps.map((s) => {
     if (s.kind === 'planned') return { ...s, available: false, reason: s.reason || 'Belum tersedia.' };
+    if (s.review && !features[s.review]) return { ...s, available: false, reason: 'Sedang ditinjau pendidik klinis; akan dibuka setelah review selesai.' };
+    if (s.kind === 'live' && live === 'missing') return { ...s, available: false, reason: 'Live 4D Lab belum terpasang di server ini.' };
     if (s.system && unavailableSystems[s.system]) return { ...s, available: false, reason: unavailableSystems[s.system] };
     if (s.kind === 'module') {
       const m = modules.get(s.moduleKey);

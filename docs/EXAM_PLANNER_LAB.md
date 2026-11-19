@@ -38,7 +38,7 @@ lab_track_progress (1 per user per track)
 ```
 Delivered without modifying legacy components: everything except small additive edits to `Schedule.jsx`, `Home.jsx`, `Lab.jsx`, `App.jsx` and the anatomy/4D host links.
 
-## Data model (additive migration `1800003100_study_planner.js`)
+## Data model (additive migration `1800003200_study_planner.js`; numbered 1800003100 before the 4D-branch integration)
 | Collection | Purpose | Access |
 |---|---|---|
 | `study_profiles` | user, dailyMinutes, weekdayMinutes[7], restDates[], activities[] | rules `null`; only through `/api/medcoel/study/*` |
@@ -103,7 +103,7 @@ cron) are unchanged.
   daily plan, topic list, change proposals) and `/rencana-belajar` (today's sessions across exams). Home shows today's tasks and the
   other upcoming exams under the nearest one. Server: pure planner library, `study` helper library, routes above, additive migration.
 - **Files.** `apps/pocketbase/pb_hooks/lib/{studyPlanner,study}.js`, `apps/pocketbase/pb_hooks/study.pb.js`,
-  `apps/pocketbase/pb_migrations/1800003100_study_planner.js`, `apps/web/src/pages/{Schedule,StudyPlan,StudyToday,Home}.jsx`,
+  `apps/pocketbase/pb_migrations/1800003200_study_planner.js`, `apps/web/src/pages/{Schedule,StudyPlan,StudyToday,Home}.jsx`,
   `apps/web/src/features/study/studyLib.js`, `apps/web/src/{App.jsx,components/AppShell.jsx,lib/serverVersion.js}`, tests, CI step.
 - **Tests.** Planner unit 10/10 (all 10 acceptance scenarios + invariants); study API 70 checks on a disposable local PocketBase
   (`npm run test:study --prefix apps/pocketbase`, also in CI); web 143/143; build OK; browser journey
@@ -113,7 +113,7 @@ cron) are unchanged.
   overflow; *Rencana belajar* is now reached from Home, Pusat ujian and the mobile menu.
 - **Visual evidence.** `docs/evidence/study/01…10-*.jpg` (local QA data, fictitious student).
 - **Compatibility.** `/jadwal` URL, exam form, reminders and existing exam records unchanged; deleting an exam archives its plan
-  instead of deleting history. Deploy order: migration + hooks first (the web app checks `REQUIRED_MIGRATION = 1800003100`).
+  instead of deleting history. Deploy order: migration + hooks first (the web app checks `REQUIRED_MIGRATION = 1800003200` after the 4D-branch integration).
 - **Medical/licensing.** No new medical content; links only to existing MEDCOEL chapters/flashcards/practice visible to the student's campus.
 - **Known limitations.** Time zone per user is taken from the nearest exam; no calendar export; the session "done" mark is
   self-reported (verified practice numbers are shown separately).
@@ -166,3 +166,10 @@ cron) are unchanged.
   Browser journey covers scrubbing ↔ diagram, the dropped beat, and a full practice round on desktop and phone.
 - **Visual evidence.** `docs/evidence/lab/01…08-*.jpg`.
 - **Status.** Implemented and verified locally. Not deployed. No merge or release without approval.
+
+### Integration into the 4D Lab production line (2026-11-19)
+See `docs/INTEGRATION_PR220_INTO_4D.md`. Changes relative to the iteration reports above: the migration is now
+`1800003200_study_planner.js` (idempotent); the ECG module and the track steps marked `"review": "ecg"` are open to admins
+and to students only with `MEDCOEL_LAB_ECG_PUBLIC=1` after clinical review; Live 4D steps follow the 4D release
+availability; new pages are part of the 4D branch's student activity report; drilling (campus-only) chapters are never
+accepted as planner sources.

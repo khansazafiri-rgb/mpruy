@@ -19,6 +19,7 @@ import {
 import { deselectPart, selectPartById } from "../viewer/selection.js";
 import { animateCamera } from "../viewer/camera.js";
 import { GROUPS, initialSettings, visibleBySettings } from "./catalog.js";
+import { bp3dHas } from "../viewer/bp3dSource.js";
 export let settings = initialSettings();
 let catalog = {},
   internal = 0,
@@ -268,6 +269,8 @@ export async function reveal(id) {
   const meta = catalog[id];
   if (!meta)
     throw new Error("This structure is not available in the supplied model.");
+  if (!bp3dHas(id))
+    throw new Error("Struktur ini belum ada di BodyParts3D (pratinjau lokal, cakupan sebagian). Kembali ke model Atlas untuk melihatnya.");
   const token = ++selectRevision;
   const applied = await commit(() => {
     const yMin = meta.box[1],

@@ -9,6 +9,8 @@ import Mascot from '@/components/Mascot';
 import MascotTip, { useMascotsOn } from '@/components/MascotTip';
 import HumanAnatomy from './HumanAnatomy';
 import LiveLab from './LiveLab';
+import AnatomySplit from './AnatomySplit';
+import { useLiveLabAvailable } from '../features/anatomy/useLiveLabAvailable';
 import { AnatomyDataProvider, useAnatomyLibrary } from '../features/anatomy/LibraryData';
 import {
   REGIONS, SYSTEMS, browseStructures, filterStructures, normalise, relatedStructures, structureHref, exploreHref,
@@ -65,6 +67,7 @@ export default function AnatomyProduct() {
 }
 
 function LibraryShell({ children }) {
+  const liveLab = useLiveLabAvailable();
   const { storageError } = useAnatomyLibrary();
   const { pathname } = useLocation();
   useEffect(() => {
@@ -81,7 +84,7 @@ function LibraryShell({ children }) {
           <NavLink to="/anatomy/library">Pustaka</NavLink>
           <NavLink to="/anatomy/study">Kuis</NavLink>
           <Link to="/anatomy/explore" className="anatomy-nav-3d">Atlas 3D <Box size={14} /></Link>
-          <Link to="/anatomy/live" className="anatomy-nav-3d">Live 4D Lab</Link>
+          {liveLab !== 'missing' && <Link to="/anatomy/live" className="anatomy-nav-3d">Live 4D Lab</Link>}
         </nav>
         <Link className="anatomy-back" to="/beranda">← Beranda</Link>
       </header>
@@ -230,31 +233,7 @@ function LandingContent() {
   const featured = ['Humerus.r', 'Ulna.r', 'Femur.r', 'Scapula.r'].map((id) => registry.byId.get(id)).filter(Boolean);
   return (
     <>
-      <section className="anatomy-hero">
-        <div className="anatomy-hero-copy">
-          <p className="library-eyebrow">PUSTAKA BELAJAR MEDCOEL</p>
-          <h1>Anatomi<br /><em>Manusia.</em></h1>
-          <p className="anatomy-hero-lead">Pahami tubuh,<br />satu struktur demi satu struktur.</p>
-          <p className="anatomy-hero-description">
-            Jelajahi struktur, hubungkan regio dan sistem, lalu uji pemahamanmu langsung pada atlas 3D.
-          </p>
-          <div className="anatomy-hero-actions">
-            <Link className="btn-primary" to="/anatomy/explore"><Box size={17} /> Buka Atlas 3D <ArrowRight size={16} /></Link>
-            <Link className="btn-secondary" to="/anatomy/study"><Target size={17} /> Mulai kuis interaktif</Link>
-            <Link className="btn-secondary" to="/anatomy/live">Live 4D Lab · USG &amp; CT</Link>
-          </div>
-          <div className="anatomy-hero-stats">
-            <span><strong>{count(registry.rows.length)}</strong>struktur</span>
-            <span><strong>{SYSTEMS.length}</strong>sistem</span>
-            <span><strong>{REGIONS.length}</strong>regio belajar</span>
-          </div>
-        </div>
-        <div className="anatomy-hero-art">
-          <span className="library-art-label">TUBUH MANUSIA / RUANG BELAJARMU</span>
-          <StructureThumbnail path={registry.previews.hero?.url} name="Anatomi otot dan rangka manusia" className="anatomy-hero-model" eager />
-          <span className="library-art-caption">Jelajahi. Hubungkan. Ingat.</span>
-        </div>
-      </section>
+      <AnatomySplit structureCount={count(registry.rows.length)} heroUrl={registry.previews.hero?.url} />
 
       <section className="library-search-section" aria-labelledby="anatomy-search-title">
         <div>

@@ -10,7 +10,8 @@ import { validateRegistration } from '../src/core/mesh.js';
 import { clinicalPose, freePose, freeQuat, FREE_PRESETS, imagingPlane, PROBES } from '../src/core/probe.js';
 import { translate, rotate, selectSide } from '../src/app/axisMove.js';
 import { dragToAmount } from '../src/app/axisControl.js';
-import { triPlanes, mprPlane, stepSlice, MPR } from '../src/core/mpr.js';
+import { triPlanes, mprPlane, mprRasterSize, stepSlice, MPR } from '../src/core/mpr.js';
+import { AtlasLayer, isRespiratoryDetail } from '../src/app/atlasLayer.js';
 import { reslice } from '../src/core/reslice.js';
 import { labelRaster, pixelToLPS, lpsToPixel, contourSegments, groupRaster } from '../src/core/labels.js';
 import { buildGroups, unavailableStructures, STRUCTURES, UNIDENTIFIED } from '../src/edu/structures.js';
@@ -152,6 +153,30 @@ test('tri-planar MPR: orthonormal patient planes through one crosshair point, ra
   assert.equal(mprPlane('sa', p, A.ct.bounds).mode, 'mpr');
 });
 
+test('MPR uses true CT extent, not oversized square padding, with near-isotropic pixels', () => {
+  const b = { lo: [-130, -50, -190], hi: [130, 50, 190] }, p = [0, 0, 0];
+  const P = triPlanes(p, b);
+  for (const [key, pl] of Object.entries(P)) {
+    const [i, j] = MPR[key].dims, w = b.hi[i] - b.lo[i], h = b.hi[j] - b.lo[j];
+    assert.equal(pl.width, w, key + ' width follows actual CT FOV');
+    assert.equal(pl.height, h, key + ' height follows actual CT FOV');
+    const { cols, rows } = mprRasterSize(pl, 320);
+    assert.ok(cols <= 320 && rows <= 320 && cols >= 16 && rows >= 16);
+    assert.ok(Math.abs(w / cols - h / rows) < 0.05, key + ' physical pixels are approximately square');
+    const volume = { sample: (x, y, z) => [x, y, z].every((v, a) => v >= b.lo[a] - 1e-7 && v <= b.hi[a] + 1e-7) ? 42 : NaN };
+    const result = reslice(volume, pl, cols, rows, { clipToFov: false });
+    assert.equal(result.outsideFraction, 0, key + ' does not intentionally render outside CT coverage');
+    const crosshair = lpsToPixel(pl, cols, rows, p);
+    const roundTrip = pixelToLPS(pl, cols, rows, crosshair.px, crosshair.py);
+    assert.ok(Math.hypot(...sub(roundTrip, p)) < 1e-6, key + ' linked crosshair stays registered');
+  }
+  // When a margin is requested, missing pixels remain explicitly marked, never fabricated.
+  const padded = mprPlane('ax', p, b, 10);
+  const raster = mprRasterSize(padded, 320);
+  const vol = { sample: (x, y, z) => [x, y, z].every((v, i) => v >= b.lo[i] && v <= b.hi[i]) ? 100 : NaN };
+  assert.ok(reslice(vol, padded, raster.cols, raster.rows, { clipToFov: false }).outsideFraction > 0);
+});
+
 test('contours align with the CT label map in axial, coronal and sagittal MPR planes', () => {
   const sampler = createSampler({ ct: A.ct, labels: A.labels, anatomy: A.anatomy });
   const G = buildGroups(A.anatomy.labels), lc = A.anatomy.heart.lvCentre;
@@ -242,4 +267,42 @@ test('credits, pathology cases and auscultation guide are complete and honest', 
   assert.deepEqual(cr, crackleTrain({ period: 4, sampleRate: 8000, seed: 3 }), 'deterministic');
   assert.ok(Math.max(...cr.map(Math.abs)) <= 3 && Math.max(...wz.map(Math.abs)) <= 1.01, 'bounded');
   assert.equal(wz.slice(0, Math.floor(0.44 * wz.length)).some((v) => v !== 0), false, 'wheeze only in expiration');
+});
+
+test('respiratory detail uses existing cleared bronchi/pleura only, restores default visibility', () => {
+  assert.equal(isRespiratoryDetail('Pleura', 'respiratory'), true);
+  assert.equal(isRespiratoryDetail('Right main bronchus', 'respiratory'), true);
+  assert.equal(isRespiratoryDetail('Anterior segmental bronchus of right lung (BIII)', 'respiratory'), true);
+  assert.equal(isRespiratoryDetail('Superior lobe of right lung', 'respiratory'), false);
+  assert.equal(isRespiratoryDetail('Pleura', 'skeletal'), false);
+  assert.equal(isRespiratoryDetail('Kidney.r', 'urinary'), false);
+  const state = {
+    respiratoryDetailsShown: false,
+    structures: new Map([
+      ['Pleura', { name: 'Pleura', group: 'respiratory', hiddenByUser: true }],
+      ['Right main bronchus', { name: 'Right main bronchus', group: 'respiratory', hiddenByUser: true }],
+      ['Superior lobe of right lung', { name: 'Superior lobe of right lung', group: 'respiratory', hiddenByUser: false }],
+      ['Liver', { name: 'Liver', group: 'digestive', hiddenByUser: false }],
+    ]),
+    groups: { respiratory: { visible: false } },
+    isolated: 'Pleura',
+    calls: 0,
+    apply() { this.calls++; },
+  };
+  assert.equal(AtlasLayer.prototype.setRespiratoryDetail.call(state, true), 2);
+  assert.equal(state.respiratoryDetailsShown, true);
+  assert.equal(state.groups.respiratory.visible, true);
+  assert.equal(state.structures.get('Pleura').hiddenByUser, false);
+  assert.equal(state.structures.get('Right main bronchus').hiddenByUser, false);
+  assert.equal(state.structures.get('Superior lobe of right lung').hiddenByUser, false);
+  assert.equal(state.structures.get('Liver').hiddenByUser, false);
+  assert.equal(AtlasLayer.prototype.setRespiratoryDetail.call(state, false), 2);
+  assert.equal(state.structures.get('Pleura').hiddenByUser, true);
+  assert.equal(state.structures.get('Right main bronchus').hiddenByUser, true);
+  AtlasLayer.prototype.setRespiratoryDetail.call(state, true);
+  AtlasLayer.prototype.showAll.call(state);
+  assert.equal(state.respiratoryDetailsShown, false);
+  assert.equal(state.isolated, null);
+  assert.equal(state.structures.get('Pleura').hiddenByUser, true);
+  assert.equal(state.structures.get('Right main bronchus').hiddenByUser, true);
 });

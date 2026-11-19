@@ -3,6 +3,7 @@
 import { parseNrrd } from '../core/nrrd.js';
 import { makeVolume, sameGrid } from '../core/volume.js';
 import { reslice, windowLevel } from '../core/reslice.js';
+import { mprRasterSize } from '../core/mpr.js';
 import { PROBES } from '../core/probe.js';
 import { createSampler } from '../sim/sampler.js';
 import { simulateUltrasound, scanConvert } from '../sim/ultrasound.js';
@@ -45,9 +46,12 @@ function render(req) {
   if (tri) { // three orthogonal CT reformats through one patient-space point (no ultrasound geometry here)
     out.tri = [];
     for (const [key, pl] of Object.entries(tri.planes)) {
-      const n = tri.size, res = reslice({ sample: sampler.ct }, pl, n, n, { clipToFov: false, both });
+      // Preserve physical pixel aspect ratio in each MPR view. CT bounds are rectangular;
+      // a square image would stretch anatomy and create unnecessary out-of-acquisition hatching.
+      const { cols, rows } = mprRasterSize(pl, tri.size);
+      const res = reslice({ sample: sampler.ct }, pl, cols, rows, { clipToFov: false, both });
       const rgba = windowLevel(res, settings.window, settings.level);
-      out.tri.push({ key, rgba: rgba.buffer, w: n, h: n, outsideFraction: res.outsideFraction, labels: res.labels?.buffer || null });
+      out.tri.push({ key, rgba: rgba.buffer, w: cols, h: rows, outsideFraction: res.outsideFraction, labels: res.labels?.buffer || null });
       transfer.push(rgba.buffer); if (res.labels) transfer.push(res.labels.buffer);
     }
     out.ms = performance.now() - t0; postMessage(out, transfer); return;

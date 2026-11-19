@@ -425,6 +425,13 @@ await langkah('agen tidak bisa mengimpor sebelum admin mengonfirmasi', async () 
 
 await langkah('admin konfirmasi -> Antre; agen membaca kontrak dan mengimpor; kampus dari pengajuan', async () => {
   await call('POST', `/api/medcoel/admin/submissions/${subId}/status`, { status: 'antre' }, admin.token, 200);
+  // Kabar otomatis ke Chat Admin pengaju: ditandai auto, atas nama admin, berisi kode pengajuan.
+  const subCode = (await call('GET', '/api/medcoel/submissions/mine', undefined, userA.token, 200)).data.items.find((x) => x.id === subId).code;
+  const chatAntre = (await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data.items.filter((m) => m.auto);
+  assert.equal(chatAntre.length, 1);
+  assert.equal(chatAntre[0].senderRole, 'admin');
+  assert.ok(chatAntre[0].text.includes(subCode) && /dikonfirmasi/.test(chatAntre[0].text), chatAntre[0].text);
+  assert.deepEqual((await call('GET', '/api/medcoel/support/messages', undefined, userB.token, 200)).data.items.filter((m) => m.auto), []);
   const list = (await call('GET', '/api/medcoel/agent/submissions?status=antre', undefined, agent.token, 200)).data;
   const c = list.items.find((x) => x.id === subId);
   assert.ok(c);
@@ -441,6 +448,11 @@ await langkah('admin konfirmasi -> Antre; agen membaca kontrak dan mengimpor; ka
   assert.equal(imp.created, 1);
   const mine = (await call('GET', '/api/medcoel/submissions/mine', undefined, userA.token, 200)).data.items.find((x) => x.id === subId);
   assert.equal(mine.status, 'selesai');
+  const chatLive = (await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data.items.filter((m) => m.auto);
+  assert.equal(chatLive.length, 2); // dikonfirmasi, lalu tayang ("diproses" tidak dikabari lewat chat)
+  assert.ok(chatLive[1].text.includes(subCode) && /1 soal/.test(chatLive[1].text) && /terupload/.test(chatLive[1].text), chatLive[1].text);
+  assert.equal(mine.open.link, `/mata-kuliah/${mk.slug}`); // soal di BAB biasa -> Latihan soal
+  assert.match(chatLive[1].text, /Latihan soal/);
   // Kampus B tidak melihat soal pengajuan kampus A meski JSON menulis kampus B.
   const b = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userB.token, 200)).data;
   const babBaru = b.chapters.find((x) => x.title === 'BAB Pengajuan');
@@ -462,13 +474,13 @@ console.log('Chat Admin');
 let messageA;
 await langkah('pesan tersimpan, tidak bisa menyamar jadi admin, dan kirim ulang tidak menduplikasi', async () => {
   await call('GET', '/api/medcoel/support/messages', undefined, null, 401);
-  assert.deepEqual((await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data.items, []);
+  assert.deepEqual((await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data.items.filter((m) => !m.auto), []);
   const payload = { text: 'Tampilan BAB sulit dibaca di HP.', category: 'feedback', clientKey: 'uji-message-' + RUN, senderRole: 'admin', user: userB.id };
   messageA = (await call('POST', '/api/medcoel/support/messages', payload, userA.token, 200)).data.message;
   assert.equal(messageA.senderRole, 'user'); assert.equal(messageA.category, 'feedback');
   const retry = (await call('POST', '/api/medcoel/support/messages', payload, userA.token, 200)).data.message;
   assert.equal(retry.id, messageA.id);
-  const own = (await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data.items;
+  const own = (await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data.items.filter((m) => !m.auto); // pesan otomatis pengajuan diuji di bagian Pengajuan
   assert.equal(own.length, 1); assert.equal(own[0].text, payload.text);
   await call('POST', '/api/medcoel/support/messages', { text: '  ', clientKey: 'empty-message' }, userA.token, 400);
   await call('POST', '/api/medcoel/support/messages', { text: 'a'.repeat(4001), clientKey: 'too-long-message' }, userA.token, 400);
@@ -491,12 +503,13 @@ await langkah('percakapan hanya bisa dibaca pemilik dan admin, balasan admin dit
   assert.deepEqual((await call('GET', '/api/medcoel/support/messages', undefined, userB.token, 200)).data.items, []);
 });
 await langkah('riwayat chat dapat dimuat bertahap tanpa pesan hilang atau duplikat', async () => {
+  const prior = (await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data.items.length; // pesan yang sudah ada (termasuk kabar otomatis pengajuan)
   for (let i = 0; i < 51; i++) await call('POST', '/api/collections/support_messages/records', { user: userA.id, author: userA.id, senderRole: 'user', text: 'Pesan ' + i, clientKey: 'history-' + RUN + '-' + i }, su, 200);
   const latest = (await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data;
   assert.equal(latest.items.length, 50); assert.equal(latest.hasMore, true);
   const earlier = (await call('GET', '/api/medcoel/support/messages?before=' + latest.nextBefore, undefined, userA.token, 200)).data;
-  assert.equal(earlier.items.length, 3); assert.equal(earlier.hasMore, false);
-  assert.equal(new Set([...latest.items, ...earlier.items].map((m) => m.id)).size, 53);
+  assert.equal(earlier.items.length, prior + 1); assert.equal(earlier.hasMore, false);
+  assert.equal(new Set([...latest.items, ...earlier.items].map((m) => m.id)).size, prior + 51);
 });
 
 console.log('Simulasi dokter');

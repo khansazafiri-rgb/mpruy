@@ -87,6 +87,8 @@ export class Learn {
   }
   _task() {
     const { el } = this.ctx, t = this.task, m = this.module, p = this.progress[t.id];
+    const nav = this.ctx.navigation?.() || {};
+    const ctNavigation = nav.mode === 'free' || nav.display === 'tri';
     const head = el('div', { class: 'task-nav' },
       el('button', { type: 'button', class: 'linkbtn', 'data-testid': 'learn-back', onclick: () => this.home() }, '← Semua modul'),
       el('span', { class: 'meta' }, `${m.title.split(' — ')[0]} · langkah ${this.taskIdx + 1}/${m.tasks.length}`));
@@ -100,6 +102,10 @@ export class Learn {
       el('b', {}, (this.feedback.ok ? '✓ ' : '✗ ') + this.feedback.msg), el('p', {}, this.feedback.explain));
     const last = this.taskIdx === m.tasks.length - 1;
     return el('section', { class: 'task-card', 'data-testid': 'task-card' }, head, dots, intro,
+      ctNavigation ? el('div', { class: 'learn-navigation', 'data-testid': 'learn-ct-navigation' },
+        el('strong', {}, nav.display === 'tri' ? 'Tugas ini memakai navigasi Tri-planar CT.' : 'Tugas ini memakai bidang CT Free 3D.'),
+        el('span', {}, 'Gunakan kontrol arah atau irisan pada monitor. Kamu bisa kembali ke pemeriksaan probe kapan saja.'),
+        el('button', { type: 'button', class: 'btn', 'data-testid': 'learn-return-probe', onclick: () => this.ctx.returnProbe?.() }, 'Kembali ke Probe USG')) : null,
       el('div', { class: 'task-head' }, el('span', { class: 'task-type' }, TYPE[t.type]), p?.done ? el('span', { class: 'done-chip' }, '✓ selesai') : null),
       el('h4', {}, t.title), el('p', { class: 'task-prompt', 'data-testid': 'task-prompt' }, t.prompt),
       showHint ? el('p', { class: 'hint' }, '💡 ' + t.hint) : null,

@@ -29,11 +29,11 @@ const A = await account('a'), B = await account('b');
 const subjects = (await call('GET', '/api/collections/subjects/records?perPage=50&filter=' + encodeURIComponent('hidden=false'), undefined, su)).items;
 assert.ok(subjects.length >= 3, 'seeded subjects available');
 
-// fixtures: one subject with two visible chapters and one hidden chapter
+// fixtures: one subject with two visible chapters, one hidden chapter and one campus-only (drilling) chapter
 const subj = subjects[0];
 const ch = [];
-for (const [title, hidden] of [['BAB A ' + run, false], ['BAB B ' + run, false], ['BAB tersembunyi ' + run, true]]) {
-  ch.push(await call('POST', '/api/collections/chapters/records', { subject: subj.id, title, order: 900 + ch.length, hidden }, su));
+for (const [title, hidden, drilling] of [['BAB A ' + run, false, false], ['BAB B ' + run, false, false], ['BAB tersembunyi ' + run, true, false], ['BAB kampus ' + run, false, true]]) {
+  ch.push(await call('POST', '/api/collections/chapters/records', { subject: subj.id, title, order: 900 + ch.length, hidden, drilling }, su));
 }
 const exams = [];
 for (const [title, days, s] of [['UTB Anatomi', 5, subj], ['UAB Fisiologi', 6, subjects[1]], ['Kuis Biokimia', 7, subjects[2]]]) {
@@ -63,10 +63,12 @@ await step('profile + dry-run preview stores nothing; apply creates a persistent
   assert.equal(p.dailyMinutes, 150); assert.deepEqual(p.restDates, []);
   const detail = await call('GET', api(`study/exams/${exams[0].id}`), undefined, A.token);
   assert.ok(detail.chapters.some((c) => c.id === ch[0].id) && !detail.chapters.some((c) => c.id === ch[2].id), 'hidden chapter not offered');
+  assert.ok(!detail.chapters.some((c) => c.id === ch[3].id), 'campus-only (drilling) chapter not offered');
   const topics = [
     { title: ch[0].title, source: { type: 'chapter', subject: subj.id, chapter: ch[0].id }, status: 'unstudied' },
     { title: ch[1].title, source: { type: 'chapter', subject: subj.id, chapter: ch[1].id }, status: 'studied', confidence: 4 },
     { title: 'Hidden', source: { type: 'chapter', subject: subj.id, chapter: ch[2].id } },
+    { title: 'Kampus lain', source: { type: 'chapter', subject: subj.id, chapter: ch[3].id } },
     { title: 'Catatan dosen (tanpa materi MEDCOEL)', workload: 'heavy' },
     ...topicsFor(4, 1),
   ];
@@ -76,8 +78,10 @@ await step('profile + dry-run preview stores nothing; apply creates a persistent
   const applied = await call('POST', api(`study/exams/${exams[0].id}/plan`), { topics, priority: 2 }, A.token);
   planA = applied.plan;
   const d = await call('GET', api(`study/exams/${exams[0].id}`), undefined, A.token);
-  assert.equal(d.plan.topicList.length, 8);
+  assert.equal(d.plan.topicList.length, 9);
   assert.equal(d.plan.topicList.find((t) => t.title === 'Hidden').source.type, 'custom', 'hidden chapter becomes a custom topic');
+  assert.equal(d.plan.topicList.find((t) => t.title === 'Kampus lain').source.type, 'custom', 'a drilling chapter id sent by the client is not accepted as a source');
+  assert.ok(!JSON.stringify(d.resources || {}).includes(ch[3].id), 'no links to campus-only material');
   assert.equal(d.plan.topicList.find((t) => t.title.startsWith('Catatan')).source.type, 'custom');
   assert.ok(d.sessions.length > 0 && d.sessions.every((s) => s.status === 'planned'));
   assert.ok(d.sessions.some((s) => s.kind === 'final'));
@@ -181,18 +185,32 @@ await step('lab tracks: validated keys, planned steps refused, owner-only progre
   await call('POST', api('lab/tracks/tidak-ada'), { step: 'x' }, A.token, 404);
   await call('POST', api('lab/tracks/ekg'), { step: 'bukan-langkah', done: true }, A.token, 400);
   await call('POST', api('lab/tracks/ekg'), { step: 'ekg-12-sadapan', done: true }, A.token, 400);
-  await call('POST', api('lab/tracks/ekg'), { step: 'konduksi', done: 'ya' }, A.token, 400);
-  let r = await call('POST', api('lab/tracks/ekg'), { step: 'konduksi' }, A.token);
-  assert.deepEqual([r.completed, r.lastStep], [[], 'konduksi']);
-  r = await call('POST', api('lab/tracks/ekg'), { step: 'konduksi', done: true }, A.token);
-  r = await call('POST', api('lab/tracks/ekg'), { step: 'atlas-jantung', done: true }, A.token);
-  assert.deepEqual(r.completed.sort(), ['atlas-jantung', 'konduksi']);
-  r = await call('POST', api('lab/tracks/ekg'), { step: 'atlas-jantung', done: false }, A.token);
-  assert.deepEqual(r.completed, ['konduksi']);
+  await call('POST', api('lab/tracks/ekg'), { step: 'atlas-jantung', done: 'ya' }, A.token, 400);
+  let r = await call('POST', api('lab/tracks/ekg'), { step: 'atlas-jantung' }, A.token);
+  assert.deepEqual([r.completed, r.lastStep], [[], 'atlas-jantung']);
+  r = await call('POST', api('lab/tracks/rangka-otot'), { step: 'atlas-rangka', done: true }, A.token);
+  r = await call('POST', api('lab/tracks/rangka-otot'), { step: 'kuis-tulang', done: true }, A.token);
+  assert.deepEqual(r.completed.sort(), ['atlas-rangka', 'kuis-tulang']);
+  r = await call('POST', api('lab/tracks/rangka-otot'), { step: 'atlas-rangka', done: false }, A.token);
+  assert.deepEqual(r.completed, ['kuis-tulang']);
   const mine = await call('GET', api('lab/tracks'), undefined, A.token);
-  assert.equal(mine.items.length, 1); assert.equal(mine.items[0].track, 'ekg');
+  assert.deepEqual(mine.items.map((x) => x.track).sort(), ['ekg', 'rangka-otot']);
   assert.deepEqual((await call('GET', api('lab/tracks'), undefined, B.token)).items, []);
   await call('GET', '/api/collections/lab_track_progress/records', undefined, A.token, 403);
+});
+
+await step('ECG module stays closed to students until released after clinical review; admins can review it', async () => {
+  const student = await call('GET', api('lab/tracks'), undefined, A.token);
+  if (process.env.MEDCOEL_LAB_ECG_PUBLIC === '1') { assert.equal(student.features.ecg, true); return; }
+  assert.equal(student.features.ecg, false);
+  await call('POST', api('lab/tracks/ekg'), { step: 'konduksi', done: true }, A.token, 400);
+  await call('POST', api('lab/tracks/jantung-kardiovaskular'), { step: 'ekg', done: true }, A.token, 400);
+  const admin = await account('admin');
+  await call('PATCH', `/api/collections/users/records/${admin.id}`, { role: 'admin' }, su);
+  const adminToken = (await call('POST', '/api/collections/users/auth-with-password', { identity: admin.loginId, password: PASSWORD })).token;
+  assert.equal((await call('GET', api('lab/tracks'), undefined, adminToken)).features.ecg, true);
+  const r = await call('POST', api('lab/tracks/ekg'), { step: 'konduksi', done: true }, adminToken);
+  assert.deepEqual(r.completed, ['konduksi']);
 });
 
 console.log(`study api: ${checks} HTTP checks passed`);

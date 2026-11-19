@@ -214,6 +214,17 @@ routerAdd("POST", "/api/medcoel/admin/submissions/{id}/status", (e) => {
   let sub;
   try { sub = e.app.findRecordById("submissions", e.request.pathValue("id")); } catch (_) { sub = null; }
   if (!sub) throw new NotFoundError("Pengajuan tidak ditemukan.");
+  // "Tandai selesai (manual)" hanya bila isi pengajuan sudah tertaut dan tayang. Tanpa itu pengaju diberi tahu
+  // "sudah tayang" padahal tidak ada apa-apa di Kampusmu/Latihan soalnya (laporan peserta, Nov 2026).
+  if (b.status === "selesai" && sub.getString("status") !== "selesai" && !subs.openTarget(e.app, sub)) {
+    const materi = sub.getString("contentKind") === "materi";
+    throw new BadRequestError(
+      "Pengajuan " + sub.getString("code") + " belum punya " + (materi ? "materi" : "soal") + " tayang yang tertaut, jadi pengaju belum bisa membukanya. " +
+        (materi
+          ? "Impor lewat Hermes (/put " + sub.getString("code") + "), atau bila JSON-nya sudah ditempel di Admin > Drilling > Materi, klik Tautkan ke pengajuan pada materinya. Status menjadi Selesai otomatis."
+          : "Impor soalnya lewat Hermes atau Admin > Edit Soal dengan memilih pengajuan ini. Status menjadi Selesai otomatis."),
+    );
+  }
   if (b.status === "selesai" && b.importedCount !== undefined) sub.set("importedCount", Math.max(0, parseInt(b.importedCount, 10) || 0));
   subs.setStatus(e.app, sub, String(b.status || ""), b.note, "admin");
   return e.json(200, subs.summary(e.app, sub, { withLinks: true, withUser: true, auth: admin }));

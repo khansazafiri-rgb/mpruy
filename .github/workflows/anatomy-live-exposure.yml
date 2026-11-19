@@ -1,0 +1,58 @@
+name: Read-only public Anatomy exposure audit
+
+on:
+  pull_request:
+    branches:
+      - feature/4d-lab-official-logo-guided-tour
+    paths:
+      - scripts/audit-live-anatomy-exposure.mjs
+      - scripts/audit-live-anatomy-exposure.test.mjs
+      - .github/workflows/anatomy-live-exposure.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  read-only-exposure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run public endpoint audit (no server changes)
+        id: audit
+        run: |
+          mkdir -p local-data/live-audit
+          node scripts/audit-live-anatomy-exposure.mjs --out local-data/live-audit/report.json
+      - name: Summarize what is actually observable
+        if: always()
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const loc='local-data/live-audit/report.json';
+          const report=fs.existsSync(loc)?JSON.parse(fs.readFileSync(loc,'utf8')):null;
+          const lines=['## MEDCOEL public asset exposure (read-only)',
+            'No deployment, Caddy modification, login or release-gate override was performed.',
+            'This does not establish commercial rights or the physical second-VPS topology.'];
+          if(!report) lines.push('**Result: UNVERIFIED** — report not available (network or command error).');
+          else {
+            lines.push('| Public URL | HTTP | Observation |',
+              '| --- | --- | --- |');
+            for(const r of report.results)
+              lines.push('| \`'+r.route+'\` | '+String(r.httpStatus??'?')+' | **'+r.severity+'** — '+r.result+' |');
+            lines.push('Critical exposure observations: **'+report.criticalFindings+'**');
+            if(report.unverifiedFindings) lines.push('Unverifiable observations: **'+report.unverifiedFindings+'**');
+          }
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,lines.join('\n')+'\n');
+          JS
+      - name: Save independent audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-anatomy-asset-audit
+          path: local-data/live-audit/report.json
+          if-no-files-found: warn
+          retention-days: 14

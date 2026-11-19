@@ -210,7 +210,12 @@ await langkah('impor materi lewat pengajuan: dry-run, galat, lalu tayang khusus 
   assert.ok((await titles(userA)).includes('Kuliah Pengajuan'));
   assert.ok(!(await titles(userB)).includes('Kuliah Pengajuan'));
   const notif = (await call('GET', '/api/collections/notifications/records?perPage=50&sort=-created', undefined, userA.token, 200)).data.items;
-  assert.ok(notif.some((n) => n.title.includes('Materi dari pengajuan') && n.link === `/drilling/${mk.slug}`), 'pengaju diberi tahu bahwa materinya tayang');
+  const tayang = notif.find((n) => n.title.includes('Materi dari pengajuan'));
+  assert.ok(tayang, 'pengaju diberi tahu bahwa materinya tayang');
+  // Satu berkas: tautan langsung ke materinya, dan tautan itu benar-benar terbuka untuk pengaju.
+  assert.match(tayang.link, /^\/drilling\/materi\/[a-z0-9]+$/);
+  assert.equal(tayang.link, mine.open.link);
+  assert.equal((await call('GET', '/api/medcoel/drilling/deck/' + tayang.link.split('/').pop(), undefined, userA.token, 200)).data.title, 'Kuliah Pengajuan');
   await call('POST', `/api/medcoel/agent/submissions/${sub.id}/materi-import`, { deck: deck('Lagi') }, agent.token, 400);
 });
 
@@ -368,12 +373,15 @@ console.log('Materi pengajuan yang diimpor lewat Admin > Drilling > Materi');
 const kampusmu = async (u) => (await call('GET', `/api/medcoel/drilling/subject/${mk.slug}`, undefined, u.token)).data;
 const dilihat = async (u, judul) => { const d = await kampusmu(u); return !!(d && d.decks && d.decks.some((x) => x.title === judul)); };
 
-await langkah('BUG: JSON ditempel di Admin tanpa pengajuan + pengajuan ditandai Selesai manual -> tidak masuk Kampusmu pengaju; cek akun menjelaskan', async () => {
+await langkah('JSON ditempel di Admin tanpa pengajuan: "Tandai selesai (manual)" ditolak (pengaju tidak diberi tahu "tayang" padahal kosong); cek akun menjelaskan', async () => {
   const pengaju = await akun('user', kampusB.id);
   const m = await kirim(pengaju, { kind: 'materi', scope: 'all', names: ['Fisiologi Ginjal Pengaju.pdf'] });
   const r = (await call('POST', '/api/medcoel/admin/drilling/decks', { subject: mk.id, deck: deck('Fisiologi Ginjal Admin') }, admin.token, 200)).data;
   assert.equal(r.scope, 'all');
-  await call('POST', `/api/medcoel/admin/submissions/${m.id}/status`, { status: 'selesai' }, admin.token, 200);
+  const tolak = await call('POST', `/api/medcoel/admin/submissions/${m.id}/status`, { status: 'selesai' }, admin.token, 400);
+  assert.match(tolak.data.message, /belum punya materi tayang yang tertaut/);
+  assert.match(tolak.data.message, /Tautkan ke pengajuan/);
+  assert.notEqual((await call('GET', '/api/medcoel/submissions/mine', undefined, pengaju.token, 200)).data.items.find((x) => x.id === m.id).status, 'selesai');
   assert.equal(await dilihat(pengaju, r.title), false, 'materi General admin tanpa tautan memang tidak tampil');
   const list = (await call('GET', `/api/medcoel/admin/drilling/decks?subject=${mk.id}`, undefined, admin.token, 200)).data.items;
   const row = list.find((x) => x.id === r.id);
@@ -391,6 +399,14 @@ await langkah('BUG: JSON ditempel di Admin tanpa pengajuan + pengajuan ditandai 
   await call('POST', `/api/medcoel/admin/drilling/decks/${r.id}/link`, { submission: m.code }, pengaju.token, 403);
   const l = (await call('POST', `/api/medcoel/admin/drilling/decks/${r.id}/link`, { submission: m.code }, admin.token, 200)).data;
   assert.equal(l.submission.code, m.code);
+  // Kartu pengajuan dan notifikasi membawa tautan ke materi itu sendiri, bukan ke halaman yang bisa kosong.
+  const kartu = (await call('GET', '/api/medcoel/submissions/mine', undefined, pengaju.token, 200)).data.items.find((x) => x.id === m.id);
+  assert.equal(kartu.status, 'selesai');
+  assert.equal(kartu.open.link, `/drilling/materi/${r.id}`);
+  assert.equal(kartu.open.label, 'Buka materi');
+  const notif = (await call('GET', '/api/collections/notifications/records?filter=' + encodeURIComponent("kind='question_live'"), undefined, pengaju.token, 200)).data.items;
+  assert.ok(notif.some((n) => n.link === `/drilling/materi/${r.id}`), JSON.stringify(notif.map((n) => n.link)));
+  assert.equal((await call('GET', `/api/medcoel/drilling/deck/${r.id}`, undefined, pengaju.token, 200)).data.title, r.title, 'tautan itu benar-benar terbuka untuk pengaju');
   assert.equal(await dilihat(pengaju, r.title), true, 'pengaju melihat materinya');
   assert.equal(await dilihat(userB, r.title), true, 'teman sekampus melihatnya');
   assert.equal(await dilihat(userA, r.title), false, 'kampus lain tidak');

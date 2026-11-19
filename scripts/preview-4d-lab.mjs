@@ -2,29 +2,37 @@
 // Local, read-only STAGING PREVIEW of the MEDCOEL Anatomy Live 4D Lab with the production URL layout:
 //   /anatomy/live        MEDCOEL web app page (SPA) that frames the lab   (apps/web, preview build)
 //   /anatomy/4d-lab/     the lab's static build                           (apps/4d-lab/dist)
-//   /anatomy/viewer/     the Anatomy Atlas build whose models the lab uses (apps/anatomy/dist)
+//   /anatomy/viewer/     the ORIGINAL MEDCOEL Atlas Viewer (apps/anatomy, quarantine-enforced build). The review
+//                        preview builds it; the 4D Lab itself never needs it (own verified asset pack).
 // Headers mirror deploy/Caddyfile + deploy/anatomy.caddy.snippet + deploy/4d-lab.caddy.snippet.
 // There is no backend: /api/* answers from preview/fixtures.mjs and the preview build signs in a
 // fixture student (apps/web/vite.anatomy-preview.config.js). Nothing is uploaded, deployed or reloaded.
 //
-//   node scripts/preview-4d-lab.mjs --build      # build all three apps, check them, then serve
+//   node scripts/preview-4d-lab.mjs --build      # build Lab + original Atlas Viewer + MEDCOEL preview pages
 //   node scripts/preview-4d-lab.mjs              # serve existing builds (after checking them)
 //   PORT=4173 node scripts/preview-4d-lab.mjs --lan   # also reachable from other devices on your network
 import { createServer } from 'node:http';
-import { readFile, stat, readdir } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { apiFixture } from '../preview/fixtures.mjs';
-import { validateLab, checkAtlasModels } from './stage-4d-lab.mjs';
+import { validateLab } from './stage-4d-lab.mjs';
 
 const repo = fileURLToPath(new URL('../', import.meta.url));
 import { assertDistributionClean, loadPolicy } from '../licensing/tools/check-distribution.mjs';
-export const WITHHELD = [...Object.keys(loadPolicy().policy.quarantinedSystems).map((sys) => new RegExp(`^/anatomy/viewer/models/${sys}\\.glb$`, 'i')), /^\/anatomy\/viewer\/thumbnails\/systems\/(nervous|visceral)\.webp$/i];
+const blockedModelRoots = ['/anatomy/viewer/models/', '/anatomy/4d-lab/atlas-assets/models/'];
+export const WITHHELD = [
+  ...blockedModelRoots.flatMap(root => Object.keys(loadPolicy().policy.quarantinedSystems).map(sys => new RegExp('^' + root + sys + '\\.glb$', 'i'))),
+  /^\/anatomy\/viewer\/thumbnails\/systems\/(nervous|visceral)\.webp$/i,
+];
 export const ROOTS = {
   main: path.join(repo, 'apps/web/dist-anatomy-preview'),
   lab: path.join(repo, 'apps/4d-lab/dist'),
   atlas: path.join(repo, 'apps/anatomy/dist'),
+  // Optional, LOCAL ONLY: official BodyParts3D review output for the Atlas preview (?models=bp3d). Gitignored, never in a dist.
+  bp3d: path.join(repo, 'local-data/licensing-quarantine/bp3d-batch'),
 };
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
@@ -52,6 +60,14 @@ export function createLabPreviewServer(roots = ROOTS) {
       else res.setHeader('X-Frame-Options', 'DENY');
       if (p === '/anatomy/4d-lab' || p === '/anatomy/viewer') { res.writeHead(308, { Location: p + '/' }); return res.end(); }
       if (p.startsWith('/api/')) { const f = apiFixture(p); return f ? send(200, JSON.stringify(f), TYPES['.json']) : send(404, JSON.stringify({ message: 'This preview has no backend endpoint.' }), TYPES['.json']); }
+      // BodyParts3D review data: served read-only, only for the Atlas preview and only if the local folder exists.
+      if (p.startsWith('/anatomy/viewer/bp3d/')) {
+        const rel = p.slice('/anatomy/viewer/bp3d/'.length);
+        const base = roots.bp3d && path.resolve(roots.bp3d);
+        const file = base && path.resolve(base, rel);
+        if (!file || (file !== base && !file.startsWith(base + path.sep)) || !/^(inventory\.json|structures\/[a-z0-9-]+\/model\.glb|reference-surface\/skin\.glb)$/.test(rel)) return send(404, 'Not found');
+        try { return send(200, await readFile(file), TYPES[path.extname(file)] || 'application/octet-stream', { 'Cache-Control': 'no-cache' }); } catch { return send(404, 'Not found'); }
+      }
       const root = lab ? roots.lab : atlas ? roots.atlas : roots.main;
       const rel = lab ? p.slice('/anatomy/4d-lab/'.length) : atlas ? p.slice('/anatomy/viewer/'.length) : p.slice(1);
       let file = path.resolve(root, rel || 'index.html');
@@ -70,30 +86,33 @@ export function createLabPreviewServer(roots = ROOTS) {
   });
 }
 
-/** Checks that the three builds exist, the lab bundle is consistent, and its atlas dataset matches the atlas models served. */
+/** Check the Lab's own complete asset pack; Atlas Viewer build is optional. */
 export async function checkBuilds(roots = ROOTS) {
   const problems = [], facts = {};
-  try { await stat(path.join(roots.main, 'index.html')); } catch { problems.push('Web preview build missing: run with --build (apps/web/dist-anatomy-preview).'); }
-  try { facts.lab = await validateLab(roots.lab); } catch (e) { problems.push('4D Lab build: ' + e.message + ' (run with --build).'); }
+  try { await stat(path.join(roots.main, 'index.html')); }
+  catch { problems.push('Web preview build missing: use --build.'); }
   try {
-    const models = (await readdir(path.join(roots.atlas, 'models'))).filter((f) => f.endsWith('.glb'));
-    for (const f of ['draco/draco_decoder.wasm', 'draco/draco_wasm_wrapper.js', 'data/atlas-catalog.json', 'LICENSE', 'NOTICE', 'models/License.txt']) await stat(path.join(roots.atlas, f));
-    facts.atlasModels = models.length;
-    // 6 cleared systems; nervous.glb is withheld by the licence quarantine (licensing/quarantine-policy.json)
-    if (models.length < 6) problems.push(`Atlas build has ${models.length} GLBs (expected 6 cleared systems).`);
-    try { assertDistributionClean([roots.atlas, roots.lab], 'preview builds'); } catch (e) { problems.push(e.message); }
-    const html = await readFile(path.join(roots.atlas, 'index.html'), 'utf8');
-    if (!html.includes('/anatomy/viewer/')) problems.push('Atlas build was not made with base /anatomy/viewer/ (run with --build).');
-    // the lab's atlas-derived CT was generated from specific model files: they must be the ones served
-    try { facts.sourceModelsChecked = (await checkAtlasModels(roots.lab, roots.atlas)).checked; } catch (e) { problems.push(e.message); }
-  } catch (e) { problems.push('Anatomy Atlas build missing or incomplete (' + e.message + '): run with --build.'); }
+    facts.lab = await validateLab(roots.lab);
+    assertDistributionClean([roots.lab], '4D Lab preview');
+    facts.sourceModelsChecked = facts.lab.atlasPack?.models || 0;
+  } catch (e) { problems.push('4D Lab build: ' + e.message + ' (use --build).'); }
+  // The original Atlas Viewer is part of the review preview. It is built by the same quarantine-guarded Vite config
+  // as for staging; the 4D Lab does not depend on it. A missing build is reported, never silently skipped.
+  try {
+    await stat(path.join(roots.atlas, 'index.html'));
+    assertDistributionClean([roots.atlas], 'Atlas Viewer preview');
+    facts.atlasViewer = 'built';
+  } catch (e) {
+    if (e?.code === 'ENOENT') facts.atlasViewer = 'not built (run with --build to preview the original Atlas Viewer)';
+    else problems.push('Atlas Viewer build: ' + e.message + ' (use --build).');
+  }
   return { ok: problems.length === 0, problems, facts };
 }
 
 function build() {
   const steps = [
-    ['Anatomy Atlas (base /anatomy/viewer/)', 'npm', ['run', 'build', '--prefix', 'apps/anatomy'], { ANATOMY_BASE: '/anatomy/viewer/' }],
     ['4D Lab (base /anatomy/4d-lab/)', 'npm', ['run', 'build:4d-lab'], {}],
+    ['Original MEDCOEL Atlas Viewer (base /anatomy/viewer/, licence quarantine enforced)', 'npm', ['run', 'build:anatomy'], {}],
     ['MEDCOEL web app (preview build)', 'npx', ['vite', 'build', '--config', 'vite.anatomy-preview.config.js'], {}, path.join(repo, 'apps/web')],
   ];
   for (const [label, cmd, args, env, cwd = repo] of steps) {
@@ -110,12 +129,16 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const port = Number(process.env.PORT || 4173), host = process.argv.includes('--lan') ? '0.0.0.0' : '127.0.0.1';
   createLabPreviewServer().listen(port, host, () => {
     const b = `http://127.0.0.1:${port}`;
-    console.log(`\nMEDCOEL 4D Lab local staging preview (read-only, no backend, nothing deployed)
-  Host page (as students see it):  ${b}/anatomy/live
-  Lab directly (full window):       ${b}/anatomy/4d-lab/
-  Procedural phantom dataset:       ${b}/anatomy/4d-lab/?dataset=phantom
-  Anatomy Atlas viewer (shared):    ${b}/anatomy/viewer/
-Checks: lab datasets ${check.facts.lab.datasets.join(' + ')}, ${check.facts.atlasModels} atlas GLBs, ${check.facts.sourceModelsChecked} source-model hashes match.
+    const atlasOn = check.facts.atlasViewer === 'built';
+    console.log(`\nMEDCOEL local review preview (read-only, no backend, nothing deployed)
+  Anatomi Manusia (library + quiz): ${b}/anatomy
+  Atlas 3D, original MEDCOEL viewer: ${atlasOn ? b + '/anatomy/explore   (full window: ' + b + '/anatomy/viewer/)' : check.facts.atlasViewer}
+  Kuis anatomi 3D:                   ${b}/anatomy/study
+  Live 4D Lab (as students see it):  ${b}/anatomy/live
+  Lab directly (full window):        ${b}/anatomy/4d-lab/
+  Procedural phantom dataset:        ${b}/anatomy/4d-lab/?dataset=phantom
+  Atlas 3D + official BodyParts3D:   ${existsSync(path.join(ROOTS.bp3d, 'inventory.json')) ? b + '/anatomy/viewer/?models=bp3d   (local review data found)' : 'not built: npm run batch:bodyparts3d -- --all'}
+Checks: lab datasets ${check.facts.lab.datasets.join(' + ')}, ${check.facts.sourceModelsChecked} self-bundled atlas GLBs match source CT hashes; Atlas Viewer build ${atlasOn ? 'passed the licence-quarantine scan' : 'absent'}.
 ${host === '0.0.0.0' ? 'LAN mode: reachable from other devices on this network via this machine\'s IP. Stop with Ctrl+C when done.\n' : ''}Stop with Ctrl+C.`);
   });
 }

@@ -6,8 +6,7 @@ An educational freehand CT / simulated-ultrasound workstation for MEDCOEL (`/ana
 ![Workstation](evidence/01-workstation-subxiphoid.jpg)
 
 ## Anatomy: the MEDCOEL Anatomy Atlas (default)
-- The patient's organs, bones and vessels are the **same models as the MEDCOEL Anatomy Atlas** (`/anatomy/viewer/`),
-  loaded from the atlas's own files (no copies) and placed with one explicit, exact frame (metres → LPS mm).
+- The patient's organs, bones and vessels are imported from the **same six curated model assets** used by the MEDCOEL Atlas, but the 4D Lab bundles them as a standalone, integrity-checked asset package at `/anatomy/4d-lab/atlas-assets/`. It does **not load the CC BY-NC-SA Atlas Viewer application code at runtime**. Source-model version hashes are checked against the synthetic CT and its patient LPS registration. Commercial provenance of the meshes and independence of Lab code are not yet certified.
 - The CT and tissue labels the simulator images are **synthetic, generated from those atlas meshes**
   (`pipeline/atlas/build_atlas_dataset.mjs`), so the heart you see in 3D is the heart in the CT/US image.
   It is not an acquired image of any person.
@@ -19,6 +18,24 @@ An educational freehand CT / simulated-ultrasound workstation for MEDCOEL (`/ana
 - The earlier procedural phantom is still available (`?dataset=phantom`, or the Data tab). It is a different body
   and is **not** registered to the atlas (measured residual RMS ≈ 37 mm), so the atlas is never overlaid on it.
 - Details and evidence: `ATLAS_INTEGRATION_AUDIT.md`.
+
+## Independent Anatomy Viewer pilot (rejected as product direction; opt-in experiment only)
+The owner's Anatomy experience is the original MEDCOEL Atlas Viewer (`apps/anatomy`); see
+`licensing/ANATOMY_ORIGINAL_RESTORATION.md`. This separately authored experimental viewer is **not** part of
+`npm run preview:4d-lab` any more and is excluded from the ordinary build.
+`npm run build:independent-atlas-pilot --prefix apps/4d-lab`
+creates a local pilot build (or
+`/atlas-preview/` when using the 4D Lab Vite development server). It renders
+the allowlisted model assets from the Lab's own `atlas-assets/` pack without
+importing source modules or fetching any resources from the third-party
+CC BY-NC-SA Atlas Viewer application.
+
+The viewer supports orbit/zoom, six system models loaded one at a time,
+catalog search, 3D picking, highlight, isolation and restore. Its parity with
+the original Anatomy Viewer is **incomplete** and commercial model/source
+rights are **not approved**. See
+[`licensing/INDEPENDENT_ATLAS_VIEWER_PILOT.md`](../../licensing/INDEPENDENT_ATLAS_VIEWER_PILOT.md)
+before using it outside local development.
 
 ## What you can do
 - **Recognisable virtual patient** on an exam table. The skin and 20 organ groups are reconstructed from the CT with verified
@@ -49,8 +66,7 @@ npm test             # unit tests
 npm run build && npm run test:e2e   # browser tests (Playwright Chromium)
 ```
 Bundled data: `public/data/atlas` (default, atlas-derived; regenerate with `npm run atlas:dataset`, ~70 s, needs
-`apps/anatomy/public/models`) and `public/data/phantom` (procedural; `npm run phantom`). In dev, Vite serves
-`apps/anatomy/public` at `/anatomy/viewer/`. Browser tests: `npm run build && npm run test:e2e` (phantom regression)
+`apps/anatomy/public/models`) and `public/data/phantom` (procedural; `npm run phantom`). In dev, Vite serves **only allowlisted model/catalog/Draco assets** at `/atlas-assets/`. In production build, `tools/atlas-pack.mjs` copies those assets under `dist/atlas-assets/` and verifies their hashes against the CT source model manifest. This build contains no Atlas Viewer HTML/JS and can be previewed without a running Anatomy Viewer app. Browser tests: `npm run build && npm run test:e2e` (phantom regression)
 and `npm run test:e2e:atlas` (atlas dataset; add `--shots` for evidence screenshots).
 For CTACardio, see `pipeline/README.md` (local processing only).
 

@@ -393,3 +393,14 @@ body.anatomy-study-active .atlas-tools, body.anatomy-annotator-active .atlas-too
 .search-unavailable strong { display: block; margin-bottom: 4px; color: inherit; }
 .search-unavailable ul { margin: 0 0 6px; padding-left: 18px; }
 .search-unavailable small { display: block; font-size: 11.5px; }
+
+/* Optional BodyParts3D preview notice (?models=bp3d). Hidden unless the source was requested. */
+.atlas-bp3d { position: absolute; z-index: 6; top: 12px; left: 50%; transform: translateX(-50%); max-width: min(760px, calc(100% - 340px)); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 12px; padding: 7px 14px; border-radius: 12px; font-size: 12px; line-height: 1.4; color: rgb(var(--ink)); background: rgb(255 253 247 / .94); border: 1px solid rgb(var(--glass-line) / .5); box-shadow: 0 6px 18px rgb(0 0 0 / .2); }
+.atlas-bp3d[hidden] { display: none; }
+.atlas-bp3d[data-state="unavailable"] { background: #fbefdc; }
+.atlas-bp3d strong { font-weight: 750; }
+.atlas-bp3d label { display: inline-flex; gap: 5px; align-items: center; font-weight: 650; cursor: pointer; }
+.atlas-bp3d a { color: rgb(var(--brand-dark, 20 100 80)); font-weight: 700; text-decoration: underline; }
+.atlas-bp3d details p { margin: 4px 0 0; font-size: 11px; }
+.atlas-bp3d code { font-size: 11px; }
+@media (max-width: 900px) { .atlas-bp3d { top: 8px; max-width: calc(100% - 24px); font-size: 11px; } }

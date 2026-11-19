@@ -11,6 +11,8 @@ import { siteMix, heartCycle } from '../sim/auscultation.js';
 import { VIEWS, snapToSkin } from '../sim/views.js';
 import { REFERENCES } from '../sim/references.js';
 import { PatientScene } from './scene3d.js';
+import { imagingAvailability } from './regionCoverage.js';
+import { shouldShowImagingPlane, shouldShowStethoscope } from './sceneVisibility.js';
 import { Monitor, drawStrip } from './monitor.js';
 import { AudioEngine } from './audio.js';
 import { voxelSurface } from './blobMesh.js';
@@ -22,6 +24,8 @@ import { CONTROL_MODES, ORIENTATION_PRESETS } from './axisControl.js';
 import { translate as axisTranslate, rotate as axisRotate, selectSide as axisSelectSide } from './axisMove.js';
 import { Assist } from './assist.js';
 import { Learn } from './learn.js';
+import { startTutorial } from './tutorial.js';
+import { generalSteps, triSteps } from './tutorialSteps.js';
 import { triPlanes, stepSlice, sliceLabel, clampToBounds, MPR } from '../core/mpr.js';
 import { pixelToLPS } from '../core/labels.js';
 import { STRUCTURES, unavailableStructures } from '../edu/structures.js';
@@ -47,8 +51,10 @@ export const DATASETS = {
 };
 const DATASET = DATASETS[QUERY.get('dataset')] ? QUERY.get('dataset') : 'atlas';
 let DATA = DATASETS[DATASET].dir;
-// The atlas models are SHARED with the Anatomy Atlas viewer (same origin, same files): no copies are shipped.
-const ATLAS_BASE = QUERY.get('atlasBase') || import.meta.env.VITE_ATLAS_BASE || '/anatomy/viewer/';
+// The Lab owns a dedicated static asset-only pack of the documented atlas-derived models.
+// It never loads nqwrc/3d-anatomy application code or depends on the NC Atlas Viewer route.
+// Commercial publication still requires source-asset provenance and code-rights clearance.
+const ATLAS_BASE = BASE + 'atlas-assets/';
 // A view whose target organ is withheld (licence quarantine) says so instead of implying it is imaged.
 const labelUnavailable = (id) => D?.anatomy?.labels?.some((l) => l.id === id && l.available === false);
 const viewLabel = (v) => (v.key === 'ruq' && labelUnavailable(20) ? 'RUQ / hepatorenal (ginjal tidak tersedia)' : v.labelId);
@@ -122,6 +128,9 @@ async function useDataset({ ctBuf, labBuf, anatomy, reg, files, source, name }) 
     regErrors = v.errors; if (v.ok) meshes = v.meshes;
   }
   D = { ct, labels, anatomy: anatomy || null, reg, meshes, source, name, regErrors, loadMs: performance.now() - t0 };
+  // Patient-space points belong to a particular volume/mesh registration.
+  S.contact = null; S.tri.point = null;
+  S.steth.ref = S.steth.point = S.steth.normal = S.steth.key = null;
   // Identification uses ONLY this dataset's own label table: a local CT without anatomy.json gets no names.
   assist.setLabels(labels ? anatomy?.labels || [] : []); centroidCache.clear();
   geom = anatomy?.heart ? prepareGeometry(anatomy) : null;
@@ -151,8 +160,13 @@ async function useDataset({ ctBuf, labBuf, anatomy, reg, files, source, name }) 
     scene.setMeshes({}, { coverage: ct.bounds, capZ: -1e9 });
     S.mode = 'free';
   }
-  scene.setSites(anatomy?.auscultation || [], S.tool === 'stethoscope');
-  if (meshes && labels) applyView(S.view, false); else S.free.position = [...ct.centre];
+  scene.setSites(anatomy?.auscultation || [], shouldShowStethoscope(S));
+  if (meshes && labels) applyView(S.view, false);
+  else {
+    S.free.position = [...ct.centre];
+    S.mode = 'free';
+  }
+  if (!S.contact) { S.mode = 'free'; S.free.position = [...ct.centre]; }
   if (!meshes) status(regErrors.length ? 'Mesh ditolak: ' + regErrors.join('; ') : 'CT dimuat tanpa mesh kulit: gunakan Free 3D.', 'warn');
   else status(`${name}: CT ${ct.sizes.join('×')} @ ${ct.spacing.map((s) => s.toFixed(2)).join('/')} mm · mesh terregistrasi (${Object.keys(meshes).length} objek) · ${Math.round(D.loadMs)} ms`, 'ok');
   refreshAll();
@@ -258,9 +272,16 @@ function setProbe(key, keepDepth = true) {
 
 // ------------------------------------------------------------------ worker bridge
 function requestImaging(f, plane) {
+  // A skin-only region has NO CT/USG dataset. Never ask the worker to invent a
+  // slice or show an old texture from the previously selected trunk location.
+  const coverage = currentProbeCoverage();
+  if (coverage && !coverage.available) {
+    dirty = false; pending = false; scene.hideImagePlane(); refreshRegionCoverage(); return;
+  }
   if (!worker || (!plane && S.display !== 'tri')) return;
   if (workerBusy) { pending = true; return; }
   workerBusy = true; pending = false; dirty = false;
+  requestImaging.job = { generation: requestImaging.generation || 0, display: S.display };
   const quality = interacting || S.playing ? 0.62 : 1;
   const common = {
     settings: { ...S.us, probeKey: S.probeKey, window: S.ct.window, level: S.ct.level, ctClip: S.ct.clip },
@@ -285,6 +306,12 @@ function onWorker(e) {
   const m = e.data;
   if (m.type === 'frame') {
     workerBusy = false; stats.usMs = m.ms;
+    // Drop a result produced for the previous mode before it can redraw its plane.
+    if (requestImaging.job?.generation !== (requestImaging.generation || 0) || requestImaging.job?.display !== S.display) { markDirty(); return; }
+    // Late async frame from a previously covered region must not replace the
+    // explicit missing-data notice after moving the probe to head or limbs.
+    const coverage = currentProbeCoverage();
+    if (coverage && !coverage.available) { scene.hideImagePlane(); refreshRegionCoverage(); return; }
     if (m.tri) { onTriFrame(m); if (pending) markDirty(); return; }
     lastFrameInfo = { id: m.id, centreLabel: m.centreLabel, ms: m.ms, ctOutside: m.ct?.outsideFraction, quality: requestImaging.quality, hasUS: !!m.us, hasCT: !!m.ct };
     const plane = requestImaging.plane;
@@ -292,7 +319,8 @@ function onWorker(e) {
     assist.clear(['ax', 'co', 'sa']);
     monitor.setFrame(m, { plane, display: S.display, usHeader: usHeader(), ctHeader: ctHeader() });
     const tex = S.display === 'ct' ? m.ct : m.us || m.ct;
-    scene.setImagePlane(plane, tex ? { rgba: S.display === 'split' && m.us ? m.us.rgba : tex.rgba, w: tex.w, h: tex.h } : null);
+    if (shouldShowImagingPlane(S)) scene.setImagePlane(plane, tex ? { rgba: S.display === 'split' && m.us ? m.us.rgba : tex.rgba, w: tex.w, h: tex.h } : null);
+    else scene.hideImagePlane();
     assist.push(); assistPanelSoon();
     updateReadouts();
     if (pending) markDirty();
@@ -307,14 +335,17 @@ function onTriFrame(m) {
   const headers = Object.fromEntries(Object.keys(MPR).map((k) => [k, [`${MPR[k].name.toUpperCase()} · CT MPR`, sliceLabel(k, t.point)]]));
   monitor.setFrame(m, { display: 'tri', tri: { point: t.point, planes: t.planes, headers } });
   const ax = m.tri.find((x) => x.key === 'ax'); // the axial plane is drawn in 3D as the "3D + plane" reference
-  scene.setImagePlane(t.planes.ax, ax ? { rgba: ax.rgba, w: ax.w, h: ax.h } : null);
+  if (shouldShowImagingPlane(S)) scene.setImagePlane(t.planes.ax, ax ? { rgba: ax.rgba, w: ax.w, h: ax.h } : null);
+  else scene.hideImagePlane();
   assist.push(); assistPanelSoon(); updateReadouts();
 }
-/** Crosshair start: the current imaging position (beam centre / free plane centre), clamped into the CT. */
+/** Start from the centre of the acquired CT volume, not the prior probe beam.
+ * The beam is often near the body surface / edge of coverage. That made the first
+ * tri-planar view appear empty even though the CT dataset itself was available.
+ * After first use, keep the learner's last linked crosshair until the dataset changes.
+ */
 function triStart() {
-  const f = geom ? makeFrame(clock, effectiveParams(), geom) : null, pl = currentPlane(currentPose(f));
-  const c = pl ? pl.top.map((v, i) => v + pl.v[i] * pl.height * 0.5) : D.ct.centre;
-  return clampToBounds(c, D.ct.bounds);
+  return [...D.ct.centre];
 }
 let panelTimer = 0;
 function assistPanelSoon() { if (panelTimer) return; panelTimer = setTimeout(() => { panelTimer = 0; assist.renderPanel(); }, 350); }
@@ -331,6 +362,7 @@ function loop(now) {
   let dt = Math.min(0.1, (now - lastT) / 1000); lastT = now;
   fpsAcc += dt; fpsN++; if (fpsAcc > 1) { stats.fps = fpsN / fpsAcc; fpsAcc = 0; fpsN = 0; }
   if (!D) return;
+  refreshRegionCoverage();
   if (audio.on) { const a = audio.now(); dt = Math.max(0, Math.min(0.1, a - lastAudio)); lastAudio = a; audioOffset = a - clock.t - dt; }
   const params = effectiveParams();
   if (S.playing && geom) { advanceClock(clock, dt * (audio.on ? 1 : S.speed), params); markDirty(); }
@@ -348,7 +380,10 @@ function loop(now) {
   if (pose) {
     // The three rotation rings are an opt-in ADVANCED tool; the default is axis-first control (mode bar).
     if (S.mode === 'clinical') {
-      scene.setProbe(pose, S.probeKey, true);
+      // A contact reference is helpful when the illustrative skin is transparent
+      // or clipped away, otherwise the correctly anchored probe looks airborne.
+      const showContact = S.appearance.skinOpacity < 0.7 || S.appearance.cutaway !== 'none';
+      scene.setProbe(pose, S.probeKey, S.tool === 'probe', showContact);
       scene.gizmoAxes = { u: pose.u, b: pose.b, e: pose.e };
       scene.setGizmo('clinical', pose.origin, scene.gizmoAxes, S.tool === 'probe' && S.ctl.rings);
     } else {
@@ -359,7 +394,9 @@ function loop(now) {
     updateAxisGuide(pose);
   }
   if (S.steth.ref && f) { const d = [0, 0, 0]; displacement(f, ...S.steth.ref, d); S.steth.point = S.steth.ref.map((v, i) => v + d[i]); }
-  scene.setStethoscope(S.steth.point, S.steth.normal, S.tool === 'stethoscope' || audio.on);
+  // Sound playback does not select the instrument. A posterior listening point must
+  // never leave a dangling chestpiece under the table in other workspaces.
+  scene.setStethoscope(S.steth.point, S.steth.normal, shouldShowStethoscope(S));
   if (dirty) requestImaging(f, plane);
   // audio + strip
   const mix = currentMix();
@@ -505,12 +542,43 @@ function labelBox(vol, label) {
   return { lo: lo.map((v) => v - 6), hi: hi.map((v) => v + 6) };
 }
 
-/** Probe contact must lie where imaging exists: inside the CT acquisition box (the atlas shell extends beyond it). */
+/** Atlas has a full-body illustrative skin but only trunk CT. Allow the student
+ * to place the probe on any real skin surface; do not fabricate images there. */
 function contactInCoverage(c) {
-  const b = D?.ct?.bounds; if (!b || !c) return true;
+  if (!c) return false;
+  if (D?.anatomy?.dataset === 'atlas') return true; // covered by explicit unavailable-data UI
+  const b = D?.ct?.bounds; if (!b) return true;
   const ok = [0, 1, 2].every((i) => c.point[i] >= b.lo[i] + 2 && c.point[i] <= b.hi[i] - 2);
-  if (!ok) status('Titik itu di luar cakupan CT (kotak hijau): tidak ada data pencitraan di sana. Pilih titik di dada, abdomen atau pelvis.', 'warn');
+  if (!ok) status('Titik itu di luar cakupan CT: tidak ada data pencitraan di sana.', 'warn');
   return ok;
+}
+
+/** Read-only region classification from source atlas landmarks and CT bounds.
+ * No extra voxels are loaded or synthesised when the probe is moved. */
+function currentProbeCoverage() {
+  if (!D?.ct || D.anatomy?.dataset !== 'atlas' || S.mode !== 'clinical' ||
+      S.tool !== 'probe' || !S.contact || S.display === 'tri') return null;
+  return imagingAvailability({
+    point: S.contact.point, bounds: D.ct.bounds,
+    landmarks: D.anatomy.regions, dataset: 'atlas',
+  });
+}
+let lastCoverageKey = '';
+function refreshRegionCoverage() {
+  const c = currentProbeCoverage(), unavailable = !!c && !c.available;
+  const key = c ? `${c.region}/${c.available}/${S.mode}/${S.tool}` : 'none';
+  if (lastCoverageKey !== key) {
+    const badge = $('#regionStatus'), notice = $('#coverageNotice'), text = $('#coverageNoticeText');
+    if (badge) {
+      badge.hidden = !c;
+      if (c) { badge.textContent = c.available ? `${c.regionLabel} · CT tersedia` : `${c.regionLabel} · belum ada citra`; badge.dataset.available = String(c.available); }
+    }
+    if (notice) notice.hidden = !unavailable;
+    if (text && unavailable) text.textContent = c.message;
+    lastCoverageKey = key;
+  }
+  if (unavailable) scene?.hideImagePlane();
+  return c;
 }
 
 // ------------------------------------------------------------------ direction pad (direct control)
@@ -520,12 +588,53 @@ function contactInCoverage(c) {
 function ctlEnv() {
   const b = scene.bodyBounds || D?.ct?.bounds;
   return {
-    closestSkin: (p) => scene.closestSkin(p), raySkin: (o, d) => scene.raySkin(o, d), coverage: D?.ct?.bounds,
+    closestSkin: (p) => scene.closestSkin(p), raySkin: (o, d) => scene.raySkin(o, d), coverage: D?.anatomy?.dataset === 'atlas' ? null : D?.ct?.bounds,
     bodyCentre: b ? [(b.lo[0] + b.hi[0]) / 2, (b.lo[1] + b.hi[1]) / 2, (b.lo[2] + b.hi[2]) / 2] : [0, 0, 0],
   };
 }
 function report(r) { if (r && !r.ok && r.error) status(r.error, 'warn'); else if (r?.note) status(r.note, 'info'); }
+/** What each of the three tools is made of (shown as chips under the selector; one place, so text and behaviour stay in step). */
+const MODE_ELEMENTS = {
+  clinical: ['Probe di kulit', 'Jendela standar', 'Putar · miring', 'Kontak tetap'],
+  free: ['Bidang CT bebas', 'Geser 6 arah', 'Angguk · geleng · guling', 'Tanpa kulit'],
+  tri: ['Aksial', 'Koronal', 'Sagital', 'Satu titik silang'],
+};
 const padKind = () => (S.display === 'tri' ? 'tri' : S.mode === 'free' ? 'plane' : 'probe');
+const TRI_AXES = { ax: { i: 2, name: 'Aksial', direction: 'Superior (+) / Inferior (−)' }, co: { i: 1, name: 'Koronal', direction: 'Posterior (+) / Anterior (−)' }, sa: { i: 0, name: 'Sagital', direction: 'Kiri pasien (+) / Kanan pasien (−)' } };
+function setTriCoordinate(key, mm) {
+  if (!D?.ct || !Number.isFinite(mm)) return;
+  S.tri.point ||= triStart();
+  const i = TRI_AXES[key].i;
+  const p = [...S.tri.point]; p[i] = mm;
+  S.tri.point = clampToBounds(p, D.ct.bounds);
+  pad?.update(); updateTriControls(); touch();
+}
+function updateTriControls() {
+  if (!D?.ct || S.display !== 'tri') return;
+  const p = S.tri.point || triStart();
+  for (const [key, { i }] of Object.entries(TRI_AXES)) {
+    const row = $(`#tri-${key}`); if (!row) continue;
+    const input = row.querySelector('input'), out = row.querySelector('output');
+    input.min = D.ct.bounds.lo[i]; input.max = D.ct.bounds.hi[i];
+    input.step = Math.max(0.1, D.ct.spacing[i] || 1);
+    if (document.activeElement !== input) input.value = p[i];
+    out.textContent = `${p[i].toFixed(1)} mm`;
+  }
+}
+function buildTriControls() {
+  const root = $('#triSliceRows');
+  root.replaceChildren(...Object.entries(TRI_AXES).map(([key, { i, name, direction }]) => {
+    const step = (sign) => setTriCoordinate(key, (S.tri.point || triStart())[i] + sign * (D.ct.spacing[i] || 1));
+    return el('div', { class: 'tri-slice-row', id: `tri-${key}`, 'data-testid': `tri-row-${key}` },
+      el('label', {}, `${name} · ${direction}`, el('input', { type: 'range', 'data-testid': `tri-slider-${key}`, 'aria-label': `Posisi irisan ${name}`, oninput: (e) => setTriCoordinate(key, Number(e.target.value)) })),
+      el('button', { type: 'button', 'data-testid': `tri-prev-${key}`, 'aria-label': `${name}: ke arah negatif`, onclick: () => step(-1) }, '−'),
+      el('output', { 'data-testid': `tri-value-${key}` }),
+      el('button', { type: 'button', 'data-testid': `tri-next-${key}`, 'aria-label': `${name}: ke arah positif`, onclick: () => step(1) }, '+'));
+  }));
+  $('#triCenter').onclick = () => { S.tri.point = [...D.ct.centre]; pad?.update(); updateTriControls(); touch(); };
+  $('#triHelp').onclick = () => startTour(true, 'tri');
+  $('#triReturnProbe').onclick = () => setScanMode('clinical');
+}
 /** Move the current target one step in a patient direction (pad button, arrow key). */
 function padMove(dir, fine = false) {
   const d = PAD_DIRS[dir]; if (!d) return;
@@ -590,7 +699,7 @@ function renderPad() {
         setStep: (what, v) => { if (what === 'deg') S.ctl.stepDeg = v; else S.ctl.stepMM = v; },
         hover: (dir) => { guideDir = dir; },
         readout: padReadout, angle: padAngle,
-        slice: (k, mm) => { if (!S.tri.point) S.tri.point = triStart(); const i = { ax: 2, co: 1, sa: 0 }[k]; S.tri.point = S.tri.point.map((v, j) => (j === i ? mm : v)); touch(); pad.update(); },
+        slice: setTriCoordinate,
         sliceRange: (k) => { const i = { ax: 2, co: 1, sa: 0 }[k], b = D.ct.bounds, p = S.tri.point || triStart(); return { min: b.lo[i], max: b.hi[i], value: p[i] }; },
       },
     });
@@ -648,8 +757,32 @@ function numberControl({ id, label, min, max, step, get, set, unit = '', steps =
 }
 const controls = [];
 function refreshAll() {
+  refreshRegionCoverage();
   for (const c of controls) c.sync?.();
   document.body.dataset.mode = S.mode; document.body.dataset.tool = S.tool;
+  const tri = S.display === 'tri', clinical = S.mode === 'clinical' && !tri;
+  const modeStatus = $('#modeStatus'); if (modeStatus) {
+    const skinHidden = S.appearance.skinOpacity < 0.7 || S.appearance.cutaway !== 'none';
+    modeStatus.textContent = tri ? 'Tri-planar CT' : clinical ? skinHidden ? 'Probe klinis · kontak kulit ilustratif' : 'Probe klinis' : 'Free 3D / Bidang CT';
+    modeStatus.title = clinical && skinHidden
+      ? 'Kulit ilustratif sedang transparan/terpotong. Lingkaran hijau menunjukkan kontak probe pada permukaan kulit yang tidak terlihat; bukan struktur anatomi baru.'
+      : '';
+  }
+  // three-way tool selector: Probe klinis / Bidang CT bebas / Tri-planar CT (always visible, one click each)
+  const current = tri ? 'tri' : clinical ? 'clinical' : 'free';
+  for (const b of document.querySelectorAll('[data-mode-tab]')) b.setAttribute('aria-pressed', String(b.dataset.modeTab === current));
+  const returnProbe = $('#returnProbe'); if (returnProbe) { returnProbe.disabled = !D?.meshes?.skin; returnProbe.title = returnProbe.disabled ? 'Probe klinis memerlukan mesh kulit terregistrasi (tidak ada pada CT ini).' : 'Probe USG menempel di kulit pasien'; }
+  const elements = $('#modeElements');
+  if (elements) {
+    const chips = MODE_ELEMENTS[current];
+    const key = chips.join('|');
+    if (elements.dataset.key !== key) { elements.dataset.key = key; elements.replaceChildren(...chips.map((t) => el('span', { class: 'chip' }, t))); }
+  }
+  document.body.dataset.tool3 = current;
+  const triControls = $('#triControls'); if (triControls) triControls.hidden = !tri;
+  const monitorPanel = $('#monitorPanel'); if (monitorPanel) monitorPanel.dataset.display = S.display;
+  requestAnimationFrame(syncMonitorScrollbar);
+  const triReturn = $('#triReturnProbe'); if (triReturn) triReturn.hidden = !D?.meshes?.skin;
   for (const b of document.querySelectorAll('[data-seg]')) { const [k, v] = b.dataset.seg.split(':'); b.setAttribute('aria-pressed', String(S[k] === v || (k === 'display' && S.display === v))); }
   const sel = $('#probeSelect'); if (sel) sel.value = S.probeKey;
   const sc = $('#scenarioSelect'); if (sc) sc.value = S.scenario;
@@ -658,16 +791,44 @@ function refreshAll() {
   updateReadouts();
   renderTeaching();
   renderPad();
+  updateTriControls();
 }
 
 function seg(group, items, testid) {
   return el('div', { class: 'seg', role: 'group', 'data-testid': testid }, ...items.map(([val, text]) => el('button', { type: 'button', 'data-seg': `${group}:${val}`, 'data-testid': `${testid}-${val}`, onclick: () => { onSeg(group, val); } }, text)));
 }
 function onSeg(group, val) {
-  if (group === 'mode') { S.mode = val; if (val === 'clinical' && !S.contact) applyView(S.view, false); }
+  if (group === 'mode') { setScanMode(val); return; }
   else if (group === 'tool') { setTool(val); return; }
-  else if (group === 'display') { S.display = val; }
+  else if (group === 'display') { setImagingDisplay(val); return; }
   refreshAll(); touch();
+}
+
+function setScanMode(mode) {
+  if (mode === 'clinical') {
+    if (!D?.meshes?.skin) { status('Probe klinis memerlukan mesh kulit terregistrasi; gunakan Free 3D untuk CT ini.', 'warn'); return; }
+    if (!S.contact || !contactInCoverage(S.contact)) applyView(S.view, false);
+    if (!S.contact || !contactInCoverage(S.contact)) S.contact = scene.raySkin(D.ct.centre, [0, -1, 0]) || scene.closestSkin(D.ct.centre);
+    if (!S.contact || !contactInCoverage(S.contact)) { status('Titik kontak kulit tidak tersedia di cakupan CT.', 'warn'); return; }
+    S.mode = 'clinical'; S.tool = 'probe'; S.ctl.mode = 'place';
+    scene.siteMarkers.visible = false;
+    scene.setInteraction('place');
+    if (S.display === 'tri' || S.display === 'ct') S.display = 'split';
+  } else if (mode === 'free') { S.mode = 'free'; S.tool = 'probe'; scene.siteMarkers.visible = false; if (S.display === 'tri') S.display = 'ct'; }
+  else return;
+  scene.hideImagePlane(); requestImaging.generation = (requestImaging.generation || 0) + 1;
+  refreshAll(); touch();
+}
+function setImagingDisplay(display) {
+  if (display === 'tri') {
+    if (!S.tri.point) S.tri.point = triStart();
+    S.mode = 'free'; S.tool = 'probe';
+    scene.siteMarkers.visible = false;
+    S.display = 'tri';
+  } else S.display = display;
+  scene.hideImagePlane(); requestImaging.generation = (requestImaging.generation || 0) + 1;
+  refreshAll(); touch();
+  if (display === 'tri') startTour(false, 'tri');
 }
 
 function buildPanels() {
@@ -831,7 +992,15 @@ async function loadComparison() { // atlas-vs-phantom residuals are measured by 
   comparison = D?.anatomy?.comparisonWithProceduralPhantom || await fetch(DATASETS.atlas.dir + 'anatomy.json').then((r) => r.json()).then((a) => a.comparisonWithProceduralPhantom).catch(() => null);
   renderAtlasPanel(); return comparison;
 }
-function setTool(val) { S.tool = val; scene.siteMarkers.visible = val === 'stethoscope'; if (val !== 'inspect') { selected = selected || null; } refreshAll(); renderAtlasPanel(); touch(); }
+function setTool(val) {
+  S.tool = val;
+  scene.siteMarkers.visible = shouldShowStethoscope(S);
+  // Hide the stale image plane immediately when the auscultation instrument is selected.
+  // The async imaging worker also checks this visibility policy before rendering its reply.
+  if (!shouldShowImagingPlane(S)) scene.hideImagePlane();
+  if (val !== 'inspect') { selected = selected || null; }
+  refreshAll(); renderAtlasPanel(); touch();
+}
 function renderAtlasPanel() {
   const box = $('#tab-anatomy'); if (!box || !scene) return;
   buildAtlasPanel(box, {
@@ -840,6 +1009,7 @@ function renderAtlasPanel() {
       setDisplayMode, setTool,
       loadSystem: (sys) => loadAtlasSystem(sys),
       setGroup: (g, o) => { atlas.setGroup(g, o); renderAtlasPanel(); motionShown = null; },
+      setRespiratoryDetail: (enabled) => { atlas.setRespiratoryDetail(enabled); renderAtlasPanel(); motionShown = null; },
       select: (name) => { S.atlasQuery = name; if (atlas?.structures.has(name)) { selected = name; atlas.highlight(name); } renderAtlasPanel(); },
       highlight: (name) => { atlas.highlight(atlas.highlighted === name ? null : name); renderAtlasPanel(); },
       isolate: (name) => { atlas.isolate(name); if (name && organsHidden()) setDisplayMode('internal'); renderAtlasPanel(); },
@@ -935,6 +1105,7 @@ function caseSections(key) {
 }
 function placeSteth(point, normal, key) {
   S.tool = 'stethoscope';
+  scene.hideImagePlane();
   // site points are reference anatomy coordinates
   S.steth.ref = [...point]; S.steth.normal = [...normal]; S.steth.point = [...point]; S.steth.key = key;
   mixCache = null; refreshAll(); scene.siteMarkers.visible = true;
@@ -1025,8 +1196,11 @@ function learnSetup(spec) {
     S.mode = 'free'; S.free.q = freeQuat(FREE_PRESETS[spec.free]);
     const c = spec.at && structureCentroid(spec.at); if (c) S.free.position = c;
   }
-  if (spec.display) S.display = spec.display;
+  if (spec.display === 'tri') setImagingDisplay('tri');
+  else if (spec.display) S.display = spec.display;
+  else if (spec.view && S.display === 'tri') S.display = 'split';
   if (spec.tool) setTool(spec.tool);
+  scene.hideImagePlane(); requestImaging.generation = (requestImaging.generation || 0) + 1;
   refreshAll(); touch();
 }
 /** What the learner currently sees, from the same label rasters as the overlay. */
@@ -1037,9 +1211,101 @@ function learnSnapshot() {
   return { plane, visible, centreKey: assist.G.keyOf(g), site: S.steth.key || null, filter: S.steth.filter, scenario: S.scenario, display: S.display, mode: S.mode };
 }
 
+// Always-visible monitor scrollbar for Safari (which often hides native scrollbars).
+// The rail is outside the CT canvas so pointer movement here never changes a CT slice.
+let syncMonitorScrollbar = () => {};
+function setupMonitorScrollbar() {
+  const scroller = $('#monitorScroll'), track = $('#monitorScrollTrack'),
+    thumb = $('#monitorScrollThumb'), up = $('#monitorScrollUp'), down = $('#monitorScrollDown');
+  if (!scroller || !track || !thumb || !up || !down) return;
+  const measure = () => {
+    const max = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+    const trackHeight = track.getBoundingClientRect().height;
+    const thumbHeight = trackHeight > 0
+      ? Math.min(trackHeight, Math.max(36, trackHeight * scroller.clientHeight / Math.max(scroller.scrollHeight, 1)))
+      : 0;
+    return { max, thumbHeight, travel: Math.max(0, trackHeight - thumbHeight) };
+  };
+  const sync = () => {
+    const { max, thumbHeight, travel } = measure();
+    const fraction = max > 1 ? Math.max(0, Math.min(1, scroller.scrollTop / max)) : 0;
+    thumb.style.height = `${Math.round(thumbHeight)}px`;
+    thumb.style.transform = `translateY(${Math.round(fraction * travel)}px)`;
+    track.classList.toggle('can-scroll', max > 1);
+    track.setAttribute('aria-valuenow', String(Math.round(fraction * 100)));
+    track.setAttribute('aria-valuetext', `${Math.round(fraction * 100)}% posisi gulir monitor`);
+    up.disabled = max <= 1 || scroller.scrollTop <= 1;
+    down.disabled = max <= 1 || scroller.scrollTop >= max - 1;
+  };
+  const jump = (delta) => scroller.scrollBy({ top: delta, behavior: 'smooth' });
+  up.addEventListener('click', () => jump(-Math.max(130, scroller.clientHeight * 0.65)));
+  down.addEventListener('click', () => jump(Math.max(130, scroller.clientHeight * 0.65)));
+  let drag = null;
+  track.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    const m = measure();
+    if (m.max <= 1 || m.travel <= 0) return;
+    if (event.target !== thumb) {
+      const rect = track.getBoundingClientRect();
+      scroller.scrollTop = Math.max(0, Math.min(m.max, (event.clientY - rect.top - m.thumbHeight / 2) / m.travel * m.max));
+    }
+    drag = { pointerId: event.pointerId, y: event.clientY, scrollTop: scroller.scrollTop };
+    track.setPointerCapture(event.pointerId);
+    track.classList.add('is-dragging');
+    event.preventDefault();
+    sync();
+  });
+  track.addEventListener('pointermove', (event) => {
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    const { max, travel } = measure();
+    if (travel > 0) scroller.scrollTop = Math.max(0, Math.min(max, drag.scrollTop + (event.clientY - drag.y) * max / travel));
+  });
+  const endDrag = (event) => {
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    drag = null;
+    track.classList.remove('is-dragging');
+    if (track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
+  };
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+  track.addEventListener('keydown', (event) => {
+    const m = measure();
+    const step = Math.max(50, Math.round(scroller.clientHeight * 0.2));
+    const next = {
+      ArrowUp: scroller.scrollTop - step,
+      ArrowDown: scroller.scrollTop + step,
+      PageUp: scroller.scrollTop - scroller.clientHeight * 0.8,
+      PageDown: scroller.scrollTop + scroller.clientHeight * 0.8,
+      Home: 0,
+      End: m.max,
+    }[event.key];
+    if (next === undefined) return;
+    event.preventDefault();
+    scroller.scrollTop = Math.max(0, Math.min(m.max, next));
+  });
+  scroller.addEventListener('scroll', sync, { passive: true });
+  const observer = new ResizeObserver(() => requestAnimationFrame(sync));
+  for (const node of [scroller, track, $('#triControls'), $('.monitor-body'), $('.strip-wrap'), $('.playbar')]) {
+    if (node) observer.observe(node);
+  }
+  syncMonitorScrollbar = sync;
+  requestAnimationFrame(sync);
+}
+
 // ------------------------------------------------------------------ layout controls
 function installLayout() {
   const ws = $('#workspace'), div = $('#divider');
+  $('#returnProbe').onclick = () => setScanMode('clinical');
+  $('#freeMode').onclick = () => setScanMode('free');
+  $('#triMode').onclick = () => { if (S.display !== 'tri') setImagingDisplay('tri'); };
+  buildTriControls();
+  setupMonitorScrollbar();
+  $('#triShowImages').onclick = () => {
+    const scroller = $('#monitorScroll'), image = $('.monitor-body');
+    if (!scroller || !image) return;
+    const next = scroller.scrollTop + image.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
+    scroller.scrollTo({ top: Math.max(0, next), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  };
   let drag = null;
   div.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, w: $('#monitorPanel').getBoundingClientRect().width }; div.setPointerCapture(e.pointerId); });
   div.addEventListener('pointermove', (e) => { if (!drag) return; const w = Math.min(window.innerWidth * 0.75, Math.max(280, drag.w - (e.clientX - drag.x))); ws.style.setProperty('--monitor-w', w + 'px'); });
@@ -1093,79 +1359,17 @@ function installLayout() {
     if ((e.key === 'q' || e.key === 'e') && padKind() !== 'tri') padRotate(S.mode === 'free' ? 'yaw' : 'rotate', e.key === 'e' ? 1 : -1, e.shiftKey);
   });
 }
-// Five-step guided tour. Show once per browser, but let students replay it from the ? help menu.
-const TOUR_KEY = 'medcoel-4dlab-tour-v2';
-const TOUR = [
-  { target: '.brand', title: 'Selamat datang di MEDCOEL 4D Lab', text: 'Di sini kamu bisa mempelajari anatomi 3D sekaligus citra CT dan USG simulasi. Kita kenali kontrol utamanya dulu.' },
-  { target: '#probePad', title: 'Gerakkan probe atau bidang CT', text: 'Gunakan tombol Superior, Inferior, Kanan, Kiri, Anterior, dan Posterior. Arah selalu mengikuti tubuh pasien, bukan arah layar.' },
-  { target: '#viewport', title: 'Atur sudut pandang 3D', text: 'Seret area kosong untuk memutar kamera dan scroll untuk zoom. Kamera hanya mengubah tampilan pasien, bukan bidang CT atau USG.' },
-  { target: '.monitor-toolbar', title: 'Pelajari citra dan struktur', text: 'Pilih USG, CT, atau Tri-planar CT. Nyalakan Bantuan anatomi untuk melihat kontur dan nama struktur pada citra simulasi.', pane: 'image' },
-  { target: '.ws-nav', title: 'Mulai belajar sesuai kebutuhan', text: 'Gunakan ruang kerja Anatomi & Citra, Auskultasi, Fisiologi, Patologi, dan Belajar. Klik Belajar untuk latihan terpandu dengan progres.' },
-];
-function startTour(force = false) {
-  let seen = false; try { seen = localStorage.getItem(TOUR_KEY) === 'done'; } catch { /* private mode */ }
-  if (seen && !force) return;
-  document.querySelector('.tour-root')?.remove();
-  const previousFocus = document.activeElement;
-  let i = 0;
-  const root = el('div', { class: 'tour-root' });
-  const spotlight = el('div', { class: 'tour-focus', 'aria-hidden': 'true' });
-  const card = el('div', { class: 'tour', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Tutorial MEDCOEL 4D Lab', 'data-testid': 'tour' });
-  root.append(spotlight, card);
-  document.body.append(root);
-  const position = () => {
-    const target = document.querySelector(TOUR[i].target);
-    if (!target) { spotlight.hidden = true; return; }
-    spotlight.hidden = false;
-    const rect = target.getBoundingClientRect(), pad = 6;
-    spotlight.style.left = `${Math.max(0, rect.left - pad)}px`;
-    spotlight.style.top = `${Math.max(0, rect.top - pad)}px`;
-    spotlight.style.width = `${Math.min(innerWidth, rect.right + pad) - Math.max(0, rect.left - pad)}px`;
-    spotlight.style.height = `${Math.min(innerHeight, rect.bottom + pad) - Math.max(0, rect.top - pad)}px`;
-    const size = card.getBoundingClientRect();
-    const left = Math.max(12, Math.min(innerWidth - size.width - 12, rect.left));
-    let top = rect.bottom + 16;
-    if (top + size.height > innerHeight - 12) top = rect.top - size.height - 16;
-    if (top < 12) top = Math.max(12, (innerHeight - size.height) / 2);
-    card.style.left = `${left}px`; card.style.top = `${top}px`;
-  };
-  const done = () => {
-    window.removeEventListener('resize', position);
-    window.removeEventListener('scroll', position, true);
-    window.removeEventListener('keydown', handleKey, true);
-    root.remove();
-    try { localStorage.setItem(TOUR_KEY, 'done'); } catch { /* private mode */ }
-    if (previousFocus?.isConnected && previousFocus?.focus) previousFocus.focus();
-  };
-  const show = () => {
-    const step = TOUR[i];
-    if (matchMedia('(max-width: 740px)').matches) setPane(step.pane || 'patient');
-    card.replaceChildren(
-      el('small', {}, `PANDUAN SINGKAT · ${i + 1} DARI ${TOUR.length}`),
-      el('div', { class: 'tour-progress', 'aria-hidden': 'true' }, ...TOUR.map((_, n) => el('i', { class: n <= i ? 'active' : '' }))),
-      el('h2', {}, step.title),
-      el('p', {}, step.text),
-      el('div', { class: 'row' },
-        el('button', { type: 'button', class: 'btn', 'data-testid': 'tour-skip', onclick: done }, 'Lewati'),
-        ...(i ? [el('button', { type: 'button', class: 'btn', 'data-testid': 'tour-back', onclick: () => { i--; show(); } }, 'Kembali')] : []),
-        el('button', { type: 'button', class: 'btn primary', 'data-testid': 'tour-next', onclick: () => { if (++i === TOUR.length) done(); else show(); } }, i === TOUR.length - 1 ? 'Mulai simulasi' : 'Lanjut')
-      )
-    );
-    card.querySelector('[data-testid=tour-next]')?.focus();
-    requestAnimationFrame(position);
-  };
-  const handleKey = (e) => {
-    if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); done(); }
-    if (e.key !== 'Tab') return;
-    const buttons = [...card.querySelectorAll('button')];
-    if (!buttons.length) return;
-    if (e.shiftKey && document.activeElement === buttons[0]) { e.preventDefault(); buttons.at(-1).focus(); }
-    else if (!e.shiftKey && document.activeElement === buttons.at(-1)) { e.preventDefault(); buttons[0].focus(); }
-  };
-  window.addEventListener('resize', position);
-  window.addEventListener('scroll', position, true);
-  window.addEventListener('keydown', handleKey, true);
-  show();
+// Interactive tutorial (mascot-led, learn-by-doing): engine in tutorial.js, content in tutorialSteps.js. Shown once per browser
+// (key bumped to v3 when it became interactive); students replay it from the ? help menu.
+const TOUR_KEY = 'medcoel-4dlab-tour-v3';
+const TRI_TOUR_KEY = 'medcoel-4dlab-tri-tour-v2';
+function startTour(force = false, kind = 'general') {
+  const tri = kind === 'tri';
+  const ctx = { S, scene, padKind, setAssistLevel, assistSelect: () => $('#assistLevel'), hoverTip: () => $('#hoverTip') };
+  startTutorial({
+    steps: tri ? triSteps(ctx) : generalSteps(ctx), storageKey: tri ? TRI_TOUR_KEY : TOUR_KEY,
+    label: tri ? 'PANDUAN TRI-PLANAR' : 'TUTORIAL INTERAKTIF', el, setPane, force,
+  });
 }
 function setSidebar(open) {
   document.body.dataset.sidebar = open ? 'open' : 'closed';
@@ -1181,7 +1385,7 @@ function setPane(pane) {
 const WS_DEFAULT_TAB = { imaging: 'tab-probe', ausc: 'tab-ausc', physio: 'tab-physiology', patho: 'tab-pathology', learn: 'tab-learn' };
 function setWorkspace(ws) {
   if (!WS_DEFAULT_TAB[ws]) return;
-  const prev = S.ws; S.ws = ws; document.body.dataset.ws = ws;
+  S.ws = ws; document.body.dataset.ws = ws;
   for (const b of document.querySelectorAll('.ws-nav [data-ws]')) b.setAttribute('aria-selected', String(b.dataset.ws === ws));
   for (const t of document.querySelectorAll('.tabs [role=tab]')) t.hidden = t.dataset.ws !== ws;
   const first = document.querySelector(`.tabs [aria-controls=${WS_DEFAULT_TAB[ws]}]`); first?.click();
@@ -1191,7 +1395,7 @@ function setWorkspace(ws) {
     setTool('stethoscope');
     if (!S.steth.ref) { const m = D?.anatomy?.auscultation?.find((x) => x.key === 'mitral'); if (m) placeSteth(m.point, m.normal, 'mitral'); }
     renderAusc();
-  } else if (prev === 'ausc' && S.tool === 'stethoscope') setTool('probe');
+  } else if (S.tool === 'stethoscope') setTool('probe');
   if (ws === 'patho') renderPathology();
   if (ws === 'learn') learn?.render();
   document.body.dataset.learning = ws === 'learn' ? '1' : '';
@@ -1270,13 +1474,15 @@ async function boot() {
     monitor.onPick = (hit) => {
       if (S.display === 'tri' && hit && !hit.outside && hit.key !== 'info' && hit.plane) { // move the linked crosshair
         S.tri.point = clampToBounds(pixelToLPS(hit.plane, hit.w, hit.h, hit.px, hit.py), D.ct.bounds); touch();
+        pad?.update(); updateTriControls();
       }
       assist.onPick(hit);
     };
-    monitor.onSlice = (key, sign, fine) => { if (!S.tri.point) return; S.tri.point = stepSlice(S.tri.point, key, sign * (fine ? 0.5 : 1) * Math.min(...D.ct.spacing), D.ct.bounds); touch(); };
+    monitor.onSlice = (key, sign, fine) => { if (!S.tri.point) return; S.tri.point = stepSlice(S.tri.point, key, sign * (fine ? 0.5 : 1) * Math.min(...D.ct.spacing), D.ct.bounds); pad?.update(); updateTriControls(); touch(); };
     installLayout();
     await loadPhantom();
-    learn = new Learn({ el, root: $('#tab-learn'), snapshot: learnSnapshot, setup: learnSetup, setAssist: (lv) => setAssistLevel(lv), status });
+    learn = new Learn({ el, root: $('#tab-learn'), snapshot: learnSnapshot, setup: learnSetup, setAssist: (lv) => setAssistLevel(lv), status,
+      navigation: () => ({ mode: S.mode, display: S.display }), returnProbe: () => { setScanMode('clinical'); learn.render(); } });
     buildPanels();
     learn.render();
     scene.setInteraction('place'); renderPad(); startTour();

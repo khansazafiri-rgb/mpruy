@@ -8,6 +8,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast } from 'three-mesh-bvh';
 import { state, setLoadingSystem } from '../state/store.js';
 import { asset } from '../utils/paths.js';
+import { bp3dRequested, loadBp3dInventory, bp3dUsesSystem, loadBp3dSystem } from './bp3dSource.js';
 
 // Without an acceleration structure, picking cost grows with the triangle
 // count: 10.4M triangles tested per pointer event across seven systems.
@@ -97,14 +98,22 @@ export function loadModel(systemId, viewer, options = {}) {
   return promise;
 }
 
-async function loadModelOnce(systemId, viewer, options = {}) {
-  const { scene } = viewer;
-  // Licence quarantine: never request a withheld model, even if a stale link or caller asks for it.
-  if (isQuarantinedSource(systemId)) {
-    setLoadingSystem(systemId, true, 100, { failed: true });
-    throw new Error(`${systemId} is unavailable pending licence review`);
+// Optional BodyParts3D source (?models=bp3d): falls back to the Atlas model for any system it cannot serve.
+const bp3dLoader = new GLTFLoader();
+async function loadBodyParts3dScene(systemId) {
+  if (!bp3dRequested()) return null;
+  await loadBp3dInventory();
+  if (!bp3dUsesSystem(systemId)) return null;
+  try {
+    setLoadingSystem(systemId, false, 0);
+    return await loadBp3dSystem(systemId, bp3dLoader, (pct) => setLoadingSystem(systemId, false, pct));
+  } catch (error) {
+    console.warn(`[loadModel] BodyParts3D unavailable for ${systemId}; using the Atlas model.`, error);
+    return null;
   }
+}
 
+async function loadAtlasScene(systemId) {
   console.log(`[loadModel] Starting load of ${systemId}.glb`);
 
   const gltfTimer = beginPhase('GLTF load '+systemId);
@@ -135,7 +144,18 @@ async function loadModelOnce(systemId, viewer, options = {}) {
   });
 
   gltfTimer();
-  const model = gltf.scene;
+  return gltf.scene;
+}
+
+async function loadModelOnce(systemId, viewer, options = {}) {
+  const { scene } = viewer;
+  // Licence quarantine: never request a withheld model, even if a stale link or caller asks for it.
+  if (isQuarantinedSource(systemId)) {
+    setLoadingSystem(systemId, true, 100, { failed: true });
+    throw new Error(`${systemId} is unavailable pending licence review`);
+  }
+
+  const model = (await loadBodyParts3dScene(systemId)) || (await loadAtlasScene(systemId));
   const registryTimer = beginPhase('registry '+systemId);
   processModel(model, systemId, viewer); registryTimer();
 

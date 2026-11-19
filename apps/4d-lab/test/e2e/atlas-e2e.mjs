@@ -1,6 +1,6 @@
 // Browser tests for the ATLAS dataset (default): shared MEDCOEL Anatomy Atlas layer + atlas-derived CT.
 //   npm run build && node test/e2e/atlas-e2e.mjs [--shots]   (screenshots -> evidence/atlas-*.jpg)
-// The atlas GLBs are served from apps/anatomy/public at /anatomy/viewer/, exactly like production.
+// Atlas GLBs are bundled into the Lab's own atlas-assets/ static pack (no Atlas Viewer runtime).
 import { createRequire } from 'node:module';
 import { mkdir, writeFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
@@ -19,7 +19,7 @@ const results = [];
 const { srv, url } = await startServer();
 const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--autoplay-policy=no-user-gesture-required'] });
 const ctx = await browser.newContext({ viewport: { width: 1760, height: 950 }, deviceScaleFactor: 1 });
-await ctx.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v2', 'done'); } catch { /* ignore */ } });
+await ctx.addInitScript(() => { try { for (const k of ['medcoel-4dlab-tour-v2', 'medcoel-4dlab-tour-v3']) localStorage.setItem(k, 'done'); } catch { /* ignore */ } });
 const page = await ctx.newPage();
 const errors = [];
 page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
@@ -61,7 +61,8 @@ async function setNumber(testid, value) {
   const input = page.getByTestId(testid); await input.fill(String(value)); await input.press('Enter');
 }
 async function pause() { if (await lab(() => window.__lab.S.playing)) await page.getByTestId('play').click(); }
-async function camera(view) { await lab(() => { document.querySelector('[data-testid=view-menu]').open = true; }); await page.getByTestId('cam-' + view).click(); await page.waitForFunction(() => !window.__lab.scene._anim, null, { timeout: 15000 }); await page.waitForTimeout(200); }
+async function viewMenu(open) { await lab((o) => { const m = document.querySelector('[data-testid=view-menu]'); if (m) m.open = o; }, open); if (open) await page.getByTestId('cam-examiner').waitFor({ state: 'visible', timeout: 10000 }); }
+async function camera(view) { await viewMenu(true); await page.getByTestId('cam-' + view).click(); await page.waitForFunction(() => !window.__lab.scene._anim, null, { timeout: 15000 }); await page.waitForTimeout(200); await viewMenu(false); }
 // Tabs live in workspaces (UX upgrade): switch to the owning workspace, keep the panel open beside the patient.
 const TAB_WS = { probe: 'imaging', anatomy: 'imaging', imaging: 'imaging', data: 'imaging', ausc: 'ausc', physiology: 'physio', pathology: 'patho', learn: 'learn' };
 async function openTab(id) {
@@ -82,8 +83,6 @@ const t0 = Date.now();
 await page.goto(url);
 await page.waitForFunction(() => document.body.dataset.ready, null, { timeout: 120000 });
 await page.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.atlasState), null, { timeout: 240000 });
-// UX upgrade: the 3D view options sit in a collapsible menu; keep it open for the camera/skin/cutaway steps.
-await page.evaluate(() => { const m = document.querySelector('[data-testid=view-menu]'); if (m) m.open = true; });
 const loadMs = Date.now() - t0;
 
 await step('atlas dataset is the default; shared atlas models load with no runtime errors', async () => {
@@ -96,12 +95,21 @@ await step('atlas dataset is the default; shared atlas models load with no runti
   for (const name of ['Left ventricle', 'Right atrium', 'Liver', 'Stomach', 'Spleen', 'Inferior lobe of right lung', 'Body of sternum', 'Fifth rib.l']) assert.ok(await lab((n) => window.__lab.atlas.structures.has(n), name), 'has ' + name);
   // licence quarantine: withheld anatomy is absent (not substituted) and listed as unavailable
   for (const name of ['Kidney.l', 'Kidney.r', 'Renal pelvis.r', 'Incus.l']) assert.equal(await lab((n) => window.__lab.atlas.structures.has(n), name), false, 'withheld ' + name);
-  // the models came from the shared atlas URL, not from a 4D Lab copy
-  const urls = await lab(() => performance.getEntriesByType('resource').map((e) => e.name).filter((u) => u.includes('.glb')));
-  assert.ok(urls.some((u) => u.includes('/anatomy/viewer/models/visceral.glb')), 'visceral.glb from /anatomy/viewer/');
-  assert.ok(!urls.some((u) => u.includes('/anatomy/4d-lab/') && /models\//.test(u)), 'no duplicated atlas models under /anatomy/4d-lab/');
+  // all 3D model requests must resolve to the Lab's independent data-only pack
+  const urls = await lab(() => performance.getEntriesByType('resource').map((e) => e.name));
+  assert.ok(urls.some((u) => u.includes('/anatomy/4d-lab/atlas-assets/models/visceral.glb')), 'visceral.glb from Lab-owned asset pack');
+  assert.ok(urls.some((u) => u.includes('/anatomy/4d-lab/atlas-assets/data/atlas-catalog.json')), 'catalog from Lab-owned asset pack');
+  assert.ok(!urls.some((u) => u.includes('/anatomy/viewer/')), '4D Lab makes no requests to NC Atlas Viewer route');
   await nextFrame(0);
   assert.deepEqual(errors, []);
+});
+
+await step('participant UI does not show the removed humerus landmark pilot', async () => {
+  await openTab('anatomy');
+  assert.equal(await page.getByTestId('skeletal-landmark-audit').count(), 0, 'no skeletal landmark pilot section');
+  assert.equal(await page.getByTestId('skeletal-landmark-open').count(), 0, 'no humerus pilot button');
+  assert.equal(await page.getByTestId('skeletal-landmark-results').count(), 0, 'no pilot landmark list');
+  assert.equal(await page.getByText('Tuberculum majus', { exact: true }).count(), 0, 'no unverified landmark shown');
 });
 
 await step('full patient view: external body shell with orientation labels; atlas hidden under opaque skin', async () => {
@@ -136,6 +144,54 @@ await step('transparent skin shows the atlas organs; groups toggle, transparency
   await page.getByTestId('btn-showall').click(); await display('transparent');
   const after = await canvasStats('[data-testid=patient-canvas]');
   assert.ok(Math.abs(before.mean - after.mean) < 25, 'state restored');
+});
+
+await step('clinical transducer remains on the skin with a visible contact reference when skin is hidden', async () => {
+  await pause();
+  await display('transparent');
+  await page.waitForFunction(() => window.__lab.scene.contactIndicator?.visible, null, { timeout: 15000 });
+  const a = await lab(() => {
+    const scene = window.__lab.scene, p = scene.probe.matrix.elements;
+    return {
+      probeVisible: scene.probe.visible,
+      contactVisible: scene.contactIndicator.visible,
+      contactPoint: [p[12], p[13], p[14]],
+      ringPoint: scene.contactIndicator.position.toArray(),
+      neck: scene.probe.children.some(child =>
+        child.isMesh && child.geometry?.type === 'CylinderGeometry' && child.geometry.parameters?.height === 42),
+    };
+  });
+  assert.equal(a.probeVisible, true, 'clinical probe remains visible');
+  assert.equal(a.contactVisible, true, 'reference contact appears with transparent skin');
+  assert.equal(a.neck, true, 'housing joins the transducer head and handle');
+  const gap = Math.hypot(...a.contactPoint.map((v, i) => v - a.ringPoint[i]));
+  assert.ok(gap <= 1.6, 'reference contact is within 1.6 mm of the real transducer origin, gap=' + gap);
+  await shot('atlas-probe-skin-contact');
+  await display('external');
+  await page.waitForFunction(() => !window.__lab.scene.contactIndicator.visible);
+  assert.equal(await lab(() => window.__lab.scene.probe.visible), true, 'probe stays on skin in external view');
+  await display('transparent');
+});
+
+await step('cleared respiratory detail: show existing pleura/bronchi and restore initial view', async () => {
+  await display('transparent');
+  await page.getByTestId('btn-showall').click();
+  const before = await lab(() => {
+    const a = window.__lab.atlas, keys = ['Pleura', 'Right main bronchus', 'Left main bronchus'];
+    return keys.map(k => ({ name: k, exists: a.structures.has(k), hidden: a.structures.get(k)?.hiddenByUser }));
+  });
+  assert.ok(before.every(x => x.exists && x.hidden), 'licensed airway structures present, initially hidden: ' + JSON.stringify(before));
+  const btn = page.getByTestId('respiratory-detail-toggle');
+  assert.ok(await btn.isVisible(), 'detail control is discoverable');
+  await btn.click();
+  assert.equal(await lab(() => window.__lab.atlas.respiratoryDetailsShown), true);
+  assert.equal(await lab(() => ['Pleura', 'Right main bronchus', 'Left main bronchus'].every(k => !window.__lab.atlas.structures.get(k).hiddenByUser)), true);
+  assert.equal(await lab(() => window.__lab.atlas.groups.respiratory.visible), true);
+  await shot('atlas-respiratory-detail-enabled');
+  await page.getByTestId('respiratory-detail-toggle').click();
+  assert.equal(await lab(() => window.__lab.atlas.respiratoryDetailsShown), false);
+  assert.equal(await lab(() => ['Pleura', 'Right main bronchus', 'Left main bronchus'].every(k => window.__lab.atlas.structures.get(k).hiddenByUser)), true);
+  await page.getByTestId('btn-showall').click();
 });
 
 await step('inspect tool: clicking an organ selects that atlas structure (not the probe)', async () => {

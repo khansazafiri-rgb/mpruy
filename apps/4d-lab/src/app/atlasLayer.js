@@ -1,9 +1,9 @@
 // Shared MEDCOEL Anatomy Atlas layer for the 4D Lab.
 //
-// Loads the SAME files the Anatomy Atlas viewer serves (/anatomy/viewer/models/*.glb, its Draco decoder
-// and data/atlas-catalog.json) instead of shipping copies. Structure identity follows the atlas loader
-// (apps/anatomy/src/viewer/loadModel.js): a structure is a node with extras.za_name and owns the meshes
-// whose closest za_name ancestor it is. Geometry is baked ONCE into patient LPS millimetres with the
+// Loads only the asset-only atlas pack bundled under the Lab's own /atlas-assets/ route.
+// The pack includes GLBs, catalog and decoder but NOT the CC BY-NC-SA Atlas Viewer app code.
+// A structure is identified by its embedded glTF extras.za_name and owns the meshes
+// whose closest za_name ancestor it is. Implementation-code provenance still needs review. Geometry is baked ONCE into patient LPS millimetres with the
 // dataset's explicit atlasToLPS matrix (anatomy.json -> atlasFrame), so the layer lives in the same frame
 // as the probe, the CT grid and the physiology field. No visual offsets are applied anywhere.
 import * as THREE from 'three';
@@ -39,6 +39,10 @@ const GREAT_VESSELS = /aorta|vena cava|pulmonary (trunk|artery|vein)|Bifurcation
 const CORONARY = /coronary|interventricular|Circumflex|of left ventricle|Coronary sinus|cardiac vein|Septal branches|marginal|inferolateral branch|atrial branch|conus/i;
 const START_HIDDEN = /^(Pleura|Greater omentum|Lesser omentum|Mesocolon|Meso-appendix|.*taenia)$|segment of liver|bronchus|Pancreatic duct|Accessory pancreatic duct/i;
 const startHidden = (n) => START_HIDDEN.test(n) || (CORONARY.test(n) && !/papillary/i.test(n));
+/** Cleared respiratory substructures normally concealed to keep initial anatomy readable.
+ * They are already in the licensed Atlas file: no new assets or generated anatomy.
+ */
+export const isRespiratoryDetail = (name, group) => group === 'respiratory' && /pleura|bronchus/i.test(name);
 /**
  * Which structures the procedural motion field animates (others stay static and are labelled so).
  * Kept to organs whose motion is taught (heart, lungs, diaphragm, liver, stomach, spleen, kidneys,
@@ -65,6 +69,7 @@ export class AtlasLayer {
     this.groups = Object.fromEntries(Object.keys(ATLAS_GROUPS).map((g) => [g, { visible: ATLAS_GROUPS[g].defaultOn, opacity: ATLAS_GROUPS[g].opacity ?? 1, count: 0, triangles: 0 }]));
     this.loaded = new Set(); this.loading = new Map(); this.catalog = null; this.matrix = null;
     this.isolated = null; this.highlighted = null; this.markAnimated = false; this.globalOpacity = 1; this.visible = true;
+    this.respiratoryDetailsShown = false;
     this.stats = { bytes: 0, triangles: 0, vertices: 0, dropped: 0, loadMs: {} };
     this.draco = new DRACOLoader(); this.draco.setDecoderPath(base + 'draco/'); this.draco.setWorkerLimit(2);
     this.materials = new Map(); // `${group}|${uuid}` -> cloned material
@@ -169,7 +174,24 @@ export class AtlasLayer {
   setGroup(group, { visible, opacity } = {}) { const g = this.groups[group]; if (visible !== undefined) g.visible = visible; if (opacity !== undefined) g.opacity = opacity; this.apply(); }
   setStructureHidden(name, hidden) { const s = this.structures.get(name); if (s) { s.hiddenByUser = hidden; this.apply(); } }
   /** Restore the default view: user hides cleared, start-hidden envelopes (omenta, pleura, ducts, coronaries) hidden again. */
-  showAll() { for (const s of this.structures.values()) s.hiddenByUser = startHidden(s.name); this.isolated = null; this.apply(); }
+  showAll() { for (const s of this.structures.values()) s.hiddenByUser = startHidden(s.name); this.respiratoryDetailsShown = false; this.isolated = null; this.apply(); }
+  /** Reveal the pre-existing, licence-cleared pleura and bronchial tree, or hide it again.
+   * Visibility only: geometry, registered CT and patient coordinates are unchanged.
+   * The initial view remains uncluttered and users can restore it via showAll().
+   */
+  setRespiratoryDetail(enabled) {
+    this.respiratoryDetailsShown = !!enabled;
+    let changed = 0;
+    for (const s of this.structures.values()) {
+      if (!isRespiratoryDetail(s.name, s.group)) continue;
+      const next = !enabled;
+      if (s.hiddenByUser !== next) changed++;
+      s.hiddenByUser = next;
+    }
+    if (enabled) this.groups.respiratory.visible = true;
+    this.apply();
+    return changed;
+  }
   isolate(name) { this.isolated = name && this.structures.has(name) ? name : null; this.apply(); }
   highlight(name) { this.highlighted = name && this.structures.has(name) ? name : null; this.apply(); }
   setVisible(v) { this.visible = v; this.apply(); }

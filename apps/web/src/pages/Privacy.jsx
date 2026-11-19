@@ -12,6 +12,8 @@ const DEFAULT_PRIVACY = `MEDCOEL menyimpan data yang kamu isi saat mendaftar (na
 
 **Riwayat belajar:** setiap jawabanmu dicatat untuk menyusun riwayat, progres, pemilihan soal baru, dan leaderboard.
 
+**Bagian web yang kamu buka:** MEDCOEL mencatat bagian web mana yang kamu buka dan berapa lama kamu aktif di sana, per hari, supaya admin tahu fitur mana yang paling berguna. Yang dicatat hanya jenis halamannya (misalnya "Mengerjakan soal"), tidak pernah isi jawaban, kata pencarian, atau alamat lengkapnya. Catatan ini dihapus otomatis setelah 180 hari atau saat akunmu dihapus.
+
 **Hak cipta:** dengan mengunggah PDF, kamu menyatakan berhak membagikan isinya untuk keperluan belajar. Admin berhak menolak pengajuan yang melanggar hak cipta.
 
 Pertanyaan atau permintaan hapus akun bisa disampaikan lewat Chat Admin > Hubungi admin lewat WhatsApp.`;
