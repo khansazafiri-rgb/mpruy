@@ -260,11 +260,11 @@ await step('deep link from MEDCOEL Lab tracks: ?scenario & ?ws open the right ca
   await p.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v2', 'done'); } catch { /* ignore */ } });
   p.on('pageerror', (e) => errs.push(e.message));
   const sep = url.includes('?') ? '&' : '?';
-  await p.goto(url + sep + 'scenario=effusion&ws=ausc'); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
+  await p.goto(url + sep + 'scenario=effusion&ws=ausc', { waitUntil: 'domcontentloaded', timeout: 180000 }); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
   assert.deepEqual(await p.evaluate(() => [window.__lab.S.scenario, window.__lab.S.ws, window.__lab.S.tool]), ['effusion', 'ausc', 'stethoscope']);
-  await p.goto(url + sep + 'scenario=hfref'); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
+  await p.goto(url + sep + 'scenario=hfref', { waitUntil: 'domcontentloaded', timeout: 180000 }); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
   assert.deepEqual(await p.evaluate(() => [window.__lab.S.scenario, window.__lab.S.ws]), ['hfref', 'imaging']);
-  await p.goto(url + sep + 'scenario=bogus&ws=nope'); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
+  await p.goto(url + sep + 'scenario=bogus&ws=nope', { waitUntil: 'domcontentloaded', timeout: 180000 }); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
   assert.deepEqual(await p.evaluate(() => [window.__lab.S.scenario, window.__lab.S.ws]), ['normal', 'imaging']);
   assert.deepEqual(errs, []);
   await c.close();
