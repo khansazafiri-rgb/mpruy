@@ -63,3 +63,10 @@ jobs:
           MEDCOEL_DEV_MODE=1 ./pocketbase serve --http=127.0.0.1:8091 --dir="$DECK_DB" --migrationsDir=./pb_migrations --hooksDir=./pb_hooks --hooksWatch=false &
           for i in $(seq 1 30); do curl -sf http://127.0.0.1:8091/api/health && break; sleep 1; done
           PB_URL=http://127.0.0.1:8091 PB_SU_EMAIL=ci@medcoel.test PB_SU_PASSWORD=ci-password-123 node test/decks-api.test.mjs
+          # Study planner API on its own disposable database (ownership, shared capacity, history).
+          STUDY_DB=$(mktemp -d)
+          ./pocketbase migrate up --dir="$STUDY_DB" --migrationsDir=./pb_migrations --hooksDir=./pb_hooks
+          ./pocketbase superuser upsert study@medcoel.test study-test-password-123 --dir="$STUDY_DB"
+          MEDCOEL_DEV_MODE=1 ./pocketbase serve --http=127.0.0.1:8092 --dir="$STUDY_DB" --migrationsDir=./pb_migrations --hooksDir=./pb_hooks --hooksWatch=false &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:8092/api/health && break; sleep 1; done
+          PB_URL=http://127.0.0.1:8092 PB_SU_EMAIL=study@medcoel.test PB_SU_PASSWORD=study-test-password-123 node test/study-api.test.mjs

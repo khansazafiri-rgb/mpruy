@@ -17,6 +17,8 @@ const AnatomyProduct = lazy(() => import('./pages/AnatomyLibrary'));
 const AnatomyAnnotator = lazy(() => import('./pages/admin/AnatomyAnnotator'));
 
 const Lab = lazy(() => import('./pages/Lab'));
+const StudyPlan = lazy(() => import('./pages/StudyPlan'));
+const StudyToday = lazy(() => import('./pages/StudyToday'));
 const LabObject = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabObject })));
 const LabPathway = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabPathway })));
 const LabAuthoredModule = lazy(() => import('./pages/LabAuthoredModule'));
@@ -94,6 +96,8 @@ export default function App() {
             <Route path="/mata-kuliah/:slug/flashcard/:chapterId" element={<SubjectCards />} />
             <Route path="/riwayat" element={<History />} />
             <Route path="/jadwal" element={<Schedule />} />
+            <Route path="/jadwal/:exam/rencana" element={<StudyPlan />} />
+            <Route path="/rencana-belajar" element={<StudyToday />} />
             <Route path="/progres" element={<Progress />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/notifikasi" element={<Notifications />} />

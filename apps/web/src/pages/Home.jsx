@@ -1,6 +1,6 @@
 import { getLanguage } from '@/i18n';
 import clsx from 'clsx';
-import { ArrowRight, BellRing, CalendarDays, CalendarPlus, ChevronLeft, ChevronRight, FileUp, Flame, MessageCircle, PlayCircle, Star } from 'lucide-react';
+import { ArrowRight, BellRing, CalendarDays, CalendarPlus, ChevronLeft, ChevronRight, ClipboardList, FileUp, Flame, MessageCircle, PlayCircle, Star } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Countdown from '@/components/Countdown';
@@ -16,6 +16,7 @@ import { api } from '@/lib/api';
 import { KIND } from '@/lib/labels';
 import pb from '@/lib/pb';
 import { daysUntil, fmtDateTime, relative } from '@/lib/time';
+import { fmtMinutes } from '@/features/study/studyLib';
 import { toneClass } from '@/lib/tone';
 import { pendingTutorials } from '@/lib/tutorial';
 
@@ -81,6 +82,7 @@ export default function Home() {
   const [subs, setSubs] = useState([]);
   const [ongoing, setOngoing] = useState([]);
   const [progress, setProgress] = useState(null);
+  const [study, setStudy] = useState(null); // study planner overview (absent on older servers)
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -91,6 +93,7 @@ export default function Home() {
     api('submissions/mine').then((d) => setSubs(d.items.filter((s) => !['dibatalkan', 'kedaluwarsa'].includes(s.status)).slice(0, 4))).catch(() => {});
     pb.collection('attempts').getList(1, 3, { filter: 'status = "in_progress"', sort: '-created' }).then((r) => setOngoing(r.items)).catch(() => {});
     api('progress').then(setProgress).catch(() => {});
+    api('study/overview').then(setStudy).catch(() => {});
   }, []);
 
   const next = exams[0];
@@ -141,9 +144,15 @@ export default function Home() {
               <p className="mb-5 mt-1 text-[15px] text-white/75">{fmtDateTime(next.examAt, next.timezone, { weekday: true })}</p>
               <Countdown target={next.examAt} />
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link to={`/mata-kuliah/${next.expand?.subject?.slug || ''}`} className="btn btn-paper btn-press">Latihan sekarang <ArrowRight size={17} /></Link>
-                <Link to="/jadwal" className="btn border border-white/30 text-white hover:bg-white/10">Atur jadwal</Link>
+                <Link to={study ? `/jadwal/${next.id}/rencana` : `/mata-kuliah/${next.expand?.subject?.slug || ''}`} className="btn btn-paper btn-press">{study ? 'Rencana belajar' : 'Latihan sekarang'} <ArrowRight size={17} /></Link>
+                <Link to="/jadwal" className="btn border border-white/30 text-white hover:bg-white/10">Pusat ujian</Link>
               </div>
+              {exams.length > 1 && (
+                <ul className="mt-5 space-y-1 border-t border-white/15 pt-4 text-[14px] text-white/85" aria-label="Ujian lain">
+                  {exams.slice(1, 4).map((x) => { const d = daysUntil(x.examAt, x.timezone); return <li key={x.id}><Link to={`/jadwal/${x.id}/rencana`} className="hover:underline">{x.title} · {x.expand?.subject?.name} · {d === 1 ? 'besok' : `${d} hari lagi`}</Link></li>; })}
+                  {exams.length > 4 && <li><Link to="/jadwal" className="hover:underline">+{exams.length - 4} ujian lain</Link></li>}
+                </ul>
+              )}
             </div>
           ) : (
             <div className="relative max-w-lg">
@@ -177,6 +186,21 @@ export default function Home() {
           <Link to="/progres" className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-[rgb(var(--tone-fg))] hover:underline">Lihat progres <ArrowRight size={15} aria-hidden /></Link>
         </section>
       </div>
+
+      {study?.todaySessions?.length > 0 && (() => {
+        const total = study.todaySessions.reduce((a, x) => a + x.minutes, 0), left = study.todaySessions.filter((x) => x.status !== 'done').reduce((a, x) => a + x.minutes, 0);
+        return (
+          <section className="card flex flex-wrap items-center gap-4 p-5" aria-labelledby="today-study">
+            <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-soft text-brand" aria-hidden><ClipboardList size={22} /></span>
+            <div className="min-w-0 flex-1">
+              <h2 id="today-study" className="card-title">Belajar hari ini</h2>
+              <p className="meta">{study.todaySessions.length} sesi · {fmtMinutes(total)} · {left ? `sisa ${fmtMinutes(left)}` : 'semua selesai ✓'}</p>
+              <ProgressBar value={total - left} max={Math.max(1, total)} label="Progres belajar hari ini" className="mt-2 !h-2 max-w-sm" />
+            </div>
+            <Link to="/rencana-belajar" className="btn btn-primary">Buka tugas <ArrowRight size={16} aria-hidden /></Link>
+          </section>
+        );
+      })()}
 
       {ongoing.length > 0 && (
         <section aria-labelledby="ongoing-title">
