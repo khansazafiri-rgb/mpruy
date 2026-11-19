@@ -86,6 +86,8 @@ Evidence files are in `evidence/`; test commands are listed in `TEST_RESULTS.md`
   are applied once after load (`applyDeepLink` in `src/app/main.js`); unknown values are ignored. The host page
   `/anatomy/live` forwards only these two keys (`liveLabSrc` in `apps/web/src/features/anatomy/liveLab.mjs`).
   Used by the Lab tracks (`shared/lab-tracks.json`, `docs/EXAM_PLANNER_LAB.md`). Covered by a step in `test/e2e/ux-e2e.mjs`.
+- Open: the UX suite's keyboard step ("ArrowUp superior") fails, also on a build without the deep link (pre-existing; 15/16 pass,
+  `evidence/ux-e2e-results.json`). Likely state left by the directed-learning step; investigate before release.
 
 ## Resume here
 - Deploy to staging only after approval: see `INTEGRATION.md`.

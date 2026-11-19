@@ -139,6 +139,9 @@ cron) are unchanged.
   web route or taxonomy module; the brief's proposed tracks exist; availability and progress rules. `labTracks.test.mjs`
   (PocketBase): server registry equals the shared file. Study API test: +12 HTTP checks (401, unknown track 404, wrong/planned
   step 400, owner isolation, locked collection). 4D Lab UX e2e: deep link step. Browser journey `scripts/lab-tracks-e2e.mjs`.
+- **4D Lab UX suite (`apps/4d-lab/test/e2e/ux-e2e.mjs`).** 15/16 pass, including the new deep-link step. The keyboard step
+  ("ArrowUp superior") fails, and fails identically on a build without this change (baseline run on 30b01ab's `main.js`): a
+  pre-existing issue, left open and not skipped.
 - **Compatibility.** `/lab`, `/lab/objek`, `/lab/jalur`, `/lab/modul` URLs and Guided/Explore behaviour unchanged; existing
   `lab_progress` untouched; the hub is hidden while searching or paging.
 - **Known limitations / blocked content.** Brain: Atlas nervous system withheld (licensing), MRI/DTI neuroimaging needs a licensed
