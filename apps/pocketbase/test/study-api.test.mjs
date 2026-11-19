@@ -29,11 +29,11 @@ const A = await account('a'), B = await account('b');
 const subjects = (await call('GET', '/api/collections/subjects/records?perPage=50&filter=' + encodeURIComponent('hidden=false'), undefined, su)).items;
 assert.ok(subjects.length >= 3, 'seeded subjects available');
 
-// fixtures: one subject with two visible chapters and one hidden chapter
+// fixtures: one subject with two visible chapters, one hidden chapter and one campus-only (drilling) chapter
 const subj = subjects[0];
 const ch = [];
-for (const [title, hidden] of [['BAB A ' + run, false], ['BAB B ' + run, false], ['BAB tersembunyi ' + run, true]]) {
-  ch.push(await call('POST', '/api/collections/chapters/records', { subject: subj.id, title, order: 900 + ch.length, hidden }, su));
+for (const [title, hidden, drilling] of [['BAB A ' + run, false, false], ['BAB B ' + run, false, false], ['BAB tersembunyi ' + run, true, false], ['BAB kampus ' + run, false, true]]) {
+  ch.push(await call('POST', '/api/collections/chapters/records', { subject: subj.id, title, order: 900 + ch.length, hidden, drilling }, su));
 }
 const exams = [];
 for (const [title, days, s] of [['UTB Anatomi', 5, subj], ['UAB Fisiologi', 6, subjects[1]], ['Kuis Biokimia', 7, subjects[2]]]) {
@@ -63,10 +63,12 @@ await step('profile + dry-run preview stores nothing; apply creates a persistent
   assert.equal(p.dailyMinutes, 150); assert.deepEqual(p.restDates, []);
   const detail = await call('GET', api(`study/exams/${exams[0].id}`), undefined, A.token);
   assert.ok(detail.chapters.some((c) => c.id === ch[0].id) && !detail.chapters.some((c) => c.id === ch[2].id), 'hidden chapter not offered');
+  assert.ok(!detail.chapters.some((c) => c.id === ch[3].id), 'campus-only (drilling) chapter not offered');
   const topics = [
     { title: ch[0].title, source: { type: 'chapter', subject: subj.id, chapter: ch[0].id }, status: 'unstudied' },
     { title: ch[1].title, source: { type: 'chapter', subject: subj.id, chapter: ch[1].id }, status: 'studied', confidence: 4 },
     { title: 'Hidden', source: { type: 'chapter', subject: subj.id, chapter: ch[2].id } },
+    { title: 'Kampus lain', source: { type: 'chapter', subject: subj.id, chapter: ch[3].id } },
     { title: 'Catatan dosen (tanpa materi MEDCOEL)', workload: 'heavy' },
     ...topicsFor(4, 1),
   ];
@@ -76,8 +78,10 @@ await step('profile + dry-run preview stores nothing; apply creates a persistent
   const applied = await call('POST', api(`study/exams/${exams[0].id}/plan`), { topics, priority: 2 }, A.token);
   planA = applied.plan;
   const d = await call('GET', api(`study/exams/${exams[0].id}`), undefined, A.token);
-  assert.equal(d.plan.topicList.length, 8);
+  assert.equal(d.plan.topicList.length, 9);
   assert.equal(d.plan.topicList.find((t) => t.title === 'Hidden').source.type, 'custom', 'hidden chapter becomes a custom topic');
+  assert.equal(d.plan.topicList.find((t) => t.title === 'Kampus lain').source.type, 'custom', 'a drilling chapter id sent by the client is not accepted as a source');
+  assert.ok(!JSON.stringify(d.resources || {}).includes(ch[3].id), 'no links to campus-only material');
   assert.equal(d.plan.topicList.find((t) => t.title.startsWith('Catatan')).source.type, 'custom');
   assert.ok(d.sessions.length > 0 && d.sessions.every((s) => s.status === 'planned'));
   assert.ok(d.sessions.some((s) => s.kind === 'final'));

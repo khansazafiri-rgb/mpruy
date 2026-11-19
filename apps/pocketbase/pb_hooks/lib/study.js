@@ -61,7 +61,8 @@ function validateSources(app, topics) {
     try {
       const c = app.findRecordById('chapters', t.source.chapter);
       const s = app.findRecordById('subjects', c.getString('subject'));
-      if (c.getString('subject') === t.source.subject && !c.getBool('hidden') && !s.getBool('hidden')) return t;
+      // Only regular chapters: drilling chapters are campus-specific material (Kampusmu) and are never planner sources.
+      if (c.getString('subject') === t.source.subject && !c.getBool('hidden') && !c.getBool('drilling') && !s.getBool('hidden')) return t;
     } catch (_) {}
     return Object.assign({}, t, { source: { type: 'custom' } });
   });
@@ -211,7 +212,7 @@ function resources(app, user, topics) {
     bySubject[sid].forEach((t) => {
       let c;
       try { c = app.findRecordById('chapters', t.source.chapter); } catch (_) { return; }
-      if (c.getBool('hidden') || c.getString('subject') !== sid) return;
+      if (c.getBool('hidden') || c.getBool('drilling') || c.getString('subject') !== sid) return;
       const st = stats[c.id] || { total: 0, answered: 0, wrong: 0 };
       const links = [];
       if (noted.has(c.id)) links.push({ kind: 'materi', label: 'Catatan materi', href: '/mata-kuliah/' + slug + '/materi/' + c.id });
