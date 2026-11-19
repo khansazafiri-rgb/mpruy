@@ -27,10 +27,10 @@ export default function LabHub() {
       <div className="surface-forest rounded-2xl p-5">
         <p className="text-[13px] font-bold uppercase tracking-wide text-white/75">All-in-One Lab</p>
         <p className="font-display text-xl font-bold text-white">Semua alat belajar dalam satu tempat</p>
-        <p className="mt-1 max-w-2xl text-sm text-white/85">Atlas 3D untuk anatomi, pasien virtual Live 4D untuk USG dan auskultasi, dan seluruh materi Lab per bidang.</p>
+        <p className="mt-1 max-w-2xl text-sm text-white/85">{data.live === 'missing' ? 'Atlas 3D untuk anatomi dan seluruh materi Lab per bidang.' : 'Atlas 3D untuk anatomi, pasien virtual Live 4D untuk USG dan auskultasi, dan seluruh materi Lab per bidang.'}</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Link className="btn btn-paper btn-sm" to="/anatomy/explore"><Box size={16} aria-hidden /> Atlas 3D</Link>
-          <Link className="btn btn-paper btn-sm" to="/anatomy/live"><ScanLine size={16} aria-hidden /> Live 4D Lab</Link>
+          {data.live !== 'missing' && <Link className="btn btn-paper btn-sm" to="/anatomy/live"><ScanLine size={16} aria-hidden /> Live 4D Lab</Link>}
           <a className="btn btn-paper btn-sm" href="#lab-index"><Layers size={16} aria-hidden /> Semua materi Lab</a>
         </div>
       </div>

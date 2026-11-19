@@ -81,3 +81,16 @@ test('summary and continue logic count only available steps', () => {
   assert.equal(nextStep(steps, { completed: [], lastStep: 'c' }).key, 'c');
   assert.equal(nextStep(steps, { completed: ['a', 'c'] }), null);
 });
+
+test('clinical-review gate and missing Live 4D build make steps unavailable (and uncounted)', () => {
+  const ekg = findTrack('keterampilan', 'ekg'), catalog = { modules: [], nodes: [], placements: [] };
+  const closed = resolveSteps(ekg, { catalog });
+  assert.match(closed.find((s) => s.key === 'konduksi').reason, /ditinjau pendidik klinis/);
+  assert.equal(trackSummary(closed, { completed: ['konduksi', 'atlas-jantung'] }).done, 1);
+  const open = resolveSteps(ekg, { catalog, features: { ecg: true } });
+  assert.ok(open.find((s) => s.key === 'konduksi').available);
+  const usg = findTrack('keterampilan', 'usg-dasar');
+  assert.equal(trackSummary(resolveSteps(usg, { catalog, live: 'missing' }), null).status, 'soon');
+  assert.match(resolveSteps(usg, { catalog, live: 'missing' })[0].reason, /belum terpasang/);
+  assert.equal(trackSummary(resolveSteps(usg, { catalog }), null).available, 6);
+});

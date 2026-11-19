@@ -1,5 +1,5 @@
 {
-  "_note": "Lab tracks: a second and third way into EXISTING Lab content (by body system, by clinical skill). The seven academic disciplines in lab-taxonomy.json stay the primary map. Each step points at content that exists (Atlas 3D, Atlas quiz, Live 4D Lab, published Lab modules) or is marked planned; planned steps are shown as 'belum tersedia' and never count toward completion. Availability of module steps and withheld Atlas systems is resolved at runtime. Keep keys stable: learner progress (lab_track_progress) refers to them. Server copy: apps/pocketbase/pb_hooks/lib/labTracks.js (test keeps them in sync).",
+  "_note": "Lab tracks: a second and third way into EXISTING Lab content (by body system, by clinical skill). The seven academic disciplines in lab-taxonomy.json stay the primary map. Each step points at content that exists (Atlas 3D, Atlas quiz, Live 4D Lab, published Lab modules) or is marked planned; steps with \"review\": \"<feature>\" stay unavailable to students until the server releases that feature after clinical review; planned steps are shown as 'belum tersedia' and never count toward completion. Availability of module steps and withheld Atlas systems is resolved at runtime. Keep keys stable: learner progress (lab_track_progress) refers to them. Server copy: apps/pocketbase/pb_hooks/lib/labTracks.js (test keeps them in sync).",
   "groups": [
     { "key": "sistem", "title": "Belajar per sistem tubuh", "path": "/lab/sistem/" },
     { "key": "keterampilan", "title": "Belajar per keterampilan klinis", "path": "/lab/keterampilan/" }
@@ -27,7 +27,7 @@
         { "key": "usg-jantung", "kind": "live", "title": "Jendela jantung normal (simulasi)", "href": "/anatomy/live?scenario=normal" },
         { "key": "usg-hfref", "kind": "live", "title": "Pola fungsi sistolik LV menurun", "href": "/anatomy/live?scenario=hfref" },
         { "key": "usg-perikard", "kind": "live", "title": "Efusi perikardial (simulasi)", "href": "/anatomy/live?scenario=pericardial" },
-        { "key": "ekg", "kind": "page", "title": "Konduksi jantung & EKG skematik", "href": "/lab/ekg" }
+        { "key": "ekg", "kind": "page", "title": "Konduksi jantung & EKG skematik", "href": "/lab/ekg", "review": "ecg" }
       ]
     },
     {
@@ -124,8 +124,8 @@
       "disciplines": ["anatomi"],
       "steps": [
         { "key": "atlas-jantung", "kind": "atlas", "title": "Anatomi jantung di Atlas", "href": "/anatomy/system/cardiovascular", "system": "cardiovascular" },
-        { "key": "konduksi", "kind": "page", "title": "Konduksi & EKG skematik", "href": "/lab/ekg" },
-        { "key": "latihan-ritme", "kind": "page", "title": "Latihan mengenali pola", "href": "/lab/ekg?latihan=1" },
+        { "key": "konduksi", "kind": "page", "title": "Konduksi & EKG skematik", "href": "/lab/ekg", "review": "ecg" },
+        { "key": "latihan-ritme", "kind": "page", "title": "Latihan mengenali pola", "href": "/lab/ekg?latihan=1", "review": "ecg" },
         { "key": "ekg-12-sadapan", "kind": "planned", "title": "EKG 12 sadapan dari pasien", "reason": "Butuh dataset EKG berlisensi dan tinjauan klinis." }
       ]
     },

@@ -181,18 +181,32 @@ await step('lab tracks: validated keys, planned steps refused, owner-only progre
   await call('POST', api('lab/tracks/tidak-ada'), { step: 'x' }, A.token, 404);
   await call('POST', api('lab/tracks/ekg'), { step: 'bukan-langkah', done: true }, A.token, 400);
   await call('POST', api('lab/tracks/ekg'), { step: 'ekg-12-sadapan', done: true }, A.token, 400);
-  await call('POST', api('lab/tracks/ekg'), { step: 'konduksi', done: 'ya' }, A.token, 400);
-  let r = await call('POST', api('lab/tracks/ekg'), { step: 'konduksi' }, A.token);
-  assert.deepEqual([r.completed, r.lastStep], [[], 'konduksi']);
-  r = await call('POST', api('lab/tracks/ekg'), { step: 'konduksi', done: true }, A.token);
-  r = await call('POST', api('lab/tracks/ekg'), { step: 'atlas-jantung', done: true }, A.token);
-  assert.deepEqual(r.completed.sort(), ['atlas-jantung', 'konduksi']);
-  r = await call('POST', api('lab/tracks/ekg'), { step: 'atlas-jantung', done: false }, A.token);
-  assert.deepEqual(r.completed, ['konduksi']);
+  await call('POST', api('lab/tracks/ekg'), { step: 'atlas-jantung', done: 'ya' }, A.token, 400);
+  let r = await call('POST', api('lab/tracks/ekg'), { step: 'atlas-jantung' }, A.token);
+  assert.deepEqual([r.completed, r.lastStep], [[], 'atlas-jantung']);
+  r = await call('POST', api('lab/tracks/rangka-otot'), { step: 'atlas-rangka', done: true }, A.token);
+  r = await call('POST', api('lab/tracks/rangka-otot'), { step: 'kuis-tulang', done: true }, A.token);
+  assert.deepEqual(r.completed.sort(), ['atlas-rangka', 'kuis-tulang']);
+  r = await call('POST', api('lab/tracks/rangka-otot'), { step: 'atlas-rangka', done: false }, A.token);
+  assert.deepEqual(r.completed, ['kuis-tulang']);
   const mine = await call('GET', api('lab/tracks'), undefined, A.token);
-  assert.equal(mine.items.length, 1); assert.equal(mine.items[0].track, 'ekg');
+  assert.deepEqual(mine.items.map((x) => x.track).sort(), ['ekg', 'rangka-otot']);
   assert.deepEqual((await call('GET', api('lab/tracks'), undefined, B.token)).items, []);
   await call('GET', '/api/collections/lab_track_progress/records', undefined, A.token, 403);
+});
+
+await step('ECG module stays closed to students until released after clinical review; admins can review it', async () => {
+  const student = await call('GET', api('lab/tracks'), undefined, A.token);
+  if (process.env.MEDCOEL_LAB_ECG_PUBLIC === '1') { assert.equal(student.features.ecg, true); return; }
+  assert.equal(student.features.ecg, false);
+  await call('POST', api('lab/tracks/ekg'), { step: 'konduksi', done: true }, A.token, 400);
+  await call('POST', api('lab/tracks/jantung-kardiovaskular'), { step: 'ekg', done: true }, A.token, 400);
+  const admin = await account('admin');
+  await call('PATCH', `/api/collections/users/records/${admin.id}`, { role: 'admin' }, su);
+  const adminToken = (await call('POST', '/api/collections/users/auth-with-password', { identity: admin.loginId, password: PASSWORD })).token;
+  assert.equal((await call('GET', api('lab/tracks'), undefined, adminToken)).features.ecg, true);
+  const r = await call('POST', api('lab/tracks/ekg'), { step: 'konduksi', done: true }, adminToken);
+  assert.deepEqual(r.completed, ['konduksi']);
 });
 
 console.log(`study api: ${checks} HTTP checks passed`);
