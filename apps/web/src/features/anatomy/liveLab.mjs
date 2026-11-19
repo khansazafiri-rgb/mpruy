@@ -2,6 +2,14 @@
 export const LIVE_LAB_PATH = '/anatomy/4d-lab/';
 export const LIVE_LAB_MANIFEST = LIVE_LAB_PATH + 'data/phantom/anatomy.json';
 
+/** Frame URL for /anatomy/live?scenario=…&ws=… (Lab track deep links). Only these two short keys are passed on. */
+export function liveLabSrc(search = '') {
+  const from = new globalThis.URLSearchParams(search), to = new globalThis.URLSearchParams();
+  for (const key of ['scenario', 'ws']) { const v = from.get(key); if (v && /^[a-z_]{1,24}$/.test(v)) to.set(key, v); }
+  const q = to.toString();
+  return LIVE_LAB_PATH + (q ? '?' + q : '');
+}
+
 /**
  * Confirms the lab is really installed. A plain HEAD on the path is not enough: without the
  * Caddy route the SPA fallback would answer with the main index.html and the page would frame itself.

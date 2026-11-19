@@ -255,6 +255,21 @@ await step('keyboard: arrows = patient directions, PageDown = posterior, Q/E rot
   assert.deepEqual(errors, [], 'no runtime errors during the session');
 });
 
+await step('deep link from MEDCOEL Lab tracks: ?scenario & ?ws open the right case/workspace; unknown values ignored', async () => {
+  const c = await browser.newContext({ viewport: { width: 1280, height: 800 } }), p = await c.newPage(), errs = [];
+  await p.addInitScript(() => { try { localStorage.setItem('medcoel-4dlab-tour-v2', 'done'); } catch { /* ignore */ } });
+  p.on('pageerror', (e) => errs.push(e.message));
+  const sep = url.includes('?') ? '&' : '?';
+  await p.goto(url + sep + 'scenario=effusion&ws=ausc', { waitUntil: 'domcontentloaded', timeout: 180000 }); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
+  assert.deepEqual(await p.evaluate(() => [window.__lab.S.scenario, window.__lab.S.ws, window.__lab.S.tool]), ['effusion', 'ausc', 'stethoscope']);
+  await p.goto(url + sep + 'scenario=hfref', { waitUntil: 'domcontentloaded', timeout: 180000 }); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
+  assert.deepEqual(await p.evaluate(() => [window.__lab.S.scenario, window.__lab.S.ws]), ['hfref', 'imaging']);
+  await p.goto(url + sep + 'scenario=bogus&ws=nope', { waitUntil: 'domcontentloaded', timeout: 180000 }); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
+  assert.deepEqual(await p.evaluate(() => [window.__lab.S.scenario, window.__lab.S.ws]), ['normal', 'imaging']);
+  assert.deepEqual(errs, []);
+  await c.close();
+});
+
 for (const [name, dev] of [['laptop', { viewport: { width: 1280, height: 800 } }], ['ipad', devices['iPad Pro 11']], ['phone', devices['iPhone 13']]]) {
   await step(`layout ${name}: nothing clipped, pad usable`, async () => {
     const c = await browser.newContext({ ...dev }), p = await c.newPage(), errs = [];

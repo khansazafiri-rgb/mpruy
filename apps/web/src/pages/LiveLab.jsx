@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { LIVE_LAB_PATH, checkLiveLab } from '../features/anatomy/liveLab.mjs';
+import { Link, useLocation } from 'react-router-dom';
+import { checkLiveLab, liveLabSrc } from '../features/anatomy/liveLab.mjs';
 
 // Anatomy Live 4D Lab host page (/anatomy/live). The simulator is a separate static build
 // served at /anatomy/4d-lab/ (see apps/4d-lab/INTEGRATION.md); this page only frames it.
@@ -8,6 +8,7 @@ export default function LiveLab() {
   const [state, setState] = useState({ status: 'checking', message: '' });
   const [attempt, setAttempt] = useState(0);
   const frame = useRef(null);
+  const { search } = useLocation();
   useEffect(() => {
     document.title = 'Anatomy Live 4D Lab | MEDCOEL';
     const controller = new AbortController();
@@ -20,7 +21,7 @@ export default function LiveLab() {
   return (
     <main aria-label="Anatomy Live 4D Lab" style={{ height: '100dvh', position: 'relative', background: 'rgb(var(--paper))' }}>
       {state.status === 'ready' && (
-        <iframe key={attempt} ref={frame} title="MEDCOEL Anatomy Live 4D Lab" src={LIVE_LAB_PATH} allow="fullscreen; autoplay" allowFullScreen
+        <iframe key={attempt} ref={frame} title="MEDCOEL Anatomy Live 4D Lab" src={liveLabSrc(search)} allow="fullscreen; autoplay" allowFullScreen
           style={{ width: '100%', height: '100%', border: 0, display: 'block' }} />
       )}
       {state.status !== 'ready' && (

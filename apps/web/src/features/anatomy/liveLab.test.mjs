@@ -13,3 +13,11 @@ test('accepts only the real lab manifest (never the SPA fallback)', async () => 
   await assert.rejects(checkLiveLab(respond('nope', 'text/plain', 404)), /HTTP 404/);
   await assert.rejects(checkLiveLab(respond('{"schema":"x"}', 'application/json')), /tidak dikenali/);
 });
+
+test('liveLabSrc passes only the scenario/workspace deep link to the frame', async () => {
+  const { liveLabSrc } = await import('./liveLab.mjs');
+  assert.equal(liveLabSrc(''), '/anatomy/4d-lab/');
+  assert.equal(liveLabSrc('?scenario=effusion&ws=ausc'), '/anatomy/4d-lab/?scenario=effusion&ws=ausc');
+  assert.equal(liveLabSrc('?scenario=hfref&dataset=phantom&atlasBase=//evil.example/'), '/anatomy/4d-lab/?scenario=hfref');
+  assert.equal(liveLabSrc('?scenario=<script>&ws=AUSC'), '/anatomy/4d-lab/');
+});

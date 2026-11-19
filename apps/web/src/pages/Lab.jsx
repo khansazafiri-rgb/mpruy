@@ -11,6 +11,7 @@ import { LabContextBar, LabPathNavigation } from '@/features/lab/LabNav';
 import { isPracticeFirst, objectHref, pathNeighbors, pathwayState, stepState } from '@/features/lab/labUtils';
 import { authoredRootOptions, disciplineTitle, groupByDiscipline, guidedPathways, labSections, normalizeDiscipline, publishedReplacements } from '@/features/lab/labDiscovery';
 import { markProgress } from '@/features/lab/labProgress';
+import LabHub from '@/features/lab/LabHub';
 
 // Lab pages sit above the fixed bottom navigation (and the safe area on phones) so nothing is ever covered.
 const PAGE = 'min-w-0 space-y-5 pb-[calc(6.5rem+env(safe-area-inset-bottom))] lg:pb-8';
@@ -104,6 +105,8 @@ export default function Lab() {
       <div className="min-w-0 flex-1 space-y-1.5"><p className="eyebrow">Lanjutkan belajar</p><p className="card-title truncate">{next.pathway.title}</p><Progress done={next.completed.length} total={next.total} label="Progres jalur" /><p className="meta">{next.completed.length} dari {next.total} selesai</p></div>
       <Link className="btn btn-primary shrink-0" to={objectHref(next.resume, next.pathway.slug)}>Lanjutkan <ArrowRight size={16} aria-hidden /></Link>
     </section>}
+    {!filtered && page === 1 && <LabHub />}
+    <h2 id="lab-index" className="section-title scroll-mt-24 !text-lg">Semua materi per bidang</h2>
     <Segmented className="sm:max-w-sm" label="Cara belajar Lab" value={mode} onChange={(k) => setParams(k === 'explore' ? { mode: k } : {})} items={[{ value: 'guided', label: MODES.guided.label }, { value: 'explore', label: MODES.explore.label }]} />
     <form role="search" className="flex flex-col gap-2 sm:flex-row" onSubmit={(e) => { e.preventDefault(); change({ q: search }); }}>
       <label className="relative min-w-0 flex-1"><span className="sr-only">{m.placeholder}</span><Search className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-faint" size={18} aria-hidden /><input className="input pl-10" type="search" value={search} maxLength={120} onChange={(e) => setSearch(e.target.value)} placeholder={m.placeholder} /></label>

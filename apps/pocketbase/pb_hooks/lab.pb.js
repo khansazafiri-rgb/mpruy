@@ -109,3 +109,12 @@ routerAdd('POST', '/api/medcoel/admin/lab-bulk/publish', (e) => {
   const items = b.items.map((i) => { if (!lab.KINDS.includes(i.kind)) throw new BadRequestError('Jenis konten tidak dikenal.'); return { kind: i.kind, id: String(i.id), revision: i.revision }; });
   return e.json(200, lab.publishSet(e.app, items, admin, { confirmReviewed: b.confirmReviewed === true, dryRun: b.dryRun === true }));
 }, $apis.bodyLimit(131072));
+// Lab tracks (body system / clinical skill). Owner-only progress; the track list itself is static (shared/lab-tracks.json).
+routerAdd('GET', '/api/medcoel/lab/tracks', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); const user = u.requireUser(e);
+  return e.json(200, require(`${__hooks}/lib/labTracks.js`).list(e.app, user));
+});
+routerAdd('POST', '/api/medcoel/lab/tracks/{track}', (e) => {
+  const u = require(`${__hooks}/lib/util.js`); const user = u.requireUser(e);
+  return e.json(200, require(`${__hooks}/lib/labTracks.js`).mark(e.app, user, e.request.pathValue('track'), u.body(e)));
+}, $apis.bodyLimit(2048));
