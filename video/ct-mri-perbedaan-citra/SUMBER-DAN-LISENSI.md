@@ -1,5 +1,12 @@
 # Sumber dan lisensi video CT–MRI MEDCOEL
 
+## Aset animasi MEDCOEL dalam revisi
+
+- Raka: kode kanonik `brand/characters/raka/raka.js`, README dan sweater harian asli; dirender memakai `rakaSvg`, `idle`, dan `lerpState`. Aset merek milik pengguna, digunakan untuk revisi video MEDCOEL yang diminta.
+- Helper `reference/medcoel-lib.js`: salinan tanpa perubahan dari `video/kopi-kafein-adenosin/stage/lib.js`; easing `backOut` dipakai pada animasi kartu. Hash Git sumber ada di `reference/source-manifest.json`.
+- Font Plus Jakarta Sans: berkas WOFF2 asli dalam repo `video/kopi-kafein-adenosin/stage/fonts/`; Copyright 2020 The Plus Jakarta Sans Project Authors. Lisensi SIL Open Font License 1.1 disertakan lengkap dalam `fonts/OFL.txt`, dari `https://github.com/google/fonts/blob/main/ofl/plusjakartasans/OFL.txt`.
+- Studi gaya dan referensi video dicatat dalam `STYLE-REVIEW.md`. Audio dari video referensi tidak dipakai.
+
 ## Citra asli
 
 - **CT of a normal brain, axial 18.png** — Mikael Häggström, M.D.; [sumber Wikimedia Commons](https://commons.wikimedia.org/wiki/File:CT_of_a_normal_brain,_axial_18.png); [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/), penggunaan komersial diperbolehkan. Deskripsi sumber menegaskan CT kepala tanpa kontras IV, aksial, irisan 4 mm. Crop mengambil panel aksial saja; inset sagital dan metadata dibuang. Tidak mengubah window, kontras, anatomi atau orientasi.

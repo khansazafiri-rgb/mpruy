@@ -1,6 +1,6 @@
 # MEDCOEL — Mengapa gambar CT dan MRI berbeda?
 
-Proyek animasi vertikal yang dapat diedit dan dirender ulang: 1080×1920, 30 fps, 76,3 detik. Outro web asli berlangsung 21,133 detik. Tidak mengubah proyek video lain atau kode aplikasi MEDCOEL.
+Proyek animasi vertikal yang dapat diedit dan dirender ulang: 1080×1920, 30 fps, 76,3 detik. Revisi mengikuti animasi MEDCOEL di repo: Raka kanonik, Plus Jakarta Sans, kartu krem/mint/emas berbayang, serta gerak yang menjelaskan proses. Outro web asli berlangsung 21,133 detik. Tidak mengubah proyek video lain atau kode aplikasi MEDCOEL.
 
 ## Isi
 
@@ -10,12 +10,14 @@ Proyek animasi vertikal yang dapat diedit dan dirender ulang: 1080×1920, 30 fps
 - `render.mjs`: scanner/pasien dan diagram konseptual, kamera, panah, penanda anatomi, lapisan teks, takarir, dan crop web. Tidak memakai gambar scan buatan AI.
 - `prepare.py`: naskah, takarir dan keputusan waktu/jeda. `timeline.json`, `sentence-timing.json`, `captions.json` adalah hasil olah yang bisa diperiksa.
 - `STYLE.md`: palet, font, anatomi, kamera, dan area aman yang dikunci.
+- `STYLE-REVIEW.md`: referensi repo yang dipelajari, kekurangan versi awal, serta keputusan revisi pembuka dan mekanisme.
+- `brand/characters/raka/`: kode/README karakter asli. `reference/medcoel-lib.js`: helper asli video kopi; `source-manifest.json` mencatat hash Git sumber. `fonts/`: Plus Jakarta Sans dari repo dan lisensi SIL OFL.
 - `SOURCES.json`, `SUMBER-DAN-LISENSI.md`, `lab-recording.json`, `QA.md`: asal aset, hak pemakaian, bukti rekaman, dan pemeriksaan.
 - `out/lembar-shot-*.jpg`: awal, tengah, akhir setiap shot.
 
 ## Render ulang
 
-Node 22+, Python 3, FFmpeg dengan libx264, lalu `npm install` dan `npm run render`. Jika FFmpeg di luar PATH: `FFMPEG=/path/to/ffmpeg npm run render`. `npm run stills` membuat frame pemeriksaan; `npm run cover` cover saja. Pillow diperlukan hanya untuk `python3 make-contact-sheets.py`.
+Node 22+, Python 3, FFmpeg dengan libx264, lalu `npm install` dan `npm run render`. Jika FFmpeg di luar PATH: `FFMPEG=/path/to/ffmpeg npm run render`. `npm run stills` membuat frame pemeriksaan; `npm run cover` cover saja. `node render.mjs --at 0,4.5,12.2,27.5` membuat pratinjau frame terpilih. Pillow diperlukan hanya untuk `python3 make-contact-sheets.py`.
 
 `npm run preview` membuka server lokal dengan dukungan byte-range MP4 di `http://localhost:8767/preview.html`. Video ditampilkan 360×640; tersedia tombol putar penuh dan putar outro.
 

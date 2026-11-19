@@ -96,8 +96,14 @@
     "https://cs.acr.org/-/media/ACR/Files/Member-Resources/Med-Students/MESO_High-Yield-Guides_Design_v3.pdf",
     "https://www.radiologyinfo.org/en/info/headct"
   ],
-  "fonts": "Arial / Arial Bold, preinstalled system fonts, not bundled",
-  "newVisuals": "Original editable 2D scanner/patient geometry, conceptual proton diagram, arrows, labels and caption layers in render.mjs; no generated medical images.",
+  "fonts": {
+    "family": "Plus Jakarta Sans",
+    "source": "MEDCOEL repo: video/kopi-kafein-adenosin/stage/fonts/",
+    "license": "SIL Open Font License 1.1",
+    "licenseFile": "fonts/OFL.txt",
+    "copyright": "Copyright 2020 The Plus Jakarta Sans Project Authors (https://github.com/tokotype/PlusJakartaSans)"
+  },
+  "newVisuals": "Revised 2D scanner/patient, rotating X-ray source/detector and projection-data buildup, attenuation diagram, conceptual MRI RF/signal diagram, anatomical callouts, labels and subtitle layers in render.mjs. Canonical Raka and repo fonts/helpers are reused; no generated medical images.",
   "sha256": {
     "assets/logo-full.webp": "7614ccc4ca21b9fb3b83412d9c19a4ec22f6da7ef6d5577044452030eaa40f4c",
     "assets/mri-t2-source.png": "d5c5b0ebc69b6d2f692fbcee762a2ddd0f0437bf3707b6d62a525cf31185b291",
@@ -107,6 +113,21 @@
     "assets/ct-source.png": "244064a96f40a22c1a3788ae8add21e33e399d89919b42d818c2590788167e46",
     "assets/ct.png": "5a9e4b2d1f1a2804debbae4975f53ec3cb9470600b8b49ea77a52f547b4a2121",
     "audio/narasi-timeline.wav": "4b29b0db8756576792e9ae394ab8c4128a239c579526fce1307ae9181f40caf1",
-    "audio/narasi-google-ai-studio.wav": "731bc99459fc03ebf021a9c2bed23ff8ea373fc8e9d7847f59000f00b41ac04e"
+    "audio/narasi-google-ai-studio.wav": "731bc99459fc03ebf021a9c2bed23ff8ea373fc8e9d7847f59000f00b41ac04e",
+    "brand/characters/raka/README.md": "4dcf7ce453546564d0a914c29c8b2a80dad21b8794508f5fa52e443bb18de2af",
+    "brand/characters/raka/raka.js": "3149a9a8f2b1bba5df41407947ad4ccfe6c3670ebfefc27de2b67398836e8b45",
+    "fonts/PlusJakartaSans-600.woff2": "153fc85b70298beeb1d61a5f723331649e7f23bb77302a66e61cb3e2fbdb5e79",
+    "fonts/PlusJakartaSans-latin.woff2": "153fc85b70298beeb1d61a5f723331649e7f23bb77302a66e61cb3e2fbdb5e79",
+    "fonts/PlusJakartaSans-800.woff2": "153fc85b70298beeb1d61a5f723331649e7f23bb77302a66e61cb3e2fbdb5e79",
+    "fonts/OFL.txt": "995c7199cab65954f545996326755daee7b63cc6b42b06c13da1f9502ab08a99",
+    "reference/source-manifest.json": "c85638592bc2e0e021684698d979ff50d4ac22e7d2d432a27a410b141e02a800",
+    "reference/medcoel-lib.js": "0af4f2e28ca3280604bf55a28883357d1cca756dceb049df2df5b8a1b4c501fc"
+  },
+  "brandAnimation": {
+    "character": "brand/characters/raka/raka.js, exact canonical source; harian outfit; idle/lerpState/rakaSvg",
+    "helpers": "reference/medcoel-lib.js, copied unchanged from video/kopi-kafein-adenosin/stage/lib.js; backOut easing used in animated cards",
+    "manifest": "reference/source-manifest.json",
+    "usage": "MEDCOEL owner requested reuse of existing brand animation assets",
+    "review": "STYLE-REVIEW.md"
   }
 }

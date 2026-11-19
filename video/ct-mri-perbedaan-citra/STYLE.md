@@ -1,9 +1,17 @@
-# Bahasa visual yang dikunci sebelum render
+# Bahasa visual revisi CT–MRI
 
-- Kanvas 1080 × 1920, 30 fps. Navy #101B2C, putih #F8FAFC, CT cyan #55DDEC, MRI ungu muda #C6ABFF; citra tetap grayscale asli.
-- Font Arial/Arial Bold. Judul 62–70 px, label modalitas 32–38 px, takarir 46–48 px maksimal dua baris. Stroke diagram 5 px; panah ujung segitiga konsisten; kartu radius 24 px.
-- Area aman x 54–1026, y 115–1720. Citra utama y 400–1200; keterangan y 1220–1430; takarir y 1510–1680. Tidak membuka dengan logo.
-- CT kiri dan MRI T2 kanan; label CT TANPA KONTRAS dan MRI T2 bertahan selama perbandingan. Sumber adalah orang berbeda; tidak diregistrasi, tidak dimorf, tidak disamakan pixelnya. Keduanya aksial pada tingkat ventrikel lateral yang kira-kira sebanding.
-- Ilustrasi scanner memakai geometri pasien dan sudut tiga perempat yang sama. Pasien diam. CT sumber/detektor berputar; sinar-X berupa garis lurus tipis. MRI memakai medan magnet dan pulsa RF, ditambah inset model konseptual proton, bukan atom fisik raksasa di kepala.
-- Satu gerakan kamera per shot: hook pull-back 1,4 s; CT satu dorongan lambat; semua perbandingan tetap tegak dan statis. Tidak ada rotasi citra medis.
-- Outro web asli pada 1×, lebar 1000 px/92,6% frame. Materi 5,8 s, soal 6 s (pembahasan >3 s), Live 4D Lab 6,033 s lalu CTA di atas klip lab 3,3 s terakhir. Lab hanya CT/USG; label simulasi edukatif tampil sepanjang klip.
+1080×1920, 30 fps. Motion graphic 2D MEDCOEL dengan Raka kanonik dan helper easing repo. Raka memakai sweater teal harian di setiap kemunculan; tidak dibuat ulang.
+
+Palet: navy #172B38, krem #F7F3E8, mint #CDEFDD, hijau #007060, emas #F8C038. Cyan #55DDEC untuk CT dan ungu muda #C6ABFF untuk MRI. Citra medis tetap grayscale asli dan web/logo tidak dipixelkan.
+
+Font Plus Jakarta Sans asli repo; judul 62–70 px, label 32–42 px, takarir 44–47 px maksimal dua baris. Kartu radius 24–30 px, outline navy 4–5 px, bayangan keras 8–10 px. Panah bulat konsisten; sinar-X garis lurus tipis.
+
+Area aman x54–1026, y120–1720. Citra biasanya y435–1080, anotasi di bawahnya, takarir y1510–1674. Tidak membuka dengan logo. Raka tidak menutupi scan atau web.
+
+CT kiri dan MRI kanan, label modalitas bertahan. Anotasi berganti mengikuti struktur yang sedang diperhatikan. Scan tidak berputar, bergoyang, berubah bentuk, berubah window, atau berubah modalitas. Gerak citra hanya pull-back pembuka dan satu zoom perlahan pada CT.
+
+Scanner menggunakan satu geometri pasien diam pada kedua alat. Diagram aksial merupakan inset konseptual yang terpisah. Jalur CT: sinar-X → detektor → data → irisan. Jalur MRI: magnet → RF → sinyal jaringan → penerima. Proton adalah simbol dalam inset, bukan atom raksasa di kepala.
+
+Gerak karakter mengikuti pose dan ekspresi melalui lerpState/idle; pengarah perhatian dan hasil proses bergerak sesuai audio. Hindari seluruh shot diam sesudah gerak masuk.
+
+Outro: materi5,8s, soal6s, lab CT/USG6,033s dan CTA3,3s pada klip yang sama; web92,6% lebar, laju1×. Label simulasi edukatif bertahan. Tidak ada fitur MRI pada MEDCOEL.

@@ -40,7 +40,7 @@ Alat: render penuh 2994 bingkai, kontak sheet seluruh video (tiap 1,25 dtk), bin
 ## Masalah yang tersisa / perlu keputusan
 1. **Naskah teks tidak diterima**; takarir dan NASKAH.md berasal dari ASR. Periksa kalimat "Tapi bagaimana ia tahu?" (ASR "ya tahu") dan ejaan lain terhadap naskah asli.
 2. **Tiga kalimat promo di akhir audio Google AI Studio (84,14 - 93,90 dtk) tidak dipakai** karena digantikan master outro (instruksi). Bila pemesan ingin kalimat itu tetap ada, outro menjadi dua promo berurutan.
-3. **Video jamu tidak ditemukan** di repo/branch yang terlihat; kesamaan master hanya dibuktikan lewat SHA-256 berkas lampiran.
+3. ~~Video jamu tidak ditemukan~~ **Terselesaikan**: setelah PR #214 (jamu) masuk ke branch dasar, `cmp` membuktikan master outro di sini byte-identik dengan `video/jamu-alami-aman/audio/medcoel-outro-master.wav`.
 4. **Tidak diuji dengan telinga manusia** (speaker ponsel/headphone); hanya analisis spektral/level. Diperlukan satu putaran mendengar sebelum tayang.
 5. Footage outro berasal dari rekaman fixture lokal sebelumnya; UI produksi terbaru belum direkam ulang. Dialog "Belajar materi" sempat memperlihatkan kartu Flashcard; video tidak menyebut atau menjanjikan flashcard.
 6. Proporsi gambar disederhanakan (alat luar di jari Raka lebih besar dari jari kartun; potongan jari bukan skala anatomi). Warna inframerah (ungu) ilustratif. Pernyataan CO bersandar pada prinsip dan brief, bukan kutipan langsung sumber (lihat SUMBER.md).
