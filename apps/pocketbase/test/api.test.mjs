@@ -451,6 +451,8 @@ await langkah('admin konfirmasi -> Antre; agen membaca kontrak dan mengimpor; ka
   const chatLive = (await call('GET', '/api/medcoel/support/messages', undefined, userA.token, 200)).data.items.filter((m) => m.auto);
   assert.equal(chatLive.length, 2); // dikonfirmasi, lalu tayang ("diproses" tidak dikabari lewat chat)
   assert.ok(chatLive[1].text.includes(subCode) && /1 soal/.test(chatLive[1].text) && /terupload/.test(chatLive[1].text), chatLive[1].text);
+  assert.equal(mine.open.link, `/mata-kuliah/${mk.slug}`); // soal di BAB biasa -> Latihan soal
+  assert.match(chatLive[1].text, /Latihan soal/);
   // Kampus B tidak melihat soal pengajuan kampus A meski JSON menulis kampus B.
   const b = (await call('GET', `/api/medcoel/subjects/${mk.slug}`, undefined, userB.token, 200)).data;
   const babBaru = b.chapters.find((x) => x.title === 'BAB Pengajuan');

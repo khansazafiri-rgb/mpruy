@@ -1,4 +1,5 @@
-import { FileText } from 'lucide-react';
+import { ArrowRight, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { SUB_STATUS, SUB_STATUS_CLASS } from '@/lib/labels';
 import { fmtDate } from '@/lib/time';
 import { Badge } from './ui';
@@ -20,7 +21,12 @@ export default function SubmissionCard({ s, children }) {
           Perkiraan selesai sekitar <b>{s.queue.estimateDays} hari</b>{s.status === 'menunggu_konfirmasi' ? ' setelah dikonfirmasi' : ''}.
         </p>
       )}
-      {s.status === 'selesai' && <p className="mt-2 text-sm text-brand-dark">{s.importedCount} soal sudah tayang.</p>}
+      {s.status === 'selesai' && (
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          <p className="text-sm text-brand-dark">{s.importedCount} {s.contentKind === 'materi' ? 'slide materi' : 'soal'} sudah tayang{s.open?.where === 'kampusmu' ? ' di Kampusmu' : s.open?.where === 'matkul' ? ' di Latihan soal' : ''}.</p>
+          {s.open?.link && <Link to={s.open.link} className="btn-primary btn-sm inline-flex items-center gap-1" data-testid="submission-open">{s.open.label} <ArrowRight size={14} aria-hidden /></Link>}
+        </div>
+      )}
       {s.statusNote && ['perlu_perbaikan', 'dibatalkan'].includes(s.status) && <p className="mt-2 rounded-lg bg-page p-2 text-sm">{s.statusNote}</p>}
       {children}
     </div>
