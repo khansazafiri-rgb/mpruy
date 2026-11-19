@@ -2,7 +2,7 @@
 
 Daftar ini mencatat **proyek dengan MP4 di repo**, bukan status publikasi di Instagram/TikTok. Judul diambil dari README proyek; jika belum ada, dipakai nama folder. Jalankan `python3 scripts/video/update_catalog.py` setelah menambah video. CI menolak perubahan yang membuat katalog tertinggal.
 
-Total: **23 video**.
+Total: **24 video**.
 
 | Jenis | Judul | Folder sumber |
 | --- | --- | --- |
@@ -17,6 +17,7 @@ Total: **23 video**.
 | Edukasi | [Dunia tanpa cuci tangan di layanan kesehatan](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dunia-tanpa-cuci-tangan) | `video/dunia-tanpa-cuci-tangan` |
 | Edukasi | [Dunia tanpa oralit](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dunia-tanpa-oralit) | `video/dunia-tanpa-oralit` |
 | Edukasi | [Kena gas air mata saat demo?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/gas-air-mata) | `video/gas-air-mata` |
+| Edukasi | [Kenapa angka termometer air raksa tidak langsung turun?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/termometer-merkuri) | `video/termometer-merkuri` |
 | Edukasi | [Kenapa Kalau Dingin Jadi Lebih Sering Ingin Pipis?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dingin-pengen-pipis) | `video/dingin-pengen-pipis` |
 | Edukasi | [Kenapa Kopi Bikin Kita Nggak Ngantuk?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/kopi-kafein-adenosin) | `video/kopi-kafein-adenosin` |
 | Edukasi | [Kenapa malam-malam lapar?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/malam-lapar) | `video/malam-lapar` |

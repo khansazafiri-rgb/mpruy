@@ -1,5 +1,5 @@
 out/
-rekam/web/
+rekam/web
 audio/_tmp.wav
 audio/premix.wav
 audio/stem-*.wav
