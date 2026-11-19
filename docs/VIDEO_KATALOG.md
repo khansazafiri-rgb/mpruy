@@ -13,6 +13,7 @@ Total: **24 video**.
 | Cerita anak FK | [Tab Dua Puluh](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/tab-dua-puluh) | `video/tab-dua-puluh` |
 | Edukasi | [Apa bedanya introvert & ekstrovert?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/introvert-ekstrovert) | `video/introvert-ekstrovert` |
 | Edukasi | [Bagaimana penjepit jari bisa membaca SpO₂?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/spo2-pulse-oximeter) | `video/spo2-pulse-oximeter` |
+| Edukasi | [Bagaimana satu tetes darah bisa menghasilkan angka Hb?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/hb-satu-tetes) | `video/hb-satu-tetes` |
 | Edukasi | [Bangun, tapi tak bisa bergerak](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/bangun-tapi-tak-bisa-bergerak) | `video/bangun-tapi-tak-bisa-bergerak` |
 | Edukasi | [Dunia tanpa cuci tangan di layanan kesehatan](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dunia-tanpa-cuci-tangan) | `video/dunia-tanpa-cuci-tangan` |
 | Edukasi | [Dunia tanpa oralit](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dunia-tanpa-oralit) | `video/dunia-tanpa-oralit` |
