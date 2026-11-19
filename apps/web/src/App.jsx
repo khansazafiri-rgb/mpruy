@@ -22,6 +22,8 @@ const StudyToday = lazy(() => import('./pages/StudyToday'));
 const LabObject = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabObject })));
 const LabPathway = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabPathway })));
 const LabAuthoredModule = lazy(() => import('./pages/LabAuthoredModule'));
+const LabTrack = lazy(() => import('./pages/LabTrack'));
+const LabEcg = lazy(() => import('./pages/LabEcg'));
 const LabAdmin = lazy(() => import('./pages/admin/LabAdmin'));
 const SubjectNotes = lazy(() => import('./pages/SubjectNotes'));
 const SubjectCards = lazy(() => import('./pages/SubjectCards'));
@@ -108,6 +110,9 @@ export default function App() {
             <Route path="/lab/objek/:slug" element={<LabObject />} />
             <Route path="/lab/jalur/:slug" element={<LabPathway />} />
             <Route path="/lab/modul/:key" element={<LabAuthoredModule />} />
+            <Route path="/lab/ekg" element={<LabEcg />} />
+            <Route path="/lab/sistem/:track" element={<LabTrack group="sistem" />} />
+            <Route path="/lab/keterampilan/:track" element={<LabTrack group="keterampilan" />} />
             <Route path="/drilling" element={<Drilling />} />
             <Route path="/drilling/materi/:id" element={<DrillingDeck />} />
             <Route path="/drilling/:slug" element={<DrillingSubject />} />

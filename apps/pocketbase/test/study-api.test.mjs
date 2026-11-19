@@ -175,4 +175,24 @@ await step('topic finished early and deleting an exam keep history', async () =>
   assert.ok(stored.items.length >= 1);
 });
 
+
+await step('lab tracks: validated keys, planned steps refused, owner-only progress', async () => {
+  await call('GET', api('lab/tracks'), undefined, undefined, 401);
+  await call('POST', api('lab/tracks/tidak-ada'), { step: 'x' }, A.token, 404);
+  await call('POST', api('lab/tracks/ekg'), { step: 'bukan-langkah', done: true }, A.token, 400);
+  await call('POST', api('lab/tracks/ekg'), { step: 'ekg-12-sadapan', done: true }, A.token, 400);
+  await call('POST', api('lab/tracks/ekg'), { step: 'konduksi', done: 'ya' }, A.token, 400);
+  let r = await call('POST', api('lab/tracks/ekg'), { step: 'konduksi' }, A.token);
+  assert.deepEqual([r.completed, r.lastStep], [[], 'konduksi']);
+  r = await call('POST', api('lab/tracks/ekg'), { step: 'konduksi', done: true }, A.token);
+  r = await call('POST', api('lab/tracks/ekg'), { step: 'atlas-jantung', done: true }, A.token);
+  assert.deepEqual(r.completed.sort(), ['atlas-jantung', 'konduksi']);
+  r = await call('POST', api('lab/tracks/ekg'), { step: 'atlas-jantung', done: false }, A.token);
+  assert.deepEqual(r.completed, ['konduksi']);
+  const mine = await call('GET', api('lab/tracks'), undefined, A.token);
+  assert.equal(mine.items.length, 1); assert.equal(mine.items[0].track, 'ekg');
+  assert.deepEqual((await call('GET', api('lab/tracks'), undefined, B.token)).items, []);
+  await call('GET', '/api/collections/lab_track_progress/records', undefined, A.token, 403);
+});
+
 console.log(`study api: ${checks} HTTP checks passed`);

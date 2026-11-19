@@ -12,19 +12,19 @@ videos before public release.
 | Multiple exams per user (create/edit/delete) | EXISTING | `exam_schedules`, `pages/Schedule.jsx` (`/jadwal`) | Owner-only collection rules; title, subject, `examAt` (UTC), timezone WIB/WITA/WIT, reminder days |
 | Reminders H-n (web + email, de-duplicated per day) | EXISTING | `pb_hooks/cron.pb.js`, `lib/jobs.js` `examReminders` | `remindersSent` reset when `examAt` changes. Must not be duplicated |
 | Nearest exam highlighted + countdown | EXISTING | `Schedule.jsx`, `Home.jsx`, `/api/medcoel/progress` `nextExam` | Only the nearest has a live countdown |
-| Multi-exam overview with plan status, progress, workload | PARTIAL → **Loop 1** | — | No per-exam plan status/progress, no week workload view |
-| Study plans, topics, daily sessions, rescheduling | MISSING → **Loop 2** | — | New, additive |
-| Shared daily study capacity across exams | MISSING → **Loop 2** | — | New `study_profiles` |
+| Multi-exam overview with plan status, progress, workload | DONE (Loop 1) | `Schedule.jsx` | No per-exam plan status/progress, no week workload view |
+| Study plans, topics, daily sessions, rescheduling | DONE (Loop 2) | `StudyPlan.jsx`, `lib/study*.js` | New, additive |
+| Shared daily study capacity across exams | DONE (Loop 2) | `study_profiles` | New `study_profiles` |
 | Topic sources: subjects → chapters, notes, flashcards, question counts (campus-filtered) | EXISTING | `/api/medcoel/subjects/{slug}`, `/mata-kuliah/:slug/materi/:id`, `/flashcard/:id`, `?bab=` practice | Reused for planner links |
 | Verified practice performance per chapter | EXISTING | `learn.pool` (answered/wrong per chapter) | Shown next to manual completion, never merged with it |
 | Lab by academic discipline (7 roots), Guided + Explore | EXISTING | `pages/Lab.jsx`, `shared/lab-taxonomy.json`, `lab/catalog` | Must stay intact (URLs, progress) |
 | Lab pathways + progress (`lab_pathways`, `lab_path_steps`, `lab_progress`) | EXISTING | `lib/labProgress.js` | Steps can only reference `lab_objects` |
-| Lab by body system / clinical skill | MISSING → **Loop 3** | — | Mapping layer over existing resources |
-| Guided organ/skill tracks (Chest, Heart, Brain, BP, cardiac/pulmonary auscultation, ECG) | PARTIAL/BLOCKED → **Loop 3** | Atlas 3D, Live 4D, Lab modules | Some steps exist (Atlas, Live 4D auscultation/US/CT, CXR module). BP, ECG, neuro-imaging content is missing |
+| Lab by body system / clinical skill | DONE (Loop 3) | `shared/lab-tracks.json`, `LabHub.jsx`, `LabTrack.jsx` | Mapping layer over existing resources |
+| Guided organ/skill tracks (Chest, Heart, Brain, BP, cardiac/pulmonary auscultation, ECG) | DONE where content exists; gaps shown as planned (Loop 3) | Atlas 3D, Live 4D, Lab modules, ECG module | Some steps exist (Atlas, Live 4D auscultation/US/CT, CXR module). BP, ECG, neuro-imaging content is missing |
 | "All-in-One Lab" | not a named feature | — | Defined here as: the full Lab index (Guided/Explore) + Atlas 3D + Live 4D, reachable from one Lab home |
 | Atlas structure identification ("Kenali Struktur", "Temukan di 3D") | EXISTING | `/anatomy/study`, `features/anatomy/study.mjs` | Reference B is mostly covered. Linked from tracks, not rebuilt |
 | Neuroanatomy with MRI/DTI side-by-side | BLOCKED | — | No licensed brain imaging dataset or validated registration. `nervous.glb` is withheld by the licence quarantine (`licensing/`) |
-| ECG conduction ↔ waveform education | MISSING → **Loop 4** | — | New schematic module, labelled as non-diagnostic |
+| ECG conduction ↔ waveform education | DONE (Loop 4, schematic) | `/lab/ekg`, `features/lab/ecg/ecgModel.js` | New schematic module, labelled as non-diagnostic |
 | Specialised 4D work (`feature/4d-lab-official-logo-guided-tour`, 256 commits) | not in default branch | separate branch | Not touched here. This work stays in `apps/web` + PocketBase |
 
 ## Dependency map
@@ -118,3 +118,48 @@ cron) are unchanged.
 - **Known limitations.** Time zone per user is taken from the nearest exam; no calendar export; the session "done" mark is
   self-reported (verified practice numbers are shown separately).
 - **Status.** Implemented and verified locally. Not deployed.
+
+
+### Iteration 3 — Lab entry points by body system and clinical skill (P1)
+- **Baseline.** `/lab` offered the seven academic disciplines through Guided Learning and Explore, plus pathway "continue". Atlas 3D,
+  the Atlas quiz and the Live 4D Lab were reachable only from `/anatomy`. Nothing grouped content by organ system or skill.
+- **Changes.** `shared/lab-tracks.json` defines 7 body-system and 7 clinical-skill tracks. Every step points at content that
+  exists (Atlas system/region pages, Atlas quiz, Live 4D scenario, published Lab module, ECG module) or is marked *planned* with
+  a reason. On `/lab`, above the unchanged Guided/Explore index: *Lanjutkan jalur*, an **All-in-One Lab** panel (Atlas 3D, Live 4D,
+  all Lab material), and cards for each track with "x/y langkah tersedia". Track pages `/lab/sistem/:track` and
+  `/lab/keterampilan/:track` list the steps, open them, and keep a self-marked "selesai" per step (`lab_track_progress`, routes
+  `GET /api/medcoel/lab/tracks`, `POST /api/medcoel/lab/tracks/{track}` with `{step, done?}`).
+- **Availability rules.** Planned steps, Atlas systems withheld by the licence quarantine (`UNAVAILABLE_SYSTEMS`, currently
+  *nervous*), and Lab modules that are not published are shown as "belum tersedia" with the reason, never get a "Tandai selesai"
+  button, and are excluded from progress. The server refuses to complete a planned step. A track counts as done only over the
+  steps available now, and says so ("partial").
+- **Live 4D deep link.** `/anatomy/live?scenario=<key>&ws=<workspace>` passes only these two whitelisted keys to the frame
+  (`liveLabSrc`); the 4D Lab applies them after loading and ignores unknown values (`applyDeepLink` in `apps/4d-lab/src/app/main.js`).
+- **Tests.** `labTracks.test.mjs` (web): every link resolves to a real Atlas system/region, quiz mode, 4D scenario/workspace,
+  web route or taxonomy module; the brief's proposed tracks exist; availability and progress rules. `labTracks.test.mjs`
+  (PocketBase): server registry equals the shared file. Study API test: +12 HTTP checks (401, unknown track 404, wrong/planned
+  step 400, owner isolation, locked collection). 4D Lab UX e2e: deep link step. Browser journey `scripts/lab-tracks-e2e.mjs`.
+- **Compatibility.** `/lab`, `/lab/objek`, `/lab/jalur`, `/lab/modul` URLs and Guided/Explore behaviour unchanged; existing
+  `lab_progress` untouched; the hub is hidden while searching or paging.
+- **Known limitations / blocked content.** Brain: Atlas nervous system withheld (licensing), MRI/DTI neuroimaging needs a licensed
+  dataset. Blood pressure: no measurement simulation (only arm vessel anatomy available). Auscultation: synthetic sounds only;
+  reviewed murmur recordings missing. Lab modules (CXR, OCT, histology, blood smear) appear only once published.
+
+### Iteration 4 — Interactive modules (P2)
+- **Skeleton / structure identification.** Already EXISTING in the Atlas quiz (`/anatomy/study`, *Kenali Struktur* and
+  *Temukan di 3D*). Not rebuilt; linked from *Rangka, Otot & Sendi* and *Identifikasi Anatomi* tracks with the right filters.
+- **Neuroanatomy module.** BLOCKED (see above). The track shows what exists (skull, head-neck region, OCT retina when published).
+- **ECG & conduction (`/lab/ekg`, practice `/lab/ekg?latihan=1`).** New. A schematic conduction diagram (SA node, atria, AV node,
+  His bundle, bundle branches, Purkinje) glows in the Atlas selection yellow in sync with a 6-second schematic strip on
+  25 mm/s paper (play/pause, 0.25–1× speed, time scrubber). Five patterns: sinus rhythm, sinus bradycardia, sinus tachycardia,
+  first-degree AV block, second-degree AV block type I (Wenckebach, with the non-conducted P shown on the AV node). The page
+  computes rate, PR, QRS and regularity from the same model the strip is drawn from, with textbook teaching ranges.
+  Practice: 5 self-check questions, feedback with the criteria, no points or leaderboard.
+- **Medical / licensing.** Waveforms are generated from a sum-of-Gaussians model written for this module (no copied ECG images,
+  no patient recordings, no reference-video material). Labelled on the page as schematic and not for diagnosis. Content still needs
+  review by a clinical educator before public release (same rule as the 4D Lab, `apps/4d-lab/MEDICAL_REVIEW_CHECKLIST.md`).
+- **Tests.** `ecg/ecgModel.test.mjs`: the patterns read back their teaching numbers (rate, PR, QRS, regularity, box rule),
+  Wenckebach progression and drop, waveform shape, phase order SA→atria→AV→His→ventricles→ST→T, deterministic practice rounds.
+  Browser journey covers scrubbing ↔ diagram, the dropped beat, and a full practice round on desktop and phone.
+- **Visual evidence.** `docs/evidence/lab/01…08-*.jpg`.
+- **Status.** Implemented and verified locally. Not deployed. No merge or release without approval.
