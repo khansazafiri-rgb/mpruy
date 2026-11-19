@@ -1,0 +1,222 @@
+{
+ "draf_tanpa_narasi": true,
+ "offset_narasi": 0.3,
+ "narasi_dipotong_di": 80.183,
+ "outro_mulai": 80.933,
+ "master_mulai": 82.133,
+ "durasi": 96.1,
+ "sfx": [
+  {
+   "t": 0.3,
+   "sfx": "angkat-termometer"
+  },
+  {
+   "t": 1.3,
+   "sfx": "judul-hook"
+  },
+  {
+   "t": 8.164,
+   "sfx": "putar"
+  },
+  {
+   "t": 10.796,
+   "sfx": "merkuri"
+  },
+  {
+   "t": 15.043,
+   "sfx": "wadah"
+  },
+  {
+   "t": 17.528,
+   "sfx": "saluran"
+  },
+  {
+   "t": 20.827,
+   "sfx": "kontak-panas"
+  },
+  {
+   "t": 21.461,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 22.275,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 22.648,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 22.953,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 23.224,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 23.462,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 23.699,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 23.903,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 24.106,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 24.31,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 24.513,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 24.717,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 24.92,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 25.124,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 25.327,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 25.531,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 25.734,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 25.938,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 26.175,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 26.413,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 26.684,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 26.989,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 27.362,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 28.04,
+   "sfx": "kolom-naik"
+  },
+  {
+   "t": 30.013,
+   "sfx": "garis-jauh"
+  },
+  {
+   "t": 39.69,
+   "sfx": "penyempitan"
+  },
+  {
+   "t": 43.795,
+   "sfx": "dilepas"
+  },
+  {
+   "t": 45.295,
+   "sfx": "kolom-putus"
+  },
+  {
+   "t": 50.347,
+   "sfx": "suhu-tertinggi-terbaca"
+  },
+  {
+   "t": 55.24,
+   "sfx": "atur-ulang"
+  },
+  {
+   "t": 61.005,
+   "sfx": "digital"
+  },
+  {
+   "t": 63.829,
+   "sfx": "pecah"
+  },
+  {
+   "t": 64.329,
+   "sfx": "tetes"
+  },
+  {
+   "t": 64.499,
+   "sfx": "tetes"
+  },
+  {
+   "t": 64.669,
+   "sfx": "tetes"
+  },
+  {
+   "t": 64.839,
+   "sfx": "tetes"
+  },
+  {
+   "t": 65.009,
+   "sfx": "tetes"
+  },
+  {
+   "t": 65.179,
+   "sfx": "tetes"
+  },
+  {
+   "t": 66.432,
+   "sfx": "uap"
+  },
+  {
+   "t": 70.106,
+   "sfx": "beralih"
+  },
+  {
+   "t": 75.932,
+   "sfx": "ringkasan-pemuaian"
+  },
+  {
+   "t": 76.624,
+   "sfx": "ringkasan-saluranSempit"
+  },
+  {
+   "t": 77.868,
+   "sfx": "ringkasan-penyempitanKecil"
+  },
+  {
+   "t": 78.768,
+   "sfx": "ringkasan-akhir"
+  },
+  {
+   "t": 80.633,
+   "sfx": "masuk-outro"
+  },
+  {
+   "t": 90.333,
+   "sfx": "logo-medcoel"
+  }
+ ]
+}
