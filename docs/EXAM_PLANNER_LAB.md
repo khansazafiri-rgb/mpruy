@@ -166,3 +166,10 @@ cron) are unchanged.
   Browser journey covers scrubbing ↔ diagram, the dropped beat, and a full practice round on desktop and phone.
 - **Visual evidence.** `docs/evidence/lab/01…08-*.jpg`.
 - **Status.** Implemented and verified locally. Not deployed. No merge or release without approval.
+
+### Integration into the 4D Lab production line (2026-11-19)
+See `docs/INTEGRATION_PR220_INTO_4D.md`. Changes relative to the iteration reports above: the migration is now
+`1800003200_study_planner.js` (idempotent); the ECG module and the track steps marked `"review": "ecg"` are open to admins
+and to students only with `MEDCOEL_LAB_ECG_PUBLIC=1` after clinical review; Live 4D steps follow the 4D release
+availability; new pages are part of the 4D branch's student activity report; drilling (campus-only) chapters are never
+accepted as planner sources.
