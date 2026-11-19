@@ -1,0 +1,7 @@
+out/
+rekam/web
+audio/_tmp.wav
+audio/premix.wav
+audio/stem-*.wav
+audio/mix.wav
+cover/bg.png

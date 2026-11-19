@@ -17,7 +17,7 @@ EDUCATION = {
     "bangun-tapi-tak-bisa-bergerak", "dingin-pengen-pipis",
     "dunia-tanpa-cuci-tangan", "dunia-tanpa-oralit", "gas-air-mata",
     "introvert-ekstrovert", "kopi-kafein-adenosin", "malam-lapar",
-    "pasien-tidak-sadar-di-igd",
+    "pasien-tidak-sadar-di-igd", "hb-satu-tetes",
     "ct-mri-perbedaan-citra", "parasetamol-nyeri-kepala", "spo2-pulse-oximeter",
 }
 STUDENT_STORIES = {
