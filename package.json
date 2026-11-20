@@ -33,7 +33,7 @@
     "review:bodyparts3d-candidate": "node apps/4d-lab/tools/review-bp3d-candidate.mjs",
     "batch:bodyparts3d": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs",
     "review:bodyparts3d": "node scripts/bp3d-review-server.mjs",
-    "build:studio-fixture": "npm run build --prefix apps/studios/foundation-fixture"
+    "build:studio-fixture": "npm run build --prefix apps/studios/foundation-fixture && node scripts/build-studio-fixture-manifest.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
