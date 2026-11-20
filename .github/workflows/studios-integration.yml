@@ -21,9 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
-      PLAYWRIGHT_MODULE: ${{ runner.temp }}/medcoel-browser-tools/node_modules/playwright
-      NODE_PATH: ${{ runner.temp }}/medcoel-browser-tools/node_modules
-      STUDIO_INTEGRATION_REPORT: ${{ runner.temp }}/studio-integration-results.json
       STUDIOS_INTEGRATION_BASE_SHA: ${{ github.event.pull_request.base.sha }}
     steps:
       - uses: actions/checkout@v4
@@ -42,6 +39,9 @@ jobs:
           npm ci --prefix apps/studios
       - name: Install isolated browser test tooling (no repository dependency changes)
         run: |
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/medcoel-browser-tools/node_modules/playwright" >> "$GITHUB_ENV"
+          echo "NODE_PATH=$RUNNER_TEMP/medcoel-browser-tools/node_modules" >> "$GITHUB_ENV"
+          echo "STUDIO_INTEGRATION_REPORT=$RUNNER_TEMP/studio-integration-results.json" >> "$GITHUB_ENV"
           npm install --prefix "$RUNNER_TEMP/medcoel-browser-tools" --no-save --ignore-scripts playwright@1.56.1
           "$RUNNER_TEMP/medcoel-browser-tools/node_modules/.bin/playwright" install --with-deps chromium
       - name: Build all 24 applications with labelled technical fixtures only
@@ -81,9 +81,6 @@ jobs:
       fail-fast: false
       matrix:
         revision: [base, integrated]
-    env:
-      NODE_PATH: ${{ runner.temp }}/medcoel-browser-tools/node_modules
-      PLAYWRIGHT_MODULE: ${{ runner.temp }}/medcoel-browser-tools/node_modules/playwright
     steps:
       - uses: actions/checkout@v4
         with:
@@ -95,6 +92,8 @@ jobs:
           cache-dependency-path: apps/4d-lab/package-lock.json
       - name: Install locked 4D application and isolated browser tooling
         run: |
+          echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/medcoel-browser-tools/node_modules/playwright" >> "$GITHUB_ENV"
+          echo "NODE_PATH=$RUNNER_TEMP/medcoel-browser-tools/node_modules" >> "$GITHUB_ENV"
           npm ci --prefix apps/4d-lab
           npm install --prefix "$RUNNER_TEMP/medcoel-browser-tools" --no-save --ignore-scripts playwright@1.56.1
           "$RUNNER_TEMP/medcoel-browser-tools/node_modules/.bin/playwright" install --with-deps chromium

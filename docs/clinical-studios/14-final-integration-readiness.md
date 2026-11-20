@@ -57,7 +57,7 @@ Browser tooling is pinned to Playwright 1.56.1 in RUNNER_TEMP only; no project d
 
 Actual results live in the PR checks, logs and final PR description. Historical WS results in documents 10/12/13 are not fresh integration results.
 
-The three previously recorded 4D UX failures (tri-planar/pad, pathology/pericardial, keyboard ArrowUp superior) are not removed, skipped or repaired in this integration. Report actual new totals, even if they differ from historical 13/16. Safari/iPad hardware and real GPU coverage are still outstanding.
+The three previously recorded 4D UX failures (tri-planar/pad, pathology/pericardial, keyboard ArrowUp superior) are not removed, skipped or repaired in this integration. Report actual new totals, even if they differ from historical 13/16. Safari/iPad hardware and real GPU coverage are still outstanding. Standalone fixture browser smoke and real secure API tests do not prove every studio viewer renders through the authenticated host under production CSP; this remains a staging acceptance gate.
 
 ## Build and resource-manifest consistency
 
@@ -81,7 +81,7 @@ No dist or local-data is tracked. A --private build may fall back to fixtures wh
 | Secrets | MEDCOEL_STUDIO_KEYS, MEDCOEL_STUDIO_SIGNING_KID for tooling, MEDCOEL_STUDIO_SESSION_KID for server. At least 32-character secrets; server environment/secret storage only; no production keys provisioned here. |
 | Licensing root | MEDCOEL_STUDIO_LICENSING_ROOT must point to the correct deployed licensing directory, or default layout must be preserved. |
 | Production flags | MEDCOEL_DEV_MODE unset/disabled; no MEDCOEL_STUDIO_TEST_CATALOG; Secure HttpOnly SameSite=Strict session cookies under HTTPS. |
-| Caddy | Existing /api/* proxy handles authenticated asset delivery. No new public static /studio-assets mount and no Caddy change required for the current same-origin design. |
+| Caddy | Existing /api/* proxy handles authenticated asset delivery. No new public static /studio-assets mount. Verify effective X-Frame-Options/CSP on staging: the global DENY header may conflict with same-origin frames depending on response-header handling. If a scoped exception is required, obtain approval and test it separately; this PR does not change Caddy. |
 | Origin isolation | Same-origin first-party iframe is not protection against hostile studio code reading host storage. A separate studio origin requires owner-approved DNS/Caddy/auth-exchange work before third-party content. |
 | Private acquisition | No raw or converted dataset copied by this PR. Locate the authorised private workspace or reacquire only with approval, then verify original hashes and medical/privacy provenance. |
 | Stage/receipt/attest | Use existing studio-release.mjs on exact installed bytes; receipt must still fail while rights/provenance/reviews are pending. Do not weaken policies to make staging launch succeed. |
