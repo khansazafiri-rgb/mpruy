@@ -9,7 +9,7 @@
     "lint": "npm run lint --prefix apps/web",
     "test": "npm run test --prefix apps/web && npm run test --prefix apps/pocketbase",
     "test:anatomy-integration": "node --test scripts/anatomy-*.test.mjs",
-    "test:studios": "node scripts/generate-studio-server-contract.mjs --check && node --test scripts/studio-catalog.test.mjs scripts/studio-catalog-history.test.mjs scripts/studio-resources.test.mjs packages/studio-contract/test/*.test.mjs scripts/studio-release.test.mjs",
+    "test:studios": "node scripts/generate-studio-server-contract.mjs --check && node --test scripts/studio-catalog.test.mjs scripts/studio-catalog-history.test.mjs scripts/studio-resources.test.mjs packages/studio-contract/test/*.test.mjs scripts/studio-release.test.mjs scripts/studio-review.test.mjs && node licensing/tools/studio-review.mjs verify --structural && node scripts/studio-status.mjs --check",
     "preview:anatomy": "node scripts/anatomy-preview-server.mjs",
     "stage:anatomy": "node scripts/stage-anatomy.mjs",
     "build:anatomy": "npm run build --prefix apps/anatomy -- --base=/anatomy/viewer/",
@@ -33,7 +33,9 @@
     "review:bodyparts3d-candidate": "node apps/4d-lab/tools/review-bp3d-candidate.mjs",
     "batch:bodyparts3d": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs",
     "review:bodyparts3d": "node scripts/bp3d-review-server.mjs",
-    "build:studio-fixture": "npm run build --prefix apps/studios/foundation-fixture && node scripts/build-studio-manifest.mjs --dist apps/studios/foundation-fixture/dist --studio foundation-fixture --release fixture-release --capabilities fixture-echo"
+    "build:studio-fixture": "npm run build --prefix apps/studios/foundation-fixture && node scripts/build-studio-manifest.mjs --dist apps/studios/foundation-fixture/dist --studio foundation-fixture --release fixture-release --capabilities fixture-echo",
+    "studios:reproduce": "node licensing/tools/verify-studio-reproducibility.mjs",
+    "test:studios-fullstack": "node scripts/studios-fullstack-e2e.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

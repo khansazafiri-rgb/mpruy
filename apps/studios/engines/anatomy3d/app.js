@@ -82,7 +82,7 @@ export function runAnatomyStudio({ studioId, title }) {
       ui.panel.append(box);
       if (launch.standalone) box.append(el('p', {}, 'Challenge dinilai server dan hanya tersedia saat diluncurkan dari MEDCOEL.'));
       else {
-        const client = createChallengeClient('./'), score = createScore();
+        const client = createChallengeClient('./'), score = createScore(client);
         const session = await client.start().catch(e => ({ error: e.code }));
         if (session.error) box.append(el('p', { class: 'bad' }, 'Challenge belum tersedia (' + session.error + ').'));
         else runItems(session, client, score, box);
@@ -95,7 +95,7 @@ export function runAnatomyStudio({ studioId, title }) {
       const show = () => {
         const item = session.items[i];
         onPick = null; viewer.select(null);
-        if (!item) { box.replaceChildren(el('h2', {}, 'Challenge selesai'), el('p', {}, 'Skor: ' + score.correct + ' / ' + score.answered + ' (dinilai server).')); return; }
+        if (!item) { box.replaceChildren(el('h2', {}, 'Challenge selesai'), el('p', {}, 'Skor: ' + score.correct + ' / ' + score.answered + (score.persisted ? ' (dinilai server, tersimpan di progres Anda).' : ' (dinilai server).'))); return; }
         const head = [el('h2', {}, 'Soal ' + (i + 1) + ' dari ' + session.items.length + ' · ' + ({ identify: 'Identify', find: 'Find', typed: 'Type' }[item.prompt.kind] || '')), el('p', {}, item.prompt.text)];
         const grade = async response => {
           const r = await client.answer(session.attempt, item.id, response);

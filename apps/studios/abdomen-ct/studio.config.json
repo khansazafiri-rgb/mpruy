@@ -10,7 +10,9 @@
   ],
   "challengeRestricted": [
     "data/readers.nii.gz",
-    "data/annotations.json"
+    "data/annotations.json",
+    "data/labels.nii.gz",
+    "data/labels.json"
   ],
   "privateData": "local-data/studio-resources/build/abdomen-ct",
   "fixtureTool": "tools/make-ct-fixture.mjs"

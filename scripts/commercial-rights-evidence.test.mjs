@@ -5,8 +5,10 @@ import { fileURLToPath } from 'node:url';
 import { inspectCommercialEvidence, MODEL_SYSTEMS, readCommercialEvidence, REQUIRED_IDS } from '../licensing/tools/audit-commercial-evidence.mjs';
 
 const committed = readCommercialEvidence();
-// Legacy (Atlas / 4D) inventory. Clinical Studio resource records ("studio-res-*") are checked separately below.
-const source = { ...committed, records: committed.records.filter(r => !String(r.id).startsWith('studio-res-')) };
+// Legacy (Atlas / 4D) inventory. Clinical Studio records ("studio-res-*" derived outputs, "studio-src-*" official raw inputs)
+// are checked separately below.
+const isStudioRecord = r => /^studio-(res|src)-/.test(String(r.id));
+const source = { ...committed, records: committed.records.filter(r => !isStudioRecord(r)) };
 const CATALOG_IDS = JSON.parse(readFileSync(fileURLToPath(new URL('../shared/studios/catalog.v1.json', import.meta.url)), 'utf8')).studios.map(s => s.id);
 const pkg = JSON.parse(readFileSync(fileURLToPath(new URL('../apps/anatomy/package.json', import.meta.url)), 'utf8'));
 const inspect = data => inspectCommercialEvidence(data, { atlasPackage: pkg });
@@ -113,13 +115,20 @@ test('studio product scopes require a trusted catalog ID; legacy default does no
 
 
 test('Clinical Studio resource records are honest: catalog-scoped, needs-review, never verified', () => {
-  const studio = committed.records.filter(r => String(r.id).startsWith('studio-res-'));
+  const studio = committed.records.filter(isStudioRecord);
+  assert.ok(studio.some(r => r.id.startsWith('studio-src-')) && studio.some(r => r.id.startsWith('studio-res-')));
   for (const r of studio) {
-    assert.equal(r.status, 'needs-review', r.id);
+    // Only status 'blocked' (with a stated reason and no commercial use) may replace needs-review; nothing is verified.
+    assert.ok(r.status === 'needs-review' || (r.status === 'blocked' && r.sourceCommercialUse === false), r.id);
     assert.ok(r.products.every(p => /^studio:/.test(p) && CATALOG_IDS.includes(p.slice(7))), r.id);
     assert.ok(r.blockingReason && r.blockingReason.length > 20, r.id);
   }
   const report = inspectCommercialEvidence(committed, { studioIds: CATALOG_IDS });
   for (const r of studio) for (const p of r.products) assert.equal(report.products[p].evidenceComplete, false, p);
   assert.throws(() => inspectCommercialEvidence(committed), /unknown product/, 'legacy default still refuses studio scopes');
+  // Derived records depend on the needs-review record of their official source, so they can never verify ahead of it.
+  for (const r of studio.filter(x => x.id.startsWith('studio-res-'))) for (const d of r.dependencies) {
+    const dep = studio.find(x => x.id === d);
+    assert.ok(dep && dep.id.startsWith('studio-src-') && dep.status === 'needs-review', r.id + ' -> ' + d);
+  }
 });

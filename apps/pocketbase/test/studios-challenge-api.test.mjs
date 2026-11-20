@@ -118,6 +118,50 @@ await step('CHAL-008 image regions are graded server-side by point-in-polygon; m
   assert.equal((await click([70, 30])).data.correct, false);
   assert.equal((await click(['x', 1])).status, 400);
 });
+await step('CHAL-009 progress is persisted by the server per attempt; the first answer per item counts; re-entry shows it', async () => {
+  const fresh = await launch('challenge'); // a new session = a new attempt (start is deterministic within one session)
+  const st = await call('POST', base + '_challenge/start', { cookie: fresh.cookie, body: {} });
+  const again = await call('POST', base + '_challenge/start', { cookie: fresh.cookie, body: {} });
+  assert.equal(again.data.attempt, st.data.attempt, 're-entry within a session resumes the same attempt');
+  assert.equal(st.status, 200); assert.deepEqual([st.data.progress.total, st.data.progress.graded, st.data.progress.selfReported], [st.data.items.length, 0, false]);
+  const q = st.data.items.find(i => i.id === 'q1' || i.id === 'q2'), right = q.id === 'q1' ? 1 : 0;
+  const a1 = await call('POST', base + '_challenge/answer', { cookie: fresh.cookie, body: { attempt: st.data.attempt, itemId: q.id, response: { index: 1 - right } } });
+  assert.deepEqual([a1.data.correct, a1.data.progress.graded, a1.data.progress.correct, a1.data.progress.counted], [false, 1, 0, true]);
+  const a2 = await call('POST', base + '_challenge/answer', { cookie: fresh.cookie, body: { attempt: st.data.attempt, itemId: q.id, response: { index: right } } });
+  assert.deepEqual([a2.data.correct, a2.data.progress.correct, a2.data.progress.counted], [true, 0, false], 'retrying cannot raise the score');
+  for (const it of st.data.items.filter(i => i.id !== q.id)) await call('POST', base + '_challenge/answer', { cookie: fresh.cookie, body: { attempt: st.data.attempt, itemId: it.id, response: { index: 0, structureId: 'x', text: 'x', point: [0, 0] } } });
+  const mine = await call('GET', '/api/medcoel/studios/' + rel.studioId + '/progress', { token });
+  assert.equal(mine.status, 200);
+  const done = mine.data.attempts.find(x => x.mode === 'challenge' && x.completedAt);
+  assert.ok(done, JSON.stringify(mine.data)); assert.equal(done.graded, done.total);
+  assert.equal(JSON.stringify(mine.data).includes('answers'), false, 'per-item answers are not returned');
+  assert.equal((await call('GET', '/api/medcoel/studios/' + rel.studioId + '/progress')).status, 401);
+  assert.equal((await call('GET', '/api/collections/studio_progress/records', { token })).status, 403, 'no direct collection access');
+});
+await step('CHAL-010 progress is per user; guided progress is self-reported and only in Guided sessions; admin sees aggregates only', async () => {
+  const other = 'chal2' + Date.now().toString(36), pw = 'rahasia-' + other;
+  await call('POST', '/api/collections/users/records', { token: su, body: { loginId: other, name: 'Other', email: other + '@challenge.test', password: pw, passwordConfirm: pw, role: 'user', verified: true } });
+  const t2 = (await call('POST', '/api/collections/users/auth-with-password', { body: { identity: other, password: pw } })).data.token;
+  assert.deepEqual((await call('GET', '/api/medcoel/studios/' + rel.studioId + '/progress', { token: t2 })).data.attempts, []);
+  const gl = await launch('guided');
+  const gp = await call('POST', base + '_progress/guided', { cookie: gl.cookie, body: { stepsCompleted: 2, totalSteps: 4 } });
+  assert.equal(gp.status, 200, JSON.stringify(gp.data)); assert.deepEqual([gp.data.progress.selfReported, gp.data.progress.graded, gp.data.progress.completedAt], [true, 2, null]);
+  assert.equal((await call('POST', base + '_progress/guided', { cookie: gl.cookie, body: { stepsCompleted: 4, totalSteps: 4 } })).data.progress.completedAt !== null, true);
+  assert.equal((await call('POST', base + '_progress/guided', { cookie: gl.cookie, body: { stepsCompleted: 9, totalSteps: 4 } })).status, 400);
+  assert.equal((await call('POST', base + '_progress/guided', { cookie: ch.cookie, body: { stepsCompleted: 1, totalSteps: 4 } })).status, 409);
+  assert.equal((await call('GET', '/api/medcoel/admin/studio-progress', { token })).status, 403);
+  const adminId = 'adm' + Date.now().toString(36), apw = 'rahasia-' + adminId;
+  await call('POST', '/api/collections/users/records', { token: su, body: { loginId: adminId, name: 'Admin', email: adminId + '@challenge.test', password: apw, passwordConfirm: apw, role: 'admin', verified: true } });
+  const ta = (await call('POST', '/api/collections/users/auth-with-password', { body: { identity: adminId, password: apw } })).data.token;
+  const rep = await call('GET', '/api/medcoel/admin/studio-progress', { token: ta });
+  assert.equal(rep.status, 200, JSON.stringify(rep.data));
+  const chRow = rep.data.items.find(x => x.studioId === rel.studioId && x.mode === 'challenge'), gRow = rep.data.items.find(x => x.mode === 'guided');
+  assert.ok(chRow.attempts >= 1 && chRow.learners === 1 && chRow.completed >= 1 && typeof chRow.accuracy === 'number');
+  assert.deepEqual([gRow.selfReported, gRow.accuracy], [true, null]);
+  assert.equal(JSON.stringify(rep.data).includes('answers'), false);
+  assert.equal((await call('GET', '/api/medcoel/admin/studio-progress?campus=nonexistentcampus', { token: ta })).data.rows, 0);
+});
+// Destructive (tampers with the installed release): keep last.
 await step('CHAL-007 Type items are not issued when the terminology pack is not approved', async () => {
   const termFile = path.join(studioRoot, rel.studioId, rel.releaseId, 'files', 'server', 'terminology.json');
   // Same byte length and mtime would be needed to pass the snapshot; any edit (here: status) closes typed items instead.

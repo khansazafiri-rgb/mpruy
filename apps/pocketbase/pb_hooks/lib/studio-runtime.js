@@ -286,7 +286,8 @@ function sessionGate(e, id, releaseId) {
 //     explanation }] }
 // start   -> picks items (seeded by the session), returns public parts + a signed attempt token (no answers)
 // answer  -> grades one item server-side; only then reveals correctness, canonical answer and explanation.
-// Attempts are stateless (no new collection in this phase): scores are advisory until persistence is approved.
+// Attempt tokens are stateless and signed; the learner's score is persisted per attempt in studio_progress
+// (lib/studio-progress.js): written only here, first answer per item counts.
 function challengeKey(inst) {
   const snap = inst.snapshot['server/challenge.json'];
   if (!snap || !sameAsSnapshot(inst.dir, 'server/challenge.json', snap)) return null;
@@ -321,7 +322,8 @@ function challenge(e, id, releaseId, action) {
     const picked = order.slice(0, Math.max(1, Math.min(key.count || 10, 20, order.length)));
     const ids = picked.map(it => String(it.id));
     const payload = g.session.sid + '~' + ids.join(',') + '~' + g.session.expiresAt;
-    return e.json(200, { attempt: payload + '~' + sign(payload), items: picked.map(it => ({ id: String(it.id), prompt: it.prompt, options: it.options || [] })) });
+    const progress = require(root + '/lib/studio-progress.js').startChallenge(e.app, g, payload, picked.length);
+    return e.json(200, { attempt: payload + '~' + sign(payload), items: picked.map(it => ({ id: String(it.id), prompt: it.prompt, options: it.options || [] })), progress });
   }
   if (action === 'answer') {
     const parts = String(body.attempt || '').split('~');
@@ -349,12 +351,27 @@ function challenge(e, id, releaseId, action) {
       const typed = require(root + '/lib/typed-anatomy.generated.js');
       const verdict = typed.checkTypedAnswer(r.text, { conceptId: item.answer.conceptId, side: item.answer.side || null }, { status: 'approved', conceptId: item.answer.conceptId, forms: concept.forms || [] });
       const lang = ['id', 'en', 'la'].indexOf(verdict.language) >= 0 ? verdict.language : 'id';
-      return e.json(200, { itemId, correct: verdict.verdict !== 'wrong', verdict: verdict.verdict, reason: verdict.verdict === 'wrong' ? verdict.reason : null,
-        canonical: (concept.canonical && (concept.canonical[lang] || concept.canonical.id)) || item.canonical || null, explanation: item.explanation || '' });
+      const ok = verdict.verdict !== 'wrong';
+      return e.json(200, { itemId, correct: ok, verdict: verdict.verdict, reason: verdict.verdict === 'wrong' ? verdict.reason : null,
+        canonical: (concept.canonical && (concept.canonical[lang] || concept.canonical.id)) || item.canonical || null, explanation: item.explanation || '',
+        progress: require(root + '/lib/studio-progress.js').recordAnswer(e.app, g, parts.slice(0, 3).join('~'), itemId, ok) });
     }
-    return e.json(200, { itemId, correct, canonical: item.canonical || null, explanation: item.explanation || '' });
+    return e.json(200, { itemId, correct, canonical: item.canonical || null, explanation: item.explanation || '',
+      progress: require(root + '/lib/studio-progress.js').recordAnswer(e.app, g, parts.slice(0, 3).join('~'), itemId, correct) });
   }
   return e.json(404, { code: 'NOT_FOUND' });
 }
 
-module.exports = { challenge, sessionGate, config, catalog, installed, trustedMap, launch, asset, principalOf, evidenceRevision, quarantineDigest, securityHeaders, KNOWN_ADAPTERS, COOKIE };
+// Guided progress (client-reported, stored with selfReported=true) for a launched Guided session.
+function guidedProgress(e, id, releaseId) {
+  securityHeaders(e);
+  const g = sessionGate(e, id, releaseId);
+  if (!g.ok) return e.json(g.status, { code: g.status === 401 ? 'SESSION_REQUIRED' : 'NOT_FOUND' });
+  if (g.session.mode !== 'guided') return e.json(409, { code: 'NOT_A_GUIDED_SESSION' });
+  let body = {};
+  try { body = JSON.parse(toString(e.request.body, 4096) || '{}'); } catch (_) { return e.json(400, { code: 'INVALID_BODY' }); }
+  const r = require(root + '/lib/studio-progress.js').recordGuided(e.app, g, body);
+  return e.json(r.status, r.body);
+}
+
+module.exports = { guidedProgress, challenge, sessionGate, config, catalog, installed, trustedMap, launch, asset, principalOf, evidenceRevision, quarantineDigest, securityHeaders, KNOWN_ADAPTERS, COOKIE };

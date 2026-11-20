@@ -55,9 +55,10 @@ export function prepare() {
   for (let i = 1; i < vert.length; i++) if (!(sOf(vert[i]) > sOf(vert[i - 1]))) throw Error('Vertebra labels not ordered caudal->cranial');
   for (let i = 1; i < discs.length; i++) if (!(sOf(discs[i]) > sOf(discs[i - 1]))) throw Error('Disc labels not ordered caudal->cranial');
   const structures = [
-    ...vert.map((v, i) => ({ id: v, source: 'SPIDER vertebra label ' + v, nameEn: 'Vertebra #' + (i + 1) + ' from caudal', side: 'midline', rgb: [230, 200, 150], kind: 'vertebra' })),
+    // Readability: adjacent levels alternate between two tones of the same class colour (bone: sand/orange; disc: green/teal).
+    ...vert.map((v, i) => ({ id: v, source: 'SPIDER vertebra label ' + v, nameEn: 'Vertebra #' + (i + 1) + ' from caudal', side: 'midline', rgb: i % 2 ? [255, 160, 70] : [240, 215, 150], kind: 'vertebra' })),
     { id: 100, source: 'SPIDER spinal canal label 100', nameEn: 'Spinal canal', side: 'midline', rgb: [80, 160, 255], kind: 'canal' },
-    ...discs.map((v, i) => ({ id: v - 200 + 150, source: 'SPIDER IVD label ' + v, nameEn: 'Intervertebral disc #' + (i + 1) + ' from caudal', side: 'midline', rgb: [120, 220, 120], kind: 'disc' })),
+    ...discs.map((v, i) => ({ id: v - 200 + 150, source: 'SPIDER IVD label ' + v, nameEn: 'Intervertebral disc #' + (i + 1) + ' from caudal', side: 'midline', rgb: i % 2 ? [60, 200, 180] : [140, 230, 110], kind: 'disc' })),
   ];
   // Challenge: one interior voxel per class (nearest the class centroid), answer = tissue class (no level names).
   const point = id => { const sum = [0, 0, 0]; let n = 0; labels.forEach((v, idx) => { if (v === id) { sum[0] += idx % X; sum[1] += Math.floor(idx / X) % Y; sum[2] += Math.floor(idx / (X * Y)); n++; } });

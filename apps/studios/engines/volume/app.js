@@ -85,14 +85,14 @@ export function runVolumeStudio({ studioId, title, modality, radiological = fals
       const box = el('div', { 'data-testid': 'challenge' }, el('h2', {}, 'Challenge')); ui.panel.append(box);
       if (launch.standalone) box.append(el('p', {}, 'Challenge dinilai server dan hanya tersedia saat diluncurkan dari MEDCOEL.'));
       else {
-        const client = createChallengeClient('./'), score = createScore();
+        const client = createChallengeClient('./'), score = createScore(client);
         const session = await client.start().catch(e => ({ error: e.code }));
         if (session.error) box.append(el('p', { class: 'bad' }, 'Challenge belum tersedia (' + session.error + ').'));
         else {
           let i = 0;
           const show = () => {
             const item = session.items[i];
-            if (!item) { box.replaceChildren(el('h2', {}, 'Challenge selesai'), el('p', {}, 'Skor: ' + score.correct + ' / ' + score.answered + ' (dinilai server).')); return; }
+            if (!item) { box.replaceChildren(el('h2', {}, 'Challenge selesai'), el('p', {}, 'Skor: ' + score.correct + ' / ' + score.answered + (score.persisted ? ' (dinilai server, tersimpan di progres Anda).' : ' (dinilai server).'))); return; }
             if (item.prompt.mm) viewer.setCrosshairMm(item.prompt.mm);
             const fb = el('div', { role: 'status', 'aria-live': 'polite' });
             const btns = item.options.map((o, idx) => el('button', { type: 'button', onclick: async () => { btns.forEach(b => { b.disabled = true; }); const r = await client.answer(session.attempt, item.id, { index: idx }); score.record(item.id, r.correct); post('studio.answer', { itemId: item.id, correct: r.correct, attempt: 1 });

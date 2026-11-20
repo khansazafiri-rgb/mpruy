@@ -20,3 +20,17 @@ test('score counts each item once (first answer)', () => {
   const s = createScore(); s.record('a', false); s.record('a', true); s.record('b', true);
   assert.equal(s.answered, 2); assert.equal(s.correct, 1);
 });
+
+test('score prefers server-persisted progress; guided reports completed steps (and nothing outside a hosted launch)', async () => {
+  const client = { lastProgress: null };
+  const s = createScore(client); s.record('a', true);
+  assert.deepEqual([s.answered, s.correct, s.persisted], [1, 1, false]);
+  client.lastProgress = { graded: 3, correct: 1, total: 5 };
+  assert.deepEqual([s.answered, s.correct, s.persisted], [3, 1, true]);
+  const reports = [];
+  const g = createGuide([{ id: 'a', check: st => st.ok }, { id: 'b', check: st => st.ok }], { report: (done, total) => reports.push([done, total]) });
+  g.update({ ok: false }); g.update({ ok: true }); g.next(); g.update({ ok: true });
+  assert.deepEqual(reports, [[1, 2], [2, 2]]);
+  const { reportGuided } = await import('../guided.js');
+  assert.equal(await reportGuided(1, 2), null, 'not hosted: no network call');
+});

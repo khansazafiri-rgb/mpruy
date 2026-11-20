@@ -101,9 +101,9 @@ test('RESOURCE-016: missing policy/notice/review or wrong exact build digest is 
 });
 test('RESOURCE-017: only a fully bound neutral engineering fixture is eligible; legacy records stay closed', t => {
   const f = fixture(t), r = inspect(f); assert.equal(r.decision.eligible, true, JSON.stringify(r));
-  const old = f.evidence.records.filter(r => !r.id.startsWith('fixture-') && !r.id.startsWith('studio-res-'));
+  const old = f.evidence.records.filter(r => !r.id.startsWith('fixture-') && !/^studio-(res|src)-/.test(r.id));
   assert.equal(old.length, 14); assert.equal(old.filter(r => r.status === 'verified').length, 0);
-  assert.equal(f.evidence.records.filter(r => r.id.startsWith('studio-res-') && r.status === 'verified').length, 0);
+  assert.equal(f.evidence.records.filter(r => /^studio-(res|src)-/.test(r.id) && r.status === 'verified').length, 0);
 });
 test('RESOURCE-018: committed resource registry (acquired, unreviewed) validates but no clinical studio is eligible; CLI is read-only', t => {
   const f = fixture(t), resources = read('licensing/resources.v1.json');

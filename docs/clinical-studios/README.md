@@ -27,9 +27,12 @@
 | #227 | Unified foundation: availability API, host/fixture and typed quiz contract | Merged |
 | #228 | WS1 secure launch, receipts, installation and delivery | Merged into claude/focused-wozniak-1ayrxa |
 | #229–#232 | WS2–WS5, 24 apps/engines and resource registry | Merged into stacked feature bases; original commits consolidated by #233 |
-| #233 | Final WS1–WS5 integration and fresh verification | Draft; not merged or deployed |
+| #233 | Final WS1–WS5 integration and fresh verification | Merged into claude/focused-wozniak-1ayrxa |
+| (this PR) | Master execution: provenance lineage + reproducibility, review workflow, learner progress, full-stack e2e, PTX-498/HC18/AMOS, legal packages, reviewer preview, computed status | Draft; not merged or deployed |
 
-Canonical sources remain shared/studios/catalog.v1.json, licensing/resources.v1.json and the existing commercial rights/release/quarantine ledgers. The registry contains five sources and **35 assets**, all with pending medical/privacy review. The 14 original rights records remain unchanged; 13 appended studio rights records remain needs-review.
+Canonical sources remain shared/studios/catalog.v1.json, licensing/resources.v1.json and the existing commercial rights/release/quarantine ledgers. After the master-execution PR the registry contains **eight sources, 46 official raw inputs and 54 derived assets** (lineage + real processing commit, reproduced byte-for-byte), all with pending medical/privacy review. The 14 original rights records remain unchanged; 25 appended studio records: 24 needs-review and 1 blocked (LPBA40, LONI non-commercial licence). Status per studio: [`studio-status.v1.json`](studio-status.v1.json).
+
+New documents: [15 — human review workflow](15-human-review-workflow.md), [16 — licensing & legal packages](16-licensing-legal-packages.md), [17 — staging, QA, security](17-staging-qa-security.md).
 
 Run npm run test:studios and npm run test:licensing. The integration browser workflow also builds all 24 fixture apps before running scripts/studio-final-integration.test.mjs. Actual CI and browser results are attached to the PR, not inferred from historical reports.
 
