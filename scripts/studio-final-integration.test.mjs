@@ -56,12 +56,15 @@ test('INTEGRATION-003 exactly 24 independent entries use the existing canonical 
 test('INTEGRATION-004 preserves every legacy evidence record without upgrading any rights', () => {
   const original = JSON.parse(before('licensing/commercial-rights-evidence.json'));
   assert.equal(original.records.length, 14);
-  assert.equal(records.length, 27);
+  assert.equal(records.length, 32);
   for (const old of original.records) assert.deepEqual(records.find(r => r.id === old.id), old, old.id);
   const oldIds = new Set(original.records.map(r => r.id));
   const added = records.filter(r => !oldIds.has(r.id));
-  assert.equal(added.length, 13);
-  assert.ok(added.every(r => r.id.startsWith('studio-res-') && r.status === 'needs-review'));
+  // 13 derived-output records (one per studio with private data) + 5 official-source records (one per source).
+  assert.equal(added.length, 18);
+  assert.equal(added.filter(r => r.id.startsWith('studio-res-')).length, 13);
+  assert.equal(added.filter(r => r.id.startsWith('studio-src-')).length, 5);
+  assert.ok(added.every(r => r.status === 'needs-review'));
   assert.equal(records.filter(r => r.status === 'verified').length, 0);
 });
 
@@ -69,7 +72,23 @@ test('INTEGRATION-005 resource metadata is valid but every asset remains pending
   const validated = validateResources(resources, json('licensing/resource-manifest.schema.json'));
   assert.equal(validated.ok, true, JSON.stringify(validated.errors));
   assert.equal(resources.sources.length, 5);
-  assert.equal(resources.assets.length, 35);
+  // 35 derived assets shipped in private builds + 26 official raw inputs (parents; logical "source/" paths, never shipped).
+  const parents = resources.assets.filter(a => a.sourceFile), derived = resources.assets.filter(a => !a.sourceFile);
+  assert.equal(derived.length, 35);
+  assert.equal(parents.length, 26);
+  for (const a of parents) {
+    assert.equal(a.sourceFile.sha256, a.sha256, a.id);
+    assert.match(a.path, /^source\//, a.id);
+    assert.equal(a.protected, true, a.id);
+    assert.deepEqual(a.dependsOn, [], a.id);
+  }
+  for (const a of derived) {
+    assert.ok(a.dependsOn.length > 0, a.id + ' has lineage');
+    for (const d of a.dependsOn) assert.equal(parents.find(p => p.id === d.assetId)?.sha256, d.sha256, a.id + ' -> ' + d.assetId);
+    assert.match(a.derivation.pipelineCommit, /^[a-f0-9]{40}$/);
+    assert.notEqual(a.derivation.pipelineCommit, '0'.repeat(40), a.id);
+    assert.match(a.derivation.tool, /^apps\/studios\/tools\/prepare-[a-z0-9-]+\.mjs@sha256:[a-f0-9]{64}$/, a.id);
+  }
   assert.ok(resources.assets.every(a => a.medicalReview.status === 'pending' && a.privacyReview.status === 'pending'));
   assert.ok(resources.assets.every(a => records.some(r => r.id === a.rightsEvidenceRef && r.status !== 'verified')));
   const tracked = git('ls-tree', '-r', '--name-only', 'HEAD').split('\n');

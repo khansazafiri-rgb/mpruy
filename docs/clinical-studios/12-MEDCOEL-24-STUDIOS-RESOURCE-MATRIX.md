@@ -64,6 +64,20 @@ node apps/studios/tools/prepare-ecg.mjs             # raw/ptbxl (official files 
 node apps/studios/tools/prepare-chest-ct.mjs        # raw/lidc (NBIA series)
 node apps/studios/tools/prepare-spine-mri.mjs       # raw/spider (Range-extracted members)
 node apps/studios/tools/prepare-bp3d-region.mjs <studio-id>   # local-data/licensing-quarantine/bp3d-4.0
-node licensing/tools/register-studio-resources.mjs  # writes needs-review records from local provenance
+MEDCOEL_PROCESSING_COMMIT=<sha> node licensing/tools/register-studio-resources.mjs  # parents + derived assets, needs-review records
+npm run studios:reproduce                           # re-hash 26 raw inputs, re-run all tools, compare 35 outputs byte-for-byte
 node apps/studios/scripts/build-all.mjs --private   # private-review builds (never published)
 ```
+
+## E. Provenance model (registry `licensing/resources.v1.json`)
+
+- **Parent assets (26)**: every official raw input actually used (3 SRI24 zips; PTB-XL database CSV + 6×(.hea,.dat); LIDC CT zip +
+  4 SEG zips; 2 SPIDER ZIP members; BodyParts3D 4.0 OBJ archive + 2 tables). Each has `sourceFile {url, member, sha256}`, a
+  logical `source/<sourceId>/…` path (never shipped, `protected: true`) and points to a `studio-src-<source>` rights record.
+- **Derived assets (35)**: the converted files shipped inside private builds. `dependsOn` lists the exact parents with their
+  sha256; `derivation.tool` = `<tool path>@sha256:<tool file digest>`; `derivation.pipelineCommit` = the commit whose tools
+  reproduced every byte (`6e1a1fb8426f2027b01260c1a6f4ecac07e34c29`); `parametersSha256` binds studio, tool and inputs.
+- Rights records: `studio-src-*` (5, one per source) and `studio-res-*` (13, one per studio, depending on its source record).
+  All 18 are `needs-review`; nothing is verified.
+- Reproducibility (2026-11-20, local): parents 26/26 matched, derived 35/35 byte-identical, 0 stale tool digests
+  (`local-data/studio-resources/evidence/reproducibility.json`).

@@ -44,37 +44,98 @@ for (const id of ['brain-anatomy', 'head-neck-anatomy', 'spine-anatomy', 'thorax
   STUDIO_DATA[id] = { source: 'bodyparts3d-dbcls', nature: 'derived', protected: false, licence: 'CC-BY-SA-2.1-JP', kinds: { 'data/model.glb': ['mesh', 'glTF 2.0 binary'], 'data/structures.json': ['terminology', 'JSON'] }, notice: 'data/NOTICE-BodyParts3D.txt' };
 }
 
+/** Official raw inputs (the exact files acquired), one parent asset each. Paths are logical ("source/..."), never shipped. */
+const RAW = path.join(REPO, 'local-data/studio-resources/raw'), BP3D = path.join(REPO, 'local-data/licensing-quarantine/bp3d-4.0');
+function rawInputs(sourceId) {
+  const f = (file, url, member, kind, fmt) => ({ file, url, member, kind, fmt });
+  if (sourceId === 'sri24-nitrc') return [
+    f(path.join(RAW, 'sri24/sri24_anatomy_nifti.zip'), 'https://www.nitrc.org/frs/download.php/4499/sri24_anatomy_nifti.zip', 'sri24_anatomy_nifti.zip', 'volume', 'ZIP of NIfTI-1'),
+    f(path.join(RAW, 'sri24/sri24_labels_nifti.zip'), 'https://www.nitrc.org/frs/download.php/4508/sri24_labels_nifti.zip', 'sri24_labels_nifti.zip', 'annotation', 'ZIP of NIfTI-1'),
+    f(path.join(RAW, 'sri24/sri24_tissue_nifti.zip'), 'https://www.nitrc.org/frs/download.php/4511/sri24_tissue_nifti.zip', 'sri24_tissue_nifti.zip', 'annotation', 'ZIP of NIfTI-1')];
+  if (sourceId === 'ptbxl-physionet') {
+    const recs = ['00000/00003', '00000/00023', '00000/00286', '00000/00903', '02000/02509', '04000/04117'];
+    return [f(path.join(RAW, 'ptbxl/ptbxl_database.csv'), 'https://physionet.org/files/ptb-xl/1.0.3/ptbxl_database.csv', 'ptbxl_database.csv', 'annotation', 'CSV'),
+      ...recs.flatMap(r => ['hea', 'dat'].map(e => f(path.join(RAW, 'ptbxl/records500', r + '_hr.' + e), 'https://physionet.org/files/ptb-xl/1.0.3/records500/' + r + '_hr.' + e, 'records500/' + r + '_hr.' + e, 'waveform', 'WFDB ' + e)))];
+  }
+  if (sourceId === 'lidc-idri-tcia') {
+    const api = 'https://services.cancerimagingarchive.net/nbia-api/services/v1/getImage?SeriesInstanceUID=';
+    return ['CT', 'SEG'].flatMap(m => fs.readdirSync(path.join(RAW, 'lidc', m)).filter(z => z.endsWith('.zip')).sort().map(z => f(path.join(RAW, 'lidc', m, z), api + z.replace(/\.zip$/, ''), m + '/' + z, m === 'CT' ? 'volume' : 'annotation', 'ZIP of DICOM ' + m)));
+  }
+  if (sourceId === 'spider-zenodo') return [
+    f(path.join(RAW, 'spider/1_t2.mha'), 'https://zenodo.org/api/records/10159290/files/images.zip/content', 'images/1_t2.mha', 'volume', 'MetaImage (ZIP member, CRC verified)'),
+    f(path.join(RAW, 'spider/1_t2_mask.mha'), 'https://zenodo.org/api/records/10159290/files/masks.zip/content', 'masks/1_t2.mha', 'annotation', 'MetaImage (ZIP member, CRC verified)')];
+  if (sourceId === 'bodyparts3d-dbcls') return [
+    f(path.join(BP3D, 'isa_BP3D_4.0_obj_99.zip'), 'https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip', 'isa_BP3D_4.0_obj_99.zip', 'mesh', 'ZIP of OBJ'),
+    f(path.join(BP3D, 'isa_element_parts.txt'), 'https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_element_parts.txt', 'isa_element_parts.txt', 'terminology', 'TSV'),
+    f(path.join(BP3D, 'isa_parts_list_e.txt'), 'https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_parts_list_e.txt', 'isa_parts_list_e.txt', 'terminology', 'TSV')];
+  return [];
+}
+const TOOLS = { 'brain-mri': 'apps/studios/tools/prepare-brain-mri.mjs', ecg: 'apps/studios/tools/prepare-ecg.mjs', 'chest-ct': 'apps/studios/tools/prepare-chest-ct.mjs', 'spine-mri': 'apps/studios/tools/prepare-spine-mri.mjs' };
+const toolFor = studio => TOOLS[studio] || 'apps/studios/tools/prepare-bp3d-region.mjs';
+/** Exact processing evidence: the commit whose tool reproduced every registered byte (checked by --verify). */
+const PROCESSING_COMMIT = process.env.MEDCOEL_PROCESSING_COMMIT || '';
+
 const pending = { status: 'pending', reviewer: '', reviewedAt: null, reviewedSha256: null, scope: [], reason: 'Awaiting human review of the exact bytes and intended educational use.' };
 
 export function register() {
   // Evidence entries name the exact release they cover (validator requirement).
+  // Evidence entries name the exact release they cover (validator requirement).
   const resources = { schemaVersion: 1, sources: SOURCES.map(({ note, ...s }) => ({ ...s, evidence: s.evidence.map(e => ({ ...e, release: s.release })) })), assets: [] };
   const evidence = JSON.parse(fs.readFileSync(path.join(REPO, 'licensing/commercial-rights-evidence.json'), 'utf8'));
-  evidence.records = evidence.records.filter(r => !String(r.id).startsWith('studio-res-'));
-  const report = [];
+  evidence.records = evidence.records.filter(r => !String(r.id).startsWith('studio-res-') && !String(r.id).startsWith('studio-src-'));
+  if (!/^[a-f0-9]{40}$/.test(PROCESSING_COMMIT)) throw Error('Set MEDCOEL_PROCESSING_COMMIT to the exact commit whose tools reproduced the outputs');
+  const report = [], parentsBySource = {};
+  const studiosBySource = {};
+  for (const [studio, cfg] of Object.entries(STUDIO_DATA)) (studiosBySource[cfg.source] = studiosBySource[cfg.source] || []).push(studio);
+  // 1. Parent assets: the official raw inputs, hashed now from the retained acquisition.
+  for (const src of SOURCES) {
+    const inputs = rawInputs(src.id).filter(i => fs.existsSync(i.file));
+    if (!inputs.length) continue;
+    const rightsId = 'studio-src-' + src.id, cfg = STUDIO_DATA[studiosBySource[src.id][0]];
+    parentsBySource[src.id] = inputs.map(i => {
+      const b = fs.readFileSync(i.file), h = sha(b);
+      const a = { id: ('src.' + src.id + '.' + i.member).toLowerCase().replace(/[^a-z0-9._-]+/g, '-').slice(0, 100), version: src.release.replace(/[^A-Za-z0-9._-]+/g, '-').slice(0, 60) || '1', datasetId: src.datasetId, sourceRef: src.id,
+        kind: i.kind, dataNature: cfg.nature === 'derived' ? 'population-template' : cfg.nature, format: i.fmt, path: 'source/' + src.id + '/' + i.member.replace(/[^A-Za-z0-9._/-]+/g, '-'), bytes: b.length, sha256: h, protected: true,
+        rightsEvidenceRef: rightsId, attributionRef: rightsId, notice: { path: 'source/' + src.id + '/NOTICE', sha256: null }, dependsOn: [], derivation: null,
+        geometry: i.kind === 'terminology' ? null : { spaceId: 'as distributed by the publisher', units: i.kind === 'waveform' ? 'adu (WFDB header gain to mV)' : 'mm', details: 'Original distribution file; geometry is read by the preparation tool.' },
+        medicalReview: { ...pending }, privacyReview: { ...pending }, sourceFile: { url: i.url, member: i.member, sha256: h } };
+      resources.assets.push(a);
+      return a;
+    });
+    evidence.records.push({ id: rightsId, products: studiosBySource[src.id].map(x => 'studio:' + x), scope: parentsBySource[src.id].map(a => a.path), source: src.publisher + ' — ' + src.officialUrl,
+      sourceRevision: src.release, sourceLicense: cfg.licence, sourceCommercialUse: true, provenance: 'source-confirmed', status: 'needs-review', dependencies: [],
+      evidence: [{ kind: 'upstream-license', url: src.evidence[0].url }],
+      blockingReason: 'Official raw inputs retained privately with exact digests; licence, redistribution and privacy obligations still need a human rights review' + (src.status === 'REVIEW_REQUIRED' ? ' (open question: ' + src.note + ')' : '.') });
+  }
+  // 2. Derived assets: converted outputs bound to their parents with the exact processing commit and tool digest.
   for (const [studio, cfg] of Object.entries(STUDIO_DATA)) {
     const prov = path.join(BUILD, studio, 'provenance.json');
     if (!fs.existsSync(prov)) { report.push({ studio, registered: 0, reason: 'no local provenance' }); continue; }
     const p = JSON.parse(fs.readFileSync(prov, 'utf8'));
     const src = SOURCES.find(s => s.id === cfg.source);
+    const parents = parentsBySource[cfg.source] || [];
     const rightsId = 'studio-res-' + studio;
     const notice = p.outputs[cfg.notice];
+    const tool = toolFor(studio), toolSha = sha(fs.readFileSync(path.join(REPO, tool)));
     const files = Object.entries(p.outputs).filter(([k]) => k.startsWith('data/') && !/NOTICE|LICENSE|dataset\.json/.test(k));
     const scope = [];
     for (const [rel, out] of files) {
+      const onDisk = sha(fs.readFileSync(path.join(BUILD, studio, rel)));
+      if (onDisk !== out.sha256) throw Error('Output on disk differs from provenance: ' + studio + '/' + rel);
       const [kind, format] = (cfg.kinds && cfg.kinds[rel]) || (rel.startsWith('data/cases/') ? ['waveform', 'JSON (WFDB format-16 samples, gain, baseline, fs)'] : ['annotation', 'JSON']);
       scope.push(rel);
       resources.assets.push({ id: (studio + '.' + rel.replace(/^data\//, '').replace(/\//g, '-')).toLowerCase(), version: '1', datasetId: src.datasetId, sourceRef: src.id, kind, dataNature: cfg.nature, format, path: rel,
         bytes: out.bytes, sha256: out.sha256, protected: cfg.protected, rightsEvidenceRef: rightsId, attributionRef: rightsId, notice: { path: cfg.notice, sha256: notice ? notice.sha256 : null },
-        dependsOn: [], derivation: { operation: 'convert', tool: p.tool, toolVersion: '1', pipelineCommit: '0'.repeat(40), parametersSha256: sha(JSON.stringify(p.validation || {})) },
+        dependsOn: parents.map(a => ({ assetId: a.id, version: a.version, sha256: a.sha256 })),
+        derivation: { operation: 'convert', tool: tool + '@sha256:' + toolSha, toolVersion: 'node ' + process.versions.node, pipelineCommit: PROCESSING_COMMIT, parametersSha256: sha(JSON.stringify({ studio, tool, inputs: parents.map(a => a.sha256) })) },
         geometry: kind === 'terminology' ? null : { spaceId: studio.endsWith('anatomy') ? 'BodyParts3D mm (+X patient left)' : kind === 'waveform' ? 'time series' : 'NIfTI RAS mm', units: kind === 'waveform' ? 'mV @ 500 Hz' : 'mm', details: 'See provenance validation (local-data); attestation only, not a parser.' },
         medicalReview: { ...pending }, privacyReview: { ...pending }, sourceFile: null });
     }
     evidence.records.push({ id: rightsId, products: ['studio:' + studio], scope, source: src.publisher + ' — ' + src.officialUrl, sourceRevision: src.release, sourceLicense: cfg.licence,
-      sourceCommercialUse: true, provenance: 'source-confirmed', status: 'needs-review', dependencies: [],
+      sourceCommercialUse: true, provenance: 'source-confirmed', status: 'needs-review', dependencies: parents.length ? ['studio-src-' + src.id] : [],
       evidence: [{ kind: 'upstream-license', url: src.evidence[0].url }],
-      blockingReason: 'Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet' + (src.status === 'REVIEW_REQUIRED' ? '; source licence question open: ' + SOURCES.find(s => s.id === cfg.source).note : '.') });
-    report.push({ studio, registered: files.length, source: src.id, licence: cfg.licence });
+      blockingReason: 'Derived bytes reproduced from the official inputs at ' + PROCESSING_COMMIT.slice(0, 12) + ', but no human rights, privacy and medical review yet' + (src.status === 'REVIEW_REQUIRED' ? '; source licence question open: ' + src.note : '.') });
+    report.push({ studio, registered: files.length, parents: parents.length, source: src.id, licence: cfg.licence });
   }
   fs.writeFileSync(path.join(REPO, 'licensing/resources.v1.json'), JSON.stringify(resources, null, 2) + '\n');
   fs.writeFileSync(path.join(REPO, 'licensing/commercial-rights-evidence.json'), JSON.stringify(evidence, null, 2) + '\n');

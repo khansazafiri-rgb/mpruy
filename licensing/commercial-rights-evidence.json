@@ -449,6 +449,150 @@
       "blockingReason": "Inspect frames/voices, verify recorded content and commercial TTS permissions, and document attribution for any atlas footage; do not assume Anatomy/4D gate covers the entire platform."
     },
     {
+      "id": "studio-src-sri24-nitrc",
+      "products": [
+        "studio:brain-mri"
+      ],
+      "scope": [
+        "source/sri24-nitrc/sri24_anatomy_nifti.zip",
+        "source/sri24-nitrc/sri24_labels_nifti.zip",
+        "source/sri24-nitrc/sri24_tissue_nifti.zip"
+      ],
+      "source": "SRI International / NITRC (Rohlfing et al.) — https://www.nitrc.org/projects/sri24/",
+      "sourceRevision": "NITRC frs release (archives dated 2012-03-12)",
+      "sourceLicense": "CC-BY-SA-3.0",
+      "sourceCommercialUse": true,
+      "provenance": "source-confirmed",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-license",
+          "url": "https://www.nitrc.org/frs/download.php/4499/sri24_anatomy_nifti.zip"
+        }
+      ],
+      "blockingReason": "Official raw inputs retained privately with exact digests; licence, redistribution and privacy obligations still need a human rights review (open question: Licence text inside the official archive: CC BY-SA 3.0 Unported. LPBA40 and AAL-derived label sets are third-party atlases redistributed by the SRI24 authors: upstream terms need legal review.)"
+    },
+    {
+      "id": "studio-src-ptbxl-physionet",
+      "products": [
+        "studio:ecg"
+      ],
+      "scope": [
+        "source/ptbxl-physionet/ptbxl_database.csv",
+        "source/ptbxl-physionet/records500/00000/00003_hr.hea",
+        "source/ptbxl-physionet/records500/00000/00003_hr.dat",
+        "source/ptbxl-physionet/records500/00000/00023_hr.hea",
+        "source/ptbxl-physionet/records500/00000/00023_hr.dat",
+        "source/ptbxl-physionet/records500/00000/00286_hr.hea",
+        "source/ptbxl-physionet/records500/00000/00286_hr.dat",
+        "source/ptbxl-physionet/records500/00000/00903_hr.hea",
+        "source/ptbxl-physionet/records500/00000/00903_hr.dat",
+        "source/ptbxl-physionet/records500/02000/02509_hr.hea",
+        "source/ptbxl-physionet/records500/02000/02509_hr.dat",
+        "source/ptbxl-physionet/records500/04000/04117_hr.hea",
+        "source/ptbxl-physionet/records500/04000/04117_hr.dat"
+      ],
+      "source": "PhysioNet (Wagner et al.) — https://physionet.org/content/ptb-xl/1.0.3/",
+      "sourceRevision": "1.0.3",
+      "sourceLicense": "CC-BY-4.0",
+      "sourceCommercialUse": true,
+      "provenance": "source-confirmed",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-license",
+          "url": "https://physionet.org/files/ptb-xl/1.0.3/LICENSE.txt"
+        }
+      ],
+      "blockingReason": "Official raw inputs retained privately with exact digests; licence, redistribution and privacy obligations still need a human rights review."
+    },
+    {
+      "id": "studio-src-lidc-idri-tcia",
+      "products": [
+        "studio:chest-ct"
+      ],
+      "scope": [
+        "source/lidc-idri-tcia/CT/1.3.6.1.4.1.14519.5.2.1.6279.6001.179049373636438705059720603192.zip",
+        "source/lidc-idri-tcia/SEG/1.2.276.0.7230010.3.1.3.0.89314.1553284067.990548.zip",
+        "source/lidc-idri-tcia/SEG/1.2.276.0.7230010.3.1.3.0.89316.1553284071.471973.zip",
+        "source/lidc-idri-tcia/SEG/1.2.276.0.7230010.3.1.3.0.89355.1553284075.626419.zip",
+        "source/lidc-idri-tcia/SEG/1.2.276.0.7230010.3.1.3.0.89358.1553284079.860324.zip"
+      ],
+      "source": "The Cancer Imaging Archive (LIDC/IDRI consortium) — https://www.cancerimagingarchive.net/collection/lidc-idri/",
+      "sourceRevision": "TCIA collection (updated 2023-11-20)",
+      "sourceLicense": "CC-BY-3.0",
+      "sourceCommercialUse": true,
+      "provenance": "source-confirmed",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-license",
+          "url": "https://services.cancerimagingarchive.net/nbia-api/services/v1/getSeries?Collection=LIDC-IDRI&PatientID=LIDC-IDRI-0001"
+        }
+      ],
+      "blockingReason": "Official raw inputs retained privately with exact digests; licence, redistribution and privacy obligations still need a human rights review."
+    },
+    {
+      "id": "studio-src-spider-zenodo",
+      "products": [
+        "studio:spine-mri"
+      ],
+      "scope": [
+        "source/spider-zenodo/images/1_t2.mha",
+        "source/spider-zenodo/masks/1_t2.mha"
+      ],
+      "source": "Zenodo (van der Graaf et al., Radboudumc) — https://zenodo.org/records/10159290",
+      "sourceRevision": "Zenodo record 10159290",
+      "sourceLicense": "CC-BY-4.0",
+      "sourceCommercialUse": true,
+      "provenance": "source-confirmed",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-license",
+          "url": "https://zenodo.org/api/records/10159290"
+        }
+      ],
+      "blockingReason": "Official raw inputs retained privately with exact digests; licence, redistribution and privacy obligations still need a human rights review."
+    },
+    {
+      "id": "studio-src-bodyparts3d-dbcls",
+      "products": [
+        "studio:brain-anatomy",
+        "studio:head-neck-anatomy",
+        "studio:spine-anatomy",
+        "studio:thorax-anatomy",
+        "studio:heart-anatomy",
+        "studio:abdomen-anatomy",
+        "studio:pelvis-anatomy",
+        "studio:upper-limb-anatomy",
+        "studio:lower-limb-anatomy"
+      ],
+      "scope": [
+        "source/bodyparts3d-dbcls/isa_BP3D_4.0_obj_99.zip",
+        "source/bodyparts3d-dbcls/isa_element_parts.txt",
+        "source/bodyparts3d-dbcls/isa_parts_list_e.txt"
+      ],
+      "source": "Database Center for Life Science (DBCLS) — https://dbarchive.biosciencedbc.jp/en/bodyparts3d/",
+      "sourceRevision": "4.0 (isa_BP3D_4.0_obj_99)",
+      "sourceLicense": "CC-BY-SA-2.1-JP",
+      "sourceCommercialUse": true,
+      "provenance": "source-confirmed",
+      "status": "needs-review",
+      "dependencies": [],
+      "evidence": [
+        {
+          "kind": "upstream-license",
+          "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip"
+        }
+      ],
+      "blockingReason": "Official raw inputs retained privately with exact digests; licence, redistribution and privacy obligations still need a human rights review (open question: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list.)"
+    },
+    {
       "id": "studio-res-brain-mri",
       "products": [
         "studio:brain-mri"
@@ -465,14 +609,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-sri24-nitrc"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://www.nitrc.org/frs/download.php/4499/sri24_anatomy_nifti.zip"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet; source licence question open: Licence text inside the official archive: CC BY-SA 3.0 Unported. LPBA40 and AAL-derived label sets are third-party atlases redistributed by the SRI24 authors: upstream terms need legal review."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet; source licence question open: Licence text inside the official archive: CC BY-SA 3.0 Unported. LPBA40 and AAL-derived label sets are third-party atlases redistributed by the SRI24 authors: upstream terms need legal review."
     },
     {
       "id": "studio-res-ecg",
@@ -494,14 +640,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-ptbxl-physionet"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://physionet.org/files/ptb-xl/1.0.3/LICENSE.txt"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet."
     },
     {
       "id": "studio-res-spine-mri",
@@ -519,14 +667,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-spider-zenodo"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://zenodo.org/api/records/10159290"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet."
     },
     {
       "id": "studio-res-chest-ct",
@@ -544,14 +694,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-lidc-idri-tcia"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://services.cancerimagingarchive.net/nbia-api/services/v1/getSeries?Collection=LIDC-IDRI&PatientID=LIDC-IDRI-0001"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet."
     },
     {
       "id": "studio-res-brain-anatomy",
@@ -568,14 +720,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-bodyparts3d-dbcls"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
     },
     {
       "id": "studio-res-head-neck-anatomy",
@@ -592,14 +746,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-bodyparts3d-dbcls"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
     },
     {
       "id": "studio-res-spine-anatomy",
@@ -616,14 +772,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-bodyparts3d-dbcls"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
     },
     {
       "id": "studio-res-thorax-anatomy",
@@ -640,14 +798,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-bodyparts3d-dbcls"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
     },
     {
       "id": "studio-res-heart-anatomy",
@@ -664,14 +824,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-bodyparts3d-dbcls"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
     },
     {
       "id": "studio-res-abdomen-anatomy",
@@ -688,14 +850,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-bodyparts3d-dbcls"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
     },
     {
       "id": "studio-res-pelvis-anatomy",
@@ -712,14 +876,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-bodyparts3d-dbcls"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
     },
     {
       "id": "studio-res-upper-limb-anatomy",
@@ -736,14 +902,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-bodyparts3d-dbcls"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
     },
     {
       "id": "studio-res-lower-limb-anatomy",
@@ -760,14 +928,16 @@
       "sourceCommercialUse": true,
       "provenance": "source-confirmed",
       "status": "needs-review",
-      "dependencies": [],
+      "dependencies": [
+        "studio-src-bodyparts3d-dbcls"
+      ],
       "evidence": [
         {
           "kind": "upstream-license",
           "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip"
         }
       ],
-      "blockingReason": "Acquired from the official source with retained licence evidence and checksums, but the exact derived bytes have no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
+      "blockingReason": "Derived bytes reproduced from the official inputs at 6e1a1fb8426f, but no human rights, privacy and medical review yet; source licence question open: OBJ headers: CC BY-SA 2.1 Japan; DBCLS website (2025-02-27): CC BY 4.0. Discrepancy unresolved; SA 2.1 JP is not on the B1 allow-list."
     }
   ]
 }
