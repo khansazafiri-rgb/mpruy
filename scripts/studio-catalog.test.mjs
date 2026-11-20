@@ -3,74 +3,22 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
+import { validateSchema } from '../packages/studio-contract/validation.mjs';
+import { validateCatalog } from '../packages/studio-contract/manifest.mjs';
 
 const read = (p) => JSON.parse(readFileSync(new URL('../' + p, import.meta.url), 'utf8'));
 const catalog = read('shared/studios/catalog.v1.json');
 const schema = read('shared/studios/catalog.schema.json');
 const frozen = read('shared/studios/frozen-ids.json').ids;
 
-// Minimal JSON Schema (2020-12 subset used by catalog.schema.json): $ref, type, const, enum, pattern,
-// minLength/maxLength, minItems, uniqueItems, items, required, properties, additionalProperties: false.
-function validate(node, value, path = '$', errors = []) {
-  if (node.$ref) return validate(node.$ref.replace('#/$defs/', '').split('/').reduce((n, k) => n[k], schema.$defs), value, path, errors);
-  const fail = (msg) => errors.push(`${path}: ${msg}`);
-  const typeOf = (v) => (v === null ? 'null' : Array.isArray(v) ? 'array' : Number.isInteger(v) ? 'integer' : typeof v);
-  if (node.type) {
-    const types = [].concat(node.type), t = typeOf(value);
-    if (!types.includes(t) && !(t === 'integer' && types.includes('number'))) { fail(`type ${t}, expected ${types}`); return errors; }
-  }
-  if ('const' in node && value !== node.const) fail(`must be ${JSON.stringify(node.const)}`);
-  if (node.enum && !node.enum.includes(value)) fail(`${JSON.stringify(value)} not in ${node.enum.join('|')}`);
-  if (typeof value === 'string') {
-    if (node.pattern && !new RegExp(node.pattern).test(value)) fail(`does not match ${node.pattern}`);
-    if (node.minLength !== undefined && value.length < node.minLength) fail('too short');
-    if (node.maxLength !== undefined && value.length > node.maxLength) fail('too long');
-  }
-  if (Array.isArray(value)) {
-    if (node.minItems !== undefined && value.length < node.minItems) fail('too few items');
-    if (node.uniqueItems && new Set(value.map((v) => JSON.stringify(v))).size !== value.length) fail('duplicate items');
-    if (node.items) value.forEach((v, i) => validate(node.items, v, `${path}[${i}]`, errors));
-  }
-  if (value && typeof value === 'object' && !Array.isArray(value)) {
-    for (const k of node.required || []) if (!(k in value)) fail(`missing ${k}`);
-    for (const [k, v] of Object.entries(value)) {
-      if (node.properties?.[k]) validate(node.properties[k], v, `${path}.${k}`, errors);
-      else if (node.additionalProperties === false) fail(`unknown field ${k}`);
-    }
-  }
-  return errors;
+// Reuse the implementation package; do not maintain a test-only policy engine.
+function validate(schema, value) {
+  const r = validateSchema(schema, value);
+  return r.ok ? [] : r.errors.map(e => e.path + ': ' + e.message);
 }
-
-/** Catalog-level invariants that no schema can express. Returns a list of problems. */
-function invariants(cat) {
-  const problems = [];
-  const ids = cat.studios.map((s) => s.id);
-  if (new Set(ids).size !== ids.length) problems.push('duplicate studio id (and therefore duplicate /lab/studio/:id route)');
-  for (const s of cat.studios) {
-    const where = `studio ${s.id}`;
-    const internal = s.internal === true;
-    if (internal !== (s.region === 'internal')) problems.push(`${where}: region "internal" is reserved for internal studios`);
-    if (internal !== (s.modality === 'none')) problems.push(`${where}: modality "none" is reserved for internal studios`);
-    if (internal && (s.access.roles.length !== 1 || s.access.roles[0] !== 'admin')) problems.push(`${where}: internal studios are admin-only`);
-    // A declared (executable) capability needs a release; nothing is executable in a catalog without a release.
-    if (s.capabilities.length && !s.runtime.releaseId) problems.push(`${where}: capabilities declared without a release`);
-    // STUDIO-004: publishable requires a runtime entry and release, verified licence, approved or not-required reviews, no blockers.
-    if (s.release.status === 'publishable') {
-      const reviewed = ['approved', 'not-required'];
-      if (!s.runtime.entry || !s.runtime.releaseId) problems.push(`${where}: publishable without runtime entry/release`);
-      if (s.licensing.status !== 'verified') problems.push(`${where}: publishable with licence ${s.licensing.status}`);
-      if (!reviewed.includes(s.review.clinical) || !reviewed.includes(s.review.anatomical)) problems.push(`${where}: publishable without approved review`);
-      if (s.blockers.length) problems.push(`${where}: publishable with blockers`);
-      if (s.datasets.some((d) => d.licence !== 'verified')) problems.push(`${where}: publishable with unverified or restricted datasets`);
-    }
-    if ((s.review.clinical === 'approved' || s.review.anatomical === 'approved') && !(s.review.approvedBy && s.review.approvedOn)) {
-      problems.push(`${where}: an approval needs approvedBy and approvedOn`);
-    }
-    // Restricted or protected data must be visible as a blocker, never silently listed.
-    if (s.datasets.some((d) => d.licence === 'restricted') && !s.blockers.length) problems.push(`${where}: restricted dataset without a blocker`);
-    if (s.licensing.status === 'blocked' && !s.blockers.some((b) => b.kind === 'licence')) problems.push(`${where}: licence blocked without a licence blocker`);
-  }
-  return problems;
+function invariants(value) {
+  const r = validateCatalog(value, schema);
+  return r.ok ? [] : r.errors.map(e => e.path + ': ' + e.message);
 }
 
 test('STUDIO-002: the catalog conforms to catalog.schema.json', () => {
@@ -142,3 +90,4 @@ test('the catalog does not touch existing Lab tracks or step keys', () => {
   const trackKeys = new Set(tracks.map((t) => t.key));
   for (const s of catalog.studios) assert.ok(!trackKeys.has(s.id), `${s.id} must not reuse a track key`);
 });
+

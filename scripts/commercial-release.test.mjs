@@ -53,6 +53,15 @@ test('an owner override must be complete, honest and unexpired', () => {
   assert.match(ownerOverrideProblem(goodOverride({ expiresOn: 'soon' }), NOW), /dates/);
 });
 
+test('strict callers reject owner override without changing the legacy default', async (t) => {
+  const dir = await mkdtemp(path.join(os.tmpdir(), 'strict-commercial-'));
+  t.after(() => rm(dir, { recursive: true, force: true }));
+  await writeFile(path.join(dir, 'index.html'), 'engineering only');
+  const manifest = await manifestVariant(dir, p => { p.ownerOverride = goodOverride(); });
+  assert.equal(assertCommercialReleaseReady('atlas-viewer', dir, manifest, { now: NOW }).rightsVerified, false);
+  assert.throws(() => assertCommercialReleaseReady('atlas-viewer', dir, manifest, { now: NOW, allowOwnerOverride: false }), /Commercial release blocked/);
+});
+
 test('an expired or invalid override blocks the release again, naming the real blockers', async (t) => {
   const dir = await mkdtemp(path.join(os.tmpdir(), 'commercial-expired-')); t.after(() => rm(dir, { recursive: true, force: true }));
   await writeFile(path.join(dir, 'index.html'), 'x');
@@ -98,3 +107,4 @@ test('staging a locally valid Lab fixture is refused without an owner override a
   assert.equal(staged.commercialRights.rightsVerified, false);
   assert.match(staged.commercialRights.warning, /NOT verified/);
 });
+

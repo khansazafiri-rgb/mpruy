@@ -10,10 +10,13 @@
 | 4D Lab atlas-derived CT/labels | `apps/4d-lab/public/data/atlas` | CC BY-SA adaptation, inferred provenance | Through the 4D Lab only |
 | 4D Lab scenarios (pericardial, effusion, ascites, retention, gastroparesis, hfref) | `src/sim/pathology.js` | Educational approximation; **no clinical sign-off recorded** | Studio `review.clinical = pending` |
 | ECG schematic module | `/lab/ekg` | Server gate closed to students pending clinical review | Not until the gate opens |
-| BodyParts3D | `local-data/` (gitignored) | Licence discrepancy (CC BY 4.0 vs CC BY-SA 2.1 JP) | No (local review only) |
+| BodyParts3D Current Archive 4.0 | Official DBCLS source; local candidates stay private | Current official archive declares CC BY 4.0; this does not relicense older mixed BodyParts3D/Z-Anatomy derivatives or NC application code | Source candidate only; exact bytes/provenance/medical/privacy clearance still required |
 | CTACardio, EchoNet, IT'IS ViP, TotalSegmentator weights | local only | **Restricted** | Never committed or served |
 | Real CT / MRI / X-ray series | — | **None in repository** | Missing; must be sourced with documented rights + review before any CT/MRI/X-ray studio leaves `planned` |
 | Foundation fixture content | to be created | Original neutral test shapes/text | Yes (internal only) |
 
 Delivery: everything under Caddy `file_server` is **public**. No protected dataset may be placed under `/studio-assets/`;
 protected delivery needs an authorised endpoint (out of Loop 1 scope).
+
+
+B1 adds an empty source/asset index and offline checks, not dataset acquisition or new rights approvals. See `07-resource-reconciliation-pr-b.md`.

@@ -20,11 +20,15 @@ Check: `npm run test:studios`.
 
 | PR | Scope | State |
 |---|---|---|
-| A | Documents + catalog + catalog checks | this PR |
-| B | Contract package, availability resolver (web + PocketBase hook), studios API | not started |
+| A | Documents + catalog + catalog checks | merged as PR #224 |
+| B1 | Resource/catalog contracts and offline clearance validation | Draft implementation; see 07 |
+| B2 | Availability resolver (web + PocketBase hook), studios API | not started; separate ACC |
 | C | Runtime, template, internal fixture, studio host and route | not started |
 | D | Lab Hub section, studio cards | not started |
 | E | Security hardening, test consolidation, release docs | not started |
 
 Rules: no merge or deployment without the owner; no PocketBase migration in Loop 1; `deploy/`, `apps/anatomy`, `apps/4d-lab`,
 `shared/lab-tracks.json` and lockfiles are not changed; no withheld or restricted data is used.
+
+
+Resource reconciliation and B1 contracts: [07-resource-reconciliation-pr-b.md](07-resource-reconciliation-pr-b.md).

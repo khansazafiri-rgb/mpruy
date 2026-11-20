@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -24,6 +26,10 @@ jobs:
         run: npm run lint
       - name: Tes unit (konten kaya + format impor)
         run: npm test
+      - name: Clinical studio contracts and offline resource clearance
+        env:
+          STUDIOS_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: npm run test:studios
       - name: Build web
         run: npm run build
       - name: Hermes delivery and import workflows
@@ -70,3 +76,4 @@ jobs:
           MEDCOEL_DEV_MODE=1 ./pocketbase serve --http=127.0.0.1:8092 --dir="$STUDY_DB" --migrationsDir=./pb_migrations --hooksDir=./pb_hooks --hooksWatch=false &
           for i in $(seq 1 30); do curl -sf http://127.0.0.1:8092/api/health && break; sleep 1; done
           PB_URL=http://127.0.0.1:8092 PB_SU_EMAIL=study@medcoel.test PB_SU_PASSWORD=study-test-password-123 node test/study-api.test.mjs
+

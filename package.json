@@ -9,7 +9,7 @@
     "lint": "npm run lint --prefix apps/web",
     "test": "npm run test --prefix apps/web && npm run test --prefix apps/pocketbase",
     "test:anatomy-integration": "node --test scripts/anatomy-*.test.mjs",
-    "test:studios": "node --test scripts/studio-catalog.test.mjs",
+    "test:studios": "node --test scripts/studio-catalog.test.mjs scripts/studio-catalog-history.test.mjs scripts/studio-resources.test.mjs packages/studio-contract/test/*.test.mjs",
     "preview:anatomy": "node scripts/anatomy-preview-server.mjs",
     "stage:anatomy": "node scripts/stage-anatomy.mjs",
     "build:anatomy": "npm run build --prefix apps/anatomy -- --base=/anatomy/viewer/",

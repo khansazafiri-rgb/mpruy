@@ -28,8 +28,10 @@ const validEvidenceURL = url => /^https:\/\/[a-z0-9.-]+(?:\/[^\s]*)?$/i.test(url
  * Verification requires written/version-specific rights evidence and independent
  * review. No boolean or status edit can establish ownership on its own.
  */
-export function inspectCommercialEvidence(data, { verifyLocal = false, root = ROOT, atlasPackage = null } = {}) {
+export function inspectCommercialEvidence(data, { verifyLocal = false, root = ROOT, atlasPackage = null, studioIds = [] } = {}) {
   const faults = [];
+  const knownProducts = new Set(KNOWN_PRODUCTS);
+  for (const id of studioIds) if (typeof id === 'string' && /^[a-z][a-z0-9-]{2,40}$/.test(id)) knownProducts.add('studio:' + id);
   const fail = detail => faults.push(detail);
   if (data?.schemaVersion !== 1 || !Array.isArray(data.records))
     throw new Error('Commercial rights evidence: invalid inventory schema.');
@@ -37,7 +39,7 @@ export function inspectCommercialEvidence(data, { verifyLocal = false, root = RO
   for (const r of records) {
     if (!r || !text(r.id) || byId.has(r.id)) { fail('Missing or duplicate asset ID: ' + r?.id); continue; }
     byId.set(r.id, r);
-    if (!Array.isArray(r.products) || !r.products.length || !r.products.every(p => KNOWN_PRODUCTS.has(p)))
+    if (!Array.isArray(r.products) || !r.products.length || !r.products.every(p => knownProducts.has(p)))
       fail(r.id + ': missing or unknown product scope');
     if (!Array.isArray(r.scope) || !r.scope.length || !r.scope.every(text))
       fail(r.id + ': missing file scope');
@@ -77,6 +79,17 @@ export function inspectCommercialEvidence(data, { verifyLocal = false, root = RO
   for (const id of REQUIRED_IDS) if (!byId.has(id)) fail('Missing mandatory audit component: ' + id);
   for (const r of records) for (const id of r.dependencies || []) if (!byId.has(id) || id === r.id)
     fail(r.id + ': unknown or self dependency ' + id);
+  // Reject multi-node cycles even in a pending worklist; statuses cannot hide a cycle.
+  const visiting = new Set(), done = new Set();
+  function visit(id) {
+    if (visiting.has(id)) { fail('Rights dependency cycle: ' + id); return; }
+    if (done.has(id)) return;
+    visiting.add(id);
+    const dependencies = byId.get(id)?.dependencies;
+    for (const dep of Array.isArray(dependencies) ? dependencies : []) if (byId.has(dep)) visit(dep);
+    visiting.delete(id); done.add(id);
+  }
+  for (const id of byId.keys()) visit(id);
   for (const sys of MODEL_SYSTEMS) {
     const id = 'model-' + sys, r = byId.get(id);
     if (!r?.scope?.includes('apps/anatomy/public/models/' + sys + '.glb'))
@@ -97,7 +110,7 @@ export function inspectCommercialEvidence(data, { verifyLocal = false, root = RO
   const statusCounts = { verified: 0, blocked: 0, 'needs-review': 0 };
   for (const r of records) statusCounts[r.status]++;
   const products = {};
-  for (const product of KNOWN_PRODUCTS) {
+  for (const product of knownProducts) {
     const relevant = records.filter(r => r.products.includes(product));
     products[product] = {
       total: relevant.length,
@@ -121,3 +134,4 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     }
   } catch (error) { console.error(error.message); process.exitCode = 1; }
 }
+

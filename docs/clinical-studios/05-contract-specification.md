@@ -104,3 +104,20 @@ staged by a script like `stage-4d-lab.mjs` (atomic switch, rollback, licence dis
 with normalisation (`registry.normalise`), language sets id/en/la, synonyms, Damerau–Levenshtein ≤ 1 for terms ≥ 6 chars
 (≤ 2 for ≥ 12), and a deny-list so that confusable pairs (e.g. *ulna/ulnar*, left/right) are never "typo-accepted".
 Terminology source: a reviewed dataset (not yet existing for Indonesian). Existing Identify/Find remain unchanged.
+
+
+## PR-B1 resource binding (offline only)
+
+Implemented catalog/resource validators are reusable under `packages/studio-contract`; runtime and API remain later work.
+Source status is separate from exact asset clearance. `licensing/resources.v1.json` begins empty and refers to the original
+commercial-rights ledger rather than copying its approvals. See `07-resource-reconciliation-pr-b.md` for schema fields.
+
+A studio release additionally binds `resourceManifestSha256` and exact `assetRefs` (id/version/hash); the actual
+`resource-manifest.json` is enumerated in `files[]`. Every delivered code/data/dependency file needs rights coverage.
+Studio product policy keys are `studio:<canonical-id>`, explicitly referenced by the catalog licensing ref. The offline
+inspector calls the existing release checker with `allowOwnerOverride:false`. No runtime/staging enforcement is added
+until B2/PR-C wires this result. Existing catalog entries, IDs, gates and legacy product policies are unchanged.
+
+The future resolver must filter access before exposing blocker details for inaccessible studios (the ordering in section 2
+must not leak admin-only metadata). A catalog flag, installed release environment variable, or HTTP 200 is never sufficient
+rights or launch approval. B1 does not implement that resolver.
