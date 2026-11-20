@@ -36,8 +36,8 @@ async function start(launch, post) {
   await viewer.load(volumes);
   if (dataset.window) viewer.setWindow(0, dataset.window[0], dataset.window[1]);
   if (!challenge && dataset.labels) {
-    const [labelVol, imageVol, table] = await Promise.all([getVolume('./' + dataset.labels), getVolume('./' + dataset.image), getJson('./' + dataset.labelTable)]);
-    if (!sameGrid(labelVol, imageVol)) throw Error('Overlay grid differs from image: overlay disabled');
+    const [labelVol, table] = await Promise.all([getVolume('./' + dataset.labels), getJson('./' + dataset.labelTable)]);
+    if (!sameGrid(viewer.loadedGrid(0), labelVol, 1e-3)) throw Error('Overlay grid differs from image: overlay disabled');
     structures = table.structures;
     viewer.setLabelVolume(labelVol);
     viewer.setLabelColormap(1, structures);

@@ -14,7 +14,7 @@ export const MODE_LABEL = { explore: 'Explore', guided: 'Guided', challenge: 'Ch
 
 /** Standard studio frame: identity, data-status banner, workspace, side panel, status line. */
 export function studioFrame({ title, modality, mode, dataNotice }) {
-  const status = el('p', { class: 'studio-status', role: 'status', 'aria-live': 'polite' }, 'Memuat…');
+  const status = el('p', { class: 'studio-status', role: 'status', 'aria-live': 'polite', 'data-testid': 'studio-status' }, 'Memuat…');
   const panel = el('aside', { class: 'studio-panel', 'aria-label': 'Panel belajar' });
   const workspace = el('main', { class: 'studio-workspace' });
   const header = el('header', { class: 'studio-head' },
