@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 export default function StudioHost({ launch }) {
   const frame = useRef(null);
   const [manifest, setManifest] = useState(null);
+  const [armed, setArmed] = useState(false);
   const [status, setStatus] = useState('Memeriksa manifest studio…');
   const { studioId: id, releaseId: release, runtime } = launch || {};
   const path = '/studio-assets/' + id + '/' + release + '/';
@@ -28,10 +29,9 @@ export default function StudioHost({ launch }) {
   }, [id, path, release, valid]);
   useEffect(() => {
     if (!manifest || !valid) return undefined;
-    const target = frame.current;
     let port = null, sessionReady = false;
     const onMessage = event => {
-      if (event.origin !== window.location.origin || event.source !== target?.contentWindow) return;
+      if (event.origin !== window.location.origin || event.source !== frame.current?.contentWindow) return;
       if (event.data?.v !== 1 || event.data?.type !== 'studio.hello' || sessionReady) return;
       sessionReady = true;
       const channel = new MessageChannel();
@@ -41,13 +41,14 @@ export default function StudioHost({ launch }) {
         if (message.data.type === 'studio.ready' && message.data.payload?.releaseId === release) setStatus('Studio siap digunakan.');
         if (message.data.type === 'studio.error') setStatus('Studio mengalami masalah. Kembali ke Lab jika perlu.');
       };
-      target.contentWindow.postMessage({v: 1, type: 'host.launch', launch: launch.context}, window.location.origin, [channel.port2]);
+      frame.current.contentWindow.postMessage({v: 1, type: 'host.launch', launch: launch.context}, window.location.origin, [channel.port2]);
     };
     window.addEventListener('message', onMessage);
+    setArmed(true);
     return () => { window.removeEventListener('message', onMessage); port?.close(); };
   }, [manifest, launch, release, valid]);
   return <div className="space-y-2">
     <p role="status" className="text-sm text-ink-muted">{status}</p>
-    {manifest && valid && <iframe ref={frame} className="h-[min(72vh,850px)] w-full rounded-xl border border-line" title={id + ' Clinical Studio'} src={runtime.entry} referrerPolicy="same-origin" />}
+    {manifest && valid && armed && <iframe ref={frame} className="h-[min(72vh,850px)] w-full rounded-xl border border-line" title={id + ' Clinical Studio'} src={runtime.entry} referrerPolicy="same-origin" />}
   </div>;
 }
