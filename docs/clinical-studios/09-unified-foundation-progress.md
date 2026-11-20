@@ -13,12 +13,13 @@ Status: **in progress**. This branch is intentionally not a production release.
 - MEDCOEL Lab Hub link, status-only Clinical Studio catalog, guarded entry page and manifest-checking first-party iframe host.
 - Unit and local PocketBase HTTP tests for expected catalog visibility, query rejection, path traversal and launch prerequisites.
 - Independent engineering-only Vite fixture under `apps/studios/foundation-fixture`, built and inventoried locally by CI without publishing.
+- Standalone reviewed-terminology typed grader for Indonesian/English/Latin, synonyms, minor typos and laterality safeguards (not connected to student UI).
 
 ## Explicitly NOT implemented / NOT approved
 
 - HMAC clearance receipt issuer/verifier and immutable installation attestation.
 - Real studio bundles, built viewers, clinical datasets, medical/rights approval or private asset authorization.
-- Guided/Challenge evaluator and typed anatomy scoring (prior work only specified contracts).
+- Guided/Challenge clinical case evaluator and student-facing typed-anatomy UI. A standalone typed-answer grading contract exists, but no reviewed terminology pack or clinical scoring activation.
 - Any production secret, migration, Caddy route, dataset download, auto merge or deploy.
 
 ## Security invariant
