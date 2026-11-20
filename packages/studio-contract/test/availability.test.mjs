@@ -61,15 +61,15 @@ test('source flags or injected trusted assertions cannot open an unpublished stu
   assert.equal(core.resolve(catalog.studios.find(s=>s.id==='brain-mri'), user, t).canLaunch, false);
 });
 test('safe launch paths reject external or traversal redirects', () => {
-  for (const x of ['https://example.com/index.html','//example.com/index.html','studio-assets/brain-mri/rel/../index.html','studio-assets/brain-mri/rel/%2e%2e/index.html','studio-assets/brain-mri/rel/index.html?force=1']) assert.equal(core.safeEntry(x, 'brain-mri', 'rel'), false);
-  assert.equal(core.safeEntry('studio-assets/brain-mri/rel/index.html', 'brain-mri', 'rel'), true);
+  for (const x of ['https://example.com/index.html','//example.com/index.html','../index.html','%2e%2e/index.html','index.html?force=1']) assert.equal(core.safeEntry(x, 'brain-mri', 'rel'), false);
+  assert.equal(core.safeEntry('index.html', 'brain-mri', 'rel'), true);
 });
 const fixture = () => {
   const f = clone(catalog.studios.find(s=>s.id==='brain-mri'));
   f.release.status='publishable';
   f.licensing={status:'verified', ref:'licensing/commercial-release.json#studio:brain-mri'};
   f.review={clinical:'approved',anatomical:'approved'};
-  f.runtime={type:'iframe',entry:'studio-assets/brain-mri/rel/index.html',releaseId:'rel'};
+  f.runtime={type:'iframe',entry:'index.html',releaseId:'rel'};
   f.capabilities=['slice-navigation'];
   f.datasets=[];
   const hash='a'.repeat(64), digest='b'.repeat(64);
