@@ -19,7 +19,11 @@ function queryFromRequest(e) {
   // The URL query map preserves repeated keys as arrays, unlike query.get().
   try {
     const data = JSON.parse(toString(e.request.url.query()));
-    return data && typeof data === 'object' && !Array.isArray(data) ? data : {};
+    if (!data || typeof data !== 'object' || Array.isArray(data)) return {};
+    // PocketBase URL values encode a single query value as a one-element array.
+    // Preserve >1 entries so the strict resolver rejects duplicate parameters.
+    for (const key of Object.keys(data)) if (Array.isArray(data[key]) && data[key].length === 1) data[key] = data[key][0];
+    return data;
   } catch (_) { return e.requestInfo().query || {}; }
 }
 function list(e) {
