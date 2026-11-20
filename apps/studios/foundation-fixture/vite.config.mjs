@@ -2,6 +2,6 @@ import { defineConfig } from 'vite';
 // Build-only fixture: no publication, route, secrets, medical data or license approval.
 export default defineConfig({
   root: new URL('.', import.meta.url).pathname,
-  base: '/studio-assets/foundation-fixture/fixture-release/',
+  base: './', // served from /api/medcoel/studio-assets/<id>/<release>/ by the authorised delivery route
   build: { outDir: 'dist', emptyOutDir: true },
 });
