@@ -8,7 +8,10 @@
     "structure-identification"
   ],
   "challengeRestricted": [
-    "data/annotations-1.json"
+    "data/annotations-1.json",
+    "data/annotations-2.json",
+    "data/annotations-3.json",
+    "data/annotations-4.json"
   ],
   "privateData": "local-data/studio-resources/build/chest-xray",
   "fixtureTool": "tools/make-image-fixture.mjs"
