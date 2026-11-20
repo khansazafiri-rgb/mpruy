@@ -15,9 +15,15 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
 const read = p => fs.readFileSync(path.join(root, p), 'utf8');
 const json = p => JSON.parse(read(p));
-const base = process.env.STUDIOS_INTEGRATION_BASE_SHA || 'c489f724d7ad926f6b6083f60556ebecbcfa89d6';
+// Two references: the pinned PRE-INTEGRATION commit (legacy state before any studio integration; every "legacy unchanged"
+// comparison uses it) and the trusted CI event base (the PR base). The pinned commit must be an ancestor of the event base,
+// so a later PR (whose base already contains #233) still compares legacy code against the same original bytes.
+const PRE_INTEGRATION = 'c489f724d7ad926f6b6083f60556ebecbcfa89d6';
+const eventBase = process.env.STUDIOS_INTEGRATION_BASE_SHA || PRE_INTEGRATION;
+assert.match(eventBase, /^[a-f0-9]{40}$/);
+git('merge-base', '--is-ancestor', PRE_INTEGRATION, eventBase);
+const base = PRE_INTEGRATION;
 const source = '970f6435790b7b1add33467226440ea7b6d840fa';
-assert.match(base, /^[a-f0-9]{40}$/);
 const before = p => execFileSync('git', ['show', base + ':' + p], { cwd: root, encoding: 'utf8' });
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
 const catalog = json('shared/studios/catalog.v1.json');
@@ -27,7 +33,7 @@ const records = json('licensing/commercial-rights-evidence.json').records;
 const summaries = [];
 
 test('INTEGRATION-001 preserves target and original WS1-WS5 ancestry', () => {
-  for (const ref of [base, source, '9d047551e052fd9de19dbcc1520086a527be891f',
+  for (const ref of [base, eventBase, source, '9d047551e052fd9de19dbcc1520086a527be891f',
     '612b2d63455989a959898d5cecf4e898006db045', '46fbdab5ed2a79e73ad37401f961f4a4660cc20f',
     '3dca0c6025a470b73c8a7fbbe53a7bbe7bab79d5']) git('merge-base', '--is-ancestor', ref, 'HEAD');
 });
@@ -183,7 +189,7 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
 });
 
 after(() => {
-  const report = { commit: git('rev-parse', 'HEAD'), base, source, canonicalStudios: clinical.length,
+  const report = { commit: git('rev-parse', 'HEAD'), base, eventBase, source, canonicalStudios: clinical.length,
     registry: { sources: resources.sources.length, assets: resources.assets.length,
       registeredAssetBytes: resources.assets.reduce((sum, a) => sum + a.bytes, 0),
       registeredBytesAreNotServerInstallation: true },
