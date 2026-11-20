@@ -31,6 +31,7 @@ export default function LabHub() {
         <div className="mt-3 flex flex-wrap gap-2">
           <Link className="btn btn-paper btn-sm" to="/anatomy/explore"><Box size={16} aria-hidden /> Atlas 3D</Link>
           {data.live !== 'missing' && <Link className="btn btn-paper btn-sm" to="/anatomy/live"><ScanLine size={16} aria-hidden /> Live 4D Lab</Link>}
+          <Link className="btn btn-paper btn-sm" to="/lab/studios"><Layers size={16} aria-hidden /> Clinical Studios</Link>
           <a className="btn btn-paper btn-sm" href="#lab-index"><Layers size={16} aria-hidden /> Semua materi Lab</a>
         </div>
       </div>
