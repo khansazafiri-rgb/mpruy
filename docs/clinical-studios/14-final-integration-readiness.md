@@ -10,7 +10,7 @@ Date: 2026-11-20. Integration PR: #233 (Draft). No merge, production deployment,
 - The target and merge-base trees are exactly identical: 32fa44f2e49fc6ba767297dd211d571e7257f937.
 - Source was four original commits ahead and one merge commit behind. A two-parent merge, with target as first parent, safely reuses source tree 9d920dc16113fe09e20f415315f5851f03abcba9.
 - Original WS1–WS5 commits are retained, not cherry-picked or recreated. The nested merge commits from #229–#232 are not required to reproduce their already-ancestral implementation commits.
-- Additional integration changes are limited to validation, an API regression assertion, CI and documentation. No engine, viewer or legacy runtime is rewritten.
+- Additional integration changes are limited to validation, an API regression assertion, one browser navigation setup, CI and documentation. No engine, viewer or legacy runtime is rewritten.
 
 ## What is integrated
 
@@ -48,7 +48,7 @@ The existing CI runs on the integration commit: web, PocketBase units, Studio/B1
 New .github/workflows/studios-integration.yml adds:
 1. INTEGRATION-001…008: ancestry, untouched catalog/policies/legacy, 14 old rights records, 35 pending assets, 24 apps, exact build manifests/bytes and closed user/admin decisions.
 2. Real Chromium fixture smoke for every app in Explore and Guided (48 page loads), plus generic 2D/volume Guided flows.
-3. Unmodified 4D UX browser assertions on the target base and integration head, in separate jobs. Their real failures remain failed checks, with JSON/log artifacts. Tracked historical results are deleted before testing; fresh evidence binds the run ID, attempt, checkout SHA, execution time, result hash and actual exit code, and all 16 original assertions must execute.
+3. The same 4D UX assertion harness on the target base and integration head, in separate jobs. A single layout navigation setup uses domcontentloaded with an explicit 180-second navigation budget, followed by the existing 180-second app-readiness assertion; the old default 30-second load wait timed out on CI before layout assertions. Every legacy assertion is byte-identical after normalising this one navigation setup, enforced by INTEGRATION-008. Their real failures remain failed checks, with JSON/log artifacts. Tracked historical results are deleted before testing; fresh evidence binds the run ID, attempt, checkout SHA, execution time, result hash, common harness hash/commit and actual exit code, and all 16 original assertions must execute. Artifact names include the run attempt; earlier evidence is retained and never overwritten.
 4. A comparison job rejects missing tests/results or any newly failing 4D assertion. Passing this comparison does not turn raw failed tests green.
 
 The real PocketBase studios-api suite now attempts launch for every visible studio, with both real user/admin accounts, and asserts 409 without a launch URL.
@@ -57,7 +57,7 @@ Browser jobs pin Ubuntu 24.04 and Playwright 1.56.1 in RUNNER_TEMP only; no proj
 
 Actual results live in the PR checks, logs and final PR description. Historical WS results in documents 10/12/13 are not fresh integration results.
 
-The three previously recorded 4D UX failures (tri-planar/pad, pathology/pericardial, keyboard ArrowUp superior) are not removed, skipped or repaired in this integration. Report actual new totals, even if they differ from historical 13/16. Safari/iPad hardware and real GPU coverage are still outstanding. Standalone fixture browser smoke and real secure API tests do not prove every studio viewer renders through the authenticated host under production CSP; this remains a staging acceptance gate.
+The three previously recorded 4D UX failures (tri-planar/pad, pathology/pericardial, keyboard ArrowUp superior) are not removed, skipped or repaired in this integration. Their assertions are unchanged; the navigation setup adjustment is independent of these failures. Report actual new totals, even if they differ from historical 13/16. Safari/iPad hardware and real GPU coverage are still outstanding. Standalone fixture browser smoke and real secure API tests do not prove every studio viewer renders through the authenticated host under production CSP; this remains a staging acceptance gate.
 
 ## Build and resource-manifest consistency
 

@@ -280,7 +280,7 @@ for (const [name, dev] of [['laptop', { viewport: { width: 1280, height: 800 } }
     const c = await browser.newContext({ ...dev }), p = await c.newPage(), errs = [];
     await p.addInitScript(() => { try { for (const k of ['medcoel-4dlab-tour-v2', 'medcoel-4dlab-tour-v3']) localStorage.setItem(k, 'done'); } catch { /* ignore */ } });
     p.on('pageerror', (e) => errs.push(e.message));
-    await p.goto(url); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
+    await p.goto(url, { waitUntil: 'domcontentloaded', timeout: 180000 }); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });
     await p.waitForFunction(() => ['ready', 'unavailable'].includes(window.__lab.atlasState), null, { timeout: 240000 });
     assert.ok(await p.getByTestId('pad-superior').isVisible());
     assert.deepEqual(await truncated(p, '.probe-pad button, .probe-pad select, .monitor-toolbar > button, .ws-nav button'), [], 'no clipped controls');

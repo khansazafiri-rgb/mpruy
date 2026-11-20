@@ -64,7 +64,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: studio-integration-technical-results
+          name: studio-integration-technical-results-attempt-${{ github.run_attempt }}
           path: |
             ${{ runner.temp }}/studio-integration-results.json
             ${{ runner.temp }}/studio-builds.log
@@ -90,13 +90,23 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: apps/4d-lab/package-lock.json
+      - name: Use the same assertion harness for target and integration
+        env:
+          BROWSER_HARNESS_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          [[ "$BROWSER_HARNESS_SHA" =~ ^[a-f0-9]{40}$ ]]
+          git fetch --no-tags --depth=1 origin "$BROWSER_HARNESS_SHA"
+          git show "$BROWSER_HARNESS_SHA:apps/4d-lab/test/e2e/ux-e2e.mjs" > "$RUNNER_TEMP/medcoel-4d-ux.mjs"
+          cp "$RUNNER_TEMP/medcoel-4d-ux.mjs" apps/4d-lab/test/e2e/ux-e2e.mjs
       - name: Remove historical results and bind the browser run to this checkout
         env:
           BROWSER_REVISION: ${{ matrix.revision }}
+          BROWSER_HARNESS_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           node --input-type=module <<'JS'
           import fs from 'node:fs';
           import { execFileSync } from 'node:child_process';
+          import crypto from 'node:crypto';
           const dir = 'apps/4d-lab/evidence/';
           fs.mkdirSync(dir, { recursive: true });
           for (const name of ['ux-e2e-results.json', 'integration-browser-proof.json'])
@@ -104,6 +114,8 @@ jobs:
           fs.writeFileSync(dir + 'integration-browser-start.json', JSON.stringify({
             runId: process.env.GITHUB_RUN_ID, attempt: process.env.GITHUB_RUN_ATTEMPT,
             revision: process.env.BROWSER_REVISION, startedAt: Date.now(),
+            harnessCommit: process.env.BROWSER_HARNESS_SHA,
+            harnessSha256: crypto.createHash('sha256').update(fs.readFileSync('apps/4d-lab/test/e2e/ux-e2e.mjs')).digest('hex'),
             commit: execFileSync('git', ['rev-parse', 'HEAD'], {encoding:'utf8'}).trim()
           }));
           JS
@@ -138,6 +150,7 @@ jobs:
           const code = Number(fs.readFileSync(process.env.RUNNER_TEMP + '/4d-ux-exit-code', 'utf8').trim());
           assert.equal(start.runId, process.env.GITHUB_RUN_ID);
           assert.equal(start.attempt, process.env.GITHUB_RUN_ATTEMPT);
+          assert.equal(start.harnessSha256, crypto.createHash('sha256').update(fs.readFileSync('apps/4d-lab/test/e2e/ux-e2e.mjs')).digest('hex'));
           assert.ok(Date.parse(result.date) >= start.startedAt, 'Historical result refused');
           assert.ok(fs.statSync(dir + 'ux-e2e-results.json').mtimeMs >= start.startedAt);
           assert.equal(result.results.length, 16, 'All original UX assertions must execute');
@@ -154,7 +167,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: 4d-ux-${{ matrix.revision }}
+          name: 4d-ux-${{ matrix.revision }}-attempt-${{ github.run_attempt }}
           path: |
             apps/4d-lab/evidence/ux-e2e-results.json
             apps/4d-lab/evidence/integration-browser-proof.json
@@ -169,7 +182,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          pattern: 4d-ux-*
+          pattern: 4d-ux-*-attempt-${{ github.run_attempt }}
           path: results
       - name: Fail if results are missing, stale or any new UX assertion fails
         env:
@@ -187,24 +200,26 @@ jobs:
             return e.isDirectory() ? find(p, target) : e.name === target ? [p] : [];
           });
           const read = revision => {
-            const files = find('results/4d-ux-' + revision);
+            const files = find('results/4d-ux-' + revision + '-attempt-' + process.env.EXPECTED_RUN_ATTEMPT);
             assert.equal(files.length, 1, 'Missing or ambiguous ' + revision + ' UX evidence');
             const bytes = fs.readFileSync(files[0]);
             const result = JSON.parse(bytes);
-            const proofs = find('results/4d-ux-' + revision, 'integration-browser-proof.json');
+            const proofs = find('results/4d-ux-' + revision + '-attempt-' + process.env.EXPECTED_RUN_ATTEMPT, 'integration-browser-proof.json');
             assert.equal(proofs.length, 1, 'Fresh proof required for ' + revision);
             const proof = JSON.parse(fs.readFileSync(proofs[0], 'utf8'));
             assert.equal(proof.runId, process.env.EXPECTED_RUN_ID);
             assert.equal(proof.attempt, process.env.EXPECTED_RUN_ATTEMPT);
             assert.equal(proof.revision, revision);
+            assert.equal(proof.harnessCommit, process.env.EXPECTED_HEAD_SHA);
             assert.equal(proof.commit, process.env[revision === 'base' ? 'EXPECTED_BASE_SHA' : 'EXPECTED_HEAD_SHA']);
             assert.equal(proof.resultSha256, crypto.createHash('sha256').update(bytes).digest('hex'));
             assert.ok(Date.parse(result.date) >= proof.startedAt && proof.finishedAt >= Date.parse(result.date));
             assert.ok(Array.isArray(result.results) && result.results.length > 0);
             assert.equal(result.failed, result.results.filter(x => !x.ok).length);
-            return result;
+            return { ...result, harnessSha256: proof.harnessSha256 };
           };
           const base = read('base'), head = read('integrated');
+          assert.equal(base.harnessSha256, head.harnessSha256, 'Baseline and integration must use the same assertions');
           const names = r => r.results.map(x => x.name).sort();
           assert.deepEqual(names(head), names(base), 'Legacy tests must not disappear');
           const failed = r => r.results.filter(x => !x.ok).map(x => x.name);
