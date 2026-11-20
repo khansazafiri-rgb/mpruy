@@ -13,6 +13,10 @@ hosted by the MEDCOEL web app. Status: **Loop 1 foundation in progress. Nothing 
 | [05-contract-specification.md](05-contract-specification.md) | Catalog, availability, launch, module, bridge, adapter, release manifest, typed quiz |
 | [06-test-acceptance-plan.md](06-test-acceptance-plan.md) | STUDIO-001…030, folder structure, PR-A…E |
 
+| [10-secure-launch-and-delivery.md](10-secure-launch-and-delivery.md) | WS1: receipts, attestation, authorised delivery |
+| [12-MEDCOEL-24-STUDIOS-RESOURCE-MATRIX.md](12-MEDCOEL-24-STUDIOS-RESOURCE-MATRIX.md) | Resource research, acquisition and licence evidence for all 24 studios |
+| [13-24-studio-completion-matrix.md](13-24-studio-completion-matrix.md) | Honest per-studio completion status |
+
 Machine-readable: `shared/studios/catalog.v1.json`, `catalog.schema.json`, `frozen-ids.json`.
 Check: `npm run test:studios`.
 

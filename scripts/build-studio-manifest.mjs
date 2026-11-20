@@ -14,7 +14,7 @@ const C = require('../packages/studio-contract/clearance.cjs');
 const REPO = fileURLToPath(new URL('../', import.meta.url));
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
 
-export function buildStudioManifest({ dist, studioId, releaseId, resourcesFile, capabilities = [], builtFrom }) {
+export function buildStudioManifest({ dist, studioId, releaseId, resourcesFile, capabilities = [], builtFrom, challengeRestricted = [] }) {
   if (!C.STUDIO_ID.test(studioId) || !C.RELEASE_ID.test(releaseId)) throw Error('Invalid studio or release id');
   const resources = JSON.parse(fs.readFileSync(resourcesFile || path.join(REPO, 'licensing/resources.v1.json'), 'utf8'));
   for (const reserved of ['studio-manifest.json', 'resource-manifest.json']) fs.rmSync(path.join(dist, reserved), { force: true });
@@ -38,7 +38,9 @@ export function buildStudioManifest({ dist, studioId, releaseId, resourcesFile, 
   if (!commit) { try { commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: REPO, encoding: 'utf8' }).trim(); } catch { commit = ''; } }
   if (!/^[a-f0-9]{40}$/.test(commit)) throw Error('Exact git source commit required');
   const manifest = { schema: 'medcoel.studio.v1', id: studioId, releaseId, entry: 'index.html', builtFrom: commit, files, assetRefs,
-    resourceManifestSha256: sha(resourceBytes), capabilities: [...new Set(capabilities)].sort() };
+    resourceManifestSha256: sha(resourceBytes), capabilities: [...new Set(capabilities)].sort(),
+    // Files that reveal answers (e.g. label volumes, structure names) are withheld by the server during Challenge sessions.
+    challengeRestricted: [...new Set(challengeRestricted)].filter(p => byPath.has(p)).sort() };
   const problem = C.validateInventory(manifest, { studioId, releaseId });
   if (problem) throw Error('Generated manifest invalid: ' + problem);
   fs.writeFileSync(path.join(dist, 'studio-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
@@ -48,6 +50,6 @@ export function buildStudioManifest({ dist, studioId, releaseId, resourcesFile, 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const a = process.argv.slice(2), o = {};
   for (let i = 0; i < a.length; i += 2) o[a[i].replace(/^--/, '')] = a[i + 1];
-  const m = buildStudioManifest({ dist: o.dist, studioId: o.studio, releaseId: o.release, resourcesFile: o.resources, capabilities: (o.capabilities || '').split(',').filter(Boolean) });
+  const m = buildStudioManifest({ dist: o.dist, studioId: o.studio, releaseId: o.release, resourcesFile: o.resources, capabilities: (o.capabilities || '').split(',').filter(Boolean), challengeRestricted: (o['challenge-restricted'] || '').split(',').filter(Boolean) });
   console.log('Studio manifest written (describes bytes only, approves nothing):', m.id, m.releaseId, m.files.length, 'files');
 }

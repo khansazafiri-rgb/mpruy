@@ -1,0 +1,14 @@
+{
+  "studioId": "upper-limb-anatomy",
+  "title": "Upper Limb Anatomy",
+  "engine": "anatomy3d",
+  "capabilities": [
+    "anatomy3d",
+    "structure-identification"
+  ],
+  "challengeRestricted": [
+    "data/structures.json"
+  ],
+  "privateData": "local-data/studio-resources/build/upper-limb-anatomy",
+  "fixtureTool": "tools/make-anatomy-fixture.mjs"
+}

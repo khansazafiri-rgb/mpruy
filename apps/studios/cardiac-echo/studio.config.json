@@ -1,0 +1,15 @@
+{
+  "studioId": "cardiac-echo",
+  "title": "Cardiac Echo",
+  "engine": "image2d",
+  "capabilities": [
+    "window-level",
+    "measurement",
+    "structure-identification"
+  ],
+  "challengeRestricted": [
+    "data/annotations-1.json"
+  ],
+  "privateData": "local-data/studio-resources/build/cardiac-echo",
+  "fixtureTool": "tools/make-image-fixture.mjs"
+}

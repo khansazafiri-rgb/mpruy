@@ -19,6 +19,7 @@ jobs:
             package-lock.json
             apps/anatomy/package-lock.json
             apps/4d-lab/package-lock.json
+            apps/studios/package-lock.json
       - run: npm ci
       - name: Install Anatomy viewer
         run: npm ci --prefix apps/anatomy
@@ -32,6 +33,11 @@ jobs:
         run: npm run test:studios
       - name: Build independent technical Studio fixture (not published)
         run: npm run build:studio-fixture
+      - name: Clinical Studio applications (engines, shell, independent builds with technical fixtures)
+        run: |
+          npm ci --prefix apps/studios
+          npm test --prefix apps/studios
+          node apps/studios/scripts/build-all.mjs
       - name: Build web
         run: npm run build
       - name: Hermes delivery and import workflows
@@ -82,4 +88,5 @@ jobs:
           # Clinical Studios secure launch/delivery: starts its own disposable PocketBase with test-only keys and a
           # temporary, fully bound engineering release. Never reads production configuration.
           node test/studios-secure-api.test.mjs
+          node test/studios-challenge-api.test.mjs
 

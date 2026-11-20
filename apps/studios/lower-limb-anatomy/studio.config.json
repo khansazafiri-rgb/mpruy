@@ -1,0 +1,14 @@
+{
+  "studioId": "lower-limb-anatomy",
+  "title": "Lower Limb Anatomy",
+  "engine": "anatomy3d",
+  "capabilities": [
+    "anatomy3d",
+    "structure-identification"
+  ],
+  "challengeRestricted": [
+    "data/structures.json"
+  ],
+  "privateData": "local-data/studio-resources/build/lower-limb-anatomy",
+  "fixtureTool": "tools/make-anatomy-fixture.mjs"
+}

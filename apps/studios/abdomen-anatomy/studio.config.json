@@ -1,0 +1,14 @@
+{
+  "studioId": "abdomen-anatomy",
+  "title": "Abdomen Anatomy",
+  "engine": "anatomy3d",
+  "capabilities": [
+    "anatomy3d",
+    "structure-identification"
+  ],
+  "challengeRestricted": [
+    "data/structures.json"
+  ],
+  "privateData": "local-data/studio-resources/build/abdomen-anatomy",
+  "fixtureTool": "tools/make-anatomy-fixture.mjs"
+}

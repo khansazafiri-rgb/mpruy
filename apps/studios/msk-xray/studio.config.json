@@ -1,0 +1,15 @@
+{
+  "studioId": "msk-xray",
+  "title": "Musculoskeletal X-ray",
+  "engine": "image2d",
+  "capabilities": [
+    "window-level",
+    "measurement",
+    "structure-identification"
+  ],
+  "challengeRestricted": [
+    "data/annotations-1.json"
+  ],
+  "privateData": "local-data/studio-resources/build/msk-xray",
+  "fixtureTool": "tools/make-image-fixture.mjs"
+}
