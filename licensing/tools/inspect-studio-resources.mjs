@@ -95,11 +95,13 @@ export function inspectStudioResources({ studioId, catalog, catalogSchema, resou
         const share = rights.clearance.shareAlike;
         if (source.licenseId.startsWith('CC-BY-SA-') && share !== source.licenseId) fail(id, 'sharealike-conflict', 'Pilot derivatives retain the exact ShareAlike licence');
         if (asset.attributionRef !== rights.id) fail(id, 'attribution-reference', 'Attribution must reference original clearance');
-        if (included.has(id)) {
+        {
+          // Derivatives retain credit/SA obligations of every ancestor, even private raw inputs.
           const notice = actual.get(asset.notice.path);
           if (!notice || !SHA256.test(asset.notice.sha256 || '') || notice.sha256 !== asset.notice.sha256 || !notice.buffer.toString('utf8').includes(rights.clearance.attribution) || !notice.buffer.toString('utf8').includes(source.licenseId)) fail(id, 'attribution-notice', 'Actual notice must match hash, credit and licence');
         }
         for (const edge of asset.dependsOn) if (!rights.dependencies.includes(byAsset.get(edge.assetId)?.rightsEvidenceRef)) fail(id, 'lineage-rights', 'Technical lineage is missing from rights evidence');
+        for (const dep of rights.dependencies) if (!asset.dependsOn.some(edge => byAsset.get(edge.assetId)?.rightsEvidenceRef === dep)) fail(id, 'lineage-rights', 'Rights input is missing from technical lineage');
       }
       if (asset.protected) fail(id, 'protected-asset', 'Protected assets cannot enter public releases');
       if (!SHA256.test(asset.sha256 || '') || !Number.isSafeInteger(asset.bytes) || asset.bytes <= 0) fail(id, 'asset-hash', 'Exact asset bytes/hash required');
@@ -114,7 +116,7 @@ export function inspectStudioResources({ studioId, catalog, catalogSchema, resou
       if (included.has(id) && (!listed.has(asset.path) || actual.get(asset.path)?.sha256 !== asset.sha256 || actual.get(asset.path)?.bytes !== asset.bytes)) fail(id, 'asset-bytes', 'Delivered asset does not match approved bytes');
     }
     // Every executable/content file must be represented by an asset, not only dataset bytes.
-    const notices = new Set([...included].map(id => byAsset.get(id).notice.path));
+    const notices = new Set([...closure].map(id => byAsset.get(id).notice.path));
     for (const rel of actual.keys()) if (!['studio-manifest.json', 'resource-manifest.json'].includes(rel) && !notices.has(rel) && !includedPaths.has(rel)) fail(rel, 'missing-rights-coverage', 'Shipped code/data/dependencies must all have rights coverage');
     const productRights = evidence.records.filter(r => r.products.includes(product));
     if (!productRights.length || productRights.some(r => r.status !== 'verified' || !rightIds.has(r.id))) fail(product, 'product-evidence', 'Product evidence must be verified and match the actual dependency closure');

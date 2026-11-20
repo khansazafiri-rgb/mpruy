@@ -136,7 +136,9 @@ test('withheld hashes and ancestors are denied even when their synthetic rights 
   child.derivation = { operation: 'neutral test transform', tool: 'fixture', toolVersion: '1', pipelineCommit: 'a'.repeat(40), parametersSha256: 'b'.repeat(64) };
   f.evidence.records.find(r => r.id === child.rightsEvidenceRef).dependencies = [parentRights.id];
   f.sync(); f.manifest.assetRefs = f.manifest.assetRefs.filter(r => r.assetId !== parent.id); f.approve();
+  f.quarantine.hashes = new Map(); assert.equal(inspect(f).decision.eligible, true, JSON.stringify(inspect(f)));
   f.quarantine.hashes = new Map([[parent.sha256, 'WITHHELD RAW PARENT']]); denied(f, 'quarantined');
+  f.quarantine.hashes.clear(); parentRights.clearance.attribution = 'Required original ancestor credit missing'; denied(f, 'attribution-notice');
 });
 
 test('mutating shipped code bytes, manifest bindings or original review scope invalidates the release', t => {
