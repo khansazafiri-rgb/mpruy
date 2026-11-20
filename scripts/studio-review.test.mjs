@@ -87,8 +87,10 @@ test('REVIEW-006 privacy scan flags identity metadata in JSON, NIfTI, gzip and t
   fs.writeFileSync(path.join(d, 'vol.nii.gz'), zlib.gzipSync(h));
   const named = zlib.gzipSync(Buffer.from('x')); named[3] |= 0x08; fs.writeFileSync(path.join(d, 'named.gz'), Buffer.concat([named.slice(0, 10), Buffer.from('name\0'), named.slice(10)]));
   fs.writeFileSync(path.join(d, 'meta.csv'), 'age,sex\n50,M\n');
+  const chunk = (type, data) => { const l = Buffer.alloc(4); l.writeUInt32BE(data.length); return Buffer.concat([l, Buffer.from(type), data, Buffer.alloc(4)]); };
+  fs.writeFileSync(path.join(d, 'img.png'), Buffer.concat([Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), chunk('IHDR', Buffer.alloc(13)), chunk('tEXt', Buffer.from('Comment\0Patient X')), chunk('IEND', Buffer.alloc(0))]));
   const checks = privacyScan('st', dir).findings.map(f => f.check).sort();
-  for (const c of ['identity-key', 'date-like-value', 'dicom-uid', 'nifti-descrip', 'gzip-original-filename', 'tabular-metadata-shipped']) assert.ok(checks.includes(c), c + ' in ' + checks);
+  for (const c of ['identity-key', 'date-like-value', 'dicom-uid', 'nifti-descrip', 'gzip-original-filename', 'tabular-metadata-shipped', 'png-metadata-chunk']) assert.ok(checks.includes(c), c + ' in ' + checks);
 });
 
 test('REVIEW-007 terminology drafts are proposed only (never approved) and leave Indonesian/Latin empty', t => {

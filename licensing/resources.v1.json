@@ -90,6 +90,60 @@
           "snapshotSha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e"
         }
       ]
+    },
+    {
+      "id": "ptx498-zenodo",
+      "publisher": "Zenodo (Wang et al., PTX-498)",
+      "officialUrl": "https://zenodo.org/records/8266529",
+      "datasetId": "ptx-498",
+      "release": "v2-fix (Zenodo record 8266529)",
+      "doi": "10.5281/zenodo.8266529",
+      "licenseId": "CC-BY-4.0",
+      "status": "VERIFIED_SOURCE",
+      "evidence": [
+        {
+          "url": "https://zenodo.org/api/records/8266529",
+          "release": "v2-fix (Zenodo record 8266529)",
+          "checkedAt": "2026-11-20",
+          "snapshotSha256": "12a052d294529ad800cabb8e692eccc9364364818ca9df48b2f5971c20872ff7"
+        }
+      ]
+    },
+    {
+      "id": "hc18-zenodo",
+      "publisher": "Zenodo (van den Heuvel et al., HC18)",
+      "officialUrl": "https://zenodo.org/records/1327317",
+      "datasetId": "hc18",
+      "release": "Zenodo record 1327317",
+      "doi": "10.5281/zenodo.1327317",
+      "licenseId": "CC-BY-4.0",
+      "status": "VERIFIED_SOURCE",
+      "evidence": [
+        {
+          "url": "https://zenodo.org/api/records/1327317",
+          "release": "Zenodo record 1327317",
+          "checkedAt": "2026-11-20",
+          "snapshotSha256": "4470f46676f39b1154a02e77771a4045a09136593a7cd765fdb7b9aab1e0abb9"
+        }
+      ]
+    },
+    {
+      "id": "amos-zenodo",
+      "publisher": "Zenodo (Ji et al., AMOS 2022)",
+      "officialUrl": "https://zenodo.org/records/7262581",
+      "datasetId": "amos22",
+      "release": "amos22.zip (Zenodo record 7262581)",
+      "doi": "10.5281/zenodo.7262581",
+      "licenseId": "CC-BY-SA-4.0",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://zenodo.org/api/records/7262581",
+          "release": "amos22.zip (Zenodo record 7262581)",
+          "checkedAt": "2026-11-20",
+          "snapshotSha256": "9da3ec6b8efb21ea7317402ae348772c3abfee1da045360dbe3fb097b3bccc3e"
+        }
+      ]
     }
   ],
   "assets": [
@@ -1308,6 +1362,942 @@
       }
     },
     {
+      "id": "src.ptx498-zenodo.sitea-1.1.img.png",
+      "version": "v2-fix-Zenodo-record-8266529-",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/ptx498-zenodo/SiteA/1.1.img.png",
+      "bytes": 536550,
+      "sha256": "a74d32df44b9f65df03efa6fdfc303dc6a83729ec36d400d53a702d5ba491e49",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-ptx498-zenodo",
+      "attributionRef": "studio-src-ptx498-zenodo",
+      "notice": {
+        "path": "source/ptx498-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/8266529/files/PTX-498-v2-fix.zip/content",
+        "member": "SiteA/1.1.img.png",
+        "sha256": "a74d32df44b9f65df03efa6fdfc303dc6a83729ec36d400d53a702d5ba491e49"
+      }
+    },
+    {
+      "id": "src.ptx498-zenodo.sitea-1.2.mask.png",
+      "version": "v2-fix-Zenodo-record-8266529-",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/ptx498-zenodo/SiteA/1.2.mask.png",
+      "bytes": 3887,
+      "sha256": "0b927a7c5543e482415a676c9c6420ed9daee80328014b6f2ec473040b65e25e",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-ptx498-zenodo",
+      "attributionRef": "studio-src-ptx498-zenodo",
+      "notice": {
+        "path": "source/ptx498-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/8266529/files/PTX-498-v2-fix.zip/content",
+        "member": "SiteA/1.2.mask.png",
+        "sha256": "0b927a7c5543e482415a676c9c6420ed9daee80328014b6f2ec473040b65e25e"
+      }
+    },
+    {
+      "id": "src.ptx498-zenodo.sitea-10.1.img.png",
+      "version": "v2-fix-Zenodo-record-8266529-",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/ptx498-zenodo/SiteA/10.1.img.png",
+      "bytes": 511054,
+      "sha256": "9b7d22b7c412899b367b3042d5cdd0ffd2aeb31246a408764f52095043af4826",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-ptx498-zenodo",
+      "attributionRef": "studio-src-ptx498-zenodo",
+      "notice": {
+        "path": "source/ptx498-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/8266529/files/PTX-498-v2-fix.zip/content",
+        "member": "SiteA/10.1.img.png",
+        "sha256": "9b7d22b7c412899b367b3042d5cdd0ffd2aeb31246a408764f52095043af4826"
+      }
+    },
+    {
+      "id": "src.ptx498-zenodo.sitea-10.2.mask.png",
+      "version": "v2-fix-Zenodo-record-8266529-",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/ptx498-zenodo/SiteA/10.2.mask.png",
+      "bytes": 3134,
+      "sha256": "64646a519ed4ac0dc20abd73bb669d2a581195625b36fd3596aeeca030b1b858",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-ptx498-zenodo",
+      "attributionRef": "studio-src-ptx498-zenodo",
+      "notice": {
+        "path": "source/ptx498-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/8266529/files/PTX-498-v2-fix.zip/content",
+        "member": "SiteA/10.2.mask.png",
+        "sha256": "64646a519ed4ac0dc20abd73bb669d2a581195625b36fd3596aeeca030b1b858"
+      }
+    },
+    {
+      "id": "src.ptx498-zenodo.siteb-1.1.img.png",
+      "version": "v2-fix-Zenodo-record-8266529-",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/ptx498-zenodo/SiteB/1.1.img.png",
+      "bytes": 436687,
+      "sha256": "a949ca0affd61c18888bef02f0c3ec22efa03af314553aa4e7573828706dc508",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-ptx498-zenodo",
+      "attributionRef": "studio-src-ptx498-zenodo",
+      "notice": {
+        "path": "source/ptx498-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/8266529/files/PTX-498-v2-fix.zip/content",
+        "member": "SiteB/1.1.img.png",
+        "sha256": "a949ca0affd61c18888bef02f0c3ec22efa03af314553aa4e7573828706dc508"
+      }
+    },
+    {
+      "id": "src.ptx498-zenodo.siteb-1.2.mask.png",
+      "version": "v2-fix-Zenodo-record-8266529-",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/ptx498-zenodo/SiteB/1.2.mask.png",
+      "bytes": 4018,
+      "sha256": "384e2a13867ea7e87f18d0a694462546f49257c3daa5640b9fad9059495648c8",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-ptx498-zenodo",
+      "attributionRef": "studio-src-ptx498-zenodo",
+      "notice": {
+        "path": "source/ptx498-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/8266529/files/PTX-498-v2-fix.zip/content",
+        "member": "SiteB/1.2.mask.png",
+        "sha256": "384e2a13867ea7e87f18d0a694462546f49257c3daa5640b9fad9059495648c8"
+      }
+    },
+    {
+      "id": "src.ptx498-zenodo.sitec-1.1.img.png",
+      "version": "v2-fix-Zenodo-record-8266529-",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/ptx498-zenodo/SiteC/1.1.img.png",
+      "bytes": 372336,
+      "sha256": "394807f2c902df2e5983ace2c8059df2d9523b0592ecd4b49f66aa7da9bbfa4f",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-ptx498-zenodo",
+      "attributionRef": "studio-src-ptx498-zenodo",
+      "notice": {
+        "path": "source/ptx498-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/8266529/files/PTX-498-v2-fix.zip/content",
+        "member": "SiteC/1.1.img.png",
+        "sha256": "394807f2c902df2e5983ace2c8059df2d9523b0592ecd4b49f66aa7da9bbfa4f"
+      }
+    },
+    {
+      "id": "src.ptx498-zenodo.sitec-1.2.mask.png",
+      "version": "v2-fix-Zenodo-record-8266529-",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/ptx498-zenodo/SiteC/1.2.mask.png",
+      "bytes": 3175,
+      "sha256": "1eb94b24732d925371bb2841361307e0e4fffc33f1dd3ac0a9ec052aa392a0b7",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-ptx498-zenodo",
+      "attributionRef": "studio-src-ptx498-zenodo",
+      "notice": {
+        "path": "source/ptx498-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/8266529/files/PTX-498-v2-fix.zip/content",
+        "member": "SiteC/1.2.mask.png",
+        "sha256": "1eb94b24732d925371bb2841361307e0e4fffc33f1dd3ac0a9ec052aa392a0b7"
+      }
+    },
+    {
+      "id": "src.hc18-zenodo.training_set_pixel_size_and_hc.csv",
+      "version": "Zenodo-record-1327317",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "CSV (pixel size, reference HC)",
+      "path": "source/hc18-zenodo/training_set_pixel_size_and_HC.csv",
+      "bytes": 33688,
+      "sha256": "1c08fa81c374c5f9509f3aa6a6568e4dc6cc5434ff82d0df731db7e4f25816b3",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-hc18-zenodo",
+      "attributionRef": "studio-src-hc18-zenodo",
+      "notice": {
+        "path": "source/hc18-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/1327317/files/training_set_pixel_size_and_HC.csv/content",
+        "member": "training_set_pixel_size_and_HC.csv",
+        "sha256": "1c08fa81c374c5f9509f3aa6a6568e4dc6cc5434ff82d0df731db7e4f25816b3"
+      }
+    },
+    {
+      "id": "src.hc18-zenodo.training_set-000_hc.png",
+      "version": "Zenodo-record-1327317",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/hc18-zenodo/training_set/000_HC.png",
+      "bytes": 102039,
+      "sha256": "c530210f08e49a7e348075b59b90008586a856271bb472061ab043b1ba2a3715",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-hc18-zenodo",
+      "attributionRef": "studio-src-hc18-zenodo",
+      "notice": {
+        "path": "source/hc18-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/1327317/files/training_set.zip/content",
+        "member": "training_set/000_HC.png",
+        "sha256": "c530210f08e49a7e348075b59b90008586a856271bb472061ab043b1ba2a3715"
+      }
+    },
+    {
+      "id": "src.hc18-zenodo.training_set-000_hc_annotation.png",
+      "version": "Zenodo-record-1327317",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/hc18-zenodo/training_set/000_HC_Annotation.png",
+      "bytes": 1970,
+      "sha256": "22da8fb98960fc7327cce858ed8bc7cd5aacbae919f99ec3b67e1d01f4b6efb3",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-hc18-zenodo",
+      "attributionRef": "studio-src-hc18-zenodo",
+      "notice": {
+        "path": "source/hc18-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/1327317/files/training_set.zip/content",
+        "member": "training_set/000_HC_Annotation.png",
+        "sha256": "22da8fb98960fc7327cce858ed8bc7cd5aacbae919f99ec3b67e1d01f4b6efb3"
+      }
+    },
+    {
+      "id": "src.hc18-zenodo.training_set-010_hc.png",
+      "version": "Zenodo-record-1327317",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/hc18-zenodo/training_set/010_HC.png",
+      "bytes": 137885,
+      "sha256": "8c83c6b356952eb6ecc29c02bd772bb9dd603d3c4a986908c78c2f31bcb77b50",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-hc18-zenodo",
+      "attributionRef": "studio-src-hc18-zenodo",
+      "notice": {
+        "path": "source/hc18-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/1327317/files/training_set.zip/content",
+        "member": "training_set/010_HC.png",
+        "sha256": "8c83c6b356952eb6ecc29c02bd772bb9dd603d3c4a986908c78c2f31bcb77b50"
+      }
+    },
+    {
+      "id": "src.hc18-zenodo.training_set-010_hc_annotation.png",
+      "version": "Zenodo-record-1327317",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/hc18-zenodo/training_set/010_HC_Annotation.png",
+      "bytes": 2667,
+      "sha256": "c60ae20f455f87aa068d149afae256336fed951aef4f36f64ec5f6f05c3fae6a",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-hc18-zenodo",
+      "attributionRef": "studio-src-hc18-zenodo",
+      "notice": {
+        "path": "source/hc18-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/1327317/files/training_set.zip/content",
+        "member": "training_set/010_HC_Annotation.png",
+        "sha256": "c60ae20f455f87aa068d149afae256336fed951aef4f36f64ec5f6f05c3fae6a"
+      }
+    },
+    {
+      "id": "src.hc18-zenodo.training_set-100_hc.png",
+      "version": "Zenodo-record-1327317",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/hc18-zenodo/training_set/100_HC.png",
+      "bytes": 121837,
+      "sha256": "a9743fe71fd65f3aede52af353e420c8fb3236cdddd0cf4ef8cbe6e7dadff5ec",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-hc18-zenodo",
+      "attributionRef": "studio-src-hc18-zenodo",
+      "notice": {
+        "path": "source/hc18-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/1327317/files/training_set.zip/content",
+        "member": "training_set/100_HC.png",
+        "sha256": "a9743fe71fd65f3aede52af353e420c8fb3236cdddd0cf4ef8cbe6e7dadff5ec"
+      }
+    },
+    {
+      "id": "src.hc18-zenodo.training_set-100_hc_annotation.png",
+      "version": "Zenodo-record-1327317",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/hc18-zenodo/training_set/100_HC_Annotation.png",
+      "bytes": 3008,
+      "sha256": "17d495cef84d18dc0a43b1b19b2170d68032224933b75c06b7f22ef3be0e06f6",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-hc18-zenodo",
+      "attributionRef": "studio-src-hc18-zenodo",
+      "notice": {
+        "path": "source/hc18-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/1327317/files/training_set.zip/content",
+        "member": "training_set/100_HC_Annotation.png",
+        "sha256": "17d495cef84d18dc0a43b1b19b2170d68032224933b75c06b7f22ef3be0e06f6"
+      }
+    },
+    {
+      "id": "src.hc18-zenodo.training_set-300_hc.png",
+      "version": "Zenodo-record-1327317",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/hc18-zenodo/training_set/300_HC.png",
+      "bytes": 135339,
+      "sha256": "181c7d6c1e940ee21459fab7187b4ea027d8f5e125e0b9126278f61a23129681",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-hc18-zenodo",
+      "attributionRef": "studio-src-hc18-zenodo",
+      "notice": {
+        "path": "source/hc18-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/1327317/files/training_set.zip/content",
+        "member": "training_set/300_HC.png",
+        "sha256": "181c7d6c1e940ee21459fab7187b4ea027d8f5e125e0b9126278f61a23129681"
+      }
+    },
+    {
+      "id": "src.hc18-zenodo.training_set-300_hc_annotation.png",
+      "version": "Zenodo-record-1327317",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "PNG (ZIP member, CRC verified)",
+      "path": "source/hc18-zenodo/training_set/300_HC_Annotation.png",
+      "bytes": 3522,
+      "sha256": "29385f0c1b073794a544feca98823935c673a1ddd190f9093eefdc4545ada379",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-hc18-zenodo",
+      "attributionRef": "studio-src-hc18-zenodo",
+      "notice": {
+        "path": "source/hc18-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/1327317/files/training_set.zip/content",
+        "member": "training_set/300_HC_Annotation.png",
+        "sha256": "29385f0c1b073794a544feca98823935c673a1ddd190f9093eefdc4545ada379"
+      }
+    },
+    {
+      "id": "src.amos-zenodo.amos22-dataset.json",
+      "version": "amos22.zip-Zenodo-record-7262581-",
+      "datasetId": "amos22",
+      "sourceRef": "amos-zenodo",
+      "kind": "terminology",
+      "dataNature": "acquired-patient",
+      "format": "JSON label table",
+      "path": "source/amos-zenodo/amos22/dataset.json",
+      "bytes": 40371,
+      "sha256": "02db984f724dba8d19c694c89bd98b0d36a5da5c8ee136c45c6174f81a169d49",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-amos-zenodo",
+      "attributionRef": "studio-src-amos-zenodo",
+      "notice": {
+        "path": "source/amos-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/7262581/files/amos22.zip/content",
+        "member": "amos22/dataset.json",
+        "sha256": "02db984f724dba8d19c694c89bd98b0d36a5da5c8ee136c45c6174f81a169d49"
+      }
+    },
+    {
+      "id": "src.amos-zenodo.amos22-imagestr-amos_0004.nii.gz",
+      "version": "amos22.zip-Zenodo-record-7262581-",
+      "datasetId": "amos22",
+      "sourceRef": "amos-zenodo",
+      "kind": "volume",
+      "dataNature": "acquired-patient",
+      "format": "NIfTI-1 gz (ZIP64 member, CRC verified)",
+      "path": "source/amos-zenodo/amos22/imagesTr/amos_0004.nii.gz",
+      "bytes": 16974388,
+      "sha256": "0c65994c6c53182ef0fe8e1d86e597b843cb99db2dc1ac8f27876e34319ca9d9",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-amos-zenodo",
+      "attributionRef": "studio-src-amos-zenodo",
+      "notice": {
+        "path": "source/amos-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/7262581/files/amos22.zip/content",
+        "member": "amos22/imagesTr/amos_0004.nii.gz",
+        "sha256": "0c65994c6c53182ef0fe8e1d86e597b843cb99db2dc1ac8f27876e34319ca9d9"
+      }
+    },
+    {
+      "id": "src.amos-zenodo.amos22-labelstr-amos_0004.nii.gz",
+      "version": "amos22.zip-Zenodo-record-7262581-",
+      "datasetId": "amos22",
+      "sourceRef": "amos-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "NIfTI-1 gz (ZIP64 member, CRC verified)",
+      "path": "source/amos-zenodo/amos22/labelsTr/amos_0004.nii.gz",
+      "bytes": 72645,
+      "sha256": "cb8bac8e724ccff8842285f460c0d5ab361aa15c4bab25bd371a25fef9cf79b3",
+      "protected": true,
+      "rightsEvidenceRef": "studio-src-amos-zenodo",
+      "attributionRef": "studio-src-amos-zenodo",
+      "notice": {
+        "path": "source/amos-zenodo/NOTICE",
+        "sha256": null
+      },
+      "dependsOn": [],
+      "derivation": null,
+      "geometry": {
+        "spaceId": "as distributed by the publisher",
+        "units": "mm",
+        "details": "Original distribution file; geometry is read by the preparation tool."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": {
+        "url": "https://zenodo.org/api/records/7262581/files/amos22.zip/content",
+        "member": "amos22/labelsTr/amos_0004.nii.gz",
+        "sha256": "cb8bac8e724ccff8842285f460c0d5ab361aa15c4bab25bd371a25fef9cf79b3"
+      }
+    },
+    {
       "id": "brain-mri.t1.nii.gz",
       "version": "1",
       "datasetId": "sri24",
@@ -1346,11 +2336,11 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-brain-mri.mjs@sha256:3a9cce02afc57f913bda2c3300aa197bf9ac0fd22bf519684265538da5d49381",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "a304a1034202d38b1caabd95b7e750589c872758ac62c0af5b820bb7fe081e51"
       },
       "geometry": {
-        "spaceId": "NIfTI RAS mm",
+        "spaceId": "NIfTI RAS+ mm (+X patient right)",
         "units": "mm",
         "details": "See provenance validation (local-data); attestation only, not a parser."
       },
@@ -1411,11 +2401,11 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-brain-mri.mjs@sha256:3a9cce02afc57f913bda2c3300aa197bf9ac0fd22bf519684265538da5d49381",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "a304a1034202d38b1caabd95b7e750589c872758ac62c0af5b820bb7fe081e51"
       },
       "geometry": {
-        "spaceId": "NIfTI RAS mm",
+        "spaceId": "NIfTI RAS+ mm (+X patient right)",
         "units": "mm",
         "details": "See provenance validation (local-data); attestation only, not a parser."
       },
@@ -1476,11 +2466,11 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-brain-mri.mjs@sha256:3a9cce02afc57f913bda2c3300aa197bf9ac0fd22bf519684265538da5d49381",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "a304a1034202d38b1caabd95b7e750589c872758ac62c0af5b820bb7fe081e51"
       },
       "geometry": {
-        "spaceId": "NIfTI RAS mm",
+        "spaceId": "NIfTI RAS+ mm (+X patient right)",
         "units": "mm",
         "details": "See provenance validation (local-data); attestation only, not a parser."
       },
@@ -1541,7 +2531,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-brain-mri.mjs@sha256:3a9cce02afc57f913bda2c3300aa197bf9ac0fd22bf519684265538da5d49381",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "a304a1034202d38b1caabd95b7e750589c872758ac62c0af5b820bb7fe081e51"
       },
       "geometry": null,
@@ -1652,7 +2642,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -1767,7 +2757,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -1882,7 +2872,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -1997,7 +2987,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -2112,7 +3102,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -2227,7 +3217,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -2342,11 +3332,11 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
-        "spaceId": "NIfTI RAS mm",
+        "spaceId": "NIfTI RAS+ mm (+X patient right)",
         "units": "mm",
         "details": "See provenance validation (local-data); attestation only, not a parser."
       },
@@ -2402,11 +3392,11 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-spine-mri.mjs@sha256:caa3f50461fc9a29f10afd29e332856b6b2317e66c2f7ace652eeec9d27c08c3",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "e66643666aa1c0cf024913879f3673e38afbab9c47ff82be14d6bfbb52582672"
       },
       "geometry": {
-        "spaceId": "NIfTI RAS mm",
+        "spaceId": "NIfTI RAS+ mm (+X patient right)",
         "units": "mm",
         "details": "See provenance validation (local-data); attestation only, not a parser."
       },
@@ -2462,11 +3452,11 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-spine-mri.mjs@sha256:caa3f50461fc9a29f10afd29e332856b6b2317e66c2f7ace652eeec9d27c08c3",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "e66643666aa1c0cf024913879f3673e38afbab9c47ff82be14d6bfbb52582672"
       },
       "geometry": {
-        "spaceId": "NIfTI RAS mm",
+        "spaceId": "NIfTI RAS+ mm (+X patient right)",
         "units": "mm",
         "details": "See provenance validation (local-data); attestation only, not a parser."
       },
@@ -2522,7 +3512,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-spine-mri.mjs@sha256:caa3f50461fc9a29f10afd29e332856b6b2317e66c2f7ace652eeec9d27c08c3",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "e66643666aa1c0cf024913879f3673e38afbab9c47ff82be14d6bfbb52582672"
       },
       "geometry": null,
@@ -2593,11 +3583,11 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-chest-ct.mjs@sha256:f658f298636e20a4cef2bb8a18d8fd77b17c2a33122b3b7450cb5434fb028afb",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "1cb0938782041da57d134de0b4e4b46d19c014766fa97230b63248ed2f3134b9"
       },
       "geometry": {
-        "spaceId": "NIfTI RAS mm",
+        "spaceId": "NIfTI RAS+ mm (+X patient right)",
         "units": "mm",
         "details": "See provenance validation (local-data); attestation only, not a parser."
       },
@@ -2668,11 +3658,11 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-chest-ct.mjs@sha256:f658f298636e20a4cef2bb8a18d8fd77b17c2a33122b3b7450cb5434fb028afb",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "1cb0938782041da57d134de0b4e4b46d19c014766fa97230b63248ed2f3134b9"
       },
       "geometry": {
-        "spaceId": "NIfTI RAS mm",
+        "spaceId": "NIfTI RAS+ mm (+X patient right)",
         "units": "mm",
         "details": "See provenance validation (local-data); attestation only, not a parser."
       },
@@ -2743,12 +3733,1683 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-chest-ct.mjs@sha256:f658f298636e20a4cef2bb8a18d8fd77b17c2a33122b3b7450cb5434fb028afb",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "1cb0938782041da57d134de0b4e4b46d19c014766fa97230b63248ed2f3134b9"
       },
       "geometry": {
-        "spaceId": "NIfTI RAS mm",
+        "spaceId": "NIfTI RAS+ mm (+X patient right)",
         "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "abdomen-ct.ct.nii.gz",
+      "version": "1",
+      "datasetId": "amos22",
+      "sourceRef": "amos-zenodo",
+      "kind": "volume",
+      "dataNature": "acquired-patient",
+      "format": "NIfTI-1 gz (header text cleared)",
+      "path": "data/ct.nii.gz",
+      "bytes": 16759352,
+      "sha256": "c60ae759d3751c6b55e96407b35c71cecf422590116bd792e990a7af4a039b12",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-abdomen-ct",
+      "attributionRef": "studio-res-abdomen-ct",
+      "notice": {
+        "path": "data/NOTICE-AMOS.txt",
+        "sha256": "d6cf5dbabcd4cf456623f3c6f6afcf469dfbe2ec165699c395b174c28f68e878"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.amos-zenodo.amos22-dataset.json",
+          "version": "amos22.zip-Zenodo-record-7262581-",
+          "sha256": "02db984f724dba8d19c694c89bd98b0d36a5da5c8ee136c45c6174f81a169d49"
+        },
+        {
+          "assetId": "src.amos-zenodo.amos22-imagestr-amos_0004.nii.gz",
+          "version": "amos22.zip-Zenodo-record-7262581-",
+          "sha256": "0c65994c6c53182ef0fe8e1d86e597b843cb99db2dc1ac8f27876e34319ca9d9"
+        },
+        {
+          "assetId": "src.amos-zenodo.amos22-labelstr-amos_0004.nii.gz",
+          "version": "amos22.zip-Zenodo-record-7262581-",
+          "sha256": "cb8bac8e724ccff8842285f460c0d5ab361aa15c4bab25bd371a25fef9cf79b3"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-abdomen-ct.mjs@sha256:401567acad0fee9bd492e4e00926bb87047ed5fdc978978bae43860b8700b23d",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "8a9d0edd16d0517722292a49e0ed6e2f216a1ba3aae930e0187fe79e9cd559da"
+      },
+      "geometry": {
+        "spaceId": "NIfTI RAS+ mm (+X patient right)",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "abdomen-ct.labels.nii.gz",
+      "version": "1",
+      "datasetId": "amos22",
+      "sourceRef": "amos-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "NIfTI-1 gz (uint8, kidney labels withheld)",
+      "path": "data/labels.nii.gz",
+      "bytes": 39660,
+      "sha256": "262473cd200d1e76278882750dba1755755f79bda5e32170e24eff405e6c4926",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-abdomen-ct",
+      "attributionRef": "studio-res-abdomen-ct",
+      "notice": {
+        "path": "data/NOTICE-AMOS.txt",
+        "sha256": "d6cf5dbabcd4cf456623f3c6f6afcf469dfbe2ec165699c395b174c28f68e878"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.amos-zenodo.amos22-dataset.json",
+          "version": "amos22.zip-Zenodo-record-7262581-",
+          "sha256": "02db984f724dba8d19c694c89bd98b0d36a5da5c8ee136c45c6174f81a169d49"
+        },
+        {
+          "assetId": "src.amos-zenodo.amos22-imagestr-amos_0004.nii.gz",
+          "version": "amos22.zip-Zenodo-record-7262581-",
+          "sha256": "0c65994c6c53182ef0fe8e1d86e597b843cb99db2dc1ac8f27876e34319ca9d9"
+        },
+        {
+          "assetId": "src.amos-zenodo.amos22-labelstr-amos_0004.nii.gz",
+          "version": "amos22.zip-Zenodo-record-7262581-",
+          "sha256": "cb8bac8e724ccff8842285f460c0d5ab361aa15c4bab25bd371a25fef9cf79b3"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-abdomen-ct.mjs@sha256:401567acad0fee9bd492e4e00926bb87047ed5fdc978978bae43860b8700b23d",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "8a9d0edd16d0517722292a49e0ed6e2f216a1ba3aae930e0187fe79e9cd559da"
+      },
+      "geometry": {
+        "spaceId": "NIfTI RAS+ mm (+X patient right)",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "abdomen-ct.labels.json",
+      "version": "1",
+      "datasetId": "amos22",
+      "sourceRef": "amos-zenodo",
+      "kind": "terminology",
+      "dataNature": "acquired-patient",
+      "format": "JSON",
+      "path": "data/labels.json",
+      "bytes": 2435,
+      "sha256": "fe684b029e11c3ff982596bd88497f31708e029d08200c4c38ca22f358c044cb",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-abdomen-ct",
+      "attributionRef": "studio-res-abdomen-ct",
+      "notice": {
+        "path": "data/NOTICE-AMOS.txt",
+        "sha256": "d6cf5dbabcd4cf456623f3c6f6afcf469dfbe2ec165699c395b174c28f68e878"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.amos-zenodo.amos22-dataset.json",
+          "version": "amos22.zip-Zenodo-record-7262581-",
+          "sha256": "02db984f724dba8d19c694c89bd98b0d36a5da5c8ee136c45c6174f81a169d49"
+        },
+        {
+          "assetId": "src.amos-zenodo.amos22-imagestr-amos_0004.nii.gz",
+          "version": "amos22.zip-Zenodo-record-7262581-",
+          "sha256": "0c65994c6c53182ef0fe8e1d86e597b843cb99db2dc1ac8f27876e34319ca9d9"
+        },
+        {
+          "assetId": "src.amos-zenodo.amos22-labelstr-amos_0004.nii.gz",
+          "version": "amos22.zip-Zenodo-record-7262581-",
+          "sha256": "cb8bac8e724ccff8842285f460c0d5ab361aa15c4bab25bd371a25fef9cf79b3"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-abdomen-ct.mjs@sha256:401567acad0fee9bd492e4e00926bb87047ed5fdc978978bae43860b8700b23d",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "8a9d0edd16d0517722292a49e0ed6e2f216a1ba3aae930e0187fe79e9cd559da"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "chest-xray.image-1.png",
+      "version": "1",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG greyscale (re-encoded, no metadata chunks)",
+      "path": "data/image-1.png",
+      "bytes": 813050,
+      "sha256": "d03e7f0bb8adcd2001f05f4f6a028f47d698dd155331f25cb3704472592ebba0",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-chest-xray",
+      "attributionRef": "studio-res-chest-xray",
+      "notice": {
+        "path": "data/NOTICE-PTX-498.txt",
+        "sha256": "bb931abd8dde98fad51982dbe0f6f2d655f575e8b02a0acdb35a6ecbb7e5ad6e"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a74d32df44b9f65df03efa6fdfc303dc6a83729ec36d400d53a702d5ba491e49"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "0b927a7c5543e482415a676c9c6420ed9daee80328014b6f2ec473040b65e25e"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "9b7d22b7c412899b367b3042d5cdd0ffd2aeb31246a408764f52095043af4826"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "64646a519ed4ac0dc20abd73bb669d2a581195625b36fd3596aeeca030b1b858"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a949ca0affd61c18888bef02f0c3ec22efa03af314553aa4e7573828706dc508"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "384e2a13867ea7e87f18d0a694462546f49257c3daa5640b9fad9059495648c8"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "394807f2c902df2e5983ace2c8059df2d9523b0592ecd4b49f66aa7da9bbfa4f"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "1eb94b24732d925371bb2841361307e0e4fffc33f1dd3ac0a9ec052aa392a0b7"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (no calibration)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "chest-xray.annotations-1.json",
+      "version": "1",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "JSON polygons (from reference mask/contour)",
+      "path": "data/annotations-1.json",
+      "bytes": 1261,
+      "sha256": "a6f7a5ddbac4b5abbbb3a87ef26e580b7d5709b6f4e326ee69df7d1388a5d139",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-chest-xray",
+      "attributionRef": "studio-res-chest-xray",
+      "notice": {
+        "path": "data/NOTICE-PTX-498.txt",
+        "sha256": "bb931abd8dde98fad51982dbe0f6f2d655f575e8b02a0acdb35a6ecbb7e5ad6e"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a74d32df44b9f65df03efa6fdfc303dc6a83729ec36d400d53a702d5ba491e49"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "0b927a7c5543e482415a676c9c6420ed9daee80328014b6f2ec473040b65e25e"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "9b7d22b7c412899b367b3042d5cdd0ffd2aeb31246a408764f52095043af4826"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "64646a519ed4ac0dc20abd73bb669d2a581195625b36fd3596aeeca030b1b858"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a949ca0affd61c18888bef02f0c3ec22efa03af314553aa4e7573828706dc508"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "384e2a13867ea7e87f18d0a694462546f49257c3daa5640b9fad9059495648c8"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "394807f2c902df2e5983ace2c8059df2d9523b0592ecd4b49f66aa7da9bbfa4f"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "1eb94b24732d925371bb2841361307e0e4fffc33f1dd3ac0a9ec052aa392a0b7"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (no calibration)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "chest-xray.image-2.png",
+      "version": "1",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG greyscale (re-encoded, no metadata chunks)",
+      "path": "data/image-2.png",
+      "bytes": 773218,
+      "sha256": "bc0480a9bacc44bdc7abe29872369a3865e768fcb6708a046e64ca1d2f5339e1",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-chest-xray",
+      "attributionRef": "studio-res-chest-xray",
+      "notice": {
+        "path": "data/NOTICE-PTX-498.txt",
+        "sha256": "bb931abd8dde98fad51982dbe0f6f2d655f575e8b02a0acdb35a6ecbb7e5ad6e"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a74d32df44b9f65df03efa6fdfc303dc6a83729ec36d400d53a702d5ba491e49"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "0b927a7c5543e482415a676c9c6420ed9daee80328014b6f2ec473040b65e25e"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "9b7d22b7c412899b367b3042d5cdd0ffd2aeb31246a408764f52095043af4826"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "64646a519ed4ac0dc20abd73bb669d2a581195625b36fd3596aeeca030b1b858"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a949ca0affd61c18888bef02f0c3ec22efa03af314553aa4e7573828706dc508"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "384e2a13867ea7e87f18d0a694462546f49257c3daa5640b9fad9059495648c8"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "394807f2c902df2e5983ace2c8059df2d9523b0592ecd4b49f66aa7da9bbfa4f"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "1eb94b24732d925371bb2841361307e0e4fffc33f1dd3ac0a9ec052aa392a0b7"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (no calibration)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "chest-xray.annotations-2.json",
+      "version": "1",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "JSON polygons (from reference mask/contour)",
+      "path": "data/annotations-2.json",
+      "bytes": 1094,
+      "sha256": "bf6ed16fe63ccb5a565eb16e5df934b0aae83cdd0daed26fc49d1b1c154339f0",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-chest-xray",
+      "attributionRef": "studio-res-chest-xray",
+      "notice": {
+        "path": "data/NOTICE-PTX-498.txt",
+        "sha256": "bb931abd8dde98fad51982dbe0f6f2d655f575e8b02a0acdb35a6ecbb7e5ad6e"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a74d32df44b9f65df03efa6fdfc303dc6a83729ec36d400d53a702d5ba491e49"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "0b927a7c5543e482415a676c9c6420ed9daee80328014b6f2ec473040b65e25e"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "9b7d22b7c412899b367b3042d5cdd0ffd2aeb31246a408764f52095043af4826"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "64646a519ed4ac0dc20abd73bb669d2a581195625b36fd3596aeeca030b1b858"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a949ca0affd61c18888bef02f0c3ec22efa03af314553aa4e7573828706dc508"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "384e2a13867ea7e87f18d0a694462546f49257c3daa5640b9fad9059495648c8"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "394807f2c902df2e5983ace2c8059df2d9523b0592ecd4b49f66aa7da9bbfa4f"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "1eb94b24732d925371bb2841361307e0e4fffc33f1dd3ac0a9ec052aa392a0b7"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (no calibration)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "chest-xray.image-3.png",
+      "version": "1",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG greyscale (re-encoded, no metadata chunks)",
+      "path": "data/image-3.png",
+      "bytes": 698866,
+      "sha256": "f07e6760fa51111c628df11e9f4ecd22ccb0133d773ff6a10e63d9699e2f7132",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-chest-xray",
+      "attributionRef": "studio-res-chest-xray",
+      "notice": {
+        "path": "data/NOTICE-PTX-498.txt",
+        "sha256": "bb931abd8dde98fad51982dbe0f6f2d655f575e8b02a0acdb35a6ecbb7e5ad6e"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a74d32df44b9f65df03efa6fdfc303dc6a83729ec36d400d53a702d5ba491e49"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "0b927a7c5543e482415a676c9c6420ed9daee80328014b6f2ec473040b65e25e"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "9b7d22b7c412899b367b3042d5cdd0ffd2aeb31246a408764f52095043af4826"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "64646a519ed4ac0dc20abd73bb669d2a581195625b36fd3596aeeca030b1b858"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a949ca0affd61c18888bef02f0c3ec22efa03af314553aa4e7573828706dc508"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "384e2a13867ea7e87f18d0a694462546f49257c3daa5640b9fad9059495648c8"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "394807f2c902df2e5983ace2c8059df2d9523b0592ecd4b49f66aa7da9bbfa4f"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "1eb94b24732d925371bb2841361307e0e4fffc33f1dd3ac0a9ec052aa392a0b7"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (no calibration)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "chest-xray.annotations-3.json",
+      "version": "1",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "JSON polygons (from reference mask/contour)",
+      "path": "data/annotations-3.json",
+      "bytes": 1247,
+      "sha256": "65a558f0b2f57e957d48a043efb7189e8d03edce99a27d377c5bab9c2211c859",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-chest-xray",
+      "attributionRef": "studio-res-chest-xray",
+      "notice": {
+        "path": "data/NOTICE-PTX-498.txt",
+        "sha256": "bb931abd8dde98fad51982dbe0f6f2d655f575e8b02a0acdb35a6ecbb7e5ad6e"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a74d32df44b9f65df03efa6fdfc303dc6a83729ec36d400d53a702d5ba491e49"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "0b927a7c5543e482415a676c9c6420ed9daee80328014b6f2ec473040b65e25e"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "9b7d22b7c412899b367b3042d5cdd0ffd2aeb31246a408764f52095043af4826"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "64646a519ed4ac0dc20abd73bb669d2a581195625b36fd3596aeeca030b1b858"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a949ca0affd61c18888bef02f0c3ec22efa03af314553aa4e7573828706dc508"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "384e2a13867ea7e87f18d0a694462546f49257c3daa5640b9fad9059495648c8"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "394807f2c902df2e5983ace2c8059df2d9523b0592ecd4b49f66aa7da9bbfa4f"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "1eb94b24732d925371bb2841361307e0e4fffc33f1dd3ac0a9ec052aa392a0b7"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (no calibration)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "chest-xray.image-4.png",
+      "version": "1",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG greyscale (re-encoded, no metadata chunks)",
+      "path": "data/image-4.png",
+      "bytes": 625049,
+      "sha256": "6ad522a40c9a1a8731ab864665ee4b1661101e1a072de4bba142edc349854878",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-chest-xray",
+      "attributionRef": "studio-res-chest-xray",
+      "notice": {
+        "path": "data/NOTICE-PTX-498.txt",
+        "sha256": "bb931abd8dde98fad51982dbe0f6f2d655f575e8b02a0acdb35a6ecbb7e5ad6e"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a74d32df44b9f65df03efa6fdfc303dc6a83729ec36d400d53a702d5ba491e49"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "0b927a7c5543e482415a676c9c6420ed9daee80328014b6f2ec473040b65e25e"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "9b7d22b7c412899b367b3042d5cdd0ffd2aeb31246a408764f52095043af4826"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "64646a519ed4ac0dc20abd73bb669d2a581195625b36fd3596aeeca030b1b858"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a949ca0affd61c18888bef02f0c3ec22efa03af314553aa4e7573828706dc508"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "384e2a13867ea7e87f18d0a694462546f49257c3daa5640b9fad9059495648c8"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "394807f2c902df2e5983ace2c8059df2d9523b0592ecd4b49f66aa7da9bbfa4f"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "1eb94b24732d925371bb2841361307e0e4fffc33f1dd3ac0a9ec052aa392a0b7"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (no calibration)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "chest-xray.annotations-4.json",
+      "version": "1",
+      "datasetId": "ptx-498",
+      "sourceRef": "ptx498-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "JSON polygons (from reference mask/contour)",
+      "path": "data/annotations-4.json",
+      "bytes": 897,
+      "sha256": "f34a0fa92fe4f9646bbbbe31308dec9a749760059b1b3f321d6e1fe657a25997",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-chest-xray",
+      "attributionRef": "studio-res-chest-xray",
+      "notice": {
+        "path": "data/NOTICE-PTX-498.txt",
+        "sha256": "bb931abd8dde98fad51982dbe0f6f2d655f575e8b02a0acdb35a6ecbb7e5ad6e"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a74d32df44b9f65df03efa6fdfc303dc6a83729ec36d400d53a702d5ba491e49"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "0b927a7c5543e482415a676c9c6420ed9daee80328014b6f2ec473040b65e25e"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "9b7d22b7c412899b367b3042d5cdd0ffd2aeb31246a408764f52095043af4826"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitea-10.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "64646a519ed4ac0dc20abd73bb669d2a581195625b36fd3596aeeca030b1b858"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "a949ca0affd61c18888bef02f0c3ec22efa03af314553aa4e7573828706dc508"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.siteb-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "384e2a13867ea7e87f18d0a694462546f49257c3daa5640b9fad9059495648c8"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.1.img.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "394807f2c902df2e5983ace2c8059df2d9523b0592ecd4b49f66aa7da9bbfa4f"
+        },
+        {
+          "assetId": "src.ptx498-zenodo.sitec-1.2.mask.png",
+          "version": "v2-fix-Zenodo-record-8266529-",
+          "sha256": "1eb94b24732d925371bb2841361307e0e4fffc33f1dd3ac0a9ec052aa392a0b7"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (no calibration)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "pelvis-ultrasound.image-1.png",
+      "version": "1",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG greyscale (re-encoded, no metadata chunks)",
+      "path": "data/image-1.png",
+      "bytes": 133843,
+      "sha256": "f9d520cd7b419a350bf084db23bab91ed721e41916daebf9a0b70275ef519b4b",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-pelvis-ultrasound",
+      "attributionRef": "studio-res-pelvis-ultrasound",
+      "notice": {
+        "path": "data/NOTICE-HC18.txt",
+        "sha256": "a6093a82bb1db35cbccc48f647cef41ba1e96a5b8a5333c6687879b2fdfd8dd1"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.hc18-zenodo.training_set_pixel_size_and_hc.csv",
+          "version": "Zenodo-record-1327317",
+          "sha256": "1c08fa81c374c5f9509f3aa6a6568e4dc6cc5434ff82d0df731db7e4f25816b3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c530210f08e49a7e348075b59b90008586a856271bb472061ab043b1ba2a3715"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "22da8fb98960fc7327cce858ed8bc7cd5aacbae919f99ec3b67e1d01f4b6efb3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "8c83c6b356952eb6ecc29c02bd772bb9dd603d3c4a986908c78c2f31bcb77b50"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c60ae20f455f87aa068d149afae256336fed951aef4f36f64ec5f6f05c3fae6a"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "a9743fe71fd65f3aede52af353e420c8fb3236cdddd0cf4ef8cbe6e7dadff5ec"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "17d495cef84d18dc0a43b1b19b2170d68032224933b75c06b7f22ef3be0e06f6"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "181c7d6c1e940ee21459fab7187b4ea027d8f5e125e0b9126278f61a23129681"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "29385f0c1b073794a544feca98823935c673a1ddd190f9093eefdc4545ada379"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (mm via per-image pixel spacing)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "pelvis-ultrasound.annotations-1.json",
+      "version": "1",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "JSON polygons (from reference mask/contour)",
+      "path": "data/annotations-1.json",
+      "bytes": 613,
+      "sha256": "172686c44af0f211250c5bbbb9b30a9e5d4dc78db3bf386f89657a94e618014f",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-pelvis-ultrasound",
+      "attributionRef": "studio-res-pelvis-ultrasound",
+      "notice": {
+        "path": "data/NOTICE-HC18.txt",
+        "sha256": "a6093a82bb1db35cbccc48f647cef41ba1e96a5b8a5333c6687879b2fdfd8dd1"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.hc18-zenodo.training_set_pixel_size_and_hc.csv",
+          "version": "Zenodo-record-1327317",
+          "sha256": "1c08fa81c374c5f9509f3aa6a6568e4dc6cc5434ff82d0df731db7e4f25816b3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c530210f08e49a7e348075b59b90008586a856271bb472061ab043b1ba2a3715"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "22da8fb98960fc7327cce858ed8bc7cd5aacbae919f99ec3b67e1d01f4b6efb3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "8c83c6b356952eb6ecc29c02bd772bb9dd603d3c4a986908c78c2f31bcb77b50"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c60ae20f455f87aa068d149afae256336fed951aef4f36f64ec5f6f05c3fae6a"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "a9743fe71fd65f3aede52af353e420c8fb3236cdddd0cf4ef8cbe6e7dadff5ec"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "17d495cef84d18dc0a43b1b19b2170d68032224933b75c06b7f22ef3be0e06f6"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "181c7d6c1e940ee21459fab7187b4ea027d8f5e125e0b9126278f61a23129681"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "29385f0c1b073794a544feca98823935c673a1ddd190f9093eefdc4545ada379"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (mm via per-image pixel spacing)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "pelvis-ultrasound.image-2.png",
+      "version": "1",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG greyscale (re-encoded, no metadata chunks)",
+      "path": "data/image-2.png",
+      "bytes": 190317,
+      "sha256": "c1241cf349deb2b3e0fefead781203972cc34dc826976ea4c3266d050bc12d3e",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-pelvis-ultrasound",
+      "attributionRef": "studio-res-pelvis-ultrasound",
+      "notice": {
+        "path": "data/NOTICE-HC18.txt",
+        "sha256": "a6093a82bb1db35cbccc48f647cef41ba1e96a5b8a5333c6687879b2fdfd8dd1"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.hc18-zenodo.training_set_pixel_size_and_hc.csv",
+          "version": "Zenodo-record-1327317",
+          "sha256": "1c08fa81c374c5f9509f3aa6a6568e4dc6cc5434ff82d0df731db7e4f25816b3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c530210f08e49a7e348075b59b90008586a856271bb472061ab043b1ba2a3715"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "22da8fb98960fc7327cce858ed8bc7cd5aacbae919f99ec3b67e1d01f4b6efb3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "8c83c6b356952eb6ecc29c02bd772bb9dd603d3c4a986908c78c2f31bcb77b50"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c60ae20f455f87aa068d149afae256336fed951aef4f36f64ec5f6f05c3fae6a"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "a9743fe71fd65f3aede52af353e420c8fb3236cdddd0cf4ef8cbe6e7dadff5ec"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "17d495cef84d18dc0a43b1b19b2170d68032224933b75c06b7f22ef3be0e06f6"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "181c7d6c1e940ee21459fab7187b4ea027d8f5e125e0b9126278f61a23129681"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "29385f0c1b073794a544feca98823935c673a1ddd190f9093eefdc4545ada379"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (mm via per-image pixel spacing)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "pelvis-ultrasound.annotations-2.json",
+      "version": "1",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "JSON polygons (from reference mask/contour)",
+      "path": "data/annotations-2.json",
+      "bytes": 625,
+      "sha256": "44af21192e668e8173d28c88dff63b452895d1f7c95d93924e1057f6bed4007d",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-pelvis-ultrasound",
+      "attributionRef": "studio-res-pelvis-ultrasound",
+      "notice": {
+        "path": "data/NOTICE-HC18.txt",
+        "sha256": "a6093a82bb1db35cbccc48f647cef41ba1e96a5b8a5333c6687879b2fdfd8dd1"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.hc18-zenodo.training_set_pixel_size_and_hc.csv",
+          "version": "Zenodo-record-1327317",
+          "sha256": "1c08fa81c374c5f9509f3aa6a6568e4dc6cc5434ff82d0df731db7e4f25816b3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c530210f08e49a7e348075b59b90008586a856271bb472061ab043b1ba2a3715"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "22da8fb98960fc7327cce858ed8bc7cd5aacbae919f99ec3b67e1d01f4b6efb3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "8c83c6b356952eb6ecc29c02bd772bb9dd603d3c4a986908c78c2f31bcb77b50"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c60ae20f455f87aa068d149afae256336fed951aef4f36f64ec5f6f05c3fae6a"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "a9743fe71fd65f3aede52af353e420c8fb3236cdddd0cf4ef8cbe6e7dadff5ec"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "17d495cef84d18dc0a43b1b19b2170d68032224933b75c06b7f22ef3be0e06f6"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "181c7d6c1e940ee21459fab7187b4ea027d8f5e125e0b9126278f61a23129681"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "29385f0c1b073794a544feca98823935c673a1ddd190f9093eefdc4545ada379"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (mm via per-image pixel spacing)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "pelvis-ultrasound.image-3.png",
+      "version": "1",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG greyscale (re-encoded, no metadata chunks)",
+      "path": "data/image-3.png",
+      "bytes": 161423,
+      "sha256": "eac216f0de0a08b8d3d06e3ce137a33bf404cf7ea35263e5d8acca07e62bbf4a",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-pelvis-ultrasound",
+      "attributionRef": "studio-res-pelvis-ultrasound",
+      "notice": {
+        "path": "data/NOTICE-HC18.txt",
+        "sha256": "a6093a82bb1db35cbccc48f647cef41ba1e96a5b8a5333c6687879b2fdfd8dd1"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.hc18-zenodo.training_set_pixel_size_and_hc.csv",
+          "version": "Zenodo-record-1327317",
+          "sha256": "1c08fa81c374c5f9509f3aa6a6568e4dc6cc5434ff82d0df731db7e4f25816b3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c530210f08e49a7e348075b59b90008586a856271bb472061ab043b1ba2a3715"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "22da8fb98960fc7327cce858ed8bc7cd5aacbae919f99ec3b67e1d01f4b6efb3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "8c83c6b356952eb6ecc29c02bd772bb9dd603d3c4a986908c78c2f31bcb77b50"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c60ae20f455f87aa068d149afae256336fed951aef4f36f64ec5f6f05c3fae6a"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "a9743fe71fd65f3aede52af353e420c8fb3236cdddd0cf4ef8cbe6e7dadff5ec"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "17d495cef84d18dc0a43b1b19b2170d68032224933b75c06b7f22ef3be0e06f6"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "181c7d6c1e940ee21459fab7187b4ea027d8f5e125e0b9126278f61a23129681"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "29385f0c1b073794a544feca98823935c673a1ddd190f9093eefdc4545ada379"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (mm via per-image pixel spacing)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "pelvis-ultrasound.annotations-3.json",
+      "version": "1",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "JSON polygons (from reference mask/contour)",
+      "path": "data/annotations-3.json",
+      "bytes": 633,
+      "sha256": "f70530265b8e0617eab42e67188c4fbc9830ab5f821c7062dac0fd08c301127a",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-pelvis-ultrasound",
+      "attributionRef": "studio-res-pelvis-ultrasound",
+      "notice": {
+        "path": "data/NOTICE-HC18.txt",
+        "sha256": "a6093a82bb1db35cbccc48f647cef41ba1e96a5b8a5333c6687879b2fdfd8dd1"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.hc18-zenodo.training_set_pixel_size_and_hc.csv",
+          "version": "Zenodo-record-1327317",
+          "sha256": "1c08fa81c374c5f9509f3aa6a6568e4dc6cc5434ff82d0df731db7e4f25816b3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c530210f08e49a7e348075b59b90008586a856271bb472061ab043b1ba2a3715"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "22da8fb98960fc7327cce858ed8bc7cd5aacbae919f99ec3b67e1d01f4b6efb3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "8c83c6b356952eb6ecc29c02bd772bb9dd603d3c4a986908c78c2f31bcb77b50"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c60ae20f455f87aa068d149afae256336fed951aef4f36f64ec5f6f05c3fae6a"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "a9743fe71fd65f3aede52af353e420c8fb3236cdddd0cf4ef8cbe6e7dadff5ec"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "17d495cef84d18dc0a43b1b19b2170d68032224933b75c06b7f22ef3be0e06f6"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "181c7d6c1e940ee21459fab7187b4ea027d8f5e125e0b9126278f61a23129681"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "29385f0c1b073794a544feca98823935c673a1ddd190f9093eefdc4545ada379"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (mm via per-image pixel spacing)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "pelvis-ultrasound.image-4.png",
+      "version": "1",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "image",
+      "dataNature": "acquired-patient",
+      "format": "PNG greyscale (re-encoded, no metadata chunks)",
+      "path": "data/image-4.png",
+      "bytes": 187839,
+      "sha256": "8d775b30718d303994138cc81b1a72075b514ce2d1c9babf2dd983d783ba6695",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-pelvis-ultrasound",
+      "attributionRef": "studio-res-pelvis-ultrasound",
+      "notice": {
+        "path": "data/NOTICE-HC18.txt",
+        "sha256": "a6093a82bb1db35cbccc48f647cef41ba1e96a5b8a5333c6687879b2fdfd8dd1"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.hc18-zenodo.training_set_pixel_size_and_hc.csv",
+          "version": "Zenodo-record-1327317",
+          "sha256": "1c08fa81c374c5f9509f3aa6a6568e4dc6cc5434ff82d0df731db7e4f25816b3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c530210f08e49a7e348075b59b90008586a856271bb472061ab043b1ba2a3715"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "22da8fb98960fc7327cce858ed8bc7cd5aacbae919f99ec3b67e1d01f4b6efb3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "8c83c6b356952eb6ecc29c02bd772bb9dd603d3c4a986908c78c2f31bcb77b50"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c60ae20f455f87aa068d149afae256336fed951aef4f36f64ec5f6f05c3fae6a"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "a9743fe71fd65f3aede52af353e420c8fb3236cdddd0cf4ef8cbe6e7dadff5ec"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "17d495cef84d18dc0a43b1b19b2170d68032224933b75c06b7f22ef3be0e06f6"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "181c7d6c1e940ee21459fab7187b4ea027d8f5e125e0b9126278f61a23129681"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "29385f0c1b073794a544feca98823935c673a1ddd190f9093eefdc4545ada379"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (mm via per-image pixel spacing)",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "pelvis-ultrasound.annotations-4.json",
+      "version": "1",
+      "datasetId": "hc18",
+      "sourceRef": "hc18-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "JSON polygons (from reference mask/contour)",
+      "path": "data/annotations-4.json",
+      "bytes": 673,
+      "sha256": "ea141d0184180c0d7a9ea80d896346411eb224b96704532f0c4bcff33607a5f1",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-pelvis-ultrasound",
+      "attributionRef": "studio-res-pelvis-ultrasound",
+      "notice": {
+        "path": "data/NOTICE-HC18.txt",
+        "sha256": "a6093a82bb1db35cbccc48f647cef41ba1e96a5b8a5333c6687879b2fdfd8dd1"
+      },
+      "dependsOn": [
+        {
+          "assetId": "src.hc18-zenodo.training_set_pixel_size_and_hc.csv",
+          "version": "Zenodo-record-1327317",
+          "sha256": "1c08fa81c374c5f9509f3aa6a6568e4dc6cc5434ff82d0df731db7e4f25816b3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c530210f08e49a7e348075b59b90008586a856271bb472061ab043b1ba2a3715"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-000_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "22da8fb98960fc7327cce858ed8bc7cd5aacbae919f99ec3b67e1d01f4b6efb3"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "8c83c6b356952eb6ecc29c02bd772bb9dd603d3c4a986908c78c2f31bcb77b50"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-010_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "c60ae20f455f87aa068d149afae256336fed951aef4f36f64ec5f6f05c3fae6a"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "a9743fe71fd65f3aede52af353e420c8fb3236cdddd0cf4ef8cbe6e7dadff5ec"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-100_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "17d495cef84d18dc0a43b1b19b2170d68032224933b75c06b7f22ef3be0e06f6"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "181c7d6c1e940ee21459fab7187b4ea027d8f5e125e0b9126278f61a23129681"
+        },
+        {
+          "assetId": "src.hc18-zenodo.training_set-300_hc_annotation.png",
+          "version": "Zenodo-record-1327317",
+          "sha256": "29385f0c1b073794a544feca98823935c673a1ddd190f9093eefdc4545ada379"
+        }
+      ],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
+        "toolVersion": "node 22.23.4",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
+      },
+      "geometry": {
+        "spaceId": "image pixels (x right, y down)",
+        "units": "px (mm via per-image pixel spacing)",
         "details": "See provenance validation (local-data); attestation only, not a parser."
       },
       "medicalReview": {
@@ -2808,7 +5469,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "7deae98cd2c91539df9059384c2ca15c2f2533ae454d1740fe976909ebd6f46d"
       },
       "geometry": {
@@ -2873,7 +5534,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "7deae98cd2c91539df9059384c2ca15c2f2533ae454d1740fe976909ebd6f46d"
       },
       "geometry": null,
@@ -2934,7 +5595,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "ce3199a16187a9a8276d744a65d4186c09126134adebc818769175d9cc9f92bf"
       },
       "geometry": {
@@ -2999,7 +5660,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "ce3199a16187a9a8276d744a65d4186c09126134adebc818769175d9cc9f92bf"
       },
       "geometry": null,
@@ -3060,7 +5721,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "618511466f3328a7b9c3e8f4d2f87bbdc5f5136f847a15a3a135653fec7d01b6"
       },
       "geometry": {
@@ -3125,7 +5786,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "618511466f3328a7b9c3e8f4d2f87bbdc5f5136f847a15a3a135653fec7d01b6"
       },
       "geometry": null,
@@ -3186,7 +5847,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "83408afe9ab7c9fb198bb8f274e90cbf82500fb18d942679d9eff86c5ecc142f"
       },
       "geometry": {
@@ -3251,7 +5912,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "83408afe9ab7c9fb198bb8f274e90cbf82500fb18d942679d9eff86c5ecc142f"
       },
       "geometry": null,
@@ -3312,7 +5973,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "b2dbe55355ae6ef0979d5d4ef0eae2058f97f2434f04481a737ab8dcff8ba506"
       },
       "geometry": {
@@ -3377,7 +6038,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "b2dbe55355ae6ef0979d5d4ef0eae2058f97f2434f04481a737ab8dcff8ba506"
       },
       "geometry": null,
@@ -3438,7 +6099,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "2ff9633d5fb1dcc4a5b3d5aa0d75528977b6ff200da1e20fc814be6c71cffe22"
       },
       "geometry": {
@@ -3503,7 +6164,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "2ff9633d5fb1dcc4a5b3d5aa0d75528977b6ff200da1e20fc814be6c71cffe22"
       },
       "geometry": null,
@@ -3564,7 +6225,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "84577aba02da33a3a379260c3d75627b4278d4ad27588c7b1cec396e00d3e450"
       },
       "geometry": {
@@ -3629,7 +6290,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "84577aba02da33a3a379260c3d75627b4278d4ad27588c7b1cec396e00d3e450"
       },
       "geometry": null,
@@ -3690,7 +6351,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "23cb780abc52b307aa48e92e1a4b09b3813ae0d30c293afa9e05821ff2eb4430"
       },
       "geometry": {
@@ -3755,7 +6416,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "23cb780abc52b307aa48e92e1a4b09b3813ae0d30c293afa9e05821ff2eb4430"
       },
       "geometry": null,
@@ -3816,7 +6477,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "3443fb1665c9bde73ea6b252e1d7f4015cfd8537dfe52538bfd868104a70c1e9"
       },
       "geometry": {
@@ -3881,7 +6542,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "6e1a1fb8426f2027b01260c1a6f4ecac07e34c29",
+        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
         "parametersSha256": "3443fb1665c9bde73ea6b252e1d7f4015cfd8537dfe52538bfd868104a70c1e9"
       },
       "geometry": null,

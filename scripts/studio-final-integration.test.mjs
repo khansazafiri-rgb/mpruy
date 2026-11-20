@@ -56,14 +56,14 @@ test('INTEGRATION-003 exactly 24 independent entries use the existing canonical 
 test('INTEGRATION-004 preserves every legacy evidence record without upgrading any rights', () => {
   const original = JSON.parse(before('licensing/commercial-rights-evidence.json'));
   assert.equal(original.records.length, 14);
-  assert.equal(records.length, 32);
+  assert.equal(records.length, 38);
   for (const old of original.records) assert.deepEqual(records.find(r => r.id === old.id), old, old.id);
   const oldIds = new Set(original.records.map(r => r.id));
   const added = records.filter(r => !oldIds.has(r.id));
-  // 13 derived-output records (one per studio with private data) + 5 official-source records (one per source).
-  assert.equal(added.length, 18);
-  assert.equal(added.filter(r => r.id.startsWith('studio-res-')).length, 13);
-  assert.equal(added.filter(r => r.id.startsWith('studio-src-')).length, 5);
+  // 16 derived-output records (one per studio with private data) + 8 official-source records (one per source).
+  assert.equal(added.length, 24);
+  assert.equal(added.filter(r => r.id.startsWith('studio-res-')).length, 16);
+  assert.equal(added.filter(r => r.id.startsWith('studio-src-')).length, 8);
   assert.ok(added.every(r => r.status === 'needs-review'));
   assert.equal(records.filter(r => r.status === 'verified').length, 0);
 });
@@ -71,11 +71,11 @@ test('INTEGRATION-004 preserves every legacy evidence record without upgrading a
 test('INTEGRATION-005 resource metadata is valid but every asset remains pending medical/privacy review', () => {
   const validated = validateResources(resources, json('licensing/resource-manifest.schema.json'));
   assert.equal(validated.ok, true, JSON.stringify(validated.errors));
-  assert.equal(resources.sources.length, 5);
-  // 35 derived assets shipped in private builds + 26 official raw inputs (parents; logical "source/" paths, never shipped).
+  assert.equal(resources.sources.length, 8);
+  // 54 derived assets shipped in private builds + 46 official raw inputs (parents; logical "source/" paths, never shipped).
   const parents = resources.assets.filter(a => a.sourceFile), derived = resources.assets.filter(a => !a.sourceFile);
-  assert.equal(derived.length, 35);
-  assert.equal(parents.length, 26);
+  assert.equal(derived.length, 54);
+  assert.equal(parents.length, 46);
   for (const a of parents) {
     assert.equal(a.sourceFile.sha256, a.sha256, a.id);
     assert.match(a.path, /^source\//, a.id);
@@ -146,8 +146,16 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
   const unchanged = ['apps/web', 'apps/anatomy', 'apps/4d-lab', 'apps/hermes-agent', 'deploy', 'shared/lab-tracks.json', 'apps/pocketbase/pb_migrations'];
   const harness = 'apps/4d-lab/test/e2e/ux-e2e.mjs';
   const phaseStatus = 'apps/4d-lab/PHASE_STATUS.md';
+  // Master-execution additions (reviewed, studio-only): the studio page/host in apps/web, the migration-level bump the
+  // web app enforces, and ONE additive migration. Existing migrations may never be modified or deleted.
+  const studioOnly = new Set(['apps/web/src/features/studios/StudioHost.jsx', 'apps/web/src/features/studios/studioProgress.mjs',
+    'apps/web/src/features/studios/studioProgress.test.mjs', 'apps/web/src/pages/StudioEntry.jsx', 'apps/web/src/lib/serverVersion.js',
+    'apps/web/src/lib/serverVersion.test.mjs', 'apps/pocketbase/pb_migrations/1800003300_studio_progress.js']);
   const legacyDelta = git('diff', '--name-only', base, 'HEAD', '--', ...unchanged).split('\n').filter(Boolean);
-  assert.deepEqual(legacyDelta.filter(p => p !== harness && p !== phaseStatus), []);
+  assert.deepEqual(legacyDelta.filter(p => p !== harness && p !== phaseStatus && !studioOnly.has(p)), []);
+  assert.equal(git('diff', '--name-only', '--diff-filter=MDR', base, 'HEAD', '--', 'apps/pocketbase/pb_migrations'), '', 'existing migrations unchanged');
+  assert.deepEqual(git('diff', '--name-only', base, 'HEAD', '--', 'apps/web/src/lib/serverVersion.js') ? git('diff', base, 'HEAD', '--', 'apps/web/src/lib/serverVersion.js').split('\n').filter(l => /^[+-][^+-]/.test(l)) : [],
+    ['-export const REQUIRED_MIGRATION = 1800003200;', '+export const REQUIRED_MIGRATION = 1800003300;'], 'only the required migration level changes');
   // Reverse only reviewed setup/cleanup additions. The original 16 case bodies and assertions must survive intact.
   let normalized = read(harness);
   for (const [tag, original] of [
@@ -164,7 +172,9 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
     "await p.goto(url); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });");
   assert.equal(normalized, before(harness), 'No legacy UX assertion or case may be edited or removed');
   // Integration may add guards/workflows/docs and strengthen an API test, never rewrite WS implementation.
-  const delta = git('diff', '--name-only', source, 'HEAD').split('\n').filter(Boolean);
+  // Pinned to the integration merge (PR #233); later, separately reviewed work is guarded by its own tests.
+  const integration = process.env.STUDIOS_INTEGRATION_MERGE_SHA || '6e1a1fb8426f2027b01260c1a6f4ecac07e34c29';
+  const delta = git('diff', '--name-only', source, integration).split('\n').filter(Boolean);
   const permitted = new Set(['.github/workflows/studios-integration.yml', 'scripts/studio-final-integration.test.mjs',
     'docs/clinical-studios/14-final-integration-readiness.md', 'docs/clinical-studios/README.md',
     'apps/pocketbase/test/studios-api.test.mjs', 'apps/4d-lab/test/e2e/ux-e2e.mjs', 'apps/4d-lab/PHASE_STATUS.md']);

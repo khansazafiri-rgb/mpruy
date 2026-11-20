@@ -20,7 +20,7 @@ const BUILD = path.join(REPO, 'local-data/studio-resources/build');
 export function localRawFile(asset) {
   const [, sourceId, ...rest] = asset.path.split('/'), member = asset.sourceFile.member;
   const base = { 'sri24-nitrc': path.join(RAW, 'sri24'), 'ptbxl-physionet': path.join(RAW, 'ptbxl'), 'lidc-idri-tcia': path.join(RAW, 'lidc'),
-    'bodyparts3d-dbcls': BP3D }[sourceId];
+    'bodyparts3d-dbcls': BP3D, 'ptx498-zenodo': path.join(RAW, 'ptx498'), 'hc18-zenodo': path.join(RAW, 'hc18'), 'amos-zenodo': path.join(RAW, 'amos') }[sourceId];
   if (sourceId === 'spider-zenodo') return path.join(RAW, 'spider', member.startsWith('masks/') ? '1_t2_mask.mha' : '1_t2.mha');
   if (!base || !rest.length) throw Error('Unknown parent path ' + asset.path);
   return path.join(base, member);
@@ -44,7 +44,7 @@ export async function verify({ run = true } = {}) {
   }
   if (run) for (const studio of studios) {
     const tool = derived.find(a => a.id.startsWith(studio + '.')).derivation.tool.split('@')[0];
-    const args = tool.endsWith('prepare-bp3d-region.mjs') ? [tool, studio] : [tool];
+    const args = /prepare-(bp3d-region|image2d)\.mjs$/.test(tool) ? [tool, studio] : [tool];
     execFileSync(process.execPath, args, { cwd: REPO, stdio: 'ignore' });
     result.ran.push(args.join(' '));
   }

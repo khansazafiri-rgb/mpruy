@@ -145,6 +145,10 @@ export function privacyScan(studio, buildRoot = BUILD) {
       const len = b.readUInt32LE(12), gltf = JSON.parse(b.slice(20, 20 + len).toString('utf8'));
       walkJson(rel + '#json', { asset: gltf.asset, extras: gltf.extras || null, scenes: gltf.scenes });
       if ((gltf.nodes || []).some(nd => nd.name && !/^s\d{3}$/.test(nd.name))) add(rel, 'review', 'glb-node-names', 'node names are not opaque ids');
+    } else if (rel.endsWith('.png')) {
+      for (let p = 8; p + 8 <= b.length;) { const len = b.readUInt32BE(p), type = b.toString('latin1', p + 4, p + 8);
+        if (['tEXt', 'iTXt', 'zTXt', 'eXIf', 'tIME'].includes(type)) add(rel, type === 'tIME' ? 'review' : 'high', 'png-metadata-chunk', type);
+        if (type === 'IEND') break; p += 12 + len; }
     } else if (/\.(csv|tsv)$/i.test(rel)) add(rel, 'high', 'tabular-metadata-shipped', 'tabular file in delivered data');
     else if (/\.(dcm|ima)$/i.test(rel) || (b.length > 132 && b.slice(128, 132).toString('latin1') === 'DICM')) add(rel, 'high', 'dicom-shipped', 'DICOM file in delivered data');
   }
@@ -204,7 +208,7 @@ Induk resmi: ${parents.map(p => '`' + p.id + '`').join(', ')}.
 
 ## Checklist privasi
 - [ ] Hasil scan otomatis: ${high} temuan tinggi, ${rev} perlu ditinjau (\`privacy-scan.json\`).
-- [ ] Tidak ada identitas pasien, tanggal, institusi, atau teks terbakar di citra.
+- [ ] Tidak ada identitas pasien, tanggal, institusi, atau teks terbakar di citra.${assets.some(a => a.kind === 'image') ? '\n- [ ] Citra 2D: periksa penanda/teks terbakar (mis. huruf "R", label sudut) — boleh tetap ada bila bukan identitas, tetapi harus diputuskan reviewer.' : ''}
 - [ ] Risiko re-identifikasi dapat diterima untuk penggunaan yang dimaksud.
 
 ## Checklist terminologi (jika ada \`terminology.draft.json\`)
