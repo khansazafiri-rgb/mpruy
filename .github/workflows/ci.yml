@@ -30,6 +30,8 @@ jobs:
         env:
           STUDIOS_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: npm run test:studios
+      - name: Build independent technical Studio fixture (not published)
+        run: npm run build:studio-fixture
       - name: Build web
         run: npm run build
       - name: Hermes delivery and import workflows
