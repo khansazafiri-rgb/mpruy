@@ -17,7 +17,7 @@ let pass = 0; const step = async (n, fn) => { await fn(); pass++; console.log(' 
 try {
   await page.goto(srv.url + 'index.html?mode=guided');
   await page.waitForSelector('[data-testid=readout]', { timeout: 60000 });
-  await page.waitForFunction(() => /Siap|siap/.test(document.querySelector('.studio-status')?.textContent || ''), null, { timeout: 90000 });
+  await page.waitForFunction(() => /Siap|siap/.test(document.querySelector('[data-testid=studio-status]')?.textContent || ''), null, { timeout: 90000 });
   const dataset = await page.evaluate(() => fetch('./data/dataset.json').then(r => r.json()));
   console.log('dataset:', dataset.status, dataset.source);
   const box = await page.locator('canvas').boundingBox();

@@ -13,7 +13,7 @@ let pass = 0; const step = async (n, fn) => { await fn(); pass++; console.log(' 
 const guideDone = () => page.waitForFunction(() => /Terdeteksi/.test(document.querySelector('[data-testid=guide]').innerText), null, { timeout: 30000 });
 try {
   await page.goto(srv.url + 'index.html?mode=guided');
-  await page.waitForFunction(() => /struktur dimuat/.test(document.querySelector('.studio-status')?.textContent || ''), null, { timeout: 120000 });
+  await page.waitForFunction(() => /struktur dimuat/.test(document.querySelector('[data-testid=studio-status]')?.textContent || ''), null, { timeout: 120000 });
   const dataset = await page.evaluate(() => fetch('./data/dataset.json').then(r => r.json()));
   const table = await page.evaluate(() => fetch('./data/structures.json').then(r => r.json()));
   console.log('dataset:', dataset.status, '·', table.structures.length, 'structures');

@@ -1,0 +1,9 @@
+{
+  "studioId": "ecg",
+  "title": "ECG",
+  "engine": "ecg",
+  "capabilities": ["clinical-case"],
+  "challengeRestricted": ["data/labels.json"],
+  "privateData": "local-data/studio-resources/build/ecg",
+  "fixtureTool": "tools/make-ecg-fixture.mjs"
+}
