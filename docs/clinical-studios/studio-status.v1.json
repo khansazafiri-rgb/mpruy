@@ -1,0 +1,1098 @@
+{
+  "schema": "medcoel.studio-status.v1",
+  "generatedFrom": [
+    "shared/studios/catalog.v1.json",
+    "licensing/resources.v1.json",
+    "licensing/commercial-rights-evidence.json",
+    "licensing/reviews/decisions.v1.json",
+    "apps/studios/*/studio.config.json"
+  ],
+  "note": "Computed, not hand-edited. No studio is open to students; release needs verified rights, signed privacy/medical review of the exact bytes, a receipt and an attestation.",
+  "total": 24,
+  "counts": {
+    "FUNCTIONAL_WITH_PENDING_CLEARANCE": 11,
+    "TECHNICAL_FIXTURE_ONLY": 7,
+    "FUNCTIONAL_PRIVATE_REVIEW": 5,
+    "BLOCKED": 1
+  },
+  "studios": [
+    {
+      "id": "brain-anatomy",
+      "engine": "anatomy3d",
+      "category": "FUNCTIONAL_WITH_PENDING_CLEARANCE",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 2,
+      "sources": [
+        {
+          "id": "bodyparts3d-dbcls",
+          "licenseId": "CC-BY-SA-2.1-JP",
+          "status": "REVIEW_REQUIRED",
+          "doi": null
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-bodyparts3d-dbcls",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-brain-anatomy",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "blocked",
+        "blockers": [
+          "licence"
+        ]
+      },
+      "challengeRestricted": [
+        "data/structures.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "protected-or-unverified",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "brain-ct",
+      "engine": "volume",
+      "category": "TECHNICAL_FIXTURE_ONLY",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "technical-fixture",
+      "derivedAssets": 0,
+      "sources": [],
+      "rights": [],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/readers.nii.gz",
+        "data/annotations.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "brain-mri",
+      "engine": "volume",
+      "category": "FUNCTIONAL_WITH_PENDING_CLEARANCE",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 4,
+      "sources": [
+        {
+          "id": "sri24-nitrc",
+          "licenseId": "CC-BY-SA-3.0",
+          "status": "REVIEW_REQUIRED",
+          "doi": "10.1002/hbm.20906"
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-sri24-nitrc",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-brain-mri",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-brain-mri-lpba40",
+          "status": "blocked"
+        }
+      ],
+      "rightsBlocked": [
+        "studio-res-brain-mri-lpba40"
+      ],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/labels-lpba40.nii.gz",
+        "data/labels.json",
+        "data/tissues.nii.gz"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "head-neck-anatomy",
+      "engine": "anatomy3d",
+      "category": "FUNCTIONAL_WITH_PENDING_CLEARANCE",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 2,
+      "sources": [
+        {
+          "id": "bodyparts3d-dbcls",
+          "licenseId": "CC-BY-SA-2.1-JP",
+          "status": "REVIEW_REQUIRED",
+          "doi": null
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-bodyparts3d-dbcls",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-head-neck-anatomy",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/structures.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "spine-anatomy",
+      "engine": "anatomy3d",
+      "category": "FUNCTIONAL_WITH_PENDING_CLEARANCE",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 2,
+      "sources": [
+        {
+          "id": "bodyparts3d-dbcls",
+          "licenseId": "CC-BY-SA-2.1-JP",
+          "status": "REVIEW_REQUIRED",
+          "doi": null
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-bodyparts3d-dbcls",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-spine-anatomy",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/structures.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "spine-mri",
+      "engine": "volume",
+      "category": "FUNCTIONAL_PRIVATE_REVIEW",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 3,
+      "sources": [
+        {
+          "id": "spider-zenodo",
+          "licenseId": "CC-BY-4.0",
+          "status": "VERIFIED_SOURCE",
+          "doi": "10.5281/zenodo.10159290"
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-spider-zenodo",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-spine-mri",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/labels-lpba40.nii.gz",
+        "data/labels.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "thorax-anatomy",
+      "engine": "anatomy3d",
+      "category": "FUNCTIONAL_WITH_PENDING_CLEARANCE",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 2,
+      "sources": [
+        {
+          "id": "bodyparts3d-dbcls",
+          "licenseId": "CC-BY-SA-2.1-JP",
+          "status": "REVIEW_REQUIRED",
+          "doi": null
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-bodyparts3d-dbcls",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-thorax-anatomy",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/structures.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "chest-xray",
+      "engine": "image2d",
+      "category": "FUNCTIONAL_PRIVATE_REVIEW",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 8,
+      "sources": [
+        {
+          "id": "ptx498-zenodo",
+          "licenseId": "CC-BY-4.0",
+          "status": "VERIFIED_SOURCE",
+          "doi": "10.5281/zenodo.8266529"
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-ptx498-zenodo",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-chest-xray",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/annotations-1.json",
+        "data/annotations-2.json",
+        "data/annotations-3.json",
+        "data/annotations-4.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "chest-ct",
+      "engine": "volume",
+      "category": "FUNCTIONAL_PRIVATE_REVIEW",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 3,
+      "sources": [
+        {
+          "id": "lidc-idri-tcia",
+          "licenseId": "CC-BY-3.0",
+          "status": "VERIFIED_SOURCE",
+          "doi": "10.7937/K9/TCIA.2015.LO9QL9SX"
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-lidc-idri-tcia",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-chest-ct",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/readers.nii.gz",
+        "data/annotations.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "lung-ultrasound",
+      "engine": "image2d",
+      "category": "TECHNICAL_FIXTURE_ONLY",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "technical-fixture",
+      "derivedAssets": 0,
+      "sources": [],
+      "rights": [],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/annotations-1.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "heart-anatomy",
+      "engine": "anatomy3d",
+      "category": "FUNCTIONAL_WITH_PENDING_CLEARANCE",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 2,
+      "sources": [
+        {
+          "id": "bodyparts3d-dbcls",
+          "licenseId": "CC-BY-SA-2.1-JP",
+          "status": "REVIEW_REQUIRED",
+          "doi": null
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-bodyparts3d-dbcls",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-heart-anatomy",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/structures.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "cardiac-echo",
+      "engine": "image2d",
+      "category": "TECHNICAL_FIXTURE_ONLY",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "technical-fixture",
+      "derivedAssets": 0,
+      "sources": [],
+      "rights": [],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/annotations-1.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "cardiac-ct",
+      "engine": "volume",
+      "category": "BLOCKED",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "technical-fixture",
+      "derivedAssets": 0,
+      "sources": [],
+      "rights": [],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": [
+          "data"
+        ]
+      },
+      "challengeRestricted": [
+        "data/readers.nii.gz",
+        "data/annotations.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "protected-or-unverified",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "ecg",
+      "engine": "ecg",
+      "category": "FUNCTIONAL_PRIVATE_REVIEW",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 7,
+      "sources": [
+        {
+          "id": "ptbxl-physionet",
+          "licenseId": "CC-BY-4.0",
+          "status": "VERIFIED_SOURCE",
+          "doi": "10.13026/kfzx-aw45"
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-ptbxl-physionet",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-ecg",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": [
+          "clinical"
+        ]
+      },
+      "challengeRestricted": [
+        "data/labels.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "abdomen-anatomy",
+      "engine": "anatomy3d",
+      "category": "FUNCTIONAL_WITH_PENDING_CLEARANCE",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 2,
+      "sources": [
+        {
+          "id": "bodyparts3d-dbcls",
+          "licenseId": "CC-BY-SA-2.1-JP",
+          "status": "REVIEW_REQUIRED",
+          "doi": null
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-bodyparts3d-dbcls",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-abdomen-anatomy",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/structures.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "abdomen-ct",
+      "engine": "volume",
+      "category": "FUNCTIONAL_WITH_PENDING_CLEARANCE",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 3,
+      "sources": [
+        {
+          "id": "amos-zenodo",
+          "licenseId": "CC-BY-SA-4.0",
+          "status": "REVIEW_REQUIRED",
+          "doi": "10.5281/zenodo.7262581"
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-amos-zenodo",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-abdomen-ct",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/readers.nii.gz",
+        "data/annotations.json",
+        "data/labels.nii.gz",
+        "data/labels.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "abdomen-ultrasound",
+      "engine": "image2d",
+      "category": "TECHNICAL_FIXTURE_ONLY",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "technical-fixture",
+      "derivedAssets": 0,
+      "sources": [],
+      "rights": [],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/annotations-1.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "fast-ultrasound",
+      "engine": "image2d",
+      "category": "TECHNICAL_FIXTURE_ONLY",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "technical-fixture",
+      "derivedAssets": 0,
+      "sources": [],
+      "rights": [],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/annotations-1.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "pelvis-anatomy",
+      "engine": "anatomy3d",
+      "category": "FUNCTIONAL_WITH_PENDING_CLEARANCE",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 2,
+      "sources": [
+        {
+          "id": "bodyparts3d-dbcls",
+          "licenseId": "CC-BY-SA-2.1-JP",
+          "status": "REVIEW_REQUIRED",
+          "doi": null
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-bodyparts3d-dbcls",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-pelvis-anatomy",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/structures.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "pelvis-ultrasound",
+      "engine": "image2d",
+      "category": "FUNCTIONAL_PRIVATE_REVIEW",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 8,
+      "sources": [
+        {
+          "id": "hc18-zenodo",
+          "licenseId": "CC-BY-4.0",
+          "status": "VERIFIED_SOURCE",
+          "doi": "10.5281/zenodo.1327317"
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-hc18-zenodo",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-pelvis-ultrasound",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/annotations-1.json",
+        "data/annotations-2.json",
+        "data/annotations-3.json",
+        "data/annotations-4.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "upper-limb-anatomy",
+      "engine": "anatomy3d",
+      "category": "FUNCTIONAL_WITH_PENDING_CLEARANCE",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 2,
+      "sources": [
+        {
+          "id": "bodyparts3d-dbcls",
+          "licenseId": "CC-BY-SA-2.1-JP",
+          "status": "REVIEW_REQUIRED",
+          "doi": null
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-bodyparts3d-dbcls",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-upper-limb-anatomy",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/structures.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "lower-limb-anatomy",
+      "engine": "anatomy3d",
+      "category": "FUNCTIONAL_WITH_PENDING_CLEARANCE",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "private-review",
+      "derivedAssets": 2,
+      "sources": [
+        {
+          "id": "bodyparts3d-dbcls",
+          "licenseId": "CC-BY-SA-2.1-JP",
+          "status": "REVIEW_REQUIRED",
+          "doi": null
+        }
+      ],
+      "rights": [
+        {
+          "id": "studio-src-bodyparts3d-dbcls",
+          "status": "needs-review"
+        },
+        {
+          "id": "studio-res-lower-limb-anatomy",
+          "status": "needs-review"
+        }
+      ],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/structures.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "msk-xray",
+      "engine": "image2d",
+      "category": "TECHNICAL_FIXTURE_ONLY",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "technical-fixture",
+      "derivedAssets": 0,
+      "sources": [],
+      "rights": [],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/annotations-1.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    },
+    {
+      "id": "knee-mri",
+      "engine": "volume",
+      "category": "TECHNICAL_FIXTURE_ONLY",
+      "releaseEligible": false,
+      "studentAccess": false,
+      "data": "technical-fixture",
+      "derivedAssets": 0,
+      "sources": [],
+      "rights": [],
+      "rightsBlocked": [],
+      "reviews": {
+        "approvedDecisions": 0,
+        "medical": "pending",
+        "privacy": "pending",
+        "terminology": "pending"
+      },
+      "catalog": {
+        "release": "planned",
+        "licensing": "unverified",
+        "blockers": []
+      },
+      "challengeRestricted": [
+        "data/labels-lpba40.nii.gz",
+        "data/labels.json"
+      ],
+      "inspector": {
+        "eligible": false,
+        "codes": [
+          "product-reference",
+          "studio-not-cleared"
+        ]
+      }
+    }
+  ]
+}
