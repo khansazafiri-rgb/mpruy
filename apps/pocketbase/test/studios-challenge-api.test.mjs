@@ -22,9 +22,14 @@ process.env.MEDCOEL_STUDIO_KEYS = JSON.stringify({ c1: KEY }); process.env.MEDCO
 
 const key = { schema: 'medcoel.challenge.v1', count: 2, items: [
   { id: 'q1', prompt: { kind: 'crosshair-structure', mm: [-10, 0, 0], text: 'Neutral question 1' }, options: ['Alpha', 'Beta'], answer: { index: 1 }, canonical: 'Beta', explanation: 'Engineering explanation 1' },
-  { id: 'q2', prompt: { kind: 'crosshair-structure', mm: [10, 0, 0], text: 'Neutral question 2' }, options: ['Alpha', 'Beta'], answer: { index: 0 }, canonical: 'Alpha', explanation: 'Engineering explanation 2' } ] };
+  { id: 'q2', prompt: { kind: 'crosshair-structure', mm: [10, 0, 0], text: 'Neutral question 2' }, options: ['Alpha', 'Beta'], answer: { index: 0 }, canonical: 'Alpha', explanation: 'Engineering explanation 2' },
+  { id: 'f1', prompt: { kind: 'find', text: 'Click Gamma' }, options: [], answer: { structureId: 's003' }, canonical: 'Gamma', explanation: 'Engineering find' },
+  { id: 't1', prompt: { kind: 'typed', highlight: 's001', text: 'Type the highlighted block' }, options: [], answer: { conceptId: 'FIX-1', side: 'left' }, canonical: 'Fixture block left', explanation: 'Engineering typed' } ] };
+key.count = 4;
+const terminology = { schema: 'medcoel.terminology.v1', status: 'approved', scope: 'engineering-fixture-only', concepts: { 'FIX-1': { canonical: { id: 'balok fixture kiri', en: 'fixture block left', la: 'truncus probationis sinister' }, forms: [
+  { language: 'en', value: 'fixture block left', side: 'left' }, { language: 'id', value: 'balok fixture kiri', side: 'left' }, { language: 'la', value: 'truncus probationis sinister', side: 'left' }] } } };
 const files = new Map([['index.html', Buffer.from('<!doctype html><title>challenge fixture</title>')], ['data/labels.json', Buffer.from('{"names":["Alpha","Beta"]}')],
-  ['data/image.bin', Buffer.from('NEUTRAL IMAGE BYTES')], ['server/challenge.json', Buffer.from(JSON.stringify(key))]]);
+  ['data/image.bin', Buffer.from('NEUTRAL IMAGE BYTES')], ['server/challenge.json', Buffer.from(JSON.stringify(key))], ['server/terminology.json', Buffer.from(JSON.stringify(terminology))]]);
 const rel = createTestRelease({ dir: path.join(tmp, 'release'), studioId: 'test-challenge', files, capabilities: ['fixture-echo'],
   challengeRestricted: ['data/labels.json'], learningModes: { guided: 'available', challenge: 'available', typedQuiz: 'none' } });
 const catalogFile = path.join(tmp, 'catalog.json'); fs.copyFileSync(rel.catalogFile, catalogFile);
@@ -75,7 +80,7 @@ await step('CHAL-003 start returns items without answers, canonical names or exp
   const r = await call('POST', base + '_challenge/start', { cookie: ch.cookie, body: {} });
   assert.equal(r.status, 200, JSON.stringify(r.data));
   ({ attempt, items } = r.data);
-  assert.equal(items.length, 2);
+  assert.equal(items.length, 4);
   const text = JSON.stringify(r.data);
   for (const leak of ['answer', 'canonical', 'Engineering explanation']) assert.equal(text.includes(leak), false, leak);
 });
@@ -93,6 +98,25 @@ await step('CHAL-005 forged attempts, foreign items and missing sessions are ref
   assert.equal((await call('POST', base + '_challenge/answer', { body: { attempt, itemId: 'q1', response: { index: 1 } } })).status, 401);
   const other = await launch('challenge');
   assert.equal((await call('POST', base + '_challenge/answer', { cookie: other.cookie, body: { attempt, itemId: 'q1', response: { index: 1 } } })).status, 400, 'attempt bound to its own session');
+});
+await step('CHAL-006 Find is graded by the clicked structure id; Type uses the approved terminology with typo and laterality rules', async () => {
+  const find = async id => (await call('POST', base + '_challenge/answer', { cookie: ch.cookie, body: { attempt, itemId: 'f1', response: { structureId: id } } })).data.correct;
+  assert.equal(await find('s001'), false); assert.equal(await find('s003'), true);
+  const typed = async text => (await call('POST', base + '_challenge/answer', { cookie: ch.cookie, body: { attempt, itemId: 't1', response: { text } } })).data;
+  assert.equal((await typed('balok fixture kiri')).verdict, 'correct');
+  assert.equal((await typed('Truncus Probationis Sinister')).verdict, 'correct');
+  assert.equal((await typed('fixture blok left')).verdict, 'accepted-typo');
+  const lr = await typed('fixture block right'); assert.deepEqual([lr.correct, lr.reason], [false, 'laterality']);
+  assert.equal((await typed('truncus probationis dexter')).correct, false);
+  assert.equal((await typed('kiri')).correct, false);
+});
+await step('CHAL-007 Type items are not issued when the terminology pack is not approved', async () => {
+  const termFile = path.join(studioRoot, rel.studioId, rel.releaseId, 'files', 'server', 'terminology.json');
+  // Same byte length and mtime would be needed to pass the snapshot; any edit (here: status) closes typed items instead.
+  fs.writeFileSync(termFile, fs.readFileSync(termFile, 'utf8').replace('"approved"', '"pending!"'));
+  const r = await call('POST', base + '_challenge/start', { cookie: ch.cookie, body: {} });
+  assert.equal(r.status, 200); assert.equal(r.data.items.some(i => i.id === 't1'), false);
+  assert.equal((await call('POST', base + '_challenge/answer', { cookie: ch.cookie, body: { attempt: r.data.attempt, itemId: 't1', response: { text: 'balok fixture kiri' } } })).status, 400);
 });
 console.log('studios challenge api: ' + pass + ' steps passed');
 done(0);

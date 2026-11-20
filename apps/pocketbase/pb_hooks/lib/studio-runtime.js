@@ -309,9 +309,15 @@ function challenge(e, id, releaseId, action) {
   const sign = text => hmac('medcoel.challenge.v1\n' + text, secret);
   let body = {};
   try { body = JSON.parse(toString(e.request.body, 65536) || '{}'); } catch (_) { return e.json(400, { code: 'INVALID_BODY' }); }
+  // Typed items are graded against a terminology pack; they are only issued when that pack is APPROVED.
+  const terminology = readJson(g.inst.dir + '/files/server/terminology.json');
+  const termSnap = g.inst.snapshot['server/terminology.json'];
+  const termOk = !!terminology && terminology.status === 'approved' && !!termSnap && sameAsSnapshot(g.inst.dir, 'server/terminology.json', termSnap);
+  const usable = key.items.filter(it => !(it.answer && it.answer.conceptId !== undefined) || termOk);
   if (action === 'start') {
-    const rnd = seeded(g.session.sid + ':' + key.items.length);
-    const order = key.items.map((it, i) => [rnd(), i]).sort((a, b) => a[0] - b[0]).map(x => key.items[x[1]]);
+    if (!usable.length) return e.json(409, { code: 'NO_REVIEWED_ITEMS' });
+    const rnd = seeded(g.session.sid + ':' + usable.length);
+    const order = usable.map((it, i) => [rnd(), i]).sort((a, b) => a[0] - b[0]).map(x => usable[x[1]]);
     const picked = order.slice(0, Math.max(1, Math.min(key.count || 10, 20, order.length)));
     const ids = picked.map(it => String(it.id));
     const payload = g.session.sid + '~' + ids.join(',') + '~' + g.session.expiresAt;
@@ -322,12 +328,22 @@ function challenge(e, id, releaseId, action) {
     if (parts.length !== 4 || !equal(sign(parts.slice(0, 3).join('~')), parts[3]) || parts[0] !== g.session.sid || Number(parts[2]) <= Date.now()) return e.json(400, { code: 'INVALID_ATTEMPT' });
     const itemId = String(body.itemId || '');
     if (parts[1].split(',').indexOf(itemId) < 0) return e.json(400, { code: 'ITEM_NOT_IN_ATTEMPT' });
-    const item = key.items.find(it => String(it.id) === itemId);
+    const item = usable.find(it => String(it.id) === itemId);
     if (!item) return e.json(400, { code: 'ITEM_NOT_IN_ATTEMPT' });
     const r = body.response || {};
     let correct = false;
     if (item.answer && Number.isInteger(item.answer.index)) correct = Number.isInteger(r.index) && r.index === item.answer.index;
     else if (item.answer && item.answer.labelId !== undefined) correct = r.labelId === item.answer.labelId;
+    else if (item.answer && item.answer.structureId !== undefined) correct = typeof r.structureId === 'string' && r.structureId === item.answer.structureId;
+    else if (item.answer && item.answer.conceptId !== undefined) {
+      const concept = terminology.concepts && terminology.concepts[item.answer.conceptId];
+      if (!concept || typeof r.text !== 'string') return e.json(400, { code: 'INVALID_RESPONSE' });
+      const typed = require(root + '/lib/typed-anatomy.generated.js');
+      const verdict = typed.checkTypedAnswer(r.text, { conceptId: item.answer.conceptId, side: item.answer.side || null }, { status: 'approved', conceptId: item.answer.conceptId, forms: concept.forms || [] });
+      const lang = ['id', 'en', 'la'].indexOf(verdict.language) >= 0 ? verdict.language : 'id';
+      return e.json(200, { itemId, correct: verdict.verdict !== 'wrong', verdict: verdict.verdict, reason: verdict.verdict === 'wrong' ? verdict.reason : null,
+        canonical: (concept.canonical && (concept.canonical[lang] || concept.canonical.id)) || item.canonical || null, explanation: item.explanation || '' });
+    }
     return e.json(200, { itemId, correct, canonical: item.canonical || null, explanation: item.explanation || '' });
   }
   return e.json(404, { code: 'NOT_FOUND' });
