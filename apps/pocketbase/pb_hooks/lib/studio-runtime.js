@@ -242,6 +242,10 @@ function asset(e, id, releaseId, rawPath) {
   if (!inst.ok || inst.install.installationId !== decoded.session.installationId) return deny(404);
   const availability = core.resolve(entry, p, inst.trusted);
   if (!availability || !availability.canLaunch) return deny(404);
+  // Server-only files (answer keys) are never delivered; answer-bearing files are withheld during a Challenge session.
+  if (/^server\//.test(path)) return deny(404);
+  const restricted = Array.isArray(inst.manifest.challengeRestricted) ? inst.manifest.challengeRestricted : [];
+  if (decoded.session.mode === 'challenge' && restricted.indexOf(path) >= 0) return deny(404);
   const listed = path === 'studio-manifest.json' || inst.manifest.files.some(f => f.path === path);
   const type = C.contentTypeFor(path);
   if (!listed || !type) return deny(404);
@@ -256,4 +260,77 @@ function asset(e, id, releaseId, rawPath) {
   return e.blob(200, type, $os.readFile(inst.dir + '/files/' + path));
 }
 
-module.exports = { config, catalog, installed, trustedMap, launch, asset, principalOf, evidenceRevision, quarantineDigest, securityHeaders, KNOWN_ADAPTERS, COOKIE };
+/** Shared session/availability gate for asset delivery and challenge calls. Returns { ok, ... } or { ok:false, status }. */
+function sessionGate(e, id, releaseId) {
+  const cfg = config();
+  if (!C.STUDIO_ID.test(id || '') || !C.RELEASE_ID.test(releaseId || '')) return { ok: false, status: 404 };
+  const token = cookieValue(e);
+  if (!token || token === '__duplicate__') return { ok: false, status: 401 };
+  const decoded = C.decodeSession(token, { keys: cfg.keys, hmac, equal, now: Date.now(), revoked: revocations(cfg), expect: { studioId: id, releaseId } });
+  if (!decoded.ok) return { ok: false, status: 401 };
+  let record;
+  try { record = e.app.findRecordById('users', decoded.session.userId); } catch (_) { return { ok: false, status: 401 }; }
+  const p = principalOf(record);
+  if (!p.active) return { ok: false, status: 401 };
+  const entry = catalog(cfg).studios.find(s => s.id === id);
+  if (!entry || entry.runtime.releaseId !== releaseId || !core.principalAllowed(entry, p)) return { ok: false, status: 404 };
+  const inst = installed(cfg, entry, false);
+  if (!inst.ok || inst.install.installationId !== decoded.session.installationId) return { ok: false, status: 404 };
+  const availability = core.resolve(entry, p, inst.trusted);
+  if (!availability || !availability.canLaunch) return { ok: false, status: 404 };
+  return { ok: true, cfg, session: decoded.session, inst, entry, record };
+}
+
+// Challenge grading. Items come from <release>/files/server/challenge.json (attested, never delivered):
+//   { schema: "medcoel.challenge.v1", count, items: [{ id, prompt: {...public}, options: [..], answer: { index } | { labelId },
+//     explanation }] }
+// start   -> picks items (seeded by the session), returns public parts + a signed attempt token (no answers)
+// answer  -> grades one item server-side; only then reveals correctness, canonical answer and explanation.
+// Attempts are stateless (no new collection in this phase): scores are advisory until persistence is approved.
+function challengeKey(inst) {
+  const snap = inst.snapshot['server/challenge.json'];
+  if (!snap || !sameAsSnapshot(inst.dir, 'server/challenge.json', snap)) return null;
+  const data = readJson(inst.dir + '/files/server/challenge.json');
+  return data && data.schema === 'medcoel.challenge.v1' && Array.isArray(data.items) ? data : null;
+}
+function seeded(seedText) {
+  let h = 2166136261;
+  for (let i = 0; i < seedText.length; i++) { h ^= seedText.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; }
+  return () => { h = (Math.imul(h, 1664525) + 1013904223) >>> 0; return h / 4294967296; };
+}
+function challenge(e, id, releaseId, action) {
+  securityHeaders(e);
+  const g = sessionGate(e, id, releaseId);
+  if (!g.ok) return e.json(g.status, { code: g.status === 401 ? 'SESSION_REQUIRED' : 'NOT_FOUND' });
+  if (g.session.mode !== 'challenge') return e.json(409, { code: 'NOT_A_CHALLENGE_SESSION' });
+  const key = challengeKey(g.inst);
+  if (!key) return e.json(409, { code: 'CHALLENGE_UNAVAILABLE' });
+  const secret = g.cfg.keys[g.session.kid];
+  const sign = text => hmac('medcoel.challenge.v1\n' + text, secret);
+  let body = {};
+  try { body = JSON.parse(toString(e.request.body, 65536) || '{}'); } catch (_) { return e.json(400, { code: 'INVALID_BODY' }); }
+  if (action === 'start') {
+    const rnd = seeded(g.session.sid + ':' + key.items.length);
+    const order = key.items.map((it, i) => [rnd(), i]).sort((a, b) => a[0] - b[0]).map(x => key.items[x[1]]);
+    const picked = order.slice(0, Math.max(1, Math.min(key.count || 10, 20, order.length)));
+    const ids = picked.map(it => String(it.id));
+    const payload = g.session.sid + '~' + ids.join(',') + '~' + g.session.expiresAt;
+    return e.json(200, { attempt: payload + '~' + sign(payload), items: picked.map(it => ({ id: String(it.id), prompt: it.prompt, options: it.options || [] })) });
+  }
+  if (action === 'answer') {
+    const parts = String(body.attempt || '').split('~');
+    if (parts.length !== 4 || !equal(sign(parts.slice(0, 3).join('~')), parts[3]) || parts[0] !== g.session.sid || Number(parts[2]) <= Date.now()) return e.json(400, { code: 'INVALID_ATTEMPT' });
+    const itemId = String(body.itemId || '');
+    if (parts[1].split(',').indexOf(itemId) < 0) return e.json(400, { code: 'ITEM_NOT_IN_ATTEMPT' });
+    const item = key.items.find(it => String(it.id) === itemId);
+    if (!item) return e.json(400, { code: 'ITEM_NOT_IN_ATTEMPT' });
+    const r = body.response || {};
+    let correct = false;
+    if (item.answer && Number.isInteger(item.answer.index)) correct = Number.isInteger(r.index) && r.index === item.answer.index;
+    else if (item.answer && item.answer.labelId !== undefined) correct = r.labelId === item.answer.labelId;
+    return e.json(200, { itemId, correct, canonical: item.canonical || null, explanation: item.explanation || '' });
+  }
+  return e.json(404, { code: 'NOT_FOUND' });
+}
+
+module.exports = { challenge, sessionGate, config, catalog, installed, trustedMap, launch, asset, principalOf, evidenceRevision, quarantineDigest, securityHeaders, KNOWN_ADAPTERS, COOKIE };

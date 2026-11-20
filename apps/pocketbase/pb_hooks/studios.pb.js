@@ -10,3 +10,7 @@ routerAdd('GET', '/api/medcoel/studios/{id}/launch', (e) => {
 routerAdd('GET', '/api/medcoel/studio-assets/{id}/{release}/{path...}', (e) => {
   return require(__hooks + '/lib/studio-runtime.js').asset(e, e.request.pathValue('id'), e.request.pathValue('release'), e.request.pathValue('path'));
 });
+// Server-side Challenge grading for a launched studio session (answer keys never leave the server).
+routerAdd('POST', '/api/medcoel/studio-assets/{id}/{release}/_challenge/{action}', (e) => {
+  return require(__hooks + '/lib/studio-runtime.js').challenge(e, e.request.pathValue('id'), e.request.pathValue('release'), e.request.pathValue('action'));
+});

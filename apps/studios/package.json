@@ -1,0 +1,21 @@
+{
+  "name": "@medcoel/clinical-studios",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Independently built MEDCOEL Clinical Studio applications and their shared engine libraries.",
+  "scripts": {
+    "build": "node scripts/build-all.mjs",
+    "test": "node --test engines/*/test/*.test.mjs shell/test/*.test.mjs",
+    "e2e": "node test/run-e2e.mjs"
+  },
+  "dependencies": {
+    "@niivue/niivue": "0.69.0",
+    "dicom-parser": "1.8.21",
+    "fflate": "^0.8.2",
+    "three": "0.185.1"
+  },
+  "devDependencies": {
+    "vite": "6.4.1"
+  }
+}
