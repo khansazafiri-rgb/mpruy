@@ -2374,8 +2374,8 @@
       "bytes": 124966,
       "sha256": "05dc3363939af4c8acf24536ce1a657645a59a4a0f5f9bd332a89ad14a5e1920",
       "protected": false,
-      "rightsEvidenceRef": "studio-res-brain-mri",
-      "attributionRef": "studio-res-brain-mri",
+      "rightsEvidenceRef": "studio-res-brain-mri-lpba40",
+      "attributionRef": "studio-res-brain-mri-lpba40",
       "notice": {
         "path": "data/NOTICE-SRI24.txt",
         "sha256": "872acedbaeed9bd8e9593e749e1844ca386329f4a6f2967b536b98536b57523b"
@@ -2504,8 +2504,8 @@
       "bytes": 9219,
       "sha256": "9e318135a10db945d8968cdf46b4753aa432d584f2a226e9dea611feb882f111",
       "protected": false,
-      "rightsEvidenceRef": "studio-res-brain-mri",
-      "attributionRef": "studio-res-brain-mri",
+      "rightsEvidenceRef": "studio-res-brain-mri-lpba40",
+      "attributionRef": "studio-res-brain-mri-lpba40",
       "notice": {
         "path": "data/NOTICE-SRI24.txt",
         "sha256": "872acedbaeed9bd8e9593e749e1844ca386329f4a6f2967b536b98536b57523b"

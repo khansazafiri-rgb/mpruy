@@ -118,7 +118,8 @@ test('Clinical Studio resource records are honest: catalog-scoped, needs-review,
   const studio = committed.records.filter(isStudioRecord);
   assert.ok(studio.some(r => r.id.startsWith('studio-src-')) && studio.some(r => r.id.startsWith('studio-res-')));
   for (const r of studio) {
-    assert.equal(r.status, 'needs-review', r.id);
+    // Only status 'blocked' (with a stated reason and no commercial use) may replace needs-review; nothing is verified.
+    assert.ok(r.status === 'needs-review' || (r.status === 'blocked' && r.sourceCommercialUse === false), r.id);
     assert.ok(r.products.every(p => /^studio:/.test(p) && CATALOG_IDS.includes(p.slice(7))), r.id);
     assert.ok(r.blockingReason && r.blockingReason.length > 20, r.id);
   }

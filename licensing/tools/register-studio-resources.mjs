@@ -44,7 +44,11 @@ export const SOURCES = [
 ];
 
 const STUDIO_DATA = {
-  'brain-mri': { source: 'sri24-nitrc', nature: 'population-template', protected: false, licence: 'CC-BY-SA-3.0', kinds: { 'data/t1.nii.gz': ['volume', 'NIfTI-1 gz'], 'data/labels-lpba40.nii.gz': ['annotation', 'NIfTI-1 gz'], 'data/tissues.nii.gz': ['annotation', 'NIfTI-1 gz'], 'data/labels.json': ['terminology', 'JSON'] }, notice: 'data/NOTICE-SRI24.txt' },
+  'brain-mri': { source: 'sri24-nitrc', nature: 'population-template', protected: false, licence: 'CC-BY-SA-3.0', kinds: { 'data/t1.nii.gz': ['volume', 'NIfTI-1 gz'], 'data/labels-lpba40.nii.gz': ['annotation', 'NIfTI-1 gz'], 'data/tissues.nii.gz': ['annotation', 'NIfTI-1 gz'], 'data/labels.json': ['terminology', 'JSON'] }, notice: 'data/NOTICE-SRI24.txt',
+    // LPBA40-derived labels: upstream LONI licence grants use "for non-commercial research purposes only" (evidence retained
+    // 2026-11-20, sha256 3c72d2f8…). Recorded as BLOCKED for these exact files until LONI grants permission.
+    blocked: { id: 'studio-res-brain-mri-lpba40', files: ['data/labels-lpba40.nii.gz', 'data/labels.json'], licence: 'LONI LPBA40 licence agreement (non-commercial research only)', url: 'https://www.loni.usc.edu/loni/licenseagreement',
+      reason: 'The SRI24 archive offers CC BY-SA 3.0, but its LPBA40 label map derives from the LONI LPBA40 atlas, whose licence agreement permits use "for non-commercial research purposes only". Commercial educational use needs written permission from LONI (or the labels must be dropped/replaced).' } },
   ecg: { source: 'ptbxl-physionet', nature: 'acquired-patient', protected: true, licence: 'CC-BY-4.0', kinds: null, notice: 'data/NOTICE-PTB-XL.txt' },
   'spine-mri': { source: 'spider-zenodo', nature: 'acquired-patient', protected: true, licence: 'CC-BY-4.0', kinds: { 'data/t1.nii.gz': ['volume', 'NIfTI-1 gz (from MetaImage)'], 'data/labels-lpba40.nii.gz': ['annotation', 'NIfTI-1 gz (from MetaImage mask)'], 'data/labels.json': ['terminology', 'JSON'] }, notice: 'data/NOTICE-SPIDER.txt' },
   'chest-ct': { source: 'lidc-idri-tcia', nature: 'acquired-patient', protected: true, licence: 'CC-BY-3.0', kinds: { 'data/ct.nii.gz': ['volume', 'NIfTI-1 gz (from DICOM)'], 'data/readers.nii.gz': ['annotation', 'NIfTI-1 gz (from DICOM SEG)'], 'data/annotations.json': ['annotation', 'JSON'] }, notice: 'data/NOTICE-LIDC-IDRI.txt' },
@@ -151,9 +155,10 @@ export function register() {
       const onDisk = sha(fs.readFileSync(path.join(BUILD, studio, rel)));
       if (onDisk !== out.sha256) throw Error('Output on disk differs from provenance: ' + studio + '/' + rel);
       const [kind, format] = (cfg.kinds && cfg.kinds[rel]) || (rel.startsWith('data/cases/') ? ['waveform', 'JSON (WFDB format-16 samples, gain, baseline, fs)'] : ['annotation', 'JSON']);
-      scope.push(rel);
+      const blocked = cfg.blocked && cfg.blocked.files.includes(rel);
+      if (!blocked) scope.push(rel);
       resources.assets.push({ id: (studio + '.' + rel.replace(/^data\//, '').replace(/\//g, '-')).toLowerCase(), version: '1', datasetId: src.datasetId, sourceRef: src.id, kind, dataNature: cfg.nature, format, path: rel,
-        bytes: out.bytes, sha256: out.sha256, protected: cfg.protected, rightsEvidenceRef: rightsId, attributionRef: rightsId, notice: { path: cfg.notice, sha256: notice ? notice.sha256 : null },
+        bytes: out.bytes, sha256: out.sha256, protected: cfg.protected, rightsEvidenceRef: blocked ? cfg.blocked.id : rightsId, attributionRef: blocked ? cfg.blocked.id : rightsId, notice: { path: cfg.notice, sha256: notice ? notice.sha256 : null },
         dependsOn: parents.map(a => ({ assetId: a.id, version: a.version, sha256: a.sha256 })),
         derivation: { operation: 'convert', tool: tool + '@sha256:' + toolSha, toolVersion: 'node ' + process.versions.node, pipelineCommit: PROCESSING_COMMIT, parametersSha256: sha(JSON.stringify({ studio, tool, inputs: parents.map(a => a.sha256) })) },
         geometry: kind === 'terminology' ? null : { spaceId: studio.endsWith('anatomy') ? 'BodyParts3D mm (+X patient left)' : kind === 'waveform' ? 'time series' : STUDIO_DATA[studio].kinds?.['data/image-1.png'] ? 'image pixels (x right, y down)' : 'NIfTI RAS+ mm (+X patient right)',
@@ -164,6 +169,9 @@ export function register() {
       sourceCommercialUse: true, provenance: 'source-confirmed', status: 'needs-review', dependencies: parents.length ? ['studio-src-' + src.id] : [],
       evidence: [{ kind: 'upstream-license', url: src.evidence[0].url }],
       blockingReason: 'Derived bytes reproduced from the official inputs at ' + PROCESSING_COMMIT.slice(0, 12) + ', but no human rights, privacy and medical review yet' + (src.status === 'REVIEW_REQUIRED' ? '; source licence question open: ' + src.note : '.') });
+    if (cfg.blocked) evidence.records.push({ id: cfg.blocked.id, products: ['studio:' + studio], scope: cfg.blocked.files, source: 'LONI LPBA40 (via ' + src.publisher + ')', sourceRevision: src.release,
+      sourceLicense: cfg.blocked.licence, sourceCommercialUse: false, provenance: 'source-confirmed', status: 'blocked', dependencies: ['studio-src-' + src.id],
+      evidence: [{ kind: 'upstream-license', url: cfg.blocked.url }], blockingReason: cfg.blocked.reason });
     report.push({ studio, registered: files.length, parents: parents.length, source: src.id, licence: cfg.licence });
   }
   fs.writeFileSync(path.join(REPO, 'licensing/resources.v1.json'), JSON.stringify(resources, null, 2) + '\n');

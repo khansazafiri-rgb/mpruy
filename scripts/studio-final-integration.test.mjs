@@ -56,15 +56,16 @@ test('INTEGRATION-003 exactly 24 independent entries use the existing canonical 
 test('INTEGRATION-004 preserves every legacy evidence record without upgrading any rights', () => {
   const original = JSON.parse(before('licensing/commercial-rights-evidence.json'));
   assert.equal(original.records.length, 14);
-  assert.equal(records.length, 38);
+  assert.equal(records.length, 39);
   for (const old of original.records) assert.deepEqual(records.find(r => r.id === old.id), old, old.id);
   const oldIds = new Set(original.records.map(r => r.id));
   const added = records.filter(r => !oldIds.has(r.id));
-  // 16 derived-output records (one per studio with private data) + 8 official-source records (one per source).
-  assert.equal(added.length, 24);
-  assert.equal(added.filter(r => r.id.startsWith('studio-res-')).length, 16);
+  // 16 derived-output records (one per studio with private data) + 1 BLOCKED record (LPBA40-derived brain-mri labels,
+  // LONI non-commercial licence) + 8 official-source records (one per source).
+  assert.equal(added.length, 25);
+  assert.equal(added.filter(r => r.id.startsWith('studio-res-')).length, 17);
   assert.equal(added.filter(r => r.id.startsWith('studio-src-')).length, 8);
-  assert.ok(added.every(r => r.status === 'needs-review'));
+  assert.deepEqual(added.filter(r => r.status !== 'needs-review').map(r => [r.id, r.status, r.sourceCommercialUse]), [['studio-res-brain-mri-lpba40', 'blocked', false]]);
   assert.equal(records.filter(r => r.status === 'verified').length, 0);
 });
 

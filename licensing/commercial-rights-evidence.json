@@ -685,9 +685,7 @@
       ],
       "scope": [
         "data/t1.nii.gz",
-        "data/labels-lpba40.nii.gz",
-        "data/tissues.nii.gz",
-        "data/labels.json"
+        "data/tissues.nii.gz"
       ],
       "source": "SRI International / NITRC (Rohlfing et al.) — https://www.nitrc.org/projects/sri24/",
       "sourceRevision": "NITRC frs release (archives dated 2012-03-12)",
@@ -705,6 +703,32 @@
         }
       ],
       "blockingReason": "Derived bytes reproduced from the official inputs at 1fbf1d68cbc9, but no human rights, privacy and medical review yet; source licence question open: Licence text inside the official archive: CC BY-SA 3.0 Unported. LPBA40 and AAL-derived label sets are third-party atlases redistributed by the SRI24 authors: upstream terms need legal review."
+    },
+    {
+      "id": "studio-res-brain-mri-lpba40",
+      "products": [
+        "studio:brain-mri"
+      ],
+      "scope": [
+        "data/labels-lpba40.nii.gz",
+        "data/labels.json"
+      ],
+      "source": "LONI LPBA40 (via SRI International / NITRC (Rohlfing et al.))",
+      "sourceRevision": "NITRC frs release (archives dated 2012-03-12)",
+      "sourceLicense": "LONI LPBA40 licence agreement (non-commercial research only)",
+      "sourceCommercialUse": false,
+      "provenance": "source-confirmed",
+      "status": "blocked",
+      "dependencies": [
+        "studio-src-sri24-nitrc"
+      ],
+      "evidence": [
+        {
+          "kind": "upstream-license",
+          "url": "https://www.loni.usc.edu/loni/licenseagreement"
+        }
+      ],
+      "blockingReason": "The SRI24 archive offers CC BY-SA 3.0, but its LPBA40 label map derives from the LONI LPBA40 atlas, whose licence agreement permits use \"for non-commercial research purposes only\". Commercial educational use needs written permission from LONI (or the labels must be dropped/replaced)."
     },
     {
       "id": "studio-res-ecg",
