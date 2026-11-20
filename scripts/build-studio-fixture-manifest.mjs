@@ -17,8 +17,9 @@ function visit(dir, prefix='') {
 if (!fs.existsSync(root)) throw Error('Build fixture before generating manifest');
 visit(root);
 if (!files.some(f=>f.path==='index.html')) throw Error('Fixture index missing');
-let builtFrom='0'.repeat(40);
-try { builtFrom=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(); } catch {}
+let builtFrom;
+try { builtFrom=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(); }
+catch { throw Error('Git source commit is required even for the engineering fixture'); }
 if (!/^[a-f0-9]{40}$/.test(builtFrom)) throw Error('Invalid commit for technical manifest');
 fs.writeFileSync(path.join(root,'studio-manifest.json'),JSON.stringify({
   schema:'medcoel.studio.v1',id:'foundation-fixture',releaseId:'fixture-release',
