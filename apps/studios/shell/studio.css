@@ -1,0 +1,27 @@
+:root { --ink: #172b38; --muted: #5b6b75; --brand: #007060; --line: #dfe5e2; --page: #f8f7f3; --bad: #b42318; --good: #027a48; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--page); color: var(--ink); font: 14px/1.45 system-ui, -apple-system, Segoe UI, sans-serif; }
+.studio { display: flex; flex-direction: column; min-height: 100%; padding: 10px; gap: 8px; }
+.studio-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.studio-head h1 { margin: 0; font-size: 20px; }
+.studio-eyebrow { margin: 0; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.studio-mode { border: 1px solid var(--brand); color: var(--brand); border-radius: 999px; padding: 2px 10px; font-weight: 600; font-size: 12px; }
+.studio-notice { margin: 0; font-size: 12px; color: var(--muted); background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; }
+.studio-body { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 8px; flex: 1; min-height: 420px; }
+@media (max-width: 760px) { .studio-body { grid-template-columns: 1fr; } }
+.studio-workspace { position: relative; min-height: 360px; background: #000; border-radius: 10px; overflow: hidden; }
+.studio-panel { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 10px; overflow: auto; display: flex; flex-direction: column; gap: 10px; }
+.studio-panel h2 { margin: 0; font-size: 15px; }
+.studio-status { margin: 0; font-size: 12px; color: var(--muted); }
+.tools { display: flex; flex-wrap: wrap; gap: 6px; }
+button { font: inherit; border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 6px 10px; cursor: pointer; color: var(--ink); }
+button[aria-pressed="true"], button.primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+button:disabled { opacity: .5; cursor: not-allowed; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+label { display: grid; gap: 2px; font-size: 12px; color: var(--muted); }
+.readout { font-variant-numeric: tabular-nums; font-size: 12px; background: var(--page); border-radius: 6px; padding: 6px; }
+.step { border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+.step.done { border-color: var(--good); }
+.ok { color: var(--good); font-weight: 600; } .bad { color: var(--bad); font-weight: 600; }
+.options { display: grid; gap: 6px; }
+canvas { display: block; width: 100%; height: 100%; touch-action: none; }

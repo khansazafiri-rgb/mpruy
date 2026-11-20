@@ -11,7 +11,7 @@ const REPO = new URL('../', import.meta.url);
 const read = p => JSON.parse(fs.readFileSync(new URL(p, REPO), 'utf8'));
 
 /** files: Map(relativePath -> Buffer). */
-export function createTestRelease({ dir, studioId = 'test-fixture', releaseId = 'fixture-release', campuses = [], files, capabilities = ['fixture-echo'] }) {
+export function createTestRelease({ dir, studioId = 'test-fixture', releaseId = 'fixture-release', campuses = [], files, capabilities = ['fixture-echo'], challengeRestricted = [], learningModes = { guided: 'none', challenge: 'none', typedQuiz: 'none' } }) {
   if (!/^test-/.test(studioId)) throw Error('Test releases must use a test- studio id');
   const licensingRoot = path.join(dir, 'licensing'), dist = path.join(dir, 'dist');
   fs.mkdirSync(licensingRoot, { recursive: true }); fs.mkdirSync(dist, { recursive: true });
@@ -35,13 +35,13 @@ export function createTestRelease({ dir, studioId = 'test-fixture', releaseId = 
   fs.writeFileSync(path.join(licensingRoot, 'commercial-rights-evidence.json'), JSON.stringify(evidence, null, 2));
   fs.copyFileSync(new URL('licensing/quarantine-policy.json', REPO), path.join(licensingRoot, 'quarantine-policy.json'));
   // resource-manifest.json is code-free metadata; give it rights coverage like every other shipped byte via the manifest exception.
-  buildStudioManifest({ dist, studioId, releaseId, resourcesFile, capabilities, builtFrom: 'a'.repeat(40) });
+  buildStudioManifest({ dist, studioId, releaseId, resourcesFile, capabilities, challengeRestricted, builtFrom: 'a'.repeat(40) });
   policy.products[product] = { status: 'cleared', blockers: [], approvedBuilds: [{ sha256: releaseDigest(dist), reviewer: 'Synthetic fixture reviewer only', reviewedAt: '2026-11-20', evidence: 'engineering-test-only', commercialUse: true, redistribution: true, attribution: 'Fixture notices', shareAlike: 'not-required' }] };
   fs.writeFileSync(path.join(licensingRoot, 'commercial-release.json'), JSON.stringify(policy, null, 2));
   const catalog = read('shared/studios/catalog.v1.json');
   catalog.studios.push({ schemaVersion: 1, id: studioId, title: 'Test fixture (engineering)', titleId: 'Fixture uji (rekayasa)', region: 'thorax', modality: 'xray',
     runtime: { type: 'iframe', entry: 'index.html', releaseId }, capabilities, plannedCapabilities: capabilities,
-    learningModes: { guided: 'none', challenge: 'none', typedQuiz: 'none' },
+    learningModes,
     datasets: [{ id: 'test-data', kind: 'test-content', provenance: 'Original neutral engineering fixture', licence: 'verified', protected: false }],
     reuses: null, access: { roles: ['user', 'admin'], campuses }, review: { clinical: 'not-required', anatomical: 'not-required' },
     licensing: { status: 'verified', ref: 'licensing/commercial-release.json#' + product }, release: { status: 'publishable' }, blockers: [] });
