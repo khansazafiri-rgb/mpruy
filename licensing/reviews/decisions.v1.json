@@ -1,0 +1,5 @@
+{
+  "schema": "medcoel.review-decisions.v1",
+  "note": "Append-only. Entries are created only by licensing/tools/studio-review.mjs with an out-of-repo key.",
+  "decisions": []
+}

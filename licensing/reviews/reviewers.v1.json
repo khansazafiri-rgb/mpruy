@@ -1,0 +1,5 @@
+{
+  "schema": "medcoel.reviewers.v1",
+  "note": "Added by the owner only. Each reviewer needs a real identity and a credential reference (e.g. STR/SIP number or institutional role) kept in the owner's records.",
+  "reviewers": []
+}
