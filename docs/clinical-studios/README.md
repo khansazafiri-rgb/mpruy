@@ -1,38 +1,36 @@
 # MEDCOEL Clinical Studios v2.0
 
-Independent medical learning applications per anatomical region and imaging modality (Brain MRI, Chest CT, Cardiac Echo, …),
-hosted by the MEDCOEL web app. Status: **Loop 1 foundation in progress. Nothing here is available to students.**
+24 independent clinical applications over shared anatomy3d, volume/NiiVue, ECG and image2d engines.
+**No canonical studio is eligible for learner launch.** WS1 is on the integration target; WS2–WS5 are consolidated by Draft integration PR #233. Git integration does not install private medical resources on a server.
 
 | Document | Content |
 |---|---|
-| [00-baseline-audit.md](00-baseline-audit.md) | Verified repository and production state at `2bfe54c` (PR #222), baseline test results |
-| [01-architecture-decisions.md](01-architecture-decisions.md) | ADR-001…011, accepted 2026-11-20 |
-| [02-feature-compatibility-matrix.md](02-feature-compatibility-matrix.md) | Existing features that must not change, and their guards |
-| [03-studio-catalog.md](03-studio-catalog.md) | The 24 studios (+ internal fixture) |
-| [04-data-license-matrix.md](04-data-license-matrix.md) | Available, missing, restricted and review-required data |
-| [05-contract-specification.md](05-contract-specification.md) | Catalog, availability, launch, module, bridge, adapter, release manifest, typed quiz |
-| [06-test-acceptance-plan.md](06-test-acceptance-plan.md) | STUDIO-001…030, folder structure, PR-A…E |
+| [00-baseline-audit.md](00-baseline-audit.md) | Historical baseline at PR #222 |
+| [01-architecture-decisions.md](01-architecture-decisions.md) | Architecture decisions |
+| [02-feature-compatibility-matrix.md](02-feature-compatibility-matrix.md) | Legacy feature preservation |
+| [03-studio-catalog.md](03-studio-catalog.md) | Canonical 24 studios and internal fixture |
+| [04-data-license-matrix.md](04-data-license-matrix.md) | Original resource/license gap matrix |
+| [05-contract-specification.md](05-contract-specification.md) | Catalog, availability, launch, adapters and quiz |
+| [06-test-acceptance-plan.md](06-test-acceptance-plan.md) | Foundation acceptance plan |
+| [07-resource-reconciliation-pr-b.md](07-resource-reconciliation-pr-b.md) | B1 contracts and offline clearance |
+| [10-secure-launch-and-delivery.md](10-secure-launch-and-delivery.md) | WS1 receipts, attestation and authorised delivery |
+| [12-MEDCOEL-24-STUDIOS-RESOURCE-MATRIX.md](12-MEDCOEL-24-STUDIOS-RESOURCE-MATRIX.md) | Source-workstream resource research and acquisition notes |
+| [13-24-studio-completion-matrix.md](13-24-studio-completion-matrix.md) | Source-workstream per-studio status and coverage limits |
+| [14-final-integration-readiness.md](14-final-integration-readiness.md) | Final Git reconciliation, fresh test coverage, provenance gaps and staging prerequisites |
 
-| [10-secure-launch-and-delivery.md](10-secure-launch-and-delivery.md) | WS1: receipts, attestation, authorised delivery |
-| [12-MEDCOEL-24-STUDIOS-RESOURCE-MATRIX.md](12-MEDCOEL-24-STUDIOS-RESOURCE-MATRIX.md) | Resource research, acquisition and licence evidence for all 24 studios |
-| [13-24-studio-completion-matrix.md](13-24-studio-completion-matrix.md) | Honest per-studio completion status |
+## Integration status
 
-Machine-readable: `shared/studios/catalog.v1.json`, `catalog.schema.json`, `frozen-ids.json`.
-Check: `npm run test:studios`.
-
-## PR sequence
-
-| PR | Scope | State |
+| PR | Scope | Verified state at preparation of #233 |
 |---|---|---|
-| A | Documents + catalog + catalog checks | merged as PR #224 |
-| B1 | Resource/catalog contracts and offline clearance validation | Draft implementation; see 07 |
-| B2 | Availability resolver (web + PocketBase hook), studios API | not started; separate ACC |
-| C | Runtime, template, internal fixture, studio host and route | not started |
-| D | Lab Hub section, studio cards | not started |
-| E | Security hardening, test consolidation, release docs | not started |
+| #224 | Canonical catalog and architecture | Merged |
+| #226 | B1 resource contracts / offline clearance | Merged |
+| #227 | Unified foundation: availability API, host/fixture and typed quiz contract | Merged |
+| #228 | WS1 secure launch, receipts, installation and delivery | Merged into claude/focused-wozniak-1ayrxa |
+| #229–#232 | WS2–WS5, 24 apps/engines and resource registry | Merged into stacked feature bases; original commits consolidated by #233 |
+| #233 | Final WS1–WS5 integration and fresh verification | Draft; not merged or deployed |
 
-Rules: no merge or deployment without the owner; no PocketBase migration in Loop 1; `deploy/`, `apps/anatomy`, `apps/4d-lab`,
-`shared/lab-tracks.json` and lockfiles are not changed; no withheld or restricted data is used.
+Canonical sources remain shared/studios/catalog.v1.json, licensing/resources.v1.json and the existing commercial rights/release/quarantine ledgers. The registry contains five sources and **35 assets**, all with pending medical/privacy review. The 14 original rights records remain unchanged; 13 appended studio rights records remain needs-review.
 
+Run npm run test:studios and npm run test:licensing. The integration browser workflow also builds all 24 fixture apps before running scripts/studio-final-integration.test.mjs. Actual CI and browser results are attached to the PR, not inferred from historical reports.
 
-Resource reconciliation and B1 contracts: [07-resource-reconciliation-pr-b.md](07-resource-reconciliation-pr-b.md).
+Legacy Atlas, 4D Lab, Lab Hub, Study Planner, Hermes, production configuration and existing lockfiles are preserved. The separate apps/studios lockfile comes from WS2. No datasets are tracked; local-data presence in a private workspace does not imply VPS installation. No clearance bypass, automatic merge or production deployment is authorised.
