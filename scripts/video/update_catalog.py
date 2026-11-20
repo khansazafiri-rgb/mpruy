@@ -19,7 +19,7 @@ EDUCATION = {
     "introvert-ekstrovert", "kopi-kafein-adenosin", "malam-lapar",
     "pasien-tidak-sadar-di-igd", "hb-satu-tetes",
     "ct-mri-perbedaan-citra", "parasetamol-nyeri-kepala", "spo2-pulse-oximeter",
-    "termometer-raksa-tertahan",
+    "termometer-raksa-tertahan", "usg-gema-gambar",
 }
 STUDENT_STORIES = {
     "ada-satu-yang-kamu-lupa", "bayangin-jadi-anak-fk",

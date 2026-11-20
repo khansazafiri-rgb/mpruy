@@ -1,0 +1,212 @@
+{
+ "offset_narasi": 0.3,
+ "outro_mulai": 51.5,
+ "audio_outro_mulai": 52.5,
+ "durasi": 67.2,
+ "sfx": [
+  {
+   "t": 0.35,
+   "sfx": "judul-hook"
+  },
+  {
+   "t": 2.13,
+   "sfx": "probe-mulai-bergeser"
+  },
+  {
+   "t": 7.4,
+   "sfx": "transisi-ke-ilustrasi"
+  },
+  {
+   "t": 10.03,
+   "sfx": "gel-menempel"
+  },
+  {
+   "t": 11.18,
+   "sfx": "gelombang-lewat"
+  },
+  {
+   "t": 15.42,
+   "sfx": "pulsa-keluar"
+  },
+  {
+   "t": 21.087,
+   "sfx": "gema-kembali"
+  },
+  {
+   "t": 23.55,
+   "sfx": "pulsa-lain"
+  },
+  {
+   "t": 24.0,
+   "sfx": "pulsa-lain"
+  },
+  {
+   "t": 24.45,
+   "sfx": "pulsa-lain"
+  },
+  {
+   "t": 25.2,
+   "sfx": "pulsa-keluar-2"
+  },
+  {
+   "t": 27.82,
+   "sfx": "gema-dekat"
+  },
+  {
+   "t": 30.43,
+   "sfx": "gema-dalam"
+  },
+  {
+   "t": 32.05,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 32.165,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 32.28,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 32.395,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 32.51,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 32.625,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 32.74,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 32.855,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 32.97,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 33.085,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 33.2,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 33.315,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 33.43,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 33.545,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 33.66,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 33.775,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 33.89,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 34.005,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 34.12,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 34.235,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 34.35,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 34.465,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 34.58,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 34.695,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 34.81,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 34.925,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 35.04,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 35.155,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 35.27,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 35.385,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 35.5,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 35.615,
+   "sfx": "garis-pindai"
+  },
+  {
+   "t": 35.8,
+   "sfx": "gambar-jadi"
+  },
+  {
+   "t": 36.78,
+   "sfx": "geser-miring"
+  },
+  {
+   "t": 42.18,
+   "sfx": "gambar-berubah"
+  },
+  {
+   "t": 46.75,
+   "sfx": "kembali-ke-simulasi"
+  },
+  {
+   "t": 51.2,
+   "sfx": "masuk-outro"
+  },
+  {
+   "t": 61.05,
+   "sfx": "logo-medcoel"
+  }
+ ]
+}
