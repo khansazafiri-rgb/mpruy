@@ -5,6 +5,7 @@ on:
     branches: [claude/focused-wozniak-1ayrxa]
     paths:
       - 'apps/studios/**'
+      - 'apps/4d-lab/**'
       - 'apps/pocketbase/**'
       - 'packages/studio-contract/**'
       - 'licensing/**'

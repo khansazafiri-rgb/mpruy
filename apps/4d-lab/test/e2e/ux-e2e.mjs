@@ -202,7 +202,13 @@ await step('tri-planar CT moves with the pad, the sliders, scroll and click', as
   const L = await lab(() => { const L = window.__lab.monitor.layouts.ax, b = document.querySelector('#monitor').getBoundingClientRect(), d = window.__lab.monitor.dpr; return { x: b.left + (L.x0 + L.dw / 2) / d, y: b.top + (L.y0 + L.dh / 2) / d }; });
   p0 = await P(); await page.mouse.move(L.x, L.y); await page.mouse.wheel(0, -100); await page.waitForTimeout(150); assert.ok((await P())[2] > p0[2], 'scroll = next slice');
   await settle(); await shot('ux-08-triplanar');
-  await page.getByTestId('mon-split').click();
+  // BEGIN UX-RECOVERY: tri-return
+  assert.equal(await page.getByTestId('mon-split').isVisible(), false, 'single-plane display controls stay hidden in Tri-planar');
+  await page.getByTestId('tri-return-probe').click();
+  await page.waitForFunction(() => window.__lab.S.mode === 'clinical' && window.__lab.S.display === 'split');
+  assert.match(await page.getByTestId('pad-title').textContent(), /Gerakkan probe/);
+  assert.equal(await page.getByTestId('mon-split').isVisible(), true, 'returning to the probe restores USG + CT controls');
+  // END UX-RECOVERY: tri-return
 });
 
 await step('pathology: new model cases are visible in their windows, with structured case text', async () => {
@@ -252,11 +258,45 @@ await step('directed learning: continue -> prepared step -> answer -> feedback -
 });
 
 await step('keyboard: arrows = patient directions, PageDown = posterior, Q/E rotate', async () => {
+  // BEGIN UX-RECOVERY: keyboard-context
+  // Directed learning intentionally leaves its prepared Free CT plane active. Test probe shortcuts in probe mode.
+  await page.getByTestId('return-probe').click();
+  assert.deepEqual(await lab(() => [window.__lab.S.mode, window.__lab.S.display]), ['clinical', 'split']);
+  // END UX-RECOVERY: keyboard-context
   await lab(() => document.activeElement?.blur());
   let c0 = await contact(); await page.keyboard.press('ArrowUp'); assert.ok((await contact())[2] > c0[2], 'ArrowUp superior');
   c0 = await contact(); await page.keyboard.press('ArrowRight'); assert.ok((await contact())[0] > c0[0], 'ArrowRight = patient left');
   const n0 = await normal(); await page.keyboard.press('PageDown'); const n1 = await normal(); assert.ok(n1[1] > n0[1] || n1[0] !== n0[0], 'PageDown walks posterior');
   const r0 = await lab(() => window.__lab.S.angles.rotate); await page.keyboard.press('e'); assert.ok((await lab(() => window.__lab.S.angles.rotate)) !== r0, 'E rotates');
+  // BEGIN UX-RECOVERY: keyboard-targets
+  // The same keys must route to the selected CT target, without silently moving the skin contact.
+  const fixedContact = await contact();
+  await page.getByTestId('free-mode').click();
+  await lab(() => document.activeElement?.blur());
+  const free0 = await lab(() => [...window.__lab.S.free.position]);
+  await page.keyboard.press('ArrowUp');
+  const free1 = await lab(() => [...window.__lab.S.free.position]);
+  assert.ok(free1[2] > free0[2] && free1[0] === free0[0] && free1[1] === free0[1], 'Free CT ArrowUp moves the plane superior');
+  assert.deepEqual(await contact(), fixedContact, 'Free CT shortcuts leave probe contact unchanged');
+  const q0 = await lab(() => [...window.__lab.S.free.q]);
+  await page.keyboard.press('e');
+  assert.notDeepEqual(await lab(() => [...window.__lab.S.free.q]), q0, 'Free CT E rotates the plane');
+  await page.getByTestId('mon-tri').click();
+  if (await page.getByTestId('tour').count()) await page.getByTestId('tour-skip').click();
+  await lab(() => document.activeElement?.blur());
+  const tri0 = await lab(() => [...window.__lab.S.tri.point]);
+  await page.keyboard.press('ArrowUp');
+  const tri1 = await lab(() => [...window.__lab.S.tri.point]);
+  assert.ok(tri1[2] > tri0[2] && tri1[0] === tri0[0] && tri1[1] === tri0[1], 'Tri-planar ArrowUp moves its crosshair superior');
+  await page.keyboard.press('ArrowRight');
+  assert.ok((await lab(() => window.__lab.S.tri.point[0])) > tri1[0], 'Tri-planar ArrowRight moves the crosshair to patient left');
+  const y0 = await lab(() => window.__lab.S.tri.point[1]);
+  await page.keyboard.press('PageDown');
+  assert.ok((await lab(() => window.__lab.S.tri.point[1])) > y0, 'Tri-planar PageDown moves the crosshair posterior');
+  assert.deepEqual(await contact(), fixedContact, 'Tri-planar shortcuts leave probe contact unchanged');
+  await page.getByTestId('tri-return-probe').click();
+  assert.deepEqual(await lab(() => [window.__lab.S.mode, window.__lab.S.display]), ['clinical', 'split']);
+  // END UX-RECOVERY: keyboard-targets
   assert.deepEqual(errors, [], 'no runtime errors during the session');
 });
 

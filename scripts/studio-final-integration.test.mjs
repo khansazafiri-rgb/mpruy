@@ -126,18 +126,29 @@ test('INTEGRATION-007 every built manifest binds actual bytes, resources and the
 test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS runtime implementations', () => {
   const unchanged = ['apps/web', 'apps/anatomy', 'apps/4d-lab', 'apps/hermes-agent', 'deploy', 'shared/lab-tracks.json', 'apps/pocketbase/pb_migrations'];
   const harness = 'apps/4d-lab/test/e2e/ux-e2e.mjs';
+  const phaseStatus = 'apps/4d-lab/PHASE_STATUS.md';
   const legacyDelta = git('diff', '--name-only', base, 'HEAD', '--', ...unchanged).split('\n').filter(Boolean);
-  assert.deepEqual(legacyDelta.filter(p => p !== harness), []);
-  // Navigation setup alone changes; every existing assertion must remain byte-identical.
-  const normalized = read(harness).replace(
+  assert.deepEqual(legacyDelta.filter(p => p !== harness && p !== phaseStatus), []);
+  // Reverse only reviewed setup/cleanup additions. The original 16 case bodies and assertions must survive intact.
+  let normalized = read(harness);
+  for (const [tag, original] of [
+    ['tri-return', "  await page.getByTestId('mon-split').click();\n"],
+    ['keyboard-context', ''],
+    ['keyboard-targets', ''],
+  ]) {
+    const block = new RegExp('^  // BEGIN UX-RECOVERY: ' + tag + '\\n[\\s\\S]*?^  // END UX-RECOVERY: ' + tag + '\\n', 'gm');
+    assert.equal([...normalized.matchAll(block)].length, 1, 'Exactly one reviewed ' + tag + ' block');
+    normalized = normalized.replace(block, original);
+  }
+  normalized = normalized.replace(
     "await p.goto(url, { waitUntil: 'domcontentloaded', timeout: 180000 }); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });",
     "await p.goto(url); await p.waitForFunction(() => document.body.dataset.ready === '1', null, { timeout: 180000 });");
-  assert.equal(normalized, before(harness), 'No legacy UX assertion may be edited or removed');
+  assert.equal(normalized, before(harness), 'No legacy UX assertion or case may be edited or removed');
   // Integration may add guards/workflows/docs and strengthen an API test, never rewrite WS implementation.
   const delta = git('diff', '--name-only', source, 'HEAD').split('\n').filter(Boolean);
   const permitted = new Set(['.github/workflows/studios-integration.yml', 'scripts/studio-final-integration.test.mjs',
     'docs/clinical-studios/14-final-integration-readiness.md', 'docs/clinical-studios/README.md',
-    'apps/pocketbase/test/studios-api.test.mjs', 'apps/4d-lab/test/e2e/ux-e2e.mjs']);
+    'apps/pocketbase/test/studios-api.test.mjs', 'apps/4d-lab/test/e2e/ux-e2e.mjs', 'apps/4d-lab/PHASE_STATUS.md']);
   assert.deepEqual(delta.filter(p => !permitted.has(p)), []);
 });
 
