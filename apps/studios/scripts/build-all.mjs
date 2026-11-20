@@ -13,7 +13,7 @@ import { buildStudioManifest } from '../../../scripts/build-studio-manifest.mjs'
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const REPO = path.resolve(ROOT, '../..');
 const args = process.argv.slice(2);
-const only = (args[args.indexOf('--only') + 1] || '').split(',').filter(Boolean);
+const only = args.includes('--only') ? (args[args.indexOf('--only') + 1] || '').split(',').filter(Boolean) : [];
 const usePrivate = args.includes('--private');
 let commit = '0'.repeat(40);
 try { commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: REPO, encoding: 'utf8' }).trim(); } catch { /* no git */ }

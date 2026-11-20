@@ -1,0 +1,14 @@
+{
+  "studioId": "head-neck-anatomy",
+  "title": "Head & Neck Anatomy",
+  "engine": "anatomy3d",
+  "capabilities": [
+    "anatomy3d",
+    "structure-identification"
+  ],
+  "challengeRestricted": [
+    "data/structures.json"
+  ],
+  "privateData": "local-data/studio-resources/build/head-neck-anatomy",
+  "fixtureTool": "tools/make-anatomy-fixture.mjs"
+}

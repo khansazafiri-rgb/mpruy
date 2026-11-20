@@ -27,7 +27,7 @@ export function makeCtFixture(outDir) {
   const noduleMm = [20 * mm[0], 0, 0];
   fs.writeFileSync(path.join(outDir, 'data/annotations.json'), JSON.stringify({ schema: 'medcoel.ct-annotations.v1', source: 'technical fixture', readers: [{ bit: 1, label: 'Anotasi 1' }, { bit: 2, label: 'Anotasi 2' }] }));
   fs.writeFileSync(path.join(outDir, 'data/dataset.json'), JSON.stringify({ schema: 'medcoel.dataset.v1', status: 'TECHNICAL_FIXTURE', source: 'MEDCOEL synthetic HU volume', notice: 'FIXTURE TEKNIS: volume HU sintetis dengan bola jaringan lunak dan dua "anotasi" sintetis. Bukan CT pasien.',
-    image: 'data/ct.nii.gz', readers: 'data/readers.nii.gz', annotations: 'data/annotations.json', presets: { lung: [-1350, 150], mediastinum: [-160, 240], bone: [-450, 1050] }, noduleMm }));
+    units: 'HU', image: 'data/ct.nii.gz', readers: 'data/readers.nii.gz', annotations: 'data/annotations.json', presets: { lung: [-1350, 150], mediastinum: [-160, 240], bone: [-450, 1050] }, noduleMm }));
   fs.writeFileSync(path.join(outDir, 'server/challenge.json'), JSON.stringify({ schema: 'medcoel.challenge.v1', source: 'technical fixture', count: 2, items: [
     { id: 'ct-in', prompt: { kind: 'crosshair-structure', mm: noduleMm, text: 'Di dalam bola sintetis? (fixture)' }, options: ['Ya', 'Tidak'], answer: { index: 0 }, canonical: 'Ya', explanation: 'Fixture teknis.' },
     { id: 'ct-out', prompt: { kind: 'crosshair-structure', mm: [-20 * mm[0], 0, 0], text: 'Di dalam bola sintetis? (fixture)' }, options: ['Ya', 'Tidak'], answer: { index: 1 }, canonical: 'Tidak', explanation: 'Fixture teknis.' }] }));

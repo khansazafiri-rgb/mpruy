@@ -126,7 +126,9 @@ export function readCommercialEvidence(file = INVENTORY_FILE) {
 }
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   try {
-    const result = inspectCommercialEvidence(readCommercialEvidence(), { verifyLocal: true });
+    // Studio product scopes are admitted only for IDs of the committed canonical catalog (trusted input, not CLI args).
+    const catalog = JSON.parse(fs.readFileSync(new URL('../../shared/studios/catalog.v1.json', import.meta.url), 'utf8'));
+    const result = inspectCommercialEvidence(readCommercialEvidence(), { verifyLocal: true, studioIds: catalog.studios.map(s => s.id) });
     console.log(JSON.stringify(result, null, 2));
     if (process.argv.includes('--require-clearance') && !result.readyForReview) {
       console.error('Commercial rights evidence: NOT READY. This inventory does not authorize a public release.');

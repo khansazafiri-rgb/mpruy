@@ -1,0 +1,17 @@
+{
+  "studioId": "cardiac-ct",
+  "title": "Cardiac CT",
+  "engine": "volume",
+  "capabilities": [
+    "slice-navigation",
+    "mpr",
+    "window-level",
+    "measurement"
+  ],
+  "challengeRestricted": [
+    "data/readers.nii.gz",
+    "data/annotations.json"
+  ],
+  "privateData": "local-data/studio-resources/build/cardiac-ct",
+  "fixtureTool": "tools/make-ct-fixture.mjs"
+}

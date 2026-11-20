@@ -4,7 +4,10 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { inspectCommercialEvidence, MODEL_SYSTEMS, readCommercialEvidence, REQUIRED_IDS } from '../licensing/tools/audit-commercial-evidence.mjs';
 
-const source = readCommercialEvidence();
+const committed = readCommercialEvidence();
+// Legacy (Atlas / 4D) inventory. Clinical Studio resource records ("studio-res-*") are checked separately below.
+const source = { ...committed, records: committed.records.filter(r => !String(r.id).startsWith('studio-res-')) };
+const CATALOG_IDS = JSON.parse(readFileSync(fileURLToPath(new URL('../shared/studios/catalog.v1.json', import.meta.url)), 'utf8')).studios.map(s => s.id);
 const pkg = JSON.parse(readFileSync(fileURLToPath(new URL('../apps/anatomy/package.json', import.meta.url)), 'utf8'));
 const inspect = data => inspectCommercialEvidence(data, { atlasPackage: pkg });
 const clone = () => structuredClone(source);
@@ -108,3 +111,15 @@ test('studio product scopes require a trusted catalog ID; legacy default does no
   assert.throws(() => inspectCommercialEvidence(data, { studioIds: ['unrelated'] }), /unknown product/);
 });
 
+
+test('Clinical Studio resource records are honest: catalog-scoped, needs-review, never verified', () => {
+  const studio = committed.records.filter(r => String(r.id).startsWith('studio-res-'));
+  for (const r of studio) {
+    assert.equal(r.status, 'needs-review', r.id);
+    assert.ok(r.products.every(p => /^studio:/.test(p) && CATALOG_IDS.includes(p.slice(7))), r.id);
+    assert.ok(r.blockingReason && r.blockingReason.length > 20, r.id);
+  }
+  const report = inspectCommercialEvidence(committed, { studioIds: CATALOG_IDS });
+  for (const r of studio) for (const p of r.products) assert.equal(report.products[p].evidenceComplete, false, p);
+  assert.throws(() => inspectCommercialEvidence(committed), /unknown product/, 'legacy default still refuses studio scopes');
+});

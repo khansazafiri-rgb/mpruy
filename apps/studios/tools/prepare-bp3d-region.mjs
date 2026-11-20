@@ -33,6 +33,63 @@ export const REGIONS = {
   } },
 };
 
+/**
+ * Keyword recipes for the region studios (official BodyParts3D concept names). Leaf concepts only, largest first per
+ * group, kidney / renal pelvis / ossicles excluded while the MEDCOEL quarantine decision for them is open.
+ * The BodyParts3D model is a single adult male: female pelvic organs do not exist in this source.
+ */
+export const AUTO = {
+  'head-neck-anatomy': { title: 'Head & Neck Anatomy', cap: 18, groups: {
+    'Cranium & face': /^(left |right )?(frontal bone|parietal bone|temporal bone|occipital bone|sphenoid bone|ethmoid|mandible|maxilla|zygomatic bone|nasal bone|vomer|palatine bone|lacrimal bone|hyoid bone)$/,
+    'Larynx & pharynx': /(thyroid cartilage|cricoid cartilage|epiglottis|arytenoid cartilage|corniculate cartilage|pharynx|larynx)/,
+    'Muscles': /^(left |right )?(sternocleidomastoid|masseter|temporal muscle|temporalis|digastric|mylohyoid|platysma|sternohyoid|omohyoid|trapezius)/,
+    'Glands & vessels': /^(left |right )?(parotid gland|submandibular gland|thyroid gland|common carotid artery|internal jugular vein|external carotid artery|internal carotid artery)$/ } },
+  'spine-anatomy': { title: 'Spine Anatomy', cap: 30, groups: {
+    'Cervical vertebrae': /^(first|second|third|fourth|fifth|sixth|seventh) cervical vertebra$|^(atlas|axis)$/,
+    'Thoracic vertebrae': /thoracic vertebra$/, 'Lumbar vertebrae': /lumbar vertebra$/,
+    'Sacrum & coccyx': /^(sacrum|coccyx)$/, 'Discs & cord': /(intervertebral disc|spinal cord)/ } },
+  'thorax-anatomy': { title: 'Thorax Anatomy', cap: 24, groups: {
+    'Thoracic cage': /^(left |right )?(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth) rib$|^(sternum|manubrium of sternum|body of sternum|xiphoid process)$/,
+    'Lungs & airway': /^(left lung|right lung|trachea|left main bronchus|right main bronchus|.*lobe of (left|right) lung)$/,
+    'Mediastinum': /^(heart|esophagus|thymus|thoracic aorta|arch of aorta|superior vena cava)$/, 'Diaphragm': /^diaphragm$/ } },
+  'heart-anatomy': { title: 'Heart Anatomy', cap: 12, groups: {
+    'Chamber walls': /^wall of (left|right) (atrium|ventricle)$/, 'Chamber cavities': /^cavity of (left|right) (atrium|ventricle)$/,
+    'Papillary muscles': /papillary muscle of (left|right) ventricle$/, 'Valves': /(mitral valve|tricuspid valve|aortic valve|pulmonary valve)$/,
+    'Great vessels': /^(ascending aorta|arch of aorta|pulmonary trunk|superior vena cava|left pulmonary artery|right pulmonary artery)$/,
+    'Coronary vessels': /^(left|right) coronary artery$|(anterior interventricular artery|circumflex branch of left coronary artery|coronary sinus)$/ } },
+  'abdomen-anatomy': { title: 'Abdomen Anatomy', cap: 20, groups: {
+    'Digestive organs': /^(liver|stomach|pancreas|gallbladder|duodenum|jejunum|ileum|cecum|appendix|ascending colon|transverse colon|descending colon|sigmoid colon|spleen)$/,
+    'Vessels': /^(abdominal aorta|inferior vena cava|portal vein|celiac trunk|superior mesenteric artery|splenic artery|common hepatic artery)$/,
+    'Wall': /^(left |right )?(rectus abdominis|external oblique|internal oblique|transversus abdominis)$/ } },
+  'pelvis-anatomy': { title: 'Pelvis Anatomy (male model)', cap: 20, groups: {
+    'Bones': /^(left |right )?(hip bone|ilium|ischium|pubis)$|^(sacrum|coccyx)$/, 'Organs (male)': /^(urinary bladder|rectum|prostate|left seminal vesicle|right seminal vesicle)$/,
+    'Muscles': /^(left |right )?(levator ani|obturator internus|piriformis|gluteus maximus|iliacus|psoas major)$/,
+    'Vessels': /^(left |right )?(common iliac artery|internal iliac artery|external iliac artery|common iliac vein)$/ } },
+  'upper-limb-anatomy': { title: 'Upper Limb Anatomy', cap: 24, groups: {
+    'Bones': /^(left |right )(clavicle|scapula|humerus|radius|ulna|scaphoid|lunate|triquetrum|pisiform|trapezium|trapezoid|capitate|hamate)$/,
+    'Muscles': /^(left |right )(deltoid|biceps brachii|triceps brachii|brachialis|brachioradialis|pronator teres|supinator|coracobrachialis|supraspinatus|infraspinatus|teres major|teres minor|subscapularis)$/,
+    'Vessels': /^(left |right )(axillary artery|brachial artery|radial artery|ulnar artery|cephalic vein|basilic vein)$/ } },
+  'lower-limb-anatomy': { title: 'Lower Limb Anatomy', cap: 24, groups: {
+    'Bones': /^(left |right )(femur|patella|tibia|fibula|calcaneus|talus|navicular bone|cuboid bone)$/,
+    'Muscles': /^(left |right )(rectus femoris|vastus lateralis|vastus medialis|vastus intermedius|sartorius|gracilis|adductor longus|adductor magnus|biceps femoris|semitendinosus|semimembranosus|gastrocnemius|soleus|tibialis anterior|gluteus medius)$/,
+    'Vessels': /^(left |right )(femoral artery|popliteal artery|anterior tibial artery|posterior tibial artery|great saphenous vein|femoral vein)$/ } },
+};
+const EXCLUDE = /(kidney|renal pelvis|malleus|incus|stapes|auditory ossicle)/i;
+
+function autoGroups(studioId, elements, names, sizes) {
+  const r = AUTO[studioId], used = new Set(), groups = {};
+  for (const [group, re] of Object.entries(r.groups)) {
+    const hits = [...elements.keys()].filter(c => re.test(names.get(c) || '') && !EXCLUDE.test(names.get(c) || '') && !used.has(c));
+    // Leaf concepts only: drop a concept whose element set strictly contains another hit's set.
+    const leaf = hits.filter(c => !hits.some(o => o !== c && [...elements.get(o)].every(f => elements.get(c).has(f)) && elements.get(o).size < elements.get(c).size));
+    const weight = c => [...elements.get(c)].reduce((a, f) => a + (sizes.get(f) || 0), 0);
+    const pick = leaf.sort((a, b) => weight(b) - weight(a)).slice(0, r.cap).sort((a, b) => names.get(a).localeCompare(names.get(b)));
+    pick.forEach(c => used.add(c));
+    if (pick.length) groups[group] = pick;
+  }
+  return { title: r.title, groups };
+}
+
 function readTable(file) {
   const text = fs.readFileSync(path.join(SRC, file));
   if (sha(text) !== TABLES[file]) throw Error('Table digest mismatch: ' + file);
@@ -92,13 +149,14 @@ export function writeGlb(meshes) {
 }
 
 export function prepareRegion(studioId) {
-  const region = REGIONS[studioId];
-  if (!region) throw Error('No BodyParts3D recipe for ' + studioId);
   const zip = path.join(SRC, ARCHIVE.file);
   if (sha(fs.readFileSync(zip)) !== ARCHIVE.sha256) throw Error('Archive digest mismatch');
   const elements = new Map(), names = new Map();
   for (const [c, n, f] of readTable('isa_element_parts.txt')) { if (!elements.has(c)) elements.set(c, new Set()); elements.get(c).add(f); names.set(c, n); }
   for (const [c, , n] of readTable('isa_parts_list_e.txt')) if (!names.has(c)) names.set(c, n);
+  const sizes = new Map(execFileSync('unzip', ['-l', zip], { maxBuffer: 64 * 1024 * 1024 }).toString().split('\n').map(l => l.match(/^\s*(\d+)\s.*\/(FJ\d+)\.obj$/)).filter(Boolean).map(m => [m[2], Number(m[1])]));
+  const region = REGIONS[studioId] || (AUTO[studioId] && autoGroups(studioId, elements, names, sizes));
+  if (!region || !Object.keys(region.groups).length) throw Error('No BodyParts3D recipe for ' + studioId);
   const meshes = [], structures = [], members = {};
   let n = 0;
   for (const [group, ids] of Object.entries(region.groups)) for (const fma of ids) {
@@ -108,15 +166,21 @@ export function prepareRegion(studioId) {
     const id = 's' + String(++n).padStart(3, '0');
     const m = mergeAndNormal(parts); m.id = id;
     const nameEn = names.get(fma);
+    // Side = the patient's side for paired structures. Heart chambers ("left ventricle") name an organ part, not a body side.
+    const chamber = /^(left|right) (atrium|ventricle|auricle|coronary artery|pulmonary artery|main bronchus|lung)$/.test(nameEn) || / of (left|right) (lung|atrium|ventricle)$/.test(nameEn) || /(cusp|leaflet) of .*valve$/.test(nameEn);
     const side = /^left /.test(nameEn) || / of left /.test(nameEn) ? 'left' : /^right /.test(nameEn) || / of right /.test(nameEn) ? 'right' : 'midline';
     let cx = 0; for (let i = 0; i < m.P.length; i += 3) cx += m.P[i];
-    structures.push({ id, fma, nameEn, side, group, elementFiles: files, centroidX: cx / (m.P.length / 3), triangles: m.I.length / 3 });
+    structures.push({ id, fma, nameEn, side, chamber, group, elementFiles: files, centroidX: cx / (m.P.length / 3), triangles: m.I.length / 3 });
     meshes.push(m);
   }
   // Laterality: in the BodyParts3D frame +X is the patient's left. Compare each left/right pair and the midline split.
-  const midX = structures.filter(s => s.side === 'midline').reduce((a, s) => a + s.centroidX, 0) / Math.max(1, structures.filter(s => s.side === 'midline').length);
+  // Paired structures must lie on their side of the body midline; each left/right pair must be ordered (+X = left).
   const lateral = structures.filter(s => s.side !== 'midline');
-  const wrong = lateral.filter(s => (s.side === 'left') !== (s.centroidX > midX)).map(s => s.nameEn);
+  const pairs = lateral.filter(s => s.side === 'left').map(l => [l, lateral.find(r => r.side === 'right' && r.nameEn === l.nameEn.replace(/^left /, 'right ').replace(/ of left /, ' of right '))]).filter(p => p[1]);
+  const midX = pairs.length ? pairs.reduce((a, [l, r]) => a + (l.centroidX + r.centroidX) / 2, 0) / pairs.length
+    : structures.filter(s => s.side === 'midline').reduce((a, s) => a + s.centroidX, 0) / Math.max(1, structures.filter(s => s.side === 'midline').length);
+  const wrong = [...pairs.filter(([l, r]) => !(l.centroidX > r.centroidX)).map(([l]) => l.nameEn + ' / pair order'),
+    ...lateral.filter(s => !s.chamber && (s.side === 'left') !== (s.centroidX > midX)).map(s => s.nameEn)];
   if (wrong.length) throw Error('Laterality mismatch (expected +X = patient left): ' + wrong.join(', '));
   const out = path.join(REPO, 'local-data/studio-resources/build', studioId);
   fs.rmSync(out, { recursive: true, force: true });
@@ -129,7 +193,8 @@ export function prepareRegion(studioId) {
     'data/structures.json': Buffer.from(JSON.stringify(table, null, 1)),
     'data/dataset.json': Buffer.from(JSON.stringify({ schema: 'medcoel.dataset.v1', status: 'PRIVATE_REVIEW', source: 'BodyParts3D 4.0 (DBCLS)', model: 'data/model.glb', structures: 'data/structures.json',
       notice: 'Data: BodyParts3D 4.0 © DBCLS (lisensi: header arsip CC BY-SA 2.1 JP vs situs CC BY 4.0, belum diselaraskan). Satu model pria dewasa, bukan pasien. Review anatomi dan terminologi belum selesai: hanya review privat.',
-      guidedTargets: { select: structures.find(s => s.fma === 'FMA67944').id, isolate: structures.find(s => s.fma === 'FMA67943').id } }, null, 1)),
+      guidedTargets: studioId === 'brain-anatomy' ? { select: structures.find(s => s.fma === 'FMA67944').id, isolate: structures.find(s => s.fma === 'FMA67943').id }
+        : { select: structures[0].id, isolate: structures[Math.min(1, structures.length - 1)].id } }, null, 1)),
     'data/NOTICE-BodyParts3D.txt': Buffer.from(ATTRIBUTION + '\n\nChanges by MEDCOEL: selected FMA concepts merged per concept from their official element OBJ files, smooth normals computed, converted to glTF binary; coordinates unchanged (millimetres). Adapted geometry shared under the same licence terms as the source.\n'),
     'server/challenge.json': Buffer.from(JSON.stringify(challenge(structures), null, 1)),
   };
@@ -147,9 +212,10 @@ function challenge(structures) {
   const items = [];
   structures.forEach((s, n) => {
     const pool = structures.filter(o => o.id !== s.id && o.group === s.group && o.side === s.side);
-    const other = pool.length >= 3 ? pool : structures.filter(o => o.id !== s.id && o.side === s.side);
-    const distract = [0, 1, 2].map(k => other[(n * 5 + k * 7) % other.length]).filter((v, i, a) => a.indexOf(v) === i);
-    while (distract.length < 3) distract.push(other.find(o => !distract.includes(o)));
+    const sameSide = structures.filter(o => o.id !== s.id && o.side === s.side);
+    const other = pool.length >= 3 ? pool : sameSide.length >= 3 ? sameSide : structures.filter(o => o.id !== s.id);
+    const distract = [0, 1, 2].map(k => other[(n * 5 + k * 7) % other.length]).filter((v, i, a) => v && a.indexOf(v) === i);
+    for (const o of other) { if (distract.length >= 3) break; if (!distract.includes(o)) distract.push(o); }
     const options = [s, ...distract], rot = n % 4, ordered = options.slice(rot).concat(options.slice(0, rot));
     items.push({ id: 'identify-' + s.id, prompt: { kind: 'identify', highlight: s.id, text: 'Struktur yang disorot adalah…' }, options: ordered.map(o => o.nameEn), answer: { index: ordered.indexOf(s) }, canonical: s.nameEn,
       explanation: s.nameEn + ' (' + s.fma + ', BodyParts3D 4.0). Terminologi Indonesia/Latin menunggu review.' });
@@ -160,5 +226,6 @@ function challenge(structures) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const p = prepareRegion(process.argv[2] || 'brain-anatomy');
+  console.log(Object.entries(JSON.parse(fs.readFileSync(path.join(REPO, 'local-data/studio-resources/build', process.argv[2] || 'brain-anatomy', 'data/structures.json'), 'utf8')).structures.reduce((a, s) => { a[s.group] = (a[s.group] || 0) + 1; return a; }, {})));
   console.log(JSON.stringify({ outputs: p.outputs, validation: p.validation }, null, 1));
 }

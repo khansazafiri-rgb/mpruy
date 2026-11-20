@@ -1,5 +1,1768 @@
 {
   "schemaVersion": 1,
-  "sources": [],
-  "assets": []
+  "sources": [
+    {
+      "id": "sri24-nitrc",
+      "publisher": "SRI International / NITRC (Rohlfing et al.)",
+      "officialUrl": "https://www.nitrc.org/projects/sri24/",
+      "datasetId": "sri24",
+      "release": "NITRC frs release (archives dated 2012-03-12)",
+      "doi": "10.1002/hbm.20906",
+      "licenseId": "CC-BY-SA-3.0",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://www.nitrc.org/frs/download.php/4499/sri24_anatomy_nifti.zip",
+          "release": "NITRC frs release (archives dated 2012-03-12)",
+          "checkedAt": "2026-11-20",
+          "snapshotSha256": "35b6ea8bfe7c3d060001a55ed51ca826f6d9320194e2b93b0505069919472b90"
+        }
+      ]
+    },
+    {
+      "id": "ptbxl-physionet",
+      "publisher": "PhysioNet (Wagner et al.)",
+      "officialUrl": "https://physionet.org/content/ptb-xl/1.0.3/",
+      "datasetId": "ptb-xl",
+      "release": "1.0.3",
+      "doi": "10.13026/kfzx-aw45",
+      "licenseId": "CC-BY-4.0",
+      "status": "VERIFIED_SOURCE",
+      "evidence": [
+        {
+          "url": "https://physionet.org/files/ptb-xl/1.0.3/LICENSE.txt",
+          "release": "1.0.3",
+          "checkedAt": "2026-11-20",
+          "snapshotSha256": "9a78e7f22742dde9f66ae235ec793ba2212019dc4d0ced75c4da09ced0b35fb2"
+        }
+      ]
+    },
+    {
+      "id": "lidc-idri-tcia",
+      "publisher": "The Cancer Imaging Archive (LIDC/IDRI consortium)",
+      "officialUrl": "https://www.cancerimagingarchive.net/collection/lidc-idri/",
+      "datasetId": "lidc-idri",
+      "release": "TCIA collection (updated 2023-11-20)",
+      "doi": "10.7937/K9/TCIA.2015.LO9QL9SX",
+      "licenseId": "CC-BY-3.0",
+      "status": "VERIFIED_SOURCE",
+      "evidence": [
+        {
+          "url": "https://services.cancerimagingarchive.net/nbia-api/services/v1/getSeries?Collection=LIDC-IDRI&PatientID=LIDC-IDRI-0001",
+          "release": "TCIA collection (updated 2023-11-20)",
+          "checkedAt": "2026-11-20",
+          "snapshotSha256": "64961cdd6fb9d81330f4ef00561c5401260bae0790156df474ccc890e125e0c0"
+        }
+      ]
+    },
+    {
+      "id": "spider-zenodo",
+      "publisher": "Zenodo (van der Graaf et al., Radboudumc)",
+      "officialUrl": "https://zenodo.org/records/10159290",
+      "datasetId": "spider-lumbar-spine",
+      "release": "Zenodo record 10159290",
+      "doi": "10.5281/zenodo.10159290",
+      "licenseId": "CC-BY-4.0",
+      "status": "VERIFIED_SOURCE",
+      "evidence": [
+        {
+          "url": "https://zenodo.org/api/records/10159290",
+          "release": "Zenodo record 10159290",
+          "checkedAt": "2026-11-20",
+          "snapshotSha256": "8be46e77b0e560046f0518bd1c301000226b516cc3d600ea44a28b277452dc78"
+        }
+      ]
+    },
+    {
+      "id": "bodyparts3d-dbcls",
+      "publisher": "Database Center for Life Science (DBCLS)",
+      "officialUrl": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/",
+      "datasetId": "bodyparts3d",
+      "release": "4.0 (isa_BP3D_4.0_obj_99)",
+      "doi": null,
+      "licenseId": "CC-BY-SA-2.1-JP",
+      "status": "REVIEW_REQUIRED",
+      "evidence": [
+        {
+          "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip",
+          "release": "4.0 (isa_BP3D_4.0_obj_99)",
+          "checkedAt": "2026-11-20",
+          "snapshotSha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "brain-mri.t1.nii.gz",
+      "version": "1",
+      "datasetId": "sri24",
+      "sourceRef": "sri24-nitrc",
+      "kind": "volume",
+      "dataNature": "population-template",
+      "format": "NIfTI-1 gz",
+      "path": "data/t1.nii.gz",
+      "bytes": 2114240,
+      "sha256": "ff5f8d719128c618ec344264f5ab81a34af20a92639db534de28a57766fa140f",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-brain-mri",
+      "attributionRef": "studio-res-brain-mri",
+      "notice": {
+        "path": "data/NOTICE-SRI24.txt",
+        "sha256": "872acedbaeed9bd8e9593e749e1844ca386329f4a6f2967b536b98536b57523b"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-brain-mri.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "6f8f982b2f6de415b43f3008467b5ae5f3c5ab661b3d4f1f3df27d582f44dcb2"
+      },
+      "geometry": {
+        "spaceId": "NIfTI RAS mm",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "brain-mri.labels-lpba40.nii.gz",
+      "version": "1",
+      "datasetId": "sri24",
+      "sourceRef": "sri24-nitrc",
+      "kind": "annotation",
+      "dataNature": "population-template",
+      "format": "NIfTI-1 gz",
+      "path": "data/labels-lpba40.nii.gz",
+      "bytes": 124966,
+      "sha256": "05dc3363939af4c8acf24536ce1a657645a59a4a0f5f9bd332a89ad14a5e1920",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-brain-mri",
+      "attributionRef": "studio-res-brain-mri",
+      "notice": {
+        "path": "data/NOTICE-SRI24.txt",
+        "sha256": "872acedbaeed9bd8e9593e749e1844ca386329f4a6f2967b536b98536b57523b"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-brain-mri.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "6f8f982b2f6de415b43f3008467b5ae5f3c5ab661b3d4f1f3df27d582f44dcb2"
+      },
+      "geometry": {
+        "spaceId": "NIfTI RAS mm",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "brain-mri.tissues.nii.gz",
+      "version": "1",
+      "datasetId": "sri24",
+      "sourceRef": "sri24-nitrc",
+      "kind": "annotation",
+      "dataNature": "population-template",
+      "format": "NIfTI-1 gz",
+      "path": "data/tissues.nii.gz",
+      "bytes": 192081,
+      "sha256": "1a2cc5acc4e02b0e7cd967240626fb15510c1b0f923865edfdc5f16b421f6b33",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-brain-mri",
+      "attributionRef": "studio-res-brain-mri",
+      "notice": {
+        "path": "data/NOTICE-SRI24.txt",
+        "sha256": "872acedbaeed9bd8e9593e749e1844ca386329f4a6f2967b536b98536b57523b"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-brain-mri.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "6f8f982b2f6de415b43f3008467b5ae5f3c5ab661b3d4f1f3df27d582f44dcb2"
+      },
+      "geometry": {
+        "spaceId": "NIfTI RAS mm",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "brain-mri.labels.json",
+      "version": "1",
+      "datasetId": "sri24",
+      "sourceRef": "sri24-nitrc",
+      "kind": "terminology",
+      "dataNature": "population-template",
+      "format": "JSON",
+      "path": "data/labels.json",
+      "bytes": 9219,
+      "sha256": "9e318135a10db945d8968cdf46b4753aa432d584f2a226e9dea611feb882f111",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-brain-mri",
+      "attributionRef": "studio-res-brain-mri",
+      "notice": {
+        "path": "data/NOTICE-SRI24.txt",
+        "sha256": "872acedbaeed9bd8e9593e749e1844ca386329f4a6f2967b536b98536b57523b"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-brain-mri.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "6f8f982b2f6de415b43f3008467b5ae5f3c5ab661b3d4f1f3df27d582f44dcb2"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "ecg.cases-c1.json",
+      "version": "1",
+      "datasetId": "ptb-xl",
+      "sourceRef": "ptbxl-physionet",
+      "kind": "waveform",
+      "dataNature": "acquired-patient",
+      "format": "JSON (WFDB format-16 samples, gain, baseline, fs)",
+      "path": "data/cases/c1.json",
+      "bytes": 224453,
+      "sha256": "25dad9bbc18f21fc7ff81acd708f66fec4300060e38d67f617d45d5f87ed1ff1",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-ecg",
+      "attributionRef": "studio-res-ecg",
+      "notice": {
+        "path": "data/NOTICE-PTB-XL.txt",
+        "sha256": "acb707c2a77571564701c63373a26b403b6ce1ab8d016d8d632311091ac3e81d"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-ecg.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "b990a8e30ad8ff47ef8461fc6caae9685b25c61a9dad7a831b5ead58ecfaaede"
+      },
+      "geometry": {
+        "spaceId": "time series",
+        "units": "mV @ 500 Hz",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "ecg.cases-c2.json",
+      "version": "1",
+      "datasetId": "ptb-xl",
+      "sourceRef": "ptbxl-physionet",
+      "kind": "waveform",
+      "dataNature": "acquired-patient",
+      "format": "JSON (WFDB format-16 samples, gain, baseline, fs)",
+      "path": "data/cases/c2.json",
+      "bytes": 232466,
+      "sha256": "680ed05c8f978835aaca72484b66ba57c3800338b0bb92ca34a3938e3bc33ce8",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-ecg",
+      "attributionRef": "studio-res-ecg",
+      "notice": {
+        "path": "data/NOTICE-PTB-XL.txt",
+        "sha256": "acb707c2a77571564701c63373a26b403b6ce1ab8d016d8d632311091ac3e81d"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-ecg.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "b990a8e30ad8ff47ef8461fc6caae9685b25c61a9dad7a831b5ead58ecfaaede"
+      },
+      "geometry": {
+        "spaceId": "time series",
+        "units": "mV @ 500 Hz",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "ecg.cases-c3.json",
+      "version": "1",
+      "datasetId": "ptb-xl",
+      "sourceRef": "ptbxl-physionet",
+      "kind": "waveform",
+      "dataNature": "acquired-patient",
+      "format": "JSON (WFDB format-16 samples, gain, baseline, fs)",
+      "path": "data/cases/c3.json",
+      "bytes": 228809,
+      "sha256": "e7eefcb61408883ec257d57b2e23f354e9e2917cdf3dca36002dbda884980172",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-ecg",
+      "attributionRef": "studio-res-ecg",
+      "notice": {
+        "path": "data/NOTICE-PTB-XL.txt",
+        "sha256": "acb707c2a77571564701c63373a26b403b6ce1ab8d016d8d632311091ac3e81d"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-ecg.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "b990a8e30ad8ff47ef8461fc6caae9685b25c61a9dad7a831b5ead58ecfaaede"
+      },
+      "geometry": {
+        "spaceId": "time series",
+        "units": "mV @ 500 Hz",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "ecg.cases-c4.json",
+      "version": "1",
+      "datasetId": "ptb-xl",
+      "sourceRef": "ptbxl-physionet",
+      "kind": "waveform",
+      "dataNature": "acquired-patient",
+      "format": "JSON (WFDB format-16 samples, gain, baseline, fs)",
+      "path": "data/cases/c4.json",
+      "bytes": 233734,
+      "sha256": "26475152279714e145b4e98d7348cc541bb2ff882a9349a2c13a4a58ef5b18bc",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-ecg",
+      "attributionRef": "studio-res-ecg",
+      "notice": {
+        "path": "data/NOTICE-PTB-XL.txt",
+        "sha256": "acb707c2a77571564701c63373a26b403b6ce1ab8d016d8d632311091ac3e81d"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-ecg.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "b990a8e30ad8ff47ef8461fc6caae9685b25c61a9dad7a831b5ead58ecfaaede"
+      },
+      "geometry": {
+        "spaceId": "time series",
+        "units": "mV @ 500 Hz",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "ecg.cases-c5.json",
+      "version": "1",
+      "datasetId": "ptb-xl",
+      "sourceRef": "ptbxl-physionet",
+      "kind": "waveform",
+      "dataNature": "acquired-patient",
+      "format": "JSON (WFDB format-16 samples, gain, baseline, fs)",
+      "path": "data/cases/c5.json",
+      "bytes": 221615,
+      "sha256": "9ca2d4918cb4ccd5a5425f3d6e13766369b8f66ff685576331eb95838d296af9",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-ecg",
+      "attributionRef": "studio-res-ecg",
+      "notice": {
+        "path": "data/NOTICE-PTB-XL.txt",
+        "sha256": "acb707c2a77571564701c63373a26b403b6ce1ab8d016d8d632311091ac3e81d"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-ecg.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "b990a8e30ad8ff47ef8461fc6caae9685b25c61a9dad7a831b5ead58ecfaaede"
+      },
+      "geometry": {
+        "spaceId": "time series",
+        "units": "mV @ 500 Hz",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "ecg.cases-c6.json",
+      "version": "1",
+      "datasetId": "ptb-xl",
+      "sourceRef": "ptbxl-physionet",
+      "kind": "waveform",
+      "dataNature": "acquired-patient",
+      "format": "JSON (WFDB format-16 samples, gain, baseline, fs)",
+      "path": "data/cases/c6.json",
+      "bytes": 235110,
+      "sha256": "1f2a6781b86ad3dfec651867e7c5f59d0513aa5e1fb6b49eeb20cb900f7ac8f4",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-ecg",
+      "attributionRef": "studio-res-ecg",
+      "notice": {
+        "path": "data/NOTICE-PTB-XL.txt",
+        "sha256": "acb707c2a77571564701c63373a26b403b6ce1ab8d016d8d632311091ac3e81d"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-ecg.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "b990a8e30ad8ff47ef8461fc6caae9685b25c61a9dad7a831b5ead58ecfaaede"
+      },
+      "geometry": {
+        "spaceId": "time series",
+        "units": "mV @ 500 Hz",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "ecg.labels.json",
+      "version": "1",
+      "datasetId": "ptb-xl",
+      "sourceRef": "ptbxl-physionet",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "JSON",
+      "path": "data/labels.json",
+      "bytes": 1294,
+      "sha256": "b306d7768a65256de9fc944a6616bca79e793a53220c319fb8618d86468f70f3",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-ecg",
+      "attributionRef": "studio-res-ecg",
+      "notice": {
+        "path": "data/NOTICE-PTB-XL.txt",
+        "sha256": "acb707c2a77571564701c63373a26b403b6ce1ab8d016d8d632311091ac3e81d"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-ecg.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "b990a8e30ad8ff47ef8461fc6caae9685b25c61a9dad7a831b5ead58ecfaaede"
+      },
+      "geometry": {
+        "spaceId": "NIfTI RAS mm",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "spine-mri.t1.nii.gz",
+      "version": "1",
+      "datasetId": "spider-lumbar-spine",
+      "sourceRef": "spider-zenodo",
+      "kind": "volume",
+      "dataNature": "acquired-patient",
+      "format": "NIfTI-1 gz (from MetaImage)",
+      "path": "data/t1.nii.gz",
+      "bytes": 5930802,
+      "sha256": "cdd2971c16e5bf0177b3f0d3cc6f483bfebdf32a11f4587ed6170aa703e55419",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-spine-mri",
+      "attributionRef": "studio-res-spine-mri",
+      "notice": {
+        "path": "data/NOTICE-SPIDER.txt",
+        "sha256": "730e1c7bf104e8485eba4b48705d002264c96f119e4a0065d368466c04f2c472"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-spine-mri.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "e1b0bcb75f032c0a826f64961f0521b2b0fac0997942df80b57fb6034ddb025c"
+      },
+      "geometry": {
+        "spaceId": "NIfTI RAS mm",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "spine-mri.labels-lpba40.nii.gz",
+      "version": "1",
+      "datasetId": "spider-lumbar-spine",
+      "sourceRef": "spider-zenodo",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "NIfTI-1 gz (from MetaImage mask)",
+      "path": "data/labels-lpba40.nii.gz",
+      "bytes": 51923,
+      "sha256": "8e7b05c09fb70de94780c6e23971248978be1256c3177065f5db8c397c7a4f75",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-spine-mri",
+      "attributionRef": "studio-res-spine-mri",
+      "notice": {
+        "path": "data/NOTICE-SPIDER.txt",
+        "sha256": "730e1c7bf104e8485eba4b48705d002264c96f119e4a0065d368466c04f2c472"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-spine-mri.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "e1b0bcb75f032c0a826f64961f0521b2b0fac0997942df80b57fb6034ddb025c"
+      },
+      "geometry": {
+        "spaceId": "NIfTI RAS mm",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "spine-mri.labels.json",
+      "version": "1",
+      "datasetId": "spider-lumbar-spine",
+      "sourceRef": "spider-zenodo",
+      "kind": "terminology",
+      "dataNature": "acquired-patient",
+      "format": "JSON",
+      "path": "data/labels.json",
+      "bytes": 3013,
+      "sha256": "517d7883a7b00aecded21bc7b0332932dbaaba1111d9b051f684cb6a40bc4f8b",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-spine-mri",
+      "attributionRef": "studio-res-spine-mri",
+      "notice": {
+        "path": "data/NOTICE-SPIDER.txt",
+        "sha256": "730e1c7bf104e8485eba4b48705d002264c96f119e4a0065d368466c04f2c472"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-spine-mri.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "e1b0bcb75f032c0a826f64961f0521b2b0fac0997942df80b57fb6034ddb025c"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "chest-ct.ct.nii.gz",
+      "version": "1",
+      "datasetId": "lidc-idri",
+      "sourceRef": "lidc-idri-tcia",
+      "kind": "volume",
+      "dataNature": "acquired-patient",
+      "format": "NIfTI-1 gz (from DICOM)",
+      "path": "data/ct.nii.gz",
+      "bytes": 34078081,
+      "sha256": "05738486fca3db2fb90ec233191aca4e72c158e30defb54b4377a9ceb3fa8576",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-chest-ct",
+      "attributionRef": "studio-res-chest-ct",
+      "notice": {
+        "path": "data/NOTICE-LIDC-IDRI.txt",
+        "sha256": "dd2a2005618ce329df7f278e1923a29f1f0a86b9baadf65f120bc5a3ae05a71f"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-chest-ct.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "7f84f33559505e9e2e359f9509da68a53227d2eea8520ccc14f40ce2664e145a"
+      },
+      "geometry": {
+        "spaceId": "NIfTI RAS mm",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "chest-ct.readers.nii.gz",
+      "version": "1",
+      "datasetId": "lidc-idri",
+      "sourceRef": "lidc-idri-tcia",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "NIfTI-1 gz (from DICOM SEG)",
+      "path": "data/readers.nii.gz",
+      "bytes": 36122,
+      "sha256": "c93bb2901f27a05cc62b1819d5c055ab3e0a8b32cc335dc7b4b4ff88daa24ad7",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-chest-ct",
+      "attributionRef": "studio-res-chest-ct",
+      "notice": {
+        "path": "data/NOTICE-LIDC-IDRI.txt",
+        "sha256": "dd2a2005618ce329df7f278e1923a29f1f0a86b9baadf65f120bc5a3ae05a71f"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-chest-ct.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "7f84f33559505e9e2e359f9509da68a53227d2eea8520ccc14f40ce2664e145a"
+      },
+      "geometry": {
+        "spaceId": "NIfTI RAS mm",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "chest-ct.annotations.json",
+      "version": "1",
+      "datasetId": "lidc-idri",
+      "sourceRef": "lidc-idri-tcia",
+      "kind": "annotation",
+      "dataNature": "acquired-patient",
+      "format": "JSON",
+      "path": "data/annotations.json",
+      "bytes": 1361,
+      "sha256": "51c286111a57d28936703c00a2371a468e3ba7f861966a61e62b02757e4940d0",
+      "protected": true,
+      "rightsEvidenceRef": "studio-res-chest-ct",
+      "attributionRef": "studio-res-chest-ct",
+      "notice": {
+        "path": "data/NOTICE-LIDC-IDRI.txt",
+        "sha256": "dd2a2005618ce329df7f278e1923a29f1f0a86b9baadf65f120bc5a3ae05a71f"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-chest-ct.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "7f84f33559505e9e2e359f9509da68a53227d2eea8520ccc14f40ce2664e145a"
+      },
+      "geometry": {
+        "spaceId": "NIfTI RAS mm",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "brain-anatomy.model.glb",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "mesh",
+      "dataNature": "derived",
+      "format": "glTF 2.0 binary",
+      "path": "data/model.glb",
+      "bytes": 10049352,
+      "sha256": "dda21bbc7affca5bff7417d8f5f5f1b6f6e0285e57666b9fdc3e8467fd8a9f34",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-brain-anatomy",
+      "attributionRef": "studio-res-brain-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "ddb9f57646485f5f6946e42379999ca2901f25ada6a57fbeb7fa9e52db0c551a"
+      },
+      "geometry": {
+        "spaceId": "BodyParts3D mm (+X patient left)",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "brain-anatomy.structures.json",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "terminology",
+      "dataNature": "derived",
+      "format": "JSON",
+      "path": "data/structures.json",
+      "bytes": 9411,
+      "sha256": "a5268d0aeaeeb2a69fa07fd827ea8a9961015104dc15339cb676393b1cdc8b70",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-brain-anatomy",
+      "attributionRef": "studio-res-brain-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "ddb9f57646485f5f6946e42379999ca2901f25ada6a57fbeb7fa9e52db0c551a"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "head-neck-anatomy.model.glb",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "mesh",
+      "dataNature": "derived",
+      "format": "glTF 2.0 binary",
+      "path": "data/model.glb",
+      "bytes": 11395272,
+      "sha256": "1a55b9242ade4aae0f6abf7fec36d7ed9fcac10a9ad873fd7ac7e9b77f498ae4",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-head-neck-anatomy",
+      "attributionRef": "studio-res-head-neck-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "549418fd185307ca0d14e6078a9dafb26ec3637684c88f41152b1dca80347754"
+      },
+      "geometry": {
+        "spaceId": "BodyParts3D mm (+X patient left)",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "head-neck-anatomy.structures.json",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "terminology",
+      "dataNature": "derived",
+      "format": "JSON",
+      "path": "data/structures.json",
+      "bytes": 7182,
+      "sha256": "be7601a539b9688ed58a2c733f5eb316ff9baf2160a4861273c5898298969db8",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-head-neck-anatomy",
+      "attributionRef": "studio-res-head-neck-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "549418fd185307ca0d14e6078a9dafb26ec3637684c88f41152b1dca80347754"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "spine-anatomy.model.glb",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "mesh",
+      "dataNature": "derived",
+      "format": "glTF 2.0 binary",
+      "path": "data/model.glb",
+      "bytes": 3357732,
+      "sha256": "c68a29aafe8e8835f64afba16662f1812314e15c754c531b020099aea0f818d6",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-spine-anatomy",
+      "attributionRef": "studio-res-spine-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "f02092e48f0e48b33985a84bd687c3fe828d938e66b53543c621130ccf021965"
+      },
+      "geometry": {
+        "spaceId": "BodyParts3D mm (+X patient left)",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "spine-anatomy.structures.json",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "terminology",
+      "dataNature": "derived",
+      "format": "JSON",
+      "path": "data/structures.json",
+      "bytes": 6617,
+      "sha256": "25e928b9cbe7dc1820d256c3ebf518a1d182ddfe458325ba8fd489138ed404b1",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-spine-anatomy",
+      "attributionRef": "studio-res-spine-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "f02092e48f0e48b33985a84bd687c3fe828d938e66b53543c621130ccf021965"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "thorax-anatomy.model.glb",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "mesh",
+      "dataNature": "derived",
+      "format": "glTF 2.0 binary",
+      "path": "data/model.glb",
+      "bytes": 6157660,
+      "sha256": "be9df3de385e4c16e7b77fa922a7b5272698cac963ebd444827a0faf240f997e",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-thorax-anatomy",
+      "attributionRef": "studio-res-thorax-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "75e156e0a7b1d7d95ecea5b1cd3ee1db162c6975867455bf29e09035ec515ddc"
+      },
+      "geometry": {
+        "spaceId": "BodyParts3D mm (+X patient left)",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "thorax-anatomy.structures.json",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "terminology",
+      "dataNature": "derived",
+      "format": "JSON",
+      "path": "data/structures.json",
+      "bytes": 4080,
+      "sha256": "fe756d1bba7212b01a819ef804f50994ec713e92fefd55e2e69918eda55cf393",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-thorax-anatomy",
+      "attributionRef": "studio-res-thorax-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "75e156e0a7b1d7d95ecea5b1cd3ee1db162c6975867455bf29e09035ec515ddc"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "heart-anatomy.model.glb",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "mesh",
+      "dataNature": "derived",
+      "format": "glTF 2.0 binary",
+      "path": "data/model.glb",
+      "bytes": 2240452,
+      "sha256": "e58cf96871a73ac04b1738d088ceb349559c7bdfb5ef132fcbf22514403e5476",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-heart-anatomy",
+      "attributionRef": "studio-res-heart-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "b64307a740205e5d4e257893e5bb8e1376c76e3f13364019fd69afd7bcba30e9"
+      },
+      "geometry": {
+        "spaceId": "BodyParts3D mm (+X patient left)",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "heart-anatomy.structures.json",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "terminology",
+      "dataNature": "derived",
+      "format": "JSON",
+      "path": "data/structures.json",
+      "bytes": 5069,
+      "sha256": "3cd191de0c267c1ad210b1077bc48de56aafbb2c5905298e3fd570f8a19dff07",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-heart-anatomy",
+      "attributionRef": "studio-res-heart-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "b64307a740205e5d4e257893e5bb8e1376c76e3f13364019fd69afd7bcba30e9"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "abdomen-anatomy.model.glb",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "mesh",
+      "dataNature": "derived",
+      "format": "glTF 2.0 binary",
+      "path": "data/model.glb",
+      "bytes": 8188804,
+      "sha256": "4b1b2e8e24b919cfd2d19b646a21cfc680d8f9cfc4d24a4f360d36c713b55314",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-abdomen-anatomy",
+      "attributionRef": "studio-res-abdomen-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "b6ced1b4ef3b28425f91fd6f71ca48c879b95ce56180f6a440d2a5503d18d1b0"
+      },
+      "geometry": {
+        "spaceId": "BodyParts3D mm (+X patient left)",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "abdomen-anatomy.structures.json",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "terminology",
+      "dataNature": "derived",
+      "format": "JSON",
+      "path": "data/structures.json",
+      "bytes": 2541,
+      "sha256": "4762656ecf9e6bb66ec10d8deda9792b84c69299ca91e68998473687045b3ee9",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-abdomen-anatomy",
+      "attributionRef": "studio-res-abdomen-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "b6ced1b4ef3b28425f91fd6f71ca48c879b95ce56180f6a440d2a5503d18d1b0"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "pelvis-anatomy.model.glb",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "mesh",
+      "dataNature": "derived",
+      "format": "glTF 2.0 binary",
+      "path": "data/model.glb",
+      "bytes": 1385620,
+      "sha256": "cc69c1354157f563a4db4f00d317e1bd99b3ecaf4fcd367b06a14f830acca936",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-pelvis-anatomy",
+      "attributionRef": "studio-res-pelvis-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "48d72545f045632efcc00c8206935a2d1bffc076bb290beaca7b805d91153c9f"
+      },
+      "geometry": {
+        "spaceId": "BodyParts3D mm (+X patient left)",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "pelvis-anatomy.structures.json",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "terminology",
+      "dataNature": "derived",
+      "format": "JSON",
+      "path": "data/structures.json",
+      "bytes": 3553,
+      "sha256": "962a5ad5a32afd8167b3b6c191f9c069c2c907ab73e6bd81351aa9d80c07d3d7",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-pelvis-anatomy",
+      "attributionRef": "studio-res-pelvis-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "48d72545f045632efcc00c8206935a2d1bffc076bb290beaca7b805d91153c9f"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "upper-limb-anatomy.model.glb",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "mesh",
+      "dataNature": "derived",
+      "format": "glTF 2.0 binary",
+      "path": "data/model.glb",
+      "bytes": 5667636,
+      "sha256": "f6efe2acd0d88b4f6b100afd042cc7d490cf0cbf6c87335f87edc4d98ef970a4",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-upper-limb-anatomy",
+      "attributionRef": "studio-res-upper-limb-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "435112506dc02d0b9b0cae48daea1e31aec629f1d942659077a87c50743e7234"
+      },
+      "geometry": {
+        "spaceId": "BodyParts3D mm (+X patient left)",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "upper-limb-anatomy.structures.json",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "terminology",
+      "dataNature": "derived",
+      "format": "JSON",
+      "path": "data/structures.json",
+      "bytes": 6556,
+      "sha256": "b436e4fe7d24b444d1fb204ee420e29b34fef6d5ae6c692ff138f8449e9a452c",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-upper-limb-anatomy",
+      "attributionRef": "studio-res-upper-limb-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "435112506dc02d0b9b0cae48daea1e31aec629f1d942659077a87c50743e7234"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "lower-limb-anatomy.model.glb",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "mesh",
+      "dataNature": "derived",
+      "format": "glTF 2.0 binary",
+      "path": "data/model.glb",
+      "bytes": 7092340,
+      "sha256": "e90f8f9ab4a13ec5863ffeee8acf35c2b53ba5b1c93f24a17b705839066749be",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-lower-limb-anatomy",
+      "attributionRef": "studio-res-lower-limb-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "66968e2f69e47856f53a7acfda214ba77ab371ff715d9b4e3753b73cace07624"
+      },
+      "geometry": {
+        "spaceId": "BodyParts3D mm (+X patient left)",
+        "units": "mm",
+        "details": "See provenance validation (local-data); attestation only, not a parser."
+      },
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    },
+    {
+      "id": "lower-limb-anatomy.structures.json",
+      "version": "1",
+      "datasetId": "bodyparts3d",
+      "sourceRef": "bodyparts3d-dbcls",
+      "kind": "terminology",
+      "dataNature": "derived",
+      "format": "JSON",
+      "path": "data/structures.json",
+      "bytes": 6462,
+      "sha256": "3d89147ec3e3fd428c18a47ae286eb80fb96483f185ed405d39951782ebeab7a",
+      "protected": false,
+      "rightsEvidenceRef": "studio-res-lower-limb-anatomy",
+      "attributionRef": "studio-res-lower-limb-anatomy",
+      "notice": {
+        "path": "data/NOTICE-BodyParts3D.txt",
+        "sha256": "1e05ce5ba688e1ac69c489ee995b6132b02d2aa8235227d8796ed1633ce82277"
+      },
+      "dependsOn": [],
+      "derivation": {
+        "operation": "convert",
+        "tool": "apps/studios/tools/prepare-bp3d-region.mjs",
+        "toolVersion": "1",
+        "pipelineCommit": "0000000000000000000000000000000000000000",
+        "parametersSha256": "66968e2f69e47856f53a7acfda214ba77ab371ff715d9b4e3753b73cace07624"
+      },
+      "geometry": null,
+      "medicalReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "privacyReview": {
+        "status": "pending",
+        "reviewer": "",
+        "reviewedAt": null,
+        "reviewedSha256": null,
+        "scope": [],
+        "reason": "Awaiting human review of the exact bytes and intended educational use."
+      },
+      "sourceFile": null
+    }
+  ]
 }
