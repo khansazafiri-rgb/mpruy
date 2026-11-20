@@ -9,7 +9,8 @@ export default function StudioHost({ launch }) {
   const [armed, setArmed] = useState(false);
   const [status, setStatus] = useState('Memeriksa manifest studio…');
   const { studioId: id, releaseId: release, runtime } = launch || {};
-  const path = '/studio-assets/' + id + '/' + release + '/';
+  // Assets are delivered only by the authorised PocketBase route; the launch response set a scoped HttpOnly session cookie.
+  const path = '/api/medcoel/studio-assets/' + id + '/' + release + '/';
   const valid = /^[a-z][a-z0-9-]{2,40}$/.test(id || '') &&
     /^[a-z0-9-]{1,64}$/.test(release || '') && runtime?.type === 'iframe' &&
     runtime.entry === path + 'index.html';

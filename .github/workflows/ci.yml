@@ -79,4 +79,7 @@ jobs:
           for i in $(seq 1 30); do curl -sf http://127.0.0.1:8092/api/health && break; sleep 1; done
           PB_URL=http://127.0.0.1:8092 PB_SU_EMAIL=study@medcoel.test PB_SU_PASSWORD=study-test-password-123 node test/study-api.test.mjs
           PB_URL=http://127.0.0.1:8092 PB_SU_EMAIL=study@medcoel.test PB_SU_PASSWORD=study-test-password-123 node test/studios-api.test.mjs
+          # Clinical Studios secure launch/delivery: starts its own disposable PocketBase with test-only keys and a
+          # temporary, fully bound engineering release. Never reads production configuration.
+          node test/studios-secure-api.test.mjs
 

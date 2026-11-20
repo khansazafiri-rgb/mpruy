@@ -15,9 +15,12 @@ Status: **in progress**. This branch is intentionally not a production release.
 - Independent engineering-only Vite fixture under `apps/studios/foundation-fixture`, built and inventoried locally by CI without publishing.
 - Standalone reviewed-terminology typed grader for Indonesian/English/Latin, synonyms, minor typos and laterality safeguards (not connected to student UI).
 
+- WS1 (see `10-secure-launch-and-delivery.md`): HMAC-SHA256 clearance receipts issued only after the B1 inspector passes on
+  installed bytes, immutable staging, signed installation attestation, authorised asset delivery through PocketBase with
+  scoped HttpOnly session cookies, revocation, and a real-PocketBase security test suite.
+
 ## Explicitly NOT implemented / NOT approved
 
-- HMAC clearance receipt issuer/verifier and immutable installation attestation.
 - Real studio bundles, built viewers, clinical datasets, medical/rights approval or private asset authorization.
 - Guided/Challenge clinical case evaluator and student-facing typed-anatomy UI. A standalone typed-answer grading contract exists, but no reviewed terminology pack or clinical scoring activation.
 - Any production secret, migration, Caddy route, dataset download, auto merge or deploy.

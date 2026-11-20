@@ -80,7 +80,7 @@ test('a synthetic complete trusted fixture alone can become ready',()=>{
   assert.equal(core.resolve(f,user,trusted).state,'ready');
   const res=core.launch({schemaVersion:1,studios:[f]},f.id,user,{language:'en'},trusted);
   assert.equal(res.status,200);
-  assert.equal(res.value.runtime.entry,'/studio-assets/brain-mri/rel/index.html');
+  assert.equal(res.value.runtime.entry,'/api/medcoel/studio-assets/brain-mri/rel/index.html');
   assert.ok(!('user' in res.value.context));
 });
 test('missing signed receipt, installation attestation, or capability fails closed',()=>{

@@ -78,12 +78,13 @@ function launch(catalog, id, principal, query = {}, trusted = {}) {
   if (!entry || !principalAllowed(entry, principal)) return { status: 404, code: 'NOT_FOUND' };
   const parsed = validateLaunchQuery(query);
   if (!parsed.ok) return { status: 400, code: parsed.code };
-  if (parsed.mode !== 'explore') return { status: 409, code: 'MODE_NOT_AVAILABLE' };
+  // Guided/Challenge only when the canonical catalog marks that experience available for this studio.
+  if (parsed.mode !== 'explore' && !(object(entry.learningModes) && entry.learningModes[parsed.mode] === 'available')) return { status: 409, code: 'MODE_NOT_AVAILABLE' };
   const a = resolve(entry, principal, trusted);
   if (!a || !a.canLaunch) return { status: 409, code: 'STUDIO_NOT_READY' };
   return { status: 200, value: { schemaVersion: 1, studioId: entry.id,
     releaseId: entry.runtime.releaseId,
-    runtime: { type: 'iframe', entry: '/studio-assets/' + entry.id + '/' + entry.runtime.releaseId + '/' + entry.runtime.entry },
+    runtime: { type: 'iframe', entry: '/api/medcoel/studio-assets/' + entry.id + '/' + entry.runtime.releaseId + '/' + entry.runtime.entry },
     context: { studioId: entry.id, releaseId: entry.runtime.releaseId,
       mode: parsed.mode, caseId: null, language: parsed.language,
       a11y: { reducedMotion: false, highContrast: false, fontScale: 1 },

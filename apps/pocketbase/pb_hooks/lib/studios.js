@@ -31,14 +31,18 @@ function list(e) {
   const p = principal(e);
   const q = queryFromRequest(e);
   if (Object.keys(q).length) return e.json(400, { code: 'UNKNOWN_PARAMETER' });
-  // Never evaluate user-supplied installed release, license or availability flags.
-  return e.json(200, core.list(core.catalog, p));
+  // Never evaluate user-supplied installed release, license or availability flags: trusted inputs come only from
+  // signed receipts and attestations of releases installed on this server (lib/studio-runtime.js).
+  const runtime = require(root + '/lib/studio-runtime.js');
+  const cfg = runtime.config();
+  const cat = runtime.catalog(cfg);
+  return e.json(200, core.list(cat, p, runtime.trustedMap(cfg, cat, p)));
 }
 function launch(e, id) {
   headers(e);
-  const p = principal(e);
+  principal(e); // authentication, role and active-account checks
   const q = queryFromRequest(e);
-  const result = core.launch(core.catalog, id, p, q);
-  return e.json(result.status, result.status === 200 ? result.value : { code: result.code });
+  const result = require(root + '/lib/studio-runtime.js').launch(e, id, q, e.auth);
+  return e.json(result.status, result.body);
 }
 module.exports = { list, launch, principal, queryFromRequest };
