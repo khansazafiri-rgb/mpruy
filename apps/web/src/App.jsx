@@ -18,6 +18,8 @@ const AnatomyProduct = lazy(() => import('./pages/AnatomyLibrary'));
 const AnatomyAnnotator = lazy(() => import('./pages/admin/AnatomyAnnotator'));
 
 const Lab = lazy(() => import('./pages/Lab'));
+const StudioHub = lazy(() => import('./features/studios/StudioHub'));
+const StudioEntry = lazy(() => import('./pages/StudioEntry'));
 const StudyPlan = lazy(() => import('./pages/StudyPlan'));
 const StudyToday = lazy(() => import('./pages/StudyToday'));
 const LabObject = lazy(() => import('./pages/Lab').then((m) => ({ default: m.LabObject })));
@@ -110,6 +112,8 @@ export default function App() {
             <Route path="/profil" element={<Profile />} />
             <Route path="/simulasi-dokter" element={<SimulasiDokter />} />
             <Route path="/lab" element={<Lab />} />
+            <Route path="/lab/studios" element={<StudioHub />} />
+            <Route path="/lab/studio/:id" element={<StudioEntry />} />
             <Route path="/lab/objek/:slug" element={<LabObject />} />
             <Route path="/lab/jalur/:slug" element={<LabPathway />} />
             <Route path="/lab/modul/:key" element={<LabAuthoredModule />} />
