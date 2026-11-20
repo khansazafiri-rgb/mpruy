@@ -34,7 +34,8 @@
     "batch:bodyparts3d": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs",
     "review:bodyparts3d": "node scripts/bp3d-review-server.mjs",
     "build:studio-fixture": "npm run build --prefix apps/studios/foundation-fixture && node scripts/build-studio-manifest.mjs --dist apps/studios/foundation-fixture/dist --studio foundation-fixture --release fixture-release --capabilities fixture-echo",
-    "studios:reproduce": "node licensing/tools/verify-studio-reproducibility.mjs"
+    "studios:reproduce": "node licensing/tools/verify-studio-reproducibility.mjs",
+    "test:studios-fullstack": "node scripts/studios-fullstack-e2e.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
