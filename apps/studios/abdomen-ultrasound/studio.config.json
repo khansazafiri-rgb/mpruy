@@ -1,0 +1,15 @@
+{
+  "studioId": "abdomen-ultrasound",
+  "title": "Abdomen Ultrasound",
+  "engine": "image2d",
+  "capabilities": [
+    "window-level",
+    "measurement",
+    "structure-identification"
+  ],
+  "challengeRestricted": [
+    "data/annotations-1.json"
+  ],
+  "privateData": "local-data/studio-resources/build/abdomen-ultrasound",
+  "fixtureTool": "tools/make-image-fixture.mjs"
+}

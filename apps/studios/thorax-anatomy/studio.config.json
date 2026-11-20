@@ -1,0 +1,14 @@
+{
+  "studioId": "thorax-anatomy",
+  "title": "Thorax Anatomy",
+  "engine": "anatomy3d",
+  "capabilities": [
+    "anatomy3d",
+    "structure-identification"
+  ],
+  "challengeRestricted": [
+    "data/structures.json"
+  ],
+  "privateData": "local-data/studio-resources/build/thorax-anatomy",
+  "fixtureTool": "tools/make-anatomy-fixture.mjs"
+}

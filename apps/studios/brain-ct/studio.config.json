@@ -1,0 +1,17 @@
+{
+  "studioId": "brain-ct",
+  "title": "Brain CT",
+  "engine": "volume",
+  "capabilities": [
+    "slice-navigation",
+    "mpr",
+    "window-level",
+    "measurement"
+  ],
+  "challengeRestricted": [
+    "data/readers.nii.gz",
+    "data/annotations.json"
+  ],
+  "privateData": "local-data/studio-resources/build/brain-ct",
+  "fixtureTool": "tools/make-ct-fixture.mjs"
+}

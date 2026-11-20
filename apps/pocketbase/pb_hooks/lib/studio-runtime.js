@@ -335,6 +335,14 @@ function challenge(e, id, releaseId, action) {
     if (item.answer && Number.isInteger(item.answer.index)) correct = Number.isInteger(r.index) && r.index === item.answer.index;
     else if (item.answer && item.answer.labelId !== undefined) correct = r.labelId === item.answer.labelId;
     else if (item.answer && item.answer.structureId !== undefined) correct = typeof r.structureId === 'string' && r.structureId === item.answer.structureId;
+    else if (item.answer && Array.isArray(item.answer.polygon)) {
+      // Image-space click graded against the server-held region (ray casting); the polygon is never sent to the client.
+      const pt = Array.isArray(r.point) && r.point.length === 2 && r.point.every(v => typeof v === 'number' && isFinite(v)) ? r.point : null;
+      if (!pt) return e.json(400, { code: 'INVALID_RESPONSE' });
+      let inside = false; const poly = item.answer.polygon;
+      for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1]; if ((yi > pt[1]) !== (yj > pt[1]) && pt[0] < ((xj - xi) * (pt[1] - yi)) / (yj - yi) + xi) inside = !inside; }
+      correct = inside;
+    }
     else if (item.answer && item.answer.conceptId !== undefined) {
       const concept = terminology.concepts && terminology.concepts[item.answer.conceptId];
       if (!concept || typeof r.text !== 'string') return e.json(400, { code: 'INVALID_RESPONSE' });

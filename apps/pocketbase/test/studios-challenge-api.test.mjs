@@ -24,8 +24,9 @@ const key = { schema: 'medcoel.challenge.v1', count: 2, items: [
   { id: 'q1', prompt: { kind: 'crosshair-structure', mm: [-10, 0, 0], text: 'Neutral question 1' }, options: ['Alpha', 'Beta'], answer: { index: 1 }, canonical: 'Beta', explanation: 'Engineering explanation 1' },
   { id: 'q2', prompt: { kind: 'crosshair-structure', mm: [10, 0, 0], text: 'Neutral question 2' }, options: ['Alpha', 'Beta'], answer: { index: 0 }, canonical: 'Alpha', explanation: 'Engineering explanation 2' },
   { id: 'f1', prompt: { kind: 'find', text: 'Click Gamma' }, options: [], answer: { structureId: 's003' }, canonical: 'Gamma', explanation: 'Engineering find' },
-  { id: 't1', prompt: { kind: 'typed', highlight: 's001', text: 'Type the highlighted block' }, options: [], answer: { conceptId: 'FIX-1', side: 'left' }, canonical: 'Fixture block left', explanation: 'Engineering typed' } ] };
-key.count = 4;
+  { id: 't1', prompt: { kind: 'typed', highlight: 's001', text: 'Type the highlighted block' }, options: [], answer: { conceptId: 'FIX-1', side: 'left' }, canonical: 'Fixture block left', explanation: 'Engineering typed' },
+  { id: 'p1', prompt: { kind: 'find-region', imageId: 'img1', text: 'Click the square' }, options: [], answer: { polygon: [[10, 10], [50, 10], [50, 50], [10, 50]] }, canonical: 'Square', explanation: 'Engineering region' } ] };
+key.count = 5;
 const terminology = { schema: 'medcoel.terminology.v1', status: 'approved', scope: 'engineering-fixture-only', concepts: { 'FIX-1': { canonical: { id: 'balok fixture kiri', en: 'fixture block left', la: 'truncus probationis sinister' }, forms: [
   { language: 'en', value: 'fixture block left', side: 'left' }, { language: 'id', value: 'balok fixture kiri', side: 'left' }, { language: 'la', value: 'truncus probationis sinister', side: 'left' }] } } };
 const files = new Map([['index.html', Buffer.from('<!doctype html><title>challenge fixture</title>')], ['data/labels.json', Buffer.from('{"names":["Alpha","Beta"]}')],
@@ -80,7 +81,8 @@ await step('CHAL-003 start returns items without answers, canonical names or exp
   const r = await call('POST', base + '_challenge/start', { cookie: ch.cookie, body: {} });
   assert.equal(r.status, 200, JSON.stringify(r.data));
   ({ attempt, items } = r.data);
-  assert.equal(items.length, 4);
+  assert.equal(items.length, 5);
+  assert.equal(JSON.stringify(items).includes('polygon'), false, 'region polygons stay on the server');
   const text = JSON.stringify(r.data);
   for (const leak of ['answer', 'canonical', 'Engineering explanation']) assert.equal(text.includes(leak), false, leak);
 });
@@ -109,6 +111,12 @@ await step('CHAL-006 Find is graded by the clicked structure id; Type uses the a
   const lr = await typed('fixture block right'); assert.deepEqual([lr.correct, lr.reason], [false, 'laterality']);
   assert.equal((await typed('truncus probationis dexter')).correct, false);
   assert.equal((await typed('kiri')).correct, false);
+});
+await step('CHAL-008 image regions are graded server-side by point-in-polygon; malformed points are refused', async () => {
+  const click = async point => call('POST', base + '_challenge/answer', { cookie: ch.cookie, body: { attempt, itemId: 'p1', response: { point } } });
+  assert.equal((await click([30, 30])).data.correct, true);
+  assert.equal((await click([70, 30])).data.correct, false);
+  assert.equal((await click(['x', 1])).status, 400);
 });
 await step('CHAL-007 Type items are not issued when the terminology pack is not approved', async () => {
   const termFile = path.join(studioRoot, rel.studioId, rel.releaseId, 'files', 'server', 'terminology.json');
