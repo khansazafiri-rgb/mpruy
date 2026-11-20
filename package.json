@@ -9,7 +9,7 @@
     "lint": "npm run lint --prefix apps/web",
     "test": "npm run test --prefix apps/web && npm run test --prefix apps/pocketbase",
     "test:anatomy-integration": "node --test scripts/anatomy-*.test.mjs",
-    "test:studios": "node --test scripts/studio-catalog.test.mjs scripts/studio-catalog-history.test.mjs scripts/studio-resources.test.mjs packages/studio-contract/test/*.test.mjs",
+    "test:studios": "node scripts/generate-studio-server-contract.mjs --check && node --test scripts/studio-catalog.test.mjs scripts/studio-catalog-history.test.mjs scripts/studio-resources.test.mjs packages/studio-contract/test/*.test.mjs",
     "preview:anatomy": "node scripts/anatomy-preview-server.mjs",
     "stage:anatomy": "node scripts/stage-anatomy.mjs",
     "build:anatomy": "npm run build --prefix apps/anatomy -- --base=/anatomy/viewer/",
@@ -32,7 +32,8 @@
     "build:bodyparts3d-candidate": "node apps/4d-lab/tools/build-bp3d-candidate.mjs",
     "review:bodyparts3d-candidate": "node apps/4d-lab/tools/review-bp3d-candidate.mjs",
     "batch:bodyparts3d": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs",
-    "review:bodyparts3d": "node scripts/bp3d-review-server.mjs"
+    "review:bodyparts3d": "node scripts/bp3d-review-server.mjs",
+    "build:studio-fixture": "npm run build --prefix apps/studios/foundation-fixture && node scripts/build-studio-fixture-manifest.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
