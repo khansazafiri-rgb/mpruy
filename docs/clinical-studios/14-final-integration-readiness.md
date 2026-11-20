@@ -48,12 +48,12 @@ The existing CI runs on the integration commit: web, PocketBase units, Studio/B1
 New .github/workflows/studios-integration.yml adds:
 1. INTEGRATION-001…008: ancestry, untouched catalog/policies/legacy, 14 old rights records, 35 pending assets, 24 apps, exact build manifests/bytes and closed user/admin decisions.
 2. Real Chromium fixture smoke for every app in Explore and Guided (48 page loads), plus generic 2D/volume Guided flows.
-3. Unmodified 4D UX browser assertions on the target base and integration head, in separate jobs. Their real failures remain failed checks, with JSON/log artifacts.
+3. Unmodified 4D UX browser assertions on the target base and integration head, in separate jobs. Their real failures remain failed checks, with JSON/log artifacts. Tracked historical results are deleted before testing; fresh evidence binds the run ID, attempt, checkout SHA, execution time, result hash and actual exit code, and all 16 original assertions must execute.
 4. A comparison job rejects missing tests/results or any newly failing 4D assertion. Passing this comparison does not turn raw failed tests green.
 
 The real PocketBase studios-api suite now attempts launch for every visible studio, with both real user/admin accounts, and asserts 409 without a launch URL.
 
-Browser tooling is pinned to Playwright 1.56.1 in RUNNER_TEMP only; no project dependency or lockfile is changed. CI uses labelled generated technical fixtures only, never local-data or medical-data downloads. Artifacts contain logs and inventory metadata, never dist, private data, answer files or secrets.
+Browser jobs pin Ubuntu 24.04 and Playwright 1.56.1 in RUNNER_TEMP only; no project dependency or lockfile is changed. CI uses labelled generated technical fixtures only, never local-data or medical-data downloads. Artifacts contain logs and inventory metadata, never dist, private data, answer files or secrets.
 
 Actual results live in the PR checks, logs and final PR description. Historical WS results in documents 10/12/13 are not fresh integration results.
 

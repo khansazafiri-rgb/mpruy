@@ -18,7 +18,7 @@ permissions:
 jobs:
   studios-browser:
     name: 24 studios — integration guards and fixture browser smoke
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 35
     env:
       STUDIOS_INTEGRATION_BASE_SHA: ${{ github.event.pull_request.base.sha }}
@@ -75,7 +75,7 @@ jobs:
 
   legacy-4d-browser:
     name: 4D UX browser — ${{ matrix.revision }} (failures remain visible)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 40
     strategy:
       fail-fast: false
@@ -90,6 +90,23 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: apps/4d-lab/package-lock.json
+      - name: Remove historical results and bind the browser run to this checkout
+        env:
+          BROWSER_REVISION: ${{ matrix.revision }}
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const dir = 'apps/4d-lab/evidence/';
+          fs.mkdirSync(dir, { recursive: true });
+          for (const name of ['ux-e2e-results.json', 'integration-browser-proof.json'])
+            fs.rmSync(dir + name, { force: true });
+          fs.writeFileSync(dir + 'integration-browser-start.json', JSON.stringify({
+            runId: process.env.GITHUB_RUN_ID, attempt: process.env.GITHUB_RUN_ATTEMPT,
+            revision: process.env.BROWSER_REVISION, startedAt: Date.now(),
+            commit: execFileSync('git', ['rev-parse', 'HEAD'], {encoding:'utf8'}).trim()
+          }));
+          JS
       - name: Install locked 4D application and isolated browser tooling
         run: |
           echo "PLAYWRIGHT_MODULE=$RUNNER_TEMP/medcoel-browser-tools/node_modules/playwright" >> "$GITHUB_ENV"
@@ -101,8 +118,38 @@ jobs:
         run: npm run build:4d-lab
       - name: Run unmodified legacy UX browser assertions
         run: |
+          set +e
           set -o pipefail
           node apps/4d-lab/test/e2e/ux-e2e.mjs 2>&1 | tee "$RUNNER_TEMP/4d-ux.log"
+          test_exit_code=$?
+          printf '%s\n' "$test_exit_code" > "$RUNNER_TEMP/4d-ux-exit-code"
+          exit "$test_exit_code"
+      - name: Verify fresh evidence (never accept a tracked historical result)
+        if: always()
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          import crypto from 'node:crypto';
+          const dir = 'apps/4d-lab/evidence/';
+          const start = JSON.parse(fs.readFileSync(dir + 'integration-browser-start.json', 'utf8'));
+          const bytes = fs.readFileSync(dir + 'ux-e2e-results.json');
+          const result = JSON.parse(bytes);
+          const code = Number(fs.readFileSync(process.env.RUNNER_TEMP + '/4d-ux-exit-code', 'utf8').trim());
+          assert.equal(start.runId, process.env.GITHUB_RUN_ID);
+          assert.equal(start.attempt, process.env.GITHUB_RUN_ATTEMPT);
+          assert.ok(Date.parse(result.date) >= start.startedAt, 'Historical result refused');
+          assert.ok(fs.statSync(dir + 'ux-e2e-results.json').mtimeMs >= start.startedAt);
+          assert.equal(result.results.length, 16, 'All original UX assertions must execute');
+          assert.equal(result.failed, result.results.filter(x => !x.ok).length);
+          assert.equal(result.passed, result.results.filter(x => x.ok).length);
+          assert.equal(code, result.failed ? 1 : 0, 'Exit code/result disagreement');
+          const proof = { ...start, finishedAt: Date.now(), exitCode: code,
+            resultSha256: crypto.createHash('sha256').update(bytes).digest('hex'),
+            passed: result.passed, failed: result.failed };
+          fs.writeFileSync(dir + 'integration-browser-proof.json', JSON.stringify(proof, null, 2));
+          console.log('Fresh browser evidence: ' + JSON.stringify(proof));
+          JS
       - name: Save actual results even when assertions fail
         if: always()
         uses: actions/upload-artifact@v4
@@ -110,6 +157,7 @@ jobs:
           name: 4d-ux-${{ matrix.revision }}
           path: |
             apps/4d-lab/evidence/ux-e2e-results.json
+            apps/4d-lab/evidence/integration-browser-proof.json
             ${{ runner.temp }}/4d-ux.log
           retention-days: 14
 
@@ -117,25 +165,41 @@ jobs:
     name: Compare 4D failures against the same-run target baseline
     if: always()
     needs: legacy-4d-browser
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/download-artifact@v4
         with:
           pattern: 4d-ux-*
           path: results
-      - name: Fail if results are missing or any new UX assertion fails
+      - name: Fail if results are missing, stale or any new UX assertion fails
+        env:
+          EXPECTED_RUN_ID: ${{ github.run_id }}
+          EXPECTED_RUN_ATTEMPT: ${{ github.run_attempt }}
+          EXPECTED_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          EXPECTED_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           node --input-type=module <<'JS'
           import fs from 'node:fs';
           import assert from 'node:assert/strict';
-          const find = dir => fs.readdirSync(dir, {withFileTypes: true}).flatMap(e => {
+          import crypto from 'node:crypto';
+          const find = (dir, target = 'ux-e2e-results.json') => fs.readdirSync(dir, {withFileTypes: true}).flatMap(e => {
             const p = dir + '/' + e.name;
-            return e.isDirectory() ? find(p) : e.name === 'ux-e2e-results.json' ? [p] : [];
+            return e.isDirectory() ? find(p, target) : e.name === target ? [p] : [];
           });
           const read = revision => {
             const files = find('results/4d-ux-' + revision);
             assert.equal(files.length, 1, 'Missing or ambiguous ' + revision + ' UX evidence');
-            const result = JSON.parse(fs.readFileSync(files[0], 'utf8'));
+            const bytes = fs.readFileSync(files[0]);
+            const result = JSON.parse(bytes);
+            const proofs = find('results/4d-ux-' + revision, 'integration-browser-proof.json');
+            assert.equal(proofs.length, 1, 'Fresh proof required for ' + revision);
+            const proof = JSON.parse(fs.readFileSync(proofs[0], 'utf8'));
+            assert.equal(proof.runId, process.env.EXPECTED_RUN_ID);
+            assert.equal(proof.attempt, process.env.EXPECTED_RUN_ATTEMPT);
+            assert.equal(proof.revision, revision);
+            assert.equal(proof.commit, process.env[revision === 'base' ? 'EXPECTED_BASE_SHA' : 'EXPECTED_HEAD_SHA']);
+            assert.equal(proof.resultSha256, crypto.createHash('sha256').update(bytes).digest('hex'));
+            assert.ok(Date.parse(result.date) >= proof.startedAt && proof.finishedAt >= Date.parse(result.date));
             assert.ok(Array.isArray(result.results) && result.results.length > 0);
             assert.equal(result.failed, result.results.filter(x => !x.ok).length);
             return result;
