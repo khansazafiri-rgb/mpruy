@@ -1,0 +1,420 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "sources",
+    "assets"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "maxItems": 10000
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/asset"
+      },
+      "maxItems": 10000
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reviewer",
+        "reviewedAt",
+        "reviewedSha256",
+        "scope",
+        "reason"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "approved",
+            "not-required"
+          ]
+        },
+        "reviewer": {
+          "type": "string"
+        },
+        "reviewedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewedSha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "maxItems": 10000
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "publisher",
+        "officialUrl",
+        "datasetId",
+        "release",
+        "doi",
+        "licenseId",
+        "status",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._-]{1,100}$"
+        },
+        "publisher": {
+          "type": "string",
+          "minLength": 1
+        },
+        "officialUrl": {
+          "type": "string",
+          "minLength": 1
+        },
+        "datasetId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "release": {
+          "type": "string",
+          "minLength": 1
+        },
+        "doi": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "licenseId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "VERIFIED_SOURCE",
+            "REVIEW_REQUIRED",
+            "BLOCKED"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url",
+              "release",
+              "checkedAt",
+              "snapshotSha256"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "minLength": 1
+              },
+              "release": {
+                "type": "string",
+                "minLength": 1
+              },
+              "checkedAt": {
+                "type": "string",
+                "minLength": 1
+              },
+              "snapshotSha256": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          },
+          "maxItems": 10000
+        }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "datasetId",
+        "sourceRef",
+        "kind",
+        "dataNature",
+        "format",
+        "path",
+        "bytes",
+        "sha256",
+        "protected",
+        "rightsEvidenceRef",
+        "attributionRef",
+        "notice",
+        "dependsOn",
+        "derivation",
+        "geometry",
+        "medicalReview",
+        "privacyReview",
+        "sourceFile"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._-]{1,100}$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "datasetId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "mesh",
+            "volume",
+            "waveform",
+            "image",
+            "annotation",
+            "terminology",
+            "code",
+            "dependency",
+            "test-content"
+          ]
+        },
+        "dataNature": {
+          "enum": [
+            "acquired-patient",
+            "population-template",
+            "synthetic",
+            "derived"
+          ]
+        },
+        "format": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "protected": {
+          "type": "boolean"
+        },
+        "rightsEvidenceRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attributionRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notice": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        },
+        "dependsOn": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "assetId",
+              "version",
+              "sha256"
+            ],
+            "properties": {
+              "assetId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          },
+          "maxItems": 10000
+        },
+        "derivation": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "operation",
+                "tool",
+                "toolVersion",
+                "pipelineCommit",
+                "parametersSha256"
+              ],
+              "properties": {
+                "operation": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "tool": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolVersion": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "pipelineCommit": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{40}$"
+                },
+                "parametersSha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              }
+            }
+          ]
+        },
+        "geometry": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "spaceId",
+                "units",
+                "details"
+              ],
+              "properties": {
+                "spaceId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "units": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "details": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        },
+        "medicalReview": {
+          "$ref": "#/$defs/review"
+        },
+        "privacyReview": {
+          "$ref": "#/$defs/review"
+        },
+        "sourceFile": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "url",
+                "member",
+                "sha256"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "member": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

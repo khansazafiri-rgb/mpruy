@@ -92,3 +92,19 @@ test('duplicate IDs, unknown products and unverifiable source references are rej
   const missing = clone(); missing.records[0].evidence = [];
   assert.throws(() => inspect(missing), /nonempty evidence/);
 });
+
+test('multi-node rights dependency cycles are rejected even in pending records', () => {
+  const bad = clone();
+  bad.records.find(r => r.id === 'model-skeletal').dependencies = ['model-muscular'];
+  bad.records.find(r => r.id === 'model-muscular').dependencies = ['model-skeletal'];
+  assert.throws(() => inspect(bad), /dependency cycle/);
+});
+
+test('studio product scopes require a trusted catalog ID; legacy default does not admit them', () => {
+  const data = clone();
+  data.records.find(r => r.id === 'model-skeletal').products.push('studio:brain-mri');
+  assert.throws(() => inspect(data), /unknown product/);
+  assert.equal(inspectCommercialEvidence(data, { studioIds: ['brain-mri'] }).products['studio:brain-mri'].evidenceComplete, false);
+  assert.throws(() => inspectCommercialEvidence(data, { studioIds: ['unrelated'] }), /unknown product/);
+});
+

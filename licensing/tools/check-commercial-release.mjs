@@ -44,13 +44,13 @@ export function ownerOverrideProblem(o, now = new Date()) {
   return null;
 }
 
-export function assertCommercialReleaseReady(product, root, manifestFile = DEFAULT_MANIFEST, { now = new Date() } = {}) {
+export function assertCommercialReleaseReady(product, root, manifestFile = DEFAULT_MANIFEST, { now = new Date(), allowOwnerOverride = true } = {}) {
   const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
   if (manifest.schemaVersion !== 1 || !manifest.products?.[product]) throw Error(`Commercial release: missing policy for ${product}`);
   const policy = manifest.products[product];
   if (policy.status !== 'cleared' || policy.blockers?.length) {
     const problem = policy.ownerOverride ? ownerOverrideProblem(policy.ownerOverride, now) : 'no owner override';
-    if (!problem) {
+    if (allowOwnerOverride && !problem) {
       const o = policy.ownerOverride;
       const warning = `OWNER OVERRIDE for ${product}: released on the owner's decision (${o.decidedBy}, ${o.decidedOn}, expires ${o.expiresOn}). Rights are NOT verified: ${(policy.blockers || []).length} blocker(s) remain.`;
       console.warn('\n!! ' + warning + '\n');
@@ -71,3 +71,4 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   if (!product || !root) { console.error('usage: check-commercial-release.mjs <atlas-viewer|4d-lab> <build-dir>'); process.exitCode = 2; }
   else { try { console.log(JSON.stringify(assertCommercialReleaseReady(product, root), null, 2)); } catch (error) { console.error(error.message); process.exitCode = 1; } }
 }
+

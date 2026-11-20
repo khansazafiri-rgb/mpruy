@@ -35,17 +35,19 @@ Not touched: `deploy/`, `apps/anatomy`, `apps/4d-lab`, `shared/lab-tracks.json`,
 | 029 | review | no script writes outside the workspace/scratch; no network to medcoel.com in tests |
 | 030 | CI check | `git diff --stat <base> -- deploy apps/anatomy apps/4d-lab` empty |
 
-Existing failures (none at baseline) would be reported separately, never skipped.
+The unit baseline above does not imply browser e2e is green. PR #225 records three open 4D UX e2e failures (tri-planar/pad, pathology/pericardial, keyboard ArrowUp superior); report separately, never skip or claim passed.
 
 ## PR plan (proposal; nothing created yet)
 
 | PR | Branch (proposed) | Content | Evidence |
 |---|---|---|---|
 | A | `feature/studios-a-docs-catalog` | `docs/clinical-studios/00–06`, `shared/studios/catalog.v1.json` (24 + fixture, all fail-closed), `frozen-ids.json` | Docs review; STUDIO-001/002 via a tiny JSON check |
-| B | `feature/studios-b-contract` | `packages/studio-contract`, availability resolver (web + PB hook mirror), `GET /api/medcoel/studios` and `/launch` | STUDIO-001–005, 013–015 (unit + real PB) |
+| B1 | `feature/studios-b1-resource-contracts` | Reusable catalog/resource contracts + offline rights/lineage/strict release inspection; no runtime | STUDIO-001–004 and RESOURCE-001–020; see 07 |
+| B2 | proposed later | Availability resolver (web + PB hook mirror), studios API and remaining launch contracts | STUDIO-005, 013–015; separate ACC |
 | C | `feature/studios-c-runtime-fixture` | `packages/studio-runtime`, `_template`, `foundation-fixture`, `StudioHost`, `StudioEntry` route, local staging script | STUDIO-006–012, 016, 017, 026–028; browser recording |
 | D | `feature/studios-d-lab-hub` | "Clinical Studios" section appended to Lab Hub, `StudioHub`, `StudioCard` states | STUDIO-018–025, screenshots desktop/iPad/phone, Atlas before/after screenshot |
 | E | `feature/studios-e-hardening` | security tests consolidated, CI script `test:studios`, release/rollback doc, Caddy proposal for `/studio-assets/` **as a document only** | STUDIO-029/030, full regression report |
 
 Each PR is stacked on the previous one, targets `claude/focused-wozniak-1ayrxa`, is never merged automatically, and changes
 nothing in production.
+
