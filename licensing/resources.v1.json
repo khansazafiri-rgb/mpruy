@@ -2336,7 +2336,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-brain-mri.mjs@sha256:3a9cce02afc57f913bda2c3300aa197bf9ac0fd22bf519684265538da5d49381",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "a304a1034202d38b1caabd95b7e750589c872758ac62c0af5b820bb7fe081e51"
       },
       "geometry": {
@@ -2401,7 +2401,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-brain-mri.mjs@sha256:3a9cce02afc57f913bda2c3300aa197bf9ac0fd22bf519684265538da5d49381",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "a304a1034202d38b1caabd95b7e750589c872758ac62c0af5b820bb7fe081e51"
       },
       "geometry": {
@@ -2466,7 +2466,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-brain-mri.mjs@sha256:3a9cce02afc57f913bda2c3300aa197bf9ac0fd22bf519684265538da5d49381",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "a304a1034202d38b1caabd95b7e750589c872758ac62c0af5b820bb7fe081e51"
       },
       "geometry": {
@@ -2531,7 +2531,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-brain-mri.mjs@sha256:3a9cce02afc57f913bda2c3300aa197bf9ac0fd22bf519684265538da5d49381",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "a304a1034202d38b1caabd95b7e750589c872758ac62c0af5b820bb7fe081e51"
       },
       "geometry": null,
@@ -2642,7 +2642,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -2757,7 +2757,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -2872,7 +2872,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -2987,7 +2987,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -3102,7 +3102,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -3217,7 +3217,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -3332,7 +3332,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-ecg.mjs@sha256:2f3549fb0a5102737960b39099c2dd102c97ae5048a21a94ec8849d5c0f5d50b",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "e5afd7d0e37c9da8f487bd121e3cff72863c0c3ee4636aa1bb4f8fe7c54489ae"
       },
       "geometry": {
@@ -3390,9 +3390,9 @@
       ],
       "derivation": {
         "operation": "convert",
-        "tool": "apps/studios/tools/prepare-spine-mri.mjs@sha256:caa3f50461fc9a29f10afd29e332856b6b2317e66c2f7ace652eeec9d27c08c3",
+        "tool": "apps/studios/tools/prepare-spine-mri.mjs@sha256:5d645013d3da39c5f7f43f2c52ab1b1aa803006ff87be86f6b37157d9378b3fa",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "e66643666aa1c0cf024913879f3673e38afbab9c47ff82be14d6bfbb52582672"
       },
       "geometry": {
@@ -3450,9 +3450,9 @@
       ],
       "derivation": {
         "operation": "convert",
-        "tool": "apps/studios/tools/prepare-spine-mri.mjs@sha256:caa3f50461fc9a29f10afd29e332856b6b2317e66c2f7ace652eeec9d27c08c3",
+        "tool": "apps/studios/tools/prepare-spine-mri.mjs@sha256:5d645013d3da39c5f7f43f2c52ab1b1aa803006ff87be86f6b37157d9378b3fa",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "e66643666aa1c0cf024913879f3673e38afbab9c47ff82be14d6bfbb52582672"
       },
       "geometry": {
@@ -3487,8 +3487,8 @@
       "dataNature": "acquired-patient",
       "format": "JSON",
       "path": "data/labels.json",
-      "bytes": 3013,
-      "sha256": "517d7883a7b00aecded21bc7b0332932dbaaba1111d9b051f684cb6a40bc4f8b",
+      "bytes": 3007,
+      "sha256": "fd21b1a285c18681f7eadc5b7af570e7dd51aa97e6317be1e899873769cd0993",
       "protected": true,
       "rightsEvidenceRef": "studio-res-spine-mri",
       "attributionRef": "studio-res-spine-mri",
@@ -3510,9 +3510,9 @@
       ],
       "derivation": {
         "operation": "convert",
-        "tool": "apps/studios/tools/prepare-spine-mri.mjs@sha256:caa3f50461fc9a29f10afd29e332856b6b2317e66c2f7ace652eeec9d27c08c3",
+        "tool": "apps/studios/tools/prepare-spine-mri.mjs@sha256:5d645013d3da39c5f7f43f2c52ab1b1aa803006ff87be86f6b37157d9378b3fa",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "e66643666aa1c0cf024913879f3673e38afbab9c47ff82be14d6bfbb52582672"
       },
       "geometry": null,
@@ -3583,7 +3583,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-chest-ct.mjs@sha256:f658f298636e20a4cef2bb8a18d8fd77b17c2a33122b3b7450cb5434fb028afb",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "1cb0938782041da57d134de0b4e4b46d19c014766fa97230b63248ed2f3134b9"
       },
       "geometry": {
@@ -3658,7 +3658,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-chest-ct.mjs@sha256:f658f298636e20a4cef2bb8a18d8fd77b17c2a33122b3b7450cb5434fb028afb",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "1cb0938782041da57d134de0b4e4b46d19c014766fa97230b63248ed2f3134b9"
       },
       "geometry": {
@@ -3733,7 +3733,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-chest-ct.mjs@sha256:f658f298636e20a4cef2bb8a18d8fd77b17c2a33122b3b7450cb5434fb028afb",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "1cb0938782041da57d134de0b4e4b46d19c014766fa97230b63248ed2f3134b9"
       },
       "geometry": {
@@ -3798,7 +3798,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-abdomen-ct.mjs@sha256:401567acad0fee9bd492e4e00926bb87047ed5fdc978978bae43860b8700b23d",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "8a9d0edd16d0517722292a49e0ed6e2f216a1ba3aae930e0187fe79e9cd559da"
       },
       "geometry": {
@@ -3863,7 +3863,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-abdomen-ct.mjs@sha256:401567acad0fee9bd492e4e00926bb87047ed5fdc978978bae43860b8700b23d",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "8a9d0edd16d0517722292a49e0ed6e2f216a1ba3aae930e0187fe79e9cd559da"
       },
       "geometry": {
@@ -3928,7 +3928,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-abdomen-ct.mjs@sha256:401567acad0fee9bd492e4e00926bb87047ed5fdc978978bae43860b8700b23d",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "8a9d0edd16d0517722292a49e0ed6e2f216a1ba3aae930e0187fe79e9cd559da"
       },
       "geometry": null,
@@ -4014,7 +4014,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
       },
       "geometry": {
@@ -4104,7 +4104,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
       },
       "geometry": {
@@ -4194,7 +4194,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
       },
       "geometry": {
@@ -4284,7 +4284,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
       },
       "geometry": {
@@ -4374,7 +4374,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
       },
       "geometry": {
@@ -4464,7 +4464,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
       },
       "geometry": {
@@ -4554,7 +4554,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
       },
       "geometry": {
@@ -4644,7 +4644,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "363b1c0f34163f15e33b485da6cfc87262212928bf8f0b35d4660da67c921e82"
       },
       "geometry": {
@@ -4739,7 +4739,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
       },
       "geometry": {
@@ -4834,7 +4834,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
       },
       "geometry": {
@@ -4929,7 +4929,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
       },
       "geometry": {
@@ -5024,7 +5024,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
       },
       "geometry": {
@@ -5119,7 +5119,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
       },
       "geometry": {
@@ -5214,7 +5214,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
       },
       "geometry": {
@@ -5309,7 +5309,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
       },
       "geometry": {
@@ -5404,7 +5404,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-image2d.mjs@sha256:c566bbd7d6892ea890d785e5c7a47471ef4e9ea3ab3bdcbd54ca752f34d19186",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "c2aad4d2a47281f6f52467c34c003aa5b67e6961e7b8bf0950a78ce5077d5ed2"
       },
       "geometry": {
@@ -5469,7 +5469,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "7deae98cd2c91539df9059384c2ca15c2f2533ae454d1740fe976909ebd6f46d"
       },
       "geometry": {
@@ -5534,7 +5534,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "7deae98cd2c91539df9059384c2ca15c2f2533ae454d1740fe976909ebd6f46d"
       },
       "geometry": null,
@@ -5595,7 +5595,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "ce3199a16187a9a8276d744a65d4186c09126134adebc818769175d9cc9f92bf"
       },
       "geometry": {
@@ -5660,7 +5660,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "ce3199a16187a9a8276d744a65d4186c09126134adebc818769175d9cc9f92bf"
       },
       "geometry": null,
@@ -5721,7 +5721,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "618511466f3328a7b9c3e8f4d2f87bbdc5f5136f847a15a3a135653fec7d01b6"
       },
       "geometry": {
@@ -5786,7 +5786,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "618511466f3328a7b9c3e8f4d2f87bbdc5f5136f847a15a3a135653fec7d01b6"
       },
       "geometry": null,
@@ -5847,7 +5847,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "83408afe9ab7c9fb198bb8f274e90cbf82500fb18d942679d9eff86c5ecc142f"
       },
       "geometry": {
@@ -5912,7 +5912,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "83408afe9ab7c9fb198bb8f274e90cbf82500fb18d942679d9eff86c5ecc142f"
       },
       "geometry": null,
@@ -5973,7 +5973,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "b2dbe55355ae6ef0979d5d4ef0eae2058f97f2434f04481a737ab8dcff8ba506"
       },
       "geometry": {
@@ -6038,7 +6038,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "b2dbe55355ae6ef0979d5d4ef0eae2058f97f2434f04481a737ab8dcff8ba506"
       },
       "geometry": null,
@@ -6099,7 +6099,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "2ff9633d5fb1dcc4a5b3d5aa0d75528977b6ff200da1e20fc814be6c71cffe22"
       },
       "geometry": {
@@ -6164,7 +6164,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "2ff9633d5fb1dcc4a5b3d5aa0d75528977b6ff200da1e20fc814be6c71cffe22"
       },
       "geometry": null,
@@ -6225,7 +6225,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "84577aba02da33a3a379260c3d75627b4278d4ad27588c7b1cec396e00d3e450"
       },
       "geometry": {
@@ -6290,7 +6290,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "84577aba02da33a3a379260c3d75627b4278d4ad27588c7b1cec396e00d3e450"
       },
       "geometry": null,
@@ -6351,7 +6351,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "23cb780abc52b307aa48e92e1a4b09b3813ae0d30c293afa9e05821ff2eb4430"
       },
       "geometry": {
@@ -6416,7 +6416,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "23cb780abc52b307aa48e92e1a4b09b3813ae0d30c293afa9e05821ff2eb4430"
       },
       "geometry": null,
@@ -6477,7 +6477,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "3443fb1665c9bde73ea6b252e1d7f4015cfd8537dfe52538bfd868104a70c1e9"
       },
       "geometry": {
@@ -6542,7 +6542,7 @@
         "operation": "convert",
         "tool": "apps/studios/tools/prepare-bp3d-region.mjs@sha256:7e6b42352b587073810f5d4a54408e63e2ac70a171d85fae3c5f85c4f6bd1aac",
         "toolVersion": "node 22.23.4",
-        "pipelineCommit": "1fbf1d68cbc950300ab58efe40ef80d490694ca7",
+        "pipelineCommit": "b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a",
         "parametersSha256": "3443fb1665c9bde73ea6b252e1d7f4015cfd8537dfe52538bfd868104a70c1e9"
       },
       "geometry": null,

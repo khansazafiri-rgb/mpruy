@@ -83,7 +83,7 @@ node apps/studios/scripts/build-all.mjs --private   # private-review builds (nev
   logical `source/<sourceId>/…` path (never shipped, `protected: true`) and points to a `studio-src-<source>` rights record.
 - **Derived assets (54)**: the converted files shipped inside private builds. `dependsOn` lists the exact parents with their
   sha256; `derivation.tool` = `<tool path>@sha256:<tool file digest>`; `derivation.pipelineCommit` = the commit whose tools
-  reproduced every byte (`1fbf1d68cbc950300ab58efe40ef80d490694ca7`); `parametersSha256` binds studio, tool and inputs.
+  reproduced every byte (`b18f32f3042b1c3ca39dc9cc16aeb681b3cf038a`); `parametersSha256` binds studio, tool and inputs.
 - Rights records: `studio-src-*` (8, one per source) and `studio-res-*` (16 per studio + 1 BLOCKED LPBA40 record).
   24 are `needs-review`, 1 `blocked`; nothing is verified.
 - Reproducibility (2026-11-20, local): parents 46/46 matched, derived 54/54 byte-identical, 0 stale tool digests
