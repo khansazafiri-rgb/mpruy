@@ -109,17 +109,27 @@ Validated on real PocketBase 0.40.5 databases:
 | Browser: Study Planner journey (production route layout) | pass |
 | Browser: Lab tracks journey incl. ECG gate, real deep link into the 4D Lab, server without 4D release | pass |
 | Browser: integration smoke (Atlas landing, Atlas library/quiz/3D viewer, question bank, Kampusmu, simulation, progress, admin activity report) | pass |
-| 4D Lab UX e2e | see section 4.1 |
+| 4D Lab UX e2e (run alone) | **13/16: 3 known failures, same as the 4D branch itself** (section 4.1) |
 | 4D release staging dry run (temp dir) | pass: phantom + atlas datasets, 6 atlas models hash-verified in the Lab-owned pack |
 
 Browser runs use `scripts/local-prod-layout-server.mjs`, a local stand-in for the production Caddy routes
 (`/api` → PocketBase, `/anatomy/viewer/` and `/anatomy/4d-lab/` as separate static roots without SPA fallback, web SPA).
 Screenshots: `docs/evidence/integration/`, `docs/evidence/lab/`, `docs/evidence/study/`.
 
-### 4.1 Known failing test (not hidden, not skipped)
-The 4D Lab UX e2e step *"keyboard: arrows = patient directions…"* fails with `ArrowUp superior`. It fails the same way on a
-build without PR #220's change (checked earlier on `30b01ab`), so it predates this integration. The new deep-link step passes.
-Follow-up: investigate the state left by the directed-learning step before the keyboard step.
+### 4.1 Known failing tests (not hidden, not skipped, not caused by this integration)
+UX e2e of the 4D Lab, run alone on the merged tree: 13 pass, 3 fail. The same suite on the pure 4D branch (`5b9c156`, built in
+a separate worktree, without PR #220) fails the **same three steps** (12 pass, 3 fail; the merged tree adds the passing deep-link step):
+
+| Step | On pure 4D branch | On merged tree | What is known |
+|---|---|---|---|
+| tri-planar CT moves with the pad… | fails | fails | The test clicks `data-testid="mon-split"`, which no longer exists in `apps/4d-lab/src` (the scan-mode UI was changed on the 4D branch, commit `3c90172` "clarify scan modes"). Stale test, predates this integration. |
+| pathology: new model cases visible… | fails (timeout waiting for `scenario-pericardial`) | fails (`pericardial_fluid` not in the suggested window) | Different messages on the two builds. Probably a cascade of the state left by the failed tri-planar step, **not proven**: needs its own investigation. |
+| keyboard: arrows = patient directions… | fails (`ArrowUp superior`) | fails (same) | Known issue from the start of this work. |
+
+The same suite passed 15/16 (only the keyboard step failing) on the default-branch line before the merge, so these
+failures come from the 4D branch's UI changes, not from PR #220. They need a follow-up on the 4D branch (update or fix the
+tests); the integration PR does not change them. An earlier run also showed an auscultation timeout: it was caused by running
+other browser journeys at the same time (it passes when the suite runs alone).
 
 ## 5. Licensing and clinical review constraints (unchanged by this release)
 - The 4D release check passes only through an **owner override** (2026-11-10, expires **2027-02-08**) with **2 rights
