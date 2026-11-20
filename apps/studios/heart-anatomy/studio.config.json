@@ -1,0 +1,14 @@
+{
+  "studioId": "heart-anatomy",
+  "title": "Heart Anatomy",
+  "engine": "anatomy3d",
+  "capabilities": [
+    "anatomy3d",
+    "structure-identification"
+  ],
+  "challengeRestricted": [
+    "data/structures.json"
+  ],
+  "privateData": "local-data/studio-resources/build/heart-anatomy",
+  "fixtureTool": "tools/make-anatomy-fixture.mjs"
+}

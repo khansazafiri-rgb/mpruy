@@ -1,0 +1,14 @@
+{
+  "studioId": "pelvis-anatomy",
+  "title": "Pelvis Anatomy",
+  "engine": "anatomy3d",
+  "capabilities": [
+    "anatomy3d",
+    "structure-identification"
+  ],
+  "challengeRestricted": [
+    "data/structures.json"
+  ],
+  "privateData": "local-data/studio-resources/build/pelvis-anatomy",
+  "fixtureTool": "tools/make-anatomy-fixture.mjs"
+}

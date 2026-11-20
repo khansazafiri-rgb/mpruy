@@ -38,6 +38,12 @@ test('Studio list and launch API remain closed for a real student/admin', async(
     assert.equal(l.headers.get('cache-control'),'private, no-store');
     assert.equal(l.data.items.length,expected);
     assert.ok(l.data.items.every(x=>x.availability.canLaunch===false));
+    // Every canonical studio must remain closed after integrating WS1-WS5, for both real account roles.
+    for (const item of l.data.items) {
+      const launch = await req('GET', '/api/medcoel/studios/' + item.id + '/launch', who.token);
+      assert.equal(launch.status, 409, item.id + ' unexpectedly launchable');
+      assert.equal(JSON.stringify(launch.data).includes('studio-assets/'), false, item.id + ' leaked a launch URL');
+    }
     assert.equal((await req('GET','/api/medcoel/studios/brain-mri/launch',who.token)).status,409);
     assert.equal((await req('GET','/api/medcoel/studios/brain-mri/launch?force=1',who.token)).status,400);
     assert.equal((await req('GET','/api/medcoel/studios/brain-mri/launch?mode=guided',who.token)).status,409);

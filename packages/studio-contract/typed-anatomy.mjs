@@ -1,8 +1,12 @@
 // MEDCOEL independent typed-anatomy grading contract.
 // Clinical terminology MUST be reviewer-approved before use; no bundled answer key.
-export const normalizeTerm = value => String(value ?? '').normalize('NFKD')
+// Portable on purpose: the PocketBase JSVM (goja) has no Unicode property escapes, so letters are matched after
+// NFKD + combining-mark removal as ASCII. Indonesian, English and Latin anatomical terms are Latin-script.
+const fold = text => (typeof text.normalize === 'function' ? text.normalize('NFKD') : text);
+export const normalizeTerm = value => fold(String(value ?? ''))
   .replace(/[\u0300-\u036f]/g,'').toLowerCase()
-  .replace(/[^\p{L}\p{N}]+/gu,' ').replace(/\s+/g,' ').trim();
+  .replace(/æ/g,'ae').replace(/œ/g,'oe').replace(/ß/g,'ss')
+  .replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim();
 const LEFT = new Set(['left','kiri','sinister','sinistra','sinistrum','sin']);
 const RIGHT = new Set(['right','kanan','dexter','dextra','dextrum','dex']);
 const CONFLICTS = [['ulna','ulnar'],['ileum','ilium'],['radius','radial'],['ureter','urethra']];

@@ -101,11 +101,15 @@ test('RESOURCE-016: missing policy/notice/review or wrong exact build digest is 
 });
 test('RESOURCE-017: only a fully bound neutral engineering fixture is eligible; legacy records stay closed', t => {
   const f = fixture(t), r = inspect(f); assert.equal(r.decision.eligible, true, JSON.stringify(r));
-  const old = f.evidence.records.filter(r => !r.id.startsWith('fixture-'));
+  const old = f.evidence.records.filter(r => !r.id.startsWith('fixture-') && !r.id.startsWith('studio-res-'));
   assert.equal(old.length, 14); assert.equal(old.filter(r => r.status === 'verified').length, 0);
+  assert.equal(f.evidence.records.filter(r => r.id.startsWith('studio-res-') && r.status === 'verified').length, 0);
 });
-test('RESOURCE-018: empty committed resource registry validates but no clinical studio is eligible; CLI is read-only', t => {
-  const f = fixture(t), resources = read('licensing/resources.v1.json'); assert.deepEqual(resources, { schemaVersion: 1, sources: [], assets: [] });
+test('RESOURCE-018: committed resource registry (acquired, unreviewed) validates but no clinical studio is eligible; CLI is read-only', t => {
+  const f = fixture(t), resources = read('licensing/resources.v1.json');
+  // Registered acquisitions never claim review: every asset review is pending and rights references are needs-review.
+  for (const a of resources.assets) { assert.equal(a.medicalReview.status, 'pending', a.id); assert.equal(a.privacyReview.status, 'pending', a.id); }
+  for (const src of resources.sources) assert.ok(['VERIFIED_SOURCE', 'REVIEW_REQUIRED'].includes(src.status), src.id);
   assert.equal(validateResources(resources, f.resourceSchema).ok, true);
   f.catalog = read('shared/studios/catalog.v1.json'); f.resources = resources;
   for (const s of f.catalog.studios) { f.studioId = s.id; denied(f); }

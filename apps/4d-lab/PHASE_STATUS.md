@@ -1,5 +1,14 @@
 # Phase status — MEDCOEL Anatomy Live 4D Lab
 
+## 2026-11-20 — PR #233 UX regression follow-up (not deployed)
+
+- Historical CI evidence on both target and integration was 13/16. The three failures remain recorded in that run; no assertion is deleted, skipped or marked as an expected failure.
+- Tri-planar: `mon-split` is intentionally hidden while the three-plane view is active. The test now uses the existing visible `tri-return-probe` control and asserts clinical/split mode, probe pad and restored display controls.
+- Pathology: the previous failed Tri-planar cleanup left the test reading the absent `main` raster. A focused browser run after the proper return showed pericardial fluid, free fluid and bladder labels in their respective simulation windows. The original visibility assertions are retained in the full suite.
+- Keyboard: directed learning deliberately prepares a Free CT plane. Probe shortcuts are now tested after selecting the visible probe control. Additional assertions check Free CT and Tri-planar keyboard movement and confirm that they leave skin contact unchanged.
+- Integration guards reconstruct the original harness after reversing the explicitly marked setup/cleanup additions, preserving all original case bodies and assertions. Both revisions run identical harness bytes; fresh CI results are reported in PR #233.
+- No simulator runtime, atlas geometry, pathology parameters, dataset, rights ledger or clearance approval is changed. Atlas/4D commercial blockers and all Clinical Studio fail-closed gates remain in force. This is test coverage, not clinical/anatomical validation.
+
 _Last updated: 2026-11-09 (branch `claude/vigilant-cerf-jjc6fj`, based on `b931e1b`): **licence quarantine** — withheld atlas anatomy removed, atlas dataset rebuilt from cleared inputs (CC BY-SA 4.0), build/stage/preview guards. See `../../licensing/`._
 
 ## UX, anatomy intelligence & clinical education upgrade (2026-11-09)

@@ -1,0 +1,9 @@
+{
+  "studioId": "chest-ct",
+  "title": "Chest CT",
+  "engine": "volume",
+  "capabilities": ["slice-navigation", "mpr", "window-level", "measurement", "structure-identification"],
+  "challengeRestricted": ["data/readers.nii.gz", "data/annotations.json"],
+  "privateData": "local-data/studio-resources/build/chest-ct",
+  "fixtureTool": "tools/make-ct-fixture.mjs"
+}

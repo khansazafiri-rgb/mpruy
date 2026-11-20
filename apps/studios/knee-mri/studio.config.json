@@ -1,0 +1,17 @@
+{
+  "studioId": "knee-mri",
+  "title": "Knee MRI",
+  "engine": "volume",
+  "capabilities": [
+    "slice-navigation",
+    "mpr",
+    "window-level",
+    "measurement"
+  ],
+  "challengeRestricted": [
+    "data/labels-lpba40.nii.gz",
+    "data/labels.json"
+  ],
+  "privateData": "local-data/studio-resources/build/knee-mri",
+  "fixtureTool": "tools/make-volume-fixture.mjs"
+}
