@@ -8,7 +8,7 @@ const STATES = Object.freeze(['planned', 'building', 'review', 'blocked', 'ready
 const object = v => !!v && typeof v === 'object' && !Array.isArray(v);
 const safePart = v => typeof v === 'string' && /^[a-z0-9-]{1,64}$/.test(v);
 const safeEntry = (v, id, releaseId) =>
-  typeof v === 'string' && v.startsWith('/studio-assets/' + id + '/' + releaseId + '/') &&
+  typeof v === 'string' && v.startsWith('studio-assets/' + id + '/' + releaseId + '/') &&
   !/[?#\\]/.test(v) && v.split('/').every((s, i) => i === 0 || (s !== '.' && s !== '..' && !!s)) &&
   !/%|\/\//.test(v) && v.endsWith('/index.html');
 
@@ -86,7 +86,7 @@ function launch(catalog, id, principal, query = {}, trusted = {}) {
   if (!a || !a.canLaunch) return { status: 409, code: 'STUDIO_NOT_READY' };
   return { status: 200, value: { schemaVersion: 1, studioId: entry.id,
     releaseId: entry.runtime.releaseId,
-    runtime: { type: 'iframe', entry: entry.runtime.entry },
+    runtime: { type: 'iframe', entry: '/' + entry.runtime.entry },
     context: { studioId: entry.id, releaseId: entry.runtime.releaseId,
       mode: parsed.mode, caseId: null, language: parsed.language,
       a11y: { reducedMotion: false, highContrast: false, fontScale: 1 },
