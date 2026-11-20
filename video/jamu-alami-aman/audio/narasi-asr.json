@@ -1,0 +1,1192 @@
+[
+ {
+  "start": 0.0,
+  "end": 4.36,
+  "text": "Kalau jamu berasal dari tanaman, berarti pasti aman dan pasti manjur.",
+  "words": [
+   {
+    "w": "Kalau",
+    "s": 0.0,
+    "e": 0.32
+   },
+   {
+    "w": "jamu",
+    "s": 0.32,
+    "e": 0.68
+   },
+   {
+    "w": "berasal",
+    "s": 0.68,
+    "e": 1.06
+   },
+   {
+    "w": "dari",
+    "s": 1.06,
+    "e": 1.26
+   },
+   {
+    "w": "tanaman,",
+    "s": 1.26,
+    "e": 1.8
+   },
+   {
+    "w": "berarti",
+    "s": 2.24,
+    "e": 2.68
+   },
+   {
+    "w": "pasti",
+    "s": 2.68,
+    "e": 3.0
+   },
+   {
+    "w": "aman",
+    "s": 3.0,
+    "e": 3.36
+   },
+   {
+    "w": "dan",
+    "s": 3.36,
+    "e": 3.6
+   },
+   {
+    "w": "pasti",
+    "s": 3.6,
+    "e": 3.88
+   },
+   {
+    "w": "manjur.",
+    "s": 3.88,
+    "e": 4.36
+   }
+  ]
+ },
+ {
+  "start": 4.96,
+  "end": 8.88,
+  "text": "Tunggu dulu, jamu bukan satu jenis obat dengan satu cara kerja.",
+  "words": [
+   {
+    "w": "Tunggu",
+    "s": 4.96,
+    "e": 5.3
+   },
+   {
+    "w": "dulu,",
+    "s": 5.3,
+    "e": 5.52
+   },
+   {
+    "w": "jamu",
+    "s": 6.02,
+    "e": 6.56
+   },
+   {
+    "w": "bukan",
+    "s": 6.56,
+    "e": 6.82
+   },
+   {
+    "w": "satu",
+    "s": 6.82,
+    "e": 7.16
+   },
+   {
+    "w": "jenis",
+    "s": 7.16,
+    "e": 7.4
+   },
+   {
+    "w": "obat",
+    "s": 7.4,
+    "e": 7.74
+   },
+   {
+    "w": "dengan",
+    "s": 7.74,
+    "e": 7.94
+   },
+   {
+    "w": "satu",
+    "s": 7.94,
+    "e": 8.22
+   },
+   {
+    "w": "cara",
+    "s": 8.22,
+    "e": 8.44
+   },
+   {
+    "w": "kerja.",
+    "s": 8.44,
+    "e": 8.88
+   }
+  ]
+ },
+ {
+  "start": 9.06,
+  "end": 11.34,
+  "text": "Setiap ramuan bisa mengandung banyak senyawa.",
+  "words": [
+   {
+    "w": "Setiap",
+    "s": 9.06,
+    "e": 9.6
+   },
+   {
+    "w": "ramuan",
+    "s": 9.6,
+    "e": 9.9
+   },
+   {
+    "w": "bisa",
+    "s": 9.9,
+    "e": 10.18
+   },
+   {
+    "w": "mengandung",
+    "s": 10.18,
+    "e": 10.62
+   },
+   {
+    "w": "banyak",
+    "s": 10.62,
+    "e": 10.88
+   },
+   {
+    "w": "senyawa.",
+    "s": 10.88,
+    "e": 11.34
+   }
+  ]
+ },
+ {
+  "start": 11.94,
+  "end": 15.66,
+  "text": "Setelah diminum, sebagian senyawa melewati seluran cernah, diserap,",
+  "words": [
+   {
+    "w": "Setelah",
+    "s": 11.94,
+    "e": 12.32
+   },
+   {
+    "w": "diminum,",
+    "s": 12.32,
+    "e": 12.72
+   },
+   {
+    "w": "sebagian",
+    "s": 13.02,
+    "e": 13.3
+   },
+   {
+    "w": "senyawa",
+    "s": 13.3,
+    "e": 13.62
+   },
+   {
+    "w": "melewati",
+    "s": 13.62,
+    "e": 14.04
+   },
+   {
+    "w": "seluran",
+    "s": 14.04,
+    "e": 14.38
+   },
+   {
+    "w": "cernah,",
+    "s": 14.38,
+    "e": 14.92
+   },
+   {
+    "w": "diserap,",
+    "s": 15.2,
+    "e": 15.66
+   }
+  ]
+ },
+ {
+  "start": 15.92,
+  "end": 19.48,
+  "text": "diproses oleh tubuh, lalu mungkin memengaruhi proses biologis tertentu.",
+  "words": [
+   {
+    "w": "diproses",
+    "s": 15.92,
+    "e": 16.34
+   },
+   {
+    "w": "oleh",
+    "s": 16.34,
+    "e": 16.5
+   },
+   {
+    "w": "tubuh,",
+    "s": 16.5,
+    "e": 16.98
+   },
+   {
+    "w": "lalu",
+    "s": 17.18,
+    "e": 17.4
+   },
+   {
+    "w": "mungkin",
+    "s": 17.4,
+    "e": 17.72
+   },
+   {
+    "w": "memengaruhi",
+    "s": 17.72,
+    "e": 18.3
+   },
+   {
+    "w": "proses",
+    "s": 18.3,
+    "e": 18.56
+   },
+   {
+    "w": "biologis",
+    "s": 18.56,
+    "e": 19.02
+   },
+   {
+    "w": "tertentu.",
+    "s": 19.02,
+    "e": 19.48
+   }
+  ]
+ },
+ {
+  "start": 19.9,
+  "end": 22.6,
+  "text": "Tetapi senyawa dan efeknya berbeda untuk setiap bahan.",
+  "words": [
+   {
+    "w": "Tetapi",
+    "s": 19.9,
+    "e": 20.42
+   },
+   {
+    "w": "senyawa",
+    "s": 20.42,
+    "e": 20.88
+   },
+   {
+    "w": "dan",
+    "s": 20.88,
+    "e": 21.02
+   },
+   {
+    "w": "efeknya",
+    "s": 21.02,
+    "e": 21.4
+   },
+   {
+    "w": "berbeda",
+    "s": 21.4,
+    "e": 21.8
+   },
+   {
+    "w": "untuk",
+    "s": 21.8,
+    "e": 21.96
+   },
+   {
+    "w": "setiap",
+    "s": 21.96,
+    "e": 22.22
+   },
+   {
+    "w": "bahan.",
+    "s": 22.22,
+    "e": 22.6
+   }
+  ]
+ },
+ {
+  "start": 23.14,
+  "end": 23.88,
+  "text": "Contohnya jahi.",
+  "words": [
+   {
+    "w": "Contohnya",
+    "s": 23.14,
+    "e": 23.62
+   },
+   {
+    "w": "jahi.",
+    "s": 23.62,
+    "e": 23.88
+   }
+  ]
+ },
+ {
+  "start": 24.32,
+  "end": 27.78,
+  "text": "Ada penelitian yang menunjukkan jahi mungkin membantu mual pada kahamilan.",
+  "words": [
+   {
+    "w": "Ada",
+    "s": 24.32,
+    "e": 24.56
+   },
+   {
+    "w": "penelitian",
+    "s": 24.56,
+    "e": 25.04
+   },
+   {
+    "w": "yang",
+    "s": 25.04,
+    "e": 25.18
+   },
+   {
+    "w": "menunjukkan",
+    "s": 25.18,
+    "e": 25.68
+   },
+   {
+    "w": "jahi",
+    "s": 25.68,
+    "e": 26.0
+   },
+   {
+    "w": "mungkin",
+    "s": 26.0,
+    "e": 26.3
+   },
+   {
+    "w": "membantu",
+    "s": 26.3,
+    "e": 26.72
+   },
+   {
+    "w": "mual",
+    "s": 26.72,
+    "e": 27.04
+   },
+   {
+    "w": "pada",
+    "s": 27.04,
+    "e": 27.24
+   },
+   {
+    "w": "kahamilan.",
+    "s": 27.24,
+    "e": 27.78
+   }
+  ]
+ },
+ {
+  "start": 27.78,
+  "end": 32.06,
+  "text": "Tapi itu tidak berarti setiap jamu jahi terbukti mengatasi semua jenis mual,",
+  "words": [
+   {
+    "w": "Tapi",
+    "s": 27.78,
+    "e": 28.58
+   },
+   {
+    "w": "itu",
+    "s": 28.58,
+    "e": 28.8
+   },
+   {
+    "w": "tidak",
+    "s": 28.8,
+    "e": 28.98
+   },
+   {
+    "w": "berarti",
+    "s": 28.98,
+    "e": 29.32
+   },
+   {
+    "w": "setiap",
+    "s": 29.32,
+    "e": 29.7
+   },
+   {
+    "w": "jamu",
+    "s": 29.7,
+    "e": 29.94
+   },
+   {
+    "w": "jahi",
+    "s": 29.94,
+    "e": 30.16
+   },
+   {
+    "w": "terbukti",
+    "s": 30.16,
+    "e": 30.64
+   },
+   {
+    "w": "mengatasi",
+    "s": 30.64,
+    "e": 31.08
+   },
+   {
+    "w": "semua",
+    "s": 31.08,
+    "e": 31.38
+   },
+   {
+    "w": "jenis",
+    "s": 31.38,
+    "e": 31.64
+   },
+   {
+    "w": "mual,",
+    "s": 31.64,
+    "e": 32.06
+   }
+  ]
+ },
+ {
+  "start": 32.24,
+  "end": 33.62,
+  "text": "apalagi semua penyakit.",
+  "words": [
+   {
+    "w": "apalagi",
+    "s": 32.24,
+    "e": 32.76
+   },
+   {
+    "w": "semua",
+    "s": 32.76,
+    "e": 33.0
+   },
+   {
+    "w": "penyakit.",
+    "s": 33.0,
+    "e": 33.62
+   }
+  ]
+ },
+ {
+  "start": 34.06,
+  "end": 36.44,
+  "text": "Di Indonesia, tingkat pembuktiannya juga berbeda.",
+  "words": [
+   {
+    "w": "Di",
+    "s": 34.06,
+    "e": 34.34
+   },
+   {
+    "w": "Indonesia,",
+    "s": 34.34,
+    "e": 34.68
+   },
+   {
+    "w": "tingkat",
+    "s": 35.04,
+    "e": 35.28
+   },
+   {
+    "w": "pembuktiannya",
+    "s": 35.28,
+    "e": 35.78
+   },
+   {
+    "w": "juga",
+    "s": 35.78,
+    "e": 35.94
+   },
+   {
+    "w": "berbeda.",
+    "s": 35.94,
+    "e": 36.44
+   }
+  ]
+ },
+ {
+  "start": 36.92,
+  "end": 39.38,
+  "text": "Jamu didasarkan padari wide penggunaan empiris.",
+  "words": [
+   {
+    "w": "Jamu",
+    "s": 36.92,
+    "e": 37.32
+   },
+   {
+    "w": "didasarkan",
+    "s": 37.32,
+    "e": 37.78
+   },
+   {
+    "w": "padari",
+    "s": 37.78,
+    "e": 38.16
+   },
+   {
+    "w": "wide",
+    "s": 38.16,
+    "e": 38.36
+   },
+   {
+    "w": "penggunaan",
+    "s": 38.36,
+    "e": 38.86
+   },
+   {
+    "w": "empiris.",
+    "s": 38.86,
+    "e": 39.38
+   }
+  ]
+ },
+ {
+  "start": 39.86,
+  "end": 43.58,
+  "text": "Obat herbal terstandar sudah didukung uji praklinik dan standarisasi bahan.",
+  "words": [
+   {
+    "w": "Obat",
+    "s": 39.86,
+    "e": 40.12
+   },
+   {
+    "w": "herbal",
+    "s": 40.12,
+    "e": 40.32
+   },
+   {
+    "w": "terstandar",
+    "s": 40.32,
+    "e": 41.0
+   },
+   {
+    "w": "sudah",
+    "s": 41.0,
+    "e": 41.28
+   },
+   {
+    "w": "didukung",
+    "s": 41.28,
+    "e": 41.64
+   },
+   {
+    "w": "uji",
+    "s": 41.64,
+    "e": 41.86
+   },
+   {
+    "w": "praklinik",
+    "s": 41.86,
+    "e": 42.36
+   },
+   {
+    "w": "dan",
+    "s": 42.36,
+    "e": 42.52
+   },
+   {
+    "w": "standarisasi",
+    "s": 42.52,
+    "e": 43.1
+   },
+   {
+    "w": "bahan.",
+    "s": 43.1,
+    "e": 43.58
+   }
+  ]
+ },
+ {
+  "start": 44.08,
+  "end": 46.92,
+  "text": "Vitovarmaka memiliki bukti uji klinik pada manusia.",
+  "words": [
+   {
+    "w": "Vitovarmaka",
+    "s": 44.08,
+    "e": 44.82
+   },
+   {
+    "w": "memiliki",
+    "s": 44.82,
+    "e": 45.36
+   },
+   {
+    "w": "bukti",
+    "s": 45.36,
+    "e": 45.66
+   },
+   {
+    "w": "uji",
+    "s": 45.66,
+    "e": 45.82
+   },
+   {
+    "w": "klinik",
+    "s": 45.82,
+    "e": 46.2
+   },
+   {
+    "w": "pada",
+    "s": 46.2,
+    "e": 46.38
+   },
+   {
+    "w": "manusia.",
+    "s": 46.38,
+    "e": 46.92
+   }
+  ]
+ },
+ {
+  "start": 47.5,
+  "end": 50.02,
+  "text": "Dan alami bukan berarti bebas risiko.",
+  "words": [
+   {
+    "w": "Dan",
+    "s": 47.5,
+    "e": 47.84
+   },
+   {
+    "w": "alami",
+    "s": 47.84,
+    "e": 48.54
+   },
+   {
+    "w": "bukan",
+    "s": 48.54,
+    "e": 48.96
+   },
+   {
+    "w": "berarti",
+    "s": 48.96,
+    "e": 49.34
+   },
+   {
+    "w": "bebas",
+    "s": 49.34,
+    "e": 49.6
+   },
+   {
+    "w": "risiko.",
+    "s": 49.6,
+    "e": 50.02
+   }
+  ]
+ },
+ {
+  "start": 50.42,
+  "end": 54.48,
+  "text": "Bahan herbal bisa menimbulkan efek samping atau berinteraksi dengan obat yang sedang diminum.",
+  "words": [
+   {
+    "w": "Bahan",
+    "s": 50.42,
+    "e": 50.72
+   },
+   {
+    "w": "herbal",
+    "s": 50.72,
+    "e": 50.94
+   },
+   {
+    "w": "bisa",
+    "s": 50.94,
+    "e": 51.24
+   },
+   {
+    "w": "menimbulkan",
+    "s": 51.24,
+    "e": 51.72
+   },
+   {
+    "w": "efek",
+    "s": 51.72,
+    "e": 51.92
+   },
+   {
+    "w": "samping",
+    "s": 51.92,
+    "e": 52.4
+   },
+   {
+    "w": "atau",
+    "s": 52.4,
+    "e": 52.72
+   },
+   {
+    "w": "berinteraksi",
+    "s": 52.72,
+    "e": 53.2
+   },
+   {
+    "w": "dengan",
+    "s": 53.2,
+    "e": 53.42
+   },
+   {
+    "w": "obat",
+    "s": 53.42,
+    "e": 53.72
+   },
+   {
+    "w": "yang",
+    "s": 53.72,
+    "e": 53.82
+   },
+   {
+    "w": "sedang",
+    "s": 53.82,
+    "e": 54.12
+   },
+   {
+    "w": "diminum.",
+    "s": 54.12,
+    "e": 54.48
+   }
+  ]
+ },
+ {
+  "start": 54.48,
+  "end": 59.86,
+  "text": "Bepom juga pernah menemukan produk jamu ilegal yang diam-diam dicampur bahan kimia obat.",
+  "words": [
+   {
+    "w": "Bepom",
+    "s": 54.48,
+    "e": 55.5
+   },
+   {
+    "w": "juga",
+    "s": 55.5,
+    "e": 55.7
+   },
+   {
+    "w": "pernah",
+    "s": 55.7,
+    "e": 55.94
+   },
+   {
+    "w": "menemukan",
+    "s": 55.94,
+    "e": 56.34
+   },
+   {
+    "w": "produk",
+    "s": 56.34,
+    "e": 56.62
+   },
+   {
+    "w": "jamu",
+    "s": 56.62,
+    "e": 56.9
+   },
+   {
+    "w": "ilegal",
+    "s": 56.9,
+    "e": 57.4
+   },
+   {
+    "w": "yang",
+    "s": 57.4,
+    "e": 57.62
+   },
+   {
+    "w": "diam",
+    "s": 57.62,
+    "e": 57.94
+   },
+   {
+    "w": "-diam",
+    "s": 57.94,
+    "e": 58.36
+   },
+   {
+    "w": "dicampur",
+    "s": 58.36,
+    "e": 58.92
+   },
+   {
+    "w": "bahan",
+    "s": 58.92,
+    "e": 59.16
+   },
+   {
+    "w": "kimia",
+    "s": 59.16,
+    "e": 59.46
+   },
+   {
+    "w": "obat.",
+    "s": 59.46,
+    "e": 59.86
+   }
+  ]
+ },
+ {
+  "start": 60.26,
+  "end": 65.28,
+  "text": "Jadi sebelum mengonsumsi produk, cek izin edar, komposisi, aturan pakai dan kelimnya.",
+  "words": [
+   {
+    "w": "Jadi",
+    "s": 60.26,
+    "e": 60.76
+   },
+   {
+    "w": "sebelum",
+    "s": 60.76,
+    "e": 61.18
+   },
+   {
+    "w": "mengonsumsi",
+    "s": 61.18,
+    "e": 61.58
+   },
+   {
+    "w": "produk,",
+    "s": 61.58,
+    "e": 61.92
+   },
+   {
+    "w": "cek",
+    "s": 62.28,
+    "e": 62.44
+   },
+   {
+    "w": "izin",
+    "s": 62.44,
+    "e": 62.64
+   },
+   {
+    "w": "edar,",
+    "s": 62.64,
+    "e": 63.04
+   },
+   {
+    "w": "komposisi,",
+    "s": 63.32,
+    "e": 63.84
+   },
+   {
+    "w": "aturan",
+    "s": 64.16,
+    "e": 64.38
+   },
+   {
+    "w": "pakai",
+    "s": 64.38,
+    "e": 64.72
+   },
+   {
+    "w": "dan",
+    "s": 64.72,
+    "e": 64.86
+   },
+   {
+    "w": "kelimnya.",
+    "s": 64.86,
+    "e": 65.28
+   }
+  ]
+ },
+ {
+  "start": 65.74,
+  "end": 69.08,
+  "text": "Kalau sedang hamil, punya penyakit tertentu atau rutin minum obat,",
+  "words": [
+   {
+    "w": "Kalau",
+    "s": 65.74,
+    "e": 65.96
+   },
+   {
+    "w": "sedang",
+    "s": 65.96,
+    "e": 66.22
+   },
+   {
+    "w": "hamil,",
+    "s": 66.22,
+    "e": 66.68
+   },
+   {
+    "w": "punya",
+    "s": 66.9,
+    "e": 67.08
+   },
+   {
+    "w": "penyakit",
+    "s": 67.08,
+    "e": 67.38
+   },
+   {
+    "w": "tertentu",
+    "s": 67.38,
+    "e": 67.92
+   },
+   {
+    "w": "atau",
+    "s": 67.92,
+    "e": 68.14
+   },
+   {
+    "w": "rutin",
+    "s": 68.14,
+    "e": 68.5
+   },
+   {
+    "w": "minum",
+    "s": 68.5,
+    "e": 68.68
+   },
+   {
+    "w": "obat,",
+    "s": 68.68,
+    "e": 69.08
+   }
+  ]
+ },
+ {
+  "start": 69.3,
+  "end": 70.92,
+  "text": "tanyakan dulu kepada tenaga kesehatan.",
+  "words": [
+   {
+    "w": "tanyakan",
+    "s": 69.3,
+    "e": 69.56
+   },
+   {
+    "w": "dulu",
+    "s": 69.56,
+    "e": 69.76
+   },
+   {
+    "w": "kepada",
+    "s": 69.76,
+    "e": 69.92
+   },
+   {
+    "w": "tenaga",
+    "s": 69.92,
+    "e": 70.28
+   },
+   {
+    "w": "kesehatan.",
+    "s": 70.28,
+    "e": 70.92
+   }
+  ]
+ },
+ {
+  "start": 71.36,
+  "end": 74.48,
+  "text": "Jamu juga tidak boleh menggantikan pengobatan yang memang kamu perlukan.",
+  "words": [
+   {
+    "w": "Jamu",
+    "s": 71.36,
+    "e": 71.8
+   },
+   {
+    "w": "juga",
+    "s": 71.8,
+    "e": 71.96
+   },
+   {
+    "w": "tidak",
+    "s": 71.96,
+    "e": 72.14
+   },
+   {
+    "w": "boleh",
+    "s": 72.14,
+    "e": 72.38
+   },
+   {
+    "w": "menggantikan",
+    "s": 72.38,
+    "e": 72.78
+   },
+   {
+    "w": "pengobatan",
+    "s": 72.78,
+    "e": 73.26
+   },
+   {
+    "w": "yang",
+    "s": 73.26,
+    "e": 73.5
+   },
+   {
+    "w": "memang",
+    "s": 73.5,
+    "e": 73.86
+   },
+   {
+    "w": "kamu",
+    "s": 73.86,
+    "e": 74.08
+   },
+   {
+    "w": "perlukan.",
+    "s": 74.08,
+    "e": 74.48
+   }
+  ]
+ },
+ {
+  "start": 75.28,
+  "end": 77.56,
+  "text": "Penasaran bagaimana obat dan tubuh saling bekerja?",
+  "words": [
+   {
+    "w": "Penasaran",
+    "s": 75.28,
+    "e": 75.68
+   },
+   {
+    "w": "bagaimana",
+    "s": 75.68,
+    "e": 76.1
+   },
+   {
+    "w": "obat",
+    "s": 76.1,
+    "e": 76.48
+   },
+   {
+    "w": "dan",
+    "s": 76.48,
+    "e": 76.66
+   },
+   {
+    "w": "tubuh",
+    "s": 76.66,
+    "e": 76.88
+   },
+   {
+    "w": "saling",
+    "s": 76.88,
+    "e": 77.14
+   },
+   {
+    "w": "bekerja?",
+    "s": 77.14,
+    "e": 77.56
+   }
+  ]
+ },
+ {
+  "start": 78.04,
+  "end": 79.26,
+  "text": "Lanjut belajar di med school.",
+  "words": [
+   {
+    "w": "Lanjut",
+    "s": 78.04,
+    "e": 78.34
+   },
+   {
+    "w": "belajar",
+    "s": 78.34,
+    "e": 78.64
+   },
+   {
+    "w": "di",
+    "s": 78.64,
+    "e": 78.84
+   },
+   {
+    "w": "med",
+    "s": 78.84,
+    "e": 79.0
+   },
+   {
+    "w": "school.",
+    "s": 79.0,
+    "e": 79.26
+   }
+  ]
+ },
+ {
+  "start": 79.52,
+  "end": 82.18,
+  "text": "Ada materi perbab, latihan soal, dan simulasi doktor.",
+  "words": [
+   {
+    "w": "Ada",
+    "s": 79.52,
+    "e": 79.72
+   },
+   {
+    "w": "materi",
+    "s": 79.72,
+    "e": 80.02
+   },
+   {
+    "w": "perbab,",
+    "s": 80.02,
+    "e": 80.34
+   },
+   {
+    "w": "latihan",
+    "s": 80.6,
+    "e": 80.86
+   },
+   {
+    "w": "soal,",
+    "s": 80.86,
+    "e": 81.18
+   },
+   {
+    "w": "dan",
+    "s": 81.32,
+    "e": 81.38
+   },
+   {
+    "w": "simulasi",
+    "s": 81.38,
+    "e": 81.84
+   },
+   {
+    "w": "doktor.",
+    "s": 81.84,
+    "e": 82.18
+   }
+  ]
+ },
+ {
+  "start": 82.18,
+  "end": 83.9,
+  "text": "Gratis di medschool.com",
+  "words": [
+   {
+    "w": "Gratis",
+    "s": 82.18,
+    "e": 82.92
+   },
+   {
+    "w": "di",
+    "s": 82.92,
+    "e": 83.06
+   },
+   {
+    "w": "medschool",
+    "s": 83.06,
+    "e": 83.48
+   },
+   {
+    "w": ".com",
+    "s": 83.48,
+    "e": 83.9
+   }
+  ]
+ }
+]

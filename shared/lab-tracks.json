@@ -1,0 +1,167 @@
+{
+  "_note": "Lab tracks: a second and third way into EXISTING Lab content (by body system, by clinical skill). The seven academic disciplines in lab-taxonomy.json stay the primary map. Each step points at content that exists (Atlas 3D, Atlas quiz, Live 4D Lab, published Lab modules) or is marked planned; steps with \"review\": \"<feature>\" stay unavailable to students until the server releases that feature after clinical review; planned steps are shown as 'belum tersedia' and never count toward completion. Availability of module steps and withheld Atlas systems is resolved at runtime. Keep keys stable: learner progress (lab_track_progress) refers to them. Server copy: apps/pocketbase/pb_hooks/lib/labTracks.js (test keeps them in sync).",
+  "groups": [
+    { "key": "sistem", "title": "Belajar per sistem tubuh", "path": "/lab/sistem/" },
+    { "key": "keterampilan", "title": "Belajar per keterampilan klinis", "path": "/lab/keterampilan/" }
+  ],
+  "tracks": [
+    {
+      "key": "dada-pernapasan", "group": "sistem", "title": "Dada & Pernapasan", "icon": "wind",
+      "summary": "Rongga toraks, paru dan pleura: dari anatomi 3D ke foto toraks, USG efusi pleura, dan bunyi napas.",
+      "disciplines": ["anatomi", "pencitraan-medis"],
+      "steps": [
+        { "key": "atlas-toraks", "kind": "atlas", "title": "Jelajahi region toraks", "href": "/anatomy/region/thorax", "summary": "Struktur dinding dada, mediastinum, dan organ toraks di Atlas." },
+        { "key": "kuis-toraks", "kind": "quiz", "title": "Kuis identifikasi organ toraks", "href": "/anatomy/study?mode=identify&system=visceral&region=thorax", "system": "visceral" },
+        { "key": "cxr", "kind": "module", "title": "Foto toraks: normal vs pneumonia", "moduleKey": "cxr-normal-pneumonia-v1", "dataset": "pneumoniamnist" },
+        { "key": "usg-efusi", "kind": "live", "title": "USG efusi pleura kanan (simulasi)", "href": "/anatomy/live?scenario=effusion", "summary": "Bandingkan dengan normal di jendela flank kanan." },
+        { "key": "auskultasi-paru", "kind": "live", "title": "Bunyi napas pada efusi pleura", "href": "/anatomy/live?scenario=effusion&ws=ausc" }
+      ]
+    },
+    {
+      "key": "jantung-kardiovaskular", "group": "sistem", "title": "Jantung & Kardiovaskular", "icon": "heart",
+      "summary": "Jantung dan pembuluh besar: anatomi 3D, ekokardiografi simulasi, auskultasi, dan dasar EKG.",
+      "disciplines": ["anatomi", "pencitraan-medis"],
+      "steps": [
+        { "key": "atlas-kardio", "kind": "atlas", "title": "Sistem kardiovaskular di Atlas", "href": "/anatomy/system/cardiovascular", "system": "cardiovascular" },
+        { "key": "kuis-kardio", "kind": "quiz", "title": "Kuis struktur jantung dan pembuluh", "href": "/anatomy/study?mode=identify&system=cardiovascular&region=thorax", "system": "cardiovascular" },
+        { "key": "usg-jantung", "kind": "live", "title": "Jendela jantung normal (simulasi)", "href": "/anatomy/live?scenario=normal" },
+        { "key": "usg-hfref", "kind": "live", "title": "Pola fungsi sistolik LV menurun", "href": "/anatomy/live?scenario=hfref" },
+        { "key": "usg-perikard", "kind": "live", "title": "Efusi perikardial (simulasi)", "href": "/anatomy/live?scenario=pericardial" },
+        { "key": "ekg", "kind": "page", "title": "Konduksi jantung & EKG skematik", "href": "/lab/ekg", "review": "ecg" }
+      ]
+    },
+    {
+      "key": "saraf-otak", "group": "sistem", "title": "Otak & Neuroanatomi", "icon": "brain",
+      "summary": "Neuroanatomi dan indra. Model saraf Atlas sedang ditinjau lisensinya; yang tersedia ditandai jelas.",
+      "disciplines": ["anatomi", "oftalmologi"],
+      "steps": [
+        { "key": "atlas-saraf", "kind": "atlas", "title": "Sistem saraf di Atlas", "href": "/anatomy/system/nervous", "system": "nervous" },
+        { "key": "atlas-kepala", "kind": "atlas", "title": "Tengkorak dan region kepala-leher", "href": "/anatomy/region/headNeck" },
+        { "key": "kuis-tengkorak", "kind": "quiz", "title": "Kuis tulang tengkorak", "href": "/anatomy/study?mode=identify&system=skeletal&region=headNeck", "system": "skeletal" },
+        { "key": "oct-retina", "kind": "module", "title": "Dasar interpretasi OCT retina", "moduleKey": "oct-retina-dasar-v1", "dataset": "octmnist" },
+        { "key": "neuro-mri", "kind": "planned", "title": "Irisan MRI otak & traktus (DTI)", "reason": "Butuh dataset neuroimaging berlisensi jelas; belum ada di MEDCOEL." }
+      ]
+    },
+    {
+      "key": "rangka-otot", "group": "sistem", "title": "Rangka, Otot & Sendi", "icon": "bone",
+      "summary": "Identifikasi tulang, otot, dan sendi langsung pada model 3D.",
+      "disciplines": ["anatomi"],
+      "steps": [
+        { "key": "atlas-rangka", "kind": "atlas", "title": "Sistem rangka di Atlas", "href": "/anatomy/system/skeletal", "system": "skeletal" },
+        { "key": "kuis-tulang", "kind": "quiz", "title": "Kenali tulang yang disorot", "href": "/anatomy/study?mode=identify&system=skeletal&region=whole", "system": "skeletal" },
+        { "key": "temukan-tulang", "kind": "quiz", "title": "Temukan tulang di model 3D", "href": "/anatomy/study?mode=find&system=skeletal&region=whole", "system": "skeletal" },
+        { "key": "atlas-otot", "kind": "atlas", "title": "Sistem otot di Atlas", "href": "/anatomy/system/muscular", "system": "muscular" },
+        { "key": "atlas-sendi", "kind": "atlas", "title": "Sendi dan ligamen di Atlas", "href": "/anatomy/system/joints", "system": "joints" }
+      ]
+    },
+    {
+      "key": "abdomen-cerna", "group": "sistem", "title": "Abdomen & Pencernaan", "icon": "soup",
+      "summary": "Organ abdomen, USG cairan bebas dan motilitas lambung, hingga histologi kolorektal.",
+      "disciplines": ["anatomi", "pencitraan-medis", "histologi-histopatologi"],
+      "steps": [
+        { "key": "atlas-abdomen", "kind": "atlas", "title": "Region abdomen di Atlas", "href": "/anatomy/region/abdomen" },
+        { "key": "kuis-abdomen", "kind": "quiz", "title": "Kuis organ abdomen", "href": "/anatomy/study?mode=identify&system=visceral&region=abdomen", "system": "visceral" },
+        { "key": "usg-asites", "kind": "live", "title": "Cairan bebas perihepatik (simulasi)", "href": "/anatomy/live?scenario=ascites" },
+        { "key": "usg-lambung", "kind": "live", "title": "Motilitas antrum lambung (simulasi)", "href": "/anatomy/live?scenario=gastroparesis" },
+        { "key": "histo-kolorektal", "kind": "module", "title": "Pola jaringan histologi kolorektal", "moduleKey": "histologi-kolorektal-pathmnist-v1", "dataset": "pathmnist" }
+      ]
+    },
+    {
+      "key": "darah-imun", "group": "sistem", "title": "Darah & Limfatik", "icon": "droplet",
+      "summary": "Sel darah perifer dan organ limfoid.",
+      "disciplines": ["patologi-klinik", "anatomi"],
+      "steps": [
+        { "key": "sel-darah", "kind": "module", "title": "Identifikasi sel darah perifer", "moduleKey": "sel-darah-perifer-bloodmnist-v1", "dataset": "bloodmnist" },
+        { "key": "atlas-limfatik", "kind": "atlas", "title": "Sistem limfatik di Atlas", "href": "/anatomy/system/lymphatic", "system": "lymphatic" }
+      ]
+    },
+    {
+      "key": "kemih", "group": "sistem", "title": "Ginjal & Saluran Kemih", "icon": "flask",
+      "summary": "Kandung kemih di USG simulasi. Model ginjal Atlas belum tersedia (tinjauan lisensi).",
+      "disciplines": ["pencitraan-medis"],
+      "steps": [
+        { "key": "atlas-pelvis", "kind": "atlas", "title": "Region pelvis di Atlas", "href": "/anatomy/region/pelvis" },
+        { "key": "usg-retensi", "kind": "live", "title": "Kandung kemih penuh (simulasi)", "href": "/anatomy/live?scenario=retention" },
+        { "key": "ginjal-3d", "kind": "planned", "title": "Model ginjal 3D", "reason": "Model ginjal Atlas masih ditahan karena tinjauan lisensi." }
+      ]
+    },
+    {
+      "key": "auskultasi-jantung", "group": "keterampilan", "title": "Auskultasi Jantung", "icon": "stethoscope",
+      "summary": "Lokasi auskultasi, bunyi S1/S2, dan S3 pada pola HFrEF, dengan bunyi sintetis untuk latihan.",
+      "disciplines": ["anatomi"],
+      "steps": [
+        { "key": "atlas-jantung", "kind": "atlas", "title": "Proyeksi jantung di dinding dada", "href": "/anatomy/region/thorax" },
+        { "key": "lokasi-normal", "kind": "live", "title": "Area aorta, pulmonal, trikuspid, mitral", "href": "/anatomy/live?scenario=normal&ws=ausc" },
+        { "key": "s3-hfref", "kind": "live", "title": "Mendengar S3 (bell, area mitral)", "href": "/anatomy/live?scenario=hfref&ws=ausc" },
+        { "key": "latihan-4d", "kind": "live", "title": "Latihan terpandu di Live 4D Lab", "href": "/anatomy/live?ws=learn" },
+        { "key": "murmur-katup", "kind": "planned", "title": "Murmur katup (stenosis/regurgitasi)", "reason": "Rekaman atau sintesis murmur yang sudah ditinjau pendidik klinis belum tersedia." }
+      ]
+    },
+    {
+      "key": "auskultasi-paru", "group": "keterampilan", "title": "Auskultasi Paru", "icon": "wind",
+      "summary": "Bunyi napas normal dan berkurang, serta demo ronki dan mengi sintetis.",
+      "disciplines": ["anatomi"],
+      "steps": [
+        { "key": "atlas-paru", "kind": "atlas", "title": "Lobus paru dan pleura", "href": "/anatomy/region/thorax" },
+        { "key": "napas-normal", "kind": "live", "title": "Bunyi napas normal", "href": "/anatomy/live?scenario=normal&ws=ausc" },
+        { "key": "napas-efusi", "kind": "live", "title": "Bunyi napas berkurang pada efusi", "href": "/anatomy/live?scenario=effusion&ws=ausc" },
+        { "key": "rekaman-klinis", "kind": "planned", "title": "Rekaman bunyi paru pasien", "reason": "Butuh rekaman berlisensi dan tinjauan klinis." }
+      ]
+    },
+    {
+      "key": "tekanan-darah", "group": "keterampilan", "title": "Pengukuran Tekanan Darah", "icon": "gauge",
+      "summary": "Belum ada simulasi pengukuran di MEDCOEL. Yang tersedia: anatomi pembuluh lengan atas.",
+      "disciplines": ["anatomi"],
+      "steps": [
+        { "key": "arteri-lengan", "kind": "atlas", "title": "Arteri dan vena lengan atas", "href": "/anatomy/library?region=upperLimb&system=cardiovascular", "system": "cardiovascular" },
+        { "key": "korotkoff", "kind": "planned", "title": "Simulasi manset & bunyi Korotkoff", "reason": "Belum dibuat; perlu skenario yang ditinjau pendidik klinis." },
+        { "key": "klasifikasi-td", "kind": "planned", "title": "Latihan membaca hasil tekanan darah", "reason": "Belum dibuat." }
+      ]
+    },
+    {
+      "key": "ekg", "group": "keterampilan", "title": "EKG Dasar", "icon": "activity",
+      "summary": "Sistem konduksi jantung dan pola EKG skematik untuk belajar konsep. Bukan rekaman pasien.",
+      "disciplines": ["anatomi"],
+      "steps": [
+        { "key": "atlas-jantung", "kind": "atlas", "title": "Anatomi jantung di Atlas", "href": "/anatomy/system/cardiovascular", "system": "cardiovascular" },
+        { "key": "konduksi", "kind": "page", "title": "Konduksi & EKG skematik", "href": "/lab/ekg", "review": "ecg" },
+        { "key": "latihan-ritme", "kind": "page", "title": "Latihan mengenali pola", "href": "/lab/ekg?latihan=1", "review": "ecg" },
+        { "key": "ekg-12-sadapan", "kind": "planned", "title": "EKG 12 sadapan dari pasien", "reason": "Butuh dataset EKG berlisensi dan tinjauan klinis." }
+      ]
+    },
+    {
+      "key": "usg-dasar", "group": "keterampilan", "title": "USG Point-of-Care (simulasi)", "icon": "scan",
+      "summary": "Memegang probe, jendela standar, dan pola cairan pada pasien virtual.",
+      "disciplines": ["pencitraan-medis"],
+      "steps": [
+        { "key": "latihan-probe", "kind": "live", "title": "Latihan terpandu: probe & jendela", "href": "/anatomy/live?ws=learn" },
+        { "key": "jendela-normal", "kind": "live", "title": "Jendela jantung dan abdomen normal", "href": "/anatomy/live?scenario=normal" },
+        { "key": "cairan-pleura", "kind": "live", "title": "Efusi pleura", "href": "/anatomy/live?scenario=effusion" },
+        { "key": "cairan-perikard", "kind": "live", "title": "Efusi perikardial", "href": "/anatomy/live?scenario=pericardial" },
+        { "key": "cairan-abdomen", "kind": "live", "title": "Cairan bebas abdomen", "href": "/anatomy/live?scenario=ascites" },
+        { "key": "kandung-kemih", "kind": "live", "title": "Kandung kemih penuh", "href": "/anatomy/live?scenario=retention" }
+      ]
+    },
+    {
+      "key": "identifikasi-anatomi", "group": "keterampilan", "title": "Identifikasi Anatomi", "icon": "target",
+      "summary": "Kenali struktur yang disorot, atau temukan struktur yang disebut, langsung di model 3D.",
+      "disciplines": ["anatomi"],
+      "steps": [
+        { "key": "kenali", "kind": "quiz", "title": "Kenali struktur (semua sistem)", "href": "/anatomy/study?mode=identify&system=&region=whole" },
+        { "key": "temukan", "kind": "quiz", "title": "Temukan di 3D (semua sistem)", "href": "/anatomy/study?mode=find&system=&region=whole" },
+        { "key": "tulang", "kind": "quiz", "title": "Identifikasi tulang", "href": "/anatomy/study?mode=identify&system=skeletal&region=whole", "system": "skeletal" }
+      ]
+    },
+    {
+      "key": "interpretasi-citra", "group": "keterampilan", "title": "Interpretasi Gambar Medis", "icon": "image",
+      "summary": "Foto toraks, OCT retina, histologi, dan apusan darah dari modul Lab yang sudah terbit.",
+      "disciplines": ["pencitraan-medis", "oftalmologi", "histologi-histopatologi", "patologi-klinik"],
+      "steps": [
+        { "key": "cxr", "kind": "module", "title": "Foto toraks: normal vs pneumonia", "moduleKey": "cxr-normal-pneumonia-v1", "dataset": "pneumoniamnist" },
+        { "key": "oct", "kind": "module", "title": "OCT retina", "moduleKey": "oct-retina-dasar-v1", "dataset": "octmnist" },
+        { "key": "histo", "kind": "module", "title": "Histologi kolorektal", "moduleKey": "histologi-kolorektal-pathmnist-v1", "dataset": "pathmnist" },
+        { "key": "darah", "kind": "module", "title": "Sel darah perifer", "moduleKey": "sel-darah-perifer-bloodmnist-v1", "dataset": "bloodmnist" }
+      ]
+    }
+  ]
+}

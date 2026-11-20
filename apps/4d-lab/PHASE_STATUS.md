@@ -81,6 +81,14 @@ Evidence files are in `evidence/`; test commands are listed in `TEST_RESULTS.md`
 - If the shell or labels need changes: edit `pipeline/atlas/build_atlas_dataset.mjs`, run `npm run atlas:dataset`, `npm run atlas:evidence`, `npm test`, then both browser suites.
 - Commercial use: replace the NC kidney, rebuild (see `ASSET_LICENSE_REGISTRY.md`).
 
+## Deep link for MEDCOEL Lab tracks (2026-11-19)
+- `?scenario=<normal|hfref|effusion|pericardial|ascites|retention|gastroparesis>` and `?ws=<imaging|ausc|physio|patho|learn>`
+  are applied once after load (`applyDeepLink` in `src/app/main.js`); unknown values are ignored. The host page
+  `/anatomy/live` forwards only these two keys (`liveLabSrc` in `apps/web/src/features/anatomy/liveLab.mjs`).
+  Used by the Lab tracks (`shared/lab-tracks.json`, `docs/EXAM_PLANNER_LAB.md`). Covered by a step in `test/e2e/ux-e2e.mjs`.
+- Open: the UX suite's keyboard step ("ArrowUp superior") fails, also on a build without the deep link (pre-existing; 15/16 pass,
+  `evidence/ux-e2e-results.json`). Likely state left by the directed-learning step; investigate before release.
+
 ## Resume here
 - Deploy to staging only after approval: see `INTEGRATION.md`.
 - Owner QC session on a Mac with Safari: run through `TEST_RESULTS.md` § "Manual checklist" and record the results here.

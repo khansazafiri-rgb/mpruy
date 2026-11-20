@@ -1,10 +1,13 @@
-// JADWAL UJIAN PRIBADI. Waktu disimpan absolut + zona yang dipilih, jadi
-// hitung mundur dan pengingat benar di zona mana pun.
-import { CalendarDays, Pencil, Plus, Trash2 } from 'lucide-react';
+// PUSAT UJIAN (jadwal ujian pribadi + rencana belajar per ujian). Waktu disimpan absolut + zona yang dipilih,
+// jadi hitung mundur dan pengingat benar di zona mana pun. Pengingat tetap dikirim oleh cron yang sama
+// (pb_hooks/cron.pb.js); halaman ini tidak membuat notifikasi sendiri.
+import { ArrowRight, CalendarDays, ClipboardList, Pencil, Plus, Trash2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import MascotTip from '@/components/MascotTip';
 import Countdown from '@/components/Countdown';
-import { Alert, EmptyState, Field, Modal, PageLoader } from '@/components/ui';
+import { Alert, EmptyState, Field, Modal, PageLoader, ProgressBar, Segmented } from '@/components/ui';
+import { countdownText, fmtMinutes, planStatus, STALE } from '@/features/study/studyLib';
 import { toneClass } from '@/lib/tone';
 import { useAuth } from '@/context/AuthContext';
 import { api, errorText } from '@/lib/api';
@@ -88,60 +91,69 @@ function Form({ initial, subjects, onClose, onSaved, defaults }) {
 export default function Schedule() {
   const { settings } = useAuth();
   const [items, setItems] = useState(null);
+  const [overview, setOverview] = useState(null); // study planner data (null when the server does not have it yet)
   const [subjects, setSubjects] = useState([]);
   const [edit, setEdit] = useState(null); // null | 'new' | record
   const [error, setError] = useState('');
+  const [view, setView] = useState('list');
 
-  const load = () => pb.collection('exam_schedules').getFullList({ sort: 'examAt', expand: 'subject' }).then(setItems).catch((e) => setError(errorText(e)));
+  const load = () => {
+    pb.collection('exam_schedules').getFullList({ sort: 'examAt', expand: 'subject' }).then(setItems).catch((e) => setError(errorText(e)));
+    api('study/overview').then(setOverview).catch(() => setOverview(null));
+  };
   useEffect(() => {
     load();
     api('subjects').then((d) => setSubjects(d.items)).catch(() => {});
   }, []);
 
   const remove = async (x) => {
-    if (!window.confirm(`Hapus jadwal ${x.title}?`)) return;
+    if (!window.confirm(`Hapus jadwal ${x.title}? Riwayat belajar untuk ujian ini tetap disimpan.`)) return;
     try { await pb.collection('exam_schedules').delete(x.id); load(); } catch (e) { setError(errorText(e)); }
   };
 
   const upcoming = (items || []).filter((x) => new Date(x.examAt.replace(' ', 'T')).getTime() >= Date.now() - 3 * 3600000);
   const past = (items || []).filter((x) => !upcoming.includes(x));
+  const planOf = (id) => overview?.exams?.find((e) => e.id === id)?.plan || null;
+  const today = overview?.todaySessions || [];
+  const todayLeft = today.filter((s) => s.status === 'planned').reduce((a, s) => a + s.minutes, 0);
 
   return (
     <div className="space-y-7">
-      <PageHead eyebrow="Kalender pribadi" title="Jadwal ujian" note="H-7, H-3, H-1 diingatkan ✓" actions={<button type="button" className="btn-primary btn-press" onClick={() => setEdit('new')} disabled={!subjects.length}><Plus size={18} /> Tambah jadwal</button>}>Hanya kamu yang bisa melihat jadwal ini.</PageHead>
+      <PageHead eyebrow="Kalender pribadi" title="Pusat ujian" note="H-7, H-3, H-1 diingatkan ✓" actions={<button type="button" className="btn-primary btn-press" onClick={() => setEdit('new')} disabled={!subjects.length}><Plus size={18} /> Tambah ujian</button>}>Semua ujianmu, hitung mundurnya, dan rencana belajar tiap ujian. Hanya kamu yang bisa melihatnya.</PageHead>
       <Alert>{error}</Alert>
       {upcoming.length > 0 && (() => {
         const d = daysUntil(upcoming[0].examAt, upcoming[0].timezone);
         return <MascotTip mascot="nilo" mood={d !== null && d <= 3 ? 'think' : 'idle'} size={60} className="max-w-2xl">{d === 0 ? 'Ujiannya hari ini. Tarik napas, kamu sudah berlatih.' : d !== null && d <= 3 ? `Tinggal ${d} hari. Fokus ulangi soal yang pernah salah, jangan begadang ya.` : `Ujian terdekat ${d} hari lagi. Cicil satu BAB per hari, nanti tidak menumpuk.`}</MascotTip>;
       })()}
+      {overview && upcoming.length > 0 && (
+        <section className="card flex flex-wrap items-center justify-between gap-3 p-4" aria-label="Belajar hari ini">
+          <div className="min-w-0">
+            <p className="eyebrow">Belajar hari ini</p>
+            <p className="card-title">{today.length ? `${today.length} sesi · ${fmtMinutes(today.reduce((a, s) => a + s.minutes, 0))}` : 'Belum ada sesi hari ini'}</p>
+            <p className="meta">{today.length ? (todayLeft ? `Sisa ${fmtMinutes(todayLeft)}` : 'Semua sesi hari ini selesai ✓') : 'Buat rencana belajar untuk ujianmu, lalu tugas harian muncul di sini.'}</p>
+          </div>
+          <Link to="/rencana-belajar" className="btn btn-primary">Buka tugas hari ini <ArrowRight size={16} aria-hidden /></Link>
+        </section>
+      )}
       {!items ? <PageLoader /> : !upcoming.length && !past.length ? (
-        <EmptyState icon={CalendarDays} mascot="nilo" mood="wave" title="Belum ada jadwal ujian" action={<button type="button" className="btn-primary" onClick={() => setEdit('new')}>Tambah jadwal</button>}>
-          Tambahkan ujianmu untuk mendapat hitung mundur di beranda dan pengingat H-7, H-3, H-1.
+        <EmptyState icon={CalendarDays} mascot="nilo" mood="wave" title="Belum ada jadwal ujian" action={<button type="button" className="btn-primary" onClick={() => setEdit('new')}>Tambah ujian</button>}>
+          Tambahkan ujianmu untuk mendapat hitung mundur di beranda, pengingat H-7, H-3, H-1, dan rencana belajar harian.
         </EmptyState>
       ) : (
-        <div className="space-y-3">
-          {upcoming.map((x, i) => {
-            const d = daysUntil(x.examAt, x.timezone);
-            return (
-              <div key={x.id} className={`flex flex-wrap items-center gap-4 p-5 ${i === 0 ? 'exam-next surface-forest' : `card-chunky tone-surface ${toneClass(x.expand?.subject?.illustrationKey || x.expand?.subject?.slug)}`}`}>
-                <div className="min-w-0 flex-1">
-                  <p className={`text-[13px] font-bold ${i === 0 ? 'text-white/80' : 'text-[rgb(var(--tone-fg))]'}`}>{d === 0 ? 'Hari ini' : d === 1 ? 'Besok' : `${d} hari lagi`}</p>
-                  <p className={`font-display text-xl font-bold ${i === 0 ? 'text-white' : ''}`}>{x.title} · {x.expand?.subject?.name}</p>
-                  <p className={`text-sm ${i === 0 ? 'text-white/85' : 'text-ink/75'}`}>{fmtDateTime(x.examAt, x.timezone, { weekday: true })} · pengingat {(x.reminderDays || []).map((r) => (r === 0 ? 'hari H' : `H-${r}`)).join(', ') || 'tidak ada'}</p>
-                </div>
-                {i === 0 && <Countdown target={x.examAt} compact />}
-                <div className="flex gap-1">
-                  <button type="button" className={`rounded-lg p-2 ${i === 0 ? 'hover:bg-white/10' : 'text-ink hover:bg-white/70'}`} onClick={() => setEdit(x)} aria-label={`Ubah ${x.title}`}><Pencil size={18} /></button>
-                  <button type="button" className={`rounded-lg p-2 ${i === 0 ? 'hover:bg-white/10' : 'text-ink hover:bg-white/70 hover:text-coral'}`} onClick={() => remove(x)} aria-label={`Hapus ${x.title}`}><Trash2 size={18} /></button>
-                </div>
-              </div>
-            );
-          })}
-          {past.length > 0 && (
+        <div className="space-y-4">
+          {upcoming.length > 1 && overview && <Segmented className="sm:max-w-xs" label="Tampilan ujian" value={view} onChange={setView} items={[{ value: 'list', label: 'Daftar' }, { value: 'calendar', label: 'Kalender' }]} />}
+          {overview?.week && upcoming.length > 0 && <Workload week={overview.week} exams={upcoming} />}
+          {view === 'calendar' && overview ? <ExamCalendar exams={upcoming} week={overview.week} /> : (
+            <div className="space-y-3">
+              {upcoming.map((x, i) => <ExamCard key={x.id} x={x} first={i === 0} plan={planOf(x.id)} planner={!!overview} onEdit={() => setEdit(x)} onDelete={() => remove(x)} />)}
+            </div>
+          )}
+          {(past.length > 0 || overview?.archived?.length > 0) && (
             <details className="card p-4">
-              <summary className="cursor-pointer font-semibold text-ink-muted">Ujian yang sudah lewat ({past.length})</summary>
+              <summary className="cursor-pointer font-semibold text-ink-muted">Ujian yang sudah lewat ({past.length}){overview?.archived?.length ? ` · riwayat belajar ${overview.archived.length}` : ''}</summary>
               <ul className="mt-2 space-y-1 text-sm">
-                {past.map((x) => <li key={x.id} className="flex justify-between gap-2"><span>{x.title} · {x.expand?.subject?.name} · {fmtDateTime(x.examAt, x.timezone)}</span><button type="button" className="text-coral hover:underline" onClick={() => remove(x)}>Hapus</button></li>)}
+                {past.map((x) => <li key={x.id} className="flex justify-between gap-2"><span>{x.title} · {x.expand?.subject?.name} · {fmtDateTime(x.examAt, x.timezone)}{planOf(x.id)?.minutesDone ? ` · ${fmtMinutes(planOf(x.id).minutesDone)} belajar tercatat` : ''}</span><button type="button" className="text-coral hover:underline" onClick={() => remove(x)}>Hapus</button></li>)}
+                {(overview?.archived || []).map((p) => <li key={p.id} className="text-ink-muted">{p.examTitle} (ujian dihapus) · {fmtMinutes(p.minutesDone)} belajar tercatat</li>)}
               </ul>
             </details>
           )}
@@ -149,5 +161,85 @@ export default function Schedule() {
       )}
       {edit && <Form initial={edit === 'new' ? null : edit} subjects={subjects} defaults={settings?.reminderDaysDefault || [7, 3, 1]} onClose={() => setEdit(null)} onSaved={() => { setEdit(null); load(); }} />}
     </div>
+  );
+}
+
+function ExamCard({ x, first, plan, planner, onEdit, onDelete }) {
+  const d = daysUntil(x.examAt, x.timezone);
+  const st = planStatus(plan);
+  const dark = first;
+  return (
+    <article className={`flex flex-wrap items-center gap-4 p-5 ${first ? 'exam-next surface-forest' : `card-chunky tone-surface ${toneClass(x.expand?.subject?.illustrationKey || x.expand?.subject?.slug)}`}`} aria-label={`${x.title} ${x.expand?.subject?.name || ''}`}>
+      <div className="min-w-0 flex-[1_1_16rem] space-y-1">
+        <p className={`text-[13px] font-bold ${dark ? 'text-white/80' : 'text-[rgb(var(--tone-fg))]'}`}>{d === 0 ? 'Hari ini' : d === 1 ? 'Besok' : `${d} hari lagi`}{!first && ` · ${countdownText(x.examAt)}`}</p>
+        <p className={`font-display text-xl font-bold ${dark ? 'text-white' : ''}`}>{x.title} · {x.expand?.subject?.name}</p>
+        <p className={`text-sm ${dark ? 'text-white/85' : 'text-ink/75'}`}>{fmtDateTime(x.examAt, x.timezone, { weekday: true })} · pengingat {(x.reminderDays || []).map((r) => (r === 0 ? 'hari H' : `H-${r}`)).join(', ') || 'tidak ada'}</p>
+        {planner && <div className="flex flex-wrap items-center gap-2 pt-1">
+          <span className={st.chip}>{st.label}</span>
+          {plan && <span className={`text-sm ${dark ? 'text-white/85' : 'text-ink/75'}`}>{plan.topicsReady}/{plan.topics} topik siap · {fmtMinutes(plan.minutesDone)} dari {fmtMinutes(plan.minutesPlanned)}</span>}
+          {plan?.stale?.length > 0 && <span className={`text-sm ${dark ? 'text-white/85' : 'text-ink/75'}`}>({plan.stale.map((r) => STALE[r] || r).join(', ')})</span>}
+        </div>}
+        {plan && plan.minutesPlanned > 0 && <ProgressBar value={plan.minutesDone} max={plan.minutesPlanned} label={`Progres belajar ${x.title}`} className={`!h-2 max-w-sm ${dark ? 'bg-white/20' : ''}`} />}
+      </div>
+      {first && <Countdown target={x.examAt} compact />}
+      <div className="flex flex-wrap items-center gap-1">
+        {planner && <Link to={`/jadwal/${x.id}/rencana`} className={dark ? 'btn btn-paper btn-sm' : 'btn btn-primary btn-sm'}><ClipboardList size={16} aria-hidden /> {plan ? 'Rencana belajar' : 'Buat rencana'}</Link>}
+        <button type="button" className={`rounded-lg p-2 ${dark ? 'hover:bg-white/10' : 'text-ink hover:bg-white/70'}`} onClick={onEdit} aria-label={`Ubah ${x.title}`}><Pencil size={18} /></button>
+        <button type="button" className={`rounded-lg p-2 ${dark ? 'hover:bg-white/10' : 'text-ink hover:bg-white/70 hover:text-coral'}`} onClick={onDelete} aria-label={`Hapus ${x.title}`}><Trash2 size={18} /></button>
+      </div>
+    </article>
+  );
+}
+
+// 14 days of shared study load against daily capacity; exam days are marked.
+function Workload({ week, exams }) {
+  const examDays = new Map(exams.map((x) => [toLocalParts(x.examAt, x.timezone).date, x]));
+  const max = Math.max(60, ...week.map((d) => Math.max(d.capacity, d.minutes)));
+  return (
+    <section className="card p-4" aria-label="Beban belajar 14 hari">
+      <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2"><h2 className="section-title !text-lg">Beban belajar 14 hari</h2><p className="meta">Batang = rencana belajar · garis = waktu yang kamu sediakan · 🎯 = hari ujian</p></div>
+      <ol className="grid grid-cols-7 gap-1.5 sm:grid-cols-[repeat(14,minmax(0,1fr))]">
+        {week.map((d) => {
+          const ex = examDays.get(d.date);
+          const h = Math.round((d.minutes / max) * 64), cap = Math.round((d.capacity / max) * 64);
+          return (
+            <li key={d.date} className="flex flex-col items-center gap-1" title={`${d.date}: ${d.minutes} mnt direncanakan, ${d.done} mnt selesai, kapasitas ${d.capacity} mnt`}>
+              <div className="relative h-16 w-full max-w-8 rounded bg-paper-2/60">
+                <span className="absolute inset-x-0 bottom-0 rounded bg-brand/70" style={{ height: h }} />
+                <span className="absolute inset-x-0 bottom-0 rounded bg-brand" style={{ height: Math.round((d.done / max) * 64) }} />
+                {d.capacity > 0 && <span className="absolute inset-x-0 border-t-2 border-dashed border-gold" style={{ bottom: cap }} />}
+              </div>
+              <span className="text-[11px] font-semibold text-ink-muted">{ex ? '🎯' : d.date.slice(8)}</span>
+              <span className="sr-only">{d.date}: {d.minutes} menit{ex ? `, ujian ${ex.title}` : ''}</span>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  );
+}
+
+// Month-style view of the next 5 weeks (Monday first) with exams and planned minutes.
+function ExamCalendar({ exams, week }) {
+  const start = new Date(); const dow = (start.getDay() + 6) % 7; start.setDate(start.getDate() - dow);
+  const days = Array.from({ length: 35 }, (_, i) => { const d = new Date(start); d.setDate(start.getDate() + i); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; });
+  const byDate = new Map(); exams.forEach((x) => { const k = toLocalParts(x.examAt, x.timezone).date; byDate.set(k, [...(byDate.get(k) || []), x]); });
+  const load = new Map(week.map((d) => [d.date, d.minutes]));
+  return (
+    <section className="card overflow-x-auto p-4" aria-label="Kalender ujian 5 minggu">
+      <div className="grid min-w-[560px] grid-cols-7 gap-1 text-sm">
+        {['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'].map((d) => <div key={d} className="px-1 text-xs font-bold uppercase text-ink-muted">{d}</div>)}
+        {days.map((date) => {
+          const ex = byDate.get(date) || [];
+          return (
+            <div key={date} className={`min-h-20 rounded-lg border p-1.5 ${ex.length ? 'border-brand bg-brand-soft' : 'border-line'}`}>
+              <p className="text-xs font-semibold text-ink-muted">{Number(date.slice(8))}</p>
+              {ex.map((x) => <Link key={x.id} to={`/jadwal/${x.id}/rencana`} className="block truncate text-xs font-bold text-brand-dark hover:underline">🎯 {x.title}</Link>)}
+              {load.get(date) > 0 && <p className="text-[11px] text-ink-muted">{fmtMinutes(load.get(date))} belajar</p>}
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 }

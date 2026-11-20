@@ -1,0 +1,21 @@
+{
+  "sourceDuration": 66.76,
+  "duration": 76.3,
+  "speed": 1,
+  "edits": [
+    {
+      "sourceTime": 42.85,
+      "silenceAdded": 4.306666666666667
+    },
+    {
+      "sourceTime": 56.15,
+      "silenceAdded": 0.4
+    },
+    {
+      "sourceTime": 58.14,
+      "silenceAdded": 4.08
+    }
+  ],
+  "tailSilence": 0.7533333333333333,
+  "verification": "All original PCM samples retained bit for bit, in original order. Silence only; no music or replacement voice."
+}

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import {
-  FlaskConical, Bell, BookOpen, CalendarDays, ChevronDown, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, School, Stethoscope, Trophy, TrendingUp, User, X,
+  FlaskConical, Bell, BookOpen, CalendarDays, ClipboardList, ChevronDown, History, Home, LayoutDashboard, LogOut, Menu, MessageCircle, School, Stethoscope, Trophy, TrendingUp, User, X,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
@@ -23,7 +23,8 @@ const ALL_NAV = [
   { to: '/drilling', label: 'Kampusmu', icon: School, noBottom: true, drilling: true },
   { to: '/progres', label: 'Progres', short: 'Progres', icon: TrendingUp },
   { to: '/leaderboard', label: 'Leaderboard', short: 'Peringkat', icon: Trophy },
-  { to: '/jadwal', label: 'Jadwal ujian', short: 'Jadwal', icon: CalendarDays },
+  { to: '/jadwal', label: 'Pusat ujian', short: 'Ujian', icon: CalendarDays },
+  { to: '/rencana-belajar', label: 'Rencana belajar', desk: 'Rencana', icon: ClipboardList, noBottom: true, noTop: true },
   { to: '/chat-admin', label: 'Chat Admin', short: 'Chat', icon: MessageCircle },
 ];
 
@@ -62,7 +63,7 @@ export default function AppShell() {
             <Menu size={22} />
           </button>
           <Link to="/beranda" className="app-brand shrink-0" aria-label="MEDCOEL beranda"><Logo className="hidden sm:block" /><Logo variant="mark" className="sm:hidden" /></Link>
-          <ScrollableNav items={NAV} />
+          <ScrollableNav items={NAV.filter((n) => !n.noTop)} />
           <div className="ml-auto flex shrink-0 items-center gap-1">
             <LanguageSwitch />
             <Link to="/notifikasi" className="btn-icon relative rounded-lg" aria-label={`Notifikasi${unread ? `, ${unread} belum dibaca` : ''}`}>

@@ -18,6 +18,8 @@ test('alamat asli dipetakan ke pola; ID, slug, dan query tidak ikut', () => {
     '/kerjakan/xyz789?lanjut=1#a': '/kerjakan/:id', '/drilling/materi/7': '/drilling/materi/:id', '/drilling/biokimia': '/drilling/:slug',
     '/lab/modul/k.1': '/lab/modul/:key', '/anatomy': '/anatomy', '/anatomy/explore': '/anatomy/explore', '/anatomy/live': '/anatomy/live',
     '/anatomy/structure/Femur.l': '/anatomy/structure/:id', '/simulasi-dokter': '/simulasi-dokter', '/progres': '/progres',
+    '/jadwal/abc123/rencana': '/jadwal/:exam/rencana', '/rencana-belajar': '/rencana-belajar', '/lab/ekg?latihan=1': '/lab/ekg',
+    '/lab/sistem/dada-pernapasan': '/lab/sistem/:track', '/lab/keterampilan/ekg': '/lab/keterampilan/:track',
   };
   for (const [path, key] of Object.entries(cases)) assert.equal(activityKey(path), key, path);
 });

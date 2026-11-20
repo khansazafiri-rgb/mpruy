@@ -1,0 +1,23 @@
+{
+  "judul": "Kenapa angka termometer air raksa tidak langsung turun?",
+  "catatan": "Naskah final dari pemesan; kata dan urutan dipertahankan. 'anchors' = potongan teks yang menentukan waktu aksi (waktu kata pertama potongan).",
+  "kalimat": [
+    { "id": 1, "p": 1, "text": "Pernah lihat termometer air raksa?", "anchors": { "termometer": "termometer air raksa" } },
+    { "id": 2, "p": 1, "text": "Setelah dilepas dari tubuh, garis peraknya tetap berhenti di angka tadi.", "anchors": { "dilepasHook": "dilepas dari tubuh", "garisPerak": "garis peraknya", "angkaTadi": "angka tadi" } },
+    { "id": 3, "p": 1, "text": "Kok bisa?", "anchors": { "kokBisa": "Kok bisa" } },
+    { "id": 4, "p": 2, "text": "Pertama, 'air raksa' itu sebenarnya merkuri: logam yang cair pada suhu ruang.", "anchors": { "pertama": "Pertama", "merkuri": "merkuri:", "logamCair": "logam yang cair" } },
+    { "id": 5, "p": 2, "text": "Di ujung termometer ada wadah kecil berisi merkuri, tersambung ke saluran kaca yang sangat sempit.", "anchors": { "wadah": "wadah kecil", "saluran": "saluran kaca" } },
+    { "id": 6, "p": 3, "text": "Ketika ujungnya menerima panas dari tubuh, merkuri memuai.", "anchors": { "panas": "menerima panas", "memuai": "merkuri memuai" } },
+    { "id": 7, "p": 3, "text": "Volumenya bertambah dan mendorong garis perak naik di saluran sempit itu.", "anchors": { "volume": "Volumenya bertambah", "mendorong": "mendorong garis", "naik": "naik di saluran" } },
+    { "id": 8, "p": 3, "text": "Semakin tinggi suhu, semakin jauh garisnya bergerak.", "anchors": { "semakinTinggi": "Semakin tinggi", "semakinJauh": "semakin jauh" } },
+    { "id": 9, "p": 3, "text": "Angka pada kaca menunjukkan suhu berdasarkan posisi ujung garis tersebut.", "anchors": { "angkaKaca": "Angka pada kaca", "posisiUjung": "posisi ujung" } },
+    { "id": 10, "p": 4, "text": "Tapi ada satu bagian kecil yang penting: penyempitan saluran tepat di atas wadah merkuri.", "anchors": { "satuBagian": "satu bagian kecil", "penyempitan": "penyempitan saluran" } },
+    { "id": 11, "p": 4, "text": "Saat termometer dilepas dan mulai dingin, bagian ini menahan kolom merkuri agar tidak langsung turun.", "anchors": { "dilepas": "dilepas dan mulai dingin", "dingin": "mulai dingin", "menahan": "menahan kolom" } },
+    { "id": 12, "p": 4, "text": "Jadi kita masih bisa membaca suhu tertinggi yang tercapai.", "anchors": { "membaca": "membaca suhu" } },
+    { "id": 13, "p": 4, "text": "Itulah alasan termometer jenis ini perlu diatur ulang sebelum pengukuran berikutnya.", "anchors": { "diatur": "diatur ulang" } },
+    { "id": 14, "p": 5, "text": "Lalu kenapa sekarang lebih sering terlihat termometer digital?", "anchors": { "digital": "termometer digital" } },
+    { "id": 15, "p": 5, "text": "Kalau kaca termometer merkuri pecah, merkurinya bisa tersebar dan uapnya berbahaya.", "anchors": { "pecah": "merkuri pecah", "tersebar": "bisa tersebar", "uap": "uapnya berbahaya" } },
+    { "id": 16, "p": 5, "text": "Karena itu, banyak layanan kesehatan beralih ke alat tanpa merkuri.", "anchors": { "beralih": "beralih ke alat" } },
+    { "id": 17, "p": 6, "text": "Jadi garis perak yang tampak sederhana itu bekerja karena pemuaian, saluran sempit, dan penyempitan kecil yang menahan hasilnya.", "anchors": { "jadi": "Jadi garis", "pemuaian": "pemuaian,", "saluranSempit": "saluran sempit,", "penyempitanKecil": "penyempitan kecil" } }
+  ]
+}

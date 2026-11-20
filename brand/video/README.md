@@ -24,6 +24,11 @@ mesin melafalkan nama seperti MEDCOEL (`npm run lab` membuat beberapa varian eja
 
 Untuk suara rekaman sendiri atau mesin lain, lihat bagian "Mesin suara" di `src/tts.mjs`.
 
+
+## Outro web untuk video edukasi
+
+Gunakan [paket outro](outro/README.md) untuk menemukan rekaman web MEDCOEL asli, logo, maskot, naskah penutup singkat, dan aturan pemakaiannya. Daftar mesin: [`outro/assets.json`](outro/assets.json).
+
 ## Karakter manusia: Raka
 
 Selain maskot Kori, Kila, dan Nilo, seri video punya satu karakter manusia 2D bernama **Raka**, dibuat sebagai kode (SVG yang dikendalikan angka) di `brand/characters/raka/`. Bila naskah atau prompt video menyebut "Raka", generator **wajib memakai aset itu** (`raka.js`, `rakaSvg()`), bukan menciptakan desain manusia baru. Raka hanya untuk video, tidak untuk web. Panduan ekspresi, animasi, dan render ada di `brand/characters/raka/README.md`.

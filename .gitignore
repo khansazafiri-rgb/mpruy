@@ -27,3 +27,4 @@ apps/web/dist-anatomy-preview/
 
 # Licensing quarantine: originals kept only in non-public local development storage
 local-data/
+apps/pocketbase/pb_data_*/

@@ -1,0 +1,6 @@
+.cache/
+node_modules/
+audio/transkrip-asr-mentah.json
+out/picture.mp4
+out/shot-*.png
+out/qa-*.png

@@ -1,0 +1,486 @@
+{
+ "dur": 101.11,
+ "edu_end": 85.52,
+ "t_web": 85.97,
+ "t_outro": 87.17,
+ "outro_len": 10.84,
+ "sent": {
+  "s1": [
+   0.0,
+   3.32
+  ],
+  "s2": [
+   3.72,
+   4.3
+  ],
+  "s3": [
+   4.86,
+   6.88
+  ],
+  "s4": [
+   7.44,
+   11.52
+  ],
+  "s5": [
+   12.28,
+   15.18
+  ],
+  "s6": [
+   15.92,
+   19.6
+  ],
+  "s7": [
+   20.38,
+   26.26
+  ],
+  "s8": [
+   26.26,
+   30.46
+  ],
+  "s9": [
+   31.12,
+   33.94
+  ],
+  "s10": [
+   34.34,
+   38.08
+  ],
+  "s11": [
+   38.7,
+   42.62
+  ],
+  "s12": [
+   43.44,
+   45.34
+  ],
+  "s13": [
+   45.9,
+   49.66
+  ],
+  "s14": [
+   50.4,
+   52.2
+  ],
+  "s15": [
+   52.54,
+   55.2
+  ],
+  "s16": [
+   55.2,
+   60.42
+  ],
+  "s17": [
+   61.16,
+   64.74
+  ],
+  "s18": [
+   65.36,
+   67.98
+  ],
+  "s19": [
+   68.58,
+   73.1
+  ],
+  "s20": [
+   73.8,
+   77.44
+  ],
+  "s21": [
+   78.22,
+   81.92
+  ],
+  "s22": [
+   81.92,
+   85.3
+  ]
+ },
+ "sent_text": {
+  "s1": "SpO₂ bisa terlihat normal, tapi Hb ternyata rendah.",
+  "s2": "Kok bisa?",
+  "s3": "Dua angka ini mengukur hal yang berbeda.",
+  "s4": "SpO₂ memperkirakan persentase hemoglobin yang sedang membawa oksigen.",
+  "s5": "Tes Hb mengukur banyaknya hemoglobin di dalam darah.",
+  "s6": "Hemoglobin adalah protein dalam sel darah merah yang membawa oksigen ke jaringan.",
+  "s7": "Pada tes Hb cepat tertentu, satu tetes darah dari ujung jari masuk ke wadah kecil bernama mikrokuvet.",
+  "s8": "Salurannya sangat sempit, sehingga darah tertarik masuk oleh gaya kapiler.",
+  "s9": "Di dalam mikrokuvet contoh alat ini sudah ada reagen.",
+  "s10": "Reagen pertama memecah sel darah merah dan melepaskan hemoglobinnya.",
+  "s11": "Reagen berikutnya mengubah hemoglobin menjadi bentuk yang dapat diukur dengan cahaya.",
+  "s12": "Mikrokuvet lalu dimasukkan ke alat.",
+  "s13": "Cahaya melewati sampel, dan sensor membaca berapa banyak cahaya yang diserap.",
+  "s14": "Alat memakai dua panjang gelombang.",
+  "s15": "Salah satunya membantu mengoreksi gangguan karena sampel keruh.",
+  "s16": "Hasilnya dihitung dan ditampilkan sebagai kadar Hb, biasanya dalam gram per desiliter.",
+  "s17": "Tes ini membantu menilai kemungkinan anemia atau memantau perubahannya.",
+  "s18": "Tapi satu angka Hb belum memberi tahu penyebabnya.",
+  "s19": "Sampel dari ujung jari juga bisa menghasilkan hasil yang kurang tepat bila pengambilannya bermasalah.",
+  "s20": "Kalau angka tidak cocok dengan gejala, pemeriksaan lanjutan mungkin diperlukan.",
+  "s21": "Jadi, SpO₂ menunjukkan proporsi hemoglobin yang membawa oksigen,",
+  "s22": "tes Hb menunjukkan berapa banyak hemoglobin yang tersedia."
+ },
+ "w": {
+  "spo2": 0.0,
+  "normal": 1.3,
+  "hb": 2.24,
+  "rendah": 2.9,
+  "kokbisa": 3.72,
+  "dua": 4.86,
+  "berbeda": 6.46,
+  "persentase": 8.92,
+  "hemoglobin": 9.5,
+  "membawa": 10.78,
+  "oksigen": 11.06,
+  "tesHb": 12.28,
+  "banyaknya": 13.52,
+  "hemoglobin2": 13.9,
+  "darah": 14.84,
+  "protein": 16.74,
+  "sel": 17.42,
+  "jaringan": 19.22,
+  "tetes": 22.56,
+  "ujungJari": 23.36,
+  "wadah": 24.6,
+  "mikrokuvet": 25.52,
+  "sempit": 27.7,
+  "tertarik": 28.9,
+  "kapiler": 30.06,
+  "reagen": 33.54,
+  "memecah": 35.5,
+  "melepaskan": 36.84,
+  "mengubah": 39.64,
+  "bentuk": 40.84,
+  "cahaya": 42.24,
+  "dimasukkan": 44.48,
+  "alat": 45.04,
+  "cahaya2": 45.9,
+  "sampel": 46.64,
+  "sensor": 47.52,
+  "diserap": 49.38,
+  "duaPG": 51.16,
+  "salah": 52.54,
+  "keruh": 54.92,
+  "dihitung": 56.3,
+  "ditampilkan": 56.9,
+  "kadar": 57.64,
+  "gram": 59.42,
+  "desiliter": 59.96,
+  "anemia": 62.82,
+  "memantau": 63.74,
+  "penyebab": 67.44,
+  "kurangTepat": 71.16,
+  "bermasalah": 72.58,
+  "gejala": 75.02,
+  "lanjutan": 76.38,
+  "proporsi": 79.94,
+  "oksigen2": 81.52,
+  "banyak": 83.74,
+  "tersedia": 84.74
+ },
+ "cap": [
+  [
+   0.0,
+   1.73,
+   "SpO₂ bisa terlihat normal,"
+  ],
+  [
+   1.73,
+   3.42,
+   "tapi Hb ternyata rendah."
+  ],
+  [
+   3.72,
+   4.4,
+   "Kok bisa?"
+  ],
+  [
+   4.86,
+   6.0,
+   "Dua angka ini mengukur"
+  ],
+  [
+   6.0,
+   6.98,
+   "hal yang berbeda."
+  ],
+  [
+   7.44,
+   9.21,
+   "SpO₂ memperkirakan persentase"
+  ],
+  [
+   9.21,
+   10.55,
+   "hemoglobin yang sedang"
+  ],
+  [
+   10.55,
+   11.62,
+   "membawa oksigen."
+  ],
+  [
+   12.28,
+   13.7,
+   "Tes Hb mengukur banyaknya"
+  ],
+  [
+   13.7,
+   15.28,
+   "hemoglobin di dalam darah."
+  ],
+  [
+   15.92,
+   17.08,
+   "Hemoglobin adalah protein"
+  ],
+  [
+   17.08,
+   18.06,
+   "dalam sel darah merah"
+  ],
+  [
+   18.06,
+   19.7,
+   "yang membawa oksigen ke jaringan."
+  ],
+  [
+   20.38,
+   22.0,
+   "Pada tes Hb cepat tertentu,"
+  ],
+  [
+   22.0,
+   23.92,
+   "satu tetes darah dari ujung jari"
+  ],
+  [
+   23.92,
+   25.12,
+   "masuk ke wadah kecil"
+  ],
+  [
+   25.12,
+   26.36,
+   "bernama mikrokuvet."
+  ],
+  [
+   26.26,
+   27.72,
+   "Salurannya sangat sempit,"
+  ],
+  [
+   27.72,
+   29.41,
+   "sehingga darah tertarik masuk"
+  ],
+  [
+   29.41,
+   30.56,
+   "oleh gaya kapiler."
+  ],
+  [
+   31.12,
+   32.15,
+   "Di dalam mikrokuvet"
+  ],
+  [
+   32.15,
+   34.04,
+   "contoh alat ini sudah ada reagen."
+  ],
+  [
+   34.34,
+   35.59,
+   "Reagen pertama memecah"
+  ],
+  [
+   35.59,
+   36.66,
+   "sel darah merah dan"
+  ],
+  [
+   36.66,
+   38.18,
+   "melepaskan hemoglobinnya."
+  ],
+  [
+   38.7,
+   39.93,
+   "Reagen berikutnya mengubah"
+  ],
+  [
+   39.93,
+   41.11,
+   "hemoglobin menjadi bentuk"
+  ],
+  [
+   41.11,
+   42.72,
+   "yang dapat diukur dengan cahaya."
+  ],
+  [
+   43.44,
+   44.28,
+   "Mikrokuvet lalu"
+  ],
+  [
+   44.28,
+   45.44,
+   "dimasukkan ke alat."
+  ],
+  [
+   45.9,
+   47.05,
+   "Cahaya melewati sampel,"
+  ],
+  [
+   47.05,
+   48.66,
+   "dan sensor membaca berapa banyak"
+  ],
+  [
+   48.66,
+   49.76,
+   "cahaya yang diserap."
+  ],
+  [
+   50.4,
+   51.04,
+   "Alat memakai"
+  ],
+  [
+   51.04,
+   52.3,
+   "dua panjang gelombang."
+  ],
+  [
+   52.54,
+   53.96,
+   "Salah satunya membantu mengoreksi"
+  ],
+  [
+   53.96,
+   55.3,
+   "gangguan karena sampel keruh."
+  ],
+  [
+   55.2,
+   56.51,
+   "Hasilnya dihitung dan"
+  ],
+  [
+   56.51,
+   58.31,
+   "ditampilkan sebagai kadar Hb,"
+  ],
+  [
+   58.31,
+   60.52,
+   "biasanya dalam gram per desiliter."
+  ],
+  [
+   61.16,
+   62.41,
+   "Tes ini membantu menilai"
+  ],
+  [
+   62.41,
+   63.34,
+   "kemungkinan anemia"
+  ],
+  [
+   63.34,
+   64.84,
+   "atau memantau perubahannya."
+  ],
+  [
+   65.36,
+   66.32,
+   "Tapi satu angka Hb"
+  ],
+  [
+   66.32,
+   68.08,
+   "belum memberi tahu penyebabnya."
+  ],
+  [
+   68.58,
+   69.81,
+   "Sampel dari ujung jari juga"
+  ],
+  [
+   69.81,
+   71.68,
+   "bisa menghasilkan hasil yang kurang tepat"
+  ],
+  [
+   71.68,
+   73.2,
+   "bila pengambilannya bermasalah."
+  ],
+  [
+   73.8,
+   75.6,
+   "Kalau angka tidak cocok dengan gejala,"
+  ],
+  [
+   75.6,
+   76.54,
+   "pemeriksaan lanjutan"
+  ],
+  [
+   76.54,
+   77.54,
+   "mungkin diperlukan."
+  ],
+  [
+   78.22,
+   80.04,
+   "Jadi, SpO₂ menunjukkan proporsi"
+  ],
+  [
+   80.04,
+   82.02,
+   "hemoglobin yang membawa oksigen,"
+  ],
+  [
+   81.92,
+   83.01,
+   "tes Hb menunjukkan"
+  ],
+  [
+   83.01,
+   84.45,
+   "berapa banyak hemoglobin"
+  ],
+  [
+   84.45,
+   85.4,
+   "yang tersedia."
+  ],
+  [
+   87.17,
+   88.29,
+   "Masih penasaran?"
+  ],
+  [
+   88.29,
+   90.63,
+   "Lanjutkan belajarnya di MEDCOEL."
+  ],
+  [
+   91.03,
+   92.65,
+   "Jelajahi materi per bab,"
+  ],
+  [
+   92.65,
+   95.05,
+   "latihan soal, dan simulasi dokter."
+  ],
+  [
+   95.51,
+   97.77,
+   "Semuanya gratis di medcoel.com."
+  ]
+ ]
+}

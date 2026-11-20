@@ -1,0 +1,1430 @@
+{
+ "narasi-edukasi": [
+  {
+   "start": 0.0,
+   "end": 4.58,
+   "text": "Alat kecil yang dijepit di jari ini bisa menampilkan angka oksigen dalam beberapa detik.",
+   "words": [
+    {
+     "w": "Alat",
+     "s": 0.0,
+     "e": 0.42
+    },
+    {
+     "w": "kecil",
+     "s": 0.42,
+     "e": 0.72
+    },
+    {
+     "w": "yang",
+     "s": 0.72,
+     "e": 0.86
+    },
+    {
+     "w": "dijepit",
+     "s": 0.86,
+     "e": 1.24
+    },
+    {
+     "w": "di",
+     "s": 1.24,
+     "e": 1.42
+    },
+    {
+     "w": "jari",
+     "s": 1.42,
+     "e": 1.6
+    },
+    {
+     "w": "ini",
+     "s": 1.6,
+     "e": 1.82
+    },
+    {
+     "w": "bisa",
+     "s": 1.82,
+     "e": 2.08
+    },
+    {
+     "w": "menampilkan",
+     "s": 2.08,
+     "e": 2.72
+    },
+    {
+     "w": "angka",
+     "s": 2.72,
+     "e": 3.04
+    },
+    {
+     "w": "oksigen",
+     "s": 3.04,
+     "e": 3.56
+    },
+    {
+     "w": "dalam",
+     "s": 3.56,
+     "e": 3.84
+    },
+    {
+     "w": "beberapa",
+     "s": 3.84,
+     "e": 4.22
+    },
+    {
+     "w": "detik.",
+     "s": 4.22,
+     "e": 4.58
+    }
+   ]
+  },
+  {
+   "start": 5.04,
+   "end": 6.28,
+   "text": "Tapi bagaimana ya tahu?",
+   "words": [
+    {
+     "w": "Tapi",
+     "s": 5.04,
+     "e": 5.38
+    },
+    {
+     "w": "bagaimana",
+     "s": 5.38,
+     "e": 5.9
+    },
+    {
+     "w": "ya",
+     "s": 5.9,
+     "e": 6.06
+    },
+    {
+     "w": "tahu?",
+     "s": 6.06,
+     "e": 6.28
+    }
+   ]
+  },
+  {
+   "start": 6.84,
+   "end": 10.66,
+   "text": "Di satu sisi penjepit ada lampu merah dan inframerah. Di sisi lain ada sensor.",
+   "words": [
+    {
+     "w": "Di",
+     "s": 6.84,
+     "e": 7.04
+    },
+    {
+     "w": "satu",
+     "s": 7.04,
+     "e": 7.2
+    },
+    {
+     "w": "sisi",
+     "s": 7.2,
+     "e": 7.42
+    },
+    {
+     "w": "penjepit",
+     "s": 7.42,
+     "e": 7.88
+    },
+    {
+     "w": "ada",
+     "s": 7.88,
+     "e": 8.06
+    },
+    {
+     "w": "lampu",
+     "s": 8.06,
+     "e": 8.34
+    },
+    {
+     "w": "merah",
+     "s": 8.34,
+     "e": 8.62
+    },
+    {
+     "w": "dan",
+     "s": 8.62,
+     "e": 8.74
+    },
+    {
+     "w": "inframerah.",
+     "s": 8.74,
+     "e": 9.42
+    },
+    {
+     "w": "Di",
+     "s": 9.64,
+     "e": 9.84
+    },
+    {
+     "w": "sisi",
+     "s": 9.84,
+     "e": 9.98
+    },
+    {
+     "w": "lain",
+     "s": 9.98,
+     "e": 10.2
+    },
+    {
+     "w": "ada",
+     "s": 10.2,
+     "e": 10.38
+    },
+    {
+     "w": "sensor.",
+     "s": 10.38,
+     "e": 10.66
+    }
+   ]
+  },
+  {
+   "start": 11.36,
+   "end": 15.98,
+   "text": "Cahaya melewati ujung jari, lalu sensor membaca berapa banyak yang berhasil menembusnya.",
+   "words": [
+    {
+     "w": "Cahaya",
+     "s": 11.36,
+     "e": 11.78
+    },
+    {
+     "w": "melewati",
+     "s": 11.78,
+     "e": 12.24
+    },
+    {
+     "w": "ujung",
+     "s": 12.24,
+     "e": 12.48
+    },
+    {
+     "w": "jari,",
+     "s": 12.48,
+     "e": 12.84
+    },
+    {
+     "w": "lalu",
+     "s": 13.12,
+     "e": 13.34
+    },
+    {
+     "w": "sensor",
+     "s": 13.34,
+     "e": 13.6
+    },
+    {
+     "w": "membaca",
+     "s": 13.6,
+     "e": 14.1
+    },
+    {
+     "w": "berapa",
+     "s": 14.1,
+     "e": 14.46
+    },
+    {
+     "w": "banyak",
+     "s": 14.46,
+     "e": 14.8
+    },
+    {
+     "w": "yang",
+     "s": 14.8,
+     "e": 14.98
+    },
+    {
+     "w": "berhasil",
+     "s": 14.98,
+     "e": 15.44
+    },
+    {
+     "w": "menembusnya.",
+     "s": 15.44,
+     "e": 15.98
+    }
+   ]
+  },
+  {
+   "start": 16.86,
+   "end": 20.02,
+   "text": "Hemoglobin yang membawa oksigen dan hemoglobin yang tidak membawanya",
+   "words": [
+    {
+     "w": "Hemoglobin",
+     "s": 16.86,
+     "e": 17.46
+    },
+    {
+     "w": "yang",
+     "s": 17.46,
+     "e": 17.6
+    },
+    {
+     "w": "membawa",
+     "s": 17.6,
+     "e": 17.82
+    },
+    {
+     "w": "oksigen",
+     "s": 17.82,
+     "e": 18.28
+    },
+    {
+     "w": "dan",
+     "s": 18.28,
+     "e": 18.48
+    },
+    {
+     "w": "hemoglobin",
+     "s": 18.48,
+     "e": 18.98
+    },
+    {
+     "w": "yang",
+     "s": 18.98,
+     "e": 19.12
+    },
+    {
+     "w": "tidak",
+     "s": 19.12,
+     "e": 19.4
+    },
+    {
+     "w": "membawanya",
+     "s": 19.4,
+     "e": 20.02
+    }
+   ]
+  },
+  {
+   "start": 20.02,
+   "end": 22.42,
+   "text": "menyerap kedua cahaya itu dengan pola berbeda.",
+   "words": [
+    {
+     "w": "menyerap",
+     "s": 20.02,
+     "e": 20.68
+    },
+    {
+     "w": "kedua",
+     "s": 20.68,
+     "e": 20.96
+    },
+    {
+     "w": "cahaya",
+     "s": 20.96,
+     "e": 21.34
+    },
+    {
+     "w": "itu",
+     "s": 21.34,
+     "e": 21.54
+    },
+    {
+     "w": "dengan",
+     "s": 21.54,
+     "e": 21.72
+    },
+    {
+     "w": "pola",
+     "s": 21.72,
+     "e": 22.02
+    },
+    {
+     "w": "berbeda.",
+     "s": 22.02,
+     "e": 22.42
+    }
+   ]
+  },
+  {
+   "start": 23.36,
+   "end": 26.48,
+   "text": "Alat juga mencari perubahan cahaya yang mengikuti dengut darah artery.",
+   "words": [
+    {
+     "w": "Alat",
+     "s": 23.36,
+     "e": 23.74
+    },
+    {
+     "w": "juga",
+     "s": 23.74,
+     "e": 23.92
+    },
+    {
+     "w": "mencari",
+     "s": 23.92,
+     "e": 24.28
+    },
+    {
+     "w": "perubahan",
+     "s": 24.28,
+     "e": 24.68
+    },
+    {
+     "w": "cahaya",
+     "s": 24.68,
+     "e": 25.08
+    },
+    {
+     "w": "yang",
+     "s": 25.08,
+     "e": 25.26
+    },
+    {
+     "w": "mengikuti",
+     "s": 25.26,
+     "e": 25.66
+    },
+    {
+     "w": "dengut",
+     "s": 25.66,
+     "e": 25.9
+    },
+    {
+     "w": "darah",
+     "s": 25.9,
+     "e": 26.14
+    },
+    {
+     "w": "artery.",
+     "s": 26.14,
+     "e": 26.48
+    }
+   ]
+  },
+  {
+   "start": 26.48,
+   "end": 30.88,
+   "text": "Dari perbandingan sinyal inilah, ia memperkirakan SPO2,",
+   "words": [
+    {
+     "w": "Dari",
+     "s": 26.48,
+     "e": 27.38
+    },
+    {
+     "w": "perbandingan",
+     "s": 27.38,
+     "e": 27.86
+    },
+    {
+     "w": "sinyal",
+     "s": 27.86,
+     "e": 28.1
+    },
+    {
+     "w": "inilah,",
+     "s": 28.1,
+     "e": 28.44
+    },
+    {
+     "w": "ia",
+     "s": 28.7,
+     "e": 28.88
+    },
+    {
+     "w": "memperkirakan",
+     "s": 28.88,
+     "e": 29.7
+    },
+    {
+     "w": "SPO2,",
+     "s": 29.7,
+     "e": 30.88
+    }
+   ]
+  },
+  {
+   "start": 31.34,
+   "end": 34.1,
+   "text": "persentase hemoglobin dalam darah arteri yang membawa oksigen.",
+   "words": [
+    {
+     "w": "persentase",
+     "s": 31.34,
+     "e": 31.9
+    },
+    {
+     "w": "hemoglobin",
+     "s": 31.9,
+     "e": 32.42
+    },
+    {
+     "w": "dalam",
+     "s": 32.42,
+     "e": 32.6
+    },
+    {
+     "w": "darah",
+     "s": 32.6,
+     "e": 32.9
+    },
+    {
+     "w": "arteri",
+     "s": 32.9,
+     "e": 33.34
+    },
+    {
+     "w": "yang",
+     "s": 33.34,
+     "e": 33.46
+    },
+    {
+     "w": "membawa",
+     "s": 33.46,
+     "e": 33.72
+    },
+    {
+     "w": "oksigen.",
+     "s": 33.72,
+     "e": 34.1
+    }
+   ]
+  },
+  {
+   "start": 34.92,
+   "end": 39.08,
+   "text": "Angka lain yang biasanya muncul adalah PR atau jumlah dengut nadi per menit.",
+   "words": [
+    {
+     "w": "Angka",
+     "s": 34.92,
+     "e": 35.26
+    },
+    {
+     "w": "lain",
+     "s": 35.26,
+     "e": 35.44
+    },
+    {
+     "w": "yang",
+     "s": 35.44,
+     "e": 35.56
+    },
+    {
+     "w": "biasanya",
+     "s": 35.56,
+     "e": 35.86
+    },
+    {
+     "w": "muncul",
+     "s": 35.86,
+     "e": 36.24
+    },
+    {
+     "w": "adalah",
+     "s": 36.24,
+     "e": 36.52
+    },
+    {
+     "w": "PR",
+     "s": 36.52,
+     "e": 36.92
+    },
+    {
+     "w": "atau",
+     "s": 36.92,
+     "e": 37.62
+    },
+    {
+     "w": "jumlah",
+     "s": 37.62,
+     "e": 38.08
+    },
+    {
+     "w": "dengut",
+     "s": 38.08,
+     "e": 38.36
+    },
+    {
+     "w": "nadi",
+     "s": 38.36,
+     "e": 38.64
+    },
+    {
+     "w": "per",
+     "s": 38.64,
+     "e": 38.78
+    },
+    {
+     "w": "menit.",
+     "s": 38.78,
+     "e": 39.08
+    }
+   ]
+  },
+  {
+   "start": 39.58,
+   "end": 42.46,
+   "text": "Polsoximeter berguna untuk memantau pasien saat operasi,",
+   "words": [
+    {
+     "w": "Polsoximeter",
+     "s": 39.58,
+     "e": 40.3
+    },
+    {
+     "w": "berguna",
+     "s": 40.3,
+     "e": 40.74
+    },
+    {
+     "w": "untuk",
+     "s": 40.74,
+     "e": 40.94
+    },
+    {
+     "w": "memantau",
+     "s": 40.94,
+     "e": 41.36
+    },
+    {
+     "w": "pasien",
+     "s": 41.36,
+     "e": 41.74
+    },
+    {
+     "w": "saat",
+     "s": 41.74,
+     "e": 41.96
+    },
+    {
+     "w": "operasi,",
+     "s": 41.96,
+     "e": 42.46
+    }
+   ]
+  },
+  {
+   "start": 42.84,
+   "end": 44.44,
+   "text": "menilai orang dengan keluhan pernafasan,",
+   "words": [
+    {
+     "w": "menilai",
+     "s": 42.84,
+     "e": 43.08
+    },
+    {
+     "w": "orang",
+     "s": 43.08,
+     "e": 43.34
+    },
+    {
+     "w": "dengan",
+     "s": 43.34,
+     "e": 43.6
+    },
+    {
+     "w": "keluhan",
+     "s": 43.6,
+     "e": 43.94
+    },
+    {
+     "w": "pernafasan,",
+     "s": 43.94,
+     "e": 44.44
+    }
+   ]
+  },
+  {
+   "start": 44.72,
+   "end": 48.86,
+   "text": "serta mengikuti kondisi tertentu, seperti penyakit paru atau penggunaan trapi oksigen.",
+   "words": [
+    {
+     "w": "serta",
+     "s": 44.72,
+     "e": 45.08
+    },
+    {
+     "w": "mengikuti",
+     "s": 45.08,
+     "e": 45.5
+    },
+    {
+     "w": "kondisi",
+     "s": 45.5,
+     "e": 45.78
+    },
+    {
+     "w": "tertentu,",
+     "s": 45.78,
+     "e": 46.3
+    },
+    {
+     "w": "seperti",
+     "s": 46.46,
+     "e": 46.66
+    },
+    {
+     "w": "penyakit",
+     "s": 46.66,
+     "e": 47.12
+    },
+    {
+     "w": "paru",
+     "s": 47.12,
+     "e": 47.54
+    },
+    {
+     "w": "atau",
+     "s": 47.54,
+     "e": 47.72
+    },
+    {
+     "w": "penggunaan",
+     "s": 47.72,
+     "e": 48.26
+    },
+    {
+     "w": "trapi",
+     "s": 48.26,
+     "e": 48.48
+    },
+    {
+     "w": "oksigen.",
+     "s": 48.48,
+     "e": 48.86
+    }
+   ]
+  },
+  {
+   "start": 49.64,
+   "end": 51.64,
+   "text": "Tetapi angka di layar bukan diaknosis.",
+   "words": [
+    {
+     "w": "Tetapi",
+     "s": 49.64,
+     "e": 50.12
+    },
+    {
+     "w": "angka",
+     "s": 50.12,
+     "e": 50.4
+    },
+    {
+     "w": "di",
+     "s": 50.4,
+     "e": 50.5
+    },
+    {
+     "w": "layar",
+     "s": 50.5,
+     "e": 50.76
+    },
+    {
+     "w": "bukan",
+     "s": 50.76,
+     "e": 51.12
+    },
+    {
+     "w": "diaknosis.",
+     "s": 51.12,
+     "e": 51.64
+    }
+   ]
+  },
+  {
+   "start": 51.64,
+   "end": 58.82,
+   "text": "Jari yang dingin, gerakan, aliran darah yang lemah, cat kuku dan warna kulit dapat mengaruhi akurasinya.",
+   "words": [
+    {
+     "w": "Jari",
+     "s": 51.64,
+     "e": 52.98
+    },
+    {
+     "w": "yang",
+     "s": 52.98,
+     "e": 53.12
+    },
+    {
+     "w": "dingin,",
+     "s": 53.12,
+     "e": 53.56
+    },
+    {
+     "w": "gerakan,",
+     "s": 53.86,
+     "e": 54.34
+    },
+    {
+     "w": "aliran",
+     "s": 54.8,
+     "e": 55.04
+    },
+    {
+     "w": "darah",
+     "s": 55.04,
+     "e": 55.34
+    },
+    {
+     "w": "yang",
+     "s": 55.34,
+     "e": 55.46
+    },
+    {
+     "w": "lemah,",
+     "s": 55.46,
+     "e": 55.82
+    },
+    {
+     "w": "cat",
+     "s": 56.18,
+     "e": 56.36
+    },
+    {
+     "w": "kuku",
+     "s": 56.36,
+     "e": 56.62
+    },
+    {
+     "w": "dan",
+     "s": 56.62,
+     "e": 56.8
+    },
+    {
+     "w": "warna",
+     "s": 56.8,
+     "e": 57.1
+    },
+    {
+     "w": "kulit",
+     "s": 57.1,
+     "e": 57.4
+    },
+    {
+     "w": "dapat",
+     "s": 57.4,
+     "e": 57.72
+    },
+    {
+     "w": "mengaruhi",
+     "s": 57.72,
+     "e": 58.3
+    },
+    {
+     "w": "akurasinya.",
+     "s": 58.3,
+     "e": 58.82
+    }
+   ]
+  },
+  {
+   "start": 59.32,
+   "end": 61.44,
+   "text": "Alat ini juga tidak mengukur karbon dioksida.",
+   "words": [
+    {
+     "w": "Alat",
+     "s": 59.32,
+     "e": 59.62
+    },
+    {
+     "w": "ini",
+     "s": 59.62,
+     "e": 59.76
+    },
+    {
+     "w": "juga",
+     "s": 59.76,
+     "e": 59.94
+    },
+    {
+     "w": "tidak",
+     "s": 59.94,
+     "e": 60.16
+    },
+    {
+     "w": "mengukur",
+     "s": 60.16,
+     "e": 60.64
+    },
+    {
+     "w": "karbon",
+     "s": 60.64,
+     "e": 61.0
+    },
+    {
+     "w": "dioksida.",
+     "s": 61.0,
+     "e": 61.44
+    }
+   ]
+  },
+  {
+   "start": 61.96,
+   "end": 68.34,
+   "text": "Bahkan pada keracunan karbon monoksida, pulse oksimet terbiasa bisa memberi angka yang tampak meyakinkan padahal kondisinya berbahaya.",
+   "words": [
+    {
+     "w": "Bahkan",
+     "s": 61.96,
+     "e": 62.3
+    },
+    {
+     "w": "pada",
+     "s": 62.3,
+     "e": 62.5
+    },
+    {
+     "w": "keracunan",
+     "s": 62.5,
+     "e": 62.92
+    },
+    {
+     "w": "karbon",
+     "s": 62.92,
+     "e": 63.22
+    },
+    {
+     "w": "monoksida,",
+     "s": 63.22,
+     "e": 63.72
+    },
+    {
+     "w": "pulse",
+     "s": 64.06,
+     "e": 64.2
+    },
+    {
+     "w": "oksimet",
+     "s": 64.2,
+     "e": 64.5
+    },
+    {
+     "w": "terbiasa",
+     "s": 64.5,
+     "e": 65.1
+    },
+    {
+     "w": "bisa",
+     "s": 65.1,
+     "e": 65.26
+    },
+    {
+     "w": "memberi",
+     "s": 65.26,
+     "e": 65.66
+    },
+    {
+     "w": "angka",
+     "s": 65.66,
+     "e": 65.94
+    },
+    {
+     "w": "yang",
+     "s": 65.94,
+     "e": 66.1
+    },
+    {
+     "w": "tampak",
+     "s": 66.1,
+     "e": 66.42
+    },
+    {
+     "w": "meyakinkan",
+     "s": 66.42,
+     "e": 67.02
+    },
+    {
+     "w": "padahal",
+     "s": 67.02,
+     "e": 67.46
+    },
+    {
+     "w": "kondisinya",
+     "s": 67.46,
+     "e": 67.9
+    },
+    {
+     "w": "berbahaya.",
+     "s": 67.9,
+     "e": 68.34
+    }
+   ]
+  },
+  {
+   "start": 69.2,
+   "end": 73.64,
+   "text": "Saat memakainya, hangatkan tangan, lepaskan cat kuku pada jari yang diperiksa,",
+   "words": [
+    {
+     "w": "Saat",
+     "s": 69.2,
+     "e": 69.72
+    },
+    {
+     "w": "memakainya,",
+     "s": 69.72,
+     "e": 70.32
+    },
+    {
+     "w": "hangatkan",
+     "s": 70.64,
+     "e": 70.96
+    },
+    {
+     "w": "tangan,",
+     "s": 70.96,
+     "e": 71.36
+    },
+    {
+     "w": "lepaskan",
+     "s": 71.74,
+     "e": 72.14
+    },
+    {
+     "w": "cat",
+     "s": 72.14,
+     "e": 72.34
+    },
+    {
+     "w": "kuku",
+     "s": 72.34,
+     "e": 72.6
+    },
+    {
+     "w": "pada",
+     "s": 72.6,
+     "e": 72.8
+    },
+    {
+     "w": "jari",
+     "s": 72.8,
+     "e": 73.02
+    },
+    {
+     "w": "yang",
+     "s": 73.02,
+     "e": 73.16
+    },
+    {
+     "w": "diperiksa,",
+     "s": 73.16,
+     "e": 73.64
+    }
+   ]
+  },
+  {
+   "start": 74.04,
+   "end": 76.32,
+   "text": "diam sejenak, dan tunggu angkanya stabil.",
+   "words": [
+    {
+     "w": "diam",
+     "s": 74.04,
+     "e": 74.34
+    },
+    {
+     "w": "sejenak,",
+     "s": 74.34,
+     "e": 74.82
+    },
+    {
+     "w": "dan",
+     "s": 75.14,
+     "e": 75.22
+    },
+    {
+     "w": "tunggu",
+     "s": 75.22,
+     "e": 75.6
+    },
+    {
+     "w": "angkanya",
+     "s": 75.6,
+     "e": 75.98
+    },
+    {
+     "w": "stabil.",
+     "s": 75.98,
+     "e": 76.32
+    }
+   ]
+  },
+  {
+   "start": 77.04,
+   "end": 79.1,
+   "text": "Selalu lihat juga gejala dan perubahan angkanya.",
+   "words": [
+    {
+     "w": "Selalu",
+     "s": 77.04,
+     "e": 77.4
+    },
+    {
+     "w": "lihat",
+     "s": 77.4,
+     "e": 77.58
+    },
+    {
+     "w": "juga",
+     "s": 77.58,
+     "e": 77.76
+    },
+    {
+     "w": "gejala",
+     "s": 77.76,
+     "e": 78.14
+    },
+    {
+     "w": "dan",
+     "s": 78.14,
+     "e": 78.28
+    },
+    {
+     "w": "perubahan",
+     "s": 78.28,
+     "e": 78.62
+    },
+    {
+     "w": "angkanya.",
+     "s": 78.62,
+     "e": 79.1
+    }
+   ]
+  },
+  {
+   "start": 79.1,
+   "end": 83.6,
+   "text": "Kalau sesak atau kondisi memburuk, jangan menunggu satu angka untuk mencari pertorongan.",
+   "words": [
+    {
+     "w": "Kalau",
+     "s": 79.1,
+     "e": 79.86
+    },
+    {
+     "w": "sesak",
+     "s": 79.86,
+     "e": 80.3
+    },
+    {
+     "w": "atau",
+     "s": 80.3,
+     "e": 80.46
+    },
+    {
+     "w": "kondisi",
+     "s": 80.46,
+     "e": 80.76
+    },
+    {
+     "w": "memburuk,",
+     "s": 80.76,
+     "e": 81.24
+    },
+    {
+     "w": "jangan",
+     "s": 81.4,
+     "e": 81.58
+    },
+    {
+     "w": "menunggu",
+     "s": 81.58,
+     "e": 81.94
+    },
+    {
+     "w": "satu",
+     "s": 81.94,
+     "e": 82.1
+    },
+    {
+     "w": "angka",
+     "s": 82.1,
+     "e": 82.48
+    },
+    {
+     "w": "untuk",
+     "s": 82.48,
+     "e": 82.64
+    },
+    {
+     "w": "mencari",
+     "s": 82.64,
+     "e": 83.0
+    },
+    {
+     "w": "pertorongan.",
+     "s": 83.0,
+     "e": 83.6
+    }
+   ]
+  },
+  {
+   "start": 84.14,
+   "end": 87.54,
+   "text": "Mau memahami alat dan mekanisme tubuh lewat pembelajaran yang lebih visual?",
+   "words": [
+    {
+     "w": "Mau",
+     "s": 84.14,
+     "e": 84.44
+    },
+    {
+     "w": "memahami",
+     "s": 84.44,
+     "e": 84.88
+    },
+    {
+     "w": "alat",
+     "s": 84.88,
+     "e": 85.2
+    },
+    {
+     "w": "dan",
+     "s": 85.2,
+     "e": 85.3
+    },
+    {
+     "w": "mekanisme",
+     "s": 85.3,
+     "e": 85.7
+    },
+    {
+     "w": "tubuh",
+     "s": 85.7,
+     "e": 86.1
+    },
+    {
+     "w": "lewat",
+     "s": 86.1,
+     "e": 86.38
+    },
+    {
+     "w": "pembelajaran",
+     "s": 86.38,
+     "e": 86.92
+    },
+    {
+     "w": "yang",
+     "s": 86.92,
+     "e": 87.04
+    },
+    {
+     "w": "lebih",
+     "s": 87.04,
+     "e": 87.2
+    },
+    {
+     "w": "visual?",
+     "s": 87.2,
+     "e": 87.54
+    }
+   ]
+  },
+  {
+   "start": 88.06,
+   "end": 92.08,
+   "text": "Eksplorasi materi perbap, latihan soal, dan simulasi doktor di Metcoy.",
+   "words": [
+    {
+     "w": "Eksplorasi",
+     "s": 88.06,
+     "e": 88.7
+    },
+    {
+     "w": "materi",
+     "s": 88.7,
+     "e": 89.08
+    },
+    {
+     "w": "perbap,",
+     "s": 89.08,
+     "e": 89.44
+    },
+    {
+     "w": "latihan",
+     "s": 89.68,
+     "e": 90.02
+    },
+    {
+     "w": "soal,",
+     "s": 90.02,
+     "e": 90.44
+    },
+    {
+     "w": "dan",
+     "s": 90.66,
+     "e": 90.7
+    },
+    {
+     "w": "simulasi",
+     "s": 90.7,
+     "e": 91.12
+    },
+    {
+     "w": "doktor",
+     "s": 91.12,
+     "e": 91.5
+    },
+    {
+     "w": "di",
+     "s": 91.5,
+     "e": 91.66
+    },
+    {
+     "w": "Metcoy.",
+     "s": 91.66,
+     "e": 92.08
+    }
+   ]
+  },
+  {
+   "start": 92.52,
+   "end": 93.9,
+   "text": "Gratis di Metcoy.com",
+   "words": [
+    {
+     "w": "Gratis",
+     "s": 92.52,
+     "e": 93.02
+    },
+    {
+     "w": "di",
+     "s": 93.02,
+     "e": 93.18
+    },
+    {
+     "w": "Metcoy",
+     "s": 93.18,
+     "e": 93.52
+    },
+    {
+     "w": ".com",
+     "s": 93.52,
+     "e": 93.9
+    }
+   ]
+  }
+ ],
+ "medcoel-outro-master": [
+  {
+   "start": 0.0,
+   "end": 3.36,
+   "text": "Masih penasaran? Lanjutkan belajarnya di Medcoil.",
+   "words": [
+    {
+     "w": "Masih",
+     "s": 0.0,
+     "e": 0.38
+    },
+    {
+     "w": "penasaran?",
+     "s": 0.38,
+     "e": 0.82
+    },
+    {
+     "w": "Lanjutkan",
+     "s": 1.5,
+     "e": 2.06
+    },
+    {
+     "w": "belajarnya",
+     "s": 2.06,
+     "e": 2.6
+    },
+    {
+     "w": "di",
+     "s": 2.6,
+     "e": 2.74
+    },
+    {
+     "w": "Medcoil.",
+     "s": 2.74,
+     "e": 3.36
+    }
+   ]
+  },
+  {
+   "start": 3.86,
+   "end": 7.78,
+   "text": "Jelajahi materi perbap, latihan soal, dan simulasi doktor.",
+   "words": [
+    {
+     "w": "Jelajahi",
+     "s": 3.86,
+     "e": 4.42
+    },
+    {
+     "w": "materi",
+     "s": 4.42,
+     "e": 4.82
+    },
+    {
+     "w": "perbap,",
+     "s": 4.82,
+     "e": 5.24
+    },
+    {
+     "w": "latihan",
+     "s": 5.58,
+     "e": 5.94
+    },
+    {
+     "w": "soal,",
+     "s": 5.94,
+     "e": 6.4
+    },
+    {
+     "w": "dan",
+     "s": 6.56,
+     "e": 6.9
+    },
+    {
+     "w": "simulasi",
+     "s": 6.9,
+     "e": 7.38
+    },
+    {
+     "w": "doktor.",
+     "s": 7.38,
+     "e": 7.78
+    }
+   ]
+  },
+  {
+   "start": 8.34,
+   "end": 10.46,
+   "text": "Semuanya gratis di medcoil.com.",
+   "words": [
+    {
+     "w": "Semuanya",
+     "s": 8.34,
+     "e": 8.68
+    },
+    {
+     "w": "gratis",
+     "s": 8.68,
+     "e": 9.42
+    },
+    {
+     "w": "di",
+     "s": 9.42,
+     "e": 9.64
+    },
+    {
+     "w": "medcoil",
+     "s": 9.64,
+     "e": 10.1
+    },
+    {
+     "w": ".com.",
+     "s": 10.1,
+     "e": 10.46
+    }
+   ]
+  }
+ ]
+}
