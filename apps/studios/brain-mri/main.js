@@ -100,13 +100,13 @@ async function runChallenge(ui, viewer, post, launch) {
   const box = el('div', { 'data-testid': 'challenge' }, el('h2', {}, 'Challenge'));
   ui.panel.append(box);
   if (launch.standalone) { box.append(el('p', {}, 'Challenge dinilai oleh server dan hanya tersedia saat diluncurkan dari MEDCOEL.')); return; }
-  const client = createChallengeClient('./'), score = createScore();
+  const client = createChallengeClient('./'), score = createScore(client);
   let session;
   try { session = await client.start(); } catch (e) { box.append(el('p', { class: 'bad' }, 'Challenge belum tersedia (' + e.code + ').')); return; }
   let i = 0;
   const show = () => {
     const item = session.items[i];
-    if (!item) { box.replaceChildren(el('h2', {}, 'Challenge selesai'), el('p', {}, 'Skor: ' + score.correct + ' / ' + score.answered + ' (dinilai server).')); return; }
+    if (!item) { box.replaceChildren(el('h2', {}, 'Challenge selesai'), el('p', {}, 'Skor: ' + score.correct + ' / ' + score.answered + (score.persisted ? ' (dinilai server, tersimpan di progres Anda).' : ' (dinilai server).'))); return; }
     viewer.setCrosshairMm(item.prompt.mm);
     const feedback = el('div', { role: 'status', 'aria-live': 'polite' });
     const buttons = item.options.map((o, idx) => el('button', { type: 'button', onclick: async () => {

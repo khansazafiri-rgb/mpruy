@@ -64,14 +64,14 @@ export function runImageStudio({ studioId, title, modality }) {
       const box = el('div', { 'data-testid': 'challenge' }, el('h2', {}, 'Challenge')); ui.panel.append(box);
       if (launch.standalone) box.append(el('p', {}, 'Challenge dinilai server dan hanya tersedia saat diluncurkan dari MEDCOEL.'));
       else {
-        const client = createChallengeClient('./'), score = createScore();
+        const client = createChallengeClient('./'), score = createScore(client);
         const session = await client.start().catch(e => ({ error: e.code }));
         if (session.error) box.append(el('p', { class: 'bad' }, 'Challenge belum tersedia (' + session.error + ').'));
         else {
           let i = 0;
           const next = async () => {
             const item = session.items[i];
-            if (!item) { box.replaceChildren(el('h2', {}, 'Challenge selesai'), el('p', {}, 'Skor: ' + score.correct + ' / ' + score.answered + ' (dinilai server).')); return; }
+            if (!item) { box.replaceChildren(el('h2', {}, 'Challenge selesai'), el('p', {}, 'Skor: ' + score.correct + ' / ' + score.answered + (score.persisted ? ' (dinilai server, tersimpan di progres Anda).' : ' (dinilai server).'))); return; }
             const idx = images.findIndex(im => im.id === item.prompt.imageId); if (idx >= 0 && idx !== current.i) await show(idx);
             const fb = el('div', { role: 'status', 'aria-live': 'polite' });
             const finish = r => { score.record(item.id, r.correct); post('studio.answer', { itemId: item.id, correct: r.correct, attempt: 1 }); fb.replaceChildren(el('p', { class: r.correct ? 'ok' : 'bad' }, r.correct ? 'Benar.' : 'Belum tepat: ' + r.canonical), el('p', {}, r.explanation), el('button', { type: 'button', class: 'primary', onclick: () => { i++; next(); } }, 'Soal berikutnya')); };

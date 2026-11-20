@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 // Independently built first-party studio, isolated from the green Atlas CSS/runtime.
 // This component does not perform licence clearance: the server must already have
 // verified resource receipt AND immutable installation attestation for this release.
-export default function StudioHost({ launch }) {
+export default function StudioHost({ launch, onProgress }) {
   const frame = useRef(null);
   const [manifest, setManifest] = useState(null);
   const [armed, setArmed] = useState(false);
@@ -41,13 +41,15 @@ export default function StudioHost({ launch }) {
         if (message.data?.v !== 1 || typeof message.data?.type !== 'string') return;
         if (message.data.type === 'studio.ready' && message.data.payload?.releaseId === release) setStatus('Studio siap digunakan.');
         if (message.data.type === 'studio.error') setStatus('Studio mengalami masalah. Kembali ke Lab jika perlu.');
+        // The server already persisted the graded answer; only refresh the learner's own summary.
+        if (message.data.type === 'studio.answer' && typeof onProgress === 'function') onProgress();
       };
       frame.current.contentWindow.postMessage({v: 1, type: 'host.launch', launch: launch.context}, window.location.origin, [channel.port2]);
     };
     window.addEventListener('message', onMessage);
     setArmed(true);
     return () => { window.removeEventListener('message', onMessage); port?.close(); };
-  }, [manifest, launch, release, valid]);
+  }, [manifest, launch, release, valid, onProgress]);
   return <div className="space-y-2">
     <p role="status" className="text-sm text-ink-muted">{status}</p>
     {manifest && valid && armed && <iframe ref={frame} className="h-[min(72vh,850px)] w-full rounded-xl border border-line" title={id + ' Clinical Studio'} src={runtime.entry} referrerPolicy="same-origin" />}
