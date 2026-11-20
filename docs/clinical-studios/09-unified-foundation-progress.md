@@ -11,7 +11,8 @@ Status: **in progress**. This branch is intentionally not a production release.
   - `/api/medcoel/studios/{id}/launch`
 - Authentication with existing user rules, per-role/per-campus filtering, no-store serialization, and default deny for every launch.
 - MEDCOEL Lab Hub link, status-only Clinical Studio catalog, guarded entry page and manifest-checking first-party iframe host.
-- Unit tests for expected catalog visibility, query rejection, path traversal and launch prerequisites.
+- Unit and local PocketBase HTTP tests for expected catalog visibility, query rejection, path traversal and launch prerequisites.
+- Independent engineering-only Vite fixture under `apps/studios/foundation-fixture`, built and inventoried locally by CI without publishing.
 
 ## Explicitly NOT implemented / NOT approved
 
