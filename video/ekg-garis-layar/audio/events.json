@@ -1,0 +1,163 @@
+{
+ "durasi": 59.78,
+ "gain_outro_dB": -2.9,
+ "skalar_puncak": 1.0465,
+ "sfx": [
+  {
+   "t": 0.15,
+   "sfx": "tempel-elektroda"
+  },
+  {
+   "t": 0.43,
+   "sfx": "tempel-elektroda"
+  },
+  {
+   "t": 0.71,
+   "sfx": "tempel-elektroda"
+  },
+  {
+   "t": 1.582,
+   "sfx": "bip-monitor"
+  },
+  {
+   "t": 2.442,
+   "sfx": "bip-monitor"
+  },
+  {
+   "t": 3.302,
+   "sfx": "bip-monitor"
+  },
+  {
+   "t": 4.162,
+   "sfx": "bip-monitor"
+  },
+  {
+   "t": 6.34,
+   "sfx": "elektroda"
+  },
+  {
+   "t": 8.0,
+   "sfx": "tidak-menyetrum"
+  },
+  {
+   "t": 9.98,
+   "sfx": "tangkap"
+  },
+  {
+   "t": 12.0,
+   "sfx": "masuk-dada"
+  },
+  {
+   "t": 13.52,
+   "sfx": "lihat-dalam"
+  },
+  {
+   "t": 16.0,
+   "sfx": "nodus-sinus"
+  },
+  {
+   "t": 17.0,
+   "sfx": "sinyal-ke-serambi"
+  },
+  {
+   "t": 19.9,
+   "sfx": "gelombang-P"
+  },
+  {
+   "t": 22.0,
+   "sfx": "nodus-AV"
+  },
+  {
+   "t": 23.4,
+   "sfx": "berkas-bilik"
+  },
+  {
+   "t": 25.2,
+   "sfx": "gelombang-QRS"
+  },
+  {
+   "t": 26.4,
+   "sfx": "kontraksi-bilik"
+  },
+  {
+   "t": 32.15,
+   "sfx": "gelombang-T"
+  },
+  {
+   "t": 34.04,
+   "sfx": "ulang-P"
+  },
+  {
+   "t": 35.24,
+   "sfx": "ulang-QRS"
+  },
+  {
+   "t": 35.557,
+   "sfx": "ulang-kontraksi"
+  },
+  {
+   "t": 36.813,
+   "sfx": "ulang-T"
+  },
+  {
+   "t": 37.3,
+   "sfx": "jejak-listrik"
+  },
+  {
+   "t": 40.452,
+   "sfx": "bip-monitor"
+  },
+  {
+   "t": 41.28,
+   "sfx": "laju"
+  },
+  {
+   "t": 41.312,
+   "sfx": "bip-monitor"
+  },
+  {
+   "t": 41.76,
+   "sfx": "irama"
+  },
+  {
+   "t": 42.172,
+   "sfx": "bip-monitor"
+  },
+  {
+   "t": 43.032,
+   "sfx": "bip-monitor"
+  },
+  {
+   "t": 43.892,
+   "sfx": "bip-monitor"
+  },
+  {
+   "t": 44.752,
+   "sfx": "bip-monitor"
+  },
+  {
+   "t": 45.12,
+   "sfx": "masuk-outro"
+  },
+  {
+   "t": 48.42,
+   "sfx": "klik-fitur-web"
+  },
+  {
+   "t": 50.77,
+   "sfx": "klik-fitur-web"
+  },
+  {
+   "t": 52.32,
+   "sfx": "klik-fitur-web"
+  },
+  {
+   "t": 53.72,
+   "sfx": "klik-fitur-web"
+  },
+  {
+   "t": 54.82,
+   "sfx": "logo-medcoel"
+  }
+ ]
+}

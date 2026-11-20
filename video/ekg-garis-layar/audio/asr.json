@@ -1,0 +1,675 @@
+{
+ "edu": [
+  {
+   "start": 0.0,
+   "end": 4.08,
+   "text": "Kok stiker yang ditempel di kulit bisa menghasilkan garis seperti ini?",
+   "words": [
+    {
+     "w": "Kok",
+     "s": 0.0,
+     "e": 0.38
+    },
+    {
+     "w": "stiker",
+     "s": 0.38,
+     "e": 0.96
+    },
+    {
+     "w": "yang",
+     "s": 0.96,
+     "e": 1.18
+    },
+    {
+     "w": "ditempel",
+     "s": 1.18,
+     "e": 1.6
+    },
+    {
+     "w": "di",
+     "s": 1.6,
+     "e": 1.72
+    },
+    {
+     "w": "kulit",
+     "s": 1.72,
+     "e": 2.08
+    },
+    {
+     "w": "bisa",
+     "s": 2.08,
+     "e": 2.38
+    },
+    {
+     "w": "menghasilkan",
+     "s": 2.38,
+     "e": 3.04
+    },
+    {
+     "w": "garis",
+     "s": 3.04,
+     "e": 3.42
+    },
+    {
+     "w": "seperti",
+     "s": 3.42,
+     "e": 3.7
+    },
+    {
+     "w": "ini?",
+     "s": 3.7,
+     "e": 4.08
+    }
+   ]
+  },
+  {
+   "start": 4.72,
+   "end": 8.76,
+   "text": "Stiker itu adalah elektroda. Mereka tidak menyetrum tubuh.",
+   "words": [
+    {
+     "w": "Stiker",
+     "s": 4.72,
+     "e": 5.4
+    },
+    {
+     "w": "itu",
+     "s": 5.4,
+     "e": 5.86
+    },
+    {
+     "w": "adalah",
+     "s": 5.86,
+     "e": 6.34
+    },
+    {
+     "w": "elektroda.",
+     "s": 6.34,
+     "e": 7.1
+    },
+    {
+     "w": "Mereka",
+     "s": 7.48,
+     "e": 7.82
+    },
+    {
+     "w": "tidak",
+     "s": 7.82,
+     "e": 8.0
+    },
+    {
+     "w": "menyetrum",
+     "s": 8.0,
+     "e": 8.38
+    },
+    {
+     "w": "tubuh.",
+     "s": 8.38,
+     "e": 8.76
+    }
+   ]
+  },
+  {
+   "start": 9.08,
+   "end": 12.88,
+   "text": "Mereka menangkap perubahan listrik yang muncul saat jantung bekerja.",
+   "words": [
+    {
+     "w": "Mereka",
+     "s": 9.08,
+     "e": 9.52
+    },
+    {
+     "w": "menangkap",
+     "s": 9.52,
+     "e": 9.98
+    },
+    {
+     "w": "perubahan",
+     "s": 9.98,
+     "e": 10.42
+    },
+    {
+     "w": "listrik",
+     "s": 10.42,
+     "e": 10.94
+    },
+    {
+     "w": "yang",
+     "s": 10.94,
+     "e": 11.16
+    },
+    {
+     "w": "muncul",
+     "s": 11.16,
+     "e": 11.64
+    },
+    {
+     "w": "saat",
+     "s": 11.64,
+     "e": 11.98
+    },
+    {
+     "w": "jantung",
+     "s": 11.98,
+     "e": 12.4
+    },
+    {
+     "w": "bekerja.",
+     "s": 12.4,
+     "e": 12.88
+    }
+   ]
+  },
+  {
+   "start": 13.52,
+   "end": 18.32,
+   "text": "Lihat dari dalam. Sinyal dimulai di nodus sinus, lalu menyebar keserambi.",
+   "words": [
+    {
+     "w": "Lihat",
+     "s": 13.52,
+     "e": 13.9
+    },
+    {
+     "w": "dari",
+     "s": 13.9,
+     "e": 14.04
+    },
+    {
+     "w": "dalam.",
+     "s": 14.04,
+     "e": 14.26
+    },
+    {
+     "w": "Sinyal",
+     "s": 14.96,
+     "e": 15.54
+    },
+    {
+     "w": "dimulai",
+     "s": 15.54,
+     "e": 15.88
+    },
+    {
+     "w": "di",
+     "s": 15.88,
+     "e": 16.02
+    },
+    {
+     "w": "nodus",
+     "s": 16.02,
+     "e": 16.24
+    },
+    {
+     "w": "sinus,",
+     "s": 16.24,
+     "e": 16.46
+    },
+    {
+     "w": "lalu",
+     "s": 17.06,
+     "e": 17.4
+    },
+    {
+     "w": "menyebar",
+     "s": 17.4,
+     "e": 17.82
+    },
+    {
+     "w": "keserambi.",
+     "s": 17.82,
+     "e": 18.32
+    }
+   ]
+  },
+  {
+   "start": 18.9,
+   "end": 24.46,
+   "text": "Di layar muncul glombang P. Sinyal sempat melewati nodus AV, lalu menyebar cepat ke bilik.",
+   "words": [
+    {
+     "w": "Di",
+     "s": 18.9,
+     "e": 19.04
+    },
+    {
+     "w": "layar",
+     "s": 19.04,
+     "e": 19.46
+    },
+    {
+     "w": "muncul",
+     "s": 19.46,
+     "e": 19.92
+    },
+    {
+     "w": "glombang",
+     "s": 19.92,
+     "e": 20.28
+    },
+    {
+     "w": "P.",
+     "s": 20.28,
+     "e": 20.44
+    },
+    {
+     "w": "Sinyal",
+     "s": 21.0,
+     "e": 21.5
+    },
+    {
+     "w": "sempat",
+     "s": 21.5,
+     "e": 21.76
+    },
+    {
+     "w": "melewati",
+     "s": 21.76,
+     "e": 22.08
+    },
+    {
+     "w": "nodus",
+     "s": 22.08,
+     "e": 22.36
+    },
+    {
+     "w": "AV,",
+     "s": 22.36,
+     "e": 22.64
+    },
+    {
+     "w": "lalu",
+     "s": 23.1,
+     "e": 23.32
+    },
+    {
+     "w": "menyebar",
+     "s": 23.32,
+     "e": 23.76
+    },
+    {
+     "w": "cepat",
+     "s": 23.76,
+     "e": 24.02
+    },
+    {
+     "w": "ke",
+     "s": 24.02,
+     "e": 24.12
+    },
+    {
+     "w": "bilik.",
+     "s": 24.12,
+     "e": 24.46
+    }
+   ]
+  },
+  {
+   "start": 24.8,
+   "end": 28.9,
+   "text": "Muncullah kompleks QRS. Sesudahnya, bilik berkontraksi.",
+   "words": [
+    {
+     "w": "Muncullah",
+     "s": 24.8,
+     "e": 25.34
+    },
+    {
+     "w": "kompleks",
+     "s": 25.34,
+     "e": 25.88
+    },
+    {
+     "w": "QRS.",
+     "s": 25.88,
+     "e": 26.58
+    },
+    {
+     "w": "Sesudahnya,",
+     "s": 27.2,
+     "e": 27.8
+    },
+    {
+     "w": "bilik",
+     "s": 28.14,
+     "e": 28.32
+    },
+    {
+     "w": "berkontraksi.",
+     "s": 28.32,
+     "e": 28.9
+    }
+   ]
+  },
+  {
+   "start": 28.9,
+   "end": 32.74,
+   "text": "Ketika bilik memulikan keadaan listriknya muncul gulombang T.",
+   "words": [
+    {
+     "w": "Ketika",
+     "s": 28.9,
+     "e": 30.04
+    },
+    {
+     "w": "bilik",
+     "s": 30.04,
+     "e": 30.32
+    },
+    {
+     "w": "memulikan",
+     "s": 30.32,
+     "e": 30.72
+    },
+    {
+     "w": "keadaan",
+     "s": 30.72,
+     "e": 31.04
+    },
+    {
+     "w": "listriknya",
+     "s": 31.04,
+     "e": 31.58
+    },
+    {
+     "w": "muncul",
+     "s": 31.58,
+     "e": 32.22
+    },
+    {
+     "w": "gulombang",
+     "s": 32.22,
+     "e": 32.58
+    },
+    {
+     "w": "T.",
+     "s": 32.58,
+     "e": 32.74
+    }
+   ]
+  },
+  {
+   "start": 33.44,
+   "end": 38.62,
+   "text": "Jadi garis EKG bukan gambar jantung yang bergerak, itu jejak aktivitas listriknya.",
+   "words": [
+    {
+     "w": "Jadi",
+     "s": 33.44,
+     "e": 33.92
+    },
+    {
+     "w": "garis",
+     "s": 33.92,
+     "e": 34.68
+    },
+    {
+     "w": "EKG",
+     "s": 34.68,
+     "e": 35.16
+    },
+    {
+     "w": "bukan",
+     "s": 35.16,
+     "e": 35.36
+    },
+    {
+     "w": "gambar",
+     "s": 35.36,
+     "e": 35.76
+    },
+    {
+     "w": "jantung",
+     "s": 35.76,
+     "e": 36.06
+    },
+    {
+     "w": "yang",
+     "s": 36.06,
+     "e": 36.14
+    },
+    {
+     "w": "bergerak,",
+     "s": 36.14,
+     "e": 36.64
+    },
+    {
+     "w": "itu",
+     "s": 36.96,
+     "e": 37.3
+    },
+    {
+     "w": "jejak",
+     "s": 37.3,
+     "e": 37.64
+    },
+    {
+     "w": "aktivitas",
+     "s": 37.64,
+     "e": 38.1
+    },
+    {
+     "w": "listriknya.",
+     "s": 38.1,
+     "e": 38.62
+    }
+   ]
+  },
+  {
+   "start": 39.18,
+   "end": 44.54,
+   "text": "Dari sini tenaga kesehatan bisa menilai laju dan irama jantung, lalu membacanya bersama kondisi pasien.",
+   "words": [
+    {
+     "w": "Dari",
+     "s": 39.18,
+     "e": 39.42
+    },
+    {
+     "w": "sini",
+     "s": 39.42,
+     "e": 39.68
+    },
+    {
+     "w": "tenaga",
+     "s": 39.68,
+     "e": 40.22
+    },
+    {
+     "w": "kesehatan",
+     "s": 40.22,
+     "e": 40.7
+    },
+    {
+     "w": "bisa",
+     "s": 40.7,
+     "e": 40.86
+    },
+    {
+     "w": "menilai",
+     "s": 40.86,
+     "e": 41.28
+    },
+    {
+     "w": "laju",
+     "s": 41.28,
+     "e": 41.6
+    },
+    {
+     "w": "dan",
+     "s": 41.6,
+     "e": 41.76
+    },
+    {
+     "w": "irama",
+     "s": 41.76,
+     "e": 42.04
+    },
+    {
+     "w": "jantung,",
+     "s": 42.04,
+     "e": 42.46
+    },
+    {
+     "w": "lalu",
+     "s": 42.58,
+     "e": 43.06
+    },
+    {
+     "w": "membacanya",
+     "s": 43.06,
+     "e": 43.48
+    },
+    {
+     "w": "bersama",
+     "s": 43.48,
+     "e": 43.86
+    },
+    {
+     "w": "kondisi",
+     "s": 43.86,
+     "e": 44.14
+    },
+    {
+     "w": "pasien.",
+     "s": 44.14,
+     "e": 44.54
+    }
+   ]
+  }
+ ],
+ "outro": [
+  {
+   "start": 0.0,
+   "end": 3.7,
+   "text": "Di MedCoal, jelajahi Atlas 3D dan Live 4D Lab.",
+   "words": [
+    {
+     "w": "Di",
+     "s": 0.0,
+     "e": 0.32
+    },
+    {
+     "w": "MedCoal,",
+     "s": 0.32,
+     "e": 0.82
+    },
+    {
+     "w": "jelajahi",
+     "s": 1.06,
+     "e": 1.56
+    },
+    {
+     "w": "Atlas",
+     "s": 1.56,
+     "e": 1.82
+    },
+    {
+     "w": "3D",
+     "s": 1.82,
+     "e": 2.32
+    },
+    {
+     "w": "dan",
+     "s": 2.32,
+     "e": 2.58
+    },
+    {
+     "w": "Live",
+     "s": 2.58,
+     "e": 2.88
+    },
+    {
+     "w": "4D",
+     "s": 2.88,
+     "e": 3.46
+    },
+    {
+     "w": "Lab.",
+     "s": 3.46,
+     "e": 3.7
+    }
+   ]
+  },
+  {
+   "start": 4.1,
+   "end": 7.72,
+   "text": "Lanjut belajar lewat materi, latihan soal, dan simulasi doktor.",
+   "words": [
+    {
+     "w": "Lanjut",
+     "s": 4.1,
+     "e": 4.46
+    },
+    {
+     "w": "belajar",
+     "s": 4.46,
+     "e": 4.86
+    },
+    {
+     "w": "lewat",
+     "s": 4.86,
+     "e": 5.14
+    },
+    {
+     "w": "materi,",
+     "s": 5.14,
+     "e": 5.6
+    },
+    {
+     "w": "latihan",
+     "s": 5.86,
+     "e": 6.22
+    },
+    {
+     "w": "soal,",
+     "s": 6.22,
+     "e": 6.58
+    },
+    {
+     "w": "dan",
+     "s": 6.88,
+     "e": 6.92
+    },
+    {
+     "w": "simulasi",
+     "s": 6.92,
+     "e": 7.36
+    },
+    {
+     "w": "doktor.",
+     "s": 7.36,
+     "e": 7.72
+    }
+   ]
+  },
+  {
+   "start": 8.14,
+   "end": 9.98,
+   "text": "Gratis di MedCoal.com",
+   "words": [
+    {
+     "w": "Gratis",
+     "s": 8.14,
+     "e": 8.72
+    },
+    {
+     "w": "di",
+     "s": 8.72,
+     "e": 9.06
+    },
+    {
+     "w": "MedCoal",
+     "s": 9.06,
+     "e": 9.64
+    },
+    {
+     "w": ".com",
+     "s": 9.64,
+     "e": 9.98
+    }
+   ]
+  }
+ ]
+}

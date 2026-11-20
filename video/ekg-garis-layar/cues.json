@@ -1,0 +1,246 @@
+{
+ "dur": 59.78,
+ "edu_end": 44.92,
+ "t_web": 45.42,
+ "t_master": 46.42,
+ "outro_len": 10.36,
+ "sent": {
+  "s1": [
+   0.0,
+   4.08
+  ],
+  "s2": [
+   4.72,
+   6.9
+  ],
+  "s3": [
+   7.48,
+   8.8
+  ],
+  "s4": [
+   9.08,
+   12.88
+  ],
+  "s5": [
+   13.52,
+   14.72
+  ],
+  "s6": [
+   14.96,
+   18.32
+  ],
+  "s7": [
+   18.9,
+   20.9
+  ],
+  "s8": [
+   21.0,
+   24.46
+  ],
+  "s9": [
+   24.8,
+   26.6
+  ],
+  "s10": [
+   27.2,
+   28.85
+  ],
+  "s11": [
+   28.9,
+   32.74
+  ],
+  "s12": [
+   33.44,
+   38.62
+  ],
+  "s13": [
+   39.18,
+   44.8
+  ]
+ },
+ "w": {
+  "elektroda": 6.34,
+  "menyetrum": 8.0,
+  "perubahan": 9.98,
+  "listrik": 10.42,
+  "jantung": 11.98,
+  "lihat": 13.52,
+  "sinus": 16.02,
+  "serambi": 17.82,
+  "muncul": 19.46,
+  "P": 20.28,
+  "nodusAV": 22.08,
+  "bilik": 24.12,
+  "QRS": 25.88,
+  "berkontraksi": 28.32,
+  "memulihkan": 30.32,
+  "T": 32.58,
+  "EKG": 34.68,
+  "bergerak": 36.14,
+  "jejak": 37.3,
+  "laju": 41.28,
+  "irama": 41.76,
+  "kondisi": 43.48
+ },
+ "ow": {
+  "atlas": 1.56,
+  "live4d": 2.58,
+  "materi": 5.14,
+  "latihan": 5.86,
+  "simulasi": 6.92,
+  "gratis": 8.14,
+  "medcoel": 9.06
+ },
+ "cap": [
+  [
+   0.0,
+   1.44,
+   "Kok stiker yang ditempel"
+  ],
+  [
+   1.44,
+   3.0,
+   "di kulit bisa menghasilkan"
+  ],
+  [
+   3.0,
+   4.18,
+   "garis seperti ini?"
+  ],
+  [
+   4.72,
+   7.0,
+   "Stiker itu adalah elektroda."
+  ],
+  [
+   7.48,
+   8.9,
+   "Mereka tidak menyetrum tubuh."
+  ],
+  [
+   9.08,
+   11.01,
+   "Mereka menangkap perubahan listrik"
+  ],
+  [
+   11.01,
+   12.98,
+   "yang muncul saat jantung bekerja."
+  ],
+  [
+   13.52,
+   14.82,
+   "Lihat dari dalam."
+  ],
+  [
+   14.96,
+   16.79,
+   "Sinyal dimulai di nodus sinus,"
+  ],
+  [
+   16.79,
+   18.42,
+   "lalu menyebar ke serambi."
+  ],
+  [
+   18.9,
+   21.0,
+   "Di layar, muncul gelombang P."
+  ],
+  [
+   21.0,
+   22.82,
+   "Sinyal sempat melewati nodus AV,"
+  ],
+  [
+   22.82,
+   24.56,
+   "lalu menyebar cepat ke bilik."
+  ],
+  [
+   24.8,
+   26.7,
+   "Muncullah kompleks QRS."
+  ],
+  [
+   27.2,
+   28.95,
+   "Sesudahnya, bilik berkontraksi."
+  ],
+  [
+   28.9,
+   30.35,
+   "Ketika bilik memulihkan"
+  ],
+  [
+   30.35,
+   31.54,
+   "keadaan listriknya,"
+  ],
+  [
+   31.54,
+   32.84,
+   "muncul gelombang T."
+  ],
+  [
+   33.44,
+   35.19,
+   "Jadi garis EKG bukan gambar"
+  ],
+  [
+   35.19,
+   36.61,
+   "jantung yang bergerak."
+  ],
+  [
+   36.61,
+   38.72,
+   "Itu jejak aktivitas listriknya."
+  ],
+  [
+   39.18,
+   40.68,
+   "Dari sini, tenaga kesehatan"
+  ],
+  [
+   40.68,
+   42.69,
+   "bisa menilai laju dan irama jantung,"
+  ],
+  [
+   42.69,
+   43.97,
+   "lalu membacanya bersama"
+  ],
+  [
+   43.97,
+   44.9,
+   "kondisi pasien."
+  ],
+  [
+   46.42,
+   48.06,
+   "Di MEDCOEL, jelajahi"
+  ],
+  [
+   48.06,
+   50.22,
+   "Atlas 3D dan Live 4D Lab."
+  ],
+  [
+   50.52,
+   52.15,
+   "Lanjut belajar lewat materi,"
+  ],
+  [
+   52.15,
+   54.24,
+   "latihan soal, dan Simulasi Dokter."
+  ],
+  [
+   54.56,
+   56.5,
+   "Gratis di medcoel.com."
+  ]
+ ]
+}
