@@ -1,0 +1,30 @@
+{
+  "note": "Permanent studio IDs. Append only: an ID is never renamed or removed once listed (STUDIO-001).",
+  "ids": [
+    "brain-anatomy",
+    "brain-ct",
+    "brain-mri",
+    "head-neck-anatomy",
+    "spine-anatomy",
+    "spine-mri",
+    "thorax-anatomy",
+    "chest-xray",
+    "chest-ct",
+    "lung-ultrasound",
+    "heart-anatomy",
+    "cardiac-echo",
+    "cardiac-ct",
+    "ecg",
+    "abdomen-anatomy",
+    "abdomen-ct",
+    "abdomen-ultrasound",
+    "fast-ultrasound",
+    "pelvis-anatomy",
+    "pelvis-ultrasound",
+    "upper-limb-anatomy",
+    "lower-limb-anatomy",
+    "msk-xray",
+    "knee-mri",
+    "foundation-fixture"
+  ]
+}

@@ -1,0 +1,1153 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "2026-11-20",
+  "note": "MEDCOEL Clinical Studios catalog (Loop 1). Every studio is fail-closed: no runtime entry, no release, no verified licence, no approved review. Availability is resolved by the server (docs/clinical-studios/05-contract-specification.md), never by this file alone.",
+  "studios": [
+    {
+      "schemaVersion": 1,
+      "id": "brain-anatomy",
+      "title": "Brain Anatomy",
+      "titleId": "Anatomi Otak",
+      "region": "brain",
+      "modality": "anatomy3d",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "anatomy3d",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [
+        {
+          "id": "atlas-nervous",
+          "kind": "mesh",
+          "provenance": "Atlas nervous.glb, withheld by the licence quarantine",
+          "licence": "restricted",
+          "protected": true
+        }
+      ],
+      "reuses": "Atlas nervous system (withheld)",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "blocked",
+        "ref": "licensing/commercial-release.json#atlas-viewer"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": [
+        {
+          "kind": "licence",
+          "reason": "Sistem saraf masih ditahan karantina lisensi (licensing/quarantine-policy.json); tidak boleh diganti model lain."
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "brain-ct",
+      "title": "Brain CT",
+      "titleId": "CT Kepala",
+      "region": "brain",
+      "modality": "ct",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "slice-navigation",
+        "mpr",
+        "window-level",
+        "measurement",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": null,
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": null
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "brain-mri",
+      "title": "Brain MRI",
+      "titleId": "MRI Otak",
+      "region": "brain",
+      "modality": "mri",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "slice-navigation",
+        "mpr",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": null,
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": null
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "head-neck-anatomy",
+      "title": "Head & Neck Anatomy",
+      "titleId": "Anatomi Kepala & Leher",
+      "region": "headNeck",
+      "modality": "anatomy3d",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "anatomy3d",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "Atlas region headNeck (ossicles withheld)",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#atlas-viewer"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "spine-anatomy",
+      "title": "Spine Anatomy",
+      "titleId": "Anatomi Tulang Belakang",
+      "region": "spine",
+      "modality": "anatomy3d",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "anatomy3d",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "Atlas region back",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#atlas-viewer"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "spine-mri",
+      "title": "Spine MRI",
+      "titleId": "MRI Tulang Belakang",
+      "region": "spine",
+      "modality": "mri",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "slice-navigation",
+        "mpr",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": null,
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": null
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "thorax-anatomy",
+      "title": "Thorax Anatomy",
+      "titleId": "Anatomi Toraks",
+      "region": "thorax",
+      "modality": "anatomy3d",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "anatomy3d",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "Atlas region thorax",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#atlas-viewer"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "chest-xray",
+      "title": "Chest X-ray",
+      "titleId": "Foto Toraks",
+      "region": "thorax",
+      "modality": "xray",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "window-level",
+        "measurement",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": null,
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": null
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "chest-ct",
+      "title": "Chest CT",
+      "titleId": "CT Toraks",
+      "region": "thorax",
+      "modality": "ct",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "slice-navigation",
+        "mpr",
+        "window-level",
+        "measurement",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "4D Lab tri-planar view on a synthetic volume only",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#4d-lab"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "lung-ultrasound",
+      "title": "Lung Ultrasound",
+      "titleId": "USG Paru",
+      "region": "thorax",
+      "modality": "ultrasound",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "ultrasound-probe",
+        "clinical-case"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "4D Lab scenario effusion",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#4d-lab"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "heart-anatomy",
+      "title": "Heart Anatomy",
+      "titleId": "Anatomi Jantung",
+      "region": "heart",
+      "modality": "anatomy3d",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "anatomy3d",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "Atlas cardiovascular system",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#atlas-viewer"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "cardiac-echo",
+      "title": "Cardiac Echo",
+      "titleId": "Ekokardiografi",
+      "region": "heart",
+      "modality": "ultrasound",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "ultrasound-probe",
+        "clinical-case"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "4D Lab scenarios pericardial, hfref",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#4d-lab"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "cardiac-ct",
+      "title": "Cardiac CT",
+      "titleId": "CT Jantung",
+      "region": "heart",
+      "modality": "ct",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "slice-navigation",
+        "mpr",
+        "window-level",
+        "measurement",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [
+        {
+          "id": "ctacardio",
+          "kind": "ct-volume",
+          "provenance": "local-data only, never committed or served",
+          "licence": "restricted",
+          "protected": true
+        }
+      ],
+      "reuses": "CTACardio (local only, restricted)",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": null
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": [
+        {
+          "kind": "data",
+          "reason": "Satu-satunya data CT jantung (CTACardio) berlisensi terbatas dan tidak boleh dipublikasikan."
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "ecg",
+      "title": "ECG",
+      "titleId": "EKG",
+      "region": "heart",
+      "modality": "ecg",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "clinical-case"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "none"
+      },
+      "datasets": [],
+      "reuses": "Lab ECG schematic module (/lab/ekg)",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": null
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": [
+        {
+          "kind": "clinical",
+          "reason": "Modul EKG masih ditutup untuk siswa sampai lolos review klinis (MEDCOEL_LAB_ECG_PUBLIC)."
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "id": "abdomen-anatomy",
+      "title": "Abdomen Anatomy",
+      "titleId": "Anatomi Abdomen",
+      "region": "abdomen",
+      "modality": "anatomy3d",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "anatomy3d",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "Atlas region abdomen (kidney withheld)",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#atlas-viewer"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "abdomen-ct",
+      "title": "Abdomen CT",
+      "titleId": "CT Abdomen",
+      "region": "abdomen",
+      "modality": "ct",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "slice-navigation",
+        "mpr",
+        "window-level",
+        "measurement",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": null,
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": null
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "abdomen-ultrasound",
+      "title": "Abdomen Ultrasound",
+      "titleId": "USG Abdomen",
+      "region": "abdomen",
+      "modality": "ultrasound",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "ultrasound-probe",
+        "clinical-case"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "4D Lab scenarios ascites, gastroparesis",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#4d-lab"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "fast-ultrasound",
+      "title": "FAST Ultrasound",
+      "titleId": "USG FAST",
+      "region": "abdomen",
+      "modality": "ultrasound",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "ultrasound-probe",
+        "clinical-case"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "4D Lab free-fluid layer",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#4d-lab"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "pelvis-anatomy",
+      "title": "Pelvis Anatomy",
+      "titleId": "Anatomi Pelvis",
+      "region": "pelvis",
+      "modality": "anatomy3d",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "anatomy3d",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "Atlas region pelvis (renal pelvis withheld)",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#atlas-viewer"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "pelvis-ultrasound",
+      "title": "Pelvis Ultrasound",
+      "titleId": "USG Pelvis",
+      "region": "pelvis",
+      "modality": "ultrasound",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "ultrasound-probe",
+        "clinical-case"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "4D Lab scenario retention",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#4d-lab"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "upper-limb-anatomy",
+      "title": "Upper Limb Anatomy",
+      "titleId": "Anatomi Ekstremitas Atas",
+      "region": "upperLimb",
+      "modality": "anatomy3d",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "anatomy3d",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "Atlas region upperLimb",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#atlas-viewer"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "lower-limb-anatomy",
+      "title": "Lower Limb Anatomy",
+      "titleId": "Anatomi Ekstremitas Bawah",
+      "region": "lowerLimb",
+      "modality": "anatomy3d",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "anatomy3d",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": "Atlas region lowerLimb",
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": "licensing/commercial-release.json#atlas-viewer"
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msk-xray",
+      "title": "Musculoskeletal X-ray",
+      "titleId": "Foto Muskuloskeletal",
+      "region": "lowerLimb",
+      "modality": "xray",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "window-level",
+        "measurement",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": null,
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": null
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "knee-mri",
+      "title": "Knee MRI",
+      "titleId": "MRI Lutut",
+      "region": "lowerLimb",
+      "modality": "mri",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "slice-navigation",
+        "mpr",
+        "structure-identification"
+      ],
+      "learningModes": {
+        "guided": "planned",
+        "challenge": "planned",
+        "typedQuiz": "planned"
+      },
+      "datasets": [],
+      "reuses": null,
+      "access": {
+        "roles": [
+          "user",
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "pending",
+        "anatomical": "pending"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": null
+      },
+      "release": {
+        "status": "planned"
+      },
+      "blockers": []
+    },
+    {
+      "schemaVersion": 1,
+      "id": "foundation-fixture",
+      "title": "Foundation fixture (internal)",
+      "titleId": "Fixture fondasi (internal)",
+      "region": "internal",
+      "modality": "none",
+      "runtime": {
+        "type": "iframe",
+        "entry": null,
+        "releaseId": null
+      },
+      "capabilities": [],
+      "plannedCapabilities": [
+        "fixture-echo"
+      ],
+      "learningModes": {
+        "guided": "none",
+        "challenge": "none",
+        "typedQuiz": "none"
+      },
+      "datasets": [],
+      "reuses": null,
+      "access": {
+        "roles": [
+          "admin"
+        ],
+        "campuses": []
+      },
+      "review": {
+        "clinical": "not-required",
+        "anatomical": "not-required"
+      },
+      "licensing": {
+        "status": "unverified",
+        "ref": null
+      },
+      "release": {
+        "status": "building"
+      },
+      "blockers": [],
+      "internal": true
+    }
+  ]
+}
