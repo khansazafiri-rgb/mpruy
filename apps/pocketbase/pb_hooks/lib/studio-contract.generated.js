@@ -1,4 +1,5 @@
-// GENERATED FILE. Do not edit. Run node scripts/generate-studio-server-contract.mjs.\n'use strict';
+// GENERATED FILE. Do not edit. Run node scripts/generate-studio-server-contract.mjs.
+'use strict';
 // MEDCOEL Clinical Studios: pure, dependency-free, fail-closed availability contract.
 // No network, filesystem or credentials. All trusted release inputs come from the server.
 const SHA256 = /^[a-f0-9]{64}$/;
