@@ -1,0 +1,120 @@
+1
+00:00:00,000 --> 00:00:01,440
+Kok stiker yang ditempel
+
+2
+00:00:01,440 --> 00:00:03,000
+di kulit bisa menghasilkan
+
+3
+00:00:03,000 --> 00:00:04,180
+garis seperti ini?
+
+4
+00:00:04,720 --> 00:00:07,000
+Stiker itu adalah elektroda.
+
+5
+00:00:07,480 --> 00:00:08,900
+Mereka tidak menyetrum tubuh.
+
+6
+00:00:09,080 --> 00:00:11,010
+Mereka menangkap perubahan listrik
+
+7
+00:00:11,010 --> 00:00:12,980
+yang muncul saat jantung bekerja.
+
+8
+00:00:13,520 --> 00:00:14,820
+Lihat dari dalam.
+
+9
+00:00:14,960 --> 00:00:16,790
+Sinyal dimulai di nodus sinus,
+
+10
+00:00:16,790 --> 00:00:18,420
+lalu menyebar ke serambi.
+
+11
+00:00:18,900 --> 00:00:21,000
+Di layar, muncul gelombang P.
+
+12
+00:00:21,000 --> 00:00:22,820
+Sinyal sempat melewati nodus AV,
+
+13
+00:00:22,820 --> 00:00:24,560
+lalu menyebar cepat ke bilik.
+
+14
+00:00:24,800 --> 00:00:26,700
+Muncullah kompleks QRS.
+
+15
+00:00:27,200 --> 00:00:28,950
+Sesudahnya, bilik berkontraksi.
+
+16
+00:00:28,900 --> 00:00:30,350
+Ketika bilik memulihkan
+
+17
+00:00:30,350 --> 00:00:31,540
+keadaan listriknya,
+
+18
+00:00:31,540 --> 00:00:32,840
+muncul gelombang T.
+
+19
+00:00:33,440 --> 00:00:35,190
+Jadi garis EKG bukan gambar
+
+20
+00:00:35,190 --> 00:00:36,610
+jantung yang bergerak.
+
+21
+00:00:36,610 --> 00:00:38,720
+Itu jejak aktivitas listriknya.
+
+22
+00:00:39,180 --> 00:00:40,680
+Dari sini, tenaga kesehatan
+
+23
+00:00:40,680 --> 00:00:42,690
+bisa menilai laju dan irama jantung,
+
+24
+00:00:42,690 --> 00:00:43,970
+lalu membacanya bersama
+
+25
+00:00:43,970 --> 00:00:44,900
+kondisi pasien.
+
+26
+00:00:46,420 --> 00:00:48,060
+Di MEDCOEL, jelajahi
+
+27
+00:00:48,060 --> 00:00:50,220
+Atlas 3D dan Live 4D Lab.
+
+28
+00:00:50,520 --> 00:00:52,150
+Lanjut belajar lewat materi,
+
+29
+00:00:52,150 --> 00:00:54,240
+latihan soal, dan Simulasi Dokter.
+
+30
+00:00:54,560 --> 00:00:56,500
+Gratis di medcoel.com.
+
