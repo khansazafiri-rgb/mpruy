@@ -215,7 +215,19 @@ async function verifyPtbxlSumFile(items) {
   }
   for (const entry of items) if (sums.get(entry.member) !== entry.sha256)
     throw Error('PTB-XL official SHA256SUMS differs from pinned file: ' + entry.member);
-  return { status: 'official-sums-matched', count: items.length };
+  // The original ECG preparer embeds the publisher's full license text. This file was
+  // missing from the 13 registered signal/metadata inputs, so fetch it separately,
+  // hashing against PhysioNet's own release-specific SHA256SUMS (never bypass SHA).
+  const licenseSha = sums.get('LICENSE.txt');
+  if (!SHA.test(licenseSha || '')) throw Error('PTB-XL official checksum manifest lacks LICENSE.txt');
+  const licenseFile = path.join(root, 'LICENSE.txt');
+  const licenseBytes = fs.existsSync(licenseFile) ? fs.readFileSync(licenseFile)
+    : await boundedGet(URL_PREFIX['ptbxl-physionet'] + 'LICENSE.txt', 1024 * 1024);
+  if (sha(licenseBytes) !== licenseSha) throw Error('PTB-XL LICENSE.txt mismatched the official checksum manifest');
+  if (!licenseBytes.toString('utf8', 0, 400).includes('Creative Commons Attribution 4.0'))
+    throw Error('Unexpected PTB-XL license text; human license review required');
+  const licenseStatus = storeVerified(licenseFile, licenseBytes, licenseSha);
+  return { status: 'official-sums-matched', count: items.length + 1, license: licenseStatus, licenseSha256: licenseSha };
 }
 function safeLidcDcmEntries(zip, mode) {
   const raw = execFileSync('unzip', ['-Z', '-1', zip], { encoding: 'utf8', maxBuffer: 2 * 1024 * 1024 });
