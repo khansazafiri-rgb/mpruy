@@ -59,6 +59,7 @@ test('BP3D-PROOF-004: distinguish current publisher notice from older OBJ header
 test('BP3D-PROOF-005: legacy noncommercial Atlas frontend URLs and imports are forbidden', () => {
   for (const ref of [
     "import x from '../../../apps/anatomy/src/main.js';",
+    "import x from '../../../anatomy/src/main.js';",
     "fetch('/anatomy/viewer/models/skeletal.glb')",
     "import code from '@medcoel/anatomy'",
     'https://github.com/nqwrc/3d-anatomy',
