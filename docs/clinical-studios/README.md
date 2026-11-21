@@ -46,3 +46,7 @@ See [21-harvard-oxford-private-candidate.md](21-harvard-oxford-private-candidate
 ## Nine-studio BodyParts3D exact provenance (private audit)
 
 See [22-bodyparts3d-nine-studio-source-chain.md](22-bodyparts3d-nine-studio-source-chain.md) to verify official Release 4.0 OBJ/FMA/FJ provenance and code independence from the legacy NC Atlas frontend; this only prepares evidence and does not grant clearance.
+
+## Consolidated clearance and reviewer execution (all 24 studios)
+
+Run a single private worklist + review preparation batch rather than separate per-dataset PRs: [23-consolidated-clearance-execution.md](23-consolidated-clearance-execution.md). The summary remains preliminary and does not approve any source, medical content, privacy claim or release.
