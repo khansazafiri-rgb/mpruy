@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { createBatchSnapshot, checkBatch, renderMarkdown } from '../licensing/tools/clinical-clearance-batch.mjs';
+import { createBatchSnapshot, checkBatch, renderMarkdown, renderRightsNoticeDraft } from '../licensing/tools/clinical-clearance-batch.mjs';
 
 const read = p => JSON.parse(fs.readFileSync(new URL('../' + p, import.meta.url), 'utf8'));
 const data = () => ({
@@ -80,4 +80,16 @@ test('BATCH-006: human-ready markdown is reproducible and never invents approval
   assert.match(a, /brain-mri/);
   assert.match(a, /bodyparts3d-dbcls/);
   assert.doesNotMatch(a, /all 24 studios (?:approved|licensed for release)/i);
+});
+
+test('BATCH-007: draft NOTICE covers all source families, includes attribution URLs, never claims redistribution clearance', () => {
+  const snapshot = createBatchSnapshot(data());
+  const notice = renderRightsNoticeDraft(snapshot);
+  assert.match(notice, /^# MEDCOEL.*NOTICE review draft/m);
+  assert.match(notice, /NOT FOR PUBLICATION/);
+  for (const id of ['ptbxl-physionet', 'lidc-idri-tcia', 'spider-zenodo', 'bodyparts3d-dbcls', 'sri24-nitrc', 'ptx498-zenodo', 'hc18-zenodo', 'amos-zenodo'])
+    assert.ok(notice.includes('### ' + id), id);
+  assert.match(notice, /\\n### amos-zenodo\\n/);
+  assert.match(notice, /LPBA40.*blocked/);
+  assert.match(notice, /Separate/i);
 });
