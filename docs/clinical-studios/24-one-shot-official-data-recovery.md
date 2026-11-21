@@ -86,6 +86,34 @@ Jika **dicom-parser missing**, jalankan `npm ci --prefix apps/studios`. Jika **e
 
 Perintah batch otomatis memanggil `npm run audit:clinical-clearance-private` lewat CLI setelah persiapan untuk menyusun paket reviewer **jika output asli tersedia**. Report dapat menyebut sebagian studio gagal sehingga exit code bukan 0; jangan mengartikan keberhasilan yang lain sebagai kegagalan seluruh batch.
 
+## Pemulihan khusus setelah audit Mac: HC18 CSV dan TCIA derivative mismatch
+
+Reproduksi 21 Nov 2026 setelah PR #247: PTB-XL, SPIDER dan PTX-498 berhasil `prepared-for-private-review-only`; HC18 gagal `Full-ZIP fallback is authorized only for the official HC18 training_set.zip` karena CSV kalibrasi `training_set_pixel_size_and_HC.csv` keliru diarahkan ke ZIP reader. Kini CSV diunduh sebagai **file langsung dari Zenodo**, diverifikasi terhadap hash registry, sedangkan delapan PNG gambar/mask diambil dari ZIP dengan CRC dan hash per anggota. Kedua jalur tidak pernah beralih ke metadata/repository mirror yang tidak dikenal.
+
+Untuk LIDC-IDRI, regenerasi ZIP API TCIA menghasilkan hasil turunan yang ternyata tidak cocok dengan hash sumber lama (`TCIA_DERIVED_SHA_MISMATCH`). Ini adalah **mismatch data aktual**, belum bisa disimpulkan bahwa hanya ZIP yang berbeda. Tool **tidak lagi menghapus kandidat yang perlu diselidiki**, melainkan memindahkannya ke folder karantina privat:
+
+- `local-data/studio-resources/clearance/tcia-derived-mismatch.json` — daftar tiga file hasil dan SHA lama/baru, panjang byte, serta ringkasan hash header dan voxel NIfTI (tanpa piksel/citra medis, identitas pasien atau jawaban soal)
+- `local-data/studio-resources/quarantine/tcia-repacked/ct-build-unverified-*/` — hasil turunan baru yang **tidak dipercaya**, untuk audit lokal dengan akses terbatas
+- `local-data/studio-resources/clearance/official-data-recovery.json` — status semua dataset, `tciaMismatchedOutputs` dan lokasi karantina
+
+Jika semua hasil turunan cocok **byte-for-byte** dengan hash registry yang lama, statusnya masih `private-derived-output-pins-match-TCIA-container-repacked` dan belum mendapat persetujuan hak/publikasi. Jika ada perbedaan, status tetap gagal. Pemeriksaan fitur medis seperti orientasi, deidentifikasi DICOM, burnt-in PHI, segmentasi multi-reader, dan kunci soal harus dilakukan reviewer berdasarkan bukti valid; jangan mengganti hash registry agar menerima data yang berbeda.
+
+Setelah PR perbaikan merged, dari root repo jalankan:
+
+```bash
+git switch claude/focused-wozniak-1ayrxa
+git pull --ff-only origin claude/focused-wozniak-1ayrxa
+npm run recover:studio-data
+```
+
+Perintah dapat dilanjutkan, dan tiga dataset yang SHA sumber/build-nya sudah tepat akan dipakai ulang. Jika Chest CT masih gagal, periksa **hanya metadata dan hash**, tanpa mengunggah gambar/DICOM atau file challenge privat:
+
+```bash
+node -e 'const f=require("./local-data/studio-resources/clearance/tcia-derived-mismatch.json"); console.table(f.outputs.map(x=>({output:x.path,matches:x.matches,expected:x.expectedSha256,observed:x.observedSha256,bytes:x.bytes})))'
+```
+
+Laporan tersebut adalah dasar investigasi, **bukan lisensi atau bukti kecukupan review klinis**. Jangan merilis hasil karantina atau menghapus datanya tanpa keputusan terkait.
+
 ## Perlu selesai sebelum release
 
 Audit sumber/hash yang lulus **tidak** sama dengan lisensi semua turunan, atribusi/ShareAlike yang lengkap, keselamatan privasi (mis. burned-in identifiers di piksel), validasi kunci jawaban/terminologi, atau persetujuan rilis. Tetap diperlukan reviewer nyata dan keputusan bertanda tangan terhadap bytes tepat, kemudian B1 release inspection, receipt dan attestation. **Tidak ada perubahan status `verified`/`publishable`, production server, UI Atlas, 4D Lab, atau langganan berbayar.**
