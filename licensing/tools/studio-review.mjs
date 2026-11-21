@@ -171,9 +171,59 @@ export function terminologyDraft(studio, buildRoot = BUILD) {
     note: 'Draft generated from source names. Not usable for grading until a terminology reviewer completes ID/Latin forms and the exact bytes are approved.', concepts };
 }
 
-export function buildPackage(studio, { resources = readJson(REG), buildRoot = BUILD, outRoot = PACKAGES } = {}) {
-  const assets = resources.assets.filter(a => a.id.startsWith(studio + '.'));
+/** Fail closed before handing private files to a human reviewer. Registry hashes alone are not proof of the current build bytes. */
+export function verifyReviewPackageInputs(studio, { resources = readJson(REG), buildRoot = BUILD } = {}) {
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(studio)) throw Error('REVIEW_PACKAGE_INVALID_STUDIO_ID');
+  const assets = resources.assets.filter(a => !a.sourceFile && a.id.startsWith(studio + '.'));
   if (!assets.length) throw Error('No registered derived assets for ' + studio);
+  const dir = path.join(buildRoot, studio);
+  const checkFile = rel => {
+    if (typeof rel !== 'string' || !/^(?:data|server)\/[a-zA-Z0-9_.\/-]+$/.test(rel) ||
+        rel.split('/').some(s => !s || s === '.' || s === '..'))
+      throw Error('REVIEW_PACKAGE_UNSAFE_PATH:' + rel);
+    let current = dir;
+    for (const part of rel.split('/')) {
+      current = path.join(current, part);
+      const st = fs.lstatSync(current);
+      if (st.isSymbolicLink()) throw Error('REVIEW_PACKAGE_SYMLINK:' + rel);
+    }
+    if (!fs.lstatSync(current).isFile()) throw Error('REVIEW_PACKAGE_NOT_FILE:' + rel);
+    return fs.readFileSync(current);
+  };
+  const st = fs.lstatSync(dir);
+  if (!st.isDirectory() || st.isSymbolicLink()) throw Error('REVIEW_PACKAGE_INVALID_BUILD_DIR');
+  // Also reject unregistered symlinks/special files: privacyScan traverses the whole build.
+  const assertTree = d => {
+    for (const ent of fs.readdirSync(d, { withFileTypes: true })) {
+      if (ent.isSymbolicLink() || (!ent.isDirectory() && !ent.isFile()))
+        throw Error('REVIEW_PACKAGE_UNSAFE_TREE_ENTRY:' + ent.name);
+      if (ent.isDirectory()) assertTree(path.join(d, ent.name));
+    }
+  };
+  assertTree(dir);
+  const provenanceFile = path.join(dir, 'provenance.json');
+  const p = JSON.parse(fs.readFileSync(provenanceFile, 'utf8'));
+  if (p.schema !== 'medcoel.provenance.v1' || p.studio !== studio ||
+      !p.outputs || typeof p.outputs !== 'object' || Array.isArray(p.outputs))
+    throw Error('REVIEW_PACKAGE_PROVENANCE_MISSING_OR_WRONG_STUDIO');
+  const match = (rel, expected) => {
+    const bytes = checkFile(rel), digest = sha(bytes), recorded = p.outputs[rel];
+    if (!recorded || digest !== expected.sha256 || bytes.length !== expected.bytes ||
+        recorded.sha256 !== digest || recorded.bytes !== bytes.length)
+      throw Error('REVIEW_PACKAGE_BYTES_OR_PROVENANCE_MISMATCH:' + rel);
+  };
+  for (const asset of assets) {
+    if (!asset.path.startsWith('data/')) throw Error('REVIEW_PACKAGE_ASSET_OUTSIDE_DATA:' + asset.id);
+    match(asset.path, asset);
+  }
+  if (p.outputs['server/challenge.json']) match('server/challenge.json', p.outputs['server/challenge.json']);
+  else if (fs.existsSync(path.join(dir, 'server/challenge.json')))
+    throw Error('REVIEW_PACKAGE_UNTRACKED_CHALLENGE_KEY');
+  return assets;
+}
+
+export function buildPackage(studio, { resources = readJson(REG), buildRoot = BUILD, outRoot = PACKAGES } = {}) {
+  const assets = verifyReviewPackageInputs(studio, { resources, buildRoot });
   const out = path.join(outRoot, studio); fs.rmSync(out, { recursive: true, force: true }); fs.mkdirSync(out, { recursive: true });
   const parents = [...new Set(assets.flatMap(a => a.dependsOn.map(d => d.assetId)))].map(id => resources.assets.find(a => a.id === id));
   const files = {};
