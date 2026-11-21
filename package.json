@@ -41,7 +41,8 @@
     "audit:clinical-clearance": "node licensing/tools/clinical-clearance-batch.mjs --report",
     "audit:clinical-clearance-private": "node licensing/tools/clinical-clearance-batch.mjs --report --packages",
     "plan:studio-data-recovery": "node licensing/tools/recover-private-studio-sources.mjs --plan",
-    "recover:studio-data": "node licensing/tools/recover-private-studio-sources.mjs --recover"
+    "recover:studio-data": "node licensing/tools/recover-private-studio-sources.mjs --recover",
+    "audit:lidc-private": "node apps/studios/tools/audit-lidc-private.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
