@@ -1,0 +1,158 @@
+{
+ "durasi_edu": 52.2,
+ "skalar_normalisasi": 1.1028,
+ "sfx": [
+  {
+   "t": 0.0,
+   "sfx": "desis-hook"
+  },
+  {
+   "t": 0.0,
+   "sfx": "klik-tekan-hook"
+  },
+  {
+   "t": 6.55,
+   "sfx": "potong-makro"
+  },
+  {
+   "t": 8.0,
+   "sfx": "klik-tekan-makro"
+  },
+  {
+   "t": 8.45,
+   "sfx": "potong-penampang"
+  },
+  {
+   "t": 8.68,
+   "sfx": "label-menekan"
+  },
+  {
+   "t": 8.95,
+   "sfx": "klik-tekan-penampang"
+  },
+  {
+   "t": 9.6,
+   "sfx": "desis-penampang"
+  },
+  {
+   "t": 9.95,
+   "sfx": "label-dosis"
+  },
+  {
+   "t": 12.2,
+   "sfx": "klik-awal"
+  },
+  {
+   "t": 12.24,
+   "sfx": "label-terlalu-awal"
+  },
+  {
+   "t": 12.5,
+   "sfx": "desis-terlalu-awal"
+  },
+  {
+   "t": 13.54,
+   "sfx": "mulai-napas"
+  },
+  {
+   "t": 14.2,
+   "sfx": "napas-awal"
+  },
+  {
+   "t": 15.58,
+   "sfx": "label-tertinggal"
+  },
+  {
+   "t": 18.55,
+   "sfx": "klik-cocok"
+  },
+  {
+   "t": 18.88,
+   "sfx": "label-bersamaan"
+  },
+  {
+   "t": 18.9,
+   "sfx": "desis-cocok"
+  },
+  {
+   "t": 18.9,
+   "sfx": "napas-cocok"
+  },
+  {
+   "t": 25.6,
+   "sfx": "label-saluran"
+  },
+  {
+   "t": 30.26,
+   "sfx": "salbutamol"
+  },
+  {
+   "t": 33.0,
+   "sfx": "partikel-menempel"
+  },
+  {
+   "t": 33.16,
+   "sfx": "beta-dua"
+  },
+  {
+   "t": 33.28,
+   "sfx": "partikel-menempel"
+  },
+  {
+   "t": 33.56,
+   "sfx": "partikel-menempel"
+  },
+  {
+   "t": 33.84,
+   "sfx": "partikel-menempel"
+  },
+  {
+   "t": 34.12,
+   "sfx": "partikel-menempel"
+  },
+  {
+   "t": 34.32,
+   "sfx": "otot"
+  },
+  {
+   "t": 34.4,
+   "sfx": "partikel-menempel"
+  },
+  {
+   "t": 34.68,
+   "sfx": "partikel-menempel"
+  },
+  {
+   "t": 34.96,
+   "sfx": "partikel-menempel"
+  },
+  {
+   "t": 36.4,
+   "sfx": "otot-mengendur"
+  },
+  {
+   "t": 38.18,
+   "sfx": "saluran-melebar"
+  },
+  {
+   "t": 41.2,
+   "sfx": "ringkasan"
+  },
+  {
+   "t": 45.0,
+   "sfx": "cocok-centang"
+  },
+  {
+   "t": 46.9,
+   "sfx": "kartu-jenis"
+  },
+  {
+   "t": 47.25,
+   "sfx": "kartu-jenis"
+  },
+  {
+   "t": 47.6,
+   "sfx": "kartu-jenis"
+  }
+ ]
+}

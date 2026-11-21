@@ -1,0 +1,273 @@
+{
+ "dur": 68.4,
+ "edu_dur": 52.2,
+ "outro_dur": 16.2,
+ "sent": {
+  "s1": [
+   0.0,
+   4.2
+  ],
+  "s2": [
+   4.72,
+   5.92
+  ],
+  "s3": [
+   6.76,
+   11.1
+  ],
+  "s4": [
+   11.58,
+   16.38
+  ],
+  "s5": [
+   17.04,
+   21.44
+  ],
+  "s6": [
+   22.02,
+   26.68
+  ],
+  "s7": [
+   26.68,
+   31.14
+  ],
+  "s8": [
+   31.58,
+   35.6
+  ],
+  "s9": [
+   36.1,
+   40.44
+  ],
+  "s10": [
+   41.08,
+   43.2
+  ],
+  "s11": [
+   43.72,
+   46.04
+  ],
+  "s12": [
+   46.48,
+   48.6
+  ],
+  "s13": [
+   48.98,
+   51.94
+  ]
+ },
+ "w": {
+  "dosisTerukur": 7.56,
+  "menekan": 8.68,
+  "tabung": 9.04,
+  "melepaskan": 9.38,
+  "satu": 10.08,
+  "semprotan": 10.4,
+  "terlaluAwal": 12.24,
+  "sebelum": 13.24,
+  "mulai": 13.54,
+  "napas": 13.94,
+  "tertinggal": 15.58,
+  "mulut": 16.02,
+  "sekarang": 17.04,
+  "semprotanDilepas": 18.02,
+  "bersamaan": 18.88,
+  "awal": 19.72,
+  "perlahan": 21.0,
+  "partikel": 22.02,
+  "aliran": 23.42,
+  "melewatiMulut": 24.16,
+  "masuk": 25.6,
+  "saluran": 26.0,
+  "contoh": 27.9,
+  "salbutamol": 30.26,
+  "bekerja": 32.14,
+  "reseptor": 32.8,
+  "betaDua": 33.16,
+  "otot": 34.32,
+  "dinding": 34.54,
+  "ototnya": 36.1,
+  "mengendur": 36.62,
+  "melebar": 38.18,
+  "udara": 39.16,
+  "lewat": 40.14,
+  "bukan": 41.36,
+  "waktu": 43.72,
+  "cocok": 45.64,
+  "jenis": 47.24,
+  "ikuti": 48.98,
+  "petunjuk": 50.66
+ },
+ "cap": [
+  [
+   0.0,
+   1.69,
+   "Pernah lihat inhaler disemprot,"
+  ],
+  [
+   1.69,
+   3.0,
+   "tapi obatnya malah tidak"
+  ],
+  [
+   3.0,
+   4.3,
+   "banyak sampai ke paru?"
+  ],
+  [
+   4.72,
+   6.02,
+   "Kuncinya ada pada waktu."
+  ],
+  [
+   6.76,
+   8.39,
+   "Pada inhaler dosis terukur,"
+  ],
+  [
+   8.39,
+   9.89,
+   "menekan tabung melepaskan"
+  ],
+  [
+   9.89,
+   11.2,
+   "satu semprotan obat."
+  ],
+  [
+   11.58,
+   12.92,
+   "Kalau ditekan terlalu awal,"
+  ],
+  [
+   12.92,
+   14.3,
+   "sebelum mulai menarik napas,"
+  ],
+  [
+   14.3,
+   15.39,
+   "lebih banyak obat bisa"
+  ],
+  [
+   15.39,
+   16.48,
+   "tertinggal di mulut."
+  ],
+  [
+   17.04,
+   18.52,
+   "Sekarang lihat saat semprotan"
+  ],
+  [
+   18.52,
+   19.75,
+   "dilepas bersamaan dengan"
+  ],
+  [
+   19.75,
+   21.54,
+   "awal tarikan napas yang perlahan."
+  ],
+  [
+   22.02,
+   24.01,
+   "Partikel obat ikut aliran udara,"
+  ],
+  [
+   24.01,
+   24.94,
+   "melewati mulut,"
+  ],
+  [
+   24.94,
+   26.78,
+   "lalu masuk ke saluran napas."
+  ],
+  [
+   26.68,
+   27.97,
+   "Untuk contoh ini,"
+  ],
+  [
+   27.97,
+   29.78,
+   "obat di dalam inhalernya"
+  ],
+  [
+   29.78,
+   31.24,
+   "adalah salbutamol."
+  ],
+  [
+   31.58,
+   32.82,
+   "Obat ini bekerja pada"
+  ],
+  [
+   32.82,
+   34.3,
+   "reseptor beta dua di otot"
+  ],
+  [
+   34.3,
+   35.7,
+   "dinding saluran napas."
+  ],
+  [
+   36.1,
+   37.25,
+   "Ototnya mengendur,"
+  ],
+  [
+   37.25,
+   38.65,
+   "saluran napas melebar,"
+  ],
+  [
+   38.65,
+   40.54,
+   "dan udara lebih mudah lewat."
+  ],
+  [
+   41.08,
+   42.26,
+   "Jadi bukan cuma soal"
+  ],
+  [
+   42.26,
+   43.3,
+   "menekan inhaler."
+  ],
+  [
+   43.72,
+   44.7,
+   "Waktu semprotan dan"
+  ],
+  [
+   44.7,
+   46.14,
+   "tarikan napas perlu cocok."
+  ],
+  [
+   46.48,
+   47.38,
+   "Inhaler punya jenis"
+  ],
+  [
+   47.38,
+   48.7,
+   "dan isi obat yang berbeda."
+  ],
+  [
+   48.98,
+   50.35,
+   "Ikuti cara pakai pada alat"
+  ],
+  [
+   50.35,
+   52.04,
+   "dan petunjuk tenaga kesehatan."
+  ]
+ ]
+}

@@ -19,6 +19,8 @@ EDUCATION = {
     "introvert-ekstrovert", "kopi-kafein-adenosin", "malam-lapar",
     "pasien-tidak-sadar-di-igd", "ekg-garis-layar", "hb-satu-tetes",
     "ct-mri-perbedaan-citra", "parasetamol-nyeri-kepala", "spo2-pulse-oximeter",
+    "termometer-raksa-tertahan", "usg-gema-gambar", "inhaler-waktu-tarikan",
+=======
     "termometer-raksa-tertahan", "usg-gema-gambar", "test-pack-dua-garis",
 }
 STUDENT_STORIES = {

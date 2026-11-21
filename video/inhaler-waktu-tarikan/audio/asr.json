@@ -1,0 +1,706 @@
+[
+ {
+  "start": 0.0,
+  "end": 4.2,
+  "text": "Pernah lihat inhaler disemprot, tapi obatnya malah tidak banyak sampai ke paru?",
+  "words": [
+   {
+    "w": "Pernah",
+    "s": 0.0,
+    "e": 0.42
+   },
+   {
+    "w": "lihat",
+    "s": 0.42,
+    "e": 0.64
+   },
+   {
+    "w": "inhaler",
+    "s": 0.64,
+    "e": 1.16
+   },
+   {
+    "w": "disemprot,",
+    "s": 1.16,
+    "e": 1.66
+   },
+   {
+    "w": "tapi",
+    "s": 1.86,
+    "e": 2.12
+   },
+   {
+    "w": "obatnya",
+    "s": 2.12,
+    "e": 2.6
+   },
+   {
+    "w": "malah",
+    "s": 2.6,
+    "e": 3.02
+   },
+   {
+    "w": "tidak",
+    "s": 3.02,
+    "e": 3.2
+   },
+   {
+    "w": "banyak",
+    "s": 3.2,
+    "e": 3.52
+   },
+   {
+    "w": "sampai",
+    "s": 3.52,
+    "e": 3.74
+   },
+   {
+    "w": "ke",
+    "s": 3.74,
+    "e": 3.88
+   },
+   {
+    "w": "paru?",
+    "s": 3.88,
+    "e": 4.2
+   }
+  ]
+ },
+ {
+  "start": 4.72,
+  "end": 5.92,
+  "text": "Kuncinya ada pada waktu.",
+  "words": [
+   {
+    "w": "Kuncinya",
+    "s": 4.72,
+    "e": 5.32
+   },
+   {
+    "w": "ada",
+    "s": 5.32,
+    "e": 5.46
+   },
+   {
+    "w": "pada",
+    "s": 5.46,
+    "e": 5.64
+   },
+   {
+    "w": "waktu.",
+    "s": 5.64,
+    "e": 5.92
+   }
+  ]
+ },
+ {
+  "start": 6.76,
+  "end": 11.1,
+  "text": "Pada inhaler dosis terukur, menekan tabung melepaskan satu semprotan obat.",
+  "words": [
+   {
+    "w": "Pada",
+    "s": 6.76,
+    "e": 7.08
+   },
+   {
+    "w": "inhaler",
+    "s": 7.08,
+    "e": 7.56
+   },
+   {
+    "w": "dosis",
+    "s": 7.56,
+    "e": 7.82
+   },
+   {
+    "w": "terukur,",
+    "s": 7.82,
+    "e": 8.42
+   },
+   {
+    "w": "menekan",
+    "s": 8.68,
+    "e": 9.04
+   },
+   {
+    "w": "tabung",
+    "s": 9.04,
+    "e": 9.38
+   },
+   {
+    "w": "melepaskan",
+    "s": 9.38,
+    "e": 10.08
+   },
+   {
+    "w": "satu",
+    "s": 10.08,
+    "e": 10.4
+   },
+   {
+    "w": "semprotan",
+    "s": 10.4,
+    "e": 10.8
+   },
+   {
+    "w": "obat.",
+    "s": 10.8,
+    "e": 11.1
+   }
+  ]
+ },
+ {
+  "start": 11.58,
+  "end": 16.38,
+  "text": "Kalau ditekan terlalu awal, sebelum mulai menarik napas, lebih banyak obat bisa tertinggal dimulut.",
+  "words": [
+   {
+    "w": "Kalau",
+    "s": 11.58,
+    "e": 11.9
+   },
+   {
+    "w": "ditekan",
+    "s": 11.9,
+    "e": 12.24
+   },
+   {
+    "w": "terlalu",
+    "s": 12.24,
+    "e": 12.5
+   },
+   {
+    "w": "awal,",
+    "s": 12.5,
+    "e": 12.9
+   },
+   {
+    "w": "sebelum",
+    "s": 13.24,
+    "e": 13.54
+   },
+   {
+    "w": "mulai",
+    "s": 13.54,
+    "e": 13.7
+   },
+   {
+    "w": "menarik",
+    "s": 13.7,
+    "e": 13.94
+   },
+   {
+    "w": "napas,",
+    "s": 13.94,
+    "e": 14.36
+   },
+   {
+    "w": "lebih",
+    "s": 14.82,
+    "e": 14.96
+   },
+   {
+    "w": "banyak",
+    "s": 14.96,
+    "e": 15.16
+   },
+   {
+    "w": "obat",
+    "s": 15.16,
+    "e": 15.44
+   },
+   {
+    "w": "bisa",
+    "s": 15.44,
+    "e": 15.58
+   },
+   {
+    "w": "tertinggal",
+    "s": 15.58,
+    "e": 16.02
+   },
+   {
+    "w": "dimulut.",
+    "s": 16.02,
+    "e": 16.38
+   }
+  ]
+ },
+ {
+  "start": 17.04,
+  "end": 21.44,
+  "text": "Sekarang lihat saat semprotan dilepas bersamaan dengan awal tarikan napas yang perlahan.",
+  "words": [
+   {
+    "w": "Sekarang",
+    "s": 17.04,
+    "e": 17.6
+   },
+   {
+    "w": "lihat",
+    "s": 17.6,
+    "e": 17.76
+   },
+   {
+    "w": "saat",
+    "s": 17.76,
+    "e": 18.02
+   },
+   {
+    "w": "semprotan",
+    "s": 18.02,
+    "e": 18.46
+   },
+   {
+    "w": "dilepas",
+    "s": 18.46,
+    "e": 18.88
+   },
+   {
+    "w": "bersamaan",
+    "s": 18.88,
+    "e": 19.36
+   },
+   {
+    "w": "dengan",
+    "s": 19.36,
+    "e": 19.72
+   },
+   {
+    "w": "awal",
+    "s": 19.72,
+    "e": 20.22
+   },
+   {
+    "w": "tarikan",
+    "s": 20.22,
+    "e": 20.52
+   },
+   {
+    "w": "napas",
+    "s": 20.52,
+    "e": 20.88
+   },
+   {
+    "w": "yang",
+    "s": 20.88,
+    "e": 21.0
+   },
+   {
+    "w": "perlahan.",
+    "s": 21.0,
+    "e": 21.44
+   }
+  ]
+ },
+ {
+  "start": 22.02,
+  "end": 26.68,
+  "text": "Partikel obat ikut aliran udara melewati mulut, lalu masuk ke saluran napas.",
+  "words": [
+   {
+    "w": "Partikel",
+    "s": 22.02,
+    "e": 22.54
+   },
+   {
+    "w": "obat",
+    "s": 22.54,
+    "e": 23.0
+   },
+   {
+    "w": "ikut",
+    "s": 23.0,
+    "e": 23.42
+   },
+   {
+    "w": "aliran",
+    "s": 23.42,
+    "e": 23.7
+   },
+   {
+    "w": "udara",
+    "s": 23.7,
+    "e": 24.16
+   },
+   {
+    "w": "melewati",
+    "s": 24.16,
+    "e": 24.74
+   },
+   {
+    "w": "mulut,",
+    "s": 24.74,
+    "e": 25.2
+   },
+   {
+    "w": "lalu",
+    "s": 25.5,
+    "e": 25.6
+   },
+   {
+    "w": "masuk",
+    "s": 25.6,
+    "e": 25.86
+   },
+   {
+    "w": "ke",
+    "s": 25.86,
+    "e": 26.0
+   },
+   {
+    "w": "saluran",
+    "s": 26.0,
+    "e": 26.24
+   },
+   {
+    "w": "napas.",
+    "s": 26.24,
+    "e": 26.68
+   }
+  ]
+ },
+ {
+  "start": 26.68,
+  "end": 31.14,
+  "text": "Untuk contoh ini, obat di dalam inhalernya adalah salbutamol.",
+  "words": [
+   {
+    "w": "Untuk",
+    "s": 26.68,
+    "e": 27.9
+   },
+   {
+    "w": "contoh",
+    "s": 27.9,
+    "e": 28.14
+   },
+   {
+    "w": "ini,",
+    "s": 28.14,
+    "e": 28.42
+   },
+   {
+    "w": "obat",
+    "s": 28.86,
+    "e": 29.14
+   },
+   {
+    "w": "di",
+    "s": 29.14,
+    "e": 29.22
+   },
+   {
+    "w": "dalam",
+    "s": 29.22,
+    "e": 29.38
+   },
+   {
+    "w": "inhalernya",
+    "s": 29.38,
+    "e": 29.94
+   },
+   {
+    "w": "adalah",
+    "s": 29.94,
+    "e": 30.26
+   },
+   {
+    "w": "salbutamol.",
+    "s": 30.26,
+    "e": 31.14
+   }
+  ]
+ },
+ {
+  "start": 31.58,
+  "end": 35.6,
+  "text": "Obat ini bekerja pada receptor beta2 di otot dinding selurna napas.",
+  "words": [
+   {
+    "w": "Obat",
+    "s": 31.58,
+    "e": 32.0
+   },
+   {
+    "w": "ini",
+    "s": 32.0,
+    "e": 32.14
+   },
+   {
+    "w": "bekerja",
+    "s": 32.14,
+    "e": 32.56
+   },
+   {
+    "w": "pada",
+    "s": 32.56,
+    "e": 32.8
+   },
+   {
+    "w": "receptor",
+    "s": 32.8,
+    "e": 33.16
+   },
+   {
+    "w": "beta2",
+    "s": 33.16,
+    "e": 33.88
+   },
+   {
+    "w": "di",
+    "s": 33.88,
+    "e": 34.32
+   },
+   {
+    "w": "otot",
+    "s": 34.32,
+    "e": 34.54
+   },
+   {
+    "w": "dinding",
+    "s": 34.54,
+    "e": 34.82
+   },
+   {
+    "w": "selurna",
+    "s": 34.82,
+    "e": 35.18
+   },
+   {
+    "w": "napas.",
+    "s": 35.18,
+    "e": 35.6
+   }
+  ]
+ },
+ {
+  "start": 36.1,
+  "end": 40.44,
+  "text": "Ototnya mengandur, selurna napas melebar, dan udara lebih mudah lewat.",
+  "words": [
+   {
+    "w": "Ototnya",
+    "s": 36.1,
+    "e": 36.62
+   },
+   {
+    "w": "mengandur,",
+    "s": 36.62,
+    "e": 37.28
+   },
+   {
+    "w": "selurna",
+    "s": 37.58,
+    "e": 37.9
+   },
+   {
+    "w": "napas",
+    "s": 37.9,
+    "e": 38.18
+   },
+   {
+    "w": "melebar,",
+    "s": 38.18,
+    "e": 38.7
+   },
+   {
+    "w": "dan",
+    "s": 39.14,
+    "e": 39.16
+   },
+   {
+    "w": "udara",
+    "s": 39.16,
+    "e": 39.62
+   },
+   {
+    "w": "lebih",
+    "s": 39.62,
+    "e": 39.9
+   },
+   {
+    "w": "mudah",
+    "s": 39.9,
+    "e": 40.14
+   },
+   {
+    "w": "lewat.",
+    "s": 40.14,
+    "e": 40.44
+   }
+  ]
+ },
+ {
+  "start": 41.08,
+  "end": 46.04,
+  "text": "Jadi bukan cuma soal menekan inhaler. Waktu semprotan dan tarikan napas perlu cocok.",
+  "words": [
+   {
+    "w": "Jadi",
+    "s": 41.08,
+    "e": 41.36
+   },
+   {
+    "w": "bukan",
+    "s": 41.36,
+    "e": 41.82
+   },
+   {
+    "w": "cuma",
+    "s": 41.82,
+    "e": 42.04
+   },
+   {
+    "w": "soal",
+    "s": 42.04,
+    "e": 42.34
+   },
+   {
+    "w": "menekan",
+    "s": 42.34,
+    "e": 42.74
+   },
+   {
+    "w": "inhaler.",
+    "s": 42.74,
+    "e": 43.24
+   },
+   {
+    "w": "Waktu",
+    "s": 43.72,
+    "e": 44.0
+   },
+   {
+    "w": "semprotan",
+    "s": 44.0,
+    "e": 44.66
+   },
+   {
+    "w": "dan",
+    "s": 44.66,
+    "e": 44.82
+   },
+   {
+    "w": "tarikan",
+    "s": 44.82,
+    "e": 45.1
+   },
+   {
+    "w": "napas",
+    "s": 45.1,
+    "e": 45.46
+   },
+   {
+    "w": "perlu",
+    "s": 45.46,
+    "e": 45.64
+   },
+   {
+    "w": "cocok.",
+    "s": 45.64,
+    "e": 46.04
+   }
+  ]
+ },
+ {
+  "start": 46.48,
+  "end": 48.6,
+  "text": "Inhaler punya jenis dan isi obat yang berbeda.",
+  "words": [
+   {
+    "w": "Inhaler",
+    "s": 46.48,
+    "e": 47.06
+   },
+   {
+    "w": "punya",
+    "s": 47.06,
+    "e": 47.24
+   },
+   {
+    "w": "jenis",
+    "s": 47.24,
+    "e": 47.54
+   },
+   {
+    "w": "dan",
+    "s": 47.54,
+    "e": 47.7
+   },
+   {
+    "w": "isi",
+    "s": 47.7,
+    "e": 47.9
+   },
+   {
+    "w": "obat",
+    "s": 47.9,
+    "e": 48.1
+   },
+   {
+    "w": "yang",
+    "s": 48.1,
+    "e": 48.18
+   },
+   {
+    "w": "berbeda.",
+    "s": 48.18,
+    "e": 48.6
+   }
+  ]
+ },
+ {
+  "start": 48.98,
+  "end": 51.94,
+  "text": "Ikuti cara pakai pada alat dan petunjuk tenaga kesehatan.",
+  "words": [
+   {
+    "w": "Ikuti",
+    "s": 48.98,
+    "e": 49.32
+   },
+   {
+    "w": "cara",
+    "s": 49.32,
+    "e": 49.54
+   },
+   {
+    "w": "pakai",
+    "s": 49.54,
+    "e": 49.84
+   },
+   {
+    "w": "pada",
+    "s": 49.84,
+    "e": 50.08
+   },
+   {
+    "w": "alat",
+    "s": 50.08,
+    "e": 50.44
+   },
+   {
+    "w": "dan",
+    "s": 50.44,
+    "e": 50.66
+   },
+   {
+    "w": "petunjuk",
+    "s": 50.66,
+    "e": 51.1
+   },
+   {
+    "w": "tenaga",
+    "s": 51.1,
+    "e": 51.4
+   },
+   {
+    "w": "kesehatan.",
+    "s": 51.4,
+    "e": 51.94
+   }
+  ]
+ }
+]
