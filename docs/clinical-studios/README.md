@@ -17,6 +17,7 @@
 | [12-MEDCOEL-24-STUDIOS-RESOURCE-MATRIX.md](12-MEDCOEL-24-STUDIOS-RESOURCE-MATRIX.md) | Source-workstream resource research and acquisition notes |
 | [13-24-studio-completion-matrix.md](13-24-studio-completion-matrix.md) | Source-workstream per-studio status and coverage limits |
 | [14-final-integration-readiness.md](14-final-integration-readiness.md) | Final Git reconciliation, fresh test coverage, provenance gaps and staging prerequisites |
+| [19-free-core-licensing-validation.md](19-free-core-licensing-validation.md) | Verified source-level licensing research, free core vs optional video boundary, and unresolved exact-file/rightsholder clearance | 
 
 ## Integration status
 
