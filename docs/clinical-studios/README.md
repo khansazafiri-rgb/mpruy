@@ -42,3 +42,7 @@ Legacy Atlas, 4D Lab, Lab Hub, Study Planner, Hermes, production configuration a
 ## Harvard–Oxford atlas alternative (private, not cleared)
 
 See [21-harvard-oxford-private-candidate.md](21-harvard-oxford-private-candidate.md) for a SHA-pinned private importer that requires a licensed aligned MRI underlay and refuses mismatched atlas geometry. No FSL software, LPBA40 bytes, rights upgrade or public release.
+
+## Nine-studio BodyParts3D exact provenance (private audit)
+
+See [22-bodyparts3d-nine-studio-source-chain.md](22-bodyparts3d-nine-studio-source-chain.md) to verify official Release 4.0 OBJ/FMA/FJ provenance and code independence from the legacy NC Atlas frontend; this only prepares evidence and does not grant clearance.
