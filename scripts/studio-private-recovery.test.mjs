@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import crypto from 'node:crypto';
+import zlib from 'node:zlib';
+import { checkSeriesIdentity, inspectNiftiGzFile, derivedPinComparison } from '../licensing/tools/lidc-private-audit-core.mjs';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import {
@@ -165,4 +167,50 @@ test('RECOVER-013: changed CT source cannot promote rights and keeps mismatched 
   assert.match(source, /privateCandidateQuarantine/);
   assert.match(source, /fs\.renameSync\(ctOutput, candidate\)/);
   assert.doesNotMatch(source, /status:\s*['"]publishable['"]/);
+});
+
+test('RECOVER-014: selected TCIA CT and SEG instance identity must be complete and unique', () => {
+  const uid = '1.2.276.0.7230010.3.1.3.99';
+  const make = n => ({
+    seriesUid: uid, sopUid: '1.2.3.4.' + n, sopClassUid: '1.2.840.10008.5.1.4.1.1.2',
+    modality: 'CT', pixelDataBytes: 8, identityRemoved: 'YES', burnedIn: 'NO',
+  });
+  const ok = checkSeriesIdentity([make(1), make(2)], uid);
+  assert.equal(ok.uniqueSopCount, 2);
+  assert.equal(ok.identityRemovedFlag, 'all-YES');
+  assert.equal(ok.burnedInAnnotationFlag, 'all-NO-declared-visual-review-still-required');
+  assert.equal(ok.patientPrivacyReview, 'pending');
+  assert.throws(() => checkSeriesIdentity([make(1), make(1)], uid), /DUPLICATE/);
+  assert.throws(() => checkSeriesIdentity([{ ...make(1), seriesUid: '1.2.4' }], uid), /SERIES_UID_MISMATCH/);
+  assert.throws(() => checkSeriesIdentity([{ ...make(1), modality: 'SEG' }], uid), /SOP_CLASS_OR_MODALITY/);
+  assert.equal(checkSeriesIdentity([{ ...make(1), identityRemoved: undefined }], uid)
+    .identityRemovedFlag, 'incomplete-or-unconfirmed');
+});
+
+test('RECOVER-015: uncompressed NIfTI source-payload check cannot be confused with historical equivalence', t => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'lidc-nifti-proof-'));
+  t.after(() => fs.rmSync(tmp, { recursive: true, force: true }));
+  const vox = Buffer.from([10, 0, 20, 0, 30, 0, 40, 0]);
+  const h = Buffer.alloc(352); h.writeInt32LE(348, 0);
+  h.writeInt16LE(2, 42); h.writeInt16LE(2, 44); h.writeInt16LE(1, 46);
+  h.writeInt16LE(4, 70); h.write('n+1\0', 344, 'latin1');
+  const file = path.join(tmp, 'ct.nii.gz');
+  fs.writeFileSync(file, zlib.gzipSync(Buffer.concat([h, vox]), { level: 9, mtime: 0 }));
+  const good = inspectNiftiGzFile(file, [2, 2, 1], 4, vox);
+  assert.equal(good.exactlyMatchesCurrentOfficialDicomConversion, true);
+  assert.equal(good.matchesPreviousBuildVoxelData, 'NOT_ASSESSABLE_WITHOUT_PREVIOUS_UNCOMPRESSED_HASH');
+  assert.equal(inspectNiftiGzFile(file, [2, 2, 1], 4, Buffer.alloc(vox.length))
+    .exactlyMatchesCurrentOfficialDicomConversion, false);
+  assert.throws(() => inspectNiftiGzFile(file, [1, 2, 2], 4, vox), /DIMENSION/);
+});
+
+test('RECOVER-016: private LIDC audit script is syntax-valid and does not auto-grant rights', () => {
+  const file = path.join(ROOT, 'apps/studios/tools/audit-lidc-private.mjs');
+  const check = spawnSync(process.execPath, ['--check', file], { cwd: ROOT, encoding: 'utf8', timeout: 15000 });
+  assert.equal(check.status, 0, check.stderr);
+  const code = fs.readFileSync(file, 'utf8');
+  assert.match(code, /oldDerivedVoxelHashesAvailable: false/);
+  assert.match(code, /permittedToPublish: false/);
+  assert.match(code, /privateCandidateQuarantine/);
+  assert.doesNotMatch(code, /status:\s*['"]verified['"]/);
 });
