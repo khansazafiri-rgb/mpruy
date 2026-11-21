@@ -38,6 +38,33 @@ function nifti(vol, data, datatype) {
   return Buffer.concat([h, Buffer.from(data.buffer, data.byteOffset, data.byteLength)]);
 }
 
+/** Match the pinned SPIDER gzip bytes on both Unix and macOS.
+ * zlib can write 0x13 (OS X) instead of 0x03 (Unix) to gzip header byte 9.
+ * This byte is metadata, not NIfTI voxel content. Any other difference
+ * from the committed digests is rejected before replacing a private build. */
+export function gzipPinnedSpineAsset(input) {
+  const out = zlib.gzipSync(input, { level: 9, mtime: 0 });
+  if (out.length < 18 || out[0] !== 0x1f || out[1] !== 0x8b ||
+      out[2] !== 8 || out[3] !== 0) throw Error('SPINE_UNEXPECTED_GZIP_HEADER');
+  out[9] = 3; // Historical registry pins were built with the Unix gzip OS byte.
+  return out;
+}
+
+/** A private conversion may not overwrite a previously valid build if its
+ * bytes drift from the committed registry, regardless of local provenance. */
+export function assertPinnedSpineOutputs(outputs, assets) {
+  const paths = ['data/t1.nii.gz', 'data/labels-lpba40.nii.gz', 'data/labels.json'];
+  const pins = assets.filter(a => a.id.startsWith('spine-mri.') && !a.sourceFile);
+  if (pins.length !== paths.length || new Set(pins.map(a => a.path)).size !== paths.length ||
+      pins.some(a => !paths.includes(a.path))) throw Error('SPINE_PIN_SET_MISMATCH');
+  for (const pin of pins) {
+    const bytes = outputs[pin.path];
+    if (!Buffer.isBuffer(bytes) || bytes.length !== pin.bytes || sha(bytes) !== pin.sha256)
+      throw Error('SPINE_PINNED_DERIVED_BYTES_MISMATCH:' + pin.path);
+  }
+  return pins.length;
+}
+
 export function prepare() {
   const files = Object.fromEntries(Object.entries(EXPECT).map(([f, d]) => { const b = fs.readFileSync(path.join(RAW, f)); if (sha(b) !== d) throw Error('Digest mismatch ' + f); return [f, b]; }));
   const img = readMha(files['1_t2.mha']), mask = readMha(files['1_t2_mask.mha']);
@@ -70,8 +97,7 @@ export function prepare() {
     return { id: 'spine-' + n, prompt: { kind: 'crosshair-structure', mm: point(id), text: 'Struktur apa yang berada di crosshair?' }, options: classes, answer: { index: k }, canonical: classes[k],
       explanation: classes[k] + ' menurut segmentasi referensi SPIDER pada kasus ini. Nama level vertebra tidak diberikan karena tidak tercatat per label di dataset.' };
   });
-  fs.rmSync(OUT, { recursive: true, force: true }); fs.mkdirSync(path.join(OUT, 'data'), { recursive: true }); fs.mkdirSync(path.join(OUT, 'server'), { recursive: true });
-  const gz = b => zlib.gzipSync(b, { level: 9, mtime: 0 });
+  const gz = gzipPinnedSpineAsset;
   const outputs = {
     'data/t1.nii.gz': gz(nifti(img, img.data, 4)), 'data/labels-lpba40.nii.gz': gz(nifti(img, labels, 2)),
     'data/labels.json': Buffer.from(JSON.stringify({ schema: 'medcoel.labels.v1', source: 'SPIDER reference segmentation (case 1_t2)', terminologyReview: 'pending', structures }, null, 1)),
@@ -81,6 +107,11 @@ export function prepare() {
     'data/NOTICE-SPIDER.txt': Buffer.from(ATTRIBUTION + '\n\nChanges by MEDCOEL: one image and its mask converted from MetaImage to NIfTI-1 (no resampling; ITK LPS geometry converted to RAS); mask values remapped for 8-bit storage (vertebrae unchanged, canal 100, discs 201..207 -> 151..157). Adapted data shared under CC BY 4.0.\n'),
     'server/challenge.json': Buffer.from(JSON.stringify({ schema: 'medcoel.challenge.v1', source: 'SPIDER', medicalReview: 'pending', count: items.length, items }, null, 1)),
   };
+  const registry = JSON.parse(fs.readFileSync(path.join(REPO, 'licensing/resources.v1.json'), 'utf8'));
+  assertPinnedSpineOutputs(outputs, registry.assets);
+  fs.rmSync(OUT, { recursive: true, force: true });
+  fs.mkdirSync(path.join(OUT, 'data'), { recursive: true });
+  fs.mkdirSync(path.join(OUT, 'server'), { recursive: true });
   for (const [rel, b] of Object.entries(outputs)) fs.writeFileSync(path.join(OUT, rel), b);
   const provenance = { schema: 'medcoel.provenance.v1', studio: 'spine-mri', generatedAt: new Date().toISOString(), tool: 'apps/studios/tools/prepare-spine-mri.mjs',
     source: { doi: '10.5281/zenodo.10159290', members: { 'images.zip:images/1_t2.mha': EXPECT['1_t2.mha'], 'masks.zip:masks/1_t2.mha': EXPECT['1_t2_mask.mha'] }, licence: 'CC-BY-4.0' },
