@@ -50,3 +50,7 @@ See [22-bodyparts3d-nine-studio-source-chain.md](22-bodyparts3d-nine-studio-sour
 ## Consolidated clearance and reviewer execution (all 24 studios)
 
 Run a single private worklist + review preparation batch rather than separate per-dataset PRs: [23-consolidated-clearance-execution.md](23-consolidated-clearance-execution.md). The summary remains preliminary and does not approve any source, medical content, privacy claim or release.
+
+## Official private-data recovery from a fresh Mac clone
+
+[24-one-shot-official-data-recovery.md](24-one-shot-official-data-recovery.md) describes the single-batch, checksum-pinned download and local preparation of five official verified-source-license dataset subsets. Optional BodyParts3D / SRI24 tissue-only paths remain private-review candidates; no license, medical or public release approval is implied.
