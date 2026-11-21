@@ -38,3 +38,7 @@ New documents: [15 — human review workflow](15-human-review-workflow.md), [16 
 Run npm run test:studios and npm run test:licensing. The integration browser workflow also builds all 24 fixture apps before running scripts/studio-final-integration.test.mjs. Actual CI and browser results are attached to the PR, not inferred from historical reports.
 
 Legacy Atlas, 4D Lab, Lab Hub, Study Planner, Hermes, production configuration and existing lockfiles are preserved. The legacy UX harness uses explicit navigation and mode transitions: it exits Tri-planar through the visible return-to-probe control and selects probe mode before checking probe shortcuts. Additional keyboard assertions cover Free CT and Tri-planar without moving the probe contact. All original assertions and case bodies are guarded unchanged after reversing the reviewed setup/cleanup additions; target and integration use the same harness. The separate apps/studios lockfile comes from WS2. New private studio datasets are not tracked; local-data presence in a private workspace does not imply VPS installation. No clearance bypass, automatic merge or production deployment is authorised.
+
+## Harvard–Oxford atlas alternative (private, not cleared)
+
+See [21-harvard-oxford-private-candidate.md](21-harvard-oxford-private-candidate.md) for a SHA-pinned private importer that requires a licensed aligned MRI underlay and refuses mismatched atlas geometry. No FSL software, LPBA40 bytes, rights upgrade or public release.

@@ -16,22 +16,29 @@ const args = process.argv.slice(2);
 const only = args.includes('--only') ? (args[args.indexOf('--only') + 1] || '').split(',').filter(Boolean) : [];
 const usePrivate = args.includes('--private');
 const tissueOnly = args.includes('--sri24-tissue-only');
-if (tissueOnly && (!usePrivate || only.length !== 1 || only[0] !== 'brain-mri')) {
-  throw Error('--sri24-tissue-only requires --private --only brain-mri (candidate only; no automatic public release)');
+const harvardOxford = args.includes('--harvard-oxford-candidate');
+if (tissueOnly && harvardOxford) throw Error('Choose only one private Brain MRI candidate variant');
+if ((tissueOnly || harvardOxford) && (!usePrivate || only.length !== 1 || only[0] !== 'brain-mri')) {
+  throw Error('Private Brain MRI variant requires --private --only brain-mri (no public release)');
 }
 let commit = '0'.repeat(40);
 try { commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: REPO, encoding: 'utf8' }).trim(); } catch { /* no git */ }
 
-export async function buildStudio(id, { privateData = false, sri24TissueOnly = false } = {}) {
+export async function buildStudio(id, { privateData = false, sri24TissueOnly = false, harvardOxford = false } = {}) {
   const dir = path.join(ROOT, id), config = JSON.parse(fs.readFileSync(path.join(dir, 'studio.config.json'), 'utf8'));
   const dist = path.join(dir, 'dist');
   await build({ root: dir, base: './', logLevel: 'warn', configFile: false, build: { outDir: dist, emptyOutDir: true, chunkSizeWarningLimit: 4000 } });
-  if (sri24TissueOnly && (id !== 'brain-mri' || !privateData)) throw Error('SRI24 tissue-only option is private-review Brain MRI only');
-  const src = sri24TissueOnly
-    ? path.join(REPO, 'local-data/studio-resources/build/brain-mri-sri24-tissue-only')
+  if ((sri24TissueOnly || harvardOxford) && (id !== 'brain-mri' || !privateData)) throw Error('Candidate variants are private-review Brain MRI only');
+  if (sri24TissueOnly && harvardOxford) throw Error('Private Brain MRI variants are mutually exclusive');
+  const src = harvardOxford
+    ? path.join(REPO, 'local-data/studio-resources/build/brain-mri-harvard-oxford')
+    : sri24TissueOnly ? path.join(REPO, 'local-data/studio-resources/build/brain-mri-sri24-tissue-only')
     : config.privateData && path.join(REPO, config.privateData);
   if (sri24TissueOnly && !fs.existsSync(path.join(src, 'data/dataset.json'))) {
     throw Error('Safe SRI24 candidate not prepared; run node apps/studios/tools/prepare-brain-mri-tissue-only.mjs first');
+  }
+  if (harvardOxford && !fs.existsSync(path.join(src, 'data/dataset.json'))) {
+    throw Error('Harvard–Oxford private candidate unavailable: prepare and verify exact source files first');
   }
   let dataKind = 'technical-fixture';
   if (privateData && src && fs.existsSync(path.join(src, 'data'))) {
@@ -50,6 +57,6 @@ export async function buildStudio(id, { privateData = false, sri24TissueOnly = f
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const ids = fs.readdirSync(ROOT).filter(d => fs.existsSync(path.join(ROOT, d, 'studio.config.json'))).filter(d => !only.length || only.includes(d)).sort();
   const results = [];
-  for (const id of ids) results.push(await buildStudio(id, { privateData: usePrivate, sri24TissueOnly: tissueOnly }));
+  for (const id of ids) results.push(await buildStudio(id, { privateData: usePrivate, sri24TissueOnly: tissueOnly, harvardOxford }));
   console.table(results);
 }
