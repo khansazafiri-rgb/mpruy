@@ -15,7 +15,7 @@ async function range(url, start, end) {
     const r = await fetch(url, { headers: { ...UA, Range: `bytes=${start}-${end}` }, redirect: 'follow' });
     if (r.status === 206) {
       const contentRange = r.headers.get('content-range') || '';
-      const match = contentRange.match(/^bytes (\\d+)-(\\d+)\\/(\\d+)$/);
+      const match = contentRange.match(/^bytes (\d+)-(\d+)\/(\d+)$/);
       const bytes = Buffer.from(await r.arrayBuffer());
       if (!match || Number(match[1]) !== start || Number(match[2]) !== end ||
           bytes.length !== end - start + 1)
