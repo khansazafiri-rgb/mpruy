@@ -61,7 +61,7 @@ export function createBatchSnapshot({ catalog, resources, ledger, status, review
     const sources = sourceIds.map(id => {
       const s = bySource.get(id);
       if (!s) throw Error('STUDIO_UNKNOWN_SOURCE:' + c.id + '/' + id);
-      return { id, licenseId: s.licenseId, status: s.status, officialUrl: s.officialUrl, note: SOURCE_NOTES[id] || null };
+      return { id, publisher: s.publisher, release: s.release, doi: s.doi || null, licenseId: s.licenseId, status: s.status, officialUrl: s.officialUrl, note: SOURCE_NOTES[id] || null };
     });
     const requiredRights = [...new Set([
       ...stat.rights.map(r => r.id),
@@ -180,6 +180,50 @@ export function renderMarkdown(snapshot) {
   return heading.join('\n');
 }
 
+/** PRIVATE DRAFT: a source list for a human rights reviewer, never a publication-ready NOTICE. */
+export function renderRightsNoticeDraft(snapshot) {
+  const sources = new Map();
+  for (const studio of snapshot.studios) for (const src of studio.sourceLicenses) {
+    const prev = sources.get(src.id);
+    if (prev) prev.studios.push(studio.id);
+    else sources.set(src.id, { ...src, studios: [studio.id] });
+  }
+  const out = [
+    '# MEDCOEL — source attribution / rights NOTICE review draft',
+    '',
+    '**DRAFT ONLY; NOT FOR PUBLICATION, NOT A GRANT OF RIGHTS OR COMPLETE LEGAL ATTRIBUTION.**',
+    '',
+    'This table uses source metadata in the committed registry. It does not independently establish the upstream authors, the exact redistribution grant, third-party rights, ShareAlike compatibility, or clinical/privacy clearance.',
+    '',
+    'MEDCOEL Core remains free; hypothetical paid question videos need independently licensed content.',
+    '',
+    '## Sources and candidate credit records',
+    '',
+  ];
+  for (const src of [...sources.values()].sort((a, b) => idSort(a.id, b.id))) {
+    out.push('### ' + src.id, '', '- Publisher in source registry: ' + src.publisher,
+      '- Release: ' + src.release,
+      '- Registry license (NOT exact-file clearance): ' + src.licenseId,
+      '- Source review status: ' + src.status,
+      '- Source page: ' + src.officialUrl,
+      '- DOI: ' + (src.doi || 'not recorded'),
+      '- Studios: ' + src.studios.join(', '),
+      '- Outstanding issue: ' + (src.note || 'Verify exact original-file license, attribution, modifications, derivative restrictions and credited contributors.'),
+      '- Required reviewer work: inspect original file notices and credits; identify transformations and inherited licenses for each derivative; make a signed exact-build decision and publish only a human-approved NOTICE.',
+      '');
+  }
+  out.push('## Do not conflate these items', '',
+    '- The official source-license category with independent asset-level rights and patient-privacy obligations.',
+    '- BodyParts3D original OBJ notices (CC BY-SA 2.1 Japan) with a later database-level CC BY 4.0 web page.',
+    '- AMOS Zenodo license metadata with the internal archive dataset.json notice.',
+    '- SRI24 T1/tissue rights with upstream LONI LPBA40-derived labels, which remain blocked.',
+    '- Standalone Anatomy Studio Three.js code with the separate legacy NC Atlas frontend.',
+    '',
+    'Before publishing: add full authors/citations; verify exact source notice; document every conversion; include appropriate license links, share-alike terms and attribution; obtain authorized reviewers and signed release evidence.',
+    '');
+  return out.join('\\n');
+}
+
 export function checkBatch(snapshot, { catalog, resources, ledger }) {
   const issues = [];
   if (snapshot.totalStudios !== 24) issues.push('Expected exactly 24 Clinical Studios');
@@ -247,6 +291,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         const files = [
           writePrivate('clinical-clearance-worklist.json', JSON.stringify(snapshot, null, 2) + '\n'),
           writePrivate('clinical-clearance-worklist.md', renderMarkdown(snapshot)),
+          writePrivate('source-rights-NOTICE-REVIEW-DRAFT.md', renderRightsNoticeDraft(snapshot)),
         ];
         console.log('Private outputs: ' + files.join(', '));
       }
