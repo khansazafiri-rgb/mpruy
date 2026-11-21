@@ -2,11 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import {
   selectedSourceIds, sourceEntries, localSourcePath,
-  recoveryPlan, assertPrivateDefaults,
+  recoveryPlan, assertPrivateDefaults, tciaDerivedHashCheck, isZipRangeProtocolFailure,
 } from '../licensing/tools/recover-private-studio-sources.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
@@ -81,4 +83,42 @@ test('RECOVER-007: repo retains blocked upstream LPBA40 and NC Atlas rights; thi
   assert.match(script, /rightsAndHumanReviews: 'pending'/);
   assert.doesNotMatch(script, /status:\s*'verified'\s*[,}]/i);
   assert.doesNotMatch(script, /issueReceipt|signDecision|ownerOverride/);
+});
+
+test('RECOVER-008: HC18 ZIP-range transport failure is distinguishable from bad member integrity', () => {
+  for (const error of ['EOCD not found', 'Range not supported (200)', 'Invalid HTTP Content-Range',
+    'ZIP endpoint does not provide correct byte ranges', 'Bad central directory entry'])
+    assert.equal(isZipRangeProtocolFailure(new Error(error)), true);
+  for (const error of ['CRC/size mismatch for image', 'SHA-256 mismatch', 'Download blocked by rights'])
+    assert.equal(isZipRangeProtocolFailure(new Error(error)), false);
+});
+
+test('RECOVER-009: three exact TCIA derived hashes must match old registry before accepting a changed ZIP', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'tcia-repack-proof-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const names = ['data/ct.nii.gz', 'data/readers.nii.gz', 'data/annotations.json'];
+  const registry = { assets: names.map((p, i) => ({
+    id: 'chest-ct.' + i, path: p, sourceFile: null,
+    sha256: crypto.createHash('sha256').update('verified-' + i).digest('hex'),
+  })) };
+  for (let i = 0; i < names.length; i++) {
+    const file = path.join(root, names[i]);
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, 'verified-' + i);
+  }
+  const ok = tciaDerivedHashCheck({ registry, privateBuildRoot: root });
+  assert.equal(ok.registeredDerivedCount, 3);
+  assert.equal(ok.previousRawZipShaStillUnverified, true);
+  assert.equal(ok.releaseApproved, false);
+  fs.writeFileSync(path.join(root, names[1]), 'untrusted-different-pixels');
+  assert.throws(() => tciaDerivedHashCheck({ registry, privateBuildRoot: root }), /TCIA_DERIVED_SHA_MISMATCH/);
+});
+
+test('RECOVER-010: an incomplete TCIA pinned derivative set cannot be treated as equivalent', t => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'tcia-empty-proof-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  assert.throws(() => tciaDerivedHashCheck({
+    registry: { assets: [{ id: 'chest-ct.ct.nii.gz', path: 'data/ct.nii.gz', sha256: 'a'.repeat(64) }] },
+    privateBuildRoot: dir,
+  }), /TCIA_PINNED_DERIVATIVE_RECORDS_INCOMPLETE/);
 });

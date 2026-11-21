@@ -76,7 +76,13 @@ Mode `--fetch-only` mengunduh data yang SHA-nya cocok **tanpa menjalankan konver
 npm run recover:studio-data -- --fetch-only
 ```
 
-Jika muncul **HTTP Range not supported**, arsip ZIP besar tidak diunduh utuh; sumber terkait dicatat gagal. Perlu inspeksi URL API resmi/download header sebelum mengganti implementasi. Jika **digest mismatch**, jangan abaikan mismatch; verifikasi file resmi, metadata versi, dan URL. Jika **dicom-parser missing**, jalankan `npm ci --prefix apps/studios`. Jika **existing extracted TCIA series inconsistent**, periksa dan arsipkan isi folder sebelum melakukan pemulihan ulang; script tidak menghapusnya.
+Jika terjadi **HTTP Range/EOCD** pada arsip HC18, alat terlebih dulu memvalidasi posisi/ukuran respon 206. Jika ZIP tetap tidak bisa dibaca sebagian, alat mengambil **arsip training_set.zip resmi HC18 saja** dengan batas 260 MiB, memeriksa CRC seluruh arsip serta SHA-256 **setiap anggota yang dipakai**, lalu menghapus arsip sementara. Jalur fallback tidak berlaku untuk dataset lain dan tidak melewati integritas file. Jika **digest mismatch pada file anggota**, sumber tetap gagal; jangan abaikan mismatch.
+
+PTB-XL membutuhkan `LICENSE.txt` asli selain 13 file yang sudah dicatat. Versi baru tool mengambilnya dari PhysioNet v1.0.3 dan memverifikasi SHA-256 terhadap `SHA256SUMS.txt` resmi. Jangan menghapus atau mengganti license text.
+
+**TCIA/LIDC-IDRI:** API `getImage` menghasilkan arsip ZIP seri DICOM yang bisa berbeda byte container walaupun gambar klinisnya sama. Jika hash ZIP tidak cocok dengan registry, file tidak pernah disimpan sebagai raw ZIP resmi yang diverifikasi. Sebaliknya, tool menyimpan ZIP tersebut ke `local-data/studio-resources/quarantine/tcia-repacked/`, memeriksa CRC ZIP, memvalidasi/mengekstrak DICOM untuk kebutuhan privat, menjalankan konversi dan mengharuskan ketiga hasil **`data/ct.nii.gz`, `data/readers.nii.gz`, `data/annotations.json`** cocok **byte-for-byte** dengan SHA-256 turunan yang telah terdaftar. Jika cocok, status menjadi `private-derived-output-pins-match-TCIA-container-repacked`, dengan **peringatan bahwa hash parent ZIP tetap belum terverifikasi**; sumber tidak boleh dipromosikan atau dibuka publik. Jika tidak cocok, kandidat build baru dihapus dan status gagal. Tak satu pun langkah ini mengganti SHA sumber resmi pada registry.
+
+Jika **dicom-parser missing**, jalankan `npm ci --prefix apps/studios`. Jika **existing extracted TCIA series inconsistent**, periksa dan arsipkan isi folder sebelum melakukan pemulihan ulang; script tidak menghapusnya.
 
 Perintah batch otomatis memanggil `npm run audit:clinical-clearance-private` lewat CLI setelah persiapan untuk menyusun paket reviewer **jika output asli tersedia**. Report dapat menyebut sebagian studio gagal sehingga exit code bukan 0; jangan mengartikan keberhasilan yang lain sebagai kegagalan seluruh batch.
 

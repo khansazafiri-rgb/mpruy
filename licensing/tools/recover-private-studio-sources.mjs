@@ -113,12 +113,12 @@ export function recoveryPlan({ registry = getRegistry(), flags = [], root = LOCA
     sources };
 }
 const sleep = t => new Promise(resolve => setTimeout(resolve, t));
-async function boundedGet(url, max = MAX_DIRECT) {
+async function boundedGet(url, max = MAX_DIRECT, timeoutMs = 180000) {
   let error;
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const r = await fetch(url, { headers: { 'User-Agent': 'MEDCOEL-private-source-verification/1.0' }, redirect: 'follow',
-        signal: AbortSignal.timeout(180000) });
+        signal: AbortSignal.timeout(timeoutMs) });
       if (!r.ok || !r.body) {
         if (r.status === 429 || r.status >= 500) throw Error('HTTP transient ' + r.status);
         throw Error('Official resource HTTP ' + r.status + ' (' + url + ')');
@@ -169,7 +169,123 @@ export function assertPrivateDefaults(registry = getRegistry()) {
     throw Error('Restricted LONI label archive entered optional MRI source list');
   return list.length;
 }
+/**
+ * Zenodo HC18 can return an invalid/shifted byte-range tail despite responding 206.
+ * Never trust that range response. As a bounded fallback, download ONLY the same
+ * official, registry-pinned HC18 archive, verify its ZIP CRC using unzip -t and
+ * each requested member's independently pinned SHA-256. No other datasets or
+ * untrusted URLs are eligible for full-archive fallback.
+ */
+export function isZipRangeProtocolFailure(error) {
+  return /(?:EOCD not found|ZIP64 EOCD not found|Invalid HTTP Content-Range|correct byte ranges|Range not supported|No Content-Range|Bad central directory entry|Bad local header)/i.test(String(error?.message || error));
+}
+async function recoverHc18FromFullArchive(url, batch) {
+  if (!batch.length || batch.some(a => a.sourceId !== 'hc18-zenodo' ||
+      a.url !== 'https://zenodo.org/api/records/1327317/files/training_set.zip/content'))
+    throw Error('Full-ZIP fallback is authorized only for the official HC18 training_set.zip');
+  const bytes = await boundedGet(url, 260 * 1024 * 1024, 600000);
+  if (bytes.length < 30 || bytes.readUInt32LE(0) !== 0x04034b50)
+    throw Error('HC18 fallback response is not a ZIP archive');
+  const dir = path.join(LOCAL, PATHS['hc18-zenodo']);
+  fs.mkdirSync(dir, { recursive: true, mode: 0o700 });
+  const temp = path.join(dir, '.hc18-official-private-' + process.pid + '.zip');
+  fs.writeFileSync(temp, bytes, { flag: 'wx', mode: 0o600 });
+  try {
+    execFileSync('unzip', ['-tqq', temp], { encoding: 'utf8', timeout: 180000, maxBuffer: 1024 * 1024 });
+    const outputs = [];
+    for (const a of batch) {
+      if (!isSafeMember(a.member)) throw Error('Unsafe HC18 archive member');
+      const member = execFileSync('unzip', ['-p', temp, a.member],
+        { timeout: 180000, maxBuffer: MAX_ZIP_MEMBER });
+      outputs.push({ member: a.member, result: storeVerified(a.destination, member, a.sha256),
+        archiveAcquisition: 'full-official-archive-fallback-with-CRC-and-exact-member-SHA256' });
+    }
+    return outputs;
+  } finally {
+    fs.rmSync(temp, { force: true });
+  }
+}
+
+/**
+ * TCIA getImage generates a ZIP stream on demand. If its container SHA differs
+ * from the old registered download, that ZIP is NOT a verified original.
+ * Stage it under private quarantine (not the registered raw-source path) and
+ * require ALL previously registered derived CT hashes to match byte-for-byte
+ * before considering this a technically equivalent private teaching candidate.
+ */
+export function tciaDerivedHashCheck({ registry, privateBuildRoot, hashFile = file => sha(fs.readFileSync(file)) }) {
+  const list = registry.assets.filter(a => !a.sourceFile && a.id.startsWith('chest-ct.') &&
+    ['data/ct.nii.gz', 'data/readers.nii.gz', 'data/annotations.json'].includes(a.path));
+  if (list.length !== 3 || new Set(list.map(a => a.path)).size !== 3)
+    throw Error('TCIA_PINNED_DERIVATIVE_RECORDS_INCOMPLETE');
+  const detail = list.map(a => {
+    const file = path.join(privateBuildRoot, a.path);
+    const got = fs.existsSync(file) ? hashFile(file) : null;
+    return { id: a.id, path: a.path, expectedSha256: a.sha256,
+      observedSha256: got, matches: SHA.test(a.sha256 || '') && got === a.sha256 };
+  });
+  if (detail.some(d => !d.matches))
+    throw Error('TCIA_DERIVED_SHA_MISMATCH: derived CT/SEG/annotation contents differ from previously pinned files; do not override registry hashes');
+  return { status: 'private-derived-bytes-match-pins', registeredDerivedCount: detail.length,
+    previousRawZipShaStillUnverified: true, releaseApproved: false, outputs: detail };
+}
+function tciaQuarantinePath(item) {
+  if (item.sourceId !== 'lidc-idri-tcia') throw Error('Only TCIA series can enter TCIA quarantine');
+  const [kind, archive, ...rest] = item.member.split('/');
+  const uid = archive?.replace(/\.zip$/, '');
+  if (rest.length || !['CT', 'SEG'].includes(kind) || !/^[0-9.]+$/.test(uid || '') ||
+      item.url !== URL_PREFIX['lidc-idri-tcia'] + uid)
+    throw Error('Unexpected TCIA series identity/path');
+  return safeAbsolute(path.join(LOCAL, 'studio-resources/quarantine/tcia-repacked'), kind + '/' + archive);
+}
+function checkedTciaZip(zip) {
+  // Verifies complete ZIP archive CRC, but does not imply the container itself is hash-pinned.
+  execFileSync('unzip', ['-tqq', zip], { encoding: 'utf8', timeout: 180000, maxBuffer: 1024 * 1024 });
+  return true;
+}
+async function recoverTciaContainers(items) {
+  const rows = [];
+  for (const a of items) {
+    const quarantine = tciaQuarantinePath(a);
+    if (fs.existsSync(a.destination)) {
+      const actual = sha(fs.readFileSync(a.destination));
+      if (actual !== a.sha256) throw Error('Canonical TCIA raw ZIP has wrong SHA; refusing to use: ' + a.member);
+      checkedTciaZip(a.destination);
+      rows.push({ member: a.member, result: 'already-verified', archivePath: a.destination,
+        rawSourceHashVerified: true });
+      continue;
+    }
+    if (fs.existsSync(quarantine)) {
+      checkedTciaZip(quarantine);
+      rows.push({ member: a.member, result: 'existing-quarantined-repacked-container',
+        archivePath: quarantine, observedSha256: sha(fs.readFileSync(quarantine)),
+        registeredSha256: a.sha256, rawSourceHashVerified: false });
+      continue;
+    }
+    const bytes = await boundedGet(a.url);
+    if (sha(bytes) === a.sha256) {
+      const result = storeVerified(a.destination, bytes, a.sha256);
+      checkedTciaZip(a.destination);
+      rows.push({ member: a.member, result, archivePath: a.destination, rawSourceHashVerified: true });
+      continue;
+    }
+    // Preserve the discrepancy instead of silently changing the official parent SHA.
+    fs.mkdirSync(path.dirname(quarantine), { recursive: true, mode: 0o700 });
+    const staging = quarantine + '.private-partial-' + process.pid;
+    fs.writeFileSync(staging, bytes, { flag: 'wx', mode: 0o600 });
+    try {
+      checkedTciaZip(staging);
+      fs.renameSync(staging, quarantine);
+    } catch (e) { fs.rmSync(staging, { force: true }); throw e; }
+    rows.push({ member: a.member, result: 'quarantined-repacked-container-NOT-raw-hash-verified',
+      archivePath: quarantine, observedSha256: sha(bytes), registeredSha256: a.sha256,
+      rawSourceHashVerified: false });
+  }
+  return rows;
+}
+
 async function recoverGroup(sourceId, items) {
+  if (sourceId === 'lidc-idri-tcia') return await recoverTciaContainers(items);
   const records = [];
   if (ZIP_RANGE.has(sourceId)) {
     const byUrl = new Map();
@@ -178,13 +294,20 @@ async function recoverGroup(sourceId, items) {
       if (batch.every(x => fs.existsSync(x.destination) && sha(fs.readFileSync(x.destination)) === x.sha256)) {
         records.push(...batch.map(a => ({ member: a.member, result: 'already-verified' }))); continue;
       }
-      const directory = new Map((await listZip(url)).map(e => [e.name, e]));
-      for (const a of batch) {
-        const e = directory.get(a.member);
-        if (!e || e.uncompressed > MAX_ZIP_MEMBER || ![0, 8].includes(e.method))
-          throw Error('Missing/oversized/unsupported official ZIP member: ' + a.member);
-        const bytes = await getMember(url, e); // ZIP CRC+uncompressed size checked by existing ZIP64 utility.
-        records.push({ member: a.member, result: storeVerified(a.destination, bytes, a.sha256) });
+      try {
+        const directory = new Map((await listZip(url)).map(e => [e.name, e]));
+        for (const a of batch) {
+          const e = directory.get(a.member);
+          if (!e || e.uncompressed > MAX_ZIP_MEMBER || ![0, 8].includes(e.method))
+            throw Error('Missing/oversized/unsupported official ZIP member: ' + a.member);
+          const bytes = await getMember(url, e); // CRC+size verified; official member SHA checked below.
+          records.push({ member: a.member, result: storeVerified(a.destination, bytes, a.sha256) });
+        }
+      } catch (error) {
+        if (sourceId !== 'hc18-zenodo' || !isZipRangeProtocolFailure(error)) throw error;
+        console.warn('HC18 ZIP byte ranges invalid; using bounded full official archive with CRC and exact-member SHA verification.');
+        records.push(...await recoverHc18FromFullArchive(url,
+          batch.filter(a => !fs.existsSync(a.destination))));
       }
     }
   } else {
@@ -215,7 +338,19 @@ async function verifyPtbxlSumFile(items) {
   }
   for (const entry of items) if (sums.get(entry.member) !== entry.sha256)
     throw Error('PTB-XL official SHA256SUMS differs from pinned file: ' + entry.member);
-  return { status: 'official-sums-matched', count: items.length };
+  // The original ECG preparer embeds the publisher's full license text. This file was
+  // missing from the 13 registered signal/metadata inputs, so fetch it separately,
+  // hashing against PhysioNet's own release-specific SHA256SUMS (never bypass SHA).
+  const licenseSha = sums.get('LICENSE.txt');
+  if (!SHA.test(licenseSha || '')) throw Error('PTB-XL official checksum manifest lacks LICENSE.txt');
+  const licenseFile = path.join(root, 'LICENSE.txt');
+  const licenseBytes = fs.existsSync(licenseFile) ? fs.readFileSync(licenseFile)
+    : await boundedGet(URL_PREFIX['ptbxl-physionet'] + 'LICENSE.txt', 1024 * 1024);
+  if (sha(licenseBytes) !== licenseSha) throw Error('PTB-XL LICENSE.txt mismatched the official checksum manifest');
+  if (!licenseBytes.toString('utf8', 0, 400).includes('Creative Commons Attribution 4.0'))
+    throw Error('Unexpected PTB-XL license text; human license review required');
+  const licenseStatus = storeVerified(licenseFile, licenseBytes, licenseSha);
+  return { status: 'official-sums-matched', count: items.length + 1, license: licenseStatus, licenseSha256: licenseSha };
 }
 function safeLidcDcmEntries(zip, mode) {
   const raw = execFileSync('unzip', ['-Z', '-1', zip], { encoding: 'utf8', maxBuffer: 2 * 1024 * 1024 });
@@ -256,13 +391,16 @@ export function extractTciaSeries(zip, dest, mode) {
   } catch (e) { fs.rmSync(staging, { recursive: true, force: true }); throw e; }
   return names.length;
 }
-function extractLidcGroups(entries) {
+function extractLidcGroups(entries, files) {
   const recovered = [];
   for (const item of entries) {
     const mode = item.member.split('/')[0], uid = path.basename(item.member, '.zip');
     if (!['CT', 'SEG'].includes(mode) || !/^[0-9.]+$/.test(uid)) throw Error('Unexpected TCIA series UID/path');
+    const record = files.find(r => r.member === item.member);
+    if (!record || !record.archivePath) throw Error('TCIA source file has no checked ZIP path: ' + item.member);
     const target = path.join(LOCAL, PATHS['lidc-idri-tcia'], mode, uid);
-    recovered.push({ mode, uid, slices: extractTciaSeries(item.destination, target, mode) });
+    recovered.push({ mode, uid, slices: extractTciaSeries(record.archivePath, target, mode),
+      rawContainerHashVerified: record.rawSourceHashVerified });
   }
   return recovered;
 }
@@ -327,11 +465,28 @@ export async function recoverPrivate({ flags = [], registry = getRegistry() } = 
     try {
       result.fileResults = await recoverGroup(sourceId, items);
       if (sourceId === 'ptbxl-physionet') result.officialManifest = await verifyPtbxlSumFile(items);
-      if (sourceId === 'lidc-idri-tcia') result.extracted = extractLidcGroups(items);
-      result.status = 'exact-sources-verified';
+      if (sourceId === 'lidc-idri-tcia') result.extracted = extractLidcGroups(items, result.fileResults);
+      const repackedTcia = sourceId === 'lidc-idri-tcia' &&
+        result.fileResults.some(f => !f.rawSourceHashVerified);
+      result.status = repackedTcia ? 'TCIA-repacked-ZIP-private-verification-pending' : 'exact-sources-verified';
       if (!flags.includes('--fetch-only')) {
+        const ctOutput = path.join(LOCAL, 'studio-resources/build/chest-ct');
+        const ctExisted = repackedTcia && fs.existsSync(path.join(ctOutput, 'provenance.json'));
         result.preparation = prepareGroup(sourceId);
-        result.status = 'prepared-for-private-review-only';
+        if (repackedTcia) {
+          try {
+            result.independentOutputHashProof = tciaDerivedHashCheck({
+              registry, privateBuildRoot: ctOutput,
+            });
+            result.status = 'private-derived-output-pins-match-TCIA-container-repacked';
+            result.warning = 'Original TCIA ZIP container hash differs; exact registered derived CT/annotation bytes matched, but source parent provenance remains unverified. No rights/release clearance.';
+          } catch (error) {
+            if (!ctExisted) fs.rmSync(ctOutput, { recursive: true, force: true });
+            throw error;
+          }
+        } else {
+          result.status = 'prepared-for-private-review-only';
+        }
       }
     } catch (e) {
       result.status = 'recovery-or-preparation-failed';
@@ -339,6 +494,7 @@ export async function recoverPrivate({ flags = [], registry = getRegistry() } = 
       console.error('Source failed, proceeding to other sources: ' + result.error);
     }
     outcomes.push(result);
+    console.log('RESULT: ' + sourceId + ' => ' + result.status);
   }
   const status = {
     schema: 'medcoel.official-data-recovery.v1', generatedAt: new Date().toISOString(),
@@ -359,7 +515,9 @@ export async function recoverPrivate({ flags = [], registry = getRegistry() } = 
   }
   const where = privateReport(status);
   console.log('\nPrivate report: ' + where);
-  console.log('Recovered/prepared sources: ' + outcomes.filter(x => x.status.startsWith('exact') || x.status.startsWith('prepared')).length + '/' + ids.length);
+  console.log('Recovered/prepared sources (includes private-only TCIA repack proof): ' +
+    outcomes.filter(x => ['exact-sources-verified', 'prepared-for-private-review-only',
+      'private-derived-output-pins-match-TCIA-container-repacked'].includes(x.status)).length + '/' + ids.length);
   if (outcomes.some(x => x.status === 'recovery-or-preparation-failed') || status.reviewPacketRun?.result === 'failed')
     process.exitCode = 1;
   return status;
