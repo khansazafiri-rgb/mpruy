@@ -86,6 +86,55 @@ Jika **dicom-parser missing**, jalankan `npm ci --prefix apps/studios`. Jika **e
 
 Perintah batch otomatis memanggil `npm run audit:clinical-clearance-private` lewat CLI setelah persiapan untuk menyusun paket reviewer **jika output asli tersedia**. Report dapat menyebut sebagian studio gagal sehingga exit code bukan 0; jangan mengartikan keberhasilan yang lain sebagai kegagalan seluruh batch.
 
+## Pemulihan khusus setelah audit Mac: HC18 CSV dan TCIA derivative mismatch
+
+Reproduksi 21 Nov 2026 setelah PR #247: PTB-XL, SPIDER dan PTX-498 berhasil `prepared-for-private-review-only`; HC18 gagal `Full-ZIP fallback is authorized only for the official HC18 training_set.zip` karena CSV kalibrasi `training_set_pixel_size_and_HC.csv` keliru diarahkan ke ZIP reader. Kini CSV diunduh sebagai **file langsung dari Zenodo**, diverifikasi terhadap hash registry, sedangkan delapan PNG gambar/mask diambil dari ZIP dengan CRC dan hash per anggota. Kedua jalur tidak pernah beralih ke metadata/repository mirror yang tidak dikenal.
+
+Untuk LIDC-IDRI, regenerasi ZIP API TCIA menghasilkan hasil turunan yang ternyata tidak cocok dengan hash sumber lama (`TCIA_DERIVED_SHA_MISMATCH`). Ini adalah **mismatch data aktual**, belum bisa disimpulkan bahwa hanya ZIP yang berbeda. Tool **tidak lagi menghapus kandidat yang perlu diselidiki**, melainkan memindahkannya ke folder karantina privat:
+
+- `local-data/studio-resources/clearance/tcia-derived-mismatch.json` — daftar tiga file hasil dan SHA lama/baru, panjang byte, serta ringkasan hash header dan voxel NIfTI (tanpa piksel/citra medis, identitas pasien atau jawaban soal)
+- `local-data/studio-resources/quarantine/tcia-repacked/ct-build-unverified-*/` — hasil turunan baru yang **tidak dipercaya**, untuk audit lokal dengan akses terbatas
+- `local-data/studio-resources/clearance/official-data-recovery.json` — status semua dataset, `tciaMismatchedOutputs` dan lokasi karantina
+
+Jika semua hasil turunan cocok **byte-for-byte** dengan hash registry yang lama, statusnya masih `private-derived-output-pins-match-TCIA-container-repacked` dan belum mendapat persetujuan hak/publikasi. Jika ada perbedaan, status tetap gagal. Pemeriksaan fitur medis seperti orientasi, deidentifikasi DICOM, burnt-in PHI, segmentasi multi-reader, dan kunci soal harus dilakukan reviewer berdasarkan bukti valid; jangan mengganti hash registry agar menerima data yang berbeda.
+
+Setelah PR perbaikan merged, dari root repo jalankan:
+
+```bash
+git switch claude/focused-wozniak-1ayrxa
+git pull --ff-only origin claude/focused-wozniak-1ayrxa
+npm run recover:studio-data
+```
+
+Perintah dapat dilanjutkan, dan tiga dataset yang SHA sumber/build-nya sudah tepat akan dipakai ulang. Jika Chest CT masih gagal, periksa **hanya metadata dan hash**, tanpa mengunggah gambar/DICOM atau file challenge privat:
+
+```bash
+node -e 'const f=require("./local-data/studio-resources/clearance/tcia-derived-mismatch.json"); console.table(f.outputs.map(x=>({output:x.path,matches:x.matches,expected:x.expectedSha256,observed:x.observedSha256,bytes:x.bytes})))'
+```
+
+Laporan tersebut adalah dasar investigasi, **bukan lisensi atau bukti kecukupan review klinis**. Jangan merilis hasil karantina atau menghapus datanya tanpa keputusan terkait.
+
+## Independent private Chest CT integrity audit (without new downloads)
+
+After a TCIA regenerated ZIP produces a different SHA, the volume must remain quarantined. The old registry stores compressed NIfTI hashes, **not** the previous uncompressed CT/reader voxel bytes. An identical dimension, CT window, reader count, or annotation JSON does not establish equality to the old images.
+
+On the Mac holding the recovered private raw DICOM and quarantined candidate, run:
+
+```bash
+npm ci --prefix apps/studios
+npm run audit:lidc-private
+```
+
+The command does not fetch any data and does not touch the canonical `build/chest-ct` or the source rights registry. It checks the exact CT SeriesInstanceUID and four SEG SeriesInstanceUIDs against the pinned registry, checks unique SOPInstanceUID and SOP classes, DICOM transfer/geometry through the original parser, and compares decompressed NIfTI **voxel payloads** to the CT and reader masks decoded from the **currently recovered** DICOM. It writes a minimal private report at `local-data/studio-resources/clearance/tcia-independent-technical-audit.json`: dimensions/spacing, aggregate pixel hashes, compressed and uncompressed-derived digests, technical-match flags and privacy-flag coverage (no patient names, original UIDs, image pixels, or quiz answers).
+
+A pass means only that the **current quarantined files agree technically with the current DICOM decode**. The old files have not been recovered, and no previous raw voxel digest exists to compare. Therefore the old-byte mismatch remains unresolved. Even if every technical check passes, this is **NOT source-version clearance, medical validation, privacy signoff, or permission to publish**. Human review must cover burned-in image identifiers, segmentation correctness and reader associations, licence/terms, anatomical interpretation and commercial rights. Never overwrite the old registered hashes or move the CT build out of quarantine simply because this audit passes.
+
+To inspect a privacy-safe summary after it runs:
+
+```bash
+node -e 'const r=require("./local-data/studio-resources/clearance/tcia-independent-technical-audit.json"); console.log({currentCandidateMatchesLocallyExtractedDicomData:r.currentCandidateMatchesLocallyExtractedDicomData, historicalDatasetEquivalence:r.historicalDatasetEquivalence, releaseApproved:r.releaseApproved, dimensions:r.technical.dimensions})'
+```
+
 ## Perlu selesai sebelum release
 
 Audit sumber/hash yang lulus **tidak** sama dengan lisensi semua turunan, atribusi/ShareAlike yang lengkap, keselamatan privasi (mis. burned-in identifiers di piksel), validasi kunci jawaban/terminologi, atau persetujuan rilis. Tetap diperlukan reviewer nyata dan keputusan bertanda tangan terhadap bytes tepat, kemudian B1 release inspection, receipt dan attestation. **Tidak ada perubahan status `verified`/`publishable`, production server, UI Atlas, 4D Lab, atau langganan berbayar.**

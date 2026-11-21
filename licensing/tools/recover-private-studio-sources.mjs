@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import zlib from 'node:zlib';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { listZip, getMember } from '../../apps/studios/tools/zip-range.mjs';
@@ -176,6 +177,18 @@ export function assertPrivateDefaults(registry = getRegistry()) {
  * each requested member's independently pinned SHA-256. No other datasets or
  * untrusted URLs are eligible for full-archive fallback.
  */
+const HC18_CSV_URL = URL_PREFIX['hc18-zenodo'] + 'training_set_pixel_size_and_HC.csv/content';
+const HC18_ZIP_URL = URL_PREFIX['hc18-zenodo'] + 'training_set.zip/content';
+/** HC18 official record has one DIRECT metadata CSV plus 8 PNGs inside training_set.zip. */
+export function classifyHc18Source(item) {
+  if (item?.sourceId !== 'hc18-zenodo') throw Error('Not an HC18 source asset');
+  if (item.member === 'training_set_pixel_size_and_HC.csv' && item.url === HC18_CSV_URL)
+    return 'direct-verified-csv';
+  if (/^training_set\/(?:000|010|100|300)_HC(?:_Annotation)?\.png$/.test(item.member) && item.url === HC18_ZIP_URL)
+    return 'zip-member';
+  throw Error('Unexpected HC18 URL/member routing; refuse download: ' + String(item?.member));
+}
+
 export function isZipRangeProtocolFailure(error) {
   return /(?:EOCD not found|ZIP64 EOCD not found|Invalid HTTP Content-Range|correct byte ranges|Range not supported|No Content-Range|Bad central directory entry|Bad local header)/i.test(String(error?.message || error));
 }
@@ -213,21 +226,49 @@ async function recoverHc18FromFullArchive(url, batch) {
  * require ALL previously registered derived CT hashes to match byte-for-byte
  * before considering this a technically equivalent private teaching candidate.
  */
-export function tciaDerivedHashCheck({ registry, privateBuildRoot, hashFile = file => sha(fs.readFileSync(file)) }) {
+/** Offline, privacy-minimized technical audit. It hashes private outputs but never exports pixels,
+ * DICOM tags, patient fields, challenge answers or a new licensed derivative. */
+export function tciaDerivedAudit({ registry, privateBuildRoot, hashFile = file => sha(fs.readFileSync(file)) }) {
+  const names = ['data/ct.nii.gz', 'data/readers.nii.gz', 'data/annotations.json'];
   const list = registry.assets.filter(a => !a.sourceFile && a.id.startsWith('chest-ct.') &&
-    ['data/ct.nii.gz', 'data/readers.nii.gz', 'data/annotations.json'].includes(a.path));
+    names.includes(a.path));
   if (list.length !== 3 || new Set(list.map(a => a.path)).size !== 3)
     throw Error('TCIA_PINNED_DERIVATIVE_RECORDS_INCOMPLETE');
-  const detail = list.map(a => {
-    const file = path.join(privateBuildRoot, a.path);
-    const got = fs.existsSync(file) ? hashFile(file) : null;
-    return { id: a.id, path: a.path, expectedSha256: a.sha256,
-      observedSha256: got, matches: SHA.test(a.sha256 || '') && got === a.sha256 };
+  const outputs = list.map(a => {
+    const file = path.resolve(privateBuildRoot, a.path);
+    const exists = fs.existsSync(file);
+    const got = exists ? hashFile(file) : null;
+    const item = { id: a.id, path: a.path, exists, bytes: exists ? fs.statSync(file).size : null,
+      expectedSha256: a.sha256, observedSha256: got,
+      matches: SHA.test(a.sha256 || '') && got === a.sha256 };
+    if (exists && a.path.endsWith('.nii.gz')) {
+      try {
+        const payload = zlib.gunzipSync(fs.readFileSync(file), { maxOutputLength: 512 * 1024 * 1024 });
+        if (payload.length < 352 || payload.readInt32LE(0) !== 348)
+          throw Error('Invalid NIfTI-1 header');
+        item.nifti = {
+          dimension: [payload.readInt16LE(42), payload.readInt16LE(44), payload.readInt16LE(46)],
+          datatype: payload.readInt16LE(70),
+          headerSha256: sha(payload.subarray(0, 352)),
+          voxelPayloadSha256: sha(payload.subarray(352)),
+        };
+      } catch (error) {
+        item.niftiInspectionError = String(error?.message || error).slice(0, 120);
+      }
+    }
+    return item;
   });
-  if (detail.some(d => !d.matches))
+  return { schema: 'medcoel.tcia-derived-local-diagnostic.v1', releaseApproved: false,
+    originalZipParentHashVerified: false, allDerivedHashesMatch: outputs.every(a => a.matches),
+    note: 'Source ZIP changed; per-output SHA plus uncompressed NIfTI digests diagnose differences. No legal, medical, patient privacy or source-origin approval.',
+    outputs };
+}
+export function tciaDerivedHashCheck(args) {
+  const diagnostic = tciaDerivedAudit(args);
+  if (!diagnostic.allDerivedHashesMatch)
     throw Error('TCIA_DERIVED_SHA_MISMATCH: derived CT/SEG/annotation contents differ from previously pinned files; do not override registry hashes');
-  return { status: 'private-derived-bytes-match-pins', registeredDerivedCount: detail.length,
-    previousRawZipShaStillUnverified: true, releaseApproved: false, outputs: detail };
+  return { status: 'private-derived-bytes-match-pins', registeredDerivedCount: diagnostic.outputs.length,
+    previousRawZipShaStillUnverified: true, releaseApproved: false, outputs: diagnostic.outputs };
 }
 function tciaQuarantinePath(item) {
   if (item.sourceId !== 'lidc-idri-tcia') throw Error('Only TCIA series can enter TCIA quarantine');
@@ -291,9 +332,26 @@ async function recoverGroup(sourceId, items) {
     const byUrl = new Map();
     for (const a of items) { if (!byUrl.has(a.url)) byUrl.set(a.url, []); byUrl.get(a.url).push(a); }
     for (const [url, batch] of byUrl) {
+      const hc18Kinds = sourceId === 'hc18-zenodo' ? batch.map(classifyHc18Source) : [];
       if (batch.every(x => fs.existsSync(x.destination) && sha(fs.readFileSync(x.destination)) === x.sha256)) {
         records.push(...batch.map(a => ({ member: a.member, result: 'already-verified' }))); continue;
       }
+      // HC18 calibration CSV is a plain HTTP file, not ZIP: trying EOCD on it
+      // incorrectly triggers full-ZIP fallback with an unapproved CSV URL.
+      if (hc18Kinds.length && hc18Kinds.every(x => x === 'direct-verified-csv')) {
+        for (const a of batch) {
+          if (fs.existsSync(a.destination)) {
+            if (sha(fs.readFileSync(a.destination)) !== a.sha256)
+              throw Error('HC18 existing CSV SHA differs: ' + a.member);
+            records.push({ member: a.member, result: 'already-verified' }); continue;
+          }
+          const bytes = await boundedGet(a.url, 4 * 1024 * 1024);
+          records.push({ member: a.member, result: storeVerified(a.destination, bytes, a.sha256) });
+        }
+        continue;
+      }
+      if (hc18Kinds.length && hc18Kinds.some(x => x !== 'zip-member'))
+        throw Error('Mixed HC18 metadata and ZIP members in one URL batch');
       try {
         const directory = new Map((await listZip(url)).map(e => [e.name, e]));
         for (const a of batch) {
@@ -304,7 +362,7 @@ async function recoverGroup(sourceId, items) {
           records.push({ member: a.member, result: storeVerified(a.destination, bytes, a.sha256) });
         }
       } catch (error) {
-        if (sourceId !== 'hc18-zenodo' || !isZipRangeProtocolFailure(error)) throw error;
+        if (sourceId !== 'hc18-zenodo' || url !== HC18_ZIP_URL || !isZipRangeProtocolFailure(error)) throw error;
         console.warn('HC18 ZIP byte ranges invalid; using bounded full official archive with CRC and exact-member SHA verification.');
         records.push(...await recoverHc18FromFullArchive(url,
           batch.filter(a => !fs.existsSync(a.destination))));
@@ -472,18 +530,34 @@ export async function recoverPrivate({ flags = [], registry = getRegistry() } = 
       if (!flags.includes('--fetch-only')) {
         const ctOutput = path.join(LOCAL, 'studio-resources/build/chest-ct');
         const ctExisted = repackedTcia && fs.existsSync(path.join(ctOutput, 'provenance.json'));
+        if (repackedTcia && ctExisted)
+          throw Error('TCIA_EXISTING_BUILD_CANNOT_PROVE_REPACKED_SOURCE: preserve existing build; inspect privately before retrying');
         result.preparation = prepareGroup(sourceId);
         if (repackedTcia) {
-          try {
-            result.independentOutputHashProof = tciaDerivedHashCheck({
-              registry, privateBuildRoot: ctOutput,
-            });
-            result.status = 'private-derived-output-pins-match-TCIA-container-repacked';
-            result.warning = 'Original TCIA ZIP container hash differs; exact registered derived CT/annotation bytes matched, but source parent provenance remains unverified. No rights/release clearance.';
-          } catch (error) {
-            if (!ctExisted) fs.rmSync(ctOutput, { recursive: true, force: true });
-            throw error;
+          const diagnostic = tciaDerivedAudit({ registry, privateBuildRoot: ctOutput });
+          if (!diagnostic.allDerivedHashesMatch) {
+            const evidenceDir = path.join(LOCAL, 'studio-resources/clearance');
+            fs.mkdirSync(evidenceDir, { recursive: true, mode: 0o700 });
+            const evidenceFile = path.join(evidenceDir, 'tcia-derived-mismatch.json');
+            fs.writeFileSync(evidenceFile, JSON.stringify(diagnostic, null, 2) + '\n', { mode: 0o600 });
+            result.tciaDiagnosticPath = path.relative(ROOT, evidenceFile);
+            result.tciaMismatchedOutputs = diagnostic.outputs.filter(x => !x.matches).map(x => x.path);
+            // A failed identity check must never leave a potentially different CT
+            // dataset in the canonical build location used by reviewer tooling.
+            const quarantineRoot = path.join(LOCAL, 'studio-resources/quarantine/tcia-repacked');
+            fs.mkdirSync(quarantineRoot, { recursive: true, mode: 0o700 });
+            const candidate = path.join(quarantineRoot, 'ct-build-unverified-' + process.pid + '-' + Date.now());
+            fs.renameSync(ctOutput, candidate);
+            result.privateCandidateQuarantine = path.relative(ROOT, candidate);
+            throw Error('TCIA_DERIVED_SHA_MISMATCH: ' + result.tciaMismatchedOutputs.join(', ') +
+              '; private diagnostic: ' + result.tciaDiagnosticPath +
+              '; candidate quarantined; do not override registry hashes');
           }
+          result.independentOutputHashProof = tciaDerivedHashCheck({
+            registry, privateBuildRoot: ctOutput,
+          });
+          result.status = 'private-derived-output-pins-match-TCIA-container-repacked';
+          result.warning = 'Original TCIA ZIP container hash differs; registered derived bytes matched, but source parent provenance remains unverified. No rights/release clearance.';
         } else {
           result.status = 'prepared-for-private-review-only';
         }

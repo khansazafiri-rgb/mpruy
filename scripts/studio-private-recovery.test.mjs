@@ -4,11 +4,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import crypto from 'node:crypto';
+import zlib from 'node:zlib';
+import { checkSeriesIdentity, inspectNiftiGzFile, derivedPinComparison } from '../licensing/tools/lidc-private-audit-core.mjs';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import {
   selectedSourceIds, sourceEntries, localSourcePath,
-  recoveryPlan, assertPrivateDefaults, tciaDerivedHashCheck, isZipRangeProtocolFailure,
+  recoveryPlan, assertPrivateDefaults, tciaDerivedHashCheck, tciaDerivedAudit,
+  classifyHc18Source, isZipRangeProtocolFailure,
 } from '../licensing/tools/recover-private-studio-sources.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
@@ -121,4 +124,93 @@ test('RECOVER-010: an incomplete TCIA pinned derivative set cannot be treated as
     registry: { assets: [{ id: 'chest-ct.ct.nii.gz', path: 'data/ct.nii.gz', sha256: 'a'.repeat(64) }] },
     privateBuildRoot: dir,
   }), /TCIA_PINNED_DERIVATIVE_RECORDS_INCOMPLETE/);
+});
+
+test('RECOVER-011: HC18 metadata CSV is a direct verified file and PNGs are ZIP members', () => {
+  const items = sourceEntries({ registry: read(), sourceId: 'hc18-zenodo' });
+  assert.equal(items.length, 9);
+  assert.deepEqual(items.map(classifyHc18Source).filter(v => v === 'direct-verified-csv').length, 1);
+  assert.deepEqual(items.map(classifyHc18Source).filter(v => v === 'zip-member').length, 8);
+  const csv = items.find(v => v.member.endsWith('.csv'));
+  assert.equal(classifyHc18Source(csv), 'direct-verified-csv');
+  assert.throws(() => classifyHc18Source({ ...csv, url: csv.url.replace('.csv/content', '.zip/content') }), /Unexpected HC18/);
+  assert.throws(() => classifyHc18Source({ ...csv, member: '../bad.csv' }), /Unexpected HC18/);
+  assert.throws(() => classifyHc18Source({ sourceId: 'amos-zenodo', member: 'dataset.json' }), /Not an HC18/);
+});
+
+test('RECOVER-012: TCIA diagnostic identifies exact mismatched derived file without exposing image or clinical records', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'tcia-exact-output-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const names = ['data/ct.nii.gz', 'data/readers.nii.gz', 'data/annotations.json'];
+  const registry = { assets: names.map((name, i) => ({
+    id: 'chest-ct.' + i, path: name, sha256: crypto.createHash('sha256').update('expected-' + i).digest('hex'),
+  })) };
+  for (let i = 0; i < names.length; i++) {
+    const dest = path.join(root, names[i]); fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.writeFileSync(dest, 'expected-' + i);
+  }
+  let audit = tciaDerivedAudit({ registry, privateBuildRoot: root });
+  assert.equal(audit.allDerivedHashesMatch, true);
+  assert.equal(audit.originalZipParentHashVerified, false);
+  fs.writeFileSync(path.join(root, names[1]), 'different-reader-mask');
+  audit = tciaDerivedAudit({ registry, privateBuildRoot: root });
+  assert.equal(audit.allDerivedHashesMatch, false);
+  assert.deepEqual(audit.outputs.filter(x => !x.matches).map(x => x.path), ['data/readers.nii.gz']);
+  assert.equal(audit.releaseApproved, false);
+  assert.ok(audit.outputs.every(x => !Object.keys(x).some(k => /patient|name|imageData|pixelBytes/i.test(k))));
+  assert.throws(() => tciaDerivedHashCheck({ registry, privateBuildRoot: root }), /TCIA_DERIVED_SHA_MISMATCH/);
+});
+
+test('RECOVER-013: changed CT source cannot promote rights and keeps mismatched candidate outside canonical build', () => {
+  const source = fs.readFileSync(path.join(ROOT, 'licensing/tools/recover-private-studio-sources.mjs'), 'utf8');
+  assert.match(source, /tcia-derived-mismatch\.json/);
+  assert.match(source, /privateCandidateQuarantine/);
+  assert.match(source, /fs\.renameSync\(ctOutput, candidate\)/);
+  assert.doesNotMatch(source, /status:\s*['"]publishable['"]/);
+});
+
+test('RECOVER-014: selected TCIA CT and SEG instance identity must be complete and unique', () => {
+  const uid = '1.2.276.0.7230010.3.1.3.99';
+  const make = n => ({
+    seriesUid: uid, sopUid: '1.2.3.4.' + n, sopClassUid: '1.2.840.10008.5.1.4.1.1.2',
+    modality: 'CT', pixelDataBytes: 8, identityRemoved: 'YES', burnedIn: 'NO',
+  });
+  const ok = checkSeriesIdentity([make(1), make(2)], uid);
+  assert.equal(ok.uniqueSopCount, 2);
+  assert.equal(ok.identityRemovedFlag, 'all-YES');
+  assert.equal(ok.burnedInAnnotationFlag, 'all-NO-declared-visual-review-still-required');
+  assert.equal(ok.patientPrivacyReview, 'pending');
+  assert.throws(() => checkSeriesIdentity([make(1), make(1)], uid), /DUPLICATE/);
+  assert.throws(() => checkSeriesIdentity([{ ...make(1), seriesUid: '1.2.4' }], uid), /SERIES_UID_MISMATCH/);
+  assert.throws(() => checkSeriesIdentity([{ ...make(1), modality: 'SEG' }], uid), /SOP_CLASS_OR_MODALITY/);
+  assert.equal(checkSeriesIdentity([{ ...make(1), identityRemoved: undefined }], uid)
+    .identityRemovedFlag, 'incomplete-or-unconfirmed');
+});
+
+test('RECOVER-015: uncompressed NIfTI source-payload check cannot be confused with historical equivalence', t => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'lidc-nifti-proof-'));
+  t.after(() => fs.rmSync(tmp, { recursive: true, force: true }));
+  const vox = Buffer.from([10, 0, 20, 0, 30, 0, 40, 0]);
+  const h = Buffer.alloc(352); h.writeInt32LE(348, 0);
+  h.writeInt16LE(2, 42); h.writeInt16LE(2, 44); h.writeInt16LE(1, 46);
+  h.writeInt16LE(4, 70); h.write('n+1\0', 344, 'latin1');
+  const file = path.join(tmp, 'ct.nii.gz');
+  fs.writeFileSync(file, zlib.gzipSync(Buffer.concat([h, vox]), { level: 9, mtime: 0 }));
+  const good = inspectNiftiGzFile(file, [2, 2, 1], 4, vox);
+  assert.equal(good.exactlyMatchesCurrentOfficialDicomConversion, true);
+  assert.equal(good.matchesPreviousBuildVoxelData, 'NOT_ASSESSABLE_WITHOUT_PREVIOUS_UNCOMPRESSED_HASH');
+  assert.equal(inspectNiftiGzFile(file, [2, 2, 1], 4, Buffer.alloc(vox.length))
+    .exactlyMatchesCurrentOfficialDicomConversion, false);
+  assert.throws(() => inspectNiftiGzFile(file, [1, 2, 2], 4, vox), /DIMENSION/);
+});
+
+test('RECOVER-016: private LIDC audit script is syntax-valid and does not auto-grant rights', () => {
+  const file = path.join(ROOT, 'apps/studios/tools/audit-lidc-private.mjs');
+  const check = spawnSync(process.execPath, ['--check', file], { cwd: ROOT, encoding: 'utf8', timeout: 15000 });
+  assert.equal(check.status, 0, check.stderr);
+  const code = fs.readFileSync(file, 'utf8');
+  assert.match(code, /oldDerivedVoxelHashesAvailable: false/);
+  assert.match(code, /permittedToPublish: false/);
+  assert.match(code, /privateCandidateQuarantine/);
+  assert.doesNotMatch(code, /status:\s*['"]verified['"]/);
 });
