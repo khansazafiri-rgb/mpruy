@@ -151,7 +151,9 @@
         "data/labels.json",
         "data/tissues.nii.gz",
         "data/labels-tissue.nii.gz",
-        "data/labels-tissue.json"
+        "data/labels-tissue.json",
+        "data/labels-harvard-oxford.nii.gz",
+        "data/labels-harvard-oxford.json"
       ],
       "inspector": {
         "eligible": false,
