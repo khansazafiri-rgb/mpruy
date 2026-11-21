@@ -77,7 +77,7 @@ export function verifyConceptMembers({ structures, elementsTsv, members }) {
 /** Scan independent studio source files for imports/runtime URLs from the upstream NC Atlas frontend. */
 export function detectLegacyAtlasCode(content) {
   const text = String(content);
-  return /(?:apps\/anatomy\/|\/anatomy\/viewer\/|@medcoel\/anatomy\b|nqwrc\/3d-anatomy|\/models\/(?:nervous|visceral|skeletal|muscular|joints)\.glb)/i.test(text);
+  return /(?:apps\/anatomy\/|\/anatomy\/(?:viewer|src|public|dist|models)\/|\.\.\/anatomy\/(?:src|public|viewer|models)\/|@medcoel\/anatomy\b|nqwrc\/3d-anatomy|\/models\/(?:nervous|visceral|skeletal|muscular|joints)\.glb)/i.test(text);
 }
 export function auditAnatomySourceBoundary({ root = REPO } = {}) {
   const basis = path.join(root, 'apps/studios'), dirs = [
