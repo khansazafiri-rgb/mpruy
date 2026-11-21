@@ -176,6 +176,18 @@ export function assertPrivateDefaults(registry = getRegistry()) {
  * each requested member's independently pinned SHA-256. No other datasets or
  * untrusted URLs are eligible for full-archive fallback.
  */
+const HC18_CSV_URL = URL_PREFIX['hc18-zenodo'] + 'training_set_pixel_size_and_HC.csv/content';
+const HC18_ZIP_URL = URL_PREFIX['hc18-zenodo'] + 'training_set.zip/content';
+/** HC18 official record has one DIRECT metadata CSV plus 8 PNGs inside training_set.zip. */
+export function classifyHc18Source(item) {
+  if (item?.sourceId !== 'hc18-zenodo') throw Error('Not an HC18 source asset');
+  if (item.member === 'training_set_pixel_size_and_HC.csv' && item.url === HC18_CSV_URL)
+    return 'direct-verified-csv';
+  if (/^training_set\/(?:000|010|100|300)_HC(?:_Annotation)?\.png$/.test(item.member) && item.url === HC18_ZIP_URL)
+    return 'zip-member';
+  throw Error('Unexpected HC18 URL/member routing; refuse download: ' + String(item?.member));
+}
+
 export function isZipRangeProtocolFailure(error) {
   return /(?:EOCD not found|ZIP64 EOCD not found|Invalid HTTP Content-Range|correct byte ranges|Range not supported|No Content-Range|Bad central directory entry|Bad local header)/i.test(String(error?.message || error));
 }
@@ -291,9 +303,26 @@ async function recoverGroup(sourceId, items) {
     const byUrl = new Map();
     for (const a of items) { if (!byUrl.has(a.url)) byUrl.set(a.url, []); byUrl.get(a.url).push(a); }
     for (const [url, batch] of byUrl) {
+      const hc18Kinds = sourceId === 'hc18-zenodo' ? batch.map(classifyHc18Source) : [];
       if (batch.every(x => fs.existsSync(x.destination) && sha(fs.readFileSync(x.destination)) === x.sha256)) {
         records.push(...batch.map(a => ({ member: a.member, result: 'already-verified' }))); continue;
       }
+      // HC18 calibration CSV is a plain HTTP file, not ZIP: trying EOCD on it
+      // incorrectly triggers full-ZIP fallback with an unapproved CSV URL.
+      if (hc18Kinds.length && hc18Kinds.every(x => x === 'direct-verified-csv')) {
+        for (const a of batch) {
+          if (fs.existsSync(a.destination)) {
+            if (sha(fs.readFileSync(a.destination)) !== a.sha256)
+              throw Error('HC18 existing CSV SHA differs: ' + a.member);
+            records.push({ member: a.member, result: 'already-verified' }); continue;
+          }
+          const bytes = await boundedGet(a.url, 4 * 1024 * 1024);
+          records.push({ member: a.member, result: storeVerified(a.destination, bytes, a.sha256) });
+        }
+        continue;
+      }
+      if (hc18Kinds.length && hc18Kinds.some(x => x !== 'zip-member'))
+        throw Error('Mixed HC18 metadata and ZIP members in one URL batch');
       try {
         const directory = new Map((await listZip(url)).map(e => [e.name, e]));
         for (const a of batch) {
@@ -304,7 +333,7 @@ async function recoverGroup(sourceId, items) {
           records.push({ member: a.member, result: storeVerified(a.destination, bytes, a.sha256) });
         }
       } catch (error) {
-        if (sourceId !== 'hc18-zenodo' || !isZipRangeProtocolFailure(error)) throw error;
+        if (sourceId !== 'hc18-zenodo' || url !== HC18_ZIP_URL || !isZipRangeProtocolFailure(error)) throw error;
         console.warn('HC18 ZIP byte ranges invalid; using bounded full official archive with CRC and exact-member SHA verification.');
         records.push(...await recoverHc18FromFullArchive(url,
           batch.filter(a => !fs.existsSync(a.destination))));
