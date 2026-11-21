@@ -291,7 +291,7 @@ function buildLocation(sourceId, args) {
 }
 function prepareGroup(sourceId) {
   const expected = buildLocation(sourceId);
-  if (expected && fs.existsSync(path.join(expected, 'provenance.json')))
+  if (sourceId !== 'bodyparts3d-dbcls' && expected && fs.existsSync(path.join(expected, 'provenance.json')))
     return { result: 'existing-private-build-not-overwritten' };
   const command = PREPARE[sourceId];
   if (!command) throw Error('No private preparer: ' + sourceId);
