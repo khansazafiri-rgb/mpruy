@@ -12,7 +12,9 @@
     "data/labels.json",
     "data/tissues.nii.gz",
     "data/labels-tissue.nii.gz",
-    "data/labels-tissue.json"
+    "data/labels-tissue.json",
+    "data/labels-harvard-oxford.nii.gz",
+    "data/labels-harvard-oxford.json"
   ],
   "privateData": "local-data/studio-resources/build/brain-mri",
   "fixtureTool": "tools/make-volume-fixture.mjs"
