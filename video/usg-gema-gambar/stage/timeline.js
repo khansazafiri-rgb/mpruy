@@ -1,0 +1,29 @@
+// Waktu bersama (stage + audio). tn = detik narasi (audio/narasi-edukasi.wav, 50,76 dtk); t = tn + OFF. Semua kata kunci berasal dari ASR kata (audio/asr.json), bukan perkiraan.
+export const OFF = 0.3;
+export const EDU_END = 50.8;                    // narasi selesai di 50,42 dtk
+export const O0 = EDU_END + OFF + 0.4;          // outro mulai (rekaman web asli terlihat)
+export const MASTER_AT = O0 + 1.0;              // audio outro baru (outro-baru.wav, 10,36 dtk) mulai 1,0 dtk setelah web terlihat
+export const MASTER_LEN = 10.36;
+export const DUR = Math.ceil((MASTER_AT + 9.98 + 4.7) * 30) / 30;   // logo + URL ditahan 4,7 dtk setelah "medcoel.com" selesai diucapkan
+// jangkar (detik narasi)
+export const A = {
+  lihat: 0.0, saatProbe: 1.3, probe: 1.88, digeser: 2.1, potongan: 3.1, tapi: 4.6, usg: 5.86, membuat: 6.74, tanyaEnd: 7.4,
+  pertama: 8.36, gel: 9.58, gelombang: 10.16, lewat: 10.88, tubuh: 11.92, celah: 13.0, udara: 13.56,
+  probeKirim: 14.62, mengirim: 15.12, pulsa: 15.36, tinggi: 16.72,
+  ketika: 17.84, bertemu: 18.54, batas: 18.86, sebagian: 20.58, memantul: 21.04, gema: 21.86,
+  menangkap: 22.84, dekat: 24.94, dekatKata: 26.08, cepat: 26.8, dalam: 27.32, dalamKata: 28.8, lama: 30.12,
+  mesin: 31.24, waktu: 32.04, kekuatan: 32.62, menyusun: 34.06, gambar: 35.22,
+  digeserLagi: 36.58, dimiringkan: 38.22, tubuhBerubah: 39.32, maka: 41.88, berubah: 42.64,
+  jadi: 43.94, kamera: 45.22, menembus: 46.08, disusun: 47.14, pantulan: 48.18, tanpa: 49.3, sinarX: 50.02, selesai: 50.42,
+};
+export const KAL = [
+  [0.0, 0.8, 'Lihat gambar ini.'], [1.3, 4.04, 'Saat probe digeser, potongannya ikut berubah.'], [4.6, 7.4, 'Tapi bagaimana USG sungguhan membuat gambar?'],
+  [8.36, 13.8, 'Pertama, gel membantu gelombang suara lewat dari probe ke tubuh tanpa terhalang celah udara.'], [14.62, 17.06, 'Probe mengirim pulsa suara berfrekuensi tinggi.'],
+  [17.84, 22.28, 'Ketika pulsa bertemu batas antarjaringan, sebagian memantul kembali sebagai gema.'], [22.84, 24.02, 'Probe yang sama menangkapnya.'],
+  [24.94, 27.32, 'Gema dari bagian yang dekat kembali lebih cepat.'], [27.32, 30.58, 'Gema dari bagian yang lebih dalam butuh waktu lebih lama.'],
+  [31.24, 35.86, 'Mesin memakai waktu dan kekuatan gema itu untuk menyusun titik-titik menjadi gambar.'], [36.58, 41.38, 'Saat probe digeser atau dimiringkan, bagian tubuh yang dilalui gelombang ikut berubah.'],
+  [41.88, 43.14, 'Maka gambarnya juga berubah.'], [43.94, 46.72, 'Jadi, USG bukan kamera yang melihat menembus kulit.'], [47.14, 50.42, 'Gambar itu disusun dari pantulan suara, tanpa memakai sinar X.'],
+];
+// kalimat outro (audio/outro-baru.wav, detik audio) dan kata kunci
+export const OUT = { atlas: 1.56, live: 2.58, lanjut: 4.1, materi: 5.14, latihan: 5.86, simulasi: 6.88, gratis: 8.14, medcoel: 9.06, selesai: 9.98 };
+export const OUT_CAPS = [[0.0, 3.7, 'Di MEDCOEL, jelajahi Atlas 3D dan Live 4D Lab.'], [4.1, 7.72, 'Lanjut belajar lewat materi, latihan soal, dan Simulasi Dokter.'], [8.14, 9.98, 'Gratis di medcoel.com.']];
