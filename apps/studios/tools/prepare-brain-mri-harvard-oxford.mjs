@@ -16,6 +16,7 @@ const OUT = path.join(REPO, 'local-data/studio-resources/build/brain-mri-harvard
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
 const isHash = s => /^[a-f0-9]{64}$/.test(s || '');
 const fileNames = Object.freeze(['underlay.nii.gz', 'atlas.nii.gz', 'atlas.xml']);
+const ALLOWED_UNDERLAY_LICENSES = new Set(['CC0-1.0', 'CC-BY-3.0', 'CC-BY-4.0', 'CC-BY-SA-3.0', 'CC-BY-SA-4.0']);
 
 export function parseAtlasXml(xml) {
   if (typeof xml !== 'string' || !xml.includes('<atlas')) throw Error('HARVARD_OXFORD_XML_INVALID');
@@ -94,8 +95,8 @@ export function prepareHarvardOxford() {
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
   if (manifest.schema !== 'medcoel.harvard-oxford-inputs.v1' || manifest.atlas?.licenseId !== 'CC-BY-SA-4.0' ||
       !manifest.atlas.licenseEvidenceUrl?.startsWith('https://fsl.fmrib.ox.ac.uk/fsl/docs/license.html') ||
-      !manifest.underlay?.sourceUrl?.startsWith('https://') || !manifest.underlay?.licenseId ||
-      manifest.underlay.licenseId.includes('NC') || manifest.underlay.licenseId.includes('ND') ||
+      !manifest.atlas?.sourceUrl?.startsWith('https://') || !manifest.underlay?.sourceUrl?.startsWith('https://') ||
+      !ALLOWED_UNDERLAY_LICENSES.has(manifest.underlay?.licenseId) ||
       fileNames.some(name => !isHash(manifest.files?.[name]))) {
     throw Error('HARVARD_OXFORD_INCOMPLETE_RIGHTS_EVIDENCE: verify actual underlay source and permission first');
   }
