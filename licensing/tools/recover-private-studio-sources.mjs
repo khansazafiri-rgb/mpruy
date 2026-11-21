@@ -113,12 +113,12 @@ export function recoveryPlan({ registry = getRegistry(), flags = [], root = LOCA
     sources };
 }
 const sleep = t => new Promise(resolve => setTimeout(resolve, t));
-async function boundedGet(url, max = MAX_DIRECT) {
+async function boundedGet(url, max = MAX_DIRECT, timeoutMs = 180000) {
   let error;
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const r = await fetch(url, { headers: { 'User-Agent': 'MEDCOEL-private-source-verification/1.0' }, redirect: 'follow',
-        signal: AbortSignal.timeout(180000) });
+        signal: AbortSignal.timeout(timeoutMs) });
       if (!r.ok || !r.body) {
         if (r.status === 429 || r.status >= 500) throw Error('HTTP transient ' + r.status);
         throw Error('Official resource HTTP ' + r.status + ' (' + url + ')');
@@ -183,7 +183,7 @@ async function recoverHc18FromFullArchive(url, batch) {
   if (!batch.length || batch.some(a => a.sourceId !== 'hc18-zenodo' ||
       a.url !== 'https://zenodo.org/api/records/1327317/files/training_set.zip/content'))
     throw Error('Full-ZIP fallback is authorized only for the official HC18 training_set.zip');
-  const bytes = await boundedGet(url, 260 * 1024 * 1024);
+  const bytes = await boundedGet(url, 260 * 1024 * 1024, 600000);
   if (bytes.length < 30 || bytes.readUInt32LE(0) !== 0x04034b50)
     throw Error('HC18 fallback response is not a ZIP archive');
   const dir = path.join(LOCAL, PATHS['hc18-zenodo']);
@@ -494,6 +494,7 @@ export async function recoverPrivate({ flags = [], registry = getRegistry() } = 
       console.error('Source failed, proceeding to other sources: ' + result.error);
     }
     outcomes.push(result);
+    console.log('RESULT: ' + sourceId + ' => ' + result.status);
   }
   const status = {
     schema: 'medcoel.official-data-recovery.v1', generatedAt: new Date().toISOString(),
