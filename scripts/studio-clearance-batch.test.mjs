@@ -89,7 +89,7 @@ test('BATCH-007: draft NOTICE covers all source families, includes attribution U
   assert.match(notice, /NOT FOR PUBLICATION/);
   for (const id of ['ptbxl-physionet', 'lidc-idri-tcia', 'spider-zenodo', 'bodyparts3d-dbcls', 'sri24-nitrc', 'ptx498-zenodo', 'hc18-zenodo', 'amos-zenodo'])
     assert.ok(notice.includes('### ' + id), id);
-  assert.match(notice, /\\n### amos-zenodo\\n/);
+  assert.ok(notice.split(String.fromCharCode(10)).includes('### amos-zenodo'));
   assert.match(notice, /LPBA40.*blocked/);
   assert.match(notice, /Separate/i);
 });
