@@ -9,6 +9,7 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { build } from 'vite';
 import { buildStudioManifest } from '../../../scripts/build-studio-manifest.mjs';
+import { ANATOMY_STUDIOS, auditAnatomySourceBoundary } from '../../../licensing/tools/audit-bodyparts3d-studios.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const REPO = path.resolve(ROOT, '../..');
@@ -25,6 +26,8 @@ let commit = '0'.repeat(40);
 try { commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: REPO, encoding: 'utf8' }).trim(); } catch { /* no git */ }
 
 export async function buildStudio(id, { privateData = false, sri24TissueOnly = false, harvardOxford = false } = {}) {
+  // Never build an anatomy3d application that reintroduces known NC Atlas code or asset URLs.
+  if (ANATOMY_STUDIOS.includes(id)) auditAnatomySourceBoundary();
   const dir = path.join(ROOT, id), config = JSON.parse(fs.readFileSync(path.join(dir, 'studio.config.json'), 'utf8'));
   const dist = path.join(dir, 'dist');
   await build({ root: dir, base: './', logLevel: 'warn', configFile: false, build: { outDir: dist, emptyOutDir: true, chunkSizeWarningLimit: 4000 } });
