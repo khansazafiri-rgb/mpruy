@@ -149,7 +149,9 @@
       "challengeRestricted": [
         "data/labels-lpba40.nii.gz",
         "data/labels.json",
-        "data/tissues.nii.gz"
+        "data/tissues.nii.gz",
+        "data/labels-tissue.nii.gz",
+        "data/labels-tissue.json"
       ],
       "inspector": {
         "eligible": false,
