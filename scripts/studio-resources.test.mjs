@@ -3,6 +3,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import zlib from 'node:zlib';
+import crypto from 'node:crypto';
+import { gzipPinnedSpineAsset, assertPinnedSpineOutputs } from '../apps/studios/tools/prepare-spine-mri.mjs';
 import { fixture } from './studio-resource-fixture.mjs';
 import { inspectStudioResources, digest } from '../licensing/tools/inspect-studio-resources.mjs';
 import { validateCatalog, validateResources, publicResourceSummary } from '../packages/studio-contract/manifest.mjs';
@@ -152,4 +155,36 @@ test('mutating shipped code bytes, manifest bindings or original review scope in
 });
 test('new studio products must be explicitly named in the canonical catalog, never admitted by prefix alone', t => {
   const f = fixture(t); f.evidence.records.at(-1).products = ['studio:unknown-studio']; assert.throws(() => inspectCommercialEvidence(f.evidence, { studioIds: ['foundation-fixture'] }), /unknown product/);
+});
+
+test('RESOURCE-021: SPIDER MRI gzip OS header is fixed to historical Unix pin while payload stays identical', () => {
+  const payload = Buffer.from('Synthetic NIfTI test fixture. Zero patient bytes.', 'utf8');
+  const canonical = gzipPinnedSpineAsset(payload);
+  const platform = zlib.gzipSync(payload, { level: 9, mtime: 0 });
+  const manualCanonical = Buffer.from(platform);
+  manualCanonical[9] = 3;
+  assert.equal(canonical[9], 3);
+  assert.equal(canonical[3], 0); // No optional gzip header sections.
+  assert.deepEqual(canonical, manualCanonical);
+  assert.deepEqual(zlib.gunzipSync(canonical), payload);
+});
+
+test('RESOURCE-022: SPIDER derived asset drift is rejected before private build replacement', () => {
+  const payloads = {
+    'data/t1.nii.gz': gzipPinnedSpineAsset(Buffer.from('Synthetic MRI only')),
+    'data/labels-lpba40.nii.gz': gzipPinnedSpineAsset(Buffer.from('Synthetic segmentation only')),
+    'data/labels.json': Buffer.from('{"schema":"test-only"}')
+  };
+  const pin = (path, i) => ({
+    id: 'spine-mri.test-' + i, path,
+    bytes: payloads[path].length,
+    sha256: crypto.createHash('sha256').update(payloads[path]).digest('hex'),
+    sourceFile: null
+  });
+  const pins = Object.keys(payloads).map(pin);
+  assert.equal(assertPinnedSpineOutputs(payloads, pins), 3);
+  const drift = { ...payloads, 'data/t1.nii.gz': Buffer.from('tampered') };
+  assert.throws(() => assertPinnedSpineOutputs(drift, pins), /SPINE_PINNED_DERIVED_BYTES_MISMATCH/);
+  const missing = pins.slice(1);
+  assert.throws(() => assertPinnedSpineOutputs(payloads, missing), /SPINE_PIN_SET_MISMATCH/);
 });
