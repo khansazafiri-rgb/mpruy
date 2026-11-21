@@ -1,0 +1,780 @@
+March 10, 2022
+
+
+SPD Swiss Precision Diagnostics GmbH
+℅ Kamila Przedmojska
+Senior Regulatory Specialist - Product Lifecycle
+SPD Development Company Limited
+Priory Business Park, Stannard Way
+Bedford, Bedfordshire MK44 3UP
+United Kingdom
+
+Re: K210341
+    Trade/Device Name: One Step Pregnancy Test
+    Regulation Number: 21 CFR 862.1155
+    Regulation Name: Human Chorionic Gonadotropin (hCG) Test System
+    Regulatory Class: Class II
+    Product Code: LCX
+    Dated: December 1, 2021
+    Received: December 10, 2021
+
+Dear Kamila Przedmojska:
+
+We have reviewed your Section 510(k) premarket notification of intent to market the device referenced
+above and have determined the device is substantially equivalent (for the indications for use stated in the
+enclosure) to legally marketed predicate devices marketed in interstate commerce prior to May 28, 1976, the
+enactment date of the Medical Device Amendments, or to devices that have been reclassified in accordance
+with the provisions of the Federal Food, Drug, and Cosmetic Act (Act) that do not require approval of a
+premarket approval application (PMA). You may, therefore, market the device, subject to the general
+controls provisions of the Act. Although this letter refers to your product as a device, please be aware that
+some cleared products may instead be combination products. The 510(k) Premarket Notification Database
+located at https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm identifies combination
+product submissions. The general controls provisions of the Act include requirements for annual registration,
+listing of devices, good manufacturing practice, labeling, and prohibitions against misbranding and
+adulteration. Please note: CDRH does not evaluate information related to contract liability warranties. We
+remind you, however, that device labeling must be truthful and not misleading.
+
+If your device is classified (see above) into either class II (Special Controls) or class III (PMA), it may be
+subject to additional controls. Existing major regulations affecting your device can be found in the Code of
+Federal Regulations, Title 21, Parts 800 to 898. In addition, FDA may publish further announcements
+concerning your device in the Federal Register.
+
+
+U.S. Food & Drug Administration
+10903 New Hampshire Avenue                                                          Doc ID# 04017.04.32
+Silver Spring, MD 20993
+www.fda.gov
+K210341 - Kamila Przedmojska                                                                          Page 2
+
+
+
+Please be advised that FDA's issuance of a substantial equivalence determination does not mean that FDA
+has made a determination that your device complies with other requirements of the Act or any Federal
+statutes and regulations administered by other Federal agencies. You must comply with all the Act's
+requirements, including, but not limited to: registration and listing (21 CFR Part 807); labeling (21 CFR Part
+801 and Part 809); medical device reporting (reporting of medical device-related adverse events) (21 CFR
+803) for devices or postmarketing safety reporting (21 CFR 4, Subpart B) for combination products (see
+https://www.fda.gov/combination-products/guidance-regulatory-information/postmarketing-safety-reporting-
+combination-products); good manufacturing practice requirements as set forth in the quality systems (QS)
+regulation (21 CFR Part 820) for devices or current good manufacturing practices (21 CFR 4, Subpart A) for
+combination products; and, if applicable, the electronic product radiation control provisions (Sections 531-
+542 of the Act); 21 CFR 1000-1050.
+
+Also, please note the regulation entitled, "Misbranding by reference to premarket notification" (21 CFR Part
+807.97). For questions regarding the reporting of adverse events under the MDR regulation (21 CFR Part
+803), please go to https://www.fda.gov/medical-devices/medical-device-safety/medical-device-reporting-
+mdr-how-report-medical-device-problems.
+
+For comprehensive regulatory information about medical devices and radiation-emitting products, including
+information about labeling regulations, please see Device Advice (https://www.fda.gov/medical-
+devices/device-advice-comprehensive-regulatory-assistance) and CDRH Learn
+(https://www.fda.gov/training-and-continuing-education/cdrh-learn). Additionally, you may contact the
+Division of Industry and Consumer Education (DICE) to ask a question about a specific regulatory topic. See
+the DICE website (https://www.fda.gov/medical-devices/device-advice-comprehensive-regulatory-
+assistance/contact-us-division-industry-and-consumer-education-dice) for more information or contact DICE
+by email (DICE@fda.hhs.gov) or phone (1-800-638-2041 or 301-796-7100).
+
+                                                 Sincerely,
+
+
+                                                 Marianela Perez-torres -S
+                                                 Marianela Perez-Torres, Ph.D.
+                                                 Deputy Director
+                                                 Division of Chemistry
+                                                   and Toxicology Devices
+                                                 OHT7: Office of In Vitro Diagnostics
+                                                   and Radiological Health
+                                                 Office of Product Evaluation and Quality
+                                                 Center for Devices and Radiological Health
+
+Enclosure
+                   DEPARTMENT OF HEALTH AND HUMAN SERVICES                                  Form Approved: OMB No. 0910-0120
+                           Food and Drug Administration                                     Expiration Date: 06/30/2020
+                                 Indications for Use                                        See PRA Statement below.
+
+510(k) Number (if known)
+k210341
+
+Device Name
+One Step Pregnancy Test
+
+
+
+Indications for Use (Describe)
+One Step Pregnancy Test is an over-the-counter lateral flow immunoassay for the qualitative detection of human
+chorionic gonadotropin (hCG) in urine. The visual test is intended for home use as an aid in early detection of pregnancy.
+The test is indicated for use from 4 days before the day of the expected period (5 days before the day of the missed
+period).
+
+
+
+
+Type of Use (Select one or both, as applicable)
+                  Prescription Use (Part 21 CFR 801 Subpart D)             Over-The-Counter Use (21 CFR 801 Subpart C)
+
+                                       CONTINUE ON A SEPARATE PAGE IF NEEDED.
+
+                        This section applies only to requirements of the Paperwork Reduction Act of 1995.
+                *DO NOT SEND YOUR COMPLETED FORM TO THE PRA STAFF EMAIL ADDRESS BELOW.*
+          The burden time for this collection of information is estimated to average 79 hours per response, including the
+          time to review instructions, search existing data sources, gather and maintain the data needed and complete
+          and review the collection of information. Send comments regarding this burden estimate or any other aspect
+          of this information collection, including suggestions for reducing this burden, to:
+                                                  Department of Health and Human Services
+                                                  Food and Drug Administration
+                                                  Office of Chief Information Officer
+                                                  Paperwork Reduction Act (PRA) Staff
+                                                  PRAStaff@fda.hhs.gov
+                “An agency may not conduct or sponsor, and a person is not required to respond to, a collection of
+                                information unless it displays a currently valid OMB number.”
+
+FORM FDA 3881 (7/17)                                        Page 1 of 1                                   PSC Publishing Services (301) 443-6740   EF
+One Step Pregnancy Test
+k210341
+
+
+
+
+                          510(k) Summary
+
+A. Submitted By:       SPD Swiss Precision Diagnostics GmbH
+                       47 Route de Saint-Georges
+                       Petit-Lancy
+                       CH-1213
+                       Geneva
+                       Switzerland
+                       Telephone: +41 580048741
+
+B. Contact Person:     Kamila Przedmojska
+                       Principal Regulatory Specialist
+                       SPD Development Company Limited
+                       Priory Business Park
+                       Bedford
+                       MK44 3UP
+                       United Kingdom
+
+
+C. Date Prepared:      09 March 2022
+
+D. Device Name:        One Step Pregnancy Test
+
+  Product Code:             LCX
+  Common name:              Kit, Test, Pregnancy, hCG, over the counter
+  Classification:           Class II
+  Regulation Description:   Human chorionic gonadotropin (hCG) test
+                            system
+  Regulation number:        21CFR 862.1155
+  510(k) number:            k210341
+
+E. Predicate Device:   K012215, QUIK-CHECKTM Home Pregnancy Test
+
+
+
+
+                                                              Page 1 of 13
+One Step Pregnancy Test
+k210341
+
+F. Indication for Use
+   One Step Pregnancy Test is an over-the-counter lateral flow
+   immunoassay for the qualitative detection of human chorionic
+   gonadotropin (hCG) in urine. The visual test is intended for home use
+   as an aid in early detection of pregnancy. The test is indicated for use
+   from 4 days before the day of the expected period (5 days before the
+   day of the missed period).
+
+G. Device Description
+   The One Step Pregnancy Test is an over-the-counter, visual pregnancy
+   test with sensitivity of 25mIU/mL hCG (human chorionic gonadotropin)
+   and is indicated for use up to 4 days before the expected period (5 days
+   before     the     missed    period).   The     device    employs     an
+   immunochromatographic sandwich assay to detect hCG on a lateral flow
+   test strip housed in a cassette. Following sample application using the
+   supplied pipette, the user is required to visually interpret the results
+   displayed as lines in a result window.
+
+H. Substantial Equivalence Information
+
+  Predicate device name:
+
+  QUIK-CHECKTM Home Pregnancy Test
+
+  Predicate (k) number:
+
+  K012215
+
+
+
+
+                                                                Page 2 of 13
+One Step Pregnancy Test
+k210341
+
+   Comparison with predicate:
+
+    Similarities and differences between the One Step Pregnancy Test and
+               the predicate QUIK-CHECKTM Home Pregnancy Test
+
+                                                         QUIK-CHECKTM Home
+                     One Step Pregnancy Test
+Component                                                   Pregnancy Test
+                       (Proposed Device)
+                                                        (Predicate Device)
+                                 Similarities
+                  Over-the-counter lateral flow
+                                                    Intended for non-professional
+                  immunoassay for the
+                                                    / over-the-counter use for
+                  qualitative detection of human
+                                                    the qualitative identification
+                  chorionic gonadotropin (hCG)
+Intended Use                                        of hCG (human chorionic
+                  in urine. The visual test is
+                                                    gonadotropin) in urine to aid
+                  intended for home use as an
+                                                    in the determination of
+                  aid in early detection of
+                                                    pregnancy.
+                  pregnancy.
+Target User       Over-the-counter use              Same
+
+Device format     Cassette                          Same
+
+Analyte           hCG                               Same
+
+Sensitivity       25mIU/mL                          Same
+
+                  Lateral flow qualitative
+Test Principle    chromatographic immunoassay Same
+                  with visual result display
+                  Sample applied as drops to
+Sample
+                  sample well via supplied          Same
+application
+                  pipette
+Time to results   3 minutes                         Same
+
+                  Visual interpretation of
+Result Display                                      Same
+                  coloured lines in result window
+
+                                 Differences
+
+                  WHO 4th International             WHO 3rd International
+Traceability
+                  Standard for hCG                  Standard for hCG
+                  Pregnancy can be detected as
+                  early as 4 days before the date
+Early Claim                                         Not tested for this device
+                  of the expected period (5 days
+                  before missed period)
+
+
+
+
+                                                                      Page 3 of 13
+One Step Pregnancy Test
+k210341
+
+I. Test Principle
+
+The One Step Pregnancy Test is a lateral flow sandwich immunoassay
+employing monoclonal antibodies that are directed against the alpha and
+beta sub-units of hCG.
+
+To use the test, the user collects their urine in a clean dry container and
+uses the supplied pipette to draw up and deposit 4 drops of urine into the
+sample well.
+
+If hCG is present in the urine sample, it is bound by a conjugated
+monoclonal anti α-hCG antibody forming an anti hCG-antibody-gold
+complex. The sample is drawn through the nitrocellulose membrane by
+capillary action. At the test (T) line, any hCG is bound by immobilised anti-
+β hCG antibody forming a sandwich, immobilising gold particles as the test
+line. This sandwich gives rise to a coloured line. If no hCG is present in the
+sample, there is no binding at the test line and subsequently, no coloured
+line.
+
+At the control (C) line, rabbit IgG sensitised gold particles encounter the
+immobilised control antibody line (goat anti-rabbit antibody). The rabbit
+IgG is bound at the control (C) line within the result window and a coloured
+line forms to show that the test has worked correctly.
+
+At the read time the appearance of two coloured lines in the result window,
+the test (T) line and control (C) line, indicates a Pregnant result. The
+appearance of one coloured line in the result window, the control (C) line,
+indicates a Not Pregnant result. If there is no control (C) line, the test has
+not run correctly and is classed as an Invalid result.
+
+
+
+J. Performance characteristics
+
+1. Analytical Performance
+
+a) Precision/Reproducibility/Sensitivity
+A pooled negative urine was spiked with hCG to provide eight urine
+standards with the hCG concentrations of <0.5, 12.5, 15, 18, 25, 50, 100
+and 200mIU/mL. The eight standards were each tested with 180 devices
+from four different batches. Each batch was tested by 3 operators over 3
+non-consecutive days
+
+
+
+
+                                                                   Page 4 of 13
+        One Step Pregnancy Test
+        k210341
+
+        The results of the precision and sensitivity study at each concentration of
+        hCG are summarised in the tables below. The results demonstrated that
+        the analytical sensitivity of the One Step Pregnancy Test is 25mIU/mL.
+
+                      Overall Precision Results for One Step Pregnancy Test
+
+
+                  hCG Standard                           Pregnant       Not Pregnant         Pregnant
+                                         Total (n)
+                   (mIU/ml)                                 (n)              (n)            Results (%)
+
+                       <0.5                 180              0               180                     0.0
+                       12.5                 180             30               150                 16.7
+                           15               180             76               104                 42.2
+                           18               180            145                35                 80.6
+                           25               180            180                0                 100.0
+                           50               180            180                0                 100.0
+                           100              180            180                0                 100.0
+                           200              180            180                0                 100.0
+                       Total               1440            971               469                 N/A
+
+
+                 Percentage Pregnant Results for each hCG standard by Batch
+
+
+                 CYG00011                      CYG00012                      CYG00013                        CYG00016
+  hCG
+Standard   Pregnant/ Not                 Pregnant/ Not                 Pregnant/ Not                  Pregnant/ Not
+ (mIU/                      Pregnant                      Pregnant                      Pregnant        Pregnant       Pregnant
+             Pregnant                      Pregnant                      Pregnant
+                           Results (%)                   Results (%)                   Results (%)                    Results (%)
+  ml)           (n)                           (n)                           (n)                             (n)
+
+ <0.5         0/45               0.0        0/45            0.0           0/45            0.0              0/45           0.0
+ 12.5         7/38              15.6        8/37           17.8           6/39           13.3              9/36           20.0
+  15          16/29             35.6        22/23          48.9           19/26          42.2              19/26          42.2
+  18          35/10             77.8        38/7           84.4           37/8           82.2              35/10          77.8
+  25          45/0               100        45/0            100           45/0            100              45/0           100
+  50          45/0               100        45/0            100           45/0            100              45/0           100
+ 100          45/0               100        45/0            100           45/0            100              45/0           100
+ 200          45/0               100        45/0            100           45/0            100              45/0           100
+
+
+
+
+        The study indicates that the results returned by the One Step Pregnancy
+        Test are not significantly affected by operator, day of testing or batch
+        across the standards tested in the study. The results demonstrated that the
+        analytical sensitivity of the One Step Pregnancy Test is 25mIU/mL.
+
+
+
+        b) Linearity/assay reportable range:
+
+
+                                                                                                           Page 5 of 13
+One Step Pregnancy Test
+k210341
+
+Not applicable. This is a qualitative device.
+
+c) High dose hook effect study:
+
+Negative pooled urine was spiked with hCG to concentrations of <0.5, 25,
+250000, 500000, 1000000mIU/mL and tested with 5 replicates per each of
+3 batches. No hook effect was observed at tested concentrations.
+
+d) Traceability
+
+The devices are calibrated against the WHO 4th International Standard for
+Chorionic Gonadotropin (hCG) (NIBSC code 75/589).
+
+e) Stability
+
+The claimed shelf life of the device stored in the sealed pouches at room
+temperature is 24 months. Real time stability studies are ongoing.
+
+f) Detection limit (sensitivity)
+
+See Precision / Reproducibility / Sensitivity section
+
+g) Analytical specificity
+
+Structure not-related compounds
+
+Interfering substances
+The One Step Pregnancy Test devices were tested with potentially
+interfering substances. Each interfering substance was spiked into non-
+pregnant pooled urine (<0.5mIU/mL) and 25mIU/mL hCG urine standards.
+
+Each condition was tested with 5 devices from each of three batches for
+each of the two urine standards. No interference effect was observed at the
+tested concentration shown in table below:
+
+
+
+                    Interfering Substance       Concentration
+
+
+               Acetylsalicylic acid               1.0mg/mL
+                                                  1.0mg/mL
+               Acetone
+                                                (0.125% v/v)
+               Albumin                             5mg/mL
+
+
+                                                                Page 6 of 13
+One Step Pregnancy Test
+k210341
+
+
+
+                 Interfering Substance   Concentration
+
+
+          Ampicillin                       200µg/mL
+          Ascorbic acid                    150µg/mL
+          Atropine                         200µg/mL
+          Bilirubin                        200µg/mL
+          Blood                            0.3% v/v
+          Caffeine                         1.2mg/mL
+          Cannabinol                       100µg/mL
+          Clomiphene citrate               24µg/mL
+          Cotinine                         40µg/mL
+          Ethanol                           5% v/v
+          E3G                              620ng/mL
+          Glucose                          20mg/mL
+          Gentisic acid                    200µg/mL
+          Haemoglobin                      100µg/mL
+          Hydrochloric acid                 1.25mM
+          Ibuprofen                        100µg/mL
+          Leukocytes                     1x106 cells/mL
+          Oxytetracycline                  300µg/mL
+          Paracetamol
+                                           600µg/mL
+          (Acetaminophen)
+          P3G                              40µg/mL
+          Phenylpropanolamine              200µg/mL
+          Semen                             5% v/v
+          Sodium hydroxide                  1.25mM
+          Tetracycline                     300µg/mL
+          Urea                             30mg/mL
+          Uric acid                        750µg/mL
+          Urobilinogen                     100µg/mL
+
+
+
+
+                                                          Page 7 of 13
+One Step Pregnancy Test
+k210341
+
+Structure related compounds
+
+The One Step Pregnancy Test devices were tested with 3 potential cross
+reactants. Each potential cross reactant was spiked into non-pregnant
+pooled urine <0.5mIU/mL and 25mIU/mL hCG urine standard at the
+following concentration:
+
+
+
+        Cross Reactant                           Concentration
+
+
+        Follicle – Stimulating Hormone (FSH)      1000 mIU/mL
+
+        Luteinizing Hormone (LH)                   500 mIU/mL
+
+        Thyroid – Stimulating Hormone (TSH)         1mIU/mL
+
+
+Specificity of ≥99% was demonstrated when tested with potential cross
+reactants.
+
+Effects of urine pH
+
+Effect of urine pH was performed by adjusting non-pregnant pooled urine
+(<0.5mIU/mL) and 25mIU/mL hCG urine standard to a pH range of 4, 5,
+6 (unadjusted control), 7, 8, and 9. Each urine standard was tested with
+15 devices, 5 from each of 3 batches per pH condition. The results
+demonstrated that One Step Pregnancy Test will continue to return a
+correct result when tested with a urine sample in the pH range of 4 – 9.
+
+Effect of urine specific gravity
+
+To test the effect of specific gravity, device was challenged with negative
+(<0.5mIU/mL) and 25mIU/mL urine standards with the specific gravity of
+1.000, 1.005, 1.016, 1.029 and 1.035. The results showed One Step
+Pregnancy Test will continue to return a correct result in response to
+changes in specific gravity within the range from 1.000 to ≤1.035.
+
+Effect of hCG beta-core fragment (hCGβcf)
+
+To evaluate the effect of hCGβcf, 11 conditions were tested with 5 devices
+from each of 3 batches, totalling 165 devices. Pooled pregnant urine
+collected from 6-7 weeks and 9-12 weeks pregnancy were tested with and
+without hCGβcf spiked up to 1µM. Pooled negative urine spiked with hCG
+to a concentration representative of 6-7 weeks and 9-12 weeks pregnant
+                                                                Page 8 of 13
+One Step Pregnancy Test
+k210341
+
+urine samples were tested with and without hCGβcf spiked up to 1µM.
+Negative pooled urine spiked to 25mIU/mL hCG then spiked with 375pM
+hCGβcf (a concentration 5 times the molar concentration of intact hCG) was
+tested. Positive (negative pooled urine spiked to 25mIU/mL) and non-
+pregnant (<0.5mIU/mL) controls were also tested.
+
+The results show that the performance of the One Step Pregnancy Test is
+not affected by high concentrations of hCG β-core fragment.
+
+h) Assay cut-off
+
+See Limit of Detection section.
+
+2. Comparison Study
+
+a. Method comparison with predicate device:
+
+150 urine samples from pregnant women and 150 urine samples from not
+pregnant women were tested by trained technicians using devices across
+three batches of the One Step Pregnancy Test. The same samples were
+also tested using the predicate device QUIK-CHECKTM Home Pregnancy
+Test.
+
+The One Step Pregnancy Test had 100% agreement with the QUIK-
+CHECKTM Home Pregnancy Test and 100% agreement with the clinical
+status of the volunteers’ urine samples.
+
+b. Matrix comparison:
+
+Not Applicable. The device is intended for urine sample only.
+
+3. Clinical Studies
+
+a. Clinical Sensitivity:
+
+Not Applicable
+
+b. Clinical Specificity:
+
+Not Applicable
+
+c. Other clinical supportive data (when a. and b. are not applicable)
+
+
+                                                                 Page 9 of 13
+One Step Pregnancy Test
+k210341
+
+Detection of hCG in Early Pregnancy Clinical Samples
+
+1197 One Step Pregnancy Test devices were tested across 3 batches with
+early pregnancy urine samples collected from days 0 to -9 relative to the
+day of the missed period.
+
+
+
+The early pregnancy detection results are summarised in table below:
+
+             Days Relative
+                               Total    Pregnant    Pregnant
+              to Missed
+                                (n)        (n)        (%)
+                Period
+
+                   -9            51          0          0.0
+                   -8            66          0          0.0
+                   -7            90         12         13.3
+                   -6           132         57         43.2
+                   -5           132         85         64.4
+                   -4           132        121         91.7
+                   -3           132        124         93.9
+                   -2           132        130         98.5
+                   -1           132        131         99.2
+                    0           132        132          100
+              Not Pregnant
+                                 66          0          0.0
+                Control
+
+
+
+Lay User Study
+
+Pregnant and not pregnant women volunteers with diverse educational and
+professional backgrounds and aged over 18 years old participated in the
+Lay User Study. They tested their own urine sample with the One Step
+Pregnancy Test according to the instructions for use (IFU) provided.
+
+The same urine sample was also tested by a technician. Volunteer results
+were compared to their clinical pregnancy status and to the results obtained
+from trained technicians.
+
+The agreement between lay-user volunteer results and their clinical status
+with the One Step Pregnancy Test was 100%. There was also 100%
+agreement between lay-user volunteer results and technician results.
+
+                                                                Page 10 of 13
+One Step Pregnancy Test
+k210341
+
+
+
+
+The results are summarised in tables below:
+
+  Agreement Between Volunteer Device Results and Clinical Pregnancy
+                              Status
+                                           Volunteer Result
+                                                   Not
+                                  Pregnant                     Total
+                                                Pregnant
+                   Pregnant          21             0           21
+     Clinical
+     Status
+
+
+
+
+                 Not Pregnant         0            99           99
+
+                     Total           21            99          120
+
+
+
+                Agreement Between Volunteer and Technician Results
+                                           Volunteer Result
+                                                   Not
+                                  Pregnant                     Total
+                                                Pregnant
+                   Pregnant          21             0           21
+     Clinical
+     Status
+
+
+
+
+                 Not Pregnant         0            99           99
+
+                     Total           21            99          120
+
+
+
+Overall, this study demonstrated that volunteers were able to use the
+product following the IFU to obtain a valid result.
+
+
+
+Lay User Study on Biobank Samples
+
+This study supports the lay user study by presenting examples of lay users
+reading genuine pregnant results from samples with a confirmed clinical
+pregnancy status.
+
+Women volunteers aged over 18 years old participated in the Lay User
+Study on Biobank Samples. Volunteers tested and read the result of a
+single randomly selected sample (either clinically confirmed pregnant or
+not pregnant).
+
+The agreement between lay-user volunteer results and the clinical status
+of the biobank sample with the One Step Pregnancy Test was 100%.
+                                                                Page 11 of 13
+One Step Pregnancy Test
+k210341
+
+
+The results are summarised in table below:
+
+Agreement Between Volunteer Device Results and Clinical Pregnancy
+Status
+                                                     Not
+                                  Pregnant                       Total
+                                                  Pregnant
+                    Pregnant           70            0            70
+         Clinical
+         Status
+
+
+
+                       Not
+                                       0             9            9
+                    Pregnant
+                       Total           70            9            79
+
+
+The overall accuracy for the One Step Pregnancy Test in the hands of
+volunteers was therefore 100% relative to the clinical pregnancy status of
+the samples tested.
+
+
+
+Specificity study to determine false-positive result rate
+
+A study was performed to determine the incidence of false positive results
+among non-pregnant women of peri-menopausal age (41-55 years) and
+post-menopausal age (>55 years).
+150 urine samples were collected from individual women of each cohort
+and tested by technicians with three batches of the One Step Pregnancy
+Test.
+
+The results are summarised in table below:
+
+                                       Specificity Specificity
+                       Cohort
+                                      (Proportion)   (%)
+                    Peri-menopausal         150          100.0
+                    Post-menopausal         150          100.0
+
+
+The incidence of false positive results among non-pregnant women of pre-
+menopausal age were evaluated as part of the Comparison to the Predicate
+Study.
+
+133 urine samples from not pregnant women aged 18-40 were tested by
+trained technicians using devices across three batches of the One Step
+Pregnancy Test. The results are summarised in table below:
+
+
+
+                                                                         Page 12 of 13
+One Step Pregnancy Test
+k210341
+
+                                    Specificity Specificity
+                     Cohort
+                                   (Proportion)   (%)
+                  Pre-menopausal       133         100.0
+
+
+Clinical Cut-off
+
+Not applicable.
+
+
+
+Expected value /Reference range
+
+Not applicable.
+
+
+
+Conclusions
+The conclusions drawn from the nonclinical and clinical tests demonstrate
+that the device is safe, effective and performs in accordance with its
+intended use. The submitted information in this premarket notification is
+complete and supports a substantial equivalence decision.
+
+
+
+
+                                                              Page 13 of 13
+

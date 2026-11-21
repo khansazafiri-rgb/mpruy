@@ -1,0 +1,154 @@
+{
+ "durasi_edukasi": 55,
+ "offset_narasi": 0.3,
+ "sfx": [
+  {
+   "t": 0.4,
+   "sfx": "judul"
+  },
+  {
+   "t": 4.0,
+   "sfx": "mundur-ke-test-pack"
+  },
+  {
+   "t": 5.5,
+   "sfx": "ujung-kena-urine"
+  },
+  {
+   "t": 5.8,
+   "sfx": "masuk-penampang"
+  },
+  {
+   "t": 8.75,
+   "sfx": "masuk-mikro"
+  },
+  {
+   "t": 17.6,
+   "sfx": "hCG-menempel"
+  },
+  {
+   "t": 18.4,
+   "sfx": "hCG-menempel"
+  },
+  {
+   "t": 19.1,
+   "sfx": "hCG-menempel"
+  },
+  {
+   "t": 19.7,
+   "sfx": "hCG-menempel"
+  },
+  {
+   "t": 20.3,
+   "sfx": "hCG-menempel"
+  },
+  {
+   "t": 20.8,
+   "sfx": "hCG-menempel"
+  },
+  {
+   "t": 21.14,
+   "sfx": "area-T"
+  },
+  {
+   "t": 21.2,
+   "sfx": "hCG-menempel"
+  },
+  {
+   "t": 22.15,
+   "sfx": "tertangkap-T"
+  },
+  {
+   "t": 22.45,
+   "sfx": "tertangkap-T"
+  },
+  {
+   "t": 22.75,
+   "sfx": "tertangkap-T"
+  },
+  {
+   "t": 23.25,
+   "sfx": "tertangkap-T"
+  },
+  {
+   "t": 23.7,
+   "sfx": "tertangkap-T"
+  },
+  {
+   "t": 24.1,
+   "sfx": "tertangkap-T"
+  },
+  {
+   "t": 24.5,
+   "sfx": "tertangkap-T"
+  },
+  {
+   "t": 24.5,
+   "sfx": "keluar-mikro"
+  },
+  {
+   "t": 26.0,
+   "sfx": "garis-T-muncul"
+  },
+  {
+   "t": 28.4,
+   "sfx": "area-C"
+  },
+  {
+   "t": 29.05,
+   "sfx": "masuk-mikro-C"
+  },
+  {
+   "t": 29.65,
+   "sfx": "tertangkap-C"
+  },
+  {
+   "t": 29.95,
+   "sfx": "tertangkap-C"
+  },
+  {
+   "t": 30.25,
+   "sfx": "tertangkap-C"
+  },
+  {
+   "t": 30.4,
+   "sfx": "garis-C-muncul"
+  },
+  {
+   "t": 30.5,
+   "sfx": "tertangkap-C"
+  },
+  {
+   "t": 31.25,
+   "sfx": "tes-berjalan"
+  },
+  {
+   "t": 35.75,
+   "sfx": "tidak-valid"
+  },
+  {
+   "t": 37.5,
+   "sfx": "hasil-C-T"
+  },
+  {
+   "t": 40.4,
+   "sfx": "hasil-C-saja"
+  },
+  {
+   "t": 45.9,
+   "sfx": "terlalu-dini"
+  },
+  {
+   "t": 48.6,
+   "sfx": "belum-cukup-tinggi"
+  },
+  {
+   "t": 50.45,
+   "sfx": "baca-petunjuk"
+  },
+  {
+   "t": 54.2,
+   "sfx": "akhir"
+  }
+ ]
+}
