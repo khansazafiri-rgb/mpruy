@@ -38,7 +38,7 @@ export function parseAtlasXml(xml) {
 function nifti3D(buf) {
   const b = buf instanceof Uint8Array ? buf : new Uint8Array(buf);
   const dv = new DataView(b.buffer, b.byteOffset, b.byteLength);
-  if (b.length < 352 || dv.getInt32(0, true) !== 348 || dv.getInt16(40, true) !== 3 || dv.getInt16(50, true) !== 1) {
+  if (b.length < 352 || dv.getInt32(0, true) !== 348 || dv.getInt16(40, true) !== 3 || dv.getInt16(48, true) !== 1) {
     throw Error('HARVARD_OXFORD_REQUIRE_3D_NIFTI1');
   }
   return parseNifti(b);
@@ -73,7 +73,7 @@ export function validateAlignedVolumes(underlayBytes, atlasBytes, xml) {
     underlay, labels, definitions: definitions.filter(v => present.has(v.id)),
     points, labelCount: present.size,
     window: [Math.floor(min), Math.ceil(max)],
-    midlineXmm: +(voxelToWorld(underlay.affine, [0, 0, 0])[0] + voxelToWorld(underlay.affine, [nx - 1, 0, 0])[0]).toFixed(2) / 2,
+    midlineXmm: +((voxelToWorld(underlay.affine, [0, 0, 0])[0] + voxelToWorld(underlay.affine, [nx - 1, 0, 0])[0]) / 2).toFixed(2),
     orientation: orientation(underlay.affine),
   };
 }
