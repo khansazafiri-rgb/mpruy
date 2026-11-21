@@ -169,6 +169,43 @@ export function assertPrivateDefaults(registry = getRegistry()) {
     throw Error('Restricted LONI label archive entered optional MRI source list');
   return list.length;
 }
+/**
+ * Zenodo HC18 can return an invalid/shifted byte-range tail despite responding 206.
+ * Never trust that range response. As a bounded fallback, download ONLY the same
+ * official, registry-pinned HC18 archive, verify its ZIP CRC using unzip -t and
+ * each requested member's independently pinned SHA-256. No other datasets or
+ * untrusted URLs are eligible for full-archive fallback.
+ */
+export function isZipRangeProtocolFailure(error) {
+  return /(?:EOCD not found|ZIP64 EOCD not found|Invalid HTTP Content-Range|correct byte ranges|Range not supported|No Content-Range|Bad central directory entry|Bad local header)/i.test(String(error?.message || error));
+}
+async function recoverHc18FromFullArchive(url, batch) {
+  if (!batch.length || batch.some(a => a.sourceId !== 'hc18-zenodo' ||
+      a.url !== 'https://zenodo.org/api/records/1327317/files/training_set.zip/content'))
+    throw Error('Full-ZIP fallback is authorized only for the official HC18 training_set.zip');
+  const bytes = await boundedGet(url, 260 * 1024 * 1024);
+  if (bytes.length < 30 || bytes.readUInt32LE(0) !== 0x04034b50)
+    throw Error('HC18 fallback response is not a ZIP archive');
+  const dir = path.join(LOCAL, PATHS['hc18-zenodo']);
+  fs.mkdirSync(dir, { recursive: true, mode: 0o700 });
+  const temp = path.join(dir, '.hc18-official-private-' + process.pid + '.zip');
+  fs.writeFileSync(temp, bytes, { flag: 'wx', mode: 0o600 });
+  try {
+    execFileSync('unzip', ['-tqq', temp], { encoding: 'utf8', timeout: 180000, maxBuffer: 1024 * 1024 });
+    const outputs = [];
+    for (const a of batch) {
+      if (!isSafeMember(a.member)) throw Error('Unsafe HC18 archive member');
+      const member = execFileSync('unzip', ['-p', temp, a.member],
+        { timeout: 180000, maxBuffer: MAX_ZIP_MEMBER });
+      outputs.push({ member: a.member, result: storeVerified(a.destination, member, a.sha256),
+        archiveAcquisition: 'full-official-archive-fallback-with-CRC-and-exact-member-SHA256' });
+    }
+    return outputs;
+  } finally {
+    fs.rmSync(temp, { force: true });
+  }
+}
+
 async function recoverGroup(sourceId, items) {
   const records = [];
   if (ZIP_RANGE.has(sourceId)) {
@@ -178,13 +215,20 @@ async function recoverGroup(sourceId, items) {
       if (batch.every(x => fs.existsSync(x.destination) && sha(fs.readFileSync(x.destination)) === x.sha256)) {
         records.push(...batch.map(a => ({ member: a.member, result: 'already-verified' }))); continue;
       }
-      const directory = new Map((await listZip(url)).map(e => [e.name, e]));
-      for (const a of batch) {
-        const e = directory.get(a.member);
-        if (!e || e.uncompressed > MAX_ZIP_MEMBER || ![0, 8].includes(e.method))
-          throw Error('Missing/oversized/unsupported official ZIP member: ' + a.member);
-        const bytes = await getMember(url, e); // ZIP CRC+uncompressed size checked by existing ZIP64 utility.
-        records.push({ member: a.member, result: storeVerified(a.destination, bytes, a.sha256) });
+      try {
+        const directory = new Map((await listZip(url)).map(e => [e.name, e]));
+        for (const a of batch) {
+          const e = directory.get(a.member);
+          if (!e || e.uncompressed > MAX_ZIP_MEMBER || ![0, 8].includes(e.method))
+            throw Error('Missing/oversized/unsupported official ZIP member: ' + a.member);
+          const bytes = await getMember(url, e); // CRC+size verified; official member SHA checked below.
+          records.push({ member: a.member, result: storeVerified(a.destination, bytes, a.sha256) });
+        }
+      } catch (error) {
+        if (sourceId !== 'hc18-zenodo' || !isZipRangeProtocolFailure(error)) throw error;
+        console.warn('HC18 ZIP byte ranges invalid; using bounded full official archive with CRC and exact-member SHA verification.');
+        records.push(...await recoverHc18FromFullArchive(url,
+          batch.filter(a => !fs.existsSync(a.destination))));
       }
     }
   } else {
