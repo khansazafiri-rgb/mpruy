@@ -25,6 +25,8 @@ Total: **28 video**.
 | Edukasi | [Kenapa Kopi Bikin Kita Nggak Ngantuk?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/kopi-kafein-adenosin) | `video/kopi-kafein-adenosin` |
 | Edukasi | [Kenapa malam-malam lapar?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/malam-lapar) | `video/malam-lapar` |
 | Edukasi | [Kenapa waktu menekan inhaler penting?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/inhaler-waktu-tarikan) | `video/inhaler-waktu-tarikan` |
+=======
+| Edukasi | [Kenapa test pack bisa menunjukkan dua garis?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/test-pack-dua-garis) | `video/test-pack-dua-garis` |
 | Edukasi | [MEDCOEL — Farmakodinamik parasetamol untuk nyeri kepala](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/parasetamol-nyeri-kepala) | `video/parasetamol-nyeri-kepala` |
 | Edukasi | [MEDCOEL — Mengapa gambar CT dan MRI berbeda?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/ct-mri-perbedaan-citra) | `video/ct-mri-perbedaan-citra` |
 | Edukasi | [Pasien Tidak Sadar di IGD: Dokter Harus Menunggu Keluarga?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/pasien-tidak-sadar-di-igd) | `video/pasien-tidak-sadar-di-igd` |
