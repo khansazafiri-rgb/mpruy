@@ -13,7 +13,16 @@ const UA = { 'User-Agent': 'resource-audit/1.0' };
 async function range(url, start, end) {
   for (let attempt = 0; attempt < 4; attempt++) {
     const r = await fetch(url, { headers: { ...UA, Range: `bytes=${start}-${end}` }, redirect: 'follow' });
-    if (r.status === 206) return Buffer.from(await r.arrayBuffer());
+    if (r.status === 206) {
+      const contentRange = r.headers.get('content-range') || '';
+      const match = contentRange.match(/^bytes (\\d+)-(\\d+)\\/(\\d+)$/);
+      const bytes = Buffer.from(await r.arrayBuffer());
+      if (!match || Number(match[1]) !== start || Number(match[2]) !== end ||
+          bytes.length !== end - start + 1)
+        throw Error('Invalid HTTP Content-Range or body length for official ZIP: ' + contentRange + ', got ' + bytes.length + ' bytes');
+      if (new URL(r.url).protocol !== 'https:') throw Error('ZIP download redirected to insecure HTTP');
+      return bytes;
+    }
     if (r.status !== 429 && r.status < 500) throw Error(`Range not supported (${r.status}) for ${url}`);
     await new Promise(res => setTimeout(res, 1000 * 2 ** attempt));
   }
@@ -21,8 +30,11 @@ async function range(url, start, end) {
 }
 async function size(url) {
   const r = await fetch(url, { headers: { ...UA, Range: 'bytes=0-0' }, redirect: 'follow' });
-  const cr = r.headers.get('content-range'); await r.arrayBuffer().catch(() => {});
-  const m = cr && cr.match(/\/(\d+)$/); if (!m) throw Error('No Content-Range total for ' + url);
+  const cr = r.headers.get('content-range') || '';
+  const received = Buffer.from(await r.arrayBuffer());
+  const m = cr.match(/^bytes 0-0\/(\d+)$/);
+  if (r.status !== 206 || received.length !== 1 || !m || !Number.isSafeInteger(Number(m[1])))
+    throw Error('ZIP endpoint does not provide correct byte ranges (status ' + r.status + ', range ' + cr + ') for ' + url);
   return Number(m[1]);
 }
 
