@@ -40,6 +40,7 @@ File hasil **hanya** dibuat di folder yang diabaikan Git (`local-data/`):
 
 - `local-data/studio-resources/clearance/clinical-clearance-worklist.json`: data kerja yang bisa diproses ulang, memuat kategori, sumber, lisensi, SHA-256 exact asset dan blocker masing-masing 24 studio
 - `local-data/studio-resources/clearance/clinical-clearance-worklist.md`: daftar tugas siap dibaca reviewer/koordinator
+- `local-data/studio-resources/clearance/source-rights-NOTICE-REVIEW-DRAFT.md`: draf atribusi awal untuk kedelapan sumber, dengan konflik lisensi dan kebutuhan pemeriksaan exact-file; **bukan NOTICE yang siap dipublikasikan**
 - `local-data/studio-resources/clearance/private-package-execution.json`: hasil proses tiap studio (berhasil, belum ada build privat, atau error), **bukan** signed review
 - `local-data/studio-resources/review-packages/<studio-id>/`: paket manusia berdasarkan tool existing `studio-review.mjs package`, jika data privat tersedia
 - `local-data/studio-resources/evidence/bodyparts3d-nine-studios-origin-review.json`: bukti FMA/FJ OBJ-ke-GLB jika audit sumber berhasil
