@@ -114,6 +114,27 @@ node -e 'const f=require("./local-data/studio-resources/clearance/tcia-derived-m
 
 Laporan tersebut adalah dasar investigasi, **bukan lisensi atau bukti kecukupan review klinis**. Jangan merilis hasil karantina atau menghapus datanya tanpa keputusan terkait.
 
+## Independent private Chest CT integrity audit (without new downloads)
+
+After a TCIA regenerated ZIP produces a different SHA, the volume must remain quarantined. The old registry stores compressed NIfTI hashes, **not** the previous uncompressed CT/reader voxel bytes. An identical dimension, CT window, reader count, or annotation JSON does not establish equality to the old images.
+
+On the Mac holding the recovered private raw DICOM and quarantined candidate, run:
+
+```bash
+npm ci --prefix apps/studios
+npm run audit:lidc-private
+```
+
+The command does not fetch any data and does not touch the canonical `build/chest-ct` or the source rights registry. It checks the exact CT SeriesInstanceUID and four SEG SeriesInstanceUIDs against the pinned registry, checks unique SOPInstanceUID and SOP classes, DICOM transfer/geometry through the original parser, and compares decompressed NIfTI **voxel payloads** to the CT and reader masks decoded from the **currently recovered** DICOM. It writes a minimal private report at `local-data/studio-resources/clearance/tcia-independent-technical-audit.json`: dimensions/spacing, aggregate pixel hashes, compressed and uncompressed-derived digests, technical-match flags and privacy-flag coverage (no patient names, original UIDs, image pixels, or quiz answers).
+
+A pass means only that the **current quarantined files agree technically with the current DICOM decode**. The old files have not been recovered, and no previous raw voxel digest exists to compare. Therefore the old-byte mismatch remains unresolved. Even if every technical check passes, this is **NOT source-version clearance, medical validation, privacy signoff, or permission to publish**. Human review must cover burned-in image identifiers, segmentation correctness and reader associations, licence/terms, anatomical interpretation and commercial rights. Never overwrite the old registered hashes or move the CT build out of quarantine simply because this audit passes.
+
+To inspect a privacy-safe summary after it runs:
+
+```bash
+node -e 'const r=require("./local-data/studio-resources/clearance/tcia-independent-technical-audit.json"); console.log({currentCandidateMatchesLocallyExtractedDicomData:r.currentCandidateMatchesLocallyExtractedDicomData, historicalDatasetEquivalence:r.historicalDatasetEquivalence, releaseApproved:r.releaseApproved, dimensions:r.technical.dimensions})'
+```
+
 ## Perlu selesai sebelum release
 
 Audit sumber/hash yang lulus **tidak** sama dengan lisensi semua turunan, atribusi/ShareAlike yang lengkap, keselamatan privasi (mis. burned-in identifiers di piksel), validasi kunci jawaban/terminologi, atau persetujuan rilis. Tetap diperlukan reviewer nyata dan keputusan bertanda tangan terhadap bytes tepat, kemudian B1 release inspection, receipt dan attestation. **Tidak ada perubahan status `verified`/`publishable`, production server, UI Atlas, 4D Lab, atau langganan berbayar.**
