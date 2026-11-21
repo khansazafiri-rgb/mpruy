@@ -221,7 +221,7 @@ export function renderRightsNoticeDraft(snapshot) {
     '',
     'Before publishing: add full authors/citations; verify exact source notice; document every conversion; include appropriate license links, share-alike terms and attribution; obtain authorized reviewers and signed release evidence.',
     '');
-  return out.join('\\n');
+  return out.join('\n');
 }
 
 export function checkBatch(snapshot, { catalog, resources, ledger }) {
