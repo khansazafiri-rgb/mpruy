@@ -1,0 +1,43 @@
+{
+  "schema": "medcoel.usage-intent.v1",
+  "recordedAt": "2026-11-21",
+  "purpose": "Owner-declared product-use boundary; not a rights grant, legal opinion, dataset clearance, reviewer sign-off or release authorization.",
+  "core": {
+    "accessModel": "free-for-all-learners",
+    "subscriptionRequired": false,
+    "paywallAllowed": false,
+    "includes": [
+      "all 24 Clinical Studios",
+      "Anatomy Atlas",
+      "Anatomy Live 4D Lab",
+      "core medical learning materials",
+      "practice question bank and study tools"
+    ]
+  },
+  "optionalFuturePaidOffering": {
+    "status": "not-authorized-or-launched-by-this-policy",
+    "type": "separately produced video explanations of practice questions",
+    "requiresSeparateContentRights": true,
+    "mayNotReuseThirdPartyRestrictedContentWithoutRights": true,
+    "mustNotRestrictCoreFeatures": true
+  },
+  "resourceInterpretation": {
+    "freeAccessDoesNotWaiveLicenseTerms": true,
+    "noAutomaticNCOrResearchOnlyClearance": true,
+    "enforceExistingPerAssetRightsReview": true,
+    "enforceExistingMedicalPrivacyAndTerminologyReviews": true,
+    "enforceExistingReleaseAndQuarantineGates": true,
+    "noAutomaticReleasePolicyModification": true
+  },
+  "knownRestrictedResources": [
+    {
+      "ref": "studio-res-brain-mri-lpba40",
+      "reason": "LONI LPBA40 non-commercial research license; no public educational redistribution grant established"
+    },
+    {
+      "ref": "atlas-code",
+      "reason": "Upstream Atlas frontend code CC BY-NC-SA 4.0; free access and historic owner override do not prove rights"
+    }
+  ],
+  "evidence": "docs/clinical-studios/19-free-core-licensing-validation.md"
+}
