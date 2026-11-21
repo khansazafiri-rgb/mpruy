@@ -8,7 +8,8 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import {
   selectedSourceIds, sourceEntries, localSourcePath,
-  recoveryPlan, assertPrivateDefaults, tciaDerivedHashCheck, isZipRangeProtocolFailure,
+  recoveryPlan, assertPrivateDefaults, tciaDerivedHashCheck, tciaDerivedAudit,
+  classifyHc18Source, isZipRangeProtocolFailure,
 } from '../licensing/tools/recover-private-studio-sources.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
@@ -121,4 +122,47 @@ test('RECOVER-010: an incomplete TCIA pinned derivative set cannot be treated as
     registry: { assets: [{ id: 'chest-ct.ct.nii.gz', path: 'data/ct.nii.gz', sha256: 'a'.repeat(64) }] },
     privateBuildRoot: dir,
   }), /TCIA_PINNED_DERIVATIVE_RECORDS_INCOMPLETE/);
+});
+
+test('RECOVER-011: HC18 metadata CSV is a direct verified file and PNGs are ZIP members', () => {
+  const items = sourceEntries({ registry: read(), sourceId: 'hc18-zenodo' });
+  assert.equal(items.length, 9);
+  assert.deepEqual(items.map(classifyHc18Source).filter(v => v === 'direct-verified-csv').length, 1);
+  assert.deepEqual(items.map(classifyHc18Source).filter(v => v === 'zip-member').length, 8);
+  const csv = items.find(v => v.member.endsWith('.csv'));
+  assert.equal(classifyHc18Source(csv), 'direct-verified-csv');
+  assert.throws(() => classifyHc18Source({ ...csv, url: csv.url.replace('.csv/content', '.zip/content') }), /Unexpected HC18/);
+  assert.throws(() => classifyHc18Source({ ...csv, member: '../bad.csv' }), /Unexpected HC18/);
+  assert.throws(() => classifyHc18Source({ sourceId: 'amos-zenodo', member: 'dataset.json' }), /Not an HC18/);
+});
+
+test('RECOVER-012: TCIA diagnostic identifies exact mismatched derived file without exposing image or clinical records', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'tcia-exact-output-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const names = ['data/ct.nii.gz', 'data/readers.nii.gz', 'data/annotations.json'];
+  const registry = { assets: names.map((name, i) => ({
+    id: 'chest-ct.' + i, path: name, sha256: crypto.createHash('sha256').update('expected-' + i).digest('hex'),
+  })) };
+  for (let i = 0; i < names.length; i++) {
+    const dest = path.join(root, names[i]); fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.writeFileSync(dest, 'expected-' + i);
+  }
+  let audit = tciaDerivedAudit({ registry, privateBuildRoot: root });
+  assert.equal(audit.allDerivedHashesMatch, true);
+  assert.equal(audit.originalZipParentHashVerified, false);
+  fs.writeFileSync(path.join(root, names[1]), 'different-reader-mask');
+  audit = tciaDerivedAudit({ registry, privateBuildRoot: root });
+  assert.equal(audit.allDerivedHashesMatch, false);
+  assert.deepEqual(audit.outputs.filter(x => !x.matches).map(x => x.path), ['data/readers.nii.gz']);
+  assert.equal(audit.releaseApproved, false);
+  assert.ok(audit.outputs.every(x => !Object.keys(x).some(k => /patient|name|imageData|pixelBytes/i.test(k))));
+  assert.throws(() => tciaDerivedHashCheck({ registry, privateBuildRoot: root }), /TCIA_DERIVED_SHA_MISMATCH/);
+});
+
+test('RECOVER-013: changed CT source cannot promote rights and keeps mismatched candidate outside canonical build', () => {
+  const source = fs.readFileSync(path.join(ROOT, 'licensing/tools/recover-private-studio-sources.mjs'), 'utf8');
+  assert.match(source, /tcia-derived-mismatch\\.json/);
+  assert.match(source, /privateCandidateQuarantine/);
+  assert.match(source, /fs\\.renameSync\\(ctOutput, candidate\\)/);
+  assert.doesNotMatch(source, /status:\\s*['"]publishable['"]/);
 });
