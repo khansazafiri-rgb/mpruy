@@ -161,8 +161,8 @@ test('RECOVER-012: TCIA diagnostic identifies exact mismatched derived file with
 
 test('RECOVER-013: changed CT source cannot promote rights and keeps mismatched candidate outside canonical build', () => {
   const source = fs.readFileSync(path.join(ROOT, 'licensing/tools/recover-private-studio-sources.mjs'), 'utf8');
-  assert.match(source, /tcia-derived-mismatch\\.json/);
+  assert.match(source, /tcia-derived-mismatch\.json/);
   assert.match(source, /privateCandidateQuarantine/);
-  assert.match(source, /fs\\.renameSync\\(ctOutput, candidate\\)/);
-  assert.doesNotMatch(source, /status:\\s*['"]publishable['"]/);
+  assert.match(source, /fs\.renameSync\(ctOutput, candidate\)/);
+  assert.doesNotMatch(source, /status:\s*['"]publishable['"]/);
 });
