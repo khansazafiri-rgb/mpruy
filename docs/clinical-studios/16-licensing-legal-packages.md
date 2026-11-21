@@ -1,7 +1,9 @@
 # Licensing & legal packages — Clinical Studios (2026-11-20)
 
+**Usage-intent correction (21 November 2026):** The owner has clarified that MEDCOEL's **entire core platform and all 24 Clinical Studios are free to users**, without subscriptions or paywalls. Only separately produced explanatory question videos might be offered as a paid option in the future. Previous draft correspondence mentioning a possible paid *studio* was inaccurate; retain that historical fact if documenting already-sent mail, but use the corrected wording below for any new correspondence. Original DBCLS, LONI and AMOS requests were sent by the owner; LONI replied that it could not make an exception. That reply grants no rights, and no further email should be sent automatically. See [19-free-core-licensing-validation.md](19-free-core-licensing-validation.md) for the source-by-source evaluation and the distinction between free access and licensed usage.
+
 **Nothing in this document is a legal opinion or an approval.** It collects the retained evidence and drafts the questions the
-owner (or counsel) may send to rights holders. No email was sent; no licence status was raised. Evidence files live in
+owner (or counsel) may send to rights holders. The original inquiries were submitted by the owner; no request or free-access clarification itself raises licence status. Evidence files live in
 `local-data/studio-resources/evidence/` (private, gitignored); their SHA-256 are listed so they can be re-verified.
 
 ## 1. BodyParts3D 4.0 (9 anatomy studios) — CC BY 4.0 vs CC BY-SA 2.1 JP
@@ -21,7 +23,7 @@ whether the 2025 statement covers the unchanged 2013 Release 4.0 files despite t
 from DBCLS settles it. Until then the registry keeps `licenseId: CC-BY-SA-2.1-JP`, status `REVIEW_REQUIRED`, and the B1
 inspector refuses all nine studios (SA 2.1 JP is not on the allow-list).
 
-**Draft email to DBCLS** (the "Contact us" link on the DBCLS licence page points to the JST/NBDC form https://form2.jst.go.jp/s/contact_nbdc):
+**Revised draft for any future DBCLS follow-up (NOT sent automatically)** (the "Contact us" link on the DBCLS licence page points to the JST/NBDC form https://form2.jst.go.jp/s/contact_nbdc):
 
 > Subject: Licence of BodyParts3D Release 4.0 OBJ files (isa_BP3D_4.0_obj_99.zip)
 >
@@ -33,7 +35,7 @@ inspector refuses all nine studios (SA 2.1 JP is not on the allow-list).
 > state CC BY-SA 2.1 Japan.
 >
 > Could you please confirm whether the Release 4.0 OBJ files, as currently distributed, may be used, adapted (converted to
-> glTF, combined per body region) and redistributed — including in a paid educational service — under CC BY 4.0 with the
+> glTF, combined per body region) and redistributed — including in a completely free medical-education service (without learner subscriptions or paywalls) — under CC BY 4.0 with the
 > attribution "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International"?
 >
 > Thank you very much. [Name, role, organisation, contact]
@@ -55,7 +57,7 @@ upstream LONI licence limits LPBA40 to non-commercial research, and the SRI24 ar
 (b) ship brain-mri without LPBA40 labels (T1 + tissue classes only, Guided/Challenge reduced to tissue items);
 (c) replace labels with an openly licensed parcellation after a separate review.
 
-**Draft email to LONI (USC Mark and Mary Stevens Neuroimaging and Informatics Institute):**
+**Revised draft for any future LONI follow-up (NOT sent automatically) (USC Mark and Mary Stevens Neuroimaging and Informatics Institute):**
 
 > Subject: Permission request — LPBA40-derived labels in an educational application
 >
@@ -77,7 +79,7 @@ upstream LONI licence limits LPBA40 to non-commercial research, and the SRI24 ar
 | `amos22/dataset.json` inside the archive: `"licence": "CC-BY-SA 4.0"` | raw member | `02db984f724dba8d…` |
 
 Recorded as `REVIEW_REQUIRED` with the stricter CC BY-SA 4.0 (both are on the allow-list; SA means MEDCOEL's adapted data
-must stay CC BY-SA). **Draft email to the AMOS authors** (corresponding author per arXiv:2206.08023):
+must stay CC BY-SA). **Draft for any future AMOS follow-up (NOT sent automatically)** (corresponding author per arXiv:2206.08023):
 
 > Subject: AMOS 2022 licence clarification (Zenodo 7262581)
 >
