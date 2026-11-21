@@ -1,0 +1,34 @@
+{
+ "durasi": 16.2,
+ "suara_mulai": 0.7,
+ "sfx": [
+  {
+   "t": 0.12,
+   "sfx": "mulai"
+  },
+  {
+   "t": 2.62,
+   "sfx": "ke-live-4d"
+  },
+  {
+   "t": 5.12,
+   "sfx": "ke-materi"
+  },
+  {
+   "t": 6.82,
+   "sfx": "ke-latihan"
+  },
+  {
+   "t": 8.32,
+   "sfx": "ke-simulasi"
+  },
+  {
+   "t": 9.82,
+   "sfx": "ke-logo"
+  },
+  {
+   "t": 10.2,
+   "sfx": "logo-medcoel"
+  }
+ ]
+}

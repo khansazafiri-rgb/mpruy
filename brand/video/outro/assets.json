@@ -1,7 +1,95 @@
 {
-  "schemaVersion": 1,
-  "purpose": "Sumber asli untuk outro video edukasi MEDCOEL; klip belum dipotong.",
+  "schemaVersion": 2,
+  "purpose": "Outro MEDCOEL siap tempel untuk video edukasi. Pakai master MP4 di bawah; footage mentah hanya untuk membuat ulang atau memperbaikinya.",
   "website": "https://medcoel.com",
+  "master": {
+    "path": "brand/video/outro/medcoel-outro-master.mp4",
+    "status": "master terbaru; menggantikan panduan outro lama (materi, soal, Simulasi Dokter saja)",
+    "format": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "videoCodec": "H.264 High, yuv420p, GOP 30",
+      "audioCodec": "AAC-LC 192 kbps, 48 kHz, stereo",
+      "frames": 486
+    },
+    "durationSeconds": 16.2,
+    "sizeBytes": 6677347,
+    "sha256": "1805f70398c88e5d29619e0eaebc65b27fd04e1eef65edc10a3b5a1f9d5ec0f7",
+    "loudness": {
+      "integratedLUFS": -14.4,
+      "truePeakDBFS": -1.4,
+      "note": "sudah dinormalkan; jangan normalkan ulang setelah ditempel"
+    },
+    "standalone": true,
+    "features": [
+      {
+        "start": 0.0,
+        "end": 2.7,
+        "label": "ATLAS 3D",
+        "footage": "Atlas 3D MEDCOEL asli: otot tampil, lapisan dibuka satu per satu sampai tulang rusuk terlihat"
+      },
+      {
+        "start": 2.7,
+        "end": 5.2,
+        "label": "LIVE 4D LAB",
+        "footage": "Live 4D Lab asli: probe digeser, citra USG simulasi berubah",
+        "smallLabel": "Simulasi edukatif, bukan alat diagnosis"
+      },
+      {
+        "start": 5.2,
+        "end": 6.9,
+        "label": "Materi per bab",
+        "footage": "web asli: daftar bab, pilih bab, pilihan belajar"
+      },
+      {
+        "start": 6.9,
+        "end": 8.4,
+        "label": "Latihan soal + pembahasan",
+        "footage": "web asli: jawaban, Cek jawaban, pembahasan"
+      },
+      {
+        "start": 8.4,
+        "end": 10.1,
+        "label": "Simulasi Dokter",
+        "footage": "web asli: pilih poli, Mulai, pasien muncul"
+      },
+      {
+        "start": 10.15,
+        "end": 16.2,
+        "label": "Logo + BELAJAR FK GRATIS + medcoel.com",
+        "footage": "logo asli, Raka asli; ditahan 6 detik"
+      }
+    ],
+    "narration": {
+      "text": "Di MEDCOEL, jelajahi Atlas 3D dan Live 4D Lab. Lanjut belajar lewat materi, latihan soal, dan Simulasi Dokter. Gratis di medcoel.com.",
+      "source": "Google AI Studio (video/outro-master/audio/outro-baru.wav, SHA-256 1ec50a00c40047ec919b78ea34dcea78c555cfdd60c0bfa8f5bd5ed8818a7fc9)",
+      "startsAtSeconds": 0.7,
+      "endsAtSeconds": 11.06,
+      "speedChanged": false
+    },
+    "audioMusic": "musik dan efek sintesis sendiri (CC0), pelan di bawah suara",
+    "onScreenText": [
+      "ATLAS 3D",
+      "LIVE 4D LAB",
+      "Simulasi edukatif, bukan alat diagnosis",
+      "Materi per bab",
+      "Latihan soal + pembahasan",
+      "Simulasi Dokter",
+      "BELAJAR FK GRATIS",
+      "medcoel.com"
+    ],
+    "attach": "Tempel di akhir video setelah kalimat terakhir selesai; lihat README.md. Jangan menambah logo/URL/CTA lain sesudahnya.",
+    "build": {
+      "project": "video/outro-master",
+      "steps": [
+        "bash video/outro-master/rekam/siapkan.sh",
+        "python3 video/outro-master/audio/build_audio.py",
+        "node video/outro-master/render.mjs <folder> 0 485 4",
+        "bash video/outro-master/encode.sh <folder>"
+      ]
+    }
+  },
   "footage": [
     {
       "id": "belajar_dan_soal",
@@ -28,6 +116,28 @@
       ],
       "data": "fixture lokal",
       "audioReuse": false
+    },
+    {
+      "id": "atlas_3d",
+      "path": "video/human-anatomy-3d/medcoel-3d-anatomy.mp4",
+      "verifiedContent": [
+        "model 3D anatomi",
+        "lapisan otot dibuka",
+        "rangka diputar"
+      ],
+      "usedInMaster": "13,9-16,6 dtk, dipotong ke panel model (356,340 724x890); hanya gambar",
+      "audioReuse": false
+    },
+    {
+      "id": "live_4d_lab",
+      "path": "video/usg-gema-gambar/rekam/lab.cjs",
+      "verifiedContent": [
+        "probe digeser dengan klik sungguhan pada kontrol Gerakkan probe",
+        "citra USG simulasi berubah"
+      ],
+      "data": "simulasi edukatif, bukan data pasien",
+      "usedInMaster": "take 'hook' bingkai 100-174 (kanvas pasien 3D + kanvas monitor asli)",
+      "audioReuse": false
     }
   ],
   "brand": {
@@ -41,20 +151,18 @@
     "raka": "brand/characters/raka/raka.js"
   },
   "outro": {
-    "durationSeconds": [
-      8,
-      12
-    ],
+    "durationSeconds": 16.2,
     "onScreenText": [
-      "Belajar FK gratis di MEDCOEL",
+      "BELAJAR FK GRATIS",
       "medcoel.com"
     ],
-    "optionalNarration": "Mau lanjut belajar? Di MEDCOEL, kamu bisa buka materi per bab, latihan soal, dan Simulasi Dokter. Gratis di medcoel.com."
+    "supersedes": "format outro 8-12 detik dengan narasi 'Mau lanjut belajar? ...' (tidak dipakai lagi untuk video baru)"
   },
   "rules": [
-    "Gunakan footage web asli; jangan membuat UI palsu.",
-    "Pilih shot yang cocok dengan fitur yang disebut.",
-    "Rekam ulang jika UI web terbaru berbeda.",
-    "Buat audio narasi final secara terpisah; jangan memakai ulang audio campuran tanpa memeriksa hak pakai."
+    "Pakai medcoel-outro-master.mp4 apa adanya; jangan menggambar ulang antarmuka atau mengganti suaranya.",
+    "Rekam ulang footage web bila UI web terbaru berbeda, lalu bangun ulang master lewat video/outro-master.",
+    "Jangan memakai ulang audio campuran dari video lama; audio master dibuat dari outro-baru.wav + musik/efek sintesis sendiri.",
+    "Label 'Simulasi edukatif, bukan alat diagnosis' pada segmen Live 4D Lab harus tetap terbaca.",
+    "Footage memakai data uji lokal; jangan sajikan sebagai data produksi atau kemajuan akun."
   ]
 }
