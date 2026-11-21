@@ -6,7 +6,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { project, applyProjection, signDecision, privacyScan, terminologyDraft, emptyLog, emptyReviewers, parseReviewKeys, PENDING_REASON } from '../licensing/tools/studio-review.mjs';
+import { project, applyProjection, signDecision, privacyScan, terminologyDraft, verifyReviewPackageInputs, buildPackage, emptyLog, emptyReviewers, parseReviewKeys, PENDING_REASON } from '../licensing/tools/studio-review.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = p => JSON.parse(fs.readFileSync(path.join(root, p), 'utf8'));
@@ -101,4 +101,40 @@ test('REVIEW-007 terminology drafts are proposed only (never approved) and leave
   assert.equal(draft.status, 'proposed');
   assert.deepEqual(draft.concepts.FMA1.canonical, { en: 'left thing', id: null, la: null });
   assert.equal(draft.concepts.FMA1.forms.length, 1);
+});
+
+test('REVIEW-008 private package matches actual asset bytes, provenance and private challenge key before regenerating', t => {
+  const base = fs.mkdtempSync(path.join(os.tmpdir(), 'review-package-'));
+  t.after(() => fs.rmSync(base, { recursive: true, force: true }));
+  const buildRoot = path.join(base, 'build'), outRoot = path.join(base, 'review-packages');
+  const dir = path.join(buildRoot, 'test-studio');
+  fs.mkdirSync(path.join(dir, 'data'), { recursive: true });
+  fs.mkdirSync(path.join(dir, 'server'), { recursive: true });
+  const a = Buffer.from(JSON.stringify({ labels: ['normal'] }));
+  const key = Buffer.from(JSON.stringify({ items: [{ answer: 'normal' }] }));
+  fs.writeFileSync(path.join(dir, 'data/labels.json'), a);
+  fs.writeFileSync(path.join(dir, 'server/challenge.json'), key);
+  const resources = { assets: [{ id: 'test-studio.labels.json', path: 'data/labels.json', kind: 'annotation',
+    sha256: sha(a), bytes: a.length, sourceFile: null, dependsOn: [] }] };
+  const provenance = { schema: 'medcoel.provenance.v1', studio: 'test-studio',
+    outputs: { 'data/labels.json': { sha256: sha(a), bytes: a.length },
+      'server/challenge.json': { sha256: sha(key), bytes: key.length } } };
+  fs.writeFileSync(path.join(dir, 'provenance.json'), JSON.stringify(provenance));
+  assert.equal(verifyReviewPackageInputs('test-studio', { resources, buildRoot }).length, 1);
+  const packageResult = buildPackage('test-studio', { resources, buildRoot, outRoot });
+  assert.ok(fs.existsSync(path.join(packageResult.out, 'package-manifest.json')));
+  const existingManifest = fs.readFileSync(path.join(packageResult.out, 'package-manifest.json'));
+  fs.writeFileSync(path.join(dir, 'data/labels.json'), '{"labels":["wrong"]}');
+  assert.throws(() => buildPackage('test-studio', { resources, buildRoot, outRoot }),
+    /REVIEW_PACKAGE_BYTES_OR_PROVENANCE_MISMATCH/);
+  assert.deepEqual(fs.readFileSync(path.join(packageResult.out, 'package-manifest.json')), existingManifest,
+    'failed regeneration must preserve prior reviewer package');
+  fs.writeFileSync(path.join(dir, 'data/labels.json'), a);
+  fs.writeFileSync(path.join(dir, 'server/challenge.json'), '{"items":[]}');
+  assert.throws(() => buildPackage('test-studio', { resources, buildRoot, outRoot }),
+    /REVIEW_PACKAGE_BYTES_OR_PROVENANCE_MISMATCH/);
+  fs.writeFileSync(path.join(dir, 'server/challenge.json'), key);
+  fs.symlinkSync(path.join(dir, 'data/labels.json'), path.join(dir, 'data', 'unlisted-link'));
+  assert.throws(() => buildPackage('test-studio', { resources, buildRoot, outRoot }),
+    /REVIEW_PACKAGE_UNSAFE_TREE_ENTRY/);
 });
