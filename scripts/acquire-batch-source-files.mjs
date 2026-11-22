@@ -109,6 +109,10 @@ async function streamAndVerify(entry, { fetcher = fetch } = {}) {
   safePrivatePath(out);
   fs.mkdirSync(path.dirname(out), { recursive: true, mode: 0o700 });
   safePrivatePath(out);
+  const availableDisk = fs.statfsSync(path.dirname(out));
+  const freeBytes = Number(availableDisk.bavail) * Number(availableDisk.bsize);
+  if (!fs.existsSync(out) && freeBytes < entry.expectedBytes + 256 * MB)
+    throw Error('ACQUIRE_NOT_ENOUGH_FREE_DISK_SPACE');
   if (fs.existsSync(out)) {
     const info = fs.lstatSync(out);
     if (!info.isFile() || info.size !== entry.expectedBytes)
@@ -128,7 +132,7 @@ async function streamAndVerify(entry, { fetcher = fetch } = {}) {
   const final = new URL(response.url || url.href);
   if (!response.ok || final.protocol !== 'https:' ||
       !(final.hostname.endsWith('.figshare.com') || final.hostname === 'zenodo.org' ||
-        final.hostname.endsWith('.amazonaws.com')))
+        final.hostname.endsWith('.amazonaws.com') || final.hostname === 'zenodo.s3.cern.ch'))
     throw Error('ACQUIRE_UNEXPECTED_PUBLISHER_REDIRECT_OR_HTTP');
   if (Number(response.headers.get('content-length') || 0) > entry.expectedBytes)
     throw Error('ACQUIRE_DOWNLOAD_LENGTH_EXCEEDS_PUBLISHER');
