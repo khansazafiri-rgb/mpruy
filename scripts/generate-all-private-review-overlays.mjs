@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { generatePrivateFracAtlasReview } from './private-fracatlas-review.mjs';
 import {
   renderPrivateOverlay, generatePrivateChestXrayOverlays
 } from './generate-private-chest-xray-overlays.mjs';
@@ -190,7 +191,7 @@ function dashboard(catalog, results) {
       : s.id.endsWith('-anatomy') ? '3D_VIEWER_AND_RIGHTS_REVIEW_PENDING'
       : 'DATA_OR_RENDERER_NOT_READY';
     const detail = result?.error ? ' — ' + result.error : '';
-    const link = result?.status === 'PRIVATE_PREVIEW_READY'
+    const link = ['PRIVATE_PREVIEW_READY', 'PRIVATE_CANDIDATE_REVIEW_READY'].includes(result?.status)
       ? '<a href="' + html(s.id) + '/index.html">Lihat visualisasi</a>' : 'Belum bisa dirender';
     return '<tr><td><strong>' + html(s.title || s.id) + '</strong><br><small>' +
       html(s.id) + '</small></td><td>' + html(state + detail) + '</td><td>' + link + '</td></tr>';
@@ -208,7 +209,7 @@ function dashboard(catalog, results) {
     '<h1>MEDCOEL · Private Clinical Review Hub</h1>',
     '<p class="warn">Hanya file <strong>lokal</strong>. Pratinjau teknis ini bukan bukti',
     ' persetujuan medis, privasi, terminologi, hak komersial, atau rilis. Seluruh status release tetap terkunci.</p>',
-    '<p>X-ray & USG: poligon sumber · Spine MRI: label NIfTI pada tiga irisan · ECG: waveform 12-lead.',
+    '<p>X-ray & USG: poligon sumber · Spine MRI: label NIfTI pada tiga irisan · ECG: waveform 12-lead. MSK X-ray: kandidat FracAtlas, hanya untuk review privat dan belum terdaftar sebagai aset rilis.',
     ' Chest CT ditahan selama karantina TCIA. Anatomy 3D dan studio tanpa data perlu renderer serta rights review tersendiri.</p>',
     '<table><thead><tr><th>Clinical Studio</th><th>Status</th><th>Pratinjau privat</th></tr></thead><tbody>',
     ...blocks,
@@ -216,7 +217,7 @@ function dashboard(catalog, results) {
   ].join('\n');
 }
 
-export function generateAllPrivateOverlays() {
+export async function generateAllPrivateOverlays() {
   safeLocal(BUILD); safeLocal(OUT);
   const registry = JSON.parse(fs.readFileSync(path.join(ROOT, 'licensing/resources.v1.json'), 'utf8'));
   const catalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'shared/studios/catalog.v1.json'), 'utf8'));
@@ -224,17 +225,22 @@ export function generateAllPrivateOverlays() {
     ['chest-xray', () => generatePrivateChestXrayOverlays()],
     ['pelvis-ultrasound', () => generatePelvisPrivateReview(registry)],
     ['spine-mri', () => generateSpinePrivateReview(registry)],
-    ['ecg', () => generateEcgPrivateReview(registry)]
+    ['ecg', () => generateEcgPrivateReview(registry)],
+    ['msk-xray', () => generatePrivateFracAtlasReview()]
   ];
   const results = [];
   for (const [studio, run] of tasks) {
     try {
-      const result = run();
-      results.push({ studio, status: 'PRIVATE_PREVIEW_READY', kind: result.kind || 'source-polygon', images: result.images?.length || result.images });
+      const result = await run();
+      results.push({ studio, status: result.status || 'PRIVATE_PREVIEW_READY', kind: result.kind || 'source-polygon', images: result.images?.length || result.images });
     } catch (e) {
-      results.push({ studio, status: e.message === 'REVIEW_PRIVATE_BUILD_UNAVAILABLE'
-        ? 'PRIVATE_BUILD_MISSING' : 'REVIEW_FAILED_CLOSED',
-      error: String(e.message).slice(0, 120) });
+      const isMissingCandidate = studio === 'msk-xray' &&
+        (e.code === 'ENOENT' || e.message === 'FRAC_PRIVATE_ACQUISITION_NOT_RECORDED');
+      results.push({ studio, status: isMissingCandidate ? 'CANDIDATE_PRIVATE_DATA_PENDING'
+        : e.message === 'REVIEW_PRIVATE_BUILD_UNAVAILABLE' ? 'PRIVATE_BUILD_MISSING'
+        : 'REVIEW_FAILED_CLOSED',
+        error: isMissingCandidate ? 'FracAtlas private archive not yet available'
+          : String(e.message).slice(0, 120) });
     }
   }
   writePrivate(path.join(OUT, 'index.html'), dashboard(catalog, results));
@@ -247,7 +253,7 @@ export function generateAllPrivateOverlays() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const result = generateAllPrivateOverlays();
+  const result = await generateAllPrivateOverlays();
   console.table(result);
   console.log('Private dashboard: local-data/studio-resources/review-overlays/index.html');
   if (result.some(x => x.status === 'REVIEW_FAILED_CLOSED')) process.exitCode = 1;
