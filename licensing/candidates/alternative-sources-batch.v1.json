@@ -1,0 +1,219 @@
+{
+  "schema": "medcoel.alternative-source-batch.v1",
+  "policy": {
+    "accessModel": "free-for-all-learners",
+    "eligibleLicences": [
+      "CC-BY-4.0",
+      "CC0-1.0"
+    ],
+    "disallowedCategories": [
+      "NC",
+      "ND",
+      "research-only",
+      "personal-use-only",
+      "unclear-source-rights",
+      "unverified-upstream"
+    ],
+    "output": "local-data/studio-resources/alternative-candidates/",
+    "sourceMetadataIsNotRedistributionApproval": true,
+    "publicReleaseAuthorized": false,
+    "preserveLegacyBlockers": true
+  },
+  "sources": [
+    {
+      "id": "hra-3d-ref-organ",
+      "title": "Human Reference Atlas 3D Reference Library",
+      "provider": "hra",
+      "officialUrl": "https://humanatlas.io/3d-reference-library",
+      "evidenceUrl": "https://hubmapconsortium.github.io/ccf/pages/ccf-3d-reference-library.html",
+      "declaredLicence": "CC-BY-4.0",
+      "sourceVersion": "portal inventory; individual GLB revisions pending",
+      "studioIds": [
+        "brain-anatomy",
+        "head-neck-anatomy",
+        "spine-anatomy",
+        "thorax-anatomy",
+        "heart-anatomy",
+        "abdomen-anatomy",
+        "pelvis-anatomy",
+        "upper-limb-anatomy",
+        "lower-limb-anatomy"
+      ],
+      "purpose": "Candidate organ meshes; no claim of complete coverage of fine anatomy",
+      "expectedEvidencePattern": "CC BY 4\\.0",
+      "acquisition": "inventory-and-exact-glb-provenance-pending",
+      "clinicalReview": "pending",
+      "rightsReview": "pending"
+    },
+    {
+      "id": "totalsegmentator-small-v201",
+      "title": "TotalSegmentator small dataset v2.0.1",
+      "provider": "zenodo",
+      "recordId": 10047263,
+      "officialUrl": "https://zenodo.org/records/10047263",
+      "evidenceUrl": "https://zenodo.org/api/records/10047263",
+      "declaredLicence": "CC-BY-4.0",
+      "sourceVersion": "2.0.1 (102 CT subjects; ~3.2GB)",
+      "studioIds": [
+        "abdomen-ct",
+        "chest-ct",
+        "thorax-anatomy",
+        "abdomen-anatomy",
+        "spine-anatomy"
+      ],
+      "purpose": "CT + anatomical labels (not a dedicated cardiac CTA or complete anatomy atlas)",
+      "officialMd5ByFilename": {
+        "Totalsegmentator_dataset_small_v201.zip": "6b5524af4b15e6ba06ef2d700c0c73e0"
+      },
+      "acquisition": "exact-publisher-file-index",
+      "clinicalReview": "pending",
+      "rightsReview": "pending"
+    },
+    {
+      "id": "fracatlas-v7",
+      "title": "FracAtlas",
+      "provider": "figshare",
+      "articleId": 22363012,
+      "officialUrl": "https://figshare.com/articles/dataset/FracAtlas_A_Dataset_for_Fracture_Classification_Localization_and_Segmentation_of_Musculoskeletal_Radiographs/22363012",
+      "evidenceUrl": "https://api.figshare.com/v2/articles/22363012",
+      "declaredLicence": "CC-BY-4.0",
+      "sourceVersion": "figshare article v7 (2026-06-13)",
+      "expectedVersion": 7,
+      "studioIds": [
+        "msk-xray"
+      ],
+      "purpose": "X-ray fracture polygons/boxes; requires image-to-annotation pairing",
+      "acquisition": "exact-publisher-file-index",
+      "clinicalReview": "pending",
+      "rightsReview": "pending"
+    },
+    {
+      "id": "grazpedwri-v2",
+      "title": "GRAZPEDWRI-DX",
+      "provider": "figshare",
+      "articleId": 14825193,
+      "officialUrl": "https://figshare.com/articles/dataset/GRAZPEDWRI-DX/14825193",
+      "evidenceUrl": "https://api.figshare.com/v2/articles/14825193",
+      "declaredLicence": "CC-BY-4.0",
+      "sourceVersion": "figshare v2",
+      "expectedVersion": 2,
+      "studioIds": [
+        "msk-xray"
+      ],
+      "purpose": "Additional pediatric wrist radiographs/annotations; strip patient age, sex, timestamps and accession-like filenames",
+      "acquisition": "exact-publisher-file-index",
+      "clinicalReview": "pending",
+      "rightsReview": "pending"
+    },
+    {
+      "id": "lus-7seg-v1",
+      "title": "LUS-7Seg hepatobiliary ultrasound",
+      "provider": "mendeley",
+      "officialUrl": "https://data.mendeley.com/datasets/cwc37g672d/1",
+      "evidenceUrl": "https://data.mendeley.com/datasets/cwc37g672d/1",
+      "declaredLicence": "CC-BY-4.0",
+      "sourceVersion": "1 DOI:10.17632/cwc37g672d.1",
+      "studioIds": [
+        "abdomen-ultrasound"
+      ],
+      "purpose": "7 hepatic standard planes; pixel-level liver and gallbladder masks",
+      "acquisition": "publisher-manual-file-export",
+      "clinicalReview": "pending",
+      "rightsReview": "pending"
+    },
+    {
+      "id": "lus-vertical-v2",
+      "title": "Lung Ultrasound Vertical Artifacts",
+      "provider": "mendeley",
+      "officialUrl": "https://data.mendeley.com/datasets/h923m366sf/2",
+      "evidenceUrl": "https://data.mendeley.com/datasets/h923m366sf/2",
+      "declaredLicence": "CC-BY-4.0",
+      "sourceVersion": "2 DOI:10.17632/h923m366sf.2",
+      "studioIds": [
+        "lung-ultrasound"
+      ],
+      "purpose": "LUS B-line and vertical artifact localization; review metadata and burned-in text",
+      "acquisition": "publisher-manual-file-export",
+      "clinicalReview": "pending",
+      "rightsReview": "pending"
+    },
+    {
+      "id": "echo-nste-mi-v1",
+      "title": "EchoNSTE-MI",
+      "provider": "mendeley",
+      "officialUrl": "https://data.mendeley.com/datasets/y6z64ntstg/1",
+      "evidenceUrl": "https://data.mendeley.com/datasets/y6z64ntstg/1",
+      "declaredLicence": "CC-BY-4.0",
+      "sourceVersion": "1 DOI:10.17632/y6z64ntstg.1",
+      "studioIds": [
+        "cardiac-echo"
+      ],
+      "purpose": "2CH,4CH,PLAX echo clips; de-identify filenames and verify burned-in labels (no segmentation masks)",
+      "acquisition": "publisher-manual-file-export",
+      "clinicalReview": "pending",
+      "rightsReview": "pending"
+    },
+    {
+      "id": "kmar-50k-v6",
+      "title": "KMAR-50K knee MRI paired artifact dataset",
+      "provider": "mendeley",
+      "officialUrl": "https://data.mendeley.com/datasets/xw7mrg7ntg/6",
+      "evidenceUrl": "https://data.mendeley.com/datasets/xw7mrg7ntg/6",
+      "declaredLicence": "CC-BY-4.0",
+      "sourceVersion": "6 DOI:10.17632/xw7mrg7ntg.6",
+      "studioIds": [
+        "knee-mri"
+      ],
+      "purpose": "Paired artifact/no-artifact MRI; no anatomical ground-truth segmentation",
+      "acquisition": "publisher-manual-file-export",
+      "clinicalReview": "pending",
+      "rightsReview": "pending"
+    },
+    {
+      "id": "kmar-50k-part2-v6",
+      "title": "KMAR-50K part 2",
+      "provider": "mendeley",
+      "officialUrl": "https://data.mendeley.com/datasets/95w9f5tzz8/6",
+      "evidenceUrl": "https://data.mendeley.com/datasets/95w9f5tzz8/6",
+      "declaredLicence": "CC-BY-4.0",
+      "sourceVersion": "6 DOI:10.17632/95w9f5tzz8.6",
+      "studioIds": [
+        "knee-mri"
+      ],
+      "purpose": "Additional MRI artifact cases; same limitations as part 1",
+      "acquisition": "publisher-manual-file-export",
+      "clinicalReview": "pending",
+      "rightsReview": "pending"
+    }
+  ],
+  "excludedSources": [
+    {
+      "id": "bodyparts3d-dbcls",
+      "reason": "conflicting exact release OBJ CC BY-SA 2.1 Japan vs publisher CC BY 4.0; no substantive reply"
+    },
+    {
+      "id": "lpba40-loni",
+      "reason": "upstream non-commercial research licence and explicit exception refusal by USC"
+    },
+    {
+      "id": "amos-zenodo",
+      "reason": "CC BY 4.0 Zenodo metadata conflicts with archive CC BY-SA 4.0"
+    },
+    {
+      "id": "legacy-nc-atlas-code",
+      "reason": "upstream CC BY-NC-SA 4.0"
+    },
+    {
+      "id": "stanford-mura",
+      "reason": "research-only data use agreement"
+    },
+    {
+      "id": "stanford-echonet",
+      "reason": "non-commercial research data use agreement"
+    },
+    {
+      "id": "z-anatomy-mixed",
+      "reason": "mixed upstream BodyParts3D lineage not independently cleared"
+    }
+  ]
+}
