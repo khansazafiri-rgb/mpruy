@@ -35,6 +35,7 @@ export async function onboardAllCandidates({ manifest, catalog, stage = stageAll
     publisherMetadataMatched: metadata.outcomes.filter(x => x.status === 'SOURCE_CANDIDATE_STAGED').length,
     failedOrExcludedPublisherMetadata: metadata.outcomes.filter(x => x.status !== 'SOURCE_CANDIDATE_STAGED').length,
     downloadedPrivateFiles: acquisition.downloads,
+    alreadyVerifiedPrivateFiles: acquisition.results.filter(x => x.status === 'ALREADY_VERIFIED_PRIVATE').length,
     skippedUnindexedOrOversize: acquisition.plan.excluded.length,
     failedFileDownloads: acquisition.results.filter(x => x.status === 'REJECTED_OR_QUARANTINED').length,
     rightsApproved: false, medicalApproved: false, privacyApproved: false,
