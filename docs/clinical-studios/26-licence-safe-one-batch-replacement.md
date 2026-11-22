@@ -114,3 +114,36 @@ Do not manually flip those status strings.
 This is a **candidate onboarding and public-release containment step**,
 not a claim that all 24 studios have original datasets, that files have been
 downloaded, or that the public website is already compliant.
+
+## 22 Nov local follow-up: Figshare transport diagnostics
+
+The owner ran the first batch and reported **9/9 publisher metadata matches,
+0 downloaded private files, 11 excluded for size/file-manifest gates, 3
+Figshare file-download failures**: `FracAtlas.zip`, `dataset.csv` and
+`folder_structure.zip`. The initial HTTP/redirect error merged multiple
+causes and was not proof of an incompatible source licence.
+
+Figshare supports an official `ndownloader.figshare.com/files/{fileId}`
+endpoint and an official `api.figshare.com/v2/file/download/{fileId}`
+fallback. The transport fix checks **every redirect hop**, requires HTTPS,
+allows only expected Figshare/Zenodo and object-storage hosts, rejects
+HTTP 202 challenge/interstitials, rejects HTML in place of medical assets,
+caps bytes, and verifies the **same exact publisher checksum and size**.
+Error reports reveal HTTP status and host but never a signed query/token.
+Regression tests cover 202, 403, malicious redirects and API fallback.
+
+To retry the same one-batch acquisition after pulling the fix:
+
+```bash
+cd ~/mpruy
+git switch claude/focused-wozniak-1ayrxa
+git pull --ff-only origin claude/focused-wozniak-1ayrxa
+npm run resources:batch:all
+```
+
+If Figshare still blocks access, inspect the new per-file HTTP/host reasons.
+Do not turn off checksum or host verification to force a download. A 202
+from the Figshare website is not a successful 200 medical source file.
+The five size-capped assets and six missing-file-index sources still
+require their separate exact-file admission; no source is automatically
+promoted or deployed.
