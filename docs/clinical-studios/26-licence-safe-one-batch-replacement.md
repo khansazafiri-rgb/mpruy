@@ -147,3 +147,53 @@ from the Figshare website is not a successful 200 medical source file.
 The five size-capped assets and six missing-file-index sources still
 require their separate exact-file admission; no source is automatically
 promoted or deployed.
+
+## 23 Nov 2026 — Large Zenodo archive timeout and resumable transport
+
+The owner's Mac ran the 8 GiB batch with ~22 GiB free. The previous downloader
+terminated the ~3.2 GiB TotalSegmentator transfer after a fixed 15-minute
+network abort, then deleted its `.partial-PID`. The last run recorded one new
+private archive, nine exclusions and one CT transfer failure; the newest report
+also ceased listing earlier FracAtlas/GRAZ downloads because it included only
+files planned in that specific batch.
+
+The hardened downloader now:
+
+- Uses a **120-second idle/no-progress watchdog** for publisher HTTP streaming,
+  reset on each received chunk. No 15-minute absolute transfer deadline.
+- Uses a stable `.partial` and source MD5/byte-size-pinned `.partial.json`
+  sidecar. Both stay exclusively within gitignored private local-data.
+- Retries safely (up to three attempts), requesting `Range` from the local
+  byte offset; requires HTTP 206 `Content-Range` start, end, total and byte
+  count to match exact publisher metadata. If the official endpoint ignores
+  Range and returns a full HTTP 200 response, truncates that partial and
+  restarts cleanly rather than appending duplicate bytes.
+- Shows private progress at approximately each 64 MiB, retaining partial
+  data if a stream stalls. Any complete file is accepted only after
+  streaming verification of the *entire file* against publisher MD5/size
+  plus independent SHA-256.
+- Rechecks original files from earlier runs and restores verified receipt
+  entries, even if a later batch would exclude them under a changed size cap.
+  This protects FracAtlas review from losing its previous acquisition receipt.
+
+**Owner Mac command** (not for CI/VPS; potentially 8 GiB of network traffic):
+
+```bash
+cd ~/mpruy
+git switch claude/focused-wozniak-1ayrxa
+git pull --ff-only origin claude/focused-wozniak-1ayrxa
+node --test scripts/private-resumable-archive.test.mjs
+df -h ~/mpruy
+npm run resources:batch:all -- --max-file-mib=4096 --max-total-mib=8192
+npm run resources:batch:review
+```
+
+The original ~318 MiB `.partial-PID` file from the old downloader was
+removed by its old timeout handler and **cannot be resumed**. New transfers
+will preserve stable `.partial` across interruptions and process restarts.
+If the publisher does not support consistent Range requests, HTTP 200 may
+require restarting that individual file. Never disable checksum verification.
+
+The source still has **no rights, privacy, medical or release approval**;
+receiving a full verified archive does not authorize unzipping it into a
+public app. The live Atlas/4D rights blockers remain unchanged.
