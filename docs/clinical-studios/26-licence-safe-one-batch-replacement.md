@@ -56,19 +56,29 @@ cd ~/mpruy
 git switch claude/focused-wozniak-1ayrxa
 git pull --ff-only origin claude/focused-wozniak-1ayrxa
 npm run resources:batch:plan
-npm run resources:batch:stage-all
+npm run resources:batch:all
 ```
 
-This checks **all nine publisher records in one execution**, compares their
-metadata licensing claims and version/publisher file indexes, and writes
-one consolidated local report in
-`local-data/studio-resources/alternative-candidates/batch-report.json`.
+`resources:batch:all` executes **all nine publisher metadata checks** and
+attempts one **bounded private acquisition batch** for official Figshare or
+Zenodo files with verified publisher MD5, recorded version and size. It
+writes consolidated reports at
+`local-data/studio-resources/alternative-candidates/batch-report.json`
+and `acquisition-report.json`.
 
-**Important:** `--stage-all` fetches publisher **metadata**, not patient
-images, GLBs or CT archives. The command is intentionally capped at 2.5MB
-per metadata record. No 3.2GB TotalSegmentator download is silently launched,
-no unpinned files are registered, no registry promotion occurs, and no
-medical or licensing reviewer is impersonated.
+The default safety caps are **512 MiB per archive** and **4096 MiB total**,
+with a free-disk-space check. Consequently, TotalSegmentator small (3.2GB)
+is **not** downloaded by default; HRA GLBs and Mendeley medical files are
+also skipped until their exact publisher file inventories are pinned.
+That is intentional and is reported rather than being called a successful
+install. To explicitly allow larger archives after checking Mac disk space,
+run `npm run resources:batch:all -- --max-file-mib=4096 --max-total-mib=8192`.
+
+The online metadata checks are capped at 2.5MB per record, and raw medical
+data are retained as verified **archives** only in gitignored local-data:
+no unpacking, conversion, PHI review, asset registry promotion, UI deployment
+or fake approval occurs. Source checksums are publisher MD5 plus independent
+local SHA-256 inventory, not evidence of clinical review.
 
 Cases with unavailable HTTP metadata, unexpected version, conflicting licence,
 unknown files, or changed official hashes remain `SOURCE_METADATA_BLOCKED`.
@@ -76,14 +86,11 @@ Do not manually flip those status strings.
 
 ## Required next actions for *all* candidates together
 
-1. From the private report, retain the exact official file list, sizes,
-   original notices, release-specific licenses and publisher checksums.
-2. For **all approved-for-acquisition candidates in one batch**, obtain
-   bounded exact official files locally, validate SHA-256 and publisher MD5
-   where published, quarantine any changed/ambiguous file and avoid PHI.
-   Mendeley files and HRA GLBs need an actual publisher file manifest before
-   automatic acquisition. Large CT/mesh archives require explicit disk
-   capacity planning. No silent unbounded download.
+1. From the private batch reports, reconcile any **skipped/failed** source
+   against its exact official file list, revision, licence and archive notices.
+2. Complete Mendeley/HRA file-level manifests and, for large CT packages,
+   confirm disk capacity before rerunning the same batch. No unpinned
+   source is allowed into the clinical UI. Do not silently lower safety gates.
 3. Generate transformed source/derived byte inventories, provenance, attribution
    and notices; mark `PRIVATE_REVIEW` and keep disabled release receipts.
 4. Adapt real modality-specific annotation/segmentation renderers, always
