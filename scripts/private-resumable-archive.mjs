@@ -120,6 +120,7 @@ export async function downloadPrivateArchive(entry, out, {
         if (written === entry.expectedBytes) break;
         throw Error('ACQUIRE_STREAM_ENDED_EARLY');
       } catch (e) {
+        opened?.abort?.();
         if (/UNTRUSTED|INVALID_CONTENT_RANGE|SOURCE_PIN_CHANGED|OVERSIZED_DOWNLOAD|UNREQUESTED_PARTIAL/.test(e.message))
           throw e;
         logger('PRIVATE transfer interrupted: '+String(e.message).slice(0,160));
