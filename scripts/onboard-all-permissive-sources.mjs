@@ -56,6 +56,14 @@ async function main() {
   const report = await onboardAllCandidates({ manifest, catalog,
     maxFileMiB: value('file', 512), maxTotalMiB: value('total', 4096) });
   console.table([report]);
+  if (report.failedFileDownloads) {
+    const file = path.join(BASE, 'acquisition-report.json');
+    const details = JSON.parse(fs.readFileSync(file, 'utf8'));
+    console.log('=== DOWNLOAD FAILURES (HTTP code and trusted host only; no signed URLs) ===');
+    console.table(details.results.filter(x => x.status === 'REJECTED_OR_QUARANTINED').map(x => ({
+      source: x.source, file: x.filename, error: x.error
+    })));
+  }
   console.log('Local evidence and acquisition reports: local-data/studio-resources/alternative-candidates/');
   console.log('Publisher record matching != permission to publish. Clinical images and full 3D anatomy are NOT yet integrated.');
   if (report.failedOrExcludedPublisherMetadata || report.failedFileDownloads) process.exitCode = 2;
