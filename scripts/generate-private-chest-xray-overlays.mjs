@@ -27,9 +27,8 @@ function rejectSymlinks(location) {
   let current = ROOT;
   for (const part of relative.split(path.sep).filter(Boolean)) {
     current = path.join(current, part);
-    if (fs.existsSync(current) && fs.lstatSync(current).isSymbolicLink()) {
-      throw Error('REVIEW_UNSAFE_SYMLINK:' + part);
-    }
+    const node = fs.lstatSync(current, { throwIfNoEntry: false });
+    if (node?.isSymbolicLink()) throw Error('REVIEW_UNSAFE_SYMLINK:' + part);
   }
 }
 function validateRegions(document, width, height) {
