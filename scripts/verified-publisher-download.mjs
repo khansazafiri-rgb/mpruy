@@ -147,7 +147,7 @@ export async function openVerifiedPublisherStream(entry, {
         }
         if (!response.body) { close(); throw Error('ACQUIRE_EMPTY_RESPONSE_STREAM'); }
         return { response, endpoint: endpoint.label, resumed: response.status === 206,
-          touch, close };
+          touch, close, abort: () => controller.abort() };
       }
       throw Error('ACQUIRE_TOO_MANY_REDIRECTS');
     } catch (e) {
