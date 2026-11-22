@@ -69,9 +69,10 @@ export async function openVerifiedPublisherStream(entry, { fetcher = fetch } = {
             redirect: 'manual',
             headers: {
               Accept: 'application/octet-stream, application/zip, text/csv, */*',
-              'User-Agent': 'MEDCOEL-private-medical-source/1.0'
+              'User-Agent': 'MEDCOEL-private-medical-source/1.0',
+              'Accept-Encoding': 'identity'
             },
-            signal: AbortSignal.timeout(90_000)
+            signal: AbortSignal.timeout(15 * 60_000)
           });
         } catch (e) {
           throw Error('ACQUIRE_NETWORK_FAILURE_AT_' + parsed.hostname + ':' +
