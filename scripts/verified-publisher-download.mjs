@@ -80,6 +80,7 @@ export async function openVerifiedPublisherStream(entry, {
           clearTimeout(stallTimer);
           stallTimer = setTimeout(() => controller.abort(
             new Error('ACQUIRE_STALLED_TRANSFER')), stallMs);
+          stallTimer.unref?.();
         };
         const close = () => clearTimeout(stallTimer);
         try {
