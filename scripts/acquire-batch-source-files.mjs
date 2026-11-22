@@ -110,11 +110,16 @@ async function streamAndVerify(entry, { fetcher = fetch } = {}) {
   fs.mkdirSync(path.dirname(out), { recursive: true, mode: 0o700 });
   safePrivatePath(out);
   if (fs.existsSync(out)) {
-    const current = read(out);
-    if (current.length === entry.expectedBytes &&
-        crypto.createHash('md5').update(current).digest('hex') === entry.publisherMd5)
-      return { status: 'ALREADY_VERIFIED_PRIVATE', sha256: sha(current) };
-    throw Error('ACQUIRE_EXISTING_FILE_MISMATCH_QUARANTINED');
+    const info = fs.lstatSync(out);
+    if (!info.isFile() || info.size !== entry.expectedBytes)
+      throw Error('ACQUIRE_EXISTING_FILE_MISMATCH_QUARANTINED');
+    const md5 = crypto.createHash('md5'), digest = crypto.createHash('sha256');
+    for await (const chunk of fs.createReadStream(out)) {
+      md5.update(chunk); digest.update(chunk);
+    }
+    if (md5.digest('hex') !== entry.publisherMd5)
+      throw Error('ACQUIRE_EXISTING_FILE_MISMATCH_QUARANTINED');
+    return { status: 'ALREADY_VERIFIED_PRIVATE', sha256: digest.digest('hex') };
   }
   const response = await fetcher(url.href, {
     redirect: 'follow', headers: { 'User-Agent': 'MEDCOEL-verified-private-file-audit/1.0' },
@@ -187,11 +192,24 @@ async function main() {
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'licensing/candidates/alternative-sources-batch.v1.json'), 'utf8'));
   const catalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'shared/studios/catalog.v1.json'), 'utf8'));
   const evidenceBySource = {};
+  // Never reuse a previously staged source if its latest publisher check failed
+  // or the metadata snapshot is older than one day.
+  const current = JSON.parse(read(path.join(BASE, 'batch-report.json')));
+  const age = Date.now() - Date.parse(current.generatedAt);
+  if (!Number.isFinite(age) || age < 0 || age > 86400000 ||
+      current.publicReleaseAuthorized !== false)
+    throw Error('ACQUIRE_REFRESH_PUBLISHER_METADATA_FIRST');
+  const byId = new Map(current.outcomes.map(x => [x.id, x]));
   for (const s of manifest.sources) {
     try {
+      const currentRow = byId.get(s.id);
+      if (currentRow?.status !== 'SOURCE_CANDIDATE_STAGED') continue;
       const dir = path.join(BASE, s.id);
       const rec = JSON.parse(read(path.join(dir, 'source-evidence.json')));
       const snapshot = read(path.join(dir, 'source-metadata.snapshot'));
+      if (rec.metadataSha256 !== currentRow.metadataSha256 ||
+          rec.status !== currentRow.status ||
+          sha(snapshot) !== rec.metadataSha256) continue;
       evidenceBySource[s.id] = { status: rec.status, sha256: rec.metadataSha256, snapshot };
     } catch { /* Unstaged or blocked source is skipped, never downloaded. */ }
   }
