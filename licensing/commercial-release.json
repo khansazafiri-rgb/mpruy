@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "purpose": "Public distribution requires commercial-use rights for every bundled asset and application component. Local builds and previews are not release approvals.",
+  "purpose": "Public distribution requires verified redistributable/commercial rights for every source code/model/data file. 2026-11-22: legacy owner risk overrides disabled; historical public deployments require separate remediation.",
   "products": {
     "atlas-viewer": {
       "status": "blocked",
@@ -10,13 +10,14 @@
       ],
       "approvedBuilds": [],
       "ownerOverride": {
-        "enabled": true,
+        "enabled": false,
         "decidedBy": "Pemilik MEDCOEL (khansazafiri-rgb)",
         "decidedOn": "2026-11-10",
         "expiresOn": "2027-02-08",
         "rightsVerified": false,
         "acknowledgement": "Hak komersial belum terverifikasi. Pemilik MEDCOEL menerima risiko pelanggaran lisensi dan permintaan penghapusan.",
-        "scope": "Pemasangan publik Atlas Viewer (/anatomy/viewer/). Data yang ditahan karantina (saraf, ginjal, osikel) tetap tidak disertakan."
+        "scope": "Pemasangan publik Atlas Viewer (/anatomy/viewer/). Data yang ditahan karantina (saraf, ginjal, osikel) tetap tidak disertakan.",
+        "disabledReason": "2026-11-22 owner direction: exclude incompatible/unverified licensed source materials and do not rely on owner risk override for public distribution."
       }
     },
     "4d-lab": {
@@ -27,13 +28,14 @@
       ],
       "approvedBuilds": [],
       "ownerOverride": {
-        "enabled": true,
+        "enabled": false,
         "decidedBy": "Pemilik MEDCOEL (khansazafiri-rgb)",
         "decidedOn": "2026-11-10",
         "expiresOn": "2027-02-08",
         "rightsVerified": false,
         "acknowledgement": "Hak komersial belum terverifikasi. Pemilik MEDCOEL menerima risiko pelanggaran lisensi dan permintaan penghapusan.",
-        "scope": "Pemasangan publik Anatomy Live 4D Lab (build statis /anatomy/4d-lab/). Data yang ditahan karantina tetap tidak disertakan."
+        "scope": "Pemasangan publik Anatomy Live 4D Lab (build statis /anatomy/4d-lab/). Data yang ditahan karantina tetap tidak disertakan.",
+        "disabledReason": "2026-11-22 owner direction: exclude incompatible/unverified licensed source materials and do not rely on owner risk override for public distribution."
       }
     }
   }
