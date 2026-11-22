@@ -12,6 +12,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { validateCandidateManifest, assessPublisherRecord } from './batch-alternative-resources.mjs';
+import { openVerifiedPublisherStream } from './verified-publisher-download.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const BASE = path.join(ROOT, 'local-data/studio-resources/alternative-candidates');
@@ -93,7 +94,8 @@ export function createExactFileAcquisitionPlan({ manifest, catalog, evidenceBySo
           expectedBytes: f.bytes }); continue;
       }
       files.push({ source: source.id, filename: f.name,
-        expectedBytes: f.bytes, publisherMd5: f.publisherMd5.toLowerCase(), downloadUrl });
+        expectedBytes: f.bytes, publisherMd5: f.publisherMd5.toLowerCase(), downloadUrl,
+        ...(source.provider === 'figshare' ? { sourceFileId: f.sourceFileId } : {}) });
       planned += f.bytes;
     }
   }
@@ -125,17 +127,7 @@ async function streamAndVerify(entry, { fetcher = fetch } = {}) {
       throw Error('ACQUIRE_EXISTING_FILE_MISMATCH_QUARANTINED');
     return { status: 'ALREADY_VERIFIED_PRIVATE', sha256: digest.digest('hex') };
   }
-  const response = await fetcher(url.href, {
-    redirect: 'follow', headers: { 'User-Agent': 'MEDCOEL-verified-private-file-audit/1.0' },
-    signal: AbortSignal.timeout(15 * 60 * 1000)
-  });
-  const final = new URL(response.url || url.href);
-  if (!response.ok || final.protocol !== 'https:' ||
-      !(final.hostname.endsWith('.figshare.com') || final.hostname === 'zenodo.org' ||
-        final.hostname.endsWith('.amazonaws.com') || final.hostname === 'zenodo.s3.cern.ch'))
-    throw Error('ACQUIRE_UNEXPECTED_PUBLISHER_REDIRECT_OR_HTTP');
-  if (Number(response.headers.get('content-length') || 0) > entry.expectedBytes)
-    throw Error('ACQUIRE_DOWNLOAD_LENGTH_EXCEEDS_PUBLISHER');
+  const { response } = await openVerifiedPublisherStream(entry, { fetcher });
   const temp = out + '.partial-' + process.pid;
   safePrivatePath(temp);
   const fd = fs.openSync(temp, 'wx', 0o600);
