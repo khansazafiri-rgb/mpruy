@@ -38,10 +38,33 @@ test('INTEGRATION-001 preserves target and original WS1-WS5 ancestry', () => {
     '3dca0c6025a470b73c8a7fbbe53a7bbe7bab79d5']) git('merge-base', '--is-ancestor', ref, 'HEAD');
 });
 
-test('INTEGRATION-002 canonical catalog and protected policies remain byte-identical to target', () => {
+test('INTEGRATION-002 canonical identities and quarantine remain unchanged; later licence policy may only tighten', () => {
   for (const p of ['shared/studios/catalog.v1.json', 'shared/studios/catalog.schema.json',
-    'shared/studios/frozen-ids.json', 'licensing/commercial-release.json',
-    'licensing/quarantine-policy.json', 'licensing/quarantined-hashes.json']) assert.equal(read(p), before(p), p);
+    'shared/studios/frozen-ids.json', 'licensing/quarantine-policy.json',
+    'licensing/quarantined-hashes.json']) assert.equal(read(p), before(p), p);
+
+  // The 2026-11-22 licence-safe batch explicitly disabled the old owner-risk
+  // overrides. Historical byte equality would incorrectly demand that
+  // unsupported noncommercial builds still be publishable by override.
+  // Compare every legacy commercial policy field except the narrowly reviewed
+  // tightening: purpose, ownerOverride.enabled and its explanatory reason.
+  const original = JSON.parse(before('licensing/commercial-release.json'));
+  const current = json('licensing/commercial-release.json');
+  assert.equal(current.schemaVersion, original.schemaVersion);
+  assert.deepEqual(Object.keys(current.products).sort(), Object.keys(original.products).sort());
+  assert.match(current.purpose, /verified redistributable\/commercial rights/);
+  for (const [product, legacy] of Object.entries(original.products)) {
+    const actual = current.products[product];
+    assert.equal(actual.status, 'blocked', product + ': no implicit rights approval');
+    assert.deepEqual(actual.blockers, legacy.blockers, product + ': rights blockers preserved');
+    assert.deepEqual(actual.approvedBuilds, legacy.approvedBuilds, product + ': no forged build approval');
+    assert.equal(actual.ownerOverride.enabled, false, product + ': owner override disabled');
+    assert.match(actual.ownerOverride.disabledReason, /owner direction.*do not rely/i);
+    const withoutTightening = structuredClone(actual);
+    withoutTightening.ownerOverride.enabled = legacy.ownerOverride.enabled;
+    delete withoutTightening.ownerOverride.disabledReason;
+    assert.deepEqual(withoutTightening, legacy, product + ': other policy terms unchanged');
+  }
 });
 
 test('INTEGRATION-003 exactly 24 independent entries use the existing canonical IDs', () => {
