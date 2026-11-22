@@ -27,9 +27,11 @@ function good(source,offset,status=offset?206:200){
 }
 test('RESUME-001: interruption retains partial and exact Range safely resumes',async t=>{
   const out=dest(t);
+  let sent=false;
   const interrupted=async()=>({response:{headers:new Headers(),
-    body:new ReadableStream({start(c){
-      c.enqueue(data.subarray(0,11));c.error(Error('simulated socket stall'));
+    body:new ReadableStream({pull(c){
+      if (!sent) { sent=true; c.enqueue(data.subarray(0,11)); }
+      else c.error(Error('simulated socket stall'));
     }})},resumed:false,touch(){},close(){}});
   await assert.rejects(downloadPrivateArchive(entry,out,{
     openStream:interrupted,maxAttempts:1,logger:()=>{}
