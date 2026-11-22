@@ -184,7 +184,11 @@ function dashboard(catalog, results) {
   const byId = new Map(results.map(x => [x.studio, x]));
   const blocks = catalog.studios.filter(x => !x.internal).map(s => {
     const result = byId.get(s.id);
-    const state = result ? result.status : 'DATA_OR_RENDERER_NOT_READY';
+    const state = result ? result.status
+      : s.id === 'chest-ct' ? 'QUARANTINED_TCIA_SOURCE'
+      : s.id === 'brain-mri' ? 'BLOCKED_LPBA40_OR_ALTERNATE_REVIEW_PENDING'
+      : s.id.endsWith('-anatomy') ? '3D_VIEWER_AND_RIGHTS_REVIEW_PENDING'
+      : 'DATA_OR_RENDERER_NOT_READY';
     const detail = result?.error ? ' — ' + result.error : '';
     const link = result?.status === 'PRIVATE_PREVIEW_READY'
       ? '<a href="' + html(s.id) + '/index.html">Lihat visualisasi</a>' : 'Belum bisa dirender';
