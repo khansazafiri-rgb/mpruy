@@ -12,7 +12,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { validateCandidateManifest, assessPublisherRecord } from './batch-alternative-resources.mjs';
-import { openVerifiedPublisherStream } from './verified-publisher-download.mjs';
+import { downloadPrivateArchive, hashFileBounded } from './private-resumable-archive.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const BASE = path.join(ROOT, 'local-data/studio-resources/alternative-candidates');
@@ -105,54 +105,69 @@ export function createExactFileAcquisitionPlan({ manifest, catalog, evidenceBySo
 
 async function streamAndVerify(entry, { fetcher = fetch } = {}) {
   const url = new URL(entry.downloadUrl);
-  if (url.protocol !== 'https:' || !['ndownloader.figshare.com', 'zenodo.org'].includes(url.hostname))
+  if (url.protocol !== 'https:' ||
+      !['ndownloader.figshare.com','zenodo.org'].includes(url.hostname))
     throw Error('ACQUIRE_URL_NOT_ALLOWLISTED');
   const out = path.join(BASE, entry.source, 'downloads', entry.filename);
   safePrivatePath(out);
-  fs.mkdirSync(path.dirname(out), { recursive: true, mode: 0o700 });
+  fs.mkdirSync(path.dirname(out), { recursive:true, mode:0o700 });
   safePrivatePath(out);
-  const availableDisk = fs.statfsSync(path.dirname(out));
-  const freeBytes = Number(availableDisk.bavail) * Number(availableDisk.bsize);
-  if (!fs.existsSync(out) && freeBytes < entry.expectedBytes + 256 * MB)
-    throw Error('ACQUIRE_NOT_ENOUGH_FREE_DISK_SPACE');
-  if (fs.existsSync(out)) {
-    const info = fs.lstatSync(out);
+  const info = fs.lstatSync(out, { throwIfNoEntry:false });
+  if (info) {
     if (!info.isFile() || info.size !== entry.expectedBytes)
       throw Error('ACQUIRE_EXISTING_FILE_MISMATCH_QUARANTINED');
-    const md5 = crypto.createHash('md5'), digest = crypto.createHash('sha256');
-    for await (const chunk of fs.createReadStream(out)) {
-      md5.update(chunk); digest.update(chunk);
-    }
-    if (md5.digest('hex') !== entry.publisherMd5)
+    const hashes = await hashFileBounded(out);
+    if (hashes.md5 !== entry.publisherMd5)
       throw Error('ACQUIRE_EXISTING_FILE_MISMATCH_QUARANTINED');
-    return { status: 'ALREADY_VERIFIED_PRIVATE', sha256: digest.digest('hex') };
+    return { status:'ALREADY_VERIFIED_PRIVATE', sha256:hashes.sha256 };
   }
-  const { response } = await openVerifiedPublisherStream(entry, { fetcher });
-  const temp = out + '.partial-' + process.pid;
-  safePrivatePath(temp);
-  const fd = fs.openSync(temp, 'wx', 0o600);
-  const md5 = crypto.createHash('md5'), digest = crypto.createHash('sha256');
-  const reader = response.body?.getReader();
-  if (!reader) { fs.closeSync(fd); fs.rmSync(temp, { force: true }); throw Error('ACQUIRE_EMPTY_DOWNLOAD'); }
-  let written = 0;
-  try {
-    while (true) {
-      const chunk = await reader.read();
-      if (chunk.done) break;
-      written += chunk.value.byteLength;
-      if (written > entry.expectedBytes) throw Error('ACQUIRE_OVERSIZED_DOWNLOAD');
-      md5.update(chunk.value); digest.update(chunk.value);
-      fs.writeSync(fd, chunk.value);
+  const part = out + '.partial';
+  safePrivatePath(part);
+  const existingBytes = fs.lstatSync(part, { throwIfNoEntry:false })?.size || 0;
+  const availableDisk = fs.statfsSync(path.dirname(out));
+  const free = Number(availableDisk.bavail) * Number(availableDisk.bsize);
+  if (free < entry.expectedBytes-existingBytes+256*MB)
+    throw Error('ACQUIRE_NOT_ENOUGH_FREE_DISK_SPACE');
+  return await downloadPrivateArchive(entry, out, { fetcher });
+}
+
+/** Rebuild receipts for previously successful original files even when a new
+ * cumulative size cap excludes them. Exact publisher MD5/size is rechecked;
+ * the previous batch report is NOT treated as a rights or hash authority.
+ */
+async function inventoryPreviouslyVerifiedFiles({ manifest, evidenceBySource, already }) {
+  const rows = [];
+  for (const source of manifest.sources) {
+    const evidence = evidenceBySource[source.id];
+    if (!evidence || evidence.status !== 'SOURCE_CANDIDATE_STAGED' ||
+        evidence.sha256 !== sha(evidence.snapshot)) continue;
+    let pinned;
+    try { pinned = assessPublisherRecord(source, evidence.snapshot).filenamePins; }
+    catch { continue; }
+    for (const file of pinned) {
+      const id = source.id + '/' + file.name;
+      if (already.has(id) || !safeName(file.name) || file.bytes < 1 ||
+          !/^[a-f0-9]{32}$/i.test(file.publisherMd5 || '')) continue;
+      const original = path.join(BASE, source.id, 'downloads', file.name);
+      safePrivatePath(original);
+      const stat = fs.lstatSync(original, { throwIfNoEntry:false });
+      if (!stat) continue;
+      if (!stat.isFile() || stat.size !== file.bytes) {
+        rows.push({ source:source.id,filename:file.name,status:'REJECTED_OR_QUARANTINED',
+          error:'ACQUIRE_EXISTING_FILE_MISMATCH_QUARANTINED' });
+        continue;
+      }
+      const digests = await hashFileBounded(original);
+      if (digests.md5 !== file.publisherMd5.toLowerCase()) {
+        rows.push({ source:source.id,filename:file.name,status:'REJECTED_OR_QUARANTINED',
+          error:'ACQUIRE_EXISTING_FILE_MISMATCH_QUARANTINED' });
+      } else {
+        rows.push({ source:source.id,filename:file.name,
+          status:'ALREADY_VERIFIED_PRIVATE',sha256:digests.sha256 });
+      }
     }
-    fs.fsyncSync(fd);
-    if (written !== entry.expectedBytes || md5.digest('hex') !== entry.publisherMd5)
-      throw Error('ACQUIRE_CHECKSUM_OR_LENGTH_MISMATCH');
-  } catch (error) {
-    fs.closeSync(fd); fs.rmSync(temp, { force: true }); throw error;
-  } finally { reader.releaseLock(); }
-  fs.closeSync(fd);
-  fs.renameSync(temp, out);
-  return { status: 'DOWNLOADED_PRIVATE_ONLY', sha256: digest.digest('hex') };
+  }
+  return rows;
 }
 
 export async function acquireEligibleFiles({ manifest, catalog, evidenceBySource,
@@ -168,10 +183,13 @@ export async function acquireEligibleFiles({ manifest, catalog, evidenceBySource
       results.push({ source: f.source, filename: f.filename, status: 'REJECTED_OR_QUARANTINED', error: e.message });
     }
   }
+  const already = new Set(results.map(x=>x.source+'/'+x.filename));
+  results.push(...await inventoryPreviouslyVerifiedFiles({ manifest, evidenceBySource, already }));
   const report = { schema: 'medcoel.private-source-acquisition.v1',
     generatedAt: new Date().toISOString(), releaseApproved: false,
     medicalReview: 'pending', privacyReview: 'pending',
     downloads: results.filter(x => x.status === 'DOWNLOADED_PRIVATE_ONLY').length,
+    alreadyVerified: results.filter(x => x.status === 'ALREADY_VERIFIED_PRIVATE').length,
     skipped: plan.excluded, results };
   privateWrite(path.join(BASE, 'acquisition-report.json'), JSON.stringify(report, null, 2) + '\n');
   return { plan, results, downloads: report.downloads };
