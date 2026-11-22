@@ -44,10 +44,11 @@ function writePrivate(p, b) {
   fs.writeFileSync(p, b, { mode: 0o600 });
 }
 function zipNameAllowed(n) {
-  return typeof n === 'string' && n.length < 300 && SAFE_ENTRY.test(n) &&
-    !n.startsWith('/') && !n.includes('//') &&
-    n.split('/').every(x => x && x !== '..' && x !== '.') &&
-    !/^[A-Za-z]:/.test(n);
+  if (typeof n !== 'string' || n.length >= 300 || !SAFE_ENTRY.test(n) ||
+      n.startsWith('/') || n.includes('//') || /^[A-Za-z]:/.test(n)) return false;
+  // Benign ZIP directory entries end in a slash; ignore the final empty part.
+  const parts = n.endsWith('/') ? n.slice(0, -1).split('/') : n.split('/');
+  return parts.length > 0 && parts.every(x => x && x !== '..' && x !== '.');
 }
 const exactRead = (fd, pos, len, total) => {
   if (!Number.isSafeInteger(pos) || !Number.isSafeInteger(len) ||
