@@ -110,7 +110,7 @@ function pngChunk(type, data) {
   crc.writeUInt32BE(crc32(bytes));
   return Buffer.concat([length, bytes, crc]);
 }
-function encodeRgbaPng(width, height, rgba) {
+export function encodeRgbaPng(width, height, rgba) {
   const ihdr = Buffer.alloc(13);
   ihdr.writeUInt32BE(width, 0); ihdr.writeUInt32BE(height, 4);
   ihdr[8] = 8; ihdr[9] = 6; // 8-bit RGBA, no palette and no PNG metadata.
