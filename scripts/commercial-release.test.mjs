@@ -26,16 +26,19 @@ test('without an owner override the Atlas and Lab releases are blocked despite c
   assert.throws(() => assertCommercialReleaseReady('4d-lab', dir, none), /Commercial release blocked.*provenance/);
 });
 
-test('the committed manifest carries the owner override: allowed, but never presented as verified rights', async (t) => {
-  const dir = await mkdtemp(path.join(os.tmpdir(), 'commercial-owner-')); t.after(() => rm(dir, { recursive: true, force: true }));
+test('committed Atlas and 4D Lab manifest disables owner override and keeps uncleared rights blocked', async (t) => {
+  const dir = await mkdtemp(path.join(os.tmpdir(), 'commercial-owner-off-')); t.after(() => rm(dir, { recursive: true, force: true }));
   await writeFile(path.join(dir, 'index.html'), 'local preview');
   const data = JSON.parse(await readFile(REAL_MANIFEST, 'utf8'));
   for (const product of ['atlas-viewer', '4d-lab']) {
-    assert.equal(data.products[product].status, 'blocked', 'status stays blocked: an override is not a clearance');
-    assert.ok(data.products[product].blockers.length > 0, 'the blockers stay listed');
+    assert.equal(data.products[product].status, 'blocked');
+    assert.ok(data.products[product].blockers.length > 0);
     assert.deepEqual(data.products[product].approvedBuilds, []);
-    const r = assertCommercialReleaseReady(product, dir, REAL_MANIFEST, { now: new Date('2026-11-12T00:00:00Z') });
-    assert.equal(r.ownerOverride, true); assert.equal(r.rightsVerified, false); assert.ok(r.blockers.length > 0); assert.match(r.warning, /NOT verified/);
+    assert.equal(data.products[product].ownerOverride?.enabled, false,
+      'an accepted licensing risk does not license incompatible source code');
+    assert.throws(() => assertCommercialReleaseReady(product, dir, REAL_MANIFEST, {
+      now: new Date('2026-11-22T00:00:00Z')
+    }), /Commercial release blocked/);
   }
 });
 
