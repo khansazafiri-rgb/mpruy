@@ -115,7 +115,7 @@ async function boundedFetch(url, fetcher = fetch) {
 }
 const matchCCBY = value => {
   const v = String(value || '').toLowerCase();
-  return /cc[\s-_]*by[\s-_]*4\.0/.test(v) ||
+  return /cc[\s_-]*by[\s_-]*4\.0/.test(v) ||
     v.includes('creativecommons.org/licenses/by/4.0');
 };
 
@@ -161,7 +161,8 @@ export function assessPublisherRecord(source, bytes) {
   } else if (source.provider === 'mendeley') {
     // Publisher SSR page is used as a licence snapshot; it has no trusted
     // file-by-file checksums. Raw files must be independently indexed later.
-    publisherLicence = /CC BY 4\.0\s*Learn more/i.test(body) ? 'CC BY 4.0' : null;
+    const normalized = body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    publisherLicence = /CC BY 4\.0\s*Learn more/i.test(normalized) ? 'CC BY 4.0' : null;
   } else if (source.provider === 'hra') {
     publisherLicence = (/All CCF 3D reference objects are released under Attribution 4\.0 International/i.test(body) ||
       /CC BY 4\.0/i.test(body)) ? 'CC BY 4.0' : null;
