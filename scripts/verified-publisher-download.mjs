@@ -6,6 +6,10 @@
 const REDIRECT_CODES = new Set([301, 302, 303, 307, 308]);
 const MAX_HOPS = 8;
 const HTTPS = 'https:';
+// Exact Cloudflare R2 account hostname returned by Figshare's official
+// ndownloader/API endpoints for the pinned file ids (owner observed 2026-11-22).
+// Keep this FIGSHARE ONLY. Do not widen to *.r2.cloudflarestorage.com.
+const FIGSHARE_PINNED_R2_HOST = '44c1cec316ec56bca76dfd65d2882b20.r2.cloudflarestorage.com';
 
 const isTrustedObjectStorage = host =>
   host === 's3.amazonaws.com' ||
@@ -20,7 +24,7 @@ export function validatePublisherDownloadHost(url, publisher) {
   const host = parsed.hostname.toLowerCase();
   if (publisher === 'figshare') {
     if (['ndownloader.figshare.com', 'api.figshare.com', 'figshare.com'].includes(host) ||
-        isTrustedObjectStorage(host)) return parsed;
+        host === FIGSHARE_PINNED_R2_HOST || isTrustedObjectStorage(host)) return parsed;
   } else if (publisher === 'zenodo') {
     if (host === 'zenodo.org' || host === 'zenodo.s3.cern.ch' ||
         isTrustedObjectStorage(host)) return parsed;
