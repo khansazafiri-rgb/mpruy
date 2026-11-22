@@ -55,7 +55,13 @@ function mediaTypeAllowed(response) {
 }
 
 /** Return the 200 response stream only after every hop and content type is checked. */
-export async function openVerifiedPublisherStream(entry, { fetcher = fetch } = {}) {
+export async function openVerifiedPublisherStream(entry, {
+  fetcher = fetch, offset = 0, ifRange = null, stallMs = 120_000
+} = {}) {
+  if (!Number.isSafeInteger(offset) || offset < 0 || offset >= entry.expectedBytes ||
+      !Number.isInteger(stallMs) || stallMs < 1000) throw Error('ACQUIRE_INVALID_RANGE_OR_STALL_LIMIT');
+  if (ifRange !== null && (typeof ifRange !== 'string' ||
+      ifRange.length > 256 || /[\r\n]/.test(ifRange))) throw Error('ACQUIRE_UNSAFE_IF_RANGE');
   const endpoints = publisherDownloadEndpoints(entry);
   const publisher = endpoints[0].label.startsWith('figshare') ? 'figshare' : 'zenodo';
   const errors = [];
@@ -68,47 +74,79 @@ export async function openVerifiedPublisherStream(entry, { fetcher = fetch } = {
         if (visited.has(current)) throw Error('ACQUIRE_REDIRECT_LOOP');
         visited.add(current);
         let response;
+        const controller = new AbortController();
+        let stallTimer;
+        const touch = () => {
+          clearTimeout(stallTimer);
+          stallTimer = setTimeout(() => controller.abort(
+            new Error('ACQUIRE_STALLED_TRANSFER')), stallMs);
+        };
+        const close = () => clearTimeout(stallTimer);
         try {
+          touch(); // Timeout is inactivity-based; successful chunks reset it.
           response = await fetcher(parsed.href, {
             redirect: 'manual',
             headers: {
               Accept: 'application/octet-stream, application/zip, text/csv, */*',
               'User-Agent': 'MEDCOEL-private-medical-source/1.0',
-              'Accept-Encoding': 'identity'
+              'Accept-Encoding': 'identity',
+              ...(offset ? { Range: 'bytes=' + offset + '-',
+                ...(ifRange ? { 'If-Range': ifRange } : {}) } : {})
             },
-            signal: AbortSignal.timeout(15 * 60_000)
+            signal: controller.signal
           });
         } catch (e) {
+          close();
           throw Error('ACQUIRE_NETWORK_FAILURE_AT_' + parsed.hostname + ':' +
-            (e.code || e.name || 'FETCH_FAILED'));
+            (controller.signal.aborted ? 'STALL_TIMEOUT' : (e.code || e.name || 'FETCH_FAILED')));
         }
         const responseUrl = response.url || current;
         validatePublisherDownloadHost(responseUrl, publisher);
         if (REDIRECT_CODES.has(response.status)) {
           const location = response.headers.get('location');
+          close();
           await response.body?.cancel().catch(() => {});
           if (!location) throw Error('ACQUIRE_REDIRECT_MISSING_LOCATION_AT_' + parsed.hostname);
           current = new URL(location, responseUrl).href;
           validatePublisherDownloadHost(current, publisher);
           continue;
         }
-        if (response.status !== 200) {
+        if (response.status !== 200 && response.status !== 206) {
+          close();
           await response.body?.cancel().catch(() => {});
           // 202 is an anti-bot/interstitial response on some Figshare routes.
           throw Error('ACQUIRE_HTTP_' + response.status + '_AT_' + new URL(responseUrl).hostname);
         }
+        if (response.status === 206) {
+          // A partial response without Range is never acceptable.
+          const match = /^bytes (\d+)-(\d+)\/(\d+)$/.exec(
+            response.headers.get('content-range') || '');
+          if (!offset || !match || Number(match[1]) !== offset ||
+              Number(match[3]) !== entry.expectedBytes ||
+              Number(match[2]) < offset || Number(match[2]) >= entry.expectedBytes ||
+              (response.headers.has('content-length') &&
+                Number(response.headers.get('content-length')) !==
+                Number(match[2]) - offset + 1)) {
+            close();
+            await response.body?.cancel().catch(() => {});
+            throw Error('ACQUIRE_INVALID_CONTENT_RANGE_AT_' + new URL(responseUrl).hostname);
+          }
+        }
         if (!mediaTypeAllowed(response)) {
+          close();
           await response.body?.cancel().catch(() => {});
           throw Error('ACQUIRE_INTERSTITIAL_OR_NONFILE_RESPONSE_AT_' +
             new URL(responseUrl).hostname);
         }
         const length = Number(response.headers.get('content-length') || 0);
-        if (length > entry.expectedBytes) {
+        if (length > (response.status === 206 ? entry.expectedBytes - offset : entry.expectedBytes)) {
+          close();
           await response.body?.cancel().catch(() => {});
           throw Error('ACQUIRE_SOURCE_LENGTH_EXCEEDS_PIN_AT_' + new URL(responseUrl).hostname);
         }
-        if (!response.body) throw Error('ACQUIRE_EMPTY_RESPONSE_STREAM');
-        return { response, endpoint: endpoint.label };
+        if (!response.body) { close(); throw Error('ACQUIRE_EMPTY_RESPONSE_STREAM'); }
+        return { response, endpoint: endpoint.label, resumed: response.status === 206,
+          touch, close };
       }
       throw Error('ACQUIRE_TOO_MANY_REDIRECTS');
     } catch (e) {
