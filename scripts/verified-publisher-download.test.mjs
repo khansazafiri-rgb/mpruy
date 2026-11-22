@@ -99,3 +99,63 @@ test('FIGSHARE-005: non-200 status is never mistaken for a downloaded file', asy
   await assert.rejects(openVerifiedPublisherStream(e, { fetcher: reply }),
     /ACQUIRE_HTTP_202_AT_/);
 });
+
+const FIGSHARE_R2_HOST = '44c1cec316ec56bca76dfd65d2882b20.r2.cloudflarestorage.com';
+
+test('FIGSHARE-006: observed exact Cloudflare R2 redirect is admitted for Figshare only', async () => {
+  const signed = 'https://' + FIGSHARE_R2_HOST +
+    '/bucket/pinned.bin?X-Amz-Signature=dont-log-signed-values';
+  const seen = [];
+  const fetcher = async (url, opts) => {
+    seen.push(url);
+    assert.equal(opts.redirect, 'manual');
+    if (url === entry.downloadUrl) return new Response(null, {
+      status: 302, headers: { location: signed }
+    });
+    if (url === signed) return new Response(body(), {
+      status: 200, headers: { 'content-type': 'application/octet-stream', 'content-length': '4' }
+    });
+    throw Error('unexpected endpoint');
+  };
+  const out = await openVerifiedPublisherStream(entry, { fetcher });
+  assert.equal(out.endpoint, 'figshare-ndownloader');
+  assert.deepEqual(new Uint8Array(await out.response.arrayBuffer()), body());
+  assert.deepEqual(seen, [entry.downloadUrl, signed]);
+  assert.equal(validatePublisherDownloadHost(signed, 'figshare').hostname, FIGSHARE_R2_HOST);
+  assert.throws(() => validatePublisherDownloadHost(signed, 'zenodo'),
+    /ACQUIRE_UNTRUSTED_REDIRECT_HOST/);
+});
+
+test('FIGSHARE-007: R2 lookalikes and insecure R2 redirects never leave the allowlist', async () => {
+  const lookalikes = [
+    'https://untrusted.r2.cloudflarestorage.com/x',
+    'https://' + FIGSHARE_R2_HOST + '.attacker.example/x',
+    'https://other.' + FIGSHARE_R2_HOST + '/x',
+    'https://r2.cloudflarestorage.com/x'
+  ];
+  for (const bad of lookalikes) {
+    assert.throws(() => validatePublisherDownloadHost(bad, 'figshare'),
+      /ACQUIRE_UNTRUSTED_REDIRECT_HOST/);
+  }
+  assert.throws(
+    () => validatePublisherDownloadHost('http://' + FIGSHARE_R2_HOST + '/x', 'figshare'),
+    /ACQUIRE_UNTRUSTED_URL/
+  );
+  const received = [];
+  const fetcher = async url => {
+    received.push(url);
+    return new Response(null, {
+      status: 302,
+      headers: { location: lookalikes[1] + '?X-Amz-Signature=private-token' }
+    });
+  };
+  await assert.rejects(openVerifiedPublisherStream(entry, { fetcher }), err => {
+    assert.match(err.message, /ACQUIRE_UNTRUSTED_REDIRECT_HOST/);
+    assert.ok(!err.message.includes('private-token'));
+    return true;
+  });
+  assert.deepEqual(received, [
+    'https://ndownloader.figshare.com/files/12345',
+    'https://api.figshare.com/v2/file/download/12345'
+  ], 'redirect targets must be rejected before any network request');
+});
