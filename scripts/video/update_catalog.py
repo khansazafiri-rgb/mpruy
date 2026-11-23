@@ -20,8 +20,7 @@ EDUCATION = {
     "pasien-tidak-sadar-di-igd", "ekg-garis-layar", "hb-satu-tetes",
     "ct-mri-perbedaan-citra", "parasetamol-nyeri-kepala", "spo2-pulse-oximeter",
     "termometer-raksa-tertahan", "usg-gema-gambar", "inhaler-waktu-tarikan",
-=======
-    "termometer-raksa-tertahan", "usg-gema-gambar", "test-pack-dua-garis",
+    "test-pack-dua-garis", "mekanisme-keringat",
 }
 STUDENT_STORIES = {
     "ada-satu-yang-kamu-lupa", "bayangin-jadi-anak-fk",
