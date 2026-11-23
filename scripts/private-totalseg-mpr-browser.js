@@ -202,7 +202,9 @@
     }
     status.textContent='MPR siap · sumber '+d.subject+
       ' · '+W+'×'+H+'×'+D+' voxel sampel · '+organs.length+
-      ' mask organ · SHA-256 diperiksa · L/R belum divalidasi klinis · hanya privat';
+      ' mask organ · SHA-256 diperiksa · '+
+      (d.datasetId?'kalibrasi HU belum diverifikasi · ':'')+
+      'L/R belum divalidasi klinis · hanya privat';
     repaint();
   } catch(e) { fail(e?.message||e); }
 })();
