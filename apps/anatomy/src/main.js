@@ -8,6 +8,7 @@ import {enableBackgroundGeometry} from './viewer/backgroundGeometry.js';
 import {setViewer,setPartsData,setSystemsData,setTranslations,subscribe} from './state/store.js';
 import {loadSystemsData,loadLexicon,loadDefinitions,buildPartsData} from './data/anatomy.js';
 import {translationsIt,translationsEn} from './data/translations.js';
+import {isPublicContainment} from './atlas/publicContainment.js';
 import {fetchJson} from './utils/fetchJson.js';import {initAtlas,settings} from './atlas/engine.js';import {initUI} from './atlas/ui.js';
 async function start(){
  const overlay=document.getElementById('loadingOverlay');
@@ -30,7 +31,8 @@ async function start(){
   const {installLibraryBridge}=await import('./library/bridge.js');installLibraryBridge(viewer);
   if(embedded&&params.get('annotator')==='1'){const {installAnnotator}=await import('./annotations/annotator.js');installAnnotator(viewer);}
   const firstFrame=beginPhase('first frame');viewer.renderer.render(viewer.scene,viewer.camera);firstFrame();
-  overlay.classList.add('hidden');overlay.setAttribute('aria-hidden','true');reportAtlasStatus('interactive',{phase:'interactive',message:'Atlas dapat digunakan.'});reportPerf('interactive');
+  overlay.classList.add('hidden');overlay.setAttribute('aria-hidden','true');reportAtlasStatus('interactive',{phase:'interactive',message:isPublicContainment()?
+      'Atlas terbatas: otot tersedia; skeletal dan viseral ditahan untuk izin penggunaan.':'Atlas dapat digunakan.'});reportPerf('interactive');
   reportAtlasStatus('ready');
   // Yield a painted, selectable skeleton before indexing/BVH and descriptions.
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
