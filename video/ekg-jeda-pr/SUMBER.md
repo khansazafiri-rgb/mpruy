@@ -17,3 +17,5 @@
 
 ## Musik dan efek (lisensi)
 Musik (pad + pluck lembut, 84 BPM, Am-F-C-G) dan semua aksen (bunyi halus saat P muncul, ketukan lembut di nodus AV, chime segmen PR, whoosh bilik terisi, ketukan + gumpalan rendah singkat saat QRS) **disintesis sendiri** dengan numpy/scipy di `audio/build_audio.py`: tanpa sampel pihak ketiga, **CC0 / domain publik**, aman untuk promosi Instagram/TikTok. Aksen turun otomatis di bawah suara.
+
+_Salinan mentah halaman/PDF sumber yang saya baca saat pembuatan disimpan lokal di `sumber/` dan **tidak di-commit** (hak cipta pihak ketiga dan ukuran); tautan dan kutipan ringkas ada di atas._

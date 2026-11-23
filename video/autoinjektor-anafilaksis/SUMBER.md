@@ -22,3 +22,5 @@ alergen hijau (#7BC043) | mediator imun ungu (#8E6BFF; bulat = histamin, belah k
 
 ## Musik dan efek (lisensi)
 Musik (pad + pluck lembut, 90 BPM, Am-F-C-G) dan semua aksen (pop bentol, snap alergen menempel, tetes mediator, whoosh pembuluh/saluran napas, nada rendah lembut untuk tekanan turun dan bronkus menyempit, klik halus + whoosh saat pena bekerja, chime untuk alfa/beta 2/beta 1) **disintesis sendiri** dengan numpy/scipy di `audio/build_audio.py`: tanpa sampel pihak ketiga, **CC0 / domain publik**, aman untuk promosi Instagram/TikTok. Tidak ada alarm keras dan bunyi suntikan dibuat lembut; aksen turun otomatis di bawah suara.
+
+_Salinan mentah halaman/PDF sumber yang saya baca saat pembuatan disimpan lokal di `sumber/` dan **tidak di-commit** (hak cipta pihak ketiga dan ukuran); tautan dan kutipan ringkas ada di atas._
