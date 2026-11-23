@@ -33,4 +33,4 @@ Lingkungan pembuat tidak bisa memutar video bersuara pada kecepatan normal. **Sa
 - Di penutup, lengan Raka yang menunjuk menutupi sebagian sisi kanan panel EKG (tepi pita PR dan awal QRS agak tertutup pada beberapa bingkai). Bila terganggu, Raka dapat digeser ke kiri.
 - Garis P pada hook dimulai pada waktu ~0,3 dtk, jadi P tampak sedang selesai, bukan sudah selesai sebelum bingkai pertama.
 - Satu sumber medis (NCBI NBK555952) tidak dapat dibuka dan tidak dipakai; lihat `SUMBER.md`.
-- Entri katalog video (`docs/VIDEO_KATALOG.md`) belum ditambahkan di PR ini karena `scripts/video/update_catalog.py` di base berisi baris konflik sisa yang diperbaiki di PR lain (#260); setelah itu masuk, jalankan skrip untuk menambahkan entri.
+- Entri katalog video (`docs/VIDEO_KATALOG.md`) ditambahkan lewat `scripts/video/update_catalog.py`.
