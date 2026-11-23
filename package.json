@@ -9,7 +9,7 @@
     "lint": "npm run lint --prefix apps/web",
     "test": "npm run test --prefix apps/web && npm run test --prefix apps/pocketbase",
     "test:anatomy-integration": "node --test scripts/anatomy-*.test.mjs",
-    "test:studios": "node scripts/generate-studio-server-contract.mjs --check && node --test scripts/studio-catalog.test.mjs scripts/studio-catalog-history.test.mjs scripts/studio-resources.test.mjs scripts/studio-tissue-only.test.mjs scripts/studio-harvard-oxford.test.mjs packages/studio-contract/test/*.test.mjs scripts/studio-release.test.mjs scripts/studio-review.test.mjs scripts/private-chest-xray-overlays.test.mjs scripts/private-multimodal-review.test.mjs scripts/private-fracatlas-review.test.mjs scripts/private-totalseg-archive-audit.test.mjs scripts/private-totalseg-ct-review.test.mjs scripts/private-totalseg-mpr.test.mjs scripts/alternative-source-readiness.test.mjs && node licensing/tools/studio-review.mjs verify --structural && node scripts/studio-status.mjs --check",
+    "test:studios": "node scripts/generate-studio-server-contract.mjs --check && node --test scripts/studio-catalog.test.mjs scripts/studio-catalog-history.test.mjs scripts/studio-resources.test.mjs scripts/studio-tissue-only.test.mjs scripts/studio-harvard-oxford.test.mjs packages/studio-contract/test/*.test.mjs scripts/studio-release.test.mjs scripts/studio-review.test.mjs scripts/private-chest-xray-overlays.test.mjs scripts/private-multimodal-review.test.mjs scripts/private-fracatlas-review.test.mjs scripts/private-totalseg-archive-audit.test.mjs scripts/private-totalseg-ct-review.test.mjs scripts/private-totalseg-mpr.test.mjs scripts/alternative-source-readiness.test.mjs scripts/finish-all-clinical-studios.test.mjs && node licensing/tools/studio-review.mjs verify --structural && node scripts/studio-status.mjs --check",
     "preview:anatomy": "node scripts/anatomy-preview-server.mjs",
     "stage:anatomy": "node scripts/stage-anatomy.mjs",
     "build:anatomy": "npm run build --prefix apps/anatomy -- --base=/anatomy/viewer/",
@@ -54,7 +54,9 @@
     "review:fracatlas-private": "node scripts/private-fracatlas-review.mjs",
     "resources:batch:ct-audit": "node scripts/private-totalseg-archive-audit.mjs",
     "resources:batch:ct-preview": "node scripts/private-totalseg-ct-review.mjs",
-    "resources:batch:mpr": "node scripts/private-totalseg-ct-review.mjs"
+    "resources:batch:mpr": "node scripts/private-totalseg-ct-review.mjs",
+    "resources:finish-all": "node scripts/finish-all-clinical-studios.mjs",
+    "resources:qc-only": "node scripts/finish-all-clinical-studios.mjs --reuse"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
