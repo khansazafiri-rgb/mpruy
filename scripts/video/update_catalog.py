@@ -14,14 +14,13 @@ TITLES = {
     "brand/video/ad3": "Latihan Soal MEDCOEL",
 }
 EDUCATION = {
-    "bangun-tapi-tak-bisa-bergerak", "dingin-pengen-pipis",
+    "mekanisme-varises", "bangun-tapi-tak-bisa-bergerak", "dingin-pengen-pipis",
     "dunia-tanpa-cuci-tangan", "dunia-tanpa-oralit", "gas-air-mata",
     "introvert-ekstrovert", "kopi-kafein-adenosin", "malam-lapar",
     "pasien-tidak-sadar-di-igd", "ekg-garis-layar", "hb-satu-tetes",
     "ct-mri-perbedaan-citra", "parasetamol-nyeri-kepala", "spo2-pulse-oximeter",
     "termometer-raksa-tertahan", "usg-gema-gambar", "inhaler-waktu-tarikan",
-=======
-    "termometer-raksa-tertahan", "usg-gema-gambar", "test-pack-dua-garis",
+    "test-pack-dua-garis", "mekanisme-keringat",
 }
 STUDENT_STORIES = {
     "ada-satu-yang-kamu-lupa", "bayangin-jadi-anak-fk",
