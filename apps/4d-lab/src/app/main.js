@@ -50,6 +50,7 @@ export const DATASETS = {
   atlas: { dir: BASE + 'data/atlas/', label: 'Atlas MEDCOEL · CT sintetis berbasis atlas' },
   phantom: { dir: BASE + 'data/phantom/', label: 'Phantom prosedural v1 (tanpa atlas)' },
 };
+let DATASET = DATASETS[QUERY.get('dataset')] ? QUERY.get('dataset') : 'atlas';
 const DATASET = DATASETS[QUERY.get('dataset')] ? QUERY.get('dataset') : 'atlas';
 let activeDataset = DATASET;
 let DATA = DATASETS[DATASET].dir;
@@ -93,6 +94,8 @@ let effusion = null, assist = null, learn = null;
 let dirty = true, interacting = false, lastInteraction = 0, workerBusy = false, pending = false, lastFrameInfo = null, frameCount = 0;
 let lastDeform = 0, motionShown = null;
 const stats = { usMs: 0, deformMs: 0, fps: 0 };
+window.__lab = { S, clock, stats, get DATASET() { return DATASET; }, physio: { displacement, makeFrame, effectiveParams: () => effectiveParams(), get geom() { return geom; } }, get atlas() { return atlas; }, get atlasState() { return atlasState; }, get atlasStats() { return { deformMs: atlasDeformMs, moving: atlasMoving, clockT: atlasDeformClockT }; }, audio, get assist() { return assist; }, get learn() { return learn; }, get scene() { return scene; }, get monitor() { return monitor; }, get data() { return D; }, get last() { return lastFrameInfo; }, get effusion() { return effusion; } };
+=======
 window.__lab = { S, clock, stats, DATASET, get activeDataset(){ return activeDataset; }, physio: { displacement, makeFrame, effectiveParams: () => effectiveParams(), get geom() { return geom; } }, get atlas() { return atlas; }, get atlasState() { return atlasState; }, get atlasStats() { return { deformMs: atlasDeformMs, moving: atlasMoving, clockT: atlasDeformClockT }; }, audio, get assist() { return assist; }, get learn() { return learn; }, get scene() { return scene; }, get monitor() { return monitor; }, get data() { return D; }, get last() { return lastFrameInfo; }, get effusion() { return effusion; } };
 
 function markDirty() { dirty = true; }
@@ -106,10 +109,31 @@ const pick = (o, keys) => Object.fromEntries(keys.map((k) => [k, o[k]]));
 async function fetchBuf(name) {
   const r = await fetch(DATA + name, { cache: 'no-cache' });
   if (!r.ok) throw new Error(`Gagal memuat ${name} (HTTP ${r.status})`);
+  // Production can return the SPA index.html (HTTP 200) when a static
+  // dataset path isn't mounted. Never parse that HTML as an NRRD or GLB.
+  const type = (r.headers.get('content-type') || '').toLowerCase();
+  if (/text\/html|application\/(?:json|xhtml\+xml)/.test(type))
+    throw new Error(`Dataset ${name} bukan file pencitraan (Content-Type ${type})`);
   return r.arrayBuffer();
+}
+async function fetchDatasetJson(name) {
+  const r=await fetch(DATA+name,{cache:'no-cache'});
+  if(!r.ok)throw new Error(`Gagal memuat ${name} (HTTP ${r.status})`);
+  const type=(r.headers.get('content-type')||'').toLowerCase();
+  if(/text\/html|application\/xhtml\+xml/.test(type))
+    throw new Error(`Dataset ${name} diarahkan ke halaman HTML, bukan JSON`);
+  return r.json();
 }
 function status(text, kind = 'info') { const s = $('#loadStatus'); if (s) { s.textContent = text; s.dataset.kind = kind; } }
 
+async function loadPhantom() { // bundled dataset (atlas-derived by default; ?dataset=phantom for the procedural phantom)
+  status(`Memuat ${DATASETS[DATASET].label} (CT, label, mesh)…`);
+  const reg = await fetchDatasetJson('registration.json');
+  const meshFiles = (reg.meshes || []).map((m) => m.file);
+  const [ctBuf, labBuf, anatomy, ...bufs] = await Promise.all([fetchBuf('ct.nrrd'), fetchBuf('labels.nrrd'), fetchDatasetJson('anatomy.json'), ...meshFiles.map(fetchBuf)]);
+  const files = Object.fromEntries(meshFiles.map((f, i) => [f, bufs[i]]));
+  await useDataset({ ctBuf, labBuf, anatomy, reg, files, source: DATASET, name: DATASET === 'atlas' ? 'MEDCOEL atlas-derived synthetic CT' : 'MEDCOEL synthetic phantom' });
+=======
 async function readBundledDataset(key){
   activeDataset = key;
   DATA = DATASETS[key].dir;
@@ -138,6 +162,25 @@ async function loadPhantom() {
     document.body.dataset.atlasFallback='phantom';
     status('Atlas CT sementara ditahan/tidak tersedia; mode phantom sintetis dipakai. Ini bukan citra pasien atau model Atlas 3D.', 'warn');
   });
+}
+
+// Fail-safe for the production rights quarantine: the atlas-derived CT pack
+// is deliberately blocked at the proxy until its exact rights are cleared.
+// Keep the educational Lab usable with the existing, separately sourced
+// procedural synthetic phantom; never substitute or synthesize a patient CT.
+async function loadBundledWithFallback() {
+  try { await loadPhantom(); }
+  catch (atlasError) {
+    if(DATASET!=='atlas'||D)throw atlasError;
+    const original=String(atlasError?.message||atlasError);
+    DATASET='phantom';DATA=DATASETS.phantom.dir;
+    try {await loadPhantom();}
+    catch(phantomError){
+      throw new Error('Atlas belum tersedia ('+original+
+        '); phantom cadangan juga gagal ('+String(phantomError?.message||phantomError)+').');
+    }
+    status('Dataset Atlas sedang dikarantina/tidak tersedia. Beralih ke phantom sintetis edukatif; bukan citra CT pasien.', 'warn');
+  }
 }
 
 async function useDataset({ ctBuf, labBuf, anatomy, reg, files, source, name }) {
@@ -1515,7 +1558,7 @@ async function boot() {
     };
     monitor.onSlice = (key, sign, fine) => { if (!S.tri.point) return; S.tri.point = stepSlice(S.tri.point, key, sign * (fine ? 0.5 : 1) * Math.min(...D.ct.spacing), D.ct.bounds); pad?.update(); updateTriControls(); touch(); };
     installLayout();
-    await loadPhantom();
+    await loadBundledWithFallback();
     learn = new Learn({ el, root: $('#tab-learn'), snapshot: learnSnapshot, setup: learnSetup, setAssist: (lv) => setAssistLevel(lv), status,
       navigation: () => ({ mode: S.mode, display: S.display }), returnProbe: () => { setScanMode('clinical'); learn.render(); } });
     buildPanels();
