@@ -272,7 +272,7 @@ export async function reveal(id) {
   const meta = catalog[id];
   if (!meta)
     throw new Error("This structure is not available in the supplied model.");
-  if (!bp3dHas(id))
+  if (!bp3dHas(id, GROUPS.find(g => g.id === meta.group)?.source))
     throw new Error("Struktur ini belum ada di BodyParts3D (pratinjau lokal, cakupan sebagian). Kembali ke model Atlas untuk melihatnya.");
   const token = ++selectRevision;
   const applied = await commit(() => {

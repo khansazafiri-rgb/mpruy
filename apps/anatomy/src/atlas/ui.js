@@ -25,7 +25,6 @@ import {
   reveal,
   metadata,
   frame,
-  counts,
   idsForGroup,
   isolateSelected,
   returnContext,
@@ -80,7 +79,7 @@ function renderGroups() {
     .filter(g=>isPublicWithheldSource(g.source))
     .map(g=>({...g,short:SHORT[g.id]||g.label})):[];
   $("atlasGroups").innerHTML = available.map((g) => {
-    const value = settings.groups[g.id], count = counts(g.id), loaded = state.loadedSystems.includes(g.source);
+    const value = settings.groups[g.id], count = idsForGroup(g.id).filter(id=>bp3dHas(id,g.source)).length, loaded = state.loadedSystems.includes(g.source);
     const total = g.layers.length, shown = value.enabled ? total - value.removed : 0;
     const layerName = value.enabled ? g.layers[value.removed] : "Disembunyikan";
     const dots = total > 1 ? `<span class="sys-layers" aria-hidden="true">${g.layers.map((_, i) => `<i class="${i >= total - shown ? "on" : ""}"></i>`).join("")}</span>` : "";
@@ -101,7 +100,7 @@ function renderPartList() {
   if (!detailGroup) { panel.innerHTML = ""; return; }
   const group = GROUPS.find((g) => g.id === detailGroup);
   if(!group||isPublicWithheldSource(group.source)){panel.hidden=true;panel.innerHTML="";return;}
-  const ids = idsForGroup(detailGroup).sort((a, b) => a.localeCompare(b));
+  const ids = idsForGroup(detailGroup).filter(id=>bp3dHas(id,group.source)).sort((a, b) => a.localeCompare(b));
   panel.innerHTML = `<div class="atlas-browse-head" style="--group-color:${group.color}"><span class="sys-dot"></span><strong>${escape(group.label)}</strong><small>${ids.length} struktur di regio ini</small><button type="button" data-browse="${detailGroup}" aria-label="Tutup daftar">×</button></div>
   <button type="button" class="atlas-view-system" data-view-system="${detailGroup}">Lihat seluruh ${escape(group.label)} ↗</button>
   <div id="atlasPartList" class="atlas-parts">${ids.slice(0, listLimit).map((id) => {
@@ -175,7 +174,7 @@ function search(query) {
     };
     terms.push(...(groupAliases[metadata(id).group] || []));
     if (!tokens.every((t) => terms.some((term) => term.includes(t)))) continue;
-    if (!bp3dHas(id)) { bp3dMissed++; continue; } // BodyParts3D preview only: not in the 470 converted structures
+    if (!bp3dHas(id, GROUPS.find(g=>g.id===metadata(id).group)?.source)) { bp3dMissed++; continue; } // Filter only systems opted into BodyParts3D
     const best = terms.some((t) => t === q)
       ? 100
       : terms.some((t) => t.startsWith(q))
