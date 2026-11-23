@@ -1,0 +1,78 @@
+{
+ "durasi_edu": 33.48,
+ "skalar_normalisasi": 1.2517,
+ "sfx": [
+  {
+   "t": 0.0,
+   "sfx": "dengung-kabin"
+  },
+  {
+   "t": 5.0,
+   "sfx": "potong-telinga"
+  },
+  {
+   "t": 8.46,
+   "sfx": "tekanan-berubah"
+  },
+  {
+   "t": 9.9,
+   "sfx": "tekanan-luar"
+  },
+  {
+   "t": 13.0,
+   "sfx": "dengung-teredam"
+  },
+  {
+   "t": 13.12,
+   "sfx": "gendang-terdorong"
+  },
+  {
+   "t": 18.45,
+   "sfx": "potong-menelan"
+  },
+  {
+   "t": 19.2,
+   "sfx": "menelan"
+  },
+  {
+   "t": 19.95,
+   "sfx": "menguap"
+  },
+  {
+   "t": 20.6,
+   "sfx": "potong-tuba"
+  },
+  {
+   "t": 21.76,
+   "sfx": "tuba-terbuka"
+  },
+  {
+   "t": 23.1,
+   "sfx": "udara-masuk"
+  },
+  {
+   "t": 26.98,
+   "sfx": "pop"
+  },
+  {
+   "t": 27.15,
+   "sfx": "lega"
+  },
+  {
+   "t": 28.15,
+   "sfx": "potong-pilek"
+  },
+  {
+   "t": 28.78,
+   "sfx": "saluran-sempit"
+  },
+  {
+   "t": 30.1,
+   "sfx": "potong-banding"
+  },
+  {
+   "t": 32.8,
+   "sfx": "nyeri"
+  }
+ ]
+}

@@ -1,0 +1,189 @@
+{
+ "dur": 49.68,
+ "edu_dur": 33.48,
+ "outro_dur": 16.2,
+ "sent": {
+  "s1": [
+   0.0,
+   4.16
+  ],
+  "s2": [
+   5.32,
+   7.56
+  ],
+  "s3": [
+   8.26,
+   12.06
+  ],
+  "s4": [
+   12.62,
+   17.6
+  ],
+  "s5": [
+   18.62,
+   22.46
+  ],
+  "s6": [
+   23.06,
+   27.16
+  ],
+  "s7": [
+   27.76,
+   33.06
+  ]
+ },
+ "w": {
+  "perhatikan": 0.0,
+  "telinga": 0.8,
+  "penuh": 1.62,
+  "pesawat": 2.12,
+  "turun": 2.44,
+  "lalu": 3.04,
+  "pop1": 4.0,
+  "balik": 5.52,
+  "gendang1": 5.68,
+  "ruang": 6.7,
+  "udara1": 7.22,
+  "tekanan1": 8.26,
+  "kabin": 8.84,
+  "berubah": 9.08,
+  "tekanan2": 9.9,
+  "kedua": 10.38,
+  "gendang2": 10.8,
+  "belum": 11.44,
+  "seimbang1": 11.62,
+  "gendang3": 12.62,
+  "terdorong": 13.32,
+  "sehingga": 13.96,
+  "tidak": 15.26,
+  "nyaman": 15.46,
+  "suara": 16.3,
+  "teredam": 17.22,
+  "ketika": 18.62,
+  "menelan": 19.2,
+  "menguap": 19.92,
+  "saluran1": 20.78,
+  "eustachius": 21.08,
+  "terbuka": 21.76,
+  "sebentar": 22.1,
+  "udara2": 23.06,
+  "masuk": 23.3,
+  "tekanannya": 24.18,
+  "kembali": 24.52,
+  "seimbang2": 24.84,
+  "muncullah": 25.74,
+  "sensasi": 26.24,
+  "pop2": 26.96,
+  "kalau": 27.76,
+  "saluran2": 28.3,
+  "tersumbat": 28.78,
+  "pilek": 29.38,
+  "tekanan3": 30.18,
+  "sulit": 30.62,
+  "seimbang3": 30.88,
+  "telinga2": 31.58,
+  "nyeri": 32.8
+ },
+ "cap": [
+  [
+   0.0,
+   1.13,
+   "Pernah merasa telinga"
+  ],
+  [
+   1.13,
+   3.03,
+   "tiba-tiba penuh saat pesawat turun,"
+  ],
+  [
+   3.03,
+   4.26,
+   "lalu terdengar \"pop\"?"
+  ],
+  [
+   5.32,
+   6.46,
+   "Di balik gendang telinga"
+  ],
+  [
+   6.46,
+   7.66,
+   "ada ruang berisi udara."
+  ],
+  [
+   8.26,
+   9.56,
+   "Saat tekanan kabin berubah,"
+  ],
+  [
+   9.56,
+   10.57,
+   "tekanan di kedua sisi"
+  ],
+  [
+   10.57,
+   12.16,
+   "gendang telinga belum seimbang."
+  ],
+  [
+   12.62,
+   13.98,
+   "Gendang telinga terdorong,"
+  ],
+  [
+   13.98,
+   15.87,
+   "sehingga telinga terasa tidak nyaman"
+  ],
+  [
+   15.87,
+   17.7,
+   "dan suara bisa terdengar teredam."
+  ],
+  [
+   18.62,
+   20.48,
+   "Ketika kita menelan atau menguap,"
+  ],
+  [
+   20.48,
+   21.5,
+   "saluran Eustachius"
+  ],
+  [
+   21.5,
+   22.56,
+   "terbuka sebentar."
+  ],
+  [
+   23.06,
+   24.45,
+   "Udara masuk, tekanannya"
+  ],
+  [
+   24.45,
+   25.47,
+   "kembali seimbang,"
+  ],
+  [
+   25.47,
+   27.26,
+   "dan muncullah sensasi \"pop\"."
+  ],
+  [
+   27.76,
+   29.77,
+   "Kalau saluran ini tersumbat saat pilek,"
+  ],
+  [
+   29.77,
+   31.21,
+   "tekanan lebih sulit seimbang"
+  ],
+  [
+   31.21,
+   33.16,
+   "dan telinga bisa terasa lebih nyeri."
+  ]
+ ]
+}
