@@ -66,7 +66,8 @@
     "test:bp3d-skeletal-visceral": "node --test scripts/prepare-bp3d-skeletal-visceral-replacement.test.mjs",
     "audit:bodyparts3d-full": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs",
     "audit:bodyparts3d-full:fast": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --skip-geometry",
-    "batch:bodyparts3d-reviewed": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs --all --reviewed local-data/licensing-quarantine/bp3d-reviewed-mappings.json"
+    "batch:bodyparts3d-reviewed": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs --all --reviewed local-data/licensing-quarantine/bp3d-reviewed-mappings.json",
+    "audit:bodyparts3d-full:reviewed": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --reviewed"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
