@@ -22,7 +22,7 @@
     "stage:4d-lab": "node scripts/stage-4d-lab.mjs",
     "preview:4d-lab": "node scripts/preview-4d-lab.mjs --build",
     "preview:review": "node scripts/preview-4d-lab.mjs --build",
-    "test:licensing": "node --test scripts/licensing-quarantine.test.mjs scripts/commercial-release.test.mjs scripts/commercial-rights-evidence.test.mjs scripts/studio-usage-intent.test.mjs scripts/studio-clearance-batch.test.mjs scripts/studio-private-recovery.test.mjs scripts/release-inventory.test.mjs scripts/bp3d-review-server.test.mjs scripts/bodyparts3d-source.test.mjs scripts/studio-bodyparts3d-lineage.test.mjs scripts/reconcile-implemented-rights.test.mjs scripts/audit-live-anatomy-exposure.test.mjs scripts/batch-alternative-resources.test.mjs scripts/audit-live-rights-strict.test.mjs scripts/acquire-batch-source-files.test.mjs scripts/private-resumable-archive.test.mjs scripts/verified-publisher-download.test.mjs scripts/onboard-all-permissive-sources.test.mjs && node licensing/tools/apply-quarantine.mjs --check && node licensing/tools/check-distribution.mjs apps/anatomy/public apps/4d-lab/public apps/web/public && node licensing/tools/audit-commercial-evidence.mjs && node licensing/tools/scan-atlas-code-origin.mjs && node licensing/tools/clinical-clearance-batch.mjs --check",
+    "test:licensing": "node --test scripts/licensing-quarantine.test.mjs scripts/commercial-release.test.mjs scripts/commercial-rights-evidence.test.mjs scripts/studio-usage-intent.test.mjs scripts/studio-clearance-batch.test.mjs scripts/studio-private-recovery.test.mjs scripts/release-inventory.test.mjs scripts/bp3d-review-server.test.mjs scripts/bodyparts3d-source.test.mjs scripts/studio-bodyparts3d-lineage.test.mjs scripts/reconcile-implemented-rights.test.mjs scripts/audit-live-anatomy-exposure.test.mjs scripts/batch-alternative-resources.test.mjs scripts/audit-live-rights-strict.test.mjs scripts/production-caddy-quarantine.test.mjs scripts/acquire-batch-source-files.test.mjs scripts/private-resumable-archive.test.mjs scripts/verified-publisher-download.test.mjs scripts/onboard-all-permissive-sources.test.mjs && node licensing/tools/apply-quarantine.mjs --check && node licensing/tools/check-distribution.mjs apps/anatomy/public apps/4d-lab/public apps/web/public && node licensing/tools/audit-commercial-evidence.mjs && node licensing/tools/scan-atlas-code-origin.mjs && node licensing/tools/clinical-clearance-batch.mjs --check",
     "inventory:release": "node licensing/tools/build-release-inventory.mjs",
     "check:licensing-dist": "node licensing/tools/check-distribution.mjs",
     "audit:commercial-evidence": "node licensing/tools/audit-commercial-evidence.mjs",
@@ -57,7 +57,8 @@
     "resources:batch:mpr": "node scripts/private-totalseg-ct-review.mjs",
     "resources:finish-all": "node scripts/finish-all-clinical-studios.mjs",
     "resources:qc-only": "node scripts/finish-all-clinical-studios.mjs --reuse",
-    "resources:qc-source": "node scripts/private-studio-source-qc.mjs"
+    "resources:qc-source": "node scripts/private-studio-source-qc.mjs",
+    "test:production-quarantine": "node --test scripts/production-caddy-quarantine.test.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
