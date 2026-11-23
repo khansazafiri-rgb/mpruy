@@ -146,7 +146,9 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
   return report;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
-  try{await runAudit({checkGeometry:!process.argv.includes('--skip-geometry'),
-    batch:process.argv.includes('--reviewed')?path.join(PRIVATE,'bp3d-reviewed'):path.join(PRIVATE,'bp3d-batch')});}
+  try{const reviewed=process.argv.includes('--reviewed');
+    await runAudit({checkGeometry:!process.argv.includes('--skip-geometry'),
+      batch:path.join(PRIVATE,reviewed?'bp3d-reviewed':'bp3d-batch'),
+      output:path.join(PRIVATE,reviewed?'bp3d-completeness-reviewed':'bp3d-completeness')});}
   catch(error){console.error('BP3D_FULL_AUDIT_FAILED: '+error.message);process.exitCode=1;}
 }
