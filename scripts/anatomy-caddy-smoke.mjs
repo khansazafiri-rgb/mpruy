@@ -18,14 +18,30 @@ try{
  const request=async(file,options)=>fetch(`http://127.0.0.1:${port}${file}`,options);await start();
  const base='/anatomy/viewer/';const html=await request(base);assert.equal(html.status,200);assert.equal(html.headers.get('x-frame-options'),'SAMEORIGIN');assert.match(html.headers.get('cache-control'),/no-cache/);const text=await html.text();
  const js=text.match(/src="(\/anatomy\/viewer\/assets\/[^" ]+\.js)"/)[1];
- for(const file of ['data/systems.json','data/atlas-catalog.json','data/lexicon.json','data/definitions.json','draco/draco_wasm_wrapper.js','draco/draco_decoder.wasm',...['skeletal','muscular','joints','cardiovascular','lymphatic','visceral'].map(s=>'models/'+s+'.glb')]){
+ for(const file of ['data/systems.json','data/atlas-catalog.json','data/lexicon.json','data/definitions.json','draco/draco_wasm_wrapper.js','draco/draco_decoder.wasm',...['muscular','joints','cardiovascular','lymphatic'].map(s=>'models/'+s+'.glb')]){
   const res=await request(base+file,{method:'HEAD'});assert.equal(res.status,200,file);assert.ok(Number(res.headers.get('content-length'))>0,file);
   if(file.endsWith('.glb'))assert.equal(res.headers.get('content-type'),'model/gltf-binary');if(file.endsWith('.wasm'))assert.equal(res.headers.get('content-type'),'application/wasm');
  }
  const asset=await request(js);assert.match(asset.headers.get('cache-control'),/31536000, immutable/);await asset.arrayBuffer();
- const model=await request(base+'models/skeletal.glb',{method:'HEAD'});assert.match(model.headers.get('cache-control'),/3600/);
- assert.equal((await request(base+'models/skeletal.glb',{headers:{'If-None-Match':model.headers.get('etag')}})).status,304);
- const range=await request(base+'models/skeletal.glb',{headers:{Range:'bytes=0-11'}});assert.equal(range.status,206);assert.equal((await range.arrayBuffer()).byteLength,12);
+ const model=await request(base+'models/muscular.glb',{method:'HEAD'});assert.match(model.headers.get('cache-control'),/3600/);
+ assert.equal((await request(base+'models/muscular.glb',{headers:{'If-None-Match':model.headers.get('etag')}})).status,304);
+ const range=await request(base+'models/muscular.glb',{headers:{Range:'bytes=0-11'}});assert.equal(range.status,206);assert.equal((await range.arrayBuffer()).byteLength,12);
+ // Exact unverified GLBs and the entire unapproved 4D Atlas data subtree
+ // must never be served as data or as the root website's SPA fallback.
+ for(const withheld of [
+  '/anatomy/viewer/models/skeletal.glb',
+  '/anatomy/viewer/models/visceral.glb',
+  '/anatomy/4d-lab/data/atlas/ct.nrrd',
+  '/anatomy/4d-lab/data/atlas/labels.nrrd'
+ ]){
+  for(const options of [{method:'HEAD'},{method:'GET'},{method:'GET',headers:{Range:'bytes=0-11'}}]){
+   const response=await request(withheld,options);
+   assert.equal(response.status,404,withheld+' '+options.method);
+   assert.match(response.headers.get('cache-control')||'',/no-store/);
+   assert.notEqual(response.status,206);
+   await response.body?.cancel().catch(()=>{});
+  }
+ }
  const gzip=await request(base+'data/systems.json',{headers:{'Accept-Encoding':'gzip'}});assert.equal(gzip.headers.get('content-encoding'),'gzip');await gzip.text();
  for(const file of ['assets/missing.js','models/missing.glb','draco/missing.wasm']){const res=await request(base+file);assert.equal(res.status,404);assert.doesNotMatch(res.headers.get('cache-control')||'',/immutable/);}
  assert.equal((await request('/anatomy/viewer',{redirect:'manual'})).status,308);assert.equal((await request('/anatomy/structure/ulna')).status,200);
@@ -34,5 +50,5 @@ try{
  assert.equal((await request('/api/health')).status,502);assert.equal((await request(base)).status,200);
  const backend=createServer((_,res)=>res.end('ok'));backend.listen(deadBackend,'127.0.0.1');await once(backend,'listening');assert.equal((await request('/api/health')).status,200);backend.closeAllConnections();await new Promise(r=>backend.close(r));assert.equal((await request(base)).status,200);
  await stop();await start();assert.equal((await request(base)).status,200);await stop();
- console.log('PASS: real local Caddy; 200/MIME/length/cache/ETag304/range206/gzip/404/frame policy; web-dist rebuild; Caddy restart; mock backend outage/restart. No production changes.');
+ console.log('PASS: real local Caddy; quarantined GLBs/Atlas prefix GET+HEAD+Range 404/no-store; healthy asset 200/MIME/cache/ETag304/range206/gzip/404/frame policy; web-dist rebuild; Caddy restart; mock backend outage/restart. No production changes.');
 }finally{if(child&&child.exitCode===null){const done=once(child,'exit');child.kill('SIGTERM');await done;}await fs.rm(tmp,{recursive:true,force:true});}
