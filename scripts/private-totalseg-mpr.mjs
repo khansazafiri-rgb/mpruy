@@ -59,21 +59,23 @@ export function addPrivateMprOrgan(pack,mask,organ){
     const value=mask.read(i);
     if(value!==0&&value!==1)throw Error('CT_MPR_MASK_NOT_BINARY');
   }
-  // Promote from v1 uint16 to v2 uint32 only when a 16th authentic mask
-  // is appended. Earlier 11-mask bundles remain binary-compatible.
-  if(pack.organs.length===15 && pack.maskBits.BYTES_PER_ELEMENT===2)
-    pack.maskBits=Uint32Array.from(pack.maskBits);
+  // Stage uint32 promotion until a real 16th mask has sampled positives.
+  // Optional source masks that vanish under bounded downsampling must not
+  // change packet schema or corrupt the existing 15 valid masks.
+  const bits=pack.organs.length===15 && pack.maskBits.BYTES_PER_ELEMENT===2
+    ? Uint32Array.from(pack.maskBits):pack.maskBits;
   let positive=0;
   for(let z=0;z<Z;z++)for(let y=0;y<Y;y++)for(let x=0;x<X;x++){
     const old=pack.axisMap[0][x]+srcX*(pack.axisMap[1][y]+srcY*pack.axisMap[2][z]);
     const value=mask.read(old);
     if(value!==0&&value!==1)throw Error('CT_MPR_MASK_NOT_BINARY');
     if(value===1){
-      pack.maskBits[x+X*(y+Y*z)]|=bit;
+      bits[x+X*(y+Y*z)]|=bit;
       positive++;
     }
   }
   if(!positive)throw Error('CT_MPR_EMPTY_DOWNSAMPLED_MASK:'+organ.id);
+  pack.maskBits=bits;
   pack.organs.push({id:organ.id,label:organ.label||organ.id,
     rgb:[...organ.rgb],bit,sampledVoxels:positive,
     ...(Array.isArray(organ.studios)?{studios:[...organ.studios]}:{})});
