@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MEDCOEL Private MPR @@TITLE@@</title>
+<style>
+:root{color-scheme:dark;background:#0c1424;color:#e9f0ff;font:15px system-ui,-apple-system,sans-serif}
+body{max-width:1420px;margin:0 auto;padding:22px}a{color:#9dd4ff}h1{font-size:26px;margin:12px 0}
+.warning{border-left:4px solid #ff8f94;padding:10px 14px;background:#251b30;line-height:1.6}
+.toolbar{background:#192943;border:1px solid #38516f;border-radius:14px;padding:16px;margin:16px 0;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+label{display:inline-flex;align-items:center;gap:10px}input[type=range]{accent-color:#85b9ff}
+#organs{display:flex;flex-wrap:wrap;gap:8px;flex-basis:100%}
+.organ{border:1px solid #3d526c;background:#142036;padding:8px 10px;border-radius:8px}
+.organ span{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:3px}
+.planes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,350px),1fr));gap:16px}
+.planes article{background:#1a2942;border:1px solid #38516f;padding:14px;border-radius:14px}
+.planes canvas{display:block;width:100%;height:auto;image-rendering:auto;background:#000;border-radius:8px}
+.planes input[type=range]{width:100%;margin-top:12px}
+small,.dim{color:#bfcbdf}#status{font-weight:600;color:#a9d6ff}
+select,button{background:#0c1524;color:#e9f0ff;border:1px solid #5d7497;border-radius:7px;padding:8px}
+</style></head><body data-studio="@@STUDIO@@">
+<p><a href="../index.html">Kembali ke Private Review Hub</a> · <a href="static-review.html">Preview statis sebelumnya</a></p>
+<h1>@@TITLE@@ · Interactive Multiplanar CT (PRIVATE)</h1>
+<p class="warning"><strong>LOCAL ONLY · MEDICAL / RIGHTS / PRIVACY REVIEW PENDING · RELEASE BLOCKED.</strong>
+@@TCIA_WARNING@@Potongan menampilkan <strong>koordinat indeks voxel</strong>, bukan orientasi diagnostik tervalidasi.
+Data disampling ulang dengan nearest-neighbour untuk kecepatan interaksi. Jangan gunakan untuk diagnosis,
+pengukuran klinis atau penentuan laterality. Jangan unggah gambar, HTML atau data ini ke server publik.</p>
+<p id="status" role="status">Memuat volume CT lokal...</p>
+<section class="toolbar">
+<label>Window <select id="window"><option value="soft">Soft tissue (40/400)</option><option value="lung">Lung (-600/1500)</option><option value="bone">Bone (400/1800)</option></select></label>
+<label>Opacity mask <input type="range" id="opacity" min="0" max="100" value="55"> <output id="pct">55%</output></label>
+<button id="reset" type="button">Reset irisan</button>
+<div id="organs" aria-label="Pilihan organ"></div>
+</section>
+<section class="planes">
+<article><h2>Axial · index <span id="n-z"></span></h2><canvas id="view-z"></canvas><label class="dim" for="slice-z">Geser irisan Z</label><input id="slice-z" type="range" min="0" max="1"></article>
+<article><h2>Coronal · index <span id="n-y"></span></h2><canvas id="view-y"></canvas><label class="dim" for="slice-y">Geser irisan Y</label><input id="slice-y" type="range" min="0" max="1"></article>
+<article><h2>Sagittal · index <span id="n-x"></span></h2><canvas id="view-x"></canvas><label class="dim" for="slice-x">Geser irisan X</label><input id="slice-x" type="range" min="0" max="1"></article>
+</section>
+<p class="dim">Sumber TotalSegmentator 2.0.1, satu subjek pseudonim. Data voxel asli diverifikasi sebelum bundel dibuat.
+Browser menggunakan sampel 3D resolusi lebih rendah untuk navigasi cepat. Preview statis resolusi asli tetap tersedia.
+Kode ini berjalan di browser lokal tanpa pemanggilan jaringan keluar.</p>
+<script src="../ct-mpr-private/volume.js"></script>
+<script src="../ct-mpr-private/viewer.js"></script>
+</body></html>
