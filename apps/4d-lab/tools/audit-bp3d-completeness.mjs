@@ -50,8 +50,8 @@ export function auditCompleteness({catalog,officialRows,elementIndex,archiveFile
         model.mappingMethod==='provisional-name-review-NOT-validated' &&
         officialRows.some(x=>{
           if(x.fmaId!==model.fmaId||x.bpId!==model.bpId)return false;
-          const atlasSide=/\\.l$/.test(row.atlasName)?'left':/\\.r$/.test(row.atlasName)?'right':null;
-          const sourceSides=x.name.toLowerCase().match(/\\b(left|right)\\b/g)||[];
+          const atlasSide=/\.l$/.test(row.atlasName)?'left':/\.r$/.test(row.atlasName)?'right':null;
+          const sourceSides=x.name.toLowerCase().match(/\b(left|right)\b/g)||[];
           return (!atlasSide||sourceSides.length===1&&sourceSides[0]===atlasSide) &&
             semanticSourceFlags(row.atlasName,x.name).length===0;
         });
