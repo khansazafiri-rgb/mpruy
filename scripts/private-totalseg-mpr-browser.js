@@ -68,7 +68,12 @@
       y:{canvas:ui['view-y'],width:W,height:D,max:H-1},
       z:{canvas:ui['view-z'],width:W,height:H,max:D-1}
     };
+    const recommended=d.recommendedSlices?.[studio];
     const defaultSlices={x:Math.floor(W/2),y:Math.floor(H/2),z:Math.floor(D/2)};
+    for(const [axis,max] of [['x',W-1],['y',H-1],['z',D-1]]){
+      const index=recommended?.[axis];
+      if(Number.isInteger(index)&&index>=0&&index<=max)defaultSlices[axis]=index;
+    }
     const contexts={};
     for(const axis of ['x','y','z']){
       const plane=axes[axis];
