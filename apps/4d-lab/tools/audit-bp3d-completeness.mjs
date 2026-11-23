@@ -58,6 +58,12 @@ export function auditCompleteness({catalog,officialRows,elementIndex,archiveFile
       sourceElements:official?.sourceObjs.map(x=>x.fileId)||[],allSourceOBJPresent:allFiles,
       modelPath:model?.modelPath||null,mappingMethod:model?.mappingMethod||null,
       reviewManifestSHA256:model?.reviewManifestSHA256||null,
+      triangles:model?.triangles??null,sourceMeshCount:model?.sourceMeshes??null,
+      geometryFlags:model?.diagnostics?.flags||[],
+      omittedZeroAreaTriangles:model?.omittedZeroAreaTriangles||0,
+      lateralityBoundsReview:model?.boundsNative?.center?.length===3 && (
+        (/\.l$/.test(row.atlasName)&&model.boundsNative.center[0]<-5)||
+        (/\.r$/.test(row.atlasName)&&model.boundsNative.center[0]>5))?'CHECK_LEFT_RIGHT_BOUNDS':null,
       sourceGeometryValidated:false,distributionApproved:false,
       suggestedIdentity:suggest?{name:suggest.officialName,fmaId:suggest.fmaId,bpId:suggest.bpId,
         confidence:suggest.confidence,sourceElementIds:suggest.sourceElementIds,
@@ -117,6 +123,28 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
   report.sourceHashes=actualHashes;
   for(const [key,value] of Object.entries(actualHashes))
     if(inventory.sourceHashes?.[key]!==value)report.errors.push('Source hash mismatch: '+key);
+  // Cross-check ALL converted objects against the COMPLETE authoritative FJ element table.
+  // An existing GLB with one missing sub-element is not "complete" just because it renders.
+  const paths=new Set(archiveFiles);
+  for(const item of inventory.converted){
+    if(!/^[a-z0-9-]+$/.test(item.id||'')){report.errors.push('Unsafe converted ID: '+item.name);continue;}
+    try{
+      const lineage=JSON.parse(fs.readFileSync(path.join(batch,'structures',item.id,'lineage.json'),'utf8'));
+      if(lineage.atlasCandidateName!==item.name||lineage.officialFMAId!==item.fmaId||
+         lineage.officialRepresentationId!==item.bpId||lineage.archiveSHA256!==actualHashes.archiveSha256||
+         lineage.generatedGLBSHA256!==item.glbSha256||
+         lineage.geometryAnatomyValidated!==false||lineage.approvedForDistribution!==false)
+        report.errors.push('Lineage identity/source rights mismatch: '+item.name);
+      const required=[...(elementIndex.get(item.fmaId)||[])].sort();
+      const actual=(lineage.elements||[]).map(e=>e.id).sort();
+      if(!required.length||required.length!==actual.length||required.some((id,i)=>id!==actual[i]))
+        report.errors.push('Official source FJ sub-elements missing or substituted: '+item.name);
+      for(const e of lineage.elements||[]){
+        if(!paths.has(e.zipEntry)||path.basename(e.zipEntry)!==e.id+'.obj'||!/^[a-f0-9]{64}$/.test(e.sha256||''))
+          report.errors.push('Unsafe/missing archive FJ element lineage: '+item.name+' '+e.id);
+      }
+    }catch(error){report.errors.push('Could not verify FJ lineage for '+item.name+': '+error.message);}
+  }
   if(checkGeometry){
     report.integrity=await auditGeneratedBatch(batch);
     report.errors.push(...report.integrity.errors);
