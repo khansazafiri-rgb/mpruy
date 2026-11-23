@@ -1,5 +1,7 @@
 // Full MEDCOEL Atlas-to-official BodyParts3D audit. LOCAL ONLY; never publishes or approves any geometry.
 import fs from 'node:fs';
+import {createReadStream} from 'node:fs';
+import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
@@ -39,8 +41,12 @@ export function auditCompleteness({catalog,officialRows,elementIndex,archiveFile
     let status='unmatched';
     if(model){
       status='converted';
-      if(!row.matches.some(x=>x.fmaId===model.fmaId&&x.bpId===model.bpId))
-        errors.push('source identity not corroborated by official name: '+row.atlasName);
+      const exactMatch=row.matches.some(x=>x.fmaId===model.fmaId&&x.bpId===model.bpId);
+      const reviewedIdentity=model.mappingMethod==='explicit-reviewed-FMA-BP-FJ-not-clinically-validated' &&
+        /^[a-f0-9]{64}$/.test(model.reviewManifestSHA256||'') &&
+        officialRows.some(x=>x.fmaId===model.fmaId&&x.bpId===model.bpId);
+      if(!exactMatch&&!reviewedIdentity)
+        errors.push('source identity not corroborated by official mapping or reviewed manifest: '+row.atlasName);
       convertedIdentities.add(model.fmaId+'|'+model.bpId);
     }else if(row.matches.length>1)status='ambiguous';
     else if(official)status=allFiles?'exactNotConverted':'missingOBJ';
@@ -50,7 +56,9 @@ export function auditCompleteness({catalog,officialRows,elementIndex,archiveFile
       status,fmaId:model?.fmaId||official?.fmaId||null,bpId:model?.bpId||official?.bpId||null,
       officialName:official?.officialName||null,
       sourceElements:official?.sourceObjs.map(x=>x.fileId)||[],allSourceOBJPresent:allFiles,
-      modelPath:model?.modelPath||null,sourceGeometryValidated:false,distributionApproved:false,
+      modelPath:model?.modelPath||null,mappingMethod:model?.mappingMethod||null,
+      reviewManifestSHA256:model?.reviewManifestSHA256||null,
+      sourceGeometryValidated:false,distributionApproved:false,
       suggestedIdentity:suggest?{name:suggest.officialName,fmaId:suggest.fmaId,bpId:suggest.bpId,
         confidence:suggest.confidence,sourceElementIds:suggest.sourceElementIds,
         warnings:suggest.warnings,approved:false}:null};
@@ -101,6 +109,14 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
   const archiveFiles=execFileSync('unzip',['-Z','-1',path.join(source,'isa_BP3D_4.0_obj_99.zip')],
     {encoding:'utf8',maxBuffer:16*1024*1024}).trim().split(/\r?\n/);
   const report=auditCompleteness({catalog,officialRows,elementIndex,archiveFiles,inventory,mappingReview});
+  const actualHashes={namesSha256:createHash('sha256').update(fs.readFileSync(path.join(source,'isa_parts_list_e.txt'))).digest('hex'),
+    elementsSha256:createHash('sha256').update(fs.readFileSync(path.join(source,'isa_element_parts.txt'))).digest('hex')};
+  const archiveHash=createHash('sha256');
+  for await(const chunk of createReadStream(path.join(source,'isa_BP3D_4.0_obj_99.zip')))archiveHash.update(chunk);
+  actualHashes.archiveSha256=archiveHash.digest('hex');
+  report.sourceHashes=actualHashes;
+  for(const [key,value] of Object.entries(actualHashes))
+    if(inventory.sourceHashes?.[key]!==value)report.errors.push('Source hash mismatch: '+key);
   if(checkGeometry){
     report.integrity=await auditGeneratedBatch(batch);
     report.errors.push(...report.integrity.errors);
@@ -130,6 +146,7 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
   return report;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
-  try{await runAudit({checkGeometry:!process.argv.includes('--skip-geometry')});}
+  try{await runAudit({checkGeometry:!process.argv.includes('--skip-geometry'),
+    batch:process.argv.includes('--reviewed')?path.join(PRIVATE,'bp3d-reviewed'):path.join(PRIVATE,'bp3d-batch')});}
   catch(error){console.error('BP3D_FULL_AUDIT_FAILED: '+error.message);process.exitCode=1;}
 }
