@@ -73,7 +73,7 @@ test('CT-EXP-004: Cardiac CT source classes are explicit whole-heart structures,
  assert.equal(ui.document.body.dataset.mprReady,'true');
  assert.equal(ui.elements.get('window').value,'cardiac');
  assert.equal(ui.elements.get('organs').children.length,7);
- assert.match(privateMprPage('cardiac-ct'),/registration/);
+ assert.match(privateMprPage('cardiac-ct'),/registration/i);
 });
 test('CT-EXP-005: wrong source, unexpected semantic labels and shifted affine fail closed',()=>{
  const ct=specimen('ct',()=>80),normal=specimen('mask',i=>i%2);
