@@ -128,23 +128,34 @@ export function verifyNiftiPair(ct,mask){
     throw Error('CT_NIFTI_NONBINARY_MASK_SCALING');
   return true;
 }
+const denseSliceCache=new WeakMap();
 function chooseDenseSlice(mask,axis){
-  const [X,Y,Z]=mask.dims,counts=new Uint32Array(axis===2?Z:Y);
-  let any=0;
-  for(let i=0;i<mask.n;i++){
-    const v=mask.read(i);
-    if(!Number.isFinite(v)||v<0||v>1)
-      throw Error('CT_NIFTI_MASK_MUST_BE_BINARY');
-    if(!v)continue;
-    any++;
-    const slice=axis===2?Math.floor(i/(X*Y)):Math.floor(i/X)%Y;
-    counts[slice]++;
+  // Scan each 3D mask only once, validating every source voxel and counting
+  // axial AND coronal planes in the same pass (was two full 3D scans).
+  let planes=denseSliceCache.get(mask);
+  if(!planes){
+    const [X,Y,Z]=mask.dims,axial=new Uint32Array(Z),coronal=new Uint32Array(Y);
+    let any=0;
+    for(let i=0;i<mask.n;i++){
+      const v=mask.read(i);
+      if(!Number.isFinite(v)||v!==0&&v!==1)
+        throw Error('CT_NIFTI_MASK_MUST_BE_BINARY');
+      if(!v)continue;
+      any++;
+      axial[Math.floor(i/(X*Y))]++;
+      coronal[Math.floor(i/X)%Y]++;
+    }
+    if(!any)throw Error('CT_NIFTI_EMPTY_ORGAN_MASK');
+    const best=counts=>{
+      let index=0;
+      for(let i=1;i<counts.length;i++)if(counts[i]>counts[index])index=i;
+      if(!counts[index])throw Error('CT_NIFTI_NO_LABELED_SLICE');
+      return {index,voxels:counts[index],total:any};
+    };
+    planes={axial:best(axial),coronal:best(coronal)};
+    denseSliceCache.set(mask,planes);
   }
-  if(!any)throw Error('CT_NIFTI_EMPTY_ORGAN_MASK');
-  let best=0;
-  for(let i=1;i<counts.length;i++)if(counts[i]>counts[best])best=i;
-  if(!counts[best])throw Error('CT_NIFTI_NO_LABELED_SLICE');
-  return {index:best,voxels:counts[best],total:any};
+  return axis===2?planes.axial:planes.coronal;
 }
 export function renderPrivateTotalSegPlane(ct,mask,organ,axis){
   verifyNiftiPair(ct,mask);
