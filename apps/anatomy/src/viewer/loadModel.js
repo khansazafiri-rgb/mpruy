@@ -8,7 +8,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast } from 'three-mesh-bvh';
 import { state, setLoadingSystem } from '../state/store.js';
 import { asset } from '../utils/paths.js';
-import { bp3dRequested, loadBp3dInventory, bp3dUsesSystem, loadBp3dSystem } from './bp3dSource.js';
+import { bp3dRequested, bp3dSummary, loadBp3dInventory, bp3dUsesSystem, loadBp3dSystem } from './bp3dSource.js';
 
 // Without an acceleration structure, picking cost grows with the triangle
 // count: 10.4M triangles tested per pointer event across seven systems.
@@ -155,7 +155,16 @@ async function loadModelOnce(systemId, viewer, options = {}) {
     throw new Error(`${systemId} is unavailable pending licence review`);
   }
 
-  const model = (await loadBodyParts3dScene(systemId)) || (await loadAtlasScene(systemId));
+  // With an explicit official-BodyParts3D skeleton/viscera replacement URL,
+  // NEVER fall back to the quarantined old mixed-source GLBs on a missing,
+  // incomplete, or failed official pack. All other model sources are unchanged.
+  const requested=bp3dSummary().systems;
+  const officialOnly=bp3dRequested()&&['skeletal','visceral'].includes(systemId)&&
+    (requested===null||requested.includes(systemId));
+  const officialModel=await loadBodyParts3dScene(systemId);
+  if(officialOnly&&!officialModel)
+    throw new Error('Model '+systemId+' pengganti resmi belum tersedia. Model lama tetap dikarantina.');
+  const model=officialModel||(await loadAtlasScene(systemId));
   const registryTimer = beginPhase('registry '+systemId);
   processModel(model, systemId, viewer); registryTimer();
 
