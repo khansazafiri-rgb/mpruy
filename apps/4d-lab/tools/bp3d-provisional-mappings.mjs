@@ -29,7 +29,7 @@ export function selectProvisionalMappings({triage, officialRows, elements, zipFi
       continue;
     if(out.length>=limitNew)break;
     const c=record.candidate||{},key=c.fmaId+'|'+c.bpId;
-    const reason=()=>{
+    const reason=(()=>{
       if(!/^FMA\d+$/.test(c.fmaId||'')||!/^BP\d+$/.test(c.bpId||''))
         return 'invalid-official-identity';
       if(!Array.isArray(c.warnings)||c.warnings.length||c.approved!==false)
@@ -53,7 +53,7 @@ export function selectProvisionalMappings({triage, officialRows, elements, zipFi
       if(required.some(id=>!zipIndex.has(id.toUpperCase())))
         return 'official-OBJ-not-in-archive';
       return null;
-    }();
+    })();
     if(reason){rejected.push({atlasName:record.atlasName,reason});continue;}
     const row=official.get(key),sourceObjs=c.fjIds.map(fileId=>({fileId,archivePath:zipIndex.get(fileId.toUpperCase())}));
     out.push({atlasName:record.atlasName,atlasSystem:record.system,state:'candidate',
