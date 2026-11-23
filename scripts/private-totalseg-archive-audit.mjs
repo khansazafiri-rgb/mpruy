@@ -30,9 +30,9 @@ function assertPrivate(file) {
       throw Error('CT_AUDIT_SYMLINK_REFUSED');
   }
 }
-function readAt(fd,size,start,bytes) {
+function readAt(fd,size,start,bytes,max=64*M) {
   if(!Number.isSafeInteger(start)||!Number.isSafeInteger(bytes)||
-     start<0||bytes<0||start+bytes>size||bytes>64*M)
+     start<0||bytes<0||start+bytes>size||bytes>max)
     throw Error('CT_AUDIT_ZIP_OFFSET_INVALID');
   const b=Buffer.alloc(bytes);
   if(fs.readSync(fd,b,0,bytes,start)!==bytes)throw Error('CT_AUDIT_ZIP_SHORT_READ');
@@ -146,7 +146,7 @@ export function readVerifiedLocalZipMember(file,entry,{
     const name=readAt(fd,size,entry.localOffset+30,nameLength).toString('utf8');
     if(name!==entry.name)throw Error('CT_REVIEW_LOCAL_ZIP_NAME_MISMATCH');
     const start=entry.localOffset+30+nameLength+extraLength;
-    const bytes=readAt(fd,size,start,entry.compressed);
+    const bytes=readAt(fd,size,start,entry.compressed,maxCompressed);
     const out=entry.method===0?bytes:zlib.inflateRawSync(bytes,{
       maxOutputLength:maxUncompressed
     });
