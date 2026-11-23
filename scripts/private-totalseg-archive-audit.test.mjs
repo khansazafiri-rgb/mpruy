@@ -61,7 +61,7 @@ test('CT-INDEX-002: reject archive traversal, duplicate entries and symlink cent
   assert.throws(()=>listLocalZipEntries(dup),/CT_AUDIT_DUPLICATE_OR_UNSAFE_PATH/);
   const sym=withZip(t,[['s0001/ct.nii.gz','a']]);
   const b=fs.readFileSync(sym),cd=b.indexOf(Buffer.from([0x50,0x4b,0x01,0x02]));
-  b.writeUInt32LE(0xa000<<16,cd+38);fs.writeFileSync(sym,b);
+  b.writeUInt32LE((0xa000*65536)>>>0,cd+38);fs.writeFileSync(sym,b);
   assert.throws(()=>listLocalZipEntries(sym),/CT_AUDIT_ENCRYPTED_OR_UNSAFE_ZIP_MEMBER/);
 });
 test('CT-INDEX-003: refuse misleading folder names with no CT-mask pair',()=>{
