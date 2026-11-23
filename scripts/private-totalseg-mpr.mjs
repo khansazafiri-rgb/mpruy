@@ -63,6 +63,30 @@ export function addPrivateMprOrgan(pack,mask,organ){
     rgb:[...organ.rgb],bit,sampledVoxels:positive});
   return positive;
 }
+export function recommendMprSlices(pack, organIds){
+  if(!pack||!Array.isArray(organIds)||!organIds.length)
+    throw Error('CT_MPR_INVALID_ROI');
+  let selected=0;
+  for(const organ of pack.organs)if(organIds.includes(organ.id))selected|=organ.bit;
+  if(!selected)throw Error('CT_MPR_NO_ORGANS_FOR_ROI');
+  const [X,Y,Z]=pack.dims;
+  const xs=new Uint32Array(X),ys=new Uint32Array(Y),zs=new Uint32Array(Z);
+  let labeled=0;
+  for(let i=0;i<pack.maskBits.length;i++){
+    if(!(pack.maskBits[i]&selected))continue;
+    labeled++;
+    xs[i%X]++;
+    ys[Math.floor(i/X)%Y]++;
+    zs[Math.floor(i/(X*Y))]++;
+  }
+  if(!labeled)throw Error('CT_MPR_EMPTY_ROI');
+  const argmax=a=>{
+    let best=0;
+    for(let i=1;i<a.length;i++)if(a[i]>a[best])best=i;
+    return best;
+  };
+  return {x:argmax(xs),y:argmax(ys),z:argmax(zs)};
+}
 export function encodePrivateMprPack(pack,{sourceSubject,archiveSha256,sourceCtSha256}={}){
   if(!pack?.organs.length||!/^s\d{3,6}$/.test(sourceSubject||'')||
      !/^[a-f0-9]{64}$/.test(archiveSha256||'')||
@@ -84,6 +108,12 @@ export function encodePrivateMprPack(pack,{sourceSubject,archiveSha256,sourceCtS
     compression:'gzip',dtype:'int16-hu-and-uint16-mask-bitset-le',
     hu:encode(pack.hu),masks:encode(pack.maskBits),
     organs:pack.organs,clippedHU:pack.clippedHU,
+    recommendedSlices:{
+      'abdomen-ct':recommendMprSlices(pack,pack.organs
+        .filter(o=>!/^lung_|^heart$/.test(o.id)).map(o=>o.id)),
+      'chest-ct':recommendMprSlices(pack,pack.organs
+        .filter(o=>/^lung_|^heart$/.test(o.id)).map(o=>o.id))
+    },
     clinicalApproved:false,privacyApproved:false,rightsApproved:false,
     releaseEligible:false
   };
