@@ -7,6 +7,7 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {parseOfficialNames,parseOfficialElements,candidateCrosswalk,mapActualMeshFiles,checkArchiveEntryNames} from '../../../licensing/tools/prepare-bodyparts3d-source.mjs';
 import {auditGeneratedBatch} from './bp3d-batch-audit.mjs';
+import {buildAllSystemsTriage,triageCsv,geometryCsv,unapprovedTemplate} from './bp3d-all-systems-triage.mjs';
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 const PRIVATE=path.join(ROOT,'local-data/licensing-quarantine');
 const CSV=x=>'"'+String(x??'').replaceAll('"','""')+'"';
@@ -155,6 +156,12 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
   fs.writeFileSync(path.join(output,'all-structures.csv'),structureCsv(report));
   fs.writeFileSync(path.join(output,'unlinked-official.csv'),['FMA,BP,officialName',
     ...report.unlinkedOfficial.map(row=>[row.fmaId,row.bpId,row.name].map(CSV).join(','))].join('\n')+'\n');
+  const triage=buildAllSystemsTriage(report,mappingReview);
+  fs.writeFileSync(path.join(output,'priority-review.json'),JSON.stringify(triage,null,2)+'\n');
+  fs.writeFileSync(path.join(output,'priority-review.csv'),triageCsv(triage));
+  fs.writeFileSync(path.join(output,'converted-geometry-review.csv'),geometryCsv(triage));
+  fs.writeFileSync(path.join(output,'unapproved-identity-template.json'),
+    JSON.stringify(unapprovedTemplate(triage,actualHashes.archiveSha256),null,2)+'\n');
   const summary=[
     '# Full BodyParts3D coverage review — original MEDCOEL Atlas UI unchanged',
     '', '| System | Catalog | Converted | Missing | Coverage |','|---|---:|---:|---:|---:|',
@@ -164,11 +171,14 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
        '; fuzzy/review-only: '+report.summary.unmatched+'; ambiguous: '+report.summary.ambiguous+
        '; missing official OBJ: '+report.summary.missingOBJ+'.',
     'Integrity errors: '+report.errors.length+'.',
+    'Human review candidates (not approvals): '+JSON.stringify(triage.summary.byTier)+'.',
+    'Converted geometry with diagnostic flags: '+triage.summary.sourceGeometryFlagged+'.',
     '', 'No suggested FMA/BP identity, mesh, clinical geometry, or commercial distribution has been approved.',
+    'See priority-review.csv, converted-geometry-review.csv and unapproved-identity-template.json for the next clinical review.',
     'See all-structures.csv for every catalog item and unlinked-official.csv for official objects not mapped to Atlas.'
   ].join('\n')+'\n';
   fs.writeFileSync(path.join(output,'SUMMARY.md'),summary);
-  console.log(JSON.stringify({status:report.status,summary:report.summary,errors:report.errors.slice(0,25),
+  console.log(JSON.stringify({status:report.status,summary:report.summary,triage:triage.summary,errors:report.errors.slice(0,25),
     output},null,2));
   if(report.errors.length)process.exitCode=1;
   return report;

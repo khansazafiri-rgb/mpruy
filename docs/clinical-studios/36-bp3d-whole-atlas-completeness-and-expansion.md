@@ -75,3 +75,19 @@ The added candidate is still explicitly `geometryAnatomyValidated:false` and `ap
 - Every system: correct counts vs course anatomy, labels/language and search results, regional camera clipping, selection gold sweep, isolation/undo and all original user controls.
 - Verify Safari desktop/mobile, WebGL errors, performance and UI layout regression.
 - Resolve exact archive rights and MEDCOEL Atlas frontend code rights separately. **No production release by this work.**
+
+
+## Follow-on: action-oriented triage of all 1,767 unmapped Atlas labels
+
+After running `npm run audit:bodyparts3d-full` with the original private source archive and 470 converted GLBs, inspect these new gitignored outputs in `local-data/licensing-quarantine/bp3d-completeness/`:
+
+- `priority-review.csv` and `priority-review.json`: all remaining Atlas names, by system and clinical group, ranked into review-only tiers. No automatic additions.
+- `converted-geometry-review.csv`: already converted models with source geometry warnings, omitted degenerates, or potentially reversed side bounding boxes. All flags prompt **inspection**, not a diagnosis of inaccurate anatomy.
+- `unapproved-identity-template.json`: a draft for human review containing only strict terminology-equivalent source candidates with source FMA/BP/FJ. Every entry has `reviewedSourceIdentity:false`, blank reviewer and evidence, and `approvedForDistribution:false`. **This file cannot be submitted to the batch converter without genuine documented identity review**.
+
+Triage tiers: `TERMINOLOGY_EQUIVALENT_REVIEW`, `PROMISING_IDENTITY_REVIEW`, `MANUAL_ANATOMICAL_REVIEW`, `IDENTITY_COLLISION_REVIEW`, `SOURCE_GEOMETRY_MISSING`, and `NO_PUBLISHER_CANDIDATE`. These are **priorities**, never validation or public-release statuses.
+
+A report with 0 integrity errors means the converted local files and source identifiers were consistent, **not** that the human body contains all required bones, cartilages, muscles, organs, or vessels. Anatomical completeness additionally requires landmark-level review, visual/clinical peer review, and suitable original source geometry.
+
+**Do not copy the draft into `bp3d-reviewed-mappings.json` and mark it approved based solely on similarity scoring.** Only a reviewer who has checked the original source identities and exact FJ objects should fill the approval fields. No selected candidate is automatically published, merged into the current Atlas source, or used to claim clinical completeness.
+
