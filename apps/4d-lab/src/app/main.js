@@ -1,5 +1,6 @@
 // MEDCOEL Anatomy Live 4D Lab — workstation controller.
 import { parseNrrd } from '../core/nrrd.js';
+import { recoverBundledDataset } from './datasetRecovery.js';
 import { makeVolume, sameGrid } from '../core/volume.js';
 import { validateRegistration } from '../core/mesh.js';
 import { clinicalPose, freePose, freeQuat, freeAngles, FREE_PRESETS, imagingPlane, PROBES, rotateFree, CLINICAL_LIMITS, fovOutline } from '../core/probe.js';
@@ -130,22 +131,13 @@ async function readBundledDataset(key){
     name:key==='atlas'?'MEDCOEL atlas-derived synthetic CT':'MEDCOEL synthetic phantom'});
 }
 async function loadPhantom() {
-  // An intentionally quarantined Atlas URL must not crash the entire public
-  // workstation. Restore only the separate, original procedural phantom:
-  // no Atlas GLBs or CT files are fetched from an alternate public path.
-  try { await readBundledDataset(DATASET); }
-  catch(atlasError){
-    if(DATASET!=='atlas')throw atlasError;
-    console.warn('[4D Lab] Atlas dataset unavailable; attempting separate bundled procedural phantom.',atlasError);
-    try {
-      await readBundledDataset('phantom');
-      document.body.dataset.atlasFallback='phantom';
-      status('Atlas CT sementara ditahan/tidak tersedia; mode phantom sintetis dipakai. Ini bukan citra pasien atau model Atlas 3D.', 'warn');
-    }catch(phantomError){
-      throw new Error('Atlas tidak tersedia ('+(atlasError?.message||atlasError)+
-        '); phantom prosedural juga gagal ('+(phantomError?.message||phantomError)+').');
-    }
-  }
+  // Caddy quarantines public Atlas CT: never bypass the denied namespace.
+  // Recovery uses only the independent, pre-existing procedural phantom.
+  await recoverBundledDataset(DATASET,readBundledDataset,(error)=>{
+    console.warn('[4D Lab] Atlas unavailable; procedural phantom used.',error);
+    document.body.dataset.atlasFallback='phantom';
+    status('Atlas CT sementara ditahan/tidak tersedia; mode phantom sintetis dipakai. Ini bukan citra pasien atau model Atlas 3D.', 'warn');
+  });
 }
 
 async function useDataset({ ctBuf, labBuf, anatomy, reg, files, source, name }) {
