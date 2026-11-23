@@ -23,12 +23,12 @@ function assertExactGuards(file){
  // Compare actual directive lines, not earlier comments explaining handle_path.
  // The old substring search found a comment at the top of the snippet and
  // falsely failed despite the deny preceding the real file-server route.
- const guard=/^[ \\t]*handle[ \\t]+\\/anatomy\\/viewer\\/models\\/skeletal\\.glb[ \\t]*\\{/m.exec(source);
- const fileserver=/^[ \\t]*handle_path[ \\t]+\\/anatomy\\/viewer\\/\\*[ \\t]*\\{/m.exec(source);
+ const guard=/^\s*handle\s+\/anatomy\/viewer\/models\/skeletal\.glb\s*\{/m.exec(source);
+ const fileserver=/^\s*handle_path\s+\/anatomy\/viewer\/\*\s*\{/m.exec(source);
  assert.ok(guard&&fileserver&&guard.index<fileserver.index,
    'specific GLB deny must precede real file-server directive');
- const atlas=/^[ \\t]*handle[ \\t]+\\/anatomy\\/4d-lab\\/data\\/atlas\\/\\*[ \\t]*\\{/m.exec(source);
- const fallback=/^[ \\t]*handle[ \\t]*\\{[ \\t]*$/m.exec(source);
+ const atlas=/^\s*handle\s+\/anatomy\/4d-lab\/data\/atlas\/\*\s*\{/m.exec(source);
+ const fallback=/^\s*handle\s*\{\s*$/m.exec(source);
  if(fallback)assert.ok(atlas&&atlas.index<fallback.index,
    'Atlas denial must precede real SPA catch-all');
  return source;
