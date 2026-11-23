@@ -1,0 +1,353 @@
+{
+ "narasi-edukasi": [
+  {
+   "start": 0.0,
+   "end": 3.68,
+   "text": "Kenapa setelah glombang P, garis EKG mendatar sebentar?",
+   "words": [
+    {
+     "w": "Kenapa",
+     "s": 0.0,
+     "e": 0.82
+    },
+    {
+     "w": "setelah",
+     "s": 0.82,
+     "e": 1.3
+    },
+    {
+     "w": "glombang",
+     "s": 1.3,
+     "e": 1.74
+    },
+    {
+     "w": "P,",
+     "s": 1.74,
+     "e": 2.12
+    },
+    {
+     "w": "garis",
+     "s": 2.42,
+     "e": 2.62
+    },
+    {
+     "w": "EKG",
+     "s": 2.62,
+     "e": 2.96
+    },
+    {
+     "w": "mendatar",
+     "s": 2.96,
+     "e": 3.28
+    },
+    {
+     "w": "sebentar?",
+     "s": 3.28,
+     "e": 3.68
+    }
+   ]
+  },
+  {
+   "start": 4.54,
+   "end": 7.62,
+   "text": "Glombang P menunjukkan aktivitas listrik diserambi.",
+   "words": [
+    {
+     "w": "Glombang",
+     "s": 4.54,
+     "e": 5.18
+    },
+    {
+     "w": "P",
+     "s": 5.18,
+     "e": 5.5
+    },
+    {
+     "w": "menunjukkan",
+     "s": 5.5,
+     "e": 6.24
+    },
+    {
+     "w": "aktivitas",
+     "s": 6.24,
+     "e": 6.66
+    },
+    {
+     "w": "listrik",
+     "s": 6.66,
+     "e": 7.04
+    },
+    {
+     "w": "diserambi.",
+     "s": 7.04,
+     "e": 7.62
+    }
+   ]
+  },
+  {
+   "start": 8.12,
+   "end": 10.36,
+   "text": "Impulse lalu melambat saat melewati nodus AV.",
+   "words": [
+    {
+     "w": "Impulse",
+     "s": 8.12,
+     "e": 8.56
+    },
+    {
+     "w": "lalu",
+     "s": 8.56,
+     "e": 8.8
+    },
+    {
+     "w": "melambat",
+     "s": 8.8,
+     "e": 9.24
+    },
+    {
+     "w": "saat",
+     "s": 9.24,
+     "e": 9.4
+    },
+    {
+     "w": "melewati",
+     "s": 9.4,
+     "e": 9.8
+    },
+    {
+     "w": "nodus",
+     "s": 9.8,
+     "e": 10.12
+    },
+    {
+     "w": "AV.",
+     "s": 10.12,
+     "e": 10.36
+    }
+   ]
+  },
+  {
+   "start": 11.02,
+   "end": 13.62,
+   "text": "Di layar, bagian datar ini disebut segmen PR.",
+   "words": [
+    {
+     "w": "Di",
+     "s": 11.02,
+     "e": 11.12
+    },
+    {
+     "w": "layar,",
+     "s": 11.12,
+     "e": 11.58
+    },
+    {
+     "w": "bagian",
+     "s": 11.74,
+     "e": 12.04
+    },
+    {
+     "w": "datar",
+     "s": 12.04,
+     "e": 12.3
+    },
+    {
+     "w": "ini",
+     "s": 12.3,
+     "e": 12.42
+    },
+    {
+     "w": "disebut",
+     "s": 12.42,
+     "e": 12.86
+    },
+    {
+     "w": "segmen",
+     "s": 12.86,
+     "e": 13.34
+    },
+    {
+     "w": "PR.",
+     "s": 13.34,
+     "e": 13.62
+    }
+   ]
+  },
+  {
+   "start": 14.6,
+   "end": 17.98,
+   "text": "Jeda singkat itu, memberi waktu bilik terisi darah sebelum berkontraksi.",
+   "words": [
+    {
+     "w": "Jeda",
+     "s": 14.6,
+     "e": 14.88
+    },
+    {
+     "w": "singkat",
+     "s": 14.88,
+     "e": 15.14
+    },
+    {
+     "w": "itu,",
+     "s": 15.14,
+     "e": 15.46
+    },
+    {
+     "w": "memberi",
+     "s": 15.58,
+     "e": 15.88
+    },
+    {
+     "w": "waktu",
+     "s": 15.88,
+     "e": 16.04
+    },
+    {
+     "w": "bilik",
+     "s": 16.04,
+     "e": 16.4
+    },
+    {
+     "w": "terisi",
+     "s": 16.4,
+     "e": 16.64
+    },
+    {
+     "w": "darah",
+     "s": 16.64,
+     "e": 17.02
+    },
+    {
+     "w": "sebelum",
+     "s": 17.02,
+     "e": 17.4
+    },
+    {
+     "w": "berkontraksi.",
+     "s": 17.4,
+     "e": 17.98
+    }
+   ]
+  },
+  {
+   "start": 18.62,
+   "end": 21.46,
+   "text": "Ketika impulse menyebar ke bilik, kompleks KRS muncul.",
+   "words": [
+    {
+     "w": "Ketika",
+     "s": 18.62,
+     "e": 18.88
+    },
+    {
+     "w": "impulse",
+     "s": 18.88,
+     "e": 19.18
+    },
+    {
+     "w": "menyebar",
+     "s": 19.18,
+     "e": 19.46
+    },
+    {
+     "w": "ke",
+     "s": 19.46,
+     "e": 19.6
+    },
+    {
+     "w": "bilik,",
+     "s": 19.6,
+     "e": 19.92
+    },
+    {
+     "w": "kompleks",
+     "s": 20.22,
+     "e": 20.58
+    },
+    {
+     "w": "KRS",
+     "s": 20.58,
+     "e": 20.94
+    },
+    {
+     "w": "muncul.",
+     "s": 20.94,
+     "e": 21.46
+    }
+   ]
+  },
+  {
+   "start": 22.0,
+   "end": 26.3,
+   "text": "Jadi, garis yang tampak datar itu bagian dari urutan kerja jantung yang terkordinasi.",
+   "words": [
+    {
+     "w": "Jadi,",
+     "s": 22.0,
+     "e": 22.4
+    },
+    {
+     "w": "garis",
+     "s": 22.76,
+     "e": 22.98
+    },
+    {
+     "w": "yang",
+     "s": 22.98,
+     "e": 23.08
+    },
+    {
+     "w": "tampak",
+     "s": 23.08,
+     "e": 23.32
+    },
+    {
+     "w": "datar",
+     "s": 23.32,
+     "e": 23.56
+    },
+    {
+     "w": "itu",
+     "s": 23.56,
+     "e": 23.8
+    },
+    {
+     "w": "bagian",
+     "s": 23.8,
+     "e": 24.2
+    },
+    {
+     "w": "dari",
+     "s": 24.2,
+     "e": 24.34
+    },
+    {
+     "w": "urutan",
+     "s": 24.34,
+     "e": 24.62
+    },
+    {
+     "w": "kerja",
+     "s": 24.62,
+     "e": 24.94
+    },
+    {
+     "w": "jantung",
+     "s": 24.94,
+     "e": 25.32
+    },
+    {
+     "w": "yang",
+     "s": 25.32,
+     "e": 25.5
+    },
+    {
+     "w": "terkordinasi.",
+     "s": 25.5,
+     "e": 26.3
+    }
+   ]
+  }
+ ]
+}

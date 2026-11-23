@@ -1,0 +1,66 @@
+{
+ "durasi_edukasi": 27.6,
+ "offset_narasi": 0.3,
+ "sfx": [
+  {
+   "t": 0.4,
+   "sfx": "judul"
+  },
+  {
+   "t": 4.15,
+   "sfx": "masuk-jantung"
+  },
+  {
+   "t": 4.3,
+   "sfx": "nodus-sinus"
+  },
+  {
+   "t": 5.5,
+   "sfx": "gelombang-P"
+  },
+  {
+   "t": 10.3,
+   "sfx": "nodus-AV"
+  },
+  {
+   "t": 11.4,
+   "sfx": "segmen-PR"
+  },
+  {
+   "t": 11.5,
+   "sfx": "impuls-tertahan"
+  },
+  {
+   "t": 12.4,
+   "sfx": "impuls-tertahan"
+  },
+  {
+   "t": 13.3,
+   "sfx": "impuls-tertahan"
+  },
+  {
+   "t": 14.2,
+   "sfx": "impuls-tertahan"
+  },
+  {
+   "t": 14.9,
+   "sfx": "bilik-terisi"
+  },
+  {
+   "t": 20.65,
+   "sfx": "QRS"
+  },
+  {
+   "t": 22.0,
+   "sfx": "kontraksi"
+  },
+  {
+   "t": 22.2,
+   "sfx": "putar-ulang"
+  },
+  {
+   "t": 26.3,
+   "sfx": "akhir"
+  }
+ ]
+}

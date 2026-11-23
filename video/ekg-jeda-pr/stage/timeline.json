@@ -1,0 +1,91 @@
+{
+ "OFF": 0.3,
+ "NAR": 26.68,
+ "EDU": 27.6,
+ "OUT": 16.2,
+ "DUR": 43.8,
+ "A": {
+  "kenapa": 0,
+  "setelah": 0.82,
+  "p0": 1.74,
+  "garis": 2.42,
+  "mendatar": 2.96,
+  "qEnd": 3.68,
+  "gelombang": 4.54,
+  "p": 5.18,
+  "aktivitas": 6.24,
+  "listrik": 6.66,
+  "serambi": 7.04,
+  "sEnd": 7.62,
+  "impuls": 8.12,
+  "melambat": 8.8,
+  "melewati": 9.4,
+  "nodus": 9.8,
+  "av": 10.12,
+  "avEnd": 10.36,
+  "dilayar": 11.02,
+  "datar": 12.04,
+  "segmen": 12.86,
+  "pr": 13.34,
+  "prEnd": 13.62,
+  "jeda": 14.6,
+  "waktu": 15.88,
+  "bilik": 16.04,
+  "terisi": 16.4,
+  "darah": 16.64,
+  "sebelum": 17.02,
+  "berkontraksi": 17.4,
+  "bEnd": 17.98,
+  "ketika": 18.62,
+  "menyebar": 19.18,
+  "keBilik": 19.6,
+  "kompleks": 20.22,
+  "qrs": 20.58,
+  "muncul": 20.94,
+  "mEnd": 21.46,
+  "jadi": 22,
+  "garisDatar": 22.76,
+  "bagian": 23.8,
+  "urutan": 24.34,
+  "jantung": 24.94,
+  "terkoordinasi": 25.5,
+  "end": 26.3
+ },
+ "KAL": [
+  [
+   0,
+   3.7,
+   "Kenapa setelah gelombang P, garis EKG mendatar sebentar?"
+  ],
+  [
+   4.54,
+   7.7,
+   "Gelombang P menunjukkan aktivitas listrik di serambi."
+  ],
+  [
+   8.12,
+   10.5,
+   "Impuls lalu melambat saat melewati nodus AV."
+  ],
+  [
+   11.02,
+   13.7,
+   "Di layar, bagian datar ini disebut segmen PR."
+  ],
+  [
+   14.6,
+   18.05,
+   "Jeda singkat itu memberi waktu bilik terisi darah sebelum berkontraksi."
+  ],
+  [
+   18.62,
+   21.55,
+   "Ketika impuls menyebar ke bilik, kompleks QRS muncul."
+  ],
+  [
+   22,
+   26.4,
+   "Jadi, garis yang tampak datar itu bagian dari urutan kerja jantung yang terkoordinasi."
+  ]
+ ]
+}
