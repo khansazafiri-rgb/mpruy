@@ -50,6 +50,7 @@ export const DATASETS = {
   phantom: { dir: BASE + 'data/phantom/', label: 'Phantom prosedural v1 (tanpa atlas)' },
 };
 const DATASET = DATASETS[QUERY.get('dataset')] ? QUERY.get('dataset') : 'atlas';
+let activeDataset = DATASET;
 let DATA = DATASETS[DATASET].dir;
 // The Lab owns a dedicated static asset-only pack of the documented atlas-derived models.
 // It never loads nqwrc/3d-anatomy application code or depends on the NC Atlas Viewer route.
@@ -91,7 +92,7 @@ let effusion = null, assist = null, learn = null;
 let dirty = true, interacting = false, lastInteraction = 0, workerBusy = false, pending = false, lastFrameInfo = null, frameCount = 0;
 let lastDeform = 0, motionShown = null;
 const stats = { usMs: 0, deformMs: 0, fps: 0 };
-window.__lab = { S, clock, stats, DATASET, physio: { displacement, makeFrame, effectiveParams: () => effectiveParams(), get geom() { return geom; } }, get atlas() { return atlas; }, get atlasState() { return atlasState; }, get atlasStats() { return { deformMs: atlasDeformMs, moving: atlasMoving, clockT: atlasDeformClockT }; }, audio, get assist() { return assist; }, get learn() { return learn; }, get scene() { return scene; }, get monitor() { return monitor; }, get data() { return D; }, get last() { return lastFrameInfo; }, get effusion() { return effusion; } };
+window.__lab = { S, clock, stats, DATASET, get activeDataset(){ return activeDataset; }, physio: { displacement, makeFrame, effectiveParams: () => effectiveParams(), get geom() { return geom; } }, get atlas() { return atlas; }, get atlasState() { return atlasState; }, get atlasStats() { return { deformMs: atlasDeformMs, moving: atlasMoving, clockT: atlasDeformClockT }; }, audio, get assist() { return assist; }, get learn() { return learn; }, get scene() { return scene; }, get monitor() { return monitor; }, get data() { return D; }, get last() { return lastFrameInfo; }, get effusion() { return effusion; } };
 
 function markDirty() { dirty = true; }
 function touch() { interacting = true; lastInteraction = performance.now(); markDirty(); }
@@ -108,13 +109,43 @@ async function fetchBuf(name) {
 }
 function status(text, kind = 'info') { const s = $('#loadStatus'); if (s) { s.textContent = text; s.dataset.kind = kind; } }
 
-async function loadPhantom() { // bundled dataset (atlas-derived by default; ?dataset=phantom for the procedural phantom)
-  status(`Memuat ${DATASETS[DATASET].label} (CT, label, mesh)…`);
-  const reg = await fetch(DATA + 'registration.json').then((r) => r.json());
-  const meshFiles = (reg.meshes || []).map((m) => m.file);
-  const [ctBuf, labBuf, anatomy, ...bufs] = await Promise.all([fetchBuf('ct.nrrd'), fetchBuf('labels.nrrd'), fetch(DATA + 'anatomy.json').then((r) => r.json()), ...meshFiles.map(fetchBuf)]);
-  const files = Object.fromEntries(meshFiles.map((f, i) => [f, bufs[i]]));
-  await useDataset({ ctBuf, labBuf, anatomy, reg, files, source: DATASET, name: DATASET === 'atlas' ? 'MEDCOEL atlas-derived synthetic CT' : 'MEDCOEL synthetic phantom' });
+async function readBundledDataset(key){
+  activeDataset = key;
+  DATA = DATASETS[key].dir;
+  status(`Memuat ${DATASETS[key].label} (CT, label, mesh)…`);
+  const response = await fetch(DATA + 'registration.json', { cache: 'no-cache' });
+  if(!response.ok)throw new Error(`Gagal memuat registration.json (HTTP ${response.status})`);
+  const reg = await response.json();
+  if(!reg || !Array.isArray(reg.meshes))throw new Error('Registration bundle tidak valid');
+  const meshFiles=reg.meshes.map(m=>m.file);
+  const [ctBuf,labBuf,anatomy,...bufs]=await Promise.all([
+    fetchBuf('ct.nrrd'),fetchBuf('labels.nrrd'),
+    fetch(DATA+'anatomy.json',{cache:'no-cache'}).then(async r=>{
+      if(!r.ok)throw new Error(`Gagal memuat anatomy.json (HTTP ${r.status})`);
+      return r.json();
+    }),...meshFiles.map(fetchBuf)
+  ]);
+  const files=Object.fromEntries(meshFiles.map((f,i)=>[f,bufs[i]]));
+  await useDataset({ctBuf,labBuf,anatomy,reg,files,source:key,
+    name:key==='atlas'?'MEDCOEL atlas-derived synthetic CT':'MEDCOEL synthetic phantom'});
+}
+async function loadPhantom() {
+  // An intentionally quarantined Atlas URL must not crash the entire public
+  // workstation. Restore only the separate, original procedural phantom:
+  // no Atlas GLBs or CT files are fetched from an alternate public path.
+  try { await readBundledDataset(DATASET); }
+  catch(atlasError){
+    if(DATASET!=='atlas')throw atlasError;
+    console.warn('[4D Lab] Atlas dataset unavailable; attempting separate bundled procedural phantom.',atlasError);
+    try {
+      await readBundledDataset('phantom');
+      document.body.dataset.atlasFallback='phantom';
+      status('Atlas CT sementara ditahan/tidak tersedia; mode phantom sintetis dipakai. Ini bukan citra pasien atau model Atlas 3D.', 'warn');
+    }catch(phantomError){
+      throw new Error('Atlas tidak tersedia ('+(atlasError?.message||atlasError)+
+        '); phantom prosedural juga gagal ('+(phantomError?.message||phantomError)+').');
+    }
+  }
 }
 
 async function useDataset({ ctBuf, labBuf, anatomy, reg, files, source, name }) {
@@ -973,8 +1004,8 @@ function buildPanels() {
   const dt = $('#tab-data');
   dt.append(
     el('h3', {}, 'Dataset bawaan'),
-    field('Dataset', el('select', { 'data-testid': 'dataset-select', onchange: (e) => { const q = new URLSearchParams(location.search); q.set('dataset', e.target.value); location.search = q.toString(); } }, ...Object.entries(DATASETS).map(([k, d]) => el('option', { value: k, selected: k === DATASET || undefined }, d.label)))),
-    el('p', { class: 'hint' }, DATASET === 'atlas' ? 'Atlas MEDCOEL: CT dan label sintetis dibangun dari mesh Atlas Anatomi MEDCOEL (bukan citra pasien). Mesh atlas, CT, kulit dan probe berada dalam satu kerangka LPS yang eksak.' : 'Phantom prosedural v1: tubuh sintetis lama tanpa atlas; tidak diregistrasi ke Atlas MEDCOEL.'),
+    field('Dataset', el('select', { 'data-testid': 'dataset-select', onchange: (e) => { const q = new URLSearchParams(location.search); q.set('dataset', e.target.value); location.search = q.toString(); } }, ...Object.entries(DATASETS).map(([k, d]) => el('option', { value: k, selected: k === activeDataset || undefined }, d.label)))),
+    el('p', { class: 'hint' }, activeDataset === 'atlas' ? 'Atlas MEDCOEL: CT dan label sintetis dibangun dari mesh Atlas Anatomi MEDCOEL (bukan citra pasien). Mesh atlas, CT, kulit dan probe berada dalam satu kerangka LPS yang eksak.' : 'Phantom prosedural v1: tubuh sintetis lama tanpa atlas; tidak diregistrasi ke Atlas MEDCOEL. Bila mode Atlas tidak tersedia, viewer memakai phantom ini tanpa membuka aset yang dikarantina.'),
     el('h3', {}, 'Data lokal'),
     el('p', { class: 'hint' }, 'Data lokal diproses di perangkat ini dan tidak diunggah. Untuk CTACardio: jalankan pipeline lokal (pipeline/README.md) lalu muat CT + label + paket mesh dari folder yang sama.'),
     field('CT (.nrrd, tunggal)', el('input', { type: 'file', id: 'ctFile', accept: '.nrrd', 'data-testid': 'ct-file' })),
@@ -1486,7 +1517,7 @@ async function boot() {
     buildPanels();
     learn.render();
     scene.setInteraction('place'); renderPad(); startTour();
-    if (DATASET === 'atlas') setDisplayMode('transparent'); else S.appearance.mode = 'custom';
+    if (activeDataset === 'atlas') setDisplayMode('transparent'); else S.appearance.mode = 'custom';
     applyAppearance(); refreshAll(); renderAtlasPanel(); loadComparison();
     applyDeepLink();
     document.body.dataset.ready = '1';
