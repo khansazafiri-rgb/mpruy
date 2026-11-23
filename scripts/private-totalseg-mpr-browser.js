@@ -18,24 +18,27 @@
     status.style.color='#ffb9ba';
   };
   try {
-    if(!d||d.schema!=='medcoel.private-mpr-ct.v1'||
+    if(!d||!['medcoel.private-mpr-ct.v1','medcoel.private-mpr-ct.v2'].includes(d.schema)||
        !['releaseEligible','clinicalApproved','privacyApproved','rightsApproved','orientationApproved'].every(k=>d[k]===false)||
        !/^s\d{3,6}$/.test(d.subject||'')||
        ![d.archiveSha256,d.ctMemberSha256].every(x=>/^[a-f0-9]{64}$/.test(x||'')&&!/^0{64}$/.test(x))||
        !Array.isArray(d.dimensions)||d.dimensions.length!==3||
        !d.dimensions.every(x=>Number.isInteger(x)&&x>=4&&x<=192)||
-       !Array.isArray(d.organs)||d.organs.length<1||d.organs.length>15||
+       !Array.isArray(d.organs)||d.organs.length<1||d.organs.length>(d.schema.endsWith('.v2')?30:15)||
        !needed.every(id=>ui[id])||typeof DecompressionStream==='undefined'||!globalThis.crypto?.subtle)
       throw Error('volume lokal tidak tersedia atau browser tidak mendukung gzip');
+    const maskWidth=d.schema.endsWith('.v2')?4:2;
+    if(d.dtype!==(maskWidth===4?'int16-hu-and-uint32-mask-bitset-le':
+      'int16-hu-and-uint16-mask-bitset-le'))throw Error('private mask bitset encoding mismatch');
     const [W,H,D]=d.dimensions;
     const count=W*H*D;
     const geometry=globalThis.MEDCOEL_CT_GEOMETRY?.describe(d.sourceAffine,d.originalDimensions,d.sampledSourceIndices);
     if(!geometry||d.sampledSourceIndices.some((map,i)=>map.length!==d.dimensions[i]))
       throw Error('invalid source geometry');
-    async function unzip(field){
+    async function unzip(field,bytesPerVoxel){
       const str=field?.base64;
       if(typeof str!=='string'||str.length>100_000_000||
-         field.uncompressedBytes!==count*2||!Number.isInteger(field.compressedBytes)||
+         field.uncompressedBytes!==count*bytesPerVoxel||!Number.isInteger(field.compressedBytes)||
          field.compressedBytes<1||field.compressedBytes>48*1024*1024||
          !/^[a-f0-9]{64}$/.test(field.sha256||''))
         throw Error('invalid private bundle length');
@@ -43,7 +46,7 @@
       if(chars.length!==field.compressedBytes)throw Error('compressed volume length mismatch');
       for(let i=0;i<chars.length;i++)bytes[i]=chars.charCodeAt(i);
       const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
-      const reader=stream.getReader(),output=new Uint8Array(count*2);
+      const reader=stream.getReader(),output=new Uint8Array(count*bytesPerVoxel);
       let length=0;
       try{
         while(true){
@@ -61,26 +64,30 @@
       if(digest!==field.sha256)throw Error('source bundle checksum mismatch');
       return new DataView(output.buffer);
     }
-    const hu=await unzip(d.hu),bits=await unzip(d.masks);
+    const hu=await unzip(d.hu,2),bits=await unzip(d.masks,maskWidth);
+    const maskAt=i=>maskWidth===4?bits.getUint32(i*4,true):bits.getUint16(i*2,true);
     const organs=d.organs;
     const ids=new Set(),organBits=new Set();let allowed=0;
     for(const o of organs){
       if(!/^[a-z][A-Za-z0-9_]{0,69}$/.test(o.id||'')||ids.has(o.id)||
-         !Number.isInteger(o.bit)||o.bit<1||o.bit>16384||(o.bit&(o.bit-1))!==0||organBits.has(o.bit)||
+         !Number.isInteger(o.bit)||o.bit<1||o.bit>2**29||(o.bit&(o.bit-1))!==0||organBits.has(o.bit)||
+         (maskWidth===2&&o.bit>16384)||
          typeof o.label!=='string'||o.label.length<1||o.label.length>160||
          !Array.isArray(o.rgb)||o.rgb.length!==3||!o.rgb.every(n=>Number.isInteger(n)&&n>=0&&n<=255))
         throw Error('invalid source organ metadata');
       ids.add(o.id);organBits.add(o.bit);allowed|=o.bit;
     }
-    for(let i=0;i<count;i++)if((bits.getUint16(i*2,true)&~allowed)!==0)
+    for(let i=0;i<count;i++)if((maskAt(i)&~allowed)!==0)
       throw Error('mask contains unknown source labels');
     const studio=document.body.dataset.studio;
-    const selected=new Set(organs.filter(o=>studio==='chest-ct'?
-      /^lung_|^heart$/.test(o.id):!/^lung_|^heart$/.test(o.id)).map(o=>o.id));
+    const selected=new Set(organs.filter(o=>Array.isArray(o.studios)?
+      o.studios.includes(studio):studio==='chest-ct'?
+      /^lung_|^heart$/.test(o.id):studio==='abdomen-ct'?
+      !/^lung_|^heart$/.test(o.id):false).map(o=>o.id));
     function rebuildSelector(){
       ui.organs.replaceChildren();
       for(const o of organs){
-        if(!Number.isInteger(o.bit)||o.bit<1||o.bit>32768||
+        if(!Number.isInteger(o.bit)||o.bit<1||o.bit>2**29||
            !Array.isArray(o.rgb)||o.rgb.length!==3||
            !o.rgb.every(n=>Number.isInteger(n)&&n>=0&&n<=255))
           throw Error('invalid source organ metadata');
@@ -137,8 +144,10 @@
         repaint();
       },{passive:false});
     }
-    const windows={soft:[40,400],lung:[-600,1500],bone:[400,1800]};
-    ui.window.value=studio==='chest-ct'?'lung':'soft';
+    const windows={soft:[40,400],lung:[-600,1500],bone:[400,1800],
+      brain:[40,80],subdural:[80,200],cardiac:[350,700]};
+    ui.window.value=({'chest-ct':'lung','brain-ct':'brain',
+      'cardiac-ct':'cardiac'})[studio]||'soft';
     ui.window.addEventListener('change',repaint);
     ui.opacity.addEventListener('input',()=>{
       ui.pct.textContent=ui.opacity.value+'%';repaint();
@@ -172,7 +181,7 @@
               Math.round(255*((value-(level-width/2))/width))));
             let r=grey,g=grey,b=grey;
             if(alpha){
-              const mask=bits.getUint16(i*2,true)&visible;
+              const mask=maskAt(i)&visible;
               if(mask){
                 const organ=organs.find(o=>(mask&o.bit)!==0);
                 if(organ){
@@ -193,7 +202,9 @@
     }
     status.textContent='MPR siap · sumber '+d.subject+
       ' · '+W+'×'+H+'×'+D+' voxel sampel · '+organs.length+
-      ' mask organ · SHA-256 diperiksa · L/R belum divalidasi klinis · hanya privat';
+      ' mask organ · SHA-256 diperiksa · '+
+      (d.datasetId?'kalibrasi HU belum diverifikasi · ':'')+
+      'L/R belum divalidasi klinis · hanya privat';
     repaint();
   } catch(e) { fail(e?.message||e); }
 })();

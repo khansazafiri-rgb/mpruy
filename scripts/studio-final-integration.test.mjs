@@ -182,7 +182,19 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
     'apps/web/src/features/studios/studioProgress.test.mjs', 'apps/web/src/pages/StudioEntry.jsx', 'apps/web/src/lib/serverVersion.js',
     'apps/web/src/lib/serverVersion.test.mjs', 'apps/pocketbase/pb_migrations/1800003300_studio_progress.js']);
   const legacyDelta = git('diff', '--name-only', base, 'HEAD', '--', ...unchanged).split('\n').filter(Boolean);
-  assert.deepEqual(legacyDelta.filter(p => p !== harness && p !== phaseStatus && !studioOnly.has(p)), []);
+  // PR #268 independently reviewed a targeted Caddy containment for
+  // unverified skeletal/visceral GLBs and Atlas CT. Earlier "legacy unchanged"
+  // checks predate that security fix. Permit only the exact reviewed Caddy bytes;
+  // any later change to either route continues to fail this integration guard.
+  const securityReviewCommit = '2296bee6ece0af192a2c72df125a0d62ca652fbb';
+  git('merge-base', '--is-ancestor', securityReviewCommit, 'HEAD');
+  const reviewedSecurityPaths = new Set(['deploy/Caddyfile', 'deploy/anatomy.caddy.snippet']);
+  for (const file of reviewedSecurityPaths) {
+    assert.equal(read(file), git('show', securityReviewCommit + ':' + file),
+      'Reviewed security Caddy config must not drift: ' + file);
+  }
+  assert.deepEqual(legacyDelta.filter(p =>
+    p !== harness && p !== phaseStatus && !studioOnly.has(p) && !reviewedSecurityPaths.has(p)), []);
   assert.equal(git('diff', '--name-only', '--diff-filter=MDR', base, 'HEAD', '--', 'apps/pocketbase/pb_migrations'), '', 'existing migrations unchanged');
   assert.deepEqual(git('diff', '--name-only', base, 'HEAD', '--', 'apps/web/src/lib/serverVersion.js') ? git('diff', base, 'HEAD', '--', 'apps/web/src/lib/serverVersion.js').split('\n').filter(l => /^[+-][^+-]/.test(l)) : [],
     ['-export const REQUIRED_MIGRATION = 1800003200;', '+export const REQUIRED_MIGRATION = 1800003300;'], 'only the required migration level changes');

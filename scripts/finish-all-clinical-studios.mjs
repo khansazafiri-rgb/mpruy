@@ -9,14 +9,15 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import crypto from 'node:crypto';
 import geometry from './private-totalseg-mpr-geometry.cjs';
-import { PRIVATE_MPR_ORGAN_IDS } from './private-totalseg-ct-review.mjs';
+import { PRIVATE_MPR_ORGAN_IDS, PRIVATE_MPR_OPTIONAL_IDS } from './private-totalseg-ct-review.mjs';
 import { privateMprPage } from './private-totalseg-mpr.mjs';
+import { PRIVATE_CT_SOURCE_PROFILES } from './private-paired-ct-review.mjs';
 import { writePrivateReadiness } from './alternative-source-readiness.mjs';
 import { generateAllPrivateOverlays } from './generate-all-private-review-overlays.mjs';
 
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const OUT=path.join(ROOT,'local-data/studio-resources/review-overlays');
-const READY=new Set(['PRIVATE_PREVIEW_READY','PRIVATE_CANDIDATE_REVIEW_READY']);
+const READY=new Set(['PRIVATE_PREVIEW_READY','PRIVATE_CANDIDATE_REVIEW_READY','PRIVATE_SOURCE_PAIR_REVIEW_READY']);
 const notes={
   'brain-anatomy':'No commercial-cleared complete 3D brain geometry',
   'brain-ct':'No verified CT data and annotations for brain',
@@ -73,13 +74,19 @@ function put(file,data){
 }
 export function verifyPrivateMprFiles(manifest,read){
   try{
-    if(manifest?.schema!=='medcoel.private-mpr-ct.v1'||
+    if(!['medcoel.private-mpr-ct.v1','medcoel.private-mpr-ct.v2'].includes(manifest?.schema)||
        !['releaseEligible','orientationApproved','clinicalApproved','privacyApproved','rightsApproved'].every(k=>manifest[k]===false)||
        !/^s\d{3,6}$/.test(manifest.sourceSubject||'')||
        ![manifest.sourceArchiveSha256,manifest.ctSourceSha256].every(x=>/^[a-f0-9]{64}$/.test(x||'')&&!/^0{64}$/.test(x))||
        !Array.isArray(manifest.organs)||!Array.isArray(manifest.maskReceipts)||
-       JSON.stringify(manifest.organs.map(o=>o.id).sort())!==JSON.stringify([...PRIVATE_MPR_ORGAN_IDS].sort())||
-       JSON.stringify(manifest.maskReceipts.map(o=>o.sourceMask).sort())!==JSON.stringify([...PRIVATE_MPR_ORGAN_IDS].sort())||
+       manifest.organs.length<PRIVATE_MPR_ORGAN_IDS.length||manifest.organs.length>30||
+       new Set(manifest.organs.map(o=>o.id)).size!==manifest.organs.length||
+       new Set(manifest.maskReceipts.map(o=>o.sourceMask)).size!==manifest.maskReceipts.length||
+       !PRIVATE_MPR_ORGAN_IDS.every(id=>manifest.organs.some(o=>o.id===id))||
+       manifest.organs.some(o=>![...PRIVATE_MPR_ORGAN_IDS,...PRIVATE_MPR_OPTIONAL_IDS].includes(o.id))||
+       JSON.stringify(manifest.organs.map(o=>o.id).sort())!==JSON.stringify(manifest.maskReceipts.map(o=>o.sourceMask).sort())||
+       (manifest.organs.length>15&&manifest.schema!=='medcoel.private-mpr-ct.v2')||
+       (manifest.organs.length<=15&&manifest.schema!=='medcoel.private-mpr-ct.v1')||
        manifest.maskReceipts.some(r=>!/^[a-f0-9]{64}$/.test(r.sha256||'')||/^0{64}$/.test(r.sha256)||r.sourceMember!==manifest.sourceSubject+'/segmentations/'+r.sourceMask+'.nii.gz'))return false;
     geometry.describe(manifest.sourceAffine,manifest.originalDimensions,manifest.sampledSourceIndices);
     if(!Array.isArray(manifest.dimensions)||manifest.dimensions.length!==3||
@@ -96,10 +103,61 @@ export function verifyPrivateMprFiles(manifest,read){
     return true;
   }catch{return false;}
 }
+
+/** Optional manual CT pair is counted only when every local receipt/code packet
+ * agrees. This is a private technical-preview proof, never a rights approval. */
+export function availablePrivatePairedViewer(studio){
+ if(!PRIVATE_CT_SOURCE_PROFILES[studio])return false;
+ try{
+  const profile=PRIVATE_CT_SOURCE_PROFILES[studio],dir=path.join(OUT,studio+'-mpr-private');
+  const receipt=readJSON(path.join(dir,'bundle-manifest.json'));
+  const inputManifest=path.join(ROOT,'local-data/studio-resources/paired-ct-inputs',studio,'manifest.json');
+  safe(inputManifest);
+  const stat=fs.lstatSync(inputManifest);
+  if(stat.isSymbolicLink()||!stat.isFile()||stat.size>16*1024)return false;
+  if(crypto.createHash('sha256').update(fs.readFileSync(inputManifest)).digest('hex')!==receipt.sourceManifestSha256)return false;
+  const m=readJSON(inputManifest);
+  if(m.sourceId!==profile.sourceId||m.studio!==studio||m.subjectAlias!==receipt.subjectAlias||
+     m.files?.ct?.sha256!==receipt.sourceCtSha256||
+     m.files?.segmentation?.sha256!==receipt.sourceMaskSha256||
+     receipt.sourceId!==profile.sourceId||receipt.schema!=='medcoel.private-paired-ct-review.v1'||
+     !['clinicalApproved','privacyApproved','rightsApproved','releaseEligible'].every(k=>receipt[k]===false)||
+     !Array.isArray(receipt.sourceLabelsPresent)||!receipt.sourceLabelsPresent.length||
+     receipt.sourceLabelsPresent.some(x=>!profile.labels.some(y=>x.id===y.id&&x.sourceValue===y.value)))return false;
+  const exactPage=privateMprPage(studio);
+  const page=path.join(OUT,studio,'index.html');
+  safe(page);
+  if(fs.readFileSync(page,'utf8')!==exactPage)return false;
+  for(const name of ['geometry.js','viewer.js','volume.js']){
+   const file=path.join(dir,name);safe(file);
+   const stat=fs.lstatSync(file),pin=receipt.files?.[name];
+   if(stat.isSymbolicLink()||!stat.isFile()||!pin||
+      stat.size!==pin.bytes||stat.size>64*1024*1024)return false;
+   const data=fs.readFileSync(file),digest=crypto.createHash('sha256').update(data).digest('hex');
+   if(digest!==pin.sha256)return false;
+   const source={'geometry.js':'private-totalseg-mpr-geometry.cjs',
+     'viewer.js':'private-totalseg-mpr-browser.js'}[name];
+   if(source&&digest!==crypto.createHash('sha256').update(fs.readFileSync(new URL('./'+source,import.meta.url))).digest('hex'))return false;
+  }
+  const code=fs.readFileSync(path.join(dir,'volume.js'),'utf8');
+  const prefix='window.MEDCOEL_CT_PRIVATE = ';
+  if(!code.startsWith(prefix)||!code.trim().endsWith(';'))return false;
+  const packet=JSON.parse(code.slice(prefix.length).trim().slice(0,-1));
+  return ['medcoel.private-mpr-ct.v1','medcoel.private-mpr-ct.v2'].includes(packet.schema)&&
+    packet.datasetId===profile.sourceId&&packet.subject===receipt.subjectAlias&&
+    packet.ctMemberSha256===receipt.sourceCtSha256&&
+    packet.archiveSha256===receipt.sourcePairReceiptSha256&&
+    packet.organs.length===receipt.sourceLabelsPresent.length&&
+    packet.organs.every(o=>receipt.sourceLabelsPresent.some(x=>o.id===x.id))&&
+    ['orientationApproved','clinicalApproved','privacyApproved','rightsApproved','releaseEligible'].every(k=>packet[k]===false);
+ }catch{return false;}
+}
+
 function availablePrivateViewer(id){
   const page=path.join(OUT,id,'index.html');
   safe(page);
   if(!fs.lstatSync(page,{throwIfNoEntry:false})?.isFile())return false;
+  if(PRIVATE_CT_SOURCE_PROFILES[id])return availablePrivatePairedViewer(id);
   if(['abdomen-ct','chest-ct'].includes(id)){
     const expectedPage=privateMprPage(id);
     if(fs.statSync(page).size!==Buffer.byteLength(expectedPage)||fs.readFileSync(page,'utf8')!==expectedPage)return false;
@@ -143,7 +201,9 @@ export function allStudioMatrix(catalog,readiness,results,valid={}){
       sourceCandidates:readiness.sources.filter(src=>src.studioIds?.includes(s.id))
         .map(src=>({id:src.id,status:src.status,
           archivesRecorded:src.archivedFileCountFromLastReport||0})),
-      primaryBlocker:notes[s.id]||'Exact source/renderer not cleared',
+      primaryBlocker:PRIVATE_CT_SOURCE_PROFILES[s.id]&&hasPreview?
+        'Private source-matched CT/MPR only; clinical, privacy, commercial rights and exact-build signoff pending':
+        notes[s.id]||'Exact source/renderer not cleared',
       approval:{medical:false,privacy:false,rights:false,release:false}};
   });
   return {
@@ -207,6 +267,15 @@ export async function runAllStudios({reuse=false,log=console.log}={}){
   log('2/4 · '+(reuse?'Review existing private assets':'Render all verified private studios in one batch'));
   const results=reuse?readJSON(path.join(OUT,'review-hub-status.json')).results:
     await generateAllPrivateOverlays();
+  // Paired CT sources require a separate manual, hash-pinned private import.
+  // Never synthesize a preview from a dataset URL or rights declaration.
+  for(const studio of Object.keys(PRIVATE_CT_SOURCE_PROFILES)){
+    const receipt=path.join(OUT,studio+'-mpr-private','bundle-manifest.json');
+    safe(receipt);
+    if(fs.lstatSync(receipt,{throwIfNoEntry:false})?.isFile()&&!results.some(x=>x.studio===studio))
+      results.push({studio,status:'PRIVATE_SOURCE_PAIR_REVIEW_READY',
+        kind:'source-matched-private-nifti-pair'});
+  }
   log('3/4 · Check 24 actual private preview artifacts');
   const valid={};
   for(const r of results)if(READY.has(r.status))valid[r.studio]=availablePrivateViewer(r.studio);

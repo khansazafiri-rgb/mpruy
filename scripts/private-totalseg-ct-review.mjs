@@ -40,6 +40,31 @@ const MPR_EXTRAS=[
   {id:'lung_lower_lobe_left',label:'Lobus bawah paru kiri',rgb:[123,159,247]},
   {id:'vertebrae_L1',label:'Vertebra L1',rgb:[232,207,111]}
 ];
+
+// Optional *publisher-defined* TotalSegmentator v2 mask IDs. Only ZIP members
+// physically present in the pinned subject and verified by CRC/affine/binary QC
+// are added. Absent masks are reported; no empty/fabricated substitutes.
+export const PRIVATE_MPR_OPTIONAL_CANDIDATES=Object.freeze([
+  {id:'lung_middle_lobe_right',label:'Lobus tengah paru kanan',rgb:[77,198,185],studios:['chest-ct']},
+  {id:'trachea',label:'Trakea',rgb:[138,228,182],studios:['chest-ct']},
+  {id:'esophagus',label:'Esofagus',rgb:[210,147,235],studios:['chest-ct']},
+  {id:'pulmonary_artery',label:'Arteri pulmonalis',rgb:[236,114,138],studios:['chest-ct']},
+  {id:'spinal_cord',label:'Medula spinalis',rgb:[240,192,118],studios:['chest-ct']},
+  {id:'vertebrae_T8',label:'Vertebra T8',rgb:[193,202,233],studios:['chest-ct']},
+  {id:'stomach',label:'Lambung',rgb:[246,179,129],studios:['abdomen-ct']},
+  {id:'pancreas',label:'Pankreas',rgb:[255,195,82],studios:['abdomen-ct']},
+  {id:'gallbladder',label:'Kandung empedu',rgb:[125,219,147],studios:['abdomen-ct']},
+  {id:'duodenum',label:'Duodenum',rgb:[241,150,115],studios:['abdomen-ct']},
+  {id:'small_bowel',label:'Usus halus',rgb:[191,139,224],studios:['abdomen-ct']},
+  {id:'colon',label:'Kolon',rgb:[241,205,107],studios:['abdomen-ct']},
+  {id:'inferior_vena_cava',label:'Vena kava inferior',rgb:[119,168,246],studios:['abdomen-ct']},
+  {id:'portal_vein_and_splenic_vein',label:'Vena porta dan lienalis',rgb:[128,188,222],studios:['abdomen-ct']},
+  {id:'adrenal_gland_left',label:'Adrenal kiri',rgb:[224,125,194],studios:['abdomen-ct']},
+  {id:'adrenal_gland_right',label:'Adrenal kanan',rgb:[218,149,195],studios:['abdomen-ct']},
+  {id:'urinary_bladder',label:'Vesika urinaria',rgb:[116,217,229],studios:['abdomen-ct']}
+]);
+export const PRIVATE_MPR_OPTIONAL_IDS=Object.freeze(PRIVATE_MPR_OPTIONAL_CANDIDATES.map(o=>o.id));
+
 export const PRIVATE_MPR_ORGAN_IDS=Object.freeze([
   ...Object.values(GROUPS).flat().map(o=>o.id),...MPR_EXTRAS.map(o=>o.id)
 ]);
@@ -287,13 +312,33 @@ export async function generatePrivateTotalSegReviews() {
       note:studio==='chest-ct'?'TotalSegmentator candidate only; old TCIA remains quarantined':
         'TotalSegmentator candidate; no clinical/release approval'};
   }
-  // Expand the one shared interactive MPR to all 11 directly indexed organs.
+  // Keep the 11 mandatory masks; add up to 17 optional publisher mask members
+  // only where an exact source file exists, with the same complete-byte QC.
   for(const organ of MPR_EXTRAS){
     const sourceName=subject.subject+'/segmentations/'+organ.id+'.nii.gz';
     const maskBytes=member(sourceName),mask=parsePrivateTotalSegNifti(maskBytes,'mask');
     verifyNiftiPair(ct,mask);
     addPrivateMprOrgan(mpr,mask,organ);
     allMaskReceipts.push({sourceMask:organ.id,sourceMember:sourceName,sha256:SHA(maskBytes)});
+  }
+  const missingOptionalMasks=[],addedOptionalMasks=[];
+  for(const organ of PRIVATE_MPR_OPTIONAL_CANDIDATES){
+    const sourceName=subject.subject+'/segmentations/'+organ.id+'.nii.gz';
+    if(!byName.has(sourceName)){missingOptionalMasks.push(organ.id);continue;}
+    const maskBytes=member(sourceName),mask=parsePrivateTotalSegNifti(maskBytes,'mask');
+    verifyNiftiPair(ct,mask);
+    try { addPrivateMprOrgan(mpr,mask,organ); }
+    catch(e){
+      // A real source mask may be empty or vanish under bounded sampling;
+      // never fabricate a replacement, but don't discard the 11 required.
+      if(/^CT_MPR_EMPTY_DOWNSAMPLED_MASK:/.test(e.message)){
+        missingOptionalMasks.push(organ.id+':no source-positive voxel after sampling');
+        continue;
+      }
+      throw e; // invalid registration/binary labels remain hard failures
+    }
+    allMaskReceipts.push({sourceMask:organ.id,sourceMember:sourceName,sha256:SHA(maskBytes)});
+    addedOptionalMasks.push(organ.id);
   }
   const volume=encodePrivateMprPack(mpr,{
     sourceSubject:subject.subject,archiveSha256:audit.archiveSha256,
@@ -312,6 +357,7 @@ export async function generatePrivateTotalSegReviews() {
     sourceAffine:volume.sourceAffine,sourceUnits:volume.sourceUnits,
     sampledSourceIndices:volume.sampledSourceIndices,indexGeometry:volume.indexGeometry,
     maskReceipts:allMaskReceipts,
+    additionalMasksPresent:addedOptionalMasks,optionalMasksUnavailable:missingOptionalMasks,
     ctSourceSha256:volume.ctMemberSha256,
     organs:volume.organs.map(o=>({id:o.id,bit:o.bit,sampledVoxels:o.sampledVoxels})),
     huBytesCompressed:volume.hu.compressedBytes,maskBytesCompressed:volume.masks.compressedBytes,
@@ -330,7 +376,8 @@ export async function generatePrivateTotalSegReviews() {
     writePrivate(path.join(target,'static-review.html'),fs.readFileSync(path.join(target,'index.html')));
     writePrivate(path.join(target,'index.html'),privateMprPage(studio));
     cases[studio].kind='totalsegmentator-offline-3-plane-mpr';
-    cases[studio].note='Private MPR: 11 selectable organ masks, 3 planes, original static preview preserved; not approved';
+    cases[studio].note='Private MPR: '+volume.organs.length+' authentic selectable masks across shared CT, 3 planes; original static preview preserved; not approved';
+    cases[studio].masks=volume.organs.filter(o=>Array.isArray(o.studios)?o.studios.includes(studio):studio==='chest-ct'?/^lung_|^heart$/.test(o.id):!/^lung_|^heart$/.test(o.id)).map(o=>o.id);
   }
   return {abdomen:cases['abdomen-ct'],chest:cases['chest-ct']};
 }
