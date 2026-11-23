@@ -7,12 +7,14 @@ const CSV = x => '"' + String(x ?? '').replaceAll('"', '""') + '"';
 // This is not synonym reconciliation, an anatomical diagnosis, or source approval.
 const GENERIC=new Set(['left','right','anterior','posterior','medial','lateral','superior','inferior',
   'upper','lower','middle','proximal','distal','dorsal','ventral','deep','superficial','internal',
-  'external','of','the','and','set','part','branch','branches','subdivision','cavity','zone',
+  'external','ascending','descending','of','the','and','set','part','branch','branches','subdivision','cavity','zone',
   'muscle','artery','vein','nerve','ligament','bone','cartilage','tendon','node','nodes',
   'gland','valve','leaflet','lobes','lobe','process','structure','organ','vessel','body','head']);
 const explicitTypes=['artery','vein','nerve','ligament','muscle','bone','cartilage','tendon','node',
   'nodes','bronchus','gland'];
-const tokens=name=>reviewTokens(name).map(token=>token.toLowerCase().replace(/s$/,''));
+const plurals=Object.freeze({arteries:'artery',veins:'vein',nodes:'node',muscles:'muscle',
+  ligaments:'ligament',bones:'bone',cartilages:'cartilage',bronchi:'bronchus',ribs:'rib',leaflets:'leaflet'});
+const tokens=name=>reviewTokens(name).map(token=>plurals[token.toLowerCase()]||token.toLowerCase());
 export function semanticSourceFlags(atlasName,officialName) {
   const a=tokens(atlasName),b=tokens(officialName),A=new Set(a),B=new Set(b),flags=[];
   const explicit=items=>new Set(items.filter(t=>explicitTypes.includes(t)));
