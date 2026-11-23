@@ -7,6 +7,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import zlib from 'node:zlib';
+import { crc32 } from '../apps/studios/tools/zip-range.mjs';
 import { fileURLToPath } from 'node:url';
 import { assessPublisherRecord } from './batch-alternative-resources.mjs';
 
@@ -28,9 +30,9 @@ function assertPrivate(file) {
       throw Error('CT_AUDIT_SYMLINK_REFUSED');
   }
 }
-function readAt(fd,size,start,bytes) {
+function readAt(fd,size,start,bytes,max=64*M) {
   if(!Number.isSafeInteger(start)||!Number.isSafeInteger(bytes)||
-     start<0||bytes<0||start+bytes>size||bytes>64*M)
+     start<0||bytes<0||start+bytes>size||bytes>max)
     throw Error('CT_AUDIT_ZIP_OFFSET_INVALID');
   const b=Buffer.alloc(bytes);
   if(fs.readSync(fd,b,0,bytes,start)!==bytes)throw Error('CT_AUDIT_ZIP_SHORT_READ');
@@ -82,9 +84,11 @@ export function listLocalZipEntries(file, {maxEntries=80000}={}){
       if(p+46>cd.length||cd.readUInt32LE(p)!==0x02014b50)
         throw Error('CT_AUDIT_BAD_CENTRAL_HEADER');
       const flags=cd.readUInt16LE(p+8),method=cd.readUInt16LE(p+10);
-      const compressed=cd.readUInt32LE(p+20),uncompressed=cd.readUInt32LE(p+24);
+      let compressed=cd.readUInt32LE(p+20),uncompressed=cd.readUInt32LE(p+24);
+      const crc=cd.readUInt32LE(p+16);
       const nameLength=cd.readUInt16LE(p+28),extra=cd.readUInt16LE(p+30),
             comment=cd.readUInt16LE(p+32);
+      let localOffset=cd.readUInt32LE(p+42);
       const ext=(cd.readUInt32LE(p+38)>>>16)&0xf000;
       if(p+46+nameLength+extra+comment>cd.length||flags&1||
          ![0,8].includes(method)||ext===0xa000)
@@ -93,12 +97,62 @@ export function listLocalZipEntries(file, {maxEntries=80000}={}){
       if(!safeEntryName(name)||unique.has(name))
         throw Error('CT_AUDIT_DUPLICATE_OR_UNSAFE_PATH');
       unique.add(name);
-      // The manifest only lists names, NOT archived patient data.
-      rows.push({name,compressed,uncompressed,method});
+      if(compressed===0xffffffff||uncompressed===0xffffffff||localOffset===0xffffffff){
+        let found=false;
+        for(let x=p+46+nameLength;x<p+46+nameLength+extra;){
+          if(x+4>cd.length)throw Error('CT_AUDIT_ZIP64_EXTRA_TRUNCATED');
+          const id=cd.readUInt16LE(x),len=cd.readUInt16LE(x+2);
+          if(x+4+len>p+46+nameLength+extra)throw Error('CT_AUDIT_ZIP64_EXTRA_TRUNCATED');
+          if(id===1){
+            let q=x+4;
+            const pick=()=>{if(q+8>x+4+len)throw Error('CT_AUDIT_ZIP64_EXTRA_TRUNCATED');const n=u64(cd,q);q+=8;return n;};
+            if(uncompressed===0xffffffff)uncompressed=pick();
+            if(compressed===0xffffffff)compressed=pick();
+            if(localOffset===0xffffffff)localOffset=pick();
+            found=true;break;
+          }
+          x+=4+len;
+        }
+        if(!found)throw Error('CT_AUDIT_ZIP64_MEMBER_MISSING_EXTRA');
+      }
+      if(!Number.isSafeInteger(localOffset)||localOffset<0||localOffset+30>size||
+          !Number.isSafeInteger(uncompressed)||!Number.isSafeInteger(compressed))
+        throw Error('CT_AUDIT_ZIP_MEMBER_OUT_OF_BOUNDS');
+      // Member names are structural, no archived patient bytes are read here.
+      rows.push({name,compressed,uncompressed,method,crc,localOffset});
       p+=46+nameLength+extra+comment;
     }
     if(p!==cdBytes)throw Error('CT_AUDIT_CENTRAL_INDEX_MISMATCH');
     return rows;
+  }finally{fs.closeSync(fd);}
+}
+
+export function readVerifiedLocalZipMember(file,entry,{
+  maxCompressed=180*1024*1024,maxUncompressed=480*1024*1024
+}={}){
+  if(!entry||!safeEntryName(entry.name)||![0,8].includes(entry.method)||
+    !Number.isSafeInteger(entry.compressed)||!Number.isSafeInteger(entry.uncompressed)||
+    !Number.isSafeInteger(entry.localOffset)||!Number.isInteger(entry.crc)||
+    entry.compressed>maxCompressed||entry.uncompressed>maxUncompressed)
+    throw Error('CT_REVIEW_MEMBER_UNSAFE_OR_OVERSIZED');
+  if(fs.lstatSync(file).isSymbolicLink())throw Error('CT_REVIEW_ZIP_SYMLINK');
+  const fd=fs.openSync(file,'r');
+  try{
+    const size=fs.fstatSync(fd).size;
+    const h=readAt(fd,size,entry.localOffset,30);
+    if(h.readUInt32LE(0)!==0x04034b50||h.readUInt16LE(8)!==entry.method||
+      h.readUInt16LE(6)&1)throw Error('CT_REVIEW_LOCAL_ZIP_HEADER_MISMATCH');
+    const nameLength=h.readUInt16LE(26),extraLength=h.readUInt16LE(28);
+    const name=readAt(fd,size,entry.localOffset+30,nameLength).toString('utf8');
+    if(name!==entry.name)throw Error('CT_REVIEW_LOCAL_ZIP_NAME_MISMATCH');
+    const start=entry.localOffset+30+nameLength+extraLength;
+    const bytes=readAt(fd,size,start,entry.compressed,maxCompressed);
+    const out=entry.method===0?bytes:zlib.inflateRawSync(bytes,{
+      maxOutputLength:maxUncompressed
+    });
+    if(out.length!==entry.uncompressed||crc32(out)!==entry.crc)
+      throw Error('CT_REVIEW_MEMBER_CRC_OR_SIZE_MISMATCH');
+    return out;
   }finally{fs.closeSync(fd);}
 }
 
@@ -139,7 +193,7 @@ export function buildArchiveAudit(entries){
     clinicApproved:false,rightsApproved:false,privacyApproved:false,
     releaseEligible:false};
 }
-async function verifiedArchive(){
+export async function verifiedArchive(){
   assertPrivate(INPUT);
   const info=fs.lstatSync(INPUT);
   if(!info.isFile())throw Error('CT_AUDIT_SOURCE_NOT_REGULAR');
