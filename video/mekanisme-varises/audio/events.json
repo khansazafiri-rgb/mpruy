@@ -1,0 +1,102 @@
+{
+ "durasi_edu": 29.4,
+ "skalar_normalisasi": 1.0532,
+ "sfx": [
+  {
+   "t": 2.9,
+   "sfx": "potong-mekanisme"
+  },
+  {
+   "t": 3.18,
+   "sfx": "katup-vena"
+  },
+  {
+   "t": 3.78,
+   "sfx": "katup-menutup"
+  },
+  {
+   "t": 4.98,
+   "sfx": "katup-menutup"
+  },
+  {
+   "t": 6.18,
+   "sfx": "katup-menutup"
+  },
+  {
+   "t": 8.32,
+   "sfx": "katup-lemah"
+  },
+  {
+   "t": 8.58,
+   "sfx": "katup-menutup-sebagian"
+  },
+  {
+   "t": 9.7,
+   "sfx": "aliran-balik"
+  },
+  {
+   "t": 10.54,
+   "sfx": "berbalik"
+  },
+  {
+   "t": 11.68,
+   "sfx": "berkumpul"
+  },
+  {
+   "t": 12.3,
+   "sfx": "potong-waktu"
+  },
+  {
+   "t": 12.92,
+   "sfx": "lama-kelamaan"
+  },
+  {
+   "t": 13.92,
+   "sfx": "melebar"
+  },
+  {
+   "t": 14.76,
+   "sfx": "berkelok"
+  },
+  {
+   "t": 16.7,
+   "sfx": "potong-kaki"
+  },
+  {
+   "t": 19.0,
+   "sfx": "varises"
+  },
+  {
+   "t": 20.0,
+   "sfx": "potong-banding"
+  },
+  {
+   "t": 20.96,
+   "sfx": "perbedaan"
+  },
+  {
+   "t": 23.48,
+   "sfx": "katup-menutup-rapat"
+  },
+  {
+   "t": 24.68,
+   "sfx": "katup-menutup-rapat"
+  },
+  {
+   "t": 25.68,
+   "sfx": "katup-lemah-2"
+  },
+  {
+   "t": 27.08,
+   "sfx": "katup-menutup-sebagian"
+  },
+  {
+   "t": 28.28,
+   "sfx": "katup-menutup-sebagian"
+  },
+  {
+   "t": 28.5,
+   "sfx": "turun-lagi"
+  }
+ ]
+}
