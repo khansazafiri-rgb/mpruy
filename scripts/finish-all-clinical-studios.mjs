@@ -9,7 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import crypto from 'node:crypto';
 import geometry from './private-totalseg-mpr-geometry.cjs';
-import { PRIVATE_MPR_ORGAN_IDS } from './private-totalseg-ct-review.mjs';
+import { PRIVATE_MPR_ORGAN_IDS, PRIVATE_MPR_OPTIONAL_IDS } from './private-totalseg-ct-review.mjs';
 import { privateMprPage } from './private-totalseg-mpr.mjs';
 import { writePrivateReadiness } from './alternative-source-readiness.mjs';
 import { generateAllPrivateOverlays } from './generate-all-private-review-overlays.mjs';
@@ -73,13 +73,19 @@ function put(file,data){
 }
 export function verifyPrivateMprFiles(manifest,read){
   try{
-    if(manifest?.schema!=='medcoel.private-mpr-ct.v1'||
+    if(!['medcoel.private-mpr-ct.v1','medcoel.private-mpr-ct.v2'].includes(manifest?.schema)||
        !['releaseEligible','orientationApproved','clinicalApproved','privacyApproved','rightsApproved'].every(k=>manifest[k]===false)||
        !/^s\d{3,6}$/.test(manifest.sourceSubject||'')||
        ![manifest.sourceArchiveSha256,manifest.ctSourceSha256].every(x=>/^[a-f0-9]{64}$/.test(x||'')&&!/^0{64}$/.test(x))||
        !Array.isArray(manifest.organs)||!Array.isArray(manifest.maskReceipts)||
-       JSON.stringify(manifest.organs.map(o=>o.id).sort())!==JSON.stringify([...PRIVATE_MPR_ORGAN_IDS].sort())||
-       JSON.stringify(manifest.maskReceipts.map(o=>o.sourceMask).sort())!==JSON.stringify([...PRIVATE_MPR_ORGAN_IDS].sort())||
+       manifest.organs.length<PRIVATE_MPR_ORGAN_IDS.length||manifest.organs.length>30||
+       new Set(manifest.organs.map(o=>o.id)).size!==manifest.organs.length||
+       new Set(manifest.maskReceipts.map(o=>o.sourceMask)).size!==manifest.maskReceipts.length||
+       !PRIVATE_MPR_ORGAN_IDS.every(id=>manifest.organs.some(o=>o.id===id))||
+       manifest.organs.some(o=>![...PRIVATE_MPR_ORGAN_IDS,...PRIVATE_MPR_OPTIONAL_IDS].includes(o.id))||
+       JSON.stringify(manifest.organs.map(o=>o.id).sort())!==JSON.stringify(manifest.maskReceipts.map(o=>o.sourceMask).sort())||
+       (manifest.organs.length>15&&manifest.schema!=='medcoel.private-mpr-ct.v2')||
+       (manifest.organs.length<=15&&manifest.schema!=='medcoel.private-mpr-ct.v1')||
        manifest.maskReceipts.some(r=>!/^[a-f0-9]{64}$/.test(r.sha256||'')||/^0{64}$/.test(r.sha256)||r.sourceMember!==manifest.sourceSubject+'/segmentations/'+r.sourceMask+'.nii.gz'))return false;
     geometry.describe(manifest.sourceAffine,manifest.originalDimensions,manifest.sampledSourceIndices);
     if(!Array.isArray(manifest.dimensions)||manifest.dimensions.length!==3||
