@@ -51,6 +51,14 @@ export const PRIVATE_CT_SOURCE_PROFILES=Object.freeze({
 function ensurePrivateRegular(file,root,maxBytes){
  const absolute=path.resolve(file),base=path.resolve(root);
  if(!absolute.startsWith(base+path.sep))throw Error('PAIRED_CT_PATH_NOT_PRIVATE');
+ // Reject symlinks along the entire repo-local source path, including
+ // local-data and studio-resources ancestors, not only below INPUT.
+ let ancestor=ROOT;
+ for(const part of path.relative(ROOT,absolute).split(path.sep)){
+  ancestor=path.join(ancestor,part);
+  if(fs.lstatSync(ancestor,{throwIfNoEntry:false})?.isSymbolicLink())
+   throw Error('PAIRED_CT_SYMLINK_REFUSED');
+ }
  let current=base;
  const baseInfo=fs.lstatSync(base);
  if(!baseInfo.isDirectory()||baseInfo.isSymbolicLink())throw Error('PAIRED_CT_BASE_UNSAFE');
