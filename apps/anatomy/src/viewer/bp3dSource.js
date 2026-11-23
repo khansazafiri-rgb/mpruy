@@ -39,7 +39,9 @@ export const bp3dStatus = () => ({ status, reason });
 // When only skeletal/visceral are opted in, keep every other Atlas system searchable.
 export const bp3dHas = (id, source = null) => !flag || status !== 'ready' ||
   (source && flag.systems && !flag.systems.has(source)) || ids.has(id);
-export const bp3dSummary = () => ({ status, reason, structures: ids.size, perSystem, systems: flag?.systems ? [...flag.systems] : null });
+export const bp3dSummary = () => ({ status, reason, structures: ids.size, perSystem,
+  provisional: inventory?.provisionalSource === true,
+  systems: flag?.systems ? [...flag.systems] : null });
 export const bp3dUsesSystem = (systemId) => !!flag && status === 'ready' && (!flag.systems || flag.systems.has(systemId)) && (perSystem[systemId] || 0) > 0;
 /** Test hook: set the flag/state without a URL. */
 export function _bp3dReset(search = '') { flag = parseBp3dFlag(search); inventory = null; status = flag ? 'pending' : 'off'; reason = ''; ids = new Set(); perSystem = {}; inventoryPromise = null; }
@@ -54,7 +56,8 @@ export function validateInventory(data) {
   }
   if (!converted.length) throw new Error('inventory has no valid structures');
   const skin = data.referenceSurface && SKIN_PATH.test(data.referenceSurface.modelPath || '') ? data.referenceSurface : null;
-  return { converted, skin, summary: data.summary || null, source: data.source || null };
+  return { converted, skin, summary: data.summary || null, source: data.source || null,
+    provisionalSource: data.provisionalSource === true };
 }
 
 export function loadBp3dInventory(fetchImpl = globalThis.fetch) {
