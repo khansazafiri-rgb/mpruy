@@ -57,3 +57,23 @@ test('rejects an unsafe, duplicated or non-quarantined inventory',()=>{
  assert.deepEqual(build({inventory:{...manifest,converted:[...manifest.converted,{...manifest.converted[0]}]}}).errors.filter(x=>x.includes('duplicate')).length,1);
  assert.ok(build({inventory:{...manifest,converted:[{...manifest.converted[0],modelPath:'../../etc/passwd'}]}}).errors.some(x=>x.includes('invalid model')));
 });
+
+test('a private provisional FMA/BP match is audited but never marked geometrically or medically validated',()=>{
+ const names=[...officialRows,{name:'right femur',fmaId:'FMA8',bpId:'BP8'}];
+ const extra={name:'Nasal bone.l',id:'nasal-provisional',fmaId:'FMA8',bpId:'BP8',
+   mappingMethod:'provisional-name-review-NOT-validated',
+   modelPath:'./structures/nasal-provisional/model.glb'};
+ const a=auditCompleteness({catalog,officialRows:names,elementIndex,archiveFiles,
+   inventory:{...manifest,provisionalSource:true,converted:[...manifest.converted,extra]},
+   mappingReview:{queue:[]}});
+ assert.equal(a.summary.converted,2);
+ assert.equal(a.summary.geometryAnatomyValidated,0);
+ assert.equal(a.summary.commercialReleaseApproved,0);
+ assert.equal(a.structures.find(x=>x.name==='Nasal bone.l').mappingMethod,
+   'provisional-name-review-NOT-validated');
+ assert.deepEqual(a.errors,[]);
+ const b=auditCompleteness({catalog,officialRows:names,elementIndex,archiveFiles,
+   inventory:{...manifest,provisionalSource:false,converted:[...manifest.converted,extra]},
+   mappingReview:{queue:[]}});
+ assert.ok(b.errors.some(x=>x.includes('source identity not corroborated')));
+});
