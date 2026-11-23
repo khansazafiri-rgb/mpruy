@@ -193,8 +193,19 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
     assert.equal(read(file), git('show', securityReviewCommit + ':' + file),
       'Reviewed security Caddy config must not drift: ' + file);
   }
+  // Reviewed emergency recovery is limited to these exact two application
+  // files. Keep all other legacy application and 4D code protected.
+  const recoveryReviewCommit='aaec5d1bd30fc6679ea84642f9ee547b5fe91516';
+  git('merge-base','--is-ancestor',recoveryReviewCommit,'HEAD');
+  const reviewedRecoveryPaths=new Set([
+    'apps/anatomy/src/viewer/loadModel.js','apps/4d-lab/src/app/main.js'
+  ]);
+  for(const file of reviewedRecoveryPaths)
+    assert.equal(read(file),git('show',recoveryReviewCommit+':'+file),
+      'Emergency recovery file drift since reviewed code commit: '+file);
   assert.deepEqual(legacyDelta.filter(p =>
-    p !== harness && p !== phaseStatus && !studioOnly.has(p) && !reviewedSecurityPaths.has(p)), []);
+    p !== harness && p !== phaseStatus && !studioOnly.has(p) &&
+    !reviewedSecurityPaths.has(p) && !reviewedRecoveryPaths.has(p)), []);
   assert.equal(git('diff', '--name-only', '--diff-filter=MDR', base, 'HEAD', '--', 'apps/pocketbase/pb_migrations'), '', 'existing migrations unchanged');
   assert.deepEqual(git('diff', '--name-only', base, 'HEAD', '--', 'apps/web/src/lib/serverVersion.js') ? git('diff', base, 'HEAD', '--', 'apps/web/src/lib/serverVersion.js').split('\n').filter(l => /^[+-][^+-]/.test(l)) : [],
     ['-export const REQUIRED_MIGRATION = 1800003200;', '+export const REQUIRED_MIGRATION = 1800003300;'], 'only the required migration level changes');
