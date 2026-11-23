@@ -163,5 +163,10 @@ export function privateMprPage(studio){
     .replaceAll('@@TCIA_WARNING@@',tcia)
     .replaceAll('@@BUNDLE_DIR@@',paired?'../'+studio+'-mpr-private':'../ct-mpr-private')
     .replaceAll('@@ATTRIBUTION@@',attribution)
-    .replaceAll('@@SOURCE_LABEL@@',paired?'Pasangan CT dan mask sumber yang diverifikasi':'TotalSegmentator 2.0.1, satu subjek pseudonim');
+    .replaceAll('@@SOURCE_LABEL@@',paired?'Pasangan CT dan mask sumber yang diverifikasi':'TotalSegmentator 2.0.1, satu subjek pseudonim')
+    .replaceAll('@@INTENSITY_WARNING@@',paired?
+      'Skala intensitas NIfTI belum terverifikasi sebagai HU diagnostik; preset window hanya untuk review teknis.':
+      'Window HU bersifat pratinjau teknis; kalibrasi dan keputusan klinis belum disetujui.')
+    .replaceAll('<a href="static-review.html">Preview statis sebelumnya</a>',
+      paired?'Preview privat dari pasangan data asli':'<a href="static-review.html">Preview statis sebelumnya</a>');
 }
