@@ -26,7 +26,7 @@ Data disampling ulang dengan nearest-neighbour untuk kecepatan interaksi. Jangan
 pengukuran klinis atau penentuan laterality. Jangan unggah gambar, HTML atau data ini ke server publik.</p>
 <p id="status" role="status">Memuat volume CT lokal...</p>
 <section class="toolbar">
-<label>Window <select id="window"><option value="soft">Soft tissue (40/400)</option><option value="lung">Lung (-600/1500)</option><option value="bone">Bone (400/1800)</option></select></label>
+<label>Window <select id="window"><option value="soft">Soft tissue (40/400)</option><option value="lung">Lung (-600/1500)</option><option value="bone">Bone (400/1800)</option><option value="brain">Brain (40/80)</option><option value="subdural">Subdural (80/200)</option><option value="cardiac">Cardiac (350/700)</option></select></label>
 <label>Opacity mask <input type="range" id="opacity" min="0" max="100" value="55"> <output id="pct">55%</output></label>
 <button id="reset" type="button">Reset irisan</button>
 <div id="organs" aria-label="Pilihan organ"></div>
@@ -36,18 +36,16 @@ pengukuran klinis atau penentuan laterality. Jangan unggah gambar, HTML atau dat
 <article><h2><span id="plane-y">Coronal / source index Y pending</span> · <span id="n-y"></span></h2><p id="orientation-y" class="dim"></p><canvas id="view-y"></canvas><label class="dim" for="slice-y">Geser irisan Y</label><input id="slice-y" type="range" min="0" max="1"></article>
 <article><h2><span id="plane-x">Sagittal / source index X pending</span> · <span id="n-x"></span></h2><p id="orientation-x" class="dim"></p><canvas id="view-x"></canvas><label class="dim" for="slice-x">Geser irisan X</label><input id="slice-x" type="range" min="0" max="1"></article>
 </section>
-<p class="dim">Sumber TotalSegmentator 2.0.1, satu subjek pseudonim. Data voxel asli diverifikasi sebelum bundel dibuat.
+<p class="dim">@@SOURCE_LABEL@@. Data voxel asli diverifikasi sebelum bundel dibuat.
 Browser menggunakan sampel 3D resolusi lebih rendah untuk navigasi cepat. Preview statis resolusi asli tetap tersedia.
 Kode ini berjalan di browser lokal tanpa pemanggilan jaringan keluar.</p>
 <section id="source-attribution" class="dim">
 <h2>Identitas dan atribusi kandidat sumber</h2>
-<p>Jakob Wasserthal, <em>Small subset of TotalSegmentator Dataset</em>, versi 2.0.1,
-<a href="https://doi.org/10.5281/zenodo.10047263" rel="noreferrer">Zenodo DOI 10.5281/zenodo.10047263</a>.
-Lisensi yang dinyatakan penerbit: <a href="https://creativecommons.org/licenses/by/4.0/" rel="noreferrer">CC BY 4.0</a>.
-Perubahan MEDCOEL: pemilihan satu volume dan subset mask, sampling nearest-neighbour,
+<p>@@ATTRIBUTION@@</p>
+<p>Perubahan MEDCOEL: pemilihan satu volume dan subset mask, sampling nearest-neighbour,
 window HU dan warna overlay. Bukti izin per file, review medis/privasi, serta persetujuan rilis tetap PENDING.</p>
 </section>
-<script src="../ct-mpr-private/volume.js"></script>
-<script src="../ct-mpr-private/geometry.js"></script>
-<script src="../ct-mpr-private/viewer.js"></script>
+<script src="@@BUNDLE_DIR@@/volume.js"></script>
+<script src="@@BUNDLE_DIR@@/geometry.js"></script>
+<script src="@@BUNDLE_DIR@@/viewer.js"></script>
 </body></html>
