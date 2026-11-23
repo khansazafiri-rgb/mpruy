@@ -135,6 +135,7 @@ export async function collectPrivateStudioSourceQc({ownerRoot=ROOT}={}){
     const failed=sourceBytes.derived.mismatches.filter(m=>m.id.startsWith(studio.id+'.'));
     const mismatch=studio.id==='pelvis-ultrasound'&&candidate&&hub.results.some(r=>r.studio===studio.id&&r.kind==='fetal-head-contour');
     const ctStudio=['chest-ct','abdomen-ct'].includes(studio.id);
+    const pairedCtStudio=['brain-ct','cardiac-ct'].includes(studio.id);
     let previewSource=null;
     if(candidate){
       const candidateId=ctStudio?'totalsegmentator-small-v201':studio.id==='msk-xray'?'fracatlas-v7':null;
@@ -147,7 +148,10 @@ export async function collectPrivateStudioSourceQc({ownerRoot=ROOT}={}){
     }
     studioChecks.push({id:studio.id,title:studio.title,
       overall:mismatch||gate.decision.eligible?'FAIL':'BLOCKED',
-      privateDataPipeline:mismatch?'FAIL':candidate?(ctStudio?ct.status:'PASS'):'BLOCKED',
+      // A signed private pairing receipt is not the source-native voxel QC
+      // performed for TotalSegmentator; keep new CT modalities BLOCKED here.
+      privateDataPipeline:mismatch?'FAIL':pairedCtStudio?'BLOCKED':
+        candidate?(ctStudio?ct.status:'PASS'):'BLOCKED',
       nativePrivateBrowser:'BLOCKED',
       sourceScope:mismatch?'FAIL':candidate?'PASS':'BLOCKED',
       sourceScopeNote:mismatch?'HC18 depicts fetal head, not gynecologic pelvis':local.primaryBlocker,
