@@ -1,0 +1,921 @@
+[
+ {
+  "start": 0.0,
+  "end": 3.84,
+  "text": " Kenapa saat kepanasan, tubuh kita tiba-tiba mengeluarkan keringat?",
+  "words": [
+   {
+    "w": " Kenapa",
+    "s": 0.0,
+    "e": 0.74
+   },
+   {
+    "w": " saat",
+    "s": 0.74,
+    "e": 1.04
+   },
+   {
+    "w": " kepanasan,",
+    "s": 1.04,
+    "e": 1.66
+   },
+   {
+    "w": " tubuh",
+    "s": 2.08,
+    "e": 2.24
+   },
+   {
+    "w": " kita",
+    "s": 2.24,
+    "e": 2.44
+   },
+   {
+    "w": " tiba",
+    "s": 2.44,
+    "e": 2.64
+   },
+   {
+    "w": "-tiba",
+    "s": 2.64,
+    "e": 2.92
+   },
+   {
+    "w": " mengeluarkan",
+    "s": 2.92,
+    "e": 3.4
+   },
+   {
+    "w": " keringat?",
+    "s": 3.4,
+    "e": 3.84
+   }
+  ]
+ },
+ {
+  "start": 4.64,
+  "end": 9.18,
+  "text": " Ketika suhu tubuh naik, hipotalamus di otak membantu mengatur respons pendinginan.",
+  "words": [
+   {
+    "w": " Ketika",
+    "s": 4.64,
+    "e": 5.04
+   },
+   {
+    "w": " suhu",
+    "s": 5.04,
+    "e": 5.24
+   },
+   {
+    "w": " tubuh",
+    "s": 5.24,
+    "e": 5.5
+   },
+   {
+    "w": " naik,",
+    "s": 5.5,
+    "e": 5.84
+   },
+   {
+    "w": " hipotalamus",
+    "s": 6.16,
+    "e": 6.78
+   },
+   {
+    "w": " di",
+    "s": 6.78,
+    "e": 6.94
+   },
+   {
+    "w": " otak",
+    "s": 6.94,
+    "e": 7.2
+   },
+   {
+    "w": " membantu",
+    "s": 7.2,
+    "e": 7.66
+   },
+   {
+    "w": " mengatur",
+    "s": 7.66,
+    "e": 8.04
+   },
+   {
+    "w": " respons",
+    "s": 8.04,
+    "e": 8.44
+   },
+   {
+    "w": " pendinginan.",
+    "s": 8.44,
+    "e": 9.18
+   }
+  ]
+ },
+ {
+  "start": 9.54,
+  "end": 13.8,
+  "text": " Ia mengirim sinyal melalui sarap simpatis menuju kelenjar keringat ekrin di kulit.",
+  "words": [
+   {
+    "w": " Ia",
+    "s": 9.54,
+    "e": 9.82
+   },
+   {
+    "w": " mengirim",
+    "s": 9.82,
+    "e": 10.1
+   },
+   {
+    "w": " sinyal",
+    "s": 10.1,
+    "e": 10.6
+   },
+   {
+    "w": " melalui",
+    "s": 10.6,
+    "e": 10.94
+   },
+   {
+    "w": " sarap",
+    "s": 10.94,
+    "e": 11.18
+   },
+   {
+    "w": " simpatis",
+    "s": 11.18,
+    "e": 11.86
+   },
+   {
+    "w": " menuju",
+    "s": 11.86,
+    "e": 12.28
+   },
+   {
+    "w": " kelenjar",
+    "s": 12.28,
+    "e": 12.68
+   },
+   {
+    "w": " keringat",
+    "s": 12.68,
+    "e": 13.08
+   },
+   {
+    "w": " ekrin",
+    "s": 13.08,
+    "e": 13.4
+   },
+   {
+    "w": " di",
+    "s": 13.4,
+    "e": 13.56
+   },
+   {
+    "w": " kulit.",
+    "s": 13.56,
+    "e": 13.8
+   }
+  ]
+ },
+ {
+  "start": 14.28,
+  "end": 18.24,
+  "text": " Menariknya, sarap ini menggunakan zat pembawa pesan bernama acetylcholine.",
+  "words": [
+   {
+    "w": " Menariknya,",
+    "s": 14.28,
+    "e": 14.9
+   },
+   {
+    "w": " sarap",
+    "s": 15.2,
+    "e": 15.44
+   },
+   {
+    "w": " ini",
+    "s": 15.44,
+    "e": 15.6
+   },
+   {
+    "w": " menggunakan",
+    "s": 15.6,
+    "e": 16.04
+   },
+   {
+    "w": " zat",
+    "s": 16.04,
+    "e": 16.28
+   },
+   {
+    "w": " pembawa",
+    "s": 16.28,
+    "e": 16.66
+   },
+   {
+    "w": " pesan",
+    "s": 16.66,
+    "e": 17.06
+   },
+   {
+    "w": " bernama",
+    "s": 17.06,
+    "e": 17.48
+   },
+   {
+    "w": " acetylcholine.",
+    "s": 17.48,
+    "e": 18.24
+   }
+  ]
+ },
+ {
+  "start": 19.04,
+  "end": 22.96,
+  "text": " Di bagian kelenjar yang berbentuk gulungan, cairan keringat mulai dibuat.",
+  "words": [
+   {
+    "w": " Di",
+    "s": 19.04,
+    "e": 19.44
+   },
+   {
+    "w": " bagian",
+    "s": 19.44,
+    "e": 19.74
+   },
+   {
+    "w": " kelenjar",
+    "s": 19.74,
+    "e": 20.1
+   },
+   {
+    "w": " yang",
+    "s": 20.1,
+    "e": 20.3
+   },
+   {
+    "w": " berbentuk",
+    "s": 20.3,
+    "e": 20.72
+   },
+   {
+    "w": " gulungan,",
+    "s": 20.72,
+    "e": 21.28
+   },
+   {
+    "w": " cairan",
+    "s": 21.6,
+    "e": 21.86
+   },
+   {
+    "w": " keringat",
+    "s": 21.86,
+    "e": 22.2
+   },
+   {
+    "w": " mulai",
+    "s": 22.2,
+    "e": 22.56
+   },
+   {
+    "w": " dibuat.",
+    "s": 22.56,
+    "e": 22.96
+   }
+  ]
+ },
+ {
+  "start": 23.32,
+  "end": 27.36,
+  "text": " Saat cairan melewati saluran menuju permukaan kulit, sebagian garamnya diserap kembali.",
+  "words": [
+   {
+    "w": " Saat",
+    "s": 23.32,
+    "e": 23.62
+   },
+   {
+    "w": " cairan",
+    "s": 23.62,
+    "e": 23.92
+   },
+   {
+    "w": " melewati",
+    "s": 23.92,
+    "e": 24.28
+   },
+   {
+    "w": " saluran",
+    "s": 24.28,
+    "e": 24.7
+   },
+   {
+    "w": " menuju",
+    "s": 24.7,
+    "e": 25.0
+   },
+   {
+    "w": " permukaan",
+    "s": 25.0,
+    "e": 25.5
+   },
+   {
+    "w": " kulit,",
+    "s": 25.5,
+    "e": 25.84
+   },
+   {
+    "w": " sebagian",
+    "s": 26.04,
+    "e": 26.42
+   },
+   {
+    "w": " garamnya",
+    "s": 26.42,
+    "e": 26.74
+   },
+   {
+    "w": " diserap",
+    "s": 26.74,
+    "e": 27.0
+   },
+   {
+    "w": " kembali.",
+    "s": 27.0,
+    "e": 27.36
+   }
+  ]
+ },
+ {
+  "start": 27.36,
+  "end": 30.38,
+  "text": " Sisanya, keluar melalui pori sebagai keringat.",
+  "words": [
+   {
+    "w": " Sisanya,",
+    "s": 27.36,
+    "e": 28.38
+   },
+   {
+    "w": " keluar",
+    "s": 28.72,
+    "e": 29.02
+   },
+   {
+    "w": " melalui",
+    "s": 29.02,
+    "e": 29.42
+   },
+   {
+    "w": " pori",
+    "s": 29.42,
+    "e": 29.7
+   },
+   {
+    "w": " sebagai",
+    "s": 29.7,
+    "e": 29.92
+   },
+   {
+    "w": " keringat.",
+    "s": 29.92,
+    "e": 30.38
+   }
+  ]
+ },
+ {
+  "start": 30.92,
+  "end": 33.76,
+  "text": " Tapi kulit yang basah saja belum tentu membuat kita dingin,",
+  "words": [
+   {
+    "w": " Tapi",
+    "s": 30.92,
+    "e": 31.42
+   },
+   {
+    "w": " kulit",
+    "s": 31.42,
+    "e": 31.68
+   },
+   {
+    "w": " yang",
+    "s": 31.68,
+    "e": 31.78
+   },
+   {
+    "w": " basah",
+    "s": 31.78,
+    "e": 32.02
+   },
+   {
+    "w": " saja",
+    "s": 32.02,
+    "e": 32.3
+   },
+   {
+    "w": " belum",
+    "s": 32.3,
+    "e": 32.6
+   },
+   {
+    "w": " tentu",
+    "s": 32.6,
+    "e": 32.92
+   },
+   {
+    "w": " membuat",
+    "s": 32.92,
+    "e": 33.16
+   },
+   {
+    "w": " kita",
+    "s": 33.16,
+    "e": 33.36
+   },
+   {
+    "w": " dingin,",
+    "s": 33.36,
+    "e": 33.76
+   }
+  ]
+ },
+ {
+  "start": 34.14,
+  "end": 38.34,
+  "text": " pendinginan terjadi terutama ketika keringat menguap dan membawa panas dari kulit.",
+  "words": [
+   {
+    "w": " pendinginan",
+    "s": 34.14,
+    "e": 34.56
+   },
+   {
+    "w": " terjadi",
+    "s": 34.56,
+    "e": 35.06
+   },
+   {
+    "w": " terutama",
+    "s": 35.06,
+    "e": 35.6
+   },
+   {
+    "w": " ketika",
+    "s": 35.6,
+    "e": 35.96
+   },
+   {
+    "w": " keringat",
+    "s": 35.96,
+    "e": 36.4
+   },
+   {
+    "w": " menguap",
+    "s": 36.4,
+    "e": 36.84
+   },
+   {
+    "w": " dan",
+    "s": 36.84,
+    "e": 37.12
+   },
+   {
+    "w": " membawa",
+    "s": 37.12,
+    "e": 37.44
+   },
+   {
+    "w": " panas",
+    "s": 37.44,
+    "e": 37.8
+   },
+   {
+    "w": " dari",
+    "s": 37.8,
+    "e": 37.98
+   },
+   {
+    "w": " kulit.",
+    "s": 37.98,
+    "e": 38.34
+   }
+  ]
+ },
+ {
+  "start": 38.6,
+  "end": 43.12,
+  "text": " Itu sebabnya, udara yang lembab bisa membuat kita tetap gerah meski sudah berkeringat banyak.",
+  "words": [
+   {
+    "w": " Itu",
+    "s": 38.6,
+    "e": 38.84
+   },
+   {
+    "w": " sebabnya,",
+    "s": 38.84,
+    "e": 39.34
+   },
+   {
+    "w": " udara",
+    "s": 39.56,
+    "e": 39.8
+   },
+   {
+    "w": " yang",
+    "s": 39.8,
+    "e": 39.96
+   },
+   {
+    "w": " lembab",
+    "s": 39.96,
+    "e": 40.24
+   },
+   {
+    "w": " bisa",
+    "s": 40.24,
+    "e": 40.58
+   },
+   {
+    "w": " membuat",
+    "s": 40.58,
+    "e": 40.9
+   },
+   {
+    "w": " kita",
+    "s": 40.9,
+    "e": 41.08
+   },
+   {
+    "w": " tetap",
+    "s": 41.08,
+    "e": 41.44
+   },
+   {
+    "w": " gerah",
+    "s": 41.44,
+    "e": 41.78
+   },
+   {
+    "w": " meski",
+    "s": 41.78,
+    "e": 42.22
+   },
+   {
+    "w": " sudah",
+    "s": 42.22,
+    "e": 42.44
+   },
+   {
+    "w": " berkeringat",
+    "s": 42.44,
+    "e": 42.9
+   },
+   {
+    "w": " banyak.",
+    "s": 42.9,
+    "e": 43.12
+   }
+  ]
+ },
+ {
+  "start": 43.86,
+  "end": 45.4,
+  "text": " Sistem ini juga bisa terganggu.",
+  "words": [
+   {
+    "w": " Sistem",
+    "s": 43.86,
+    "e": 44.34
+   },
+   {
+    "w": " ini",
+    "s": 44.34,
+    "e": 44.5
+   },
+   {
+    "w": " juga",
+    "s": 44.5,
+    "e": 44.7
+   },
+   {
+    "w": " bisa",
+    "s": 44.7,
+    "e": 44.92
+   },
+   {
+    "w": " terganggu.",
+    "s": 44.92,
+    "e": 45.4
+   }
+  ]
+ },
+ {
+  "start": 45.82,
+  "end": 48.34,
+  "text": " Pada hiperhidrosis, keringat keluar berlebihan,",
+  "words": [
+   {
+    "w": " Pada",
+    "s": 45.82,
+    "e": 46.1
+   },
+   {
+    "w": " hiperhidrosis,",
+    "s": 46.1,
+    "e": 46.92
+   },
+   {
+    "w": " keringat",
+    "s": 47.22,
+    "e": 47.48
+   },
+   {
+    "w": " keluar",
+    "s": 47.48,
+    "e": 47.7
+   },
+   {
+    "w": " berlebihan,",
+    "s": 47.7,
+    "e": 48.34
+   }
+  ]
+ },
+ {
+  "start": 48.5,
+  "end": 51.3,
+  "text": " bahkan ketika tubuh tidak membutuhkan pendinginan sebanyak itu.",
+  "words": [
+   {
+    "w": " bahkan",
+    "s": 48.5,
+    "e": 48.84
+   },
+   {
+    "w": " ketika",
+    "s": 48.84,
+    "e": 49.12
+   },
+   {
+    "w": " tubuh",
+    "s": 49.12,
+    "e": 49.44
+   },
+   {
+    "w": " tidak",
+    "s": 49.44,
+    "e": 49.68
+   },
+   {
+    "w": " membutuhkan",
+    "s": 49.68,
+    "e": 50.22
+   },
+   {
+    "w": " pendinginan",
+    "s": 50.22,
+    "e": 50.72
+   },
+   {
+    "w": " sebanyak",
+    "s": 50.72,
+    "e": 51.02
+   },
+   {
+    "w": " itu.",
+    "s": 51.02,
+    "e": 51.3
+   }
+  ]
+ },
+ {
+  "start": 51.3,
+  "end": 54.300000000000004,
+  "text": " Sebaliknya, pada hiperhidrosis atau anhidrosis,",
+  "words": [
+   {
+    "w": " Sebaliknya,",
+    "s": 51.3,
+    "e": 52.36
+   },
+   {
+    "w": " pada",
+    "s": 52.5,
+    "e": 52.72
+   },
+   {
+    "w": " hiperhidrosis",
+    "s": 52.72,
+    "e": 53.54
+   },
+   {
+    "w": " atau",
+    "s": 53.54,
+    "e": 53.8
+   },
+   {
+    "w": " anhidrosis,",
+    "s": 53.8,
+    "e": 54.3
+   }
+  ]
+ },
+ {
+  "start": 55.08,
+  "end": 59.2,
+  "text": " keringat terlalu sedikit atau tidak keluar, sehingga tubuh lebih sulit membuang panas.",
+  "words": [
+   {
+    "w": " keringat",
+    "s": 55.08,
+    "e": 55.34
+   },
+   {
+    "w": " terlalu",
+    "s": 55.34,
+    "e": 55.76
+   },
+   {
+    "w": " sedikit",
+    "s": 55.76,
+    "e": 56.16
+   },
+   {
+    "w": " atau",
+    "s": 56.16,
+    "e": 56.42
+   },
+   {
+    "w": " tidak",
+    "s": 56.42,
+    "e": 56.64
+   },
+   {
+    "w": " keluar,",
+    "s": 56.64,
+    "e": 57.0
+   },
+   {
+    "w": " sehingga",
+    "s": 57.28,
+    "e": 57.58
+   },
+   {
+    "w": " tubuh",
+    "s": 57.58,
+    "e": 57.94
+   },
+   {
+    "w": " lebih",
+    "s": 57.94,
+    "e": 58.18
+   },
+   {
+    "w": " sulit",
+    "s": 58.18,
+    "e": 58.48
+   },
+   {
+    "w": " membuang",
+    "s": 58.48,
+    "e": 58.76
+   },
+   {
+    "w": " panas.",
+    "s": 58.76,
+    "e": 59.2
+   }
+  ]
+ },
+ {
+  "start": 59.68,
+  "end": 63.66,
+  "text": " Dan satu hal penting, kondisi panas yang berbahaya tidak selalu berarti kulit kering.",
+  "words": [
+   {
+    "w": " Dan",
+    "s": 59.68,
+    "e": 59.88
+   },
+   {
+    "w": " satu",
+    "s": 59.88,
+    "e": 60.08
+   },
+   {
+    "w": " hal",
+    "s": 60.08,
+    "e": 60.22
+   },
+   {
+    "w": " penting,",
+    "s": 60.22,
+    "e": 60.66
+   },
+   {
+    "w": " kondisi",
+    "s": 61.0,
+    "e": 61.32
+   },
+   {
+    "w": " panas",
+    "s": 61.32,
+    "e": 61.64
+   },
+   {
+    "w": " yang",
+    "s": 61.64,
+    "e": 61.7
+   },
+   {
+    "w": " berbahaya",
+    "s": 61.7,
+    "e": 62.16
+   },
+   {
+    "w": " tidak",
+    "s": 62.16,
+    "e": 62.4
+   },
+   {
+    "w": " selalu",
+    "s": 62.4,
+    "e": 62.82
+   },
+   {
+    "w": " berarti",
+    "s": 62.82,
+    "e": 63.14
+   },
+   {
+    "w": " kulit",
+    "s": 63.14,
+    "e": 63.42
+   },
+   {
+    "w": " kering.",
+    "s": 63.42,
+    "e": 63.66
+   }
+  ]
+ },
+ {
+  "start": 63.98,
+  "end": 66.78,
+  "text": " Seseorang yang masih berkeringat pun bisa mengalami hit stroke.",
+  "words": [
+   {
+    "w": " Seseorang",
+    "s": 63.98,
+    "e": 64.36
+   },
+   {
+    "w": " yang",
+    "s": 64.36,
+    "e": 64.54
+   },
+   {
+    "w": " masih",
+    "s": 64.54,
+    "e": 64.88
+   },
+   {
+    "w": " berkeringat",
+    "s": 64.88,
+    "e": 65.38
+   },
+   {
+    "w": " pun",
+    "s": 65.38,
+    "e": 65.52
+   },
+   {
+    "w": " bisa",
+    "s": 65.52,
+    "e": 65.94
+   },
+   {
+    "w": " mengalami",
+    "s": 65.94,
+    "e": 66.38
+   },
+   {
+    "w": " hit",
+    "s": 66.38,
+    "e": 66.54
+   },
+   {
+    "w": " stroke.",
+    "s": 66.54,
+    "e": 66.78
+   }
+  ]
+ }
+]

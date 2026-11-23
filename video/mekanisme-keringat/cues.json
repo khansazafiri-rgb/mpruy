@@ -1,0 +1,344 @@
+{
+ "dur": 83.2,
+ "edu_dur": 67.0,
+ "outro_dur": 16.2,
+ "sent": {
+  "s1": [
+   0.0,
+   3.84
+  ],
+  "s2": [
+   4.64,
+   9.18
+  ],
+  "s3": [
+   9.54,
+   13.8
+  ],
+  "s4": [
+   14.28,
+   18.24
+  ],
+  "s5": [
+   19.04,
+   22.96
+  ],
+  "s6": [
+   23.32,
+   27.36
+  ],
+  "s7": [
+   27.36,
+   30.38
+  ],
+  "s8": [
+   30.92,
+   33.76
+  ],
+  "s9": [
+   34.14,
+   38.34
+  ],
+  "s10": [
+   38.6,
+   43.12
+  ],
+  "s11": [
+   43.86,
+   45.4
+  ],
+  "s12": [
+   45.82,
+   48.34
+  ],
+  "s13": [
+   48.5,
+   51.3
+  ],
+  "s14": [
+   51.3,
+   54.3
+  ],
+  "s15": [
+   55.08,
+   59.2
+  ],
+  "s16": [
+   59.68,
+   63.66
+  ],
+  "s17": [
+   63.98,
+   66.9
+  ]
+ },
+ "w": {
+  "kepanasan": 1.04,
+  "keringat": 3.4,
+  "suhuNaik": 5.04,
+  "naik": 5.5,
+  "hipotalamus": 6.16,
+  "otak": 6.94,
+  "respons": 8.04,
+  "pendinginan1": 8.44,
+  "sinyal": 10.1,
+  "saraf": 10.94,
+  "simpatis": 11.18,
+  "menuju": 11.86,
+  "ekrin": 13.08,
+  "kulit1": 13.56,
+  "saraf2": 15.2,
+  "zat": 16.04,
+  "asetilkolin": 17.48,
+  "gulungan": 20.3,
+  "cairan": 21.6,
+  "dibuat": 22.56,
+  "saluran": 24.28,
+  "permukaan": 25.0,
+  "garam": 26.42,
+  "diserap": 26.74,
+  "sisanya": 27.36,
+  "pori": 29.42,
+  "keringat2": 29.92,
+  "basah": 31.78,
+  "dingin": 33.36,
+  "pendinginan2": 34.14,
+  "menguap": 36.4,
+  "panas": 37.44,
+  "lembap": 39.96,
+  "gerah": 41.44,
+  "berkeringat": 42.44,
+  "terganggu": 44.92,
+  "hiper": 46.1,
+  "berlebihan": 47.7,
+  "bahkan": 48.5,
+  "sebaliknya": 51.3,
+  "hipo": 52.72,
+  "anhidrosis": 53.8,
+  "sedikit": 55.76,
+  "sulit": 58.18,
+  "membuang": 58.48,
+  "penting": 60.22,
+  "berbahaya": 61.7,
+  "kering": 63.42,
+  "masihBerkeringat": 64.88,
+  "heat": 66.38
+ },
+ "cap": [
+  [
+   0.0,
+   1.28,
+   "Kenapa saat kepanasan"
+  ],
+  [
+   1.28,
+   2.5,
+   "tubuh kita tiba-tiba"
+  ],
+  [
+   2.5,
+   3.94,
+   "mengeluarkan keringat?"
+  ],
+  [
+   4.64,
+   5.95,
+   "Ketika suhu tubuh naik,"
+  ],
+  [
+   5.95,
+   7.53,
+   "hipotalamus di otak membantu"
+  ],
+  [
+   7.53,
+   9.28,
+   "mengatur respons pendinginan."
+  ],
+  [
+   9.54,
+   10.92,
+   "Ia mengirim sinyal melalui"
+  ],
+  [
+   10.92,
+   12.04,
+   "saraf simpatis menuju"
+  ],
+  [
+   12.04,
+   13.9,
+   "kelenjar keringat ekrin di kulit."
+  ],
+  [
+   14.28,
+   15.47,
+   "Menariknya, saraf ini"
+  ],
+  [
+   15.47,
+   17.11,
+   "menggunakan zat pembawa pesan"
+  ],
+  [
+   17.11,
+   18.34,
+   "bernama asetilkolin."
+  ],
+  [
+   19.04,
+   20.31,
+   "Di bagian kelenjar yang"
+  ],
+  [
+   20.31,
+   21.36,
+   "berbentuk gulungan,"
+  ],
+  [
+   21.36,
+   23.06,
+   "cairan keringat mulai dibuat."
+  ],
+  [
+   23.32,
+   24.65,
+   "Saat cairan melewati saluran"
+  ],
+  [
+   24.65,
+   25.74,
+   "menuju permukaan kulit,"
+  ],
+  [
+   25.74,
+   27.46,
+   "sebagian garamnya diserap kembali."
+  ],
+  [
+   27.36,
+   29.21,
+   "Sisanya keluar melalui pori"
+  ],
+  [
+   29.21,
+   30.48,
+   "sebagai keringat."
+  ],
+  [
+   30.92,
+   32.19,
+   "Tapi kulit yang basah saja"
+  ],
+  [
+   32.19,
+   33.86,
+   "belum tentu membuat kita dingin."
+  ],
+  [
+   34.14,
+   35.61,
+   "Pendinginan terjadi terutama"
+  ],
+  [
+   35.61,
+   36.82,
+   "ketika keringat menguap"
+  ],
+  [
+   36.82,
+   38.44,
+   "dan membawa panas dari kulit."
+  ],
+  [
+   38.6,
+   40.11,
+   "Itu sebabnya udara yang lembap"
+  ],
+  [
+   40.11,
+   41.56,
+   "bisa membuat kita tetap gerah"
+  ],
+  [
+   41.56,
+   43.22,
+   "meski sudah berkeringat banyak."
+  ],
+  [
+   43.86,
+   45.5,
+   "Sistem ini juga bisa terganggu."
+  ],
+  [
+   45.82,
+   46.86,
+   "Pada hiperhidrosis,"
+  ],
+  [
+   46.86,
+   48.44,
+   "keringat keluar berlebihan,"
+  ],
+  [
+   48.5,
+   49.63,
+   "bahkan ketika tubuh tidak"
+  ],
+  [
+   49.63,
+   51.4,
+   "membutuhkan pendinginan sebanyak itu."
+  ],
+  [
+   51.3,
+   53.23,
+   "Sebaliknya, pada hipohidrosis"
+  ],
+  [
+   53.23,
+   54.4,
+   "atau anhidrosis,"
+  ],
+  [
+   55.08,
+   56.26,
+   "keringat terlalu sedikit"
+  ],
+  [
+   56.26,
+   57.88,
+   "atau tidak keluar, sehingga tubuh"
+  ],
+  [
+   57.88,
+   59.3,
+   "lebih sulit membuang panas."
+  ],
+  [
+   59.68,
+   60.69,
+   "Dan satu hal penting:"
+  ],
+  [
+   60.69,
+   62.03,
+   "kondisi panas yang berbahaya"
+  ],
+  [
+   62.03,
+   63.76,
+   "tidak selalu berarti kulit kering."
+  ],
+  [
+   63.98,
+   65.46,
+   "Seseorang yang masih berkeringat"
+  ],
+  [
+   65.46,
+   67.0,
+   "pun bisa mengalami heat stroke."
+  ]
+ ]
+}

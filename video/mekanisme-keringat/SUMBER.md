@@ -1,0 +1,14 @@
+# Sumber dan asal-usul
+## Audio
+| Berkas | Asal | Lisensi / catatan |
+|---|---|---|
+| `audio/narasi-edukasi.wav` | Narasi Google AI Studio yang diunggah pemesan (`Generated_Audio_November_23_2026_-_7_22AM.wav`), 24 kHz mono, 67,00 dtk. Tempo dan nada tidak diubah; di-resample ke 48 kHz stereo dan dinormalkan statis. | Dari pemesan. |
+| `brand/video/outro/medcoel-outro-master.mp4` | Master outro baku MEDCOEL di repo (16,20 dtk). Ditempel utuh dengan re-encode sesuai README master; tanpa tambahan. | Aset MEDCOEL. |
+| `audio/stem-musik.wav`, `stem-sfx.wav`, `stem-suara.wav` (tidak di-commit; dibuat ulang `audio/audio_mix.py`) | Musik (pad + pluck, 100 BPM) dan efek kecil (denyut saraf, asetilkolin, klik label, peralihan skala, desir lembut saat penguapan) disintesis dari kode (numpy/scipy). Tetes keringat sengaja TIDAK diberi bunyi air nyata; efeknya abstrak. | **CC0 1.0**, tanpa sampel/musik pihak ketiga; aman untuk promosi Instagram/TikTok. Daftar efek + waktu: `audio/events.json`. |
+## Gambar
+Semua dari kode (`stage/*.js`). Raka hanya lewat `rakaSvg()` (`brand/characters/raka/raka.js`). Otak, kulit, kelenjar, saluran, molekul digambar skematis. Logo `apps/web/src/assets/logo-full.webp`. Font `video/kopi-kafein-adenosin/stage/fonts`.
+## Sumber isi (dibuka 2026-11-23)
+- **PMC7125257, "Physiological mechanisms determining eccrine sweat composition"** (dibuka lewat unduhan halaman): cairan primer dibentuk di *secretory coil* kelenjar ekrin; fungsi utama saluran (*duct*) adalah menyerap kembali Na⁺ dan Cl⁻ sehingga keringat akhir di permukaan kulit bersifat hipotonik → dasar "sebagian garam diserap kembali, tetes bukan garam murni".
+- **PMC6773238, "Physiology of sweat gland function: the roles of sweating and sweat composition in human health"** (dibuka): kenaikan suhu tubuh diproses *preoptic area* hipotalamus untuk memicu respons sudomotor; asetilkolin mengikat reseptor muskarinik pada sel kelenjar; hiperhidrosis primer = keringat meningkat (aksila, telapak, kraniofasial) dengan kelenjar yang normal tetapi terlalu aktif (neurogenik); anhidrosis/hipohidrosis = keringat berkurang atau tidak ada; teori keseimbangan panas (kebutuhan evaporasi vs kapasitas evaporasi lingkungan) dan hidromeiosis pada udara lembap/diam.
+- **CDC/NIOSH, "Heat stress: heat-related illnesses"** — **TIDAK dapat dibuka** dari lingkungan ini (halaman menolak akses otomatis, "Access Denied"). Pernyataan "heat stroke tidak selalu berarti kulit kering; yang masih berkeringat pun bisa mengalaminya" mengikuti brief pemesan yang menyebut halaman itu, dan sengaja dibuat longgar: tidak ada daftar gejala, angka suhu, atau saran tindakan di layar. **Mohon diverifikasi manusia terhadap halaman CDC sebelum publikasi.**
+- Klaim "pendinginan terutama lewat penguapan; udara lembap menghambat penguapan" mengikuti brief dan konsep keseimbangan panas di PMC6773238; tidak ada angka kuantitatif di video.
