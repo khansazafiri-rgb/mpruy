@@ -1,0 +1,150 @@
+{
+ "durasi_edukasi": 60,
+ "offset_narasi": 0.3,
+ "sfx": [
+  {
+   "t": 0.4,
+   "sfx": "judul"
+  },
+  {
+   "t": 3.34,
+   "sfx": "bentol"
+  },
+  {
+   "t": 7.5,
+   "sfx": "masuk-kulit"
+  },
+  {
+   "t": 11.0,
+   "sfx": "alergen-menempel"
+  },
+  {
+   "t": 11.35,
+   "sfx": "alergen-menempel"
+  },
+  {
+   "t": 11.7,
+   "sfx": "alergen-menempel"
+  },
+  {
+   "t": 12.05,
+   "sfx": "alergen-menempel"
+  },
+  {
+   "t": 12.4,
+   "sfx": "alergen-menempel"
+  },
+  {
+   "t": 12.75,
+   "sfx": "alergen-menempel"
+  },
+  {
+   "t": 14.2,
+   "sfx": "mediator-dilepas"
+  },
+  {
+   "t": 14.45,
+   "sfx": "mediator-dilepas"
+  },
+  {
+   "t": 14.7,
+   "sfx": "mediator-dilepas"
+  },
+  {
+   "t": 14.95,
+   "sfx": "mediator-dilepas"
+  },
+  {
+   "t": 15.2,
+   "sfx": "mediator-dilepas"
+  },
+  {
+   "t": 15.45,
+   "sfx": "mediator-dilepas"
+  },
+  {
+   "t": 15.7,
+   "sfx": "mediator-dilepas"
+  },
+  {
+   "t": 16.3,
+   "sfx": "masuk-pembuluh"
+  },
+  {
+   "t": 16.94,
+   "sfx": "pembuluh-melebar"
+  },
+  {
+   "t": 18.2,
+   "sfx": "cairan-bocor"
+  },
+  {
+   "t": 18.5,
+   "sfx": "cairan-bocor"
+  },
+  {
+   "t": 18.8,
+   "sfx": "cairan-bocor"
+  },
+  {
+   "t": 19.1,
+   "sfx": "cairan-bocor"
+  },
+  {
+   "t": 19.3,
+   "sfx": "tekanan-turun"
+  },
+  {
+   "t": 20.8,
+   "sfx": "saluran-napas"
+  },
+  {
+   "t": 23.5,
+   "sfx": "bronkus-menyempit"
+  },
+  {
+   "t": 29.2,
+   "sfx": "pena"
+  },
+  {
+   "t": 33.5,
+   "sfx": "pena-bekerja"
+  },
+  {
+   "t": 34.9,
+   "sfx": "adrenalin-masuk"
+  },
+  {
+   "t": 35.7,
+   "sfx": "masuk-reseptor"
+  },
+  {
+   "t": 39.22,
+   "sfx": "alfa"
+  },
+  {
+   "t": 42.78,
+   "sfx": "beta2"
+  },
+  {
+   "t": 45.78,
+   "sfx": "beta1"
+  },
+  {
+   "t": 47.9,
+   "sfx": "bersama"
+  },
+  {
+   "t": 48.58,
+   "sfx": "perbandingan"
+  },
+  {
+   "t": 55.0,
+   "sfx": "bantuan"
+  },
+  {
+   "t": 59.2,
+   "sfx": "akhir"
+  }
+ ]
+}

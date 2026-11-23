@@ -1,0 +1,40 @@
+1
+00:00:00,300 --> 00:00:03,250
+Coba tekan kuku sebentar. Warnanya memutih.
+
+2
+00:00:03,620 --> 00:00:06,300
+Setelah dilepas, berapa detik sampai merah muda lagi?
+
+3
+00:00:06,980 --> 00:00:10,400
+Ini disebut capillary refill time, atau CRT.
+
+4
+00:00:10,980 --> 00:00:15,700
+Saat kuku ditekan, darah di pembuluh kecil bawahnya terdorong keluar sehingga terlihat pucat.
+
+5
+00:00:16,260 --> 00:00:20,300
+Begitu tekanan dilepas, darah mengalir kembali dan warnanya muncul lagi.
+
+6
+00:00:20,920 --> 00:00:23,600
+Warna biasanya kembali dalam sekitar dua detik atau kurang.
+
+7
+00:00:23,880 --> 00:00:27,000
+Kalau lebih lambat, aliran darah ke jaringan bisa sedang berkurang.
+
+8
+00:00:26,920 --> 00:00:32,300
+Tapi suhu dingin, usia, dan cara pemeriksaan juga dapat memengaruhi waktunya.
+
+9
+00:00:32,620 --> 00:00:35,100
+Jadi, angka dua detik itu petunjuk awal.
+
+10
+00:00:35,420 --> 00:00:38,800
+Hasil CRT harus dilihat bersama kondisi dan tanda klinis lainnya.
+

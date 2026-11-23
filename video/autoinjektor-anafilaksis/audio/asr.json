@@ -1,0 +1,844 @@
+{
+ "narasi-edukasi": [
+  {
+   "start": 0.0,
+   "end": 7.08,
+   "text": "Bayangkan, setelah makan sesuatu, seseorang tiba-tiba muncul bentol, suaranya berubah, sulit bernapas dan hampir pingsan.",
+   "words": [
+    {
+     "w": "Bayangkan,",
+     "s": 0.0,
+     "e": 0.72
+    },
+    {
+     "w": "setelah",
+     "s": 1.0,
+     "e": 1.3
+    },
+    {
+     "w": "makan",
+     "s": 1.3,
+     "e": 1.48
+    },
+    {
+     "w": "sesuatu,",
+     "s": 1.48,
+     "e": 2.04
+    },
+    {
+     "w": "seseorang",
+     "s": 2.3,
+     "e": 2.6
+    },
+    {
+     "w": "tiba",
+     "s": 2.6,
+     "e": 2.84
+    },
+    {
+     "w": "-tiba",
+     "s": 2.84,
+     "e": 3.04
+    },
+    {
+     "w": "muncul",
+     "s": 3.04,
+     "e": 3.3
+    },
+    {
+     "w": "bentol,",
+     "s": 3.3,
+     "e": 3.74
+    },
+    {
+     "w": "suaranya",
+     "s": 4.02,
+     "e": 4.48
+    },
+    {
+     "w": "berubah,",
+     "s": 4.48,
+     "e": 5.04
+    },
+    {
+     "w": "sulit",
+     "s": 5.36,
+     "e": 5.64
+    },
+    {
+     "w": "bernapas",
+     "s": 5.64,
+     "e": 6.16
+    },
+    {
+     "w": "dan",
+     "s": 6.16,
+     "e": 6.34
+    },
+    {
+     "w": "hampir",
+     "s": 6.34,
+     "e": 6.64
+    },
+    {
+     "w": "pingsan.",
+     "s": 6.64,
+     "e": 7.08
+    }
+   ]
+  },
+  {
+   "start": 7.5,
+   "end": 11.52,
+   "text": "Ini bisa menjadi anafilaxis, reaksi alergi berat yang terjadi cepat.",
+   "words": [
+    {
+     "w": "Ini",
+     "s": 7.5,
+     "e": 7.82
+    },
+    {
+     "w": "bisa",
+     "s": 7.82,
+     "e": 8.1
+    },
+    {
+     "w": "menjadi",
+     "s": 8.1,
+     "e": 8.46
+    },
+    {
+     "w": "anafilaxis,",
+     "s": 8.46,
+     "e": 9.04
+    },
+    {
+     "w": "reaksi",
+     "s": 9.48,
+     "e": 9.76
+    },
+    {
+     "w": "alergi",
+     "s": 9.76,
+     "e": 10.14
+    },
+    {
+     "w": "berat",
+     "s": 10.14,
+     "e": 10.46
+    },
+    {
+     "w": "yang",
+     "s": 10.46,
+     "e": 10.66
+    },
+    {
+     "w": "terjadi",
+     "s": 10.66,
+     "e": 11.18
+    },
+    {
+     "w": "cepat.",
+     "s": 11.18,
+     "e": 11.52
+    }
+   ]
+  },
+  {
+   "start": 12.3,
+   "end": 15.54,
+   "text": "Saat reaksi ini berlangsung, sel imun melepaskan zat seperti histamin.",
+   "words": [
+    {
+     "w": "Saat",
+     "s": 12.3,
+     "e": 12.54
+    },
+    {
+     "w": "reaksi",
+     "s": 12.54,
+     "e": 12.72
+    },
+    {
+     "w": "ini",
+     "s": 12.72,
+     "e": 12.9
+    },
+    {
+     "w": "berlangsung,",
+     "s": 12.9,
+     "e": 13.34
+    },
+    {
+     "w": "sel",
+     "s": 13.68,
+     "e": 13.78
+    },
+    {
+     "w": "imun",
+     "s": 13.78,
+     "e": 14.06
+    },
+    {
+     "w": "melepaskan",
+     "s": 14.06,
+     "e": 14.56
+    },
+    {
+     "w": "zat",
+     "s": 14.56,
+     "e": 14.76
+    },
+    {
+     "w": "seperti",
+     "s": 14.76,
+     "e": 15.08
+    },
+    {
+     "w": "histamin.",
+     "s": 15.08,
+     "e": 15.54
+    }
+   ]
+  },
+  {
+   "start": 16.1,
+   "end": 20.04,
+   "text": "Pembunuh darah melebar dan menjadi lebih mudah bocor, sehingga tekanan darah bisa turun.",
+   "words": [
+    {
+     "w": "Pembunuh",
+     "s": 16.1,
+     "e": 16.44
+    },
+    {
+     "w": "darah",
+     "s": 16.44,
+     "e": 16.64
+    },
+    {
+     "w": "melebar",
+     "s": 16.64,
+     "e": 16.98
+    },
+    {
+     "w": "dan",
+     "s": 16.98,
+     "e": 17.2
+    },
+    {
+     "w": "menjadi",
+     "s": 17.2,
+     "e": 17.48
+    },
+    {
+     "w": "lebih",
+     "s": 17.48,
+     "e": 17.68
+    },
+    {
+     "w": "mudah",
+     "s": 17.68,
+     "e": 17.9
+    },
+    {
+     "w": "bocor,",
+     "s": 17.9,
+     "e": 18.22
+    },
+    {
+     "w": "sehingga",
+     "s": 18.48,
+     "e": 18.96
+    },
+    {
+     "w": "tekanan",
+     "s": 18.96,
+     "e": 19.34
+    },
+    {
+     "w": "darah",
+     "s": 19.34,
+     "e": 19.58
+    },
+    {
+     "w": "bisa",
+     "s": 19.58,
+     "e": 19.7
+    },
+    {
+     "w": "turun.",
+     "s": 19.7,
+     "e": 20.04
+    }
+   ]
+  },
+  {
+   "start": 20.64,
+   "end": 23.96,
+   "text": "Saluran napas dapat membengkak sementara otot di sekitarnya menyempit.",
+   "words": [
+    {
+     "w": "Saluran",
+     "s": 20.64,
+     "e": 21.02
+    },
+    {
+     "w": "napas",
+     "s": 21.02,
+     "e": 21.36
+    },
+    {
+     "w": "dapat",
+     "s": 21.36,
+     "e": 21.52
+    },
+    {
+     "w": "membengkak",
+     "s": 21.52,
+     "e": 22.1
+    },
+    {
+     "w": "sementara",
+     "s": 22.1,
+     "e": 22.66
+    },
+    {
+     "w": "otot",
+     "s": 22.66,
+     "e": 23.02
+    },
+    {
+     "w": "di",
+     "s": 23.02,
+     "e": 23.16
+    },
+    {
+     "w": "sekitarnya",
+     "s": 23.16,
+     "e": 23.52
+    },
+    {
+     "w": "menyempit.",
+     "s": 23.52,
+     "e": 23.96
+    }
+   ]
+  },
+  {
+   "start": 24.32,
+   "end": 26.66,
+   "text": "Itulah sebabnya napas bisa terasa semakin sulit.",
+   "words": [
+    {
+     "w": "Itulah",
+     "s": 24.32,
+     "e": 24.68
+    },
+    {
+     "w": "sebabnya",
+     "s": 24.68,
+     "e": 24.96
+    },
+    {
+     "w": "napas",
+     "s": 24.96,
+     "e": 25.3
+    },
+    {
+     "w": "bisa",
+     "s": 25.3,
+     "e": 25.5
+    },
+    {
+     "w": "terasa",
+     "s": 25.5,
+     "e": 25.86
+    },
+    {
+     "w": "semakin",
+     "s": 25.86,
+     "e": 26.32
+    },
+    {
+     "w": "sulit.",
+     "s": 26.32,
+     "e": 26.66
+    }
+   ]
+  },
+  {
+   "start": 26.66,
+   "end": 29.74,
+   "text": "Di sini lah pena autoinjektor adrenalin di gunakan.",
+   "words": [
+    {
+     "w": "Di",
+     "s": 26.66,
+     "e": 27.62
+    },
+    {
+     "w": "sini",
+     "s": 27.62,
+     "e": 27.82
+    },
+    {
+     "w": "lah",
+     "s": 27.82,
+     "e": 28.0
+    },
+    {
+     "w": "pena",
+     "s": 28.0,
+     "e": 28.18
+    },
+    {
+     "w": "autoinjektor",
+     "s": 28.18,
+     "e": 28.9
+    },
+    {
+     "w": "adrenalin",
+     "s": 28.9,
+     "e": 29.36
+    },
+    {
+     "w": "di",
+     "s": 29.36,
+     "e": 29.44
+    },
+    {
+     "w": "gunakan.",
+     "s": 29.44,
+     "e": 29.74
+    }
+   ]
+  },
+  {
+   "start": 30.12,
+   "end": 34.72,
+   "text": "Alat ini menyalurkan adrenalin ke bagian luar paham lalu jarum yang bekerja otomatis.",
+   "words": [
+    {
+     "w": "Alat",
+     "s": 30.12,
+     "e": 30.56
+    },
+    {
+     "w": "ini",
+     "s": 30.56,
+     "e": 30.8
+    },
+    {
+     "w": "menyalurkan",
+     "s": 30.8,
+     "e": 31.36
+    },
+    {
+     "w": "adrenalin",
+     "s": 31.36,
+     "e": 31.9
+    },
+    {
+     "w": "ke",
+     "s": 31.9,
+     "e": 32.0
+    },
+    {
+     "w": "bagian",
+     "s": 32.0,
+     "e": 32.32
+    },
+    {
+     "w": "luar",
+     "s": 32.32,
+     "e": 32.56
+    },
+    {
+     "w": "paham",
+     "s": 32.56,
+     "e": 32.98
+    },
+    {
+     "w": "lalu",
+     "s": 32.98,
+     "e": 33.2
+    },
+    {
+     "w": "jarum",
+     "s": 33.2,
+     "e": 33.68
+    },
+    {
+     "w": "yang",
+     "s": 33.68,
+     "e": 33.84
+    },
+    {
+     "w": "bekerja",
+     "s": 33.84,
+     "e": 34.18
+    },
+    {
+     "w": "otomatis.",
+     "s": 34.18,
+     "e": 34.72
+    }
+   ]
+  },
+  {
+   "start": 35.28,
+   "end": 38.4,
+   "text": "Setelah masuk ke tubuh, adrenalin bekerja pada beberapa reseptor.",
+   "words": [
+    {
+     "w": "Setelah",
+     "s": 35.28,
+     "e": 35.78
+    },
+    {
+     "w": "masuk",
+     "s": 35.78,
+     "e": 35.92
+    },
+    {
+     "w": "ke",
+     "s": 35.92,
+     "e": 36.1
+    },
+    {
+     "w": "tubuh,",
+     "s": 36.1,
+     "e": 36.36
+    },
+    {
+     "w": "adrenalin",
+     "s": 36.64,
+     "e": 37.06
+    },
+    {
+     "w": "bekerja",
+     "s": 37.06,
+     "e": 37.38
+    },
+    {
+     "w": "pada",
+     "s": 37.38,
+     "e": 37.56
+    },
+    {
+     "w": "beberapa",
+     "s": 37.56,
+     "e": 37.94
+    },
+    {
+     "w": "reseptor.",
+     "s": 37.94,
+     "e": 38.4
+    }
+   ]
+  },
+  {
+   "start": 38.92,
+   "end": 42.02,
+   "text": "Efek alpha membantu menyempitkan pembulu darah dan mengurangi pembengkakan.",
+   "words": [
+    {
+     "w": "Efek",
+     "s": 38.92,
+     "e": 39.16
+    },
+    {
+     "w": "alpha",
+     "s": 39.16,
+     "e": 39.46
+    },
+    {
+     "w": "membantu",
+     "s": 39.46,
+     "e": 40.0
+    },
+    {
+     "w": "menyempitkan",
+     "s": 40.0,
+     "e": 40.46
+    },
+    {
+     "w": "pembulu",
+     "s": 40.46,
+     "e": 40.76
+    },
+    {
+     "w": "darah",
+     "s": 40.76,
+     "e": 41.06
+    },
+    {
+     "w": "dan",
+     "s": 41.06,
+     "e": 41.2
+    },
+    {
+     "w": "mengurangi",
+     "s": 41.2,
+     "e": 41.52
+    },
+    {
+     "w": "pembengkakan.",
+     "s": 41.52,
+     "e": 42.02
+    }
+   ]
+  },
+  {
+   "start": 42.48,
+   "end": 45.18,
+   "text": "Efek beta 2 membantu otot saluran napas mengendur.",
+   "words": [
+    {
+     "w": "Efek",
+     "s": 42.48,
+     "e": 42.92
+    },
+    {
+     "w": "beta",
+     "s": 42.92,
+     "e": 43.08
+    },
+    {
+     "w": "2",
+     "s": 43.08,
+     "e": 43.4
+    },
+    {
+     "w": "membantu",
+     "s": 43.4,
+     "e": 43.88
+    },
+    {
+     "w": "otot",
+     "s": 43.88,
+     "e": 44.14
+    },
+    {
+     "w": "saluran",
+     "s": 44.14,
+     "e": 44.4
+    },
+    {
+     "w": "napas",
+     "s": 44.4,
+     "e": 44.7
+    },
+    {
+     "w": "mengendur.",
+     "s": 44.7,
+     "e": 45.18
+    }
+   ]
+  },
+  {
+   "start": 45.48,
+   "end": 47.52,
+   "text": "Efek beta 1 mendukung kerja jantung.",
+   "words": [
+    {
+     "w": "Efek",
+     "s": 45.48,
+     "e": 45.76
+    },
+    {
+     "w": "beta",
+     "s": 45.76,
+     "e": 45.96
+    },
+    {
+     "w": "1",
+     "s": 45.96,
+     "e": 46.36
+    },
+    {
+     "w": "mendukung",
+     "s": 46.36,
+     "e": 46.94
+    },
+    {
+     "w": "kerja",
+     "s": 46.94,
+     "e": 47.2
+    },
+    {
+     "w": "jantung.",
+     "s": 47.2,
+     "e": 47.52
+    }
+   ]
+  },
+  {
+   "start": 48.28,
+   "end": 52.9,
+   "text": "Jadi, pena ini ditujukan untuk anafilaxis, bukan untuk setiap gatal atau bersin karena alergi.",
+   "words": [
+    {
+     "w": "Jadi,",
+     "s": 48.28,
+     "e": 48.68
+    },
+    {
+     "w": "pena",
+     "s": 48.86,
+     "e": 49.0
+    },
+    {
+     "w": "ini",
+     "s": 49.0,
+     "e": 49.22
+    },
+    {
+     "w": "ditujukan",
+     "s": 49.22,
+     "e": 49.7
+    },
+    {
+     "w": "untuk",
+     "s": 49.7,
+     "e": 49.98
+    },
+    {
+     "w": "anafilaxis,",
+     "s": 49.98,
+     "e": 50.54
+    },
+    {
+     "w": "bukan",
+     "s": 50.88,
+     "e": 51.08
+    },
+    {
+     "w": "untuk",
+     "s": 51.08,
+     "e": 51.28
+    },
+    {
+     "w": "setiap",
+     "s": 51.28,
+     "e": 51.58
+    },
+    {
+     "w": "gatal",
+     "s": 51.58,
+     "e": 51.88
+    },
+    {
+     "w": "atau",
+     "s": 51.88,
+     "e": 52.02
+    },
+    {
+     "w": "bersin",
+     "s": 52.02,
+     "e": 52.34
+    },
+    {
+     "w": "karena",
+     "s": 52.34,
+     "e": 52.5
+    },
+    {
+     "w": "alergi.",
+     "s": 52.5,
+     "e": 52.9
+    }
+   ]
+  },
+  {
+   "start": 53.42,
+   "end": 55.64,
+   "text": "Setelah digunakan, segera cari bantuan medis.",
+   "words": [
+    {
+     "w": "Setelah",
+     "s": 53.42,
+     "e": 53.76
+    },
+    {
+     "w": "digunakan,",
+     "s": 53.76,
+     "e": 54.16
+    },
+    {
+     "w": "segera",
+     "s": 54.52,
+     "e": 54.88
+    },
+    {
+     "w": "cari",
+     "s": 54.88,
+     "e": 55.0
+    },
+    {
+     "w": "bantuan",
+     "s": 55.0,
+     "e": 55.26
+    },
+    {
+     "w": "medis.",
+     "s": 55.26,
+     "e": 55.64
+    }
+   ]
+  },
+  {
+   "start": 55.64,
+   "end": 58.8,
+   "text": "karena kondisi orang tersebut tetap perlu dinilai dan dipantau.",
+   "words": [
+    {
+     "w": "karena",
+     "s": 55.64,
+     "e": 56.12
+    },
+    {
+     "w": "kondisi",
+     "s": 56.12,
+     "e": 56.5
+    },
+    {
+     "w": "orang",
+     "s": 56.5,
+     "e": 56.64
+    },
+    {
+     "w": "tersebut",
+     "s": 56.64,
+     "e": 57.04
+    },
+    {
+     "w": "tetap",
+     "s": 57.04,
+     "e": 57.52
+    },
+    {
+     "w": "perlu",
+     "s": 57.52,
+     "e": 57.68
+    },
+    {
+     "w": "dinilai",
+     "s": 57.68,
+     "e": 58.18
+    },
+    {
+     "w": "dan",
+     "s": 58.18,
+     "e": 58.34
+    },
+    {
+     "w": "dipantau.",
+     "s": 58.34,
+     "e": 58.8
+    }
+   ]
+  }
+ ]
+}

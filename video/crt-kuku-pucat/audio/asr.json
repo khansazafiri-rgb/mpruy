@@ -1,0 +1,517 @@
+{
+ "narasi-edukasi": [
+  {
+   "start": 0.0,
+   "end": 6.0,
+   "text": "Coba tekan kuku sebentar, warnanya memutih. Setelah dilepas, berapa detik sampai merah muda lagi.",
+   "words": [
+    {
+     "w": "Coba",
+     "s": 0.0,
+     "e": 0.34
+    },
+    {
+     "w": "tekan",
+     "s": 0.34,
+     "e": 0.6
+    },
+    {
+     "w": "kuku",
+     "s": 0.6,
+     "e": 0.8
+    },
+    {
+     "w": "sebentar,",
+     "s": 0.8,
+     "e": 1.22
+    },
+    {
+     "w": "warnanya",
+     "s": 1.8,
+     "e": 2.42
+    },
+    {
+     "w": "memutih.",
+     "s": 2.42,
+     "e": 2.9
+    },
+    {
+     "w": "Setelah",
+     "s": 3.32,
+     "e": 3.72
+    },
+    {
+     "w": "dilepas,",
+     "s": 3.72,
+     "e": 4.18
+    },
+    {
+     "w": "berapa",
+     "s": 4.56,
+     "e": 4.78
+    },
+    {
+     "w": "detik",
+     "s": 4.78,
+     "e": 5.08
+    },
+    {
+     "w": "sampai",
+     "s": 5.08,
+     "e": 5.28
+    },
+    {
+     "w": "merah",
+     "s": 5.28,
+     "e": 5.54
+    },
+    {
+     "w": "muda",
+     "s": 5.54,
+     "e": 5.74
+    },
+    {
+     "w": "lagi.",
+     "s": 5.74,
+     "e": 6.0
+    }
+   ]
+  },
+  {
+   "start": 6.68,
+   "end": 10.1,
+   "text": "Ini disebut Keplary refill time atau CRT.",
+   "words": [
+    {
+     "w": "Ini",
+     "s": 6.68,
+     "e": 7.1
+    },
+    {
+     "w": "disebut",
+     "s": 7.1,
+     "e": 7.5
+    },
+    {
+     "w": "Keplary",
+     "s": 7.5,
+     "e": 8.02
+    },
+    {
+     "w": "refill",
+     "s": 8.02,
+     "e": 8.36
+    },
+    {
+     "w": "time",
+     "s": 8.36,
+     "e": 8.76
+    },
+    {
+     "w": "atau",
+     "s": 8.76,
+     "e": 9.32
+    },
+    {
+     "w": "CRT.",
+     "s": 9.32,
+     "e": 10.1
+    }
+   ]
+  },
+  {
+   "start": 10.68,
+   "end": 15.36,
+   "text": "Saat kuku ditekan, darah di pembuluh kecil bawahnya terdorong keluar sehingga terlihat pucat.",
+   "words": [
+    {
+     "w": "Saat",
+     "s": 10.68,
+     "e": 11.04
+    },
+    {
+     "w": "kuku",
+     "s": 11.04,
+     "e": 11.18
+    },
+    {
+     "w": "ditekan,",
+     "s": 11.18,
+     "e": 11.72
+    },
+    {
+     "w": "darah",
+     "s": 12.2,
+     "e": 12.36
+    },
+    {
+     "w": "di",
+     "s": 12.36,
+     "e": 12.46
+    },
+    {
+     "w": "pembuluh",
+     "s": 12.46,
+     "e": 12.78
+    },
+    {
+     "w": "kecil",
+     "s": 12.78,
+     "e": 13.06
+    },
+    {
+     "w": "bawahnya",
+     "s": 13.06,
+     "e": 13.48
+    },
+    {
+     "w": "terdorong",
+     "s": 13.48,
+     "e": 13.86
+    },
+    {
+     "w": "keluar",
+     "s": 13.86,
+     "e": 14.2
+    },
+    {
+     "w": "sehingga",
+     "s": 14.2,
+     "e": 14.76
+    },
+    {
+     "w": "terlihat",
+     "s": 14.76,
+     "e": 15.02
+    },
+    {
+     "w": "pucat.",
+     "s": 15.02,
+     "e": 15.36
+    }
+   ]
+  },
+  {
+   "start": 15.96,
+   "end": 19.96,
+   "text": "Begitu tekanan dilepas, darah mengalir kembali dan warnanya muncul lagi.",
+   "words": [
+    {
+     "w": "Begitu",
+     "s": 15.96,
+     "e": 16.32
+    },
+    {
+     "w": "tekanan",
+     "s": 16.32,
+     "e": 16.64
+    },
+    {
+     "w": "dilepas,",
+     "s": 16.64,
+     "e": 17.06
+    },
+    {
+     "w": "darah",
+     "s": 17.4,
+     "e": 17.7
+    },
+    {
+     "w": "mengalir",
+     "s": 17.7,
+     "e": 18.18
+    },
+    {
+     "w": "kembali",
+     "s": 18.18,
+     "e": 18.58
+    },
+    {
+     "w": "dan",
+     "s": 18.58,
+     "e": 18.82
+    },
+    {
+     "w": "warnanya",
+     "s": 18.82,
+     "e": 19.26
+    },
+    {
+     "w": "muncul",
+     "s": 19.26,
+     "e": 19.7
+    },
+    {
+     "w": "lagi.",
+     "s": 19.7,
+     "e": 19.96
+    }
+   ]
+  },
+  {
+   "start": 20.62,
+   "end": 23.22,
+   "text": "Warna biasanya kembali dalam sekitar 2 detik atau kurang.",
+   "words": [
+    {
+     "w": "Warna",
+     "s": 20.62,
+     "e": 21.02
+    },
+    {
+     "w": "biasanya",
+     "s": 21.02,
+     "e": 21.34
+    },
+    {
+     "w": "kembali",
+     "s": 21.34,
+     "e": 21.68
+    },
+    {
+     "w": "dalam",
+     "s": 21.68,
+     "e": 21.84
+    },
+    {
+     "w": "sekitar",
+     "s": 21.84,
+     "e": 22.12
+    },
+    {
+     "w": "2",
+     "s": 22.12,
+     "e": 22.36
+    },
+    {
+     "w": "detik",
+     "s": 22.36,
+     "e": 22.72
+    },
+    {
+     "w": "atau",
+     "s": 22.72,
+     "e": 22.86
+    },
+    {
+     "w": "kurang.",
+     "s": 22.86,
+     "e": 23.22
+    }
+   ]
+  },
+  {
+   "start": 23.58,
+   "end": 26.62,
+   "text": "Kalau lebih lambat, aliran darah kejaringan bisa sedang berkurang.",
+   "words": [
+    {
+     "w": "Kalau",
+     "s": 23.58,
+     "e": 23.8
+    },
+    {
+     "w": "lebih",
+     "s": 23.8,
+     "e": 24.0
+    },
+    {
+     "w": "lambat,",
+     "s": 24.0,
+     "e": 24.42
+    },
+    {
+     "w": "aliran",
+     "s": 24.76,
+     "e": 24.94
+    },
+    {
+     "w": "darah",
+     "s": 24.94,
+     "e": 25.28
+    },
+    {
+     "w": "kejaringan",
+     "s": 25.28,
+     "e": 25.74
+    },
+    {
+     "w": "bisa",
+     "s": 25.74,
+     "e": 25.92
+    },
+    {
+     "w": "sedang",
+     "s": 25.92,
+     "e": 26.16
+    },
+    {
+     "w": "berkurang.",
+     "s": 26.16,
+     "e": 26.62
+    }
+   ]
+  },
+  {
+   "start": 26.62,
+   "end": 31.88,
+   "text": "Tapi, suhu dingin, usia, dan cara pemeriksaan juga dapat mempengaruhi waktunya.",
+   "words": [
+    {
+     "w": "Tapi,",
+     "s": 26.62,
+     "e": 27.54
+    },
+    {
+     "w": "suhu",
+     "s": 27.8,
+     "e": 28.06
+    },
+    {
+     "w": "dingin,",
+     "s": 28.06,
+     "e": 28.58
+    },
+    {
+     "w": "usia,",
+     "s": 28.84,
+     "e": 29.28
+    },
+    {
+     "w": "dan",
+     "s": 29.54,
+     "e": 29.56
+    },
+    {
+     "w": "cara",
+     "s": 29.56,
+     "e": 29.76
+    },
+    {
+     "w": "pemeriksaan",
+     "s": 29.76,
+     "e": 30.46
+    },
+    {
+     "w": "juga",
+     "s": 30.46,
+     "e": 30.64
+    },
+    {
+     "w": "dapat",
+     "s": 30.64,
+     "e": 30.88
+    },
+    {
+     "w": "mempengaruhi",
+     "s": 30.88,
+     "e": 31.44
+    },
+    {
+     "w": "waktunya.",
+     "s": 31.44,
+     "e": 31.88
+    }
+   ]
+  },
+  {
+   "start": 32.32,
+   "end": 34.7,
+   "text": "Jadi, angka dua detik itu petunjuk awal.",
+   "words": [
+    {
+     "w": "Jadi,",
+     "s": 32.32,
+     "e": 32.74
+    },
+    {
+     "w": "angka",
+     "s": 33.0,
+     "e": 33.22
+    },
+    {
+     "w": "dua",
+     "s": 33.22,
+     "e": 33.36
+    },
+    {
+     "w": "detik",
+     "s": 33.36,
+     "e": 33.66
+    },
+    {
+     "w": "itu",
+     "s": 33.66,
+     "e": 33.92
+    },
+    {
+     "w": "petunjuk",
+     "s": 33.92,
+     "e": 34.28
+    },
+    {
+     "w": "awal.",
+     "s": 34.28,
+     "e": 34.7
+    }
+   ]
+  },
+  {
+   "start": 35.12,
+   "end": 38.4,
+   "text": "Hasil CRT harus dilihat bersama kondisi dan tanda klinis lainnya.",
+   "words": [
+    {
+     "w": "Hasil",
+     "s": 35.12,
+     "e": 35.44
+    },
+    {
+     "w": "CRT",
+     "s": 35.44,
+     "e": 35.92
+    },
+    {
+     "w": "harus",
+     "s": 35.92,
+     "e": 36.12
+    },
+    {
+     "w": "dilihat",
+     "s": 36.12,
+     "e": 36.44
+    },
+    {
+     "w": "bersama",
+     "s": 36.44,
+     "e": 36.76
+    },
+    {
+     "w": "kondisi",
+     "s": 36.76,
+     "e": 37.22
+    },
+    {
+     "w": "dan",
+     "s": 37.22,
+     "e": 37.4
+    },
+    {
+     "w": "tanda",
+     "s": 37.4,
+     "e": 37.7
+    },
+    {
+     "w": "klinis",
+     "s": 37.7,
+     "e": 38.04
+    },
+    {
+     "w": "lainnya.",
+     "s": 38.04,
+     "e": 38.4
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,114 @@
+{
+ "OFF": 0.3,
+ "NAR": 38.72,
+ "EDU": 39.63333333333333,
+ "OUT": 16.2,
+ "DUR": 55.83333333333333,
+ "A": {
+  "coba": 0,
+  "tekan": 0.34,
+  "kuku": 0.6,
+  "warnanya": 1.8,
+  "memutih": 2.42,
+  "setelah": 3.32,
+  "dilepas": 3.72,
+  "berapa": 4.56,
+  "merah": 5.28,
+  "lagi": 5.74,
+  "ini": 6.68,
+  "disebut": 7.1,
+  "capillary": 7.5,
+  "crt": 9.32,
+  "saat": 10.68,
+  "ditekan": 11.18,
+  "darah": 12.2,
+  "pembuluh": 12.46,
+  "terdorong": 13.48,
+  "pucat": 15.02,
+  "begitu": 15.96,
+  "tekanan": 16.32,
+  "dilepas2": 16.64,
+  "mengalir": 17.7,
+  "warnanya2": 18.82,
+  "muncul": 19.26,
+  "lagi2": 19.7,
+  "warna": 20.62,
+  "biasanya": 21.02,
+  "sekitar": 21.84,
+  "dua": 22.12,
+  "detik": 22.36,
+  "kurang": 22.86,
+  "kalau": 23.58,
+  "lambat": 24,
+  "aliran": 24.76,
+  "jaringan": 25.28,
+  "berkurang": 26.16,
+  "tapi": 26.62,
+  "suhu": 27.8,
+  "dingin": 28.06,
+  "usia": 28.84,
+  "cara": 29.56,
+  "pemeriksaan": 29.76,
+  "waktunya": 31.44,
+  "jadi": 32.32,
+  "dua2": 33.22,
+  "petunjuk": 33.92,
+  "awal": 34.28,
+  "hasil": 35.12,
+  "crt2": 35.44,
+  "klinis": 37.7,
+  "end": 38.4
+ },
+ "KAL": [
+  [
+   0,
+   2.95,
+   "Coba tekan kuku sebentar. Warnanya memutih."
+  ],
+  [
+   3.32,
+   6,
+   "Setelah dilepas, berapa detik sampai merah muda lagi?"
+  ],
+  [
+   6.68,
+   10.1,
+   "Ini disebut capillary refill time, atau CRT."
+  ],
+  [
+   10.68,
+   15.4,
+   "Saat kuku ditekan, darah di pembuluh kecil bawahnya terdorong keluar sehingga terlihat pucat."
+  ],
+  [
+   15.96,
+   20,
+   "Begitu tekanan dilepas, darah mengalir kembali dan warnanya muncul lagi."
+  ],
+  [
+   20.62,
+   23.3,
+   "Warna biasanya kembali dalam sekitar dua detik atau kurang."
+  ],
+  [
+   23.58,
+   26.7,
+   "Kalau lebih lambat, aliran darah ke jaringan bisa sedang berkurang."
+  ],
+  [
+   26.62,
+   32,
+   "Tapi suhu dingin, usia, dan cara pemeriksaan juga dapat memengaruhi waktunya."
+  ],
+  [
+   32.32,
+   34.8,
+   "Jadi, angka dua detik itu petunjuk awal."
+  ],
+  [
+   35.12,
+   38.5,
+   "Hasil CRT harus dilihat bersama kondisi dan tanda klinis lainnya."
+  ]
+ ]
+}
