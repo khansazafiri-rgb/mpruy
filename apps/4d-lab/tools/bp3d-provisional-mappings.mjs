@@ -3,7 +3,7 @@
 import {normalizeAnatomyName} from '../../../licensing/tools/prepare-bodyparts3d-source.mjs';
 
 const VALID=new Set(['TERMINOLOGY_EQUIVALENT_REVIEW','PROMISING_IDENTITY_REVIEW']);
-const side=name=>{const n=normalizeAnatomyName(name);return n.startsWith('left ')?'left':n.startsWith('right ')?'right':null;};
+const side=name=>{const n=' '+normalizeAnatomyName(name)+' ';return /\bleft\b/.test(n)?'left':/\bright\b/.test(n)?'right':null;};
 const anatomyClass=name=>{
   const n=normalizeAnatomyName(name);
   return ['artery','vein','muscle','cartilage','bone','ligament','nerve','tendon'].find(t=>new RegExp('\\b'+t+'\\b').test(n))||null;
