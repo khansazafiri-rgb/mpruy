@@ -14,7 +14,7 @@ TITLES = {
     "brand/video/ad3": "Latihan Soal MEDCOEL",
 }
 EDUCATION = {
-    "bangun-tapi-tak-bisa-bergerak", "dingin-pengen-pipis",
+    "mekanisme-varises", "bangun-tapi-tak-bisa-bergerak", "dingin-pengen-pipis",
     "dunia-tanpa-cuci-tangan", "dunia-tanpa-oralit", "gas-air-mata",
     "introvert-ekstrovert", "kopi-kafein-adenosin", "malam-lapar",
     "telinga-penuh-pop",

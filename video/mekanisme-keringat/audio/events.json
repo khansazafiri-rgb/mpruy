@@ -1,0 +1,230 @@
+{
+ "durasi_edu": 67.0,
+ "skalar_normalisasi": 1.1028,
+ "sfx": [
+  {
+   "t": 4.55,
+   "sfx": "potong-b"
+  },
+  {
+   "t": 5.04,
+   "sfx": "suhu-naik"
+  },
+  {
+   "t": 6.16,
+   "sfx": "hipotalamus"
+  },
+  {
+   "t": 10.1,
+   "sfx": "denyut-saraf-b"
+  },
+  {
+   "t": 10.65,
+   "sfx": "denyut-saraf-b"
+  },
+  {
+   "t": 10.94,
+   "sfx": "saraf-simpatis"
+  },
+  {
+   "t": 11.2,
+   "sfx": "denyut-saraf-b"
+  },
+  {
+   "t": 11.75,
+   "sfx": "denyut-saraf-b"
+  },
+  {
+   "t": 13.08,
+   "sfx": "kelenjar-ekrin"
+  },
+  {
+   "t": 13.6,
+   "sfx": "potong-c"
+  },
+  {
+   "t": 14.28,
+   "sfx": "denyut-saraf-c"
+  },
+  {
+   "t": 14.78,
+   "sfx": "denyut-saraf-c"
+  },
+  {
+   "t": 15.28,
+   "sfx": "denyut-saraf-c"
+  },
+  {
+   "t": 15.78,
+   "sfx": "denyut-saraf-c"
+  },
+  {
+   "t": 17.0,
+   "sfx": "asetilkolin-titik"
+  },
+  {
+   "t": 17.12,
+   "sfx": "asetilkolin-titik"
+  },
+  {
+   "t": 17.24,
+   "sfx": "asetilkolin-titik"
+  },
+  {
+   "t": 17.36,
+   "sfx": "asetilkolin-titik"
+  },
+  {
+   "t": 17.48,
+   "sfx": "asetilkolin-titik"
+  },
+  {
+   "t": 17.48,
+   "sfx": "asetilkolin"
+  },
+  {
+   "t": 17.6,
+   "sfx": "asetilkolin-titik"
+  },
+  {
+   "t": 17.72,
+   "sfx": "asetilkolin-titik"
+  },
+  {
+   "t": 17.84,
+   "sfx": "asetilkolin-titik"
+  },
+  {
+   "t": 17.96,
+   "sfx": "asetilkolin-titik"
+  },
+  {
+   "t": 18.08,
+   "sfx": "asetilkolin-titik"
+  },
+  {
+   "t": 18.4,
+   "sfx": "kelenjar-aktif"
+  },
+  {
+   "t": 20.3,
+   "sfx": "gulungan"
+  },
+  {
+   "t": 21.6,
+   "sfx": "cairan-dibuat"
+  },
+  {
+   "t": 26.0,
+   "sfx": "garam-kembali"
+  },
+  {
+   "t": 26.2,
+   "sfx": "garam-keluar"
+  },
+  {
+   "t": 26.45,
+   "sfx": "garam-keluar"
+  },
+  {
+   "t": 26.7,
+   "sfx": "garam-keluar"
+  },
+  {
+   "t": 26.95,
+   "sfx": "garam-keluar"
+  },
+  {
+   "t": 27.2,
+   "sfx": "garam-keluar"
+  },
+  {
+   "t": 27.45,
+   "sfx": "garam-keluar"
+  },
+  {
+   "t": 29.1,
+   "sfx": "tetes-tiba"
+  },
+  {
+   "t": 29.42,
+   "sfx": "pori"
+  },
+  {
+   "t": 30.65,
+   "sfx": "potong-d"
+  },
+  {
+   "t": 36.3,
+   "sfx": "penguapan"
+  },
+  {
+   "t": 36.4,
+   "sfx": "menguap"
+  },
+  {
+   "t": 37.3,
+   "sfx": "panas-pergi"
+  },
+  {
+   "t": 38.5,
+   "sfx": "potong-e"
+  },
+  {
+   "t": 39.96,
+   "sfx": "lembap"
+  },
+  {
+   "t": 41.44,
+   "sfx": "gerah"
+  },
+  {
+   "t": 43.7,
+   "sfx": "potong-f"
+  },
+  {
+   "t": 44.92,
+   "sfx": "terganggu"
+  },
+  {
+   "t": 46.1,
+   "sfx": "hiper"
+  },
+  {
+   "t": 47.7,
+   "sfx": "terlalu-banyak"
+  },
+  {
+   "t": 52.72,
+   "sfx": "hipo"
+  },
+  {
+   "t": 55.76,
+   "sfx": "terlalu-sedikit"
+  },
+  {
+   "t": 58.18,
+   "sfx": "panas-sulit"
+  },
+  {
+   "t": 59.4,
+   "sfx": "potong-g"
+  },
+  {
+   "t": 59.8,
+   "sfx": "heat-stroke-judul"
+  },
+  {
+   "t": 63.4,
+   "sfx": "kulit-kering"
+  },
+  {
+   "t": 64.9,
+   "sfx": "masih-berkeringat"
+  },
+  {
+   "t": 66.38,
+   "sfx": "heat-stroke"
+  }
+ ]
+}
