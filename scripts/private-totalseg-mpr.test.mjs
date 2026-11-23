@@ -31,6 +31,8 @@ test('MPR-001: one verified sampled CT and two exact-grid masks encode into a re
   assert.equal(payload.releaseEligible,false);
   assert.equal(payload.clinicalApproved,false);
   assert.equal(payload.organs.length,2);
+  assert.ok(payload.recommendedSlices['abdomen-ct'].z>=0);
+  assert.ok(payload.recommendedSlices['chest-ct'].z>=0);
   const ctBytes=zlib.gunzipSync(Buffer.from(payload.hu.base64,'base64'));
   const maskBytes=zlib.gunzipSync(Buffer.from(payload.masks.base64,'base64'));
   assert.equal(ctBytes.length,336*2);
