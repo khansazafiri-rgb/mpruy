@@ -59,7 +59,7 @@ test('rejects an unsafe, duplicated or non-quarantined inventory',()=>{
 });
 
 test('a private provisional FMA/BP match is audited but never marked geometrically or medically validated',()=>{
- const names=[...officialRows,{name:'right femur',fmaId:'FMA8',bpId:'BP8'}];
+ const names=[...officialRows,{name:'left nasal bone extension',fmaId:'FMA8',bpId:'BP8'}];
  const extra={name:'Nasal bone.l',id:'nasal-provisional',fmaId:'FMA8',bpId:'BP8',
    mappingMethod:'provisional-name-review-NOT-validated',
    modelPath:'./structures/nasal-provisional/model.glb'};
@@ -76,4 +76,15 @@ test('a private provisional FMA/BP match is audited but never marked geometrical
    inventory:{...manifest,provisionalSource:false,converted:[...manifest.converted,extra]},
    mappingReview:{queue:[]}});
  assert.ok(b.errors.some(x=>x.includes('source identity not corroborated')));
+});
+
+test('provisional mapping cannot assert the wrong anatomy even with real FMA/BP identifiers',()=>{
+ const falseNames=[...officialRows,{name:'right femur',fmaId:'FMA8',bpId:'BP8'}];
+ const extra={name:'Nasal bone.l',id:'nasal-provisional',fmaId:'FMA8',bpId:'BP8',
+   mappingMethod:'provisional-name-review-NOT-validated',
+   modelPath:'./structures/nasal-provisional/model.glb'};
+ const result=auditCompleteness({catalog,officialRows:falseNames,elementIndex,archiveFiles,
+   inventory:{...manifest,provisionalSource:true,converted:[...manifest.converted,extra]},
+   mappingReview:{queue:[]}});
+ assert.ok(result.errors.some(x=>x.includes('source identity not corroborated')));
 });
