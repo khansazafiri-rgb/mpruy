@@ -7,6 +7,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import crypto from 'node:crypto';
+import geometry from './private-totalseg-mpr-geometry.cjs';
+import { PRIVATE_MPR_ORGAN_IDS } from './private-totalseg-ct-review.mjs';
+import { privateMprPage } from './private-totalseg-mpr.mjs';
 import { writePrivateReadiness } from './alternative-source-readiness.mjs';
 import { generateAllPrivateOverlays } from './generate-all-private-review-overlays.mjs';
 
@@ -67,11 +71,38 @@ function put(file,data){
   safe(file);
   fs.writeFileSync(file,data,{mode:0o600});
 }
+export function verifyPrivateMprFiles(manifest,read){
+  try{
+    if(manifest?.schema!=='medcoel.private-mpr-ct.v1'||
+       !['releaseEligible','orientationApproved','clinicalApproved','privacyApproved','rightsApproved'].every(k=>manifest[k]===false)||
+       !/^s\d{3,6}$/.test(manifest.sourceSubject||'')||
+       ![manifest.sourceArchiveSha256,manifest.ctSourceSha256].every(x=>/^[a-f0-9]{64}$/.test(x||'')&&!/^0{64}$/.test(x))||
+       !Array.isArray(manifest.organs)||!Array.isArray(manifest.maskReceipts)||
+       JSON.stringify(manifest.organs.map(o=>o.id).sort())!==JSON.stringify([...PRIVATE_MPR_ORGAN_IDS].sort())||
+       JSON.stringify(manifest.maskReceipts.map(o=>o.sourceMask).sort())!==JSON.stringify([...PRIVATE_MPR_ORGAN_IDS].sort())||
+       manifest.maskReceipts.some(r=>!/^[a-f0-9]{64}$/.test(r.sha256||'')||/^0{64}$/.test(r.sha256)||r.sourceMember!==manifest.sourceSubject+'/segmentations/'+r.sourceMask+'.nii.gz'))return false;
+    geometry.describe(manifest.sourceAffine,manifest.originalDimensions,manifest.sampledSourceIndices);
+    if(!Array.isArray(manifest.dimensions)||manifest.dimensions.length!==3||
+       manifest.dimensions.some((n,i)=>!Number.isInteger(n)||n<4||n>192||n!==manifest.sampledSourceIndices[i].length))return false;
+    for(const name of ['geometry.js','viewer.js','volume.js']){
+      const pin=manifest.files?.[name];
+      if(!pin||!Number.isSafeInteger(pin.bytes)||pin.bytes<1||pin.bytes>64*1024*1024||
+         !/^[a-f0-9]{64}$/.test(pin.sha256||''))return false;
+      const bytes=read(name,pin.bytes);
+      if(bytes.length!==pin.bytes||crypto.createHash('sha256').update(bytes).digest('hex')!==pin.sha256)return false;
+      const code={ 'geometry.js':'./private-totalseg-mpr-geometry.cjs','viewer.js':'./private-totalseg-mpr-browser.js' }[name];
+      if(code&&crypto.createHash('sha256').update(fs.readFileSync(new URL(code,import.meta.url))).digest('hex')!==pin.sha256)return false;
+    }
+    return true;
+  }catch{return false;}
+}
 function availablePrivateViewer(id){
   const page=path.join(OUT,id,'index.html');
   safe(page);
   if(!fs.lstatSync(page,{throwIfNoEntry:false})?.isFile())return false;
   if(['abdomen-ct','chest-ct'].includes(id)){
+    const expectedPage=privateMprPage(id);
+    if(fs.statSync(page).size!==Buffer.byteLength(expectedPage)||fs.readFileSync(page,'utf8')!==expectedPage)return false;
     const paths=[
       path.join(OUT,id,'static-review.html'),
       path.join(OUT,'ct-mpr-private','volume.js'),
@@ -83,9 +114,12 @@ function availablePrivateViewer(id){
       if(!fs.lstatSync(p,{throwIfNoEntry:false})?.isFile())return false;
     }
     const m=readJSON(paths[3]);
-    if(m.schema!=='medcoel.private-mpr-ct.v1'||
-       m.releaseEligible!==false||m.orientationApproved!==false||
-       !Array.isArray(m.organs)||m.organs.length<7)return false;
+    if(!verifyPrivateMprFiles(m,(name,expected)=>{
+      const file=path.join(OUT,'ct-mpr-private',name);safe(file);
+      const info=fs.lstatSync(file,{throwIfNoEntry:false});
+      if(!info?.isFile()||info.size!==expected)throw Error('ONE_SHOT_UNBOUND_MPR_FILE');
+      return fs.readFileSync(file);
+    }))return false;
   }
   return true;
 }

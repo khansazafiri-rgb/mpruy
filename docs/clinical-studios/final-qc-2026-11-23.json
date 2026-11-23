@@ -1,0 +1,1348 @@
+{
+  "schema": "medcoel.final-qc-summary.v1",
+  "observedAt": "2026-11-23T03:12:55.517Z",
+  "targetBaseline": "406b28afbe26f023a2a02bc92fdcf73b67df1bf1",
+  "sourceQcCodeCommit": "d01acbb29127bcc11c357a60c320418057087f56",
+  "sourceQcCodeWorktreeDirty": false,
+  "pipelineFileSha256": {
+    "scripts/private-totalseg-mpr.mjs": "3e20638b6f930c15d5e26567d73ebcdda6db90ee038d911b78b4b81778192c59",
+    "scripts/private-totalseg-mpr-browser.js": "e5f33651c6e7398ab889ddf5f812b5b9256ccff1704430b88cb71b97b5dc7444",
+    "scripts/private-totalseg-mpr-geometry.cjs": "d6c4aff034e19b0efb3f8e55ecbfb4368c0293431ac1ea8b1012a82a70ae44ce",
+    "scripts/private-totalseg-ct-review.mjs": "0454dec8f0ed7fae180edba0d6d479a1b195b0f919a4b42faf204c88a6fa0627",
+    "scripts/private-studio-source-qc.mjs": "8536e5a0410f00ad610e2bbfca54d764242e594c7fd167119df72be22ee2cd96",
+    "licensing/tools/verify-studio-reproducibility.mjs": "1a951f37cc9bbe1d4d579de4eedab38ee0df1faf97029b42138a9cc7af7b7314"
+  },
+  "inputReports": [
+    {
+      "name": "all-studios-report.json",
+      "bytes": 12578,
+      "sha256": "b46c7c728f1bb099437f0e4e84b6a8bf132261e59d0b65bdb98ffff2d53df773"
+    },
+    {
+      "name": "review-hub-status.json",
+      "bytes": 1157,
+      "sha256": "4293754a593a60d5abd4c39b2cc8b1b5210ee8925ffa1ff0e2ef8b20ca6f0aaf"
+    },
+    {
+      "name": "next-qc-prompt.md",
+      "bytes": 3506,
+      "sha256": "04388de05e378575e7d8390f7315845708bf6d71dd232ea930c3bf934a633b6d"
+    }
+  ],
+  "scope": "Source-backed engineering QC, repository clearance evaluation and public HTTP observations. Not human medical/privacy review.",
+  "approvalAuthority": false,
+  "releaseEligible": false,
+  "summary": {
+    "catalogStudios": 24,
+    "providedPreviews": 5,
+    "rebuiltPrivatePreviews": 7,
+    "sourceCompatibleDataPipelines": 6,
+    "sourceFitFailures": 1,
+    "missingModalityPreviews": 17,
+    "overallPass": 0,
+    "overallFail": 1,
+    "overallBlocked": 23,
+    "publicReleaseEligible": 0
+  },
+  "registeredBytes": {
+    "sources": 8,
+    "assets": 100,
+    "parentsMatched": 32,
+    "parentsTotal": 46,
+    "derivedMatched": 26,
+    "derivedTotal": 54,
+    "presentByteMismatches": 0,
+    "invalidHistoricalToolPins": 0,
+    "currentToolChanges": 3,
+    "freshHistoricalReproductionExecuted": false,
+    "completeRegistryAudit": "BLOCKED"
+  },
+  "reviews": {
+    "medicalPending": 100,
+    "privacyPending": 100,
+    "reviewers": 0,
+    "decisions": 0,
+    "verifiedRightsRecords": 0,
+    "rightsRecords": 39,
+    "legacyRightsRecordsPreserved": 14
+  },
+  "actualCtSourceQc": {
+    "status": "PASS",
+    "archiveBytes": 3244617817,
+    "archiveSha256": "6c47636d9727cd97048616383365dd5a588d0bbc5723b5eb0fa736ed08480ffc",
+    "archiveMd5": "6b5524af4b15e6ba06ef2d700c0c73e0",
+    "huVoxelsCompared": 2944656,
+    "organMaskComparisons": 32391216,
+    "sourceMaskCount": 11,
+    "sampledGrid": [
+      143,
+      143,
+      144
+    ],
+    "interactions": [
+      {
+        "studio": "abdomen-ct",
+        "status": "PASS",
+        "engine": "Node VM DOM/Canvas harness; NOT a native browser",
+        "pixelsComparedToNativeSource": 431431,
+        "nativeBrowser": "BLOCKED: not executed by this source-only tool",
+        "clinicalOrientationApproved": false
+      },
+      {
+        "studio": "chest-ct",
+        "status": "PASS",
+        "engine": "Node VM DOM/Canvas harness; NOT a native browser",
+        "pixelsComparedToNativeSource": 431431,
+        "nativeBrowser": "BLOCKED: not executed by this source-only tool",
+        "clinicalOrientationApproved": false
+      }
+    ],
+    "decodedHuAndMaskBytes": 11778624,
+    "nativePrivateBrowser": "BLOCKED",
+    "sourceSpatialUnits": "unknown",
+    "clinicalMeasurementApproved": false
+  },
+  "productionObservation": {
+    "schemaVersion": 1,
+    "auditedAt": "2026-11-23T03:02:05.885Z",
+    "publicHost": "https://medcoel.com",
+    "kind": "live-distribution-observation-not-licence-clearance",
+    "warning": "Public HTTP observations only: no private VPS topology, cached history, original authorship or commercial rights are established.",
+    "results": [
+      {
+        "id": "nervous-glb",
+        "route": "/anatomy/viewer/models/nervous.glb",
+        "httpStatus": 404,
+        "bytes": null,
+        "contentType": "model/gltf-binary",
+        "observedSha256": null,
+        "candidateSha256": null,
+        "withdrawnSha256": "c7cde35497f887b319c0a84f1b5b605fa3ce66e23084b5e09d6e3825fa5030d9",
+        "result": "not-served",
+        "severity": "ok"
+      },
+      {
+        "id": "nervous-thumbnail",
+        "route": "/anatomy/viewer/thumbnails/systems/nervous.webp",
+        "httpStatus": 404,
+        "bytes": null,
+        "contentType": "",
+        "observedSha256": null,
+        "candidateSha256": null,
+        "withdrawnSha256": "de72a7210de5428c3f3ff49b90f483f8fbbc7bb645e758a6052c5af13c1667aa",
+        "result": "not-served",
+        "severity": "ok"
+      },
+      {
+        "id": "skeletal-glb",
+        "route": "/anatomy/viewer/models/skeletal.glb",
+        "httpStatus": 200,
+        "bytes": 1826044,
+        "contentType": "model/gltf-binary",
+        "observedSha256": "2de765c25b2860708a4ff984908e19853eb443875cd4256e3104aef45a1291be",
+        "candidateSha256": "2de765c25b2860708a4ff984908e19853eb443875cd4256e3104aef45a1291be",
+        "withdrawnSha256": "c2b70b31ddec4062cbc5ba969fc24ecfed61d00397a0bca795e2701d997200f8",
+        "result": "matches-repository-candidate-not-commercially-cleared",
+        "severity": "review"
+      },
+      {
+        "id": "visceral-glb",
+        "route": "/anatomy/viewer/models/visceral.glb",
+        "httpStatus": 200,
+        "bytes": 1815064,
+        "contentType": "model/gltf-binary",
+        "observedSha256": "5392afc3fd9a54f653e6b976e82e6fd7a51ea4b5661297b41f259a5d46c72bb8",
+        "candidateSha256": "5392afc3fd9a54f653e6b976e82e6fd7a51ea4b5661297b41f259a5d46c72bb8",
+        "withdrawnSha256": "b21a0f34b3da1bb0b6a9a6ae71d16ffbc036beb504944af2422d4b91a9317fe5",
+        "result": "matches-repository-candidate-not-commercially-cleared",
+        "severity": "review"
+      },
+      {
+        "id": "atlas-ct-endpoint",
+        "route": "/anatomy/4d-lab/data/atlas/ct.nrrd",
+        "httpStatus": 200,
+        "contentType": "",
+        "bytes": null,
+        "observedSha256": null,
+        "result": "served-ct-identity-unverified",
+        "severity": "unknown"
+      }
+    ],
+    "criticalFindings": 0,
+    "unverifiedFindings": 1
+  },
+  "productionStudioApi": {
+    "listStatus": 404,
+    "launchRoutesChecked": 24,
+    "launchStatusCounts": {
+      "404": 24
+    },
+    "unexpectedPublicSuccesses": 0,
+    "authorizationContract": "BLOCKED: 404 does not establish deployed authorization correctness"
+  },
+  "studios": [
+    {
+      "id": "brain-anatomy",
+      "title": "Brain Anatomy",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "No commercial-cleared complete 3D brain geometry",
+      "registeredDerivedBytes": {
+        "total": 2,
+        "missingOrChanged": 2
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-SA-2.1-JP"
+      ],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "protected-or-unverified",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "brain-ct",
+      "title": "Brain CT",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "No verified CT data and annotations for brain",
+      "registeredDerivedBytes": {
+        "total": 0,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "brain-mri",
+      "title": "Brain MRI",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "LPBA40 blocked; alternative MRI and renderer not cleared",
+      "registeredDerivedBytes": {
+        "total": 4,
+        "missingOrChanged": 4
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-SA-3.0"
+      ],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "head-neck-anatomy",
+      "title": "Head & Neck Anatomy",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "3D asset file manifest and rights review missing",
+      "registeredDerivedBytes": {
+        "total": 2,
+        "missingOrChanged": 2
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-SA-2.1-JP"
+      ],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "spine-anatomy",
+      "title": "Spine Anatomy",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "3D anatomy geometry and rights review pending",
+      "registeredDerivedBytes": {
+        "total": 2,
+        "missingOrChanged": 2
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-SA-2.1-JP"
+      ],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "spine-mri",
+      "title": "Spine MRI",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "PASS",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "PASS",
+      "sourceScopeNote": "SPIDER source geometry and clinical label orientation review pending",
+      "registeredDerivedBytes": {
+        "total": 3,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-4.0"
+      ],
+      "privatePreviewSource": {
+        "namespace": "resource-source",
+        "id": "spider-zenodo",
+        "officialUrl": "https://zenodo.org/records/10159290",
+        "release": "Zenodo record 10159290",
+        "declaredLicense": "CC-BY-4.0",
+        "candidateBoundToCanonicalRegistry": true,
+        "assetClearance": false
+      },
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "private preview spine-mri/index.html",
+        "verified private generator output and registered source byte audit"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "thorax-anatomy",
+      "title": "Thorax Anatomy",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "CT organ masks are not a complete licensed 3D anatomy atlas",
+      "registeredDerivedBytes": {
+        "total": 2,
+        "missingOrChanged": 2
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-SA-2.1-JP"
+      ],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "chest-xray",
+      "title": "Chest X-ray",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "PASS",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "PASS",
+      "sourceScopeNote": "Source polygon review required before public use",
+      "registeredDerivedBytes": {
+        "total": 8,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-4.0"
+      ],
+      "privatePreviewSource": {
+        "namespace": "resource-source",
+        "id": "ptx498-zenodo",
+        "officialUrl": "https://zenodo.org/records/8266529",
+        "release": "v2-fix (Zenodo record 8266529)",
+        "declaredLicense": "CC-BY-4.0",
+        "candidateBoundToCanonicalRegistry": true,
+        "assetClearance": false
+      },
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "private preview chest-xray/index.html",
+        "verified private generator output and registered source byte audit"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "chest-ct",
+      "title": "Chest CT",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "PASS",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "PASS",
+      "sourceScopeNote": "Private TotalSegmentator candidate ONLY; legacy TCIA remains quarantined",
+      "registeredDerivedBytes": {
+        "total": 3,
+        "missingOrChanged": 3
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-3.0"
+      ],
+      "privatePreviewSource": {
+        "namespace": "private-candidate",
+        "id": "totalsegmentator-small-v201",
+        "officialUrl": "https://zenodo.org/records/10047263",
+        "release": "2.0.1 (102 CT subjects; ~3.2GB)",
+        "declaredLicense": "CC-BY-4.0",
+        "candidateBoundToCanonicalRegistry": false,
+        "assetClearance": false
+      },
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "private preview chest-ct/index.html",
+        "native CT/mask pixel QC in this report"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "lung-ultrasound",
+      "title": "Lung Ultrasound",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "Lung ultrasound publisher file manifest/renderer missing",
+      "registeredDerivedBytes": {
+        "total": 0,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "heart-anatomy",
+      "title": "Heart Anatomy",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "3D heart geometry and rights review missing",
+      "registeredDerivedBytes": {
+        "total": 2,
+        "missingOrChanged": 2
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-SA-2.1-JP"
+      ],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "cardiac-echo",
+      "title": "Cardiac Echo",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "Cardiac echo publisher file manifest/renderer missing",
+      "registeredDerivedBytes": {
+        "total": 0,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "cardiac-ct",
+      "title": "Cardiac CT",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "Verified cardiac CT source/labels missing",
+      "registeredDerivedBytes": {
+        "total": 0,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "protected-or-unverified",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "ecg",
+      "title": "ECG",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "PASS",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "PASS",
+      "sourceScopeNote": "PTB-XL diagnosis and waveform interpretation unapproved",
+      "registeredDerivedBytes": {
+        "total": 7,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-4.0"
+      ],
+      "privatePreviewSource": {
+        "namespace": "resource-source",
+        "id": "ptbxl-physionet",
+        "officialUrl": "https://physionet.org/content/ptb-xl/1.0.3/",
+        "release": "1.0.3",
+        "declaredLicense": "CC-BY-4.0",
+        "candidateBoundToCanonicalRegistry": true,
+        "assetClearance": false
+      },
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "private preview ecg/index.html",
+        "verified private generator output and registered source byte audit"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "abdomen-anatomy",
+      "title": "Abdomen Anatomy",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "CT 2D organ masks are not full cleared 3D abdomen anatomy",
+      "registeredDerivedBytes": {
+        "total": 2,
+        "missingOrChanged": 2
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-SA-2.1-JP"
+      ],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "abdomen-ct",
+      "title": "Abdomen CT",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "PASS",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "PASS",
+      "sourceScopeNote": "TotalSegmentator anatomical mask review pending",
+      "registeredDerivedBytes": {
+        "total": 3,
+        "missingOrChanged": 3
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-SA-4.0"
+      ],
+      "privatePreviewSource": {
+        "namespace": "private-candidate",
+        "id": "totalsegmentator-small-v201",
+        "officialUrl": "https://zenodo.org/records/10047263",
+        "release": "2.0.1 (102 CT subjects; ~3.2GB)",
+        "declaredLicense": "CC-BY-4.0",
+        "candidateBoundToCanonicalRegistry": false,
+        "assetClearance": false
+      },
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "private preview abdomen-ct/index.html",
+        "native CT/mask pixel QC in this report"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "abdomen-ultrasound",
+      "title": "Abdomen Ultrasound",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "Ultrasound source file manifest and renderer missing",
+      "registeredDerivedBytes": {
+        "total": 0,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "fast-ultrasound",
+      "title": "FAST Ultrasound",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "Verified and redistributable FAST dataset missing",
+      "registeredDerivedBytes": {
+        "total": 0,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "pelvis-anatomy",
+      "title": "Pelvis Anatomy",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "Full pelvis 3D asset with rights review missing",
+      "registeredDerivedBytes": {
+        "total": 2,
+        "missingOrChanged": 2
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-SA-2.1-JP"
+      ],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "pelvis-ultrasound",
+      "title": "Pelvis Ultrasound",
+      "overall": "FAIL",
+      "privateDataPipeline": "FAIL",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "FAIL",
+      "sourceScopeNote": "HC18 depicts fetal head, not gynecologic pelvis",
+      "registeredDerivedBytes": {
+        "total": 8,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-4.0"
+      ],
+      "privatePreviewSource": {
+        "namespace": "resource-source",
+        "id": "hc18-zenodo",
+        "officialUrl": "https://zenodo.org/records/1327317",
+        "release": "Zenodo record 1327317",
+        "declaredLicense": "CC-BY-4.0",
+        "candidateBoundToCanonicalRegistry": true,
+        "assetClearance": false
+      },
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "private preview pelvis-ultrasound/index.html",
+        "verified private generator output and registered source byte audit"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "upper-limb-anatomy",
+      "title": "Upper Limb Anatomy",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "Commercial-clear 3D limb assets pending",
+      "registeredDerivedBytes": {
+        "total": 2,
+        "missingOrChanged": 2
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-SA-2.1-JP"
+      ],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "lower-limb-anatomy",
+      "title": "Lower Limb Anatomy",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "Commercial-clear 3D limb assets pending",
+      "registeredDerivedBytes": {
+        "total": 2,
+        "missingOrChanged": 2
+      },
+      "registeredSourceLicenses": [
+        "CC-BY-SA-2.1-JP"
+      ],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "msk-xray",
+      "title": "Musculoskeletal X-ray",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "PASS",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "PASS",
+      "sourceScopeNote": "FracAtlas image, polygon and privacy review pending",
+      "registeredDerivedBytes": {
+        "total": 0,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [],
+      "privatePreviewSource": {
+        "namespace": "private-candidate",
+        "id": "fracatlas-v7",
+        "officialUrl": "https://figshare.com/articles/dataset/FracAtlas_A_Dataset_for_Fracture_Classification_Localization_and_Segmentation_of_Musculoskeletal_Radiographs/22363012",
+        "release": "figshare article v7 (2026-06-13)",
+        "declaredLicense": "CC-BY-4.0",
+        "candidateBoundToCanonicalRegistry": false,
+        "assetClearance": false
+      },
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "private preview msk-xray/index.html",
+        "verified private generator output and registered source byte audit"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    },
+    {
+      "id": "knee-mri",
+      "title": "Knee MRI",
+      "overall": "BLOCKED",
+      "privateDataPipeline": "BLOCKED",
+      "nativePrivateBrowser": "BLOCKED",
+      "sourceScope": "BLOCKED",
+      "sourceScopeNote": "Knee MRI publisher file manifest, annotation and renderer missing",
+      "registeredDerivedBytes": {
+        "total": 0,
+        "missingOrChanged": 0
+      },
+      "registeredSourceLicenses": [],
+      "privatePreviewSource": null,
+      "medicalReview": "BLOCKED",
+      "privacyReview": "BLOCKED",
+      "commercialClearance": "BLOCKED",
+      "release": {
+        "status": "BLOCKED",
+        "eligible": false,
+        "blockers": [
+          "studio-not-cleared",
+          "product-reference",
+          "release-identity",
+          "missing-entry",
+          "missing-assets",
+          "dataset-coverage",
+          "missing-rights-coverage",
+          "product-evidence"
+        ]
+      },
+      "evidence": [
+        "No grounded modality-specific clinical preview in owner-local reports"
+      ],
+      "reviewersRequired": [
+        "qualified medical/anatomical reviewer",
+        "privacy reviewer",
+        "rights/attribution reviewer",
+        "owner exact-build approval"
+      ]
+    }
+  ],
+  "ci": "See the Draft QC PR checks for fresh Linux browser/API results at the final PR head; local source checks do not certify clinical browser rendering.",
+  "limitations": [
+    "Native Chromium and WebKit aborted under this macOS execution sandbox; no private-data native browser PASS.",
+    "Clinical anatomy, labels, patient privacy, rights and exact build need independent signed reviews.",
+    "Source-status is not asset clearance. TotalSegmentator and FracAtlas private candidates are not silently bound to old canonical dataset assets.",
+    "Five public asset routes are a bounded probe set, not an exhaustive production inventory. VPS disk, effective config, secret values and installed private datasets were not inspected."
+  ],
+  "preservationProof": {
+    "baseline": "406b28afbe26f023a2a02bc92fdcf73b67df1bf1",
+    "head": "d01acbb29127bcc11c357a60c320418057087f56",
+    "byteIdenticalFiles": [
+      {
+        "path": "shared/studios/catalog.v1.json",
+        "sha256": "ea93078596a8d69ad561dfdfd5f195d977b157cc56d25a21c4098d7853c07ebd",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "shared/studios/frozen-ids.json",
+        "sha256": "2a04cb1551c10544c70c59800cc5909c1cd4bae20a7b8b0f84ea217b66f42a27",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/resources.v1.json",
+        "sha256": "1e9fc9447278b958ce3b56147954ee4d03c4f30926bbcd63137b2b1a653f26f2",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/commercial-rights-evidence.json",
+        "sha256": "be3cefc738e263228adb5e9d65756e644605c4ca8c0f490a121d24f04ea8ee13",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/commercial-release.json",
+        "sha256": "2e191adfda7944b3d841ebae14533a14ee71ee8a213fa6f803cfeca9afb439e8",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/quarantine-policy.json",
+        "sha256": "bfac5b06bb574e6886e9845308940d11debdbfdeeae26f74c1ea87c686671a4d",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/quarantined-hashes.json",
+        "sha256": "d9db669a40b8f6e175745521935195e69c490875ba59f20e845fb033046090fb",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/reviews/reviewers.v1.json",
+        "sha256": "14e6e7c2a78bd37fe85988791baba9c34209941a1af7791830a9634fa3e4466e",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/reviews/decisions.v1.json",
+        "sha256": "937d32ed6307aa455f8df6feaab720e32cbf4557b0dc2d2a50766b1e8a98c851",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "90679553a2122383620a8ee15c8961fb6387ca29ba741e8e0ee7883c30d5e827",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "apps/studios/package-lock.json",
+        "sha256": "c5a7f625ef4c8a6877132cc3d7bef976f2ec329fa86e4306b079adf08045e75a",
+        "byteIdenticalToBaseline": true
+      }
+    ],
+    "legacyRightsRetained": 14,
+    "allCurrentRightsRetained": 39,
+    "protectedRuntimeDiff": []
+  },
+  "engineeringCiHistory": [
+    {
+      "runId": 45104219940,
+      "head": "31e74d78fb3a28d36dd18e445d417607aabfeaa8",
+      "all24FixtureSmoke": "PASS",
+      "sharedGuided": "PASS",
+      "syntheticMprPassed": 9,
+      "syntheticMprFailed": 1,
+      "cause": "Exact canvas assertion ran before requestAnimationFrame. Corrected test waits for paint, preserves expected pixels. Final-head CI required."
+    }
+  ]
+}

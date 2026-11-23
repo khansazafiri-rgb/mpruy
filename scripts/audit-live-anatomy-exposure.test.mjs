@@ -61,3 +61,23 @@ test('detect actual stream of a forbidden GLB without saving or distributing its
   assert.equal(r.results[0].result,'withheld-asset-publicly-served');
   assert.match(r.results[0].observedSha256,/^[a-f0-9]{64}$/);
 });
+
+test('CT explicit denied/gone statuses are distinguished from 200 unknown identity',async()=>{
+  for(const status of [403,404,410]){
+    const report=await auditPublicAssets({fetcher:async()=>new Response(null,{status})});
+    assert.equal(report.results[4].result,'not-served');
+    assert.equal(report.results[4].severity,'ok');
+    assert.equal(report.unverifiedFindings,0);
+  }
+});
+test('oversized chunked response is cancelled immediately instead of left downloading',async()=>{
+  let cancelled=0;
+  const report=await auditPublicAssets({fetcher:async(url,options)=>{
+    if(options.method==='HEAD'||!String(url).endsWith('/models/nervous.glb'))return new Response(null,{status:404});
+    const stream=new ReadableStream({pull(c){c.enqueue(new Uint8Array(1024*1024));},cancel(){cancelled++;}});
+    return new Response(stream,{headers:{'content-type':'model/gltf-binary'}});
+  }});
+  assert.equal(cancelled,1);
+  assert.equal(report.results[0].result,'cannot-verify-live-bytes');
+  assert.equal(report.results[0].observedSha256,null);
+});

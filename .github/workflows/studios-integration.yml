@@ -10,6 +10,9 @@ on:
       - 'packages/studio-contract/**'
       - 'licensing/**'
       - 'scripts/studio-*.mjs'
+      - 'scripts/private-*'
+      - 'scripts/finish-all-clinical-studios*'
+      - 'scripts/audit-live-*'
       - 'docs/clinical-studios/**'
       - '.github/workflows/studios-integration.yml'
 
@@ -61,6 +64,16 @@ jobs:
         run: |
           set -o pipefail
           node apps/studios/test/engines-guided.e2e.mjs 2>&1 | tee "$RUNNER_TEMP/studio-guided-browser.log"
+      - name: Private MPR renderer — synthetic fixture browser QC and negative integrity cases
+        run: |
+          set -o pipefail
+          node scripts/private-totalseg-mpr.e2e.mjs --report "$RUNNER_TEMP/private-mpr-browser.json" 2>&1 | tee "$RUNNER_TEMP/private-mpr-browser.log"
+      - name: Full-stack login, iframe, Guided, Challenge and revocation (engineering fixture only)
+        run: |
+          set -o pipefail
+          npm run build
+          bash apps/pocketbase/scripts/download-pocketbase.sh
+          node scripts/studios-fullstack-e2e.mjs 2>&1 | tee "$RUNNER_TEMP/studio-fullstack-browser.log"
       - name: Save technical test evidence only (never upload medical resources or dist)
         if: always()
         uses: actions/upload-artifact@v4
@@ -72,6 +85,9 @@ jobs:
             ${{ runner.temp }}/studio-integration-guards.log
             ${{ runner.temp }}/studio-browser-smoke.log
             ${{ runner.temp }}/studio-guided-browser.log
+            ${{ runner.temp }}/private-mpr-browser.json
+            ${{ runner.temp }}/private-mpr-browser.log
+            ${{ runner.temp }}/studio-fullstack-browser.log
           retention-days: 14
 
   legacy-4d-browser:

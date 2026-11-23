@@ -1,7 +1,10 @@
 # MEDCOEL Clinical Studios v2.0
 
 24 independent clinical applications over shared anatomy3d, volume/NiiVue, ECG and image2d engines.
-**No canonical studio is eligible for learner launch.** WS1 is on the integration target; WS2–WS5 are consolidated by Draft integration PR #233. Git integration does not install private medical resources on a server.
+**No canonical studio is eligible for learner launch.**
+
+Latest QC: [23 November 2026 — all 24 studios](32-final-end-to-end-qc-2026-11-23.md), with [machine-readable per-studio evidence](final-qc-2026-11-23.json). Six source-compatible private pipelines pass bounded engineering checks; no studio has release approval. Historical statements below are not a fresh full-registry reproduction or current clearance.
+Integration history: WS1–WS5 were consolidated by merged PR #233. Git integration does not install private medical resources on a server.
 
 | Document | Content |
 |---|---|
