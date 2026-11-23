@@ -327,7 +327,16 @@ export async function generatePrivateTotalSegReviews() {
     if(!byName.has(sourceName)){missingOptionalMasks.push(organ.id);continue;}
     const maskBytes=member(sourceName),mask=parsePrivateTotalSegNifti(maskBytes,'mask');
     verifyNiftiPair(ct,mask);
-    addPrivateMprOrgan(mpr,mask,organ);
+    try { addPrivateMprOrgan(mpr,mask,organ); }
+    catch(e){
+      // A real source mask may be empty or vanish under bounded sampling;
+      // never fabricate a replacement, but don't discard the 11 required.
+      if(/^CT_MPR_EMPTY_DOWNSAMPLED_MASK:/.test(e.message)){
+        missingOptionalMasks.push(organ.id+':no source-positive voxel after sampling');
+        continue;
+      }
+      throw e; // invalid registration/binary labels remain hard failures
+    }
     allMaskReceipts.push({sourceMask:organ.id,sourceMember:sourceName,sha256:SHA(maskBytes)});
     addedOptionalMasks.push(organ.id);
   }
