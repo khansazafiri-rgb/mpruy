@@ -11,6 +11,7 @@ import { UNAVAILABLE_GROUPS, UNAVAILABLE_MESSAGE, loadUnavailable, unavailableMa
 import { fetchJson } from "../utils/fetchJson.js";
 import { initBp3dBanner, bp3dNoteForSearch } from "./bp3dPanel.js";
 import { bp3dHas } from "../viewer/bp3dSource.js";
+import { isPublicContainment, isPublicWithheldSource } from "./publicContainment.js";
 import {
   settings,
   getStatus,
@@ -74,7 +75,11 @@ const PRESETS = [["muscles","Otot"],["bones","Tulang"],["organs","Organ"],["all"
 // Systems bar, like Complete Anatomy: one tile per system, + and − above it step through its layers
 // (+ adds the next outer layer back, − peels the outermost visible one), the tile toggles the system.
 function renderGroups() {
-  $("atlasGroups").innerHTML = GROUPS.map((g) => {
+  const available=GROUPS.filter(g=>!isPublicWithheldSource(g.source));
+  const temporarilyUnavailable=isPublicContainment()?GROUPS
+    .filter(g=>isPublicWithheldSource(g.source))
+    .map(g=>({...g,short:SHORT[g.id]||g.label})):[];
+  $("atlasGroups").innerHTML = available.map((g) => {
     const value = settings.groups[g.id], count = counts(g.id), loaded = state.loadedSystems.includes(g.source);
     const total = g.layers.length, shown = value.enabled ? total - value.removed : 0;
     const layerName = value.enabled ? g.layers[value.removed] : "Disembunyikan";
@@ -84,7 +89,7 @@ function renderGroups() {
    <button type="button" class="sys-toggle" data-toggle="${g.id}" aria-pressed="${value.enabled}" ${pending ? "disabled" : ""} title="${escape(g.label)} · ${escape(layerName)} · ${count} struktur${loaded ? "" : " · belum dimuat"}"><span class="sys-dot"></span><span class="sys-name">${SHORT[g.id] || escape(g.label)}</span>${dots}</button>
    <button type="button" class="sys-more" data-browse="${g.id}" aria-label="Daftar struktur ${escape(g.label)}" aria-expanded="${detailGroup === g.id}" title="Daftar struktur">⋯</button>
   </div>`;
-  }).join("") + UNAVAILABLE_GROUPS.map((g) => `<div class="sys-tile is-unavailable" style="--group-color:${g.color}" data-unavailable-group="${g.id}">
+  }).join("") + [...UNAVAILABLE_GROUPS,...temporarilyUnavailable].map((g) => `<div class="sys-tile is-unavailable" style="--group-color:${g.color}" data-unavailable-group="${g.id}">
    <button type="button" class="sys-toggle" disabled aria-disabled="true" title="${escape(g.label)} · ${escape(UNAVAILABLE_MESSAGE)}" aria-label="${escape(g.label)}: ${escape(UNAVAILABLE_MESSAGE)}"><span class="sys-dot"></span><span class="sys-name">${escape(g.short)}</span><span class="sys-unavailable">tidak tersedia</span></button>
   </div>`).join("");
   renderPartList();
@@ -95,6 +100,7 @@ function renderPartList() {
   panel.hidden = !detailGroup;
   if (!detailGroup) { panel.innerHTML = ""; return; }
   const group = GROUPS.find((g) => g.id === detailGroup);
+  if(!group||isPublicWithheldSource(group.source)){panel.hidden=true;panel.innerHTML="";return;}
   const ids = idsForGroup(detailGroup).sort((a, b) => a.localeCompare(b));
   panel.innerHTML = `<div class="atlas-browse-head" style="--group-color:${group.color}"><span class="sys-dot"></span><strong>${escape(group.label)}</strong><small>${ids.length} struktur di regio ini</small><button type="button" data-browse="${detailGroup}" aria-label="Tutup daftar">×</button></div>
   <button type="button" class="atlas-view-system" data-view-system="${detailGroup}">Lihat seluruh ${escape(group.label)} ↗</button>
@@ -139,13 +145,14 @@ function search(query) {
   const out = [];
   const systemAliases = {heart:['heart','jantung','cor'], respiratory:['respiratory','pernapasan','pernafasan','paru'],digestive:['digestive','pencernaan'],urinary:['urinary','kemih'],nervous:['nervous','saraf'],skeletal:['skeleton','tulang'],muscular:['muscle','muscles','otot'],arterial:['artery','arteries','arteri'],venous:['vein','veins','vena'],lymphatic:['lymphatic','limfatik'],reproductive:['reproductive','reproduksi'],endocrine:['endocrine','endokrin']};
   for (const group of GROUPS) {
+    if(isPublicWithheldSource(group.source))continue;
     const terms = [normalise(group.label), ...(systemAliases[group.id] || [])];
     if (terms.some(term => term === q || (q.length >= 3 && term.startsWith(q))))
       out.push({id:group.id,label:`${group.label} · Whole system`,group:group.id,system:true,score:200});
   }
   bp3dMissed = 0;
   for (const [id, info] of Object.entries(state.partsData)) {
-    if (!metadata(id)) continue;
+    if (!metadata(id) || isPublicWithheldSource(GROUPS.find(g=>g.id===metadata(id).group)?.source)) continue;
     const n = normalise(info.baseName),
       terms = [n, normalise(info.latinName || "")];
     for (const [key, aliases] of Object.entries(ALIASES))
@@ -199,7 +206,9 @@ function showSearch() {
   const panel = $("searchResults");
   panel.classList.add("show");
   $("searchInput").setAttribute("aria-expanded", "true");
-  panel.innerHTML = `<div class="search-scope">${searchRows.length ? `${searchRows.length} hasil · semua regio · memilih hasil langsung menampilkannya` : "Semua regio"}</div>${searchRows.map((r, i) => {
+  const containmentNote=isPublicContainment()?
+    '<div class="search-unavailable" role="note"><strong>Atlas terbatas</strong><small>Rangka dan organ viseral belum tersedia karena verifikasi izin; hasil pencarian tidak menggantinya dengan anatomi lain.</small></div>':'';
+  panel.innerHTML = containmentNote+`<div class="search-scope">${searchRows.length ? `${searchRows.length} hasil · semua regio · memilih hasil langsung menampilkannya` : "Semua regio"}</div>${searchRows.map((r, i) => {
     const group = GROUPS.find((g) => g.id === r.group), image = !r.system && structurePreview(r.id);
     const where = r.system ? "Tampilkan seluruh sistem" : `${group.label} · ${REGIONS.find((g) => g[0] === metadata(r.id).regions[0])?.[1] || "Seluruh tubuh"}`;
     return `<button type="button" role="option" aria-selected="false" id="atlas-result-${i}" class="atlas-result${r.system ? " is-system" : ""}" data-result="${i}" style="--group-color:${group.color}"><span class="atlas-result-thumb">${image ? `<img class="atlas-result-preview" src="${escape(image)}" alt="" decoding="async"/>` : `<i aria-hidden="true"></i>`}</span><span class="atlas-result-text"><span>${escape(r.label)}</span><small><i class="group-dot" aria-hidden="true"></i>${escape(where)}</small></span></button>`;
