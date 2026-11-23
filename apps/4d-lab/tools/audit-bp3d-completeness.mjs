@@ -7,7 +7,7 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {parseOfficialNames,parseOfficialElements,candidateCrosswalk,mapActualMeshFiles,checkArchiveEntryNames} from '../../../licensing/tools/prepare-bodyparts3d-source.mjs';
 import {auditGeneratedBatch} from './bp3d-batch-audit.mjs';
-import {buildAllSystemsTriage,triageCsv,geometryCsv,unapprovedTemplate} from './bp3d-all-systems-triage.mjs';
+import {buildAllSystemsTriage,triageCsv,geometryCsv,unapprovedTemplate,semanticSourceFlags} from './bp3d-all-systems-triage.mjs';
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 const PRIVATE=path.join(ROOT,'local-data/licensing-quarantine');
 const CSV=x=>'"'+String(x??'').replaceAll('"','""')+'"';
@@ -48,7 +48,13 @@ export function auditCompleteness({catalog,officialRows,elementIndex,archiveFile
         officialRows.some(x=>x.fmaId===model.fmaId&&x.bpId===model.bpId);
       const provisionalIdentity=inventory.provisionalSource===true &&
         model.mappingMethod==='provisional-name-review-NOT-validated' &&
-        officialRows.some(x=>x.fmaId===model.fmaId&&x.bpId===model.bpId);
+        officialRows.some(x=>{
+          if(x.fmaId!==model.fmaId||x.bpId!==model.bpId)return false;
+          const atlasSide=/\\.l$/.test(row.atlasName)?'left':/\\.r$/.test(row.atlasName)?'right':null;
+          const sourceSides=x.name.toLowerCase().match(/\\b(left|right)\\b/g)||[];
+          return (!atlasSide||sourceSides.length===1&&sourceSides[0]===atlasSide) &&
+            semanticSourceFlags(row.atlasName,x.name).length===0;
+        });
       if(!exactMatch&&!reviewedIdentity&&!provisionalIdentity)
         errors.push('source identity not corroborated by official mapping, reviewer or private provisional record: '+row.atlasName);
       convertedIdentities.add(model.fmaId+'|'+model.bpId);
