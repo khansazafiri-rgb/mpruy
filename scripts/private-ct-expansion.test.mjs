@@ -42,6 +42,27 @@ test('CT-EXP-002: legacy 11 masks remain v1; authentic mask 16 switches to uint3
  assert.equal(ui.elements.get('organs').children.length,18);
  assert.equal(ui.elements.get('status').textContent.includes('18 mask'),true);
 });
+test('CT-EXP-002b: missing sampled 16th mask cannot silently promote a valid 15-mask v1 packet',()=>{
+ const large=[64,64,64],nLarge=64**3;
+ const common={dims:large,n:nLarge,affine:[1,0,0,0,0,1,0,0,0,0,1,0],
+  spatialUnits:'mm',scale:1,intercept:0};
+ const pack=createPrivateMprPack({...common,kind:'ct',read:()=>90},{maxDim:32});
+ for(let k=0;k<15;k++)addPrivateMprOrgan(pack,
+  {...common,kind:'mask',read:()=>1},
+  {id:'verified'+k,label:'Engineering test '+k,rgb:[25+k,35+k,45+k]});
+ assert.equal(pack.maskBits.BYTES_PER_ELEMENT,2);
+ assert.equal(pack.organs.length,15);
+ const old=pack.maskBits;
+ assert.throws(()=>addPrivateMprOrgan(pack,
+  {...common,kind:'mask',read:i=>i===0?1:0},
+  {id:'unsampled',label:'Engineering absent mask',rgb:[80,90,100]}),
+  /CT_MPR_EMPTY_DOWNSAMPLED_MASK/);
+ assert.strictEqual(pack.maskBits,old);
+ assert.equal(pack.organs.length,15);
+ const payload=encodePrivateMprPack(pack,{sourceSubject:'s0001',archiveSha256:HASH,sourceCtSha256:HASH});
+ assert.equal(payload.schema,'medcoel.private-mpr-ct.v1');
+});
+
 test('CT-EXP-003: Brain CT uses actual whole-brain label 1 and documented -2000 background, never inferred hemorrhage labels',async()=>{
  const ct=specimen('ct',i=>45+i%14);
  const segmentation=specimen('mask',i=>i%5===0?-2000:i%3===0?1:0);
