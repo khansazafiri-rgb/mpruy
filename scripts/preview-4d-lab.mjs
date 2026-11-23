@@ -137,7 +137,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   Live 4D Lab (as students see it):  ${b}/anatomy/live
   Lab directly (full window):        ${b}/anatomy/4d-lab/
   Procedural phantom dataset:        ${b}/anatomy/4d-lab/?dataset=phantom
-  Atlas 3D + official BodyParts3D:   ${existsSync(path.join(ROOTS.bp3d, 'inventory.json')) ? b + '/anatomy/viewer/?models=bp3d   (local review data found)' : 'not built: npm run batch:bodyparts3d -- --all'}
+  Atlas 3D + official BodyParts3D:   ${existsSync(path.join(ROOTS.bp3d, 'inventory.json')) ? b + '/anatomy/viewer/?models=bp3d:skeletal,visceral   (existing Atlas UI, local source review)' : 'not built: npm run batch:bodyparts3d -- --all'}
 Checks: lab datasets ${check.facts.lab.datasets.join(' + ')}, ${check.facts.sourceModelsChecked} self-bundled atlas GLBs match source CT hashes; Atlas Viewer build ${atlasOn ? 'passed the licence-quarantine scan' : 'absent'}.
 ${host === '0.0.0.0' ? 'LAN mode: reachable from other devices on this network via this machine\'s IP. Stop with Ctrl+C when done.\n' : ''}Stop with Ctrl+C.`);
   });
