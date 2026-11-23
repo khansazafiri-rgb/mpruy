@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import * as THREE from 'three';
-import { parseBp3dFlag, validateInventory, BP3D_FRAME, bp3dHas, _bp3dReset, bp3dUsesSystem } from '../src/viewer/bp3dSource.js';
+import { parseBp3dFlag, validateInventory, BP3D_FRAME, bp3dHas, _bp3dReset, bp3dUsesSystem, loadBp3dInventory, loadBp3dSystem } from '../src/viewer/bp3dSource.js';
 import { tissueClass } from '../src/viewer/bp3dMaterials.js';
 import { createSelectionGlow } from '../src/viewer/selectionGlow.js';
 
@@ -80,5 +80,65 @@ describe('selection sweep on double-sided sources', () => {
   it('keeps front-face-only for Atlas meshes (default behaviour unchanged)', () => {
     const m = meshWith(THREE.FrontSide); const release = createSelectionGlow([m]);
     expect(m.children[0].material.side).toBe(THREE.FrontSide); release();
+  });
+});
+
+describe('selective skeletal/visceral source in the ORIGINAL Atlas interface', () => {
+  const inventory = { converted: [
+    entry('Femur.l', 'skeletal', 'femur'),
+    entry('Tibia.l', 'skeletal', 'tibia'),
+    entry('Liver', 'visceral', 'liver')
+  ] };
+  const useInventory = async () => {
+    _bp3dReset('?models=bp3d:skeletal,visceral');
+    await loadBp3dInventory(async () => ({ ok: true, json: async () => inventory }));
+  };
+  it('filters missing bones and organs without filtering muscles and other unchanged Atlas systems', async () => {
+    try {
+      await useInventory();
+      expect(bp3dUsesSystem('skeletal')).toBe(true);
+      expect(bp3dUsesSystem('visceral')).toBe(true);
+      expect(bp3dUsesSystem('muscular')).toBe(false);
+      expect(bp3dHas('Femur.l', 'skeletal')).toBe(true);
+      expect(bp3dHas('Absent bone', 'skeletal')).toBe(false);
+      expect(bp3dHas('Liver', 'visceral')).toBe(true);
+      expect(bp3dHas('Absent organ', 'visceral')).toBe(false);
+      expect(bp3dHas('Biceps brachii.l', 'muscular')).toBe(true);
+      expect(bp3dHas('Some joint', 'joints')).toBe(true);
+    } finally { _bp3dReset(''); }
+  });
+  it('keeps catalogue IDs usable for the existing selection, glow, and isolation registry', async () => {
+    try {
+      await useInventory();
+      const loader = { loadAsync: async () => {
+        const scene = new THREE.Group();
+        scene.add(new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshStandardMaterial()));
+        return {scene};
+      }};
+      const result = await loadBp3dSystem('skeletal', loader);
+      expect(result.userData.bp3d).toEqual({total: 2, failed: 0});
+      const nodes = result.children[0].children;
+      expect(nodes.map(node => node.userData.za_name)).toEqual(['Femur.l', 'Tibia.l']);
+      expect(nodes.every(node => node.children[0].children[0].material.side === THREE.DoubleSide)).toBe(true);
+    } finally { _bp3dReset(''); }
+  });
+  it('fails closed on one corrupt or missing bone, not a misleading partial skeleton', async () => {
+    try {
+      await useInventory();
+      const loader = { loadAsync: async (url) => {
+        if (url.includes('/tibia/')) throw new Error('Missing GLB');
+        const scene = new THREE.Group();
+        scene.add(new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshStandardMaterial()));
+        return {scene};
+      }};
+      await expect(loadBp3dSystem('skeletal', loader)).rejects.toThrow(/incomplete: 1\/2 models failed/);
+    } finally { _bp3dReset(''); }
+  });
+  it('rejects empty GLB scenes rather than claiming those structures are available', async () => {
+    try {
+      await useInventory();
+      const loader = { loadAsync: async () => ({scene: new THREE.Group()}) };
+      await expect(loadBp3dSystem('visceral', loader)).rejects.toThrow(/incomplete: 1\/1 models failed/);
+    } finally { _bp3dReset(''); }
   });
 });
