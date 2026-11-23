@@ -7,6 +7,7 @@ import zlib from 'node:zlib';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import geometry from './private-totalseg-mpr-geometry.cjs';
 const MiB=1024*1024;
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const PAGE=fileURLToPath(new URL('./private-totalseg-mpr-template.html',import.meta.url));
@@ -34,20 +35,28 @@ export function createPrivateMprPack(ct,{maxDim=144}={}){
     hu[x+X*(y+Y*z)]=Math.max(-32768,Math.min(32767,v));
   }
   if(clipped>voxelCount/100)throw Error('CT_MPR_EXCESSIVE_HU_CLIPPING');
-  return {dims,sourceDims:[...ct.dims],sourceAffine:[...ct.affine],axisMap,
+  geometry.describe(ct.affine,ct.dims,axisMap);
+  return {dims,sourceDims:[...ct.dims],sourceAffine:[...ct.affine],sourceUnits:ct.spatialUnits||'unknown',axisMap,
     hu,maskBits,organs:[],clippedHU:clipped};
 }
 export function addPrivateMprOrgan(pack,mask,organ){
   if(!pack||!mask||mask.kind!=='mask'||!organ||
-     !/^[a-z0-9_]{1,70}$/.test(organ.id||'')||
+     !/^[a-z][A-Za-z0-9_]{0,69}$/.test(organ.id||'')||
      pack.organs.some(o=>o.id===organ.id)||pack.organs.length>=15||
      !Array.isArray(organ.rgb)||organ.rgb.length!==3||
      !organ.rgb.every(n=>Number.isInteger(n)&&n>=0&&n<=255)||
-     mask.dims.join(',')!==pack.sourceDims.join(',')||
+     !Array.isArray(mask.dims)||mask.dims.join(',')!==pack.sourceDims.join(',')||
+     !Array.isArray(mask.affine)||mask.affine.length!==12||!mask.affine.every(Number.isFinite)||
      mask.affine.some((v,i)=>Math.abs(v-pack.sourceAffine[i])>0.001)||
      mask.scale!==1||mask.intercept!==0)
     throw Error('CT_MPR_MASK_GRID_OR_LABEL_INVALID');
   const bit=1<<pack.organs.length,[X,Y,Z]=pack.dims,[srcX,srcY]=pack.sourceDims;
+  // Validate the entire source mask, including voxels omitted by downsampling.
+  // A corrupt label must not disappear merely because its voxel was not sampled.
+  for(let i=0,n=pack.sourceDims.reduce((a,b)=>a*b,1);i<n;i++){
+    const value=mask.read(i);
+    if(value!==0&&value!==1)throw Error('CT_MPR_MASK_NOT_BINARY');
+  }
   let positive=0;
   for(let z=0;z<Z;z++)for(let y=0;y<Y;y++)for(let x=0;x<X;x++){
     const old=pack.axisMap[0][x]+srcX*(pack.axisMap[1][y]+srcY*pack.axisMap[2][z]);
@@ -89,8 +98,8 @@ export function recommendMprSlices(pack, organIds){
 }
 export function encodePrivateMprPack(pack,{sourceSubject,archiveSha256,sourceCtSha256}={}){
   if(!pack?.organs.length||!/^s\d{3,6}$/.test(sourceSubject||'')||
-     !/^[a-f0-9]{64}$/.test(archiveSha256||'')||
-     !/^[a-f0-9]{64}$/.test(sourceCtSha256||''))
+     !/^[a-f0-9]{64}$/.test(archiveSha256||'')||/^0{64}$/.test(archiveSha256)||
+     !/^[a-f0-9]{64}$/.test(sourceCtSha256||'')||/^0{64}$/.test(sourceCtSha256))
     throw Error('CT_MPR_UNVERIFIED_OR_EMPTY_DATA');
   const encode=values=>{
     const b=Buffer.allocUnsafe(values.length*2);
@@ -105,6 +114,9 @@ export function encodePrivateMprPack(pack,{sourceSubject,archiveSha256,sourceCtS
     subject:sourceSubject,archiveSha256,ctMemberSha256:sourceCtSha256,
     geometry:'voxel-index only; nearest-neighbour sampled; NO clinical orientation',
     originalDimensions:pack.sourceDims,dimensions:pack.dims,
+    sourceAffine:pack.sourceAffine,sourceUnits:pack.sourceUnits,
+    sampledSourceIndices:pack.axisMap.map(a=>Array.from(a)),
+    indexGeometry:geometry.describe(pack.sourceAffine,pack.sourceDims,pack.axisMap),
     compression:'gzip',dtype:'int16-hu-and-uint16-mask-bitset-le',
     hu:encode(pack.hu),masks:encode(pack.maskBits),
     organs:pack.organs,clippedHU:pack.clippedHU,
@@ -114,7 +126,7 @@ export function encodePrivateMprPack(pack,{sourceSubject,archiveSha256,sourceCtS
       'chest-ct':recommendMprSlices(pack,pack.organs
         .filter(o=>/^lung_|^heart$/.test(o.id)).map(o=>o.id))
     },
-    clinicalApproved:false,privacyApproved:false,rightsApproved:false,
+    orientationApproved:false,clinicalApproved:false,privacyApproved:false,rightsApproved:false,
     releaseEligible:false
   };
 }

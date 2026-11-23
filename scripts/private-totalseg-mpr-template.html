@@ -32,13 +32,22 @@ pengukuran klinis atau penentuan laterality. Jangan unggah gambar, HTML atau dat
 <div id="organs" aria-label="Pilihan organ"></div>
 </section>
 <section class="planes">
-<article><h2>Axial · index <span id="n-z"></span></h2><canvas id="view-z"></canvas><label class="dim" for="slice-z">Geser irisan Z</label><input id="slice-z" type="range" min="0" max="1"></article>
-<article><h2>Coronal · index <span id="n-y"></span></h2><canvas id="view-y"></canvas><label class="dim" for="slice-y">Geser irisan Y</label><input id="slice-y" type="range" min="0" max="1"></article>
-<article><h2>Sagittal · index <span id="n-x"></span></h2><canvas id="view-x"></canvas><label class="dim" for="slice-x">Geser irisan X</label><input id="slice-x" type="range" min="0" max="1"></article>
+<article><h2><span id="plane-z">Axial / source index Z pending</span> · <span id="n-z"></span></h2><p id="orientation-z" class="dim"></p><canvas id="view-z"></canvas><label class="dim" for="slice-z">Geser irisan Z</label><input id="slice-z" type="range" min="0" max="1"></article>
+<article><h2><span id="plane-y">Coronal / source index Y pending</span> · <span id="n-y"></span></h2><p id="orientation-y" class="dim"></p><canvas id="view-y"></canvas><label class="dim" for="slice-y">Geser irisan Y</label><input id="slice-y" type="range" min="0" max="1"></article>
+<article><h2><span id="plane-x">Sagittal / source index X pending</span> · <span id="n-x"></span></h2><p id="orientation-x" class="dim"></p><canvas id="view-x"></canvas><label class="dim" for="slice-x">Geser irisan X</label><input id="slice-x" type="range" min="0" max="1"></article>
 </section>
 <p class="dim">Sumber TotalSegmentator 2.0.1, satu subjek pseudonim. Data voxel asli diverifikasi sebelum bundel dibuat.
 Browser menggunakan sampel 3D resolusi lebih rendah untuk navigasi cepat. Preview statis resolusi asli tetap tersedia.
 Kode ini berjalan di browser lokal tanpa pemanggilan jaringan keluar.</p>
+<section id="source-attribution" class="dim">
+<h2>Identitas dan atribusi kandidat sumber</h2>
+<p>Jakob Wasserthal, <em>Small subset of TotalSegmentator Dataset</em>, versi 2.0.1,
+<a href="https://doi.org/10.5281/zenodo.10047263" rel="noreferrer">Zenodo DOI 10.5281/zenodo.10047263</a>.
+Lisensi yang dinyatakan penerbit: <a href="https://creativecommons.org/licenses/by/4.0/" rel="noreferrer">CC BY 4.0</a>.
+Perubahan MEDCOEL: pemilihan satu volume dan subset mask, sampling nearest-neighbour,
+window HU dan warna overlay. Bukti izin per file, review medis/privasi, serta persetujuan rilis tetap PENDING.</p>
+</section>
 <script src="../ct-mpr-private/volume.js"></script>
+<script src="../ct-mpr-private/geometry.js"></script>
 <script src="../ct-mpr-private/viewer.js"></script>
 </body></html>

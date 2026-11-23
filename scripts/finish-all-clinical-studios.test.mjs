@@ -2,7 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { allStudioMatrix,allStudioHtml,nextQcMarkdown } from './finish-all-clinical-studios.mjs';
+import { allStudioMatrix,allStudioHtml,nextQcMarkdown,verifyPrivateMprFiles } from './finish-all-clinical-studios.mjs';
+import { PRIVATE_MPR_ORGAN_IDS } from './private-totalseg-ct-review.mjs';
+import crypto from 'node:crypto';
+import {privateMprFixture} from './private-mpr-test-harness.mjs';
 
 const catalog=JSON.parse(fs.readFileSync(
   fileURLToPath(new URL('../shared/studios/catalog.v1.json',import.meta.url)),'utf8'));
@@ -66,4 +69,24 @@ test('ALL-004: HTML escapes dynamic source text and QC retains non-release red f
 test('ALL-005: frozen 24-studio catalog cannot be silently shrunk or augmented',()=>{
   assert.throws(()=>allStudioMatrix({studios:catalog.studios.slice(0,10)},
     {sources},results,v),/ONE_SHOT_INCOMPLETE_24_STUDIO_INPUT/);
+});
+
+test('ALL-006: private preview availability verifies geometry, every source mask and exact renderer/bundle bytes',()=>{
+  const data=privateMprFixture(),files={
+    'geometry.js':fs.readFileSync(new URL('./private-totalseg-mpr-geometry.cjs',import.meta.url)),
+    'viewer.js':fs.readFileSync(new URL('./private-totalseg-mpr-browser.js',import.meta.url)),
+    'volume.js':Buffer.from('Engineering fixture; no patients or approval')};
+  const manifest={...data,sourceSubject:data.subject,sourceArchiveSha256:data.archiveSha256,ctSourceSha256:data.ctMemberSha256,
+    organs:PRIVATE_MPR_ORGAN_IDS.map(id=>({id})),
+    maskReceipts:PRIVATE_MPR_ORGAN_IDS.map(sourceMask=>({sourceMask,sourceMember:data.subject+'/segmentations/'+sourceMask+'.nii.gz',sha256:'a'.repeat(64)})),
+    files:Object.fromEntries(Object.entries(files).map(([name,b])=>[name,{bytes:b.length,sha256:crypto.createHash('sha256').update(b).digest('hex')}]))};
+  const read=name=>files[name];
+  assert.equal(verifyPrivateMprFiles(manifest,read),true);
+  const changed=structuredClone(manifest);changed.releaseEligible=true;
+  assert.equal(verifyPrivateMprFiles(changed,read),false);
+  const missing=structuredClone(manifest);delete missing.files['geometry.js'];
+  assert.equal(verifyPrivateMprFiles(missing,read),false);
+  const labels=structuredClone(manifest);labels.maskReceipts.pop();
+  assert.equal(verifyPrivateMprFiles(labels,read),false);
+  assert.equal(verifyPrivateMprFiles(manifest,name=>name==='viewer.js'?Buffer.from('tampered'):read(name)),false);
 });

@@ -4,6 +4,9 @@ import zlib from 'node:zlib';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import geometry from './private-totalseg-mpr-geometry.cjs';
+import crypto from 'node:crypto';
+import {privateMprFixture,runPrivateMprDom} from './private-mpr-test-harness.mjs';
 import {
   createPrivateMprPack,addPrivateMprOrgan,encodePrivateMprPack,privateMprPage
 } from './private-totalseg-mpr.mjs';
@@ -80,4 +83,94 @@ test('MPR-004: browser script parses and has no network endpoint or implicit rel
   assert.match(text,/slice-x/);
   assert.match(text,/slide|slice-y/);
   assert.match(text,/slice-z/);
+});
+
+test('MPR-005: preserve the authentic vertebrae_L1 source ID without weakening path checks',()=>{
+  const pack=createPrivateMprPack(volume('ct'),{maxDim:32});
+  addPrivateMprOrgan(pack,volume('mask'),{...liver,id:'vertebrae_L1'});
+  assert.equal(pack.organs[0].id,'vertebrae_L1');
+  for(const id of ['../vertebrae_L1','vertebrae/L1','<script>','a'.repeat(71)] )
+    assert.throws(()=>addPrivateMprOrgan(pack,volume('mask'),{...liver,id}),/INVALID/);
+});
+
+test('MPR-006: a bad source label outside the sampled grid must still reject the entire mask',()=>{
+  const ct=volume('ct',{dims:[64,64,64]}),pack=createPrivateMprPack(ct,{maxDim:32});
+  // The first sampled source centre is (1,1,1); source voxel 0 is not sampled.
+  assert.equal(pack.axisMap[0][0],1);
+  const mask={...ct,kind:'mask',read:i=>i===0?2:1};
+  assert.throws(()=>addPrivateMprOrgan(pack,mask,liver),/MASK_NOT_BINARY/);
+  assert.equal(pack.organs.length,0);
+  assert.equal(pack.maskBits.some(Boolean),false);
+});
+
+test('MPR-007: RAS header, permutation, signs and oblique metadata are explicit; clinical approval stays false',()=>{
+  const maps=[[0,1,2,3],[0,1,2,3],[0,1,2,3]],dims=[4,4,4];
+  const normal=geometry.describe([2,0,0,0,0,3,0,0,0,0,4,0],dims,maps);
+  assert.match(normal.planes.z.label,/Axial/);
+  assert.deepEqual([normal.planes.z.left,normal.planes.z.right,normal.planes.z.top,normal.planes.z.bottom],['L','R','A','P']);
+  assert.equal(normal.planes.y.aspectRatio,0.5);
+  const permuted=geometry.describe([0,0,-2,10,1.5,0,0,20,0,3,0,30],dims,maps);
+  assert.match(permuted.planes.x.label,/Coronal/);
+  assert.match(permuted.planes.y.label,/Axial/);
+  assert.match(permuted.planes.z.label,/Sagittal/);
+  const c=Math.SQRT1_2,oblique=geometry.describe([c,-c,0,0,c,c,0,0,0,0,1,0],dims,maps);
+  assert.equal(oblique.axisAligned,false);
+  assert.doesNotMatch(oblique.planes.x.label,/Axial|Coronal|Sagittal/);
+  assert.equal(oblique.planes.x.left,null);
+  assert.equal(permuted.clinicalOrientationApproved,false);
+});
+
+test('MPR-008: nonfinite/degenerate geometry, wrong sample maps and nonfinite mask affine fail closed',()=>{
+  const ct=volume('ct');
+  for(const bad of [Array(12).fill(0),[NaN,...ct.affine.slice(1)],[]]){
+    assert.throws(()=>createPrivateMprPack({...ct,affine:bad},{maxDim:32}),/SOURCE_GEOMETRY_INVALID/);
+    const pack=createPrivateMprPack(ct,{maxDim:32});
+    assert.throws(()=>addPrivateMprOrgan(pack,{...volume('mask'),affine:bad},liver),/INVALID/);
+  }
+  assert.throws(()=>geometry.describe(ct.affine,ct.dims,[[0,0,1,2],[0,1,2,3],[0,1,2,3]]),/SAMPLE_MAP_INVALID/);
+});
+
+test('MPR-DOM-009: independent known voxel controls all three planes, organ toggle, opacity and HU windows',async()=>{
+  const ui=await runPrivateMprDom(privateMprFixture());
+  assert.equal(ui.document.body.dataset.mprReady,'true');
+  for(const axis of ['x','y','z'])await ui.set('slice-'+axis,2);
+  await ui.set('opacity',0);
+  // Source voxel (2,2,2) is -46 HU: soft window maps to 73/255.
+  assert.deepEqual(ui.pixel('z',2,4),[73,73,73,255]);
+  assert.deepEqual(ui.pixel('y',2,3),[73,73,73,255]);
+  assert.deepEqual(ui.pixel('x',2,3),[73,73,73,255]);
+  await ui.set('opacity',100);
+  for(const [axis,u,v] of [['z',2,4],['y',2,3],['x',2,3]])assert.deepEqual(ui.pixel(axis,u,v),[240,166,61,255]);
+  await ui.set('opacity',55);assert.deepEqual(ui.pixel('z',2,4),[165,124,66,255]);
+  const toggle=ui.elements.get('organs').children[0].children[0];
+  toggle.checked=false;toggle.dispatch('change');await ui.flush();
+  assert.deepEqual(ui.pixel('z',2,4),[73,73,73,255]);
+  await ui.set('window','lung','change');assert.deepEqual(ui.pixel('z',2,4),[222,222,222,255]);
+  await ui.set('window','bone','change');assert.deepEqual(ui.pixel('z',2,4),[64,64,64,255]);
+  ui.elements.get('view-z').dispatch('wheel',{deltaY:100});await ui.flush();
+  assert.equal(ui.elements.get('slice-z').value,'3');
+  assert.equal(ui.elements.get('slice-x').value,'2');
+  assert.equal(ui.elements.get('slice-y').value,'2');
+  assert.match(ui.elements.get('plane-z').textContent,/Axial/);
+  assert.match(ui.elements.get('orientation-z').textContent,/header RAS.*belum direview klinis/);
+});
+
+test('MPR-DOM-010: corrupt hashes, gzip expansion, unknown mask bits and forged approvals never paint a ready volume',async()=>{
+  const field=raw=>{const zip=zlib.gzipSync(raw);return {base64:zip.toString('base64'),compressedBytes:zip.length,uncompressedBytes:672,sha256:crypto.createHash('sha256').update(raw).digest('hex')};};
+  const mutations=[
+    d=>{d.hu.sha256='0'.repeat(64);},d=>{d.masks.sha256='0'.repeat(64);},
+    d=>{d.hu=field(Buffer.alloc(2*1024*1024));},
+    d=>{const raw=zlib.gunzipSync(Buffer.from(d.masks.base64,'base64'));raw.writeUInt16LE(128,0);d.masks=field(raw);},
+    d=>{d.organs[1].bit=d.organs[0].bit;},d=>{d.organs[0].bit=3;},
+    d=>{d.sourceAffine[0]=NaN;},d=>{d.organs[0].id='../../escape';},
+    ...['releaseEligible','clinicalApproved','privacyApproved','rightsApproved','orientationApproved'].map(k=>d=>{d[k]=true;})
+  ];
+  for(const mutate of mutations){
+    const payload=privateMprFixture();mutate(payload);
+    const ui=await runPrivateMprDom(payload);
+    assert.equal(ui.document.body.dataset.mprReady,'false');
+    assert.match(ui.elements.get('status').textContent,/tidak dapat dimuat/);
+    assert.equal(ui.elements.get('view-z').frame,null);
+    assert.equal(ui.elements.get('slice-z').disabled,true);
+  }
 });

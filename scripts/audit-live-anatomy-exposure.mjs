@@ -11,6 +11,9 @@ const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const HOST = 'https://medcoel.com';
 const LIMIT = 8 * 1024 * 1024;
 const POLICY = path.join(ROOT, 'licensing/quarantine-policy.json');
+export const REQUIRED_PUBLIC_PROBE_IDS = Object.freeze([
+  'nervous-glb', 'nervous-thumbnail', 'skeletal-glb', 'visceral-glb', 'atlas-ct-endpoint'
+]);
 
 function shaFile(p) {
   return createHash('sha256').update(fs.readFileSync(p)).digest('hex');
@@ -61,6 +64,9 @@ async function request(url, { method = 'GET', timeoutMs = 12000, maxBytes = LIMI
       if (size > maxBytes) throw new Error('Response exceeds audit size limit');
       h.update(next.value);
     }
+  } catch(e) {
+    await reader.cancel().catch(()=>{});
+    throw e;
   } finally { reader.releaseLock(); }
   return { status: r.status, contentType, bytes: size, sha256: h.digest('hex') };
 }
@@ -109,9 +115,9 @@ export async function auditPublicAssets({ base = HOST, root = ROOT, fetcher = fe
     results.push({ id: 'atlas-ct-endpoint', route: ct, httpStatus: reply.status,
       contentType: reply.contentType, bytes: null, observedSha256: null,
       result: html ? 'spa-fallback-not-proof-of-ct-deployment'
-        : reply.status === 404 ? 'not-served'
+        : [403,404,410].includes(reply.status) ? 'not-served'
         : reply.status === 200 ? 'served-ct-identity-unverified' : 'unexpected-http-status',
-      severity: 'unknown' });
+      severity: [403,404,410].includes(reply.status) ? 'ok' : 'unknown' });
   } catch (e) {
     results.push({ id: 'atlas-ct-endpoint', route: ct, result: 'unreachable',
       severity: 'unknown', issue: e.message });

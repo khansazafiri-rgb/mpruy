@@ -40,6 +40,9 @@ const MPR_EXTRAS=[
   {id:'lung_lower_lobe_left',label:'Lobus bawah paru kiri',rgb:[123,159,247]},
   {id:'vertebrae_L1',label:'Vertebra L1',rgb:[232,207,111]}
 ];
+export const PRIVATE_MPR_ORGAN_IDS=Object.freeze([
+  ...Object.values(GROUPS).flat().map(o=>o.id),...MPR_EXTRAS.map(o=>o.id)
+]);
 function checkPrivate(file) {
   const rel=path.relative(ROOT,file);
   if(rel.startsWith('..')||path.isAbsolute(rel)||
@@ -118,6 +121,7 @@ export function parsePrivateTotalSegNifti(gzip,kind){
     return dtype===2?b[at]:dtype===4?b.readInt16LE(at):b.readFloatLE(at);
   };
   return {bytes:b,dims,n,kind,affine,dtype,scale,intercept:offsetHu,read,
+    spatialUnits:({1:'m',2:'mm',3:'um'})[b[123]&7]||'unknown',
     headerHash:SHA(b.subarray(0,Math.min(offset,b.length)))};
 }
 export function verifyNiftiPair(ct,mask){
@@ -245,7 +249,7 @@ export async function generatePrivateTotalSegReviews() {
   const ctBytes=member(subject.ctPath),ct=parsePrivateTotalSegNifti(ctBytes,'ct');
   // Sample once: the same compact HU volume will power both CT regions.
   const mpr=createPrivateMprPack(ct,{maxDim:144});
-  const cases={};
+  const cases={},allMaskReceipts=[];
   for(const [studio,organs] of Object.entries(GROUPS)){
     const panels=[],provenance=[];
     for(const organ of organs){
@@ -258,6 +262,7 @@ export async function generatePrivateTotalSegReviews() {
         panels.push({...frame,label:organ.label});
       }
       provenance.push({sourceMask:organ.id,sourceMemberSha256:SHA(maskBytes)});
+      allMaskReceipts.push({sourceMask:organ.id,sourceMember:sourceName,sha256:SHA(maskBytes)});
     }
     const target=path.join(OUTPUT,studio);
     for(const [i,item] of panels.entries()){
@@ -287,6 +292,7 @@ export async function generatePrivateTotalSegReviews() {
     const maskBytes=member(sourceName),mask=parsePrivateTotalSegNifti(maskBytes,'mask');
     verifyNiftiPair(ct,mask);
     addPrivateMprOrgan(mpr,mask,organ);
+    allMaskReceipts.push({sourceMask:organ.id,sourceMember:sourceName,sha256:SHA(maskBytes)});
   }
   const volume=encodePrivateMprPack(mpr,{
     sourceSubject:subject.subject,archiveSha256:audit.archiveSha256,
@@ -294,16 +300,25 @@ export async function generatePrivateTotalSegReviews() {
   });
   const shared=path.join(OUTPUT,'ct-mpr-private');
   const browser=fs.readFileSync(new URL('./private-totalseg-mpr-browser.js',import.meta.url));
+  const geometry=fs.readFileSync(new URL('./private-totalseg-mpr-geometry.cjs',import.meta.url));
+  writePrivate(path.join(shared,'geometry.js'),geometry);
   writePrivate(path.join(shared,'viewer.js'),browser);
   writePrivate(path.join(shared,'volume.js'),
     'window.MEDCOEL_CT_PRIVATE = '+JSON.stringify(volume)+';\n');
   writePrivate(path.join(shared,'bundle-manifest.json'),JSON.stringify({
     schema:volume.schema,sourceSubject:volume.subject,originalDimensions:volume.originalDimensions,
     dimensions:volume.dimensions,sourceArchiveSha256:volume.archiveSha256,
+    sourceAffine:volume.sourceAffine,sourceUnits:volume.sourceUnits,
+    sampledSourceIndices:volume.sampledSourceIndices,indexGeometry:volume.indexGeometry,
+    maskReceipts:allMaskReceipts,
     ctSourceSha256:volume.ctMemberSha256,
     organs:volume.organs.map(o=>({id:o.id,bit:o.bit,sampledVoxels:o.sampledVoxels})),
     huBytesCompressed:volume.hu.compressedBytes,maskBytesCompressed:volume.masks.compressedBytes,
     huSha256:volume.hu.sha256,maskSha256:volume.masks.sha256,
+    files:Object.fromEntries(['geometry.js','viewer.js','volume.js'].map(name=>{
+      const bytes=fs.readFileSync(path.join(shared,name));
+      return [name,{bytes:bytes.length,sha256:SHA(bytes)}];
+    })),
     orientationApproved:false,clinicalApproved:false,rightsApproved:false,
     privacyApproved:false,releaseEligible:false
   },null,2)+'\n');

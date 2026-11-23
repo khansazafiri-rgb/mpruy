@@ -7,34 +7,73 @@
     'n-x','n-y','n-z','window','opacity','pct','organs','reset'];
   const ui=Object.fromEntries(needed.map(id=>[id,document.getElementById(id)]));
   const fail=(message)=>{
+    document.body.dataset.mprReady='false';
+    for(const axis of ['x','y','z']){
+      const canvas=ui['view-'+axis],ctx=canvas?.getContext('2d');
+      ctx?.clearRect(0,0,canvas.width,canvas.height);
+    }
+    for(const control of document.querySelectorAll('input,select,button'))control.disabled=true;
     status.textContent='Preview MPR tidak dapat dimuat: '+String(message)+
       '. Gunakan tautan preview statis di atas.';
     status.style.color='#ffb9ba';
   };
   try {
-    if(!d||d.schema!=='medcoel.private-mpr-ct.v1'||d.releaseEligible!==false||
+    if(!d||d.schema!=='medcoel.private-mpr-ct.v1'||
+       !['releaseEligible','clinicalApproved','privacyApproved','rightsApproved','orientationApproved'].every(k=>d[k]===false)||
+       !/^s\d{3,6}$/.test(d.subject||'')||
+       ![d.archiveSha256,d.ctMemberSha256].every(x=>/^[a-f0-9]{64}$/.test(x||'')&&!/^0{64}$/.test(x))||
        !Array.isArray(d.dimensions)||d.dimensions.length!==3||
        !d.dimensions.every(x=>Number.isInteger(x)&&x>=4&&x<=192)||
        !Array.isArray(d.organs)||d.organs.length<1||d.organs.length>15||
-       !ui['view-x']||typeof DecompressionStream==='undefined')
+       !needed.every(id=>ui[id])||typeof DecompressionStream==='undefined'||!globalThis.crypto?.subtle)
       throw Error('volume lokal tidak tersedia atau browser tidak mendukung gzip');
     const [W,H,D]=d.dimensions;
     const count=W*H*D;
+    const geometry=globalThis.MEDCOEL_CT_GEOMETRY?.describe(d.sourceAffine,d.originalDimensions,d.sampledSourceIndices);
+    if(!geometry||d.sampledSourceIndices.some((map,i)=>map.length!==d.dimensions[i]))
+      throw Error('invalid source geometry');
     async function unzip(field){
-      const str=field.base64;
+      const str=field?.base64;
       if(typeof str!=='string'||str.length>100_000_000||
-         field.uncompressedBytes!==count*2)
+         field.uncompressedBytes!==count*2||!Number.isInteger(field.compressedBytes)||
+         field.compressedBytes<1||field.compressedBytes>48*1024*1024||
+         !/^[a-f0-9]{64}$/.test(field.sha256||''))
         throw Error('invalid private bundle length');
       const chars=atob(str),bytes=new Uint8Array(chars.length);
+      if(chars.length!==field.compressedBytes)throw Error('compressed volume length mismatch');
       for(let i=0;i<chars.length;i++)bytes[i]=chars.charCodeAt(i);
       const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
-      const buffer=await new Response(stream).arrayBuffer();
-      if(buffer.byteLength!==field.uncompressedBytes)
+      const reader=stream.getReader(),output=new Uint8Array(count*2);
+      let length=0;
+      try{
+        while(true){
+          const {done,value}=await reader.read();if(done)break;
+          if(length+value.length>output.length){
+            await reader.cancel();throw Error('decompressed volume exceeds bounded grid');
+          }
+          output.set(value,length);length+=value.length;
+        }
+      }finally{reader.releaseLock();}
+      if(length!==field.uncompressedBytes)
         throw Error('decompressed volume length mismatch');
-      return new DataView(buffer);
+      const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',output)),
+        b=>b.toString(16).padStart(2,'0')).join('');
+      if(digest!==field.sha256)throw Error('source bundle checksum mismatch');
+      return new DataView(output.buffer);
     }
     const hu=await unzip(d.hu),bits=await unzip(d.masks);
     const organs=d.organs;
+    const ids=new Set(),organBits=new Set();let allowed=0;
+    for(const o of organs){
+      if(!/^[a-z][A-Za-z0-9_]{0,69}$/.test(o.id||'')||ids.has(o.id)||
+         !Number.isInteger(o.bit)||o.bit<1||o.bit>16384||(o.bit&(o.bit-1))!==0||organBits.has(o.bit)||
+         typeof o.label!=='string'||o.label.length<1||o.label.length>160||
+         !Array.isArray(o.rgb)||o.rgb.length!==3||!o.rgb.every(n=>Number.isInteger(n)&&n>=0&&n<=255))
+        throw Error('invalid source organ metadata');
+      ids.add(o.id);organBits.add(o.bit);allowed|=o.bit;
+    }
+    for(let i=0;i<count;i++)if((bits.getUint16(i*2,true)&~allowed)!==0)
+      throw Error('mask contains unknown source labels');
     const studio=document.body.dataset.studio;
     const selected=new Set(organs.filter(o=>studio==='chest-ct'?
       /^lung_|^heart$/.test(o.id):!/^lung_|^heart$/.test(o.id)).map(o=>o.id));
@@ -77,7 +116,14 @@
     const contexts={};
     for(const axis of ['x','y','z']){
       const plane=axes[axis];
+      const spatial=geometry.planes[axis];
+      document.getElementById('plane-'+axis).textContent=spatial.label;
+      document.getElementById('orientation-'+axis).textContent=spatial.left?
+        'Kiri layar: '+spatial.left+' · kanan: '+spatial.right+' · atas: '+spatial.top+' · bawah: '+spatial.bottom+' (header RAS+, belum direview klinis)':
+        'Bidang indeks oblique; tidak menyatakan orientasi Axial/Coronal/Sagittal diagnostik';
       plane.canvas.width=plane.width;plane.canvas.height=plane.height;
+      plane.canvas.style.aspectRatio=String(spatial.aspectRatio);
+      plane.canvas.style.height='auto';
       contexts[axis]=plane.canvas.getContext('2d',{alpha:false});
       if(!contexts[axis])throw Error('Canvas 2D not available');
       sliders[axis].max=String(plane.max);
@@ -105,6 +151,7 @@
     function repaint(){
       if(pending)return;
       pending=true;requestAnimationFrame(()=>{
+        try{
         pending=false;
         const [level,width]=windows[ui.window.value]||windows.soft;
         const alpha=Number(ui.opacity.value)/100;
@@ -140,11 +187,13 @@
           }
           ctx.putImageData(frame,0,0);
         }
+        document.body.dataset.mprReady='true';
+        }catch(e){fail(e?.message||e);}
       });
     }
     status.textContent='MPR siap · sumber '+d.subject+
       ' · '+W+'×'+H+'×'+D+' voxel sampel · '+organs.length+
-      ' mask organ · L/R belum divalidasi · hanya privat';
+      ' mask organ · SHA-256 diperiksa · L/R belum divalidasi klinis · hanya privat';
     repaint();
   } catch(e) { fail(e?.message||e); }
 })();

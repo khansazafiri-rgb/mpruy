@@ -6,24 +6,23 @@
  */
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { auditPublicAssets } from './audit-live-anatomy-exposure.mjs';
+import { auditPublicAssets, REQUIRED_PUBLIC_PROBE_IDS } from './audit-live-anatomy-exposure.mjs';
 
 export function evaluateStrictPublicExposure(report) {
-  const unsafe = report.results.filter(x =>
-    x.severity === 'critical' ||
-    x.result === 'matches-repository-candidate-not-commercially-cleared' ||
-    x.result === 'unknown-live-release-bytes' ||
-    x.result === 'served-ct-identity-unverified' ||
-    x.result === 'cannot-verify-live-bytes' ||
-    x.result === 'unreachable'
-  );
+  const results=Array.isArray(report?.results)?report.results:[];
+  const missing=REQUIRED_PUBLIC_PROBE_IDS.filter(id=>results.filter(x=>x?.id===id).length!==1);
+  // Positive allowlist: missing probes, unexpected HTTP statuses, redirects,
+  // SPA fallbacks and unknown classifier values cannot silently become PASS.
+  const unsafe=results.filter(x=>!x||!REQUIRED_PUBLIC_PROBE_IDS.includes(x.id)||
+    x.severity==='critical'||x.result!=='not-served'||![403,404,410].includes(x.httpStatus));
   return {
     schema: 'medcoel.strict-public-rights-observation.v1',
     site: 'https://medcoel.com',
     releaseCleared: false, // never infer rights approval from website observations
     observedUnclearedOrUnverifiedAssets: unsafe.map(x =>
-      ({ id: x.id, route: x.route, status: x.httpStatus ?? null, issue: x.result })),
-    strictExposureCheckPassed: unsafe.length === 0,
+      ({ id: x?.id??null, route: x?.route??null, status: x?.httpStatus ?? null, issue: x?.result??'invalid-observation' })),
+    missingOrDuplicateProbes:missing,
+    strictExposureCheckPassed: missing.length===0&&unsafe.length===0,
     note: 'Read-only surface audit: does not inspect every deployed file or decide legal rights. Use a full release inventory and rights ledger for release clearance.'
   };
 }
