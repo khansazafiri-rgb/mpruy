@@ -104,13 +104,14 @@ export function makePrivatePairedCtPack({studio,ct,segmentation,subjectAlias,sou
  })));
  // The archiveSha256 codec field is a verified *source-pair receipt digest*
  // for independent raw NIfTI pairs, NOT a claim of a publisher ZIP archive.
- const payload=encodePrivateMprPack(pack,{
+ const payload={...encodePrivateMprPack(pack,{
   sourceSubject:subjectAlias,archiveSha256:binding,
   sourceCtSha256,datasetId:sourceId
- });
+ }),intensityCalibration:'UNVERIFIED_SOURCE_NUMERIC_SCALE'};
  return {payload,sourcePairReceiptSha256:binding,
   sourceLabelsPresent:present.map(l=>({id:l.id,sourceValue:l.value,voxels:counts.get(l.value)})),
   sourceScope:profile.sourceScope,sourceAccess:profile.access,
+  intensityCalibration:'UNVERIFIED_SOURCE_NUMERIC_SCALE',
   sourceOfficialUrl:profile.sourceUrl,
   clinicalApproved:false,privacyApproved:false,rightsApproved:false,
   releaseEligible:false};
@@ -154,6 +155,7 @@ export async function generatePrivatePairedCtReview(studio){
   sourceMaskSha256:m.files.segmentation.sha256,
   sourcePairReceiptSha256:result.sourcePairReceiptSha256,
   sourceManifestSha256:sha(manifestBytes),sourceLabelsPresent:result.sourceLabelsPresent,
+  intensityCalibration:'UNVERIFIED_SOURCE_NUMERIC_SCALE',
   sourceAffine:result.payload.sourceAffine,sourceUnits:result.payload.sourceUnits,
   originalDimensions:result.payload.originalDimensions,
   sampledDimensions:result.payload.dimensions,
