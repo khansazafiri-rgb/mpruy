@@ -10,6 +10,7 @@ import crypto from 'node:crypto';
 import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import { encodeRgbaPng } from './generate-private-chest-xray-overlays.mjs';
+import { createPrivateMprPack, addPrivateMprOrgan, encodePrivateMprPack, privateMprPage } from './private-totalseg-mpr.mjs';
 import {
   runPrivateTotalSegAudit, listLocalZipEntries, readVerifiedLocalZipMember
 } from './private-totalseg-archive-audit.mjs';
@@ -33,6 +34,12 @@ const GROUPS={
    {id:'heart',label:'Jantung · Heart',rgb:[250,111,155],level:40,width:400}
  ]
 };
+const MPR_EXTRAS=[
+  {id:'kidney_right',label:'Ginjal kanan',rgb:[83,209,229]},
+  {id:'lung_upper_lobe_right',label:'Lobus atas paru kanan',rgb:[94,190,222]},
+  {id:'lung_lower_lobe_left',label:'Lobus bawah paru kiri',rgb:[123,159,247]},
+  {id:'vertebrae_L1',label:'Vertebra L1',rgb:[232,207,111]}
+];
 function checkPrivate(file) {
   const rel=path.relative(ROOT,file);
   if(rel.startsWith('..')||path.isAbsolute(rel)||
@@ -225,6 +232,8 @@ export async function generatePrivateTotalSegReviews() {
     return readVerifiedLocalZipMember(ZIP,e);
   };
   const ctBytes=member(subject.ctPath),ct=parsePrivateTotalSegNifti(ctBytes,'ct');
+  // Sample once: the same compact HU volume will power both CT regions.
+  const mpr=createPrivateMprPack(ct,{maxDim:144});
   const cases={};
   for(const [studio,organs] of Object.entries(GROUPS)){
     const panels=[],provenance=[];
@@ -232,6 +241,7 @@ export async function generatePrivateTotalSegReviews() {
       const sourceName=subject.subject+'/segmentations/'+organ.id+'.nii.gz';
       const maskBytes=member(sourceName),mask=parsePrivateTotalSegNifti(maskBytes,'mask');
       verifyNiftiPair(ct,mask);
+      addPrivateMprOrgan(mpr,mask,organ);
       for(const axis of [2,1]){
         const frame=renderPrivateTotalSegPlane(ct,mask,organ,axis);
         panels.push({...frame,label:organ.label});
@@ -259,6 +269,41 @@ export async function generatePrivateTotalSegReviews() {
       images:panels.length,kind:'totalsegmentator-voxel-index-ct-mask',
       note:studio==='chest-ct'?'TotalSegmentator candidate only; old TCIA remains quarantined':
         'TotalSegmentator candidate; no clinical/release approval'};
+  }
+  // Expand the one shared interactive MPR to all 11 directly indexed organs.
+  for(const organ of MPR_EXTRAS){
+    const sourceName=subject.subject+'/segmentations/'+organ.id+'.nii.gz';
+    const maskBytes=member(sourceName),mask=parsePrivateTotalSegNifti(maskBytes,'mask');
+    verifyNiftiPair(ct,mask);
+    addPrivateMprOrgan(mpr,mask,organ);
+  }
+  const volume=encodePrivateMprPack(mpr,{
+    sourceSubject:subject.subject,archiveSha256:audit.archiveSha256,
+    sourceCtSha256:SHA(ctBytes)
+  });
+  const shared=path.join(OUTPUT,'ct-mpr-private');
+  const browser=fs.readFileSync(new URL('./private-totalseg-mpr-browser.js',import.meta.url));
+  writePrivate(path.join(shared,'viewer.js'),browser);
+  writePrivate(path.join(shared,'volume.js'),
+    'window.MEDCOEL_CT_PRIVATE = '+JSON.stringify(volume)+';\n');
+  writePrivate(path.join(shared,'bundle-manifest.json'),JSON.stringify({
+    schema:volume.schema,sourceSubject:volume.subject,originalDimensions:volume.originalDimensions,
+    dimensions:volume.dimensions,sourceArchiveSha256:volume.archiveSha256,
+    ctSourceSha256:volume.ctMemberSha256,
+    organs:volume.organs.map(o=>({id:o.id,bit:o.bit,sampledVoxels:o.sampledVoxels})),
+    huBytesCompressed:volume.hu.compressedBytes,maskBytesCompressed:volume.masks.compressedBytes,
+    huSha256:volume.hu.sha256,maskSha256:volume.masks.sha256,
+    orientationApproved:false,clinicalApproved:false,rightsApproved:false,
+    privacyApproved:false,releaseEligible:false
+  },null,2)+'\n');
+  // Preserve full-resolution static previews, but switch the landing page
+  // to interactive MPR only once the shared bundle is fully written.
+  for(const studio of Object.keys(GROUPS)){
+    const target=path.join(OUTPUT,studio);
+    writePrivate(path.join(target,'static-review.html'),fs.readFileSync(path.join(target,'index.html')));
+    writePrivate(path.join(target,'index.html'),privateMprPage(studio));
+    cases[studio].kind='totalsegmentator-offline-3-plane-mpr';
+    cases[studio].note='Private MPR: 11 selectable organ masks, 3 planes, original static preview preserved; not approved';
   }
   return {abdomen:cases['abdomen-ct'],chest:cases['chest-ct']};
 }
