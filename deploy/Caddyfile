@@ -31,6 +31,24 @@ medcoel.com {
 		reverse_proxy 127.0.0.1:8090
 	}
 
+	# SECURITY CONTAINMENT: observed public assets without exact commercial/privacy clearance.
+	# Exact model routes have higher matcher specificity than handle_path /anatomy/viewer/*.
+	# Preserve model files locally for provenance; refuse public GET/HEAD/Range.
+	handle /anatomy/viewer/models/skeletal.glb {
+		header Cache-Control "private, no-store, max-age=0"
+		respond "Not Found" 404
+	}
+	handle /anatomy/viewer/models/visceral.glb {
+		header Cache-Control "private, no-store, max-age=0"
+		respond "Not Found" 404
+	}
+	# Block entire unverified Atlas data namespace, including CT and label variants.
+	# The old SPA fallback must NOT return HTTP 200 for these paths.
+	handle /anatomy/4d-lab/data/atlas/* {
+		header Cache-Control "private, no-store, max-age=0"
+		respond "Not Found" 404
+	}
+
 	# Persistent Anatomy mount; normal web builds cannot delete it.
 	handle /anatomy/viewer {
 	    redir * /anatomy/viewer/ 308
