@@ -36,8 +36,8 @@ test('private provisional model list starts with only unique unapproved official
  const selected=input();
  assert.equal(selected.candidates.length,2);
  assert.equal(selected.summary.approved,0);
- assert.equal(selected.candidates[0].matches[0].sourceObjs[0].archivePath,'objects/FJ2.obj');
- assert.equal(selected.candidates[1].matches[0].sourceObjs[0].archivePath,'objects/FJ3.obj');
+ assert.equal(selected.candidates[0].matches[0].sourceObjs[0].archivePath,'objects/FJ1.obj');
+ assert.equal(selected.candidates[1].matches[0].sourceObjs[0].archivePath,'objects/FJ2.obj');
  for(const row of selected.candidates){
   assert.match(row.matchMethod,/NOT-validated/);
   assert.equal(row.geometryIdentityVerified,false);
