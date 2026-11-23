@@ -20,6 +20,7 @@ import { deselectPart, selectPartById } from "../viewer/selection.js";
 import { animateCamera } from "../viewer/camera.js";
 import { GROUPS, initialSettings, visibleBySettings } from "./catalog.js";
 import { bp3dHas } from "../viewer/bp3dSource.js";
+import { isPublicWithheldSource, recoverPublicGroups } from "./publicContainment.js";
 export let settings = initialSettings();
 let catalog = {},
   internal = 0,
@@ -137,7 +138,7 @@ export async function frame(box = visibleBounds(), direction = null, animate = t
 async function loadEnabled() {
   const sources = [
     ...new Set(
-      GROUPS.filter((g) => settings.groups[g.id].enabled).map((g) => g.source),
+      GROUPS.filter((g) => settings.groups[g.id].enabled && !isPublicWithheldSource(g.source)).map((g) => g.source),
     ),
   ];
   const missing = sources.filter((s) => !state.loadedSystems.includes(s));
@@ -171,6 +172,7 @@ async function commit(action, { fit = false } = {}) {
     }
     setIsolatedPart(null);
     action();
+    settings.groups=recoverPublicGroups(settings.groups,GROUPS);
   });
   try {
     await loadEnabled();
@@ -245,7 +247,8 @@ export const preset = (id) =>
 // Focus an entire study system, rather than a single mesh such as an atrium.
 export const viewGroup = (id) => {
   const group = GROUPS.find((g) => g.id === id);
-  if (!group) throw new Error("System unavailable");
+  if (!group || isPublicWithheldSource(group.source))
+    throw new Error("Sistem ini ditahan sementara untuk verifikasi hak penggunaan.");
   return commit(() => {
     settings.region = "whole";
     GROUPS.forEach((g) => {
@@ -445,6 +448,9 @@ export async function initAtlas(data) {
     // Links saved before the licence quarantine may still mention withheld groups.
     for (const id of Object.keys(settings.groups)) if (!GROUPS.some((g) => g.id === id)) delete settings.groups[id];
   }
+  // Operational containment: previously saved URLs and presets must never
+  // force public requests for the now-blocked source GLBs.
+  settings.groups=recoverPublicGroups(settings.groups,GROUPS);
   await loadEnabled();
   if (validSaved(saved) && Array.isArray(saved.visibility))
     quiet(() =>
