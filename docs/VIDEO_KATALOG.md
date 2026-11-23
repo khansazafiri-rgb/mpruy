@@ -29,6 +29,8 @@ Total: **30 video**.
 | Edukasi | [MEDCOEL — Farmakodinamik parasetamol untuk nyeri kepala](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/parasetamol-nyeri-kepala) | `video/parasetamol-nyeri-kepala` |
 | Edukasi | [MEDCOEL — Mengapa gambar CT dan MRI berbeda?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/ct-mri-perbedaan-citra) | `video/ct-mri-perbedaan-citra` |
 | Edukasi | [Mekanisme varises](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/mekanisme-varises) | `video/mekanisme-varises` |
+=======
+| Edukasi | [Mekanisme tubuh berkeringat](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/mekanisme-keringat) | `video/mekanisme-keringat` |
 | Edukasi | [Pasien Tidak Sadar di IGD: Dokter Harus Menunggu Keluarga?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/pasien-tidak-sadar-di-igd) | `video/pasien-tidak-sadar-di-igd` |
 | Promo fitur | [Besok Praktikum Anatomi, Tapi Masih Bingung?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/besok-praktikum-anatomi) | `video/besok-praktikum-anatomi` |
 | Promo fitur | [FEATURE UNLOCKED: 3D ANATOMY](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/human-anatomy-3d) | `video/human-anatomy-3d` |

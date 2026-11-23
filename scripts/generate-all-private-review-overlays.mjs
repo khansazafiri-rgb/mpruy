@@ -8,6 +8,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { generatePrivateFracAtlasReview } from './private-fracatlas-review.mjs';
+import { generatePrivateTotalSegReviews } from './private-totalseg-ct-review.mjs';
 import {
   renderPrivateOverlay, generatePrivateChestXrayOverlays
 } from './generate-private-chest-xray-overlays.mjs';
@@ -190,7 +191,7 @@ function dashboard(catalog, results) {
       : s.id === 'brain-mri' ? 'BLOCKED_LPBA40_OR_ALTERNATE_REVIEW_PENDING'
       : s.id.endsWith('-anatomy') ? '3D_VIEWER_AND_RIGHTS_REVIEW_PENDING'
       : 'DATA_OR_RENDERER_NOT_READY';
-    const detail = result?.error ? ' — ' + result.error : '';
+    const detail = result?.error ? ' — ' + result.error : result?.note ? ' — ' + result.note : '';
     const link = ['PRIVATE_PREVIEW_READY', 'PRIVATE_CANDIDATE_REVIEW_READY'].includes(result?.status)
       ? '<a href="' + html(s.id) + '/index.html">Lihat visualisasi</a>' : 'Belum bisa dirender';
     return '<tr><td><strong>' + html(s.title || s.id) + '</strong><br><small>' +
@@ -210,7 +211,7 @@ function dashboard(catalog, results) {
     '<p class="warn">Hanya file <strong>lokal</strong>. Pratinjau teknis ini bukan bukti',
     ' persetujuan medis, privasi, terminologi, hak komersial, atau rilis. Seluruh status release tetap terkunci.</p>',
     '<p>X-ray & USG: poligon sumber · Spine MRI: label NIfTI pada tiga irisan · ECG: waveform 12-lead. MSK X-ray: kandidat FracAtlas, hanya untuk review privat dan belum terdaftar sebagai aset rilis.',
-    ' Chest CT ditahan selama karantina TCIA. Anatomy 3D dan studio tanpa data perlu renderer serta rights review tersendiri.</p>',
+    ' CT Abdomen/Toraks: kandidat TotalSegmentator privat jika mask dan affine cocok; sumber TCIA Chest CT tetap dikarantina. Anatomy 3D dan studio tanpa data perlu renderer serta rights review tersendiri.</p>',
     '<table><thead><tr><th>Clinical Studio</th><th>Status</th><th>Pratinjau privat</th></tr></thead><tbody>',
     ...blocks,
     '</tbody></table></body></html>'
@@ -221,26 +222,38 @@ export async function generateAllPrivateOverlays() {
   safeLocal(BUILD); safeLocal(OUT);
   const registry = JSON.parse(fs.readFileSync(path.join(ROOT, 'licensing/resources.v1.json'), 'utf8'));
   const catalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'shared/studios/catalog.v1.json'), 'utf8'));
+  let totalSegPromise;
+  const totalSeg = () => (totalSegPromise ||= generatePrivateTotalSegReviews());
   const tasks = [
     ['chest-xray', () => generatePrivateChestXrayOverlays()],
     ['pelvis-ultrasound', () => generatePelvisPrivateReview(registry)],
     ['spine-mri', () => generateSpinePrivateReview(registry)],
     ['ecg', () => generateEcgPrivateReview(registry)],
-    ['msk-xray', () => generatePrivateFracAtlasReview()]
+    ['msk-xray', () => generatePrivateFracAtlasReview()],
+    ['abdomen-ct', async () => (await totalSeg()).abdomen],
+    ['chest-ct', async () => (await totalSeg()).chest]
   ];
   const results = [];
   for (const [studio, run] of tasks) {
     try {
       const result = await run();
-      results.push({ studio, status: result.status || 'PRIVATE_PREVIEW_READY', kind: result.kind || 'source-polygon', images: result.images?.length || result.images });
+      results.push({ studio, status: result.status || 'PRIVATE_PREVIEW_READY',
+        kind: result.kind || 'source-polygon', images: result.images?.length || result.images,
+        ...(result.note ? { note: result.note } : {}) });
     } catch (e) {
-      const isMissingCandidate = studio === 'msk-xray' &&
+      const isMskMissing = studio === 'msk-xray' &&
         (e.code === 'ENOENT' || e.message === 'FRAC_PRIVATE_ACQUISITION_NOT_RECORDED');
-      results.push({ studio, status: isMissingCandidate ? 'CANDIDATE_PRIVATE_DATA_PENDING'
-        : e.message === 'REVIEW_PRIVATE_BUILD_UNAVAILABLE' ? 'PRIVATE_BUILD_MISSING'
-        : 'REVIEW_FAILED_CLOSED',
-        error: isMissingCandidate ? 'FracAtlas private archive not yet available'
-          : String(e.message).slice(0, 120) });
+      const isCt = studio === 'abdomen-ct' || studio === 'chest-ct';
+      const isCtMissing = isCt &&
+        (e.code === 'ENOENT' || e.message === 'CT_AUDIT_MISSING_VERIFIED_RECEIPT');
+      results.push({ studio,
+        status: isMskMissing || isCtMissing
+          ? studio === 'chest-ct' ? 'QUARANTINED_TCIA_SOURCE' : 'CANDIDATE_PRIVATE_DATA_PENDING'
+          : e.message === 'REVIEW_PRIVATE_BUILD_UNAVAILABLE' ? 'PRIVATE_BUILD_MISSING'
+          : 'REVIEW_FAILED_CLOSED',
+        error: isMskMissing ? 'FracAtlas private archive not available'
+          : isCtMissing ? 'TotalSegmentator private candidate not available; TCIA remains quarantined'
+          : String(e.message).slice(0, 140) });
     }
   }
   writePrivate(path.join(OUT, 'index.html'), dashboard(catalog, results));
