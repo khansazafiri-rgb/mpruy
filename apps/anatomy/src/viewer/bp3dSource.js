@@ -36,7 +36,9 @@ let inventory = null, status = flag ? 'pending' : 'off', reason = '', ids = new 
 let inventoryPromise = null;
 export const bp3dRequested = () => !!flag;
 export const bp3dStatus = () => ({ status, reason });
-export const bp3dHas = (id) => !flag || status !== 'ready' || ids.has(id);
+// When only skeletal/visceral are opted in, keep every other Atlas system searchable.
+export const bp3dHas = (id, source = null) => !flag || status !== 'ready' ||
+  (source && flag.systems && !flag.systems.has(source)) || ids.has(id);
 export const bp3dSummary = () => ({ status, reason, structures: ids.size, perSystem, systems: flag?.systems ? [...flag.systems] : null });
 export const bp3dUsesSystem = (systemId) => !!flag && status === 'ready' && (!flag.systems || flag.systems.has(systemId)) && (perSystem[systemId] || 0) > 0;
 /** Test hook: set the flag/state without a URL. */
@@ -109,14 +111,18 @@ export async function loadBp3dSystem(systemId, loader, onProgress = () => {}) {
         const node = new THREE.Group();
         node.userData.za_name = entry.name; // catalogue id: the Atlas identifies structures by this
         node.userData.source = 'bodyparts3d'; node.userData.fmaId = entry.fmaId || null;
-        gltf.scene.traverse((o) => { if (o.isMesh) o.material = materialFor(entry); });
+        let meshCount = 0;
+        gltf.scene.traverse((o) => { if (o.isMesh) { o.material = materialFor(entry); meshCount++; } });
+        if (!meshCount) throw new Error('BodyParts3D GLB contains no mesh: ' + entry.name);
         node.add(gltf.scene); frame.add(node);
       } catch { failed++; }
       onProgress(++done / entries.length * 100);
     }
   };
   await Promise.all(Array.from({ length: Math.min(6, entries.length) }, worker));
-  if (failed === entries.length) throw new Error('every BodyParts3D file for ' + systemId + ' failed to load');
+  // Never present a partially loaded replacement as a complete skeletal/visceral system.
+  // loadModel.js keeps the old quarantined GLBs blocked when this throws.
+  if (failed) throw new Error('BodyParts3D ' + systemId + ' incomplete: ' + failed + '/' + entries.length + ' models failed');
   root.userData.bp3d = { total: entries.length, failed };
   return root;
 }
