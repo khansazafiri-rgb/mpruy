@@ -16,6 +16,7 @@ import {buildCompositeHTML} from './bp3d-composite-viewer.mjs';
 import {summarizeGeometry,diagnoseGeometry,verifyLineage} from './review-bp3d-candidate.mjs';
 import {SYSTEM_MATERIALS,tissueClass} from './bp3d-review-materials.mjs';
 import {reconcileMapping} from './bp3d-mapping-review.mjs';
+import {applyReviewedSourceMappings} from './bp3d-reviewed-mappings.mjs';
 
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 const PRIVATE=path.join(ROOT,'local-data','licensing-quarantine');
@@ -227,8 +228,9 @@ function listZip(file){
   const files=execFileSync('unzip',['-Z','-1',file],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split(/\r?\n/);
   checkArchiveEntryNames(files);return files;
 }
-export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}={}){
-  const output=allowed(root,outputDir);
+export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,reviewedFile}={}){
+  // Explicit reviewed FMA/BP/FJ additions go to a separate private batch; never alter the original 470-model batch.
+  const output=allowed(root,outputDir||(reviewedFile?path.join(root,'local-data/licensing-quarantine/bp3d-reviewed'):DEST));
   const namesPath=path.join(sourceDir,'isa_parts_list_e.txt'),
     elementsPath=path.join(sourceDir,'isa_element_parts.txt'),
     archive=path.join(sourceDir,'isa_BP3D_4.0_obj_99.zip');
@@ -237,7 +239,15 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}
   const elements=parseOfficialElements(elementBytes.toString('utf8'));
   const zipFiles=listZip(archive),archiveSha=await hashFile(archive);
   const catalog=JSON.parse(fs.readFileSync(path.join(root,'apps/anatomy/public/data/atlas-catalog.json'),'utf8'));
-  const mapped=mapActualMeshFiles(candidateCrosswalk(catalog,official),elements,zipFiles);
+  let mapped=mapActualMeshFiles(candidateCrosswalk(catalog,official),elements,zipFiles);
+  if(reviewedFile){
+    const approvedRoot=path.resolve(root,'local-data')+path.sep;
+    const reviewedPath=path.resolve(reviewedFile);
+    if(!reviewedPath.startsWith(approvedRoot)||!fs.realpathSync(reviewedPath).startsWith(approvedRoot))
+      throw Error('Reviewed mapping file must remain in non-symlinked local-data');
+    const reviews=JSON.parse(fs.readFileSync(reviewedPath,'utf8'));
+    mapped=applyReviewedSourceMappings(mapped,reviews,official,elements,zipFiles,archiveSha);
+  }
   const plan=planBatch(mapped,{limit});
   if(!plan.eligible.length)throw new Error('No eligible official-source candidate structures; check source tables');
   const gaps=suggestForUnmatched(plan.gaps,official),converted=[],failed=[];
@@ -354,15 +364,16 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir=DEST,limit}
   return manifest;
 }
 function parseArgs(argv){
-  let all=false,limit;
+  let all=false,limit,reviewedFile;
   for(let i=0;i<argv.length;i++){
     if(argv[i]==='--all')all=true;
     else if(argv[i]==='--limit'&&argv[i+1]&&/^\d+$/.test(argv[i+1]))limit=Number(argv[++i]);
+    else if(argv[i]==='--reviewed'&&argv[i+1])reviewedFile=argv[++i];
     else throw new Error('Usage: batch-bp3d-candidates.mjs --all OR --limit <positive integer>');
   }
   if(all===(limit!==undefined)||limit!==undefined&&(!Number.isSafeInteger(limit)||limit<1||limit>1000))
     throw new Error('Specify exactly --all or --limit N (1 to 1000)');
-  return {limit};
+  return {limit,reviewedFile};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
   try{await runBatch(parseArgs(process.argv.slice(2)));}
