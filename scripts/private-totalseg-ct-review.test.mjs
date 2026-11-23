@@ -69,6 +69,11 @@ test('TOTALSEG-VIEW-003: corrupt datatype, truncated volume and missing sform/qf
   assert.throws(()=>parsePrivateTotalSegNifti(zlib.gzipSync(changed),'ct'),/UNSUPPORTED_DATATYPE/);
   const trunc=zlib.gunzipSync(gz).subarray(0,-2);
   assert.throws(()=>parsePrivateTotalSegNifti(zlib.gzipSync(trunc),'ct'),/SIZE_OR_OFFSET_MISMATCH/);
+  const nibabel=zlib.gunzipSync(gz);
+  nibabel.writeFloatLE(NaN,112);nibabel.writeFloatLE(NaN,116);
+  const handled=parsePrivateTotalSegNifti(zlib.gzipSync(nibabel),'ct');
+  assert.equal(handled.scale,1);
+  assert.equal(handled.intercept,0);
   const unlocated=zlib.gunzipSync(gz);
   unlocated.writeInt16LE(0,254);
   assert.throws(()=>parsePrivateTotalSegNifti(zlib.gzipSync(unlocated),'ct'),/AFFINE_MISSING/);
