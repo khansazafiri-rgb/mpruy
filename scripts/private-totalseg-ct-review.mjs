@@ -78,7 +78,7 @@ export function parsePrivateTotalSegNifti(gzip,kind){
     throw Error('CT_NIFTI_INVALID_HEADER');
   const count=b.readInt16LE(40),dims=[42,44,46].map(x=>b.readInt16LE(x));
   const n=dims.reduce((a,v)=>a*v,1);
-  if(count!==3||dims.some(x=>x<4||x>1024)||n>60000000)
+  if(count!==3||dims.some(x=>x<4||x>1024)||n>100000000)
     throw Error('CT_NIFTI_VOLUME_TOO_LARGE_OR_INVALID');
   const dtype=b.readInt16LE(70),bitpix=b.readInt16LE(72);
   const supported=kind==='ct' ? [[4,16],[16,32]] : [[2,8],[4,16]];
