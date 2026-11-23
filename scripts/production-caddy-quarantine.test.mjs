@@ -20,11 +20,17 @@ function assertExactGuards(file){
   assert.match(block,/\brespond\s+"Not Found"\s+404/);
   assert.match(block,/\bheader\s+Cache-Control\s+"private, no-store, max-age=0"/);
  }
- assert.ok(source.indexOf('handle /anatomy/viewer/models/skeletal.glb {')<
-   source.indexOf('handle_path /anatomy/viewer/*'),
-   'specific GLB deny must precede file-server route');
- const fallbackIndex=source.indexOf('handle {\n');
- if(fallbackIndex>=0)assert.ok(source.indexOf('handle /anatomy/4d-lab/data/atlas/* {')<fallbackIndex);
+ // Compare actual directive lines, not earlier comments explaining handle_path.
+ // The old substring search found a comment at the top of the snippet and
+ // falsely failed despite the deny preceding the real file-server route.
+ const guard=/^\s*handle\s+\/anatomy\/viewer\/models\/skeletal\.glb\s*\{/m.exec(source);
+ const fileserver=/^\s*handle_path\s+\/anatomy\/viewer\/\*\s*\{/m.exec(source);
+ assert.ok(guard&&fileserver&&guard.index<fileserver.index,
+   'specific GLB deny must precede real file-server directive');
+ const atlas=/^\s*handle\s+\/anatomy\/4d-lab\/data\/atlas\/\*\s*\{/m.exec(source);
+ const fallback=/^\s*handle\s*\{\s*$/m.exec(source);
+ if(fallback)assert.ok(atlas&&atlas.index<fallback.index,
+   'Atlas denial must precede real SPA catch-all');
  return source;
 }
 test('PUBLIC-GATE-001: production Caddy and modular snippet deny unverified GLBs and Atlas subtree',()=>{
