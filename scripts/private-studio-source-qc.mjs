@@ -40,6 +40,10 @@ async function inspectRealCt(){
   const huBytes=zlib.gunzipSync(Buffer.from(packet.hu.base64,'base64')),
     maskBytes=zlib.gunzipSync(Buffer.from(packet.masks.base64,'base64'));
   assert(digest(huBytes)===packet.hu.sha256&&digest(maskBytes)===packet.masks.sha256,'PRIVATE_MPR_DECODED_SHA256');
+  const maskWidth=packet.schema==='medcoel.private-mpr-ct.v2'?4:2;
+  assert(packet.masks.uncompressedBytes===packet.dimensions.reduce((a,b)=>a*b,1)*maskWidth,
+    'PRIVATE_MPR_MASK_WORD_BYTES_MISMATCH');
+  const maskAt=index=>maskWidth===4?maskBytes.readUInt32LE(index*4):maskBytes.readUInt16LE(index*2);
   const [X,Y,Z]=packet.dimensions,maps=packet.sampledSourceIndices;
   const sourceIndex=(x,y,z)=>maps[0][x]+ct.dims[0]*(maps[1][y]+ct.dims[1]*maps[2][z]);
   let huChecked=0;
@@ -56,7 +60,7 @@ async function inspectRealCt(){
     for(let z=0;z<Z;z++)for(let y=0;y<Y;y++)for(let x=0;x<X;x++){
       const i=x+X*(y+Y*z),value=mask.read(sourceIndex(x,y,z));
       assert(value===0||value===1,'PRIVATE_MPR_SOURCE_MASK_NONBINARY');
-      assert(Boolean(maskBytes.readUInt16LE(i*2)&organ.bit)===Boolean(value),'PRIVATE_MPR_SAMPLED_MASK_ALIGNMENT');
+      assert(Boolean(maskAt(i)&organ.bit)===Boolean(value),'PRIVATE_MPR_SAMPLED_MASK_ALIGNMENT');
       checked++;positive+=value;
     }
     assert(positive===organ.sampledVoxels,'PRIVATE_MPR_MASK_COUNT_MISMATCH');
@@ -68,7 +72,7 @@ async function inspectRealCt(){
     assert(ui.document.body.dataset.mprReady==='true','PRIVATE_MPR_DOM_NOT_READY');
     const selected=packet.organs.findIndex(o=>o.id===(studio==='chest-ct'?'heart':'liver')),
       target=packet.organs[selected],nativeMask=masks[selected];
-    let index=0;while(index<X*Y*Z&&!(maskBytes.readUInt16LE(index*2)&target.bit))index++;
+    let index=0;while(index<X*Y*Z&&!(maskAt(index)&target.bit))index++;
     assert(index<X*Y*Z,'PRIVATE_MPR_QC_ORGAN_ABSENT');
     const cursor=[index%X,Math.floor(index/X)%Y,Math.floor(index/(X*Y))];
     for(const [i,axis] of ['x','y','z'].entries())await ui.set('slice-'+axis,cursor[i]);
@@ -100,7 +104,7 @@ async function inspectRealCt(){
     interactions.push({studio,status:'PASS',engine:'Node VM DOM/Canvas harness; NOT a native browser',pixelsComparedToNativeSource:pixelsChecked,
       nativeBrowser:'BLOCKED: not executed by this source-only tool',clinicalOrientationApproved:false});
   }
-  return {status:'PASS',method:'Actual retained publisher CT and 11 source masks, CRC + complete archive hashes + native voxel comparisons',
+  return {status:'PASS',method:'Actual retained publisher CT and '+packet.organs.length+' source masks, CRC + complete archive hashes + native voxel comparisons',
     archive,ctMemberSha256:packet.ctMemberSha256,sourceAffine:ct.affine,dimensions:packet.dimensions,huChecked,maskChecks,interactions,
     medicalApproval:false,privacyApproval:false,rightsApproval:false,releaseEligible:false};
 }
