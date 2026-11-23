@@ -1175,7 +1175,19 @@ async function loadLocal() {
   } catch (e) { fail(e.message); }
 }
 
-function fail(msg) { const b = $('#runtimeError'); b.hidden = false; b.textContent = msg; console.error(msg); }
+function fail(msg) {
+  const b=$('#runtimeError'); b.hidden=false; b.replaceChildren(document.createTextNode(String(msg)));
+  if(activeDataset!=='phantom'){
+    // Keep a visible, explicit recovery action even for Safari-specific boot
+    // failures outside dataset loading. Do not retry the blocked Atlas route.
+    const q=new URLSearchParams(location.search);q.set('dataset','phantom');
+    const link=document.createElement('a');link.href=location.pathname+'?'+q.toString();
+    link.textContent='Buka mode phantom prosedural';link.style.marginLeft='1em';
+    link.style.color='inherit';link.style.textDecoration='underline';
+    b.append(' ',link);
+  }
+  console.error(msg);
+}
 
 // ------------------------------------------------------------------ 2D <-> 3D anatomy links
 /** Image -> 3D: highlight the matching atlas structure, ONLY where registration is exact (atlas dataset). */
