@@ -100,14 +100,17 @@ export function parsePrivateTotalSegNifti(gzip,kind){
   if(!Number.isFinite(determinant)||Math.abs(determinant)<1e-5)
     throw Error('CT_NIFTI_DEGENERATE_AFFINE');
   const slope=b.readFloatLE(112),intercept=b.readFloatLE(116);
-  if(!Number.isFinite(slope)||!Number.isFinite(intercept))
+  // Nibabel uses NaN/NaN for "undefined scaling"; NIfTI slope=0 also
+  // explicitly means no scaling. In either case ignore the intercept.
+  const unset=(Number.isNaN(slope)&&Number.isNaN(intercept))||slope===0;
+  if(!unset&&(!Number.isFinite(slope)||!Number.isFinite(intercept)))
     throw Error('CT_NIFTI_BAD_SCALING');
-  const scale=slope===0?1:slope;
+  const scale=unset?1:slope, offsetHu=unset?0:intercept;
   const read=i=>{
     const at=offset+i*bytes;
     return dtype===2?b[at]:dtype===4?b.readInt16LE(at):b.readFloatLE(at);
   };
-  return {bytes:b,dims,n,kind,affine,dtype,scale,intercept,read,
+  return {bytes:b,dims,n,kind,affine,dtype,scale,intercept:offsetHu,read,
     headerHash:SHA(b.subarray(0,Math.min(offset,b.length)))};
 }
 export function verifyNiftiPair(ct,mask){
