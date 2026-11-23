@@ -84,7 +84,8 @@ export function planBatch(mapped, options={}){
     const sys=systems[item.atlasSystem];sys.total++;
     if(ready){
       sys.eligible++;
-      eligible.push({name:item.atlasName,system:item.atlasSystem,id:safeStructureId(item.atlasName),source:match});
+      eligible.push({name:item.atlasName,system:item.atlasSystem,id:safeStructureId(item.atlasName),source:match,
+        mappingMethod:item.matchMethod,reviewManifestSHA256:item.reviewManifestSHA256||null});
     }else{
       const reason=item.state==='unmatched'?'unmatched':item.state==='ambiguous'?'ambiguous':'missingSource';
       sys[reason]++;
@@ -245,8 +246,12 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
     const reviewedPath=path.resolve(reviewedFile);
     if(!reviewedPath.startsWith(approvedRoot)||!fs.realpathSync(reviewedPath).startsWith(approvedRoot))
       throw Error('Reviewed mapping file must remain in non-symlinked local-data');
-    const reviews=JSON.parse(fs.readFileSync(reviewedPath,'utf8'));
+    const reviewBytes=fs.readFileSync(reviewedPath);
+    const reviews=JSON.parse(reviewBytes.toString('utf8'));
     mapped=applyReviewedSourceMappings(mapped,reviews,official,elements,zipFiles,archiveSha);
+    for(const candidate of mapped.candidates)
+      if(candidate.matchMethod==='explicit-reviewed-FMA-BP-FJ-not-clinically-validated')
+        candidate.reviewManifestSHA256=sha(reviewBytes);
   }
   const plan=planBatch(mapped,{limit});
   if(!plan.eligible.length)throw new Error('No eligible official-source candidate structures; check source tables');
@@ -267,6 +272,7 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
       const parts=item.source.sourceObjs.map(readElement);
       const lineage={schemaVersion:1,source:BP3D_OFFICIAL,atlasCandidateName:item.name,
         officialName:item.source.officialName,officialFMAId:item.source.fmaId,
+        atlasMappingMethod:item.mappingMethod,reviewManifestSHA256:item.reviewManifestSHA256,
         officialRepresentationId:item.source.bpId,sourceArchive:'isa_BP3D_4.0_obj_99.zip',
         archiveSHA256:archiveSha,elements:parts.map(p=>({id:p.id,sha256:p.sha256,zipEntry:p.zipEntry})),
         coordinateFrame:'native-official-OBJ',registrationValidated:false,
@@ -306,6 +312,7 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
       fs.writeFileSync(path.join(dir,'lineage.json'),JSON.stringify(lineage,null,2)+'\n');
       const catalogEntry=catalog[item.name];
       converted.push({id:item.id,name:item.name,system:item.system,group:catalogEntry?.group||null,
+        mappingMethod:item.mappingMethod,reviewManifestSHA256:item.reviewManifestSHA256,
         tissueClass:tissueClass({name:item.name,system:item.system,group:catalogEntry?.group}),
         fmaId:item.source.fmaId,bpId:item.source.bpId,
         triangles:geometry.triangles,vertices:geometry.vertices,
