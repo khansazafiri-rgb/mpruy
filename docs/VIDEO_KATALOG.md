@@ -2,7 +2,7 @@
 
 Daftar ini mencatat **proyek dengan MP4 di repo**, bukan status publikasi di Instagram/TikTok. Judul diambil dari README proyek; jika belum ada, dipakai nama folder. Jalankan `python3 scripts/video/update_catalog.py` setelah menambah video. CI menolak perubahan yang membuat katalog tertinggal.
 
-Total: **34 video**.
+Total: **35 video**.
 
 | Jenis | Judul | Folder sumber |
 | --- | --- | --- |
@@ -34,6 +34,7 @@ Total: **34 video**.
 | Edukasi | [Mekanisme tubuh berkeringat](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/mekanisme-keringat) | `video/mekanisme-keringat` |
 | Edukasi | [Mekanisme varises](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/mekanisme-varises) | `video/mekanisme-varises` |
 | Edukasi | [Pasien Tidak Sadar di IGD: Dokter Harus Menunggu Keluarga?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/pasien-tidak-sadar-di-igd) | `video/pasien-tidak-sadar-di-igd` |
+| Edukasi | [Telinga penuh lalu pop saat pesawat turun](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/telinga-penuh-pop) | `video/telinga-penuh-pop` |
 | Promo fitur | [Besok Praktikum Anatomi, Tapi Masih Bingung?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/besok-praktikum-anatomi) | `video/besok-praktikum-anatomi` |
 | Promo fitur | [FEATURE UNLOCKED: 3D ANATOMY](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/human-anatomy-3d) | `video/human-anatomy-3d` |
 | Promo fitur | [Kirim PDF Soalmu](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/brand/video/ad) | `brand/video/ad` |

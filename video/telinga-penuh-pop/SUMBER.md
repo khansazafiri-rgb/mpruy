@@ -1,0 +1,11 @@
+# Sumber dan asal-usul
+## Audio
+| Berkas | Asal | Lisensi / catatan |
+|---|---|---|
+| `audio/narasi-edukasi.wav` | Narasi Google AI Studio dari pemesan (`Generated_Audio_November_23_2026_-_9_12AM.wav`), 24 kHz mono, 33,48 dtk. Tempo dan nada tidak diubah; di-resample ke 48 kHz stereo dan dinormalkan statis. Isi cocok dengan teks pemesan (ASR hanya salah dengar "balik"->"Bali", "teredam"->"terdamp", "tersumbat"->"tersembat", "nyeri"->"nyari"). Narator sendiri mengucapkan "pop" dua kali (4,0 dan 26,96 dtk). | Dari pemesan. |
+| `brand/video/outro/medcoel-outro-master.mp4` | Master outro baku MEDCOEL di repo (16,20 dtk), ditempel utuh dengan re-encode sesuai README master. | Aset MEDCOEL. |
+| `audio/stem-*.wav` (tidak di-commit; dibuat ulang `audio/audio_mix.py`) | Musik (pad + pluck) dan efek disintesis dari kode (numpy/scipy): dengung kabin (teredam pada 13-18 dtk), menelan, desir udara lewat tuba, dan **satu** pop lembut tepat saat tekanan seimbang (26,98 dtk). | **CC0 1.0**, tanpa sampel pihak ketiga; aman untuk promosi Instagram/TikTok. Daftar efek + waktu: `audio/events.json`. |
+## Gambar
+Semua dari kode (`stage/*.js`). Raka hanya lewat `rakaSvg()` (`brand/characters/raka/raka.js`). **Penampang telinga digambar baru sebagai ilustrasi 2D (`stage/ear.js`) dan tidak memakai gambar medis dari luar**; bentuknya skematis. Logo `apps/web/src/assets/logo-full.webp`. Font `video/kopi-kafein-adenosin/stage/fonts`. Gaya diacu dari `video/kopi-kafein-adenosin/kopi-kafein-adenosin_final.mp4` (frame 0, 1, 2,5, 8, 15, 25, 35, 45 dilihat).
+## Sumber isi (dibuka 2026-11-23)
+- **MedlinePlus, Ear barotrauma** (medlineplus.gov/ency/article/001064.htm): barotrauma telinga = ketidaknyamanan akibat beda tekanan antara bagian dalam dan luar gendang; tekanan telinga tengah biasanya sama dengan luar; tuba Eustachius menghubungkan telinga tengah dengan bagian belakang hidung dan tenggorok atas; menelan atau menguap membuka tuba dan membiarkan udara keluar-masuk telinga tengah sehingga tekanan di kedua sisi gendang seimbang; bila tuba tersumbat tekanan telinga tengah berbeda dari luar; sering terjadi pada perubahan ketinggian (terbang), dan hidung tersumbat (alergi/infeksi saluran napas atas) menambah risiko.
