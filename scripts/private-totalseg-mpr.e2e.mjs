@@ -49,6 +49,9 @@ try{
       const pixel=async(axis,u,v)=>page.evaluate(([a,x,y])=>Array.from(document.querySelector('#view-'+a).getContext('2d').getImageData(x,y,1,1).data),[axis,u,v]);
       const opacity=page.locator('#opacity');await opacity.focus();await opacity.press('Home');
       await page.waitForFunction(()=>document.querySelector('#pct').textContent==='0%');
+      // The percentage changes synchronously; Canvas updates on the next RAF.
+      // Wait for the rendered output without weakening the exact-pixel assertion.
+      await page.waitForFunction(()=>document.querySelector('#view-z').getContext('2d').getImageData(2,4,1,1).data[0]===73);
       assert.deepEqual(await pixel('z',2,4),[73,73,73,255]);
       assert.deepEqual(await pixel('y',2,3),[73,73,73,255]);
       assert.deepEqual(await pixel('x',2,3),[73,73,73,255]);

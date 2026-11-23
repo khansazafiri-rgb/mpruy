@@ -46,6 +46,7 @@ export function addPrivateMprOrgan(pack,mask,organ){
      !Array.isArray(organ.rgb)||organ.rgb.length!==3||
      !organ.rgb.every(n=>Number.isInteger(n)&&n>=0&&n<=255)||
      !Array.isArray(mask.dims)||mask.dims.join(',')!==pack.sourceDims.join(',')||
+     (mask.spatialUnits||'unknown')!==pack.sourceUnits||
      !Array.isArray(mask.affine)||mask.affine.length!==12||!mask.affine.every(Number.isFinite)||
      mask.affine.some((v,i)=>Math.abs(v-pack.sourceAffine[i])>0.001)||
      mask.scale!==1||mask.intercept!==0)

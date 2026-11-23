@@ -54,6 +54,11 @@ test('MPR-002: false labels, shifted affine and mask with nonbinary voxels fail 
   const pack=createPrivateMprPack(volume('ct'),{maxDim:32});
   assert.throws(()=>addPrivateMprOrgan(pack,volume('mask',{shift:1}),liver),
     /CT_MPR_MASK_GRID_OR_LABEL_INVALID/);
+  assert.throws(()=>addPrivateMprOrgan(pack,{...volume('mask'),spatialUnits:'mm'},liver),
+    /CT_MPR_MASK_GRID_OR_LABEL_INVALID/);
+  const millimetres=createPrivateMprPack({...volume('ct'),spatialUnits:'mm'},{maxDim:32});
+  assert.throws(()=>addPrivateMprOrgan(millimetres,{...volume('mask'),spatialUnits:'m'},liver),
+    /CT_MPR_MASK_GRID_OR_LABEL_INVALID/);
   assert.throws(()=>addPrivateMprOrgan(pack,volume('mask',{invalid:1}),liver),
     /CT_MPR_MASK_NOT_BINARY/);
   assert.throws(()=>addPrivateMprOrgan(pack,volume('mask'),{...liver,id:'../../escape'}),

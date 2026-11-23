@@ -126,6 +126,7 @@ export function parsePrivateTotalSegNifti(gzip,kind){
 }
 export function verifyNiftiPair(ct,mask){
   if(ct.kind!=='ct'||mask.kind!=='mask'||ct.dims.join(',')!==mask.dims.join(',')||
+     (ct.spatialUnits||'unknown')!==(mask.spatialUnits||'unknown')||
      ct.affine.some((v,i)=>Math.abs(v-mask.affine[i])>0.001))
     throw Error('CT_NIFTI_MASK_REGISTRATION_MISMATCH');
   if(mask.scale!==1||mask.intercept!==0)

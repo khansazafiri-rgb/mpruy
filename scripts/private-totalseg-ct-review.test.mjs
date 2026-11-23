@@ -58,6 +58,8 @@ test('TOTALSEG-VIEW-002: affine mismatch and invalid mask intensity cannot produ
   const ct=parsePrivateTotalSegNifti(nifti('ct',Array(N).fill(80)),'ct');
   const moved=parsePrivateTotalSegNifti(nifti('mask',masked(),{translation:1}),'mask');
   assert.throws(()=>verifyNiftiPair(ct,moved),/REGISTRATION_MISMATCH/);
+  assert.throws(()=>verifyNiftiPair({...ct,spatialUnits:'mm'},{...moved,affine:ct.affine,spatialUnits:'m'}),/REGISTRATION_MISMATCH/);
+  assert.throws(()=>verifyNiftiPair(ct,{...moved,affine:ct.affine,spatialUnits:'mm'}),/REGISTRATION_MISMATCH/);
   const invalid=masked();invalid[3]=2;
   const mask=parsePrivateTotalSegNifti(nifti('mask',invalid),'mask');
   assert.throws(()=>renderPrivateTotalSegPlane(ct,mask,organ,2),/MASK_MUST_BE_BINARY/);
