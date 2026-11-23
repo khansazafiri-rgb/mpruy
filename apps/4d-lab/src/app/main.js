@@ -51,7 +51,6 @@ export const DATASETS = {
   phantom: { dir: BASE + 'data/phantom/', label: 'Phantom prosedural v1 (tanpa atlas)' },
 };
 let DATASET = DATASETS[QUERY.get('dataset')] ? QUERY.get('dataset') : 'atlas';
-const DATASET = DATASETS[QUERY.get('dataset')] ? QUERY.get('dataset') : 'atlas';
 let activeDataset = DATASET;
 let DATA = DATASETS[DATASET].dir;
 // The Lab owns a dedicated static asset-only pack of the documented atlas-derived models.
@@ -94,9 +93,7 @@ let effusion = null, assist = null, learn = null;
 let dirty = true, interacting = false, lastInteraction = 0, workerBusy = false, pending = false, lastFrameInfo = null, frameCount = 0;
 let lastDeform = 0, motionShown = null;
 const stats = { usMs: 0, deformMs: 0, fps: 0 };
-window.__lab = { S, clock, stats, get DATASET() { return DATASET; }, physio: { displacement, makeFrame, effectiveParams: () => effectiveParams(), get geom() { return geom; } }, get atlas() { return atlas; }, get atlasState() { return atlasState; }, get atlasStats() { return { deformMs: atlasDeformMs, moving: atlasMoving, clockT: atlasDeformClockT }; }, audio, get assist() { return assist; }, get learn() { return learn; }, get scene() { return scene; }, get monitor() { return monitor; }, get data() { return D; }, get last() { return lastFrameInfo; }, get effusion() { return effusion; } };
-=======
-window.__lab = { S, clock, stats, DATASET, get activeDataset(){ return activeDataset; }, physio: { displacement, makeFrame, effectiveParams: () => effectiveParams(), get geom() { return geom; } }, get atlas() { return atlas; }, get atlasState() { return atlasState; }, get atlasStats() { return { deformMs: atlasDeformMs, moving: atlasMoving, clockT: atlasDeformClockT }; }, audio, get assist() { return assist; }, get learn() { return learn; }, get scene() { return scene; }, get monitor() { return monitor; }, get data() { return D; }, get last() { return lastFrameInfo; }, get effusion() { return effusion; } };
+window.__lab = { S, clock, stats, get DATASET() { return DATASET; }, get activeDataset() { return activeDataset; }, physio: { displacement, makeFrame, effectiveParams: () => effectiveParams(), get geom() { return geom; } }, get atlas() { return atlas; }, get atlasState() { return atlasState; }, get atlasStats() { return { deformMs: atlasDeformMs, moving: atlasMoving, clockT: atlasDeformClockT }; }, audio, get assist() { return assist; }, get learn() { return learn; }, get scene() { return scene; }, get monitor() { return monitor; }, get data() { return D; }, get last() { return lastFrameInfo; }, get effusion() { return effusion; } };
 
 function markDirty() { dirty = true; }
 function touch() { interacting = true; lastInteraction = performance.now(); markDirty(); }
@@ -126,14 +123,6 @@ async function fetchDatasetJson(name) {
 }
 function status(text, kind = 'info') { const s = $('#loadStatus'); if (s) { s.textContent = text; s.dataset.kind = kind; } }
 
-async function loadPhantom() { // bundled dataset (atlas-derived by default; ?dataset=phantom for the procedural phantom)
-  status(`Memuat ${DATASETS[DATASET].label} (CT, label, mesh)…`);
-  const reg = await fetchDatasetJson('registration.json');
-  const meshFiles = (reg.meshes || []).map((m) => m.file);
-  const [ctBuf, labBuf, anatomy, ...bufs] = await Promise.all([fetchBuf('ct.nrrd'), fetchBuf('labels.nrrd'), fetchDatasetJson('anatomy.json'), ...meshFiles.map(fetchBuf)]);
-  const files = Object.fromEntries(meshFiles.map((f, i) => [f, bufs[i]]));
-  await useDataset({ ctBuf, labBuf, anatomy, reg, files, source: DATASET, name: DATASET === 'atlas' ? 'MEDCOEL atlas-derived synthetic CT' : 'MEDCOEL synthetic phantom' });
-=======
 async function readBundledDataset(key){
   activeDataset = key;
   DATA = DATASETS[key].dir;
@@ -157,30 +146,18 @@ async function readBundledDataset(key){
 async function loadPhantom() {
   // Caddy quarantines public Atlas CT: never bypass the denied namespace.
   // Recovery uses only the independent, pre-existing procedural phantom.
-  await recoverBundledDataset(DATASET,readBundledDataset,(error)=>{
+  const outcome = await recoverBundledDataset(DATASET,readBundledDataset,(error)=>{
     console.warn('[4D Lab] Atlas unavailable; procedural phantom used.',error);
     document.body.dataset.atlasFallback='phantom';
     status('Atlas CT sementara ditahan/tidak tersedia; mode phantom sintetis dipakai. Ini bukan citra pasien atau model Atlas 3D.', 'warn');
   });
+  DATASET = outcome.dataset; // reflect the actual recovered source, never the blocked requested one
 }
 
-// Fail-safe for the production rights quarantine: the atlas-derived CT pack
-// is deliberately blocked at the proxy until its exact rights are cleared.
-// Keep the educational Lab usable with the existing, separately sourced
-// procedural synthetic phantom; never substitute or synthesize a patient CT.
+// Keep the existing boot entry point; recoverBundledDataset already handles the
+// only permitted fallback (atlas -> procedural phantom) exactly once.
 async function loadBundledWithFallback() {
-  try { await loadPhantom(); }
-  catch (atlasError) {
-    if(DATASET!=='atlas'||D)throw atlasError;
-    const original=String(atlasError?.message||atlasError);
-    DATASET='phantom';DATA=DATASETS.phantom.dir;
-    try {await loadPhantom();}
-    catch(phantomError){
-      throw new Error('Atlas belum tersedia ('+original+
-        '); phantom cadangan juga gagal ('+String(phantomError?.message||phantomError)+').');
-    }
-    status('Dataset Atlas sedang dikarantina/tidak tersedia. Beralih ke phantom sintetis edukatif; bukan citra CT pasien.', 'warn');
-  }
+  await loadPhantom();
 }
 
 async function useDataset({ ctBuf, labBuf, anatomy, reg, files, source, name }) {

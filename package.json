@@ -63,7 +63,11 @@
     "resources:ct:cardiac:private": "node scripts/private-paired-ct-review.mjs cardiac-ct",
     "test:ct-expansion": "node --test scripts/private-ct-expansion.test.mjs scripts/private-totalseg-mpr.test.mjs scripts/private-totalseg-ct-review.test.mjs",
     "prepare:bp3d-skeletal-visceral": "node scripts/prepare-bp3d-skeletal-visceral-replacement.mjs",
-    "test:bp3d-skeletal-visceral": "node --test scripts/prepare-bp3d-skeletal-visceral-replacement.test.mjs"
+    "test:bp3d-skeletal-visceral": "node --test scripts/prepare-bp3d-skeletal-visceral-replacement.test.mjs",
+    "audit:bodyparts3d-full": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs",
+    "audit:bodyparts3d-full:fast": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --skip-geometry",
+    "batch:bodyparts3d-reviewed": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs --all --reviewed local-data/licensing-quarantine/bp3d-reviewed-mappings.json",
+    "audit:bodyparts3d-full:reviewed": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --reviewed"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

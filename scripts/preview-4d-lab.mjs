@@ -32,7 +32,8 @@ export const ROOTS = {
   lab: path.join(repo, 'apps/4d-lab/dist'),
   atlas: path.join(repo, 'apps/anatomy/dist'),
   // Optional, LOCAL ONLY: official BodyParts3D review output for the Atlas preview (?models=bp3d). Gitignored, never in a dist.
-  bp3d: path.join(repo, 'local-data/licensing-quarantine/bp3d-batch'),
+  // An expanded private batch is opt-in only; never available on production or copied to dist.
+  bp3d: path.join(repo, 'local-data/licensing-quarantine', process.env.MEDCOEL_BP3D_REVIEWED === '1' ? 'bp3d-reviewed' : 'bp3d-batch'),
 };
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
