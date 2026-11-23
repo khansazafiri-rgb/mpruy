@@ -1,14 +1,14 @@
 {
   "schema": "medcoel.final-qc-summary.v1",
-  "observedAt": "2026-11-23T03:02:09.033Z",
+  "observedAt": "2026-11-23T03:12:55.517Z",
   "targetBaseline": "406b28afbe26f023a2a02bc92fdcf73b67df1bf1",
-  "sourceQcCodeCommit": "0054635cf40738e9d5f98f94ce749e317a56a10b",
+  "sourceQcCodeCommit": "d01acbb29127bcc11c357a60c320418057087f56",
   "sourceQcCodeWorktreeDirty": false,
   "pipelineFileSha256": {
-    "scripts/private-totalseg-mpr.mjs": "ffdb02d960fd01c09e95eea6a8e11923a88ef68ea2dba2214cf080fd2b064232",
+    "scripts/private-totalseg-mpr.mjs": "3e20638b6f930c15d5e26567d73ebcdda6db90ee038d911b78b4b81778192c59",
     "scripts/private-totalseg-mpr-browser.js": "e5f33651c6e7398ab889ddf5f812b5b9256ccff1704430b88cb71b97b5dc7444",
     "scripts/private-totalseg-mpr-geometry.cjs": "d6c4aff034e19b0efb3f8e55ecbfb4368c0293431ac1ea8b1012a82a70ae44ce",
-    "scripts/private-totalseg-ct-review.mjs": "c2958edb9a5291a817db7aa8ba022390661262b0cf26b6cb8bc81223a0f44903",
+    "scripts/private-totalseg-ct-review.mjs": "0454dec8f0ed7fae180edba0d6d479a1b195b0f919a4b42faf204c88a6fa0627",
     "scripts/private-studio-source-qc.mjs": "8536e5a0410f00ad610e2bbfca54d764242e594c7fd167119df72be22ee2cd96",
     "licensing/tools/verify-studio-reproducibility.mjs": "1a951f37cc9bbe1d4d579de4eedab38ee0df1faf97029b42138a9cc7af7b7314"
   },
@@ -98,7 +98,9 @@
       }
     ],
     "decodedHuAndMaskBytes": 11778624,
-    "nativePrivateBrowser": "BLOCKED"
+    "nativePrivateBrowser": "BLOCKED",
+    "sourceSpatialUnits": "unknown",
+    "clinicalMeasurementApproved": false
   },
   "productionObservation": {
     "schemaVersion": 1,
@@ -1267,5 +1269,80 @@
     "Clinical anatomy, labels, patient privacy, rights and exact build need independent signed reviews.",
     "Source-status is not asset clearance. TotalSegmentator and FracAtlas private candidates are not silently bound to old canonical dataset assets.",
     "Five public asset routes are a bounded probe set, not an exhaustive production inventory. VPS disk, effective config, secret values and installed private datasets were not inspected."
+  ],
+  "preservationProof": {
+    "baseline": "406b28afbe26f023a2a02bc92fdcf73b67df1bf1",
+    "head": "d01acbb29127bcc11c357a60c320418057087f56",
+    "byteIdenticalFiles": [
+      {
+        "path": "shared/studios/catalog.v1.json",
+        "sha256": "ea93078596a8d69ad561dfdfd5f195d977b157cc56d25a21c4098d7853c07ebd",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "shared/studios/frozen-ids.json",
+        "sha256": "2a04cb1551c10544c70c59800cc5909c1cd4bae20a7b8b0f84ea217b66f42a27",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/resources.v1.json",
+        "sha256": "1e9fc9447278b958ce3b56147954ee4d03c4f30926bbcd63137b2b1a653f26f2",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/commercial-rights-evidence.json",
+        "sha256": "be3cefc738e263228adb5e9d65756e644605c4ca8c0f490a121d24f04ea8ee13",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/commercial-release.json",
+        "sha256": "2e191adfda7944b3d841ebae14533a14ee71ee8a213fa6f803cfeca9afb439e8",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/quarantine-policy.json",
+        "sha256": "bfac5b06bb574e6886e9845308940d11debdbfdeeae26f74c1ea87c686671a4d",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/quarantined-hashes.json",
+        "sha256": "d9db669a40b8f6e175745521935195e69c490875ba59f20e845fb033046090fb",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/reviews/reviewers.v1.json",
+        "sha256": "14e6e7c2a78bd37fe85988791baba9c34209941a1af7791830a9634fa3e4466e",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "licensing/reviews/decisions.v1.json",
+        "sha256": "937d32ed6307aa455f8df6feaab720e32cbf4557b0dc2d2a50766b1e8a98c851",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "90679553a2122383620a8ee15c8961fb6387ca29ba741e8e0ee7883c30d5e827",
+        "byteIdenticalToBaseline": true
+      },
+      {
+        "path": "apps/studios/package-lock.json",
+        "sha256": "c5a7f625ef4c8a6877132cc3d7bef976f2ec329fa86e4306b079adf08045e75a",
+        "byteIdenticalToBaseline": true
+      }
+    ],
+    "legacyRightsRetained": 14,
+    "allCurrentRightsRetained": 39,
+    "protectedRuntimeDiff": []
+  },
+  "engineeringCiHistory": [
+    {
+      "runId": 45104219940,
+      "head": "31e74d78fb3a28d36dd18e445d417607aabfeaa8",
+      "all24FixtureSmoke": "PASS",
+      "sharedGuided": "PASS",
+      "syntheticMprPassed": 9,
+      "syntheticMprFailed": 1,
+      "cause": "Exact canvas assertion ran before requestAnimationFrame. Corrected test waits for paint, preserves expected pixels. Final-head CI required."
+    }
   ]
 }
