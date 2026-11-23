@@ -2,7 +2,7 @@
 
 Daftar ini mencatat **proyek dengan MP4 di repo**, bukan status publikasi di Instagram/TikTok. Judul diambil dari README proyek; jika belum ada, dipakai nama folder. Jalankan `python3 scripts/video/update_catalog.py` setelah menambah video. CI menolak perubahan yang membuat katalog tertinggal.
 
-Total: **31 video**.
+Total: **32 video**.
 
 | Jenis | Judul | Folder sumber |
 | --- | --- | --- |
@@ -17,6 +17,7 @@ Total: **31 video**.
 | Edukasi | [Bagaimana satu tetes darah bisa menghasilkan angka Hb?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/hb-satu-tetes) | `video/hb-satu-tetes` |
 | Edukasi | [Bagaimana USG membentuk gambar dari pantulan suara?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/usg-gema-gambar) | `video/usg-gema-gambar` |
 | Edukasi | [Bangun, tapi tak bisa bergerak](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/bangun-tapi-tak-bisa-bergerak) | `video/bangun-tapi-tak-bisa-bergerak` |
+| Edukasi | [Capillary refill time (CRT): kenapa kuku memutih saat ditekan?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/crt-kuku-pucat) | `video/crt-kuku-pucat` |
 | Edukasi | [Cara kerja pena autoinjektor adrenalin pada anafilaksis](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/autoinjektor-anafilaksis) | `video/autoinjektor-anafilaksis` |
 | Edukasi | [Dunia tanpa cuci tangan di layanan kesehatan](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dunia-tanpa-cuci-tangan) | `video/dunia-tanpa-cuci-tangan` |
 | Edukasi | [Dunia tanpa oralit](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dunia-tanpa-oralit) | `video/dunia-tanpa-oralit` |

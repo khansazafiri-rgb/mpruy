@@ -1,0 +1,158 @@
+{
+ "durasi_edukasi": 39.63333333333333,
+ "offset_narasi": 0.3,
+ "sfx": [
+  {
+   "t": 0.35,
+   "sfx": "judul"
+  },
+  {
+   "t": 1.2,
+   "sfx": "tekan"
+  },
+  {
+   "t": 4.1,
+   "sfx": "lepas-1"
+  },
+  {
+   "t": 4.6,
+   "sfx": "tick"
+  },
+  {
+   "t": 5.1,
+   "sfx": "tick"
+  },
+  {
+   "t": 5.6,
+   "sfx": "tick"
+  },
+  {
+   "t": 6.1,
+   "sfx": "warna-kembali-1"
+  },
+  {
+   "t": 10.85,
+   "sfx": "masuk-penampang"
+  },
+  {
+   "t": 11.6,
+   "sfx": "tekan-2"
+  },
+  {
+   "t": 13.2,
+   "sfx": "darah-keluar"
+  },
+  {
+   "t": 13.75,
+   "sfx": "darah-keluar"
+  },
+  {
+   "t": 14.3,
+   "sfx": "darah-keluar"
+  },
+  {
+   "t": 14.85,
+   "sfx": "darah-keluar"
+  },
+  {
+   "t": 16.94,
+   "sfx": "lepas-2"
+  },
+  {
+   "t": 17.44,
+   "sfx": "tick"
+  },
+  {
+   "t": 17.5,
+   "sfx": "darah-kembali"
+  },
+  {
+   "t": 17.94,
+   "sfx": "tick"
+  },
+  {
+   "t": 18.44,
+   "sfx": "tick"
+  },
+  {
+   "t": 18.94,
+   "sfx": "warna-kembali-2"
+  },
+  {
+   "t": 20.55,
+   "sfx": "tekan-3"
+  },
+  {
+   "t": 21.0,
+   "sfx": "lepas-3"
+  },
+  {
+   "t": 21.5,
+   "sfx": "tick"
+  },
+  {
+   "t": 22.0,
+   "sfx": "tick"
+  },
+  {
+   "t": 22.5,
+   "sfx": "tick"
+  },
+  {
+   "t": 22.7,
+   "sfx": "warna-kembali-3"
+  },
+  {
+   "t": 24.05,
+   "sfx": "tekan-4"
+  },
+  {
+   "t": 24.55,
+   "sfx": "lepas-4"
+  },
+  {
+   "t": 25.05,
+   "sfx": "tick"
+  },
+  {
+   "t": 25.55,
+   "sfx": "tick"
+  },
+  {
+   "t": 26.05,
+   "sfx": "tick"
+  },
+  {
+   "t": 26.55,
+   "sfx": "tick"
+  },
+  {
+   "t": 27.05,
+   "sfx": "tick"
+  },
+  {
+   "t": 27.55,
+   "sfx": "tick"
+  },
+  {
+   "t": 28.05,
+   "sfx": "tick"
+  },
+  {
+   "t": 28.2,
+   "sfx": "dingin"
+  },
+  {
+   "t": 28.55,
+   "sfx": "tick"
+  },
+  {
+   "t": 28.95,
+   "sfx": "warna-kembali-4"
+  },
+  {
+   "t": 37.0,
+   "sfx": "akhir"
+  }
+ ]
+}
