@@ -77,7 +77,9 @@ test('MPR-003: cannot create approved or unpinned volume, or unbounded geometry'
   assert.throws(()=>encodePrivateMprPack(pack,{
     sourceSubject:'../unsafe',archiveSha256:bytes,sourceCtSha256:bytes
   }),/CT_MPR_UNVERIFIED_OR_EMPTY_DATA/);
-  assert.throws(()=>privateMprPage('brain-ct'),/CT_MPR_INVALID_STUDIO/);
+  assert.match(privateMprPage('brain-ct'),/Brain CT/);
+  assert.match(privateMprPage('cardiac-ct'),/Cardiac CT/);
+  assert.throws(()=>privateMprPage('knee-ct'),/CT_MPR_INVALID_STUDIO/);
 });
 test('MPR-004: browser script parses and has no network endpoint or implicit release',()=>{
   const text=fs.readFileSync(fileURLToPath(new URL('./private-totalseg-mpr-browser.js',import.meta.url)),'utf8');
