@@ -2,7 +2,7 @@
 
 Daftar ini mencatat **proyek dengan MP4 di repo**, bukan status publikasi di Instagram/TikTok. Judul diambil dari README proyek; jika belum ada, dipakai nama folder. Jalankan `python3 scripts/video/update_catalog.py` setelah menambah video. CI menolak perubahan yang membuat katalog tertinggal.
 
-Total: **28 video**.
+Total: **31 video**.
 
 | Jenis | Judul | Folder sumber |
 | --- | --- | --- |
@@ -24,17 +24,18 @@ Total: **28 video**.
 | Edukasi | [Kenapa Kalau Dingin Jadi Lebih Sering Ingin Pipis?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/dingin-pengen-pipis) | `video/dingin-pengen-pipis` |
 | Edukasi | [Kenapa Kopi Bikin Kita Nggak Ngantuk?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/kopi-kafein-adenosin) | `video/kopi-kafein-adenosin` |
 | Edukasi | [Kenapa malam-malam lapar?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/malam-lapar) | `video/malam-lapar` |
-| Edukasi | [Kenapa waktu menekan inhaler penting?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/inhaler-waktu-tarikan) | `video/inhaler-waktu-tarikan` |
-=======
 | Edukasi | [Kenapa test pack bisa menunjukkan dua garis?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/test-pack-dua-garis) | `video/test-pack-dua-garis` |
+| Edukasi | [Kenapa waktu menekan inhaler penting?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/inhaler-waktu-tarikan) | `video/inhaler-waktu-tarikan` |
 | Edukasi | [MEDCOEL — Farmakodinamik parasetamol untuk nyeri kepala](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/parasetamol-nyeri-kepala) | `video/parasetamol-nyeri-kepala` |
 | Edukasi | [MEDCOEL — Mengapa gambar CT dan MRI berbeda?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/ct-mri-perbedaan-citra) | `video/ct-mri-perbedaan-citra` |
 | Edukasi | [Pasien Tidak Sadar di IGD: Dokter Harus Menunggu Keluarga?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/pasien-tidak-sadar-di-igd) | `video/pasien-tidak-sadar-di-igd` |
+| Edukasi | [Telinga penuh lalu pop saat pesawat turun](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/telinga-penuh-pop) | `video/telinga-penuh-pop` |
 | Promo fitur | [Besok Praktikum Anatomi, Tapi Masih Bingung?](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/besok-praktikum-anatomi) | `video/besok-praktikum-anatomi` |
 | Promo fitur | [FEATURE UNLOCKED: 3D ANATOMY](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/human-anatomy-3d) | `video/human-anatomy-3d` |
 | Promo fitur | [Kirim PDF Soalmu](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/brand/video/ad) | `brand/video/ad` |
 | Promo fitur | [Kuis Anatomi 3D MEDCOEL](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/kuis-anatomi-3d) | `video/kuis-anatomi-3d` |
 | Promo fitur | [Latihan Soal MEDCOEL](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/brand/video/ad3) | `brand/video/ad3` |
+| Promo fitur | [Mekanisme Varises](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/video/mekanisme-varises) | `video/mekanisme-varises` |
 | Promo fitur | [Simulasi Jadi Dokter](https://github.com/khansazafiri-rgb/mpruy/tree/claude/focused-wozniak-1ayrxa/brand/video/ad2) | `brand/video/ad2` |
 
 ## Arah konten berikutnya
