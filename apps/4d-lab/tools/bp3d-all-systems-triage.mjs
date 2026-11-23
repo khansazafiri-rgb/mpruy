@@ -3,6 +3,36 @@
 import {reviewTokens} from './bp3d-mapping-review.mjs';
 
 const CSV = x => '"' + String(x ?? '').replaceAll('"', '""') + '"';
+// Conservative anatomical sanity screen: flags obviously weak name-only candidates.
+// This is not synonym reconciliation, an anatomical diagnosis, or source approval.
+const GENERIC=new Set(['left','right','anterior','posterior','medial','lateral','superior','inferior',
+  'upper','lower','middle','proximal','distal','dorsal','ventral','deep','superficial','internal',
+  'external','ascending','descending','of','the','and','set','part','branch','branches','subdivision','cavity','zone',
+  'muscle','artery','vein','nerve','ligament','bone','cartilage','tendon','node','nodes',
+  'gland','valve','leaflet','lobes','lobe','process','structure','organ','vessel','body','head']);
+const explicitTypes=['artery','vein','nerve','ligament','muscle','bone','cartilage','tendon','node',
+  'nodes','bronchus','gland'];
+const plurals=Object.freeze({arteries:'artery',veins:'vein',nodes:'node',muscles:'muscle',
+  ligaments:'ligament',bones:'bone',cartilages:'cartilage',bronchi:'bronchus',ribs:'rib',leaflets:'leaflet'});
+const tokens=name=>reviewTokens(name).map(token=>plurals[token.toLowerCase()]||token.toLowerCase());
+export function semanticSourceFlags(atlasName,officialName) {
+  const a=tokens(atlasName),b=tokens(officialName),A=new Set(a),B=new Set(b),flags=[];
+  const explicit=items=>new Set(items.filter(t=>explicitTypes.includes(t)));
+  const aTypes=explicit(a),bTypes=explicit(b);
+  if(aTypes.size&&bTypes.size&&![...aTypes].some(t=>bTypes.has(t)))
+    flags.push('EXPLICIT_ANATOMY_TYPE_MISMATCH');
+  if(A.has('cartilage') && !B.has('cartilage') && (B.has('rib')||B.has('bone')))
+    flags.push('CARTILAGE_NOT_RIB_BONE');
+  const aAnchors=new Set(a.filter(t=>t.length>=3&&!GENERIC.has(t)));
+  const bAnchors=new Set(b.filter(t=>t.length>=3&&!GENERIC.has(t)));
+  if(aAnchors.size && bAnchors.size && ![...aAnchors].some(t=>bAnchors.has(t)))
+    flags.push('NO_SHARED_SPECIFIC_ANATOMICAL_ANCHOR');
+  // An organ's cavity, a named branch or a subdivision is not its whole structure.
+  if(b.some(t=>['cavity','subdivision','zone','part'].includes(t)) &&
+     !a.some(t=>['cavity','subdivision','zone','part'].includes(t)))
+    flags.push('SOURCE_SUBPART_NOT_WHOLE');
+  return flags;
+}
 const identity = x => x ? x.fmaId + '|' + x.bpId : null;
 const sameTerminology = (a,b) => {
   const left=reviewTokens(a).sort(),right=reviewTokens(b).sort();
@@ -58,6 +88,7 @@ export function buildAllSystemsTriage(audit,mappingReview){
     const ambiguous=!!best&&(
       best.confidence==='ambiguous-review'||(best.warnings||[]).includes('tied-best-match'));
     const warnings=[...(best?.warnings||[])];
+    if(best)warnings.push(...semanticSourceFlags(item.name,best.officialName));
     if(collision)warnings.push('OFFICIAL_IDENTITY_USED_OR_SHARED');
     if(ambiguous)warnings.push('MULTIPLE_POSSIBLE_MATCHES');
     let tier='NO_PUBLISHER_CANDIDATE';

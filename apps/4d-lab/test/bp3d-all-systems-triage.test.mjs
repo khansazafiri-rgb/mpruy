@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {buildAllSystemsTriage,triageCsv,geometryCsv,unapprovedTemplate} from '../tools/bp3d-all-systems-triage.mjs';
+import {buildAllSystemsTriage,triageCsv,geometryCsv,unapprovedTemplate,semanticSourceFlags} from '../tools/bp3d-all-systems-triage.mjs';
 
 const zipSha='a'.repeat(64);
 const structures=[
@@ -70,4 +70,38 @@ test('the same official representation suggested for two Atlas names is a collis
   {name:'Nose sample alternative.l',suggestions:[candidate('left nose sample','FMA1','BP1')]}]};
  const r=buildAllSystemsTriage(expanded,mr);
  assert.equal(r.queue.find(x=>x.atlasName==='Nose sample alternative.l').tier,'IDENTITY_COLLISION_REVIEW');
+});
+
+test('obvious wrong-name matches cannot enter the promising tier or lose evidence of mismatch',()=>{
+  const palatine=semanticSourceFlags('Descending palatine artery.l','left descending genicular artery');
+  assert.ok(palatine.includes('NO_SHARED_SPECIFIC_ANATOMICAL_ANCHOR'));
+  assert.ok(semanticSourceFlags('Anterior semilunar leaflet of pulmonary valve','anterior leaflet of mitral valve')
+    .includes('NO_SHARED_SPECIFIC_ANATOMICAL_ANCHOR'));
+  assert.ok(semanticSourceFlags('Posterior tibiofibular ligament.l','left stylohyoid ligament')
+    .includes('NO_SHARED_SPECIFIC_ANATOMICAL_ANCHOR'));
+  assert.ok(semanticSourceFlags('Inferior pancreatic nodes','inferior pancreatic artery')
+    .includes('EXPLICIT_ANATOMY_TYPE_MISMATCH'));
+  assert.ok(semanticSourceFlags('Intermediate bronchus.r','right intermediate tendon')
+    .includes('EXPLICIT_ANATOMY_TYPE_MISMATCH'));
+  assert.ok(semanticSourceFlags('Costal cartilage of eighth rib.l','left eighth rib')
+    .includes('CARTILAGE_NOT_RIB_BONE'));
+  assert.ok(semanticSourceFlags('Left atrium','cavity of left atrium')
+    .includes('SOURCE_SUBPART_NOT_WHOLE'));
+  const fake={structures:[{name:'Descending palatine artery.l',system:'cardiovascular',
+    group:'arterial',status:'unmatched'}]};
+  const fakeReview={queue:[{name:'Descending palatine artery.l',suggestions:[{
+    officialName:'left descending genicular artery',fmaId:'FMA9',bpId:'BP9',
+    sourceElementIds:['FJ9'],missingElements:[],similarity:0.6,
+    warnings:[],confidence:'medium-review',approved:false}]}]};
+  const found=buildAllSystemsTriage(fake,fakeReview).queue[0];
+  assert.equal(found.tier,'MANUAL_ANATOMICAL_REVIEW');
+  assert.ok(found.candidate.warnings.includes('NO_SHARED_SPECIFIC_ANATOMICAL_ANCHOR'));
+});
+test('conservative guard does not reject actual reordered or suffix-variant anatomical terms',()=>{
+  assert.deepEqual(semanticSourceFlags('Costal cartilage of seventh rib.l','left seventh costal cartilage'),[]);
+  assert.deepEqual(semanticSourceFlags('Genicular veins.l','left genicular vein'),[]);
+  assert.deepEqual(semanticSourceFlags('Manubrium of sternum','manubrium'),[]);
+  assert.deepEqual(semanticSourceFlags('Sternocleidomastoid muscle.l','left sternocleidomastoid'),[]);
+  assert.deepEqual(semanticSourceFlags('Inferior nasal concha bone.l','left inferior nasal concha'),[]);
+  assert.deepEqual(semanticSourceFlags('Proper hepatic artery','hepatic artery proper'),[]);
 });
