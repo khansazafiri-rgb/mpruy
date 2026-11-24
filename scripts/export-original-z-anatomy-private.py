@@ -4,6 +4,9 @@ Exact catalogue labels and explicit peripheral nerve identities; evaluate source
 import bpy, sys, os, re, json, zipfile, hashlib, struct, math, pathlib, shutil
 from array import array
 from mathutils import Vector
+# Resolve MEDCOEL's own sibling module, never source-archive Python.
+sys.path.insert(0,str(pathlib.Path(__file__).resolve().parent))
+from z_anatomy_neural_identity import neural_identity, neural_audit, canonical as neural_key
 
 def require(ok, message):
     if not ok:
@@ -20,10 +23,11 @@ def key(n):
     return n
 def extra_identity(label):
     # Exact named source structures, never infer connections or create tubes.
+    neural=neural_identity(label)
+    if neural: return neural
     side=re.match(r'^(left|right) (.+)$',label)
     base=side.group(2) if side else label
     groups=[
-      ('nervous','nervous',{'median nerve','ulnar nerve','radial nerve','sciatic nerve','femoral nerve','tibial nerve','common fibular nerve','deep fibular nerve','superficial fibular nerve','musculocutaneous nerve','axillary nerve','obturator nerve','brachial plexus','lumbar plexus','sacral plexus','sural nerve','saphenous nerve'}),
       ('lymphatic','lymphatic',{'thoracic duct','right lymphatic duct','lymphatic duct','cisterna chyli','jugular lymphatic trunk','subclavian lymphatic trunk','bronchomediastinal lymphatic trunk','lumbar lymphatic trunk','intestinal lymphatic trunk','lymphatic vessel'}),
       ('visceral','endocrine',{'pituitary gland','hypophysis','adenohypophysis','neurohypophysis','pineal gland','thyroid gland','parathyroid gland','superior parathyroid gland','inferior parathyroid gland','adrenal gland','suprarenal gland'}),
       ('visceral','respiratory',{'lung','larynx','trachea','main bronchus','principal bronchus','pleura','visceral pleura','parietal pleura'}),
@@ -40,10 +44,6 @@ def extra_identity(label):
             if base=='cisterna chyli': regions=['abdomen']
             elif base=='thoracic duct': regions=['abdomen','thorax','headNeck']
             elif 'jugular' in base: regions=['headNeck']
-        elif group=='nervous':
-            if base in {'median nerve','ulnar nerve','radial nerve','musculocutaneous nerve','axillary nerve','brachial plexus'}: regions=['upperLimb']
-            elif base in {'lumbar plexus','sacral plexus'}: regions=['pelvis','back']
-            else: regions=['lowerLimb']
         return {'source':system,'group':group,'layer':0,'regions':regions}
     return None
 
@@ -181,6 +181,9 @@ def main():
             except RuntimeError: pass
     bpy.context.view_layer.update()
     deps=bpy.context.evaluated_depsgraph_get()
+    neural_names={}
+    for label in byname:
+        if neural_identity(label): neural_names.setdefault(neural_key(label),[]).append(label)
     for label,objects in sorted(byname.items()):
         matches=catalog.get(label,[])
         if restricted.search(label):
@@ -194,6 +197,8 @@ def main():
             unmatched.append({'name':label,'objects':[{'name':o.name,'type':o.type,'collections':[c.name for c in o.users_collection]} for o in objects],'reason':'no unique supported identity'});continue
         if len(objects)!=1:
             blocked.append({"name":name,"reason":"ambiguous source object name"});continue
+        if meta['source']=='nervous' and len(neural_names.get(neural_key(label),[]))>1:
+            blocked.append({'name':name,'reason':'ambiguous synonymous source objects; no automatic merging'});continue
         obj=objects[0]
         meta=vascular_meta(name,meta)
         try:
@@ -243,6 +248,9 @@ def main():
           'sourceObjects':objs,
           'modelId':e['id'] if e else None,'reason':blocked_by_name.get(k)})
     write(out/'vascular-source-audit.json',{'rows':vascular,'sourceRevision':revision,'continuityValidated':False,'publicRelease':'NO_GO'})
+    neural_report=neural_audit(source_inventory,converted,blocked,excluded)
+    write(out/'neural-source-audit.json',neural_report)
+    print('NEURAL SOURCE COVERAGE',neural_report['summary'],flush=True)
     write(out/'source-recovery-report.json',{"total":len(converted),"groups":groups,"emptyGroups":sorted(({m["group"] for m in cat.values()}|{"nervous"})-set(groups)),"sourceObjectTypes":type_counts,"convertedObjectTypes":{t:sum(e["sourceObjectType"]==t for e in converted) for t in type_counts},"unmatched":unmatched,"excluded":excluded,"skeletonHeightMetres":height,"blocked":blocked,
         "missingCatalogue":[n for n in cat if n not in present],"sourceRevision":revision,"publicRelease":"NO_GO","clinicalValidation":False})
     print("Z-ANATOMY SOURCE EXPORT COMPLETE",len(converted),groups,flush=True)
