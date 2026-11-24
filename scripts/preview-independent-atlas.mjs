@@ -17,7 +17,7 @@ const review=prepare(folder);
 const pack=path.join(privateRoot,folder,'pack');
 const inv=JSON.parse(fs.readFileSync(path.join(pack,'inventory.json'),'utf8'));
 const manifest={schema:1,mode:'private-review',publicRelease:'NO_GO',entries:inv.converted.map(e=>({
- id:e.id,name:e.name,group:e.group,regions:e.privateAtlasMeta.regions,path:'models/'+e.id+'.glb',approvedForDistribution:false
+ id:e.id,name:e.name,group:e.group,regions:e.privateAtlasMeta.regions,layer:e.privateAtlasMeta.layer,path:'models/'+e.id+'.glb',approvedForDistribution:false
 }))};
 const models=new Map(inv.converted.map(e=>['/anatomy/viewer/models/'+e.id+'.glb',path.join(pack,e.modelPath)]));
 const req=createRequire(path.join(app,'package.json'));
