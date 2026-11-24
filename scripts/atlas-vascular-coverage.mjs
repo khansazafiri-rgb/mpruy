@@ -39,12 +39,12 @@ export function vascularMetadata(e,catalog){
 }
 export function vascularCoverage({catalog,converted,bundles}){
  const entries=converted.filter(e=>['cardiovascular','lymphatic'].includes(e.system));
- const mounted=multimap(entries,e=>exactLabel(e.name));
- const concepts=bundles.flatMap(b=>b.concepts||[]).filter(c=>['cardiovascular','lymphatic'].includes(c.system));
+ const mounted=multimap(converted,e=>exactLabel(e.name));
+ const concepts=bundles.flatMap(b=>b.concepts||[]);
  const byLabel=multimap(concepts,c=>exactLabel(c.name));
  const geometry=new Map();
  for(const b of bundles)for(const g of b.geometry||[])geometry.set(g.id,g);
- const byFma=multimap(entries,e=>e.fmaId);
+ const byFma=multimap(converted,e=>e.fmaId);
  function inspect(name,system){
   const n=exactLabel(name),match=(mounted.get(n)||[]).filter(e=>!system||e.system===system);
   const source=(byLabel.get(n)||[]).filter(c=>!system||c.system===system);
@@ -62,12 +62,14 @@ export function vascularCoverage({catalog,converted,bundles}){
   return {name,system:system||null,status,materializedId:(exact||identity)?.id||null,
    sourceRepresentations:source.map(c=>({id:c.id,fmaId:c.fmaId,tree:c.sourceTree,geometryStatus:c.geometryStatus,elements:c.geometryRefs?.length||0}))};
  }
- const catalogue=Object.entries(catalog).filter(([,m])=>['cardiovascular','lymphatic'].includes(m.source)).map(([name,m])=>({...inspect(name,m.source),regions:m.regions||[],group:m.group}));
+ const allCatalogue=Object.entries(catalog).map(([name,m])=>({...inspect(name,m.source),regions:m.regions||[],group:m.group}));
+ const catalogue=allCatalogue.filter(r=>['cardiovascular','lymphatic'].includes(r.system));
  const priorities=Object.fromEntries(Object.entries(critical).map(([region,names])=>[region,names.map(name=>inspect(name,name==='thoracic duct'?'lymphatic':'cardiovascular'))]));
- const summary={};
+ const summary={},allSystems={};
+ for(const r of allCatalogue){allSystems[r.system]??={};allSystems[r.system][r.status]=(allSystems[r.system][r.status]||0)+1;}
  for(const r of catalogue){summary[r.system]??={};summary[r.system][r.status]=(summary[r.system][r.status]||0)+1;}
  return {scope:'All original cardiovascular and lymphatic catalogue rows plus explicit bilateral regional checklist. Exact labels only; unresolved synonyms are not missing geometry proof.',
-  materializedModels:entries.length,summary,catalogue,priorities,
+  materializedModels:entries.length,summary,catalogue,priorities,allCatalogue,allSystems,allCatalogueCount:allCatalogue.length,allMaterializedModels:converted.length,
   continuityValidated:false,anatomicalCompletenessValidated:false,geometryAnatomyValidated:false,publicRelease:'NO_GO'};
 }
 export function writeVascularCoverage(out,input){
@@ -76,6 +78,8 @@ export function writeVascularCoverage(out,input){
  const rows=Object.entries(report.priorities).flatMap(([region,rr])=>rr.map(r=>[region,r.name,r.status,r.materializedId||'']));
  const esc=x=>String(x).replace(/[\t\r\n]/g,' ');
  fs.writeFileSync(path.join(out,'vascular-priority.tsv'),'region\tstructure\tstatus\tmodel_id\n'+rows.map(r=>r.map(esc).join('\t')).join('\n')+'\n');
+ fs.writeFileSync(path.join(out,'whole-atlas-gaps.tsv'),'system\tgroup\tstructure\tstatus\tmodel_id\n'+report.allCatalogue.map(r=>[r.system,r.group||'',r.name,r.status,r.materializedId||''].map(esc).join('\t')).join('\n')+'\n');
+ console.log('WHOLE ATLAS CATALOGUE COVERAGE',JSON.stringify({catalogue:report.allCatalogueCount,models:report.allMaterializedModels,systems:report.allSystems}));
  console.log('VASCULAR COVERAGE',JSON.stringify(report.summary));
  console.log('HEAD AND NECK',JSON.stringify(report.priorities.headNeck.map(r=>({name:r.name,status:r.status}))));
  return report;
