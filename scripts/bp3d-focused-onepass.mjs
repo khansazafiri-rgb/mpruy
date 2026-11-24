@@ -78,7 +78,7 @@ export async function runFocusedOnePass({openPreview=false,skipTests=false,verte
   Object.assign(result,{status:'PRIVATE_REVIEW_UNVALIDATED',privatePreview:'READY_FOR_HUMAN_REVIEW',
     previousBatch:priorModels,previousReport:priorAudit,
     priorModelsReused:inventory.summary.reusedPriorReviewModels,
-    newFocusedGlbs:vertebralExact?0:inventory.summary.focusedNewModels,
+    newFocusedGlbs:vertebralExact||allSystemsExact?0:inventory.summary.focusedNewModels,
     newExactVertebraGlbs:vertebralExact?inventory.summary.vertebralNewModels:0,
     newAllSystemsGlbs:allSystemsExact?inventory.summary.allSystemsNewModels:0,
     allSystemsSourceSelection:inventory.allSystemsSourceSelection||null,
@@ -103,7 +103,7 @@ export async function runFocusedOnePass({openPreview=false,skipTests=false,verte
   result.error=String(error?.message||error);
   result.blockers=[result.error,'Medical review and source-archive redistribution permission remain absent'];
   saveStatus(result,targetReview);
-  console.error('PRIVATE '+(allSystemsExact?'ALL-SYSTEMS':vertebralExact?'VERTEBRAL':'FOCUSED')+' REVIEW BLOCKED: '
+  console.error('PRIVATE '+(allSystemsExact?'ALL-SYSTEMS':vertebralExact?'VERTEBRAL':'FOCUSED')+' REVIEW BLOCKED: '+
     result.error+'\nOriginal 470/584/602/626 GLBs and production files were not replaced.\n');
   process.exitCode=1;
   return result;
