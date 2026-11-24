@@ -63,6 +63,13 @@ describe('materials', () => {
   });
   it.each([
     ['left lung','visceral','respiratory','lung'],
+    ['Anterior segmental bronchus of right lung','visceral','respiratory','airway'],
+    ['Visceral pleura of left lung','visceral','respiratory','pleura'],
+    ['Superior lobe of right lung','visceral','respiratory','lung'],
+    ['Adenohypophysis','visceral','endocrine','endocrine'],
+    ['Pineal gland','visceral','endocrine','endocrine'],
+    ['Suprarenal gland.l','visceral','endocrine','endocrine'],
+    ['Pancreas','visceral','digestive','pancreas'],
     ['right main bronchus','visceral','respiratory','airway'],
     ['left coronary artery','cardiovascular','heart','artery'],
     ['pulmonary vein','cardiovascular','heart','vein'],
