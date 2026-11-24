@@ -114,7 +114,8 @@
           ],
           "doi": "https://doi.org/10.48539/HBM449.JPXL.964",
           "evidence": "https://lod.humanatlas.io/ref-organ/kidney-female-left/v1.3/",
-          "license": "CC-BY-4.0"
+          "license": "CC-BY-4.0",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-left/v1.3/assets/3d-vh-f-kidney-l.glb"
         },
         {
           "id": "blood-vasculature-female",
@@ -126,7 +127,8 @@
           ],
           "doi": "https://doi.org/10.48539/HBM322.KKFC.394",
           "evidence": "https://lod.humanatlas.io/ref-organ/blood-vasculature-female/v1.3/",
-          "license": "CC-BY-4.0"
+          "license": "CC-BY-4.0",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/blood-vasculature-female/v1.3/assets/3d-vh-f-blood-vasculature.glb"
         }
       ]
     },
