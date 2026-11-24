@@ -60,6 +60,29 @@ test('the guard rejects withheld anatomy under any name: path, bytes, GLB nodes,
   }
 });
 
+
+test('private BodyParts3D inventories and GLBs cannot enter ANY public dist, even with valid bytes',async(t)=>{
+  const root=await tmp(t);
+  for(const rel of [
+    'bp3d/inventory.json',
+    'bp3d/structures/a-model/model.glb',
+    'bp3d/reference-surface/skin.glb',
+    'anatomy/viewer/bp3d/inventory.json',
+    'anatomy/viewer/bp3d/structures/renamed/model.glb'
+  ]){
+    const file=path.join(root,rel);
+    await fs.mkdir(path.dirname(file),{recursive:true});
+    await fs.writeFile(file,rel.endsWith('.json')?'{"converted":[]}':tinyGlb([]));
+  }
+  const violations=scanDistribution(root,ctx);
+  assert.equal(violations.filter(x=>x.includes('path is withheld')).length,5,
+    JSON.stringify(violations));
+  for(const rel of ['bp3d/inventory.json','bp3d/structures/a-model/model.glb',
+    'anatomy/viewer/bp3d/structures/renamed/model.glb'])
+    assert.ok(violations.some(x=>x.startsWith(rel+': path is withheld')),rel);
+  assert.throws(()=>assertDistributionClean(root,'public staging'),/Licence quarantine/);
+});
+
 test('stage scripts refuse to publish a build containing withheld anatomy (no release is created)', async (t) => {
   const d = await tmp(t);
   await fs.mkdir(path.join(d, 'models'), { recursive: true });
