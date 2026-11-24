@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {selectProvisionalMappings} from '../tools/bp3d-provisional-mappings.mjs';
+import {selectProvisionalMappings,canonicalSourceSide,provisionalIdentityIssues} from '../tools/bp3d-provisional-mappings.mjs';
 import {planBatch} from '../tools/batch-bp3d-candidates.mjs';
 
 const existing=[{name:'Femur.l',fmaId:'FMA1',bpId:'BP1'}];
@@ -82,4 +82,41 @@ test('an invalid triage, changed FMA name or invalid budget cannot be silently c
  const changed=candidate('Genicular veins.l','cardiovascular','TERMINOLOGY_EQUIVALENT_REVIEW',
     ['FMA2','BP2','some other artery']);
  assert.equal(input({triage:{status:'REVIEW_QUEUE_NOT_APPROVED',queue:[changed]}}).summary.provisionalSelected,0);
+});
+
+test('official BodyParts3D .l/.r suffixes and spelled-out sides are treated equivalently at BOTH gates',()=>{
+ for(const suffix of ['l','r']){
+   const spelled=suffix==='l'?'left':'right';
+   assert.equal(canonicalSourceSide('Branch to angular gyrus.'+suffix),spelled);
+   assert.equal(canonicalSourceSide(spelled+' branch to angular gyrus'),spelled);
+   assert.deepEqual(provisionalIdentityIssues('Branch to angular gyrus.'+suffix,
+     'Branch to angular gyrus.'+suffix),[]);
+   assert.deepEqual(provisionalIdentityIssues('Branch to angular gyrus.'+suffix,
+     spelled+' branch to angular gyrus'),[]);
+   assert.ok(provisionalIdentityIssues('Branch to angular gyrus.'+suffix,
+     'Branch to angular gyrus.'+(suffix==='l'?'r':'l')).includes('LATERALITY_NOT_CORROBORATED'));
+   assert.ok(provisionalIdentityIssues('Branch to angular gyrus.'+suffix,
+     'Branch to angular gyrus').includes('LATERALITY_NOT_CORROBORATED'));
+ }
+ assert.ok(provisionalIdentityIssues('Branch to angular gyrus.l',
+   'left and right branch to angular gyrus').includes('AMBIGUOUS_LATERALITY'));
+});
+test('candidate selection uses the same .l/.r matching as full official-source audit',()=>{
+ const rows=[
+  {name:'Branch to angular gyrus.l',fmaId:'FMA100',bpId:'BP100'},
+  {name:'Branch to angular gyrus.r',fmaId:'FMA101',bpId:'BP101'},
+ ];
+ const reviewRows=rows.map((row,i)=>candidate(row.name,'cardiovascular',
+   'PROMISING_IDENTITY_REVIEW',[row.fmaId,row.bpId,row.name]));
+ const ids=new Map(rows.map((r,i)=>[r.fmaId,new Set(['FJ'+(100+i)])]));
+ for(let i=0;i<reviewRows.length;i++)reviewRows[i].candidate.fjIds=['FJ'+(100+i)];
+ const got=selectProvisionalMappings({
+  triage:{status:'REVIEW_QUEUE_NOT_APPROVED',queue:reviewRows},
+  officialRows:rows,elements:ids,
+  zipFiles:['mesh/FJ100.obj','mesh/FJ101.obj'],existing:[],
+  includePromising:true,limitNew:120
+ });
+ assert.equal(got.candidates.length,2);
+ assert.equal(got.rejected.length,0);
+ assert.equal(got.summary.approved,0);
 });
