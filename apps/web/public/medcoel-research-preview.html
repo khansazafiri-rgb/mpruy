@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#073f3d">
+  <meta name="robots" content="noindex, nofollow">
+  <title>MEDCOEL — Clinical Learning Research Preview</title>
+  <meta name="description" content="Presentasi penelitian MEDCOEL: pembelajaran anatomi interaktif, prototipe 4D, dan status validasi teknis serta klinis.">
+  <style>
+    :root{--ink:#163a41;--muted:#577075;--teal:#0f7a70;--deep:#073f3d;--jade:#c8ece3;--cream:#f8f7f1;--gold:#f6c35a;--line:#d9e5e0;--white:#fff}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.5}
+    button,a{font:inherit}
+    a{color:inherit}
+    button{cursor:pointer}
+    a:focus-visible,button:focus-visible{outline:3px solid #e5a42c;outline-offset:3px}
+    .wrap{width:min(1160px,calc(100% - 44px));margin:auto}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0}
+    .brand{font-size:24px;font-weight:900;letter-spacing:-.05em;text-decoration:none;display:flex;align-items:center;gap:11px}
+    .brandmark{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:var(--teal);color:#fff;font-weight:900}
+    .navlinks{display:flex;gap:20px;align-items:center;font-size:13px;font-weight:700}
+    .navlinks a{text-decoration:none}
+    .navlinks a:hover{text-decoration:underline}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #cbe5d9;background:#eaf6ef;padding:7px 12px;border-radius:999px;color:#19604e;font-size:12px;font-weight:800;letter-spacing:.05em}
+    .dot{width:7px;height:7px;border-radius:50%;background:#159b80}
+    .hero{padding:58px 0 74px;display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:50px;align-items:center}
+    .eyebrow{font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(42px,5.2vw,72px);line-height:1.07;letter-spacing:-.065em;margin:18px 0 23px;font-weight:850}
+    h1 em{font-style:normal;color:var(--teal)}
+    .lead{font-size:18px;line-height:1.65;color:var(--muted);max-width:560px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin:29px 0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:12px 19px;border-radius:13px;font-size:14px;font-weight:800;text-decoration:none;border:1px solid transparent}
+    .btn-primary{background:var(--deep);color:#fff}
+    .btn-primary:hover{background:#126c63}
+    .btn-soft{background:#fff;border-color:var(--line)}
+    .btn-soft:hover{border-color:var(--teal)}
+    .small{font-size:12px;color:var(--muted)}
+    .visual{position:relative;border-radius:32px;background:radial-gradient(circle at 43% 36%,#1d7770 0,#0e5551 35%,#083f3d 85%);box-shadow:0 24px 75px #073f3d26;min-height:480px;overflow:hidden;padding:20px;isolation:isolate}
+    .visual:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff0d 1px,transparent 1px),linear-gradient(90deg,#ffffff0d 1px,transparent 1px);background-size:32px 32px;opacity:.5}
+    .visual-head{position:relative;display:flex;justify-content:space-between;align-items:center;color:white;font-size:12px;font-weight:700;z-index:1}
+    .visual-head .light{opacity:.66;font-weight:500}
+    .body-art{position:absolute;inset:25px 0 22px;height:calc(100% - 52px);width:100%;filter:drop-shadow(0 15px 25px #0005)}
+    .body-line{fill:#1a938a22;stroke:#b8e4d3;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+    .body-internal{fill:none;stroke:#d3f2e6;stroke-width:2;stroke-linecap:round;opacity:.65}
+    .focus-spot{fill:#f6c35a;stroke:#fff9;stroke-width:2;transition:all .25s ease}
+    .focus-spot.on{fill:#fff0a9;stroke:#fff;stroke-width:4;filter:drop-shadow(0 0 9px #f4c767)}
+    .visual-footer{position:absolute;bottom:17px;left:20px;right:20px;z-index:1;display:flex;gap:8px;justify-content:space-between;color:#defcf0;font-size:11px}
+    .visual-chip{background:#ffffff1f;border:1px solid #ffffff30;border-radius:20px;padding:7px 11px;backdrop-filter:blur(8px)}
+    .floating{position:absolute;z-index:2;background:#fff;border-radius:15px;box-shadow:0 16px 50px #0003;padding:12px 16px;display:grid;gap:3px;font-size:12px;max-width:205px}
+    .floating strong{font-size:14px}.floating span{font-size:11px;color:#627b81}
+    .floating.top{right:18px;top:69px}
+    .floating.bottom{left:14px;bottom:76px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:75px}
+    .stat{background:#fff;border:1px solid var(--line);border-radius:19px;padding:19px 21px;min-height:121px}
+    .stat strong{display:block;font-size:clamp(27px,3vw,40px);letter-spacing:-.05em;color:var(--deep);line-height:1.25}
+    .stat span{display:block;font-size:12px;color:var(--muted)}
+    .section{padding:0 0 78px}
+    .section h2{font-size:clamp(29px,3.4vw,44px);line-height:1.15;letter-spacing:-.048em;margin:10px 0 13px}
+    .sectionintro{max-width:660px;font-size:15px;color:var(--muted);line-height:1.7}
+    .demo-grid{margin-top:28px;display:grid;grid-template-columns:.8fr 1.2fr;gap:20px}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:25px;padding:26px}
+    .panel h3{font-size:19px;letter-spacing:-.025em}
+    .options{display:grid;gap:10px}
+    .option{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 16px;text-align:left;color:var(--ink)}
+    .option:hover{border-color:var(--teal)}
+    .option.on{background:#eaf8f3;border-color:#65b1a0}
+    .option strong{display:block;font-size:14px}
+    .option span{font-size:12px;color:var(--muted)}
+    .scenario{min-height:290px;border-radius:18px;background:linear-gradient(145deg,#eff9f5,#e9f2f5);padding:27px;display:flex;flex-direction:column;justify-content:space-between}
+    .scenario .kicker{font-size:11px;font-weight:900;color:var(--teal);letter-spacing:.13em;text-transform:uppercase}
+    .scenario h3{font-size:clamp(24px,3vw,34px);margin:14px 0;line-height:1.18;letter-spacing:-.035em}
+    .scenario p{color:#526a70;font-size:14px;line-height:1.75}
+    .scenario .mini-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .scenario-tag{border-radius:999px;padding:8px 12px;background:#fff;border:1px solid #d6e5df;font-size:12px;font-weight:700}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:29px}
+    .card{background:#fff;border:1px solid var(--line);padding:23px;border-radius:21px;min-height:235px}
+    .card .icon{font-size:27px;border-radius:13px;background:#ebf5ef;width:51px;height:51px;display:grid;place-items:center;margin-bottom:20px}
+    .card h3{font-size:17px;margin:0 0 12px}
+    .card p{font-size:13px;color:var(--muted);line-height:1.72}
+    .band{border-radius:28px;background:var(--deep);color:#fff;padding:38px;display:flex;justify-content:space-between;align-items:center;gap:30px}
+    .band h2{color:#fff;margin:8px 0 11px}
+    .band p{color:#c5e2d9;font-size:14px;max-width:680px;margin:0;line-height:1.65}
+    .band .btn{background:var(--gold);color:#263f3c;white-space:nowrap}
+    footer{border-top:1px solid var(--line);margin-top:70px;padding:25px 0 34px;color:var(--muted);font-size:12px}
+    footer .wrap{display:flex;justify-content:space-between;gap:18px}
+    .note{margin:16px 0 0;color:#5d7275;font-size:12px;line-height:1.65}
+    @media(max-width:860px){.hero{grid-template-columns:1fr;padding:42px 0}.visual{max-width:620px;width:100%;margin:auto}.stats{grid-template-columns:repeat(2,1fr)}.demo-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.navlinks{gap:11px}}
+    @media(max-width:560px){.navlinks a:not(.always){display:none}.wrap{width:min(100% - 30px,1160px)}.hero{gap:20px}.visual{min-height:410px}.floating.top{max-width:150px;right:10px}.floating.bottom{max-width:155px;bottom:65px}.stats{gap:8px}.stat{padding:15px;min-height:96px}.stat strong{font-size:28px}.cards{grid-template-columns:1fr}.band{display:block;padding:25px}.band .btn{margin-top:20px}.panel{padding:18px}footer .wrap{display:block}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <a class="brand" href="/" aria-label="MEDCOEL beranda"><span class="brandmark">M</span> MEDCOEL</a>
+      <nav class="navlinks" aria-label="Navigasi">
+        <a href="#capaian">Capaian</a><a href="#alur">Alur pembelajaran</a>
+        <a href="#validasi">Validasi</a><a class="always" href="/">Buka MEDCOEL ↗</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="hero-heading">
+        <div>
+          <span class="pill"><span class="dot" aria-hidden="true"></span> RESEARCH &amp; PROTOTYPE SHOWCASE</span>
+          <h1 id="hero-heading">Belajar klinis lewat <em>eksplorasi, bukan hafalan.</em></h1>
+          <p class="lead">MEDCOEL mengembangkan lingkungan belajar kedokteran yang menghubungkan atlas anatomi, pembelajaran terarah, serta simulasi modalitas klinis dalam satu pengalaman digital.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#alur">Jelajahi konsep pembelajaran →</a>
+            <a class="btn btn-soft" href="#capaian">Lihat progres penelitian</a>
+          </div>
+          <p class="small">Presentasi akademik · 24 November 2026 · Prototipe edukatif, bukan perangkat diagnosis.</p>
+        </div>
+        <div class="visual" aria-label="Visualisasi ilustratif struktur tubuh, bukan model klinis tervalidasi">
+          <div class="visual-head"><span>MEDCOEL / ANATOMY LAB</span><span class="light">CONCEPT VISUALIZATION</span></div>
+          <svg class="body-art" viewBox="0 0 500 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bodytitle">
+            <title id="bodytitle">Skema ilustratif area kepala, tulang belakang, dada, abdomen dan ekstremitas</title>
+            <g class="body-line">
+              <ellipse cx="250" cy="82" rx="45" ry="59"/><path d="M230 136l-3 18-40 18-41 34-38 106 29 12 51-90 1 93 19 96 19 100 30 0 11-127h-7l9-24 7 24h-7l11 127h30l19-100 19-96 1-93 51 90 29-12-38-106-41-34-40-18-3-18"/>
+              <path d="M203 166q47 28 94 0M192 321q58 21 116 0M226 423l-16 47m64-47 16 47" fill="none"/>
+            </g>
+            <g class="body-internal">
+              <path d="M250 161v250" stroke-dasharray="8 8" stroke-width="4"/>
+              <path d="M215 186q35 24 70 0M207 210q43 27 86 0M201 234q49 23 98 0M203 257q47 22 94 0M209 280q41 19 82 0M219 301q31 17 62 0"/>
+              <path d="M230 173q-28 12-23 45q-5 44 30 53M270 173q28 12 23 45q5 44-30 53"/>
+              <path d="M250 290q-25 5-26 27q3 36 26 35q23 1 26-35q-1-22-26-27"/>
+            </g>
+            <circle id="mark-head" class="focus-spot on" cx="250" cy="82" r="9"/>
+            <circle id="mark-spine" class="focus-spot" cx="250" cy="222" r="9"/>
+            <circle id="mark-thorax" class="focus-spot" cx="286" cy="222" r="9"/>
+            <circle id="mark-abdomen" class="focus-spot" cx="249" cy="323" r="9"/>
+            <circle id="mark-extremity" class="focus-spot" cx="289" cy="468" r="9"/>
+          </svg>
+          <div class="floating top"><strong id="visual-name">Head &amp; neck</strong><span id="visual-description">Eksplorasi struktur regional</span></div>
+          <div class="floating bottom"><strong>702 GLB · PRIVATE QC</strong><span>31,38% cakupan nama katalog</span></div>
+          <div class="visual-footer"><span class="visual-chip">INTERACTIVE CONCEPT</span><span class="visual-chip">BUKAN MODEL DIAGNOSIS</span></div>
+        </div>
+      </section>
+      <section class="stats" id="capaian" aria-label="Capaian pengembangan">
+        <div class="stat"><strong>2.237</strong><span>nama struktur dalam katalog pengembangan</span></div>
+        <div class="stat"><strong>702</strong><span>GLB privat yang lolos audit integritas sumber</span></div>
+        <div class="stat"><strong>31,38%</strong><span>cakupan nama katalog, bukan validasi anatomi</span></div>
+        <div class="stat"><strong>24</strong><span>Clinical Studios dalam cakupan QC, kesiapan bervariasi</span></div>
+      </section>
+      <section class="section" id="alur">
+        <span class="eyebrow">Pendekatan pembelajaran</span>
+        <h2>Dari anatomi ke penalaran klinis</h2>
+        <p class="sectionintro">Pilih salah satu konsep untuk melihat bagaimana MEDCOEL merancang perjalanan belajar. Contoh interaktif di bawah merupakan ilustrasi alur produk—bukan hasil scan, pemeriksaan pasien, atau simulasi klinis yang telah divalidasi.</p>
+        <div class="demo-grid">
+          <div class="panel">
+            <h3>Pilih pengalaman belajar</h3>
+            <div class="options" role="group" aria-label="Konsep pembelajaran">
+              <button class="option on" type="button" data-concept="atlas" aria-pressed="true"><strong>01 · Atlas regional</strong><span>Kenali struktur, lokasi dan hubungan spasial.</span></button>
+              <button class="option" type="button" data-concept="guided" aria-pressed="false"><strong>02 · Guided clinical path</strong><span>Mulai dari pertanyaan, bukan layar kosong.</span></button>
+              <button class="option" type="button" data-concept="imaging" aria-pressed="false"><strong>03 · Multimodal learning</strong><span>Rencana integrasi anatomi dengan CT/MPR dan USG.</span></button>
+              <button class="option" type="button" data-concept="challenge" aria-pressed="false"><strong>04 · Challenge &amp; reflection</strong><span>Identifikasi, keputusan, dan umpan balik.</span></button>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="scenario" aria-live="polite">
+              <div>
+                <span class="kicker" id="concept-kicker">ATLAS / EKSPLORASI</span>
+                <h3 id="concept-title">Lihat satu struktur dalam konteks seluruh tubuh.</h3>
+                <p id="concept-description">Mulai dari area tubuh, pilih struktur anatomi, lalu amati hubungan dengan struktur di sekitarnya. Model 3D riil saat ini tersedia pada prototipe privat di perangkat pengembang.</p>
+              </div>
+              <div class="mini-actions"><span class="scenario-tag" id="concept-status">Prototipe privat · belum tervalidasi klinis</span><button class="btn btn-soft" type="button" id="next-concept">Konsep berikutnya →</button></div>
+            </div>
+            <p class="note">Demi integritas akademik, kami memisahkan kemampuan teknis yang sudah diuji dari kecukupan anatomi dan izin distribusi yang masih ditinjau.</p>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="validasi">
+        <span class="eyebrow">Penelitian &amp; pengendalian mutu</span>
+        <h2>Terbuka tentang apa yang sudah dan belum selesai.</h2>
+        <div class="cards">
+          <article class="card"><div class="icon">✓</div><h3>Audit teknis: selesai</h3><p>702 GLB lolos pemeriksaan integritas sumber dan keterkaitan identitas FMA/BP/FJ. Audit ini tidak membuktikan kelengkapan anatomi atau kesesuaian klinis.</p></article>
+          <article class="card"><div class="icon">⌕</div><h3>Validasi anatomi: berlangsung</h3><p>Perlu penilaian reviewer atas morfologi, orientasi, label, struktur kecil, dan hubungan spasial—termasuk model yang secara teknis sudah berhasil ditampilkan.</p></article>
+          <article class="card"><div class="icon">§</div><h3>Hak penggunaan: belum selesai</h3><p>Model privat tidak didistribusikan di halaman ini. Izin penggunaan dan redistribusi aset serta kode pihak ketiga harus diverifikasi sebelum rilis publik.</p></article>
+        </div>
+      </section>
+      <section class="band">
+        <div><span class="eyebrow" style="color:#a8e0d4">BERDISKUSI UNTUK BERKEMBANG</span><h2>Kolaborasi akademik membuat teknologi lebih bertanggung jawab.</h2><p>MEDCOEL membuka ruang masukan untuk desain pembelajaran, validasi struktur anatomi, uji kegunaan mahasiswa kedokteran, dan evaluasi dampak pembelajaran.</p></div>
+        <a class="btn" href="/">Kunjungi platform MEDCOEL →</a>
+      </section>
+    </main>
+  </div>
+  <footer><div class="wrap"><span>© MEDCOEL · Research showcase · 2026</span><span>Semua angka merupakan status prototipe privat per 24 November 2026. Halaman ini tidak memuat model pihak ketiga.</span></div></footer>
+  <script>
+    (function(){
+      const concepts=[
+        {id:'atlas',k:'ATLAS / EKSPLORASI',title:'Lihat satu struktur dalam konteks seluruh tubuh.',text:'Mulai dari area tubuh, pilih struktur anatomi, lalu amati hubungan dengan struktur di sekitarnya. Model 3D riil saat ini tersedia pada prototipe privat di perangkat pengembang.',status:'Prototipe privat · belum tervalidasi klinis',spot:'head',visual:'Head & neck',description:'Eksplorasi struktur regional'},
+        {id:'guided',k:'GUIDED / PEMBELAJARAN TERARAH',title:'Pelajari alasan sebelum memilih tindakan.',text:'Contoh alur belajar: susun pertanyaan tentang efusi perikardial, tentukan landmark, bandingkan anatomi dan modalitas pemeriksaan, lalu telaah penjelasan. Ini rancangan perjalanan belajar, bukan keputusan klinis otomatis.',status:'Rancangan pedagogis · memerlukan evaluasi',spot:'thorax',visual:'Thorax & heart',description:'Anatomi menuju kasus'},
+        {id:'imaging',k:'CT / USG / MULTIMODAL',title:'Hubungkan objek 3D dengan irisan pencitraan.',text:'Pembelajaran dirancang untuk memadukan orientasi axial, coronal, sagittal, serta interaksi probe. Dataset dan integrasi tiap studio mempunyai tingkat kesiapan berbeda; tidak semua modalitas siap disajikan ke publik.',status:'QC teknis berbeda per studio',spot:'abdomen',visual:'Abdomen',description:'Hubungan model dan irisan'},
+        {id:'challenge',k:'EVALUASI / REFLEKSI',title:'Dari melihat menjadi mengenali.',text:'Mahasiswa menjawab pertanyaan identifikasi struktur, memeriksa alasan jawaban, kemudian mengulang bagian yang masih lemah. Prototipe pembelajaran ini belum memiliki klaim efektivitas empiris tanpa studi evaluasi.',status:'Evaluasi pembelajaran belum disimpulkan',spot:'extremity',visual:'Upper & lower limb',description:'Identifikasi dan refleksi'}
+      ];
+      const buttons=Array.from(document.querySelectorAll('[data-concept]'));
+      function change(i){
+        const c=concepts[i];
+        document.getElementById('concept-kicker').textContent=c.k;
+        document.getElementById('concept-title').textContent=c.title;
+        document.getElementById('concept-description').textContent=c.text;
+        document.getElementById('concept-status').textContent=c.status;
+        document.getElementById('visual-name').textContent=c.visual;
+        document.getElementById('visual-description').textContent=c.description;
+        buttons.forEach(b=>{const active=b.dataset.concept===c.id;b.classList.toggle('on',active);b.setAttribute('aria-pressed',String(active));});
+        document.querySelectorAll('.focus-spot').forEach(el=>el.classList.toggle('on',el.id==='mark-'+c.spot));
+      }
+      buttons.forEach((b,i)=>b.addEventListener('click',()=>change(i)));
+      document.getElementById('next-concept').addEventListener('click',()=>{
+        const i=buttons.findIndex(b=>b.classList.contains('on'));change((i+1)%concepts.length);
+      });
+    })();
+  </script>
+</body>
+</html>
