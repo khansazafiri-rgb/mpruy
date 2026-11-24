@@ -9,6 +9,9 @@ import {prepare} from './prepare-atlas-publication-review.mjs';
 import {inspectInstalled,publicationBundleGate} from './atlas-independent-dependency-audit.mjs';
 import {checkSourceNotices} from './audit-atlas-publication-rights.mjs';
 import {buildHraRegistry,serveHraReference} from './atlas-hra-private-reference.mjs';
+import {classifyIndependentPath} from './independent-atlas-routes.mjs';
+import {createLabPreviewServer,ROOTS} from './preview-4d-lab.mjs';
+import {assertDistributionClean} from '../licensing/tools/check-distribution.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
@@ -32,10 +35,21 @@ fs.writeFileSync(path.join(privateRoot,folder,'publication-software-audit.json')
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.txt':'text/plain; charset=utf-8'};
 let hra;try{hra=await buildHraRegistry(privateRoot);}catch(error){hra={assets:new Map(),blocked:[{reason:String(error.message||error)}]};}
 const port=Number(process.env.PORT||4186);assert(Number.isInteger(port)&&port>=1024&&port<=65535);
+// Host integration is optional; it never serves the legacy viewer or lab routes.
+let hostHandler=null;
+if(fs.existsSync(path.join(ROOTS.main,'index.html'))){
+ try{assertDistributionClean([ROOTS.main],'Independent atlas host preview');hostHandler=createLabPreviewServer(ROOTS).listeners('request')[0];}
+ catch(error){console.warn('Host preview withheld:',error.message);}
+}
 const server=createServer((request,response)=>{
- const send=(status,body,type='text/plain; charset=utf-8')=>{response.writeHead(status,{'Content-Type':type,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY'});response.end(request.method==='HEAD'?undefined:body);};
+ const send=(status,body,type='text/plain; charset=utf-8')=>{response.writeHead(status,{'Content-Type':type,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Frame-Options':'SAMEORIGIN'});response.end(request.method==='HEAD'?undefined:body);};
  if(request.headers.host!=='127.0.0.1:'+port||!['GET','HEAD'].includes(request.method))return send(403,'Loopback review only');
  let p;try{p=new URL(request.url,'http://127.0.0.1:'+port).pathname;if(p!==decodeURIComponent(p))return send(404,'Not found');}catch{return send(400,'Invalid path');}
+ const route=classifyIndependentPath(p);
+ if(route==='redirect'){response.writeHead(308,{Location:'/anatomy/viewer/','Cache-Control':'no-store'});return response.end();}
+ if(route==='host')return hostHandler?hostHandler(request,response):send(404,'Host preview unavailable; use /anatomy/viewer/');
+ if(route!=='independent')return send(404,'Not found');
+ response.setHeader('Content-Security-Policy',"frame-ancestors 'self'");
  if(p==='/anatomy/viewer/inventory.json')return send(200,JSON.stringify(manifest),mime['.json']);
  if(p.startsWith('/anatomy/viewer/hra-reference/')&&serveHraReference(request,response,hra))return;
  const model=models.get(p);
@@ -53,4 +67,5 @@ const server=createServer((request,response)=>{
 });
 await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve);});
 console.log('INDEPENDENT PRIVATE ATLAS:', 'http://127.0.0.1:'+port+'/anatomy/viewer/');
+console.log('HOST INTEGRATION:',hostHandler?'http://127.0.0.1:'+port+'/anatomy/explore':'not available (standalone preview remains available)');
 console.log('CANDIDATE MODELS:',review.totals.candidates,'APPROVED:',review.totals.approved,'PUBLIC RELEASE: NO_GO');
