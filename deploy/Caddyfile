@@ -42,6 +42,11 @@ medcoel.com {
 		header Cache-Control "private, no-store, max-age=0"
 		respond "Not Found" 404
 	}
+	# Additional private BodyParts3D review models are NEVER public, even if accidentally copied.
+	handle /anatomy/viewer/bp3d/* {
+		header Cache-Control "private, no-store, max-age=0"
+		respond "Not Found" 404
+	}
 	# Block entire unverified Atlas data namespace, including CT and label variants.
 	# The old SPA fallback must NOT return HTTP 200 for these paths.
 	handle /anatomy/4d-lab/data/atlas/* {
