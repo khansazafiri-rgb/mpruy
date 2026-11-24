@@ -8,6 +8,7 @@ import {fileURLToPath} from 'node:url';
 import {parseOfficialNames,parseOfficialElements,candidateCrosswalk,mapActualMeshFiles,checkArchiveEntryNames} from '../../../licensing/tools/prepare-bodyparts3d-source.mjs';
 import {auditGeneratedBatch} from './bp3d-batch-audit.mjs';
 import {buildAllSystemsTriage,triageCsv,geometryCsv,unapprovedTemplate} from './bp3d-all-systems-triage.mjs';
+import {buildVisibleGapReview,visibleGapCsv,visibleGapMarkdown} from './bp3d-visible-gap-review.mjs';
 import {provisionalIdentityIssues} from './bp3d-provisional-mappings.mjs';
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 const PRIVATE=path.join(ROOT,'local-data/licensing-quarantine');
@@ -169,6 +170,10 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
   const triage=buildAllSystemsTriage(report,mappingReview);
   fs.writeFileSync(path.join(output,'priority-review.json'),JSON.stringify(triage,null,2)+'\n');
   fs.writeFileSync(path.join(output,'priority-review.csv'),triageCsv(triage));
+  const focus=buildVisibleGapReview(report,triage);
+  fs.writeFileSync(path.join(output,'focus-gaps.json'),JSON.stringify(focus,null,2)+'\n');
+  fs.writeFileSync(path.join(output,'focus-gaps.csv'),visibleGapCsv(focus));
+  fs.writeFileSync(path.join(output,'focus-gaps.md'),visibleGapMarkdown(focus));
   fs.writeFileSync(path.join(output,'converted-geometry-review.csv'),geometryCsv(triage));
   fs.writeFileSync(path.join(output,'unapproved-identity-template.json'),
     JSON.stringify(unapprovedTemplate(triage,actualHashes.archiveSha256),null,2)+'\n');
@@ -184,6 +189,7 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
     'Human review candidates (not approvals): '+JSON.stringify(triage.summary.byTier)+'.',
     'Converted geometry with diagnostic flags: '+triage.summary.sourceGeometryFlagged+'.',
     '', 'No suggested FMA/BP identity, mesh, clinical geometry, or commercial distribution has been approved.',
+    'See focus-gaps.md/csv/json for targeted digiti minimi (hand/foot), nasal, spine, sternum and visceral coverage without inventing geometry.',
     'See priority-review.csv, converted-geometry-review.csv and unapproved-identity-template.json for the next clinical review.',
     'See all-structures.csv for every catalog item and unlinked-official.csv for official objects not mapped to Atlas.'
   ].join('\n')+'\n';
