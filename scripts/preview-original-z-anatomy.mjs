@@ -11,6 +11,8 @@ import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createServer} from 'node:http';
 import {privateAtlasPlugin} from './preview-private-atlas-expansion.mjs';
 import {patchPrivateSourceRuntime,patchPrivatePanel} from './z-anatomy-private-runtime.mjs';
+import {buildHraRegistry,serveHraReference} from './atlas-hra-private-reference.mjs';
+import {writeClinicalPriorityAudit} from './atlas-clinical-priority-audit.mjs';
 import {createLabPreviewServer,checkBuilds,ROOTS} from './preview-4d-lab.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
@@ -47,7 +49,7 @@ function blender(){
  if(!process.env.BLENDER_BIN&&spawnSync('blender',['--version'],{encoding:'utf8'}).status===0)return 'blender';
  throw Error('Blender unavailable. Install from https://www.blender.org/download/ or set BLENDER_BIN to the executable. No source data changed.');
 }
-function sourcePlugin(applied){
+function sourcePlugin(applied,hraEnabled){
  return {name:'medcoel-z-anatomy-private-native-frame',enforce:'pre',transform(code,id){
   const p=path.relative(atlasRoot,id.split('?')[0]).split(path.sep).join('/');
   if(p==='src/viewer/bp3dSource.js'){
@@ -75,6 +77,7 @@ function sourcePlugin(applied){
    const anchor='    systems.nervous=[];';
    assert.equal(code.split(anchor).length,2,'Private inventory transform missing');
    code=code.replace("    if (!systems.nervous.length) throw new Error('No private nervous structures');","    // Absence is reported as unavailable, not filled by a legacy source.");
+   if(hraEnabled)code="import {mountHraReference} from './viewer/hraPrivateReference.js';\nif(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mountHraReference,{once:true});else mountHraReference();\n"+code;
   }else return null;
   applied.add(p);return {code,map:null};
  }};
@@ -100,11 +103,20 @@ async function main(){
   assert.equal(l.approvedForDistribution,false);assert.equal(l.generatedGLBSHA256,e.glbSha256);assert.equal(await hash(local(pack,e.modelPath)),e.glbSha256);
   names.add(e.name);ids.add(e.id);
  }
+ let hra=null;
+ if(process.env.MEDCOEL_HRA_REFERENCE!=='0'){
+  try{hra=await buildHraRegistry(privateRoot);}
+  catch(error){hra={assets:new Map(),blocked:[{reason:String(error.message)}]};}
+ }
+ if(hra)console.log('HRA INDEPENDENT REFERENCE',JSON.stringify({verified:hra.assets.size,blocked:hra.blocked.length,bodyOverlay:false}));
+ writeClinicalPriorityAudit(out,{inventory:inv,hra});
+ write(path.join(out,'hra-reference-review.json'),{verified:hra?.assets.size||0,blocked:hra?.blocked||[],
+  referenceObjects:[...(hra?.assets.values()||[])].map(a=>a.public),bodyOverlay:false,publicRelease:'NO_GO'});
  const req=createRequire(path.join(atlasRoot,'package.json')), {build}=await import(pathToFileURL(req.resolve('vite')).href);
  const applied=new Set(),specific=new Set();
  process.chdir(atlasRoot);
  try{await build({root:atlasRoot,configFile:path.join(atlasRoot,'vite.config.js'),base:'/anatomy/viewer/',
-  plugins:[privateAtlasPlugin(applied),sourcePlugin(specific)],build:{outDir:dist,emptyOutDir:true}});}
+  plugins:[privateAtlasPlugin(applied),sourcePlugin(specific,Boolean(hra))],build:{outDir:dist,emptyOutDir:true}});}
  finally{process.chdir(root);}
  assert.equal(applied.size,4,'Private containment patches not applied');
  assert.equal(specific.size,5,'Source frame/label patches not applied');
@@ -123,6 +135,7 @@ async function main(){
   if((u.pathname==='/anatomy/viewer/'||u.pathname==='/anatomy/viewer/index.html')&&(u.searchParams.get('models')!=='bp3d'||u.searchParams.get('privateExpansion')!=='1')){
    res.writeHead(302,{Location:'/anatomy/viewer/?models=bp3d&privateExpansion=1'});res.end();return;
   }
+  if(hra&&serveHraReference(req,res,hra))return;
   handler(req,res);
  });
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve);});
@@ -132,7 +145,10 @@ async function main(){
   assert.equal((await fetch(base+'/anatomy/viewer/models/nervous.glb',{method:'HEAD'})).status,404);
   console.log('VASCULAR SOURCE AUDIT:',path.join(out,'vascular-source-audit.json'));
   console.log('NEURAL SOURCE AUDIT:',path.join(out,'neural-source-audit.json'));
+  if(hra){const res=await fetch(base+'/anatomy/viewer/hra-reference/inventory.json');assert(res.ok);assert.equal((await res.json()).items.length,hra.assets.size);}
   console.log('LYMPHATIC SOURCE AUDIT:',path.join(out,'lymphatic-source-audit.json'));
+  console.log('ORGAN SOURCE AUDIT:',path.join(out,'organ-source-audit.json'));
+  console.log('CLINICAL PRIORITY AUDIT:',path.join(out,'clinical-priority-audit.json'));
   console.log('SOURCE RECOVERY REPORT:',path.join(out,'source-recovery-report.json'));
   console.log('Z-ANATOMY SOURCE PREVIEW READY:',base+'/anatomy/viewer/?models=bp3d&privateExpansion=1');
   console.log('Source-native independent body; no overlay, no production changes. Public release NO_GO.');
