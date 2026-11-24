@@ -88,6 +88,7 @@ def organ_identity(value, existing=None):
         # Never turn a vessel, nerve or unrelated catalog entry into an organ.
         if existing.get('source') not in {'visceral','cardiovascular'}: return None
         if existing['source']=='cardiovascular' and existing.get('group')!='heart': return None
+        if existing['source']=='cardiovascular' and re.search(r'\b(artery|arteries|vein|veins|arterial|venous)\b',n): return None
         if exact and exact['source']==existing['source']:
             return {**existing,**exact}
         if existing['source']=='visceral' or existing.get('group')=='heart':
