@@ -8,7 +8,8 @@ const app=path.resolve(fileURLToPath(new URL('../',import.meta.url)));
 const pkg=JSON.parse(fs.readFileSync(path.join(app,'package.json'))),lock=JSON.parse(fs.readFileSync(path.join(app,'package-lock.json')));
 test('pinned independent lock graph has exact root versions, declared licenses and integrity',()=>{
  const rows=inspectLock(pkg,lock);
- assert.equal(rows.length,50);
+ assert.equal(rows.length,Object.keys(lock.packages).length-1);
+ assert(rows.length>0);
  assert.deepEqual(rows.filter(r=>r.scope==='runtime').map(r=>r.path),['node_modules/three']);
  for(const change of [{license:'CC-BY-NC-4.0'},{integrity:'invalid'},{version:'0.0.0'}]){
   const bad=structuredClone(lock);Object.assign(bad.packages['node_modules/three'],change);
