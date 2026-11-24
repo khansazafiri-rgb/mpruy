@@ -67,9 +67,9 @@ export function tissueClass({ name = '', system = '', group = '' } = {}) {
   }
   if (system === 'nervous') {
     if (/\b(central canal|ventricular system|cavity|ventricle|ventricles)\b/.test(words)) return 'unknown';
-    if (/\b(nerve|nerves|nerve plexus|ganglion|ganglia|nerve root)\b/.test(words)) return 'nerve';
-    if (/\b(spinal cord|medulla spinalis)\b/.test(words)) return 'spinalCord';
-    if (/\b(brain|forebrain|midbrain|hindbrain|cerebrum|cerebral|cerebellum|cerebellar|thalamus|hypothalamus|pons|medulla oblongata|fornix)\b/.test(words)) return 'brain';
+    if (/\b(spinal cord|medulla spinalis|conus medullaris)\b/.test(words) && !/\b(nerve|nerve root|ganglion)\b/.test(words)) return 'spinalCord';
+    if (/\b(nerve|nerves|plexus|ganglion|ganglia|sympathetic trunk|cauda equina|nerve root)\b/.test(words)) return 'nerve';
+    if (/\b(brain|brainstem|brain stem|forebrain|midbrain|hindbrain|cerebrum|cerebral|cerebellum|cerebellar|thalamus|hypothalamus|pons|medulla oblongata|fornix|corpus callosum|hippocampus|amygdala|caudate nucleus|putamen|globus pallidus|internal capsule|external capsule|insula|gyrus|optic chiasm|optic tract|olfactory bulb|olfactory tract|frontal lobe|parietal lobe|temporal lobe|occipital lobe)\b/.test(words)) return 'brain';
     return 'unknown';
   }
   if (system === 'lymphatic') {
