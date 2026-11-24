@@ -89,7 +89,7 @@ function sourcePlugin(applied,hraEnabled){
 async function main(){
  assert.equal(fs.realpathSync(privateRoot),privateRoot);
  const bin=blender();
- execFileSync(process.execPath,['--test',path.join(root,'scripts/z-anatomy-private-runtime.test.mjs')],{stdio:'inherit'});
+ execFileSync(process.execPath,['--test',path.join(root,'scripts/z-anatomy-private-runtime.test.mjs'),path.join(root,'scripts/z-anatomy-private-integration.test.mjs')],{stdio:'inherit'});
  execFileSync(bin,['--background','--factory-startup','--disable-autoexec','--python-exit-code','1','--python',path.join(root,'scripts/test-original-z-anatomy-export.py')],{stdio:'inherit'});
  const sourceDir=path.join(privateRoot,'z-anatomy-official-'+revision.slice(0,12));fs.mkdirSync(sourceDir,{recursive:true});assert.equal(fs.realpathSync(sourceDir),sourceDir);
  const archive=await acquire(sourceDir,'Z-Anatomy.zip',200*1024*1024),license=await acquire(sourceDir,'License.txt',256*1024);
