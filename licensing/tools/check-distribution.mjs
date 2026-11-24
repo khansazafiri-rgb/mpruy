@@ -46,7 +46,14 @@ function glbStructures(buf) {
   const len = buf.readUInt32LE(12), type = buf.readUInt32LE(16);
   if (type !== 0x4e4f534a) return null;
   const json = JSON.parse(buf.subarray(20, 20 + len).toString('utf8'));
-  return (json.nodes || []).map((n) => ({ name: n.extras?.za_name || null, system: n.extras?.za_system || null }));
+  // Source-identity gate: a quarantined BodyParts3D GLB must stay private even when
+  // moved into models/ under an innocuous filename with valid glTF geometry.
+  const extras=json.extras||{},origin=extras.source||'';
+  const candidateOnly=extras.reviewStatus==='candidate-only'||
+    (origin==='Official BodyParts3D 4.0' && extras.provenance?.approvedForDistribution===false)||
+    extras.provenance?.coordinateFrame==='raw-official-OBJ-not-registered';
+  return { nodes:(json.nodes||[]).map(n=>({name:n.extras?.za_name||null,
+      system:n.extras?.za_system||null})), candidateOnly };
 }
 
 function* walk(dir, base = dir) {
@@ -70,7 +77,8 @@ export function scanDistribution(root, ctx = loadPolicy()) {
     if (ctx.hashes.has(hash)) problems.push(`${rel}: identical to withdrawn file ${ctx.hashes.get(hash)}`);
     if (/\.glb$/i.test(rel)) {
       let nodes = null; try { nodes = glbStructures(buf); } catch (e) { problems.push(`${rel}: unreadable GLB (${e.message})`); }
-      for (const n of nodes || []) {
+      if (nodes?.candidateOnly) problems.push(rel+': unapproved BodyParts3D source-identity GLB cannot be publicly redistributed');
+      for (const n of nodes?.nodes || []) {
         if (n.name && ctx.structures.has(n.name)) problems.push(`${rel}: contains quarantined structure "${n.name}"`);
         else if (n.system && ctx.systems.has(n.system)) { problems.push(`${rel}: contains nodes of quarantined system "${n.system}" (e.g. "${n.name}")`); break; }
       }
