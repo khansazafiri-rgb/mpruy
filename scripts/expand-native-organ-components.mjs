@@ -115,8 +115,12 @@ export async function expandNativeOrganComponents({root,privateRoot,pack,inv,out
    if(prior){
     // Some roles independently describe the same surface; require all
     // source identity, byte and geometry fields to agree, not role metadata.
-    for(const k of ['elementId','sourceSha256','geometrySha256','publisherElementConceptId','publisherElementRepresentationId','geometryStatus'])
+    for(const k of ['elementId','sourceSha256','geometrySha256','publisherElementConceptId','publisherElementRepresentationId'])
      assert.equal(prior[k],g[k],'Conflicting source evidence '+g.id);
+    // Role-specific eligibility differs for some identical source elements.
+    // A conflict in eligibility does not invalidate unrelated anatomy; refuse
+    // the disputed element for NEW mounting and retain the frozen base.
+    if(prior.geometryStatus!==g.geometryStatus)map.set(g.id,{...prior,geometryStatus:'BLOCKED_SCOPE_CONFLICT'});
    }else map.set(g.id,g);
   }
  }
