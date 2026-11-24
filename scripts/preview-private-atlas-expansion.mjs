@@ -12,6 +12,7 @@ import { parseOfficialNames, parseOfficialElements } from '../licensing/tools/pr
 import { summarizeGeometry, diagnoseGeometry } from '../apps/4d-lab/tools/review-bp3d-candidate.mjs';
 import { createLabPreviewServer, checkBuilds, ROOTS } from './preview-4d-lab.mjs';
 import { expandPartOf } from './bp3d-partof-private-expansion.mjs';
+import { stagePublishedHra, coverageReport } from './atlas-onepass-supplementary.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const privateRoot = path.join(root, 'local-data/licensing-quarantine');
@@ -218,14 +219,30 @@ async function main() {
     converted.push(e);added.push({key,name,system,flags:diagnostics.flags});
     oldNames.add(name);oldIds.add(id);identities.add(key);r.sourceFJ.forEach(fj=>usedFJ.add(fj));
   }
-  const partOf=process.env.MEDCOEL_BP3D_PARTOF==='1' ? await expandPartOf({privateRoot,source,pack,catalog,systems,converted,oldNames,oldIds,usedFJ,identities,io}) : null;
+  const onePass=process.env.MEDCOEL_ATLAS_ONE_PASS==='1';
+  const expansionOptions={privateRoot,source,pack,catalog,systems,converted,oldNames,oldIds,usedFJ,identities,io};
+  const isaSupplement=onePass ? await expandPartOf({...expansionOptions,tree:'isa'}) : null;
+  const partOf=(onePass||process.env.MEDCOEL_BP3D_PARTOF==='1') ? await expandPartOf(expansionOptions) : null;
+  let hra=null;
+  if(onePass){
+    try{hra=await stagePublishedHra(privateRoot);}
+    catch(error){hra={status:'BLOCKED',error:String(error.message),assets:[],blocked:[],atlasMounted:false};}
+  }
+  const coverage=coverageReport(catalog,converted);
+  fail(!coverage.duplicateIds.length&&!coverage.systemMismatch.length,'Private source catalogue identity QC failed');
+  write(path.join(out,'coverage-report.json'),coverage);
+  const summarizeTree=t=>t&&{status:t.status,error:t.error||null,exactCandidateCount:t.exactCandidateCount||0,added:t.added.length,frame:t.frame};
   const perSystem={};
   for(const e of converted)perSystem[e.system]=(perSystem[e.system]||0)+1;
   fail((perSystem.nervous||0)>0,'No independent nervous candidate available');
   const report={baseline:old.converted.length,staged:staged.length,verified:verified.length,
-    added:added.length+(partOf?.added.length||0),isaStagedAdded:added.length,partOfAdded:partOf?.added.length||0,
-    partOf:partOf&&{status:partOf.status,error:partOf.error||null,exactCandidateCount:partOf.exactCandidateCount||0,frame:partOf.frame,added:partOf.added},
-    total:converted.length,perSystem,retained,addedEntries:[...added,...(partOf?.added||[])],
+    added:added.length+(isaSupplement?.added.length||0)+(partOf?.added.length||0),
+    isaStagedAdded:added.length,isaSupplementAdded:isaSupplement?.added.length||0,partOfAdded:partOf?.added.length||0,
+    isaSupplement:summarizeTree(isaSupplement),partOf:summarizeTree(partOf),
+    hra:hra&&{status:hra.status,discovered:hra.discovered||0,staged:hra.assets?.length||0,blocked:hra.blocked?.length||0,error:hra.error||null,atlasMounted:false},
+    coverage:{catalog:coverage.catalogCount,mapped:coverage.mappedCatalog,missing:coverage.missingCatalog,extraSourceLabels:coverage.extraSourceLabels,perSystem:coverage.perSystem},
+    total:converted.length,perSystem,retained,addedEntries:[...added,...(isaSupplement?.added||[]),...(partOf?.added||[])],
+    onePass,releaseBlockers:['Exact source-version rights and Atlas viewer code rights unresolved','Clinical identity/geometry and visual browser QA not completed','HRA has no verified registration to BodyParts3D frame'],
     atlasIntegration:'PRIVATE_BUILD_PENDING',geometryAnatomyValidated:false,publicRelease:'NO_GO',out};
   write(path.join(out,'integration-report.json'),report);
   const combined={...old,kind:'official-bp3d-private-expansion-preview',converted,provisionalSource:true,
@@ -273,6 +290,9 @@ async function main() {
     console.log('\nPRIVATE ATLAS PREVIEW READY: '+converted.length+' candidates; '+perSystem.nervous+' nervous.');
     console.log(report.preview);
     console.log('Report: '+path.join(out,'integration-report.json'));
+    console.log('Coverage: '+path.join(out,'coverage-report.json'));
+    console.log('Original catalogue: '+coverage.mappedCatalog+'/'+coverage.catalogCount+'; extra source labels: '+coverage.extraSourceLabels);
+    if(onePass)console.log('HRA private staged: '+(hra?.assets?.length||0)+'; HRA mounted: 0 (registration pending)');
     console.log('Public release NO_GO; visual/anatomical QA pending. Ctrl+C stops only this preview.');
   }catch(e){server.close();throw e;}
 }
