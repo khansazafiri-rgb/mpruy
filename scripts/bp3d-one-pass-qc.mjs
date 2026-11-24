@@ -135,7 +135,16 @@ export async function onePass({preview=false,limitNew=120,runTests=true,root=ROO
       '\nPUBLIC DEPLOYMENT: '+result.publicRelease+
       '\nReport: '+path.join(PATHS.qc,'readiness.json')+
       '\nOriginal Atlas preview: '+PREVIEW+'\n');
-    if(preview)runCommand('npm',['run','preview:4d-lab'],result.steps);
+    if(preview){
+      // This is a long-lived interactive LOCAL server: Ctrl-C ends viewing, not the completed QC.
+      const server=spawnSync('npm',['run','preview:4d-lab'],{cwd:ROOT,stdio:'inherit',
+        env:{...process.env,MEDCOEL_BP3D_PROVISIONAL:'1'}});
+      if(server.error||server.status!==0 && server.signal!=='SIGINT'){
+        console.error('Local preview could not start or stopped unexpectedly. The private QC report remains valid.');
+        result.previewRuntime='STOPPED_OR_FAILED';
+      }else result.previewRuntime='STOPPED';
+      writeReport(result);
+    }
     return result;
   }catch(error){
     result.privatePreview='BLOCKED';
