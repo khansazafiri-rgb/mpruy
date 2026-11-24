@@ -510,7 +510,9 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
     vertebralSourcePreview:vertebralExact,
     vertebralSourceSelection:vertebralExact?vertebralInfo.summary:null,
     focusedSourceSelection:focusShortlist?focusInfo.summary:null,
-    provisionalSelection:provisional?{
+    // All-systems is a provisional *rights state*, not the separate
+    // provisional 584-model selection algorithm. Its selector is allSystemsInfo.
+    provisionalSelection:provisional&&!allSystemsExact?{
       includePromising,limitNew,selected:provisionalInfo.summary.provisionalSelected,
       rejected:provisionalInfo.summary.reviewRejected,approved:0}:null,
     sourceHashes:{namesSha256:sha(namesBytes),elementsSha256:sha(elementBytes),
