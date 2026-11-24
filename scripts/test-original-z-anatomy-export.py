@@ -32,6 +32,29 @@ a=neural_audit([{'name':'Optic nerve.l','type':'CURVE'}],
 assert next(r for r in a['rows'] if r['name']=='left optic nerve')['status']=='EXPORTED_CANDIDATE'
 assert next(r for r in a['rows'] if r['name']=='right optic nerve')['status']=='NO_EXACT_SOURCE_OBJECT'
 assert a['clinicalValidation'] is False
+# Lymphatic coverage is not inferred from nodal presence.
+from z_anatomy_lymphatic_identity import lymphatic_identity, lymphatic_audit, canonical as lymphatic_key
+assert lymphatic_identity('ductus thoracicus')['lymphaticKind']=='trunk'
+assert lymphatic_identity('cisterna chyli')['regions']==['abdomen']
+assert lymphatic_identity('jugular lymphatic trunk.l')['regions']==['headNeck']
+assert lymphatic_identity('lymphatic vessels of left leg')['lymphaticKind']=='vessel'
+assert lymphatic_identity('left axillary lymph nodes')['lymphaticKind']=='node'
+assert lymphatic_identity('left lobe of thymus')['lymphaticKind']=='organ'
+assert lymphatic_identity('lumbar trunk') is None
+assert lymphatic_identity('jugular vein.l') is None
+assert lymphatic_identity('artery of lymph node') is None
+assert lymphatic_key('(Anterior tibial node).l')=='left anterior tibial node'
+assert lymphatic_key('(Anterior tibial node).r')!='left anterior tibial node'
+meta={'source':'lymphatic','group':'lymphatic','regions':['headNeck'],'layer':0}
+assert lymphatic_identity('Node of arch of azygos vein',meta)['lymphaticKind']=='node'
+a=lymphatic_audit({'Submandibular nodes.l':meta},
+    [{'name':'Submandibular nodes.l','type':'MESH'}],
+    [{'name':'Submandibular nodes.l','system':'lymphatic','id':'fixture','privateAtlasMeta':{'lymphaticKind':'node'}}],[],[])
+assert a['exportedByKind']['node']==1 and not a['hasExportedVesselCandidates']
+assert next(r for r in a['rows'] if r['name']=='thoracic duct')['status']=='NO_EXACT_SOURCE_OBJECT'
+assert not a['networkContinuityValidated']
+a=lymphatic_audit({},[{'name':'thoracic duct','type':'CURVE'}],[],[{'name':'thoracic duct','reason':'no evaluated surface'}],[])
+assert next(r for r in a['rows'] if r['name']=='thoracic duct')['status']=='EXPORT_BLOCKED'
 # Cardiovascular identity must override the name of the supplied organ.
 assert mod.vascular_group('Circumflex artery of heart','heart')=='arterial'
 assert mod.vascular_group('Anterior interventricular artery','heart')=='arterial'
