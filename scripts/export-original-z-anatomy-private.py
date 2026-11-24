@@ -7,6 +7,7 @@ from mathutils import Vector
 # Resolve MEDCOEL's own sibling module, never source-archive Python.
 sys.path.insert(0,str(pathlib.Path(__file__).resolve().parent))
 from z_anatomy_neural_identity import neural_identity, neural_audit, canonical as neural_key
+from z_anatomy_lymphatic_identity import lymphatic_identity, lymphatic_audit, canonical as lymphatic_key
 
 def require(ok, message):
     if not ok:
@@ -25,10 +26,11 @@ def extra_identity(label):
     # Exact named source structures, never infer connections or create tubes.
     neural=neural_identity(label)
     if neural: return neural
+    lymphatic=lymphatic_identity(label)
+    if lymphatic: return lymphatic
     side=re.match(r'^(left|right) (.+)$',label)
     base=side.group(2) if side else label
     groups=[
-      ('lymphatic','lymphatic',{'thoracic duct','right lymphatic duct','lymphatic duct','cisterna chyli','jugular lymphatic trunk','subclavian lymphatic trunk','bronchomediastinal lymphatic trunk','lumbar lymphatic trunk','intestinal lymphatic trunk','lymphatic vessel'}),
       ('visceral','endocrine',{'pituitary gland','hypophysis','adenohypophysis','neurohypophysis','pineal gland','thyroid gland','parathyroid gland','superior parathyroid gland','inferior parathyroid gland','adrenal gland','suprarenal gland'}),
       ('visceral','respiratory',{'lung','larynx','trachea','main bronchus','principal bronchus','pleura','visceral pleura','parietal pleura'}),
       ('cardiovascular','arterial',{'common carotid artery','internal carotid artery','external carotid artery','vertebral artery','superior thyroid artery','ascending pharyngeal artery','lingual artery','facial artery','occipital artery','posterior auricular artery','maxillary artery','superficial temporal artery','basilar artery','anterior communicating artery','posterior communicating artery','middle cerebral artery','anterior cerebral artery','posterior cerebral artery'}),
@@ -40,10 +42,6 @@ def extra_identity(label):
         if group=='endocrine': regions=['abdomen'] if 'adrenal' in base or 'suprarenal' in base else ['headNeck']
         elif group=='respiratory': regions=['headNeck','thorax'] if base in {'larynx','trachea'} else ['thorax']
         elif group in {'arterial','venous'}: regions=['headNeck','thorax']
-        elif group=='lymphatic':
-            if base=='cisterna chyli': regions=['abdomen']
-            elif base=='thoracic duct': regions=['abdomen','thorax','headNeck']
-            elif 'jugular' in base: regions=['headNeck']
         return {'source':system,'group':group,'layer':0,'regions':regions}
     return None
 
@@ -139,8 +137,10 @@ def main():
     archive,licensefile,catalogfile,out=map(pathlib.Path,args[:4]); revision=args[4]
     require(re.fullmatch('[a-f0-9]{40}',revision),'Unpinned source')
     require(out.is_dir() and not out.is_symlink() and 'licensing-quarantine' in out.parts,'Private output required')
-    cat=json.loads(catalogfile.read_text()); catalog={}
-    for n,m in cat.items(): catalog.setdefault(key(n),[]).append((n,m))
+    cat=json.loads(catalogfile.read_text()); catalog={}; lymph_catalog={}
+    for n,m in cat.items():
+        catalog.setdefault(key(n),[]).append((n,m))
+        if m.get('source')=='lymphatic': lymph_catalog.setdefault(lymphatic_key(n),[]).append((n,m))
     source_license=licensefile.read_text(encoding='utf-8',errors='replace')
     require('CC-BY-SA 4.0' in source_license or 'Attribution-ShareAlike 4.0' in source_license,'Unexpected publisher license notice')
     source_hash=digest(archive)
@@ -161,7 +161,8 @@ def main():
     for obj in scene.objects:
         type_counts[obj.type]=type_counts.get(obj.type,0)+1
         source_inventory.append({"name":obj.name,"type":obj.type,"collections":[c.name for c in obj.users_collection],
-            "parent":obj.parent.name if obj.parent else None,"modifiers":[m.type for m in obj.modifiers]})
+            "parent":obj.parent.name if obj.parent else None,"modifiers":[m.type for m in obj.modifiers],
+            "curveEvidence":({"splines":len(obj.data.splines),"bevelDepth":float(obj.data.bevel_depth),"bevelObject":obj.data.bevel_object.name if obj.data.bevel_object else None,"extrude":float(obj.data.extrude)} if obj.type=="CURVE" else None)})
         if obj.type in {'MESH','CURVE','SURFACE'}: byname.setdefault(key(obj.name),[]).append(obj)
     write(out/'source-object-inventory.json',source_inventory)
     print("SOURCE OBJECT TYPES",type_counts,flush=True)
@@ -181,11 +182,13 @@ def main():
             except RuntimeError: pass
     bpy.context.view_layer.update()
     deps=bpy.context.evaluated_depsgraph_get()
-    neural_names={}
+    neural_names={}; lymph_names={}
     for label in byname:
         if neural_identity(label): neural_names.setdefault(neural_key(label),[]).append(label)
+        if lymphatic_identity(label) or lymphatic_key(label) in lymph_catalog: lymph_names.setdefault(lymphatic_key(label),[]).append(label)
     for label,objects in sorted(byname.items()):
         matches=catalog.get(label,[])
+        if not matches: matches=lymph_catalog.get(lymphatic_key(label),[])
         if restricted.search(label):
             excluded.append({'name':label,'reason':'known restricted source identity'});continue
         if len(matches)==1:
@@ -199,6 +202,10 @@ def main():
             blocked.append({"name":name,"reason":"ambiguous source object name"});continue
         if meta['source']=='nervous' and len(neural_names.get(neural_key(label),[]))>1:
             blocked.append({'name':name,'reason':'ambiguous synonymous source objects; no automatic merging'});continue
+        if meta['source']=='lymphatic':
+            if len(lymph_names.get(lymphatic_key(label),[]))>1:
+                blocked.append({'name':name,'reason':'ambiguous synonymous lymphatic source objects; no automatic merging'});continue
+            meta=lymphatic_identity(name,meta)
         obj=objects[0]
         meta=vascular_meta(name,meta)
         try:
@@ -251,6 +258,9 @@ def main():
     neural_report=neural_audit(source_inventory,converted,blocked,excluded)
     write(out/'neural-source-audit.json',neural_report)
     print('NEURAL SOURCE COVERAGE',neural_report['summary'],flush=True)
+    lymph_report=lymphatic_audit(cat,source_inventory,converted,blocked,excluded)
+    write(out/'lymphatic-source-audit.json',lymph_report)
+    print('LYMPHATIC SOURCE COVERAGE',lymph_report['exportedByKind'],flush=True)
     write(out/'source-recovery-report.json',{"total":len(converted),"groups":groups,"emptyGroups":sorted(({m["group"] for m in cat.values()}|{"nervous"})-set(groups)),"sourceObjectTypes":type_counts,"convertedObjectTypes":{t:sum(e["sourceObjectType"]==t for e in converted) for t in type_counts},"unmatched":unmatched,"excluded":excluded,"skeletonHeightMetres":height,"blocked":blocked,
         "missingCatalogue":[n for n in cat if n not in present],"sourceRevision":revision,"publicRelease":"NO_GO","clinicalValidation":False})
     print("Z-ANATOMY SOURCE EXPORT COMPLETE",len(converted),groups,flush=True)
