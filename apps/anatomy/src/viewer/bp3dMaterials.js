@@ -6,6 +6,9 @@ export const TISSUE_MATERIALS = Object.freeze({
   bone: { color: 0xe9dcc3, roughness: 0.80 },
   muscle: { color: 0xad4e50, roughness: 0.78 },
   fascia: { color: 0xd4bda9, roughness: 0.83 },
+  adipose: { color: 0xf0cf65, roughness: 0.78 },
+  mesentery: { color: 0xe4c58a, roughness: 0.82 },
+  peritoneum: { color: 0xe2c8b0, roughness: 0.83 },
   cartilage: { color: 0x9ebfc8, roughness: 0.72 },
   ligament: { color: 0xc4b28f, roughness: 0.83 },
   tendon: { color: 0xe1d1b4, roughness: 0.79 },
@@ -44,6 +47,13 @@ export const NEUTRAL_MATERIAL = Object.freeze({ color: 0xc8cbd0, roughness: 0.85
 
 export function tissueClass({ name = '', system = '', group = '' } = {}) {
   const words = String(name).toLowerCase().replace(/[^a-z]+/g, ' ');
+  // Explicit fat and serosal tissue before intestinal/organ rules.
+  // Do not recolor vessels, nerves or lymph nodes simply because they traverse fat.
+  if (!/\b(artery|arteries|vein|veins|nerve|nerves|lymph node|lymph nodes|lymphatic vessel)\b/.test(words)) {
+    if (/\b(adipose tissue|adipose body|fat pad|fat pads|fat body|fatty tissue|subcutaneous fat|visceral fat|perirenal fat|pararenal fat|epicardial fat|orbital fat|buccal fat|fat)\b/.test(words)) return 'adipose';
+    if (/\b(mesentery|mesenterium|mesocolon|omentum|omenta|mesoappendix)\b/.test(words)) return 'mesentery';
+    if (/\b(peritoneum|peritoneal fold|peritoneal folds|serosa)\b/.test(words)) return 'peritoneum';
+  }
   // Vessel identity wins over the name of the organ it supplies. Do not
   // interpret a generic vessel or a nerve canal as a named organ.
   if (system === 'cardiovascular') {

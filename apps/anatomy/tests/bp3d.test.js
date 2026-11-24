@@ -76,7 +76,14 @@ describe('materials', () => {
     ['liver','visceral','digestive','liver'],
     ['spleen','lymphatic','lymphatic','spleen'],
     ['lymph node','lymphatic','lymphatic','lymphatic'],
-    ['tendon of biceps brachii','muscular','muscular','tendon']
+    ['tendon of biceps brachii','muscular','muscular','tendon'],
+    ['mesentery of small intestine','visceral','digestive','mesentery'],
+    ['greater omentum','visceral','digestive','mesentery'],
+    ['perirenal fat','visceral','urinary','adipose'],
+    ['adipose tissue','muscular','muscular','adipose'],
+    ['artery of mesentery','cardiovascular','arterial','artery'],
+    ['lymph node of mesentery','lymphatic','lymphatic','lymphatic'],
+    ['parietal peritoneum','visceral','digestive','peritoneum']
   ])('assigns a distinct educational material to %s', (name,system,group,expected) => {
     expect(tissueClass({name,system,group})).toBe(expected);
   });
