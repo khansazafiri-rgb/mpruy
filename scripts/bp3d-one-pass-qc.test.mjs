@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readReleaseDecision} from './bp3d-one-pass-qc.mjs';
+import {readReleaseDecision,verifyReusableCandidateFolder} from './bp3d-one-pass-qc.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
 const policy={products:{
  'atlas-viewer':{status:'blocked',blockers:['NC application licence'],approvedBuilds:[],ownerOverride:{enabled:false}},
  '4d-lab':{status:'blocked',blockers:['unverified Atlas provenance'],approvedBuilds:[],ownerOverride:{enabled:false}}
@@ -32,4 +35,28 @@ test('even forged status=approved cannot bypass blocked anatomy/asset rights in 
  const r=readReleaseDecision({commercial:pretend,inventory:manifest,audit});
  assert.equal(r.publicRelease,'NO_GO');
  assert.ok(r.blockers.length>=2);
+});
+
+test('resume reuses ONLY a genuine local quarantined candidate batch, never public/dist folders',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'bp3d-resume-test-'));
+ try{
+   const privateRoot=path.join(root,'local-data','licensing-quarantine');
+   const src=path.join(privateRoot,'bp3d-qa-new-EXAMPLE1');
+   fs.mkdirSync(src,{recursive:true});
+   const manifest={provisionalSource:true,approvedForCommercialDistribution:false,
+     geometryRegisteredToMEDCOEL:false,legalStatus:'NOT-CLEARED',
+     summary:{failed:0},converted:[{name:'Femur.l'}]};
+   fs.writeFileSync(path.join(src,'inventory.json'),JSON.stringify(manifest));
+   const opts={privateRoot,repoRoot:root};
+   assert.equal(verifyReusableCandidateFolder(src,opts).target,src);
+   assert.equal(verifyReusableCandidateFolder(src,opts).inventory.provisionalSource,true);
+   for(const bad of [root,path.join(root,'dist'),path.join(privateRoot,'bp3d-batch'),
+     path.join(privateRoot,'bp3d-qa-new-EXAMPLE1','structures')])
+     assert.throws(()=>verifyReusableCandidateFolder(bad,opts),/direct bp3d-qa-new/);
+   const link=path.join(privateRoot,'bp3d-qa-new-LINK');
+   fs.symlinkSync(src,link,'dir');
+   assert.throws(()=>verifyReusableCandidateFolder(link,opts),/symlink|redirect/);
+   fs.writeFileSync(path.join(src,'inventory.json'),JSON.stringify({...manifest,approvedForCommercialDistribution:true}));
+   assert.throws(()=>verifyReusableCandidateFolder(src,opts),/rights-blocked/);
+ }finally{fs.rmSync(root,{recursive:true,force:true});}
 });
