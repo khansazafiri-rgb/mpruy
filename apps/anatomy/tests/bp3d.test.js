@@ -83,6 +83,13 @@ describe('materials', () => {
     ['adipose tissue','muscular','muscular','adipose'],
     ['artery of mesentery','cardiovascular','arterial','artery'],
     ['lymph node of mesentery','lymphatic','lymphatic','lymphatic'],
+    ['left lobe of thymus','lymphatic','lymphatic','lymphoidOrgan'],
+    ['palatine tonsil.l','lymphatic','lymphatic','lymphoidOrgan'],
+    ['node of arch of azygos vein','lymphatic','lymphatic','lymphatic'],
+    ['thoracic duct','lymphatic','lymphatic','lymphaticTrunk'],
+    ['cisterna chyli','lymphatic','lymphatic','lymphaticTrunk'],
+    ['left jugular lymphatic trunk','lymphatic','lymphatic','lymphaticTrunk'],
+    ['efferent lymphatic vessel','lymphatic','lymphatic','lymphaticVessel'],
     ['parietal peritoneum','visceral','digestive','peritoneum']
   ])('assigns a distinct educational material to %s', (name,system,group,expected) => {
     expect(tissueClass({name,system,group})).toBe(expected);
