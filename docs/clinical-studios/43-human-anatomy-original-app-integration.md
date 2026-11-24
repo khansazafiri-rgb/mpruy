@@ -4,7 +4,7 @@ Scope: restore the original MEDCOEL Human Anatomy experience, not a synthetic su
 
 ## Source-based root causes
 
-1. The production Caddy template was missing the independent /anatomy/4d-lab/ file-server route. A missing route falls through to the main web SPA and returns HTTP 200 HTML, which cannot boot the original 4D app.
+1. The public 4D Lab static route is not yet activated. A missing /anatomy/4d-lab/ mount falls through to the main web SPA and returns HTTP 200 HTML, which cannot boot the original 4D app. The production Caddyfile remains byte-identical to its security-reviewed version; the required original Lab route is prepared only in deploy/4d-lab.caddy.snippet and via a review-only Caddy candidate generator.
 2. The host viewer checked only whether /anatomy/viewer/ returned HTML. The SPA fallback also returns HTML, leading to false positives. It now verifies real data/atlas-catalog.json too.
 3. The host 4D Lab checked only a procedural phantom manifest. It now verifies the original Vite lab HTML and JavaScript, its default Atlas CT manifest and both CT and labels so that blocked/missing data do not look like a working full Lab.
 4. A new Caddy candidate script modifies only the 4D route, preserves other live paths, and enforces a 404 for restricted /anatomy/4d-lab/data/atlas/* assets until clearance.
