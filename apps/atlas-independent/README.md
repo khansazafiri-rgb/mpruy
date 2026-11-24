@@ -7,12 +7,12 @@ Status: PRIVATE PROTOTYPE / NO_GO for production. This branch does not change Ca
 Use the existing completed local preview folder, e.g. `z-anatomy-native-preview-Vf8Y1E` as reported in the owner's export log. No Blender re-export is required.
 
 ```sh
-npm install --prefix apps/atlas-independent --ignore-scripts
+npm ci --prefix apps/atlas-independent --ignore-scripts
 npm test --prefix apps/atlas-independent
 node scripts/preview-independent-atlas.mjs z-anatomy-native-preview-Vf8Y1E
 ```
 
-Only loopback port 4186 serves the candidate model allowlist. The prototype build and rights report live in licensing-quarantine, not a public directory. The inventory explicitly rejects non-loopback hosts. The independent app uses Three.js and its own newly authored UI and source module; do not characterize this as a completed clean-room or legal origin review. A dependency lockfile and exact third-party notices/SBOM must be reviewed before release.
+Only loopback port 4186 serves the candidate model allowlist. The prototype build and rights report live in licensing-quarantine, not a public directory. The inventory explicitly rejects non-loopback hosts. The independent app uses Three.js and its own newly authored UI and source module; do not characterize this as a completed clean-room or legal origin review. A pinned lockfile and browser-module audit are prepared; actual npm ci, build and independent ownership/legal review remain required.
 
 ## Rights review
 
