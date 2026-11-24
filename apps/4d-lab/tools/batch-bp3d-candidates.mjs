@@ -469,6 +469,18 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   mapping.report.catalogCount=plan.summary.catalogCount;
   mapping.report.directConvertedCount=converted.length;
   fs.writeFileSync(path.join(output,'inventory.json'),JSON.stringify(manifest,null,2)+'\n');
+  if(vertebralExact){
+    // Private, human-readable reasons for every skipped level. No clearance.
+    fs.writeFileSync(path.join(output,'vertebral-source-review.json'),
+      JSON.stringify({status:'EXACT_BONE_SOURCE_REVIEW_UNAPPROVED',
+        summary:vertebralInfo.summary,
+        candidates:vertebralInfo.candidates.map(x=>({atlasName:x.atlasName,
+          officialName:x.matches[0].officialName,
+          fmaId:x.matches[0].fmaId,bpId:x.matches[0].bpId,
+          fjIds:x.matches[0].elementFileIds,
+          approvedForDistribution:false,clinicalIdentityValidated:false})),
+        rejected:vertebralInfo.rejected},null,2)+'\n');
+  }
   fs.writeFileSync(path.join(output,'mapping-gaps.json'),
     JSON.stringify({schemaVersion:1,unmatchedCount:gaps.length,gaps},null,2)+'\n');
   fs.writeFileSync(path.join(output,'mapping-review.json'),JSON.stringify(mapping.report,null,2)+'\n');
