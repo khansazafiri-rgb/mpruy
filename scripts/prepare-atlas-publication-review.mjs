@@ -2,7 +2,7 @@
 // Never copies geometry into a public tree and never grants rights.
 import fs from 'node:fs';
 import path from 'node:path';
-import {createHash} from 'node:crypto';
+import {createHash,randomUUID} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
 import {inspectNativeGlb} from './z-anatomy-final-qc.mjs';
@@ -30,10 +30,23 @@ export function prepare(folder){
  const pack=path.join(dir,'pack'),inv=json(safe(pack,'inventory.json')),qc=json(safe(dir,'final-qc-report.json'));
  assert(inv.kind==='z-anatomy-original-source-private'&&inv.source.revision===revision&&inv.approvedForCommercialDistribution===false);
  assert(qc.geometry.verified===inv.converted.length&&qc.httpModelRoutesVerified===inv.converted.length&&qc.publicRelease==='NO_GO');
- const rows=[],ids=new Set();
+ assert(qc.httpSmoke==='PASS'&&qc.models===inv.converted.length&&qc.source?.archiveSHA256===inv.source.archiveSHA256&&qc.source?.blendSHA256===inv.source.blendSHA256,'Previous QC does not bind to this source');
+ const cached=path.join(quarantine,'z-anatomy-official-'+revision.slice(0,12));
+ assert(fs.realpathSync(cached)===cached,'Unsafe publisher cache');
+ const archive=safe(cached,'Z-Anatomy.zip'),notice=safe(cached,'License.txt');
+ const prefix='https://raw.githubusercontent.com/Z-Anatomy/Models-of-human-anatomy/'+revision+'/';
+ const noticeBytes=fs.readFileSync(notice),noticeDigest=sha(noticeBytes);
+ const pinned=fs.readFileSync(path.join(root,'licensing/atlas-publication/source-notices/z-anatomy.txt'));
+ assert(noticeBytes.equals(pinned),'Source license differs from pinned publisher notice');
+ for(const [file,name,digest] of [[archive,'Z-Anatomy.zip',inv.source.archiveSHA256],[notice,'License.txt',noticeDigest]]){
+  const receipt=json(safe(cached,name+'.receipt.json'));
+  assert(receipt.url===prefix+name&&receipt.revision===revision&&receipt.approvedForDistribution===false&&receipt.bytes===fs.statSync(file).size&&receipt.sha256===digest&&sha(fs.readFileSync(file))===digest,'Publisher receipt or byte hash mismatch: '+name);
+ }
+ const rows=[],ids=new Set(),names=new Set();
  for(const e of inv.converted){
   assert(/^za-[a-f0-9]{24}$/.test(e.id)&&!ids.has(e.id)&&e.modelPath==='./structures/'+e.id+'/model.glb');ids.add(e.id);
   const l=json(safe(pack,'structures/'+e.id+'/lineage.json')),b=fs.readFileSync(safe(pack,e.modelPath));
+  assert(!names.has(e.name)&&l.sourceLicenseNoticeSHA256===noticeDigest&&typeof l.sourceObjectName==='string'&&e.id==='za-'+sha(Buffer.from(l.sourceObjectName)).slice(0,24),'Source notice, name or object identity mismatch');names.add(e.name);
   assert(sha(b)===e.glbSha256);inspectNativeGlb(b,e,l);rows.push(reviewRow(e,l,inv.source));
  }
  const result={schema:1,source:inv.source,sourceNotice:'https://github.com/Z-Anatomy/Models-of-human-anatomy/blob/'+revision+'/License.txt',
@@ -41,7 +54,7 @@ export function prepare(folder){
   totals:{candidates:rows.length,priorityReview:rows.filter(r=>r.reasons.length).length,approved:0},rows,
   oldViewerCode:'CC-BY-NC-SA-4.0; blocked',publicRelease:'NO_GO',clinicalValidation:'PENDING'};
  const out=path.join(dir,'publication-rights-review.json');assert(!fs.existsSync(out)||fs.realpathSync(out)===out);
- fs.writeFileSync(out,JSON.stringify(result,null,2)+'\n',{mode:0o600});console.log('PRIVATE RIGHTS REVIEW:',out,JSON.stringify(result.totals));
+ const tmp=out+'.'+randomUUID()+'.tmp';fs.writeFileSync(tmp,JSON.stringify(result,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,out);console.log('PRIVATE RIGHTS REVIEW:',out,JSON.stringify(result.totals));
  return result;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))prepare(process.argv[2]||'');
