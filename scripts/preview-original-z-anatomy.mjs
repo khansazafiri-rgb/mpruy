@@ -59,11 +59,10 @@ function sourcePlugin(applied){
   }else if(p==='src/atlas/engine.js'){
    code=code.replaceAll('BodyParts3D (pratinjau lokal','Z-Anatomy (pratinjau lokal');
   }else if(p==='src/main.js'){
-   // Only the source-specific inventory remains searchable in this build.
-   // Apply after privateAtlasPlugin injected the local inventory block.
+   // Retain the old catalogue as the denominator for coverage; the existing
+   // bp3dHas filter prevents unavailable names from being loaded.
    const anchor='    systems.nervous=[];';
    assert.equal(code.split(anchor).length,2,'Private inventory transform missing');
-   code=code.replace(anchor,'    for (const k of Object.keys(catalog)) delete catalog[k];\n    for (const k of Object.keys(systems)) systems[k]=[];\n    systems.nervous=[];');
    code=code.replace("    if (!systems.nervous.length) throw new Error('No private nervous structures');","    // Absence is reported as unavailable, not filled by a legacy source.");
   }else return null;
   applied.add(p);return {code,map:null};
@@ -103,6 +102,13 @@ async function main(){
  const server=createServer((req,res)=>{
   if(req.headers.host!=='127.0.0.1:'+port||!['GET','HEAD'].includes(req.method)||!req.url?.startsWith('/anatomy/viewer/')){
    res.writeHead(403);res.end('Private loopback only');return;
+  }
+  const u=new URL(req.url,'http://127.0.0.1:'+port);
+  if(u.pathname.startsWith('/anatomy/viewer/models/')&&u.pathname.endsWith('.glb')){
+   res.writeHead(404);res.end('Legacy model unavailable in this source-specific preview');return;
+  }
+  if((u.pathname==='/anatomy/viewer/'||u.pathname==='/anatomy/viewer/index.html')&&(u.searchParams.get('models')!=='bp3d'||u.searchParams.get('privateExpansion')!=='1')){
+   res.writeHead(302,{Location:'/anatomy/viewer/?models=bp3d&privateExpansion=1'});res.end();return;
   }
   handler(req,res);
  });
