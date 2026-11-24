@@ -2,29 +2,45 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { checkLiveLab, LIVE_LAB_PATH, LIVE_LAB_MANIFEST } from './liveLab.mjs';
 
-const respond = (body, type, status = 200) => async () => new globalThis.Response(body, { status, headers: { 'content-type': type } });
+const html='<html><script type="module" crossorigin src="/anatomy/4d-lab/assets/index-Qc45Ab.js"></script></html>';
+const lab = (change = {}) => async (url, options={}) => {
+ if (url === LIVE_LAB_MANIFEST) return new globalThis.Response(
+  change.manifestBody ?? JSON.stringify({schema:'medcoel.anatomy.v1',synthetic:true}),
+  {status:change.manifestStatus||200,headers:{'content-type':change.manifestType||'application/json'}});
+ if (url === LIVE_LAB_PATH) return new globalThis.Response(
+  change.htmlBody ?? html,
+  {status:change.htmlStatus||200,headers:{'content-type':change.htmlType||'text/html'}});
+ if (url === '/anatomy/4d-lab/assets/index-Qc45Ab.js') {
+  assert.equal(options.method, 'HEAD');
+  return new globalThis.Response('',{status:change.jsStatus||200,
+   headers:{'content-type':change.jsType||'text/javascript'}});
+ }
+ throw Error('Unexpected request: '+url);
+};
 test('live lab is mounted outside the SPA at /anatomy/4d-lab/', () => {
-  assert.equal(LIVE_LAB_PATH, '/anatomy/4d-lab/');
-  assert.ok(LIVE_LAB_MANIFEST.startsWith(LIVE_LAB_PATH));
+ assert.equal(LIVE_LAB_PATH, '/anatomy/4d-lab/');
+ assert.ok(LIVE_LAB_MANIFEST.startsWith(LIVE_LAB_PATH));
 });
-test('accepts only the real lab manifest (never the SPA fallback)', async () => {
-  assert.deepEqual(await checkLiveLab(respond(JSON.stringify({ schema: 'medcoel.anatomy.v1', synthetic: true }), 'application/json')), { synthetic: true });
-  await assert.rejects(checkLiveLab(respond('<!doctype html>', 'text/html')), /belum diarahkan/);
-  await assert.rejects(checkLiveLab(respond('nope', 'text/plain', 404)), /HTTP 404/);
-  await assert.rejects(checkLiveLab(respond('{"schema":"x"}', 'application/json')), /tidak dikenali/);
+test('real 4D Lab requires manifest, independent HTML and hashed simulator JS', async () => {
+ assert.deepEqual(await checkLiveLab(lab()), {synthetic:true});
+ await assert.rejects(checkLiveLab(lab({manifestType:'text/html'})),/belum diarahkan/);
+ await assert.rejects(checkLiveLab(lab({manifestStatus:404})),/HTTP 404/);
+ await assert.rejects(checkLiveLab(lab({manifestBody:'{"schema":"x"}'})),/tidak dikenali/);
+ await assert.rejects(checkLiveLab(lab({htmlBody:'<!doctype html><div id="root"></div>'})),/bukan build asli/);
+ await assert.rejects(checkLiveLab(lab({htmlStatus:404})),/Halaman aplikasi 4D Lab/);
+ await assert.rejects(checkLiveLab(lab({jsStatus:404})),/JavaScript simulator tidak tersedia/);
+ await assert.rejects(checkLiveLab(lab({jsType:'text/html'})),/JavaScript simulator tidak tersedia/);
 });
-
-test('liveLabAvailability: ready when installed, missing when absent or answered by the SPA fallback; one check is shared', async () => {
-  const { liveLabAvailability } = await import('./liveLab.mjs');
-  const ok = async () => ({ ok: true, headers: { get: () => 'application/json' }, json: async () => ({ schema: 'medcoel.anatomy.v1' }) });
-  const spa = async () => ({ ok: true, headers: { get: () => 'text/html' }, json: async () => ({}) });
-  const gone = async () => ({ ok: false, status: 404, headers: { get: () => '' } });
-  let calls = 0; const counting = async (...a) => { calls++; return ok(...a); };
-  assert.equal(await liveLabAvailability(counting, { fresh: true }), 'ready');
-  assert.equal(await liveLabAvailability(counting), 'ready'); assert.equal(calls, 1);
-  assert.equal(await liveLabAvailability(spa, { fresh: true }), 'missing');
-  assert.equal(await liveLabAvailability(gone, { fresh: true }), 'missing');
-  assert.equal(await liveLabAvailability(async () => { throw new Error('offline'); }, { fresh: true }), 'missing');
+test('lab availability is shared, and missing/SPA/asset corruption are reported as missing', async () => {
+ const {liveLabAvailability}=await import('./liveLab.mjs');
+ let calls=0;
+ const counting=async(...args)=>{calls++;return lab()(...args);};
+ assert.equal(await liveLabAvailability(counting,{fresh:true}),'ready');
+ assert.equal(await liveLabAvailability(counting),'ready');assert.equal(calls,3);
+ assert.equal(await liveLabAvailability(lab({htmlBody:'<html>MEDCOEL SPA</html>'}),{fresh:true}),'missing');
+ assert.equal(await liveLabAvailability(lab({jsStatus:404}),{fresh:true}),'missing');
+ assert.equal(await liveLabAvailability(lab({manifestStatus:404}),{fresh:true}),'missing');
+ assert.equal(await liveLabAvailability(async()=>{throw Error('offline');},{fresh:true}),'missing');
 });
 
 test('liveLabSrc passes only the scenario/workspace deep link to the frame', async () => {
