@@ -84,9 +84,15 @@
     {
       "id": "hra",
       "kind": "models",
-      "license": null,
-      "commercialTerms": "per-asset-review-required",
-      "url": "https://humanatlas.io/"
+      "license": "CC-BY-4.0",
+      "commercialTerms": "publisher-library-terms-permit-with-attribution",
+      "url": "https://humanatlas.io/3d-reference-library?organ=All+Organs&version=10",
+      "status": "exact-object-version-and-author-attribution-review-required",
+      "evidence": [
+        "https://humanatlas.bihealth.org/mirror/collection/hra/v2.5/",
+        "https://3d.nih.gov/entries/20960?version=1"
+      ],
+      "note": "Library-level statement is not a receipt for each of the 80 cached GLBs; version-specific terms and object authors remain necessary."
     },
     {
       "id": "lymphatic-supplement",
