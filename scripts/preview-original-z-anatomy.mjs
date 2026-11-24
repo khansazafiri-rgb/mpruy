@@ -104,7 +104,7 @@ async function main(){
  write(path.join(out,'native-inventory-audit.json'),nativeAudit);
  console.log('NATIVE INVENTORY AUDIT',JSON.stringify({passed:nativeAudit.passed,groups:nativeAudit.groups,unavailableGroups:nativeAudit.unavailableGroups}));
  assert(nativeAudit.passed,'Native inventory metadata failed; see '+path.join(out,'native-inventory-audit.json'));
- const names=new Set(),ids=new Set();
+ const names=new Set(),ids=new Set(),modelRoutes=new Map();
  const geometry={verified:0,triangles:0,bytes:0};
  for(const e of inv.converted){
   assert(!names.has(e.name)&&!ids.has(e.id)&&e.approvedForDistribution===false);
@@ -113,6 +113,7 @@ async function main(){
   assert.equal(l.approvedForDistribution,false);assert.equal(l.generatedGLBSHA256,e.glbSha256);assert.equal(await hash(local(pack,e.modelPath)),e.glbSha256);
   const g=inspectNativeGlb(fs.readFileSync(local(pack,e.modelPath)),e,l);
   geometry.verified++;geometry.triangles+=g.triangles;geometry.bytes+=g.bytes;
+  modelRoutes.set('/anatomy/viewer/bp3d/'+e.modelPath.slice(2),{file:local(pack,e.modelPath),bytes:g.bytes});
   names.add(e.name);ids.add(e.id);
  }
  let hra=null;
@@ -143,14 +144,26 @@ async function main(){
   if(req.headers.host!=='127.0.0.1:'+port||!['GET','HEAD'].includes(req.method)||!req.url?.startsWith('/anatomy/viewer/')){
    res.writeHead(403);res.end('Private loopback only');return;
   }
-  const u=new URL(req.url,'http://127.0.0.1:'+port);
-  if(u.pathname.startsWith('/anatomy/viewer/models/')&&u.pathname.endsWith('.glb')){
-   res.writeHead(404);res.end('Legacy model unavailable in this source-specific preview');return;
+  let u,decoded;
+  try{u=new URL(req.url,'http://127.0.0.1:'+port);decoded=decodeURIComponent(u.pathname);}
+  catch{res.writeHead(400);res.end('Invalid path');return;}
+  if(decoded!==u.pathname||decoded.includes('\\')||decoded.includes('\0')||!decoded.startsWith('/anatomy/viewer/')){
+   res.writeHead(404);res.end('Private path not allowlisted');return;
+  }
+  const model=modelRoutes.get(decoded);
+  if(model){
+   // Serve only the pre-verified allowlist; do not read GLBs again on HEAD.
+   res.writeHead(200,{'Content-Type':'model/gltf-binary','Content-Length':model.bytes,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
+   if(req.method==='HEAD'){res.end();return;}
+   const stream=createReadStream(model.file);stream.on('error',()=>res.destroy());res.on('close',()=>stream.destroy());stream.pipe(res);return;
+  }
+  if(hra&&serveHraReference(req,res,hra))return;
+  if(/\.glb$/i.test(decoded)||/\/models\//i.test(decoded)||(/\/bp3d\//i.test(decoded)&&decoded!=='/anatomy/viewer/bp3d/inventory.json')){
+   res.writeHead(404);res.end('Model unavailable in this source-specific preview');return;
   }
   if((u.pathname==='/anatomy/viewer/'||u.pathname==='/anatomy/viewer/index.html')&&(u.searchParams.get('models')!=='bp3d'||u.searchParams.get('privateExpansion')!=='1')){
    res.writeHead(302,{Location:'/anatomy/viewer/?models=bp3d&privateExpansion=1'});res.end();return;
   }
-  if(hra&&serveHraReference(req,res,hra))return;
   handler(req,res);
  });
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve);});
@@ -171,6 +184,8 @@ async function main(){
   finalQc.httpModelRoutesVerified=routeCount;
   assert.equal(routeCount,inv.converted.length);
   assert.equal((await fetch(base+'/anatomy/viewer/bp3d/source.blend',{method:'HEAD'})).status,404);
+  assert.equal((await fetch(base+'/anatomy/viewer/%6dodels/muscular.glb',{method:'HEAD'})).status,404);
+  assert.equal((await fetch(base+'/anatomy/viewer/Models/muscular.GLB',{method:'HEAD'})).status,404);
   assert.equal((await fetch(base+'/anatomy/viewer/bp3d/structures/not-listed/model.glb',{method:'HEAD'})).status,404);
   console.log('VASCULAR SOURCE AUDIT:',path.join(out,'vascular-source-audit.json'));
   console.log('NEURAL SOURCE AUDIT:',path.join(out,'neural-source-audit.json'));
