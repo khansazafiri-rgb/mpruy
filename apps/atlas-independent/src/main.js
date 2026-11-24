@@ -29,16 +29,25 @@ function select(e){
  $('selectionActions').hidden=!e;
  $('info').textContent=e?e.name+' · '+groups[e.group]+' · kandidat belum disetujui':'';
 }
+// Bound concurrent network/decoder work across overlapping study changes.
+let activeLoads=0;const waitingLoads=[];
+async function acquireLoad(){
+ if(activeLoads<4){activeLoads++;return;}
+ await new Promise(resolve=>waitingLoads.push(resolve));
+}
+function releaseLoad(){const next=waitingLoads.shift();if(next)next();else activeLoads--;}
 async function load(e){
  if(cache.has(e.id))return;
  if(inflight.has(e.id))return inflight.get(e.id);
  const promise=(async()=>{
+  await acquireLoad();
   try{
+   if(!baseVisible(e,study))return;
    const g=await loader.loadAsync(base+e.path);
    g.scene.traverse(m=>{if(m.isMesh){for(const mat of [].concat(m.material||[]))mat?.dispose();m.material=materials[materialKind(e)];m.userData.entry=e;}});
    g.scene.userData.entry=e;g.scene.visible=visible(e);body.add(g.scene);cache.set(e.id,g.scene);failed.delete(e.id);
   }catch(error){failed.set(e.id,String(error.message||error));}
-  finally{inflight.delete(e.id);counts();}
+  finally{releaseLoad();inflight.delete(e.id);counts();}
  })();
  inflight.set(e.id,promise);return promise;
 }
@@ -63,7 +72,7 @@ renderer.domElement.addEventListener('pointerdown',ev=>down=[ev.clientX,ev.clien
 renderer.domElement.addEventListener('pointerup',ev=>{
  if(!down||Math.hypot(ev.clientX-down[0],ev.clientY-down[1])>5)return;
  const r=renderer.domElement.getBoundingClientRect();pointer.set((ev.clientX-r.left)/r.width*2-1,-(ev.clientY-r.top)/r.height*2+1);ray.setFromCamera(pointer,camera);
- const hit=ray.intersectObjects([...cache.values()].filter(o=>o.visible),true).find(x=>x.object.userData.entry);select(hit?.object.userData.entry||null);
+ const hit=ray.intersectObjects([...cache.values()].filter(o=>o.visible),true).find(x=>x.object.userData.entry);searchRevision++;select(hit?.object.userData.entry||null);
 });
 for(const [id,label] of Object.entries(regions)){const o=document.createElement('option');o.value=id;o.textContent=label;$('region').append(o);}
 function resetSelection(){searchRevision++;select(null);}
