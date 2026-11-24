@@ -3,6 +3,7 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {groups,regions,validateInventory,matchesRegion,searchEntries} from './inventory.js';
 import {layerLabels,initialStudy,baseVisible,displayed,buildAlternatives,revealEntry,materialKind} from './study-state.js';
+import {mountReferences} from './reference-viewer.js';
 import './style.css';
 const $=id=>document.getElementById(id);
 const base=import.meta.env.BASE_URL;
@@ -122,4 +123,5 @@ async function init(){
  try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');entries=validateInventory(await r.json(),location.hostname);byId=new Map(entries.map(e=>[e.id,e]));alternatives=buildAlternatives(entries);$('notice').textContent='Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);}
  catch(error){$('notice').textContent=error.message;counts();}
 }
+mountReferences(base);
 init();
