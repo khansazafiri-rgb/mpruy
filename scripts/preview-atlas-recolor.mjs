@@ -10,6 +10,7 @@ import {createRequire} from 'node:module';
 import {createServer} from 'node:http';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {privateAtlasPlugin} from './preview-private-atlas-expansion.mjs';
+import {expandNativeOrganComponents} from './expand-native-organ-components.mjs';
 import {createLabPreviewServer,checkBuilds,ROOTS} from './preview-4d-lab.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
@@ -59,10 +60,19 @@ async function verify(pack,inv){
 async function main(){
  const tree=process.argv[2]||'isa',explicit=process.argv[3];assert(['isa','partof'].includes(tree)&&process.argv.length<=4,'Usage: node scripts/preview-atlas-recolor.mjs [isa|partof] [native-folder]');
  assert(fs.realpathSync(privateRoot)===privateRoot,'Private source root is symlinked');
- const {pack,inv,d}=choose(tree,explicit);
- console.log('Reusing materialized '+tree.toUpperCase()+' models from '+d);
- const counts=await verify(pack,inv);console.log('Verified existing GLBs:',inv.converted.length,JSON.stringify(counts));
- const out=fs.mkdtempSync(path.join(privateRoot,'bp3d-recolor-preview-')),dist=path.join(out,'atlas-dist');
+ const original=choose(tree,explicit);
+ let {pack,inv}=original;
+ console.log('Reusing materialized '+tree.toUpperCase()+' models from '+original.d);
+ let counts=await verify(pack,inv);console.log('Verified existing GLBs:',inv.converted.length,JSON.stringify(counts));
+ const expand=process.env.MEDCOEL_EXPAND_ORGANS==='1';
+ const out=fs.mkdtempSync(path.join(privateRoot,expand?'bp3d-organ-expansion-preview-':'bp3d-recolor-preview-')),dist=path.join(out,'atlas-dist');
+ let expansion=null;
+ if(expand){
+  assert.equal(tree,'isa','Organ expansion requires IS-A original pack');
+  expansion=await expandNativeOrganComponents({root,privateRoot,pack,inv,out});
+  ({pack,inv,counts}=expansion);
+  await verify(pack,inv);
+ }
  const atlasReq=createRequire(path.join(atlasRoot,'package.json'));
  const {build}=await import(pathToFileURL(atlasReq.resolve('vite')).href);
  const applied=new Set();
@@ -74,7 +84,7 @@ async function main(){
  assert.equal(applied.size,4,'Original private viewer patches not applied');
  const roots={...ROOTS,atlas:dist,bp3d:pack},checked=await checkBuilds(roots);
  assert(checked.ok,'Preview preflight: '+checked.problems.join('; '));
- const port=Number(process.env.PORT||(tree==='isa'?4179:4180));
+ const port=Number(process.env.PORT||(expand?4181:tree==='isa'?4179:4180));
  assert(Number.isInteger(port)&&port>=1024&&port<=65535,'Invalid loopback port');
  const handle=createLabPreviewServer(roots).listeners('request')[0];
  const server=createServer((req,res)=>{
@@ -90,9 +100,10 @@ async function main(){
   assert.equal((await fetch(base+'/anatomy/viewer/models/nervous.glb',{method:'HEAD'})).status,404);
   const page=await fetch(base+'/anatomy/viewer/');assert(page.ok&&(await page.text()).includes('loadingOverlay'));
   const url=base+'/anatomy/viewer/?models=bp3d&privateExpansion=1';
-  fs.writeFileSync(path.join(out,'recolor-report.json'),JSON.stringify({tree,pack,count:inv.converted.length,perSystem:counts,url,geometryUnchanged:true,visualQA:'PENDING',publicRelease:'NO_GO'},null,2)+'\n');
+  fs.writeFileSync(path.join(out,'recolor-report.json'),JSON.stringify({tree,pack,count:inv.converted.length,perSystem:counts,url,geometryUnchanged:!expand,addedComponents:expansion?.report.added.length||0,visualQA:'PENDING',publicRelease:'NO_GO'},null,2)+'\n');
   console.log('RECOLOR PREVIEW READY:',url);
-  console.log('No geometry rebuilt; old preview unchanged. Visual QA pending; public release NO_GO.');
+  if(expansion)console.log('ORGAN EXPANSION REPORT:',path.join(out,'organ-component-report.json'));
+  console.log('Original preview unchanged. Visual QA pending; public release NO_GO.');
  }catch(e){server.close();throw e;}
 }
 main().catch(e=>{console.error('RECOLOR PREVIEW BLOCKED:',e.message);process.exitCode=1;});
