@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {findInterruptedAllSystemsBatch} from './bp3d-focused-onepass.mjs';
-import {runBatch} from '../apps/4d-lab/tools/batch-bp3d-candidates.mjs';
+import {runBatch,provisionalSelectionReport} from '../apps/4d-lab/tools/batch-bp3d-candidates.mjs';
 
 function createStaged(root,name,number,{finalized=false}={}){
  const folder=path.join(root,name),structures=path.join(folder,'structures');
@@ -45,4 +45,19 @@ test('staged geometry recovery is forbidden outside the all-systems private sour
   runBatch({resumeExistingOutput:true,provisional:true,allSystemsExact:false}),
   /restricted to the private all-systems/
  );
+});
+
+test('all-systems 702-model inventory does not dereference a null 584-model provisional selector',()=>{
+ assert.equal(provisionalSelectionReport({
+   provisional:true,allSystemsExact:true,provisionalInfo:null,
+   includePromising:true,limitNew:120
+ }),null);
+ assert.deepEqual(provisionalSelectionReport({
+   provisional:true,allSystemsExact:false,
+   provisionalInfo:{summary:{provisionalSelected:114,reviewRejected:2}},
+   includePromising:true,limitNew:120
+ }),{includePromising:true,limitNew:120,selected:114,rejected:2,approved:0});
+ assert.throws(()=>provisionalSelectionReport({
+   provisional:true,allSystemsExact:false,provisionalInfo:null
+ }),/selector missing/);
 });
