@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {pathToFileURL} from 'node:url';
-import {makeGlb} from '../apps/4d-lab/tools/build-bp3d-candidate.mjs';
+import {vascularMetadata,writeVascularCoverage} from './atlas-vascular-coverage.mjs';
 import {groupFor,layerFor,GROUPS} from '../apps/anatomy/src/atlas/catalog.js';
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const json=p=>JSON.parse(fs.readFileSync(p,'utf8'));
@@ -74,6 +74,34 @@ function groupOf(c){
  }
  return groupFor(c.name,c.system);
 }
+export function makeDirectGLB(parsedParts,lineage){
+ assert(parsedParts.length>0,'Empty direct geometry');
+ const doc={asset:{version:'2.0',generator:'MEDCOEL native multi-element assembler'},scene:0,scenes:[{nodes:[]}],
+  nodes:[],meshes:[],materials:[{name:'neutral candidate',doubleSided:true,pbrMetallicRoughness:{baseColorFactor:[0.8,0.82,0.84,1],metallicFactor:0,roughnessFactor:1}}],
+  buffers:[{byteLength:0}],bufferViews:[],accessors:[],extras:{reviewStatus:'candidate-only',provenance:lineage,coordinateFrame:'raw-official-OBJ-not-registered'}};
+ const bins=[];let offset=0,triangles=0;
+ for(const {id,parsed:p} of parsedParts){
+  assert(p.compatibilityVersion==='4.0'&&!p.degenerateTriangles&&p.vertices===p.triangles*3,'Invalid direct source geometry');
+  assert(p.positionBytes.length===p.vertices*12&&p.normalBytes.length===p.positionBytes.length,'Invalid Float32 data');
+  triangles+=p.triangles;assert(triangles<=1500000,'Combined triangle budget exceeded');
+  const access=[];
+  for(const [kind,bytes] of [['POSITION',p.positionBytes],['NORMAL',p.normalBytes]]){
+   const view=doc.bufferViews.length;doc.bufferViews.push({buffer:0,byteOffset:offset,byteLength:bytes.length,target:34962});bins.push(bytes);offset+=bytes.length;
+   const a={bufferView:view,componentType:5126,count:p.vertices,type:'VEC3'};
+   if(kind==='POSITION'){a.min=p.boundsNative.min;a.max=p.boundsNative.max;}
+   access.push(doc.accessors.length);doc.accessors.push(a);
+  }
+  const mesh=doc.meshes.length;doc.meshes.push({name:id,primitives:[{attributes:{POSITION:access[0],NORMAL:access[1]},material:0,mode:4}]});
+  doc.scenes[0].nodes.push(doc.nodes.length);doc.nodes.push({mesh,name:id,extras:{officialElementFileId:id}});
+ }
+ doc.buffers[0].byteLength=offset;
+ const j=Buffer.from(JSON.stringify(doc)),pad=Buffer.concat([j,Buffer.alloc((4-j.length%4)%4,32)]),binary=Buffer.concat(bins);
+ const out=Buffer.alloc(28+pad.length+binary.length);
+ out.writeUInt32LE(0x46546c67,0);out.writeUInt32LE(2,4);out.writeUInt32LE(out.length,8);
+ out.writeUInt32LE(pad.length,12);out.writeUInt32LE(0x4e4f534a,16);pad.copy(out,20);
+ const at=20+pad.length;out.writeUInt32LE(binary.length,at);out.writeUInt32LE(0x004e4942,at+4);binary.copy(out,at+8);
+ return out;
+}
 function unionBounds(parts){
  return {min:[0,1,2].map(i=>Math.min(...parts.map(g=>g.boundsNative.min[i]))),
  max:[0,1,2].map(i=>Math.max(...parts.map(g=>g.boundsNative.max[i])))};
@@ -105,7 +133,8 @@ export async function expandNativeOrganComponents({root,privateRoot,pack,inv,out
  for(const b of bundles){assert.equal(b.summary.baselineEvidence.inventorySha256,sha(invBytes));assert.equal(b.summary.baselineEvidence.coverageSha256,sha(coverageBytes));}
  const sources={isa:readSource(privateRoot,'isa'),partof:readSource(privateRoot,'partof')};
  assert.deepEqual(inv.sourceHashes,sources.isa.receipts,'Current native pack source receipt mismatch');
- const frame=sharedFrame(sources.isa,sources.partof,baselineReport);
+ let frame;
+ try{frame=sharedFrame(sources.isa,sources.partof,baselineReport);}catch(error){frame={compatible:false,reason:String(error.message)};console.warn('PART-OF remains separate:',frame.reason);}
  const byTree={isa:new Map(),partof:new Map()},concepts=new Map();
  for(const b of bundles){
   for(const c of b.concepts){if(!concepts.has(c.id))concepts.set(c.id,c);else assert.deepEqual(concepts.get(c.id),c,'Conflicting source concept records');}
@@ -125,7 +154,8 @@ export async function expandNativeOrganComponents({root,privateRoot,pack,inv,out
   }
  }
  const target=path.join(out,'pack');fs.mkdirSync(path.join(target,'structures'),{recursive:true});
- const converted=[...inv.converted],seenNames=new Set(),seenIds=new Set(),seenFma=new Set(),usedFj=new Map(),usedGeometry=new Set();
+ const originalCatalog=json(local(root,'apps/anatomy/public/data/atlas-catalog.json'));
+ const converted=inv.converted.map(e=>vascularMetadata(e,originalCatalog)),seenNames=new Set(),seenIds=new Set(),seenFma=new Set(),usedFj=new Map(),usedGeometry=new Set();
  const report={baseline:converted.length,added:[],blocked:[],skippedExisting:0,frame,publicRelease:'NO_GO',geometryAnatomyValidated:false,
   sourceFrame:'BodyParts3D 4.0 native preview; shared archive anchors, not clinical registration'};
  for(const e of converted){
@@ -150,9 +180,9 @@ export async function expandNativeOrganComponents({root,privateRoot,pack,inv,out
  // A mismatched shared ID is excluded from new candidate materialization;
  // all other FJ identities remain subject to the original frame checks.
  const badFj=new Set(crossConflicts);
- const catalog=json(local(root,'apps/anatomy/public/data/atlas-catalog.json'));
+ const catalog=originalCatalog;
  const priorities={visceral:0,nervous:1,lymphatic:2,cardiovascular:3,muscular:4,joints:5};
- const candidates=[...concepts.values()].filter(c=>['isa','partof'].includes(c.sourceTree))
+ const candidates=[...concepts.values()].filter(c=>c.sourceTree==='isa'||(c.sourceTree==='partof'&&frame.compatible))
   .sort((a,b)=>(a.sourceTree==='isa'?0:1)-(b.sourceTree==='isa'?0:1)||(priorities[a.system]??9)-(priorities[b.system]??9)||a.id.localeCompare(b.id));
  for(const c of candidates){
   const parts=directComponents(c,byTree[c.sourceTree],c.sourceTree,index);
@@ -172,7 +202,7 @@ export async function expandNativeOrganComponents({root,privateRoot,pack,inv,out
     assert.equal(independent.header,g.sourceHeader);assert.equal(independent.license,g.sourceLicenseNotice);
     assert.equal(parsed.publisherElementConceptId,c.fmaId);assert.equal(parsed.publisherElementRepresentationId,c.bpId);
     assert.equal(parsed.geometrySha256,g.geometrySha256);
-    return {id:g.elementId,text:raw.toString('utf8')};
+    return {id:g.elementId,parsed};
    });
    const group=groupOf(c);
    assert(group==='nervous'||GROUPS.some(x=>x.id===group&&x.source===c.system),'Unrecognized viewer group');
@@ -184,7 +214,7 @@ export async function expandNativeOrganComponents({root,privateRoot,pack,inv,out
     elements:parts.map(g=>({id:g.elementId,sourceSha256:g.sourceSha256,sourceLicenseNotice:g.sourceLicenseNotice,geometrySha256:g.geometrySha256})),
     coordinateFrame:parts[0].coordinateFrame,sourceNativeDisplayOnly:true,atlasTransform:null,frameEvidence:frame,
     warning:'Exact publisher element identity candidate; not independently reviewed anatomy or distribution approval'};
-   const bytes=Buffer.from(await makeGlb(rawParts,name,lineage));
+   const bytes=makeDirectGLB(rawParts,lineage);
    const decoded=inspectBinaryGLB(bytes);
    assert.equal(decoded.meshes.length,parts.length);
    for(const g of parts){
@@ -202,6 +232,7 @@ export async function expandNativeOrganComponents({root,privateRoot,pack,inv,out
     boundsNative:bounds,sourceMeshes:parts.map(g=>g.elementId),state:'converted-unverified',
     mappingMethod:'exact-source-native-direct-component-private-review',
     privateAtlasMeta:{source:c.system,group,layer:c.system==='nervous'?0:layerFor(name,group),regions:regionFor(c,catalog[name]),box}});
+   converted[converted.length-1]=vascularMetadata(converted[converted.length-1],catalog);
    seenNames.add(name);seenIds.add(id);seenFma.add(c.fmaId);
    for(const g of parts){usedFj.set(g.elementId,g.geometrySha256);usedGeometry.add(g.geometrySha256);}
    report.added.push({name,id,system:c.system,group,tree:c.sourceTree,elements:parts.length});
@@ -225,6 +256,7 @@ export async function expandNativeOrganComponents({root,privateRoot,pack,inv,out
   sourceTrees:['isa','partof'],sourceFrameEvidence:frame,sourceNativeDisplayOnly:true,converted,systems:counts,
   summary:{...inv.summary,converted:converted.length},provisionalSource:true,referenceSurface:null};
  write(path.join(target,'inventory.json'),updated);write(path.join(out,'organ-component-report.json'),report);
+ writeVascularCoverage(out,{catalog,converted,bundles});
  console.log('ORGAN COMPONENT RESULT',JSON.stringify({baseline:report.baseline,added:report.added.length,total:report.total,blocked:report.blocked.length,perSystem:counts,assemblies:report.assemblies}));
  return {pack:target,inv:updated,counts,report};
 }
