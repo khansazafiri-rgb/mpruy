@@ -56,6 +56,10 @@ function sourcePlugin(applied){
    code=code.replace(start,"function frameGroup() { return new THREE.Group(); }\nfunction unusedBp3dFrameGroup() {");
    code=code.replace("node.userData.source = 'bodyparts3d'","node.userData.source = 'z-anatomy-original-private'");
    code=patchPrivateSourceRuntime(code);
+  }else if(p==='src/atlas/catalog.js'){
+   const old="layers:['Struktur sumber']";
+   assert.equal(code.split(old).length,2,'Private neural group layer anchor missing');
+   code=code.replace(old,"layers:['Cabang perifer','Saraf utama & pleksus','Sistem saraf pusat']");
   }else if(p==='src/atlas/bp3dPanel.js'){
    code=patchPrivatePanel(code);
    code=code.replaceAll('BodyParts3D','Z-Anatomy (sumber asli)').replaceAll('Kembali ke model Atlas','Keluar dari pratinjau privat');
@@ -100,7 +104,7 @@ async function main(){
   plugins:[privateAtlasPlugin(applied),sourcePlugin(specific)],build:{outDir:dist,emptyOutDir:true}});}
  finally{process.chdir(root);}
  assert.equal(applied.size,4,'Private containment patches not applied');
- assert.equal(specific.size,4,'Source frame/label patches not applied');
+ assert.equal(specific.size,5,'Source frame/label patches not applied');
  const roots={...ROOTS,atlas:dist,bp3d:pack},checked=await checkBuilds(roots);
  assert(checked.ok,'Preview preflight: '+checked.problems.join('; '));
  const port=Number(process.env.PORT||4184);assert(Number.isInteger(port)&&port>=1024&&port<=65535);
@@ -124,6 +128,7 @@ async function main(){
   const resp=await fetch(base+'/anatomy/viewer/bp3d/inventory.json');assert(resp.ok);assert.equal((await resp.json()).converted.length,inv.converted.length);
   assert.equal((await fetch(base+'/anatomy/viewer/models/nervous.glb',{method:'HEAD'})).status,404);
   console.log('VASCULAR SOURCE AUDIT:',path.join(out,'vascular-source-audit.json'));
+  console.log('NEURAL SOURCE AUDIT:',path.join(out,'neural-source-audit.json'));
   console.log('SOURCE RECOVERY REPORT:',path.join(out,'source-recovery-report.json'));
   console.log('Z-ANATOMY SOURCE PREVIEW READY:',base+'/anatomy/viewer/?models=bp3d&privateExpansion=1');
   console.log('Source-native independent body; no overlay, no production changes. Public release NO_GO.');
