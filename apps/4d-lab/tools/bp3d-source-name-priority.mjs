@@ -3,7 +3,10 @@ const ordinal=['first','second','third','fourth','fifth','sixth','seventh','eigh
   'ninth','tenth','eleventh','twelfth'];
 const divisions={c:'cervical',t:'thoracic',l:'lumbar'};
 export function officialVertebralLevel(name){
-  const n=String(name||'').toLowerCase().replace(/[-_]/g,' ');
+  const n=String(name||'').toLowerCase().replace(/[-_]/g,' ').trim();
+  // The coccyx is a named terminal bone, not a C/T/L numeric level.
+  // Do not accept coccygeal ligaments, arteries, discs or subparts.
+  if(n==='coccyx')return 'coccyx';
   const short=n.match(/\b(?:vertebra\s+)?([ctl])\s*(1[0-2]|[1-9])\b/);
   if(short)return short[1]+Number(short[2]);
   const full=n.match(/\b(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth)\s+(cervical|thoracic|lumbar)\s+vertebra\b/);
