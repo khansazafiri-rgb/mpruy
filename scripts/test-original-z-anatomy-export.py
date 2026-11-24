@@ -11,6 +11,19 @@ assert mod.extra_identity('thoracic duct')['source']=='lymphatic'
 assert mod.extra_identity('left adrenal gland')['group']=='endocrine'
 assert mod.extra_identity('left median nerve')['source']=='nervous'
 assert mod.extra_identity('angular gyrus') is None
+# Cardiovascular identity must override the name of the supplied organ.
+assert mod.vascular_group('Circumflex artery of heart','heart')=='arterial'
+assert mod.vascular_group('Anterior interventricular artery','heart')=='arterial'
+assert mod.vascular_group('Pulmonary vein.l','heart')=='venous'
+assert mod.vascular_group('Coronary sinus','heart')=='venous'
+assert mod.vascular_group('Septal branches of anterior interventricular artery','heart')=='arterial'
+assert mod.vascular_group('Left coronary leaflet','heart')=='heart'
+assert mod.vascular_group('Anterior leaflet of pulmonary valve','heart')=='heart'
+assert mod.vascular_group('Common carotid artery.r','arterial')=='arterial'
+meta=mod.vascular_meta('Internal carotid artery.l',{'source':'cardiovascular','group':'arterial','layer':0,'regions':['whole']})
+assert meta['group']=='arterial' and meta['layer']==1 and 'headNeck' in meta['regions']
+meta=mod.vascular_meta('Circumflex artery of heart',{'source':'cardiovascular','group':'heart','layer':0,'regions':['thorax']})
+assert meta['group']=='arterial' and 'thorax' in meta['regions']
 # Geometrical test fixture, not an anatomical model. A source bevel is respected.
 data=bpy.data.curves.new('fixture-source-bevel','CURVE');data.dimensions='3D'
 data.resolution_u=3;data.bevel_depth=.01;data.bevel_resolution=2
