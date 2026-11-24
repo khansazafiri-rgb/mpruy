@@ -9,7 +9,7 @@ import {prepare} from './prepare-atlas-publication-review.mjs';
 import {inspectInstalled,publicationBundleGate} from './atlas-independent-dependency-audit.mjs';
 import {checkSourceNotices} from './audit-atlas-publication-rights.mjs';
 import {buildHraRegistry,serveHraReference} from './atlas-hra-private-reference.mjs';
-import {classifyIndependentPath} from './independent-atlas-routes.mjs';
+import {classifyIndependentPath,rawRequestPath} from './independent-atlas-routes.mjs';
 import {createLabPreviewServer,ROOTS} from './preview-4d-lab.mjs';
 import {assertDistributionClean} from '../licensing/tools/check-distribution.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
@@ -31,7 +31,7 @@ const dependencyAudit=inspectInstalled(app),sourceNotices=checkSourceNotices(),b
 const noticeDir=path.join(root,'licensing/atlas-publication/source-notices');
 const notices='MEDCOEL independent viewer — software notices\n\n'+['three','vite'].map(n=>fs.readFileSync(path.join(noticeDir,n+'.txt'),'utf8')).join('\n\n');
 await build({root:app,configFile:false,publicDir:false,base:'/anatomy/viewer/',plugins:[publicationBundleGate(app,notices,bundleRecord)],build:{outDir:out,emptyOutDir:true,sourcemap:false}});
-fs.writeFileSync(path.join(privateRoot,folder,'publication-software-audit.json'),JSON.stringify({...dependencyAudit,sourceNotices,bundle:bundleRecord},null,2)+'\n',{mode:0o600});
+const softwareReport=path.join(privateRoot,folder,'publication-software-audit.json');const reportTmp=softwareReport+'.'+process.pid+'.tmp';fs.writeFileSync(reportTmp,JSON.stringify({...dependencyAudit,sourceNotices,bundle:bundleRecord},null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(reportTmp,softwareReport);
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.txt':'text/plain; charset=utf-8'};
 let hra;try{hra=await buildHraRegistry(privateRoot);}catch(error){hra={assets:new Map(),blocked:[{reason:String(error.message||error)}]};}
 const port=Number(process.env.PORT||4186);assert(Number.isInteger(port)&&port>=1024&&port<=65535);
@@ -44,7 +44,7 @@ if(fs.existsSync(path.join(ROOTS.main,'index.html'))){
 const server=createServer((request,response)=>{
  const send=(status,body,type='text/plain; charset=utf-8')=>{response.writeHead(status,{'Content-Type':type,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Frame-Options':'SAMEORIGIN'});response.end(request.method==='HEAD'?undefined:body);};
  if(request.headers.host!=='127.0.0.1:'+port||!['GET','HEAD'].includes(request.method))return send(403,'Loopback review only');
- let p;try{p=new URL(request.url,'http://127.0.0.1:'+port).pathname;if(p!==decodeURIComponent(p))return send(404,'Not found');}catch{return send(400,'Invalid path');}
+ const p=rawRequestPath(request.url);if(p===null)return send(404,'Not found');
  const route=classifyIndependentPath(p);
  if(route==='redirect'){response.writeHead(308,{Location:'/anatomy/viewer/','Cache-Control':'no-store'});return response.end();}
  if(route==='host')return hostHandler?hostHandler(request,response):send(404,'Host preview unavailable; use /anatomy/viewer/');
@@ -66,6 +66,18 @@ const server=createServer((request,response)=>{
  catch{return send(404,'Not found');}
 });
 await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve);});
-console.log('INDEPENDENT PRIVATE ATLAS:', 'http://127.0.0.1:'+port+'/anatomy/viewer/');
+const baseURL='http://127.0.0.1:'+port;
+try{
+ const inventoryResponse=await fetch(baseURL+'/anatomy/viewer/inventory.json');assert(inventoryResponse.ok);
+ assert.equal((await inventoryResponse.json()).entries.length,manifest.entries.length);
+ const queue=[...models.keys()];let checked=0;
+ await Promise.all(Array.from({length:4},async()=>{while(queue.length){const route=queue.shift(),response=await fetch(baseURL+route,{method:'HEAD'});assert(response.ok&&response.headers.get('content-type')==='model/gltf-binary','Model route failed: '+route);checked++;}}));
+ for(const route of ['/anatomy/viewer/models/nervous.glb','/anatomy/viewer/models/visceral.glb','/anatomy/viewer/bp3d/inventory.json','/anatomy/4d-lab/','/local-data/','/anatomy/viewer/%2e%2e/private'])assert.equal((await fetch(baseURL+route,{method:'HEAD'})).status,404);
+ const hraResponse=await fetch(baseURL+'/anatomy/viewer/hra-reference/inventory.json');assert(hraResponse.ok&& (await hraResponse.json()).items.length===hra.assets.size);
+ const report={schema:1,models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
+ const f=path.join(privateRoot,folder,'publication-independent-http-qc.json'),tmp=f+'.'+process.pid+'.tmp';fs.writeFileSync(tmp,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,f);
+ console.log('INDEPENDENT HTTP QC',JSON.stringify(report));
+}catch(error){server.close();throw error;}
+console.log('INDEPENDENT PRIVATE ATLAS:', baseURL+'/anatomy/viewer/');
 console.log('HOST INTEGRATION:',hostHandler?'http://127.0.0.1:'+port+'/anatomy/explore':'not available (standalone preview remains available)');
 console.log('CANDIDATE MODELS:',review.totals.candidates,'APPROVED:',review.totals.approved,'PUBLIC RELEASE: NO_GO');
