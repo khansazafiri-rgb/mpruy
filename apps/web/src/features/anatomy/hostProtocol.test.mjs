@@ -23,12 +23,25 @@ test('progress is accepted only from the exact frame/origin with bounded lifecyc
  assert.equal(acceptsAtlasMessage(base,origin,frame),true);
  for(const event of [{...base,source:{}},{...base,origin:'https://foreign.example'},{...base,data:{...base.data,progress:NaN}},{...base,data:{...base.data,progress:200}},{...base,data:{...base.data,token:'private'}}])assert.equal(acceptsAtlasMessage(event,origin,frame),false);
 });
-test('viewer asset health distinguishes a missing static mount from a slow model',async()=>{
- const {checkViewerAsset}=await import('./hostProtocol.mjs');let method;
- await checkViewerAsset(async(path,options)=>{assert.equal(path,'/anatomy/viewer/');method=options.method;return new globalThis.Response('',{headers:{'content-type':'text/html'}});});assert.equal(method,'HEAD');
+test('viewer health requires actual Atlas JSON, not HTTP 200 from the main SPA fallback',async()=>{
+ const {checkViewerAsset,ANATOMY_CATALOG_PATH}=await import('./hostProtocol.mjs');
+ const seen=[];
+ const real=async(path,options)=>{
+  seen.push([path,options.method]);
+  return new globalThis.Response('',{headers:{'content-type':
+   path===ANATOMY_CATALOG_PATH?'application/json; charset=utf-8':'text/html'}});
+ };
+ assert.deepEqual(await checkViewerAsset(real),{viewerMounted:true,catalogMounted:true});
+ assert.deepEqual(seen,[['/anatomy/viewer/','HEAD'],[ANATOMY_CATALOG_PATH,'HEAD']]);
  await assert.rejects(checkViewerAsset(async()=>new globalThis.Response('',{status:404})),/HTTP 404/);
  await assert.rejects(checkViewerAsset(async()=>new globalThis.Response('{}',{headers:{'content-type':'application/json'}})),/tipe file/);
+ const spa=async()=>new globalThis.Response('<!doctype html>',{headers:{'content-type':'text/html'}});
+ await assert.rejects(checkViewerAsset(spa),/halaman utama/);
+ const catalogMissing=async(path)=>new globalThis.Response('',{status:path===ANATOMY_CATALOG_PATH?404:200,
+  headers:{'content-type':'text/html'}});
+ await assert.rejects(checkViewerAsset(catalogMissing),/Katalog Atlas 3D belum dipasang/);
 });
+
 
 test('back link for the atlas survives structure ids with brackets and keeps the atlas hash',async()=>{
  const {withBackLink,atlasFrameSrc}=await import('./hostProtocol.mjs');

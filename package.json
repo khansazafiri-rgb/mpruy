@@ -81,7 +81,8 @@
     "audit:bodyparts3d-full:vertebral": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --vertebral",
     "qc:bodyparts3d-all-systems:preview": "node scripts/bp3d-focused-onepass.mjs --all-systems-exact --preview",
     "qc:bodyparts3d-all-systems": "node scripts/bp3d-focused-onepass.mjs --all-systems-exact",
-    "audit:bodyparts3d-full:all-systems": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --all-systems"
+    "audit:bodyparts3d-full:all-systems": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --all-systems",
+    "audit:human-anatomy-live": "node scripts/human-anatomy-live-readiness.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

@@ -1,4 +1,5 @@
 export const ANATOMY_VIEWER_PATH='/anatomy/viewer/';
+export const ANATOMY_CATALOG_PATH=ANATOMY_VIEWER_PATH+'data/atlas-catalog.json';
 export const ATLAS_EVENTS=['medcoel:anatomy-loading','medcoel:anatomy-interactive','medcoel:anatomy-ready','medcoel:anatomy-error'];
 export function acceptsAtlasMessage(event,origin,viewerWindow){
  const data=event.data;
@@ -19,12 +20,25 @@ export function nextAtlasStatus(current,type){
  return current;
 }
 export async function checkViewerAsset(fetcher=globalThis.fetch,signal){
- const controller=signal?null:new globalThis.AbortController(),timer=controller?globalThis.setTimeout(()=>controller.abort(),10000):null;
+ const controller=signal?null:new globalThis.AbortController(),
+   timer=controller?globalThis.setTimeout(()=>controller.abort(),10000):null;
+ const options={method:'HEAD',cache:'no-cache',signal:signal||controller.signal};
  try{
-  const response=await fetcher(ANATOMY_VIEWER_PATH,{method:'HEAD',cache:'no-cache',signal:signal||controller.signal});
-  if(!response.ok)throw Error('Viewer Anatomy tidak tersedia di server (HTTP '+response.status+').');
-  const type=response.headers.get('content-type')||'';
-  if(!type.includes('text/html'))throw Error('Server mengembalikan tipe file viewer yang tidak sesuai.');
+  // The public SPA fallback returns HTTP 200 text/html for *missing* routes.
+  // The viewer root alone cannot prove an actual Anatomy installation.
+  const viewer=await fetcher(ANATOMY_VIEWER_PATH,options);
+  if(!viewer.ok)throw Error('Viewer Anatomy tidak tersedia di server (HTTP '+viewer.status+').');
+  const viewerType=viewer.headers.get('content-type')||'';
+  if(!viewerType.toLowerCase().includes('text/html'))
+   throw Error('Server mengembalikan tipe file viewer yang tidak sesuai.');
+  const catalog=await fetcher(ANATOMY_CATALOG_PATH,options);
+  if(!catalog.ok)
+   throw Error('Katalog Atlas 3D belum dipasang di server (HTTP '+catalog.status+').');
+  const catalogType=(catalog.headers.get('content-type')||'').toLowerCase();
+  if(!catalogType.includes('json'))
+   throw Error('Rute Atlas 3D masih mengarah ke halaman utama, bukan katalog anatomi. Periksa mount /anatomy/viewer/.');
+  // Availability only. Real anatomy/rights validation is a separate release gate.
+  return {viewerMounted:true,catalogMounted:true};
  }finally{if(timer)globalThis.clearTimeout(timer);}
 }
 

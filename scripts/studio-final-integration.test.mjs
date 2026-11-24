@@ -220,9 +220,24 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
   for(const file of reviewedRecoveryPaths)
     assert.equal(read(file),git('show',recoveryReviewCommit+':'+file),
       'Emergency recovery file drift since reviewed code commit: '+file);
+  // Scoped original Human Anatomy host correction (PR #290): the
+  // application engine and production Caddyfile remain byte-for-byte intact.
+  // New host protocols, tests and separate Caddy review snippet are vetted
+  // by anatomy-4d-host-integration and the web unit suite.
+  const reviewedHumanAnatomyPaths=new Set([
+    'apps/web/src/features/anatomy/hostProtocol.mjs',
+    'apps/web/src/features/anatomy/hostProtocol.test.mjs',
+    'apps/web/src/features/anatomy/liveLab.mjs',
+    'apps/web/src/features/anatomy/liveLab.test.mjs',
+    'deploy/4d-lab.caddy.snippet'
+  ]);
+  for(const file of reviewedHumanAnatomyPaths)
+    if(legacyDelta.includes(file))assert.ok(fs.existsSync(path.join(root,file)),
+      'Missing reviewed Human Anatomy integration file: '+file);
   assert.deepEqual(legacyDelta.filter(p =>
     p !== harness && p !== phaseStatus && !studioOnly.has(p) &&
-    !reviewedSecurityPaths.has(p) && !reviewedRecoveryPaths.has(p)), []);
+    !reviewedSecurityPaths.has(p) && !reviewedRecoveryPaths.has(p) &&
+    !reviewedHumanAnatomyPaths.has(p)), []);
   assert.equal(git('diff', '--name-only', '--diff-filter=MDR', base, 'HEAD', '--', 'apps/pocketbase/pb_migrations'), '', 'existing migrations unchanged');
   assert.deepEqual(git('diff', '--name-only', base, 'HEAD', '--', 'apps/web/src/lib/serverVersion.js') ? git('diff', base, 'HEAD', '--', 'apps/web/src/lib/serverVersion.js').split('\n').filter(l => /^[+-][^+-]/.test(l)) : [],
     ['-export const REQUIRED_MIGRATION = 1800003200;', '+export const REQUIRED_MIGRATION = 1800003300;'], 'only the required migration level changes');

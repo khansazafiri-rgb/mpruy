@@ -1,6 +1,12 @@
 # MEDCOEL Anatomy Live 4D Lab — insert inside the medcoel.com site block, BEFORE the general SPA handle,
 # next to the /anatomy/viewer routes. Review candidate only: do not reload Caddy without approval.
 # The React page /anatomy/live (SPA) frames this static build.
+# This snippet alone is NOT distribution clearance. Check the exact release
+# using the commercial rights gate before applying the live Caddy candidate.
+handle /anatomy/4d-lab/data/atlas/* {
+    header Cache-Control "private, no-store, max-age=0"
+    respond "Not Found" 404
+}
 handle /anatomy/4d-lab {
     redir * /anatomy/4d-lab/ 308
 }
