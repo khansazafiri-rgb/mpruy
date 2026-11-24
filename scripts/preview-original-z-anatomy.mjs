@@ -54,10 +54,12 @@ function sourcePlugin(applied){
    assert.equal(code.split(start).length,2);
    code=code.replace(start,"function frameGroup() { return new THREE.Group(); }\nfunction unusedBp3dFrameGroup() {");
    code=code.replace("node.userData.source = 'bodyparts3d'","node.userData.source = 'z-anatomy-original-private'");
+   code=code.replace('} catch { failed++; }',"} catch (error) { failed++; console.error('[Private Z-Anatomy] model failed', entry.name, entry.modelPath, error); }");
   }else if(p==='src/atlas/bp3dPanel.js'){
    code=code.replaceAll('BodyParts3D','Z-Anatomy (sumber asli)').replaceAll('Kembali ke model Atlas','Keluar dari pratinjau privat');
   }else if(p==='src/atlas/engine.js'){
    code=code.replaceAll('BodyParts3D (pratinjau lokal','Z-Anatomy (pratinjau lokal');
+   code=code.replace('} catch {\n        failed.push(source);','} catch (error) {\n        console.error(\"[Private Z-Anatomy] system failed\", source, error);\n        failed.push(source);');
   }else if(p==='src/main.js'){
    // Retain the old catalogue as the denominator for coverage; the existing
    // bp3dHas filter prevents unavailable names from being loaded.
@@ -71,6 +73,7 @@ function sourcePlugin(applied){
 async function main(){
  assert.equal(fs.realpathSync(privateRoot),privateRoot);
  const bin=blender();
+ execFileSync(bin,['--background','--factory-startup','--disable-autoexec','--python-exit-code','1','--python',path.join(root,'scripts/test-original-z-anatomy-export.py')],{stdio:'inherit'});
  const sourceDir=path.join(privateRoot,'z-anatomy-official-'+revision.slice(0,12));fs.mkdirSync(sourceDir,{recursive:true});assert.equal(fs.realpathSync(sourceDir),sourceDir);
  const archive=await acquire(sourceDir,'Z-Anatomy.zip',200*1024*1024),license=await acquire(sourceDir,'License.txt',256*1024);
  const out=fs.mkdtempSync(path.join(privateRoot,'z-anatomy-native-preview-')),pack=path.join(out,'pack'),dist=path.join(out,'atlas-dist');
