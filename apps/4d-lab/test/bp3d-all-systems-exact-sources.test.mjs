@@ -82,7 +82,7 @@ test('shared official FJ, duplicate identity labels, missing OBJ and existing me
  const el=new Map([['FMA1',new Set(['FJ1'])],['FMA2',new Set(['FJ1'])],
    ['FMA3',new Set(['FJ3'])],['FMA4',new Set(['FJ4'])]]);
  const s=selectAllSystemsExact({catalog:cols,officialRows:official,elements:el,
-   archiveFiles:['FJ1.obj','FJ3.obj'],
+   archiveFiles:['FJ1.obj'], // deliberately absent FJ3 to verify blocked OBJ path
    existing:[{name:'D',fmaId:'FMA4',bpId:'BP4'}]});
  assert.equal(s.summary.priorConverted,1);
  assert.equal(s.candidates.length,0);
