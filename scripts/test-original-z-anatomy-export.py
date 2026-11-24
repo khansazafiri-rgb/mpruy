@@ -11,6 +11,27 @@ assert mod.extra_identity('thoracic duct')['source']=='lymphatic'
 assert mod.extra_identity('left adrenal gland')['group']=='endocrine'
 assert mod.extra_identity('left median nerve')['source']=='nervous'
 assert mod.extra_identity('angular gyrus') is None
+# Neural data must not depend on the quarantined legacy catalogue.
+from z_anatomy_neural_identity import neural_identity, canonical, neural_audit, priority_labels
+assert neural_identity('brainstem')['layer']==2
+assert neural_identity('spinal cord')['regions']==['back']
+assert neural_identity('right optic nerve')['regions']==['headNeck']
+assert neural_identity('vagus nerve.l')['regions']==['headNeck','thorax','abdomen']
+assert neural_identity('right brachial plexus')['layer']==1
+assert neural_identity('left sciatic nerve')['regions']==['pelvis','lowerLimb']
+assert canonical('Common peroneal nerve.r')=='right common fibular nerve'
+assert canonical('Common peroneal nerve.l')!='right common fibular nerve'
+assert neural_identity('left C8 spinal nerve') is not None
+assert neural_identity('left C9 spinal nerve') is None
+assert neural_identity('central canal of spinal cord') is None
+assert neural_identity('posterior inferior cerebellar artery') is None
+assert neural_identity('renal nerve shaped fixture') is None
+assert 'spinal cord' in priority_labels() and 'left spinal cord' not in priority_labels()
+a=neural_audit([{'name':'Optic nerve.l','type':'CURVE'}],
+    [{'name':'Optic nerve.l','system':'nervous','id':'fixture'}],[],[])
+assert next(r for r in a['rows'] if r['name']=='left optic nerve')['status']=='EXPORTED_CANDIDATE'
+assert next(r for r in a['rows'] if r['name']=='right optic nerve')['status']=='NO_EXACT_SOURCE_OBJECT'
+assert a['clinicalValidation'] is False
 # Cardiovascular identity must override the name of the supplied organ.
 assert mod.vascular_group('Circumflex artery of heart','heart')=='arterial'
 assert mod.vascular_group('Anterior interventricular artery','heart')=='arterial'
