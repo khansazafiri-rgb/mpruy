@@ -9,6 +9,7 @@ import {parseOfficialNames,parseOfficialElements,candidateCrosswalk,mapActualMes
 import {auditGeneratedBatch} from './bp3d-batch-audit.mjs';
 import {buildAllSystemsTriage,triageCsv,geometryCsv,unapprovedTemplate} from './bp3d-all-systems-triage.mjs';
 import {buildVisibleGapReview,visibleGapCsv,visibleGapMarkdown} from './bp3d-visible-gap-review.mjs';
+import {discoverFocusSources,officialLeadCsv} from './bp3d-focus-official-source-leads.mjs';
 import {provisionalIdentityIssues} from './bp3d-provisional-mappings.mjs';
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 const PRIVATE=path.join(ROOT,'local-data/licensing-quarantine');
@@ -174,6 +175,10 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
   fs.writeFileSync(path.join(output,'focus-gaps.json'),JSON.stringify(focus,null,2)+'\n');
   fs.writeFileSync(path.join(output,'focus-gaps.csv'),visibleGapCsv(focus));
   fs.writeFileSync(path.join(output,'focus-gaps.md'),visibleGapMarkdown(focus));
+  const leads=discoverFocusSources({focus,officialRows,elements:elementIndex,archiveFiles,
+    converted:inventory.converted,archiveSha256:actualHashes.archiveSha256});
+  fs.writeFileSync(path.join(output,'official-source-leads.json'),JSON.stringify(leads,null,2)+'\n');
+  fs.writeFileSync(path.join(output,'official-source-leads.csv'),officialLeadCsv(leads));
   fs.writeFileSync(path.join(output,'converted-geometry-review.csv'),geometryCsv(triage));
   fs.writeFileSync(path.join(output,'unapproved-identity-template.json'),
     JSON.stringify(unapprovedTemplate(triage,actualHashes.archiveSha256),null,2)+'\n');
@@ -190,6 +195,7 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
     'Converted geometry with diagnostic flags: '+triage.summary.sourceGeometryFlagged+'.',
     '', 'No suggested FMA/BP identity, mesh, clinical geometry, or commercial distribution has been approved.',
     'See focus-gaps.md/csv/json for targeted digiti minimi (hand/foot), nasal, spine, sternum and visceral coverage without inventing geometry.',
+    'See official-source-leads.csv/json for all unapproved official FMA/BP/FJ OBJ leads for these missing structures. No lead is converted automatically.',
     'See priority-review.csv, converted-geometry-review.csv and unapproved-identity-template.json for the next clinical review.',
     'See all-structures.csv for every catalog item and unlinked-official.csv for official objects not mapped to Atlas.'
   ].join('\n')+'\n';

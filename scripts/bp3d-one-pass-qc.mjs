@@ -158,6 +158,13 @@ export async function onePass({preview=false,limitNew=120,runTests=true,root=ROO
     const focused=JSON.parse(fs.readFileSync(path.join(auditDir,'focus-gaps.json'),'utf8'));
     result.focusCoverage=focused.areas.map(({id,label,total,withMesh,missing,coveragePercent})=>
       ({id,label,total,withMesh,missing,coveragePercent}));
+    const leads=JSON.parse(fs.readFileSync(path.join(auditDir,'official-source-leads.json'),'utf8'));
+    result.officialSourceLeadReview={
+      status:leads.status,
+      structuresInvestigated:leads.structures.length,
+      focusAreas:leads.areas,
+      addedModels:0,approvedForDistribution:false
+    };
     result.steps.push({command:'targeted anatomy completeness triage (read-only)',
       passed:true,areas:result.focusCoverage.length});
     const publicDirs=['apps/web/dist','apps/anatomy/dist','apps/4d-lab/dist'];
