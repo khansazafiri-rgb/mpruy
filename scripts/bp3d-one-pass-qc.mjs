@@ -155,6 +155,11 @@ export async function onePass({preview=false,limitNew=120,runTests=true,root=ROO
     const audit=await runAudit({batch:prepared,output:auditDir,checkGeometry:true});
     if(audit.errors.length)throw Error('GLB/FMA/BP/FJ full audit failed: '+audit.errors.slice(0,8).join('; '));
     result.steps.push({command:'full private source geometry and lineage audit',passed:true,checked:audit.summary.converted});
+    const focused=JSON.parse(fs.readFileSync(path.join(auditDir,'focus-gaps.json'),'utf8'));
+    result.focusCoverage=focused.areas.map(({id,label,total,withMesh,missing,coveragePercent})=>
+      ({id,label,total,withMesh,missing,coveragePercent}));
+    result.steps.push({command:'targeted anatomy completeness triage (read-only)',
+      passed:true,areas:result.focusCoverage.length});
     const publicDirs=['apps/web/dist','apps/anatomy/dist','apps/4d-lab/dist'];
     const issues=publicDirs.flatMap(p=>scanDistribution(path.join(ROOT,p)).map(x=>p+': '+x));
     if(issues.length)throw Error('Public-dist quarantine violations: '+issues.join('; '));
