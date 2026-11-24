@@ -71,7 +71,8 @@
     "batch:bodyparts3d-provisional": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs --all --provisional",
     "audit:bodyparts3d-full:provisional": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --provisional",
     "qc:bodyparts3d-onepass": "node scripts/bp3d-one-pass-qc.mjs",
-    "qc:bodyparts3d-onepass:preview": "node scripts/bp3d-one-pass-qc.mjs --preview"
+    "qc:bodyparts3d-onepass:preview": "node scripts/bp3d-one-pass-qc.mjs --preview",
+    "review:bodyparts3d-focus-sources": "node apps/4d-lab/tools/prepare-bp3d-focus-leads.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
