@@ -11,6 +11,7 @@ import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createServer} from 'node:http';
 import {privateAtlasPlugin} from './preview-private-atlas-expansion.mjs';
 import {patchPrivateSourceRuntime,patchPrivatePanel} from './z-anatomy-private-runtime.mjs';
+import {patchNativeEngine,patchNativeUI,patchNativePanel} from './z-anatomy-private-integration.mjs';
 import {buildHraRegistry,serveHraReference} from './atlas-hra-private-reference.mjs';
 import {writeClinicalPriorityAudit} from './atlas-clinical-priority-audit.mjs';
 import {createLabPreviewServer,checkBuilds,ROOTS} from './preview-4d-lab.mjs';
@@ -66,11 +67,13 @@ function sourcePlugin(applied,hraEnabled){
    assert.equal(code.split(lymphLayers).length,2,'Private lymphatic layer anchor missing');
    code=code.replace(lymphLayers,"layers: ['Nodus limfatik','Pembuluh regional','Trunkus, duktus & organ limfoid'],");
   }else if(p==='src/atlas/bp3dPanel.js'){
-   code=patchPrivatePanel(code);
+   code=patchNativePanel(patchPrivatePanel(code));
    code=code.replaceAll('BodyParts3D','Z-Anatomy (sumber asli)').replaceAll('Kembali ke model Atlas','Keluar dari pratinjau privat');
   }else if(p==='src/atlas/engine.js'){
+   code=patchNativeEngine(code);
    code=code.replaceAll('BodyParts3D (pratinjau lokal','Z-Anatomy (pratinjau lokal');
-   code=code.replace('} catch {\n        failed.push(source);','} catch (error) {\n        console.error(\"[Private Z-Anatomy] system failed\", source, error);\n        failed.push(source);');
+  }else if(p==='src/atlas/ui.js'){
+   code=patchNativeUI(code);
   }else if(p==='src/main.js'){
    // Retain the old catalogue as the denominator for coverage; the existing
    // bp3dHas filter prevents unavailable names from being loaded.
@@ -119,7 +122,7 @@ async function main(){
   plugins:[privateAtlasPlugin(applied),sourcePlugin(specific,Boolean(hra))],build:{outDir:dist,emptyOutDir:true}});}
  finally{process.chdir(root);}
  assert.equal(applied.size,4,'Private containment patches not applied');
- assert.equal(specific.size,5,'Source frame/label patches not applied');
+ assert.equal(specific.size,6,'Source frame/label patches not applied');
  const roots={...ROOTS,atlas:dist,bp3d:pack},checked=await checkBuilds(roots);
  assert(checked.ok,'Preview preflight: '+checked.problems.join('; '));
  const port=Number(process.env.PORT||4184);assert(Number.isInteger(port)&&port>=1024&&port<=65535);
