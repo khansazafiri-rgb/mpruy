@@ -76,7 +76,9 @@
     "batch:bodyparts3d-focused": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs --all --provisional --include-promising --limit-new 120 --focus-shortlist",
     "audit:bodyparts3d-full:focused": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --focused",
     "qc:bodyparts3d-focused": "node scripts/bp3d-focused-onepass.mjs",
-    "qc:bodyparts3d-focused:preview": "node scripts/bp3d-focused-onepass.mjs --preview"
+    "qc:bodyparts3d-focused:preview": "node scripts/bp3d-focused-onepass.mjs --preview",
+    "qc:bodyparts3d-vertebra:preview": "node scripts/bp3d-focused-onepass.mjs --vertebral-exact --preview",
+    "audit:bodyparts3d-full:vertebral": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --vertebral"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
