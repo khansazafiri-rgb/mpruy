@@ -75,7 +75,7 @@ export function assemble(folder,selectionName){
    const a={id:m.id,name:m.name,sha256:m.glbSha256,license:r.license,licenseURL:licenses[r.license]||null,rightsHolder:r.rightsHolder,
     attribution:r.attribution,shareAlike:r.shareAlike,sourceURL:r.sourceURL,changeDescription:r.changeDescription};
    attributions.push(a);
-   entries.push({id:m.id,name:m.name,group:m.group,regions:m.privateAtlasMeta.regions,path:'models/'+m.id+'.glb',sha256:m.glbSha256,approvedForDistribution:false});
+   entries.push({id:m.id,name:m.name,group:m.group,regions:m.privateAtlasMeta.regions,layer:m.privateAtlasMeta.layer,path:'models/'+m.id+'.glb',sha256:m.glbSha256,approvedForDistribution:false});
   }
   const write=(n,d)=>fs.writeFileSync(path.join(out,n),JSON.stringify(d,null,2)+'\n',{flag:'wx',mode:0o600});
   write('inventory.json',{schema:1,mode:'private-review',publicRelease:'NO_GO',sourceFrame:inventory.sourceFrame,entries});
