@@ -61,6 +61,25 @@ describe('materials', () => {
     const b = readFileSync(new URL('../../4d-lab/tools/bp3d-review-materials.mjs', import.meta.url), 'utf8').trim();
     expect(a).toBe(b);
   });
+  it.each([
+    ['left lung','visceral','respiratory','lung'],
+    ['right main bronchus','visceral','respiratory','airway'],
+    ['left coronary artery','cardiovascular','heart','artery'],
+    ['pulmonary vein','cardiovascular','heart','vein'],
+    ['heart','cardiovascular','heart','heart'],
+    ['mitral valve','cardiovascular','heart','heartValve'],
+    ['papillary muscle of left ventricle','cardiovascular','heart','heart'],
+    ['left optic nerve','nervous','nervous','nerve'],
+    ['cerebellum','nervous','nervous','brain'],
+    ['central canal of spinal cord','nervous','nervous','unknown'],
+    ['left kidney','visceral','urinary','kidney'],
+    ['liver','visceral','digestive','liver'],
+    ['spleen','lymphatic','lymphatic','spleen'],
+    ['lymph node','lymphatic','lymphatic','lymphatic'],
+    ['tendon of biceps brachii','muscular','muscular','tendon']
+  ])('assigns a distinct educational material to %s', (name,system,group,expected) => {
+    expect(tissueClass({name,system,group})).toBe(expected);
+  });
   it('classify bones and muscles consistently', () => {
     expect(tissueClass({ name: 'Femur.l', system: 'skeletal' })).toBe('bone');
     expect(tissueClass({ name: 'Biceps brachii.r', system: 'muscular' })).toBe('muscle');
