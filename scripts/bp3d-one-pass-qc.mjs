@@ -66,8 +66,19 @@ export function verifyReusableCandidateFolder(input,{privateRoot=PRIVATE,repoRoo
   const target=path.resolve(repoRoot,input),base=path.resolve(privateRoot);
   if(path.dirname(target)!==base||!/^bp3d-qa-new-[A-Za-z0-9_-]+$/.test(path.basename(target)))
     throw Error('Resume folder must be a direct bp3d-qa-new-* child of licensing-quarantine');
-  if(!fs.existsSync(target)||fs.lstatSync(target).isSymbolicLink()||
-    fs.realpathSync(target)!==target)
+  if(!fs.existsSync(target)||fs.lstatSync(target).isSymbolicLink())
+    throw Error('Private resume folder is missing or redirected by symlinks');
+  // macOS exposes system temp dirs through /var -> /private/var; comparing
+  // realpath(target) with the caller's spelled-out path falsely rejects an
+  // ordinary directory. Compare both canonical parents instead, and require
+  // the private root itself to remain inside the canonical project checkout.
+  const canonicalProject=fs.realpathSync(repoRoot);
+  const expectedPrivateRoot=path.join(canonicalProject,'local-data','licensing-quarantine');
+  const canonicalPrivateRoot=fs.realpathSync(base);
+  const canonicalTarget=fs.realpathSync(target);
+  if(canonicalPrivateRoot!==expectedPrivateRoot ||
+     path.dirname(canonicalTarget)!==canonicalPrivateRoot ||
+     path.basename(canonicalTarget)!==path.basename(target))
     throw Error('Private resume folder is missing or redirected by symlinks');
   const inventory=JSON.parse(fs.readFileSync(path.join(target,'inventory.json'),'utf8'));
   if(inventory.provisionalSource!==true||
