@@ -35,6 +35,9 @@ export const TISSUE_MATERIALS = Object.freeze({
   reproductive: { color: 0xc2878e, roughness: 0.79 },
   organ: { color: 0xc69e8c, roughness: 0.82 },
   lymphatic: { color: 0x4b9c72, roughness: 0.78 },
+  lymphaticVessel: { color: 0x83c9a3, roughness: 0.75 },
+  lymphaticTrunk: { color: 0x278b78, roughness: 0.76 },
+  lymphoidOrgan: { color: 0xb9829a, roughness: 0.80 },
   joint: { color: 0xa7b7bd, roughness: 0.82 },
   unknown: { color: 0xc8cbd0, roughness: 0.85 },
 });
@@ -47,6 +50,14 @@ export const NEUTRAL_MATERIAL = Object.freeze({ color: 0xc8cbd0, roughness: 0.85
 
 export function tissueClass({ name = '', system = '', group = '' } = {}) {
   const words = String(name).toLowerCase().replace(/[^a-z]+/g, ' ');
+  if (system === 'lymphatic') {
+    if (/\bspleen\b/.test(words)) return 'spleen';
+    if (/\b(node|nodes)\b/.test(words)) return 'lymphatic';
+    if (/\b(thymus|tonsil|tonsils)\b/.test(words)) return 'lymphoidOrgan';
+    if (/\b(thoracic duct|ductus thoracicus|lymphatic duct|lymphatic trunk|lymphatic trunks|cisterna chyli|chyle cistern|intestinal trunk|jugular trunk|subclavian trunk|bronchomediastinal trunk|lumbar trunk)\b/.test(words)) return 'lymphaticTrunk';
+    if (/\b(lymphatic vessel|lymphatic vessels|lymphatic capillary|lymphatic capillaries)\b/.test(words)) return 'lymphaticVessel';
+    return 'lymphatic';
+  }
   // Explicit fat and serosal tissue before intestinal/organ rules.
   // Do not recolor vessels, nerves or lymph nodes simply because they traverse fat.
   if (!/\b(artery|arteries|vein|veins|nerve|nerves|lymph node|lymph nodes|lymphatic vessel)\b/.test(words)) {
@@ -67,23 +78,19 @@ export function tissueClass({ name = '', system = '', group = '' } = {}) {
   }
   if (system === 'nervous') {
     if (/\b(central canal|ventricular system|cavity|ventricle|ventricles)\b/.test(words)) return 'unknown';
-    if (/\b(nerve|nerves|nerve plexus|ganglion|ganglia|nerve root)\b/.test(words)) return 'nerve';
-    if (/\b(spinal cord|medulla spinalis)\b/.test(words)) return 'spinalCord';
-    if (/\b(brain|forebrain|midbrain|hindbrain|cerebrum|cerebral|cerebellum|cerebellar|thalamus|hypothalamus|pons|medulla oblongata|fornix)\b/.test(words)) return 'brain';
+    if (/\b(spinal cord|medulla spinalis|conus medullaris)\b/.test(words) && !/\b(nerve|nerve root|ganglion)\b/.test(words)) return 'spinalCord';
+    if (/\b(nerve|nerves|plexus|ganglion|ganglia|sympathetic trunk|cauda equina|nerve root)\b/.test(words)) return 'nerve';
+    if (/\b(brain|brainstem|brain stem|forebrain|midbrain|hindbrain|cerebrum|cerebral|cerebellum|cerebellar|thalamus|hypothalamus|pons|medulla oblongata|fornix|corpus callosum|hippocampus|amygdala|caudate nucleus|putamen|globus pallidus|internal capsule|external capsule|insula|gyrus|optic chiasm|optic tract|olfactory bulb|olfactory tract|frontal lobe|parietal lobe|temporal lobe|occipital lobe)\b/.test(words)) return 'brain';
     return 'unknown';
-  }
-  if (system === 'lymphatic') {
-    if (/\bspleen\b/.test(words)) return 'spleen';
-    return 'lymphatic';
   }
   if (system === 'visceral') {
     if (/\b(artery|arteries|arteriole)\b/.test(words)) return 'artery';
     if (/\b(vein|veins|venule)\b/.test(words)) return 'vein';
     if (/\b(nerve|nerves)\b/.test(words)) return 'nerve';
     if (/\b(cartilage|cartilages)\b/.test(words)) return 'cartilage';
-    if (/\b(lung|lungs|pulmonary lobe|bronchopulmonary segment|alveolus|alveoli)\b/.test(words)) return 'lung';
     if (/\b(pleura|pleural)\b/.test(words)) return 'pleura';
     if (/\b(trachea|tracheal|bronchus|bronchi|bronchial|bronchiole|larynx|laryngeal|epiglottis|nasal cavity)\b/.test(words)) return 'airway';
+    if (/\b(lung|lungs|pulmonary lobe|bronchopulmonary segment|alveolus|alveoli)\b/.test(words)) return 'lung';
     if (/\b(gallbladder|gall bladder|cystic duct|bile duct)\b/.test(words)) return 'gallbladder';
     if (/\b(liver|hepatic lobe)\b/.test(words)) return 'liver';
     if (/\b(kidney|renal cortex|renal medulla|renal pyramid)\b/.test(words)) return 'kidney';

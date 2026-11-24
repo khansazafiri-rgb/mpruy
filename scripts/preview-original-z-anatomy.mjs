@@ -10,6 +10,12 @@ import {createRequire} from 'node:module';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createServer} from 'node:http';
 import {privateAtlasPlugin} from './preview-private-atlas-expansion.mjs';
+import {patchPrivateSourceRuntime,patchPrivatePanel} from './z-anatomy-private-runtime.mjs';
+import {patchNativeEngine,patchNativeUI,patchNativePanel} from './z-anatomy-private-integration.mjs';
+import {auditNativeInventory} from './z-anatomy-native-inventory-audit.mjs';
+import {inspectNativeGlb,finalQcSummary} from './z-anatomy-final-qc.mjs';
+import {buildHraRegistry,serveHraReference} from './atlas-hra-private-reference.mjs';
+import {writeClinicalPriorityAudit} from './atlas-clinical-priority-audit.mjs';
 import {createLabPreviewServer,checkBuilds,ROOTS} from './preview-4d-lab.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
@@ -46,7 +52,7 @@ function blender(){
  if(!process.env.BLENDER_BIN&&spawnSync('blender',['--version'],{encoding:'utf8'}).status===0)return 'blender';
  throw Error('Blender unavailable. Install from https://www.blender.org/download/ or set BLENDER_BIN to the executable. No source data changed.');
 }
-function sourcePlugin(applied){
+function sourcePlugin(applied,hraEnabled){
  return {name:'medcoel-z-anatomy-private-native-frame',enforce:'pre',transform(code,id){
   const p=path.relative(atlasRoot,id.split('?')[0]).split(path.sep).join('/');
   if(p==='src/viewer/bp3dSource.js'){
@@ -54,16 +60,29 @@ function sourcePlugin(applied){
    assert.equal(code.split(start).length,2);
    code=code.replace(start,"function frameGroup() { return new THREE.Group(); }\nfunction unusedBp3dFrameGroup() {");
    code=code.replace("node.userData.source = 'bodyparts3d'","node.userData.source = 'z-anatomy-original-private'");
+   code=patchPrivateSourceRuntime(code);
+  }else if(p==='src/atlas/catalog.js'){
+   const old="layers:['Struktur sumber']";
+   assert.equal(code.split(old).length,2,'Private neural group layer anchor missing');
+   code=code.replace(old,"layers:['Cabang perifer','Saraf utama & pleksus','Sistem saraf pusat']");
+   const lymphLayers='layers: ["Organ limfoid"],';
+   assert.equal(code.split(lymphLayers).length,2,'Private lymphatic layer anchor missing');
+   code=code.replace(lymphLayers,"layers: ['Nodus limfatik','Pembuluh regional','Trunkus, duktus & organ limfoid'],");
   }else if(p==='src/atlas/bp3dPanel.js'){
+   code=patchNativePanel(patchPrivatePanel(code));
    code=code.replaceAll('BodyParts3D','Z-Anatomy (sumber asli)').replaceAll('Kembali ke model Atlas','Keluar dari pratinjau privat');
   }else if(p==='src/atlas/engine.js'){
+   code=patchNativeEngine(code);
    code=code.replaceAll('BodyParts3D (pratinjau lokal','Z-Anatomy (pratinjau lokal');
+  }else if(p==='src/atlas/ui.js'){
+   code=patchNativeUI(code);
   }else if(p==='src/main.js'){
    // Retain the old catalogue as the denominator for coverage; the existing
    // bp3dHas filter prevents unavailable names from being loaded.
    const anchor='    systems.nervous=[];';
    assert.equal(code.split(anchor).length,2,'Private inventory transform missing');
    code=code.replace("    if (!systems.nervous.length) throw new Error('No private nervous structures');","    // Absence is reported as unavailable, not filled by a legacy source.");
+   if(hraEnabled)code="import {mountHraReference} from './viewer/hraPrivateReference.js';\nif(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mountHraReference,{once:true});else mountHraReference();\n"+code;
   }else return null;
   applied.add(p);return {code,map:null};
  }};
@@ -71,6 +90,8 @@ function sourcePlugin(applied){
 async function main(){
  assert.equal(fs.realpathSync(privateRoot),privateRoot);
  const bin=blender();
+ execFileSync(process.execPath,['--test',path.join(root,'scripts/z-anatomy-private-runtime.test.mjs'),path.join(root,'scripts/z-anatomy-private-integration.test.mjs'),path.join(root,'scripts/z-anatomy-final-qc.test.mjs')],{stdio:'inherit'});
+ execFileSync(bin,['--background','--factory-startup','--disable-autoexec','--python-exit-code','1','--python',path.join(root,'scripts/test-original-z-anatomy-export.py')],{stdio:'inherit'});
  const sourceDir=path.join(privateRoot,'z-anatomy-official-'+revision.slice(0,12));fs.mkdirSync(sourceDir,{recursive:true});assert.equal(fs.realpathSync(sourceDir),sourceDir);
  const archive=await acquire(sourceDir,'Z-Anatomy.zip',200*1024*1024),license=await acquire(sourceDir,'License.txt',256*1024);
  const out=fs.mkdtempSync(path.join(privateRoot,'z-anatomy-native-preview-')),pack=path.join(out,'pack'),dist=path.join(out,'atlas-dist');
@@ -79,33 +100,66 @@ async function main(){
  const inv=read(local(pack,'inventory.json')),report=read(local(out,'source-recovery-report.json'));
  assert(inv.kind==='z-anatomy-original-source-private'&&inv.approvedForCommercialDistribution===false&&report.publicRelease==='NO_GO');
  assert.equal(inv.converted.length,report.total);
- const names=new Set(),ids=new Set();
+ const nativeAudit=auditNativeInventory(inv);
+ write(path.join(out,'native-inventory-audit.json'),nativeAudit);
+ console.log('NATIVE INVENTORY AUDIT',JSON.stringify({passed:nativeAudit.passed,groups:nativeAudit.groups,unavailableGroups:nativeAudit.unavailableGroups}));
+ assert(nativeAudit.passed,'Native inventory metadata failed; see '+path.join(out,'native-inventory-audit.json'));
+ const names=new Set(),ids=new Set(),modelRoutes=new Map();
+ const geometry={verified:0,triangles:0,bytes:0};
  for(const e of inv.converted){
   assert(!names.has(e.name)&&!ids.has(e.id)&&e.approvedForDistribution===false);
   assert(/^[a-z0-9-]+$/.test(e.id)&&e.modelPath==='./structures/'+e.id+'/model.glb');
   const l=read(local(pack,'structures/'+e.id+'/lineage.json'));
   assert.equal(l.approvedForDistribution,false);assert.equal(l.generatedGLBSHA256,e.glbSha256);assert.equal(await hash(local(pack,e.modelPath)),e.glbSha256);
+  const g=inspectNativeGlb(fs.readFileSync(local(pack,e.modelPath)),e,l);
+  geometry.verified++;geometry.triangles+=g.triangles;geometry.bytes+=g.bytes;
+  modelRoutes.set('/anatomy/viewer/bp3d/'+e.modelPath.slice(2),{file:local(pack,e.modelPath),bytes:g.bytes});
   names.add(e.name);ids.add(e.id);
  }
+ let hra=null;
+ if(process.env.MEDCOEL_HRA_REFERENCE!=='0'){
+  try{hra=await buildHraRegistry(privateRoot);}
+  catch(error){hra={assets:new Map(),blocked:[{reason:String(error.message)}]};}
+ }
+ if(hra)console.log('HRA INDEPENDENT REFERENCE',JSON.stringify({verified:hra.assets.size,blocked:hra.blocked.length,bodyOverlay:false}));
+ const clinical=writeClinicalPriorityAudit(out,{inventory:inv,hra});
+ const finalQc=finalQcSummary({inv,nativeAudit,geometry,clinical,hra,vascular:read(local(out,'vascular-source-audit.json')),neural:read(local(out,'neural-source-audit.json')),lymphatic:read(local(out,'lymphatic-source-audit.json')),organs:read(local(out,'organ-source-audit.json'))});
+ write(path.join(out,'final-qc-report.json'),finalQc);
+ console.log('FINAL SOURCE QC',JSON.stringify({geometry,groups:finalQc.groups,blockers:finalQc.blockers,publicRelease:'NO_GO'}));
+ write(path.join(out,'hra-reference-review.json'),{verified:hra?.assets.size||0,blocked:hra?.blocked||[],
+  referenceObjects:[...(hra?.assets.values()||[])].map(a=>a.public),bodyOverlay:false,publicRelease:'NO_GO'});
  const req=createRequire(path.join(atlasRoot,'package.json')), {build}=await import(pathToFileURL(req.resolve('vite')).href);
  const applied=new Set(),specific=new Set();
  process.chdir(atlasRoot);
  try{await build({root:atlasRoot,configFile:path.join(atlasRoot,'vite.config.js'),base:'/anatomy/viewer/',
-  plugins:[privateAtlasPlugin(applied),sourcePlugin(specific)],build:{outDir:dist,emptyOutDir:true}});}
+  plugins:[privateAtlasPlugin(applied),sourcePlugin(specific,Boolean(hra))],build:{outDir:dist,emptyOutDir:true}});}
  finally{process.chdir(root);}
  assert.equal(applied.size,4,'Private containment patches not applied');
- assert.equal(specific.size,4,'Source frame/label patches not applied');
+ assert.equal(specific.size,6,'Source frame/label patches not applied');
  const roots={...ROOTS,atlas:dist,bp3d:pack},checked=await checkBuilds(roots);
  assert(checked.ok,'Preview preflight: '+checked.problems.join('; '));
- const port=Number(process.env.PORT||4184);assert(Number.isInteger(port)&&port>=1024&&port<=65535);
+ const port=Number(process.env.PORT||4185);assert(Number.isInteger(port)&&port>=1024&&port<=65535);
  const handler=createLabPreviewServer(roots).listeners('request')[0];
  const server=createServer((req,res)=>{
   if(req.headers.host!=='127.0.0.1:'+port||!['GET','HEAD'].includes(req.method)||!req.url?.startsWith('/anatomy/viewer/')){
    res.writeHead(403);res.end('Private loopback only');return;
   }
-  const u=new URL(req.url,'http://127.0.0.1:'+port);
-  if(u.pathname.startsWith('/anatomy/viewer/models/')&&u.pathname.endsWith('.glb')){
-   res.writeHead(404);res.end('Legacy model unavailable in this source-specific preview');return;
+  let u,decoded;
+  try{u=new URL(req.url,'http://127.0.0.1:'+port);decoded=decodeURIComponent(u.pathname);}
+  catch{res.writeHead(400);res.end('Invalid path');return;}
+  if(decoded!==u.pathname||decoded.includes('\\')||decoded.includes('\0')||!decoded.startsWith('/anatomy/viewer/')){
+   res.writeHead(404);res.end('Private path not allowlisted');return;
+  }
+  const model=modelRoutes.get(decoded);
+  if(model){
+   // Serve only the pre-verified allowlist; do not read GLBs again on HEAD.
+   res.writeHead(200,{'Content-Type':'model/gltf-binary','Content-Length':model.bytes,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
+   if(req.method==='HEAD'){res.end();return;}
+   const stream=createReadStream(model.file);stream.on('error',()=>res.destroy());res.on('close',()=>stream.destroy());stream.pipe(res);return;
+  }
+  if(hra&&serveHraReference(req,res,hra))return;
+  if(/\.glb$/i.test(decoded)||/\/models\//i.test(decoded)||(/\/bp3d\//i.test(decoded)&&decoded!=='/anatomy/viewer/bp3d/inventory.json')){
+   res.writeHead(404);res.end('Model unavailable in this source-specific preview');return;
   }
   if((u.pathname==='/anatomy/viewer/'||u.pathname==='/anatomy/viewer/index.html')&&(u.searchParams.get('models')!=='bp3d'||u.searchParams.get('privateExpansion')!=='1')){
    res.writeHead(302,{Location:'/anatomy/viewer/?models=bp3d&privateExpansion=1'});res.end();return;
@@ -116,8 +170,33 @@ async function main(){
  const base='http://127.0.0.1:'+port;
  try{
   const resp=await fetch(base+'/anatomy/viewer/bp3d/inventory.json');assert(resp.ok);assert.equal((await resp.json()).converted.length,inv.converted.length);
-  assert.equal((await fetch(base+'/anatomy/viewer/models/nervous.glb',{method:'HEAD'})).status,404);
+  for(const system of ['skeletal','muscular','joints','cardiovascular','nervous','lymphatic','visceral']){
+   assert.equal((await fetch(base+'/anatomy/viewer/models/'+system+'.glb',{method:'HEAD'})).status,404);
+  }
+  // Actual HTTP routes: each exported model is reachable and has GLB MIME.
+  // HEAD checks do not load a second copy of each model into WebGL.
+  let routeCount=0;const queue=[...inv.converted];
+  const routeWorker=async()=>{while(queue.length){
+   const e=queue.shift();const response=await fetch(base+'/anatomy/viewer/bp3d/'+e.modelPath.slice(2),{method:'HEAD',signal:AbortSignal.timeout(30000)});
+   assert(response.ok&&response.headers.get('content-type')?.includes('model/gltf-binary'),'GLB route failed: '+e.name);routeCount++;
+  }};
+  await Promise.all(Array.from({length:4},routeWorker));
+  finalQc.httpModelRoutesVerified=routeCount;
+  assert.equal(routeCount,inv.converted.length);
+  assert.equal((await fetch(base+'/anatomy/viewer/bp3d/source.blend',{method:'HEAD'})).status,404);
+  assert.equal((await fetch(base+'/anatomy/viewer/%6dodels/muscular.glb',{method:'HEAD'})).status,404);
+  assert.equal((await fetch(base+'/anatomy/viewer/Models/muscular.GLB',{method:'HEAD'})).status,404);
+  assert.equal((await fetch(base+'/anatomy/viewer/bp3d/structures/not-listed/model.glb',{method:'HEAD'})).status,404);
+  console.log('VASCULAR SOURCE AUDIT:',path.join(out,'vascular-source-audit.json'));
+  console.log('NEURAL SOURCE AUDIT:',path.join(out,'neural-source-audit.json'));
+  if(hra){const res=await fetch(base+'/anatomy/viewer/hra-reference/inventory.json');assert(res.ok);assert.equal((await res.json()).items.length,hra.assets.size);}
+  console.log('LYMPHATIC SOURCE AUDIT:',path.join(out,'lymphatic-source-audit.json'));
+  console.log('ORGAN SOURCE AUDIT:',path.join(out,'organ-source-audit.json'));
+  console.log('CLINICAL PRIORITY AUDIT:',path.join(out,'clinical-priority-audit.json'));
   console.log('SOURCE RECOVERY REPORT:',path.join(out,'source-recovery-report.json'));
+  finalQc.httpSmoke='PASS';finalQc.previewStatus='PRIVATE_CANDIDATE_READY_FOR_BROWSER';
+  write(path.join(out,'final-qc-report.json'),finalQc);
+  console.log('FINAL QC REPORT:',path.join(out,'final-qc-report.json'));
   console.log('Z-ANATOMY SOURCE PREVIEW READY:',base+'/anatomy/viewer/?models=bp3d&privateExpansion=1');
   console.log('Source-native independent body; no overlay, no production changes. Public release NO_GO.');
  }catch(e){server.close();throw e;}

@@ -1,9 +1,14 @@
 """Headless, source-native Z-Anatomy export. Never enables upstream Blender scripts.
-Only exact catalogue labels and explicitly named peripheral nerves. No public output.
+Exact catalogue labels and explicit peripheral nerve identities; evaluate source meshes and curves. No public output.
 """
 import bpy, sys, os, re, json, zipfile, hashlib, struct, math, pathlib, shutil
 from array import array
 from mathutils import Vector
+# Resolve MEDCOEL's own sibling module, never source-archive Python.
+sys.path.insert(0,str(pathlib.Path(__file__).resolve().parent))
+from z_anatomy_neural_identity import neural_identity, neural_audit, canonical as neural_key
+from z_anatomy_lymphatic_identity import lymphatic_identity, lymphatic_audit, canonical as lymphatic_key
+from z_anatomy_organ_identity import organ_identity, organ_audit, catalogue_index as organ_catalogue_index, canonical as organ_key
 
 def require(ok, message):
     if not ok:
@@ -18,6 +23,60 @@ def key(n):
     m=re.search(r'\.(l|r)$',n)
     if m: n=('left ' if m.group(1)=='l' else 'right ')+n[:-2]
     return n
+def extra_identity(label):
+    # Exact named source structures, never infer connections or create tubes.
+    neural=neural_identity(label)
+    if neural: return neural
+    lymphatic=lymphatic_identity(label)
+    if lymphatic: return lymphatic
+    organ=organ_identity(label)
+    if organ: return organ
+    side=re.match(r'^(left|right) (.+)$',label)
+    base=side.group(2) if side else label
+    groups=[
+      ('cardiovascular','arterial',{'common carotid artery','internal carotid artery','external carotid artery','vertebral artery','superior thyroid artery','ascending pharyngeal artery','lingual artery','facial artery','occipital artery','posterior auricular artery','maxillary artery','superficial temporal artery','basilar artery','anterior communicating artery','posterior communicating artery','middle cerebral artery','anterior cerebral artery','posterior cerebral artery'}),
+      ('cardiovascular','venous',{'internal jugular vein','external jugular vein','anterior jugular vein','vertebral vein','brachiocephalic vein','subclavian vein'})
+    ]
+    for system,group,names in groups:
+        if label not in names and base not in names: continue
+        regions=['whole']
+        if group in {'arterial','venous'}: regions=['headNeck','thorax']
+        return {'source':system,'group':group,'layer':0,'regions':regions}
+    return None
+
+def vascular_group(label, fallback=None):
+    # The head term precedes "of ..."; the organ supplied does not determine vessel class.
+    # Preserve explicit arterial/venous arches and named trunks without guessing generic branches.
+    n=key(label)
+    head=n.split(' of ',1)[0]
+    arterial=bool(re.search(r'\b(artery|arteries|arteriole|arterial|aorta)\b',head))
+    venous=bool(re.search(r'\b(vein|veins|venule|venous|vena cava)\b',head))
+    if arterial and not venous: return 'arterial'
+    if venous and not arterial: return 'venous'
+    if re.search(r'\b(artery|arteries|arterial|aorta)\b',n) and not re.search(r'\b(vein|veins|venous|vena cava)\b',n) and re.search(r'\b(branch|branches)\b',head): return 'arterial'
+    if re.search(r'\b(vein|veins|venous|vena cava)\b',n) and not re.search(r'\b(artery|arteries|arterial|aorta)\b',n) and re.search(r'\b(tributary|tributaries|branch|branches)\b',head): return 'venous'
+    if n in {'brachiocephalic trunk','celiac trunk','coeliac trunk','pulmonary trunk','arch of aorta'}: return 'arterial'
+    if n in {'coronary sinus','azygos vein','hemiazygos vein'}: return 'venous'
+    return fallback
+
+def vascular_meta(name,meta):
+    if meta['source']!='cardiovascular': return meta
+    n=key(name)
+    group=vascular_group(n,meta['group'])
+    if group not in {'arterial','venous','heart'}: return meta
+    result=dict(meta)
+    result['group']=group
+    if group in {'arterial','venous'}:
+        layer=0
+        if re.search(r'\b(aorta|vena cava|common carotid|brachiocephalic|subclavian|pulmonary trunk)\b',n): layer=2
+        elif re.search(r'\b(axillary|brachial|radial|ulnar|femoral|popliteal|tibial|iliac|jugular|renal|hepatic|portal|mesenteric|coronary|carotid|vertebral|basilar|saphenous|cephalic|basilic)\b',n): layer=1
+        result['layer']=layer
+        regions=set(meta.get('regions',[]))
+        if re.search(r'\b(carotid|jugular|vertebral artery|vertebral vein|cerebral artery|facial artery|maxillary artery|lingual artery|superficial temporal artery)\b',n): regions.add('headNeck')
+        if re.search(r'\b(common carotid|internal jugular|brachiocephalic|subclavian|coronary|pulmonary)\b',n): regions.add('thorax')
+        result['regions']=sorted(regions-{'whole'}) or ['whole']
+    return result
+
 def write(p,v):
     p.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def pad(data,byte=b'\0'):
@@ -37,7 +96,10 @@ def glb(pos,norm,bounds,lineage):
     return struct.pack('<III',0x46546c67,2,28+len(j)+len(b))+struct.pack('<II',len(j),0x4e4f534a)+j+struct.pack('<II',len(b),0x004e4942)+b
 
 def geometry(obj,deps,scale):
-    ev=obj.evaluated_get(deps); mesh=ev.to_mesh()
+    # Blender evaluates bevel depth, taper and modifiers from the publisher.
+    # Never give an unbeveled centreline an invented vessel radius.
+    ev=obj.evaluated_get(deps); mesh=ev.to_mesh(preserve_all_data_layers=False,depsgraph=deps)
+    require(mesh is not None,'Source object has no evaluated surface')
     try:
         mesh.calc_loop_triangles()
         require(0<len(mesh.loop_triangles)<=1500000,'Empty or oversized mesh')
@@ -74,8 +136,10 @@ def main():
     archive,licensefile,catalogfile,out=map(pathlib.Path,args[:4]); revision=args[4]
     require(re.fullmatch('[a-f0-9]{40}',revision),'Unpinned source')
     require(out.is_dir() and not out.is_symlink() and 'licensing-quarantine' in out.parts,'Private output required')
-    cat=json.loads(catalogfile.read_text()); catalog={}
-    for n,m in cat.items(): catalog.setdefault(key(n),[]).append((n,m))
+    cat=json.loads(catalogfile.read_text()); catalog={}; lymph_catalog={}
+    for n,m in cat.items():
+        catalog.setdefault(key(n),[]).append((n,m))
+        if m.get('source')=='lymphatic': lymph_catalog.setdefault(lymphatic_key(n),[]).append((n,m))
     source_license=licensefile.read_text(encoding='utf-8',errors='replace')
     require('CC-BY-SA 4.0' in source_license or 'Attribution-ShareAlike 4.0' in source_license,'Unexpected publisher license notice')
     source_hash=digest(archive)
@@ -90,33 +154,73 @@ def main():
     require(math.isfinite(scale) and scale>0,'Invalid source unit scale')
     # Never assign unclear third-party structures based on a shape or substring.
     restricted=re.compile(r'\b(kidney|renal pelvis|renal calyx|calyces|cochlea|vestibule|tympanic|malleus|incus|stapes|inner ear|semicircular duct|semicircular canal)\b',re.I)
-    peripheral={'median nerve','ulnar nerve','radial nerve','sciatic nerve','femoral nerve','tibial nerve','common fibular nerve','deep fibular nerve','superficial fibular nerve','musculocutaneous nerve','axillary nerve','obturator nerve','brachial plexus','lumbar plexus','sacral plexus'}
     byname={}
+    source_inventory=[]
+    type_counts={}
     for obj in scene.objects:
-        if obj.type=='MESH': byname.setdefault(key(obj.name),[]).append(obj)
+        type_counts[obj.type]=type_counts.get(obj.type,0)+1
+        source_inventory.append({"name":obj.name,"type":obj.type,"collections":[c.name for c in obj.users_collection],
+            "parent":obj.parent.name if obj.parent else None,"modifiers":[m.type for m in obj.modifiers],
+            "curveEvidence":({"splines":len(obj.data.splines),"bevelDepth":float(obj.data.bevel_depth),"bevelObject":obj.data.bevel_object.name if obj.data.bevel_object else None,"extrude":float(obj.data.extrude)} if obj.type=="CURVE" else None)})
+        if obj.type in {'MESH','CURVE','SURFACE'}: byname.setdefault(key(obj.name),[]).append(obj)
+    write(out/'source-object-inventory.json',source_inventory)
+    print("SOURCE OBJECT TYPES",type_counts,flush=True)
     pack=out/'pack'; (pack/'structures').mkdir(parents=True)
-    converted=[]; blocked=[]; signatures=set()
+    converted=[]; blocked=[]; signatures=set(); unmatched=[]; excluded=[]
+    # Evaluate collections hidden in the source view layer; leave the original file unchanged.
+    def include_collection(layer):
+        layer.exclude=False
+        layer.hide_viewport=False
+        for child in layer.children: include_collection(child)
+    include_collection(bpy.context.view_layer.layer_collection)
+    for collection in bpy.data.collections: collection.hide_viewport=False
+    for objects in byname.values():
+        for obj in objects:
+            obj.hide_viewport=False
+            try: obj.hide_set(False)
+            except RuntimeError: pass
+    bpy.context.view_layer.update()
     deps=bpy.context.evaluated_depsgraph_get()
+    organ_catalog=organ_catalogue_index(cat)
+    neural_names={}; lymph_names={}; organ_names={}
+    for label in byname:
+        if neural_identity(label): neural_names.setdefault(neural_key(label),[]).append(label)
+        if lymphatic_identity(label) or lymphatic_key(label) in lymph_catalog: lymph_names.setdefault(lymphatic_key(label),[]).append(label)
+        if organ_identity(label) or organ_key(label) in organ_catalog: organ_names.setdefault(organ_key(label),[]).append(label)
     for label,objects in sorted(byname.items()):
         matches=catalog.get(label,[])
-        if restricted.search(label): continue
+        if not matches: matches=lymph_catalog.get(lymphatic_key(label),[])
+        if not matches: matches=organ_catalog.get(organ_key(label),[])
+        if restricted.search(label):
+            excluded.append({'name':label,'reason':'known restricted source identity'});continue
         if len(matches)==1:
             name,meta=matches[0]
-        elif len(matches)==0 and re.sub(r'^(left|right) ','',label) in peripheral:
+        elif len(matches)==0 and extra_identity(label):
             name=objects[0].name
-            meta={"source":"nervous","group":"nervous","layer":0,"regions":["whole"]}
+            meta=extra_identity(label)
         else:
-            continue
+            unmatched.append({'name':label,'objects':[{'name':o.name,'type':o.type,'collections':[c.name for c in o.users_collection]} for o in objects],'reason':'no unique supported identity'});continue
         if len(objects)!=1:
             blocked.append({"name":name,"reason":"ambiguous source object name"});continue
+        if meta['source']=='nervous' and len(neural_names.get(neural_key(label),[]))>1:
+            blocked.append({'name':name,'reason':'ambiguous synonymous source objects; no automatic merging'});continue
+        if meta['source']=='lymphatic':
+            if len(lymph_names.get(lymphatic_key(label),[]))>1:
+                blocked.append({'name':name,'reason':'ambiguous synonymous lymphatic source objects; no automatic merging'});continue
+            meta=lymphatic_identity(name,meta)
+        if organ_identity(name,meta):
+            if len(organ_names.get(organ_key(label),[]))>1:
+                blocked.append({'name':name,'reason':'ambiguous synonymous organ source objects; no automatic merging'});continue
+            meta=organ_identity(name,meta)
         obj=objects[0]
+        meta=vascular_meta(name,meta)
         try:
             pos,norm,bounds,skipped=geometry(obj,deps,scale)
             sig=hashlib.sha256(pos.tobytes()).hexdigest()
             require(sig not in signatures,'Duplicate exact position buffer')
             ident='za-'+hashlib.sha256(obj.name.encode()).hexdigest()[:24]
             lineage={"source":"Z-Anatomy original publisher archive","revision":revision,"archiveSHA256":source_hash,
-              "sourceBlendSHA256":blend_hash,"sourceObjectName":obj.name,"sourceCollections":[c.name for c in obj.users_collection],
+              "sourceBlendSHA256":blend_hash,"sourceObjectName":obj.name,"sourceObjectType":obj.type,"sourceModifiers":[m.type for m in obj.modifiers],"sourceCollections":[c.name for c in obj.users_collection],
               "sourceLicenseNoticeSHA256":digest(licensefile),"coordinateFrame":"source Blender world Y-up metres",
               "sceneUnitScale":scale,"geometryPositionSHA256":sig,"degenerateTrianglesOmitted":skipped,
               "registrationValidated":False,"geometryAnatomyValidated":False,"approvedForDistribution":False,
@@ -126,7 +230,7 @@ def main():
             lineage["generatedGLBSHA256"]=h; write(target/'lineage.json',lineage)
             converted.append({"id":ident,"name":name,"system":meta["source"],"group":meta["group"],
               "modelPath":"./structures/"+ident+"/model.glb","glbSha256":h,"fmaId":None,
-              "triangles":len(pos)//9,"approvedForDistribution":False,"privateAtlasMeta":{**meta,"box":bounds}})
+              "triangles":len(pos)//9,"sourceObjectType":obj.type,"approvedForDistribution":False,"privateAtlasMeta":{**meta,"box":bounds}})
             signatures.add(sig)
             if len(converted)%100==0: print("Z-ANATOMY EXPORTED",len(converted),flush=True)
         except Exception as e: blocked.append({"name":name,"reason":str(e)})
@@ -141,7 +245,33 @@ def main():
          "approvedForCommercialDistribution":False,"converted":converted,"summary":{"converted":len(converted)}}
     write(pack/'inventory.json',inv)
     present={e['name'] for e in converted}
-    write(out/'source-recovery-report.json',{"total":len(converted),"groups":groups,"skeletonHeightMetres":height,"blocked":blocked,
+    # Record all source names and the specific reason each matching vascular entry is absent.
+    status_by_name={key(e['name']):e for e in converted}
+    blocked_by_name={key(e['name']):e['reason'] for e in blocked}
+    vascular=[]
+    all_by_name={}
+    for record in source_inventory: all_by_name.setdefault(key(record['name']),[]).append(record)
+    for name,meta in cat.items():
+        if meta['source']!='cardiovascular': continue
+        k=key(name); e=status_by_name.get(k)
+        objs=all_by_name.get(k,[])
+        supported=byname.get(k,[])
+        status='EXPORTED_CANDIDATE' if e else 'EXPORT_BLOCKED' if k in blocked_by_name else 'SOURCE_PRESENT_NOT_EXPORTED' if supported else 'UNSUPPORTED_SOURCE_OBJECT_TYPE' if objs else 'NO_EXACT_SOURCE_OBJECT'
+        vascular.append({'name':name,'group':vascular_group(name,meta['group']),'status':status,
+          'sourceObjects':objs,
+          'modelId':e['id'] if e else None,'reason':blocked_by_name.get(k)})
+    write(out/'vascular-source-audit.json',{'rows':vascular,'sourceRevision':revision,'continuityValidated':False,'publicRelease':'NO_GO'})
+    neural_report=neural_audit(source_inventory,converted,blocked,excluded)
+    write(out/'neural-source-audit.json',neural_report)
+    print('NEURAL SOURCE COVERAGE',neural_report['summary'],flush=True)
+    lymph_report=lymphatic_audit(cat,source_inventory,converted,blocked,excluded)
+    write(out/'lymphatic-source-audit.json',lymph_report)
+    print('LYMPHATIC SOURCE COVERAGE',lymph_report['exportedByKind'],flush=True)
+    organ_report=organ_audit(cat,source_inventory,converted,blocked,excluded)
+    write(out/'organ-source-audit.json',organ_report)
+    print('ORGAN SOURCE COVERAGE',organ_report['summary'],flush=True)
+    write(out/'source-recovery-report.json',{"total":len(converted),"groups":groups,"emptyGroups":sorted(({m["group"] for m in cat.values()}|{"nervous"})-set(groups)),"sourceObjectTypes":type_counts,"convertedObjectTypes":{t:sum(e["sourceObjectType"]==t for e in converted) for t in type_counts},"unmatched":unmatched,"excluded":excluded,"skeletonHeightMetres":height,"blocked":blocked,
         "missingCatalogue":[n for n in cat if n not in present],"sourceRevision":revision,"publicRelease":"NO_GO","clinicalValidation":False})
     print("Z-ANATOMY SOURCE EXPORT COMPLETE",len(converted),groups,flush=True)
-main()
+if __name__ == '__main__':
+    main()

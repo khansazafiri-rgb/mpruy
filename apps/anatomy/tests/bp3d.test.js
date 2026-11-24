@@ -63,6 +63,13 @@ describe('materials', () => {
   });
   it.each([
     ['left lung','visceral','respiratory','lung'],
+    ['Anterior segmental bronchus of right lung','visceral','respiratory','airway'],
+    ['Visceral pleura of left lung','visceral','respiratory','pleura'],
+    ['Superior lobe of right lung','visceral','respiratory','lung'],
+    ['Adenohypophysis','visceral','endocrine','endocrine'],
+    ['Pineal gland','visceral','endocrine','endocrine'],
+    ['Suprarenal gland.l','visceral','endocrine','endocrine'],
+    ['Pancreas','visceral','digestive','pancreas'],
     ['right main bronchus','visceral','respiratory','airway'],
     ['left coronary artery','cardiovascular','heart','artery'],
     ['pulmonary vein','cardiovascular','heart','vein'],
@@ -83,6 +90,13 @@ describe('materials', () => {
     ['adipose tissue','muscular','muscular','adipose'],
     ['artery of mesentery','cardiovascular','arterial','artery'],
     ['lymph node of mesentery','lymphatic','lymphatic','lymphatic'],
+    ['left lobe of thymus','lymphatic','lymphatic','lymphoidOrgan'],
+    ['palatine tonsil.l','lymphatic','lymphatic','lymphoidOrgan'],
+    ['node of arch of azygos vein','lymphatic','lymphatic','lymphatic'],
+    ['thoracic duct','lymphatic','lymphatic','lymphaticTrunk'],
+    ['cisterna chyli','lymphatic','lymphatic','lymphaticTrunk'],
+    ['left jugular lymphatic trunk','lymphatic','lymphatic','lymphaticTrunk'],
+    ['efferent lymphatic vessel','lymphatic','lymphatic','lymphaticVessel'],
     ['parietal peritoneum','visceral','digestive','peritoneum']
   ])('assigns a distinct educational material to %s', (name,system,group,expected) => {
     expect(tissueClass({name,system,group})).toBe(expected);
