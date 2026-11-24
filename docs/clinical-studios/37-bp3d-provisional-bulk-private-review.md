@@ -108,3 +108,21 @@ npm run qc:bodyparts3d-onepass:preview -- --resume-private local-data/licensing-
 The `--resume-private` option **does not trust or bypass** the previously blocked audit. It reruns tests and the full FMA/BP/FJ, source archive checksum, GLB integrity and distribution checks before promoting any local preview. It refuses directories outside the exact private quarantine, symlinks, malformed manifest, or declared commercial clearance. It never publishes any files.
 
 On success, the original Atlas viewer loads the candidate-only batch and the launch report still reports `publicRelease: NO_GO`, pending medical review, atlas code commercial permission and exact source license review. If any audit fails, the existing private models stay untouched and production is unchanged.
+
+## Targeted gaps visible in the original MEDCOEL UI (2026-11-24)
+
+The 584-model BodyParts3D preview replaces selected Atlas source systems; it is NOT an additive geometry repair to the original Atlas UI. Original Atlas meshes may appear more complete, but they have different rights, provenance, and identity and must not be silently substituted.
+
+The existing private audit now automatically produces `focus-gaps.md`, `focus-gaps.csv`, and `focus-gaps.json` under `local-data/licensing-quarantine/bp3d-completeness-provisional/`. The report separates 8 catalogue entries for digiti minimi of the **hand** (abductor, flexor, opponens, extensor, left/right) and 6 for digiti minimi of the **foot** (abductor, flexor, opponens, left/right), plus the nasal skeleton, vertebrae/sacrum/coccyx, sternum, and all catalogued visceral structures.
+
+After syncing this branch, no conversion is necessary to regenerate this focused report from the already reviewed 584-model private package:
+
+```sh
+cd ~/mpruy
+npm run audit:bodyparts3d-full:provisional
+open local-data/licensing-quarantine/bp3d-completeness-provisional/focus-gaps.md
+```
+
+The precise number of missing structures comes from the **local actual GLB inventory**, not a guess or from the original Atlas rendering. Every row shows whether a model exists, the official FMA/BP if converted, and collision/suggestion warnings when missing. `status: converted` means source GLB exists—not correct anatomical identity, muscle origins/insertions, organ completeness, medical validation, or commercial clearance. A suspicious foot muscle must not be used to fill a hand gap.
+
+Use the missing rows to inspect exact official OBJ FJ elements and anatomical equivalence with a human reviewer. Keep the original Atlas UI unchanged and all candidate geometry privately quarantined; public release remains NO-GO pending licensing and clinical review.
