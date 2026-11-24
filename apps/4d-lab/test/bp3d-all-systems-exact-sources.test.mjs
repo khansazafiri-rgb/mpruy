@@ -55,7 +55,7 @@ test('all-systems search enumerates the complete catalogue and only selects term
  assert.ok(approvedNames.has('Abductor digiti minimi of foot.l'));
  assert.ok(approvedNames.has('Abductor digiti minimi of foot.r'));
  assert.ok(!approvedNames.has('Vertebra C3')); // name-only generic selector never guesses level synonyms
- assert.ok(!approvedNames.has('Nasal septal cartilage')); // no silent septal/nasal reorder synonyms
+ assert.ok(approvedNames.has('Nasal septal cartilage')); // exact same 3 structural tokens, different word order
  assert.equal(s.bySystem.visceral.catalog,6);
 });
 test('names from segment, adjacent bone or opposite side NEVER fill an organ, vertebra or muscle',()=>{
