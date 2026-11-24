@@ -52,7 +52,7 @@ test('PUBLIC-GATE-003: real local Caddy smoke exercises HEAD, GET, Range and unr
  const smoke=fs.readFileSync(new URL('./anatomy-caddy-smoke.mjs',import.meta.url),'utf8');
  for(const target of [
    '/anatomy/viewer/models/skeletal.glb','/anatomy/viewer/models/visceral.glb',
-   '/anatomy/viewer/bp3d/inventory.json','/anatomy/viewer/bp3d/structures/fake/model.glb',
+   '/anatomy/viewer/bp3d/inventory.json','/anatomy/viewer/bp3d/structures/unreviewed/model.glb',
    '/anatomy/4d-lab/data/atlas/ct.nrrd','/anatomy/4d-lab/data/atlas/labels.nrrd'
  ])assert.ok(smoke.includes(target),'missing smoke path '+target);
  assert.match(smoke,/assert\.equal\(response\.status,404/);
