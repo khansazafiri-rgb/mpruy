@@ -8,7 +8,7 @@ const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const q=path.join(root,'local-data/licensing-quarantine');
 export function summarizeEvidence(bp,hra,za){
  const reasons={};
- for(const r of bp.rows.filter(x=>x.status==='HOLD')){
+ for(const r of bp.rows.filter(x=>x.status!=='EXACT_RAW_GEOMETRY_MATCH')){
   const key=String(r.reason||'Unknown').slice(0,250);
   const v=reasons[key]??={count:0,examples:[]};v.count++;if(v.examples.length<3)v.examples.push(r.name);
  }
