@@ -50,6 +50,8 @@ export function patchNativeUI(code){
  code=once(code,'terms = [n, normalise(info.latinName || "")];','terms = [n, normalise(id), normalise(info.name?.en||""), normalise(info.latinName || "")];');
  code=once(code,'const image = structurePreview(id);','const image = null; // no legacy structure thumbnail in native source view');
  code=once(code,'image = !r.system && structurePreview(r.id);','image = null;');
+ if(code.split('hostedShareUrl(shareView())').length!==3)throw Error('Private share anchors changed');
+ code=code.replaceAll('hostedShareUrl(shareView())','shareView()'); // private loopback link only
  return code;
 }
 export function patchNativePanel(code){
