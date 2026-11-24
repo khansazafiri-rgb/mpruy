@@ -33,7 +33,8 @@ export const ROOTS = {
   atlas: path.join(repo, 'apps/anatomy/dist'),
   // Optional, LOCAL ONLY: official BodyParts3D review output for the Atlas preview (?models=bp3d). Gitignored, never in a dist.
   // An expanded private batch is opt-in only; never available on production or copied to dist.
-  bp3d: path.join(repo, 'local-data/licensing-quarantine', process.env.MEDCOEL_BP3D_FOCUSED === '1' ?
+  bp3d: path.join(repo, 'local-data/licensing-quarantine', process.env.MEDCOEL_BP3D_VERTEBRAL === '1' ?
+    'bp3d-vertebral' : process.env.MEDCOEL_BP3D_FOCUSED === '1' ?
     'bp3d-focused' : process.env.MEDCOEL_BP3D_PROVISIONAL === '1' ?
     'bp3d-provisional' : process.env.MEDCOEL_BP3D_REVIEWED === '1' ? 'bp3d-reviewed' : 'bp3d-batch'),
 };
