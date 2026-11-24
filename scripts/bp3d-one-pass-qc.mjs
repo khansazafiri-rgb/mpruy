@@ -58,6 +58,28 @@ export function assertPrivateQuarantinePaths(paths=PATHS){
   Object.values(paths).forEach(validate);
   return true;
 }
+// Reuse fully converted but previously BLOCKED private candidate output.
+// Selection is never trusted: the complete official FMA/BP/FJ, hashes, GLB,
+// original 470 and distribution checks MUST run again before private promotion.
+export function verifyReusableCandidateFolder(input,{privateRoot=PRIVATE,repoRoot=ROOT}={}){
+  if(typeof input!=='string'||!input.trim())throw Error('A concrete private candidate folder is required');
+  const target=path.resolve(repoRoot,input),base=path.resolve(privateRoot);
+  if(path.dirname(target)!==base||!/^bp3d-qa-new-[A-Za-z0-9_-]+$/.test(path.basename(target)))
+    throw Error('Resume folder must be a direct bp3d-qa-new-* child of licensing-quarantine');
+  if(!fs.existsSync(target)||fs.lstatSync(target).isSymbolicLink()||
+    fs.realpathSync(target)!==target)
+    throw Error('Private resume folder is missing or redirected by symlinks');
+  const inventory=JSON.parse(fs.readFileSync(path.join(target,'inventory.json'),'utf8'));
+  if(inventory.provisionalSource!==true||
+    inventory.approvedForCommercialDistribution!==false||
+    inventory.geometryRegisteredToMEDCOEL!==false||
+    inventory.legalStatus!=='NOT-CLEARED'||
+    !Array.isArray(inventory.converted)||!inventory.converted.length||
+    inventory.summary?.failed!==0)
+    throw Error('Resume manifest is not an intact, rights-blocked private candidate batch');
+  return {target,inventory};
+}
+
 function runCommand(name,args,steps){
   const label=[name,...args].join(' ');
   const result=spawnSync(name,args,{cwd:ROOT,stdio:'inherit',env:process.env});
@@ -82,7 +104,7 @@ function publishPrivateFolder(from,to){
   catch(error){if(archived)fs.renameSync(previous,to);throw error;}
   return archived?previous:null;
 }
-export async function onePass({preview=false,limitNew=120,runTests=true,root=ROOT}={}){
+export async function onePass({preview=false,limitNew=120,runTests=true,root=ROOT,resumePrivate=null}={}){
   if(root!==ROOT)throw Error('One-pass QC refuses a different source checkout');
   if(!Number.isSafeInteger(limitNew)||limitNew<1||limitNew>120)
     throw Error('Candidate limit must be 1..120');
@@ -103,12 +125,21 @@ export async function onePass({preview=false,limitNew=120,runTests=true,root=ROO
       runCommand('npm',['run','test:licensing'],result.steps);
       runCommand('npm',['run','build:anatomy'],result.steps);
     }
-    prepared=fs.mkdtempSync(path.join(PRIVATE,'bp3d-qa-new-'));
+    let inventory;
+    if(resumePrivate){
+      const cached=verifyReusableCandidateFolder(resumePrivate);
+      prepared=cached.target;
+      inventory=cached.inventory;
+      result.steps.push({command:'reuse quarantined batch (full source audit still mandatory)',
+        passed:true,models:inventory.converted.length,added:inventory.summary.provisionalNewModels});
+    }else{
+      prepared=fs.mkdtempSync(path.join(PRIVATE,'bp3d-qa-new-'));
+      inventory=await runBatch({provisional:true,includePromising:true,limitNew,
+        outputDir:prepared});
+      result.steps.push({command:'private provisional batch',passed:inventory.summary.failed===0,
+        models:inventory.converted.length,added:inventory.summary.provisionalNewModels});
+    }
     auditDir=fs.mkdtempSync(path.join(PRIVATE,'bp3d-qa-audit-'));
-    const inventory=await runBatch({provisional:true,includePromising:true,limitNew,
-      outputDir:prepared});
-    result.steps.push({command:'private provisional batch',passed:inventory.summary.failed===0,
-      models:inventory.converted.length,added:inventory.summary.provisionalNewModels});
     if(inventory.summary.failed)throw Error('Private batch contains '+inventory.summary.failed+' model conversion failures; original output preserved');
     const audit=await runAudit({batch:prepared,output:auditDir,checkGeometry:true});
     if(audit.errors.length)throw Error('GLB/FMA/BP/FJ full audit failed: '+audit.errors.slice(0,8).join('; '));
@@ -161,14 +192,15 @@ export async function onePass({preview=false,limitNew=120,runTests=true,root=ROO
   }
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
-  const args=process.argv.slice(2);
-  if(args.some(x=>!['--preview','--no-tests','--limit-new','--help'].includes(x) && !/^\d+$/.test(x))){
-    console.error('Usage: node scripts/bp3d-one-pass-qc.mjs [--preview] [--limit-new 1..120] [--no-tests]');process.exit(2);
+  const args=process.argv.slice(2), options={preview:false,runTests:true,limitNew:120,resumePrivate:null};
+  const usage='Usage: node scripts/bp3d-one-pass-qc.mjs [--preview] [--limit-new 1..120] [--resume-private local-data/licensing-quarantine/bp3d-qa-new-*] [--no-tests]';
+  for(let i=0;i<args.length;i++){
+    if(args[i]==='--preview')options.preview=true;
+    else if(args[i]==='--no-tests')options.runTests=false;
+    else if(args[i]==='--limit-new')options.limitNew=Number(args[++i]);
+    else if(args[i]==='--resume-private')options.resumePrivate=args[++i];
+    else if(args[i]==='--help'){console.log(usage);process.exit(0);}
+    else{console.error(usage);process.exit(2);}
   }
-  if(args.includes('--help'))console.log('One-pass private-source QC only. Never deploys. --preview opens the existing Atlas preview after QC.');
-  else{
-    const i=args.indexOf('--limit-new');
-    const n=i>=0?Number(args[i+1]):120;
-    await onePass({preview:args.includes('--preview'),runTests:!args.includes('--no-tests'),limitNew:n});
-  }
+  await onePass(options);
 }

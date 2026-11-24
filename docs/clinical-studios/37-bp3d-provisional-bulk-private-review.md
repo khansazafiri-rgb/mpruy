@@ -90,3 +90,21 @@ Expect `privatePreview: READY_FOR_HUMAN_REVIEW` and **`publicRelease: NO_GO`**. 
 
 If this command reports `PRIVATE REVIEW QC BLOCKED`, inspect the one-stop JSON and errors; it preserves the previous working private models and does not replace public content. Never treat a `--no-tests` source-only run as release QC.
 
+
+## Fast recovery from the 584-model run blocked at source audit (24 Nov 2026)
+
+The user Mac completed 584 real GLB conversions (470 baseline reused, 114 new, 0 conversion failures). The final audit stopped at Branch to angular gyrus.l / .r because it handled literal left/right words differently from publisher `.l` / `.r` suffixes.
+
+The reviewed fix shares a strict anatomical identity and laterality check across candidate selection and the final audit. To avoid reconverting 114 new models, **reuse the existing private GLBs** in a single command:
+
+```sh
+cd ~/mpruy
+git fetch origin
+git switch fix/bp3d-provisional-suffix-laterality-audit-20261124
+git pull --ff-only origin fix/bp3d-provisional-suffix-laterality-audit-20261124
+npm run qc:bodyparts3d-onepass:preview -- --resume-private local-data/licensing-quarantine/bp3d-qa-new-EKQhVK
+```
+
+The `--resume-private` option **does not trust or bypass** the previously blocked audit. It reruns tests and the full FMA/BP/FJ, source archive checksum, GLB integrity and distribution checks before promoting any local preview. It refuses directories outside the exact private quarantine, symlinks, malformed manifest, or declared commercial clearance. It never publishes any files.
+
+On success, the original Atlas viewer loads the candidate-only batch and the launch report still reports `publicRelease: NO_GO`, pending medical review, atlas code commercial permission and exact source license review. If any audit fails, the existing private models stay untouched and production is unchanged.

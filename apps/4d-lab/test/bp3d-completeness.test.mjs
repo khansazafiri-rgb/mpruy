@@ -88,3 +88,32 @@ test('provisional mapping cannot assert the wrong anatomy even with real FMA/BP 
    mappingReview:{queue:[]}});
  assert.ok(result.errors.some(x=>x.includes('source identity not corroborated')));
 });
+
+test('full official-source audit corroborates suffix-sided .l/.r branches without weakening anatomy checks',()=>{
+ const src=[
+   {name:'Angular gyrus branch.l',fmaId:'FMA900',bpId:'BP900'},
+   {name:'Angular gyrus branch.r',fmaId:'FMA901',bpId:'BP901'}
+ ];
+ const catalog={
+   'Branch to angular gyrus.l':{source:'cardiovascular',group:'artery',regions:['headNeck']},
+   'Branch to angular gyrus.r':{source:'cardiovascular',group:'artery',regions:['headNeck']}
+ };
+ const inv={approvedForCommercialDistribution:false,geometryRegisteredToMEDCOEL:false,
+  provisionalSource:true,converted:src.map((r,i)=>({
+    id:'branch-angular-'+(i===0?'left':'right'),
+    name:'Branch to angular gyrus.'+(i===0?'l':'r'),
+    fmaId:r.fmaId,bpId:r.bpId,mappingMethod:'provisional-name-review-NOT-validated',
+    modelPath:'./structures/branch-angular-'+(i===0?'left':'right')+'/model.glb'
+  }))};
+ const args={catalog,officialRows:src,
+  elementIndex:new Map([['FMA900',new Set(['FJ900'])],['FMA901',new Set(['FJ901'])]]),
+  archiveFiles:['FJ900.obj','FJ901.obj'],mappingReview:{queue:[]},inventory:inv};
+ const ok=auditCompleteness(args);
+ assert.deepEqual(ok.errors,[]);
+ assert.equal(ok.summary.converted,2);
+ assert.equal(ok.summary.geometryAnatomyValidated,0);
+ assert.equal(ok.summary.commercialReleaseApproved,0);
+ assert.deepEqual(auditCompleteness({...args,
+   officialRows:[src[0],{...src[1],name:'Angular gyrus branch.l'}]}).errors
+   .filter(x=>x.includes('source identity not corroborated')).length,1);
+});

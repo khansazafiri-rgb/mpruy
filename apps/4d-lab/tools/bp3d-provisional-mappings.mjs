@@ -1,9 +1,29 @@
 // PRIVATE PREVIEW ONLY. Convert source-identified candidates for visual/anatomy review;
 // never treat terminology or FMA/BP/FJ presence as medical identity verification.
 import {normalizeAnatomyName} from '../../../licensing/tools/prepare-bodyparts3d-source.mjs';
+import {semanticSourceFlags} from './bp3d-all-systems-triage.mjs';
 
 const VALID=new Set(['TERMINOLOGY_EQUIVALENT_REVIEW','PROMISING_IDENTITY_REVIEW']);
-const side=name=>{const n=' '+normalizeAnatomyName(name)+' ';return /\bleft\b/.test(n)?'left':/\bright\b/.test(n)?'right':null;};
+// A source can express laterality as ".l"/".r" (BodyParts3D catalogue),
+// as "left"/"right", or both. Normalize ONCE for selection and final QC.
+export function canonicalSourceSide(name){
+  const normalized=normalizeAnatomyName(name);
+  const matches=normalized.match(/\b(left|right)\b/g)||[];
+  const sides=[...new Set(matches)];
+  return sides.length>1?'AMBIGUOUS':sides[0]||null;
+}
+export function provisionalIdentityIssues(atlasName,officialName){
+  const issues=[...semanticSourceFlags(atlasName,officialName)];
+  const atlasSide=canonicalSourceSide(atlasName);
+  const sourceSide=canonicalSourceSide(officialName);
+  if(atlasSide==='AMBIGUOUS'||sourceSide==='AMBIGUOUS')
+    issues.push('AMBIGUOUS_LATERALITY');
+  else if(atlasSide!==sourceSide && (atlasSide||sourceSide))
+    issues.push('LATERALITY_NOT_CORROBORATED');
+  const a=anatomyClass(atlasName),b=anatomyClass(officialName);
+  if(a&&b&&a!==b)issues.push('TISSUE_CLASS_MISMATCH');
+  return [...new Set(issues)];
+}
 const anatomyClass=name=>{
   const n=normalizeAnatomyName(name);
   return ['artery','vein','muscle','cartilage','bone','ligament','nerve','tendon'].find(t=>new RegExp('\\b'+t+'\\b').test(n))||null;
@@ -41,10 +61,8 @@ export function selectProvisionalMappings({triage, officialRows, elements, zipFi
         return 'identity-collision';
       const ref=official.get(key);
       if(!ref||ref.name!==c.officialName)return 'missing-official-FMA-BP-name';
-      if(side(record.atlasName)&&side(record.atlasName)!==side(ref.name))
-        return 'source-laterality-conflict';
-      const ta=anatomyClass(record.atlasName),tb=anatomyClass(ref.name);
-      if(ta&&tb&&ta!==tb)return 'tissue-class-conflict';
+      const sourceIssues=provisionalIdentityIssues(record.atlasName,ref.name);
+      if(sourceIssues.length)return 'provisional-source-identity-'+sourceIssues.join('|');
       const required=[...(elements.get(c.fmaId)||[])].sort(),
         supplied=Array.isArray(c.fjIds)?[...c.fjIds].sort():[];
       if(!required.length||new Set(supplied).size!==supplied.length||
