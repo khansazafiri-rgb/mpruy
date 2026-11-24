@@ -8,6 +8,7 @@ from mathutils import Vector
 sys.path.insert(0,str(pathlib.Path(__file__).resolve().parent))
 from z_anatomy_neural_identity import neural_identity, neural_audit, canonical as neural_key
 from z_anatomy_lymphatic_identity import lymphatic_identity, lymphatic_audit, canonical as lymphatic_key
+from z_anatomy_organ_identity import organ_identity, organ_audit, catalogue_index as organ_catalogue_index, canonical as organ_key
 
 def require(ok, message):
     if not ok:
@@ -28,20 +29,18 @@ def extra_identity(label):
     if neural: return neural
     lymphatic=lymphatic_identity(label)
     if lymphatic: return lymphatic
+    organ=organ_identity(label)
+    if organ: return organ
     side=re.match(r'^(left|right) (.+)$',label)
     base=side.group(2) if side else label
     groups=[
-      ('visceral','endocrine',{'pituitary gland','hypophysis','adenohypophysis','neurohypophysis','pineal gland','thyroid gland','parathyroid gland','superior parathyroid gland','inferior parathyroid gland','adrenal gland','suprarenal gland'}),
-      ('visceral','respiratory',{'lung','larynx','trachea','main bronchus','principal bronchus','pleura','visceral pleura','parietal pleura'}),
       ('cardiovascular','arterial',{'common carotid artery','internal carotid artery','external carotid artery','vertebral artery','superior thyroid artery','ascending pharyngeal artery','lingual artery','facial artery','occipital artery','posterior auricular artery','maxillary artery','superficial temporal artery','basilar artery','anterior communicating artery','posterior communicating artery','middle cerebral artery','anterior cerebral artery','posterior cerebral artery'}),
       ('cardiovascular','venous',{'internal jugular vein','external jugular vein','anterior jugular vein','vertebral vein','brachiocephalic vein','subclavian vein'})
     ]
     for system,group,names in groups:
         if label not in names and base not in names: continue
         regions=['whole']
-        if group=='endocrine': regions=['abdomen'] if 'adrenal' in base or 'suprarenal' in base else ['headNeck']
-        elif group=='respiratory': regions=['headNeck','thorax'] if base in {'larynx','trachea'} else ['thorax']
-        elif group in {'arterial','venous'}: regions=['headNeck','thorax']
+        if group in {'arterial','venous'}: regions=['headNeck','thorax']
         return {'source':system,'group':group,'layer':0,'regions':regions}
     return None
 
@@ -182,13 +181,16 @@ def main():
             except RuntimeError: pass
     bpy.context.view_layer.update()
     deps=bpy.context.evaluated_depsgraph_get()
-    neural_names={}; lymph_names={}
+    organ_catalog=organ_catalogue_index(cat)
+    neural_names={}; lymph_names={}; organ_names={}
     for label in byname:
         if neural_identity(label): neural_names.setdefault(neural_key(label),[]).append(label)
         if lymphatic_identity(label) or lymphatic_key(label) in lymph_catalog: lymph_names.setdefault(lymphatic_key(label),[]).append(label)
+        if organ_identity(label) or organ_key(label) in organ_catalog: organ_names.setdefault(organ_key(label),[]).append(label)
     for label,objects in sorted(byname.items()):
         matches=catalog.get(label,[])
         if not matches: matches=lymph_catalog.get(lymphatic_key(label),[])
+        if not matches: matches=organ_catalog.get(organ_key(label),[])
         if restricted.search(label):
             excluded.append({'name':label,'reason':'known restricted source identity'});continue
         if len(matches)==1:
@@ -206,6 +208,10 @@ def main():
             if len(lymph_names.get(lymphatic_key(label),[]))>1:
                 blocked.append({'name':name,'reason':'ambiguous synonymous lymphatic source objects; no automatic merging'});continue
             meta=lymphatic_identity(name,meta)
+        if organ_identity(name,meta):
+            if len(organ_names.get(organ_key(label),[]))>1:
+                blocked.append({'name':name,'reason':'ambiguous synonymous organ source objects; no automatic merging'});continue
+            meta=organ_identity(name,meta)
         obj=objects[0]
         meta=vascular_meta(name,meta)
         try:
@@ -261,6 +267,9 @@ def main():
     lymph_report=lymphatic_audit(cat,source_inventory,converted,blocked,excluded)
     write(out/'lymphatic-source-audit.json',lymph_report)
     print('LYMPHATIC SOURCE COVERAGE',lymph_report['exportedByKind'],flush=True)
+    organ_report=organ_audit(cat,source_inventory,converted,blocked,excluded)
+    write(out/'organ-source-audit.json',organ_report)
+    print('ORGAN SOURCE COVERAGE',organ_report['summary'],flush=True)
     write(out/'source-recovery-report.json',{"total":len(converted),"groups":groups,"emptyGroups":sorted(({m["group"] for m in cat.values()}|{"nervous"})-set(groups)),"sourceObjectTypes":type_counts,"convertedObjectTypes":{t:sum(e["sourceObjectType"]==t for e in converted) for t in type_counts},"unmatched":unmatched,"excluded":excluded,"skeletonHeightMetres":height,"blocked":blocked,
         "missingCatalogue":[n for n in cat if n not in present],"sourceRevision":revision,"publicRelease":"NO_GO","clinicalValidation":False})
     print("Z-ANATOMY SOURCE EXPORT COMPLETE",len(converted),groups,flush=True)
