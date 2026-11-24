@@ -11,10 +11,7 @@ def key(value):
     return n.replace('(','').replace(')','')
 
 ALIASES={'ductus thoracicus':'thoracic duct','ductus lymphaticus dexter':'right lymphatic duct',
-         'chyle cistern':'cisterna chyli','intestinal trunk':'intestinal lymphatic trunk',
-         'jugular trunk':'jugular lymphatic trunk','subclavian trunk':'subclavian lymphatic trunk',
-         'bronchomediastinal trunk':'bronchomediastinal lymphatic trunk',
-         'lumbar trunk':'lumbar lymphatic trunk'}
+         'chyle cistern':'cisterna chyli','intestinal trunk':'intestinal lymphatic trunk'}
 MIDLINE={'thoracic duct':('abdomen','thorax','headNeck'),
          'right lymphatic duct':('headNeck','thorax'),
          'cisterna chyli':('abdomen',),
