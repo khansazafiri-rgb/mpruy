@@ -231,13 +231,16 @@ def main():
     status_by_name={key(e['name']):e for e in converted}
     blocked_by_name={key(e['name']):e['reason'] for e in blocked}
     vascular=[]
+    all_by_name={}
+    for record in source_inventory: all_by_name.setdefault(key(record['name']),[]).append(record)
     for name,meta in cat.items():
         if meta['source']!='cardiovascular': continue
         k=key(name); e=status_by_name.get(k)
-        objs=byname.get(k,[])
-        status='EXPORTED_CANDIDATE' if e else 'EXPORT_BLOCKED' if k in blocked_by_name else 'SOURCE_PRESENT_NOT_EXPORTED' if objs else 'NO_EXACT_SOURCE_OBJECT'
+        objs=all_by_name.get(k,[])
+        supported=byname.get(k,[])
+        status='EXPORTED_CANDIDATE' if e else 'EXPORT_BLOCKED' if k in blocked_by_name else 'SOURCE_PRESENT_NOT_EXPORTED' if supported else 'UNSUPPORTED_SOURCE_OBJECT_TYPE' if objs else 'NO_EXACT_SOURCE_OBJECT'
         vascular.append({'name':name,'group':vascular_group(name,meta['group']),'status':status,
-          'sourceObjects':[{'name':o.name,'type':o.type} for o in objs],
+          'sourceObjects':objs,
           'modelId':e['id'] if e else None,'reason':blocked_by_name.get(k)})
     write(out/'vascular-source-audit.json',{'rows':vascular,'sourceRevision':revision,'continuityValidated':False,'publicRelease':'NO_GO'})
     write(out/'source-recovery-report.json',{"total":len(converted),"groups":groups,"emptyGroups":sorted(({m["group"] for m in cat.values()}|{"nervous"})-set(groups)),"sourceObjectTypes":type_counts,"convertedObjectTypes":{t:sum(e["sourceObjectType"]==t for e in converted) for t in type_counts},"unmatched":unmatched,"excluded":excluded,"skeletonHeightMetres":height,"blocked":blocked,
