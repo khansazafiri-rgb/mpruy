@@ -126,3 +126,24 @@ open local-data/licensing-quarantine/bp3d-completeness-provisional/focus-gaps.md
 The precise number of missing structures comes from the **local actual GLB inventory**, not a guess or from the original Atlas rendering. Every row shows whether a model exists, the official FMA/BP if converted, and collision/suggestion warnings when missing. `status: converted` means source GLB exists—not correct anatomical identity, muscle origins/insertions, organ completeness, medical validation, or commercial clearance. A suspicious foot muscle must not be used to fill a hand gap.
 
 Use the missing rows to inspect exact official OBJ FJ elements and anatomical equivalence with a human reviewer. Keep the original Atlas UI unchanged and all candidate geometry privately quarantined; public release remains NO-GO pending licensing and clinical review.
+
+## Fast source recovery after the 584/2237 audit (24 November 2026)
+
+The previous full private audit passed with 584 converted, 1,653 missing, 0 integrity errors. It identified high-priority gaps: digiti minimi hand 6, foot 6, nasal/ethmoid 10, vertebral 25, sternum 1 and visceral 84. That is a catalogue gap report, **not** a list of approved replacement geometry.
+
+Do **not** rerun conversion or full geometry audit merely to investigate these missing source identities. Use the official publisher's *unlinked* FMA/BP/FJ representations from the same local source archive in one fast, read-only step:
+
+```sh
+cd ~/mpruy
+git fetch origin
+git switch feat/bp3d-focus-official-obj-source-discovery-20261124
+git pull --ff-only origin feat/bp3d-focus-official-obj-source-discovery-20261124
+npm run review:bodyparts3d-focus-sources
+open local-data/licensing-quarantine/bp3d-completeness-provisional/official-source-leads.csv
+```
+
+Output: `official-source-leads.csv` and `official-source-leads.json` in the existing private audit directory. Each row includes the Atlas name, official publisher name, FMA/BP, **all expected FJ elements**, whether the exact OBJ files exist in the ZIP, similarity retrieval score, and identity problems (already-used representation, side conflict, digiti minimi hand/foot confusion, wrong vertebral level). If a name has no leads, the CSV records that explicitly; that **does not** prove no geometry exists under another anatomical term.
+
+Safety: this is **name-based search only**, not source-equivalence approval, anatomical validation, new GLB conversion, or licence clearance. The cached audit's source text digests and rights-blocked manifest are checked. Source ZIP entries are listed without extracting or distributing meshes. The previous 584-model private package, production website and original Atlas UI remain unchanged.
+
+Next action is a documented clinical source-identity review of the shortlist against publisher OBJ geometry, with FMA/BP/FJ and organ-specific landmarks. Only independently reviewed, fully available sources may enter a new private conversion batch; they must never be auto-promoted to medcoel.com.
