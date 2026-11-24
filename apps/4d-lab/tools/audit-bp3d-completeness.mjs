@@ -207,10 +207,10 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
   try{const reviewed=process.argv.includes('--reviewed'),provisional=process.argv.includes('--provisional'),
-    focused=process.argv.includes('--focused');
-    if(Number(reviewed)+Number(provisional)+Number(focused)>1)
+    focused=process.argv.includes('--focused'),vertebral=process.argv.includes('--vertebral');
+    if(Number(reviewed)+Number(provisional)+Number(focused)+Number(vertebral)>1)
       throw Error('Choose only one private source audit');
-    const sourceType=focused?'focused':provisional?'provisional':reviewed?'reviewed':'baseline';
+    const sourceType=vertebral?'vertebral':focused?'focused':provisional?'provisional':reviewed?'reviewed':'baseline';
     await runAudit({checkGeometry:!process.argv.includes('--skip-geometry'),
       batch:path.join(PRIVATE,sourceType==='baseline'?'bp3d-batch':'bp3d-'+sourceType),
       output:path.join(PRIVATE,sourceType==='baseline'?'bp3d-completeness':'bp3d-completeness-'+sourceType)});}

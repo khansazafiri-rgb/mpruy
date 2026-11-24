@@ -11,6 +11,9 @@ const PRIVATE=path.join(ROOT,'local-data','licensing-quarantine');
 const batch=path.join(PRIVATE,'bp3d-focused');
 const report=path.join(PRIVATE,'bp3d-completeness-focused');
 const review=path.join(PRIVATE,'bp3d-focused-onepass-review');
+const vertebralBatch=path.join(PRIVATE,'bp3d-vertebral');
+const vertebralReport=path.join(PRIVATE,'bp3d-completeness-vertebral');
+const vertebralReview=path.join(PRIVATE,'bp3d-vertebral-onepass-review');
 const previewUrl='http://127.0.0.1:4173/anatomy/viewer/?models=bp3d:skeletal,muscular,cardiovascular,visceral';
 function requireSafePrivateTarget(target){
  const root=fs.realpathSync(PRIVATE),resolved=path.resolve(target);
@@ -33,47 +36,56 @@ function runTests(){
   if(result.status!==0)throw Error(key+' failed, source preview unchanged');
  }
 }
-function saveStatus(status){
- fs.mkdirSync(review,{recursive:true});
- fs.writeFileSync(path.join(review,'readiness.json'),JSON.stringify(status,null,2)+'\n');
+function saveStatus(status,target=review){
+ fs.mkdirSync(target,{recursive:true});
+ fs.writeFileSync(path.join(target,'readiness.json'),JSON.stringify(status,null,2)+'\n');
 }
-export async function runFocusedOnePass({openPreview=false,skipTests=false}={}){
+export async function runFocusedOnePass({openPreview=false,skipTests=false,vertebralExact=false}={}){
+ const targetBatch=vertebralExact?vertebralBatch:batch;
+ const targetReport=vertebralExact?vertebralReport:report;
+ const targetReview=vertebralExact?vertebralReview:review;
  const result={status:'BLOCKED',publicRelease:'NO_GO',medicalValidation:false,
    clinicalApproval:false,commercialRelease:false,source:'official BodyParts3D FMA/BP/FJ',
-   output:batch,report,previewUrl,existingModelsIntact:true,
+   output:targetBatch,report:targetReport,previewUrl,existingModelsIntact:true,
+   exactVertebralSourcePreview:vertebralExact,
    warnings:['Original Atlas and production assets unchanged',
      'Exact archive and Atlas code commercial redistribution rights NOT CLEARED']};
  let workingBatch=null,workingReport=null;
  try{
-  requireSafePrivateTarget(batch);requireSafePrivateTarget(report);
+  requireSafePrivateTarget(targetBatch);requireSafePrivateTarget(targetReport);
   if(!skipTests)runTests();
-  workingBatch=fs.mkdtempSync(path.join(PRIVATE,'bp3d-focused-temp-'));
-  workingReport=fs.mkdtempSync(path.join(PRIVATE,'bp3d-focused-audit-'));
+  workingBatch=fs.mkdtempSync(path.join(PRIVATE,
+    vertebralExact?'bp3d-vertebral-temp-':'bp3d-focused-temp-'));
+  workingReport=fs.mkdtempSync(path.join(PRIVATE,
+    vertebralExact?'bp3d-vertebral-audit-':'bp3d-focused-audit-'));
   const inventory=await runBatch({provisional:true,includePromising:true,limitNew:120,
-    focusShortlist:true,outputDir:workingBatch});
-  if(inventory.summary.failed||inventory.summary.focusedNewModels<1)
+    focusShortlist:true,vertebralExact,outputDir:workingBatch});
+  if(inventory.summary.failed||(vertebralExact?inventory.summary.vertebralNewModels:inventory.summary.focusedNewModels)<1)
     throw Error('Focus source conversion failed or no new source model passed');
   const audit=await runAudit({batch:workingBatch,output:workingReport,checkGeometry:true});
   if(audit.errors.length||audit.summary.converted!==inventory.converted.length||
       audit.summary.commercialReleaseApproved!==0||audit.summary.geometryAnatomyValidated!==0)
     throw Error('Full source FMA/BP/FJ or geometry integrity audit did not pass');
-  const priorModels=publishPrivateFolder(workingBatch,batch);workingBatch=null;
-  const priorAudit=publishPrivateFolder(workingReport,report);workingReport=null;
+  const priorModels=publishPrivateFolder(workingBatch,targetBatch);workingBatch=null;
+  const priorAudit=publishPrivateFolder(workingReport,targetReport);workingReport=null;
   Object.assign(result,{status:'PRIVATE_REVIEW_UNVALIDATED',privatePreview:'READY_FOR_HUMAN_REVIEW',
     previousBatch:priorModels,previousReport:priorAudit,
     priorModelsReused:inventory.summary.reusedPriorReviewModels,
-    newFocusedGlbs:inventory.summary.focusedNewModels,
+    newFocusedGlbs:vertebralExact?0:inventory.summary.focusedNewModels,
+    newExactVertebraGlbs:vertebralExact?inventory.summary.vertebralNewModels:0,
     modelCount:inventory.converted.length,
     focusedSourceSelection:inventory.focusedSourceSelection||null,
+    vertebralSourceSelection:inventory.vertebralSourceSelection||null,
     integrityErrors:0,publicRelease:'NO_GO'});
-  saveStatus(result);
-  console.log('\nPRIVATE FOCUSED GLB REVIEW READY: '+result.modelCount+
-    ' models ('+result.priorModelsReused+' reused + '+result.newFocusedGlbs+
+  saveStatus(result,targetReview);
+  console.log('\nPRIVATE '+(vertebralExact?'VERTEBRAL':'FOCUSED')+' GLB REVIEW READY: '+
+    result.modelCount+' models ('+result.priorModelsReused+' reused + '+
+    (vertebralExact?result.newExactVertebraGlbs:result.newFocusedGlbs)+
     ' newly converted); public deployment NO-GO. Original Atlas: '+previewUrl+
-    '\nReport: '+path.join(review,'readiness.json')+'\n');
+    '\nReport: '+path.join(targetReview,'readiness.json')+'\n');
   if(openPreview){
    const proc=spawnSync('npm',['run','preview:4d-lab'],{cwd:ROOT,
-     env:{...process.env,MEDCOEL_BP3D_FOCUSED:'1'},stdio:'inherit'});
+     env:{...process.env,[vertebralExact?'MEDCOEL_BP3D_VERTEBRAL':'MEDCOEL_BP3D_FOCUSED']:'1'},stdio:'inherit'});
    if(proc.status!==0 && proc.signal!=='SIGINT')
      console.error('Local preview stopped unexpectedly; the private GLB audit remains valid');
   }
@@ -81,9 +93,9 @@ export async function runFocusedOnePass({openPreview=false,skipTests=false}={}){
  }catch(error){
   result.error=String(error?.message||error);
   result.blockers=[result.error,'Medical review and source-archive redistribution permission remain absent'];
-  saveStatus(result);
-  console.error('PRIVATE FOCUSED REVIEW BLOCKED: '+result.error+
-    '\nExisting 584 GLBs and production files were not replaced.\n');
+  saveStatus(result,targetReview);
+  console.error('PRIVATE '+(vertebralExact?'VERTEBRAL':'FOCUSED')+' REVIEW BLOCKED: '+
+    result.error+'\nOriginal 470/584/602 GLBs and production files were not replaced.\n');
   process.exitCode=1;
   return result;
  }finally{
@@ -93,8 +105,9 @@ export async function runFocusedOnePass({openPreview=false,skipTests=false}={}){
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
  const args=process.argv.slice(2);
- if(args.some(x=>!['--preview','--no-tests'].includes(x))){
-  console.error('Usage: node scripts/bp3d-focused-onepass.mjs [--preview] [--no-tests]');process.exit(2);
+ if(args.some(x=>!['--preview','--no-tests','--vertebral-exact'].includes(x))){
+  console.error('Usage: node scripts/bp3d-focused-onepass.mjs [--preview] [--no-tests] [--vertebral-exact]');process.exit(2);
  }
- await runFocusedOnePass({openPreview:args.includes('--preview'),skipTests:args.includes('--no-tests')});
+ await runFocusedOnePass({openPreview:args.includes('--preview'),skipTests:args.includes('--no-tests'),
+   vertebralExact:args.includes('--vertebral-exact')});
 }
