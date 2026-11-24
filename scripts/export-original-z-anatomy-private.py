@@ -334,4 +334,5 @@ def main():
     write(out/'source-recovery-report.json',{"total":len(converted),"groups":groups,"sourceObjectTypes":type_counts,"convertedObjectTypes":{t:sum(e["sourceObjectType"]==t for e in converted) for t in type_counts},"unmatched":unmatched,"excluded":excluded,"skeletonHeightMetres":height,"blocked":blocked,
         "missingCatalogue":[n for n in cat if n not in present],"sourceRevision":revision,"publicRelease":"NO_GO","clinicalValidation":False})
     print("Z-ANATOMY SOURCE EXPORT COMPLETE",len(converted),groups,flush=True)
-main()
+if __name__ == '__main__':
+    main()
