@@ -23,19 +23,26 @@ const site=[
   '}'
 ].join('\n');
 const count=(s,re)=>(s.match(re)||[]).length;
-test('canonical Caddy template mounts ORIGINAL Lab separately and retains source-Atlas 404',()=>{
-  for(const required of [
-    'handle_path /anatomy/4d-lab/* {','root * /var/lib/medcoel/4d-lab',
-    'handle /anatomy/4d-lab/data/atlas/* {',
-    'handle_path /anatomy/viewer/* {','handle /api/* {',
-    'respond "Not Found" 404','root * /opt/medcoel/apps/web/dist'
-  ])assert.ok(canonical.includes(required),'missing '+required);
-  const atlasGuard=canonical.indexOf('handle /anatomy/4d-lab/data/atlas/* {');
-  const lab=canonical.indexOf('handle_path /anatomy/4d-lab/* {');
-  const main=canonical.lastIndexOf('\n\thandle {');
-  assert.ok(atlasGuard>=0&&lab>atlasGuard&&main>lab,'privacy deny must precede lab static routing and SPA');
-  assert.equal(count(canonical,/handle_path \/anatomy\/4d-lab\/\*/g),1);
+test('production Caddyfile retains exact security quarantine; original Lab route is separately reviewed only',()=>{
+ for(const required of [
+  'handle /anatomy/4d-lab/data/atlas/* {',
+  'handle /anatomy/viewer/bp3d/* {',
+  'handle_path /anatomy/viewer/* {',
+  'handle /api/* {','root * /opt/medcoel/apps/web/dist'
+ ])assert.ok(canonical.includes(required),'production security missing '+required);
+ assert.equal(count(canonical,/handle_path \/anatomy\/4d-lab\/\*/g),0,
+  'Do not activate the actual Lab while source rights remain blocked');
+ for(const required of [
+  'handle /anatomy/4d-lab/data/atlas/* {',
+  'handle /anatomy/4d-lab {',
+  'handle_path /anatomy/4d-lab/* {',
+  'root * /var/lib/medcoel/4d-lab'
+ ])assert.ok(snippet.includes(required),'review snippet missing '+required);
+ const bp3d=canonical.indexOf('handle /anatomy/viewer/bp3d/* {'),
+  files=canonical.indexOf('handle_path /anatomy/viewer/* {');
+ assert.ok(bp3d>=0&&bp3d<files,'private BP3D 404 must precede viewer route');
 });
+
 test('review-only Caddy candidate replaces ONLY its 4D routes, preserving unrelated services, viewer, and site',()=>{
   const next=prepare4dLabCaddy(site,snippet);
   assert.equal(count(next,/handle_path \/anatomy\/4d-lab\/\*/g),1);
