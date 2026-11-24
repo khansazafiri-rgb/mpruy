@@ -12,17 +12,27 @@ const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const q=path.join(root,'local-data/licensing-quarantine');
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
-const canonical=n=>String(n).trim().toLowerCase().replace(/\s+/g,' ').replace(/^(.*)\.([lr])$/,(_m,n,s)=>(s==='l'?'left ':'right ')+n);
+const canonical=n=>String(n).trim().toLowerCase().replace(/\s+/g,' ').replace(/^(.*)\.([lr])$/,(_m,n,s)=>(s==='l'?'left ':'right ')+n.replace(/^\((.*)\)$/,'$1')).replace(/\boesophagus\b/g,'esophagus');
+export function validateCandidateEntry(e,inventory,seen){
+ assert(typeof e.id==='string'&&/^[a-z0-9-]+$/.test(e.id)&&!seen.has(e.id)&&e.modelPath==='./structures/'+e.id+'/model.glb','Invalid candidate identity/path');
+ assert(inventory.approvedForCommercialDistribution===false&&e.state==='converted-unverified'&&(e.approvedForDistribution===false||!Object.hasOwn(e,'approvedForDistribution')),'Invalid candidate private state');
+ assert(typeof e.name==='string'&&e.name.trim()&&/^FMA\d+$/.test(e.fmaId||'')&&/^BP\d+$/.test(e.bpId||''),'Invalid publisher identity');
+}
+export function normalizeSourceLineage(entry,l){
+ if(l.sourceArchive==='isa_BP3D_4.0_obj_99.zip'||l.sourceArchive==='partof_BP3D_4.0_obj_99.zip')return {...l,legacyStaging:false};
+ assert(!l.sourceArchive&&entry.id==='expansion-'+(entry.fmaId+'-'+entry.bpId).toLowerCase()&&l.originalStaging&&l.fma===entry.fmaId&&l.bp===entry.bpId&&typeof l.name==='string'&&l.sha256===entry.glbSha256&&/^[a-f0-9]{64}$/.test(l.sourceArchiveSHA256||'')&&Array.isArray(l.sourceFJ)&&sameSet(l.sourceFJ,(l.elements||[]).map(e=>e.id)),'No exact source archive identity');
+ return {...l,sourceArchive:'isa_BP3D_4.0_obj_99.zip',archiveSHA256:l.sourceArchiveSHA256,officialName:l.name,legacyStaging:true};
+}
 const sameSet=(a,b)=>a.length===new Set(a).size&&b.length===new Set(b).size&&a.length===b.length&&a.every(x=>b.includes(x));
 function safe(base,rel){
  const p=path.resolve(base,rel);assert(p.startsWith(base+path.sep)&&fs.realpathSync(p)===p&&fs.statSync(p).isFile(),'Unsafe file '+rel);return p;
 }
-export function validateIdentity(entry,lineage,names,elements){
+export function validateIdentity(entry,lineage,names,elements,{allowDisplayAlias=false}={}){
  const rows=names.filter(r=>r.fmaId===entry.fmaId&&r.bpId===entry.bpId);
  assert(rows.length===1,'Ambiguous or absent publisher FMA/BP identity');
  assert(lineage.officialFMAId===entry.fmaId&&lineage.officialRepresentationId===entry.bpId,'Lineage FMA/BP mismatch');
  assert(canonical(rows[0].name)===canonical(lineage.officialName),'Official name mismatch');
- assert(canonical(entry.name)===canonical(rows[0].name),'Display alias requires individual review');
+ if(!allowDisplayAlias)assert(canonical(entry.name)===canonical(rows[0].name),'Display alias requires individual review');
  assert(Array.isArray(lineage.elements)&&lineage.elements.length>0,'Missing element lineage');
  const ids=lineage.elements.map(e=>e.id);
  assert(sameSet(ids,[...(elements.get(entry.fmaId)||[])]),'Incomplete or extra publisher FJ elements');
@@ -94,8 +104,9 @@ export function auditPack(folder){
  const sources=new Map(),rows=[],ids=new Set();
  for(const e of inv.converted){
   try{
-   assert(typeof e.id==='string'&&/^[a-zA-Z0-9-]+$/.test(e.id)&&!ids.has(e.id)&&e.modelPath==='./structures/'+e.id+'/model.glb'&&e.approvedForDistribution===false,'Invalid candidate identity');ids.add(e.id);
-   const l=read(safe(pack,'structures/'+e.id+'/lineage.json')),b=fs.readFileSync(safe(pack,e.modelPath));
+   validateCandidateEntry(e,inv,ids);ids.add(e.id);
+   const original=read(safe(pack,'structures/'+e.id+'/lineage.json')),b=fs.readFileSync(safe(pack,e.modelPath));
+   const l=normalizeSourceLineage(e,original);
    assert(l.approvedForDistribution===false&&l.generatedGLBSHA256===e.glbSha256&&sha(b)===e.glbSha256,'Candidate checksum mismatch');
    const tree=l.sourceArchive==='isa_BP3D_4.0_obj_99.zip'?'isa':l.sourceArchive==='partof_BP3D_4.0_obj_99.zip'?'partof':null;
    assert(tree,'No exact source archive identity');
@@ -103,25 +114,26 @@ export function auditPack(folder){
    assert(l.archiveSHA256===s.hashes.archive,'Source archive checksum mismatch');
    if(l.sourceNamesSHA256)assert(l.sourceNamesSHA256===s.hashes.names,'Name table checksum mismatch');
    if(l.sourceElementsSHA256)assert(l.sourceElementsSHA256===s.hashes.elements,'Element table checksum mismatch');
-   const elements=validateIdentity(e,l,s.names,s.elements),glb=parseNativePositions(b);
+   const elements=validateIdentity(e,l,s.names,s.elements,{allowDisplayAlias:true}),glb=parseNativePositions(b);
+   const displayIdentityVerified=canonical(e.name)===canonical(l.officialName);
    assert(sameSet(elements,[...glb.keys()]),'GLB element set mismatch');
    const proof=[];
    for(const part of l.elements){
-    const member=s.index.get(part.id);assert(member&&member===part.zipEntry,'Archive member mismatch');
+    const member=s.index.get(part.id);assert(member&&(l.legacyStaging&&!part.zipEntry||member===part.zipEntry),'Archive member mismatch');
     const obj=execFileSync('unzip',['-p',s.p.archive,member],{maxBuffer:96*1024*1024});
-    assert(sha(obj)===part.sha256,'Raw element hash mismatch');
+    const objDigest=sha(obj);assert(l.legacyStaging&&!part.sha256||objDigest===part.sha256,'Raw element hash mismatch');
     const parsed=readObjTriangles(obj.toString('utf8'),{skipDegenerate:true});
     assert(comparePositions(parsed.positions,glb.get(part.id)),'Vertex/triangle sequence differs from raw source');
-    proof.push({id:part.id,zipEntry:member,sha256:part.sha256,triangles:parsed.stats.triangles});
+    proof.push({id:part.id,zipEntry:member,sha256:objDigest,triangles:parsed.stats.triangles});
    }
    rows.push({id:e.id,name:e.name,group:e.group,sha256:e.glbSha256,tree,fmaId:e.fmaId,bpId:e.bpId,
     sourceHashes:s.hashes,sourceReceipts:s.receipts,sourceElements:proof,
-    status:'EXACT_RAW_GEOMETRY_MATCH',publisherReceiptComplete:Object.keys(s.receipts).length===3,
+    status:displayIdentityVerified?'EXACT_RAW_GEOMETRY_MATCH':'EXACT_RAW_GEOMETRY_MATCH_LABEL_REVIEW',reason:displayIdentityVerified?null:'Display alias requires individual review',officialName:l.officialName,legacyStaging:l.legacyStaging,displayIdentityVerified,publisherReceiptComplete:Object.keys(s.receipts).length===3,
     coordinateFrame:'native-official-OBJ',registrationValidated:false,approvedForDistribution:false});
   }catch(error){rows.push({id:e.id,name:e.name,group:e.group,status:'HOLD',reason:String(error.message),approvedForDistribution:false});}
  }
  const report={scope:'Exact ordered source triangle position match for independently sourced candidates only; not Z-Anatomy ownership proof',
-   total:rows.length,matched:rows.filter(r=>r.status==='EXACT_RAW_GEOMETRY_MATCH').length,held:rows.filter(r=>r.status==='HOLD').length,
+   total:rows.length,matched:rows.filter(r=>r.status==='EXACT_RAW_GEOMETRY_MATCH').length,held:rows.filter(r=>r.status!=='EXACT_RAW_GEOMETRY_MATCH').length,geometryMatched:rows.filter(r=>r.status.startsWith('EXACT_RAW_GEOMETRY_MATCH')).length,
    publisherReceiptsComplete:rows.filter(r=>r.publisherReceiptComplete).length,approved:0,publicRelease:'NO_GO',rows};
  const out=path.join(dir,'publication-bp3d-geometry-evidence.json'),tmp=out+'.'+process.pid+'.tmp';
  fs.writeFileSync(tmp,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,out);
