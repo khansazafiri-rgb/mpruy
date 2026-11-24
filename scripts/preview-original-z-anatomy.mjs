@@ -90,7 +90,7 @@ function sourcePlugin(applied,hraEnabled){
 async function main(){
  assert.equal(fs.realpathSync(privateRoot),privateRoot);
  const bin=blender();
- execFileSync(process.execPath,['--test',path.join(root,'scripts/z-anatomy-private-runtime.test.mjs'),path.join(root,'scripts/z-anatomy-private-integration.test.mjs')],{stdio:'inherit'});
+ execFileSync(process.execPath,['--test',path.join(root,'scripts/z-anatomy-private-runtime.test.mjs'),path.join(root,'scripts/z-anatomy-private-integration.test.mjs'),path.join(root,'scripts/z-anatomy-final-qc.test.mjs')],{stdio:'inherit'});
  execFileSync(bin,['--background','--factory-startup','--disable-autoexec','--python-exit-code','1','--python',path.join(root,'scripts/test-original-z-anatomy-export.py')],{stdio:'inherit'});
  const sourceDir=path.join(privateRoot,'z-anatomy-official-'+revision.slice(0,12));fs.mkdirSync(sourceDir,{recursive:true});assert.equal(fs.realpathSync(sourceDir),sourceDir);
  const archive=await acquire(sourceDir,'Z-Anatomy.zip',200*1024*1024),license=await acquire(sourceDir,'License.txt',256*1024);
@@ -157,7 +157,21 @@ async function main(){
  const base='http://127.0.0.1:'+port;
  try{
   const resp=await fetch(base+'/anatomy/viewer/bp3d/inventory.json');assert(resp.ok);assert.equal((await resp.json()).converted.length,inv.converted.length);
-  assert.equal((await fetch(base+'/anatomy/viewer/models/nervous.glb',{method:'HEAD'})).status,404);
+  for(const system of ['skeletal','muscular','joints','cardiovascular','nervous','lymphatic','visceral']){
+   assert.equal((await fetch(base+'/anatomy/viewer/models/'+system+'.glb',{method:'HEAD'})).status,404);
+  }
+  // Actual HTTP routes: each exported model is reachable and has GLB MIME.
+  // HEAD checks do not load a second copy of each model into WebGL.
+  let routeCount=0;const queue=[...inv.converted];
+  const routeWorker=async()=>{while(queue.length){
+   const e=queue.shift();const response=await fetch(base+'/anatomy/viewer/bp3d/'+e.modelPath.slice(2),{method:'HEAD',signal:AbortSignal.timeout(30000)});
+   assert(response.ok&&response.headers.get('content-type')?.includes('model/gltf-binary'),'GLB route failed: '+e.name);routeCount++;
+  }};
+  await Promise.all(Array.from({length:4},routeWorker));
+  finalQc.httpModelRoutesVerified=routeCount;
+  assert.equal(routeCount,inv.converted.length);
+  assert.equal((await fetch(base+'/anatomy/viewer/bp3d/source.blend',{method:'HEAD'})).status,404);
+  assert.equal((await fetch(base+'/anatomy/viewer/bp3d/structures/not-listed/model.glb',{method:'HEAD'})).status,404);
   console.log('VASCULAR SOURCE AUDIT:',path.join(out,'vascular-source-audit.json'));
   console.log('NEURAL SOURCE AUDIT:',path.join(out,'neural-source-audit.json'));
   if(hra){const res=await fetch(base+'/anatomy/viewer/hra-reference/inventory.json');assert(res.ok);assert.equal((await res.json()).items.length,hra.assets.size);}
