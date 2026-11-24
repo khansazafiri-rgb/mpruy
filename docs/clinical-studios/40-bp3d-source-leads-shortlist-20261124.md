@@ -42,3 +42,19 @@ All 18 rows below have `completeOBJ=TRUE`, blank warning field and unique FMA/BP
 4. Do not release new or existing BP3D geometry publicly until rights for exact archive and Atlas application code and clinical suitability are resolved. No production deploy.
 
 The score field `375` in six user CSV bronchial-tree rows is not a valid 0–1 similarity score; the local source discovery script must recompute ranking from publisher tables rather than trusting these exported values.
+
+## One-pass PREVIEW-ONLY geometry build (no release)
+
+The source-pin shortlist can be prepared from the owner's **original gitignored archive** without repeating the previously passed 584 conversions. The builder verifies the exact publisher FMA/BP/name/FJ sets again, refuses duplicates/used source geometries and rechecks hashes/geometry for every reused GLB. Only selected additional candidates are converted in a **new, quarantined** `bp3d-focused` folder. In particular, the existing `bp3d-provisional` 584-model package is not overwritten.
+
+```sh
+cd ~/mpruy
+git fetch origin
+git switch fix/bp3d-source-leads-anatomical-rank-20261124
+git pull --ff-only origin fix/bp3d-source-leads-anatomical-rank-20261124
+npm run qc:bodyparts3d-focused:preview
+```
+
+On a successful local run, open `http://127.0.0.1:4173/anatomy/viewer/?models=bp3d:skeletal,muscular,cardiovascular,visceral`. The server uses `MEDCOEL_BP3D_FOCUSED=1` to display the quarantined focused batch inside the **unchanged** original MEDCOEL Atlas viewer. Source audit writes `bp3d-completeness-focused/focus-gaps.md` and one-pass summary writes `bp3d-focused-onepass-review/readiness.json` beneath `local-data/licensing-quarantine`.
+
+**Expected candidate ceiling:** 584 existing models + up to 18 additional = 602 source-identity leads. Actual count can be smaller if any source ID, original FJ list, already-used mesh, source integrity or GLB conversion fails. These new GLBs are not clinically verified and do NOT receive distribution rights. Any failure blocks even the private batch's promotion and leaves the original 584 unaffected. This command does not deploy anything.
