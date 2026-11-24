@@ -37,6 +37,8 @@ const FORBIDDEN_PATHS = [
   /(^|\/)models\/nervous\.glb$/i,
   /(^|\/)thumbnails\/systems\/(nervous|visceral)\.webp$/i,
   /(^|\/)local-data\//i,
+  // BodyParts3D review geometry is confined to gitignored local-data, even if renamed or copied into dist.
+  /(^|\/)bp3d\//i,
 ];
 
 function glbStructures(buf) {
