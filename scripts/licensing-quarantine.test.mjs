@@ -61,6 +61,24 @@ test('the guard rejects withheld anatomy under any name: path, bytes, GLB nodes,
 });
 
 
+test('a BodyParts3D review GLB is rejected even after being RENAMED into an ordinary public models directory',async(t)=>{
+  const root=await tmp(t);
+  await fs.mkdir(path.join(root,'models'),{recursive:true});
+  const glb=writeGlb({
+    asset:{version:'2.0'},scene:0,scenes:[{nodes:[]}],nodes:[],
+    extras:{
+      source:'Official BodyParts3D 4.0',
+      reviewStatus:'candidate-only',
+      coordinateFrame:'raw-official-OBJ-not-registered',
+      provenance:{approvedForDistribution:false,geometryAnatomyValidated:false}
+    }
+  },Buffer.alloc(0));
+  await fs.writeFile(path.join(root,'models','renamed-femur.glb'),glb);
+  const problems=scanDistribution(root,ctx);
+  assert.ok(problems.some(x=>x.includes('models/renamed-femur.glb: unapproved BodyParts3D source-identity GLB')),problems.join('\n'));
+  assert.throws(()=>assertDistributionClean(root,'commercial release'),/Licence quarantine/);
+});
+
 test('private BodyParts3D inventories and GLBs cannot enter ANY public dist, even with valid bytes',async(t)=>{
   const root=await tmp(t);
   for(const rel of [
