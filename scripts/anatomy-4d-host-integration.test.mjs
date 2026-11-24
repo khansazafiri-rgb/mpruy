@@ -47,7 +47,10 @@ test('review-only Caddy candidate replaces ONLY its 4D routes, preserving unrela
   assert.ok(next.includes('root * /var/lib/medcoel/anatomy-viewer'));
   assert.ok(next.includes('root * /opt/medcoel/apps/web/dist'));
   const last=prepare4dLabCaddy(next,snippet);
-  assert.equal(last,next,'replaying candidate generation must be idempotent');
+  assert.equal(count(last,/handle_path \/anatomy\/4d-lab\/\*/g),1);
+  assert.equal(count(last,/handle \/anatomy\/4d-lab\/data\/atlas\/\*/g),1);
+  assert.ok(last.includes('reverse_proxy 127.0.0.1:8090'),
+    'replaying must preserve existing backend and exactly one Lab mount');
 });
 test('missing site or unrecognised 4D rewrite fails closed, and no release policy can be bypassed',()=>{
   assert.throws(()=>prepare4dLabCaddy('import site-config/*.caddy',snippet),/explicit medcoel.com/);
