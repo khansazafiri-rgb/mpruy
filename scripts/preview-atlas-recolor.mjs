@@ -93,7 +93,8 @@ async function main(){
  const endocrine=fixEndocrine(inv.converted);
  inv={...inv,converted:endocrine.converted};
  console.log('ENDOCRINE GROUP',JSON.stringify({corrected:endocrine.changed,confirmed:endocrine.confirmed}));
- const hra=hraEnabled?await buildHraRegistry(privateRoot):null;
+ let hra=null;
+ if(hraEnabled){try{hra=await buildHraRegistry(privateRoot);}catch(error){hra={assets:new Map(),blocked:[{reason:String(error.message)}]};console.warn('HRA REFERENCE BLOCKED:',error.message);}}
  if(hra)console.log('HRA LOCAL REFERENCE',JSON.stringify({verified:hra.assets.size,blocked:hra.blocked.length,bodyOverlay:false}));
  const clinical=writeClinicalPriorityAudit(out,{inventory:inv,hra});
  const atlasReq=createRequire(path.join(atlasRoot,'package.json'));
