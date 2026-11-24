@@ -6,8 +6,7 @@ import path from 'node:path';
 import {reviewTokens} from './bp3d-mapping-review.mjs';
 import {provisionalIdentityIssues} from './bp3d-provisional-mappings.mjs';
 import {sourceLeadWarnings} from './bp3d-focus-official-source-leads.mjs';
-import {semanticWholePartFlags,sourceLeadRisk}
-  from './bp3d-source-name-priority.mjs';
+import {semanticWholePartFlags} from './bp3d-source-name-priority.mjs';
 
 const NOT_IDENTITY=new Set(['the','of']);
 const SIDES=new Set(['left','right']);
