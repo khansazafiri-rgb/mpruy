@@ -64,3 +64,29 @@ The existing banner explicitly labels this as **KANDIDAT BELUM TERVERIFIKASI**. 
 - Never promote from `IDENTITY_COLLISION_REVIEW`, `SOURCE_GEOMETRY_MISSING`, `NO_PUBLISHER_CANDIDATE` or `MANUAL_ANATOMICAL_REVIEW` automatically.
 - No fake reviewers, no invented mesh geometry, no patient CT/USG registration, no automatic release clearance.
 - For sternum and nose defects that fall outside the two non-colliding tiers, separate true FMA/BP/FJ source review is still required; this batch alone is **not** a complete anatomical repair.
+
+
+## One-pass command — combined QA, conversion, audit and local review
+
+Run **one command**, rather than repeating each build/audit manually:
+
+```sh
+cd ~/mpruy
+git fetch origin
+git switch feat/bp3d-bulk-provisional-local-atlas-20261123
+git pull --ff-only origin feat/bp3d-bulk-provisional-local-atlas-20261123
+npm ci --prefix apps/4d-lab
+npm ci --prefix apps/anatomy
+npm run qc:bodyparts3d-onepass:preview
+```
+
+The single QC command executes 4D Lab, anatomy and licensing tests; builds the original Atlas; rechecks the existing private 470-model inventory; converts only source-matched additional candidates (up to the 16+98 review tiers, subject to all guards); audits each model's FMA/BP/FJ source and GLB checksum; scans public output locations for private model leakage; and, **only after passing**, atomically places the private batch and opens the **original Atlas UI** for manual review.
+
+It preserves any previous private review folder under a timestamped `*.previous-...` name, keeps the 470-source baseline unchanged, and writes the one-stop outcome to:
+
+`local-data/licensing-quarantine/bp3d-launch-qc/readiness.json`
+
+Expect `privatePreview: READY_FOR_HUMAN_REVIEW` and **`publicRelease: NO_GO`**. The latter is intentional: CI/build success is not source-asset clinical review or proof of permission to publicly distribute the Atlas code and exact BodyParts3D 4.0 archive. No production data is copied, no PR merged and no deploy attempted. Stop the local preview with Ctrl-C; the QC result stays recorded.
+
+If this command reports `PRIVATE REVIEW QC BLOCKED`, inspect the one-stop JSON and errors; it preserves the previous working private models and does not replace public content. Never treat a `--no-tests` source-only run as release QC.
+
