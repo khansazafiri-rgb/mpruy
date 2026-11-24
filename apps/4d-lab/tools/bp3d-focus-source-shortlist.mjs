@@ -3,7 +3,8 @@
 // clearance, FMA equivalence approval or licence for redistribution.
 import path from 'node:path';
 import {provisionalIdentityIssues} from './bp3d-provisional-mappings.mjs';
-import {sourceLeadWarnings,sourceLeadRisk} from './bp3d-focus-official-source-leads.mjs';
+import {sourceLeadWarnings} from './bp3d-focus-official-source-leads.mjs';
+import {sourceLeadRisk} from './bp3d-source-name-priority.mjs';
 
 export const FOCUS_SOURCE_REVIEW_ONLY=Object.freeze([
   {
