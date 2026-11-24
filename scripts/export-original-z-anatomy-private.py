@@ -47,6 +47,39 @@ def extra_identity(label):
         return {'source':system,'group':group,'layer':0,'regions':regions}
     return None
 
+def vascular_group(label, fallback=None):
+    # The head term precedes "of ..."; the organ supplied does not determine vessel class.
+    # Preserve explicit arterial/venous arches and named trunks without guessing generic branches.
+    n=key(label)
+    head=n.split(' of ',1)[0]
+    arterial=bool(re.search(r'\b(artery|arteries|arteriole|arterial|aorta)\b',head))
+    venous=bool(re.search(r'\b(vein|veins|venule|venous|vena cava)\b',head))
+    if arterial and not venous: return 'arterial'
+    if venous and not arterial: return 'venous'
+    if re.search(r'\b(artery|arteries|arterial|aorta)\b',n) and not re.search(r'\b(vein|veins|venous|vena cava)\b',n) and re.search(r'\b(branch|branches)\b',head): return 'arterial'
+    if re.search(r'\b(vein|veins|venous|vena cava)\b',n) and not re.search(r'\b(artery|arteries|arterial|aorta)\b',n) and re.search(r'\b(tributary|tributaries|branch|branches)\b',head): return 'venous'
+    if n in {'brachiocephalic trunk','celiac trunk','coeliac trunk','pulmonary trunk','arch of aorta'}: return 'arterial'
+    if n in {'coronary sinus','azygos vein','hemiazygos vein'}: return 'venous'
+    return fallback
+
+def vascular_meta(name,meta):
+    if meta['source']!='cardiovascular': return meta
+    n=key(name)
+    group=vascular_group(n,meta['group'])
+    if group not in {'arterial','venous','heart'}: return meta
+    result=dict(meta)
+    result['group']=group
+    if group in {'arterial','venous'}:
+        layer=0
+        if re.search(r'\b(aorta|vena cava|common carotid|brachiocephalic|subclavian|pulmonary trunk)\b',n): layer=2
+        elif re.search(r'\b(axillary|brachial|radial|ulnar|femoral|popliteal|tibial|iliac|jugular|renal|hepatic|portal|mesenteric|coronary|carotid|vertebral|basilar|saphenous|cephalic|basilic)\b',n): layer=1
+        result['layer']=layer
+        regions=set(meta.get('regions',[]))
+        if re.search(r'\b(carotid|jugular|vertebral artery|vertebral vein|cerebral artery|facial artery|maxillary artery|lingual artery|superficial temporal artery)\b',n): regions.add('headNeck')
+        if re.search(r'\b(common carotid|internal jugular|brachiocephalic|subclavian|coronary|pulmonary)\b',n): regions.add('thorax')
+        result['regions']=sorted(regions-{'whole'}) or ['whole']
+    return result
+
 def write(p,v):
     p.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def pad(data,byte=b'\0'):
@@ -162,6 +195,7 @@ def main():
         if len(objects)!=1:
             blocked.append({"name":name,"reason":"ambiguous source object name"});continue
         obj=objects[0]
+        meta=vascular_meta(name,meta)
         try:
             pos,norm,bounds,skipped=geometry(obj,deps,scale)
             sig=hashlib.sha256(pos.tobytes()).hexdigest()
@@ -193,6 +227,19 @@ def main():
          "approvedForCommercialDistribution":False,"converted":converted,"summary":{"converted":len(converted)}}
     write(pack/'inventory.json',inv)
     present={e['name'] for e in converted}
+    # Record all source names and the specific reason each matching vascular entry is absent.
+    status_by_name={key(e['name']):e for e in converted}
+    blocked_by_name={key(e['name']):e['reason'] for e in blocked}
+    vascular=[]
+    for name,meta in cat.items():
+        if meta['source']!='cardiovascular': continue
+        k=key(name); e=status_by_name.get(k)
+        objs=byname.get(k,[])
+        status='EXPORTED_CANDIDATE' if e else 'EXPORT_BLOCKED' if k in blocked_by_name else 'SOURCE_PRESENT_NOT_EXPORTED' if objs else 'NO_EXACT_SOURCE_OBJECT'
+        vascular.append({'name':name,'group':vascular_group(name,meta['group']),'status':status,
+          'sourceObjects':[{'name':o.name,'type':o.type} for o in objs],
+          'modelId':e['id'] if e else None,'reason':blocked_by_name.get(k)})
+    write(out/'vascular-source-audit.json',{'rows':vascular,'sourceRevision':revision,'continuityValidated':False,'publicRelease':'NO_GO'})
     write(out/'source-recovery-report.json',{"total":len(converted),"groups":groups,"emptyGroups":sorted(({m["group"] for m in cat.values()}|{"nervous"})-set(groups)),"sourceObjectTypes":type_counts,"convertedObjectTypes":{t:sum(e["sourceObjectType"]==t for e in converted) for t in type_counts},"unmatched":unmatched,"excluded":excluded,"skeletonHeightMetres":height,"blocked":blocked,
         "missingCatalogue":[n for n in cat if n not in present],"sourceRevision":revision,"publicRelease":"NO_GO","clinicalValidation":False})
     print("Z-ANATOMY SOURCE EXPORT COMPLETE",len(converted),groups,flush=True)
