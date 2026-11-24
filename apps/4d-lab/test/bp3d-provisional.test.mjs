@@ -106,10 +106,13 @@ test('candidate selection uses the same .l/.r matching as full official-source a
   {name:'Branch to angular gyrus.l',fmaId:'FMA100',bpId:'BP100'},
   {name:'Branch to angular gyrus.r',fmaId:'FMA101',bpId:'BP101'},
  ];
- const reviewRows=rows.map((row,i)=>candidate(row.name,'cardiovascular',
-   'PROMISING_IDENTITY_REVIEW',[row.fmaId,row.bpId,row.name]));
  const ids=new Map(rows.map((r,i)=>[r.fmaId,new Set(['FJ'+(100+i)])]));
- for(let i=0;i<reviewRows.length;i++)reviewRows[i].candidate.fjIds=['FJ'+(100+i)];
+ const reviewRows=rows.map((row,i)=>({
+   atlasName:row.name,system:'cardiovascular',tier:'PROMISING_IDENTITY_REVIEW',
+   candidate:{fmaId:row.fmaId,bpId:row.bpId,officialName:row.name,
+     fjIds:['FJ'+(100+i)],confidence:'high-review',score:1,warnings:[],approved:false},
+   medicalIdentityValidated:false,anatomyGeometryValidated:false,approvedForDistribution:false
+ }));
  const got=selectProvisionalMappings({
   triage:{status:'REVIEW_QUEUE_NOT_APPROVED',queue:reviewRows},
   officialRows:rows,elements:ids,
