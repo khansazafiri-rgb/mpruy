@@ -236,8 +236,10 @@ function listZip(file){
   const files=execFileSync('unzip',['-Z','-1',file],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split(/\r?\n/);
   checkArchiveEntryNames(files);return files;
 }
-export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100,focusShortlist=false,vertebralExact=false,allSystemsExact=false}={}){
+export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100,focusShortlist=false,vertebralExact=false,allSystemsExact=false,resumeExistingOutput=false}={}){
   if(provisional&&reviewedFile)throw Error('Provisional and reviewed batches must remain separate');
+  if(resumeExistingOutput&&!allSystemsExact)
+    throw Error('Interrupted GLB recovery is restricted to the private all-systems source batch');
   if(focusShortlist&&(!provisional||!includePromising||limitNew<114||reviewedFile||limit!==undefined))
     throw Error('Focus source expansion requires full private provisional discovery and no artificial truncation');
   if(allSystemsExact&&(!provisional||reviewedFile||focusShortlist||vertebralExact||limit!==undefined))
@@ -250,6 +252,15 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
     focusShortlist?path.join(root,'local-data/licensing-quarantine/bp3d-focused'):
     provisional?path.join(root,'local-data/licensing-quarantine/bp3d-provisional'):
     reviewedFile?path.join(root,'local-data/licensing-quarantine/bp3d-reviewed'):DEST));
+  if(resumeExistingOutput){
+    const privateRoot=path.join(root,'local-data/licensing-quarantine');
+    if(path.dirname(output)!==privateRoot||
+       !/^bp3d-all-systems-temp-[A-Za-z0-9_-]+$/.test(path.basename(output))||
+       !fs.existsSync(output)||fs.lstatSync(output).isSymbolicLink()||
+       fs.realpathSync(output)!==path.join(fs.realpathSync(privateRoot),path.basename(output))||
+       fs.existsSync(path.join(output,'inventory.json')))
+      throw Error('Unsafe or already finalized GLB recovery folder; original private batches untouched');
+  }
   const namesPath=path.join(sourceDir,'isa_parts_list_e.txt'),
     elementsPath=path.join(sourceDir,'isa_element_parts.txt'),
     archive=path.join(sourceDir,'isa_BP3D_4.0_obj_99.zip');
@@ -396,8 +407,17 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
     ...(originalInventory?.converted||[]).map(x=>[x.name,{model:x,root:sourceBatch}]),
     ...(priorReviewInventory?.converted||[]).map(x=>[x.name,{model:x,root:priorReviewPath}])
   ]);
-  let reused=0;
+  let reused=0,resumedInterrupted=0;
   fs.mkdirSync(path.join(output,'structures'),{recursive:true});
+  if(resumeExistingOutput){
+    const structureRoot=path.join(output,'structures');
+    if(fs.lstatSync(structureRoot).isSymbolicLink())
+      throw Error('Symlinked interrupted GLB structure folder is forbidden');
+    const planned=new Set(plan.eligible.map(item=>item.id));
+    for(const entry of fs.readdirSync(structureRoot,{withFileTypes:true}))
+      if(!entry.isDirectory()||entry.isSymbolicLink()||!planned.has(entry.name))
+        throw Error('Unplanned, symlinked or non-directory model in interrupted private batch: '+entry.name);
+  }
   const objCache=new Map();
   const readElement=item=>{
     if(objCache.has(item.fileId))return objCache.get(item.fileId);
@@ -411,7 +431,74 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   for(const [index,item] of plan.eligible.entries()){
     try{
       const cache=originalByName.get(item.name),cached=cache?.model;
-      if(cached){
+      const stagedDir=path.join(output,'structures',item.id),
+        stagedMesh=path.join(stagedDir,'model.glb'),
+        stagedLineage=path.join(stagedDir,'lineage.json');
+      const hasStagedMesh=resumeExistingOutput&&fs.existsSync(stagedMesh);
+      const hasStagedLineage=resumeExistingOutput&&fs.existsSync(stagedLineage);
+      if(hasStagedMesh!==hasStagedLineage)
+        throw Error('Interrupted GLB/lineage pair is incomplete for '+item.name);
+      if(hasStagedMesh&&hasStagedLineage){
+        if(fs.lstatSync(stagedDir).isSymbolicLink()||
+           fs.lstatSync(stagedMesh).isSymbolicLink()||
+           fs.lstatSync(stagedLineage).isSymbolicLink())
+          throw Error('Symlinked interrupted source GLB is forbidden: '+item.name);
+        const bytes=fs.readFileSync(stagedMesh),
+          lineage=JSON.parse(fs.readFileSync(stagedLineage,'utf8'));
+        const sourceElements=item.source.sourceObjs;
+        const byFj=new Map((lineage.elements||[]).map(x=>[x.id,x]));
+        if(lineage.atlasCandidateName!==item.name||
+           lineage.officialFMAId!==item.source.fmaId||
+           lineage.officialRepresentationId!==item.source.bpId||
+           lineage.atlasMappingMethod!==item.mappingMethod||
+           lineage.sourceArchive!=='isa_BP3D_4.0_obj_99.zip'||
+           lineage.archiveSHA256!==archiveSha||
+           lineage.approvedForDistribution!==false||
+           lineage.geometryAnatomyValidated!==false||
+           lineage.registrationValidated!==false||
+           lineage.coordinateFrame!=='native-official-OBJ'||
+           lineage.generatedGLBSHA256!==sha(bytes)||
+           byFj.size!==sourceElements.length||
+           sourceElements.some(x=>byFj.get(x.fileId)?.zipEntry!==x.archivePath))
+          throw Error('Interrupted GLB source identity/provenance mismatch: '+item.name);
+        if(cached){
+          if(cached.id!==item.id||cached.fmaId!==item.source.fmaId||
+             cached.bpId!==item.source.bpId||
+             cached.sourceMeshes!==sourceElements.length||
+             cached.glbSha256!==lineage.generatedGLBSHA256)
+            throw Error('Interrupted cached GLB differs from original audited model: '+item.name);
+        }else{
+          // For the 76 newly prepared GLBs, verify source FJ payload bytes
+          // against the original ZIP, not only the generated GLB hash.
+          for(const entry of sourceElements){
+            const part=readElement(entry);
+            if(byFj.get(entry.fileId)?.sha256!==part.sha256)
+              throw Error('Source archive element was changed since interrupted conversion: '+item.name);
+          }
+          if(lineage.officialName!==item.source.officialName)
+            throw Error('Interrupted source publisher name differs: '+item.name);
+        }
+        const doc=await new NodeIO().readBinary(bytes),
+          geometry=summarizeGeometry(doc);
+        verifyLineage({bytes,lineage,summary:geometry});
+        if(cached){converted.push({...cached});reused++;}
+        else{
+          const catalogEntry=catalog[item.name],
+            diagnostics=diagnoseGeometry(doc,geometry);
+          converted.push({id:item.id,name:item.name,system:item.system,
+            group:catalogEntry?.group||null,mappingMethod:item.mappingMethod,
+            reviewManifestSHA256:item.reviewManifestSHA256,
+            tissueClass:tissueClass({name:item.name,system:item.system,group:catalogEntry?.group}),
+            fmaId:item.source.fmaId,bpId:item.source.bpId,
+            triangles:geometry.triangles,vertices:geometry.vertices,
+            sourceMeshes:geometry.sourceMeshes,boundsNative:geometry.boundsNative,
+            diagnostics,glbSha256:lineage.generatedGLBSHA256,
+            omittedZeroAreaTriangles:lineage.sourceGeometryWarnings?.omittedZeroAreaTriangles||0,
+            modelPath:'./structures/'+item.id+'/model.glb',
+            state:'converted-unverified'});
+        }
+        resumedInterrupted++;
+      }else if(cached){
         if(cached.id!==item.id||cached.fmaId!==item.source.fmaId||cached.bpId!==item.source.bpId||
           cached.sourceMeshes!==item.source.sourceObjs.length||
           cached.modelPath!=='./structures/'+item.id+'/model.glb')
@@ -494,6 +581,7 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   const summary={...plan.summary,converted:converted.length,failed:failed.length,
     reusedBaselineModels:allSystemsExact?(originalInventory?.converted.length||0):focusShortlist?(originalInventory?.converted.length||0):reused,
     reusedPriorReviewModels:allSystemsExact?reused:focusShortlist?reused:0,
+    resumedInterruptedModels:resumedInterrupted,
     allSystemsNewModels:allSystemsExact?converted.length-reused:0,
     vertebralNewModels:vertebralExact?converted.length-reused:0,
     focusedNewModels:focusShortlist?converted.length-reused:0,
