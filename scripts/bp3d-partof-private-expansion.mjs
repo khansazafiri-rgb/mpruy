@@ -106,6 +106,25 @@ export function canonicalExactName(name){
  if(suffix)n=(suffix[1]==='l'?'left ':'right ')+n.slice(0,-2);
  return n;
 }
+// Conservative spelling/word-position variants only. No fuzzy similarity,
+// removal of anatomical qualifiers, or inferred left/right.
+export function canonicalTerminology(name){
+ let n=canonicalExactName(name);
+ n=n.replace(/\bsupra-orbital\b/g,'supraorbital')
+   .replace(/\bsacro-iliac\b/g,'sacroiliac')
+   .replace(/\binter-vertebral\b/g,'intervertebral')
+   .replace(/\bradio-ulnar\b/g,'radioulnar')
+   .replace(/\btibio-fibular\b/g,'tibiofibular')
+   .replace(/\boesophagus\b/g,'esophagus')
+   .replace(/\b(\w+) muscle$/,'$1 muscle');
+ // Move laterality from a single named paired region to the start, keeping
+ // the region itself. Never change descriptions with two side markers.
+ if((n.match(/\b(left|right)\b/g)||[]).length===1){
+   const m=n.match(/^(.+) of (left|right) (hand|foot|upper limb|lower limb)$/);
+   if(m)n=m[2]+' '+m[1]+' of '+m[3];
+ }
+ return n;
+}
 function verifyFrame({isaArchive,isaIndex,isaRows,isaElements,partArchive,partIndex,partRows,partElements}){
  const anchors=[];
  // Three independently distributed, identical coordinate anchors required.
@@ -134,43 +153,64 @@ function boundsBox(bounds){
  const a=bounds.min,b=bounds.max;
  return [a[0]*.001+.0007,a[2]*.001+.0692,-b[1]*.001-.0987,b[0]*.001+.0007,b[2]*.001+.0692,-a[1]*.001-.0987];
 }
-export async function expandPartOf({privateRoot,source,pack,catalog,systems,converted,oldNames,oldIds,usedFJ,identities,io}){
- const dir=path.join(privateRoot,'bp3d-4.0-partof');safeDir(dir);
+export async function expandPartOf({privateRoot,source,pack,catalog,systems,converted,oldNames,oldIds,usedFJ,identities,io,tree='partof'}){
+ requireFact(tree==='isa'||tree==='partof','Unsupported source tree');
+ const isIsa=tree==='isa';
+ const dir=isIsa?source:path.join(privateRoot,'bp3d-4.0-partof');safeDir(dir);
+ const sourceFiles=isIsa?{names:'isa_parts_list_e.txt',elements:'isa_element_parts.txt',archive:'isa_BP3D_4.0_obj_99.zip'}:files;
  const report={source:SOURCE,licensePage:DOC,license:'CC BY 4.0 on current publisher README; exact source notices retained',
    status:'PRIVATE_REVIEW_ONLY',approvedForDistribution:false,geometryAnatomyValidated:false,registrationValidated:false,
    added:[],retained:[],sources:{},frame:null};
- const reportFile=path.join(pack,'partof-expansion-report.json');
+ const reportFile=path.join(pack,tree+'-expansion-report.json');
+ report.tree=tree;
  try{
-   for(const key of Object.keys(files))report.sources[key]=await acquire(dir,key);
+   for(const key of Object.keys(sourceFiles)){
+     if(!isIsa){report.sources[key]=await acquire(dir,key);continue;}
+     const file=path.join(dir,sourceFiles[key]);
+     requireFact(fs.realpathSync(file)===file&&fs.statSync(file).isFile(),'Invalid local IS-A source');
+     report.sources[key]={file,url:SOURCE+sourceFiles[key],sha256:await fileHash(file),bytes:fs.statSync(file).size};
+   }
    const partRows=parseOfficialNames(fs.readFileSync(report.sources.names.file,'utf8'));
    const partElements=parseOfficialElements(fs.readFileSync(report.sources.elements.file,'utf8'));
    const partArchive=report.sources.archive.file,partIndex=archiveIndex(partArchive);
    const isaArchive=path.join(source,'isa_BP3D_4.0_obj_99.zip'),isaIndex=archiveIndex(isaArchive);
    const isaRows=parseOfficialNames(fs.readFileSync(path.join(source,'isa_parts_list_e.txt'),'utf8'));
    const isaElements=parseOfficialElements(fs.readFileSync(path.join(source,'isa_element_parts.txt'),'utf8'));
-   report.frame=verifyFrame({isaArchive,isaIndex,isaRows,isaElements,partArchive,partIndex,partRows,partElements});
+   report.frame=isIsa?{compatible:true,anchors:[],meaning:'Same local IS-A archive as the checksum-verified baseline'}:verifyFrame({isaArchive,isaIndex,isaRows,isaElements,partArchive,partIndex,partRows,partElements});
    requireFact(report.frame.compatible,'PART-OF coordinate compatibility could not be established with three shared exact source anchors; not mounted');
    const byName=new Map(),catalogNames=new Map(),alreadyFma=new Set(converted.map(e=>e.fmaId));
-   for(const r of partRows){const k=canonicalExactName(r.name);if(!byName.has(k))byName.set(k,[]);byName.get(k).push(r);}
+   const byTerminology=new Map(),catalogTerminology=new Map();
+   const index=(m,k,v)=>{if(!m.has(k))m.set(k,[]);m.get(k).push(v);};
+   for(const r of partRows){
+     index(byName,canonicalExactName(r.name),r);
+     index(byTerminology,canonicalTerminology(r.name),r);
+   }
    for(const [name,meta] of Object.entries(catalog)){
      if(!allowedSystems.has(meta.source))continue;
-     const k=canonicalExactName(name);if(!catalogNames.has(k))catalogNames.set(k,[]);catalogNames.get(k).push(name);
+     index(catalogNames,canonicalExactName(name),name);
+     index(catalogTerminology,canonicalTerminology(name),name);
    }
    const plans=[];
    for(const [name,meta] of Object.entries(catalog)){
      if(oldNames.has(name)||!allowedSystems.has(meta.source)||!systems[meta.source]?.includes(name))continue;
-     const k=canonicalExactName(name),matches=byName.get(k)||[];
+     const k=canonicalExactName(name),term=canonicalTerminology(name);
+     let matches=byName.get(k)||[],mode='exact-form';
+     let aliases=catalogNames.get(k)||[];
+     if(!matches.length){
+       matches=byTerminology.get(term)||[];aliases=catalogTerminology.get(term)||[];
+       mode='conservative-terminology-form';
+     }
      if(!matches.length)continue;
-     if(matches.length!==1||catalogNames.get(k)?.length!==1){
+     if(matches.length!==1||aliases.length!==1){
        report.retained.push({name,reason:'ambiguous-exact-form'});continue;
      }
-     plans.push({r:matches[0],name,meta,extra:false});
+     plans.push({r:matches[0],name,meta,extra:false,mode});
    }
    for(const x of explicit){
      const matches=partRows.filter(r=>r.fmaId===x.fmaId&&r.bpId===x.bpId&&r.name===x.name);
      if(matches.length!==1){report.retained.push({name:x.name,reason:'pinned-source-identity-unavailable'});continue;}
      if(Object.hasOwn(catalog,x.name)){report.retained.push({name:x.name,reason:'existing-catalog-name'});continue;}
-     plans.push({r:matches[0],name:x.name,meta:{source:x.system,group:x.group,layer:0,regions:x.regions},extra:true});
+     plans.push({r:matches[0],name:x.name,meta:{source:x.system,group:x.group,layer:0,regions:x.regions},extra:true,mode:'pinned-publisher-identity'});
    }
    const seenPlans=new Set();
    const eligible=plans.map(p=>({...p,fj:[...(partElements.get(p.r.fmaId)||[])].sort()}))
@@ -183,14 +223,14 @@ export async function expandPartOf({privateRoot,source,pack,catalog,systems,conv
      }
      seenPlans.add(name);
      if(!fj.length||fj.some(id=>!partIndex.has(id))){report.retained.push({name,key,reason:'source-element-missing'});continue;}
-     const id='partof-'+key.toLowerCase();
+     const id=tree+'-supplement-'+key.toLowerCase();
      if(oldIds.has(id)){report.retained.push({name,key,reason:'duplicate-model-id'});continue;}
      try{
        const parts=fj.map(fjId=>{
          const bytes=obj(partArchive,partIndex,fjId);
          return {id:fjId,text:bytes.toString('utf8'),sha256:sha(bytes),zipEntry:partIndex.get(fjId)};
        });
-       const lineage={schemaVersion:1,source:'Official BodyParts3D 4.0 PART-OF',sourceArchive:files.archive,
+       const lineage={schemaVersion:1,source:'Official BodyParts3D 4.0 '+tree.toUpperCase(),sourceArchive:sourceFiles.archive,
          archiveSHA256:report.sources.archive.sha256,sourceNamesSHA256:report.sources.names.sha256,
          sourceElementsSHA256:report.sources.elements.sha256,officialName:r.name,officialFMAId:r.fmaId,
          officialRepresentationId:r.bpId,atlasCandidateName:name,coordinateFrame:'native-official-OBJ',
@@ -209,16 +249,16 @@ export async function expandPartOf({privateRoot,source,pack,catalog,systems,conv
        const e={id,name,system:meta.source,group:meta.group,fmaId:r.fmaId,bpId:r.bpId,modelPath,
          glbSha256:lineage.generatedGLBSHA256,triangles:geometry.triangles,vertices:geometry.vertices,
          sourceMeshes:geometry.sourceMeshes,boundsNative:geometry.boundsNative,diagnostics,
-         state:'converted-unverified',mappingMethod:'partof-publisher-exact-name-private-review-only',
+         state:'converted-unverified',mappingMethod:tree+'-publisher-'+p.mode+'-private-review-only',
          geometryAnatomyValidated:false,approvedForDistribution:false,privateAtlasMeta:{...meta,box}};
        converted.push(e);oldNames.add(name);oldIds.add(id);identities.add(key);alreadyFma.add(r.fmaId);fj.forEach(x=>usedFJ.add(x));
-       report.added.push({name,key,system:e.system,extra,flags:diagnostics.flags});
-       console.log('PART-OF STAGED',name,key);
+       report.added.push({name,key,system:e.system,extra,mode:p.mode,flags:diagnostics.flags});
+       console.log(tree.toUpperCase()+' SUPPLEMENT STAGED',name,key);
      }catch(error){report.retained.push({name,key,reason:'conversion-blocked',error:String(error.message)});}
    }
    report.status='PRIVATE_CANDIDATES_MOUNTED_PENDING_VISUAL_QA';
- }catch(error){report.status='PARTOF_BLOCKED';report.error=String(error.message);}
+ }catch(error){report.status=tree.toUpperCase()+'_BLOCKED';report.error=String(error.message);}
  write(reportFile,report);
- console.log('PART-OF RESULT',JSON.stringify({status:report.status,exactCandidateCount:report.exactCandidateCount??0,added:report.added.length,retained:report.retained.length,error:report.error||null}));
+ console.log(tree.toUpperCase()+' SUPPLEMENT RESULT',JSON.stringify({status:report.status,exactCandidateCount:report.exactCandidateCount??0,added:report.added.length,retained:report.retained.length,error:report.error||null}));
  return report;
 }
