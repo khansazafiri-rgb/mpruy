@@ -236,6 +236,17 @@ function listZip(file){
   const files=execFileSync('unzip',['-Z','-1',file],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split(/\r?\n/);
   checkArchiveEntryNames(files);return files;
 }
+// Separate selection policies may share the same private rights status.
+ // Never require the 584-model selector for the all-systems mode.
+export function provisionalSelectionReport({provisional,allSystemsExact,provisionalInfo,
+  includePromising,limitNew}){
+ if(!provisional||allSystemsExact)return null;
+ if(!provisionalInfo?.summary)
+   throw Error('Provisional review selector missing; no inventory may be finalized');
+ return {includePromising,limitNew,selected:provisionalInfo.summary.provisionalSelected,
+   rejected:provisionalInfo.summary.reviewRejected,approved:0};
+}
+
 export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100,focusShortlist=false,vertebralExact=false,allSystemsExact=false,resumeExistingOutput=false}={}){
   if(provisional&&reviewedFile)throw Error('Provisional and reviewed batches must remain separate');
   if(resumeExistingOutput&&!allSystemsExact)
@@ -598,11 +609,8 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
     vertebralSourcePreview:vertebralExact,
     vertebralSourceSelection:vertebralExact?vertebralInfo.summary:null,
     focusedSourceSelection:focusShortlist?focusInfo.summary:null,
-    // All-systems is a provisional *rights state*, not the separate
-    // provisional 584-model selection algorithm. Its selector is allSystemsInfo.
-    provisionalSelection:provisional&&!allSystemsExact?{
-      includePromising,limitNew,selected:provisionalInfo.summary.provisionalSelected,
-      rejected:provisionalInfo.summary.reviewRejected,approved:0}:null,
+    provisionalSelection:provisionalSelectionReport({
+      provisional,allSystemsExact,provisionalInfo,includePromising,limitNew}),
     sourceHashes:{namesSha256:sha(namesBytes),elementsSha256:sha(elementBytes),
       archiveSha256:archiveSha},summary,systems:plan.systems,
     converted,referenceSurface,failures:failed,legalStatus:'NOT-CLEARED',
