@@ -25,10 +25,10 @@ export function mountHraReference(){
   style(dialog,{width:'min(920px,94vw)',height:'min(720px,85vh)',maxWidth:'94vw',maxHeight:'85vh',background:'#102e29',color:'#eef5f1',border:'1px solid #69877c',borderRadius:'16px',padding:'16px',boxSizing:'border-box',overflow:'hidden'});
   const header=el('div');style(header,{display:'flex',alignItems:'center',justifyContent:'space-between',gap:'8px'});
   header.append(el('strong','MEDCOEL · Referensi organ HRA'));
-  const close=el('button','Tutup');close.onclick=()=>dialog.close();header.append(close);
-  const note=el('p','Pratinjau privat. Koordinat organ HRA berdiri sendiri; bukan overlay BP3D, bukan CT/USG, dan belum disetujui untuk distribusi.');
+  const close=el('button','Tutup');style(close,{background:'#204740',color:'#fff',border:'1px solid #69877c',padding:'7px 12px',borderRadius:'8px',cursor:'pointer',font:'inherit'});close.onclick=()=>dialog.close();header.append(close);
+  const note=el('p','Pratinjau privat. Organ HRA menggunakan koordinat sumber tersendiri; tidak diregistrasikan ke tubuh BP3D atau Z-Anatomy. Bukan CT/USG dan belum disetujui untuk distribusi.');
   style(note,{fontSize:'13px',margin:'8px 0'});
-  const select=el('select');select.setAttribute('aria-label','Pilih organ referensi');style(select,{width:'100%',padding:'8px',borderRadius:'6px'});
+  const select=el('select');select.setAttribute('aria-label','Pilih organ referensi');style(select,{width:'100%',padding:'8px',borderRadius:'6px',background:'#173e36',color:'#eef5f1',border:'1px solid #69877c',font:'inherit'});
   const status=el('p','Membaca inventaris lokal…');style(status,{fontSize:'13px',margin:'6px 0'});
   const viewport=el('div');style(viewport,{height:'calc(100% - 140px)',minHeight:'180px',background:'#0c221f',borderRadius:'8px',overflow:'hidden'});
   dialog.append(header,note,select,status,viewport);document.body.append(dialog);dialog.showModal();
