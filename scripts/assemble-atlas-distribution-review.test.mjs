@@ -1,0 +1,27 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {validateSelection} from './assemble-atlas-distribution-review.mjs';
+const id='za-'+'a'.repeat(24),digest='b'.repeat(64),archive='c'.repeat(64);
+const row={id,name:'Synthetic fixture',group:'skeletal',sha256:digest,sourceObject:'Synthetic fixture',sourceRevision:'revision',archiveSHA256:archive,commercialDistributionApproved:false,reasons:[]};
+const model={id,name:row.name,group:row.group,glbSha256:digest,privateAtlasMeta:{regions:['upperLimb']},approvedForDistribution:false};
+const report={publicRelease:'NO_GO',rows:[row]},inventory={approvedForCommercialDistribution:false,sourceFrame:'z-anatomy-world-y-up-metres',source:{archiveSHA256:archive},converted:[model]};
+const review={...row,reviewer:'Synthetic test reviewer',reviewedAt:'2026-01-01',decision:'include-in-private-distribution-review',license:'CC-BY-SA-4.0',rightsHolder:'Fixture',attribution:'Fixture',shareAlike:'CC-BY-SA-4.0',sourceObjectMapping:'Fixture',changeDescription:'Fixture',sourceURL:'https://example.invalid/source',commercialUse:true,redistribution:true,adaptation:true,evidence:[{kind:'object-provenance',reference:'publication-evidence/fixture.txt',sha256:'d'.repeat(64)},{kind:'license-terms',reference:'publication-evidence/license.txt',sha256:'e'.repeat(64)}]};
+const selection={schema:1,purpose:'private-distribution-review',reviewer:review.reviewer,reviewedAt:review.reviewedAt,sourceArchiveSHA256:archive,entries:[{id,sha256:digest,review}]};
+const check=(sel=selection,r=report,inv=inventory,proof=()=>true)=>validateSelection(r,inv,sel,proof);
+const withReview=change=>({...selection,entries:[{...selection.entries[0],review:{...review,...change}}]});
+test('explicit reviewed exact model and evidence only',()=>{
+ assert.equal(check().length,1);
+ assert.throws(()=>check({...selection,entries:[]}));
+ assert.throws(()=>check({...selection,sourceArchiveSHA256:'f'.repeat(64)}));
+ assert.throws(()=>check({...selection,entries:[selection.entries[0],selection.entries[0]]}));
+ assert.throws(()=>check({...selection,entries:[{...selection.entries[0],sha256:'f'.repeat(64)}]}));
+ assert.throws(()=>check(withReview({reviewer:'Different'})));
+ assert.throws(()=>check(withReview({decision:'pending'})));
+ assert.throws(()=>check(withReview({license:'CC-BY-NC-4.0'})));
+ assert.throws(()=>check(withReview({redistribution:false})));
+ assert.throws(()=>check(withReview({evidence:[review.evidence[0]]})));
+ assert.throws(()=>check(selection,report,inventory,()=>false));
+ assert.throws(()=>check(selection,{...report,rows:[{...row,reasons:['Known noncommercial contributor category']}]}));
+ assert.throws(()=>check(selection,report,{...inventory,sourceFrame:'other-frame'}));
+ assert.throws(()=>check(selection,report,{...inventory,converted:[{...model,approvedForDistribution:true}]}));
+});
