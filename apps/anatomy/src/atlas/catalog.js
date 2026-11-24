@@ -115,7 +115,7 @@ export function groupFor(name, source) {
     return "arterial";
   }
   if (source !== "visceral") return source;
-  if (/hypophysis|parathyroid|pineal|suprarenal|thyroid gland/.test(n))
+  if (/\b(hypophysis|adenohypophysis|neurohypophysis|pituitary gland|parathyroid|pineal gland|suprarenal gland|adrenal gland|thyroid gland)\b/.test(n))
     return "endocrine";
   if (/kidney|renal pelvis|ureter|urethra|urinary bladder/.test(n))
     return "urinary";
