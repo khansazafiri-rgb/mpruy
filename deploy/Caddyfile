@@ -83,37 +83,6 @@ medcoel.com {
 	    file_server
 	}
 	
-	# Original MEDCOEL 4D Lab (independent app). This route is provisioned
-	# only after the exact build passes stage-4d-lab commercial rights checks.
-	# /data/atlas/* is explicitly denied above; a generic SPA fallback would
-	# otherwise make a missing 4D build appear as HTTP 200 HTML.
-	handle /anatomy/4d-lab {
-		redir * /anatomy/4d-lab/ 308
-	}
-	handle_path /anatomy/4d-lab/* {
-		root * /var/lib/medcoel/4d-lab
-		header X-Frame-Options SAMEORIGIN
-		header Content-Security-Policy "frame-ancestors 'self'"
-		header Cache-Control "no-cache, max-age=0, must-revalidate"
-		@lab_hashed {
-			path /assets/*
-			file
-		}
-		header @lab_hashed >Cache-Control "public, max-age=31536000, immutable"
-		@lab_data {
-			path /data/*
-			file
-		}
-		header @lab_data >Cache-Control "public, max-age=3600, must-revalidate"
-		@lab_glb path *.glb
-		header @lab_glb Content-Type model/gltf-binary
-		@lab_json path *.json
-		header @lab_json Content-Type application/json
-		# No SPA fallback for missing simulator files.
-		file_server
-	}
-
-
 	handle {
 		root * /opt/medcoel/apps/web/dist
 		@assets path /assets/*
