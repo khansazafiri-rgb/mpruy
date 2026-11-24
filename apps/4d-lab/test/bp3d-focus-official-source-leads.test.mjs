@@ -66,3 +66,48 @@ test('without any publisher identity name overlap, no source model is fabricated
  assert.ok(officialLeadCsv(empty).includes('NO_PUBLISHER_NAME_LEAD'));
  assert.throws(()=>discoverFocusSources({...opts,focus:{rows:[]}}),/private audit/i);
 });
+
+test('full English numbered vertebrae appear before generic aggregated meshes even when scores are lower',()=>{
+ const atlas={reviewOnly:true,areas:[{id:'vertebral-skeleton',label:'vertebrae',missing:3}],rows:[
+  {area:'vertebral-skeleton',atlasName:'Vertebra C3',system:'skeletal',status:'unmatched'},
+  {area:'vertebral-skeleton',atlasName:'Vertebra T8',system:'skeletal',status:'unmatched'},
+  {area:'vertebral-skeleton',atlasName:'Vertebra L1',system:'skeletal',status:'unmatched'}]};
+ const publisher=[
+  {name:'vertebra',fmaId:'FMA800',bpId:'BP800'},
+  {name:'cervical vertebra',fmaId:'FMA801',bpId:'BP801'},
+  {name:'third cervical vertebra',fmaId:'FMA803',bpId:'BP803'},
+  {name:'eighth thoracic vertebra',fmaId:'FMA808',bpId:'BP808'},
+  {name:'first lumbar vertebra',fmaId:'FMA811',bpId:'BP811'},
+  {name:'fourth cervical vertebra',fmaId:'FMA804',bpId:'BP804'},
+  ...Array.from({length:10},(_,i)=>({name:'vertebra anatomy region '+i,
+    fmaId:'FMA9'+i,bpId:'BP9'+i}))
+ ];
+ const map=new Map(publisher.map((x,i)=>[x.fmaId,new Set(['FJ'+(900+i)])]));
+ const zip=publisher.map((x,i)=>'FJ'+(900+i)+'.obj');
+ const result=discoverFocusSources({focus:atlas,officialRows:publisher,elements:map,archiveFiles:zip});
+ for(const [name,match] of [
+   ['Vertebra C3','third cervical vertebra'],
+   ['Vertebra T8','eighth thoracic vertebra'],
+   ['Vertebra L1','first lumbar vertebra']
+ ]) {
+  const row=result.structures.find(x=>x.atlasName===name);
+  assert.equal(row.candidates[0].officialName,match,name);
+  assert.equal(row.candidates[0].warnings.includes('VERTEBRAL_LEVEL_NOT_SPECIFIED'),false);
+  assert.equal(row.candidates[0].approved,false);
+ }
+ assert.ok(sourceLeadWarnings('Vertebra C3','fourth cervical vertebra')
+   .includes('DIFFERENT_VERTEBRAL_LEVEL'));
+ assert.ok(sourceLeadWarnings('Vertebra C3','cervical vertebra')
+   .includes('VERTEBRAL_LEVEL_NOT_SPECIFIED'));
+});
+test('whole organ cannot be mistaken for liver segment, mesoappendix for appendix, or taenia for unrelated muscle',()=>{
+ for(const [anatomy,source,flag] of [
+  ['Liver','segment of liver','WHOLE_ORGAN_VS_SOURCE_SUBPART'],
+  ['Meso-appendix','appendix','MESOAPPENDIX_NOT_APPENDIX'],
+  ['Free taenia','muscle of free lower limb','TAENIA_NOT_UNRELATED_MUSCLE'],
+  ['Sigmoid colon','segment of colon','WHOLE_ORGAN_VS_SOURCE_SUBPART'],
+  ['Axis (C2)','intervertebral disk of axis','VERTEBRA_NOT_INTERVERTEBRAL_DISK']
+ ])assert.ok(sourceLeadWarnings(anatomy,source).includes(flag),anatomy+' versus '+source);
+ assert.ok(!sourceLeadWarnings('Liver','liver').includes('WHOLE_ORGAN_VS_SOURCE_SUBPART'));
+ assert.ok(!sourceLeadWarnings('Axis (C2)','axis').includes('VERTEBRA_NOT_INTERVERTEBRAL_DISK'));
+});
