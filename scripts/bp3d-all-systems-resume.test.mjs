@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {findInterruptedAllSystemsBatch} from './bp3d-focused-onepass.mjs';
-import {runBatch,provisionalSelectionReport} from '../apps/4d-lab/tools/batch-bp3d-candidates.mjs';
+import {runBatch,provisionalSelectionReport,isIncompleteFailedAllSystemsInventory} from '../apps/4d-lab/tools/batch-bp3d-candidates.mjs';
 
 function createStaged(root,name,number,{finalized=false}={}){
  const folder=path.join(root,name),structures=path.join(folder,'structures');
@@ -60,4 +60,39 @@ test('all-systems 702-model inventory does not dereference a null 584-model prov
  assert.throws(()=>provisionalSelectionReport({
    provisional:true,allSystemsExact:false,provisionalInfo:null
  }),/selector missing/);
+});
+
+function partialFailedManifest(){
+ return {kind:'official-bp3d-bulk-source-review',provisionalSource:true,
+  allSystemsExactSourcePreview:true,legalStatus:'NOT-CLEARED',
+  approvedForCommercialDistribution:false,geometryRegisteredToMEDCOEL:false,
+  sourceHashes:{archiveSha256:'a'.repeat(64),namesSha256:'b'.repeat(64),
+   elementsSha256:'c'.repeat(64)},
+  summary:{selected:702,converted:232,failed:470},
+  converted:Array.from({length:232},(_,i)=>({name:'mesh'+i})),
+  failures:Array.from({length:470},(_,i)=>({name:'old-mesh'+i,error:'historical missing metadata'}))};
+}
+test('the exact 232/702 partial inventory from the Mac log remains a resumable private FAILED manifest',()=>{
+ const data=partialFailedManifest();
+ assert.equal(isIncompleteFailedAllSystemsInventory(data),true);
+ assert.equal(isIncompleteFailedAllSystemsInventory({...data,summary:{...data.summary,failed:0}}),false);
+ assert.equal(isIncompleteFailedAllSystemsInventory({...data,approvedForCommercialDistribution:true}),false);
+ assert.equal(isIncompleteFailedAllSystemsInventory({...data,geometryRegisteredToMEDCOEL:true}),false);
+ assert.equal(isIncompleteFailedAllSystemsInventory({...data,
+  sourceHashes:{...data.sourceHashes,archiveSha256:'untrusted'}}),false);
+ assert.equal(isIncompleteFailedAllSystemsInventory({...data,failures:[]}),false);
+});
+test('source selector finds 702 intact GLBs even when failed 232-model manifest is present',t=>{
+ const privateDir=fs.mkdtempSync(path.join(os.tmpdir(),'bp3d-private-failed-manifest-'));
+ t.after(()=>fs.rmSync(privateDir,{recursive:true,force:true}));
+ const dir=createStaged(privateDir,'bp3d-all-systems-temp-partial',7);
+ const bad=createStaged(privateDir,'bp3d-all-systems-temp-not-private',8);
+ fs.writeFileSync(path.join(dir,'inventory.json'),JSON.stringify(partialFailedManifest()));
+ fs.writeFileSync(path.join(bad,'inventory.json'),JSON.stringify({
+  ...partialFailedManifest(),approvedForCommercialDistribution:true
+ }));
+ const result=findInterruptedAllSystemsBatch({privateDir,minModels:5});
+ assert.equal(result.dir,dir);
+ assert.equal(result.failedInventory,true);
+ assert.equal(result.count,7);
 });
