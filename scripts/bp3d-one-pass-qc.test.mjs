@@ -50,6 +50,32 @@ test('resume reuses ONLY a genuine local quarantined candidate batch, never publ
    const opts={privateRoot,repoRoot:root};
    assert.equal(verifyReusableCandidateFolder(src,opts).target,src);
    assert.equal(verifyReusableCandidateFolder(src,opts).inventory.provisionalSource,true);
+   // Mimics macOS /var -> /private/var: a legitimate alias in the checkout's
+   // parent path must not be treated as a malicious private batch symlink.
+   const alias=path.join(path.dirname(root),'bp3d-resume-alias-'+path.basename(root));
+   fs.symlinkSync(root,alias,'dir');
+   try{
+     const aliasedPrivate=path.join(alias,'local-data','licensing-quarantine');
+     const aliasedSource=path.join(aliasedPrivate,'bp3d-qa-new-EXAMPLE1');
+     assert.equal(verifyReusableCandidateFolder(aliasedSource,{
+       privateRoot:aliasedPrivate,repoRoot:alias
+     }).target,aliasedSource);
+   }finally{fs.unlinkSync(alias);}
+   // A redirected quarantine root outside the checkout is never accepted.
+   const outside=fs.mkdtempSync(path.join(os.tmpdir(),'bp3d-outside-'));
+   try{
+     const maliciousRoot=path.join(root,'redirect-test','local-data');
+     fs.mkdirSync(maliciousRoot,{recursive:true});
+     fs.symlinkSync(outside,path.join(maliciousRoot,'licensing-quarantine'),'dir');
+     const name='bp3d-qa-new-OUTSIDE';
+     fs.mkdirSync(path.join(outside,name));
+     fs.writeFileSync(path.join(outside,name,'inventory.json'),JSON.stringify(manifest));
+     assert.throws(()=>verifyReusableCandidateFolder(
+       path.join(maliciousRoot,'licensing-quarantine',name),{
+         privateRoot:path.join(maliciousRoot,'licensing-quarantine'),
+         repoRoot:path.join(root,'redirect-test')
+       }),/symlink|redirect/);
+   }finally{fs.rmSync(outside,{recursive:true,force:true});}
    for(const bad of [root,path.join(root,'dist'),path.join(privateRoot,'bp3d-batch'),
      path.join(privateRoot,'bp3d-qa-new-EXAMPLE1','structures')])
      assert.throws(()=>verifyReusableCandidateFolder(bad,opts),/direct bp3d-qa-new/);
