@@ -10,6 +10,7 @@ import {createRequire} from 'node:module';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createServer} from 'node:http';
 import {privateAtlasPlugin} from './preview-private-atlas-expansion.mjs';
+import {patchPrivateSourceRuntime,patchPrivatePanel} from './z-anatomy-private-runtime.mjs';
 import {createLabPreviewServer,checkBuilds,ROOTS} from './preview-4d-lab.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
@@ -54,8 +55,9 @@ function sourcePlugin(applied){
    assert.equal(code.split(start).length,2);
    code=code.replace(start,"function frameGroup() { return new THREE.Group(); }\nfunction unusedBp3dFrameGroup() {");
    code=code.replace("node.userData.source = 'bodyparts3d'","node.userData.source = 'z-anatomy-original-private'");
-   code=code.replace('} catch { failed++; }',"} catch (error) { failed++; console.error('[Private Z-Anatomy] model failed', entry.name, entry.modelPath, error); }");
+   code=patchPrivateSourceRuntime(code);
   }else if(p==='src/atlas/bp3dPanel.js'){
+   code=patchPrivatePanel(code);
    code=code.replaceAll('BodyParts3D','Z-Anatomy (sumber asli)').replaceAll('Kembali ke model Atlas','Keluar dari pratinjau privat');
   }else if(p==='src/atlas/engine.js'){
    code=code.replaceAll('BodyParts3D (pratinjau lokal','Z-Anatomy (pratinjau lokal');
@@ -120,6 +122,7 @@ async function main(){
  try{
   const resp=await fetch(base+'/anatomy/viewer/bp3d/inventory.json');assert(resp.ok);assert.equal((await resp.json()).converted.length,inv.converted.length);
   assert.equal((await fetch(base+'/anatomy/viewer/models/nervous.glb',{method:'HEAD'})).status,404);
+  console.log('VASCULAR SOURCE AUDIT:',path.join(out,'vascular-source-audit.json'));
   console.log('SOURCE RECOVERY REPORT:',path.join(out,'source-recovery-report.json'));
   console.log('Z-ANATOMY SOURCE PREVIEW READY:',base+'/anatomy/viewer/?models=bp3d&privateExpansion=1');
   console.log('Source-native independent body; no overlay, no production changes. Public release NO_GO.');
