@@ -18,6 +18,7 @@ const allSystemsBatch=path.join(PRIVATE,'bp3d-all-systems');
 const allSystemsReport=path.join(PRIVATE,'bp3d-completeness-all-systems');
 const allSystemsReview=path.join(PRIVATE,'bp3d-all-systems-onepass-review');
 const previewUrl='http://127.0.0.1:4173/anatomy/viewer/?models=bp3d:skeletal,muscular,cardiovascular,visceral';
+const allSystemsPreviewUrl='http://127.0.0.1:4173/anatomy/viewer/?models=bp3d';
 function requireSafePrivateTarget(target){
  const root=fs.realpathSync(PRIVATE),resolved=path.resolve(target);
  if(resolved===root||path.dirname(resolved)!==root)
@@ -50,7 +51,8 @@ export async function runFocusedOnePass({openPreview=false,skipTests=false,verte
  const targetReview=allSystemsExact?allSystemsReview:vertebralExact?vertebralReview:review;
  const result={status:'BLOCKED',publicRelease:'NO_GO',medicalValidation:false,
    clinicalApproval:false,commercialRelease:false,source:'official BodyParts3D FMA/BP/FJ',
-   output:targetBatch,report:targetReport,previewUrl,existingModelsIntact:true,
+   output:targetBatch,report:targetReport,previewUrl:allSystemsExact?allSystemsPreviewUrl:previewUrl,
+   existingModelsIntact:true,
    exactVertebralSourcePreview:vertebralExact,
    allSystemsExactSourcePreview:allSystemsExact,
    warnings:['Original Atlas and production assets unchanged',
@@ -88,7 +90,7 @@ export async function runFocusedOnePass({openPreview=false,skipTests=false,verte
   console.log('\nPRIVATE '+(allSystemsExact?'ALL-SYSTEMS':vertebralExact?'VERTEBRAL':'FOCUSED')+' GLB REVIEW READY: '+
     result.modelCount+' models ('+result.priorModelsReused+' reused + '+
     (allSystemsExact?result.newAllSystemsGlbs:vertebralExact?result.newExactVertebraGlbs:result.newFocusedGlbs)+
-    ' newly converted); public deployment NO-GO. Original Atlas: '+previewUrl+
+    ' newly converted); public deployment NO-GO. Original Atlas: '+result.previewUrl+
     '\nReport: '+path.join(targetReview,'readiness.json')+'\n');
   if(openPreview){
    const proc=spawnSync('npm',['run','preview:4d-lab'],{cwd:ROOT,
