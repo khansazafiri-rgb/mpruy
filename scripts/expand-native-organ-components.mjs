@@ -172,6 +172,7 @@ export async function expandNativeOrganComponents({root,privateRoot,pack,inv,out
  // Do not combine sources where an already rendered FJ has different coordinates.
  const partByFj=new Map([...byTree.partof.values()].map(g=>[g.elementId,g]));
  const crossConflicts=[];
+ // Differences in archive views remain reportable even if the second frame is blocked.
  for(const [fj,signature] of usedFj){
   const p=partByFj.get(fj);
   if(p?.geometryStatus==='COMPLETE'&&p.geometrySha256!==signature)crossConflicts.push(fj);
@@ -253,7 +254,7 @@ export async function expandNativeOrganComponents({root,privateRoot,pack,inv,out
  const counts={};for(const e of converted)counts[e.system]=(counts[e.system]||0)+1;
  report.total=converted.length;report.perSystem=counts;report.hraMounted=false;
  const updated={...inv,...safety,kind:'bp3d-native-component-expanded-private-review',sourceTree:'isa',
-  sourceTrees:['isa','partof'],sourceFrameEvidence:frame,sourceNativeDisplayOnly:true,converted,systems:counts,
+  sourceTrees:frame.compatible?['isa','partof']:['isa'],sourceFrameEvidence:frame,sourceNativeDisplayOnly:true,converted,systems:counts,
   summary:{...inv.summary,converted:converted.length},provisionalSource:true,referenceSurface:null};
  write(path.join(target,'inventory.json'),updated);write(path.join(out,'organ-component-report.json'),report);
  writeVascularCoverage(out,{catalog,converted,bundles});
