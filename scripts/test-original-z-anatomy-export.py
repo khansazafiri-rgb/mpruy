@@ -1,0 +1,37 @@
+"""Synthetic regression fixtures only, never included in any atlas pack."""
+import bpy, importlib.util, pathlib, sys, math, json, struct
+p=pathlib.Path(__file__).resolve().with_name('export-original-z-anatomy-private.py')
+spec=importlib.util.spec_from_file_location('medcoel_export',p)
+mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
+assert mod.key('Internal carotid artery.l')=='left internal carotid artery'
+assert mod.key('Internal carotid artery.r')!='left internal carotid artery'
+assert mod.extra_identity('right external carotid artery')['group']=='arterial'
+assert mod.extra_identity('left external jugular vein')['group']=='venous'
+assert mod.extra_identity('thoracic duct')['source']=='lymphatic'
+assert mod.extra_identity('left adrenal gland')['group']=='endocrine'
+assert mod.extra_identity('left median nerve')['source']=='nervous'
+assert mod.extra_identity('angular gyrus') is None
+# Geometrical test fixture, not an anatomical model. A source bevel is respected.
+data=bpy.data.curves.new('fixture-source-bevel','CURVE');data.dimensions='3D'
+data.resolution_u=3;data.bevel_depth=.01;data.bevel_resolution=2
+s=data.splines.new('POLY');s.points.add(2)
+for i,xyz in enumerate([(0,0,0,1),(.04,.02,.1,1),(.1,0,.2,1)]):s.points[i].co=xyz
+obj=bpy.data.objects.new('fixture-source-bevel',data);bpy.context.collection.objects.link(obj)
+bpy.context.view_layer.update()
+pos,norm,bounds,skipped=mod.geometry(obj,bpy.context.evaluated_depsgraph_get(),1)
+assert len(pos)==len(norm) and len(pos)>0 and len(pos)%9==0
+assert bounds[4]-bounds[1]>.15 and bounds[3]-bounds[0]>.05
+assert all(math.isfinite(v) for v in pos)
+binary=mod.glb(pos,norm,bounds,{'approvedForDistribution':False})
+magic,version,total=struct.unpack('<III',binary[:12]);assert magic==0x46546c67 and version==2 and total==len(binary)
+jlen,jtype=struct.unpack('<II',binary[12:20]);doc=json.loads(binary[20:20+jlen])
+assert doc['accessors'][0]['count']==len(pos)//3 and doc['extras']['reviewStatus']=='candidate-only'
+data.bevel_depth=0;data.bevel_object=None;data.extrude=0
+bpy.context.view_layer.update()
+try:
+    mod.geometry(obj,bpy.context.evaluated_depsgraph_get(),1)
+except RuntimeError:
+    pass
+else:
+    raise AssertionError('Unbeveled curve without a surface must not be converted')
+print('SOURCE EXPORT FIXTURES PASS: exact identity, source bevel, native GLB and empty-curve rejection',flush=True)
