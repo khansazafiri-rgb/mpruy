@@ -144,6 +144,18 @@
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC11436473/"
       ],
       "note": "HRA Lymph Vasculature is an ASCT+B CSV table, not a verified whole-body GLB vessel network. Do not invent geometry or substitute blood vessels."
+    },
+    {
+      "id": "vite-8.3.8",
+      "kind": "software",
+      "license": "MIT",
+      "commercialTerms": "permitted-with-notice",
+      "ref": "v8.3.8",
+      "version": "8.3.8",
+      "url": "https://github.com/vitejs/vite/blob/v8.3.8/LICENSE",
+      "notice": "source-notices/vite.txt",
+      "gitBlob": "b7e97ecb6aa4dd70b3e3a637afa2ae16feb7cd12",
+      "note": "Verified upstream MIT notice exactly matches existing pinned blob. Targeted security update; registry lock and npm audit must be generated and verified locally."
     }
   ],
   "publicRelease": "NO_GO"
