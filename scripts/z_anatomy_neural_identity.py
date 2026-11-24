@@ -16,8 +16,7 @@ ALIASES={
     'common peroneal nerve':'common fibular nerve',
     'deep peroneal nerve':'deep fibular nerve',
     'superficial peroneal nerve':'superficial fibular nerve',
-    'auditory nerve':'vestibulocochlear nerve',
-    'oculomotor nerve':'oculomotor nerve'
+    'brain stem':'brainstem'
 }
 CENTRAL_HEAD={
     'brain','cerebrum','cerebral hemisphere','cerebellum','cerebellar hemisphere',
@@ -98,7 +97,9 @@ def neural_identity(value):
 
 def priority_labels():
     bilateral=lambda names:[side+' '+n for n in sorted(names) for side in ('left','right')]
-    return sorted(CENTRAL_HEAD|SPINE)+bilateral(CRANIAL|UPPER|LOWER|TRUNK)+[
+    midline={'brain','cerebrum','cerebellum','brainstem','midbrain','pons','medulla oblongata','corpus callosum','fornix','optic chiasm','cerebellar vermis','spinal cord','conus medullaris','cauda equina','filum terminale','cervical enlargement','lumbar enlargement','celiac plexus','superior hypogastric plexus','inferior hypogastric plexus'}
+    paired=(CENTRAL_HEAD|SPINE|CRANIAL|UPPER|LOWER|TRUNK)-midline-{'brain stem'}
+    return sorted(midline)+bilateral(paired)+[
         side+' '+level+' spinal nerve' for level in
         [*(f'c{i}' for i in range(1,9)),*(f't{i}' for i in range(1,13)),*(f'l{i}' for i in range(1,6)),*(f's{i}' for i in range(1,6)),'co1']
         for side in ('left','right')]
