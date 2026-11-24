@@ -12,6 +12,7 @@ import {createServer} from 'node:http';
 import {privateAtlasPlugin} from './preview-private-atlas-expansion.mjs';
 import {patchPrivateSourceRuntime,patchPrivatePanel} from './z-anatomy-private-runtime.mjs';
 import {patchNativeEngine,patchNativeUI,patchNativePanel} from './z-anatomy-private-integration.mjs';
+import {auditNativeInventory} from './z-anatomy-native-inventory-audit.mjs';
 import {buildHraRegistry,serveHraReference} from './atlas-hra-private-reference.mjs';
 import {writeClinicalPriorityAudit} from './atlas-clinical-priority-audit.mjs';
 import {createLabPreviewServer,checkBuilds,ROOTS} from './preview-4d-lab.mjs';
@@ -98,6 +99,10 @@ async function main(){
  const inv=read(local(pack,'inventory.json')),report=read(local(out,'source-recovery-report.json'));
  assert(inv.kind==='z-anatomy-original-source-private'&&inv.approvedForCommercialDistribution===false&&report.publicRelease==='NO_GO');
  assert.equal(inv.converted.length,report.total);
+ const nativeAudit=auditNativeInventory(inv);
+ write(path.join(out,'native-inventory-audit.json'),nativeAudit);
+ console.log('NATIVE INVENTORY AUDIT',JSON.stringify({passed:nativeAudit.passed,groups:nativeAudit.groups,unavailableGroups:nativeAudit.unavailableGroups}));
+ assert(nativeAudit.passed,'Native inventory metadata failed; see '+path.join(out,'native-inventory-audit.json'));
  const names=new Set(),ids=new Set();
  for(const e of inv.converted){
   assert(!names.has(e.name)&&!ids.has(e.id)&&e.approvedForDistribution===false);
