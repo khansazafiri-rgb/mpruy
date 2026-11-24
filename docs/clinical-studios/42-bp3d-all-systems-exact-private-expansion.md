@@ -42,3 +42,23 @@ The same one command runs 4D Lab, Atlas and licensing tests, builds the new GLBs
 No new safe source matches, mismatched archive, modified cached geometry, missing FJ, clinical source conflict, and any conversion/audit failure must STOP the package's promotion. The 470, 584, 602 and 626 old private packages are preserved. No attempt is made to hide gaps with generic vertebrae, adjacent structures or liver segments in place of a whole organ.
 
 **NO-GO to public deployment** remains mandatory: source archive terms and the existing NC Atlas application code's commercial permission have not been resolved, and anatomical identity has not been clinically verified. CI success cannot override these gates.
+
+## Recovery of 702 converted GLBs after the 24 November 2026 post-conversion crash
+
+Mac terminal evidence: all 171 4D Lab, 12 script, 102 Anatomy and 118 licensing tests passed. Private source conversion reported **Processed 702/702 eligible, generated 702, failed 0**. Before writing the final inventory, the converter threw `Cannot read properties of null (reading 'summary')` because the 584 provisional-selection object was incorrectly dereferenced in the all-systems mode. The public website and all original 470/584/602/626 model packs were unchanged.
+
+The patch on `fix/bp3d-all-systems-resume-702-20261124` corrects the manifest selection and automatically discovers the most complete unfinished `bp3d-all-systems-temp-*` folder. It preserves **all successful conversions**: rather than recreating 702 GLBs, it verifies each staged GLB against a freshly audited original publisher archive, official FMA/BP/FJ and original element payload hashes, prior 626 private model hashes, and GLB geometry lineage. An invalid structure fails closed. No symlinks or external directories are followed.
+
+After syncing the fix branch, run the same single command:
+
+```sh
+cd ~/mpruy
+git fetch origin
+git switch fix/bp3d-all-systems-resume-702-20261124
+git pull --ff-only origin fix/bp3d-all-systems-resume-702-20261124
+npm run qc:bodyparts3d-all-systems:preview
+```
+
+Expected discovery log (when the local staging directory is still present): `Found 702 previously converted private GLBs; verifying source FMA/BP/FJ and hashes before reuse`. The code must then complete writing the private inventory, run full source/geometry audit and only if all checks pass report `PRIVATE ALL-SYSTEMS GLB REVIEW READY` with 702 catalogue entries (626 previously cached + 76 candidates). This is a target based on the previous conversion log, **not** evidence that the 702 passed audit. If no safe resumable folder exists, the code may rebuild candidates into a new private staging folder. The user can inspect `local-data/licensing-quarantine/bp3d-all-systems-onepass-review/readiness.json` for the final evidence.
+
+Neither a successful 702 GLB audit nor a website preview grants medical or commercial rights. Public deployment remains blocked until source and code licenses and clinician validation are proven.
