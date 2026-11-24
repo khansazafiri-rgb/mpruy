@@ -19,8 +19,6 @@ const digest=x=>createHash('sha256').update(x).digest('hex');
 export function checkCachedSourceReview({report,focus,inventory,namesBytes,elementsBytes}){
  if(report?.status!=='PRIVATE_REVIEW_UNVALIDATED'||report?.errors?.length||
    report?.summary?.converted!==inventory?.converted?.length||
-   report?.summary?.converted!==focus?.rows?.filter(x=>x.status==='converted').length
-      +report?.summary?.converted-focus?.rows?.filter(x=>x.status==='converted').length ||
    focus?.reviewOnly!==true||inventory?.approvedForCommercialDistribution!==false ||
    inventory?.geometryRegisteredToMEDCOEL!==false ||
    report?.sourceHashes?.archiveSha256!==inventory?.sourceHashes?.archiveSha256)
