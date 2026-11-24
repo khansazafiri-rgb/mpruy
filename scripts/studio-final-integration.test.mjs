@@ -190,7 +190,9 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
   git('merge-base', '--is-ancestor', securityReviewCommit, 'HEAD');
   const reviewedSecurityPaths = new Set(['deploy/Caddyfile', 'deploy/anatomy.caddy.snippet']);
   for (const file of reviewedSecurityPaths) {
-    assert.equal(read(file), git('show', securityReviewCommit + ':' + file),
+    // git(...) trims stdout; using it for byte-exact config comparison falsely rejects a trailing LF.
+    // Preserve ALL original Caddy bytes; do not relax any server safety directive.
+    assert.equal(read(file), execFileSync('git', ['show', securityReviewCommit + ':' + file], { cwd: root, encoding: 'utf8' }),
       'Reviewed security Caddy config must not drift: ' + file);
   }
   // Reviewed emergency recovery is limited to these exact two application
