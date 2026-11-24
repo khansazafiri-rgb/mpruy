@@ -40,6 +40,35 @@ function runTests(){
   if(result.status!==0)throw Error(key+' failed, source preview unchanged');
  }
 }
+// The owner Mac may have finished all source conversions before the old
+// manifest null-dereference. Only reuse an unfinalized, private batch with at
+// least the known baseline count; runBatch verifies EVERY GLB/source against
+// the trusted 626-model inventory and original publisher ZIP before adoption.
+export function findInterruptedAllSystemsBatch({privateDir=PRIVATE,minModels=626}={}){
+ if(!fs.existsSync(privateDir))return null;
+ const candidates=[];
+ for(const entry of fs.readdirSync(privateDir,{withFileTypes:true})){
+  if(!entry.isDirectory()||!/^bp3d-all-systems-temp-[A-Za-z0-9_-]+$/.test(entry.name))
+   continue;
+  const dir=path.join(privateDir,entry.name);
+  if(fs.lstatSync(dir).isSymbolicLink()||
+     fs.existsSync(path.join(dir,'inventory.json')))continue;
+  const models=path.join(dir,'structures');
+  if(!fs.existsSync(models)||fs.lstatSync(models).isSymbolicLink()||
+     !fs.statSync(models).isDirectory())continue;
+  let count=0;
+  for(const structure of fs.readdirSync(models,{withFileTypes:true})){
+   if(!structure.isDirectory()||structure.isSymbolicLink())continue;
+   const root=path.join(models,structure.name);
+   if(fs.existsSync(path.join(root,'model.glb'))&&
+      fs.existsSync(path.join(root,'lineage.json')))count++;
+  }
+  if(count>=minModels)candidates.push({dir,count,mtime:fs.statSync(dir).mtimeMs});
+ }
+ candidates.sort((a,b)=>b.count-a.count||b.mtime-a.mtime);
+ return candidates[0]||null;
+}
+
 function saveStatus(status,target=review){
  fs.mkdirSync(target,{recursive:true});
  fs.writeFileSync(path.join(target,'readiness.json'),JSON.stringify(status,null,2)+'\n');
@@ -61,12 +90,16 @@ export async function runFocusedOnePass({openPreview=false,skipTests=false,verte
  try{
   requireSafePrivateTarget(targetBatch);requireSafePrivateTarget(targetReport);
   if(!skipTests)runTests();
-  workingBatch=fs.mkdtempSync(path.join(PRIVATE,
+  const interrupted=allSystemsExact?findInterruptedAllSystemsBatch():null;
+  if(interrupted)console.log('Found '+interrupted.count+
+    ' previously converted private GLBs; verifying source FMA/BP/FJ and hashes before reuse: '+interrupted.dir);
+  workingBatch=interrupted?.dir||fs.mkdtempSync(path.join(PRIVATE,
     allSystemsExact?'bp3d-all-systems-temp-':vertebralExact?'bp3d-vertebral-temp-':'bp3d-focused-temp-'));
   workingReport=fs.mkdtempSync(path.join(PRIVATE,
     allSystemsExact?'bp3d-all-systems-audit-':vertebralExact?'bp3d-vertebral-audit-':'bp3d-focused-audit-'));
   const inventory=await runBatch({provisional:true,includePromising:true,limitNew:120,
-    focusShortlist:!allSystemsExact,vertebralExact,allSystemsExact,outputDir:workingBatch});
+    focusShortlist:!allSystemsExact,vertebralExact,allSystemsExact,
+    outputDir:workingBatch,resumeExistingOutput:Boolean(interrupted)});
   if(inventory.summary.failed||(allSystemsExact?inventory.summary.allSystemsNewModels:vertebralExact?inventory.summary.vertebralNewModels:inventory.summary.focusedNewModels)<1)
     throw Error('Focus source conversion failed or no new source model passed');
   const audit=await runAudit({batch:workingBatch,output:workingReport,checkGeometry:true});
@@ -81,6 +114,7 @@ export async function runFocusedOnePass({openPreview=false,skipTests=false,verte
     newFocusedGlbs:vertebralExact||allSystemsExact?0:inventory.summary.focusedNewModels,
     newExactVertebraGlbs:vertebralExact?inventory.summary.vertebralNewModels:0,
     newAllSystemsGlbs:allSystemsExact?inventory.summary.allSystemsNewModels:0,
+    recoveredInterruptedGlbs:inventory.summary.resumedInterruptedModels||0,
     allSystemsSourceSelection:inventory.allSystemsSourceSelection||null,
     modelCount:inventory.converted.length,
     focusedSourceSelection:inventory.focusedSourceSelection||null,
