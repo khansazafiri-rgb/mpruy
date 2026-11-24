@@ -11,6 +11,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseOfficialNames, parseOfficialElements } from '../licensing/tools/prepare-bodyparts3d-source.mjs';
 import { summarizeGeometry, diagnoseGeometry } from '../apps/4d-lab/tools/review-bp3d-candidate.mjs';
 import { createLabPreviewServer, checkBuilds, ROOTS } from './preview-4d-lab.mjs';
+import { expandPartOf } from './bp3d-partof-private-expansion.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const privateRoot = path.join(root, 'local-data/licensing-quarantine');
@@ -89,9 +90,9 @@ export function privateAtlasPlugin(applied = new Set()) {
           "    const inv=await loadBp3dInventory();\n"+
           "    if (!inv) throw new Error('Private expansion inventory unavailable');\n"+
           "    systems.nervous=[];\n"+
-          "    for (const e of inv.converted) if(e.system==='nervous' && e.privateAtlasMeta?.source==='nervous') {\n"+
-          "      if (Object.hasOwn(catalog,e.name)) throw new Error('Duplicate private structure: '+e.name);\n"+
-          "      catalog[e.name]=e.privateAtlasMeta; systems.nervous.push(e.name);\n"+
+          "    for (const e of inv.converted) if(e.privateAtlasMeta?.source===e.system) {\n"+
+          "      if (Object.hasOwn(catalog,e.name) && catalog[e.name].source!==e.system) throw new Error('Conflicting private structure: '+e.name);\n"+
+          "      catalog[e.name]=e.privateAtlasMeta; const list=systems[e.system]??=[]; if(!list.includes(e.name))list.push(e.name);\n"+
           "    }\n"+
           "    if (!systems.nervous.length) throw new Error('No private nervous structures');\n"+
           "  }\n  metadataTimer();",rel);
@@ -217,11 +218,14 @@ async function main() {
     converted.push(e);added.push({key,name,system,flags:diagnostics.flags});
     oldNames.add(name);oldIds.add(id);identities.add(key);r.sourceFJ.forEach(fj=>usedFJ.add(fj));
   }
+  const partOf=process.env.MEDCOEL_BP3D_PARTOF==='1' ? await expandPartOf({privateRoot,source,pack,catalog,systems,converted,oldNames,oldIds,usedFJ,identities,io}) : null;
   const perSystem={};
   for(const e of converted)perSystem[e.system]=(perSystem[e.system]||0)+1;
   fail((perSystem.nervous||0)>0,'No independent nervous candidate available');
   const report={baseline:old.converted.length,staged:staged.length,verified:verified.length,
-    added:added.length,total:converted.length,perSystem,retained,addedEntries:added,
+    added:added.length+(partOf?.added.length||0),isaStagedAdded:added.length,partOfAdded:partOf?.added.length||0,
+    partOf:partOf&&{status:partOf.status,error:partOf.error||null,exactCandidateCount:partOf.exactCandidateCount||0,frame:partOf.frame,added:partOf.added},
+    total:converted.length,perSystem,retained,addedEntries:[...added,...(partOf?.added||[])],
     atlasIntegration:'PRIVATE_BUILD_PENDING',geometryAnatomyValidated:false,publicRelease:'NO_GO',out};
   write(path.join(out,'integration-report.json'),report);
   const combined={...old,kind:'official-bp3d-private-expansion-preview',converted,provisionalSource:true,
