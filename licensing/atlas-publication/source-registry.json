@@ -15,15 +15,16 @@
       "gitBlob": "8ada2a5f982916b0ba4b7a0aa7de347587e745d7"
     },
     {
-      "id": "vite-8.1.1",
+      "id": "vite-8.1.5",
       "kind": "software",
       "license": "MIT",
       "commercialTerms": "permitted-with-notice",
-      "ref": "v8.1.1",
-      "version": "8.1.1",
-      "url": "https://github.com/vitejs/vite/blob/v8.1.1/LICENSE",
+      "ref": "v8.1.5",
+      "version": "8.1.5",
+      "url": "https://github.com/vitejs/vite/blob/v8.1.5/LICENSE",
       "notice": "source-notices/vite.txt",
-      "gitBlob": "b7e97ecb6aa4dd70b3e3a637afa2ae16feb7cd12"
+      "gitBlob": "b7e97ecb6aa4dd70b3e3a637afa2ae16feb7cd12",
+      "note": "Exact MIT notice blob unchanged from v8.1.1. Independent lock derived from existing MEDCOEL exact npm lock closure; npm ci verification pending."
     },
     {
       "id": "z-anatomy-original",
