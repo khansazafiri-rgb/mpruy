@@ -54,7 +54,7 @@ test('review-only Caddy candidate replaces ONLY its 4D routes, preserving unrela
 });
 test('missing site or unrecognised 4D rewrite fails closed, and no release policy can be bypassed',()=>{
   assert.throws(()=>prepare4dLabCaddy('import site-config/*.caddy',snippet),/explicit medcoel.com/);
-  assert.throws(()=>prepare4dLabCaddy(site.replace('medcoel.com {','medcoel.com {\n rewrite /anatomy/4d-lab/* /unsafe'),snippet),/Unrecognised/);
+  assert.throws(()=>prepare4dLabCaddy(site.replace('\nmedcoel.com {','\nmedcoel.com {\n rewrite /anatomy/4d-lab/* /unsafe'),snippet),/Unrecognised/);
   assert.throws(()=>prepare4dLabCaddy(site,'handle_path /anatomy/4d-lab/* {}'),/lacks essential/);
   const release=fs.readFileSync(new URL('./stage-4d-lab.mjs',import.meta.url),'utf8');
   assert.match(release,/assertCommercialReleaseReady\('4d-lab'/);
