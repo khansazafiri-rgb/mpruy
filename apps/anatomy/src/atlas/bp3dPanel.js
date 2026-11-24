@@ -51,8 +51,8 @@ export async function initBp3dBanner() {
   const rows = GROUPS.map((g) => g.source).filter((v, i, a) => a.indexOf(v) === i)
     .map((src) => `${esc(src)} ${fmt(s.perSystem[src] || 0)}`).join(" · ");
   host.dataset.state = "ready";
-  host.innerHTML = `<strong>Pratinjau BodyParts3D</strong>
-    <span>${fmt(s.structures)} dari ${fmt(catalogTotal)} struktur · <b>belum lengkap</b>, bukan CT/USG${s.systems ? " · sistem: " + esc(s.systems.join(", ")) : ""}</span>
+  host.innerHTML = `<strong>Pratinjau BodyParts3D${s.provisional ? " · KANDIDAT BELUM TERVERIFIKASI" : ""}</strong>
+    <span>${fmt(s.structures)} dari ${fmt(catalogTotal)} struktur · <b>belum lengkap</b>, bukan CT/USG${s.provisional ? " · pratinjau lokal untuk pemeriksaan anatomi, bukan sumber klinis" : ""}${s.systems ? " · sistem: " + esc(s.systems.join(", ")) : ""}</span>
     <label><input id="bp3dSkin" type="checkbox" data-testid="bp3d-skin"> Kulit referensi</label>
     <details><summary>Cakupan</summary><p>${rows}</p></details>
     <a href="${esc(backToAtlasHref())}" data-testid="bp3d-back">Kembali ke model Atlas</a>`;

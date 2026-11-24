@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import * as THREE from 'three';
-import { parseBp3dFlag, validateInventory, BP3D_FRAME, bp3dHas, _bp3dReset, bp3dUsesSystem, loadBp3dInventory, loadBp3dSystem } from '../src/viewer/bp3dSource.js';
+import { parseBp3dFlag, validateInventory, BP3D_FRAME, bp3dHas, _bp3dReset, bp3dUsesSystem, bp3dSummary, loadBp3dInventory, loadBp3dSystem } from '../src/viewer/bp3dSource.js';
 import { tissueClass } from '../src/viewer/bp3dMaterials.js';
 import { createSelectionGlow } from '../src/viewer/selectionGlow.js';
 
@@ -140,5 +140,29 @@ describe('selective skeletal/visceral source in the ORIGINAL Atlas interface', (
       const loader = { loadAsync: async () => ({scene: new THREE.Group()}) };
       await expect(loadBp3dSystem('visceral', loader)).rejects.toThrow(/incomplete: 1\/1 models failed/);
     } finally { _bp3dReset(''); }
+  });
+});
+
+describe('unverified bulk candidate review stays in the EXISTING Atlas banner', () => {
+  it('tracks an explicit provisional source state without changing gold-glow or viewer layout', async () => {
+    _bp3dReset('?models=bp3d:skeletal,muscular');
+    try {
+      await loadBp3dInventory(async () => ({ok:true,json:async()=>({
+        converted:[entry('Femur.l','skeletal'),entry('Anconeus muscle.l','muscular')],
+        provisionalSource:true,approvedForCommercialDistribution:false,
+        summary:{provisionalNewModels:1,reusedBaselineModels:1}
+      })}));
+      expect(bp3dSummary().provisional).toBe(true);
+      expect(bp3dHas('Anconeus muscle.l','muscular')).toBe(true);
+      expect(bp3dHas('Femur.l','skeletal')).toBe(true);
+      expect(bp3dHas('Absent muscle','muscular')).toBe(false);
+      expect(bp3dHas('Hepatic artery','cardiovascular')).toBe(true);
+    } finally { _bp3dReset(''); }
+  });
+  it('does not label the ordinary source as provisional', () => {
+    const original = validateInventory({converted:[entry('Femur.l')]});
+    const provisional = validateInventory({converted:[entry('Femur.l')],provisionalSource:true});
+    expect(original.provisionalSource).toBe(false);
+    expect(provisional.provisionalSource).toBe(true);
   });
 });

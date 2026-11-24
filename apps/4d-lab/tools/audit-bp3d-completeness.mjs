@@ -7,7 +7,7 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {parseOfficialNames,parseOfficialElements,candidateCrosswalk,mapActualMeshFiles,checkArchiveEntryNames} from '../../../licensing/tools/prepare-bodyparts3d-source.mjs';
 import {auditGeneratedBatch} from './bp3d-batch-audit.mjs';
-import {buildAllSystemsTriage,triageCsv,geometryCsv,unapprovedTemplate} from './bp3d-all-systems-triage.mjs';
+import {buildAllSystemsTriage,triageCsv,geometryCsv,unapprovedTemplate,semanticSourceFlags} from './bp3d-all-systems-triage.mjs';
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 const PRIVATE=path.join(ROOT,'local-data/licensing-quarantine');
 const CSV=x=>'"'+String(x??'').replaceAll('"','""')+'"';
@@ -46,8 +46,17 @@ export function auditCompleteness({catalog,officialRows,elementIndex,archiveFile
       const reviewedIdentity=model.mappingMethod==='explicit-reviewed-FMA-BP-FJ-not-clinically-validated' &&
         /^[a-f0-9]{64}$/.test(model.reviewManifestSHA256||'') &&
         officialRows.some(x=>x.fmaId===model.fmaId&&x.bpId===model.bpId);
-      if(!exactMatch&&!reviewedIdentity)
-        errors.push('source identity not corroborated by official mapping or reviewed manifest: '+row.atlasName);
+      const provisionalIdentity=inventory.provisionalSource===true &&
+        model.mappingMethod==='provisional-name-review-NOT-validated' &&
+        officialRows.some(x=>{
+          if(x.fmaId!==model.fmaId||x.bpId!==model.bpId)return false;
+          const atlasSide=/\.l$/.test(row.atlasName)?'left':/\.r$/.test(row.atlasName)?'right':null;
+          const sourceSides=x.name.toLowerCase().match(/\b(left|right)\b/g)||[];
+          return (!atlasSide||sourceSides.length===1&&sourceSides[0]===atlasSide) &&
+            semanticSourceFlags(row.atlasName,x.name).length===0;
+        });
+      if(!exactMatch&&!reviewedIdentity&&!provisionalIdentity)
+        errors.push('source identity not corroborated by official mapping, reviewer or private provisional record: '+row.atlasName);
       convertedIdentities.add(model.fmaId+'|'+model.bpId);
     }else if(row.matches.length>1)status='ambiguous';
     else if(official)status=allFiles?'exactNotConverted':'missingOBJ';
@@ -55,7 +64,8 @@ export function auditCompleteness({catalog,officialRows,elementIndex,archiveFile
     const record={name:row.atlasName,system:row.atlasSystem,group:meta.group||'unassigned',
       regions:Array.isArray(meta.regions)?meta.regions:[],
       status,fmaId:model?.fmaId||official?.fmaId||null,bpId:model?.bpId||official?.bpId||null,
-      officialName:official?.officialName||null,
+      officialName:official?.officialName||
+        (model?officialRows.find(x=>x.fmaId===model.fmaId&&x.bpId===model.bpId)?.name:null)||null,
       sourceElements:official?.sourceObjs.map(x=>x.fileId)||[],allSourceOBJPresent:allFiles,
       modelPath:model?.modelPath||null,mappingMethod:model?.mappingMethod||null,
       reviewManifestSHA256:model?.reviewManifestSHA256||null,
@@ -184,9 +194,11 @@ export async function runAudit({root=ROOT,source=path.join(PRIVATE,'bp3d-4.0'),
   return report;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
-  try{const reviewed=process.argv.includes('--reviewed');
+  try{const reviewed=process.argv.includes('--reviewed'),provisional=process.argv.includes('--provisional');
+    if(reviewed&&provisional)throw Error('Choose only one private source audit');
+    const sourceType=provisional?'provisional':reviewed?'reviewed':'baseline';
     await runAudit({checkGeometry:!process.argv.includes('--skip-geometry'),
-      batch:path.join(PRIVATE,reviewed?'bp3d-reviewed':'bp3d-batch'),
-      output:path.join(PRIVATE,reviewed?'bp3d-completeness-reviewed':'bp3d-completeness')});}
+      batch:path.join(PRIVATE,sourceType==='baseline'?'bp3d-batch':'bp3d-'+sourceType),
+      output:path.join(PRIVATE,sourceType==='baseline'?'bp3d-completeness':'bp3d-completeness-'+sourceType)});}
   catch(error){console.error('BP3D_FULL_AUDIT_FAILED: '+error.message);process.exitCode=1;}
 }

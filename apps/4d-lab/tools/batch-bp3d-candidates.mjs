@@ -16,6 +16,10 @@ import {buildCompositeHTML} from './bp3d-composite-viewer.mjs';
 import {summarizeGeometry,diagnoseGeometry,verifyLineage} from './review-bp3d-candidate.mjs';
 import {SYSTEM_MATERIALS,tissueClass} from './bp3d-review-materials.mjs';
 import {reconcileMapping} from './bp3d-mapping-review.mjs';
+import {auditCompleteness} from './audit-bp3d-completeness.mjs';
+import {buildAllSystemsTriage} from './bp3d-all-systems-triage.mjs';
+import {selectProvisionalMappings} from './bp3d-provisional-mappings.mjs';
+import {auditGeneratedBatch} from './bp3d-batch-audit.mjs';
 import {applyReviewedSourceMappings} from './bp3d-reviewed-mappings.mjs';
 
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
@@ -229,9 +233,11 @@ function listZip(file){
   const files=execFileSync('unzip',['-Z','-1',file],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split(/\r?\n/);
   checkArchiveEntryNames(files);return files;
 }
-export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,reviewedFile}={}){
-  // Explicit reviewed FMA/BP/FJ additions go to a separate private batch; never alter the original 470-model batch.
-  const output=allowed(root,outputDir||(reviewedFile?path.join(root,'local-data/licensing-quarantine/bp3d-reviewed'):DEST));
+export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100}={}){
+  if(provisional&&reviewedFile)throw Error('Provisional and reviewed batches must remain separate');
+  // The two opt-in modes each have independent private outputs. Never overwrite the original 470-model batch.
+  const output=allowed(root,outputDir||(provisional?path.join(root,'local-data/licensing-quarantine/bp3d-provisional'):
+    reviewedFile?path.join(root,'local-data/licensing-quarantine/bp3d-reviewed'):DEST));
   const namesPath=path.join(sourceDir,'isa_parts_list_e.txt'),
     elementsPath=path.join(sourceDir,'isa_element_parts.txt'),
     archive=path.join(sourceDir,'isa_BP3D_4.0_obj_99.zip');
@@ -241,6 +247,28 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   const zipFiles=listZip(archive),archiveSha=await hashFile(archive);
   const catalog=JSON.parse(fs.readFileSync(path.join(root,'apps/anatomy/public/data/atlas-catalog.json'),'utf8'));
   let mapped=mapActualMeshFiles(candidateCrosswalk(catalog,official),elements,zipFiles);
+  let provisionalInfo=null;
+  const sourceBatch=path.join(root,'local-data/licensing-quarantine/bp3d-batch');
+  let originalInventory=null;
+  if(provisional){
+    if(path.resolve(output)===path.resolve(sourceBatch))throw Error('Provisional source cannot overwrite baseline');
+    originalInventory=JSON.parse(fs.readFileSync(path.join(sourceBatch,'inventory.json'),'utf8'));
+    if(originalInventory.sourceHashes?.archiveSha256!==archiveSha ||
+      originalInventory.approvedForCommercialDistribution!==false)throw Error('Original batch source hash/rights mismatch');
+    const originalAudit=await auditGeneratedBatch(sourceBatch);
+    if(originalAudit.errors.length)throw Error('Original 470 GLBs failed integrity; no provisional reuse permitted');
+    const mappingReview=JSON.parse(fs.readFileSync(path.join(sourceBatch,'mapping-review.json'),'utf8'));
+    const audit=auditCompleteness({catalog,officialRows:official,elementIndex:elements,
+      archiveFiles:zipFiles,inventory:originalInventory,mappingReview});
+    if(audit.errors.length)throw Error('Original source crosswalk failed');
+    const triage=buildAllSystemsTriage(audit,mappingReview);
+    provisionalInfo=selectProvisionalMappings({triage,officialRows:official,elements,zipFiles,
+      existing:originalInventory.converted,includePromising,limitNew});
+    if(!provisionalInfo.candidates.length)throw Error('No safe provisional identities in current local source');
+    const names=new Set(provisionalInfo.candidates.map(x=>x.atlasName));
+    mapped={...mapped,candidates:mapped.candidates.map(x=>names.has(x.atlasName)?
+      provisionalInfo.candidates.find(v=>v.atlasName===x.atlasName):x)};
+  }
   if(reviewedFile){
     const approvedRoot=path.resolve(root,'local-data')+path.sep;
     const reviewedPath=path.resolve(reviewedFile);
@@ -256,6 +284,8 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   const plan=planBatch(mapped,{limit});
   if(!plan.eligible.length)throw new Error('No eligible official-source candidate structures; check source tables');
   const gaps=suggestForUnmatched(plan.gaps,official),converted=[],failed=[];
+  const originalByName=new Map((originalInventory?.converted||[]).map(x=>[x.name,x]));
+  let reused=0;
   fs.mkdirSync(path.join(output,'structures'),{recursive:true});
   const objCache=new Map();
   const readElement=item=>{
@@ -269,6 +299,25 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   };
   for(const [index,item] of plan.eligible.entries()){
     try{
+      const cached=originalByName.get(item.name);
+      if(cached){
+        if(cached.id!==item.id||cached.fmaId!==item.source.fmaId||cached.bpId!==item.source.bpId||
+          cached.sourceMeshes!==item.source.sourceObjs.length||
+          cached.modelPath!=='./structures/'+item.id+'/model.glb')
+          throw Error('Cached original model identity differs: '+item.name);
+        const sourceDir=path.join(sourceBatch,'structures',item.id),
+          lineage=JSON.parse(fs.readFileSync(path.join(sourceDir,'lineage.json'),'utf8'));
+        const required=item.source.sourceObjs.map(x=>x.fileId).sort(),
+          found=(lineage.elements||[]).map(x=>x.id).sort();
+        if(lineage.archiveSHA256!==archiveSha||lineage.generatedGLBSHA256!==cached.glbSha256||
+          lineage.approvedForDistribution!==false||lineage.geometryAnatomyValidated!==false||
+          required.length!==found.length||required.some((x,i)=>x!==found[i]))
+          throw Error('Cached model lineage differs: '+item.name);
+        const destDir=path.join(output,'structures',item.id);fs.mkdirSync(destDir,{recursive:true});
+        fs.copyFileSync(path.join(sourceDir,'model.glb'),path.join(destDir,'model.glb'));
+        fs.copyFileSync(path.join(sourceDir,'lineage.json'),path.join(destDir,'lineage.json'));
+        converted.push({...cached});reused++;
+      }else{
       const parts=item.source.sourceObjs.map(readElement);
       const lineage={schemaVersion:1,source:BP3D_OFFICIAL,atlasCandidateName:item.name,
         officialName:item.source.officialName,officialFMAId:item.source.fmaId,
@@ -322,6 +371,7 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
         omittedZeroAreaTriangles:lineage.sourceGeometryWarnings?.omittedZeroAreaTriangles||0,
         modelPath:'./structures/'+item.id+'/model.glb',
         state:'converted-unverified'});
+      }
     }catch(e){
       failed.push({name:item.name,system:item.system,id:item.id,error:String(e.message).slice(0,350),
         state:'conversion-error-not-promoted'});
@@ -331,12 +381,16 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
         ' eligible; generated '+converted.length+', failed '+failed.length);
   }
   const summary={...plan.summary,converted:converted.length,failed:failed.length,
+    reusedBaselineModels:reused,provisionalNewModels:provisional?converted.length-reused:0,
     candidatesWithOmittedZeroAreaTriangles:converted.filter(x=>x.omittedZeroAreaTriangles>0).length,
     totalOmittedZeroAreaTriangles:converted.reduce((n,x)=>n+x.omittedZeroAreaTriangles,0),
     candidatesWithGeometryFlags:converted.filter(x=>x.diagnostics.flags.length>0).length,
     unprocessedDueToLimit:plan.allEligible-plan.eligible.length};
   const referenceSurface=await buildReferenceSkin({official,elements,zipFiles,archive,archiveSha,output});
   const manifest={schemaVersion:1,kind:'official-bp3d-bulk-source-review',source:BP3D_OFFICIAL,
+    provisionalSource:provisional,provisionalSelection:provisional?{
+      includePromising,limitNew,selected:provisionalInfo.summary.provisionalSelected,
+      rejected:provisionalInfo.summary.reviewRejected,approved:0}:null,
     sourceHashes:{namesSha256:sha(namesBytes),elementsSha256:sha(elementBytes),
       archiveSha256:archiveSha},summary,systems:plan.systems,
     converted,referenceSurface,failures:failed,legalStatus:'NOT-CLEARED',
@@ -371,16 +425,20 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   return manifest;
 }
 function parseArgs(argv){
-  let all=false,limit,reviewedFile;
+  let all=false,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100;
   for(let i=0;i<argv.length;i++){
     if(argv[i]==='--all')all=true;
     else if(argv[i]==='--limit'&&argv[i+1]&&/^\d+$/.test(argv[i+1]))limit=Number(argv[++i]);
     else if(argv[i]==='--reviewed'&&argv[i+1])reviewedFile=argv[++i];
+    else if(argv[i]==='--provisional')provisional=true;
+    else if(argv[i]==='--include-promising')includePromising=true;
+    else if(argv[i]==='--limit-new'&&argv[i+1]&&/^\d+$/.test(argv[i+1]))limitNew=Number(argv[++i]);
     else throw new Error('Usage: batch-bp3d-candidates.mjs --all OR --limit <positive integer>');
   }
   if(all===(limit!==undefined)||limit!==undefined&&(!Number.isSafeInteger(limit)||limit<1||limit>1000))
     throw new Error('Specify exactly --all or --limit N (1 to 1000)');
-  return {limit,reviewedFile};
+  if((includePromising||limitNew!==100)&&!provisional)throw Error('Provisional options require --provisional');
+  return {limit,reviewedFile,provisional,includePromising,limitNew};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
   try{await runBatch(parseArgs(process.argv.slice(2)));}
