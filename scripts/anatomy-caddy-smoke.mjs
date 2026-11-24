@@ -31,6 +31,9 @@ try{
  for(const withheld of [
   '/anatomy/viewer/models/skeletal.glb',
   '/anatomy/viewer/models/visceral.glb',
+  '/anatomy/viewer/bp3d/inventory.json',
+  '/anatomy/viewer/bp3d/structures/unreviewed/model.glb',
+  '/anatomy/viewer/bp3d/reference-surface/skin.glb',
   '/anatomy/4d-lab/data/atlas/ct.nrrd',
   '/anatomy/4d-lab/data/atlas/labels.nrrd'
  ]){

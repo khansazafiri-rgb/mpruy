@@ -7,6 +7,7 @@ const configs=['deploy/Caddyfile','deploy/anatomy.caddy.snippet'];
 const denied=[
  '/anatomy/viewer/models/skeletal.glb',
  '/anatomy/viewer/models/visceral.glb',
+ '/anatomy/viewer/bp3d/*',
  '/anatomy/4d-lab/data/atlas/*'
 ];
 function assertExactGuards(file){
@@ -27,6 +28,8 @@ function assertExactGuards(file){
  const fileserver=/^\s*handle_path\s+\/anatomy\/viewer\/\*\s*\{/m.exec(source);
  assert.ok(guard&&fileserver&&guard.index<fileserver.index,
    'specific GLB deny must precede real file-server directive');
+ const bp3d=/^\s*handle\s+\/anatomy\/viewer\/bp3d\/\*\s*\{/m.exec(source);
+ assert.ok(bp3d&&fileserver&&bp3d.index<fileserver.index,'private BodyParts3D deny must precede real Atlas route');
  const atlas=/^\s*handle\s+\/anatomy\/4d-lab\/data\/atlas\/\*\s*\{/m.exec(source);
  const fallback=/^\s*handle\s*\{\s*$/m.exec(source);
  if(fallback)assert.ok(atlas&&atlas.index<fallback.index,
@@ -49,6 +52,7 @@ test('PUBLIC-GATE-003: real local Caddy smoke exercises HEAD, GET, Range and unr
  const smoke=fs.readFileSync(new URL('./anatomy-caddy-smoke.mjs',import.meta.url),'utf8');
  for(const target of [
    '/anatomy/viewer/models/skeletal.glb','/anatomy/viewer/models/visceral.glb',
+   '/anatomy/viewer/bp3d/inventory.json','/anatomy/viewer/bp3d/structures/unreviewed/model.glb',
    '/anatomy/4d-lab/data/atlas/ct.nrrd','/anatomy/4d-lab/data/atlas/labels.nrrd'
  ])assert.ok(smoke.includes(target),'missing smoke path '+target);
  assert.match(smoke,/assert\.equal\(response\.status,404/);

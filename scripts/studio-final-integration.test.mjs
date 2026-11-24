@@ -190,8 +190,25 @@ test('INTEGRATION-008 preserves legacy applications, deploy configuration and WS
   git('merge-base', '--is-ancestor', securityReviewCommit, 'HEAD');
   const reviewedSecurityPaths = new Set(['deploy/Caddyfile', 'deploy/anatomy.caddy.snippet']);
   for (const file of reviewedSecurityPaths) {
-    assert.equal(read(file), git('show', securityReviewCommit + ':' + file),
-      'Reviewed security Caddy config must not drift: ' + file);
+    // git(...) trims stdout; use raw bytes for the pinned production security comparison.
+    const original=execFileSync('git',['show',securityReviewCommit+':'+file],{cwd:root,encoding:'utf8'});
+    // Sole allowable Caddy difference is ONE additive deny for private BodyParts3D
+    // files before the general anatomy file-server. Removing it must reproduce the
+    // exact, independently reviewed PR #268 bytes, including all existing blocks.
+    const pad=file==='deploy/Caddyfile'?'\t':'';
+    const inserted=[
+      pad+'# Additional private BodyParts3D review models are NEVER public, even if accidentally copied.',
+      pad+'handle /anatomy/viewer/bp3d/* {',
+      pad+'\theader Cache-Control "private, no-store, max-age=0"',
+      pad+'\trespond "Not Found" 404',
+      pad+'}', ''
+    ].join('\n');
+    const actual=read(file);
+    assert.equal(actual.split(inserted).length,2,'Exactly one reviewed private BP3D deny required: '+file);
+    assert.ok(actual.indexOf(inserted)<actual.indexOf('handle_path /anatomy/viewer/*'),
+      'Private BP3D deny must precede public file-server: '+file);
+    assert.equal(actual.replace(inserted,''),original,
+      'Reviewed security Caddy config drift outside explicit private BP3D containment: '+file);
   }
   // Reviewed emergency recovery is limited to these exact two application
   // files. Keep all other legacy application and 4D code protected.
