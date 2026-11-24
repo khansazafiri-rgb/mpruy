@@ -13,7 +13,7 @@ export async function auditHumanAnatomyHost(fetcher){
     quarantine:{privateBP3DBlocked:false,atlasCTBlocked:false},
     rights:{atlasViewer:rights.products['atlas-viewer'].status,
       lab4d:rights.products['4d-lab'].status},
-    publicReleaseApproved:false,readyForPublicClinicalUse:false};
+    commercialPolicyCleared:false,exactBuildApproved:false,readyForPublicClinicalUse:false};
   try{await checkViewerAsset(fetcher);result.atlas.mounted=true;}
   catch(e){result.atlas.error=e.message;}
   try{await checkLiveLab(fetcher);result.lab4d.mounted=true;}
@@ -27,8 +27,10 @@ export async function auditHumanAnatomyHost(fetcher){
     result.quarantine.atlasCTBlocked=ct.status===404;
   }catch(e){result.quarantine.atlasCTProbeError=e.message;}
   result.runtimeRoutesReady=result.atlas.mounted&&result.lab4d.mounted;
-  result.publicReleaseApproved=result.rights.atlasViewer==='cleared'&&result.rights.lab4d==='cleared';
-  result.action=result.publicReleaseApproved&&result.runtimeRoutesReady
+  result.commercialPolicyCleared=result.rights.atlasViewer==='cleared'&&result.rights.lab4d==='cleared';
+  // A cleared product policy is still NOT approval of this exact build digest.
+  // This read-only probe never validates medical morphology or issuer consent.
+  result.action=result.commercialPolicyCleared&&result.runtimeRoutesReady
     ? 'Perform separate exact-build licence and clinical review before public release.'
     : 'Keep private GLBs and unapproved Atlas CT withheld; correct missing routes, source permissions and reviewed build before activating.';
   return result;
@@ -42,7 +44,7 @@ async function main(){
       signal:options.signal||AbortSignal.timeout(12000)});
   const report=await auditHumanAnatomyHost(fetcher);
   console.log(JSON.stringify({base:url.origin,...report},null,2));
-  if(!report.runtimeRoutesReady||!report.publicReleaseApproved||
+  if(!report.runtimeRoutesReady||!report.commercialPolicyCleared||
      !report.quarantine.privateBP3DBlocked)process.exitCode=1;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))
