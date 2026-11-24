@@ -71,8 +71,18 @@
       "download": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html",
       "updated": "2025-02-27",
       "historicalHeader": "CC-BY-SA-2.1-JP",
-      "status": "exact-version-and-file-review-required",
-      "attribution": "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International"
+      "status": "publisher-license-and-release-file-names-confirmed; cached-byte and derived-object mapping pending",
+      "attribution": "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International",
+      "release": "4.0",
+      "releaseDate": "2013-06-19",
+      "releaseArchive": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/20130619/",
+      "readme": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/20130619/README_e.html",
+      "currentReadme": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/README_e.html",
+      "officialArchiveFiles": [
+        "isa_BP3D_4.0_obj_99.zip",
+        "partof_BP3D_4.0_obj_99.zip"
+      ],
+      "note": "The publisher's current README explicitly names the two release 4.0 archives under CC BY 4.0. Retain historical embedded BY-SA notice pending version-specific review; this is not permission to relicense mixed Z-Anatomy objects."
     },
     {
       "id": "legacy-atlas-code",
@@ -92,14 +102,45 @@
         "https://humanatlas.bihealth.org/mirror/collection/hra/v2.5/",
         "https://3d.nih.gov/entries/20960?version=1"
       ],
-      "note": "Library-level statement is not a receipt for each of the 80 cached GLBs; version-specific terms and object authors remain necessary."
+      "note": "Library-level statement is not a receipt for each of the 80 cached GLBs; version-specific terms and object authors remain necessary.",
+      "versionSpecificExamples": [
+        {
+          "id": "kidney-female-left",
+          "version": "v1.3",
+          "publisher": "HuBMAP",
+          "creators": [
+            "Kristen Browne",
+            "Heidi Schlehlein"
+          ],
+          "doi": "https://doi.org/10.48539/HBM449.JPXL.964",
+          "evidence": "https://lod.humanatlas.io/ref-organ/kidney-female-left/v1.3/",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "id": "blood-vasculature-female",
+          "version": "v1.3",
+          "publisher": "HuBMAP",
+          "creators": [
+            "Kristen Browne",
+            "Heidi Schlehlein"
+          ],
+          "doi": "https://doi.org/10.48539/HBM322.KKFC.394",
+          "evidence": "https://lod.humanatlas.io/ref-organ/blood-vasculature-female/v1.3/",
+          "license": "CC-BY-4.0"
+        }
+      ]
     },
     {
       "id": "lymphatic-supplement",
       "kind": "models",
       "license": null,
       "commercialTerms": "no-approved-source",
-      "url": null
+      "url": null,
+      "evidence": [
+        "https://humanatlas.io/vccf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11436473/"
+      ],
+      "note": "HRA Lymph Vasculature is an ASCT+B CSV table, not a verified whole-body GLB vessel network. Do not invent geometry or substitute blood vessels."
     }
   ],
   "publicRelease": "NO_GO"
