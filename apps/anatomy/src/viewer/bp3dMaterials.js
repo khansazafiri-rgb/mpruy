@@ -88,9 +88,9 @@ export function tissueClass({ name = '', system = '', group = '' } = {}) {
     if (/\b(vein|veins|venule)\b/.test(words)) return 'vein';
     if (/\b(nerve|nerves)\b/.test(words)) return 'nerve';
     if (/\b(cartilage|cartilages)\b/.test(words)) return 'cartilage';
-    if (/\b(lung|lungs|pulmonary lobe|bronchopulmonary segment|alveolus|alveoli)\b/.test(words)) return 'lung';
     if (/\b(pleura|pleural)\b/.test(words)) return 'pleura';
     if (/\b(trachea|tracheal|bronchus|bronchi|bronchial|bronchiole|larynx|laryngeal|epiglottis|nasal cavity)\b/.test(words)) return 'airway';
+    if (/\b(lung|lungs|pulmonary lobe|bronchopulmonary segment|alveolus|alveoli)\b/.test(words)) return 'lung';
     if (/\b(gallbladder|gall bladder|cystic duct|bile duct)\b/.test(words)) return 'gallbladder';
     if (/\b(liver|hepatic lobe)\b/.test(words)) return 'liver';
     if (/\b(kidney|renal cortex|renal medulla|renal pyramid)\b/.test(words)) return 'kidney';
