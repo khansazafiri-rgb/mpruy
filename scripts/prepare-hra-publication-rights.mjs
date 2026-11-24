@@ -11,11 +11,10 @@ const sha=b=>createHash('sha256').update(b).digest('hex');
 const registry=JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/source-registry.json'),'utf8'));
 const examples=registry.sources.find(s=>s.id==='hra').versionSpecificExamples;
 export function matchReferenceEvidence(url,records=examples){
- let u;try{u=new URL(url);}catch{return null;}
- if(u.protocol!=='https:'||u.hostname!=='cdn.humanatlas.io'||u.username||u.password||u.port||u.search||u.hash)return null;
- const m=u.pathname.match(/^\/digital-objects\/ref-organ\/([a-z0-9-]+)\/(v\d+\.\d+(?:\.\d+)?)\/assets\/[a-z0-9-]+\.glb$/);
+ if(typeof url!=='string')return null;
+ const m=url.match(/^https:\/\/cdn\.humanatlas\.io\/digital-objects\/ref-organ\/([a-z0-9-]+)\/(v\d+\.\d+(?:\.\d+)?)\/assets\/[a-z0-9-]+\.glb$/);
  if(!m)return null;
- const hits=records.filter(r=>r.id===m[1]&&r.version===m[2]&&r.license==='CC-BY-4.0'&&r.publisher&&r.creators?.length&&r.evidence&&r.doi);
+ const hits=records.filter(r=>r.assetURL===url&&r.id===m[1]&&r.version===m[2]&&r.license==='CC-BY-4.0'&&r.publisher&&r.creators?.length&&r.evidence&&r.doi);
  return hits.length===1?hits[0]:null;
 }
 export async function prepareHraRightsReview(privateRoot=path.join(root,'local-data/licensing-quarantine')){
