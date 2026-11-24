@@ -6,6 +6,8 @@ import {createServer} from 'node:http';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createRequire} from 'node:module';
 import {prepare} from './prepare-atlas-publication-review.mjs';
+import {inspectInstalled,publicationBundleGate} from './atlas-independent-dependency-audit.mjs';
+import {checkSourceNotices} from './audit-atlas-publication-rights.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
@@ -21,8 +23,12 @@ const models=new Map(inv.converted.map(e=>['/anatomy/viewer/models/'+e.id+'.glb'
 const req=createRequire(path.join(app,'package.json'));
 const {build}=await import(pathToFileURL(req.resolve('vite')).href);
 const out=fs.mkdtempSync(path.join(privateRoot,'atlas-independent-review-'));
-await build({root:app,configFile:false,publicDir:false,base:'/anatomy/viewer/',build:{outDir:out,emptyOutDir:true,sourcemap:false}});
-const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8'};
+const dependencyAudit=inspectInstalled(app),sourceNotices=checkSourceNotices(),bundleRecord={};
+const noticeDir=path.join(root,'licensing/atlas-publication/source-notices');
+const notices='MEDCOEL independent viewer — software notices\n\n'+['three','vite'].map(n=>fs.readFileSync(path.join(noticeDir,n+'.txt'),'utf8')).join('\n\n');
+await build({root:app,configFile:false,publicDir:false,base:'/anatomy/viewer/',plugins:[publicationBundleGate(app,notices,bundleRecord)],build:{outDir:out,emptyOutDir:true,sourcemap:false}});
+fs.writeFileSync(path.join(privateRoot,folder,'publication-software-audit.json'),JSON.stringify({...dependencyAudit,sourceNotices,bundle:bundleRecord},null,2)+'\n',{mode:0o600});
+const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.txt':'text/plain; charset=utf-8'};
 const port=Number(process.env.PORT||4186);assert(Number.isInteger(port)&&port>=1024&&port<=65535);
 const server=createServer((request,response)=>{
  const send=(status,body,type='text/plain; charset=utf-8')=>{response.writeHead(status,{'Content-Type':type,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Frame-Options':'DENY'});response.end(request.method==='HEAD'?undefined:body);};
@@ -37,7 +43,7 @@ const server=createServer((request,response)=>{
   const stream=fs.createReadStream(model);stream.on('error',()=>response.destroy());response.on('close',()=>stream.destroy());stream.pipe(response);return;
   }catch{return send(404,'Model not available');}
  }
- if(p!=='/anatomy/viewer/'&&!/^\/anatomy\/viewer\/assets\/[a-zA-Z0-9_.-]+\.(js|css)$/.test(p))return send(404,'Not found');
+ if(p!=='/anatomy/viewer/'&&p!=='/anatomy/viewer/THIRD-PARTY-NOTICES.txt'&&!/^\/anatomy\/viewer\/assets\/[a-zA-Z0-9_.-]+\.(js|css)$/.test(p))return send(404,'Not found');
  const file=path.join(out,p==='/anatomy/viewer/'?'index.html':p.slice('/anatomy/viewer/'.length));
  try{assert(fs.realpathSync(file)===file&&fs.statSync(file).isFile());return send(200,fs.readFileSync(file),mime[path.extname(file)]);}
  catch{return send(404,'Not found');}
