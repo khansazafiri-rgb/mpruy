@@ -69,7 +69,9 @@
     "batch:bodyparts3d-reviewed": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs --all --reviewed local-data/licensing-quarantine/bp3d-reviewed-mappings.json",
     "audit:bodyparts3d-full:reviewed": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --reviewed",
     "batch:bodyparts3d-provisional": "node apps/4d-lab/tools/batch-bp3d-candidates.mjs --all --provisional",
-    "audit:bodyparts3d-full:provisional": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --provisional"
+    "audit:bodyparts3d-full:provisional": "node apps/4d-lab/tools/audit-bp3d-completeness.mjs --provisional",
+    "qc:bodyparts3d-onepass": "node scripts/bp3d-one-pass-qc.mjs",
+    "qc:bodyparts3d-onepass:preview": "node scripts/bp3d-one-pass-qc.mjs --preview"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
