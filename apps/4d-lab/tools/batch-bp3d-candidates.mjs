@@ -247,6 +247,30 @@ export function provisionalSelectionReport({provisional,allSystemsExact,provisio
    rejected:provisionalInfo.summary.reviewRejected,approved:0};
 }
 
+// Only a FAILED, rights-blocked, explicitly all-systems private inventory can
+// be resumed. A passing/finalized inventory can never be overwritten.
+export function isIncompleteFailedAllSystemsInventory(inventory){
+ const summary=inventory?.summary;
+ return inventory?.kind==='official-bp3d-bulk-source-review' &&
+   inventory.provisionalSource===true &&
+   inventory.allSystemsExactSourcePreview===true &&
+   inventory.legalStatus==='NOT-CLEARED' &&
+   inventory.approvedForCommercialDistribution===false &&
+   inventory.geometryRegisteredToMEDCOEL===false &&
+   Array.isArray(inventory.converted) &&
+   Array.isArray(inventory.failures) &&
+   Number.isInteger(summary?.selected) &&
+   Number.isInteger(summary?.converted) &&
+   Number.isInteger(summary?.failed) &&
+   summary.failed>0 &&
+   summary.converted+summary.failed===summary.selected &&
+   inventory.converted.length===summary.converted &&
+   inventory.failures.length===summary.failed &&
+   /^[a-f0-9]{64}$/.test(inventory.sourceHashes?.archiveSha256||'') &&
+   /^[a-f0-9]{64}$/.test(inventory.sourceHashes?.namesSha256||'') &&
+   /^[a-f0-9]{64}$/.test(inventory.sourceHashes?.elementsSha256||'');
+}
+
 export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100,focusShortlist=false,vertebralExact=false,allSystemsExact=false,resumeExistingOutput=false}={}){
   if(provisional&&reviewedFile)throw Error('Provisional and reviewed batches must remain separate');
   if(resumeExistingOutput&&!allSystemsExact)
@@ -263,14 +287,23 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
     focusShortlist?path.join(root,'local-data/licensing-quarantine/bp3d-focused'):
     provisional?path.join(root,'local-data/licensing-quarantine/bp3d-provisional'):
     reviewedFile?path.join(root,'local-data/licensing-quarantine/bp3d-reviewed'):DEST));
+  let failedPriorManifest=null;
   if(resumeExistingOutput){
     const privateRoot=path.join(root,'local-data/licensing-quarantine');
     if(path.dirname(output)!==privateRoot||
        !/^bp3d-all-systems-temp-[A-Za-z0-9_-]+$/.test(path.basename(output))||
        !fs.existsSync(output)||fs.lstatSync(output).isSymbolicLink()||
-       fs.realpathSync(output)!==path.join(fs.realpathSync(privateRoot),path.basename(output))||
-       fs.existsSync(path.join(output,'inventory.json')))
-      throw Error('Unsafe or already finalized GLB recovery folder; original private batches untouched');
+       fs.realpathSync(output)!==path.join(fs.realpathSync(privateRoot),path.basename(output)))
+      throw Error('Unsafe GLB recovery folder; original private batches untouched');
+    const priorManifestPath=path.join(output,'inventory.json');
+    if(fs.existsSync(priorManifestPath)){
+      if(fs.lstatSync(priorManifestPath).isSymbolicLink()||
+         !fs.lstatSync(priorManifestPath).isFile())
+        throw Error('Unsafe symlinked or non-file interrupted inventory');
+      failedPriorManifest=JSON.parse(fs.readFileSync(priorManifestPath,'utf8'));
+      if(!isIncompleteFailedAllSystemsInventory(failedPriorManifest))
+        throw Error('Completed or invalid prior source inventory may not be resumed');
+    }
   }
   const namesPath=path.join(sourceDir,'isa_parts_list_e.txt'),
     elementsPath=path.join(sourceDir,'isa_element_parts.txt'),
@@ -279,6 +312,11 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   const official=parseOfficialNames(namesBytes.toString('utf8'));
   const elements=parseOfficialElements(elementBytes.toString('utf8'));
   const zipFiles=listZip(archive),archiveSha=await hashFile(archive);
+  if(failedPriorManifest && (
+      failedPriorManifest.sourceHashes.archiveSha256!==archiveSha ||
+      failedPriorManifest.sourceHashes.namesSha256!==sha(namesBytes) ||
+      failedPriorManifest.sourceHashes.elementsSha256!==sha(elementBytes)))
+    throw Error('Interrupted failed inventory pins a different publisher source archive');
   const catalog=JSON.parse(fs.readFileSync(path.join(root,'apps/anatomy/public/data/atlas-catalog.json'),'utf8'));
   let mapped=mapActualMeshFiles(candidateCrosswalk(catalog,official),elements,zipFiles);
   let provisionalInfo=null,focusInfo=null,vertebralInfo=null,allSystemsInfo=null,priorReviewInventory=null;

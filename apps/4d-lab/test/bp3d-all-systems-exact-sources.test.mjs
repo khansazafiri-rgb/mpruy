@@ -112,3 +112,23 @@ test('a previously audited private model is rehydrated from publisher IDs withou
  assert.throws(()=>rehydratePrivateInventory({...source,
    inventory:{...inv,approvedForCommercialDistribution:true}}),/rights-blocked/);
 });
+
+test('legacy 470 models created on 10 Nov retain ABSENT mapping-method metadata while modern models retain their exact field',()=>{
+ const source={catalog:{Liver:catalog.Liver},officialRows:[officialRows[0]],
+  elements:new Map([['FMA100',new Set(['FJ100'])]]),archiveFiles:['FJ100.obj']};
+ const basic={provisionalSource:true,approvedForCommercialDistribution:false,
+  geometryRegisteredToMEDCOEL:false,legalStatus:'NOT-CLEARED'};
+ const legacy={name:'Liver',id:'legacy-id',system:'visceral',
+  fmaId:'FMA100',bpId:'BP100',sourceMeshes:1};
+ const old=rehydratePrivateInventory({...source,
+  inventory:{...basic,converted:[legacy]}})[0];
+ assert.equal(old.matchMethod,undefined);
+ assert.equal(old.geometryIdentityVerified,false);
+ assert.equal(old.redistributionApproved,false);
+ const modern=rehydratePrivateInventory({...source,
+  inventory:{...basic,converted:[{...legacy,
+   mappingMethod:'provisional-name-review-NOT-validated'}]}})[0];
+ assert.equal(modern.matchMethod,'provisional-name-review-NOT-validated');
+ // A review hash or clinical clearance must NEVER be invented for legacy.
+ assert.equal(old.reviewManifestSHA256,null);
+});

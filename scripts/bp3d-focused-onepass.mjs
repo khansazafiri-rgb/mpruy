@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {runBatch} from '../apps/4d-lab/tools/batch-bp3d-candidates.mjs';
+import {runBatch,isIncompleteFailedAllSystemsInventory} from '../apps/4d-lab/tools/batch-bp3d-candidates.mjs';
 import {runAudit} from '../apps/4d-lab/tools/audit-bp3d-completeness.mjs';
 
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
@@ -51,8 +51,18 @@ export function findInterruptedAllSystemsBatch({privateDir=PRIVATE,minModels=626
   if(!entry.isDirectory()||!/^bp3d-all-systems-temp-[A-Za-z0-9_-]+$/.test(entry.name))
    continue;
   const dir=path.join(privateDir,entry.name);
-  if(fs.lstatSync(dir).isSymbolicLink()||
-     fs.existsSync(path.join(dir,'inventory.json')))continue;
+  if(fs.lstatSync(dir).isSymbolicLink())continue;
+  const priorManifest=path.join(dir,'inventory.json');
+  let failedInventory=false;
+  if(fs.existsSync(priorManifest)){
+   if(fs.lstatSync(priorManifest).isSymbolicLink()||
+      !fs.lstatSync(priorManifest).isFile())continue;
+   let manifest;
+   try{manifest=JSON.parse(fs.readFileSync(priorManifest,'utf8'));}
+   catch{continue;}
+   if(!isIncompleteFailedAllSystemsInventory(manifest))continue;
+   failedInventory=true;
+  }
   const models=path.join(dir,'structures');
   if(!fs.existsSync(models)||fs.lstatSync(models).isSymbolicLink()||
      !fs.statSync(models).isDirectory())continue;
@@ -63,7 +73,8 @@ export function findInterruptedAllSystemsBatch({privateDir=PRIVATE,minModels=626
    if(fs.existsSync(path.join(root,'model.glb'))&&
       fs.existsSync(path.join(root,'lineage.json')))count++;
   }
-  if(count>=minModels)candidates.push({dir,count,mtime:fs.statSync(dir).mtimeMs});
+  if(count>=minModels)candidates.push({dir,count,failedInventory,
+   mtime:fs.statSync(dir).mtimeMs});
  }
  candidates.sort((a,b)=>b.count-a.count||b.mtime-a.mtime);
  return candidates[0]||null;

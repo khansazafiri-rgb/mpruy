@@ -172,8 +172,12 @@ export function rehydratePrivateInventory({catalog,officialRows,elements,archive
    // Some FMA/BP concept records expose synonyms. The existing audited GLB
    // pins exact officialName in its lineage and is checked again during copy.
    candidates.push({atlasName:c.name,atlasSystem:c.system,state:'candidate',
-     matchMethod:c.mappingMethod||'provisional-name-review-NOT-validated',
-     reviewManifestSHA256:c.reviewManifestSHA256||null,
+     // The original 470 GLBs were generated before the 2026-11-23
+     // mapping-method lineage field was introduced. Preserve the historically
+     // ABSENT metadata verbatim; never invent a new mapping method that would
+     // disagree with the original cryptographically checked lineage.
+     matchMethod:c.mappingMethod,
+     reviewManifestSHA256:c.reviewManifestSHA256??null,
      geometryIdentityVerified:false,redistributionApproved:false,
      matches:[{fmaId:c.fmaId,bpId:c.bpId,officialName:rows[0].name,
        elementFileIds:fjIds,sourceObjs}]});
