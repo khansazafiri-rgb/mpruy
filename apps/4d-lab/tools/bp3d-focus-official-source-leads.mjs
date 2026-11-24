@@ -3,15 +3,16 @@ import path from 'node:path';
 import {reviewTokens} from './bp3d-mapping-review.mjs';
 import {semanticSourceFlags} from './bp3d-all-systems-triage.mjs';
 import {canonicalSourceSide} from './bp3d-provisional-mappings.mjs';
+import {officialVertebralLevel,semanticWholePartFlags,sourceLeadRisk} from './bp3d-source-name-priority.mjs';
 const STOP=new Set(['the','of','and','left','right','bone','muscle','vein','artery','nerve',
   'part','branch','body','segment','organ','gland','tissue','lobe','process']);
 const tokens=x=>new Set(reviewTokens(x).filter(t=>t.length>1&&!STOP.has(t)));
 const id=x=>x.fmaId+'|'+x.bpId;
 const csv=x=>'"'+String(x??'').replaceAll('"','""')+'"';
 const location=x=>{const t=tokens(x);return t.has('hand')?'hand':t.has('foot')?'foot':null;};
-const level=x=>{const v=String(x).toLowerCase().match(/\b(?:vertebra\s+)?([ctl])\s*(1[0-2]|[1-9])\b/);return v?v[1]+Number(v[2]):null;};
+const level=officialVertebralLevel;
 export function sourceLeadWarnings(atlasName,officialName){
- const warnings=semanticSourceFlags(atlasName,officialName);
+ const warnings=[...semanticSourceFlags(atlasName,officialName),...semanticWholePartFlags(atlasName,officialName)];
  const a=canonicalSourceSide(atlasName),b=canonicalSourceSide(officialName);
  if(a==='AMBIGUOUS'||b==='AMBIGUOUS')warnings.push('AMBIGUOUS_LATERALITY');
  else if(a&&b&&a!==b)warnings.push('OPPOSITE_SIDE');
@@ -51,7 +52,12 @@ export function discoverFocusSources({focus,officialRows,elements,archiveFiles,c
        fjIds:ids,missingFjIds:missing,allObjPresent:ids.length>0&&!missing.length,
        score,warnings,approved:false});
    }
-   candidates.sort((a,b)=>b.score-a.score||a.officialName.localeCompare(b.officialName));
+   // The 8-result source-lead window must not bury exact cervical/thoracic/
+   // lumbar levels beneath generic "vertebra" aggregate representations.
+   // Dangerous whole-organ/subpart or opposing-side suggestions rank last.
+   candidates.sort((a,b)=>sourceLeadRisk(a.warnings)-sourceLeadRisk(b.warnings)||
+     a.warnings.length-b.warnings.length||
+     b.score-a.score||a.officialName.localeCompare(b.officialName));
    return {area:row.area,atlasName:row.atlasName,system:row.system,
      candidates:candidates.slice(0,8),identityApproved:false,clinicalApproval:false,distributionApproved:false};
  });

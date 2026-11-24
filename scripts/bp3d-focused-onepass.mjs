@@ -1,0 +1,100 @@
+// One private focused-source review pass; no website, deployment, PR or public asset changes.
+import fs from 'node:fs';
+import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+import {runBatch} from '../apps/4d-lab/tools/batch-bp3d-candidates.mjs';
+import {runAudit} from '../apps/4d-lab/tools/audit-bp3d-completeness.mjs';
+
+const ROOT=fileURLToPath(new URL('../',import.meta.url));
+const PRIVATE=path.join(ROOT,'local-data','licensing-quarantine');
+const batch=path.join(PRIVATE,'bp3d-focused');
+const report=path.join(PRIVATE,'bp3d-completeness-focused');
+const review=path.join(PRIVATE,'bp3d-focused-onepass-review');
+const previewUrl='http://127.0.0.1:4173/anatomy/viewer/?models=bp3d:skeletal,muscular,cardiovascular,visceral';
+function requireSafePrivateTarget(target){
+ const root=fs.realpathSync(PRIVATE),resolved=path.resolve(target);
+ if(resolved===root||path.dirname(resolved)!==root)
+   throw Error('Private output must be direct child of licensing-quarantine');
+ if(fs.existsSync(resolved)&&fs.lstatSync(resolved).isSymbolicLink())
+   throw Error('Symlinked private destination is not allowed');
+}
+function publishPrivateFolder(from,to){
+ requireSafePrivateTarget(from);requireSafePrivateTarget(to);
+ const prior=fs.existsSync(to)?to+'.previous-'+Date.now():null;
+ if(prior)fs.renameSync(to,prior);
+ try{fs.renameSync(from,to);}
+ catch(e){if(prior)fs.renameSync(prior,to);throw e;}
+ return prior;
+}
+function runTests(){
+ for(const key of ['test:4d-lab','test:anatomy','test:licensing']){
+  const result=spawnSync('npm',['run',key],{cwd:ROOT,env:process.env,stdio:'inherit'});
+  if(result.status!==0)throw Error(key+' failed, source preview unchanged');
+ }
+}
+function saveStatus(status){
+ fs.mkdirSync(review,{recursive:true});
+ fs.writeFileSync(path.join(review,'readiness.json'),JSON.stringify(status,null,2)+'\n');
+}
+export async function runFocusedOnePass({openPreview=false,skipTests=false}={}){
+ const result={status:'BLOCKED',publicRelease:'NO_GO',medicalValidation:false,
+   clinicalApproval:false,commercialRelease:false,source:'official BodyParts3D FMA/BP/FJ',
+   output:batch,report,previewUrl,existingModelsIntact:true,
+   warnings:['Original Atlas and production assets unchanged',
+     'Exact archive and Atlas code commercial redistribution rights NOT CLEARED']};
+ let workingBatch=null,workingReport=null;
+ try{
+  requireSafePrivateTarget(batch);requireSafePrivateTarget(report);
+  if(!skipTests)runTests();
+  workingBatch=fs.mkdtempSync(path.join(PRIVATE,'bp3d-focused-temp-'));
+  workingReport=fs.mkdtempSync(path.join(PRIVATE,'bp3d-focused-audit-'));
+  const inventory=await runBatch({provisional:true,includePromising:true,limitNew:120,
+    focusShortlist:true,outputDir:workingBatch});
+  if(inventory.summary.failed||inventory.summary.focusedNewModels<1)
+    throw Error('Focus source conversion failed or no new source model passed');
+  const audit=await runAudit({batch:workingBatch,output:workingReport,checkGeometry:true});
+  if(audit.errors.length||audit.summary.converted!==inventory.converted.length||
+      audit.summary.commercialReleaseApproved!==0||audit.summary.geometryAnatomyValidated!==0)
+    throw Error('Full source FMA/BP/FJ or geometry integrity audit did not pass');
+  const priorModels=publishPrivateFolder(workingBatch,batch);workingBatch=null;
+  const priorAudit=publishPrivateFolder(workingReport,report);workingReport=null;
+  Object.assign(result,{status:'PRIVATE_REVIEW_UNVALIDATED',privatePreview:'READY_FOR_HUMAN_REVIEW',
+    previousBatch:priorModels,previousReport:priorAudit,
+    priorModelsReused:inventory.summary.reusedPriorReviewModels,
+    newFocusedGlbs:inventory.summary.focusedNewModels,
+    modelCount:inventory.converted.length,
+    focusedSourceSelection:inventory.focusedSourceSelection||null,
+    integrityErrors:0,publicRelease:'NO_GO'});
+  saveStatus(result);
+  console.log('\nPRIVATE FOCUSED GLB REVIEW READY: '+result.modelCount+
+    ' models ('+result.priorModelsReused+' reused + '+result.newFocusedGlbs+
+    ' newly converted); public deployment NO-GO. Original Atlas: '+previewUrl+
+    '\nReport: '+path.join(review,'readiness.json')+'\n');
+  if(openPreview){
+   const proc=spawnSync('npm',['run','preview:4d-lab'],{cwd:ROOT,
+     env:{...process.env,MEDCOEL_BP3D_FOCUSED:'1'},stdio:'inherit'});
+   if(proc.status!==0 && proc.signal!=='SIGINT')
+     console.error('Local preview stopped unexpectedly; the private GLB audit remains valid');
+  }
+  return result;
+ }catch(error){
+  result.error=String(error?.message||error);
+  result.blockers=[result.error,'Medical review and source-archive redistribution permission remain absent'];
+  saveStatus(result);
+  console.error('PRIVATE FOCUSED REVIEW BLOCKED: '+result.error+
+    '\nExisting 584 GLBs and production files were not replaced.\n');
+  process.exitCode=1;
+  return result;
+ }finally{
+  // Deliberately retain any failed local working directory for forensic review.
+  // Never delete or expose source OBJ files to dist or any production path.
+ }
+}
+if(process.argv[1]===fileURLToPath(import.meta.url)){
+ const args=process.argv.slice(2);
+ if(args.some(x=>!['--preview','--no-tests'].includes(x))){
+  console.error('Usage: node scripts/bp3d-focused-onepass.mjs [--preview] [--no-tests]');process.exit(2);
+ }
+ await runFocusedOnePass({openPreview:args.includes('--preview'),skipTests:args.includes('--no-tests')});
+}

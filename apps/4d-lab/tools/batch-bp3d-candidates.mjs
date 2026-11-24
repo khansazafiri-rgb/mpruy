@@ -21,6 +21,7 @@ import {buildAllSystemsTriage} from './bp3d-all-systems-triage.mjs';
 import {selectProvisionalMappings} from './bp3d-provisional-mappings.mjs';
 import {auditGeneratedBatch} from './bp3d-batch-audit.mjs';
 import {applyReviewedSourceMappings} from './bp3d-reviewed-mappings.mjs';
+import {selectFocusSourceReview} from './bp3d-focus-source-shortlist.mjs';
 
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 const PRIVATE=path.join(ROOT,'local-data','licensing-quarantine');
@@ -233,10 +234,13 @@ function listZip(file){
   const files=execFileSync('unzip',['-Z','-1',file],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split(/\r?\n/);
   checkArchiveEntryNames(files);return files;
 }
-export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100}={}){
+export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100,focusShortlist=false}={}){
   if(provisional&&reviewedFile)throw Error('Provisional and reviewed batches must remain separate');
+  if(focusShortlist&&(!provisional||!includePromising||limitNew<114||reviewedFile||limit!==undefined))
+    throw Error('Focus source expansion requires full private provisional discovery and no artificial truncation');
   // The two opt-in modes each have independent private outputs. Never overwrite the original 470-model batch.
-  const output=allowed(root,outputDir||(provisional?path.join(root,'local-data/licensing-quarantine/bp3d-provisional'):
+  const output=allowed(root,outputDir||(focusShortlist?path.join(root,'local-data/licensing-quarantine/bp3d-focused'):
+    provisional?path.join(root,'local-data/licensing-quarantine/bp3d-provisional'):
     reviewedFile?path.join(root,'local-data/licensing-quarantine/bp3d-reviewed'):DEST));
   const namesPath=path.join(sourceDir,'isa_parts_list_e.txt'),
     elementsPath=path.join(sourceDir,'isa_element_parts.txt'),
@@ -247,8 +251,9 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   const zipFiles=listZip(archive),archiveSha=await hashFile(archive);
   const catalog=JSON.parse(fs.readFileSync(path.join(root,'apps/anatomy/public/data/atlas-catalog.json'),'utf8'));
   let mapped=mapActualMeshFiles(candidateCrosswalk(catalog,official),elements,zipFiles);
-  let provisionalInfo=null;
+  let provisionalInfo=null,focusInfo=null,priorReviewInventory=null;
   const sourceBatch=path.join(root,'local-data/licensing-quarantine/bp3d-batch');
+  const priorReviewPath=path.join(root,'local-data/licensing-quarantine/bp3d-provisional');
   let originalInventory=null;
   if(provisional){
     if(path.resolve(output)===path.resolve(sourceBatch))throw Error('Provisional source cannot overwrite baseline');
@@ -268,6 +273,28 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
     const names=new Set(provisionalInfo.candidates.map(x=>x.atlasName));
     mapped={...mapped,candidates:mapped.candidates.map(x=>names.has(x.atlasName)?
       provisionalInfo.candidates.find(v=>v.atlasName===x.atlasName):x)};
+    if(focusShortlist){
+      if([sourceBatch,priorReviewPath].some(x=>path.resolve(x)===path.resolve(output)))
+        throw Error('Focused source preview may not overwrite original or 584-model private review');
+      if(fs.lstatSync(priorReviewPath).isSymbolicLink())
+        throw Error('Symlinked previous private source pack is prohibited');
+      priorReviewInventory=JSON.parse(fs.readFileSync(path.join(priorReviewPath,'inventory.json'),'utf8'));
+      if(priorReviewInventory.provisionalSource!==true||
+         priorReviewInventory.approvedForCommercialDistribution!==false||
+         priorReviewInventory.legalStatus!=='NOT-CLEARED'||
+         priorReviewInventory.sourceHashes?.archiveSha256!==archiveSha||
+         priorReviewInventory.summary?.failed!==0)
+        throw Error('Previous private 584-model source manifest has unexpected lineage, failure or rights state');
+      const priorIntegrity=await auditGeneratedBatch(priorReviewPath);
+      if(priorIntegrity.errors.length)
+        throw Error('Previous private candidate GLB integrity failed; never reuse these models');
+      focusInfo=selectFocusSourceReview({catalog,officialRows:official,elements,archiveFiles:zipFiles,
+        existing:priorReviewInventory.converted});
+      if(!focusInfo.candidates.length)
+        throw Error('No safe source-specific candidates left for focused private preview');
+      const byName=new Map(focusInfo.candidates.map(x=>[x.atlasName,x]));
+      mapped={...mapped,candidates:mapped.candidates.map(x=>byName.get(x.atlasName)||x)};
+    }
   }
   if(reviewedFile){
     const approvedRoot=path.resolve(root,'local-data')+path.sep;
@@ -284,7 +311,10 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   const plan=planBatch(mapped,{limit});
   if(!plan.eligible.length)throw new Error('No eligible official-source candidate structures; check source tables');
   const gaps=suggestForUnmatched(plan.gaps,official),converted=[],failed=[];
-  const originalByName=new Map((originalInventory?.converted||[]).map(x=>[x.name,x]));
+  const originalByName=new Map([
+    ...(originalInventory?.converted||[]).map(x=>[x.name,{model:x,root:sourceBatch}]),
+    ...(priorReviewInventory?.converted||[]).map(x=>[x.name,{model:x,root:priorReviewPath}])
+  ]);
   let reused=0;
   fs.mkdirSync(path.join(output,'structures'),{recursive:true});
   const objCache=new Map();
@@ -299,13 +329,13 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   };
   for(const [index,item] of plan.eligible.entries()){
     try{
-      const cached=originalByName.get(item.name);
+      const cache=originalByName.get(item.name),cached=cache?.model;
       if(cached){
         if(cached.id!==item.id||cached.fmaId!==item.source.fmaId||cached.bpId!==item.source.bpId||
           cached.sourceMeshes!==item.source.sourceObjs.length||
           cached.modelPath!=='./structures/'+item.id+'/model.glb')
           throw Error('Cached original model identity differs: '+item.name);
-        const sourceDir=path.join(sourceBatch,'structures',item.id),
+        const sourceDir=path.join(cache.root,'structures',item.id),
           lineage=JSON.parse(fs.readFileSync(path.join(sourceDir,'lineage.json'),'utf8'));
         const required=item.source.sourceObjs.map(x=>x.fileId).sort(),
           found=(lineage.elements||[]).map(x=>x.id).sort();
@@ -381,14 +411,19 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
         ' eligible; generated '+converted.length+', failed '+failed.length);
   }
   const summary={...plan.summary,converted:converted.length,failed:failed.length,
-    reusedBaselineModels:reused,provisionalNewModels:provisional?converted.length-reused:0,
+    reusedBaselineModels:focusShortlist?(originalInventory?.converted.length||0):reused,
+    reusedPriorReviewModels:focusShortlist?reused:0,
+    focusedNewModels:focusShortlist?converted.length-reused:0,
+    provisionalNewModels:provisional?converted.length-reused:0,
     candidatesWithOmittedZeroAreaTriangles:converted.filter(x=>x.omittedZeroAreaTriangles>0).length,
     totalOmittedZeroAreaTriangles:converted.reduce((n,x)=>n+x.omittedZeroAreaTriangles,0),
     candidatesWithGeometryFlags:converted.filter(x=>x.diagnostics.flags.length>0).length,
     unprocessedDueToLimit:plan.allEligible-plan.eligible.length};
   const referenceSurface=await buildReferenceSkin({official,elements,zipFiles,archive,archiveSha,output});
   const manifest={schemaVersion:1,kind:'official-bp3d-bulk-source-review',source:BP3D_OFFICIAL,
-    provisionalSource:provisional,provisionalSelection:provisional?{
+    provisionalSource:provisional,focusedSourcePreview:focusShortlist,
+    focusedSourceSelection:focusShortlist?focusInfo.summary:null,
+    provisionalSelection:provisional?{
       includePromising,limitNew,selected:provisionalInfo.summary.provisionalSelected,
       rejected:provisionalInfo.summary.reviewRejected,approved:0}:null,
     sourceHashes:{namesSha256:sha(namesBytes),elementsSha256:sha(elementBytes),
@@ -425,12 +460,13 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   return manifest;
 }
 function parseArgs(argv){
-  let all=false,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100;
+  let all=false,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100,focusShortlist=false;
   for(let i=0;i<argv.length;i++){
     if(argv[i]==='--all')all=true;
     else if(argv[i]==='--limit'&&argv[i+1]&&/^\d+$/.test(argv[i+1]))limit=Number(argv[++i]);
     else if(argv[i]==='--reviewed'&&argv[i+1])reviewedFile=argv[++i];
     else if(argv[i]==='--provisional')provisional=true;
+    else if(argv[i]==='--focus-shortlist')focusShortlist=true;
     else if(argv[i]==='--include-promising')includePromising=true;
     else if(argv[i]==='--limit-new'&&argv[i+1]&&/^\d+$/.test(argv[i+1]))limitNew=Number(argv[++i]);
     else throw new Error('Usage: batch-bp3d-candidates.mjs --all OR --limit <positive integer>');
@@ -438,7 +474,7 @@ function parseArgs(argv){
   if(all===(limit!==undefined)||limit!==undefined&&(!Number.isSafeInteger(limit)||limit<1||limit>1000))
     throw new Error('Specify exactly --all or --limit N (1 to 1000)');
   if((includePromising||limitNew!==100)&&!provisional)throw Error('Provisional options require --provisional');
-  return {limit,reviewedFile,provisional,includePromising,limitNew};
+  return {limit,reviewedFile,provisional,includePromising,limitNew,focusShortlist};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
   try{await runBatch(parseArgs(process.argv.slice(2)));}
