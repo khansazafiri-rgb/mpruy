@@ -23,6 +23,7 @@ import {auditGeneratedBatch} from './bp3d-batch-audit.mjs';
 import {applyReviewedSourceMappings} from './bp3d-reviewed-mappings.mjs';
 import {selectFocusSourceReview} from './bp3d-focus-source-shortlist.mjs';
 import {selectExactVertebraSources} from './bp3d-exact-vertebra-sources.mjs';
+import {selectAllSystemsExact,rehydratePrivateInventory} from './bp3d-all-systems-exact-sources.mjs';
 
 const ROOT=fileURLToPath(new URL('../../../',import.meta.url));
 const PRIVATE=path.join(ROOT,'local-data','licensing-quarantine');
@@ -235,14 +236,17 @@ function listZip(file){
   const files=execFileSync('unzip',['-Z','-1',file],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split(/\r?\n/);
   checkArchiveEntryNames(files);return files;
 }
-export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100,focusShortlist=false,vertebralExact=false}={}){
+export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100,focusShortlist=false,vertebralExact=false,allSystemsExact=false}={}){
   if(provisional&&reviewedFile)throw Error('Provisional and reviewed batches must remain separate');
   if(focusShortlist&&(!provisional||!includePromising||limitNew<114||reviewedFile||limit!==undefined))
     throw Error('Focus source expansion requires full private provisional discovery and no artificial truncation');
+  if(allSystemsExact&&(!provisional||reviewedFile||focusShortlist||vertebralExact||limit!==undefined))
+    throw Error('All-systems exact-source batch must be private, untruncated and independent of focused modes');
   if(vertebralExact&&!focusShortlist)
     throw Error('Vertebral source review requires the full private 602-model focused candidate provenance');
   // Every candidate expansion has an independent private output; never overwrite the 470/584/602 model baselines.
-  const output=allowed(root,outputDir||(vertebralExact?path.join(root,'local-data/licensing-quarantine/bp3d-vertebral'):
+  const output=allowed(root,outputDir||(allSystemsExact?path.join(root,'local-data/licensing-quarantine/bp3d-all-systems'):
+    vertebralExact?path.join(root,'local-data/licensing-quarantine/bp3d-vertebral'):
     focusShortlist?path.join(root,'local-data/licensing-quarantine/bp3d-focused'):
     provisional?path.join(root,'local-data/licensing-quarantine/bp3d-provisional'):
     reviewedFile?path.join(root,'local-data/licensing-quarantine/bp3d-reviewed'):DEST));
@@ -255,13 +259,61 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   const zipFiles=listZip(archive),archiveSha=await hashFile(archive);
   const catalog=JSON.parse(fs.readFileSync(path.join(root,'apps/anatomy/public/data/atlas-catalog.json'),'utf8'));
   let mapped=mapActualMeshFiles(candidateCrosswalk(catalog,official),elements,zipFiles);
-  let provisionalInfo=null,focusInfo=null,vertebralInfo=null,priorReviewInventory=null;
+  let provisionalInfo=null,focusInfo=null,vertebralInfo=null,allSystemsInfo=null,priorReviewInventory=null;
   const sourceBatch=path.join(root,'local-data/licensing-quarantine/bp3d-batch');
   const provisionalReviewPath=path.join(root,'local-data/licensing-quarantine/bp3d-provisional');
   const priorReviewPath=path.join(root,'local-data/licensing-quarantine',
-    vertebralExact?'bp3d-focused':'bp3d-provisional');
+    allSystemsExact?'bp3d-vertebral':vertebralExact?'bp3d-focused':'bp3d-provisional');
   let originalInventory=null;
-  if(provisional){
+  if(allSystemsExact){
+    // No change to the 470/584/602/626 models. The latest PREVIOUS private
+    // 626 batch is the only cache; all source names/FJ are rehydrated against
+    // original publisher tables after a fresh checksum/lineage audit.
+    if([sourceBatch,priorReviewPath,
+      path.join(root,'local-data/licensing-quarantine/bp3d-provisional'),
+      path.join(root,'local-data/licensing-quarantine/bp3d-focused')]
+      .some(x=>path.resolve(x)===path.resolve(output)))
+      throw Error('All-systems review output must not overwrite any prior source batch');
+    for(const privateDir of [sourceBatch,priorReviewPath]){
+      if(fs.lstatSync(privateDir).isSymbolicLink())
+        throw Error('Symlinked original or 626-model private source batch');
+    }
+    originalInventory=JSON.parse(fs.readFileSync(path.join(sourceBatch,'inventory.json'),'utf8'));
+    priorReviewInventory=JSON.parse(fs.readFileSync(path.join(priorReviewPath,'inventory.json'),'utf8'));
+    for(const inv of [originalInventory,priorReviewInventory])
+      if(inv.sourceHashes?.archiveSha256!==archiveSha||
+        inv.sourceHashes?.namesSha256!==sha(namesBytes)||
+        inv.sourceHashes?.elementsSha256!==sha(elementBytes)||
+        inv.approvedForCommercialDistribution!==false||
+        inv.geometryRegisteredToMEDCOEL!==false||
+        inv.legalStatus!=='NOT-CLEARED'||inv.summary?.failed!==0)
+        throw Error('Untrusted prior GLB manifest, source hashes or rights state');
+    if(priorReviewInventory.provisionalSource!==true||
+       priorReviewInventory.vertebralSourcePreview!==true||
+       priorReviewInventory.converted.length<600)
+      throw Error('A completed private 626-model vertebral batch is required');
+    for(const cache of [sourceBatch,priorReviewPath]){
+      const integrity=await auditGeneratedBatch(cache);
+      if(integrity.errors.length)throw Error('Cached source/GLB integrity failed in '+cache);
+    }
+    const priorAudited=auditCompleteness({catalog,officialRows:official,
+      elementIndex:elements,archiveFiles:zipFiles,inventory:priorReviewInventory,
+      mappingReview:JSON.parse(fs.readFileSync(path.join(priorReviewPath,'mapping-review.json'),'utf8'))});
+    if(priorAudited.errors.length||
+       priorAudited.summary.converted!==priorReviewInventory.converted.length)
+      throw Error('626-model private source identity audit did not pass');
+    const cached=rehydratePrivateInventory({catalog,officialRows:official,
+      elements,archiveFiles:zipFiles,inventory:priorReviewInventory});
+    allSystemsInfo=selectAllSystemsExact({catalog,officialRows:official,elements,
+      archiveFiles:zipFiles,existing:priorReviewInventory.converted});
+    if(!allSystemsInfo.candidates.length)
+      throw Error('No new unambiguous exact official-source identities remain; see all-systems source audit report');
+    const byName=new Map([...cached,...allSystemsInfo.candidates]
+      .map(row=>[row.atlasName,row]));
+    mapped={...mapped,candidates:mapped.candidates.map(x=>byName.get(x.atlasName)||x)};
+    if(byName.size!==priorReviewInventory.converted.length+allSystemsInfo.candidates.length)
+      throw Error('All-systems identity collision in proposed private additions');
+  }else if(provisional){
     if(path.resolve(output)===path.resolve(sourceBatch))throw Error('Provisional source cannot overwrite baseline');
     originalInventory=JSON.parse(fs.readFileSync(path.join(sourceBatch,'inventory.json'),'utf8'));
     if(originalInventory.sourceHashes?.archiveSha256!==archiveSha ||
@@ -440,8 +492,9 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
         ' eligible; generated '+converted.length+', failed '+failed.length);
   }
   const summary={...plan.summary,converted:converted.length,failed:failed.length,
-    reusedBaselineModels:focusShortlist?(originalInventory?.converted.length||0):reused,
-    reusedPriorReviewModels:focusShortlist?reused:0,
+    reusedBaselineModels:allSystemsExact?(originalInventory?.converted.length||0):focusShortlist?(originalInventory?.converted.length||0):reused,
+    reusedPriorReviewModels:allSystemsExact?reused:focusShortlist?reused:0,
+    allSystemsNewModels:allSystemsExact?converted.length-reused:0,
     vertebralNewModels:vertebralExact?converted.length-reused:0,
     focusedNewModels:focusShortlist?converted.length-reused:0,
     provisionalNewModels:provisional?converted.length-reused:0,
@@ -451,7 +504,9 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
     unprocessedDueToLimit:plan.allEligible-plan.eligible.length};
   const referenceSurface=await buildReferenceSkin({official,elements,zipFiles,archive,archiveSha,output});
   const manifest={schemaVersion:1,kind:'official-bp3d-bulk-source-review',source:BP3D_OFFICIAL,
-    provisionalSource:provisional,focusedSourcePreview:focusShortlist,
+    provisionalSource:provisional,allSystemsExactSourcePreview:allSystemsExact,
+    allSystemsSourceSelection:allSystemsExact?allSystemsInfo.summary:null,
+    focusedSourcePreview:focusShortlist,
     vertebralSourcePreview:vertebralExact,
     vertebralSourceSelection:vertebralExact?vertebralInfo.summary:null,
     focusedSourceSelection:focusShortlist?focusInfo.summary:null,
@@ -469,6 +524,20 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   mapping.report.catalogCount=plan.summary.catalogCount;
   mapping.report.directConvertedCount=converted.length;
   fs.writeFileSync(path.join(output,'inventory.json'),JSON.stringify(manifest,null,2)+'\n');
+  if(allSystemsExact){
+    // Transparent decisions for EVERY catalogue gap, including source conflicts
+    // and missing official OBJ. None of these implies clinical validity.
+    fs.writeFileSync(path.join(output,'all-systems-source-review.json'),
+      JSON.stringify({status:allSystemsInfo.status,
+        summary:allSystemsInfo.summary,bySystem:allSystemsInfo.bySystem,
+        candidates:allSystemsInfo.candidates.map(x=>({
+          atlasName:x.atlasName,system:x.atlasSystem,
+          officialName:x.matches[0].officialName,
+          fmaId:x.matches[0].fmaId,bpId:x.matches[0].bpId,
+          fjIds:x.matches[0].elementFileIds,
+          clinicalIdentityValidated:false,approvedForDistribution:false
+        })),rejected:allSystemsInfo.rejected},null,2)+'\n');
+  }
   if(vertebralExact){
     // Private, human-readable reasons for every skipped level. No clearance.
     fs.writeFileSync(path.join(output,'vertebral-source-review.json'),
@@ -504,7 +573,7 @@ export async function runBatch({root=ROOT,sourceDir=SOURCE,outputDir,limit,revie
   return manifest;
 }
 function parseArgs(argv){
-  let all=false,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100,focusShortlist=false,vertebralExact=false;
+  let all=false,limit,reviewedFile,provisional=false,includePromising=false,limitNew=100,focusShortlist=false,vertebralExact=false,allSystemsExact=false;
   for(let i=0;i<argv.length;i++){
     if(argv[i]==='--all')all=true;
     else if(argv[i]==='--limit'&&argv[i+1]&&/^\d+$/.test(argv[i+1]))limit=Number(argv[++i]);
@@ -512,6 +581,7 @@ function parseArgs(argv){
     else if(argv[i]==='--provisional')provisional=true;
     else if(argv[i]==='--focus-shortlist')focusShortlist=true;
     else if(argv[i]==='--vertebral-exact')vertebralExact=true;
+    else if(argv[i]==='--all-systems-exact')allSystemsExact=true;
     else if(argv[i]==='--include-promising')includePromising=true;
     else if(argv[i]==='--limit-new'&&argv[i+1]&&/^\d+$/.test(argv[i+1]))limitNew=Number(argv[++i]);
     else throw new Error('Usage: batch-bp3d-candidates.mjs --all OR --limit <positive integer>');
@@ -519,7 +589,7 @@ function parseArgs(argv){
   if(all===(limit!==undefined)||limit!==undefined&&(!Number.isSafeInteger(limit)||limit<1||limit>1000))
     throw new Error('Specify exactly --all or --limit N (1 to 1000)');
   if((includePromising||limitNew!==100)&&!provisional)throw Error('Provisional options require --provisional');
-  return {limit,reviewedFile,provisional,includePromising,limitNew,focusShortlist,vertebralExact};
+  return {limit,reviewedFile,provisional,includePromising,limitNew,focusShortlist,vertebralExact,allSystemsExact};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
   try{await runBatch(parseArgs(process.argv.slice(2)));}
