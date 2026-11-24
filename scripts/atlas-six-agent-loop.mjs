@@ -13,6 +13,9 @@ const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const write=(p,v)=>{const tmp=p+'.tmp';fs.writeFileSync(tmp,JSON.stringify(v,null,2)+'\n');fs.renameSync(tmp,p);};
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const token=()=>randomBytes(5).toString('hex');
+const activeChildren=new Set();
+let interrupted=false;
+function cancelChildren(){interrupted=true;for(const child of activeChildren){try{process.kill(-child.pid,'SIGTERM');}catch{try{child.kill('SIGTERM');}catch{}}}}
 const ensureDir=p=>{fs.mkdirSync(p,{recursive:true});assert(fs.realpathSync(p)===p,'Unsafe symlink '+p);};
 const schema={type:'object',additionalProperties:false,properties:{status:{type:'string',enum:['PASS','PARTIAL','BLOCKED','FAIL']},summary:{type:'string'},
   evidence:{type:'array',items:{type:'string'}},tests:{type:'array',items:{type:'string'}},blockers:{type:'array',items:{type:'string'}},next:{type:'array',items:{type:'string'}}},
@@ -42,8 +45,8 @@ function validate(p,role,base){
  for(const f of files){
   assert(allowed(role,f),'Out-of-scope file: '+f);
   const full=path.join(p,f);
-  if(!fs.existsSync(full)){assert(!fs.lstatSync(path.dirname(full)).isSymbolicLink(),'Symlinked parent');continue;}
-  assert(fs.realpathSync(full)===full&&fs.statSync(full).isFile()&&fs.statSync(full).size<=1024*1024,'Unsafe file: '+f);
+  let info;try{info=fs.lstatSync(full);}catch(e){if(e.code!=='ENOENT')throw e;}
+  assert(info&&!info.isSymbolicLink()&&info.isFile()&&fs.realpathSync(full)===full&&info.size<=1024*1024,'Non-regular, deleted, symlinked or oversized file refused: '+f);
   if(f.endsWith('.json'))read(full);
   if(/\.(mjs|js)$/.test(f)){
    const r=spawnSync(process.execPath,['--check',full],{cwd:p,encoding:'utf8'});
@@ -109,10 +112,12 @@ async function runCli(cwd,prompt,job,timeout){
  const args=['--ask-for-approval','never','exec','--sandbox','workspace-write',
   '--config','sandbox_workspace_write.network_access=false','--output-schema',path.join(job,'schema.json'),'--output-last-message',answer,'-'];
  let expired=false;
+ assert(!interrupted,'Loop interrupted');
  const result=await new Promise(resolve=>{
   const child=spawn(process.env.CODEX_BIN||'codex',args,{cwd,detached:true,stdio:['pipe',log,log]});
+  activeChildren.add(child);
   let finished=false,hard;
-  const end=(code,error)=>{if(finished)return;finished=true;clearTimeout(timer);clearTimeout(hard);fs.closeSync(log);resolve({code,error,expired});};
+  const end=(code,error)=>{if(finished)return;finished=true;activeChildren.delete(child);clearTimeout(timer);clearTimeout(hard);fs.closeSync(log);resolve({code,error,expired});};
   const timer=setTimeout(()=>{expired=true;try{process.kill(-child.pid,'SIGTERM');}catch{child.kill('SIGTERM');}
    hard=setTimeout(()=>{try{process.kill(-child.pid,'SIGKILL');}catch{}},5000);},timeout*60000);
   child.on('error',e=>end(null,String(e.message)));child.on('close',code=>end(code,null));
@@ -122,6 +127,7 @@ async function runCli(cwd,prompt,job,timeout){
  const a=read(answer);
  assert(schema.properties.status.enum.includes(a.status)&&typeof a.summary==='string'&&
   ['evidence','tests','blockers','next'].every(k=>Array.isArray(a[k])&&a[k].every(x=>typeof x==='string')),'Invalid agent result');
+ if(a.status==='PASS')assert(a.evidence.length>0&&a.tests.length>0&&a.blockers.length===0,'PASS requires evidence and tests with no blockers');
  return a;
 }
 async function agent({role,workspace,base,job,input,feedback,round,timeout}){
@@ -190,6 +196,7 @@ async function main(){
  assert(spawnSync(process.env.CODEX_BIN||'codex',['--version']).status===0,'Codex CLI not available. Use generated task files in Work or install/authenticate CLI.');
  const lock=path.join(dir,'run.lock');fs.writeFileSync(lock,String(process.pid),{flag:'wx'});
  s.status='RUNNING';report(dir,s);
+ process.on('SIGINT',cancelChildren);process.on('SIGTERM',cancelChildren);
  try{
   for(let round=s.history.length+1;round<=s.maxRounds;round++){
    const attempt=path.join(dir,'round-'+round+'-'+token());ensureDir(attempt);
@@ -200,12 +207,14 @@ async function main(){
     const r=await agent({role,workspace,base,job:path.join(attempt,'logs-'+role),input,feedback:s.feedback[role],round,timeout:o.timeout});
     console.log(role+' '+r.status);return r;
    });
+   assert(!interrupted,'Loop interrupted; round not integrated');
    const review=worktree(attempt,'review',base);
    const merges=workers.map(r=>apply(review,r));
    const workerBase=checkpoint(review,'Private candidate adapters round '+round);
    const integrator=await agent({role:'integrator',workspace:review,base:workerBase,job:path.join(attempt,'logs-integrator'),
     input,feedback:{prior:s.feedback.integrator,workers,merges,completed:s.done},round,timeout:o.timeout});
-   const accepted=['PASS','PARTIAL'].includes(integrator.status);
+   assert(!interrupted,'Loop interrupted; round not integrated');
+   const accepted=['PASS','PARTIAL'].includes(integrator.status)&&integrator.answer.evidence.length>0&&integrator.answer.tests.length>0;
    let next=base;
    if(accepted){
     next=checkpoint(review,'Private integration candidate round '+round);
@@ -224,7 +233,7 @@ async function main(){
    if(s.status!=='RUNNING')break;
   }
  }catch(e){s.status='INTERRUPTED';s.feedback.controller=String(e.message);report(dir,s);throw e;}
- finally{fs.unlinkSync(lock);}
+ finally{process.off('SIGINT',cancelChildren);process.off('SIGTERM',cancelChildren);fs.unlinkSync(lock);}
  console.log('Final report: '+path.join(dir,'final-report.json')+'\nReview workspace: '+s.integration+'\nPublic release NO_GO. No remote push or deployment.');
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))main().catch(e=>{console.error('ATLAS LOOP BLOCKED:',e.message);process.exitCode=1;});
