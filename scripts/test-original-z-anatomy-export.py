@@ -55,6 +55,29 @@ assert next(r for r in a['rows'] if r['name']=='thoracic duct')['status']=='NO_E
 assert not a['networkContinuityValidated']
 a=lymphatic_audit({},[{'name':'thoracic duct','type':'CURVE'}],[],[{'name':'thoracic duct','reason':'no evaluated surface'}],[])
 assert next(r for r in a['rows'] if r['name']=='thoracic duct')['status']=='EXPORT_BLOCKED'
+# Organs and organ substructures must not be conflated.
+from z_anatomy_organ_identity import organ_identity, organ_audit, canonical as organ_key
+assert organ_key('Hypophysis')=='pituitary gland'
+assert organ_key('Adenohypophysis')!='pituitary gland'
+assert organ_key('Suprarenal gland.l')=='left adrenal gland'
+assert organ_key('Suprarenal gland.r')!='left adrenal gland'
+assert organ_key('Right upper lobe of lung')=='superior lobe of right lung'
+assert organ_key('Left lung')!='superior lobe of left lung'
+assert organ_key('Mitral valve')=='left atrioventricular valve'
+assert organ_key('Posterior leaflet of left atrioventricular valve')!='left atrioventricular valve'
+assert organ_identity('left principal bronchus')['group']=='respiratory'
+assert organ_identity('pineal gland')['group']=='endocrine'
+assert organ_identity('pancreas')['group']=='digestive'
+assert organ_identity('thyroid artery') is None
+assert organ_identity('Circumflex artery of heart',{'source':'cardiovascular','group':'heart'}) is None
+assert organ_identity('left parathyroid gland')['regions']==['headNeck']
+a=organ_audit({},[{'name':'Right lung','type':'MESH'}],
+    [{'name':'Right lung','system':'visceral','group':'respiratory','id':'fixture'}],[],[])
+assert not a['fiveLobeCandidatesExported'] and not a['solidOrganSurfaceValidated']
+assert next(r for r in a['rows'] if r['name']=='right lung')['status']=='EXPORTED_CANDIDATE'
+assert next(r for r in a['rows'] if r['name']=='middle lobe of right lung')['status']=='NO_EXACT_SOURCE_OBJECT'
+a=organ_audit({},[{'name':'thyroid gland','type':'MESH'}],[],[{'name':'thyroid gland','reason':'fixture blocked'}],[])
+assert next(r for r in a['rows'] if r['name']=='thyroid gland')['status']=='EXPORT_BLOCKED'
 # Cardiovascular identity must override the name of the supplied organ.
 assert mod.vascular_group('Circumflex artery of heart','heart')=='arterial'
 assert mod.vascular_group('Anterior interventricular artery','heart')=='arterial'
