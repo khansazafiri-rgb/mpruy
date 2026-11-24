@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "reviewedSourceTermsOn": "2026-11-24",
+  "scope": "Source terms only; not approval of an export or release",
+  "sources": [
+    {
+      "id": "three-r185",
+      "kind": "software",
+      "license": "MIT",
+      "commercialTerms": "permitted-with-notice",
+      "ref": "r185",
+      "version": "0.185.1",
+      "url": "https://github.com/mrdoob/three.js/blob/r185/LICENSE",
+      "notice": "source-notices/three.txt",
+      "gitBlob": "8ada2a5f982916b0ba4b7a0aa7de347587e745d7"
+    },
+    {
+      "id": "vite-8.1.1",
+      "kind": "software",
+      "license": "MIT",
+      "commercialTerms": "permitted-with-notice",
+      "ref": "v8.1.1",
+      "version": "8.1.1",
+      "url": "https://github.com/vitejs/vite/blob/v8.1.1/LICENSE",
+      "notice": "source-notices/vite.txt",
+      "gitBlob": "b7e97ecb6aa4dd70b3e3a637afa2ae16feb7cd12"
+    },
+    {
+      "id": "z-anatomy-original",
+      "kind": "mixed-models",
+      "license": "CC-BY-SA-4.0",
+      "commercialTerms": "mixed-contributor-review",
+      "ref": "3c1679595d89aa508ddffc72cd5e125c5d609a59",
+      "url": "https://github.com/Z-Anatomy/Models-of-human-anatomy/blob/3c1679595d89aa508ddffc72cd5e125c5d609a59/License.txt",
+      "notice": "source-notices/z-anatomy.txt",
+      "gitBlob": "4d48d7e83d2b79ba4510314c7612b2c3c0a90f67",
+      "exceptions": [
+        {
+          "name": "BodyParts3D",
+          "license": "CC-BY-SA-2.1-JP",
+          "status": "version-review"
+        },
+        {
+          "name": "Dundee cranial nerves and foramina",
+          "license": "CC-BY-4.0",
+          "status": "exact-object-map-required"
+        },
+        {
+          "name": "Dundee inner ear",
+          "license": "CC-BY-NC-SA-4.0",
+          "status": "exclude"
+        },
+        {
+          "name": "Lissie Cowley kidney",
+          "license": "CC-BY-NC-4.0",
+          "status": "exclude"
+        },
+        {
+          "name": "Brainder / White matter",
+          "license": null,
+          "status": "hold"
+        }
+      ]
+    },
+    {
+      "id": "bodyparts3d-official",
+      "kind": "models",
+      "license": "CC-BY-4.0",
+      "commercialTerms": "permitted-with-attribution-current-database",
+      "url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html",
+      "download": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html",
+      "updated": "2025-02-27",
+      "historicalHeader": "CC-BY-SA-2.1-JP",
+      "status": "exact-version-and-file-review-required",
+      "attribution": "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International"
+    },
+    {
+      "id": "legacy-atlas-code",
+      "kind": "software",
+      "license": "CC-BY-NC-SA-4.0",
+      "commercialTerms": "blocked",
+      "url": "https://github.com/nqwrc/3d-anatomy/blob/8ca3b7421bcfbe88b85859eb1983d5cf79f21749/LICENSE"
+    },
+    {
+      "id": "hra",
+      "kind": "models",
+      "license": null,
+      "commercialTerms": "per-asset-review-required",
+      "url": "https://humanatlas.io/"
+    },
+    {
+      "id": "lymphatic-supplement",
+      "kind": "models",
+      "license": null,
+      "commercialTerms": "no-approved-source",
+      "url": null
+    }
+  ],
+  "publicRelease": "NO_GO"
+}
