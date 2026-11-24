@@ -11,6 +11,8 @@ import {createServer} from 'node:http';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {privateAtlasPlugin} from './preview-private-atlas-expansion.mjs';
 import {expandNativeOrganComponents} from './expand-native-organ-components.mjs';
+import {fixEndocrine,buildHraRegistry,serveHraReference} from './atlas-hra-private-reference.mjs';
+import {writeClinicalPriorityAudit} from './atlas-clinical-priority-audit.mjs';
 import {createLabPreviewServer,checkBuilds,ROOTS} from './preview-4d-lab.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
@@ -42,6 +44,20 @@ function choose(tree,explicit){
  assert(found.length,'No materialized '+tree+' native pack found. Existing preview assets are required.');
  return found[0];
 }
+function chooseExistingExpansion(){
+ const found=[];
+ for(const d of fs.readdirSync(privateRoot).filter(x=>/^bp3d-organ-expansion-preview-[A-Za-z0-9_-]+$/.test(x))){
+  try{
+   const folder=local(privateRoot,d,true),report=read(local(folder,'organ-component-report.json'));
+   const completed=local(folder,'recolor-report.json'),recolor=read(completed),pack=local(folder,'pack',true),inv=read(local(pack,'inventory.json'));
+   assert(report.publicRelease==='NO_GO'&&recolor.publicRelease==='NO_GO'&&inv.approvedForCommercialDistribution===false);
+   assert(inv.sourceTree==='isa'&&inv.sourceNativeDisplayOnly===true&&report.total===inv.converted.length&&recolor.count===inv.converted.length);
+   found.push({d,pack,inv,mtime:fs.statSync(completed).mtimeMs});
+  }catch{}
+ }
+ found.sort((a,b)=>b.mtime-a.mtime);
+ return found[0]||null;
+}
 async function verify(pack,inv){
  assert(Array.isArray(inv.converted)&&inv.converted.length>0,'Missing inventory');
  const names=new Set(),ids=new Set(),counts={};
@@ -60,11 +76,12 @@ async function verify(pack,inv){
 async function main(){
  const tree=process.argv[2]||'isa',explicit=process.argv[3];assert(['isa','partof'].includes(tree)&&process.argv.length<=4,'Usage: node scripts/preview-atlas-recolor.mjs [isa|partof] [native-folder]');
  assert(fs.realpathSync(privateRoot)===privateRoot,'Private source root is symlinked');
- const original=choose(tree,explicit);
+ const hraEnabled=process.env.MEDCOEL_HRA_REFERENCE==='1';
+ const expand=process.env.MEDCOEL_EXPAND_ORGANS==='1';
+ const original=hraEnabled&&tree==='isa'&&!explicit&&!expand?(chooseExistingExpansion()||choose(tree,explicit)):choose(tree,explicit);
  let {pack,inv}=original;
  console.log('Reusing materialized '+tree.toUpperCase()+' models from '+original.d);
  let counts=await verify(pack,inv);console.log('Verified existing GLBs:',inv.converted.length,JSON.stringify(counts));
- const expand=process.env.MEDCOEL_EXPAND_ORGANS==='1';
  const out=fs.mkdtempSync(path.join(privateRoot,expand?'bp3d-organ-expansion-preview-':'bp3d-recolor-preview-')),dist=path.join(out,'atlas-dist');
  let expansion=null;
  if(expand){
@@ -73,24 +90,35 @@ async function main(){
   ({pack,inv,counts}=expansion);
   await verify(pack,inv);
  }
+ const endocrine=fixEndocrine(inv.converted);
+ inv={...inv,converted:endocrine.converted};
+ console.log('ENDOCRINE GROUP',JSON.stringify({corrected:endocrine.changed,confirmed:endocrine.confirmed}));
+ const hra=hraEnabled?await buildHraRegistry(privateRoot):null;
+ if(hra)console.log('HRA LOCAL REFERENCE',JSON.stringify({verified:hra.assets.size,blocked:hra.blocked.length,bodyOverlay:false}));
+ const clinical=writeClinicalPriorityAudit(out,{inventory:inv,hra});
  const atlasReq=createRequire(path.join(atlasRoot,'package.json'));
  const {build}=await import(pathToFileURL(atlasReq.resolve('vite')).href);
  const applied=new Set();
  process.chdir(atlasRoot);
  try{
   await build({root:atlasRoot,configFile:path.join(atlasRoot,'vite.config.js'),base:'/anatomy/viewer/',
-   plugins:[privateAtlasPlugin(applied)],build:{outDir:dist,emptyOutDir:true}});
+   plugins:[privateAtlasPlugin(applied),...(hraEnabled?[{name:'medcoel-private-hra-dialog',enforce:'pre',transform(code,id){if(path.resolve(id.split('?')[0])!==path.join(atlasRoot,'src/main.js'))return null;return "import {mountHraReference} from './viewer/hraPrivateReference.js';\nif(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mountHraReference,{once:true});else mountHraReference();\n"+code;}}]:[])],build:{outDir:dist,emptyOutDir:true}});
  }finally{process.chdir(root);}
  assert.equal(applied.size,4,'Original private viewer patches not applied');
  const roots={...ROOTS,atlas:dist,bp3d:pack},checked=await checkBuilds(roots);
  assert(checked.ok,'Preview preflight: '+checked.problems.join('; '));
- const port=Number(process.env.PORT||(expand?4181:tree==='isa'?4179:4180));
+ const port=Number(process.env.PORT||(hraEnabled?4183:expand?4181:tree==='isa'?4179:4180));
  assert(Number.isInteger(port)&&port>=1024&&port<=65535,'Invalid loopback port');
  const handle=createLabPreviewServer(roots).listeners('request')[0];
  const server=createServer((req,res)=>{
   if(req.headers.host!=='127.0.0.1:'+port||!['GET','HEAD'].includes(req.method)||!req.url?.startsWith('/anatomy/viewer/')){
    res.writeHead(403);res.end('Private loopback only');return;
   }
+  if(req.url.split('?')[0]==='/anatomy/viewer/bp3d/inventory.json'){
+   res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});
+   res.end(req.method==='HEAD'?undefined:JSON.stringify(inv));return;
+  }
+  if(hra&&serveHraReference(req,res,hra))return;
   handle(req,res);
  });
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(port,'127.0.0.1',resolve);});
@@ -99,10 +127,12 @@ async function main(){
   const data=await fetch(base+'/anatomy/viewer/bp3d/inventory.json');assert(data.ok);assert.equal((await data.json()).converted.length,inv.converted.length);
   assert.equal((await fetch(base+'/anatomy/viewer/models/nervous.glb',{method:'HEAD'})).status,404);
   const page=await fetch(base+'/anatomy/viewer/');assert(page.ok&&(await page.text()).includes('loadingOverlay'));
+  if(hra){const response=await fetch(base+'/anatomy/viewer/hra-reference/inventory.json');assert(response.ok);assert.equal((await response.json()).items.length,hra.assets.size);}
   const url=base+'/anatomy/viewer/?models=bp3d&privateExpansion=1';
-  fs.writeFileSync(path.join(out,'recolor-report.json'),JSON.stringify({tree,pack,count:inv.converted.length,perSystem:counts,url,geometryUnchanged:!expand,addedComponents:expansion?.report.added.length||0,visualQA:'PENDING',publicRelease:'NO_GO'},null,2)+'\n');
+  fs.writeFileSync(path.join(out,'recolor-report.json'),JSON.stringify({tree,pack,count:inv.converted.length,perSystem:counts,url,geometryUnchanged:!expand,addedComponents:expansion?.report.added.length||0,endocrineCorrected:endocrine.changed,hraReferenceModels:hra?.assets.size||0,hraBodyOverlay:false,clinicalPriorityReport:clinical.summary,visualQA:'PENDING',publicRelease:'NO_GO'},null,2)+'\n');
   console.log('RECOLOR PREVIEW READY:',url);
   if(expansion)console.log('ORGAN EXPANSION REPORT:',path.join(out,'organ-component-report.json'));
+  console.log('CLINICAL PRIORITY REPORT:',path.join(out,'clinical-priority-audit.json'));
   console.log('Original preview unchanged. Visual QA pending; public release NO_GO.');
  }catch(e){server.close();throw e;}
 }
