@@ -1,0 +1,39 @@
+name: Atlas private regression
+
+on:
+  push:
+    branches: [feat/atlas-publication-prep-20261124]
+  pull_request:
+    paths:
+      - 'apps/atlas-independent/**'
+      - 'scripts/*atlas*.mjs'
+      - 'scripts/*bp3d*.mjs'
+      - '.github/workflows/atlas-private-regression.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  private-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pinned independent viewer and source audit tools
+        run: |
+          npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+          npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - name: Independent viewer tests
+        run: npm test --prefix apps/atlas-independent
+      - name: Exact source membership and original UI shell tests
+        run: |
+          node --test scripts/independent-atlas-element-catalog.test.mjs scripts/independent-atlas-priority-recovery.test.mjs scripts/private-atlas-original-shell.test.mjs scripts/audit-bp3d-43-catalog.test.mjs
+      - name: Independent viewer build
+        run: npm run build --prefix apps/atlas-independent
+      - name: Preserve commercial release boundary
+        run: node --test scripts/commercial-release.test.mjs scripts/production-caddy-quarantine.test.mjs
