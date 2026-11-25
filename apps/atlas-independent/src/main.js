@@ -11,7 +11,7 @@ const base=import.meta.env.BASE_URL;
 const colors={skeletal:0xe9dcc3,muscular:0xad4e50,joints:0x96bbc6,arterial:0xd43e48,venous:0x3e6cbb,heart:0xa93949,nervous:0xe7bd50,lymphatic:0x4b9c72,respiratory:0xd991a0,digestive:0xd39c87,urinary:0x9e4553,reproductive:0xcaa7a0,endocrine:0x9d82bf,brain:0xcaa7a0,spinalCord:0xe1c6b0,lymphNode:0x4b9c72,lymphTrunk:0x278b78,lymphVessel:0x83c9a3,spleen:0x875279,pleura:0xb3a0a7,airway:0x94c3bf};
 const scene=new THREE.Scene(),body=new THREE.Group();scene.add(body);
 scene.background=new THREE.Color(0x092b27);
-const camera=new THREE.PerspectiveCamera(40,1,.001,100);camera.position.set(0,1,3);
+const camera=new THREE.PerspectiveCamera(40,1,.001,100);camera.position.set(0,0,3);
 const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));$('view').prepend(renderer.domElement);
 const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;
 scene.add(new THREE.HemisphereLight(0xffffff,0x526c64,2.2));
@@ -31,7 +31,7 @@ function appearanceFor(e){
  const selectedId=selected?.id,kind=materialKind(e),key=materialKey(e,kind,presentation,selectedId);
  if(!materials.has(key)){
   const isSelected=e.id===selectedId,opacity=effectiveOpacity(e,presentation,selectedId);
-  materials.set(key,new THREE.MeshStandardMaterial({color:isSelected?0xf9c65e:colors[kind]??colors[e.group],roughness:isSelected?.6:.82,side:THREE.DoubleSide,opacity,transparent:opacity<1,depthWrite:opacity>=1,wireframe:presentation.wireframe&&!isSelected}));
+  materials.set(key,new THREE.MeshStandardMaterial({color:isSelected?0xf9c65e:colors[kind]??colors[e.group],roughness:isSelected ? .6 : .82,side:THREE.DoubleSide,opacity,transparent:opacity<1,depthWrite:opacity>=1,wireframe:presentation.wireframe&&!isSelected}));
  }
  return {key,material:materials.get(key)};
 }
@@ -164,7 +164,7 @@ $('search').oninput=()=>{
 async function init(){
  groupControls();
  if(location.hostname!=='127.0.0.1'){ $('notice').textContent='Aplikasi ini belum disetujui untuk publikasi.';return; }
- try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('modelAttributions').hidden=false;$('region').disabled=true;$('representation').disabled=true;$('front').textContent='+Z';$('back').textContent='−Z';$('side').textContent='−X';$('right').textContent='+X';$('top').textContent='+Y';}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);}
+ try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('viewHint').textContent='Sumbu sumber XYZ (bukan orientasi anatomi tervalidasi) · Shift+klik: pilih struktur di belakang';$('modelAttributions').hidden=false;$('region').disabled=true;$('representation').disabled=true;$('front').textContent='+Z';$('back').textContent='−Z';$('side').textContent='−X';$('right').textContent='+X';$('top').textContent='+Y';}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);}
  catch(error){$('notice').textContent=error.message;counts();}
 }
 mountReferences(base);
