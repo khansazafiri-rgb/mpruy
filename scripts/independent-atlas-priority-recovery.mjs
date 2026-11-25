@@ -7,6 +7,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {discoverSystem} from './independent-anatomy-system-discovery.mjs';
 import {learningPriorityTargets} from './atlas-learning-priority-targets.mjs';
+import {checkpoints} from './audit-independent-system-coverage.mjs';
 import {loadVerifiedPublisherSources} from './plan-independent-atlas-coverage.mjs';
 import {parseObj,encodeNativeGlb} from './independent-bp3d-export.mjs';
 import {parseNativePositions,comparePositions} from './audit-bp3d-publication-geometry.mjs';
@@ -14,7 +15,7 @@ const hash=b=>createHash('sha256').update(b).digest('hex');
 const archiveURL='https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/';
 const attribution='BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International';
 // Exact names only. The IDs for known gaps are pinned to the source report where available.
-const targets=[
+export const priorityTargets=[
  ['respiratory',['left lung']],['respiratory',['right lung']],
  ['respiratory',['superior lobe of right lung','upper lobe of right lung']],
  ['respiratory',['middle lobe of right lung','middle lobe of lung'],'FMA7383'],['respiratory',['inferior lobe of right lung','lower lobe of right lung']],
@@ -32,7 +33,7 @@ const targets=[
  ['heart',['heart'],'FMA7088','partof'],['heart',['tricuspid valve'],'FMA7234','partof'],['heart',['mitral valve'],'FMA7235','partof']
 ];
 const norm=n=>String(n).trim().toLowerCase().replace(/\s+/g,' ');
-export function priorityPlan(sources,specs=targets){
+export function priorityPlan(sources,specs=priorityTargets){
  return specs.map(([group,names,fmaId,tree])=>{
   const matches=[];
   for(const s of sources){
@@ -78,7 +79,8 @@ export function buildPriorityRecovery(privateRoot,pack,{broad=false,coveredFma=[
  assert(fs.realpathSync(privateRoot)===privateRoot);
  const sources=loadVerifiedPublisherSources(pack.folder),priority=priorityPlan(sources);
  const already=new Set([...pack.inventory.bodyModels.map(m=>m.fmaId),...coveredFma,...priority.filter(r=>r.status==='EXPORT_CANDIDATE').map(r=>r.fmaId)]);
- const targeted=broad?priorityPlan(sources,learningPriorityTargets).map(r=>{
+ const additional=[...Object.entries(checkpoints).flatMap(([g,rows])=>rows.map(([, ...names])=>[g,names])),...learningPriorityTargets];
+ const targeted=broad?priorityPlan(sources,additional).map(r=>{
   if(r.status!=='EXPORT_CANDIDATE')return r;
   if(already.has(r.fmaId))return {...r,status:'REPRESENTATION_ALREADY_AVAILABLE_OR_PLANNED'};
   already.add(r.fmaId);return r;
