@@ -1,0 +1,22 @@
+name: Atlas lower limb source quarantine audit
+on:
+  push:
+    branches: [feat/atlas-lower-limb-source-audit-20261126]
+  pull_request:
+    branches: [feat/atlas-sio-label-replay-20261126]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/audit-open3dmodel-lower-limb.py --test
+      - name: Replay exact archive hash and inspect named mesh nodes only
+        run: python scripts/audit-open3dmodel-lower-limb.py
