@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [feat/atlas-bp3d43-intake-20261125]
     paths:
-      - 'scripts/audit-bp3d43-gap-batch.mjs'
+      - 'scripts/audit-bp3d43-gap-batch*.mjs'
       - 'scripts/intake-bp3d43-priority-elements.mjs'
       - 'scripts/audit-bp3d43-mirror-elements.mjs'
       - 'licensing/atlas-publication/bp3d43-gap-batch-candidates.json'
@@ -23,7 +23,7 @@ jobs:
           node-version: 22
       - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
       - name: Existing strict provenance tests
-        run: node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs
+        run: node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs scripts/audit-bp3d43-gap-batch.test.mjs
       - name: Resolve and replay 28 exact candidate elements
         run: node scripts/audit-bp3d43-gap-batch.mjs
       - name: Remove all private temporary anatomy
