@@ -1,0 +1,269 @@
+{
+  "schema": 1,
+  "sourceCommit": "2112fe53fb843d5bc9a36752e751b2f95b0a4d75",
+  "workflowRun": 45635569899,
+  "workflowJob": 139279964073,
+  "report": {
+    "schema": 1,
+    "source": "https://www.openanatomy.org/atlases/nac/knee-2016-09.zip",
+    "archiveSHA256": "2f61002f42843910eada3877adf4229ef845bf87cc1e422b719c930dfadc5f6a",
+    "archiveBytes": 80934412,
+    "counts": {
+      "scene": 3,
+      "other": 64,
+      "volume": 2,
+      "mesh": 48
+    },
+    "uncompressedBytes": 101125366,
+    "meshMembers": [
+      {
+        "extension": ".vtk",
+        "bytes": 447698,
+        "sha256": "5523b61763ec237b3a5f1d4b5f853383a268c68d769d7d5912b74e1fee5916a7"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 1570036,
+        "sha256": "e3ec243a261d58e9ece05e191c1eee5d6cbf341429d9679673e31661fe5e69f9"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 1349876,
+        "sha256": "81d5a3448193dfe92de2ff5ea55571aa9a8ac19eaa6bae780e5fd1f8ebadb7e4"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 1914124,
+        "sha256": "a4befb43e9634d8e18d49a25cdc8c5f734df89523ea67f2e8d6c068ce2ff3f13"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 122308,
+        "sha256": "b977f33e416b1a5b5d69e8420a06d806ee400721fd7dd18800cdd4052b90c185"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 145588,
+        "sha256": "02394cce26a03b84fd9bef59eb4aa9beb41409c1525a671ca3c7ca4501d543c1"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 1170231,
+        "sha256": "7ccdaf1f01b29ae7c9c44e883d046315bff929804b3e2e104e92ffde550d931d"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 2516456,
+        "sha256": "eafe62e9418ebf68f6648bbeb05fc730260dea2893b699099c0159222b77c894"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 1791128,
+        "sha256": "7c364bae0a70a792991c5abca2c758099d256a6e20515c7c377845a252e82529"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 898130,
+        "sha256": "32ddf5f2d265f456db058c50a934a5e93c49e1008004ab797d64f1e7c6219127"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 606710,
+        "sha256": "de461765031335d6f64207736f0dc5730221352bb3555ff28af6d9d674bb1ee8"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 488510,
+        "sha256": "802c1af92c4569b14801035b0be6406a280f75ab3a1279226a42af1b754628e5"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 218136,
+        "sha256": "1f5d5bc05309c29e84c62f20ff7acdf5b1385138fd3965afcbc499981d77069b"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 256624,
+        "sha256": "e84678f0cd5175dabd5b1473f8f2f03720d95d9a0d980046951f1a251f129905"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 306672,
+        "sha256": "f4aeab5174034fdd2169895933b33b40e17cfdcc78aa762a85044670ac4b48cc"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 445814,
+        "sha256": "ffdb2feb661b2606f87dec7d3a0304dd2318a29b12446a9d68830749c4527cec"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 452954,
+        "sha256": "5482480e3ef71613d1c0849c684a6cd6c41b3db0faae621be41a41a713d6b3e1"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 623642,
+        "sha256": "7f7ad9eaa19b760987640c722dd70333b8f4d8d810c91d17faf9442b1e2b81fe"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 1208272,
+        "sha256": "dc9c8b345e73d91f169aa34400fe3203c8019c270cd13a0eb8e482129647f60b"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 508094,
+        "sha256": "9860ffb5fefcc2a7a07e93989efeccbae12a3bdb37781f25963dfeef5c7e659f"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 831594,
+        "sha256": "66f2e8a1f768fa5d7eb20b25c544f6ef7ce75571432030743477c4d9f5317435"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 355620,
+        "sha256": "9aaf94ae0ae0476d7fac8a01083d61cba52c05286921b10329ffac3a4840fd06"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 350380,
+        "sha256": "352dd43e85b8a4f8e113812929ee55cf91faebd0d97d800a3d9c5cee6d4497c1"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 428262,
+        "sha256": "53f53ba865a6c81757f27ef2bb3e5ad38fad311e9030735b020d9e3d6f5d2571"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 581238,
+        "sha256": "1e469d38e4c29bd504ba13364462b2361d2534326dd959c213a17e58628d661c"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 301440,
+        "sha256": "543ea886d07c55c6b391b433d343f95e8eed875ef91a7ef589997eeba3ea3577"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 403706,
+        "sha256": "1175d8da01cd8a96338a8059ed6a04ecd4f1012c01eae9347682282c5936bef0"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 473426,
+        "sha256": "a87a7680f3fccc2ae84e0be30b1e734eb22a4dcb6373a54fca42df3611847d9f"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 129744,
+        "sha256": "8736f92afc6e4036b20d0840db0b015b5ca193f87017488f6ae8b055001d1a63"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 78250,
+        "sha256": "990ee130b885cb77dda7ed854a14e16ac79ac48d2785845dad7bf44d444a7e2a"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 650574,
+        "sha256": "200afae4b6627d985a2e82ce00a76424bab9c41542bdff94f9dcaaf8563f87c4"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 1038027,
+        "sha256": "cc6f81ee36176f09d17e38a4eb6d2879fe22cb4e47010ab4a1c07cc3494fd0ef"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 207576,
+        "sha256": "7278f477e0f9b8df367fb24bf7d3cb0b113c9d6d7ae3bb7c0c3f63a4d6f5c59a"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 274456,
+        "sha256": "03cfe100d63fd29ef6caf0a5e19236b84bd313f9878bfc8b641909f29e66360c"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 45062,
+        "sha256": "e612e1cfadf55e7532cbcd14ffddb1f884fda58cff007e9adb7aaa4ae60762fd"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 257040,
+        "sha256": "31b01181488a90060bb56fd4ef745f267a06ad8d00a5f3597222b777be5f04eb"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 115995,
+        "sha256": "6b01fe97a248d4f4fdfa71fe6fe830a2968ade2d23535241cc0631fffb5be97d"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 557798,
+        "sha256": "c161104052b12ef8ad84e2634d0bc75d3d2fd31b87bf10fd40a9fb1f4452b96a"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 677414,
+        "sha256": "5d347c130656a21af2c9fc5066a55b45df4129a8c415bd4cc8bc39949100ba29"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 3963078,
+        "sha256": "e57c5b6d3831051dcef49e9db53fdee7010aaa67b9dab1eb9f1c66bd6a170678"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 1202683,
+        "sha256": "39f1cf56e230f8ab8cc37d234aeb95899e93f25cf667cd658da3ef8a8ee70ab0"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 813966,
+        "sha256": "478f40e578961a33d31479f91fc64a246a163c2e06a1df42accda62f577be838"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 659570,
+        "sha256": "655e2d22eaa107c14983d6404fcd634418ec04a5f2702a4921a95a218cd3afcb"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 4491462,
+        "sha256": "d099e5a6717369846badbb753ae690566fd3451b1ce91dde92817d03d7abd32f"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 3649722,
+        "sha256": "f37da13f3a5bf4165647358be9f1418fc3a2b4bc6742ceaea57ea5f934b24283"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 707850,
+        "sha256": "5ad311858fd4ed44999328d0c3d2fca8b1a8aa9ff8390788ca05dee13e6abc49"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 909602,
+        "sha256": "592fdfbb7dda4b1a9fe89a5c2d3cc1b5eacfed12490eceda92c3d1d0958ede76"
+      },
+      {
+        "extension": ".vtk",
+        "bytes": 2722300,
+        "sha256": "68b27ab4daea14a7049573926c3330c6d1e28dff6ad6192904b29bf2ad0ee1d3"
+      }
+    ],
+    "licenseClaim": "3D Slicer License section B",
+    "privacyReview": "PENDING",
+    "assetRightsReviewed": false,
+    "geometryParsed": false,
+    "registrationValidated": false,
+    "clinicalValidation": false,
+    "geometryPublished": 0,
+    "publicRelease": "NO_GO"
+  }
+}
