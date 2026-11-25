@@ -1,7 +1,7 @@
-name: Atlas integrated private 115-element regression
+name: Atlas integrated private 129-element regression
 on:
   pull_request:
-    branches: [feat/atlas-bp3d43-intake-20261125, feat/atlas-integrated-private-20261125, feat/atlas-reference-regions-20261125, feat/atlas-spl-knee-intake-20261125]
+    branches: [feat/atlas-bp3d43-intake-20261125, feat/atlas-integrated-private-20261125, feat/atlas-reference-regions-20261125, feat/atlas-spl-knee-intake-20261125, feat/atlas-sio-label-audit-20261125, feat/atlas-head-neck-cartilage-20261125]
     paths:
       - 'apps/atlas-independent/**'
       - 'scripts/*bp3d43*'
@@ -39,14 +39,16 @@ jobs:
         run: |
           node scripts/audit-bp3d43-gap-batch.mjs discs-23
           node scripts/audit-bp3d43-gap-batch.mjs costal-20
+      - name: Fresh head and neck cartilage batch with dual-source audit
+        run: node scripts/audit-bp3d43-gap-batch.mjs head-neck-cartilage-14
       - name: Install isolated browser
         run: |
           npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
           "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
-      - name: Combined 115 actual source elements, 10 glossary-bound concepts and 109 source-label concepts
+      - name: Combined 129 actual source elements, 10 glossary-bound concepts and all 122 source-label concepts
         run: |
           export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
-          ATLAS_TEST_REAL43=axial node scripts/test-private-atlas-browser.mjs
+          ATLAS_TEST_REAL43=head-neck node scripts/test-private-atlas-browser.mjs
       - name: Gap-only source-label regression using same audited files
         run: |
           export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
