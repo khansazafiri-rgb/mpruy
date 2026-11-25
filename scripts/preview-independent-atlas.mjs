@@ -69,7 +69,7 @@ if(independent){
  const assets=path.join(hostBuild,'assets');
  const js=fs.readdirSync(assets).filter(n=>n.endsWith('.js'));
  assert(js.some(n=>fs.readFileSync(path.join(assets,n),'utf8').includes('medcoel:independent-atlas-ping')),'Preview host alias missing');
- hostHandler=createIndependentHostHandler(hostBuild);
+ hostHandler=createIndependentHostHandler(hostBuild,true);
 }else if(fs.existsSync(path.join(ROOTS.main,'index.html'))){
  try{assertDistributionClean([ROOTS.main],'Native atlas host preview');hostHandler=createLabPreviewServer(ROOTS).listeners('request')[0];}
  catch(error){console.warn('Host preview withheld:',error.message);}
@@ -78,7 +78,7 @@ const server=createServer((request,response)=>{
  const send=(status,body,type='text/plain; charset=utf-8')=>{response.writeHead(status,{'Content-Type':type,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Frame-Options':'SAMEORIGIN'});response.end(request.method==='HEAD'?undefined:body);};
  if(request.headers.host!=='127.0.0.1:'+port||!['GET','HEAD'].includes(request.method))return send(403,'Loopback review only');
  const p=rawRequestPath(request.url);if(p===null)return send(404,'Not found');
- const route=classifyIndependentPath(p);
+ const route=classifyIndependentPath(p,independent);
  if(route==='redirect'){response.writeHead(308,{Location:'/anatomy/viewer/','Cache-Control':'no-store'});return response.end();}
  if(route==='host')return hostHandler?hostHandler(request,response,p):send(404,'Host preview unavailable; use /anatomy/viewer/');
  if(route!=='independent')return send(404,'Not found');
@@ -122,9 +122,9 @@ try{
  let hraRoutes=0;for(const id of hra.assets.keys()){const r=await fetch(baseURL+'/anatomy/viewer/hra-reference/'+id+'.glb',{method:'HEAD'});assert(r.ok&&r.headers.get('content-type')==='model/gltf-binary','HRA route failed: '+id);hraRoutes++;}
  let hostQC='NOT_APPLICABLE';
  if(independent){
-  for(const p of ['/anatomy','/anatomy/explore']){const r=await fetch(baseURL+p);assert(r.ok&&r.headers.get('content-type').startsWith('text/html'),'Host route failed: '+p);}
+  for(const p of ['/anatomy','/anatomy/explore','/anatomy/library','/anatomy/system/nervous',...(manifest.entries.length?['/anatomy/structure/'+manifest.entries[0].id]:[])]){const r=await fetch(baseURL+p);assert(r.ok&&r.headers.get('content-type').startsWith('text/html'),'Host route failed: '+p);}
   const fixture=await fetch(baseURL+'/api/medcoel/public-settings');assert(fixture.ok&&(await fixture.json()).showMascots===false);
-  for(const p of ['/anatomy/library','/anatomy/study','/anatomy/live','/anatomy/viewer/data/atlas-catalog.json','/api/collections/users/records','/assets/not-a-real-asset.js'])assert.equal((await fetch(baseURL+p)).status,404,'Unexpected route '+p);
+  for(const p of ['/anatomy/structure/Humerus.r','/anatomy/system/unknown','/anatomy/study','/anatomy/live','/anatomy/viewer/data/atlas-catalog.json','/api/collections/users/records','/assets/not-a-real-asset.js'])assert.equal((await fetch(baseURL+p)).status,404,'Unexpected route '+p);
   const a=await fetch(baseURL+'/anatomy/viewer/MODEL-ATTRIBUTIONS.json');assert(a.ok&&Array.isArray((await a.json()).body));hostQC='PASS';
  }
  if(originalUI){const h=await fetch(baseURL+'/anatomy/viewer/');assert(h.ok&&(await h.text()).includes('originalShellTemplate'));const s=await fetch(baseURL+'/anatomy/viewer/assets/original-shell-private.css');assert(s.ok&&(await s.text()).includes('.atlas-systembar'));}
