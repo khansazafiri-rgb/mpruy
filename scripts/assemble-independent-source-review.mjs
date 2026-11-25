@@ -11,6 +11,7 @@ import {parseNativePositions,comparePositions} from './audit-bp3d-publication-ge
 import {prepareHraRightsReview} from './prepare-hra-publication-rights.mjs';
 import {verifyReceipts} from './verify-bp3d-publication-receipts.mjs';
 import {checkSourceNotices} from './audit-atlas-publication-rights.mjs';
+import {parseOfficialNames} from '../licensing/tools/prepare-bodyparts3d-source.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url))),q=path.join(root,'local-data/licensing-quarantine');
 const hash=b=>createHash('sha256').update(b).digest('hex');
 function regular(dir,rel){const p=path.resolve(dir,rel);assert(p.startsWith(dir+path.sep)&&fs.realpathSync(p)===p&&fs.statSync(p).isFile(),'Unsafe input '+rel);return p;}
@@ -19,7 +20,7 @@ function write(dir,name,data){fs.writeFileSync(path.join(dir,name),JSON.stringif
 export function verifySourceBinding(label,geometry){
  assert(label.approvedForDistribution===false&&geometry.approvedForDistribution===false&&['EXACT_RAW_GEOMETRY_MATCH','EXACT_RAW_GEOMETRY_MATCH_LABEL_REVIEW'].includes(geometry.status));
  for(const key of ['id','sha256','fmaId','bpId','tree'])assert.equal(label[key],geometry[key],'Source identity changed: '+key);
- assert(label.displayName===geometry.officialName&&label.labelAmbiguous===false,'Publisher name mismatch');
+ assert(typeof label.displayName==='string'&&label.displayName.trim()&&label.labelAmbiguous===false,'Publisher name missing or ambiguous');
  assert.deepEqual(label.sourceHashes,geometry.sourceHashes);
  assert.deepEqual(label.sourceElements,geometry.sourceElements);
  assert(label.license==='CC-BY-4.0'&&label.attribution&&label.historicalNotice);
@@ -49,11 +50,13 @@ export async function assemble(bpFolder,hraFolder){
     const source=path.join(q,label.tree==='isa'?'bp3d-4.0':'bp3d-4.0-partof'),archive=regular(source,label.tree+'_BP3D_4.0_obj_99.zip');
     assert(hash(fs.readFileSync(archive))===label.sourceHashes.archive);
     const files=execFileSync('unzip',['-Z','-1',archive],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split(/\r?\n/);
-    sourceFiles.set(label.tree,{archive,files:new Set(files)});
+    const table=fs.readFileSync(regular(source,label.tree+'_parts_list_e.txt'));assert(hash(table)===label.sourceHashes.names);
+    sourceFiles.set(label.tree,{archive,files:new Set(files),names:parseOfficialNames(table.toString('utf8'))});
    }
    const source=sourceFiles.get(label.tree),parts=[];
+   const identity=source.names.filter(n=>n.fmaId===label.fmaId&&n.bpId===label.bpId);assert(identity.length===1&&identity[0].name===label.displayName,'Publisher label changed');
    for(const p of label.sourceElements){
-    assert(/^FJ\d+[A-Za-z]?$/.test(p.id)&&typeof p.zipEntry==='string'&&/^[A-Za-z0-9_./-]+\.obj$/i.test(p.zipEntry)&&!p.zipEntry.startsWith('/')&&!p.zipEntry.split('/').includes('..')&&path.basename(p.zipEntry)===p.id+'.obj'&&source.files.has(p.zipEntry));
+    assert(/^FJ\d+[A-Za-z]?$/.test(p.id)&&typeof p.zipEntry==='string'&&/^[A-Za-z0-9_./-]+\.obj$/i.test(p.zipEntry)&&!p.zipEntry.startsWith('/')&&!p.zipEntry.split('/').includes('..')&&path.basename(p.zipEntry).replace(/\.obj$/i,'')===p.id&&source.files.has(p.zipEntry));
     const raw=execFileSync('unzip',['-p',source.archive,p.zipEntry],{maxBuffer:96*1024*1024});
     assert(hash(raw)===p.sha256,'Raw source element changed');
     const parsed=parseObj(raw.toString('utf8'));assert(original.has(p.id)&&comparePositions(parsed.positions,original.get(p.id)),'Independent export differs from previously audited geometry');
@@ -71,12 +74,16 @@ export async function assemble(bpFolder,hraFolder){
    assert(r.status==='PUBLISHER_VERSION_EVIDENCE_MATCHED'&&r.approvedForDistribution===false&&/^[a-f0-9]{24}$/.test(r.id)&&r.metadataSHA256&&r.publisherRevision);
    const bytes=fs.readFileSync(regular(cache,r.id+'.glb'));assert(hash(bytes)===r.sha256);
    const file='hra/'+r.id+'.glb';fs.writeFileSync(path.join(out,file),bytes,{flag:'wx',mode:0o600});
+   const metadata=fs.readFileSync(regular(path.join(q,hraFolder),r.id+'.yaml'));assert(hash(metadata)===r.metadataSHA256);
+   fs.writeFileSync(path.join(out,'evidence',r.id+'.yaml'),metadata,{flag:'wx',mode:0o600});
    references.push({...r,path:file,frame:'independent HRA reference',approvedForDistribution:false});
   }
   const sourceNotices=checkSourceNotices();
   write(out,'inventory.json',{schema:1,mode:'independent-source-review',publicRelease:'NO_GO',approvedForCommercialDistribution:false,bodyFrame:'native-official-OBJ',bodyModels:models,independentReferences:references,registrationValidated:false,clinicalValidation:false});
   write(out,'MODEL-ATTRIBUTIONS.json',{schema:1,body:models.map(m=>({id:m.id,name:m.name,sha256:m.sha256,license:m.license,licenseURL:m.licenseURL,attribution:m.attribution,source:m.sourceArchive,changes:m.changes,historicalNotice:m.historicalNotice})),references:references.map(r=>({id:r.id,name:r.name,version:r.version,sha256:r.sha256,license:r.publisherLicense,attribution:r.attribution,source:r.sourceURL,doi:r.doi,evidence:r.evidence,changes:'Original published GLB bytes copied without modification'}))});
   write(path.join(out,'evidence'),'source-receipts.json',receipts);
+  write(path.join(out,'evidence'),'source-labels.json',labels);
+  write(path.join(out,'evidence'),'source-geometry.json',geometry);
   write(path.join(out,'evidence'),'software-notices.json',sourceNotices);
   write(path.join(out,'evidence'),'hra-rights.json',hra);
   const summary={schema:1,bodyModels:models.length,hraReferences:references.length,sourceReceipts:receipts.completeModels,approved:0,publicRelease:'NO_GO',clinicalValidation:false,productionChanged:false,zAnatomyModelsIncluded:0};
