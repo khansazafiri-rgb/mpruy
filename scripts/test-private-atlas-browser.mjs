@@ -12,9 +12,9 @@ import {encodeNativeGlb} from './independent-bp3d-export.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 let real43=null,serve43=null;
-if(['1','gap','combined','expanded','axial'].includes(process.env.ATLAS_TEST_REAL43)){
+if(['1','gap','combined','expanded','axial','gap-from-axial'].includes(process.env.ATLAS_TEST_REAL43)){
  const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
- const mode=process.env.ATLAS_TEST_REAL43,counts=mode==='axial'?[12,28,32,23,20]:mode==='expanded'?[12,28,32]:mode==='combined'?[12,28]:mode==='gap'?[28]:[12];
+ const mode=process.env.ATLAS_TEST_REAL43,counts=['axial','gap-from-axial'].includes(mode)?[12,28,32,23,20]:mode==='expanded'?[12,28,32]:mode==='combined'?[12,28]:mode==='gap'?[28]:[12];
  assert.equal(folders.length,counts.length,'Fresh exact source acquisitions required');
  const m=await import('./load-bp3d43-private-elements.mjs');serve43=m.serve43Reference;
  const registries=counts.map(count=>{
@@ -23,7 +23,8 @@ if(['1','gap','combined','expanded','axial'].includes(process.env.ATLAS_TEST_REA
   const file=count===23?'bp3d43-discs-23-dual-source-audit-20261125.json':count===20?'bp3d43-costal-20-dual-source-audit-20261125.json':count===32?'bp3d43-nerves32-dual-source-audit-20261125.json':count===28?'bp3d43-gap-batch-dual-source-audit-20261125.json':'bp3d43-dual-source-audit-20261125.json';
   return m.load43Elements(q,matched[0],JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),count);
  });
- real43=m.combine43Registries(registries);
+ // Reuse exactly the five verified acquisitions, but expose only the gap registry.
+ real43=m.combine43Registries(mode==='gap-from-axial'?registries.filter(r=>r.assets.size===28):registries);
 }
 const require=createRequire(import.meta.url),appRequire=createRequire(path.join(app,'package.json'));
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
