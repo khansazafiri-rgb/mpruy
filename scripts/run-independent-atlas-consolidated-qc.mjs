@@ -23,7 +23,7 @@ function step(name,command,args,required=[]){
 step('install','npm',['ci','--prefix','apps/atlas-independent','--ignore-scripts']);
 step('security','npm',['audit','--prefix','apps/atlas-independent','--json'],['install']);
 step('app-tests','npm',['test','--prefix','apps/atlas-independent'],['install']);
-step('source-tests',process.execPath,['--test','scripts/independent-bp3d-export.test.mjs','scripts/independent-source-coverage.test.mjs','scripts/audit-bp3d-publication-geometry.test.mjs','scripts/independent-atlas-final-qc.test.mjs','scripts/assemble-atlas-distribution-review.test.mjs','scripts/z-anatomy-final-qc.test.mjs','scripts/expand-independent-source-review.test.mjs'],['install']);
+step('source-tests',process.execPath,['--test','scripts/independent-bp3d-export.test.mjs','scripts/independent-source-coverage.test.mjs','scripts/audit-bp3d-publication-geometry.test.mjs','scripts/independent-atlas-final-qc.test.mjs','scripts/assemble-atlas-distribution-review.test.mjs','scripts/z-anatomy-final-qc.test.mjs','scripts/expand-independent-source-review.test.mjs','scripts/audit-independent-system-coverage.test.mjs'],['install']);
 const expansionOutput=step('expansion',process.execPath,['scripts/expand-independent-source-review.mjs',pack,target],['source-tests']);
 let finalPack=pack;
 if(result.steps.expansion.status==='PASS'){
@@ -35,7 +35,8 @@ if(result.steps.expansion.status==='PASS'){
 }
 result.finalPack=finalPack;
 step('coverage',process.execPath,['scripts/plan-independent-atlas-coverage.mjs',finalPack,target],['source-tests','expansion']);
-step('build-and-http',process.execPath,['scripts/preview-independent-atlas.mjs',finalPack,'--http-only'],['security','app-tests','source-tests','coverage']);
+step('system-coverage',process.execPath,['scripts/audit-independent-system-coverage.mjs',finalPack,target],['coverage']);
+step('build-and-http',process.execPath,['scripts/preview-independent-atlas.mjs',finalPack,'--http-only'],['security','app-tests','source-tests','coverage','system-coverage']);
 result.technicalChecksPassed=Object.values(result.steps).every(s=>s.status==='PASS');
 result.note='PASS is technical evidence only. Coverage gaps, clinical validation, exact redistribution review and browser validation remain independent requirements.';
 fs.writeFileSync(path.join(out,'summary.json'),JSON.stringify(result,null,2)+'\n',{flag:'wx',mode:0o600});
