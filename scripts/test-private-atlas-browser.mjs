@@ -160,6 +160,19 @@ try{
   }
   await challenge.locator('#referenceChallengeProgress').filter({hasText:'10/10 benar · 0 gagal dimuat'}).waitFor();
   await challenge.locator('#referenceChallengeQuit').click();
+  if(real43.assets.size===115){
+   const modeSelect=setup.locator('#referenceChallengeMode'),langSelect=setup.locator('#referenceChallengeLanguage');
+   await modeSelect.selectOption('source-mcq');assert(await langSelect.isDisabled());assert.equal(await langSelect.inputValue(),'en');
+   await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
+   await choices.first().waitFor();assert.equal(await choices.count(),4);
+   await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal 1/109'}).waitFor();
+   const src=await currentEntry();assert.equal((await choices.allTextContents()).filter(x=>x===src.name).length,1);
+   assert(await dialog.locator('#referenceSource').isHidden());
+   await challenge.getByRole('button',{name:src.name,exact:true}).click();await feedback.filter({hasText:/^Benar\./}).waitFor();
+   await challenge.locator('#referenceChallengeQuit').click();await setup.waitFor({state:'visible'});
+   await modeSelect.selectOption('mcq');assert(await langSelect.isEnabled());
+   console.log('BP3D43 SOURCE LABEL CHALLENGE PASS: 109 distinct concepts, exact source label, English-only, previous mode restored.');
+  }
   // Force a transport failure without changing or replacing an actual model.
   const fail=route=>route.abort('failed'),pattern='**/bp3d43-reference/*.glb';await page.route(pattern,fail);
   await start('mcq','id');await feedback.filter({hasText:'Model gagal dimuat; tidak masuk skor.'}).waitFor();assert.equal(await choices.count(),0);assert(await next.isEnabled());
