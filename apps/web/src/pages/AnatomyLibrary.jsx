@@ -348,10 +348,11 @@ function StatusBadge({ id }) {
 }
 
 function StructureCard({ row }) {
+  const {privateReview}=useAnatomyLibrary();
   const Icon = SYSTEM_ICONS[row.system];
   return (
     <Link className="library-structure-card" to={structureHref(row.id)}>
-      <StructureThumbnail path={row.thumbnail} name={row.name} />
+      <StructureThumbnail path={row.thumbnail} name={row.name} privateReview={privateReview} />
       <div className="library-structure-card-top">
         <Icon size={20} />
         <StatusBadge id={row.id} />
@@ -653,7 +654,7 @@ function StructureContent() {
           <p className="library-provenance">{privateReview ? `BodyParts3D · ${row.fmaId} / ${row.bpId} · ${row.representation}. Regio dan lapisan belum divalidasi; bukan bukti kelengkapan klinis.` : "Nama dan deskripsi dari metadata Z-Anatomy. Pembagian regio mengikuti katalog kuis atlas."}</p>
         </div>
         <aside className="library-detail-aside">
-          <StructureThumbnail path={row.thumbnail} name={row.name} className="library-detail-preview" eager />
+          <StructureThumbnail path={row.thumbnail} name={row.name} className="library-detail-preview" eager privateReview={privateReview} />
           <h2>Lihat dalam konteksnya.</h2>
           <p>{privateReview && row.representation === "isolated-source-reference" ? "Representasi sumber terpisah, tidak digabungkan ke tubuh." : "Struktur ini bersinar di atlas, sementara struktur di sekitarnya tetap terlihat. Isolasi tersedia kalau perlu."}</p>
           {row.available
