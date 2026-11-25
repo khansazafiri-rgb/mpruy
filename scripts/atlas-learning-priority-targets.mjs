@@ -23,7 +23,7 @@ export const learningPriorityTargets=[
  ...paired('muscular',['biceps brachii muscle','triceps brachii muscle','deltoid muscle','supraspinatus muscle','infraspinatus muscle','subscapularis muscle','teres minor muscle','gluteus maximus muscle','gluteus medius muscle','gluteus minimus muscle','rectus femoris muscle','vastus lateralis muscle','vastus medialis muscle','vastus intermedius muscle','tibialis anterior muscle','gastrocnemius muscle','soleus muscle']),
  ...named('arterial',['aorta','ascending aorta','arch of aorta','descending aorta','abdominal aorta','brachiocephalic trunk','celiac trunk','superior mesenteric artery','inferior mesenteric artery','pulmonary trunk']),
  ...paired('arterial',['common carotid artery','internal carotid artery','external carotid artery','vertebral artery','subclavian artery','axillary artery','brachial artery','radial artery','ulnar artery','renal artery','common iliac artery','external iliac artery','internal iliac artery','femoral artery','popliteal artery','anterior tibial artery','posterior tibial artery']),
- ...named('venous',['superior vena cava','inferior vena cava',['portal vein','hepatic portal vein'],'azygos vein','hemiazygos vein']),
+ ...named('venous',['superior vena cava','inferior vena cava','portal vein','hepatic portal vein','azygos vein','hemiazygos vein']),
  ...paired('venous',['internal jugular vein','external jugular vein','subclavian vein','brachiocephalic vein','axillary vein','brachial vein','cephalic vein','basilic vein','renal vein','common iliac vein','femoral vein','popliteal vein','great saphenous vein','small saphenous vein'])
 ];
 // The diaphragm is skeletal muscle; do not create a competing respiratory identity.
