@@ -12,7 +12,7 @@ const read=(folder,name,max=64*1024*1024)=>{
  return fs.readFileSync(f);
 };
 export function load43Elements(privateRoot,folderName,evidence,expectedCount=12){
- assert([12,28,32,23,20,14,18,30].includes(expectedCount));
+ assert([12,28,32,23,20,14,18,30,15].includes(expectedCount));
  assert(/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(folderName),'Explicit local acquisition folder required');
  assert(fs.realpathSync(privateRoot)===privateRoot&&path.basename(privateRoot)==='licensing-quarantine');
  const folder=path.join(privateRoot,folderName);assert(fs.realpathSync(folder)===folder);
@@ -58,7 +58,7 @@ export function serve43Reference(req,res,registry){
 }
 
 export function combine43Registries(registries){
- assert(registries.length>=1&&registries.length<=8);
+ assert(registries.length>=1&&registries.length<=9);
  const items=[],assets=new Map(),fjs=new Set(),hashes=new Set();
  for(const registry of registries){
   assert(registry.inventory.publicRelease==='NO_GO'&&registry.inventory.registrationValidated===false&&registry.inventory.clinicalValidation===false&&registry.assets.size===registry.inventory.items.length);
@@ -68,6 +68,6 @@ export function combine43Registries(registries){
    fjs.add(e.fj);hashes.add(e.rawSHA256);items.push(e);assets.set(e.id,a);
   }
  }
- assert([12,14,18,20,23,26,28,30,32,34,35,37,38,40,41,42,43,44,46,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,119,120,121,122,123,124,125,126,127,128,129,131,133,134,135,136,137,139,140,142,143,145,147,149,151,154,157,159,163,165,177].includes(items.length));
+ assert([12,14,15,18,20,23,26,27,28,29,30,32,33,34,35,37,38,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,154,155,157,158,159,160,162,163,164,165,166,169,172,174,177,178,180,192].includes(items.length));
  return {inventory:{schema:1,publicRelease:'NO_GO',registrationValidated:false,clinicalValidation:false,scope:'Separate 4.3 source elements, not registered body geometry',items},assets};
 }
