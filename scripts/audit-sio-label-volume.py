@@ -75,9 +75,19 @@ def label_candidates(file, targets):
                             result[name].add(None)
     finally:
         book.close()
-    return {k: {"candidateLabelNumbers": sorted(x for x in v if x is not None),
-                "ambiguousRow": None in v,
-                "status": "EXACT_TEXT_ROW_CANDIDATE" if v and None not in v else "HOLD_LABEL_MAPPING"} for k,v in result.items()}
+    owners = {}
+    for name, values in result.items():
+        for value in values - {None}:
+            owners.setdefault(value, set()).add(name)
+    rows = {}
+    for name, values in result.items():
+        numbers = sorted(values - {None})
+        shared = any(len(owners[n]) > 1 for n in numbers)
+        ambiguous = None in values or len(numbers) != 1 or shared
+        rows[name] = {"candidateLabelNumbers": numbers, "ambiguousRow": ambiguous,
+                      "sharedAcrossTargets": shared,
+                      "status": "HOLD_LABEL_MAPPING" if ambiguous else "EXACT_TEXT_ROW_CANDIDATE"}
+    return rows
 
 def label_slices(z, first=FIRST, last=LAST):
     entries = safe_members(z, 10000, 2 * 1024**3)
@@ -94,12 +104,12 @@ def label_slices(z, first=FIRST, last=LAST):
         raise ValueError("missing label slices")
     return slices
 
-def measure_labels(file):
+def measure_labels(file, first=FIRST, last=LAST):
     counts = np.zeros(65536, dtype=np.uint64)
     shape = None
     with zipfile.ZipFile(file) as z:
-        slices = label_slices(z)
-        for n in range(FIRST, LAST + 1):
+        slices = label_slices(z, first, last)
+        for n in range(first, last + 1):
             # Read only publisher-labelled segmentation TIFFs. Not patient CT/RGB files.
             with Image.open(io.BytesIO(z.read(slices[n]))) as im:
                 if im.format != "TIFF" or im.n_frames != 1 or im.size not in SHAPES or im.mode not in {"I;16","I;16B","I;16L","I"}:
@@ -111,7 +121,7 @@ def measure_labels(file):
                     raise ValueError("inconsistent shape")
                 shape = a.shape
                 counts += np.bincount(a.reshape(-1).astype(np.int64), minlength=65536).astype(np.uint64)
-    return {"shapeInFileOrder": [LAST-FIRST+1, *shape], "nonzeroLabelCount": int(np.count_nonzero(counts[1:])),
+    return {"shapeInFileOrder": [last-first+1, *shape], "nonzeroLabelCount": int(np.count_nonzero(counts[1:])),
             "voxelCounts": {str(i): int(counts[i]) for i in np.flatnonzero(counts)}}
 
 def main():
@@ -127,6 +137,8 @@ def main():
         volume = measure_labels(archive)
         for row in candidates.values():
             row["voxelCounts"] = {str(n): volume["voxelCounts"].get(str(n),0) for n in row["candidateLabelNumbers"]}
+            if row["status"] == "EXACT_TEXT_ROW_CANDIDATE" and not all(row["voxelCounts"].values()):
+                row["status"] = "HOLD_LABEL_ABSENT_FROM_VOLUME"
         print("SIO LABEL VOLUME AUDIT " + json.dumps({
             "schema":1,"sourceArchive":archive_receipt,"sourceLabelFile":label_receipt,
             "shapeInFileOrder":volume["shapeInFileOrder"],"nonzeroLabelCount":volume["nonzeroLabelCount"],
@@ -151,6 +163,46 @@ class Tests(unittest.TestCase):
         with zipfile.ZipFile(data,"w") as z:
             z.writestr("a/labels1256.tif",b"fixture")
             z.writestr("b/labels1256.tif",b"fixture")
+        with zipfile.ZipFile(data) as z:
+            with self.assertRaises(ValueError):
+                label_slices(z,1256,1256)
+
+    def test_workbook_ambiguous_and_shared_labels_held(self):
+        from openpyxl import Workbook
+        with tempfile.TemporaryDirectory() as d:
+            file = Path(d) / "fixture.xlsx"
+            book = Workbook()
+            sheet = book.active
+            for row in [(7, "fixture A"), (8, "fixture A"), (9, "fixture B"),
+                        (9, "fixture C"), (10, "fixture D"), (11, 12, "fixture E")]:
+                sheet.append(row)
+            book.save(file)
+            book.close()
+            result = label_candidates(file, ["fixture " + c for c in "ABCDEF"])
+            self.assertEqual(result["fixture A"]["candidateLabelNumbers"], [7, 8])
+            self.assertTrue(result["fixture B"]["sharedAcrossTargets"])
+            self.assertEqual(result["fixture D"]["status"], "EXACT_TEXT_ROW_CANDIDATE")
+            self.assertTrue(all(result["fixture " + c]["status"] == "HOLD_LABEL_MAPPING" for c in "ABCEF"))
+    def test_exact_uint16_voxel_counts(self):
+        with tempfile.TemporaryDirectory() as d:
+            file = Path(d) / "fixture.zip"
+            a = np.zeros((330, 573), dtype=np.uint16)
+            a[0, 0:3] = 7
+            a[1, 0] = 65535
+            with zipfile.ZipFile(file,"w",compression=zipfile.ZIP_DEFLATED) as z:
+                for n in (1256, 1257):
+                    image = io.BytesIO()
+                    Image.fromarray(a).save(image, format="TIFF")
+                    z.writestr(f"pack/labels{n}.tif",image.getvalue())
+                z.writestr("pack/rgb1256.tif",b"not a readable image")
+            result = measure_labels(file,1256,1257)
+            self.assertEqual(result["shapeInFileOrder"], [2,330,573])
+            self.assertEqual(result["voxelCounts"], {"0":2*(330*573-4),"7":6,"65535":2})
+            self.assertEqual(result["nonzeroLabelCount"], 2)
+    def test_traversal_held(self):
+        data=io.BytesIO()
+        with zipfile.ZipFile(data,"w") as z:
+            z.writestr("../labels1256.tif",b"fixture")
         with zipfile.ZipFile(data) as z:
             with self.assertRaises(ValueError):
                 label_slices(z,1256,1256)
