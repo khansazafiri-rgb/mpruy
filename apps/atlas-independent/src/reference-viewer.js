@@ -1,6 +1,6 @@
 import {browseReferenceTopics,topicOptions} from './reference43-topics.js';
 import {challengeLabel,typedReferenceAnswer,hasChallengeGlossary} from './reference-challenge-language.js';
-import {buildReferenceQuestions,scoreReferenceAnswer} from './reference-challenge-state.js';
+import {buildReferenceQuestions,buildSourceLabelQuestions,scoreReferenceAnswer} from './reference-challenge-state.js';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
@@ -59,9 +59,12 @@ export function mountReferences(base){
  function updateTopicOptions(){for(const [axis,select] of [['region',regionTopic],['system',systemTopic]]){select.replaceChildren();for(const t of topicOptions(entries,axis)){const o=document.createElement('option');o.value=t.value;o.textContent=t.label+' ('+t.count+')';select.append(o);}select.value='all';}topics.hidden=sourceKind!=='bp43';}
  const browse=$('referenceSearch').closest('.reference-controls'),challenge=$('referenceChallenge'),start=$('referenceChallengeStart'),quit=$('referenceChallengeQuit'),answers=$('referenceChallengeAnswers'),next=$('referenceChallengeNext'),feedback=$('referenceChallengeFeedback'),progress=$('referenceChallengeProgress');
  const setup=$('referenceChallengeSetup'),mode=$('referenceChallengeMode'),language=$('referenceChallengeLanguage'),typed=$('referenceChallengeTyped'),input=$('referenceChallengeInput');
+ function updateChallengeLanguage(){language.disabled=mode.value==='source-mcq';if(language.disabled)language.value='en';}
+ mode.onchange=updateChallengeLanguage;
+ const displayChallengeLabel=e=>answerMode==='source-mcq'?e.name:challengeLabel(e,answerLanguage);
  let questions=[],questionIndex=0,correct=0,answered=0,held=0,challengeEpoch=0,answerMode='mcq',answerLanguage='en';
  function endChallenge(){
-  challengeEpoch++;tracker.cancel();questions=[];challenge.hidden=true;browse.hidden=false;topics.hidden=sourceKind!=='bp43';$('referenceSource').hidden=false;setup.hidden=sourceKind!=='bp43'||entries.filter(hasChallengeGlossary).length<4;typed.hidden=true;typed.onsubmit=null;answers.replaceChildren();feedback.textContent='';progress.textContent='';
+  challengeEpoch++;tracker.cancel();questions=[];challenge.hidden=true;browse.hidden=false;topics.hidden=sourceKind!=='bp43';$('referenceSource').hidden=false;setup.hidden=sourceKind!=='bp43'||entries.length<4;typed.hidden=true;typed.onsubmit=null;answers.replaceChildren();feedback.textContent='';progress.textContent='';
   if(model){scene?.remove(model);dispose(model);model=null;}clearComponents();selected=null;$('referenceSource').removeAttribute('href');$('referenceSource').textContent='';list();status('Pilih referensi dan klik Muat.');
  }
  async function challengeQuestion(){
@@ -71,10 +74,10 @@ export function mountReferences(base){
   const ok=await load(q.entry,true);if(token!==challengeEpoch||challenge.hidden||!dialog.open)return;
   if(ok!==true){held++;feedback.textContent='Model gagal dimuat; tidak masuk skor.';next.disabled=false;return;}
   let locked=false;
-  function submit(right,minor=false){if(locked||token!==challengeEpoch)return;locked=true;answered++;if(right)correct++;for(const a of answers.querySelectorAll('button'))a.disabled=true;input.disabled=true;typed.querySelector('button').disabled=true;feedback.textContent=(right?(minor?'Benar (typo ringan). ':'Benar. '):'Belum tepat. ')+challengeLabel(q.entry,answerLanguage)+' · '+q.entry.name+' · '+q.entry.fmaId+' · '+q.entry.fj;next.disabled=false;}
-  if(answerMode==='typed'){typed.hidden=false;typed.onsubmit=ev=>{ev.preventDefault();if(!input.value.trim())return;const result=typedReferenceAnswer(q.entry,input.value);submit(result.correct,result.kind==='MINOR_TYPO');};input.focus();}else for(const o of q.options){const b=document.createElement('button');b.type='button';const e=entries.find(x=>x.id===o.id);b.textContent=challengeLabel(e,answerLanguage);b.onclick=()=>submit(scoreReferenceAnswer(q,o.id));answers.append(b);}
+  function submit(right,minor=false){if(locked||token!==challengeEpoch)return;locked=true;answered++;if(right)correct++;for(const a of answers.querySelectorAll('button'))a.disabled=true;input.disabled=true;typed.querySelector('button').disabled=true;feedback.textContent=(right?(minor?'Benar (typo ringan). ':'Benar. '):'Belum tepat. ')+displayChallengeLabel(q.entry)+' · '+q.entry.name+' · '+q.entry.fmaId+' · '+q.entry.fj;next.disabled=false;}
+  if(answerMode==='typed'){typed.hidden=false;typed.onsubmit=ev=>{ev.preventDefault();if(!input.value.trim())return;const result=typedReferenceAnswer(q.entry,input.value);submit(result.correct,result.kind==='MINOR_TYPO');};input.focus();}else for(const o of q.options){const b=document.createElement('button');b.type='button';const e=entries.find(x=>x.id===o.id);b.textContent=displayChallengeLabel(e);b.onclick=()=>submit(scoreReferenceAnswer(q,o.id));answers.append(b);}
  }
- start.onclick=()=>{if(sourceKind!=='bp43')return;questions=buildReferenceQuestions(entries.filter(hasChallengeGlossary));if(!questions.length){status('Belum cukup label sumber untuk Challenge.');return;}questionIndex=correct=answered=held=0;answerMode=mode.value;answerLanguage=language.value;setup.hidden=true;browse.hidden=true;topics.hidden=true;$('referenceSource').hidden=true;challenge.hidden=false;challengeQuestion();};
+ start.onclick=()=>{if(sourceKind!=='bp43')return;updateChallengeLanguage();const sourceMode=mode.value==='source-mcq';questions=sourceMode?buildSourceLabelQuestions(entries):buildReferenceQuestions(entries.filter(hasChallengeGlossary));if(!questions.length){status('Belum cukup label sumber untuk Challenge.');return;}questionIndex=correct=answered=held=0;answerMode=mode.value;answerLanguage=sourceMode?'en':language.value;setup.hidden=true;browse.hidden=true;topics.hidden=true;$('referenceSource').hidden=true;challenge.hidden=false;challengeQuestion();};
  quit.onclick=endChallenge;next.onclick=()=>{if(!next.disabled){questionIndex++;challengeQuestion();}};
  function list(){
   const select=$('referenceSelect');select.replaceChildren();
@@ -99,7 +102,7 @@ export function mountReferences(base){
   const token=tracker.begin();
   try{createScene();status('Memeriksa referensi sumber…');const response=await fetch(base+(kind==='bp43'?'bp3d43-reference/':'hra-reference/')+'inventory.json',{cache:'no-store'});if(!response.ok)throw Error('Paket referensi belum tersedia pada preview ini');
    const doc=await response.json(),data=kind==='bp43'?reference43Entries(doc):referenceEntries(doc);if(!tracker.current(token)||!dialog.open)return;
-   entries=data;updateTopicOptions();list();setup.hidden=kind!=='bp43'||entries.filter(hasChallengeGlossary).length<4;status(entries.length+' kandidat referensi tersedia. Pilih referensi dan klik Muat.');
+   entries=data;updateTopicOptions();updateChallengeLanguage();list();setup.hidden=kind!=='bp43'||entries.length<4;status(entries.length+' kandidat referensi tersedia. Pilih referensi dan klik Muat.');
   }catch(error){if(tracker.current(token))status(String(error.message||error));}
  };
  $('openReferences').onclick=()=>open('hra');$('open43References').onclick=()=>open('bp43');
