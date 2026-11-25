@@ -41,7 +41,7 @@ assert(!originalUI||independent,'Original shell only in explicit independent pri
 assert(!priorityEnabled||independent,'Priority recovery requires an independent source pack');
 const elementCatalog=independent&&(originalUI||priorityEnabled)?createElementCatalog(sourcePack):null;
 const priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack,{broad:broadRecovery,coveredFma:elementCatalog?.items.map(e=>e.fmaId)||[]}):null;
-const context=contextRecovery?planContextRecovery(sourcePack.inventory.bodyModels,priority.report.results):null;
+const context=contextRecovery?planContextRecovery(sourcePack.inventory.bodyModels,priority.report.results,elementCatalog?.items.map(e=>e.fmaId)||[]):null;
 const contextIds=new Set(context?.accepted.map(x=>x.id)||[]);
 const recoveryItems=priority?.items.map(e=>({...e,contextCandidate:contextIds.has(e.id)}))||[];
 const req=createRequire(path.join(app,'package.json'));
