@@ -30,11 +30,12 @@ else{
  manifest={schema:1,mode:'private-review',publicRelease:'NO_GO',sourceFrame:inv.sourceFrame,entries:inv.converted.map(e=>({id:e.id,name:e.name,group:e.group,regions:e.privateAtlasMeta.regions,layer:e.privateAtlasMeta.layer,path:'models/'+e.id+'.glb',approvedForDistribution:false}))};
  models=new Map(inv.converted.map(e=>['/anatomy/viewer/models/'+e.id+'.glb',path.join(pack,e.modelPath)]));
 }
-const priorityEnabled=process.argv.includes('--priority-recovery');
+const broadRecovery=process.argv.includes('--broad-recovery');
+const priorityEnabled=broadRecovery||process.argv.includes('--priority-recovery');
 const originalUI=process.argv.includes('--original-ui');
 assert(!originalUI||independent,'Original shell only in explicit independent private comparison');
 assert(!priorityEnabled||independent,'Priority recovery requires an independent source pack');
-const priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack):null;
+const priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack,{broad:broadRecovery}):null;
 const req=createRequire(path.join(app,'package.json'));
 const {build}=await import(pathToFileURL(req.resolve('vite')).href);
 const out=fs.mkdtempSync(path.join(privateRoot,'atlas-independent-review-'));
