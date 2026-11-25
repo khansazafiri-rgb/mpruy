@@ -5,6 +5,8 @@ on:
     paths:
       - 'apps/atlas-independent/**'
       - 'scripts/*bp3d43*'
+      - 'scripts/audit-atlas-cross-version-overlap*'
+      - 'scripts/preview-independent-atlas.mjs'
       - 'scripts/test-private-atlas-browser.mjs'
       - 'licensing/atlas-publication/bp3d43*'
       - '.github/workflows/atlas-integrated-private.yml'
@@ -26,7 +28,7 @@ jobs:
       - name: Unit and identity regression
         run: |
           npm test --prefix apps/atlas-independent
-          node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs scripts/audit-bp3d43-gap-batch.test.mjs
+          node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs scripts/audit-bp3d43-gap-batch.test.mjs scripts/audit-atlas-cross-version-overlap.test.mjs
       - name: Fresh first batch with exact audited source bytes
         run: node scripts/intake-bp3d43-priority-elements.mjs
       - name: Fresh gap batch with dual-source audit
