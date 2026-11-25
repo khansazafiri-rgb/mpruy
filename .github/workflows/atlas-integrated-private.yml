@@ -1,7 +1,7 @@
 name: Atlas integrated private 40-element regression
 on:
   pull_request:
-    branches: [feat/atlas-bp3d43-intake-20261125]
+    branches: [feat/atlas-bp3d43-intake-20261125, feat/atlas-integrated-private-20261125]
     paths:
       - 'apps/atlas-independent/**'
       - 'scripts/*bp3d43*'
