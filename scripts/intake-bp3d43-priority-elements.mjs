@@ -51,11 +51,11 @@ export function selectMember(names,r){
  assert.equal(normalize(path.posix.basename(matched[0]).slice(prefix.length,-4)),normalize(r.name),'Publisher mesh label changed');
  return matched[0];
 }
-export function run(){
+export function run(inputDoc=null){
  const local=path.join(root,'local-data');fs.mkdirSync(local,{recursive:true,mode:0o700});assert(fs.realpathSync(local)===local);
  const q=path.join(local,'licensing-quarantine');fs.mkdirSync(q,{mode:0o700,recursive:true});assert(fs.realpathSync(q)===q);
  const out=fs.mkdtempSync(path.join(q,'bp3d43-element-intake-'));fs.chmodSync(out,0o700);
- const doc=JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/bp3d43-priority-element-candidates.json'),'utf8'));
+ const doc=inputDoc||JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/bp3d43-priority-element-candidates.json'),'utf8'));
  const cookie=path.join(out,'session.cookie'),viewer=base+'/?lng=en';
  const session=['--cookie',cookie,'--cookie-jar',cookie,'--referer',viewer,'--http1.1','--header','Accept-Encoding: identity'];
  // The initial HTML is not evidence; a broken viewer response must not prevent
