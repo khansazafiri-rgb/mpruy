@@ -1,0 +1,245 @@
+{
+  "schema": 1,
+  "batchId": "discs-23",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "Catalog discovery only. Preserve publisher label without inferring disc level, laterality from geometry, or articular completeness.",
+  "rows": [
+    {
+      "fj": "FJ3202",
+      "discoveryBP": "BP23556",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of axis",
+      "faces": 3712,
+      "vertices": 1941,
+      "bytes": 235087,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3203",
+      "discoveryBP": "BP23395",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of fourth thoracic vertebra",
+      "faces": 1560,
+      "vertices": 1164,
+      "bytes": 114896,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3204",
+      "discoveryBP": "BP23548",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of fifth thoracic vertebra",
+      "faces": 1836,
+      "vertices": 1470,
+      "bytes": 142268,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3205",
+      "discoveryBP": "BP23378",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of sixth thoracic vertebra",
+      "faces": 2564,
+      "vertices": 2106,
+      "bytes": 205384,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3206",
+      "discoveryBP": "BP23588",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of seventh thoracic vertebra",
+      "faces": 2630,
+      "vertices": 2105,
+      "bytes": 207624,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3207",
+      "discoveryBP": "BP23381",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of eighth thoracic vertebra",
+      "faces": 2894,
+      "vertices": 2919,
+      "bytes": 265862,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3208",
+      "discoveryBP": "BP23570",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of ninth thoracic vertebra",
+      "faces": 2940,
+      "vertices": 2876,
+      "bytes": 264813,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3209",
+      "discoveryBP": "BP23730",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of tenth thoracic vertebra",
+      "faces": 3102,
+      "vertices": 2963,
+      "bytes": 276130,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3210",
+      "discoveryBP": "BP23504",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of eleventh thoracic vertebra",
+      "faces": 3336,
+      "vertices": 3353,
+      "bytes": 307934,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3211",
+      "discoveryBP": "BP19572",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of twelfth thoracic vertebra",
+      "faces": 3476,
+      "vertices": 4131,
+      "bytes": 358331,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3212",
+      "discoveryBP": "BP23645",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of first lumbar vertebra",
+      "faces": 3498,
+      "vertices": 3874,
+      "bytes": 344570,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3213",
+      "discoveryBP": "BP23714",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of third cervical vertebra",
+      "faces": 770,
+      "vertices": 608,
+      "bytes": 58365,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3214",
+      "discoveryBP": "BP23406",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of second lumbar vertebra",
+      "faces": 3406,
+      "vertices": 3518,
+      "bytes": 319790,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3215",
+      "discoveryBP": "BP23492",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of third lumbar vertebra",
+      "faces": 3454,
+      "vertices": 4151,
+      "bytes": 359310,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3216",
+      "discoveryBP": "BP23578",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of fourth lumbar vertebra",
+      "faces": 3512,
+      "vertices": 3650,
+      "bytes": 330777,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3217",
+      "discoveryBP": "BP23709",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of fifth lumbar vertebra",
+      "faces": 3498,
+      "vertices": 2582,
+      "bytes": 266442,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3218",
+      "discoveryBP": "BP23423",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of fourth cervical vertebra",
+      "faces": 926,
+      "vertices": 676,
+      "bytes": 66817,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3219",
+      "discoveryBP": "BP23710",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of fifth cervical vertebra",
+      "faces": 956,
+      "vertices": 685,
+      "bytes": 68274,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3220",
+      "discoveryBP": "BP23598",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of sixth cervical vertebra",
+      "faces": 892,
+      "vertices": 888,
+      "bytes": 78490,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3221",
+      "discoveryBP": "BP23459",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of seventh cervical vertebra",
+      "faces": 1092,
+      "vertices": 949,
+      "bytes": 87873,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3222",
+      "discoveryBP": "BP23623",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of first thoracic vertebra",
+      "faces": 1232,
+      "vertices": 1049,
+      "bytes": 98251,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3223",
+      "discoveryBP": "BP23413",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of second thoracic vertebra",
+      "faces": 1374,
+      "vertices": 1237,
+      "bytes": 113738,
+      "group": "intervertebral-disc"
+    },
+    {
+      "fj": "FJ3224",
+      "discoveryBP": "BP23540",
+      "discoveryFMA": "FMA10446",
+      "name": "Intervertebral disk of third thoracic vertebra",
+      "faces": 1474,
+      "vertices": 1495,
+      "bytes": 132875,
+      "group": "intervertebral-disc"
+    }
+  ]
+}

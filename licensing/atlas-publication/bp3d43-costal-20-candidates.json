@@ -1,0 +1,215 @@
+{
+  "schema": 1,
+  "batchId": "costal-20",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "Catalog discovery only. Preserve publisher label without inferring disc level, laterality from geometry, or articular completeness.",
+  "rows": [
+    {
+      "fj": "FJ3239",
+      "discoveryBP": "BP21373",
+      "discoveryFMA": "FMA14065",
+      "name": "Left first costal cartilage",
+      "faces": 642,
+      "vertices": 418,
+      "bytes": 42423,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3242",
+      "discoveryBP": "BP21374",
+      "discoveryFMA": "FMA14065",
+      "name": "Left second costal cartilage",
+      "faces": 588,
+      "vertices": 330,
+      "bytes": 35836,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3245",
+      "discoveryBP": "BP21387",
+      "discoveryFMA": "FMA14065",
+      "name": "Left third costal cartilage",
+      "faces": 604,
+      "vertices": 328,
+      "bytes": 36238,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3248",
+      "discoveryBP": "BP21384",
+      "discoveryFMA": "FMA14065",
+      "name": "Left fourth costal cartilage",
+      "faces": 658,
+      "vertices": 371,
+      "bytes": 40361,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3251",
+      "discoveryBP": "BP21380",
+      "discoveryFMA": "FMA14065",
+      "name": "Left fifth costal cartilage",
+      "faces": 1086,
+      "vertices": 594,
+      "bytes": 66165,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3254",
+      "discoveryBP": "BP21377",
+      "discoveryFMA": "FMA14065",
+      "name": "Left sixth costal cartilage",
+      "faces": 1498,
+      "vertices": 815,
+      "bytes": 91328,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3255",
+      "discoveryBP": "BP21388",
+      "discoveryFMA": "FMA14065",
+      "name": "Left seventh costal cartilage",
+      "faces": 2314,
+      "vertices": 1367,
+      "bytes": 150515,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3333",
+      "discoveryBP": "BP21039",
+      "discoveryFMA": "FMA14065",
+      "name": "Right first costal cartilage",
+      "faces": 676,
+      "vertices": 436,
+      "bytes": 45235,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3335",
+      "discoveryBP": "BP21383",
+      "discoveryFMA": "FMA14065",
+      "name": "Right second costal cartilage",
+      "faces": 658,
+      "vertices": 383,
+      "bytes": 41651,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3337",
+      "discoveryBP": "BP21302",
+      "discoveryFMA": "FMA14065",
+      "name": "Right third costal cartilage",
+      "faces": 652,
+      "vertices": 386,
+      "bytes": 41763,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3339",
+      "discoveryBP": "BP21410",
+      "discoveryFMA": "FMA14065",
+      "name": "Right fourth costal cartilage",
+      "faces": 694,
+      "vertices": 391,
+      "bytes": 43261,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3341",
+      "discoveryBP": "BP21376",
+      "discoveryFMA": "FMA14065",
+      "name": "Right fifth costal cartilage",
+      "faces": 1168,
+      "vertices": 652,
+      "bytes": 72810,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3343",
+      "discoveryBP": "BP21378",
+      "discoveryFMA": "FMA14065",
+      "name": "Right sixth costal cartilage",
+      "faces": 1546,
+      "vertices": 971,
+      "bytes": 103141,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3345",
+      "discoveryBP": "BP21381",
+      "discoveryFMA": "FMA14065",
+      "name": "Right seventh costal cartilage",
+      "faces": 2450,
+      "vertices": 1538,
+      "bytes": 167200,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3667",
+      "discoveryBP": "BP19821",
+      "discoveryFMA": "FMA14065",
+      "name": "Left tenth costal cartilage",
+      "faces": 1400,
+      "vertices": 4200,
+      "bytes": 390450,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3667M",
+      "discoveryBP": "BP21431",
+      "discoveryFMA": "FMA14065",
+      "name": "Right tenth costal cartilage",
+      "faces": 1400,
+      "vertices": 836,
+      "bytes": 118859,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3668",
+      "discoveryBP": "BP19822",
+      "discoveryFMA": "FMA14065",
+      "name": "Left eighth costal cartilage",
+      "faces": 2265,
+      "vertices": 6795,
+      "bytes": 631833,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3668M",
+      "discoveryBP": "BP21428",
+      "discoveryFMA": "FMA14065",
+      "name": "Right eighth costal cartilage",
+      "faces": 2265,
+      "vertices": 1351,
+      "bytes": 197192,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3669",
+      "discoveryBP": "BP19818",
+      "discoveryFMA": "FMA14065",
+      "name": "Left ninth costal cartilage",
+      "faces": 1678,
+      "vertices": 5034,
+      "bytes": 468303,
+      "group": "costal-cartilage"
+    },
+    {
+      "fj": "FJ3669M",
+      "discoveryBP": "BP21430",
+      "discoveryFMA": "FMA14065",
+      "name": "Right ninth costal cartilage",
+      "faces": 1678,
+      "vertices": 1067,
+      "bytes": 148930,
+      "group": "costal-cartilage"
+    }
+  ]
+}
