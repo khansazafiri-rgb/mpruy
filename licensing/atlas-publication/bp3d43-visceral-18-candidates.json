@@ -1,0 +1,195 @@
+{
+  "schema": 1,
+  "batchId": "visceral-18",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "18 exact candidate element IDs from pinned manifest, not validated whole organs. Resolve filename BP/FMA and publisher membership independently; discovery labels are not identity. Spleen is a lymphoid organ, not evidence of lymphatic vessels. No spatial registration or net-new claim.",
+  "rows": [
+    {
+      "fj": "FJ2561",
+      "discoveryBP": "BP21570",
+      "discoveryFMA": "FMA55661",
+      "name": "Spleen",
+      "faces": 1330,
+      "vertices": 689,
+      "bytes": 79066,
+      "group": "lymphoid-organ"
+    },
+    {
+      "fj": "FJ2563",
+      "discoveryBP": "BP22612",
+      "discoveryFMA": "FMA55671",
+      "name": "Esophagus",
+      "faces": 578,
+      "vertices": 323,
+      "bytes": 35525,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2564",
+      "discoveryBP": "BP22633",
+      "discoveryFMA": "FMA55671",
+      "name": "Stomach",
+      "faces": 1810,
+      "vertices": 914,
+      "bytes": 106610,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2565",
+      "discoveryBP": "BP23696",
+      "discoveryFMA": "FMA14542",
+      "name": "Appendix",
+      "faces": 442,
+      "vertices": 244,
+      "bytes": 26743,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2566",
+      "discoveryBP": "BP22851",
+      "discoveryFMA": "FMA14540",
+      "name": "Ascending colon",
+      "faces": 3310,
+      "vertices": 1812,
+      "bytes": 214014,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2567",
+      "discoveryBP": "BP22849",
+      "discoveryFMA": "FMA14540",
+      "name": "Descending colon",
+      "faces": 5588,
+      "vertices": 3039,
+      "bytes": 365225,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2571",
+      "discoveryBP": "BP21497",
+      "discoveryFMA": "FMA14540",
+      "name": "Rectum",
+      "faces": 2118,
+      "vertices": 1121,
+      "bytes": 129351,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2572",
+      "discoveryBP": "BP21603",
+      "discoveryFMA": "FMA14540",
+      "name": "Transverse colon",
+      "faces": 3472,
+      "vertices": 1923,
+      "bytes": 225187,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2573",
+      "discoveryBP": "BP22631",
+      "discoveryFMA": "FMA61775",
+      "name": "Duodenum",
+      "faces": 1860,
+      "vertices": 977,
+      "bytes": 112313,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2816",
+      "discoveryBP": "BP22932",
+      "discoveryFMA": "FMA13365",
+      "name": "Caudate lobe of liver",
+      "faces": 5020,
+      "vertices": 2526,
+      "bytes": 316916,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2817",
+      "discoveryBP": "BP23148",
+      "discoveryFMA": "FMA55671",
+      "name": "Gallbladder",
+      "faces": 2396,
+      "vertices": 1202,
+      "bytes": 144498,
+      "group": "urinary"
+    },
+    {
+      "fj": "FJ3129",
+      "discoveryBP": "BP22924",
+      "discoveryFMA": "FMA15630",
+      "name": "Left adrenal gland",
+      "faces": 3996,
+      "vertices": 2000,
+      "bytes": 247067,
+      "group": "endocrine"
+    },
+    {
+      "fj": "FJ3130",
+      "discoveryBP": "BP23012",
+      "discoveryFMA": "FMA15629",
+      "name": "Right adrenal gland",
+      "faces": 2294,
+      "vertices": 1149,
+      "bytes": 137511,
+      "group": "endocrine"
+    },
+    {
+      "fj": "FJ3144",
+      "discoveryBP": "BP21722",
+      "discoveryFMA": "FMA15572",
+      "name": "Left ureter",
+      "faces": 2062,
+      "vertices": 1125,
+      "bytes": 127235,
+      "group": "urinary"
+    },
+    {
+      "fj": "FJ3145",
+      "discoveryBP": "BP21596",
+      "discoveryFMA": "FMA55661",
+      "name": "Left kidney",
+      "faces": 2982,
+      "vertices": 1497,
+      "bytes": 181911,
+      "group": "urinary"
+    },
+    {
+      "fj": "FJ3146",
+      "discoveryBP": "BP21423",
+      "discoveryFMA": "FMA15571",
+      "name": "Right ureter",
+      "faces": 1924,
+      "vertices": 1132,
+      "bytes": 124755,
+      "group": "urinary"
+    },
+    {
+      "fj": "FJ3147",
+      "discoveryBP": "BP23048",
+      "discoveryFMA": "FMA55661",
+      "name": "Right kidney",
+      "faces": 2310,
+      "vertices": 1163,
+      "bytes": 139034,
+      "group": "urinary"
+    },
+    {
+      "fj": "FJ3149",
+      "discoveryBP": "BP22630",
+      "discoveryFMA": "FMA15900",
+      "name": "Urinary bladder",
+      "faces": 226,
+      "vertices": 127,
+      "bytes": 13333,
+      "group": "urinary"
+    }
+  ]
+}
