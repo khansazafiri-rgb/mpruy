@@ -8,7 +8,7 @@
   "glbFile": "lower-limb.glb",
   "glbSHA256": "001677bac4e8b4f44f3be0c3695b0123bc9fad1df9a2bddceecccf4a6eef01eb",
   "hashEvidence": "https://github.com/benben000000/anatomy-game/blob/main/private/assets/open3dmodel/PROVENANCE.json",
-  "hashEvidenceStatus": "THIRD_PARTY_REPORTED_NOT_YET_REPLAYED",
+  "hashEvidenceStatus": "HOLD_ARCHIVE_HASH_MISMATCH",
   "reportedLicense": "CC BY-SA 4.0, model-specific publisher scope not independently verified",
   "publisherPageStatus": "HTTP 502 on 2026-11-26",
   "targetLabels": [
@@ -31,5 +31,15 @@
   "assetRightsReviewed": false,
   "clinicalValidation": false,
   "registrationValidated": false,
-  "publicRelease": "NO_GO"
+  "publicRelease": "NO_GO",
+  "failedReplay": {
+    "run": 45676416547,
+    "job": 139425046544,
+    "reason": "archive hash or size mismatch; source download succeeded; actual digest not yet logged",
+    "unitTests": "PASS"
+  },
+  "licenseReviewNotes": [
+    "Third-party source review reports future-tense license grant on landing page and no license file in distributed archive. Exact publisher grant and contributor chain remain unverified.",
+    "Do not replace checksum automatically or import changed archive. Diagnose wrapper vs GLB change separately."
+  ]
 }

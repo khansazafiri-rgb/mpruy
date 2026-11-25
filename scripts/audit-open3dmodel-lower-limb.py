@@ -9,9 +9,9 @@ CAP = 64 * 1024**2
 def digest(data):
     return hashlib.sha256(data).hexdigest()
 
-def unpack(raw, spec):
-    if not 0 < len(raw) <= CAP or digest(raw) != spec["archiveSHA256"]:
-        raise ValueError("archive hash or size mismatch")
+def safe_glb_entry(raw, spec):
+    if not 0 < len(raw) <= CAP:
+        raise ValueError("archive size")
     with zipfile.ZipFile(io.BytesIO(raw)) as z:
         rows = z.infolist()
         if len(rows) != 1:
@@ -19,10 +19,30 @@ def unpack(raw, spec):
         f = rows[0]
         if f.filename != spec["glbFile"] or f.flag_bits & 1 or stat.S_ISLNK(f.external_attr >> 16) or not 0 < f.file_size <= CAP:
             raise ValueError("unsafe GLB entry")
-        data = z.read(f)
+        return z.read(f)
+
+def unpack(raw, spec):
+    if not 0 < len(raw) <= CAP or digest(raw) != spec["archiveSHA256"]:
+        raise ValueError("archive hash or size mismatch")
+    data = safe_glb_entry(raw, spec)
     if digest(data) != spec["glbSHA256"]:
         raise ValueError("GLB hash mismatch")
     return data
+
+def diagnose(raw, spec):
+    # Hash the sole bounded safe member, even when the ZIP wrapper differs.
+    # Diagnostic only: no metadata/node parsing on an unapproved byte pair.
+    report = {"schema":1,"archiveBytes":len(raw),"observedArchiveSHA256":digest(raw),
+              "expectedArchiveSHA256":spec["archiveSHA256"],"archiveMatches":digest(raw)==spec["archiveSHA256"],
+              "expectedGLBSHA256":spec["glbSHA256"],"geometryDecoded":False,"publicRelease":"NO_GO"}
+    try:
+        data = safe_glb_entry(raw,spec)
+        report.update({"glbBytes":len(data),"observedGLBSHA256":digest(data),"glbMatches":digest(data)==spec["glbSHA256"]})
+    except (ValueError,zipfile.BadZipFile,NotImplementedError,RuntimeError) as e:
+        report.update({"glbMatches":False,"memberInspectionError":str(e)[:200]})
+    report["status"] = ("EXACT_PAIR" if report["archiveMatches"] and report["glbMatches"] else
+                        "HOLD_WRAPPER_CHANGED" if report["glbMatches"] else "HOLD_SOURCE_BYTES_CHANGED_OR_UNREADABLE")
+    return report
 
 def metadata(data):
     if len(data) < 20 or len(data) > CAP:
@@ -62,6 +82,9 @@ def main():
         subprocess.run(["curl","--fail","--silent","--show-error","--location","--proto","=https","--proto-redir","=https","--max-redirs","3","--max-time","180","--max-filesize",str(CAP),"--output",str(file),spec["archiveURL"]],check=True)
         if not 0 < file.stat().st_size <= CAP: raise ValueError("archive size")
         raw=file.read_bytes()
+        receipt=diagnose(raw,spec)
+        print("OPEN3DMODEL SOURCE BYTE DIAGNOSTIC "+json.dumps(receipt,separators=(",",":")),flush=True)
+        if receipt["status"]!="EXACT_PAIR": raise ValueError(receipt["status"])
         data=unpack(raw,spec)
         report=inventory(metadata(data),spec["targetLabels"])
         report.update({"schema":1,"archiveSHA256":digest(raw),"glbSHA256":digest(data),"archiveBytes":len(raw),"glbBytes":len(data),"exactThirdPartyHashReplay":True})
@@ -87,6 +110,12 @@ class Tests(unittest.TestCase):
         raw=out.getvalue()
         spec={"archiveSHA256":digest(raw),"glbSHA256":digest(data),"glbFile":"lower-limb.glb"}
         self.assertEqual(unpack(raw,spec),data)
+        self.assertEqual(diagnose(raw,spec)["status"],"EXACT_PAIR")
+        changed={**spec,"archiveSHA256":"0"*64}
+        self.assertEqual(diagnose(raw,changed)["status"],"HOLD_WRAPPER_CHANGED")
+        with self.assertRaises(ValueError): unpack(raw,changed)
+        self.assertEqual(diagnose(raw,{**spec,"glbSHA256":"0"*64})["status"],"HOLD_SOURCE_BYTES_CHANGED_OR_UNREADABLE")
+        self.assertEqual(diagnose(b"not a ZIP",spec)["status"],"HOLD_SOURCE_BYTES_CHANGED_OR_UNREADABLE")
         with self.assertRaises(ValueError): unpack(raw,{**spec,"glbSHA256":"0"*64})
 if __name__=="__main__":
     import sys
