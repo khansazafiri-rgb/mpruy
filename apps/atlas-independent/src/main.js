@@ -1,3 +1,4 @@
+import {mountGuided} from './guided-panel.js';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
@@ -261,13 +262,15 @@ async function init(){
  catch(error){$('notice').textContent=error.message;counts();notifyHost('error',error.message);}
 }
 mountReferences(base);
+const openGuided=mountGuided({base,groups,entries:()=>[...byId.values()],choose:chooseEntry,ready:()=>initialized});
+$('openGuided').onclick=openGuided;
 originalUI=mountOriginalShell({
  groups,entries:()=>[...byId.values()],color:g=>'#'+colors[g].toString(16).padStart(6,'0'),
  state:()=>({...study,selected,ready:originalReady,loading:inflight.size>0,error:hostState.state==='error',visibleMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible).length:0),0),highlightedMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible&&m.userData.materialKey?.startsWith('highlight:')).length:0),0)}),
  status:()=>$('count').textContent+' · '+selectionEntries.length+' konsep seleksi · review privat'+(['partial','error'].includes(hostState.state)?' · '+hostState.message:''),
  snapshot:()=>({study:structuredClone(study),presentation:structuredClone(presentation),selectedId:selected?.id||null}),
  restore:s=>{searchRevision++;study=structuredClone(s.study);presentation=structuredClone(s.presentation);select(byId.get(s.selectedId)||null);syncControls();syncPresentationControls();updateAppearance();refresh(true);},
- reset:()=>$('reset').click(),all:()=>$('allSystems').click(),references:()=>$('openReferences').click(),
+ reset:()=>$('reset').click(),all:()=>$('allSystems').click(),references:()=>$('openReferences').click(),guided:openGuided,
  fullscreen:async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.getElementById('app').requestFullscreen();}catch(e){$('info').textContent=String(e.message||e);}},
  fit:()=>fit(),axis:id=>$(id).click(),zoom:f=>{camera.position.sub(controls.target).multiplyScalar(f).add(controls.target);controls.update();},
  pan:on=>{controls.mouseButtons.LEFT=on?THREE.MOUSE.PAN:THREE.MOUSE.ROTATE;},
