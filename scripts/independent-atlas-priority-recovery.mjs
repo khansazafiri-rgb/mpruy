@@ -15,7 +15,7 @@ const attribution='BodyParts3D, © The Database Center for Life Science licensed
 const targets=[
  ['respiratory',['left lung']],['respiratory',['right lung']],
  ['respiratory',['superior lobe of right lung','upper lobe of right lung']],
- ['respiratory',['middle lobe of right lung']],['respiratory',['inferior lobe of right lung','lower lobe of right lung']],
+ ['respiratory',['middle lobe of right lung','middle lobe of lung'],'FMA7383'],['respiratory',['inferior lobe of right lung','lower lobe of right lung']],
  ['respiratory',['superior lobe of left lung','upper lobe of left lung']],['respiratory',['inferior lobe of left lung','lower lobe of left lung']],
  ['respiratory',['trachea']],['respiratory',['left main bronchus','left principal bronchus']],['respiratory',['right main bronchus','right principal bronchus']],
  ['respiratory',['right bronchial tree'],'FMA26661','partof'],['respiratory',['left bronchial tree'],'FMA26662','partof'],
