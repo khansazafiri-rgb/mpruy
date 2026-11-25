@@ -1,0 +1,294 @@
+{
+  "schema": 1,
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "28 element discovery candidates; no claimed net-new coverage, no full plexus or joint assertion. Actual filename identity must be checked against versioned membership and direct publisher archive.",
+  "rows": [
+    {
+      "fj": "FJ4273",
+      "discoveryBP": "BP29300",
+      "discoveryFMA": "FMA11195",
+      "name": "Inferior trunk of left brachial nerve plexus",
+      "faces": 330,
+      "vertices": 258,
+      "bytes": 24250,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4274",
+      "discoveryBP": "BP29122",
+      "discoveryFMA": "FMA11195",
+      "name": "Lateral cord of left brachial nerve plexus",
+      "faces": 348,
+      "vertices": 209,
+      "bytes": 21771,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4275",
+      "discoveryBP": "BP29196",
+      "discoveryFMA": "FMA11195",
+      "name": "Medial cord of left brachial nerve plexus",
+      "faces": 1708,
+      "vertices": 913,
+      "bytes": 103364,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4276",
+      "discoveryBP": "BP29380",
+      "discoveryFMA": "FMA11195",
+      "name": "Middle trunk of left brachial nerve plexus",
+      "faces": 350,
+      "vertices": 227,
+      "bytes": 22974,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4280",
+      "discoveryBP": "BP29303",
+      "discoveryFMA": "FMA11195",
+      "name": "Posterior cord of left brachial nerve plexus",
+      "faces": 1130,
+      "vertices": 567,
+      "bytes": 65939,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4290",
+      "discoveryBP": "BP29296",
+      "discoveryFMA": "FMA11195",
+      "name": "Superior trunk of left brachial nerve plexus",
+      "faces": 428,
+      "vertices": 256,
+      "bytes": 26889,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1424",
+      "discoveryBP": "BP20809",
+      "discoveryFMA": "FMA21496",
+      "name": "Right long plantar ligament",
+      "faces": 2722,
+      "vertices": 2445,
+      "bytes": 236055,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ1424M",
+      "discoveryBP": "BP23763",
+      "discoveryFMA": "FMA21496",
+      "name": "Left long plantar ligament",
+      "faces": 2722,
+      "vertices": 2450,
+      "bytes": 234076,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ7248",
+      "discoveryBP": "BP29457",
+      "discoveryFMA": "FMA21496",
+      "name": "Left stylomandibular ligament",
+      "faces": 1216,
+      "vertices": 753,
+      "bytes": 79690,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ7347",
+      "discoveryBP": "BP29436",
+      "discoveryFMA": "FMA21496",
+      "name": "Right stylomandibular ligament",
+      "faces": 1252,
+      "vertices": 761,
+      "bytes": 81952,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ2763",
+      "discoveryBP": "BP23229",
+      "discoveryFMA": "FMA21496",
+      "name": "Left stylohyoid ligament",
+      "faces": 5758,
+      "vertices": 3528,
+      "bytes": 400260,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ2764",
+      "discoveryBP": "BP23302",
+      "discoveryFMA": "FMA21496",
+      "name": "Right stylohyoid ligament",
+      "faces": 5758,
+      "vertices": 3514,
+      "bytes": 402990,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ2771",
+      "discoveryBP": "BP23637",
+      "discoveryFMA": "FMA21496",
+      "name": "Hyo-epiglottic ligament",
+      "faces": 2112,
+      "vertices": 1686,
+      "bytes": 165808,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ2779",
+      "discoveryBP": "BP23675",
+      "discoveryFMA": "FMA21496",
+      "name": "Left lateral thyrohyoid ligament",
+      "faces": 964,
+      "vertices": 561,
+      "bytes": 60758,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ2787",
+      "discoveryBP": "BP22944",
+      "discoveryFMA": "FMA14065",
+      "name": "Left vocal ligament",
+      "faces": 1858,
+      "vertices": 2492,
+      "bytes": 199372,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ2789",
+      "discoveryBP": "BP22799",
+      "discoveryFMA": "FMA14065",
+      "name": "Median cricothyroid ligament",
+      "faces": 2052,
+      "vertices": 1779,
+      "bytes": 165567,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ2790",
+      "discoveryBP": "BP23166",
+      "discoveryFMA": "FMA21496",
+      "name": "Median thyrohyoid ligament",
+      "faces": 2856,
+      "vertices": 1842,
+      "bytes": 199132,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ2797",
+      "discoveryBP": "BP24107",
+      "discoveryFMA": "FMA21496",
+      "name": "Right lateral thyrohyoid ligament",
+      "faces": 974,
+      "vertices": 554,
+      "bytes": 61245,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ2805",
+      "discoveryBP": "BP22941",
+      "discoveryFMA": "FMA14065",
+      "name": "Right vocal ligament",
+      "faces": 1644,
+      "vertices": 1437,
+      "bytes": 136400,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ2807",
+      "discoveryBP": "BP23708",
+      "discoveryFMA": "FMA21496",
+      "name": "Thyro-epiglottic ligament",
+      "faces": 1042,
+      "vertices": 1081,
+      "bytes": 95497,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ7211",
+      "discoveryBP": "BP29441",
+      "discoveryFMA": "FMA10474",
+      "name": "Left inguinal ligament",
+      "faces": 5932,
+      "vertices": 3348,
+      "bytes": 396136,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ7307",
+      "discoveryBP": "BP29444",
+      "discoveryFMA": "FMA10474",
+      "name": "Right inguinal ligament",
+      "faces": 5932,
+      "vertices": 3324,
+      "bytes": 397800,
+      "group": "ligament-candidates"
+    },
+    {
+      "fj": "FJ1895",
+      "discoveryBP": "BP22966",
+      "discoveryFMA": "FMA14065",
+      "name": "Parenchyma of pancreas",
+      "faces": 4890,
+      "vertices": 2462,
+      "bytes": 307546,
+      "group": "visceral-candidates"
+    },
+    {
+      "fj": "FJ1896",
+      "discoveryBP": "BP20579",
+      "discoveryFMA": "FMA14065",
+      "name": "Pancreatic duct tree",
+      "faces": 3368,
+      "vertices": 3941,
+      "bytes": 344309,
+      "group": "visceral-candidates"
+    },
+    {
+      "fj": "FJ2629",
+      "discoveryBP": "BP22966",
+      "discoveryFMA": "FMA14065",
+      "name": "Parenchyma of pancreas",
+      "faces": 4272,
+      "vertices": 2153,
+      "bytes": 267199,
+      "group": "visceral-candidates"
+    },
+    {
+      "fj": "FJ2539",
+      "discoveryBP": "BP21591",
+      "discoveryFMA": "FMA12224",
+      "name": "Right main bronchus proper",
+      "faces": 4468,
+      "vertices": 2564,
+      "bytes": 299993,
+      "group": "visceral-candidates"
+    },
+    {
+      "fj": "FJ6533",
+      "discoveryBP": "BP23336",
+      "discoveryFMA": "FMA12224",
+      "name": "Left main bronchus",
+      "faces": 4136,
+      "vertices": 2293,
+      "bytes": 270666,
+      "group": "visceral-candidates"
+    },
+    {
+      "fj": "FJ6583",
+      "discoveryBP": "BP29545",
+      "discoveryFMA": "FMA12224",
+      "name": "Right main bronchus",
+      "faces": 4468,
+      "vertices": 2592,
+      "bytes": 301741,
+      "group": "visceral-candidates"
+    }
+  ]
+}
