@@ -29,3 +29,13 @@ test('broad recovery skips existing FMA and priority FMA, rejects conflicting id
  assert.deepEqual(rows.map(x=>x.fmaId),['FMA4']);
  assert.equal(rows[0].group,'respiratory');
 });
+
+import {learningPriorityTargets} from './atlas-learning-priority-targets.mjs';
+test('learning checkpoints explicitly cover all 13 systems and bilateral nerve, joint and renal targets',()=>{
+ const groups=new Set(learningPriorityTargets.map(([g])=>g));
+ assert.equal(groups.size,13);
+ const keys=learningPriorityTargets.map(([g,n])=>g+':'+n[0]);
+ assert.equal(new Set(keys).size,keys.length);
+ for(const side of ['left','right'])for(const [g,n] of [['nervous','median nerve'],['urinary','renal cortex'],['joints','knee joint']])assert(keys.includes(g+':'+side+' '+n));
+ assert(keys.includes('lymphatic:lymphatic vessel'));assert(keys.includes('respiratory:visceral pleura'));
+});
