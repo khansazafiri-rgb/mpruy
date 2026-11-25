@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "elements": 224,
+  "distinctFJ": 224,
+  "distinctFMA": 217,
+  "sourceLabelConcepts": 217,
+  "distinctRawSHA256": 224,
+  "triangles": 654933,
+  "scope": "Distinct within 4.3 only; not net-new vs 4.0. Individual browser replay of 224 pending. No complete vessel or cardiac chamber or whole-organ claim.",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "previousBrowserReplay": {
+    "elements": 192,
+    "sourceLabelConcepts": 185,
+    "workflowRun": 45682861934
+  }
+}

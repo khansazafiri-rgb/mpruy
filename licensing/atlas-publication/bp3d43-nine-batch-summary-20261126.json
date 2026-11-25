@@ -6,7 +6,7 @@
   "sourceLabelConcepts": 185,
   "distinctRawSHA256": 192,
   "triangles": 590913,
-  "scope": "Distinct within 4.3 only; not net-new vs 4.0. Individual browser replay of 192 pending. Male reproductive reference only; not complete bowel or reproductive anatomy.",
+  "scope": "Distinct within 4.3 only; not net-new vs 4.0. Individual browser replay of 192 passed; not registered whole-body geometry.",
   "clinicalValidation": false,
   "registrationValidated": false,
   "publicRelease": "NO_GO",
@@ -14,5 +14,16 @@
     "elements": 177,
     "sourceLabelConcepts": 170,
     "workflowRun": 45671326902
+  },
+  "browserReplay": {
+    "commit": "7fed1c8deb66b033008089cb6dc2bce8ce885845",
+    "workflowRun": 45682861934,
+    "workflowJob": 139447653198,
+    "conclusion": "success",
+    "renderedActualPublisherGLBs": 192,
+    "sourceLabelConceptsCompleted": 185,
+    "multilingualTypedConcepts": 10,
+    "unitAndIdentityTestsPassed": 44,
+    "registrationValidated": false
   }
 }
