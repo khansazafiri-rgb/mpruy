@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-import {referenceEntries,filterReferences,requestTracker} from './reference-state.js';
+import {referenceEntries,filterReferences,requestTracker,sourceNodeComponents,isolateSourceComponent} from './reference-state.js';
 const $=id=>document.getElementById(id);
 function dispose(object){
  const resources=new Set();
@@ -10,9 +10,12 @@ function dispose(object){
 }
 export function mountReferences(base){
  const dialog=$('referenceDialog'),host=$('referenceViewport'),tracker=requestTracker();
- let entries=[],renderer=null,controls=null,camera=null,scene=null,model=null,observer=null,selected=null;
+ let entries=[],renderer=null,controls=null,camera=null,scene=null,model=null,observer=null,selected=null,components=[],visibility=new Map(),activeComponent=null;
  const status=t=>$('referenceStatus').textContent=t;
+ function clearComponents(){components=[];visibility.clear();activeComponent=null;$('referenceComponents').hidden=true;$('referenceComponentSearch').value='';$('referenceComponentSelect').replaceChildren();}
+ function listComponents(){const select=$('referenceComponentSelect'),q=$('referenceComponentSearch').value.trim().toLowerCase();select.replaceChildren();for(const c of components.filter(c=>c.label.toLowerCase().includes(q)||String(c.index)===q)){const option=document.createElement('option');option.value=String(c.index);option.textContent=c.label+' · node '+c.index;select.append(option);}$('referenceComponentIsolate').disabled=!select.options.length;}
  function cleanup(){
+  clearComponents();
   tracker.cancel();observer?.disconnect();observer=null;
   if(model){dispose(model);model=null;}
   controls?.dispose();controls=null;
@@ -21,7 +24,7 @@ export function mountReferences(base){
  }
  function fit(){
   if(!model||!camera)return;
-  const box=new THREE.Box3().setFromObject(model);if(box.isEmpty())throw Error('Model referensi kosong');
+  const box=new THREE.Box3();if(activeComponent){model.updateMatrixWorld(true);for(const m of activeComponent.meshes){m.geometry.computeBoundingBox();if(m.geometry.boundingBox)box.union(m.geometry.boundingBox.clone().applyMatrix4(m.matrixWorld));}}else box.setFromObject(model);if(box.isEmpty())throw Error('Model referensi kosong');
   const center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3()),span=Math.max(size.length(),.00001);
   const distance=span/Math.max(.1,Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*Math.min(camera.aspect,1));
   camera.near=Math.max(span*.0001,.0000001);camera.far=distance*100;camera.position.copy(center).add(new THREE.Vector3(0,0,distance));camera.updateProjectionMatrix();
@@ -38,7 +41,7 @@ export function mountReferences(base){
   renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
  }
  async function load(e){
-  const token=tracker.begin();selected=e;status('Memuat '+e.name+'…');
+  clearComponents();const token=tracker.begin();selected=e;status('Memuat '+e.name+'…');
   $('referenceSource').href=e.source;$('referenceSource').textContent='Sumber GLB · '+e.version;
   if(model){scene.remove(model);dispose(model);model=null;}
   let candidate=null;
@@ -46,7 +49,7 @@ export function mountReferences(base){
    const g=await new GLTFLoader().loadAsync(base+'hra-reference/'+e.id+'.glb');candidate=g.scene;
    if(!tracker.current(token)||!dialog.open){dispose(candidate);return;}
    let meshes=0;candidate.traverse(m=>{if(m.isMesh)meshes++;});if(!meshes)throw Error('Tidak ada mesh');
-   model=candidate;scene.add(model);fit();status(e.name+' · '+e.version+' · '+meshes+' mesh dirender. Referensi terpisah; belum diregistrasi ke tubuh.');
+   model=candidate;scene.add(model);components=sourceNodeComponents(g);model.traverse(m=>{if(m.isMesh)visibility.set(m,m.visible);});$('referenceComponents').hidden=!components.length;listComponents();fit();status(e.name+' · '+e.version+' · '+meshes+' mesh dirender · '+components.length+' node sumber teridentifikasi. Label node belum divalidasi klinis.');
   }catch(error){if(candidate){scene?.remove(candidate);dispose(candidate);if(model===candidate)model=null;}if(tracker.current(token))status('Referensi gagal dimuat: '+String(error.message||error));}
  }
  function list(){
@@ -57,6 +60,9 @@ export function mountReferences(base){
   if(selected&&[...select.options].some(o=>o.value===selected.id))select.value=selected.id;
   $('referenceLoad').disabled=!select.options.length;
  }
+ $('referenceComponentSearch').oninput=listComponents;
+ $('referenceComponentIsolate').onclick=()=>{const c=components.find(c=>String(c.index)===$('referenceComponentSelect').value);if(!c||!isolateSourceComponent([...visibility.keys()],c,visibility)){status('Komponen tidak dapat diisolasi secara tepat.');return;}activeComponent=c;fit();status(c.label+' · node sumber '+c.index+' · label belum divalidasi klinis.');};
+ $('referenceComponentRestore').onclick=()=>{if(!model)return;isolateSourceComponent([...visibility.keys()],null,visibility);activeComponent=null;fit();status('Semua komponen sumber ditampilkan kembali. Referensi terpisah.');};
  $('referenceSearch').oninput=list;
  $('referenceLoad').onclick=()=>{const e=entries.find(x=>x.id===$('referenceSelect').value);if(e)load(e);};
  $('referenceFit').onclick=()=>fit();
