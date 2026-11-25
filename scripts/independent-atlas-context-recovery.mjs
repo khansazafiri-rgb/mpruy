@@ -2,8 +2,8 @@
 // One FJ element and one FMA concept may be used only once in the body scene.
 // Alternate whole-organ representations remain isolated.
 import assert from 'node:assert/strict';
-export function planContextRecovery(body,exported){
- const usedFma=new Set(body.map(m=>m.fmaId)),usedElements=new Set(body.flatMap(m=>m.sourceElements.map(e=>e.id)));
+export function planContextRecovery(body,exported,coveredFma=[]){
+ const usedFma=new Set([...body.map(m=>m.fmaId),...coveredFma]),usedElements=new Set(body.flatMap(m=>m.sourceElements.map(e=>e.id)));
  const rows=exported.filter(r=>r.status==='EXPORTED_ISOLATED_CONCEPT').slice();
  const known=new Set();
  for(const row of rows){
