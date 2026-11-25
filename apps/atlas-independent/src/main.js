@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {groups,regions,validateInventory,matchesRegion,searchEntries} from './inventory.js';
-import {layerLabels,initialStudy,baseVisible,displayed,buildAlternatives,revealEntry,materialKind} from './study-state.js';
+import {layerLabels,initialStudy,baseVisible as bodyBaseVisible,displayed,buildAlternatives,revealEntry,materialKind} from './study-state.js';
 import {mountReferences} from './reference-viewer.js';
 import {initialPresentation,setGroupOpacity,effectiveOpacity,materialKey,chooseEvictions,fitParameters,nextPickedId} from './presentation-state.js';
 import {STATUS,validPing} from './host-protocol.js';
@@ -26,11 +26,12 @@ const loader=new GLTFLoader(),cache=new Map(),failed=new Map(),inflight=new Map(
 let entries=[],selected=null,study=initialStudy(),presentation=initialPresentation(),alternatives=new Map(),byId=new Map(),revision=0,searchRevision=0,independent=false;
 let cacheClock=0,cacheReport={remaining:0,aboveBudget:false};
 const counts=()=>{
- $('count').textContent=[...cache.values()].filter(o=>o.visible).length+' terlihat · '+cache.size+' dimuat · '+inflight.size+' memuat/antre · '+failed.size+' gagal · '+entries.length+' kandidat. Bukan ukuran kelengkapan anatomi.';
+ $('count').textContent=[...cache.values()].filter(o=>o.visible&&!o.userData.entry.priorityOnly).length+' tubuh terlihat · '+[...cache.values()].filter(o=>!o.userData.entry.priorityOnly).length+' tubuh dimuat · '+inflight.size+' memuat/antre · '+failed.size+' gagal · '+entries.length+' kandidat. Bukan ukuran kelengkapan anatomi.';
  $('cacheStatus').textContent='Buffer geometri terukur: '+Math.round(cacheReport.remaining/1048576)+' MiB'+(cacheReport.aboveBudget?' · melebihi target lunak; kurangi sistem aktif.':'');
  $('retry').disabled=!failed.size;$('restore').hidden=!study.isolated&&!study.hidden.size;
 };
-const visible=e=>displayed(e,study,alternatives,id=>cache.has(id),byId);
+const baseVisible=(e,s)=>e.priorityOnly?s.isolated===e.id:bodyBaseVisible(e,s);
+const visible=e=>e.priorityOnly?baseVisible(e,study):displayed(e,study,alternatives,id=>cache.has(id),byId);
 function appearanceFor(e){
  const selectedId=selected?.id,kind=materialKind(e),key=materialKey(e,kind,presentation,selectedId);
  if(!materials.has(key)){
@@ -165,10 +166,54 @@ $('search').oninput=()=>{
   };$('results').append(b);
  }
 };
+// Supplemental concepts are isolated in the same camera/selection engine. They
+// never enter the main body inventory or the all-systems display queue.
+async function initPriority(){
+ const panel=document.createElement('details');panel.id='priorityRecovery';panel.hidden=true;
+ const heading=document.createElement('summary');heading.textContent='Pemulihan struktur prioritas';panel.append(heading);
+ const explanation=document.createElement('p');explanation.className='hint';explanation.textContent='Representasi sumber terpisah, tidak ditumpuk pada tubuh. Pilih struktur untuk isolasi dan highlight; gunakan Kembalikan struktur untuk kembali.';panel.append(explanation);
+ const search=document.createElement('input');search.type='search';search.placeholder='Cari struktur prioritas';search.setAttribute('aria-label','Cari struktur prioritas');panel.append(search);
+ const menu=document.createElement('select');menu.setAttribute('aria-label','Struktur prioritas');panel.append(menu);
+ const open=document.createElement('button');open.type='button';open.textContent='Tampilkan & highlight';panel.append(open);
+ const status=document.createElement('p');status.className='hint';status.setAttribute('role','status');panel.append(status);
+ const attribution=document.createElement('a');attribution.href=base+'priority-recovery/attributions.json';attribution.target='_blank';attribution.rel='noopener';attribution.textContent='Atribusi & bukti sumber';panel.append(attribution);
+ $('openReferences').insertAdjacentElement('afterend',panel);
+ try{
+  const response=await fetch(base+'priority-recovery/inventory.json',{cache:'no-store'});
+  if(response.status===404)return;
+  if(!response.ok)throw Error('Inventaris pemulihan tidak tersedia');
+  const doc=await response.json();
+  if(doc.schema!==1||doc.publicRelease!=='NO_GO'||doc.registrationValidated!==false||doc.clinicalValidation!==false||!Array.isArray(doc.items))throw Error('Inventaris pemulihan tidak valid');
+  const ids=new Set();
+  for(const e of doc.items){
+   if(!/^bp-[a-f0-9]{24}$/.test(e.id)||ids.has(e.id)||byId.has(e.id)||typeof e.name!=='string'||!e.name.trim()||!Object.hasOwn(groups,e.group)||!/^FMA\d+$/.test(e.fmaId)||!/^BP\d+$/.test(e.bpId)||e.path!=='priority-recovery/'+e.id+'.glb'||e.priorityOnly!==true||e.approvedForDistribution!==false||e.clinicalValidation!==false||e.classificationProvisional!==true||e.source!=='BodyParts3D 4.0'||!['isa','partof'].includes(e.sourceTree))throw Error('Identitas pemulihan tidak valid');
+   ids.add(e.id);
+  }
+  const recovered=doc.items;
+  for(const e of recovered)byId.set(e.id,e);
+  function list(){
+   const q=search.value.trim().toLowerCase();menu.replaceChildren();
+   for(const e of recovered.filter(e=>(e.name+' '+groups[e.group]+' '+e.fmaId).toLowerCase().includes(q))){
+    const o=document.createElement('option');o.value=e.id;o.textContent=groups[e.group]+' · '+e.name;menu.append(o);
+   }
+   open.disabled=!menu.options.length;
+  }
+  search.oninput=list;list();panel.hidden=false;panel.open=true;status.textContent=recovered.length+' konsep sumber berhasil diekspor untuk review terpisah.';
+  open.onclick=async()=>{
+   const e=byId.get(menu.value);if(!e?.priorityOnly)return;
+   const token=++searchRevision;++revision;study.isolated=e.id;failed.delete(e.id);select(e);sync();
+   status.textContent='Memuat '+e.name+'…';await load(e);
+   if(token!==searchRevision)return;
+   sync();
+   if(cache.has(e.id)){select(e);focus(e);status.textContent=e.name+' · '+e.fmaId+' · kandidat sumber, belum tervalidasi klinis.';}
+   else{study.isolated=null;resetSelection();refresh(true);status.textContent='Gagal memuat '+e.name+'; pilih kembali untuk mencoba ulang.';}
+  };
+ }catch(error){panel.hidden=false;panel.open=true;open.disabled=true;status.textContent=String(error.message||error);}
+}
 async function init(){
  groupControls();
  if(location.hostname!=='127.0.0.1'){ $('notice').textContent='Aplikasi ini belum disetujui untuk publikasi.';return; }
- try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('viewHint').textContent='Sumbu sumber XYZ (bukan orientasi anatomi tervalidasi) · Shift+klik: pilih struktur di belakang';$('modelAttributions').hidden=false;$('region').disabled=true;$('representation').disabled=true;$('front').textContent='+Z';$('back').textContent='−Z';$('side').textContent='−X';$('right').textContent='+X';$('top').textContent='+Y';}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);notifyHost(cache.size?(failed.size?'partial':'interactive'):'error',cache.size?(failed.size?'Viewer tersedia; beberapa model gagal dimuat.':'Viewer siap; struktur masih kandidat review.'):'Tidak ada model awal yang berhasil dimuat.');}
+ try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('viewHint').textContent='Sumbu sumber XYZ (bukan orientasi anatomi tervalidasi) · Shift+klik: pilih struktur di belakang';$('modelAttributions').hidden=false;$('region').disabled=true;$('representation').disabled=true;$('front').textContent='+Z';$('back').textContent='−Z';$('side').textContent='−X';$('right').textContent='+X';$('top').textContent='+Y';}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);if(independent)await initPriority();notifyHost(cache.size?(failed.size?'partial':'interactive'):'error',cache.size?(failed.size?'Viewer tersedia; beberapa model gagal dimuat.':'Viewer siap; struktur masih kandidat review.'):'Tidak ada model awal yang berhasil dimuat.');}
  catch(error){$('notice').textContent=error.message;counts();notifyHost('error',error.message);}
 }
 mountReferences(base);
