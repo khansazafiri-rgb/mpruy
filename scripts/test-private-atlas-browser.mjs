@@ -187,7 +187,7 @@ try{
    await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
    const choices=challenge.locator('#referenceChallengeAnswers button');await choices.first().waitFor();assert.equal(await choices.count(),4);
    await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal 1/27'}).waitFor();
-   const id=await dialog.locator('#referenceViewport').getAttribute('data-rendered-id'),asset=real43.assets.get(id);assert(asset);
+   const id=await dialog.locator('#referenceViewport').getAttribute('data-rendered-id'),asset=real43.inventory.items.find(e=>e.id===id);assert(asset);
    assert.equal((await choices.allTextContents()).filter(x=>x===asset.name).length,1);
    await challenge.locator('#referenceChallengeQuit').click();await setup.waitFor({state:'visible'});
    console.log('BP3D43 GAP SOURCE CHALLENGE PASS: 27 distinct concepts; unavailable multilingual modes disabled.');
