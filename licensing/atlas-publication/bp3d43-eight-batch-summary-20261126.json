@@ -6,7 +6,7 @@
   "sourceLabelConcepts": 170,
   "distinctRawSHA256": 177,
   "triangles": 586721,
-  "scope": "Distinct within 4.3 only; not net-new vs 4.0. Individual browser replay of 177 pending.",
+  "scope": "Distinct within 4.3 only; not net-new vs 4.0. Individual browser replay of all 177 passed; not spatial registration.",
   "clinicalValidation": false,
   "registrationValidated": false,
   "publicRelease": "NO_GO",
@@ -14,5 +14,16 @@
     "elements": 147,
     "sourceLabelConcepts": 140,
     "workflowRun": 45667335140
+  },
+  "browserReplay": {
+    "commit": "1eb14d2ad440058c4a48afd5c90426a2c28bf545",
+    "workflowRun": 45671326902,
+    "workflowJob": 139407084713,
+    "conclusion": "success",
+    "renderedActualPublisherGLBs": 177,
+    "sourceLabelConceptsCompleted": 170,
+    "multilingualTypedConcepts": 10,
+    "unitAndIdentityTestsPassed": 43,
+    "registrationValidated": false
   }
 }

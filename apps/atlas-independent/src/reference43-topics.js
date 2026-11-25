@@ -1,6 +1,6 @@
 import {REFERENCE43_TOPIC_ROWS} from './reference43-topic-catalog.js';
-export const REGION_TOPICS={all:'Semua topik regio',neck:'Leher',brain:'Otak','head-neck':'Kepala dan leher','neck-upper-limb':'Leher dan ekstremitas atas','upper-limb':'Ekstremitas atas',spine:'Spinal',thorax:'Toraks',abdomen:'Abdomen',pelvis:'Pelvis','abdomen-pelvis':'Abdomen dan pelvis',groin:'Inguinal',foot:'Kaki',multiregion:'Lintas regio',unknown:'Belum dipetakan'};
-export const SYSTEM_TOPICS={all:'Semua topik sistem',nervous:'Saraf',ligament:'Ligamen',cartilage:'Diskus dan kartilago',vascular:'Vaskular',endocrine:'Endokrin',digestive:'Pencernaan',urinary:'Urinaria',lymphoid:'Organ limfoid',respiratory:'Respirasi',unknown:'Belum dipetakan'};
+export const REGION_TOPICS={all:'Semua topik regio',neck:'Leher',brain:'Otak','head-neck':'Kepala dan leher','neck-upper-limb':'Leher dan ekstremitas atas','upper-limb':'Ekstremitas atas',spine:'Spinal',thorax:'Toraks',abdomen:'Abdomen',pelvis:'Pelvis',scrotum:'Skrotum','abdomen-pelvis':'Abdomen dan pelvis',groin:'Inguinal',foot:'Kaki',multiregion:'Lintas regio',unknown:'Belum dipetakan'};
+export const SYSTEM_TOPICS={all:'Semua topik sistem',nervous:'Saraf',ligament:'Ligamen',cartilage:'Diskus dan kartilago',vascular:'Vaskular',endocrine:'Endokrin',digestive:'Pencernaan',urinary:'Urinaria',reproductive:'Reproduksi',lymphoid:'Organ limfoid',respiratory:'Respirasi',unknown:'Belum dipetakan'};
 const rows=new Map(REFERENCE43_TOPIC_ROWS.map(r=>[r.fj,r]));
 export function referenceTopic(e){
  const r=rows.get(e?.fj);
