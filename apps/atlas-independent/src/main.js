@@ -19,7 +19,7 @@ const fill=new THREE.DirectionalLight(0xffffff,1);fill.position.set(-2,2,-3);sce
 const materials=Object.fromEntries(Object.entries(colors).map(([g,color])=>[g,new THREE.MeshStandardMaterial({color,roughness:.82,side:THREE.DoubleSide})]));
 const highlight=new THREE.MeshStandardMaterial({color:0xf9c65e,roughness:.6,side:THREE.DoubleSide});
 const loader=new GLTFLoader(),cache=new Map(),failed=new Map(),inflight=new Map();
-let entries=[],selected=null,study=initialStudy(),alternatives=new Map(),byId=new Map(),revision=0,searchRevision=0;
+let entries=[],selected=null,study=initialStudy(),alternatives=new Map(),byId=new Map(),revision=0,searchRevision=0,independent=false;
 const counts=()=>{ $('count').textContent=[...cache.values()].filter(o=>o.visible).length+' terlihat · '+cache.size+' dimuat · '+failed.size+' gagal · '+entries.length+' kandidat. Bukan ukuran kelengkapan anatomi.';$('retry').disabled=!failed.size;$('restore').hidden=!study.isolated&&!study.hidden.size; };
 const visible=e=>displayed(e,study,alternatives,id=>cache.has(id),byId);
 function sync(){for(const obj of cache.values())obj.visible=visible(obj.userData.entry);counts();}
@@ -28,7 +28,7 @@ function select(e){
  selected=e;
  if(e&&cache.has(e.id))cache.get(e.id).traverse(m=>{if(m.isMesh)m.material=highlight;});
  $('selectionActions').hidden=!e;
- $('info').textContent=e?e.name+' · '+groups[e.group]+' · kandidat belum disetujui':'';
+ $('info').textContent=e?e.name+' · '+groups[e.group]+(e.fmaId?' · '+e.fmaId+' / '+e.bpId:'')+' · kandidat belum disetujui':'';
 }
 // Bound concurrent network/decoder work across overlapping study changes.
 let activeLoads=0;const waitingLoads=[];
@@ -63,7 +63,7 @@ function fit(axis=new THREE.Vector3(0,0,1)){
  for(const obj of cache.values())if(obj.visible)bounds.union(obj.userData.bounds??=new THREE.Box3().setFromObject(obj));
  if(bounds.isEmpty())return;
  const center=bounds.getCenter(new THREE.Vector3()),size=bounds.getSize(new THREE.Vector3()),radius=Math.max(size.x,size.y,size.z,.01);
- controls.target.copy(center);const distance=radius/Math.max(.12,Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*Math.min(camera.aspect,1));camera.position.copy(center).addScaledVector(axis,distance);camera.near=Math.max(radius*.0005,.00001);camera.far=radius*100;camera.updateProjectionMatrix();controls.update();
+ controls.target.copy(center);const distance=radius/Math.max(.12,Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*Math.min(camera.aspect,1));camera.position.copy(center).addScaledVector(axis,distance);camera.near=Math.max(radius*.0005,.00001);camera.far=Math.max(distance*4,radius*100);camera.updateProjectionMatrix();controls.update();
 }
 function resize(){const w=$('view').clientWidth,h=$('view').clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();}
 new ResizeObserver(resize).observe($('view'));resize();renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
@@ -86,7 +86,7 @@ function groupControls(){
   const items=entries.filter(e=>e.group===id),row=document.createElement('div'),l=document.createElement('label'),c=document.createElement('input');
   row.className='system-row';c.type='checkbox';c.checked=study.enabled.has(id);c.disabled=!items.length;l.append(c,document.createTextNode(name+' ('+items.length+')'));row.append(l);
   c.onchange=()=>{resetSelection();study.isolated=null;if(c.checked)study.enabled.add(id);else study.enabled.delete(id);refresh(true);};
-  if(layerLabels[id].length>1){
+  if(!independent&&layerLabels[id].length>1){
    const menu=document.createElement('select');menu.setAttribute('aria-label','Lapisan minimum '+name);
    for(const [i,label] of layerLabels[id].entries()){const o=document.createElement('option');o.value=String(i);o.textContent=i===0?'Semua lapisan':label+' ke atas';menu.append(o);}
    menu.value=String(study.minimumLayer[id]??0);menu.disabled=!items.length;
@@ -99,7 +99,7 @@ function focus(e){
  const obj=cache.get(e.id);if(!obj)return;
  const box=obj.userData.bounds??=new THREE.Box3().setFromObject(obj),center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3());
  const radius=Math.max(size.length(),.012);controls.target.copy(center);camera.position.copy(center).add(new THREE.Vector3(0,0,radius/Math.max(.12,Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*Math.min(camera.aspect,1))));
- camera.near=Math.max(radius*.0005,.000001);camera.far=Math.max(100,radius*100);camera.updateProjectionMatrix();controls.update();
+ camera.near=Math.max(radius*.0005,.000001);camera.far=Math.max(100,radius*100,camera.position.distanceTo(center)*4);camera.updateProjectionMatrix();controls.update();
 }
 $('focus').onclick=()=>{if(selected)focus(selected);};
 $('isolate').onclick=()=>{if(!selected)return;searchRevision++;study.isolated=selected.id;sync();focus(selected);};
@@ -120,7 +120,7 @@ $('search').oninput=()=>{
 async function init(){
  groupControls();
  if(location.hostname!=='127.0.0.1'){ $('notice').textContent='Aplikasi ini belum disetujui untuk publikasi.';return; }
- try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');entries=validateInventory(await r.json(),location.hostname);byId=new Map(entries.map(e=>[e.id,e]));alternatives=buildAlternatives(entries);$('notice').textContent='Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);}
+ try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('region').disabled=true;$('representation').disabled=true;$('front').textContent='+Z';$('back').textContent='−Z';$('side').textContent='−X';$('right').textContent='+X';$('top').textContent='+Y';}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);}
  catch(error){$('notice').textContent=error.message;counts();}
 }
 mountReferences(base);
