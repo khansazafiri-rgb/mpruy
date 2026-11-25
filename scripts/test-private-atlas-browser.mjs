@@ -179,7 +179,19 @@ try{
   await page.unroute(pattern,fail);await next.click();await choices.first().waitFor();assert.equal(await choices.count(),4);
   await challenge.locator('#referenceChallengeQuit').click();
   console.log('BP3D43 CHALLENGE PASS: source labels concealed, MCQ correct/incorrect, 10 distinct multilingual typed answers, single-submit lock and unavailable model excluded.');
-  }else assert(await dialog.locator('#referenceChallengeSetup').isHidden());
+  }else{
+   const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),mode=setup.locator('#referenceChallengeMode'),lang=setup.locator('#referenceChallengeLanguage');
+   await setup.waitFor({state:'visible'});
+   assert.equal(await mode.inputValue(),'source-mcq');assert(await lang.isDisabled());
+   assert(await mode.locator('option[value="mcq"]').isDisabled());assert(await mode.locator('option[value="typed"]').isDisabled());
+   await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
+   const choices=challenge.locator('#referenceChallengeAnswers button');await choices.first().waitFor();assert.equal(await choices.count(),4);
+   await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal 1/27'}).waitFor();
+   const id=await dialog.locator('#referenceViewport').getAttribute('data-rendered-id'),asset=real43.assets.get(id);assert(asset);
+   assert.equal((await choices.allTextContents()).filter(x=>x===asset.name).length,1);
+   await challenge.locator('#referenceChallengeQuit').click();await setup.waitFor({state:'visible'});
+   console.log('BP3D43 GAP SOURCE CHALLENGE PASS: 27 distinct concepts; unavailable multilingual modes disabled.');
+  }
   await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});
   await page.waitForFunction(()=>document.querySelectorAll('#referenceViewport canvas').length===0);
   await waitCounts(3,1);
