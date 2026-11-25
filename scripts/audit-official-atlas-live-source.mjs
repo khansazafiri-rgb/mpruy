@@ -10,6 +10,7 @@ import {fetchOfficialFile,parseOfficialNames,parseOfficialElements,checkArchiveE
 import {priorityPlan,priorityTargets} from './independent-atlas-priority-recovery.mjs';
 import {learningPriorityTargets} from './atlas-learning-priority-targets.mjs';
 import {checkpoints} from './audit-independent-system-coverage.mjs';
+import {diagnoseSourceGaps} from './independent-atlas-source-gap-diagnostics.mjs';
 import {parseObj,encodeNativeGlb} from './independent-bp3d-export.mjs';
 import {parseNativePositions,comparePositions} from './audit-bp3d-publication-geometry.mjs';
 const sha=b=>createHash('sha256').update(b).digest('hex');
@@ -46,6 +47,8 @@ export async function auditLive(){
   }
   const specs=[...priorityTargets,...Object.entries(checkpoints).flatMap(([g,rows])=>rows.map(([, ...names])=>[g,names])),...learningPriorityTargets];
   const rows=priorityPlan(sources,specs);
+  const gaps=diagnoseSourceGaps(sources,specs,rows);
+  const gapCounts={};for(const g of gaps)gapCounts[g.status]=(gapCounts[g.status]||0)+1;
   const samples=[];
   for(const c of samplePlan(rows)){
    try{
@@ -62,7 +65,7 @@ export async function auditLive(){
    }catch(e){samples.push({group:c.group,name:c.name,fmaId:c.fmaId,status:'HOLD',reason:String(e.message)});}
   }
   const systems={};for(const r of rows){const g=systems[r.group]??={queries:0,resolved:0,held:0};g.queries++;g[r.status==='EXPORT_CANDIDATE'?'resolved':'held']++;}
-  const report={schema:1,scope:'Fresh publisher source survey and bounded real-geometry sample, not the workstation inventory or a release.',receipts,systems,samples,unresolved:rows.filter(r=>r.status!=='EXPORT_CANDIDATE').map(r=>({group:r.group,target:r.target,status:r.status})),geometrySamplePass:samples.filter(r=>r.status==='EXACT_SOURCE_GEOMETRY_MATCH').length,geometrySampleHeld:samples.filter(r=>r.status!=='EXACT_SOURCE_GEOMETRY_MATCH').length,clinicalValidation:false,registrationValidated:false,publicRelease:'NO_GO',productionChanged:false,geometryPublished:0};
+  const report={schema:1,scope:'Fresh publisher source survey and bounded real-geometry sample, not the workstation inventory or a release.',receipts,systems,samples,gapCounts,gaps,unresolved:rows.filter(r=>r.status!=='EXPORT_CANDIDATE').map(r=>({group:r.group,target:r.target,status:r.status})),geometrySamplePass:samples.filter(r=>r.status==='EXACT_SOURCE_GEOMETRY_MATCH').length,geometrySampleHeld:samples.filter(r=>r.status!=='EXACT_SOURCE_GEOMETRY_MATCH').length,clinicalValidation:false,registrationValidated:false,publicRelease:'NO_GO',productionChanged:false,geometryPublished:0};
   console.log('OFFICIAL ATLAS LIVE SOURCE AUDIT',JSON.stringify(report));
   assert(samples.length>0&&report.geometrySampleHeld===0,'Real geometry sample held');
   return report;
