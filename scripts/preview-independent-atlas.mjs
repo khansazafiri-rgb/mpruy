@@ -1,3 +1,4 @@
+import {auditCrossVersionOverlap} from './audit-atlas-cross-version-overlap.mjs';
 import {load43Elements,combine43Registries,serve43Reference} from './load-bp3d43-private-elements.mjs';
 // Independent viewer rehearsal. No copy of private model bytes into dist/public.
 import fs from 'node:fs';
@@ -42,6 +43,8 @@ assert(!(source43Args.length||gap43Args.length)||independent,'4.3 reference requ
 const source43Registries=[];
 for(const [args,flag,file,count] of [[source43Args,'--bp3d43-folder=','bp3d43-dual-source-audit-20261125.json',12],[gap43Args,'--bp3d43-gap-folder=','bp3d43-gap-batch-dual-source-audit-20261125.json',28]])if(args.length)source43Registries.push(load43Elements(privateRoot,args[0].slice(flag.length),JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),count));
 const source43=source43Registries.length?combine43Registries(source43Registries):null;
+const crossVersionOverlap=source43?auditCrossVersionOverlap(sourcePack.inventory.bodyModels,source43.inventory.items,JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/dbcls-full-geometry-audit-20261125.json'),'utf8')).report.samples):null;
+if(crossVersionOverlap){const f=path.join(privateRoot,folder,'publication-cross-version-overlap.json'),tmp=f+'.'+process.pid+'.tmp';fs.writeFileSync(tmp,JSON.stringify(crossVersionOverlap,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,f);console.log('Private cross-version overlap:',JSON.stringify(crossVersionOverlap.counts));}
 const broadRecovery=process.argv.includes('--broad-recovery');
 const contextRecovery=process.argv.includes('--context-recovery');
 assert(!contextRecovery||independent&&broadRecovery,'Context recovery requires explicit broad independent preview');
@@ -161,7 +164,7 @@ try{
   const a=await fetch(baseURL+'/anatomy/viewer/priority-recovery/attributions.json');assert(a.ok&&(await a.json()).items.length===priority.items.length);
   assert.equal((await fetch(baseURL+'/anatomy/viewer/priority-recovery/not-approved.glb')).status,404);
  }
- const report={schema:1,recoveryReused:priority?.reused??null,recoveryFolder:priority?.folder??null,learningCoverage:coverage?{targets:coverage.targets,systems:Object.fromEntries(Object.entries(coverage.systems).map(([g,s])=>[g,{targets:s.targets,counts:s.counts}])),file:coverageFile}:null,thumbnailQC,elementSelectionConcepts:elementCatalog?.items.length||0,contextCandidateModels:contextIds.size,contextHeld:context?.held.length||0,originalUI:originalShell?.mode||'INDEPENDENT_PROTOTYPE',priorityModels:priority?.items.length||0,httpPriorityRoutesVerified:priorityRoutes,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,bp3d43ReferenceElements:source43?.assets.size||0,http43RoutesVerified:source43Routes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
+ const report={schema:1,crossVersionOverlap:crossVersionOverlap?{bodyModels:crossVersionOverlap.bodyModels,referenceElements:crossVersionOverlap.referenceElements,counts:crossVersionOverlap.counts,rawDigestOccurrences:crossVersionOverlap.rawDigestOccurrences,sourceElementOccurrences:crossVersionOverlap.sourceElementOccurrences}:null,recoveryReused:priority?.reused??null,recoveryFolder:priority?.folder??null,learningCoverage:coverage?{targets:coverage.targets,systems:Object.fromEntries(Object.entries(coverage.systems).map(([g,s])=>[g,{targets:s.targets,counts:s.counts}])),file:coverageFile}:null,thumbnailQC,elementSelectionConcepts:elementCatalog?.items.length||0,contextCandidateModels:contextIds.size,contextHeld:context?.held.length||0,originalUI:originalShell?.mode||'INDEPENDENT_PROTOTYPE',priorityModels:priority?.items.length||0,httpPriorityRoutesVerified:priorityRoutes,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,bp3d43ReferenceElements:source43?.assets.size||0,http43RoutesVerified:source43Routes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
  const f=path.join(privateRoot,folder,'publication-independent-http-qc.json'),tmp=f+'.'+process.pid+'.tmp';fs.writeFileSync(tmp,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,f);
  console.log('INDEPENDENT HTTP QC',JSON.stringify(report));
 }catch(error){server.close();throw error;}
