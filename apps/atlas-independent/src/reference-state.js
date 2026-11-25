@@ -18,3 +18,34 @@ export function requestTracker(){
  let seq=0;
  return {begin:()=>++seq,cancel:()=>{seq++;},current:id=>id===seq};
 }
+
+// Read only original glTF node identities; sanitized Three.js display names
+// are not a medical label or a unique identity. Each organ stays in its own frame.
+export function sourceNodeComponents(gltf){
+ const nodes=gltf?.parser?.json?.nodes,associations=gltf?.parser?.associations;
+ if(!Array.isArray(nodes)||!associations?.get||!gltf.scene?.traverse)return [];
+ const byNode=new Map();
+ gltf.scene.traverse(mesh=>{
+  if(!mesh.isMesh)return;
+  let node=mesh,index;
+  while(node){
+   const a=associations.get(node);
+   if(Number.isInteger(a?.nodes)){index=a.nodes;break;}
+   node=node.parent;
+  }
+  const original=nodes[index];
+  if(!original||!Number.isInteger(original.mesh)||!associations.get(mesh)||associations.get(mesh).meshes!==original.mesh)return;
+  const entry=byNode.get(index)||{index,label:typeof original.name==='string'&&original.name.trim()?original.name:'Unnamed source node '+index,meshes:[]};
+  entry.meshes.push(mesh);byNode.set(index,entry);
+ });
+ return [...byNode.values()].sort((a,b)=>a.label.localeCompare(b.label)||a.index-b.index);
+}
+export function isolateSourceComponent(meshes,component,originalVisibility){
+ const selected=new Set(component?.meshes||[]);
+ // A hidden mesh ancestor would also hide a selected child. Reject ambiguous
+ // hierarchy instead of claiming that the exact component is isolated.
+ for(const m of selected)for(let p=m.parent;p;p=p.parent)if(p.isMesh&&!selected.has(p))return false;
+ if(component&&(!selected.size||[...selected].some(m=>!originalVisibility.has(m))))return false;
+ for(const m of meshes)m.visible=component?selected.has(m)&&originalVisibility.get(m):originalVisibility.get(m);
+ return true;
+}
