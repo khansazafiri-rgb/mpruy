@@ -11,15 +11,19 @@ const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const pin='fd527e6f4daf732fd814314d9257df5877b844bc';
 export function resolveGapRows(doc,paths,catalog){
  assert(doc.schema===1&&doc.sourceVersion==='4.3'&&doc.publicRelease==='NO_GO'&&doc.geometryVerified===false&&doc.mirrorCommit===pin&&doc.rows.length===28);
- const rows=doc.rows.map(r=>{
-  assert(/^FJ\d+[A-Za-z]?$/.test(r.fj)&&typeof r.name==='string'&&Number.isSafeInteger(r.bytes)&&r.bytes>0);
-  const files=paths.filter(p=>p.startsWith('meshes/'+r.fj+'_')&&p.endsWith('.obj'));assert.equal(files.length,1,'Ambiguous mirror identity '+r.fj);
-  const name=path.posix.basename(files[0]);const m=name.match(/^(FJ\d+[A-Za-z]?)_(BP\d+)_(FMA\d+)_(.+)\.obj$/);
-  assert(m&&m[1]===r.fj&&m[4].replace(/_/g,' ')===r.name,'Source label differs '+r.fj);
-  const conceptMembership=['is_a','part_of'].filter(t=>catalog.rows.get(m[3]+':'+t)?.includes(r.fj));assert(conceptMembership.length,'No exact membership '+r.fj);
-  return {...r,bp:m[2],fma:m[3],conceptMembership,observedArchiveBasename:name};
- });
- const resolved={...doc,licenseReview:'VERSION_SPECIFIC_REVIEW_REQUIRED',rows};validateCandidates(resolved,catalog);return resolved;
+ const seen=new Set(),rows=[],held=[];
+ for(const r of doc.rows){
+  assert(/^FJ\d+[A-Za-z]?$/.test(r.fj)&&!seen.has(r.fj)&&typeof r.name==='string'&&Number.isSafeInteger(r.bytes)&&r.bytes>0);seen.add(r.fj);
+  try{
+   const files=paths.filter(p=>p.startsWith('meshes/'+r.fj+'_')&&p.endsWith('.obj'));assert.equal(files.length,1,'Ambiguous mirror identity '+r.fj);
+   const name=path.posix.basename(files[0]),m=name.match(/^(FJ\d+[A-Za-z]?)_(BP\d+)_(FMA\d+)_(.+)\.obj$/);
+   const normal=s=>s.toLowerCase().replace(/_/g,' ').trim().replace(/\s+/g,' ');
+   assert(m&&m[1]===r.fj&&normal(m[4])===normal(r.name),'Source label differs '+r.fj);
+   const conceptMembership=['is_a','part_of'].filter(t=>catalog.rows.get(m[3]+':'+t)?.includes(r.fj));assert(conceptMembership.length,'No exact membership '+r.fj);
+   rows.push({...r,bp:m[2],fma:m[3],conceptMembership,observedArchiveBasename:name});
+  }catch(e){held.push({fj:r.fj,name:r.name,status:'HOLD_IDENTITY',reason:String(e.message).slice(0,400)});}
+ }
+ const resolved={...doc,licenseReview:'VERSION_SPECIFIC_REVIEW_REQUIRED',rows,identityHeld:held};validateCandidates(resolved,catalog);return resolved;
 }
 function resolve(){
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'medcoel-bp43-gap-tree-'));
@@ -32,6 +36,22 @@ function resolve(){
   const resolved=resolveGapRows(doc,paths,catalog);console.log('BP3D43 GAP BATCH IDENTITIES',JSON.stringify(resolved));return resolved;
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 }
-const doc=resolve(),publisher=run(doc),mirror=runMirror(doc);
-const matches=publisher.results.map(p=>{const m=mirror.results.find(x=>x.fj===p.fj);assert(m&&p.rawSHA256===m.rawSHA256&&p.triangles===m.triangles&&p.bp===m.bp&&p.fma===m.fma);return {fj:p.fj,bp:p.bp,fma:p.fma,name:p.name,triangles:p.triangles,rawSHA256:p.rawSHA256};});
-assert.equal(matches.length,28);console.log('BP3D43 GAP BATCH DUAL SOURCE PASS',JSON.stringify({matches,geometryPublished:0,publicRelease:'NO_GO',clinicalValidation:false,registrationValidated:false}));
+export function compareGapReports(doc,publisher,mirror){
+ const results=[...doc.identityHeld];
+ for(const r of doc.rows){
+  const p=publisher?.results?.find(x=>x.fj===r.fj),m=mirror?.results?.find(x=>x.fj===r.fj);
+  const match=p?.status==='EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH'&&m?.status==='EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH'&&/^[a-f0-9]{64}$/.test(p.rawSHA256||'')&&p.rawSHA256===m.rawSHA256&&p.triangles===m.triangles&&p.triangles>0&&p.bp===r.bp&&m.bp===r.bp&&p.fma===r.fma&&m.fma===r.fma;
+  results.push(match?{fj:r.fj,bp:r.bp,fma:r.fma,name:r.name,triangles:p.triangles,rawSHA256:p.rawSHA256,status:'DUAL_SOURCE_MATCH'}:{fj:r.fj,name:r.name,status:'HOLD_GEOMETRY',publisher:p?.status||'UNAVAILABLE',mirror:m?.status||'UNAVAILABLE',publisherReason:p?.reason||null,mirrorReason:m?.reason||null});
+ }
+ assert.equal(results.length,28);
+ return {results,matched:results.filter(x=>x.status==='DUAL_SOURCE_MATCH').length,held:results.filter(x=>x.status!=='DUAL_SOURCE_MATCH').length,geometryPublished:0,publicRelease:'NO_GO',clinicalValidation:false,registrationValidated:false};
+}
+function main(){
+ const doc=resolve();let publisher=null,mirror=null;
+ if(doc.rows.length){
+  try{publisher=run(doc,{allowHeld:true});}catch(e){console.warn('Publisher batch unavailable:',String(e.message).slice(0,400));}
+  try{mirror=runMirror(doc,{allowHeld:true});}catch(e){console.warn('Mirror batch unavailable:',String(e.message).slice(0,400));}
+ }
+ const report=compareGapReports(doc,publisher,mirror);console.log('BP3D43 GAP BATCH DUAL SOURCE REPORT',JSON.stringify(report));assert.equal(report.held,0,'One or more candidates held; see per-element evidence');
+}
+if(process.argv[1]===fileURLToPath(import.meta.url))main();
