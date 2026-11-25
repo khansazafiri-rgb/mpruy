@@ -23,7 +23,7 @@ function step(name,command,args,required=[]){
 step('install','npm',['ci','--prefix','apps/atlas-independent','--ignore-scripts']);
 step('security','npm',['audit','--prefix','apps/atlas-independent','--json'],['install']);
 step('app-tests','npm',['test','--prefix','apps/atlas-independent'],['install']);
-step('source-tests',process.execPath,['--test','scripts/independent-bp3d-export.test.mjs','scripts/independent-source-coverage.test.mjs','scripts/audit-bp3d-publication-geometry.test.mjs','scripts/independent-atlas-final-qc.test.mjs','scripts/assemble-atlas-distribution-review.test.mjs','scripts/z-anatomy-final-qc.test.mjs','scripts/expand-independent-source-review.test.mjs','scripts/audit-independent-system-coverage.test.mjs'],['install']);
+step('source-tests',process.execPath,['--test','scripts/independent-bp3d-export.test.mjs','scripts/independent-source-coverage.test.mjs','scripts/audit-bp3d-publication-geometry.test.mjs','scripts/independent-atlas-final-qc.test.mjs','scripts/assemble-atlas-distribution-review.test.mjs','scripts/z-anatomy-final-qc.test.mjs','scripts/expand-independent-source-review.test.mjs','scripts/audit-independent-system-coverage.test.mjs','scripts/independent-atlas-host.test.mjs'],['install']);
 const expansionOutput=step('expansion',process.execPath,['scripts/expand-independent-source-review.mjs',pack,target],['source-tests']);
 let finalPack=pack;
 if(result.steps.expansion.status==='PASS'){
