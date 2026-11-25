@@ -12,6 +12,8 @@ test('mixed CR and LF manifest lines retain exact membership and reject wrong ve
  assert.equal(selectMember(['FJ2_BP2_FMA1_Left_fixture.obj','FJ1_BP2_FMA1_Other.obj'],r),'FJ2_BP2_FMA1_Left_fixture.obj');
  assert.throws(()=>selectMember(['FJ2_BP2_FMA1_Right_fixture.obj'],r));
  assert.throws(()=>selectMember(['../FJ2_BP2_FMA1_Left_fixture.obj'],r));
+ assert.equal(selectMember(['meshes/parts/FJ2_BP2_FMA1_Left_fixture.obj'],r),'meshes/parts/FJ2_BP2_FMA1_Left_fixture.obj');
+ assert.throws(()=>selectMember(['FJ2_BP2_FMA1_Left_fixture.obj','nested/FJ2_BP2_FMA1_Left_fixture.obj'],r));
 });
 
 import {parseObj,encodeNativeGlb} from './independent-bp3d-export.mjs';
