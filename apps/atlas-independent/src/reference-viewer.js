@@ -12,7 +12,7 @@ export function mountReferences(base){
  const dialog=$('referenceDialog'),host=$('referenceViewport'),tracker=requestTracker();
  let sourceKind='hra',entries=[],renderer=null,controls=null,camera=null,scene=null,model=null,observer=null,selected=null,components=[],visibility=new Map(),activeComponent=null;
  const status=t=>$('referenceStatus').textContent=t;
- function clearComponents(){components=[];visibility.clear();activeComponent=null;$('referenceComponents').hidden=true;$('referenceComponentSearch').value='';$('referenceComponentSelect').replaceChildren();}
+ function clearComponents(){delete host.dataset.renderedId;delete host.dataset.renderedTriangles;components=[];visibility.clear();activeComponent=null;$('referenceComponents').hidden=true;$('referenceComponentSearch').value='';$('referenceComponentSelect').replaceChildren();}
  function listComponents(){const select=$('referenceComponentSelect'),q=$('referenceComponentSearch').value.trim().toLowerCase();select.replaceChildren();for(const c of components.filter(c=>c.label.toLowerCase().includes(q)||String(c.index)===q)){const option=document.createElement('option');option.value=String(c.index);option.textContent=c.label+' · node '+c.index;select.append(option);}$('referenceComponentIsolate').disabled=!select.options.length;}
  function cleanup(){
   clearComponents();
@@ -49,7 +49,7 @@ export function mountReferences(base){
    const g=await new GLTFLoader().loadAsync(base+(sourceKind==='bp43'?'bp3d43-reference/':'hra-reference/')+e.id+'.glb');candidate=g.scene;
    if(!tracker.current(token)||!dialog.open){dispose(candidate);return;}
    let meshes=0;candidate.traverse(m=>{if(m.isMesh)meshes++;});if(!meshes||sourceKind==='bp43'&&(meshes!==1||g.parser.json.extras?.source!=='Official BodyParts3D 4.3'||g.parser.json.nodes?.[0]?.extras?.officialElementFileId!==e.fj))throw Error('Identitas mesh referensi tidak sesuai');
-   model=candidate;scene.add(model);components=sourceNodeComponents(g);model.traverse(m=>{if(m.isMesh)visibility.set(m,m.visible);});$('referenceComponents').hidden=!components.length;listComponents();fit();status(e.name+' · '+e.version+' · '+meshes+' mesh dirender · '+components.length+' node sumber teridentifikasi. Label node belum divalidasi klinis.');
+   model=candidate;scene.add(model);components=sourceNodeComponents(g);model.traverse(m=>{if(m.isMesh)visibility.set(m,m.visible);});$('referenceComponents').hidden=!components.length;listComponents();fit();renderer.render(scene,camera);if(sourceKind==='bp43'){const count=renderer.info.render.triangles;if(count!==e.triangles)throw Error('Jumlah triangle yang dirender berbeda dari audit');host.dataset.renderedId=e.id;host.dataset.renderedTriangles=String(count);}status(e.name+' · '+e.version+' · '+meshes+' mesh dirender · '+components.length+' node sumber teridentifikasi. Label node belum divalidasi klinis.');
   }catch(error){if(candidate){scene?.remove(candidate);dispose(candidate);if(model===candidate)model=null;}if(tracker.current(token)){clearComponents();status('Referensi gagal dimuat: '+String(error.message||error));}}
  }
  function list(){
@@ -69,7 +69,7 @@ export function mountReferences(base){
  $('referenceClose').onclick=()=>dialog.close();dialog.addEventListener('close',cleanup);
  const open=async(kind)=>{
   if(location.hostname!=='127.0.0.1'||dialog.open)return;
-  sourceKind=kind;$('referenceTitle').textContent=kind==='bp43'?'Referensi elemen BodyParts3D 4.3':'Referensi organ HRA';dialog.showModal();$('referenceSource').removeAttribute('href');$('referenceSource').textContent='';entries=[];list();
+  sourceKind=kind;$('referenceSearch').value='';$('referenceSearch').placeholder=kind==='bp43'?'Cari elemen BP3D':'Cari organ HRA';$('referenceSearch').setAttribute('aria-label',kind==='bp43'?'Cari elemen BP3D 4.3':'Cari organ HRA');$('referenceSelect').setAttribute('aria-label',kind==='bp43'?'Pilih elemen BP3D 4.3':'Pilih organ HRA');$('referenceTitle').textContent=kind==='bp43'?'Referensi elemen BodyParts3D 4.3':'Referensi organ HRA';dialog.showModal();$('referenceSource').removeAttribute('href');$('referenceSource').textContent='';entries=[];list();
   const token=tracker.begin();
   try{createScene();status('Memeriksa referensi sumber…');const response=await fetch(base+(kind==='bp43'?'bp3d43-reference/':'hra-reference/')+'inventory.json',{cache:'no-store'});if(!response.ok)throw Error('Paket referensi belum tersedia pada preview ini');
    const doc=await response.json(),data=kind==='bp43'?reference43Entries(doc):referenceEntries(doc);if(!tracker.current(token)||!dialog.open)return;
