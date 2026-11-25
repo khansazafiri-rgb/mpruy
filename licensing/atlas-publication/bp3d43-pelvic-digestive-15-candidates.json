@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "batchId": "pelvic-digestive-15",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "15 exact source-element candidate identifiers, not whole organs or complete bowel segments. Male reference only; female reproductive coverage remains open. Resolve exact filename identity and publisher membership; compare raw mesh hashes and triangle counts independently. No source registration or distribution approval.",
+  "rows": [
+    {
+      "fj": "FJ3080",
+      "discoveryBP": "BP23311",
+      "discoveryFMA": "FMA14539",
+      "name": "Cystic duct",
+      "faces": 278,
+      "vertices": 156,
+      "bytes": 16652,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ3136",
+      "discoveryBP": "BP23180",
+      "discoveryFMA": "FMA18255",
+      "name": "Left epididymis",
+      "faces": 238,
+      "vertices": 184,
+      "bytes": 17027,
+      "group": "reproductive"
+    },
+    {
+      "fj": "FJ3137",
+      "discoveryBP": "BP21861",
+      "discoveryFMA": "FMA14065",
+      "name": "Left seminal vesicle",
+      "faces": 370,
+      "vertices": 244,
+      "bytes": 24548,
+      "group": "reproductive"
+    },
+    {
+      "fj": "FJ3138",
+      "discoveryBP": "BP22947",
+      "discoveryFMA": "FMA55661",
+      "name": "Left testis",
+      "faces": 210,
+      "vertices": 107,
+      "bytes": 11545,
+      "group": "reproductive"
+    },
+    {
+      "fj": "FJ3139",
+      "discoveryBP": "BP21548",
+      "discoveryFMA": "FMA55661",
+      "name": "Prostate",
+      "faces": 442,
+      "vertices": 223,
+      "bytes": 25398,
+      "group": "reproductive"
+    },
+    {
+      "fj": "FJ3141",
+      "discoveryBP": "BP23020",
+      "discoveryFMA": "FMA18255",
+      "name": "Right epididymis",
+      "faces": 76,
+      "vertices": 115,
+      "bytes": 8958,
+      "group": "reproductive"
+    },
+    {
+      "fj": "FJ3142",
+      "discoveryBP": "BP22902",
+      "discoveryFMA": "FMA55661",
+      "name": "Right testis",
+      "faces": 212,
+      "vertices": 108,
+      "bytes": 11789,
+      "group": "reproductive"
+    },
+    {
+      "fj": "FJ3143",
+      "discoveryBP": "BP21468",
+      "discoveryFMA": "FMA14065",
+      "name": "Right seminal vesicle",
+      "faces": 360,
+      "vertices": 235,
+      "bytes": 23975,
+      "group": "reproductive"
+    },
+    {
+      "fj": "FJ3148",
+      "discoveryBP": "BP22605",
+      "discoveryFMA": "FMA19667",
+      "name": "Urethra",
+      "faces": 440,
+      "vertices": 358,
+      "bytes": 34000,
+      "group": "urinary"
+    },
+    {
+      "fj": "FJ2574",
+      "discoveryBP": "BP21558",
+      "discoveryFMA": "FMA14092",
+      "name": "Proximal part of ileum",
+      "faces": 380,
+      "vertices": 197,
+      "bytes": 22149,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2576",
+      "discoveryBP": "BP22937",
+      "discoveryFMA": "FMA14092",
+      "name": "Middle part of ileum",
+      "faces": 172,
+      "vertices": 94,
+      "bytes": 9791,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2587",
+      "discoveryBP": "BP23004",
+      "discoveryFMA": "FMA14092",
+      "name": "Distal part of ileum",
+      "faces": 228,
+      "vertices": 117,
+      "bytes": 12701,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2606",
+      "discoveryBP": "BP19824",
+      "discoveryFMA": "FMA14092",
+      "name": "Proximal part of jejunum",
+      "faces": 320,
+      "vertices": 207,
+      "bytes": 20813,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2607",
+      "discoveryBP": "BP23049",
+      "discoveryFMA": "FMA14092",
+      "name": "Middle part of jejunum",
+      "faces": 240,
+      "vertices": 127,
+      "bytes": 13644,
+      "group": "digestive"
+    },
+    {
+      "fj": "FJ2611",
+      "discoveryBP": "BP21556",
+      "discoveryFMA": "FMA14092",
+      "name": "Distal part of jejunum",
+      "faces": 226,
+      "vertices": 123,
+      "bytes": 13046,
+      "group": "digestive"
+    }
+  ]
+}
