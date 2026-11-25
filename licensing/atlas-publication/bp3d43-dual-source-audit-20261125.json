@@ -1,0 +1,811 @@
+{
+  "schema": 1,
+  "sourceCommit": "995cdd6b32c6b68c1c9f5c150c25884f1db36aab",
+  "workflowRun": 45611457395,
+  "workflowJob": 139195764529,
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "geometryPublished": 0,
+  "publisher": {
+    "schema": 1,
+    "version": "4.3",
+    "manifestURL": "https://lifesciencedb.jp/bp3d/get-info.cgi?version=4.3&cmd=concept-objfiles-list",
+    "manifestSHA256": "c3d16c891016da13447de2fc3241d05d92e8f9dc460e363233c03f420b935d4f",
+    "manifestElements": 3210,
+    "results": [
+      {
+        "fj": "FJ3670",
+        "bp": "BP21406",
+        "fma": "FMA49178",
+        "name": "Isthmus of thyroid gland",
+        "faces": 1746,
+        "vertices": 5238,
+        "bytes": 493303,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP21406",
+          "fma": "FMA49176",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ3670_BP21406_FMA49178_Isthmus of thyroid gland.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ3670/FJ3670_BP21406_FMA49178_Isthmus of thyroid gland.obj",
+        "rawSHA256": "798a3b54f78eb3cc20f118b914202855e003b252a7e479f022fe1c2d6b9b14c0",
+        "glbSHA256": "f7ce9236e4b822a09645938ae736d30634d3877da2e7c1267917240367de9820",
+        "archiveSHA256": "95e3b60208fd571adc9d641f1914607c2063c440ef133985b84f976efcf1a8dc",
+        "rawBytes": 493303,
+        "triangles": 1746,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ3926",
+        "bp": "BP29477",
+        "fma": "FMA18157",
+        "name": "Trunk of left vagus nerve",
+        "faces": 29372,
+        "vertices": 14820,
+        "bytes": 1963465,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29477",
+          "fma": "FMA11195",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ3926_BP29477_FMA18157_Trunk of left vagus nerve.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ3926/FJ3926_BP29477_FMA18157_Trunk of left vagus nerve.obj",
+        "rawSHA256": "d9a723878f9fc77ca8e82778dcbd08a40fc27b5d3880c404f30747f854d3074c",
+        "glbSHA256": "c054b217770a68b61004ab567ee49112c3f71941148f5efb9a863a3adf734c5a",
+        "archiveSHA256": "6543c9a209f8f885ff4652a07350ba0a050e231193b6b4695aa94b73b21094df",
+        "rawBytes": 1963465,
+        "triangles": 29372,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ4024",
+        "bp": "BP29476",
+        "fma": "FMA18151",
+        "name": "Trunk of right vagus nerve",
+        "faces": 24790,
+        "vertices": 12608,
+        "bytes": 1651782,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29476",
+          "fma": "FMA11195",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4024_BP29476_FMA18151_Trunk of right vagus nerve.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ4024/FJ4024_BP29476_FMA18151_Trunk of right vagus nerve.obj",
+        "rawSHA256": "be374d656c6ec642a93681673744d0330b06d70a84d0dd53bcd3dcde870284df",
+        "glbSHA256": "e2e2a2579b356516ae97fa1d071cbdabbf6bf07f875515f260eae9c826e0dbe0",
+        "archiveSHA256": "946c7da521c6c5cc8252491a805d031ef8a20bfc0d8322171ecb11c768d674f0",
+        "rawBytes": 1651782,
+        "triangles": 24790,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ4171",
+        "bp": "BP29488",
+        "fma": "FMA37074",
+        "name": "Left axillary nerve",
+        "faces": 654,
+        "vertices": 481,
+        "bytes": 46757,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29488",
+          "fma": "FMA37072",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4171_BP29488_FMA37074_Left axillary nerve.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ4171/FJ4171_BP29488_FMA37074_Left axillary nerve.obj",
+        "rawSHA256": "ba5be7fa0836ccfa72b016da504ab8ff04498c053d3ca4f5cf6b7ff18940418d",
+        "glbSHA256": "ad596f4dbb3f367c2d61b9a7edebb34cb9a29066bad619a7b91892b3ff4583af",
+        "archiveSHA256": "dece60572c4d40149098e021e65eeb44797fd82c0bded8d127e7ada43997d98a",
+        "rawBytes": 46757,
+        "triangles": 654,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ4172",
+        "bp": "BP29806",
+        "fma": "FMA37071",
+        "name": "Left radial nerve",
+        "faces": 576,
+        "vertices": 327,
+        "bytes": 35574,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29538",
+          "fma": "FMA37069",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4172_BP29806_FMA37071_Left radial nerve.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ4172/FJ4172_BP29806_FMA37071_Left radial nerve.obj",
+        "rawSHA256": "a6cd726af7026964e340fdae14c1dc22a8c8fbe0ed8996c937709e83a4cef909",
+        "glbSHA256": "7cb1ae568f0a6c1a58fdba88534c241d35d5125dfe6ba424c229346756c0938b",
+        "archiveSHA256": "ce98f153cbd968f6aa80f046dfd7f5bfbbf9ae182404d1afb4c62322313f777d",
+        "rawBytes": 35574,
+        "triangles": 576,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ4224",
+        "bp": "BP29809",
+        "fma": "FMA37068",
+        "name": "Left median nerve",
+        "faces": 4372,
+        "vertices": 2246,
+        "bytes": 275660,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29531",
+          "fma": "FMA14385",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4224_BP29809_FMA37068_Left median nerve.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ4224/FJ4224_BP29809_FMA37068_Left median nerve.obj",
+        "rawSHA256": "0005af3008aa7ae05d1c8900bd559458f897d89fc99c4899323195af81ba99e3",
+        "glbSHA256": "48aa774d2c4359aa88b2913adf62fee2368ea962ff23935b6be03e780e86e1ae",
+        "archiveSHA256": "48778f213a8ac27f84f1872b485b07480f81899487b858f6393010dd884570bc",
+        "rawBytes": 275660,
+        "triangles": 4372,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ4225",
+        "bp": "BP29815",
+        "fma": "FMA37066",
+        "name": "Left musculocutaneous nerve",
+        "faces": 3264,
+        "vertices": 1792,
+        "bytes": 209111,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29512",
+          "fma": "FMA37064",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4225_BP29815_FMA37066_Left musculocutaneous nerve.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ4225/FJ4225_BP29815_FMA37066_Left musculocutaneous nerve.obj",
+        "rawSHA256": "33bcb8e18b548e418eaef9905d8639382498628b0937a2faba4b43b2d257e303",
+        "glbSHA256": "b9c18d21f4c6bf57c2e1419890a2548e6775da31b037f12db0e7ab179faa8359",
+        "archiveSHA256": "9f273c70b60a8d709a5da08e22258c3f042c4a4cad5e3c246bc9818a7ce03bab",
+        "rawBytes": 209111,
+        "triangles": 3264,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ4240",
+        "bp": "BP29806",
+        "fma": "FMA37071",
+        "name": "Left radial nerve",
+        "faces": 4474,
+        "vertices": 2280,
+        "bytes": 281192,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29538",
+          "fma": "FMA37069",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4240_BP29806_FMA37071_Left radial nerve.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ4240/FJ4240_BP29806_FMA37071_Left radial nerve.obj",
+        "rawSHA256": "b7bbc22a41bcfc72af2c1a9b6fedd888e372d784887ef4d7400f079e678f698d",
+        "glbSHA256": "998201e355a6a0bfe049f40feccffb69245ee7b85bc1e3e1230289bbf090fd90",
+        "archiveSHA256": "1ad73c35c93d256e1b6dfff8d4df9e7bb13e04a0c08f1bad4e7dc1cfbf00d52c",
+        "rawBytes": 281192,
+        "triangles": 4474,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ4243",
+        "bp": "BP29488",
+        "fma": "FMA37074",
+        "name": "Left axillary nerve",
+        "faces": 360,
+        "vertices": 310,
+        "bytes": 27986,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29488",
+          "fma": "FMA37072",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4243_BP29488_FMA37074_Left axillary nerve.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ4243/FJ4243_BP29488_FMA37074_Left axillary nerve.obj",
+        "rawSHA256": "1744a5584078ab48f0a1fd4e4c06efefd304c61208eda1f2792d17d745179d12",
+        "glbSHA256": "262d5d08a3afee3269b1cee2cade865159da66bdfc04930f306e01292d9c858c",
+        "archiveSHA256": "84365dde57213e87c766f42702fd47b509532af85aa304c31951d03e338c7c75",
+        "rawBytes": 27986,
+        "triangles": 360,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ4258",
+        "bp": "BP29812",
+        "fma": "FMA37321",
+        "name": "Left ulnar nerve",
+        "faces": 4406,
+        "vertices": 2242,
+        "bytes": 276297,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29523",
+          "fma": "FMA37319",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4258_BP29812_FMA37321_Left ulnar nerve.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ4258/FJ4258_BP29812_FMA37321_Left ulnar nerve.obj",
+        "rawSHA256": "e83c41c5d566d299f56e4e68ae45022fa7b41a649e4a2a6e4de1cc6ba17ad38f",
+        "glbSHA256": "a4aa3704d570051b43e6d0e0b1e225a78c038aa552dd7478dfabc233ba3c9f2e",
+        "archiveSHA256": "cb5745fa210ba1994108687280607d6c6e35f6c8a83959ed1a0ef0868b7c7e40",
+        "rawBytes": 276297,
+        "triangles": 4406,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ4425",
+        "bp": "BP29628",
+        "fma": "FMA52590",
+        "name": "Cauda equina",
+        "faces": 6716,
+        "vertices": 8676,
+        "bytes": 747869,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29628",
+          "fma": "FMA14462",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4425_BP29628_FMA52590_Cauda equina.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ4425/FJ4425_BP29628_FMA52590_Cauda equina.obj",
+        "rawSHA256": "69c07f328df07098ecaa77c29d9b65f33b928678ae2eb69e984681ffc2e8e339",
+        "glbSHA256": "0c3364743b6eda67dc85a1788ad29c307546f37078dcaee8366d0e89748e3d15",
+        "archiveSHA256": "45d4d6820910282693f5551a02a3a11e03d5bead9752722ec562865e65c98300",
+        "rawBytes": 747869,
+        "triangles": 6716,
+        "omitted": 0
+      },
+      {
+        "fj": "FJ5082",
+        "bp": "BP28813",
+        "fma": "FMA13111",
+        "name": "Right external jugular vein",
+        "faces": 4348,
+        "vertices": 2176,
+        "bytes": 272396,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP28813",
+          "fma": "FMA13110",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ5082_BP28813_FMA13111_Right external jugular vein.obj",
+        "status": "EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH",
+        "archiveMember": "FJ5082/FJ5082_BP28813_FMA13111_Right external jugular vein.obj",
+        "rawSHA256": "6a108df43a56e51fe5eeb15cb568715790de731402f5df94b54f6a47fd3c1e74",
+        "glbSHA256": "90af3c1eee711e832259d565a34d88d08290166e039b78a20bfafa4161a3eb21",
+        "archiveSHA256": "e76caefaa175438b21d98009338fb3a354139ae14f9e6b28625f95525d35d1d0",
+        "rawBytes": 272396,
+        "triangles": 4348,
+        "omitted": 0
+      }
+    ],
+    "parsed": 12,
+    "held": 0,
+    "clinicalValidation": false,
+    "registrationValidated": false,
+    "geometryPublished": 0,
+    "publicRelease": "NO_GO",
+    "licenseReview": "VERSION_SPECIFIC_REVIEW_REQUIRED"
+  },
+  "mirror": {
+    "schema": 1,
+    "mirror": "https://github.com/olivercase/body_parts_3d_api.git",
+    "commit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+    "manifestSHA256": "a199eb9cb258266768b7690f4ac2591f67d4b146c95e14046c46091c35c09385",
+    "results": [
+      {
+        "fj": "FJ3670",
+        "bp": "BP21406",
+        "fma": "FMA49178",
+        "name": "Isthmus of thyroid gland",
+        "faces": 1746,
+        "vertices": 5238,
+        "bytes": 493303,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP21406",
+          "fma": "FMA49176",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ3670_BP21406_FMA49178_Isthmus of thyroid gland.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ3670_BP21406_FMA49178_Isthmus of thyroid gland.obj",
+        "rawSHA256": "798a3b54f78eb3cc20f118b914202855e003b252a7e479f022fe1c2d6b9b14c0",
+        "glbSHA256": "643671f7847437c2d7ca709e4f6238de7fba68c95ac018eea79ffde84d7a212f",
+        "triangles": 1746
+      },
+      {
+        "fj": "FJ3926",
+        "bp": "BP29477",
+        "fma": "FMA18157",
+        "name": "Trunk of left vagus nerve",
+        "faces": 29372,
+        "vertices": 14820,
+        "bytes": 1963465,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29477",
+          "fma": "FMA11195",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ3926_BP29477_FMA18157_Trunk of left vagus nerve.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ3926_BP29477_FMA18157_Trunk of left vagus nerve.obj",
+        "rawSHA256": "d9a723878f9fc77ca8e82778dcbd08a40fc27b5d3880c404f30747f854d3074c",
+        "glbSHA256": "47c2c3e114beb0246ac004baa684817d06ce7c6153370d450a1d6a450062ab32",
+        "triangles": 29372
+      },
+      {
+        "fj": "FJ4024",
+        "bp": "BP29476",
+        "fma": "FMA18151",
+        "name": "Trunk of right vagus nerve",
+        "faces": 24790,
+        "vertices": 12608,
+        "bytes": 1651782,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29476",
+          "fma": "FMA11195",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4024_BP29476_FMA18151_Trunk of right vagus nerve.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ4024_BP29476_FMA18151_Trunk of right vagus nerve.obj",
+        "rawSHA256": "be374d656c6ec642a93681673744d0330b06d70a84d0dd53bcd3dcde870284df",
+        "glbSHA256": "43a4522d40e1d9dc0804c6d520554d5a1394a16622e5a85aec39a03281e445af",
+        "triangles": 24790
+      },
+      {
+        "fj": "FJ4171",
+        "bp": "BP29488",
+        "fma": "FMA37074",
+        "name": "Left axillary nerve",
+        "faces": 654,
+        "vertices": 481,
+        "bytes": 46757,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29488",
+          "fma": "FMA37072",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4171_BP29488_FMA37074_Left axillary nerve.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ4171_BP29488_FMA37074_Left axillary nerve.obj",
+        "rawSHA256": "ba5be7fa0836ccfa72b016da504ab8ff04498c053d3ca4f5cf6b7ff18940418d",
+        "glbSHA256": "edde315a1c2e1b5c6fd2a2151c4e56827978b031dedb9e83d109206b21c8a666",
+        "triangles": 654
+      },
+      {
+        "fj": "FJ4172",
+        "bp": "BP29806",
+        "fma": "FMA37071",
+        "name": "Left radial nerve",
+        "faces": 576,
+        "vertices": 327,
+        "bytes": 35574,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29538",
+          "fma": "FMA37069",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4172_BP29806_FMA37071_Left radial nerve.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ4172_BP29806_FMA37071_Left radial nerve.obj",
+        "rawSHA256": "a6cd726af7026964e340fdae14c1dc22a8c8fbe0ed8996c937709e83a4cef909",
+        "glbSHA256": "61085cac48e1b9ed9ad29425c56430aeac0bff7dc66361655e54b4234ef67148",
+        "triangles": 576
+      },
+      {
+        "fj": "FJ4224",
+        "bp": "BP29809",
+        "fma": "FMA37068",
+        "name": "Left median nerve",
+        "faces": 4372,
+        "vertices": 2246,
+        "bytes": 275660,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29531",
+          "fma": "FMA14385",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4224_BP29809_FMA37068_Left median nerve.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ4224_BP29809_FMA37068_Left median nerve.obj",
+        "rawSHA256": "0005af3008aa7ae05d1c8900bd559458f897d89fc99c4899323195af81ba99e3",
+        "glbSHA256": "38ab5183485a0e1ab32148b67c3e3d043d88d50e955f3cca3769f8099daebf0d",
+        "triangles": 4372
+      },
+      {
+        "fj": "FJ4225",
+        "bp": "BP29815",
+        "fma": "FMA37066",
+        "name": "Left musculocutaneous nerve",
+        "faces": 3264,
+        "vertices": 1792,
+        "bytes": 209111,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29512",
+          "fma": "FMA37064",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4225_BP29815_FMA37066_Left musculocutaneous nerve.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ4225_BP29815_FMA37066_Left musculocutaneous nerve.obj",
+        "rawSHA256": "33bcb8e18b548e418eaef9905d8639382498628b0937a2faba4b43b2d257e303",
+        "glbSHA256": "82a7d300147dd935c436cc5e67255828198cea30c339c60de69391adc8bccde8",
+        "triangles": 3264
+      },
+      {
+        "fj": "FJ4240",
+        "bp": "BP29806",
+        "fma": "FMA37071",
+        "name": "Left radial nerve",
+        "faces": 4474,
+        "vertices": 2280,
+        "bytes": 281192,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29538",
+          "fma": "FMA37069",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4240_BP29806_FMA37071_Left radial nerve.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ4240_BP29806_FMA37071_Left radial nerve.obj",
+        "rawSHA256": "b7bbc22a41bcfc72af2c1a9b6fedd888e372d784887ef4d7400f079e678f698d",
+        "glbSHA256": "910a8d15279158e87db2fa64e3e528500e3e6db3ec4bd4a2fa625fd075385196",
+        "triangles": 4474
+      },
+      {
+        "fj": "FJ4243",
+        "bp": "BP29488",
+        "fma": "FMA37074",
+        "name": "Left axillary nerve",
+        "faces": 360,
+        "vertices": 310,
+        "bytes": 27986,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29488",
+          "fma": "FMA37072",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4243_BP29488_FMA37074_Left axillary nerve.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ4243_BP29488_FMA37074_Left axillary nerve.obj",
+        "rawSHA256": "1744a5584078ab48f0a1fd4e4c06efefd304c61208eda1f2792d17d745179d12",
+        "glbSHA256": "0c2932396f601092d6ab71de8f0346c7c910e95fec36d2b94ac75fe48a8f76dd",
+        "triangles": 360
+      },
+      {
+        "fj": "FJ4258",
+        "bp": "BP29812",
+        "fma": "FMA37321",
+        "name": "Left ulnar nerve",
+        "faces": 4406,
+        "vertices": 2242,
+        "bytes": 276297,
+        "conceptMembership": [
+          "is_a",
+          "part_of"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29523",
+          "fma": "FMA37319",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4258_BP29812_FMA37321_Left ulnar nerve.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ4258_BP29812_FMA37321_Left ulnar nerve.obj",
+        "rawSHA256": "e83c41c5d566d299f56e4e68ae45022fa7b41a649e4a2a6e4de1cc6ba17ad38f",
+        "glbSHA256": "1fc5f283d584a95f681db86c23748b9670bed20bf254a48e36abdacf86048beb",
+        "triangles": 4406
+      },
+      {
+        "fj": "FJ4425",
+        "bp": "BP29628",
+        "fma": "FMA52590",
+        "name": "Cauda equina",
+        "faces": 6716,
+        "vertices": 8676,
+        "bytes": 747869,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP29628",
+          "fma": "FMA14462",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ4425_BP29628_FMA52590_Cauda equina.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ4425_BP29628_FMA52590_Cauda equina.obj",
+        "rawSHA256": "69c07f328df07098ecaa77c29d9b65f33b928678ae2eb69e984681ffc2e8e339",
+        "glbSHA256": "11462aab17016d5656ed9eba8fd0c3e6b558e650d3cfe258b0365aa50ce4b2c2",
+        "triangles": 6716
+      },
+      {
+        "fj": "FJ5082",
+        "bp": "BP28813",
+        "fma": "FMA13111",
+        "name": "Right external jugular vein",
+        "faces": 4348,
+        "vertices": 2176,
+        "bytes": 272396,
+        "conceptMembership": [
+          "is_a"
+        ],
+        "discoveryIdentity": {
+          "bp": "BP28813",
+          "fma": "FMA13110",
+          "conceptMembership": [
+            "is_a"
+          ]
+        },
+        "observedArchiveBasename": "FJ5082_BP28813_FMA13111_Right external jugular vein.obj",
+        "status": "EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH",
+        "path": "meshes/FJ5082_BP28813_FMA13111_Right external jugular vein.obj",
+        "rawSHA256": "6a108df43a56e51fe5eeb15cb568715790de731402f5df94b54f6a47fd3c1e74",
+        "glbSHA256": "914161ca9853b050de5627f4a034efae08ffc06c0e54d4f12f775f586106a27c",
+        "triangles": 4348
+      }
+    ],
+    "passed": 12,
+    "held": 0,
+    "freshPublisherVerified": false,
+    "clinicalValidation": false,
+    "registrationValidated": false,
+    "geometryPublished": 0,
+    "publicRelease": "NO_GO"
+  },
+  "matches": [
+    {
+      "fj": "FJ3670",
+      "bp": "BP21406",
+      "fma": "FMA49178",
+      "name": "Isthmus of thyroid gland",
+      "rawSHA256": "798a3b54f78eb3cc20f118b914202855e003b252a7e479f022fe1c2d6b9b14c0",
+      "triangles": 1746,
+      "publisherGLBSHA256": "f7ce9236e4b822a09645938ae736d30634d3877da2e7c1267917240367de9820",
+      "mirrorGLBSHA256": "643671f7847437c2d7ca709e4f6238de7fba68c95ac018eea79ffde84d7a212f"
+    },
+    {
+      "fj": "FJ3926",
+      "bp": "BP29477",
+      "fma": "FMA18157",
+      "name": "Trunk of left vagus nerve",
+      "rawSHA256": "d9a723878f9fc77ca8e82778dcbd08a40fc27b5d3880c404f30747f854d3074c",
+      "triangles": 29372,
+      "publisherGLBSHA256": "c054b217770a68b61004ab567ee49112c3f71941148f5efb9a863a3adf734c5a",
+      "mirrorGLBSHA256": "47c2c3e114beb0246ac004baa684817d06ce7c6153370d450a1d6a450062ab32"
+    },
+    {
+      "fj": "FJ4024",
+      "bp": "BP29476",
+      "fma": "FMA18151",
+      "name": "Trunk of right vagus nerve",
+      "rawSHA256": "be374d656c6ec642a93681673744d0330b06d70a84d0dd53bcd3dcde870284df",
+      "triangles": 24790,
+      "publisherGLBSHA256": "e2e2a2579b356516ae97fa1d071cbdabbf6bf07f875515f260eae9c826e0dbe0",
+      "mirrorGLBSHA256": "43a4522d40e1d9dc0804c6d520554d5a1394a16622e5a85aec39a03281e445af"
+    },
+    {
+      "fj": "FJ4171",
+      "bp": "BP29488",
+      "fma": "FMA37074",
+      "name": "Left axillary nerve",
+      "rawSHA256": "ba5be7fa0836ccfa72b016da504ab8ff04498c053d3ca4f5cf6b7ff18940418d",
+      "triangles": 654,
+      "publisherGLBSHA256": "ad596f4dbb3f367c2d61b9a7edebb34cb9a29066bad619a7b91892b3ff4583af",
+      "mirrorGLBSHA256": "edde315a1c2e1b5c6fd2a2151c4e56827978b031dedb9e83d109206b21c8a666"
+    },
+    {
+      "fj": "FJ4172",
+      "bp": "BP29806",
+      "fma": "FMA37071",
+      "name": "Left radial nerve",
+      "rawSHA256": "a6cd726af7026964e340fdae14c1dc22a8c8fbe0ed8996c937709e83a4cef909",
+      "triangles": 576,
+      "publisherGLBSHA256": "7cb1ae568f0a6c1a58fdba88534c241d35d5125dfe6ba424c229346756c0938b",
+      "mirrorGLBSHA256": "61085cac48e1b9ed9ad29425c56430aeac0bff7dc66361655e54b4234ef67148"
+    },
+    {
+      "fj": "FJ4224",
+      "bp": "BP29809",
+      "fma": "FMA37068",
+      "name": "Left median nerve",
+      "rawSHA256": "0005af3008aa7ae05d1c8900bd559458f897d89fc99c4899323195af81ba99e3",
+      "triangles": 4372,
+      "publisherGLBSHA256": "48aa774d2c4359aa88b2913adf62fee2368ea962ff23935b6be03e780e86e1ae",
+      "mirrorGLBSHA256": "38ab5183485a0e1ab32148b67c3e3d043d88d50e955f3cca3769f8099daebf0d"
+    },
+    {
+      "fj": "FJ4225",
+      "bp": "BP29815",
+      "fma": "FMA37066",
+      "name": "Left musculocutaneous nerve",
+      "rawSHA256": "33bcb8e18b548e418eaef9905d8639382498628b0937a2faba4b43b2d257e303",
+      "triangles": 3264,
+      "publisherGLBSHA256": "b9c18d21f4c6bf57c2e1419890a2548e6775da31b037f12db0e7ab179faa8359",
+      "mirrorGLBSHA256": "82a7d300147dd935c436cc5e67255828198cea30c339c60de69391adc8bccde8"
+    },
+    {
+      "fj": "FJ4240",
+      "bp": "BP29806",
+      "fma": "FMA37071",
+      "name": "Left radial nerve",
+      "rawSHA256": "b7bbc22a41bcfc72af2c1a9b6fedd888e372d784887ef4d7400f079e678f698d",
+      "triangles": 4474,
+      "publisherGLBSHA256": "998201e355a6a0bfe049f40feccffb69245ee7b85bc1e3e1230289bbf090fd90",
+      "mirrorGLBSHA256": "910a8d15279158e87db2fa64e3e528500e3e6db3ec4bd4a2fa625fd075385196"
+    },
+    {
+      "fj": "FJ4243",
+      "bp": "BP29488",
+      "fma": "FMA37074",
+      "name": "Left axillary nerve",
+      "rawSHA256": "1744a5584078ab48f0a1fd4e4c06efefd304c61208eda1f2792d17d745179d12",
+      "triangles": 360,
+      "publisherGLBSHA256": "262d5d08a3afee3269b1cee2cade865159da66bdfc04930f306e01292d9c858c",
+      "mirrorGLBSHA256": "0c2932396f601092d6ab71de8f0346c7c910e95fec36d2b94ac75fe48a8f76dd"
+    },
+    {
+      "fj": "FJ4258",
+      "bp": "BP29812",
+      "fma": "FMA37321",
+      "name": "Left ulnar nerve",
+      "rawSHA256": "e83c41c5d566d299f56e4e68ae45022fa7b41a649e4a2a6e4de1cc6ba17ad38f",
+      "triangles": 4406,
+      "publisherGLBSHA256": "a4aa3704d570051b43e6d0e0b1e225a78c038aa552dd7478dfabc233ba3c9f2e",
+      "mirrorGLBSHA256": "1fc5f283d584a95f681db86c23748b9670bed20bf254a48e36abdacf86048beb"
+    },
+    {
+      "fj": "FJ4425",
+      "bp": "BP29628",
+      "fma": "FMA52590",
+      "name": "Cauda equina",
+      "rawSHA256": "69c07f328df07098ecaa77c29d9b65f33b928678ae2eb69e984681ffc2e8e339",
+      "triangles": 6716,
+      "publisherGLBSHA256": "0c3364743b6eda67dc85a1788ad29c307546f37078dcaee8366d0e89748e3d15",
+      "mirrorGLBSHA256": "11462aab17016d5656ed9eba8fd0c3e6b558e650d3cfe258b0365aa50ce4b2c2"
+    },
+    {
+      "fj": "FJ5082",
+      "bp": "BP28813",
+      "fma": "FMA13111",
+      "name": "Right external jugular vein",
+      "rawSHA256": "6a108df43a56e51fe5eeb15cb568715790de731402f5df94b54f6a47fd3c1e74",
+      "triangles": 4348,
+      "publisherGLBSHA256": "90af3c1eee711e832259d565a34d88d08290166e039b78a20bfafa4161a3eb21",
+      "mirrorGLBSHA256": "914161ca9853b050de5627f4a034efae08ffc06c0e54d4f12f775f586106a27c"
+    }
+  ]
+}
