@@ -44,7 +44,7 @@ export function isolateSourceComponent(meshes,component,originalVisibility){
  const selected=new Set(component?.meshes||[]);
  // A hidden mesh ancestor would also hide a selected child. Reject ambiguous
  // hierarchy instead of claiming that the exact component is isolated.
- for(const m of selected)for(let p=m.parent;p;p=p.parent)if(p.isMesh&&!selected.has(p))return false;
+ for(const m of selected){if(originalVisibility.get(m)!==true)return false;for(let p=m.parent;p;p=p.parent){if(p.isMesh&&(!selected.has(p)||originalVisibility.get(p)!==true))return false;if(!p.isMesh&&p.visible===false)return false;}}
  if(component&&(!selected.size||[...selected].some(m=>!originalVisibility.has(m))))return false;
  for(const m of meshes)m.visible=component?selected.has(m)&&originalVisibility.get(m):originalVisibility.get(m);
  return true;
