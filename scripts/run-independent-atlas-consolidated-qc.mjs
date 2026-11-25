@@ -9,7 +9,8 @@ import {summarizeNpmAudit} from './diagnose-atlas-publication-audit.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const q=path.join(root,'local-data/licensing-quarantine');
 const [pack,target,...flags]=process.argv.slice(2);
-assert(flags.length<=1&&flags.every(f=>f==='--preview'),'Only optional --preview is supported');
+assert(flags.length===new Set(flags).size&&flags.every(f=>['--preview','--reuse-expanded'].includes(f)),'Only --preview and --reuse-expanded are supported');
+const reuse=flags.includes('--reuse-expanded');
 assert(/^independent-source-review-[A-Za-z0-9_-]+$/.test(pack||'')&&/^z-anatomy-native-preview-[A-Za-z0-9_-]+$/.test(target||''),'Provide explicit local review folders');
 assert(fs.realpathSync(q)===q);
 for(const folder of [pack,target]){const p=path.join(q,folder);assert(fs.realpathSync(p)===p&&fs.statSync(p).isDirectory(),'Missing or unsafe review folder');}
@@ -52,9 +53,19 @@ audit('host-security',['audit','--json'],'host-install');
 step('audit-tool-install','npm',['ci','--prefix','apps/4d-lab','--ignore-scripts','--no-audit','--no-fund']);
 step('app-tests','npm',['test','--prefix','apps/atlas-independent'],['install']);
 step('source-tests',process.execPath,['--test','scripts/independent-bp3d-export.test.mjs','scripts/independent-source-coverage.test.mjs','scripts/audit-bp3d-publication-geometry.test.mjs','scripts/independent-atlas-final-qc.test.mjs','scripts/assemble-atlas-distribution-review.test.mjs','scripts/z-anatomy-final-qc.test.mjs','scripts/expand-independent-source-review.test.mjs','scripts/audit-independent-system-coverage.test.mjs','scripts/independent-atlas-host.test.mjs','scripts/replay-independent-source-evidence.test.mjs','scripts/commercial-release.test.mjs','scripts/production-caddy-quarantine.test.mjs'],['install','audit-tool-install']);
-const expansionOutput=step('expansion',process.execPath,['scripts/expand-independent-source-review.mjs',pack,target],['source-tests']);
+const expansionOutput=reuse?null:step('expansion',process.execPath,['scripts/expand-independent-source-review.mjs',pack,target],['source-tests']);
 let finalPack=pack;
-if(result.steps.expansion.status==='PASS'){
+if(reuse){
+ if(result.steps['source-tests'].status!=='PASS')result.steps.expansion={status:'BLOCKED',reason:'Source tests failed'};
+ else try{
+  const p=path.join(q,pack,'review-summary.json'),invPath=path.join(q,pack,'inventory.json');
+  for(const f of [p,invPath])assert(fs.realpathSync(f)===f&&fs.statSync(f).isFile());
+  const report=JSON.parse(fs.readFileSync(p,'utf8')),inv=JSON.parse(fs.readFileSync(invPath,'utf8'));
+  assert(inv.expansion&&inv.publicRelease==='NO_GO'&&report.publicRelease==='NO_GO'&&report.approved===0&&report.zAnatomyModelsIncluded===0&&report.bodyModels===inv.bodyModels.length&&report.hraReferences===inv.independentReferences.length&&report.added===inv.expansion.added&&report.baseModels===inv.expansion.baseModels);
+  result.expansion={...report,folder:pack,reused:true};result.steps.expansion={status:'PASS',mode:'REUSE_EXISTING_PACK; full source replay still required'};
+  console.log('QC expansion PASS (reuse existing pack; no export)');
+ }catch(e){result.steps.expansion={status:'FAIL',reason:String(e.message)};}
+}else if(result.steps.expansion.status==='PASS'){
  try{
   const line=expansionOutput.split('\n').find(l=>l.startsWith('INDEPENDENT BATCH EXPANSION '));assert(line);
   const report=JSON.parse(line.slice('INDEPENDENT BATCH EXPANSION '.length));assert(/^independent-source-review-[A-Za-z0-9_-]+$/.test(report.folder)&&report.publicRelease==='NO_GO'&&report.approved===0);
@@ -75,7 +86,7 @@ result.previewEligible=result.technicalChecksPassed;
 result.releaseBlockers=['Clinical and orientation validation pending','Browser/WebGL runtime pending','Named redistribution and code-origin review pending','Existing public release gate blocked'];
 result.note='PASS permits private preview only. Coverage gaps, clinical validation, exact redistribution review and browser validation remain independent requirements. Host security audit covers the root workspace, not just Atlas.';
 fs.writeFileSync(path.join(out,'summary.json'),JSON.stringify(result,null,2)+'\n',{flag:'wx',mode:0o600});
-const compact={schema:result.schema,commit:result.commit,finalPack:result.finalPack,steps:Object.fromEntries(Object.entries(result.steps).map(([k,v])=>[k,{status:v.status,exitCode:v.exitCode,reason:v.reason,auditCounts:v.audit?.counts}])),expansion:result.expansion,sourceReplay:result.steps['source-replay']?.report?{bodyMatched:result.steps['source-replay'].report.bodyMatched,bodyTotal:result.steps['source-replay'].report.bodyTotal,hraMatched:result.steps['source-replay'].report.hraMatched,hraTotal:result.steps['source-replay'].report.hraTotal}:null,systemsWithBodyModels:result.steps['system-coverage']?.report?.systemsWithBodyModels,emptySystems:result.steps['system-coverage']?.report?.emptySystems,http:result.steps['build-and-http']?.report,technicalChecksPassed:result.technicalChecksPassed,previewEligible:result.previewEligible,publicRelease:'NO_GO',productionChanged:false,report:path.join(out,'summary.json')};
+const compact={schema:result.schema,commit:result.commit,finalPack:result.finalPack,steps:Object.fromEntries(Object.entries(result.steps).map(([k,v])=>[k,{status:v.status,exitCode:v.exitCode,reason:v.reason,auditCounts:v.audit?.counts,findings:v.audit?.findings?.map(f=>({name:f.name,severity:f.severity,range:f.range,fixAvailable:f.fixAvailable,via:f.via}))}])),expansion:result.expansion,sourceReplay:result.steps['source-replay']?.report?{bodyMatched:result.steps['source-replay'].report.bodyMatched,bodyTotal:result.steps['source-replay'].report.bodyTotal,hraMatched:result.steps['source-replay'].report.hraMatched,hraTotal:result.steps['source-replay'].report.hraTotal}:null,systemsWithBodyModels:result.steps['system-coverage']?.report?.systemsWithBodyModels,emptySystems:result.steps['system-coverage']?.report?.emptySystems,http:result.steps['build-and-http']?.report,technicalChecksPassed:result.technicalChecksPassed,previewEligible:result.previewEligible,publicRelease:'NO_GO',productionChanged:false,report:path.join(out,'summary.json')};
 for(const [name,record] of Object.entries(result.steps)){
  if(record.status!=='FAIL'||!record.log||name==='security'||name==='host-security')continue;
  const tail=fs.readFileSync(path.join(out,record.log),'utf8').trim().split('\n').slice(-12).join('\n').slice(-2400);
