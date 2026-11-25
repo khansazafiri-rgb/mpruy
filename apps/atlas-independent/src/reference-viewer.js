@@ -61,10 +61,19 @@ export function mountReferences(base){
  const setup=$('referenceChallengeSetup'),mode=$('referenceChallengeMode'),language=$('referenceChallengeLanguage'),typed=$('referenceChallengeTyped'),input=$('referenceChallengeInput');
  function updateChallengeLanguage(){language.disabled=mode.value==='source-mcq';if(language.disabled)language.value='en';}
  mode.onchange=updateChallengeLanguage;
+ function refreshChallengeSetup(){
+  if(sourceKind!=='bp43'){setup.hidden=true;return;}
+  const glossaryOK=buildReferenceQuestions(entries.filter(hasChallengeGlossary),()=>.5).length>=4;
+  const sourceOK=buildSourceLabelQuestions(entries,()=>.5).length>=4;
+  for(const option of mode.options)option.disabled=option.value==='source-mcq'?!sourceOK:!glossaryOK;
+  if(mode.selectedOptions[0]?.disabled)mode.value=sourceOK?'source-mcq':glossaryOK?'mcq':'';
+  setup.hidden=!glossaryOK&&!sourceOK;
+  updateChallengeLanguage();
+ }
  const displayChallengeLabel=e=>answerMode==='source-mcq'?e.name:challengeLabel(e,answerLanguage);
  let questions=[],questionIndex=0,correct=0,answered=0,held=0,challengeEpoch=0,answerMode='mcq',answerLanguage='en';
  function endChallenge(){
-  challengeEpoch++;tracker.cancel();questions=[];challenge.hidden=true;browse.hidden=false;topics.hidden=sourceKind!=='bp43';$('referenceSource').hidden=false;setup.hidden=sourceKind!=='bp43'||entries.length<4;typed.hidden=true;typed.onsubmit=null;answers.replaceChildren();feedback.textContent='';progress.textContent='';
+  challengeEpoch++;tracker.cancel();questions=[];challenge.hidden=true;browse.hidden=false;topics.hidden=sourceKind!=='bp43';$('referenceSource').hidden=false;refreshChallengeSetup();typed.hidden=true;typed.onsubmit=null;answers.replaceChildren();feedback.textContent='';progress.textContent='';
   if(model){scene?.remove(model);dispose(model);model=null;}clearComponents();selected=null;$('referenceSource').removeAttribute('href');$('referenceSource').textContent='';list();status('Pilih referensi dan klik Muat.');
  }
  async function challengeQuestion(){
@@ -77,7 +86,7 @@ export function mountReferences(base){
   function submit(right,minor=false){if(locked||token!==challengeEpoch)return;locked=true;answered++;if(right)correct++;for(const a of answers.querySelectorAll('button'))a.disabled=true;input.disabled=true;typed.querySelector('button').disabled=true;feedback.textContent=(right?(minor?'Benar (typo ringan). ':'Benar. '):'Belum tepat. ')+displayChallengeLabel(q.entry)+' · '+q.entry.name+' · '+q.entry.fmaId+' · '+q.entry.fj;next.disabled=false;}
   if(answerMode==='typed'){typed.hidden=false;typed.onsubmit=ev=>{ev.preventDefault();if(!input.value.trim())return;const result=typedReferenceAnswer(q.entry,input.value);submit(result.correct,result.kind==='MINOR_TYPO');};input.focus();}else for(const o of q.options){const b=document.createElement('button');b.type='button';const e=entries.find(x=>x.id===o.id);b.textContent=displayChallengeLabel(e);b.onclick=()=>submit(scoreReferenceAnswer(q,o.id));answers.append(b);}
  }
- start.onclick=()=>{if(sourceKind!=='bp43')return;updateChallengeLanguage();const sourceMode=mode.value==='source-mcq';questions=sourceMode?buildSourceLabelQuestions(entries):buildReferenceQuestions(entries.filter(hasChallengeGlossary));if(!questions.length){status('Belum cukup label sumber untuk Challenge.');return;}questionIndex=correct=answered=held=0;answerMode=mode.value;answerLanguage=sourceMode?'en':language.value;setup.hidden=true;browse.hidden=true;topics.hidden=true;$('referenceSource').hidden=true;challenge.hidden=false;challengeQuestion();};
+ start.onclick=()=>{if(sourceKind!=='bp43'||setup.hidden||mode.selectedOptions[0]?.disabled)return;updateChallengeLanguage();const sourceMode=mode.value==='source-mcq';questions=sourceMode?buildSourceLabelQuestions(entries):buildReferenceQuestions(entries.filter(hasChallengeGlossary));if(!questions.length){status('Belum cukup label sumber untuk Challenge.');return;}questionIndex=correct=answered=held=0;answerMode=mode.value;answerLanguage=sourceMode?'en':language.value;setup.hidden=true;browse.hidden=true;topics.hidden=true;$('referenceSource').hidden=true;challenge.hidden=false;challengeQuestion();};
  quit.onclick=endChallenge;next.onclick=()=>{if(!next.disabled){questionIndex++;challengeQuestion();}};
  function list(){
   const select=$('referenceSelect');select.replaceChildren();
@@ -102,7 +111,7 @@ export function mountReferences(base){
   const token=tracker.begin();
   try{createScene();status('Memeriksa referensi sumber…');const response=await fetch(base+(kind==='bp43'?'bp3d43-reference/':'hra-reference/')+'inventory.json',{cache:'no-store'});if(!response.ok)throw Error('Paket referensi belum tersedia pada preview ini');
    const doc=await response.json(),data=kind==='bp43'?reference43Entries(doc):referenceEntries(doc);if(!tracker.current(token)||!dialog.open)return;
-   entries=data;updateTopicOptions();updateChallengeLanguage();list();setup.hidden=kind!=='bp43'||entries.length<4;status(entries.length+' kandidat referensi tersedia. Pilih referensi dan klik Muat.');
+   entries=data;updateTopicOptions();list();refreshChallengeSetup();status(entries.length+' kandidat referensi tersedia. Pilih referensi dan klik Muat.');
   }catch(error){if(tracker.current(token))status(String(error.message||error));}
  };
  $('openReferences').onclick=()=>open('hra');$('open43References').onclick=()=>open('bp43');
