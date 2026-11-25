@@ -14,6 +14,7 @@ import {classifyIndependentPath,rawRequestPath} from './independent-atlas-routes
 import {createLabPreviewServer,ROOTS} from './preview-4d-lab.mjs';
 import {assertDistributionClean} from '../licensing/tools/check-distribution.mjs';
 import {createIndependentHostHandler} from './independent-atlas-host.mjs';
+import {buildPriorityRecovery} from './independent-atlas-priority-recovery.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
@@ -28,6 +29,9 @@ else{
  manifest={schema:1,mode:'private-review',publicRelease:'NO_GO',sourceFrame:inv.sourceFrame,entries:inv.converted.map(e=>({id:e.id,name:e.name,group:e.group,regions:e.privateAtlasMeta.regions,layer:e.privateAtlasMeta.layer,path:'models/'+e.id+'.glb',approvedForDistribution:false}))};
  models=new Map(inv.converted.map(e=>['/anatomy/viewer/models/'+e.id+'.glb',path.join(pack,e.modelPath)]));
 }
+const priorityEnabled=process.argv.includes('--priority-recovery');
+assert(!priorityEnabled||independent,'Priority recovery requires an independent source pack');
+const priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack):null;
 const req=createRequire(path.join(app,'package.json'));
 const {build}=await import(pathToFileURL(req.resolve('vite')).href);
 const out=fs.mkdtempSync(path.join(privateRoot,'atlas-independent-review-'));
@@ -69,6 +73,16 @@ const server=createServer((request,response)=>{
  if(independent&&p==='/anatomy/viewer/MODEL-ATTRIBUTIONS.json')return send(200,JSON.stringify(sourcePack.attributions),mime['.json']);
  if(p==='/anatomy/viewer/inventory.json')return send(200,JSON.stringify(manifest),mime['.json']);
  if(p.startsWith('/anatomy/viewer/hra-reference/')&&serveHraReference(request,response,hra))return;
+ if(priority&&p==='/anatomy/viewer/priority-recovery/inventory.json')return send(200,JSON.stringify({schema:1,items:priority.items,publicRelease:'NO_GO',registrationValidated:false,clinicalValidation:false}),mime['.json']);
+ if(priority&&p==='/anatomy/viewer/priority-recovery/attributions.json')return send(200,JSON.stringify({publicRelease:'NO_GO',items:priority.report.results.filter(r=>r.status==='EXPORTED_ISOLATED_CONCEPT')}),mime['.json']);
+ const supplemental=priority?.models.get(p);
+ if(supplemental){
+  try{assert(fs.realpathSync(supplemental.file)===supplemental.file);const info=fs.statSync(supplemental.file);assert(info.isFile()&&info.size===supplemental.bytes);
+   response.writeHead(200,{'Content-Type':'model/gltf-binary','Content-Length':info.size,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
+   if(request.method==='HEAD'){response.end();return;}
+   const stream=fs.createReadStream(supplemental.file);stream.on('error',()=>response.destroy());response.on('close',()=>stream.destroy());stream.pipe(response);return;
+  }catch{return send(404,'Priority model not available');}
+ }
  const model=models.get(p);
  if(model){
   try{assert(fs.realpathSync(model)===model);const info=fs.statSync(model);assert(info.isFile());
@@ -99,7 +113,14 @@ try{
   for(const p of ['/anatomy/library','/anatomy/study','/anatomy/live','/anatomy/viewer/data/atlas-catalog.json','/api/collections/users/records','/assets/not-a-real-asset.js'])assert.equal((await fetch(baseURL+p)).status,404,'Unexpected route '+p);
   const a=await fetch(baseURL+'/anatomy/viewer/MODEL-ATTRIBUTIONS.json');assert(a.ok&&Array.isArray((await a.json()).body));hostQC='PASS';
  }
- const report={schema:1,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
+ let priorityRoutes=0;
+ if(priority){
+  const r=await fetch(baseURL+'/anatomy/viewer/priority-recovery/inventory.json');assert(r.ok&& (await r.json()).items.length===priority.items.length);
+  for(const [route,asset] of priority.models){const p=await fetch(baseURL+route,{method:'HEAD'});assert(p.ok&&p.headers.get('content-type')==='model/gltf-binary'&&Number(p.headers.get('content-length'))===asset.bytes);priorityRoutes++;}
+  const a=await fetch(baseURL+'/anatomy/viewer/priority-recovery/attributions.json');assert(a.ok&&(await a.json()).items.length===priority.items.length);
+  assert.equal((await fetch(baseURL+'/anatomy/viewer/priority-recovery/not-approved.glb')).status,404);
+ }
+ const report={schema:1,priorityModels:priority?.items.length||0,httpPriorityRoutesVerified:priorityRoutes,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
  const f=path.join(privateRoot,folder,'publication-independent-http-qc.json'),tmp=f+'.'+process.pid+'.tmp';fs.writeFileSync(tmp,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,f);
  console.log('INDEPENDENT HTTP QC',JSON.stringify(report));
 }catch(error){server.close();throw error;}
