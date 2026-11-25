@@ -27,6 +27,7 @@ try{
  attachOriginalShell(root,out);
  server=createServer((req,res)=>{
   const p=req.url.split('?')[0],send=(status,body,type)=>{res.writeHead(status,{'Content-Type':type,'Cache-Control':'no-store'});res.end(body);};
+  if(p==='/fixture-host')return send(200,'<!doctype html><html><body><iframe id="atlas" src="/anatomy/viewer/" width="1200" height="800"></iframe></body></html>','text/html');
   const base='/anatomy/viewer/';
   if(!p.startsWith(base))return send(404,'not found','text/plain');
   const rel=p.slice(base.length);
@@ -66,8 +67,21 @@ try{
  await page.locator('#searchOpen').click();
  await page.locator('#searchInput').waitFor({state:'visible'});
  assert.equal(await page.locator('#threeCanvas').count(),1);
+ await page.setViewportSize({width:1440,height:900});
+ await page.goto('http://127.0.0.1:'+server.address().port+'/fixture-host');
+ const embedded=page.frameLocator('#atlas');
+ await embedded.locator('#loadingOverlay.hidden').waitFor({state:'attached',timeout:30000});
+ const request=async structureId=>page.evaluate(id=>new Promise((resolve,reject)=>{
+  const frame=document.getElementById('atlas').contentWindow,requestId=crypto.randomUUID();
+  const timer=setTimeout(()=>{window.removeEventListener('message',handle);reject(Error('Missing independent library reply'));},15000);
+  function handle(e){if(e.source!==frame||e.origin!==location.origin||e.data?.type!=='medcoel:independent-library-result'||e.data.requestId!==requestId)return;clearTimeout(timer);window.removeEventListener('message',handle);resolve(e.data);}
+  window.addEventListener('message',handle);frame.postMessage({type:'medcoel:independent-library-open',version:1,requestId,structureId:id},location.origin);
+ }),structureId);
+ const opened=await request(selection);assert.equal(opened.ok,true);
+ await embedded.locator('#structureInfo h3').filter({hasText:'Engineering fixture component'}).waitFor();
+ const missing=await request('bp-'+'d'.repeat(24));assert.equal(missing.ok,false);
  assert.deepEqual(errors,[],'browser runtime errors');
- console.log('ATLAS PRIVATE BROWSER FIXTURE PASS: original desktop/mobile shell, exact single-element highlight, isolate, hide, undo and fade. Non-anatomical QA fixtures only.');
+ console.log('ATLAS PRIVATE BROWSER FIXTURE PASS: original desktop/mobile shell, exact single-element highlight, isolate, hide, undo, fade and source-ID iframe bridge. Non-anatomical QA fixtures only.');
 }finally{
  await browser?.close();
  if(server)await new Promise(resolve=>server.close(resolve));
