@@ -69,9 +69,10 @@ export function expand(packFolder,targetFolder){
    assert(old.approvedForCommercialDistribution===false&&old.geometryRegisteredToMEDCOEL===false&&old.legalStatus==='NOT-CLEARED');
    assert(old.sourceHashes?.archiveSha256===isa.hashes.archive&&old.sourceHashes?.namesSha256===isa.hashes.names&&old.sourceHashes?.elementsSha256===isa.hashes.elements);
    legacy=old.converted;assert(Array.isArray(legacy));legacyStatus='SOURCE_HASH_MATCH';
-  }catch(e){legacyStatus='HELD: '+String(e.message);}
+  }catch(e){legacy=[];legacyStatus='HELD: '+String(e.message);}
  }
- const inv=pack.inventory,plan=planBatchExpansion(inv.bodyModels,target.converted,legacy,sources);
+ const inv=pack.inventory;assert(!inv.expansion,'Use original independent base pack for deterministic batch expansion');
+ const plan=planBatchExpansion(inv.bodyModels,target.converted,legacy,sources);
  plan.legacyStatus=legacyStatus;plan.basePack=packFolder;plan.targetPack=targetFolder;
  const out=fs.mkdtempSync(path.join(q,'independent-source-review-'));fs.chmodSync(out,0o700);
  const results=[],models=[...inv.bodyModels],added=[];let newBytes=0;
