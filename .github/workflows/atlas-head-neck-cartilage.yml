@@ -1,0 +1,24 @@
+name: Atlas head and neck cartilage dual-source audit
+on:
+  pull_request:
+    branches: [feat/atlas-sio-label-audit-20261125]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs scripts/audit-bp3d43-gap-batch.test.mjs
+      - name: Compare 14 laryngeal and nasal cartilage elements
+        run: node scripts/audit-bp3d43-gap-batch.mjs head-neck-cartilage-14
+      - name: Remove private temporary geometry
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/bp3d43-mirror-audit-*

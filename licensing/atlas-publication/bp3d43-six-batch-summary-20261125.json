@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "elements": 129,
+  "distinctFJ": 129,
+  "distinctFMA": 122,
+  "distinctRawSHA256": 129,
+  "triangles": 348858,
+  "scope": "Distinct within 4.3 only; not net-new vs 4.0; browser replay of new batch pending.",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}

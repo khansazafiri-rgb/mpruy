@@ -9,7 +9,7 @@ import {parseMembership,validateCandidates,run} from './intake-bp3d43-priority-e
 import {runMirror} from './audit-bp3d43-mirror-elements.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const pin='fd527e6f4daf732fd814314d9257df5877b844bc';
-const BATCHES=Object.freeze({gap:{count:28,file:'bp3d43-gap-batch-candidates.json'},'nerves-32':{count:32,file:'bp3d43-nerves32-candidates.json'},'discs-23':{count:23,file:'bp3d43-discs-23-candidates.json'},'costal-20':{count:20,file:'bp3d43-costal-20-candidates.json'}});
+const BATCHES=Object.freeze({gap:{count:28,file:'bp3d43-gap-batch-candidates.json'},'nerves-32':{count:32,file:'bp3d43-nerves32-candidates.json'},'discs-23':{count:23,file:'bp3d43-discs-23-candidates.json'},'costal-20':{count:20,file:'bp3d43-costal-20-candidates.json'},'head-neck-cartilage-14':{count:14,file:'bp3d43-head-neck-cartilage-14-candidates.json'}});
 function spec(batch){assert(Object.hasOwn(BATCHES,batch),'Unknown audit batch');return BATCHES[batch];}
 export function resolveGapRows(doc,paths,catalog){
  assert(doc.schema===1&&doc.sourceVersion==='4.3'&&doc.publicRelease==='NO_GO'&&doc.geometryVerified===false&&doc.mirrorCommit===pin&&doc.rows.length===spec(doc.batchId||'gap').count);
