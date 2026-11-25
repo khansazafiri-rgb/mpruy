@@ -17,6 +17,8 @@ const archiveURL='https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/';
 const attribution='BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International';
 // Exact names only. The IDs for known gaps are pinned to the source report where available.
 export const priorityTargets=[
+ // Separate publisher identities, confirmed by live audit run 45603638053.
+ ['venous',['portal vein'],'FMA66645','isa'],['venous',['hepatic portal vein'],'FMA50735','partof'],
  ['respiratory',['left lung']],['respiratory',['right lung']],
  ['respiratory',['superior lobe of right lung','upper lobe of right lung']],
  ['respiratory',['middle lobe of right lung','middle lobe of lung'],'FMA7383'],['respiratory',['inferior lobe of right lung','lower lobe of right lung']],
