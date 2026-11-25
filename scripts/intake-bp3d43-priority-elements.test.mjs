@@ -27,3 +27,31 @@ test('4.3 element replay is exact and fails the default 4.0 gate',()=>{
  assert(comparePositions(p.positions,parseNativePositions(b.bytes).get('FJ1')));
  assert.throws(()=>parseNativePositions(b.bytes,'4.3'));
 });
+
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {validateZipEnvelope,downloadZipValidated} from './intake-bp3d43-priority-elements.mjs';
+test('publisher envelope retry rejects HTML and truncated ZIP then accepts valid archive',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'bp43-envelope-'));
+ try{
+  fs.writeFileSync(path.join(dir,'FMA2Obj.txt'),'engineering fixture');
+  const valid=path.join(dir,'valid.zip'),out=path.join(dir,'out.zip');
+  // Python standard library creates a technical fixture, no anatomy data.
+  execFileSync('python3',['-c','import zipfile,sys; z=zipfile.ZipFile(sys.argv[1],"w"); z.write(sys.argv[2],"FMA2Obj.txt"); z.close()',valid,path.join(dir,'FMA2Obj.txt')]);
+  let calls=0;
+  const fetch=(_url,dest)=>{calls++;if(calls===1)fs.writeFileSync(dest,'<html>temporary error</html>');else if(calls===2)fs.writeFileSync(dest,Buffer.concat([Buffer.from([0x50,0x4b,0x03,0x04]),Buffer.alloc(32)]));else fs.copyFileSync(valid,dest);};
+  assert.deepEqual(downloadZipValidated('https://example.invalid',out,[],{fetch}),['FMA2Obj.txt']);
+  assert.equal(calls,3);assert.deepEqual(fs.readFileSync(out),fs.readFileSync(valid));assert(!fs.existsSync(out+'.partial'));
+  assert.throws(()=>downloadZipValidated('https://example.invalid',out,[],{fetch}),/Refusing/);
+ }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+test('persistent bad publisher response never leaves an accepted ZIP',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'bp43-envelope-'));
+ try{const out=path.join(dir,'out.zip');let calls=0;
+ const fetch=(_url,dest)=>{calls++;fs.writeFileSync(dest,'<html>not a source archive</html>');};
+ assert.throws(()=>downloadZipValidated('https://example.invalid',out,[],{fetch}),/3 bounded attempts/);
+ assert.equal(calls,3);assert(!fs.existsSync(out));assert(!fs.existsSync(out+'.partial'));
+ }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
