@@ -2,17 +2,13 @@ name: Atlas SPL knee source quarantine inventory
 on:
   pull_request:
     branches: [feat/atlas-axial-cartilage-20261125]
-    paths:
-      - 'scripts/audit-spl-knee-*.py'
-      - 'licensing/atlas-publication/spl-knee-source-inventory-20261125.json'
-      - 'licensing/atlas-publication/spl-knee-source-candidate.json'
-      - '.github/workflows/atlas-spl-knee-source.yml'
+    types: [opened, synchronize, reopened, ready_for_review]
 permissions:
   contents: read
 jobs:
   inventory:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:

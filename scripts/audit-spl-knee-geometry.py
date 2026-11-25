@@ -30,6 +30,7 @@ def scene_links(z, mesh_paths):
     """Resolve only local MRML model/storage references; never load a scene or volume."""
     links = {p: set() for p in mesh_paths}
     counts = Counter()
+    transform_links = {p: set() for p in mesh_paths}
     for info in z.infolist():
         if PurePosixPath(info.filename).suffix.lower() != ".mrml":
             continue
@@ -65,11 +66,15 @@ def scene_links(z, mesh_paths):
             target = storage.get(node.get("storageNodeRef", ""))
             ident = node.get("id", "")
             if target and ident:
-                links[target].add(digest((info.filename + "\0" + ident).encode("utf8")))
+                node_hash = digest((info.filename + "\0" + ident).encode("utf8"))
+                links[target].add(node_hash)
+                if node.get("transformNodeRef") or node.get("parentTransformNodeRef"):
+                    transform_links[target].add(node_hash)
+                    counts["modelNodesWithTransformRef"] += 1
                 counts["linkedModelNodes"] += 1
             else:
                 counts["unresolvedModelNodes"] += 1
-    return links, dict(counts)
+    return links, dict(counts), transform_links
 
 def glb_roundtrip(points, indices):
     """Geometry-only GLB in memory, exact native numeric coordinates and indices."""
@@ -161,6 +166,8 @@ def parse_mesh(raw, scratch):
             "fieldDataArrays": mesh.GetFieldData().GetNumberOfArrays()}
 
 def audit(archive, receipt, scratch):
+    if not 0 < archive.stat().st_size <= source.CAP:
+        raise ValueError("archive size outside policy")
     if source.sha_file(archive) != receipt["archiveSHA256"]:
         raise ValueError("publisher archive changed")
     if source.inventory(archive)["meshMembers"] != receipt["meshMembers"]:
@@ -169,13 +176,15 @@ def audit(archive, receipt, scratch):
         meshes = [i for i in z.infolist() if PurePosixPath(i.filename).suffix.lower() == ".vtk"]
         if len(meshes) != 48:
             raise ValueError("unexpected VTK count")
-        links, scene_counts = scene_links(z, {i.filename for i in meshes})
+        links, scene_counts, transform_links = scene_links(z, {i.filename for i in meshes})
         rows = []
         for i in meshes:
             raw = z.read(i)
             row = {"sourceSHA256": digest(raw), "memberBytes": len(raw),
                    "sceneNodeLinks": len(links[i.filename]),
-                   "sceneNodeIdentityHashes": sorted(links[i.filename])}
+                   "sceneNodeIdentityHashes": sorted(links[i.filename]),
+                   "sceneNodesWithTransformRef": len(transform_links[i.filename]),
+                   "sceneTransformsApplied": False}
             try:
                 row.update(parse_mesh(raw, scratch))
                 row["status"] = "NATIVE_TRIANGLE_GEOMETRY_PARSED"
@@ -230,9 +239,19 @@ class Tests(unittest.TestCase):
             with zipfile.ZipFile(p, "w") as z:
                 z.writestr("pack/scene.mrml", '<MRML><ModelStorage id="storage" fileName="Data/test.vtk"/><Model id="model" storageNodeRef="storage"/></MRML>')
             with zipfile.ZipFile(p) as z:
-                links, counts = scene_links(z, {"pack/Data/test.vtk"})
+                links, counts, transforms = scene_links(z, {"pack/Data/test.vtk"})
                 self.assertEqual(len(links["pack/Data/test.vtk"]), 1)
                 self.assertEqual(counts["linkedModelNodes"], 1)
+                self.assertEqual(len(transforms["pack/Data/test.vtk"]), 0)
+    def test_transform_reference_not_applied(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "fixture.zip"
+            with zipfile.ZipFile(p, "w") as z:
+                z.writestr("pack/scene.mrml", '<MRML><ModelStorage id="s" fileName="Data/test.vtk"/><Model id="m" storageNodeRef="s" transformNodeRef="t"/></MRML>')
+            with zipfile.ZipFile(p) as z:
+                links, counts, transforms = scene_links(z, {"pack/Data/test.vtk"})
+                self.assertEqual(transforms["pack/Data/test.vtk"], links["pack/Data/test.vtk"])
+                self.assertEqual(counts["modelNodesWithTransformRef"], 1)
 
 if __name__ == "__main__":
     import sys
