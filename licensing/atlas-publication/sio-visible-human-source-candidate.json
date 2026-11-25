@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "source": "Segmented Internal Organs of the Visible Human Male (SIO)",
+  "doi": "10.5281/zenodo.15882019",
+  "publisherPage": "https://www.virtual-body.org/segmented-internal-organs/",
+  "publisherLicenseAnnouncement": "https://www.virtual-body.org/news/3d-anatomy-model-published-under-cc-license/",
+  "record": "https://zenodo.org/records/15882019",
+  "recordAPI": "https://zenodo.org/api/records/15882019",
+  "reportedLicense": "CC BY 4.0",
+  "sourceType": "Segmented Visible Human male cryosection/CT-aligned voxel labels; not directly audited mesh",
+  "reportedObjects": "more than 200",
+  "labelFile": {
+    "key": "SIO Object Labels.xlsx",
+    "md5": "3f996d6e1113a24e58304381b8e689e2"
+  },
+  "prioritySourceLabels": [
+    "cystic duct",
+    "duodenum (retroperitoneal part)",
+    "left renal medulla",
+    "right renal medulla",
+    "trachea lumen",
+    "left atrium",
+    "right atrium",
+    "left ventricle",
+    "right ventricle",
+    "myocardium",
+    "pericardium",
+    "pulmonary trunk",
+    "pulmonary arteries",
+    "pulmonary veins",
+    "portal vein",
+    "inferior mesenteric vein",
+    "superior mesenteric vein",
+    "pancreas",
+    "cardia",
+    "fundus of stomach",
+    "body of stomach",
+    "left colic flexure",
+    "right colic flexure"
+  ],
+  "limitations": [
+    "Publisher label list does not establish whole-body lymphatic vessel coverage",
+    "No claim that targets are net-new versus BP3D or HRA",
+    "Direct source record returned HTTP 429 in current review; archive metadata and bytes not yet verified",
+    "Keep native segmentation coordinate frame independent; no geometry generation until source labels, transforms, rights and privacy verified"
+  ],
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "assetRightsReviewed": false,
+  "privacyReview": "PENDING",
+  "publicRelease": "NO_GO"
+}
