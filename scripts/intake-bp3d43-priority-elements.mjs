@@ -6,7 +6,8 @@ import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {parseObj} from './independent-bp3d-export.mjs';
+import {parseObj,encodeNativeGlb} from './independent-bp3d-export.mjs';
+import {parseNativePositions,comparePositions} from './audit-bp3d-publication-geometry.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const base='https://lifesciencedb.jp/bp3d';
 const manifestURL=base+'/get-info.cgi?version=4.3&cmd=concept-objfiles-list';
@@ -54,7 +55,10 @@ export function run(){
  const q=path.join(local,'licensing-quarantine');fs.mkdirSync(q,{mode:0o700,recursive:true});assert(fs.realpathSync(q)===q);
  const out=fs.mkdtempSync(path.join(q,'bp3d43-element-intake-'));fs.chmodSync(out,0o700);
  const doc=JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/bp3d43-priority-element-candidates.json'),'utf8'));
- const manifestZip=path.join(out,'manifest.zip');download(manifestURL,manifestZip);
+ const cookie=path.join(out,'session.cookie'),viewer=base+'/?lng=en';
+ const session=['--cookie',cookie,'--cookie-jar',cookie,'--referer',viewer,'--compressed'];
+ download(viewer,path.join(out,'session.html'),['--cookie-jar',cookie,'--compressed']);
+ const manifestZip=path.join(out,'manifest.zip');download(manifestURL,manifestZip,session);
  assert.deepEqual(listing(manifestZip),['FMA2Obj.txt']);const bytes=member(manifestZip,'FMA2Obj.txt'),catalog=parseMembership(bytes.toString('utf8'));
  const candidates=validateCandidates(doc,catalog),results=[];
  fs.writeFileSync(path.join(out,'FMA2Obj.txt'),bytes,{flag:'wx',mode:0o600});
@@ -62,15 +66,20 @@ export function run(){
   const zip=path.join(out,r.fj+'.zip');
   try{
    const args=Object.entries({ids:JSON.stringify([r.fj]),rep_id:JSON.stringify([r.bp]),filename:r.fj,type:'art_file',all_downloads:'1'}).flatMap(([k,v])=>['--data-urlencode',k+'='+v]);
-   download(base+'/download.cgi',zip,args);
-   const name=selectMember(listing(zip),r),raw=member(zip,name),parsed=parseObj(raw.toString('utf8'));
+   download(base+'/download.cgi',zip,[...session,...args]);
+   const name=selectMember(listing(zip),r),raw=member(zip,name),parsed=parseObj(raw.toString('utf8').replace(/\r\n|\r/g,'\n'));
    assert(parsed.positions.length>0&&parsed.positions.length%9===0);
    fs.writeFileSync(path.join(out,r.fj+'.obj'),raw,{flag:'wx',mode:0o600});
-   results.push({...r,status:'PUBLISHER_ELEMENT_PARSED',archiveMember:name,rawSHA256:digest(raw),archiveSHA256:digest(fs.readFileSync(zip)),rawBytes:raw.length,triangles:parsed.positions.length/9,omitted:parsed.omitted});
+   const rawSHA256=digest(raw),glb=encodeNativeGlb([{id:r.fj,...parsed}],{fmaId:r.fma,bpId:r.bp,officialName:r.name,version:'4.3',scope:'SINGLE_SOURCE_ELEMENT',manifestSHA256:digest(bytes),sourceElements:[{id:r.fj,sha256:rawSHA256,zipEntry:name}]},'4.3');
+   const replay=parseNativePositions(glb.bytes,'4.3');assert(replay.size===1&&comparePositions(parsed.positions,replay.get(r.fj)),'Geometry replay differs');
+   fs.writeFileSync(path.join(out,r.fj+'.glb'),glb.bytes,{flag:'wx',mode:0o600});
+   results.push({...r,status:'EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH',archiveMember:name,rawSHA256,glbSHA256:glb.sha256,archiveSHA256:digest(fs.readFileSync(zip)),rawBytes:raw.length,triangles:parsed.positions.length/9,omitted:parsed.omitted});
   }catch(e){results.push({...r,status:'HOLD',reason:String(e.message)});}
  }
- const report={schema:1,version:'4.3',manifestURL,manifestSHA256:digest(bytes),manifestElements:catalog.all.size,results,parsed:results.filter(r=>r.status==='PUBLISHER_ELEMENT_PARSED').length,held:results.filter(r=>r.status==='HOLD').length,clinicalValidation:false,registrationValidated:false,geometryPublished:0,publicRelease:'NO_GO',licenseReview:doc.licenseReview};
+ const report={schema:1,version:'4.3',manifestURL,manifestSHA256:digest(bytes),manifestElements:catalog.all.size,results,parsed:results.filter(r=>r.status==='EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH').length,held:results.filter(r=>r.status==='HOLD').length,clinicalValidation:false,registrationValidated:false,geometryPublished:0,publicRelease:'NO_GO',licenseReview:doc.licenseReview};
  fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});
- console.log('BP3D43 PRIVATE ELEMENT INTAKE',JSON.stringify(report));return report;
+ console.log('BP3D43 PRIVATE ELEMENT INTAKE',JSON.stringify(report));
+ fs.rmSync(cookie,{force:true});fs.rmSync(path.join(out,'session.html'),{force:true});
+ assert(report.parsed===candidates.length&&report.held===0,'One or more elements held; review report');return report;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))run();
