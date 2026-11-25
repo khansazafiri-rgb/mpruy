@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "elements": 177,
+  "distinctFJ": 177,
+  "distinctFMA": 170,
+  "sourceLabelConcepts": 170,
+  "distinctRawSHA256": 177,
+  "triangles": 586721,
+  "scope": "Distinct within 4.3 only; not net-new vs 4.0. Individual browser replay of 177 pending.",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "previousBrowserReplay": {
+    "elements": 147,
+    "sourceLabelConcepts": 140,
+    "workflowRun": 45667335140
+  }
+}
