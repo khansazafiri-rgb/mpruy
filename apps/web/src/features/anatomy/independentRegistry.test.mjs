@@ -18,7 +18,7 @@ test('original library schema uses exact independent IDs, preserves systems and 
  assert.equal(filterStructures(r,{system:'nervous'}).length,2);
  assert.equal(filterStructures(r,{region:'headNeck'}).length,0);
  assert.deepEqual(r.regions.map(x=>x.id),['whole']);
- for(const row of r.rows){assert.equal(row.thumbnail,null);assert.equal(row.clinicalValidation,false);assert.deepEqual(row.regions,[]);}
+ for(const row of r.rows){assert.equal(row.thumbnail,'private-thumbnails/'+row.id+'.png');assert.equal(row.clinicalValidation,false);assert.deepEqual(row.regions,[]);}
  assert.equal(exploreHref(id('b')),'/anatomy/explore?structure='+id('b'));
 });
 test('reject legacy, wrong host, approval flag, malformed recovery and duplicate ID',()=>{
