@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {priorityPlan} from './independent-atlas-priority-recovery.mjs';
+import {priorityPlan,broadRecoveryPlan} from './independent-atlas-priority-recovery.mjs';
 const make=(tree,names,elementMap,files)=>({tree,names,elements:new Map(Object.entries(elementMap).map(([k,v])=>[k,new Set(v)])),archiveIndex:new Map(files.map(x=>[x,x+'.obj']))});
 test('uses exact named identity and pinned tree, never a substring or wrong FMA',()=>{
  const names=[{fmaId:'FMA26661',bpId:'BP1',name:'right bronchial tree'},{fmaId:'FMA2',bpId:'BP2',name:'bronchial branch of arch of aorta'}];
@@ -19,4 +19,13 @@ test('does not collapse different FMA concepts across source trees',()=>{
  const a=make('isa',[{fmaId:'FMA1',bpId:'BP1',name:'left lung'}],{FMA1:['FJ1']},['FJ1']);
  const b=make('partof',[{fmaId:'FMA2',bpId:'BP2',name:'left lung'}],{FMA2:['FJ2']},['FJ2']);
  assert.equal(priorityPlan([a,b],[['respiratory',['left lung']]])[0].status,'AMBIGUOUS_SOURCE');
+});
+
+test('broad recovery skips existing FMA and priority FMA, rejects conflicting identities',()=>{
+ const names=[{fmaId:'FMA1',bpId:'BP1',name:'left femur'},{fmaId:'FMA2',bpId:'BP2',name:'right femur'},{fmaId:'FMA3',bpId:'BP3',name:'left sciatic nerve'},{fmaId:'FMA4',bpId:'BP4',name:'right lung'},{fmaId:'FMA5',bpId:'BP5',name:'unclassified thing'}];
+ const a=make('isa',names,{FMA1:['FJ1'],FMA2:['FJ2'],FMA3:['FJ3'],FMA4:['FJ4'],FMA5:['FJ5']},['FJ1','FJ2','FJ3','FJ4','FJ5']);
+ const b=make('partof',[{fmaId:'FMA3',bpId:'BP3',name:'left femur'}],{FMA3:['FJ6']},['FJ6']);
+ const rows=broadRecoveryPlan([a,b],[{fmaId:'FMA1'}],[{fmaId:'FMA2',status:'EXPORT_CANDIDATE'}]);
+ assert.deepEqual(rows.map(x=>x.fmaId),['FMA4']);
+ assert.equal(rows[0].group,'respiratory');
 });
