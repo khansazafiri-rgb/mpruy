@@ -19,8 +19,6 @@ export function attachOriginalShell(root,out){
  shell=shell.replace(/src="\/brand\/logo-mark\.webp"/g,'src="data:image/webp;base64,'+fs.readFileSync(logo).toString('base64')+'"');
  shell=shell.replace(/<img\b[^>]*src="\/brand\/mascots\/[^"]+"[^>]*>/gi,'');
  assert(!/<script\b|\son[a-z]+\s*=|src="\/brand\//i.test(shell),'Unexpected original shell executable or asset');
- // Legacy help text refers to withheld data, not the independent dataset.
- shell=shell.replace(/<div class="modal-body">[\s\S]*?(?=<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*$)/,'<div class="modal-body"><p>Review lokal privat. Model dari BodyParts3D; referensi HRA terpisah. Regio, lapisan, dan orientasi belum tervalidasi. UI asli digunakan untuk perbandingan nonkomersial.</p><p><a href="./MODEL-ATTRIBUTIONS.json" target="_blank" rel="noopener">Atribusi model</a></p><p><a href="./THIRD-PARTY-NOTICES.txt" target="_blank" rel="noopener">Lisensi software</a></p>');
  // Keep the exact original CSS, loaded after the independent bundle CSS.
  const extra=String.raw
 `#originalEngineControls{display:none!important}
