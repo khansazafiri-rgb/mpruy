@@ -41,6 +41,41 @@ export function planCoverage(targets,body,sources){
  const counts={};for(const r of rows)counts[r.status]=(counts[r.status]||0)+1;
  return {targets:targets.length,currentBodyModels:body.length,counts,groups,rows,publicRelease:'NO_GO',clinicalValidation:false};
 }
+
+// Discovery only: formatting equivalence and old crosswalk labels are not clinical identity.
+// Preserve laterality, all numeric levels, and all anatomical qualifiers.
+export function formattingKey(name){
+ const n=key(name).replace(/^(.*)\.([lr])$/,(_m,a,b)=>(b==='l'?'left ':'right ')+a)
+  .replace(/\boesophagus\b/g,'esophagus').replace(/[()]/g,' ').replace(/\s+/g,' ').trim();
+ return n;
+}
+export function planAliasReview(targets,body,sources,exactRows){
+ const labels=new Map(),official=new Map(),byFma=new Map();
+ const push=(m,k,v)=>{if(!k)return;const a=m.get(k)||[];a.push(v);m.set(k,a);};
+ for(const m of body){
+  push(labels,formattingKey(m.name),{id:m.id,fmaId:m.fmaId,bpId:m.bpId,name:m.name,group:m.group,match:'publisher-format'});
+  if(m.oldName&&formattingKey(m.oldName)!==formattingKey(m.name))push(labels,formattingKey(m.oldName),{id:m.id,fmaId:m.fmaId,bpId:m.bpId,name:m.name,group:m.group,match:'legacy-crosswalk'});
+  push(byFma,m.fmaId,m);
+ }
+ for(const s of sources)for(const n of s.names){
+  const ids=[...(s.elements.get(n.fmaId)||[])].sort();
+  if(ids.length&&ids.every(id=>s.archiveIndex.has(id)))push(official,formattingKey(n.name),{tree:s.tree,fmaId:n.fmaId,bpId:n.bpId,name:n.name,elementIds:ids});
+ }
+ const rows=[];
+ for(let i=0;i<targets.length;i++){
+  const t=targets[i];if(exactRows[i]?.status!=='NO_EXACT_PUBLISHER_MATCH')continue;
+  const k=formattingKey(t.name),matches=(labels.get(k)||[]).filter(m=>m.group===t.group);
+  const fma=/^FMA\d+$/.test(t.fmaId||'')?t.fmaId:null;
+  const known=fma?(byFma.get(fma)||[]):[];
+  const candidates=official.get(k)||[];
+  const distinct=new Set([...matches,...known,...candidates].map(m=>m.fmaId));
+  const status=distinct.size>1?'AMBIGUOUS_REVIEW':distinct.size===0?'NO_FORMAT_OR_ALIAS_MATCH':known.length?'FMA_ID_REVIEW':matches.length?'EXISTING_SOURCE_ALIAS_REVIEW':'PUBLISHER_FORMAT_REVIEW';
+  rows.push({targetId:t.id,name:t.name,group:t.group,status,existing:matches,knownFma:known.map(m=>({id:m.id,fmaId:m.fmaId,bpId:m.bpId,name:m.name})),candidates,clinicalValidation:false,approvedForDistribution:false});
+ }
+ const counts={};for(const r of rows)counts[r.status]=(counts[r.status]||0)+1;
+ return {counts,rows,scope:'Unapproved discovery candidates only; no alias, FMA or formatting match is clinical equivalence.'};
+}
+
 export function run(packFolder,zaFolder){
  assert(/^z-anatomy-native-preview-[A-Za-z0-9_-]+$/.test(zaFolder)&&fs.realpathSync(q)===q);
  const pack=loadIndependentReview(q,packFolder),dir=path.join(q,zaFolder);assert(fs.realpathSync(dir)===dir);
@@ -59,10 +94,11 @@ export function run(packFolder,zaFolder){
  }
  const report=planCoverage(target.converted,pack.inventory.bodyModels,sources);
  report.scope='Exact case-insensitive names only; no inferred synonym or cross-frame equivalence. Z-Anatomy comparison stays private.';
+ report.aliasReview=planAliasReview(target.converted,pack.inventory.bodyModels,sources,report.rows);
  report.sourcePack=packFolder;report.targetPack=zaFolder;
  report.sourceInventorySHA256=hash(fs.readFileSync(regular(pack.folder,'inventory.json')));
  const out=path.join(pack.folder,'coverage-expansion-plan-'+randomUUID()+'.json');
  fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});
- console.log('INDEPENDENT COVERAGE PLAN',JSON.stringify({...report,rows:undefined,file:out}));return report;
+ console.log('INDEPENDENT COVERAGE PLAN',JSON.stringify({...report,rows:undefined,aliasReview:{counts:report.aliasReview.counts,scope:report.aliasReview.scope},file:out}));return report;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))run(process.argv[2]||'',process.argv[3]||'');
