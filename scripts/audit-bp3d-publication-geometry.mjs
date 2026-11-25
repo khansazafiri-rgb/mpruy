@@ -38,14 +38,15 @@ export function validateIdentity(entry,lineage,names,elements,{allowDisplayAlias
  assert(sameSet(ids,[...(elements.get(entry.fmaId)||[])]),'Incomplete or extra publisher FJ elements');
  return ids;
 }
-export function parseNativePositions(bytes){
+export function parseNativePositions(bytes,version='4.0'){
+ assert(['4.0','4.3'].includes(version),'Unsupported source version');
  assert(bytes.length>=28&&bytes.readUInt32LE(0)===0x46546c67&&bytes.readUInt32LE(4)===2&&bytes.readUInt32LE(8)===bytes.length,'Invalid GLB');
  const n=bytes.readUInt32LE(12),offset=20+n;
  assert(n%4===0&&offset+8<=bytes.length&&bytes.readUInt32LE(16)===0x4e4f534a,'Invalid JSON chunk');
  const d=JSON.parse(bytes.subarray(20,offset).toString('utf8')),bl=bytes.readUInt32LE(offset),start=offset+8;
  assert(bytes.readUInt32LE(offset+4)===0x004e4942&&start+bl===bytes.length,'Invalid BIN chunk');
  assert(d.asset?.version==='2.0'&&d.buffers?.length===1&&!d.buffers[0].uri&&d.buffers[0].byteLength<=bl,'External buffers forbidden');
- assert(!d.extensionsRequired?.length&&d.extras?.reviewStatus==='candidate-only'&&d.extras?.source==='Official BodyParts3D 4.0','Not an original candidate encoding');
+ assert(!d.extensionsRequired?.length&&d.extras?.reviewStatus==='candidate-only'&&d.extras?.source===('Official BodyParts3D '+version),'Not an original candidate encoding');
  assert(d.scenes?.length===1&&Array.isArray(d.nodes)&&d.scenes[0].nodes?.length===d.nodes.length&&new Set(d.scenes[0].nodes).size===d.nodes.length,'Unexpected scene');
  const output=new Map(),usedMeshes=new Set();
  for(const i of d.scenes[0].nodes){

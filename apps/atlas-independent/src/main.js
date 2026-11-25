@@ -270,7 +270,7 @@ originalUI=mountOriginalShell({
  status:()=>$('count').textContent+' · '+selectionEntries.length+' konsep seleksi · review privat'+(['partial','error'].includes(hostState.state)?' · '+hostState.message:''),
  snapshot:()=>({study:structuredClone(study),presentation:structuredClone(presentation),selectedId:selected?.id||null}),
  restore:s=>{searchRevision++;study=structuredClone(s.study);presentation=structuredClone(s.presentation);select(byId.get(s.selectedId)||null);syncControls();syncPresentationControls();updateAppearance();refresh(true);},
- reset:()=>$('reset').click(),all:()=>$('allSystems').click(),references:()=>$('openReferences').click(),guided:openGuided,
+ reset:()=>$('reset').click(),all:()=>$('allSystems').click(),references:()=>$('openReferences').click(),references43:()=>$('open43References').click(),guided:openGuided,
  fullscreen:async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.getElementById('app').requestFullscreen();}catch(e){$('info').textContent=String(e.message||e);}},
  fit:()=>fit(),axis:id=>$(id).click(),zoom:f=>{camera.position.sub(controls.target).multiplyScalar(f).add(controls.target);controls.update();},
  pan:on=>{controls.mouseButtons.LEFT=on?THREE.MOUSE.PAN:THREE.MOUSE.ROTATE;},

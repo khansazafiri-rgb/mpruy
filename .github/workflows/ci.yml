@@ -27,6 +27,18 @@ jobs:
         run: npm run lint
       - name: Tes unit (konten kaya + format impor)
         run: npm test
+      - name: Resolve exact trusted Clinical Studios base
+        env:
+          STUDIOS_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          set -euo pipefail
+          if [[ "$STUDIOS_BASE_SHA" =~ ^[a-f0-9]{40}$ && ! "$STUDIOS_BASE_SHA" =~ ^0+$ ]]; then
+            if ! git cat-file -e "$STUDIOS_BASE_SHA:shared/studios/frozen-ids.json" 2>/dev/null; then
+              git fetch --no-tags --depth=1 origin "$STUDIOS_BASE_SHA"
+            fi
+            git cat-file -e "$STUDIOS_BASE_SHA:shared/studios/frozen-ids.json"
+            git rev-parse "$STUDIOS_BASE_SHA:shared/studios/frozen-ids.json"
+          fi
       - name: Clinical studio contracts and offline resource clearance
         env:
           STUDIOS_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}

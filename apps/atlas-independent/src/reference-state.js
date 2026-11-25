@@ -49,3 +49,13 @@ export function isolateSourceComponent(meshes,component,originalVisibility){
  for(const m of meshes)m.visible=component?selected.has(m)&&originalVisibility.get(m):originalVisibility.get(m);
  return true;
 }
+
+export function reference43Entries(doc){
+ if(doc?.schema!==1||doc.publicRelease!=='NO_GO'||doc.clinicalValidation!==false||doc.registrationValidated!==false||!Array.isArray(doc.items)||doc.items.length!==12)throw Error('Inventaris 4.3 tidak valid');
+ const ids=new Set(),elements=new Set();
+ for(const e of doc.items){
+  if(!/^bp43-[a-f0-9]{24}$/.test(e.id||'')||ids.has(e.id)||!/^FJ\d+[A-Za-z]?$/.test(e.fj||'')||elements.has(e.fj)||!/^FMA\d+$/.test(e.fmaId||'')||!/^BP\d+$/.test(e.bpId||'')||typeof e.name!=='string'||!e.name.trim()||e.source!=='BodyParts3D 4.3'||e.scope!=='SINGLE_SOURCE_ELEMENT'||e.coordinateFrame!=='native-4.3-not-registered'||e.approvedForDistribution!==false||e.registrationValidated!==false||e.clinicalValidation!==false||!Number.isInteger(e.triangles)||e.triangles<1||!['rawSHA256','glbSHA256'].every(k=>/^[a-f0-9]{64}$/.test(e[k]||'')))throw Error('Identitas elemen 4.3 tidak valid');
+  ids.add(e.id);elements.add(e.fj);
+ }
+ return doc.items.map(e=>({...e,version:'4.3 · '+e.fj,meshCount:1}));
+}

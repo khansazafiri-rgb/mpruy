@@ -36,7 +36,7 @@ export function mountOriginalShell(api){
  disable('shareAtlas','Tautan publik tidak tersedia dalam review privat');disable('regionButton','Regio belum divalidasi');
  $('sceneTitle').textContent='Seluruh tubuh';$('sceneSubtitle').textContent='Koordinat sumber';
  const presets=make('div','atlas-presets');presets.append(make('span','','Tampilan'));
- for(const [label,fn] of [['Semua',()=>api.all()],['Reset',()=>api.reset()],['HRA',()=>api.references()],['Belajar',()=>api.guided()],['Layar penuh',()=>api.fullscreen()]]){const b=make('button','',label);b.onclick=()=>act(fn);presets.append(b);}
+ for(const [label,fn] of [['Semua',()=>api.all()],['Reset',()=>api.reset()],['HRA',()=>api.references()],['BP3D 4.3',()=>api.references43()],['Belajar',()=>api.guided()],['Layar penuh',()=>api.fullscreen()]]){const b=make('button','',label);b.onclick=()=>act(fn);presets.append(b);}
  const tiles=make('div','atlas-groups');$('systemsList').replaceChildren(presets,tiles);
  const browse=make('section','atlas-browse');browse.id='originalBrowse';browse.hidden=true;
  const head=make('div','atlas-browse-head'),title=make('strong'),close=make('button','','×');close.onclick=()=>{browse.hidden=true;};head.append(title,close);
