@@ -23,10 +23,11 @@ export function parseObj(text){
  assert(positions.length>0,'No usable triangles');
  return {positions:new Float32Array(positions),normals:new Float32Array(normals),omitted};
 }
-export function encodeNativeGlb(parts,identity){
+export function encodeNativeGlb(parts,identity,version='4.0'){
+ assert(['4.0','4.3'].includes(version),'Unsupported source version');
  assert(parts.length&&new Set(parts.map(p=>p.id)).size===parts.length,'Invalid element set');
  const doc={asset:{version:'2.0',generator:'MEDCOEL independent source exporter'},scene:0,scenes:[{nodes:[]}],nodes:[],meshes:[],accessors:[],bufferViews:[],buffers:[{byteLength:0}],
-  extras:{source:'Official BodyParts3D 4.0',reviewStatus:'candidate-only',coordinateFrame:'raw-official-OBJ-not-registered',provenance:{...identity,approvedForDistribution:false,registrationValidated:false}}};
+  extras:{source:'Official BodyParts3D '+version,reviewStatus:'candidate-only',coordinateFrame:'raw-official-OBJ-not-registered',provenance:{...identity,approvedForDistribution:false,registrationValidated:false}}};
  const chunks=[];let offset=0,triangles=0;
  function accessor(values,position){
   assert(values instanceof Float32Array&&values.length%3===0&&values.length>0,'Invalid attribute');
