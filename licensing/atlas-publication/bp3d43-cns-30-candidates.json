@@ -1,0 +1,315 @@
+{
+  "schema": 1,
+  "batchId": "cns-30",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "30 distinct exact source-element discovery IDs for central nervous system, ventricular spaces and sensory pathways. Selected one candidate per source label, not all fragments or whole structures. No lower-limb nerve or lymphatic vessel coverage claim. Verify exact publisher membership and native geometry against pinned mirror.",
+  "rows": [
+    {
+      "fj": "FJ1730",
+      "discoveryBP": "BP24045",
+      "discoveryFMA": "FMA242789",
+      "name": "Third ventricle",
+      "faces": 3870,
+      "vertices": 1994,
+      "bytes": 244735,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1731",
+      "discoveryBP": "BP21438",
+      "discoveryFMA": "FMA242789",
+      "name": "Fourth ventricle",
+      "faces": 6940,
+      "vertices": 3567,
+      "bytes": 447174,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1737",
+      "discoveryBP": "BP21401",
+      "discoveryFMA": "FMA242789",
+      "name": "Central canal of spinal cord",
+      "faces": 728,
+      "vertices": 427,
+      "bytes": 46544,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1742",
+      "discoveryBP": "BP21574",
+      "discoveryFMA": "FMA49443",
+      "name": "Corpus callosum",
+      "faces": 30232,
+      "vertices": 16716,
+      "bytes": 2128406,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1750",
+      "discoveryBP": "BP20081",
+      "discoveryFMA": "FMA256174",
+      "name": "Left internal capsule",
+      "faces": 10740,
+      "vertices": 5375,
+      "bytes": 686073,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1751",
+      "discoveryBP": "BP20188",
+      "discoveryFMA": "FMA256174",
+      "name": "Right internal capsule",
+      "faces": 10742,
+      "vertices": 5376,
+      "bytes": 692824,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1753",
+      "discoveryBP": "BP20316",
+      "discoveryFMA": "FMA223151",
+      "name": "Left amygdala",
+      "faces": 382,
+      "vertices": 202,
+      "bytes": 22264,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1754",
+      "discoveryBP": "BP23921",
+      "discoveryFMA": "FMA223151",
+      "name": "Left caudate nucleus",
+      "faces": 2544,
+      "vertices": 1334,
+      "bytes": 156368,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1757",
+      "discoveryBP": "BP20205",
+      "discoveryFMA": "FMA223151",
+      "name": "Left globus pallidus",
+      "faces": 7080,
+      "vertices": 3542,
+      "bytes": 447648,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1759",
+      "discoveryBP": "BP24047",
+      "discoveryFMA": "FMA242193",
+      "name": "Left hippocampus proper",
+      "faces": 980,
+      "vertices": 492,
+      "bytes": 56983,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1760",
+      "discoveryBP": "BP21294",
+      "discoveryFMA": "FMA14065",
+      "name": "Hypothalamus",
+      "faces": 2050,
+      "vertices": 1183,
+      "bytes": 131767,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1767",
+      "discoveryBP": "BP21451",
+      "discoveryFMA": "FMA242789",
+      "name": "Left lateral ventricle",
+      "faces": 17968,
+      "vertices": 8986,
+      "bytes": 1158042,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1769",
+      "discoveryBP": "BP23201",
+      "discoveryFMA": "FMA256237",
+      "name": "Medulla oblongata",
+      "faces": 6036,
+      "vertices": 3196,
+      "bytes": 391855,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1775",
+      "discoveryBP": "BP21511",
+      "discoveryFMA": "FMA49443",
+      "name": "Pons",
+      "faces": 10304,
+      "vertices": 5764,
+      "bytes": 696774,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1776",
+      "discoveryBP": "BP20313",
+      "discoveryFMA": "FMA223151",
+      "name": "Left putamen",
+      "faces": 7056,
+      "vertices": 3642,
+      "bytes": 453659,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1781",
+      "discoveryBP": "BP21476",
+      "discoveryFMA": "FMA256237",
+      "name": "Cerebellum",
+      "faces": 23818,
+      "vertices": 12098,
+      "bytes": 1579285,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1782",
+      "discoveryBP": "BP21462",
+      "discoveryFMA": "FMA14065",
+      "name": "Left thalamus",
+      "faces": 1702,
+      "vertices": 853,
+      "bytes": 99686,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1802",
+      "discoveryBP": "BP20207",
+      "discoveryFMA": "FMA223151",
+      "name": "Right caudate nucleus",
+      "faces": 2570,
+      "vertices": 1334,
+      "bytes": 158750,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1805",
+      "discoveryBP": "BP20297",
+      "discoveryFMA": "FMA223151",
+      "name": "Right globus pallidus",
+      "faces": 5344,
+      "vertices": 2674,
+      "bytes": 337918,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1807",
+      "discoveryBP": "BP24044",
+      "discoveryFMA": "FMA242193",
+      "name": "Right hippocampus proper",
+      "faces": 1020,
+      "vertices": 515,
+      "bytes": 60120,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1814",
+      "discoveryBP": "BP21454",
+      "discoveryFMA": "FMA242789",
+      "name": "Right lateral ventricle",
+      "faces": 18016,
+      "vertices": 9011,
+      "bytes": 1168028,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1823",
+      "discoveryBP": "BP20196",
+      "discoveryFMA": "FMA223151",
+      "name": "Right putamen",
+      "faces": 7064,
+      "vertices": 3690,
+      "bytes": 459991,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1827",
+      "discoveryBP": "BP21533",
+      "discoveryFMA": "FMA14065",
+      "name": "Right thalamus",
+      "faces": 758,
+      "vertices": 381,
+      "bytes": 44286,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ1829",
+      "discoveryBP": "BP20277",
+      "discoveryFMA": "FMA223151",
+      "name": "Right amygdala",
+      "faces": 384,
+      "vertices": 202,
+      "bytes": 22533,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3914",
+      "discoveryBP": "BP29371",
+      "discoveryFMA": "FMA223162",
+      "name": "Left olfactory tract",
+      "faces": 1292,
+      "vertices": 668,
+      "bytes": 76851,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4012",
+      "discoveryBP": "BP29272",
+      "discoveryFMA": "FMA223163",
+      "name": "Right olfactory tract",
+      "faces": 1292,
+      "vertices": 668,
+      "bytes": 77406,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4426",
+      "discoveryBP": "BP29641",
+      "discoveryFMA": "FMA242005",
+      "name": "Neural tissue of spinal cord",
+      "faces": 9952,
+      "vertices": 8581,
+      "bytes": 852923,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ7502",
+      "discoveryBP": "BP23107",
+      "discoveryFMA": "FMA11195",
+      "name": "Right optic tract",
+      "faces": 912,
+      "vertices": 516,
+      "bytes": 56856,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ7502M",
+      "discoveryBP": "BP23128",
+      "discoveryFMA": "FMA11195",
+      "name": "Left optic tract",
+      "faces": 912,
+      "vertices": 517,
+      "bytes": 56448,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ7503",
+      "discoveryBP": "BP22996",
+      "discoveryFMA": "FMA11195",
+      "name": "Optic chiasm",
+      "faces": 1464,
+      "vertices": 754,
+      "bytes": 87781,
+      "group": "nervous"
+    }
+  ]
+}
