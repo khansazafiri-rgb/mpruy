@@ -1,4 +1,4 @@
-name: Atlas integrated private 40-element regression
+name: Atlas integrated private 72-element regression
 on:
   pull_request:
     branches: [feat/atlas-bp3d43-intake-20261125, feat/atlas-integrated-private-20261125]
@@ -33,14 +33,16 @@ jobs:
         run: node scripts/intake-bp3d43-priority-elements.mjs
       - name: Fresh gap batch with dual-source audit
         run: node scripts/audit-bp3d43-gap-batch.mjs
+      - name: Fresh nerve batch with dual-source audit
+        run: node scripts/audit-bp3d43-gap-batch.mjs nerves-32
       - name: Install isolated browser
         run: |
           npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
           "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
-      - name: Combined 40 actual source elements and 10 glossary-bound Challenge questions
+      - name: Combined 72 actual source elements and 10 glossary-bound Challenge questions
         run: |
           export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
-          ATLAS_TEST_REAL43=combined node scripts/test-private-atlas-browser.mjs
+          ATLAS_TEST_REAL43=expanded node scripts/test-private-atlas-browser.mjs
       - name: Remove temporary source anatomy
         if: always()
         run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-* local-data/licensing-quarantine/bp3d43-mirror-audit-*
