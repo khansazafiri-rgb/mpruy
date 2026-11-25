@@ -12,9 +12,9 @@ import {encodeNativeGlb} from './independent-bp3d-export.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 let real43=null,serve43=null;
-if(['1','gap','combined','expanded','axial','head-neck'].includes(process.env.ATLAS_TEST_REAL43)){
+if(['1','gap','combined','expanded','axial','head-neck','visceral'].includes(process.env.ATLAS_TEST_REAL43)){
  const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
- const mode=process.env.ATLAS_TEST_REAL43,counts=mode==='head-neck'?[12,28,32,23,20,14]:mode==='axial'?[12,28,32,23,20]:mode==='expanded'?[12,28,32]:mode==='combined'?[12,28]:mode==='gap'?[28]:[12];
+ const mode=process.env.ATLAS_TEST_REAL43,counts=mode==='visceral'?[12,28,32,23,20,14,18]:mode==='head-neck'?[12,28,32,23,20,14]:mode==='axial'?[12,28,32,23,20]:mode==='expanded'?[12,28,32]:mode==='combined'?[12,28]:mode==='gap'?[28]:[12];
  // Gap-only replay may share the same quarantine as the full integration job.
  if(mode!=='gap')assert.equal(folders.length,counts.length,'Fresh exact source acquisitions required');
  else assert(folders.length>=1,'Fresh gap acquisition required');
@@ -22,10 +22,11 @@ if(['1','gap','combined','expanded','axial','head-neck'].includes(process.env.AT
  const registries=counts.map(count=>{
   const matched=folders.filter(f=>JSON.parse(fs.readFileSync(path.join(q,f,'report.json'),'utf8')).parsed===count);
   assert.equal(matched.length,1,'Expected one acquisition of '+count+' elements');
-  const file=count===14?'bp3d43-head-neck-cartilage-14-dual-source-audit-20261125.json':count===23?'bp3d43-discs-23-dual-source-audit-20261125.json':count===20?'bp3d43-costal-20-dual-source-audit-20261125.json':count===32?'bp3d43-nerves32-dual-source-audit-20261125.json':count===28?'bp3d43-gap-batch-dual-source-audit-20261125.json':'bp3d43-dual-source-audit-20261125.json';
+  const file=count===18?'bp3d43-visceral-18-dual-source-audit-20261126.json':count===14?'bp3d43-head-neck-cartilage-14-dual-source-audit-20261125.json':count===23?'bp3d43-discs-23-dual-source-audit-20261125.json':count===20?'bp3d43-costal-20-dual-source-audit-20261125.json':count===32?'bp3d43-nerves32-dual-source-audit-20261125.json':count===28?'bp3d43-gap-batch-dual-source-audit-20261125.json':'bp3d43-dual-source-audit-20261125.json';
   return m.load43Elements(q,matched[0],JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),count);
  });
  real43=m.combine43Registries(registries);
+ if(mode==='visceral'){assert.equal(real43.assets.size,147);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,140);assert.equal(real43.inventory.items.reduce((sum,e)=>sum+e.triangles,0),392576);}
  if(mode==='head-neck'){
   assert.equal(real43.assets.size,129);
   assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,122);
@@ -116,13 +117,14 @@ try{
   const dialog=page.locator('#referenceDialog'),viewport=dialog.locator('#referenceViewport'),select=dialog.locator('#referenceSelect');
   await dialog.locator('#referenceStatus').filter({hasText:real43.assets.size+' kandidat referensi tersedia'}).waitFor();
   assert.equal(await select.locator('option').count(),real43.assets.size);
-  if([40,72,115,129].includes(real43.assets.size)){
+  if([40,72,115,129,147].includes(real43.assets.size)){
    const region=dialog.locator('#referenceRegionTopic'),system=dialog.locator('#referenceSystemTopic'),search=dialog.locator('#referenceSearch');
    await region.selectOption('neck-upper-limb');await system.selectOption('nervous');assert.equal(await select.locator('option').count(),6);
    await search.fill('FJ4273');assert.equal(await select.locator('option').count(),1);
    await search.fill('');await region.selectOption('foot');assert.equal(await select.locator('option').count(),0);assert(await dialog.locator('#referenceLoad').isDisabled());
    await region.selectOption('all');await system.selectOption('ligament');assert.equal(await select.locator('option').count(),16);
-   if([115,129].includes(real43.assets.size)){await system.selectOption('cartilage');assert.equal(await select.locator('option').count(),real43.assets.size===129?57:43);await region.selectOption('spine');assert.equal(await select.locator('option').count(),23);await region.selectOption('thorax');assert.equal(await select.locator('option').count(),20);if(real43.assets.size===129){await region.selectOption('neck');assert.equal(await select.locator('option').count(),9);await region.selectOption('head-neck');assert.equal(await select.locator('option').count(),5);}await region.selectOption('all');}
+   if([115,129,147].includes(real43.assets.size)){await system.selectOption('cartilage');assert.equal(await select.locator('option').count(),real43.assets.size>=129?57:43);await region.selectOption('spine');assert.equal(await select.locator('option').count(),23);await region.selectOption('thorax');assert.equal(await select.locator('option').count(),20);if(real43.assets.size>=129){await region.selectOption('neck');assert.equal(await select.locator('option').count(),9);await region.selectOption('head-neck');assert.equal(await select.locator('option').count(),5);}await region.selectOption('all');}
+   if(real43.assets.size===147){await system.selectOption('urinary');assert.equal(await select.locator('option').count(),5);await region.selectOption('abdomen-pelvis');assert.equal(await select.locator('option').count(),2);await region.selectOption('all');await system.selectOption('lymphoid');assert.equal(await select.locator('option').count(),1);}
    await system.selectOption('all');assert.equal(await select.locator('option').count(),real43.assets.size);
    console.log('BP3D43 TOPIC FILTER PASS: exact source-ID search, region/system intersection and empty-state load block.');
   }
@@ -167,11 +169,11 @@ try{
   }
   await challenge.locator('#referenceChallengeProgress').filter({hasText:'10/10 benar · 0 gagal dimuat'}).waitFor();
   await challenge.locator('#referenceChallengeQuit').click();
-  if([115,129].includes(real43.assets.size)){
+  if([115,129,147].includes(real43.assets.size)){
    const modeSelect=setup.locator('#referenceChallengeMode'),langSelect=setup.locator('#referenceChallengeLanguage');
    await modeSelect.selectOption('source-mcq');assert(await langSelect.isDisabled());assert.equal(await langSelect.inputValue(),'en');
    await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
-   const expected=real43.assets.size===129?122:109,sourceSeen=new Set();
+   const expected=real43.assets.size===147?140:real43.assets.size===129?122:109,sourceSeen=new Set();
    for(let i=0;i<expected;i++){
     await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal '+(i+1)+'/'+expected}).waitFor();
     await choices.first().waitFor({timeout:20000});assert.equal(await choices.count(),4);

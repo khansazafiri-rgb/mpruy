@@ -5,8 +5,19 @@
   "distinctFMA": 122,
   "distinctRawSHA256": 129,
   "triangles": 348858,
-  "scope": "Distinct within 4.3 only; not net-new vs 4.0; browser replay of new batch pending.",
+  "scope": "Distinct within 4.3 only; not net-new vs 4.0; sequential individual browser rendering, not simultaneous registered body geometry.",
   "clinicalValidation": false,
   "registrationValidated": false,
-  "publicRelease": "NO_GO"
+  "publicRelease": "NO_GO",
+  "browserReplay": {
+    "commit": "e05385762862367ce8fcf6e5f17df879ddfe1894",
+    "workflowRun": 45661767112,
+    "workflowJob": 139373195690,
+    "conclusion": "success",
+    "renderedActualPublisherGLBs": 129,
+    "sourceLabelConceptsCompleted": 122,
+    "multilingualTypedConcepts": 10,
+    "unitAndIdentityTestsPassed": 41,
+    "registrationValidated": false
+  }
 }

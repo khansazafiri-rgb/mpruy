@@ -12,7 +12,7 @@ const read=(folder,name,max=64*1024*1024)=>{
  return fs.readFileSync(f);
 };
 export function load43Elements(privateRoot,folderName,evidence,expectedCount=12){
- assert([12,28,32,23,20,14].includes(expectedCount));
+ assert([12,28,32,23,20,14,18].includes(expectedCount));
  assert(/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(folderName),'Explicit local acquisition folder required');
  assert(fs.realpathSync(privateRoot)===privateRoot&&path.basename(privateRoot)==='licensing-quarantine');
  const folder=path.join(privateRoot,folderName);assert(fs.realpathSync(folder)===folder);
@@ -58,7 +58,7 @@ export function serve43Reference(req,res,registry){
 }
 
 export function combine43Registries(registries){
- assert(registries.length>=1&&registries.length<=6);
+ assert(registries.length>=1&&registries.length<=7);
  const items=[],assets=new Map(),fjs=new Set(),hashes=new Set();
  for(const registry of registries){
   assert(registry.inventory.publicRelease==='NO_GO'&&registry.inventory.registrationValidated===false&&registry.inventory.clinicalValidation===false&&registry.assets.size===registry.inventory.items.length);
@@ -68,6 +68,6 @@ export function combine43Registries(registries){
    fjs.add(e.fj);hashes.add(e.rawSHA256);items.push(e);assets.set(e.id,a);
   }
  }
- assert([12,14,20,23,26,28,32,34,35,37,40,42,43,44,46,48,49,51,52,54,55,57,58,60,62,63,64,65,66,67,69,71,72,74,75,77,78,80,81,83,85,86,87,89,92,94,95,97,101,103,106,109,115,117,129].includes(items.length));
+ assert([12,14,18,20,23,26,28,30,32,34,35,37,38,40,41,42,43,44,46,48,49,50,51,52,53,54,55,57,58,60,61,62,63,64,65,66,67,69,70,71,72,73,74,75,76,77,78,80,81,82,83,84,85,86,87,89,90,92,93,94,95,96,97,98,99,101,103,104,105,106,107,109,110,112,113,115,117,119,121,124,127,129,133,135,147].includes(items.length));
  return {inventory:{schema:1,publicRelease:'NO_GO',registrationValidated:false,clinicalValidation:false,scope:'Separate 4.3 source elements, not registered body geometry',items},assets};
 }
