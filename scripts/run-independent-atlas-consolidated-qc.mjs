@@ -9,8 +9,9 @@ import {summarizeNpmAudit} from './diagnose-atlas-publication-audit.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const q=path.join(root,'local-data/licensing-quarantine');
 const [pack,target,...flags]=process.argv.slice(2);
-assert(flags.length===new Set(flags).size&&flags.every(f=>['--preview','--reuse-expanded'].includes(f)),'Only --preview and --reuse-expanded are supported');
+assert(flags.length===new Set(flags).size&&flags.every(f=>['--preview','--reuse-expanded','--full-review'].includes(f)),'Only --preview, --reuse-expanded and --full-review are supported');
 const reuse=flags.includes('--reuse-expanded');
+const reviewFlags=flags.includes('--full-review')?['--original-ui','--broad-recovery','--context-recovery']:[];
 assert(/^independent-source-review-[A-Za-z0-9_-]+$/.test(pack||'')&&/^z-anatomy-native-preview-[A-Za-z0-9_-]+$/.test(target||''),'Provide explicit local review folders');
 assert(fs.realpathSync(q)===q);
 for(const folder of [pack,target]){const p=path.join(q,folder);assert(fs.realpathSync(p)===p&&fs.statSync(p).isDirectory(),'Missing or unsafe review folder');}
@@ -52,7 +53,7 @@ audit('host-security',['audit','--json'],'host-install');
 // tools locally; they are not included in the independent viewer browser bundle.
 step('audit-tool-install','npm',['ci','--prefix','apps/4d-lab','--ignore-scripts','--no-audit','--no-fund']);
 step('app-tests','npm',['test','--prefix','apps/atlas-independent'],['install']);
-step('source-tests',process.execPath,['--test','scripts/independent-bp3d-export.test.mjs','scripts/independent-source-coverage.test.mjs','scripts/audit-bp3d-publication-geometry.test.mjs','scripts/independent-atlas-final-qc.test.mjs','scripts/assemble-atlas-distribution-review.test.mjs','scripts/z-anatomy-final-qc.test.mjs','scripts/expand-independent-source-review.test.mjs','scripts/audit-independent-system-coverage.test.mjs','scripts/independent-atlas-host.test.mjs','scripts/independent-atlas-priority-recovery.test.mjs','scripts/independent-atlas-element-catalog.test.mjs','scripts/independent-atlas-context-recovery.test.mjs','scripts/private-atlas-original-shell.test.mjs','scripts/audit-bp3d-43-catalog.test.mjs','scripts/replay-independent-source-evidence.test.mjs','scripts/commercial-release.test.mjs','scripts/production-caddy-quarantine.test.mjs'],['install','audit-tool-install']);
+step('source-tests',process.execPath,['--test','scripts/independent-bp3d-export.test.mjs','scripts/independent-source-coverage.test.mjs','scripts/audit-bp3d-publication-geometry.test.mjs','scripts/independent-atlas-final-qc.test.mjs','scripts/assemble-atlas-distribution-review.test.mjs','scripts/z-anatomy-final-qc.test.mjs','scripts/expand-independent-source-review.test.mjs','scripts/audit-independent-system-coverage.test.mjs','scripts/independent-atlas-host.test.mjs','scripts/independent-atlas-priority-recovery.test.mjs','scripts/independent-atlas-element-catalog.test.mjs','scripts/independent-atlas-context-recovery.test.mjs','scripts/private-atlas-original-shell.test.mjs','scripts/independent-atlas-thumbnails.test.mjs','apps/web/src/features/anatomy/independentRegistry.test.mjs','scripts/audit-bp3d-43-catalog.test.mjs','scripts/replay-independent-source-evidence.test.mjs','scripts/commercial-release.test.mjs','scripts/production-caddy-quarantine.test.mjs'],['install','audit-tool-install']);
 const expansionOutput=reuse?null:step('expansion',process.execPath,['scripts/expand-independent-source-review.mjs',pack,target],['source-tests']);
 let finalPack=pack;
 if(reuse){
@@ -78,8 +79,8 @@ const systemOutput=step('system-coverage',process.execPath,['scripts/audit-indep
 consume('system-coverage','SYSTEM COVERAGE QC',systemOutput,r=>assert(r.publicRelease==='NO_GO'&&r.clinicalValidation===false&&Object.keys(r.systems).length===13&&r.bodyModels===result.expansion.bodyModels));
 const replayOutput=step('source-replay',process.execPath,['scripts/replay-independent-source-evidence.mjs',finalPack],['source-tests','expansion']);
 consume('source-replay','INDEPENDENT SOURCE REPLAY',replayOutput,r=>assert(r.publicRelease==='NO_GO'&&r.approved===0&&r.bodyTotal===result.expansion.bodyModels&&r.bodyMatched===r.bodyTotal&&r.hraTotal===result.expansion.hraReferences&&r.hraMatched===r.hraTotal&&r.hraCacheBlocked===0&&r.publicQuarantineRejectsPack===true));
-const httpOutput=step('build-and-http',process.execPath,['scripts/preview-independent-atlas.mjs',finalPack,'--http-only'],['security','host-security','app-tests','source-tests','coverage','system-coverage','source-replay']);
-consume('build-and-http','INDEPENDENT HTTP QC',httpOutput,r=>assert(r.httpSmoke==='PASS'&&r.hostQC==='PASS'&&r.models===result.expansion.bodyModels&&r.httpModelRoutesVerified===r.models&&r.hraReferences===result.expansion.hraReferences&&r.httpHraRoutesVerified===r.hraReferences&&r.publicRelease==='NO_GO'));
+const httpOutput=step('build-and-http',process.execPath,['scripts/preview-independent-atlas.mjs',finalPack,'--http-only',...reviewFlags],['security','host-security','app-tests','source-tests','coverage','system-coverage','source-replay']);
+consume('build-and-http','INDEPENDENT HTTP QC',httpOutput,r=>assert(r.httpSmoke==='PASS'&&r.hostQC==='PASS'&&r.thumbnailQC==='PASS_SAMPLE'&&(!reviewFlags.length||r.originalUI==='PRIVATE_ORIGINAL_UI_COMPARISON'&&r.httpPriorityRoutesVerified===r.priorityModels)&&r.models===result.expansion.bodyModels&&r.httpModelRoutesVerified===r.models&&r.hraReferences===result.expansion.hraReferences&&r.httpHraRoutesVerified===r.hraReferences&&r.publicRelease==='NO_GO'));
 try{assert.deepEqual(snapshot(),before);result.steps['immutable-boundaries']={status:'PASS'};}catch(e){result.steps['immutable-boundaries']={status:'FAIL',reason:String(e.message)};}
 result.technicalChecksPassed=Object.values(result.steps).every(s=>s.status==='PASS');
 result.previewEligible=result.technicalChecksPassed;
@@ -96,7 +97,7 @@ console.log('CONSOLIDATED ATLAS QC',JSON.stringify(compact));
 if(!result.technicalChecksPassed)process.exitCode=1;
 else if(flags.includes('--preview')){
  console.log('PRIVATE PREVIEW ONLY: '+finalPack+' · http://127.0.0.1:'+String(process.env.PORT||4186)+'/anatomy/explore · stop with Ctrl+C');
- const preview=spawnSync(process.execPath,['scripts/preview-independent-atlas.mjs',finalPack],{cwd:root,stdio:'inherit'});
+ const preview=spawnSync(process.execPath,['scripts/preview-independent-atlas.mjs',finalPack,...reviewFlags],{cwd:root,stdio:'inherit'});
  if(preview.error)throw preview.error;
  if(preview.status!==0&&preview.signal!=='SIGINT')process.exitCode=preview.status||1;
 }
