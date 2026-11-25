@@ -7,13 +7,14 @@ export function mountOriginalShell(api){
  const header=document.querySelector('body > header'),main=document.querySelector('body > main'),view=$('view');
  document.body.insertBefore(old,header);old.append(header,main);
  document.body.insertBefore(template.content.cloneNode(true),old);
+ document.body.classList.add('original-shell-active');
  const original=$('app'),canvas=view.querySelector('canvas');$('threeCanvas').replaceWith(view);canvas.id='threeCanvas';canvas.tabIndex=0;
  canvas.setAttribute('aria-label','Penampil anatomi 3D');
  // Keep the actual original CSS and controls. Unvalidated functions stay disabled.
  const disable=(id,reason)=>{const b=$(id);if(b){b.disabled=true;b.title=reason;}};
  const click=(id,fn)=>{const el=$(id);if(el)el.onclick=fn;};
  const history=[];
- function act(fn){history.push(api.snapshot());if(history.length>30)history.shift();fn();render();}
+ function act(fn){history.push(api.snapshot());if(history.length>30)history.shift();Promise.resolve().then(fn).catch(error=>{ $('atlasStatus').textContent='Aksi tidak berhasil: '+String(error.message||error); }).finally(render);}
  click('undoAtlas',()=>{if(history.length)api.restore(history.pop());render();});
  click('restoreAtlas',()=>act(()=>api.reset()));click('emptyRestore',()=>act(()=>api.reset()));
  click('returnContext',()=>act(()=>api.restoreContext()));
@@ -22,7 +23,7 @@ export function mountOriginalShell(api){
  for(const [id,axis,label] of [['frontViewBtn','front','+Z'],['sideViewBtn','side','−X'],['backViewBtn','back','−Z'],['topViewBtn','top','+Y']]){
   $(id).textContent=label;$(id).title='Sumbu sumber '+label+'; orientasi anatomi belum divalidasi';click(id,()=>api.axis(axis));
  }
- click('infoToggle',()=>api.clear());click('infoExpand',()=>{const on=original.classList.toggle('info-expanded');$('infoExpand').setAttribute('aria-expanded',String(on));});
+ click('infoToggle',()=>api.clear());click('infoOpen',()=>original.classList.add('info-open'));click('infoExpand',()=>{const on=original.classList.toggle('info-expanded');$('infoExpand').setAttribute('aria-expanded',String(on));});
  click('footerIsolateBtn',()=>act(()=>api.isolate()));click('footerHideBtn',()=>act(()=>api.hide()));
  click('footerTransparentBtn',()=>act(()=>api.fadeSelected()));click('footerFadeOthersBtn',()=>act(()=>api.fadeOthers()));
  click('footerFocusBtn',()=>api.focus());click('footerShowAllBtn',()=>act(()=>api.restoreContext()));
@@ -54,13 +55,14 @@ export function mountOriginalShell(api){
  }
  let scheduled=false,lastSelection=null;
  function renderNow(){
-  scheduled=false;const s=api.state();for(const [g,t] of tileMap){const n=api.entries().filter(e=>e.group===g&&!e.priorityOnly).length;t.tile.classList.toggle('is-on',s.enabled.has(g));t.toggle.setAttribute('aria-pressed',String(s.enabled.has(g)));t.toggle.disabled=!n;t.more.disabled=!api.entries().some(e=>e.group===g);t.toggle.title=String(n)+' model tubuh';t.layers.firstChild.classList.toggle('on',s.enabled.has(g));}
+  scheduled=false;const s=api.state();for(const [g,t] of tileMap){const n=api.entries().filter(e=>e.group===g&&!e.priorityOnly&&!e.selectionOnly).length;t.tile.classList.toggle('is-on',s.enabled.has(g));t.toggle.setAttribute('aria-pressed',String(s.enabled.has(g)));t.toggle.disabled=!n;t.more.disabled=!api.entries().some(e=>e.group===g);t.toggle.title=String(n)+' model tubuh';t.layers.firstChild.classList.toggle('on',s.enabled.has(g));}
   const e=s.selected;original.classList.toggle('info-open',!!e);$('returnContext').hidden=!s.isolated&&!s.hidden.size;$('footerBar').style.display=e?'':'none';$('structureInfo').classList.toggle('hidden',!e);original.querySelector('.info-placeholder').hidden=!!e;
   if(e&&lastSelection!==e.id){const h=make('div','structure-title');h.append(make('h3','',e.name));const tags=make('div','structure-tags');tags.append(make('span','structure-system',api.groups[e.group]),make('span','structure-tag warn','Review privat'));h.append(tags,make('p','structure-description',(e.fmaId||'')+' · '+(e.bpId||'')+(e.contextCandidate?' · kandidat konteks':e.priorityOnly?' · representasi terpisah':e.selectionOnly?' · seleksi elemen sumber':'')+' · identitas sumber; belum tervalidasi klinis.'));$('structureInfo').replaceChildren(h);}
-  lastSelection=e?.id||null;$('atlasStatus').textContent=api.status();$('loadingOverlay').classList.toggle('hidden',s.ready);$('undoAtlas').disabled=!history.length;
+  lastSelection=e?.id||null;$('atlasStatus').textContent=api.status();$('atlasSelection').textContent=e?.name||'';
+  $('emptyScene').hidden=!s.ready||s.loading||s.visibleMeshes>0||s.error;$('loadingOverlay').classList.toggle('hidden',s.ready);$('undoAtlas').disabled=!history.length;
  }
  function render(){if(!scheduled){scheduled=true;requestAnimationFrame(renderNow);}}
  document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!['INPUT','TEXTAREA'].includes(e.target?.tagName)){e.preventDefault();$('undoAtlas').click();}});
- const full=make('button','btn-icon','⛶');full.title='Layar penuh';full.onclick=()=>api.fullscreen();original.querySelector('.header-right').append(full);
+ const full=make('button','btn-icon','⛶');full.title='Layar penuh';full.setAttribute('aria-label','Layar penuh');full.onclick=()=>api.fullscreen();original.querySelector('.header-right').append(full);
  return {render};
 }
