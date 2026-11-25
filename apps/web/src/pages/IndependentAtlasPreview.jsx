@@ -3,21 +3,35 @@
 import {useEffect,useRef,useState} from 'react';
 import {Link,useLocation} from 'react-router-dom';
 import {PING,validStatus} from '../../../atlas-independent/src/host-protocol.js';
+import {OPEN,validResult,deepLink} from '../../../atlas-independent/src/library-bridge.js';
 import './IndependentAtlasPreview.css';
 const initial={state:'loading',message:'Menyiapkan Atlas independen…'};
 function loopback(){return location.hostname==='127.0.0.1';}
-function AtlasFrame(){
- const frame=useRef(null),[attempt,setAttempt]=useState(0),[status,setStatus]=useState(initial);
+function AtlasFrame({structureId=''}){
+ const frame=useRef(null),[attempt,setAttempt]=useState(0),[status,setStatus]=useState(initial),[selection,setSelection]=useState(null);
  useEffect(()=>{
-  const handle=e=>{if(validStatus(e,location.origin,frame.current?.contentWindow))setStatus({state:e.data.state,message:e.data.message});};
+  let requestId=null,selectionTimer=null;
+  const handle=e=>{
+   const target=frame.current?.contentWindow;
+   if(validStatus(e,location.origin,target)){
+    setStatus({state:e.data.state,message:e.data.message});
+    if(structureId&&!requestId&&['interactive','partial'].includes(e.data.state)){
+     requestId=crypto.randomUUID();setSelection({ok:null,message:'Memuat struktur sumber…'});
+     target.postMessage({type:OPEN,version:1,requestId,structureId},location.origin);
+     selectionTimer=setTimeout(()=>setSelection(s=>s?.ok===null?{ok:false,message:'Struktur belum dapat dikonfirmasi. Coba ulang.'}:s),45000);
+    }
+   }else if(validResult(e,location.origin,target,requestId,structureId)){
+    clearTimeout(selectionTimer);setSelection({ok:e.data.ok,message:e.data.message});
+   }
+  };
   window.addEventListener('message',handle);
   const timer=setTimeout(()=>setStatus(s=>s.state==='loading'?{state:'loading',message:'Model masih dimuat. Jika perlu, coba ulang.'}:s),45000);
-  return()=>{window.removeEventListener('message',handle);clearTimeout(timer);};
- },[attempt]);
- const retry=()=>{setStatus(initial);setAttempt(n=>n+1);};
+  return()=>{window.removeEventListener('message',handle);clearTimeout(timer);clearTimeout(selectionTimer);};
+ },[attempt,structureId]);
+ const retry=()=>{setStatus(initial);setSelection(null);setAttempt(n=>n+1);};
  return <main className="independent-atlas-host">
   <header><Link to="/anatomy">← Anatomi MEDCOEL</Link><span>Review privat · tidak untuk publikasi</span><a href="/anatomy/viewer/" target="_blank" rel="noopener">Buka viewer terpisah</a></header>
-  <p role="status" className="independent-atlas-status">{status.message}{status.state==='error'||status.state==='loading'?<button onClick={retry}>Coba ulang</button>:null}</p>
+  <p role="status" className="independent-atlas-status">{selection?.message||status.message}{selection?.ok===false||status.state==='error'||status.state==='loading'?<button onClick={retry}>Coba ulang</button>:null}</p>
   <iframe key={attempt} ref={frame} title="Atlas 3D independen MEDCOEL" src="/anatomy/viewer/" allow="fullscreen" allowFullScreen onLoad={()=>frame.current?.contentWindow?.postMessage({type:PING,version:1},location.origin)} onError={()=>setStatus({state:'error',message:'Viewer tidak dapat dibuka.'})}/>
  </main>;
 }
@@ -38,7 +52,8 @@ export default function IndependentAtlasPreview(){
  if(!loopback())return <p role="alert">Preview ini hanya tersedia pada loopback.</p>;
  const p=pathname.replace(/\/$/,'');
  // Deep links to legacy identity, quiz or landmark data cannot silently select a different model.
- if(p==='/anatomy/explore'&&!search&&!hash)return <AtlasFrame/>;
- if(p==='/anatomy'&&!search&&!hash)return <Landing/>;
+ const requested=deepLink(search,hash);
+ if(p==='/anatomy/explore'&&requested!==null)return <AtlasFrame key={requested} structureId={requested}/>;
+ if(p==='/anatomy'&&requested==='')return <Landing/>;
  return <main className="independent-atlas-landing"><section><h1>Fitur belum tersedia di paket independen</h1><p>Identitas struktur dan kuis dari katalog lama belum dipetakan. Tidak ada fallback ke model lama.</p><Link to="/anatomy/explore">Buka Atlas independen</Link></section></main>;
 }
