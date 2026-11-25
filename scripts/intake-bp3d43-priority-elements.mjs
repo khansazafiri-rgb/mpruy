@@ -56,8 +56,11 @@ export function run(){
  const out=fs.mkdtempSync(path.join(q,'bp3d43-element-intake-'));fs.chmodSync(out,0o700);
  const doc=JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/bp3d43-priority-element-candidates.json'),'utf8'));
  const cookie=path.join(out,'session.cookie'),viewer=base+'/?lng=en';
- const session=['--cookie',cookie,'--cookie-jar',cookie,'--referer',viewer,'--compressed'];
- download(viewer,path.join(out,'session.html'),['--cookie-jar',cookie,'--compressed']);
+ const session=['--cookie',cookie,'--cookie-jar',cookie,'--referer',viewer,'--http1.1','--header','Accept-Encoding: identity'];
+ // The initial HTML is not evidence; a broken viewer response must not prevent
+ // a bounded attempt at the version-stamped manifest itself.
+ fs.writeFileSync(cookie,'# Netscape HTTP Cookie File\n',{mode:0o600});
+ try{download(viewer,path.join(out,'session.html'),session);}catch{console.warn('Viewer bootstrap unavailable; trying direct version-stamped manifest');}
  const manifestZip=path.join(out,'manifest.zip');download(manifestURL,manifestZip,session);
  assert.deepEqual(listing(manifestZip),['FMA2Obj.txt']);const bytes=member(manifestZip,'FMA2Obj.txt'),catalog=parseMembership(bytes.toString('utf8'));
  const candidates=validateCandidates(doc,catalog),results=[];
