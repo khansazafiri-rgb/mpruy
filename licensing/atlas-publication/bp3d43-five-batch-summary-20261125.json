@@ -1,0 +1,12 @@
+{
+  "elements": 115,
+  "distinctFJ": 115,
+  "distinctFMA": 109,
+  "distinctRawSHA256": 115,
+  "triangles": 318086,
+  "schema": 1,
+  "scope": "Distinct within 4.3 only. Not net-new 4.0 models.",
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO"
+}
