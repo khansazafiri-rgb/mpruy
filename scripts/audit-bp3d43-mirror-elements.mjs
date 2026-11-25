@@ -26,12 +26,12 @@ export function runMirror(){
   const doc=JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/bp3d43-priority-element-candidates.json'),'utf8'));
   for(const [file,blob] of [['MANIFEST.csv',doc.manifestBlob],['metadata/FMA2Obj.txt',doc.membershipBlob]])assert.equal(git(['rev-parse',commit+':'+file]).toString().trim(),blob,'Pinned mirror metadata changed');
   const manifest=git(['show',commit+':metadata/FMA2Obj.txt']),catalog=parseMembership(manifest.toString('utf8')),rows=validateCandidates(doc,catalog);
-  const paths=git(['ls-tree','-rz','--name-only',commit,'meshes/']).toString().split('\0').filter(Boolean);
+  const paths=git(['ls-tree','-r','-z','--name-only',commit]).toString().split('\0').filter(Boolean);
   const results=[];
   for(const r of rows){
    try{
-    const names=paths.filter(p=>p.startsWith('meshes/')&&p.split('/').length===2).map(p=>p.slice(7));
-    const member=selectMember(names,r),rel='meshes/'+member;
+    const names=paths.filter(p=>p.startsWith('meshes/')&&/\.obj$/i.test(p));
+    const rel=selectMember(names,r);
     const pointer=parsePointer(git(['show',commit+':'+rel]).toString('utf8'));
     assert.equal(pointer.size,r.bytes,'Catalog byte size differs');
     // No checkout, no third-party scripts, fetch only the exact requested path.
