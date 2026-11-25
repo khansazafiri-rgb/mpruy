@@ -20,7 +20,7 @@ export function buildIndependentRegistry(manifest,selection=null,recovery=null,h
   ids.add(e.id);
   if(fmas.has(e.fmaId))continue;fmas.add(e.fmaId);
   const name=e.name.trim(),representation=e.selectionOnly?'exact-element-selection':e.contextCandidate?'native-context-candidate':e.priorityOnly?'isolated-source-reference':'body';
-  rows.push({id:e.id,base:e.fmaId,fmaId:e.fmaId,bpId:e.bpId,name,nameKnown:true,latin:'',side:null,system:map[e.group],group:e.group,regions:[],bounds:null,aliases:[],definition:'',sources:[source],thumbnail:null,parentId:null,available:true,search:normalise([name,e.fmaId,e.bpId].join(' ')),nameKey:normalise(name),representation,clinicalValidation:false,approvedForDistribution:false});
+  rows.push({id:e.id,base:e.fmaId,fmaId:e.fmaId,bpId:e.bpId,name,nameKnown:true,latin:'',side:null,system:map[e.group],group:e.group,regions:[],bounds:null,aliases:[],definition:'',sources:[source],thumbnail:'private-thumbnails/'+e.id+'.png',parentId:null,available:true,search:normalise([name,e.fmaId,e.bpId].join(' ')),nameKey:normalise(name),representation,clinicalValidation:false,approvedForDistribution:false});
  }
  rows.sort((a,b)=>a.name.localeCompare(b.name,'en')||a.id.localeCompare(b.id));
  return {schemaVersion:1,sourceCommit:'independent-bp3d-private-review',privateReview:true,previews:{},rows,byId:new Map(rows.map(r=>[r.id,r])),systems:SYSTEMS.map(s=>({...s,count:rows.filter(r=>r.system===s.id).length})),regions:REGIONS.filter(r=>r.id==='whole').map(r=>({...r,count:rows.length}))};
