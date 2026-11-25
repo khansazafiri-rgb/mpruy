@@ -1,17 +1,13 @@
-name: Atlas SIO source label quarantine audit
+name: Atlas SIO private label replay
 on:
   push:
     branches: [feat/atlas-sio-label-replay-20261126]
-    paths:
-      - 'scripts/audit-sio-*.py'
-      - 'licensing/atlas-publication/sio-visible-human-source-candidate.json'
-      - '.github/workflows/atlas-sio-label-audit.yml'
   pull_request:
     branches: [feat/atlas-cns-30-20261126]
     paths:
       - 'scripts/audit-sio-*.py'
       - 'licensing/atlas-publication/sio-visible-human-source-candidate.json'
-      - '.github/workflows/atlas-sio-label-audit.yml'
+      - '.github/workflows/atlas-sio-private-replay.yml'
 permissions:
   contents: read
 jobs:
