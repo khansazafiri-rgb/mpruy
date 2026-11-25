@@ -14,7 +14,7 @@ export function mountOriginalShell(api){
  const disable=(id,reason)=>{const b=$(id);if(b){b.disabled=true;b.title=reason;}};
  const click=(id,fn)=>{const el=$(id);if(el)el.onclick=fn;};
  const history=[];
- function act(fn){history.push(api.snapshot());if(history.length>30)history.shift();Promise.resolve().then(fn).catch(error=>{ $('atlasStatus').textContent='Aksi tidak berhasil: '+String(error.message||error); }).finally(render);}
+ function act(fn){history.push(api.snapshot());if(history.length>30)history.shift();try{Promise.resolve(fn()).catch(error=>{ $('atlasStatus').textContent='Aksi tidak berhasil: '+String(error.message||error); }).finally(render);}catch(error){$('atlasStatus').textContent='Aksi tidak berhasil: '+String(error.message||error);render();}}
  click('undoAtlas',()=>{if(history.length)api.restore(history.pop());render();});
  click('restoreAtlas',()=>act(()=>api.reset()));click('emptyRestore',()=>act(()=>api.reset()));
  click('returnContext',()=>act(()=>api.restoreContext()));
