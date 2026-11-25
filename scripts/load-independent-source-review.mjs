@@ -25,7 +25,34 @@ export function loadIndependentReview(privateRoot,folder){
  const inv=json(dir,'inventory.json'),summary=json(dir,'review-summary.json'),att=json(dir,'MODEL-ATTRIBUTIONS.json'),receipt=json(dir,'evidence/source-receipts.json');
  assert(inv.schema===1&&inv.mode==='independent-source-review'&&inv.publicRelease==='NO_GO'&&inv.approvedForCommercialDistribution===false&&inv.bodyFrame==='native-official-OBJ'&&inv.registrationValidated===false&&inv.clinicalValidation===false);
  assert(summary.publicRelease==='NO_GO'&&summary.approved===0&&summary.zAnatomyModelsIncluded===0&&summary.bodyModels===inv.bodyModels.length&&summary.hraReferences===inv.independentReferences.length);
- assert(receipt.publicRelease==='NO_GO'&&receipt.completeModels===inv.bodyModels.length&&receipt.total===inv.bodyModels.length);
+ assert(receipt.publicRelease==='NO_GO'&&receipt.completeModels===receipt.total&&Number.isSafeInteger(receipt.total)&&receipt.total>0);
+ for(const tree of ['isa','partof']){
+  const src=receipt.sources[tree];assert(src?.complete===true&&src.files.length===3);
+  const expected={archive:tree+'_BP3D_4.0_obj_99.zip',names:tree+'_parts_list_e.txt',elements:tree+'_element_parts.txt'};
+  const seen=new Set();
+  for(const f of src.files){assert(Object.hasOwn(expected,f.kind)&&!seen.has(f.kind)&&f.name===expected[f.kind]&&/^[a-f0-9]{64}$/.test(f.sha256)&&Number.isSafeInteger(f.bytes)&&f.bytes>0&&f.url==='https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/'+f.name&&['EXISTING_RECEIPT_MATCH','FRESH_PUBLISHER_BYTES_MATCH'].includes(f.status));seen.add(f.kind);}
+ }
+ if(!inv.expansion)assert(receipt.total===inv.bodyModels.length);
+ else{
+  const ex=json(dir,'evidence/expansion.json');
+  assert(ex.schema===1&&ex.publicRelease==='NO_GO'&&ex.approved===0&&/^independent-source-review-[A-Za-z0-9_-]+$/.test(ex.basePack)&&ex.basePack!==folder&&/^[a-f0-9]{64}$/.test(ex.baseInventorySHA256));
+  assert(inv.expansion.baseModels===receipt.total&&ex.baseModels.length===receipt.total&&inv.expansion.added===ex.added.length&&ex.added.length+ex.baseModels.length===inv.bodyModels.length);
+  const baseDir=path.join(privateRoot,ex.basePack);assert(fs.realpathSync(baseDir)===baseDir);
+  const baseBytes=bytes(baseDir,'inventory.json');assert(hash(baseBytes)===ex.baseInventorySHA256);
+  const base=JSON.parse(baseBytes.toString('utf8'));assert(!base.expansion&&base.publicRelease==='NO_GO'&&base.bodyModels.length===receipt.total);
+  const original=new Map(base.bodyModels.map(m=>[m.id,m])),all=new Map(inv.bodyModels.map(m=>[m.id,m]));
+  assert(original.size===receipt.total&&all.size===inv.bodyModels.length);
+  const accounted=new Set(),usedFma=new Set(base.bodyModels.map(m=>m.fmaId)),usedElements=new Set(base.bodyModels.flatMap(m=>m.sourceElements.map(e=>e.id)));
+  for(const m of ex.baseModels){assert(!accounted.has(m.id)&&original.get(m.id)?.sha256===m.sha256);assert.deepEqual(all.get(m.id),original.get(m.id));accounted.add(m.id);}
+  for(const row of ex.added){
+   const m=all.get(row.id);assert(m&&!accounted.has(row.id)&&!usedFma.has(row.fmaId)&&!original.has(row.id)&&m.approvedForDistribution===false);
+   for(const k of ['id','sha256','fmaId','bpId','sourceTree','sourceHashes','sourceElements'])assert.deepEqual(m[k],row[k]);
+   assert(m.sourceElements.length&&m.sourceElements.every(e=>!usedElements.has(e.id)));
+   m.sourceElements.forEach(e=>usedElements.add(e.id));usedFma.add(m.fmaId);accounted.add(m.id);
+  }
+  assert(accounted.size===all.size);
+  assert.deepEqual(inv.independentReferences,base.independentReferences);
+ }
  const bodyAttributions=new Map(att.body.map(a=>[a.id,a])),referenceAttributions=new Map(att.references.map(a=>[a.id,a]));
  assert(bodyAttributions.size===att.body.length&&bodyAttributions.size===inv.bodyModels.length&&referenceAttributions.size===att.references.length&&referenceAttributions.size===inv.independentReferences.length);
  const entries=[],models=new Map(),hra={assets:new Map(),blocked:[]};
