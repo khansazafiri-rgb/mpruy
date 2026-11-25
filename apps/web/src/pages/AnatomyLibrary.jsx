@@ -66,9 +66,22 @@ export default function AnatomyProduct() {
   );
 }
 
+// Original Library presentation, explicitly using the independent preview loader.
+export function IndependentLibraryPages({registryLoader}) {
+  return <AnatomyDataProvider privateReview registryLoader={registryLoader}>
+    <LibraryShell>
+      <Routes>
+        <Route path="library" element={<LibraryCollection />} />
+        <Route path="structure/:id" element={<StructurePage />} />
+        <Route path="system/:systemId" element={<SystemPage />} />
+        <Route path="*" element={<Missing />} />
+      </Routes>
+    </LibraryShell>
+  </AnatomyDataProvider>;
+}
 function LibraryShell({ children }) {
   const liveLab = useLiveLabAvailable();
-  const { storageError } = useAnatomyLibrary();
+  const { storageError, privateReview } = useAnatomyLibrary();
   const { pathname } = useLocation();
   useEffect(() => {
     if (!pathname.startsWith('/anatomy/structure/')) document.title = 'Anatomi Manusia | MEDCOEL';
@@ -82,9 +95,9 @@ function LibraryShell({ children }) {
         <nav aria-label="Navigasi anatomi">
           <NavLink end to="/anatomy">Ringkasan</NavLink>
           <NavLink to="/anatomy/library">Pustaka</NavLink>
-          <NavLink to="/anatomy/study">Kuis</NavLink>
+          {!privateReview && <NavLink to="/anatomy/study">Kuis</NavLink>}
           <Link to="/anatomy/explore" className="anatomy-nav-3d">Atlas 3D <Box size={14} /></Link>
-          {liveLab !== 'missing' && <Link to="/anatomy/live" className="anatomy-nav-3d">Live 4D Lab</Link>}
+          {!privateReview && liveLab !== 'missing' && <Link to="/anatomy/live" className="anatomy-nav-3d">Live 4D Lab</Link>}
         </nav>
         <Link className="anatomy-back" to="/beranda">← Beranda</Link>
       </header>
@@ -95,7 +108,7 @@ function LibraryShell({ children }) {
       <footer className="anatomy-product-footer">
         <Logo variant="mark" />
         <span>Anatomi Manusia · Belajar dengan tubuh di depan mata.</span>
-        <span>Dataset Z-Anatomy · Progres tersimpan di perangkat ini</span>
+        <span>{privateReview ? 'BodyParts3D · Review privat · Progres sesi saja' : 'Dataset Z-Anatomy · Progres tersimpan di perangkat ini'}</span>
       </footer>
     </div>
   );
@@ -357,11 +370,11 @@ function LibraryCollection({ fixedSystem = '' }) {
   return <DataBoundary><CollectionContent fixedSystem={fixedSystem} /></DataBoundary>;
 }
 function CollectionContent({ fixedSystem }) {
-  const { registry } = useAnatomyLibrary();
+  const { registry, privateReview } = useAnatomyLibrary();
   const [params, setParams] = useSearchParams();
   const query = params.get('q') || '';
   const system = fixedSystem || params.get('system') || '';
-  const region = params.get('region') || '';
+  const region = privateReview ? 'whole' : params.get('region') || '';
   const page = Math.max(1, Math.trunc(Number(params.get('page'))) || 1);
   const sort = params.get('sort') || 'overview';
   const rows = useMemo(
@@ -388,7 +401,7 @@ function CollectionContent({ fixedSystem }) {
       <div className="library-filterbar">
         <label className="library-query">
           <Search size={18} />
-          <input aria-label="Cari struktur" value={query} placeholder="Inggris, Latin, Indonesia, atau sinonim…" onChange={(e) => update('q', e.target.value)} />
+          <input aria-label="Cari struktur" value={query} placeholder={privateReview ? "Nama sumber, FMA, BP…" : "Inggris, Latin, Indonesia, atau sinonim…"} onChange={(e) => update('q', e.target.value)} />
         </label>
         <label>
           Sistem
@@ -399,7 +412,7 @@ function CollectionContent({ fixedSystem }) {
         </label>
         <label>
           Regio
-          <select aria-label="Saring menurut regio" value={region} onChange={(e) => update('region', e.target.value)}>
+          <select aria-label="Saring menurut regio" value={region} disabled={privateReview} onChange={(e) => update('region', e.target.value)}>
             <option value="">Semua regio</option>
             {REGIONS.map((r) => <option key={r.id} value={r.id}>{r.name}</option>)}
           </select>
@@ -594,7 +607,7 @@ function StructurePage() {
 }
 function StructureContent() {
   const { id } = useParams();
-  const { registry, progress, updateProgress } = useAnatomyLibrary();
+  const { registry, progress, updateProgress, privateReview } = useAnatomyLibrary();
   const row = registry.byId.get(id);
   useEffect(() => { if (row) document.title = row.name + ' | Anatomi MEDCOEL'; }, [row]);
   if (!row) return <Missing message="Struktur ini tidak ditemukan dalam dataset anatomi." />;
@@ -637,12 +650,12 @@ function StructureContent() {
               </div>
             )}
           </div>
-          <p className="library-provenance">Nama dan deskripsi dari metadata Z-Anatomy. Pembagian regio mengikuti katalog kuis atlas.</p>
+          <p className="library-provenance">{privateReview ? `BodyParts3D · ${row.fmaId} / ${row.bpId} · ${row.representation}. Regio dan lapisan belum divalidasi; bukan bukti kelengkapan klinis.` : "Nama dan deskripsi dari metadata Z-Anatomy. Pembagian regio mengikuti katalog kuis atlas."}</p>
         </div>
         <aside className="library-detail-aside">
           <StructureThumbnail path={row.thumbnail} name={row.name} className="library-detail-preview" eager />
           <h2>Lihat dalam konteksnya.</h2>
-          <p>Struktur ini bersinar di atlas, sementara struktur di sekitarnya tetap terlihat. Isolasi tersedia kalau perlu.</p>
+          <p>{privateReview && row.representation === "isolated-source-reference" ? "Representasi sumber terpisah, tidak digabungkan ke tubuh." : "Struktur ini bersinar di atlas, sementara struktur di sekitarnya tetap terlihat. Isolasi tersedia kalau perlu."}</p>
           {row.available
             ? <Link className="btn-primary" to={exploreHref(row.id)}><Box size={16} /> Lihat di 3D <ArrowRight size={16} /></Link>
             : <p>Model belum tersedia.</p>}
@@ -662,7 +675,7 @@ function StructureContent() {
               ))}
             </div>
           </div>
-          <Link className="library-detail-study" to={'/anatomy/study?system=' + row.system}>Kuis sistem ini <ArrowRight size={14} /></Link>
+          {!privateReview && <Link className="library-detail-study" to={'/anatomy/study?system=' + row.system}>Kuis sistem ini <ArrowRight size={14} /></Link>}
         </aside>
       </article>
       <section className="library-section">
