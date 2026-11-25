@@ -29,3 +29,5 @@
  #selectionActions{bottom:86px;left:8px}
  #info{left:8px;bottom:8px;font-size:12px}
 }
+
+#guidedLearningPanel{position:fixed;z-index:100;top:76px;right:12px;width:min(350px,calc(100vw - 24px));max-height:calc(100dvh - 150px);overflow:auto;background:#123833;color:#eff8f3;border:1px solid #4a746a;border-radius:12px;padding:14px;box-shadow:0 8px 24px #001a1760;font:14px system-ui,sans-serif}#guidedLearningPanel>div{display:flex;gap:6px;align-items:center;justify-content:space-between}#guidedLearningPanel button,#guidedLearningPanel select{font:inherit;color:inherit;background:#183f39;border:1px solid #4a746a;border-radius:7px;padding:8px}#guidedLearningPanel select{width:100%;margin-top:10px}#guidedLearningPanel button:disabled{opacity:.45}#guidedLearningPanel h3{margin:8px 0}#guidedLearningPanel p,#guidedLearningPanel small{line-height:1.45;font-size:12px}#guidedLearningPanel small{display:block;margin-top:10px;color:#b3d2c9}#guidedLearningPanel[hidden]{display:none!important}@media(max-width:640px){#guidedLearningPanel{top:64px;max-height:45dvh}}

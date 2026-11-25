@@ -19,6 +19,11 @@ const ownerA='bp-'+'a'.repeat(24),ownerB='bp-'+'b'.repeat(24),selection='sel-'+'
 const entry=(id,n,group)=>({id,name:'Engineering fixture '+n,group,regions:['whole'],fmaId:'FMA'+n,bpId:'BP'+n,path:'models/'+id+'.glb',approvedForDistribution:false,source:'BodyParts3D 4.0',classificationProvisional:true});
 const entries=[entry(ownerA,1,'skeletal'),entry(ownerB,2,'muscular')];
 const catalog={schema:1,publicRelease:'NO_GO',clinicalValidation:false,items:[{id:selection,name:'Engineering fixture component',group:'muscular',fmaId:'FMA3',bpId:'BP3',sourceTree:'isa',regions:['whole'],selectionOnly:true,bindings:[{ownerId:ownerB,elementId:'FJ2'}],approvedForDistribution:false,clinicalValidation:false,classificationProvisional:true}]};
+const fixtureCoverage={schema:1,publicRelease:'NO_GO',clinicalValidation:false,registrationValidated:false,targets:3,rows:[
+ {group:'muscular',target:'Engineering fixture 2',status:'BODY_MODEL',fmaId:'FMA2',representations:[{id:ownerB,name:entries[1].name,group:'muscular',type:'BODY_MODEL'}]},
+ {group:'muscular',target:'Engineering fixture component',status:'EXACT_ELEMENT_SELECTION',fmaId:'FMA3',representations:[{id:selection,name:catalog.items[0].name,group:'muscular',type:'EXACT_ELEMENT_SELECTION'}]},
+ {group:'muscular',target:'Unavailable fixture',status:'NOT_FOUND_BY_EXACT_CHECK',fmaId:null,representations:[]}
+]};
 const triangle=(id,x)=>({id,positions:new Float32Array([x,0,0,x+1,0,0,x,.8,0]),normals:new Float32Array([0,0,1,0,0,1,0,0,1]),omitted:0});
 const assets=new Map([[ownerA,encodeNativeGlb([triangle('FJ1',-2)],{}).bytes],[ownerB,encodeNativeGlb([triangle('FJ2',0),triangle('FJ3',2)],{}).bytes]]);
 let server,browser;
@@ -32,6 +37,7 @@ try{
   if(!p.startsWith(base))return send(404,'not found','text/plain');
   const rel=p.slice(base.length);
   if(rel==='inventory.json')return send(200,JSON.stringify({schema:1,mode:'private-review',publicRelease:'NO_GO',sourceFrame:'native-official-OBJ',sourceKind:'independent-bp3d',entries}),'application/json');
+  if(rel==='learning-coverage.json')return send(200,JSON.stringify(fixtureCoverage),'application/json');
   if(rel==='element-selection.json')return send(200,JSON.stringify(catalog),'application/json');
   if(rel==='priority-recovery/inventory.json')return send(200,JSON.stringify({schema:1,publicRelease:'NO_GO',contextMode:null,registrationValidated:false,clinicalValidation:false,items:[]}),'application/json');
   const model=rel.match(/^models\/(bp-[a-f0-9]{24})\.glb$/);
@@ -63,6 +69,26 @@ try{
  await page.locator('#footerHideBtn').click();await waitCounts(2,0);
  await page.locator('#undoAtlas').click();await waitCounts(3,1);
  await page.locator('#footerTransparentBtn').click();await waitCounts(3,1);
+ await page.getByRole('button',{name:'Belajar',exact:true}).click();
+ const guided=page.locator('#guidedLearningPanel');
+ await guided.getByRole('heading',{name:'Engineering fixture 2'}).waitFor();
+ assert((await guided.innerText()).includes('0/2 checkpoint tersedia'));
+ await guided.getByRole('button',{name:'Tampilkan 3D'}).click();
+ await guided.getByRole('status').filter({hasText:'Struktur berhasil dibuka.'}).waitFor();
+ await waitCounts(3,2);
+ assert((await guided.innerText()).includes('1/2 checkpoint tersedia'));
+ await guided.getByRole('button',{name:'Berikutnya'}).click();
+ await guided.getByRole('heading',{name:'Engineering fixture component'}).waitFor();
+ await guided.getByRole('button',{name:'Tampilkan 3D'}).click();
+ await guided.getByRole('status').filter({hasText:'Struktur berhasil dibuka.'}).waitFor();
+ await waitCounts(3,1);
+ assert((await guided.innerText()).includes('2/2 checkpoint tersedia'));
+ await guided.getByRole('button',{name:'Berikutnya'}).click();
+ await guided.getByRole('heading',{name:'Unavailable fixture'}).waitFor();
+ assert(await guided.getByRole('button',{name:'Tampilkan 3D'}).isDisabled());
+ assert((await guided.innerText()).includes('1 belum tersedia'));
+ await guided.getByRole('button',{name:'Tutup'}).click();
+ await guided.waitFor({state:'hidden'});
  await page.setViewportSize({width:390,height:844});
  await page.locator('#searchOpen').click();
  await page.locator('#searchInput').waitFor({state:'visible'});
@@ -81,7 +107,7 @@ try{
  await embedded.locator('#structureInfo h3').filter({hasText:'Engineering fixture component'}).waitFor();
  const missing=await request('bp-'+'d'.repeat(24));assert.equal(missing.ok,false);
  assert.deepEqual(errors,[],'browser runtime errors');
- console.log('ATLAS PRIVATE BROWSER FIXTURE PASS: original desktop/mobile shell, exact single-element highlight, isolate, hide, undo, fade and source-ID iframe bridge. Non-anatomical QA fixtures only.');
+ console.log('ATLAS PRIVATE BROWSER FIXTURE PASS: original desktop/mobile shell, exact single-element highlight, isolate, hide, undo, fade and source-ID iframe bridge, guided exact checkpoint highlight and unavailable checkpoint blocking. Non-anatomical QA fixtures only.');
 }finally{
  await browser?.close();
  if(server)await new Promise(resolve=>server.close(resolve));
