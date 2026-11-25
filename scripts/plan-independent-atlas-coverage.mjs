@@ -76,12 +76,8 @@ export function planAliasReview(targets,body,sources,exactRows){
  return {counts,rows,scope:'Unapproved discovery candidates only; no alias, FMA or formatting match is clinical equivalence.'};
 }
 
-export function run(packFolder,zaFolder){
- assert(/^z-anatomy-native-preview-[A-Za-z0-9_-]+$/.test(zaFolder)&&fs.realpathSync(q)===q);
- const pack=loadIndependentReview(q,packFolder),dir=path.join(q,zaFolder);assert(fs.realpathSync(dir)===dir);
- const target=read(dir,'pack/inventory.json');
- assert(target.kind==='z-anatomy-original-source-private'&&target.approvedForCommercialDistribution===false);
- const receipt=read(pack.folder,'evidence/source-receipts.json'),sources=[];
+export function loadVerifiedPublisherSources(packFolder){
+ const receipt=read(packFolder,'evidence/source-receipts.json'),sources=[];
  for(const tree of ['isa','partof']){
   const source=path.join(q,tree==='isa'?'bp3d-4.0':'bp3d-4.0-partof');assert(fs.realpathSync(source)===source);
   const r=receipt.sources[tree];assert(r?.complete===true&&r.files.length===3);
@@ -90,8 +86,16 @@ export function run(packFolder,zaFolder){
   checkArchiveEntryNames(listing);
   const archiveIndex=new Map();
   for(const entry of listing){const m=path.basename(entry).match(/^(FJ\d+[A-Za-z]?)\.obj$/i);if(!m)continue;assert(!archiveIndex.has(m[1]),'Ambiguous source member');archiveIndex.set(m[1],entry);}
-  sources.push({tree,names:parseOfficialNames(fs.readFileSync(regular(source,files.names),'utf8')),elements:parseOfficialElements(fs.readFileSync(regular(source,files.elements),'utf8')),archiveIndex});
+  sources.push({tree,archive,hashes:Object.fromEntries(r.files.map(f=>[f.kind,f.sha256])),names:parseOfficialNames(fs.readFileSync(regular(source,files.names),'utf8')),elements:parseOfficialElements(fs.readFileSync(regular(source,files.elements),'utf8')),archiveIndex});
  }
+ return sources;
+}
+export function run(packFolder,zaFolder){
+ assert(/^z-anatomy-native-preview-[A-Za-z0-9_-]+$/.test(zaFolder)&&fs.realpathSync(q)===q);
+ const pack=loadIndependentReview(q,packFolder),dir=path.join(q,zaFolder);assert(fs.realpathSync(dir)===dir);
+ const target=read(dir,'pack/inventory.json');
+ assert(target.kind==='z-anatomy-original-source-private'&&target.approvedForCommercialDistribution===false);
+ const sources=loadVerifiedPublisherSources(pack.folder);
  const report=planCoverage(target.converted,pack.inventory.bodyModels,sources);
  report.scope='Exact case-insensitive names only; no inferred synonym or cross-frame equivalence. Z-Anatomy comparison stays private.';
  report.aliasReview=planAliasReview(target.converted,pack.inventory.bodyModels,sources,report.rows);
