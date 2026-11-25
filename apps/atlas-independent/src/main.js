@@ -36,7 +36,7 @@ function refreshElementSets(){
 }
 const ownerOf=(e,id)=>e?.selectionOnly&&e.bindings.some(b=>b.ownerId===id);
 const counts=()=>{
- $('count').textContent=[...cache.values()].filter(o=>o.visible&&!o.userData.entry.priorityOnly).length+' tubuh terlihat · '+[...cache.values()].filter(o=>!o.userData.entry.priorityOnly).length+' tubuh dimuat · '+inflight.size+' memuat/antre · '+failed.size+' gagal · '+entries.length+' kandidat. Bukan ukuran kelengkapan anatomi.';
+ $('count').textContent=[...cache.values()].filter(o=>o.visible&&!o.userData.entry.priorityOnly).length+' tubuh terlihat · '+[...cache.values()].filter(o=>!o.userData.entry.priorityOnly).length+' tubuh dimuat · '+inflight.size+' memuat/antre · '+failed.size+' gagal · '+entries.filter(e=>!e.contextCandidate).length+' model awal · '+entries.filter(e=>e.contextCandidate).length+' kandidat konteks. Bukan ukuran kelengkapan anatomi.';
  $('cacheStatus').textContent='Buffer geometri terukur: '+Math.round(cacheReport.remaining/1048576)+' MiB'+(cacheReport.aboveBudget?' · melebihi target lunak; kurangi sistem aktif.':'');
  $('retry').disabled=!failed.size;$('restore').hidden=!study.isolated&&!study.hidden.size;originalUI?.render();
 };
@@ -200,13 +200,17 @@ async function initPriority(){
   if(!response.ok)throw Error('Inventaris pemulihan tidak tersedia');
   const doc=await response.json();
   if(doc.schema!==1||doc.publicRelease!=='NO_GO'||doc.registrationValidated!==false||doc.clinicalValidation!==false||!Array.isArray(doc.items))throw Error('Inventaris pemulihan tidak valid');
-  const ids=new Set();
+  const ids=new Set(),fmas=new Set([...byId.values()].map(e=>e.fmaId));
+  if(doc.contextMode!==null&&doc.contextMode!=='NATIVE_FRAME_CANDIDATE')throw Error('Mode konteks tidak valid');
   for(const e of doc.items){
    if(!/^bp-[a-f0-9]{24}$/.test(e.id)||ids.has(e.id)||byId.has(e.id)||typeof e.name!=='string'||!e.name.trim()||!Object.hasOwn(groups,e.group)||!/^FMA\d+$/.test(e.fmaId)||!/^BP\d+$/.test(e.bpId)||e.path!=='priority-recovery/'+e.id+'.glb'||e.priorityOnly!==true||e.approvedForDistribution!==false||e.clinicalValidation!==false||e.classificationProvisional!==true||e.source!=='BodyParts3D 4.0'||!['isa','partof'].includes(e.sourceTree))throw Error('Identitas pemulihan tidak valid');
+   if(typeof e.contextCandidate!=='boolean'||(e.contextCandidate&&(doc.contextMode!=='NATIVE_FRAME_CANDIDATE'||fmas.has(e.fmaId))))throw Error('Identitas konteks tidak valid');
+   if(e.contextCandidate)fmas.add(e.fmaId);
    ids.add(e.id);
   }
-  const recovered=doc.items;
-  for(const e of recovered)byId.set(e.id,e);
+  const recovered=doc.items.map(e=>e.contextCandidate?{...e,priorityOnly:false}:e);
+  for(const e of recovered){byId.set(e.id,e);if(e.contextCandidate)entries.push(e);}
+  if(recovered.some(e=>e.contextCandidate)){explanation.textContent='Kandidat konteks memakai koordinat asli; belum tervalidasi spasial. Representasi alternatif tetap terpisah.';groupControls();await refresh(true);}
   function list(){
    const q=search.value.trim().toLowerCase();menu.replaceChildren();
    for(const e of recovered.filter(e=>(e.name+' '+groups[e.group]+' '+e.fmaId).toLowerCase().includes(q))){
@@ -214,9 +218,10 @@ async function initPriority(){
    }
    open.disabled=!menu.options.length;
   }
-  search.oninput=list;list();panel.hidden=false;panel.open=true;status.textContent=recovered.length+' konsep sumber berhasil diekspor untuk review terpisah.';
+  search.oninput=list;list();panel.hidden=false;panel.open=true;status.textContent=recovered.filter(e=>e.contextCandidate).length+' kandidat konteks · '+recovered.filter(e=>e.priorityOnly).length+' representasi terpisah.';
   open.onclick=async()=>{
-   const e=byId.get(menu.value);if(!e?.priorityOnly)return;
+   const e=byId.get(menu.value);if(!e)return;
+   if(e.contextCandidate){await chooseEntry(e);status.textContent=e.name+' · kandidat konteks, belum tervalidasi klinis.';return;}
    const token=++searchRevision;++revision;study.isolated=e.id;failed.delete(e.id);select(e);sync();
    status.textContent='Memuat '+e.name+'…';await load(e);
    if(token!==searchRevision)return;
