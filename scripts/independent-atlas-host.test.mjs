@@ -21,3 +21,16 @@ test('host readiness and ping require exact origin, actual frame and protocol ve
  const ping={origin,source:parent,data:{type:PING,version:1}};
  assert(validPing(ping,origin,parent));assert(!validPing({...ping,source:{}},origin,parent));assert(!validPing({...ping,origin:'https://other.invalid'},origin,parent));
 });
+
+test('explicit independent library routes allow only source IDs and known original system pages',()=>{
+ const valid=['/anatomy/library','/anatomy/system/nervous','/anatomy/structure/bp-'+ 'a'.repeat(24),'/anatomy/structure/sel-'+'b'.repeat(24)];
+ for(const p of valid){
+  assert.equal(classifyIndependentPath(p),'deny');
+  assert.equal(hostRoute(p),null);
+  assert.equal(classifyIndependentPath(p,true),'host');
+  assert.deepEqual(hostRoute(p,true),{kind:'file',rel:'index.html'});
+ }
+ for(const p of ['/anatomy/structure/Humerus.r','/anatomy/system/unknown','/anatomy/study','/anatomy/live','/anatomy/region/headNeck','/anatomy/structure/../private','/anatomy/viewer/data/atlas-catalog.json']){
+  assert.equal(hostRoute(p,true),null);
+ }
+});
