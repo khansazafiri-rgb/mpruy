@@ -6,6 +6,7 @@ import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {groups} from '../apps/atlas-independent/src/inventory.js';
+import {discoverSystem} from './independent-anatomy-system-discovery.mjs';
 import {loadIndependentReview} from './load-independent-source-review.mjs';
 import {loadVerifiedPublisherSources,formattingKey} from './plan-independent-atlas-coverage.mjs';
 import {parseObj,encodeNativeGlb} from './independent-bp3d-export.mjs';
@@ -40,7 +41,9 @@ export function planBatchExpansion(body,targets,legacy,sources){
  const usedElements=new Set(body.flatMap(m=>m.sourceElements.map(e=>e.id))),rows=[],candidates=[];
  for(const [fmaId,all] of [...byFma].sort(([a],[b])=>Number(a.slice(3))-Number(b.slice(3)))){
   if(existing.has(fmaId)){rows.push({fmaId,status:'PRESENT_FMA'});continue;}
-  const c=claims.get(fmaId)||[],g=new Set(c.map(x=>x.group));
+  const c=[...(claims.get(fmaId)||[])];
+  if(!c.length){const suggestions=all.map(n=>discoverSystem(n.name));if(suggestions.every(Boolean)&&new Set(suggestions.map(x=>x.group)).size===1)c.push({...suggestions[0],targetName:null});}
+  const g=new Set(c.map(x=>x.group));
   if(g.size!==1){rows.push({fmaId,status:g.size?'CONFLICTING_SYSTEM_REVIEW':'UNCLASSIFIED_SOURCE_CONCEPT',officialNames:[...new Set(all.map(x=>x.name))],claims:c});continue;}
   const isa=all.filter(x=>x.tree==='isa'),preferred=isa.length?isa:all;
   if(preferred.length!==1){rows.push({fmaId,status:'AMBIGUOUS_REPRESENTATION',choices:preferred,claims:c});continue;}
@@ -102,7 +105,7 @@ export function expand(packFolder,targetFolder){
     const verified=parseNativePositions(encoded.bytes);assert(verified.size===parts.length&&parts.every(p=>comparePositions(p.positions,verified.get(p.id))));
     if(newBytes+encoded.bytes.length>maxNewBytes){results.push({fmaId:c.fmaId,status:'HOLD_STORAGE_BUDGET'});continue;}
     fs.writeFileSync(path.join(out,file),encoded.bytes,{flag:'wx',mode:0o600});newBytes+=encoded.bytes.length;
-    const m={id,name:c.name,group:c.group,fmaId:c.fmaId,bpId:c.bpId,path:file,sha256:encoded.sha256,triangles:encoded.triangles,sourceTree:c.tree,sourceHashes:source.hashes,sourceElements:proof,license:'CC-BY-4.0',licenseURL:'https://creativecommons.org/licenses/by/4.0/',attribution,sourceArchive:baseURL+c.tree+'_BP3D_4.0_obj_99.zip',changes:'Source OBJ converted to native GLB; degenerate triangles omitted; no transforms.',historicalNotice:'Retain original CC BY-SA 2.1 Japan notices; record reconciliation before distribution.',frame:'native-official-OBJ',classificationProvisional:true,approvedForDistribution:false};
+    const m={id,name:c.name,group:c.group,fmaId:c.fmaId,bpId:c.bpId,path:file,sha256:encoded.sha256,triangles:encoded.triangles,sourceTree:c.tree,sourceHashes:source.hashes,sourceElements:proof,license:'CC-BY-4.0',licenseURL:'https://creativecommons.org/licenses/by/4.0/',attribution,sourceArchive:baseURL+c.tree+'_BP3D_4.0_obj_99.zip',changes:'Source OBJ converted to native GLB; degenerate triangles omitted; no transforms.',historicalNotice:'Retain original CC BY-SA 2.1 Japan notices; record reconciliation before distribution.',frame:'native-official-OBJ',classificationProvisional:true,classificationEvidence:c.claims,approvedForDistribution:false};
     models.push(m);added.push({id,sha256:m.sha256,fmaId:m.fmaId,bpId:m.bpId,sourceTree:m.sourceTree,sourceHashes:m.sourceHashes,sourceElements:m.sourceElements});results.push({fmaId:c.fmaId,id,status:'EXPORTED'});
     if(added.length%100===0)console.log('BATCH EXPANSION',added.length);
    }catch(e){const partial=path.join(out,file);if(fs.existsSync(partial))fs.unlinkSync(partial);results.push({fmaId:c.fmaId,status:'HOLD_EXPORT',reason:String(e.message)});}
