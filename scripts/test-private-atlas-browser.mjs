@@ -110,6 +110,42 @@ try{
    assert.equal(await viewport.locator('canvas').count(),1);
    await dialog.locator('#referenceFit').click();
   }
+  const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),feedback=dialog.locator('#referenceChallengeFeedback'),next=dialog.locator('#referenceChallengeNext');
+  const currentEntry=async()=>{const id=await viewport.getAttribute('data-rendered-id');const e=real43.inventory.items.find(x=>x.id===id);assert(e,'Challenge must use an audited source element');return e;};
+  const start=async(mode,language)=>{await setup.locator('#referenceChallengeMode').selectOption(mode);await setup.locator('#referenceChallengeLanguage').selectOption(language);await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});assert(await dialog.locator('#referenceSource').isHidden());assert(await select.isHidden());};
+  await start('mcq','en');
+  const choices=challenge.locator('#referenceChallengeAnswers button');
+  await choices.first().waitFor();
+  assert.equal(await choices.count(),4);
+  let e=await currentEntry();
+  assert(await next.isDisabled());
+  await challenge.getByRole('button',{name:e.name,exact:true}).click();
+  await feedback.filter({hasText:/^Benar\./}).waitFor();
+  assert.equal(await choices.evaluateAll(nodes=>nodes.every(n=>n.disabled)),true);
+  await next.click();await choices.first().waitFor();
+  e=await currentEntry();const wrong=choices.filter({hasNotText:e.name}).first();await wrong.click();
+  await feedback.filter({hasText:'Belum tepat.'}).waitFor();
+  await challenge.locator('#referenceChallengeQuit').click();await setup.waitFor({state:'visible'});
+  const {challengeLabel}=await import('../apps/atlas-independent/src/reference-challenge-language.js');
+  await start('typed','latin');
+  const form=challenge.locator('#referenceChallengeTyped'),input=form.locator('#referenceChallengeInput');
+  const seen=new Set();
+  for(let i=0;i<10;i++){
+   await form.waitFor({state:'visible'});await input.waitFor({state:'visible'});
+   e=await currentEntry();assert(!seen.has(e.name),'Repeated source label');seen.add(e.name);
+   const answer=challengeLabel(e,i%3===0?'id':i%3===1?'latin':'en');
+   await input.fill(answer);await form.getByRole('button',{name:'Periksa jawaban'}).click();
+   await feedback.filter({hasText:/^Benar\./}).waitFor();assert(await input.isDisabled());
+   await next.click();
+  }
+  await challenge.locator('#referenceChallengeProgress').filter({hasText:'10/10 benar · 0 gagal dimuat'}).waitFor();
+  await challenge.locator('#referenceChallengeQuit').click();
+  // Force a transport failure without changing or replacing an actual model.
+  const fail=route=>route.abort('failed'),pattern='**/bp3d43-reference/*.glb';await page.route(pattern,fail);
+  await start('mcq','id');await feedback.filter({hasText:'Model gagal dimuat; tidak masuk skor.'}).waitFor();assert.equal(await choices.count(),0);assert(await next.isEnabled());
+  await page.unroute(pattern,fail);await next.click();await choices.first().waitFor();assert.equal(await choices.count(),4);
+  await challenge.locator('#referenceChallengeQuit').click();
+  console.log('BP3D43 CHALLENGE PASS: source labels concealed, MCQ correct/incorrect, 10 distinct multilingual typed answers, single-submit lock and unavailable model excluded.');
   await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});
   await page.waitForFunction(()=>document.querySelectorAll('#referenceViewport canvas').length===0);
   await waitCounts(3,1);
