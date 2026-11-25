@@ -2,3 +2,30 @@
 .actions{display:flex;gap:6px;margin-top:12px}.actions button{flex:1;font-size:12px}#groups .system-row{display:grid;grid-template-columns:1fr;gap:2px;border-bottom:1px solid #31534e;padding:6px 0}#groups .system-row label{margin:0}#groups .system-row select{font-size:12px;padding:5px;margin:3px 0 3px 24px;width:calc(100% - 24px)}#selectionActions{position:absolute;bottom:60px;left:16px;display:flex;gap:4px}#restore{position:absolute;top:64px;right:12px}[hidden]{display:none!important}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #9ce2cf;outline-offset:2px}
 
 #openReferences{width:100%;margin-top:12px}#referenceDialog{width:min(900px,95vw);max-height:94dvh;background:#123833;color:#eff8f3;border:1px solid #4a746a;border-radius:12px;padding:16px}#referenceDialog::backdrop{background:#001a17cc}.reference-header,.reference-controls{display:flex;align-items:center;gap:8px}.reference-header{justify-content:space-between}.reference-header h2{margin:0;font-size:18px}.reference-controls input,.reference-controls select{min-width:0;flex:1}#referenceViewport{height:min(52dvh,480px);min-height:180px;margin-top:12px;border:1px solid #31534e;border-radius:8px;overflow:hidden}#referenceStatus{font-size:13px;line-height:1.5}#referenceSource{color:#9ce2cf}@media(max-width:640px){.reference-controls{flex-wrap:wrap}.reference-controls input,.reference-controls select{flex-basis:100%}}
+
+/* Independent presentation controls; preserve existing green MEDCOEL theme. */
+.system-swatch{width:11px;height:11px;border-radius:3px;flex:none;border:1px solid #ffffff38}
+#groups .opacity-row{display:flex;align-items:center;gap:8px;padding:3px 0 3px 24px;margin:0;color:#c0d7cf;font-size:11px}
+#groups .opacity-row input{width:100%;min-width:0;padding:0;accent-color:#83c9b4}
+.opacity-row span{width:35px;text-align:right;flex:none;font-variant-numeric:tabular-nums}
+#appearance{margin:12px 0;border:1px solid #31534e;border-radius:8px;padding:9px}
+#appearance summary{cursor:pointer;font-size:13px;font-weight:600}
+.toggle{display:flex;align-items:flex-start;gap:8px;font-size:12px}
+.toggle input{width:auto;margin:2px 0 0;accent-color:#83c9b4}
+#resetAppearance{font-size:12px;width:100%}
+.hint{font-size:11px;line-height:1.5;color:#b3d2c9}
+#viewHint{position:absolute;left:12px;top:12px;max-width:calc(100% - 24px);margin:0;padding:5px 8px;font-size:11px;background:#102f2ce8;border:1px solid #31534e;border-radius:6px;pointer-events:none}
+#tools{top:48px;max-width:calc(100% - 24px)}
+#restore{top:96px}
+#selectionActions{z-index:2;flex-wrap:wrap;max-width:calc(100% - 32px);bottom:86px}
+#info{z-index:1;max-height:70px;overflow:auto}
+#modelAttributions a{color:#9ce2cf;overflow-wrap:anywhere}
+#view:fullscreen{height:100dvh;width:100vw}
+@media(max-width:640px){
+ #tools{top:48px;right:8px;left:8px;gap:3px;justify-content:flex-end}
+ #tools button,#selectionActions button{padding:6px;font-size:11px}
+ #restore{top:112px;font-size:11px}
+ #viewHint{left:8px;top:8px;font-size:10px}
+ #selectionActions{bottom:86px;left:8px}
+ #info{left:8px;bottom:8px;font-size:12px}
+}
