@@ -11,6 +11,13 @@ import {attachOriginalShell} from './private-atlas-original-shell.mjs';
 import {encodeNativeGlb} from './independent-bp3d-export.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
+let real43=null,serve43=null;
+if(process.env.ATLAS_TEST_REAL43==='1'){
+ const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
+ assert.equal(folders.length,1,'Fresh single source acquisition required');
+ const m=await import('./load-bp3d43-private-elements.mjs');serve43=m.serve43Reference;
+ real43=m.load43Elements(q,folders[0],JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/bp3d43-dual-source-audit-20261125.json'),'utf8')));
+}
 const require=createRequire(import.meta.url),appRequire=createRequire(path.join(app,'package.json'));
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const {build}=await import(pathToFileURL(appRequire.resolve('vite')).href);
@@ -36,6 +43,7 @@ try{
   const base='/anatomy/viewer/';
   if(!p.startsWith(base))return send(404,'not found','text/plain');
   const rel=p.slice(base.length);
+  if(real43&&serve43(req,res,real43))return;
   if(rel==='inventory.json')return send(200,JSON.stringify({schema:1,mode:'private-review',publicRelease:'NO_GO',sourceFrame:'native-official-OBJ',sourceKind:'independent-bp3d',entries}),'application/json');
   if(rel==='learning-coverage.json')return send(200,JSON.stringify(fixtureCoverage),'application/json');
   if(rel==='element-selection.json')return send(200,JSON.stringify(catalog),'application/json');
@@ -89,6 +97,24 @@ try{
  assert((await guided.innerText()).includes('1 belum tersedia'));
  await guided.getByRole('button',{name:'Tutup'}).click();
  await guided.waitFor({state:'hidden'});
+ if(real43){
+  await page.getByRole('button',{name:'BP3D 4.3',exact:true}).click();
+  const dialog=page.locator('#referenceDialog'),viewport=dialog.locator('#referenceViewport'),select=dialog.locator('#referenceSelect');
+  await dialog.locator('#referenceStatus').filter({hasText:'12 kandidat referensi tersedia'}).waitFor();
+  assert.equal(await select.locator('option').count(),12);
+  for(const e of real43.inventory.items){
+   await select.selectOption(e.id);
+   await dialog.locator('#referenceLoad').click();
+   await page.waitForFunction(({id,triangles})=>{const v=document.getElementById('referenceViewport');return v.dataset.renderedId===id&&v.dataset.renderedTriangles===String(triangles);},{id:e.id,triangles:e.triangles},{timeout:20000});
+   assert((await dialog.locator('#referenceSource').innerText()).includes(e.fj));
+   assert.equal(await viewport.locator('canvas').count(),1);
+   await dialog.locator('#referenceFit').click();
+  }
+  await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});
+  await page.waitForFunction(()=>document.querySelectorAll('#referenceViewport canvas').length===0);
+  await waitCounts(3,1);
+  console.log('BP3D43 REAL BROWSER PASS: 12 actual publisher GLBs rendered with audited triangle counts; body inventory unchanged.');
+ }
  await page.setViewportSize({width:390,height:844});
  await page.locator('#searchOpen').click();
  await page.locator('#searchInput').waitFor({state:'visible'});
