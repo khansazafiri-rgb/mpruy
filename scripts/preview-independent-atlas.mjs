@@ -43,7 +43,7 @@ const originalUI=process.argv.includes('--original-ui');
 assert(!originalUI||independent,'Original shell only in explicit independent private comparison');
 assert(!priorityEnabled||independent,'Priority recovery requires an independent source pack');
 const elementCatalog=independent&&(originalUI||priorityEnabled)?createElementCatalog(sourcePack):null;
-const priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack,{broad:broadRecovery,coveredFma:elementCatalog?.items.map(e=>e.fmaId)||[]}):null;
+const priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack,{broad:broadRecovery,coveredFma:elementCatalog?.items.map(e=>e.fmaId)||[],rebuild:process.argv.includes('--rebuild-recovery')}):null;
 const context=contextRecovery?planContextRecovery(sourcePack.inventory.bodyModels,priority.report.results,elementCatalog?.items.map(e=>e.fmaId)||[]):null;
 const contextIds=new Set(context?.accepted.map(x=>x.id)||[]);
 const recoveryItems=priority?.items.map(e=>({...e,contextCandidate:contextIds.has(e.id)}))||[];
@@ -152,7 +152,7 @@ try{
   const a=await fetch(baseURL+'/anatomy/viewer/priority-recovery/attributions.json');assert(a.ok&&(await a.json()).items.length===priority.items.length);
   assert.equal((await fetch(baseURL+'/anatomy/viewer/priority-recovery/not-approved.glb')).status,404);
  }
- const report={schema:1,learningCoverage:coverage?{targets:coverage.targets,systems:Object.fromEntries(Object.entries(coverage.systems).map(([g,s])=>[g,{targets:s.targets,counts:s.counts}])),file:coverageFile}:null,thumbnailQC,elementSelectionConcepts:elementCatalog?.items.length||0,contextCandidateModels:contextIds.size,contextHeld:context?.held.length||0,originalUI:originalShell?.mode||'INDEPENDENT_PROTOTYPE',priorityModels:priority?.items.length||0,httpPriorityRoutesVerified:priorityRoutes,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
+ const report={schema:1,recoveryReused:priority?.reused??null,recoveryFolder:priority?.folder??null,learningCoverage:coverage?{targets:coverage.targets,systems:Object.fromEntries(Object.entries(coverage.systems).map(([g,s])=>[g,{targets:s.targets,counts:s.counts}])),file:coverageFile}:null,thumbnailQC,elementSelectionConcepts:elementCatalog?.items.length||0,contextCandidateModels:contextIds.size,contextHeld:context?.held.length||0,originalUI:originalShell?.mode||'INDEPENDENT_PROTOTYPE',priorityModels:priority?.items.length||0,httpPriorityRoutesVerified:priorityRoutes,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
  const f=path.join(privateRoot,folder,'publication-independent-http-qc.json'),tmp=f+'.'+process.pid+'.tmp';fs.writeFileSync(tmp,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,f);
  console.log('INDEPENDENT HTTP QC',JSON.stringify(report));
 }catch(error){server.close();throw error;}
