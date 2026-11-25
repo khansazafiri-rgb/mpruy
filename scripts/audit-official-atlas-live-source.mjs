@@ -26,17 +26,30 @@ export function samplePlan(rows,limitPerGroup=2){
  }
  return out;
 }
-export async function auditLive(){
+// Keep distinct source representations separate, even when their FMA is shared.
+export function fullGeometryPlan(rows){
+ const unique=new Map();
+ for(const row of rows){
+  if(row.status!=='EXPORT_CANDIDATE')continue;
+  const k=row.tree+':'+row.fmaId+':'+row.bpId;
+  if(unique.has(k)){const old=unique.get(k);assert.deepEqual(old.elementIds,row.elementIds);assert.equal(old.name,row.name);continue;}
+  unique.set(k,row);
+ }
+ return [...unique.values()];
+}
+export async function auditLive({allResolved=false}={}){
  fs.mkdirSync(q,{recursive:true,mode:0o700});assert(fs.realpathSync(q)===q);
  const out=fs.mkdtempSync(path.join(q,'official-source-live-audit-'));fs.chmodSync(out,0o700);
  try{
   const sources=[],receipts=[];
+  const pinned=JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/dbcls-live-audit-20261125.json'),'utf8')).report.receipts;
   for(const tree of ['isa','partof']){
    const files={archive:tree+'_BP3D_4.0_obj_99.zip',names:tree+'_parts_list_e.txt',elements:tree+'_element_parts.txt'},paths={},hashes={};
    for(const [kind,name] of Object.entries(files)){
     const file=path.join(out,name);await fetchOfficialFile(base+name,file,kind==='archive'?512*1024*1024:32*1024*1024);
     const b=fs.readFileSync(file);paths[kind]=file;hashes[kind]=sha(b);
-    receipts.push({tree,kind,url:base+name,bytes:b.length,sha256:hashes[kind]});
+    const receipt={tree,kind,url:base+name,bytes:b.length,sha256:hashes[kind]};
+    const expected=pinned.find(x=>x.tree===tree&&x.kind===kind);assert.deepEqual(receipt,expected,'Publisher bytes changed; review source version before geometry replay');receipts.push(receipt);
    }
    const listing=execFileSync('unzip',['-Z','-1',paths.archive],{encoding:'utf8',maxBuffer:16*1024*1024}).trim().split(/\r?\n/);
    checkArchiveEntryNames(listing);
@@ -49,8 +62,9 @@ export async function auditLive(){
   const rows=priorityPlan(sources,specs);
   const gaps=diagnoseSourceGaps(sources,specs,rows);
   const gapCounts={};for(const g of gaps)gapCounts[g.status]=(gapCounts[g.status]||0)+1;
-  const samples=[];
-  for(const c of samplePlan(rows)){
+  const samples=[],geometryPlan=allResolved?fullGeometryPlan(rows):samplePlan(rows);
+  // Limit temporary per-concept memory as before; no GLB artifacts retained.
+  for(const c of geometryPlan){
    try{
     const source=sources.find(s=>s.tree===c.tree),parts=[],proof=[];let triangles=0;
     for(const id of c.elementIds){
@@ -61,14 +75,15 @@ export async function auditLive(){
     }
     const glb=encodeNativeGlb(parts,{fmaId:c.fmaId,bpId:c.bpId,tree:c.tree,officialName:c.name,sourceHashes:source.hashes,sourceElements:proof});
     const replay=parseNativePositions(glb.bytes);assert(replay.size===parts.length&&parts.every(p=>comparePositions(p.positions,replay.get(p.id))));
-    samples.push({group:c.group,name:c.name,fmaId:c.fmaId,tree:c.tree,triangles,glbSHA256:glb.sha256,status:'EXACT_SOURCE_GEOMETRY_MATCH'});
+    samples.push({group:c.group,name:c.name,fmaId:c.fmaId,bpId:c.bpId,tree:c.tree,triangles,glbSHA256:glb.sha256,status:'EXACT_SOURCE_GEOMETRY_MATCH'});
+    if(allResolved&&samples.length%20===0)console.log('GEOMETRY REPLAY PROGRESS',samples.length+'/'+geometryPlan.length);
    }catch(e){samples.push({group:c.group,name:c.name,fmaId:c.fmaId,status:'HOLD',reason:String(e.message)});}
   }
   const systems={};for(const r of rows){const g=systems[r.group]??={queries:0,resolved:0,held:0};g.queries++;g[r.status==='EXPORT_CANDIDATE'?'resolved':'held']++;}
-  const report={schema:1,scope:'Fresh publisher source survey and bounded real-geometry sample, not the workstation inventory or a release.',receipts,systems,samples,gapCounts,gaps,unresolved:rows.filter(r=>r.status!=='EXPORT_CANDIDATE').map(r=>({group:r.group,target:r.target,status:r.status})),geometrySamplePass:samples.filter(r=>r.status==='EXACT_SOURCE_GEOMETRY_MATCH').length,geometrySampleHeld:samples.filter(r=>r.status!=='EXACT_SOURCE_GEOMETRY_MATCH').length,clinicalValidation:false,registrationValidated:false,publicRelease:'NO_GO',productionChanged:false,geometryPublished:0};
+  const report={schema:1,scope:allResolved?'All distinct exact resolved source representations; not the workstation inventory or a release.':'Fresh publisher source survey and bounded real-geometry sample, not the workstation inventory or a release.',allResolved,geometryPlanned:geometryPlan.length,receipts,systems,samples,gapCounts,gaps,unresolved:rows.filter(r=>r.status!=='EXPORT_CANDIDATE').map(r=>({group:r.group,target:r.target,status:r.status})),geometrySamplePass:samples.filter(r=>r.status==='EXACT_SOURCE_GEOMETRY_MATCH').length,geometrySampleHeld:samples.filter(r=>r.status!=='EXACT_SOURCE_GEOMETRY_MATCH').length,clinicalValidation:false,registrationValidated:false,publicRelease:'NO_GO',productionChanged:false,geometryPublished:0};
   console.log('OFFICIAL ATLAS LIVE SOURCE AUDIT',JSON.stringify(report));
   assert(samples.length>0&&report.geometrySampleHeld===0,'Real geometry sample held');
   return report;
  }finally{fs.rmSync(out,{recursive:true,force:true});}
 }
-if(process.argv[1]===fileURLToPath(import.meta.url))await auditLive();
+if(process.argv[1]===fileURLToPath(import.meta.url))await auditLive({allResolved:process.argv.includes('--all-resolved')});
