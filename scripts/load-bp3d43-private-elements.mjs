@@ -36,3 +36,22 @@ export function load43Elements(privateRoot,folderName,evidence){
  assert(assets.size===12);
  return {inventory:{schema:1,publicRelease:'NO_GO',clinicalValidation:false,registrationValidated:false,scope:'Separate source elements only; no whole-body alignment or full concept claim',items},assets};
 }
+
+export function serve43Reference(req,res,registry){
+ const prefix='/anatomy/viewer/bp3d43-reference/',p=req.url?.split('?')[0]||'';
+ if(!p.startsWith(prefix))return false;
+ const send=(status,body,type='text/plain; charset=utf-8')=>{
+  res.writeHead(status,{'Content-Type':type,'Content-Length':Buffer.byteLength(body),'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
+  res.end(req.method==='HEAD'?undefined:body);return true;
+ };
+ if(!['GET','HEAD'].includes(req.method)||!registry)return send(404,'Not found');
+ const rel=p.slice(prefix.length);
+ if(rel==='inventory.json')return send(200,JSON.stringify(registry.inventory),'application/json');
+ const match=rel.match(/^(bp43-[a-f0-9]{24})\.glb$/),asset=match&&registry.assets.get(match[1]);
+ if(!asset)return send(404,'Not found');
+ try{
+  assert(fs.realpathSync(asset.file)===asset.file&&fs.statSync(asset.file).size===asset.bytes);
+  const bytes=fs.readFileSync(asset.file);assert(sha(bytes)===asset.sha256,'Audited asset changed');
+  return send(200,bytes,'model/gltf-binary');
+ }catch{return send(404,'Reference unavailable');}
+}
