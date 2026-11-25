@@ -1,3 +1,4 @@
+import {browseReferenceTopics,topicOptions} from './reference43-topics.js';
 import {challengeLabel,typedReferenceAnswer,hasChallengeGlossary} from './reference-challenge-language.js';
 import {buildReferenceQuestions,scoreReferenceAnswer} from './reference-challenge-state.js';
 import * as THREE from 'three';
@@ -54,11 +55,13 @@ export function mountReferences(base){
    model=candidate;scene.add(model);components=sourceNodeComponents(g);model.traverse(m=>{if(m.isMesh)visibility.set(m,m.visible);});$('referenceComponents').hidden=conceal||!components.length;listComponents();fit();renderer.render(scene,camera);if(sourceKind==='bp43'){const count=renderer.info.render.triangles;if(count!==e.triangles)throw Error('Jumlah triangle yang dirender berbeda dari audit');host.dataset.renderedId=e.id;host.dataset.renderedTriangles=String(count);}status(conceal?'Elemen berhasil dirender. Pilih label sumbernya.':e.name+' · '+e.version+' · '+meshes+' mesh dirender · '+components.length+' node sumber teridentifikasi. Label node belum divalidasi klinis.');return true;
   }catch(error){if(candidate){scene?.remove(candidate);dispose(candidate);if(model===candidate)model=null;}if(tracker.current(token)){clearComponents();status(conceal?'Elemen gagal dimuat. Soal tidak dinilai.':'Referensi gagal dimuat: '+String(error.message||error));}return false;}
  }
+ const topics=$('referenceTopics'),regionTopic=$('referenceRegionTopic'),systemTopic=$('referenceSystemTopic'),topicCount=$('referenceTopicCount');
+ function updateTopicOptions(){for(const [axis,select] of [['region',regionTopic],['system',systemTopic]]){select.replaceChildren();for(const t of topicOptions(entries,axis)){const o=document.createElement('option');o.value=t.value;o.textContent=t.label+' ('+t.count+')';select.append(o);}select.value='all';}topics.hidden=sourceKind!=='bp43';}
  const browse=$('referenceSearch').closest('.reference-controls'),challenge=$('referenceChallenge'),start=$('referenceChallengeStart'),quit=$('referenceChallengeQuit'),answers=$('referenceChallengeAnswers'),next=$('referenceChallengeNext'),feedback=$('referenceChallengeFeedback'),progress=$('referenceChallengeProgress');
  const setup=$('referenceChallengeSetup'),mode=$('referenceChallengeMode'),language=$('referenceChallengeLanguage'),typed=$('referenceChallengeTyped'),input=$('referenceChallengeInput');
  let questions=[],questionIndex=0,correct=0,answered=0,held=0,challengeEpoch=0,answerMode='mcq',answerLanguage='en';
  function endChallenge(){
-  challengeEpoch++;tracker.cancel();questions=[];challenge.hidden=true;browse.hidden=false;$('referenceSource').hidden=false;setup.hidden=sourceKind!=='bp43'||entries.filter(hasChallengeGlossary).length<4;typed.hidden=true;typed.onsubmit=null;answers.replaceChildren();feedback.textContent='';progress.textContent='';
+  challengeEpoch++;tracker.cancel();questions=[];challenge.hidden=true;browse.hidden=false;topics.hidden=sourceKind!=='bp43';$('referenceSource').hidden=false;setup.hidden=sourceKind!=='bp43'||entries.filter(hasChallengeGlossary).length<4;typed.hidden=true;typed.onsubmit=null;answers.replaceChildren();feedback.textContent='';progress.textContent='';
   if(model){scene?.remove(model);dispose(model);model=null;}clearComponents();selected=null;$('referenceSource').removeAttribute('href');$('referenceSource').textContent='';list();status('Pilih referensi dan klik Muat.');
  }
  async function challengeQuestion(){
@@ -71,11 +74,13 @@ export function mountReferences(base){
   function submit(right,minor=false){if(locked||token!==challengeEpoch)return;locked=true;answered++;if(right)correct++;for(const a of answers.querySelectorAll('button'))a.disabled=true;input.disabled=true;typed.querySelector('button').disabled=true;feedback.textContent=(right?(minor?'Benar (typo ringan). ':'Benar. '):'Belum tepat. ')+challengeLabel(q.entry,answerLanguage)+' · '+q.entry.name+' · '+q.entry.fmaId+' · '+q.entry.fj;next.disabled=false;}
   if(answerMode==='typed'){typed.hidden=false;typed.onsubmit=ev=>{ev.preventDefault();if(!input.value.trim())return;const result=typedReferenceAnswer(q.entry,input.value);submit(result.correct,result.kind==='MINOR_TYPO');};input.focus();}else for(const o of q.options){const b=document.createElement('button');b.type='button';const e=entries.find(x=>x.id===o.id);b.textContent=challengeLabel(e,answerLanguage);b.onclick=()=>submit(scoreReferenceAnswer(q,o.id));answers.append(b);}
  }
- start.onclick=()=>{if(sourceKind!=='bp43')return;questions=buildReferenceQuestions(entries.filter(hasChallengeGlossary));if(!questions.length){status('Belum cukup label sumber untuk Challenge.');return;}questionIndex=correct=answered=held=0;answerMode=mode.value;answerLanguage=language.value;setup.hidden=true;browse.hidden=true;$('referenceSource').hidden=true;challenge.hidden=false;challengeQuestion();};
+ start.onclick=()=>{if(sourceKind!=='bp43')return;questions=buildReferenceQuestions(entries.filter(hasChallengeGlossary));if(!questions.length){status('Belum cukup label sumber untuk Challenge.');return;}questionIndex=correct=answered=held=0;answerMode=mode.value;answerLanguage=language.value;setup.hidden=true;browse.hidden=true;topics.hidden=true;$('referenceSource').hidden=true;challenge.hidden=false;challengeQuestion();};
  quit.onclick=endChallenge;next.onclick=()=>{if(!next.disabled){questionIndex++;challengeQuestion();}};
  function list(){
   const select=$('referenceSelect');select.replaceChildren();
-  for(const e of filterReferences(entries,$('referenceSearch').value)){
+  const visible=sourceKind==='bp43'?browseReferenceTopics(entries,{region:regionTopic.value||'all',system:systemTopic.value||'all',query:$('referenceSearch').value}):filterReferences(entries,$('referenceSearch').value);
+  topicCount.textContent=visible.length+'/'+entries.length+' elemen sumber';
+  for(const e of visible){
    const option=document.createElement('option');option.value=e.id;option.textContent=e.name+' · '+e.version;select.append(option);
   }
   if(selected&&[...select.options].some(o=>o.value===selected.id))select.value=selected.id;
@@ -84,17 +89,17 @@ export function mountReferences(base){
  $('referenceComponentSearch').oninput=listComponents;
  $('referenceComponentIsolate').onclick=()=>{const c=components.find(c=>String(c.index)===$('referenceComponentSelect').value);if(!c||!isolateSourceComponent([...visibility.keys()],c,visibility)){status('Komponen tidak dapat diisolasi secara tepat.');return;}activeComponent=c;fit();status(c.label+' · node sumber '+c.index+' · label belum divalidasi klinis.');};
  $('referenceComponentRestore').onclick=()=>{if(!model)return;isolateSourceComponent([...visibility.keys()],null,visibility);activeComponent=null;fit();status('Semua komponen sumber ditampilkan kembali. Referensi terpisah.');};
- $('referenceSearch').oninput=list;
+ $('referenceSearch').oninput=list;regionTopic.onchange=list;systemTopic.onchange=list;
  $('referenceLoad').onclick=()=>{const e=entries.find(x=>x.id===$('referenceSelect').value);if(e)load(e);};
  $('referenceFit').onclick=()=>fit();
  $('referenceClose').onclick=()=>dialog.close();dialog.addEventListener('close',()=>{endChallenge();cleanup();});
  const open=async(kind)=>{
   if(location.hostname!=='127.0.0.1'||dialog.open)return;
-  sourceKind=kind;setup.hidden=true;challenge.hidden=true;browse.hidden=false;$('referenceSource').hidden=false;$('referenceSearch').value='';$('referenceSearch').placeholder=kind==='bp43'?'Cari elemen BP3D':'Cari organ HRA';$('referenceSearch').setAttribute('aria-label',kind==='bp43'?'Cari elemen BP3D 4.3':'Cari organ HRA');$('referenceSelect').setAttribute('aria-label',kind==='bp43'?'Pilih elemen BP3D 4.3':'Pilih organ HRA');$('referenceTitle').textContent=kind==='bp43'?'Referensi elemen BodyParts3D 4.3':'Referensi organ HRA';dialog.showModal();$('referenceSource').removeAttribute('href');$('referenceSource').textContent='';entries=[];list();
+  sourceKind=kind;topics.hidden=true;regionTopic.replaceChildren();systemTopic.replaceChildren();setup.hidden=true;challenge.hidden=true;browse.hidden=false;$('referenceSource').hidden=false;$('referenceSearch').value='';$('referenceSearch').placeholder=kind==='bp43'?'Cari elemen BP3D':'Cari organ HRA';$('referenceSearch').setAttribute('aria-label',kind==='bp43'?'Cari elemen BP3D 4.3':'Cari organ HRA');$('referenceSelect').setAttribute('aria-label',kind==='bp43'?'Pilih elemen BP3D 4.3':'Pilih organ HRA');$('referenceTitle').textContent=kind==='bp43'?'Referensi elemen BodyParts3D 4.3':'Referensi organ HRA';dialog.showModal();$('referenceSource').removeAttribute('href');$('referenceSource').textContent='';entries=[];list();
   const token=tracker.begin();
   try{createScene();status('Memeriksa referensi sumber…');const response=await fetch(base+(kind==='bp43'?'bp3d43-reference/':'hra-reference/')+'inventory.json',{cache:'no-store'});if(!response.ok)throw Error('Paket referensi belum tersedia pada preview ini');
    const doc=await response.json(),data=kind==='bp43'?reference43Entries(doc):referenceEntries(doc);if(!tracker.current(token)||!dialog.open)return;
-   entries=data;list();setup.hidden=kind!=='bp43'||entries.filter(hasChallengeGlossary).length<4;status(entries.length+' kandidat referensi tersedia. Pilih referensi dan klik Muat.');
+   entries=data;updateTopicOptions();list();setup.hidden=kind!=='bp43'||entries.filter(hasChallengeGlossary).length<4;status(entries.length+' kandidat referensi tersedia. Pilih referensi dan klik Muat.');
   }catch(error){if(tracker.current(token))status(String(error.message||error));}
  };
  $('openReferences').onclick=()=>open('hra');$('open43References').onclick=()=>open('bp43');
