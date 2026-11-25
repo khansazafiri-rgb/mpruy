@@ -102,3 +102,25 @@ jobs:
           node test/studios-secure-api.test.mjs
           node test/studios-challenge-api.test.mjs
 
+  spl-knee-private-audit:
+    # Deliberately scoped to this same-repository draft PR. No deployment or artifacts.
+    if: github.event_name == 'pull_request' && github.head_ref == 'feat/atlas-spl-knee-intake-20261125' && github.base_ref == 'feat/atlas-axial-cartilage-20261125' && github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install audit-only VTK dependencies
+        run: python -m pip install --only-binary=:all: numpy==1.26.4 vtk==9.3.1
+      - name: Archive safety and native mesh conversion tests
+        run: |
+          python scripts/audit-spl-knee-source.py --test
+          python scripts/audit-spl-knee-geometry.py --test
+      - name: Replay pinned 48-mesh source geometry audit
+        run: python scripts/audit-spl-knee-geometry.py

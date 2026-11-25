@@ -192,6 +192,13 @@ def audit(archive, receipt, scratch):
                 row["status"] = "HOLD_GEOMETRY"
                 # Do not echo parser text or source names, which could include metadata.
                 row["reasonClass"] = type(exc).__name__
+                # Only expose reason strings authored by this script, not VTK metadata.
+                safe_reasons = {"unsupported legacy VTK", "not polydata", "VTK reader failure",
+                                "mesh size", "nonpolygon geometry", "invalid positions",
+                                "invalid offsets", "nontriangular polygons: no automatic triangulation",
+                                "index out of range", "repeated vertex index", "GLB container mismatch",
+                                "GLB roundtrip mismatch"}
+                row["reasonCode"] = str(exc) if isinstance(exc, ValueError) and str(exc) in safe_reasons else "UNCLASSIFIED_PARSER_ERROR"
             rows.append(row)
     return {"schema": 1, "sourceArchiveSHA256": receipt["archiveSHA256"],
             "meshCount": len(rows), "parsed": sum(r["status"] == "NATIVE_TRIANGLE_GEOMETRY_PARSED" for r in rows),
@@ -214,6 +221,8 @@ def main():
         print("SPL KNEE NATIVE GEOMETRY AUDIT " + json.dumps(report, separators=(",", ":")))
         if report["held"]:
             raise SystemExit("One or more meshes held; review bounded report")
+        if report["exactGLBRoundtrips"] != report["meshCount"]:
+            raise SystemExit("One or more GLB conversions held; no integration allowed")
 
 FIXTURE = b"# vtk DataFile Version 3.0\nEngineering fixture\nASCII\nDATASET POLYDATA\nPOINTS 3 float\n0 0 0 1 0 0 0 1 0\nPOLYGONS 1 4\n3 0 1 2\n"
 class Tests(unittest.TestCase):
