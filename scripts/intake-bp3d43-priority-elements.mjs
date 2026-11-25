@@ -41,13 +41,14 @@ function download(url,file,extra=[]){
  assert(fs.statSync(file).size>0&&fs.statSync(file).size<=33554432);
 }
 function listing(file){return execFileSync('unzip',['-Z','-1',file],{encoding:'utf8',maxBuffer:1024*1024}).trim().split(/\r?\n/);}
-function member(file,name){assert(/^[A-Za-z0-9_ .()-]+$/.test(name)&&!name.includes('..'));return execFileSync('unzip',['-p',file,name],{maxBuffer:32*1024*1024});}
+function safeMember(name){return typeof name==='string'&&name.split('/').every(p=>/^[A-Za-z0-9_ .()-]+$/.test(p)&&p!=='.'&&p!=='..');}
+function member(file,name){assert(safeMember(name));return execFileSync('unzip',['-p',file,name],{maxBuffer:32*1024*1024});}
 export function selectMember(names,r){
  const prefix=r.fj+'_'+r.bp+'_'+r.fma+'_';
- const matched=names.filter(n=>n.startsWith(prefix)&&/\.obj$/i.test(n)&&/^[A-Za-z0-9_ .()-]+$/.test(n)&&!n.includes('..'));
- assert(matched.length===1,'Expected one exact FJ/BP/FMA archive member');
+ const matched=names.filter(n=>safeMember(n)&&path.posix.basename(n).startsWith(prefix)&&/\.obj$/i.test(n));
+ assert(matched.length===1,'Expected one exact FJ/BP/FMA archive member; actual FJ paths: '+JSON.stringify(names.filter(n=>path.posix.basename(n).startsWith(r.fj+'_')).slice(0,6)).slice(0,600)+'; archive entry count: '+names.length);
  const normalize=s=>s.toLowerCase().replace(/_/g,' ').trim().replace(/\s+/g,' ');
- assert.equal(normalize(matched[0].slice(prefix.length,-4)),normalize(r.name),'Publisher mesh label changed');
+ assert.equal(normalize(path.posix.basename(matched[0]).slice(prefix.length,-4)),normalize(r.name),'Publisher mesh label changed');
  return matched[0];
 }
 export function run(){
