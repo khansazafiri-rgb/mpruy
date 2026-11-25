@@ -4,6 +4,7 @@ on:
     branches: [feat/atlas-publication-prep-20261124]
     paths:
       - 'scripts/intake-bp3d43-priority-elements*'
+      - 'scripts/audit-bp3d43-mirror-elements*'
       - 'scripts/independent-bp3d-export.mjs'
       - 'scripts/audit-bp3d-publication-geometry.mjs'
       - 'licensing/atlas-publication/bp3d43-priority-element-candidates.json'
@@ -23,9 +24,12 @@ jobs:
           node-version: 22
       - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
       - name: Version separation and provenance tests
-        run: node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/independent-bp3d-export.test.mjs scripts/audit-bp3d-publication-geometry.test.mjs
+        run: node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/independent-bp3d-export.test.mjs scripts/audit-bp3d-publication-geometry.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs
       - name: Obtain and replay exact publisher elements in quarantine
         run: node scripts/intake-bp3d43-priority-elements.mjs
+      - name: Independent pinned mirror audit (does not waive publisher failure)
+        if: ${{ !cancelled() }}
+        run: node scripts/audit-bp3d43-mirror-elements.mjs
       - name: Remove temporary geometry and session files
         if: always()
         run: rm -rf -- local-data/licensing-quarantine/bp3d43-element-intake-*
