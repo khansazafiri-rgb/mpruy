@@ -51,7 +51,7 @@ export function isolateSourceComponent(meshes,component,originalVisibility){
 }
 
 export function reference43Entries(doc){
- if(doc?.schema!==1||doc.publicRelease!=='NO_GO'||doc.clinicalValidation!==false||doc.registrationValidated!==false||!Array.isArray(doc.items)||![12,14,20,23,26,28,32,34,35,37,40,42,43,44,46,48,49,51,52,54,55,57,58,60,62,63,64,65,66,67,69,71,72,74,75,77,78,80,81,83,85,86,87,89,92,94,95,97,101,103,106,109,115,117,129].includes(doc.items.length))throw Error('Inventaris 4.3 tidak valid');
+ if(doc?.schema!==1||doc.publicRelease!=='NO_GO'||doc.clinicalValidation!==false||doc.registrationValidated!==false||!Array.isArray(doc.items)||![12,14,18,20,23,26,28,30,32,34,35,37,38,40,41,42,43,44,46,48,49,50,51,52,53,54,55,57,58,60,61,62,63,64,65,66,67,69,70,71,72,73,74,75,76,77,78,80,81,82,83,84,85,86,87,89,90,92,93,94,95,96,97,98,99,101,103,104,105,106,107,109,110,112,113,115,117,119,121,124,127,129,133,135,147].includes(doc.items.length))throw Error('Inventaris 4.3 tidak valid');
  const ids=new Set(),elements=new Set(),hashes=new Set();
  for(const e of doc.items){
   if(!/^bp43-[a-f0-9]{24}$/.test(e.id||'')||ids.has(e.id)||!/^FJ\d+[A-Za-z]?$/.test(e.fj||'')||elements.has(e.fj)||!/^FMA\d+$/.test(e.fmaId||'')||!/^BP\d+$/.test(e.bpId||'')||typeof e.name!=='string'||!e.name.trim()||e.source!=='BodyParts3D 4.3'||e.scope!=='SINGLE_SOURCE_ELEMENT'||e.coordinateFrame!=='native-4.3-not-registered'||e.approvedForDistribution!==false||e.registrationValidated!==false||e.clinicalValidation!==false||!Number.isInteger(e.triangles)||e.triangles<1||!['rawSHA256','glbSHA256'].every(k=>/^[a-f0-9]{64}$/.test(e[k]||'')))throw Error('Identitas elemen 4.3 tidak valid');
