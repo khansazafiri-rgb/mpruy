@@ -36,7 +36,7 @@ jobs:
         run: npm test --prefix apps/atlas-independent
       - name: Exact source membership and original UI shell tests
         run: |
-          node --test scripts/independent-atlas-element-catalog.test.mjs scripts/independent-atlas-context-recovery.test.mjs scripts/independent-atlas-priority-recovery.test.mjs scripts/private-atlas-original-shell.test.mjs scripts/audit-bp3d-43-catalog.test.mjs scripts/independent-atlas-host.test.mjs apps/web/src/features/anatomy/independentRegistry.test.mjs
+          node --test scripts/independent-atlas-element-catalog.test.mjs scripts/independent-atlas-context-recovery.test.mjs scripts/independent-atlas-priority-recovery.test.mjs scripts/private-atlas-original-shell.test.mjs scripts/audit-bp3d-43-catalog.test.mjs scripts/independent-atlas-host.test.mjs scripts/independent-atlas-thumbnails.test.mjs apps/web/src/features/anatomy/independentRegistry.test.mjs
       - name: Independent viewer build
         run: npm run build --prefix apps/atlas-independent
       - name: Install pinned main-web workspace for private host build
