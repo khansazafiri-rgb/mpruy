@@ -12,13 +12,13 @@ async function fetchRegistry() {
   return buildRegistry({systems:results[0],catalog:results[1],lexicon:results[2],definitions:results[3],synonyms:results[4],reference:results[5],previews:results[6]});
  })().catch(e=>{cachedRegistry=null;throw e;});return cachedRegistry;
 }
-export function AnatomyDataProvider({children}) {
+export function AnatomyDataProvider({children,registryLoader=fetchRegistry,privateReview=false}) {
  const {me}=useAuth(),[registry,setRegistry]=useState(null),[error,setError]=useState(''),[attempt,setAttempt]=useState(0);
- const repository=useMemo(()=>createLocalProgressRepository(localStorage,me.id),[me.id]);
- const [initialProgress]=useState(()=>{try{return {value:repository.load(),error:''};}catch{return {value:emptyProgress(),error:'Progres lokal tidak dapat dibaca. Sesi baru dimulai di perangkat ini.'};}});
+ const repository=useMemo(()=>privateReview?null:createLocalProgressRepository(localStorage,me.id),[me.id,privateReview]);
+ const [initialProgress]=useState(()=>{try{return {value:repository?repository.load():emptyProgress(),error:''};}catch{return {value:emptyProgress(),error:'Progres lokal tidak dapat dibaca. Sesi baru dimulai di perangkat ini.'};}});
  const [progress,setProgress]=useState(initialProgress.value),[storageError,setStorageError]=useState(initialProgress.error);
- useEffect(()=>{let alive=true;fetchRegistry().then(r=>{if(alive){setRegistry(r);setError('');}}).catch(e=>alive&&setError(e.message));return()=>{alive=false;};},[attempt]);
- function updateProgress(next){setProgress(next);try{repository.save(next);setStorageError('');}catch{setStorageError('Progres hanya tersimpan di sesi ini; penyimpanan browser tidak tersedia.');}}
- return <Context.Provider value={{registry,error,retry:()=>setAttempt(x=>x+1),progress,updateProgress,storageError}}>{children}</Context.Provider>;
+ useEffect(()=>{let alive=true;registryLoader().then(r=>{if(alive){setRegistry(r);setError('');}}).catch(e=>alive&&setError(e.message));return()=>{alive=false;};},[attempt,registryLoader]);
+ function updateProgress(next){setProgress(next);if(!repository)return;try{repository.save(next);setStorageError('');}catch{setStorageError('Progres hanya tersimpan di sesi ini; penyimpanan browser tidak tersedia.');}}
+ return <Context.Provider value={{registry,error,retry:()=>setAttempt(x=>x+1),progress,updateProgress,storageError,privateReview}}>{children}</Context.Provider>;
 }
 export const useAnatomyLibrary=()=>useContext(Context);

@@ -7,12 +7,12 @@ Status: PRIVATE PROTOTYPE / NO_GO for production. This branch does not change Ca
 Use the existing completed local preview folder, e.g. `z-anatomy-native-preview-Vf8Y1E` as reported in the owner's export log. No Blender re-export is required.
 
 ```sh
-npm install --prefix apps/atlas-independent --ignore-scripts
+npm ci --prefix apps/atlas-independent --ignore-scripts
 npm test --prefix apps/atlas-independent
 node scripts/preview-independent-atlas.mjs z-anatomy-native-preview-Vf8Y1E
 ```
 
-Only loopback port 4186 serves the candidate model allowlist. The prototype build and rights report live in licensing-quarantine, not a public directory. The inventory explicitly rejects non-loopback hosts. The independent app uses Three.js and its own newly authored UI and source module; do not characterize this as a completed clean-room or legal origin review. A dependency lockfile and exact third-party notices/SBOM must be reviewed before release.
+Only loopback port 4186 serves the candidate model allowlist. The prototype build and rights report live in licensing-quarantine, not a public directory. The inventory explicitly rejects non-loopback hosts. The independent app uses Three.js and its own newly authored UI and source module; do not characterize this as a completed clean-room or legal origin review. A pinned lockfile and browser-module audit are prepared; actual npm ci, build and independent ownership/legal review remain required.
 
 ## Rights review
 
@@ -28,4 +28,8 @@ The publisher describes CC BY-SA 4.0 and names underlying BodyParts3D CC BY-SA 2
 - Verify anatomy and honest coverage disclosure (no lymphatic vessel network in the current export). No clinical use claim.
 - Test staging and rollback against separately approved builds, review production integration and obtain owner authorization for cutover. No production operation is part of this branch.
 
-Current independent app is deliberately a prototype: system/region filters, search, selection and basic camera controls. It does not yet provide layer parity, organ representation controls, HRA, reference skin, translated definitions or production deployment.
+The independent app now implements system/region filters, layers, organ representations, search, isolation, navigation and a separate HRA reference mode. HRA remains source-native and private. Reference skin, translated definitions, full feature parity and actual browser/performance validation remain open. The optional main web preview serves /anatomy/explore with same-origin framing if the existing host build passes quarantine checks; no legacy Atlas/4D Lab fallback is exposed. Production routes and deployment remain unchanged.
+
+## Consolidated evidence and staging checks
+
+Run `scripts/run-atlas-publication-evidence.mjs` with the existing native and independently sourced BP3D private folder names to generate the consolidated evidence report without launching a browser. After an actual named rights review, `scripts/assemble-atlas-distribution-review.mjs` accepts an explicit reviewed selection and local evidence hashes. `scripts/validate-independent-atlas-staging.mjs` checks the resulting private review package, exact file membership, SHA-256 and attributions; it reports the existing commercial gate without activation. These commands cannot produce a public release or rollback approval. The existing public stage script only accepts the legacy layout and is intentionally not changed to promote private candidates.

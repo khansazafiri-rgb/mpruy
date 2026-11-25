@@ -1,0 +1,59 @@
+name: Atlas private regression
+
+on:
+  push:
+    branches: [feat/atlas-publication-prep-20261124]
+  pull_request:
+    paths:
+      - 'apps/atlas-independent/**'
+      - 'apps/web/src/features/anatomy/**'
+      - 'apps/web/src/pages/AnatomyLibrary.jsx'
+      - 'apps/web/src/pages/IndependentAtlasPreview.jsx'
+      - 'apps/web/vite.atlas-independent-preview.config.js'
+      - 'scripts/*atlas*.mjs'
+      - 'scripts/*bp3d*.mjs'
+      - '.github/workflows/atlas-private-regression.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  private-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pinned independent viewer and source audit tools
+        run: |
+          npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+          npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - name: Independent viewer tests
+        run: npm test --prefix apps/atlas-independent
+      - name: Exact source membership and original UI shell tests
+        run: |
+          node --test scripts/independent-atlas-element-catalog.test.mjs scripts/independent-atlas-context-recovery.test.mjs scripts/independent-atlas-priority-recovery.test.mjs scripts/private-atlas-original-shell.test.mjs scripts/audit-bp3d-43-catalog.test.mjs scripts/independent-atlas-host.test.mjs scripts/independent-atlas-thumbnails.test.mjs scripts/independent-atlas-learning-coverage.test.mjs scripts/independent-atlas-recovery-cache.test.mjs scripts/independent-atlas-source-gap-diagnostics.test.mjs apps/web/src/features/anatomy/independentRegistry.test.mjs
+      - name: Independent viewer build
+        run: npm run build --prefix apps/atlas-independent
+      - name: Install pinned main-web workspace for private host build
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Build private main-web host with original Library presentation
+        run: |
+          cd apps/web
+          npm exec -- vite build --config vite.atlas-independent-preview.config.js --outDir "$RUNNER_TEMP/atlas-host" --emptyOutDir
+          test -f "$RUNNER_TEMP/atlas-host/index.html"
+          grep -qR 'medcoel:independent-library-open' "$RUNNER_TEMP/atlas-host/assets"
+      - name: Preserve commercial release boundary
+        run: node --test scripts/commercial-release.test.mjs scripts/production-caddy-quarantine.test.mjs
+      - name: Install isolated browser test tooling (not bundled)
+        run: |
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Original UI and WebGL browser regression (engineering fixture)
+        run: |
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          node scripts/test-private-atlas-browser.mjs

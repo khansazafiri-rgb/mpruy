@@ -1,0 +1,162 @@
+{
+  "schema": 1,
+  "reviewedSourceTermsOn": "2026-11-24",
+  "scope": "Source terms only; not approval of an export or release",
+  "sources": [
+    {
+      "id": "three-r185",
+      "kind": "software",
+      "license": "MIT",
+      "commercialTerms": "permitted-with-notice",
+      "ref": "r185",
+      "version": "0.185.1",
+      "url": "https://github.com/mrdoob/three.js/blob/r185/LICENSE",
+      "notice": "source-notices/three.txt",
+      "gitBlob": "8ada2a5f982916b0ba4b7a0aa7de347587e745d7"
+    },
+    {
+      "id": "vite-8.1.5",
+      "kind": "software",
+      "license": "MIT",
+      "commercialTerms": "permitted-with-notice",
+      "ref": "v8.1.5",
+      "version": "8.1.5",
+      "url": "https://github.com/vitejs/vite/blob/v8.1.5/LICENSE",
+      "notice": "source-notices/vite.txt",
+      "gitBlob": "b7e97ecb6aa4dd70b3e3a637afa2ae16feb7cd12",
+      "note": "Exact MIT notice blob unchanged from v8.1.1. Independent lock derived from existing MEDCOEL exact npm lock closure; npm ci verification pending."
+    },
+    {
+      "id": "z-anatomy-original",
+      "kind": "mixed-models",
+      "license": "CC-BY-SA-4.0",
+      "commercialTerms": "mixed-contributor-review",
+      "ref": "3c1679595d89aa508ddffc72cd5e125c5d609a59",
+      "url": "https://github.com/Z-Anatomy/Models-of-human-anatomy/blob/3c1679595d89aa508ddffc72cd5e125c5d609a59/License.txt",
+      "notice": "source-notices/z-anatomy.txt",
+      "gitBlob": "4d48d7e83d2b79ba4510314c7612b2c3c0a90f67",
+      "exceptions": [
+        {
+          "name": "BodyParts3D",
+          "license": "CC-BY-SA-2.1-JP",
+          "status": "version-review"
+        },
+        {
+          "name": "Dundee cranial nerves and foramina",
+          "license": "CC-BY-4.0",
+          "status": "exact-object-map-required"
+        },
+        {
+          "name": "Dundee inner ear",
+          "license": "CC-BY-NC-SA-4.0",
+          "status": "exclude"
+        },
+        {
+          "name": "Lissie Cowley kidney",
+          "license": "CC-BY-NC-4.0",
+          "status": "exclude"
+        },
+        {
+          "name": "Brainder / White matter",
+          "license": null,
+          "status": "hold"
+        }
+      ]
+    },
+    {
+      "id": "bodyparts3d-official",
+      "kind": "models",
+      "license": "CC-BY-4.0",
+      "commercialTerms": "permitted-with-attribution-current-database",
+      "url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html",
+      "download": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html",
+      "updated": "2025-02-27",
+      "historicalHeader": "CC-BY-SA-2.1-JP",
+      "status": "publisher-license-and-release-file-names-confirmed; cached-byte and derived-object mapping pending",
+      "attribution": "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International",
+      "release": "4.0",
+      "releaseDate": "2013-06-19",
+      "releaseArchive": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/20130619/",
+      "readme": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/20130619/README_e.html",
+      "currentReadme": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/README_e.html",
+      "officialArchiveFiles": [
+        "isa_BP3D_4.0_obj_99.zip",
+        "partof_BP3D_4.0_obj_99.zip"
+      ],
+      "note": "The publisher's current README explicitly names the two release 4.0 archives under CC BY 4.0. Retain historical embedded BY-SA notice pending version-specific review; this is not permission to relicense mixed Z-Anatomy objects."
+    },
+    {
+      "id": "legacy-atlas-code",
+      "kind": "software",
+      "license": "CC-BY-NC-SA-4.0",
+      "commercialTerms": "blocked",
+      "url": "https://github.com/nqwrc/3d-anatomy/blob/8ca3b7421bcfbe88b85859eb1983d5cf79f21749/LICENSE"
+    },
+    {
+      "id": "hra",
+      "kind": "models",
+      "license": "CC-BY-4.0",
+      "commercialTerms": "publisher-library-terms-permit-with-attribution",
+      "url": "https://humanatlas.io/3d-reference-library?organ=All+Organs&version=10",
+      "status": "exact-object-version-and-author-attribution-review-required",
+      "evidence": [
+        "https://humanatlas.bihealth.org/mirror/collection/hra/v2.5/",
+        "https://3d.nih.gov/entries/20960?version=1"
+      ],
+      "note": "Library-level statement is not a receipt for each of the 80 cached GLBs; version-specific terms and object authors remain necessary.",
+      "versionSpecificExamples": [
+        {
+          "id": "kidney-female-left",
+          "version": "v1.3",
+          "publisher": "HuBMAP",
+          "creators": [
+            "Kristen Browne",
+            "Heidi Schlehlein"
+          ],
+          "doi": "https://doi.org/10.48539/HBM449.JPXL.964",
+          "evidence": "https://lod.humanatlas.io/ref-organ/kidney-female-left/v1.3/",
+          "license": "CC-BY-4.0",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-left/v1.3/assets/3d-vh-f-kidney-l.glb"
+        },
+        {
+          "id": "blood-vasculature-female",
+          "version": "v1.3",
+          "publisher": "HuBMAP",
+          "creators": [
+            "Kristen Browne",
+            "Heidi Schlehlein"
+          ],
+          "doi": "https://doi.org/10.48539/HBM322.KKFC.394",
+          "evidence": "https://lod.humanatlas.io/ref-organ/blood-vasculature-female/v1.3/",
+          "license": "CC-BY-4.0",
+          "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/blood-vasculature-female/v1.3/assets/3d-vh-f-blood-vasculature.glb"
+        }
+      ]
+    },
+    {
+      "id": "lymphatic-supplement",
+      "kind": "models",
+      "license": null,
+      "commercialTerms": "no-approved-source",
+      "url": null,
+      "evidence": [
+        "https://humanatlas.io/vccf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11436473/"
+      ],
+      "note": "HRA Lymph Vasculature is an ASCT+B CSV table, not a verified whole-body GLB vessel network. Do not invent geometry or substitute blood vessels."
+    },
+    {
+      "id": "vite-8.3.8",
+      "kind": "software",
+      "license": "MIT",
+      "commercialTerms": "permitted-with-notice",
+      "ref": "v8.3.8",
+      "version": "8.3.8",
+      "url": "https://github.com/vitejs/vite/blob/v8.3.8/LICENSE",
+      "notice": "source-notices/vite.txt",
+      "gitBlob": "b7e97ecb6aa4dd70b3e3a637afa2ae16feb7cd12",
+      "note": "Verified upstream MIT notice exactly matches existing pinned blob. Targeted security update; registry lock and npm audit must be generated and verified locally."
+    }
+  ],
+  "publicRelease": "NO_GO"
+}
