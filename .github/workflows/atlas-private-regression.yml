@@ -6,6 +6,10 @@ on:
   pull_request:
     paths:
       - 'apps/atlas-independent/**'
+      - 'apps/web/src/features/anatomy/**'
+      - 'apps/web/src/pages/AnatomyLibrary.jsx'
+      - 'apps/web/src/pages/IndependentAtlasPreview.jsx'
+      - 'apps/web/vite.atlas-independent-preview.config.js'
       - 'scripts/*atlas*.mjs'
       - 'scripts/*bp3d*.mjs'
       - '.github/workflows/atlas-private-regression.yml'
@@ -32,9 +36,17 @@ jobs:
         run: npm test --prefix apps/atlas-independent
       - name: Exact source membership and original UI shell tests
         run: |
-          node --test scripts/independent-atlas-element-catalog.test.mjs scripts/independent-atlas-context-recovery.test.mjs scripts/independent-atlas-priority-recovery.test.mjs scripts/private-atlas-original-shell.test.mjs scripts/audit-bp3d-43-catalog.test.mjs
+          node --test scripts/independent-atlas-element-catalog.test.mjs scripts/independent-atlas-context-recovery.test.mjs scripts/independent-atlas-priority-recovery.test.mjs scripts/private-atlas-original-shell.test.mjs scripts/audit-bp3d-43-catalog.test.mjs scripts/independent-atlas-host.test.mjs apps/web/src/features/anatomy/independentRegistry.test.mjs
       - name: Independent viewer build
         run: npm run build --prefix apps/atlas-independent
+      - name: Install pinned main-web workspace for private host build
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Build private main-web host with original Library presentation
+        run: |
+          cd apps/web
+          npm exec -- vite build --config vite.atlas-independent-preview.config.js --outDir "$RUNNER_TEMP/atlas-host" --emptyOutDir
+          test -f "$RUNNER_TEMP/atlas-host/index.html"
+          grep -qR 'medcoel:independent-library-open' "$RUNNER_TEMP/atlas-host/assets"
       - name: Preserve commercial release boundary
         run: node --test scripts/commercial-release.test.mjs scripts/production-caddy-quarantine.test.mjs
       - name: Install isolated browser test tooling (not bundled)
