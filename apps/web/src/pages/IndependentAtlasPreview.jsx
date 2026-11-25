@@ -5,6 +5,8 @@ import {Link,useLocation} from 'react-router-dom';
 import {PING,validStatus} from '../../../atlas-independent/src/host-protocol.js';
 import {OPEN,validResult,deepLink} from '../../../atlas-independent/src/library-bridge.js';
 import './IndependentAtlasPreview.css';
+import {IndependentLibraryPages} from './AnatomyLibrary.jsx';
+import {fetchIndependentRegistry} from '../features/anatomy/independentRegistry.mjs';
 const initial={state:'loading',message:'Menyiapkan Atlas independen…'};
 function loopback(){return location.hostname==='127.0.0.1';}
 function AtlasFrame({structureId=''}){
@@ -44,8 +46,8 @@ function Landing(){
  return <main className="independent-atlas-landing"><header><strong>MEDCOEL</strong><span>Review privat · NO_GO</span></header>
  <section><p>ANATOMI MANUSIA</p><h1>Atlas 3D independen</h1><p>Eksplorasi geometri resmi BodyParts3D dan referensi organ HRA dalam koordinat sumber terpisah.</p>
  {summary?<p>{summary.models} model tubuh · {summary.systems}/13 kelompok tersedia. Bukan ukuran kelengkapan klinis.</p>:<p role="status">{error||'Memeriksa inventaris…'}</p>}
- <Link className="independent-atlas-link" to="/anatomy/explore">Buka Atlas 3D</Link>
- <p>Regio, lapisan, orientasi klinis, kuis, pustaka lama dan Live 4D Lab belum dipindahkan ke paket ini.</p><a href="/anatomy/viewer/MODEL-ATTRIBUTIONS.json">Atribusi model</a></section></main>;
+ <Link className="independent-atlas-link" to="/anatomy/explore">Buka Atlas 3D</Link> <Link className="independent-atlas-link" to="/anatomy/library">Buka pustaka anatomi</Link>
+ <p>Regio, lapisan, orientasi klinis, kuis dan Live 4D Lab belum dipindahkan ke paket ini.</p><a href="/anatomy/viewer/MODEL-ATTRIBUTIONS.json">Atribusi model</a></section></main>;
 }
 export default function IndependentAtlasPreview(){
  const {pathname,search,hash}=useLocation();
@@ -55,5 +57,6 @@ export default function IndependentAtlasPreview(){
  const requested=deepLink(search,hash);
  if(p==='/anatomy/explore'&&requested!==null)return <AtlasFrame key={requested} structureId={requested}/>;
  if(p==='/anatomy'&&requested==='')return <Landing/>;
+ if(!hash&&(p==='/anatomy/library'||/^\/anatomy\/structure\/(?:bp|sel)-[a-f0-9]{24}$/.test(p)||/^\/anatomy\/system\/(?:skeletal|muscular|joints|cardiovascular|nervous|lymphatic|visceral)$/.test(p)))return <IndependentLibraryPages registryLoader={fetchIndependentRegistry}/>;
  return <main className="independent-atlas-landing"><section><h1>Fitur belum tersedia di paket independen</h1><p>Identitas struktur dan kuis dari katalog lama belum dipetakan. Tidak ada fallback ke model lama.</p><Link to="/anatomy/explore">Buka Atlas independen</Link></section></main>;
 }
