@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {discoverSystem} from './independent-anatomy-system-discovery.mjs';
+import {learningPriorityTargets} from './atlas-learning-priority-targets.mjs';
 import {loadVerifiedPublisherSources} from './plan-independent-atlas-coverage.mjs';
 import {parseObj,encodeNativeGlb} from './independent-bp3d-export.mjs';
 import {parseNativePositions,comparePositions} from './audit-bp3d-publication-geometry.mjs';
@@ -75,7 +76,14 @@ export function broadRecoveryPlan(sources,body,priority,coveredFma=[]){
 }
 export function buildPriorityRecovery(privateRoot,pack,{broad=false,coveredFma=[]}={}){
  assert(fs.realpathSync(privateRoot)===privateRoot);
- const sources=loadVerifiedPublisherSources(pack.folder),priority=priorityPlan(sources),plan=broad?[...priority,...broadRecoveryPlan(sources,pack.inventory.bodyModels,priority,coveredFma)]:priority;
+ const sources=loadVerifiedPublisherSources(pack.folder),priority=priorityPlan(sources);
+ const already=new Set([...pack.inventory.bodyModels.map(m=>m.fmaId),...coveredFma,...priority.filter(r=>r.status==='EXPORT_CANDIDATE').map(r=>r.fmaId)]);
+ const targeted=broad?priorityPlan(sources,learningPriorityTargets).map(r=>{
+  if(r.status!=='EXPORT_CANDIDATE')return r;
+  if(already.has(r.fmaId))return {...r,status:'REPRESENTATION_ALREADY_AVAILABLE_OR_PLANNED'};
+  already.add(r.fmaId);return r;
+ }):[];
+ const plan=broad?[...priority,...targeted,...broadRecoveryPlan(sources,pack.inventory.bodyModels,[...priority,...targeted],coveredFma)]:priority;
  const out=fs.mkdtempSync(path.join(privateRoot,'atlas-priority-recovery-'));fs.chmodSync(out,0o700);
  const items=[],models=new Map(),results=[],used=new Set();let totalBytes=0;
  const maxBytes=(broad?2048:512)*1024*1024, maxTriangles=1500000;
@@ -107,6 +115,6 @@ export function buildPriorityRecovery(privateRoot,pack,{broad=false,coveredFma=[
  }
  const report={schema:1,broad,sourcePack:path.basename(pack.folder),inventorySHA256:hash(fs.readFileSync(path.join(pack.folder,'inventory.json'))),publicRelease:'NO_GO',clinicalValidation:false,registrationValidated:false,productionChanged:false,bodyInventoryUnchanged:true,items,results,totalBytes};
  const receipt=path.join(out,'priority-recovery.json');fs.writeFileSync(receipt,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});
- console.log('PRIORITY RECOVERY',JSON.stringify({broad,exported:items.length,requested:plan.length,held:results.filter(r=>r.status!=='EXPORTED_ISOLATED_CONCEPT').map(r=>({group:r.group,target:r.target,status:r.status,reason:r.reason})),byGroup:Object.fromEntries([...new Set(items.map(i=>i.group))].map(g=>[g,items.filter(i=>i.group===g).length])),totalBytes,bodyInventoryUnchanged:true,publicRelease:'NO_GO',report:receipt}));
+ console.log('PRIORITY RECOVERY',JSON.stringify({broad,exported:items.length,requested:plan.length,alreadyAvailableOrPlanned:results.filter(r=>r.status==='REPRESENTATION_ALREADY_AVAILABLE_OR_PLANNED').length,held:results.filter(r=>!['EXPORTED_ISOLATED_CONCEPT','REPRESENTATION_ALREADY_AVAILABLE_OR_PLANNED'].includes(r.status)).map(r=>({group:r.group,target:r.target,status:r.status,reason:r.reason})),byGroup:Object.fromEntries([...new Set(items.map(i=>i.group))].map(g=>[g,items.filter(i=>i.group===g).length])),totalBytes,bodyInventoryUnchanged:true,publicRelease:'NO_GO',report:receipt}));
  return {items,models,report};
 }
