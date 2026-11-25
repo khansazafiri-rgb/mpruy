@@ -71,5 +71,11 @@ result.previewEligible=result.technicalChecksPassed;
 result.releaseBlockers=['Clinical and orientation validation pending','Browser/WebGL runtime pending','Named redistribution and code-origin review pending','Existing public release gate blocked'];
 result.note='PASS permits private preview only. Coverage gaps, clinical validation, exact redistribution review and browser validation remain independent requirements. Host security audit covers the root workspace, not just Atlas.';
 fs.writeFileSync(path.join(out,'summary.json'),JSON.stringify(result,null,2)+'\n',{flag:'wx',mode:0o600});
-console.log('CONSOLIDATED ATLAS QC',JSON.stringify({...result,report:path.join(out,'summary.json')}));
+const compact={schema:result.schema,commit:result.commit,finalPack:result.finalPack,steps:Object.fromEntries(Object.entries(result.steps).map(([k,v])=>[k,{status:v.status,exitCode:v.exitCode,reason:v.reason,auditCounts:v.audit?.counts}])),expansion:result.expansion,sourceReplay:result.steps['source-replay']?.report?{bodyMatched:result.steps['source-replay'].report.bodyMatched,bodyTotal:result.steps['source-replay'].report.bodyTotal,hraMatched:result.steps['source-replay'].report.hraMatched,hraTotal:result.steps['source-replay'].report.hraTotal}:null,systemsWithBodyModels:result.steps['system-coverage']?.report?.systemsWithBodyModels,emptySystems:result.steps['system-coverage']?.report?.emptySystems,http:result.steps['build-and-http']?.report,technicalChecksPassed:result.technicalChecksPassed,previewEligible:result.previewEligible,publicRelease:'NO_GO',productionChanged:false,report:path.join(out,'summary.json')};
+for(const [name,record] of Object.entries(result.steps)){
+ if(record.status!=='FAIL'||!record.log||name==='security'||name==='host-security')continue;
+ const tail=fs.readFileSync(path.join(out,record.log),'utf8').trim().split('\n').slice(-12).join('\n').slice(-2400);
+ if(tail)console.log('QC FAILURE TAIL '+name+'\n'+tail);
+}
+console.log('CONSOLIDATED ATLAS QC',JSON.stringify(compact));
 if(!result.technicalChecksPassed)process.exitCode=1;
