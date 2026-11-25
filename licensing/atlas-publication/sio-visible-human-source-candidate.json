@@ -48,5 +48,34 @@
   "registrationValidated": false,
   "assetRightsReviewed": false,
   "privacyReview": "PENDING",
-  "publicRelease": "NO_GO"
+  "publicRelease": "NO_GO",
+  "archiveFile": {
+    "key": "VOXEL-MAN_segmented-internal-organs.zip",
+    "md5": "dbdfada24e69591bdf9650453918d9ef",
+    "reportedSize": "395.1 MB"
+  },
+  "publisherVolume": {
+    "slices": 774,
+    "firstSlice": 1256,
+    "lastSlice": 2029,
+    "dimensions": [
+      573,
+      330,
+      774
+    ],
+    "spacingMM": [
+      1,
+      1,
+      1
+    ],
+    "labelEncoding": "16-bit TIFF"
+  },
+  "recordVersion": "v1",
+  "recordPublished": "2025-08-11",
+  "fileBytesVerified": false,
+  "labelMappingVerified": false,
+  "referenceSources": [
+    "https://zenodo.org/records/15882019",
+    "https://www.virtual-body.org/segmented-internal-organs/"
+  ]
 }

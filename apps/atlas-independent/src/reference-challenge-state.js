@@ -19,3 +19,12 @@ export function scoreReferenceAnswer(question,optionId){
  if(!question?.options.some(o=>o.id===optionId))throw Error('Unknown answer choice');
  return optionId===question.entry.id;
 }
+
+// Source-label recognition only; one unambiguous FMA concept per question.
+// Keep the existing glossary-bound multilingual mode unchanged.
+export function buildSourceLabelQuestions(entries,random=Math.random){
+ buildReferenceQuestions(entries,()=>.5);
+ const byFMA=new Map(),byLabel=new Map();
+ for(const e of entries){const key=canonical(e.name);const names=byFMA.get(e.fmaId)||new Set();names.add(key);byFMA.set(e.fmaId,names);const concepts=byLabel.get(key)||new Set();concepts.add(e.fmaId);byLabel.set(key,concepts);}
+ return buildReferenceQuestions(entries.filter(e=>byFMA.get(e.fmaId).size===1&&byLabel.get(canonical(e.name)).size===1),random);
+}

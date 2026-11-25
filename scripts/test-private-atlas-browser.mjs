@@ -12,9 +12,9 @@ import {encodeNativeGlb} from './independent-bp3d-export.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 let real43=null,serve43=null;
-if(['1','gap','combined','expanded','axial'].includes(process.env.ATLAS_TEST_REAL43)){
+if(['1','gap','combined','expanded','axial','gap-from-axial'].includes(process.env.ATLAS_TEST_REAL43)){
  const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
- const mode=process.env.ATLAS_TEST_REAL43,counts=mode==='axial'?[12,28,32,23,20]:mode==='expanded'?[12,28,32]:mode==='combined'?[12,28]:mode==='gap'?[28]:[12];
+ const mode=process.env.ATLAS_TEST_REAL43,counts=['axial','gap-from-axial'].includes(mode)?[12,28,32,23,20]:mode==='expanded'?[12,28,32]:mode==='combined'?[12,28]:mode==='gap'?[28]:[12];
  assert.equal(folders.length,counts.length,'Fresh exact source acquisitions required');
  const m=await import('./load-bp3d43-private-elements.mjs');serve43=m.serve43Reference;
  const registries=counts.map(count=>{
@@ -23,7 +23,8 @@ if(['1','gap','combined','expanded','axial'].includes(process.env.ATLAS_TEST_REA
   const file=count===23?'bp3d43-discs-23-dual-source-audit-20261125.json':count===20?'bp3d43-costal-20-dual-source-audit-20261125.json':count===32?'bp3d43-nerves32-dual-source-audit-20261125.json':count===28?'bp3d43-gap-batch-dual-source-audit-20261125.json':'bp3d43-dual-source-audit-20261125.json';
   return m.load43Elements(q,matched[0],JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),count);
  });
- real43=m.combine43Registries(registries);
+ // Reuse exactly the five verified acquisitions, but expose only the gap registry.
+ real43=m.combine43Registries(mode==='gap-from-axial'?registries.filter(r=>r.assets.size===28):registries);
 }
 const require=createRequire(import.meta.url),appRequire=createRequire(path.join(app,'package.json'));
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
@@ -160,13 +161,38 @@ try{
   }
   await challenge.locator('#referenceChallengeProgress').filter({hasText:'10/10 benar · 0 gagal dimuat'}).waitFor();
   await challenge.locator('#referenceChallengeQuit').click();
+  if(real43.assets.size===115){
+   const modeSelect=setup.locator('#referenceChallengeMode'),langSelect=setup.locator('#referenceChallengeLanguage');
+   await modeSelect.selectOption('source-mcq');assert(await langSelect.isDisabled());assert.equal(await langSelect.inputValue(),'en');
+   await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
+   await choices.first().waitFor();assert.equal(await choices.count(),4);
+   await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal 1/109'}).waitFor();
+   const src=await currentEntry();assert.equal((await choices.allTextContents()).filter(x=>x===src.name).length,1);
+   assert(await dialog.locator('#referenceSource').isHidden());
+   await challenge.getByRole('button',{name:src.name,exact:true}).click();await feedback.filter({hasText:/^Benar\./}).waitFor();
+   await challenge.locator('#referenceChallengeQuit').click();await setup.waitFor({state:'visible'});
+   await modeSelect.selectOption('mcq');assert(await langSelect.isEnabled());
+   console.log('BP3D43 SOURCE LABEL CHALLENGE PASS: 109 distinct concepts, exact source label, English-only, previous mode restored.');
+  }
   // Force a transport failure without changing or replacing an actual model.
   const fail=route=>route.abort('failed'),pattern='**/bp3d43-reference/*.glb';await page.route(pattern,fail);
   await start('mcq','id');await feedback.filter({hasText:'Model gagal dimuat; tidak masuk skor.'}).waitFor();assert.equal(await choices.count(),0);assert(await next.isEnabled());
   await page.unroute(pattern,fail);await next.click();await choices.first().waitFor();assert.equal(await choices.count(),4);
   await challenge.locator('#referenceChallengeQuit').click();
   console.log('BP3D43 CHALLENGE PASS: source labels concealed, MCQ correct/incorrect, 10 distinct multilingual typed answers, single-submit lock and unavailable model excluded.');
-  }else assert(await dialog.locator('#referenceChallengeSetup').isHidden());
+  }else{
+   const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),mode=setup.locator('#referenceChallengeMode'),lang=setup.locator('#referenceChallengeLanguage');
+   await setup.waitFor({state:'visible'});
+   assert.equal(await mode.inputValue(),'source-mcq');assert(await lang.isDisabled());
+   assert(await mode.locator('option[value="mcq"]').isDisabled());assert(await mode.locator('option[value="typed"]').isDisabled());
+   await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
+   const choices=challenge.locator('#referenceChallengeAnswers button');await choices.first().waitFor();assert.equal(await choices.count(),4);
+   await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal 1/27'}).waitFor();
+   const id=await dialog.locator('#referenceViewport').getAttribute('data-rendered-id'),asset=real43.inventory.items.find(e=>e.id===id);assert(asset);
+   assert.equal((await choices.allTextContents()).filter(x=>x===asset.name).length,1);
+   await challenge.locator('#referenceChallengeQuit').click();await setup.waitFor({state:'visible'});
+   console.log('BP3D43 GAP SOURCE CHALLENGE PASS: 27 distinct concepts; unavailable multilingual modes disabled.');
+  }
   await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});
   await page.waitForFunction(()=>document.querySelectorAll('#referenceViewport canvas').length===0);
   await waitCounts(3,1);

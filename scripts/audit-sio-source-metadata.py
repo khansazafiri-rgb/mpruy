@@ -7,6 +7,8 @@ URL = "https://zenodo.org/api/records/15882019"
 LIMIT = 2 * 1024**2
 KEY = "SIO Object Labels.xlsx"
 MD5 = "md5:3f996d6e1113a24e58304381b8e689e2"
+ARCHIVE_KEY = "VOXEL-MAN_segmented-internal-organs.zip"
+ARCHIVE_MD5 = "md5:dbdfada24e69591bdf9650453918d9ef"
 
 def review(data):
     if data.get("id") != 15882019:
@@ -35,6 +37,8 @@ def review(data):
         rows.append({"key": key, "bytes": size, "checksum": checksum})
     if sum(f["key"] == KEY and f["checksum"] == MD5 for f in rows) != 1:
         raise ValueError("published label-file receipt differs")
+    if sum(f["key"] == ARCHIVE_KEY and f["checksum"] == ARCHIVE_MD5 for f in rows) != 1:
+        raise ValueError("published archive receipt differs")
     return {"schema":1,"record":15882019,"doi":"10.5281/zenodo.15882019",
             "license":"CC-BY-4.0","files":rows,"metadataVerified":True,
             "assetBytesVerified":False,"geometryParsed":False,"privacyReviewed":False,
@@ -52,7 +56,7 @@ def main():
 
 class Tests(unittest.TestCase):
     def fixture(self):
-        return {"id":15882019,"doi":"10.5281/zenodo.15882019","metadata":{"license":{"id":"cc-by-4.0"}},"files":[{"key":KEY,"size":13700,"checksum":MD5}]}
+        return {"id":15882019,"doi":"10.5281/zenodo.15882019","metadata":{"license":{"id":"cc-by-4.0"}},"files":[{"key":KEY,"size":13700,"checksum":MD5},{"key":ARCHIVE_KEY,"size":395100000,"checksum":ARCHIVE_MD5}]}
     def test_record(self):
         self.assertFalse(review(self.fixture())["assetBytesVerified"])
     def test_changed_license(self):
@@ -63,6 +67,12 @@ class Tests(unittest.TestCase):
     def test_changed_label_checksum(self):
         data=self.fixture()
         data["files"][0]["checksum"]="md5:"+"0"*32
+        with self.assertRaises(ValueError):
+            review(data)
+
+    def test_changed_archive_checksum(self):
+        data=self.fixture()
+        data["files"][1]["checksum"]="md5:"+"0"*32
         with self.assertRaises(ValueError):
             review(data)
 
