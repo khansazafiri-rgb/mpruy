@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {planCoverage} from './plan-independent-atlas-coverage.mjs';
+import {planCoverage,formattingKey,planAliasReview} from './plan-independent-atlas-coverage.mjs';
 import {bodyDisplayEntry} from './load-independent-source-review.mjs';
 import {validateInventory} from '../apps/atlas-independent/src/inventory.js';
 test('source-native independent display does not invent regional or layer metadata',()=>{
@@ -21,4 +21,18 @@ test('coverage expansion demands exact official names, complete element sets and
  const r=planCoverage(targets,body,[{tree:'isa',names,elements,archiveIndex:new Map(['FJ1','FJ3','FJ4','FJ5'].map(x=>[x,x+'.obj']))}]);
  assert.deepEqual(r.counts,{PRESENT_EXACT_NAME:1,EXACT_SOURCE_EXPANSION_CANDIDATE:1,NO_EXACT_PUBLISHER_MATCH:3,AMBIGUOUS_PUBLISHER_MATCH:1});
  assert.equal(r.rows[1].fmaId,'FMA2');assert.equal(r.publicRelease,'NO_GO');assert.equal(r.clinicalValidation,false);
+});
+
+test('legacy label discovery cannot become exact anatomical clearance',()=>{
+ assert.equal(formattingKey('(Femur).l'),'left femur');
+ assert.notEqual(formattingKey('(Femur).l'),formattingKey('(Femur).r'));
+ assert.notEqual(formattingKey('T1 vertebra'),formattingKey('T11 vertebra'));
+ assert.notEqual(formattingKey('renal artery'),formattingKey('renal vein'));
+ const target=[{id:'target',name:'(Femur).l',group:'skeletal'}],body=[{id:'left',name:'Femur of left lower limb',oldName:'(Femur).l',group:'skeletal',fmaId:'FMA1',bpId:'BP1'}];
+ const rows=[{status:'NO_EXACT_PUBLISHER_MATCH'}];
+ const result=planAliasReview(target,body,[],rows);
+ assert.equal(result.rows[0].status,'EXISTING_SOURCE_ALIAS_REVIEW');
+ assert.equal(result.rows[0].approvedForDistribution,false);
+ assert.equal(result.rows[0].clinicalValidation,false);
+ assert.equal(planAliasReview([{...target[0],name:'(Femur).r'}],body,[],rows).rows[0].status,'NO_FORMAT_OR_ALIAS_MATCH');
 });
