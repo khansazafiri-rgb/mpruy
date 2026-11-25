@@ -8,6 +8,7 @@ import {initialPresentation,setGroupOpacity,effectiveOpacity,materialKey,chooseE
 import {STATUS,validPing} from './host-protocol.js';
 import './style.css';
 import {mountOriginalShell} from './original-shell.js';
+import {validateElementCatalog,elementKey,elementKeys,meshElementId,hasExactElements} from './element-selection.js';
 const $=id=>document.getElementById(id);
 const base=import.meta.env.BASE_URL;
 let hostState={state:'loading',message:'Menyiapkan inventaris dan model awal…'};
@@ -27,29 +28,43 @@ const loader=new GLTFLoader(),cache=new Map(),failed=new Map(),inflight=new Map(
 let entries=[],selected=null,study=initialStudy(),presentation=initialPresentation(),alternatives=new Map(),byId=new Map(),revision=0,searchRevision=0,independent=false;
 let cacheClock=0,cacheReport={remaining:0,aboveBudget:false};
 let originalUI=null,originalReady=false;
+let selectionEntries=[],isolatedKeys=null,hiddenKeys=new Set(),selectedKeys=new Set();
+function refreshElementSets(){
+ const isolated=byId.get(study.isolated);isolatedKeys=isolated?.selectionOnly?elementKeys(isolated):null;
+ hiddenKeys=new Set();for(const id of study.hidden){const e=byId.get(id);if(e?.selectionOnly)for(const k of elementKeys(e))hiddenKeys.add(k);}
+ selectedKeys=selected?.selectionOnly?elementKeys(selected):new Set();
+}
+const ownerOf=(e,id)=>e?.selectionOnly&&e.bindings.some(b=>b.ownerId===id);
 const counts=()=>{
  $('count').textContent=[...cache.values()].filter(o=>o.visible&&!o.userData.entry.priorityOnly).length+' tubuh terlihat · '+[...cache.values()].filter(o=>!o.userData.entry.priorityOnly).length+' tubuh dimuat · '+inflight.size+' memuat/antre · '+failed.size+' gagal · '+entries.length+' kandidat. Bukan ukuran kelengkapan anatomi.';
  $('cacheStatus').textContent='Buffer geometri terukur: '+Math.round(cacheReport.remaining/1048576)+' MiB'+(cacheReport.aboveBudget?' · melebihi target lunak; kurangi sistem aktif.':'');
  $('retry').disabled=!failed.size;$('restore').hidden=!study.isolated&&!study.hidden.size;originalUI?.render();
 };
-const baseVisible=(e,s)=>e.priorityOnly?s.isolated===e.id:bodyBaseVisible(e,s);
-const visible=e=>e.priorityOnly?baseVisible(e,study):displayed(e,study,alternatives,id=>cache.has(id),byId);
-function appearanceFor(e){
- const selectedId=selected?.id,kind=materialKind(e),key=materialKey(e,kind,presentation,selectedId);
+const baseVisible=(e,s)=>{const iso=byId.get(s.isolated);if(iso?.selectionOnly)return ownerOf(iso,e.id);return e.priorityOnly?s.isolated===e.id:bodyBaseVisible(e,s);};
+const visible=e=>isolatedKeys?baseVisible(e,study):e.priorityOnly?baseVisible(e,study):displayed(e,study,alternatives,id=>cache.has(id),byId);
+function appearanceFor(e,meshKey){
+ const selectedId=selected?.id;
+ const target=selectedKeys.has(meshKey)?{...e,id:selectedId}:e;
+ const kind=materialKind(e),key=materialKey(target,kind,presentation,selectedId);
  if(!materials.has(key)){
-  const isSelected=e.id===selectedId,opacity=effectiveOpacity(e,presentation,selectedId);
+  const isSelected=target.id===selectedId,opacity=effectiveOpacity(target,presentation,selectedId);
   materials.set(key,new THREE.MeshStandardMaterial({color:isSelected?0xf9c65e:colors[kind]??colors[e.group],roughness:isSelected ? .6 : .82,side:THREE.DoubleSide,opacity,transparent:opacity<1,depthWrite:opacity>=1,wireframe:presentation.wireframe&&!isSelected}));
  }
  return {key,material:materials.get(key)};
 }
 function applyAppearance(obj){
- const a=appearanceFor(obj.userData.entry);
- if(obj.userData.materialKey===a.key)return;
- obj.traverse(m=>{if(m.isMesh)m.material=a.material;});obj.userData.materialKey=a.key;
+ const e=obj.userData.entry;
+ for(const mesh of obj.userData.meshes){
+  const k=mesh.userData.elementKey;const a=appearanceFor(e,k);
+  if(mesh.userData.materialKey!==a.key){mesh.material=a.material;mesh.userData.materialKey=a.key;}
+ }
 }
 function updateAppearance(){
- const used=new Set();for(const obj of cache.values()){applyAppearance(obj);used.add(obj.userData.materialKey);}
+ refreshElementSets();const used=new Set();for(const obj of cache.values()){applyAppearance(obj);for(const m of obj.userData.meshes)used.add(m.userData.materialKey);}
  for(const [key,material] of materials)if(!used.has(key)){material.dispose();materials.delete(key);}
+}
+function syncMeshVisibility(obj){
+ for(const m of obj.userData.meshes){const k=m.userData.elementKey;m.visible=isolatedKeys?isolatedKeys.has(k):!hiddenKeys.has(k);}
 }
 function geometryBytes(obj){
  const buffers=new Set();obj.traverse(m=>{if(!m.isMesh)return;const g=m.geometry;for(const attr of [g.index,...Object.values(g.attributes),...Object.values(g.morphAttributes).flat()]){const buffer=(attr?.array||attr?.data?.array)?.buffer;if(buffer)buffers.add(buffer);}});
@@ -62,7 +77,7 @@ function evictHidden(){
   const obj=cache.get(id),geometries=new Set();obj.traverse(m=>{if(m.isMesh)geometries.add(m.geometry);});body.remove(obj);for(const g of geometries)g.dispose();cache.delete(id);
  }
 }
-function sync(){for(const obj of cache.values()){obj.visible=visible(obj.userData.entry);if(obj.visible)obj.userData.lastUsed=++cacheClock;}evictHidden();counts();}
+function sync(){refreshElementSets();for(const obj of cache.values()){obj.visible=visible(obj.userData.entry);syncMeshVisibility(obj);if(obj.visible)obj.userData.lastUsed=++cacheClock;}evictHidden();counts();}
 function select(e){
  selected=e;updateAppearance();
  $('selectionActions').hidden=!e;
@@ -83,11 +98,11 @@ async function load(e){
   try{
    if(!baseVisible(e,study))return;
    const g=await loader.loadAsync(base+e.path);
-   const importedMaterials=new Set(),textures=new Set();
-   g.scene.traverse(m=>{if(m.isMesh){for(const mat of [].concat(m.material||[])){if(!mat)continue;importedMaterials.add(mat);for(const value of Object.values(mat))if(value?.isTexture)textures.add(value);}m.userData.entry=e;}});
-   g.scene.userData.entry=e;g.scene.userData.geometryBytes=geometryBytes(g.scene);g.scene.userData.lastUsed=++cacheClock;
+   const importedMaterials=new Set(),textures=new Set(),meshes=[],elementIds=new Set();
+   g.scene.traverse(m=>{if(m.isMesh){for(const mat of [].concat(m.material||[])){if(!mat)continue;importedMaterials.add(mat);for(const value of Object.values(mat))if(value?.isTexture)textures.add(value);}m.userData.entry=e;const el=meshElementId(m);if(el){m.userData.elementKey=elementKey(e.id,el);elementIds.add(el);}meshes.push(m);}});
+   g.scene.userData.entry=e;g.scene.userData.meshes=meshes;g.scene.userData.elementIds=elementIds;g.scene.userData.geometryBytes=geometryBytes(g.scene);g.scene.userData.lastUsed=++cacheClock;
    applyAppearance(g.scene);for(const tex of textures)tex.dispose();for(const mat of importedMaterials)mat.dispose();
-   g.scene.visible=visible(e);body.add(g.scene);cache.set(e.id,g.scene);failed.delete(e.id);
+   syncMeshVisibility(g.scene);g.scene.visible=visible(e);body.add(g.scene);cache.set(e.id,g.scene);failed.delete(e.id);
   }catch(error){failed.set(e.id,String(error.message||error));}
   finally{releaseLoad();inflight.delete(e.id);evictHidden();counts();}
  })();
@@ -95,7 +110,7 @@ async function load(e){
 }
 async function refresh(fitAfter=false){
  const tick=++revision;sync();
- const queue=entries.filter(e=>baseVisible(e,study)&&!cache.has(e.id)&&!failed.has(e.id));
+ const queue=[...entries,...(byId.get(study.isolated)?.priorityOnly?[byId.get(study.isolated)]:[])].filter(e=>baseVisible(e,study)&&!cache.has(e.id)&&!failed.has(e.id));
  const work=async()=>{while(queue.length&&tick===revision)await load(queue.shift());};
  await Promise.all(Array.from({length:4},work));if(tick!==revision)return;sync();if(fitAfter)fit();
 }
@@ -107,7 +122,7 @@ function frameBounds(bounds,axis){
  controls.target.copy(center);camera.position.copy(center).addScaledVector(axis,p.distance);camera.near=p.near;camera.far=p.far;controls.minDistance=p.radius*.015;controls.maxDistance=p.far*.7;camera.updateProjectionMatrix();controls.update();
 }
 function fit(axis=currentAxis()){
- const bounds=new THREE.Box3();for(const obj of cache.values())if(obj.visible)bounds.union(obj.userData.bounds??=new THREE.Box3().setFromObject(obj));
+ const bounds=new THREE.Box3();for(const obj of cache.values())if(obj.visible){if(isolatedKeys||hiddenKeys.size){for(const m of obj.userData.meshes)if(m.visible)bounds.union(new THREE.Box3().setFromObject(m));}else bounds.union(obj.userData.bounds??=new THREE.Box3().setFromObject(obj));}
  frameBounds(bounds,axis);
 }
 function resize(){const w=$('view').clientWidth,h=$('view').clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();}
@@ -119,7 +134,7 @@ renderer.domElement.addEventListener('pointercancel',()=>{down=null;});
 renderer.domElement.addEventListener('pointerup',ev=>{
  const start=down;down=null;if(!start||start[2]!==ev.pointerId||Math.hypot(ev.clientX-start[0],ev.clientY-start[1])>5)return;
  const r=renderer.domElement.getBoundingClientRect();pointer.set((ev.clientX-r.left)/r.width*2-1,-(ev.clientY-r.top)/r.height*2+1);ray.setFromCamera(pointer,camera);
- const hits=ray.intersectObjects([...cache.values()].filter(o=>o.visible),true).map(x=>x.object.userData.entry?.id);const id=nextPickedId(hits,selected?.id,ev.shiftKey);searchRevision++;select(byId.get(id)||null);
+ const hits=ray.intersectObjects([...cache.values()].filter(o=>o.visible),true).filter(x=>x.object.visible).map(x=>x.object.userData.entry?.id);const id=nextPickedId(hits,selected?.id,ev.shiftKey);searchRevision++;select(id&&isolatedKeys?byId.get(study.isolated):byId.get(id)||null);
 });
 for(const [id,label] of Object.entries(regions)){const o=document.createElement('option');o.value=id;o.textContent=label;$('region').append(o);}
 function resetSelection(){searchRevision++;select(null);}
@@ -142,7 +157,7 @@ function groupControls(){
   $('groups').append(row);
  }
 }
-function focus(e){const obj=cache.get(e.id);if(!obj)return;frameBounds(obj.userData.bounds??=new THREE.Box3().setFromObject(obj),currentAxis());}
+function focus(e){if(e.selectionOnly){const bounds=new THREE.Box3(),keys=elementKeys(e);for(const id of new Set(e.bindings.map(b=>b.ownerId))){const obj=cache.get(id);for(const m of obj?.userData.meshes||[])if(keys.has(m.userData.elementKey))bounds.union(new THREE.Box3().setFromObject(m));}frameBounds(bounds,currentAxis());return;}const obj=cache.get(e.id);if(!obj)return;frameBounds(obj.userData.bounds??=new THREE.Box3().setFromObject(obj),currentAxis());}
 $('focus').onclick=()=>{if(selected)focus(selected);};
 $('isolate').onclick=()=>{if(!selected)return;searchRevision++;study.isolated=selected.id;sync();focus(selected);};
 $('hide').onclick=()=>{if(!selected)return;study.hidden.add(selected.id);study.isolated=null;resetSelection();refresh();};
@@ -161,10 +176,9 @@ if(!document.fullscreenEnabled)$('fullscreen').disabled=true;
 document.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&!document.fullscreenElement&&!$('referenceDialog').open&&!['INPUT','SELECT','TEXTAREA','BUTTON'].includes(ev.target?.tagName))resetSelection();});
 $('search').oninput=()=>{
  $('results').replaceChildren();
- for(const e of searchEntries(entries,$('search').value)){
+ for(const e of searchEntries([...entries,...selectionEntries],$('search').value)){
   const b=document.createElement('button');b.textContent=e.name;b.onclick=async()=>{
-   const token=++searchRevision;revealEntry(e,study,alternatives);syncControls();failed.delete(e.id);await load(e);if(token!==searchRevision)return;
-   sync();if(cache.has(e.id)){select(e);focus(e);refresh();}else $('info').textContent='Model gagal dimuat: '+e.name;
+   await chooseEntry(e);
   };$('results').append(b);
  }
 };
@@ -212,10 +226,31 @@ async function initPriority(){
   };
  }catch(error){panel.hidden=false;panel.open=true;open.disabled=true;status.textContent=String(error.message||error);}
 }
+async function initElementSelection(){
+ const r=await fetch(base+'element-selection.json',{cache:'no-store'});if(r.status===404)return;
+ if(!r.ok)throw Error('Katalog seleksi tidak tersedia');selectionEntries=validateElementCatalog(await r.json(),entries);
+ for(const e of selectionEntries)byId.set(e.id,e);
+}
+async function chooseEntry(e){
+ const token=++searchRevision;
+ if(e.selectionOnly){
+  study.isolated=null;const targets=elementKeys(e);
+  for(const id of [...study.hidden]){const v=byId.get(id);if(v?.selectionOnly&&[...elementKeys(v)].some(k=>targets.has(k)))study.hidden.delete(id);}
+  const owners=[...new Set(e.bindings.map(b=>b.ownerId))].map(id=>byId.get(id));
+  for(const owner of owners){revealEntry(owner,study,alternatives);failed.delete(owner.id);}
+  syncControls();sync();await Promise.all(owners.map(load));if(token!==searchRevision)return;
+  const loaded=new Map(owners.map(o=>[o.id,cache.get(o.id)?.userData.elementIds]));
+  if(!hasExactElements(e,loaded)){resetSelection();$('info').textContent='Elemen sumber tidak lengkap: '+e.name;notifyHost('partial','Elemen sumber tidak lengkap: '+e.name);refresh();return;}
+  select(e);sync();focus(e);refresh();return;
+ }
+ if(e.priorityOnly){++revision;study.isolated=e.id;}else revealEntry(e,study,alternatives);
+ select(e);syncControls();sync();failed.delete(e.id);await load(e);if(token!==searchRevision)return;
+ if(cache.has(e.id)){sync();select(e);focus(e);refresh();}else{study.isolated=null;resetSelection();refresh(true);}
+}
 async function init(){
  groupControls();
  if(location.hostname!=='127.0.0.1'){ $('notice').textContent='Aplikasi ini belum disetujui untuk publikasi.';return; }
- try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('viewHint').textContent='Sumbu sumber XYZ (bukan orientasi anatomi tervalidasi) · Shift+klik: pilih struktur di belakang';$('modelAttributions').hidden=false;$('region').disabled=true;$('representation').disabled=true;$('front').textContent='+Z';$('back').textContent='−Z';$('side').textContent='−X';$('right').textContent='+X';$('top').textContent='+Y';}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);if(independent)await initPriority();notifyHost(cache.size?(failed.size?'partial':'interactive'):'error',cache.size?(failed.size?'Viewer tersedia; beberapa model gagal dimuat.':'Viewer siap; struktur masih kandidat review.'):'Tidak ada model awal yang berhasil dimuat.');}
+ try{const r=await fetch(base+'inventory.json',{cache:'no-store'});if(!r.ok)throw Error('Tidak ada inventaris review');const doc=await r.json();entries=validateInventory(doc,location.hostname);independent=doc.sourceKind==='independent-bp3d';if(independent){$('viewHint').textContent='Sumbu sumber XYZ (bukan orientasi anatomi tervalidasi) · Shift+klik: pilih struktur di belakang';$('modelAttributions').hidden=false;$('region').disabled=true;$('representation').disabled=true;$('front').textContent='+Z';$('back').textContent='−Z';$('side').textContent='−X';$('right').textContent='+X';$('top').textContent='+Y';}byId=new Map(entries.map(e=>[e.id,e]));alternatives=independent?new Map():buildAlternatives(entries);$('notice').textContent=independent?'BodyParts3D asli · koordinat sumber, bukan orientasi anatomis tervalidasi. Klasifikasi sistem sementara; regio/lapisan belum diverifikasi. HRA terpisah. Belum untuk publikasi.':'Z-Anatomy sumber asli, kandidat privat. Hak per objek, kontinuitas dan ketepatan anatomi belum disetujui. Limfatik belum memiliki jaringan pembuluh.';groupControls();await refresh(true);if(independent){await initElementSelection();await initPriority();}notifyHost(cache.size?(failed.size?'partial':'interactive'):'error',cache.size?(failed.size?'Viewer tersedia; beberapa model gagal dimuat.':'Viewer siap; struktur masih kandidat review.'):'Tidak ada model awal yang berhasil dimuat.');}
  catch(error){$('notice').textContent=error.message;counts();notifyHost('error',error.message);}
 }
 mountReferences(base);
@@ -234,13 +269,6 @@ originalUI=mountOriginalShell({
  fadeSelected:()=>{if(!selected)return;const faded={...presentation.faded};faded[selected.id]=!faded[selected.id];presentation={...presentation,faded};updateAppearance();},
  fadeOthers:()=>{presentation={...presentation,context:!presentation.context};syncPresentationControls();updateAppearance();},
  toggle:g=>{resetSelection();study.isolated=null;if(study.enabled.has(g))study.enabled.delete(g);else study.enabled.add(g);syncControls();refresh(true);},
- choose:async e=>{
-  const token=++searchRevision;
-  if(e.priorityOnly){++revision;study.isolated=e.id;}else revealEntry(e,study,alternatives);
-  select(e);syncControls();sync();failed.delete(e.id);await load(e);
-  if(token!==searchRevision)return;
-  if(cache.has(e.id)){sync();select(e);focus(e);refresh();}
-  else{study.isolated=null;resetSelection();refresh(true);}
- }
+ choose:chooseEntry
 });
 init().finally(()=>{originalReady=true;originalUI?.render();});
