@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "reviewDate": "2026-11-25",
+  "publicRelease": "NO_GO",
+  "scope": "Discovery only; no external geometry imported, approved, or published.",
+  "sources": [
+    {
+      "id": "anatomia-aperta-3d",
+      "repository": "https://github.com/tspiriev/Anatomia-Aperta-3D",
+      "commit": "175e770618176b0408661610e4bdabd71a83f387",
+      "evidence": [
+        {
+          "path": "LICENSE.md",
+          "blob": "894a81248a29ea68ab909219c62eac1206ba1f20"
+        },
+        {
+          "path": "ATTRIBUTION.md",
+          "blob": "b05e16c996ffe5ba7255be2f7f2ee14a4de8c688"
+        },
+        {
+          "path": "3D Models.md",
+          "blob": "90660f81428f12fa73784f44707e76275a1610ff"
+        },
+        {
+          "path": "MODIFICATIONS.md",
+          "blob": "c9c7692db31b2e1fb05524d4db0976b5a420a93c"
+        }
+      ],
+      "distributionURL": "https://1drv.ms/f/c/a1ff9f2611105a3c/IgA1bvMrahy9TbNOJfm8VetJASbspIVxmlY0gExxKqbDU08?e=SlcIOR",
+      "targets": [
+        "bilateral brachial plexus",
+        "cervical and lumbar plexus",
+        "spinal roots",
+        "autonomic plexuses",
+        "joints and ligaments",
+        "visceral organs"
+      ],
+      "reportedLicense": "CC-BY-SA-4.0 for eligible contributions; third-party terms retained",
+      "hold": [
+        "exact GLB not inspected",
+        "per-node source version and contributor unknown",
+        "exclude NC ear/kidney and unknown rights",
+        "no whole-body alignment or medical review"
+      ]
+    },
+    {
+      "id": "anatomysensei-lymph",
+      "url": "https://anatomysensei.com/anatomy/lymphatic-system/",
+      "targets": [
+        "regional lymph node groups"
+      ],
+      "reportedLicense": "Page cites BP3D BY-SA 2.1 JP and Z-Anatomy BY-SA 4.0; exact asset terms unverified",
+      "hold": [
+        "no lymphatic vessels or thoracic duct according to page",
+        "download and node provenance not verified"
+      ]
+    },
+    {
+      "id": "innerscene-lymphatic-figure",
+      "url": "https://www.innerscene.com/tools/library/3d-parts/lymphatic-system-figure-f810172c",
+      "reportedLicense": "CC0 per item page",
+      "reportedSize": "2.3 MB",
+      "hold": [
+        "educational figure only; scan-based anatomical origin not established",
+        "per-node labels, vessel continuity and clinical accuracy unknown",
+        "no replacement or atlas import"
+      ]
+    },
+    {
+      "id": "hra-lymph",
+      "url": "https://humanatlas.io/vccf",
+      "scope": "Lymph Vasculature v1.5 ASCT+B CSV; not GLB",
+      "hold": [
+        "metadata only for vessel network; retain individual node references separately"
+      ]
+    },
+    {
+      "id": "open3dmodel-limb",
+      "url": "https://anatomytool.org/open3dmodel",
+      "secondaryEvidence": "https://github.com/benben000000/anatomy-game/blob/main/docs/open3dmodel-license-and-attribution.md",
+      "hold": [
+        "third-party report indicates upper/lower limb packs and unresolved license instrument",
+        "publisher asset bytes and terms not independently verified"
+      ]
+    },
+    {
+      "id": "umcg-lymph-overview",
+      "url": "https://edusources.nl/en/materials/oai%3Aanatomytool.org%3A59526?from=%2Fsearch%3Fsearch_text%3DCisterna%2Bchyli",
+      "reportedLicense": "CC BY-NC-SA",
+      "status": "EXCLUDE_COMMERCIAL"
+    }
+  ],
+  "gates": {
+    "exactAssetBytes": false,
+    "commercialRightsPerAsset": false,
+    "clinicalValidation": false,
+    "registrationValidated": false,
+    "wholeBodyLymphaticVesselContinuity": false
+  }
+}
