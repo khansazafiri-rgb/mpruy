@@ -15,7 +15,7 @@ export function parsePointer(s){
  const m=s.match(/^version https:\/\/git-lfs\.github\.com\/spec\/v1\r?\noid sha256:([a-f0-9]{64})\r?\nsize ([1-9]\d*)\r?\n?$/);
  assert(m,'Not an exact LFS pointer');const size=Number(m[2]);assert(Number.isSafeInteger(size)&&size<=32*1024*1024,'LFS size limit');return {sha256:m[1],size};
 }
-export function runMirror(inputDoc=null){
+export function runMirror(inputDoc=null,{allowHeld=false}={}){
  const local=path.join(root,'local-data');fs.mkdirSync(local,{recursive:true,mode:0o700});assert(fs.realpathSync(local)===local);
  const q=path.join(local,'licensing-quarantine');fs.mkdirSync(q,{recursive:true,mode:0o700});assert(fs.realpathSync(q)===q);
  const out=fs.mkdtempSync(path.join(q,'bp3d43-mirror-audit-'));fs.chmodSync(out,0o700);
@@ -46,7 +46,7 @@ export function runMirror(inputDoc=null){
    }catch(e){results.push({...r,status:'HOLD',reason:String(e.message).slice(0,400)});}
   }
   const report={schema:1,mirror,commit,manifestSHA256:sha(manifest),results,passed:results.filter(r=>r.status==='EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH').length,held:results.filter(r=>r.status==='HOLD').length,freshPublisherVerified:false,clinicalValidation:false,registrationValidated:false,geometryPublished:0,publicRelease:'NO_GO'};
-  console.log('BP3D43 MIRROR GEOMETRY AUDIT',JSON.stringify(report));assert(report.held===0&&report.passed===rows.length,'Mirror geometry held');return report;
+  console.log('BP3D43 MIRROR GEOMETRY AUDIT',JSON.stringify(report));if(!allowHeld)assert(report.held===0&&report.passed===rows.length,'Mirror geometry held');return report;
  }finally{fs.rmSync(out,{recursive:true,force:true});}
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))runMirror();
