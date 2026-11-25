@@ -4,6 +4,9 @@ on:
     branches: [feat/atlas-publication-prep-20261124]
     paths:
       - 'scripts/intake-bp3d43-priority-elements*'
+      - 'scripts/load-bp3d43-private-elements.mjs'
+      - 'scripts/test-bp3d43-local-intake.mjs'
+      - 'licensing/atlas-publication/bp3d43-dual-source-audit-20261125.json'
       - 'scripts/audit-bp3d43-mirror-elements*'
       - 'scripts/independent-bp3d-export.mjs'
       - 'scripts/audit-bp3d-publication-geometry.mjs'
@@ -27,6 +30,8 @@ jobs:
         run: node --test scripts/intake-bp3d43-priority-elements.test.mjs scripts/independent-bp3d-export.test.mjs scripts/audit-bp3d-publication-geometry.test.mjs scripts/audit-bp3d43-mirror-elements.test.mjs
       - name: Obtain and replay exact publisher elements in quarantine
         run: node scripts/intake-bp3d43-priority-elements.mjs
+      - name: Verify actual private loader and reference HTTP routes
+        run: node scripts/test-bp3d43-local-intake.mjs
       - name: Independent pinned mirror audit (does not waive publisher failure)
         if: ${{ !cancelled() }}
         run: node scripts/audit-bp3d43-mirror-elements.mjs
