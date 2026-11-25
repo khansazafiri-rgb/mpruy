@@ -11,13 +11,14 @@ const read=(folder,name,max=64*1024*1024)=>{
  assert(fs.realpathSync(f)===f&&fs.statSync(f).isFile()&&fs.statSync(f).size<=max,'Invalid private file');
  return fs.readFileSync(f);
 };
-export function load43Elements(privateRoot,folderName,evidence){
+export function load43Elements(privateRoot,folderName,evidence,expectedCount=12){
+ assert([12,28].includes(expectedCount));
  assert(/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(folderName),'Explicit local acquisition folder required');
  assert(fs.realpathSync(privateRoot)===privateRoot&&path.basename(privateRoot)==='licensing-quarantine');
  const folder=path.join(privateRoot,folderName);assert(fs.realpathSync(folder)===folder);
- assert(evidence.schema===1&&evidence.publicRelease==='NO_GO'&&evidence.clinicalValidation===false&&evidence.registrationValidated===false&&evidence.geometryPublished===0&&evidence.matches?.length===12);
+ assert(evidence.schema===1&&evidence.publicRelease==='NO_GO'&&evidence.clinicalValidation===false&&evidence.registrationValidated===false&&evidence.geometryPublished===0&&evidence.matches?.length===expectedCount);
  const report=JSON.parse(read(folder,'report.json',1024*1024));
- assert(report.version==='4.3'&&report.publicRelease==='NO_GO'&&report.registrationValidated===false&&report.clinicalValidation===false&&report.geometryPublished===0&&report.held===0&&report.parsed===12&&report.results?.length===12);
+ assert(report.version==='4.3'&&report.publicRelease==='NO_GO'&&report.registrationValidated===false&&report.clinicalValidation===false&&report.geometryPublished===0&&report.held===0&&report.parsed===expectedCount&&report.results?.length===expectedCount);
  assert(report.manifestSHA256===evidence.publisher.manifestSHA256&&sha(read(folder,'FMA2Obj.txt'))===report.manifestSHA256);
  const ids=new Set(),assets=new Map(),items=[];
  for(const proof of evidence.matches){
@@ -33,7 +34,7 @@ export function load43Elements(privateRoot,folderName,evidence){
   items.push({id,fj,bpId:bp,fmaId:fma,name,triangles,source:'BodyParts3D 4.3',scope:'SINGLE_SOURCE_ELEMENT',coordinateFrame:'native-4.3-not-registered',sourceLicense:'CC-BY-SA-2.1-JP (reported; version-specific review pending)',clinicalValidation:false,registrationValidated:false,approvedForDistribution:false,rawSHA256,glbSHA256:publisherGLBSHA256});
   assets.set(id,{file:path.join(folder,fj+'.glb'),sha256:publisherGLBSHA256,bytes:glb.length});
  }
- assert(assets.size===12);
+ assert(assets.size===expectedCount);
  return {inventory:{schema:1,publicRelease:'NO_GO',clinicalValidation:false,registrationValidated:false,scope:'Separate source elements only; no whole-body alignment or full concept claim',items},assets};
 }
 
@@ -54,4 +55,19 @@ export function serve43Reference(req,res,registry){
   const bytes=fs.readFileSync(asset.file);assert(sha(bytes)===asset.sha256,'Audited asset changed');
   return send(200,bytes,'model/gltf-binary');
  }catch{return send(404,'Reference unavailable');}
+}
+
+export function combine43Registries(registries){
+ assert(registries.length>=1&&registries.length<=2);
+ const items=[],assets=new Map(),fjs=new Set(),hashes=new Set();
+ for(const registry of registries){
+  assert(registry.inventory.publicRelease==='NO_GO'&&registry.inventory.registrationValidated===false&&registry.inventory.clinicalValidation===false&&registry.assets.size===registry.inventory.items.length);
+  for(const e of registry.inventory.items){
+   const a=registry.assets.get(e.id);
+   assert(a&&a.sha256===e.glbSHA256&&e.approvedForDistribution===false&&e.registrationValidated===false&&e.clinicalValidation===false&&!assets.has(e.id)&&!fjs.has(e.fj)&&!hashes.has(e.rawSHA256),'Repeated or invalid source element');
+   fjs.add(e.fj);hashes.add(e.rawSHA256);items.push(e);assets.set(e.id,a);
+  }
+ }
+ assert([12,28,40].includes(items.length));
+ return {inventory:{schema:1,publicRelease:'NO_GO',registrationValidated:false,clinicalValidation:false,scope:'Separate 4.3 source elements, not registered body geometry',items},assets};
 }

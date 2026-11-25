@@ -1,4 +1,4 @@
-import {load43Elements,serve43Reference} from './load-bp3d43-private-elements.mjs';
+import {load43Elements,combine43Registries,serve43Reference} from './load-bp3d43-private-elements.mjs';
 // Independent viewer rehearsal. No copy of private model bytes into dist/public.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -27,6 +27,7 @@ const app=path.join(root,'apps/atlas-independent');
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
 const folder=process.argv[2]||'';
 const source43Args=process.argv.filter(x=>x.startsWith('--bp3d43-folder='));assert(source43Args.length<=1,'One explicit 4.3 folder only');
+const gap43Args=process.argv.filter(x=>x.startsWith('--bp3d43-gap-folder='));assert(gap43Args.length<=1,'One explicit gap folder only');
 const independent=/^independent-source-review-[A-Za-z0-9_-]+$/.test(folder);
 assert(independent||/^z-anatomy-native-preview-[A-Za-z0-9_-]+$/.test(folder),'Explicit private preview folder required');
 let manifest,models,review,sourcePack;
@@ -37,8 +38,10 @@ else{
  manifest={schema:1,mode:'private-review',publicRelease:'NO_GO',sourceFrame:inv.sourceFrame,entries:inv.converted.map(e=>({id:e.id,name:e.name,group:e.group,regions:e.privateAtlasMeta.regions,layer:e.privateAtlasMeta.layer,path:'models/'+e.id+'.glb',approvedForDistribution:false}))};
  models=new Map(inv.converted.map(e=>['/anatomy/viewer/models/'+e.id+'.glb',path.join(pack,e.modelPath)]));
 }
-assert(!source43Args.length||independent,'4.3 reference requires independent private preview');
-const source43=source43Args.length?load43Elements(privateRoot,source43Args[0].slice('--bp3d43-folder='.length),JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/bp3d43-dual-source-audit-20261125.json'),'utf8'))):null;
+assert(!(source43Args.length||gap43Args.length)||independent,'4.3 reference requires independent private preview');
+const source43Registries=[];
+for(const [args,flag,file,count] of [[source43Args,'--bp3d43-folder=','bp3d43-dual-source-audit-20261125.json',12],[gap43Args,'--bp3d43-gap-folder=','bp3d43-gap-batch-dual-source-audit-20261125.json',28]])if(args.length)source43Registries.push(load43Elements(privateRoot,args[0].slice(flag.length),JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),count));
+const source43=source43Registries.length?combine43Registries(source43Registries):null;
 const broadRecovery=process.argv.includes('--broad-recovery');
 const contextRecovery=process.argv.includes('--context-recovery');
 assert(!contextRecovery||independent&&broadRecovery,'Context recovery requires explicit broad independent preview');
@@ -137,7 +140,7 @@ try{
  await Promise.all(Array.from({length:4},async()=>{while(queue.length){const route=queue.shift(),response=await fetch(baseURL+route,{method:'HEAD'});assert(response.ok&&response.headers.get('content-type')==='model/gltf-binary','Model route failed: '+route);checked++;}}));
  for(const route of ['/anatomy/viewer/models/nervous.glb','/anatomy/viewer/models/visceral.glb','/anatomy/viewer/bp3d/inventory.json','/anatomy/4d-lab/','/local-data/','/anatomy/viewer/%2e%2e/private'])assert.equal((await fetch(baseURL+route,{method:'HEAD'})).status,404);
  const hraResponse=await fetch(baseURL+'/anatomy/viewer/hra-reference/inventory.json');assert(hraResponse.ok&& (await hraResponse.json()).items.length===hra.assets.size);
- let source43Routes=0;if(source43){const rr=await fetch(baseURL+'/anatomy/viewer/bp3d43-reference/inventory.json');assert(rr.ok&&(await rr.json()).items.length===12);for(const [id,a] of source43.assets){const u=baseURL+'/anatomy/viewer/bp3d43-reference/'+id+'.glb';const r=await fetch(u);assert(r.ok&&r.headers.get('content-type')==='model/gltf-binary'&&Buffer.from(await r.arrayBuffer()).length===a.bytes);source43Routes++;}assert.equal((await fetch(baseURL+'/anatomy/viewer/bp3d43-reference/unknown.glb')).status,404);}
+ let source43Routes=0;if(source43){const rr=await fetch(baseURL+'/anatomy/viewer/bp3d43-reference/inventory.json');assert(rr.ok&&(await rr.json()).items.length===source43.assets.size);for(const [id,a] of source43.assets){const u=baseURL+'/anatomy/viewer/bp3d43-reference/'+id+'.glb';const r=await fetch(u);assert(r.ok&&r.headers.get('content-type')==='model/gltf-binary'&&Buffer.from(await r.arrayBuffer()).length===a.bytes);source43Routes++;}assert.equal((await fetch(baseURL+'/anatomy/viewer/bp3d43-reference/unknown.glb')).status,404);}
   let hraRoutes=0;for(const id of hra.assets.keys()){const r=await fetch(baseURL+'/anatomy/viewer/hra-reference/'+id+'.glb',{method:'HEAD'});assert(r.ok&&r.headers.get('content-type')==='model/gltf-binary','HRA route failed: '+id);hraRoutes++;}
  let hostQC='NOT_APPLICABLE';
  if(independent){
