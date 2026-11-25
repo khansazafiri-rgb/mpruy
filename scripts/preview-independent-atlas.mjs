@@ -37,7 +37,7 @@ const originalUI=process.argv.includes('--original-ui');
 assert(!originalUI||independent,'Original shell only in explicit independent private comparison');
 assert(!priorityEnabled||independent,'Priority recovery requires an independent source pack');
 const elementCatalog=independent&&(originalUI||priorityEnabled)?createElementCatalog(sourcePack):null;
-const priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack,{broad:broadRecovery}):null;
+const priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack,{broad:broadRecovery,coveredFma:elementCatalog?.items.map(e=>e.fmaId)||[]}):null;
 const req=createRequire(path.join(app,'package.json'));
 const {build}=await import(pathToFileURL(req.resolve('vite')).href);
 const out=fs.mkdtempSync(path.join(privateRoot,'atlas-independent-review-'));
