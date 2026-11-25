@@ -257,7 +257,7 @@ mountReferences(base);
 originalUI=mountOriginalShell({
  groups,entries:()=>[...byId.values()],color:g=>'#'+colors[g].toString(16).padStart(6,'0'),
  state:()=>({...study,selected,ready:originalReady}),
- status:()=>$('count').textContent+' · review privat',
+ status:()=>$('count').textContent+' · '+selectionEntries.length+' konsep seleksi · review privat'+(['partial','error'].includes(hostState.state)?' · '+hostState.message:''),
  snapshot:()=>({study:structuredClone(study),presentation:structuredClone(presentation),selectedId:selected?.id||null}),
  restore:s=>{searchRevision++;study=structuredClone(s.study);presentation=structuredClone(s.presentation);select(byId.get(s.selectedId)||null);syncControls();syncPresentationControls();updateAppearance();refresh(true);},
  reset:()=>$('reset').click(),all:()=>$('allSystems').click(),references:()=>$('openReferences').click(),
