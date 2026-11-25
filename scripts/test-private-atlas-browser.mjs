@@ -12,11 +12,12 @@ import {encodeNativeGlb} from './independent-bp3d-export.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 let real43=null,serve43=null;
-if(process.env.ATLAS_TEST_REAL43==='1'){
+if(['1','gap'].includes(process.env.ATLAS_TEST_REAL43)){
  const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
  assert.equal(folders.length,1,'Fresh single source acquisition required');
  const m=await import('./load-bp3d43-private-elements.mjs');serve43=m.serve43Reference;
- real43=m.load43Elements(q,folders[0],JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/bp3d43-dual-source-audit-20261125.json'),'utf8')));
+ const gap=process.env.ATLAS_TEST_REAL43==='gap',file=gap?'bp3d43-gap-batch-dual-source-audit-20261125.json':'bp3d43-dual-source-audit-20261125.json';
+ real43=m.load43Elements(q,folders[0],JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),gap?28:12);
 }
 const require=createRequire(import.meta.url),appRequire=createRequire(path.join(app,'package.json'));
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
@@ -100,8 +101,8 @@ try{
  if(real43){
   await page.getByRole('button',{name:'BP3D 4.3',exact:true}).click();
   const dialog=page.locator('#referenceDialog'),viewport=dialog.locator('#referenceViewport'),select=dialog.locator('#referenceSelect');
-  await dialog.locator('#referenceStatus').filter({hasText:'12 kandidat referensi tersedia'}).waitFor();
-  assert.equal(await select.locator('option').count(),12);
+  await dialog.locator('#referenceStatus').filter({hasText:real43.assets.size+' kandidat referensi tersedia'}).waitFor();
+  assert.equal(await select.locator('option').count(),real43.assets.size);
   for(const e of real43.inventory.items){
    await select.selectOption(e.id);
    await dialog.locator('#referenceLoad').click();
@@ -113,7 +114,7 @@ try{
   await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});
   await page.waitForFunction(()=>document.querySelectorAll('#referenceViewport canvas').length===0);
   await waitCounts(3,1);
-  console.log('BP3D43 REAL BROWSER PASS: 12 actual publisher GLBs rendered with audited triangle counts; body inventory unchanged.');
+  console.log('BP3D43 REAL BROWSER PASS: '+real43.assets.size+' actual publisher GLBs rendered with audited triangle counts; body inventory unchanged.');
  }
  await page.setViewportSize({width:390,height:844});
  await page.locator('#searchOpen').click();
