@@ -1,3 +1,4 @@
+import {load43Elements,serve43Reference} from './load-bp3d43-private-elements.mjs';
 // Independent viewer rehearsal. No copy of private model bytes into dist/public.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -25,6 +26,7 @@ const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
 const folder=process.argv[2]||'';
+const source43Args=process.argv.filter(x=>x.startsWith('--bp3d43-folder='));assert(source43Args.length<=1,'One explicit 4.3 folder only');
 const independent=/^independent-source-review-[A-Za-z0-9_-]+$/.test(folder);
 assert(independent||/^z-anatomy-native-preview-[A-Za-z0-9_-]+$/.test(folder),'Explicit private preview folder required');
 let manifest,models,review,sourcePack;
@@ -35,6 +37,8 @@ else{
  manifest={schema:1,mode:'private-review',publicRelease:'NO_GO',sourceFrame:inv.sourceFrame,entries:inv.converted.map(e=>({id:e.id,name:e.name,group:e.group,regions:e.privateAtlasMeta.regions,layer:e.privateAtlasMeta.layer,path:'models/'+e.id+'.glb',approvedForDistribution:false}))};
  models=new Map(inv.converted.map(e=>['/anatomy/viewer/models/'+e.id+'.glb',path.join(pack,e.modelPath)]));
 }
+assert(!source43Args.length||independent,'4.3 reference requires independent private preview');
+const source43=source43Args.length?load43Elements(privateRoot,source43Args[0].slice('--bp3d43-folder='.length),JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/bp3d43-dual-source-audit-20261125.json'),'utf8'))):null;
 const broadRecovery=process.argv.includes('--broad-recovery');
 const contextRecovery=process.argv.includes('--context-recovery');
 assert(!contextRecovery||independent&&broadRecovery,'Context recovery requires explicit broad independent preview');
@@ -93,6 +97,7 @@ const server=createServer((request,response)=>{
  if(independent&&p==='/anatomy/viewer/MODEL-ATTRIBUTIONS.json')return send(200,JSON.stringify(sourcePack.attributions),mime['.json']);
  if(p==='/anatomy/viewer/inventory.json')return send(200,JSON.stringify(manifest),mime['.json']);
  if(p.startsWith('/anatomy/viewer/hra-reference/')&&serveHraReference(request,response,hra))return;
+ if(p.startsWith('/anatomy/viewer/bp3d43-reference/')&&serve43Reference(request,response,source43))return;
  if(coverage&&p==='/anatomy/viewer/learning-coverage.json')return send(200,JSON.stringify(coverage),mime['.json']);
  if(elementCatalog&&p==='/anatomy/viewer/element-selection.json')return send(200,JSON.stringify(elementCatalog),mime['.json']);
  if(priority&&p==='/anatomy/viewer/priority-recovery/inventory.json')return send(200,JSON.stringify({schema:1,items:recoveryItems,contextMode:context?.mode||null,publicRelease:'NO_GO',registrationValidated:false,clinicalValidation:false}),mime['.json']);
@@ -132,7 +137,8 @@ try{
  await Promise.all(Array.from({length:4},async()=>{while(queue.length){const route=queue.shift(),response=await fetch(baseURL+route,{method:'HEAD'});assert(response.ok&&response.headers.get('content-type')==='model/gltf-binary','Model route failed: '+route);checked++;}}));
  for(const route of ['/anatomy/viewer/models/nervous.glb','/anatomy/viewer/models/visceral.glb','/anatomy/viewer/bp3d/inventory.json','/anatomy/4d-lab/','/local-data/','/anatomy/viewer/%2e%2e/private'])assert.equal((await fetch(baseURL+route,{method:'HEAD'})).status,404);
  const hraResponse=await fetch(baseURL+'/anatomy/viewer/hra-reference/inventory.json');assert(hraResponse.ok&& (await hraResponse.json()).items.length===hra.assets.size);
- let hraRoutes=0;for(const id of hra.assets.keys()){const r=await fetch(baseURL+'/anatomy/viewer/hra-reference/'+id+'.glb',{method:'HEAD'});assert(r.ok&&r.headers.get('content-type')==='model/gltf-binary','HRA route failed: '+id);hraRoutes++;}
+ let source43Routes=0;if(source43){const rr=await fetch(baseURL+'/anatomy/viewer/bp3d43-reference/inventory.json');assert(rr.ok&&(await rr.json()).items.length===12);for(const [id,a] of source43.assets){const u=baseURL+'/anatomy/viewer/bp3d43-reference/'+id+'.glb';const r=await fetch(u);assert(r.ok&&r.headers.get('content-type')==='model/gltf-binary'&&Buffer.from(await r.arrayBuffer()).length===a.bytes);source43Routes++;}assert.equal((await fetch(baseURL+'/anatomy/viewer/bp3d43-reference/unknown.glb')).status,404);}
+  let hraRoutes=0;for(const id of hra.assets.keys()){const r=await fetch(baseURL+'/anatomy/viewer/hra-reference/'+id+'.glb',{method:'HEAD'});assert(r.ok&&r.headers.get('content-type')==='model/gltf-binary','HRA route failed: '+id);hraRoutes++;}
  let hostQC='NOT_APPLICABLE';
  if(independent){
   for(const p of ['/anatomy','/anatomy/explore','/anatomy/library','/anatomy/system/nervous',...(manifest.entries.length?['/anatomy/structure/'+manifest.entries[0].id]:[])]){const r=await fetch(baseURL+p);assert(r.ok&&r.headers.get('content-type').startsWith('text/html'),'Host route failed: '+p);}
@@ -152,7 +158,7 @@ try{
   const a=await fetch(baseURL+'/anatomy/viewer/priority-recovery/attributions.json');assert(a.ok&&(await a.json()).items.length===priority.items.length);
   assert.equal((await fetch(baseURL+'/anatomy/viewer/priority-recovery/not-approved.glb')).status,404);
  }
- const report={schema:1,recoveryReused:priority?.reused??null,recoveryFolder:priority?.folder??null,learningCoverage:coverage?{targets:coverage.targets,systems:Object.fromEntries(Object.entries(coverage.systems).map(([g,s])=>[g,{targets:s.targets,counts:s.counts}])),file:coverageFile}:null,thumbnailQC,elementSelectionConcepts:elementCatalog?.items.length||0,contextCandidateModels:contextIds.size,contextHeld:context?.held.length||0,originalUI:originalShell?.mode||'INDEPENDENT_PROTOTYPE',priorityModels:priority?.items.length||0,httpPriorityRoutesVerified:priorityRoutes,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
+ const report={schema:1,recoveryReused:priority?.reused??null,recoveryFolder:priority?.folder??null,learningCoverage:coverage?{targets:coverage.targets,systems:Object.fromEntries(Object.entries(coverage.systems).map(([g,s])=>[g,{targets:s.targets,counts:s.counts}])),file:coverageFile}:null,thumbnailQC,elementSelectionConcepts:elementCatalog?.items.length||0,contextCandidateModels:contextIds.size,contextHeld:context?.held.length||0,originalUI:originalShell?.mode||'INDEPENDENT_PROTOTYPE',priorityModels:priority?.items.length||0,httpPriorityRoutesVerified:priorityRoutes,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,bp3d43ReferenceElements:source43?.assets.size||0,http43RoutesVerified:source43Routes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
  const f=path.join(privateRoot,folder,'publication-independent-http-qc.json'),tmp=f+'.'+process.pid+'.tmp';fs.writeFileSync(tmp,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,f);
  console.log('INDEPENDENT HTTP QC',JSON.stringify(report));
 }catch(error){server.close();throw error;}
