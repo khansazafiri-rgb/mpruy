@@ -261,7 +261,7 @@ async function init(){
 mountReferences(base);
 originalUI=mountOriginalShell({
  groups,entries:()=>[...byId.values()],color:g=>'#'+colors[g].toString(16).padStart(6,'0'),
- state:()=>({...study,selected,ready:originalReady}),
+ state:()=>({...study,selected,ready:originalReady,loading:inflight.size>0,error:hostState.state==='error',visibleMeshes:[...cache.values()].reduce((n,o)=>n+(o.visible?o.userData.meshes.filter(m=>m.visible).length:0),0)}),
  status:()=>$('count').textContent+' · '+selectionEntries.length+' konsep seleksi · review privat'+(['partial','error'].includes(hostState.state)?' · '+hostState.message:''),
  snapshot:()=>({study:structuredClone(study),presentation:structuredClone(presentation),selectedId:selected?.id||null}),
  restore:s=>{searchRevision++;study=structuredClone(s.study);presentation=structuredClone(s.presentation);select(byId.get(s.selectedId)||null);syncControls();syncPresentationControls();updateAppearance();refresh(true);},
