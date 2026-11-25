@@ -18,6 +18,7 @@ import {buildPriorityRecovery} from './independent-atlas-priority-recovery.mjs';
 import {attachOriginalShell} from './private-atlas-original-shell.mjs';
 import {createElementCatalog} from './independent-atlas-element-catalog.mjs';
 import {planContextRecovery} from './independent-atlas-context-recovery.mjs';
+import {buildThumbnailRecords,createThumbnailService} from './independent-atlas-thumbnails.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
@@ -44,6 +45,7 @@ const priority=priorityEnabled?buildPriorityRecovery(privateRoot,sourcePack,{bro
 const context=contextRecovery?planContextRecovery(sourcePack.inventory.bodyModels,priority.report.results,elementCatalog?.items.map(e=>e.fmaId)||[]):null;
 const contextIds=new Set(context?.accepted.map(x=>x.id)||[]);
 const recoveryItems=priority?.items.map(e=>({...e,contextCandidate:contextIds.has(e.id)}))||[];
+const thumbnails=independent?createThumbnailService(buildThumbnailRecords(manifest.entries,elementCatalog?.items,recoveryItems,models,sourcePack.inventory.bodyModels,priority?.models||new Map())):null;
 const req=createRequire(path.join(app,'package.json'));
 const {build}=await import(pathToFileURL(req.resolve('vite')).href);
 const out=fs.mkdtempSync(path.join(privateRoot,'atlas-independent-review-'));
@@ -89,6 +91,11 @@ const server=createServer((request,response)=>{
  if(elementCatalog&&p==='/anatomy/viewer/element-selection.json')return send(200,JSON.stringify(elementCatalog),mime['.json']);
  if(priority&&p==='/anatomy/viewer/priority-recovery/inventory.json')return send(200,JSON.stringify({schema:1,items:recoveryItems,contextMode:context?.mode||null,publicRelease:'NO_GO',registrationValidated:false,clinicalValidation:false}),mime['.json']);
  if(priority&&p==='/anatomy/viewer/priority-recovery/attributions.json')return send(200,JSON.stringify({publicRelease:'NO_GO',items:priority.report.results.filter(r=>r.status==='EXPORTED_ISOLATED_CONCEPT')}),mime['.json']);
+ const thumb=p.match(/^\/anatomy\/viewer\/private-thumbnails\/((?:bp|sel)-[a-f0-9]{24})\.png$/);
+ if(thumb&&thumbnails?.has(thumb[1])){
+  if(request.method==='HEAD')return send(200,undefined,'image/png');
+  thumbnails.get(thumb[1]).then(bytes=>{if(!response.destroyed)send(200,bytes,'image/png');}).catch(()=>{if(!response.destroyed)send(503,'Thumbnail unavailable');});return;
+ }
  const supplemental=priority?.models.get(p);
  if(supplemental){
   try{assert(fs.realpathSync(supplemental.file)===supplemental.file);const info=fs.statSync(supplemental.file);assert(info.isFile()&&info.size===supplemental.bytes);
@@ -129,6 +136,8 @@ try{
  }
  if(originalUI){const h=await fetch(baseURL+'/anatomy/viewer/');assert(h.ok&&(await h.text()).includes('originalShellTemplate'));const s=await fetch(baseURL+'/anatomy/viewer/assets/original-shell-private.css');assert(s.ok&&(await s.text()).includes('.atlas-systembar'));}
  if(elementCatalog){const r=await fetch(baseURL+'/anatomy/viewer/element-selection.json');assert(r.ok&& (await r.json()).items.length===elementCatalog.items.length);}
+ let thumbnailQC='NOT_APPLICABLE';
+ if(thumbnails&&manifest.entries.length){const url=baseURL+'/anatomy/viewer/private-thumbnails/'+manifest.entries[0].id+'.png';const r=await fetch(url);assert(r.ok&&r.headers.get('content-type')==='image/png');assert.equal(Buffer.from(await r.arrayBuffer()).subarray(0,8).toString('hex'),'89504e470d0a1a0a');assert.equal((await fetch(baseURL+'/anatomy/viewer/private-thumbnails/legacy.png')).status,404);thumbnailQC='PASS_SAMPLE';}
  let priorityRoutes=0;
  if(priority){
   const r=await fetch(baseURL+'/anatomy/viewer/priority-recovery/inventory.json');assert(r.ok&& (await r.json()).items.length===priority.items.length);
@@ -136,7 +145,7 @@ try{
   const a=await fetch(baseURL+'/anatomy/viewer/priority-recovery/attributions.json');assert(a.ok&&(await a.json()).items.length===priority.items.length);
   assert.equal((await fetch(baseURL+'/anatomy/viewer/priority-recovery/not-approved.glb')).status,404);
  }
- const report={schema:1,elementSelectionConcepts:elementCatalog?.items.length||0,contextCandidateModels:contextIds.size,contextHeld:context?.held.length||0,originalUI:originalShell?.mode||'INDEPENDENT_PROTOTYPE',priorityModels:priority?.items.length||0,httpPriorityRoutesVerified:priorityRoutes,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
+ const report={schema:1,thumbnailQC,elementSelectionConcepts:elementCatalog?.items.length||0,contextCandidateModels:contextIds.size,contextHeld:context?.held.length||0,originalUI:originalShell?.mode||'INDEPENDENT_PROTOTYPE',priorityModels:priority?.items.length||0,httpPriorityRoutesVerified:priorityRoutes,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
  const f=path.join(privateRoot,folder,'publication-independent-http-qc.json'),tmp=f+'.'+process.pid+'.tmp';fs.writeFileSync(tmp,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,f);
  console.log('INDEPENDENT HTTP QC',JSON.stringify(report));
 }catch(error){server.close();throw error;}
