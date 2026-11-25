@@ -12,15 +12,15 @@ import {encodeNativeGlb} from './independent-bp3d-export.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 let real43=null,serve43=null;
-if(['1','gap','combined'].includes(process.env.ATLAS_TEST_REAL43)){
+if(['1','gap','combined','expanded'].includes(process.env.ATLAS_TEST_REAL43)){
  const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
- const mode=process.env.ATLAS_TEST_REAL43,counts=mode==='combined'?[12,28]:mode==='gap'?[28]:[12];
+ const mode=process.env.ATLAS_TEST_REAL43,counts=mode==='expanded'?[12,28,32]:mode==='combined'?[12,28]:mode==='gap'?[28]:[12];
  assert.equal(folders.length,counts.length,'Fresh exact source acquisitions required');
  const m=await import('./load-bp3d43-private-elements.mjs');serve43=m.serve43Reference;
  const registries=counts.map(count=>{
   const matched=folders.filter(f=>JSON.parse(fs.readFileSync(path.join(q,f,'report.json'),'utf8')).parsed===count);
   assert.equal(matched.length,1,'Expected one acquisition of '+count+' elements');
-  const file=count===28?'bp3d43-gap-batch-dual-source-audit-20261125.json':'bp3d43-dual-source-audit-20261125.json';
+  const file=count===32?'bp3d43-nerves32-dual-source-audit-20261125.json':count===28?'bp3d43-gap-batch-dual-source-audit-20261125.json':'bp3d43-dual-source-audit-20261125.json';
   return m.load43Elements(q,matched[0],JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),count);
  });
  real43=m.combine43Registries(registries);
@@ -109,6 +109,15 @@ try{
   const dialog=page.locator('#referenceDialog'),viewport=dialog.locator('#referenceViewport'),select=dialog.locator('#referenceSelect');
   await dialog.locator('#referenceStatus').filter({hasText:real43.assets.size+' kandidat referensi tersedia'}).waitFor();
   assert.equal(await select.locator('option').count(),real43.assets.size);
+  if([40,72].includes(real43.assets.size)){
+   const region=dialog.locator('#referenceRegionTopic'),system=dialog.locator('#referenceSystemTopic'),search=dialog.locator('#referenceSearch');
+   await region.selectOption('neck-upper-limb');await system.selectOption('nervous');assert.equal(await select.locator('option').count(),6);
+   await search.fill('FJ4273');assert.equal(await select.locator('option').count(),1);
+   await search.fill('');await region.selectOption('foot');assert.equal(await select.locator('option').count(),0);assert(await dialog.locator('#referenceLoad').isDisabled());
+   await region.selectOption('all');await system.selectOption('ligament');assert.equal(await select.locator('option').count(),16);
+   await system.selectOption('all');assert.equal(await select.locator('option').count(),real43.assets.size);
+   console.log('BP3D43 TOPIC FILTER PASS: exact source-ID search, region/system intersection and empty-state load block.');
+  }
   for(const e of real43.inventory.items){
    await select.selectOption(e.id);
    await dialog.locator('#referenceLoad').click();
