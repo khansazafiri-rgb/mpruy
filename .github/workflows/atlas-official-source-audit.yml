@@ -13,7 +13,7 @@ concurrency:
 jobs:
   source:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
@@ -23,4 +23,4 @@ jobs:
           node-version: 22
       - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
       - name: Fresh publisher bytes and actual geometry replay
-        run: node scripts/audit-official-atlas-live-source.mjs
+        run: node scripts/audit-official-atlas-live-source.mjs --all-resolved
