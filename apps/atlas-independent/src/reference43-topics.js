@@ -1,6 +1,6 @@
 import {REFERENCE43_TOPIC_ROWS} from './reference43-topic-catalog.js';
 export const REGION_TOPICS={all:'Semua topik regio',neck:'Leher','head-neck':'Kepala dan leher','neck-upper-limb':'Leher dan ekstremitas atas','upper-limb':'Ekstremitas atas',spine:'Spinal',thorax:'Toraks',abdomen:'Abdomen',groin:'Inguinal',foot:'Kaki',multiregion:'Lintas regio',unknown:'Belum dipetakan'};
-export const SYSTEM_TOPICS={all:'Semua topik sistem',nervous:'Saraf',ligament:'Ligamen',vascular:'Vaskular',endocrine:'Endokrin',digestive:'Pencernaan',respiratory:'Respirasi',unknown:'Belum dipetakan'};
+export const SYSTEM_TOPICS={all:'Semua topik sistem',nervous:'Saraf',ligament:'Ligamen',cartilage:'Diskus dan kartilago',vascular:'Vaskular',endocrine:'Endokrin',digestive:'Pencernaan',respiratory:'Respirasi',unknown:'Belum dipetakan'};
 const rows=new Map(REFERENCE43_TOPIC_ROWS.map(r=>[r.fj,r]));
 export function referenceTopic(e){
  const r=rows.get(e?.fj);

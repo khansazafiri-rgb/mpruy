@@ -648,5 +648,392 @@ export const REFERENCE43_TOPIC_ROWS=[
     "rawSHA256": "97fbf447a823d44529a6f69a382395cad552bda6200a9ffa53d06c9f7b3724c2",
     "region": "upper-limb",
     "system": "nervous"
+  },
+  {
+    "fj": "FJ3202",
+    "bpId": "BP23556",
+    "fmaId": "FMA25058",
+    "name": "Intervertebral disk of axis",
+    "rawSHA256": "a00d34def49239402d52c4cf6c254570dff0792cbf9df89adf1c4285a14f5a64",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3203",
+    "bpId": "BP23395",
+    "fmaId": "FMA13501",
+    "name": "Intervertebral disk of fourth thoracic vertebra",
+    "rawSHA256": "3f7b88045dcf1ee6f7ac00f951d2f0c2a1fc89c63e77dd2f87ea8d8f88c12786",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3204",
+    "bpId": "BP23548",
+    "fmaId": "FMA13502",
+    "name": "Intervertebral disk of fifth thoracic vertebra",
+    "rawSHA256": "26383360a9ce7ab69998185e58ff11c8b6c5cc6deb4b2a6f33c1c5ee86856d5b",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3205",
+    "bpId": "BP23378",
+    "fmaId": "FMA13503",
+    "name": "Intervertebral disk of sixth thoracic vertebra",
+    "rawSHA256": "7ba98ac182ae384902306b9f811c85f37afa6f5831d52a085ed57d73c9a08597",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3206",
+    "bpId": "BP23588",
+    "fmaId": "FMA13504",
+    "name": "Intervertebral disk of seventh thoracic vertebra",
+    "rawSHA256": "d62bb5e51751735b1cbc61a116ddc914d7df397b42210332c2e8515a41f422d5",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3207",
+    "bpId": "BP23381",
+    "fmaId": "FMA13505",
+    "name": "Intervertebral disk of eighth thoracic vertebra",
+    "rawSHA256": "42ee1a498f882c99d6e8e7a68988daaecae8ba17cac0fec4abe2472c82523731",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3208",
+    "bpId": "BP23570",
+    "fmaId": "FMA13506",
+    "name": "Intervertebral disk of ninth thoracic vertebra",
+    "rawSHA256": "f3cb730a0db38b2c61227a1302136393bf3038d4298c5ba972968b47bf34dce4",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3209",
+    "bpId": "BP23730",
+    "fmaId": "FMA13507",
+    "name": "Intervertebral disk of tenth thoracic vertebra",
+    "rawSHA256": "21ce916d9e706032f7b40731206f94c131c1359c1a96be14adf71d3b04210508",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3210",
+    "bpId": "BP23504",
+    "fmaId": "FMA13508",
+    "name": "Intervertebral disk of eleventh thoracic vertebra",
+    "rawSHA256": "833ace3f03d5d510695a2b92e4d5c14ec31924a616786024efb152fd5a3d1745",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3211",
+    "bpId": "BP19656",
+    "fmaId": "FMA13509",
+    "name": "Intervertebral disk of twelfth thoracic vertebra",
+    "rawSHA256": "e441ca0b9ca0ba03f38ba21df5e59b5d1495e06920d9a3159f4fb66d22ee88df",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3212",
+    "bpId": "BP23645",
+    "fmaId": "FMA16033",
+    "name": "Intervertebral disk of first lumbar vertebra",
+    "rawSHA256": "dbb06d83aaa9db2ffb709734ad4e1bb87091a7d7766dc1ce8a9e23f3daa8f3e8",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3213",
+    "bpId": "BP23714",
+    "fmaId": "FMA13896",
+    "name": "Intervertebral disk of third cervical vertebra",
+    "rawSHA256": "941380d19e2be9b6cbf97ebe2f5cc3f47c656cbd961967665bc83ef94d3fe408",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3214",
+    "bpId": "BP23406",
+    "fmaId": "FMA16034",
+    "name": "Intervertebral disk of second lumbar vertebra",
+    "rawSHA256": "4f282d710c20d9e5df48897ce4eb4959f85f039053bbb4b61f440f2d508c58eb",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3215",
+    "bpId": "BP23492",
+    "fmaId": "FMA16035",
+    "name": "Intervertebral disk of third lumbar vertebra",
+    "rawSHA256": "acb6cc9e42c21395d01ffada9b7b76564818fefdf4787bd728ca216749793a37",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3216",
+    "bpId": "BP24073",
+    "fmaId": "FMA16036",
+    "name": "Intervertebral disk of fourth lumbar vertebra",
+    "rawSHA256": "74cbf4b6ec23fe9d4f57af85bf5f9c1e3a0376a3caa01ea6a3ef46eb223b1f1d",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3217",
+    "bpId": "BP23709",
+    "fmaId": "FMA16037",
+    "name": "Intervertebral disk of fifth lumbar vertebra",
+    "rawSHA256": "e1cb74e7c5031df0b0004833df43465ca502866cfb50dacdb31b647fc49b1035",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3218",
+    "bpId": "BP23423",
+    "fmaId": "FMA13897",
+    "name": "Intervertebral disk of fourth cervical vertebra",
+    "rawSHA256": "fc8ca687ae2db092cf7873d66974c89b0f3ae3818c854703f60e98068e0717f6",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3219",
+    "bpId": "BP23710",
+    "fmaId": "FMA13898",
+    "name": "Intervertebral disk of fifth cervical vertebra",
+    "rawSHA256": "bc5feec465f04f070de074bb2f6f9770473048d49f2518de6f7c93848b8d7cb0",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3220",
+    "bpId": "BP23991",
+    "fmaId": "FMA13899",
+    "name": "Intervertebral disk of sixth cervical vertebra",
+    "rawSHA256": "fc4330356dd0aa56c50bcb356303711cc9b7e96b2b7e30e7031547c83806d86a",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3221",
+    "bpId": "BP23990",
+    "fmaId": "FMA13900",
+    "name": "Intervertebral disk of seventh cervical vertebra",
+    "rawSHA256": "b766aa63a293d3de68c761ca4a4501d0278cfa5c4b7c481c24bc9fbe782e374b",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3222",
+    "bpId": "BP23623",
+    "fmaId": "FMA10458",
+    "name": "Intervertebral disk of first thoracic vertebra",
+    "rawSHA256": "f5c2af84b26e8bd1010f67c6ba2194bf54c3e541b6d089c114ce933ce7b641bb",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3223",
+    "bpId": "BP23787",
+    "fmaId": "FMA13495",
+    "name": "Intervertebral disk of second thoracic vertebra",
+    "rawSHA256": "e4f42fbb1ff973a61a566fb4a9ab4e0757f2f110544cc75eed6d3fbbf9a784df",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3224",
+    "bpId": "BP23785",
+    "fmaId": "FMA13500",
+    "name": "Intervertebral disk of third thoracic vertebra",
+    "rawSHA256": "fb5a2310f93e646d982c8cd75104df95aa5e4633a79f05342acd9ee4f64ec7a9",
+    "region": "spine",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3239",
+    "bpId": "BP21373",
+    "fmaId": "FMA8005",
+    "name": "Left first costal cartilage",
+    "rawSHA256": "5ae7390557de025f0be9a3044664d2996e442013688e27dfc18e323001eb32fb",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3242",
+    "bpId": "BP22752",
+    "fmaId": "FMA8031",
+    "name": "Left second costal cartilage",
+    "rawSHA256": "33ec240cf5e4f5dd11a5ee3b19ce2d026baa207650729be12134852a64b6a732",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3245",
+    "bpId": "BP22750",
+    "fmaId": "FMA8058",
+    "name": "Left third costal cartilage",
+    "rawSHA256": "bf21ca805673e90d2fa277bd369b1f9b427de0ad7aa8291144ec7248b3b689fe",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3248",
+    "bpId": "BP22751",
+    "fmaId": "FMA8167",
+    "name": "Left fourth costal cartilage",
+    "rawSHA256": "9b35ba20fb4eb7f2e9f71cb71b1d3fa0bce4fa132106b9186bf624f8993d7154",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3251",
+    "bpId": "BP21380",
+    "fmaId": "FMA8112",
+    "name": "Left fifth costal cartilage",
+    "rawSHA256": "46de52741e3407a108c40a584714afc0aa6201818ea4dab0fe162583d3c4bbcb",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3254",
+    "bpId": "BP21377",
+    "fmaId": "FMA8221",
+    "name": "Left sixth costal cartilage",
+    "rawSHA256": "53dfca2e5124c10f68f68cc4b2ef01c4edebc3124a5ed61fe06d46befa28ab68",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3255",
+    "bpId": "BP22753",
+    "fmaId": "FMA8275",
+    "name": "Left seventh costal cartilage",
+    "rawSHA256": "80a1b623c7d3805f51d141d783bc148f3e1a216b77620a2953ca940c00784528",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3333",
+    "bpId": "BP21366",
+    "fmaId": "FMA7875",
+    "name": "Right first costal cartilage",
+    "rawSHA256": "5c8d82a785fb34d753164a0d3f5368c82c84f06821d2e3e29bbe22080d2caf33",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3335",
+    "bpId": "BP21383",
+    "fmaId": "FMA7886",
+    "name": "Right second costal cartilage",
+    "rawSHA256": "98f173ff6aa109c173cf9401fe2843cce125fbe4c37dec3cdca20b51084d94d5",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3337",
+    "bpId": "BP21360",
+    "fmaId": "FMA7913",
+    "name": "Right third costal cartilage",
+    "rawSHA256": "fce39adfab01b0619df6143fc03da771e7be9e0dc2d253a0402784dead4679b1",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3339",
+    "bpId": "BP21410",
+    "fmaId": "FMA7976",
+    "name": "Right fourth costal cartilage",
+    "rawSHA256": "2e6f362cb2e2541cdd379e2d7286f5719c666e1d204076c302719b13978034ad",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3341",
+    "bpId": "BP21376",
+    "fmaId": "FMA8070",
+    "name": "Right fifth costal cartilage",
+    "rawSHA256": "7d6a9cf8835d7d58e44c1029b27612432786c258e77abe5b629e01627c5abb4f",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3343",
+    "bpId": "BP22071",
+    "fmaId": "FMA8194",
+    "name": "Right sixth costal cartilage",
+    "rawSHA256": "21254bf943da0b309de0f6719cbf1c09539a65545a5e706b068f1261452bcf84",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3345",
+    "bpId": "BP21381",
+    "fmaId": "FMA8248",
+    "name": "Right seventh costal cartilage",
+    "rawSHA256": "62db8ee22c64127930c5c3451dcd841267d49ff8add3294f10d7a9dad9ea5b84",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3667",
+    "bpId": "BP22463",
+    "fmaId": "FMA8491",
+    "name": "Left tenth costal cartilage",
+    "rawSHA256": "2de810fb46622f4caf916860533c97579162c0f960a495f9eba7fae2fcf3d268",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3667M",
+    "bpId": "BP21440",
+    "fmaId": "FMA8464",
+    "name": "Right tenth costal cartilage",
+    "rawSHA256": "db3fd2a54736116c611ec9608533607e95bab0be4bbef221d4c9237000175604",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3668",
+    "bpId": "BP22462",
+    "fmaId": "FMA8329",
+    "name": "Left eighth costal cartilage",
+    "rawSHA256": "8579345813434c27a5575dc6fb3055e7b93a43c028b518f01ef10053cf7372be",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3668M",
+    "bpId": "BP21439",
+    "fmaId": "FMA8302",
+    "name": "Right eighth costal cartilage",
+    "rawSHA256": "37e3c0c6c44db5b090699686fb67d60c46cca57678b5f111773043edf24da873",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3669",
+    "bpId": "BP22484",
+    "fmaId": "FMA8410",
+    "name": "Left ninth costal cartilage",
+    "rawSHA256": "3fd162a897326bac9f391b159e10139ecdd1b1900ce989661172817b88ed8eea",
+    "region": "thorax",
+    "system": "cartilage"
+  },
+  {
+    "fj": "FJ3669M",
+    "bpId": "BP21430",
+    "fmaId": "FMA8383",
+    "name": "Right ninth costal cartilage",
+    "rawSHA256": "421396b89396541acf22d0bd0a30a884ef4e2e852f403c704b6b39aab2ffb511",
+    "region": "thorax",
+    "system": "cartilage"
   }
 ];

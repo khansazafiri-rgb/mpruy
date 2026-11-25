@@ -9,8 +9,10 @@ import {parseMembership,validateCandidates,run} from './intake-bp3d43-priority-e
 import {runMirror} from './audit-bp3d43-mirror-elements.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const pin='fd527e6f4daf732fd814314d9257df5877b844bc';
+const BATCHES=Object.freeze({gap:{count:28,file:'bp3d43-gap-batch-candidates.json'},'nerves-32':{count:32,file:'bp3d43-nerves32-candidates.json'},'discs-23':{count:23,file:'bp3d43-discs-23-candidates.json'},'costal-20':{count:20,file:'bp3d43-costal-20-candidates.json'}});
+function spec(batch){assert(Object.hasOwn(BATCHES,batch),'Unknown audit batch');return BATCHES[batch];}
 export function resolveGapRows(doc,paths,catalog){
- assert(doc.schema===1&&doc.sourceVersion==='4.3'&&doc.publicRelease==='NO_GO'&&doc.geometryVerified===false&&doc.mirrorCommit===pin&&doc.rows.length===(doc.batchId==='nerves-32'?32:28));
+ assert(doc.schema===1&&doc.sourceVersion==='4.3'&&doc.publicRelease==='NO_GO'&&doc.geometryVerified===false&&doc.mirrorCommit===pin&&doc.rows.length===spec(doc.batchId||'gap').count);
  const seen=new Set(),rows=[],held=[];
  for(const r of doc.rows){
   assert(/^FJ\d+[A-Za-z]?$/.test(r.fj)&&!seen.has(r.fj)&&typeof r.name==='string'&&Number.isSafeInteger(r.bytes)&&r.bytes>0);seen.add(r.fj);
@@ -30,8 +32,9 @@ function resolve(batch='gap'){
  try{
   const git=(args,maxBuffer=8*1024*1024)=>execFileSync('git',['-c','core.hooksPath=/dev/null','-c','credential.helper=','-c','protocol.file.allow=never',...args],{cwd:dir,maxBuffer,timeout:180000,env:{...process.env,GIT_LFS_SKIP_SMUDGE:'1',GIT_TERMINAL_PROMPT:'0',GIT_CONFIG_NOSYSTEM:'1',GIT_CONFIG_GLOBAL:'/dev/null'}});
   git(['init','--quiet']);git(['remote','add','origin','https://github.com/olivercase/body_parts_3d_api.git']);git(['fetch','--no-tags','--depth=1','origin',pin]);assert.equal(git(['rev-parse','FETCH_HEAD']).toString().trim(),pin);
-  const doc=JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',batch==='nerves-32'?'bp3d43-nerves32-candidates.json':'bp3d43-gap-batch-candidates.json'),'utf8'));
+  const doc=JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',spec(batch).file),'utf8'));
   for(const [f,b] of [['MANIFEST.csv',doc.manifestBlob],['metadata/FMA2Obj.txt',doc.membershipBlob]])assert.equal(git(['rev-parse',pin+':'+f]).toString().trim(),b);
+  assert((doc.batchId||'gap')===batch,'Batch identity mismatch');
   const catalog=parseMembership(git(['show',pin+':metadata/FMA2Obj.txt']).toString('utf8')),paths=git(['ls-tree','-r','-z','--name-only',pin]).toString().split('\0');
   const resolved=resolveGapRows(doc,paths,catalog);console.log('BP3D43 GAP BATCH IDENTITIES',JSON.stringify(resolved));return resolved;
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
@@ -43,11 +46,11 @@ export function compareGapReports(doc,publisher,mirror){
   const match=p?.status==='EXACT_SOURCE_ELEMENT_GEOMETRY_MATCH'&&m?.status==='EXACT_MIRROR_ELEMENT_GEOMETRY_MATCH'&&/^[a-f0-9]{64}$/.test(p.rawSHA256||'')&&p.rawSHA256===m.rawSHA256&&p.triangles===m.triangles&&p.triangles>0&&p.bp===r.bp&&m.bp===r.bp&&p.fma===r.fma&&m.fma===r.fma;
   results.push(match?{fj:r.fj,bp:r.bp,fma:r.fma,name:r.name,triangles:p.triangles,rawSHA256:p.rawSHA256,status:'DUAL_SOURCE_MATCH'}:{fj:r.fj,name:r.name,status:'HOLD_GEOMETRY',publisher:p?.status||'UNAVAILABLE',mirror:m?.status||'UNAVAILABLE',publisherReason:p?.reason||null,mirrorReason:m?.reason||null});
  }
- assert.equal(results.length,doc.batchId==='nerves-32'?32:28);
+ assert.equal(results.length,spec(doc.batchId||'gap').count);
  return {results,matched:results.filter(x=>x.status==='DUAL_SOURCE_MATCH').length,held:results.filter(x=>x.status!=='DUAL_SOURCE_MATCH').length,geometryPublished:0,publicRelease:'NO_GO',clinicalValidation:false,registrationValidated:false};
 }
 function main(){
- const batch=process.argv[2]||'gap';assert(['gap','nerves-32'].includes(batch),'Unknown audit batch');
+ const batch=process.argv[2]||'gap';spec(batch);
  const doc=resolve(batch);let publisher=null,mirror=null;
  if(doc.rows.length){
   try{publisher=run(doc,{allowHeld:true});}catch(e){console.warn('Publisher batch unavailable:',String(e.message).slice(0,400));}
