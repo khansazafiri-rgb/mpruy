@@ -7,6 +7,7 @@ export function setGroupOpacity(state,group,value){
  return {...state,opacity:{...state.opacity,[group]:Math.max(OPACITY_MIN,Math.min(100,Math.round(Number(value))))}};
 }
 export function effectiveOpacity(entry,state,selectedId){
+ if(state.faded?.[entry.id])return .18;
  if(entry.id===selectedId)return 1;
  const own=(state.opacity[entry.group]??100)/100;
  return state.context&&selectedId?Math.min(own,.22):own;
