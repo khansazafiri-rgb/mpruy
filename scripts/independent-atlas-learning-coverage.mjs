@@ -8,7 +8,7 @@ const key=n=>String(n).trim().toLowerCase().replace(/\s+/g,' ');
 export function learningCoverage({sources,body,selection=[],recovery=[],results=[],specs}){
  const all=specs||[...priorityTargets,...learningPriorityTargets,...Object.entries(checkpoints).flatMap(([g,rows])=>rows.map(([, ...names])=>[g,names]))];
  const unique=new Map();
- for(const s of all){const k=s[0]+':'+key(s[1][0]);if(!unique.has(k))unique.set(k,s);}
+ for(const s of all){const k=s[0]+':'+key(s[1][0]),prior=unique.get(k);if(!prior){unique.set(k,[s[0],[...s[1]],s[2],s[3]]);continue;}assert(!prior[2]||!s[2]||prior[2]===s[2],'Conflicting checkpoint identity');assert(!prior[3]||!s[3]||prior[3]===s[3],'Conflicting checkpoint tree');unique.set(k,[s[0],[...new Set([...prior[1],...s[1]])],prior[2]||s[2],prior[3]||s[3]]);}
  const resolved=priorityPlan(sources,[...unique.values()]);
  const byFma=new Map();
  const add=(e,type)=>{const a=byFma.get(e.fmaId)||[];a.push({id:e.id,name:e.name,group:e.group,type});byFma.set(e.fmaId,a);};
