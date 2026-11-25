@@ -51,8 +51,8 @@ export function priorityPlan(sources,specs=targets){
 // Wider recovery: exact publisher identities from the existing archive, not
 // guessed synonyms or legacy geometry. Only explicitly classified concepts
 // are eligible; existing body identities and priority targets are deduplicated.
-export function broadRecoveryPlan(sources,body,priority){
- const existing=new Set(body.map(m=>m.fmaId));
+export function broadRecoveryPlan(sources,body,priority,coveredFma=[]){
+ const existing=new Set([...body.map(m=>m.fmaId),...coveredFma]);
  const targeted=new Set(priority.filter(x=>x.status==='EXPORT_CANDIDATE').map(x=>x.fmaId));
  const candidates=new Map();
  for(const s of sources)for(const n of s.names){
@@ -73,9 +73,9 @@ export function broadRecoveryPlan(sources,body,priority){
  const order=['lymphatic','respiratory','nervous','heart','urinary','digestive','reproductive','endocrine','joints','muscular','skeletal','arterial','venous'];
  return rows.sort((a,b)=>order.indexOf(a.group)-order.indexOf(b.group)||a.elementIds.length-b.elementIds.length||a.fmaId.localeCompare(b.fmaId));
 }
-export function buildPriorityRecovery(privateRoot,pack,{broad=false}={}){
+export function buildPriorityRecovery(privateRoot,pack,{broad=false,coveredFma=[]}={}){
  assert(fs.realpathSync(privateRoot)===privateRoot);
- const sources=loadVerifiedPublisherSources(pack.folder),priority=priorityPlan(sources),plan=broad?[...priority,...broadRecoveryPlan(sources,pack.inventory.bodyModels,priority)]:priority;
+ const sources=loadVerifiedPublisherSources(pack.folder),priority=priorityPlan(sources),plan=broad?[...priority,...broadRecoveryPlan(sources,pack.inventory.bodyModels,priority,coveredFma)]:priority;
  const out=fs.mkdtempSync(path.join(privateRoot,'atlas-priority-recovery-'));fs.chmodSync(out,0o700);
  const items=[],models=new Map(),results=[],used=new Set();let totalBytes=0;
  const maxBytes=(broad?2048:512)*1024*1024, maxTriangles=1500000;
