@@ -20,7 +20,7 @@ const targets=[
  ['respiratory',['trachea']],['respiratory',['left main bronchus','left principal bronchus']],['respiratory',['right main bronchus','right principal bronchus']],
  ['respiratory',['right bronchial tree'],'FMA26661','partof'],['respiratory',['left bronchial tree'],'FMA26662','partof'],
  ['respiratory',['upper lobe part of right bronchial tree'],'FMA31744','partof'],['respiratory',['middle lobe part of right bronchial tree'],'FMA31741','partof'],
- ['respiratory',['lower lobe part of right bronchial tree'],'FMA31748','partof'],['respiratory',['upper lobe part of left bronchial tree'],'FMA31746','partof'],['respiratory',['lower lobe part of left bronchial tree'],'FMA31747','partof'],
+ ['respiratory',['lower lobe part of right bronchial tree'],'FMA31747','partof'],['respiratory',['upper lobe part of left bronchial tree'],'FMA31746','partof'],['respiratory',['lower lobe part of left bronchial tree'],'FMA31748','partof'],
  ['respiratory',['larynx']],['respiratory',['left lung pleura','left pleura']],['respiratory',['right lung pleura','right pleura']],
  ['nervous',['brain'],'FMA50801','partof'],['nervous',['spinal cord'],'FMA7647','partof'],['nervous',['brainstem'],'FMA79876','partof'],
  ['nervous',['ventricular system of brain'],'FMA242787','partof'],['nervous',['cerebellum']],['nervous',['pons']],['nervous',['medulla oblongata']],
