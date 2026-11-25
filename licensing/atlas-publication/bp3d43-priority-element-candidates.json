@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "source": "https://github.com/olivercase/body_parts_3d_api",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "reportedDataLicense": "CC-BY-SA-2.1-JP",
+  "licenseReview": "VERSION_SPECIFIC_REVIEW_REQUIRED",
+  "sourceVersion": "4.3",
+  "geometryVerified": false,
+  "publicRelease": "NO_GO",
+  "scope": "Third-party catalog discovery; individual element names not equivalent to full FMA concepts.",
+  "rows": [
+    {
+      "fj": "FJ3670",
+      "bp": "BP21406",
+      "fma": "FMA49176",
+      "name": "Isthmus of thyroid gland",
+      "faces": 1746,
+      "vertices": 5238,
+      "bytes": 493303,
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ3926",
+      "bp": "BP29477",
+      "fma": "FMA11195",
+      "name": "Trunk of left vagus nerve",
+      "faces": 29372,
+      "vertices": 14820,
+      "bytes": 1963465,
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ4024",
+      "bp": "BP29476",
+      "fma": "FMA11195",
+      "name": "Trunk of right vagus nerve",
+      "faces": 24790,
+      "vertices": 12608,
+      "bytes": 1651782,
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ4171",
+      "bp": "BP29488",
+      "fma": "FMA37072",
+      "name": "Left axillary nerve",
+      "faces": 654,
+      "vertices": 481,
+      "bytes": 46757,
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ4172",
+      "bp": "BP29538",
+      "fma": "FMA37069",
+      "name": "Left radial nerve",
+      "faces": 576,
+      "vertices": 327,
+      "bytes": 35574,
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ4224",
+      "bp": "BP29531",
+      "fma": "FMA14385",
+      "name": "Left median nerve",
+      "faces": 4372,
+      "vertices": 2246,
+      "bytes": 275660,
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ4225",
+      "bp": "BP29512",
+      "fma": "FMA37064",
+      "name": "Left musculocutaneous nerve",
+      "faces": 3264,
+      "vertices": 1792,
+      "bytes": 209111,
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ4240",
+      "bp": "BP29538",
+      "fma": "FMA37069",
+      "name": "Left radial nerve",
+      "faces": 4474,
+      "vertices": 2280,
+      "bytes": 281192,
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ4243",
+      "bp": "BP29488",
+      "fma": "FMA37072",
+      "name": "Left axillary nerve",
+      "faces": 360,
+      "vertices": 310,
+      "bytes": 27986,
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ4258",
+      "bp": "BP29523",
+      "fma": "FMA37319",
+      "name": "Left ulnar nerve",
+      "faces": 4406,
+      "vertices": 2242,
+      "bytes": 276297,
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ4425",
+      "bp": "BP29628",
+      "fma": "FMA14462",
+      "name": "Cauda equina",
+      "faces": 6716,
+      "vertices": 8676,
+      "bytes": 747869,
+      "conceptMembership": [
+        "is_a"
+      ]
+    },
+    {
+      "fj": "FJ5082",
+      "bp": "BP28813",
+      "fma": "FMA13110",
+      "name": "Right external jugular vein",
+      "faces": 4348,
+      "vertices": 2176,
+      "bytes": 272396,
+      "conceptMembership": [
+        "is_a"
+      ]
+    }
+  ]
+}
