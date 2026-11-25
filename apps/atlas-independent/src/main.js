@@ -6,6 +6,7 @@ import {layerLabels,initialStudy,baseVisible as bodyBaseVisible,displayed,buildA
 import {mountReferences} from './reference-viewer.js';
 import {initialPresentation,setGroupOpacity,effectiveOpacity,materialKey,chooseEvictions,fitParameters,nextPickedId} from './presentation-state.js';
 import {STATUS,validPing} from './host-protocol.js';
+import {validOpen,RESULT,openKnownStructure} from './library-bridge.js';
 import './style.css';
 import {mountOriginalShell} from './original-shell.js';
 import {validateElementCatalog,elementKey,elementKeys,meshElementId,hasExactElements} from './element-selection.js';
@@ -243,14 +244,15 @@ async function chooseEntry(e){
   for(const id of [...study.hidden]){const v=byId.get(id);if(v?.selectionOnly&&[...elementKeys(v)].some(k=>targets.has(k)))study.hidden.delete(id);}
   const owners=[...new Set(e.bindings.map(b=>b.ownerId))].map(id=>byId.get(id));
   for(const owner of owners){revealEntry(owner,study,alternatives);failed.delete(owner.id);}
-  syncControls();sync();await Promise.all(owners.map(load));if(token!==searchRevision)return;
+  syncControls();sync();await Promise.all(owners.map(load));if(token!==searchRevision)return false;
   const loaded=new Map(owners.map(o=>[o.id,cache.get(o.id)?.userData.elementIds]));
-  if(!hasExactElements(e,loaded)){resetSelection();$('info').textContent='Elemen sumber tidak lengkap: '+e.name;notifyHost('partial','Elemen sumber tidak lengkap: '+e.name);refresh();return;}
-  select(e);sync();focus(e);refresh();return;
+  if(!hasExactElements(e,loaded)){resetSelection();$('info').textContent='Elemen sumber tidak lengkap: '+e.name;notifyHost('partial','Elemen sumber tidak lengkap: '+e.name);refresh();return false;}
+  select(e);sync();focus(e);refresh();return true;
  }
+ for(const id of [...study.hidden]){const v=byId.get(id);if(ownerOf(v,e.id))study.hidden.delete(id);}
  if(e.priorityOnly){++revision;study.isolated=e.id;}else revealEntry(e,study,alternatives);
- select(e);syncControls();sync();failed.delete(e.id);await load(e);if(token!==searchRevision)return;
- if(cache.has(e.id)){sync();select(e);focus(e);refresh();}else{study.isolated=null;resetSelection();refresh(true);}
+ select(e);syncControls();sync();failed.delete(e.id);await load(e);if(token!==searchRevision)return false;
+ if(cache.has(e.id)){sync();select(e);focus(e);refresh();return true;}else{study.isolated=null;resetSelection();refresh(true);return false;}
 }
 async function init(){
  groupControls();
@@ -276,4 +278,21 @@ originalUI=mountOriginalShell({
  toggle:g=>{resetSelection();study.isolated=null;if(study.enabled.has(g))study.enabled.delete(g);else study.enabled.add(g);syncControls();refresh(true);},
  choose:chooseEntry
 });
-init().finally(()=>{originalReady=true;originalUI?.render();});
+const initialized=init().finally(()=>{originalReady=true;originalUI?.render();});
+let libraryRevision=0;
+window.addEventListener('message',async event=>{
+ if(location.hostname!=='127.0.0.1'||!validOpen(event,location.origin,window.parent,window))return;
+ const command=event.data,tick=++libraryRevision;
+ await initialized;if(tick!==libraryRevision)return;
+ let result;
+ try{
+  if(!independent||hostState.state==='error')throw Error('Viewer independen belum siap.');
+  result=await openKnownStructure(command,id=>byId.get(id),chooseEntry,e=>{
+   if(selected?.id!==e.id)return false;
+   const meshes=[...cache.values()].flatMap(o=>o.visible?o.userData.meshes.filter(m=>m.visible&&m.userData.materialKey?.startsWith('highlight:')):[]);
+   if(!e.selectionOnly)return meshes.some(m=>m.userData.entry?.id===e.id);
+   const keys=new Set(meshes.map(m=>m.userData.elementKey));return [...elementKeys(e)].every(k=>keys.has(k));
+  });
+ }catch(error){result={ok:false,message:String(error.message||error).slice(0,240)};}
+ if(tick===libraryRevision)window.parent.postMessage({type:RESULT,version:1,requestId:command.requestId,structureId:command.structureId,...result},location.origin);
+});
