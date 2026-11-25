@@ -109,6 +109,15 @@ try{
   const dialog=page.locator('#referenceDialog'),viewport=dialog.locator('#referenceViewport'),select=dialog.locator('#referenceSelect');
   await dialog.locator('#referenceStatus').filter({hasText:real43.assets.size+' kandidat referensi tersedia'}).waitFor();
   assert.equal(await select.locator('option').count(),real43.assets.size);
+  if(real43.assets.size===40){
+   const region=dialog.locator('#referenceRegionTopic'),system=dialog.locator('#referenceSystemTopic'),search=dialog.locator('#referenceSearch');
+   await region.selectOption('neck-upper-limb');await system.selectOption('nervous');assert.equal(await select.locator('option').count(),6);
+   await search.fill('FJ4273');assert.equal(await select.locator('option').count(),1);
+   await search.fill('');await region.selectOption('foot');assert.equal(await select.locator('option').count(),0);assert(await dialog.locator('#referenceLoad').isDisabled());
+   await region.selectOption('all');await system.selectOption('ligament');assert.equal(await select.locator('option').count(),16);
+   await system.selectOption('all');assert.equal(await select.locator('option').count(),40);
+   console.log('BP3D43 TOPIC FILTER PASS: exact source-ID search, region/system intersection and empty-state load block.');
+  }
   for(const e of real43.inventory.items){
    await select.selectOption(e.id);
    await dialog.locator('#referenceLoad').click();
