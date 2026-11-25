@@ -13,6 +13,7 @@ import {buildHraRegistry,serveHraReference} from './atlas-hra-private-reference.
 import {classifyIndependentPath,rawRequestPath} from './independent-atlas-routes.mjs';
 import {createLabPreviewServer,ROOTS} from './preview-4d-lab.mjs';
 import {assertDistributionClean} from '../licensing/tools/check-distribution.mjs';
+import {createIndependentHostHandler} from './independent-atlas-host.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 const privateRoot=path.join(root,'local-data/licensing-quarantine');
@@ -38,10 +39,22 @@ const softwareReport=path.join(privateRoot,folder,'publication-software-audit.js
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.txt':'text/plain; charset=utf-8'};
 let hra;try{hra=independent?sourcePack.hra:await buildHraRegistry(privateRoot);}catch(error){hra={assets:new Map(),blocked:[{reason:String(error.message||error)}]};}
 const port=Number(process.env.PORT||4186);assert(Number.isInteger(port)&&port>=1024&&port<=65535);
-// Host integration is optional; it never serves the legacy viewer or lab routes.
-let hostHandler=null;
-if(fs.existsSync(path.join(ROOTS.main,'index.html'))){
- try{assertDistributionClean([ROOTS.main],'Independent atlas host preview');hostHandler=createLabPreviewServer(ROOTS).listeners('request')[0];}
+// Independent review builds the actual main-web App with a preview-only Anatomy
+// page alias. No public assets, stale host build, legacy Atlas or live backend.
+let hostHandler=null,hostBuild=null;
+if(independent){
+ const web=path.join(root,'apps/web'),hostRequire=createRequire(path.join(web,'package.json'));
+ const {build:buildHost}=await import(pathToFileURL(hostRequire.resolve('vite')).href);
+ hostBuild=fs.mkdtempSync(path.join(privateRoot,'atlas-independent-host-'));fs.chmodSync(hostBuild,0o700);
+ await buildHost({root:web,configFile:path.join(web,'vite.atlas-independent-preview.config.js'),publicDir:false,build:{outDir:hostBuild,emptyOutDir:true,sourcemap:false}});
+ assertDistributionClean([hostBuild],'Independent Atlas host build');
+ assert(fs.statSync(path.join(hostBuild,'index.html')).isFile(),'Host build missing');
+ const assets=path.join(hostBuild,'assets');
+ const js=fs.readdirSync(assets).filter(n=>n.endsWith('.js'));
+ assert(js.some(n=>fs.readFileSync(path.join(assets,n),'utf8').includes('medcoel:independent-atlas-ping')),'Preview host alias missing');
+ hostHandler=createIndependentHostHandler(hostBuild);
+}else if(fs.existsSync(path.join(ROOTS.main,'index.html'))){
+ try{assertDistributionClean([ROOTS.main],'Native atlas host preview');hostHandler=createLabPreviewServer(ROOTS).listeners('request')[0];}
  catch(error){console.warn('Host preview withheld:',error.message);}
 }
 const server=createServer((request,response)=>{
@@ -50,7 +63,7 @@ const server=createServer((request,response)=>{
  const p=rawRequestPath(request.url);if(p===null)return send(404,'Not found');
  const route=classifyIndependentPath(p);
  if(route==='redirect'){response.writeHead(308,{Location:'/anatomy/viewer/','Cache-Control':'no-store'});return response.end();}
- if(route==='host')return hostHandler?hostHandler(request,response):send(404,'Host preview unavailable; use /anatomy/viewer/');
+ if(route==='host')return hostHandler?hostHandler(request,response,p):send(404,'Host preview unavailable; use /anatomy/viewer/');
  if(route!=='independent')return send(404,'Not found');
  response.setHeader('Content-Security-Policy',"frame-ancestors 'self'");
  if(independent&&p==='/anatomy/viewer/MODEL-ATTRIBUTIONS.json')return send(200,JSON.stringify(sourcePack.attributions),mime['.json']);
@@ -79,7 +92,14 @@ try{
  for(const route of ['/anatomy/viewer/models/nervous.glb','/anatomy/viewer/models/visceral.glb','/anatomy/viewer/bp3d/inventory.json','/anatomy/4d-lab/','/local-data/','/anatomy/viewer/%2e%2e/private'])assert.equal((await fetch(baseURL+route,{method:'HEAD'})).status,404);
  const hraResponse=await fetch(baseURL+'/anatomy/viewer/hra-reference/inventory.json');assert(hraResponse.ok&& (await hraResponse.json()).items.length===hra.assets.size);
  let hraRoutes=0;for(const id of hra.assets.keys()){const r=await fetch(baseURL+'/anatomy/viewer/hra-reference/'+id+'.glb',{method:'HEAD'});assert(r.ok&&r.headers.get('content-type')==='model/gltf-binary','HRA route failed: '+id);hraRoutes++;}
- const report={schema:1,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
+ let hostQC='NOT_APPLICABLE';
+ if(independent){
+  for(const p of ['/anatomy','/anatomy/explore']){const r=await fetch(baseURL+p);assert(r.ok&&r.headers.get('content-type').startsWith('text/html'),'Host route failed: '+p);}
+  const fixture=await fetch(baseURL+'/api/medcoel/public-settings');assert(fixture.ok&&(await fixture.json()).showMascots===false);
+  for(const p of ['/anatomy/library','/anatomy/study','/anatomy/live','/anatomy/viewer/data/atlas-catalog.json','/api/collections/users/records','/assets/not-a-real-asset.js'])assert.equal((await fetch(baseURL+p)).status,404,'Unexpected route '+p);
+  const a=await fetch(baseURL+'/anatomy/viewer/MODEL-ATTRIBUTIONS.json');assert(a.ok&&Array.isArray((await a.json()).body));hostQC='PASS';
+ }
+ const report={schema:1,hostQC,sourceKind:independent?'independent-bp3d':'z-anatomy-private',models:manifest.entries.length,httpModelRoutesVerified:checked,hraReferences:hra.assets.size,httpHraRoutesVerified:hraRoutes,httpSmoke:'PASS',browserRuntime:'PENDING',publicRelease:'NO_GO'};
  const f=path.join(privateRoot,folder,'publication-independent-http-qc.json'),tmp=f+'.'+process.pid+'.tmp';fs.writeFileSync(tmp,JSON.stringify(report,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,f);
  console.log('INDEPENDENT HTTP QC',JSON.stringify(report));
 }catch(error){server.close();throw error;}
