@@ -1,0 +1,335 @@
+{
+  "schema": 1,
+  "batchId": "nerves-32",
+  "sourceVersion": "4.3",
+  "mirrorCommit": "fd527e6f4daf732fd814314d9257df5877b844bc",
+  "manifestBlob": "3604032721bbcdc4477b9735b3a022188ff7544c",
+  "membershipBlob": "630860a2ff1dd50a5e56f900d689e630ef655b6e",
+  "geometryVerified": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "publicRelease": "NO_GO",
+  "scope": "32 distinct element identifiers for cranial, cervical and upper-limb nerves. Not whole nerves or claimed net-new structures. Exact source names, membership and raw geometry must pass audit.",
+  "rows": [
+    {
+      "fj": "FJ3891",
+      "discoveryBP": "BP29534",
+      "discoveryFMA": "FMA50867",
+      "name": "Right abducens nerve",
+      "faces": 1090,
+      "vertices": 735,
+      "bytes": 75374,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3899",
+      "discoveryBP": "BP29410",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of right facial nerve",
+      "faces": 4672,
+      "vertices": 2340,
+      "bytes": 293679,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3901",
+      "discoveryBP": "BP29500",
+      "discoveryFMA": "FMA50870",
+      "name": "Left glossopharyngeal nerve",
+      "faces": 6926,
+      "vertices": 3612,
+      "bytes": 450504,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3923",
+      "discoveryBP": "BP29369",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left recurrent laryngeal nerve",
+      "faces": 5008,
+      "vertices": 2538,
+      "bytes": 315416,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3927",
+      "discoveryBP": "BP29502",
+      "discoveryFMA": "FMA50867",
+      "name": "Left abducens nerve",
+      "faces": 1146,
+      "vertices": 748,
+      "bytes": 77089,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3928",
+      "discoveryBP": "BP29554",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left accessory nerve",
+      "faces": 8018,
+      "vertices": 4257,
+      "bytes": 524103,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3938",
+      "discoveryBP": "BP29462",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left facial nerve",
+      "faces": 4790,
+      "vertices": 2399,
+      "bytes": 299069,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3939",
+      "discoveryBP": "BP29500",
+      "discoveryFMA": "FMA50870",
+      "name": "Left glossopharyngeal nerve",
+      "faces": 7100,
+      "vertices": 3689,
+      "bytes": 457294,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3941",
+      "discoveryBP": "BP29459",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left hypoglossal nerve",
+      "faces": 1682,
+      "vertices": 1195,
+      "bytes": 120080,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3968",
+      "discoveryBP": "BP29438",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left oculomotor nerve",
+      "faces": 648,
+      "vertices": 357,
+      "bytes": 39293,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ3980",
+      "discoveryBP": "BP29463",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left trigeminal nerve",
+      "faces": 246,
+      "vertices": 125,
+      "bytes": 13700,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4021",
+      "discoveryBP": "BP29389",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of right recurrent laryngeal nerve",
+      "faces": 2596,
+      "vertices": 1302,
+      "bytes": 157643,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4025",
+      "discoveryBP": "BP29541",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of right accessory nerve",
+      "faces": 7822,
+      "vertices": 4151,
+      "bytes": 514568,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4027",
+      "discoveryBP": "BP29430",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of right hypoglossal nerve",
+      "faces": 4878,
+      "vertices": 2629,
+      "bytes": 318286,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4033",
+      "discoveryBP": "BP29461",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of right oculomotor nerve",
+      "faces": 648,
+      "vertices": 367,
+      "bytes": 40326,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4034",
+      "discoveryBP": "BP29461",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of right oculomotor nerve",
+      "faces": 876,
+      "vertices": 657,
+      "bytes": 64569,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4038",
+      "discoveryBP": "BP29432",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of right trigeminal nerve",
+      "faces": 244,
+      "vertices": 124,
+      "bytes": 13719,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4157",
+      "discoveryBP": "BP29423",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left phrenic nerve",
+      "faces": 1106,
+      "vertices": 605,
+      "bytes": 67550,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4279",
+      "discoveryBP": "BP29423",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left phrenic nerve",
+      "faces": 716,
+      "vertices": 746,
+      "bytes": 64088,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4222",
+      "discoveryBP": "BP29235",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left long thoracic nerve",
+      "faces": 1560,
+      "vertices": 930,
+      "bytes": 99937,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4260",
+      "discoveryBP": "BP29456",
+      "discoveryFMA": "FMA55665",
+      "name": "Left first cervical nerve",
+      "faces": 2166,
+      "vertices": 1188,
+      "bytes": 134503,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4261",
+      "discoveryBP": "BP29310",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left second cervical nerve",
+      "faces": 1100,
+      "vertices": 649,
+      "bytes": 69930,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4262",
+      "discoveryBP": "BP29408",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left third cervical nerve",
+      "faces": 1364,
+      "vertices": 804,
+      "bytes": 86754,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4263",
+      "discoveryBP": "BP29309",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left fourth cervical nerve",
+      "faces": 934,
+      "vertices": 571,
+      "bytes": 60427,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4264",
+      "discoveryBP": "BP29324",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left fifth cervical nerve",
+      "faces": 1926,
+      "vertices": 1005,
+      "bytes": 115363,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4265",
+      "discoveryBP": "BP29315",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left sixth cervical nerve",
+      "faces": 1106,
+      "vertices": 621,
+      "bytes": 68404,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4266",
+      "discoveryBP": "BP29366",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left seventh cervical nerve",
+      "faces": 956,
+      "vertices": 525,
+      "bytes": 58244,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4267",
+      "discoveryBP": "BP29406",
+      "discoveryFMA": "FMA11195",
+      "name": "Trunk of left eighth cervical nerve",
+      "faces": 970,
+      "vertices": 559,
+      "bytes": 60680,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ7501",
+      "discoveryBP": "BP23301",
+      "discoveryFMA": "FMA11195",
+      "name": "Right optic nerve",
+      "faces": 1506,
+      "vertices": 903,
+      "bytes": 97548,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ7501M",
+      "discoveryBP": "BP23214",
+      "discoveryFMA": "FMA11195",
+      "name": "Left optic nerve",
+      "faces": 1506,
+      "vertices": 907,
+      "bytes": 97007,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4242",
+      "discoveryBP": "BP29426",
+      "discoveryFMA": "FMA55665",
+      "name": "Left superior subscapular nerve",
+      "faces": 916,
+      "vertices": 730,
+      "bytes": 69024,
+      "group": "nervous"
+    },
+    {
+      "fj": "FJ4256",
+      "discoveryBP": "BP29546",
+      "discoveryFMA": "FMA55665",
+      "name": "Left thoracodorsal nerve",
+      "faces": 2068,
+      "vertices": 1472,
+      "bytes": 149894,
+      "group": "nervous"
+    }
+  ]
+}
