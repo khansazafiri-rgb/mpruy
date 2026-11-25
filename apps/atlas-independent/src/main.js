@@ -7,6 +7,7 @@ import {mountReferences} from './reference-viewer.js';
 import {initialPresentation,setGroupOpacity,effectiveOpacity,materialKey,chooseEvictions,fitParameters,nextPickedId} from './presentation-state.js';
 import {STATUS,validPing} from './host-protocol.js';
 import './style.css';
+import {mountOriginalShell} from './original-shell.js';
 const $=id=>document.getElementById(id);
 const base=import.meta.env.BASE_URL;
 let hostState={state:'loading',message:'Menyiapkan inventaris dan model awal…'};
@@ -25,10 +26,11 @@ const materials=new Map();
 const loader=new GLTFLoader(),cache=new Map(),failed=new Map(),inflight=new Map();
 let entries=[],selected=null,study=initialStudy(),presentation=initialPresentation(),alternatives=new Map(),byId=new Map(),revision=0,searchRevision=0,independent=false;
 let cacheClock=0,cacheReport={remaining:0,aboveBudget:false};
+let originalUI=null,originalReady=false;
 const counts=()=>{
  $('count').textContent=[...cache.values()].filter(o=>o.visible&&!o.userData.entry.priorityOnly).length+' tubuh terlihat · '+[...cache.values()].filter(o=>!o.userData.entry.priorityOnly).length+' tubuh dimuat · '+inflight.size+' memuat/antre · '+failed.size+' gagal · '+entries.length+' kandidat. Bukan ukuran kelengkapan anatomi.';
  $('cacheStatus').textContent='Buffer geometri terukur: '+Math.round(cacheReport.remaining/1048576)+' MiB'+(cacheReport.aboveBudget?' · melebihi target lunak; kurangi sistem aktif.':'');
- $('retry').disabled=!failed.size;$('restore').hidden=!study.isolated&&!study.hidden.size;
+ $('retry').disabled=!failed.size;$('restore').hidden=!study.isolated&&!study.hidden.size;originalUI?.render();
 };
 const baseVisible=(e,s)=>e.priorityOnly?s.isolated===e.id:bodyBaseVisible(e,s);
 const visible=e=>e.priorityOnly?baseVisible(e,study):displayed(e,study,alternatives,id=>cache.has(id),byId);
@@ -64,7 +66,7 @@ function sync(){for(const obj of cache.values()){obj.visible=visible(obj.userDat
 function select(e){
  selected=e;updateAppearance();
  $('selectionActions').hidden=!e;
- $('info').textContent=e?e.name+' · '+groups[e.group]+(e.fmaId?' · '+e.fmaId+' / '+e.bpId:'')+' · kandidat belum disetujui':'';
+ $('info').textContent=e?e.name+' · '+groups[e.group]+(e.fmaId?' · '+e.fmaId+' / '+e.bpId:'')+' · kandidat belum disetujui':'';originalUI?.render();
 }
 // Bound concurrent network/decoder work across overlapping study changes.
 let activeLoads=0;const waitingLoads=[];
@@ -217,4 +219,28 @@ async function init(){
  catch(error){$('notice').textContent=error.message;counts();notifyHost('error',error.message);}
 }
 mountReferences(base);
-init();
+originalUI=mountOriginalShell({
+ groups,entries:()=>[...byId.values()],color:g=>'#'+colors[g].toString(16).padStart(6,'0'),
+ state:()=>({...study,selected,ready:originalReady}),
+ status:()=>$('count').textContent+' · review privat',
+ snapshot:()=>({study:structuredClone(study),presentation:structuredClone(presentation),selectedId:selected?.id||null}),
+ restore:s=>{searchRevision++;study=structuredClone(s.study);presentation=structuredClone(s.presentation);select(byId.get(s.selectedId)||null);syncControls();syncPresentationControls();updateAppearance();refresh(true);},
+ reset:()=>$('reset').click(),all:()=>$('allSystems').click(),references:()=>$('openReferences').click(),
+ fullscreen:async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.getElementById('app').requestFullscreen();}catch(e){$('info').textContent=String(e.message||e);}},
+ fit:()=>fit(),axis:id=>$(id).click(),zoom:f=>{camera.position.sub(controls.target).multiplyScalar(f).add(controls.target);controls.update();},
+ pan:on=>{controls.mouseButtons.LEFT=on?THREE.MOUSE.PAN:THREE.MOUSE.ROTATE;},
+ clear:()=>resetSelection(),isolate:()=>$('isolate').click(),hide:()=>$('hide').click(),focus:()=>$('focus').click(),
+ restoreContext:()=>{resetSelection();$('restore').click();},
+ fadeSelected:()=>{if(!selected)return;const faded={...presentation.faded};faded[selected.id]=!faded[selected.id];presentation={...presentation,faded};updateAppearance();},
+ fadeOthers:()=>{presentation={...presentation,context:!presentation.context};syncPresentationControls();updateAppearance();},
+ toggle:g=>{resetSelection();study.isolated=null;if(study.enabled.has(g))study.enabled.delete(g);else study.enabled.add(g);syncControls();refresh(true);},
+ choose:async e=>{
+  const token=++searchRevision;
+  if(e.priorityOnly){++revision;study.isolated=e.id;}else revealEntry(e,study,alternatives);
+  select(e);syncControls();sync();failed.delete(e.id);await load(e);
+  if(token!==searchRevision)return;
+  if(cache.has(e.id)){sync();select(e);focus(e);refresh();}
+  else{study.isolated=null;resetSelection();refresh(true);}
+ }
+});
+init().finally(()=>{originalReady=true;originalUI?.render();});
