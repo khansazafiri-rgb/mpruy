@@ -149,10 +149,12 @@ test('one invocation processes fake official ZIP and writes a structured report,
   }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
 
-test('all 6 systems receive distinct illustrative review colors and user can turn them off',()=>{
+test('all 7 systems receive distinct illustrative review colors and user can turn them off',()=>{
   assert.deepEqual(Object.keys(REVIEW_SYSTEM_PALETTE).sort(),
-    ['cardiovascular','joints','lymphatic','muscular','skeletal','visceral']);
-  assert.equal(new Set(Object.values(REVIEW_SYSTEM_PALETTE)).size,6);
+    ['cardiovascular','joints','lymphatic','muscular','nervous','skeletal','visceral']);
+  assert.equal(new Set(Object.values(REVIEW_SYSTEM_PALETTE)).size,7);
+  assert.equal(materialFor({name:'Sciatic nerve',system:'nervous'},'system').color,REVIEW_SYSTEM_PALETTE.nervous);
+  assert.equal(materialFor({name:'Sciatic nerve',system:'nervous'},'neutral').color,0xc8cbd0);
   const html=buildBulkHTML();
   assert.match(html,/id="palette" type="checkbox"/);
   assert.match(html,/id="tissue" type="checkbox" checked/);
