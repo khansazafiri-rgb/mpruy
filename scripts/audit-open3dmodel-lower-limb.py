@@ -75,8 +75,23 @@ def inventory(doc, targets):
             rows.append({"target":target,"side":side,"matches":hits,"status":"EXACT_NAMED_MESH_NODE_CANDIDATE" if len(hits)==1 else "HOLD_MISSING_OR_AMBIGUOUS"})
     return {"nodeCount":len(nodes),"meshCount":len(meshes),"extensionsRequired":doc.get("extensionsRequired",[]),"targets":rows,"uniqueNamedCandidates":sum(r["status"].startswith("EXACT") for r in rows),"geometryDecoded":False,"clinicalValidation":False,"registrationValidated":False,"assetRightsReviewed":False,"publicRelease":"NO_GO"}
 
-def main():
-    spec=json.loads(CANDIDATE.read_text())
+def observed_inventory(doc, targets):
+    result = inventory(doc, targets)
+    # Discovery only: preserve exact raw spelling and node indices, no inferred side.
+    nodes = doc.get("nodes", [])
+    meshes = doc.get("meshes", [])
+    candidates = []
+    for i,n in enumerate(nodes):
+        name, mesh = n.get("name"), n.get("mesh")
+        if isinstance(name,str) and re.search(r"nerve|nervus|nervi",name,re.I) and type(mesh) is int and 0 <= mesh < len(meshes):
+            candidates.append({"nodeIndex":i,"meshIndex":mesh,"sourceName":name})
+    if len(candidates)>500: raise ValueError("nerve discovery count exceeds cap")
+    return {**result,"nerveMeshNodeNames":candidates,"scope":"raw node-name discovery, not verified anatomy"}
+
+def main(observed=False):
+    spec=json.loads((ROOT / "licensing/atlas-publication/open3dmodel-lower-limb-observed-source-20261126.json" if observed else CANDIDATE).read_text())
+    if observed and (spec["publicRelease"]!="NO_GO" or spec["assetRightsReviewed"] is not False or spec["geometryDecoded"] is not False):
+        raise ValueError("observed candidate quarantine gate")
     with tempfile.TemporaryDirectory(prefix="medcoel-lower-limb-") as tmp:
         file=Path(tmp)/"source.zip"
         subprocess.run(["curl","--fail","--silent","--show-error","--location","--proto","=https","--proto-redir","=https","--max-redirs","3","--max-time","180","--max-filesize",str(CAP),"--output",str(file),spec["archiveURL"]],check=True)
@@ -86,9 +101,13 @@ def main():
         print("OPEN3DMODEL SOURCE BYTE DIAGNOSTIC "+json.dumps(receipt,separators=(",",":")),flush=True)
         if receipt["status"]!="EXACT_PAIR": raise ValueError(receipt["status"])
         data=unpack(raw,spec)
-        report=inventory(metadata(data),spec["targetLabels"])
+        if observed and (len(raw)!=spec["archiveBytes"] or len(data)!=spec["glbBytes"]): raise ValueError("observed byte size changed")
+        report=(observed_inventory if observed else inventory)(metadata(data),spec["targetLabels"])
         report.update({"schema":1,"archiveSHA256":digest(raw),"glbSHA256":digest(data),"archiveBytes":len(raw),"glbBytes":len(data),"exactThirdPartyHashReplay":True})
-        print("OPEN3DMODEL LOWER LIMB QUARANTINE REPORT "+json.dumps(report,separators=(",",":")))
+        if observed:
+            report.pop("exactThirdPartyHashReplay",None)
+            report.update({"exactObservedPublisherBytesReplay":True,"legacyComparison":spec["legacyComparison"],"assetRightsReviewed":False,"publicRelease":"NO_GO"})
+        print(("OPEN3DMODEL OBSERVED NERVE DISCOVERY " if observed else "OPEN3DMODEL LOWER LIMB QUARANTINE REPORT ")+json.dumps(report,separators=(",",":")))
 
 class Tests(unittest.TestCase):
     def test_exact_and_ambiguous_labels(self):
@@ -97,6 +116,9 @@ class Tests(unittest.TestCase):
         self.assertEqual(r["uniqueNamedCandidates"],1)
         self.assertEqual(r["targets"][1]["status"],"HOLD_MISSING_OR_AMBIGUOUS")
         self.assertFalse(r["geometryDecoded"])
+        discovered=observed_inventory(d,["Sciatic nerve","Femoral nerve"])
+        self.assertEqual(len(discovered["nerveMeshNodeNames"]),4)
+        self.assertEqual(discovered["publicRelease"],"NO_GO")
     def test_header(self):
         b=json.dumps({"asset":{"version":"2.0"},"nodes":[],"meshes":[]}).encode()
         b+=b" "*((-len(b))%4)
@@ -120,5 +142,6 @@ class Tests(unittest.TestCase):
 if __name__=="__main__":
     import sys
     if sys.argv[1:]==["--test"]: unittest.main(argv=[sys.argv[0]])
+    elif sys.argv[1:]==["--inspect-observed"]: main(True)
     elif not sys.argv[1:]: main()
     else: raise SystemExit("unknown arguments")

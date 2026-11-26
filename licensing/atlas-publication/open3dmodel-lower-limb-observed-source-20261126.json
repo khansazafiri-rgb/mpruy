@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "source": "Open3DModel publisher download endpoint (observed current byte pair; version unknown)",
+  "archiveURL": "https://caskanatomy.info/open3dmodelfiles/lower-limb/lower-limb-glb.zip",
+  "archiveSHA256": "d989a6f076054ada639f597a0d21764e7e7b165a008f73493b5c803af826d7f0",
+  "archiveBytes": 5980787,
+  "glbFile": "lower-limb.glb",
+  "glbSHA256": "5ecb1ef4c07a2f6aa17021ee6f6d0bb0587595821467ec8c6a14f24ee1091173",
+  "glbBytes": 6597544,
+  "sourceCommit": "c4b0115342c5ad47b7525c1f5d02719d455506f4",
+  "repeatObservations": [
+    {
+      "run": 45752589935,
+      "job": 139683630969
+    },
+    {
+      "run": 45752589942,
+      "job": 139683631254
+    }
+  ],
+  "legacyExpectedArchiveSHA256": "82ad6894bec6e77bb2aba970105f6ee7f0f694de93494932eb634fd0150745c7",
+  "legacyExpectedGLBSHA256": "001677bac4e8b4f44f3be0c3695b0123bc9fad1df9a2bddceecccf4a6eef01eb",
+  "legacyComparison": "HOLD_SOURCE_BYTES_CHANGED_OR_UNREADABLE",
+  "targetLabels": [
+    "Femoral nerve",
+    "Sciatic nerve",
+    "Tibial nerve",
+    "Common fibular nerve",
+    "Deep fibular nerve",
+    "Superficial fibular nerve",
+    "Obturator nerve",
+    "Sural nerve",
+    "Saphenous nerve",
+    "Medial plantar nerve",
+    "Lateral plantar nerve",
+    "Superior gluteal nerve",
+    "Inferior gluteal nerve",
+    "Pudendal nerve"
+  ],
+  "scope": "Investigate exact currently observed publisher download bytes only; repeated same-endpoint observations are not independent provenance or medical validation. Do not replace old checksum or approve geometry. Inspect original GLB JSON node names only; no decode, geometry export, serving or registration.",
+  "assetRightsReviewed": false,
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryDecoded": false,
+  "publicRelease": "NO_GO"
+}
