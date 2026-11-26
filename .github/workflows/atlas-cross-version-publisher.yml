@@ -1,0 +1,28 @@
+name: Atlas pinned cross-version publisher archives
+on:
+  pull_request:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'scripts/audit-bp3d-cross-version-publisher*'
+      - '.github/workflows/atlas-cross-version-publisher.yml'
+permissions:
+  contents: read
+jobs:
+  publisher:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+      - run: npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+      - run: node --test scripts/audit-bp3d-cross-version-publisher.test.mjs
+      - name: Compare all 376 retained reference receipts against pinned official 4.0 archives
+        run: node scripts/audit-bp3d-cross-version-publisher.mjs --audit-private
+      - name: Remove temporary private archives and report
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/bp3d-cross-version-publisher-*

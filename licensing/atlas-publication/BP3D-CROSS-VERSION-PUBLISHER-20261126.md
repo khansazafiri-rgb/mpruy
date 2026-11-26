@@ -1,0 +1,5 @@
+# Cross-version official source identity audit
+
+Compare 376 retained exact 4.3 publisher/mirror receipts against the two official 4.0 publisher ZIP archives and four exact tables pinned in dbcls-full-geometry-audit-20261125.json. Every archive and table is checked by size and SHA-256. A FJ filename match alone is not geometry or anatomical identity. Exact raw OBJ digest, unique FMA/BP/name and concept membership are distinct gates; exact matches also reproduce the retained triangle count. Different raw bytes remain unresolved, without rescaling or estimating a coordinate transform. No claim of completeness of a source concept or the local workstation inventory. No release approval. New CI results pending.
+
+This is independent of audit-atlas-native-overlap.mjs, which compares actual GLB position arrays on the local verified body pack. No geometry is copied into Git, and the CI runner removes its temporary copies.
