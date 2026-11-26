@@ -1,0 +1,7 @@
+# HRA lymph vasculature v1.5: source hierarchy only
+
+Pinned HuBMAP repository hubmapconsortium/hra-kg revision 27d6d493cd53761abb10f087767ec4cc74acb051; exact Git blobs 1eab86d50aeba777884e493a79d48a8a3e650d30 (63716 bytes CSV) and 8e2014a75ae841a8fe6aecb107ac463a15ef569c (2623 bytes metadata). DOI https://doi.org/10.48539/HBM622.PDVS.333. Singhal, Itkin & Boppana, 2024. Publisher states CC BY 4.0. GitHub source rows inspected: 121 exact source paths, 122 distinct source names, 46 distinct ontology IDs; 72 names have no ontology ID, 175 missing-ID occurrences, 74 paths with at least one missing ID. Max depth 10. The name "cisterna chyli" maps to source label "upper part of cisterna chyli"; retain both rather than promoting it to a whole structure.
+
+This is not a flow graph or 3D mesh. Do not infer drainage direction or merge identical ontology IDs across differently named source instances. No medical, geometry, registration or commercial approval. Actual pinned-download replay and HTTP tests run in CI.
+
+For authorized private workstation review, stage via `node scripts/audit-hra-lymphatic-hierarchy.mjs --stage-private`, then append `--lymphatic-hierarchy-folder=<exact returned folder>` to the existing independent preview command. The optional searchable HTML source-path page is available only when the pinned CSV and metadata validate and the explicit flag is present; the HRA reference dialog contains an optional link. No original Atlas body UI redesign or new public route. No geometry bytes included.

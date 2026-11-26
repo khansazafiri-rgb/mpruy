@@ -1,0 +1,32 @@
+name: Atlas pinned HRA lymphatic hierarchy audit
+on:
+  pull_request:
+    branches: [feat/atlas-multilingual-coverage-20261126]
+    paths:
+      - 'scripts/audit-hra-lymphatic-hierarchy*'
+      - 'scripts/atlas-lymphatic-hierarchy-page.mjs'
+      - 'apps/atlas-independent/src/reference-viewer.js'
+      - '.github/workflows/atlas-lymphatic-hierarchy.yml'
+permissions:
+  contents: read
+jobs:
+  hierarchy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test scripts/audit-hra-lymphatic-hierarchy.test.mjs
+      - name: Acquire pinned CSV and publisher metadata only
+        run: |
+          node scripts/audit-hra-lymphatic-hierarchy.mjs --stage-private
+          folders=(local-data/licensing-quarantine/hra-lymphatic-hierarchy-*)
+          test "${#folders[@]}" -eq 1
+          HRA_LYMPHATIC_FOLDER="$(basename "${folders[0]}")" node --test scripts/audit-hra-lymphatic-hierarchy.test.mjs
+      - name: Remove temporary source metadata
+        if: always()
+        run: rm -rf -- local-data/licensing-quarantine/hra-lymphatic-hierarchy-*

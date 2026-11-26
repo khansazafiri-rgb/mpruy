@@ -15,6 +15,8 @@ import {buildHraRegistry,serveHraReference} from './atlas-hra-private-reference.
 import {loadHraFemaleFive,loadHraBatch,mergeHraFemaleReferences} from './load-hra-female-five.mjs';
 import {loadAuditedReferenceSuite,exactSuiteHra} from './atlas-audited-reference-suite.mjs';
 import {serveVerifiedPrivateModel} from './serve-verified-private-model.mjs';
+import {loadHierarchy} from './audit-hra-lymphatic-hierarchy.mjs';
+import {hierarchyRoute,serveHierarchy} from './atlas-lymphatic-hierarchy-page.mjs';
 import {classifyIndependentPath,rawRequestPath} from './independent-atlas-routes.mjs';
 import {createLabPreviewServer,ROOTS} from './preview-4d-lab.mjs';
 import {assertDistributionClean} from '../licensing/tools/check-distribution.mjs';
@@ -67,6 +69,8 @@ assert(!(hraFemaleArgs.length||hraCardioArgs.length)||independent,'HRA female re
 const source43Registries=[];
 for(const [args,flag,file,count] of [[source43Args,'--bp3d43-folder=','bp3d43-dual-source-audit-20261125.json',12],[gap43Args,'--bp3d43-gap-folder=','bp3d43-gap-batch-dual-source-audit-20261125.json',28],[nerve43Args,'--bp3d43-nerves-folder=','bp3d43-nerves32-dual-source-audit-20261125.json',32],[discs43Args,'--bp3d43-discs-folder=','bp3d43-discs-23-dual-source-audit-20261125.json',23],[costal43Args,'--bp3d43-costal-folder=','bp3d43-costal-20-dual-source-audit-20261125.json',20],[neck43Args,'--bp3d43-neck-cartilage-folder=','bp3d43-head-neck-cartilage-14-dual-source-audit-20261125.json',14],[visceral43Args,'--bp3d43-visceral-folder=','bp3d43-visceral-18-dual-source-audit-20261126.json',18],[cns43Args,'--bp3d43-cns-folder=','bp3d43-cns-30-dual-source-audit-20261126.json',30],[pelvic43Args,'--bp3d43-pelvic-folder=','bp3d43-pelvic-digestive-15-dual-source-audit-20261126.json',15],[cardio43Args,'--bp3d43-cardio-folder=','bp3d43-cardiopulmonary-32-dual-source-audit-20261126.json',32],[bronchial43Args,'--bp3d43-bronchial-folder=','bp3d43-bronchial-thymus-22-dual-source-audit-20261126.json',22]])if(args.length)source43Registries.push(load43Elements(privateRoot,args[0].slice(flag.length),JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication',file),'utf8')),count));
 const suite=completeSuite?loadAuditedReferenceSuite(privateRoot,{includeHyoid,includeExpansion}):null;
+const lymphArgs=process.argv.filter(x=>x.startsWith('--lymphatic-hierarchy-folder='));assert(lymphArgs.length<=1&&(!lymphArgs.length||independent),'Explicit independent preview and one HRA hierarchy folder required');
+const lymph=lymphArgs.length?loadHierarchy(privateRoot,lymphArgs[0].slice('--lymphatic-hierarchy-folder='.length)):null;
 const source43=hyoidArgs.length?load43Elements(privateRoot,hyoidArgs[0].slice('--bp3d43-hyoid-folder='.length),JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication','bp3d43-hyoid-2-dual-source-audit-20261126.json'),'utf8')),2):suite?suite.bp:source43Registries.length?combine43Registries(source43Registries):null;
 const crossVersionOverlap=source43?auditCrossVersionOverlap(sourcePack.inventory.bodyModels,source43.inventory.items,JSON.parse(fs.readFileSync(path.join(root,'licensing/atlas-publication/dbcls-full-geometry-audit-20261125.json'),'utf8')).report.samples):null;
 if(crossVersionOverlap){const f=path.join(privateRoot,folder,'publication-cross-version-overlap.json'),tmp=f+'.'+process.pid+'.tmp';fs.writeFileSync(tmp,JSON.stringify(crossVersionOverlap,null,2)+'\n',{flag:'wx',mode:0o600});fs.renameSync(tmp,f);console.log('Private cross-version overlap:',JSON.stringify(crossVersionOverlap.counts));}
@@ -130,6 +134,7 @@ const server=createServer((request,response)=>{
  response.setHeader('Content-Security-Policy',"frame-ancestors 'self'");
  if(independent&&p==='/anatomy/viewer/MODEL-ATTRIBUTIONS.json')return send(200,JSON.stringify(sourcePack.attributions),mime['.json']);
  if(p==='/anatomy/viewer/inventory.json')return send(200,JSON.stringify(manifest),mime['.json']);
+ if(p===hierarchyRoute)return serveHierarchy(request,response,lymph);
  if(p.startsWith('/anatomy/viewer/hra-reference/')&&serveHraReference(request,response,hra))return;
  if(p.startsWith('/anatomy/viewer/bp3d43-reference/')&&serve43Reference(request,response,source43))return;
  if(coverage&&p==='/anatomy/viewer/learning-coverage.json')return send(200,JSON.stringify(coverage),mime['.json']);
@@ -165,6 +170,7 @@ try{
  const queue=[...models.keys()];let checked=0;
  await Promise.all(Array.from({length:4},async()=>{while(queue.length){const route=queue.shift(),response=await fetch(baseURL+route,{method:'HEAD'});assert(response.ok&&response.headers.get('content-type')==='model/gltf-binary','Model route failed: '+route);checked++;}}));
  for(const route of ['/anatomy/viewer/models/nervous.glb','/anatomy/viewer/models/visceral.glb','/anatomy/viewer/bp3d/inventory.json','/anatomy/4d-lab/','/local-data/','/anatomy/viewer/%2e%2e/private'])assert.equal((await fetch(baseURL+route,{method:'HEAD'})).status,404);
+ const lymphResponse=await fetch(baseURL+hierarchyRoute);assert.equal(lymphResponse.status,lymph?200:404);if(lymph)assert((await lymphResponse.text()).includes('121/121 jalur sumber'));
  const hraResponse=await fetch(baseURL+'/anatomy/viewer/hra-reference/inventory.json');assert(hraResponse.ok&& (await hraResponse.json()).items.length===hra.assets.size);
  let source43Routes=0;if(source43){const rr=await fetch(baseURL+'/anatomy/viewer/bp3d43-reference/inventory.json');assert(rr.ok&&(await rr.json()).items.length===source43.assets.size);for(const [id,a] of source43.assets){const u=baseURL+'/anatomy/viewer/bp3d43-reference/'+id+'.glb';const r=await fetch(u);assert(r.ok&&r.headers.get('content-type')==='model/gltf-binary'&&Buffer.from(await r.arrayBuffer()).length===a.bytes);source43Routes++;}assert.equal((await fetch(baseURL+'/anatomy/viewer/bp3d43-reference/unknown.glb')).status,404);}
   let hraRoutes=0;for(const id of hra.assets.keys()){const r=await fetch(baseURL+'/anatomy/viewer/hra-reference/'+id+'.glb',{method:'HEAD'});assert(r.ok&&r.headers.get('content-type')==='model/gltf-binary','HRA route failed: '+id);hraRoutes++;}
