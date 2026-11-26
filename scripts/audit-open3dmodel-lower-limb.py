@@ -88,7 +88,7 @@ def observed_inventory(doc, targets):
     if len(candidates)>500: raise ValueError("nerve discovery count exceeds cap")
     return {**result,"nerveMeshNodeNames":candidates,"scope":"raw node-name discovery, not verified anatomy"}
 
-def main(observed=False):
+def main(observed=False, decode=False):
     spec=json.loads((ROOT / "licensing/atlas-publication/open3dmodel-lower-limb-observed-source-20261126.json" if observed else CANDIDATE).read_text())
     if observed and (spec["publicRelease"]!="NO_GO" or spec["assetRightsReviewed"] is not False or spec["geometryDecoded"] is not False):
         raise ValueError("observed candidate quarantine gate")
@@ -107,7 +107,13 @@ def main(observed=False):
         if observed:
             report.pop("exactThirdPartyHashReplay",None)
             report.update({"exactObservedPublisherBytesReplay":True,"legacyComparison":spec["legacyComparison"],"assetRightsReviewed":False,"publicRelease":"NO_GO"})
-        print(("OPEN3DMODEL OBSERVED NERVE DISCOVERY " if observed else "OPEN3DMODEL LOWER LIMB QUARANTINE REPORT ")+json.dumps(report,separators=(",",":")))
+        print(("OPEN3DMODEL OBSERVED NERVE DISCOVERY " if observed else "OPEN3DMODEL LOWER LIMB QUARANTINE REPORT ")+json.dumps(report,separators=(",",":")),flush=True)
+        if decode:
+            if not observed: raise ValueError("Only pinned observed source may be decoded")
+            glb=Path(tmp)/"exact-source.glb"
+            with glb.open("xb") as f: f.write(data)
+            glb.chmod(0o600)
+            subprocess.run(["node",str(ROOT/"scripts/audit-open3dmodel-draco-nerves.mjs"),str(glb)],check=True,timeout=180)
 
 class Tests(unittest.TestCase):
     def test_exact_and_ambiguous_labels(self):
@@ -143,5 +149,6 @@ if __name__=="__main__":
     import sys
     if sys.argv[1:]==["--test"]: unittest.main(argv=[sys.argv[0]])
     elif sys.argv[1:]==["--inspect-observed"]: main(True)
+    elif sys.argv[1:]==["--decode-observed-private"]: main(True,True)
     elif not sys.argv[1:]: main()
     else: raise SystemExit("unknown arguments")
