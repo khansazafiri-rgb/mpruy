@@ -189,7 +189,7 @@ try{
   const start=async(mode,language)=>{await setup.locator('#referenceChallengeMode').selectOption(mode);await setup.locator('#referenceChallengeLanguage').selectOption(language);await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});assert(await dialog.locator('#referenceSource').isHidden());assert(await select.isHidden());};
   const {challengeLabel,hasChallengeGlossary}=await import('../apps/atlas-independent/src/reference-challenge-language.js');
   const glossaryCount=new Set(real43.inventory.items.filter(hasChallengeGlossary).map(e=>e.fmaId)).size;
-  if(real43.assets.size===246)assert.equal(glossaryCount,42);
+  if(real43.assets.size===246)assert.equal(glossaryCount,239);
   await start('mcq','en');
   const choices=challenge.locator('#referenceChallengeAnswers button');
   await choices.first().waitFor();
@@ -249,15 +249,17 @@ try{
   }else{
    const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),mode=setup.locator('#referenceChallengeMode'),lang=setup.locator('#referenceChallengeLanguage');
    await setup.waitFor({state:'visible'});
-   assert.equal(await mode.inputValue(),'source-mcq');assert(await lang.isDisabled());
-   assert(await mode.locator('option[value="mcq"]').isDisabled());assert(await mode.locator('option[value="typed"]').isDisabled());
+   const {hasChallengeGlossary}=await import('../apps/atlas-independent/src/reference-challenge-language.js');
+   assert.equal(new Set(real43.inventory.items.filter(hasChallengeGlossary).map(e=>e.fmaId)).size,27);
+   assert(await mode.locator('option[value="mcq"]').isEnabled());assert(await mode.locator('option[value="typed"]').isEnabled());
+   await mode.selectOption('source-mcq');assert(await lang.isDisabled());assert.equal(await lang.inputValue(),'en');
    await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});
    const choices=challenge.locator('#referenceChallengeAnswers button');await choices.first().waitFor();assert.equal(await choices.count(),4);
    await challenge.locator('#referenceChallengeProgress').filter({hasText:'Soal 1/27'}).waitFor();
    const id=await dialog.locator('#referenceViewport').getAttribute('data-rendered-id'),asset=real43.inventory.items.find(e=>e.id===id);assert(asset);
    assert.equal((await choices.allTextContents()).filter(x=>x===asset.name).length,1);
    await challenge.locator('#referenceChallengeQuit').click();await setup.waitFor({state:'visible'});
-   console.log('BP3D43 GAP SOURCE CHALLENGE PASS: 27 distinct concepts; unavailable multilingual modes disabled.');
+   console.log('BP3D43 GAP SOURCE CHALLENGE PASS: 27 distinct concepts; 27 glossary-bound concepts available; source mode English-only.');
   }
   await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});
   await page.waitForFunction(()=>document.querySelectorAll('#referenceViewport canvas').length===0);
