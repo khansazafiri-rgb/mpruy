@@ -26,7 +26,7 @@ export function parseMembership(text){
  assert(all.size>0);return {rows,all};
 }
 export function validateCandidates(doc,catalog){
- assert(doc.sourceVersion==='4.3'&&doc.geometryVerified===false&&doc.publicRelease==='NO_GO'&&Array.isArray(doc.rows)&&doc.rows.length<=32);
+ assert(doc.sourceVersion==='4.3'&&doc.geometryVerified===false&&doc.publicRelease==='NO_GO'&&Array.isArray(doc.rows)&&doc.rows.length<=(doc.batchId==='checkpoint-components-36'?36:32));
  const seen=new Set();
  for(const r of doc.rows){
   assert(/^FJ\d+[A-Za-z]?$/.test(r.fj)&&/^BP\d+$/.test(r.bp)&&/^FMA\d+$/.test(r.fma)&&!seen.has(r.fj));

@@ -5,6 +5,8 @@ on:
     paths:
       - 'licensing/atlas-publication/bp3d43-checkpoint-components-36-candidates.json'
       - 'scripts/audit-bp3d43-gap-batch.mjs'
+      - 'scripts/intake-bp3d43-priority-elements.mjs'
+      - 'scripts/intake-bp3d43-priority-elements.test.mjs'
       - '.github/workflows/atlas-checkpoint-components.yml'
 permissions:
   contents: read

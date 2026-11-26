@@ -72,3 +72,14 @@ test('pinned manifest replay rejects a valid ZIP with changed or malformed membe
   assert(!fs.existsSync(held));assert(!fs.existsSync(held+'.partial'));
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
+
+test('only the checkpoint batch accepts up to 36 individually validated elements',()=>{
+ const rows=Array.from({length:37},(_,i)=>({fj:'FJ'+(i+1),bp:'BP'+(i+1),fma:'FMA1',name:'Fixture '+(i+1),conceptMembership:['is_a']}));
+ const catalog={all:new Set(rows.map(r=>r.fj)),rows:new Map([['FMA1:is_a',rows.map(r=>r.fj)]])};
+ const doc={sourceVersion:'4.3',geometryVerified:false,publicRelease:'NO_GO',rows:rows.slice(0,36)};
+ assert.throws(()=>validateCandidates(doc,catalog));
+ assert.equal(validateCandidates({...doc,batchId:'checkpoint-components-36'},catalog).length,36);
+ assert.throws(()=>validateCandidates({...doc,batchId:'checkpoint-components-36',rows},catalog));
+ assert.throws(()=>validateCandidates({...doc,batchId:'checkpoint-components-36',rows:[...doc.rows.slice(0,35),doc.rows[0]]},catalog));
+ assert.throws(()=>validateCandidates({...doc,batchId:'checkpoint-components-36',rows:doc.rows.map((r,i)=>i===35?{...r,fma:'FMA2'}:r)},catalog));
+});
