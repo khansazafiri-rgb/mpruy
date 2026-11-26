@@ -2,9 +2,10 @@
 // clinical completeness claim, or score for an unavailable representation.
 import {permittedLearningGroup} from './learning-links.js';
 import {referenceRelation,privateReference} from './learning-reference-links.js';
+import {hraLearningReferences} from './hra-learning-links.js';
 const kinds=new Set(['BODY_MODEL','EXACT_ELEMENT_SELECTION','NATIVE_CONTEXT_CANDIDATE','ISOLATED_REFERENCE']);
 const validId=id=>/^(bp|sel)-[a-f0-9]{24}$/.test(id||'');
-export function guidedTracks(doc,entries,groups,referenceEntries=[]){
+export function guidedTracks(doc,entries,groups,referenceEntries=[],hraEntries=[]){
  if(doc?.schema!==1||doc.publicRelease!=='NO_GO'||doc.clinicalValidation!==false||doc.registrationValidated!==false||!Array.isArray(doc.rows)||doc.rows.length!==doc.targets||doc.rows.length>3000)throw Error('Laporan belajar tidak valid');
  const referenceById=new Map(referenceEntries.map(e=>[e.id,e])),byId=new Map(entries.map(e=>[e.id,e])),seen=new Set(),tracks=new Map(Object.entries(groups).map(([id,label])=>[id,{id,label,steps:[]}]));
  for(const r of doc.rows){
@@ -24,6 +25,7 @@ export function guidedTracks(doc,entries,groups,referenceEntries=[]){
    if(!e||!privateReference(e)||a.type!=='BP43_SINGLE_SOURCE_ELEMENT'||a.name!==e.name||a.fmaId!==e.fmaId||a.fj!==e.fj||!referenceRelation(r.group,r.target,e.name)||a.relation!==referenceRelation(r.group,r.target,e.name)||references.some(x=>x.id===e.id))continue;
    references.push({id:e.id,type:a.type,name:e.name,fj:e.fj,relation:a.relation});
   }
+  if(r.status==='NOT_FOUND_BY_EXACT_CHECK'&&Array.isArray(r.hraCandidates))for(const a of hraLearningReferences(r.group,r.target,hraEntries)){if(r.hraCandidates.some(x=>['id','assetId','nodeIndex','ontologyId','name','organ','type','kind'].every(k=>x[k]===a[k])))references.push(a);}
   tracks.get(r.group).steps.push({key,target:r.target,fmaId:r.fmaId||null,status:r.status,representations:candidates,references});
  }
  return [...tracks.values()].filter(t=>t.steps.length);

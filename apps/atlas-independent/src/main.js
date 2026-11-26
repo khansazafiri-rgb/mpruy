@@ -274,7 +274,7 @@ async function init(){
  catch(error){$('notice').textContent=error.message;counts();notifyHost('error',error.message);}
 }
 const referenceViewer=mountReferences(base);
-const openGuided=mountGuided({base,groups,entries:()=>[...byId.values()],choose:chooseEntry,openReference:referenceViewer.open43,ready:()=>initialized});
+const openGuided=mountGuided({base,groups,entries:()=>[...byId.values()],choose:chooseEntry,openReference:referenceViewer.open43,openHra:referenceViewer.openHra,ready:()=>initialized});
 $('openGuided').onclick=openGuided;
 originalUI=mountOriginalShell({
  groups,entries:()=>[...byId.values()],color:g=>'#'+colors[g].toString(16).padStart(6,'0'),
