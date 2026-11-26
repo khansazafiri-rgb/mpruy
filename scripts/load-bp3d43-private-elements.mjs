@@ -12,7 +12,7 @@ const read=(folder,name,max=64*1024*1024)=>{
  return fs.readFileSync(f);
 };
 export function load43Elements(privateRoot,folderName,evidence,expectedCount=12){
- assert([2,10,12,24,25,28,29,32,23,20,14,18,30,15,22].includes(expectedCount));
+ assert([2,10,12,24,25,28,29,32,23,20,14,18,30,15,22].includes(expectedCount)||(expectedCount===36&&evidence.batchId==='checkpoint-components-36'&&evidence.matches?.every(e=>e.relation==='RELATED_COMPONENT_ONLY')));
  if(expectedCount===2)assert(evidence.batchId==='hyoid-2'&&evidence.matches.every(e=>e.fma==='FMA52749'&&['FJ2772','FJ3201'].includes(e.fj)),'Invalid supplemental hyoid evidence');
  assert(/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(folderName),'Explicit local acquisition folder required');
  assert(fs.realpathSync(privateRoot)===privateRoot&&path.basename(privateRoot)==='licensing-quarantine');

@@ -19,3 +19,5 @@ export const BP43_HYOID=Object.freeze(['--bp3d43-hyoid-folder=','bp3d43-hyoid-2-
 export const BP43_EXPANSION=Object.freeze([["--bp3d43-cerebral-29-folder=","bp3d43-cerebral-29-dual-source-audit-20261126.json",29],["--bp3d43-axial-bone-32-folder=","bp3d43-axial-bone-32-dual-source-audit-20261126.json",32],["--bp3d43-cranial-32-folder=","bp3d43-cranial-32-dual-source-audit-20261126.json",32],["--bp3d43-limb-facial-bone-25-folder=","bp3d43-limb-facial-bone-25-dual-source-audit-20261126.json",25],["--bp3d43-cranial-10-folder=","bp3d43-cranial-10-dual-source-audit-20261126.json",10]].map(Object.freeze));
 
 export const BP43_MUSCLE=Object.freeze(['--include-muscle-24','bp3d43-muscle-24-dual-source-audit-20261126.json',24]);
+
+export const BP43_COMPONENTS=Object.freeze(['--include-checkpoint-components-36','bp3d43-checkpoint-components-36-dual-source-audit-20261126.json',36]);
