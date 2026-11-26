@@ -14,6 +14,7 @@ fs.mkdirSync(out, { recursive: true });
 const files = [
   ...Object.keys(EXPRESSIONS).map((name) => [`raka-${name}.svg`, raka(name)]),
   ['raka-sapa.svg', raka('senang', 'sapa')],
+  ['raka-duduk.svg', raka('netral', 'duduk')],
 ];
 for (const [file, state] of files) fs.writeFileSync(path.join(out, file), `${rakaSvg(state, { uid: file.replace('.svg', '') })}\n`);
 
