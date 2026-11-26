@@ -12,7 +12,8 @@ const read=(folder,name,max=64*1024*1024)=>{
  return fs.readFileSync(f);
 };
 export function load43Elements(privateRoot,folderName,evidence,expectedCount=12){
- assert([12,28,32,23,20,14,18,30,15,22].includes(expectedCount));
+ assert([2,12,28,32,23,20,14,18,30,15,22].includes(expectedCount));
+ if(expectedCount===2)assert(evidence.batchId==='hyoid-2'&&evidence.matches.every(e=>e.fma==='FMA52749'&&['FJ2772','FJ3201'].includes(e.fj)),'Invalid supplemental hyoid evidence');
  assert(/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(folderName),'Explicit local acquisition folder required');
  assert(fs.realpathSync(privateRoot)===privateRoot&&path.basename(privateRoot)==='licensing-quarantine');
  const folder=path.join(privateRoot,folderName);assert(fs.realpathSync(folder)===folder);

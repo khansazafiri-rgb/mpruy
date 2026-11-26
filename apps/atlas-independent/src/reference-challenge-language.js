@@ -1,6 +1,7 @@
 // Explicitly scoped educational glossary (provisional, not clinically reviewed). Source identities and original
 // labels are unchanged. Translation and synonym candidates need medical review.
 const glossary={
+ FMA52749:{source:'Hyoid bone',id:['tulang hioid','tulang hyoid'],en:['hyoid bone'],latin:['os hyoideum'],side:null},
  FMA52590:{source:'Cauda equina',id:['cauda equina','kauda ekuina'],en:['cauda equina'],latin:['cauda equina'],side:null},
  FMA37068:{source:'Left median nerve',id:['saraf median kiri','nervus medianus kiri'],en:['left median nerve','median nerve left'],latin:['nervus medianus sinister'],side:'left'},
  FMA37321:{source:'Left ulnar nerve',id:['saraf ulnaris kiri','nervus ulnaris kiri'],en:['left ulnar nerve','ulnar nerve left'],latin:['nervus ulnaris sinister'],side:'left'},

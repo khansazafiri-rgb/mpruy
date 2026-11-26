@@ -12,11 +12,11 @@ import {encodeNativeGlb} from './independent-bp3d-export.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 let real43=null,serve43=null,realHra=null,serveHra=null,hraStages=[];
-if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic','cardio','bronchial'].includes(process.env.ATLAS_TEST_REAL43)){
+if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic','cardio','bronchial','hyoid'].includes(process.env.ATLAS_TEST_REAL43)){
  const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
  const mode=process.env.ATLAS_TEST_REAL43,batches=["bp3d43-dual-source-audit-20261125.json","bp3d43-gap-batch-dual-source-audit-20261125.json","bp3d43-nerves32-dual-source-audit-20261125.json","bp3d43-discs-23-dual-source-audit-20261125.json","bp3d43-costal-20-dual-source-audit-20261125.json","bp3d43-head-neck-cartilage-14-dual-source-audit-20261125.json","bp3d43-visceral-18-dual-source-audit-20261126.json","bp3d43-cns-30-dual-source-audit-20261126.json","bp3d43-pelvic-digestive-15-dual-source-audit-20261126.json","bp3d43-cardiopulmonary-32-dual-source-audit-20261126.json","bp3d43-bronchial-thymus-22-dual-source-audit-20261126.json"];
  const size={bronchial:11,cardio:10,pelvic:9,cns:8,visceral:7,'head-neck':6,axial:5,expanded:3,combined:2,'1':1};
- const selected=mode==='gap'?[batches[1]]:batches.slice(0,size[mode]);
+ const selected=mode==='hyoid'?['bp3d43-hyoid-2-dual-source-audit-20261126.json']:mode==='gap'?[batches[1]]:batches.slice(0,size[mode]);
  if(mode!=='gap')assert.equal(folders.length,selected.length,'Fresh exact source acquisitions required');
  else assert(folders.length>=1,'Fresh gap acquisition required');
  const m=await import('./load-bp3d43-private-elements.mjs');serve43=m.serve43Reference;
@@ -26,7 +26,8 @@ if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic
   const folder=m.select43Acquisition(reports,evidence);
   return m.load43Elements(q,folder,evidence,evidence.matches.length);
  });
- real43=m.combine43Registries(registries);
+ real43=mode==='hyoid'?registries[0]:m.combine43Registries(registries);
+ if(mode==='hyoid'){assert.equal(real43.assets.size,2);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,1);assert.equal(real43.inventory.items.reduce((n,e)=>n+e.triangles,0),2392);}
  if(mode==='bronchial'){assert.equal(real43.assets.size,246);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,239);assert.equal(real43.inventory.items.reduce((sum,e)=>sum+e.triangles,0),667805);}
  if(mode==='cardio'){assert.equal(real43.assets.size,224);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,217);assert.equal(real43.inventory.items.reduce((sum,e)=>sum+e.triangles,0),654933);}
  if(mode==='pelvic'){assert.equal(real43.assets.size,192);assert.equal(new Set(real43.inventory.items.map(e=>e.fmaId)).size,185);assert.equal(real43.inventory.items.reduce((sum,e)=>sum+e.triangles,0),590913);}
@@ -194,7 +195,11 @@ try{
    assert.equal(await viewport.locator('canvas').count(),1);
    await dialog.locator('#referenceFit').click();
   }
-  if(real43.assets.size!==28){
+  if(real43.assets.size===2){
+   const {focusedReferenceQuestions}=await import('../apps/atlas-independent/src/reference-challenge-state.js');
+   assert.equal(focusedReferenceQuestions(real43.inventory.items).length,0,'One concept must not produce a four-choice quiz');
+   console.log('BP3D43 HYOID PASS: two source elements, one concept; insufficient challenge pool remains blocked.');
+  }else if(real43.assets.size!==28){
   const setup=dialog.locator('#referenceChallengeSetup'),challenge=dialog.locator('#referenceChallenge'),feedback=dialog.locator('#referenceChallengeFeedback'),next=dialog.locator('#referenceChallengeNext');
   const currentEntry=async()=>{const id=await viewport.getAttribute('data-rendered-id');const e=real43.inventory.items.find(x=>x.id===id);assert(e,'Challenge must use an audited source element');return e;};
   const start=async(mode,language)=>{await setup.locator('#referenceChallengeMode').selectOption(mode);await setup.locator('#referenceChallengeLanguage').selectOption(language);await setup.locator('#referenceChallengeStart').click();await challenge.waitFor({state:'visible'});assert(await dialog.locator('#referenceSource').isHidden());assert(await select.isHidden());};
