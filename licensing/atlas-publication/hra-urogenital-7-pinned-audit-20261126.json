@@ -1,0 +1,1929 @@
+{
+  "schema": 1,
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "matched": 7,
+  "held": 0,
+  "exactNamedMeshNodes": 123,
+  "rows": [
+    {
+      "id": "kidney-female-left",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-left/v1.3/assets/3d-vh-f-kidney-l.glb",
+      "bytes": 1356736,
+      "sha256": "58f0227d45b14d7bcfd2ed05a7bcd76000051ea08d52f844feebd70d612f8084",
+      "metadataSHA256": "b33633ba10c746c4b11964f364c04dede35ed1110eb4f5383a956b71b6defe44",
+      "crosswalkSHA256": "19fbe87b7df8cf6b840456c7477ae5aaada30a7d535751d59e20941214bee445",
+      "meshCount": 26,
+      "nodeCount": 31,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_left_kidney",
+          "ontologyId": "UBERON:0004538",
+          "label": "left kidney",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_kidney_capsule_L",
+          "ontologyId": "UBERON:0002015",
+          "label": "kidney capsule",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_hilum_of_kidney_L",
+          "ontologyId": "UBERON:0008716",
+          "label": "hilum of kidney",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_medulla_L",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_a",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_b",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_c",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_d",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_e",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_f",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_g",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_h",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_i",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_j",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_L_k",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_a",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_b",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [
+            18
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_c",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_d",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_e",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_f",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [
+            22
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_g",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            23
+          ],
+          "meshNodeIndices": [
+            23
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_h",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            24
+          ],
+          "meshNodeIndices": [
+            24
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_i",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            25
+          ],
+          "meshNodeIndices": [
+            25
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_j",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            26
+          ],
+          "meshNodeIndices": [
+            26
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_L_k",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            27
+          ],
+          "meshNodeIndices": [
+            27
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_cortex_of_kidney_L",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney",
+          "nodeIndices": [
+            28
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_renal_column_L",
+          "ontologyId": "UBERON:0001284",
+          "label": "renal column",
+          "nodeIndices": [
+            29
+          ],
+          "meshNodeIndices": [
+            29
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_outer_cortex_of_kidney_L",
+          "ontologyId": "UBERON:0002189",
+          "label": "outer cortex of kidney",
+          "nodeIndices": [
+            30
+          ],
+          "meshNodeIndices": [
+            30
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 26,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM449.JPXL.964",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "kidney-female-right",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-female-right/v1.3/assets/3d-vh-f-kidney-r.glb",
+      "bytes": 1383740,
+      "sha256": "d80ee5a109a5cd5c90ca0770d1087e28786e2c545747cbae15a5ea22b4b0af86",
+      "metadataSHA256": "9c68af2a7e3ee822d12513848383ccdd0911c99474eda0bef87a0451f6747d57",
+      "crosswalkSHA256": "a8b8cb5108a3e5baf6f94d35047db7c985a742dffecabd29bb0a93f650e93a36",
+      "meshCount": 24,
+      "nodeCount": 29,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_right_kidney",
+          "ontologyId": "UBERON:0004539",
+          "label": "right kidney",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_kidney_capsule_R",
+          "ontologyId": "UBERON:0002015",
+          "label": "kidney capsule",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_hilum_of_kidney_R",
+          "ontologyId": "UBERON:0008716",
+          "label": "hilum of kidney",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_cortex_of_kidney_R",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_outer_cortex_of_kidney_R",
+          "ontologyId": "UBERON:0002189",
+          "label": "outer cortex of kidney",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_column_R",
+          "ontologyId": "UBERON:0001284",
+          "label": "renal column",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_medulla_R",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_a",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_b",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_c",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_d",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_e",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_f",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_g",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_h",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_i",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_papilla_R_j",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_a",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_b",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_c",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_d",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [
+            22
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_e",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            23
+          ],
+          "meshNodeIndices": [
+            23
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_f",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            24
+          ],
+          "meshNodeIndices": [
+            24
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_g",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            25
+          ],
+          "meshNodeIndices": [
+            25
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_h",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            26
+          ],
+          "meshNodeIndices": [
+            26
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_i",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            27
+          ],
+          "meshNodeIndices": [
+            27
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pyramid_R_j",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            28
+          ],
+          "meshNodeIndices": [
+            28
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 24,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM968.HSNL.854",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "kidney-male-left",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-left/v1.3/assets/3d-vh-m-kidney-l.glb",
+      "bytes": 1536980,
+      "sha256": "1e9f54281652d0b05c9ae54a06380a41a8d9c62c1036829180750995b1730fac",
+      "metadataSHA256": "98291212bdc7bff32b5b8a79614576acd3e3e856e7cf0c232fe9a81c0119102b",
+      "crosswalkSHA256": "254de6f11d173d35a736cebd8b25509dd92e5b9279b29d61332e9c00f807910c",
+      "meshCount": 22,
+      "nodeCount": 27,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_left_kidney",
+          "ontologyId": "UBERON:0004538",
+          "label": "left kidney",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_kidney_capsule_L",
+          "ontologyId": "UBERON:0002015",
+          "label": "kidney capsule",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_hilum_of_kidney_L",
+          "ontologyId": "UBERON:0008716",
+          "label": "hilum of kidney",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_cortex_of_kidney_L",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_renal_column_L",
+          "ontologyId": "UBERON:0001284",
+          "label": "renal column",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_outer_cortex_of_kidney_L",
+          "ontologyId": "UBERON:0002189",
+          "label": "outer cortex of kidney",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_medulla_L",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_a",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_b",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_c",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_d",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_e",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_f",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_g",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_h",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_L_i",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_a",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [
+            18
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_b",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_c",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_d",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_e",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [
+            22
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_f",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            23
+          ],
+          "meshNodeIndices": [
+            23
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_g",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            24
+          ],
+          "meshNodeIndices": [
+            24
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_h",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            25
+          ],
+          "meshNodeIndices": [
+            25
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_L_i",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            26
+          ],
+          "meshNodeIndices": [
+            26
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 22,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM759.JKKF.434",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "kidney-male-right",
+      "version": "v1.3",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/kidney-male-right/v1.3/assets/3d-vh-m-kidney-r.glb",
+      "bytes": 1547360,
+      "sha256": "f23bac3f62fd050b689bdee86bb8a20bff6997e830cb508c847f74c03c6a964b",
+      "metadataSHA256": "a728c19846302d04ad374cf6e2ead990d7834979d3607c15a2e554d8926e8e7b",
+      "crosswalkSHA256": "9b647536778159808833556ea85a786f460e67dec0a151cdd4870d943408e36a",
+      "meshCount": 24,
+      "nodeCount": 29,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_right_kidney",
+          "ontologyId": "UBERON:0004539",
+          "label": "right kidney",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_kidney_capsule_R",
+          "ontologyId": "UBERON:0002015",
+          "label": "kidney capsule",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_hilum_of_kidney_R",
+          "ontologyId": "UBERON:0008716",
+          "label": "hilum of kidney",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_medulla_R",
+          "ontologyId": "UBERON:0000362",
+          "label": "renal medulla",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_j",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_i",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_h",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_g",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_f",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_e",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_d",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_c",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_b",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_papilla_R_a",
+          "ontologyId": "UBERON:0001228",
+          "label": "renal papilla",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_R",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_a",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_b",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_c",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [
+            18
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_d",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_e",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_f",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            21
+          ],
+          "meshNodeIndices": [
+            21
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_g",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [
+            22
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_h",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            23
+          ],
+          "meshNodeIndices": [
+            23
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_i",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            24
+          ],
+          "meshNodeIndices": [
+            24
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pyramid_j",
+          "ontologyId": "UBERON:0004200",
+          "label": "renal pyramid",
+          "nodeIndices": [
+            25
+          ],
+          "meshNodeIndices": [
+            25
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_cortex_of_kidney_R",
+          "ontologyId": "UBERON:0001225",
+          "label": "cortex of kidney",
+          "nodeIndices": [
+            26
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_renal_column_R",
+          "ontologyId": "UBERON:0001284",
+          "label": "renal column",
+          "nodeIndices": [
+            27
+          ],
+          "meshNodeIndices": [
+            27
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_outer_cortex_of_kidney_R",
+          "ontologyId": "UBERON:0002189",
+          "label": "outer cortex of kidney",
+          "nodeIndices": [
+            28
+          ],
+          "meshNodeIndices": [
+            28
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 24,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM364.QTSC.334",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "prostate-male",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/prostate-male/v1.2/assets/3d-vh-m-prostate.glb",
+      "bytes": 4086520,
+      "sha256": "b456bf89571b8ad46f7c01941cdc45d6c2176c1554849755b009819231142321",
+      "metadataSHA256": "05654109ccc4c285b6bfb3a6f129db635088fd545bd19f4f738a4132d1b6d7cf",
+      "crosswalkSHA256": "373f677816cf05c783eb2dfcfadd32180e71a36153d80756317cc8a1aa0c0bdd",
+      "meshCount": 18,
+      "nodeCount": 27,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_male_reproductive_system",
+          "ontologyId": "UBERON:0000079",
+          "label": "male reproductive system",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_male_genital_duct",
+          "ontologyId": "UBERON:0010140",
+          "label": "male genital duct",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_seminal_vesicle",
+          "ontologyId": "UBERON:0000998",
+          "label": "seminal vesicle",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ejaculatory_duct",
+          "ontologyId": "UBERON:0000999",
+          "label": "ejaculatory duct",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_prostate_gland",
+          "ontologyId": "UBERON:0002367",
+          "label": "prostate gland",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_prostatic_utricle",
+          "ontologyId": "UBERON:0011199",
+          "label": "prostatic utricle",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_seminal_colliculus",
+          "ontologyId": "FMA:19719",
+          "label": "Verumontanum",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_prostate_duct_R",
+          "ontologyId": "UBERON:0002485",
+          "label": "prostate duct",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_apex_of_prostate",
+          "ontologyId": "UBERON:0035441",
+          "label": "apex of prostate",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_base_of_prostate",
+          "ontologyId": "UBERON:0035331",
+          "label": "base of prostate",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_peripheral_zone_of_prostate_R",
+          "ontologyId": "UBERON:8410026",
+          "label": "peripheral zone of prostate",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_peripheral_zone_of_prostate_L",
+          "ontologyId": "UBERON:8410026",
+          "label": "peripheral zone of prostate",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_transition_zone__of_prostate_L",
+          "ontologyId": "UBERON:8410025",
+          "label": "transition zone of prostate",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_transition_zone_of_prostate_R",
+          "ontologyId": "UBERON:8410025",
+          "label": "transition zone of prostate",
+          "nodeIndices": [
+            20
+          ],
+          "meshNodeIndices": [
+            20
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_central_zone_of_prostate_R",
+          "ontologyId": "UBERON:8410027",
+          "label": "central zone of prostate",
+          "nodeIndices": [
+            22
+          ],
+          "meshNodeIndices": [
+            22
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_central_zone_of_prostate_L",
+          "ontologyId": "UBERON:8410027",
+          "label": "central zone of prostate",
+          "nodeIndices": [
+            23
+          ],
+          "meshNodeIndices": [
+            23
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_anterior_fibromuscular_stroma_L",
+          "ontologyId": "FMA:74238",
+          "label": "Anterior fibromuscular stroma of prostate",
+          "nodeIndices": [
+            25
+          ],
+          "meshNodeIndices": [
+            25
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_anterior_fibromuscular_stroma_R",
+          "ontologyId": "FMA:74238",
+          "label": "Anterior fibromuscular stroma of prostate",
+          "nodeIndices": [
+            26
+          ],
+          "meshNodeIndices": [
+            26
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 15,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM545.CTNV.442",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "urinary-bladder-female",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/urinary-bladder-female/v1.2/assets/3d-vh-f-urinary-bladder.glb",
+      "bytes": 765224,
+      "sha256": "4bec5fdc117cbc4247a7d16f22f320717264f0fe7cae75fcb2e06432e1ab1a3c",
+      "metadataSHA256": "224bb393756b14ba97630ccf23b9baab9b21b5e6f63ce0c17af1b1bed3677b2c",
+      "crosswalkSHA256": "7a0af24763e19d0a3ab48713087220ef5763d2fc7ddc7e553f241b55fc1caeb9",
+      "meshCount": 6,
+      "nodeCount": 8,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_urinary_bladder",
+          "ontologyId": "UBERON:0001255",
+          "label": "urinary bladder",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_fundus_of_urinary_bladder_dome",
+          "ontologyId": "UBERON:0006082",
+          "label": "fundus of urinary bladder",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_urinary_bladder_neck_smooth_muscle",
+          "ontologyId": "UBERON:0004230",
+          "label": "urinary bladder neck smooth muscle",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_fundus_of_urinary_bladder_base",
+          "ontologyId": "UBERON:0006082",
+          "label": "fundus of urinary bladder",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_trigone_of_urinary_bladder",
+          "ontologyId": "UBERON:0001257",
+          "label": "trigone of urinary bladder",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ureteral_orifice_R",
+          "ontologyId": "FMA:15939",
+          "label": "Right ureteral orifice",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_ureteral_orifice_L",
+          "ontologyId": "FMA:15940",
+          "label": "Left ureteral orifice",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 6,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM595.LMKX.573",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "urinary-bladder-male",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/urinary-bladder-male/v1.2/assets/3d-vh-m-urinary-bladder.glb",
+      "bytes": 199044,
+      "sha256": "070893aea9139d9a2c4f8da3aa66ca309a3c683a599d93a37dd7031c7d71021d",
+      "metadataSHA256": "76d4d22b93af3ed7ea95313d88b17247b097763b9d864cc166d6420848b86fc5",
+      "crosswalkSHA256": "241df5e74cb6e707aeabc06591361e19ba1cf831a3a326527c766e6900e4e2c5",
+      "meshCount": 6,
+      "nodeCount": 9,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_urinary_bladder",
+          "ontologyId": "UBERON:0001255",
+          "label": "urinary bladder",
+          "nodeIndices": [
+            0
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_urinary_bladder_neck_smooth_muscle",
+          "ontologyId": "UBERON:0004230",
+          "label": "urinary bladder neck smooth muscle",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_fundus_of_urinary_bladder_dome",
+          "ontologyId": "UBERON:0006082",
+          "label": "fundus of urinary bladder",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [
+            2
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_fundus_of_urinary_bladder",
+          "ontologyId": "UBERON:0006082",
+          "label": "fundus of urinary bladder",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_ureteral_orifice_R",
+          "ontologyId": "FMA:15939",
+          "label": "Right ureteral orifice",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_ureteral_orifice_L",
+          "ontologyId": "FMA:15940",
+          "label": "Left ureteral orifice",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_fundus_of_urinary_bladder_base1",
+          "ontologyId": "UBERON:0006082",
+          "label": "fundus of urinary bladder",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_trigone_of_urinary_bladder",
+          "ontologyId": "UBERON:0001257",
+          "label": "trigone of urinary bladder",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 6,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM722.RMHQ.397",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "geometryPublished": 0,
+  "sourceCommit": "fc3893606740d1f3a4d70ab7b5826c40355394f2",
+  "workflowRun": 45851525943,
+  "workflowJob": 140018831401,
+  "conclusion": "success",
+  "browserReplayVerified": false
+}

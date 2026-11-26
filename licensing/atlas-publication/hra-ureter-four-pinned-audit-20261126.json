@@ -1,0 +1,934 @@
+{
+  "schema": 1,
+  "publisherRevision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+  "matched": 4,
+  "held": 0,
+  "exactNamedMeshNodes": 58,
+  "rows": [
+    {
+      "id": "ureter-female-left",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-left/v1.2/assets/3d-vh-f-ureter-l.glb",
+      "bytes": 682688,
+      "sha256": "a530ed1b4064221db5d3e82774911a9735ebe6c878ec2671be3faff7cf849df9",
+      "metadataSHA256": "690919f8369c78e6ce35ede52caa2dfa2dc08ec43986bd993aafefab7a7cb2af",
+      "crosswalkSHA256": "8034e49d56d90a392529bbed30813a23f9cf4f46ea164afc476dab8f3d9c49b9",
+      "meshCount": 16,
+      "nodeCount": 20,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_left_ureter",
+          "ontologyId": "UBERON:0001223",
+          "label": "left ureter",
+          "nodeIndices": [
+            19
+          ],
+          "meshNodeIndices": [
+            19
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_kidney_calyx_L",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_a",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_b",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_c",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_d",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_e",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_f",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_g",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_h",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_i",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_L_j",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_L",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_L_a",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_L_b",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_L_c",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_L_d",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pelvis_L",
+          "ontologyId": "UBERON:0001224",
+          "label": "renal pelvis",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [
+            18
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 16,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM343.JGCD.345",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "ureter-female-right",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-female-right/v1.2/assets/3d-vh-f-ureter-r.glb",
+      "bytes": 611468,
+      "sha256": "5f800b7dfd8056054ee030fad32de4e648920fbf1bada134fb989b2cc66f4436",
+      "metadataSHA256": "e63d55e3ba4618a6c7f788842c35d99c9bac66a877e54a0c0827d8b7b13e0451",
+      "crosswalkSHA256": "87bcf9e5b2f330229919c6bf79660500f00ea5f6f3ebfc7c1e24c5b511553355",
+      "meshCount": 15,
+      "nodeCount": 19,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_F_right_ureter",
+          "ontologyId": "UBERON:0001222",
+          "label": "right ureter",
+          "nodeIndices": [
+            18
+          ],
+          "meshNodeIndices": [
+            18
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_calyx_R",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_a",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_b",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_c",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_d",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_e",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_f",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_g",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_h",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_i",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_minor_calyx_R_j",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_R",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_R_a",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_R_b",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_major_calyx_R_c",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_F_renal_pelvis_R",
+          "ontologyId": "UBERON:0001224",
+          "label": "renal pelvis",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 15,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM375.FNHZ.563",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "ureter-male-left",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-left/v1.2/assets/3d-vh-m-ureter-l.glb",
+      "bytes": 682892,
+      "sha256": "ebdd493c2e8095ccb6e795f49bf26c94e8d205c94097a7e1f9a9d7b168a1173c",
+      "metadataSHA256": "f80c92f616d7a58081d20c31a776c6ff44a3bdd5e5cf76e3a28b1f1e68dbd5e7",
+      "crosswalkSHA256": "38cddedbb9ebe8b57bdf27cae343418fde9d597b6d9bcb9fd1e08b7cc82f0f56",
+      "meshCount": 14,
+      "nodeCount": 18,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_ureter_L",
+          "ontologyId": "UBERON:0001223",
+          "label": "left ureter",
+          "nodeIndices": [
+            17
+          ],
+          "meshNodeIndices": [
+            17
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pelvis_L",
+          "ontologyId": "UBERON:0001224",
+          "label": "renal pelvis",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [
+            1
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_kidney_calyx_L",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_L",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_L_a",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_L_b",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [
+            5
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_L_c",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_a",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_b",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_c",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_d",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_e",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_f",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_g",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_h",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_L_i",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 14,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM434.VLQJ.299",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    },
+    {
+      "id": "ureter-male-right",
+      "version": "v1.2",
+      "assetURL": "https://cdn.humanatlas.io/digital-objects/ref-organ/ureter-male-right/v1.2/assets/3d-vh-m-ureter-r.glb",
+      "bytes": 540788,
+      "sha256": "215978b67cf4d3876249a8dafb8c83a13471b5e1eb601559dca25a61a7c9d091",
+      "metadataSHA256": "a0b59286cdcf1658f528ef8b33862f0e24146f99830e33d38a3b712427db8927",
+      "crosswalkSHA256": "2dc84b45611314a2119bf31027f364f37b6ef05a604107d2650e347f9ce9206c",
+      "meshCount": 13,
+      "nodeCount": 17,
+      "extensionsUsed": [],
+      "labels": [
+        {
+          "nodeName": "VH_M_ureter_R",
+          "ontologyId": "UBERON:0001222",
+          "label": "right ureter",
+          "nodeIndices": [
+            16
+          ],
+          "meshNodeIndices": [
+            16
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_calyx_R",
+          "ontologyId": "UBERON:0006517",
+          "label": "kidney calyx",
+          "nodeIndices": [
+            1
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_R",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            2
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_R_a",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            3
+          ],
+          "meshNodeIndices": [
+            3
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_major_calyx_R_b",
+          "ontologyId": "UBERON:0001226",
+          "label": "major calyx",
+          "nodeIndices": [
+            4
+          ],
+          "meshNodeIndices": [
+            4
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            5
+          ],
+          "meshNodeIndices": [],
+          "status": "HOLD_GROUP_MISSING_OR_AMBIGUOUS"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_a",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            6
+          ],
+          "meshNodeIndices": [
+            6
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_b",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            7
+          ],
+          "meshNodeIndices": [
+            7
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_c",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            8
+          ],
+          "meshNodeIndices": [
+            8
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_d",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            9
+          ],
+          "meshNodeIndices": [
+            9
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_e",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            10
+          ],
+          "meshNodeIndices": [
+            10
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_f",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            11
+          ],
+          "meshNodeIndices": [
+            11
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_g",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            12
+          ],
+          "meshNodeIndices": [
+            12
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_h",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            13
+          ],
+          "meshNodeIndices": [
+            13
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_minor_calyx_R_i",
+          "ontologyId": "UBERON:0001227",
+          "label": "minor calyx",
+          "nodeIndices": [
+            14
+          ],
+          "meshNodeIndices": [
+            14
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        },
+        {
+          "nodeName": "VH_M_renal_pelvis_R",
+          "ontologyId": "UBERON:0001224",
+          "label": "renal pelvis",
+          "nodeIndices": [
+            15
+          ],
+          "meshNodeIndices": [
+            15
+          ],
+          "status": "EXACT_NAMED_MESH_NODE"
+        }
+      ],
+      "exactMeshNodeCount": 13,
+      "license": "CC-BY-4.0",
+      "doi": "https://doi.org/10.48539/HBM852.SVFJ.388",
+      "creators": [
+        "Kristen Browne",
+        "Heidi Schlehlein"
+      ],
+      "status": "EXACT_PUBLISHER_AND_PINNED_GLTF_BYTES",
+      "clinicalValidation": false,
+      "registrationValidated": false,
+      "approvedForDistribution": false
+    }
+  ],
+  "publicRelease": "NO_GO",
+  "registrationValidated": false,
+  "clinicalValidation": false,
+  "geometryPublished": 0,
+  "sourceCommit": "ccb816bcdffa7679072cd7a2e33a03f3d3ba7d49",
+  "workflowRun": 45852042241,
+  "workflowJob": 140020632752,
+  "conclusion": "success",
+  "browserReplayVerified": false
+}
