@@ -6,7 +6,7 @@
   "sourceLabelConcepts": 239,
   "distinctRawSHA256": 246,
   "triangles": 667805,
-  "scope": "Distinct within 4.3 only; not net-new vs 4.0. Individual browser replay of 246 pending. Bronchial elements do not form complete airway trees. Thymic lobes are not lymphatic vessels.",
+  "scope": "Distinct within 4.3 only; not net-new vs 4.0. Individual rendering of 246 source elements verified, no whole-body registration.",
   "clinicalValidation": false,
   "registrationValidated": false,
   "publicRelease": "NO_GO",
@@ -14,5 +14,16 @@
     "elements": 224,
     "sourceLabelConcepts": 217,
     "workflowRun": 45685256580
+  },
+  "browserReplay": {
+    "commit": "caa7549e7163d9f0a83f57ba2230a24a1448a563",
+    "workflowRun": 45752696033,
+    "workflowJob": 139683982158,
+    "conclusion": "success",
+    "renderedActualPublisherGLBs": 246,
+    "sourceLabelConceptsCompleted": 239,
+    "multilingualTypedConcepts": 42,
+    "unitAndIdentityTestsPassed": 49,
+    "registrationValidated": false
   }
 }
