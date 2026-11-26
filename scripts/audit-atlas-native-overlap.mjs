@@ -9,7 +9,7 @@ export function planNativeOverlap(body,refs){
  const index=auditCrossVersionOverlap(body,refs),byId=new Map(body.map(x=>[x.id,x])),byFj=new Map(refs.map(x=>[x.fj,x]));
  return index.rows.map(row=>{
   const ref=byFj.get(row.fj),base={fj:row.fj,fmaId:row.fmaId,bpId:ref.bpId,sourceName:row.name,referenceId:ref.id,rawSHA256:ref.rawSHA256};
-  if(!row.localExactRawByteMatches.length)return {...base,status:row.status==='INCOMPLETE_LOCAL_RAW_DIGEST_INDEX'?'HOLD_INCOMPLETE_RAW_INDEX':'NO_EXACT_RAW_MATCH'};
+  if(!row.localExactRawByteMatches.length)return {...base,status:index.sourceElementOccurrences===0||index.rawDigestOccurrences!==index.sourceElementOccurrences?'HOLD_INCOMPLETE_RAW_INDEX':'NO_EXACT_RAW_MATCH'};
   if(row.localExactRawByteMatches.length!==1||row.localElementIdMatches.length!==1)return {...base,status:'HOLD_AMBIGUOUS_ELEMENT_IDENTITY'};
   const match=row.localExactRawByteMatches[0],m=byId.get(match.modelId);
   if(match.fmaId!==ref.fmaId||match.bpId!==ref.bpId||match.fj!==ref.fj||norm(m.name)!==norm(ref.name))return {...base,status:'HOLD_IDENTITY_MISMATCH'};
@@ -24,7 +24,7 @@ export function compareNativeElement(bodyBytes,referenceBytes,fj){
 export function auditNativeOverlap(body,refs,{readBody,readReference}){
  const rows=planNativeOverlap(body,refs).map(r=>{
   if(r.status!=='EXACT_IDENTITY_CANDIDATE')return r;
-  try{const result=compareNativeElement(readBody(r.bodyModelId),readReference(r.referenceId),r.fj);assert(result.sameNativeFloat32Positions,'Native coordinates differ');return {...r,...result,status:'EXACT_ELEMENT_NATIVE_COORDINATES',wholeConceptGeometryIdentical:result.otherBodyElements===0};}
+  try{const result=compareNativeElement(readBody(r.bodyModelId),readReference(r.referenceId),r.fj);assert(result.sameNativeFloat32Positions,'Native coordinates differ');return {...r,...result,status:'EXACT_ELEMENT_NATIVE_COORDINATES',entireLocalModelPositionArrayMatchesReferenceElement:result.otherBodyElements===0};}
   catch(error){return {...r,status:'HOLD_COORDINATE_REPLAY',reason:String(error.message)};}
  });
  const counts={};for(const r of rows)counts[r.status]=(counts[r.status]||0)+1;

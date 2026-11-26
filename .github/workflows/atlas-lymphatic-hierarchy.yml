@@ -27,6 +27,18 @@ jobs:
           folders=(local-data/licensing-quarantine/hra-lymphatic-hierarchy-*)
           test "${#folders[@]}" -eq 1
           HRA_LYMPHATIC_FOLDER="$(basename "${folders[0]}")" node --test scripts/audit-hra-lymphatic-hierarchy.test.mjs
+      - name: Install independent viewer and isolated Chromium
+        run: |
+          npm ci --prefix apps/4d-lab --ignore-scripts --no-audit --no-fund
+          npm ci --prefix apps/atlas-independent --ignore-scripts --no-audit --no-fund
+          npm install --prefix "$RUNNER_TEMP/atlas-browser" --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/atlas-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Real source hierarchy browser and original UI regression
+        run: |
+          folders=(local-data/licensing-quarantine/hra-lymphatic-hierarchy-*)
+          test "${#folders[@]}" -eq 1
+          export PLAYWRIGHT_MODULE="$RUNNER_TEMP/atlas-browser/node_modules/playwright"
+          HRA_LYMPHATIC_FOLDER="$(basename "${folders[0]}")" node scripts/test-private-atlas-browser.mjs
       - name: Remove temporary source metadata
         if: always()
         run: rm -rf -- local-data/licensing-quarantine/hra-lymphatic-hierarchy-*

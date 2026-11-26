@@ -108,7 +108,7 @@ export function mountReferences(base){
  $('referenceLoad').onclick=()=>{const e=entries.find(x=>x.id===$('referenceSelect').value);if(e)load(e);};
  $('referenceFit').onclick=()=>fit();
  $('referenceClose').onclick=()=>dialog.close();dialog.addEventListener('close',()=>{endChallenge();cleanup();});
- const hierarchyLink=document.createElement('a');hierarchyLink.textContent='Hierarki limfatik HRA (tabel sumber, bukan 3D)';hierarchyLink.href=base+'lymphatic-hierarchy/';hierarchyLink.target='_blank';hierarchyLink.rel='noopener';hierarchyLink.hidden=true;$('referenceSource').insertAdjacentElement('afterend',hierarchyLink);
+ const hierarchyLink=document.createElement('a');hierarchyLink.id='lymphaticHierarchyLink';hierarchyLink.textContent='Hierarki limfatik HRA (tabel sumber, bukan 3D)';hierarchyLink.href=base+'lymphatic-hierarchy/';hierarchyLink.target='_blank';hierarchyLink.rel='noopener';hierarchyLink.hidden=true;$('referenceSource').insertAdjacentElement('afterend',hierarchyLink);
  const open=async(kind)=>{
   if(location.hostname!=='127.0.0.1'||dialog.open)return;
   sourceKind=kind;hierarchyLink.hidden=true;scope.checked=false;limit.value='all';topics.hidden=true;regionTopic.replaceChildren();systemTopic.replaceChildren();setup.hidden=true;challenge.hidden=true;browse.hidden=false;$('referenceSource').hidden=false;$('referenceSearch').value='';$('referenceSearch').placeholder=kind==='bp43'?'Cari elemen BP3D':'Cari organ HRA';$('referenceSearch').setAttribute('aria-label',kind==='bp43'?'Cari elemen BP3D 4.3':'Cari organ HRA');$('referenceSelect').setAttribute('aria-label',kind==='bp43'?'Pilih elemen BP3D 4.3':'Pilih organ HRA');$('referenceTitle').textContent=kind==='bp43'?'Referensi elemen BodyParts3D 4.3':'Referensi organ HRA';dialog.showModal();$('referenceSource').removeAttribute('href');$('referenceSource').textContent='';entries=[];list();
@@ -116,7 +116,7 @@ export function mountReferences(base){
   try{createScene();status('Memeriksa referensi sumber…');const response=await fetch(base+(kind==='bp43'?'bp3d43-reference/':'hra-reference/')+'inventory.json',{cache:'no-store'});if(!response.ok)throw Error('Paket referensi belum tersedia pada preview ini');
    const doc=await response.json(),data=kind==='bp43'?reference43Entries(doc):referenceEntries(doc);if(!tracker.current(token)||!dialog.open)return;
    entries=data;updateTopicOptions();list();refreshChallengeSetup();status(entries.length+' kandidat referensi tersedia. Pilih referensi dan klik Muat.');
-   if(kind==='hra')fetch(base+'lymphatic-hierarchy/',{method:'HEAD',cache:'no-store'}).then(r=>{if(r.ok&&r.headers.get('content-type')?.startsWith('text/html')&&dialog.open&&sourceKind==='hra')hierarchyLink.hidden=false;}).catch(()=>{});
+   if(kind==='hra')fetch(base+'lymphatic-hierarchy/',{method:'HEAD',cache:'no-store'}).then(r=>{if(r.ok&&r.headers.get('content-type')?.startsWith('text/html')&&tracker.current(token)&&dialog.open&&sourceKind==='hra')hierarchyLink.hidden=false;}).catch(()=>{});
   }catch(error){if(tracker.current(token))status(String(error.message||error));}
  };
  $('openReferences').onclick=()=>open('hra');$('open43References').onclick=()=>open('bp43');

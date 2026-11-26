@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "source": {
+    "revision": "27d6d493cd53761abb10f087767ec4cc74acb051",
+    "version": "v1.5",
+    "doi": "https://doi.org/10.48539/HBM622.PDVS.333",
+    "license": "CC BY 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+    "creators": [
+      "Dhruv Singhal",
+      "Maxim Itkin",
+      "Avinash Boppana"
+    ],
+    "publisher": "HuBMAP",
+    "files": [
+      {
+        "name": "asct-b-vh-lymph-vasculature.csv",
+        "bytes": 63716,
+        "blob": "1eab86d50aeba777884e493a79d48a8a3e650d30",
+        "url": "https://raw.githubusercontent.com/hubmapconsortium/hra-kg/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/asct-b/lymph-vasculature/v1.5/raw/asct-b-vh-lymph-vasculature.csv",
+        "sha256": "27db74fee23cdd6600bade280b4bc879c929932b2b062a9dda35d871bbd3541f"
+      },
+      {
+        "name": "metadata.yaml",
+        "bytes": 2623,
+        "blob": "8e2014a75ae841a8fe6aecb107ac463a15ef569c",
+        "url": "https://raw.githubusercontent.com/hubmapconsortium/hra-kg/27d6d493cd53761abb10f087767ec4cc74acb051/digital-objects/asct-b/lymph-vasculature/v1.5/raw/metadata.yaml",
+        "sha256": "d7a88466aef6ba8cdf7c9125c490bc799363462968e1e48d908e1adee1bc5848"
+      }
+    ]
+  },
+  "scope": "Exact published nested structure paths. Adjacent name pairs are not validated flow edges. Missing ontology IDs and source qualifiers remain unchanged.",
+  "counts": {
+    "paths": 121,
+    "uniqueSourceNames": 122,
+    "uniqueOntologyIds": 46,
+    "sourceNamesWithMissingOntologyId": 72,
+    "missingIdOccurrences": 175,
+    "pathsWithMissingId": 74,
+    "maxDepth": 10,
+    "uniqueAdjacentNamePairs": 121
+  },
+  "clinicalValidation": false,
+  "registrationValidated": false,
+  "geometryVerified": false,
+  "flowDirectionValidated": false,
+  "approvedForDistribution": false,
+  "publicRelease": "NO_GO",
+  "sourceCommit": "0db29fbe3817bac5009d622401df72849428de0b",
+  "workflowRun": 45782898787,
+  "workflowJob": 139782418993,
+  "conclusion": "success",
+  "actualSourceTestsPassed": 4,
+  "htmlHttpTestsPassed": true,
+  "browserLinkReplayVerified": false
+}

@@ -12,6 +12,9 @@ import {encodeNativeGlb} from './independent-bp3d-export.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
 const app=path.join(root,'apps/atlas-independent');
 let real43=null,serve43=null,realHra=null,serveHra=null,hraStages=[];
+const {hierarchyRoute,serveHierarchy}=await import('./atlas-lymphatic-hierarchy-page.mjs');
+let realLymph=null,lymphEnabled=false;
+if(process.env.HRA_LYMPHATIC_FOLDER){const {loadHierarchy}=await import('./audit-hra-lymphatic-hierarchy.mjs');realLymph=loadHierarchy(path.join(root,'local-data/licensing-quarantine'),process.env.HRA_LYMPHATIC_FOLDER);}
 if(['1','gap','combined','expanded','axial','head-neck','visceral','cns','pelvic','cardio','bronchial','hyoid','hyoid-extended','expansion','full-376'].includes(process.env.ATLAS_TEST_REAL43)){
  const q=path.join(root,'local-data/licensing-quarantine'),folders=fs.readdirSync(q).filter(x=>/^bp3d43-element-intake-[A-Za-z0-9_-]+$/.test(x));
  const mode=process.env.ATLAS_TEST_REAL43,batches=["bp3d43-dual-source-audit-20261125.json","bp3d43-gap-batch-dual-source-audit-20261125.json","bp3d43-nerves32-dual-source-audit-20261125.json","bp3d43-discs-23-dual-source-audit-20261125.json","bp3d43-costal-20-dual-source-audit-20261125.json","bp3d43-head-neck-cartilage-14-dual-source-audit-20261125.json","bp3d43-visceral-18-dual-source-audit-20261126.json","bp3d43-cns-30-dual-source-audit-20261126.json","bp3d43-pelvic-digestive-15-dual-source-audit-20261126.json","bp3d43-cardiopulmonary-32-dual-source-audit-20261126.json","bp3d43-bronchial-thymus-22-dual-source-audit-20261126.json"];
@@ -88,6 +91,8 @@ try{
   const rel=p.slice(base.length);
   if(real43&&serve43(req,res,real43))return;
   if(realHra&&serveHra(req,res,realHra))return;
+  if(realLymph&&p===hierarchyRoute)return serveHierarchy(req,res,lymphEnabled?realLymph:null);
+  if(realLymph&&rel==='hra-reference/inventory.json')return send(200,JSON.stringify({items:[],publicRelease:'NO_GO',registrationValidated:false}),'application/json');
   if(rel==='inventory.json')return send(200,JSON.stringify({schema:1,mode:'private-review',publicRelease:'NO_GO',sourceFrame:'native-official-OBJ',sourceKind:'independent-bp3d',entries}),'application/json');
   if(rel==='learning-coverage.json')return send(200,JSON.stringify(fixtureCoverage),'application/json');
   if(rel==='element-selection.json')return send(200,JSON.stringify(catalog),'application/json');
@@ -141,6 +146,13 @@ try{
  assert((await guided.innerText()).includes('1 belum tersedia'));
  await guided.getByRole('button',{name:'Tutup'}).click();
  await guided.waitFor({state:'hidden'});
+ if(realLymph){
+  const dialog=page.locator('#referenceDialog'),link=dialog.locator('#lymphaticHierarchyLink');
+  let response=page.waitForResponse(r=>r.url().endsWith(hierarchyRoute)&&r.request().method()==='HEAD');await page.getByRole('button',{name:'HRA',exact:true}).click();assert.equal((await response).status(),404);assert(await link.isHidden());await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});
+  lymphEnabled=true;response=page.waitForResponse(r=>r.url().endsWith(hierarchyRoute)&&r.request().method()==='HEAD');await page.getByRole('button',{name:'HRA',exact:true}).click();assert.equal((await response).status(),200);await link.waitFor({state:'visible'});
+  const popupPromise=page.waitForEvent('popup');await link.click();const popup=await popupPromise;await popup.getByRole('heading',{name:'Hierarki limfatik HRA v1.5'}).waitFor();assert.equal(await popup.getByRole('status').innerText(),'121/121 jalur sumber');await popup.locator('#q').fill('UBERON:0001631');await popup.getByRole('button',{name:'Cari',exact:true}).click();await popup.getByRole('status').waitFor();assert((await popup.getByRole('status').innerText())!=='121/121 jalur sumber');await popup.locator('summary').first().click();assert(await popup.getByText('thoracic duct',{exact:true}).first().isVisible());await popup.locator('#q').fill('not a real structure');await popup.getByRole('button',{name:'Cari',exact:true}).click();await popup.getByRole('status').filter({hasText:'0/121 jalur sumber'}).waitFor();await popup.getByRole('link',{name:'Reset',exact:true}).click();await popup.getByRole('status').filter({hasText:'121/121 jalur sumber'}).waitFor();await popup.close();await dialog.locator('#referenceClose').click();await dialog.waitFor({state:'hidden'});
+  console.log('HRA LYMPHATIC HIERARCHY BROWSER PASS: actual 121 paths, explicit availability, source ID search, empty result, reset; no new 3D geometry.');
+ }
  if(realHra){
   await page.getByRole('button',{name:'HRA',exact:true}).click();
   const dialog=page.locator('#referenceDialog'),viewport=dialog.locator('#referenceViewport'),select=dialog.locator('#referenceSelect'),component=dialog.locator('#referenceComponentSelect');
