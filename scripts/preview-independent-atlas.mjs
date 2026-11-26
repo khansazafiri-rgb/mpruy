@@ -26,6 +26,7 @@ import {attachOriginalShell} from './private-atlas-original-shell.mjs';
 import {createElementCatalog} from './independent-atlas-element-catalog.mjs';
 import {planContextRecovery} from './independent-atlas-context-recovery.mjs';
 import {buildThumbnailRecords,createThumbnailService} from './independent-atlas-thumbnails.mjs';
+import {buildSourceReviewQueue} from './atlas-unresolved-source-queue.mjs';
 import {learningCoverage} from './independent-atlas-learning-coverage.mjs';
 import {loadVerifiedPublisherSources} from './plan-independent-atlas-coverage.mjs';
 const root=fs.realpathSync(fileURLToPath(new URL('../',import.meta.url)));
@@ -97,9 +98,11 @@ let hra;try{hra=independent?sourcePack.hra:await buildHraRegistry(privateRoot);}
 if(hraFemaleArgs.length)hra=mergeHraFemaleReferences(hra,loadHraFemaleFive(privateRoot,hraFemaleArgs[0].slice('--hra-female-folder='.length),hraGroups));
 if(hraCardioArgs.length)hra=mergeHraFemaleReferences(hra,loadHraBatch(privateRoot,hraCardioArgs[0].slice('--hra-cardio-folder='.length),'cardiopulmonary-four',hraGroups));
 if(suite)hra=exactSuiteHra(hra,suite);
-const coverage=independent&&broadRecovery?learningCoverage({sources:loadVerifiedPublisherSources(sourcePack.folder),body:manifest.entries,selection:elementCatalog?.items||[],recovery:recoveryItems,results:priority?.report.results||[],references43:source43?.inventory.items||[],hraReferences:[...hra.assets.values()].map(a=>a.public)}):null;
+const learningSources=independent&&broadRecovery?loadVerifiedPublisherSources(sourcePack.folder):null;
+const coverage=learningSources?learningCoverage({sources:learningSources,body:manifest.entries,selection:elementCatalog?.items||[],recovery:recoveryItems,results:priority?.report.results||[],references43:source43?.inventory.items||[],hraReferences:[...hra.assets.values()].map(a=>a.public)}):null;
 const coverageFile=coverage?path.join(privateRoot,folder,'publication-learning-coverage-'+process.pid+'-'+Date.now()+'.json'):null;
 if(coverage)fs.writeFileSync(coverageFile,JSON.stringify(coverage,null,2)+'\n',{flag:'wx',mode:0o600});
+if(coverage){const review=buildSourceReviewQueue(coverage,learningSources),file=coverageFile.replace('publication-learning-coverage-','publication-source-review-');fs.writeFileSync(file,JSON.stringify(review,null,2)+'\n',{flag:'wx',mode:0o600});console.log('ATLAS REMAINING SOURCE REVIEW '+JSON.stringify({...review,rows:undefined,file}));}
 const thumbnails=independent?createThumbnailService(buildThumbnailRecords(manifest.entries,elementCatalog?.items,recoveryItems,models,sourcePack.inventory.bodyModels,priority?.models||new Map())):null;
 const req=createRequire(path.join(app,'package.json'));
 const {build}=await import(pathToFileURL(req.resolve('vite')).href);
